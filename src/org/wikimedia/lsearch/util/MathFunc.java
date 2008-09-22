@@ -2,7 +2,6 @@ package org.wikimedia.lsearch.util;
 
 import java.util.Arrays;
 
-import org.wikimedia.lsearch.test.MathFuncTest;
 
 public class MathFunc {
 	

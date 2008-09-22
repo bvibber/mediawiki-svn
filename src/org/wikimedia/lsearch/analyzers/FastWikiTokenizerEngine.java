@@ -71,6 +71,7 @@ public class FastWikiTokenizerEngine {
 	private boolean inLink = false; // if we are parsing internal links
 	private boolean lastImgLinkCatWord = false; // if we are parsing the last word in a link, even when inImageCat.. is false if this is true, the word will be in the link
 	private int tableLevel = 0;
+	private int lastPipeInx = 0;
 	
 	private int prefixLen = 0;
 	private final char[] prefixBuf = new char[MAX_WORD_LEN];
@@ -115,7 +116,7 @@ public class FastWikiTokenizerEngine {
 	enum ParserState { WORD, LINK_BEGIN, LINK_WORDS, LINK_END, LINK_KEYWORD, 
 		LINK_FETCH, IGNORE, EXTERNAL_URL, EXTERNAL_WORDS,
 		TEMPLATE_BEGIN, TEMPLATE_WORDS, TEMPLATE_END,
-		TABLE_BEGIN, CATEGORY_WORDS };
+		TABLE_BEGIN, CATEGORY_WORDS, IMAGE_NAME };
 		
 	enum FetchState { WORD, CATEGORY, INTERWIKI, KEYWORD };
 	
@@ -274,8 +275,14 @@ public class FastWikiTokenizerEngine {
 					addToAlias = false;
 				} 
 				
-				// split around single quotes / dots in aliases
-				if(!options.noTokenization && (cl == '\'' || (cl=='.' && !numberToken))){
+				// delete ' marks from words, add as aliases
+				if(cl=='\''){
+					addToTokenAlias("");
+					addToAlias = false;
+				}
+				
+				// split around dots in aliases
+				if(!options.noTokenization && (cl=='.' && !numberToken)){
 					split = true;
 					//addToTokenAlias("");
 					//addToAlias = false;
@@ -353,11 +360,10 @@ public class FastWikiTokenizerEngine {
 			}
 			
 			// split buffer around non-letter chars, add all as aliases
-			// FIXME: produces bad results on queries like c'est (where C is a common term, e.g. in C programming language)
 			if(split && options.split){
 				int start=-1;
 				for(int i=0;i<decompLength+1;i++){
-					boolean sp = i==decompLength || decompBuffer[i]=='\'' || decompBuffer[i]=='.';
+					boolean sp = i==decompLength || decompBuffer[i]=='.';
 					if(!sp && start==-1){
 						start = i;
 					} else if(sp && start!=-1){
@@ -585,7 +591,7 @@ public class FastWikiTokenizerEngine {
 			// add new character to buffer
 			if(Character.isLetter(c) || (!numberToken && length>0 && Character.isLetterOrDigit(c))
 					|| (c == '\'' && cur>0 && Character.isLetter(text[cur-1]) && cur+1<textLength && Character.isLetter(text[cur+1]) ) 
-					|| (c == '.' && cur+1<textLength && Character.isLetter(text[cur+1]) && (length<=2 || (length>2 && buffer[length-1]!='.' && buffer[length-2]=='.')))
+					|| (c == '.' && cur+1<textLength && Character.isLetter(text[cur+1]) && (length<2 || (length>=2 && buffer[length-1]!='.' && buffer[length-2]=='.')))
 					|| decomposer.isCombiningChar(c)){				
 				if(numberToken) // we were fetching a number
 					addToken(false);
@@ -708,11 +714,11 @@ public class FastWikiTokenizerEngine {
 						linkLevel--;
 					} else{
 						if(lastPipe == -1){
-							cur = lookup;
+							// cur = lookup;
 							return false;
 						}
 						else{
-							cur = lastPipe;
+							this.lastPipeInx = lastPipe;
 							return true;
 						}		
 					}
@@ -981,7 +987,7 @@ public class FastWikiTokenizerEngine {
 						}
 					} else if(templateLevel>0){
 						// lookahead 256 chars trying to skip template params names
-						templ_param: for( lookup = cur + 1 ; lookup < textLength && (lookup-cur)<MAX_WORD_LEN ; lookup++ ){
+						/*templ_param: for( lookup = cur + 1 ; lookup < textLength && (lookup-cur)<MAX_WORD_LEN ; lookup++ ){
 							switch(text[lookup]){
 							case '=':
 								cur = lookup;
@@ -989,7 +995,7 @@ public class FastWikiTokenizerEngine {
 							case '|': case '}': case '{': case '[': case ']':
 								break templ_param;
 							}
-						}
+						} */
 					}
 					continue;
 				case '\n':
@@ -1025,7 +1031,10 @@ public class FastWikiTokenizerEngine {
 						}
 					}
 					// adjust gaps & figure out bulletins
-					gap = 1; inBulletin = false;
+					if(cur-1>=0 && text[cur-1]!='\n'){
+						gap = 1; 
+					}
+					inBulletin = false;
 					if(cur + 1 < textLength){
 						switch(text[cur+1]){
 						case '\n': 
@@ -1162,7 +1171,6 @@ public class FastWikiTokenizerEngine {
 			case EXTERNAL_WORDS:
 				inUrl = false;
 				if(c == ']'){
-					addToken();
 					state = ParserState.WORD;
 					inExternalLink = false;
 				} else
@@ -1179,9 +1187,14 @@ public class FastWikiTokenizerEngine {
 					
 					prefix = new String(prefixBuf,0,prefixLen);
 					if(isImage(prefix)){
-						if( !imageCaptionSeek() )
-							state = ParserState.LINK_END;
-						inImageCategoryInterwiki = true;
+						if( !imageCaptionSeek() ){
+							addLetter();
+							state = ParserState.WORD;
+						} else{
+							addLetter();
+							state = ParserState.IMAGE_NAME;
+							inImageCategoryInterwiki = true;
+						}
 						continue;
 					} else if(isCategory(prefix)){
 						lastCur = cur;
@@ -1218,6 +1231,13 @@ public class FastWikiTokenizerEngine {
 					addLetter();
 					continue;
 				}
+			case IMAGE_NAME:
+				addLetter();
+				if(c == '|'){
+					cur = lastPipeInx;
+					state = ParserState.LINK_WORDS;
+				}				
+				continue;
 			case LINK_KEYWORD:
 				if(keywordLen < keywordBuf.length && c!=']'){
 					keywordBuf[keywordLen++] = c;
@@ -1243,6 +1263,7 @@ public class FastWikiTokenizerEngine {
 						continue;
 					}
 				} else if(c == ']'){
+					addToken();
 					state = ParserState.LINK_END;
 					continue;
 				}

@@ -400,20 +400,19 @@ public class SearchEngine {
 			String namespace = getNamespace(searchterm,iid);
 			Hashtable<Integer,String> nsNames = dbNamespaceNames.get(iid.getDBname());
 			
-			ArrayList<String> keys = new ArrayList<String>();
+			HashSet<String> keys = new HashSet<String>();
+			// no prefix was specified, add all default search
 			if(prefixKey.startsWith("0:")){
 				String title = prefixKey.substring(2);
-				String alt = null;
-				if(title.startsWith("\"") && title.length()>1)
-					alt = title.substring(1); 
 				for(Integer ns : nsf.getNamespacesOrdered()){
-					keys.add(ns+":"+title);
-					if(alt != null)
-						keys.add(ns+":"+alt);
+					String key = ns+":"+title; 
+					keys.add(key);
+					keys.add(stripKey(key));
 				}
-
-			} else
+			} else{
 				keys.add(prefixKey);
+				keys.add(stripKey(prefixKey));
+			}
 						
 			ArrayList<PrefixMatch> results = new ArrayList<PrefixMatch>();
 			IndexReader reader = searcher.getIndexReader();
@@ -485,6 +484,11 @@ public class SearchEngine {
 			res.setErrorMsg("I/O error on index "+pre);
 		}
 		return res;
+	}
+	
+	/** Strip key using PrefixIndexBuilder stip function */
+	private String stripKey(String key){
+		return PrefixIndexBuilder.stripKey(key);
 	}
 	
 	private String capitalizeFirst(String str){
@@ -725,7 +729,7 @@ public class SearchEngine {
 				return; // query on many overlapping namespaces, won't try to spellcheck to not mess things up
 			// suggest !
 			res.setSuggest(null);
-			ArrayList<Token> tokens = parser.tokenizeForSpellCheck(searchterm);
+			ArrayList<Token> tokens = parser.tokenizeForSpellCheck(parser.extractPrefixFilter(searchterm));
 			if(tokens.size() == 0)
 				return; // nothing to spellchek
 			RMIMessengerClient messenger = new RMIMessengerClient();

@@ -36,7 +36,7 @@ import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
 import org.wikimedia.lsearch.util.Localization;
 
 /**
- * Make a  
+ * Make precursor for spellcheck index
  * 
  * @author rainman
  *

@@ -114,8 +114,9 @@ public class Analyzers {
 			analyzer.addAnalyzer(fields.sections(),
 					getReusableTitleIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 			
-			// for testing
-			analyzer.addAnalyzer(fields.contents(), new ReusableLanguageAnalyzer(filters,new TokenizerOptions.ContentOptions(exactCase)));
+			// for spell-check
+			analyzer.addAnalyzer(fields.contents(), 
+					getReusableIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		}
 		
 		return analyzer;
@@ -130,9 +131,9 @@ public class Analyzers {
 	}
 	
 	public static PerFieldAnalyzerWrapper getSpellCheckAnalyzer(IndexId iid, HashSet<String> stopWords){
-		FilterFactory filters = new FilterFactory(iid,FilterFactory.Type.SPELL_CHECK);
-		filters.setStopWords(stopWords);
-		return getSearcherAnalyzer(filters,new FieldNameFactory());
+		FieldBuilder builder = new FieldBuilder(iid,FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
+		builder.getBuilder().getFilters().setStopWords(stopWords);
+		return getIndexerAnalyzer(builder);
 	}
 	
 	/**

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="MWSearch" default="alljar" basedir=".">
+<project name="LuceneSearch" default="alljar" basedir=".">
 	<property name="lib" value="lib"/>
 	<property name="bin" value="bin"/>
 	<property name="src" value="src"/>
@@ -9,8 +9,8 @@
 	<property name="src.name" value="lucene-search-src-2.1"/>
 	<property name="binary.name" value="ls2.1-bin"/>
 	<property name="jar.name" value="LuceneSearch.jar"/>
-	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt lsearch* build.xml scripts/* VERSION configure build update resources/**"/>
-	<property name="include.src" value="src/** sql/** build.xml scripts/* webinterface/* VERSION configure build update"/>
+	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt lsearch* build.xml scripts/* VERSION configure build update resources/** test/**"/>
+	<property name="include.src" value="src/** sql/** build.xml scripts/* webinterface/* VERSION configure build update test/**"/>
 	
 	<property file="${basedir}/hostname"/>
 	

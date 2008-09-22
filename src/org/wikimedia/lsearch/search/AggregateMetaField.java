@@ -151,7 +151,7 @@ public class AggregateMetaField {
 			} catch(Exception e){
 				log.error("Exception during processing stored_field="+field+" on docid="+i+", with stored="+stored+" : "+e.getMessage());
 				e.printStackTrace();
-				throw new IOException(e);
+				throw new IOException(e.getMessage());
 			}
 		}
 		

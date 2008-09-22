@@ -18,9 +18,13 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.search.NamespaceFilter;
+import org.wikimedia.lsearch.spell.Suggest;
+import org.wikimedia.lsearch.spell.SuggestResult;
+import org.wikimedia.lsearch.spell.SuggestSimilar;
+import org.wikimedia.lsearch.spell.Suggest.ExtraInfo;
 import org.wikimedia.lsearch.spell.dist.DoubleMetaphone;
 
-public class SuggestTest {
+public class SuggestShell {
 	
 	public static void main(String args[]) throws IOException{
 		Configuration.open();

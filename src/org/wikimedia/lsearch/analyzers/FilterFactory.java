@@ -14,7 +14,6 @@ import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.snowball.SnowballFilter;
 import org.apache.lucene.analysis.th.ThaiWordFilter;
-import org.wikimedia.lsearch.analyzers.EnglishSingularFilter.EnglishSingular;
 import org.wikimedia.lsearch.analyzers.LanguageAnalyzer.ArrayTokens;
 import org.wikimedia.lsearch.config.IndexId;
 

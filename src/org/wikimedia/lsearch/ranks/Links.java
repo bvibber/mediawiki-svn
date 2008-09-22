@@ -471,7 +471,7 @@ public class Links {
 	/** Get anchor texts that differs from the page title, with rank counts
 	 * @return anchor text -> occurance count
 	 */
-	public HashMap<String,Integer> getAnchors(String key) throws IOException{
+	protected HashMap<String,Integer> getAnchors(String key) throws IOException{
 		ensureRead();
 		HashMap<String,Integer> ret = new HashMap<String,Integer>();
 		String prefix = key+"|";

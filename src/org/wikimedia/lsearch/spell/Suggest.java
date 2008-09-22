@@ -363,7 +363,7 @@ public class Suggest {
 		// single word misspells
 		if(tokens.size() == 1){
 			String w = tokens.get(0).termText();
-			singleWordSug = suggestWords(w,POOL,ns);
+			singleWordSug = (!stopWords.contains(w))? suggestWords(w,POOL,ns) : new ArrayList<SuggestResult>();
 			if(singleWordSug.size() > 0){
 				SuggestResult r = singleWordSug.get(0);
 				if(r.isExactMatch()){
@@ -395,6 +395,8 @@ public class Suggest {
 					}
 				}
 			}
+			//logRequest(searchterm,"CORRECT (no single word suggest)",start);
+			//return new SuggestQuery(searchterm,new ArrayList<Integer>());			
 		}
 		
 		// don't go further - there is no similar title, and we found the phrase in text
@@ -414,8 +416,8 @@ public class Suggest {
 		for(int i=0;i<tokens.size();i++){
 			Token t = tokens.get(i);
 			String w = t.termText();
-			// one-letter words are always correct
-			if(w.length() < 2){ 
+			// one-letter words and stop words are always correct
+			if(w.length() < 2 || stopWords.contains(w)){ 
 				addCorrectWord(w,wordSug,possibleStopWords);				
 				continue;
 			}
@@ -426,7 +428,8 @@ public class Suggest {
 			} 
 				
 			// suggest word
-			ArrayList<SuggestResult> sug = (tokens.size() == 1)? singleWordSug : suggestWords(w,POOL,ns);
+			ArrayList<SuggestResult> sug = new ArrayList<SuggestResult>();
+			sug = (tokens.size() == 1)? singleWordSug : suggestWords(w,POOL,ns);
 			if(sug.size() > 0){
 				wordSug.add(sug);
 				SuggestResult maybeStopWord = null;

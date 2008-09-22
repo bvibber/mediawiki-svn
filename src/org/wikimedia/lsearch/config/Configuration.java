@@ -55,6 +55,7 @@ import org.apache.log4j.helpers.LogLog;
 public class Configuration {
 	private static Configuration instance;
 	private static String configfile = null; 
+	private static String globalConfigUrl = null;
 	private static boolean verbose = true; // print info and error messages
 	
 	protected final String CONF_FILE_NAME = "lsearch.conf";
@@ -108,7 +109,7 @@ public class Configuration {
 		
 		// open the global configuration
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
-		String globalurl = getString("MWConfig","global");
+		String globalurl = globalConfigUrl!=null? globalConfigUrl : getString("MWConfig","global");
 		String indexpath = getString("Indexes","path");
 		if(globalurl==null){
 			System.out.println("FATAL: Need to define global configuration url in local config file.");
@@ -211,5 +212,11 @@ public class Configuration {
 	public static void setVerbose(boolean v) {
 		verbose = v;		
 	}
+
+	public static void setGlobalConfigUrl(String globalConfigUrl) {
+		Configuration.globalConfigUrl = globalConfigUrl;
+	}
+	
+	
 	
 }

@@ -737,7 +737,7 @@ public class WikiIndexModifier {
 			FieldNameFactory fields = bs.getFields();
 			FilterFactory filters = bs.getFilters();
 			
-			String anchoredContents = contents +"\n\n"+serializeAnchors(article.getAnchorRank(),bs.isExactCase());
+			String anchoredContents = contents +"\n\n"+serializeAlttitle(article,bs.isExactCase());
 			
 			// tokenize the article to fill in pre-analyzed fields
 			TokenizerOptions options = new TokenizerOptions.ContentOptions(bs.isExactCase());
@@ -762,7 +762,7 @@ public class WikiIndexModifier {
 			}
 			
 			// altititle
-			makeAlttitle(doc,fields.alttitle(),article,iid,stopWords,tokenizer,analyzer,fields.isExactCase());
+			makeAlttitle(doc,fields.alttitle(),article,iid,stopWords,tokenizer,analyzer,fields.isExactCase(),true);
 			
 			// sections
 			makeSections(doc,fields.sections(),article,iid,stopWords,tokenizer,analyzer,transformRankLog(article.getRank()));
@@ -801,13 +801,9 @@ public class WikiIndexModifier {
 		return sb.toString();
 	}
 	
-	/** Serialize anchors (which includes titles and redirects) to be added to end of contents */
-	public static String serializeAnchors(Map<String,Integer> anchors, boolean exactCase){
-		if(!exactCase){
-			anchors = Links.lowercaseAnchorMap(anchors);
-		}
-		// sort & add
-		ArrayList<Entry<String,Integer>> sorted = Links.sortAnchors(anchors); 
+	/** Serialize alttitle (anchors, titles, redirects) to be added to end of contents */
+	public static String serializeAlttitle(Article article, boolean exactCase){
+		ArrayList<Entry<String,Integer>> sorted = generateAndSortAlttitle(article, new HashSet<String>(), exactCase); 
 		StringBuilder sb = new StringBuilder();
 		for(Entry<String,Integer> e : sorted){
 			sb.append(e.getKey());
@@ -863,9 +859,9 @@ public class WikiIndexModifier {
 		title.setBoost(rankBoost);
 		doc.add(title);
 		// add titles + redirects in aggregate field
-		makeAlttitle(doc,"alttitle",article,titles,stopWords,null,analyzer,false);		
+		makeAlttitle(doc,"alttitle",article,titles,stopWords,null,analyzer,false,false);		
 		// store highlight data
-		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,titles,new ArrayList<String>(),highlightAnalyzer,"alttitle"),Store.COMPRESS));
+		doc.add(new Field("alttitle",Alttitles.serializeAltTitle(article,titles,new ArrayList<String>(),highlightAnalyzer,"alttitle"),Store.YES));
 		
 		return doc;
 	}
@@ -892,7 +888,7 @@ public class WikiIndexModifier {
 			tokenized.add(t.termText());
 		}
 		
-		doc.add(new Field(fields.spellcheck_context(), new StringList(tokenized).toString(), Field.Store.COMPRESS, Field.Index.NO));
+		doc.add(new Field(fields.spellcheck_context(), new StringList(tokenized).toString(), Field.Store.YES, Field.Index.NO));
 	}
 	
 	/** add related aggregate field 
@@ -905,23 +901,37 @@ public class WikiIndexModifier {
 		makeAggregate(doc,prefix,items);
 	}
 	
-	/** add alttitle aggregate field */
-	protected static void makeAlttitle(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords, 
-			WikiTokenizer tokenizer, Analyzer analyzer, boolean exactCase) throws IOException {
-		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
-		HashSet<String> titles = new HashSet<String>();
+	/** Generate sorted alttitle -> rank map (desc by rank) */ 
+	protected static ArrayList<Entry<String,Integer>> generateAndSortAlttitle(Article article, HashSet<String> titles, boolean exactCase){		
 		titles.add(article.getTitle());
 		titles.addAll(article.getRedirectKeywords());
+		HashMap<String,Integer> ret = new HashMap<String,Integer>();
 		// get anchors
 		Map<String,Integer> anchors = article.getAnchorRank();
 		if(!exactCase){
 			titles = lowercaseSet(titles);
 			anchors = Links.lowercaseAnchorMap(anchors);
 		}
+		ret.putAll(anchors);
+		for(Redirect r : article.getRedirectsSorted()){
+			ret.put(r.getTitle(),r.getReferences());  // this might overwrite anchors
+		}
+		ret.put(article.getTitle(),article.getRank());
 		// sort & add
-		ArrayList<Entry<String,Integer>> sorted = Links.sortAnchors(anchors); 
+		return Links.sortAnchors(ret); 
+	}
+	
+	/** add alttitle aggregate field */
+	protected static void makeAlttitle(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords, 
+			WikiTokenizer tokenizer, Analyzer analyzer, boolean exactCase, boolean includeAnchors) throws IOException {
+		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
+		HashSet<String> titles = new HashSet<String>();
+		// sort & add
+		ArrayList<Entry<String,Integer>> sorted = generateAndSortAlttitle(article, titles, exactCase); 
 		for(Entry<String,Integer> e : sorted){
 			Flags flag = titles.contains(e.getKey())? Flags.ALTTITLE :  Flags.ANCHOR;  
+			if(!includeAnchors && flag==Flags.ANCHOR)
+				continue;
 			addToItems(items, new Aggregate(e.getKey(),transformRankLog(e.getValue()),iid,analyzer,prefix,stopWords,flag),stopWords);
 		}
 		makeAggregate(doc,prefix,items);

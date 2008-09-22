@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.util;
 
 import java.util.Arrays;
 

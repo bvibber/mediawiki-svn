@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.analyzers;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,23 +11,20 @@ import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser.NamespacePolicy;
 import org.wikimedia.lsearch.config.Configuration;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
+import org.wikimedia.lsearch.test.WikiTestCase;
 
 import junit.framework.TestCase;
 
-public class WikiQueryParserTest extends TestCase {
-	public void testParser() {
-		Configuration.setConfigFile(System.getProperty("user.dir")+"/test-data/mwsearch.conf.test");
-		Configuration.open();
-		WikiQueryParser.TITLE_BOOST = 2;
-		WikiQueryParser.ALT_TITLE_BOOST = 6;
-		WikiQueryParser.CONTENTS_BOOST = 1;
+public class WikiQueryParserTest extends WikiTestCase {
+
+	public void testEnglish() {
 		IndexId enwiki = IndexId.get("enwiki");
 		FieldBuilder.BuilderSet bs = new FieldBuilder(IndexId.get("enwiki")).getBuilder();
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(enwiki);
 		FieldNameFactory ff = new FieldNameFactory();
-		
 		try{
 			WikiQueryParser parser = new WikiQueryParser("contents","0",analyzer,bs,NamespacePolicy.IGNORE);
 			Query q;
@@ -73,11 +70,50 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("+(contents:i'll contents:ill^0.5) +contents:get",q.toString());
 			
 			q = parser.parseRaw("c# good-thomas");
-			assertEquals("+(contents:c# contents:c^0.5) +(+(contents:good- contents:good^0.5) +(contents:thomas contents:thoma^0.5))",q.toString());
+			assertEquals("+(contents:c# contents:c^0.5) +(+(contents:good- contents:good^0.5 contents:goodthomas^0.5) +contents:thomas)",q.toString());
 			
 			q = parser.parseRaw("a8n sli");
 			assertEquals("+contents:a8n +contents:sli",q.toString());
 			
+			q = parser.parseRaw("en.wikipedia.org");
+			assertEquals("+contents:en +contents:wikipedia +contents:org",q.toString());
+			assertEquals("[[contents:en, contents:wikipedia, contents:org]]",parser.getUrls().toString());
+			
+			q = parser.parseRaw("something prefix:[2]:Rainman/Archive");
+			assertEquals("contents:something",q.toString());
+			assertEquals("2:Rainman/Archive",parser.getPrefixFilter());
+			
+			q = parser.parseRaw("query incategory:Some_category_name");
+			assertEquals("+contents:query +category:some category name",q.toString());
+			
+			/* =================== MISC  ================= */
+			
+			q = parser.parse("douglas adams OR qian zhongshu OR (ibanez guitars)");
+			assertEquals("[douglas, adams, qian, zhongshu, ibanez, guitars]",parser.getWordsClean().toString());
+			
+			assertEquals("[(douglas,0,7), (adam,8,12,type=wildcard)]",parser.tokenizeForSpellCheck("douglas adam*").toString());
+			
+			assertEquals("[(douglas,0,7)]",parser.tokenizeForSpellCheck("douglas -adams").toString());
+			assertEquals("[(douglas,4,11)]",parser.tokenizeForSpellCheck("[2]:douglas -adams").toString());
+			
+			assertEquals("[(box,0,3), (ven,4,7,type=fuzzy), (i'll,9,13)]",parser.tokenizeForSpellCheck("box ven~ i'll").toString());
+			
+			q = parser.parse("douglas -adams guides");
+			assertEquals("[contents:guides, contents:douglas, contents:guide]", Arrays.toString(parser.getHighlightTerms()));
+
+			
+		} catch(Exception e){
+		}
+	}
+	
+	public void XtestEnglishFull() {
+		IndexId enwiki = IndexId.get("enwiki");
+		FieldBuilder.BuilderSet bs = new FieldBuilder(IndexId.get("enwiki")).getBuilder();
+		Analyzer analyzer = Analyzers.getSearcherAnalyzer(enwiki);
+		FieldNameFactory ff = new FieldNameFactory();
+		try{
+			WikiQueryParser parser = new WikiQueryParser("contents","0",analyzer,bs,NamespacePolicy.IGNORE);
+			Query q;
 			/* =================== FULL QUERIES ================= */
 			
 			q = parser.parse("simple query",new WikiQueryParser.ParsingOptions(true));
@@ -103,23 +139,7 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parse("who is president of u.s.",new WikiQueryParser.ParsingOptions(true));
 			assertEquals("(+contents:who +contents:is +(contents:president contents:presid^0.5) +contents:of +(contents:u.s contents:us^0.5)) ((+title:who^2.0 +title:is^2.0 +title:president^2.0 +title:of^2.0 +(title:u.s^2.0 title:us^0.4)) (+stemtitle:who^0.8 +stemtitle:is^0.8 +(stemtitle:president^0.8 stemtitle:presid^0.32000002) +stemtitle:of^0.8 +(stemtitle:u.s^0.8 stemtitle:us^0.32000002)))",q.toString());
 			assertEquals("[who, is, president, of, u.s]",parser.getWordsClean().toString());
-			
-			
-			/* =================== MISC  ================= */
-			
-			q = parser.parse("douglas adams OR qian zhongshu OR (ibanez guitars)");
-			assertEquals("[douglas, adams, qian, zhongshu, ibanez, guitars]",parser.getWordsClean().toString());
-			
-			assertEquals("[(douglas,0,7), (adam*,8,13,type=wildcard)]",parser.tokenizeForSpellCheck("douglas adam*").toString());
-			
-			assertEquals("[(douglas,0,7)]",parser.tokenizeForSpellCheck("douglas -adams").toString());
-			assertEquals("[(douglas,4,11)]",parser.tokenizeForSpellCheck("[2]:douglas -adams").toString());
-			
-			assertEquals("[(box,0,3), (ven,4,7,type=fuzzy), (i'll,9,13)]",parser.tokenizeForSpellCheck("box ven~ i'll").toString());
-			
-			q = parser.parse("douglas adams -guides");
-			assertEquals("[contents:adams, contents:dougla, contents:douglas, contents:adam]", Arrays.toString(parser.getHighlightTerms()));
-
+		
 		} catch(Exception e){
 			e.printStackTrace();
 		}

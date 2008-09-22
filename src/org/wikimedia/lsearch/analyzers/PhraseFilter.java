@@ -76,6 +76,14 @@ public class PhraseFilter extends TokenFilter {
 			}
 		}
 	}
+	
+	/**
+	 * Outputs both pair of words, and longer phrases, e.g. for a stream (where "for" is stop word)
+	 * test for something will produce: test, for, something, test_for, for_something and test_for_something
+	 * 
+	 * @return
+	 * @throws IOException
+	 */
 	public Token nextPhraseOrWord() throws IOException {
 		if(pairReady && pair1!=null && pair2!=null && stopWords!=null && 
 				(stopWords.contains(pair1.termText()) || stopWords.contains(pair2.termText()))){

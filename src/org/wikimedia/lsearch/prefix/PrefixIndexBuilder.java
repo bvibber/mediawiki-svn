@@ -287,10 +287,25 @@ public class PrefixIndexBuilder {
 		return FastWikiTokenizerEngine.stripTitle(s);
 	}
 	
+	public static String stripKey(String key){
+		int semi = key.indexOf(':');
+		String ns = key.substring(0,semi+1);
+		return ns + PrefixIndexBuilder.strip(key.substring(semi+1));
+	}
+	
 	/** Obtain all the different versions of the whole key (with accents, without, transliterated.. ) */
 	private static ArrayList<Token> canonize(String key, IndexId iid, FilterFactory filters) throws IOException{
 		FastWikiTokenizerEngine tokenizer = new FastWikiTokenizerEngine(key,iid,new TokenizerOptions.PrefixCanonization());
-		return filters.canonicalFilter(tokenizer.parse());		
+		ArrayList<Token> tokens = filters.canonicalFilter(tokenizer.parse());
+		// add stripped alias
+		String stripped = stripKey(key);
+		if(!stripped.equalsIgnoreCase(key)){
+			Token t = new Token(stripped,0,key.length());
+			t.setPositionIncrement(0);
+			tokens.add(t);
+		}
+		
+		return tokens;
 	}
 	
 	/** Do an old-fashioned batch update of the precursor index */

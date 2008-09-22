@@ -155,7 +155,7 @@ public class Warmup {
 				}
 			} else if(iid.isTitlesBySuffix()){
 				// just initiate meta field caching, we want to avoid caching unnecessary filters
-				AggregateMetaField.getCachedSource(is.getIndexReader(),"alttitle");
+				// AggregateMetaField.getCachedSource(is.getIndexReader(),"alttitle");
 			} else{
 				// normal indexes
 				if(count == 0){

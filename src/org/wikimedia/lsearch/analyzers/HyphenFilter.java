@@ -39,6 +39,7 @@ public class HyphenFilter extends TokenFilter {
 					Token join = new Token(text,t.startOffset(),next.endOffset());
 					join.setPositionIncrement(0);
 					buffer.add(join);
+					buffer.add(next);
 					break;
 				}
 			}			

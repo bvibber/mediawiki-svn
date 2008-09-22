@@ -2,13 +2,14 @@
  * Created on Jan 25, 2007
  *
  */
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.analyzers;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 /**
  * @author rainman

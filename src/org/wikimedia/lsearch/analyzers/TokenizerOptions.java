@@ -85,7 +85,7 @@ public class TokenizerOptions {
 		}
 	}
 	
-	/** Used for titles, doesn't simply glue and has no case detection */
+	/** Used for titles, doesn't simplify glue and has no case detection */
 	public static class HighlightOriginal extends Highlight {
 		public HighlightOriginal(boolean exactCase){
 			super(exactCase);

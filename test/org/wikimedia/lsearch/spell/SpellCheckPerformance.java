@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.spell;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.net.URLEncoder;
  * @author rainman
  *
  */
-public class SpellCheckTest {
+public class SpellCheckPerformance {
 	static String host = "localhost";
 	static int port = 8123;
 	static String db = "enwiki";

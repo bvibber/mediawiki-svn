@@ -8,8 +8,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
-import org.wikimedia.lsearch.test.ArticlesParser;
-import org.wikimedia.lsearch.test.TestArticle;
+import org.wikimedia.lsearch.analyzers.ArticlesParser;
+import org.wikimedia.lsearch.analyzers.TestArticle;
 
 public class Benchmark {
 

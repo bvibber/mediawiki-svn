@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.search;
 
 import java.util.HashMap;
 import java.util.Map.Entry;

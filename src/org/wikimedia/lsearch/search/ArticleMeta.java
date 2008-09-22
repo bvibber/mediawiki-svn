@@ -96,7 +96,7 @@ public class ArticleMeta {
 					ext = ", ns="+doc.get("namespace")+", title="+doc.get("title");
 				log.error("Exception during caching of article info for docid="+i+ext);
 				e.printStackTrace();
-				throw new IOException(e);
+				throw new IOException(e.getMessage());
 			}
 			
 		}

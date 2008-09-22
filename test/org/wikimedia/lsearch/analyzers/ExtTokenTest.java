@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.analyzers;
 
 import java.io.IOException;
 import java.util.ArrayList;

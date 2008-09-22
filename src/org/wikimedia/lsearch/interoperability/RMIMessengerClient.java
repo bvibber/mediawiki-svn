@@ -114,7 +114,7 @@ public class RMIMessengerClient {
 	
 	private RMIMessenger messengerFromCache(String host) throws RemoteException, NotBoundException {
 		// if trying to talk to localhost, return the local RMI object
-		if(!alwaysRemote && (global.isLocalhost(host) || host.equals("localhost") || host.equals("127.0.0.1") || host.equals(""))){
+		if(!alwaysRemote && (host==null || global.isLocalhost(host) || host.equals("localhost") || host.equals("127.0.0.1") || host.equals(""))){
 			log.debug("Getting a local RMI messenger for "+host);
 			return localMessenger;
 		}

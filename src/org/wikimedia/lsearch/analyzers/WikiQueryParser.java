@@ -11,6 +11,8 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
@@ -72,6 +74,8 @@ public class WikiQueryParser {
 	protected String prefixFilter;
 	protected enum ExpandedType { WORD, WILDCARD, FUZZY, PHRASE };
 	protected Term[] highlightTerms = null;
+	
+	protected ArrayList<ArrayList<Term>> urls;
 	
 	/** sometimes the fieldsubquery takes the bool modifier, to retrieve it, use this variable,
 	 *  this will always point to the last unused bool modifier */
@@ -140,6 +144,8 @@ public class WikiQueryParser {
 	protected Fuzzy fuzzy = null;
 	protected IndexId iid;
 	
+	protected Pattern urlPattern = Pattern.compile("(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?");
+	
 	/** default operator (must = AND, should = OR) for boolean queries */
 	public BooleanClause.Occur boolDefault = BooleanClause.Occur.MUST;
 	
@@ -203,6 +209,10 @@ public class WikiQueryParser {
 		
 		int getPosition(){
 			return position;
+		}
+		
+		boolean isWildcardOrFuzzy(){
+			return type == ExpandedType.WILDCARD || type == ExpandedType.FUZZY; 
 		}
 		
 	}
@@ -276,6 +286,18 @@ public class WikiQueryParser {
 			for(WordsDesc d : words){
 				if(d.type==ExpandedType.WORD || d.type==ExpandedType.PHRASE)
 					ret.add(d.firstWordsDesc());
+			}
+			return ret;
+		}
+		
+		/** Get ParsedWords of first words, or whole ParsedWords if wildcard/fuzzy */
+		ParsedWords cloneFirstWithWildcards(){
+			ParsedWords ret = new ParsedWords();
+			for(WordsDesc d : words){
+				if(d.type==ExpandedType.WORD || d.type==ExpandedType.PHRASE)
+					ret.add(d.firstWordsDesc());
+				else if(d.isWildcardOrFuzzy())
+					ret.add(d);
 			}
 			return ret;
 		}
@@ -497,7 +519,8 @@ public class WikiQueryParser {
 				inPhrase = !inPhrase;
 			}
 			
-			if(inPhrase);
+			if(inPhrase) // skip words in phrases
+				continue; 
 			else if(c == ')'){
 				level--;
 				if(level < fieldLevel)
@@ -675,6 +698,22 @@ public class WikiQueryParser {
 		}		
 	}
 	
+	/** Analyze a string, and return tokens (doesn't use any of the object storage attributes) */
+	private ArrayList<Token> analyzeString(String input){
+		tokenStream = analyzer.tokenStream("contents", input);
+		
+		ArrayList<Token> ret = new ArrayList<Token>();
+		Token token;
+		try{
+			while((token = tokenStream.next()) != null){
+				ret.add(token);
+			}
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+		return ret;
+	}
+	
 	
 	/** Make term form lucene token */
 	private Term makeTerm(Token token){
@@ -703,13 +742,14 @@ public class WikiQueryParser {
 			return new Term(currentField,t);
 	}
 	
-	/** Parses a phrase query (i.e. between ""), the cur
+	/** 
+	 * Parses a phrase query (i.e. between ""), the cur
 	 *  should be set to the char just after the first
 	 *  quotation mark
 	 *   
 	 * @return a query, or null if the query is empty
 	 */
-	private Query parsePhrase(){				
+	private Query parsePhrase(){
 		// special case for incategory 
 		if(currentField!=null && currentField.equals("incategory")){
 			length = 0;
@@ -1041,6 +1081,16 @@ public class WikiQueryParser {
 		BooleanQuery bq = null;
 		TermQuery t;
 		boolean addAliases = true;
+		
+		// check for urls
+		Matcher urlMatcher = urlPattern.matcher(new String(buffer,0,length)); 
+		while(urlMatcher.find()){
+			ArrayList<Token> urlTokens = analyzeString(urlMatcher.group());
+			ArrayList<Term> urlTerms = new ArrayList<Term>();
+			for(Token tt : urlTokens)
+				urlTerms.add(makeTerm(tt.termText()));
+			urls.add(urlTerms);			
+		}
 	
 		// categories should not be analyzed
 		if(currentField != null && currentField.equals("incategory")){
@@ -1144,7 +1194,7 @@ public class WikiQueryParser {
 	 * variable for later retrieval
 	 * 
 	 * @param queryText
-	 * @return
+	 * @return queryText with prefix part deleted
 	 */
 	public String extractPrefixFilter(String queryText){
 		prefixFilter = null;
@@ -1158,7 +1208,7 @@ public class WikiQueryParser {
 					// convert from [2]:query to 2:query form
 					prefixFilter = prefixFilter.replace("[","").replace("]:",":");
 				}
-					
+				// return the actual query without prefix
 				return queryText.substring(0,inx);
 			}
 			start = end+1;
@@ -1195,6 +1245,7 @@ public class WikiQueryParser {
 		prev_cur = 0;
 		explicitOccur = null;
 		parsedWords = new ParsedWords();
+		urls = new ArrayList<ArrayList<Term>>();
 	}
 	
 	/** Init parsing, call this function to parse text */ 
@@ -1221,9 +1272,7 @@ public class WikiQueryParser {
 		
 		return query;		
 	}
-	
-	
-	
+
 	/* ======================= FULL-QUERY PARSING ========================= */
 	
 	public static class ParsingOptions {
@@ -1307,18 +1356,12 @@ public class WikiQueryParser {
 		// redirect match (when redirect is not contained in contents or title)
 		Query redirectMatch =  makeAlttitleForRedirectsMulti(makeFirstAndSingular(words),20,1f);		
 		
-		/* BooleanQuery wrap = new BooleanQuery(true);
-		wrap.add(bq,Occur.MUST);
-		wrap.add(additional,Occur.SHOULD);
-		//wrap.add(full,Occur.SHOULD);
-		wrap.add(makeComplete(expandedWordsTitle,expandedBoostTitle,expandedTypes),Occur.SHOULD);
-		if(forbidden != null)
-			wrap.add(forbidden,Occur.MUST_NOT); */
-		
 		BooleanQuery full = new BooleanQuery(true);
 		full.add(qc, Occur.MUST);
-		full.add(mainPhrase, Occur.SHOULD);
-		full.add(redirectMatch, Occur.SHOULD);
+		if(mainPhrase != null)
+			full.add(mainPhrase, Occur.SHOULD);
+		if(redirectMatch != null)
+			full.add(redirectMatch, Occur.SHOULD);
 		
 		// init global scaling of articles 
 		ArticleScaling scale = new ArticleScaling.None();
@@ -1357,11 +1400,13 @@ public class WikiQueryParser {
 
 	/** Generate singular parsed words coupled with first() words */
 	private ParsedWords makeFirstAndSingular(ParsedWords words){
-		ParsedWords ret = words.cloneFirst();
+		ParsedWords ret = words.cloneFirstWithWildcards();
 		if(filters.hasSingular()){
 			Singular singular = filters.getSingular();
 			// generate singular forms if any
 			for(WordsDesc wd : ret.words){
+				if(wd.isWildcardOrFuzzy())
+					continue;
 				String w = wd.first();
 				String sw = singular.getSingular(w);
 				if( sw!=null && !w.equals(sw) ){
@@ -1557,6 +1602,12 @@ public class WikiQueryParser {
 						combined.add(makePositional(wnwords,fields.begin(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1),Occur.SHOULD);
 				}
 			}
+			// urls
+			if(urls.size() > 0){
+				for(ArrayList<Term> terms : urls){
+					combined.add(makePositional(extractTermText(terms), extractField(terms), new PositionalOptions.Sloppy(),0,1), Occur.SHOULD);
+				}
+			}
 		}
 		if(sections!=null)
 			combined.add(sections,Occur.SHOULD);
@@ -1597,6 +1648,20 @@ public class WikiQueryParser {
 		return whole;
 	}
 	
+	private String extractField(ArrayList<Term> terms) {
+		if(terms.size() > 0)
+			return terms.get(0).field();
+		else
+			throw new RuntimeException("Trying to extract field from zero-length list of terms");
+	}
+
+	private ArrayList<String> extractTermText(ArrayList<Term> terms) {
+		ArrayList<String> tt = new ArrayList<String>();
+		for(Term t : terms)
+			tt.add(t.text());
+		return tt;
+	}
+
 	/** Combine one main query with a number of other queries into a boolean query */
 	private Query combine(Query query, ArrayList<Query> additional) {
 		if(additional.size()==0)
@@ -1914,6 +1979,12 @@ public class WikiQueryParser {
 		return prefixFilter;
 	}
 
+	/** Get urls that have been extracted from last query */
+	public ArrayList<ArrayList<Term>> getUrls() {
+		return urls;
+	}
+
+	
 
 
 }

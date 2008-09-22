@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.search;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -208,10 +208,11 @@ public class RankingTest {
 		assertHits("san francisco ferry building", new String[]{
 				"0:Ferry Building"	
 		});
-
-
-	
 		
+		assertHits("*stan", new String[]{
+				"0:Kazakhstan"	
+		});
+
 		
 	}
 	

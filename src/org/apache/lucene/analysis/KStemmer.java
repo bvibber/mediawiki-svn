@@ -1218,7 +1218,7 @@ public class KStemmer {
 	/** Create a KStemmer, with the given cache size.
 	 *  @param cacheSize Maximum number of words to be stored in the cache.
 	 */
-	KStemmer(int cacheSize) {
+	public KStemmer(int cacheSize) {
 		if (cacheSize>=0)
 			MaxCacheSize = cacheSize;
 		if (dict_ht == null)
@@ -1228,17 +1228,84 @@ public class KStemmer {
 	/** Create a KStemmer with the default cache size (20000 words).
 	 *
 	 */
-	KStemmer() {
+	public KStemmer() {
 		MaxCacheSize = DEFAULT_CACHE_SIZE;
 		if (dict_ht == null)
 			initializeDictHash();
+	}
+	
+	public String singular(String term) {
+		boolean stemIt;
+		String result;
+		String original;
+
+		if (stem_ht == null)
+			initializeStemHash();
+
+		k = term.length() - 1;
+
+		/* If the word is too long or too short, or not
+	   entirely alphabetic, just lowercase copy it
+	   into stem and return */
+		stemIt = true;
+		if ((k <= 1)||(k >= MaxWordLen-1)) {
+			stemIt = false;
+		} else {
+			word = new StringBuffer(term.length());
+			for (int i=0;i<term.length();i++) {
+				char ch = Character.toLowerCase(term.charAt(i));
+				word.append(ch);
+				if (!isAlpha(ch)) {
+					stemIt = false;
+					break;
+				}
+			}
+		}
+		if (!stemIt) {
+			return term.toLowerCase();
+		}
+		/* Check to see if it's in the cache */
+		original = word.toString();
+		if (stem_ht.containsKey(original)) {
+			return (String) stem_ht.get(original);
+		}
+
+		result = original; /* default response */
+
+		/* This while loop will never be executed more than one time;
+	   it is here only to allow the break statement to be used to escape
+	   as soon as a word is recognized */
+
+		DictEntry entry = null;
+
+		while (true) {
+			entry = wordInDict();
+			if (entry != null) break;
+			plural();	
+			break;
+		}
+		
+		if (entry != null) {
+			if (entry.root != null)
+				result = entry.root;
+			else
+				result = word.toString();
+		} else result = word.toString();
+		
+		/* Enter into cache, at the place not used by the last cache hit */
+		if (stem_ht.size() < MaxCacheSize) {
+			/* Add term to cache */
+			stem_ht.put(original,result);
+		}
+
+		return result;
 	}
 
 	/** Returns the stem of a word.
 	 *  @param term The word to be stemmed.
 	 *  @return The stem form of the term.
 	 */
-	String stem(String term) {
+	public String stem(String term) {
 		boolean stemIt;
 		String result;
 		String original;

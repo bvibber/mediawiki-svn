@@ -2,7 +2,7 @@
  * Created on Jan 25, 2007
  *
  */
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.analyzers;
 
 /**
  * Article used for testing. 

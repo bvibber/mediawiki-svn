@@ -1,9 +1,12 @@
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.analyzers;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+
+import junit.framework.TestCase;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
@@ -27,13 +30,78 @@ import org.wikimedia.lsearch.analyzers.SplitAnalyzer;
 import org.wikimedia.lsearch.analyzers.Aggregate.Flags;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.ranks.StringList;
 import org.wikimedia.lsearch.related.RelatedTitle;
+import org.wikimedia.lsearch.test.WikiTestCase;
 import org.wikimedia.lsearch.util.MathFunc;
 
-public class AnalysisTest {
+public class AnalysisTest extends WikiTestCase {
+	Analyzer a = null;
+	Configuration config = null;
+	
+	protected void setUp() throws Exception {
+		super.setUp();
+		if(config == null){
+			config = Configuration.open();
+			GlobalConfiguration.getInstance();
+		}
+	}
+
+	/** Common test for indexer and searcher analyzers */
+	public void commonEnglish(){
+		assertEquals("[(1,0,1), (st,1,3)]",tokens("1st"));
+		assertEquals("[(good-,0,5,type=with_hyphen), (good,0,5,type=with_hyphen,posIncr=0), (goodthomas,0,11,posIncr=0), (thomas,5,11)]",tokens("Good-Thomas"));
+		assertEquals("[(box,0,3)]",tokens("box"));
+		assertEquals("[(boxes,0,5), (box,0,5,type=singular,posIncr=0)]",tokens("boxes"));
+		assertEquals("[(abacus,0,6), (aries,7,12), (douglas,13,20), (adams,21,26)]",tokens("abacus aries douglas adams"));
+		assertEquals("[(laziness,0,8), (lazy,0,8,type=stemmed,posIncr=0)]",tokens("laziness"));
+		assertEquals("[(c++,0,3), (c,0,3,posIncr=0), (c#,4,6), (c,4,6,posIncr=0)]",tokens("c++ C#"));
+		assertEquals("[(hitchhikers,0,11), (hitchhiker,0,11,type=singular,posIncr=0), (hitchhike,0,11,type=stemmed,posIncr=0)]",tokens("hitchhikers"));
+		assertEquals("[(c'est,0,5), (cest,0,5,posIncr=0), (hitchhiker's,6,18), (hitchhiker,6,18,type=singular,posIncr=0), (hitchhikers,6,18,posIncr=0), (hitchhike,6,18,type=stemmed,posIncr=0)]",tokens("c'est hitchhiker's"));
+		assertEquals("[(pokémons,0,8), (pokemons,0,8,posIncr=0), (pokemon,0,8,type=stemmed,posIncr=0)]",tokens("Pokémons"));
+		assertEquals("[(1990,0,4), (s,4,5), (iv,6,8)]",tokens("1990s IV"));
+	}
+	
+	public void testEnglishSearch(){
+		a = Analyzers.getSearcherAnalyzer(IndexId.get("enwiki"));
+		commonEnglish();
+		// acronyms don't get split
+		assertEquals("[(a.k.a,0,5), (aka,0,5,posIncr=0), (www,6,9), (google,10,16), (com,17,20)]",tokens("a.k.a www.google.com"));
+	}
+	
+	public void testEnglishIndex(){
+		a = Analyzers.getIndexerAnalyzer(new FieldBuilder(IndexId.get("enwiki")));
+		commonEnglish();
+		// acronyms are always split
+		assertEquals("[(a.k.a,0,5), (aka,0,5,posIncr=0), (a,0,5,posIncr=0), (k,2,7,posIncr=0), (a,4,9,posIncr=0), (www,6,9), (google,10,16), (com,17,20)]",tokens("a.k.a www.google.com"));
+	}
+	
+	public void commonSerbian(){
+		assertEquals("[(нешто,0,5), (nesto,0,5,type=alias,posIncr=0), (на,6,8), (na,6,8,type=alias,posIncr=0), (ћирилици,9,17), (cirilici,9,17,type=alias,posIncr=0)]",tokens("Нешто на ћирилици"));
+	}
+	
+	public void testSerbianSearch(){
+		a = Analyzers.getSearcherAnalyzer(IndexId.get("srwiki"));
+		commonSerbian();
+	}
+	
+	public void testSerbianIndex(){
+		a = Analyzers.getIndexerAnalyzer(new FieldBuilder(IndexId.get("srwiki")));
+		commonSerbian();
+	}
+	
+	public String tokens(String text){
+		try{
+			return Arrays.toString(tokensFromAnalysis(a,text,"contents"));
+		} catch(IOException e){
+			fail(e.getMessage());
+			return null;
+		}
+	}
+	
 	public static Token[] tokensFromAnalysis(Analyzer analyzer, String text, String field) throws IOException {
 		TokenStream stream = analyzer.tokenStream(field, text);
 		ArrayList tokenList = new ArrayList();
@@ -108,7 +176,7 @@ public class AnalysisTest {
 		//Analyzer analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("wikilucene"));
 		//Analyzer analyzer = Analyzers.getHighlightAnalyzer(IndexId.get("enwiki"));
 		Analyzer analyzer = Analyzers.getIndexerAnalyzer(new FieldBuilder(IndexId.get("wikilucene")));
-		String text = "Peridots c'est WHAT [http://somewhere.com anchor] African on-line laziness Pokémons a-b compatibly compatible Gödel; The who is a band. The who is Pascal's earliest work was in the natural and applied sciences where he made important contributions to the construction of mechanical calculators, the study of fluids, and clarified the concepts of pressure and vacuum by generalizing the work of Evangelista Torricelli. Pascal also wrote powerfully in defense of the scientific method.";
+		String text = "1st Good-Thomas goode thomas Peridots c'est WHAT [http://somewhere.com anchor] African on-line laziness Pokémons a-b compatibly compatible Gödel; The who is a band. The who is Pascal's earliest work was in the natural and applied sciences where he made important contributions to the construction of mechanical calculators, the study of fluids, and clarified the concepts of pressure and vacuum by generalizing the work of Evangelista Torricelli. Pascal also wrote powerfully in defense of the scientific method.";
 		displayTokens(analyzer,text);
 		text = "a.k.a www.google.com Google's Pokémons links abacus something aries douglas adams boxes bands working s and Frame semantics (linguistics)";
 		displayTokens(analyzer,text);

@@ -6,10 +6,7 @@
 
 # URL to global configuration, this is the shared main config file, it can 
 # be on a NFS partition or available somewhere on the network
-MWConfig.global=http://localhost/lucene-search-2.0/test-data/mwsearch-global.test
-
-# The libraries are (i.e. unicode data, interwiki map, dictionaries..)
-MWConfig.lib=/var/www/html/lucene-search-2.0/lib
+# MWConfig.global=set by WikiTestCase
 
 # Local path to root directory of indexes
 Indexes.path=/usr/local/var/ls2
@@ -79,7 +76,7 @@ RecentUpdateDaemon.hostspareUdpPort=8111
 RecentUpdateDaemon.hostspareTcpPort=8112
 
 # Log configuration
-Logging.logconfig=/etc/mwsearch.log4j
+# Logging.logconfig=/etc/mwsearch.log4j
 
 # Set debug to true to diagnose problems with log4j configuration
 Logging.debug=false

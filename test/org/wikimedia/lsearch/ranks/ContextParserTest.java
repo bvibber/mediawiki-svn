@@ -1,6 +1,8 @@
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.ranks;
 
+import org.wikimedia.lsearch.analyzers.ArticlesParser;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
+import org.wikimedia.lsearch.analyzers.TestArticle;
 import org.wikimedia.lsearch.ranks.ContextParser;
 
 public class ContextParserTest {

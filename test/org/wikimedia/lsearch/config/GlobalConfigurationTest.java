@@ -2,7 +2,7 @@
  * Created on Feb 9, 2007
  *
  */
-package org.wikimedia.lsearch.test;
+package org.wikimedia.lsearch.config;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -295,7 +295,7 @@ public class GlobalConfigurationTest extends TestCase {
 		//assertNull(hmpart1.getImportPath());
 		
 		assertEquals("[hmwiki.nspart1.sub1, hmwiki.nspart1.sub2]",hmpart1.getPhysicalIndexIds().toString());
-		assertEquals("[hmwiki.nspart3, hmwiki.nspart1.sub1, hmwiki.nspart2, hmwiki.nspart1.sub2]",IndexId.get("hmwiki").getPhysicalIndexIds().toString());
+		assertEquals("[hmwiki.nspart2, hmwiki.nspart1.sub1, hmwiki.nspart3, hmwiki.nspart1.sub2]",IndexId.get("hmwiki").getPhysicalIndexIds().toString());
 		
 		IndexId hmsub1 = IndexId.get("hmwiki.nspart1.sub1");
 		assertTrue(hmsub1.isSubdivided());

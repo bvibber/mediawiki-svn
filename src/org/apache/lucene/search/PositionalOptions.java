@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 import org.wikimedia.lsearch.search.AggregateInfoImpl;
+import org.wikimedia.lsearch.search.RankingTest;
 import org.wikimedia.lsearch.search.AggregateInfoImpl.RankInfo;
-import org.wikimedia.lsearch.test.RankingTest;
 
 public class PositionalOptions implements Serializable {
 	protected AggregateInfo aggregateMeta = null;
