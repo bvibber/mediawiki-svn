@@ -309,19 +309,21 @@ function mv_scroll2Time(sec_time){
 	if(previus_scroll2Time_time!=sec_time){
 		var scroll_mvd_id = null;
 		//init pMvd_id
-		var pMvd_id=$j('.mv_fd_mvd:first').attr("id").split('_').pop();
-		$j('.mv_fd_mvd').each(function(){		
-			var curTitle = get_titleObject($j(this).attr('name'));
-			if( curTitle.start_time >= sec_time ){
-				//js_log('found mvd pos: ' + curTitle.start_time + ' for sec time: ' + sec_time);				
-				if(previus_scrollMvd_id != pMvd_id){								
-					scroll_to_pos( pMvd_id ) ;
-					previus_scrollMvd_id = pMvd_id;
-				}
-				return false;//break out of for loop:		
-			}	
-			pMvd_id = $j(this).attr("id").split('_').pop();
-		});				
+		if($j('.mv_fd_mvd:first')){
+			var pMvd_id=$j('.mv_fd_mvd:first').attr("id").split('_').pop();
+			$j('.mv_fd_mvd').each(function(){		
+				var curTitle = get_titleObject($j(this).attr('name'));
+				if( curTitle.start_time >= sec_time ){
+					//js_log('found mvd pos: ' + curTitle.start_time + ' for sec time: ' + sec_time);				
+					if(previus_scrollMvd_id != pMvd_id){								
+						scroll_to_pos( pMvd_id ) ;
+						previus_scrollMvd_id = pMvd_id;
+					}
+					return false;//break out of for loop:		
+				}	
+				pMvd_id = $j(this).attr("id").split('_').pop();
+			});				
+		}
 	}
 }
 /*function mv_doShowVideoDownload(){

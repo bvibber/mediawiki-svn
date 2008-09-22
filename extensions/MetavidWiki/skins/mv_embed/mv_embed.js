@@ -2182,6 +2182,7 @@ embedVideo.prototype = {
     		}
     	}else{
     		js_log('no annotative track found');
+    		$j('#liks_info_'+this.id).html('no metadata found for next, prev links');
     	}
     	//query current request time +|- 60s to get prev next speech links. 
     },
@@ -2196,21 +2197,31 @@ embedVideo.prototype = {
     	
     	var s_sec = ntp2seconds(curTime[0]);
     	var e_sec = ntp2seconds(curTime[1]); 
-    	
+    	js_log('showNextPrevLinks: req time: '+ s_sec + ' to ' + e_sec);
     	//now we have all the data in anno_data_cache
+    	var current_done=false;
     	for(var clip_id in this.anno_data_cache){  
 		 	var clip =  this.anno_data_cache[clip_id];
 		 	//js_log('on clip:'+ clip_id);
 		 	//set prev_link (if cur_link is still empty)
-			if( s_sec < clip.start_time_sec && e_sec < clip.start_time_sec && link.prev=='') 
+			if( s_sec > clip.end_time_sec){
 				link.prev = clip_id;
+				js_log('showNextPrevLinks: ' + s_sec + ' < ' + clip.end_time_sec + ' set prev');
+			}
 				
-			//clip is not done e_sec < clip
-			if(  s_sec > clip.start_time_sec && e_sec < clip.end_time_sec )
+			if(e_sec==clip.end_time_sec && s_sec== clip.start_time_sec)
+				current_done = true;
+			//current clip is not done:
+			if(  e_sec < clip.end_time_sec  && link.current=='' && !current_done){
 				link.current = clip_id;
-						
-			if( e_sec >  clip.start_time_sec && link.next=='')
+				js_log('showNextPrevLinks: ' + e_sec + ' < ' + clip.end_time_sec + ' set current'); 
+			}
+			
+			//set end clip (first clip where start time is > end_time of req
+			if( e_sec <  clip.start_time_sec && link.next==''){
 				link.next = clip_id;
+				js_log('showNextPrevLinks: '+  e_sec + ' < '+ clip.start_time_sec + ' && ' + link.next );
+			}
     	}   
     	var html='';   
     	for(var link_type in link){
@@ -2219,7 +2230,7 @@ embedVideo.prototype = {
     			var clip = this.anno_data_cache[link_id];    			
     			var title_msg='';
 				for(var j in clip['meta']){
-					title_msg+=j.replace(/_/g,' ') +': ' +clip['meta'][j].replace(/_/g,' ') +" \n";
+					title_msg+=j.replace(/_/g,' ') +': ' +clip['meta'][j].replace(/_/g,' ') +" <br>";
 				}    	
 				var time_req = 	clip.time_req;
 				if(link_type=='current') //if current start from end of current clip play to end of current meta: 				
