@@ -1,6 +1,6 @@
 #include "Socket.h"
 
-void Socket::RaiseError(char* msg)
+void Socket::RaiseError(const char* msg)
 {
 	if (ignoreErrors.size() == 0) {
 		// Ignore none

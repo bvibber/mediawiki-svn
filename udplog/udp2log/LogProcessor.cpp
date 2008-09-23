@@ -79,12 +79,14 @@ void PipeProcessor::ProcessLine(char *buffer, size_t size)
 		fwrite(buffer, 1, size, f);
 		if (ferror(f)) {
 			if (errno == EPIPE) {
-				std::cerr << "Pipe terminated, suspending output." << std::endl;
+				std::cerr << "Pipe terminated, suspending output: " << command << std::endl;
 			} else {
 				std::cerr << "Error writing to pipe: " << strerror(errno) << std::endl;
 			}
 			pclose(f);
 			f = NULL;
+			// Reopen it after a few seconds
+			alarm(RESTART_INTERVAL);
 		} else {
 			if (factor >= 10) {
 				fflush(f);
@@ -93,3 +95,16 @@ void PipeProcessor::ProcessLine(char *buffer, size_t size)
 	}
 }
 
+void PipeProcessor::FixIfBroken()
+{
+	if (!f) {
+		f = popen(command, "w");
+		if (!f) {
+			std::cerr << "Unable to restart pipe: " << command << std::endl;
+			// Try again later
+			alarm(RESTART_INTERVAL);
+		} else {
+			std::cerr << "Pipe restarted: " << command << std::endl;
+		}
+	}
+}

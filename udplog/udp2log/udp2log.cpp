@@ -19,6 +19,11 @@ void OnHangup(int)
 	config.reload = true;
 }
 
+void OnAlarm(int)
+{
+	config.fixBrokenProcessors = true;
+}
+
 int main(int argc, char** argv)
 {
 	using namespace std;
@@ -53,6 +58,7 @@ int main(int argc, char** argv)
 	}
 
 	signal(SIGHUP, OnHangup);
+	signal(SIGALRM, OnAlarm);
 	signal(SIGPIPE, SIG_IGN);
 
 	IPAddress any(INADDR_ANY);

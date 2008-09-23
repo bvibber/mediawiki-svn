@@ -12,12 +12,14 @@ public:
 	Udp2LogConfig();
 	void Open(const std::string & name);
 	void Load();
+	void FixBrokenProcessors();
 	void Reload();
 	void ProcessLine(char *buffer, size_t size);
 
 	std::string fileName;
 	boost::ptr_vector<LogProcessor> processors;
 	bool reload;
+	bool fixBrokenProcessors;
 };
 
 class ConfigWatcher

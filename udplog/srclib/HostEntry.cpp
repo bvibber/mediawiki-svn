@@ -1,6 +1,6 @@
 #include "HostEntry.h"
 
-HostEntry::HostEntry(char *name)
+HostEntry::HostEntry(const char *name)
 {
 	struct hostent * h = gethostbyname(name);
 	InitFromHostent(h);
@@ -39,7 +39,7 @@ void HostEntry::InitFromHostent(struct hostent *h) {
 	}
 }
 
-char* HostEntry::GetError()
+const char* HostEntry::GetError()
 {
 	switch (GetErrno()) {
 		case 0:

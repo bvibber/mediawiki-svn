@@ -66,11 +66,23 @@ void Udp2LogConfig::Load()
 	}
 }
 
+void Udp2LogConfig::FixBrokenProcessors()
+{
+	boost::ptr_vector<LogProcessor>::iterator i;
+	for (i = processors.begin(); i != processors.end(); i++) {
+		i->FixIfBroken();
+	}
+}
+
 void Udp2LogConfig::Reload() 
 {
 	if (reload) {
 		Load();
 		reload = false;
+		fixBrokenProcessors = false;
+	} else if (fixBrokenProcessors) {
+		FixBrokenProcessors();
+		fixBrokenProcessors = false;
 	}
 }
 

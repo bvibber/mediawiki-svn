@@ -12,7 +12,7 @@
 class HostEntry {
 public:
 	// Create a host entry by name
-	HostEntry(char *name);
+	HostEntry(const char *name);
 
 	// Create a host entry by address
 	HostEntry(IPAddress & address);
@@ -21,7 +21,7 @@ public:
 	inline HostEntry(struct hostent* h);
 
 	int GetErrno() { return errno_; }
-	char* GetError();
+	const char* GetError();
 	bool IsValid() { return valid; }
 	std::string & GetName() { return name; }
 	std::string & GetAlias(int i) { return aliases.at(i); }

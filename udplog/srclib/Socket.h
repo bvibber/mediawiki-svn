@@ -129,7 +129,7 @@ public:
 		ignoreErrors.pop_back();
 	}
 
-	void RaiseError(char* msg);
+	void RaiseError(const char* msg);
 protected:
 	int fd;
 	boost::shared_ptr<SocketAddress> peer;

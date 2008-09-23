@@ -2,12 +2,14 @@
 #define LOGPROCESSOR_H
 
 #include <fstream>
+#include <sys/time.h>
 #include "../srclib/Socket.h"
 
 class LogProcessor
 {
 public:
 	virtual void ProcessLine(char *buffer, size_t size) = 0;
+	virtual void FixIfBroken() {}
 	virtual ~LogProcessor() {}
 
 protected:
@@ -58,15 +60,18 @@ class PipeProcessor : public LogProcessor
 public:
 	static LogProcessor * NewFromConfig(char * params);
 	virtual void ProcessLine(char *buffer, size_t size);
+	virtual void FixIfBroken();
 
-	PipeProcessor(char * command, int factor_) 
+	PipeProcessor(char * command_, int factor_) 
 		: LogProcessor(factor_)
 	{
+		command = strdup(command_);
 		f = popen(command, "w");
 	}
 
 	~PipeProcessor() 
 	{
+		free(command);
 		if (f) {
 			pclose(f);
 		}
@@ -78,7 +83,8 @@ public:
 	}
 
 	FILE * f;
-
+	char * command;
+	enum {RESTART_INTERVAL = 5};
 };
 
 
