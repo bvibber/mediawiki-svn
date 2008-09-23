@@ -36,10 +36,10 @@ class FLV_Util_AMFUnserialize {
      */
     function __construct( $payload = '' )
     {
-        //calculate endianness of the CPU
-        $this->isLittleEndian = ( pack('s', 1) == pack('v', 1) );
+        // calculate endianness of the CPU
+        $this->isLittleEndian = ( pack( 's', 1 ) == pack( 'v', 1 ) );
 
-        $this->setPayload($payload);
+        $this->setPayload( $payload );
     }
 
     /**
@@ -61,11 +61,11 @@ class FLV_Util_AMFUnserialize {
      * @param int $whence   Seeking mode: SEEK_SET, SEEK_CUR, SEEK_END
      * @return position from the start of the stream or false on failure
      */
-    function seek( $offset, $whence = SEEK_SET)
+    function seek( $offset, $whence = SEEK_SET )
     {
-      switch ($whence) {
+      switch ( $whence ) {
         case SEEK_SET:
-          if ($offset < strlen($this->data) && $offset >= 0)
+          if ( $offset < strlen( $this->data ) && $offset >= 0 )
           {
             $this->pos = $offset;
             return $this->pos;
@@ -73,7 +73,7 @@ class FLV_Util_AMFUnserialize {
         break;
 
         case SEEK_CUR:
-          if ($offset >= 0 && $this->pos+$offset < strlen($this->data))
+          if ( $offset >= 0 && $this->pos + $offset < strlen( $this->data ) )
           {
             $this->pos += $offset;
             return $this->pos;
@@ -81,8 +81,8 @@ class FLV_Util_AMFUnserialize {
         break;
 
         case SEEK_END:
-          if ($offset <= 0 && strlen($this->data) + $offset >= 0) {
-            $this->pos = strlen($this->data) + $offset;
+          if ( $offset <= 0 && strlen( $this->data ) + $offset >= 0 ) {
+            $this->pos = strlen( $this->data ) + $offset;
             return $this->pos;
           }
         break;
@@ -110,7 +110,7 @@ class FLV_Util_AMFUnserialize {
      */
     private function getSizedString( $size )
     {
-        if ($size > 0)
+        if ( $size > 0 )
         {
             $val = substr( $this->data, $this->pos, $size );
             $this->pos += $size;
@@ -127,9 +127,9 @@ class FLV_Util_AMFUnserialize {
      */
     function getString()
     {
-        //get string length
-        $size = (ord($this->data[$this->pos++]) << 8) +
-                ord($this->data[$this->pos++]);
+        // get string length
+        $size = ( ord( $this->data[$this->pos++] ) << 8 ) +
+                ord( $this->data[$this->pos++] );
 
         return $this->getSizedString( $size );
     }
@@ -141,12 +141,12 @@ class FLV_Util_AMFUnserialize {
      */
     function getLongString()
     {
-        $size = (ord($this->data[$this->pos++]) << 24) +
-                (ord($this->data[$this->pos++]) << 16) +
-                (ord($this->data[$this->pos++]) << 8) +
-                ord($this->data[$this->pos++]);
+        $size = ( ord( $this->data[$this->pos++] ) << 24 ) +
+                ( ord( $this->data[$this->pos++] ) << 16 ) +
+                ( ord( $this->data[$this->pos++] ) << 8 ) +
+                ord( $this->data[$this->pos++] );
 
-        return $this->getSizedString($size);
+        return $this->getSizedString( $size );
     }
 
     /**
@@ -156,17 +156,17 @@ class FLV_Util_AMFUnserialize {
      */
     function getNumber()
     {
-        //read the number
+        // read the number
         $number = substr( $this->data, $this->pos, 8 );
         $this->pos += 8;
 
-        //reverse bytes if we are in little-endian harware
-        if ($this->isLittleEndian)
+        // reverse bytes if we are in little-endian harware
+        if ( $this->isLittleEndian )
         {
           $number = strrev( $number );
         }
 
-        $tmp = unpack('dnum', $number);
+        $tmp = unpack( 'dnum', $number );
 
         return $tmp['num'];
     }
@@ -179,13 +179,13 @@ class FLV_Util_AMFUnserialize {
     function getArray()
     {
         // item count
-        $cnt  = (ord($this->data[$this->pos++]) << 24) +
-                (ord($this->data[$this->pos++]) << 16) +
-                (ord($this->data[$this->pos++]) << 8) +
-                ord($this->data[$this->pos++]);
+        $cnt  = ( ord( $this->data[$this->pos++] ) << 24 ) +
+                ( ord( $this->data[$this->pos++] ) << 16 ) +
+                ( ord( $this->data[$this->pos++] ) << 8 ) +
+                ord( $this->data[$this->pos++] );
 
         $arr = array();
-        for ($i=0; $i<$cnt; $i++)
+        for ( $i = 0; $i < $cnt; $i++ )
         {
           $arr[] = $this->getItem();
         }
@@ -216,13 +216,13 @@ class FLV_Util_AMFUnserialize {
     {
         $arr = array();
         do {
-            //fetch the key and cast it to a number if it's numeric
+            // fetch the key and cast it to a number if it's numeric
             $key = $this->getString();
-            if (is_numeric($key))
+            if ( is_numeric( $key ) )
                 $key = (float)$key;
 
-            //check for the end of sequence mark
-            if ( ord($this->data[$this->pos]) == 0x09 )
+            // check for the end of sequence mark
+            if ( ord( $this->data[$this->pos] ) == 0x09 )
             {
                 $this->pos++;
                 break;
@@ -230,7 +230,7 @@ class FLV_Util_AMFUnserialize {
 
             $arr[$key] = $this->getItem();
 
-        } while ( $this->pos < strlen($this->data) );
+        } while ( $this->pos < strlen( $this->data ) );
 
         return $arr;
     }
@@ -242,20 +242,20 @@ class FLV_Util_AMFUnserialize {
      */
     function getDate()
     {
-        //64bit unsigned int with ms since 1/Jan/1970
+        // 64bit unsigned int with ms since 1/Jan/1970
         $ms = $this->getNumber();
 
-        //16bit signed int with local time offset in minuttes from UTC
-        $ofs = (ord($this->data[$this->pos++]) << 8) + ord($this->data[$this->pos++]);
-        if ($ofs > 720)
-          $ofs = -(65536 - $ofs);
-        $ofs = -$ofs;
+        // 16bit signed int with local time offset in minuttes from UTC
+        $ofs = ( ord( $this->data[$this->pos++] ) << 8 ) + ord( $this->data[$this->pos++] );
+        if ( $ofs > 720 )
+          $ofs = - ( 65536 - $ofs );
+        $ofs = - $ofs;
 
-        $date = date( 'Y-m-d\TH:i:s', floor($ms/1000) ) . '.' . str_pad( $ms % 1000, 3, '0', STR_PAD_RIGHT);
-        if ($ofs > 0)
-            return $date . '+' . str_pad( floor($ofs/60), 2, '0', STR_PAD_LEFT ) . ':' . str_pad( $ofs % 60, 2, '0', STR_PAD_LEFT );
-        else if ($ofs < 0)
-            return $date . '-' . str_pad( floor($ofs/60), 2, '0', STR_PAD_LEFT ) . ':' . str_pad( $ofs % 60, 2, '0', STR_PAD_LEFT );
+        $date = date( 'Y-m-d\TH:i:s', floor( $ms / 1000 ) ) . '.' . str_pad( $ms % 1000, 3, '0', STR_PAD_RIGHT );
+        if ( $ofs > 0 )
+            return $date . '+' . str_pad( floor( $ofs / 60 ), 2, '0', STR_PAD_LEFT ) . ':' . str_pad( $ofs % 60, 2, '0', STR_PAD_LEFT );
+        else if ( $ofs < 0 )
+            return $date . '-' . str_pad( floor( $ofs / 60 ), 2, '0', STR_PAD_LEFT ) . ':' . str_pad( $ofs % 60, 2, '0', STR_PAD_LEFT );
         else
             return $date . 'Z';
     }
@@ -269,7 +269,7 @@ class FLV_Util_AMFUnserialize {
      */
     function getItem()
     {
-        switch (ord($this->data[$this->pos++]))
+        switch ( ord( $this->data[$this->pos++] ) )
         {
             case 0x00:
                 return $this->getNumber();
@@ -292,13 +292,13 @@ class FLV_Util_AMFUnserialize {
             case 0x0A:
                 return $this->getArray();
             break;
-            case 0x0B: //11 Date
+            case 0x0B: // 11 Date
                 return $this->getDate();
             break;
-            case 0x0C: //12
+            case 0x0C: // 12
                 return $this->getLongString();
             default:
-                throw( new FLV_UnknownAMFTypeException( 'Unknown AMF datatype ' . ord($this->data[$this->pos-1]) ) );
+                throw( new FLV_UnknownAMFTypeException( 'Unknown AMF datatype ' . ord( $this->data[$this->pos - 1] ) ) );
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 
 /*
  * MV_SpecialMVAdmin.php Created on Apr 24, 2007
@@ -31,57 +31,57 @@ class MVAdmin extends SpecialPage {
 	 * Constructor
 	 */
 	public function __construct() {
-		global $wgMessageCache; ///TODO: should these be messages?		
-		$wgMessageCache->addMessages(array('mvadmin' => 'Admin functions for MetavidWiki'));
-		parent::__construct('MVAdmin', 'delete');
+		global $wgMessageCache; // /TODO: should these be messages?		
+		$wgMessageCache->addMessages( array( 'mvadmin' => 'Admin functions for MetavidWiki' ) );
+		parent::__construct( 'MVAdmin', 'delete' );
 	}
 
-	public function execute($par = null) {
+	public function execute( $par = null ) {
 		global $IP, $mvgIP;
-		//require_once($IP . '/includes/SpecialPage.php' );
-		//require_once($IP . '/includes/Title.php' );
-	
+		// require_once($IP . '/includes/SpecialPage.php' );
+		// require_once($IP . '/includes/Title.php' );
+
 		global $wgOut, $wgRequest;
 		global $wgServer; // "http://www.yourserver.org"
 							// (should be equal to 'http://'.$_SERVER['SERVER_NAME'])
 		global $wgScript;   // "/subdirectory/of/wiki/index.php"
 		global $wgUser;
 
-		if ( ! $wgUser->isAllowed('delete') ) {
-			$wgOut->permissionRequired('delete');
+		if ( ! $wgUser->isAllowed( 'delete' ) ) {
+			$wgOut->permissionRequired( 'delete' );
 			return;
 		}
-		$wgOut->addHTML('web admin install currently dissabled');
+		$wgOut->addHTML( 'web admin install currently dissabled' );
 		exit();
-		$wgOut->setPageTitle(wfMsg('mvadmin'));
+		$wgOut->setPageTitle( wfMsg( 'mvadmin' ) );
 
 		/**** Execute actions if any ****/
 		$action = $wgRequest->getText( 'action' );
-		if ( $action=='updatetables' ) {
+		if ( $action == 'updatetables' ) {
 			$sure = $wgRequest->getText( 'udsure' );
-			if ($sure == 'yes') {
+			if ( $sure == 'yes' ) {
 				$wgOut->disable(); // raw output
 				ob_start();
 				print "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"  \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\" dir=\"ltr\">\n<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><title>Setting up Storage for Metavid Wiki</title></head><body>";
 				header( "Content-type: text/html; charset=UTF-8" );
 				
-				//@@TODOD broken since not valid entry points for web scripts: 
+				// @@TODOD broken since not valid entry points for web scripts: 
 				global $botUserName, $valid_attributes, $states_ary;
-				require_once("$mvgIP/maintenance/metavid2mvWiki.inc.php");
-				require_once("$mvgIP/maintenance/maintenance_util.inc.php");
-				require_once("$mvgIP/maintenance/metavid_gov_templates.php");
+				require_once( "$mvgIP/maintenance/metavid2mvWiki.inc.php" );
+				require_once( "$mvgIP/maintenance/maintenance_util.inc.php" );
+				require_once( "$mvgIP/maintenance/metavid_gov_templates.php" );
 				require_once( "$IP/install-utils.inc" );
 
 				print '<p><b>Creating database tables</b><p><pre>';
-				dbsource("extensions/MetavidWiki/maintenance/mv_tables.sql");
+				dbsource( "extensions/MetavidWiki/maintenance/mv_tables.sql" );
 
 				print '</p><p><b>Creating templates</b><pre>';
-				upTemplates(false);
+				upTemplates( false );
 				print '</pre></p>';
 
 				print '<p><b>Please check there were no errors</b></p>';
-				$returntitle = Title::newFromText('Special:MVAdmin');
-				print '<p> Return to <a href="' . htmlspecialchars($returntitle->getFullURL()) . '">Special:MVAdmin</a></p>';
+				$returntitle = Title::newFromText( 'Special:MVAdmin' );
+				print '<p> Return to <a href="' . htmlspecialchars( $returntitle->getFullURL() ) . '">Special:MVAdmin</a></p>';
 				print '</body></html>';
 				ob_flush();
 				flush();
@@ -110,7 +110,7 @@ class MVAdmin extends SpecialPage {
 				"\n" . '<input type="hidden" name="udsure" value="yes"/>' .
 				'<input type="submit" value="Initialise or upgrade tables"/></form>' . "\n";
 
-		$wgOut->addHTML($html);
+		$wgOut->addHTML( $html );
 		return true;
 	}
 }

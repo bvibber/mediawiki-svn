@@ -12,13 +12,13 @@
  *
  * this is the script we will use to migrate the existing metavid db the mv wiki db
  */
-$cur_path = $IP = dirname(__FILE__);
-//include commandLine.inc from the mediaWiki maintance dir:
-require_once ('../../../maintenance/commandLine.inc');
-require_once ('metavid2mvWiki.inc.php');
+$cur_path = $IP = dirname( __FILE__ );
+// include commandLine.inc from the mediaWiki maintance dir:
+require_once ( '../../../maintenance/commandLine.inc' );
+require_once ( 'metavid2mvWiki.inc.php' );
 
-//include util functions:
-require_once('maintenance_util.inc.php');
+// include util functions:
+require_once( 'maintenance_util.inc.php' );
 /*
  * assume the wiki user has access to the metavid table and that the
  * metavid table is titled `metavid`
@@ -64,13 +64,13 @@ This is the default Template for the display of transcript text.
 
 */
 
-//some metavid constants
-define('CC_OFFSET', -30);
+// some metavid constants
+define( 'CC_OFFSET', - 30 );
 
 $optionsWithArgs = array ();
 
 
-if (count($args) == 0 || isset ($options['help'])) {
+if ( count( $args ) == 0 || isset ( $options['help'] ) ) {
 	print<<<EOT
 Load Streams/data from the metavid database
 
@@ -102,40 +102,40 @@ EOT;
 /*
  * set up the article set for the given stream/set
  */
-$mvForceUpdate= (isset($options['force']))?true:false;
+$mvForceUpdate = ( isset( $options['force'] ) ) ? true:false;
 
-switch ($args[0]) {
+switch ( $args[0] ) {
 	case 'all_in_sync' :
-		do_stream_insert('all');
+		do_stream_insert( 'all' );
 	break;
 	case 'all_in_wiki':
-		do_stream_insert('all_in_wiki');
+		do_stream_insert( 'all_in_wiki' );
 	break;
 	case 'all_with_files':
-		do_stream_insert('files');
+		do_stream_insert( 'files' );
 	break;
 	case 'all_sync_past_date':
-		if(!isset($options['date']))die('date missing'."\n");
-		do_stream_insert('all_sync_past_date');
+		if ( !isset( $options['date'] ) )die( 'date missing' . "\n" );
+		do_stream_insert( 'all_sync_past_date' );
 	break;
 	case 'people' :
-		$force = (isset($options['force']))?true:false;
-		$person_name = (isset($args[1]))?$args[1]:'';
-		do_people_insert('',$person_name, $force);
+		$force = ( isset( $options['force'] ) ) ? true:false;
+		$person_name = ( isset( $args[1] ) ) ? $args[1]:'';
+		do_people_insert( '', $person_name, $force );
 	break;
 	case 'bill':
-		$bill_key = (isset($args[1]))?$args[1]:'';
-		do_bill_insert($bill_key);
+		$bill_key = ( isset( $args[1] ) ) ? $args[1]:'';
+		do_bill_insert( $bill_key );
 	break;
 	case 'interest':
-		do_people_insert($lookUpInterest=true);
+		do_people_insert( $lookUpInterest = true );
 	break;
 	case 'update_templates' :
-		$force = (isset($options['force']))?true:false;
-		include_once('metavid_gov_templates.php');
-		upTemplates($force);
+		$force = ( isset( $options['force'] ) ) ? true:false;
+		include_once( 'metavid_gov_templates.php' );
+		upTemplates( $force );
 	break;
-	//by default treat the argument as a stream name:
+	// by default treat the argument as a stream name:
 	case 'mvd_error_check':
 
 	break;
@@ -143,6 +143,6 @@ switch ($args[0]) {
 		do_rm_congress_persons();
 	break;
 	default :
-		do_stream_insert('stream', $args[0]);
+		do_stream_insert( 'stream', $args[0] );
 	break;
 }

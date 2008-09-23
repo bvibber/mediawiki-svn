@@ -29,20 +29,20 @@ class FLV_Tag_Generic {
     function __construct( $hdr )
     {
         $p = 0;
-        $this->type = ord($hdr[$p++]);
+        $this->type = ord( $hdr[$p++] );
 
-        $this->size =       (ord($hdr[$p++]) << 16) +
-                            (ord($hdr[$p++]) << 8) +
-                            (ord($hdr[$p++]));
+        $this->size =       ( ord( $hdr[$p++] ) << 16 ) +
+                            ( ord( $hdr[$p++] ) << 8 ) +
+                            ( ord( $hdr[$p++] ) );
 
-        $this->timestamp =  (ord($hdr[$p++]) << 16) +
-                            (ord($hdr[$p++]) << 8) +
-                            (ord($hdr[$p++])) +
-                            (ord($hdr[$p++]) << 24);
+        $this->timestamp =  ( ord( $hdr[$p++] ) << 16 ) +
+                            ( ord( $hdr[$p++] ) << 8 ) +
+                            ( ord( $hdr[$p++] ) ) +
+                            ( ord( $hdr[$p++] ) << 24 );
 
-        $this->streamId =   (ord($hdr[$p++]) << 16) +
-                            (ord($hdr[$p++]) << 8) +
-                            (ord($hdr[$p++]));
+        $this->streamId =   ( ord( $hdr[$p++] ) << 16 ) +
+                            ( ord( $hdr[$p++] ) << 8 ) +
+                            ( ord( $hdr[$p++] ) );
     }
 
     function setBody( $body )

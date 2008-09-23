@@ -10,13 +10,13 @@
  * @url http://metavid.ucsc.edu
  */
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
- class MV_ImageGallery extends ImageGallery{
+ class MV_ImageGallery extends ImageGallery {
  	private $mAttribs = array();
  	private $contextTitle = false;
 
 	private $mPerRow = 4; // How many images wide should the gallery be?
 	private $mWidths = 160, $mHeights = 120; // How wide/tall each thumbnail should be
-	
+
  	function toHTML() {
  		global $wgLang, $mvDefaultAspectRatio;
 
@@ -29,13 +29,13 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				'cellpadding' => '0' ),
 			$this->mAttribs );
 		$s = Xml::openElement( 'table', $attribs );
-		if( $this->mCaption )
-			$s .= "\n\t<caption>".htmlspecialchars($this->mCaption)."</caption>";
+		if ( $this->mCaption )
+			$s .= "\n\t<caption>" . htmlspecialchars( $this->mCaption ) . "</caption>";
 
 		$params = array( 'width' => $this->mWidths, 'height' => $this->mHeights );
 		$i = 0;
-		$this->already_named_resource=array();
-		foreach ( $this->mImages as $pair ) {			
+		$this->already_named_resource = array();
+		foreach ( $this->mImages as $pair ) {
 			$nt = $pair[0];
 			$text = $pair[1];
 			
@@ -46,62 +46,62 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			$img = wfFindFile( $nt, $time );
 			
 			
-			if($nt->getNamespace() == MV_NS_MVD || 
-				$nt->getNamespace() == MV_NS_STREAM || 
-				$nt->getNamespace() == MV_NS_SEQUENCE ){ //@@todo fix sequence embed
-				//$vpad = floor( ( 1.25*$this->mHeights - $thumb->height ) /2 ) - 2;				
-				$mvTitle = new MV_Title($nt);							
+			if ( $nt->getNamespace() == MV_NS_MVD ||
+				$nt->getNamespace() == MV_NS_STREAM ||
+				$nt->getNamespace() == MV_NS_SEQUENCE ) { // @@todo fix sequence embed
+				// $vpad = floor( ( 1.25*$this->mHeights - $thumb->height ) /2 ) - 2;				
+				$mvTitle = new MV_Title( $nt );
 				
-				//remap MVD namespace links into the Stream view (so contextual metadata is present)
-				if($nt->getNamespace() == MV_NS_MVD ){
-					$nt = Title::MakeTitle(MV_NS_STREAM,ucfirst($mvTitle->getStreamName()).'/'.$mvTitle->getTimeRequest() );
-				}					
-				$vidH = round($this->mWidths*$mvDefaultAspectRatio);
-				$vidRes = $this->mWidths.'x'.$vidH;
-				//make sure we have the mv_embed header:
-				mvfAddHTMLHeader('embed');
-				//print "img url: " . 	$mvTitle->getStreamImageURL();
-				$thumbhtml = "\n\t\t\t".
-					'<div class="thumb" style="padding: 4px 0; width: ' .htmlspecialchars($this->mWidths+5).'px;">'
+				// remap MVD namespace links into the Stream view (so contextual metadata is present)
+				if ( $nt->getNamespace() == MV_NS_MVD ) {
+					$nt = Title::MakeTitle( MV_NS_STREAM, ucfirst( $mvTitle->getStreamName() ) . '/' . $mvTitle->getTimeRequest() );
+				}
+				$vidH = round( $this->mWidths * $mvDefaultAspectRatio );
+				$vidRes = $this->mWidths . 'x' . $vidH;
+				// make sure we have the mv_embed header:
+				mvfAddHTMLHeader( 'embed' );
+				// print "img url: " . 	$mvTitle->getStreamImageURL();
+				$thumbhtml = "\n\t\t\t" .
+					'<div class="thumb" style="padding: 4px 0; width: ' . htmlspecialchars( $this->mWidths + 5 ) . 'px;">'
 					# Auto-margin centering for block-level elements. Needed now that we have video
 					# handlers since they may emit block-level elements as opposed to simple <img> tags.
 					# ref http://css-discuss.incutio.com/?page=CenteringBlockElement				
-					. '<div style="margin-left: auto; margin-right: auto; width: ' .htmlspecialchars($this->mWidths).'px;">' 
-					. $mvTitle->getEmbedVideoHtml('', $vidRes)
-					//. '<img width="'.$this->mWidths.'" src="'.$mvTitle->getStreamImageURL() . '">'
+					. '<div style="margin-left: auto; margin-right: auto; width: ' . htmlspecialchars( $this->mWidths ) . 'px;">'
+					. $mvTitle->getEmbedVideoHtml( '', $vidRes )
+					// . '<img width="'.$this->mWidths.'" src="'.$mvTitle->getStreamImageURL() . '">'
 					. '</div>' .
-						'</div>'.
-						'<div style="clear:both;"></div>'.
-						//@@todo clean up link
-						'<span class="gallerytext" style="float:left">'.
-						$sk->makeKnownLinkObj( $nt, $mvTitle->getStreamNameText().' '. $mvTitle->getTimeDesc() ) .
-						'</span>'.						
-					'</div>';					 
+						'</div>' .
+						'<div style="clear:both;"></div>' .
+						// @@todo clean up link
+						'<span class="gallerytext" style="float:left">' .
+						$sk->makeKnownLinkObj( $nt, $mvTitle->getStreamNameText() . ' ' . $mvTitle->getTimeDesc() ) .
+						'</span>' .
+					'</div>';
 					$nb = '';
-					$textlink='';										
-			}else{
+					$textlink = '';
+			} else {
 				
-				if( $nt->getNamespace() != NS_IMAGE || !$img ) {
+				if ( $nt->getNamespace() != NS_IMAGE || !$img ) {
 					# We're dealing with a non-image, spit out the name and be done with it.
-					$thumbhtml = "\n\t\t\t".'<div style="height: '.($this->mHeights*1.25+2).'px;">'
+					$thumbhtml = "\n\t\t\t" . '<div style="height: ' . ( $this->mHeights * 1.25 + 2 ) . 'px;">'
 						. htmlspecialchars( $nt->getText() ) . '</div>';
-				} elseif( $this->mHideBadImages && wfIsBadImage( $nt->getDBkey(), $this->getContextTitle() ) ) {
+				} elseif ( $this->mHideBadImages && wfIsBadImage( $nt->getDBkey(), $this->getContextTitle() ) ) {
 					# The image is blacklisted, just show it as a text link.
-					$thumbhtml = "\n\t\t\t".'<div style="height: '.($this->mHeights*1.25+2).'px;">'
+					$thumbhtml = "\n\t\t\t" . '<div style="height: ' . ( $this->mHeights * 1.25 + 2 ) . 'px;">'
 						. $sk->makeKnownLinkObj( $nt, htmlspecialchars( $nt->getText() ) ) . '</div>';
-				} elseif( !( $thumb = $img->transform( $params ) ) ) {
+				} elseif ( !( $thumb = $img->transform( $params ) ) ) {
 					# Error generating thumbnail.
-					$thumbhtml = "\n\t\t\t".'<div style="height: '.($this->mHeights*1.25+2).'px;">'
+					$thumbhtml = "\n\t\t\t" . '<div style="height: ' . ( $this->mHeights * 1.25 + 2 ) . 'px;">'
 						. htmlspecialchars( $img->getLastError() ) . '</div>';
 				} else {
-					$vpad = floor( ( 1.25*$this->mHeights - $thumb->height ) /2 ) - 2;
+					$vpad = floor( ( 1.25 * $this->mHeights - $thumb->height ) / 2 ) - 2;
 						
-					$thumbhtml = "\n\t\t\t".
-						'<div class="thumb" style="padding: ' . htmlspecialchars($vpad) . 'px 0; width: ' .htmlspecialchars($this->mWidths+30).'px;">'
+					$thumbhtml = "\n\t\t\t" .
+						'<div class="thumb" style="padding: ' . htmlspecialchars( $vpad ) . 'px 0; width: ' . htmlspecialchars( $this->mWidths + 30 ) . 'px;">'
 						# Auto-margin centering for block-level elements. Needed now that we have video
 						# handlers since they may emit block-level elements as opposed to simple <img> tags.
 						# ref http://css-discuss.incutio.com/?page=CenteringBlockElement
-						. '<div style="margin-left: auto; margin-right: auto; width: ' .htmlspecialchars($this->mWidths).'px;">'
+						. '<div style="margin-left: auto; margin-right: auto; width: ' . htmlspecialchars( $this->mWidths ) . 'px;">'
 						. $thumb->toHtml( array( 'desc-link' => true ) ) . '</div></div>';
 	
 					// Call parser transform hook
@@ -110,12 +110,12 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					}
 				}
 	
-				//TODO
-				//$ul = $sk->makeLink( $wgContLang->getNsText( Namespace::getUser() ) . ":{$ut}", $ut );
-	
-				if( $this->mShowBytes ) {
-					if( $img ) {
-						$nb = wfMsgExt( 'nbytes', array( 'parsemag', 'escape'),
+				// TODO
+				// $ul = $sk->makeLink( $wgContLang->getNsText( Namespace::getUser() ) . ":{$ut}", $ut );
+
+				if ( $this->mShowBytes ) {
+					if ( $img ) {
+						$nb = wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ),
 							$wgLang->formatNum( $img->getSize() ) );
 					} else {
 						$nb = wfMsgHtml( 'filemissing' );
@@ -137,10 +137,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				$s .= "\n\t<tr>";
 			}
 			$s .=
-				"\n\t\t" . '<td><div class="gallerybox" style="width: '.($this->mWidths+10).'px;">'
+				"\n\t\t" . '<td><div class="gallerybox" style="width: ' . ( $this->mWidths + 10 ) . 'px;">'
 					. $thumbhtml
 					. "\n\t\t\t" . '<div class="gallerytext">' . "\n"
-						. $textlink . htmlspecialchars($text) . $nb
+						. $textlink . htmlspecialchars( $text ) . $nb
 					. "\n\t\t\t</div>"
 				. "\n\t\t</div></td>";
 			if ( $i % $this->mPerRow == $this->mPerRow - 1 ) {
@@ -148,7 +148,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 			++$i;
 		}
-		if( $i % $this->mPerRow != 0 ) {
+		if ( $i % $this->mPerRow != 0 ) {
 			$s .= "\n\t</tr>";
 		}
 		$s .= "\n</table>";

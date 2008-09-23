@@ -18,7 +18,7 @@
  Street, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
-define('FLV_INCLUDE_PATH', dirname(__FILE__) . '/');
+define( 'FLV_INCLUDE_PATH', dirname( __FILE__ ) . '/' );
 
 include_once FLV_INCLUDE_PATH . 'Tag.php';
 include_once FLV_INCLUDE_PATH . 'Exceptions.php';
@@ -58,24 +58,24 @@ class FLV {
     {
     	$this->fname = $fname;
         $this->fp = @fopen( $fname, 'r' );
-        if (! $this->fp)
-            throw( new FLV_FileException('Unable to open the file') );
+        if ( ! $this->fp )
+            throw( new FLV_FileException( 'Unable to open the file' ) );
         
         $hdr = fread( $this->fp, self::FLV_HEADER_SIZE );
         
-        //check file header signature
-        if ( substr($hdr, 0, 3) !== self::FLV_HEADER_SIGNATURE )
-            throw( new FLV_NotValidFileException('The header signature does not match') );
+        // check file header signature
+        if ( substr( $hdr, 0, 3 ) !== self::FLV_HEADER_SIGNATURE )
+            throw( new FLV_NotValidFileException( 'The header signature does not match' ) );
             
 
-        $this->version = ord($hdr[3]);
-        $this->hasVideo = (bool)(ord($hdr[4]) & 0x01);
-        $this->hasAudio = (bool)(ord($hdr[4]) & 0x04);
+        $this->version = ord( $hdr[3] );
+        $this->hasVideo = (bool)( ord( $hdr[4] ) & 0x01 );
+        $this->hasAudio = (bool)( ord( $hdr[4] ) & 0x04 );
         
-        $this->bodyOfs =    (ord($hdr[5]) << 24) +
-                            (ord($hdr[6]) << 16) +
-                            (ord($hdr[7]) << 8) +
-                            (ord($hdr[8]));
+        $this->bodyOfs =    ( ord( $hdr[5] ) << 24 ) +
+                            ( ord( $hdr[6] ) << 16 ) +
+                            ( ord( $hdr[7] ) << 8 ) +
+                            ( ord( $hdr[8] ) );
 
         fseek( $this->fp, $this->bodyOfs );
         
@@ -90,7 +90,7 @@ class FLV {
      */
     function close()
     {
-        fclose( $this->fp );    
+        fclose( $this->fp );
     }
     
     
@@ -106,11 +106,11 @@ class FLV {
     {
         static $cnt = 0;
         
-        if ($this->eof) return null;
+        if ( $this->eof ) return null;
 
         
         $hdr = fread( $this->fp, self::TAG_HEADER_SIZE );
-        if (strlen($hdr) < self::TAG_HEADER_SIZE)
+        if ( strlen( $hdr ) < self::TAG_HEADER_SIZE )
         {
             $this->eof = true;
             return null;
@@ -142,15 +142,15 @@ class FLV {
         $tag->setBody( fread( $this->fp, $bytesToRead ) );
         
         // Check if the tag body has to be processed
-        if ( is_array($skipTagTypes) && !in_array( $tag->type, $skipTagTypes ) )
+        if ( is_array( $skipTagTypes ) && !in_array( $tag->type, $skipTagTypes ) )
         {
             $tag->analyze();
         }
             
         // If the tag was skipped or the body size was larger than MAX_TAG_BODY_SIZE
-        if ($tag->size > $bytesToRead)
+        if ( $tag->size > $bytesToRead )
         {
-            fseek( $this->fp, $tag->size-$bytesToRead, SEEK_CUR );
+            fseek( $this->fp, $tag->size - $bytesToRead, SEEK_CUR );
         }
 
         $this->lastTagSize = $tag->size + self::TAG_HEADER_SIZE - 4;
@@ -166,6 +166,6 @@ class FLV {
      */
     function getTagOffset()
     {
-        return ftell($this->fp) - $this->lastTagSize;
+        return ftell( $this->fp ) - $this->lastTagSize;
     }
 }

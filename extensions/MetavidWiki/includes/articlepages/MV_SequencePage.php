@@ -11,22 +11,22 @@
  * 
  * redirects the user to the sequence interface. 
  */
- //sequence just adds some sequence hooks: 
+ // sequence just adds some sequence hooks: 
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
-define('SEQUENCE_TAG', 'sequence');
+define( 'SEQUENCE_TAG', 'sequence' );
 
-class MV_SequencePage extends Article{
- 	var $outMode='page';
- 	var $clips=array();
- 	function __construct($title){  		
- 		global $wgRequest; 		
+class MV_SequencePage extends Article {
+ 	var $outMode = 'page';
+ 	var $clips = array();
+ 	function __construct( $title ) {
+ 		global $wgRequest;
  		/*mvfAddHTMLHeader('sequence');
  		if($title!=null){
  			parent::__construct($title);
  		} 		
  		return $this;*/
- 		return parent::__construct($title);
+ 		return parent::__construct( $title );
  	}
  	/*function doSeqReplace(&$input, &$argv, &$parser){
  		return 
@@ -117,49 +117,49 @@ class MV_SequencePage extends Article{
  		}
  		//print_r($this->clips);
  	}*/
- 	function doSeqReplace(&$input, &$argv, &$parser){	
- 		global $wgTitle,$wgUser,$wgRequest, $markerList; 		
+ 	function doSeqReplace( &$input, &$argv, &$parser ) {
+ 		global $wgTitle, $wgUser, $wgRequest, $markerList;
  		$sk = $wgUser->getSkin();
- 		$title = Title::MakeTitle(NS_SPECIAL, 'MvExportSequence/'.$wgTitle->getDBKey() );
+ 		$title = Title::MakeTitle( NS_SPECIAL, 'MvExportSequence/' . $wgTitle->getDBKey() );
  		$title_url = $title->getFullURL();
  		$oldid = $wgRequest->getVal( 'oldid' );
-		if ( isset( $oldid ) ) {	
- 			//@@ugly hack .. but really this whole sequencer needs a serious rewrite)
-			$ss = (strpos($title_url, '?')===false)?'?':'&';
-			$title_url.=$ss.'oldid='.$oldid;
+		if ( isset( $oldid ) ) {
+ 			// @@ugly hack .. but really this whole sequencer needs a serious rewrite)
+			$ss = ( strpos( $title_url, '?' ) === false ) ? '?':'&';
+			$title_url .= $ss . 'oldid=' . $oldid;
  		}
  		
- 		$vidtag = '<div id="file" class="fullImageLink"><playlist';						
-		$vidtag.=' width="400" height="300" src="'.htmlspecialchars($title_url).'">';
-		$vidtag.='</playlist></div><hr>';
+ 		$vidtag = '<div id="file" class="fullImageLink"><playlist';
+		$vidtag .= ' width="400" height="300" src="' . htmlspecialchars( $title_url ) . '">';
+		$vidtag .= '</playlist></div><hr>';
 		
-		$marker = "xx-marker".count($markerList)."-xx";
+		$marker = "xx-marker" . count( $markerList ) . "-xx";
 	    $markerList[] = $vidtag;
 	    return $marker;
  	}
- 	function getPageContent(){
+ 	function getPageContent() {
  		global $wgRequest;
  		$base_text = parent::getContent();
- 		//strip the sequence
- 		$seqClose = strpos($base_text, '</'.SEQUENCE_TAG.'>');
- 		if($seqClose!==false){
- 			return trim(substr($base_text, $seqClose+strlen('</'.SEQUENCE_TAG.'>')));
+ 		// strip the sequence
+ 		$seqClose = strpos( $base_text, '</' . SEQUENCE_TAG . '>' );
+ 		if ( $seqClose !== false ) {
+ 			return trim( substr( $base_text, $seqClose + strlen( '</' . SEQUENCE_TAG . '>' ) ) );
  		}
  	}
- 	function getSequenceText(){
- 		//check if the current article exists: 
- 		if($this->mTitle->exists()){
+ 	function getSequenceText() {
+ 		// check if the current article exists: 
+ 		if ( $this->mTitle->exists() ) {
 	 		$base_text = parent::getContent();
-	 		$seqClose = strpos($base_text, '</'.SEQUENCE_TAG.'>');
-	 		if($seqClose!==false){
-	 			//strip the sequence tag: 
-	 			$seqText = "\n".trim(substr($base_text, strlen('<'.SEQUENCE_TAG.'>'), $seqClose-strlen('</'.SEQUENCE_TAG.'>') ))."\n";
-	 			return $seqText;	 			
+	 		$seqClose = strpos( $base_text, '</' . SEQUENCE_TAG . '>' );
+	 		if ( $seqClose !== false ) {
+	 			// strip the sequence tag: 
+	 			$seqText = "\n" . trim( substr( $base_text, strlen( '<' . SEQUENCE_TAG . '>' ), $seqClose - strlen( '</' . SEQUENCE_TAG . '>' ) ) ) . "\n";
+	 			return $seqText;
 	 		}
  		}
-		//return a "new empty sequence ..only set the title:"
-		return '|title=' . $this->mTitle->getText()."\n";
+		// return a "new empty sequence ..only set the title:"
+		return '|title=' . $this->mTitle->getText() . "\n";
  		
- 	} 
+ 	}
  }
 ?>

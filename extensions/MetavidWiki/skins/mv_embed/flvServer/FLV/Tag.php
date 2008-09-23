@@ -38,8 +38,8 @@ class FLV_Tag {
      * @return FLV_Tag      A FLV_Tag object or a descendant of it
      */
     static function getTag( $hdr )
-    {   
-        switch ( ord($hdr[0]) )
+    {
+        switch ( ord( $hdr[0] ) )
         {
             case self::TYPE_AUDIO:
                 return new FLV_Tag_Audio( $hdr );

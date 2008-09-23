@@ -61,14 +61,14 @@ class FLV_Util_BitStreamReader {
     private function fetch( $cnt )
     {
         // Either we already have the needed bits in the buffer or we rebuild it
-        if ($this->pos < $this->ofs*8 ||
-            $this->pos + $cnt > $this->ofs*8 + strlen($this->bits) )
+        if ( $this->pos < $this->ofs * 8 ||
+            $this->pos + $cnt > $this->ofs * 8 + strlen( $this->bits ) )
         {
             $this->bits = '';
-            $this->ofs = FLOOR($this->pos/8);
-            for ($i = $this->ofs; $i <= $this->ofs + CEIL($cnt/8); $i++ )
+            $this->ofs = FLOOR( $this->pos / 8 );
+            for ( $i = $this->ofs; $i <= $this->ofs + CEIL( $cnt / 8 ); $i++ )
             {
-                $this->bits .= str_pad( decbin(ord($this->data[$i])), 8, '0', STR_PAD_LEFT );
+                $this->bits .= str_pad( decbin( ord( $this->data[$i] ) ), 8, '0', STR_PAD_LEFT );
             }
         }
     }
@@ -82,7 +82,7 @@ class FLV_Util_BitStreamReader {
     {
         $this->fetch( $cnt );
 
-        $ret = bindec( substr($this->bits, $this->pos-($this->ofs << 3), $cnt) );
+        $ret = bindec( substr( $this->bits, $this->pos - ( $this->ofs << 3 ), $cnt ) );
         $this->pos += $cnt;
         return $ret;
     }
@@ -95,7 +95,7 @@ class FLV_Util_BitStreamReader {
      */
     function seek( $ofs, $whence = SEEK_SET )
     {
-        switch ($whence)
+        switch ( $whence )
         {
             case SEEK_SET:
                 $this->pos = $ofs;
@@ -104,13 +104,13 @@ class FLV_Util_BitStreamReader {
                 $this->pos += $ofs;
             break;
             case SEEK_END:
-                $this->pos = strlen($this->data)*8 + $ofs;
+                $this->pos = strlen( $this->data ) * 8 + $ofs;
             break;
         }
 
-        if ($this->pos < 0)
+        if ( $this->pos < 0 )
             $this->pos = 0;
-        elseif ($this->pos > strlen($this->data)*8)
-            $this->pos = strlen($this->data)*8;
+        elseif ( $this->pos > strlen( $this->data ) * 8 )
+            $this->pos = strlen( $this->data ) * 8;
     }
 }

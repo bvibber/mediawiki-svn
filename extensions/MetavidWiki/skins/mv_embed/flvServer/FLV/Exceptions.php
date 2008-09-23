@@ -22,23 +22,23 @@
  * Exception thrown when is not possible to operate on a file
  *
  */
-class FLV_FileException extends Exception {}
+class FLV_FileException extends Exception { }
 
 
 /**
  * Exception thrown when the file is not of the propper type
  *
  */
-class FLV_NotValidFileException extends FLV_FileException {}
+class FLV_NotValidFileException extends FLV_FileException { }
 
 /**
  * Exception thrown when an error or mismatch is found while processing a FLV file
  *
  */
-class FLV_CorruptedFileException extends FLV_FileException {}
+class FLV_CorruptedFileException extends FLV_FileException { }
 
 /**
  * Exception thrown when an unknown datatype is found when unserializing an AMF stream
  *
  */
-class FLV_UnknownAMFTypeException extends Exception {}
+class FLV_UnknownAMFTypeException extends Exception { }

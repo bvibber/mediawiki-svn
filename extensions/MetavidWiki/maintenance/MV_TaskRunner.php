@@ -10,10 +10,10 @@
  * @url http://metavid.ucsc.edu
  */
 
-//should be ran via the command line
+// should be ran via the command line
 
-//(will never exit... you can set diffrent levels of debuging)
+// (will never exit... you can set diffrent levels of debuging)
 
-//hanldes conversion, image generation/insertion,
+// hanldes conversion, image generation/insertion,
 
-//should be runnable from any server that can access the upload space
+// should be runnable from any server that can access the upload space

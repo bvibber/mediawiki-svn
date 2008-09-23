@@ -50,9 +50,9 @@ class FLV_Tag_Audio extends FLV_Tag_Generic {
     {
         $bits = new FLV_Util_BitStreamReader( $this->body );
 
-        $this->codec = $bits->getInt(4);
-        $this->frequency = $bits->getInt(2);
-        $this->depth = $bits->getInt(1);
-        $this->mode = $bits->getInt(1);
+        $this->codec = $bits->getInt( 4 );
+        $this->frequency = $bits->getInt( 2 );
+        $this->depth = $bits->getInt( 1 );
+        $this->mode = $bits->getInt( 1 );
     }
 }

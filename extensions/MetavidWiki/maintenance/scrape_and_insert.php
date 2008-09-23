@@ -11,15 +11,15 @@ t		<?php
  */
 
  $cur_path = $IP = dirname( __FILE__ );
- //include commandLine.inc from the mediaWiki maintenance dir:
+ // include commandLine.inc from the mediaWiki maintenance dir:
 require_once( '../../../maintenance/commandLine.inc' );
-require_once('maintenance_util.inc.php');
-require_once('scrape_and_insert.inc.php');
+require_once( 'maintenance_util.inc.php' );
+require_once( 'scrape_and_insert.inc.php' );
 
 if ( count( $args ) == 0 || isset( $options['help'] ) ) {
 	usage();
 }
- function usage(){
+ function usage() {
  	print  <<<EOT
 
 Scrapes External WebSites and updates relavent local semantic content.
@@ -41,9 +41,9 @@ exit();
 /*
  * procc the request
  */
- function proc_args(){
+ function proc_args() {
  	global $args;
-	switch($args[0]){
+	switch( $args[0] ) {
 		case 'run_scrape':
 			$MV_BillScraper = new MV_BillScraper();
 			$MV_BillScraper->procArguments();
@@ -54,6 +54,6 @@ exit();
 		break;
 	}
  }
-//do procc args (now that classes are defined)
+// do procc args (now that classes are defined)
  proc_args();
  print "\n";

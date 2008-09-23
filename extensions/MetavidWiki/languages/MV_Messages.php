@@ -13,9 +13,9 @@ $messages = array();
 $messages['en'] = array(
 	'metavid' => 'Metavid page',
 	'mv_missing_stream' => 'Missing stream: $1',
-	'specialpages-group-mv_group'=> 'MetaVidWiki special pages',
+	'specialpages-group-mv_group' => 'MetaVidWiki special pages',
 
-	#stream/files key descriptions:
+	# stream/files key descriptions:
 	'mv_ogg_low_quality' => 'Web streamable - Ogg Theora 300kbs',
 	'mv_ogg_high_quality' => 'High quality - Ogg Theora 900kbs',
 	'mv_flash_low_quality' => 'Web streamable - Flash video',
@@ -29,7 +29,7 @@ $messages['en'] = array(
 	'mv_error_stream_missing' => '<span class="error">Error: There is no video file associated with this stream.</span><br />
 Please report this to the site administrator.',
 
-	#add/edit stream text:
+	# add/edit stream text:
 	'mv_stream_meta' => 'Stream page',
 	'mv_add_stream' => 'Metavid add stream',
 	'mv_edit_stream' => 'Metavid edit stream',
@@ -58,7 +58,7 @@ Please report this to the site administrator.',
 	'mv_missing_stream_text' => 'The stream you requested <b>$1</b> is not available.<br />
 You may want to check the <a href="$2">Stream list</a><br />
 Or you many want to <a href="$3">Add the stream</a>.',
-	'mv_user_cant_edit' => 'You may have to $1 to edit, $2', //$1 is login link and $2 is cancel link
+	'mv_user_cant_edit' => 'You may have to $1 to edit, $2', // $1 is login link and $2 is cancel link
 
 	'mv_add_stream_file' => 'Add stream file',
 	'mv_media_path' => 'media path',
@@ -76,7 +76,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_remove_reason' => 'Reason for deletion:',
 	'mv_stream_delete_warrning' => '<b>Removing this stream will also remove $1 pieces of assocative metadata</b><br />',
 
-	#stream type
+	# stream type
 	'mv_label_stream_type' => 'Stream type',
 	'mv_metavid_file' => 'Existing file on server',
 	'mv_metavid_live' => 'Set up live stream',
@@ -84,7 +84,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_external_file' => 'External file',
 	'mv_stream_delete_warning' => 'Deleting this stream will additionally remove $1 pages of metadata',
 
-	#tools
+	# tools
 	'mv_tool_search' => 'Search',
 	'mv_tool_search_title' => 'Search within this stream',
 	'mv_search_transcripts_for' => 'Search videos for $1 (hide this box)',
@@ -108,7 +108,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_interest_group_matches' => 'Interest group matches',
 	'mv_click_to_edit' => 'click to edit',
 	
-	#mvd types:
+	# mvd types:
 	'ht_en' => 'Transcript',
 	'ht_en_desc' => 'English transcripts.
 This overlay type is for spoken text',
@@ -119,7 +119,7 @@ This overlay can be used to categorize sections of video or to add annotative in
 	'thomas_en_desc' => 'Official Thomas Transcript from the governments THOMAS record service.
 Source time synced by C-SPAN\'s c-spanarchives.org',
 
-	#mvd errors:
+	# mvd errors:
 	'mvd_default_mismatch' => 'Error in settings file',
 	'mvd_default_mismatch_text' => 'There is an error in your setting file.
 $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
@@ -133,7 +133,7 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 	'mv_list_streams_docu' => 'The following streams exist:',
 	'mv_list_streams_none' => 'No streams exist',
 
-	#messages for metavid export feed:
+	# messages for metavid export feed:
 	'mvvideofeed' => 'Metavid video feed export',
 	'mvexportask' => 'Semantic video feed export',
 	'video_feed_cat' => 'Video feed for category:',
@@ -145,11 +145,11 @@ For all metadata in category ranges search for $1',
 	'mv_mvd_linkback' => 'Part of stream $1 <br />
 Jump to stream view: $2',
 
-	#messages for MVD pages
+	# messages for MVD pages
 	'mvBadMVDtitle' => 'missing type, stream missing, or not valid time format',
 	'mvMVDFormat' => 'MVD title should be of format: mvd:type:stream_name/start_time/end_time',
 
-	#messeges for interface mvd pages:
+	# messeges for interface mvd pages:
 	'mv_play' => 'Play',
 	'mv_edit' => 'Edit',
 	'mv_history' => 'History',
@@ -180,13 +180,13 @@ Jump to stream view: $2',
 	'mv_basic_text_desc' => 'Text description (optional)',
 
 
-	#search
+	# search
 	'mv_viewnext' => 'View ($1) ',
-	'mv_viewprevnext'=> 'View ($1) ($2) ',
+	'mv_viewprevnext' => 'View ($1) ($2) ',
 	'mediasearch' => 'Media search',
 	'mv_search_sel_t' => 'Select search type',
-	'mv_do_media_search'=> 'Do Metavid media search for $1',
-	'mv_results_for'=>	'Results for $1',
+	'mv_do_media_search' => 'Do Metavid media search for $1',
+	'mv_results_for' =>	'Results for $1',
 	'mv_video_search' => 'Video search',
 	'mv_page_search' => 'Do wiki page search for $1',
 	'mv_add_filter' => 'Add filter',
@@ -233,7 +233,7 @@ Jump to stream view: $2',
 	'mv_match_text' => '~  $1 matches',
 	'mv_match_text_one' => '~ 1 match',
 
-	#sequence text:
+	# sequence text:
 	'mv_edit_sequence' => 'Editing sequence:$1',
 	'mv_sequence_player_title' => 'sequence player',
 
@@ -252,7 +252,7 @@ Jump to stream view: $2',
 	'mv_seq_summary' => 'Sequence edit summary',
 	'mv_add_clip_by_name' => 'Add clip by name',
 
-	#mv tools
+	# mv tools
 	'mv_export_cmml' => 'export cmml',
 	'mv_search_stream' => 'Search stream',
 	'mv_navigate_stream' => 'Navigate full stream',
@@ -266,12 +266,12 @@ Jump to stream view: $2',
 	'mv_prev_speech' => 'Previous speech: $1',
 	'mv_next_speech' => 'Next speech: $1',
 	'mv_prev_bill' =>	'Previous bill: $1',
-	'mv_next_bill' =>	'Next bill: $1',	
+	'mv_next_bill' =>	'Next bill: $1',
 	'mv_prev_cat' =>	'Previous category: $1',
-	'mv_next_cat' =>	'Next category: $1',			
+	'mv_next_cat' =>	'Next category: $1',
 	'mv_navigate_stream' => 'Navigate stream',
 
-	#msg for overlay interface:
+	# msg for overlay interface:
 	'mv_search_stream' => 'Search stream',
 	'mv_search_stream_title' => 'Search the current stream',
 	'mv_new_ht_en' => 'New transcript',
@@ -279,8 +279,8 @@ Jump to stream view: $2',
 	'mv_mang_layers' => 'Manage layers',
 	'mv_mang_layers_title' => 'Manage the layer display set for the current stream',
 
-	#msg for bots and maintance
-	'mv_protect_source_material'=> 'Original source material protected from edits'
+	# msg for bots and maintance
+	'mv_protect_source_material' => 'Original source material protected from edits'
 );
 
 /** Message documentation (Message documentation)

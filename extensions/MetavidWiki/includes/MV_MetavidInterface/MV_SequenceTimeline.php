@@ -9,10 +9,10 @@
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
  */
- if ( !defined( 'MEDIAWIKI' ) )  die( 1 ); 
- class MV_SequenceTimeline extends MV_Component{
- 	function render_menu(){		
-		return wfMsg('mv_sequence_timeline');		
+ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
+ class MV_SequenceTimeline extends MV_Component {
+ 	function render_menu() {
+		return wfMsg( 'mv_sequence_timeline' );
 	}
  }
 ?>

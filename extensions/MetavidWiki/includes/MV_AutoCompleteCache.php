@@ -9,6 +9,6 @@
  * @email dale@ucsc.edu
  * @url http://metavid.ucsc.edu
  */
- class MV_AutoCompleteCache{
- } 
+ class MV_AutoCompleteCache {
+ }
 ?>

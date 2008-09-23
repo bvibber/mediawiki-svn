@@ -222,16 +222,32 @@ var mvEmbed = {
     //load mv_embed skin stylesheet: 
   	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/styles.css'))
 		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/styles.css');
-
-  	//call the callback:
-  	if(this.load_callback)this.load_callback();
-	mv_embed();
+  	
+	mv_embed();	
 	
-	//affter init run any queued functions:
-	//js_log('run queue functions:' + mvEmbed.flist);
-	while (mvEmbed.flist.length){
-		mvEmbed.flist.shift()();
-	}
+	this.check_init_done();
+  },
+  /*
+   * should be cleaned up ... the embedType loading should be part of load_libs above:
+   */
+  check_init_done:function(){
+  	js_log('f:check_init_done');
+  	//check if all videos are "ready to play"
+  	var is_ready=true;
+  	for(var i in global_ogg_list)
+    	is_ready = ( $j('#'+global_ogg_list[i]).get(0).ready_to_play ) ? is_ready : false;  	
+  	if(!is_ready){
+  		//js_log('some ' + global_ogg_list + ' not ready');
+  		setTimeout( 'mvEmbed.check_init_done()', 50 );
+  	}else{
+		//call the callback:
+		if(this.load_callback)this.load_callback();
+		
+		//js_log('run queue functions:' + mvEmbed.flist);
+		while (mvEmbed.flist.length){
+			mvEmbed.flist.shift()();
+		}  	
+  	}
   }
 }
 
@@ -282,15 +298,19 @@ mediaPlayer.prototype =
 			var plugin_path = mv_embed_path + 'embedLibs/mv_'+this.library+'Embed.js';	
 			//add the callback: 
 			this.loading_callbacks.push(callback);
-
 			
 			js_log('plugin not loaded, queing callback');	
-			js_log('requesting plugin: ' + plugin_path);		
+			js_log('requesting plugin: ' + plugin_path);	
+			
+				
 			/*$j.getScript(plugin_path, function(){				
 				js_log(_this.id + ' plugin loaded');
 				_this.loaded = true;
-				callback();
+				for(var i in _this.loading_callbacks)
+					_this.loading_callbacks[i]();	
+				_this.loading_callbacks = null;
 			});*/
+			
 			eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
 			mvJsLoader.doLoad(lib,function(){
 				js_log(_this.id + ' plugin loaded');
@@ -404,7 +424,7 @@ mediaPlayers.prototype =
         {
             for(var i in global_ogg_list)
             {
-                var embed = document.getElementById(global_ogg_list[i]);
+                var embed = $j('#'+global_ogg_list[i]).get(0);
                 if(embed.media_element.selected_source && (embed.media_element.selected_source.mime_type == mime_type))
                 {
                     embed.selectPlayer(selected_player);
@@ -818,13 +838,14 @@ var mvJsLoader = {
  * $j(document).ready( function(){ */
 function init_mv_embed(force){
 	js_log('mv_init');
-	if(!force){
-		if(mv_init_done){
-			js_log("caught second call not doing anything");
-			return ;
-		}
-		mv_init_done=true;
+	if(!force && mv_init_done)
+		return false;
+		
+	if(mv_init_done){
+		js_log("caught second call not doing anything");
+		return ;
 	}
+	mv_init_done=true;	
 	//check if this page does have video or playlist
 	if(document.getElementsByTagName("video").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
@@ -1919,7 +1940,7 @@ embedVideo.prototype = {
 		//return this;		
 		this.init_with_sources_loadedDone=true;
 	},
-	inheritEmbedObj:function(ready_callback){
+	inheritEmbedObj:function(){
 		js_log("f: inheritEmbedObj");
 		//@@note: tricky cuz direct overwrite is not so ideal.. since the extended object is already tied to the dom
 		//clear out any non-base embedObj stuff:
@@ -1955,9 +1976,7 @@ embedVideo.prototype = {
 			//update controls if possible
 			if(!_this.loading_external_data)
 				_this.refreshControlsHTML();
-				
-			if(ready_callback)
-				ready_callback();
+					
 			js_log('plugin load callback complete');					
 			
 			js_log("READY TO PLAY:"+_this.id);			

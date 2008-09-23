@@ -231,7 +231,7 @@ function mv_setup_search_ac(){
 		sf_pos = $j('#searchInput').offset();
 		sf_pos['top']=sf_pos['top']+40;
 		sf_pos['left']=sf_pos['left']-220;
-		js_log("moved sugest to: " + sf_pos['top'] + ' '+ sf_pos['left']);
+		//js_log("moved sugest to: " + sf_pos['top'] + ' '+ sf_pos['left']);
 		$j('#suggestions').css(sf_pos);
 	}
 
