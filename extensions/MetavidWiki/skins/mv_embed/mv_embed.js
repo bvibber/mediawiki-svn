@@ -871,21 +871,15 @@ function init_mv_embed(force){
  * this function allows for targeted rewriting (the host element does not have to be <video> tag)
  */
 function rewrite_by_id(vid_id){
+	js_log('f:rewrite_by_id');
 	//confirm the nessesary libs are loaded.
 	if(!mvEmbed.libs_loaded){
+		//set up embedTypes		
+		embedTypes.init();			
+		//load libs and swap <video> tag: 
 		mvEmbed.load_libs(function(){
-			return rewrite_by_id(vid_id);
+			js_log('rewrite_by_id done');			
 		});
-	}else{
-		var vidElm = document.getElementById(vid_id);
-		if(vidElm){
-			var videoInterface = new embedVideo(vidElm);
-			if(swapEmbedVideoElement(vidElm, videoInterface)){
-				return videoInterface;
-			}
-		}else{
-			js_log('video element not found: '+vid_id);
-		}
 	}
 }
 
@@ -2376,10 +2370,10 @@ embedVideo.prototype = {
 	//updates the thumbnail if the thumbnail is being displayed
 	updateThumbnail : function(src, quick_switch){		
 		//make sure we don't go to the same url if we are not already updating: 
-		if( !this.thumbnail_updating && $j('#img_thumb_'+this.id).attr('src')   == src )
+		if( !this.thumbnail_updating && $j('#img_thumb_'+this.id).attr('src')== src )
 			return false;
 		//if we are updating don't re-go to the updating url: 
-		if(this.thumbnail_updating && $j('#new_img_thumb_'+this.id).attr('src') == src )
+		if(this.thumbnail_updating && $j('#new_img_thumb_'+this.id).attr('src')== src )
 			return false;
 		
 		js_log('set to thumb:'+ src);
