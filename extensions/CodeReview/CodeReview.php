@@ -43,6 +43,7 @@ $wgAutoloadClasses['CodeRepoListView'] = $dir . 'CodeRepoListView.php';
 $wgAutoloadClasses['CodeRevision'] = $dir . 'CodeRevision.php';
 $wgAutoloadClasses['CodeRevisionAuthorView'] = $dir . 'CodeRevisionAuthorView.php';
 $wgAutoloadClasses['CodeRevisionListView'] = $dir . 'CodeRevisionListView.php';
+$wgAutoloadClasses['CodeRevisionStatusSetter'] = $dir . 'CodeRevisionStatusSetter.php';
 $wgAutoloadClasses['CodeRevisionTagger'] = $dir . 'CodeRevisionTagger.php';
 $wgAutoloadClasses['CodeRevisionTagView'] = $dir . 'CodeRevisionTagView.php';
 $wgAutoloadClasses['CodeRevisionView'] = $dir . 'CodeRevisionView.php';
@@ -63,6 +64,7 @@ $wgAvailableRights[] = 'codereview-post-comment';
 $wgGroupPermissions['*']['codereview-add-tag'] = true;
 $wgGroupPermissions['*']['codereview-remove-tag'] = true;
 $wgGroupPermissions['*']['codereview-post-comment'] = true;
+$wgGroupPermissions['*']['codereview-set-status'] = true;
 
 $wgGroupPermissions['steward']['repoadmin'] = true; // temp
 

@@ -22,3 +22,27 @@ table.mw-codereview-meta td {
 	padding: 16px;
 	padding-left: 48px;
 }
+
+
+.mw-codereview-status-new td {
+	background: #ffffc0 !important;
+}
+.mw-codereview-status-new:hover td {
+	background: #dfdfa0 !important;
+}
+
+.mw-codereview-status-fixme td {
+	background: #ff0000 !important;;
+	color: white;
+}
+.mw-codereview-status-fixme:hover td {
+	background: #df0000 !important;;
+	color: white;
+}
+
+.mw-codereview-status-resolved td {
+	background: #c0ffc0 !important;;
+}
+.mw-codereview-status-resolved:hover td {
+	background: #a0dfa0 !important;;
+}

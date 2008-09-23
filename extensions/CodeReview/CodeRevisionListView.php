@@ -50,6 +50,7 @@ class SvnRevTablePager extends TablePager {
 	function getFieldNames(){
 		return array(
 			'cr_id' => wfMsg( 'code-field-id' ),
+			'cr_status' => wfMsg( 'code-field-status' ),
 			'cr_message' => wfMsg( 'code-field-message' ),
 			'cr_author' => wfMsg( 'code-field-author' ),
 			'cr_timestamp' => wfMsg( 'code-field-timestamp' ),
@@ -64,6 +65,8 @@ class SvnRevTablePager extends TablePager {
 			return $wgUser->getSkin()->link(
 				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $value ), htmlspecialchars( $value )
 			);
+		case 'cr_status':
+			return htmlspecialchars( $this->mView->statusDesc( $value ) );
 		case 'cr_author':
 			return $this->mView->authorLink( $value );
 		case 'cr_message':
@@ -72,6 +75,15 @@ class SvnRevTablePager extends TablePager {
 			global $wgLang;
 			return $wgLang->timeanddate( $value );
 		}
+	}
+	
+	// Note: this function is poorly factored in the parent class
+	function formatRow( $row ) {
+		return str_replace(
+			'<tr>',
+			Xml::openElement( 'tr',
+				array( 'class' => "mw-codereview-status-$row->cr_status" ) ),
+			parent::formatRow( $row ) );
 	}
 
 	function getTitle(){

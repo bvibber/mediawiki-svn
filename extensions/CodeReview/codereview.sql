@@ -45,6 +45,13 @@ CREATE TABLE /*$wgDBprefix*/code_rev (
   -- This is *not* wikitext, but will get some light formatting
   -- on display...
   cr_message blob,
+  
+  -- Status key for how this thang is...
+  -- 'new': Hasn't yet been reviewed
+  -- 'fixme': This revision has some problem which needs to be resolved
+  -- 'resolved': Issues with this rev have been since resolved
+  -- 'ok': Reviewed, no issues
+  cr_status enum('new', 'fixme', 'resolved', 'ok') not null default 'new',
 
   primary key (cr_repo_id, cr_id),
   key (cr_repo_id, cr_timestamp)

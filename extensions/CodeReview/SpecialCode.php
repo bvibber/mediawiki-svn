@@ -42,6 +42,9 @@ class SpecialCode extends SpecialPage {
 				} elseif( $params[2] == 'add' && $params[3] == 'tag' ) {
 					$view = new CodeRevisionTagger( $params[0], $params[1] );
 					break;
+				} elseif( $params[2] == 'set' && $params[3] == 'status' ) {
+					$view = new CodeRevisionStatusSetter( $params[0], $params[1] );
+					break;
 				}
 			default:
 				throw new MWException( "Unexpected number of parameters" );
@@ -101,6 +104,10 @@ abstract class CodeView {
 		$repo = $this->mRepo->getName();
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/author/$author" );
 		return $this->mSkin->link( $special, htmlspecialchars( $author ) );
+	}
+	
+	function statusDesc( $status ) {
+		return wfMsg( "code-status-$status" );
 	}
 
 	function formatMessage( $text ){

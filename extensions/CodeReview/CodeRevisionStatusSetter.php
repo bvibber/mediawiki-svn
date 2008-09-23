@@ -1,19 +1,19 @@
 <?php
 
-class CodeRevisionTagger extends CodeRevisionView {
+class CodeRevisionStatusSetter extends CodeRevisionView {
 
 	function __construct( $repoName, $rev ){
 		parent::__construct( $repoName, $rev );
 		
 		global $wgRequest;
-		$this->mTag = $wgRequest->getText( 'wpTag' );
+		$this->mStatus = $wgRequest->getText( 'wpStatus' );
 	}
 
 	function execute() {
 		global $wgOut;
 		
-		if( $this->validPost( 'codereview-add-tag' ) ) {
-			$this->mRev->addTags( array( $this->mTag ) );
+		if( $this->validPost( 'codereview-set-status' ) ) {
+			$this->mRev->setStatus( $this->mStatus );
 			
 			$repo = $this->mRepo->getName();
 			$rev = $this->mRev->getId();
@@ -21,12 +21,12 @@ class CodeRevisionTagger extends CodeRevisionView {
 
 			$wgOut->redirect( $special->getFullUrl() );
 		} else {
-			throw new MWException( 'Attempted to add invalid tag (fixme UI)' );
+			throw new MWException( 'Attempted to save invalid status.' );
 		}
 	}
 	
 	function validPost( $permission ) {
 		return parent::validPost( $permission ) &&
-			$this->mRev->isValidTag( $this->mTag );
+			$this->mRev->isValidStatus( $this->mStatus );
 	}
 }

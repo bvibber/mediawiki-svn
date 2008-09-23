@@ -46,6 +46,7 @@ class CodeRevisionView extends CodeView {
 			'code-rev-repo' => $repoLink,
 			'code-rev-rev' => $revText,
 			'code-rev-author' => $this->authorLink( $this->mRev->getAuthor() ),
+			'code-rev-status' => $this->statusForm(),
 			'code-rev-message' => $this->formatMessage( $this->mRev->getMessage() ),
 			'code-rev-paths' => $paths,
 			'code-rev-tags' => $this->formatTags(),
@@ -138,6 +139,43 @@ class CodeRevisionView extends CodeView {
 		}
 		
 		return $list;
+	}
+	
+	function statusForm() {
+		global $wgUser;
+		if( $wgUser->isAllowed( 'codereview-set-status' ) ) {
+			$repo = $this->mRepo->getName();
+			$rev = $this->mRev->getId();
+			$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev/set/status" );
+			return
+				Xml::openElement( 'form',
+					array(
+						'action' => $special->getLocalUrl(),
+						'method' => 'post' ) ) .
+				Xml::openElement( 'select',
+					array( 'name' => 'wpStatus' ) ) .
+				$this->buildStatusList() .
+				'</select>' .
+				Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
+				'&nbsp;' .
+				Xml::submitButton( wfMsg( 'code-rev-status-set' ) ) .
+				'</form>';
+		} else {
+			return htmlspecialchars( $this->statusDesc( $this->mRev->getStatus() ) );
+		}
+	}
+	
+	function buildStatusList() {
+		$states = $this->mRev->getPossibleStates();
+		$out = '';
+		foreach( $states as $state ) {
+			$list[$state] = $this->statusDesc( $state );
+			$out .= Xml::option(
+				$this->statusDesc( $state ),
+				$state,
+				$this->mRev->getStatus() == $state );
+		}
+		return $out;
 	}
 	
 	function addTagForm() {

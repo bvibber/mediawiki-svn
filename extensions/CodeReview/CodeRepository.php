@@ -97,7 +97,7 @@ class CodeRepository {
 			__METHOD__
 		);
 		if( !$row )
-			throw new MWException( 'barf' );
+			throw new MWException( 'Failed to load expected revision data' );
 		return CodeRevision::newFromRow( $row );
 	}
 

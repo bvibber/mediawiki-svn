@@ -16,6 +16,7 @@ $messages['en'] = array(
 	'code-field-id' => 'Revision',
 	'code-field-author' => 'Author',
 	'code-field-message' => 'Comment',
+	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Date',
 	'code-rev-author' => 'Author:',
 	'code-rev-message' => 'Comment:',
@@ -27,6 +28,8 @@ $messages['en'] = array(
 	'code-rev-modified-c' => 'copied',
 	'code-rev-modified-d' => 'deleted',
 	'code-rev-modified-m' => 'modified',
+	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Change status',
 	'code-rev-tags' => 'Tags:',
 	'code-rev-tag-add' => 'Add tag',
 	'code-rev-comment-by' => 'Comment by $1',
@@ -34,6 +37,10 @@ $messages['en'] = array(
 	'code-rev-comment-preview' => 'Preview',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-status-new' => 'new',
+	'code-status-fixme' => 'fixme',
+	'code-status-resolved' => 'resolved',
+	'code-status-ok' => 'ok',
 	
 	'codereview-reply-link' => 'reply',
 

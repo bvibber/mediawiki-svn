@@ -10,6 +10,7 @@ class CodeRevision {
 		$rev->mTimestamp = wfTimestamp( TS_MW, strtotime( $data['date'] ) );
 		$rev->mMessage = rtrim( $data['msg'] );
 		$rev->mPaths = $data['paths'];
+		$rev->mStatus = 'new';
 		return $rev;
 	}
 
@@ -20,6 +21,7 @@ class CodeRevision {
 		$rev->mAuthor = $row->cr_author;
 		$rev->mTimestamp = wfTimestamp( TS_MW, $row->cr_timestamp );
 		$rev->mMessage = $row->cr_message;
+		$rev->mStatus = $row->cr_status;
 		return $rev;
 	}
 
@@ -38,6 +40,34 @@ class CodeRevision {
 	function getMessage() {
 		return $this->mMessage;
 	}
+	
+	function getStatus() {
+		return $this->mStatus;
+	}
+	
+	function getPossibleStates() {
+		return array( 'new', 'fixme', 'resolved', 'ok' );
+	}
+	
+	function isValidStatus( $status ) {
+		return in_array( $status, $this->getPossibleStates(), true );
+	}
+	
+	function setStatus( $status ) {
+		if( !$this->isValidStatus( $status ) ) {
+			throw new MWException( "Tried to save invalid code revision status" );
+		}
+		
+		$this->mStatus = $status;
+		
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->update( 'code_rev',
+			array( 'cr_status' => $status ),
+			array(
+				'cr_repo_id' => $this->mRepo,
+				'cr_id' => $this->mId ),
+			__METHOD__ );
+	}
 
 	function save() {
 		$dbw = wfGetDB( DB_MASTER );
@@ -47,7 +77,8 @@ class CodeRevision {
 				'cr_id' => $this->mId,
 				'cr_author' => $this->mAuthor,
 				'cr_timestamp' => $dbw->timestamp( $this->mTimestamp ),
-				'cr_message' => $this->mMessage ),
+				'cr_message' => $this->mMessage,
+				'cr_status' => $this->mState ),
 			__METHOD__,
 			array( 'IGNORE' ) );
 
