@@ -242,4 +242,33 @@ class CodeRevision {
 	function isValidTag( $tag ) {
 		return ($this->normalizeTag( $tag ) !== false );
 	}
+	
+	function getPrevious() {
+		// hack!
+		if( $this->mId > 1 ) {
+			return $this->mId - 1;
+		} else {
+			return false;
+		}
+	}
+	
+	function getNext() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$encId = $dbr->addQuotes( $this->mId );
+		$row = $dbr->selectRow( 'code_rev',
+			'cr_id',
+			array(
+				'cr_repo_id' => $this->mRepo,
+				"cr_id>$encId" ),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'cr_repo_id, cr_id',
+				'LIMIT' => 1 ) );
+		
+		if( $row ) {
+			return $row->cr_id;
+		} else {
+			return false;
+		}
+	}
 }

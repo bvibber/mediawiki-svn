@@ -26,14 +26,7 @@ class CodeRevisionView extends CodeView {
 
 		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ),
 			htmlspecialchars( $this->mRepo->getName() ) );
-		$rev = $this->mRev->getId();
-		$revText = htmlspecialchars( $rev );
-		$viewvc = $this->mRepo->getViewVcBase();
-		if( $viewvc ){
-			$url = htmlspecialchars( "$viewvc/?view=rev&revision=$rev" );
-			$viewvcTxt = wfMsgHtml( 'code-rev-rev-viewvc' );
-			$revText .= " (<a href=\"$url\" title=\"revision $rev\">$viewvcTxt</a>)";
-		}
+		$revText = $this->navigationLinks();
 		$paths = '';
 		$modifiedPaths = $this->mRev->getModifiedPaths();
 		foreach( $modifiedPaths as $row ){
@@ -78,6 +71,36 @@ class CodeRevisionView extends CodeView {
 		}
 
 		$wgOut->addHtml( $html );
+	}
+	
+	function navigationLinks() {
+		$rev = $this->mRev->getId();
+		$prev = $this->mRev->getPrevious();
+		$next = $this->mRev->getNext();
+		$repo = $this->mRepo->getName();
+		
+		$links = array();
+		
+		if( $prev ) {
+			$prevTarget = SpecialPage::getTitleFor( 'Code', "$repo/$prev" );
+			$links[] = '&lt;&nbsp;' . $this->mSkin->link( $prevTarget, "r$prev" );
+		}
+		
+		$revText = "<b>r$rev</b>";
+		$viewvc = $this->mRepo->getViewVcBase();
+		if( $viewvc ){
+			$url = htmlspecialchars( "$viewvc/?view=rev&revision=$rev" );
+			$viewvcTxt = wfMsgHtml( 'code-rev-rev-viewvc' );
+			$revText .= " (<a href=\"$url\" title=\"revision $rev\">$viewvcTxt</a>)";
+		}
+		$links[] = $revText;
+
+		if( $next ) {
+			$nextTarget = SpecialPage::getTitleFor( 'Code', "$repo/$next" );
+			$links[] = $this->mSkin->link( $nextTarget, "r$next" ) . '&nbsp;&gt;';
+		}
+
+		return implode( ' | ', $links );
 	}
 
 	function checkPostings() {
