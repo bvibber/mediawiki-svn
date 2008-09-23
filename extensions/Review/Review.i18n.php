@@ -51,9 +51,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'review_sidebar_title' => '{{Identical|Review}}',
+	'review-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'review_total_statistics' => '{{Identical|Total}}',
 	'review_user_details_link' => '{{Identical|Details}}',
 	'review_comment' => '{{Identical|Comment}}',
@@ -647,6 +649,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'review-desc' => 'Dat widder operstandene [[Special:Review|Nohlesse]].',
 	'review_total_statistics' => 'Zosamme',
 	'review_user_details_link' => '(Einzelheite)',
 );

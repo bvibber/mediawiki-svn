@@ -1747,11 +1747,11 @@ $messages['fa'] = array(
 [[Special:Boardvote/entry|بازگشت]]',
 	'boardvote_invalidentered' => '<p><strong>خطا</strong>: میزان ترجیح نامزد باید به صورت یک عدد صحیح مثبت (۱، ۲، ۳ ....) بیان شود، یا خالی گذاشته شود.</p>',
 	'boardvote_nosession' => 'سیستم قادر به تشخیص نام کاربری شما در ویکی‌مدیا نیست.
-لطفاً در همان ویکی که در آن مجاز به رای دادن هستید وارد شوید، و به <nowiki>[[Special:Boardvote]]</nowiki> بروید. برای رای دادن شما باید از یک حساب کاربری استفاده کنید که حداقل $1 مشارکت تا پیش از $2 داشته باشد، و دست کم $3 مشارکت بین $4 و $5 داشته باشد.',
+لطفاً در همان ویکی که در آن مجاز به رای دادن هستید وارد شوید، و به <nowiki>[[Special:Boardvote]]</nowiki> بروید. برای رای دادن شما باید از یک حساب کاربری استفاده کنید که حداقل $1 {{PLURAL:$1|مشارکت|مشارکت}} تا پیش از $2 داشته باشد، و دست کم $3 {{PLURAL:$3|مشارکت|مشارکت}} بین $4 و $5 داشته باشد.',
 	'boardvote_notloggedin' => 'شما به سیستم وارد نشده‌اید.
-برای رای دادن، شما باید از یک حساب کاربری با $1 مشارکت تا پیش از $2، و $3 مشارکت بین $4 و $5 استفاده کنید.',
-	'boardvote_notqualified' => 'شما مجاز به رای دادن نیستید.
-شما باید دست کم $1 مشارکت تا قبل از $2 انجام داده باشید، و $3 مشارکت بین $4 و $5 انجام داده باشید.',
+برای رای دادن، شما باید از یک حساب کاربری با $1 {{PLURAL:$1|مشارکت|مشارکت}} تا پیش از $2، و $3 {{PLURAL:$3|مشارکت|مشارکت}} بین $4 و $5 استفاده کنید.',
+	'boardvote_notqualified' => 'شما مجاز به رای دادن در این انتخابات نیستید.
+شما باید دست کم $1 {{PLURAL:$1|مشارکت|مشارکت}} تا قبل از $2 انجام داده باشید، و $3 {{PLURAL:$3|مشارکت|مشارکت}} بین $4 و $5 انجام داده باشید.',
 	'boardvote_novotes' => 'هنوز کسی رای نداده‌است.',
 	'boardvote_time' => 'زمان',
 	'boardvote_user' => 'کاربر',
@@ -4444,8 +4444,10 @@ Seguís la version criptada çaijós, que serà afichada publicament sus [[Speci
 	'boardvote_nosession' => 'Vòstre identificant Wikimedia pòt pas èsser determinat.<br />
 Rendètz-vos sus vòstre wiki d’origina ont sètz abilitat per votar, puèi rendètz-vos sus la pagina <nowiki>[[Special:Boardvote]]</nowiki>.<br />
 Vos cal aver un compte amb al mens $1 {{PLURAL:$1|contribucion efectuada|contribucions efectuadas}} abans lo $2 e al mens $3 {{PLURAL:$3|contribucion efectuada|contribucions efectuadas}} entre lo $4 e lo $5.',
-	'boardvote_notloggedin' => 'Actualament sètz pas autentificat. Per votar, vos cal utilizar un compte comportant al mens $1 contribucions abans lo $2, e aver efectuar al mens $3 contribucions entre lo $4 e lo $5.',
-	'boardvote_notqualified' => "Respondètz pas a una de las condicions requesidas per votar a aqueste escrutin. Es necessari d’aver $3 contribucions abans lo $2, e n'avètz efectuadas $1. En otra, vòstra primièra modificacion data del $4, e deu aver estada facha abans lo $5.",
+	'boardvote_notloggedin' => 'Actualament sètz pas connectat(ada).
+Per votar, vos cal utilizar un compte comportant al mens $1 {{PLURAL:$1|contribucion efectuada|contribucions efectuadas}} abans lo $2 e al mens $3 contribucion{{PLURAL:$3||s}} entre lo $4 e lo $5.',
+	'boardvote_notqualified' => 'Actualament, respondètz pas a las condicions requeridas per votar a aqueste escrutinh.
+Es necessari d’aver al mens $1 {{PLURAL:$1|contribucion efectuada|contribucions efectuadas}} abans lo $2 e al mens $3 {{PLURAL:$3|contribucion efectuada|contribucions efectuadas}} entre lo $4 e lo $5.',
 	'boardvote_novotes' => 'Degun a pas encara votat.',
 	'boardvote_time' => 'Ora',
 	'boardvote_user' => 'Utilizaire',
@@ -4569,11 +4571,11 @@ Poniżej znajduje się zakodowana wersja głosu. Będzie ona widoczna publicznie
 	'boardvote_invalidentered' => '<p><strong>Błąd</strong>: ocena kandydata musi być dodatnią liczbą całkowitą (1, 2, 3, ....) lub pozostawiona niewypełniona.</p>',
 	'boardvote_nosession' => 'Nie można ustalić Twojego ID użytkownika w projektach Wikimedia.
 Zaloguj się do wiki, w której spełniasz warunki wymagane dla uprawnienia do głosowania, następnie przejdź na stronę <nowiki>[[Special:Boardvote]]</nowiki>.
-Zagłosować możesz, gdy zalogujesz się na konto z przynajmniej $1 edycjami przed $2, z wykonanymi co najmniej $3 edycjami pomiędzy $4 a $5.',
+Zagłosować możesz, gdy zalogujesz się na konto z przynajmniej $1 {{PLURAL:$1|edycją|edycjami}} przed $2, z {{PLURAL:$3|wykonaną co najmniej 1 edycją|wykonanymi co najmniej $3 edycjami}} pomiędzy $4 a $5.',
 	'boardvote_notloggedin' => 'Nie jesteś zalogowany.
-Zagłosować możesz, gdy zalogujesz się na konto z przynajmniej $1 edycjami przed $2, z wykonanymi co najmniej $3 edycjami pomiędzy $4 a $5.',
+Zagłosować możesz, gdy zalogujesz się na konto z przynajmniej $1 {{PLURAL:$1|edycją|edycjami}} przed $2, z {{PLURAL:$3|wykonaną co najmniej 1 edycją|wykonanymi co najmniej $3 edycjami}} pomiędzy $4 a $5.',
 	'boardvote_notqualified' => 'Niestety nie jesteś uprawniony do głosowania.
-Zagłosować mógłbyś, gdybyś zalogował się na konto z przynajmniej $1 edycjami przed $2, z wykonanymi co najmniej $3 edycjami pomiędzy $4 a $5.',
+Zagłosować mógłbyś, gdybyś zalogował się na konto z przynajmniej $1 {{PLURAL:$1|edycją|edycjami}} przed $2, z {{PLURAL:$3|wykonaną co najmniej 1 edycją|wykonanymi co najmniej $3 edycjami}} pomiędzy $4 a $5.',
 	'boardvote_novotes' => 'Nikt jeszcze nie głosował.',
 	'boardvote_time' => 'Czas',
 	'boardvote_user' => 'Użytkownik',
@@ -5020,13 +5022,17 @@ $messages['sah'] = array(
 
 <pre>$2</pre>
 
-Сиипирдэммит тиэкис аллара көстөр. Ким баҕалаах ону бу сирэйгэ булуон сөп [[Special:Boardvote/dump]].
+Сиипирдэммит тиэкис аллара көстөр. Ким баҕалаах ону [[Special:Boardvote/dump|бу cирэйгэ]] булуон сөп.
 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Төнүн]]',
-	'boardvote_nosession' => 'Викимедияҕа кыттар идентификаторгын кыайан система булбата. Бука диэн көрдөбүллэргэ эппиэттиир ааккынан (атын Викимедиа бырайыактара да буоллун) киирэн баран маннык сирэйгэ киир <nowiki>[[Special:Boardvote]]</nowiki>. Көрдөбүллэр: $1 көннөрүүнү бу күҥҥэ $2 дылы оҥорбут буолуохтааххын, бастакы көннөрүүҥ баччаҕа $3 дылы оҥоһуллубут буолуохтаах.',
-	'boardvote_notloggedin' => 'Эн ааккын билиһиннэрбэтэххин. Куоластыаххын баҕарар буоллаххына бэлиэтэммит кыттааччы буолуохтааххын уонна $1 көннөрүүнү $2 дылы оҥорбут буолуохтааххын. Бастакы көннөрүүҥ баччаҕа $3 дылы оҥоһуллубут буолуохтаах.',
+	'boardvote_invalidentered' => '<p><strong>Алҕас таҕыста</strong>: кандидаат утары сыалай чыыһыланы (1, 2, 3, ....) туруоруохтааххын эбэтэр кураанах хаалларыахтааххын.</p>',
+	'boardvote_nosession' => 'Викимедияҕа кыттар идентификаторгын кыайан систиэмэ булбата. 
+Бука диэн көрдөбүллэргэ эппиэттиир ааккынан (атын Викимедиа бырайыактара да буоллун) киирэн баран маннык сирэйгэ киир <nowiki>[[Special:Boardvote]]</nowiki>. 
+Көрдөбүллэр: $1 көннөрүүттэн аҕыйаҕа суоҕу бу күҥҥэ $2 дылы оҥорбут буолуохтааххын, баччаттан $4 баччаҕа $5 дылы $3 {{PLURAL:$3|көннөрүү оҥоһуллубут буолуохтаах|көннөрүүлэр оҥоһуллубут буолуохтаахтар}}.',
+	'boardvote_notloggedin' => 'Эн ааккын билиһиннэрбэтэххин.
+Куоластыаххын баҕарар буоллаххына бэлиэтэммит кыттааччы буолуохтааххын уонна $1 көннөрүүнү $2 дылы оҥорбут буолуохтааххын. Уонна $3 көннөрүүҥ баччаттан $4 баччаҕа $5 дылы оҥоһуллубут буолуохтаах.',
 	'boardvote_notqualified' => 'Бу быыбарга кыттар кыаҕыҥ суох. 
 Быыбарга кыттарга бу күҥҥэ дылы $2, бу аатынан $1 көннөрүүттэн аҕыйаҕа суоҕу оҥоруохтаах этиҥ, ол көннрүлэргиттэн $3 көннөрүүҥ баччатан $4 баччаҕа $5 дылы оҥоһуллуохтаах этэ.',
 	'boardvote_novotes' => 'Ким да куоластыы илик',

@@ -17,8 +17,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'findspam-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'findspam-ip' => '{{Identical|IP Address}}',
 	'findspam-ok' => '{{Identical|OK}}',
 );

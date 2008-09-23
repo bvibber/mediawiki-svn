@@ -39,8 +39,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'closewikis-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'right-editclosedwikis' => '{{doc-right}}',
 );
 
@@ -340,6 +342,13 @@ $messages['it'] = array(
 	'closewikis-log-close' => 'chiusa $2',
 	'closewikis-log-reopen' => 'riaperta $2',
 	'right-editclosedwikis' => 'Modifica le wiki chiuse',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'closewikis-desc' => 'Määt et müjjelesch, enkel Wikis en ene Wiki-Farm zohzemaache.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

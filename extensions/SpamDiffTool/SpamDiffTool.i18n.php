@@ -52,8 +52,10 @@ $messages['ar'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'spamdifftool-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'spamdifftool_submit_buttom' => '{{Identical|Submit}}',
 );
 
@@ -391,6 +393,8 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'spamdifftool' => 'De „schwazze Leß“ för SPAM beärbeide',
+	'spamdifftool-desc' => 'Ene Wääsch för neu Enndräsch en de „schwazze Leß“ för SPAM ze krijje, fun de Sigge met de Ongerscheede zwesche Versijohne uß.',
 	'spamdifftool_submit_buttom' => 'Faßhallde!',
 );
 

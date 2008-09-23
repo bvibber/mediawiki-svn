@@ -21,6 +21,13 @@ $messages['en'] = array(
 	
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'rightfunctions-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -100,11 +107,22 @@ $messages['km'] = array(
 	'rightfunctions-ns' => '(ពីការការពារលំហឈ្មោះ)',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'rightfunctions-desc' => 'Parser-Fungxjuhne op Rääschte.',
+	'rightfunctions-casc' => '(fun Kaßkade-Quelle)',
+	'rightfunctions-local' => '(fun en Sigg hee em Wiki)',
+	'rightfunctions-ns' => '(fum Appachemang Schotz)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'rightfunctions-desc' => 'Parser Funktiounen déi vun de Benotzerrechter ofhänken',
+	'rightfunctions-local' => '(vun der lokaler Säit)',
 );
 
 /** Marathi (मराठी)

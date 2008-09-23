@@ -384,12 +384,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'watchers' => 'Agachaires',
+	'watchers-desc' => "Afichar [[Special:Watchers|los utilizaires qu'an una pagina dins lor lista de seguit]]",
 	'watchers_link_title' => 'Qui seguís aquesta pagina ?',
 	'watchers_error_article' => '<b>Error :</b> La pagina existís pas.',
-	'watchers_header' => 'Personas que seguisson « $1 »',
+	'watchers_header' => '{{PLURAL:$2|Utilizaire que seguís|Utilizaires que seguisson}} « $1 »',
 	'watchers_noone_watches' => 'Degun seguís pas aquesta pagina.',
-	'watchers_x_or_more' => 'Almens $1 utilizaire(s) seguís(-isson) aquesta pagina.',
-	'watchers_less_than_x' => 'Mens de $1 utilizaires seguisson aquesta pagina.',
+	'watchers_x_or_more' => '$1 utilizaires o quitament {{PLURAL:$1|un autre|maites autres}} an aquesta pagina dins lor lista de seguit.',
+	'watchers_less_than_x' => 'Mens {{PLURAL:$1|d’un utilizaire seguís|de $1 utilizaires seguisson}} aquesta pagina.',
 );
 
 /** Polish (Polski)

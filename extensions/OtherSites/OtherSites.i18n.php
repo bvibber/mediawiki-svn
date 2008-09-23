@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'othersites-desc' => 'Moves interwiki links other than language links in their own portlet',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'othersites-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -60,6 +67,21 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'othersites' => 'outros sitios',
 	'othersites-desc' => 'Move as ligazóns interwiki diferentes ás ligazóns á lingua no seu propio portal',
+);
+
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'othersites' => 'Altri siti',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'othersites' => 'Ander Webßaitß',
+	'othersites-desc' => 'Deit Engerwiki-Lengks (ußer för Shprooche) in ier eije <i lang="en">portlet</i> schuve.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -681,6 +681,14 @@ $messages['tg-cyrl'] = array(
 	'lookupuser_registration' => 'Таърихи сабти ном: $1',
 );
 
+/** Turkish (Türkçe)
+ * @author Mach
+ */
+$messages['tr'] = array(
+	'lookupuser_email' => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_realname' => 'Gerçek isim: $1',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

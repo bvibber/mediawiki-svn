@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'pnghandler-desc' => 'Resize PNGs using pngds',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'pnghandler-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -82,6 +89,13 @@ $messages['it'] = array(
  */
 $messages['km'] = array(
 	'pnghandler-desc' => 'ប្តូរទំហំ PNGs ដោយប្រើ pngds',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'pnghandler-desc' => 'Belder em <i lang="en">portable network graphics</i> (PNG) Fommaat jrüüßer un kleiner Maache.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

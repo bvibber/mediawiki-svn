@@ -735,6 +735,13 @@ $messages['tg-cyrl'] = array(
 	'importfreeimages_promptuserforfilename' => 'Лутфан номи парвандаи мақсадро ворид кунед:',
 );
 
+/** Turkish (Türkçe)
+ * @author Mach
+ */
+$messages['tr'] = array(
+	'importfreeimages_next' => 'Sonraki $1',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

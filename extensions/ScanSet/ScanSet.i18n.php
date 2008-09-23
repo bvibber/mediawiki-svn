@@ -248,6 +248,7 @@ $messages['eo'] = array(
  * @author Remember the dot
  */
 $messages['es'] = array(
+	'scanset-desc' => 'Ver imágenes escaneadas de los conjuntos CD/DVD de Andreas Grosz',
 	'scanset_unrecognised_index_format' => 'Error: Índice de formato desconocido',
 	'scanset_opendir_error' => 'Error: No se puede abrir el directorio $1',
 );

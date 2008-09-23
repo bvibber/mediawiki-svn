@@ -356,6 +356,13 @@ $messages['km'] = array(
 	'call-save-failed' => 'អត្ថបទដូចតទៅនេះមិនត្រូវបានរក្សាទុកទៅក្នុងទំព័រ <big>[[$1]]</big> ពីព្រោះទំព័រនោះមានរួចហើយ។',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'call-desc' => 'Kann ene Link op en Schabloon udder och jeede Sigg em Wiki maache, un derbei Parrametere övverjävve. Kam_mer em Brauser un em Wiki-Täx bruche.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

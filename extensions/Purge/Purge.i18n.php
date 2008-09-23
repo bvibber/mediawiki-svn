@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'purge-desc' => 'Adds a purge tab on all normal pages, and bypasses the purge check for anonymous users allowing for quick purging of the cache',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'purge-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -134,6 +141,14 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'purge' => '새로 고침',
 	'purge-desc' => '모든 일반 문서에 새로 고침 탭을 추가합니다. 그리고 캐시를 지우려고 하는 익명 사용자에 대한 확인 검사를 우회할 수 있도록 합니다.',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'purge' => '<i lang="en">cache</i> leddisch maache',
+	'purge-desc' => 'Määt ene „{{int:purge}}“ Lenk op jede nomaale Sigg, ömjeiht de Pröfung för de namelose Metmaacher, esu dat jeder flöck der <i lang="en">cache</i> för en Sigg leddisch maache kann.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

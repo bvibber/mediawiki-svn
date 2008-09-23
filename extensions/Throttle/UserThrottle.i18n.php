@@ -119,6 +119,19 @@ $messages['jv'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Watesana panggawéyan panganggo',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'För der Momänt künne mer jrad kei neu Metmaacher Aanmelldunge aannämme,
+allderwiel_er zovill op eijmool dobei jekumme sen, en de letzte Menutte.
+Waat e koot Momäntsche beß mer widder jet Luff han, un versök et dann noch ens.',
+	'acct_creation_global_hard_throttle_hit' => 'För der Momänt künne mer jrad kei neu Metmaacher Aanmelldunge aannämme, allderwiel_er zovill op eijmool dobei jekumme sen, en de letzte Sekunde. Waat e koot Momäntsche beß mer widder jet Luff han, un versök
+et dann noch ens.
+De kanns Dingem Brauser singe Knopp för „de Sigg neu lade“ doför nämme.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Neu Metmaacher Aanmelldunge bejrenze.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

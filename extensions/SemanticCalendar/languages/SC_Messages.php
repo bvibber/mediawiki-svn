@@ -19,6 +19,13 @@ $messages['en'] = array(
 	'sc_gotomonth'     => 'Go to month',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'sc_desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */
@@ -222,6 +229,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'sc_desc' => 'Ene Kalländer, dä semantesche Dattums-Enfommazjuhne aanzeisch.',
 	'sc_today' => 'Hück',
 );
 

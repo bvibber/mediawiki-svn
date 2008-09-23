@@ -27,8 +27,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'profiling-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'profiling-ok' => '{{Identical|OK}}',
 	'profiling-data-process' => '{{Identical|Process}}',
 	'profiling-data-count' => '{{Identical|Count}}',
@@ -245,6 +247,13 @@ $messages['km'] = array(
  */
 $messages['krj'] = array(
 	'profiling-ok' => 'OK dun',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'profiling-desc' => '[[Special:Profiling|Söndersigg]], öm noh <i lang="en">profiling</i> Date ze söke un se ze ongersöke.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

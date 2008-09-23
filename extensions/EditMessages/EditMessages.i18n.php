@@ -436,7 +436,7 @@ $messages['lb'] = array(
 	'editmsg-warning-file' => '* Et si Feeler beim Liese vun dëse Sproochen begéint ginn: $1',
 	'editmsg-warning-mismatch' => '* Den Originaltext hat net den erwaartene Wert fir dës Sproochen: $1',
 	'editmsg-apply-patch' => 'Patch uwenden',
-	'editmsg-no-patch' => 'De "Patch" Kommanda konnt net ausgeféiert ginn',
+	'editmsg-no-patch' => 'De "Patch" Kommando konnt net ausgeféiert ginn',
 	'editmsg-patch-failed' => 'Patch huet net fonctionnéiert mat dem Feelermessage $1',
 	'editmsg-patch-success' => 'gepatched!',
 );

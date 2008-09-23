@@ -44,8 +44,10 @@ Caution advised, expressions should not be too short or too common.',
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'spamregex-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'spamregex-already-blocked' => '{{Identical|$1 is already blocked}}',
 	'spamregex-text' => '{{Identical|Text}}',
 	'spamregex-summary-log' => '{{Identical|Summary}}',
@@ -423,6 +425,13 @@ $messages['km'] = array(
 	'spamregex-block-success' => 'ហាមឃាត់ដោយជោគជ័យ',
 	'spamregex-text' => '(ឃ្លា)',
 	'spamregex-summary-log' => '(សេចក្តីសង្ខេប)',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'spamregex-desc' => 'Övver <i lang="en">regular expressions</i>, [[Special:SpamRegex|sök esu en Säz eruß]] uß fresch jeänderte Sigge, di mer doh nit han welle.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

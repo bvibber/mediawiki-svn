@@ -159,11 +159,12 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Aleator
  * @author Remember the dot
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'intersection_toomanycats' => '¡Error: Demasiadas categorías!',
 	'intersection_noresults' => 'Error: ¡Sin resultados!',
-	'intersection_noincludecats' => 'Error: ¡Necesita incluir al menos una categoría, o especificar un namespace!',
+	'intersection_noincludecats' => 'Error: ¡Necesita incluir al menos una categoría, o especificar un espacio de nombres!',
 );
 
 /** Persian (فارسی)

@@ -24,8 +24,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'pageby-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'pageby-contributors' => '{{Identical|Contributors}}',
 );
 
@@ -227,6 +229,13 @@ $messages['km'] = array(
 	'pageby-last' => '<a href="$3">បានកែ</a>ចុងក្រោយ $1, $2',
 	'pageby-contributors' => 'អ្នករួមចំណែក៖',
 	'pageby-anon' => '<i>អនាមិក</i>',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'pageby-desc' => 'Zeich de Schriever en de Wikisigge aan met <code><nowiki><pageby></nowiki></code>.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

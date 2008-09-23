@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'random-users-avatars-desc'  => 'Adds <tt>&lt;randomuserswithavatars&gt;</tt> tag to display the avatars of randomly chosen users',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'random-users-avatars-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -76,6 +83,13 @@ $messages['gl'] = array(
 $messages['km'] = array(
 	'random-users-avatars-title' => 'ជួបជាមួយនឹងសហគមន៍',
 	'random-users-avatars-desc' => 'ដាក់បន្ថែមប្លាក<tt>&lt;randomuserswithavatars&gt;</tt>ដើម្បីបង្ហាញអាវ៉ាតារស៍ដោយចៃដន្យដែលអ្នកប្រើប្រាស់បានជ្រើសរើសយក',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'random-users-avatars-desc' => 'Määt et müjjelesch, met <tt>&lt;randomuserswithavatars&gt;</tt> de Avataare fun zofälesch ußsohte Metmaacher aanzezeije.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

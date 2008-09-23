@@ -31,9 +31,11 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'player' => '{{Identical|Player}}',
+	'player-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'player-title' => '{{Identical|Player}}',
 	'player-file' => '{{Identical|Filename}}',
 	'player-play' => '{{Identical|Play}}',
@@ -565,7 +567,7 @@ $messages['oc'] = array(
 	'player-file' => 'Nom de fichièr',
 	'player-play' => 'Jogar',
 	'player-not-allowed' => 'format pas autorizat',
-	'player-not-found' => 'fiquièr introbable',
+	'player-not-found' => 'fichièr introbable',
 	'player-invalid-title' => 'títol pas valid',
 	'player-clicktoplay' => 'Jogar $1',
 	'player-goto-player' => 'Lector',

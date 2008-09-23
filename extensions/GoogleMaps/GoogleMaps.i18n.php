@@ -3324,6 +3324,7 @@ $wgGoogleMapsMessages['th'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Mach
  * @author Suelnur
  */
 $wgGoogleMapsMessages['tr'] = array(
@@ -3332,6 +3333,9 @@ $wgGoogleMapsMessages['tr'] = array(
 	'gm-no-zoom-control' => 'Hiçbiri',
 	'gm-yes' => 'Evet',
 	'gm-no' => 'Hayır',
+	'gm-earth' => 'Dünya',
+	'gm-moon' => 'Ay',
+	'gm-mars' => 'Mars',
 );
 
 /** Tatar (Cyrillic) (Tatarça/Татарча (Cyrillic))

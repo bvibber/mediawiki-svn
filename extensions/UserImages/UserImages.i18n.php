@@ -200,6 +200,15 @@ $messages['km'] = array(
 	'userimages-noimages' => '$1 មិនបានផ្ទុកឡើងនូវរូបភាពណាមួយទេ។',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'userimages-caption' => 'Däm „$1“ sing huhjelade Bellder',
+	'userimages-noname' => 'Dä Metmaacher-Name es Kappes udder jaa nit enjejovve.',
+	'userimages-noimages' => 'Dä „$1“ hät kei Belder huhjelade.',
+);
+
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
  * @author Bangin
  */

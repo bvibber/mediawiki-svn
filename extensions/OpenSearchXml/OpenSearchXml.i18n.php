@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'opensearchxml-desc'             => '[http://www.opensearch.org OpenSearch] JSON interface provides for text extracts',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'opensearchxml-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

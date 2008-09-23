@@ -851,6 +851,7 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'changeauthor' => 'Donn do Schriiver fun ene Version ändere',
+	'changeauthor-desc' => 'Määt et müjjelesch, dä Schriiver fun ene Version fun ene Sigg ze ändere.',
 	'changeauthor-pagenameform-go' => 'Loß Jonn!',
 );
 

@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'purgecache-button'  => 'Purge',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'purgecache-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -171,6 +178,13 @@ $messages['km'] = array(
 	'purgecache' => 'សំអាតឃ្លាំងសំងាត់',
 	'purgecache-purged' => 'ឃ្លាំងសំងាត់ត្រូវបានសំអាតរួចរាល់ហើយ។',
 	'purgecache-button' => 'លុបបំបាត់',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'purgecache-desc' => '[[Special:PurgeCache|Söndersigg]] öm de <i lang="en">OBJECTCACHE</i> Tabell en de Datebank leddisch ze maache.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

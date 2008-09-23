@@ -28,6 +28,13 @@ Please file a bug report.',
 	'smoothgallery-javascript-disabled' => 'Javascript is required to view this gallery properly.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'smoothgallery-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -199,6 +206,13 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'smoothgallery-gallery-not-found' => 'គ្មាន ទីតាំងពិពណ៌ ដែលត្រូវបានស្នើ ។',
 	'smoothgallery-javascript-disabled' => 'តំរូវអោយមាន Javascript ដើម្បី មើលបានល្អ ទីតាំងពិពណ៌ នេះ ។',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'smoothgallery-desc' => 'Määt et müjjelesch, Jallerieje met huhjelade Bellder opzebouwe, met de miehßte Enstellunge fun <i lang="en">SmoothGallery</i>.',
 );
 
 /** Marathi (मराठी)

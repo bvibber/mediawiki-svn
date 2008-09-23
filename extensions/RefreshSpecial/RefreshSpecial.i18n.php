@@ -36,9 +36,11 @@ $messages['en'] = array (
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'refreshspecial' => '{{Identical|Refresh special pages}}',
+	'refreshspecial-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'refreshspecial-title' => '{{Identical|Refresh special pages}}',
 	'refreshspecial-refreshing' => '{{Identical|Refreshing special pages}}',
 	'refreshspecial-success-subtitle' => '{{Identical|Refreshing special pages}}',
@@ -210,6 +212,13 @@ $messages['it'] = array(
 	'refreshspecial-total-display' => '<br />$1 pagine aggiornate per un totale di $2 linee in un tempo di $3 (il tempo totale di esecuzione dello script è di $4)',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'refreshspecial-desc' => 'Määt et müjjelesch, Söndersigge [[Special:RefreshSpecial|fun Hand neu aanzeije]] ze lohße.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -371,6 +380,13 @@ $messages['sk'] = array(
 	'refreshspecial-reconnected' => 'Znovu pripojený.',
 	'refreshspecial-reconnecting' => 'Spojenie zlyhalo, opätovné pripojenie o 10 sekúnd...',
 	'refreshspecial-total-display' => '<br />Obnovených $1 stránok, čo činí $2 riadkov za čas $3 (celkový čas behu skriptu je $4)',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'refreshspecial-here' => '<b>här</b>',
 );
 
 /** Vietnamese (Tiếng Việt)

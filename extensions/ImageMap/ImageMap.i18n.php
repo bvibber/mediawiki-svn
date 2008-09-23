@@ -285,8 +285,8 @@ $messages['es'] = array(
 	'imagemap_no_image' => 'Error: hay que especificar un imagen en la línea primera',
 	'imagemap_invalid_image' => 'Error: la imagen no es válida o no existe',
 	'imagemap_no_link' => 'Error: no se encontró ningún enlace válido al final de la línea $1',
-	'imagemap_no_areas' => 'Error: se debe dar al menos una especificación de area',
-	'imagemap_invalid_coord' => 'Error: hay una coordenada no válida a la línea $1, debe ser un número',
+	'imagemap_no_areas' => 'Error: se debe dar al menos una especificación de área',
+	'imagemap_invalid_coord' => 'Error: hay una coordenada no válida en la línea $1, debe ser un número',
 	'imagemap_description' => 'Acerca de esta imagen',
 );
 

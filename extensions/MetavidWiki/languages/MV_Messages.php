@@ -2984,7 +2984,7 @@ Aqueste tipe de presentacion es pel tèxt qu'es parlat amb lo flus vidèo. De li
 	'mv_advanced_edit' => 'Modificacion avançada',
 	'mv_basic_edit' => 'Modificacion de basa',
 	'mv_remove_category' => 'Levar la categoria',
-	'mv_existing_categories' => 'Categorias existentas :',
+	'mv_existing_categories' => 'categorias :',
 	'mv_add_category' => 'Apondre una categorizacion',
 	'mv_basic_text_desc' => 'Descripcion del tèxt (facultatiu)',
 	'mv_viewnext' => 'Veire ($1)',

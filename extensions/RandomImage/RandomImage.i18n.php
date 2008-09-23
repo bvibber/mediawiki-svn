@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'randomimage-desc' => 'Provides a random media picker using <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'randomimage-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -79,6 +86,13 @@ $messages['ia'] = array(
  */
 $messages['it'] = array(
 	'randomimage-desc' => 'Fornisce un raccoglitore di file casuali utilizzando il tag <tt>&lt;randomimage /&gt;</tt>',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'randomimage-desc' => 'Deit met <tt> &lt;randomimage /&gt; </tt> en zofälije Medije-Datei erußpecke.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

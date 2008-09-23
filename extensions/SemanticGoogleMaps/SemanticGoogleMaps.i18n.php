@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'semanticgooglemaps-desc'              => 'Allows users to add Google Maps to wiki pages based on structured data',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'semanticgooglemaps-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -70,6 +77,13 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Ver as coordenadas',
 	'semanticgooglemaps-desc' => 'Permite aos usuarios engadir Mapas do Google a páxinas do wiki baseándose en datos estruturados',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'semanticgooglemaps-desc' => 'Määt et müjjelesch, op semantesche Date opjeboute <i lang="en">Google Maps</i> (Landkaate) en et Wiki ennzeboue.',
 );
 
 /** Dutch (Nederlands)

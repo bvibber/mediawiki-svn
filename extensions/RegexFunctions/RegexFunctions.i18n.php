@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'regexfunctions-desc' => 'Regular expression parser functions',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'regexfunctions-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -44,6 +51,13 @@ $messages['gl'] = array(
  */
 $messages['it'] = array(
 	'regexfunctions-desc' => 'Funzioni parser di espressioni regolari',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'regexfunctions-desc' => 'Parser-Fungxjuhne met <i lang="en">regular expressions</i> dren.',
 );
 
 /** Dutch (Nederlands)

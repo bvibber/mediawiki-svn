@@ -516,18 +516,23 @@ $messages['bg'] = array(
  */
 $messages['de'] = array(
 	'deletequeue-desc' => 'Erstellt ein [[Special:DeleteQueue|auf einer Warteschlange basierendes System zur Verwaltung von Löschungen]]',
+	'deletequeue-action-queued' => 'Löschung',
 	'deletequeue-action' => 'Löschung vorschlagen',
 	'deletequeue-action-title' => '„$1“ zur Löschung vorschlagen',
 	'deletequeue-action-text' => "{{SITENAME}} hat mehrere unterschiedliche Vorgehensweisen bei der Löschung von Seiten:
 *Wenn du glaubst, dass diese Seite die ''Schnelllöschkriterien'' erfüllt, kannst du sie [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} hier] vorschlagen.
 *Wenn diese Seite nicht zur Schnelllöschung geeignet ist, aber die Löschung ''wahrscheinlich nicht kontrovers'' ist, solltest du sie zur [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} unumstrittenen Löschung] vorschlagen.
 *Wenn die Löschung dieser Seite ''wahrscheinlich umstritten'' ist, solltest du [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} eine Diskussion eröffnen].",
+	'deletequeue-action-text-queued' => 'Du kannst die folgenden Seiten für den Löschantrag aufrufen:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Pros und Contras].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Stimme zu diesem Löschantrag abgeben].',
 	'deletequeue-permissions-noedit' => 'Du musst eine Seite bearbeiten können, um ihren Löschstatus zu verändern.',
 	'deletequeue-generic-reasons' => '* Oft vorkommende Gründe
   ** Vandalismus
   ** Werbung
   ** Wartung
   ** Nicht mit dem Projektziel vereinbar',
+	'deletequeue-nom-alreadyqueued' => 'Diese Seite ist bereits in der Lösch-Warteschlange.',
 	'deletequeue-speedy-title' => '„$1“ zur Schnelllöschung vorschlagen',
 	'deletequeue-speedy-text' => "Auf dieser Seite kannst du „'''$1'''“ zur Schnelllöschung vorschlagen.
 
@@ -551,6 +556,7 @@ Wenn nach fünf Tagen niemand Einspruch gegen die Löschung eingelegt hat, wird 
 	'right-prod-review' => 'Unumstrittene Löschanträge prüfen',
 	'right-deletediscuss-nominate' => 'Löschdiskussionen eröffnen',
 	'right-deletediscuss-review' => 'Löschdiskussionen beenden',
+	'right-deletequeue-vote' => 'Für oder gegen die Löschung stimmen',
 	'deletequeue-queue-speedy' => 'Schnelllöschung',
 	'deletequeue-queue-prod' => 'Löschantrag',
 	'deletequeue-queue-deletediscuss' => 'Löschdiskussion',
@@ -1543,18 +1549,23 @@ Forsikre deg om at siden kan hurtigslettes ifm. retningslinjene.",
  */
 $messages['oc'] = array(
 	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|sistèma de coa per gerir las supressions]]',
+	'deletequeue-action-queued' => 'Supression',
 	'deletequeue-action' => 'Suggerís la supression',
 	'deletequeue-action-title' => 'Suggerís la supression de « $1 »',
 	'deletequeue-action-text' => "{{SITENAME}} dispausa d'un nombre de processús per la supression de las paginas :
 *Se cresètz qu'aquesta pagina deu passar per una ''supression immediata'', ne podètz far la demanda [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} aicí].
 *S'aquesta pagina relèva pas de la supression immediata, mas ''qu'aquesta supression pausarà pas cap de controvèrsa per'', vos caldrà [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} prepausar una supression pas contestabla].
 *Se la supression de la pagina es ''subjècta a controvèrsas'', vos caldrà [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} dobrir una discussion].",
+	'deletequeue-action-text-queued' => "Podètz visionar las paginas seguentas per aquesta supression :
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Veire las acòrdis e las objeccions].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Acceptar o objectar per la supression d'aquesta pagina].",
 	'deletequeue-permissions-noedit' => 'Vos cal èsser capable de modificar una pagina per poder afectar son estatut de supression.',
 	'deletequeue-generic-reasons' => '*Motius mai corrents
 ** Vandalisme
 ** Spam
 ** Mantenença
 ** Fòra de critèris',
+	'deletequeue-nom-alreadyqueued' => 'Aquesta pagina ja es dins la coa de las supressions.',
 	'deletequeue-speedy-title' => 'Marcar « $1 » per una supression immediata',
 	'deletequeue-speedy-text' => "Podètz utilizar aqueste formulari per marcar la pagina « '''$1''' » per una supression immediata.
 
@@ -1578,6 +1589,7 @@ Se, aprèp cinc jorns, degun a pas emés d’objeccion per aquò, serà suprimid
 	'right-prod-review' => 'Tornar veire las proposicions de supression pas contestadas',
 	'right-deletediscuss-nominate' => 'Començar las discussions sus la supression',
 	'right-deletediscuss-review' => 'Clausurar las discussions sus la supression',
+	'right-deletequeue-vote' => 'Consentir o objectar per las supressions',
 	'deletequeue-queue-speedy' => 'Supression immediata',
 	'deletequeue-queue-prod' => 'Supression prepausada',
 	'deletequeue-queue-deletediscuss' => 'Discussion sus la supression',

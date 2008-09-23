@@ -914,6 +914,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'crosswikiblock-desc' => 'Määt et müjjelesch, Metmaacher op ander Wikis ze sperre övver en  [[Special:Crosswikiblock|Söndersigg]].',
 	'crosswikiblock-reason' => 'Aanlass:',
 	'crosswikiunblock-reason' => 'Aanlass:',
 );

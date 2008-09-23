@@ -68,9 +68,13 @@ Probably there is no such user.',
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  * @author SPQRobin
  */
 $messages['qqq'] = array(
+	'regexblock-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'regexblock-special-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'regexblock-stat-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'regexblock-reason-ip' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',
 	'regexblock-reason-name' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',
 	'regexblock-reason-regex' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt><nowiki>[[Special:Contact|contact Wikia]]</nowiki></tt>".',
@@ -789,6 +793,9 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'regexblock-desc' => 'Määt et müjjelesch, Metmaacher  un IP-Addresse övver <i lang="en">regular expressions</i> ze sperre. Deit sperre, un hät en [[Special:Regexblock|Söndersigg]], öm de Sperre ze verwallde.',
+	'regexblock-special-desc' => 'Ander Metmaacher Sperr (övver Metmaacher ier Name, met <i lang="en">regular expressions</i>)',
+	'regexblock-stat-desc' => 'Zeish [[Special:Regexblockstats|Zahle fun Sperre]] för dä Zosatz <i lang="en">regexblock</i> zom Wiki.',
 	'regexblock-form-reason' => 'Aanlass:',
 	'regexblock-view-all' => 'All',
 	'regexblock-view-go' => 'Loß Jonn!',

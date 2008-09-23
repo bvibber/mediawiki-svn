@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'mediafunctions-not-exist'     => '"$1" does not exist',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'mediafunctions-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -159,6 +166,13 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'mediafunctions-invalid-title' => '"$1" មិនជា ចំណងជើង មានសុពលភាព',
 	'mediafunctions-not-exist' => '"$1" មិនមាន',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'mediafunctions-desc' => 'Parser-Funxjohne öm Date övver Medije-Datteije eruß ze krijje.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

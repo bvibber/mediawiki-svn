@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'signaturelogentry'     => 'signed the document $1',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'signature-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -118,6 +125,13 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'signaturelogpage' => 'កំនត់ហេតុនៃការចុះហត្ថលេខា',
 	'signaturelogentry' => 'បានចុះហត្ថលេខាលើឯកសារ $1',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'signature-desc' => 'Määt et Dokumänte [[Special:SignDocument|Ungerschrieve]] müjjelesch.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

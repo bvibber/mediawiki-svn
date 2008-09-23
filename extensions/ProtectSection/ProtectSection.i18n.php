@@ -150,6 +150,13 @@ $messages['km'] = array(
 	'protectsection_forbidden' => 'ត្រូវបានហាមឃាត់',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'protectsection_forbidden' => 'Verbodde',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

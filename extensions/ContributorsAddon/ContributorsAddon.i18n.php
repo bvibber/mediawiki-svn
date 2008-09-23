@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'contributorsaddon-desc' => 'Adds JS onMouseOver popups to "Main contributors" links',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'contributorsaddon-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -79,6 +86,13 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'contributorsaddon-desc' => 'JavaScriptのonMouseOverを用いて、"主な投稿者"へのリンクをポップアップする',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'contributorsaddon-desc' => 'Määt Javaskrip <i lang="en">popups</i> aan de „Houpschriiver“-Links draan.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

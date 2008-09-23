@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'preloader-desc' => 'Provides customisable per-namespace boilerplate text for new pages',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'preloader-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

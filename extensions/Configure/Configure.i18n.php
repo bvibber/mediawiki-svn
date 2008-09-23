@@ -3007,6 +3007,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'configure-section-copyright' => 'קאפירעכט',
+	'configure-view' => 'זעט',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

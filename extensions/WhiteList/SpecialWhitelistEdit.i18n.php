@@ -1128,7 +1128,7 @@ $2',
 	'whitelistnonrestricted' => "L'utilizaire  '''$1''' es pas amb de dreches restrenches.
 Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenches.",
 	'whitelistnever' => 'jamai',
-	'whitelistnummatches' => ' - $1 {{PLURAL:$1|ocuréncia|ocuréncias}}',
+	'whitelistnummatches' => '- {{PLURAL:$1|una ocuréncia|$1 ocuréncias}}',
 );
 
 /** Ossetic (Иронау)

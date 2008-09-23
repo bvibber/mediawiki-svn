@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'emailaddressimage-desc' => 'Adds <tt>&lt;email&gt;</tt> to display an e-mail address as image',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'emailaddressimage-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -117,6 +124,13 @@ $messages['ja'] = array(
  */
 $messages['km'] = array(
 	'emailaddressimage-desc' => 'បន្ថែម<tt>&lt;email&gt;</tt>ដើម្បីបង្ហាញអាសយដ្ឋាន​អ៊ីមែលជារូបភាព',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'emailaddressimage-desc' => '<tt> &lt;email&gt; </tt> määt et müjjelesch, <i lang="en">e-mail</i> Addresse als e Belldsche ußzejävve.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

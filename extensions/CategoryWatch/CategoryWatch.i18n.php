@@ -21,6 +21,13 @@ This message is to notify you that at $3 user $4 $5.",
 	'categorywatch-catsub' => "removed $1 from category $2",
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'categorywatch-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -128,6 +135,13 @@ Questo messaggio ti avverte che alle $3 l\'utente $4 $5.',
 	'categorywatch-catmoveout' => 'ha spostato $1 dalla categoria $2 a $3',
 	'categorywatch-catadd' => 'ha aggiunto $1 alla categoria $2',
 	'categorywatch-catsub' => 'ha rimosso $1 dalla categoria $2',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'categorywatch-desc' => 'Deit aan de Oppassleß noch aanhange, dat mer övver Änderunge aan de Leß met Sigge en en Saachjrop Bescheid kritt.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

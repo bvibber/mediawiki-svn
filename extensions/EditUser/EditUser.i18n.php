@@ -22,8 +22,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'edituser-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'edituser-username' => '{{Identical|Name}}',
 	'edituser-dosearch' => '{{Identical|Search}}',
 );
@@ -453,6 +455,7 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'edituser-desc' => 'Määt et müjjelesch, dat Metmaacher met däm Rääsch dozoh aan anderlüx Enstelleunge driije künne.',
 	'edituser-username' => 'Metmaacher Name',
 	'edituser-dosearch' => 'Sööke',
 );

@@ -826,6 +826,13 @@ $messages['th'] = array(
 	'multiupload-fileuploaded' => 'ไฟล์ถูกอัปโหลดเรียบร้อยแล้ว',
 );
 
+/** Turkish (Türkçe)
+ * @author Mach
+ */
+$messages['tr'] = array(
+	'multiupload-fileuploaded' => 'Dosya yüklendi.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
