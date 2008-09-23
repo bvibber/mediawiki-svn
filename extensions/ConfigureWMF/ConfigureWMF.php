@@ -43,7 +43,7 @@ $wgAvailableRights[] = 'configure';
 
 $wgLogTypes[]                 = 'config';
 $wgLogNames['config']         = 'configurewmf-log';
-$wgLogHeareds['config']       = 'configurewmf-log-header';
+$wgLogHeaders['config']       = 'configurewmf-log-header';
 
 foreach( ConfigureWMF::$settings as $name => $value ) {
 	$logname = $name;
@@ -51,6 +51,8 @@ foreach( ConfigureWMF::$settings as $name => $value ) {
 		$logname = $value['__log__'];
 	$wgLogActions["config/{$logname}"] = "configurewmf-log-{$name}";
 }
+unset( $value );
+unset( $name );
 
 function efLoadConfiguration() {
 	global $wgConfigure;

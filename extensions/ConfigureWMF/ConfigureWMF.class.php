@@ -53,7 +53,7 @@ class ConfigureWMF {
 		$wgMemc = wfGetMainCache();
 
 		// Caching not yet working
-		// $cached = $wgMemc->get( 'configurewmf:data' );
+		$cached = false; //$wgMemc->get( 'configurewmf:data' );
 		if( $cached ) {
 			$this->overrides = $cached;
 			return;

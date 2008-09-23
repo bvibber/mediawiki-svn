@@ -182,7 +182,7 @@ class SpecialConfigure extends SpecialPage {
 				$isstd = $val == $wgConfigureStdlogo;
 				$r .= '<div>' . Xml::radioLabel( wfMsgHtml( 'configurewmf-stdlogo' ),
 					$var, 'stdlogo', 'wgLogoStdlogo', $isstd ) . '</div>';
-				$r .= Xml::radioLabel( wfMsgHtml( 'configurewmf-otherlogo' ),
+				$r .= '<div>' . Xml::radioLabel( wfMsgHtml( 'configurewmf-otherlogo' ),
 					$var, 'other', 'wgLogoOther', !$isstd ) . '&nbsp;' .
 					Xml::input( "{$var}Other", false, $isstd ? '' : $val ) . '</div>';
 				break;
@@ -339,6 +339,6 @@ class SpecialConfigure extends SpecialPage {
 
 	function logAction( $action, $reason, $wiki, $params ) {
 		$log = new LogPage( 'config' );
-		$log->addEntry( $action, Title::newFromText( "Special:Configure" ), $reason, array_merge( array( $wiki ), $params ) );
+		$log->addEntry( $action, $this->getTitle(), $reason, array_merge( array( $wiki ), $params ) );
 	}
 }
