@@ -56,7 +56,7 @@ class SpecialDuplicator extends SpecialPage {
 		}
 
 		$this->setOptions( $wgRequest, $title );
-		$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-header' ) );
+		$wgOut->addWikiMsg( 'duplicator-header' );
 		$wgOut->addHtml( $this->buildForm() );
 
 		# If the token doesn't match or the form wasn't POSTed, stop
@@ -72,7 +72,7 @@ class SpecialDuplicator extends SpecialPage {
 					# Check the destination *does not* exist
 					if( !$this->destTitle->exists() ) {
 						# Check there aren't a hideous number of revisions
-						$dbr =& wfGetDB( DB_SLAVE );
+						$dbr = wfGetDB( DB_SLAVE );
 						$num = $dbr->selectField( 'revision', 'COUNT(*)', array( 'rev_page' => $this->sourceTitle->getArticleId() ), __METHOD__ );
 						if( $num <= $wgDuplicatorRevisionLimit ) {
 							# Attempt to perform the main duplicate op. first
@@ -88,33 +88,34 @@ class SpecialDuplicator extends SpecialPage {
 									}
 								}
 								# Report success to the user
-								$wgOut->addWikiText( $success );
+								$parsed = $wgOut->parse( $success, /*linestart*/true, /*uilang*/true );
+								$wgOut->addHtml( $parsed );
 							} else {
 								# Something went wrong, abort the entire operation
-								$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-failed' ) );
+								$wgOut->addWikiMsg( 'duplicator-failed' );
 							}
 						} else {
 							# Revision count exceeds limit
 							$limit = $wgLang->formatNum( $wgDuplicatorRevisionLimit );
 							$actual = $wgLang->formatNum( $num );
-							$message = wfMsgNoTrans( 'duplicator-toomanyrevisions', $this->sourceTitle->getPrefixedText(), $actual, $limit );
-							$wgOut->addWikiText( $message );
+							$stitle = $this->sourceTitle->getPrefixedText();
+							$wgOut->addWikiMsg( 'duplicator-toomanyrevisions', $stitle, $actual, $limit );
 						}
 					} else {
 						# Destination exists
-						$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-dest-exists', $this->destTitle->getPrefixedText() ) );
+						$wgOut->addWikiMsg( 'duplicator-dest-exists', $this->destTitle->getPrefixedText() );
 					}
 				} else {
 					# Invalid destination title
-					$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-dest-invalid' ) );
+					$wgOut->addWikiMsg( 'duplicator-dest-invalid' );
 				}
 			} else {
 				# Source doesn't exist
-				$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-source-notexist', $this->source ) );
+				$wgOut->addWikiMsg( 'duplicator-source-notexist', $this->source );
 			}
 		} else {
 			# Invalid source title
-			$wgOut->addWikiText( wfMsgNoTrans( 'duplicator-source-invalid' ) );
+			$wgOut->addWikiMsg( 'duplicator-source-invalid' );
 		}
 
 	}
@@ -197,7 +198,7 @@ class SpecialDuplicator extends SpecialPage {
 		global $wgUser, $wgBot;
 		if( !$source->exists() || $dest->exists() )
 			return false; # Source doesn't exist, or destination does
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
 		$sid = $source->getArticleId();
 		# Create an article representing the destination page and save it
