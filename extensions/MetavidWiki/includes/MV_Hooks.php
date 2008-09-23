@@ -59,7 +59,7 @@ function mvSeqTag(&$input, &$argv, &$parser){
 	//check namespace (seq only show up via <tag> when in mvSequence namespace
 	if( !$wgTitle instanceof Title ) {
 		wfDebugLog( 'mvSeqTag', "wgTitle not instance of Title`" );
-		return true;			
+		return true;		
 	}
 	if($wgTitle->getNamespace() == MV_NS_SEQUENCE ){	
 		$marker = MV_SequencePage::doSeqReplace($input, $argv, $parser);
@@ -101,9 +101,11 @@ function mvCustomEditor(&$article, &$user){
 	global $wgTitle, $wgRequest;
 	switch($wgTitle->getNamespace()){
 		case MV_NS_SEQUENCE:
-			$MvInterface = new MV_MetavidInterface('edit_sequence', $article);
+			/*$MvInterface = new MV_MetavidInterface('edit_sequence', $article);
 			$MvInterface->render_full();		
 			return false;
+			*/
+			return true;
 		break;
 		case MV_NS_STREAM:
 			$editor = new MV_EditStreamPage($article);

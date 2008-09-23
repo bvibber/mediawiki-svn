@@ -1,7 +1,7 @@
 <?
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
-//include the default settings:
-include_once(dirname(__FILE__)  .'/includes/MV_DefaultSettings.php');
+// include the default settings:
+include_once( dirname( __FILE__ )  . '/includes/MV_DefaultSettings.php' );
 
 /*
  * your settings overrides here: 
@@ -11,7 +11,7 @@ include_once(dirname(__FILE__)  .'/includes/MV_DefaultSettings.php');
 $mvExternalImages = true;
 $mvExternalImgServerPath = 'http://metavid.ucsc.edu/wiki/index.php';
 
-//for sunlight network annalysis we include google analytics 
+// for sunlight network annalysis we include google analytics 
 $mvExtraHeader = '<script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));

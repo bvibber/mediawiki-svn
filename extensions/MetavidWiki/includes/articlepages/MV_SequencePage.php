@@ -21,16 +21,17 @@ class MV_SequencePage extends Article{
  	var $clips=array();
  	function __construct($title){  		
  		global $wgRequest; 		
- 		mvfAddHTMLHeader('sequence');
+ 		/*mvfAddHTMLHeader('sequence');
  		if($title!=null){
  			parent::__construct($title);
  		} 		
- 		return $this;
+ 		return $this;*/
+ 		return parent::__construct($title);
  	}
  	/*function doSeqReplace(&$input, &$argv, &$parser){
  		return 
  	}*/
- 	function parsePlaylist(){
+ 	/*function parsePlaylist(){
  		global $wgParser,$wgOut;
  		//valid playlist in-line-attributes:
 		$mvInlineAttr = array('wClip', 'mvClip', 'title','linkback','desc','desc','image');
@@ -115,7 +116,7 @@ class MV_SequencePage extends Article{
  					
  		}
  		//print_r($this->clips);
- 	}
+ 	}*/
  	function doSeqReplace(&$input, &$argv, &$parser){	
  		global $wgTitle,$wgUser,$wgRequest, $markerList; 		
  		$sk = $wgUser->getSkin();

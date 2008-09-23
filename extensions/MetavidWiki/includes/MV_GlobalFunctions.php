@@ -191,7 +191,7 @@ function mvSetupExtension(){
 	$wgHooks['ParserAfterTidy'][]			= 'mvParserAfterTidy';	
 	
 	$wgHooks['CustomEditor'][] = 'mvCustomEditor';
-	$wgParser->setHook( 'sequence', 'mvSeqTag' );
+	$wgParser->setHook( 'sequence_xml', 'mvSeqTag' );
 
 	$wgParser->setFunctionHook( 'mvData', 'mvMagicParserFunction_Render' );
 	
