@@ -118,6 +118,11 @@ var mv_init_interface = {
 				ebvid['org_eb_play_or_pause'] = ebvid['play_or_pause'];
 				ebvid['play_or_pause'] = function(){mv_play_or_pause();}
 			}
+			//use mvd images for time updates (avoids lots of arbitrary time hits to server) 
+			if(ebvid['updateTimeThumb'].toString()!='function(){return true;}'){
+				ebvid['updateTimeThumb']=function(){return true;}
+			}
+			
 			/*if(ebvid['showVideoDownload'].toString!='function(){mv_doShowVideoDownload();}'){
 				ebvid['org_showVideoDownload'] = ebvid['showVideoDownload'];
 				ebvid['showVideoDownload'] = function(){mv_doShowVideoDownload();}
@@ -298,8 +303,14 @@ function mv_doTextScrollMonitor(){
 				mv_scroll2Time(evid.currentTime);
 		}
 		if( evid.userSlide ){		
-			mv_scroll2Time( ntp2seconds(evid.jump_time) );
+			var mvd_id = mv_scroll2Time( ntp2seconds(evid.jump_time) );
+			//also update the image:
+			var img_url = $j('#mv_fd_mvd_'+mvd_id).attr('image_url');
+			//js_log('set imag via mv_doTextScrollMonitor:'+img_url);
+			$j('#embed_vid').get(0).updateThumbnail(img_url);
 		}
+		 		
+		
 	}
 	//if userScroll scroll/update
 }
@@ -325,6 +336,7 @@ function mv_scroll2Time(sec_time){
 			});				
 		}
 	}
+	return pMvd_id;
 }
 /*function mv_doShowVideoDownload(){
 	js_log('f:mv_doShowVideoDownload');

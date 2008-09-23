@@ -509,7 +509,11 @@ var ctrlBuilder = {
     	var o='';    
     	for(i in ctrlBuilder.components){
     		if(ctrlBuilder.suports[i]){
-    			if(ctrlBuilder.avaliable_width > ctrlBuilder.components[i].w){
+    			if(ctrlBuilder.avaliable_width > ctrlBuilder.components[i].w ){
+    				//special case with playhead don't add unless we have 60px
+	    			if( i=='play_head' && ctrlBuilder.avaliable_width < 60 )
+	    				continue;
+	    				
     				o+=ctrlBuilder.components[i].o();
     				ctrlBuilder.avaliable_width -= ctrlBuilder.components[i].w;
     			}else{
@@ -2370,13 +2374,19 @@ embedVideo.prototype = {
 		}				
 	},
 	//updates the thumbnail if the thumbnail is being displayed
-	updateThumbnail : function(src, quick_switch){
+	updateThumbnail : function(src, quick_switch){		
+		//make sure we don't go to the same url if we are not already updating: 
+		if( !this.thumbnail_updating && $j('#img_thumb_'+this.id).attr('src')   == src )
+			return false;
+		//if we are updating don't re-go to the updating url: 
+		if(this.thumbnail_updating && $j('#new_img_thumb_'+this.id).attr('src') == src )
+			return false;
+		
 		js_log('set to thumb:'+ src);
 		if(quick_switch){
 			$j('#img_thumb_'+this.id).attr('src', src);
 		}else{
-			var _this = this;
-			
+			var _this = this;			
 			//if still animating remove new_img_thumb_
 			if(this.thumbnail_updating==true)
 				$j('#new_img_thumb_'+this.id).stop().remove();			
