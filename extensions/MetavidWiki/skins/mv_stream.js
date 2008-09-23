@@ -90,9 +90,9 @@ var mv_init_interface = {
 		//add_custom_effects();
 		//set up the init values for mouse over restore:
 		org_vid_title = $j('#mv_stream_time').html();
-		if(!$j('#embed_vid').get(0)){
+		if(!$j('#embed_vid').get(0).ready_to_play){
 			//no embed video present stop init
-			return '';
+			return js_log('no clip ready to play');
 		}
 		org_vid_time_req = $j('#embed_vid').get(0).getTimeReq();
 		org_thum_src = $j('#embed_vid').get(0).thumbnail;

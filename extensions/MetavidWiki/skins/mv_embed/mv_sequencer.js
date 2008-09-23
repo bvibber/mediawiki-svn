@@ -16,8 +16,26 @@
  *  enables more dynamic layouts
  *  exports back out to json or inline format
  */
+ 
+gMsg['menu_welcome']='Welcome';
+gMsg['menu_cliplib']='Clip Library';
+gMsg['menu_transition']='Transitions';
+gMsg['menu_soundtrack']='Soundtrack';
+		
+gMsg['zoom_in']='Zoom In';
+gMsg['zoom_out']='Zoom Out';
+gMsg['cut_clip']='Cut Clips';
+gMsg['expand_track']='Expand Track';
+gMsg['colapse_track']='Colapse Track';
+gMsg['play_clip']='Play From Playline Position';
+gMsg['pixle2sec']='pixles to seconds';
+gMsg['rmclip']='Remove Clip';
+gMsg['clip_in']='clip in';
+gMsg['clip_out']='clip out';
+
  //used to set default values and validate the passed init object
 var sequencerDefaultValues = {
+	
 	instance_name:'mvSeq', //for now only one instance by name mvSeq is allowed	
 	sequence_container_id:'null',//text value (so that its a valid property) 
 	video_container_id:'mv_video_container',
@@ -25,7 +43,8 @@ var sequencerDefaultValues = {
 	timeline_id:'mv_timeline',
 	plObj_id:'plobj',
 
-
+	track_timeline_format:'boxes', //boxes (imovie like) or timeline ( finalCut like) 
+	
 	timeline_scale:.25, //in pixel to second ratio ie 100pixles for every ~30seconds
 	timeline_duration:500, //default timeline length in seconds
 	playline_time:0,
@@ -35,19 +54,7 @@ var sequencerDefaultValues = {
 	// note some options will be lost in block rendering mode (like cutting clips etc) 	
 	timeline_mode:'time', 
 	//Msg are all the language specific values ... 
-	// (todo overwite by msg values preloaded in the page)
-	Msg:{
-		zoom_in:'Zoom In',
-		zoom_out:'Zoom Out',
-		cut_clip:'Cut Clips',
-		expand_track:'Expand Track',
-		colapse_track:'Colapse Track',
-		play_clip:'Play From Playline Position',
-		pixle2sec:'pixles to seconds',
-		rmclip:'Remove Clip',
-		clip_in:'clip in',
-		clip_out:'clip out'
-	},	
+	// (@@todo overwite by msg values preloaded in the page)	
 	//tack/clips can be pushed via json or inline playlist format
 	inline_playlist:'null', //text value so its a valid property 
 	inline_playlist_id:'null',
@@ -76,34 +83,55 @@ mvSequencer.prototype = {
 				this[i]=initObj[i];
 			}
 		}		
+		if(this.sequence_container_id==null)
+			return js_log('Error: no sequence_container_id');
+			
 		//check for sequence_container
 		if(this.sequence_container_id!='null'){
-			//@@todo make sure sequence container position is relative
-			//@@todo make sure the dim is safe size > 400x300 or so
-			$j('#'+this.sequence_container_id).css('position', 'relative');
+			
+			//$j('#'+this.sequence_container_id).css('position', 'relative');
 			this['base_width']=$j('#'+this.sequence_container_id).width();
 			this['base_height']=$j('#'+this.sequence_container_id).height();
 			
+			/*
 			var vid_width = (Math.round(this['base_width']*.5)>320)?
 						  Math.round(this['base_width']*.5):320;
 			var vid_height =  Math.round(vid_width*.75)+30;
+			*/
+			var vid_width=320;
+			var vid_height=240+30;
+			
 			
 			//add the container divs (with basic layout) 
 			$j('#'+this.sequence_container_id).html(''+
-				'<div id="'+this.video_container_id+'" style="position:absolute;' +
+				'<div id="'+this.video_container_id+'" style="position:absolute;right:0px;top:0px;' +
 					'width:'+vid_width+'px;height:'+vid_height+'px;border:solid thin blue;"/>'+
 				'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
-					'left:'+(vid_width+10)+'px;right:0px;top:0px;height:'+vid_height+'px;border:solid thin black;"/>'+
+					'left:0px;right:'+(vid_width+10)+'px;top:0px;height:'+vid_height+'px;border:solid thin black;"/>'+
 				'<div id="'+this.timeline_id+'" style="position:absolute;' + 
 					'left:0px;right:0px;top:'+(vid_height+10)+'px;bottom:0px;border:solid thin red;"/>');
-
+			
+			js_log('set: '+this.sequence_container_id + ' html to:'+ "\n"+
+				$j('#'+this.sequence_container_id).html()
+			);
 			//add some sample tool content: (not translated since sequence_tools_id is generally overwritten
-			$j('#'+this.sequence_tools_id).html(
-				'<span style="margin:10px;"><b>Sample Sequence Methods:</b><ul>' +
-					'<li><a href="javascript:'+this.instance_name+'.addClip({track_id:0,type:\'mvClip\',mvclip:\'senate_proceeding_12-07-06?t=04:46:27/04:46:58\'})">Add <i>I fancy pencils</i> clip</a></li>' +				
-					'<li><a href="javascript:'+this.instance_name+'.addRss({track_id:0,src:\'http://metavid.ucsc.edu/overlay/archive_browser/rss_filter_view?filters[0][type]=match&filters[0][val]=peace&start=0&rpp=10\'})">Add last 10 mentions of peace</li>' +				
-				'</ul>'+
-				'</span>'
+			var menu_items = {
+				'welcome':1,
+				'cliplib':1,
+				'transition':1,
+				'soundtrack':1
+			};
+			var menu_html = '<ul style="list-style-type:none;list-style-position:outside;display:block;">';
+			for(var i in menu_items){
+				menu_html+='<li style="display:inline;padding:10px;"><a style="color:#fff" href="javascript:'+this.instance_name+'.disp(\''+i+'\')">'+getMsg('menu_'+i)+'</a></li>';
+			}
+			menu_html+='</ul>';
+			$j('#'+this.sequence_tools_id).html( menu_html + 
+				'<div id="seq_tool_disp_'+this.instance_name+'">Welcome bla bla<br>' +
+					'1<br>' +
+					'2<br>' +
+					'3<br>' +
+				'</div>'
 			);
 			
 		}		
@@ -111,19 +139,19 @@ mvSequencer.prototype = {
 		$j('#'+this.timeline_id).html(''+
 			'<div id="'+this.timeline_id+'_left_cnt" class="mv_tl_left_cnt">'+
 				'<div id="'+this.timeline_id+'_head_control" style="position:absolute;top:0px;left:0px;right:0px;height:30px;">' +
-					'<a title="'+this.Msg.play_clip+'" href="javascript:'+this.instance_name+'.play_jt()">'+
+					'<a title="'+getMsg('play_clip')+'" href="javascript:'+this.instance_name+'.play_jt()">'+
 						getTransparentPng({id:this.timeline_id+'_play', width:"16", height:"16", border:"0", 
 							src:mv_embed_path + 'images/control_play_blue.png' }) +						
 					'</a>'+
-					'<a title="'+this.Msg.zoom_in+'" href="javascript:'+this.instance_name+'.zoom_in()">'+
+					'<a title="'+getMsg('zoom_in')+'" href="javascript:'+this.instance_name+'.zoom_in()">'+
 						getTransparentPng({id:this.timeline_id+'_zoom_in_icon', width:"16", height:"16", border:"0", 
 							src:mv_embed_path + 'images/zoom_in.png' }) +						
 					'</a>'+
-					'<a title="'+this.Msg.zoom_out+'" href="javascript:'+this.instance_name+'.zoom_out()">'+
+					'<a title="'+getMsg('zoom_out')+'" href="javascript:'+this.instance_name+'.zoom_out()">'+
 						getTransparentPng({id:this.timeline_id+'_zoom_in_icon', width:"16", height:"16", border:"0", 
 							src:mv_embed_path + 'images/zoom_out.png' }) +						
 					'</a>'+
-					'<a title="'+this.Msg.cut_clip+'" href="javascript:'+this.instance_name+'.cut_mode()">'+
+					'<a title="'+getMsg('cut_clip')+'" href="javascript:'+this.instance_name+'.cut_mode()">'+
 						getTransparentPng({id:this.timeline_id+'_cut', width:"16", height:"16", border:"0", 
 							src:mv_embed_path + 'images/cut.png' }) +						
 					'</a>'+					
@@ -196,13 +224,13 @@ mvSequencer.prototype = {
 					var track_height=60;
 					var exc_img = 'opened';
 					var exc_action='close';
-					var exc_msg = this.Msg.colapse_track;
+					var exc_msg = getMsg('colapse_track');
 				break;
 				case 'text':
 					var track_height=20;
 					var exc_img = 'closed';
 					var exc_action='open';
-					var exc_msg = this.Msg.expand_track;
+					var exc_msg = getMsg('expand_track');
 				break;
 			}
 			//add track name:
@@ -429,9 +457,9 @@ mvSequencer.prototype = {
 									'" class="mv_time_clip_text mv_clip_drag">'+clip.title;	
 						}																																										
 						//add in per clip controls
-						track_html+='<div title="'+this.Msg.clip_in+' '+clip.embed.start_ntp+'" class="ui-resizable-w ui-resizable-handle" style="width: 16px; height: 16px; left: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_contract.png\');"></div>'+"\n";
-						track_html+='<div title="'+this.Msg.clip_out+' '+clip.embed.end_ntp+'" class="ui-resizable-e ui-resizable-handle" style="width: 16px; height: 16px; right: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_expand.png\');"></div>'+"\n";
-						track_html+='<div title="'+this.Msg.rmclip+'" onClick="'+this.instance_name+'.removeClip('+track_id+','+j+')" style="position:absolute;cursor:pointer;width: 16px; height: 16px; left: 0px; bottom:2px;background:url(\''+mv_embed_path+'images/delete.png\');"></div>'+"\n";
+						track_html+='<div title="'+getMsg('clip_in')+' '+clip.embed.start_ntp+'" class="ui-resizable-w ui-resizable-handle" style="width: 16px; height: 16px; left: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_contract.png\');"></div>'+"\n";
+						track_html+='<div title="'+getMsg('clip_out')+' '+clip.embed.end_ntp+'" class="ui-resizable-e ui-resizable-handle" style="width: 16px; height: 16px; right: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_expand.png\');"></div>'+"\n";
+						track_html+='<div title="'+getMsg('rmclip')+'" onClick="'+this.instance_name+'.removeClip('+track_id+','+j+')" style="position:absolute;cursor:pointer;width: 16px; height: 16px; left: 0px; bottom:2px;background:url(\''+mv_embed_path+'images/delete.png\');"></div>'+"\n";
 						track_html+='<span style="display:none;" class="mv_clip_stats"></span>';																							
 						track_html+='</span>';	
 						//droppable_html+='<div id="dropBefore_'+i+'_c_'+j+'" class="mv_droppable" style="height:'+this.track_thumb_height+'px;left:'+clip.left_px+'px;width:'+Math.round(clip.width_px/2)+'px"></div>';

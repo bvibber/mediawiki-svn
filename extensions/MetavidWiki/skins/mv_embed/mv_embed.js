@@ -204,10 +204,8 @@ var mvEmbed = {
  		$j.ajaxSetup({		  
 		  cache: true
 		});
- 		js_log('jquery loaded'); 		
- 		
+ 		js_log('jquery loaded'); 		 		
 		mvJsLoader.doLoad(_this.lib_plugins, function(){
-			js_log('loaded ui core');
 			//load control ui after ui.core loaded
 			mvJsLoader.doLoad(_this.lib_controlui,function(){
 				js_log('plugins loaded');
@@ -954,12 +952,11 @@ function mv_embed(){
     }
 }
 
-var sq_load_time=0;
 function mv_do_sequence(initObj){
 	js_log('mv_do_sequence');
 	//issue a request to get the css file (if not already included):
-	if(!styleSheetPresent(mv_embed_path+'mv_sequence.css'))
-		loadExternalCss(mv_embed_path+'mv_sequence.css');
+	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css'))
+		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');
 	//make sure we have the required mv_ebed libs (they are not loaded when no video element is on the page)
 	mvEmbed.load_libs(function(){
 		//load playlist object and drag,drop,resize,hoverintent,libs
@@ -2474,7 +2471,7 @@ embedVideo.prototype = {
 
 	        //fix for IE<7 and its lack of PNG support:
 		out+=getTransparentPng(new Object ({id:'play_'+id, width:play_btn_width, height:play_btn_height, border:"0",
-						src:mv_embed_path + '/skins/'+mv_skin_name+'/images/player_big_play_button.png' }));
+						src:mv_embed_path + '/skin/images/player_big_play_button.png' }));
 		out+='</a></div>';
 		return out;*/
 	},

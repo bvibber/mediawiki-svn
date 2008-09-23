@@ -141,7 +141,15 @@ mvPlayList.prototype = {
 		$j('body').append('<div id="overlay"/> '+
 						'<div id="modalbox" class="editor">');
 		$j('#modalbox').html('loading editor<blink>...</blink>');
-						
+		var _this=this;
+		js_log("calling sequence with url:"+ _this.src);
+		//load sequencer: 
+		mv_do_sequence({
+				"sequence_container_id":'modalbox', 
+				"mv_pl_url_id":_this.src //kind of redundant but make for a clean "cancel".. 
+				// we could switch to moving around dom elements if performance is an issue 
+			});
+					
 	},
 	selectPlaybackMethod:function(){
 		this.cur_clip.embed.selectPlaybackMethod();

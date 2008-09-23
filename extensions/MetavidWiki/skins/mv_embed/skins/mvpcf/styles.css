@@ -13,10 +13,10 @@
 	background:#262626 none repeat scroll 0 0;
 	border:3px solid #666666;
 	left:10%;
-	top:10%;	
+	top:5%;	
 	position:fixed;
 	width:80%;
-	height:80%;	
+	height:90%;	
 	z-index:100;
 	color:#fff;
 }
