@@ -78,7 +78,7 @@ class CodeRevision {
 				'cr_author' => $this->mAuthor,
 				'cr_timestamp' => $dbw->timestamp( $this->mTimestamp ),
 				'cr_message' => $this->mMessage,
-				'cr_status' => $this->mState ),
+				'cr_status' => $this->mStatus ),
 			__METHOD__,
 			array( 'IGNORE' ) );
 
