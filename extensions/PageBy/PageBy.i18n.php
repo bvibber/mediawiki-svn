@@ -15,7 +15,7 @@ $messages = array();
  * @author Daniel Kinzler, brightbyte.de
  */
 $messages['en'] = array(
-	'pageby-desc'         => 'Shows contributors inline on a wiki page using the tag<code><nowiki><pageby></nowiki></code>',
+	'pageby-desc'         => 'Shows contributors inline on a wiki page using the tag <code><nowiki><pageby></nowiki></code>',
 	'pageby-first'        => 'Page created by $1, $2',
 	'pageby-last'         => 'Last <a href="$3">modified</a> by $1, $2',
 	'pageby-contributors' => 'Contributors:',
