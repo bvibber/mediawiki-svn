@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'opensearchxml-desc'             => '[http://www.opensearch.org OpenSearch] JSON interface provides for text extracts',
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON interface provides for text extracts',
 );
 
 /** Message documentation (Message documentation)
@@ -49,6 +49,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'opensearchxml-desc' => 'A interface que [http://www.opensearch.org OpenSearch] JSON proporciona para extractar textos',
+);
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'opensearchxml-desc' => 'ממשק JSON ל־[http://www.opensearch.org OpenSearch] המאפשר צפייה בקטעי טקסט',
 );
 
 /** Dutch (Nederlands)
