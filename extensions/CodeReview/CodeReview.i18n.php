@@ -54,6 +54,12 @@ $messages['en'] = array(
 	'repoadmin-edit-view' => 'ViewVC path:',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'The repository "[[Special:Code/$1|$1]]" has been sucessfully modified.',
+
+	'right-repoadmin' => 'Manage code repositories',
+	'right-codereview-add-tag' => 'Add new tags to revisions',
+	'right-codereview-remove-tag' => 'Remove tags from revisions',
+	'right-codereview-post-comment' => 'Add comments on revisions',
+	'right-codereview-set-status' => 'Change revisions status',
 );
 
 $messages['fr'] = array(
@@ -63,12 +69,14 @@ $messages['fr'] = array(
 	'code-field-id' => 'Révision',
 	'code-field-author' => 'Auteur',
 	'code-field-message' => 'Commentaire',
+	'code-field-status' => 'Statut',
 	'code-field-timestamp' => 'Date',
 	'code-rev-author' => 'Auteur :',
 	'code-rev-comment-by' => 'Commentaire par $1',
 	'code-rev-comment-submit' => 'Ajouter le commentaire',
 	'code-rev-comment-preview' => 'Prévisualisation',
 	'code-rev-diff' => 'Différence',
+	'code-rev-diff-link' => 'diff',
 	'code-rev-message' => 'Commentaire :',
 	'code-rev-repo' => 'Dépôt :',
 	'code-rev-rev' => 'Révision :',
@@ -78,8 +86,14 @@ $messages['fr'] = array(
 	'code-rev-modified-c' => 'copié',
 	'code-rev-modified-d' => 'supprimé',
 	'code-rev-modified-m' => 'modifié',
+	'code-rev-status' => 'Statut :',
+	'code-rev-status-set' => 'Changer le statut',
 	'code-rev-tag-add' => 'Ajouter l\'attribut',
 	'code-rev-tags' => 'Attributs :',
+	'code-status-new' => 'nouveau',
+	'code-status-fixme' => 'a réparer',
+	'code-status-resolved' => 'résolu',
+	'code-status-ok' => 'ok',
 
 	'repoadmin' => 'Administration des dépôts',
 	'repoadmin-new-legend' => 'Créer un nouveau dépôt',
@@ -90,5 +104,11 @@ $messages['fr'] = array(
 	'repoadmin-edit-bug' => 'Chemin de Bugzilla :',
 	'repoadmin-edit-view' => 'Chemin de ViewVC :',
 	'repoadmin-edit-button' => 'Valider',
-	'repoadmin-edit-sucess' => 'Le dépôt "$1" a été modifié avec succès.',
+	'repoadmin-edit-sucess' => 'Le dépôt "[[Special:Code/$1|$1]]" a été modifié avec succès.',
+
+	'right-repoadmin' => 'Administrer les dépôts de code',
+	'right-codereview-add-tag' => 'Ajouter de nouveaux attributs aux révision',
+	'right-codereview-remove-tag' => 'Enlever de attributs aux révision',
+	'right-codereview-post-comment' => 'Ajouter un commentaire aux révisions',
+	'right-codereview-set-status' => 'Changer le statut des revisions',
 );
