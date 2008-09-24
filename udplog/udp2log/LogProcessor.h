@@ -13,8 +13,8 @@ public:
 	virtual ~LogProcessor() {}
 
 protected:
-	LogProcessor(int factor_)
-		: counter(0), factor(factor_)
+	LogProcessor(int factor_, bool flush_)
+		: counter(0), factor(factor_), flush(flush_)
 	{}
 
 
@@ -34,16 +34,17 @@ protected:
 
 	int counter;
 	int factor;
+	bool flush;
 };
 
 class FileProcessor : public LogProcessor
 {
 public:
-	static LogProcessor * NewFromConfig(char * params);
+	static LogProcessor * NewFromConfig(char * params, bool flush);
 	virtual void ProcessLine(char *buffer, size_t size);
 
-	FileProcessor(char * filename, int factor_) 
-		: LogProcessor(factor_)
+	FileProcessor(char * filename, int factor_, bool flush_) 
+		: LogProcessor(factor_, flush_)
 	{
 		f.open(filename, std::ios::app | std::ios::out);
 	}
@@ -58,12 +59,12 @@ public:
 class PipeProcessor : public LogProcessor
 {
 public:
-	static LogProcessor * NewFromConfig(char * params);
+	static LogProcessor * NewFromConfig(char * params, bool flush);
 	virtual void ProcessLine(char *buffer, size_t size);
 	virtual void FixIfBroken();
 
-	PipeProcessor(char * command_, int factor_) 
-		: LogProcessor(factor_)
+	PipeProcessor(char * command_, int factor_, bool flush_) 
+		: LogProcessor(factor_, flush_)
 	{
 		command = strdup(command_);
 		f = popen(command, "w");

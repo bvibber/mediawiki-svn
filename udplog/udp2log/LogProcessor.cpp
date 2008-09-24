@@ -7,7 +7,7 @@
 // FileProcessor
 //---------------------------------------------------------------------------
 
-LogProcessor * FileProcessor::NewFromConfig(char * params)
+LogProcessor * FileProcessor::NewFromConfig(char * params, bool flush)
 {
 	char * strFactor = strtok(params, " \t");
 	if (strFactor == NULL) {
@@ -22,7 +22,7 @@ LogProcessor * FileProcessor::NewFromConfig(char * params)
 		);
 	}
 	char * filename = strtok(NULL, "");
-	FileProcessor * fp = new FileProcessor(filename, factor);
+	FileProcessor * fp = new FileProcessor(filename, factor, flush);
 	if (!fp->IsOpen()) {
 		delete fp;
 		throw ConfigError("Unable to open file");
@@ -35,7 +35,7 @@ void FileProcessor::ProcessLine(char *buffer, size_t size)
 {
 	if (Sample()) {
 		f.write(buffer, size);
-		if (factor >= 10) {
+		if (flush) {
 			f.flush();
 		}
 	}
@@ -45,7 +45,7 @@ void FileProcessor::ProcessLine(char *buffer, size_t size)
 // PipeProcessor
 //---------------------------------------------------------------------------
 
-LogProcessor * PipeProcessor::NewFromConfig(char * params)
+LogProcessor * PipeProcessor::NewFromConfig(char * params, bool flush)
 {
 	char * strFactor = strtok(params, " \t");
 	if (strFactor == NULL) {
@@ -60,7 +60,7 @@ LogProcessor * PipeProcessor::NewFromConfig(char * params)
 		);
 	}
 	char * command = strtok(NULL, "");
-	PipeProcessor * pp = new PipeProcessor(command, factor);
+	PipeProcessor * pp = new PipeProcessor(command, factor, flush);
 	if (!pp->IsOpen()) {
 		delete pp;
 		throw ConfigError("Unable to open pipe");
@@ -88,7 +88,7 @@ void PipeProcessor::ProcessLine(char *buffer, size_t size)
 			// Reopen it after a few seconds
 			alarm(RESTART_INTERVAL);
 		} else {
-			if (factor >= 10) {
+			if (flush) {
 				fflush(f);
 			}
 		}

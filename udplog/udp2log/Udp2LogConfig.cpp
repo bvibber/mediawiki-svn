@@ -39,20 +39,28 @@ void Udp2LogConfig::Load()
 			type = strtok(line, " \t");
 			if (!type) {
 				continue;
-			} else {
-				params = strtok(NULL, "");
-				LogProcessor * processor = NULL;
-				if (!strcmp(type, "file")) {
-					processor = FileProcessor::NewFromConfig(params);
-				} else if (!strcmp(type, "pipe")) {
-					processor = PipeProcessor::NewFromConfig(params);
-				} else {
-					throw ConfigError("Unrecognised log type");
-				}
+			}
 
-				if (processor) {
-					newProcessors.push_back(processor);
-				}
+			params = strtok(NULL, "");
+			LogProcessor * processor = NULL;
+			bool flush = false;
+
+			if (!strcmp(type, "flush")) {
+				flush = true;
+				type = strtok(params, " \t");
+				params = strtok(NULL, "");
+			}
+
+			if (!strcmp(type, "file")) {
+				processor = FileProcessor::NewFromConfig(params, flush);
+			} else if (!strcmp(type, "pipe")) {
+				processor = PipeProcessor::NewFromConfig(params, flush);
+			} else {
+				throw ConfigError("Unrecognised log type");
+			}
+
+			if (processor) {
+				newProcessors.push_back(processor);
 			}
 		}
 
