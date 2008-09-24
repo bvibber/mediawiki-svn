@@ -29,7 +29,7 @@ var mv_java_iframe = true;
 //media_server mv_embed_path (the path on media servers to mv_embed for java iframe with leading and trailing slashes)
 var mv_media_iframe_path = '/mv_embed/';
 
-//the default height/width of the vidoe (if no style or width parm provided)
+//the default height/width of the vidoe (if no style or width attr provided)
 var mv_default_video_size = '400x300'; 
 
 //this restricts playable sources to ROE xml media without start end time atttribute
@@ -1261,9 +1261,7 @@ textInterface.prototype = {
 						'</div>');
 			//$j('body').append();
 		}else{
-			//if($j('#metaBox_'+this.pe.id).css('display')!='none'){
 			$j('#metaBox_'+this.pe.id).fadeIn("fast");
-			//}
 		}
 	},
 	close:function(){
@@ -2693,16 +2691,6 @@ embedVideo.prototype = {
 			out+='</blockquote>'+getMsg('download_text')+"<blockquote>"+dl_txt_list+'</blockquote></span>';
        	return out;
 	},
-	/*getDLlist:function(transform_function){
-		
-		var dl_list=dl_txt_list='';
-		$j.each(this.media_element.getSources(), function(index, source)
-        {
-			
-		});
-		
-		return out;
-	},*/
 	/*
 	*  base embed controls
 	*	the play button calls
@@ -2849,7 +2837,8 @@ embedVideo.prototype = {
 	}	
 }
 
-/* returns html for a transparent png (for ie<7)*/
+/* returns html for a transparent png (for ie<7)
+ * not currently used: 
 function getTransparentPng(image){
 	if(!image.style)image.style='';
 	if( embedTypes.msie ){
@@ -2861,6 +2850,7 @@ function getTransparentPng(image){
 			image.src + '">';
 	}
 }
+*/
 
 /*
 * utility functions:
@@ -3096,28 +3086,6 @@ function js_log(string){
    }
    //in case of "throw error" type usage
    return false;
-}
-function getNextHighestZindex(obj){
-	var highestIndex = 0;
-	var currentIndex = 0;
-	var elArray = Array();
-	if(obj){ elArray = obj.getElementsByTagName('*'); }else{ elArray = document.getElementsByTagName('*'); }
-	for(var i=0; i < elArray.length; i++){
-		if (elArray[i].currentStyle){
-			currentIndex = parseFloat(elArray[i].currentStyle['zIndex']);
-		}else if(window.getComputedStyle){
-			currentIndex = parseFloat(document.defaultView.getComputedStyle(elArray[i],null).getPropertyValue('z-index'));
-		}
-       	if(!isNaN(currentIndex) && currentIndex > highestIndex){ highestIndex = currentIndex; }
-    }
-    return(highestIndex+1);
-}
-function var_dump(obj) {
-   if(typeof obj == "object") {
-      return "Type: "+typeof(obj)+((obj.constructor) ? "\nConstructor: "+obj.constructor : "")+"\nValue: " + obj;
-   } else {
-      return "Type: "+typeof(obj)+"\nValue: "+obj;
-   }
 }
 
 function js_error(string){

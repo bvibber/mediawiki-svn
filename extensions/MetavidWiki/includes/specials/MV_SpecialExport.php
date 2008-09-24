@@ -142,7 +142,7 @@ class MV_SpecialExport {
 			case 'sequence':
 				if ( $this->par != '' ) {
 					$this->seq_title = $this->par;
-					$this->get_sequence_xspf();
+					$this->get_sequence_xml();
 				}
 			break;
 			case 'ask':
@@ -155,7 +155,13 @@ class MV_SpecialExport {
 			$wgOut->addHTML( $error_page );
 		}
 	}
-	function get_sequence_xspf() {
+	function get_sequence_xml(){
+		$seqTitle = Title::newFromText( $this->seq_title, MV_NS_SEQUENCE );
+		$seqArticle = new MV_SequencePage( $seqTitle );
+		header( 'Content-Type: text/xml' );
+		print $seqArticle->getParsedSequence();
+	}
+	/*function get_sequence_xspf() {
 		// get the sequence article and export in xspf format: 		
 		$seqTitle = Title::newFromText( $this->seq_title, MV_NS_SEQUENCE );
 		$seqArticle = new MV_SequencePage( $seqTitle );
@@ -178,7 +184,7 @@ class MV_SpecialExport {
  		$o .= '	</trackList>' . "\n";
  		$o .= '</playlist>';
  		print $o;
-	}
+	}*/
 	function get_row_data() {
 		// returns a high level description with cmml links (or inline-populated upon request)
 		$this->mvTitle = new MV_Title( $this->stream_name . '/' . $this->req_time );

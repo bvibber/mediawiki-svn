@@ -23,8 +23,8 @@ if ( count( $args ) == 0 || isset ( $options['help'] ) ) {
 USAGE
  php ogg_thumb_insert.php stream_name filename interval duration
 
-EXAMPLE
- ogg_thumb_insert.php stream_name stream.ogg 20
+EXAMPLE where stream.ogg is 10min 20 seconds long and we get a frame every 5 seconds: 
+ ogg_thumb_insert.php stream_name stream.ogg 5 620
 
 Notes:
   if possible you want to use the source footage rather than the ogg to generate the thumbnails (ie the mpeg2 or dv)
@@ -44,5 +44,9 @@ $filedir = '../stream_images/' . substr( $stream_id, - 1 ) . '/' . $stream_id;
 $dbw = $dbr = wfGetDB( DB_MASTER );
 for ( $i = 0; $i < $duration; $i += $interval ) {
   shell_exec( "ffmpeg -ss $i -i {$filename} -vcodec mjpeg -vframes 1 -an -f rawvideo -y {$filedir}/{$i}.jpg" );
-  $dbw->query( "INSERT INTO `mv_stream_images` (`stream_id`, `time`) VALUES ($stream_id, $i)" );
+  if(is_file("{$filedir}/{$i}.jpg")){
+  	$dbw->query( "INSERT INTO `mv_stream_images` (`stream_id`, `time`) VALUES ($stream_id, $i)" );
+  }else{
+  	print "failed to create file: {$filedir}/{$i}.jpg \n";  
+  }
 }
