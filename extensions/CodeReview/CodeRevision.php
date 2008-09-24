@@ -116,26 +116,38 @@ class CodeRevision {
 		return true;
 	}
 
+	function previewComment( $text, $review, $parent=null ) {
+		$data = $this->commentData( $text, $review, $parent );
+		$data['cc_id'] = null;
+		return CodeComment::newFromData( $this, $data );
+	}
+	
 	function saveComment( $text, $review, $parent=null ) {
-		global $wgUser;
-		$ts = wfTimestamp( TS_MW );
-		$sortkey = $this->threadedSortkey( $parent, $ts );
-
 		$dbw = wfGetDB( DB_SLAVE );
+		$data = $this->commentData( $text, $review, $parent );
+		$data['cc_id'] = $dbw->nextSequenceValue( 'code_comment_cc_id' );
 		$dbw->insert( 'code_comment',
-			array(
-				'cc_repo_id' => $this->mRepo,
-				'cc_rev_id' => $this->mId,
-				'cc_text' => $text,
-				'cc_parent' => $parent,
-				'cc_user' => $wgUser->getId(),
-				'cc_user_text' => $wgUser->getName(),
-				'cc_timestamp' => $dbw->timestamp( $ts ),
-				'cc_review' => $review,
-				'cc_sortkey' => $sortkey ),
+			$data,
 			__METHOD__ );
 		
 		return $dbw->insertId();
+	}
+	
+	protected function commentData( $text, $review, $parent=null ) {
+		global $wgUser;
+		$dbw = wfGetDB( DB_SLAVE );
+		$ts = wfTimestamp( TS_MW );
+		$sortkey = $this->threadedSortkey( $parent, $ts );
+		return array(
+			'cc_repo_id' => $this->mRepo,
+			'cc_rev_id' => $this->mId,
+			'cc_text' => $text,
+			'cc_parent' => $parent,
+			'cc_user' => $wgUser->getId(),
+			'cc_user_text' => $wgUser->getName(),
+			'cc_timestamp' => $dbw->timestamp( $ts ),
+			'cc_review' => $review,
+			'cc_sortkey' => $sortkey );
 	}
 
 	protected function threadedSortKey( $parent, $ts ) {
@@ -179,7 +191,7 @@ class CodeRevision {
 
 		$comments = array();
 		foreach( $result as $row ) {
-			$comments[] = new CodeComment( $this, $row );
+			$comments[] = CodeComment::newFromRow( $this, $row );
 		}
 		$result->free();
 		return $comments;

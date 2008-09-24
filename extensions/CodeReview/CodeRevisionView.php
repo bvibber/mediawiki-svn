@@ -8,6 +8,7 @@ class CodeRevisionView extends CodeView {
 		$this->mRepo = CodeRepository::newFromName( $repoName );
 		$this->mRev = $this->mRepo ? $this->mRepo->getRevision( intval( $rev ) ) : null;
 		$this->mReplyTarget = $replyTarget;
+		$this->mPreviewText = false;
 	}
 
 	function execute(){
@@ -113,7 +114,8 @@ class CodeRevisionView extends CodeView {
 			$review = $wgRequest->getInt( 'wpReview' );
 			$isPreview = $wgRequest->getCheck( 'wpPreview' );
 			if( $isPreview ) {
-				// NYI
+				// Save the text for reference on later comment display...
+				$this->mPreviewText = $text;
 			} else {
 				$id = $this->mRev->saveComment( $text, $review, $parent );
 				
@@ -262,17 +264,30 @@ class CodeRevisionView extends CodeView {
 		return $title;
 	}
 	
+	function previewComment( $text, $review=0 ) {
+		$comment = $this->mRev->previewComment( $text, $review );
+		return $this->formatComment( $comment );
+	}
+	
 	function formatComment( $comment, $replyForm='' ) {
 		global $wgOut, $wgLang;
 		$linker = new CodeCommentLinkerWiki( $this->mRepo );
 		
+		if( $comment->id === null ) {
+			$linkId = 'cpreview';
+			$permaLink = "<b>Preview:</b> ";
+		} else {
+			$linkId = 'c' . intval( $comment->id );
+			$permaLink = $this->mSkin->link( $this->commentLink( $comment->id ), "#" );
+		}
+		
 		return Xml::openElement( 'div',
 			array(
 				'class' => 'mw-codereview-comment',
-				'id' => 'c' . intval( $comment->id ),
+				'id' => $linkId,
 				'style' => $this->commentStyle( $comment ) ) ) .
 			'<div class="mw-codereview-comment-meta">' .
-			$this->mSkin->link( $this->commentLink( $comment->id ), "#" ) .
+			$permaLink .
 			wfMsgHtml( 'code-rev-comment-by',
 				$this->mSkin->userLink( $comment->user, $comment->userText ) .
 				$this->mSkin->userToolLinks( $comment->user, $comment->userText ) ) .
@@ -306,10 +321,25 @@ class CodeRevisionView extends CodeView {
 	
 	function postCommentForm( $parent=null ) {
 		global $wgUser;
+		if( $this->mPreviewText != false && $parent === $this->mReplyTarget ) {
+			$preview = $this->previewComment( $this->mPreviewText );
+			$text = htmlspecialchars( $this->mPreviewText );
+		} else {
+			$preview = '';
+			$text = '';
+		}
+		$repo = $this->mRepo->getName();
+		$rev = $this->mRev->getId();
+		if( $parent ) {
+			$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev/reply/$parent" );
+		} else {
+			$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
+		}
 		return '<div class="mw-codereview-post-comment">' .
+			$preview .
 			Xml::openElement( 'form',
 				array(
-					'action' => '', // fixme
+					'action' => $special->getLocalUrl(),
 					'method' => 'post' ) ) .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
 			($parent ? Xml::hidden( 'wpParent', $parent ) : '') .
@@ -319,6 +349,7 @@ class CodeRevisionView extends CodeView {
 				'id' => "wpReplyTo{$parent}",
 				'cols' => 40,
 				'rows' => 5 ) ) .
+			$text .
 			'</textarea>' .
 			'</div>' .
 			'<div>' .
