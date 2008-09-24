@@ -334,7 +334,7 @@ $extensions = array(
 	array(
 		'name' => 'SpecialCite',
 		'dir' => 'Cite',
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Cite/Cite.php'
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Cite/Special:Cite.php'
 	),
 	array(
 		'name' => 'CleanChanges',
@@ -408,6 +408,7 @@ $extensions = array(
 			'wgConfirmAccountSaveInfo' => 'bool',
 			'wgConfirmAccountContact' => 'text',
 			'wgConfirmAccountCaptchas' => 'bool',
+			'wgConfirmAccountNotice' => 'bool',
 			'wgAllowAccountRequestFiles' => 'bool',
 			'wgAccountRequestExts' => 'array',
 		),
@@ -499,7 +500,7 @@ $extensions = array(
 		'settings' => array(
 			'wgCountEditsMostActive' => 'bool',
 		),
-		'url' => 'http://www.mediawiki.wiki/wiki/Extesion:CountEdits',
+		'url' => 'http://www.mediawiki.wiki/wiki/Extension:CountEdits',
 	),
 	array(
 		'name' => 'CreateBox',
@@ -524,8 +525,40 @@ $extensions = array(
 	
 	// D
 	array(
+		'name' => 'DeleteBatch',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:DeleteBatch',
+	),
+	array(
 		'name' => 'DeletedContributions',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:DeletedContributions',
+	),
+	array(
+		'name' => 'DeleteQueue',
+		'settings' => array(
+			'wgDeleteQueueExpiry' => 'array',
+		),
+		'array' => array(
+			'wgDeleteQueueExpiry' => 'assoc',
+		),
+		'schema' => true,
+		'url' => 'http://www.mediawiki.org/wiki/Extension:DeleteQueue',
+	),
+	array(
+		'name' => 'DidYouMean',
+		'settings' => array(
+			'wgDymUseSeeTemplate' => 'bool',
+		),
+		'schema' => true,
+		'url' => 'http://www.mediawiki.org/wiki/Extension:DidYouMean',
+	),
+	array(
+		'name' => 'DisableSpecialPages',
+		'settings' => array(
+			'wgDisabledSpecialPages' => 'array',
+		),
+		'array' => array(
+			'wgDisabledSpecialPages' => 'simple',
+		),
 	),
 	array(
 		'name' => 'DismissableSiteNotice',
@@ -533,6 +566,14 @@ $extensions = array(
 			'wgMajorSiteNoticeID' => 'int',
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:DismissableSiteNotice',
+	),
+	array(
+		'name' => 'Duplicator',
+		'settings' => array(
+			'wgDuplicatorRevisionLimit' => 'int',
+		),
+		'schema' => true,
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Duplicator',
 	),
 
 	// E
@@ -553,7 +594,7 @@ $extensions = array(
 	),
 	array(
 		'name' => 'EditSubpages',
-		'url' => "http://www.mediawiki.org/wiki/Extension:EditSubpages",
+		'url' => 'http://www.mediawiki.org/wiki/Extension:EditSubpages',
 	),
 	array(
 		'name' => 'EditUser',
@@ -581,7 +622,7 @@ $extensions = array(
 	),
 	array(
 		'name' => 'FindSpam',
-		'url'=>'http://www.mediawiki.org/wiki/Extension:Find_Spam',
+#		'url'=>'http://www.mediawiki.org/wiki/Extension:Find_Spam',
 	),
 	array(
 		'name' => 'FlaggedRevs',
@@ -642,6 +683,10 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:FlaggedRevs',
 	),
 	array(
+		'name' => 'ForcePreview',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:ForcePreview',
+	),
+	array(
 		'name' => 'FormPreloadPostCache',
 	),
 
@@ -667,6 +712,26 @@ $extensions = array(
 			'wgGnuplotDefaultSize' => 'text',
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Gnuplot',
+	),
+	array(
+		'name' => 'GoogleAdSense',
+		'settings' => array(
+			'wgGoogleAdSenseWidth' => 'int',
+			'wgGoogleAdSenseHeight' => 'int',
+			'wgGoogleAdSenseSrc' => 'text',
+			'wgGoogleAdSenseClient' => 'text',
+			'wgGoogleAdSenseSlot' => 'text',
+			'wgGoogleAdSenseID' => 'text',
+		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Google_AdSense_2',
+	),
+	array(
+		'name' => 'GoToCategory',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:GoToCategory',
+	),
+	array(
+		'name' => 'GroupPortal',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:GroupPortal',
 	),
 
 	// I
@@ -750,6 +815,7 @@ $extensions = array(
 		'settings' => array(
 			'wgAllowAnyUserOnlineStatusFunction' => 'bool',
 		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:OnlineStatus',
 	),
 	array(
 		'name' => 'Oversight',
@@ -794,6 +860,7 @@ $extensions = array(
 		'array' => array(
 			'wgSkinPerNamespace' => 'ns-text',
 		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:SkinPerNamespace',
 	),
 	array(
 		'name' => 'SkinPerPage',
