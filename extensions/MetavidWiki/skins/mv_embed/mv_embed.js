@@ -26,9 +26,6 @@ var mv_skin_name = 'mvpcf';
 //note: this is necessary for remote embedding because of java security model)
 var mv_java_iframe = true;
 
-//ogg chop links ( removes .anx from stream) should be deprecated shortly 
-var ogg_chop_links = true;
-
 //media_server mv_embed_path (the path on media servers to mv_embed for java iframe with leading and trailing slashes)
 var mv_media_iframe_path = '/mv_embed/';
 
@@ -78,7 +75,7 @@ gMsg['error_load_lib']='mv_embed: Unable to load required javascript libraries\n
 			 	
 gMsg['error_swap_vid']='Error:mv_embed was unable to swap the video tag for the mv_embed interface';
 
-gMsg['download_from']='Download Selection:';
+gMsg['download_segment']='Download Selection:';
 gMsg['download_full']='Download Full Video File:'
 gMsg['download_clip']='Download the Clip';
 gMsg['download_text']='Download Text (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">cmml</a> xml):';
@@ -1244,9 +1241,7 @@ textInterface.prototype = {
 		}
 	},
 	show:function(){
-		//js_log("show text interface");
-		/*fade out cc button*/
-		$j('#metaButton_'+this.pe.id).fadeOut('fast');
+		js_log("f:show() text interface");	
 		/*slide in intefrace container*/
 		//dont' know how 'px' creeps in here: 
 		this.pe.height = this.pe.height.replace('px', '');
@@ -1414,11 +1409,9 @@ mediaSource.prototype =
 
     init : function(element)
     {
-    	js_log(element);    	
+    	js_log('adding mediaSource: ' + element);    	
     	
-        this.src = $j(element).attr('src');
-        if(ogg_chop_links)
-            this.src = this.src.replace(".anx", '');
+        this.src = $j(element).attr('src');   
             
         this.marked_default = false;
 
@@ -1456,6 +1449,11 @@ mediaSource.prototype =
 			this.start = $j(element).attr("end");
         //js_log('Adding mediaSource of type ' + this.mime_type + ' and uri ' + this.src + ' and title ' + this.title);
         this.parseURLDuration();
+    },
+    updateSource:function(element){
+    	//for now just update the title: 
+    	if ($j(element).attr("title"))
+        	this.title = $j(element).attr("title");    	
     },
     /** updates the src time and start & end
      *  @param {String} start_time in NTP format
@@ -1733,8 +1731,11 @@ mediaElement.prototype =
         }
         var new_src = $j(element).attr('src');
         //make sure an existing element with the same src does not already exist:         
-        for(i in this.sources){    
-        	if(this.sources[i].getURI()==new_src){        		
+        for(i in this.sources){            	
+        	if(this.sources[i].getURI()==new_src){
+        		js_log('checking existing: '+this.sources[i].getURI() + ' != '+ new_src);     
+        		//can't add it all but try to update any additional attr: 
+        		this.sources[i].updateSource(element);
         		return false;
         	}
         }
@@ -2619,7 +2620,7 @@ embedVideo.prototype = {
 			}
 		 }
 		 select_html+='</ul></div>';
-         js_log(select_html);
+         //js_log(select_html);
 		 return select_html;
 	},
     selectPlaybackMethod:function(){    	
@@ -2670,10 +2671,11 @@ embedVideo.prototype = {
 		}       
 	},
 	getShowVideoDownload:function(){ 
-		var out='<b style="color:white;">'+getMsg('download_from')+'</b><br>';
+		var out='<b style="color:white;">'+getMsg('download_segment')+'</b><br>';
 		out+='<span style="color:white"><blockquote>';
 		var dl_list='';
 		var dl_txt_list='';
+		
         $j.each(this.media_element.getSources(), function(index, source){
         	var dl_line = '<li>' + '<a style="color:white" href="' + source.getURI() +'"> '
                 + source.getTitle()+'</a> '+ '</li>'+"\n";            
@@ -2942,7 +2944,7 @@ function do_request(req_url, callback, mv_json_response){
 					//add json_ to req url
 					if(req_url.indexOf("feed_format=")!=-1)
 						req_url = req_url.replace(/feed_format=/, 'feed_format=json_');
-					js_log('json url: '+ req_url);
+					//js_log('json url: '+ req_url);
 					//response type is mv_json_response or proxy dissabled			
 					loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));
 				}

@@ -283,7 +283,8 @@
 		if ( $this->getStartTime() != '' && $this->getEndTime() != '' ) {
 			if ( $quality == $mvDefaultVideoQualityKey ||
 			   $quality == $mvDefaultVideoHighQualityKey ) {
-				$time_req  = '.anx?t=' . $this->getStartTime() . '/' . $this->getEndTime();
+			   	//removed .anx
+				$time_req  = '?t=' . $this->getStartTime() . '/' . $this->getEndTime();
 			} else if ( $quality == $mvDefaultFlashQualityKey ) {
 				$time_req  = '?t=' . $this->getStartTime() . '/' . $this->getEndTime();
 			}

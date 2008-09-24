@@ -7,7 +7,7 @@
 * (so that remote use of mv_embed can load remote xml )
 */
 
-// NOTE THIS IS DISABLED BY DEFAULT FOR A RESON 
+// NOTE THIS IS DISABLED BY DEFAULT FOR A REASON 
 // See var mv_data_proxy in mv_embed.js for more info
 die( 'note mv_data_proxy is disabled by default' );
 
