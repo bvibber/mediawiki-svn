@@ -62,6 +62,7 @@ $wgAvailableRights[] = 'repoadmin';
 $wgAvailableRights[] = 'codereview-add-tag';
 $wgAvailableRights[] = 'codereview-remove-tag';
 $wgAvailableRights[] = 'codereview-post-comment';
+$wgAvailableRights[] = 'codereview-set-status';
 
 $wgGroupPermissions['*']['codereview-add-tag'] = true;
 $wgGroupPermissions['*']['codereview-remove-tag'] = true;
