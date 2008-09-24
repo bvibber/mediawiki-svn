@@ -153,8 +153,14 @@ var flashEmbed = {
 	    }
     },
     monitor : function()
-    {
-    	this.getFLA();
+    {    
+    	//do monitor update: 
+	    if( ! this.monitorTimerId ){
+	    	if(document.getElementById(this.id)){
+	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
+	    	}
+	    }
+		this.getFLA();    		    
         if(!this.fla['getTime'])
             return js_log('can not monitor without time');
                         
@@ -179,20 +185,13 @@ var flashEmbed = {
 		       	this.setStatus( seconds2ntp(this.currentTime) + '/' + end_ntp);      		
 		        this.setSliderValue((this.currentTime - ntp2seconds(start_ntp)) / (ntp2seconds(end_ntp)-ntp2seconds(start_ntp)) );
 	        }
-        }
-        //do monitor update: 
-	    if( ! this.monitorTimerId ){
-	    	if(document.getElementById(this.id)){
-	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
-	    	}
-	    }
+        }        
 	    
 	    //super hackery  to see if we have "probably" reached the end of playback: 
         if(this.prevTime==this.currentTime && (this.currentTime > (ntp2seconds(end_ntp)-1)) ){
         	js_log('probablly reached end of stream: '+this.currentTime);
         	this.onClipDone();         	     
-        }
-	   
+        }	   
 	    this.prevTime = this.currentTime;
 	    
 	    //js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - ntp2seconds(start_ntp)) +' / ' +(ntp2seconds(end_ntp)-ntp2seconds(start_ntp)));
@@ -225,6 +224,8 @@ var flashEmbed = {
 	    if( ! this.startedTimedPlayback){
 	    	js_log('clip done before timed playback started .. not good. (ignoring) ');
 	    	//setTimeout('$j(\'#'+embed.id+'\').get(0).play()', 250);
+	    	//keep monitoring: 
+	    	this.monitor();
 	    }else{
 	    	js_log('clip done and '+ this.startedTimedPlayback);
 	    	//stop the clip if its not stoped already: 

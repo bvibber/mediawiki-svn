@@ -62,8 +62,7 @@ function mv_load_interface_libs(){
 		mvJsLoader.doLoad({
 			'$j.autocomplete':'jquery/plugins/jquery.autocomplete.js',
 			'$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js',
-			'$j.ui.resizable':'jquery/plugins/ui.resizable.js',
-			'$j.ui.draggable':'jquery/plugins/ui.draggable.js'
+			'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js'
 	  	},function(){
 	  		//now extend draggable
 	  		mvJsLoader.doLoad({
@@ -272,10 +271,12 @@ var mv_init_interface = {
 	/* based on a a mvd_id update the video thumbnail to the correct location
 	 */
 	doRestore:function(){		
+		js_log('f:doRestore');
 		var vid_elm = $j('#embed_vid').get(0);
 		if(vid_elm){
 			if( vid_elm.isPlaying()){
-				//js_log('vid elm is playing delay restore:')						
+				js_log('vid elm is playing delay restore:')			
+				if(!vid_elm.userSlide) //dont' restore if userSlide is true			
 					setTimeout("mv_init_interface.doRestore()", 500);				
 			}else{
 				//only restore if onClipDone_disp is false
@@ -464,6 +465,7 @@ function mv_disp_mvd(titleKey, mvd_id){
 		div.innerHTML=global_loading_txt;
 	}
 	//free the editor slot:
+	js_log('mv_disp_mvd: nset mv_open_edit_mvd');
 	mv_open_edit_mvd=null;
 	function f( request ) {
   		result= request.responseText;
@@ -503,29 +505,15 @@ function mv_history_disp(titleKey, mvd_id){
 /* non-ajax preview of clip adjustment*/
 function mv_adjust_preview(mvd_id){
 	mv_lock_vid_updates=true;
-	//if(!$('mv_start_hr_'+mvd_id))return ;
-	//if(!$('mv_end_hr_'+mvd_id))return ;
-	//if(!$('embed_vid'))return ;
-	//if mv_embed state is "playing" swap preview button per html5 spec:
-	if($j('#embed_vid').get(0).isPlaying()){
-		//do stop swap preview button back
-		$j('#embed_vid').get(0).stop();
-	}
-	//first time set up
-	//if(!golobal_org_ptext)golobal_org_ptext = $j('#wpPreview_'+mvd_id).val();
-	//js_log('gptext: ' + golobal_org_ptext);
-	//if($j('#wpPreview_'+mvd_id).val()!=$j('#wpPreview_stop_msg_'+mvd_id).val() ){
-		//preview request set text to hidden stop text:
-		//$j('#wpPreview_'+mvd_id).val( $j('#wpPreview_stop_msg_'+mvd_id).val() ) ;
-		//update the video source
+	
 	js_log('start val:#mv_start_hr_'+mvd_id+' ' + $j('#mv_start_hr_'+mvd_id).val() + ' end:'+ $j('#mv_end_hr_'+mvd_id).val() );
+	
+	$j('#embed_vid').get(0).stop();
+	
 	do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
 	//start playing
-	mv_do_play();
-	//}else{
-		//(video should already be stooped). restore org ptext:
-	//	$j('#wpPreview_'+mvd_id).val(golobal_org_ptext);
-	//}
+	$j('#embed_vid').get(0).play();
+
 	mv_lock_vid_updates=false;
 }
 /*
@@ -839,10 +827,12 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
     		$j(setHtmlId).html( result) ;
 	  		scroll_to_pos(mvd_id);
         }
-        //unlock the interface updates
-		mv_lock_vid_updates=false;
-		//free the editor slot:
-		mv_open_edit_mvd=null;
+        if(edit_action!='preview'){
+	        //unlock the interface updates        
+			mv_lock_vid_updates=false;
+			//free the editor slot:
+			mv_open_edit_mvd=null;
+        }
 	}
 	//return false to prevent the form being submitted
 	return false;

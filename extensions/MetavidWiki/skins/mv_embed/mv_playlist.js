@@ -1679,11 +1679,11 @@ var mvTransLib = {
 			$j('#'+tObj.overlay_selector_id).show();
 			
 		//do update:
-		/*js_log('doing update for: '+ tObj.pClip.id + 
+		js_log('doing update for: '+ tObj.pClip.id + 
 			' type:' + tObj.transAttrType +
 			' t_type:'+ tObj.type +
 			' subypte:'+ tObj.subtype  + 
-			' percent:' + percent);*/					
+			' percent:' + percent);					
 			
 		this['type'][tObj.type][tObj.subtype].u(tObj,percent);
 	},

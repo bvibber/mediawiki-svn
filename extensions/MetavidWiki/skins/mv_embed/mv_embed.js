@@ -531,11 +531,7 @@ var ctrlBuilder = {
     	var _this = embedObj;
     	//add in drag/seek hooks: 
 		if(!_this.base_seeker_slider_offset &&  $j('#mv_seeker_slider_'+_this.id).get(0))
-        	_this.base_seeker_slider_offset = $j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft;
-        
-        //if playlist always start at 0
-        _this.start_time_sec = (_this.instanceOf == 'mvPlayList')?0:
-        						_this.start_time_sec = ntp2seconds(_this.getTimeReq().split('/')[0]);        
+        	_this.base_seeker_slider_offset = $j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft;              
         
         //js_log('looking for: #mv_seeker_slider_'+_this.id + "\n " +
 		//		'start sec: '+_this.start_time_sec + ' base offset: '+_this.base_seeker_slider_offset);
@@ -551,6 +547,9 @@ var ctrlBuilder = {
         		var options = ui.options;      
         		//remove "play button"   	
         		$j('#big_play_link_'+_this.id).fadeOut('fast');
+        		 //if playlist always start at 0
+		        _this.start_time_sec = (_this.instanceOf == 'mvPlayList')?0:
+        						_this.start_time_sec = ntp2seconds(_this.getTimeReq().split('/')[0]);       
         	},
         	drag:function(e, ui){
         		//@@todo get the -14 number from the skin somehow
