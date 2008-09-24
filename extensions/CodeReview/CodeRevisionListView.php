@@ -61,12 +61,14 @@ class SvnRevTablePager extends TablePager {
 		global $wgUser, $wgLang;
 		switch( $name ){
 		case 'cr_id':
-			global $wgUser;
-			return $wgUser->getSkin()->link(
-				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $value ), htmlspecialchars( $value )
-			);
+			return $this->mView->mSkin->link(
+				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $value ),
+				htmlspecialchars( $value ) );
 		case 'cr_status':
-			return htmlspecialchars( $this->mView->statusDesc( $value ) );
+			return $this->mView->mSkin->link(
+				SpecialPage::getTitleFor( 'Code',
+					$this->mRepo->getName() . '/status/' . $value ),
+				htmlspecialchars( $this->mView->statusDesc( $value ) ) );
 		case 'cr_author':
 			return $this->mView->authorLink( $value );
 		case 'cr_message':

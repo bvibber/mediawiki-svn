@@ -32,6 +32,9 @@ class SpecialCode extends SpecialPage {
 				} elseif( $params[1] == 'author' ) {
 					$view = new CodeRevisionAuthorView( $params[0], $params[2] );
 					break;
+				} elseif( $params[1] == 'status' ) {
+					$view = new CodeRevisionStatusView( $params[0], $params[2] );
+					break;
 				} else {
 					throw new MWException( "Unexpected number of parameters" );
 				}
