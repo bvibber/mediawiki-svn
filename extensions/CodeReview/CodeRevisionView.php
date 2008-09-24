@@ -234,7 +234,8 @@ class CodeRevisionView extends CodeView {
 		if( !$diff ) {
 			return false;
 		}
-		return "<pre>" . htmlspecialchars( $diff ) . "</pre>";
+		$hilite = new CodeDiffHighlighter();
+		return $hilite->render( $diff );
 	}
 
 	function formatComments() {

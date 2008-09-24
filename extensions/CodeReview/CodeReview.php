@@ -38,6 +38,7 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 
+$wgAutoloadClasses['CodeDiffHighlighter'] = $dir . 'DiffHighlighter.php';
 $wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'CodeRepoListView.php';
 $wgAutoloadClasses['CodeRevision'] = $dir . 'CodeRevision.php';

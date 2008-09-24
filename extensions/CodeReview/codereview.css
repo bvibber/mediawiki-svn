@@ -46,3 +46,18 @@ table.mw-codereview-meta td {
 .mw-codereview-status-resolved:hover td {
 	background: #a0dfa0 !important;;
 }
+
+/* Diffs */
+.mw-codereview-diff ins {
+	text-decoration: none;
+	color: green;
+}
+
+.mw-codereview-diff del {
+	text-decoration: none;
+	color: red;
+}
+
+.mw-codereview-diff .meta {
+	color: darkcyan;
+}
