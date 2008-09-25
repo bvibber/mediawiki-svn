@@ -11,7 +11,6 @@ $aliases = array();
 /** English */
 $aliases['en'] = array(
 	'GroupPermissions' => array( 'GroupPermissions' ),
-	//'NamespaceManager' => array( 'NamespaceManager' ),
 	'RemoveUnusedGroups' => array( 'RemoveUnusedGroups' ),
 	'SortPermissions' => array( 'SortPermissions' ),
 );

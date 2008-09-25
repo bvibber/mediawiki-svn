@@ -148,6 +148,8 @@ function makeProtectForm() {
 
 function userIsAuthor() {
 	global $wgTitle, $wgUser, $wgDBprefix;
+	if(!$wgTitle instanceOf Title)
+		return false; //quick hack to prevent the API from messing up.
 	$id = $wgTitle->getArticleId();
 	$dbr = wfGetDb(DB_SLAVE); //grab the slave for reading
 	$res = $dbr->query( "SELECT `rev_user` FROM `{$wgDBprefix}revision` WHERE rev_page={$id} LIMIT 1", __METHOD__ );

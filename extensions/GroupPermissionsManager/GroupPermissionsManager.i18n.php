@@ -37,6 +37,7 @@ $messages['en'] = array(
 	'grouppermissions-false'         => 'False',
 	'grouppermissions-never'         => 'Never',
 	'grouppermissions-nooldrev'      => 'Error encountered when attempting to archive the current config file. No archive will be made',
+	'grouppermissions-display'       => '$1 ($2)',
 	'grouppermissions-sort-read'     => 'Reading',
 	'grouppermissions-sort-edit'     => 'Editing',
 	'grouppermissions-sort-manage'   => 'Management',
@@ -72,6 +73,7 @@ $messages['en'] = array(
 	'right-recentchanges'            => 'View recent changes',
 	'right-edittalk'                 => 'Edit discussion pages',
 	'right-edit-new'                 => 'Edit pages (which are not discussion pages)',
+	'right-readold'                  => 'View content of old revisions and diffs',
 );
 
 /** Message documentation (Message documentation)

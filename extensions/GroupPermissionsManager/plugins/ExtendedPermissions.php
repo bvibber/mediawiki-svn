@@ -15,7 +15,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Extended Permissions',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissionsManager',
-	'version'        => '1.2',
+	'version'        => '1.3',
 	'description'    => 'Extended permissions system',
 	'descriptionmsg' => 'grouppermissions-desc2',
 );
@@ -166,6 +166,11 @@ function efGPManagerExtendedPermissionsRevoke($title, $user, $action, &$result) 
 				return false;
 			}
 		}
+	}
+	if( ($wgRequest->getVal('diff') || $wgRequest->getVal('oldid')) && !$wgUser->isAllowed('readold') ) {
+		//if they can't read it, they shouldn't be able to do other stuff with it anyway
+		$result = $err;
+		return false;
 	}
 	return true; //otherwise we don't care
 }

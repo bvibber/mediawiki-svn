@@ -28,13 +28,14 @@ $wgGPManagerRUGconfirm = true; //whether to show a confirmation button on Specia
 $wgGPManagerShowEditTab = false; //whether to always show the edit tab even though the user may not be able to read the resulting page
 ###End Config Variables.
 
-$wgAutoloadClasses['GroupPermissions'] = dirname(__FILE__) . '/GroupPermissionsManager_body.php';
-$wgAutoloadClasses['RemoveUnusedGroups'] = dirname(__FILE__) . '/RemoveUnusedGroups.php';
-$wgAutoloadClasses['SortPermissions'] = dirname(__FILE__) . '/SortPermissions.php';
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['GroupPermissions'] = $dir . 'GroupPermissionsManager_body.php';
+$wgAutoloadClasses['RemoveUnusedGroups'] = $dir . 'RemoveUnusedGroups.php';
+$wgAutoloadClasses['SortPermissions'] = $dir . 'SortPermissions.php';
 $wgSpecialPages['GroupPermissions'] = 'GroupPermissions';
 $wgSpecialPages['RemoveUnusedGroups'] = 'RemoveUnusedGroups';
 $wgSpecialPages['SortPermissions'] = 'SortPermissions';
-$wgExtensionMessagesFiles['GroupPermissions'] = dirname(__FILE__) . '/GetMessages.php';
+$wgExtensionMessagesFiles['GroupPermissions'] = $dir . 'GetMessages.php';
 $wgExtensionAliasesFiles['GroupPermissions'] = $dir . 'GroupPermissionsManager.alias.php';
 
 $wgLogTypes[] = 'gpmanager';
@@ -62,7 +63,8 @@ $wgGPManagerSortTypes = array( 'read', 'edit', 'manage', 'admin', 'tech', 'misc'
 ##Default permissions for the ones added by Permissions++ extension
 ###Reading-related permissions
 $wgGroupPermissions['*']['viewsource'] = true; //allows viewing of wiki source when one cannot edit the page
-$wgGroupPermissions['*']['history'] = true; //allows viewing of page histories
+$wgGroupPermissions['*']['history'] = true; //allows viewing of page history pages
+$wgGroupPermissions['*']['readold'] = true; //allows viewing page content and diffs of old revisions
 $wgGroupPermissions['*']['raw'] = true; //allows use of action=raw
 $wgGroupPermissions['*']['render'] = true; //allows use of action=render
 $wgGroupPermissions['*']['info'] = true; //allows use of action=info if the option is enabled
@@ -76,7 +78,7 @@ $wgGroupPermissions['*']['contributions'] = true; //allows viewing Special:Contr
 $wgGroupPermissions['*']['edittalk'] = true; //can edit talk pages, including use of section=new
 
 ##Grouping of permissions for the GPManager
-$wgGPManagerSort['read'] = array( 'read', 'viewsource', 'history', 'raw', 'render', 'info',
+$wgGPManagerSort['read'] = array( 'read', 'readold', 'viewsource', 'history', 'raw', 'render', 'info',
 'credits', 'search', 'recentchanges', 'contributions' );
 $wgGPManagerSort['edit'] = array( 'edit', 'createpage', 'createtalk', 'move', 'move-subpages',
 'createaccount', 'upload', 'reupload', 'reupload-shared', 'upload_by_url',
@@ -93,23 +95,23 @@ $wgGPManagerSort['tech'] = array( 'bot', 'purge', 'minoredit', 'nominornewtalk',
 $wgGPManagerSort['misc'] = array(); //all rights added by extensions that don't have a sort clause get put here
 
 //let's get all the plugins and load them.
-$plugins = scandir(dirname(__FILE__) . '/plugins');
+$plugins = scandir($dir . 'plugins');
 if($plugins && is_array($plugins)) {
 	foreach($plugins as $file) {
 		//only get .php or .php5 files (prevents dirs and stuff from being included)
 		if(preg_match('/\.php5?$/i', $file)) {
-			require_once(dirname(__FILE__) . '/plugins/' . $file);
+			require_once($dir . 'plugins/' . $file);
 		}
 	}
 }
 
 ##Load the config files, if they exist. This must be the last thing to run in the startup part
 ##Sort comes before the normal group defines since sort sets stuff to false simply to declare new permissions
-if(file_exists(dirname(__FILE__) . '/config/SortPermissions.php')) {
-	require(dirname(__FILE__) . '/config/SortPermissions.php');
+if(file_exists($dir . 'config/SortPermissions.php')) {
+	require($dir . 'config/SortPermissions.php');
 }
-if(file_exists(dirname(__FILE__) . '/config/GroupPermissions.php') ) {
-	require(dirname(__FILE__) . '/config/GroupPermissions.php');
+if(file_exists($dir . 'config/GroupPermissions.php') ) {
+	require($dir . 'config/GroupPermissions.php');
 }
 
 //Since the one in Title.php is private...
