@@ -228,8 +228,8 @@ class SpecialForm extends SpecialPage {
 
 			$article = new Article($nt[$i]);
 
-
-			if (!$article->doEdit($text, wfMsg('formsavesummary', $form->name), EDIT_NEW)) {
+			$status = $article->doEdit($text, wfMsg('formsavesummary', $form->name), EDIT_NEW);
+			if ( $status === false || ( is_object( $status ) && !$status->isOK() ) ) {
 				$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext', array($title));
 				return; # Don't continue
 			}
