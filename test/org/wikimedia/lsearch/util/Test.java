@@ -1,6 +1,9 @@
 package org.wikimedia.lsearch.util;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Formatter;
+import java.util.regex.Pattern;
 
 import org.apache.lucene.search.PrefixQuery;
 import org.wikimedia.lsearch.analyzers.WordNet;
@@ -54,10 +57,25 @@ public class Test {
 		System.out.println(str+" -> " + WordNet.replaceOne(list,"en"));
 	}
 	
+	public static void testFormat(){
+		String r = "";
+		double ref=123456.12345;
+		String name = "Some article";
+		System.out.println(String.format("%s %.2f %s", new Object[] {name,ref,r} ));
+	}
+	
+	public static void testRegexp(){
+		Pattern p = Pattern.compile(StringUtils.wildcardToRegexp("(?!(enwiki.|dewiki.|frwiki.|itwiki.|nlwiki|.))*.spell"));
+		System.out.println("frwiki: "+p.matcher("frwiki").matches());
+		System.out.println("enwiki: "+p.matcher("enwiki").matches());
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		testFormat();
+		testRegexp();
 		
 		Test t = new Test();
 		t.test("Simple string");

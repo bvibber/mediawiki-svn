@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 public class ArticleNamespaceScaling {
 	protected float[] nsBoost = null;
-	protected float talkPageScale = 0.25f;
+	public static float talkPageScale = 0.25f;
 	
 	/** Initialize from ns -> boost map */
 	public ArticleNamespaceScaling(Map<Integer,Float> map){

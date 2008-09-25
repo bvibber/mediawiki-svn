@@ -127,7 +127,7 @@ public class WikiIndexModifierTest extends WikiTestCase {
 		HashSet<String> stopWords = new HashSet<String>();
 		stopWords.add("of"); stopWords.add("for");
 		
-		Article article = new Article(10,0,"Test page",text,null,
+		Article article = new Article(10,0,"Test for page",text,null,
 				references,redirectTargetNamespace,0,redirects,rel,anchors,date);
 		
 		FieldBuilder fb = new FieldBuilder(iid,FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
@@ -137,10 +137,12 @@ public class WikiIndexModifierTest extends WikiTestCase {
 		
 		try{
 			doc = WikiIndexModifier.makeDocument(article,fb,iid,stopWords,analyzer,true);
-			assertEquals("1 [test] 1 [page] 1 [test_page] 1 [some] 1 [page_some] 1 [very] 1 [some_very] 1 [simple] 1 [very_simple] 1 [text] 1 [simple_text] 1 [used] 1 [text_used] 1 [for] 1 [used_for] 1 [testing] 1 [for_testing] 1 [used_for_testing] 1 [testing_used] 1 [of] 1 [testing_of] 1 [something] 1 [of_something] 1 [testing_of_something] 1 [heading] 1 [something_heading] 1 [1] 1 [heading_1] 1 [paragraph] 1 [1_paragraph] 1 [category1] 1 [paragraph_category1] 1 [category1_test] 1 [anchor] 1 [page_anchor] 1 [redirect] 1 [anchor_redirect]",
+			assertEquals("1 [test] 1 [for] 1 [page] 1 [test_for_page] 1 [some] 1 [page_some] 1 [very] 1 [some_very] 1 [simple] 1 [very_simple] 1 [text] 1 [simple_text] 1 [used] 1 [text_used] 1 [testing] 1 [used_for_testing] 1 [testing_used] 1 [of] 1 [something] 1 [testing_of_something] 1 [heading] 1 [something_heading] 1 [1] 1 [heading_1] 1 [paragraph] 1 [1_paragraph] 1 [category1] 1 [paragraph_category1] 1 [category1_test] 1 [anchor] 1 [page_anchor] 1 [redirect] 1 [anchor_redirect]",
 					tokens("contents"));
+			assertEquals("1 [test] 1 [for] 1 [test_for] 1 [page] 1 [for_page] 1 [test_for_page]",
+					tokens("title"));
 			StringList sl = new StringList(value("spellcheck_context"));
-			assertEquals("[1, page, test, simple, heading]",
+			assertEquals("[1, page, for, test, simple, heading]",
 					sl.toCollection().toString());
 		} catch(IOException e){
 			fail(e.getMessage());

@@ -131,11 +131,28 @@ public class Title implements java.io.Serializable {
      */
     public static String textualFromKey(String key, IndexId iid) {
    	 int sc = key.indexOf(':');
+   	 iid = iid.getDB();
    	 String nsName = Localization.getNamespaceText(iid.getLangCode(),Integer.parseInt(key.substring(0,sc)),iid.getDBname());
+   	 if(nsName == null)
+   		 throw new RuntimeException("Cannot get namespace name for key="+key+", on iid="+iid);
    	 if(nsName.equals("")) // main ns
    		 return key.substring(sc+1);
    	 else
    		 return nsName + key.substring(sc);
+    }
+    
+    /** 
+     * Extract 0 (as int) from 0:Some title
+     * 
+     * @param key
+     * @return
+     */
+    public static int namespaceAsInt(String key){
+   	 try{
+   		 return Integer.parseInt(key.substring(0,key.indexOf(':')));
+   	 } catch(Exception e){
+   		 throw new RuntimeException("Cannot parse namespace form key="+key,e);
+   	 }
     }
 
 }

@@ -1057,6 +1057,14 @@ public class WikiQueryParser {
 		return length>1 && (buffer[0]=='~' || buffer[length-1]=='~');
 	}
 	
+	private boolean bufferContains(char c){
+		for(int i=0;i<length;i++){
+			if(buffer[i] == c)
+				return true;
+		}
+		return false;
+	}
+	
 	private void addToWords(Term t){
 		addToWords(t,1,ExpandedType.WORD);
 	}
@@ -1084,7 +1092,7 @@ public class WikiQueryParser {
 		
 		// check for urls
 		Matcher urlMatcher = urlPattern.matcher(new String(buffer,0,length)); 
-		while(urlMatcher.find()){
+		while(bufferContains('.') && urlMatcher.find()){
 			ArrayList<Token> urlTokens = analyzeString(urlMatcher.group());
 			ArrayList<Term> urlTerms = new ArrayList<Term>();
 			for(Token tt : urlTokens)
@@ -1583,9 +1591,10 @@ public class WikiQueryParser {
 	/** Make the main phrases with relevance metrics */ 
 	protected Query makeMainPhraseWithRelevance(ParsedWords words, ParsedWords noStopWords){
 		Query main = null;
+		String field = fields.contents(); // put to begin() for performance
 		
 		// all words as entered into the query
-		Query phrase = makePositionalMulti(noStopWords,fields.begin(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1); 
+		Query phrase = makePositionalMulti(noStopWords,field,new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1); 
 		
 		Query sections = makeSectionsQuery(noStopWords,SECTIONS_BOOST);
 		// wordnet synonyms
@@ -1599,7 +1608,7 @@ public class WikiQueryParser {
 			if(wordnet != null){
 				for(ArrayList<String> wnwords : wordnet){
 					if(!allStopWords(wnwords))
-						combined.add(makePositional(wnwords,fields.begin(),new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1),Occur.SHOULD);
+						combined.add(makePositional(wnwords,field,new PositionalOptions.Sloppy(),MAINPHRASE_SLOP,1),Occur.SHOULD);
 				}
 			}
 			// urls

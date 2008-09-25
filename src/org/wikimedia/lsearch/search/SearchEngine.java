@@ -21,6 +21,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
 import org.apache.lucene.index.TermEnum;
 import org.apache.lucene.queryParser.ParseException;
+import org.apache.lucene.search.ArticleNamespaceScaling;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.QueryFilter;
 import org.apache.lucene.search.Searchable;
@@ -363,10 +364,10 @@ public class SearchEngine {
 	
 	static class PrefixMatch {
 		String key;
-		int score;
+		double score;
 		String redirect=null;
 		
-		PrefixMatch(String serialized){
+		PrefixMatch(String serialized, ArticleNamespaceScaling nsScale){
 			int d1 = serialized.indexOf(' ');
 			int d2 = serialized.indexOf(' ',d1+1);
 			if(d1 == -1)
@@ -374,11 +375,18 @@ public class SearchEngine {
 			else
 				this.redirect = serialized.substring(d2+1).replace('_',' '); 
 			this.key = serialized.substring(0,d1).replace('_',' ');
-			this.score = Integer.parseInt(serialized.substring(d1+1,d2));
+			this.score = Double.parseDouble(serialized.substring(d1+1,d2));
+			this.score *= nsScale.scaleNamespace(Title.namespaceAsInt(key));
 		}
+		
 		static class Comparator implements java.util.Comparator<PrefixMatch> {
 			public int compare(PrefixMatch o1, PrefixMatch o2) {
-				return o2.score-o1.score;
+				double d = o2.score-o1.score;
+				if(d > 0)
+					return 1;
+				if(d == 0)
+					return 0;
+				return -1;
 			}			
 		}
 		public String toString(){
@@ -416,6 +424,7 @@ public class SearchEngine {
 						
 			ArrayList<PrefixMatch> results = new ArrayList<PrefixMatch>();
 			IndexReader reader = searcher.getIndexReader();
+			ArticleNamespaceScaling nsScale = iid.getNamespaceScaling();
 			
 			for(String key : keys){				
 				TermDocs td = reader.termDocs(new Term("prefix",key));
@@ -427,7 +436,7 @@ public class SearchEngine {
 					while(it.hasNext()){
 						if(limitCount >= limit)
 							break;
-						results.add(new PrefixMatch(it.next()));						
+						results.add(new PrefixMatch(it.next(),nsScale));						
 						limitCount++;
 					}					
 				} else{
@@ -438,7 +447,7 @@ public class SearchEngine {
 						if(r.startsWith(key)){
 							TermDocs td1 = reader.termDocs(new Term("key",r));
 							if(td1.next()){
-								PrefixMatch m = new PrefixMatch(reader.document(td1.doc()).get("article"));
+								PrefixMatch m = new PrefixMatch(reader.document(td1.doc()).get("article"),nsScale);
 								results.add(m);
 
 							}

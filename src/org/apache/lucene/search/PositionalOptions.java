@@ -1,10 +1,8 @@
 package org.apache.lucene.search;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
 import org.wikimedia.lsearch.search.AggregateInfoImpl;
-import org.wikimedia.lsearch.search.RankingTest;
 import org.wikimedia.lsearch.search.AggregateInfoImpl.RankInfo;
 
 public class PositionalOptions implements Serializable {

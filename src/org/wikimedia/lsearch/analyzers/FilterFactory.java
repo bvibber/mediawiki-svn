@@ -210,6 +210,7 @@ public class FilterFactory {
 				if(filter.getName().equals("org.wikimedia.lsearch.analyzers.PhraseFilter")){
 					((PhraseFilter) chain).setStopWords(stopWords);
 					((PhraseFilter) chain).setFilters(this);
+					((PhraseFilter) chain).setField(field);
 				}
 			}
 			return chain;

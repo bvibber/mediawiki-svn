@@ -114,9 +114,9 @@ public class Analyzers {
 			analyzer.addAnalyzer(fields.sections(),
 					getReusableTitleIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 			
-			// for spell-check
+			// for testing
 			analyzer.addAnalyzer(fields.contents(), 
-					getReusableIndexAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+					getReusableIndexAnalyzer(filters,exactCase));
 		}
 		
 		return analyzer;

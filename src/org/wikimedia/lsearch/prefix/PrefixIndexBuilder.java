@@ -235,6 +235,7 @@ public class PrefixIndexBuilder {
 			Document d = new Document();
 			d.add(new Field("prefix",prefix,Field.Store.NO,Field.Index.NO_NORMS));
 			d.add(new Field("articles",new StringList(selected).toString(),Field.Store.YES,Field.Index.NO));
+			setOmitNorms(d);
 			writer.addDocument(d);
 		}
 		log.info("Adding title keys ...");
@@ -257,6 +258,7 @@ public class PrefixIndexBuilder {
 			for(Token t : canonized){
 				d.add(new Field("key",t.termText(),Field.Store.NO,Field.Index.TOKENIZED));
 			}
+			setOmitNorms(d);
 			writer.addDocument(d);
 		}
 		ir.close();
@@ -380,6 +382,7 @@ public class PrefixIndexBuilder {
 			d.add(new Field("redirect_rank",Integer.toString(redirectRank),Field.Store.YES,Field.Index.NO));
 		}
 		d.add(new Field("rank",Integer.toString(rank),Field.Store.YES,Field.Index.NO));
+		setOmitNorms(d);
 		writer.addDocument(d);	
 	}
 	
@@ -388,6 +391,14 @@ public class PrefixIndexBuilder {
 			writer.close();
 		if(links != null)
 			links.close();
+	}
+	
+	/** Set omitNorms on all fields of the document */
+	protected void setOmitNorms(Document doc){
+		Iterator it = doc.getFields().iterator();
+		while(it.hasNext()){
+			((Field)it.next()).setOmitNorms(true);
+		} 
 	}
 
 }

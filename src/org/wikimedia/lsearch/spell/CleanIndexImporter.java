@@ -48,9 +48,11 @@ public class CleanIndexImporter implements DumpWriter {
 	CleanIndexWriter writer;
 	String langCode;
 	Links links;
+	IndexId iid;
 
 	public CleanIndexImporter(IndexId iid, String langCode) throws IOException{
 		Configuration.open(); // make sure configuration is loaded
+		this.iid = iid;
 		this.writer = CleanIndexWriter.newForWrite(iid);
 		this.langCode = langCode;
 		this.links = Links.openStandalone(iid);
@@ -74,6 +76,9 @@ public class CleanIndexImporter implements DumpWriter {
 
 			if(redirectTargetNamespace<0 || redirectTargetNamespace != page.Title.Namespace)
 				redirectTo = null; // redirect to different namespace
+			
+			if(redirectTo != null)
+				references = (int) Math.sqrt(references * links.getRank(redirectTo));
 		}			
 		Date date = new Date(revision.Timestamp.getTimeInMillis());
 		Hashtable<String,Integer> anchors = new Hashtable<String,Integer>();
@@ -101,7 +106,11 @@ public class CleanIndexImporter implements DumpWriter {
 		// nop
 	}
 	public void writeSiteinfo(Siteinfo info) throws IOException {
-		// nop
+		Iterator it = info.Namespaces.orderedEntries();
+		while(it.hasNext()){
+			Entry<Integer,String> pair = (Entry<Integer,String>)it.next();
+			Localization.addCustomMapping(pair.getValue(),pair.getKey(),iid.getDB().getDBname());
+		}
 	}	
 	public void writeStartWiki() throws IOException {
 		// nop		

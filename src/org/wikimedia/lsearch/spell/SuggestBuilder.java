@@ -92,6 +92,7 @@ public class SuggestBuilder {
 					XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(importer, 1000));
 					reader.readDump();
 					importer.closeIndex();
+					IndexThread.makeIndexSnapshot(pre,pre.getImportPath());
 				} catch (IOException e) {
 					if(!e.getMessage().equals("stopped")){
 						e.printStackTrace();

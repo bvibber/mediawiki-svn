@@ -56,6 +56,8 @@ public class GlobalConfiguration {
 	protected Hashtable<String,ArrayList<String>> search;
 	/** host -> arraylist ( wildcards ) */
 	protected Hashtable<String,ArrayList<Pattern>> searchWildcard;
+	/** hosts to collect everything not searched by other hosts */
+	protected Set<String> searchOrphans;
 	/** dbname@host -> group */
 	protected Hashtable<String,Integer> databaseHostGroup;
 	/** host -> arraylist ( db.role) */
@@ -359,6 +361,7 @@ public class GlobalConfiguration {
 		searchGroup = new Hashtable<Integer,Hashtable<String, ArrayList<String>>>();
 		search = new Hashtable<String, ArrayList<String>>();
 		searchWildcard = new Hashtable<String, ArrayList<Pattern>>();
+		searchOrphans = Collections.synchronizedSet(new HashSet<String>());
 		databaseHostGroup = new Hashtable<String,Integer>();
 		index = new Hashtable<String, ArrayList<String>>();
 		indexLocation = new Hashtable<String, String>();
@@ -594,6 +597,10 @@ public class GlobalConfiguration {
 					}
 				}
 			}
+		}
+		if(searchHosts.isEmpty()){
+			// assign to search orphans host
+			searchHosts.addAll(searchOrphans);
 		}
 		return searchHosts;
 	}
@@ -1013,7 +1020,9 @@ public class GlobalConfiguration {
 				}
 			}
 			databaseHostGroup.put(name,grp);
-			if(dbrole.contains("*"))
+			if(dbrole.equals("*?"))
+				searchOrphans.add(host);
+			else if(dbrole.contains("*"))
 				hostwildcards.add(StringUtils.makeRegexp(dbrole));
 			else
 				hostroles.add(dbrole);

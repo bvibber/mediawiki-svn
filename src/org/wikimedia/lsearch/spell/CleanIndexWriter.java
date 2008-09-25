@@ -67,7 +67,7 @@ public class CleanIndexWriter {
 		this.langCode = iid.getLangCode();
 		analyzer = Analyzers.getIndexerAnalyzer(builder);
 		IndexId db = iid.getDB();		
-		this.nsf = db.getDefaultNamespace();
+		this.nsf = new NamespaceFilter(0); // FIXME was db.getDefaultNamespace();
 		
 		this.stopWords = new HashSet<String>();
 		for(String w : StopWords.getStopWords(db))
@@ -125,7 +125,10 @@ public class CleanIndexWriter {
 	/** Call this to add information about the article into index */
 	public void addArticleInfo(Article a){
 		// only for articles in default namespace(s)
-		if(nsf.contains(Integer.parseInt(a.getNamespace())))
+		int ns = Integer.parseInt(a.getNamespace());
+		if(ns < 0)
+			return;
+		else if(nsf.contains(ns))
 			addArticle(a);
 		else
 			addTitleOnly(a);

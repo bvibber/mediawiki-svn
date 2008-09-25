@@ -42,7 +42,7 @@ public class PhraseFilter extends TokenFilter {
 	protected Token pair1 = null, pair2 = null;
 	protected boolean pairReady = false;
 	protected Token nextToken = null;
-	
+	protected String field = null;
 	protected Token canonized = null;
 	
 	protected boolean forPhrase(Token t){
@@ -103,17 +103,19 @@ public class PhraseFilter extends TokenFilter {
 		if(t.getPositionIncrement()==0)
 			return t;
 
-		// keep pairs of successive words
-		if(pair1 == null)
-			pair1 = t;
-		else if(pair2 == null){
-			pair2 = t;
-			pairReady = true;
-		} else{
-			pair1 = pair2;
-			pair2 = t;
-			pairReady = true;
-		}		
+		// keep pairs of successive words (only for titles!!)
+		if( "title".equals(field) ){
+			if(pair1 == null)
+				pair1 = t;
+			else if(pair2 == null){
+				pair2 = t;
+				pairReady = true;
+			} else{
+				pair1 = pair2;
+				pair2 = t;
+				pairReady = true;
+			}		
+		}
 		if(!forPhrase(t)){
 			if(phrase1 != null){
 				gap = gap+t.termText()+"_";
@@ -154,6 +156,11 @@ public class PhraseFilter extends TokenFilter {
 	public void setFilters(FilterFactory filters) {
 		this.filters = filters;
 	}
+
+	public void setField(String field) {
+		this.field = field;
+	}
+
 	
 	
 

@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 import java.util.Map.Entry;
 
@@ -328,7 +329,8 @@ public class SpellCheckIndexer {
 			}
 		}
 		if(title.length() >= 5)
-			ngramWriter.createNgramFields(doc,"title",decomposed,NgramIndexer.Type.TITLES);		
+			ngramWriter.createNgramFields(doc,"title",decomposed,NgramIndexer.Type.TITLES);
+		setOmitNorms(doc);
 		ngramWriter.addDocument(doc);
 	}
 	/** Add titles in all namespaces */	
@@ -349,8 +351,17 @@ public class SpellCheckIndexer {
 			}
 		}
 		if(title.length() >= 5)
-			ngramWriter.createNgramFields(doc,"ns_title",decomposed,NgramIndexer.Type.TITLES);		
+			ngramWriter.createNgramFields(doc,"ns_title",decomposed,NgramIndexer.Type.TITLES);
+		setOmitNorms(doc);
 		ngramWriter.addDocument(doc);
+	}
+	
+	/** Set omitNorms on all fields of the document */
+	protected void setOmitNorms(Document doc){
+		Iterator it = doc.getFields().iterator();
+		while(it.hasNext()){
+			((Field)it.next()).setOmitNorms(true);
+		} 
 	}
 	
 	static class SimpleInt {
@@ -390,6 +401,7 @@ public class SpellCheckIndexer {
 		if(inTitle){
 			doc.add(new Field("ns_intitle","1", Field.Store.YES, Field.Index.UN_TOKENIZED));
 		}
+		setOmitNorms(doc);
 		ngramWriter.addDocument(doc);
 	}
 	
@@ -412,6 +424,7 @@ public class SpellCheckIndexer {
 		doc.add(new Field("ns_freq",Integer.toString(freqSum),Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("ns_meta1",dmeta.doubleMetaphone(decomposed), Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("ns_meta2",dmeta.doubleMetaphone(decomposed,true), Field.Store.YES, Field.Index.NO));
+		setOmitNorms(doc);
 		ngramWriter.addDocument(doc);
 	}	
 
@@ -440,7 +453,7 @@ public class SpellCheckIndexer {
 			System.out.println("Misspell: "+phrase+" -> "+corrected);
 		}
 		//addContext(phrase,context);			
-
+		setOmitNorms(doc);
 		ngramWriter.addDocument(doc);
 	}
 	
@@ -460,6 +473,7 @@ public class SpellCheckIndexer {
 		doc.add(new Field("metadata_key",key, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("metadata_value",sb.toString(), Field.Store.YES, Field.Index.NO));
 		
+		setOmitNorms(doc);
 		ngramWriter.addDocument(doc);
 	}
 	
@@ -481,7 +495,8 @@ public class SpellCheckIndexer {
 		doc.add(new Field("freq",Integer.toString(freq), Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("meta1",dmeta.doubleMetaphone(decomposed), Field.Store.YES, Field.Index.NO));
 		doc.add(new Field("meta2",dmeta.doubleMetaphone(decomposed,true), Field.Store.YES, Field.Index.NO));
-		addContext(word,context);		
+		addContext(word,context);
+		setOmitNorms(doc);
 		ngramWriter.addDocument(doc);
 	}
 		
@@ -491,6 +506,7 @@ public class SpellCheckIndexer {
 		Document doc = new Document();
 		doc.add(new Field("context_key",key, Field.Store.NO, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("context", context, Field.Store.YES, Field.Index.NO));
+		setOmitNorms(doc);
 		ngramWriter.addDocument(doc);
 	}
 	

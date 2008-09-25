@@ -86,7 +86,7 @@
 		<delete file="${dist}/${pack.name}.tar"/>
 	</target>
 	
-	<target name="pack-src" description="Make tar.gz distribution of only core source files">
+	<target name="pack-src" depends="alljar" description="Make tar.gz distribution of only core source files">
 		<mkdir dir="${dist}"/>
 		<delete file="${dist}/${src.name}.tar"/>
 		<delete file="${dist}/${src.name}.tar.gz"/>

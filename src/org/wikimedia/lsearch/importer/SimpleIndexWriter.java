@@ -119,7 +119,7 @@ public class SimpleIndexWriter {
 		
 		IndexId target = getTarget(a);
 		IndexWriter writer = indexes.get(target.toString());
-		if(writer == null)
+		if(writer == null || Integer.parseInt(a.getNamespace()) < 0)
 			return;
 		Document doc = WikiIndexModifier.makeDocument(a,builder,target,stopWords,indexAnalyzer);
 		addDocument(writer,doc,a,target);

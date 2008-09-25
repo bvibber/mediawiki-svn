@@ -86,6 +86,16 @@ public class WikiQueryParserTest extends WikiTestCase {
 			q = parser.parseRaw("query incategory:Some_category_name");
 			assertEquals("+contents:query +category:some category name",q.toString());
 			
+			q = parser.parseRaw("list of countries in Africa by population");
+			assertEquals("+contents:list +contents:of +(contents:countries contents:country^0.5) +contents:in +contents:africa +contents:by +contents:population", q.toString());
+			
+			q = parser.parseRaw("list_of_countries_in_Africa_by_population");
+			assertEquals("+contents:list +contents:of +(contents:countries contents:country^0.5) +contents:in +contents:africa +contents:by +contents:population", q.toString());
+			
+			// FIXME, some differences in alttitle
+			//assertEquals(parser.parse("list of countries in Africa by population").toString(), parser.parse("list_of_countries_in_Africa_by_population").toString());
+
+			
 			/* =================== MISC  ================= */
 			
 			q = parser.parse("douglas adams OR qian zhongshu OR (ibanez guitars)");

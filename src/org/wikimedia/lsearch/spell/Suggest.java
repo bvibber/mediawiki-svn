@@ -139,7 +139,8 @@ public class Suggest {
 	
 	protected Namespaces makeNamespaces(NamespaceFilter nsf){
 		Namespaces ns = null;
-		if(nsf != null){			
+		// all suggestions on canonical non-main namespaces with main, go to main only
+		if(nsf != null && !(nsf.contains(0) && allCanonicalNamespaces(nsf))){			
 			HashSet<Integer> defNs = defaultNs.getNamespaces();		
 			HashSet<Integer> targetNs = nsf.getNamespaces();
 			if(targetNs.isEmpty())
@@ -154,6 +155,15 @@ public class Suggest {
 				ns = new Namespaces(targetNs,true);
 		}
 		return ns;
+	}
+	
+	/** If all namespaces are canonical, i.e. predefined in define.php */
+	protected boolean allCanonicalNamespaces(NamespaceFilter nsf){
+		for(Integer ns : nsf.getNamespacesOrdered()){
+			if(ns > 20) // found a custom namespace
+				return false;
+		}
+		return true;
 	}
 	
 	/** Number of results to fetch */
@@ -179,27 +189,31 @@ public class Suggest {
 			searcher = cache.getLocalSearcher(iid.getSpell());
 		if(global == null)
 			global = GlobalConfiguration.getInstance();
-		this.searcher = searcher;
-		this.reader = searcher.getIndexReader();
 		this.defaultNs = iid.getDefaultNamespace();
 		this.useLogging = useLogging;
 		this.minWordFreq = global.getIntDBParam(iid.getDBname(),"spell","wordsMinFreq",3);
 		
-		synchronized(stopWordsIndexes){
-			if(!stopWordsIndexes.containsKey(searcher)){
-				HashSet<String> s = new HashSet<String>();
-				stopWordsIndexes.put(searcher,s);
-				TermDocs d = searcher.getIndexReader().termDocs(new Term("metadata_key","stopWords"));
-				if(d.next()){
-					String val = searcher.doc(d.doc()).get("metadata_value");
-					for(String sw : val.split(" ")){
-						s.add(sw);
-					}
-				}				
+		if(searcher != null){
+			this.searcher = searcher;
+			this.reader = searcher.getIndexReader();
+
+
+			synchronized(stopWordsIndexes){
+				if(!stopWordsIndexes.containsKey(searcher)){
+					HashSet<String> s = new HashSet<String>();
+					stopWordsIndexes.put(searcher,s);
+					TermDocs d = searcher.getIndexReader().termDocs(new Term("metadata_key","stopWords"));
+					if(d.next()){
+						String val = searcher.doc(d.doc()).get("metadata_value");
+						for(String sw : val.split(" ")){
+							s.add(sw);
+						}
+					}				
+				}
+				this.stopWords = new HashSet<String>();
+				this.stopWords.addAll(stopWordsIndexes.get(searcher)); 			
+				log.debug("Using stop words "+stopWords);
 			}
-			this.stopWords = new HashSet<String>();
-			this.stopWords.addAll(stopWordsIndexes.get(searcher)); 			
-			log.debug("Using stop words "+stopWords);
 		}
 	}
 	
@@ -263,7 +277,7 @@ public class Suggest {
 		wordExistCache.clear();
 		long start = System.currentTimeMillis();
 		
-		// System.out.println("tokens: "+tokens+" inContext:"+info.foundInContext+" phrases:"+info.phrases+", inTitles="+info.foundInTitles);
+		log.debug("tokens: "+tokens+" inContext:"+info.foundInContext+" phrases:"+info.phrases+", inTitles="+info.foundInTitles);
 
 		if(tokens.size() > 15){
 			logRequest(searchterm,"too many words to spellcheck ("+tokens.size()+")",start);
@@ -342,6 +356,7 @@ public class Suggest {
 		ArrayList<SuggestResult> titleRes = new ArrayList<SuggestResult>();
 		if(joinTokens.length() > 7)
 			titleRes = suggestTitles(joinTokens,1,POOL_TITLE,4,ns);
+		log.debug("title matches: "+titleRes);
 		if(titleRes.size()>0 && (titleRes.get(0).dist<2 || (correctByPhrases && titleRes.get(0).dist<=2))){
 			SuggestResult r = titleRes.get(0);
 			if(r.isExactMatch()){
@@ -1389,6 +1404,7 @@ public class Suggest {
 				if(acceptTitle(r,metric,distance))				
 					res.add(r);
 			}
+			log.debug("All title results: "+res);
 			// sort
 			Collections.sort(res,new SuggestResult.ComparatorForTitles());
 			ArrayList<SuggestResult> ret = new ArrayList<SuggestResult>();

@@ -41,6 +41,7 @@ mw-titles: (titles_by_suffix,1) (tspart1, [ mediawikiwiki|mw, metawiki|meta ])
 [Search-Group]
 192.168.0.1 : njawiki entest.spell
 192.168.0.1 : hmwiki.nspart1.sub1.hl
+oblak2 : *?
 
 # Index nodes
 # host: db1.role, db2.role

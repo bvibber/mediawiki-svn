@@ -756,10 +756,11 @@ public class WikiIndexModifier {
 			// contents 
 			doc.add(new Field(fields.contents(),contentAnalyzer.tokenStream(fields.contents(),"")));
 			
+			/*
 			if(contentNamespaces.contains(article.getNamespace())){
 				// article beginnings
 				doc.add(new Field(fields.begin(),new LimitTokenFilter(contentAnalyzer.tokenStream(fields.begin(),""),BEGIN_LIMIT)));
-			}
+			} */
 			
 			// altititle
 			makeAlttitle(doc,fields.alttitle(),article,iid,stopWords,tokenizer,analyzer,fields.isExactCase(),true);

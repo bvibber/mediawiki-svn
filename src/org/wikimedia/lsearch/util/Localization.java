@@ -131,7 +131,8 @@ public class Localization {
 			if(r != null)
 				return r.get(nsId);
 			
-			return null; 
+			//return canonicalNames.get(nsId);
+			return null;
 		}
 	}
 	

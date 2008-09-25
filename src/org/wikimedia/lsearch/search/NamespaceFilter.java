@@ -115,11 +115,14 @@ public class NamespaceFilter implements Serializable {
 	}
 	
 	public boolean contains(int namespace){
-		return included.get(namespace);
+		if(namespace < 0)
+			return false;
+		else
+			return included.get(namespace);
 	}
 	
 	public boolean contains(String namespace){
-		return included.get(Integer.parseInt(namespace));
+		return contains(Integer.parseInt(namespace));
 	}
 	
 	public BitSet getIncluded() {
