@@ -16,6 +16,15 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
 define( 'SEQUENCE_TAG', 'sequence_xml' );
 
+/*
+ * defines approved smil tags & attributes
+ * would be nice to use a normal xml dtd  (document type defenitions) but since we use a
+ * custom subset of smil (atm) we just have to maunally define it. and its kind of hevey weight  
+ */
+$mvSmilTags = Array(
+	'smil'=>
+);
+
 class MV_SequencePage extends Article {
 	var $outMode = 'page';
 	var $clips = array();

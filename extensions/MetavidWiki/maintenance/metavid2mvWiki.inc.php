@@ -232,12 +232,16 @@ function do_annotate_speeches( $stream, $force ) {
 	$mvStream = MV_Stream::newStreamByName( $stream->name );
 	if ( $mvStream->doesStreamExist() ) {
 		$dbr =& wfGetDB( DB_SLAVE );
-		// get all meta in range (up 10k)
-		$mvd_res = MV_Index::getMVDInRange( $mvStream->getStreamId(), null, null, 'Ht_en', false, 'Spoken_by', '10000' );
-		if ( count( $dbr->numRows( $mvd_res ) ) != 0 ) {
+		// get all pages in range (up 10k)
+		$mvd_res = & MV_Index::getMVDInRange( $mvStream->getStreamId(), null, null, 'Ht_en', false, 'Spoken_by', array('LIMIT'=>10000) );
+		print $dbr->lastQuery();
+		print "NUM ROWS: ".  $dbr->numRows( $mvd_res ). "\n";
+		if ( $dbr->numRows( $mvd_res ) != 0 ) {
+			print "looking at ". $dbr->numRows( $mvd_res ). " text rows\n";
 			$prev_person = '';
 			$prev_st = $prev_et = 0;
 			while ( $mvd = $dbr->fetchObject( $mvd_res ) ) {
+				print_r($mvd);
 				if ( $mvd->Spoken_by ) {
 					if ( $prev_person == '' ) {
 						$prev_person = $mvd->Spoken_by; // init case:
@@ -275,6 +279,8 @@ function do_annotate_speeches( $stream, $force ) {
 				}
 			}
 			print "\n\ndone with annotation inserts got to " . seconds2ntp( $prev_et ) . ' of ' . seconds2ntp( $mvStream->getDuration() ) . "\n";
+		}else{
+			print "no annotations added 0 mvd transcript pages found\n";
 		}
 	}
 }
