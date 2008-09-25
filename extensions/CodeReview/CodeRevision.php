@@ -71,6 +71,8 @@ class CodeRevision {
 
 	function save() {
 		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
+		
 		$dbw->insert( 'code_rev',
 			array(
 				'cr_repo_id' => $this->mRepo,
@@ -96,6 +98,8 @@ class CodeRevision {
 				__METHOD__,
 				array( 'IGNORE' ) );
 		}
+		
+		$dbw->commit();
 	}
 
 	function getModifiedPaths(){
