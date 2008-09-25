@@ -15,6 +15,7 @@ options:
 
 actions: 
 	strip_speech_by  //strips extra speech by text
+	update_stream_desc //updates stream desc
 
 EOT;
 	exit ();
@@ -28,7 +29,53 @@ switch ( $args[0] ) {
 	case 'update_stream_time_dur':
 		update_stream_time_dur();
 	break;
+	case 'update_stream_desc':
+		update_stream_desc();
+	break;
 }
+function update_stream_desc(){
+	/*==Official Record==
+*[[GovTrack]] Congressional Record[http://www.govtrack.us/congress/recordindex.xpd?date=20080609&where=h]
+
+*[[THOMAS]] Congressional Record [http://thomas.loc.gov/cgi-bin/query/B?r110:@FIELD(FLD003+h)+@FIELD(DDATE+20080609)]
+
+*[[THOMAS]] Extension of Remarks [http://thomas.loc.gov/cgi-bin/query/B?r110:@FIELD(FLD003+h)+@FIELD(DDATE+20080609)]
+
+==More Media Sources==
+*[[CSPAN]]'s Congressional Chronicle [http://www.c-spanarchives.org/congress/?q=node/69850&date=2008-06-09&hors=h]
+*[[Archive.org]] hosted original copy [http://www.archive.org/details/mv_house_proceeding_06-09-08_01]
+
+===Full File Links===
+*[[ao_file_MPEG2:=http://www.archive.org/download/mv_house_proceeding_06-09-08_01/house_proceeding_06-09-08_01.mpeg2|MPEG2]] (2.6 GB)
+*[[ao_file_flash_flv:=http://www.archive.org/download/mv_house_proceeding_06-09-08_01/house_proceeding_06-09-08_01.flv|flash_flv]] 	 
+	 */
+	$dbr = wfGetDB( DB_SLAVE );
+	//get all streams 
+	$streams_res = $dbr->select('mv_streams','*');
+	while($stream = $dbr->fetchObject( $streams_res )){
+		//get stream text
+		$streamTitle = Title::newFromText($stream->name, MV_NS_STREAM);
+		$streamArticle = new Article($streamTitle);
+		$cur_text = trim( $streamArticle->getContent() );
+		$cur_text=preg_replace('/\*\[\[GovTrack\]\] Congressional Record\[([^\[]*)\]/',
+						'*[$1 GovTrack Congressional Record]', $cur_text);
+		
+		$cur_text=preg_replace('/\*\[\[THOMAS\]\] Congressional Record \[([^\[]*)\]/',
+						'*[$1 THOMAS Congressional Record]', $cur_text);
+		
+		$cur_text=preg_replace('/\*\[\[THOMAS\]\] Extension of Remarks \[([^\[]*)\]/', '*[$1 THOMAS Extension of Remarks]', $cur_text);
+		
+		$cur_text=preg_replace('/\*\[\[Archive.org\]\] hosted original copy \[([^\[]*)\]/','*[$1 Archive.org hosted original copy]', $cur_text);
+		
+		$cur_text=preg_replace('/\*\[\[CSPAN\]\]\'s Congressional Chronicle \[([^\[]*)\]/','*[$1 CSPAN Congressional Chronicle]', $cur_text);
+		//do force update
+		do_update_wiki_page( $streamTitle, $cur_text, MV_NS_STREAM, $force = true );
+	}
+	
+	
+	//update links
+}
+
 /*function update_stream_time_dur(){
 	$streams_res = $dbr->select('mv_streams','*');
 	while($stream = $dbr->fetchObject( $streams_res )){

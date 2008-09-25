@@ -480,16 +480,13 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 	if ( strpos( $mvTitle->getStreamName(), 'senate' ) !== false )
 		$ch_type = 's';
 	if ( $ch_type != '' ) {
-		$out .= '*[[GovTrack]] Congressional Record' .
-		'[http://www.govtrack.us/congress/recordindex.xpd?date=' . $date .
+		$out .= '*[http://www.govtrack.us/congress/recordindex.xpd?date=' . $date .
 		'&where=' . $ch_type .
-		']' . "\n\n";
-		$out .= '*[[THOMAS]] Congressional Record ' .
-		'[http://thomas.loc.gov/cgi-bin/query/B?r110:@FIELD(FLD003+' . $ch_type . ')+@FIELD(DDATE+' . $date . ')' .
-		']' . "\n\n";
-		$out .= '*[[THOMAS]] Extension of Remarks ' .
-		'[http://thomas.loc.gov/cgi-bin/query/B?r110:@FIELD(FLD003+' . $ch_type . ')+@FIELD(DDATE+' . $date . ')' .
-		']' . "\n\n";
+		' GovTrack Congressional Record]' . "\n\n";
+		$out .= '*[http://thomas.loc.gov/cgi-bin/query/B?r110:@FIELD(FLD003+' . $ch_type . ')+@FIELD(DDATE+' . $date . ')' .
+		' THOMAS Congressional Record]' . "\n\n";
+		$out .= '*[http://thomas.loc.gov/cgi-bin/query/B?r110:@FIELD(FLD003+' . $ch_type . ')+@FIELD(DDATE+' . $date . ')' .
+		' THOMAS Extension of Remarks]' . "\n\n";
 	}
 	if ( $stream->archive_org != '' ) {
 		// grab file list from archive.org:
@@ -498,11 +495,11 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 		$file_list = $aos->getFileList( $stream->name );
 		$out .= '==More Media Sources==' . "\n";
 		// all streams have congretional cronical:
-		$out .= '*[[CSPAN]]\'s Congressional Chronicle ' .
-		'[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type . ']' . "\n";
+		$out .= '*[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type ;
+		' CSPAN\'s Congressional Chronicle]' . "\n";
 		if ( $file_list ) {
-			$out .= '*[[Archive.org]] hosted original copy ' .
-			'[http://www.archive.org/details/mv_' . $stream->name . ']' . "\n";
+			$out .= '*[http://www.archive.org/details/mv_' . $stream->name . 
+			' Archive.org hosted original copy]' . "\n";
 			// also output 'direct' semantic links to alternate file qualities:
 			$out .= "\n===Full File Links===\n";
 			$dbw = wfGetDB( DB_WRITE );
