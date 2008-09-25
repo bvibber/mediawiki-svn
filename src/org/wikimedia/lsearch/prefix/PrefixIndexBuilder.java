@@ -315,6 +315,7 @@ public class PrefixIndexBuilder {
 		Transaction trans = new Transaction(pre, IndexId.Transaction.INDEX);
 		trans.begin();
 		try{
+			try{
 			IndexReader reader = IndexReader.open(pre.getIndexPath()); 
 			// batch delete
 			for(IndexUpdateRecord rec : records){
@@ -325,6 +326,9 @@ public class PrefixIndexBuilder {
 				}
 			}
 			reader.close();
+			} catch(Exception e){
+				log.warn("Error while opening prefix precursor "+pre+" : "+e.getMessage());
+			}
 			// batch add
 			writer = WikiIndexModifier.openForWrite(pre.getIndexPath(),false,new PrefixAnalyzer());
 			initWriter(writer);

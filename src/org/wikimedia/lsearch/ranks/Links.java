@@ -2,6 +2,7 @@ package org.wikimedia.lsearch.ranks;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -40,6 +41,7 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.RAMDirectory;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.PrefixAnalyzer;
@@ -224,7 +226,7 @@ public class Links {
 		if(writer == null){
 			if(directory == null)
 				throw new RuntimeException("Opened for read, but trying to write");
-			writer = new IndexWriter(directory,new SimpleAnalyzer(),false);
+			writer = WikiIndexModifier.openForWrite(((FSDirectory)directory).getFile().getAbsolutePath(),false,new SimpleAnalyzer());
 			initWriter(writer);
 			reader = null;
 			searcher = null;
@@ -247,24 +249,29 @@ public class Links {
 		Transaction trans = new Transaction(iid, IndexId.Transaction.INDEX);
 		trans.begin();
 		try{
-			ensureRead();
-			// batch delete
-			for(IndexUpdateRecord rec : records){
-				if(rec.doDelete()){
-					Article a = rec.getArticle();
-					if(a.getTitle()==null || a.getTitle().equals("")){
-						// try to fetch ns:title so we can have nicer debug info					
-						String key = getKeyFromPageId(rec.getIndexKey());
-						if(key != null)
-							a.setNsTitleKey(key);
+			try{
+				ensureRead();
+				// batch delete
+				for(IndexUpdateRecord rec : records){
+					if(rec.doDelete()){
+						Article a = rec.getArticle();
+						if(a.getTitle()==null || a.getTitle().equals("")){
+							// try to fetch ns:title so we can have nicer debug info					
+							String key = getKeyFromPageId(rec.getIndexKey());
+							if(key != null)
+								a.setNsTitleKey(key);
+						}
+						log.debug(iid+": Deleting "+a);
+						reader.deleteDocuments(new Term("article_pageid",rec.getIndexKey()));
 					}
-					log.debug(iid+": Deleting "+a);
-					reader.deleteDocuments(new Term("article_pageid",rec.getIndexKey()));
 				}
+				flush();
+			} catch(Exception e){
+				// report but continue
+				log.warn("Error opening links index "+ iid +": "+e.getMessage());
 			}
-			flush();
 			// batch add
-			writer = new IndexWriter(iid.getIndexPath(),new SimpleAnalyzer(),false);
+			writer = WikiIndexModifier.openForWrite(iid.getIndexPath(),false,new SimpleAnalyzer());
 			initWriter(writer);
 			for(IndexUpdateRecord rec : records){
 				if(rec.doAdd()){

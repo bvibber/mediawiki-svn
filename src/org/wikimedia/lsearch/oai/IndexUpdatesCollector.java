@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.oai;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -18,6 +19,7 @@ import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.ranks.LinksBuilder;
 import org.wikimedia.lsearch.related.Related;
 import org.wikimedia.lsearch.related.RelatedTitle;
@@ -86,12 +88,15 @@ public class IndexUpdatesCollector implements DumpWriter {
 	
 	public void writeSiteinfo(Siteinfo info) throws IOException {
 		this.info = info;
+		RMIMessengerClient messenger = new RMIMessengerClient(true);
 		// write to localization
+		HashMap<Integer,String> map = new HashMap<Integer,String>();
 		Iterator it = info.Namespaces.orderedEntries();
 		while(it.hasNext()){
 			Entry<Integer,String> pair = (Entry<Integer,String>)it.next();
-			Localization.addCustomMapping(pair.getValue(),pair.getKey(),iid.getDBname());
+			map.put(pair.getKey(),pair.getValue());			
 		}
+		messenger.addLocalizationCustomMapping(iid.getIndexHost(),map,iid.getDBname());
 	}
 		
 	public void close() throws IOException {

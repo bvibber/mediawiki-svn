@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.index.Term;
@@ -245,4 +246,13 @@ public interface RMIMessenger extends Remote {
 	 * @return
 	 */
 	public boolean snapshotFinished(boolean optimize, String pattern, boolean forPrecursor) throws RemoteException;
+
+	/**
+	 * Call on indexer to remotely add custom localized names for OAI header site info 
+	 * 
+	 * @param namespaceIndexToName
+	 * @param dbname
+	 * @throws RemoteException
+	 */
+	public void addLocalizationCustomMapping(Map<Integer,String> namespaceIndexToName, String dbname) throws RemoteException;
 }

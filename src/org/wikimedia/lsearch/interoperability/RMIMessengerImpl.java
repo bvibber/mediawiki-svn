@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Token;
@@ -37,6 +39,7 @@ import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.spell.SuggestResult;
 import org.wikimedia.lsearch.spell.SuggestSimilar;
+import org.wikimedia.lsearch.util.Localization;
 
 /** Local implementation for {@link RMIMessenger} */
 public class RMIMessengerImpl implements RMIMessenger {
@@ -230,6 +233,13 @@ public class RMIMessengerImpl implements RMIMessenger {
 		if(indexThread == null)
 			indexThread = IndexThread.getInstance();
 		return indexThread.snapshotFinished(optimize,pattern,forPrecursor);
+	}
+
+	public void addLocalizationCustomMapping(Map<Integer, String> namespaceIndexToName, String dbname) throws RemoteException {
+		for(Entry<Integer,String> e : namespaceIndexToName.entrySet()){
+			Localization.addCustomMapping(e.getValue(),e.getKey(),dbname);
+		}
+		
 	}
 
 	protected RMIMessengerImpl(){

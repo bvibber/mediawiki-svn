@@ -238,13 +238,15 @@ public class WikiIndexModifier {
 	public static IndexWriter openForWrite(String path, boolean rewrite) throws IOException{
 		return openForWrite(path,rewrite,null);
 	}
+	
 	public static IndexWriter openForWrite(String path, boolean rewrite, Analyzer analyzer) throws IOException{
 		try {
 			return new IndexWriter(path,analyzer,rewrite);
 		} catch (IOException e) {				
 			try {
 				// unlock, retry
-				if(!new File(path).exists()){
+				File target = new File(path);
+				if(!target.exists() || (target.isDirectory() && target.listFiles().length==0)){
 					// try to make brand new index
 					makeDBPath(path); // ensure all directories are made
 					log.info("Making new index at path "+path);

@@ -373,7 +373,7 @@ public class SearchDaemon extends HttpHandler {
 	 */
 	private void sendResultLine(double score, String namespace, String title) {
 		try{
-		sendOutputLine(score + " " + namespace + " " + encodeTitle(title));
+		sendOutputLine((float)score + " " + namespace + " " + encodeTitle(title));
 		} catch(Exception e){
 			log.error("Error sending result line ("+score + " " + namespace + " " + title +"): "+e.getMessage());
 		}

@@ -147,12 +147,14 @@ public class Transaction {
 	 * Commit changes to index. 
 	 */
 	public void commit(){
+		boolean wasInTransaction = inTransaction;
 		try{
 			cleanup();
 			inTransaction = false;
 			log.info("Successfully commited changes on "+iid);
 		} finally{
-			lock.unlock();
+			if(wasInTransaction)
+				lock.unlock();
 		}
 	}
 	
@@ -160,6 +162,7 @@ public class Transaction {
 	 * Rollback changes to index. Returns to previous consistent state.
 	 */
 	public void rollback(){
+		boolean wasInTransaction = inTransaction;
 		try{
 			if(inTransaction){
 				recover();
@@ -167,7 +170,8 @@ public class Transaction {
 				log.info("Succesfully rollbacked changes on "+iid);
 			}
 		} finally{
-			lock.unlock();
+			if(wasInTransaction)
+				lock.unlock();
 		}
 	}
 

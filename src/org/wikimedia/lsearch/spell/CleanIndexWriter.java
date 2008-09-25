@@ -91,16 +91,20 @@ public class CleanIndexWriter {
 		Transaction trans = new Transaction(iid, IndexId.Transaction.INDEX);
 		trans.begin();
 		try{
-			IndexReader reader = IndexReader.open(iid.getIndexPath()); 
-			// batch delete
-			for(IndexUpdateRecord rec : records){
-				if(rec.doDelete()){
-					Article a = rec.getArticle();
-					log.debug(iid+": Deleting "+a);
-					reader.deleteDocuments(new Term("key",rec.getIndexKey()));
+			try{
+				IndexReader reader = IndexReader.open(iid.getIndexPath()); 
+				// batch delete
+				for(IndexUpdateRecord rec : records){
+					if(rec.doDelete()){
+						Article a = rec.getArticle();
+						log.debug(iid+": Deleting "+a);
+						reader.deleteDocuments(new Term("key",rec.getIndexKey()));
+					}
 				}
+				reader.close();
+			} catch(Exception e){
+				log.warn("Error opening for batch update read "+iid+" : "+e.getMessage());
 			}
-			reader.close();
 			// batch add
 			openWriter(iid.getIndexPath(),false);
 			for(IndexUpdateRecord rec : records){
