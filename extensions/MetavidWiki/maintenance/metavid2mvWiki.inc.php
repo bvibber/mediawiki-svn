@@ -215,7 +215,7 @@ function do_annotate_speeches( $stream, $force ) {
 		// get wiki stream id:
 		$wikiStream = new MV_Stream( array( 'name' => $stream->name ) );
 		// first remove all bot edited pages:
-		$mvd_rows = MV_Index::getMVDInRange( $wikiStream->getStreamId(), null, null, 'Anno_en' );
+		$mvd_rows =& MV_Index::getMVDInRange( $wikiStream->getStreamId(), null, null, 'Anno_en' );
 		foreach ( $mvd_rows as $row ) {
 			$title = Title::newFromText( $row->wiki_title, MV_NS_MVD );
 			$current = Revision::newFromTitle( $title );
@@ -233,22 +233,20 @@ function do_annotate_speeches( $stream, $force ) {
 	if ( $mvStream->doesStreamExist() ) {
 		$dbr =& wfGetDB( DB_SLAVE );
 		// get all pages in range (up 10k)
-		$mvd_res = & MV_Index::getMVDInRange( $mvStream->getStreamId(), null, null, 'Ht_en', false, 'Spoken_by', array('LIMIT'=>10000) );
-		print $dbr->lastQuery();
-		print "NUM ROWS: ".  $dbr->numRows( $mvd_res ). "\n";
-		if ( $dbr->numRows( $mvd_res ) != 0 ) {
-			print "looking at ". $dbr->numRows( $mvd_res ). " text rows\n";
+		$mvd_rows =& MV_Index::getMVDInRange( $mvStream->getStreamId(), null, null, 'Ht_en', false, 'Spoken_By', array('LIMIT'=>10000) );		
+		if ( count( $mvd_rows ) != 0 ) {
+			print "looking at ". count( $mvd_rows ). " text rows\n";
 			$prev_person = '';
 			$prev_st = $prev_et = 0;
-			while ( $mvd = $dbr->fetchObject( $mvd_res ) ) {
-				print_r($mvd);
-				if ( $mvd->Spoken_by ) {
+			foreach($mvd_rows as $mvd){
+				//print "On: ".$mvd->Spoken_By."\n";
+				if ( $mvd->Spoken_By ) {
 					if ( $prev_person == '' ) {
-						$prev_person = $mvd->Spoken_by; // init case:
+						$prev_person = $mvd->Spoken_By; // init case:
 						$prev_st = $mvd->start_time;
 						$prev_et = $mvd->end_time;
 					} else {
-						if ( $prev_person == $mvd->Spoken_by ) {
+						if ( $prev_person == $mvd->Spoken_By ) {
 							// continue
 							// print "acumulating for $mvd->Spoken_by \n";
 							$prev_et = $mvd->end_time;
@@ -258,8 +256,8 @@ function do_annotate_speeches( $stream, $force ) {
 								$doSpeechUpdate = true;
 								print "insert annotation $prev_person: " . seconds2ntp( $prev_st ) . " to " . seconds2ntp( $prev_et ) . " \n";
 								// check for existing speech by in range if so skip (add subtract 1 to start/end (to not get matches that land on edges) (up to 10,000 meta per stream)
-								$mvd_anno_res = MV_Index::getMVDInRange( $mvStream->getStreamId(), $prev_st + 1, $prev_et - 1, 'Anno_en', false, 'Speech_by' );
-								while ( $row = $dbr->fetchObject( $mvd_anno_res ) ) {
+								$mvd_anno_rows = MV_Index::getMVDInRange( $mvStream->getStreamId(), $prev_st + 1, $prev_et - 1, 'Anno_en', false, 'Speech_by' );
+								foreach($mvd_anno_rows as  $row) {
 									if ( $row->Speech_by ) {
 										print ".. range already has: $row->Speech_by skip\n";
 										$doSpeechUpdate = false;
@@ -272,7 +270,7 @@ function do_annotate_speeches( $stream, $force ) {
 									do_update_wiki_page( $annoTitle, $page_txt );
 								}
 							}
-							$prev_person = $mvd->Spoken_by; // init case:
+							$prev_person = $mvd->Spoken_By; // init case:
 							$prev_st = $mvd->start_time;
 						}
 					}
