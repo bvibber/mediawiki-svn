@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'svn-date' => '$LastChangedDate$',
 	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Rob Church',
-	'description' => '[Special:CountEdits|Special page]] that counts user edits and provides a top-ten contributor list',
+	'description' => '[[Special:CountEdits|Special page]] that counts user edits and provides a top-ten contributor list',
 	'descriptionmsg' => 'countedits-desc',
 	'url' => 'http://www.mediawiki.wiki/wiki/Extesion:CountEdits',
 );
