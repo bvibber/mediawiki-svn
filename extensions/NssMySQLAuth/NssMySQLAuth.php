@@ -27,3 +27,4 @@ $wgNssMySQLAuthDB = false;
 $wgExtensionFunctions[] = array( 'NssMySQLAuthPlugin', 'initialize' );
 
 $wgUserProperties = array( 'address', 'city' );
+$wgActivityModes = array( 'active', 'inactive' );

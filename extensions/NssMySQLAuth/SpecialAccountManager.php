@@ -23,7 +23,7 @@ class SpecialAccountManager extends SpecialPage {
 
 	function constructForm() {
 		global $wgOut, $wgScript;
-		global $wgUserProperties;
+		global $wgUserProperties, $wgActivityModes;
 
 		// TODO: wfMsg etc.
 		$wgOut->addHTML( Xml::openElement( 'form', array(
@@ -31,8 +31,8 @@ class SpecialAccountManager extends SpecialPage {
 			'method' => 'post' )
 		) );
 
-		$wgOut->addHTML("<table id=\"userprops\" border=\"1\" width=\"100%\">\n\t<tr>".
-			"<th>Username</th><th>Email</th>");
+		$wgOut->addHTML("<table id=\"userprops\" border=\"1\">\n\t<tr>".
+			"<th>Username</th><th>Email</th><th>Active</th>");
 		foreach( $wgUserProperties as $i ) 
 			$wgOut->addHTML( Xml::element( 'th', null, $i ) );
 		$wgOut->addHTML("</tr>\n\n");
@@ -41,15 +41,18 @@ class SpecialAccountManager extends SpecialPage {
 			$name = $user->getName();
 			$row = "\t<tr>";
 			$row .= Xml::element( 'td', null, $name );
-			$row .= Xml::element( 'td', null, $user->getEmail() );
+			$row .= "<td>".Xml::input( "am-{$name}-email", 40, $user->getEmail() )."</td>";
+			$select = new XmlSelect( "am-{$name}-active" );
+			$select->setDefault( $user->getActive() );
+			foreach( $wgActivityModes as $key )
+				$select->addOption( $key );
+			$row .= "<td>".$select->getHTML()."</td>";
 
 			$props = $user->getProps();
 			foreach( $wgUserProperties as $key ) {
-				$value = isset( $wgUserProperties[$key] ) ?
-					$wgUserProperties[$key] : '';
-				$row .= "<td>".Xml::input(
-					"am-{$name}-{$key}",
-					false, $value
+				$value = isset( $props[$key] ) ? $props[$key] : '';
+				$row .= "<td>".Xml::input( 
+						"am-{$name}-{$key}", 40, $value
 					)."</td>";
 			}
 			$row .= "</tr>\n";
@@ -81,14 +84,15 @@ class SpecialAccountManager extends SpecialPage {
 			if( count( $parts ) != 3 )
 				continue;
 
-			$username = $parts[1];
-			$keyname = $parts[2];
+			$username = strtolower( $parts[1] );
+			$keyname = strtolower( $parts[2] );
 		
 			if( !isset( $this->users[$username] ) )
 				continue;
-			if( !isset( $wgUserProperties[$key] ) )
-				continue;
 
+			if( !in_array( $keyname, $wgUserProperties ) )
+				continue;
+			
 			$this->users[$username]->set( $keyname, $value );
 		}
 
@@ -110,10 +114,11 @@ class UserProps {
 		$res->free();
 		return $users;
 	}
-	function __construct( $username, $email = null ) {
+	function __construct( $username, $email = null, $active = null ) {
 		$this->username = $username;
-		$this->props = null;
+		$this->props = array();
 		$this->email = $email;
+		$this->active = $active;
 	}
 	function getProps() {
 		return $this->props;
@@ -127,6 +132,12 @@ class UserProps {
 	function setEmail( $email ) {
 		$this->email = $email;
 	}
+	function getActive() {
+		return $this->active;
+	}
+	function setActive( $active ) {
+		$this->active = $active; 
+	}
 
 	static function select($username = null) {
 		global $wgAuth;
@@ -136,7 +147,7 @@ class UserProps {
 
 		return $dbr->select(
 			array( 'user_props', 'passwd' ),
-			array( 'up_name', 'up_value', 'pwd_name', 'pwd_email' ),
+			array( 'up_name', 'up_value', 'pwd_name', 'pwd_email', 'pwd_active' ),
 			$where, 
 			__METHOD__,
 			array( 'ORDER BY' => 'up_timestamp DESC', 'DISTINCT' ),
@@ -145,6 +156,7 @@ class UserProps {
 	}
 
 	function set($name, $value) {
+		wfDebug( "{$this->username}: $name => $value\n" );
 		$this->props[$name] = $value;
 	}
 	function setInternal($name, $value) {
@@ -158,10 +170,22 @@ class UserProps {
 	function update() {
 		$diff = array_diff_assoc($this->props, $this->old_props);
 		if( !count( $diff ) ) return;
+
 		
 		global $wgAuth;
 		$dbw = $wgAuth->getDB( DB_WRITE );
 		$timestamp = $dbw->timestamp();
+
+		if( isset( $diff['email'] ) || isset( $diff['active'] ) ) {
+			if ( isset( $diff['email'] ) ) $this->email = $diff['email'];
+			if ( isset( $diff['active'] ) ) $this->active = $diff['active'];
+			$dbw->update( 'passwd', 
+				array( 'pwd_email' => $this->email, 'pwd_active' => $this->active ), 
+				array( 'pwd_user' => $this->username ),
+				__METHOD__
+			);
+			// Put it into user_props as well for history
+		}
 
 		$insert = array();
 		foreach( $diff as $key => $value )
