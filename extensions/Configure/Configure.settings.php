@@ -243,9 +243,10 @@ class ConfigurationSettings {
 	/**
 	 * Get the type of a setting
 	 *
+	 * @param $setting String: setting name
 	 * @return mixed
 	 */
-	public function getSettingType(){
+	public function getSettingType( $setting ){
 		$settings = $this->getAllSettings();
 		if( isset( $settings[$setting] ) )
 			return $settings[$setting];
