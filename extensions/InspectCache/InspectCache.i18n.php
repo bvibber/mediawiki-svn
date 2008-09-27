@@ -347,6 +347,13 @@ $messages['km'] = array(
 	'inspectcache-list' => 'បញ្ជី',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'inspectcache-delete' => 'Dilit',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

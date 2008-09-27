@@ -439,7 +439,7 @@ $messages['vo'] = array(
 	'sc_today' => 'Adelo',
 );
 
-/** Taiwan Chinese (‪中文(台灣)‬)
+/** Chinese (Taiwan) (‪中文(台灣)‬)
  * @author Roc michael
  */
 $messages['zh-tw'] = array(

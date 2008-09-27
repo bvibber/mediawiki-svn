@@ -743,7 +743,7 @@ $messages['vo'] = array(
 	'tasklistemail' => 'O %s löfik',
 );
 
-/** ‪中文(中国大陆)‬ (‪中文(中国大陆)‬) */
+/** Chinese (China) (‪中文(中国大陆)‬) */
 $messages['zh-cn'] = array(
 	'tasklist' => '任务列表',
 	'tasklistbyproject' => '依专案列出任务',
@@ -760,7 +760,7 @@ $messages['zh-cn'] = array(
 	'tasklistbyname' => '==  名称为「%s」的任务 ==',
 );
 
-/** Taiwan Chinese (‪中文(台灣)‬)
+/** Chinese (Taiwan) (‪中文(台灣)‬)
  * @author Roc michael
  */
 $messages['zh-tw'] = array(

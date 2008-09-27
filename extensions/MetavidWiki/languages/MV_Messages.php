@@ -2068,6 +2068,16 @@ $messages['ko'] = array(
 	'mv_tool_search' => '찾기',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'mv_upload_file' => 'Ohplod fail',
+	'mv_tool_search' => 'Luk foh am',
+	'mv_edit' => 'Chenj',
+	'mv_history' => 'Istri',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

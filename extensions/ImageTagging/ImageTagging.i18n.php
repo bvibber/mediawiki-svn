@@ -458,6 +458,13 @@ $messages['km'] = array(
 	'imagetagging-addtagsuccess' => 'ប្លាក់ដែលបានដាក់៖',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'imagetagging-imghistory' => 'Istri',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

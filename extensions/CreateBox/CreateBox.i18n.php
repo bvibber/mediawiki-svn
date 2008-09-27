@@ -209,6 +209,13 @@ $messages['km'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'createbox-create' => 'Mek sohmtin',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

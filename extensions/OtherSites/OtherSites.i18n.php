@@ -103,7 +103,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'othersites' => 'Aner Siten',
+	'othersites' => 'aner Siten',
 	'othersites-desc' => 'Réckelt interwiki-Linken déi keng Sproochlinke sinn an hir eege Këscht',
 );
 
@@ -127,7 +127,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'othersites' => 'Autres sits',
+	'othersites' => 'autres sits',
 	'othersites-desc' => "Deplaça los ligams interwiki autres que los ligams ligats a la lenga de lors compausants d'interfàcia pròpris.",
 );
 
@@ -135,7 +135,7 @@ $messages['oc'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'othersites' => 'Iné stránky',
+	'othersites' => 'iné stránky',
 	'othersites-desc' => 'Presunie interwiki odkazy okrem odkazov na iné jazyky do ich vlastných portletov.',
 );
 
@@ -150,7 +150,7 @@ $messages['te'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'othersites' => 'Các trang mạng khác',
+	'othersites' => 'các trang mạng khác',
 	'othersites-desc' => 'Di chuyển các liên kết liên wiki chứ không di chuyển liên kết ngôn ngữ trong chính portley của nó',
 );
 

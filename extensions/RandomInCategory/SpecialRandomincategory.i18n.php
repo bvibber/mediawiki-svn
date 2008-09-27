@@ -344,6 +344,13 @@ $messages['km'] = array(
 	'randomincategory-submit' => 'ទៅ',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'randomincategory-submit' => 'Go to am',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

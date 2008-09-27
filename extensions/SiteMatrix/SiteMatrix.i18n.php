@@ -1548,7 +1548,7 @@ $messages['zh-hant'] = array(
 	'sitematrix-fishbowl' => '編輯限制',
 );
 
-/** Taiwan Chinese (‪中文(台灣)‬) */
+/** Chinese (Taiwan) (‪中文(台灣)‬) */
 $messages['zh-tw'] = array(
 	'sitematrix' => '維基媒體網站清單',
 	'sitematrix-language' => '語言',

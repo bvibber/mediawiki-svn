@@ -250,7 +250,7 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
- * @author Morten
+ * @author Morten LJ
  */
 $messages['da'] = array(
 	'usernameblacklist-desc' => 'Tilføjer en [[MediaWiki:Usernameblacklist|sort liste over uønskede brugernavne]] for at forhindre oprettelse af konti der mathcer en eller flere regular expressions.',

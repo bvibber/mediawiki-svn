@@ -1760,6 +1760,13 @@ $messages['km'] = array(
 	'viewapc-ls-limit-none' => 'ទាំងអស់',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'viewapc-ls-submit' => 'Go to am!',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

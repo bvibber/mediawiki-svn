@@ -1878,6 +1878,13 @@ $wgGoogleMapsMessages['ko'] = array(
 	'gm-search' => '찾기',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$wgGoogleMapsMessages['kri'] = array(
+	'gm-search' => 'Luk foh am',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */
@@ -3777,7 +3784,7 @@ $wgGoogleMapsMessages['zh-hant'] = array(
 	'gm-mars' => '火星',
 );
 
-/** Taiwan Chinese (‪中文(台灣)‬)
+/** Chinese (Taiwan) (‪中文(台灣)‬)
  * @author Roc michael
  */
 $wgGoogleMapsMessages['zh-tw'] = array(

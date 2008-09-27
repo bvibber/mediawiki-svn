@@ -447,7 +447,7 @@ $messages['tg-cyrl'] = array(
 	'specialwhoiswatchingaddbtn' => 'Илова кардани Корбарони интихобшуда',
 );
 
-/** Taiwan Chinese (‪中文(台灣)‬)
+/** Chinese (Taiwan) (‪中文(台灣)‬)
  * @author Roc michael
  */
 $messages['zh-tw'] = array(

@@ -444,6 +444,13 @@ $messages['ko'] = array(
 	'edituser-dosearch' => '찾기',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'edituser-dosearch' => 'Luk foh am',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

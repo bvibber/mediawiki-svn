@@ -28,6 +28,7 @@ $fallback=array(
 	'it'  => 'en',
 	'ka'  => 'en',
 	'km'  => 'en',
+	'kri' => 'en',
 	'ksh' => 'en',
 	'lb'  => 'en',
 	'lfn' => 'en',
@@ -1017,6 +1018,13 @@ $messages['km'] = array(
 	'voctrain_unhide_definition' => 'បើកបង្ហាញនិយមន័យ',
 	'voctrain_unhide_words' => 'បើកបង្ហាញពាក្យ',
 	'voctrain_hiding' => 'លាក់',
+);
+
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'voctrain_logout' => 'kohmoh na di sait',
 );
 
 /** Ripoarisch (Ripoarisch)

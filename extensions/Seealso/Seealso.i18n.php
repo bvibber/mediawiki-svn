@@ -383,7 +383,7 @@ $messages['vo'] = array(
 	'seealso' => 'Logolös i',
 );
 
-/** Taiwan Chinese (‪中文(台灣)‬)
+/** Chinese (Taiwan) (‪中文(台灣)‬)
  * @author Roc michael
  */
 $messages['zh-tw'] = array(

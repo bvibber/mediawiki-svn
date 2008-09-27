@@ -1510,6 +1510,14 @@ $messages['km'] = array(
 	'configure-view' => 'មើល',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'configure-js-remove' => 'Dilit',
+	'configure-section-search' => 'Luk foh am',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

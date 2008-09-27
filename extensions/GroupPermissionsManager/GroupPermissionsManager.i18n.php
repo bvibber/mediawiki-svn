@@ -806,6 +806,13 @@ $messages['km'] = array(
 	'right-edit-new' => 'កែប្រែទំព័រ(ដែលមិនមែនជាទំព័រពិភាក្សា)',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'grouppermissions-dosearch' => 'Go to am',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

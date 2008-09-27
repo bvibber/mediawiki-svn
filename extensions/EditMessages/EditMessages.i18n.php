@@ -400,6 +400,13 @@ $messages['ko'] = array(
 	'editmsg-search' => '찾기',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'editmsg-search' => 'Luk foh am',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

@@ -771,6 +771,13 @@ $allMessages['km'] = array(
 	'whitelistnever' => 'មិនដែល',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$allMessages['kri'] = array(
+	'whitelisttableedit' => 'Chenj',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */
@@ -1499,7 +1506,7 @@ $allMessages['vo'] = array(
 	'whitelisttablemodifynone' => 'Nonik',
 );
 
-/** Taiwan Chinese (‪中文(台灣)‬)
+/** Chinese (Taiwan) (‪中文(台灣)‬)
  * @author Roc michael
  */
 $allMessages['zh-tw'] = array(

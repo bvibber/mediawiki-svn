@@ -406,6 +406,13 @@ $messages['km'] = array(
 	'deletebatch-select-yourself' => 'អ្នក',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'deletebatch-button' => 'Dilit',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

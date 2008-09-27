@@ -531,6 +531,13 @@ $messages['ko'] = array(
 	'importusers-password' => '비밀번호',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'importusers-uploadfile' => 'Ohplod fail',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

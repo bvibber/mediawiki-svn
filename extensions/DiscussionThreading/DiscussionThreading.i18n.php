@@ -54,11 +54,12 @@ $messages['bg'] = array(
 	'discussionthreading-replysection' => 'отговаряне',
 );
 
+/** German (Deutsch) */
 $messages['de'] = array(
 	'discussionthreading-replysection' => 'antworten',
-	'discussionthreading-replysectionhint' => "Auf diesen Eintrag antworten",
+	'discussionthreading-replysectionhint' => 'Auf diesen Eintrag antworten',
 	'discussionthreading-threadnewsection' => 'neu',
-	'discussionthreading-threadnewsectionhint' => "Neuen Eintrag erstellen"
+	'discussionthreading-threadnewsectionhint' => 'Neuen Eintrag erstellen',
 );
 
 /** Esperanto (Esperanto)
@@ -71,11 +72,12 @@ $messages['eo'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Fari novan fadenon',
 );
 
+/** Spanish (Español) */
 $messages['es'] = array(
 	'discussionthreading-replysection' => 'respuesta',
-	'discussionthreading-replysectionhint' => "Respuesta a este tema",
+	'discussionthreading-replysectionhint' => 'Respuesta a este tema',
 	'discussionthreading-threadnewsection' => 'nuevo',
-	'discussionthreading-threadnewsectionhint' => "Empezar un nuevo tema"
+	'discussionthreading-threadnewsectionhint' => 'Empezar un nuevo tema',
 );
 
 /** French (Français)
@@ -122,11 +124,12 @@ $messages['ia'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Initiar un nove filo',
 );
 
+/** Italian (Italiano) */
 $messages['it'] = array(
 	'discussionthreading-replysection' => 'rispondi',
-	'discussionthreading-replysectionhint' => "Rispondi a questo messaggio",
+	'discussionthreading-replysectionhint' => 'Rispondi a questo messaggio',
 	'discussionthreading-threadnewsection' => 'nuovo',
-	'discussionthreading-threadnewsectionhint' => "Avvia una nuova discussione"
+	'discussionthreading-threadnewsectionhint' => 'Avvia una nuova discussione',
 );
 
 /** Ripoarisch (Ripoarisch)

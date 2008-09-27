@@ -462,6 +462,13 @@ $messages['ko'] = array(
 	'createsigndoc-create' => '만들기',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'createsigndoc-create' => 'Mek sohmtin',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

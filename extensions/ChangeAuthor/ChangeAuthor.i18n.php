@@ -839,6 +839,13 @@ $messages['km'] = array(
 	'changeauthor-logpagename' => 'កំណត់ហេតុនៃការផ្លាស់ប្តូរអ្នកនិពន្ធ',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'changeauthor-pagenameform-go' => 'Go to am',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

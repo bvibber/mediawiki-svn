@@ -839,6 +839,13 @@ $messages['km'] = array(
 	'regexblock-view-time' => 'នៅ $1',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$messages['kri'] = array(
+	'regexblock-view-go' => 'Go to am',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */
