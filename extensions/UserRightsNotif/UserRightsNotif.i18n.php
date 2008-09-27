@@ -22,6 +22,13 @@ $2",
 	'userrightsnotif-desc'    => 'Sends e-mail notification to users upon rights changes',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'userrightsnotif-desc' => 'Short description of the Userrightsnotif extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author ترجمان05
@@ -475,13 +482,14 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Masti
  */
 $messages['pl'] = array(
 	'userrightsnotifysubject' => 'Zmiana członkostwa w grupach w $1',
 	'userrightsnotifybody' => 'Witaj $1,
 
-informuję, że Twoje członkostwo w grupach w $2 zostało zmienione $4 przez $3.
+informuję, że Twoje członkostwo w grupach w $2 zostało zmienione przez $4 o $3.
 
 Dodano: $5
 Usunięto: $6

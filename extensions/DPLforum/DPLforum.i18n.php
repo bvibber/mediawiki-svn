@@ -216,6 +216,18 @@ $messages['km'] = array(
 	'dplforum-toomany' => 'ចំនាត់ថ្នាក់ក្រុមច្រើនណាស់!',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'dplforum-desc' => 'Ene Forum-Zosatz op dä Basis fum DPL.',
+	'dplforum-by' => 'fum',
+	'dplforum-edited' => '  - zoläz beärbeidt',
+	'dplforum-never' => 'Nimohls',
+	'dplforum-toofew' => 'DPL Forum: Nit jenooch Saachjruppe!',
+	'dplforum-toomany' => 'DPL Forum: Zofill Saachjruppe!',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -133,6 +133,13 @@ $messages['de'] = array(
 	'errorhandler-trace-line' => '$1 (Zeile $2): $3',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'errorhandler-errors' => 'Σφάλματα:',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -151,6 +158,35 @@ $messages['eo'] = array(
 	'errorhandler-msg-text' => '$1 : $2 en $3 (linio $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> en <b>$3</b> (linio <b>$4</b>)',
 	'errorhandler-trace' => 'spuro:',
+);
+
+/** Spanish (Español)
+ * @author Antur
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'errorhandler-desc' => 'Error operativo de Mediawiki',
+	'errorhandler-errors' => 'Errores:',
+	'errorhandler-error-fatal' => 'Error grave',
+	'errorhandler-error-warning' => 'Cuidado',
+	'errorhandler-error-parse' => 'Error sintáctico',
+	'errorhandler-error-notice' => 'Aviso',
+	'errorhandler-error-deprecated' => 'En desuso',
+	'errorhandler-error-core-error' => 'Error de núcleo',
+	'errorhandler-error-core-warning' => 'Alerta de núcleo',
+	'errorhandler-error-compile-error' => 'Error de compilación',
+	'errorhandler-error-compile-warning' => 'Alerta de compilación',
+	'errorhandler-error-user-error' => 'Error de usuario',
+	'errorhandler-error-user-warning' => 'Alerta de usuario',
+	'errorhandler-error-user-notice' => 'Aviso de usuario',
+	'errorhandler-error-user-deprecated' => 'Usuario en desuso',
+	'errorhandler-error-strict' => 'Estándar estricto',
+	'errorhandler-error-recoverable' => 'Error grave recuperable',
+	'errorhandler-msg-text' => '$1 : $2 en $3 (línea $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> en <b>$3</b> (línea <b>$4</b>)',
+	'errorhandler-trace' => 'rastrear:',
+	'errorhandler-trace-line' => '$1 (línea $2): $3',
+	'errorhandler-trace-line-internal' => '[función interna]: $1',
 );
 
 /** French (Français)
@@ -245,6 +281,34 @@ $messages['km'] = array(
 	'errorhandler-errors' => 'កំហុស៖',
 	'errorhandler-error-warning' => 'បំរាម',
 	'errorhandler-trace-line' => '$1 (បន្ទាត់ទី$2): $3',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'errorhandler-desc' => 'Met Fähler em MediaWiki ömjonn.',
+	'errorhandler-errors' => 'De Fähler:',
+	'errorhandler-error-fatal' => 'Ene fatale Fähler',
+	'errorhandler-error-warning' => 'En Warnung',
+	'errorhandler-error-parse' => 'Ene Fähler em Projrammtäx',
+	'errorhandler-error-notice' => 'Bemerkung',
+	'errorhandler-error-deprecated' => 'Meßjevällesch',
+	'errorhandler-error-core-error' => 'Fähler em Jrundprojramm',
+	'errorhandler-error-core-warning' => 'Warnung em Jrundprojramm',
+	'errorhandler-error-compile-error' => 'Fähler em Projamm-Övvesäzer (<i lang="en">Compiler</i>)',
+	'errorhandler-error-compile-warning' => 'Warnung em Projamm-Övvesäzer (<i lang="en">Compiler</i>)',
+	'errorhandler-error-user-error' => 'Fum Projammaacher jemäldte Fähler',
+	'errorhandler-error-user-warning' => 'Warnung fum Projammaacher',
+	'errorhandler-error-user-notice' => 'Herwieß fum Projammaacher',
+	'errorhandler-error-user-deprecated' => 'Fum Projammaacher nimmieh jewollt',
+	'errorhandler-error-strict' => 'Verstüß jäje de janz akoraate Shtandat',
+	'errorhandler-error-recoverable' => 'Ene schlemme Fähler, dä opjevange wäde kann',
+	'errorhandler-msg-text' => '$1 : $2 en $3, op de Reih $4.',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> en <b>$3</b>, op de Reih <b>$4</b>.',
+	'errorhandler-trace' => 'Zeröckverfolsch:',
+	'errorhandler-trace-line' => '$1 op de Reih $2: $3',
+	'errorhandler-trace-line-internal' => '[enner Funxjohn]: $1',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

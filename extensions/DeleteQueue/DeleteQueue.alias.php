@@ -52,3 +52,8 @@ $aliases['no'] = array(
 	'DeleteQueue' => array( 'Slettingskø' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'DeleteQueue' => array( 'Radera kö' ),
+);
+

@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'universaleditbutton-desc' => 'Adds HTML header <code>&lt;link&gt;</code> to support the Universal Edit Button browser extension',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'universaleditbutton-desc' => 'Short description of the Universaleditbutton extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -66,6 +73,13 @@ $messages['dsb'] = array(
  */
 $messages['eo'] = array(
 	'universaleditbutton-desc' => 'Aldonas HTML-an titolan etikedon <code>&lt;link&gt;</code> por subteni la retumilan etendilon Universala Redakto-Butono.',
+);
+
+/** Spanish (Español)
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'universaleditbutton-desc' => 'Añade cabecera de HTML <code>&lt;link&gt;</code> para apoyar la extensión de navegador Botón Universial de Editar',
 );
 
 /** Persian (فارسی)
@@ -184,7 +198,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'universaleditbutton-desc' => 'Apondís l’entèsta HTML  <code>&lt;link&gt;</code> per suportar lo boton d’edicion universal de l’extension del navigador',
+	'universaleditbutton-desc' => 'Apond l’entèsta HTML  <code>&lt;link&gt;</code> per suportar lo boton d’edicion universal de l’extension del navigador',
 );
 
 /** Polish (Polski)

@@ -627,12 +627,14 @@ $messages['es'] = array(
 	'hiderevision-desc' => 'Esconde revisiones individuales de todos los usuarios para motivos legales etc.',
 	'right-oversight' => 'Ver una revisión anteriormente escondida',
 	'right-hiderevision' => 'Revisar y restaurar revisiones ocultadas por los administradores',
+	'hiderevision-prompt' => 'Número de revisión para remover:',
 	'hiderevision-continue' => 'Seguir',
 	'hiderevision-submit' => 'Esconder estos datos permanentemente',
 	'hiderevision-tab' => 'Esconder revisión',
 	'hiderevision-norevisions' => 'No se han especificado revisiones para borrar.',
 	'hiderevision-status' => 'Revisión $1: $2',
 	'hiderevision-success' => 'Se archivó y se borró con éxito.',
+	'hiderevision-error-missing' => 'No se la encontró en el baso de datos.',
 	'hiderevision-error-delete' => 'No se pudo archivar; ¿fue borrada anteriormente?',
 	'hiderevision-archive-status' => 'Revisión borrada de $1: $2',
 	'oversight-view' => 'detalles',
@@ -2107,6 +2109,7 @@ $messages['pam'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -2149,6 +2152,7 @@ Najpierw wycofaj ostatnią edycję.',
 	'oversight-hidden' => 'Wersja ukryta',
 	'oversight-header' => 'Poniżej znajduje się lista ukrytych, w ostatnim czasie, trwale przed dostępem publicznym wersji.
 Ujawnianie tych informacji może skutkować stałą utratą uprawnień Rewizora.',
+	'oversight-legend' => 'Szukaj ukrytych wersji w rejestrze',
 );
 
 /** Piedmontese (Piemontèis)

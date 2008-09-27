@@ -54,8 +54,10 @@ If you have any questions about this extension distribution system, please go to
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'extdist-desc' => 'Short description of the Extdist extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'extdist-submit-extension' => '{{Identical|Continue}}',
 	'extdist-submit-version' => '{{Identical|Continue}}',
 );

@@ -99,10 +99,11 @@ $messages['de'] = array(
 /** French (Français)
  * @author Grondin
  * @author Mauro Bornet
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'newschannel' => "Chaîne d'information",
-	'newschannel-desc' => 'Implémente un nouveau canal comme une [[Special:NewsChannel|page spéciale]] dynamique',
+	'newschannel-desc' => 'Implémente une chaîne de nouvelles comme une [[Special:NewsChannel|page spéciale]] dynamique',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Limite:',
 	'newschannel_include_category' => 'Catégorie(s) additionnelle(s):',
@@ -121,6 +122,19 @@ $messages['gl'] = array(
 	'newschannel_include_category' => 'Categoría adicional:',
 	'newschannel_exclude_category' => 'Excluír a categoría:',
 	'newschannel_submit_button' => 'Crear a fonte de novas',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'newschannel' => 'Canal de novas',
+	'newschannel-desc' => 'Implementa un canal de novas como un [[Special:NewsChannel|pagina special]] dynamic',
+	'newschannel_format' => 'Formato:',
+	'newschannel_limit' => 'Limite:',
+	'newschannel_include_category' => 'Categoria additional:',
+	'newschannel_exclude_category' => 'Excluder categoria:',
+	'newschannel_submit_button' => 'Crear syndication',
 );
 
 /** Ripoarisch (Ripoarisch)

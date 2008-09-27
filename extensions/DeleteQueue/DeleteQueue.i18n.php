@@ -184,9 +184,11 @@ You can register your own endorsement of, or objection to this deletion [{{fullu
 /** Message documentation (Message documentation)
  * @author Darth Kule
  * @author Jon Harald Søby
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'deletequeue-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'deletequeue-permissions-noedit' => '* $1 is a list of formatted error messages.',
 	'deletequeue-generic-reasons' => 'Delete reasons in a dropdown menu. Lines prepended with "*" are a category separator. Lines prepended with "**" can be used as a reason. Please do not add additional reasons. This should be customised on wikis where the extension is actually being used.',
 	'deletequeue-delnom-otherreason' => '{{Identical|Other reason}}',
@@ -497,6 +499,7 @@ $messages['bg'] = array(
 	'deletequeue-speedy-title' => 'Отбелязване на „$1“ за бързо изтриване',
 	'deletequeue-delnom-reason' => 'Причина за номинирането:',
 	'deletequeue-delnom-otherreason' => 'Друга причина',
+	'deletequeue-delnom-extra' => 'Допълнителна информация:',
 	'deletequeue-review-delete' => 'Изтриване на страницата.',
 	'deletequeue-review-newreason' => 'Нова причина:',
 	'deletequeue-review-newextra' => 'Допълнителна информация:',
@@ -675,9 +678,14 @@ $messages['eo'] = array(
 	'right-speedy-nominate' => 'Kandidatigi paĝojn por rapida forigo',
 	'right-speedy-review' => 'Kontroli kandidatojn por rapida forigo',
 	'right-prod-nominate' => 'Proponi forigon de paĝo',
+	'right-deletequeue-vote' => 'Kunsenti aŭ malkunsenti forigojn',
 	'deletequeue-queue-speedy' => 'Rapida forigo',
 	'deletequeue-queue-prod' => 'Proponita forigo',
 	'deletequeue-queue-deletediscuss' => 'Diskuto pri forigo',
+	'deletequeue-page-prod' => "Estis proponita ke ĉi tiu paĝo estas forigenda.
+La kialo donita estis ''$1''.
+Se ĉi tiun proponon neniu ajn kontraŭus de ''$2'', ĉi tiu paĝon estus forigita.
+Vi povas kontraŭi la forigon de ĉi tiu paĝo de [{{fullurl:{{FULLPAGENAME}}|action=delvote}} oponado de la forigo].",
 	'deletequeue-review-action' => 'Ago por fari:',
 	'deletequeue-review-delete' => 'Forigi la paĝon.',
 	'deletequeue-review-change' => 'Forigi ĉi tiun paĝon, sed kun malsama kialo.',
@@ -694,9 +702,15 @@ $messages['eo'] = array(
 	'deletequeue-role-vote-endorse' => 'konsentanto de forigo',
 	'deletequeue-role-vote-object' => 'malkonsentanto de forigo',
 	'deletequeue-vote-legend' => 'Konsenti/Malkonsenti forigon.',
+	'deletequeue-vote-action' => 'Rekomendo:',
 	'deletequeue-vote-endorse' => 'Konsenti forigon.',
 	'deletequeue-vote-object' => 'Malkonsenti forigon.',
 	'deletequeue-vote-reason' => 'Komentoj:',
+	'deletequeue-vote-submit' => 'Ek',
+	'deletequeue-vote-success-endorse' => 'Vi sukcese subtenis la forigon de ĉi tiu paĝo.',
+	'deletequeue-vote-success-object' => 'Vi sukcese malkonsentis la forigon de ĉi tiu paĝo.',
+	'deletequeue-vote-requeued' => 'Vi sukcese malkonsentis la forigon de ĉi tiu paĝo.
+Pro via malkonsento, la paĝo estis movita al la laborlisto $1.',
 	'deletequeue' => 'Listo de forigoj',
 	'deletequeue-list-search-legend' => 'Serĉi paĝojn',
 	'deletequeue-list-status' => 'Statuso:',
@@ -704,7 +718,26 @@ $messages['eo'] = array(
 	'deletequeue-list-anyqueue' => '(iu)',
 	'deletequeue-list-votes' => 'Listo de voĉdonoj',
 	'deletequeue-list-header-page' => 'Paĝo',
+	'deletequeue-list-header-queue' => 'Laborlisto',
 	'deletequeue-list-header-discusspage' => 'Diskuto-paĝo',
+);
+
+/** Spanish (Español)
+ * @author Antur
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|sistema de listas para organizar los borrados]]',
+	'deletequeue-action-queued' => 'Borrado',
+	'deletequeue-action' => 'Sugiera un borrado',
+	'deletequeue-action-title' => 'Sugiera el borrado de «$1»',
+	'deletequeue-action-text' => "{{SITENAME}} tiene varios procedimientos para borrar páginas:
+*Si Ud. cree que la página es candidata para  ''borrado rápido'', puede sugerirlo [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} aquí].
+*Si la página no reúne las condiciones para borrado rápido, pero ''su borrado no generaría oposición o conflictos'', puede proponer su [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} borrado directo].
+*Si puede existir oposición al borrado, debería abrir [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} una propuesta de borrado].",
+	'deletequeue-action-text-queued' => 'Ud. debe leer las siguientes páginas para este caso de borrado:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Opiniones a favor y en contra].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Opine sobre el borrado de esta página].',
 );
 
 /** French (Français)
@@ -1268,6 +1301,13 @@ $messages['km'] = array(
  */
 $messages['kri'] = array(
 	'deletequeue-list-search' => 'Luk foh am',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'deletequeue-desc' => 'Schaff en Süßteem met [[Special:DeleteQueue|Schlange fun Sigge, di op et Fottschmiiße am waade]] sin.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1847,6 +1887,68 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
 	'deletequeue-list-header-votes' => 'Podpora a námietky',
 	'deletequeue-list-header-expiry' => 'Vyprší',
 	'deletequeue-list-header-discusspage' => 'Diskusná stránka',
+);
+
+/** Seeltersk (Seeltersk)
+ * @author Pyt
+ */
+$messages['stq'] = array(
+	'deletequeue-reviewdeletediscuss-tab' => 'Läskenge wröigje',
+	'deletequeue-reviewdeletediscuss-title' => 'Läskdiskussion foar „$1“ wröigje',
+	'deletequeue-reviewdeletediscuss-text' => "Ap disse Siede koast du ju Läskdiskussion fon „'''$1'''“ wröigje.
+
+Dät rakt  ne [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Lieste] mäd Stimmen foar un juun ju Läskenge; ju eegentelke Diskussion is unner [[$2]] tou fienden.
+Oachtje deerap, dät ne Äntscheedenge mäd dän Konsens fon ju Diskussion fereenboar is.",
+	'deletequeue-deletediscuss-discussionpage' => 'Dit is ju Diskussionssiede foar ju Läskenge fon [[$1]].
+Apstuuns {{PLURAL:$2|unnerstutset aan Benutser|unnerstutsje $2 Benutsere}} ju Läskenge, wülst $3 {{PLURAL:$3|Benutser|Benutsere}} hier ouliene.
+Du koast ju Läskenge [{{fullurl:$1|action=delvote}} unnerstutsje of ouliene] of [{{fullurl:$1|action=delviewvotes}} aal Stimme bekiekje].',
+	'deletequeue-discusscreate-summary' => 'Läskdiskussion foar [[$1]] wäd moaked.',
+	'deletequeue-discusscreate-text' => 'Ju Läskenge wuud uut foulgjenden Gruund foarsloain: $2',
+	'deletequeue-role-nominator' => 'uursproangelken Läskandraachstaaler',
+	'deletequeue-role-vote-endorse' => 'Unnerstutser fon ju Läskenge',
+	'deletequeue-role-vote-object' => 'Juun de Läskenge',
+	'deletequeue-vote-title' => 'Läskenge fon „$1“ unnerstutsje of ouliene',
+	'deletequeue-vote-text' => "Ap disse Siede koast du ju Läskenge fon „'''$1'''“ unnerstutsje of ouliene.
+Disse Aktion uurschrift aal Stimmen, do du foartied tou ju Läskenge fon disse Siede ouroat hääst.
+Du koast do al ouroate Stimmen [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} bekiekje].
+Die Läskandraachsgruund waas ''$2''.",
+	'deletequeue-vote-legend' => 'Läskenge unnerstutsje/ouliene',
+	'deletequeue-vote-action' => 'Ämpfeelenge:',
+	'deletequeue-vote-endorse' => 'Läskenge unnerstutsje.',
+	'deletequeue-vote-object' => 'Läskenge ouliene.',
+	'deletequeue-vote-reason' => 'Kommentoare:',
+	'deletequeue-vote-submit' => 'Ouseende',
+	'deletequeue-vote-success-endorse' => 'Du hääst mäd Ärfoulch ju Läskenge fon disse Siede unnerstutsed.',
+	'deletequeue-vote-success-object' => 'Du hääst mäd Ärfoulch ju Läskenge fon disse Siede ouliend.',
+	'deletequeue-vote-requeued' => 'Du hääst mäd Ärfoulch ju Läskenge fon disse Siede ouliend.
+Truch dien Wierspruch wuud ju Siede in ju Läsk-Täiweslange $1 ferschäuwen.',
+	'deletequeue-showvotes' => 'Unnerstutsengen un Oulienengen fon ju Läskenge fon „$1“',
+	'deletequeue-showvotes-text' => "Unnerstoundend sunt do Unnerstutsengen un Oulienengen fon ju Läskenge fon „'''$1'''“ .
+Du koast dien oaine Unnerstutsenge of Oulienenge fon ju Läskenge [{{fullurl:{{FULLPAGENAME}}|action=delvote}} hier] iendreege.",
+	'deletequeue-showvotes-restrict-object' => 'Bloot Oulienengen ounwiese',
+	'deletequeue-showvotes-restrict-none' => 'Aal Unnerstutsengen un Oulienengen ounwiese',
+	'deletequeue-showvotes-vote-endorse' => "Läskenge uum $1 $2 '''unnerstutsed'''",
+	'deletequeue-showvotes-vote-object' => "Läskenge uum $1 $2 '''ouliend'''",
+	'deletequeue-showvotes-showingonly-endorse' => 'Bloot Unnerstutsengen wuuden ounwiesd',
+	'deletequeue-showvotes-showingonly-object' => 'Bloot Oulienengen wuuden ounwiesd',
+	'deletequeue-showvotes-none' => 'Dät rakt neen Unnerstutsengen of Oulienengen fon ju Läskenge fon disse Siede.',
+	'deletequeue-showvotes-none-endorse' => 'Dät rakt neen Unnerstutsengen fon ju Läskenge fon disse Siede.',
+	'deletequeue-showvotes-none-object' => 'Dät rakt neen Oulienengen fon ju Läskenge fon disse Siede.',
+	'deletequeue' => 'Läsk-Täiweslange',
+	'deletequeue-list-text' => 'Disse Siede wiest aal Sieden an, do sik in dät Läsksystem befiende.',
+	'deletequeue-list-search-legend' => 'Säik ätter Sieden',
+	'deletequeue-list-queue' => 'Täiweslange:',
+	'deletequeue-list-status' => 'Stoatus:',
+	'deletequeue-list-expired' => 'Wies bloot tou sluutende Läskandraage',
+	'deletequeue-list-search' => 'Säik',
+	'deletequeue-list-anyqueue' => '(irgendeen)',
+	'deletequeue-list-votes' => 'Stimmenlieste',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|Unnerstutsenge|Unnerstutsengen}}, $2 {{PLURAL:$2|Oulienenge|Oulienengen}}',
+	'deletequeue-list-header-page' => 'Siede',
+	'deletequeue-list-header-queue' => 'Täiweslange',
+	'deletequeue-list-header-votes' => 'Unnerstutsengen un Oulienengen',
+	'deletequeue-list-header-expiry' => 'Ouloopdoatum',
+	'deletequeue-list-header-discusspage' => 'Diskussionssiede',
 );
 
 /** Swedish (Svenska)

@@ -820,12 +820,13 @@ Lūdzu norādi "create", "comment", "search" vai "search2".',
 );
 
 /** Macedonian (Македонски)
+ * @author Brest
  * @author Misos
  */
 $messages['mk'] = array(
 	'tryexact' => 'Обиди се точно',
 	'searchfulltext' => 'Барај низ целиот текст',
-	'createarticle' => 'Создади статија',
+	'createarticle' => 'Создади страница',
 );
 
 /** Malayalam (മലയാളം)

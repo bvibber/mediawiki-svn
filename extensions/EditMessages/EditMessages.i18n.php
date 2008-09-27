@@ -28,8 +28,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'editmessages-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'editmsg-search' => '{{Identical|Search}}',
 );
 
@@ -409,7 +411,21 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'editmessages-desc' => 'Määt et müjjelesch, <code lang="en">Messages*.php</code> Dateie en jrußer Zahl [[Special:EditMessages|övver et Web ze beärbeide]].',
+	'editmessages' => 'Nohreschte fum System beärbeide.',
+	'editmsg-target' => 'De Ziel-Nohresch:',
 	'editmsg-search' => 'Sööke',
+	'editmsg-show-list' => 'De Enhallde fun de Nohresch met däm Name „$1“',
+	'editmsg-get-patch' => 'Maach ene „Flecke“ (<i lang="en">patch</i>)',
+	'editmsg-new-search' => 'Neu Söhke',
+	'editmsg-warning-parse1' => '* di <i lang="en">regular expression</i> paß op kein Name fun System-Nohreschte: <code>$1</code>',
+	'editmsg-warning-parse2' => '* Mer wollte ävver en Aanföhrung noh dämm Piel hann: <code>$1</code>',
+	'editmsg-warning-parse3' => '* Dä Wäät jeiht nit zo Engk: <code>$1</code>',
+	'editmsg-warning-file' => '* Fähler beim Lesse fun dä Dateie för de Shprooche: $1',
+	'editmsg-apply-patch' => 'Donn dä „Flecke“ (<i lang="en">patch</i>) aanwennde',
+	'editmsg-no-patch' => 'Kann dat Kommando <i lang="en"><code>patch</code></i> nit aanwende',
+	'editmsg-patch-failed' => 'Dat Ändere eß scheif jejange. Dä Stattus-Kood am Eng wohr: $1.',
+	'editmsg-patch-success' => 'Hurra, et Ändere hät jeflupp.',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

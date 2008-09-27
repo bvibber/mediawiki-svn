@@ -472,8 +472,19 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'dt-desc' => 'Määt et müjjelesch, Date uß Oproofe fun Schabloone met ier Strukture ze emporteere un ze exporteere.',
+	'viewxml' => 'XML beloore',
+	'dt_viewxml_docu' => 'Don ußsöke, wat fö_n Saachjruppe un Appachtemangs De em XML Fommaat aanloore wells.',
+	'dt_viewxml_categories' => 'Saachjroppe',
 	'dt_viewxml_namespaces' => 'Appachtemangs',
+	'dt_viewxml_simplifiedformat' => 'Em eijfachere Fommaat',
+	'dt_xml_namespace' => 'Appachtemang',
+	'dt_xml_page' => 'Sigg',
+	'dt_xml_field' => 'Felldt',
 	'dt_xml_name' => 'Name',
+	'dt_xml_title' => 'Tėttel',
+	'dt_xml_id' => 'Kännong',
+	'dt_xml_freetext' => 'Freije Täx',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

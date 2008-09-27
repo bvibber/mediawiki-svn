@@ -93,6 +93,13 @@ $messages['eo'] = array(
 	'charinsert-desc' => 'Permesas kreadon de JavaScript skatolon por [[MediaWiki:Edittools|entajpi nekutimajn signojn]]',
 );
 
+/** Spanish (Español)
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'charinsert-desc' => 'Permite la creación de una caja JavaScript para [[MediaWiki:Edittools|insertar caracteres inusuales]]',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

@@ -52,3 +52,8 @@ $aliases['no'] = array(
 	'ViewAPC' => array( 'Vis APC' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'ViewAPC' => array( 'Visa APC' ),
+);
+

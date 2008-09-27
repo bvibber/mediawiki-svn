@@ -39,7 +39,7 @@ $aliases['fr'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'Call' => array( 'Call' ),
+	'Call' => array( 'Opruff' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

@@ -282,9 +282,12 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Jordi Roqué
  */
 $messages['ca'] = array(
+	'review_version_statistic_cell' => '$1 de $2',
+	'review_user_details_link' => '(detalls)',
 	'review_comment' => 'Comentari',
 );
 
@@ -597,6 +600,44 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'review_sidebar_title' => 'Recension',
+	'review-desc' => 'Le function de [[Special:Review|validation]], restabilite.',
+	'review_topics' => "# Ecce le lista de topicos e intervallos pro le extension Review (Recension).
+# Cata topico se defini con un linea de cinque valores, separate per  ':' (omne altere linea es ignorate).
+# Le ordine es: clave numeric (>0), nomine, intervallo maxime (>1; 2=si/no), significato del valor le plus basse (p.ex. 'mal'), significato del valor le plus alte (p.ex. 'bon').
+1:Qualitate:5:mal:bon
+2:Preste pro 1.0:2:no:si",
+	'review_topic_page' => 'Recenser topicos',
+	'review_sidebar_explanation' => "Le quadrato le plus a sinistra significa sempre 'nulle opinion'.",
+	'review_save' => 'Immagazinar recension',
+	'review_your_review' => 'Tu recension de iste pagina/version:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Tu ha ja recensite altere versiones de iste pagina. Le evalutationes anterior essera fusionate in iste ubi tu ha seligite 'nulle opinion'.",
+	'review_page_link' => 'statisticas de recensiones',
+	'review_sidebar_final' => 'Pro vider le recensiones de iste version del pagina, visita su $1',
+	'review_for_page' => 'Recension del pagina "$1"',
+	'review_for_user' => 'Recension pro usator "$1"',
+	'review_error' => 'Alcun cosa ha facite falta!',
+	'review_no_reviews_for_page' => 'Al momento il non ha recensiones de "$1".',
+	'review_total_statistics' => 'Total',
+	'review_statistics_left_corner' => 'Recension',
+	'review_version_link' => 'Recension no. $1',
+	'review_statistic_cell' => 'Media: $1 de $2<br />($4 usatores, $5 anonymos)',
+	'review_version_statistic_cell' => '$1 de $2',
+	'review_version_reviews_link' => '<small>(recensiones de versiones)</small>',
+	'review_concerns_page' => 'Iste recension es a proposito del pagina "$1".',
+	'review_concerns_user' => 'Isto es a proposito de recensiones per le usator "$1".',
+	'review_user_reviews' => '<small>(recensiones per iste usator)</small>',
+	'review_user_page_list' => 'Le usator recenseva le sequente paginas:',
+	'review_user_details_link' => '(detalios)',
+	'review_do_merge' => 'Fusionar mi recensiones de altere versiones de iste pagina in iste recension',
+	'review_has_been_stored' => "<span id='review_has_been_stored'>Tu recension ha essite immagazinate!</span>",
+	'revision_review_this_page_version_link' => 'Recenser iste version del pagina.',
+	'review_page_review' => 'Recension del pagina "$1"',
+	'review_blocked' => 'Tu es blocate, va via.',
+	'review_wrong_namespace' => 'Le pagina in iste spatio de nomines non pote esser recensite!',
+	'review_topic' => 'Topico',
+	'review_no_opinion' => 'Nulle opinion',
+	'review_rating' => 'Evalutation',
 	'review_comment' => 'Commento',
 );
 

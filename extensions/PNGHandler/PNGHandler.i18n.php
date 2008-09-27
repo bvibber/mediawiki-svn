@@ -77,6 +77,13 @@ $messages['gl'] = array(
 	'pnghandler-desc' => 'Dálles outro tamaño aos ficheiros PNG usando pngds',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'pnghandler-desc' => "Redimensionar imagines PNG per medio de 'pngds'",
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

@@ -27,6 +27,13 @@ $messages['en'] = array(
 	'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'imagemap_desc' => 'Short description of the Imagemap extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */

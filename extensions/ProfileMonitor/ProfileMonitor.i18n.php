@@ -27,10 +27,14 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author McDutchie
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'profiling-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'profiling-process' => 'The \'\'process string\'\' is the literal text of the command that invoked the process in question. For example, the process string of a MySQL server process might look something like this:
+ /usr/sbin/mysqld --basedir=/ --datadir=/var/lib/mysql --user=mysql --skip-external-locking
+It might be easier/clearer to translate this message as if it said "process invocation" or "command line" or even just "command".',
 	'profiling-ok' => '{{Identical|OK}}',
 	'profiling-data-process' => '{{Identical|Process}}',
 	'profiling-data-count' => '{{Identical|Count}}',
@@ -103,17 +107,18 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author McDutchie
  * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'profiling' => 'Données pour évaluer',
 	'profiling-desc' => '[[Special:Profiling|Page spéciale]] pour rechercher et inspecter des données de profil',
-	'profiling-process' => 'Chaîne de caractères à traiter :',
-	'profiling-wildcard' => 'Utilisez un passe-partout',
+	'profiling-process' => 'Chaîne de caractères du processus :',
+	'profiling-wildcard' => 'Utiliser un passe-partout',
 	'profiling-ok' => 'Accepter',
 	'profiling-data' => "Données d'évaluation de « $1 »",
-	'profiling-data-process' => 'Traiter',
+	'profiling-data-process' => 'Processus',
 	'profiling-data-count' => 'Compter',
 	'profiling-data-time' => 'Durée (totale)',
 	'profiling-data-average' => 'Durée (moyenne)',
@@ -189,7 +194,17 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'profiling' => 'Datos de analyse de rendimento',
+	'profiling-desc' => '[[Special:Profiling|Pagina special]] pro cercar e inspectar le resultatos del analyse de rendimento',
+	'profiling-process' => 'Invocation del processo:',
+	'profiling-wildcard' => 'Usar metacharacteres',
 	'profiling-ok' => 'OK',
+	'profiling-data' => 'Datos del analyse de rendimento pro `$1`',
+	'profiling-data-process' => 'Processo',
+	'profiling-data-count' => 'Computo',
+	'profiling-data-time' => 'Tempore (total)',
+	'profiling-data-average' => 'Tempore (medie)',
+	'profiling-no-data' => 'Nulle datos correspondente trovate.',
 );
 
 /** Indonesian (Bahasa Indonesia)

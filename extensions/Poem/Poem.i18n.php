@@ -116,6 +116,13 @@ $messages['es'] = array(
 	'poem-desc' => 'Añade la etiqueta <tt>&lt;poem&gt;</tt> para dar el formato propio de un poema.',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'poem-desc' => '<tt>&lt;poem&gt;</tt> etiketa gehitzen du olerkien formaturako',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -321,7 +328,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'poem-desc' => 'Apondís la balisa <tt>&lt;poem&gt;</tt> pel formatatge dels poèmas',
+	'poem-desc' => 'Apond la balisa <tt>&lt;poem&gt;</tt> pel formatatge dels poèmas',
 );
 
 /** Polish (Polski)

@@ -133,6 +133,27 @@ $messages['hsb'] = array(
 	'newsextension-desc' => 'Pokazuje přiměrjene aktualne změny na wikijowych stronach abo jako RSS abo kanal Atom',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'newsextension-desc' => 'Monstra modificationes recente in modo personalisate in un pagina wiki o como un syndication RSS o Atom',
+	'newsextension-unknownformat' => '$1: formato de syndication incognite: $2<br />',
+	'newsextension-feednotfound' => '$1: pagina de syndication non trovate: $2<br />',
+	'newsextension-feedrequest' => '$1: gestion del requesta de syndication pro $2<br />',
+	'newsextension-checkok' => '$1: cache HTTP ok, capite 304 inviate<br />',
+	'newsextension-checkok1' => '$1: verification de cache correcte:  IMS $2 contra $3 cambiate<br />',
+	'newsextension-gotcached' => '$1: ($2? "obteneva version del cache": "nulle version del cache")<br />',
+	'newsextension-purge' => '$1: purgar, ignorante cache<br />',
+	'newsextension-loggin' => '$1: session aperte, le cache es ignorate<br />',
+	'newsextension-outputting' => '$1: se monstra le copia del cache ($2): $3 < {$4}<br />',
+	'newsextension-stale' => '$1: incontrava un copia obsolete in le cache ($2): $3 >= {$4}<br />',
+	'newsextension-nofoundonpage' => '$1: nulle syndication trovate in pagina: $2<br / >',
+	'newsextension-renderedfeed' => '$1: syndication visualisate<br />',
+	'newsextension-cachingfeed' => '$1: mitte in cache le syndication ($2)<br / >',
+	'newsextension-freshfeed' => '$1: se rende un syndication fresc<br />',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

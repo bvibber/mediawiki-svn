@@ -338,6 +338,7 @@ $messages['krl'] = array(
  * @author Сай
  */
 $messages['mhr'] = array(
+	'mv_upload_file' => 'Файлым пурташ',
 	'mv_tool_search' => 'Кычал',
 	'mv_history' => 'Историй',
 );
@@ -1207,6 +1208,7 @@ $messages['fr'] = array(
 	'mv_match_text_one' => '~ 1 occurence',
 	'mv_edit_sequence' => 'Édition de la séquence : $1',
 	'mv_sequence_player_title' => 'lecteur de séquence',
+	'mv_resource_not_found' => 'Ressource <b>$1</b> introuvable',
 	'mv_save_sequence' => 'Sauvegarder la séquence',
 	'mv_sequence_page_desc' => 'Sauvegarder la séquence actuelle',
 	'mv_sequence_add' => 'Ajouter des clips',
@@ -1915,6 +1917,9 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'metavid' => 'Pagina Metavid',
+	'mv_missing_stream' => 'Stream mancante: $1',
+	'specialpages-group-mv_group' => 'Paginas special de MetaVidWiki',
 	'mv_remove_reason' => 'Motivo pro deletion:',
 	'mv_tool_search' => 'Cercar',
 	'mv_tool_export' => 'Exportar',
@@ -2159,6 +2164,18 @@ $messages['lb'] = array(
  */
 $messages['lt'] = array(
 	'mv_tool_search' => 'Paieška',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'mv_existing_categories' => 'категории:',
+	'mv_add_category' => 'додади категоризација',
+	'mv_basic_text_desc' => 'Текстуален опис (опционо)',
+	'mv_viewnext' => 'Види ($1)',
+	'mv_viewprevnext' => 'Види ($1) ($2)',
+	'mediasearch' => 'Пребарај медија',
 );
 
 /** Malayalam (മലയാളം)
@@ -2606,6 +2623,7 @@ Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
 	'mv_match_text_one' => '~ 1 resultaat',
 	'mv_edit_sequence' => 'Onderdeel in bewerking: $1',
 	'mv_sequence_player_title' => 'onderdelenspeler',
+	'mv_resource_not_found' => "Bronbestand '''$1''' niet aangetroffen",
 	'mv_save_sequence' => 'Reeks opslaan',
 	'mv_sequence_page_desc' => 'Huidige reeks opslaan',
 	'mv_sequence_add' => 'Clips toevoegen',
@@ -2871,12 +2889,12 @@ $messages['oc'] = array(
 	'ao_file_flash_flv' => 'Archive.org - flash vidèo',
 	'mv_error_stream_missing' => '<span class="error">Error : existís pas cap de flus vidèo associat amb aquesta metadonada.</span><br /> Reportatz aquò sul sit d\'aministracion.',
 	'mv_stream_meta' => 'Pagina de flus',
-	'mv_add_stream' => "Apondís d'un flus metavid",
+	'mv_add_stream' => "Apondon d'un flus metavid",
 	'mv_edit_stream' => 'Modificar un flus metavid',
 	'mvexportsearch' => 'Exportar Metavid',
 	'mvexportsequence' => 'Sequéncia d’exportacion de Metavid',
 	'mvexportstream' => 'Flus d’exportacion de Metavid',
-	'mv_add_stream_page' => "Apondís d'un flus metavid",
+	'mv_add_stream_page' => "Apondon d'un flus metavid",
 	'mv_edit_strea_docu' => "<b>Editar l'administracion dels fluses</b> <br /> per qu'un utilizaire pòsca veire o editar la pagina $1 de visualizacion.",
 	'mv_add_stream_docu' => "<p>Apondre un flus novèl amb lo camp çaijós.</p><p>Mai d'entrenhas son balhadas sus <a href=\"\$1\">la pagina d'ajuda concernent l'ajuston d'un flus.",
 	'mv_add_stream_submit' => 'Apondre un flus',
@@ -2974,9 +2992,9 @@ Aqueste tipe de presentacion es pel tèxt qu'es parlat amb lo flus vidèo. De li
 	'mv_adjust_title' => 'Apondre lo començament e la fin de la durada',
 	'mv_adjust_preview' => "Previsualizar l'ajustament",
 	'mv_adjust_preview_stop' => 'Arrestar la previsualizacion',
-	'mv_adjust_default_reason' => "Apondís de l'interfàcia metavid",
+	'mv_adjust_default_reason' => "Ajustament de l'interfàcia metavid",
 	'mv_adjust_old_title_missing' => 'La pagina que sètz a desplaçar dempuèi ($1) existís pas.',
-	'mv_adjust_ok_move' => 'Succès, apondís...',
+	'mv_adjust_ok_move' => 'Succès, ajustament...',
 	'mv_start_desc' => 'Durada al començament',
 	'mv_end_desc' => 'Durada a la fin',
 	'mv_of' => '&#32;de&#32;',

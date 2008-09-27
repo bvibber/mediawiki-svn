@@ -52,3 +52,8 @@ $aliases['no'] = array(
 	'ImportFreeImages' => array( 'Importer frie bilder' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'ImportFreeImages' => array( 'Importera fria bilder' ),
+);
+

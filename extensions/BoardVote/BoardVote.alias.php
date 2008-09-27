@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'BoardVote' => array( 'انتخابات_المجلس' ),
 );
 
+/** Catalan (Català) */
+$aliases['ca'] = array(
+	'BoardVote' => array( 'Votació' ),
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

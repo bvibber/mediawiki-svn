@@ -11,6 +11,13 @@ $messages['en'] = array (
                 'interwikilist-target'   => 'Target URL',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'interwikilist-desc' => 'Short description of the Interwikilist extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -142,6 +149,16 @@ $messages['it'] = array(
 	'interwikilist-target' => 'URL di destinazione',
 );
 
+/** Japanese (日本語)
+ * @author Fievarsty
+ */
+$messages['ja'] = array(
+	'interwikilist' => 'インターウィキリスト',
+	'interwikilist-desc' => '利用可能なインターウィキリンクを見ることができる[[Special:Interwikilist|特別ページ]]を追加。',
+	'interwikilist-linkname' => 'インターウィキリンク',
+	'interwikilist-target' => 'リンク先のURL',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -196,7 +213,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'interwikilist' => 'Tièra Interwiki',
-	'interwikilist-desc' => 'Apondís una [[Special:Interwikilist|pagina especiala]] per veire totes los ligams interwikis disponibles',
+	'interwikilist-desc' => 'Apond una [[Special:Interwikilist|pagina especiala]] per veire totes los ligams interwikis disponibles',
 	'interwikilist-linkname' => 'Ligam interwiki',
 	'interwikilist-target' => 'Adreça concernida',
 );

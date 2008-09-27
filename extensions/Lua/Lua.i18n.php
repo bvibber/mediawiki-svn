@@ -91,6 +91,13 @@ $messages['de'] = array(
 	'lua_overflow_recursion' => 'Maximale Anzahl von Rekursionen erreicht',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'lua_error' => 'Σφάλμα στη γραμμή $1',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -139,7 +146,14 @@ $messages['gl'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'lua_desc' => 'Extende le analysator syntactic con supporto pro le insertion de blocos a codice [http://www.lua.org/ Lua]',
+	'lua_error' => 'Error in linea $1',
+	'lua_extension_notfound' => 'Extension Lua non configurate',
+	'lua_interp_notfound' => 'Interpretator Lua non trovate',
 	'lua_error_internal' => 'Error interne',
+	'lua_overflow_recursion' => 'Limite de recursion excedite',
+	'lua_overflow_loc' => 'Numero maxime de lineas de codice excedite',
+	'lua_overflow_time' => 'Durata maxime de execution excedite',
 );
 
 /** Ripoarisch (Ripoarisch)

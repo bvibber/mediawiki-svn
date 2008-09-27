@@ -52,7 +52,7 @@ $messages['ar'] = array(
 $messages['arz'] = array(
 	'minipreview-desc' => 'العرض المصغر يعرض، بجانب صورة، عروضا مسبقة صغيرة للميديا الأخرى فى نفس التصنيفات أو المعروضة فى نفس الصفحات',
 	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|ملف|ملف}} إجمالى فى هذا التصنيف.",
-	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|ملف|ملف}} إجمالى في هذا المعرض.",
+	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|ملف|ملف}} إجمالى فى هذا المعرض.",
 	'minipreview-no_more_files_here' => 'لا ملفات أخرى فى هذا الاتجاه.',
 	'minipreview-no_category_gallery' => 'لا تصنيفات أو معارض!',
 	'minipreview-ignore_categories' => 'التالى قائمة بأسماء التصنيفات أو بدايات الأسماء. هذه التصنيفات لن يتم عرضها بواسطة العرض المصغر. على سبيل المثال، "* PD-" لن تعرض كل التصنيفات
@@ -102,6 +102,7 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author McDutchie
  * @author Sherbrooke
  * @author Urhixidur
  */
@@ -111,7 +112,7 @@ $messages['fr'] = array(
 	'minipreview-files_in_gallery' => "Il y a au total {{PLURAL:$1|un fichier|$1 fichiers}} dans cette galerie d'images.",
 	'minipreview-no_more_files_here' => 'Plus aucun fichier dans cette direction.',
 	'minipreview-no_category_gallery' => 'Pas de catégorie ni de galerie !',
-	'minipreview-ignore_categories' => "Ceci est la lsite des noms de catégorie ou de préfixes de nom. Ces catégories ne sont pas affichées par MiniPreview. Par exemple, « * PD- » n'affichera pas toutes les catégories dont le nom commence par « PD- », telle que « PD-old ».
+	'minipreview-ignore_categories' => "Ceci est la liste des noms de catégorie ou de préfixes de nom. Ces catégories ne sont pas affichées par MiniPreview. Par exemple, « * PD- » n'affichera pas toutes les catégories dont le nom commence par « PD- », telle que « PD-old ».
 * GFDL-
 * GFDL
 * CC-
@@ -181,6 +182,23 @@ karaktersorozattal kezdődő kategóriát, így a „Közkincs-régi”-t sem.
 * CC-
 * Közkincs-
 * Saját',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'minipreview-desc' => 'MiniPreview monstra, al latere de un imagine, parve previsualisationes de altere files multimedia in le mesme categorias o monstrate in le mesme paginas',
+	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|file|files}} in total in iste categoria.",
+	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|file|files}} in total in iste galeria.",
+	'minipreview-no_more_files_here' => 'Il non ha plus files in iste direction.',
+	'minipreview-no_category_gallery' => 'Nulle categoria o galeria!',
+	'minipreview-ignore_categories' => 'Lo sequente es un lista de nomines de categoria o initios de nomines. Iste categorias non essera monstrate per MiniPreview. Per exemplo, "* PD-" impedira de esser monstrate tote le categorias que comencia con "PD-", como "PD-ancian".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
 );
 
 /** Italian (Italiano)

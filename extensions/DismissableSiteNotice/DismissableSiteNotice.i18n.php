@@ -14,12 +14,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Purodha
  * @author SPQRobin
  */
 $messages['qqq'] = array(
 	'sitenotice_close' => 'Part of the DismissableSiteNotice extension. You can see this on the right side of the [[MediaWiki:Sitenotice|sitenotice]].
 
 The word "dismiss" (or "close") should be in the infinitive mood.',
+	'sitenotice-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
 /** Afrikaans (Afrikaans)

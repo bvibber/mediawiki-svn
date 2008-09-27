@@ -71,6 +71,20 @@ $messages['hu'] = array(
 	'preloader-desc' => 'Névterenként más-más rendszerüzenet az új oldalakhoz',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'preloader-desc' => 'Permitte predefinir un modello de texto pro nove paginas, un pro cata spatio de nomines',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'preloader-desc' => 'Määt et müjjelesch, för jedes Appachtemang ene Täx förzejävve, dä eets ens ne de neu Sigge erin küt.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

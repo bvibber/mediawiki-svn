@@ -223,7 +223,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'newusermessage-desc' => 'Määt ene Beidraach op neu aanjelaate Metmaacher ier Klaaf-Sigg.',
+	'newusermessage-desc' => 'Määt ene Beidraach op jedem neu aanjelaate Metmaacher sing Klaaf-Sigg.',
 	'newuseredit-summary' => 'Donn de neu Metmaachere_ene [[{{int:newusermessage-template}}|Bejröhßungstex]] op ier Klaaf-Sigg.',
 );
 
@@ -299,8 +299,8 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'newusermessage-desc' => "Apondís un messatge dins la pagina de discussion d'un utilizaire novèl.",
-	'newuseredit-summary' => 'Apondís [[{{int:newusermessage-template}}|un messatge de benvenguda]] dins la pagina de discussion d’un utilizaire novèl',
+	'newusermessage-desc' => "Apond un messatge dins la pagina de discussion d'un utilizaire novèl.",
+	'newuseredit-summary' => 'Apond [[{{int:newusermessage-template}}|un messatge de benvenguda]] dins la pagina de discussion d’un utilizaire novèl',
 );
 
 /** Polish (Polski)

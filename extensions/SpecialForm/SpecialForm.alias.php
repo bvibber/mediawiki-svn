@@ -49,3 +49,8 @@ $aliases['no'] = array(
 	'Form' => array( 'Skjema' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'Form' => array( 'Formulär' ),
+);
+

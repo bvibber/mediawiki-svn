@@ -415,7 +415,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'assert_edit_title' => "L'insercion a pas capitat",
-	'assert_edit_desc' => "Apondís d'edicions d’insercion per l’utilizacion per de bòts",
+	'assert_edit_desc' => "Apond d'edicions d’insercion per l’utilizacion per de bòts",
 	'assert_edit_message' => "L'insercion indicada ($1) a pas capitat.",
 );
 

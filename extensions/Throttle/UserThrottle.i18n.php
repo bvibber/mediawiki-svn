@@ -15,6 +15,13 @@ Please wait a moment and hit 'reload' in your browser to resubmit.",
 	'acct_creation_global_soft_throttle_hit-desc' => 'Throttle user creation',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'acct_creation_global_soft_throttle_hit-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

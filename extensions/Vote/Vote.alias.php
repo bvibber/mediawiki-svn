@@ -64,3 +64,8 @@ $aliases['sq'] = array(
 	'Vote' => array( 'Voto' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'Vote' => array( 'Rösta' ),
+);
+

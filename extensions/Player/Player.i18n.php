@@ -52,6 +52,7 @@ $messages['qqq'] = array(
  */
 $messages['mhr'] = array(
 	'player-goto-page' => 'Лаштык',
+	'player-goto-file' => 'файл',
 );
 
 /** Afrikaans (Afrikaans)
@@ -333,6 +334,18 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'player' => 'Reproductor',
+	'player-desc' => 'Reproduction multimedia incastrate per medio de modulos plug-in costumari de navigator web, e un [[Special:Player|pagina special]]',
+	'player-title' => 'Reproductor',
+	'player-playertitle' => 'Reproductor: $1',
+	'player-file' => 'Nomine del file',
+	'player-play' => 'Reproducer',
+	'player-not-allowed' => 'formato non permittite',
+	'player-not-found' => 'file non trovate',
+	'player-invalid-title' => 'titulo invalide',
+	'player-clicktoplay' => 'Reproducer $1',
+	'player-goto-player' => 'reproductor',
+	'player-goto-page' => 'Pagina',
 	'player-goto-file' => 'file',
 );
 
@@ -422,6 +435,13 @@ $messages['km'] = array(
 $messages['krj'] = array(
 	'player-goto-page' => 'Pahina',
 	'player-goto-file' => 'inayap',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'player-desc' => 'En Wikisigge enthallde Medije Affshpelle med de üüblesche <i lang="en">plugins</i> för de Brauser, un en [[Special:Player|Söndersigg]] doför.',
 );
 
 /** Latin (Latina)

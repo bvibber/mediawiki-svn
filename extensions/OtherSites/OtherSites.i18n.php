@@ -38,6 +38,13 @@ $messages['arz'] = array(
 	'othersites-desc' => 'ينقل وصلات الإنترويكى غير وصلات اللغة إلى مكانها الخاص',
 );
 
+/** Catalan (Català)
+ * @author SMP
+ */
+$messages['ca'] = array(
+	'othersites' => 'Altres llocs',
+);
+
 /** German (Deutsch)
  * @author Revolus
  */
@@ -67,6 +74,14 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'othersites' => 'outros sitios',
 	'othersites-desc' => 'Move as ligazóns interwiki diferentes ás ligazóns á lingua no seu propio portal',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'othersites' => 'Altere sitos',
+	'othersites-desc' => 'Displacia le ligamines interwiki altere que ligamines inter linguas verso un quadro separate',
 );
 
 /** Italian (Italiano)
@@ -122,6 +137,13 @@ $messages['oc'] = array(
 $messages['sk'] = array(
 	'othersites' => 'Iné stránky',
 	'othersites-desc' => 'Presunie interwiki odkazy okrem odkazov na iné jazyky do ich vlastných portletov.',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'othersites' => 'ఇతర సైట్లు',
 );
 
 /** Vietnamese (Tiếng Việt)

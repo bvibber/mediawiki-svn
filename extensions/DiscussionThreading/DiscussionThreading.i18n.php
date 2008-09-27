@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'discussionthreading-threadnewsectionhint' => "Start a new thread"
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'discussionthreading-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -122,6 +129,17 @@ $messages['it'] = array(
 	'discussionthreading-threadnewsectionhint' => "Avvia una nuova discussione"
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'discussionthreading-desc' => 'Määt et müjjelelsch, de Fäddeme fum Klaafe op de Klaafsigge afzebelde.',
+	'discussionthreading-replysection' => 'antwoote',
+	'discussionthreading-replysectionhint' => 'Don op dä Beidraach antwoote',
+	'discussionthreading-threadnewsection' => 'neu',
+	'discussionthreading-threadnewsectionhint' => 'Ene neue Fäddem aanfange',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -181,6 +199,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'discussionthreading-threadnewsection' => 'ny',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'discussionthreading-replysection' => 'స్పందించండి',
 );
 
 /** Turkish (Türkçe)

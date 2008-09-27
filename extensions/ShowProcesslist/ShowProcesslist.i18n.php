@@ -30,6 +30,13 @@ $messages['qqq'] = array(
 	'showprocesslist-time' => '{{Identical|Time}}',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'showprocesslist-user' => 'Пайдаланыше',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */
@@ -156,11 +163,12 @@ $messages['eo'] = array(
 );
 
 /** French (Français)
+ * @author McDutchie
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'showprocesslist' => 'Voir la liste des processus',
-	'showprocesslist-desc' => 'Affiche la sortie de la [[Special:ShowProcesslist|Liste des processus]]',
+	'showprocesslist-desc' => 'Affiche la sortie de [[Special:ShowProcesslist| SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'n°',
 	'showprocesslist-user' => 'Utilisateur',
 	'showprocesslist-host' => 'Hôte',
@@ -240,6 +248,22 @@ $messages['hsb'] = array(
 	'showprocesslist-time' => 'Čas',
 	'showprocesslist-state' => 'Staw',
 	'showprocesslist-info' => 'Informacija',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'showprocesslist' => 'Monstrar lista de processos',
+	'showprocesslist-desc' => 'Monstra le resultato de [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-id' => 'ID',
+	'showprocesslist-user' => 'Usator',
+	'showprocesslist-host' => 'Hospite',
+	'showprocesslist-db' => 'BdD',
+	'showprocesslist-command' => 'Commando',
+	'showprocesslist-time' => 'Tempore',
+	'showprocesslist-state' => 'Stato',
+	'showprocesslist-info' => 'Info',
 );
 
 /** Indonesian (Bahasa Indonesia)

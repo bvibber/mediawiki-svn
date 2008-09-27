@@ -68,3 +68,8 @@ $aliases['no'] = array(
 	'SortPermissions' => array( 'Sorter tillatelser' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'GroupPermissions' => array( 'Grupprättigheter' ),
+);
+

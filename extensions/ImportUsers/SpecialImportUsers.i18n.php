@@ -61,6 +61,7 @@ $messages['rtm'] = array(
  * @author Сай
  */
 $messages['mhr'] = array(
+	'importusers-uploadfile' => 'Файлым пурташ',
 	'importusers-log-summary' => 'Чылаже',
 	'importusers-password' => 'шолыпмут',
 	'importusers-email' => 'электрон почто',

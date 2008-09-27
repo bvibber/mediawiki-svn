@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'contributionseditcount-desc' => 'Displays an edit count on the [[Special:Contributions|user contributions page]]',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'contributionseditcount-desc' => 'Short description of the Contributionseditcount extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -461,6 +468,14 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'contributionseditcount' => 'דער באַניצער האט $1 רעדאַקטירונגען.',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'contributionseditcount' => 'Oníṣe yìí ti ṣe àtúnṣe $1.',
+	'contributionseditcount-desc' => 'Ìgbéhàn iye àtúnṣe ní [[Special:Contributions|ojúewé àfikún oníṣe]]',
 );
 
 /** Yue (粵語) */

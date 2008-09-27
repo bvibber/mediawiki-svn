@@ -55,6 +55,11 @@ $aliases['arz'] = array(
 	'MvVideoFeed' => array( 'تلقيم_فيديو_مف' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'MediaSearch' => array( 'Medie sichen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'MediaSearch' => array( 'MediaZoeken' ),
@@ -72,5 +77,10 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'MediaSearch' => array( 'Mediesøk' ),
+);
+
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'MediaSearch' => array( 'Mediasökning' ),
 );
 

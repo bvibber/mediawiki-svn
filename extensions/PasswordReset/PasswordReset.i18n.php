@@ -29,6 +29,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author McDutchie
  * @author Purodha
  */
 $messages['qqq'] = array(
@@ -37,6 +38,7 @@ $messages['qqq'] = array(
 	'passwordreset-username' => '{{Identical|Username}}',
 	'passwordreset-newpass' => '{{Identical|New password}}',
 	'passwordreset-submit' => '{{Identical|Reset password}}',
+	'right-passwordreset' => '{{doc-right}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -352,9 +354,24 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'passwordreset' => 'Reinitiar contrasigno',
+	'passwordreset-desc' => "[[Special:Passwordreset|Reinitia le contrasigno de un usator del wiki]] - require le privilegio 'passwordreset'",
+	'passwordreset-invalidusername' => 'Nomine de usator invalide',
+	'passwordreset-emptyusername' => 'Nomine de usator vacue',
+	'passwordreset-nopassmatch' => 'Le contrasignos non es identic',
+	'passwordreset-badtoken' => 'Indicio de modification invalide',
 	'passwordreset-username' => 'Nomine de usator',
 	'passwordreset-newpass' => 'Nove contrasigno',
-	'passwordreset-submit' => 'Redefinir contrasigno',
+	'passwordreset-confirmpass' => 'Confirma contrasigno',
+	'passwordreset-submit' => 'Reinitiar contrasigno',
+	'passwordreset-success' => 'Le contrasigno ha essite reinitiate pro le usator con ID: $1',
+	'passwordreset-disableuser' => 'Disactivar conto de usator?',
+	'passwordreset-disableuserexplain' => '(impone un hash de contrasigno invalide - le usator non potera aperir un session)',
+	'passwordreset-disablesuccess' => 'Le conto del usator ha essite disactivate (ID del usator: $1)',
+	'passwordreset-accountdisabled' => 'Le conto ha essite disactivate',
+	'disabledusers' => 'Usatores disactivate',
+	'disabledusers-summary' => 'Isto es un lista de usatores que ha essite disactivate per medio de PasswordReset.',
+	'right-passwordreset' => 'Reinitiar le contrasigno de un usator ([[Special:Passwordreset|pagina special]])',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -386,6 +403,7 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author McDutchie
  * @author Pietrodn
  */
 $messages['it'] = array(
@@ -403,7 +421,7 @@ $messages['it'] = array(
 	'passwordreset-disableuser' => 'Disabilitare account?',
 	'passwordreset-disableuserexplain' => "(imposta una hash password non valida - l'utente non può effettuare il login)",
 	'passwordreset-disablesuccess' => "L'account è stato disabilitato (ID utente: $1)",
-	'passwordreset-accountdisabled' => "L'account è stato dsiabilitato",
+	'passwordreset-accountdisabled' => "L'account è stato disabilitato",
 	'disabledusers' => 'Utenti disabilitati',
 	'disabledusers-summary' => 'Questa è la lista degli utenti che sono stati disabilitati con PasswordReset.',
 	'right-passwordreset' => 'Reimposta la password di un utente ([[Special:Passwordreset|pagina speciale]])',

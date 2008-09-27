@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'piwik-browsers'   => 'Browsers',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'piwik-desc' => 'Short description of the Piwik extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -150,6 +157,17 @@ $messages['gl'] = array(
 	'piwik-browsers' => 'Navegadores',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'piwik-desc' => 'Insere un script Piwik in paginas MediaWiki pro traciamento e adde [[Special:Piwik|alcun statisticas]]',
+	'piwik' => 'Piwik',
+	'piwik-lastvisits' => 'Ultime visitas',
+	'piwik-countries' => 'Paises',
+	'piwik-browsers' => 'Navigatores',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -214,7 +232,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'piwik-desc' => 'Apondís un escript Piwik dins las paginas Mediawiki per lo pistatge e apondís [[Special:Piwik|qualques estatisticas]]',
+	'piwik-desc' => 'Apond un escript Piwik dins las paginas Mediawiki per lo pistatge e apond [[Special:Piwik|qualques estatisticas]]',
 	'piwik-lastvisits' => 'Darrièras visitas',
 	'piwik-countries' => 'Païses',
 	'piwik-browsers' => 'Navigadors',

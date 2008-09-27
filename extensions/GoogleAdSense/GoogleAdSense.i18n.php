@@ -132,7 +132,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'googleadsense-desc' => 'Apondís [http://www.google.com/adsense Google AdSense] a la barra laterala',
+	'googleadsense-desc' => 'Apond [http://www.google.com/adsense Google AdSense] a la barra laterala',
 );
 
 /** Slovak (Slovenčina)

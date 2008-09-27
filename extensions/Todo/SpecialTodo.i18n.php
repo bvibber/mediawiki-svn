@@ -42,8 +42,10 @@ $4",
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'todo-desc' => 'Short description of the Todo extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'todo-new-queue' => '{{Identical|New}}',
 	'todo-list-for' => '{{Identical|Todo list for}}',
 	'todo-list-cancel' => '{{Identical|Cancel}}',
@@ -235,6 +237,7 @@ $messages['eo'] = array(
 	'todo-new-queue' => 'nova',
 	'todo-list-change' => 'Ŝanĝu',
 	'todo-list-cancel' => 'Nuligi',
+	'todo-new-item' => 'Nova aĵo',
 	'todo-form-details' => 'Detaloj:',
 );
 
@@ -785,6 +788,17 @@ $messages['rif'] = array(
 $messages['ro'] = array(
 	'todo-list-cancel' => 'Anulează',
 	'todo-form-details' => 'Detalii:',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'todo-tab' => 'da fà',
+	'todo-new-queue' => 'nueve',
+	'todo-add-queue' => 'Mitte in coda...',
+	'todo-list-change' => 'Cange',
+	'todo-list-cancel' => 'Scangille',
 );
 
 /** Slovak (Slovenčina)

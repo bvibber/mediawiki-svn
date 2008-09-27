@@ -49,6 +49,13 @@ $messages['mhr'] = array(
 	'multipleupload' => 'Файлым пурташ',
 );
 
+/** Goanese Konkani (Latin) (कोंकणी/Konknni  (Latin))
+ * @author Deepak D'Souza
+ */
+$messages['gom-latn'] = array(
+	'multipleupload' => 'fayleo dhadd',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

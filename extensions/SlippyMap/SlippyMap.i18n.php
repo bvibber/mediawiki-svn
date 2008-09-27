@@ -58,6 +58,13 @@ $messages['en'] = array(
 	'slippymap_license' => 'OpenStreetMap - CC-BY-SA-2.0', # do not translate or duplicate this message to other languages
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'slippymap_desc' => 'Short description of the Slippymap extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -280,6 +287,13 @@ $messages['ia'] = array(
 	'slippymap_code' => 'Codice Wiki pro iste vista del carta:',
 	'slippymap_button_code' => 'Obtener codice wiki',
 	'slippymap_resetview' => 'Reinitialisar vista',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'slippymap_desc' => 'Deit dä Befääl <tt> <nowiki>&lt;slippymap&gt;</nowiki> </tt> em Wiki dobei, öm en <i lang="en">OpenLayers slippy map</i> Kaat aanzezeije. De Landkaate-Date kumme dobei fun <i lang="en">[http://openstreetmap.org openstreetmap.org]</i> her.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

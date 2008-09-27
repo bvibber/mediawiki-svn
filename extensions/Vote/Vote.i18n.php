@@ -276,7 +276,12 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'vote' => 'Voĉdonu',
 	'vote-submit' => 'Balotu',
+	'vote-registered' => 'Via voĉdono estis registrita.',
+	'vote-view-results' => 'Vidi rezultojn',
+	'vote-results' => 'Voĉdoni rezultojn',
+	'vote-results-choice' => 'Elekto',
 	'vote-results-count' => 'Nombro',
+	'vote-login' => 'Vi devas $1 por voĉdoni.',
 	'vote-login-link' => 'ensaluti',
 );
 
@@ -802,6 +807,11 @@ $messages['roa-tara'] = array(
 	'vote' => 'Vote',
 	'vote-header' => "Tu puè vutà pe 'u '''Signore Supreme d'u Munne''' aqquà!",
 	'vote-current' => "'U vote tuje l'è date a '''$1'''.",
+	'vote-submit' => 'Vote',
+	'vote-view-results' => 'Vide le resultete',
+	'vote-results' => "Resultete d'u vote",
+	'vote-results-count' => 'Cuende',
+	'vote-login-link' => 'tràse',
 );
 
 /** Russian (Русский)

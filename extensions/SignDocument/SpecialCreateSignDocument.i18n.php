@@ -378,7 +378,32 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'createsigndocument' => 'Activar le signatura de documentos',
+	'createsigndoc-head' => "Usa iste formulario pro crear un pagina 'Signar documento' pro le pagina fornite, de modo que le usatores potera [[Special:SignDocument|signar lo]].
+Per favor specifica le nomine del pagina in le qual tu vole activar le signatura digital, le gruppo cuje membros debe poter signar le pagina, qual campos tu vole render visibile al usatores e quales debe esser optional, un etate minime que le usatores debe haber pro poter signar le documento (nulle minimo si omittite);
+e un breve texto introductori describente le documento e forniente instructiones al usatores.
+
+<b>Al presente non existe un modo de deler o modificar le documentos de signatura post lor creation</b> sin accesso directe al base de datos.
+In addition, le texto del pagina monstrate in le pagina de signatura essera le texto ''de iste momento'', non importa le cambios facite in illo post hodie.
+Per favor sia absolutemente positive que le documento ha arrivate a un puncto de stabilitate pro esser signate.
+In ultra, sia secur que tu specifica tote le campos exactemente como illos debe esser, ''ante que tu submitte iste formulario''.",
+	'createsigndoc-pagename' => 'Pagina:',
+	'createsigndoc-allowedgroup' => 'Gruppo autorisate:',
+	'createsigndoc-email' => 'Adresse de e-mail:',
+	'createsigndoc-address' => 'Adresse residential:',
+	'createsigndoc-extaddress' => 'Citate, stato/provincia, pais:',
+	'createsigndoc-phone' => 'Numero de telephono:',
+	'createsigndoc-bday' => 'Data de nascentia:',
+	'createsigndoc-minage' => 'Etate minime:',
+	'createsigndoc-introtext' => 'Introduction:',
+	'createsigndoc-hidden' => 'Celate',
+	'createsigndoc-optional' => 'Optional',
 	'createsigndoc-create' => 'Crear',
+	'createsigndoc-error-generic' => 'Error: $1',
+	'createsigndoc-error-pagenoexist' => 'Error: Le pagina [[$1]] non existe.',
+	'createsigndoc-success' => 'Le signatura del documento [[$1]] ha essite activate con successo.
+Pro testar lo, visita [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} iste pagina].',
+	'createsigndoc-error-alreadycreated' => 'Le signatura del documento "$1" es ja active.',
 );
 
 /** Icelandic (Íslenska) */

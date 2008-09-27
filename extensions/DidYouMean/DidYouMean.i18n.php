@@ -60,6 +60,13 @@ $messages['de'] = array(
 	'didyoumean-desc' => 'Ergänzt Seiten um Links zu ähnlichen Titeln',
 );
 
+/** Greek (Ελληνικά)
+ * @author Dead3y3
+ */
+$messages['el'] = array(
+	'didyoumean-desc' => 'Προσθέτει συνδέσμους σε σελίδες με «παρόμοιους» τίτλους',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -163,7 +170,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'didyoumean-desc' => 'Apondís de ligams a las paginas amb de títols « semblables »',
+	'didyoumean-desc' => 'Apond de ligams a las paginas amb de títols « semblables »',
 );
 
 /** Polish (Polski)

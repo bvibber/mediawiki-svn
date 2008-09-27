@@ -396,16 +396,30 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Dead3y3
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'badimages' => 'Κατάλογος κακών εικόνων',
+	'badimages-desc' => 'Επεκτείνει τις δυνατότηες της λίστας κακών εικόνων του MediaWiki',
 	'badimages-add-btn' => 'Πρόσθεσε',
 	'badimages-added' => '$1 έχει προστεθεί στη λίστα.',
-	'badimages-count' => "Υπάρχουν '''$1''' εικόνες στον κατάλογο των κακών εικόνων.",
+	'badimages-count' => "{{PLURAL:$1|Υπάρχει|Υπάρχουν}} '''$1''' {{PLURAL:$1|εικόνα|εικόνες}} στον κατάλογο κακών εικόνων.",
 	'badimages-name' => 'Όνομα:',
+	'badimages-not-added' => 'Η εικόνα δεν μπορεί να προστεθεί.',
+	'badimages-not-removed' => 'Η εικόνα δεν μπορεί να αφαιρεθεί.',
 	'badimages-reason' => 'Λόγος:',
+	'badimages-remove' => '(αφαίρεση)',
+	'badimages-remove-btn' => 'Αφαίρεση',
+	'badimages-remove-confirm' => 'Παρακαλώ επιβεβαιώστε την αφαίρεση της $1 από τη λίστα.',
+	'badimages-removed' => 'Η $1 αφαιρέθηκε από τη λίστα.',
+	'badimages-subheading' => 'Τρέχοντα αντικείμενα',
+	'badimages-unprivileged' => '(Δεν έχετε επαρκή δικαιώματα για να τροποποιήσετε τη λίστα)',
 	'badimages-log-name' => 'Κατάλογος κακών εικόνων',
+	'badimages-log-header' => 'Αυτό είναι ένα αρχείο καταγραφής των αλλγών στην [[{{MediaWiki:Badimages-page}}|λίστα κακών εικόνων]].',
+	'badimages-log-add' => 'η [[$1]] προστέθηκε στην λίστα κακών εικόνων',
+	'badimages-log-remove' => 'η [[$1]] αφαιρέθηκε από τη λίστα κακών εικόνων',
+	'badimages-page' => '{{ns:help}}:Λίστα κακών εικόνων',
 );
 
 /** Esperanto (Esperanto)

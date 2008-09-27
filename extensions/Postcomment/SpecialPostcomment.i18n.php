@@ -102,6 +102,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
@@ -111,7 +112,7 @@ $messages['de'] = array(
 	'postcomment_post' => 'Senden',
 	'postcomment_on' => 'Am',
 	'postcomment_said' => 'schrieb',
-	'postcomment_replyto' => 'Antwort auf $1',
+	'postcomment_replyto' => 'Antwort an $1',
 );
 
 /** Greek (Ελληνικά)
@@ -138,6 +139,7 @@ $messages['eo'] = array(
 /** French (Français)
  * @author Dereckson
  * @author Grondin
+ * @author McDutchie
  * @author Sherbrooke
  */
 $messages['fr'] = array(
@@ -147,7 +149,7 @@ $messages['fr'] = array(
 	'postcomment_youareloggedinas' => "Vous n'êtes pas identifié en tant que $1.",
 	'postcomment_addcommentdiscussionpage' => 'Ajoutez un commentaire sur cette page de discussion',
 	'postcomment_leavemessagefor' => 'Laissez un message pour $1',
-	'postcomment_post' => 'Message',
+	'postcomment_post' => 'Publier',
 	'postcomment_on' => 'A',
 	'postcomment_said' => 'a dit',
 	'postcomment_invalidrequest' => 'Requête invalide',
@@ -208,6 +210,24 @@ $messages['hsb'] = array(
 	'postcomment_nopostingtoadd' => 'Njeje powěsć, kotraž hodźi so přidać.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'postcomment_desc' => 'Permitte que usatores insere commentos directemente in paginas de discussion.',
+	'postcomment_discussionprotected' => 'Iste pagina de discussion ha essite protegite contra contributiones ulterior.',
+	'postcomment_notloggedin' => 'Tu non es identificate.',
+	'postcomment_youareloggedinas' => 'Tu es identificate como $1',
+	'postcomment_addcommentdiscussionpage' => 'Adde tu commento a iste pagina de discussion',
+	'postcomment_leavemessagefor' => 'Lassa un message pro $1',
+	'postcomment_post' => 'Publicar',
+	'postcomment_on' => 'Le',
+	'postcomment_said' => 'diceva',
+	'postcomment_invalidrequest' => 'Requesta invalide.',
+	'postcomment_replyto' => 'Responder a $1',
+	'postcomment_nopostingtoadd' => 'Nulle message a adder.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -255,6 +275,24 @@ $messages['km'] = array(
 	'postcomment_invalidrequest' => 'សំនើមិនត្រឹមត្រូវ។',
 	'postcomment_replyto' => 'ឆ្លើយតបទៅ $1',
 	'postcomment_nopostingtoadd' => 'គ្មានប្រកាសសំរាប់បន្ថែមទេ។',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'postcomment_desc' => 'Määt et müjjelesch, dat de Metmaacher Bemerkunge tiräk op en Klaafsigg schriive.',
+	'postcomment_discussionprotected' => 'Di Klaafsigg eß jeschöz, un neu Beijdräsch sin nit müjjellesch.',
+	'postcomment_notloggedin' => 'Do bes nit enjelogg.',
+	'postcomment_youareloggedinas' => 'Do bes jäz als „$1“ enjelogg.',
+	'postcomment_addcommentdiscussionpage' => 'Donn dinge Beidraach op hee dä Klaafsigg dobei',
+	'postcomment_leavemessagefor' => 'Donn däm $1 en Nohresch hengerlohße',
+	'postcomment_post' => 'Affschecke',
+	'postcomment_on' => 'Aam',
+	'postcomment_said' => 'hät jeschrevve',
+	'postcomment_invalidrequest' => 'Onjöltije Versoch.',
+	'postcomment_replyto' => 'Anwoot aan $1',
+	'postcomment_nopostingtoadd' => 'Nix för dobei ze donn.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

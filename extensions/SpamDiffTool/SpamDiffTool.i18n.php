@@ -211,6 +211,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'spamdifftool' => 'Kontrolu spaman nigraliston',
 	'spamdifftool_cantedit' => 'Bedaŭrinde - vi ne havas permeson por redakti la spaman nigraliston.',
+	'spamdifftool_summary' => 'Aldonante al spama nigralisto',
 	'spamdifftool_no_urls_detected' => "Neniuj URL-oj estis detektitaj.
 Klaku <a href='$1'>ĉi tie</a> por reveni.",
 	'spamdifftool_spam_link_text' => 'aldoni al spamon',

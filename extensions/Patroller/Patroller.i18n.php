@@ -41,8 +41,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'patrol-desc' => 'Short description of the Patrol extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'patrol-revert' => '{{Identical|Revert}}',
 	'patrol-revert-reason' => '{{Identical|Reason}}',
 );
@@ -462,8 +464,29 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'patrol' => 'Patruliar modificationes',
+	'patrol-desc' => 'Interfacie de patruliage meliorate con division del carga de labor',
+	'patrol-endorse' => 'Approbar',
 	'patrol-revert' => 'Reverter',
 	'patrol-revert-reason' => 'Motivo:',
+	'patrol-skip' => 'Omitter',
+	'patrol-reverting' => 'Reversion de: $1',
+	'patrol-nonefound' => 'Nulle modificationes appropriate esseva trovate pro esser patruliate.',
+	'patrol-endorsed-ok' => 'Le modification esseva marcate como patruliate.',
+	'patrol-endorsed-failed' => 'Le modification non poteva esser marcate como patruliate.',
+	'patrol-reverted-ok' => 'Le modification ha essite revertite.',
+	'patrol-reverted-failed' => 'Le modification non poteva esser revertite.',
+	'patrol-skipped-ok' => 'Le modification es ignorate.',
+	'patrol-reasons' => '* Vandalismo simple
+* Test de un novicio
+* Vide pagina de discussion',
+	'patrol-another' => 'Monstrar un altere modification, si possibile.',
+	'patrol-stopped' => 'Tu ha optate pro non patruliar on altere modification. $1',
+	'patrol-resume' => 'Clicca hic pro reprender.',
+	'group-patroller' => 'Patruliatores',
+	'group-patroller-member' => 'patruliator',
+	'grouppage-patroller' => '{{ns:project}}:Patruliator',
+	'right-patroller' => 'Paginas de patrulia',
 );
 
 /** Indonesian (Bahasa Indonesia)

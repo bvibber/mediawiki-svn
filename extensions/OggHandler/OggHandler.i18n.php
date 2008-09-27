@@ -56,9 +56,11 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
  * @author BrokenArrow
  * @author Jon Harald Søby
  * @author Mormegil
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'ogg-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'ogg-short-general' => 'File details for generic (non-audio, non-video) Ogg files, short version.
 Parameters are: 
 * $1 file type, e.g. Vorbis, Speex
@@ -610,6 +612,7 @@ Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
  * @author Spacebirdy
  */
 $messages['es'] = array(
+	'ogg-desc' => 'Manejador de archivos de Ogg Thedora y Vorbis, con reproductor de JavaScript',
 	'ogg-short-audio' => 'Archivo de sonido Ogg $1, $2',
 	'ogg-short-video' => 'Archivo de video Ogg $1, $2',
 	'ogg-long-audio' => '(Archivo de sonido Ogg $1, tamaño $2, $3)',
@@ -623,6 +626,9 @@ $messages['es'] = array(
 	'ogg-play-sound' => 'Reproducir sonido',
 	'ogg-no-player' => 'Lo sentimos, su sistema parece no tener disponible un programa para reproducción de archivos multimedia.
 Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargue un reproductor</a>.',
+	'ogg-no-xiphqt' => 'Parece que Ud. no tiene el componente XiphQT de QuickTime.
+QuckTime no puede reproducir archivos en formato Ogg sin este componente.
+Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descargue XiphQT</a> o elija otro reproductor de archivos multimedia.',
 	'ogg-player-videoElement' => 'Apoyo nativo de navegador',
 	'ogg-player-oggPlugin' => 'Complemento de navegador',
 	'ogg-player-thumbnail' => 'Únicamente imagen',
@@ -1361,7 +1367,7 @@ $messages['kk-latn'] = array(
 $messages['km'] = array(
 	'ogg-desc' => 'គាំទ្រចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករណ៍អាន JavaScript',
 	'ogg-short-audio' => 'ឯកសារ សំលេង Ogg $1, $2',
-	'ogg-short-video' => 'ឯកសារ វិឌីអូ Ogg $1, $2',
+	'ogg-short-video' => 'ឯកសារវីដេអូ Ogg $1, $2',
 	'ogg-short-general' => 'ឯកសារមេឌាOgg $1, $2',
 	'ogg-long-audio' => '(ឯកសារសំលេងប្រភេទOgg $1, រយៈពេល$2 និងទំហំ$3)',
 	'ogg-long-video' => '(ឯកសារវីដេអូប្រភេទOgg $1, រយៈពេល$2, $4×$5px, $3)',

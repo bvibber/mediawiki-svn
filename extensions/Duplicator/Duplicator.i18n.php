@@ -206,6 +206,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Leon Weber
+ * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
@@ -228,7 +229,7 @@ $messages['de'] = array(
 	'duplicator-source-notexist' => 'Die Seite [[$1]] existiert nicht. Bitte gebe eine existierende Seite an.',
 	'duplicator-dest-invalid' => 'Bitte gebe eine gültige Ziel-Seite an.',
 	'duplicator-dest-exists' => 'Die Seite [[$1]] existiert bereits. Bitte gebe eine nicht existierende Seite an.',
-	'duplicator-toomanyrevisions' => 'Die Seite [[$1]] hat $2 Versionen, um kann daher nicht dupliziert. Es können nur Seiten mit maximal $3 Versionen dupliziert werden.',
+	'duplicator-toomanyrevisions' => 'Die Seite [[$1]] hat {{PLURAL:$2|eine Version|$2 Versionen}}, und kann daher nicht dupliziert werden. Es können nur Seiten mit {{PLURAL:$3|einer Version|maximal $3 Versionen}} dupliziert werden.',
 );
 
 /** Greek (Ελληνικά)

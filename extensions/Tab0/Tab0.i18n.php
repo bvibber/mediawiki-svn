@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'tab0-desc' => 'Adds "0" tab, linking to the edit page of the first section of the page',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'tab0-desc' => 'Short description of the Tab0 extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -156,7 +163,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'tab0-desc' => 'Apondís la tabulacion « 0 », ligason cap a la pagina d’edicion de la primièra seccion.',
+	'tab0-desc' => 'Apond la tabulacion « 0 », ligason cap a la pagina d’edicion de la primièra seccion.',
 );
 
 /** Polish (Polski)

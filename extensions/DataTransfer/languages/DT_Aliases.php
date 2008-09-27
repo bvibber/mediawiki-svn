@@ -47,3 +47,8 @@ $aliases['no'] = array(
 	'ViewXML' => array( 'Vis XML' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'ViewXML' => array( 'Visa XML' ),
+);
+

@@ -26,6 +26,14 @@ $messages['en'] = array(
 	'tog-offlineOnLogout'           => 'Change my status to offline when logging-out',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'onlinestatus-desc' => 'Short description of the Onlinestatus extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'onlinestatus-toggles-desc' => 'Short description of the Onlinestatus extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -279,6 +287,26 @@ $messages['hsb'] = array(
 	'onlinestatus-toggles-show' => 'Status online na mojej wužiwarskej stronje pokazać',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'onlinestatus-desc' => 'Adde un preferentia pro monstrar si le usator al momento es presente in le wiki o non',
+	'onlinestatus-js-anon' => 'Error: tu debe aperir un session pro poter usar iste function',
+	'onlinestatus-js-changed' => 'Tu stato ha essite cambiate a "$1"',
+	'onlinestatus-js-error' => 'Impossibile cambiar de stato, le valor "$1" es invalide',
+	'onlinestatus-subtitle-offline' => 'Iste usator es actualmente foras de linea',
+	'onlinestatus-subtitle-online' => 'Iste usator es actualmente in linea',
+	'onlinestatus-tab' => 'Stato',
+	'onlinestatus-toggles-desc' => 'Tu stato:',
+	'onlinestatus-toggles-explain' => 'Isto te permitte monstrar a altere usatores si tu es in linea in tu pagina de usator.',
+	'onlinestatus-toggles-show' => 'Monstrar mi stato de connexion in mi pagina de usator',
+	'onlinestatus-toggle-offline' => 'Foras de linea',
+	'onlinestatus-toggle-online' => 'In linea',
+	'tog-onlineOnLogin' => 'Cambiar mi stato a in linea quando io aperi un session',
+	'tog-offlineOnLogout' => 'Cambiar mi stato a foras de linea quando io claude mi session',
 );
 
 /** Javanese (Basa Jawa)

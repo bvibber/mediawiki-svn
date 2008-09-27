@@ -135,6 +135,15 @@ $messages['hsb'] = array(
 	'multiboilerplate-submit' => 'Začitać',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'multiboilerplate-desc' => 'Permitte seliger un modello de texto ab un quadro disrolante situate super le formulario pro modificar paginas',
+	'multiboilerplate-legend' => 'Seliger modello',
+	'multiboilerplate-submit' => 'Cargar',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

@@ -419,7 +419,7 @@ $allMessages['eo'] = array(
 $2',
 	'whitelistrequestconf' => 'Peto por novaj paĝoj estis sendita al $1',
 	'whitelistnever' => 'neniam',
-	'whitelistnummatches' => '- $1 pafoj',
+	'whitelistnummatches' => '- {{PLURAL:$1|unu trafo|$1 trafoj}}',
 );
 
 /** Spanish (Español)
@@ -1104,7 +1104,7 @@ $allMessages['oc'] = array(
 	'whitelisttablesetedit' => 'Paramètres per l’edicion',
 	'whitelisttablesetview' => 'Paramètres per visionar',
 	'whitelisttableremove' => 'Levar',
-	'whitelistnewpagesfor' => 'Apondís de paginas novèlas a la lista blanca de <b>$1</b><br />
+	'whitelistnewpagesfor' => 'Apond de paginas novèlas a la lista blanca de <b>$1</b><br />
 Utilizatz siá lo caractèr * siá %',
 	'whitelistnewtabledate' => 'Data d’expiracion :',
 	'whitelistnewtableedit' => "Paramètres d'edicion",
@@ -1119,7 +1119,7 @@ Utilizatz siá lo caractèr * siá %',
 	'whitelistoverviewcd' => "Modificacion de la data de '''$1''' per [[:$2|$2]]",
 	'whitelistoverviewsa' => "* configurar l'accès de '''$1''' per [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Retirament de l’accès a [[:$1|$1]]',
-	'whitelistoverviewna' => "* Apondís [[:$1|$1]] a la lista blanca amb los dreches de '''$2''' amb per data d’expiracion lo '''$3'''",
+	'whitelistoverviewna' => "* Apond [[:$1|$1]] a la lista blanca amb los dreches de '''$2''' amb per data d’expiracion lo '''$3'''",
 	'whitelistrequest' => 'Demanda d’accès a mai de paginas',
 	'whitelistrequestmsg' => '$1 a demandat l’accès a las paginas seguentas :
 
@@ -1334,6 +1334,7 @@ $allMessages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  * @author Sannab
  */
 $allMessages['sv'] = array(
@@ -1381,7 +1382,7 @@ $2',
 	'whitelistnonrestricted' => "Användare '''$1''' är inte en begränsad användare.
 Denna sida är endast tillämpbar på begränsade användare",
 	'whitelistnever' => 'aldrig',
-	'whitelistnummatches' => ' - $1 träffar',
+	'whitelistnummatches' => ' - {{PLURAL:$1|en träff|$1 träffar}}',
 );
 
 /** Silesian (Ślůnski)

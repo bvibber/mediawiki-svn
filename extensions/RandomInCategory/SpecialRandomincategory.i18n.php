@@ -286,7 +286,12 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'randomincategory' => 'Pagina aleatori in categoria',
+	'randomincategory-desc' => '[[Special:Randomincategory|Pagina special]] pro obtener un pagina aleatori in un categoria',
 	'randomincategory-toolbox' => 'Pagina aleatori',
+	'randomincategory-nocategory' => 'Le categoria $1 non existe o es vacue',
+	'randomincategory-label' => 'Categoria:',
+	'randomincategory-submit' => 'Ir',
 );
 
 /** Indonesian (Bahasa Indonesia)

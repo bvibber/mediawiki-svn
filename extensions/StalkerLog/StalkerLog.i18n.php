@@ -188,7 +188,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'stalkerlog-desc' => 'Apondís [[Special:Log/stalkerlog|un jornal]] de las connexions dels utilizaires',
+	'stalkerlog-desc' => 'Apond [[Special:Log/stalkerlog|un jornal]] de las connexions dels utilizaires',
 	'stalkerlog-log-login' => 'connectat.',
 	'stalkerlog-log-logout' => 'desconnectat.',
 	'stalkerlog-log-type' => 'Jornal d’autentificacion de l’utilizaire',

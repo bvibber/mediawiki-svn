@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'ajax-qp-desc' => 'Add some AJAX to query pages such as [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'ajax-qp-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -212,7 +219,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'ajax-qp-desc' => "Apondís d'escript AJAX a las paginas de requèstas talas coma [[Special:Shortpages|{{int:shortpages}}]]",
+	'ajax-qp-desc' => "Apond d'escript AJAX a las paginas de requèstas talas coma [[Special:Shortpages|{{int:shortpages}}]]",
 );
 
 /** Polish (Polski)
@@ -234,6 +241,13 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'ajax-qp-desc' => 'Adiciona algum AJAX a QueryPages tal como [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'ajax-qp-desc' => "Aggiunge quacche AJAX pe 'nderrogà pàggene cumme a [[Special:Shortpages|{{int:shotpages}}]]",
 );
 
 /** Russian (Русский)

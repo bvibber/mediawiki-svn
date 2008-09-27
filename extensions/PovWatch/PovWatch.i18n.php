@@ -46,8 +46,10 @@ Click the button below to subscribe.',
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Meno25
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'povwatch_desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'povwatch_title' => '{{Identical|Title}}',
 	'povwatch_comment' => '{{Identical|Log comment}}',
 	'povwatch_added' => '{{Identical|Added}}',
@@ -186,11 +188,12 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Purodha
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'povwatch' => 'PovWatch',
-	'povwatch_desc' => 'Erweiterung, um [[Special:PovWatch|Seiten auf die Beobachtungsliste]] anderer Benutzer hinzuzufügen',
+	'povwatch_desc' => 'Erweiterung, um [[Special:PovWatch|Seiten der Beobachtungsliste]] anderer Benutzer hinzuzufügen',
 	'povwatch_no_session' => 'Fehler: Formulardaten können nicht verarbeitet werden, da die Sizungsdaten verloren gegangen sind.',
 	'povwatch_not_allowed_push' => 'Du bist kein PovWatch-Administrator und kannst fremden Beobachtungslisten keine Seiten hinzufügen.',
 	'povwatch_already_subscribed' => 'Du bist bereits für PovWatch registriert',
@@ -395,7 +398,39 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'povwatch' => 'ObservaPdV',
+	'povwatch_desc' => 'Extension pro [[Special:PovWatch|mitter paginas in le observatorios]] de altere usatores',
+	'povwatch_no_session' => 'Error: Non poteva submitter le formulario a causa del perdita del datos del session.',
+	'povwatch_not_allowed_push' => 'Tu non es un administrator de ObservaPdV, tu non pote mitter paginas in observatorios.',
+	'povwatch_already_subscribed' => 'Tu es ja inscribite in ObservaPdV',
+	'povwatch_subscribed' => 'Tu es ora inscribite in ObservaPdV',
+	'povwatch_not_subscribed' => 'Tu non es inscribite in ObservaPdV, dunque tu non pote cancellar tu inscription.',
+	'povwatch_unsubscribed' => 'Tu ha cancellate tu inscription in ObservaPdV.',
+	'povwatch_invalid_title' => 'Le titulo specificate es invalide',
+	'povwatch_pushed' => '[[$1]] ha essite mittite con successo in le {{PLURAL:$2|observatorio de 1 usator|observatorios de $2 usatores}}',
+	'povwatch_intro' => 'ObservaPdV es un servicio que permitte mitter discretemente paginas controverse in le observatorios del administratores inscribite.
+
+Un registro de missiones in observatorio recente es disponibile a [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Un [[Special:PovWatch/subscribers|lista de inscribitos]] es disponibile.',
+	'povwatch_subscriber_list_intro' => '<strong>Lista de inscribitos</strong>',
+	'povwatch_not_allowed_subscribers' => 'Tu non ha le permission de vider le lista de inscribitos in ObservaPdV.',
+	'povwatch_unknown_subpage' => 'Subpagina incognite.',
+	'povwatch_push' => 'Mitter',
+	'povwatch_push_intro' => 'Usa le formulario in basso pro mitter paginas in le observatorios del usatores inscribite.
+Per favor sia caute de entrar le titulo correcte: mesmo le titulos non existente pote esser addite, e il non ha un modo de retirar un titulo del observatorios de altere usatores.',
+	'povwatch_title' => 'Titulo:',
 	'povwatch_comment' => 'Commento pro registro:',
+	'povwatch_no_log' => 'Le registro non ha entratas.',
+	'povwatch_no_subscribers' => 'Nulle persona es inscribite.',
+	'povwatch_unsubscribe_intro' => 'Tu es inscribite in ObservaPdV.
+Clicca le button infra pro cancellar tu inscription.',
+	'povwatch_unsubscribe' => 'Cancellar inscription',
+	'povwatch_subscribe_intro' => 'Tu non es inscribite in ObservaPdV.
+Clicca le button infra pro inscriber te.',
+	'povwatch_subscribe' => 'Inscriber',
+	'povwatch_added' => 'addite',
+	'right-povwatch_admin' => 'Gerer le derectos del usatores a mitter paginas in le observatorios de altere usatores',
+	'right-povwatch_user' => 'Mitter paginas in le observatorios de altere usatores',
 );
 
 /** Italian (Italiano)
@@ -427,6 +462,14 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'povwatch_title' => 'ចំណងជើង៖',
 	'povwatch_added' => 'បានបន្ថែម',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'povwatch_desc' => 'Määt et müjjelesch, [[Special:PovWatch|Sigge op anderlüx Oppassleste ze donn]].',
+	'povwatch_added' => 'dobei jedonn',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -698,7 +741,7 @@ $messages['oc'] = array(
 	'povwatch_subscribe' => 'Soscriure',
 	'povwatch_added' => 'apondut',
 	'right-povwatch_admin' => "Administrar los dreches d’utilizaire per l'ajust de paginas a la lista de seguit dels autres utilizaires.",
-	'right-povwatch_user' => 'Apondís de paginas a la lista de seguit dels autres utilizaires',
+	'right-povwatch_user' => 'Apond de paginas a la lista de seguit dels autres utilizaires',
 );
 
 /** Polish (Polski)

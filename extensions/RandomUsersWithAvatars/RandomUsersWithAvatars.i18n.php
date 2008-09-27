@@ -77,6 +77,14 @@ $messages['gl'] = array(
 	'random-users-avatars-desc' => 'Engade a etiqueta <tt>&lt;randomuserswithavatars&gt;</tt> para amosar os avatares dos usuarios elixidos ao chou',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'random-users-avatars-title' => 'Facer le cognoscentia del communitate',
+	'random-users-avatars-desc' => 'Adde le etiquetta <tt>&lt;randomuserswithavatars&gt;</tt> pro monstrar le avatares de usatores seligite aleatorimente',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -122,7 +130,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'random-users-avatars-title' => 'Fasètz coneissença amb la comunautat',
-	'random-users-avatars-desc' => 'Apondís la balisa <tt>&lt;randomuserswithavatars&gt;</tt> per afichar los avatars d’utilizaires causits aleatòriament',
+	'random-users-avatars-desc' => 'Apond la balisa <tt>&lt;randomuserswithavatars&gt;</tt> per afichar los avatars d’utilizaires causits aleatòriament',
 );
 
 /** Slovak (Slovenčina)

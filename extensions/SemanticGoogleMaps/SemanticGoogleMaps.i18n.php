@@ -79,6 +79,14 @@ $messages['gl'] = array(
 	'semanticgooglemaps-desc' => 'Permite aos usuarios engadir Mapas do Google a páxinas do wiki baseándose en datos estruturados',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Cercar coordinatas',
+	'semanticgooglemaps-desc' => 'Permitte que usatores adde Google Maps al paginas wiki a base de datos structurate',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

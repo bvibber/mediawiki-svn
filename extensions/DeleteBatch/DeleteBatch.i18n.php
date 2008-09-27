@@ -42,11 +42,20 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'deletebatch-desc' => 'Short description of the :Deletebatch extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'deletebatch-button' => '{{Identical|Delete}}',
 	'deletebatch-reason' => '{{Identical|Reason for deletion}}',
 	'deletebatch-success-subtitle' => '{{Identical|For $1}}',
+);
+
+/** Goanese Konkani (Latin) (कोंकणी/Konknni  (Latin))
+ * @author Deepak D'Souza
+ */
+$messages['gom-latn'] = array(
+	'deletebatch-success-subtitle' => '$1 khatir',
 );
 
 /** Arabic (العربية)

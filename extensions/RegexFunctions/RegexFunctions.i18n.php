@@ -46,6 +46,13 @@ $messages['gl'] = array(
 	'regexfunctions-desc' => 'Funcións de análise de expresións regulares',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'regexfunctions-desc' => 'Functiones del analysator syntactic pro expressiones regular',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

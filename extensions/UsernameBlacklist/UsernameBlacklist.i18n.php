@@ -31,8 +31,10 @@ Please choose another name.',
 
 /** Message documentation (Message documentation)
  * @author Beau
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'usernameblacklist-desc' => 'Short description of the Usernameblacklist extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'right-uboverride' => '{{doc-right}}',
 );
 
@@ -1007,7 +1009,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'usernameblacklist-desc' => "Apondís una [[MediaWiki:Usernameblacklist|lista negra dels noms d'utilizaire]] per restrenher la creacion dels comptes d'utilizaires fasent partida d'una o mantuna expression regulara.",
+	'usernameblacklist-desc' => "Apond una [[MediaWiki:Usernameblacklist|lista negra dels noms d'utilizaire]] per restrénher la creacion dels comptes d'utilizaires que fan partida d'una o de mantuna expression regulara.",
 	'blacklistedusername' => 'Noms d’utilizaires en lista negra',
 	'blacklistedusernametext' => "Lo nom d’utilizaire qu'avètz causit se tròba sus la [[MediaWiki:Usernameblacklist|lista dels noms interdiches]]. Causissètz un autre nom.",
 	'usernameblacklist' => "<pre> # Las dintradas d'aquesta lista seràn utilizadas en tant qu'expressions regularas # per empachar la creacion de noms d'utilizaires interdiches. Cada item deu # far partida d'una lista de piuses, per exemple # # * Foo # * [Bb]ar </pre>",

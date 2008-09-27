@@ -184,6 +184,17 @@ $messages['hu'] = array(
 	'sc_nextmonth' => 'Következő hónap',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'sc_desc' => 'Un calendario que monstra informationes de data semantic',
+	'sc_previousmonth' => 'Mense precedente',
+	'sc_nextmonth' => 'Mense sequente',
+	'sc_today' => 'Hodie',
+	'sc_gotomonth' => 'Ir al mense',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

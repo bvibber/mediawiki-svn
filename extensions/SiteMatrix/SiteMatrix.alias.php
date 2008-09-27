@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'SiteMatrix' => array( 'مصفوفة_الموقع', 'ويكيات_ويكيميديا' ),
 );
 
+/** Catalan (Català) */
+$aliases['ca'] = array(
+	'SiteMatrix' => array( 'Projectes Wikimedia', 'Wikis Wikimedia' ),
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

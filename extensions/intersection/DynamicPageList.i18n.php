@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'intersection_noincludecats' => 'Error: You need to include at least one category, or specify a namespace!',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'intersection-desc' => 'Short description of the Intersection extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

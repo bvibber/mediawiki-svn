@@ -197,6 +197,17 @@ $messages['hy'] = array(
 	'pageby-anon' => '<i>անանուն</i>',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'pageby-desc' => 'Monstra le contributores de un pagina wiki in le pagina mesme per medio del etiquetta <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Pagina create per $1, $2',
+	'pageby-last' => 'Ultime <a href="$3">modification</a> per $1, $2',
+	'pageby-contributors' => 'Contributores:',
+	'pageby-anon' => '<i>anonyme</i>',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Darth Kule
@@ -236,6 +247,10 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'pageby-desc' => 'Zeich de Schriever en de Wikisigge aan met <code><nowiki><pageby></nowiki></code>.',
+	'pageby-first' => 'Aanjelaat vum $1 ($2)',
+	'pageby-last' => 'Zeläz <a href="$3">beärbeidt</a> vum $1 ($2)',
+	'pageby-contributors' => 'Beidrähsch:',
+	'pageby-anon' => '<i>ne namelose Metmaacher</i>',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'protectsection_forbidden'  => 'Forbidden',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'protectsection_desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -49,6 +56,16 @@ $messages['avk'] = array(
 $messages['bg'] = array(
 	'protectsection_add_remove' => 'Опитахте се да добавите или премахнете защитен раздел.',
 	'protectsection_modify' => 'Опитахте се да промените защитен текст.',
+);
+
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'protectsection_desc' => "Permet als usuaris autoritzats protegir parts d'una pàgina mitjançant l'etiqueta <tt>&lt;protect&gt;</tt>",
+	'protectsection_add_remove' => 'Heu intentat afegir o eliminar una secció protegida',
+	'protectsection_modify' => 'Heu intentat modificar text protegit',
+	'protectsection_forbidden' => 'Prohibit',
 );
 
 /** German (Deutsch) */
@@ -123,6 +140,16 @@ $messages['hu'] = array(
 	'protectsection_forbidden' => 'Megtagadva',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'protectsection_desc' => 'Permitte al usatores autorisate de proteger partes de un pagina per medio del etiquetta <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'Tu ha tentate adder o remover un section protegite',
+	'protectsection_modify' => 'Tu ha tentate modificar texto protegite',
+	'protectsection_forbidden' => 'Prohibite',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -154,6 +181,9 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'protectsection_desc' => 'Määt et müjjelesch, dat Metmaacher met däm Rääsch dozoh Aandeile en Sigge met dämm Befääl <tt> &lt;protect&gt; </tt> schötze künne.',
+	'protectsection_add_remove' => 'Do häß versooht, ene jeschötzde Affschnett dobei ze donn, udder fott ze lohße.',
+	'protectsection_modify' => 'Do häß versooht, ene jeschötzde Täx ze ändere.',
 	'protectsection_forbidden' => 'Verbodde',
 );
 

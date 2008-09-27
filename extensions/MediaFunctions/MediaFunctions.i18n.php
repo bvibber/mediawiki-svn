@@ -143,6 +143,15 @@ $messages['hu'] = array(
 	'mediafunctions-not-exist' => '„$1” nem létezik',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'mediafunctions-desc' => 'Functiones del analysator syntactic pro obtener informationes super files multimedia',
+	'mediafunctions-invalid-title' => '"$1" non es un titulo valide',
+	'mediafunctions-not-exist' => '"$1" non existe',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

@@ -156,7 +156,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'tidy-desc' => 'Apondís una tabulacion triada o pas triada (en foncion de $wgUseTidy) sus de paginas normalas que permet de passar otra los paramètres globals HTML triats, per una vista simpla',
+	'tidy-desc' => 'Apond una tabulacion triada o pas triada (en foncion de $wgUseTidy) sus de paginas normalas que permet de passar otra los paramètres globals HTML triats, per una vista simpla',
 	'tidy' => 'Classar',
 	'untidy' => 'Desclassar',
 );

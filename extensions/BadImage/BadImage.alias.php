@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Badimages' => array( 'صور_سيئة' ),
 );
 
+/** Catalan (Català) */
+$aliases['ca'] = array(
+	'Badimages' => array( 'Imatges dolentes' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'Badimages' => array( 'Unerwünschte Bilder' ),

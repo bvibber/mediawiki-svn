@@ -177,6 +177,16 @@ $messages['hu'] = array(
 	'msfunc_div_zero' => 'Nullával való osztás',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'msfunc_desc' => 'Un collection de functiones mathematic e statistic',
+	'msfunc_nan' => 'Le valor resultante non es un numero',
+	'msfunc_inf' => 'Le valor resultante es le infinito',
+	'msfunc_div_zero' => 'Division per zero',
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $messages['id'] = array(
 	'msfunc_nan' => 'Nilai hasil tidak berupa angka',

@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'seealso-desc' => 'Localised \'See also\' headings using the tag <code><nowiki><seealso></nowiki></code>',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'seealso-desc' => 'Short description of the Seealso extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */
@@ -146,6 +153,14 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'seealso' => 'Lásd még',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'seealso' => 'Vide etiam',
+	'seealso-desc' => 'Capites "Vide etiam" localisate per medio del etiquetta <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Icelandic (Íslenska)

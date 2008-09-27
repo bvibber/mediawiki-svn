@@ -141,7 +141,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'tooltip-desc' => 'Apondís una balisa <nowiki><tooltip></nowiki> e un parser <nowiki>{{#tooltip:}}</nowiki>',
+	'tooltip-desc' => 'Apond una balisa <nowiki><tooltip></nowiki> e un parser <nowiki>{{#tooltip:}}</nowiki>',
 );
 
 /** Polish (Polski)

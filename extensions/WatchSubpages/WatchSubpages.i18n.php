@@ -128,6 +128,16 @@ $messages['el'] = array(
 	'watchsubpages-addtitles' => 'Προσθήκη σελίδων',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'watchsubpages' => 'Atenti subpaĝojn',
+	'watchsubpages-addedtowatchlist' => 'La jena estis aldonita al via atentaro.',
+	'watchsubpages-addtitles' => 'Aldoni paĝojn',
+	'watchsubpages-addtitlestowatchlist' => 'Aldoni paĝojn al atentaro',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Louperivois

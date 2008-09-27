@@ -200,6 +200,14 @@ Aqueste messatge es destinat a vos far saber que lo $3 l’utilizaire $4 $5.',
 	'categorywatch-catsub' => 'a levat $1 de la categoria $2',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'categorywatch-catadd' => 'добавлено $1 в категорию $2',
+	'categorywatch-catsub' => 'удалено $1 из категории $2',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

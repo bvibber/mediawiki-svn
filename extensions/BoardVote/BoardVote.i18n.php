@@ -100,9 +100,11 @@ A security warning about an unsigned certificate may be displayed.',
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Meno25
+ * @author Purodha
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'boardvote-desc' => 'Short description of the Boardvote extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'boardvote_intro' => 'Used during Wikimedia Board of Trustees election via [[Special:Boardvote]]. This message is rewritten each election and especially the last paragraph should probably not be translated.',
 	'boardvote_intro_change' => 'Used during Wikimedia Board of Trustees election via [[Special:Boardvote]]. This message is a notification that a user has already voted and can change his vote.',
 	'boardvote_entered' => 'Used during Wikimedia Board of Trustees election via [[Special:Boardvote]]. The parameters still need to be documented.',
@@ -134,6 +136,13 @@ $messages['qqq'] = array(
 	'boardvote_notstarted' => 'Used during Wikimedia Board of Trustees elections via [[Special:Boardvote]].',
 	'boardvote_closed' => 'Used during Wikimedia Board of Trustees elections via [[Special:Boardvote]].',
 	'right-boardvote' => '{{doc-right}}',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'boardvote_user' => 'Пайдаланыше',
 );
 
 /** Afrikaans (Afrikaans)

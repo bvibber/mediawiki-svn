@@ -150,6 +150,14 @@ $messages['hu'] = array(
 	'minnamelength-error' => 'A felhasználói neved túl rövid, minimum $1 karakter hosszúnak kell lennie.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'minnamelength-error' => 'Tu nomine de usator es troppo curte. Le longitude minime es $1.',
+	'minnamelength-desc' => 'Impone un longitude minime del nomine de usator',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
  */

@@ -270,6 +270,17 @@ $messages['krj'] = array(
 	'findspam-ok' => 'OK dun',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'findspam' => 'SPAM Fenge',
+	'findspam-desc' => 'Deit en [[Special:FindSpam|Söndersigg]] för SPAM ze fenge em Wiki dobei.',
+	'findspam-ip' => 'IP-Address:',
+	'findspam-ok' => 'Loß jonn!',
+	'findspam-notextfound' => 'Kein Beidräsch ze fenge',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -377,7 +388,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'findspam' => 'Recèrca de spam',
-	'findspam-desc' => 'Apondís una [[Special:FindSpam|pagina especiala]] que permet de trobar de spam aponduts recentament',
+	'findspam-desc' => 'Apond una [[Special:FindSpam|pagina especiala]] que permet de trobar de spam aponduts recentament',
 	'findspam-ip' => 'Adreça IP :',
 	'findspam-ok' => 'Recercar',
 	'findspam-notextfound' => 'Cap de contribucion trobada',

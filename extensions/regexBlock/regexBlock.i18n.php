@@ -104,6 +104,13 @@ $messages['niu'] = array(
 	'regexblock-view-go' => 'Fano',
 );
 
+/** Goanese Konkani (Latin) (कोंकणी/Konknni  (Latin))
+ * @author Deepak D'Souza
+ */
+$messages['gom-latn'] = array(
+	'regexblock-stats-username' => '$1 kahtir',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -684,11 +691,61 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'regexblock' => 'Blocar con regex',
+	'regexblock-desc' => 'Extension usate pro blocar le nomines e adresses IP de usatores per medio de expressiones regular. Contine e le mechanismo de blocar e un [[Special:Regexblock|pagina special]] pro adder/gerer blocadas',
+	'regexblock-special-desc' => 'blocada alternative de un usator (per un nomine date, usante expressiones regular)',
+	'regexblock-stat-desc' => 'Presenta le [[Special:Regexblockstats|statisticas de blocadas]] pro le extension "regexblock"',
+	'regexblock-page-title' => 'Blocada de un nomine per expression regular',
+	'regexblockstats' => 'Statisticas super blocadas per expressiones regular',
+	'regexblock-reason-ip' => 'Iste adresse IP es impedite de facer modificationes pro causa de vandalismo o de altere disruption per te o per alcuno altere qui usa un adresse IP in commun con te. Si tu crede que isto sia un error, per favor $1',
+	'regexblock-reason-name' => 'Iste nomine de usator es impedite de facer modificationes pro causa de vandalismo o de altere disruption.
+Si tu crede que isto sia un error, per favor $1',
+	'regexblock-reason-regex' => 'Iste nomine de usator es impedite de facer modificationes pro causa de vandalismo o de altere disruption per un usator con un nomine similar.
+Per favor crea un nomine de usator alternative o $1 a proposito de iste problema',
+	'regexblock-help' => 'Usa le formulario in basso pro blocar le accesso a scriber ab un adresse IP o nomine de usator specific.
+Isto debe facite solmente pro impedir le vandalismo, e in concordantia con le politica in vigor.
+\'\'Iste pagina te permitte blocar mesmo usatores non existente, e pote equalmente blocar usatores con nomines similar al date, i.e. "Test" essera blocate insimul con "Test 2", etc.
+Tu pote tamben blocar adresses IP complete, isto vole dicer que necuno connectente se de istes potera modificar paginas.
+Nota: le adresses IP partial essera considerate como nomines de usator in le determination del blocada.
+Si nulle motivo es specificate, un motivo generic predefenite essera usate.\'\'',
+	'regexblock-page-title-1' => 'Blocar adresses per medio de expressiones regular',
+	'regexblock-unblock-success' => 'Disblocada succedite',
+	'regexblock-unblock-log' => "Le nomine de usator o adresse IP '''$1''' ha essite disblocate.",
+	'regexblock-unblock-error' => 'Error durante le disblocada de $1.
+Probabilemente non existe tal usator.',
+	'regexblock-form-username' => 'Adresse IP o nomine de usator:',
 	'regexblock-form-reason' => 'Motivo:',
 	'regexblock-form-expiry' => 'Expiration:',
+	'regexblock-form-match' => 'Correspondentia exacte',
+	'regexblock-form-account-block' => 'Blocar le creation de nove contos',
+	'regexblock-form-submit' => 'Blocar iste usator',
+	'regexblock-block-log' => "Le nomine de usator o adresse IP '''$1''' ha essite blocate.",
+	'regexblock-block-success' => 'Blocada succedite',
+	'regexblock-form-submit-empty' => 'Specifica un nomine de usator o adresse IP a blocar.',
+	'regexblock-form-submit-regex' => 'Expression regular invalide.',
+	'regexblock-form-submit-expiry' => 'Per favor specifica un periodo de expiration.',
 	'regexblock-already-blocked' => '"$1" es ja blocate.',
+	'regexblock-stats-title' => 'Statisticas de blocadas per expressiones regular',
 	'regexblock-stats-username' => 'Pro $1',
+	'regexblock-stats-times' => 'esseva blocate le',
+	'regexblock-stats-logging' => 'connectite ab le adresse',
+	'regexblock-currently-blocked' => 'Adresses actualmente blocate:',
+	'regexblock-view-blocked' => 'Vider blocadas per:',
 	'regexblock-view-all' => 'Totes',
+	'regexblock-view-go' => 'Ir',
+	'regexblock-view-match' => '(correspondentia exacte)',
+	'regexblock-view-regex' => '(correspondentia per expression regular)',
+	'regexblock-view-account' => '(blocada de creation de contos)',
+	'regexblock-view-reason' => 'motivo: $1',
+	'regexblock-view-reason-default' => 'motivo generic',
+	'regexblock-view-block-infinite' => 'blocada permanente',
+	'regexblock-view-block-temporary' => 'expira le',
+	'regexblock-view-block-expired' => 'EXPIRATE le',
+	'regexblock-view-block-by' => 'blocate per',
+	'regexblock-view-block-unblock' => 'disblocar',
+	'regexblock-view-stats' => '(statisticas)',
+	'regexblock-view-empty' => 'Le lista de nomines e adresses blocate es vacue.',
+	'regexblock-view-time' => 'le $1',
 );
 
 /** Indonesian (Bahasa Indonesia)

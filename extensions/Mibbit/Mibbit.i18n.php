@@ -202,6 +202,19 @@ $messages['hu'] = array(
 	'right-mibbit' => 'használhatja a Mibbitet',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'mibbit' => 'Chat Mibbit',
+	'mibbit-desc' => 'Adde un [[Special:Mibbit|special page]] usate pro chattar in directo con altere usatores del wiki',
+	'mibbit-header' => 'Iste pagina special permitte collaborar in directo con altere usatores del wiki.
+Pro connecter te, simplemente preme le button "Connecter".
+Si tu ha aperite un session, tu pseudonymo es preinserite.
+Le usatores anonyme recipe un pseudonymo generate automaticamente, sed illo pote esser cambiate.',
+	'right-mibbit' => 'Autorisate a usar le chat Mibbit',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */

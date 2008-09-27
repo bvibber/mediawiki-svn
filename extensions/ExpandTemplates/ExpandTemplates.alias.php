@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'ExpandTemplates' => array( 'فرد_القوالب' ),
 );
 
+/** Catalan (Català) */
+$aliases['ca'] = array(
+	'ExpandTemplates' => array( 'Expansió de plantilles' ),
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -127,5 +132,10 @@ $aliases['no'] = array(
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'ExpandTemplates' => array( 'کينډۍ غځول' ),
+);
+
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'ExpandTemplates' => array( 'Utöka mallar' ),
 );
 

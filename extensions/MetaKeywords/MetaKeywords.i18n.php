@@ -72,6 +72,18 @@ $messages['gl'] = array(
 	'metakeywords-desc' => 'Permite a configuración de <tt><nowiki><meta "keywords"></nowiki></tt> e mais de etiquetas <tt><nowiki><meta "description"></nowiki></tt> por espazo de nomes',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'metakeywords-desc' => 'Permitte le configuration del etiquettas <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> per spatio de nomines',
+	'metakeywords' => '  # Adde lineas a iste pagina in le forma "spatio de nomines|parolas clave,pro,adder,separate,con,commas"
+  # Le identificatores de spatio de nomines (all) e (main) specifica un predefinition pro tote le spatios de nomine, e le zeresime spatio de nomines, respectivemente.',
+	'metadescription' => '  # Adde lineas a iste pagina in le forma "spatio de nomines|etiquetta de description a definir"
+  # Le identificatores de spatio de nomines (all) e (main) specifica un predefinition pro tote le spatios de nomines e le zeresime spatio de nomines, respectivemente.
+  # Omne occurrentias de $1 essera reimplaciate per le titulo del pagina actual.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

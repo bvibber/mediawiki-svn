@@ -17,6 +17,13 @@ Do '''NOT''' fill this in!",
 	'simpleantispam-desc'  => 'Adds a simple spam/bot check to forms',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'simpleantispam-desc' => 'Short description of the Simpleantispam extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -348,7 +355,7 @@ $messages['oc'] = array(
 	'simpleantispam' => 'Vòstre cambiament a desenclavat lo mecanisme antispam',
 	'simpleantispam-label' => "Verificacion antispam.
 Inscrigatz '''PAS RES''' dedins !",
-	'simpleantispam-desc' => 'Apondís al formulari la verificacion d’un bòt tarabastejaire',
+	'simpleantispam-desc' => 'Apond al formulari la verificacion d’un bòt tarabastejaire',
 );
 
 /** Polish (Polski)

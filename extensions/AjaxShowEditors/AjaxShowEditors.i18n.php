@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'ajax-se-usernotfound'     => 'Error: user not found',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'ajax-se-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -192,6 +199,7 @@ $messages['el'] = array(
 	'ajax-se-pending' => 'εκκρεμή ανανέωση ... (κάντε κλικ σε αυτό το κουτί ή ξεκινήστε την επεξεργασία)',
 	'ajax-se-idling' => '($1s πριν)',
 	'ajax-se-pagedoesnotexist' => 'η σελίδα δεν υπάρχει',
+	'ajax-se-userinvalid' => 'Σφάλμα: άκυρος χρήστης',
 	'ajax-se-usernotfound' => 'Σφάλμα: ο χρήστης δεν βρέθηκε',
 );
 
@@ -708,6 +716,13 @@ $messages['ro'] = array(
 	'ajax-se-pagedoesnotexist' => 'pagina nu există',
 	'ajax-se-userinvalid' => 'Eroare: utilizator incorect',
 	'ajax-se-usernotfound' => 'Eroare: utilizator negăsit',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'ajax-se-pagedoesnotexist' => "'A pàgene non g'esiste",
 );
 
 /** Russian (Русский)

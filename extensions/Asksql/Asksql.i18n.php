@@ -28,8 +28,10 @@ This can often add considerable load to the server, so please use this function 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Meno25
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'asksql-desc' => 'Short description of the Asksql extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'querybtn' => '{{Identical|Submit query}}',
 	'right-asksql' => '{{doc-right}}',
 );

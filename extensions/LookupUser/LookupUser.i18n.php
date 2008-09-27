@@ -476,6 +476,7 @@ $messages['mr'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author SPQRobin
  * @author Siebrand
  */
@@ -485,7 +486,7 @@ $messages['nl'] = array(
 	'lookupuser_intro' => 'Geef een gebruikersnaam in om de voorkeuren van die gebruiker te bekijken.',
 	'lookupuser_nonexistent' => 'Fout: Gebruiker bestaat niet',
 	'lookupuser_authenticated' => 'E-mailbevestiging: $1',
-	'lookupuser_not_authenticated' => 'niet aangemeld',
+	'lookupuser_not_authenticated' => 'niet bevestigd',
 	'lookupuser_id' => 'Gebruikersnummer: <tt>#$1</tt>',
 	'lookupuser_email' => 'E-mailadres: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_no_email' => 'niet opgegeven',

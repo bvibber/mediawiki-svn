@@ -134,6 +134,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author McDutchie
  * @author Zetud
  */
 $messages['fr'] = array(
@@ -141,7 +142,7 @@ $messages['fr'] = array(
 	'refreshspecial-desc' => 'Permet [[Special:RefreshSpecial|l’actualisation manuelle]] des pages spéciales',
 	'refreshspecial-title' => 'Rafraichir les pages spéciales',
 	'refreshspecial-help' => 'Cette page spéciale fournit les moyens de rafraichir manuellement les pages spéciales. Quand vous avez choisi toutes les pages que vous voulez actualiser, cliquer sur le bouton Actualiser ci-dessous pour lancer la procédure. Attention : l’actualisation peut prendre un certain temps sur des wikis disposant d’une grande taille.',
-	'refreshspecial-button' => 'Actualisation sélectionnée',
+	'refreshspecial-button' => 'Actualiser sélectionnées',
 	'refreshspecial-fail' => 'Veuillez cocher au moins une page spéciale à rafraichir.',
 	'refreshspecial-refreshing' => 'Actualisation des pages spéciales',
 	'refreshspecial-skipped' => 'superficiel, sauté',
@@ -185,6 +186,33 @@ $messages['gl'] = array(
 	'refreshspecial-reconnected' => 'Reconectado.',
 	'refreshspecial-reconnecting' => 'Fallou a conexión, reconectando en 10 segundos...',
 	'refreshspecial-total-display' => '<br />$1 páxinas refrescadas dun total de $2 liñas dunha duración de $3 (a duración completa  da escritura é de $4)',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'refreshspecial' => 'Refrescar paginas special',
+	'refreshspecial-desc' => 'Permitte le [[Special:RefreshSpecial|refrescamento manual]] de paginas special',
+	'refreshspecial-title' => 'Refrescar paginas special',
+	'refreshspecial-help' => 'Iste pagina special forni un modo manual de refrescar paginas special. Quando tu ha seligite tote le paginas que tu vole refrescar, clicca super le button Refrescar in basso pro lancear le procedura. Attention: le refrescamento pote durar un poco de tempore in wikis plus grande.',
+	'refreshspecial-button' => 'Refrescar seligites',
+	'refreshspecial-fail' => 'Per favor marca al minus un pagina special a refrescar.',
+	'refreshspecial-refreshing' => 'refrescamento de paginas special in curso',
+	'refreshspecial-skipped' => 'superficial, omittite',
+	'refreshspecial-success-subtitle' => 'refrescamento de paginas special',
+	'refreshspecial-choice' => 'refrescamento de paginas special',
+	'refreshspecial-js-disabled' => '<i>(Tu non pote seliger tote le paginas si JavaScript non es active)</i>',
+	'refreshspecial-select-all-pages' => '  seliger tote le paginas',
+	'refreshspecial-link-back' => 'Retornar al extension',
+	'refreshspecial-here' => '<b>hic</b>',
+	'refreshspecial-none-selected' => 'Tu non ha seligite alcun pagina special. Le selection retorna al predefinite.',
+	'refreshspecial-db-error' => 'Falta: error del base de datos',
+	'refreshspecial-no-page' => 'Iste pagina special non existe',
+	'refreshspecial-slave-lagged' => 'Sclavo in retardo; attende…',
+	'refreshspecial-reconnected' => 'Reconnectite.',
+	'refreshspecial-reconnecting' => 'Connexion fallite, reconnexion post 10 secundas…',
+	'refreshspecial-total-display' => '<br />Refrescava $1 paginas con un total de $2 lineas durante $3 (le durata total del execution del script es $4)',
 );
 
 /** Italian (Italiano)

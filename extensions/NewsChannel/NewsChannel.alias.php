@@ -37,6 +37,11 @@ $aliases['id'] = array(
 	'NewsChannel' => array( 'Saluran berita' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'NewsChannel' => array( 'Noriichtekanal' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'NewsChannel' => array( 'Niej_kenaal' ),

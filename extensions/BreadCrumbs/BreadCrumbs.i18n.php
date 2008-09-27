@@ -9,6 +9,13 @@ $messages['en'] = array(
 	'breadcrumbs-desc' => 'Shows the users path through the wiki.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'breadcrumbs-desc' => 'Short description of the Breadcrumbs extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

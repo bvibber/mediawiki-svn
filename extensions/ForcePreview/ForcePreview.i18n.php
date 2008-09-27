@@ -17,8 +17,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Meno25
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'forcepreview-desc' => 'Short description of the Forcepreview extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'right-forcepreviewexempt' => '{{doc-right}}',
 );
 

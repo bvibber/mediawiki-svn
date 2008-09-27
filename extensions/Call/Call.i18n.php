@@ -360,7 +360,25 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'call' => 'Call',
 	'call-desc' => 'Kann ene Link op en Schabloon udder och jeede Sigg em Wiki maache, un derbei Parrametere övverjävve. Kam_mer em Brauser un em Wiki-Täx bruche.',
+	'call-text' => 'Dä „<i lang="en">Call</i>“ Zosatz zor Wiki-Sofwäer bruch en Sigg em Wiki un, wann et paß, och en Leß met Parameetere.
+
+Beispell 1: &nbsp; <tt>[[Special:Call/Ming Schablon,parm1=wäät1]]</tt><br />
+Beispell 2: &nbsp; <tt>[[Special:Call/Talk:Minge Klaaf,parm1=wäät1]]</tt><br />
+Beispell 3: &nbsp; <tt>[[Special:Call/:Ming Sigg,parm1=wäät1,parm2=wäät2]]</tt><br />
+Beispell 4 (Brauser URL): &nbsp; <tt>http://mingdomain/mingwiki/index.php?Special:Call/:Ming_Sigg,parm1=wäät1</tt>
+
+„<i lang="en">Call</i>“ weed dė aanjejovve Sigg oprohfe, un de Parammeetere dobei wigger jevve, wann welsche doh sin.<br />
+Dann süühs De dä Ennhald fun dä Sigg, un dä ier Övverschreff, ävver dä Tüp fun dä Sigg es wi bei en Söndersigg, dat es, De kanns do nit draan ändere.<br />
+Wat mer süüht maach ongerscheedlesch sinn, je noh dämm, wat för en Parrammeetere mer do wigger jejovve hät.
+
+„<i lang="en">Call</i>“ hellef, öm Aanwendunge met MediaWiki opzeboue, woh de Minsche dren enjriife künne, ohne projrammeere ze möße.<br />
+För e Beispell för esu jät, loor Der <a href=\'http://semeb.com/dpldemo/Template:Catlist\'>et DPL GUI</a> aan.<br />
+Wann de Probleme häß, versooch et enß met <b>[[Special:Call/DebuG]]</b>.',
+	'call-save' => 'Wat bei dämm Oprohf eruß köhm, wööd als de Sigg „$1“ afjeshpeischert.',
+	'call-save-success' => 'Dä Täx hee noh wood als de Sigg </big>[[$1]]</big> afjeshpeischert.',
+	'call-save-failed' => "Dä Täx hee noh eß '''nit''' als de Sigg </big>[[$1]]</big> afjeshpeischert woode. Di Sigg jidd et nämlejj ald.",
 );
 
 /** Luxembourgish (Lëtzebuergesch)

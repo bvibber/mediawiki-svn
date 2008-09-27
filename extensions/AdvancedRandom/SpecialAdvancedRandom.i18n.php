@@ -328,6 +328,13 @@ $messages['ro'] = array(
 	'advancedrandom' => 'Întâmplător avansat',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'advancedrandom' => 'A uecchie avanzete',
+);
+
 /** Russian (Русский)
  * @author Ahonc
  * @author Александр Сигачёв

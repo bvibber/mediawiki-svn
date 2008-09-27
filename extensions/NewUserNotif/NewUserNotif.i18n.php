@@ -175,6 +175,17 @@ $messages['hy'] = array(
 $3 կայքում ստեղծվել է նոր մասնակցային հաշիվ՝ $2, $4-ին։',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'newusernotifsubj' => 'Notification de un nove usator in $1',
+	'newusernotif-desc' => 'Invia un notification per e-mail quando un conto de usator es create',
+	'newusernotifbody' => 'Salute $1,
+
+Un nove conto de usator, $2, ha essite create in $3 le $4.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -215,6 +226,13 @@ $messages['km'] = array(
 	'newusernotifbody' => 'សួស្តី $1,
 
 គណនី​របស់​អ្នកប្រើប្រាស់ថ្មី, $2, បានត្រូវបង្កើត លើ $3 នៅ $4 ហើយ ។',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'newusernotif-desc' => 'Scheck en <i lang="en">e-mail</i> eruß, wann en neu Aanmeldung för ene neue Metmaacher kütt.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

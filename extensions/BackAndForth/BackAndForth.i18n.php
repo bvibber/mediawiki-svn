@@ -18,12 +18,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Purodha
  * @author SPQRobin
  */
 $messages['qqq'] = array(
 	'backforth-next' => 'Part of the "Back-And-Forth" extension. A link to the next page shown on the top of every page. The opposite is {{msg|backforth-prev}}.
 
 {{Identical|Next}}',
+	'backforth-desc' => 'Short description of the Backforth extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'backforth-prev' => 'Part of the "Back-And-Forth" extension. A link to the previous page shown on the top of every page. The opposite is {{msg|backforth-next}}.
 
 {{Identical|Previous}}',
@@ -497,7 +499,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'backforth-next' => 'Seguent ($1)',
-	'backforth-desc' => 'Apondís « Seguent » e « Precedent » a la pagina dels ligams alfabetics en naut de las paginas',
+	'backforth-desc' => 'Apond « Seguent » e « Precedent » a la pagina dels ligams alfabetics en naut de las paginas',
 	'backforth-prev' => 'Precedent ($1)',
 );
 

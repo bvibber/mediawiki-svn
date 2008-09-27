@@ -138,6 +138,14 @@ $messages['hu'] = array(
 	'donationform-submit' => 'Adakozás PayPalon keresztül',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'donationform-desc' => 'Adde un etiquetta <tt>&lt;donateform&gt;</tt> pro permitter le donationes per medio de PayPal',
+	'donationform-submit' => 'Donar per PayPal',
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $messages['id'] = array(
 	'donationform-submit' => 'Donasi melalui PayPal',
@@ -241,7 +249,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'donationform-desc' => "Apondís la balisa <tt>&lt;donateform&gt;</tt> per permetre los dons amb l'ajuda de PayPal",
+	'donationform-desc' => "Apond la balisa <tt>&lt;donateform&gt;</tt> per permetre los dons amb l'ajuda de PayPal",
 	'donationform-submit' => 'Far un don amb PayPal',
 );
 

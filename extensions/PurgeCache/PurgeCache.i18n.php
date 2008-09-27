@@ -140,6 +140,17 @@ $messages['hu'] = array(
 	'purgecache-button' => 'Frissít',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'purgecache' => 'Purgar le cache',
+	'purgecache-desc' => '[[Special:PurgeCache|Pagina special]] usate pro rader le tabella OBJECTCACHE',
+	'purgecache-warning' => 'Isto face purgar le tabellas de cache.',
+	'purgecache-purged' => 'Le cache ha essite purgate.',
+	'purgecache-button' => 'Purgar',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */

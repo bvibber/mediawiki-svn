@@ -127,7 +127,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'contributorsaddon-desc' => 'Apondís lo popup JS onMouseOver als ligams dels « Contributors principals »',
+	'contributorsaddon-desc' => 'Apond lo popup JS onMouseOver als ligams dels « Contributors principals »',
 );
 
 /** Polish (Polski)

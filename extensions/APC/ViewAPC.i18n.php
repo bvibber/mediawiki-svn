@@ -136,7 +136,7 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
  * @author Sp5uhe
  */
 $messages['qqq'] = array(
-	'viewapc-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'viewapc-desc' => 'Short description of the ViewAPC extension, it is shown in [[Special:Version]]. Do not translate or change link targets.',
 	'right-apc' => '{{doc-right}}',
 	'viewapc-shared-memory-details' => '*$1 is the number of segments
 *$2 is a size of segments in Xbytes
@@ -796,6 +796,7 @@ APC verŝajne ne funkcias.',
 	'viewapc-display-deletion_time' => 'Forigita',
 	'viewapc-display-no-delete' => 'Ne forigita',
 	'viewapc-display-mem_size' => 'Pezo',
+	'viewapc-display-too-big' => "''Enhavo estas tro granda por montri.''",
 	'viewapc-ls-options-legend' => 'Opcioj',
 	'viewapc-ls-submit' => 'Ek!',
 	'viewapc-ls-header-name' => 'Nomo',

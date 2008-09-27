@@ -7,6 +7,13 @@ $messages['en'] = array(
 	'psinotocnum-desc' => 'New magic word "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'psinotocnum-desc' => 'Short description of the PsiNoTocNum extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -66,6 +73,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'psinotocnum-desc' => 'Nova palabra máxica "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'psinotocnum-desc' => 'Un nove parola magic "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
 /** Indonesian (Bahasa Indonesia)

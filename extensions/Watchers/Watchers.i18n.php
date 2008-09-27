@@ -68,10 +68,10 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'watchers' => 'المراقبون',
-	'watchers-desc' => 'يعرض [[Special:Watchers|أى المستخدمين لديهم صفحة ما في قائمة مراقبتهم]]',
+	'watchers-desc' => 'يعرض [[Special:Watchers|أى المستخدمين لديهم صفحة ما فى قائمة مراقبتهم]]',
 	'watchers_link_title' => 'من يراقب هذه الصفحة؟',
 	'watchers_error_article' => '<b>خطأ:</b> الصفحة غير موجودة.',
-	'watchers_header' => '{{PLURAL:$2|المستخدم الذي يراقب|المستخدمون الذين يراقبون}} "$1"',
+	'watchers_header' => '{{PLURAL:$2|المستخدم الذى يراقب|المستخدمون الذين يراقبون}} "$1"',
 	'watchers_noone_watches' => 'لا أحد يراقب هذه الصفحة.',
 	'watchers_x_or_more' => '$1 {{PLURAL:$1|مستخدم|مستخدم}} أو أكثر لديهم هذه الصفحة فى قائمة مراقبتهم.',
 	'watchers_less_than_x' => 'أقل من $1 {{PLURAL:$1|مستخدم|مستخدم}} لديهم هذه الصفحة فى قائمة مراقبتهم.',
@@ -176,10 +176,10 @@ $messages['eo'] = array(
 	'watchers' => 'Rigardantoj',
 	'watchers_link_title' => 'Kiu atentas ĉi tiun paĝon?',
 	'watchers_error_article' => '<b>Eraro:</b> Paĝo ne ekzistas.',
-	'watchers_header' => 'Uzantoj atentantaj "$1"',
+	'watchers_header' => '{{PLURAL:$2|Uzanto kiu|Uzantoj kiuj}} atentas "$1"',
 	'watchers_noone_watches' => 'Neniu rigardas ĉi tiun paĝon',
-	'watchers_x_or_more' => '$1 aŭ pli uzantoj atentas ĉi tiun paĝon.',
-	'watchers_less_than_x' => 'Malpli ol $1 uzantoj atentas ĉi tiun paĝon.',
+	'watchers_x_or_more' => '$1 aŭ pli {{PLURAL:$1|uzanto|uzantoj}} atentas ĉi tiun paĝon.',
+	'watchers_less_than_x' => 'Malpli ol $1 {{PLURAL:$1|uzanto|uzantoj}} atentas ĉi tiun paĝon.',
 );
 
 /** French (Français)

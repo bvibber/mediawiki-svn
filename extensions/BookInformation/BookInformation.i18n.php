@@ -479,7 +479,7 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'bookinfo-header' => 'Información do libro',
-	'bookinfo-desc' => 'Amplia a [[Special:Booksources|páxina especial de fontes de libros]] con información dun servizo web',
+	'bookinfo-desc' => 'Amplía a [[Special:Booksources|páxina especial de fontes bibliográficas]] con información dun servizo web',
 	'bookinfo-result-title' => 'Título:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Publicación:',
@@ -1178,7 +1178,7 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'bookinfo-header' => 'Информация о книге',
-	'bookinfo-desc' => 'Расширяет [[Special:Booksources]] сведениями из веб-служб',
+	'bookinfo-desc' => 'Расширяет [[Special:Booksources|служебную страницу «Источники книг»]] сведениями из веб-служб',
 	'bookinfo-result-title' => 'Название:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Издательство:',

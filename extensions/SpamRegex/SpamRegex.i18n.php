@@ -224,11 +224,14 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'spamregex-no-currently-blocked' => "'''Ne estas iuj ajn forbaritaj vortaj kombinaĵoj.'''",
 	'spamregex-log-2' => 'je $1',
 	'spamregex-unblock-success' => 'Malforbaro sukcesis',
 	'spamregex-block-success' => 'Forbaro sukcesis',
 	'spamregex-already-blocked' => '"$1" jam estas forbarita.',
+	'spamregex-phrase-block' => 'Vorta kombinaĵo por forbari:',
 	'spamregex-text' => '(Teksto)',
+	'spamregex-summary-log' => '(Resumo)',
 );
 
 /** French (Français)

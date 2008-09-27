@@ -24,8 +24,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'scanset-desc' => 'Short description of the ScanSet extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'scanset_next' => '{{Identical|Next}}',
 	'scanset_prev' => '{{Identical|Prev}}',
 );

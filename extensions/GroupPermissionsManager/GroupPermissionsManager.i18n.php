@@ -186,6 +186,7 @@ $messages['ar'] = array(
 	'right-recentchanges' => 'رؤية أحدث التغييرات',
 	'right-edittalk' => 'تعديل صفحات النقاش',
 	'right-edit-new' => 'تعديل الصفحات (التي ليست صفحات نقاش)',
+	'right-readold' => 'رؤية محتوى المراجعات والفروقات القديمة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -253,6 +254,7 @@ $messages['arz'] = array(
 	'right-recentchanges' => 'رؤية أحدث التغييرات',
 	'right-edittalk' => 'تعديل صفحات النقاش',
 	'right-edit-new' => 'تعديل الصفحات (التى ليست صفحات نقاش)',
+	'right-readold' => 'رؤية محتوى المراجعات والفروقات القديمة',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -494,6 +496,7 @@ $messages['fr'] = array(
 	'right-recentchanges' => 'Voir les modifications récentes',
 	'right-edittalk' => 'Modifier les pages de discussion',
 	'right-edit-new' => 'Modifier les pages (qui n’ont pas de page de discussion)',
+	'right-readold' => 'Voir le contenu des anciennes versions et des diffs',
 );
 
 /** Western Frisian (Frysk)
@@ -569,6 +572,7 @@ $messages['gl'] = array(
 	'right-recentchanges' => 'Ver os cambios recentes',
 	'right-edittalk' => 'Editar as páxinas de conversa',
 	'right-edit-new' => 'Editar páxinas (que non son de conversa)',
+	'right-readold' => 'Ver o contido de revisións vellas e diferenzas antigas',
 );
 
 /** Croatian (Hrvatski)
@@ -948,6 +952,7 @@ Klik op de knop "vorige pagina" in uw browser en probeer het nog een keer',
 	'right-recentchanges' => 'Recente wijzigingen bekijken',
 	'right-edittalk' => "Overlegpagina's bewerken",
 	'right-edit-new' => "Pagina's bewerken",
+	'right-readold' => 'Inhoud van en verschillen met oudere versies bekijken',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1265,6 +1270,7 @@ $messages['sk'] = array(
 	'right-recentchanges' => 'Zobraziť posledné zmeny',
 	'right-edittalk' => 'Upraviť diskusné stránky',
 	'right-edit-new' => 'Upravovať stránky (ktoré nie sú diskusné stránky)',
+	'right-readold' => 'Zobrazovať obsah starých revízií a ich rozdiely',
 );
 
 /** Swedish (Svenska)

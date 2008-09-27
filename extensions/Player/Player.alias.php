@@ -42,3 +42,8 @@ $aliases['no'] = array(
 	'Player' => array( 'Medieavspiller' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'Player' => array( 'Spelare' ),
+);
+

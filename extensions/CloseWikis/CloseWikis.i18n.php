@@ -482,6 +482,22 @@ $messages['ro'] = array(
 	'closewikis-page-reopen-submit' => 'Redeschide',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'closewikis-closed-default' => 'Эта вики закрыта',
+	'closewikis-page' => 'Закрыть вики',
+	'closewikis-page-close' => 'Закрыть вики',
+	'closewikis-page-close-wiki' => 'Вики:',
+	'closewikis-page-close-submit' => 'Закрыть',
+	'closewikis-page-reopen-wiki' => 'Вики:',
+	'closewikis-page-reopen-reason' => 'Причина:',
+	'closewikis-log' => 'Журнал закрытия вики',
+	'closewikis-log-close' => 'закрыто $2',
+	'right-editclosedwikis' => 'Править закрытые вики',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -526,6 +542,18 @@ $messages['stq'] = array(
 	'closewikis-page-close-submit' => 'Sluute',
 	'closewikis-page-close-success' => 'Wiki mäd Ärfoulch sleeten.',
 	'closewikis-page-reopen' => 'Wiki wier eepenje',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Gruund:',
+	'closewikis-page-reopen-submit' => 'Wier eepenje',
+	'closewikis-page-reopen-success' => 'Wiki mäd Ärfoulch wier eepend',
+	'closewikis-page-err-nowiki' => 'Uungultich Wiki anroat',
+	'closewikis-page-err-closed' => 'Wiki is al sleeten',
+	'closewikis-page-err-opened' => 'Wiki is nit sleeten',
+	'closewikis-log' => 'Wikisluutengs-Logbouk',
+	'closewikis-log-header' => 'Dit Logbouk wiest aal Sluutengen un Wiereepengen fon Wikis truch Stewards oun.',
+	'closewikis-log-close' => 'sloot $2',
+	'closewikis-log-reopen' => 'eepende $2 wier',
+	'right-editclosedwikis' => 'Sleetene Wikis beoarbaidje',
 );
 
 /** Swedish (Svenska)

@@ -44,6 +44,7 @@ $messages['qqq'] = array(
 	'chemicalsources' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.
 
 {{Identical|Chemical sources}}',
+	'chemicalsource-desc' => 'Short description of the Chemicalsource extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'chemFunctions_ListPage' => '{{Identical|Chemical sources}}',
 );
 
@@ -555,7 +556,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'chemicalsources' => 'Fonts per la quimia',
-	'chemicalsource-desc' => 'Apondís la balisa <nowiki><chemform></nowiki>, per las formulas quimicas',
+	'chemicalsource-desc' => 'Apond la balisa <nowiki><chemform></nowiki>, per las formulas quimicas',
 	'chemFunctions_ListPage' => 'Fonts per la quimia',
 	'chemFunctions_DataList' => 'Seguís una lista de ligams vèrs de sits que pòdon aportar d\'entresenhas a prepaus de las substàncias quimicas que recercatz. * [http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI Compausat $MIXCASNameFormula], NIST * [http://ptcl.chem.ox.ac.uk/MSDS/ MSDS], Universitat d\'Oxford',
 	'chemFunctions_CAS' => 'Numèro CAS',

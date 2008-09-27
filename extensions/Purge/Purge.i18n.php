@@ -99,6 +99,14 @@ $messages['hu'] = array(
 	'purge' => 'frissít',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'purge' => 'purgar',
+	'purge-desc' => 'Adde un scheda "purgar" in tote le paginas normal, e contorna le verification de purga pro usatores anonyme permittente un purga rapide del cache',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -209,7 +217,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'purge' => 'purgar',
-	'purge-desc' => "Apondís un onglet « Purgar » sus totas las paginas normalas e activa sa seleccion pels utilizaires anonims per una purga rapida de l'amagatal.",
+	'purge-desc' => "Apond un onglet « Purgar » sus totas las paginas normalas e activa sa seleccion pels utilizaires anonims per una purga rapida de l'amagatal.",
 );
 
 /** Polish (Polski)

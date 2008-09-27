@@ -17,6 +17,13 @@ Please use the page [[MediaWiki:Number_of_watching_users_pageview]] to define an
 	'specialwhoiswatchingaddbtn' => 'Add selected users',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'whoiswatching-desc' => 'Short description of the Whoiswatching extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

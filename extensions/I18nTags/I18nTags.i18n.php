@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'i18ntags-desc' => 'Access the i18n functions for number formatting, grammar and plural in any available language',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'i18ntags-desc' => 'Short description of the I18ntags extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

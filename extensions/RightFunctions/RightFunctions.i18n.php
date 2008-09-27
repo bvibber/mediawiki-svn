@@ -57,9 +57,10 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author McDutchie
  */
 $messages['fr'] = array(
-	'rightfunctions-desc' => 'Permissions de base des fonctions parseurs',
+	'rightfunctions-desc' => 'Fonctions pour le parseur basées sur des permissions',
 	'rightfunctions-casc' => '(depuis les sources en cascade)',
 	'rightfunctions-local' => '(depuis une page locale)',
 	'rightfunctions-ns' => '(depuis la protection des espaces de nom)',
@@ -91,6 +92,20 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'rightfunctions-desc' => 'Parserowe funkcije na zakładźe prawow',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'rightfunctions-desc' => 'Functiones pro le analysator syntactic a base de permissiones',
+	'rightfunctions-rest1' => '$1 $2',
+	'rightfunctions-rest2' => '$1 $2$5 $3 $4',
+	'rightfunctions-rest3' => '$1 $2$7 $3 $4$7 $5 $6',
+	'rightfunctions-sep' => ',',
+	'rightfunctions-casc' => '(ab fontes in cascada)',
+	'rightfunctions-local' => '(ab un pagina local)',
+	'rightfunctions-ns' => '(ab le protection de spatios de nomines)',
 );
 
 /** Italian (Italiano)

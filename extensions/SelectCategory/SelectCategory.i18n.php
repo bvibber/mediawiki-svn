@@ -167,6 +167,15 @@ $messages['hsb'] = array(
 	'selectcategory-subtitle' => 'Umschalt-Myš, zo bychu so wjacore susodne zapiski wubrali, Strg-myš, zo bychu so njesusodne zapiski wubrali.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'selectcategory-title' => 'Seliger categorias',
+	'selectcategory-desc' => 'Permitte que le usator selige inter categorias existente quando modifica un pagina',
+	'selectcategory-subtitle' => 'Clicca tenente premite le clave SHIFT pro seliger plure entratas adjacente, o CTRL pro seliger entratas non adjacente.',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Ivan Lanin <ivanlanin@gmail.com>
  */

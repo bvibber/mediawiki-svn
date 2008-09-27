@@ -85,6 +85,15 @@ $messages['he'] = array(
 	'right-move-userpages' => 'העברת דפי משתמש',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'nomoveuserpages-desc' => 'Impedi le usatores sin derecto "move-userpages" de renominar paginas de usator',
+	'nomoveuserpages-error' => 'Le renomination del paginas de usator ha essite prohibite',
+	'right-move-userpages' => 'Renominar paginas de usator',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

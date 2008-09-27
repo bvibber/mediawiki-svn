@@ -179,7 +179,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'emailaddressimage-desc' => 'Apondís <tt>&lt;email&gt;</tt> per afichar una adreça de corrièr electronic coma imatge',
+	'emailaddressimage-desc' => 'Apond <tt>&lt;email&gt;</tt> per afichar una adreça de corrièr electronic coma imatge',
 );
 
 /** Polish (Polski)

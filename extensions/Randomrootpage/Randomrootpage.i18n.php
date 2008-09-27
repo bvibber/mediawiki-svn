@@ -93,6 +93,14 @@ $messages['hu'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Speciális lap]], amely egy véletlen lapot jelenít meg a gyökérből',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'randomrootpage' => 'Pagina-radice aleatori',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Pagina special]] que obtene un pagina-radice aleatori',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

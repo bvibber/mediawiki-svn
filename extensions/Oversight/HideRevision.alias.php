@@ -93,3 +93,8 @@ $aliases['no'] = array(
 	'HideRevision' => array( 'Skjul revisjon' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'HideRevision' => array( 'Dölj version' ),
+);
+

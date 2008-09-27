@@ -911,10 +911,10 @@ $messages['ia'] = array(
 	'sign-nodocselected' => 'Per favor selige le documento que tu vole signar.',
 	'sign-selectdoc' => 'Documento:',
 	'sign-docheader' => '<div class="noarticletext">Usa iste formulario pro signar le documento "[[$1]]," monstrate infra.
-Per favor lege le documento integre, e si tu vole indicar tu appoio de illo, competa le campos requisite pro signar lo.</div>',
+Per favor lege le documento integre, e si tu vole indicar tu appoio de illo, completa le campos requisite pro signar lo.</div>',
 	'sign-error-nosuchdoc' => 'Le documento que tu requestava ($1) non existe.',
 	'sign-realname' => 'Nomine:',
-	'sign-address' => 'Adresse de strata:',
+	'sign-address' => 'Adresse residential:',
 	'sign-city' => 'Citate:',
 	'sign-state' => 'Stato/provincia:',
 	'sign-zip' => 'Codice postal:',
@@ -931,9 +931,69 @@ Per favor lege le documento integre, e si tu vole indicar tu appoio de illo, com
 	'sign-list-hidebday' => 'Non listar etate',
 	'sign-list-hideemail' => 'Non listar e-mail',
 	'sign-submit' => 'Signar documento',
+	'sign-information' => '<div class="noarticletext">Gratias pro haber completemente legite iste documento.
+Si tu es de accordo con illo, per favor indica tu appoio per completar le campos requisite in basso e cliccar "Signar documento".
+Per favor assecura te que tu informationes personal sia correcte e que nos dispone de un modo de contactar te pro verificar tu identitate.
+Nota que iste formulario face registrar tu adresse IP e altere informationes que pote identificar te; le moderatores usa istes pro eliminar signaturas duplice e pro confirmar le accuratessa de tu informationes personal.
+Post que le uso de servitores proxy public e anonyme nos impedi de facer isto, le signaturas ab istes probabilemente non essera contate.
+Si tu es actualmente connectite via un servitor proxy, per favor disconnecte te de illo e usa un connexion standard durante le signatura.</div>
+
+$1',
+	'sig-success' => 'Tu ha signate le documento con successo.',
+	'sign-view-selectfields' => '<b>Campos a monstrar:</b>',
+	'sign-viewfield-entryid' => 'ID del entrata',
+	'sign-viewfield-timestamp' => 'Data e hora',
+	'sign-viewfield-realname' => 'Nomine',
+	'sign-viewfield-address' => 'Adresse',
+	'sign-viewfield-city' => 'Citate',
+	'sign-viewfield-state' => 'Stato/provincia',
+	'sign-viewfield-country' => 'Pais',
+	'sign-viewfield-zip' => 'Codice postal',
+	'sign-viewfield-ip' => 'Adresse IP',
+	'sign-viewfield-agent' => 'Agente usator',
+	'sign-viewfield-phone' => 'Telephono',
 	'sign-viewfield-email' => 'E-mail',
+	'sign-viewfield-age' => 'Etate',
+	'sign-viewfield-options' => 'Optiones',
+	'sign-viewsigs-intro' => 'Infra se monstra le signaturas registrate pro <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'Le signatura es actualmente active pro iste documento.',
+	'sign-sigadmin-close' => 'Disactivar signatura',
+	'sign-sigadmin-currentlyclosed' => 'Le signatura non es actualmente active pro iste documento.',
+	'sign-sigadmin-open' => 'Activar signatura',
+	'sign-signatures' => 'Signaturas',
+	'sign-sigadmin-closesuccess' => 'Le signatura ha essite disactivate con successo.',
+	'sign-sigadmin-opensuccess' => 'Le signatura ha essite activate con successo.',
+	'sign-viewsignatures' => 'vider signaturas',
+	'sign-closed' => 'claudite',
+	'sign-error-closed' => 'Le signatura de iste documento non es actualmente active.',
+	'sig-anonymous' => '<i>Anonyme</i>',
+	'sig-private' => '<i>Private</i>',
+	'sign-sigdetails' => 'Detalios del signatura',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|discussion]] • <!--
+-->[[Special:Contributions/$1|contributiones]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|blocar usator]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} registro de blocadas] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} verificar IP])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Cancellate',
+	'sign-viewfield-reviewedby' => 'Revisor',
 	'sign-viewfield-reviewcomment' => 'Commento',
+	'sign-detail-uniquequery' => 'Entitates similar',
+	'sign-detail-uniquequery-run' => 'Executar consulta',
+	'sign-detail-strike' => 'Cancellar signatura',
+	'sign-reviewsig' => 'Revider signatura',
 	'sign-review-comment' => 'Commento',
+	'sign-submitreview' => 'Submitter revision',
+	'sign-uniquequery-similarname' => 'Nomine similar',
+	'sign-uniquequery-similaraddress' => 'Adresse similar',
+	'sign-uniquequery-similarphone' => 'Telephono similar',
+	'sign-uniquequery-similaremail' => 'E-mail similar',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signava [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Indonesian (Bahasa Indonesia)

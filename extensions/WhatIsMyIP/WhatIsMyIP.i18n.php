@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'whatismyip-out' => 'Your IP:',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'whatismyip-desc' => 'Short description of the Whatismyip extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
