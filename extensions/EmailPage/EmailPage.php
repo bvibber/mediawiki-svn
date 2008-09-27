@@ -13,15 +13,15 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('EMAILPAGE_VERSION', '1.2.1, 2008-08-17');
+define('EMAILPAGE_VERSION', '1.2.2, 2008-09-28');
 
 $wgEmailPageGroup           = 'sysop';            # Users must belong to this group to send emails (empty string means anyone can send)
 $wgEmailPageContactsCat     = '';                 # This specifies the name of a category containing categories of contact pages
 $wgEmailPageCss             = 'EmailPage.css';    # A minimal CSS page to embed in the email (eg. monobook/main.css without portlets, actions etc)
 $wgEmailPageAllowRemoteAddr = array('127.0.0.1'); # Allow anonymous sending from these addresses
 $wgEmailPageAllowAllUsers   = false;              # Whether to allow sending to all users (the "user" group)
-$wgEmailPageToolboxLink     = 'Send to email';    # Link title for toolbox link (set to "" to not have any link in toolbox)
-$wgEmailPageActionLink      = 'email';            # Link title for action link (set to "" to not have any action link)
+$wgEmailPageToolboxLink     = true;               # Add a link to the sidebar toolbox?
+$wgEmailPageActionLink      = true;               # Add a link to the actions links?
 $wgPhpMailerClass           = dirname(__FILE__).'/phpMailer_v2.1.0beta2/class.phpmailer.php'; # From http://phpmailer.sourceforge.net/
 
 if ($wgEmailPageGroup) $wgGroupPermissions['sysop'][$wgEmailPageGroup] = true;
@@ -47,28 +47,23 @@ $wgExtensionCredits['specialpage'][] = array(
 if (isset($_REQUEST['ea-send'])) require_once($wgPhpMailerClass);
 
 # Add toolbox and action links
-if ($wgEmailPageToolboxLink) {
-	$wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfEmailPageToolboxLink';
-}
-
-if ($wgEmailPageActionLink) {
-	$wgHooks['SkinTemplateTabs'][] = 'wfEmailPageActionLink';
-}
+if ($wgEmailPageToolboxLink) $wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfEmailPageToolboxLink';
+if ($wgEmailPageActionLink)  $wgHooks['SkinTemplateTabs'][] = 'wfEmailPageActionLink';
 
 function wfEmailPageToolboxLink() {
-	global $wgEmailPageToolboxLink, $wgTitle, $wgUser, $wgEmailPageGroup;
+	global $wgTitle, $wgUser, $wgEmailPageGroup;
 	if (is_object($wgTitle) && (empty($wgEmailPageGroup) || in_array($wgEmailPageGroup, $wgUser->getEffectiveGroups()))) {
 		$url = Title::makeTitle(NS_SPECIAL, 'EmailPage')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
-		echo("<li><a href=\"$url\">$wgEmailPageToolboxLink</li>");
+		echo("<li><a href=\"$url\">".wfMsg('emailpage')."</li>");
 		}
 	return true;
 }
 
 function wfEmailPageActionLink(&$skin, &$actions) {
-	global $wgEmailPageActionLink, $wgTitle, $wgUser, $wgEmailPageGroup;
+	global $wgTitle, $wgUser, $wgEmailPageGroup;
 	if (is_object($wgTitle) && (empty($wgEmailPageGroup) || in_array($wgEmailPageGroup, $wgUser->getEffectiveGroups()))) {
 		$url = Title::makeTitle(NS_SPECIAL, 'EmailPage')->getLocalURL('ea-title='.$wgTitle->getPrefixedText());
-		$actions['email'] = array('text' => $wgEmailPageActionLink, 'class' => false, 'href' => $url);
+		$actions['email'] = array('text' => wfMsg('email'), 'class' => false, 'href' => $url);
 	}
 	return true;
 }
