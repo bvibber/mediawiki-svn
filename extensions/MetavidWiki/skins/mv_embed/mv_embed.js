@@ -228,14 +228,14 @@ var mvEmbed = {
    * should be cleaned up ... the embedType loading should be part of load_libs above:
    */
   check_init_done:function(){
-  	js_log('f:check_init_done');
+  	//js_log('f:check_init_done');
   	//check if all videos are "ready to play"
   	var is_ready=true;
   	for(var i in global_ogg_list)
     	is_ready = ( $j('#'+global_ogg_list[i]).get(0).ready_to_play ) ? is_ready : false;  	
   	if(!is_ready){
   		//js_log('some ' + global_ogg_list + ' not ready');
-  		setTimeout( 'mvEmbed.check_init_done()', 50 );
+  		setTimeout( 'mvEmbed.check_init_done()', 250 );
   	}else{
 		//call the callback:
 		if(this.load_callback)this.load_callback();
@@ -838,13 +838,11 @@ var mvJsLoader = {
  * $j(document).ready( function(){ */
 function init_mv_embed(force){
 	js_log('mv_init');
-	if(!force && mv_init_done)
+	if(!force && mv_init_done){
+		js_log("mv_init_done do nothing...");
 		return false;
-		
-	if(mv_init_done){
-		js_log("caught second call not doing anything");
-		return ;
 	}
+
 	mv_init_done=true;	
 	//check if this page does have video or playlist
 	if(document.getElementsByTagName("video").length!=0 ||

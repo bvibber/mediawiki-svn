@@ -159,7 +159,7 @@ class MV_SpecialExport {
 		$seqTitle = Title::newFromText( $this->seq_title, MV_NS_SEQUENCE );
 		$seqArticle = new MV_SequencePage( $seqTitle );
 		header( 'Content-Type: text/xml' );
-		print $seqArticle->getParsedSequence();
+		print $seqArticle->getSequenceSMIL();
 	}
 	/*function get_sequence_xspf() {
 		// get the sequence article and export in xspf format: 		

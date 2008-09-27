@@ -13,7 +13,9 @@ $mvgScriptPath = $wgScriptPath . '/extensions/MetavidWiki';
 # seen on your local file system. Used for PHP file includes
 # #
 $mvgIP = $IP . '/extensions/MetavidWiki';
-  
+
+define( 'SEQUENCE_TAG', 'sequence_hlrd' );
+
 // include the global functions & register the extension 
 include_once( 'MV_GlobalFunctions.php' );
 

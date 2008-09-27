@@ -130,12 +130,13 @@ function get_mvdrw_img(i, size){
 					'<a title="'+stream_desc+'" href="'+stream_link+'">'+stream_desc+'</a><br>';
 }
 function mv_ext(inx){
+	js_log('f:inx');
 	//grow the window to 300+240 540
 	js_log('i: is '+ inx);
-	$j('#mvd_link_'+inx).animate({width:'440px','height':'305px'},1000);
+	$j('#mvd_link_'+inx).animate({width:'440px','height':'370px'},1000);
 	$j('#mvd_link_im_'+inx).animate({width:'320px','height':'240px'},1000,function(){
 		//do mv_embed swap
-		$j('#mvd_link_im_'+inx).replaceWith('<video autoplay="true" id="mvd_vid_'+inx +'">');
+		$j('#mvd_link_im_'+inx).replaceWith('<video autoplay="true" id="mvd_vid_'+inx +'"></video>');
 		$j('#mvd_vid_'+inx).attr('roe', base_roe_url + gMvd[inx]['sn']+'&t='+gMvd[inx]['st']+'/'+gMvd[inx]['et']);
 		init_mv_embed(true);
 	});
@@ -144,8 +145,7 @@ function mv_ext(inx){
 	$j('#mv_mvd_ex_'+inx).click(function(){
 		inx = this.id.substr(10);
 		mv_cxt(inx);
-	});
-	js_log('did mv ex');
+	});	
 }
 function mv_cxt(inx){
 	//stop the video:
