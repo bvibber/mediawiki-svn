@@ -88,8 +88,9 @@ while($doneWithTrascode==false){
 					rename($local_fl, $mvMountedDest . $stream_name . '.flv');
 					rename($local_fl.META_DATA_EXT, $mvMountedDest . $stream_name . '.flv'.META_DATA_EXT);
 					//keep an empty file in place of .new (so we don't re-do this same stream) 
-					file_put_contents(' -async 2 done ', $local_fl);
-					file_put_contents(' -async 2 meta done ', $local_fl.META_DATA_EXT);
+					file_put_contents($local_fl, ' -async 2 done ');
+					file_put_contents($local_fl.META_DATA_EXT, ' -async 2 meta done ');
+					//print "put zeor size file_contents";
 					
 					break; //break out of forloop					
 				}
