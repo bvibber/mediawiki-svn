@@ -236,7 +236,7 @@ Jump to stream view: $2',
 	# sequence text:
 	'mv_edit_sequence' => 'Editing sequence:$1',
 	'mv_sequence_player_title' => 'sequence player',
-	'mv_resource_not_found'=>'Resource <b>$1</b> not found',
+	'mv_resource_not_found' => "Resource '''$1''' not found",
 	'mv_save_sequence' => 'Save sequence',
 	'mv_sequence_page_desc' => 'Save the current sequence',
 	'mv_sequence_add' => 'Add clips',
