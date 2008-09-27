@@ -21,37 +21,6 @@ define('SPAMREGEX_EXPIRE', 0);
 define('SPAMREGEX_TEXTBOX', 0);
 define('SPAMREGEX_SUMMARY', 1);
 
-/* return the name of the table  */
-function wfSpamRegexGetTable() {
-	global $wgSharedDB;
-	if ("" != $wgSharedDB) {
-		return "{$wgSharedDB}.spam_regex";
-	} else {
-		return "spam_regex";
-	}
-}
-
-/* return the proper db key for Memc */
-function wfSpamRegexGetMemcDB() {
-	global $wgSharedDB, $wgDBname;
-	if (!empty( $wgSharedDB ) ) {
-		return $wgSharedDB;
-	} else {
-		return $wgDBname;
-	}
-}
-
-$dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['SpamRegex'] = $dir . 'SpamRegex.i18n.php';
-$wgExtensionAliasesFiles['SpamRegex'] = $dir . 'SpamRegex.alias.php';
-$wgAutoloadClasses['SpamRegex'] = $dir . 'SpecialSpamRegex.php';
-$wgSpecialPages['SpamRegex'] = 'SpamRegex';
-$wgSpecialPageGroups['SpamRegex'] = 'pagetools';
-
-//New user right
-$wgAvailableRights[] = 'spamregex';
-$wgGroupPermissions['staff']['spamregex'] = true;
-
 //Extension credits
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Regular Expression Spam Block',
@@ -62,5 +31,31 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'spamregex-desc',
 );
 
-require_once("$IP/extensions/SpamRegex/SpamRegexCore.php");
+//New user right
+$wgAvailableRights[] = 'spamregex';
+$wgGroupPermissions['staff']['spamregex'] = true;
+
+/* return the proper db key for Memc */
+function wfSpamRegexCacheKey( /*...*/ ) {
+	global $wgSharedDB, $wgSharedTables, $wgSharedPrefix;
+	$args = func_get_args();
+	if( in_array( 'spam_regex', $wgSharedTables ) ) {
+		$args = array_merge( array( $wgSharedDB, $wgSharedPrefix ), $args );
+		return call_user_func_array( 'wfForeignMemcKey', $args );
+	} else {
+		return call_user_func_array( 'wfMemcKey', $args );
+	}
+}
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['SpamRegex'] = $dir . 'SpamRegex.i18n.php';
+$wgExtensionAliasesFiles['SpamRegex'] = $dir . 'SpamRegex.alias.php';
+$wgAutoloadClasses['SpamRegex'] = $dir . 'SpecialSpamRegex.php';
+$wgAutoloadClasses['SpamRegexHooks'] = $dir . 'SpamRegexCore.php';
+$wgSpecialPages['SpamRegex'] = 'SpamRegex';
+$wgSpecialPageGroups['SpamRegex'] = 'pagetools';
+
+$wgHooks['EditFilter'][] = 'SpamRegexHooks::onEditFilter';
+$wgHooks['AbortMove'][] = 'SpamRegexHooks::onAbortMove';
+
 require_once("$IP/extensions/SimplifiedRegex/SimplifiedRegex.php");
