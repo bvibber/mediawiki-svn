@@ -176,7 +176,7 @@ class spamRegexList {
 		$key = wfSpamRegexCacheKey( 'spamRegexCore', 'numResults' );
 		$cached = $wgMemc->get( $key );
 		$results = 0;
-		if ( true || is_null( $cached ) ) {
+		if ( is_null( $cached ) ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$results = $dbr->selectField( 'spam_regex', 'COUNT(*)', '', __METHOD__ );
 			$wgMemc->set( $key, $results, SPAMREGEX_EXPIRE );
