@@ -21,6 +21,7 @@ $settings = array(
 			'wgActionPaths' => 'array',
 			'wgAppleTouchIcon' => 'text',
 			'wgArticlePath' => 'text',
+			'wgArticlePathForCurid' => 'bool',
 			'wgDirectoryMode' => 'int',
 			'wgDiff' => 'text',
 			'wgDiff3' => 'text',
@@ -521,6 +522,7 @@ $settings = array(
 			'wgAllowExternalImagesFrom' => 'text',
 			'wgEnableImageWhitelist' => 'bool',
 			'wgExpensiveParserFunctionLimit' => 'int',
+			'wgExternalLinkTarget' => 'text',
 			'wgCleanSignatures' => 'bool',
 			'wgGrammarForms' => 'array',
 			'wgLinkHolderBatchSize' => 'int',
@@ -844,6 +846,7 @@ $emptyValues = array(
 	'wgSharedDB' => null,
 	'wgLocalMessageCache' => null,
 	'wgExternalDiffEngine' => false,
+	'wgExternalLinkTarget' => false,
 );
 
 /**
@@ -854,6 +857,7 @@ $editRestricted = array(
 	'wgActionPaths',
 	'wgAppleTouchIcon',
 	'wgArticlePath',
+	'wgArticlePathForCurid',
 	'wgDirectoryMode',
 	'wgDiff',
 	'wgDiff3',
@@ -1172,6 +1176,8 @@ $settingsVersion = array(
 	'wgSpecialPageCacheUpdates' => array( array( '1.14alpha', '>=' ) ),
 	'wgNewUserLog' => array( array( '1.14alpha', '>=' ) ),
 	'wgRenderHashAppend' => array( array( '1.14alpha', '>=' ) ),
+	'wgArticlePathForCurid' => array( array( '1.14alpha', '>=' ) ),
+	'wgExternalLinkTarget' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
