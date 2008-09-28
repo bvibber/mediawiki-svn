@@ -1,3 +1,11 @@
+php5-apc (3.0.19-1wm1) hardy; urgency=medium
+
+  * New upstream release
+    - Compile for Hardy
+  * Build-depend on dpatch
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sat, 27 Sep 2008 20:34:21 +0000
+
 php5-apc (3.0.13-1wm6) unstable; urgency=low
 
   * apc.stat=On, like the rest of the cluster 

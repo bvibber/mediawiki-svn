@@ -2,7 +2,7 @@ Source: php5-apc
 Section: web
 Priority: optional
 Maintainer: Brion Vibber <brion@wikimedia.org>
-Build-Depends: debhelper (>= 5), php5-dev (>= 5.2.1-0ubuntu1.2wm1)
+Build-Depends: debhelper (>= 5), php5-dev (>= 5.2.1-0ubuntu1.2wm1), dpatch
 Standards-Version: 3.7.2
 
 Package: php5-apc
