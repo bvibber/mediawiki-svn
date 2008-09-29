@@ -49,12 +49,12 @@ class MV_SequencePage extends Article {
 			return $parserOutput->getText();
 		//get the high level sequence description: 
 		$this->getSequenceHLRD();
-		print "raw text: " . $this->mHLRD . "\n\n";
+		//print "raw text: " . $this->mHLRD . "\n\n";
 		
-		print "parse HLDR\n\n";
+		//print "parse HLDR\n\n";
 		$this->parseHLRD();		
 	    //print_r($this->aHLRD);	    
-	    print "resolve all links:\n\n";
+	    //print "resolve all links:\n\n";
 	    //this is the heavy lifting of the getSequenceSMIL function: 	    
 	    $this->resolveHLRD();
 	    
@@ -157,10 +157,10 @@ class MV_SequencePage extends Article {
 		print "f:getResourceArrayFromTitle";
 		switch( $title){
  			case NS_MAIN:
- 				//should just get the intro paragraph to output
+ 				//top level ref includes of pages in the main namespace not supported
  			break;
  			case NS_TEMPLATE:
- 				
+ 				//top level ref includes of temples is not supported
  			break;
  			case NS_IMAGE:
  				global $mvDefaultVideoPlaybackRes;

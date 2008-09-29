@@ -32,7 +32,7 @@
  	var $wiki_title = '';
  	// default namespace for mvTitle MV_NS_MVD
  	function __construct( $title, $ns = MV_NS_MVD ) {
- 		// handle title object	
+ 		// handle title object 		
  		if ( is_string( $title ) ) {
  			$title = parent::makeTitle( $ns, $title );
  		}
@@ -42,7 +42,7 @@
  		$this->parseTitle( $title->getDBKey() );
  		// print "mv_title stream name: " . $this->stream_name. "\n";
  	}
- 	function inheritTitle( $tilte ) {
+ 	function inheritTitle( & $tilte ) {
  		foreach ( $tilte as $k => $v ) {
  			$this->$k = $v;
  		}

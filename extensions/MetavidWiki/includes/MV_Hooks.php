@@ -240,16 +240,17 @@ function mv_edit_sequence_submit() {
 function mv_edit_submit() {
 	global $wgOut, $wgRequest;
 	// @@todo more input scrubbing value checks
-	$title = $wgRequest->getVal( 'title' );
+	$title_str = $wgRequest->getVal( 'title' );
 	$mvd_id = $wgRequest->getVal( 'mvd_id' );
-	if ( $title == '' || $mvd_id == '' )
+	if ( $title_str == '' || $mvd_id == '' )
 		return 'error missing title or id';
 				
 	$MV_Overlay = new MV_Overlay();
 	$do_adjust = $wgRequest->getVal( 'do_adjust' );
 	if ( $do_adjust == 'true' ) {
 		// first edit then move
-		$outputMVD = $MV_Overlay->do_edit_submit( $title, $mvd_id, false );
+		$outputMVD = $MV_Overlay->do_edit_submit( $title_str, $mvd_id, false );
+		print "got output: $outputMVD \n";
 		// clear the wgOut var: 
 		$wgOut->clearHTML();
 		// do move and display output page 			

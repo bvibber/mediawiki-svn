@@ -185,7 +185,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		return $this->get_timeline_html( $this->mvd_pages[$mvd_id] );
 	}
 	function get_fd_mvd_request( $titleKey, $mvd_id, $mode = 'inner', $content = '' ) {
-		global $wgOut;
+		global $wgOut;		
 		if ( !isset( $this->mvd_pages[$mvd_id] ) )
 			$this->mvd_pages[$mvd_id] = MV_Index::getMVDbyId( $mvd_id );
 		if ( $mode == 'inner' ) {
@@ -451,7 +451,9 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		
 		// hack to get menu correct... (previsuly menu was not encapulsated) 
 		$do_adjust = $wgRequest->getVal( 'do_adjust' );
-		if ( $do_adjust ) {
+		//fix boolean string issue: 
+		$do_adjust = ( $do_adjust == 'false' ) ? false : $do_adjust;
+		if ( $do_adjust  ) {
 			$tmpMvPage = new MV_Title( $wgRequest->getVal( 'newTitle' ) );
 			$mvd_page->wiki_title = $tmpMvPage->wiki_title;
 			$mvd_page->start_time = ntp2seconds( $tmpMvPage->start_time );
@@ -703,8 +705,8 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		
 		if ( $mvd_id == 'new' ) {
 			$titleKey = substr( $_REQUEST['title'], 0, strpos( $_REQUEST['title'], '/' ) ) .
-				'/' . $_REQUEST['mv_start_hr_new'] . '/' . $_REQUEST['mv_end_hr_new'];
-		}
+				'/' . $_REQUEST['mv_start_hr_new'] . '/' . $_REQUEST['mv_end_hr_new'];			
+		}		
 		// if doing basic editing use basic wpTextBox:
 		if ( $wgRequest->getVal( 'adv_basic' ) == 'basic' ) {
 			$wpTextbox1 = $wgRequest->getVal( 'basic_wpTextbox' );
@@ -764,6 +766,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 						
 		if ( $editPageAjax->edit( $wpTextbox1 ) == false ) {
 			if ( $mvd_id == 'new' ) {
+				
 				// get context info to position timeline element: 
 				$rt = ( isset( $_REQUEST['wgTitle'] ) ) ? $_REQUEST['wgTitle']:null;
 				$this->get_overlay_context_from_title( $rt );
@@ -772,8 +775,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 				$dbr =& wfGetDB( DB_SLAVE );
 				$result = & MV_Index::getMVDbyTitle( $titleKey, 'mv_page_id' );
 				$mvd_id = $result->id;
-				// update title key
-
+				// update title key				
 				
 				// purge cache for parent stream and MVD
 				MV_MVD::onEdit( $this->mvd_pages, $mvd_id );
@@ -783,8 +785,9 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			} else {
 				// purge cache for parent stream 
 				MV_MVD::onEdit( $this->mvd_pages, $mvd_id );
-			}
+			}			
 			if ( $returnEncapsulated ) {
+				//print "get Encapsulated:\n";
 				return php2jsObj( array( 'status' => 'ok',
 						'mvd_id' => $mvd_id,
 						'titleKey' => $titleKey,

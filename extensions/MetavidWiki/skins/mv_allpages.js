@@ -248,9 +248,9 @@ function mv_setup_search_ac(){
 					qe = v.innerHTML.toLowerCase().indexOf('</b>');
 					//update the search input (incase redirect fails)
 					$j('#searchInput').val(v.innerHTML.substring(qs,qe));
-					window.location=uri+'/'+'Special:MediaSearch?mv_search='+v.innerHTML.substring(qs,qe);
+					window.location = uri+'/'+'Special:MediaSearch?mv_search='+v.innerHTML.substring(qs,qe);
 				}else{
-					window.location =uri+'/'+$j('#searchInput').val();
+					window.location = uri+'/'+$j('#searchInput').val();
 				}
 			},
 			formatItem:function(row){

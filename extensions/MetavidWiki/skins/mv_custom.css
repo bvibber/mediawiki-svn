@@ -9,7 +9,17 @@
  *
  * extended styles for metavid extension
  */
- 
+.mvd_page_image{
+	float:left;
+	padding-right:5px;
+	width:50px;
+}
+.mvd_page_image img {
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:5px;
+}
 .tail_color{
 	position:absolute;
 	width:10px;
@@ -187,6 +197,55 @@ div.autocomplete ul li {
 	float: left;
 	display: inline;
 }
+#videoContent #videoMeta {
+	background:#EEEEEE none repeat scroll 0 0;
+	color:#353535;
+	font-size:11px;
+	height:100%;
+	margin:35px 0 10px;
+	overflow:hidden;
+	padding:10px;
+	width:380px;
+}
+.layers ul {
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+.layers ul li {
+	display:inline;
+	padding-right:15px;
+}
+#videoSideBar {
+display:inline;
+float:left;
+width:495px;
+}
+#videoContent #videoMeta p.options span.download {
+display:block;
+margin-bottom:6px;
+}
+#videoContent #videoMeta p.about_file {
+display:inline;
+float:right;
+margin:0;
+padding:0;
+}
+#videoContent #videoMeta p.options {
+display:inline;
+float:left;
+margin:0;
+padding:0;
+width:190px;
+}
+
+#videoContent #videoMeta p.about_file span.views {
+display:block;
+margin-bottom:6px;
+}
+
 #MV_Tools{
 	/*position:absolute;width:400px;top:420px;left:10px;bottom:10px;margin:4px;*/
 	float:left;

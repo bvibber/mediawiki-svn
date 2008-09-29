@@ -369,14 +369,14 @@ function getMvdObject(mvd_id){
 	return mvdAry[mvd_id];
 }
 
-function mv_disp_add_mvd(mvdType){
+function mv_disp_add_mvd(mvd_type){
 	if(mv_open_edit_mvd){
 		js_error(gMsg['mv_open_edit']);
 		return ;
 	}
-	mv_open_edit_mvd=mvdType;
+	mv_open_edit_mvd=mvd_type;
 	sajax_request_type='GET';
-	sajax_do_call( "mv_add_disp",[wgTitle, mvdType, org_vid_time_req], f );
+	sajax_do_call( "mv_add_disp",[wgTitle, mvd_type, org_vid_time_req], f );
 	//insert before the first mvd:
 	//if($j('#mv_fd_mvd_new').get(0)){
 	//	$j('#mv_fd_mvd_new').html(global_loading_txt);
@@ -385,7 +385,7 @@ function mv_disp_add_mvd(mvdType){
 	//}
 	$j('#mv_add_new_mvd').css({display:'inline'});
 	$j('#mv_add_new_mvd').html(global_loading_txt);
-
+	var mvd_id='new';
 	//scroll to the new (loading) (top of mvd_cont)
 	$j('#selectionsBox').animate({scrollTop: 0}, 'slow');
 	function f( request ) {
@@ -396,16 +396,28 @@ function mv_disp_add_mvd(mvdType){
 		}else{
 			$j('#mv_add_new_mvd').html(result);
 			//add the javascrip based hooks:
-			if(mvdType=='ht_en'){
+			if(mvd_type=='ht_en'){
 				add_autocomplete('new');
 				add_adjust_hooks('new');
 			}
-			if(mvdType=='anno_en'){
+			if(mvd_type=='anno_en'){
 				add_adjust_hooks('new');
 			}
 			//add edit buttons
-			mwSetupToolbar();
+			if(typeof mwSetupToolbar =='function'){
+				mwSetupToolbar();
+			}
 			mwEditButtons = []; //empty edit buttons
+			
+			if(mvd_type=='anno_en'){
+				//add mv_helpers autocompletes
+				add_mv_helpers_ac(mvd_id);
+				if($j('#adv_basic_'+mvd_id).val()=='basic'){
+					$j('.mv_advanced_edit').hide();
+				}else{
+					$j('.mv_basic_edit').hide();
+				}
+			}
 		}
 	}
 }
@@ -522,6 +534,7 @@ function mv_adjust_preview(mvd_id){
  * @@todo generalize for all autocompletes
  */
 function add_mv_helpers_ac(mvd_id){
+	js_log('add_mv_helpers_ac:'+mvd_id);
 	$j('.mv_anno_ac_'+mvd_id).each(function(i, input_item){
 		var prop_name =$j(input_item).attr('name');
 		js_log('add ac for: '+ prop_name);
@@ -615,7 +628,7 @@ function mv_add_new_fd_mvd(titleKey, node_html){
 			var curTitle = get_titleObject($j(this).attr('name'));
 			if(insertTitle.start_time < curTitle.start_time){
 				$j(this).before(node_html).show("slow");
-				js_log('inserted before: '+curTitle.title +' id:'+insertTitle.start_time + "\n html:" + node_html);
+				js_log('inserted before: '+curTitle.title +' id:'+insertTitle.start_time);
 	   			inserted=true;
 	   			return ;
 			}
