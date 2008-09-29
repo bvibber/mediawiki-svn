@@ -293,6 +293,13 @@ $messages['hi'] = array(
 	'player-goto-file' => 'फ़ाइल',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'player-goto-page' => 'Stranica',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

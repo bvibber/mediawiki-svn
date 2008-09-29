@@ -1668,6 +1668,19 @@ Un aviso de seguridad sobre un certificado no cifrado podría aparecer.',
 	'right-boardvote' => 'Administrar elecciones',
 );
 
+/** Estonian (Eesti)
+ * @author Jaan513
+ */
+$messages['et'] = array(
+	'boardvote_novotes' => 'Mitte keegi ei ole veel hääletanud.',
+	'boardvote_needadmin' => 'Seda operatsiooni saavad läbi viia ainult valimiste administraatorid.',
+	'boardvote_notstarted' => 'Hääletus ei ole veel alanud',
+	'boardvote_blocked' => 'Sind on blokeeritud vikis, kus oled registreerinud.
+Blokeeritud kasutajatel ei ole hääletusõigust.',
+	'boardvote_bot' => 'Oled märgitud robotiks vikis, kus oled end registreerinud.
+Robotitel ei ole hääletusõigust.',
+);
+
 /** Basque (Euskara)
  * @author Bengoa
  */
@@ -2190,7 +2203,7 @@ Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen as
  * @author Crazymadlover
  */
 $messages['grc'] = array(
-	'boardvote_user' => 'χρήστης',
+	'boardvote_user' => 'Χρώμενος',
 );
 
 /** Manx (Gaelg)
@@ -3046,9 +3059,9 @@ $messages['ja'] = array(
 [[Special:Boardvote/entry|戻る]]',
 	'boardvote_invalidentered' => '<p><strong>エラー</strong>: 候補者の選択は、正の整数(1, 2, 3, ....)で表さなくてはなりません。もしくは空欄です。  
 </p>',
-	'boardvote_nosession' => 'ウィキメデイア利用者IDを確認できません。投票資格のあるウィキにログインし、<nowiki>[[Special:Boardvote]]</nowiki>へ進んでください。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
+	'boardvote_nosession' => 'ウィキメデイア利用者IDを確認できませんでした。投票資格のあるウィキにログインし、<nowiki>[[Special:Boardvote]]</nowiki>へ進んでください。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
 	'boardvote_notloggedin' => 'あなたはログインしていません。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
-	'boardvote_notqualified' => 'あなたには、この選挙の投票資格がありません。
+	'boardvote_notqualified' => 'あなたにはこの選挙の投票資格がありません。
 投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
 	'boardvote_novotes' => 'まだ誰も投票していません。',
 	'boardvote_time' => '時刻',

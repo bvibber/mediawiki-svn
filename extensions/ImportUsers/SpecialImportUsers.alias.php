@@ -55,6 +55,11 @@ $aliases['he'] = array(
 	'ImportUsers' => array( 'ייבוא_משתמשים' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'ImportUsers' => array( 'Uvezi_suradnike' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
 	'ImportUsers' => array( 'EnpòteItlizatè' ),

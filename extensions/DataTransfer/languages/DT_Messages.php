@@ -336,6 +336,8 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'dt_viewxml_categories' => 'Kategorije',
+	'dt_xml_namespace' => 'Imenski prostor',
+	'dt_xml_page' => 'Stranica',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

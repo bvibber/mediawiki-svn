@@ -1913,6 +1913,9 @@ Uppder donn op en Shtadt, e Land, en Address, udder e Jeschäff z höppe:',
 	'gm-clear-search' => 'Donn nit mieh aanzeije, wat bejem Söke eruß kohm',
 	'gm-meters' => 'Meter',
 	'gm-miles' => 'Miele',
+	'gm-earth' => 'Ääd',
+	'gm-moon' => 'Mohnd',
+	'gm-mars' => 'Mars',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

@@ -203,10 +203,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fievarsty
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'newusermessage-desc' => '新規登録利用者のトークページにメッセージを書き込む',
+	'newusermessage-desc' => '新規登録利用者の会話ページにメッセージを書き込む',
 	'newuseredit-summary' => '新規利用者の会話ページに[[{{int:newusermessage-template}}|歓迎のメッセージ]]を記入',
 );
 

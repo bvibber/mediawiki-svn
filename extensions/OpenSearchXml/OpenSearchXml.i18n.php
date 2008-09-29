@@ -107,6 +107,13 @@ $messages['it'] = array(
 	'opensearchxml-desc' => 'Interfaccia JSON per [http://www.opensearch.org OpenSearch] per estratti di testi',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSONインターフェースによるテキスト抽出',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -124,9 +124,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Ascánder
+ * @author Sanbec
  */
 $messages['es'] = array(
-	'absenteelandlord-reason' => 'La base de datos fue automáticamente bloqueada debido a inactividad de los administradores.',
+	'absenteelandlord-reason' => 'La base de datos fue bloqueada automáticamente debido a inactividad de los administradores.',
 	'absenteelandlord-desc' => 'Auto-bloquea la base de datos del wiki si todos los administradores se mantienen inactivos por un largo período de tiempo',
 );
 
@@ -257,7 +258,7 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'absenteelandlord-reason' => '管理者が活動を停止しているためにデータベースが自動的にロックされました。',
+	'absenteelandlord-reason' => '管理者が活動を停止しているため、自動的にデータベースがロックされました。',
 	'absenteelandlord-desc' => '一定期間全ての管理者が活動しない場合、ウィキのデータベースを自動的にロックする。',
 );
 

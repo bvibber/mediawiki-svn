@@ -390,6 +390,13 @@ $messages['haw'] = array(
 	'imagetagging-imghistory' => 'Mo‘olelo',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'imagetagging-article' => 'Stranica',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

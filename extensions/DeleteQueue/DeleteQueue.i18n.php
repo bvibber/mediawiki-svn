@@ -1030,6 +1030,13 @@ $messages['grc'] = array(
 	'deletequeue-list-header-page' => 'Δέλτος',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'deletequeue-list-header-page' => 'Stranica',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -2430,6 +2430,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Flrn
  * @author Innv
  * @author Александр Сигачёв
@@ -2441,6 +2442,7 @@ $messages['ru'] = array(
 	'configure-desc-key' => 'Ключ',
 	'configure-desc-ns' => 'Пространства имён',
 	'configure-desc-val' => 'Значение',
+	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Расширения',
 	'configure-ext-settings' => 'Настройки',
 	'configure-summary' => 'Эта служебная страница позволяет вам настраивать вики, подробнее см. [http://www.mediawiki.org/wiki/Manual:Configuration_settings Описание настроек].',
