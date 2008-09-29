@@ -10,7 +10,7 @@ EOT;
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-    'version'        => '0.7',
+    'version'        => '0.8',
     'name'           => 'WhoIsWatching',
     'author'         => 'Paul Grinberg, Siebrand Mazeland',
     'email'          => 'gri6507 at yahoo dot com',
@@ -29,3 +29,6 @@ $whoiswatching_nametype = 'RealName';
 
 # Set the following to either True or False to optionally allow users to add others to watch a particular page
 $whoiswatching_allowaddingpeople = true;
+
+# Set the following to either True or False to optionally display a count of zero users watching a particular page
+$whoiswatching_showifzero = true;
