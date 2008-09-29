@@ -422,7 +422,7 @@ function wfImageTagPageSetup() {
 		}
 
 		function modifiedImagePageOpenShowImage() {
-			global $wgOut, $wgUser, $wgImageLimits, $wgRequest, $wgUseImageResize;
+			global $wgOut, $wgUser, $wgImageLimits, $wgRequest;
 
 			wfProfileIn( __METHOD__ );
 
@@ -473,18 +473,13 @@ function wfImageTagPageSetup() {
 							# because of rounding.
 						}
 
-						if( $wgUseImageResize ) {
-							$thumbnail = $this->img->getThumbnail( $width );
-							if ( $thumbnail == null ) {
-								$url = $this->img->getViewURL();
-							} else {
-								$url = $thumbnail->getURL();
-							}
-						} else {
-							# No resize ability? Show the full image, but scale
-							# it down in the browser so it fits on the page.
+						$thumbnail = $this->img->getThumbnail( $width );
+						if ( $thumbnail == null ) {
 							$url = $this->img->getViewURL();
+						} else {
+							$url = $thumbnail->getURL();
 						}
+
 						$anchoropen  = "<a href=\"{$full_url}\">";
 						$anchorclose = "</a><br />";
 						if( $this->img->mustRender() ) {
