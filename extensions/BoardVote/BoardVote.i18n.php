@@ -974,6 +974,7 @@ Ur c'hemenn surentez diwall a-zivout un testeni disin a c'hallo dont war wel mar
 
 /** Catalan (Català)
  * @author Aleator
+ * @author Paucabot
  * @author SMP
  */
 $messages['ca'] = array(
@@ -1002,7 +1003,21 @@ S\'assumeix que preferiu els candidat ordenats als que heu deixat sense ordenar 
 <li><a href="http://ca.wikipedia.org/wiki/Mètode_de_Schulze" class="external">Mètode de Schulze (ca)</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Mètode de Schulze (en)</a></li></ul>',
 	'boardvote_intro_change' => '<p>Ja heu votat. Podeu canviar el vostre vot usant el següent formulari. Marqueu aquells candidats que voleu aprovar.</p>',
-	'boardvote_entered' => "Gràcies, el vostre vot ha estat registrat. A continuació podeu comprovar-ne els detalls. Les dades del vostre vot són: <pre>$1</pre> Ha estat codificat mitjançant la clau pública de l'administració electoral de Wikimedia: <pre>$2</pre> La versió encriptada resultant apareix a continuació. Serà mostrada públicament a [[Special:Boardvote/dump]]. <pre>$3</pre> [[Special:Boardvote/entry|Torna]]",
+	'boardvote_entered' => "Gràcies, el vostre vot ha estat registrat.
+
+A continuació podeu comprovar-ne els detalls. Les dades del vostre vot són:
+
+<pre>$1</pre>
+
+Ha estat codificat mitjançant la clau pública de l'administració electoral de Wikimedia:
+
+<pre>$2</pre>
+
+La versió encriptada resultant apareix a continuació. Serà [[Special:Boardvote/dump|mostrada públicament]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Torna]]",
 	'boardvote_invalidentered' => "<p><strong>Error</strong>: Les preferències de candidats s'han d'expressar en nombres enters positius (1, 2, 3, ...), o bé deixar-ho en blanc.</p>",
 	'boardvote_nosession' => "No s'ha pogut determinar l'identificador del vostre compte Wikimedia.
 Si us plau, identifiqueu-vos al projecte en el que teniu dret a vot i aneu a <nowiki>[[Special:Boardvote]]</nowiki>.

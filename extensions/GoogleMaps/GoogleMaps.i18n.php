@@ -1896,7 +1896,23 @@ $wgGoogleMapsMessages['krj'] = array(
  * @author Purodha
  */
 $wgGoogleMapsMessages['ksh'] = array(
+	'gm-map' => 'Kaat',
+	'gm-width' => 'Breed',
+	'gm-height' => 'Hühte',
+	'gm-large' => 'Jruß',
+	'gm-medium' => 'Meddel',
+	'gm-small' => 'Kleij',
+	'gm-no-zoom-control' => 'Ußjeschalldt',
+	'gm-yes' => 'Joh',
+	'gm-no' => 'Nä',
+	'gm-search-preface' => 'Donn op di Kaat klecke, öm ene Punkt dobei ze donn, udder op en Shtadt, e Land, en Address, udder e Jeschäff z höppe:',
+	'gm-geocode-preface' => 'Kleck op di Kaat klecke, öm ene Punkt dobei ze donn.
+Uppder donn op en Shtadt, e Land, en Address, udder e Jeschäff z höppe:',
+	'gm-no-search-preface' => 'Donn op di Kaat klecke, öm ene Punkt dobei ze donn.',
 	'gm-search' => 'Sööke',
+	'gm-clear-search' => 'Donn nit mieh aanzeije, wat bejem Söke eruß kohm',
+	'gm-meters' => 'Meter',
+	'gm-miles' => 'Miele',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

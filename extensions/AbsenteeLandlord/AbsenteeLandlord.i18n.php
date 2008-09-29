@@ -254,10 +254,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'absenteelandlord-reason' => '管理者が活動を停止しているためにデータベースが自動的にロックされました。',
-	'absenteelandlord-desc' => '一定期間管理者が活動しない場合、ウィキのデータベースを自動的にロックする。',
+	'absenteelandlord-desc' => '一定期間全ての管理者が活動しない場合、ウィキのデータベースを自動的にロックする。',
 );
 
 /** Javanese (Basa Jawa)

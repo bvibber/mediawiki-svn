@@ -695,6 +695,7 @@ $allMessages['id'] = array(
  * @author S.Örvarr.S
  */
 $allMessages['is'] = array(
+	'whitelistbadtitle' => 'Slæmur titill -',
 	'whitelistnever' => 'aldrei',
 );
 

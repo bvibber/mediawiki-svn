@@ -338,6 +338,13 @@ $messages['es'] = array(
 	'createarticle' => 'Crear artículo',
 );
 
+/** Estonian (Eesti)
+ * @author Jaan513
+ */
+$messages['et'] = array(
+	'tryexact' => 'Proovi täpset vastet',
+);
+
 /** Basque (Euskara) */
 $messages['eu'] = array(
 	'tryexact' => 'Izenburu zehatza bilatu',

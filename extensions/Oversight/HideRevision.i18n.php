@@ -2108,6 +2108,7 @@ $messages['pam'] = array(
 );
 
 /** Polish (Polski)
+ * @author Beau
  * @author Derbeth
  * @author Leinad
  * @author Sp5uhe
@@ -2116,7 +2117,7 @@ $messages['pl'] = array(
 	'hiderevision' => 'Trwałe ukrywanie wersji',
 	'hiderevision-desc' => 'Pozwala ukryć pojedyncze zmiany przed wszystkimi użytkownikami np. ze względów prawnych.',
 	'group-oversight' => 'Rewizorzy',
-	'group-oversight-member' => 'Rewizor',
+	'group-oversight-member' => 'rewizor',
 	'grouppage-oversight' => '{{ns:project}}:Rewizorzy',
 	'right-oversight' => 'Podgląd ukrytych wersji',
 	'right-hiderevision' => 'Podgląd i odtwarzanie wersji ukrytych przed Administratorami',
