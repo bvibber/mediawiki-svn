@@ -4,9 +4,10 @@
 // Wikimedia's web servers currently don't have direct access to our
 // Subversion server, which is in a separate data center.
 
-$data = runAction( "http://svn.wikimedia.org/svnroot/mediawiki" );
-
+ini_set( 'display_errors', false);
 header('Content-type: application/x-json');
+
+$data = runAction( "http://svn.wikimedia.org/svnroot/mediawiki" );
 echo json_encode( $data );
 
 function inputStr( $key, $default=null ) {
