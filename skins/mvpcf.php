@@ -175,20 +175,24 @@ class MvpcfTemplate extends QuickTemplate {
 			break;
 			case 'sidebars':
 			?>
-<?php foreach ($this->data['sidebar'] as $bar => $cont) { ?>
-<div class='portlet' id='p-<?php echo Sanitizer::escapeId($bar) ?>'<?php echo $this->user_skin->tooltip('p-'.$bar) ?>>
-	<h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo $bar; else echo $out; ?></h5>
-	<div class='pBody'>
-		<ul>
-<?php 			foreach($cont as $key => $val) { ?>
-			<li id="<?php echo Sanitizer::escapeId($val['id']) ?>"<?php
-				if ( $val['active'] ) { ?> class="active" <?php }
-			?>><a href="<?php echo htmlspecialchars($val['href']) ?>"<?php echo $this->user_skin->tooltipAndAccesskey($val['id']) ?>><?php echo htmlspecialchars($val['text']) ?></a></li>
-<?php			} ?>
-		</ul>
-	</div>
-</div>
-<?php } 
+<?php 
+foreach ($this->data['sidebar'] as $bar => $cont) {
+	if(count($cont)!=0){ ?>
+		<div class='portlet' id='p-<?php echo Sanitizer::escapeId($bar) ?>'<?php echo $this->user_skin->tooltip('p-'.$bar) ?>>
+		<h5><?php $out = wfMsg( $bar ); if (wfEmptyMsg($bar, $out)) echo $bar; else echo $out; ?></h5>
+		<div class='pBody'>
+			<ul>
+		<?php 			foreach($cont as $key => $val) { ?>
+				<li id="<?php echo Sanitizer::escapeId($val['id']) ?>"<?php
+					if ( $val['active'] ) { ?> class="active" <?php }
+				?>><a href="<?php echo htmlspecialchars($val['href']) ?>"<?php echo $this->user_skin->tooltipAndAccesskey($val['id']) ?>><?php echo htmlspecialchars($val['text']) ?></a></li>
+		<?php			} ?>
+			</ul>
+		</div>
+		</div>
+		<?php
+	}	 
+} 
 			break;
 			case 'toolbox':
 			?>
@@ -238,9 +242,8 @@ class MvpcfTemplate extends QuickTemplate {
 			?>"<?php echo $this->user_skin->tooltipAndAccesskey('t-permalink') ?>><?php $this->msg('permalink') ?></a></li><?php
 	} elseif ($this->data['nav_urls']['permalink']['href'] === '') { ?>
 			<li id="t-ispermalink"<?php echo $this->user_skin->tooltip('t-ispermalink') ?>><?php $this->msg('permalink') ?></li><?php
-	}
-
-	wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
+	}	
+	wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );
 ?>
 		</ul>
 	</div>

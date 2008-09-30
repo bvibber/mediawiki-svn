@@ -23,6 +23,9 @@ body {
 	background: white;	
 	font-size:0.8em;
 }
+.mw-specialpagerestricted {
+	font-weight: bold;
+}
 body#frontPage {background: #eef6ff;}
 .bodyContent{	
 }
