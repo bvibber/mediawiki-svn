@@ -790,10 +790,15 @@ var embedTypes = {
 //but checks for object availability rather than load state
 var mvJsLoader = {
 	 libreq:{},
+	 libs:{},
 	 load_time:0,
 	 doLoad:function(libs,callback){		 	 	 
-		 this.callback=	(callback) ? callback:this.callback;		 
-		 this.libs = (libs) ? this.libs.concat(libs) : this.libs; //merge the passed in array
+		 this.callback=	(callback) ? callback:this.callback;
+		 //merge any new requested libs
+		 if(libs){
+		 	for(i in libs)
+		 		this.libs[i]=libs[i];
+		 }		 		 
 		 var loading=0;
 		 var i=null;
 		 //js_log("doLoad_ load set to 0 on libs:"+ libs);
@@ -806,7 +811,7 @@ var mvJsLoader = {
 			 for(var p in objPath){
 				 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];
 				 //if(i=='vlcEmbed')alert("looking at path: "+ cur_path);
-				 //js_log("eval:  " + eval('typeof ('+cur_path+');'));
+				 js_log("eval:  " + eval('typeof ('+cur_path+');'));
 				 if(eval('typeof '+cur_path)=='undefined'){
 					 cur_load = loading=1;
 					 break;
