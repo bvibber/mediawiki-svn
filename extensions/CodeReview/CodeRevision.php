@@ -248,7 +248,7 @@ class CodeRevision {
 		$lower = $wgContLang->lc( $tag );
 		
 		$title = Title::newFromText( $tag );
-		if( $title && $tag === $wgContLang->lc( $title->getPrefixedText() ) ) {
+		if( $title && $lower === $wgContLang->lc( $title->getPrefixedText() ) ) {
 			return $lower;
 		} else {
 			return false;

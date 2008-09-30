@@ -6,14 +6,14 @@ class CodeRevisionTagger extends CodeRevisionView {
 		parent::__construct( $repoName, $rev );
 		
 		global $wgRequest;
-		$this->mTag = $wgRequest->getText( 'wpTag' );
+		$this->mTags = $this->splitTags( $wgRequest->getText( 'wpTag' ) );
 	}
 
 	function execute() {
 		global $wgOut;
 		
 		if( $this->validPost( 'codereview-add-tag' ) ) {
-			$this->mRev->addTags( array( $this->mTag ) );
+			$this->mRev->addTags( $this->mTags );
 			
 			$repo = $this->mRepo->getName();
 			$rev = $this->mRev->getId();
@@ -25,8 +25,20 @@ class CodeRevisionTagger extends CodeRevisionView {
 		}
 	}
 	
+	function splitTags( $input ) {
+		$tags = array_map( 'trim', explode( ",", $input ) );
+		foreach( $tags as $key => $tag ) {
+			$normal = $this->mRev->normalizeTag( $tag );
+			if( $normal === false ) {
+				return null;
+			}
+			$tags[$key] = $normal;
+		}
+		return $tags;
+	}
+	
 	function validPost( $permission ) {
 		return parent::validPost( $permission ) &&
-			$this->mRev->isValidTag( $this->mTag );
+			!empty( $this->mTags );
 	}
 }
