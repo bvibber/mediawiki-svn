@@ -219,8 +219,10 @@ function mvSetupExtension() {
 			}
 		}
 		foreach($wgExtensionCredits as & $ext){
-			 if($ext['name']=='OggHandler'){
-			 	$ext['description'].=' Integrated with the <b>MetaVidWiki Extension</b>';
+			 if(isset($ext['name'])){
+				 if($ext['name']=='OggHandler'){
+				 	$ext['description'].=' Integrated with the <b>MetaVidWiki Extension</b>';
+				 }
 			 }
 		}
 	}

@@ -811,7 +811,7 @@ var mvJsLoader = {
 			 for(var p in objPath){
 				 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];
 				 //if(i=='vlcEmbed')alert("looking at path: "+ cur_path);
-				 js_log("eval:  " + eval('typeof ('+cur_path+');'));
+				 //js_log("eval:  " + eval('typeof ('+cur_path+');'));
 				 if(eval('typeof '+cur_path)=='undefined'){
 					 cur_load = loading=1;
 					 break;
