@@ -127,7 +127,7 @@ class CodeRevision {
 	}
 	
 	function saveComment( $text, $review, $parent=null ) {
-		$dbw = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
 		$data = $this->commentData( $text, $review, $parent );
 		$data['cc_id'] = $dbw->nextSequenceValue( 'code_comment_cc_id' );
 		$dbw->insert( 'code_comment',
@@ -139,7 +139,7 @@ class CodeRevision {
 	
 	protected function commentData( $text, $review, $parent=null ) {
 		global $wgUser;
-		$dbw = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
 		$ts = wfTimestamp( TS_MW );
 		$sortkey = $this->threadedSortkey( $parent, $ts );
 		return array(
@@ -158,7 +158,7 @@ class CodeRevision {
 		if( $parent ) {
 			// We construct a threaded sort key by concatenating the timestamps
 			// of all our parent comments
-			$dbw = wfGetDB( DB_SLAVE );
+			$dbw = wfGetDB( DB_MASTER );
 			$parentKey = $dbw->selectField( 'code_comment',
 				'cc_sortkey',
 				array( 'cc_id' => $parent ),
