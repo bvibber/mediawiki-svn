@@ -69,3 +69,8 @@ $aliases['no'] = array(
 	'UserStats' => array( 'Brukerstatistikk' ),
 );
 
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'UserStats' => array( 'Användarstatistik' ),
+);
+

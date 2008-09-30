@@ -260,8 +260,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'signaturelogpage' => 'సంతకాల దినచర్య',
-	'signaturelogpagetext' => 'ఇది [[Special:SignDocument]] ద్వారా పత్రాలకు చేర్చిన అన్ని సంతకాల దినచర్య.',
+	'signaturelogpage' => 'సంతకాల చిట్టా',
+	'signaturelogpagetext' => 'ఇది [[Special:SignDocument|అన్ని పత్రాలపై జరిగిన సంతకాల]] చిట్టా.',
 	'signaturelogentry' => '$1 అనే పత్రంపై సంతకం చేసారు',
 );
 

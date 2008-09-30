@@ -471,6 +471,34 @@ $messages['pl'] = array(
 	'closewikis-page-close-submit' => 'Zamknij',
 );
 
+/** Portuguese (Português)
+ * @author Sir Lestaty de Lioncourt
+ */
+$messages['pt'] = array(
+	'closewikis-desc' => 'Permite fechar uma wiki em sites com múltiplos wikis',
+	'closewikis-closed-default' => 'Esta wiki está fechada',
+	'closewikis-page' => 'Fechar wiki',
+	'closewikis-page-close' => 'Fechar wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Razão (exibida):',
+	'closewikis-page-close-reason' => 'Razão (registrada):',
+	'closewikis-page-close-submit' => 'Fechar',
+	'closewikis-page-close-success' => 'Wiki foi fechada com sucesso',
+	'closewikis-page-reopen' => 'Reabrir wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Razão:',
+	'closewikis-page-reopen-submit' => 'Reabrir',
+	'closewikis-page-reopen-success' => 'Wiki reaberta com sucesso',
+	'closewikis-page-err-nowiki' => 'A wiki especificada é inválida',
+	'closewikis-page-err-closed' => 'Wiki já está fechada',
+	'closewikis-page-err-opened' => 'Esta wiki não está fechada',
+	'closewikis-log' => 'Registro de Wikis fechadas',
+	'closewikis-log-header' => 'Aqui está um registro de todas as wikis que foram fechadas ou reabertas por stewards',
+	'closewikis-log-close' => 'fechada $2',
+	'closewikis-log-reopen' => 'reaberta $2',
+	'right-editclosedwikis' => 'Editar wikis fechadas',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
@@ -484,6 +512,7 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'closewikis-closed-default' => 'Эта вики закрыта',
@@ -491,7 +520,7 @@ $messages['ru'] = array(
 	'closewikis-page-close' => 'Закрыть вики',
 	'closewikis-page-close-wiki' => 'Вики:',
 	'closewikis-page-close-dreason' => 'Причина (отображаемая):',
-	'closewikis-page-close-reason' => 'Причина (лог):',
+	'closewikis-page-close-reason' => 'Причина (для журнала):',
 	'closewikis-page-close-submit' => 'Закрыть',
 	'closewikis-page-reopen-wiki' => 'Вики:',
 	'closewikis-page-reopen-reason' => 'Причина:',
@@ -567,6 +596,7 @@ $messages['sv'] = array(
 	'closewikis-page' => 'Stäng wiki',
 	'closewikis-page-close' => 'Stäng wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Anledning (visas):',
 	'closewikis-page-close-submit' => 'Stäng',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
 	'closewikis-page-reopen-reason' => 'Anledning:',

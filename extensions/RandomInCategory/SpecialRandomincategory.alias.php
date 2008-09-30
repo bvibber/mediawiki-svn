@@ -25,6 +25,11 @@ $aliases['fi'] = array(
 	'RandomInCategory' => array( 'Satunnainen sivu luokasta' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'RandomInCategory' => array( 'Zoufälleg Säit aus der Kategorie' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'RandomInCategory' => array( 'Willekeurig_in_kattegerie' ),

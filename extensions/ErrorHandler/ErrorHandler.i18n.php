@@ -155,9 +155,11 @@ $messages['eo'] = array(
 	'errorhandler-error-compile-warning' => 'Tradukila averto',
 	'errorhandler-error-user-error' => 'Eraro de uzanto',
 	'errorhandler-error-user-warning' => 'Averto de uzanto',
+	'errorhandler-error-strict' => 'Striktaj normreguloj',
 	'errorhandler-msg-text' => '$1 : $2 en $3 (linio $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> en <b>$3</b> (linio <b>$4</b>)',
 	'errorhandler-trace' => 'spuro:',
+	'errorhandler-trace-line' => '$1 (linio $2): $3',
 );
 
 /** Spanish (Español)

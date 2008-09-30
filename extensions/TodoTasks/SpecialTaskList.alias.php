@@ -36,6 +36,7 @@ $aliases['fi'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'TaskList' => array( 'Lëscht vun den Aufgaben' ),
+	'TaskListByProject' => array( 'Lëscht vun den Aufgaben pro Projet' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

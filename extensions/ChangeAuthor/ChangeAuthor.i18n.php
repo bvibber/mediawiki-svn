@@ -1373,7 +1373,7 @@ $messages['te'] = array(
 	'changeauthor-revview' => '$2 యొక్క #$1వ కూర్పు',
 	'changeauthor-nosuchtitle' => '"$1" అనే పేరుతో పేజీ లేదు.',
 	'changeauthor-success' => 'మీ అభ్యర్థనని విజయవంతంగా పూర్తిచేసాం.',
-	'changeauthor-logpagename' => 'రచయిత మార్పుల దినచర్య',
+	'changeauthor-logpagename' => 'రచయిత మార్పుల చిట్టా',
 );
 
 /** Tetum (Tetun)

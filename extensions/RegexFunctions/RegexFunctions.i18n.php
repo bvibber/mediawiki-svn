@@ -32,6 +32,11 @@ $messages['arz'] = array(
 	'regexfunctions-desc' => 'دوال محلل تعبيرات منتظمة',
 );
 
+/** German (Deutsch) */
+$messages['de'] = array(
+	'regexfunctions-desc' => 'Parserfunktionen für reguläre Ausdrücke',
+);
+
 /** French (Français)
  * @author Grondin
  */

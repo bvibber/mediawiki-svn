@@ -707,6 +707,7 @@ $messages['ia'] = array(
 	'right-recentchanges' => 'Vider modificationes recente',
 	'right-edittalk' => 'Modificar paginas de discussion',
 	'right-edit-new' => 'Modificar paginas (non discussion)',
+	'right-readold' => 'Vider le contento de ancian versiones e comparationes',
 );
 
 /** Italian (Italiano)

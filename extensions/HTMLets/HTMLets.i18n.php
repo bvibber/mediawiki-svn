@@ -64,7 +64,7 @@ $messages['hi'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'htmlets-desc' => 'Permitte incorporar fragmentos HTML ab files con le etiquetta <tt><nowiki><htmlet></nowiki></tt> tag',
+	'htmlets-desc' => 'Permitte incorporar fragmentos HTML ab files per medio del etiquetta <tt><nowiki><htmlet></nowiki></tt>',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -719,6 +719,8 @@ Pro via malkonsento, la paĝo estis movita al la laborlisto $1.',
 	'deletequeue-list-votes' => 'Listo de voĉdonoj',
 	'deletequeue-list-header-page' => 'Paĝo',
 	'deletequeue-list-header-queue' => 'Laborlisto',
+	'deletequeue-list-header-votes' => 'Aproboj kaj malaproboj',
+	'deletequeue-list-header-expiry' => 'Findato',
 	'deletequeue-list-header-discusspage' => 'Diskuto-paĝo',
 );
 
@@ -1315,6 +1317,15 @@ $messages['kri'] = array(
  */
 $messages['ksh'] = array(
 	'deletequeue-desc' => 'Schaff en Süßteem met [[Special:DeleteQueue|Schlange fun Sigge, di op et Fottschmiiße am waade]] sin.',
+	'deletequeue-delnom-otherreason' => 'Ene andere Jrund',
+	'deletequeue-delnom-extra' => 'Zosätzlijje Enfommazjuhne:',
+	'deletequeue-list-status' => 'Stattus:',
+	'deletequeue-list-search' => 'Söke',
+	'deletequeue-list-votes' => 'Leß met de Stemme',
+	'deletequeue-list-votecount' => '{{PLURAL:$1|Eine es|$1 sin|Keine es}} doför, un {{PLURAL:$2|eine|$2|keine}} dojähje',
+	'deletequeue-list-header-page' => 'Sigg',
+	'deletequeue-list-header-votes' => 'Doför un dojäje',
+	'deletequeue-list-header-discusspage' => 'Klaafsigg',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

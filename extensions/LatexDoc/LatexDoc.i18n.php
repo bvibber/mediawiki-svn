@@ -221,6 +221,7 @@ $3',
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'latexdoc_no_text' => 'Pagina non contine texto. Impossibile generar DVI.',
 	'latexdoc_cant_create_dir' => 'Non pote crear le directorio temporari $1',
 	'latexdoc_cant_write' => 'Non pote scriber in file $1',
 	'latexdoc_error' => 'Error de LaTeX

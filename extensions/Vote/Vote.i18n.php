@@ -776,6 +776,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Sir Lestaty de Lioncourt
  */
 $messages['pt'] = array(
 	'vote' => 'Votar',
@@ -783,13 +784,18 @@ $messages['pt'] = array(
 	'vote-current' => "O seu voto actual é a favor de '''$1'''.",
 	'vote-legend' => 'Colocar ou corrigir voto',
 	'vote-caption' => 'A sua selecção:',
+	'vote-choices' => 'joker|O Joker
+penguin|O Pinguim
+riddler|Enigmático',
 	'vote-submit' => 'Votar',
 	'vote-registered' => 'O seu voto foi registado.',
+	'vote-view-results' => 'Ver resultados',
 	'vote-results' => 'Resultado da votação',
 	'vote-results-choice' => 'Escolha',
 	'vote-results-count' => 'Contagem',
 	'vote-results-none' => 'De momento ainda não foram submetidos votos.',
 	'vote-login' => 'Terá de $1 para votar.',
+	'vote-login-link' => 'autenticar-se',
 	'vote-invalid-choice' => 'Deverá seleccionar uma das opções disponíveis.',
 );
 

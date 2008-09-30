@@ -1350,7 +1350,7 @@ $messages['ja'] = array(
 	'oversight-prev' => '残存している前の版',
 	'oversight-hidden' => '秘匿された版',
 	'oversight-header' => '下記は、最近非公開となった版の一覧です。ここで得られた情報を漏洩した場合、この閲覧権限を永久に失う事となるでしょう。',
-	'oversight-legend' => '版の秘匿ログの検索',
+	'oversight-legend' => '版の秘匿記録の検索',
 );
 
 /** Jutish (Jysk)
@@ -2202,6 +2202,7 @@ $messages['ps'] = array(
  * @author 555
  * @author Lijealso
  * @author Malafaya
+ * @author Sir Lestaty de Lioncourt
  */
 $messages['pt'] = array(
 	'hiderevision' => 'Ocultar revisões permanentemente',
@@ -2244,6 +2245,7 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 	'oversight-hidden' => 'Edição oculta',
 	'oversight-header' => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
+	'oversight-legend' => 'Pesquisar registro de revisões ocultas',
 );
 
 /** Quechua (Runa Simi)

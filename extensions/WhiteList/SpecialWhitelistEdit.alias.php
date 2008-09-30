@@ -27,6 +27,12 @@ $aliases['arz'] = array(
 	'WhitelistEdit' => array( 'تعديل_القائمة_البيضاء' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'WhiteList' => array( 'WhiteList' ),
+	'WhitelistEdit' => array( 'WhiteList änneren' ),
+);
+
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'WhiteList' => array( 'БелаЛиста' ),

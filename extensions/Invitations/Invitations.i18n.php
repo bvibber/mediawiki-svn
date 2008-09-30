@@ -765,7 +765,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'invite-logpage' => 'ఆహ్వానాల దినచర్య',
+	'invite-logpage' => 'ఆహ్వానాల చిట్టా',
 	'invite-logentry' => '<i>$2</i> అనే విశేషాన్ని వాడడానికి $1ని ఆహ్వానించారు.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|ఒక ఆహ్వానం|$1 ఆహ్వానాలు}} ఉన్నాయి)',
 	'invitations-feature-pagetitle' => 'ఆహ్వాన నిర్వహణ - $1',

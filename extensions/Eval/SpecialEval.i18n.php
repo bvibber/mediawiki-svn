@@ -67,7 +67,7 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'eval' => 'Taks',
-	'eval_submit' => 'Taksu',
+	'eval_submit' => 'Taksi',
 	'eval_out' => 'Eligo',
 	'eval_code' => 'Kodo',
 );
