@@ -38,8 +38,13 @@ while( $start <= $lastRev ) {
 			break; // done!
 		}
 		$chunkSize = max( 1, floor($chunkSize/4) );
+		continue;
 	} else {
 		$start += $chunkSize;
+	}
+	if( !is_array( $log ) ) {
+		var_dump( $log );
+		die( 'wtf' );
 	}
 	foreach( $log as $data ) {
 		$revCount++;

@@ -73,3 +73,8 @@ $wgGroupPermissions['steward']['repoadmin'] = true; // temp
 
 $wgSpecialPages['Code'] = 'SpecialCode';
 $wgSpecialPages['RepoAdmin'] = 'SpecialRepoAdmin';
+
+// If you can't directly access the remote SVN repo, you can set this
+// to an offsite proxy running this fun little proxy tool:
+// http://svn.wikimedia.org/viewvc/mediawiki/trunk/tools/codereview-proxy/
+$wgSubversionProxy = false;

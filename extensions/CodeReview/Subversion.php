@@ -5,7 +5,10 @@ abstract class SubversionAdaptor {
 	protected $mRepo;
 
 	public static function newFromRepo( $repo ) {
-		if( function_exists( 'svn_log' ) ) {
+		global $wgSubversionProxy;
+		if( $wgSubversionProxy ) {
+			return new SubversionProxy( $repo, $wgSubversionProxy );
+		} elseif( function_exists( 'svn_log' ) ) {
 			return new SubversionPecl( $repo );
 		} else {
 			return new SubversionShell( $repo );
@@ -47,7 +50,6 @@ abstract class SubversionAdaptor {
 
 /**
  * Using the SVN PECL extension...
- * Untested!
  */
 class SubversionPecl extends SubversionAdaptor {
 	function getFile( $path, $rev=null ) {
@@ -59,15 +61,19 @@ class SubversionPecl extends SubversionAdaptor {
 			$this->mRepo . $path, $rev1,
 			$this->mRepo . $path, $rev2 );
 
-		// We have to read out the file descriptors. :P
-		$out = '';
-		while( !feof( $fout ) ) {
-			$out .= $fout;
+		if( $fout ) {
+			// We have to read out the file descriptors. :P
+			$out = '';
+			while( !feof( $fout ) ) {
+				$out .= fgets( $fout );
+			}
+			fclose( $fout );
+			fclose( $ferr );
+	
+			return $out;
+		} else {
+			return new MWException("Diffing error");
 		}
-		fclose( $fout );
-		fclose( $ferr );
-
-		return $out;
 	}
 
 	function getLog( $path, $startRev=null, $endRev=null ) {
@@ -193,5 +199,51 @@ class SubversionShell extends SubversionAdaptor {
 		}
 
 		return $out;
+	}
+}
+
+/**
+ * Using a remote JSON proxy
+ */
+class SubversionProxy extends SubversionAdaptor {
+	function __construct( $repo, $proxy ) {
+		parent::__construct( $repo );
+		$this->mProxy = $proxy;
+	}
+	
+	function getFile( $path, $rev=null ) {
+		throw new MWException( "NYI" );
+	}
+
+	function getDiff( $path, $rev1, $rev2 ) {
+		return $this->_proxy( array(
+			'action' => 'diff',
+			'path' => $path,
+			'rev1' => $rev1,
+			'rev2' => $rev2 ) );
+	}
+
+	function getLog( $path, $startRev=null, $endRev=null ) {
+		return $this->_proxy( array(
+			'action' => 'log',
+			'path' => $path,
+			'start' => $startRev,
+			'end' => $endRev ) );
+	}
+	
+	protected function _proxy( $params ) {
+		foreach( $params as $key => $val ) {
+			if( is_null( $val ) ) {
+				// Don't pass nulls to remote
+				unset( $params[$key] );
+			}
+		}
+		$target = $this->mProxy . '?' . wfArrayToCgi( $params );
+		$json = Http::get( $target );
+		if( $json === false ) {
+			throw new MWException( "SVN proxy error" );
+		}
+		$data = json_decode( $json, true );
+		return $data;
 	}
 }
