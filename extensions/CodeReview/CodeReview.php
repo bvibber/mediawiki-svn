@@ -38,6 +38,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 
+$wgAutoloadClasses['ApiCodeUpdate'] = $dir . 'ApiCodeUpdate.php';
 $wgAutoloadClasses['CodeDiffHighlighter'] = $dir . 'DiffHighlighter.php';
 $wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'CodeRepoListView.php';
@@ -55,6 +56,11 @@ $wgAutoloadClasses['CodeView'] = $dir . 'SpecialCode.php';
 $wgAutoloadClasses['SpecialRepoAdmin'] = $dir . 'SpecialRepoAdmin.php';
 $wgAutoloadClasses['SubversionAdaptor'] = $dir . 'Subversion.php';
 
+$wgSpecialPages['Code'] = 'SpecialCode';
+$wgSpecialPages['RepoAdmin'] = 'SpecialRepoAdmin';
+
+$wgAPIModules['codeupdate'] = 'ApiCodeUpdate';
+
 $wgExtensionMessagesFiles['CodeReview'] = $dir . 'CodeReview.i18n.php';
 $wgExtensionAliasesFiles['CodeReview'] = $dir . 'CodeReview.alias.php';
 
@@ -70,9 +76,6 @@ $wgGroupPermissions['*']['codereview-post-comment'] = true;
 $wgGroupPermissions['*']['codereview-set-status'] = true;
 
 $wgGroupPermissions['steward']['repoadmin'] = true; // temp
-
-$wgSpecialPages['Code'] = 'SpecialCode';
-$wgSpecialPages['RepoAdmin'] = 'SpecialRepoAdmin';
 
 // If you can't directly access the remote SVN repo, you can set this
 // to an offsite proxy running this fun little proxy tool:
