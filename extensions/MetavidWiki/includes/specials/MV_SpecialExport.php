@@ -23,19 +23,19 @@ global $IP, $smwgIP;
 class MvVideoFeed extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'MvVideoFeed' );
-		$MvSpecialExport = new MV_SpecialExport( 'category' );
-		
 		if ( method_exists( 'SpecialPage', 'setGroup' ) ) {
 			parent::setGroup( 'MvVideoFeed', 'mv_group' );
-		}
-		
-	
+		}	
+	}
+	function execute(){
+		$MvSpecialExport = new MV_SpecialExport( 'category' );
 	}
 }
 class MvExportStream extends SpecialPage {
 	function __construct() {
-		parent::__construct( 'MvExportStream' );
-			
+		parent::__construct( 'MvExportStream' );					
+	}
+	function execute(){
 		$MvSpecialExport = new MV_SpecialExport( 'stream' );
 	}
 }
@@ -76,6 +76,7 @@ class MvExportAsk extends SpecialPage {
 		parent::__construct( 'MvExportAsk' );
 	}
 	function execute() {
+		global $wgTitle;	
 		$MvSpecialExport = new MV_SpecialExport( 'ask' );
 	}
 }
@@ -104,7 +105,7 @@ class MV_SpecialExport {
 		$error_page = '';
 		// print "RAN execute with export type: " .$this->export_type;		
 		switch( $this->export_type ) {
-			case 'stream':
+			case 'stream':				
 				$this->stream_name = $wgRequest->getVal( 'stream_name' );
 								
 				if ( $this->stream_name == '' )

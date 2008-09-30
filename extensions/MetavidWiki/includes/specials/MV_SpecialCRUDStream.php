@@ -12,36 +12,23 @@
  */
  
 if ( !defined( 'MEDIAWIKI' ) ) die();
- 
-// not need should autoload
-// global $IP;
-// require_once( "$IP/includes/SpecialPage.php" );
 
-/*function doSpecialAddStream() {
-	$MV_SpecialAddStream = new MV_SpecialCRUDStream('add');
-	$MV_SpecialAddStream->execute();
-}
-function doSpecialEditStream(){
-	$MV_SpecialAddStream = new MV_SpecialCRUDStream('edit');
-	$MV_SpecialAddStream->execute();
-}
-
-SpecialPage::addPage( new SpecialPage('Mv_Add_Stream','',true,'doSpecialAddStream',false) );
-SpecialPage::addPage( new SpecialPage('Mv_Edit_Stream','',true,'doSpecialEditStream',false) );
-*/
-
-/* @@TODO depreciate in favor of oggFile -> stream setup */
+/* @@TODO also support oggHandler stream setup */
 class MV_SpecialCRUDStream extends SpecialPage {
 	function __construct( $mode = 'add' ) {
 		parent::__construct( 'Mv_Add_Stream' );
 		$this->mode = 'add';
 		// print_r(debug_backtrace());	
+		if ( method_exists( 'SpecialPage', 'setGroup' ) ) {
+			parent::setGroup( 'Mv_Add_Stream', 'mv_group' );
+		}
 
 	}
 	function execute() {
-		global $wgRequest, $wgOut, $wgUser, $mvStream_name, $mvgIP;
+		global $wgRequest, $wgOut, $wgUser, $mvStream_name, $mvgIP, $wgTitle;
 		# init html output var:
-		$html = '';
+		$html = '';				
+		
 
         # Get request data from, e.g.
         $title_str = $wgRequest->getVal( 'title' );

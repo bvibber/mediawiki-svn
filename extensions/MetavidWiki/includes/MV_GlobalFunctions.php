@@ -6,7 +6,7 @@
  * for more info visit http:/metavid.ucsc.edu/code
  * 
  */
-define( 'MV_VERSION', '1.0' );
+define( 'MV_VERSION', '1.0rc2' );
 
 
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
@@ -30,7 +30,7 @@ $wgExtensionAliasesFiles['MetavidWiki'] = $mvgIP . '/languages/MV_Aliases.php';
 
 $markerList = array();
 
-// don't override special search page: (requires ExtensionFunctions.php)
+// override special search page: (requires ExtensionFunctions.php)
 extAddSpecialPage( dirname( __FILE__ ) . '/specials/MV_SpecialMediaSearch.php', 'Search', 'MV_SpecialSearch' );
 
 
@@ -183,7 +183,8 @@ function mvSetupExtension() {
 	
 	
 	// @@NOTE this hook is not avaliable by default in medaiwiki 
-	// to use this hook you should add this function to moveTo() in Title.php:
+	// to use this hook you should add this function to moveTo()
+	// right after the local check in Title.php:
  	/*
  	 $err = wfRunHooks('TitleisValidMove', array( &$this, &$nt, &$wgUser, $auth));
 		 if( is_string( $err ) ) {
@@ -228,12 +229,12 @@ function mvSetupExtension() {
 	/***** credits (see "Special:Version")    *****/
 	/**********************************************/
 	$wgExtensionCredits['other'][] = array(
-	    'name' => 'Metavid Wiki Extension',
+	    'name' => 'MetaVidWiki',
 	    'author' => 'Michael Dale',
-	    'version' => 'alpha 0.1',
-		'url' => 'http://metavid.org',
+	    'version' => MV_VERSION,
+		'url' => 'http://metavid.org/wiki/MetaVidWiki_Software',
 		'description' => 'Video Metadata Editor & Media Search<br />' .
-			'[http://metavid.ucsc.edu/wiki/index.php/MetaVidWiki_Software More about MetaVidWiki Software]'
+			'[http://metavid.org/wiki/MetaVidWiki_Software More about MetaVidWiki Software]'
 	);
 }
 

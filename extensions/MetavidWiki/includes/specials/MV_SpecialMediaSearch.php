@@ -23,20 +23,22 @@ function wfSpecialMediaSearch() {
 // @@todo add link to "media search"
 class MV_SpecialSearch extends SpecialPage {
 	function MV_SpecialSearch() {
-		global $wgOut, $wgRequest, $wgUser;
-		mvfAddHTMLHeader( 'search' );
-		// $MvSpecialSearch = new MV_SpecialMediaSearch();
-		// $MvSpecialSearch->doSearchPage( $wgRequest->getVal('search') );
-		$mediaPage = Title::newFromText( 'MediaSearch', NS_SPECIAL );
-		$sk = $wgUser->getSkin();
-		$wgOut->addHTML( wfMsg( 'mv_do_media_search',
-				$sk->makeKnownLinkObj( $mediaPage,
-						htmlspecialchars( $wgRequest->getVal( 'search' ) ),
-						'mv_search=' . $wgRequest->getVal( 'search' )
+		global $wgOut, $wgRequest, $wgUser, $wgTitle;
+		if($wgTitle->getText()!='SpecialPages'){
+			//mvfAddHTMLHeader( 'search' );
+			// $MvSpecialSearch = new MV_SpecialMediaSearch();
+			// $MvSpecialSearch->doSearchPage( $wgRequest->getVal('search') );
+			$mediaPage = Title::newFromText( 'MediaSearch', NS_SPECIAL );
+			$sk = $wgUser->getSkin();
+			$wgOut->addHTML( wfMsg( 'mv_do_media_search',
+					$sk->makeKnownLinkObj( $mediaPage,
+							htmlspecialchars( $wgRequest->getVal( 'search' ) ),
+							'mv_search=' . $wgRequest->getVal( 'search' )
+						)
 					)
-				)
-			);
-		SpecialPage :: SpecialPage( 'Search' );
+				);
+			SpecialPage :: SpecialPage( 'Search' );
+		}
 	}
 }
 /*
