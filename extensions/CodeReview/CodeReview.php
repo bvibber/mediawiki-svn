@@ -78,3 +78,5 @@ $wgSpecialPages['RepoAdmin'] = 'SpecialRepoAdmin';
 // to an offsite proxy running this fun little proxy tool:
 // http://svn.wikimedia.org/viewvc/mediawiki/trunk/tools/codereview-proxy/
 $wgSubversionProxy = false;
+$wgSubversionProxyTimeout = 30; // default 3 secs is too short :)
+

@@ -5,9 +5,9 @@ abstract class SubversionAdaptor {
 	protected $mRepo;
 
 	public static function newFromRepo( $repo ) {
-		global $wgSubversionProxy;
+		global $wgSubversionProxy, $wgSubversionProxyTimeout;
 		if( $wgSubversionProxy ) {
-			return new SubversionProxy( $repo, $wgSubversionProxy );
+			return new SubversionProxy( $repo, $wgSubversionProxy, $wgSubversionProxyTimeout );
 		} elseif( function_exists( 'svn_log' ) ) {
 			return new SubversionPecl( $repo );
 		} else {
@@ -206,9 +206,10 @@ class SubversionShell extends SubversionAdaptor {
  * Using a remote JSON proxy
  */
 class SubversionProxy extends SubversionAdaptor {
-	function __construct( $repo, $proxy ) {
+	function __construct( $repo, $proxy, $timeout=30 ) {
 		parent::__construct( $repo );
 		$this->mProxy = $proxy;
+		$this->mTimeout = $timeout;
 	}
 	
 	function getFile( $path, $rev=null ) {
@@ -239,7 +240,7 @@ class SubversionProxy extends SubversionAdaptor {
 			}
 		}
 		$target = $this->mProxy . '?' . wfArrayToCgi( $params );
-		$json = Http::get( $target );
+		$json = Http::get( $target, $this->mTimeout );
 		if( $json === false ) {
 			throw new MWException( "SVN proxy error" );
 		}
