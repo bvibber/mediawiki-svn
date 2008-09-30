@@ -447,14 +447,14 @@ function DynamicPageList( $input ) {
 		if (true == $bAddFirstCategoryDate)
 			$output .= $wgLang->date($row->cl_timestamp) . ': ';
 
-		$query = '';
+		$query = array();
 		if (true == $bShowCurId)
-			$query = 'curid='.intval($row->page_id);
+			$query = array( 'curid' => intval($row->page_id) );
 
 		if (true == $bShowNamespace)
-			$output .= $sk->makeKnownLinkObj($title, htmlspecialchars($title->getPrefixedText()),$query);
+			$output .= $sk->link($title, htmlspecialchars($title->getPrefixedText()), array(), $query, array( 'forcearticlepath', 'known' ) );
 		else
-			$output .= $sk->makeKnownLinkObj($title, htmlspecialchars($title->getText()),$query);
+			$output .= $sk->link($title, htmlspecialchars($title->getText()), array(), $query, array( 'forcearticlepath', 'known' ) );
 
 		$output .= $sEndItem . "\n";
 	}
