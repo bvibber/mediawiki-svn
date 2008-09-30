@@ -178,7 +178,7 @@ function mvSetupExtension() {
 		
 	$wgHooks['TitleMoveComplete'][]			= 'mvMoveHook';
 	
-	// note this hook is not avaliable by default in medaiwiki 
+	// @@NOTE this hook is not avaliable by default in medaiwiki 
 	// to use this hook you should add this function to moveTo() in Title.php:
  	/*
  	 $err = wfRunHooks('TitleisValidMove', array( &$this, &$nt, &$wgUser, $auth));
@@ -194,6 +194,29 @@ function mvSetupExtension() {
 	$wgParser->setHook( SEQUENCE_TAG, 'mvSeqTag' );
 
 	$wgParser->setFunctionHook( 'mvData', 'mvMagicParserFunction_Render' );
+	
+	
+	/*
+	* OggHandler extension overides
+	* if the OggHandler is included remap the object for copatibility with metavid
+	* MV_OggHandler.php hanndles all the re-mapping
+	*/
+	if($wgMediaHandlers['application/ogg'] == 'OggHandler'){
+		$wgMediaHandlers['application/ogg']='mvOggHandler';		
+		$wgParserOutputHooks['OggHandler'] = array( 'mvOggHandler', 'outputHook' );
+		foreach($wgHooks['LanguageGetMagic'] as & $hook_function){
+			if($hook_function=='OggHandler::registerMagicWords'){
+				$hook_function='mvOggHandler::registerMagicWords';
+			}
+		}
+		foreach($wgExtensionCredits as & $ext){
+			 if($ext['name']=='OggHandler'){
+			 	$ext['description'].=' Integrated with the <b>MetaVidWiki Extension</b>';
+			 }
+		}
+	}
+	
+	
 	
 	// $wgHooks['BeforePageDisplay'][] = 'mvDoSpecialPage';	
 	// $wgHooks['ArticleViewHeader'][] = 'mvArticleViewOpts';

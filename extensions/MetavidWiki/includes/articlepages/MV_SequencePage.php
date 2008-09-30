@@ -58,9 +58,9 @@ class MV_SequencePage extends Article {
 	    //this is the heavy lifting of the getSequenceSMIL function: 	    
 	    $this->resolveHLRD();
 	    
-	    print "the final xml:\n";
+	    //print "the final xml:\n";
 	    print $this->getSmilXml();
-	    die;
+	    //die;
 	    
 	    //get parser Output Object (maybe cleaner way to do this? 
 	    //maybe parser cache is not the right place for this?) 
@@ -99,15 +99,9 @@ class MV_SequencePage extends Article {
 				//@@todo optimize to do all queries/lookups at once. 
 	 			if(isset($tag['attributes'])){
 	 				if(isset($tag['attributes']['uri'])){
-	 					//turn the uri into a title: 
-	 					$uriTitle = Title::newFromDBkey($tag['attributes']['uri']);
-	 					if( $uriTitle->exists() ){
-	 						//switch output type based on namespace
-	 						$this->getResourceArrayFromTitle($this->aHLRD[$i], $uriTitle);
-	 					}else{	 						
-	 						//uri not found
-	 						$this->aHLRD[$i]['value']=wfMsg('mv_resource_not_found', htmlspecialchars($tag['attributes']['uri']) );
-	 					}
+	 						//if resolved resource is done for current pass: continue 	 						 						
+	 						if( $this->resolveResource($i) )
+	 							continue;			
 	 				}
 	 			}
 				
@@ -125,56 +119,120 @@ class MV_SequencePage extends Article {
 								break;							
 							}														
 							$tag= $this->aHLRD[$i++];
-						}						
+						}
+						//init val if not set: 					
+						if(!isset($this->aHLRD[ $open_inx-1 ][ 'value' ]))
+							$this->aHLRD[ $open_inx-1 ][ 'value' ]='';	
 						//swap in the wiki parsed innerHTML:
-						$parserOutput = $wgParser->parse(
+						$this->aHLRD[ $open_inx-1 ][ 'value' ].=
 							 				$this->ary2xml(
 							 					array_splice(
 							 						$this->aHLRD, $open_inx, ($close_inx-$open_inx)
 							 					)  
-							 				),$this->mTitle, ParserOptions::newFromUser( $wgUser )
-							 			); 			
-						if(isset($this->aHLRD[ $open_inx-1 ][ 'value' ])){
-							$this->aHLRD[ $open_inx-1 ][ 'value' ].= $parserOutput->getText();			
-						}else{
-							$this->aHLRD[ $open_inx-1 ][ 'value' ] = $parserOutput->getText();
-						}
-						$this->aHLRD[ $open_inx-1 ][ 'type' ] = 'complete'; 
+							 				); 			
+											
+						//$this->aHLRD[ $open_inx-1 ][ 'type' ] = 'complete'; 
 						//remove the close index 
 						if($this->aHLRD[$open_inx]['type']=='close')
 							unset($this->aHLRD[$open_inx]);						
 						//update the index (now that we have spliced the array ):
 						$i= $open_inx-1; //(will ++ on next loop)				
 					}					
+					//$this->aHLRD[ $open_inx-1 ][ 'value' ] =  $parserOutput->getText();					
 				}			
 			}
+		}
+		//print_r($this->aHLRD);		
+		//now that inner xml has been parse and outputed parse innerValue of tag as wiki_text:
+		for($i=0;$i<count($this->aHLRD);$i++){					
+			$parserOutput = $wgParser->parse($this->aHLRD[ $i ][ 'value' ]  ,$this->mTitle, ParserOptions::newFromUser( $wgUser ));
+			$this->aHLRD[ $i ][ 'value' ] = $parserOutput->getText();
 		}
 		//print "resolveHLRD:";
 		//print_r($this->aHLRD);
 		//die;
 	}
-	function getResourceArrayFromTitle(&$tag, &$title){
-		print "f:getResourceArrayFromTitle";
-		switch( $title){
+	/*
+	 * resolves any resource refrences and gets things ready to be parsed as wikiText
+	 */
+	function resolveResource(& $i){ //pass in the current index
+		$tag = $this->aHLRD[ $i ];
+		$uriTitle = Title::newFromDBkey($tag['attributes']['uri']);
+	 	if( !$uriTitle->exists() ){
+	 		$this->aHLRD[$i]['value']=wfMsg('mv_resource_not_found', htmlspecialchars($tag['attributes']['uri']) );
+	 		$this->aHLRD[ $i ]['attributes']['type']='text/html';
+	 		return false;
+	 	}	 	
+		//print "f:getResourceArrayFromTitle";	
+		switch( $uriTitle->getNamespace() ){
  			case NS_MAIN:
  				//top level ref includes of pages in the main namespace not supported
  			break;
- 			case NS_TEMPLATE:
- 				//top level ref includes of temples is not supported
+ 			case NS_TEMPLATE: 		 						 			
+ 				//grab all the template paramaters
+ 				//ignore any tags other than root param values
+ 				//print('on tag: ' .$i. ':' . print_r($tag, true)); 
+ 				$paramAry = array(); 				
+ 				if($tag['type'] == 'open'){
+						$open_inx = $i;
+						$base_depth = $tag['level'];
+						//find close tag
+						while( $i<count( $this->aHLRD ) ){
+							if($tag['type'] == 'close' && $base_depth == $tag['level'] ){
+								$close_inx = $i-1;
+								break;							
+							}						
+							if($tag['tag']=='param' 
+								&& isset( $tag['attributes'] )
+								&& isset( $tag['attributes']['name'] ) ){
+									//set via innerHTML
+									if( isset( $tag['value'] ) ) 
+										$paramAry[ $tag['attributes']['name'] ] = $tag['value'];
+									//or set via value attribute
+									if(isset( $tag['attributes']['value'] ) )
+										$paramAry[ $tag['attributes']['name'] ] = $tag['attributes']['value'];
+																										
+							}
+							$tag= $this->aHLRD[ $i++ ];							
+						}	
+						//remove the striped children (that sounds bad)
+						$tmp = array_splice($this->aHLRD, $open_inx, ($close_inx-$open_inx)); 
+						//print "Removed: " . print_r($tmp, true);
+						//restore the original tag: 
+						$tag =  $this->aHLRD[ $open_inx ];
+						//restore the index:
+						$i= $open_inx-1;
+ 				} 				
+ 				//print('NOW on tag: ' .$i. ':' . print_r($this->aHLRD[ $i ], true)); ;
+ 				//$tag_pre_val=$tag['value'];
+ 				//set up wiki_text value: 
+ 				$this->aHLRD[ $i ]['value'] = '{{' . $uriTitle->getText();
+ 				$nl='';
+ 				foreach($paramAry as $name=>$val){
+ 					$this->aHLRD[ $i ]['value'].= "\n| ". $name . ' = ' . $val;
+ 					$nl="\n";  					
+ 				}
+ 				$this->aHLRD[ $i ]['value'].=$nl.'}}'; 	
+ 				$this->aHLRD[ $i ]['type']='complete';	
+ 				//set type attribute: 
+ 				$this->aHLRD[ $i ]['attributes']['type']='text/html';
+ 				return true;
  			break;
  			case NS_IMAGE:
  				global $mvDefaultVideoPlaybackRes;
  				list($width,$height)= explode('x',$mvDefaultVideoPlaybackRes);
- 				//@@todo more flexiblity with image grabbing
- 				
- 				//check for video
+ 				//@@todo more flexiblity with image grabbing 				 				
  				
  				// (probably should be hanndled via "figure" namespace which could allow arbitary crop, resize, overlay) 				
- 				$img = wfFindFile( $title ); 	
+ 				$img = wfFindFile( $uriTitle ); 	
+ 				//set type attribute:  
+ 				$this->aHLRD[ $i ]['attributes']['type']=$img->getMimeType();
+ 					
  				//get a default width wide image; 
  				$thumbnail = $img->transform( array('width'=>$width) );
  				//a direct link to media 
- 				$tag['attributes']['src']=$thumbnail->file->getURL();
+ 				$this->aHLRD[ $i ]['attributes']['src']=$thumbnail->file->getURL();
+ 				return true;
  			break;
  			case MV_NS_SEQUENCE:
  				//transclude a sequence
@@ -200,7 +258,12 @@ class MV_SequencePage extends Article {
 					xml_get_current_line_number($xml_parser) 
 				); 		   	
 		   }
-	    xml_parser_free($xml_parser);	    
+	    xml_parser_free($xml_parser);
+
+	    //maybe easier to go DOM based model:  
+	    //$doc = new DOMDocument();
+	    //$doc->loadXML($this->mHLRD);
+	    
 	    //validate input with $mvHLRDTags definition
 	    //*Currently dissabled ~~unclear if we really need to do this~~~
 	    /*
@@ -375,19 +438,22 @@ class MV_SequencePage extends Article {
 		//print_r($this->clips);
 		}*/
 	function doSeqReplace( &$input, &$argv, &$parser ) {
-		global $wgTitle, $wgUser, $wgRequest, $markerList;
+		global $wgTitle, $wgUser, $wgRequest, $markerList, $mvDefaultVideoPlaybackRes;
 		$sk = $wgUser->getSkin();
 		$title = Title::MakeTitle( NS_SPECIAL, 'MvExportSequence/' . $wgTitle->getDBKey() );
-		$title_url = $title->getFullURL();
+		$title_url = $title->getFullURL();		
+		
+		
 		$oldid = $wgRequest->getVal( 'oldid' );
-		if ( isset( $oldid ) ) {
-			// @@ugly hack .. but really this whole sequencer needs a serious rewrite)
+		if ( isset( $oldid ) ) {			
 			$ss = ( strpos( $title_url, '?' ) === false ) ? '?':'&';
 			$title_url .= $ss . 'oldid=' . $oldid;
-		}
-			
+		}		
+		
+		list($width, $height) = explode('x', $mvDefaultVideoPlaybackRes);
+		
 		$vidtag = '<div id="file" class="fullImageLink"><playlist';
-		$vidtag .= ' width="400" height="300" src="' . htmlspecialchars( $title_url ) . '">';
+		$vidtag .= ' width="'.$width.'" height="'.$height.'" src="' . htmlspecialchars( $title_url ) .'">';
 		$vidtag .= '</playlist></div><hr>';
 
 		$marker = "xx-marker" . count( $markerList ) . "-xx";

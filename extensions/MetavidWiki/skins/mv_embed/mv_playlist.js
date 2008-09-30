@@ -146,7 +146,8 @@ mvPlayList.prototype = {
 		//load sequencer: 
 		mv_do_sequence({
 				"sequence_container_id":'modalbox', 
-				"mv_pl_url_id":_this.src //kind of redundant but make for a clean "cancel".. 
+				"mv_pl_url_id":_this.src, //kind of redundant but make for a clean "cancel".. 
+				"mv_pl_hlrd_url":_this.hlrd
 				// we could switch to moving around dom elements if performance is an issue 
 			});
 					
