@@ -59,7 +59,7 @@ class MV_SequencePage extends Article {
 	    $this->resolveHLRD();
 	    
 	    //print "the final xml:\n";
-	    print $this->getSmilXml();
+	    //print $this->getSmilXml();
 	    //die;
 	    
 	    //get parser Output Object (maybe cleaner way to do this? 

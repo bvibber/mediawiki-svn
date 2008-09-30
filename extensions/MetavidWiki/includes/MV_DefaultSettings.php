@@ -124,6 +124,9 @@ $mvDefaultVideoPlaybackRes = '400x300';
 $mvDefaultSearchVideoPlaybackRes = '320x240';
 $mvDefaultVideoIconSize = '80x60';
 
+//The text Embed a metavid Stream inline in the wiki 
+$mvEmbedKey = 'EmbedStream';
+
 /*
  * All Available meta data layers
  * these type keys are used to allow multiple layers of metadata per stream.

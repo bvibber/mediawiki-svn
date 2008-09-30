@@ -178,6 +178,10 @@ function mvSetupExtension() {
 		
 	$wgHooks['TitleMoveComplete'][]			= 'mvMoveHook';
 	
+	
+	$wgHooks['LinkEnd'][] = 'mvLinkEnd';
+	
+	
 	// @@NOTE this hook is not avaliable by default in medaiwiki 
 	// to use this hook you should add this function to moveTo() in Title.php:
  	/*

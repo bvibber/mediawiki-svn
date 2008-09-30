@@ -52,6 +52,33 @@
       $text = preg_replace( '/xx-marker' . $i . '-xx/', $markerList[$i], $text );
     return true;
 }
+
+/* 
+ * hack to embed embedStream:StreamName links 
+*/
+ function mvLinkEnd($skin, $title, $options, &$text, &$attribs, &$ret){
+ 	global $mvEmbedKey, $mvDefaultAspectRatio,$mvDefaultVideoPlaybackRes;
+ 	if( substr( $title->getText(), 0, strlen($mvEmbedKey) )==$mvEmbedKey){
+ 		//parse text for extra params: 
+ 		$params = explode('|', $text);
+ 		//set up defaults:
+ 		$size = $mvDefaultVideoPlaybackRes;
+ 		
+ 		foreach($params as $param_set){
+ 			if(strpos($param_set, '=')!==false){
+ 				list($k, $v)= explode('=',$param_set);
+ 				if($k=='width'){
+ 					$size = intval($v) . 'x' . ($mvDefaultAspectRatio * intval($v));
+ 				}
+ 			}
+ 		}
+ 		$mvTitle =  new MV_Title( substr( $title->getText(), strlen($mvEmbedKey)+1) ); 		
+ 		$ret = $mvTitle->getEmbedVideoHtml('',$size);
+ 		return false;
+ 	}
+ 	return true;
+ }
+
 // load the sequence page 
 function mvSeqTag( &$input, &$argv, &$parser ) {
 	global $wgTitle;
