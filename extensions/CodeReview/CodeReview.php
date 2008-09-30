@@ -27,7 +27,7 @@ http://pecl.php.net/package/svn
 
 */
 
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['specialpage'][] = array(
 	'name' => 'CodeReview',
 	'svn-date' => '$LastChangedDate$',
 	'svn-revision' => '$LastChangedRevision$',
