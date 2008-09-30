@@ -124,6 +124,9 @@ function mvSetupExtension() {
 	$wgAutoloadClasses['MV_Image'] 				= dirname( __FILE__ )  . '/MV_Image.php';
 	$wgAutoloadClasses['MV_Stream'] 			= dirname( __FILE__ )  . '/MV_Stream.php';
 	$wgAutoloadClasses['MV_StreamFile']			= dirname( __FILE__ )  . '/MV_StreamFile.php';
+	
+	$wgAutoloadClasses['mvOggHandler']			= dirname( __FILE__ )  . '/MV_OggHandler.php';
+	
 	$wgAutoloadClasses['MV_StreamImage'] 		= dirname( __FILE__ )  . '/MV_StreamImage.php';
 	$wgAutoloadClasses['MV_ParserCache'] 		= dirname( __FILE__ ) . '/MV_ParserCache.php';
 	$wgAutoloadClasses['MV_MagicWords'] 		= dirname( __FILE__ ) . '/MV_MagicWords.php';
@@ -206,6 +209,7 @@ function mvSetupExtension() {
 	* if the OggHandler is included remap the object for copatibility with metavid
 	* MV_OggHandler.php hanndles all the re-mapping
 	*/
+	global $wgMediaHandlers;
 	if($wgMediaHandlers['application/ogg'] == 'OggHandler'){
 		$wgMediaHandlers['application/ogg']='mvOggHandler';		
 		$wgParserOutputHooks['OggHandler'] = array( 'mvOggHandler', 'outputHook' );

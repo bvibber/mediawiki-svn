@@ -14,10 +14,15 @@
  * (in cases where media will be hosted in a different place than the embbeding page)
  *
  */
-var MV_EMBED_VERSION = '1.0rc1';
 
-//if you want to foce the path to the mv_embed folder 
-var mv_embed_path = null;
+//fix multiple instances of mv_embed 
+var MV_DO_INIT=true;
+if(MV_EMBED_VERSION){
+	js_log('mv_embed already included do nothing');
+	MV_DO_INIT=false;	
+}
+
+var MV_EMBED_VERSION = '1.0rc1';
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
@@ -56,7 +61,7 @@ var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"str
 
 //get mv_embed location if it has not been set
 if(!mv_embed_path){
-	getMvEmbedPath();
+	var mv_embed_path =getMvEmbedPath();
 }
 //here you can add in delay load refrence to test things with delayed load time: 
 //mv_embed_path = mv_embed_path + 'delay_load.php/'; 
@@ -788,7 +793,7 @@ var mvJsLoader = {
 	 load_time:0,
 	 doLoad:function(libs,callback){		 	 	 
 		 this.callback=	(callback) ? callback:this.callback;		 
-		 this.libs = (libs) ? libs: this.libs;
+		 this.libs = (libs) ? this.libs.concat(libs) : this.libs; //merge the passed in array
 		 var loading=0;
 		 var i=null;
 		 //js_log("doLoad_ load set to 0 on libs:"+ libs);
@@ -837,7 +842,7 @@ var mvJsLoader = {
  * and >= 1.1.4 not working: http://pastie.caboo.se/92595
  * $j(document).ready( function(){ */
 function init_mv_embed(force){
-	js_log('mv_init');
+	//js_log('mv_init');
 	if(!force && mv_init_done){
 		js_log("mv_init_done do nothing...");
 		return false;
@@ -1405,7 +1410,7 @@ mediaSource.prototype =
 
     init : function(element)
     {
-    	js_log('adding mediaSource: ' + element);    	
+    	//js_log('adding mediaSource: ' + element);    	
     	
         this.src = $j(element).attr('src');   
             
@@ -1423,7 +1428,7 @@ mediaSource.prototype =
         else
             this.mime_type = this.detectType(this.src);
 
-		js_log("MIME TYPE: "+  this.mime_type );
+		//js_log("MIME TYPE: "+  this.mime_type );
 
         if ($j(element).attr("title"))
             this.title = $j(element).attr("title");
@@ -1749,7 +1754,7 @@ mediaElement.prototype =
     	 		}
     	 		playable_sources.push(this.sources[i]);
     	 	}else{
-    	 		js_log("type "+ this.sources[i].mime_type + 'is not playable');
+    	 		//js_log("type "+ this.sources[i].mime_type + 'is not playable');
     	 	}
     	 }    	 
     	 return playable_sources;
@@ -2280,7 +2285,7 @@ embedVideo.prototype = {
     },	
 	getHTML : function (){		
 		//@@todo check if we have sources avaliable	
-		js_log('f : getHTML');			
+		js_log('f:getHTML : '+this.id);			
 		var _this = this; 				
 		var html_code = '';		
         html_code = '<div id="videoPlayer_'+this.id+'" style="width:'+this.width+'px;" class="videoPlayer">';        
@@ -2940,7 +2945,7 @@ function do_request(req_url, callback, mv_json_response){
 		}
 }
 function mv_jsdata_cb(response){
-	js_log('f:mv_jsdata_cb');
+	js_log('f:mv_jsdata_cb:'+ response['cb_inx']);
 	//run the callback from the global req cb object:
 	if(!global_req_cb[response['cb_inx']]){
 		js_log('missing req cb index');
@@ -3043,6 +3048,7 @@ function getMvEmbedPath(){
 	}else{
 		js_log('already absolute');
 	}	 
+	return mv_embed_path;
 }
 if (typeof DOMParser == "undefined") {
    DOMParser = function () {}

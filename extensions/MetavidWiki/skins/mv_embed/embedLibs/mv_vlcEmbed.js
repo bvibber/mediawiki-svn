@@ -1,4 +1,3 @@
-js_log('**** vlcEmbed processing');
 /*
 * vlc embed based on: http://people.videolan.org/~damienf/plugin-0.8.6.html
 * javascript api: http://www.videolan.org/doc/play-howto/en/ch04.html

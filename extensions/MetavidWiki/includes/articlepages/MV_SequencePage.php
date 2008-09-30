@@ -131,7 +131,7 @@ class MV_SequencePage extends Article {
 							 					)  
 							 				); 			
 											
-						//$this->aHLRD[ $open_inx-1 ][ 'type' ] = 'complete'; 
+						$this->aHLRD[ $open_inx-1 ][ 'type' ] = 'complete'; 
 						//remove the close index 
 						if($this->aHLRD[$open_inx]['type']=='close')
 							unset($this->aHLRD[$open_inx]);						
