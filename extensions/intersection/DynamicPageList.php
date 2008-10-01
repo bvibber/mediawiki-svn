@@ -449,12 +449,14 @@ function DynamicPageList( $input ) {
 
 		$query = array();
 		if (true == $bShowCurId)
-			$query = array( 'curid' => intval($row->page_id) );
+			$query['curid'] = intval($row->page_id);
 
 		if (true == $bShowNamespace)
-			$output .= $sk->link($title, htmlspecialchars($title->getPrefixedText()), array(), $query, array( 'forcearticlepath', 'known' ) );
+			$titleText = $title->getPrefixedText();
 		else
-			$output .= $sk->link($title, htmlspecialchars($title->getText()), array(), $query, array( 'forcearticlepath', 'known' ) );
+			$titleText = $title->getText();
+
+		$output .= $sk->link($title, htmlspecialchars($titleText), array(), $query, array( 'forcearticlepath', 'known' ) );
 
 		$output .= $sEndItem . "\n";
 	}
