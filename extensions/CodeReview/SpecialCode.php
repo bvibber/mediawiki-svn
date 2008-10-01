@@ -23,17 +23,28 @@ class SpecialCode extends SpecialPage {
 				$view = new CodeRevisionListView( $params[0] );
 				break;
 			case 2:
-				$view = new CodeRevisionView( $params[0], $params[1] );
-				break;
 			case 3:
+				if( is_numeric( $params[1] ) ) {
+					$view = new CodeRevisionView( $params[0], $params[1] );
+					break;
+				}
 				if( $params[1] == 'tag' ) {
-					$view = new CodeRevisionTagView( $params[0], $params[2] );
+					if( empty($params[2]) )
+						$view = new CodeRevisionTagListView( $params[0] );
+					else
+						$view = new CodeRevisionTagView( $params[0], $params[2] );
 					break;
 				} elseif( $params[1] == 'author' ) {
-					$view = new CodeRevisionAuthorView( $params[0], $params[2] );
+					if( empty($params[2]) )
+						$view = new CodeRevisionAuthorListView( $params[0] );
+					else
+						$view = new CodeRevisionAuthorView( $params[0], $params[2] );
 					break;
 				} elseif( $params[1] == 'status' ) {
-					$view = new CodeRevisionStatusView( $params[0], $params[2] );
+					if( empty($params[2]) )
+						$view = new CodeRevisionStatusListView( $params[0] );
+					else
+						$view = new CodeRevisionStatusView( $params[0], $params[2] );
 					break;
 				} else {
 					throw new MWException( "Unexpected number of parameters" );

@@ -191,7 +191,7 @@ class CodeRevisionView extends CodeView {
 	}
 	
 	function buildStatusList() {
-		$states = $this->mRev->getPossibleStates();
+		$states = CodeRevision::getPossibleStates();
 		$out = '';
 		foreach( $states as $state ) {
 			$list[$state] = $this->statusDesc( $state );

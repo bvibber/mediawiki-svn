@@ -69,17 +69,63 @@ class CodeRepository {
 		return false;
 	}
 
-	function getLastStoredRev(){
+	function getLastStoredRev() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectField(
 			'code_rev',
 			'MAX(cr_id)',
-			array(
-				'cr_repo_id' => $this->getId(),
-			),
+			array( 'cr_repo_id' => $this->getId() ),
 			__METHOD__
 		);
 		return intval( $row );
+	}
+	
+	function getAuthorList() {
+		global $wgMemc;
+		$key = wfMemcKey( 'codereview', 'authors', $this->getId() );
+		$authors = $wgMemc->get( $key );
+		if( is_array($authors) ) {
+			return $authors;
+		}
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 
+			'code_rev',
+			array( 'cr_author', 'COUNT(*) AS commits' ),
+			array( 'cr_repo_id' => $this->getId() ),
+			__METHOD__,
+			array( 'GROUP BY' => 'cr_author', 
+				'ORDER BY' => 'commits DESC', 'LIMIT' => 500 )
+		);
+		$authors = array();
+		while( $row = $dbr->fetchObject( $res ) ) {
+			$authors[] = $row->cr_author;
+		}
+		$wgMemc->set( $key, $authors, 3600*24*3 );
+		return $authors;
+	}
+	
+	function getTagList() {
+		global $wgMemc;
+		$key = wfMemcKey( 'codereview', 'tags', $this->getId() );
+		$tags = $wgMemc->get( $key );
+		if( is_array($tags) ) {
+			return $tags;
+		}
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 
+			'code_tags',
+			array( 'ct_tag', 'COUNT(*) AS revs' ),
+			array( 'ct_repo_id' => $this->getId() ),
+			__METHOD__,
+			array( 'GROUP BY' => 'ct_tag', 
+				'ORDER BY' => 'revs DESC', 'LIMIT' => 500 )
+		);
+		$tags = array();
+		while( $row = $dbr->fetchObject( $res ) ) {
+			$tags[] = $row->ct_tag;
+		}
+		$wgMemc->set( $key, $tags, 3600*24*3 );
+		return $tags;
 	}
 
 	/**

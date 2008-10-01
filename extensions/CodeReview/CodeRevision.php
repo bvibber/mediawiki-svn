@@ -45,12 +45,12 @@ class CodeRevision {
 		return $this->mStatus;
 	}
 	
-	function getPossibleStates() {
+	static function getPossibleStates() {
 		return array( 'new', 'fixme', 'resolved', 'ok' );
 	}
 	
 	function isValidStatus( $status ) {
-		return in_array( $status, $this->getPossibleStates(), true );
+		return in_array( $status, self::getPossibleStates(), true );
 	}
 	
 	function setStatus( $status ) {
