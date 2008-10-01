@@ -3,7 +3,7 @@
  * Protect against register_globals vulnerabilities.
  * This line must be present before any global variable is referenced.
  */
-if(!defined('MEDIAWIKI'))
+if( !defined( 'MEDIAWIKI' ) )
 	die();
 
 class SpamRegex extends SpecialPage {
@@ -12,7 +12,7 @@ class SpamRegex extends SpecialPage {
 	* Constructor
 	*/
 	function __construct() {
-		parent::__construct( 'SpamRegex', 'spamregex', true, 'execute', false );
+		parent::__construct( 'SpamRegex', 'spamregex' );
 		wfLoadExtensionMessages( 'SpamRegex' );
 	}
 
@@ -49,7 +49,7 @@ class SpamRegex extends SpecialPage {
 			$sRL->showSuccess();
 			$sRF->showForm('');
 		} else if ( 'failure_unblock' == $action ) {
-			$text = htmlspecialchars ($wgRequest->getVal( 'text' ) );
+			$text = htmlspecialchars( $wgRequest->getVal( 'text' ) );
 			$sRF->showForm( wfMsg( 'spamregex-error-unblocking', $text ) );
 		} else if ( $wgRequest->wasPosted() && 'submit' == $action &&
 			$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
@@ -107,10 +107,10 @@ class spamRegexList {
 
 		$wgOut->addWikiMsg( 'spamregex-currently-blocked' );
 		/* get data and play with data */
-		$dbr = wfGetDB( DB_SLAVE );
 		if ( !$this->fetchNumResults() ) {
 			$wgOut->addWikiMsg( 'spamregex-no-currently-blocked' );
 		} else {
+			$dbr = wfGetDB( DB_SLAVE );
 			$titleObj = SpecialPage::getTitleFor( 'SpamRegex' );
 			$action = $titleObj->escapeLocalURL( self::getListBits() );
 			$action_unblock = $titleObj->escapeLocalURL( 'action=delete&'.self::getListBits() );
@@ -176,7 +176,7 @@ class spamRegexList {
 		$key = wfSpamRegexCacheKey( 'spamRegexCore', 'numResults' );
 		$cached = $wgMemc->get( $key );
 		$results = 0;
-		if ( is_null( $cached ) ) {
+		if ( is_null( $cached ) || $cached === false ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$results = $dbr->selectField( 'spam_regex', 'COUNT(*)', '', __METHOD__ );
 			$wgMemc->set( $key, $results, SPAMREGEX_EXPIRE );
