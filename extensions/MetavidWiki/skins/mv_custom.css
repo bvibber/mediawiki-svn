@@ -9,6 +9,11 @@
  *
  * extended styles for metavid extension
  */
+/*annotative layers */
+.anno_en{
+	background:#DDD;
+}
+ 
 .mvd_page_image{
 	float:left;
 	padding-right:5px;

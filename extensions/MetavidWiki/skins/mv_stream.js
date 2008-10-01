@@ -68,7 +68,7 @@ function mv_load_interface_libs(){
 	  		mvJsLoader.doLoad({
 				'$j.ui.draggable.prototype.plugins.drag':'jquery/plugins/ui.draggable.ext.js'
 		  	},function(){
-	  			mv_init_interface.init();
+	  			mv_stream_interface.init();
 		  	});
 	  	});
 	});
@@ -79,13 +79,16 @@ function mv_load_interface_libs(){
  * re sizes the mv_overlay component and mv_tools component
  *  to take up the full page space.
  */
-var mv_init_interface = {
+var mv_stream_interface = {
 	cur_mvd_id:'base',
 	interfaceLoaded:false,
 	init:function(){
 		//don't call multiple times:
 		if(this.interfaceLoaded)return;
-		js_log('mv_init_interface call');
+		//set interfaceLoaded flag:
+		this.interfaceLoaded=true;
+		
+		js_log('f:mv_stream_interface.init call');
 		//add_custom_effects();
 		//set up the init values for mouse over restore:
 		org_vid_title = $j('#mv_stream_time').html();
@@ -137,6 +140,9 @@ var mv_init_interface = {
 		//add all the hover hooks:
 		this.addHoverHooks();
 
+		//add odd even classes (for non-annoative layers
+		this.oddEvenPaint();
+
 		//add edit/navigate hook
 		var st_input_mode=false;
 		$j('#mv_stream_time').click(function(){
@@ -182,8 +188,15 @@ var mv_init_interface = {
 		//unlock the interface updates once everything is setup:
 		mv_lock_vid_updates=false;
 		js_log('done with mv_init_inerface');
-		//$j('#embed_vid').get(0).stop();
-		this.interfaceLoaded=true;
+		//$j('#embed_vid').get(0).stop();		
+	},
+	oddEvenPaint:function(){
+		//remove existing class:
+		$j('.mv_fd_mvd').removeClass("odd").removeClass("even");
+		$j('.mv_fd_mvd:odd').addClass("odd");
+		$j('.mv_fd_mvd:even').addClass("even");		
+		//remove odd/even class for annoative layer: 
+		$j('.anno_en').removeClass("odd").removeClass("even");
 	},
 	addHoverHooks:function(selector){
 		this_stream=this;
@@ -226,7 +239,7 @@ var mv_init_interface = {
 		if( vid_elm.isPlaying() ){
 			if(!vid_elm.onClipDone_disp){
 				this.delay_cur_mvd_id= mvd_id;
-				setTimeout("mv_init_interface.delayDoVidMvdUpdate()", 250);
+				setTimeout("mv_stream_interface.delayDoVidMvdUpdate()", 250);
 			}
 		}else{					
 			this.cur_mvd_id=this.delay_cur_mvd_id=mvd_id;
@@ -241,13 +254,13 @@ var mv_init_interface = {
 		de_highlight_tl_ts(mvd_id);
 		de_highlight_fd(mvd_id);
 		js_log('calling interface restore: ');
-		setTimeout('mv_init_interface.doRestore()',500);				
+		setTimeout('mv_stream_interface.doRestore()',500);				
 		//activiate over on time restore
 		/*$j('#mv_stream_time').hoverIntent({
 			interval:200, //polling interval
 			timeout:200, //delay before onMouseOut
 			over:function(){
-				mv_init_interface.doRestore();
+				mv_stream_interface.doRestore();
 			},
 			out:function(){
 
@@ -257,7 +270,7 @@ var mv_init_interface = {
 	//delay video updates until we are not playing the clip and clipEnd is not displayed
 	delayDoVidMvdUpdate:function(){
 		if($j('#embed_vid').get(0).isPlaying()){
-			setTimeout("mv_init_interface.delayDoVidMvdUpdate()", 250);
+			setTimeout("mv_stream_interface.delayDoVidMvdUpdate()", 250);
 		}else{
 			//only restore if the onClipDone_disp is false
 			if( !$j('#embed_vid').get(0).onClipDone_disp){
@@ -277,7 +290,7 @@ var mv_init_interface = {
 			if( vid_elm.isPlaying()){
 				js_log('vid elm is playing delay restore:')			
 				if(!vid_elm.userSlide) //dont' restore if userSlide is true			
-					setTimeout("mv_init_interface.doRestore()", 500);				
+					setTimeout("mv_stream_interface.doRestore()", 500);				
 			}else{
 				//only restore if onClipDone_disp is false
 				if(!vid_elm.onClipDone_disp){
@@ -342,7 +355,7 @@ function mv_scroll2Time(sec_time){
 /*function mv_doShowVideoDownload(){
 	js_log('f:mv_doShowVideoDownload');
 	//restores orginal state before showing download links: 	
-	mv_init_interface.doRestore();
+	mv_stream_interface.doRestore();
 	return $j('#embed_vid').get(0).org_showVideoDownload();
 }*/
 /* the mvdObject
@@ -639,6 +652,8 @@ function mv_add_new_fd_mvd(titleKey, node_html){
 		js_log('insert to end: ' + insertTitle.start_time + "\n" + node_html);
 		$j('#selectionsBox').append(node_html);
 	}
+	//repaint row colors: 
+	mv_stream_interface.oddEvenPaint();
 }
 
 function get_titleObject(titleKey){
@@ -664,7 +679,7 @@ function mv_disp_remove_mvd(titleKey, mvd_id){
 		if (request.status != 200) result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";
 		$j('#mv_fcontent_'+mvd_id).html( result );
 		//dirty hack to avoid re-write of article->delete();
-		update_delete_submit(titleKey, mvd_id);
+		update_delete_submit(titleKey, mvd_id);		
       }
 }
 function update_delete_submit(titleKey, mvd_id){
@@ -709,10 +724,12 @@ function mv_remove_mvd(titleKey, mvd_id, form){
         	eval(request.responseText);
         	js_log('status: ' + mv_result['status']);
   			if(mv_result['status']=='ok'){
-  				js_log(" status ok should remove: ");
+  				js_log(" status ok should remove: "+mvd_id);
   				//delete success remove mvd:
 				$j('#mv_fd_mvd_'+mvd_id).remove();
   				$j('#mv_tl_mvd_'+mvd_id).remove();
+  				//repaint colors: 
+				mv_stream_interface.oddEvenPaint();
   			}else if(mv_result['status']=='error'){
   				$j(setHtmlId).html( mv_result['error_txt'] );
   				update_delete_submit(titleKey, mvd_id);
@@ -802,7 +819,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 		  		$j('#mv_time_line').append(mv_result['tl_mvd']);
 		  		mv_add_new_fd_mvd(mv_result['titleKey'], mv_result['fd_mvd']);
 
-		  		mv_init_interface.addHoverHooks('#mv_fd_mvd_'+mv_result['mvd_id']+',#mv_tl_mvd_'+mv_result['mvd_id']);
+		  		mv_stream_interface.addHoverHooks('#mv_fd_mvd_'+mv_result['mvd_id']+',#mv_tl_mvd_'+mv_result['mvd_id']);
 		  		//scroll to the new mvd:
 		  		scroll_to_pos(mv_result['mvd_id']);
   			}
@@ -827,7 +844,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 				//(use the titleKey returned from ajax request (in case it got clean or whatever)
 				mv_add_new_fd_mvd(mv_result['titleKey'], mv_result['fd_mvd']);
 
-		  		mv_init_interface.addHoverHooks('#mv_fd_mvd_'+mvd_id);
+		  		mv_stream_interface.addHoverHooks('#mv_fd_mvd_'+mvd_id);
 				//add tails
 				//mv_add_mvd_tails(mv_result['titleKey']);
 				//scroll to the new location (it should have keept its id (cuz its just a move)
@@ -888,9 +905,9 @@ function mv_do_play(mvd_id){
 	mv_lock_vid_updates=true;
 	//update the src if nessesary and no mvd provided:
 	if(!mvd_id){
-		if(mv_init_interface.cur_mvd_id!=mv_init_interface.delay_cur_mvd_id){
-			mv_init_interface.cur_mvd_id =mv_init_interface.delay_cur_mvd_id;
-			do_video_mvd_update(mv_init_interface.cur_mvd_id);
+		if(mv_stream_interface.cur_mvd_id!=mv_stream_interface.delay_cur_mvd_id){
+			mv_stream_interface.cur_mvd_id =mv_stream_interface.delay_cur_mvd_id;
+			do_video_mvd_update(mv_stream_interface.cur_mvd_id);
 		}
 	}
 	//update the embed video actual play time

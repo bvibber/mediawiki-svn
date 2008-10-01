@@ -271,9 +271,9 @@ function typeOf(obj){
 	
 function locateFlashEmbed(clip)
 {
-    for(var i in global_ogg_list)
+    for(var i in global_player_list)
     {
-        var embed = document.getElementById(global_ogg_list[i]);
+        var embed = document.getElementById(global_player_list[i]);
         if(embed.media_element.selected_source.src.match(clip.fileName))
         {
             //js_log('found flash embed');

@@ -96,9 +96,11 @@ function mv_do_mvd_link_rewrite(){
 					//js_log(this.href);
 					//js_log(res);
 					//replace with:
+					//check if we are instance of smwb-title (if so reduce font size) 
+					var fsize = ( $j(this).parents().is(".smwb-title") )? '50%':'100%';
 					//TEMP:
 					$j(this).replaceWith('<div id="mvd_link_'+i+'" ' +
-							'style="vertical-align: bottom;margin:.5em;border:solid thin black;width:300px;height:60px;">' +
+							'style="display:inline;font-size:'+fsize+';vertical-align: bottom;margin:.5em;border:solid thin black;width:300px;height:60px;">' +
 								get_mvdrw_img(i)  +
 							'</div>');
 					$j('#mv_mvd_ex_'+i).click(function(){
@@ -123,21 +125,23 @@ function get_mvdrw_img(i, size){
 	var stream_desc = gMvd[i]['sn'].substr(0,1).toUpperCase() + gMvd[i]['sn'].substr(1).replace('_', ' ')+' '+ gMvd[i]['st'] + ' to '+ gMvd[i]['et'];
 	//@@todo localize javascript msg
 	var wiki_link = '<span title="Original Wiki Page" id="mv_pglink_'+i+'" style="cursor:pointer;width:16px;height:16px;float:left;background:url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/run_mediawiki.png\');"/>';
-	var expand_link = '<span title="Expand Clip"  id="mv_mvd_ex_'+i+'" style="cursor:pointer;width:16px;height:16px;float:left;background:url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\');"/>';
+	var expand_link = '<span title="Play Inline"  id="mv_mvd_ex_'+i+'" style="cursor:pointer;width:16px;height:16px;float:left;background:url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/closed.png\');"/>';
 	var img_url = wgScript+'?action=ajax&rs=mv_frame_server&stream_name='+gMvd[i]['sn']+'&t='+gMvd[i]['st']+'&size=icon';
 	return '<img id="mvd_link_im_'+i+'" onclick="mv_ext('+i+')" ' +
 				'style="cursor:pointer;float:left;height:'+size['h']+'px;width:'+size['w']+'px;" src="'+img_url+'">'+expand_link+wiki_link+' '+
 					'<a title="'+stream_desc+'" href="'+stream_link+'">'+stream_desc+'</a><br>';
 }
 function mv_ext(inx){
-	js_log('f:inx');
+	js_log('f:inx:'+inx);
 	//grow the window to 300+240 540
 	js_log('i: is '+ inx);
 	$j('#mvd_link_'+inx).animate({width:'440px','height':'370px'},1000);
-	$j('#mvd_link_im_'+inx).animate({width:'320px','height':'240px'},1000,function(){
+	$j('#mvd_link_im_'+inx).animate({width:'400px','height':'300px'},1000,function(){
 		//do mv_embed swap
-		$j('#mvd_link_im_'+inx).replaceWith('<video autoplay="true" id="mvd_vid_'+inx +'"></video>');
-		$j('#mvd_vid_'+inx).attr('roe', base_roe_url + gMvd[inx]['sn']+'&t='+gMvd[inx]['st']+'/'+gMvd[inx]['et']);
+		$j('#mvd_link_im_'+inx).replaceWith('<div style="height:300px;width:400px;">' +
+					'<video roe="'+base_roe_url + gMvd[inx]['sn']+'&t='+gMvd[inx]['st']+'/'+gMvd[inx]['et']+'" ' +
+					'autoplay="true" id="mvd_vid_'+inx +'"></video>' +
+				'</div>');		
 		init_mv_embed(true);
 	});
 	$j('#mv_mvd_ex_'+inx).css('background', 'url(\''+wgScriptPath+'/extensions/MetavidWiki/skins/images/opened.png\')');

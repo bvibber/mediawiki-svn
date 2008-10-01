@@ -1,5 +1,5 @@
 mv_addLoadEvent(mv_pre_setup_search);
-
+var mvSearchSetupFlag =false;
 var maxFilters = 8;
 var mv_search_action='';
 function mv_pre_setup_search(req_mode){
@@ -10,6 +10,11 @@ function mv_pre_setup_search(req_mode){
 	});
 }
 function mv_setup_search(req_mode){
+	if(!mvSearchSetupFlag)
+		mv_do_setup_search(req_mode);
+	mvSearchSetupFlag=true;
+}
+function mv_do_setup_search(req_mode){	
 	js_log('f:mv_setup_search: ');
 	add_highlight_function();
 	//look for existing auto completes:

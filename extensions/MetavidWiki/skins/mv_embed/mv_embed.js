@@ -41,7 +41,7 @@ var mv_default_video_size = '400x300';
 var mv_restrict_roe_time_source = true;
 
 
-var global_ogg_list = new Array();
+var global_player_list = new Array();
 var global_req_cb = new Array();//the global request callback array
 var _global = this;
 var mv_init_done=false;
@@ -236,10 +236,11 @@ var mvEmbed = {
   	//js_log('f:check_init_done');
   	//check if all videos are "ready to play"
   	var is_ready=true;
-  	for(var i in global_ogg_list)
-    	is_ready = ( $j('#'+global_ogg_list[i]).get(0).ready_to_play ) ? is_ready : false;  	
+  	for(var i in global_player_list)
+    	is_ready = ( $j('#'+global_player_list[i]).get(0).ready_to_play ) ? is_ready : false;  	
+    	
   	if(!is_ready){
-  		//js_log('some ' + global_ogg_list + ' not ready');
+  		//js_log('some ' + global_player_list + ' not ready');
   		setTimeout( 'mvEmbed.check_init_done()', 250 );
   	}else{
 		//call the callback:
@@ -302,8 +303,7 @@ mediaPlayer.prototype =
 			this.loading_callbacks.push(callback);
 			
 			js_log('plugin not loaded, queing callback');	
-			js_log('requesting plugin: ' + plugin_path);	
-			
+			js_log('requesting plugin: ' + plugin_path);			
 				
 			/*$j.getScript(plugin_path, function(){				
 				js_log(_this.id + ' plugin loaded');
@@ -313,10 +313,12 @@ mediaPlayer.prototype =
 				_this.loading_callbacks = null;
 			});*/
 			
-			eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}'); 
+			eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}');
+			//js_log('DO LOAD: '+this.library); 
 			mvJsLoader.doLoad(lib,function(){
-				js_log(_this.id + ' plugin loaded');
-				_this.loaded = true;
+				//js_log( 'type of lib: ' + eval( 'typeof ' + this.library + 'Embed' ) );
+				//js_log(_this.id + ' plugin loaded');
+				_this.loaded = true;				
 				for(var i in _this.loading_callbacks)
 					_this.loading_callbacks[i]();	
 				_this.loading_callbacks = null;
@@ -424,9 +426,9 @@ mediaPlayers.prototype =
             }
         if(selected_player)
         {
-            for(var i in global_ogg_list)
+            for(var i in global_player_list)
             {
-                var embed = $j('#'+global_ogg_list[i]).get(0);
+                var embed = $j('#'+global_player_list[i]).get(0);
                 if(embed.media_element.selected_source && (embed.media_element.selected_source.mime_type == mime_type))
                 {
                     embed.selectPlayer(selected_player);
@@ -791,17 +793,26 @@ var embedTypes = {
 var mvJsLoader = {
 	 libreq:{},
 	 libs:{},
+	 //to keep consistancy across threads: 
+	 ptime:0,
+	 ctime:0,
+	 
 	 load_time:0,
-	 doLoad:function(libs,callback){		 	 	 
-		 this.callback=	(callback) ? callback:this.callback;
+	 callbacks:new Array(),
+	 doLoad:function(libs,callback){	
+	 	 this.ctime++;
+	 	 //stack callbacks	
+	 	 if(callback){
+	 	 	//js_log('add callback: '+callback); 
+	 	 	this.callbacks.push(callback);
+	 	 }				 	 		
 		 //merge any new requested libs
 		 if(libs){
-		 	for(i in libs)
+		 	for(var i in libs)
 		 		this.libs[i]=libs[i];
 		 }		 		 
 		 var loading=0;
 		 var i=null;
-		 //js_log("doLoad_ load set to 0 on libs:"+ libs);
 		 for(var i in this.libs){
 		 	 //if(i=='vlcEmbed')alert('got called with '+i+' ' + typeof(vlcEmbed));
 			 //itor the objPath (to avoid 'has no properties' errors)
@@ -809,9 +820,11 @@ var mvJsLoader = {
 			 var cur_path ='';
 			 var cur_load=0;
 			 for(var p in objPath){
-				 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];
-				 //if(i=='vlcEmbed')alert("looking at path: "+ cur_path);
-				 //js_log("eval:  " + eval('typeof ('+cur_path+');'));
+				 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];				 
+				 if(i=='flashEmbed'){				 	
+				 	js_log("eval:  " + eval('typeof ('+cur_path+');'));
+				 	js_log("cur_load = loading=1");
+				 }
 				 if(eval('typeof '+cur_path)=='undefined'){
 					 cur_load = loading=1;
 					 break;
@@ -821,8 +834,7 @@ var mvJsLoader = {
 				 	break;
 				 }
 		 	 }
-			 if(cur_load==1){
-				 //js_log('missing lib:'+i + ' do load:'+mv_embed_path+libs[i]);
+			 if(cur_load==1){				 
 				 if(!this.libreq[i])loadExternalJs(mv_embed_path + this.libs[i]);
 				 this.libreq[i]=1;
 			 }
@@ -834,8 +846,26 @@ var mvJsLoader = {
 				setTimeout('mvJsLoader.doLoad()',25);
 			 }
 		 }else{
-		 	this.callback();
+		 	//only do callback if we are in the same range: 		 	
+		 	var cb_count=0;
+		 	for(var i in this.callbacks)
+		 		cb_count++;		 		
+		 	//js_log('REST LIBS: loading is: '+ loading + ' run callbacks: '+cb_count);
+		 	//reset the libs
+		 	this.libs={};		 			 			 			
+		 	//js_log('done loading do call: ' + this.callbacks[0] );		 
+		 	while(this.callbacks.length !=0 ){
+		 		if(this.ptime== ( this.ctime-1) ){ //enforce thread consistancy
+		 			this.callbacks.pop()();
+		 			//func = this.callbacks.pop();
+		 			//js_log(' run: '+this.ctime+ ' p: ' + this.ptime + ' ' +loading+ ' :'+ func);
+					//func();		
+		 		}else{
+		 			break;
+		 		}
+		 	}		 	
 		 }
+		 this.ptime=this.ctime;
 	 }
 }
 
@@ -847,7 +877,7 @@ var mvJsLoader = {
  * and >= 1.1.4 not working: http://pastie.caboo.se/92595
  * $j(document).ready( function(){ */
 function init_mv_embed(force){
-	//js_log('mv_init');
+	js_log('f:init_mv_embed');
 	if(!force && mv_init_done){
 		js_log("mv_init_done do nothing...");
 		return false;
@@ -941,6 +971,43 @@ if (document.addEventListener && !embedTypes.safari) {
 function mv_embed(){
 	//get mv_embed location if it has not been set
 	js_log('mv_embed ' + mvEmbed.Version);
+	
+	var loadPlaylistLib=false;
+	//jquery version: 
+	$j('video,playlist').each(function(){
+		js_log( "LOOP ON: " +this.id + ' tag: '+ this.tagName);
+		
+		elm_id = $j(this).attr("id");
+		if(!elm_id || elm_id==''){
+			elm_id = 'v'+ global_player_list.length;
+			$j(this).attr("id", elm_id);
+		}
+		//store a global reference to the id    
+    	global_player_list.push(elm_id);
+		//add loading:		
+		$j(this).after('<div id="pre_loading_div_'+elm_id + '">'+
+            	getMsg('loading_txt')+'</div>' ); 
+        //if video doSwap
+        if(this.tagName=='VIDEO'){
+        	var videoInterface = new embedVideo(this);	  
+			swapEmbedVideoElement(this, videoInterface);
+        }
+        //if playlist set do load playlist
+        if(this.tagName=='PLAYLIST')
+        	loadPlaylistLib=true; 
+	});
+	if(loadPlaylistLib){
+		js_log('f:load Playlist Lib:');
+		mvJsLoader.doLoad({'mvPlayList':'mv_playlist.js'},function(){
+			$j('playlist').each(function(){							
+				//create new playlist interface:
+				var playlistInterface = new mvPlayList( this );
+				swapEmbedVideoElement(this, playlistInterface);				
+			});
+		});
+	}
+	
+	/*
     //send a request to load the given type
     //js_log('detected: '+ embedTypes.getPlayerType() );
     video_elements = document.getElementsByTagName("video");
@@ -951,9 +1018,11 @@ function mv_embed(){
             vid_id = $j(video_elements[i]).attr("id");           
             //set id if empty:
             if(!vid_id || vid_id==''){
-  				video_elements[i].id= 'v'+ global_ogg_list.length;
+  				video_elements[i].id= 'v'+ global_player_list.length;
             }            
-            
+            //store a global reference to the id    
+    		global_player_list.push(vid_id);
+    		
             //create and swap in the video interface:             
 	   		var videoInterface = new embedVideo(video_elements[i]);	   		
    			//swap in:
@@ -970,9 +1039,23 @@ function mv_embed(){
     }
     //if there are no playlist elements do not load the playlist-js
     playlist_elements = document.getElementsByTagName("playlist");
-    if( playlist_elements.length > 0) {
+    if( playlist_elements.length > 0) {    	
+    	for(var i = 0; i < playlist_elements.length; i++) {
+    		var pl_id = $j(playlist_elements[i]).attr("id");   
+    		if(!pl_id || pl_id==''){
+    			pl_id = 'v'+ global_player_list.length;
+  				$j(playlist_elements[i]).attr("id", pl_id);
+            }
+            //add loading: 
+            $j(playlist_elements[i]).after('<div id="pre_loading_div_'+pl_id + '">'+
+            	getMsg('loading_txt')+'</div>' );          
+            
+            //store a global reference to the id         
+    		global_player_list.push(pl_id);
+    	}  
 		do_playlist_functions();
     }
+    * */
 }
 
 function mv_do_sequence(initObj){
@@ -998,24 +1081,13 @@ function mv_do_sequence(initObj){
 	});
 }
 
-var pl_load_time=0;
-function do_playlist_functions(){
+/*var pl_load_time=0;
+function do_playlist_functions(){	
+	js_log('f:do_playlist_functions:');
 	mvJsLoader.doLoad({'mvPlayList':'mv_playlist.js'},function(){
 		playlist_elements = document.getElementsByTagName("playlist");
 		js_log('loded pl js ' +playlist_elements.length );
-		for(var i = 0; i < playlist_elements.length; i++) {
-			var pl_id = $j(playlist_elements[i]).attr('id');
-			if(!pl_id || pl_id==''){
-  				playlist_elements[i].id = 'v'+ global_ogg_list.length;
-            }        
-			//add loading: 
-			parent_elm = playlist_elements[i].parentNode;     
-	        load_div = document.createElement('div');
-	        load_div.setAttribute("id", 'pre_loading_div_'+pl_id);
-	        load_div.innerHTML=getMsg('loading_txt');        
-		    parent_elm.appendChild(load_div);
-		    js_log('load div: '+load_div.innerHTML);
-		
+		for(var i = 0; i < playlist_elements.length; i++) {				
 			//create new playlist interface:
 			var playlistInterface = new mvPlayList( playlist_elements[i] );
 			if(swapEmbedVideoElement(playlist_elements[i], playlistInterface) ){				
@@ -1023,7 +1095,7 @@ function do_playlist_functions(){
 			}
 		}
 	});
-}
+}*/
 
 /*
 * swapEmbedVideoElement
@@ -1083,12 +1155,8 @@ function swapEmbedVideoElement(video_element, videoInterface){
     //now run the getHTML on the new embedVideo Obj:
     embed_video.getHTML();
     */    
-    //js_log('html set:' + document.getElementById(embed_video.id).innerHTML);
-    //store a reference to the id
-    //(for single instance plugins that need to keep track of other instances on the page)
-    global_ogg_list.push(embed_video.id);
-
-    js_log('done with child: ' + embed_video.id + ' len:'+global_ogg_list.length);
+    //js_log('html set:' + document.getElementById(embed_video.id).innerHTML);   
+    js_log('done with child: ' + embed_video.id + ' len:'+global_player_list.length);
  	return true;
 }
 /*
@@ -1235,7 +1303,7 @@ textInterface.prototype = {
 			if($j('#mmbody_'+this.pe.id).length==0)this.show();
 			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
 				if(!inserted){
-					js_log( ntp2seconds($j(this).attr('start')) + ' > ' + text_clip_start_time);
+					//js_log( ntp2seconds($j(this).attr('start')) + ' > ' + text_clip_start_time);
 					if( ntp2seconds($j(this).attr('start')) > text_clip_start_time){
 						inserted=true;
 						$j(this).before(insertHTML);

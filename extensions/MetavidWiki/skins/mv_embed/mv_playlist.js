@@ -5,7 +5,6 @@
  * part of mv_embed: 
  * http://metavid.ucsc.edu/wiki/index.php/Mv_embed 
  */
- js_log('load mv_playlist');
 var mv_default_playlist_attributes = {
 	//playlist attributes :
 	"id":null,

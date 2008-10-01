@@ -153,13 +153,17 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			$img_url = MV_StreamImage::getStreamImageURL( $mvd_page->stream_id, $mvd_page->start_time, $mvDefaultVideoPlaybackRes, true );
 		}
 		$oe_class = '';
+		//color annnotative layers seperatly:		
+		$oe_class.=' ' . htmlspecialchars( strtolower( $mvd_page->mvd_type ) );
+		//preset classes for rendering on page load (will repaint but whatever) 		
 		if ( $this->oddEvenToggle ) {
 			$this->oddEvenToggle = false;
-			$oe_class = ' even';
+			$oe_class .= ' even';
 		} else {
 			$this->oddEvenToggle = true;
-			$oe_class = ' odd';
+			$oe_class .= ' odd';
 		}
+		
 		// style=\"background:#".$this->getMvdBgColor($mvd_page)."\" "
 		$wgOut->addHTML( '<fieldset class="mv_fd_mvd' . htmlspecialchars( $oe_class ) . '" id="mv_fd_mvd_' . htmlspecialchars( $mvd_page->id ) . '" ' .
 					'name="' . htmlspecialchars( $mvd_page->wiki_title ) . '" ' .
