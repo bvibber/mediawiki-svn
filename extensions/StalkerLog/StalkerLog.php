@@ -23,7 +23,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 # Basic setup
 $wgExtensionMessagesFiles['stalkerlog'] = dirname(__FILE__) . '/' . 'StalkerLog.i18n.php';
-$wgAdditionalRights[] = 'stalkerlog-view';
+$wgAdditionalRights[] = 'stalkerlog-view-log';
 $wgGroupPermissions['*']['stalkerlog-view-log'] = true;
 $wgHooks['UserLoginComplete'][] = 'wfStalkerLogin';
 $wgHooks['UserLogoutComplete'][] = 'wfStalkerLogout';
