@@ -155,8 +155,9 @@ function update_flv_pointer_db($stream_name){
 			array('LIMIT'=>1));							
 	}						
 }
-function simple_run_background($command){
-	$PID = shell_exec("nohup $command > /dev/null & echo $!");
+
+function simple_run_background($command, $priority=10){
+	$PID = shell_exec("nohup nice -n $priority $command > /dev/null & echo $!");
 	return $PID;
 }
 //Verifies if a process is running in linux
