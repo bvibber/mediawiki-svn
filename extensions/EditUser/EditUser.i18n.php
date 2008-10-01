@@ -91,6 +91,13 @@ $messages['arz'] = array(
 	'edituser-exempt' => 'المستخدم المحدد لا يمكن تعديله',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Chaipau
+ */
+$messages['as'] = array(
+	'edituser-dosearch' => 'সন্ধান কৰক',
+);
+
 /** Kotava (Kotava)
  * @author Wikimistusik
  */

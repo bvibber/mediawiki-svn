@@ -2627,7 +2627,7 @@ $1 pou done yo ki pa kripte, sekirize.</p>',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Eleksyon nan konsèy administrasyon fondasyon Wikimedya</a> :
 Vòt ouvè jiska 22 June',
 	'boardvote_notstarted' => 'Vòt an poko koumanse.',
-	'boardvote_closed' => 'Eleksyon an fini. Rezilta a make anlè [[meta:Election results 2008/fr|paj rezilta yo]] (ht).',
+	'boardvote_closed' => 'Eleksyon an fini. Rezilta a make anlè [http://meta.wikimedia.org/wiki/Board_elections/2008/Results paj rezilta yo] (ht).',
 	'boardvote_edits_many' => 'pliszyè',
 	'group-boardvote' => 'Tablo pou vòt administratè yo',
 	'group-boardvote-member' => 'Tablo pou vòt administratè a',
@@ -5250,11 +5250,11 @@ $messages['sr-ec'] = array(
 поље може оставити празно.</p>',
 	'boardvote_nosession' => 'Ваш Викимедијин кориснички ID се не може утврдити.
 Молимо вас, пријавите се на викију где задовољавате предуслове за право гласа, и идите на <nowiki>[[Special:Boardvote]]</nowiki>.
-Морате користити налог са најмање $1 измена направљених пре $2, и са најмање $3 измена између $4 и $5.',
+Морате користити налог са најмање $1 {{PLURAL:$1|измену|измене|измена}} направљених пре $2, и са најмање $3 {{PLURAL:$3|измену|измене|измена}} између $4 и $5.',
 	'boardvote_notloggedin' => 'Нисте пријављени.
-Да бисте гласали, морате користити налог са најмање $1 измена направљених пре $2, и са најмање $3 измена између $4 и $5.',
+Да бисте гласали, морате користити налог са најмање $1 {{PLURAL:$1|измена|измене|измена}} направљених пре $2, и са најмање $3 {{PLURAL:$3|измена|измене|измена}} између $4 и $5.',
 	'boardvote_notqualified' => 'Не задовољавате услове за гласање на овим изборима.
-Неопходно је да сте направили најмање $1 измена пре $2, и најмање $3 измена између $4 и $5.',
+Неопходно је да сте направили најмање $1 {{PLURAL:$1|измену|измене|измена}} пре $2, и најмање $3 {{PLURAL:$3|измену|измене|измена}} између $4 и $5.',
 	'boardvote_novotes' => 'Нико још увек није гласао.',
 	'boardvote_time' => 'Време',
 	'boardvote_user' => 'Корисник',

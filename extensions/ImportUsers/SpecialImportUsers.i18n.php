@@ -161,6 +161,14 @@ $messages['bg'] = array(
 	'importusers-realname' => 'истинско име',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'importusers-log' => "Registre d'importació",
+	'importusers-password' => 'contrasenya',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */
@@ -844,11 +852,12 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'importusers' => 'Импортирование участников',
-	'importusers-desc' => 'Импорт большого количества участников из CSV-файла; кодировка: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Импорт большого количества учётных записей]] из CSV-файла; кодировка: UTF-8',
 	'importusers-uploadfile' => 'Загрузить файл',
 	'importusers-form-caption' => 'Введите CVS-файл (UTF-8)',
 	'importusers-form-file' => 'Формат файла участников (csv):',

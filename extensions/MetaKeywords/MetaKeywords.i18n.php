@@ -58,6 +58,13 @@ $messages['arz'] = array(
   # أى وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'metakeywords-desc' => 'Umožňuje konfiguraci značek <tt>&lt;meta "keywords"&gt;</tt> a <tt>&lt;meta "description"&gt;</tt> v závislosti na jmenném prostoru',
+);
+
 /** French (Français)
  * @author Grondin
  */

@@ -396,6 +396,30 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'spamdifftool' => 'De „schwazze Leß“ för SPAM beärbeide',
 	'spamdifftool-desc' => 'Ene Wääsch för neu Enndräsch en de „schwazze Leß“ för SPAM ze krijje, fun de Sigge met de Ongerscheede zwesche Versijohne uß.',
+	'spamdifftool_cantedit' => 'Schadt — Do häß nit dat Rääsch, de „schwazze Leß“ jäje der <i lang="en">SPAM</i> ze ändere.',
+	'spamdifftool_notext' => 'Mer han keine Tex för en de „schwazze Leß“ jäje der <i lang="en">SPAM</i> eren ze donn.
+
+<a href="$1">Wigger maache!</a>',
+	'spamdifftool_confirm' => 'Do moß norr_ens beshtähteje, dat De di Enndrääsch en de „schwazze Leß“ jäje der <i lang="en">SPAM</i> eren donn wells.
+
+(<a href="$1" target="new">Donn e Problem melde!</a>)',
+	'spamdifftool_summary' => 'Bei de „schwazze Leß“ jäe der <i lang="en">SPAM</i> dobei donn',
+	'spamdifftool_urls_detected' => 'Hee di URLs kohme en dä Änderunge för, wat för en wullt Ehr dann
+jez jähn en de „schwazze Leß“ jäje der <i lang="en">SPAM</i> han?
+De Ennstellunge jonn fun de Shträngßte noh de Lesjehrßde.
+En jannze Domain ze sperre deit jede Lengk verbeede, dä noh do jeiht.
+
+Paß op, dat De nit janze Domains spächß, woh Metmaachersigge fun
+dänne drop lijje, wi zem Beispell blogpost.com, geocities.com, un esu.',
+	'spamdifftool_no_urls_detected' => 'Kein URLs jefonge.
+
+<a href="$1">Zeröck jonn!</a>',
+	'spamdifftool_spam_link_text' => 'en der <i lang="en">SPAM</i> donn',
+	'spamdifftool_option_domain' => 'alles fun he dä Domain',
+	'spamdifftool_option_subdomain' => 'alles fun he dä Ongerdomain',
+	'spamdifftool_option_directory' => 'hee di Ongerdomain un dat Verzeichnis',
+	'spamdifftool_option_none' => 'nix',
+	'spamdifftool_block' => 'Sperre:',
 	'spamdifftool_submit_buttom' => 'Faßhallde!',
 );
 

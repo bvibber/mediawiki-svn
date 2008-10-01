@@ -83,6 +83,19 @@ $messages['bg'] = array(
 	'newschannel_exclude_category' => 'Изключване на категория:',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'newschannel' => 'Kanál novinek',
+	'newschannel-desc' => 'Implementuje kanál novinek jako dynamickou [[Special:NewsChannel|speciální stránku]]',
+	'newschannel_format' => 'Formát:',
+	'newschannel_limit' => 'Omezení:',
+	'newschannel_include_category' => 'Další kategorie:',
+	'newschannel_exclude_category' => 'Kromě kategorií:',
+	'newschannel_submit_button' => 'Vytvořit kanál',
+);
+
 /** German (Deutsch)
  * @author Cornelius Sicker
  */

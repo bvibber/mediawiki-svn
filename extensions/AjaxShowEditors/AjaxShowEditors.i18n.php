@@ -134,6 +134,13 @@ $messages['br'] = array(
 	'ajax-se-usernotfound' => "FAZI : n'eo ket bet kavet an implijer",
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'ajax-se-userinvalid' => 'Error: usuari no vàlid',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

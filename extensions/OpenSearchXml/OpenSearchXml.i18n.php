@@ -58,6 +58,13 @@ $messages['eo'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON-interfaco proviza por tektaj elĉerpaĵoj',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'opensearchxml-desc' => 'رابط مبتنی بر JSON [http://www.opensearch.org OpenSearch] چکیده‌های متن را تامین می‌کند',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -182,5 +189,12 @@ $messages['sv'] = array(
  */
 $messages['vec'] = array(
 	'opensearchxml-desc' => 'Interfàcia JSON par [http://www.opensearch.org OpenSearch] par estrati de testi',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'opensearchxml-desc' => 'Giao diện [http://www.opensearch.org/ OpenSearch] cung cấp đoạn trích văn bản dạng JSON',
 );
 

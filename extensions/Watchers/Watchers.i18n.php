@@ -430,14 +430,16 @@ $messages['pt'] = array(
 	'watchers_less_than_x' => 'Menos de $1 pessoa está vigiando esta página.',
 );
 
-/** Russian (Русский) */
+/** Russian (Русский)
+ * @author Kaganer
+ */
 $messages['ru'] = array(
 	'watchers_link_title' => 'Кто следит за этой страницей?',
 	'watchers_error_article' => '<b>ошибка:</b> статьи не существует.',
-	'watchers_header' => 'Луди надлюдающие за «$1»',
+	'watchers_header' => '{{PLURAL:$2|Участник|Участники}}, наблюдающие за страницей "$1"',
 	'watchers_noone_watches' => 'Никто не следит за этой страницей.',
-	'watchers_x_or_more' => '$1 или более человек наблюдают за этой страницей.',
-	'watchers_less_than_x' => 'Менее чем $1 человек наблюдают за этой страницей.',
+	'watchers_x_or_more' => 'За этой страницей наблюдают $1 или более {{PLURAL:$1|участников|участников}}.',
+	'watchers_less_than_x' => 'За этой страницей наблюдает менее $1 {{PLURAL:$1|участника|участников}}.',
 );
 
 /** Slovak (Slovenčina)

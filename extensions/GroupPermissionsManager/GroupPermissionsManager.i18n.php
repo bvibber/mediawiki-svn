@@ -1095,6 +1095,7 @@ $messages['oc'] = array(
 	'right-recentchanges' => 'Veire las modificacions recentas',
 	'right-edittalk' => 'Modificar las paginas de discussion',
 	'right-edit-new' => 'Modificar las paginas (qu’an pas de pagina de discussion)',
+	'right-readold' => 'Veire lo contengut de las versions ancianas e de las difs',
 );
 
 /** Polish (Polski)

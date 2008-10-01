@@ -245,7 +245,7 @@ Případné dotazy k tomuto systému distribuce rozšíření můžete klást na
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'extensiondistributor' => 'Herunterladen von MediaWiki-Erweiterung',
+	'extensiondistributor' => 'Herunterladen von MediaWiki-Erweiterungen',
 	'extdist-desc' => 'Erweiterung für die Verteilung von Schnappschuss-Archiven von Erweiterungen',
 	'extdist-not-configured' => 'Bitte konfiguriere $wgExtDistTarDir und $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Das konfigurierte Kopien-Arbeitsverzeichnis ist nicht vorhanden!',

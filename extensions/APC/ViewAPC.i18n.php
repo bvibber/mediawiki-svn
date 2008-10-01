@@ -491,12 +491,14 @@ $messages['bg'] = array(
 );
 
 /** Catalan (Català)
+ * @author Aleator
  * @author Jordi Roqué
  */
 $messages['ca'] = array(
 	'viewapc-clear-confirm' => 'Voleu esborrar la memòria cau?',
 	'viewapc-clear-user-cache' => "Esborrar la memòria clau de l'usuari",
 	'viewapc-mode-stats' => "Estadístiques de l'ordinador central",
+	'viewapc-info-general' => 'Informació general',
 	'viewapc-rps' => '$1 peticions per segon',
 	'viewapc-info-runtime' => "Informació de temps d'execució",
 	'viewapc-info-memory' => "Diagrames d'estat de l'ordinador central",
@@ -504,6 +506,7 @@ $messages['ca'] = array(
 	'viewapc-display-mem_size' => 'Mida',
 	'viewapc-display-too-big' => "''El contingut és massa gran per a mostrar-lo''",
 	'viewapc-ls-options-legend' => 'Opcions',
+	'viewapc-ls-header-name' => 'Nom',
 	'viewapc-ls-header-size' => 'Mida',
 	'viewapc-ls-header-accessed' => 'Darrer accés',
 	'viewapc-ls-header-modified' => 'Darrera modificació',
@@ -1472,7 +1475,7 @@ APC non pare esser active.',
 	'viewapc-hitrate' => 'Frequentia de accessos',
 	'viewapc-missrate' => 'Frequentias de mancos',
 	'viewapc-insertrate' => 'Frequentia de insertion',
-	'viewapc-cachefull' => 'Computo de cache plen',
+	'viewapc-cachefull' => 'Contator de cache plen',
 	'viewapc-rps' => '$1 requestas per secunda',
 	'viewapc-info-runtime' => 'Informationes de execution',
 	'viewapc-info-memory' => 'Diagrammas del stato del servitor',
@@ -1503,7 +1506,7 @@ APC non pare esser active.',
 	'viewapc-display-deletion_time' => 'Delite',
 	'viewapc-display-no-delete' => 'Non delite',
 	'viewapc-display-access_time' => 'Accedite',
-	'viewapc-display-ref_count' => 'Computo de referentia',
+	'viewapc-display-ref_count' => 'Numero de referentias',
 	'viewapc-display-mem_size' => 'Grandor',
 	'viewapc-display-stored-value' => 'Valor immagazinate',
 	'viewapc-display-too-big' => "''Le contento es troppo grande pro esser monstrate.''",
@@ -2241,6 +2244,7 @@ $messages['nds'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author McDutchie
  * @author SPQRobin
  * @author Siebrand
  */
@@ -2277,7 +2281,7 @@ APC lijkt niet gestart te zijn.',
 	'viewapc-hitrate' => 'Hitratio',
 	'viewapc-missrate' => 'Misratio',
 	'viewapc-insertrate' => 'Toevoegingssnelheid',
-	'viewapc-cachefull' => 'Cachetelling',
+	'viewapc-cachefull' => '"Cache vol"-telling',
 	'viewapc-rps' => '$1 verzoeken per seconde',
 	'viewapc-info-runtime' => 'Runtime-informatie',
 	'viewapc-info-memory' => 'Hoststatusdiagrammen',

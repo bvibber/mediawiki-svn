@@ -342,3 +342,12 @@ $messages['vec'] = array(
 	'whatismyip-out' => 'El to IP el xe:',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'whatismyip' => 'IP của tôi là gì?',
+	'whatismyip-desc' => 'Hiển thị địa chỉ IP của người dùng tại [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'IP của bạn:',
+);
+

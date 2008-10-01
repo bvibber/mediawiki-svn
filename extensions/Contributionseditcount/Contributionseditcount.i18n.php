@@ -178,7 +178,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'contributionseditcount' => 'Iste usator ha $1 modificationes.',
-	'contributionseditcount-desc' => 'Monstra un computo de modificationes in le [[Special:Contributions|pagina de contributiones de usator]]',
+	'contributionseditcount-desc' => 'Monstra un contator de modificationes in le [[Special:Contributions|pagina de contributiones de usator]]',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -364,11 +364,12 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'contributionseditcount' => 'Этот участник сделал $1 правок.',
-	'contributionseditcount-desc' => 'Показывает количество правок на странице [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Показывает количество сделанных правок на [[Special:Contributions|странице вклада участника]]',
 );
 
 /** Yakut (Саха тыла)

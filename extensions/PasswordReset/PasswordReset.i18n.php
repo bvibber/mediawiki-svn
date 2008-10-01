@@ -743,11 +743,12 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Illusion
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'passwordreset' => 'Сброс пароля',
-	'passwordreset-desc' => "Сбрасывает пароли участников вики, если есть права 'passwordreset'",
+	'passwordreset-desc' => "[[Special:Passwordreset|Сбрасывает пароли участников вики-проекта]] — требуются права 'passwordreset'",
 	'passwordreset-invalidusername' => 'Недопустимое имя участника',
 	'passwordreset-emptyusername' => 'Пустое имя участника',
 	'passwordreset-nopassmatch' => 'Пароли не совпадают',

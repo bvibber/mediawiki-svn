@@ -135,6 +135,13 @@ $messages['oc'] = array(
 	'googleadsense-desc' => 'Apond [http://www.google.com/adsense Google AdSense] a la barra laterala',
 );
 
+/** Russian (Русский)
+ * @author Kaganer
+ */
+$messages['ru'] = array(
+	'googleadsense-desc' => 'Добавить [http://www.google.com/adsense рекламу Google AdSense] в навигационную панель',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

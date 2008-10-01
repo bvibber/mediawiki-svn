@@ -827,6 +827,13 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_protect_source_material' => 'المادة المصدر الأصلية محمية من التعديلات',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Chaipau
+ */
+$messages['as'] = array(
+	'mv_tool_search' => 'সন্ধান কৰক',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
@@ -1028,6 +1035,7 @@ $messages['es'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author McDutchie
  * @author Urhixidur
  * @author Verdy p
  * @author Zetud
@@ -1045,15 +1053,15 @@ $messages['fr'] = array(
 	'ao_file_MPEG1' => 'Archive.org - MPEG1',
 	'ao_file_MPEG2' => 'Archive.org - MPEG2 original',
 	'ao_file_flash_flv' => 'Archive.org - vidéo Flash',
-	'mv_error_stream_missing' => '<span class="error">Erreur : il n\'existe aucun fichier vidéo associé avec ce flux.</span><br /> Vous êtes prié de reporter ceci sur le site d\'administration.',
+	'mv_error_stream_missing' => '<span class="error">Erreur : il n\'existe aucun fichier vidéo associé avec ce flux.</span><br /> Vous êtes prié de reporter ceci à l\'administrateur du site.',
 	'mv_stream_meta' => 'Page de flux',
 	'mv_add_stream' => "Ajout d'un flux metavid",
 	'mv_edit_stream' => 'Modifier un flux metavid',
 	'mvexportsearch' => 'Exporter Metavid',
-	'mvexportsequence' => 'Séquence d’exportation de Metavid',
-	'mvexportstream' => 'Flux d’exportation de Metavid',
+	'mvexportsequence' => 'Exporter une séquence Metavid',
+	'mvexportstream' => 'Exporter un flux de Metavid',
 	'mv_add_stream_page' => "Ajout d'un flux metavid",
-	'mv_edit_strea_docu' => "<b>Éditer l'administration des flux</b> <br /> pour qu'un utilisateur puisse voir ou éditer la page $1 de visualisation.",
+	'mv_edit_strea_docu' => '<p>Éditer des flux</b> <b>(admin)</b><br />Pour la visualisation/modification par des utilisateurs normaux, voyez la page $1',
 	'mv_add_stream_docu' => "<p>Ajouter un nouveau flux avec le champ ci-dessous.</p><p>Plus d'informations sont données sur <a href=\"\$1\">la page d'aide concernant l'ajout d'un flux.",
 	'mv_add_stream_submit' => 'Ajouter un flux',
 	'mv_no_stream_files' => 'Fichiers de flux inexistants.',
@@ -1924,6 +1932,20 @@ $messages['ia'] = array(
 	'metavid' => 'Pagina Metavid',
 	'mv_missing_stream' => 'Stream mancante: $1',
 	'specialpages-group-mv_group' => 'Paginas special de MetaVidWiki',
+	'mv_ogg_low_quality' => 'Capace de stream per web - Ogg Theora 300kbs',
+	'mv_ogg_high_quality' => 'Alte qualitate - Ogg Theora 900kbs',
+	'mv_flash_low_quality' => 'Capace de stream per web - Video Flash',
+	'mv_archive_org_link' => 'Ligamines verso originales in mpeg2 a Archive.org',
+	'mv_error_stream_missing' => '<span class="error">Error: Il non ha un file de video associate con iste stream.</span><br />
+Per favor reporta isto al administrator del sito.',
+	'mv_stream_meta' => 'Pagina de stream',
+	'mv_add_stream' => 'Adder stream Metavid',
+	'mv_edit_stream' => 'Modificar stream Metavid',
+	'mvexportsearch' => 'Exportar Metavid',
+	'mvexportsequence' => 'Exportar sequentia Metavid',
+	'mvexportstream' => 'Exportar stream Metavid',
+	'mv_add_stream_page' => 'Adder stream Metavid',
+	'mv_edit_strea_docu' => '<p>Modificar stream <b>admin</b><br />pro visualisation/modification per usatores normal, vide le pagina $1',
 	'mv_remove_reason' => 'Motivo pro deletion:',
 	'mv_tool_search' => 'Cercar',
 	'mv_tool_export' => 'Exportar',
@@ -3068,6 +3090,7 @@ Aqueste tipe de presentacion es pel tèxt qu'es parlat amb lo flus vidèo. De li
 	'mv_match_text_one' => '~ 1 ocuréncia',
 	'mv_edit_sequence' => 'Edicion de la sequéncia : $1',
 	'mv_sequence_player_title' => 'lector de sequéncia',
+	'mv_resource_not_found' => 'Ressorsa <b>$1</b> introbabla',
 	'mv_save_sequence' => 'Salvar la sequéncia',
 	'mv_sequence_page_desc' => 'Salvar la sequéncia actuala',
 	'mv_sequence_add' => 'Apondre de clips',
@@ -3348,6 +3371,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -3373,7 +3397,7 @@ $messages['ru'] = array(
 	'mv_path_type_wiki_title' => 'вики-название медиа',
 	'mv_path_type_label' => 'тип пути',
 	'mv_base_offset_label' => 'основное смещение',
-	'mv_duration_label' => 'длительность',
+	'mv_duration_label' => 'Длительность',
 	'mv_file_desc_label' => 'поток опис сбщ',
 	'mv_delete_stream_file' => 'удалить ссылку на потоковый файл',
 	'mv_save_changes' => 'Сохранить изменения',
@@ -3405,7 +3429,7 @@ $messages['ru'] = array(
 	'mv_stream_delete_warning' => 'Удаление этого потока приведёт к удалению $1 страниц метаданных',
 	'mv_tool_search' => 'Поиск',
 	'mv_tool_search_title' => 'Поиск в этом потоке',
-	'mv_search_transcripts_for' => 'Поиск стенограммы для',
+	'mv_search_transcripts_for' => 'Поиск видео для $1 (скрыть этот блок)',
 	'mv_tool_navigate' => 'Навигация',
 	'mv_tool_navigate_title' => 'Навигация по полному потоку',
 	'mv_tool_export' => 'Экспорт',

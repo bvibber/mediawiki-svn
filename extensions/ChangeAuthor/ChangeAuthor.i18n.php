@@ -1205,6 +1205,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1224,7 +1225,7 @@ $messages['ru'] = array(
 	'changeauthor-revview' => 'Версия #$1 из $2',
 	'changeauthor-nosuchtitle' => 'Не существует статьи с названием «$1».',
 	'changeauthor-weirderror' => 'Произошла очень странная ошибка. Пожалуйста, повторите ваш запрос. Если ошибка снова возникнет, то вероятно это означает, что база данных испорчена.',
-	'changeauthor-invalidform' => 'Пожалуйста, используйте форму на странице Special:ChangeAuthor, а не какую-либо другую.',
+	'changeauthor-invalidform' => 'Пожалуйста, используйте форму на [[Special:ChangeAuthor|служебной странице]], а не какую-либо другую.',
 	'changeauthor-success' => 'Запрос успешно обработан.',
 	'changeauthor-logentry' => 'Изменён автор $2 $1 с $3 на $4',
 	'changeauthor-logpagename' => 'Журнал изменения авторов',
@@ -1263,7 +1264,7 @@ $messages['sr-ec'] = array(
 	'changeauthor-pagename-or-revid' => 'Име странице или ИД ревизије:',
 	'changeauthor-pagenameform-go' => 'Иди',
 	'changeauthor-comment' => 'Коментар:',
-	'changeauthor-changeauthors-multi' => 'Промени аутора/ауторе',
+	'changeauthor-changeauthors-multi' => 'Промени {{PLURAL:$1|аутора|ауторе}}',
 	'changeauthor-changeauthors-single' => 'Промени аутора',
 	'changeauthor-invalid-username' => 'Погрешно корисничко име "$1".',
 	'changeauthor-nosuchuser' => 'Нема корисника "$1".',

@@ -217,12 +217,13 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'signaturelogpage' => 'Журнал подписей',
 	'signature-desc' => 'Позволяет [[Special:SignDocument|подписывать]] документы',
-	'signaturelogpagetext' => 'Это журнал всех подписей, добавленных к документам с помощью [[Special:SignDocument]].',
+	'signaturelogpagetext' => 'Это журнал [[Special:SignDocument|всех подписей, добавленных к документам]].',
 	'signaturelogentry' => 'подписал документ $1',
 );
 

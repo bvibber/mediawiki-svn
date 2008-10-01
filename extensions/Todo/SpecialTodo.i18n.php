@@ -916,7 +916,15 @@ $messages['tr'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'todo' => 'Danh sách việc cần làm',
+	'todo-desc' => 'Phần mở rộng thí nghiệm cung cấp [[Special:Todo|danh sách việc cần làm]] cá nhân',
+	'todo-tab' => 'cần làm',
+	'todo-new-queue' => 'mới',
+	'todo-no-item' => 'Không có việc cần làm.',
+	'todo-list-for' => 'Danh sách việc cần làm của',
+	'todo-list-change' => 'Thay đổi',
 	'todo-list-cancel' => 'Bãi bỏ',
+	'todo-form-details' => 'Chi tiết:',
 );
 
 /** Volapük (Volapük)

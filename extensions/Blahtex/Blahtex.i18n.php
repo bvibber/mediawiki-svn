@@ -413,6 +413,13 @@ $messages['br'] = array(
 	'math_WrongFontEncodingWithHint' => 'Marteze ne zeuio ket war wel an arouezenn "$1" ma vez enkodet ar font "$2" (klaskit kentoc\'h gant an urzhiad "$3{...}")',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'math_InvalidColour' => 'El color "$1" és invàlid',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

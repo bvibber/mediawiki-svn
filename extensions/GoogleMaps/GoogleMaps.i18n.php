@@ -1896,7 +1896,9 @@ $wgGoogleMapsMessages['krj'] = array(
  * @author Purodha
  */
 $wgGoogleMapsMessages['ksh'] = array(
+	'gm-incompatible-browser-link' => 'Donn he klicke, öm en Leß met zopaß Brausere jezeijsch ze krijje.',
 	'gm-map' => 'Kaat',
+	'gm-are-you-sure' => 'Beß De Der doh sescher?',
 	'gm-width' => 'Breed',
 	'gm-height' => 'Hühte',
 	'gm-large' => 'Jruß',

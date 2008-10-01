@@ -108,10 +108,12 @@ $messages['arz'] = array(
 );
 
 /** Assamese (অসমীয়া)
+ * @author Chaipau
  * @author Rajuonline
  */
 $messages['as'] = array(
 	'editmessages' => 'বার্তা সম্পাদনা',
+	'editmsg-search' => 'সন্ধান কৰক',
 );
 
 /** Bulgarian (Български)

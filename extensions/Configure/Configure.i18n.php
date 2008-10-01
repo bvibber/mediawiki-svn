@@ -454,6 +454,13 @@ $messages['arz'] = array(
 	'viewconfig' => 'رؤية إعدادات الويكي',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Chaipau
+ */
+$messages['as'] = array(
+	'configure-section-search' => 'সন্ধান কৰক',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Cesco
  * @author EugeneZelenko

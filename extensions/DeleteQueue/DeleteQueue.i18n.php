@@ -492,6 +492,13 @@ $messages['arz'] = array(
 	'deletequeue-list-header-discusspage' => 'صفحة نقاش',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Chaipau
+ */
+$messages['as'] = array(
+	'deletequeue-list-search' => 'সন্ধান কৰক',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -81,6 +81,20 @@ $messages['bg'] = array(
 	'lua_error_internal' => 'Вътрешна грешка',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'lua_desc' => 'Rozšiřuje sntaktický analyzátor o podporu vložených kódů v jazyku [http://www.lua.org/ Lua]',
+	'lua_error' => 'Chyba na řádku $1',
+	'lua_extension_notfound' => 'Rozšíření Lua není nakonfigurováno',
+	'lua_interp_notfound' => 'Nebyl nalezen překladač Lua',
+	'lua_error_internal' => 'Vnitřní chyba',
+	'lua_overflow_recursion' => 'Byl dosáhnut limit rekurze',
+	'lua_overflow_loc' => 'Byl dosáhnut limit počtu řádků kódu',
+	'lua_overflow_time' => 'Byl dosáhnut limit času běhu',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Revolus
