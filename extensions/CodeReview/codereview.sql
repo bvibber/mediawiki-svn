@@ -55,7 +55,7 @@ CREATE TABLE /*$wgDBprefix*/code_rev (
 
   primary key (cr_repo_id, cr_id),
   key (cr_repo_id, cr_timestamp),
-  key cr_repo_author (cr_repo_id, cr_author)
+  key cr_repo_author (cr_repo_id, cr_author, cr_timestamp)
 ) /*$wgDBTableOptions*/;
 
 --
