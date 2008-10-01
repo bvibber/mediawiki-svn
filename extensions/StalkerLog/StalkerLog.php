@@ -26,18 +26,22 @@ $wgExtensionMessagesFiles['stalkerlog'] = dirname(__FILE__) . '/' . 'StalkerLog.
 $wgAdditionalRights[] = 'stalkerlog-view-log';
 $wgGroupPermissions['*']['stalkerlog-view-log'] = true;
 $wgHooks['UserLoginComplete'][] = 'wfStalkerLogin';
-$wgHooks['UserLogoutComplete'][] = 'wfStalkerLogout';
 
 # Log setup
 $wgLogTypes[] = 'stalkerlog';
 $wgLogHeaders['stalkerlog'] = 'stalkerlog-log-text';
 $wgLogNames['stalkerlog'] = 'stalkerlog-log-type';
 $wgLogRestrictions['stalkerlog'] = 'stalkerlog-view-log';
-$wgLogActions['stalkerlog/login'] = 'stalkerlog-log-login'; 
-$wgLogActions['stalkerlog/logout'] = 'stalkerlog-log-logout';
+$wgLogActions['stalkerlog/login'] = 'stalkerlog-log-login';
+
+# 1.13+ setup only
+if ( version_compare( $wgVersion, '1.13', '>=' ) ) {
+	$wgHooks['UserLogoutComplete'][] = 'wfStalkerLogout';
+	$wgLogActions['stalkerlog/logout'] = 'stalkerlog-log-logout';
+}
 
 # Login hook function
-function wfStalkerLogin( &$user, &$inject_html ) {
+function wfStalkerLogin( &$user ) {
 	wfLoadExtensionMessages('stalkerlog');
 	$log = new LogPage( 'stalkerlog', false);
 	$log->addEntry( 'login', $user->getUserPage(), '', null, $user );
