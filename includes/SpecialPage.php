@@ -164,6 +164,9 @@ class SpecialPage
 		'Listadmins'                => array( 'SpecialRedirectToSpecial', 'Listadmins', 'Listusers', 'sysop' ),
 		'MergeHistory'              => array( 'SpecialPage', 'MergeHistory', 'mergehistory' ),
 		'Listbots'                  => array( 'SpecialRedirectToSpecial', 'Listbots', 'Listusers', 'bot' ),
+		
+		
+		'RemoteSite'                => array( 'SpecialPage', 'RemoteSite' ),
 	);
 
 	static public $mAliases;

@@ -428,6 +428,12 @@ $wgAutoloadLocalClasses = array(
 	'Preprocessor_Hash' => 'includes/parser/Preprocessor_Hash.php',
 	'StripState' => 'includes/parser/Parser.php',
 
+	# includes/remotesite
+	'APISite' => 'includes/remotesite/APISite.php',
+	'DBSite' => 'includes/remotesite/DBSite.php',
+	'RemoteSite' => 'includes/remotesite/RemoteSite.php',
+	'LocalSite' => 'includes/remotesite/LocalSite.php',
+
 	# includes/specials
 	'AncientPagesPage' => 'includes/specials/SpecialAncientpages.php',
 	'BrokenRedirectsPage' => 'includes/specials/SpecialBrokenRedirects.php',
@@ -480,6 +486,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialRandomredirect' => 'includes/specials/SpecialRandomredirect.php',
 	'SpecialRecentchanges' => 'includes/specials/SpecialRecentchanges.php',
 	'SpecialRecentchangeslinked' => 'includes/specials/SpecialRecentchangeslinked.php',
+	'SpecialRemoteSite' => 'includes/specials/SpecialRemoteSite.php',
 	'SpecialSearch' => 'includes/specials/SpecialSearch.php',
 	'SpecialVersion' => 'includes/specials/SpecialVersion.php',
 	'UncategorizedCategoriesPage' => 'includes/specials/SpecialUncategorizedcategories.php',
@@ -536,6 +543,8 @@ class AutoLoader {
 			$filename = $wgAutoloadLocalClasses[$className];
 		} elseif ( isset( $wgAutoloadClasses[$className] ) ) {
 			$filename = $wgAutoloadClasses[$className];
+		} elseif ( file_exists( "includes/" . $className . ".php" ) ) {
+			$filename = "includes/" . $className . ".php";
 		} else {
 			# Try a different capitalisation
 			# The case can sometimes be wrong when unserializing PHP 4 objects

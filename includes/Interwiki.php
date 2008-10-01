@@ -15,12 +15,15 @@ class Interwiki {
 	protected static $smCache = array();
 	const CACHE_LIMIT = 100; // 0 means unlimited, any other value is max number of entries.
 
-	protected $mPrefix, $mURL, $mLocal, $mTrans;
+	public $mPrefix, $mURL, $mScriptURL, $mWikiname, $mType, $mLocal, $mTrans;
 
-	function __construct( $prefix = null, $url = '', $local = 0, $trans = 0 )
+	function __construct( $prefix = null, $url = '', $scripturl = '', $wikiname = '', $type = '', $local = 0, $trans = 0 )
 	{
 		$this->mPrefix = $prefix;
 		$this->mURL = $url;
+		$this->mScriptURL = $scripturl;
+		$this->mWikiname = $wikiname;
+		$this->mType = $type;
 		$this->mLocal = $local;
 		$this->mTrans = $trans;
 	}
@@ -126,7 +129,7 @@ class Interwiki {
 		$res = $db->resultObject( $db->select( 'interwiki', '*', array( 'iw_prefix' => $prefix ),
 			__METHOD__ ) );
 		if ( $this->loadFromResult( $res ) ) {
-			$mc = array( 'url' => $this->mURL, 'local' => $this->mLocal, 'trans' => $this->mTrans );
+			$mc = array( 'url' => $this->mURL, 'scripturl' => $this->mScriptURL, 'wikiname' => $this->mWikiname, 'type' => $this->mType, 'local' => $this->mLocal, 'trans' => $this->mTrans );
 			$wgMemc->add( $key, $mc );
 			return true;
 		}
@@ -140,8 +143,11 @@ class Interwiki {
 	 * @param $res ResultWrapper Row from the interwiki table
 	 */
 	function loadFromArray( $mc ) {
-		if( isset( $mc['url'] ) && isset( $mc['local'] ) && isset( $mc['trans'] ) ){
+		if( isset( $mc['url'] ) && isset( $mc['scripturl'] ) && isset( $mc['wikiname'] ) && isset( $mc['type'] ) && isset( $mc['local'] ) && isset( $mc['trans'] ) ){
 			$this->mURL = $mc['url'];
+			$this->mScriptURL = $mc['scripturl'];
+			$this->mWikiname = $mc['wikiname'];
+			$this->mType = $mc['type'];
 			$this->mLocal = $mc['local'];
 			$this->mTrans = $mc['trans'];
 			return true;
@@ -176,6 +182,9 @@ class Interwiki {
 	function initFromRow( $row ) {
 		$this->mPrefix = $row->iw_prefix;
 		$this->mURL = $row->iw_url;
+		$this->mScriptURL = $row->iw_scripturl;
+		$this->mWikiname = $row->iw_wikiname;
+		$this->mType = $row->iw_type;
 		$this->mLocal = $row->iw_local;
 		$this->mTrans = $row->iw_trans;
 	}
@@ -189,17 +198,81 @@ class Interwiki {
 	function getURL( $title = null ){
 		$url = $this->mURL;
 		if( $title != null ){
+			$space = $this->getSpacesCharacter();
+			$title = str_replace( " ", $space, $title );
+			$title = str_replace( "_", $space, $title );
 			$url = str_replace( "$1", $title, $url );
 		}
 		return $url;
 	}
 	
+	/** 
+	 * Get the script URL for a particular script (or with $1 if no script given)
+	 * 
+	 * @param $title string What script you want (e.g. api.php, index.php, thumb.php)
+	 * @return string The URL
+	 */
+	function getScriptURL( $script = null ){
+		$url = $this->mScriptURL;
+		if( $script != null ){
+			$url = str_replace( "$1", $script, $url );
+		}
+		return $url;
+	}
+	
+	/**
+	 * Get the Wikiname of the wiki (name used in wfGetDB and related things)
+	 * 
+	 * @return string The Wikiname
+	 */
+	function getWikiname(){
+		return $this->mWikiname;
+	}
+	
+	/**
+	 * Get whether the interwiki is local (e.g. this wiki)
+	 * 
+	 * @return boolean Whether the interwiki is local
+	 */
 	function isLocal(){
 		return $this->mLocal;
 	}
 	
+	/**
+	 * Get whether users can transclude from this interwiki (also dependant on other config settings)
+	 * 
+	 * @return boolean Whether it is transcludable
+	 */
 	function isTranscludable(){
 		return $this->mTrans;
+	}
+	
+	/**
+	 * Type of remote site
+	 * gen_us
+	 * 		Generic site (no special features like RemoteSite access), which uses underscores for spaces
+	 * gen_plus
+	 * 		Generic site (no special features like RemoteSite access), which uses plus signs for spaces (things like google)
+	 * wiki_mw
+	 * 		A MediaWiki wiki (full features, supports everything, uses underscores for spaces)
+	*/
+	function getType(){
+		return $this->mType;
+	}
+	
+	/** 
+	 * Get what character/string to use for escaping spaces. Based off the type entry
+	 * 
+	 * @return string The character to use for spaces
+	 */
+	function getSpacesCharacter(){
+		if( $this->mType == 'gen_plus' ){
+			return '+';
+		}else if( $this->mType == 'gen_us' || $this->mType == 'wiki_mw' ){
+			return '_';
+		}else{
+			return '%20';
+		}
 	}
 
 }

@@ -146,8 +146,9 @@ $wgMysqlUpdates = array(
 	
 	// 1.14
 	array( 'add_field', 'site_stats',     'ss_active_users',  'patch-ss_active_users.sql' ),
-	array( 'do_active_users_init' ),
-	array( 'add_field', 'ipblocks',     'ipb_allow_usertalk',  'patch-ipb_allow_usertalk.sql' )
+	array( 'do_active_users_init' )
+	array( 'add_field', 'ipblocks',     'ipb_allow_usertalk',  'patch-ipb_allow_usertalk.sql' ),
+	array( 'add_field', 'interwiki',     'iw_scripturl',  'patch-iw_scripturl.sql' )
 );
 
 

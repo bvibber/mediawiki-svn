@@ -1014,6 +1014,15 @@ CREATE TABLE /*$wgDBprefix*/interwiki (
   -- insertion.
   iw_url blob NOT NULL,
   
+  -- The URL of the wiki's scripts, with "$1" as a placeholder for a script name (e.g. api.php).
+  iw_scripturl blob NOT NULL,
+  
+  -- The wikiname (as used by wfGetDB and memcached)
+  iw_wikiname barbinary(20) not null,
+  
+  -- The remote site type (Interwiki.php will have full description of types)
+  iw_type varbinary(10) not null default 'gen_us',
+  
   -- A boolean value indicating whether the wiki is in this project
   -- (used, for example, to detect redirect loops)
   iw_local bool NOT NULL,

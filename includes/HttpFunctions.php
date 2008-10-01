@@ -36,7 +36,7 @@ class Http {
 	 * @param $curlOptions array Optional array of extra params to pass 
 	 * to curl_setopt()
 	 */
-	static function request( $method, $url, $timeout = 'default', $curlOptions = array() ) {
+	static function request( $method, $url, $timeout = 'default', $curlOptions = array(), $forceCurl = false ) {
 		global $wgHTTPTimeout, $wgHTTPProxy, $wgVersion, $wgTitle;
 
 		// Go ahead and set the timeout if not otherwise specified
@@ -94,6 +94,11 @@ class Http {
 			# Otherwise use file_get_contents...
 			# This doesn't have local fetch capabilities...
 
+			if( $forceCurl ) { // Some scripts need Curl for a particular reason, so if they do, return false
+				return false;
+			}
+
+			global $wgVersion;
 			$headers = array( "User-Agent: MediaWiki/$wgVersion" );
 			if( strcasecmp( $method, 'post' ) == 0 ) {
 				// Required for HTTP 1.0 POSTs

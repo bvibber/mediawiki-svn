@@ -683,7 +683,6 @@ class Title {
 				$url = $wgServer . $url;
 			}
 		} else {
-			$baseUrl = Interwiki::fetch( $this->mInterwiki )->getURL( );
 
 			$namespace = wfUrlencode( $this->getNsText() );
 			if ( '' != $namespace ) {
@@ -691,7 +690,7 @@ class Title {
 				# Yes! It can in interwiki transclusion. But... it probably shouldn't.
 				$namespace .= ':';
 			}
-			$url = str_replace( '$1', $namespace . $this->mUrlform, $baseUrl );
+			$url = Interwiki::fetch( $this->mInterwiki )->getURL( $namespace . $this->mUrlform );
 			$url = wfAppendQuery( $url, $query );
 		}
 
