@@ -5,6 +5,7 @@
 Name:                TSphp
 Summary:             PHP web scripting language
 Version:             5.2.6
+Release:             2
 Source:              http://uk.php.net/distributions/php-%{version}.tar.bz2
 
 SUNW_BaseDir:        /opt/php
@@ -48,7 +49,13 @@ export CPPFLAGS='-I/opt/ts/include -I/opt/mysql/include -I/usr/sfw/include'
 	--with-config-file-path=/etc/opt/php \
 	--with-mysql=/opt/mysql \
 	--disable-path-info-check \
-	--with-pcre-regex=/opt/ts
+	--with-pcre-regex=/opt/ts \
+        --with-zlib \
+        --with-bz2 \
+        --enable-exif \
+        --enable-ftp \
+        --with-mysqli=/opt/mysql/bin/mysql_config
+
 
 gmake -j$CPUS
 
@@ -82,6 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 /etc/opt/php/pear.conf
 
 %changelog
+* Thu Oct  2 2008 - river@wikimedia.org
+- add build options: --with-zlib --with-bz2 --enable-exif --enable-ftp --with-mysqli
 * Sun Jul  6 2008 - river@wikimedia.org
 - build with external pcre 
 * Sat Jun 21 2008 - river@wikimedia.org
