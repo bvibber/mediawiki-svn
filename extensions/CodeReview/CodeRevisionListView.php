@@ -60,10 +60,10 @@ class SvnRevTablePager extends TablePager {
 		return array(
 			'cr_id' => wfMsg( 'code-field-id' ),
 			'cr_status' => wfMsg( 'code-field-status' ),
+			'COUNT(cc_rev_id)' => wfMsg( 'code-field-comments' ),
 			'cr_message' => wfMsg( 'code-field-message' ),
 			'cr_author' => wfMsg( 'code-field-author' ),
 			'cr_timestamp' => wfMsg( 'code-field-timestamp' ),
-			'COUNT(cc_rev_id)' => wfMsg( 'code-field-comments' ),
 		);
 	}
 
