@@ -76,10 +76,12 @@ class SpecialUserStats extends SpecialPage
         $csv = 'Username,';
         $cur_t = $start_t;
         while ($cur_t <= $end_t) {
-            $dates[date("Ymd", $cur_t).'000000'] = array();
+	    $a_date = date("Ymd", $cur_t) . '000000';
+            $dates[$a_date] = array();
             $cur_t += $interval;
         }
 
+	# Let's process the edits that are recorded in the database
         $u = array();
         $sql = "SELECT rev_user_text,rev_timestamp,page_id FROM " .
                $db->tableName('page') . "," . $db->tableName('revision') .
@@ -93,11 +95,18 @@ class SpecialUserStats extends SpecialPage
                 $u[$row[0]] = $dates;
             foreach ($u[$row[0]] as $d => $v)
                 if ($d > $row[1]) {
+	            if (!isset($u[$row[0]][$d][$row[2]]))
+		        $u[$row[0]][$d][$row[2]] = 0;
                     $u[$row[0]][$d][$row[2]]++;
                     break;
                 }
         }
         $db->freeResult($res);
+	
+	# in case the current user is not already in the database
+	if (!isset($u[$user])) {
+		$u[$user] = $dates;
+	}
 
         # plot the user statistics
         $gnuplot ="<gnuplot>
@@ -117,30 +126,30 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 	$first = true;
 	$e = 0;
 	$p = 0;
-        foreach ($u[$user] as $d => $v) {
-            $date = '';
-            if (preg_match('/^(\d{4})(\d{2})(\d{2})/',$d,$matches))
-                $date = "$matches[2]/$matches[3]/$matches[1]";
-            $csv .= "$date,";
-            if ($type == 'incremental') {
-                # the first data point includes all edits up to that date, so skip it
-                if ($first) {
-                    $first = false;
-                    continue;
-                }
-                $e = 0;
-                $p = 0;
-            }
-            foreach ($v as $pageid => $edits) {
-                $p++;
-                $e += $edits;
-            }
-            $gnuplot .= "$date $e\n";
-            $gnuplot_pdata .= "$date $p\n";
-        }
+	foreach ($u[$user] as $d => $v) {
+	    $date = '';
+	    if (preg_match('/^(\d{4})(\d{2})(\d{2})/',$d,$matches))
+		$date = "$matches[2]/$matches[3]/$matches[1]";
+	    $csv .= "$date,";
+	    if ($type == 'incremental') {
+		# the first data point includes all edits up to that date, so skip it
+		if ($first) {
+		    $first = false;
+		    continue;
+		}
+		$e = 0;
+		$p = 0;
+	    }
+	    foreach ($v as $pageid => $edits) {
+		$p++;
+		$e += $edits;
+	    }
+	    $gnuplot .= "$date $e\n";
+	    $gnuplot_pdata .= "$date $p\n";
+	}
         $gnuplot .= "e\n$gnuplot_pdata\ne</gnuplot>";
 
-        //$wgOut->addHTML($gnuplot);
+        //print "@@@@@@@\n$gnuplot\n@@@@@@@\n";
         $wgOut->addWikiText("<center>$gnuplot</center>");
 
 
@@ -180,8 +189,11 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
             if (preg_match('/^(\d{4})(\d{2})(\d{2})/',$d,$matches))
                 $date = "$matches[2]/$matches[3]/$matches[1]";
             foreach ($u as $usr => $q)
-                foreach ($u[$usr][$d] as $pageid => $numedits)
-                    $totals[$pageid] += $numedits;
+                foreach ($u[$usr][$d] as $pageid => $numedits) {
+			if (!isset($totals[$pageid]))
+				$totals[$pageid] = 0;
+			$totals[$pageid] += $numedits;
+		}
             $pages = 0;
             $edits = 0;
             foreach ($totals as $pageid => $e) {
@@ -217,8 +229,11 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
                     }
                     $totals = array();
                 }
-                foreach ($u[$usr][$d] as $pageid => $numedits)
-                    $totals[$pageid] += $numedits;
+                foreach ($u[$usr][$d] as $pageid => $numedits) {
+			if (!isset($totals[$pageid]))
+				$totals[$pageid] = 0;
+			$totals[$pageid] += $numedits;
+		}
                 $pages = 0;
                 $edits = 0;
                 foreach ($totals as $pageid => $e) {
@@ -240,13 +255,13 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
         $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
         $wgOut->addWikiText(wfMsg ('usagestatistics-editindividual', $nature));
         $wgOut->addHtml('</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">');
-        $wgOut->AddWikiText("<pre>$csv$csv_edits</pre></div></div><br>");
+        $wgOut->AddHtml("<pre>$csv$csv_edits</pre></div></div><br />");
 
         $wgOut->addHtml('<div class="NavFrame" style="padding:0px;border-style:none;">');
         $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
         $wgOut->addWikiText(wfMsg ('usagestatistics-editpages', $nature));
         $wgOut->addHtml('</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">');
-        $wgOut->AddWikiText("<pre>$csv$csv_pages</pre></div></div>");
+        $wgOut->AddHtml("<pre>$csv$csv_pages</pre></div></div>");
 
         return;
     }
