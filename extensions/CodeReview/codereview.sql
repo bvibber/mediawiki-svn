@@ -161,5 +161,6 @@ CREATE TABLE /*$wgDBprefix*/code_comment (
   cc_review int,
 
   primary key (cc_id),
-  key (cc_repo_id,cc_rev_id,cc_sortkey)
+  key (cc_repo_id,cc_rev_id,cc_sortkey),
+  key cc_repo_time (cc_repo_id,cc_timestamp)
 ) /*$wgDBTableOptions*/;
