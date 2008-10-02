@@ -219,6 +219,31 @@ $messages['de'] = array(
 	'right-codereview-set-status' => 'Ändern des Revisionsstatus',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'code-field-id' => 'Revizio',
+	'code-field-author' => 'Aŭtoro',
+	'code-field-message' => 'Komento',
+	'code-field-status' => 'Statuso',
+	'code-field-timestamp' => 'Dato',
+	'code-rev-author' => 'Aŭtoro:',
+	'code-rev-message' => 'Komento:',
+	'code-rev-rev' => 'Revizio:',
+	'code-rev-modified-a' => 'aldonis',
+	'code-rev-modified-d' => 'forigis',
+	'code-rev-modified-m' => 'modifis',
+	'code-rev-status' => 'Statuso:',
+	'code-rev-status-set' => 'Ŝanĝi statuson',
+	'code-rev-tags' => 'Etikedoj:',
+	'code-rev-tag-add' => 'Aldoni etikedon',
+	'code-rev-comment-submit' => 'Enmeti komenton',
+	'code-rev-comment-preview' => 'Antaŭrigardi',
+	'code-status-new' => 'nova',
+	'codereview-reply-link' => 'respondo',
+);
+
 /** French (Français)
  * @author Cedric31
  * @author IAlex
@@ -271,6 +296,60 @@ $messages['fr'] = array(
 	'right-codereview-remove-tag' => 'Enlever de attributs aux révision',
 	'right-codereview-post-comment' => 'Ajouter un commentaire aux révisions',
 	'right-codereview-set-status' => 'Changer le statut des revisions',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'code' => 'Revisión do código',
+	'code-comments' => 'Comentarios',
+	'code-desc' => '[[Special:Code|Ferramenta de revisión do código]] con [[Special:RepoAdmin|apoio da subversión]]',
+	'code-no-repo' => 'Non hai ningún repositorio configurado!',
+	'code-field-id' => 'Revisión',
+	'code-field-author' => 'Autor',
+	'code-field-message' => 'Comentario',
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Data',
+	'code-rev-author' => 'Autor:',
+	'code-rev-message' => 'Comentario:',
+	'code-rev-repo' => 'Repositorio:',
+	'code-rev-rev' => 'Revisión:',
+	'code-rev-rev-viewvc' => 'en ViewVC',
+	'code-rev-paths' => 'Rutas modificadas:',
+	'code-rev-modified-a' => 'engadiu',
+	'code-rev-modified-r' => 'substituíu',
+	'code-rev-modified-d' => 'borrou',
+	'code-rev-modified-m' => 'modificou',
+	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Cambiar o status',
+	'code-rev-tags' => 'Etiquetas:',
+	'code-rev-tag-add' => 'Engadir as etiquetas',
+	'code-rev-comment-by' => 'Comentario de $1',
+	'code-rev-comment-submit' => 'Enviar o comentario',
+	'code-rev-comment-preview' => 'Vista previa',
+	'code-rev-diff' => 'Dif',
+	'code-rev-diff-link' => 'dif',
+	'code-status-new' => 'novo',
+	'code-status-fixme' => 'arránxame',
+	'code-status-resolved' => 'resolto',
+	'code-status-ok' => 'de acordo',
+	'codereview-reply-link' => 'resposta',
+	'repoadmin' => 'Administración do repositorio',
+	'repoadmin-new-legend' => 'Crear un novo repositorio',
+	'repoadmin-new-label' => 'Nome do repositorio:',
+	'repoadmin-new-button' => 'Crear',
+	'repoadmin-edit-legend' => 'Modificación do repositorio "$1"',
+	'repoadmin-edit-path' => 'Ruta do repositorio:',
+	'repoadmin-edit-bug' => 'Ruta Bugzilla:',
+	'repoadmin-edit-view' => 'Ruta ViewVC:',
+	'repoadmin-edit-button' => 'De acordo',
+	'repoadmin-edit-sucess' => 'O repositorio "[[Special:Code/$1|$1]]" foi modificado con éxito.',
+	'right-repoadmin' => 'Xestionar o código dos repositorios',
+	'right-codereview-add-tag' => 'Engadir etiquetas novas ás revisións',
+	'right-codereview-remove-tag' => 'Eliminar as etiquetas das revisións',
+	'right-codereview-post-comment' => 'Engadir comentarios ás revisións',
+	'right-codereview-set-status' => 'Cambiar o status das revisións',
 );
 
 /** Interlingua (Interlingua)
@@ -330,11 +409,16 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'code-comments' => 'Bemierkungen',
+	'code-field-author' => 'Auteur',
 	'code-field-message' => 'Bemierkung',
+	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-rev-message' => 'Bemierkung:',
 	'code-rev-modified-d' => 'geläscht',
 	'code-rev-modified-m' => 'geännert',
+	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Status änneren',
 	'code-rev-comment-by' => 'Bemierkung vum $1',
 	'code-rev-comment-preview' => 'Kucken ouni ze späicheren',
 	'code-status-new' => 'nei',
@@ -364,6 +448,7 @@ $messages['nl'] = array(
 	'code-rev-rev-viewvc' => 'in ViewVC',
 	'code-rev-paths' => 'Gewijzigde bestanden:',
 	'code-rev-modified-a' => 'toegevoegd',
+	'code-rev-modified-r' => 'vervangen',
 	'code-rev-modified-d' => 'verwijderd',
 	'code-rev-modified-m' => 'gewijzigd',
 	'code-rev-status' => 'Status:',
@@ -379,7 +464,7 @@ $messages['nl'] = array(
 	'code-status-fixme' => 'fixme',
 	'code-status-resolved' => 'opgelost',
 	'code-status-ok' => 'ok',
-	'codereview-reply-link' => 'antwoord',
+	'codereview-reply-link' => 'antwoorden',
 	'repoadmin' => 'Repositorybeheer',
 	'repoadmin-new-legend' => 'Nieuwe repository instellen',
 	'repoadmin-new-label' => 'Repositorynaam:',
@@ -557,20 +642,56 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Najami
  */
 $messages['sv'] = array(
+	'code' => 'Kodgranskning',
 	'code-comments' => 'Kommentarer',
+	'code-desc' => '[[Special:Code|Kodgranskningsverktyg]] med [[Special:RepoAdmin|stöd för Subversion]]',
+	'code-no-repo' => 'Ingen databas konfigurerad!',
+	'code-field-id' => 'Version',
+	'code-field-author' => 'Författare',
 	'code-field-message' => 'Kommentar',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
+	'code-rev-author' => 'Författare:',
 	'code-rev-message' => 'Kommentar:',
+	'code-rev-repo' => 'Databas:',
+	'code-rev-rev' => 'Version:',
 	'code-rev-rev-viewvc' => 'på ViewVC',
+	'code-rev-paths' => 'Ändrade sökvägar:',
+	'code-rev-modified-a' => 'tillagd',
+	'code-rev-modified-d' => 'raderad',
+	'code-rev-modified-m' => 'ändrad',
 	'code-rev-status' => 'Status:',
 	'code-rev-status-set' => 'Ändra status',
+	'code-rev-tags' => 'Taggar:',
+	'code-rev-tag-add' => 'Lägg till tagg',
 	'code-rev-comment-by' => 'Kommentar av $1',
+	'code-rev-comment-submit' => 'Skicka kommentar',
 	'code-rev-comment-preview' => 'Förhandsgranska',
+	'code-rev-diff' => 'Diff',
+	'code-rev-diff-link' => 'diff',
 	'code-status-new' => 'ny',
+	'code-status-fixme' => 'fixa-mig',
+	'code-status-resolved' => 'löst',
+	'code-status-ok' => 'ok',
+	'codereview-reply-link' => 'svara',
+	'repoadmin' => 'Databasadministration',
+	'repoadmin-new-legend' => 'Skapa en ny databas',
+	'repoadmin-new-label' => 'Databasnamn:',
 	'repoadmin-new-button' => 'Skapa',
+	'repoadmin-edit-legend' => 'Ändring av databas "$1"',
+	'repoadmin-edit-path' => 'Databas-sökväg:',
+	'repoadmin-edit-bug' => 'Bugzilla sökväg:',
+	'repoadmin-edit-view' => 'ViewVC sökväg:',
+	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'Databasen "[[Special:Code/$1|$1]]" har modifierats med framgång.',
+	'right-repoadmin' => 'Hantera kod-databaser',
+	'right-codereview-add-tag' => 'Lägga nya taggar till versioner',
+	'right-codereview-remove-tag' => 'Ta bort taggar från versioner',
+	'right-codereview-post-comment' => 'Lägga till kommentarer till versioner',
+	'right-codereview-set-status' => 'Ändra versioners status',
 );
 

@@ -4510,7 +4510,7 @@ $1 per las donadas criptadas.</p>',
 	'boardvote_bot' => "O planhèm, avètz l'estatut de bòt sus wiki enregistrat. Los comptes de Bòt son autorizats a votar.",
 	'boardvote_welcome' => "Benvengut '''$1'''!",
 	'go_to_board_vote' => 'Eleccions 2008 al Conselh d’administracion de la Wikimèdia',
-	'boardvote_redirecting' => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un servidor extèrn e independent. Seretz redirigit vèrs aqueste servidor extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat non signat benlèu serà afichat.',
+	'boardvote_redirecting' => 'Per mai de transparéncia e de seguretat lo vòte se desenròtla sus un servidor extèrn e independent. Seretz redirigit cap a aqueste servidor extèrn en 20 segondas. [$1 Clicatz aicí] per i anar ara. Un avertiment concernent un certificat pas signat benlèu serà afichat.',
 	'right-boardvote' => 'Administrar las eleccions',
 );
 

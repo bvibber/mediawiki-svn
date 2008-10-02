@@ -1232,7 +1232,7 @@ Tornar a :
 	'crosswikiblock-noblock' => 'Aqueste utilizaire es pas blocat en escritura.',
 	'crosswikiblock-success' => "L’utilizaire '''$3''' es estat blocat amb succès.
 
-Tornar vèrs :
+Tornar cap a :
 * [[Special:CrosswikiBlock|Lo formulari de blocatge]] ;
 * [[$4]].",
 	'crosswikiunblock-local' => 'Los blocatges en escritura locals son pas suportats via aquesta interfàcia. Utilizatz [[Special:IPBlockList|{{int:ipblocklist}}]]',

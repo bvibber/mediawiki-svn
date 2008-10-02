@@ -831,8 +831,12 @@ APC verŝajne ne funkcias.',
 
 /** Persian (فارسی)
  * @author BlueDevil
+ * @author Vahid
  */
 $messages['fa'] = array(
+	'viewapc-ls-submit' => 'برو!',
+	'viewapc-ls-header-name' => 'نام',
+	'viewapc-ls-header-size' => 'اندازه',
 	'viewapc-ls-sort-name' => 'نام',
 );
 
@@ -2280,8 +2284,8 @@ APC lijkt niet gestart te zijn.',
 	'viewapc-requests' => 'Verzoekratio',
 	'viewapc-hitrate' => 'Hitratio',
 	'viewapc-missrate' => 'Misratio',
-	'viewapc-insertrate' => 'Toevoegingssnelheid',
-	'viewapc-cachefull' => '"Cache vol"-telling',
+	'viewapc-insertrate' => 'Toevoegingen',
+	'viewapc-cachefull' => 'Aantal keren cache vol',
 	'viewapc-rps' => '$1 verzoeken per seconde',
 	'viewapc-info-runtime' => 'Runtime-informatie',
 	'viewapc-info-memory' => 'Hoststatusdiagrammen',

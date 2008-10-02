@@ -498,9 +498,9 @@ Exemple 3: &nbsp; <tt>[[Special:Call/:Ma pagina,parm1=value1,parm2=value2]]</tt>
 Exemple 4 (Adreça per navigador) : &nbsp; <tt>http://mondomeni/monwiki/index.php?Special:Call/:Ma_Pagina,parm1=value1</tt><br /><br />
 
 L’extension <i>Ampèl</i> apelarà la pagina indicada en i passant los paramètres.<br />Veiretz las entresenhas d'aquesta pagina, son títol, mas son « tipe » serà lo d’una pagina especiala mas poirà pas èsser editada.<br />Las entresenhas que veiretz variaràn en foncion dels paramètres qu'auretz indicats.<br />Aquesta extension es fòrt practica per crear d'aplicacions interactivas amb MediaWiki.<br />A títol d’exemple, vejatz <a href='http://semeb.com/dpldemo/Template:Catlist'>the DPL GUI</a> ..<br />En cas de problèmas, podètz ensajar <b>Special:Call/DebuG</b>",
-	'call-save' => "Çò qu'es indicat per aqueste ampèl poiriá èsser salvat vèrs una pagina intitolada ''$1''.",
-	'call-save-success' => 'Lo tèxt seguent es estat salvat vèrs la pagina <big>[[$1]]</big> .',
-	'call-save-failed' => 'Lo tèxt seguent a pogut èsser salvargardat vèrs la pagina <big>[[$1]]</big> del fach qu’existís ja.',
+	'call-save' => "Çò qu'es indicat per aqueste ampèl poiriá èsser salvat cap a una pagina intitolada ''$1''.",
+	'call-save-success' => 'Lo tèxt seguent es estat salvat cap a la pagina <big>[[$1]]</big> .',
+	'call-save-failed' => 'Lo tèxt seguent a pas pogut èsser salvat cap a la pagina <big>[[$1]]</big> perque aquesta pagina existís ja.',
 );
 
 /** Polish (Polski)

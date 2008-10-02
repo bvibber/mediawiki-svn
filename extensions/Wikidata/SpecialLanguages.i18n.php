@@ -2900,7 +2900,7 @@ als senses definits dins las autras donadas.</p>",
 	'ow_add_concept_link' => 'Apond un ligam als autres concèptes',
 	'ow_concept_panel' => 'Ventalh de concèptes',
 	'ow_dm_badtitle' => "Aquesta pagina punta pas sus cap de concèpte o sens definit. Verificatz l'adreça internet.",
-	'ow_dm_missing' => "Aquesta pagina sembla pas puntar vèrs un concèpte o sens inexistent. Verificatz l'adreça internet.",
+	'ow_dm_missing' => "Aquesta pagina sembla puntar pas cap a un concèpte o sens inexistent. Verificatz l'adreça internet.",
 	'ow_AlternativeDefinition' => 'Definicion alternativa',
 	'ow_AlternativeDefinitions' => 'Definicions alternativas',
 	'ow_Annotation' => 'Anotacion',
@@ -2957,7 +2957,7 @@ als senses definits dins las autras donadas.</p>",
 	'ow_please_proved_dmid' => 'Sembla que manca un "?dmid=<...>" (dmid=SensDefinit ID)<br />Contactatz l’administrator del servidor.',
 	'ow_please_proved_dc1' => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI laquala òm copia)<br />
 Contactatz l’administrator.',
-	'ow_please_proved_dc2' => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca VÈRS laquala òm copia)<br />
+	'ow_please_proved_dc2' => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca CAP A laquala òm copia)<br />
 Contactatz l’administrator.',
 	'ow_copy_successful' => '<h2>Capitada de la còpia</h2>Vòstras donadas son estadas copiadas amb succès (verificatz çaquelà).',
 	'ow_copy_unsuccessful' => "<h3>Còpia infructuosa</h3> Cap d'operacion de còpia a pas pres plaça.",

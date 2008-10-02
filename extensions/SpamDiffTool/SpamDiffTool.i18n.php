@@ -552,11 +552,11 @@ $messages['oc'] = array(
 	'spamdifftool_confirm' => "Confirmatz que volètz apondre aquestas entradas dins la Lista Negra dels Spams. (Clicatz <a href='$1' target='new'>aicí</a> per senhalar tot problèma.)",
 	'spamdifftool_summary' => 'Apondut a la Tièra Negra dels Spams',
 	'spamdifftool_urls_detected' => "Las URLs seguentas son estadas detectadas dins aquestas modificacions.
-Qualas son las que volètz apondre a la Lista Negra dels Spams ?
-Aquestas opcions van de las mai restrictivas vèrs las mens restrictivas.
-Lo blocatge d’un nom de domeni entièr blocarà totes los ligams provenent d'aqueste.
+Quinas son las que volètz apondre a la Lista Negra dels Spams ?
+Aquestas opcions van de las mai restrictivas cap a las mens restrictivas.
+Lo blocatge d’un nom de domeni entièr blocarà totes los ligams que provenon d'aqueste.
 
-Asseguratz-vos de blocar pas de domenis entièrs que detenon cèrts comptadors d'utilizaires tals coma blogpost.com, geocities.com, etc.",
+Asseguratz-vos de blocar pas de domenis entièrs que detenon d'unes comptadors d'utilizaires tals coma blogpost.com, geocities.com, etc.",
 	'spamdifftool_no_urls_detected' => "Cap d'URL es pas estada detectada. Clicatz <a href='$1'>aicí</a> per tornar en rèire",
 	'spamdifftool_spam_link_text' => 'apondre als spams',
 	'spamdifftool_option_domain' => 'tot dempuèi aqueste domeni',

@@ -279,8 +279,8 @@ $messages['eo'] = array(
 	'imagemap_missing_coord' => 'Error: mankas sufiĉaj koordinatoj por formo ĉe linio $1',
 	'imagemap_unrecognised_shape' => 'Error: nekonata formo ĉe linio $1; ĉiu linio devas komenci kun unu el: default, rect, circle aŭ poly',
 	'imagemap_no_areas' => 'Error: almenaŭ unu specifigado de areo devas esti donata',
-	'imagemap_invalid_coord' => 'Error: Nevalida koordinato ĉe linio $1; ĝi nepre estu nombro',
-	'imagemap_invalid_desc' => 'Error: nevalida desc deklarado, devas esti unu el: <tt>$1</tt>',
+	'imagemap_invalid_coord' => 'Eraro: Nevalida koordinato ĉe linio $1; ĝi nepre estu nombro',
+	'imagemap_invalid_desc' => 'Eraro: nevalida desc deklarado, devas esti unu el: <tt>$1</tt>',
 	'imagemap_description' => 'Pri ĉi tiu bildo',
 );
 

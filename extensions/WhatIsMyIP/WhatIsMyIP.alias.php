@@ -29,6 +29,11 @@ $aliases['de'] = array(
 	'WhatIsMyIP' => array( 'Meine IP-Adresse' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'WhatIsMyIP' => array( 'نشانی_اینترنتی_من_چیست' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'WhatIsMyIP' => array( 'Oma IP-osoite' ),

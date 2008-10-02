@@ -249,7 +249,7 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'importfreeimages' => 'Importar imaxes libres',
-	'importfreeimages-desc' => 'Proporciona un camiño para [[Special:ImportFreeImages|importar adecuadamente fotografías con licenza]] dende o [http://www.flickr.com Flickr]',
+	'importfreeimages-desc' => 'Proporciona unha ruta para [[Special:ImportFreeImages|importar adecuadamente fotografías con licenza]] dende o [http://www.flickr.com Flickr]',
 	'importfreeimages_description' => 'Esta páxina permítelle procurar fotos de flickr con licenza correcta e importalos ao seu wiki.',
 	'importfreeimages_noapikey' => 'Non configurou a súa clave Flickr API.
 Para facelo, por favor, obteña a clave API [http://www.flickr.com/services/api/misc.api_keys.html aquí] e fixe wgFlickrAPIKey en ImportFreeImages.php.',

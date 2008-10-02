@@ -113,6 +113,14 @@ $messages['eo'] = array(
 	'whatismyip-out' => 'Via IP:',
 );
 
+/** Persian (فارسی)
+ * @author BlueDevil
+ */
+$messages['fa'] = array(
+	'whatismyip' => 'نشانی اینترنتی من چیست',
+	'whatismyip-out' => 'نشانی اینترنتی شما:',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Str4nd

@@ -237,7 +237,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'titlekey-desc' => "Retorn vèrs la fin de la sugestion de recèrca d'un prefix de títol",
+	'titlekey-desc' => "Retorn cap a la fin de la suggestion de recèrca d'un prefix de títol",
 );
 
 /** Polish (Polski)

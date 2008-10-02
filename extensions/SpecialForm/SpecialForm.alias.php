@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'Form' => array( 'استمارة' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'Form' => array( 'فرم' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Form' => array( 'Formulir' ),

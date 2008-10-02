@@ -356,7 +356,7 @@ $messages['oc'] = array(
 	'whoiswatching' => 'Utilizaires agachant una pagina del wiki',
 	'whoiswatching-desc' => 'Provesís una lista dels utilizaires que visionan una pagina wiki',
 	'specialwhoiswatchingthepage' => 'Utilizaires agachant %s',
-	'specialwhoiswatchingusage' => "Aquesta pagina especiala pòt pas èsser utilizada sola. Passatz per [[MediaWiki:Number_of_watching_users_pageview]] per definir un punt d'entrada vèrs aquesta pagina especiala.",
+	'specialwhoiswatchingusage' => "Aquesta pagina especiala pòt pas èsser utilizada sola. Passatz per [[MediaWiki:Number_of_watching_users_pageview]] per definir un punt d'entrada cap a aquesta pagina especiala.",
 	'specialwhoiswatchingaddusers' => 'Apondre los utilizaires per veire la pagina',
 	'specialwhoiswatchingaddbtn' => 'Apondre los utilizaires seleccionats',
 );

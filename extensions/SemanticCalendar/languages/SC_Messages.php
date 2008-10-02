@@ -325,7 +325,7 @@ $messages['oc'] = array(
 	'sc_previousmonth' => 'Mes precedent',
 	'sc_nextmonth' => 'Mes seguent',
 	'sc_today' => 'Uèi',
-	'sc_gotomonth' => 'Anar vèrs lo mes',
+	'sc_gotomonth' => 'Anar cap al mes',
 );
 
 /** Polish (Polski)

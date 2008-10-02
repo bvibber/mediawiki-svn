@@ -588,18 +588,33 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author M.M.S.
  * @author Najami
  */
 $messages['sv'] = array(
+	'closewikis-desc' => 'Möjliggör stängning av wikier inom wikisamlingar',
 	'closewikis-closed-default' => 'Den här wikin är stängd',
 	'closewikis-page' => 'Stäng wiki',
 	'closewikis-page-close' => 'Stäng wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-dreason' => 'Anledning (visas):',
+	'closewikis-page-close-reason' => 'Anledning (loggas):',
 	'closewikis-page-close-submit' => 'Stäng',
+	'closewikis-page-close-success' => 'Wiki lyckades stängas',
+	'closewikis-page-reopen' => 'Återöppna wiki',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
 	'closewikis-page-reopen-reason' => 'Anledning:',
+	'closewikis-page-reopen-submit' => 'Återöppna',
+	'closewikis-page-reopen-success' => 'Wiki lyckades återöppnas',
+	'closewikis-page-err-nowiki' => 'Ogiltig wiki specificerad',
+	'closewikis-page-err-closed' => 'Wiki är redan stängd',
+	'closewikis-page-err-opened' => 'Wiki är inte stängd',
+	'closewikis-log' => 'Logg över stängning av wikier',
+	'closewikis-log-header' => 'Här är en logg över alla stängningar och återöppningar av wikier som gjorts av stewarder',
+	'closewikis-log-close' => 'stängde $2',
+	'closewikis-log-reopen' => 'återöppnade $2',
+	'right-editclosedwikis' => 'Redigera stängda wikier',
 );
 
 /** Vietnamese (Tiếng Việt)

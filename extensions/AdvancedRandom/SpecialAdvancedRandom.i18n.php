@@ -294,7 +294,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'advancedrandom' => 'Accès aleatòri avançat',
-	'advancedrandom-desc' => "Obten una pagina a l'azard a partir d’una discussion o d’un ligam d’un subjècte vèrs una pagina donada. Pòt èsser utilizada coma [[Special:AdvancedRandom/Template:Featured/Talk]] per obténer un article determinat a l' azard o coma [[Special:AdvancedRandom/Template:GFDL/Image]] per obténer un fichièr jos licéncia GFDL",
+	'advancedrandom-desc' => "Obten una pagina a l'azard a partir d’una discussion o d’un ligam d’un subjècte cap a una pagina donada. Pòt èsser utilizada coma [[Special:AdvancedRandom/Template:Featured/Talk]] per obténer un article determinat a l' azard o coma [[Special:AdvancedRandom/Template:GFDL/Image]] per obténer un fichièr jos licéncia GFDL",
 );
 
 /** Polish (Polski)
