@@ -32,7 +32,7 @@ function efGPManagerCustomTabs(&$ca) {
 		return true;
 	}
 	global $wgUser, $wgGPManagerShowEditTab;
-	wfLoadExtensionMessages('GroupPermissions');
+	loadGPMessages();
 	$dt = array();
 	$dto = array();
 	foreach($ca as $tab => $stuff) {
