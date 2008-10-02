@@ -48,7 +48,7 @@ var flashEmbed = {
 	           	}
 	},
     getEmbedHTML: function (){
-        setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
+        setTimeout('$j(\''+this.id+'\').get(0).postEmbedJS()', 150);
         return this.wrapEmebedContainer( this.getEmbedObj() );
     },
     getEmbedObj:function(){
@@ -76,8 +76,10 @@ var flashEmbed = {
 			}
 			if (this.flashVars) {
 				html += 'flashvars=\'';
+				var and = '';
 				for(var key in this.flashVars) {
-					html += [key] + '=' + asString(this.flashVars[key]) + '&';
+					html +=and+ [key] + '=' + asString(this.flashVars[key]);
+					and = '&';
 				}
 				html += '\'';
 			}
@@ -96,13 +98,16 @@ var flashEmbed = {
 			}
 			if (this.flashVars) {
 				html += '\n\t<param name="flashvars" value=\'';
+				var and = '';
 				for(var key in this.flashVars) {
-					html += [key] + '=' + asString(this.flashVars[key]) + '&';
+					html += and + [key] + '=' + asString(this.flashVars[key]) ;
+					and = '&';
 				}
 				html += '\' />';
 			}
 			html += "</object>";
 		}
+		js_log('embed code:'+ html);
 		return html;
     },
     postEmbedJS: function()

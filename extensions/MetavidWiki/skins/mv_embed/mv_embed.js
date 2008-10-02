@@ -1790,7 +1790,13 @@ mediaElement.prototype =
     },
     isPlayableType:function(mime_type)
     {
-        return mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex' || mime_type=='video/x-flv';
+    	if(embedTypes.players.defaultPlayer(mime_type)){
+    		return true;
+    	}else{
+    		return false;
+    	}
+        //if(this.selected_player){
+        //return mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex' || mime_type=='video/x-flv';
     },
     /** Adds a single mediaSource using the provided element if
         the element has a 'src' attribute.        
