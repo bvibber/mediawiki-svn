@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'code-field-message' => 'Comment',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Date',
+	'code-field-comments' => 'Notes',
 	'code-rev-author' => 'Author:',
 	'code-rev-message' => 'Comment:',
 	'code-rev-repo' => 'Repository:',

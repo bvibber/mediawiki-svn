@@ -46,9 +46,13 @@ class SvnRevTablePager extends TablePager {
 
 	function getQueryInfo(){
 		return array(
-			'tables' => array( 'code_rev' ),
+			'tables' => array( 'code_rev', 'code_comment' ),
 			'fields' => array_keys( $this->getFieldNames() ),
 			'conds' => array( 'cr_repo_id' => $this->mRepo->getId() ),
+			'options' => array( 'GROUP BY' => 'cr_id' ),
+			'join_conds' => array( 
+				'code_comment' => array( 'LEFT JOIN', 'cc_repo_id = cr_repo_id AND cc_rev_id = cr_id' )
+			)
 		);
 	}
 
@@ -59,6 +63,7 @@ class SvnRevTablePager extends TablePager {
 			'cr_message' => wfMsg( 'code-field-message' ),
 			'cr_author' => wfMsg( 'code-field-author' ),
 			'cr_timestamp' => wfMsg( 'code-field-timestamp' ),
+			'COUNT(cc_rev_id)' => wfMsg( 'code-field-comments' ),
 		);
 	}
 
@@ -81,6 +86,8 @@ class SvnRevTablePager extends TablePager {
 		case 'cr_timestamp':
 			global $wgLang;
 			return $wgLang->timeanddate( $value );
+		case 'COUNT(cc_rev_id)':
+			return intval( $value );
 		}
 	}
 	
@@ -89,7 +96,7 @@ class SvnRevTablePager extends TablePager {
 		return str_replace(
 			'<tr>',
 			Xml::openElement( 'tr',
-				array( 'class' => "mw-codereview-status-$row->cr_status" ) ),
+				array( 'class' => "mw-codereview-status-{$row->cr_status}" ) ),
 			parent::formatRow( $row ) );
 	}
 
