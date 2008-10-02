@@ -1742,7 +1742,7 @@ var smilPlaylist ={
 	transitions:{},
 	doParse:function(){
 		var _this = this;
-		js_log('do parse smil'+ typeof this.transitions);
+		js_log('f:doParse smilPlaylist');
 		//@@todo get/parse meta: 
 		var meta_tags = this.data.getElementsByTagName('meta');
 		$j.each(meta_tags, function(i,meta_elm){
@@ -1762,7 +1762,7 @@ var smilPlaylist ={
 				js_log('skipping transition: (missing id) ' + trans_elm );
 			}
 		});
-		js_log('loaded transitions');	
+		js_log('loaded transitions:' + _this.transitions.length);	
 		//add seq (latter we will have support than one) 
 		var seq_tags = this.data.getElementsByTagName('seq');
 		$j.each(seq_tags, function(i,seq_elm){

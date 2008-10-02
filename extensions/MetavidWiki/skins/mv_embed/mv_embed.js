@@ -196,6 +196,11 @@ var mvEmbed = {
   pc:null, //used to store pointer to parent clip (when in playlist mode)
   load_libs:function(callback){
   	if(callback)this.load_callback = callback;
+  	//if libs are already loaded jump directly to the callback
+  	if(this.libs_loaded){
+  		callback();
+  		return true;
+  	}
  	//two loading stages, first get jQuery
 	var _this = this;
   	mvJsLoader.doLoad(this.lib_jquery,function(){
@@ -801,6 +806,7 @@ var mvJsLoader = {
 	 callbacks:new Array(),
 	 doLoad:function(libs,callback){	
 	 	 this.ctime++;
+	 	 //js_log('doLoad: '+this.ctime);
 	 	 //stack callbacks	
 	 	 if(callback){
 	 	 	//js_log('add callback: '+callback); 
@@ -808,8 +814,10 @@ var mvJsLoader = {
 	 	 }				 	 		
 		 //merge any new requested libs
 		 if(libs){
-		 	for(var i in libs)
+		 	for(var i in libs){
+		 		//js_log('add lib: '+i + ' = ' + libs[i]);
 		 		this.libs[i]=libs[i];
+		 	}
 		 }		 		 
 		 var loading=0;
 		 var i=null;
@@ -821,12 +829,13 @@ var mvJsLoader = {
 			 var cur_load=0;
 			 for(var p in objPath){
 				 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];				 
-				 if(i=='flashEmbed'){				 	
-				 	js_log("eval:  " + eval('typeof ('+cur_path+');'));
-				 	js_log("cur_load = loading=1");
-				 }
+				 //if(i=='flashEmbed'){				 	
+			 	//js_log("eval:  " + eval('typeof ('+cur_path+');'));
+			 	
+				 //}
 				 if(eval('typeof '+cur_path)=='undefined'){
 					 cur_load = loading=1;
+					 js_log("cur_load = loading=1");
 					 break;
 				 }
 				 //if we have made the full comparison break out:
@@ -850,7 +859,7 @@ var mvJsLoader = {
 		 	var cb_count=0;
 		 	for(var i in this.callbacks)
 		 		cb_count++;		 		
-		 	//js_log('REST LIBS: loading is: '+ loading + ' run callbacks: '+cb_count);
+		 	//js_log('REST LIBS: loading is: '+ loading + ' run callbacks: '+cb_count +' p:'+ this.ptime +' c:'+ this.ctime);
 		 	//reset the libs
 		 	this.libs={};		 			 			 			
 		 	//js_log('done loading do call: ' + this.callbacks[0] );		 
@@ -861,6 +870,8 @@ var mvJsLoader = {
 		 			//js_log(' run: '+this.ctime+ ' p: ' + this.ptime + ' ' +loading+ ' :'+ func);
 					//func();		
 		 		}else{
+		 			//re-issue doLoad ( ptime will be set to ctime so we should catch up) 
+		 			setTimeout('mvJsLoader.doLoad()',25);
 		 			break;
 		 		}
 		 	}		 	

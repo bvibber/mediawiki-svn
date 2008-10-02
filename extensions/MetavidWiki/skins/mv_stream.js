@@ -53,9 +53,10 @@ gMsg['mv_open_edit'] ='you can only edit one at a time, please save or cancel ot
 mv_addLoadEvent(mv_load_interface_libs);
 
 function mv_load_interface_libs(){
-	js_log('mv_load_interface_libs');
+	js_log('f:mv_load_interface_libs');
 	//we will need mv_embed stuff:
 	mvEmbed.load_libs(function(){
+		js_log('load stream js');
 		//load some additional plugins/components:
 		//:hoverIntent
 		//http://cherne.net/brian/resources/jquery.hoverIntent.html
