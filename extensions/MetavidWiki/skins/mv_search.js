@@ -54,7 +54,11 @@ function mv_do_setup_search(req_mode){
 	//remove all old search_text binddings:
 	$j('.mv_search_select').unbind();
 	//set up actions:
+	$j('.mv_search_select').each(function(){
+		js_log("SHOULD ADD change for: " + this.id);
+	});
 	$j('.mv_search_select').change(function(){
+		js_log('mv_search_select:' + $j("#"+this.id+" option:selected").val());
 		//get mv_sel_# number
 		id_parts = $j(this).attr('id').split('_');
 		var type = id_parts[1];
@@ -402,6 +406,11 @@ function mv_add_person_ac(inx){
 		'top':$j('#mv_person_input_'+inx).get(0).offsetTop + $j('#mv_person_input_'+inx).height()+6 });
 }
 function mv_add_filter(){
+	//give us another 50px if on frontPage: 	
+	if($j('#frontPageTop').height())
+		$j('#frontPageTop').css('height', ($j('#frontPageTop').height()+55)+'px');
+	
+		
 	//close the first filter select rename inx to inx+1
 	var new_t_id = 'mvsel_t_'+ ($j(".mv_search_select").length-1);
 	var new_a_id = 'mvsel_a_'+ ($j(".mv_search_select").length-1);
@@ -419,12 +428,16 @@ function mv_add_filter(){
 		$j('#mvs_'+inx).append( $j("#mv_ref_remove")
 			.clone().css('display', 'inline')
 			.attr({id:'', href:'javascript:mv_remove_filter('+inx+')'}));
+	mvSearchSetupFlag=false;
 	mv_setup_search();
 	//console.log("new id: " + new_id);
 	//$j('mv_sel_')
 }
 //remove filter of given inx
 function mv_remove_filter(inx){
+	//remove 50 px if on front page: 
+	if($j('#frontPageTop').height())
+		$j('#frontPageTop').css('height', ($j('#frontPageTop').height()-50)+'px');
 	$j('#mvs_'+inx).remove();
 	//also remove the person input (since we moved it out of mvs)
 	$j('#mv_person_choices_'+inx).remove();

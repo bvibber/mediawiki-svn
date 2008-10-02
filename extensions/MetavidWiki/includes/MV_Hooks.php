@@ -78,7 +78,20 @@
  	}
  	return true;
  }
-
+function mvAddToolBoxLinks(){
+	global $wgTitle,$wgUser,$wgArticle;
+	if( $wgTitle->getNamespace() == MV_NS_STREAM){		
+		//make sure the Messages are loaded		
+		//add export cmml link: 		
+		$sTitle = Title::makeTitle( NS_SPECIAL, 'MvExportStream' );
+		$sk = $wgUser->getSkin();		
+		$link = $sk->makeKnownLinkObj( $sTitle,wfMsg('mv_stream_resource_export'),
+				'feed_format=roe&stream_name=' . htmlspecialchars( $wgArticle->mvTitle->getStreamName() ) . '&t=' . htmlspecialchars($wgArticle->mvTitle->getTimeRequest() ),
+				'', '', 'title="' . htmlspecialchars( wfMsg( 'mv_export_cmml' ) ) . '"' );
+		echo "<li>" . $link . "</li>";		
+	}
+	return true; 
+}
 // load the sequence page 
 function mvSeqTag( &$input, &$argv, &$parser ) {
 	global $wgTitle;
@@ -167,7 +180,7 @@ function mvCustomEditor( &$article, &$user ) {
   * by processing the given title request/namespace
   */
 function mvDoMvPage ( &$title, &$article, $doOutput = true ) {
-	global $wgOut;
+	global $wgOut, $wgTitle, $wgArticle;
 	if ( $title->getNamespace() == NS_CATEGORY ) {
 		$article = new MV_CategoryPage( $title );
 	} elseif ( $title->getNamespace() == MV_NS_SEQUENCE ) {
@@ -190,6 +203,7 @@ function mvDoMvPage ( &$title, &$article, $doOutput = true ) {
 			return false;
 		}
 	}
+	$wgArticle = $article;
 	return true;
 }
 function mvCatHook( &$catArticle ) {

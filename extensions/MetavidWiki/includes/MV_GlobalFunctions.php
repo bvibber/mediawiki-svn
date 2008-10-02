@@ -49,8 +49,9 @@ function enableMetavid() {
 }
 function mvSetupExtension() {
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore,
-	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions, $markerList,
-	$wgAjaxExportList, $mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite, $wgAutoloadClasses, $wgSpecialPages;
+	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions, $markerList,$wgVersion,
+	$wgAjaxExportList, $mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite, 
+	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers;
 	
 
 	mvfInitMessages();
@@ -175,14 +176,18 @@ function mvSetupExtension() {
 	// $wgHooks['ArticleSave'][] = 'mvSaveHook';
 	$wgHooks['ArticleSaveComplete'][] 		= 'mvSaveHook';
 	$wgHooks['ArticleDelete'][] 			= 'mvDeleteHook';
-	$wgHooks['ArticleFromTitle'][] 			= 'mvDoMvPage';
-		
+	$wgHooks['ArticleFromTitle'][] 			= 'mvDoMvPage';		
 	$wgHooks['TitleMoveComplete'][]			= 'mvMoveHook';
+	$wgHooks['LinkEnd'][] 					= 'mvLinkEnd';
 	
 	
-	$wgHooks['LinkEnd'][] = 'mvLinkEnd';
-	
-	
+	if (version_compare($wgVersion,'1.13','>')) {
+		$wgHooks['SkinTemplateToolboxEnd'][] = 'mvAddToolBoxLinks'; // introduced only in 1.13
+	} else {
+		$wgHooks['MonoBookTemplateToolboxEnd'][] = 'mvAddToolBoxLinks';
+	}
+
+
 	// @@NOTE this hook is not avaliable by default in medaiwiki 
 	// to use this hook you should add this function to moveTo()
 	// right after the local check in Title.php:
@@ -206,8 +211,7 @@ function mvSetupExtension() {
 	* OggHandler extension overides
 	* if the OggHandler is included remap the object for copatibility with metavid
 	* MV_OggHandler.php hanndles all the re-mapping
-	*/	
-	global $wgMediaHandlers;
+	*/		
 	if($wgMediaHandlers['application/ogg'] == 'OggHandler'){
 		$wgAutoloadClasses['mvOggHandler']			= dirname( __FILE__ )  . '/MV_OggHandler.php';
 		$wgMediaHandlers['application/ogg']='mvOggHandler';		
@@ -708,7 +712,7 @@ function mvDoMetavidStreamPage( &$title, &$article ) {
  * @@todo cache this function
  */
 function mvGetMVStream( $stream_init ) {
-	global $MVStreams;
+	global $MVStreams;	
 	// wfDebug('mv get stream: ' .$stream_name . "\n");
 	if ( is_object( $stream_init ) ) {
 		$stream_init = get_object_vars( $stream_init );
@@ -723,7 +727,6 @@ function mvGetMVStream( $stream_init ) {
 	} else {
 		die( 'error no id or name in init' );
 	}
-	
 	// @@todo cache in memcache)	
 	if ( !isset( $MVStreams[$stream_name] ) ) {
 		$MVStreams[$stream_name] = new MV_Stream( $stream_init );

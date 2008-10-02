@@ -64,7 +64,7 @@
 		$this->page_title = wfMsg( 'mv_edit_sequence', $wgTitle->getText() );
 	}
 	function setupStreamView() {
-		global $mvgIP, $mvDefaultStreamViewLength, $wgOut, $mvgScriptPath, $wgUser;
+		global $mvgIP, $mvDefaultStreamViewLength, $wgOut, $mvgScriptPath, $wgUser, $mvDispROEicon;
 
 		// set default time range if null time range request
 		$this->article->mvTitle->setStartEndIfEmpty();
@@ -100,14 +100,16 @@
 			wfMsg( 'mv_of' ) . seconds2ntp( $this->article->mvTitle->getDuration() ) .
 		'</h1>';
 
-		// add export cmml icon
-		$this->page_header .= '<span id="cmml_link"/>';
-			$sTitle = Title::makeTitle( NS_SPECIAL, 'MvExportStream' );
-			$sk = $wgUser->getSkin();
-			$this->page_header .= $sk->makeKnownLinkObj( $sTitle,
-				'<img style="width:28px;height:28px;" src="' . htmlspecialchars( $mvgScriptPath ) . '/skins/images/Feed-icon_cmml_28x28.png">',
-				'feed_format=roe&stream_name=' . htmlspecialchars( $this->article->mvTitle->getStreamName() ) . '&t=' . htmlspecialchars( $this->article->mvTitle->getTimeRequest() ),
-				'', '', 'title="' . htmlspecialchars( wfMsg( 'mv_export_cmml' ) ) . '"' );
+		// add export roe icon:
+		if($mvDispROEicon){
+			$this->page_header .= '<span id="cmml_link"/>';
+				$sTitle = Title::makeTitle( NS_SPECIAL, 'MvExportStream' );
+				$sk = $wgUser->getSkin();
+				$this->page_header .= $sk->makeKnownLinkObj( $sTitle,
+					'<img style="width:28px;height:28px;" src="' . htmlspecialchars( $mvgScriptPath ) . '/skins/images/Feed-icon_cmml_28x28.png">',
+					'feed_format=roe&stream_name=' . htmlspecialchars( $this->article->mvTitle->getStreamName() ) . '&t=' . htmlspecialchars( $this->article->mvTitle->getTimeRequest() ),
+					'', '', 'title="' . htmlspecialchars( wfMsg( 'mv_export_cmml' ) ) . '"' );
+		}
 		$this->page_header .= '</span>';
 		$this->page_title = $this->article->mvTitle->getStreamNameText() . ' ' . $this->article->mvTitle->getTimeDesc();
 	}

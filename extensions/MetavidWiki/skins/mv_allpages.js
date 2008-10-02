@@ -167,7 +167,7 @@ function mv_cxt(inx){
 }
 /* toggles advanced search */
 function mv_toggle_advs(){
-	js_log('called mv_toggle_advs');
+	js_log('called mv_toggle_advs:' + $j('#advs').val());
 	if($j('#advs').val()=='0'){
 		$j('#advs').val('1');
 		//sync values from basic -> avanced
@@ -206,7 +206,7 @@ function mv_do_disp_adv_search(){
 		$j(this).css('display', 'inline');
 	});
 	//give some extra room for advanced search:
-	$j('#frontPageTop').animate({'height':'300px'},'fast');
+	$j('#frontPageTop').animate({'height':'350px'},'fast');
 }
 function mv_setup_search_ac(){
 	var uri = wgScript;
@@ -221,6 +221,8 @@ function mv_setup_search_ac(){
 		}else{
 			$j('#advs').val('1');
 		}
+	}else{
+		$j('#advs').val('0');
 	}
 	
 	// add the sugestions div (abolute positioned so it can be ontop of everything)

@@ -254,7 +254,8 @@ Jump to stream view: $2',
 	'mv_add_clip_by_name' => 'Add clip by name',
 
 	# mv tools
-	'mv_export_cmml' => 'export cmml',
+	'mv_stream_resource_export' => 'Stream Resources Export',
+	'mv_export_cmml' => 'Export cmml',
 	'mv_search_stream' => 'Search stream',
 	'mv_navigate_stream' => 'Navigate full stream',
 	'mv_embed_options' => 'Embed options',
