@@ -48,7 +48,7 @@ var flashEmbed = {
 	           	}
 	},
     getEmbedHTML: function (){
-        setTimeout('$j(\''+this.id+'\').get(0).postEmbedJS()', 150);
+        setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
         return this.wrapEmebedContainer( this.getEmbedObj() );
     },
     getEmbedObj:function(){
