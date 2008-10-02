@@ -96,7 +96,7 @@ CREATE TABLE /*$wgDBprefix*/code_paths (
   -- '/trunk/phase3/RELEASE_NOTES'
   cp_path varchar(255) not null,
 
-  -- Update type: Modify, Add, Delete, Rename
+  -- Update type: Modify, Add, Delete, Replace
   cp_action enum ('M','A','D','R'),
 
   primary key (cp_repo_id, cp_rev_id, cp_path)
