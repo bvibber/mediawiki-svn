@@ -15,7 +15,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'GroupPermissions Manager',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GroupPermissionsManager',
-	'version'        => '3.2.5',
+	'version'        => '3.2.6',
 	'description'    => 'Manage group permissions via a special page',
 	'descriptionmsg' => 'grouppermissions-desc',
 );

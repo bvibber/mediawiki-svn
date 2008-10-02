@@ -109,7 +109,8 @@ class SortPermissions extends SpecialPage {
 	*/
 	function makeRadios($perm, $types) {
 		global $wgGPManagerSort;
-		$ret = "\n<tr id=\"right-$perm\"><td>$perm (<a href=\"javascript:removePerm('$perm');\">".wfMsg('grouppermissions-sp-remove')."</a>)</td>";
+		$permmsg = wfEmptyMsg('right-' . $perm, wfMsg('right-' . $perm)) ? $perm : wfMsg('right-' . $perm);
+		$ret = "\n<tr id=\"right-$perm\"><td><span title=\"$permmsg\">$perm</span> (<a href=\"javascript:removePerm('$perm');\">".wfMsg('grouppermissions-sp-remove')."</a>)</td>";
 		foreach($types as $type) {
 			if(array_key_exists($type, $wgGPManagerSort) && in_array($perm, $wgGPManagerSort[$type])) {
 				$ret .= "\n<td><input type=\"radio\" name=\"right-$perm\" id=\"$perm-$type\" class=\"type-$type\" value=\"$type\" checked=\"checked\" />";

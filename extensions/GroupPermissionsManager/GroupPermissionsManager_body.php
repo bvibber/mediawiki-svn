@@ -249,7 +249,10 @@ class GroupPermissions extends SpecialPage {
 			$form .= '<fieldset><legend>'.wfMsgHtml("grouppermissions-sort-$type").'</legend>';
 			$form .= "\n<h2>".wfMsgHtml("grouppermissions-sort-$type")."</h2>\n<table>";
 			foreach($list as $right => $value) {
-				$msg = wfMsg('grouppermissions-display', wfMsg('right-' . $right), $right);
+				$rightmsg = wfMsg('right-' . $right);
+				if(wfEmptyMsg('right-' . $right, $rightmsg))
+					$rightmsg = $right;
+				$msg = wfMsg('grouppermissions-display', $rightmsg, $right);
 				$form .= "\n<tr><td>$msg</td><td>";
 				if($value) {
 					$form .= $this->makeRadio($right, 'true', true) . $this->makeRadio($right, 'false') . $this->makeRadio($right, 'never');
