@@ -64,8 +64,8 @@ class SpamRegexHooks {
 			foreach( $s_phrases as $s_phrase ) {
 				if ( preg_match( $s_phrase, $reason, $s_matches ) ) {
 					wfLoadExtensionMessages( 'SpamRegex' );
-					$error .= wfMsg( 'spamregex-move' );
-					$error .= wfMsg( 'spamprotectionmatch', "<nowiki>{$s_matches[0]}</nowiki>" );
+					$error .= wfMsgExt( 'spamregex-move', array( 'parseinline' ) ) . ' ';
+					$error .= wfMsgExt( 'spamprotectionmatch', array( 'parseinline' ), "<nowiki>{$s_matches[0]}</nowiki>" );
 					wfProfileOut( __METHOD__ );
 					return false;
 				}
