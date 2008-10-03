@@ -245,9 +245,9 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	}
 
 	protected function appendUserGroups( $property ) {
-		global $wgGroupPermissions;
+		$groupPerms = User::getAllGroupPermissions();
 		$data = array();
-		foreach( $wgGroupPermissions as $group => $permissions ) {
+		foreach( $groupPerms as $group => $permissions ) {
 			$arr = array( 'name' => $group, 'rights' => array_keys( $permissions, true ) );
 			$this->getResult()->setIndexedTagName( $arr['rights'], 'permission' );
 			$data[] = $arr;

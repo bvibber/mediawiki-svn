@@ -254,12 +254,12 @@ class ProtectionForm {
 
 		# They shouldn't be able to do this anyway, but just to make sure, ensure that cascading restrictions aren't being applied
 		#  to a semi-protected page.
-		global $wgGroupPermissions;
+		$groupPerms = User::getAllGroupPermissions();
 
 		$edit_restriction = $this->mRestrictions['edit'];
 		$this->mCascade = $wgRequest->getBool( 'mwProtect-cascade' );
 		if ($this->mCascade && ($edit_restriction != 'protect') &&
-			!(isset($wgGroupPermissions[$edit_restriction]['protect']) && $wgGroupPermissions[$edit_restriction]['protect'] ) )
+			!(isset($groupPerms[$edit_restriction]['protect']) && $groupPerms[$edit_restriction]['protect'] ) )
 			$this->mCascade = false;
 
 		if ($this->mTitle->exists()) {
@@ -513,11 +513,12 @@ class ProtectionForm {
 	}
 
 	function buildCleanupScript() {
-		global $wgRestrictionLevels, $wgGroupPermissions;
+		global $wgRestrictionLevels;
 		$script = 'var wgCascadeableLevels=';
 		$CascadeableLevels = array();
+		$groupPerms = User::getAllGroupPermissions();
 		foreach( $wgRestrictionLevels as $key ) {
-			if ( (isset($wgGroupPermissions[$key]['protect']) && $wgGroupPermissions[$key]['protect']) || $key == 'protect' ) {
+			if ( (isset($groupPerms[$key]['protect']) && $groupPerms[$key]['protect']) || $key == 'protect' ) {
 				$CascadeableLevels[] = "'" . Xml::escapeJsString( $key ) . "'";
 			}
 		}

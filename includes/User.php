@@ -1936,7 +1936,7 @@ class User {
 	function getRights() {
 		if ( is_null( $this->mRights ) ) {
 			$this->mRights = self::getGroupPermissions( $this->getEffectiveGroups() );
-			wfRunHooks( 'UserGetRights', array( $this, &$this->mRights ) );
+			#wfRunHooks( 'UserGetRights', array( $this, &$this->mRights ) );
 			// Force reindexation of rights when a hook has unset one of them
 			$this->mRights = array_values( $this->mRights );
 		}
@@ -2987,15 +2987,18 @@ class User {
 	 * @return \type{\arrayof{\string}} List of permission key names for given groups combined
 	 */
 	static function getGroupPermissions( $groups ) {
-		global $wgGroupPermissions;
-		$rights = array();
-		foreach( $groups as $group ) {
-			if( isset( $wgGroupPermissions[$group] ) ) {
-				$rights = array_merge( $rights,
-					array_keys( array_filter( $wgGroupPermissions[$group] ) ) );
-			}
-		}
-		return $rights;
+		$rm = new RightsManagerMulti;
+		
+		return $rm->getGroupPermissions($groups);
+	}
+	
+	/**
+	 * Get a list of all group permissions.
+	 */
+	static function getAllGroupPermissions() {
+		$rm = new RightsManagerMulti;
+		
+		return $rm->getAllGroupPermissions();
 	}
 	
 	/**
@@ -3005,14 +3008,9 @@ class User {
 	 * @return \type{\arrayof{\string}} List of internal group names with the given permission
 	 */
 	static function getGroupsWithPermission( $role ) {
-		global $wgGroupPermissions;
-		$allowedGroups = array();
-		foreach ( $wgGroupPermissions as $group => $rights ) {
-			if ( isset( $rights[$role] ) && $rights[$role] ) {
-				$allowedGroups[] = $group;
-			}
-		}
-		return $allowedGroups;
+		$rm = new RightsManagerMulti;
+		
+		return $rm->getGroupsWithPermission( $role );
 	}
 
 	/**
@@ -3054,9 +3052,12 @@ class User {
 	 * @return \type{\arrayof{\string}} Array of internal group names
 	 */
 	static function getAllGroups() {
-		global $wgGroupPermissions;
+		$rm = new RightsManagerMulti;
+		
+		$groups = $rm->getAllGroups();
+		
 		return array_diff(
-			array_keys( $wgGroupPermissions ),
+			$groups,
 			self::getImplicitGroups()
 		);
 	}

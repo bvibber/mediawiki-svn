@@ -416,7 +416,7 @@ $specialPageAliases = array(
 	'Import'                    => array( 'Import' ),
 	'Lockdb'                    => array( 'LockDB' ),
 	'Unlockdb'                  => array( 'UnlockDB' ),
-	'Userrights'                => array( 'UserRights' ),
+	'Userrights'                => array( 'UserGroups', 'UserRights' ),
 	'MIMEsearch'                => array( 'MIMESearch' ),
 	'FileDuplicateSearch'       => array( 'FileDuplicateSearch' ),
 	'Unwatchedpages'            => array( 'UnwatchedPages' ),
@@ -1538,12 +1538,12 @@ please see math/README to configure.',
 'files'                    => 'Files',
 
 # User rights
-'userrights'                     => 'User rights management', # Not used as normal message but as header for the special page itself
+'userrights'                     => 'Edit user groups', # Not used as normal message but as header for the special page itself
 'userrights-summary'             => '', # do not translate or duplicate this message to other languages
 'userrights-lookup-user'         => 'Manage user groups',
 'userrights-user-editname'       => 'Enter a username:',
 'editusergroup'                  => 'Edit user groups',
-'editinguser'                    => "Changing user rights of user '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'editinguser'                    => "Changing group membership for user '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'       => 'Edit user groups',
 'saveusergroups'                 => 'Save user groups',
 'userrights-groupsmember'        => 'Member of:',
@@ -1552,13 +1552,15 @@ please see math/README to configure.',
 * An unchecked box means the user is not in that group.
 * A * indicates that you cannot remove the group once you have added it, or vice versa.',
 'userrights-reason'              => 'Reason for change:',
-'userrights-no-interwiki'        => 'You do not have permission to edit user rights on other wikis.',
+'userrights-no-interwiki'        => 'You do not have permission to edit user group membership on other wikis.',
 'userrights-nodatabase'          => 'Database $1 does not exist or is not local.',
-'userrights-nologin'             => 'You must [[Special:UserLogin|log in]] with an administrator account to assign user rights.',
-'userrights-notallowed'          => 'Your account does not have permission to assign user rights.',
+'userrights-nologin'             => 'You must [[Special:UserLogin|log in]] with an administrator account to assign user groups.',
+'userrights-notallowed'          => 'Your account does not have permission to assign user groups.',
 'userrights-changeable-col'      => 'Groups you can change',
 'userrights-unchangeable-col'    => 'Groups you cannot change',
 'userrights-irreversible-marker' => '$1*', # only translate this message to other languages if you have to change it
+'userrights-backendselect-subtitle' => 'Select a rights manager',
+'userrights-backendselect-text' => "You are permitted to edit user groups for more than one rights management system. Please select the rights management system for which you wish to edit user groups from the list below:",
 
 # Groups
 'group'               => 'Group:',
@@ -1633,14 +1635,16 @@ please see math/README to configure.',
 'right-unwatchedpages'       => 'View a list of unwatched pages',
 'right-trackback'            => 'Submit a trackback',
 'right-mergehistory'         => 'Merge the history of pages',
-'right-userrights'           => 'Edit all user rights',
+'right-userrights'           => 'Modify membership of all user groups',
 'right-userrights-interwiki' => 'Edit user rights of users on other wikis',
 'right-siteadmin'            => 'Lock and unlock the database',
+'right-grouprights'	     => 'Edit permissions assigned to local groups',
 
 # User rights log
 'rightslog'      => 'User rights log',
 'rightslogtext'  => 'This is a log of changes to user rights.',
 'rightslogentry' => 'changed group membership for $1 from $2 to $3',
+'rightslogentry2' => 'changed group membership for $1: added $2, removed $3',
 'rightsnone'     => '(none)',
 
 # Recent changes
@@ -2152,6 +2156,10 @@ There may be [[{{MediaWiki:Listgrouprights-helppage}}|additional information]] a
 'listgrouprights-removegroup'     => 'Can remove {{PLURAL:$2|group|groups}}: $1',
 'listgrouprights-addgroup-all'    => 'Can add all groups',
 'listgrouprights-removegroup-all' => 'Can remove all groups',
+'listgrouprights-addselfgroup-all'=> 'Can add all groups to self',
+'listgrouprights-addselfgroup'	  => 'Can add {{PLURAL:$2|group|groups}} to self: $1',
+'listgrouprights-removeselfgroup-all' => 'Can remove all groups from self',
+'listgrouprights-removeselfgroup' => 'Can add {{PLURAL:$2|group|groups}} from self: $1',
 
 # E-mail user
 'mailnologin'     => 'No send address',
@@ -3661,6 +3669,46 @@ Enter the filename without the "{{ns:image}}:" prefix.',
 # Special:BlankPage
 'blankpage'              => 'Blank page',
 'intentionallyblankpage' => 'This page is intentionally left blank',
+
+# Special:GroupRights
+'grouprights'			=> "Edit group rights",
+'grouprights-grouplist'          => 'The following groups have been configured.
+You may view and edit the rights assigned to any group.
+A group may be deleted by removing all rights from it.',
+'grouprights-editlink' => 'view/edit',
+'grouprights-existinggroup-legend'                => 'Existing groups',
+'grouprights-newgroup-legend'                     => 'Create a new group',
+'grouprights-newgroup-intro'                      => 'You can use this form to assign rights to a new group.
+Note that a group does not exist unless it has rights assigned to it.',
+'grouprights-newgroupname'       => 'New group name:',
+'grouprights-creategroup-submit' => 'Assign rights',
+'grouprights-subtitle'                  => 'Editing $1',
+'grouprights-fieldset'                  => 'Rights for $1',
+'grouprights-editgroup-name'                      => 'Name of group:',
+'grouprights-editgroup-display'                   => 'Localised name of group:',
+'grouprights-editgroup-display-edit'              => '$2 ([[MediaWiki:Group-$1|edit]])',
+'grouprights-editgroup-member'                    => 'Localised name of group members:',
+'grouprights-editgroup-member-edit'               => '$2 ([[MediaWiki:Group-$1-member|edit]])',
+'grouprights-editgroup-members'                   => 'Member list:',
+'grouprights-editgroup-members-link'              => '[[Special:ListUsers/$1|List of users with $2 rights]]',
+'grouprights-editgroup-restrictions'              => 'Set of wikis where this group is active:',
+'grouprights-editgroup-noset'                     => '(none)',
+'grouprights-editgroup-submit'                    => 'Save changes to group rights',
+'grouprights-editgroup-perms'                     => 'Assigned rights:',
+'grouprights-editgroup-reason'                    => 'Reason for change:',
+'grouprights-editgroup-success'                   => 'Group rights changed',
+'grouprights-editgroup-success-text'              => 'You have successfully changed the group rights for the $1 group.',
+'grouprightslog' => 'changed group rights for $1. Added: $2; Removed: $3',
+'grouprights-return' => 'Return to group rights',
+'grouprights-backendselect-subtitle' => 'Select a rights manager',
+'grouprights-backendselect-text' => "You are permitted to edit group rights for more than one rights management system. Please select the rights management system for which you wish to edit group rights from the list below:",
+'grouprights-editgroup' => "'''Changeable groups'''",
+'grouprights-editgroup-add' => 'Can add groups:',
+'grouprights-editgroup-remove' => 'Can remove groups:',
+'grouprights-editgroup-add-self' => 'Can add groups to self:',
+'grouprights-editgroup-remove-self' => 'Can remove groups from self:',
+
+'rights-backend-RightsManagerConfigDB' => "Users and groups for this MediaWiki site.",
 
 # External image whitelist
 'external_image_whitelist' => ' #Leave this line exactly as it is<pre>
