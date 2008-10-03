@@ -13,7 +13,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'UserStats',
-	'version'        => 'v1.11',
+	'version'        => 'v1.11.1',
 	'author'         => 'Paul Grinberg',
 	'email'          => 'gri6507 at yahoo dot com',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Usage_Statistics',
@@ -38,4 +38,4 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['UserStats'] = $dir . '/SpecialUserStats.i18n.php';
 $wgExtensionAliasesFiles['UserStats'] = $dir . 'SpecialUserStats.alias.php';
 $wgAutoloadClasses['SpecialUserStats'] = $dir . '/SpecialUserStats_body.php';
-$wgSpecialPages['UserStats'] = 'SpecialUserStats';
+$wgSpecialPages['SpecialUserStats'] = 'SpecialUserStats';
