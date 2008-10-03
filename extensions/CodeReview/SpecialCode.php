@@ -90,9 +90,11 @@ abstract class CodeView {
 
 	abstract function execute();
 
-	function authorLink( $author ) {
-		/*
-		// Leave this for later for now...
+	/* 
+	 *	returns a User object if $author has a wikiuser associated,
+	 *	of false
+	*/
+	function authorWikiUser( $author ) {
 		static $userLinks = array();
 		if( isset( $userLinks[$author] ) )
 			return $userLinks[$author];
@@ -111,12 +113,13 @@ abstract class CodeView {
 		if( $wikiUser )
 			$user = User::newFromName( $wikiUser );
 		if( $user instanceof User )
-			$link = $author . ' (' . $this->mSkin->userLink( $user->getId(), $user->getName() ) . ')';
+			$res = $user;
 		else
-			$link = htmlspecialchars( $author );
-		return $userLinks[$author] = $link;
-		*/
-		
+			$res = false;
+		return $userLinks[$author] = $res;
+	}
+
+	function authorLink( $author ) {
 		$repo = $this->mRepo->getName();
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/author/$author" );
 		return $this->mSkin->link( $special, htmlspecialchars( $author ) );
