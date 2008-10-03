@@ -7,12 +7,12 @@ class SpecialCode extends SpecialPage {
 	}
 
 	function execute( $subpage ) {
-		global $wgOut, $wgRequest, $wgUser, $wgScriptPath;
+		global $wgOut, $wgRequest, $wgUser, $wgScriptPath, $wgCodeReviewStyleVersion;
 
 		wfLoadExtensionMessages( 'CodeReview' );
 
 		$this->setHeaders();
-		$wgOut->addStyle( "$wgScriptPath/extensions/CodeReview/codereview.css" );
+		$wgOut->addStyle( "$wgScriptPath/extensions/CodeReview/codereview.css?$wgCodeReviewStyleVersion" );
 
 		if( $subpage == '' ) {
 			$view = new CodeRepoListView();

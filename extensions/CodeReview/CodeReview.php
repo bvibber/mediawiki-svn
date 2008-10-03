@@ -86,3 +86,4 @@ $wgGroupPermissions['steward']['repoadmin'] = true; // temp
 $wgSubversionProxy = false;
 $wgSubversionProxyTimeout = 30; // default 3 secs is too short :)
 
+$wgCodeReviewStyleVersion = 1;
