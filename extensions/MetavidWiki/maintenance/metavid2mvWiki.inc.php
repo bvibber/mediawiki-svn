@@ -695,7 +695,7 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 		$imgTitle = Title :: makeTitle( NS_IMAGE, $person->name_clean . '.jpg' );
 		// if(!$imgTitle->exists()){
 		global $wgTmpDirectory;
-		$url = 'http://www.opensecrets.org/politicians/img/pix/' . $person->osid . '.jpg';
+		$url = 'http://www.opensecrets.org/img/politicians/img/pix/' . $person->osid . '.jpg';
 		// print $wgTmpDirectory . "\n";
 		$local_file = tempnam( $wgTmpDirectory, 'WEBUPLOAD' );
 		// copy file:

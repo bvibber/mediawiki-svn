@@ -701,13 +701,13 @@ class MV_BillScraper extends MV_BaseScraper {
 		do_update_wiki_page( $wgBillTitle, $bp );
 
 		// set up a redirect for the bill key, and a link for the category page:
-		print "\ndo redirect for: $title_short \n";
+		//print "\ndo redirect for: $title_short \n";
 		global $mvForceUpdate;
-		$wgBillKeyTitle = Title::newFromText( $bill_key );
-		do_update_wiki_page( $wgBillKeyTitle, '#REDIRECT [[' . $title_short . ']]', null, $mvForceUpdate );
+		//$wgBillKeyTitle = Title::newFromText( $bill_key );
+		//do_update_wiki_page( $wgBillKeyTitle, '#REDIRECT [[' . $title_short . ']]', null, $mvForceUpdate );
 		// set up link on the category page:
-		$wgCatPageTitle = Title::newFromText( $bill_key, NS_CATEGORY );
-		do_update_wiki_page( $wgCatPageTitle, 'See Bill Page For More Info: [[:' . $wgBillTitle->getText() . ']]', null, $mvForceUpdate );
+		//$wgCatPageTitle = Title::newFromText( $bill_key, NS_CATEGORY );
+		//do_update_wiki_page( $wgCatPageTitle, 'See Bill Page For More Info: [[:' . $wgBillTitle->getText() . ']]', null, $mvForceUpdate );
 	}
 	function procMapLightInterest( $interest ) {
 		 global $mvMaxContribPerInterest, $mvMaxForAgainstBills;
