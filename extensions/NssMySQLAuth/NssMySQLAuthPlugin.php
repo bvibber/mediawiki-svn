@@ -18,6 +18,8 @@ class NssMySQLAuthPlugin extends AuthPlugin {
 		$wgHooks['UserEffectiveGroups'][]	= array( $wgAuth, 'onUserEffectiveGroups' );
 		$wgHooks['UserGetEmail'][]		= array( $wgAuth, 'onUserGetEmail' );
 		$wgHooks['UserSetEmail'][]		= array( $wgAuth, 'onUserSetEmail' );
+		
+		wfLoadExtensionMessages( 'nssmysqlauth' );
 	}
 	
 	function __construct( $wikiName = false ) {
@@ -145,5 +147,40 @@ class NssMySQLAuthPlugin extends AuthPlugin {
 			__METHOD__
 		);
 	}
+	
+	/**
+	 * Create an account, returning a random password 
+	 */
+	 function createAccount( $username, $options ) {
+	 	global $wgDefaultGid, $wgHomeDirectory;
+	 	$password = User::randomPassword();
+	 	
+	 	$insert = array(
+	 		'pwd_name' => strtolower( $username ),
+	 		'pwd_password' => Md5crypt::encryptPassword( $password ),
+	 		'pwd_password_lastchange' => wfTimestamp( TS_UNIX ),
+	 		'pwd_gid' => $wgDefaultGid,
+	 		'pwd_home' => str_replace( '$1', strtolower( $username ), $wgHomeDirectory )
+	 	);
+	 	
+	 	// $options is something that is passed to user_props
+	 	$insert['pwd_email'] = $options['email'];
+	 	$insert['pwd_active'] = $options['active'];
+	 	
+	 	// Guess a nice uid. We actually need a lock here
+	 	$dbw = $this->getDB( DB_MASTER );
+	 	$row = $dbw->selectRow( 'passwd', 'MAX(pwd_uid) + 1 AS uid', array(), __METHOD__ );
+	 	$uid = $row->uid;
+	 	if ( function_exists( 'posix_getpwuid' ) ) {
+	 		while( posix_getpwuid( $uid ) )
+		 		$uid++;
+	 	}
+	 	
+	 	$insert['pwd_uid'] = $uid;
+	 	
+	 	$dbw->insert( 'passwd', $insert, __METHOD__ );
+	 	
+	 	return $password;
+	 }
 
 }

@@ -26,5 +26,10 @@ $wgNssMySQLAuthDB = false;
 
 $wgExtensionFunctions[] = array( 'NssMySQLAuthPlugin', 'initialize' );
 
+$wgExtensionMessagesFiles['nssmysqlauth'] = dirname( __FILE__ ).'/NssMySQLAuth.i18n.php';
+
 $wgUserProperties = array( 'address', 'city' );
 $wgActivityModes = array( 'active', 'inactive' );
+
+$wgDefaultGid = 1001;
+$wgHomeDirectory = '/home/$1';

@@ -75,7 +75,7 @@ class Md5crypt {
 			mt_srand((double)(microtime() * 10000000));
 			
 			while(strlen($salt) < 8) {
-				$salt .= self::$itoa64{mt_rand(0, strlen($itoa64))};
+				$salt .= self::$itoa64{mt_rand(0, strlen(self::$itoa64))};
 			}
 		}
 		
