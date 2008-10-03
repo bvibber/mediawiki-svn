@@ -7,6 +7,10 @@ if( typeof wgServer!='undefined' && typeof  wgScript != 'undefined'){
 }else{
 	var base_roe_url='';
 }
+//foce wgScript path for blog support 
+if(!wgScript)
+	wgScript = "/w/index.php";
+	
 var gMvd={};
 function mv_setup_allpage(){
 	js_log("mv embed done loading now setup 'all page'");

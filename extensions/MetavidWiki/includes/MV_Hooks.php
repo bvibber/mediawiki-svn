@@ -29,14 +29,14 @@
  /*
   * mvisValidMoveOperation
   */
-  function mvisValidMoveOperation( &$new_title ) {
+function mvisValidMoveOperation( &$new_title ) {
  	$mvTitle = new MV_Title( $new_title->getDBkey() );
  	if ( $mvTitle->validRequestTitle() ) {
  		return true;
  	} else {
  		return 'mvMVDFormat';
  	}
-  }
+}
   /*
    * handles general parse and replace functions for sequences and internal embedding setup
    * 
@@ -44,7 +44,7 @@
    * all pages: replace [[Sequence:SeqName]] with embed formatted playlist from that seq page
    * replace [[MvStream:StreamName/ss:ss:ss/ee:ee:ee]] with clip segment
    */
-  function mvParserAfterTidy( &$parser, &$text ) {
+function mvParserAfterTidy( &$parser, &$text ) {
     // find markers in $text
     // replace markers with actual output
     global $markerList;
@@ -53,11 +53,29 @@
     return true;
 }
 
+function LinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options, &$ret){
+	//if a stream title and the base stream exists give a valid link
+ 	if( $target->getNamespace() == MV_NS_STREAM ){
+ 		$mvTitle = new MV_Title($target);
+ 		if( $mvTitle->doesStreamExist() ){
+ 			if( in_array( 'broken', $options ) ){ 
+		 		foreach($options as $k=>$v){
+		 			if($v=='broken')
+		 				$options[$k]='known'; 		 			
+		 		}
+ 			}else if( !in_array( 'known', $options ) ){ 
+ 				$options[]='known';
+ 			}
+ 		}
+ 	} 	
+ 	return true;
+}
 /* 
  * hack to embed embedStream:StreamName links 
 */
  function mvLinkEnd($skin, $title, $options, &$text, &$attribs, &$ret){
- 	global $mvEmbedKey, $mvDefaultAspectRatio,$mvDefaultVideoPlaybackRes;
+ 	global $mvEmbedKey, $mvDefaultAspectRatio,$mvDefaultVideoPlaybackRes; 	 
+ 	
  	if( substr( $title->getText(), 0, strlen($mvEmbedKey) )==$mvEmbedKey){
  		//parse text for extra params: 
  		$params = explode('|', $text);

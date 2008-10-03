@@ -179,6 +179,7 @@ function mvSetupExtension() {
 	$wgHooks['ArticleFromTitle'][] 			= 'mvDoMvPage';		
 	$wgHooks['TitleMoveComplete'][]			= 'mvMoveHook';
 	$wgHooks['LinkEnd'][] 					= 'mvLinkEnd';
+	$wgHooks['LinkBegin'][] 				= 'LinkBegin';
 	
 	
 	if (version_compare($wgVersion,'1.13','>')) {

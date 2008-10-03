@@ -22,7 +22,7 @@ define('MV_BASE_MEDIA_SERVER_PATH', 'http://mvbox2.cse.ucsc.edu/mvFlvServer.php/
 //ffmpeg based (bad)
 //$flvEncodeCommand = 'ffmpeg -i $input -ar 22050 -async 2 -aspect 4:3 -f flv  -acodec libmp3lame -ac 1 -ab 32k -b 250k -s 400x300 $output';
 //mencoder based (good)
-$flvEncodeCommand = 'mencoder $input -noskip -mc 0 -o $output -of lavf -oac mp3lame -lameopts abr:br=32 -ovc lavc -lavcopts vcodec=flv:vbitrate=250:mbd=2:mv0:trell:v4mv:cbp:last_pred=3 -vf scale=400:300 -srate 22050';
+$flvEncodeCommand = 'mencoder $input -noskip -mc 0 -o $output -of lavf -oac mp3lame -lameopts abr:br=32 -ovc lavc -lavcopts vcodec=flv:vbitrate=250:mbd=2:mv0:trell:v4mv:cbp:last_pred=3 -vf scale=400:300 -srate 22050 -lavfopts i_certify_that_my_video_stream_does_not_use_b_frames';
 
 $doneWithTrascode=false;
 while($doneWithTrascode==false){

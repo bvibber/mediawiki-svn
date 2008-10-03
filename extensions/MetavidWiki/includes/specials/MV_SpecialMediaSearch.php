@@ -434,7 +434,13 @@ class MV_SpecialMediaSearch {
 				}
 			}
 			// link directly to the current range:
-			$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( $mvDefaultClipRange ) );
+			//if the clip length is < $mvDefaultClipLength get range: 
+			global $mvDefaultClipLength;
+			if($mvTitle->getDuration() < $mvDefaultClipLength){
+				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( $mvDefaultClipRange ) );
+			}else{
+				$mvStreamTitle = Title :: MakeTitle( MV_NS_STREAM, $mvTitle->getNearStreamName( 0 ) );
+			}
 			// $mvTitle->getStreamName() .'/'.$mvTitle->getStartTime() .'/'. $mvTitle->getEndTime() );
 			$mvd_text = $mvd->text;
 
