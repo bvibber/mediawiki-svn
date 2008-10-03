@@ -349,6 +349,15 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Click',
 	),
 	array(
+		'name' => 'CodeReview',
+		'settings' => array(
+			'wgSubversionProxy' => 'text',
+			'wgSubversionProxyTimeout' => 'int',
+			'wgWikiSVN' => 'text',
+		),
+		'schema' => true,
+	),
+	array(
 		'name' => 'Collection',
 		'settings' => array(
 			'wgCollectionMWServeURL' => 'text',
