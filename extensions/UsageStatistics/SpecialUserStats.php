@@ -13,13 +13,18 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'UserStats',
-	'version'        => 'v1.10',
+	'version'        => 'v1.11',
 	'author'         => 'Paul Grinberg',
 	'email'          => 'gri6507 at yahoo dot com',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Usage_Statistics',
 	'description'    => 'Show individual user and overall wiki usage statistics',
 	'descriptionmsg' => 'usagestatistics-desc',
 );
+
+# By default, the graphs are generated using the gnuplot extension.
+# However, the user can optionally use Google Charts to generate the
+# graphs instead. To do so, set the following to 1
+$wgUserStatsGoogleCharts = 1;
 
 $wgUserStatsGlobalRight = 'viewsystemstats';
 $wgAvailableRights[] = 'viewsystemstats';

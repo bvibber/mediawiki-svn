@@ -59,8 +59,76 @@ class SpecialUserStats extends SpecialPage
 
     }
 
+	function generate_google_chart($dates, $edits, $pages)
+	{
+		$x_labels = 3;
+		$max_url = 2080; // this is a typical minimum limitation of many browsers
+
+		$max_edits = max($edits);
+		$min_edits = min($edits);
+		$max_pages = max($pages);
+		$min_pages = min($pages);
+		
+		if (!$max_edits) $max_edits=1;
+		if (!$max_pages) $max_pages=1;
+
+		$qry = 'http://chart.apis.google.com/chart?' . // base URL
+		       'chs=400x275' .                         // size of the graph
+		       '&cht=lc' .                             // line chart type
+		       '&chxt=x,y,r' .                         // labels for x-axis and both y-axes
+		       '&chco=ff0000,0000ff' .                 // specify the line colors
+		       '&chxs=1,ff0000|2,0000ff' .             // specify the axis colors
+		       '&chdl=Edits|Pages' .                   // specify the label
+		       '&chxr=' .                              // start to specify the labels for the y-axes
+		       "1,$min_edits,$max_edits|" .            // the edits axis
+		       "2,$min_pages,$max_pages" .             // the pages axis
+		       '&chxl=0:';                             // start specifying the x-axis labels
+		foreach (self::thin($dates,$x_labels) as $d) {
+		    $qry .= "|$d";                             // the dates
+		}
+		$qry .= '&chd=t:';                             // start specifying the first data set
+		$max_datapoints = ($max_url - strlen($qry))/2; // figure out how much space we have left for each set of data
+		foreach (self::thin($edits,$max_datapoints/5) as $e) { // on avg, there are 5 chars per datapoint
+		    $qry .= sprintf('%.1f,',
+			    100*$e/$max_edits);                // the edits
+		}
+		$qry = substr_replace($qry, '',-1);            // get rid of the unwanted comma
+		$qry .= '|';                                   // start specifying the second data set
+		foreach (self::thin($pages,$max_datapoints/5) as $p) { // on avg, there are 5 chars per datapoint
+		    $qry .= sprintf('%.1f,',
+			    100*$p/$max_pages);                // the pages
+		}
+		$qry = substr_replace($qry, '',-1);            // get rid of the unwanted comma
+
+		return $qry;
+	}
+
+	function thin($input, $max_size) {
+	    $ary_size = sizeof($input);
+	    if ($ary_size <= $max_size) return $input;
+
+	    # we will always keep the first and the last point
+	    $prev_index = 0;
+	    $new_ary[] = $input[0];
+	    $index_increment = ($ary_size - $prev_index - 2)/($max_size - 1);
+
+	    while (($ary_size - $prev_index - 2) >= (2 * $index_increment)) {
+		$new_index = $prev_index + $index_increment;
+		$new_ary[] = $input[(int)$new_index];
+		$prev_index = $new_index;
+	    }
+
+	    $new_ary[] = $input[$ary_size-1];
+	    
+	    //print_r($input);
+	    //print_r($new_ary);
+	    //print "size was " . sizeof($input) . " and became " . sizeof($new_ary) . "\n";
+	    
+	    return $new_ary;
+	}
+
     function GetUserUsage($db,$user,$start,$end,$interval,$type) {
-        global $wgOut, $wgUser, $wgUserStatsGlobalRight;
+        global $wgOut, $wgUser, $wgUserStatsGlobalRight, $wgUserStatsGoogleCharts;
 
         list($start_m, $start_d, $start_y) = split('/', $start);
         $start_t = mktime(0, 0, 0, $start_m, $start_d, $start_y);
@@ -126,6 +194,9 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 	$first = true;
 	$e = 0;
 	$p = 0;
+	$ary_dates = array();
+	$ary_edits = array();
+	$ary_pages = array();
 	foreach ($u[$user] as $d => $v) {
 	    $date = '';
 	    if (preg_match('/^(\d{4})(\d{2})(\d{2})/',$d,$matches))
@@ -146,12 +217,23 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 	    }
 	    $gnuplot .= "$date $e\n";
 	    $gnuplot_pdata .= "$date $p\n";
+	    $ary_dates[] = $date;
+	    $ary_edits[] = $e;
+	    $ary_pages[] = $p;
 	}
         $gnuplot .= "e\n$gnuplot_pdata\ne</gnuplot>";
 
-        //print "@@@@@@@\n$gnuplot\n@@@@@@@\n";
-        $wgOut->addWikiText("<center>$gnuplot</center>");
-
+	if ($wgUserStatsGoogleCharts)
+	{
+		$wgOut->addHtml('<img src="' .
+				self::generate_google_chart($ary_dates, $ary_edits, $ary_pages) . 
+				'"/>');
+	}
+	else
+	{
+		//print "@@@@@@@\n$gnuplot\n@@@@@@@\n";
+		$wgOut->addWikiText("<center>$gnuplot</center>");
+	}
 
         if (!in_array($wgUserStatsGlobalRight, $wgUser->getRights()))
             return;
@@ -176,6 +258,9 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 	$pages = 0;
 	$edits = 0;
         $totals = array();
+	$ary_dates = array();
+	$ary_edits = array();
+	$ary_pages = array();
         foreach ($dates as $d => $v) {
             if ($type == 'incremental') {
                 # the first data point includes all edits up to that date, so skip it
@@ -202,12 +287,24 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
             }
             $gnuplot .= "$date $edits\n";
             $gnuplot_pdata .= "$date $pages\n";
+	    $ary_dates[] = $date;
+	    $ary_edits[] = $edits;
+	    $ary_pages[] = $pages;
         }
         $gnuplot .= "e\n$gnuplot_pdata\ne</gnuplot>";
 
-        //$wgOut->addHTML($gnuplot);
-        $wgOut->addWikiText("<center>$gnuplot</center>");
-
+	if ($wgUserStatsGoogleCharts)
+	{
+		$wgOut->addHtml('<img src="' .
+				self::generate_google_chart($ary_dates, $ary_edits, $ary_pages) . 
+				'"/>');
+	}
+	else
+	{
+		//$wgOut->addHTML($gnuplot);
+		$wgOut->addWikiText("<center>$gnuplot</center>");
+	}
+	
         # output detailed usage statistics
         ksort($u);
         $csv_edits = '';
