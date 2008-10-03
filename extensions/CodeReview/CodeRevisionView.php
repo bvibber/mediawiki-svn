@@ -47,9 +47,14 @@ class CodeRevisionView extends CodeView {
 			'code-rev-paths' => $paths,
 			'code-rev-tags' => $this->tagForm(),
 		);
-
 		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$this->mRev->getId() );
+
 		$html = Xml::openElement( 'form', array( 'action' => $special->getLocalUrl(), 'method' => 'post' ) );
+		$html .= '<div>' .
+			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
+			' ' .
+			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
+			'</div>';
 		$html .= '<table class="mw-codereview-meta">';
 		foreach( $fields as $label => $data ) {
 			$html .= "<tr><td>" . wfMsgHtml( $label ) . "</td><td>$data</td></tr>\n";
@@ -182,8 +187,7 @@ class CodeRevisionView extends CodeView {
 			$rev = $this->mRev->getId();
 			$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev/set/status" );
 			return
-				Xml::openElement( 'select',
-					array( 'name' => 'wpStatus' ) ) .
+				Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
 				$this->buildStatusList() .
 				'</select>';
 		} else {
@@ -208,8 +212,11 @@ class CodeRevisionView extends CodeView {
 		global $wgUser;
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
-		$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev/add/tag" );
-		return Xml::input( 'wpTag', '' );
+		return '<div><table><tr><td>' .
+			Xml::inputLabel( wfMsg('code-rev-tag-add'), 'wpTag', 'wpTag', '' ) .
+			'</td><td>&nbsp;</td><td>' .
+			Xml::inputLabel( wfMsg('code-rev-tag-remove'), 'wpRemoveTag', 'wpRemoveTag', '' ) .
+			'</td></tr></table></div>';
 	}
 	
 	function formatTag( $tag ) {
