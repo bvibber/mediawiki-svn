@@ -13,7 +13,8 @@ class CodeRevisionAuthorListView extends CodeView {
 		$name = $this->mRepo->getName();
 		$text = '';
 		foreach( $authors as $user ) {
-			$text .= "* [[Special:Code/$name/author/$user|$user]]\n";
+			if( $user )
+				$text .= "* [[Special:Code/$name/author/$user|$user]]\n";
 		}
 		$wgOut->addWikiText( $text );
 	}
