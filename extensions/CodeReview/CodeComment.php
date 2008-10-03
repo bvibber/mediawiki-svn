@@ -12,7 +12,7 @@ class CodeComment {
 	
 	static function newFromData( $rev, $data ) {
 		$comment = new CodeComment( $rev );
-		$comment->id = $data['cc_id'];
+		$comment->id = intval($data['cc_id']);
 		$comment->text = $data['cc_text']; // fixme
 		$comment->user = $data['cc_user'];
 		$comment->userText = $data['cc_user_text'];
