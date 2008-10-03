@@ -17,9 +17,7 @@ class SGMResultPrinter extends SMWResultPrinter {
 	protected function getResultText($res, $outputmode) {
 		global $smwgIQRunningNumber, $wgUser;
 		$skin = $wgUser->getSkin();
-
-		// print header
-		$result = $this->mIntro;
+		$result = "";
 
 		$locations = array();
 		// print all result rows
@@ -53,8 +51,6 @@ class SGMResultPrinter extends SMWResultPrinter {
 
 
 		$coordinates = '1,1';
-		$zoom = '2';
-		$type = 'G_HYBRID_MAP';
 		$controls = 'GSmallMapControl';
 		$class = 'pmap';
 		if (array_key_exists('width', $this->m_params)) {
@@ -66,6 +62,21 @@ class SGMResultPrinter extends SMWResultPrinter {
 			$height = $this->m_params['height'];
 		} else {
 			$height = 400;
+		}
+		if (array_key_exists('center', $this->m_params)) {
+			$center = $this->m_params['center'];
+		} else {
+			$center = null;
+		}
+		if (array_key_exists('zoom', $this->m_params)) {
+			$zoom = $this->m_params['zoom'];
+		} else {
+			$zoom = 0;
+		}
+		if (array_key_exists('map type', $this->m_params)) {
+			$type = $this->m_params['map type'];
+		} else {
+			$type = 'G_NORMAL_MAP';
 		}
                 global $wgJsMimeType, $wgGoogleMapsKey, $wgGoogleMapsOnThisPage;
 
@@ -101,10 +112,11 @@ window.unload = GUnload;
 function makeMap{$wgGoogleMapsOnThisPage}() {
 	if (GBrowserIsCompatible()) {
 		var map = new GMap2(document.getElementById("map$wgGoogleMapsOnThisPage"), {size: new GSize('$width', '$height')});
+		map.setMapType($type);
 		map.addControl(new {$controls}());
 		map.addControl(new GMapTypeControl());
 END;
-		if (count($locations) > 0) {
+		if (count($locations) > 0 && $center == null) {
 			// get the extremes among these points to calculate
 			// the correct zoom level for the map
 			$min_lat = 90;
@@ -130,26 +142,26 @@ END;
 			$min_lat_plus = $min_lat - (0.05 * $lat_width);
 			$max_lon_plus = $max_lon + (0.05 * $lon_width);
 			$min_lon_plus = $min_lon - (0.05 * $lon_width);
-		} else {
-			$center_lat = 0;
-			$center_lon = 0;
-			// a set of coordinates that will guarantee that
-			// the correct zoom level will appear (i.e., the
-			// whole world) - I don't know why these specific
-			// numbers are what is required
-			$max_lat_plus = 80;
-			$min_lat_plus = -80;
-			$max_lon_plus = 140;
-			$min_lon_plus = -140;
-		}
-                $map_text .=<<<END
+			$map_text .=<<<END
 	var center = new GLatLng($center_lat, $center_lon);
 	var sw_point = new GLatLng($min_lat_plus, $min_lon_plus);
 	var ne_point = new GLatLng($max_lat_plus, $max_lon_plus);
 	var bounds = new GLatLngBounds(sw_point, ne_point);
 	var zoom = map.getBoundsZoomLevel(bounds);
 	map.setCenter(center, zoom);
+
 END;
+		} else {
+			if ($center == null) {
+				$center_lat = 0;
+				$center_lon = 0;
+			} else {
+				// GLatLng class expects only numbers, no
+				// letters or degree symbols
+				list($center_lat, $center_lon) = sgmGetLatLon($center);
+			}
+			$map_text .= "	map.setCenter(new GLatLng($center_lat, $center_lon), $zoom);\n";
+		}
 		// add a marker to the map for each location
 		foreach ($locations as $i => $location) {
 			list($lat, $lon, $title, $label) = $location;
@@ -172,11 +184,15 @@ END;
 		$result .= $map_text;
 
 		// print further results footer
-		if ( $this->mInline && $res->hasFurtherResults() && $this->mSearchlabel !== '') {
+		// getSearchLabel() method was added in SMW 1.3
+		if (method_exists($this, 'getSearchLabel')) {
+			$search_label = $this->getSearchLabel(SMW_OUTPUT_HTML);
+		} else {
+			$search_label = $this->mSearchlabel;
+		}
+		if ( $this->mInline && $res->hasFurtherResults() && $search_label !== '') {
 			$link = $res->getQueryLink();
-			if ($this->mSearchlabel) {
-				$link->setCaption($this->mSearchlabel);
-			}
+			$link->setCaption($search_label);
 			$result .= "\t<tr class=\"smwfooter\"><td class=\"sortbottom\" colspan=\"" . $res->getColumnCount() . '"> ' . $link->getText($outputmode,$this->mLinker) . "</td></tr>\n";
 		}
 		return array($result, 'noparse' => 'true', 'isHTML' => 'true');
