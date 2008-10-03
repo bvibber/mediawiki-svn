@@ -24,7 +24,7 @@ $wgExtensionCredits['specialpage'][] = array(
 # By default, the graphs are generated using the gnuplot extension.
 # However, the user can optionally use Google Charts to generate the
 # graphs instead. To do so, set the following to 1
-$wgUserStatsGoogleCharts = 1;
+$wgUserStatsGoogleCharts = 0;
 
 $wgUserStatsGlobalRight = 'viewsystemstats';
 $wgAvailableRights[] = 'viewsystemstats';
