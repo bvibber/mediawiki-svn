@@ -4,11 +4,13 @@
 class CodeRevisionView extends CodeView {
 
 	function __construct( $repoName, $rev, $replyTarget=null ){
+		global $wgRequest;
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
 		$this->mRev = $this->mRepo ? $this->mRepo->getRevision( intval( $rev ) ) : null;
-		$this->mReplyTarget = $replyTarget;
 		$this->mPreviewText = false;
+		$this->mReplyTarget = $replyTarget ? 
+			(int)$replyTarget : $wgRequest->getIntOrNull( 'wpParent' );
 	}
 
 	function execute(){
@@ -34,7 +36,7 @@ class CodeRevisionView extends CodeView {
 			$paths .= $this->formatPathLine( $row->cp_path, $row->cp_action );
 		}
 		if( $paths ){
-			$paths = "<ul>\n$paths</ul>";
+			$paths = "<ul>\n$paths</ul>\n";
 		}
 		$fields = array(
 			'code-rev-repo' => $repoLink,
@@ -43,13 +45,16 @@ class CodeRevisionView extends CodeView {
 			'code-rev-status' => $this->statusForm(),
 			'code-rev-message' => $this->formatMessage( $this->mRev->getMessage() ),
 			'code-rev-paths' => $paths,
-			'code-rev-tags' => $this->formatTags(),
+			'code-rev-tags' => $this->tagForm(),
 		);
-		$html = '<table class="mw-codereview-meta">';
+
+		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$this->mRev->getId() );
+		$html = Xml::openElement( 'form', array( 'action' => $special->getLocalUrl(), 'method' => 'post' ) );
+		$html .= '<table class="mw-codereview-meta">';
 		foreach( $fields as $label => $data ) {
 			$html .= "<tr><td>" . wfMsgHtml( $label ) . "</td><td>$data</td></tr>\n";
 		}
-		$html .= '</table>';
+		$html .= "</table>\n";
 		
 		$diffHtml = $this->formatDiff();
 		if( $diffHtml ) {
@@ -57,10 +62,10 @@ class CodeRevisionView extends CodeView {
 				"<h2>" . wfMsgHtml( 'code-rev-diff' ) . "</h2>" .
 				"<div class='mw-codereview-diff'>" .
 				$diffHtml .
-				"</div>";
+				"</div>\n";
 		}
 		$html .=
-			'<h2>'. wfMsgHtml( 'code-comments' ) .'</h2>' .
+			"<h2>". wfMsgHtml( 'code-comments' ) ."</h2>\n" .
 			$this->formatComments();
 		
 		if( $this->mReplyTarget ) {
@@ -68,8 +73,14 @@ class CodeRevisionView extends CodeView {
 			$id = intval( $this->mReplyTarget );
 			$html .= "<script type=\"$wgJsMimeType\">addOnloadHook(function(){" .
 				"document.getElementById('wpReplyTo$id').focus();" .
-				"});</script>";
+				"});</script>\n";
 		}
+		$html .= '<div>' .
+			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
+			' ' .
+			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
+			'</div>' . 
+			'</form>';
 
 		$wgOut->addHtml( $html );
 	}
@@ -109,14 +120,14 @@ class CodeRevisionView extends CodeView {
 		if( $wgRequest->wasPosted()
 			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			// Look for a posting...
-			$text = $wgRequest->getText( 'wpReply' );
+			$text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
 			$parent = $wgRequest->getIntOrNull( 'wpParent' );
 			$review = $wgRequest->getInt( 'wpReview' );
 			$isPreview = $wgRequest->getCheck( 'wpPreview' );
 			if( $isPreview ) {
 				// Save the text for reference on later comment display...
 				$this->mPreviewText = $text;
-			} else {
+			} else if( $text ) { // don't save blank comments
 				$id = $this->mRev->saveComment( $text, $review, $parent );
 				
 				// Redirect to the just-saved comment; this avoids POST
@@ -150,19 +161,17 @@ class CodeRevisionView extends CodeView {
 		return "<li>$link ($desc)$diff</li>\n";
 	}
 	
-	function formatTags() {
+	function tagForm() {
 		global $wgUser;
-		
 		$tags = $this->mRev->getTags();
 		$list = implode( ", ",
 			array_map(
 				array( $this, 'formatTag' ),
-				$tags ) );
-		
+				$tags ) 
+		) . '&nbsp;';
 		if( $wgUser->isAllowed( 'codereview-add-tag' ) ) {
 			$list .= $this->addTagForm();
 		}
-		
 		return $list;
 	}
 	
@@ -173,18 +182,10 @@ class CodeRevisionView extends CodeView {
 			$rev = $this->mRev->getId();
 			$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev/set/status" );
 			return
-				Xml::openElement( 'form',
-					array(
-						'action' => $special->getLocalUrl(),
-						'method' => 'post' ) ) .
 				Xml::openElement( 'select',
 					array( 'name' => 'wpStatus' ) ) .
 				$this->buildStatusList() .
-				'</select>' .
-				Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
-				'&nbsp;' .
-				Xml::submitButton( wfMsg( 'code-rev-status-set' ) ) .
-				'</form>';
+				'</select>';
 		} else {
 			return htmlspecialchars( $this->statusDesc( $this->mRev->getStatus() ) );
 		}
@@ -208,24 +209,13 @@ class CodeRevisionView extends CodeView {
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev/add/tag" );
-		return
-			Xml::openElement( 'form',
-				array(
-					'action' => $special->getLocalUrl(),
-					'method' => 'post' ) ) .
-			Xml::input( 'wpTag', '' ) .
-			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
-			'&nbsp;' .
-			Xml::submitButton( wfMsg( 'code-rev-tag-add' ) ) .
-			'</form>';
+		return Xml::input( 'wpTag', '' );
 	}
 	
 	function formatTag( $tag ) {
 		global $wgUser;
-		
 		$repo = $this->mRepo->getName();
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/tag/$tag" );
-		
 		return $this->mSkin->link( $special, htmlspecialchars( $tag ) );
 	}
 
@@ -249,7 +239,7 @@ class CodeRevisionView extends CodeView {
 	}
 
 	function formatCommentInline( $comment ) {
-		if( $comment->id == $this->mReplyTarget ) {
+		if( $comment->id === $this->mReplyTarget ) {
 			return $this->formatComment( $comment,
 				$this->postCommentForm( $comment->id ) );
 		} else {
@@ -331,34 +321,19 @@ class CodeRevisionView extends CodeView {
 		}
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
-		if( $parent ) {
-			$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev/reply/$parent" );
-		} else {
-			$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
-		}
 		return '<div class="mw-codereview-post-comment">' .
 			$preview .
-			Xml::openElement( 'form',
-				array(
-					'action' => $special->getLocalUrl(),
-					'method' => 'post' ) ) .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
 			($parent ? Xml::hidden( 'wpParent', $parent ) : '') .
 			'<div>' .
 			Xml::openElement( 'textarea', array(
-				'name' => 'wpReply',
+				'name' => "wpReply{$parent}",
 				'id' => "wpReplyTo{$parent}",
 				'cols' => 40,
 				'rows' => 5 ) ) .
 			$text .
 			'</textarea>' .
 			'</div>' .
-			'<div>' .
-			Xml::submitButton( wfMsg( 'code-rev-comment-submit' ), array( 'name' => 'wpSave' ) ) .
-			' ' .
-			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
-			'</div>' .
-			'</form>' .
 			'</div>';
 	}
 }

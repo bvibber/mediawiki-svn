@@ -18,10 +18,6 @@ class CodeRevisionTagger extends CodeRevisionView {
 			$repo = $this->mRepo->getName();
 			$rev = $this->mRev->getId();
 			$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
-
-			$wgOut->redirect( $special->getFullUrl() );
-		} else {
-			throw new MWException( 'Attempted to add invalid tag (fixme UI)' );
 		}
 	}
 	

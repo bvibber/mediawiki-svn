@@ -46,6 +46,7 @@ $messages['en'] = array(
 	'code-status-fixme' => 'fixme',
 	'code-status-resolved' => 'resolved',
 	'code-status-ok' => 'ok',
+	'code-rev-submit' => 'Commit changes',
 	
 	'codereview-reply-link' => 'reply',
 

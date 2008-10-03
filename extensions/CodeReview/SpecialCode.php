@@ -23,32 +23,42 @@ class SpecialCode extends SpecialPage {
 				$view = new CodeRevisionListView( $params[0] );
 				break;
 			case 2:
-			case 3:
-				if( is_numeric( $params[1] ) ) {
-					$view = new CodeRevisionView( $params[0], $params[1] );
-					break;
+				if( $wgRequest->wasPosted() ) {
+					# Add any tags
+					$crt = new CodeRevisionTagger( $params[0], $params[1] );
+					$crt->execute();
+					# Set status
+					$crs = new CodeRevisionStatusSetter( $params[0], $params[1] );
+					$crs->execute();
 				}
-				if( $params[1] == 'tag' ) {
+				# Adds comments and makes output
+				$view = new CodeRevisionView( $params[0], $params[1] );
+				break;
+			case 3:
+				if( $params[1] === 'tag' ) {
 					if( empty($params[2]) )
 						$view = new CodeRevisionTagListView( $params[0] );
 					else
 						$view = new CodeRevisionTagView( $params[0], $params[2] );
 					break;
-				} elseif( $params[1] == 'author' ) {
+				} elseif( $params[1] === 'author' ) {
 					if( empty($params[2]) )
 						$view = new CodeRevisionAuthorListView( $params[0] );
 					else
 						$view = new CodeRevisionAuthorView( $params[0], $params[2] );
 					break;
-				} elseif( $params[1] == 'status' ) {
+				} elseif( $params[1] === 'status' ) {
 					if( empty($params[2]) )
 						$view = new CodeRevisionStatusListView( $params[0] );
 					else
 						$view = new CodeRevisionStatusView( $params[0], $params[2] );
 					break;
 				} else {
-					# Nonsense param, back out
-					$view = new CodeRevisionListView( $params[0] );
+					# Nonsense parameters, back out
+					if( empty($params[1]) )
+						$view = new CodeRevisionListView( $params[0] );
+					else
+						$view = new CodeRevisionView( $params[0], $params[1] );
 					break;
 				}
 			case 4:
