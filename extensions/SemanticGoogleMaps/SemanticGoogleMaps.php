@@ -26,7 +26,7 @@ function sgmSetup() {
 	// credits
 	$wgExtensionCredits['parserhook'][] = array(
 		'name'            => 'Semantic Google Maps',
-		'version'         => '0.3.4',
+		'version'         => '0.4',
 		'author'          => array( 'Robert Buzink', 'Yaron Koren' ),
 		'url'             => 'http://www.mediawiki.org/wiki/Extension:Semantic_Google_Maps',
 		'description'     => 'Allows users to add Google Maps to wiki pages based on structured data',
@@ -72,8 +72,7 @@ function sgmFunctionRender( &$parser, $coordinates = '1,1', $zoom = '14', $type 
 	if (!$wgGoogleMapsOnThisPage) {$wgGoogleMapsOnThisPage = 0;}
 	$wgGoogleMapsOnThisPage++;
 
-	$lat = sm_returnlatlon('lat',$coordinates);
-	$lon = sm_returnlatlon('lon',$coordinates);
+	list($lat, $lon) = sgmGetLatLon($coordinates);
 
 	$output =<<<END
 <script src="http://maps.google.com/maps?file=api&v=2&key=$wgGoogleMapsKey" type="$wgJsMimeType"></script>
@@ -87,18 +86,14 @@ END;
 
 }
 
-function sm_returnlatlon($param1 = '', $param2 = '' ) {
+function sgmGetLatLon($param2) {
 	$coordinates = preg_split("/,/", $param2);
-
 	if (count($coordinates) == 2) {
-		switch ($param1) {
-			case 'lat':
-			return sm_convert_coord($coordinates[0]);
-			case 'lon':
-			return sm_convert_coord($coordinates[1]);
-		}
+		$lat = sm_convert_coord($coordinates[0]);
+		$lon = sm_convert_coord($coordinates[1]);
+		return array($lat, $lon);
 	}
-	return "";
+	return array();
 }
 
 function sm_degree2decimal($deg_coord="") {
@@ -160,7 +155,6 @@ function sgmLonDecimal2Degree($decimal) {
 
 // the function that outputs the custom form html
 function sgmInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
-
 	global $gTabIndex, $gDisabledText, $wgJsMimeType, $wgGoogleMapsKey, $wgGoogleMapsOnThisPage;
 
 	// default values
@@ -173,33 +167,54 @@ function sgmInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $f
 		if (is_array($coordinates)) {
 			// todo if relevant
 		} else {
-			$flat = sm_returnlatlon('lat',$coordinates);
-			$flon = sm_returnlatlon('lon',$coordinates);
+			list($flat, $flon) = sgmGetLatLon($coordinates);
 		}
 		$zoom = '14';
 	} else {
-		$zoom = '0';
+		// if there's no starting value, get the value for the map
+		// center and zoom from the form input, if they exist
+		if (array_key_exists('center', $field_args)) {
+			list($flat, $flon) = sgmGetLatLon($field_args['center']);
+			$zoom = '14';
+		} else {
+			$zoom = '0';
+		}
+		if (array_key_exists('zoom', $field_args)) {
+			$zoom = $field_args['zoom'];
+		}
 	}
 	if (!$wgGoogleMapsOnThisPage) {$wgGoogleMapsOnThisPage = 0;}
 	$wgGoogleMapsOnThisPage++;
-	$width = '200';
-	$height = '200';
+	if (array_key_exists('width', $field_args)) {
+		$width = $field_args['width'];
+	} else {
+		$width = '200';
+	}
+	if (array_key_exists('height', $field_args)) {
+		$height = $field_args['height'];
+	} else {
+		$height = '200';
+	}
 	$class = 'sm_map';
-	$type = 'G_NORMAL_MAP';
+	if (array_key_exists('map type', $field_args)) {
+		$type = $field_args['map type'];
+	} else {
+		$type = 'G_NORMAL_MAP';
+	}
 	$controls = 'GSmallMapControl';
 	if ($flat == 0) { $lat = '50';} else {$lat = $flat;}
 	if ($flon == 0) { $lon = '5';} else {$lon = $flon;}
 
 	// input field
-	$coords = "";
-	if ($flat != 0 && $flat != 0) {
+	$starting_coords = "";
+	if ($coordinates != null && $flat != 0 && $flon != 0) {
 		$deg_lat = sgmLatDecimal2Degree($flat);
 		$deg_lon = sgmLonDecimal2Degree($flon);
-		$coords = "$deg_lat, $deg_lon";
+		$starting_coords = "$deg_lat, $deg_lon";
 	}
 	$info_id = "info_$gTabIndex";
 	$text =<<<END
-	<input tabindex="$gTabIndex" id="input_$gTabIndex" name="$input_name" type="text" value="$coords" size="40" $gDisabledText>
+	<input tabindex="$gTabIndex" id="input_$gTabIndex" name="$input_name" type="text" value="$starting_coords" size="40" $gDisabledText>
 	<span id="$info_id" class="error_message"></span>
 
 END;
@@ -284,9 +299,18 @@ function makeMap{$wgGoogleMapsOnThisPage}() {
 		map.addControl(new {$controls}());
 		map.addControl(new GMapTypeControl());
 		map.setCenter(new GLatLng({$lat}, {$lon}), {$zoom}, {$type});
+
+END;
+		// show a starting marker only if a value already exists
+		if ($coordinates != null) {
+			$javascript_text .= <<<END
 		var point = new GLatLng({$lat}, {$lon});
 		var marker = new GMarker(point);
 		map.addOverlay(marker);
+
+END;
+		}
+		$javascript_text .= <<<END
 		GEvent.addListener(map, "click",
 			function(overlay, point) {
 				place = null;
