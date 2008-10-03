@@ -127,6 +127,9 @@ class CodeRevision {
 	}
 	
 	function saveComment( $text, $review, $parent=null ) {
+		if( !$text ) {
+			return 0;
+		}
 		$dbw = wfGetDB( DB_MASTER );
 		$data = $this->commentData( $text, $review, $parent );
 		$data['cc_id'] = $dbw->nextSequenceValue( 'code_comment_cc_id' );
