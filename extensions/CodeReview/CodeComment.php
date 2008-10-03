@@ -6,11 +6,11 @@ class CodeComment {
 		$this->rev = $rev;
 	}
 	
-	function newFromRow( $rev, $row ) {
+	static function newFromRow( $rev, $row ) {
 		return self::newFromData( $rev, get_object_vars( $row ) );
 	}
 	
-	function newFromData( $rev, $data ) {
+	static function newFromData( $rev, $data ) {
 		$comment = new CodeComment( $rev );
 		$comment->id = $data['cc_id'];
 		$comment->text = $data['cc_text']; // fixme
