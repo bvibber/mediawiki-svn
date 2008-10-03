@@ -63,7 +63,7 @@ function sgmFunctionMagic( &$magicWords, $langCode ) {
 	return true;
 }
 
-function sgmFunctionRender( &$parser, $coordinates = '1,1', $zoom = '14', $type = 'G_NORMAL_MAP', $controls = 'GSmallMapControl', $class = 'pmap', $width = '200', $height = '200', $style = '' ) {
+function sgmFunctionRender( &$parser, $coordinates = '1,1', $zoom = '14', $type = 'G_NORMAL_MAP', $control_class = 'GLargeMapControl', $class = 'pmap', $width = '200', $height = '200', $style = '' ) {
 	# The parser function itself
 	# The input parameters are wikitext with templates expanded
 	# The output is not parsed as wikitext
@@ -78,7 +78,7 @@ function sgmFunctionRender( &$parser, $coordinates = '1,1', $zoom = '14', $type 
 <script src="http://maps.google.com/maps?file=api&v=2&key=$wgGoogleMapsKey" type="$wgJsMimeType"></script>
 <script type="text/javascript"> function createMarker(point, label) {  var marker = new GMarker(point);  GEvent.addListener(marker, 'click', function() { marker.openInfoWindowHtml(label, GInfoWindoOptions.maxWidth=100); });  return marker;  }  function addLoadEvent(func) {  var oldonload = window.onload;  if (typeof oldonload == 'function') {  window.onload = function() {  oldonload();  func();  };  } else {  window.onload = func;  }  }  window.unload = GUnload;</script>
 <div id="map$wgGoogleMapsOnThisPage" class="$class" style="$style" ></div>
-<script type="text/javascript"> function makeMap{$wgGoogleMapsOnThisPage}() { if (GBrowserIsCompatible()) {var map = new GMap2(document.getElementById("map{$wgGoogleMapsOnThisPage}"), {size: new GSize('$width', '$height')}); map.addControl(new {$controls}()); map.addControl(new GMapTypeControl()); map.setCenter(new GLatLng({$lat}, {$lon}), {$zoom}, {$type}); var point = new GLatLng({$lat}, {$lon}); var marker = new GMarker(point); map.addOverlay(marker); } else { document.write('should show map'); } } addLoadEvent(makeMap{$wgGoogleMapsOnThisPage});</script>
+<script type="text/javascript"> function makeMap{$wgGoogleMapsOnThisPage}() { if (GBrowserIsCompatible()) {var map = new GMap2(document.getElementById("map{$wgGoogleMapsOnThisPage}"), {size: new GSize('$width', '$height')}); map.addControl(new {$control_class}()); map.addControl(new GMapTypeControl()); map.setCenter(new GLatLng({$lat}, {$lon}), {$zoom}, {$type}); var point = new GLatLng({$lat}, {$lon}); var marker = new GMarker(point); map.addOverlay(marker); } else { document.write('should show map'); } } addLoadEvent(makeMap{$wgGoogleMapsOnThisPage});</script>
 
 END;
 
@@ -201,7 +201,11 @@ function sgmInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $f
 	} else {
 		$type = 'G_NORMAL_MAP';
 	}
-	$controls = 'GSmallMapControl';
+	if (array_key_exists('map control', $field_args)) {
+		$control_class = $field_args['map control'];
+	} else {
+		$control_class = 'GLargeMapControl';
+	}
 	if ($flat == 0) { $lat = '50';} else {$lat = $flat;}
 	if ($flon == 0) { $lon = '5';} else {$lon = $flon;}
 
@@ -296,7 +300,7 @@ function makeMap{$wgGoogleMapsOnThisPage}() {
 	if (GBrowserIsCompatible()) {
 		window.map = new GMap2(document.getElementById("sm_map{$wgGoogleMapsOnThisPage}"), {size: new GSize('$width', '$height')});
 		geocoder = new GClientGeocoder();
-		map.addControl(new {$controls}());
+		map.addControl(new {$control_class}());
 		map.addControl(new GMapTypeControl());
 		map.setCenter(new GLatLng({$lat}, {$lon}), {$zoom}, {$type});
 

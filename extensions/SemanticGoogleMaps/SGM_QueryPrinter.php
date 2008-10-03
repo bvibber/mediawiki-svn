@@ -51,7 +51,6 @@ class SGMResultPrinter extends SMWResultPrinter {
 
 
 		$coordinates = '1,1';
-		$controls = 'GSmallMapControl';
 		$class = 'pmap';
 		if (array_key_exists('width', $this->m_params)) {
 			$width = $this->m_params['width'];
@@ -77,6 +76,11 @@ class SGMResultPrinter extends SMWResultPrinter {
 			$type = $this->m_params['map type'];
 		} else {
 			$type = 'G_NORMAL_MAP';
+		}
+		if (array_key_exists('map control', $this->m_params)) {
+			$control_class = $this->m_params['map control'];
+		} else {
+			$control_class = 'GLargeMapControl';
 		}
                 global $wgJsMimeType, $wgGoogleMapsKey, $wgGoogleMapsOnThisPage;
 
@@ -113,7 +117,7 @@ function makeMap{$wgGoogleMapsOnThisPage}() {
 	if (GBrowserIsCompatible()) {
 		var map = new GMap2(document.getElementById("map$wgGoogleMapsOnThisPage"), {size: new GSize('$width', '$height')});
 		map.setMapType($type);
-		map.addControl(new {$controls}());
+		map.addControl(new {$control_class}());
 		map.addControl(new GMapTypeControl());
 END;
 		if (count($locations) > 0 && $center == null) {
