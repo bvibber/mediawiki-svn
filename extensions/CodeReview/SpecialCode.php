@@ -47,9 +47,12 @@ class SpecialCode extends SpecialPage {
 						$view = new CodeRevisionStatusView( $params[0], $params[2] );
 					break;
 				} else {
-					throw new MWException( "Unexpected number of parameters" );
+					# Nonsense param, back out
+					$view = new CodeRevisionListView( $params[0] );
+					break;
 				}
 			case 4:
+			default:
 				if( $params[2] == 'reply' ) {
 					$view = new CodeRevisionView( $params[0], $params[1], $params[3] );
 					break;
@@ -60,8 +63,7 @@ class SpecialCode extends SpecialPage {
 					$view = new CodeRevisionStatusSetter( $params[0], $params[1] );
 					break;
 				}
-			default:
-				throw new MWException( "Unexpected number of parameters" );
+				throw new MWException( "Invalid action specified" );
 			}
 		}
 		$view->execute();
