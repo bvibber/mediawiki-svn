@@ -53,7 +53,7 @@ abstract class SubversionAdaptor {
 		if( function_exists( 'svn_log' ) ) {
 			return new SubversionPecl( $repo );
 		} else {
-			throw new Exception("Requires SVN pecl module" );
+			return new SubversionShell( $repo );
 		}
 	}
 
@@ -123,5 +123,124 @@ class SubversionPecl extends SubversionAdaptor {
 		return svn_log( $this->mRepo . $path,
 			$this->_rev( $startRev, SVN_REVISION_INTIAL ),
 			$this->_rev( $endRev, SVN_REVISION_HEAD ) );
+	}
+}
+
+/**
+ * Using the thingy-bobber
+ */
+class SubversionShell extends SubversionAdaptor {
+	function getFile( $path, $rev=null ) {
+		if( $rev )
+			$path .= "@$rev";
+		$command = sprintf(
+			"svn cat %s",
+			escapeshellarg( $this->mRepo . $path ) );
+
+		return shell_exec( $command );
+	}
+
+	function getDiff( $path, $rev1, $rev2 ) {
+		$command = sprintf(
+			"svn diff -r%d:%d %s",
+			intval( $rev1 ),
+			intval( $rev2 ),
+			escapeshellarg( $this->mRepo . $path ) );
+
+		return shell_exec( $command );
+	}
+
+	function getLog( $path, $startRev=null, $endRev=null ) {
+		$command = sprintf(
+			"svn log -v -r%s:%s --non-interactive %s",
+			escapeshellarg( $this->_rev( $startRev, 'BASE' ) ),
+			escapeshellarg( $this->_rev( $endRev, 'HEAD' ) ),
+			escapeshellarg( $this->mRepo . $path ) );
+
+		$lines = explode( "\n", shell_exec( $command ) );
+		$out = array();
+
+		$divider = str_repeat( '-', 72 );
+		$formats = array(
+			'rev' => '/^r(\d+)$/',
+			'author' => '/^(.*)$/',
+			'date' => '/^(.*?) \(.*\)$/',
+			'lines' => '/^(\d+) lines?$/',
+		);
+		$state = "start";
+		foreach( $lines as $line ) {
+			$line = rtrim( $line );
+
+			switch( $state ) {
+			case "start":
+				if( $line == $divider ) {
+					$state = "revdata";
+					break;
+				} else {
+					return $out;
+					#throw new Exception( "Unexpected start line: $line" );
+				}
+			case "revdata":
+				if( $line == "" ) {
+					$state = "done";
+					break;
+				}
+				$data = array();
+				$bits = explode( " | ", $line );
+				$i = 0;
+				foreach( $formats as $key => $regex ) {
+					$text = $bits[$i++];
+					if( preg_match( $regex, $text, $matches ) ) {
+						$data[$key] = $matches[1];
+					} else {
+						throw new Exception(
+							"Unexpected format for $key in '$text'" );
+					}
+				}
+				$data['msg'] = '';
+				$data['paths'] = array();
+				$state = 'changedpaths';
+				break;
+			case "changedpaths":
+				if( $line == "Changed paths:" ) {
+					$state = "path";
+				} elseif( $line == "" ) {
+					// No changed paths?
+					$state = "msg";
+				} else {
+					throw new Exception(
+						"Expected 'Changed paths:' or '', got '$line'" );
+				}
+				break;
+			case "path":
+				if( $line == "" ) {
+					// Out of paths. Move on to the message...
+					$state = 'msg';
+				} else {
+					if( preg_match( '/^   (.) (.*)$/', $line, $matches ) ) {
+						$data['paths'][] = array(
+							'action' => $matches[1],
+							'path' => $matches[2] );
+					}
+				}
+				break;
+			case "msg":
+				$data['msg'] .= $line;
+				if( --$data['lines'] ) {
+					$data['msg'] .= "\n";
+				} else {
+					unset( $data['lines'] );
+					$out[] = $data;
+					$state = "start";
+				}
+				break;
+			case "done":
+				throw new Exception( "Unexpected input after end: $line" );
+			default:
+				throw new Exception( "Invalid state '$state'" );
+			}
+		}
+
+		return $out;
 	}
 }
