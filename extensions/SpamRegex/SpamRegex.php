@@ -4,14 +4,16 @@
  *
  * @ingroup Extensions
  * @author Bartek Łapiński
- * @version 1.0
+ * @version 1.2
+ * @link http://www.mediawiki.org/wiki/Extension:SpamRegex Documentation
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
 /**
  * Protect against register_globals vulnerabilities.
  * This line must be present before any global variable is referenced.
  */
-if (!defined('MEDIAWIKI'))
+if ( !defined('MEDIAWIKI') )
 	die();
 
 /* for memcached - expiration time */
@@ -21,17 +23,17 @@ define('SPAMREGEX_EXPIRE', 0);
 define('SPAMREGEX_TEXTBOX', 0);
 define('SPAMREGEX_SUMMARY', 1);
 
-//Extension credits
+// Extension credits
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Regular Expression Spam Block',
-	'version' => '1.0',
+	'version' => '1.2',
 	'author' => 'Bartek Łapiński',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SpamRegex',
 	'description' => 'Filters out unwanted phrases in edited pages, based on regular expressions',
 	'descriptionmsg' => 'spamregex-desc',
 );
 
-//New user right
+// New user right
 $wgAvailableRights[] = 'spamregex';
 $wgGroupPermissions['staff']['spamregex'] = true;
 
@@ -47,6 +49,7 @@ function wfSpamRegexCacheKey( /*...*/ ) {
 	}
 }
 
+// Set up the new special page
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['SpamRegex'] = $dir . 'SpamRegex.i18n.php';
 $wgExtensionAliasesFiles['SpamRegex'] = $dir . 'SpamRegex.alias.php';
@@ -54,8 +57,6 @@ $wgAutoloadClasses['SpamRegex'] = $dir . 'SpecialSpamRegex.php';
 $wgAutoloadClasses['SpamRegexHooks'] = $dir . 'SpamRegexCore.php';
 $wgSpecialPages['SpamRegex'] = 'SpamRegex';
 $wgSpecialPageGroups['SpamRegex'] = 'pagetools';
-
+// Hook it up
 $wgHooks['EditFilter'][] = 'SpamRegexHooks::onEditFilter';
 $wgHooks['AbortMove'][] = 'SpamRegexHooks::onAbortMove';
-
-require_once("$IP/extensions/SimplifiedRegex/SimplifiedRegex.php");

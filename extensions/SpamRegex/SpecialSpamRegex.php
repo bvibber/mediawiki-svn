@@ -188,11 +188,30 @@ class spamRegexList {
 		return $results;
 	}
 
+	/**
+	 * Validate the given regex
+	 * This was originally the SimplifiedRegex extension
+	 *
+	 * @param $text Regex to be validated
+	 * @return False if exceptions were found, otherwise true
+	 */
+	static function validateRegex( $text ) {
+		try {
+			$test = @preg_match("/{$text}/", 'Whatever');
+			if( !is_int($test) ) {
+				throw new Exception("error!");
+			}
+		}
+		catch( Exception $e ) {
+			return false;
+		}
+		return true;
+	}
 
 	/* draws one option for select */
-	function makeOption($blocker, $current) {
+	function makeOption( $blocker, $current ) {
 		global $wgOut;
-		if ($blocker == $current) {
+		if ( $blocker == $current ) {
 			$wgOut->addHTML( "<option selected=\"selected\" value=\"{$blocker}\">{$blocker}</option>" );
 		} else {
 			$wgOut->addHTML( "<option value=\"{$blocker}\">{$blocker}</option>" );
@@ -341,7 +360,7 @@ class spamRegexForm {
 			return;
 		}
 		/* validate expression */
-		if ( !$simple_regex = wfValidRegex( $this->mBlockedPhrase ) ) {
+		if ( !$simple_regex = spamRegexList::validateRegex( $this->mBlockedPhrase ) ) {
 			$this->showForm( wfMsgHtml( 'spamregex-error-1' ) );
 			wfProfileOut( __METHOD__ );
 			return;
