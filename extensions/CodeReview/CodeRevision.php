@@ -230,8 +230,15 @@ class CodeRevision {
 	
 	function removeTags( $tags ) {
 		$dbw = wfGetDB( DB_MASTER );
+		$tagsNormal = array();
+		foreach( $tags as $tag ) {
+			$tagsNormal[] = $this->normalizeTag( $tag );
+		}
 		$result = $dbw->delete( 'code_tags',
-			$this->tagData( $tags ),
+			array( 
+				'ct_repo_id' => $this->mRepo,
+				'ct_rev_id' => $this->mId,
+				'ct_tag' => $tagsNormal ),
 			__METHOD__ );
 	}
 	
