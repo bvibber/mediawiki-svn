@@ -86,4 +86,8 @@ $wgGroupPermissions['steward']['repoadmin'] = true; // temp
 $wgSubversionProxy = false;
 $wgSubversionProxyTimeout = 30; // default 3 secs is too short :)
 
+
 $wgCodeReviewStyleVersion = 1;
+// The name of a repo which represents the code running on this wiki, used to highlight active revisions
+$wgWikiSVN = 'MediaWiki';
+

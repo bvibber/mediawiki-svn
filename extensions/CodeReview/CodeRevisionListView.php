@@ -32,9 +32,11 @@ class CodeRevisionListView extends CodeView {
 class SvnRevTablePager extends TablePager {
 
 	function __construct( CodeRevisionListView $view ){
+		global $IP;
 		$this->mView = $view;
 		$this->mRepo = $view->mRepo;
 		$this->mDefaultDirection = true;
+		$this->mCurSVN = SpecialVersion::getSvnRevision( $IP );
 		parent::__construct();
 	}
 
@@ -93,11 +95,16 @@ class SvnRevTablePager extends TablePager {
 	
 	// Note: this function is poorly factored in the parent class
 	function formatRow( $row ) {
+		global $wgWikiSVN;
+		$class = "mw-codereview-status-{$row->cr_status}";
+		if($this->mRepo->mName == $wgWikiSVN){
+			$class .= " mw-codereview-" . ( $row->cr_id <= $this->mCurSVN ? 'live' : 'notlive' );
+		}
 		return str_replace(
 			'<tr>',
 			Xml::openElement( 'tr',
-				array( 'class' => "mw-codereview-status-{$row->cr_status}" ) ),
-			parent::formatRow( $row ) );
+				array( 'class' => $class ) ),
+				parent::formatRow( $row ) );
 	}
 
 	function getTitle(){

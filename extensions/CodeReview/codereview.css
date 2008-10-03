@@ -60,3 +60,12 @@ table.mw-codereview-meta td {
 .mw-codereview-diff .meta {
 	color: darkcyan;
 }
+
+.mw-codereview-live td {
+	border-color: #a0dfa0 !important;;
+	border-width: 2px !important;
+}
+
+.mw-codereview-notlive td {
+	
+}
