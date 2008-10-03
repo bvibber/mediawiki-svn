@@ -63,7 +63,7 @@ function sgmFunctionMagic( &$magicWords, $langCode ) {
 	return true;
 }
 
-function sgmFunctionRender( &$parser, $coordinates = '1,1', $zoom = '14', $type = 'G_NORMAL_MAP', $control_class = 'GLargeMapControl', $class = 'pmap', $width = '200', $height = '200', $style = '' ) {
+function sgmFunctionRender( &$parser, $coordinates = '1,1', $zoom = '14', $type = 'G_NORMAL_MAP', $control_class = 'GSmallMapControl', $class = 'pmap', $width = '200', $height = '200', $style = '' ) {
 	# The parser function itself
 	# The input parameters are wikitext with templates expanded
 	# The output is not parsed as wikitext
@@ -204,7 +204,7 @@ function sgmInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $f
 	if (array_key_exists('map control', $field_args)) {
 		$control_class = $field_args['map control'];
 	} else {
-		$control_class = 'GLargeMapControl';
+		$control_class = 'GSmallMapControl';
 	}
 	if ($flat == 0) { $lat = '50';} else {$lat = $flat;}
 	if ($flon == 0) { $lon = '5';} else {$lon = $flon;}
