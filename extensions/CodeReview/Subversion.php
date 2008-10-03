@@ -109,7 +109,7 @@ class SubversionShell extends SubversionAdaptor {
 
 	function getLog( $path, $startRev=null, $endRev=null ) {
 		$command = sprintf(
-			"svn log -v -r%s:%s --non-interactive %s",
+			"LC_MESSAGES=C svn log -v -r%s:%s --non-interactive %s",
 			wfEscapeShellArg( $this->_rev( $startRev, 'BASE' ) ),
 			wfEscapeShellArg( $this->_rev( $endRev, 'HEAD' ) ),
 			wfEscapeShellArg( $this->mRepo . $path ) );
@@ -159,7 +159,7 @@ class SubversionShell extends SubversionAdaptor {
 				$state = 'changedpaths';
 				break;
 			case "changedpaths":
-				if( $line == "Changed paths:" ) {
+				if( $line == "Changed paths:" ) { // broken when svn messages are not in English
 					$state = "path";
 				} elseif( $line == "" ) {
 					// No changed paths?
