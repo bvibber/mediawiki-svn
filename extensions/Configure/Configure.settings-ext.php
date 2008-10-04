@@ -99,7 +99,8 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:AuthorProtect',
 	),
 	array(
-		'name' => 'Autincrement',
+		'name' => 'Autoincrement',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Autoincrement',
 	),
 
 	// B
