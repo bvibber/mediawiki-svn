@@ -35,6 +35,6 @@ class CodeRevisionTagger extends CodeRevisionView {
 	
 	function validPost( $permission ) {
 		return parent::validPost( $permission ) &&
-			( !empty( $this->mTags ) || !empty( $this->mRemoveTags ) );
+			( !empty( $this->mAddTags ) || !empty( $this->mRemoveTags ) );
 	}
 }
