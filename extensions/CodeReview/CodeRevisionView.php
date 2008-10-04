@@ -55,12 +55,9 @@ class CodeRevisionView extends CodeView {
 			' ' .
 			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
 			'</div>';
-		$html .= '<table class="mw-codereview-meta">';
-		foreach( $fields as $label => $data ) {
-			$html .= "<tr><td>" . wfMsgHtml( $label ) . "</td><td>$data</td></tr>\n";
-		}
-		$html .= "</table>\n";
 		
+		$html .= $this->formatMetaData( $fields );
+
 		$diffHtml = $this->formatDiff();
 		if( $diffHtml ) {
 			$html .=

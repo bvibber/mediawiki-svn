@@ -31,7 +31,14 @@ class CodeRevisionAuthorView extends CodeRevisionListView {
 			$linkInfo .= ' (' . $this->mSkin->link( $page, wfMsg( 'code-author-' . ($this->mUser?'un':'') . 'link') ) . ')' ;
 		}
 
-		$wgOut->addHtml($linkInfo);
+		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ),
+			htmlspecialchars( $this->mRepo->getName() ) );
+		$fields = array(
+			'code-rev-repo' => $repoLink,
+			'code-rev-author' => $this->authorLink( $this->mAuthor ),
+		);
+
+		$wgOut->addHtml($this->formatMetaData( $fields ) . $linkInfo );
 
 		parent::execute();
 	}

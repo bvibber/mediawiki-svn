@@ -157,6 +157,17 @@ abstract class CodeView {
 		$trimmed = $wgLang->truncate( $first, 60, '...' );
 		return $this->formatMessage( $trimmed );
 	}
+	/*
+	 * Formatted HTML array for properties display
+	 * @param array fields : 'propname' => HTML data
+	 */
+	function formatMetaData( $fields ) {
+		$html = '<table class="mw-codereview-meta">';
+		foreach( $fields as $label => $data ) {
+			$html .= "<tr><td>" . wfMsgHtml( $label ) . "</td><td>$data</td></tr>\n";
+		}
+		return $html . "</table>\n";
+	}
 }
 
 class CodeCommentLinker {

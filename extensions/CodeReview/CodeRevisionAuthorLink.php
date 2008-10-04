@@ -8,12 +8,6 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 			$auth = $this->mAuthor;
 			return SpecialPage::getTitleFor( 'Code', "$repo/author/$auth/link");
 	}
-	
-	function getParentLink() {
-			$repo = $this->mRepo->getName();
-			$auth = $this->mAuthor;
-			return $this->mSkin->link( SpecialPage::getTitleFor( 'Code', "$repo/author/$auth"), $auth);
-	}
 
 	function execute() {
 		global $wgOut, $wgRequest, $wgUser;
@@ -106,7 +100,7 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 
 		$wgOut->addHtml(
 			'<div class="successbox">' . 
-			wfMsgHtml( 'code-author-success', $this->getParentLink(), $userlink) .
+			wfMsgHtml( 'code-author-success', $this->authorLink( $this->mAuthor ), $userlink) .
 			'</div>'
 		);
 	}
@@ -131,7 +125,7 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 
 		$wgOut->addHtml(
 			'<div class="successbox">' . 
-			wfMsgHtml( 'code-author-unlinksuccess', $this->getParentLink() ) .
+			wfMsgHtml( 'code-author-unlinksuccess', $this->authorLink( $this->mAuthor ) ) .
 			'</div>'
 		);
 	}
