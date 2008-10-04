@@ -9,6 +9,8 @@ $messages['en'] = array (
                 'interwikilist-desc'     => 'Adds a [[Special:Interwikilist|special page]] to view available interwiki links',
                 'interwikilist-linkname' => 'Interwiki link',
                 'interwikilist-target'   => 'Target URL',
+				'interwikilist-filter'   => 'Filter list',
+				'interwikilist-prefix'   => 'Interwiki prefix:',
 );
 
 /** Message documentation (Message documentation)
