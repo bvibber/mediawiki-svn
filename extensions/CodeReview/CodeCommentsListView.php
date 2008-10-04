@@ -68,7 +68,7 @@ class CodeCommentsTablePager extends TablePager {
 		switch( $name ){
 		case 'cc_rev_id':
 			return $this->mView->mSkin->link(
-				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $value ),
+				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $value . '#code-comments' ),
 				htmlspecialchars( $value ) );
 		case 'cr_status':
 			return $this->mView->mSkin->link(
@@ -82,7 +82,7 @@ class CodeCommentsTablePager extends TablePager {
 		case 'cc_text':
 			# Truncate this, blah blah...
 			$text = htmlspecialchars($value);
-			$preview = $wgLang->truncate( $text, 400 );
+			$preview = $wgLang->truncate( $text, 300 );
 			if( strlen($preview) < strlen($text) ) {
 				$preview = substr( $preview, 0, strrpos($preview,' ') );
 				$preview .= " . . .";

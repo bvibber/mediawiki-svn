@@ -67,7 +67,7 @@ class CodeRevisionView extends CodeView {
 				"</div>\n";
 		}
 		$html .=
-			"<h2>". wfMsgHtml( 'code-comments' ) ."</h2>\n" .
+			"<h2 id='code-comments'>". wfMsgHtml( 'code-comments' ) ."</h2>\n" .
 			$this->formatComments();
 		
 		if( $this->mReplyTarget ) {
