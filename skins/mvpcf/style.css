@@ -26,6 +26,9 @@ body {
 .mw-specialpagerestricted {
 	font-weight: bold;
 }
+a .new{
+	color:#F22
+}
 body#frontPage {background: #eef6ff;}
 .bodyContent{	
 }
@@ -167,6 +170,7 @@ li#pt-login {
 	font-size: 13px;
 	text-align: center;
 	margin: 20px 0;
+	display:block;
 }
 a.advanced_search_tag {font-size: 12px; text-decoration: none; margin: 8px; position: absolute;}
 

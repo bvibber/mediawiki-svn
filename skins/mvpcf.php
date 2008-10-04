@@ -82,14 +82,13 @@ class MvpcfTemplate extends QuickTemplate {
 		?>	 
 	<body id="frontPage">
 	<div id="frontPageTop">			
-		<?php $this->get_portlet('p-personal')?>		
+		<?php $this->get_portlet('p-personal')?>
+		<div style="position:absolute;width:100%;bottom:0px"><?php $this->get_top_nav() ?></div>		
 		<div id="searchSplash">
 			<div class="logo"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo.png" alt="Metavid" /></div>
 			<p class="tagline">The Open Video archive of the US Congress</p>			
 			<?php $this->get_search_html(); ?>			
-		</div><!--searchSplash-->	
-		
-		<div style="position:absolute;width:100%;bottom:0px"><?php $this->get_top_nav() ?></div>		
+		</div><!--searchSplash-->							
 	</div><!--frontPageTop-->
 			
 	<div id="frontPageContent" class="bodyContent">
@@ -400,8 +399,9 @@ foreach ($this->data['sidebar'] as $bar => $cont) {
 			</li>
 			<li>
 				<?php
-				$cBills =  Title::newFromText('Bill', SMW_NS_PROPERTY);
-				echo $sk->makeKnownLinkObj($cBills, 'bills');
+				$cBills =  Title::newFromText('Special:Ask', NS_SPECIAL);
+				echo $sk->makeKnownLinkObj($cBills, 'bills', 'offset=0&limit=20&q=[[Category%3A%3ABill]&p=format%3Dbroadtable&po=%3FDate+Introduced%0A%3FBill+Sponsor%0A&sort=Date%20Introduced&order=DESC'
+							);					
 				?>				
 			</li>
 			<li>
