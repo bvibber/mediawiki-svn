@@ -13,7 +13,11 @@ class CodeRepoListView {
 		$text = '';
 		foreach( $repos as $repo ){
 			$name = $repo->getName();
-			$text .= "* [[Special:Code/$name|$name]]\n";
+			$text .= "* '''[[Special:Code/$name|$name]]''' (";
+			$text .= "[[Special:Code/$name/comments|".wfMsgHtml( 'code-comments' )."]]";
+			$text .= " | [[Special:Code/$name/tag|".wfMsgHtml( 'code-tags' )."]]";
+			$text .= " | [[Special:Code/$name/author|".wfMsgHtml( 'code-authors' )."]]";
+			$text .= ")\n";
 		}
 		$wgOut->addWikiText( $text );
 	}

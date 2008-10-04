@@ -34,13 +34,16 @@ class SpecialCode extends SpecialPage {
 					$view = new CodeRevisionView( $params[0], $params[1] );
 					break;
 				} else if( $params[1] === 'tag' ) {
-					$view = new CodeRevisionTagListView( $params[0] );
+					$view = new CodeTagListView( $params[0] );
 					break;
 				} elseif( $params[1] === 'author' ) {
-					$view = new CodeRevisionAuthorListView( $params[0] );
+					$view = new CodeAuthorListView( $params[0] );
 					break;
 				} elseif( $params[1] === 'status' ) {
-					$view = new CodeRevisionStatusListView( $params[0] );
+					$view = new CodeStatusListView( $params[0] );
+					break;
+				} elseif( $params[1] === 'comments' ) {
+					$view = new CodeCommentsListView( $params[0] );
 					break;
 				} else {
 					$view = new CodeRevisionView( $params[0], $params[1] );

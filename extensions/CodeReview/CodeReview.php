@@ -51,9 +51,10 @@ $wgAutoloadClasses['CodeRevisionStatusView'] = $dir . 'CodeRevisionStatusView.ph
 $wgAutoloadClasses['CodeRevisionTagger'] = $dir . 'CodeRevisionTagger.php';
 $wgAutoloadClasses['CodeRevisionTagView'] = $dir . 'CodeRevisionTagView.php';
 $wgAutoloadClasses['CodeRevisionView'] = $dir . 'CodeRevisionView.php';
-$wgAutoloadClasses['CodeRevisionAuthorListView'] = $dir . 'CodeRevisionAuthorListView.php';
-$wgAutoloadClasses['CodeRevisionStatusListView'] = $dir . 'CodeRevisionStatusListView.php';
-$wgAutoloadClasses['CodeRevisionTagListView'] = $dir . 'CodeRevisionTagListView.php';
+$wgAutoloadClasses['CodeAuthorListView'] = $dir . 'CodeAuthorListView.php';
+$wgAutoloadClasses['CodeStatusListView'] = $dir . 'CodeStatusListView.php';
+$wgAutoloadClasses['CodeTagListView'] = $dir . 'CodeTagListView.php';
+$wgAutoloadClasses['CodeCommentsListView'] = $dir . 'CodeCommentsListView.php';
 $wgAutoloadClasses['CodeComment'] = $dir . 'CodeComment.php';
 $wgAutoloadClasses['SpecialCode'] = $dir . 'SpecialCode.php';
 $wgAutoloadClasses['CodeView'] = $dir . 'SpecialCode.php';
@@ -61,7 +62,9 @@ $wgAutoloadClasses['SpecialRepoAdmin'] = $dir . 'SpecialRepoAdmin.php';
 $wgAutoloadClasses['SubversionAdaptor'] = $dir . 'Subversion.php';
 
 $wgSpecialPages['Code'] = 'SpecialCode';
+$wgSpecialPageGroups['Code'] = 'developer';
 $wgSpecialPages['RepoAdmin'] = 'SpecialRepoAdmin';
+$wgSpecialPageGroups['RepoAdmin'] = 'developer';
 
 $wgAPIModules['codeupdate'] = 'ApiCodeUpdate';
 

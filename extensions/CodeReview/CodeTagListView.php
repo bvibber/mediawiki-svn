@@ -1,7 +1,7 @@
 <?php
 
-// Special:Code/MediaWiki/author
-class CodeRevisionAuthorListView extends CodeView {
+// Special:Code/MediaWiki/tag
+class CodeTagListView extends CodeView {
 	function __construct( $repoName ) {
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
@@ -9,12 +9,11 @@ class CodeRevisionAuthorListView extends CodeView {
 
 	function execute() {
 		global $wgOut;
-		$authors = $this->mRepo->getAuthorList();
+		$tags = $this->mRepo->getTagList();
 		$name = $this->mRepo->getName();
 		$text = '';
-		foreach( $authors as $user ) {
-			if( $user )
-				$text .= "* [[Special:Code/$name/author/$user|$user]]\n";
+		foreach( $tags as $tag ) {
+			$text .= "* [[Special:Code/$name/tag/$tag|$tag]]\n";
 		}
 		$wgOut->addWikiText( $text );
 	}

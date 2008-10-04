@@ -13,6 +13,10 @@ $messages['en'] = array(
 	'code-comments' => 'Comments',
 	'code-desc' => '[[Special:Code|Code review tool]] with [[Special:RepoAdmin|Subversion support]]',
 	'code-no-repo' => 'No repository configured!',
+	'code-comments' => 'review notes',
+	'code-authors' => 'authors',
+	'code-tags' => 'tags',
+	'code-authors-text' => 'Below is a list of repo authors in order of recent commits.',
 	'code-author-haslink' => 'This author is linked to the wiki user $1',
 	'code-author-orphan' => 'This author has no link with a wiki account',
 	'code-author-dolink' => 'Link this author to a wiki user:',
@@ -25,10 +29,12 @@ $messages['en'] = array(
 	'code-author-unlinksuccess' => 'Author $1 has been unlinked',
 	'code-field-id' => 'Revision',
 	'code-field-author' => 'Author',
-	'code-field-message' => 'Comment',
+	'code-field-user' => 'Commentor',
+	'code-field-message' => 'Summary',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Date',
 	'code-field-comments' => 'Notes',
+	'code-field-text' => 'Note',
 	'code-rev-author' => 'Author:',
 	'code-rev-message' => 'Comment:',
 	'code-rev-repo' => 'Repository:',
@@ -73,6 +79,8 @@ $messages['en'] = array(
 	'right-codereview-remove-tag' => 'Remove tags from revisions',
 	'right-codereview-post-comment' => 'Add comments on revisions',
 	'right-codereview-set-status' => 'Change revisions status',
+	
+	'specialpages-group-developer' => 'Developer tools',
 );
 
 /** Arabic (العربية)
