@@ -196,7 +196,7 @@ function efGPManagerReplaceEditMessage(&$key, &$useDB, &$langCode, $transform) {
 	global $wgRequest;
 	if($wgRequest->getVal('action') == 'edit' || $wgRequest->getVal('action') == 'sumbit') {
 		global $wgTitle;
-		if(!$wgTitle->userCan('edit')) return true;
+		if(!$wgTitle instanceOf Title || !$wgTitle->userCan('edit')) return true;
 	}
 	loadGPMessages();
 	if($key == 'right-edit') {
