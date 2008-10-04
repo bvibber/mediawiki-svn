@@ -8,8 +8,8 @@ if( typeof wgServer!='undefined' && typeof  wgScript != 'undefined'){
 	var base_roe_url='';
 }
 //foce wgScript path for blog support 
-if(!wgScript)
-	wgScript = "/w/index.php";
+if(typeof wgScript=='undefined')
+	var wgScript = "/w/index.php";
 	
 var gMvd={};
 function mv_setup_allpage(){
