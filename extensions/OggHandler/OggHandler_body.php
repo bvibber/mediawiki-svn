@@ -390,7 +390,7 @@ class OggHandler extends MediaHandler {
 	}
 
 	function setHeaders( $out ) {
-		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer;
+		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgUser, $wgProxyKey, $wgPlayerStatsCollectionJs;
 		if ( $out->hasHeadItem( 'OggHandler' ) ) {
 			return;
 		}
@@ -403,7 +403,9 @@ class OggHandler extends MediaHandler {
 			'ogg-player-totem', 'ogg-player-kaffeine', 'ogg-player-kmplayer', 'ogg-player-mplayerplug-in',
 			'ogg-player-thumbnail', 'ogg-player-selected', 'ogg-use-player', 'ogg-more', 'ogg-download',
 	   		'ogg-desc-link', 'ogg-dismiss', 'ogg-player-soundthumb', 'ogg-no-xiphqt' );
-		$msgValues = array_map( 'wfMsg', $msgNames );
+		$msgValues = array_map( 'wfMsg', $msgNames );						
+						
+		
 		$jsMsgs = Xml::encodeJsVar( (object)array_combine( $msgNames, $msgValues ) );
 		$cortadoUrl = $wgCortadoJarFile;
 		$scriptPath = self::getMyScriptPath();
@@ -413,7 +415,7 @@ class OggHandler extends MediaHandler {
 		}
 		$encCortadoUrl = Xml::encodeJsVar( $cortadoUrl );
 		$encExtPathUrl = Xml::encodeJsVar( $scriptPath );
-
+		
 		$out->addHeadItem( 'OggHandler', <<<EOT
 <script type="text/javascript" src="$scriptPath/OggPlayer.js?$wgOggScriptVersion"></script>
 <script type="text/javascript">
@@ -430,8 +432,19 @@ wgOggPlayer.extPathUrl = $encExtPathUrl;
 }
 </style>
 EOT
-		);
-		
+		);	
+		//if collecting stats add relevant code: 
+		if($wgPlayerStatsCollectionJs){			
+			$jsUserHash = sha1( $wgUser->getName() . $wgProxyKey);
+			$enUserHash = Xml::encodeJsVar( $jsUserHash );
+			$out->addHeadItem('playerStatsCollection',  <<<EOT
+<script type="text/javascript" src="$wgPlayerStatsCollectionJs"></script>
+<script type="text/javascript">
+wgOggPlayer.userHash = $enUserHash;
+</script>	
+EOT
+);			
+		}
 	}
 
 	function parserTransformHook( $parser, $file ) {

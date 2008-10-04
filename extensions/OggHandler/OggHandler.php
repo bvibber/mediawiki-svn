@@ -25,14 +25,19 @@ $wgHooks['LanguageGetMagic'][] = 'OggHandler::registerMagicWords';
 $wgExtensionCredits['media'][] = array(
 	'name'           => 'OggHandler',
 	'author'         => 'Tim Starling',
-	'svn-date' => '$LastChangedDate$',
-	'svn-revision' => '$LastChangedRevision$',
+	'svn-date' 		 => '$LastChangedDate$',
+	'svn-revision' 	 => '$LastChangedRevision$',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:OggHandler',
 	'description'    => 'Handler for Ogg Theora and Vorbis files, with JavaScript player.',
 	'descriptionmsg' => 'ogg-desc',
 );
 
 /******************* CONFIGURATION STARTS HERE **********************/
+
+
+//the absolute or relative path of the playerStatsCollector.js file
+$wgStatsCollection=false; 
+//$wgPlayerStatsCollectionJs = $wgScriptPath . '/extensions/PlayerStatsGrabber/playerStats.js';
 
 // Location of the FFmpeg binary
 $wgFFmpegLocation = 'ffmpeg';
