@@ -520,8 +520,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			__METHOD__,
 			$options );
 
-		// echo "SQL:".$dbr->lastQuery($result)." \n";
-		// die;
+		 //echo "SQL:".$dbr->lastQuery($result)." \n";
+		 //die;
 		// $result = $dbr->query($sql,  'MV_Index:doFiltersQuery_base');
 
 		$this->numResults = $dbr->numRows( $result );

@@ -790,9 +790,9 @@ class MV_BillScraper extends MV_BaseScraper {
 			}
 		}
 		if ( !isset( $this->govTrack_cache[$govID] ) ) {
-			$wgTitle = Title::newFromText( 'Archive:Missing_People' );
+			//$wgTitle = Title::newFromText( 'Archive:Missing_People' );
 			print $govID . ' not found ' . "\n";
-			append_to_wiki_page( $wgTitle, "Missing GovTrack person: [[Missing GovTrackId:=$govID]][http://www.govtrack.us/congress/person.xpd?id=$govID] " );
+			//append_to_wiki_page( $wgTitle, "Missing GovTrack person: [[Missing GovTrackId:=$govID]][http://www.govtrack.us/congress/person.xpd?id=$govID] " );
 			return false;
 		}
 		return str_replace( '_', ' ', $this->govTrack_cache[$govID] );

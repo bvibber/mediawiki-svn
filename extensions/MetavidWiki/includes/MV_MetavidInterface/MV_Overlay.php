@@ -490,10 +490,10 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		$plink = htmlspecialchars( seconds2ntp( $mvd_page->start_time ) ) . ' to ' . htmlspecialchars( seconds2ntp( $mvd_page->end_time ) );
 		// @@TODO set up conditional display: (view source if not logged on, protect, remove if given permission)  
 		$out .= $plink;
-		$out .= "( $elink - $hlink - $dlink ";
+		$out .= "( $elink $hlink $dlink";
 		if ( $wgUser->isAllowed( 'mv_delete_mvd' ) ) {
 			$rlink = '<a title="' . htmlspecialchars( wfMsg( 'mv_remove_title' ) ) . '" href="javascript:mv_disp_remove_mvd(\'' . htmlspecialchars( $mvd_page->wiki_title ) . '\', \'' . htmlspecialchars( $mvd_page->id ) . '\')">' . wfMsg( 'mv_remove' ) . '</a>';
-			$out .= ' - ' .  $rlink;
+			$out .= ' ' .  $rlink;
 		}
 		$out .= " )<br> ";
 		return $out;
