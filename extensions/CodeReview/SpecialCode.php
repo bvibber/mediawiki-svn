@@ -62,6 +62,10 @@ class SpecialCode extends SpecialPage {
 					break;
 				}
 			case 4:
+				if ( $params[1] == 'author' && $params[3] == 'link') {
+					$view = new CodeRevisionAuthorLink( $params[0], $params[2] );
+					break;
+				}
 			default:
 				if( $params[2] == 'reply' ) {
 					$view = new CodeRevisionView( $params[0], $params[1], $params[3] );
@@ -85,6 +89,7 @@ class SpecialCode extends SpecialPage {
  */
 abstract class CodeView {
 	var $mRepo;
+	static $userLinks = array();
 
 	function __construct() {
 		global $wgUser;
@@ -105,9 +110,8 @@ abstract class CodeView {
 	 *	of false
 	*/
 	function authorWikiUser( $author ) {
-		static $userLinks = array();
-		if( isset( $userLinks[$author] ) )
-			return $userLinks[$author];
+		if( isset( self::$userLinks[$author] ) )
+			return self::$userLinks[$author];
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$wikiUser = $dbr->selectField(
@@ -126,7 +130,7 @@ abstract class CodeView {
 			$res = $user;
 		else
 			$res = false;
-		return $userLinks[$author] = $res;
+		return self::$userLinks[$author] = $res;
 	}
 
 	function authorLink( $author ) {

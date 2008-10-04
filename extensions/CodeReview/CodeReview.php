@@ -44,6 +44,7 @@ $wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'CodeRepoListView.php';
 $wgAutoloadClasses['CodeRevision'] = $dir . 'CodeRevision.php';
 $wgAutoloadClasses['CodeRevisionAuthorView'] = $dir . 'CodeRevisionAuthorView.php';
+$wgAutoloadClasses['CodeRevisionAuthorLink'] = $dir . 'CodeRevisionAuthorLink.php';
 $wgAutoloadClasses['CodeRevisionListView'] = $dir . 'CodeRevisionListView.php';
 $wgAutoloadClasses['CodeRevisionStatusSetter'] = $dir . 'CodeRevisionStatusSetter.php';
 $wgAutoloadClasses['CodeRevisionStatusView'] = $dir . 'CodeRevisionStatusView.php';
