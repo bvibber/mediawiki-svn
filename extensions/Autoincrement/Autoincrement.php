@@ -14,7 +14,10 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionCredits['variable'][] = array(
 	'name' => 'Autoincrement',
 	'description' => 'a variable hook that adds an autoincrementing variable, <nowiki>{{AUTOINCREMENT}}</nowiki>',
-	'author' => 'Ævar Arnfjörð Bjarmason'
+	'author' => 'Ævar Arnfjörð Bjarmason',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Autoincrement',
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 );
 
 class Autoincrement {
@@ -37,7 +40,7 @@ class Autoincrement {
 	}
 	
 	function wfAutoincrementHookRaw( &$raw ) {
-		$raw['autoincrement'] = array( 0, 'AUTOINCREMENT' );;
+		$raw['autoincrement'] = array( 0, 'AUTOINCREMENT' );
 
 		return true;
 	}
