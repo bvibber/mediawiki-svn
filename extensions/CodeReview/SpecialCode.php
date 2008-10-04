@@ -30,28 +30,31 @@ class SpecialCode extends SpecialPage {
 					# Set status
 					$crs = new CodeRevisionStatusSetter( $params[0], $params[1] );
 					$crs->execute();
-				}
-				# Adds comments and makes output
-				$view = new CodeRevisionView( $params[0], $params[1] );
-				break;
-			case 3:
-				if( $params[1] === 'tag' ) {
-					if( empty($params[2]) )
-						$view = new CodeRevisionTagListView( $params[0] );
-					else
-						$view = new CodeRevisionTagView( $params[0], $params[2] );
+					# Adds comments and makes output
+					$view = new CodeRevisionView( $params[0], $params[1] );
+					break;
+				} else if( $params[1] === 'tag' ) {
+					$view = new CodeRevisionTagListView( $params[0] );
 					break;
 				} elseif( $params[1] === 'author' ) {
-					if( empty($params[2]) )
-						$view = new CodeRevisionAuthorListView( $params[0] );
-					else
-						$view = new CodeRevisionAuthorView( $params[0], $params[2] );
+					$view = new CodeRevisionAuthorListView( $params[0] );
 					break;
 				} elseif( $params[1] === 'status' ) {
-					if( empty($params[2]) )
-						$view = new CodeRevisionStatusListView( $params[0] );
-					else
-						$view = new CodeRevisionStatusView( $params[0], $params[2] );
+					$view = new CodeRevisionStatusListView( $params[0] );
+					break;
+				} else {
+					$view = new CodeRevisionView( $params[0], $params[1] );
+					break;
+				}
+			case 3:
+				if( $params[1] === 'tag' ) {
+					$view = new CodeRevisionTagView( $params[0], $params[2] );
+					break;
+				} elseif( $params[1] === 'author' ) {
+					$view = new CodeRevisionAuthorView( $params[0], $params[2] );
+					break;
+				} elseif( $params[1] === 'status' ) {
+					$view = new CodeRevisionStatusView( $params[0], $params[2] );
 					break;
 				} else {
 					# Nonsense parameters, back out
