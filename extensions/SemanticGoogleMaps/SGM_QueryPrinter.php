@@ -162,7 +162,7 @@ END;
 			} else {
 				// GLatLng class expects only numbers, no
 				// letters or degree symbols
-				list($center_lat, $center_lon) = sgmGetLatLon($center);
+				list($center_lat, $center_lon) = SGMUtils::getLatLon($center);
 			}
 			$map_text .= "	map.setCenter(new GLatLng($center_lat, $center_lon), $zoom);\n";
 		}
