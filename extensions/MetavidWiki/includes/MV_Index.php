@@ -322,7 +322,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
 		$this->order = strtolower( $wgRequest->getVal( 'order' ) );
 		// force order type:
-		if ( !( $this->order == 'relevant' || $this->order == 'recent' || $this->order == 'viewed' ) )$this->order = 'relevant';
+		if ( !( $this->order == 'relevant' || $this->order == 'recent' || $this->order == 'viewed' ) )$this->order = 'recent';
 
 
 		$group_spoken = true;
