@@ -17,8 +17,6 @@ Installation instructions:
 2. Put IMStatus.php in your extensions folder (or in a subdirectory of it, as you want)
 3. Add the following code at the end of LocalSettings.php:
 	require_once( $IP."/extensions/IM/IMStatus.php");
-4. (optional) For additional locales, grab the latest revision of IMStatus.i18n.php on:
-	http://www.mediawiki.org/wiki/Extension:IM_Status/IMStatus.i18n.php
 
 Usage:
 Once installed, the extension adds the following tags:

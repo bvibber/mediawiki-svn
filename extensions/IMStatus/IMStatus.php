@@ -1,8 +1,6 @@
 <?php
-
 // Check to make sure we're actually in MediaWiki.
 if (!defined('MEDIAWIKI')) die('This file is part of MediaWiki. It is not a valid entry point.');
-
 
 /*********************************************************************
 * IM Status - A MediaWiki extension which add tags for status buttons
@@ -13,19 +11,19 @@ if (!defined('MEDIAWIKI')) die('This file is part of MediaWiki. It is not a vali
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
-* 
+*
 * This program is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 * GNU General Public License for more details.
-* 
+*
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
 
 /*********************
 * Special thanks to:
-* - Jeffrey Phillips Freeman for his AIM extension (http://www.mediawiki.org/wiki/Extension:AIM), 
+* - Jeffrey Phillips Freeman for his AIM extension (http://www.mediawiki.org/wiki/Extension:AIM),
 *   licensed in the Public domain and on which I based this extention.
 * - Guy Taylor ("TheBigGuy"), who did a lot of work on various IM extensions (ICQ, Skype, also some work on AIM),
 *   which helped me to find out some style and action options... it's a pity I had to rewrite these codes from the AIM one
@@ -41,11 +39,11 @@ $wgExtensionMessagesFiles['IMStatus'] = dirname( __FILE__ ) . "/IMStatus.i18n.ph
 
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'IM Status',
-	'version' => '1.2',
-	'author' => 'PatheticCockroach and various MediaWiki contributors',
-	'url' => 'http://www.patheticcockroach.com/mpam4/index.php?p=78',
+	'version' => '1.3',
+	'author' => array( 'PatheticCockroach', 'various MediaWiki contributors' ),
+	'url' => 'http://www.mediawiki.org/wiki/Extension:IM_Status',
 	'description' => 'Adds tags to show various IM online status (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
-	'descriptionmsg' => 'imstatus_desc'
+	'descriptionmsg' => 'imstatus-desc'
 );
 
 //*********** MANDATORY parameters - start
@@ -55,7 +53,7 @@ $wgAimKey_api = "re1DoqFLUFKW4_YE";		// get a Web AIM key for this
 //*********** MANDATORY parameters - end
 
 //Tag creation
-$wgExtensionFunctions[] = "wfIMStatusPCR"; 
+$wgExtensionFunctions[] = "wfIMStatusPCR";
 function wfIMStatusPCR()
 {
 	global $wgParser;
@@ -66,7 +64,6 @@ function wfIMStatusPCR()
 	$wgParser->setHook( "skype", "RenderSkype" );
 	$wgParser->setHook( "xfire", "RenderXfire" );
 	$wgParser->setHook( "yahoo", "RenderYahoo" );
-	wfLoadExtensionMessages('IMStatus');
 }
 
 //NB: a nice list of styles and actions: http://cubicpath.syncleus.com/wiki/index.php/Cubicpath:Add-ons
@@ -80,9 +77,9 @@ function RenderAIM( $input, $argv )
 	$style_default = "presence";
 	// the variables are: <aim style="$argv['style']">$input</aim>
 	// to get help as a user, use <aim help/>
- 
+
 	// sanitize input
-    $input = htmlspecialchars($input,ENT_QUOTES); 
+    $input = htmlspecialchars($input,ENT_QUOTES);
 	// get custom parameters
     if( isset( $argv['style'] ) )
 	{
@@ -90,10 +87,12 @@ function RenderAIM( $input, $argv )
 		if( !in_array( $style, array("presence", "api") ) ) $style = $style_default;
 	}
 	else $style = $style_default;
- 
+
 	// prepares output
 	if(isset($argv['help']))
 	{
+		wfLoadExtensionMessages('IMStatus');
+
 		$output = '<div><span style="color:blue;">'. wfMsg("imstatus_syntax") .': &lt;aim style="[style]"&gt;['. wfMsg("imstatus_your_name", "AIM") .']&lt;/aim&gt;</span>';
 		$output .= '<ul><li>style: '. wfMsg("imstatus_style") .'. '. wfMsg("imstatus_possible_val") .': "presence" '. wfMsg("imstatus_or") .' "api". '. wfMsg("imstatus_default") .': '.$style_default.'.';
 		$output .= '<ul><li>'. wfMsg("imstatus_aim_presence", "&#34;presence&#34;") .'</li>';
@@ -110,19 +109,18 @@ function RenderAIM( $input, $argv )
 				$output = '<script type="text/javascript" src="http://o.aolcdn.com/aim/web-aim/aimapi.js"></script>';
 				$output .= '<div id="AIMBuddyListContainer" wim_key="'.$wgAimKey_api.'"></div>';
 				$output .= '<a href="nojavascript.html" onclick="AIM.widgets.IMMe.launch(\''.$input.'\'); return false;">';
-				$output .= '<img src="http://api.oscar.aol.com/presence/icon?k='.$wgAimKey_presence.'&t='.$input.'" border="0"/>Send me an IM</a>';			
+				$output .= '<img src="http://api.oscar.aol.com/presence/icon?k='.$wgAimKey_presence.'&t='.$input.'" border="0"/>Send me an IM</a>';
 			break;
-			
+
 			default:
 			case "presence":
 				$output = '<a href="aim:GoIM?screenname='.$input.'"><img src="http://api.oscar.aol.com/presence/icon?k='.$wgAimKey_presence.'&t='.$input.'" border="0"/></a>';
 			break;
 		}
-	} 
+	}
 	// sends output
     return $output;
 }
-
 
 /**********************************************
  * the function that reacts to "<gtalk>"
@@ -138,10 +136,10 @@ function RenderGTalk( $input, $argv )
 	$height_max = 60;
 	// the varibles are: <gtalk width="$argv['width']" height="$argv['height']">$input</aim>
 	// to get help as a user, use <gtalk help/>
-	
+
 	// sanitize input
-	$input = htmlspecialchars($input,ENT_QUOTES); 
-	
+	$input = htmlspecialchars($input,ENT_QUOTES);
+
 	// get custom parameters
 	if(isset($argv['width']))
 	{
@@ -149,7 +147,7 @@ function RenderGTalk( $input, $argv )
 		if($width>$width_max || $width<$width_min) $width = $width_default;
 	}
 	else $width = $width_default;
-	
+
 	if(isset($argv['height']))
 	{
 		$height = intval($argv['height']);
@@ -160,21 +158,22 @@ function RenderGTalk( $input, $argv )
 	// prepares output
 	if(isset($argv['help']))
 	{
+		wfLoadExtensionMessages('IMStatus');
+
 		$output = '<div><span style="color:blue;">'. wfMsg("imstatus_syntax") .': &lt;gtalk width="[width]" height="[height]"&gt;['. wfMsg("imstatus_gtalk_code") .']&lt;/gtalk&gt;</span>';
 		$output .= '<ul><li>width: '. wfMsg("imstatus_gtalk_width") .' '. wfMsg("imstatus_default") .':'.$width_default.'; '. wfMsg("imstatus_min") .':'.$width_min.'; '. wfMsg("imstatus_max") .':'.$width_max.'.</li>';
 		$output .='<li>height: '. wfMsg("imstatus_gtalk_height") .' '. wfMsg("imstatus_default") .':'.$height_default.'; '. wfMsg("imstatus_min") .':'.$height_min.'; '. wfMsg("imstatus_max") .':'.$height_max.'.</li>';
 		$output .= '<li>'. wfMsg("imstatus_gtalk_get_code", '<a href="http://www.google.com/talk/service/badge/New">Google Talk chatback badge</a>') .'</li></ul>';
 		$output .= '<span style="color:green;">'. wfMsg("imstatus_example") .': &lt;gtalk width="200" height="60"&gt;55gsrf9c1avkt0pub15rkiv9vs&lt;/gtalk&gt;</span></div>';
-	}	
-	else $output = '<iframe src="http://www.google.com/talk/service/badge/Show?tk='.$input.'&amp;w='.$width.'&amp;h='.$height.'" frameborder="0" allowtransparency="true" width="'.$width.'" height="'.$height.'"></iframe>'; 
+	}
+	else $output = '<iframe src="http://www.google.com/talk/service/badge/Show?tk='.$input.'&amp;w='.$width.'&amp;h='.$height.'" frameborder="0" allowtransparency="true" width="'.$width.'" height="'.$height.'"></iframe>';
 	// sends output
 	return $output;
 }
 
-
 /**********************************************
 * the function that reacts to "<icq>"
- ***********************************************/ 
+ ***********************************************/
 function RenderICQ( $input, $argv )
 {
 	// set your defaults for the style and action (0 to 26) (add) - NB: action is useless ATM (only one option...)
@@ -203,10 +202,12 @@ function RenderICQ( $input, $argv )
 	// prepares outupt
 	if(isset($argv['help']))
 	{
+		wfLoadExtensionMessages('IMStatus');
+
 		$output = '<div><span style="color:blue;">'. wfMsg("imstatus_syntax") .': &lt;icq style="[style]"&gt;['. wfMsg("imstatus_icq_id") .']&lt;/icq&gt;</span>';
 		$output .= '<ul><li>style: '. wfMsg("imstatus_icq_style") .' '. wfMsg("imstatus_default") .': '.$style_default.'.</li></ul>';
 		$output .= '<span style="color:green;">'. wfMsg("imstatus_example") .': &lt;icq style="2"&gt;984231&lt;/icq&gt;</span></div>';
-	}	
+	}
 	else $output = '<a href="http://www.icq.com/people/about_me.php?uin='.$input.'&action='.$action.'"><img src="http://status.icq.com/online.gif?icq='.$input.'&img='.$style.'" alt="ICQ status"/></a>';
 	// sends output
 	return $output;
@@ -222,9 +223,9 @@ function RenderLiveMessenger( $input, $argv )
 	$style_default = "icon";
 	// the variables are: <livemessenger style="$argv['style']">$input</livemessenger>
 	// to get help as a user, use <livemessenger help/>
- 
+
 	// sanitize input
-	$input = htmlspecialchars($input,ENT_QUOTES); 
+	$input = htmlspecialchars($input,ENT_QUOTES);
 	// get custom parameters
 	if(isset($argv['style']))
 	{
@@ -232,10 +233,12 @@ function RenderLiveMessenger( $input, $argv )
 		if(!in_array($style,array("button","icon","window"))) $style = $style_default;
 	}
 	else $style = $style_default;
- 
+
 	// prepares output
 	if(isset($argv['help']))
 	{
+		wfLoadExtensionMessages('IMStatus');
+
 		$output = '<div><span style="color:blue;">'. wfMsg("imstatus_syntax") .': &lt;livemessenger style="[style]"&gt;['. wfMsg("imstatus_live_code") .']&lt;/livemessenger&gt;</span>';
 		$output .= '<ul><li>style: "button", "icon" '. wfMsg("imstatus_or") .' "window". '. wfMsg("imstatus_default") .': '.$style_default.'.</li>';
 		$output .= '<li>'. wfMsg("imstatus_live_get_code", "http://settings.messenger.live.com/applications/CreateHtml.aspx", "invitee=", "@apps.messenger") .'</li></ul>';
@@ -255,14 +258,14 @@ function RenderLiveMessenger( $input, $argv )
 				$output .= 'msgr:foreColor="#424542" msgr:conversationUrl="http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee='.$input.'@apps.messenger.live.com&mkt=en-US"></div>';
 				$output .= '<script type="text/javascript" src="http://messenger.services.live.com/users/'.$input.'@apps.messenger.live.com/presence?mkt=en-US&cb=Microsoft_Live_Messenger_PresenceButton_onPresence"></script>';
 			break;
-			
+
 			case "icon":
 			default:
 				$output = '<a target="_blank" href="http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee='.$input.'@apps.messenger.live.com&mkt=en-US">';
 				$output .= '<img style="border-style: none;" src="http://messenger.services.live.com/users/'.$input.'@apps.messenger.live.com/presenceimage?mkt=en-US" width="16" height="16"/></a>';
 			break;
 		}
-	} 
+	}
 	// sends output
     return $output;
 }
@@ -270,15 +273,15 @@ function RenderLiveMessenger( $input, $argv )
 
 /**********************************************
  * the function that reacts to "<skype>"
- ***********************************************/  
+ ***********************************************/
 function RenderSkype( $input, $argv )
-{ 
+{
 	// set your defaults for the style and action (add, call, chat, sendfile, userinfo orvoicemail) (same + ballon, bigclassic smallclassic, smallicon or mediumicon)  - options crawled from http://www.skype.com/share/buttons/
 	$style_default = "smallclassic";
 	$action_default = "chat";
 	// the varibles are: <skype style="$argv['style']" action="$argv['action']">$input</skpye>
 	// to get help as a user, use <skype help/>
- 
+
 	// sanitize input
 	$input = htmlspecialchars($input,ENT_QUOTES);
 	// get custom parameters
@@ -291,7 +294,7 @@ function RenderSkype( $input, $argv )
 		}
 	}
 	else $style = $style_default;
-	
+
 	// if style is an action style, action should match it!
 	if(in_array($style, array("add","chat","call","sendfile","userinfo","voicemail"))) $action = $style;
 	else if(isset($argv['action']))
@@ -300,7 +303,7 @@ function RenderSkype( $input, $argv )
 		if (!in_array($action, array("add","chat","call","sendfile","userinfo","voicemail"))) $action = $action_default;
 	}
 	else $action = $action_default;
- 
+
 	// creates image code
 	switch($style)
 	{
@@ -315,7 +318,7 @@ function RenderSkype( $input, $argv )
 		case "call":
 				$image = '<img src="http://download.skype.com/share/skypebuttons/buttons/call_blue_transparent_70x23.png" style="border: none;" width="70" height="23" alt="Skype Me"/>';
 		break;
-		
+
 		case "sendfile":
 				$image = '<img src="http://download.skype.com/share/skypebuttons/buttons/sendfile_blue_transparent_98x23.png" style="border: none;" width="98" height="23" alt="Send me a file"/>';
 		break;
@@ -339,27 +342,29 @@ function RenderSkype( $input, $argv )
 		case "smallclassic":
 				$image = '<img src="http://mystatus.skype.com/smallclassic/'.$input.'" style="border: none;" width="114" height="20" alt="My status"/>';
 		break;
-		
+
 		case "smallicon":
 				$image = '<img src="http://mystatus.skype.com/smallicon/'.$input.'" style="border: none;" width="16" height="16" alt="My status"/>';
 		break;
-		
+
 		case "mediumicon":
 		default:
 				$image = '<img src="http://mystatus.skype.com/mediumicon/'.$input.'" style="border: none;" width="26" height="26"  alt="My status"/>';
 		break;
 	}
- 
+
 	// prepares outupt
     if(isset($argv['help']))
 	{
+		wfLoadExtensionMessages('IMStatus');
+
 		$output = '<div><span style="color:blue;">'. wfMsg("imstatus_syntax") .': &lt;skype style="[style]" action="[action]"&gt;['. wfMsg("imstatus_your_name", "Skype") .']&lt;/skype&gt;</span>';
 		$output .= '<ul><li>style: '. wfMsg("imstatus_style") .'. '. wfMsg("imstatus_default") .': '.$style_default.'. '. wfMsg("imstatus_possible_val") .': "add","chat","call","sendfile","userinfo","voicemail","balloon","bigclassic","smallclassic","smallicon","mediumicon".</li>';
 		$output .= '<li>action: '. wfMsg("imstatus_action") .'. '. wfMsg("imstatus_default") .': '.$action_default.'. '. wfMsg("imstatus_possible_val") .': "add","chat","call","sendfile","userinfo","voicemail".</li></ul>';
 		$output .= wfMsg("imstatus_details_saa", '<a href="http://www.skype.com/share/buttons/wizard.html">Skype button wizard</a>'). '<br/>';
 		$output .= wfMsg("imstatus_skype_nbstyle") .'<br/>';
 		$output .= '<span style="color:green;">'. wfMsg("imstatus_example") .': &lt;skype style="mediumicon" action="chat"&gt;PatheticCockroach&lt;/skype&gt;</span></div>';
-	}	
+	}
 	else
 	{
 		$output = '<script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>';
@@ -381,9 +386,9 @@ function RenderXfire( $input, $argv )
 	$action_default = "add";
 	// the variables are: <xfire size="$argv['size']" style="$argv['style']" action="$argv['action']">$input</xfire>
 	// to get help as a user, use <xfire help/>
- 
+
 	// sanitize input
-	$input = htmlspecialchars($input,ENT_QUOTES); 
+	$input = htmlspecialchars($input,ENT_QUOTES);
 	// get custom parameters
 	if(isset($argv['size']))
 	{
@@ -398,7 +403,7 @@ function RenderXfire( $input, $argv )
 		if (!in_array($style, array("bg","sh","co","sf","os","wow"))) $style = $style_default;
 	}
 	else $style = $style_default;
-	
+
 	if(isset($argv['action']))
 	{
 		$action = $argv['action'];
@@ -413,14 +418,14 @@ function RenderXfire( $input, $argv )
 				$alt_txt = "View my Xfire profile";
 				$link_url = "http://profile.xfire.com/".$input;
 		break;
-	
+
 		case "add":
 		default:
 				$alt_txt = "Add me to Xfire";
 				$link_url = "xfire:add_friend?user=".$input;
 		break;
 	}
-	
+
 	// set size and style of the image
 	switch($size)
 	{
@@ -436,41 +441,43 @@ function RenderXfire( $input, $argv )
 		case 3:
 				$image = '<img src="http://miniprofile.xfire.com/bg/'.$style.'/type/3/'.$input.'.png" style="border: none;" width="149" height="29" alt="'.$alt_txt.'"/>';
 		break;
-		
+
 		case 4:
 		default:
 				$image = '<img src="http://miniprofile.xfire.com/bg/'.$style.'/type/4/'.$input.'.png" style="border: none;" width="16" height="16" alt="'.$alt_txt.'"/>';
 		break;
 	}
- 
+
 	// prepares outupt
     if(isset($argv['help']))
 	{
+		wfLoadExtensionMessages('IMStatus');
+
 		$output = '<div><span style="color:blue;">'. wfMsg("imstatus_syntax") .': &lt;xfire size="[size]" style="[style]" action="[action]"&gt;['. wfMsg("imstatus_your_name", "Xfire") .']&lt;/xfire&gt;</span>';
 		$output .= '<ul><li>size: '. wfMsg("imstatus_xfire_size", "0", "4") .' '. wfMsg("imstatus_default") .': '.$size_default.'.</li>';
 		$output .= '<li>style: '. wfMsg("imstatus_style") .'. '. wfMsg("imstatus_default") .': '.$style_default.'. '. wfMsg("imstatus_possible_val") .': "bg","sh","co","sf","os","wow".</li>';
 		$output .= '<li>action: '. wfMsg("imstatus_action") .'. '. wfMsg("imstatus_default") .': '.$action_default.'. '. wfMsg("imstatus_possible_val") .': "add","profile".</li></ul>';
 		$output .= wfMsg("imstatus_details_saa", '<a href="http://www.xfire.com/miniprofile/">Xfire - Miniprofile Instructions</a>') .'<br/>';
 		$output .= '<span style="color:green;">'. wfMsg("imstatus_example") .': &lt;xfire size="3" style="bg" action="add"&gt;PatheticCockroach&lt;/xfire&gt;</span></div>';
-	}	
-	else $output = '<a href="'.$link_url.'">'.$image.'</a>'; 
+	}
+	else $output = '<a href="'.$link_url.'">'.$image.'</a>';
 	// sends output
     return $output;
 }
 
- 
+
 /**********************************************
 * the function that reacts to "<yahoo>"
- ***********************************************/ 
+ ***********************************************/
 function RenderYahoo( $input, $argv )
-{ 
+{
 	// set your defaults for the action and style (addfriend, call or sendim) (0, 1, 2, 3 and 4) - options crawled from http://geocities.yahoo.com/v/ao/pre.html
 	$style_default = 2;
 	$action_default = "sendim";		// DO NOT enter an invalid value, since this value may be used as is in the final output -> TODO: use a switch to sanitize this one
 	// the variables are: <yahoo style="$argv['style']" action="$argv['action']">$input</yahoo>
 
 	// sanitize input
-	$input = htmlspecialchars($input,ENT_QUOTES); 
+	$input = htmlspecialchars($input,ENT_QUOTES);
 	// get custom parameters
 	if(isset($argv['style']))
 	{
@@ -495,7 +502,7 @@ function RenderYahoo( $input, $argv )
 		case "call":
 				$alt_txt = "Call me";
 		break;
-	
+
 		case "sendim":
 		default:
 				$alt_txt = "Send me an IM";
@@ -504,26 +511,26 @@ function RenderYahoo( $input, $argv )
 	// set image style
 	switch( $style )
 	{
-		case 0:    
+		case 0:
 			$image = '<img src="http://opi.yahoo.com/online?u='.$input.'&m=g&t=0" style="border: none; width: 12px; height: 12px;" alt="'.$alt_txt.'" />';
 		break;
 
-		case 1:    
+		case 1:
 			$image = '<img src="http://opi.yahoo.com/online?u='.$input.'&m=g&t=1" style="border: none; width: 64px; height: 16px;" alt="'.$alt_txt.'" />';
 		break;
 
-		case 2:    
+		case 2:
 			$image = '<img src="http://opi.yahoo.com/online?u='.$input.'&m=g&t=2" style="border: none; width: 125px; height: 25px;" alt="'.$alt_txt.'" />';
 		break;
 
-		case 3:    
+		case 3:
 			$image = '<img src="http://opi.yahoo.com/online?u='.$input.'&m=g&t=3" style="border: none; width: 86px; height: 16px;" alt="'.$alt_txt.'" />';
 		break;
 
 		case 4:
 			$image = '<img src="http://opi.yahoo.com/online?u='.$input.'&m=g&t=4" style="border: none; width: 12px; height: 12px;" alt="'.$alt_txt.'" />';
 		break;
-		
+
 		case 5:
 		default:
 			$image = '<img src="http://opi.yahoo.com/online?u='.$input.'&m=g&t=5" style="border: none; width: 12px; height: 12px;" alt="'.$alt_txt.'" />';
@@ -533,16 +540,15 @@ function RenderYahoo( $input, $argv )
 	// prepares outupt
     if(isset($argv['help']))
 	{
+		wfLoadExtensionMessages('IMStatus');
+
 		$output = '<div><span style="color:blue;">'. wfMsg("imstatus_syntax") .': &lt;yahoo style="[style]" action="[action]"&gt;['. wfMsg("imstatus_your_name", "Yahoo") .']&lt;/xfire&gt;</span>';
 		$output .= '<ul><li>style: '. wfMsg("imstatus_yahoo_style", "0", "2", "3", "4") .' '. wfMsg("imstatus_default") .': '.$style_default.'.</li>';
 		$output .= '<li>action: '. wfMsg("imstatus_action") .'. '. wfMsg("imstatus_default") .': '.$action_default.'. '. wfMsg("imstatus_possible_val") .': "addfriend","call","sendim".</li></ul>';
 		$output .= wfMsg("imstatus_details_saa", '<a href="http://geocities.yahoo.com/v/ao/pre.html">Yahoo! Presence</a>') .'<br/>';
 		$output .= '<span style="color:green;">'. wfMsg("imstatus_example") .': &lt;yahoo style="2" action="sendim"&gt;PatheticCockroach&lt;/yahoo&gt;</span></div>';
-	}	
+	}
 	else $output = '<a href="ymsgr:'.$action.'?'.$input.'">'.$image.'</a>';
 	// sends output
 	return $output;
 }
-
-
-?>
