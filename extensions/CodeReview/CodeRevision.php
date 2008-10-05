@@ -121,7 +121,6 @@ class CodeRevision {
 
 		if( $this->mPaths ) {
 			$data = array();
-			$common = explode( '/', $this->mPaths[0]['path'] );
 			foreach( $this->mPaths as $path ) {
 				$data[] = array(
 					'cp_repo_id' => $this->mRepo,
