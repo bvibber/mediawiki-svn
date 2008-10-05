@@ -53,6 +53,11 @@ CREATE TABLE /*$wgDBprefix*/code_rev (
   -- 'ok': Reviewed, no issues
   cr_status enum('new', 'fixme', 'resolved', 'ok') not null default 'new',
 
+  -- Base path of this revision :
+  -- * if the revision change only one file, the file path
+  -- * else, common directory for all changes (e.g. trunk/phase3/includes/ )
+  cr_path varchar(255) binary,
+
   primary key (cr_repo_id, cr_id),
   key (cr_repo_id, cr_timestamp),
   key cr_repo_author (cr_repo_id, cr_author, cr_timestamp)

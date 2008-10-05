@@ -11,6 +11,35 @@ class CodeRevision {
 		$rev->mMessage = rtrim( $data['msg'] );
 		$rev->mPaths = $data['paths'];
 		$rev->mStatus = 'new';
+
+		$common = null;
+		if( $rev->mPaths ) {
+			if (count($rev->mPaths) == 1)
+				$common = $rev->mPaths[0]['path'];
+			else {
+				$first = array_shift( $rev->mPaths );
+
+				$common = explode( '/', $first['path'] );
+
+				foreach( $rev->mPaths as $path ) {
+					$compare = explode( '/', $path['path'] );
+
+					// make sure $common is the shortest path
+					if ( count($compare) < count($common) )
+						list( $compare, $common ) = array( $common, $compare );
+
+					$tmp = array();
+					foreach ( $common as $k => $v )
+						if ( $v==$compare[$k] ) $tmp[]= $v;
+						else break;
+					$common = $tmp;
+				}
+				$common = implode( '/', $common);
+
+				array_unshift( $rev->mPaths, $first );
+			}
+		}
+		$rev->mCommonPath = $common;
 		return $rev;
 	}
 
@@ -22,6 +51,7 @@ class CodeRevision {
 		$rev->mTimestamp = wfTimestamp( TS_MW, $row->cr_timestamp );
 		$rev->mMessage = $row->cr_message;
 		$rev->mStatus = $row->cr_status;
+		$rev->mCommonPath = $row->cr_path;
 		return $rev;
 	}
 
@@ -43,6 +73,10 @@ class CodeRevision {
 	
 	function getStatus() {
 		return $this->mStatus;
+	}
+
+	function getCommonPath() {
+		return $this->mCommonPath;
 	}
 	
 	static function getPossibleStates() {
@@ -80,12 +114,14 @@ class CodeRevision {
 				'cr_author' => $this->mAuthor,
 				'cr_timestamp' => $dbw->timestamp( $this->mTimestamp ),
 				'cr_message' => $this->mMessage,
-				'cr_status' => $this->mStatus ),
+				'cr_status' => $this->mStatus,
+				'cr_path' => $this->mCommonPath ),
 			__METHOD__,
 			array( 'IGNORE' ) );
 
 		if( $this->mPaths ) {
 			$data = array();
+			$common = explode( '/', $this->mPaths[0]['path'] );
 			foreach( $this->mPaths as $path ) {
 				$data[] = array(
 					'cp_repo_id' => $this->mRepo,
@@ -98,7 +134,7 @@ class CodeRevision {
 				__METHOD__,
 				array( 'IGNORE' ) );
 		}
-		
+
 		$dbw->commit();
 	}
 

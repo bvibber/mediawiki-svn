@@ -34,6 +34,7 @@ $messages['en'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Date',
 	'code-field-comments' => 'Notes',
+	'code-field-path' => 'Path',
 	'code-field-text' => 'Note',
 	'code-rev-author' => 'Author:',
 	'code-rev-message' => 'Comment:',

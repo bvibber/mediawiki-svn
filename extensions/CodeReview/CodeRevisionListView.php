@@ -65,6 +65,7 @@ class SvnRevTablePager extends TablePager {
 			'COUNT(cc_rev_id)' => wfMsg( 'code-field-comments' ),
 			'cr_message' => wfMsg( 'code-field-message' ),
 			'cr_author' => wfMsg( 'code-field-author' ),
+			'cr_path' => wfMsg( 'code-field-path' ),
 			'cr_timestamp' => wfMsg( 'code-field-timestamp' ),
 		);
 	}
@@ -90,6 +91,8 @@ class SvnRevTablePager extends TablePager {
 			return $wgLang->timeanddate( $value );
 		case 'COUNT(cc_rev_id)':
 			return intval( $value );
+		case 'cr_path':
+			return $wgLang->truncate( $value, 30, '...' );
 		}
 	}
 	
