@@ -24,7 +24,7 @@ class CodeRepository {
 
 	static function newFromRow( $row ) {
 		$repo = new CodeRepository();
-		$repo->mId = $row->repo_id;
+		$repo->mId = intval($row->repo_id);
 		$repo->mName = $row->repo_name;
 		$repo->mPath = $row->repo_path;
 		$repo->mViewVc = $row->repo_viewvc;

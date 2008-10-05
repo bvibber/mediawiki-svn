@@ -10,14 +10,11 @@ class CodeRevisionStatusSetter extends CodeRevisionView {
 	}
 
 	function execute() {
-		global $wgOut;
-		
 		if( $this->validPost( 'codereview-set-status' ) ) {
 			$this->mRev->setStatus( $this->mStatus );
 			
 			$repo = $this->mRepo->getName();
 			$rev = $this->mRev->getId();
-			$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
 		}
 	}
 	

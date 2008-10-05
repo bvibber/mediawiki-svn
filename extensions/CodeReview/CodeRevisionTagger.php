@@ -11,8 +11,6 @@ class CodeRevisionTagger extends CodeRevisionView {
 	}
 
 	function execute() {
-		global $wgOut;
-		
 		if( $this->validPost( 'codereview-add-tag' ) ) {
 			if( count($this->mAddTags) )
 				$this->mRev->addTags( $this->mAddTags );
