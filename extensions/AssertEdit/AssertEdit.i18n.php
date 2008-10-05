@@ -445,6 +445,15 @@ $messages['qu'] = array(
 	'assert_edit_message' => 'Nisqa mañasqaqa ($1) manam atinchu.',
 );
 
+/** Romanian (Română)
+ * @author Mihai
+ */
+$messages['ro'] = array(
+	'assert_edit_title' => 'Aserţiune eşuată',
+	'assert_edit_desc' => 'Adaugă aserţiunile de editare pentru uzul roboţilor',
+	'assert_edit_message' => 'Aserţiunea specificată ($1) a eşuat.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

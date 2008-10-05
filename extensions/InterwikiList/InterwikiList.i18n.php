@@ -38,6 +38,8 @@ $messages['arz'] = array(
 	'interwikilist-desc' => 'يضيف [[Special:Interwikilist|صفحة خاصة]] لرؤية وصلات الإنترويكى المتوفرة',
 	'interwikilist-linkname' => 'وصلة الإنترويكي',
 	'interwikilist-target' => 'المسار المستهدف',
+	'interwikilist-filter' => 'فلترة القائمة',
+	'interwikilist-prefix' => 'بادئة الإنترويكى:',
 );
 
 /** Bulgarian (Български)
@@ -108,6 +110,8 @@ $messages['gl'] = array(
 	'interwikilist-desc' => 'Engade unha [[Special:Interwikilist|páxina especial]] para ver as ligazóns interwiki dispoñibles',
 	'interwikilist-linkname' => 'Ligazón interwiki',
 	'interwikilist-target' => 'Dirección URL obxectivo',
+	'interwikilist-filter' => 'Filtrar a lista',
+	'interwikilist-prefix' => 'Prefixo interwiki:',
 );
 
 /** Hebrew (עברית)

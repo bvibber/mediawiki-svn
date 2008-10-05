@@ -326,6 +326,7 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'advancedrandom' => 'Întâmplător avansat',
+	'advancedrandom-desc' => 'Alege o pagină aleatoriu a cărei discuţie sau al cărei subiect duce la o pagină dată, poate fi folosită ca [[Special:AdvancedRandom/Template:Featured/Talk]] pentru a obţine aleatoriu un articol de calitate sau ca [[Special:AdvancedRandom/Template:GFDL/Image]] pentru a obţine un aleatoriu un fişier GFDL',
 );
 
 /** Tarandíne (Tarandíne)

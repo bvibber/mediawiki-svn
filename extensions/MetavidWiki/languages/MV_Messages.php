@@ -1236,6 +1236,7 @@ $messages['fr'] = array(
 	'mv_edithelpsequence' => 'Help:Édition_de_séquence',
 	'mv_seq_summary' => 'Édition du sommaire de la séquence',
 	'mv_add_clip_by_name' => 'Ajouter un clip par nom',
+	'mv_stream_resource_export' => 'Export des ressources du flux',
 	'mv_export_cmml' => 'Exporter cmml',
 	'mv_search_stream' => 'Rechercher le flux',
 	'mv_navigate_stream' => 'Naviguer dans le flux entier',

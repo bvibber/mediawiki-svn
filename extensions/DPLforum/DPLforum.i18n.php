@@ -396,6 +396,18 @@ $messages['tr'] = array(
 	'dplforum-never' => 'Asla',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'dplforum-desc' => 'Estension forum basà su DPL',
+	'dplforum-by' => 'da',
+	'dplforum-edited' => " - Modifegà l'ultima òlta",
+	'dplforum-never' => 'Mai',
+	'dplforum-toofew' => 'DPL Forum: Massa poche categorie!',
+	'dplforum-toomany' => 'DPL Forum: Massa categorie!',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

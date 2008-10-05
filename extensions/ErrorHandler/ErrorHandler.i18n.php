@@ -323,6 +323,7 @@ $messages['lb'] = array(
 	'errorhandler-error-warning' => 'Warnung',
 	'errorhandler-error-parse' => 'Parser-Feeler',
 	'errorhandler-error-notice' => 'Notiz',
+	'errorhandler-error-deprecated' => 'Net méi aktuell',
 	'errorhandler-error-core-error' => 'Déifgréifende Feeler',
 	'errorhandler-error-core-warning' => 'Déifgréifend Warnung',
 	'errorhandler-error-compile-error' => 'Feeler bäim compiléieren',

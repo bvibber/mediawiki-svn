@@ -2729,6 +2729,7 @@ $messages['rif'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'viewapc' => 'Informaţii APC',
@@ -2754,7 +2755,9 @@ $messages['ro'] = array(
 	'viewapc-display-access_time' => 'accesat',
 	'viewapc-display-mem_size' => 'Mărime',
 	'viewapc-display-stored-value' => 'Valoare memorată',
+	'viewapc-display-too-big' => "''Conţinutul este prea mare pentru a putea fi afişat.''",
 	'viewapc-ls-options-legend' => 'Opţiuni',
+	'viewapc-ls-submit' => 'Du-te',
 	'viewapc-ls-header-name' => 'Nume',
 	'viewapc-ls-header-size' => 'Mărime',
 	'viewapc-ls-header-accessed' => 'Ultima accesare',
@@ -2770,8 +2773,19 @@ $messages['ro'] = array(
 	'viewapc-ls-sort-modified' => 'Ultima modificare',
 	'viewapc-ls-sort-created' => 'Creat',
 	'viewapc-ls-sort-deleted' => 'Şters',
+	'viewapc-ls-limit-none' => 'Toate',
 	'viewapc-ls-more' => "''Mai există $1 {{PLURAL:$1|intrare|intrări}}''",
+	'viewapc-ls-nodata' => "''Nicio dată nu se potriveşte''",
+	'viewapc-delete-ok' => 'Intrarea din cache <nowiki>$1</nowiki> a fost ştearsă.',
+	'viewapc-delete-failed' => 'Ştergerea intrărilor din cache a eşuat <nowiki>$1</nowiki>.',
 	'viewapc-version-info' => 'Informaţii despre versiune',
+	'viewapc-version-changelog' => 'Jurnalul schimbărilor',
+	'viewapc-version-failed' => 'Nu pot fi identificate informaţii despre versiune.',
+	'viewapc-version-ok' => 'Foloseşti ultima versiune de APC ($1)',
+	'viewapc-version-old' => 'Foloseşti o versiune veche de APC ($1).
+O versiune mai nouă $2 este disponibilă la http://pecl.php.net/package/APC/$2',
+	'viewapc-filecache-cleared' => "'''''Fişierul cache a fost şters.'''''",
+	'viewapc-usercache-cleared' => "'''''Cache-ul aplicaţiei a fost şters.'''''",
 );
 
 /** Russian (Русский)

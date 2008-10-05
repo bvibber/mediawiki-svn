@@ -690,6 +690,26 @@ $messages['tr'] = array(
 	'lookupuser_realname' => 'Gerçek isim: $1',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'lookupuser' => "Varda informassion su l'utente",
+	'lookupuser-desc' => '[[Special:LookupUser|Varda le informassion]] su un utente, tipo la so identità e el so indirisso e-mail',
+	'lookupuser_intro' => 'Inserissi un nome utente par védarghine le preferense.',
+	'lookupuser_nonexistent' => "Eròr: sto utente no l'esiste mia",
+	'lookupuser_authenticated' => 'Conferma indirisso e-mail: $1',
+	'lookupuser_not_authenticated' => 'mia confermà',
+	'lookupuser_id' => 'ID utente: <tt>#$1</tt>',
+	'lookupuser_email' => 'E-mail: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => 'mia fornìo',
+	'lookupuser_realname' => 'Vero nome: $1',
+	'lookupuser_registration' => 'Data de registrassion: $1',
+	'lookupuser_no_registration' => 'mia disponibile',
+	'lookupuser_touched' => "Ultima visita registrà de l'utente: $1",
+	'lookupuser_useroptions' => 'Preferense utente:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

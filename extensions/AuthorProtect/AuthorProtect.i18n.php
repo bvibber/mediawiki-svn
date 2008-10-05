@@ -713,9 +713,14 @@ $messages['pt'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
+	'authorprotect' => 'Protejează pagina pentru cei care nu sunt autori',
+	'authorprotect-desc' => 'Permite autorului unei pagini să o protejeze faţă de ceilalţi utilizatori',
+	'authorprotect-notauthor' => 'Nu eşti autorul acestei pagini',
 	'authorprotect-confirm' => 'Schimbă niveluri de protecţie',
+	'authorprotect-edit' => 'Restricţionează modificările autorilor',
 	'authorprotect-reason' => 'Motiv',
 	'authorprotect-success' => 'Protejare cu succes!',
 	'authorprotect-failure' => 'Protejare fără succes',

@@ -206,6 +206,13 @@ $messages['oc'] = array(
 	'antibot-desc' => 'Quadre simple per las verificacions del bòt antispam e de las cargas utilas del trigger.',
 );
 
+/** Plautdietsch (Plautdietsch)
+ * @author Wikipeeta
+ */
+$messages['pdt'] = array(
+	'antibot-desc' => 'Eenfachet Framework fe Spambot-Kotrolle',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

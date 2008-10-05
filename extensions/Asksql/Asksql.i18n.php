@@ -701,9 +701,11 @@ Esta função frequentemente adiciona uma carga considerável ao servidor, por i
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'asksql' => 'Interogare SQL',
+	'asksql-desc' => 'Iniţiază o cerere SQL prin intermediul [[Special:Asksql|paginii speciale]]',
 	'asksqltext' => "Folosiţi formularul de mai jos pentru a face o interogare în mod direct asupra bazei de date.
 Folosiţi apostrofuri ('în acest fel') pentru a delimita şiruri de caractere.
 Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi cât mai puţin.",

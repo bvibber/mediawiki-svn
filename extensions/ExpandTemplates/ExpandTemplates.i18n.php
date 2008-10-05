@@ -446,7 +446,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'expandtemplates' => 'Mallineiden laajennus',
-	'expandtemplates-desc' => '[[Toiminnot:Mallineiden laajennus|Laajentaa mallineet, jäsentimen funktiot sekä muuttujat]] wikitekstiksi sekä näyttää esikatseluversion laajennetusta sivusta',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Laajentaa mallineet, jäsentimen funktiot sekä muuttujat]] wikitekstiksi sekä näyttää esikatseluversion laajennetusta sivusta',
 	'expand_templates_intro' => 'Tämä toimintosivu ottaa syötteekseen tekstiä ja laajentaa kaikki mallineet rekursiivisesti sekä jäsenninfunktiot, kuten <nowiki>{{</nowiki>#if:...}}, ja -muuttujat, kuten <nowiki>{{</nowiki>CURRENTDAY}} &mdash; toisin sanoen melkein kaiken, joka on kaksoisaaltosulkeiden sisällä.',
 	'expand_templates_title' => 'Otsikko (esimerkiksi muuttujaa {{PAGENAME}} varten)',
 	'expand_templates_input' => 'Teksti',

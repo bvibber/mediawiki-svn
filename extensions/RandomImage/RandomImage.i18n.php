@@ -172,6 +172,13 @@ $messages['tg-cyrl'] = array(
 	'randomimage-desc' => 'Бо истифодаи <tt>&lt;randomimage /&gt;</tt> чинандаи расонаи тасодуфиро пешкаш мекунад',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'randomimage-desc' => 'Fornisse un racoglitor de file casuali doparando el tag <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

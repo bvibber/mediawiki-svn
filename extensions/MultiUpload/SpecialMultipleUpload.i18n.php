@@ -840,6 +840,28 @@ $messages['tr'] = array(
 	'multiupload-fileuploaded' => 'Dosya yüklendi.',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'multipleupload' => 'Carga file multimediài',
+	'multipleupload-desc' => 'Permeti ai utenti de [[Special:MultipleUpload|cargar pi de un file in te un colpo solo]]',
+	'multipleupload-ignoreallwarnings' => "Ignora '''tuti i avertimenti''' e salva istesso i file.",
+	'multipleupload-saveallfiles' => 'Salva tuti i file',
+	'multipleupload-addresswarnings' => 'Par piaser, segui i avertimenti prima de ri-cargar dei file.',
+	'multipleupload-page' => '{{ns:project}}:Regole par la scancelassion dei file',
+	'multipleupload-text' => "Chì te pol cargar diversi file insieme.
+
+Maca 'Sfoglia' e po' selessiona i file che te vol cargar.
+Te pol cargar da 1 a $1 file a la òlta.
+
+Te pol inserir un '''Nome del file de destinassion''' e fornir dei '''Detagli''' che descrive el to file.
+
+I file inapropriati i vegnarà scancelati de paca, lèzi le [[{{MediaWiki:Multipleupload-page}}|regole par la scancelassion dei file]].",
+	'multiupload-fileuploaded' => 'File cargà.',
+	'multiupload-toolbox' => 'Carga file multipli',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

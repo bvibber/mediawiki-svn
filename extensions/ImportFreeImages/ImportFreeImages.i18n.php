@@ -742,6 +742,25 @@ $messages['tr'] = array(
 	'importfreeimages_next' => 'Sonraki $1',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'importfreeimages' => 'Inporta imagini lìbare',
+	'importfreeimages-desc' => "Fornisse un modo par [[Special:ImportFreeImages|inportar foto co' la justa licensa]] da [http://www.flickr.com flickr]",
+	'importfreeimages_description' => "Sta pàxena la te permete de sercar imagini co' la justa licensa su flickr e inportarle su la to wiki.",
+	'importfreeimages_noapikey' => 'No te ghè configurà la to ciave API Flickr.
+Par farlo domanda na chiave API [http://www.flickr.com/services/api/misc.api_keys.html qua] e inposta wgFlickrAPIKey in ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => "Nissuna foto la sodisfa el criterio de riçerca '$1', próa da novo.",
+	'importfreeimages_invalidurl' => 'L\'URL "$1" no\'l corisponde mia a na imagine de Flickr valida.',
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'inporta sto qua',
+	'importfreeimages_next' => 'Sucessivi $1',
+	'importfreeimages_filefromflickr' => "$1 da l'utente <b>[$2]</b> da flickr. URL originale",
+	'importfreeimages_promptuserforfilename' => 'Inserissi un nome par el file de destinassion:',
+	'importfreeimages_returntoform' => "O senò struca <a href='$1'>chì</a> par tornar indrìo ai risultati de la to riçerca",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
