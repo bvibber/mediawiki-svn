@@ -184,6 +184,13 @@ $messages['sv'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON gränssnitt tillhandahålls för textbitar',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'opensearchxml-desc' => 'Інтерфейс надання текстових витримок [http://www.opensearch.org OpenSearch] JSON',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

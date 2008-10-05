@@ -784,20 +784,22 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
+ * @author Kurniasan
  */
 $messages['ms'] = array(
 	'imagemap_desc' => 'Membenarkan peta imej boleh klik menggunakan tag <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image' => 'Error: sila nyatakan imej dalam baris pertama',
-	'imagemap_invalid_image' => 'Error: imej tidak sah atau tidak wujud',
+	'imagemap_no_image' => 'Ralat: sila nyatakan imej dalam baris pertama',
+	'imagemap_invalid_image' => 'Imej: imej tidak sah atau tidak wujud',
 	'imagemap_bad_image' => 'Ralat: imej disenaraihitamkan di laman ini',
-	'imagemap_no_link' => 'Error: tiada pautan sah dijumpai pada akhir baris $1',
-	'imagemap_invalid_title' => 'Error: tajuk tidak sah dalam pautan pada baris $1',
-	'imagemap_missing_coord' => 'Error: koordinat bagi bentuk tidak cukup pada baris $1',
-	'imagemap_unrecognised_shape' => 'Error: bentuk tidak dikenali pada baris $1, setiap baris hendaklah dimulakan dengan salah satu daripada: default, rect, circle atau poly',
-	'imagemap_no_areas' => 'Error: hendaklah sekurang-kurangnya satu spesifikasi kawasan dinyatakan',
-	'imagemap_invalid_coord' => 'Error: koordinat tidak sah pada baris $1, nombor diperlukan',
-	'imagemap_invalid_desc' => 'Error: spesifikasi keterangan tidak sah, hendaklah salah satu daripada: <tt>$1</tt>',
+	'imagemap_no_link' => 'Ralat: tiada pautan sah dijumpai pada akhir baris $1',
+	'imagemap_invalid_title' => 'Ralat: tajuk tidak sah dalam pautan pada baris $1',
+	'imagemap_missing_coord' => 'Ralat: koordinat bagi bentuk tidak cukup pada baris $1',
+	'imagemap_unrecognised_shape' => 'Ralat: bentuk tidak dikenali pada baris $1, setiap baris hendaklah dimulakan dengan salah satu daripada: default, rect, circle atau poly',
+	'imagemap_no_areas' => 'Ralat: hendaklah sekurang-kurangnya satu spesifikasi kawasan dinyatakan',
+	'imagemap_invalid_coord' => 'Ralat: koordinat tidak sah pada baris $1, hanya nombor dibenarkan',
+	'imagemap_invalid_desc' => 'Ralat: spesifikasi keterangan tidak sah, hendaklah salah satu daripada: <tt>$1</tt>',
 	'imagemap_description' => 'Perihal imej ini',
+	'imagemap_desc_types' => 'puncak-kanan, bawah-kanan, bawah-kiri, puncak-kiri, tiada',
 );
 
 /** Low German (Plattdüütsch)

@@ -37,6 +37,13 @@ $messages['ca'] = array(
 	'navigationpopups-desc' => "Carrega el codi de les finestres emergents de navegació d'en Lupin al mediawiki",
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'navigationpopups-desc' => 'Ŝarĝas la ekaperilaj skriptojn pri navigado de Lupin en MediaWiki',
+);
+
 /** French (Français)
  * @author Zetud
  */

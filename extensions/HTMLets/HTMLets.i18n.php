@@ -39,6 +39,13 @@ $messages['de'] = array(
 	'htmlets-desc' => 'Ergänzt das <tt><nowiki><htmlet></nowiki></tt>-Tag zum Einfügen von HTML-Schnippseln hinzu',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'htmlets-desc' => 'Permesas al vi enigi HTML-kodpecojn de dosieroj uzante la etikedon <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** French (Français)
  * @author Grondin
  */

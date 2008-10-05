@@ -554,6 +554,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'onlinestatus-tab' => 'స్థితి',
 	'onlinestatus-toggles-desc' => 'మీ స్థితి:',
 );
 

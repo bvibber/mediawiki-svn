@@ -212,6 +212,15 @@ $messages['mr'] = array(
 	'icon-desc' => 'आयकॉन व आयकॉन दुवा म्हणून चित्र वापरण्याची परवानगी देते',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'icon-badimage' => 'Imej tidak sah',
+	'icon-badwidth' => 'Lebar tidak sah',
+	'icon-desc' => 'Membenarkan anda untuk menggunakan imej-imej sebagai arca dan pautan arca',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -523,3 +523,12 @@ $messages['sv'] = array(
 	'errorhandler-trace-line-internal' => '[intern funktion]: $1',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'errorhandler-errors' => 'పొరపాట్లు:',
+	'errorhandler-error-warning' => 'హెచ్చరిక',
+	'errorhandler-error-notice' => 'గమనిక',
+);
+

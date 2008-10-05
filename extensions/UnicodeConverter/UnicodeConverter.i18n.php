@@ -195,6 +195,15 @@ $messages['sv'] = array(
 	'unicodeconverter-newtext' => 'Konverterad text:',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'unicodeconverter-ok' => 'సరే',
+	'unicodeconverter-oldtext' => 'అసలు పాఠ్యం:',
+	'unicodeconverter-newtext' => 'మార్చిన పాఠ్యం:',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

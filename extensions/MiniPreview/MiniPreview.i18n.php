@@ -94,8 +94,8 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'minipreview-files_in_category' => '$1 dosieroj entute en ĉi tiu kategorio.',
-	'minipreview-files_in_gallery' => '$1 dosieroj entute en ĉi tiu galerio.',
+	'minipreview-files_in_category' => '$1 {{PLURAL:$1|dosiero|dosieroj}} entute en ĉi tiu kategorio.',
+	'minipreview-files_in_gallery' => '$1 {{PLURAL:$1|dosiero|dosieroj}} entute en ĉi tiu galerio.',
 	'minipreview-no_more_files_here' => 'Neniuj pluaj dosieroj en ĉi tiu direkto.',
 	'minipreview-no_category_gallery' => 'Neniuj kategorioj aŭ galerioj!',
 );

@@ -1339,9 +1339,17 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'deletequeue-action-queued' => 'Läschen',
 	'deletequeue-action' => 'Läsche virschloen',
 	'deletequeue-action-title' => 'Läsche vu(n) "$1" virschloen',
 	'deletequeue-permissions-noedit' => 'Dir musst eng Säit ännere kënnen, fir hire Läschstatus veränneren ze kënnen.',
+	'deletequeue-generic-reasons' => '* Heefegst Grënn
+** Vandalismus
+** Spam
+** Maintenance
+** Net am Sënn vum Projet',
+	'deletequeue-prod-title' => 'D\'Läsche vu(n) "$1" virschloen',
+	'deletequeue-delnom-reason' => "Grond fir d'Ufro (fir ze läschen):",
 	'deletequeue-delnom-otherreason' => 'Anere Grond',
 	'deletequeue-delnom-extra' => 'Zousätzlech Informatioun:',
 	'right-prod-nominate' => 'Säit virschloe vir ze läschen',
@@ -2028,6 +2036,19 @@ Anledningen som givits för denna radering är ''$1''.",
 	'deletequeue-list-header-queue' => 'Kö',
 	'deletequeue-list-header-expiry' => 'Utgår',
 	'deletequeue-list-header-discusspage' => 'Diskussionssida',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'deletequeue-delnom-otherreason' => 'ఇతర కారణం',
+	'deletequeue-review-reason' => 'వ్యాఖ్యలు:',
+	'deletequeue-review-newreason' => 'కొత్త కారణం:',
+	'deletequeue-review-newextra' => 'అదనపు సమాచారం:',
+	'deletequeue-vote-reason' => 'వ్యాఖ్యలు:',
+	'deletequeue-list-status' => 'స్థితి:',
+	'deletequeue-list-header-page' => 'పేజీ',
 );
 
 /** Thai (ไทย)

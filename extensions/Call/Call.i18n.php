@@ -429,6 +429,18 @@ $messages['mr'] = array(
 	'call-save-failed' => 'खालील मजकूर <big>[[$1]]</big> या पानावर जतन केलेला नाही, कारण ते पान अगोदरच अस्तित्वात आहे.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'call' => 'Panggil',
+	'call-desc' => 'Membuat hiperpautan ke templat (atau ke laman wiki biasa) melalui penguluran parameter.
+Boleh digunakan di baris perintah penyemak imbas atau di dalam teks wiki.',
+	'call-save' => "Keluaran bagi panggilan ini akan disimpan di laman ''$1''.",
+	'call-save-success' => 'Teks berikut telah disimpan di laman <big>[[$1]]</big> .',
+	'call-save-failed' => 'Teks berikut TIDAK disimpan di laman <big>[[$1]]</big> kerana laman tersebut telah pun wujud.',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

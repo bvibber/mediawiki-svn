@@ -268,6 +268,26 @@ $messages['sv'] = array(
 	'newschannel_submit_button' => 'Skapa nyhetskanal',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'newschannel_limit' => 'పరిమితి:',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'newschannel' => 'Канал новин',
+	'newschannel-desc' => 'Забезпечує канал новин, як динамічну [[Special:NewsChannel|спеціальну сторінку]]',
+	'newschannel_format' => 'Формат:',
+	'newschannel_limit' => 'Ліміт:',
+	'newschannel_include_category' => 'Додаткова категорія:',
+	'newschannel_exclude_category' => 'Виключити категорію:',
+	'newschannel_submit_button' => 'Вивести',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

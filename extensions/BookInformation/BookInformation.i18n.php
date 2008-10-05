@@ -230,7 +230,7 @@ $messages['ca'] = array(
 	'bookinfo-error-invalidisbn' => "L'ISBN introduït no és vàlid.",
 	'bookinfo-error-nosuchitem' => "L'element no existeix o no s'ha pogut trobar.",
 	'bookinfo-error-nodriver' => "No s'ha pogut inicialitzar un connector d'informació de llibres apropiat.",
-	'bookinfo-error-noresponse' => "No hi ha cap resposta o el temps de sol·licitud s'ha esgotat.",
+	'bookinfo-error-noresponse' => "No hi ha cap resposta o el temps de soŀlicitud s'ha esgotat.",
 	'bookinfo-purchase' => 'Compra aquest llibre de $1',
 	'bookinfo-provider' => 'Proveïdor de dades: $1',
 );
@@ -1162,15 +1162,21 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
+	'bookinfo-header' => 'Informaţii despre carte',
+	'bookinfo-desc' => 'Completează [[Special:Booksources|pagina specială a surselor de cărţi]] cu informaţii de la un serviciu web',
 	'bookinfo-result-title' => 'Titlu:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editură:',
 	'bookinfo-result-year' => 'An:',
 	'bookinfo-error-invalidisbn' => 'ISBN nevalid.',
 	'bookinfo-error-nosuchitem' => 'Elementul nu există sau nu a putut fi găsit.',
+	'bookinfo-error-nodriver' => 'Nu poate fi accesată nicio sursă cu informaţii despe carte.',
+	'bookinfo-error-noresponse' => 'Niciun răspuns sau cererea a expirat.',
 	'bookinfo-purchase' => 'Cumpăraţi această carte de la $1',
+	'bookinfo-provider' => 'Furnizor date: $1',
 );
 
 /** Russian (Русский)

@@ -126,14 +126,17 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'postcomment_discussionprotected' => 'Ĉi tiu diskuto-paĝo estis protektita de pluaj aldonaĵoj.',
 	'postcomment_notloggedin' => 'Vi ne estas ensalutita.',
 	'postcomment_youareloggedinas' => 'Vi estas ensalutita kiel $1',
 	'postcomment_addcommentdiscussionpage' => 'Aldonu vian komenton en ĉi tiu diskuto-paĝo',
 	'postcomment_leavemessagefor' => 'Lasi mesaĝon por $1',
+	'postcomment_post' => 'Afiŝi',
 	'postcomment_on' => 'Je',
 	'postcomment_said' => 'diris',
 	'postcomment_invalidrequest' => 'Nevalida peto.',
 	'postcomment_replyto' => 'Respondo al $1',
+	'postcomment_nopostingtoadd' => 'Neniu afiŝaĵo aldonebla.',
 );
 
 /** French (Français)

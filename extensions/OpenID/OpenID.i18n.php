@@ -479,6 +479,8 @@ $messages['eo'] = array(
 	'openiderror' => 'Atestada eraro',
 	'openiderrortext' => 'Eraro okazis dum atestado de la OpenID URL-o.',
 	'openidconfigerror' => 'Konfigurada eraro de OpenID',
+	'openidconfigerrortext' => 'La konfiguro de la OpenID-identigujo por ĉi tiu vikio estas nevalida.
+Bonvolu konsulti [[Special:ListUsers/sysop|administranton]].',
 	'openidpermission' => 'OpenID rajt-eraro',
 	'openidpermissiontext' => 'La OpenID kiun vi provizis ne estas permesita ensaluti ĉi tiun servilon.',
 	'openidcancel' => 'Atestado nuliĝis',

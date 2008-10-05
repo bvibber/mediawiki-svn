@@ -635,6 +635,11 @@ $messages['lb'] = array(
 	'extdist-choose-extension' => 'Wielt wat fir eng Erweiderung Dir wëllt eroflueden:',
 	'extdist-submit-extension' => 'Viru fueren',
 	'extdist-current-version' => 'Aktuell Versioun (trunk)',
+	'extdist-choose-version' => "<big>Dir sidd amgaang d'<b>$1</b> Erweiderung erofzelueden.</big>
+
+Wielt är MediaWiki Versioun.
+
+Déi meescht Erweiderungen fonctionnéieren mat verschiddene Versioune vu MediaWiki, wann är Versioun vu MediaWiki net hei steet, oder wann dor déi neiste Fonctiounen vun den Erweidrunge braucht, da versicht déi neiste Versioun ze benotzen.",
 	'extdist-no-versions' => 'Déi gewielten Erweiderung ($1) ass a kenger Versioun disponibel!',
 	'extdist-submit-version' => 'Viru fueren',
 	'extdist-want-more' => 'Eng aner Erweiderung benotzen',

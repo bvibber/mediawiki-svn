@@ -254,6 +254,7 @@ $messages['lb'] = array(
 	'refreshspecial' => 'Spezialsäiten aktualiséieren',
 	'refreshspecial-desc' => 'Erlaabt et [[Special:RefreshSpecial|manuell Aktualiséierung]] vu Spezialsäiten',
 	'refreshspecial-title' => 'Spezialsäiten aktualiséieren',
+	'refreshspecial-help' => "Dës Spezialsäit erlaabt et fir Spezialsäite manuell z'aktualiséieren. Wann Dir all Säiten ugewielt hutt déi dir wëllt aktualiséiert kréien, da klickt op den Aktulisatiouns-Knäppchen hei ënnendrënner fir datt et fonctionnéiert. Opgepasst: op méi grousse Wikien kann d'Aktualisatioun eng Zäit daueren.",
 	'refreshspecial-button' => 'Déi gewielten aktualiséieren',
 	'refreshspecial-fail' => "Wielt mindestens eng Spezialsäit aus fir z'aktualiséieren.",
 	'refreshspecial-refreshing' => 'Spezialsäiten aktualiséieren',
@@ -415,6 +416,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'refreshspecial-here' => '<b>här</b>',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'refreshspecial-select-all-pages' => ' అన్ని పేజీలను ఎంచుకోండి',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -1422,7 +1422,7 @@ $allMessages['te'] = array(
 	'whitelistnewtabledate' => 'కాల పరిమితి:',
 	'whitelistnewtablereview' => 'సమీక్షించు',
 	'whitelistpagelist' => '$1 కై {{SITENAME}} పేజీలు',
-	'whitelistnummatches' => '  - $1 పోలికలు',
+	'whitelistnummatches' => '  - {{PLURAL:$1|ఒక పోలిక|$1 పోలికలు}}',
 );
 
 /** Tetum (Tetun)

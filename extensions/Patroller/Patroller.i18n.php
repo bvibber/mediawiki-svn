@@ -708,6 +708,33 @@ $messages['mr'] = array(
 	'grouppage-patroller' => '{{ns:project}}:निरीक्षक',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'patrol' => 'Ronda suntingan',
+	'patrol-desc' => 'Meningkatkan antara muka rondaan dengan perkongsian beban kerja',
+	'patrol-endorse' => 'Endors',
+	'patrol-revert' => 'Balik',
+	'patrol-revert-reason' => 'Sebab:',
+	'patrol-skip' => 'Langkau',
+	'patrol-reverting' => 'Membalikkan: $1',
+	'patrol-endorsed-failed' => 'Suntingan tersebut tidak dapat ditandakan telah dironda.',
+	'patrol-reverted-ok' => 'Suntingan telah dikembalikan.',
+	'patrol-reverted-failed' => 'Suntingan ini tidak dapat dikembalikan.',
+	'patrol-skipped-ok' => 'Mengabaikan suntingan.',
+	'patrol-reasons' => '* Vandalisme ringan
+* Ujian orang baru
+* Lihat laman perbualan',
+	'patrol-another' => 'Tunjukkan suntingan seterusnya, jika ada.',
+	'patrol-stopped' => 'Anda telah memilih untuk tidak meronda suntingan lain. $1',
+	'patrol-resume' => 'Klik di sini untuk sambung semula.',
+	'group-patroller' => 'Peronda',
+	'group-patroller-member' => 'peronda',
+	'grouppage-patroller' => '{{ns:project}}:Peronda',
+	'right-patroller' => 'Meronda laman',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

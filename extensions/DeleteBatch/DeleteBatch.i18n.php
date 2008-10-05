@@ -683,6 +683,7 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
  * @author Veeven
  */
 $messages['te'] = array(
+	'deletebatch-button' => 'తొలగించు',
 	'deletebatch-here' => '<b>ఇక్కడ</b>',
 	'deletebatch-caption' => 'పేజీల జాబితా',
 	'deletebatch-or' => '<b>లేదా</b>',

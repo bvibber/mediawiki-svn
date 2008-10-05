@@ -57,6 +57,7 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'othersites' => 'Aliaj retejoj',
+	'othersites-desc' => 'Movas intervikiajn ligilojn krom lingvaj ligiloj en propra kadro',
 );
 
 /** French (Français)

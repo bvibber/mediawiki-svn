@@ -617,6 +617,13 @@ $messages['sv'] = array(
 	'right-editclosedwikis' => 'Redigera stängda wikier',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'closewikis-page-reopen-reason' => 'కారణం:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -151,18 +151,19 @@ $messages['br'] = array(
 );
 
 /** Catalan (Català)
+ * @author SMP
  * @author Toniher
  */
 $messages['ca'] = array(
 	'countedits' => "Nombre d'edicions",
-	'countedits-warning' => "'''Avís:''' No jutgeu un llibre per la seua coberta, ni tampoc a un col·laborador pel seu nombre d'edicions.",
+	'countedits-warning' => "'''Avís:''' No jutgeu un llibre per la seua coberta, ni tampoc un coŀlaborador pel seu nombre d'edicions.",
 	'countedits-username' => "Nom d'usuari:",
 	'countedits-ok' => "D'acord",
 	'countedits-nosuchuser' => 'No hi ha cap usuari amb el nom $1.',
 	'countedits-resultheader' => 'Resultats de $1',
 	'countedits-resulttext' => '$1 ha fet $2 edicions',
-	'countedits-mostactive' => 'Els col·laboradors més actius',
-	'countedits-nocontribs' => 'No hi ha hagut cap col·laboració en aquest wiki.',
+	'countedits-mostactive' => 'Els coŀlaboradors més actius',
+	'countedits-nocontribs' => 'No hi ha hagut cap coŀlaboració en aquest wiki.',
 );
 
 /** Czech (Česky)

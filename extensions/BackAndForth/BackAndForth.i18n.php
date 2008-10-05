@@ -427,6 +427,14 @@ $messages['mr'] = array(
 	'backforth-prev' => 'मागे($1)',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'backforth-next' => 'Berikutnya ($1)',
+	'backforth-prev' => 'Sebelumnya ($1)',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */

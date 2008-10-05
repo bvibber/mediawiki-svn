@@ -1036,7 +1036,7 @@ Necessiteu un mínim de $1 {{PLURAL:$1|contribució feta|contribucions fetes}} a
 	'boardvote_listintro' => '<p>Aquí hi ha la llista de tots els vots rebuts. $1 per les dades encriptades.</p>',
 	'boardvote_dumplink' => 'Cliqueu ací',
 	'boardvote_submit' => "D'acord",
-	'boardvote_strike' => 'Anul·la',
+	'boardvote_strike' => 'Anuŀla',
 	'boardvote_unstrike' => 'Recupera',
 	'boardvote_needadmin' => 'Només els administradors electorals poden fer aquesta operació.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Eleccions al consell de Wikimedia</a>:
@@ -3017,6 +3017,7 @@ Non è permesso votare alle utenze con lo status di bot.',
 /** Japanese (日本語)
  * @author Aotake
  * @author Broad-Sky
+ * @author Hosiryuhosi
  * @author Iwai.masaharu
  * @author JtFuruhata
  * @author Kzhr
@@ -3059,7 +3060,7 @@ $messages['ja'] = array(
 [[Special:Boardvote/entry|戻る]]',
 	'boardvote_invalidentered' => '<p><strong>エラー</strong>: 候補者の選択は、正の整数(1, 2, 3, ....)で表さなくてはなりません。もしくは空欄です。  
 </p>',
-	'boardvote_nosession' => 'ウィキメデイア利用者IDを確認できませんでした。投票資格のあるウィキにログインし、<nowiki>[[Special:Boardvote]]</nowiki>へ進んでください。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
+	'boardvote_nosession' => 'ウィキメディア利用者IDを確認できませんでした。投票資格のあるウィキにログインし、<nowiki>[[Special:Boardvote]]</nowiki>へ進んでください。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
 	'boardvote_notloggedin' => 'あなたはログインしていません。投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
 	'boardvote_notqualified' => 'あなたにはこの選挙の投票資格がありません。
 投票に使うアカウントは、$2以前に$1回を超える編集を行い、かつ$4から$5の期間にかけて$3以上の編集を行ったものである必要があります。',
@@ -3474,6 +3475,8 @@ $messages['ko'] = array(
 * [[Special:Boardvote/list|투표한 날짜의 목록]]
 * [[Special:Boardvote/dump|암호화된 선거 기록의 덤프]]',
 	'grouppage-boardvote' => '{{ns:project}}:보드보트',
+	'boardvote_bot' => '당신은 봇으로 등록되었습니다.
+봇 계정은 투표가 허락되지 않습니다.',
 	'boardvote_welcome' => "'''$1'''님 환영합니다!",
 	'boardvote_redirecting' => '보안 및 투명성을 향상시키기 위해, 투표는 독립적으로 관리되는 외부 서버에서 이루어집니다. 20초를 기다리시면 이 외부 서버로 자동으로 연결됩니다. 지금 바로 가시려면 [$1 여기를 누르세요]. 서명되지 않은 인증서에 관한 보안 경고가 나타날 수 있습니다.',
 	'right-boardvote' => '선거 관리',

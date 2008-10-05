@@ -2735,6 +2735,7 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  */
 $messages['uk'] = array(
@@ -2777,6 +2778,7 @@ $messages['uk'] = array(
 	'oversight-hidden' => 'Прихована версія',
 	'oversight-header' => 'Нижче наведені версії, які нещодавно були приховані.
 Розповсюдження цієї інформації може спричинити позбавлення прав ревізора.',
+	'oversight-legend' => 'Пошук по журналі приховання редагувань',
 );
 
 /** Vèneto (Vèneto)

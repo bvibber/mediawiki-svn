@@ -860,6 +860,16 @@ $messages['ksh'] = array(
 	'changeauthor' => 'Donn do Schriiver fun ene Version ändere',
 	'changeauthor-desc' => 'Määt et müjjelesch, dä Schriiver fun ene Version fun ene Sigg ze ändere.',
 	'changeauthor-pagenameform-go' => 'Loß Jonn!',
+	'changeauthor-nosuchuser' => 'Mer han keine Metmaacher, dä „$1“ heejsch.',
+	'changeauthor-revview' => 'De Väsjohn Nommer $1 fun $2',
+	'changeauthor-nosuchtitle' => 'Et jit kei Sigg met dämm Tittel „$1“.',
+	'changeauthor-weirderror' => 'Enne janz seltsame Fäähler es opjetrodde.
+Donn dat norr_esnß versöke.
+Wann dat esu wigger jeiht,
+un dä Fähler kütt widder,
+dann künnt de Datebangk kapott sin.',
+	'changeauthor-invalidform' => 'Donn dat Fommolaa op dä [[Special:ChangeAuthor|Söndersigg]] nämme,
+un kei eije Fommolaa.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

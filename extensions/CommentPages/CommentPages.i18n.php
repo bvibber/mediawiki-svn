@@ -186,6 +186,14 @@ $messages['mr'] = array(
 	'nstab-comments' => 'समीक्षा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Kurniasan
+ */
+$messages['ms'] = array(
+	'commentpages-desc' => 'Laman-laman komen bagi ruang nama utama',
+	'nstab-comments' => 'Ulasan',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

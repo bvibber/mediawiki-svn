@@ -353,6 +353,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'youtubeauthsub' => 'Alŝuti YouTube Video',
+	'youtubeauthsub_info' => 'Por alŝuti videon al YouTube inkluzivi en paĝo, plenumi la jenan informon:',
 	'youtubeauthsub_title' => 'Titolo',
 	'youtubeauthsub_description' => 'Priskribo',
 	'youtubeauthsub_password' => 'YouTube Pasvorto',
