@@ -5,7 +5,7 @@ class CodeRevision {
 	static function newFromSvn( CodeRepository $repo, $data ) {
 		$rev = new CodeRevision();
 		$rev->mRepo = $repo->getId();
-		$rev->mId = $data['rev'];
+		$rev->mId = intval($data['rev']);
 		$rev->mAuthor = $data['author'];
 		$rev->mTimestamp = wfTimestamp( TS_MW, strtotime( $data['date'] ) );
 		$rev->mMessage = rtrim( $data['msg'] );
@@ -16,8 +16,8 @@ class CodeRevision {
 
 	static function newFromRow( $row ) {
 		$rev = new CodeRevision();
-		$rev->mRepo = $row->cr_repo_id;
-		$rev->mId = $row->cr_id;
+		$rev->mRepo = intval($row->cr_repo_id);
+		$rev->mId = intval($row->cr_id);
 		$rev->mAuthor = $row->cr_author;
 		$rev->mTimestamp = wfTimestamp( TS_MW, $row->cr_timestamp );
 		$rev->mMessage = $row->cr_message;
@@ -127,7 +127,7 @@ class CodeRevision {
 	}
 	
 	function saveComment( $text, $review, $parent=null ) {
-		if( !$text ) {
+		if( !strlen($text) ) {
 			return 0;
 		}
 		$dbw = wfGetDB( DB_MASTER );

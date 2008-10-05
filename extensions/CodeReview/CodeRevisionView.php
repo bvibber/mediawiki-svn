@@ -129,7 +129,7 @@ class CodeRevisionView extends CodeView {
 			if( $isPreview ) {
 				// Save the text for reference on later comment display...
 				$this->mPreviewText = $text;
-			} else if( $text ) { // don't save blank comments
+			} else if( strlen($text) ) { // don't save blank comments
 				$id = $this->mRev->saveComment( $text, $review, $parent );
 				
 				// Redirect to the just-saved comment; this avoids POST
