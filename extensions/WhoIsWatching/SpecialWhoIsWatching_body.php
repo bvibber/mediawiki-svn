@@ -4,12 +4,33 @@ class WhoIsWatching extends SpecialPage
 {
 	function WhoIsWatching() {
 		SpecialPage::SpecialPage( 'WhoIsWatching' );
+
+		# the standard method for LoadingExtensionMessages was apparently broken in several versions of MW
+		# so, to make this work with multiple versions of MediaWiki, let's load the messages nicely
+		if (function_exists('wfLoadExtensionMessages'))
+		    wfLoadExtensionMessages( 'WhoIsWatching' );
+		else
+		    self::loadMessages();
+
+		return true;
+	}
+
+	function loadMessages() {
+		static $messagesLoaded = false;
+		global $wgMessageCache;
+		if ( !$messagesLoaded ) {
+		    $messagesLoaded = true;
+
+		    require( dirname( __FILE__ ) . '/SpecialWhoIsWatching.i18n.php' );
+		    foreach ( $messages as $lang => $langMessages ) {
+			$wgMessageCache->addMessages( $langMessages, $lang );
+		    }
+		}
+		return true;
 	}
 
 	function execute($par) {
 		global $wgRequest, $wgOut, $wgCanonicalNamespaceNames, $whoiswatching_nametype, $whoiswatching_allowaddingpeople;
-
-		wfLoadExtensionMessages( 'WhoIsWatching' );
 
 		$this->setHeaders();
 		$wgOut->setPagetitle(wfMsg('whoiswatching'));
@@ -92,12 +113,10 @@ class WhoIsWatching extends SpecialPage
 		}
 	}
 }
-
-$wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'fnShowWatchingCount';
  
 function fnShowWatchingCount(&$template, &$tpl)
 {
-    global $wgLang, $wgPageShowWatchingUsers, $whoiswatching_showifzero;
+    global $wgLang, $wgPageShowWatchingUsers, $whoiswatching_showifzero, $wgOut;
 
     if ($wgPageShowWatchingUsers && $whoiswatching_showifzero) {
         $dbr = wfGetDB( DB_SLAVE );

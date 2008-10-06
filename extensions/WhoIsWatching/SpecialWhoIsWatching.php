@@ -10,7 +10,7 @@ EOT;
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-    'version'        => '0.8',
+    'version'        => '0.9',
     'name'           => 'WhoIsWatching',
     'author'         => 'Paul Grinberg, Siebrand Mazeland',
     'email'          => 'gri6507 at yahoo dot com',
@@ -19,10 +19,15 @@ $wgExtensionCredits['specialpage'][] = array(
     'descriptionmsg' => 'whoiswatching-desc',
 );
 
-$wgAutoloadClasses['WhoIsWatching'] = dirname(__FILE__) . '/SpecialWhoIsWatching_body.php';
-$wgExtensionMessagesFiles['WhoIsWatching'] = $dir . 'WhoIsWatching.i18n.php';
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['WhoIsWatching'] = $dir . 'SpecialWhoIsWatching_body.php';
+$wgExtensionMessagesFiles['WhoIsWatching'] = $dir . 'SpecialWhoIsWatching.i18n.php';
 $wgExtensionAliasesFiles['WhoIsWatching'] = $dir . 'SpecialWhoIsWatching.alias.php';
 $wgSpecialPages['WhoIsWatching'] = 'WhoIsWatching';
+
+require_once( "$IP/includes/SpecialPage.php" );
+require_once($dir . 'SpecialWhoIsWatching_body.php');
+$wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'fnShowWatchingCount';
 
 # Set the following to either 'UserName' or 'RealName' to display the list of watching users as such.
 $whoiswatching_nametype = 'RealName';
