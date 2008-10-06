@@ -289,11 +289,12 @@ class ImageMap {
 			} else {
 				$marginTop = -20;
 			}
-			$div->setAttribute( 'style', "height: {$thumbHeight}px" );
+			$div->setAttribute( 'style', "height: {$thumbHeight}px; width: {$thumbWidth}px; " );
 			$descWrapper = $div->appendChild( new DOMElement( 'div' ) );
 			$descWrapper->setAttribute( 'style', 
 				"margin-left: {$marginLeft}px; " . 
-				"margin-top: {$marginTop}px; "
+				"margin-top: {$marginTop}px; " .
+				"text-align: left;"
 			);
 
 			$descAnchor = $descWrapper->appendChild( new DOMElement( 'a' ) );
