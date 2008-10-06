@@ -87,9 +87,11 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'oai-desc' => 'Fournit une interface de dépôt [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oairepository' => 'Dépôt OAI',
 );
 
 /** Galician (Galego)

@@ -60,6 +60,8 @@ $messages['de'] = array(
 	'interwikilist-desc' => 'Ergänzt eine [[Special:Interwikilist|Spezialseite]] zur Anzeige verfügbarer Interwiki-Links',
 	'interwikilist-linkname' => 'Interwiki-Link',
 	'interwikilist-target' => 'Ziel-URL',
+	'interwikilist-filter' => 'Liste filtern',
+	'interwikilist-prefix' => 'Interwiki-Präfix:',
 );
 
 /** Lower Sorbian (Dolnoserbski)

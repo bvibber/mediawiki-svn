@@ -453,9 +453,11 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Mihai
  */
 $messages['ro'] = array(
 	'block_title_error_page_title' => 'Titlu blocat',
+	'block_title_error-desc' => 'Furnizează o cale simplă pentru a preveni salvarea sau crearea unor pagini cu anumite titluri',
 	'block_title_error' => 'Ne pare rău, nu este permisă salvarea titlului acestui articol.',
 );
 

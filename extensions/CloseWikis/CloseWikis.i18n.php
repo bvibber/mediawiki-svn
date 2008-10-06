@@ -621,6 +621,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'closewikis-page-close-wiki' => 'వికీ:',
+	'closewikis-page-reopen-wiki' => 'వికీ:',
 	'closewikis-page-reopen-reason' => 'కారణం:',
 );
 

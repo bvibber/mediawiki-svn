@@ -77,6 +77,7 @@ $messages['ar'] = array(
 	'imagemap_invalid_desc' => 'خطأ: محدد وصف غير صحيح، يجب أن يكون واحدا من: <tt>$1</tt>',
 	'imagemap_description' => 'حول هذه الصورة',
 	'imagemap_desc_types' => 'أعلى اليمين, أسفل اليمين, أسفل اليسار, أعلى اليسار, لا شيء',
+	'imagemap_poly_odd' => 'خطأ: تم العثور على مضلع بعدد فردي من الأضلاع في السطر $1',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -97,6 +98,7 @@ $messages['arz'] = array(
 	'imagemap_invalid_desc' => 'غلط: محدد وصف مش صحيح, لازم يكون واحد من دول: <tt>$1</tt>',
 	'imagemap_description' => 'عن الصورة دي',
 	'imagemap_desc_types' => 'اليمين من فوق،اليمين من تحت،الشمال من تحت،الشمال من فوق، ولا حاجة',
+	'imagemap_poly_odd' => 'خطأ: تم العثور على مضلع بعدد فردى من الأضلاع فى السطر $1',
 );
 
 /** Asturian (Asturianu)
@@ -222,6 +224,7 @@ $messages['cs'] = array(
 	'imagemap_invalid_coord' => 'Error: neplatné souřadnice na řádku $1, je očekáváno číslo',
 	'imagemap_invalid_desc' => 'Error: neplatné určení oblasti desc, je očekávána jedna z možností: <tt>$1</tt>',
 	'imagemap_description' => 'O tomto obrázku',
+	'imagemap_poly_odd' => 'Chyba: na řádku $1 nalezen mnohoúhelník s lichým počtem souřadnic',
 );
 
 /** Danish (Dansk)
@@ -258,6 +261,7 @@ $messages['de'] = array(
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;-Fehler: Ungültiger „desc“-Parameter, möglich sind: <tt>$1</tt>',
 	'imagemap_description' => 'Über dieses Bild',
 	'imagemap_desc_types' => 'oben rechts, unten rechts, unten links, oben links, keine',
+	'imagemap_poly_odd' => 'Fehler: Polygon mit ungerader Anzahl an Koordinaten in Zeile $1',
 );
 
 /** Greek (Ελληνικά)
@@ -365,6 +369,7 @@ $messages['fr'] = array(
 	'imagemap_invalid_coord' => '&lt;imagemap&gt; : coordonnée invalide à la ligne $1, doit être un nombre',
 	'imagemap_invalid_desc' => '&lt;imagemap&gt; : paramètre « desc » invalide, les paramètres possibles sont : $1',
 	'imagemap_description' => 'À propos de cette image',
+	'imagemap_poly_odd' => 'Erreur : trouvé un polygone avec un nombre impair de coordonnées à la ligne $1',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -555,7 +560,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'imagemap_desc' => "Consente di realizzare ''image map'' cliccabili lato client con il tag <tt><nowiki><imagemap></nowiki></tt>",
-	'imagemap_no_image' => "&lt;imagemap&gt;: si deve specificare un'immagine nella prima riga",
+	'imagemap_no_image' => "Errore: si deve specificare un'immagine nella prima riga",
 	'imagemap_invalid_image' => "&lt;imagemap&gt;: l'immagine non è valida o non esiste",
 	'imagemap_bad_image' => "Errore: l'immagine si trova nella blacklist per questa pagina",
 	'imagemap_no_link' => '&lt;imagemap&gt;: non è stato trovato alcun collegamento valido alla fine della riga $1',
@@ -566,6 +571,7 @@ $messages['it'] = array(
 	'imagemap_invalid_coord' => '&lt;imagemap&gt;: coordinata non valida nella riga $1, deve essere un numero',
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: Valore non valido per il parametro desc, deve essere uno dei seguenti: $1',
 	'imagemap_description' => "Informazioni sull'immagine",
+	'imagemap_poly_odd' => 'Errore: trovato poligono con un numero dispari di coordinate nella riga $1',
 );
 
 /** Japanese (日本語)
@@ -678,7 +684,8 @@ $messages['ksh'] = array(
 	'imagemap_invalid_coord' => "Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: En de {{PLURAL:$1|eetzte|$1-te|nullte}} Reih eß jet verkeeht met de Ko'oddinate. Do mööte luuter Zahle shtonn, es äver nit esu.",
 	'imagemap_invalid_desc' => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: Dä Parammeeter „<tt><nowiki>desc</nowiki></tt>“ eß verkeeht aanjejovve. Bruche kanns De nor ein fun dänne hee: <tt>$1</tt>',
 	'imagemap_description' => 'Övver dat Beld hee',
-	'imagemap_desc_types' => 'bovve räähß, unge lengkß, unge lengkß, bovve rääh´, nix',
+	'imagemap_desc_types' => 'bovve räähß, unge räähß, unge lengkß, bovve lengkß, nix',
+	'imagemap_poly_odd' => 'Do es ene Fääler met <imagemap> opjefalle: De Parammeeter för „poly“ möße Zahle-Päärche sin, ävver hee es ei Zahl zovill udder zowinnisch.',
 );
 
 /** Latin (Latina)
@@ -802,6 +809,7 @@ $messages['ms'] = array(
 	'imagemap_invalid_desc' => 'Ralat: spesifikasi keterangan tidak sah, hendaklah salah satu daripada: <tt>$1</tt>',
 	'imagemap_description' => 'Perihal imej ini',
 	'imagemap_desc_types' => 'puncak-kanan, bawah-kanan, bawah-kiri, puncak-kiri, tiada',
+	'imagemap_poly_odd' => 'Ralat: terdapat poligon dengan bilangan koordinat yang ganjil dalam baris $1',
 );
 
 /** Low German (Plattdüütsch)
@@ -842,6 +850,7 @@ $messages['nl'] = array(
 	'imagemap_invalid_coord' => '&lt;imagemap&gt;: ongeldige coördinaten in regel $1, moet een getal zijn',
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: ongeldige beschrijvingsspecificatie, dit moet er één zijn uit de volgende lijst: $1',
 	'imagemap_description' => 'Over deze afbeelding',
+	'imagemap_poly_odd' => 'Fout: poly gevonden met een oneven aantal coördinaten op regel $1',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -856,7 +865,7 @@ $messages['no'] = array(
 	'imagemap_invalid_title' => 'Error: ugyldig tittel i lenke på linje $1',
 	'imagemap_missing_coord' => 'Error: ikke nok koordinater for form på linje $1',
 	'imagemap_unrecognised_shape' => 'Error: ugjenkjennelig form på linje $1; hver linje må starte med enten: default, rect, circle eller poly',
-	'imagemap_no_areas' => 'Error: minst en områdespesifikasjon må gis',
+	'imagemap_no_areas' => 'Feil: Minst ett område må spesifiseres',
 	'imagemap_invalid_coord' => 'Error: ugyldig koordinat i slutten av linje $1, må være et tall',
 	'imagemap_invalid_desc' => 'Error: ugyldig desc-spesifisering, må være enten: <tt>$1</tt>',
 	'imagemap_description' => 'Om dette bildet',
@@ -945,6 +954,7 @@ $messages['pt'] = array(
 	'imagemap_invalid_coord' => '&lt;imagemap&gt;: coordenada inválida na linha $1. 0 necessário que seja um número',
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: especificação desc inválida. 0 necessário que seja uma dentre: <tt>$1</tt>',
 	'imagemap_description' => 'Sobre esta imagem',
+	'imagemap_poly_odd' => 'Erro: encontrado polígono com número ímpar de coordenadas na linha $1',
 );
 
 /** Quechua (Runa Simi)
@@ -967,21 +977,23 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'imagemap_desc' => 'Позволяет указывать срабатывающие на нажатие карты изображений на стороне клиента с помощью тега <tt><nowiki><imagemap></nowiki></tt>',
-	'imagemap_no_image' => 'Error: в первой строке должно быть задано изображение',
-	'imagemap_invalid_image' => 'Error: неверное или отсутствующее изображение',
+	'imagemap_no_image' => 'Ошибка: в первой строке должно быть задано изображение',
+	'imagemap_invalid_image' => 'Ошибка: неверное или отсутствующее изображение',
 	'imagemap_bad_image' => 'Ошибка. Изображение входит в чёрный список на этой странице.',
-	'imagemap_no_link' => 'Error: неверная ссылка в конце строки $1',
-	'imagemap_invalid_title' => 'Error: неверный заголовок ссылки в строке $1',
-	'imagemap_missing_coord' => 'Error: недостаточно координат для фигуры в строке $1',
-	'imagemap_unrecognised_shape' => 'Error: неопознанная фигура в строке $1, каждая строка должна начинаться одним из ключевых слов: default, rect, circle или poly',
-	'imagemap_no_areas' => 'Error: должна быть указана хотя бы одна область',
-	'imagemap_invalid_coord' => 'Error: ошибочная координата в строке $1, ожидается число',
-	'imagemap_invalid_desc' => 'Error: ошибочное значение desc, ожидается одно из следующих значений: <tt>$1</tt>',
+	'imagemap_no_link' => 'Ошибка: неверная ссылка в конце строки $1',
+	'imagemap_invalid_title' => 'Ошибка: неверный заголовок ссылки в строке $1',
+	'imagemap_missing_coord' => 'Ошибка: недостаточно координат для фигуры в строке $1',
+	'imagemap_unrecognised_shape' => 'Ошибка: неопознанная фигура в строке $1, каждая строка должна начинаться одним из ключевых слов: default, rect, circle или poly',
+	'imagemap_no_areas' => 'Ошибка: должна быть указана хотя бы одна область',
+	'imagemap_invalid_coord' => 'Ошибка: ошибочная координата в строке $1, ожидается число',
+	'imagemap_invalid_desc' => 'Ошибка: некорректное значение desc, ожидается одно из следующих значений: <tt>$1</tt>',
 	'imagemap_description' => 'Описание изображения',
+	'imagemap_poly_odd' => 'Ошибка: в строке $1 обнаружен полигон с недостаточным числом координат',
 );
 
 /** Yakut (Саха тыла)
@@ -1018,6 +1030,7 @@ $messages['sk'] = array(
 	'imagemap_invalid_coord' => '&lt;imagemap&gt;: neplatná súradnica na riadku $1, musí to byť číslo',
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: neplatný popis, musí byť jedno z nasledovných: $1',
 	'imagemap_description' => 'O tomto obrázku',
+	'imagemap_poly_odd' => 'Chyba: nájdený mnohouholník s nepárnym počtom súradníc na riadku $1',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -1063,6 +1076,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Lejonel
  * @author M.M.S.
  */
@@ -1079,6 +1093,7 @@ $messages['sv'] = array(
 	'imagemap_invalid_coord' => '&lt;imagemap&gt;: ogiltig koordinat på rad $1, koordinater måste vara tal',
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: ogiltig specifikation av desc, den måste var en av följande: <tt>$1</tt>',
 	'imagemap_description' => 'Bildinformation',
+	'imagemap_poly_odd' => 'Fel: hittade poly med udda antal koordinater på rad $1',
 );
 
 /** Telugu (తెలుగు)
@@ -1182,6 +1197,7 @@ $messages['vi'] = array(
 	'imagemap_invalid_coord' => 'Error: tọa độ không hợp lệ ở dòng $1, phải là số',
 	'imagemap_invalid_desc' => 'Error: chọn desc không hợp lệ, phải là một trong: $1',
 	'imagemap_description' => 'Thông tin về hình này',
+	'imagemap_poly_odd' => 'Lỗi: đa giác có tọa độ không đầy đủ ở dòng $1',
 );
 
 /** Volapük (Volapük)

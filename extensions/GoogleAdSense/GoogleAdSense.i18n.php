@@ -137,9 +137,10 @@ $messages['oc'] = array(
 
 /** Russian (Русский)
  * @author Kaganer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'googleadsense-desc' => 'Добавить [http://www.google.com/adsense рекламу Google AdSense] в навигационную панель',
+	'googleadsense-desc' => 'Добавляет [http://www.google.com/adsense рекламу Google AdSense] в навигационную панель',
 );
 
 /** Slovak (Slovenčina)

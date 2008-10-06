@@ -4810,7 +4810,7 @@ Deverá usar uma conta com pelo menos $1 contribuições feitas antes de $2, e t
 	'boardvote_notloggedin' => 'Você não está autenticado.
 Para votar, você deve usar uma conta com pelo menos $1 contribuições feitas antes de $2, tendo feito ao menos $3 entre $4 e $5.',
 	'boardvote_notqualified' => 'Você não está qualificado a votar nesta eleição.
-Seria necessário ter feito ao menos $1 edições antes de $2, tendo feito $3 edições entre $4 e $5.',
+Seria necessário ter feito pelo menos $1 {{PLURAL:$1|edição|edições}} antes de $2, tendo feito pelo menos $3 {{PLURAL:$3|edição|edições}} entre $4 e $5.',
 	'boardvote_novotes' => 'Ninguém votou até ao momento.',
 	'boardvote_time' => 'Data',
 	'boardvote_user' => 'Utilizador',

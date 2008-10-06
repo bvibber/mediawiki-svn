@@ -66,6 +66,13 @@ $messages['bg'] = array(
 $2',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'email-desc' => 'Umožňuje přidávat do e-mailů uživatelům vlastní hlavičky a patičky',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'email-desc' => 'Erlaubt Benutzern persönliche Kopf- und Fusszeilen in der E-Mail Funktion zu verwenden',

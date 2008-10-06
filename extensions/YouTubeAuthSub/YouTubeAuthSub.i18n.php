@@ -265,6 +265,13 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'youtubeauthsub' => 'Nahrát YouTube video',
+	'youtubeauthsub_title' => 'Název',
+	'youtubeauthsub_description' => 'Popis',
+	'youtubeauthsub_password' => 'YouTube heslo',
+	'youtubeauthsub_username' => 'Uživatelské jméno na YouTube',
+	'youtubeauthsub_keywords' => 'Klíčová slova',
+	'youtubeauthsub_category' => 'Kategorie',
+	'youtubeauthsub_submit' => 'Poslat',
 	'youtubeauthsub_uploadhere' => 'Nahrajte svoje video odtud:',
 	'youtubeauthsub_uploadbutton' => 'Nahrát',
 	'youtubeauthsub_summary' => 'Nahrává se YouTube video',

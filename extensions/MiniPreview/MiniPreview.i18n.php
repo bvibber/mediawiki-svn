@@ -410,8 +410,8 @@ Por exemplo, "* PD-" não mostrará todas as categorias que começam com "PD-", 
  */
 $messages['ru'] = array(
 	'minipreview-desc' => 'МиниПредпросмотр показывает около изображения миниатюры других медиа-файлов из той же категории или расположенных на той же страницы',
-	'minipreview-files_in_category' => 'В этой категории всего {{PLURAL:$1|файл|файлов}}.',
-	'minipreview-files_in_gallery' => 'В этой галерее всего $1 {{PLURAL:$1|файл|файлов}}.',
+	'minipreview-files_in_category' => "В этой категории '''$1''' {{PLURAL:$1|файл|файла|файлов}}.",
+	'minipreview-files_in_gallery' => "В этой галерее '''$1''' {{PLURAL:$1|файл|файла|файлов}}.",
 	'minipreview-no_more_files_here' => 'в этом направлении больше нет файлов.',
 	'minipreview-no_category_gallery' => 'Нет категорий или галерей!',
 	'minipreview-ignore_categories' => 'Ниже представлен список названий категорий или первых частей их названий. Эти категории
