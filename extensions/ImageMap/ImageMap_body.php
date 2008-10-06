@@ -34,7 +34,7 @@ class ImageMap {
 
 		$first = true;
 		$lineNum = 0;
-		$output = '';
+		$mapHTML = '';
 		$links = array();
 
 		# Define canonical desc types to allow i18n of 'imagemap_desc_types'
@@ -232,7 +232,7 @@ class ImageMap {
 			if ( $shape == 'default' ) {
 				$defaultLinkAttribs = $attribs;
 			} else {
-				$output .= Xml::element( 'area', $attribs ) . "\n";
+				$mapHTML .= Xml::element( 'area', $attribs ) . "\n";
 			}
 			if ( $externLink ) {
 				$extLinks[] = $title;
@@ -245,9 +245,9 @@ class ImageMap {
 			return self::error( 'imagemap_no_image' );
 		}
 
-		if ( $output == '' && $defaultLinkAttribs == '' ) {
+		if ( $mapHTML == '' && $defaultLinkAttribs == '' ) {
 			return self::error( 'imagemap_no_areas' );
-		} elseif ( $output == '' && $defaultLinkAttribs != '' ) {
+		} elseif ( $mapHTML == '' && $defaultLinkAttribs != '' ) {
 			// no areas defined, default only. It's not a real imagemap, so we do not need some tags
 			$realmap = false;
 		}
@@ -255,11 +255,12 @@ class ImageMap {
 		if ( $realmap ) {
 			# Construct the map
 			$mapName = "ImageMap_" . ++self::$id;
-			$output = "<map name=\"$mapName\">\n$output</map>\n";
+			$mapHTML = "<map name=\"$mapName\">\n$mapHTML</map>\n";
 
 			# Alter the image tag
 			$imageNode->setAttribute( 'usemap', "#$mapName" );
 		}
+
 		# Add a surrounding div, remove the default link to the description page
 		$anchor = $imageNode->parentNode;
 		$parent = $anchor->parentNode;
@@ -272,6 +273,14 @@ class ImageMap {
 			$imageParent = $defaultAnchor;
 		} else {
 			$imageParent = $div;
+		}
+
+		# Add the map HTML to the div
+		# We used to add it before the div, but that made tidy unhappy
+		if ( $mapHTML != '' ) {
+			$mapDoc = DOMDocument::loadXML( $mapHTML );
+			$mapNode = $domDoc->importNode( $mapDoc->documentElement, true );
+			$div->appendChild( $mapNode );
 		}
 
 		$imageParent->appendChild( $imageNode->cloneNode( true ) );
@@ -314,7 +323,7 @@ class ImageMap {
 		# Output the result
 		# We use saveXML() not saveHTML() because then we get XHTML-compliant output.
 		# The disadvantage is that we have to strip out the DTD
-		$output .= preg_replace( '/<\?xml[^?]*\?>/', '', $domDoc->saveXML() );
+		$output = preg_replace( '/<\?xml[^?]*\?>/', '', $domDoc->saveXML() );
 
 		# Register links
 		foreach ( $links as $title ) {
