@@ -284,6 +284,8 @@ class ImageMap {
 			}
 			if ( $descType == self::TOP_LEFT || $descType == self::TOP_RIGHT ) {
 				$marginTop = -$thumbHeight;
+				// 1px hack for IE, to stop it poking out the top
+				$marginTop += 1;
 			} else {
 				$marginTop = -20;
 			}
