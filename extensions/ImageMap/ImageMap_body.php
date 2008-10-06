@@ -79,7 +79,12 @@ class ImageMap {
 				$parser->mOutput->addImage( $imageTitle->getDBkey() );
 
 				$domDoc = new DOMDocument();
-				$domDoc->loadXML( $imageHTML );
+				wfSuppressWarnings();
+				$ok = $domDoc->loadXML( $imageHTML );
+				wfRestoreWarnings();
+				if ( !$ok ) {
+					return self::error( 'imagemap_invalid_image' );
+				}
 				$xpath = new DOMXPath( $domDoc );
 				$imgs = $xpath->query( '//img' );
 				if ( !$imgs->length ) {
