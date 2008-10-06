@@ -192,6 +192,9 @@ class ImageMap {
 					if ( !count( $coords ) ) {
 						return self::error( 'imagemap_missing_coord', $lineNum );
 					}
+					if ( count( $coords ) % 2 !== 0 ) {
+						return self::error( 'imagemap_poly_odd', $lineNum );
+					}
 					break;
 				default:
 					return self::error( 'imagemap_unrecognised_shape', $lineNum );

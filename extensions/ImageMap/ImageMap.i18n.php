@@ -25,6 +25,7 @@ $messages['en'] = array(
 	'imagemap_description'          => 'About this image',
 	# Note to translators: keep the same order
 	'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
+	'imagemap_poly_odd'             => 'Error: found poly with odd number of coordinates on line $1',
 );
 
 /** Message documentation (Message documentation)
