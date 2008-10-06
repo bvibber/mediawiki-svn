@@ -276,23 +276,27 @@ class ImageMap {
 		$xpath = new DOMXPath( $domDoc );
 		$magnify = $xpath->query( '//div[@class="magnify"]' );
 		if ( !$magnify->length && $descType != self::NONE ) {
-			$div->setAttribute( 'style', 'position: relative;' );
-
 			# Add image description link
 			if ( $descType == self::TOP_LEFT || $descType == self::BOTTOM_LEFT ) {
-				$descLeft = 0;
+				$marginLeft = 0;
 			} else {
-				$descLeft = $thumbWidth - 20;
+				$marginLeft = $thumbWidth - 20;
 			}
 			if ( $descType == self::TOP_LEFT || $descType == self::TOP_RIGHT ) {
-				$descTop = 0;
+				$marginTop = -$thumbHeight;
 			} else {
-				$descTop = $thumbHeight - 20;
+				$marginTop = -20;
 			}
-			$descAnchor = $div->appendChild( new DOMElement( 'a' ) );
+			$div->setAttribute( 'style', "height: {$thumbHeight}px" );
+			$descWrapper = $div->appendChild( new DOMElement( 'div' ) );
+			$descWrapper->setAttribute( 'style', 
+				"margin-left: {$marginLeft}px; " . 
+				"margin-top: {$marginTop}px; "
+			);
+
+			$descAnchor = $descWrapper->appendChild( new DOMElement( 'a' ) );
 			$descAnchor->setAttribute( 'href', $imageTitle->escapeLocalURL() );
 			$descAnchor->setAttribute( 'title', wfMsgForContent( 'imagemap_description' ) );
-			$descAnchor->setAttribute( 'style', "position:absolute; top: {$descTop}px; left: {$descLeft}px;" );
 			$descImg = $descAnchor->appendChild( new DOMElement( 'img' ) );
 			$descImg->setAttribute( 'alt', wfMsgForContent( 'imagemap_description' ) );
 			$descImg->setAttribute( 'src', "$wgScriptPath/extensions/ImageMap/desc-20.png" );
