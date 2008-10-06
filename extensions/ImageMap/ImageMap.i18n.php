@@ -425,6 +425,7 @@ $messages['he'] = array(
 	'imagemap_invalid_coord' => 'שגיאה;: קוארדינאטה שגויה בשורה $1, היא חייבת להיות מספר',
 	'imagemap_invalid_desc' => 'שגיאה: הגדרת פרמטר desc שגויה, צריך להיות אחד מהבאים: $1',
 	'imagemap_description' => 'אודות התמונה',
+	'imagemap_poly_odd' => 'שגיאה: איזור poly עם מספר אי־זוגי של קואורדינטות בשורה $1',
 );
 
 /** Hindi (हिन्दी)
