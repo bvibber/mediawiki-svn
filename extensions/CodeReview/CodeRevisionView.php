@@ -14,7 +14,7 @@ class CodeRevisionView extends CodeView {
 	}
 
 	function execute(){
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgLang;
 		if( !$this->mRepo || !$this->mRev ) {
 			$view = new CodeRepoListView();
 			$view->execute();
@@ -41,6 +41,7 @@ class CodeRevisionView extends CodeView {
 		$fields = array(
 			'code-rev-repo' => $repoLink,
 			'code-rev-rev' => $revText,
+			'code-rev-date' => $wgLang->timeanddate( $this->mRev->getTimestamp() ),
 			'code-rev-author' => $this->authorLink( $this->mRev->getAuthor() ),
 			'code-rev-status' => $this->statusForm(),
 			'code-rev-message' => $this->formatMessage( $this->mRev->getMessage() ),

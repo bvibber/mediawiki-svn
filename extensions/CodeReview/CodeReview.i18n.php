@@ -37,6 +37,7 @@ $messages['en'] = array(
 	'code-field-path' => 'Path',
 	'code-field-text' => 'Note',
 	'code-rev-author' => 'Author:',
+	'code-rev-date' => 'Date:',
 	'code-rev-message' => 'Comment:',
 	'code-rev-repo' => 'Repository:',
 	'code-rev-rev' => 'Revision:',
