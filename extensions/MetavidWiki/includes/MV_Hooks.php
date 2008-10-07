@@ -309,7 +309,7 @@ function mv_edit_submit() {
 	if ( $do_adjust == 'true' ) {
 		// first edit then move
 		$outputMVD = $MV_Overlay->do_edit_submit( $title_str, $mvd_id, false );
-		print "got output: $outputMVD \n";
+		//print "got output: $outputMVD \n";
 		// clear the wgOut var: 
 		$wgOut->clearHTML();
 		// do move and display output page 			

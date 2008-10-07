@@ -15,6 +15,8 @@ $messages['en'] = array(
 	'mv_missing_stream' => 'Missing stream: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki special pages',
 
+	'mv_warning_wiki'	=> '<i>Note: metavid video transcripts [[Help:FAQ#How_accurate_is_the_information.3F|may contain inaccuracies]], help us build [[Help:Participation#Improving_Archive_Accuracy|a more perfect archive]]</i>',
+
 	# stream/files key descriptions:
 	'mv_ogg_low_quality' => 'Web streamable - Ogg Theora 300kbs',
 	'mv_ogg_high_quality' => 'High quality - Ogg Theora 900kbs',

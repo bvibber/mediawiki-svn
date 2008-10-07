@@ -91,6 +91,7 @@
 		var mvAdvSearch =\'' . htmlspecialchars( $advSearch ) . '\';
 		/*]]>*/</script>' );
 
+		
 		// also add prev next paging
 		$this->page_header = '<h1 class="videoHeader">' .
 			$this->article->mvTitle->getStreamNameText() . ' :: ' .
@@ -99,7 +100,11 @@
 			$this->components['MV_Tools']->stream_paging_links( 'next' ) .
 			wfMsg( 'mv_of' ) . seconds2ntp( $this->article->mvTitle->getDuration() ) .
 		'</h1>';
-
+		
+		$wgOut->addWikiText( wfMsg('mv_warning_wiki'));
+		$this->page_header.=$wgOut->getHTML();
+		$wgOut->clearHTML();
+		
 		// add export roe icon:
 		if($mvDispROEicon){
 			$this->page_header .= '<span id="cmml_link"/>';
