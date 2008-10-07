@@ -2919,6 +2919,8 @@ embedVideo.prototype = {
 			this.mv_seeker_width = $j('#mv_seeker_slider_'+this_id).width();				
 		
 		var val = Math.round( perc  * $j('#mv_seeker_'+this_id).width() - (this.mv_seeker_width*perc));
+		if(val > ($j('#mv_seeker_'+this_id).width() -this.mv_seeker_width) )
+			val = $j('#mv_seeker_'+this_id).width() -this.mv_seeker_width ;
 		$j('#mv_seeker_slider_'+this_id).css('left', (val)+'px' );
 		//js_log('set#mv_seeker_slider_'+this_id + ' perc in: ' + perc + ' * ' + $j('#mv_seeker_'+this_id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');

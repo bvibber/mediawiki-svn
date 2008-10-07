@@ -83,6 +83,7 @@ function mv_load_interface_libs(){
 var mv_stream_interface = {
 	cur_mvd_id:'base',
 	interfaceLoaded:false,
+	monitorTimerId:0,
 	init:function(){
 		//don't call multiple times:
 		if(this.interfaceLoaded)return;
@@ -290,9 +291,15 @@ var mv_stream_interface = {
 		if(vid_elm){
 			if( vid_elm.isPlaying()){
 				js_log('vid elm is playing delay restore:')			
-				if(!vid_elm.userSlide) //dont' restore if userSlide is true			
-					setTimeout("mv_stream_interface.doRestore()", 500);				
+				if(!vid_elm.userSlide){ //dont' restore if userSlide is true			
+					if( ! this.monitorTimerId ){				    	
+				        this.monitorTimerId = setInterval('mv_stream_interface.doRestore()', 250);
+				    }
+				}
 			}else{
+				//stop restore monitor: 
+				clearInterval(this.monitorTimerId);
+	        	this.monitorTimerId = 0;
 				//only restore if onClipDone_disp is false
 				if(!vid_elm.onClipDone_disp){
 					//only restore if the cur_mvd = 'base' and interface updates are not locked
@@ -895,11 +902,14 @@ function mv_play_or_pause(){
 	}
 }*/
 function mv_do_play(mvd_id){
+	js_log('mv_do_play:'+mvd_id);
 	//stop the current
 	$j('#embed_vid').get(0).stop();
-
+	//stop any defered updates:
+	
 	//foce a given mvd if set
-	if(mvd_id){
+	if(mvd_id){		
+		mv_lock_vid_updates=false;
 		do_video_mvd_update(mvd_id);
 	}
 	//disable interface actions (mouse in out etc)

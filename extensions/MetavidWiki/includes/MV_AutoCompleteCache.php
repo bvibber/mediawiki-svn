@@ -10,5 +10,6 @@
  * @url http://metavid.ucsc.edu
  */
  class MV_AutoCompleteCache {
+ 	
  }
 ?>

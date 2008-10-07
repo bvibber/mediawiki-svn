@@ -473,7 +473,7 @@ function sffLoadMessagesManually() {
 /*
  * Utility functions:
  */
- 
+	
 function php2jsObj( $array, $objName = 'mv_result' )
 {
    return  $objName . ' = ' . phpArrayToJsObject_Recurse( $array ) . ";\n";
