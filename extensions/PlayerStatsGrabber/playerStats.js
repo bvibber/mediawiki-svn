@@ -27,14 +27,23 @@ wgExtendedOggPlayerStats = {
 		//@@todo research if we can detect if MS video support a given codec
 		
 		//detect flash support
-		if(FlashDetect.installed)
-			this.clientSupports['flash'];
+		if( FlashDetect.installed )
+			this.clientSupports['flash']=true;							
 		
-		for(i in this.clientSupports){
-			url+='&cs='+encodeURIComponent(i);
+		var j=0;
+		for(var i in this.clientSupports){
+			url+='&cs[]='+encodeURIComponent(i);
+			j++;
 		}
+		
 		//get the flash version:
 		url+='&fv='+ encodeURIComponent( FlashDetect.raw );
+		
+		
+		//detect java version if possible: (ie not IE with default security) 
+		if( javaDetect.version ){
+			url+= '&jv='+ encodeURIComponent ( javaDetect.version );
+		}
 		
 		//add some additional params seperated out to enum keys: 
 		url+= '&b_user_agent=' +encodeURIComponent( navigator.userAgent ); 
@@ -42,6 +51,8 @@ wgExtendedOggPlayerStats = {
 		url+= '&b_version=' + encodeURIComponent( BrowserDetect.version );
 		url+= '&b_os=' + encodeURIComponent( BrowserDetect.OS ) ;						
 		
+		//and finaly add the user hash:
+		url+='&uh=' + encodeURIComponent ( wgOggPlayer.userHash );
 		
 		//now send out our stats update (run via javascript include to support remote servers:		
 		do_request ( url, function( responseObj ){
@@ -82,11 +93,7 @@ function mv_jsdata_cb(response){
 		js_log('missing req cb index');
 		return false;
 	}
-	if(!response['pay_load']){
-		js_log("missing pay load");
-		return false;
-	}
-	global_req_cb[response['cb_inx']](response['pay_load']);
+	global_req_cb[response['cb_inx']](response);
 }
 function js_log(string){
   if( window.console ){
@@ -107,6 +114,43 @@ function js_log(string){
    //in case of "throw error" type usage
    return false;
 }
+
+//checks for java support records java version if possible
+var javaDetect = {
+	javaEnabled: false,
+	version: false,
+  	init:function(){
+	  if (typeof navigator != 'undefined' && typeof navigator.javaEnabled != 'undefined'){ 
+	    this.javaEnabled = navigator.javaEnabled();
+	  }else{
+	    this.javaEnabled = 'unknown';
+	  }
+	  if (navigator.javaEnabled() && typeof java != 'undefined')
+	    this.version = java.lang.System.getProperty("java.version");  
+	  //try to get the IE version of java (not likely to work with default security setting) 
+	  if( wgOggPlayer.msie ){
+	    var shell;
+		try {
+			// Create WSH(WindowsScriptHost) shell, available on Windows only
+			shell = new ActiveXObject("WScript.Shell");
+			
+			if (shell != null) {
+			// Read JRE version from Window Registry
+			try {
+				this.version = shell.regRead("HKEY_LOCAL_MACHINE\\Software\\JavaSoft\\Java Runtime Environment\\CurrentVersion");
+			} catch(e) {
+				// handle exceptions raised by 'shell.regRead(...)' here
+				// so that the outer try-catch block would receive only
+				// exceptions raised by 'shell = new ActiveXObject(...)'
+				}
+			}
+		} catch(e) {
+			//could not get it
+		}
+	  }
+  }
+}
+javaDetect.init();
 
 //http://www.featureblend.com/license.txt
 var FlashDetect=new function(){var self=this;self.installed=false;self.raw="";self.major=-1;self.minor=-1;self.revision=-1;self.revisionStr="";var activeXDetectRules=[{"name":"ShockwaveFlash.ShockwaveFlash.7","version":function(obj){return getActiveXVersion(obj);}},{"name":"ShockwaveFlash.ShockwaveFlash.6","version":function(obj){var version="6,0,21";try{obj.AllowScriptAccess="always";version=getActiveXVersion(obj);}catch(err){}
