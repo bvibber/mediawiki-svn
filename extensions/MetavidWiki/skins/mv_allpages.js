@@ -11,6 +11,9 @@ if( typeof wgServer!='undefined' && typeof  wgScript != 'undefined'){
 if(typeof wgScript=='undefined')
 	var wgScript = "/w/index.php";
 	
+if(typeof wgScriptPath=='undefined')
+	var wgScriptPath = '/w';
+		
 var gMvd={};
 function mv_setup_allpage(){
 	js_log("mv embed done loading now setup 'all page'");

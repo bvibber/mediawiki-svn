@@ -129,6 +129,9 @@ $mvDispROEicon=false;
 //The text Embed a metavid Stream inline in the wiki 
 $mvEmbedKey = 'EmbedStream';
 
+//wars people of archive inacuracys (given its a wiki and the source is close caption feed)
+$mvEnableStreamNotice=true;
+
 /*
  * All Available meta data layers
  * these type keys are used to allow multiple layers of metadata per stream.

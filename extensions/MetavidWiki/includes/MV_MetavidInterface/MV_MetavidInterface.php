@@ -64,7 +64,7 @@
 		$this->page_title = wfMsg( 'mv_edit_sequence', $wgTitle->getText() );
 	}
 	function setupStreamView() {
-		global $mvgIP, $mvDefaultStreamViewLength, $wgOut, $mvgScriptPath, $wgUser, $mvDispROEicon;
+		global $mvgIP, $mvDefaultStreamViewLength, $wgOut, $mvgScriptPath, $wgUser, $mvDispROEicon, $mvEnableStreamNotice;
 
 		// set default time range if null time range request
 		$this->article->mvTitle->setStartEndIfEmpty();
@@ -101,9 +101,12 @@
 			wfMsg( 'mv_of' ) . seconds2ntp( $this->article->mvTitle->getDuration() ) .
 		'</h1>';
 		
-		$wgOut->addWikiText( wfMsg('mv_warning_wiki'));
-		$this->page_header.=$wgOut->getHTML();
-		$wgOut->clearHTML();
+		if($mvEnableStreamNotice){
+			$wgOut->addWikiText( wfMsg('mv_warning_wiki'));
+			$this->page_header.=$wgOut->getHTML();
+			$wgOut->clearHTML();
+		}
+		
 		
 		// add export roe icon:
 		if($mvDispROEicon){
