@@ -163,6 +163,13 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 	'expand_templates_preview' => 'Previsualizar',
 );
 
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['bat-smg'] = array(
+	'expandtemplates' => 'Ėšskeistė šabluonus',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

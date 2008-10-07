@@ -900,8 +900,21 @@ $messages['bn'] = array(
  * @author SMP
  */
 $messages['ca'] = array(
+	'mv_duration_label' => 'Durada',
+	'mv_external_file' => 'Fitxer extern',
 	'mv_tool_search' => 'Cerca',
 	'mv_edit' => 'Edita',
+	'mv_edit_title' => 'Edició de text',
+	'mv_adjust_preview_stop' => 'Aturar previsualització',
+	'mv_adjust_old_title_missing' => 'La pàgina que intenteu moure des de ($1) no existeix',
+	'mv_advanced_edit' => 'Edició avançada',
+	'mv_basic_edit' => 'Edició bàsica',
+	'mv_remove_category' => 'Esborrar categoria',
+	'mv_existing_categories' => 'categories:',
+	'mv_add_category' => 'Afegir una categoria',
+	'mv_basic_text_desc' => 'Descripció del text (optativa)',
+	'mv_viewnext' => 'Veure ($1)',
+	'mv_viewprevnext' => 'Veure ($1) ($2)',
 	'mv_search_category' => 'Categoria',
 	'mv_category' => 'categoria',
 );

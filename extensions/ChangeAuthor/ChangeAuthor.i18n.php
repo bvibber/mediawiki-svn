@@ -796,6 +796,7 @@ $messages['ja'] = array(
 	'changeauthor-success' => '要求された処理が完了しました。',
 	'changeauthor-logentry' => '$1 の特定版 $2 を $3 から $4 へ投稿者を変更しました。',
 	'changeauthor-logpagename' => '投稿者変更記録',
+	'changeauthor-rev' => '$1',
 );
 
 /** Javanese (Basa Jawa)
@@ -1212,6 +1213,14 @@ $messages['ro'] = array(
 	'changeauthor-revview' => 'Versiunea #$1 din $2',
 	'changeauthor-nosuchtitle' => 'Nu există o pagină numită "$1".',
 	'changeauthor-success' => 'Cererea ta a fost procesată cu succes.',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'changeauthor-pagenameform-go' => 'Veje',
+	'changeauthor-nosuchtitle' => 'Non g\'esiste \'na pàgene chiamete "$1".',
 );
 
 /** Russian (Русский)

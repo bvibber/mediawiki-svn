@@ -505,6 +505,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Heuler06
  * @author Raimond Spekking
  */
 $messages['de'] = array(
@@ -514,7 +515,7 @@ $messages['de'] = array(
 	'group-oversight-member' => 'Oversighter',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
 	'right-oversight' => 'Ansehen einer zuvor verborgenen Version',
-	'right-hiderevision' => 'Ansehen und wiederherstellen von Versionen, die auch vor Administratoren verborgen sind',
+	'right-hiderevision' => 'Ansehen und Wiederherstellen von Versionen, die auch vor Administratoren verborgen sind',
 	'hiderevision-prompt' => 'Zu entfernende Versionsnummer:',
 	'hiderevision-continue' => 'Weiter',
 	'hiderevision-text' => "Dies darf '''ausschließlich''' in den folgenden Fällen geschehen:

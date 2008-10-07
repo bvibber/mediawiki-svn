@@ -287,6 +287,7 @@ $messages['eo'] = array(
 	'imagemap_invalid_coord' => 'Eraro: Nevalida koordinato ĉe linio $1; ĝi nepre estu nombro',
 	'imagemap_invalid_desc' => 'Eraro: nevalida desc deklarado, devas esti unu el: <tt>$1</tt>',
 	'imagemap_description' => 'Pri ĉi tiu bildo',
+	'imagemap_poly_odd' => 'Eraro: troviĝis poligono kun malpara nombro de koordinatoj en linio $1',
 );
 
 /** Spanish (Español)
@@ -993,7 +994,7 @@ $messages['ru'] = array(
 	'imagemap_invalid_coord' => 'Ошибка: ошибочная координата в строке $1, ожидается число',
 	'imagemap_invalid_desc' => 'Ошибка: некорректное значение desc, ожидается одно из следующих значений: <tt>$1</tt>',
 	'imagemap_description' => 'Описание изображения',
-	'imagemap_poly_odd' => 'Ошибка: в строке $1 обнаружен полигон с недостаточным числом координат',
+	'imagemap_poly_odd' => 'Ошибка: в строке $1 обнаружено описание многоугольника с лишними координатами',
 );
 
 /** Yakut (Саха тыла)
@@ -1161,6 +1162,7 @@ $messages['uk'] = array(
 	'imagemap_invalid_coord' => 'Error: помилкова координата в рядку $1, має бути число',
 	'imagemap_invalid_desc' => 'Error: помилкове значення desc, має бути одне з наступних значень: <tt>$1</tt>',
 	'imagemap_description' => 'Опис зображення',
+	'imagemap_poly_odd' => 'Помилка: в рядку $1 знайдений многокутник із зайвою кількістю координат',
 );
 
 /** Vèneto (Vèneto)

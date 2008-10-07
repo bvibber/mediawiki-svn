@@ -133,6 +133,14 @@ $messages['ast'] = array(
 	'pdt_comparing_page' => "Comparando l'análisis sintáuticu de salida dende [[$1]]",
 );
 
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['bat-smg'] = array(
+	'pdtest_ok' => 'Gerā',
+	'pdtest_diff' => 'Skėrtomā',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

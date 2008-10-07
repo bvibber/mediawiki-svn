@@ -605,6 +605,13 @@ $messages['avk'] = array(
 	'boardvote_welcome' => "'''$1''' til drumbaf !",
 );
 
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['bat-smg'] = array(
+	'boardvote' => 'Vikimedėjės tarības rėnkėmā',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

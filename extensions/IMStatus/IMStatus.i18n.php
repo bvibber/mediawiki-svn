@@ -180,6 +180,19 @@ L’identifiant à fournir ici est composé des chiffres et lettres entre « $2 
 	'imstatus_yahoo_style' => 'le style du bouton, de $1 (le plus petit) à $2 (le plus grand), $3 et $4 sont pour les messages vocaux.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'imstatus_syntax' => 'Sintaxe',
+	'imstatus_default' => 'Por defecto',
+	'imstatus_example' => 'Exemplo',
+	'imstatus_possible_val' => 'Valores posibles',
+	'imstatus_max' => 'máx.',
+	'imstatus_min' => 'mín.',
+	'imstatus_or' => 'ou',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -229,6 +242,38 @@ Het nummer dat u moet opgeven is de nummers en letters tussen "$2" en "$3".',
 	'imstatus_skype_nbstyle' => 'Opmerking: als u een stijl kiest die ook een actie is, zal uw actiekeuze overschreven worden door de actie die past bij uw gekozen stijl.',
 	'imstatus_xfire_size' => 'de grootte van de knop, van $1 (grootst) tot $2 (kleinst)',
 	'imstatus_yahoo_style' => 'de stijl van de knop, van $1 (kleinste) tot $2 (grootste), $3 en $4 voor voicemail.',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'imstatus-desc' => 'Pridáva značky zobrazujúce stav prítomnosti používateľa roznych IM sietí (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Syntax',
+	'imstatus_default' => 'Štandardné',
+	'imstatus_example' => 'Príklad',
+	'imstatus_possible_val' => 'Možné hodnoty',
+	'imstatus_max' => 'max.',
+	'imstatus_min' => 'min.',
+	'imstatus_or' => 'alebo',
+	'imstatus_style' => 'štýl indikátora stavu',
+	'imstatus_action' => 'operácia po kliknutí tlačidla',
+	'imstatus_details_saa' => 'Podrobnosti o štýloch a operáciách nájdete na $1.',
+	'imstatus_your_name' => 'vaše meno na $1',
+	'imstatus_aim_presence' => '$1 zobrazuje váš stav prítomnosti s odkazom, ktorý spustí odoslanie správy v AIM ak ho má používateľ nainštalovaný.',
+	'imstatus_aim_api' => '$1 zobrazuje váš stav prítomnosti s odkazom, ktorý spustí odoslanie správy vo <b>webovom prehliadači</b>, javascriptovej verzii AIM.',
+	'imstatus_gtalk_code' => 'váš kód Google Talk',
+	'imstatus_gtalk_get_code' => 'Svoj kód Google Talk získate na $1.',
+	'imstatus_gtalk_height' => 'výška obdĺžnika v pixeloch',
+	'imstatus_gtalk_width' => 'šírka obdĺžnika v pixeloch',
+	'imstatus_icq_id' => 'váš ICQ identifikátor',
+	'imstatus_icq_style' => 'číslo v rozsahu 0-26 (áno, to je 27 dostupných štýlov...).',
+	'imstatus_live_code' => 'váš identifikátor na webe Live Messenger',
+	'imstatus_live_get_code' => 'váš identifikátor na webe Live Messenger: <strong>toto nie je vaša emailová adresa</strong>, musíte si ju vytvoriť <a href="$1">vo svojich nastaveniach Live Messenger</a>.
+Identifikátor, ktorý musíte zadať, sú písmená a číslice medzi „$2” a „$3”.',
+	'imstatus_skype_nbstyle' => 'Pozn.: Ak si zvolíte štýl, ktorý je aj operáciou, pred vašou voľbou operácie bude mať prednosť operácia zodpovedajúca zvolenému štýlu.',
+	'imstatus_xfire_size' => 'veľkosť tlačidla od $1 (najväčšia) do $2 (najmenšia).',
+	'imstatus_yahoo_style' => 'štýl tlačidla od $1 (najväčší) do $2 (najmenší). $3 a $4 slúžia pre hlasovú poštu.',
 );
 
 /** Telugu (తెలుగు)
