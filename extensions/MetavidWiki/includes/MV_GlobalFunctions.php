@@ -8,7 +8,6 @@
  */
 define( 'MV_VERSION', '1.0rc2' );
 
-
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
 /**
@@ -17,10 +16,6 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  * if semantic wiki is enabled for this wiki. 
  */
  
-// pre setup setup
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-      require_once( dirname( __FILE__ ) . '/../ExtensionFunctions.php' );
-}
 // add language:
 $wgExtensionMessagesFiles['MetavidWiki'] = $mvgIP . '/languages/MV_Messages.php';
 require_once( $mvgIP . '/languages/MV_Language.php' );
@@ -30,9 +25,9 @@ $wgExtensionAliasesFiles['MetavidWiki'] = $mvgIP . '/languages/MV_Aliases.php';
 
 $markerList = array();
 
-// override special search page: (requires ExtensionFunctions.php)
-extAddSpecialPage( dirname( __FILE__ ) . '/specials/MV_SpecialMediaSearch.php', 'Search', 'MV_SpecialSearch' );
-
+// override special search page:
+$wgSpecialPages['Search'] = 'MV_SpecialSearch';
+$wgAutoloadClasses['MV_SpecialSearch'] = dirname( __FILE__ ) . '/specials/MV_SpecialMediaSearch.php';
 
 function enableMetavid() {
 	global $wgExtensionFunctions, $smwgNamespacesWithSemanticLinks;
