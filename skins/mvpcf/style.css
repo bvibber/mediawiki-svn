@@ -26,6 +26,15 @@ body {
 .mw-specialpagerestricted {
 	font-weight: bold;
 }
+.mw-rollback-link,mw-history-undo {
+	color:black;
+	text-decoration: underline;	
+}
+.diffchange { background-color: #FFCDF3; text-decoration: none; }
+
+table .filehistory, td .filehistory{
+	border: 1px solid #03476F;	
+}
 a .new{
 	color:#F22
 }
@@ -138,7 +147,7 @@ in bg url to hide it from iemac */
 li#pt-userpage,
 li#pt-anonuserpage,
 li#pt-login {
-	background: url(images/user.gif) top left no-repeat;
+	/*background: url(images/user.gif) top left no-repeat;*/
 	padding-left: 20px;
 	text-transform: none;
 }

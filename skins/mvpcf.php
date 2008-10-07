@@ -438,6 +438,10 @@ foreach ($this->data['sidebar'] as $bar => $cont) {
 		}?></title>		
 		<style type="text/css" media="screen, projection">/*<![CDATA[*/			
 			@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/style.css";
+		/*]]>*/</style>		
+
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "<?php $this->text('stylepath') ?>/common/diff.css";
 		/*]]>*/</style>			
 						
 		<!--[if lt IE 7]>
