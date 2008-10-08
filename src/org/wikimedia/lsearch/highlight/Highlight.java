@@ -143,7 +143,7 @@ public class Highlight {
 			try{
 				ret = getTokens(reader,key,allTerms,fields);			
 			} catch(Exception e){
-				log.error("Error geting tokens: "+e.getMessage());
+				log.error("Error geting tokens: "+e.getMessage(),e);
 				e.printStackTrace();
 			}
 			if(ret == null)

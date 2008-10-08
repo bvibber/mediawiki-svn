@@ -50,7 +50,7 @@ public class RankField {
 				try{
 					ranks[i] = Integer.parseInt(reader.document(i).get("rank"));
 				} catch(NumberFormatException e){
-					log.error("Error for docid = "+i);
+					log.error("Error for docid = "+i,e);
 					e.printStackTrace();
 				}
 			}

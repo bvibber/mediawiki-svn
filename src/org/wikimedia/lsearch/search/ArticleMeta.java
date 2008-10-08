@@ -94,7 +94,7 @@ public class ArticleMeta {
 				String ext = "";
 				if(doc != null)
 					ext = ", ns="+doc.get("namespace")+", title="+doc.get("title");
-				log.error("Exception during caching of article info for docid="+i+ext);
+				log.error("Exception during caching of article info for docid="+i+ext,e);
 				e.printStackTrace();
 				throw new IOException(e.getMessage());
 			}
@@ -156,7 +156,7 @@ public class ArticleMeta {
 				return diff;
 			} catch (ParseException e) {
 				e.printStackTrace();
-				log.error("Error parsing date "+dateStr+" : "+e.getMessage());
+				log.error("Error parsing date "+dateStr+" : "+e.getMessage(),e);
 			}
 			return 0;
 		}

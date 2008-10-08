@@ -143,6 +143,8 @@ public class WikiQueryParser {
 	protected Wildcards wildcards = null;
 	protected Fuzzy fuzzy = null;
 	protected IndexId iid;
+	protected boolean isInTitle = false;
+	protected int isInTitleLevel = 0;
 	
 	protected Pattern urlPattern = Pattern.compile("(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?");
 	
@@ -682,7 +684,7 @@ public class WikiQueryParser {
 	/** analyzer buffer into tokens using default analyzer */
 	private void analyzeBuffer(){
 		String analysisField = defaultField;
-		if(defaultField.equals("contents") && "intitle".equals(currentField))
+		if(defaultField.equals("contents") && isInTitle)
 			analysisField = "title";
 		tokenStream = analyzer.tokenStream(analysisField, 
 				new String(buffer,0,length));
@@ -729,7 +731,7 @@ public class WikiQueryParser {
 	private Term makeTerm(String t){
 		if(currentField == null)
 			return new Term(defaultField,builder.isExactCase()? t : t.toLowerCase());
-		else if(defaultField.equals("contents") && "intitle".equals(currentField))
+		else if(defaultField.equals("contents") && isInTitle)
 			return new Term("title",builder.isExactCase()? t : t.toLowerCase());
 		else if(!"incategory".equals(currentField) && 
 				(namespacePolicy == NamespacePolicy.IGNORE || 
@@ -866,7 +868,7 @@ public class WikiQueryParser {
 				continue;
 			
 			// terms, fields
-			if(Character.isLetterOrDigit(c) || c=='.' || c == '[' ||  c=='*' || c=='?'){
+			if(Character.isLetterOrDigit(c) || c=='.' || c == '[' ||  c=='*'){
 				// check for generic namespace prefixes, e.g. [0,1]:
 				if(c == '['){
 					if(fetchGenericPrefix())
@@ -890,6 +892,10 @@ public class WikiQueryParser {
 					if(currentField == null || definedExplicitField){
 						// set field name
 						currentField = new String(buffer,0,length);
+						if("intitle".equals(currentField)){
+							isInTitle = true;
+							isInTitleLevel = level;
+						}
 						if((defaultNamespaceName!=null && currentField.equals(defaultNamespaceName)) || currentField.equals(defaultField)){
 							currentField = null;
 							break; // repeated definition of field, ignore
@@ -990,6 +996,9 @@ public class WikiQueryParser {
 				break;
 			case ')':
 				if(level > 0){
+					// get out of titles on appropriate level of parenthesis
+					if(isInTitle && level <= isInTitleLevel)
+						isInTitle = false;
 					break mainloop;
 				}
 				continue;
@@ -1033,7 +1042,7 @@ public class WikiQueryParser {
 		boolean wild = false;
 		int index = -1;
 		for(int i=0;i<length;i++){
-			if(buffer[i] == '*' || buffer[i] == '?'){
+			if(buffer[i] == '*'){
 				wild = true;
 				index = i;
 				break;
@@ -1041,10 +1050,10 @@ public class WikiQueryParser {
 		}
 		// check if it's a valid wildcard
 		if(wild){
-			if((buffer[0] == '*' || buffer[0] == '?') && (buffer[length-1]=='*' || buffer[length-1]=='?'))
+			if((buffer[0] == '*') && (buffer[length-1]=='*'))
 				return false; // don't support patterns like *a*
-			if(index == length-1 && buffer[index]=='?')
-				return false; // probably just an ordinary question mark
+			//if(index == length-1 && buffer[index]=='?')
+			//	return false; // probably just an ordinary question mark
 			for(int i=0;i<length;i++){
 				if(Character.isLetterOrDigit(buffer[i]))
 					return true; // +card :P
@@ -1215,7 +1224,8 @@ public class WikiQueryParser {
 				if(prefixFilter.startsWith("[") && prefixFilter.contains("]:")){
 					// convert from [2]:query to 2:query form
 					prefixFilter = prefixFilter.replace("[","").replace("]:",":");
-				}
+				} else // default to main namespace
+					prefixFilter = "0:"+prefixFilter; 
 				// return the actual query without prefix
 				return queryText.substring(0,inx);
 			}
@@ -1254,6 +1264,7 @@ public class WikiQueryParser {
 		explicitOccur = null;
 		parsedWords = new ParsedWords();
 		urls = new ArrayList<ArrayList<Term>>();
+		isInTitle = false;
 	}
 	
 	/** Init parsing, call this function to parse text */ 
@@ -1941,7 +1952,8 @@ public class WikiQueryParser {
 		if(redirectsMulti != null)
 			full.add(redirectsMulti,Occur.SHOULD);
 		
-		return full;
+		ArticleNamespaceScaling nsScale = iid.getNamespaceScaling();
+		return new ArticleQueryWrap(full,new ArticleInfoImpl(),null,null,nsScale);
 		
 	}
 	

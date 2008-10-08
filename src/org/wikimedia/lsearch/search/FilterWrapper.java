@@ -79,5 +79,13 @@ public class FilterWrapper extends Filter {
 	public boolean hasAnyFilters(){
 		return hasNamespaceFilter() || hasCustomFilters();
 	}
+	
+	/** If filter is not empty, get this filter, otherwise just get null */
+	public Filter getFilterOrNull(){
+		if(hasAnyFilters())
+			return this;
+		else 
+			return null;
+	}
 
 }

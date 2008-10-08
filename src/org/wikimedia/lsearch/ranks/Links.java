@@ -268,7 +268,7 @@ public class Links {
 				flush();
 			} catch(Exception e){
 				// report but continue
-				log.warn("Error opening links index "+ iid +": "+e.getMessage());
+				log.warn("Error opening links index "+ iid +": "+e.getMessage(),e);
 			}
 			// batch add
 			writer = WikiIndexModifier.openForWrite(iid.getIndexPath(),false,new SimpleAnalyzer());

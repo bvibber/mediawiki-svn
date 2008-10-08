@@ -198,7 +198,7 @@ public class IndexThread extends Thread {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				log.warn("IndexThread sleep interrupted with message: "+e.getMessage());
+				log.warn("IndexThread sleep interrupted with message: "+e.getMessage(),e);
 			}
 		}
 		if(queuedUpdatesExist())
@@ -258,7 +258,7 @@ public class IndexThread extends Thread {
 				}
 			} catch(IOException e){
 				e.printStackTrace();
-				log.error("Error optimizing index "+iid);
+				log.error("Error optimizing index "+iid,e);
 				badOptimization.add(iid);
 			} finally {
 				if(lock != null)
@@ -322,7 +322,7 @@ public class IndexThread extends Thread {
 				FSUtils.createHardLinkRecursive(indexPath+sep+f.getName(),snapshot+sep+f.getName(),true);
 			} catch (IOException e) {
 				e.printStackTrace();
-				log.error("Error making snapshot "+snapshot+": "+e.getMessage());
+				log.error("Error making snapshot "+snapshot+": "+e.getMessage(),e);
 				return;
 			}
 		}
@@ -357,7 +357,7 @@ public class IndexThread extends Thread {
 					reader.close();
 				trans.commit();
 			} catch (IOException e) {
-				log.error("Could not optimize index at "+path+" : "+e.getMessage());
+				log.error("Could not optimize index at "+path+" : "+e.getMessage(),e);
 				throw e;
 			}
 		}
@@ -643,7 +643,7 @@ public class IndexThread extends Thread {
 			lastFlush =  System.currentTimeMillis();
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error("Unexpected error in Index thread while applying updates: "+e.getMessage());
+			log.error("Unexpected error in Index thread while applying updates: "+e.getMessage(),e);
 			return;
 		}
 	}

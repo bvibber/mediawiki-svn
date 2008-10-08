@@ -149,7 +149,7 @@ public class AggregateMetaField {
 					count++;
 				}										
 			} catch(Exception e){
-				log.error("Exception during processing stored_field="+field+" on docid="+i+", with stored="+stored+" : "+e.getMessage());
+				log.error("Exception during processing stored_field="+field+" on docid="+i+", with stored="+stored+" : "+e.getMessage(),e);
 				e.printStackTrace();
 				throw new IOException(e.getMessage());
 			}

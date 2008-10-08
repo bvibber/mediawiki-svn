@@ -1,10 +1,11 @@
 package org.apache.lucene.search;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class ArticleNamespaceScaling {
+public class ArticleNamespaceScaling implements Serializable {
 	protected float[] nsBoost = null;
 	public static float talkPageScale = 0.25f;
 	

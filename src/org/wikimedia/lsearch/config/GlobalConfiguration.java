@@ -1463,7 +1463,7 @@ public class GlobalConfiguration {
 		if(repo == null && wgServer != null){
 			String key = findSuffix(wgServer.keySet(),dbname);
 			if(key == null)
-				key = "<default>";
+				key = "default";
 			repo = wgServer.get(key);
 			if(repo != null){
 				if(!repo.endsWith("/"))

@@ -169,7 +169,7 @@ public class LinkAnalysisStorage extends LuceneStorage {
 				return getAnalitics(d.get("key"),d);
 			} catch(IOException e){
 				//TODO: Java is not letting us throw exception here
-				log.error("I/O exception in LinkAnalysisIterator:next() : "+e.getMessage());
+				log.error("I/O exception in LinkAnalysisIterator:next() : "+e.getMessage(),e);
 				return null;				
 			}
 		}

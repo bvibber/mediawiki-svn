@@ -160,18 +160,19 @@ public class SerbianFilter extends TokenFilter {
 		String cv;
 		boolean diff = false;
 		aliasDiff = false;
-		for(char c : text.toCharArray()){
-			 cv = conv[c];
-			 if(cv == null){
-				 buffer[length++] = c;
-			 } else{
-				 for(char ch : cv.toCharArray()){
-					 buffer[length++] = ch;
-					 diff = true;
-					 if( c != 'đ' && c != 'Đ')
-						 aliasDiff = true;
-				 }
-			 }
+		for(int i=0;i<text.length() && i<buffer.length;i++){
+			char c = text.charAt(i);
+			cv = conv[c];
+			if(cv == null){
+				buffer[length++] = c;
+			} else{
+				for(char ch : cv.toCharArray()){
+					buffer[length++] = ch;
+					diff = true;
+					if( c != 'đ' && c != 'Đ')
+						aliasDiff = true;
+				}
+			}
 		}
 		if(diff)
 			return new String(buffer,0,length);

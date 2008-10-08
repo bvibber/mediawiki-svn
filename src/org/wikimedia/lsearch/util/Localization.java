@@ -340,7 +340,7 @@ public class Localization {
 				}
 			}
 		} catch (Exception e) {
-			log.warn("Error processing message file at "+MessageFormat.format(loc+"Messages{0}.php",langCode));
+			log.warn("Error processing message file at "+MessageFormat.format(loc+"Messages{0}.php",langCode),e);
 		}
 		log.warn("Could not load localization for "+langCode);
 		badLocalizations.add(langCode.toLowerCase());
@@ -449,7 +449,7 @@ public class Localization {
 			log.debug("Read interwiki map from jar file");
 			r.close();
 		} catch(Exception e){
-			log.warn("Cannot read interwiki map from jar file");
+			log.warn("Cannot read interwiki map from jar file",e);
 		}
 	}
 	

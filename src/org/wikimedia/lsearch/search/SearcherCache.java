@@ -56,7 +56,7 @@ public class SearcherCache {
 				s.close();				
 			} catch (IOException e) {
 				e.printStackTrace();
-				log.warn("I/O error closing searchables "+s+" : "+e.getMessage());
+				log.warn("I/O error closing searchables "+s+" : "+e.getMessage(),e);
 			}
 		}		
 	}	
@@ -82,6 +82,7 @@ public class SearcherCache {
 		}
 		
 		private IndexSearcherMul open(IndexId iid, String path, RAMDirectory directory) throws IOException {
+			initialWarmup.add(iid.toString());
 			IndexSearcherMul searcher = null;
 			log.debug("Opening local index for "+iid);
 			if(!iid.isMySearch())
@@ -96,7 +97,7 @@ public class SearcherCache {
 				searcher.setSimilarity(new WikiSimilarity());
 				
 				// preload meta caches
-				if(iid.isArticleIndex()){
+				if(iid.isArticleIndex() || iid.isTitlesBySuffix()){
 					IndexReader reader = searcher.getIndexReader();
 					ArrayList<CacheBuilder> builders = new ArrayList<CacheBuilder>();
 					Collection fields = reader.getFieldNames(FieldOption.ALL);
@@ -131,7 +132,7 @@ public class SearcherCache {
 				e.printStackTrace();
 				// tell registry this is not a good index
 				IndexRegistry.getInstance().invalidateCurrent(iid);
-				log.error("I/O Error opening index at path "+iid.getCanonicalSearchPath()+" : "+e.getMessage());
+				log.error("I/O Error opening index at path "+iid.getCanonicalSearchPath()+" : "+e.getMessage(),e);
 				throw e;
 			}
 			return searcher;
@@ -203,7 +204,9 @@ public class SearcherCache {
 	protected Set<SearchHost> deadPools = Collections.synchronizedSet(new HashSet<SearchHost>());
 	
 	protected static SearcherCache instance = null;
-	
+
+	/** deployment has been tried at least once for these */
+	protected static Set<String> initialWarmup = Collections.synchronizedSet(new HashSet<String>());  
 	/**
 	 * If there is a cached local searcher of iid
 	 * 
@@ -260,8 +263,8 @@ public class SearcherCache {
 	public IndexSearcherMul getLocalSearcher(IndexId iid) throws IOException{
 		if(iid == null)
 			throw new RuntimeException("No such index");
-		if(UpdateThread.isBeingDeployed(iid))
-			throw new IOException(iid+" is being deployed");
+		if(!initialWarmup.contains(iid.toString()))
+			throw new RuntimeException(iid+" is being deployed");
 		return fromLocalCache(iid.toString());
 	}
 	
@@ -329,13 +332,13 @@ public class SearcherCache {
 			}
 		} catch(RemoteException e){
 			e.printStackTrace();
-			log.warn("Cannot get searcher status for "+iid+" on "+host+" : "+e.getMessage());
+			log.warn("Cannot get searcher status for "+iid+" on "+host+" : "+e.getMessage(),e);
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.warn("I/O error trying to construct remote searcher pool for "+iid+" on "+host+" : "+e.getMessage());
+			log.warn("I/O error trying to construct remote searcher pool for "+iid+" on "+host+" : "+e.getMessage(),e);
 		} catch (NotBoundException e) {
 			e.printStackTrace();
-			log.warn("Remote searcher for "+iid+" on "+host+" not bound : "+e.getMessage());
+			log.warn("Remote searcher for "+iid+" on "+host+" not bound : "+e.getMessage(),e);
 		}
 		// if we reach this point something went wrong
 		deadPools.add(new SearchHost(iid,host));
@@ -368,7 +371,7 @@ public class SearcherCache {
 						RMIServer.bind(iid,pool.searchers);
 					}
 				} catch (IOException e) {
-					log.warn("I/O error warming index for "+iid+" : "+e.getMessage());				
+					log.warn("I/O error warming index for "+iid+" : "+e.getMessage(),e);				
 				}
 			}
 		}

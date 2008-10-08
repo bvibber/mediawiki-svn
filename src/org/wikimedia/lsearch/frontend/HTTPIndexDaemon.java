@@ -87,20 +87,20 @@ public class HTTPIndexDaemon extends HttpHandler {
 			}
 			
 		} catch (SecurityException e) {
-			log.error("Called method "+methodName+" which is not visible");
+			log.error("Called method "+methodName+" which is not visible",e);
 			sendHeaders(400,"Bad Request");
 		} catch (NoSuchMethodException e) {
-			log.error("Called unrecognized method "+methodName+". Uri was: "+uri);
+			log.error("Called unrecognized method "+methodName+". Uri was: "+uri,e);
 			sendHeaders(404,"Not Found");
 		} catch (IllegalArgumentException e) {
-			log.error("Called method "+methodName+" with illegel arguments");
+			log.error("Called method "+methodName+" with illegel arguments",e);
 			sendHeaders(400,"Bad Request");
 		} catch (IllegalAccessException e) {
-			log.error("Cannot call method "+methodName+", illegal access.");
+			log.error("Cannot call method "+methodName+", illegal access.",e);
 			sendHeaders(400,"Bad Request");
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
-			log.error("Error while calling method "+methodName+": invocation target exception");
+			log.error("Error while calling method "+methodName+": invocation target exception",e);
 			sendHeaders(400,"Bad Request");
 		}
 	}

@@ -42,7 +42,7 @@ public class StopWords {
 		try{
 			return HighFreqTerms.getHighFreqTerms(iid.getDB(),"contents",50).toArray(new String[] {});
 		} catch(Exception e){
-			log.warn("Failed to fetch stop words for "+iid);
+			log.warn("Failed to fetch stop words for "+iid,e);
 			return new String[] {};
 		}		
 	}
@@ -85,7 +85,7 @@ public class StopWords {
 		try {
 			ret.addAll(getCached(iid));
 		} catch (IOException e) {
-			log.warn("Cannot get cached stop words for "+iid);
+			log.warn("Cannot get cached stop words for "+iid,e);
 		}
 		return ret;
 	}
@@ -130,7 +130,7 @@ public class StopWords {
 				log.info("Successfully loaded stop words for: "+cachePredefined.keySet()+" in "+(System.currentTimeMillis()-start)+" ms");
 			} catch(IOException e){
 				e.printStackTrace();
-				log.error("Cannot load stop words definitions: "+e.getMessage());
+				log.error("Cannot load stop words definitions: "+e.getMessage(),e);
 			}
 			loadedPredefined = true;
 		}

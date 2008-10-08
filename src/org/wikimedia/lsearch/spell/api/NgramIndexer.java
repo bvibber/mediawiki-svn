@@ -55,7 +55,7 @@ public class NgramIndexer {
 				WikiIndexModifier.makeDBPath(path); // ensure all directories are made				
 				writer = new IndexWriter(path,analyzer,newIndex);
 			} catch (IOException e1) {
-				log.error("I/O error openning index for addition of documents at "+path+" : "+e.getMessage());
+				log.error("I/O error openning index for addition of documents at "+path+" : "+e.getMessage(),e);
 				throw e1;
 			}				
 		}
@@ -81,7 +81,7 @@ public class NgramIndexer {
 			writer.close();
 			writer = null;			
 		} catch(IOException e){
-			log.warn("I/O error closing index at "+path);
+			log.warn("I/O error closing index at "+path,e);
 			throw e;
 		}
 	}
@@ -95,7 +95,7 @@ public class NgramIndexer {
 			writer.close();
 			writer = null;
 		} catch(IOException e){
-			log.warn("I/O error optimizing/closing index at "+path);
+			log.warn("I/O error optimizing/closing index at "+path,e);
 			throw e;
 		}
 	}
@@ -259,7 +259,7 @@ public class NgramIndexer {
 			log.debug("Deleting document matching term "+t);
 			writer.deleteDocuments(t);
 		} catch (Exception e) {
-			log.error("Cannot delete document : "+e.getMessage());
+			log.error("Cannot delete document : "+e.getMessage(),e);
 			e.printStackTrace();
 		}
 	}
@@ -269,7 +269,7 @@ public class NgramIndexer {
 			log.debug("Adding document "+doc);
 			writer.addDocument(doc);
 		} catch (Exception e) {
-			log.error("Cannot add document "+doc+" : "+e.getMessage());
+			log.error("Cannot add document "+doc+" : "+e.getMessage(),e);
 			e.printStackTrace();
 		}
 	}

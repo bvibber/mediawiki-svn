@@ -50,7 +50,7 @@ public class WordTerms implements Terms {
 		try {
 			words = loadWordFreq(path);
 		} catch (IOException e) {
-			log.error("Cannot open dictionary of search terms in "+path);
+			log.error("Cannot open dictionary of search terms in "+path,e);
 			e.printStackTrace();
 		}
 	}
@@ -59,7 +59,7 @@ public class WordTerms implements Terms {
 		try {
 			words = loadWordFreq(stream);
 		} catch (IOException e) {
-			log.error("Cannot open dictionary of search terms from stream");
+			log.error("Cannot open dictionary of search terms from stream",e);
 			e.printStackTrace();
 		}
 	}

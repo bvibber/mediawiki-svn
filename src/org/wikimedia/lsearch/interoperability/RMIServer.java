@@ -29,7 +29,7 @@ public class RMIServer {
          log.info(name+" bound");
 		} catch (Exception e) {
 			e.printStackTrace();
-         log.warn("Cannot bind "+name+" exception:"+e.getMessage());
+         log.warn("Cannot bind "+name+" exception:"+e.getMessage(),e);
      }
 	}
 	
@@ -40,7 +40,7 @@ public class RMIServer {
          log.info(name+" bound");
 		} catch (Exception e) {
 			e.printStackTrace();
-         log.warn("Cannot bind "+name+" exception:"+e.getMessage());
+         log.warn("Cannot bind "+name+" exception:"+e.getMessage(),e);
      }
 	}
 	
@@ -79,7 +79,7 @@ public class RMIServer {
 			}
 			return true;
 		} catch(IOException e){
-			log.warn("Error rebinding searchers for "+iid+" : "+e.getMessage());
+			log.warn("Error rebinding searchers for "+iid+" : "+e.getMessage(),e);
 			e.printStackTrace();
 		}
 		return false;
@@ -96,7 +96,7 @@ public class RMIServer {
 			return true;
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			log.warn("Error binding searchable with basename "+name+" : "+e.getMessage());
+			log.warn("Error binding searchable with basename "+name+" : "+e.getMessage(),e);
 		} catch(Exception e){
 			e.printStackTrace();
 		}

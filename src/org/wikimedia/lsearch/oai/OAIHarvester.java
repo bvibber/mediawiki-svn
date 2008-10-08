@@ -76,7 +76,7 @@ public class OAIHarvester {
 				ret.addAll(collector.getRecords());
 			} while(hasMore() && ret.size() < atLeast);
 		} catch(IOException e){
-			log.warn("I/O exception listing records: "+e.getMessage());
+			log.warn("I/O exception listing records: "+e.getMessage(),e);
 			return null;
 		}
 		return ret;

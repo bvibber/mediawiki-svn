@@ -78,7 +78,7 @@ public class Transaction {
 			inTransaction = true;
 			log.info("Transaction on index "+iid+" started");
 		} catch(Exception e){
-			log.error("Error while intializing transaction: "+e.getMessage());
+			log.error("Error while intializing transaction: "+e.getMessage(),e);
 			lock.unlock();
 		}
 	}
@@ -94,7 +94,7 @@ public class Transaction {
 			if(info.exists())
 				FSUtils.deleteRecursive(info.getAbsoluteFile());
 		} catch(Exception e){
-			log.error("Error removing old transaction data from "+iid.getTransactionPath(type)+" : "+e.getMessage());
+			log.error("Error removing old transaction data from "+iid.getTransactionPath(type)+" : "+e.getMessage(),e);
 		}
 
 	}
@@ -139,7 +139,7 @@ public class Transaction {
 			FSUtils.createHardLinkRecursive(backup.getAbsolutePath(),path);
 			FSUtils.deleteRecursive(backup.getAbsoluteFile()); // cleanup 
 		} catch(Exception e){
-			log.error("Recovery of index "+iid+" failed with error "+e.getMessage());
+			log.error("Recovery of index "+iid+" failed with error "+e.getMessage(),e);
 		}
 	}
 	

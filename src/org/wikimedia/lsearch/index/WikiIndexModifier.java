@@ -161,7 +161,7 @@ public class WikiIndexModifier {
 				}
 				reader.close();
 			} catch (IOException e) {
-				log.warn("I/O Error: could not open/read "+iid.getIndexPath()+" while deleting document.");
+				log.warn("I/O Error: could not open/read "+iid.getIndexPath()+" while deleting document.",e);
 				return false;
 			}
 			return true;
@@ -212,11 +212,11 @@ public class WikiIndexModifier {
 												
 						log.debug(iid+": Adding document "+rec.getArticle().toStringFull());
 					} catch (IOException e) {
-						log.error("Error writing  document "+rec+" to index "+path);
+						log.error("Error writing  document "+rec+" to index "+path,e);
 						succ = false; // report unsucc, but still continue, to process all cards 
 					} catch(Exception e){
 						e.printStackTrace();
-						log.error("Error adding document "+rec.getIndexKey()+" with message: "+e.getMessage());
+						log.error("Error adding document "+rec.getIndexKey()+" with message: "+e.getMessage(),e);
 						succ = false; // report unsucc, but still continue, to process all cards
 					}
 				}
@@ -224,7 +224,7 @@ public class WikiIndexModifier {
 			try {
 				writer.close();					
 			} catch (IOException e) {
-				log.error("Error closing index "+path);
+				log.error("Error closing index "+path,e);
 				return false;
 			}
 			return succ;
@@ -258,7 +258,7 @@ public class WikiIndexModifier {
 					throw e;
 			} catch (IOException e1) {
 				e1.printStackTrace();
-				log.error("I/O error openning index at "+path+" : "+e.getMessage());
+				log.error("I/O error openning index at "+path+" : "+e.getMessage(),e);
 				throw e1;
 			}				
 		}
@@ -356,7 +356,7 @@ public class WikiIndexModifier {
 				log.info("Unlocked index at "+path);
 			}
 		} catch(IOException e){
-			log.warn("I/O error unlock index at "+path+" : "+e.getMessage());
+			log.warn("I/O error unlock index at "+path+" : "+e.getMessage(),e);
 		}
 	}
 	
@@ -401,7 +401,7 @@ public class WikiIndexModifier {
 		    && updateTitles(iid,updateRecords);
 		} catch(Exception e){
 			e.printStackTrace();
-			log.error("Error updating "+iid+" : "+e.getMessage());
+			log.error("Error updating "+iid+" : "+e.getMessage(),e);
 			return false;
 		}
 	}
@@ -514,7 +514,7 @@ public class WikiIndexModifier {
 			return true;
 		} catch(IOException e){
 			e.printStackTrace();
-			log.error("Cannot fetch links info: "+e.getMessage());
+			log.error("Cannot fetch links info: "+e.getMessage(),e);
 			throw e;
 		}
 	}
@@ -550,7 +550,7 @@ public class WikiIndexModifier {
 		} catch(IOException e){
 			trans.rollback();
 			e.printStackTrace();
-			log.error("Cannot update links index: "+e.getMessage());
+			log.error("Cannot update links index: "+e.getMessage(),e);
 			return false;
 		}
 	}
@@ -565,7 +565,7 @@ public class WikiIndexModifier {
 			return true;
 		} catch(IOException e){
 			e.printStackTrace();
-			log.error("Cannot update prefix index: "+e.getMessage());
+			log.error("Cannot update prefix index: "+e.getMessage(),e);
 			return false;
 		}
 	}
@@ -579,7 +579,7 @@ public class WikiIndexModifier {
 			return true;
 		} catch(IOException e){
 			e.printStackTrace();
-			log.error("Cannot update spellcheck index: "+e.getMessage());
+			log.error("Cannot update spellcheck index: "+e.getMessage(),e);
 			return false;
 		}
 	}
@@ -593,7 +593,7 @@ public class WikiIndexModifier {
 			return true;
 		} catch(IOException e){
 			e.printStackTrace();
-			log.error("Cannot update spellcheck index: "+e.getMessage());
+			log.error("Cannot update spellcheck index: "+e.getMessage(),e);
 			return false;
 		}
 	}

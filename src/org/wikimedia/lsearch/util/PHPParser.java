@@ -416,25 +416,33 @@ public class PHPParser {
 		"NS_CATEGORY_TALK    => 'Razgovor_o_kategoriji');";
 		String text2 = "$fallback='sr-ec';";
 	
-		String file = "/var/www/html/wiki-lucene/phase3/languages/messages/MessagesEn.php";
-		
-		PHPParser p = new PHPParser();
-		String php = p.readFile(file);
-		Hashtable<String,Integer> map = p.getNamespaces(php);
-		System.out.println(map);
-		System.out.println(p.getFallBack(text2));
-		System.out.println(p.getRedirectMagic(php));
-		
-		System.out.println(p.getLanguages("'wgLanguageCode' => array('default' => '$lang')"));
-		String initset = p.readURL(new URL("file:///home/rainman/Desktop/InitialiseSettings.php"));
-		System.out.println(p.getLanguages(initset));
-		System.out.println(p.getServer(initset));
-		System.out.println(p.getDefaultSearch(initset));
-		System.out.println(p.getMetaNamespace(initset));
-		System.out.println(p.getMetaNamespaceTalk(initset));
-		System.out.println(p.getExtraNamespaces(initset));
-		System.out.println(p.getNamespacesWithSubpages(initset));
-		System.out.println(p.getContentNamespaces(initset));
-		
+		try{
+			String file = "/var/www/wiki/phase3/languages/messages/MessagesEn.php";
+
+			PHPParser p = new PHPParser();
+			String php = p.readFile(file);
+			Hashtable<String,Integer> map = p.getNamespaces(php);
+			System.out.println(map);
+			System.out.println(p.getFallBack(text2));
+			System.out.println(p.getRedirectMagic(php));
+
+			System.out.println(p.getLanguages("'wgLanguageCode' => array('default' => '$lang')"));
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		try{
+			PHPParser p = new PHPParser();
+			String initset = p.readURL(new URL("file:///home/wikipedia/common/php-1.5/InitialiseSettings.php"));
+			System.out.println(p.getLanguages(initset));
+			System.out.println("wgServer: " + p.getServer(initset));
+			System.out.println(p.getDefaultSearch(initset));
+			System.out.println(p.getMetaNamespace(initset));
+			System.out.println(p.getMetaNamespaceTalk(initset));
+			System.out.println(p.getExtraNamespaces(initset));
+			System.out.println(p.getNamespacesWithSubpages(initset));
+			System.out.println(p.getContentNamespaces(initset));
+		} catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }

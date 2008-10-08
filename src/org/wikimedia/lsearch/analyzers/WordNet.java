@@ -166,7 +166,7 @@ public class WordNet {
 			log.info("Loaded WordNet synonyms in "+(System.currentTimeMillis()-start)+" ms");
 		} catch(Exception e){
 			e.printStackTrace();
-			log.warn("Cannot load WordNet synonym file : "+e.getMessage());
+			log.warn("Cannot load WordNet synonym file : "+e.getMessage(),e);
 			state = State.FAILED;
 		}
 	}

@@ -61,7 +61,7 @@ public class MySQLStorage extends Storage {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			log.error("Cannot load mysql jdbc driver, class not found: "+e.getMessage());
+			log.error("Cannot load mysql jdbc driver, class not found: "+e.getMessage(),e);
 		}
 		
 		lib = config.getString("Storage","lib","./sql");

@@ -110,6 +110,20 @@ public class WikiQueryParserTest extends WikiTestCase {
 			
 			q = parser.parse("douglas -adams guides");
 			assertEquals("[contents:guides, contents:douglas, contents:guide]", Arrays.toString(parser.getHighlightTerms()));
+			
+			/* ================== PREFIXES ============ */
+			q = parser.parseRaw("intitle:tests");
+			// FIXME: stemming for titles?
+			assertEquals("title:tests title:test^0.5",q.toString());
+			
+			q = parser.parseRaw("intitle:multiple words in title");
+			assertEquals("+title:multiple +title:words +title:in +title:title",q.toString());
+			
+			q = parser.parseRaw("intitle:[2]:tests");
+			assertEquals("title:tests title:test^0.5",q.toString());
+			
+			q = parser.parseRaw("something (intitle:[2]:tests) out");
+			assertEquals("+contents:something +(title:tests title:test^0.5) +contents:out",q.toString());
 
 			
 		} catch(Exception e){

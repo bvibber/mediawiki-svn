@@ -427,9 +427,11 @@ public class ExtToken extends Token {
 						tt.unstub();
 					}
 					tt.setPositionIncrement(0);
-					tokens.add(tt);
+					/* FIXME: this should happen, but if it does... oh well... 
 					if(t.type != Type.TEXT)						
-						raiseException(serialized,cur,t,"Bad serialized data: trying to assign alias to nontext token");						
+						raiseException(serialized,cur,t,"Bad serialized data: trying to assign alias to nontext token");
+						*/
+					tokens.add(tt);
 					cur += len;
 					break; }
 				case 3: // change pos

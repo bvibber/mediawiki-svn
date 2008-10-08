@@ -83,7 +83,7 @@ public class LanguageAnalyzer extends Analyzer {
 				
 				return filtered;				
 			} catch (Exception e){
-				log.error("Error applying custom filter for "+filters.getLanguage());
+				log.error("Error applying custom filter for "+filters.getLanguage(),e);
 			}
 		}
 		return tokens;

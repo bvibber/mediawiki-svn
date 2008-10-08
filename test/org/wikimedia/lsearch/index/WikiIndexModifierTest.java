@@ -71,6 +71,34 @@ public class WikiIndexModifierTest extends WikiTestCase {
 		}
 	}
 	
+	public void testMakeHighlightDocuments(){
+		IndexId iid = IndexId.get("enwiki");
+		String text = "Some very [[simple]] text used for testing\n== Heading 1 ==\nParagraph\n[[Category:Category1]]";
+		int references = 100;
+		int redirectTargetNamespace = -1;
+		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
+		redirects.add(new Redirect(0,"Redirect",2));
+		ArrayList<RelatedTitle> rel = new ArrayList<RelatedTitle>();
+		rel.add(new RelatedTitle(new Title(0,"Related test"),50));
+		Hashtable<String,Integer> anchors = new Hashtable<String,Integer>();
+		anchors.put("Anchor",20);
+		Date date = new Date();
+		
+		Article article = new Article(10,0,"Test page",text,null,
+				references,redirectTargetNamespace,0,redirects,rel,anchors,date);
+		
+		analyzer = Analyzers.getHighlightAnalyzer(iid, false);
+		try{
+			doc = WikiIndexModifier.makeHighlightDocument(article,new FieldBuilder(iid),iid);
+			assertEquals("1 [10]", 
+					tokens("pageid"));
+			assertEquals("1 [0:Test page]",
+					tokens("key"));			
+		} catch(IOException e){
+			fail();
+		}
+	}
+	
 	public void testMakeTitleDocument(){
 		IndexId iid = IndexId.get("en-titles");
 		String text = "Some very simple text used for testing\n== Heading 1 ==\nParagraph\n[[Category:Category1]]";

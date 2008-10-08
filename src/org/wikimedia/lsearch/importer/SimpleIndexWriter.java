@@ -90,7 +90,7 @@ public class SimpleIndexWriter {
 				log.info("Making new index at path "+path);
 				writer = new IndexWriter(path,null,true);
 			} catch (IOException e1) {
-				log.error("I/O error openning index for addition of documents at "+path+" : "+e.getMessage());
+				log.error("I/O error openning index for addition of documents at "+path+" : "+e1.getMessage(),e1);
 				return null;
 			}				
 		}
@@ -149,10 +149,10 @@ public class SimpleIndexWriter {
 			writer.addDocument(doc,indexAnalyzer);
 			log.debug(target+": Adding document "+a);
 		} catch (IOException e) {
-			log.error("I/O Error writing article "+a+" to index "+target.getImportPath()+" : "+e.getMessage());
+			log.error("I/O Error writing article "+a+" to index "+target.getImportPath()+" : "+e.getMessage(),e);
 		} catch(Exception e){
 			e.printStackTrace();
-			log.error("Error adding document "+a+" with message: "+e.getMessage());
+			log.error("Error adding document "+a+" with message: "+e.getMessage(),e);
 		}
 	}
 	
@@ -169,7 +169,7 @@ public class SimpleIndexWriter {
 			addDocument(writer,doc,a,target);
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("Error adding highlight document for key="+a.getTitleObject().getKey()+" : "+e.getMessage());
+			log.error("Error adding highlight document for key="+a.getTitleObject().getKey()+" : "+e.getMessage(),e);
 		}
 	}
 	/** Add to title to the titles index */
@@ -185,7 +185,7 @@ public class SimpleIndexWriter {
 			addDocument(writer,doc,a,target);
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("Error adding title document for key="+a.getTitleObject().getKey()+" : "+e.getMessage());
+			log.error("Error adding title document for key="+a.getTitleObject().getKey()+" : "+e.getMessage(),e);
 		}
 	}
 	
@@ -205,7 +205,7 @@ public class SimpleIndexWriter {
 					writer.optimize();
 				writer.close();
 			} catch(IOException e){
-				log.warn("I/O error optimizing/closing index at "+iid.getImportPath());
+				log.warn("I/O error optimizing/closing index at "+iid.getImportPath(),e);
 				throw e;
 			}
 		}

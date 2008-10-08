@@ -34,7 +34,7 @@ public class ArticleQueryWrap extends CustomBoostQuery {
 	@Override
 	public float customScore(int doc, float subQueryScore, float boostScore) throws IOException {
 		float sub = 1;
-		if(article.isSubpage(doc))
+		if(article!=null && article.isSubpage(doc))
 			sub = SUBPAGE;
 		
 		float r = 1;
@@ -42,10 +42,14 @@ public class ArticleQueryWrap extends CustomBoostQuery {
 			r = rank.rank(doc);
 		
 		float ns = 1;
-		if(nsScaling != null)
+		if(nsScaling != null && article != null)
 			ns = nsScaling.scaleNamespace(article.namespace(doc));
 		
-		return sub * r * ns * scale.score(subQueryScore,article.daysOld(doc));		
+		float ageScaled = subQueryScore;
+		if(scale !=null)
+			ageScaled = scale.score(subQueryScore,article.daysOld(doc));
+		
+		return sub * r * ns * ageScaled;		
 	}
 	
 	@Override

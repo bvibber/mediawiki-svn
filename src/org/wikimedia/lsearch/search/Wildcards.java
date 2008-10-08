@@ -103,7 +103,7 @@ public class Wildcards {
 					terms.addAll(client.getTerms(e.getValue(),e.getKey(),wildcard,exactCase));
 				} catch (RemoteException e1) {
 					e1.printStackTrace();
-					log.warn("Cannot get terms for "+wildcard+" on host "+e.getValue()+" for "+e.getKey());
+					log.warn("Cannot get terms for "+wildcard+" on host "+e.getValue()+" for "+e.getKey(),e1);
 				}
 			}
 			wildcardCache.put(wildcard,terms);

@@ -375,7 +375,7 @@ public class SearchDaemon extends HttpHandler {
 		try{
 		sendOutputLine((float)score + " " + namespace + " " + encodeTitle(title));
 		} catch(Exception e){
-			log.error("Error sending result line ("+score + " " + namespace + " " + title +"): "+e.getMessage());
+			log.error("Error sending result line ("+score + " " + namespace + " " + title +"): "+e.getMessage(),e);
 		}
 	}
 	
@@ -383,7 +383,7 @@ public class SearchDaemon extends HttpHandler {
 		try{
 			sendOutputLine(namespace + " " +	encodeTitle(title));
 		} catch(Exception e){
-			log.error("Error sending prefix result line (" + namespace + " " + title +"): "+e.getMessage());
+			log.error("Error sending prefix result line (" + namespace + " " + title +"): "+e.getMessage(),e);
 		}
 	}
 	

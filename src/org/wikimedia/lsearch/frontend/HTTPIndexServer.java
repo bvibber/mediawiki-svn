@@ -58,7 +58,7 @@ public class HTTPIndexServer extends Thread {
 				serviceReady = true;
 				client = sock.accept();
 			} catch (Exception e) {
-				log.error("accept() error: " + e.getMessage());
+				log.error("accept() error: " + e.getMessage(),e);
 				// be sure to close all sockets
 				if(client != null){
 					try{ client.getInputStream().close(); } catch(Exception e1) {}

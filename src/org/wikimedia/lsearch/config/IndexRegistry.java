@@ -145,7 +145,7 @@ public class IndexRegistry {
 				}
 			}
 		} catch (IOException e) {
-			log.warn("Cannot follow symlink for file "+iid.getSearchPath());
+			log.warn("Cannot follow symlink for file "+iid.getSearchPath(),e);
 		}
 		
 	}

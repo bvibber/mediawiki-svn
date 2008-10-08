@@ -39,7 +39,7 @@ import org.wikimedia.lsearch.util.FSUtils;
  *
  */
 public class UpdateThread extends Thread {
-	
+	public static long MAX_DEPLOYMENT_DELAY = 15*60; // 15 minutes
 	enum RebuildType { STANDALONE, FULL };
 	
 	/** iids currently being deployed and out of rotation */
@@ -79,7 +79,7 @@ public class UpdateThread extends Thread {
 					pending.remove(li.iid.toString());
 				} catch(Exception e){
 					e.printStackTrace();
-					log.error("Error syncing "+li+" : "+e.getMessage());
+					log.error("Error syncing "+li+" : "+e.getMessage(),e);
 				}
 			}
 		}		
@@ -263,7 +263,7 @@ public class UpdateThread extends Thread {
 			
 		} catch(IOException ioe){
 			ioe.printStackTrace();
-			log.error("I/O error updating index "+iid+" at "+li.path+" : "+ioe.getMessage());
+			log.error("I/O error updating index "+iid+" at "+li.path+" : "+ioe.getMessage(),ioe);
 			badIndexes.put(li.iid.toString(),li.timestamp);
 		}
 	}
@@ -276,6 +276,7 @@ public class UpdateThread extends Thread {
 			HashSet<String> group = iid.getSearchHosts();
 			int succ = 0, fail = 0;
 			boolean reroute = false;
+			long waitedSoFar = 0;
 			if(type == RebuildType.FULL){			
 				// never deploy more than one searcher of iid in a search group
 				// wait for other peers to finish deploying before proceeding
@@ -292,37 +293,39 @@ public class UpdateThread extends Thread {
 										fail ++;
 								} catch(RemoteException e){
 									e.printStackTrace();
-									log.warn("Error response from "+host+" : "+e.getMessage());
+									log.warn("Error response from "+host+" : "+e.getMessage(),e);
 								}
 							}
 						}
 						if(fail == 0 && succ >= 1){
 							wait = false; // proceed to deployment
 							reroute = true;
-						} else if(fail == 0 && succ == 0){
+						} else if(succ == 0){
 							wait = false; // we're the only one alive, just deploy.. 
 						} else
 							wait = true;
 					}
 					if(wait){ // wait random time (5 -> 15 seconds)
 						try {
-							Thread.sleep((long)(10000 * (Math.random()+0.5)));
+							long interval = (long)(10000 * (Math.random()+0.5));
+							waitedSoFar += interval/1000;
+							Thread.sleep(interval);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
 					}
-				} while(wait);
+				} while(wait && waitedSoFar < MAX_DEPLOYMENT_DELAY);
 
 				// reoute queries to other servers
 				if( reroute ){
 					log.info("Deploying "+iid);
 					beingDeployed.add(iid.toString());
 					try{
-						RMIServer.unbind(iid,cache.getLocalSearcherPool(iid));
+						//RMIServer.unbind(iid,cache.getLocalSearcherPool(iid));
 					} catch(Exception e) {
 						// we gave it a shot...
 					}
-					cache.updateLocalSearcherPool(iid,null);
+					//cache.updateLocalSearcherPool(iid,null);
 				}
 
 			}
@@ -337,7 +340,7 @@ public class UpdateThread extends Thread {
 					Warmup.warmupIndexSearcher(is,li.iid,true,null);
 				} catch(IOException e){
 					e.printStackTrace();
-					log.warn("Error warmup up "+li+" : "+e.getMessage());
+					log.warn("Error warmup up "+li+" : "+e.getMessage(),e);
 				}
 			}
 			

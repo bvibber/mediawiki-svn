@@ -107,7 +107,7 @@ public class RMIMessengerClient {
 				log.debug("Calling remotely indexUpdate("+myhost+","+iid+") on "+host);
 				r.indexUpdated(myhost,iid.toString());
 			} catch (Exception e) {
-				log.warn("Error invoking remote method notifyIndexUpdated() on host "+host+" : "+e.getMessage());
+				log.warn("Error invoking remote method notifyIndexUpdated() on host "+host+" : "+e.getMessage(),e);
 				continue;
 			}			
 		}
@@ -136,10 +136,10 @@ public class RMIMessengerClient {
 			log.debug("Got new RMI messenger for host "+host);
 			return r;
 		} catch (RemoteException e) {
-			log.warn("Cannot contact RMI registry for host "+host+" : "+e.getMessage());
+			log.warn("Cannot contact RMI registry for host "+host+" : "+e.getMessage(),e);
 			throw e;
 		} catch (NotBoundException e) {
-			log.warn("No RMIMessenger instance at host "+host+" : "+e.getMessage());
+			log.warn("No RMIMessenger instance at host "+host+" : "+e.getMessage(),e);
 			throw e;
 		}
 	}
@@ -160,7 +160,7 @@ public class RMIMessengerClient {
 			return res;
 		} catch (Exception e) {
 			//e.printStackTrace();
-			log.warn("Error invoking remote method getIndexTimestamp() on host "+host+" : "+e.getMessage());
+			log.warn("Error invoking remote method getIndexTimestamp() on host "+host+" : "+e.getMessage(),e);
 		}
 		return null;
 	}
@@ -171,7 +171,7 @@ public class RMIMessengerClient {
 			log.debug("Calling enqueueUpdateRecords("+records.length+" records) on "+host);
 			r.enqueueUpdateRecords(records);
 		} catch (Exception e) {
-			log.warn("Error invoking remote method enqueueUpdateRecords() on host "+host+" : "+e.getMessage());
+			log.warn("Error invoking remote method enqueueUpdateRecords() on host "+host+" : "+e.getMessage(),e);
 			throw e;
 		}
 	}
@@ -182,7 +182,7 @@ public class RMIMessengerClient {
 			log.debug("Calling enqueueFrontend("+records.length+" records) on "+host);
 			return r.enqueueFrontend(records);
 		} catch (Exception e) {
-			log.warn("Error invoking remote method enqueueFrontend() on host "+host+" : "+e.getMessage());
+			log.warn("Error invoking remote method enqueueFrontend() on host "+host+" : "+e.getMessage(),e);
 			throw e;
 		}
 	}
@@ -198,7 +198,7 @@ public class RMIMessengerClient {
 			recheckRemote(iid,host);
 			HighlightPack pack = new HighlightPack(new SearchResults());
 			pack.res.retry();			
-			log.warn("Error invoking remote method searchPart on host "+host+" : "+e.getMessage());
+			log.warn("Error invoking remote method searchPart on host "+host+" : "+e.getMessage(),e);
 			e.printStackTrace();
 			return pack;
 		}
@@ -211,7 +211,7 @@ public class RMIMessengerClient {
 			log.debug("Calling requestFlushAndNotify("+dbname+" records) on "+host);
 			return r.requestFlushAndNotify(dbname);
 		} catch (Exception e) {
-			log.warn("Error invoking remote method requestFlushAndNotify on host "+host+" : "+e.getMessage());
+			log.warn("Error invoking remote method requestFlushAndNotify on host "+host+" : "+e.getMessage(),e);
 			return false;
 		}
 	}
@@ -222,7 +222,7 @@ public class RMIMessengerClient {
 			log.debug("Calling isSuccessfulFlush("+dbname+" records) on "+host);
 			return r.isSuccessfulFlush(dbname);
 		} catch (Exception e) {
-			log.warn("Error invoking remote method isSuccessfulFlush on host "+host+" : "+e.getMessage());
+			log.warn("Error invoking remote method isSuccessfulFlush on host "+host+" : "+e.getMessage(),e);
 			throw new IOException("Remote error");
 		}
 	}
@@ -235,7 +235,7 @@ public class RMIMessengerClient {
 			log.debug(" \\-> got: "+size);
 			return size;
 		} catch (Exception e) {
-			log.warn("Error invoking remote method getIndexerQueueSize on host "+host+" : "+e.getMessage());
+			log.warn("Error invoking remote method getIndexerQueueSize on host "+host+" : "+e.getMessage(),e);
 			return -1;
 		}	
 	}
@@ -268,14 +268,14 @@ public class RMIMessengerClient {
 			return r.searchTitles(dbrole,searchterm,words,query,filter,offset,limit,explain,sortByPhrases);
 		} catch(Exception e){
 			if(host == null){
-				log.warn("Cannot find title host for "+dbrole);
+				log.warn("Cannot find title host for "+dbrole,e);
 				return new SearchResults();
 			}
 			e.printStackTrace();
 			recheckRemote(dbrole,host);
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Error searching titles: "+e.getMessage());			
-			log.warn("Error invoking remote method searchTitles on host "+host+" : "+e.getMessage());
+			log.warn("Error invoking remote method searchTitles on host "+host+" : "+e.getMessage(),e);
 			return res;
 		}
 	}
@@ -286,12 +286,12 @@ public class RMIMessengerClient {
 			return r.suggest(dbrole,searchterm,tokens,info,nsf);
 		} catch(Exception e){
 			if(host == null){
-				log.warn("Cannot find spell-check host for "+dbrole);
+				log.warn("Cannot find spell-check host for "+dbrole,e);
 				return null;
 			}
 			e.printStackTrace();
 			recheckRemote(dbrole,host);
-			log.warn("Error invoking suggest() on "+host+" : "+e.getMessage());
+			log.warn("Error invoking suggest() on "+host+" : "+e.getMessage(),e);
 			return null;
 		}		
 	}
@@ -302,7 +302,7 @@ public class RMIMessengerClient {
 		} catch(Exception e){
 			recheckRemote(dbrole,host);
 			e.printStackTrace();
-			log.warn("Error invoking getFuzzy() on "+host+" : "+e.getMessage());
+			log.warn("Error invoking getFuzzy() on "+host+" : "+e.getMessage(),e);
 			return new ArrayList<SuggestResult>();
 		}
 	}
@@ -314,7 +314,7 @@ public class RMIMessengerClient {
 			return r.searchRelated(dbrole,searchterm,offset,limit);
 		} catch(Exception e){
 			e.printStackTrace();
-			log.warn("Error invoking searchRelated() on "+host+" : "+e.getMessage());
+			log.warn("Error invoking searchRelated() on "+host+" : "+e.getMessage(),e);
 			recheckRemote(dbrole,host);
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Error searching related index: "+e.getMessage());
@@ -357,7 +357,7 @@ public class RMIMessengerClient {
 		} catch (Exception e) {
 			recheckRemote(dbrole,host);
 			e.printStackTrace();
-			log.error("Messenger not bound: "+e.getMessage());
+			log.error("Messenger not bound: "+e.getMessage(),e);
 			return new ArrayList<String>();
 		}
 	}
@@ -369,7 +369,7 @@ public class RMIMessengerClient {
 			return r.getSearcherPoolStatus(dbrole);
 		} catch(NotBoundException e){
 			e.printStackTrace();
-			log.error("Messenger not bound: "+e.getMessage());
+			log.error("Messenger not bound: "+e.getMessage(),e);
 			return new SearcherPoolStatus(false);
 		}
 	}
@@ -381,7 +381,7 @@ public class RMIMessengerClient {
 			r.requestSnapshotAndNotify(optimize,pattern,forPrecursor);
 		} catch(NotBoundException e){
 			e.printStackTrace();
-			log.error("Messenger not bound: "+e.getMessage());
+			log.error("Messenger not bound: "+e.getMessage(),e);
 		}			
 	}
 	
@@ -392,7 +392,7 @@ public class RMIMessengerClient {
 			return r.snapshotFinished(optimize,pattern,forPrecursor);
 		} catch(NotBoundException e){
 			e.printStackTrace();
-			log.error("Messenger not bound: "+e.getMessage());
+			log.error("Messenger not bound: "+e.getMessage(),e);
 		}			
 		return false;
 	}
@@ -404,7 +404,7 @@ public class RMIMessengerClient {
 			r.addLocalizationCustomMapping(namespaceIndexToName, dbname);
 		} catch(NotBoundException e){
 			e.printStackTrace();
-			log.error("Messenger not bound: "+e.getMessage());
+			log.error("Messenger not bound: "+e.getMessage(),e);
 		}			
 	}
 }

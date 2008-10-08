@@ -45,7 +45,7 @@ public class ContextAnalyzer extends KeywordsAnalyzer {
 					if(contexts != null)
 						part.addAll(contexts);
 				} catch (IOException e) {
-					log.warn("Cannot fetch context for "+key+" from "+t.getKey()+" : "+e.getMessage());
+					log.warn("Cannot fetch context for "+key+" from "+t.getKey()+" : "+e.getMessage(),e);
 					e.printStackTrace();
 				}
 				

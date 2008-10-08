@@ -41,7 +41,7 @@ import org.wikimedia.lsearch.statistics.StatisticsThread;
  */
 public class SearchServer extends Thread {
 	private static int port = 8123;
-	private static int maxThreads = 25;
+	private static int maxThreads = 80;
 	private static ServerSocket sock;
 	public static String indexPath;
 	public static String[] dbnames;
@@ -90,34 +90,41 @@ public class SearchServer extends Thread {
 		
 		for (;;) {
 			Socket client = null;
-			try {
-				log.debug("Listening...");
-				client = sock.accept();
-			} catch (Exception e) {
-				log.error("accept() error: " + e.getMessage());
-				// be sure to close all sockets
-				if(client != null){
-					try{ client.getInputStream().close(); } catch(Exception e1) {}
-					try{ client.getOutputStream().close(); } catch(Exception e1) {}
-					try{ client.close(); } catch(Exception e1) {}
+			try{			
+				try {
+					log.debug("Listening...");
+					client = sock.accept();
+				} catch (Exception e) {
+					log.error("accept() error: " + e.getMessage(),e);
+					// be sure to close all sockets
+					if(client != null){
+						try{ client.getInputStream().close(); } catch(Exception e1) {}
+						try{ client.getOutputStream().close(); } catch(Exception e1) {}
+						try{ client.close(); } catch(Exception e1) {}
+					}
+					continue;
 				}
-				continue;
-			}
-			
-			int threadCount = SearchDaemon.getOpenCount();
-			if (threadCount > maxThreads) {
-				stats.add(false, 0, threadCount);
-				log.error("too many connections, skipping a request");
-				// be sure to close all sockets
-				if(client != null){
-					try{ client.getInputStream().close(); } catch(Exception e1) {}
-					try{ client.getOutputStream().close(); } catch(Exception e1) {}
-					try{ client.close(); } catch(Exception e1) {}
+
+				int threadCount = SearchDaemon.getOpenCount();
+				if (threadCount > maxThreads) {
+					stats.add(false, 0, threadCount);
+					log.error("too many connections, skipping a request");
+					// be sure to close all sockets
+					if(client != null){
+						try{ client.getInputStream().close(); } catch(Exception e1) {}
+						try{ client.getOutputStream().close(); } catch(Exception e1) {}
+						try{ client.close(); } catch(Exception e1) {}
+					}
+					continue;
+				} else {
+					SearchDaemon worker = new SearchDaemon(client);
+					pool.execute(worker);
 				}
-				continue;
-			} else {
-				SearchDaemon worker = new SearchDaemon(client);
-				pool.execute(worker);
+			} catch(Exception e){
+				log.error("Search server exception: "+e.getMessage(),e);
+				try{ client.getInputStream().close(); } catch(Exception e1) {}
+				try{ client.getOutputStream().close(); } catch(Exception e1) {}
+				try{ client.close(); } catch(Exception e1) {}
 			}
 		}
 	}

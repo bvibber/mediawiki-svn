@@ -225,7 +225,7 @@ public class SearchEngine {
 		} catch(IOException e){
 			e.printStackTrace();
 			res.setErrorMsg("I/O processing the request : "+e.getMessage());
-			log.error("I/O error in searchSimilar() : "+e.getMessage());
+			log.error("I/O error in searchSimilar() : "+e.getMessage(),e);
 		}
 		return res;
 	}
@@ -314,7 +314,7 @@ public class SearchEngine {
 			HashSet<String> stopWords = StopWords.getPredefinedSet(iid);				
 			WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,NamespacePolicy.IGNORE,stopWords);
 			Query q = parser.parse(key.substring(key.indexOf(':')+1),new WikiQueryParser.ParsingOptions(true));
-			highlight(iid,q,parser.getWordsClean(),searcher,res,true,true);
+			highlight(iid,q,parser.getWordsClean(),searcher,res,true,true,null);
 		} else{
 			res.addInfo("related",global.getLocalhost());
 			res.setSuccess(true);
@@ -355,7 +355,7 @@ public class SearchEngine {
 			return messenger.searchPrefix(host,pre.toString(),searchterm,limit,nsf);
 		} catch(IOException e){
 			e.printStackTrace();
-			log.error("Error opening searcher in prefixSearch on "+pre+" : "+e.getMessage());
+			log.error("Error opening searcher in prefixSearch on "+pre+" : "+e.getMessage(),e);
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("I/O error on index "+pre);
 			return res;
@@ -489,7 +489,7 @@ public class SearchEngine {
 			sendStats(start-System.currentTimeMillis());
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("Internal error in prefixSearch on "+pre+" : "+e.getMessage());
+			log.error("Internal error in prefixSearch on "+pre+" : "+e.getMessage(),e);
 			res.setErrorMsg("I/O error on index "+pre);
 		}
 		return res;
@@ -522,13 +522,13 @@ public class SearchEngine {
 			// search
 			SearchResults res = makeTitlesSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
 			// highlight
-			highlightTitles(iid,q,words,searcher,res,sortByPhrases,false);
+			highlightTitles(iid,q,words,searcher,res,sortByPhrases,false,null);
 			return res;
 		} catch (IOException e) {
 			e.printStackTrace();
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Internal error in SearchEngine: "+e.getMessage());
-			log.error("I/O error in searchTitles(): "+e.getMessage());
+			log.error("I/O error in searchTitles(): "+e.getMessage(),e);
 			return res;
 		}
 	}
@@ -542,14 +542,14 @@ public class SearchEngine {
 			IndexSearcherMul searcher;
 			long searchStart = System.currentTimeMillis();
 			searcher = cache.getLocalSearcher(iid);
-			FilterWrapper localfilter = filter;
+			/*FilterWrapper localfilter = filter;
 			if(iid.isMainsplit() && iid.isMainPart())
 				localfilter.setNamespaceFilter(null);
 			else if(iid.isNssplit() && !iid.isLogical() && iid.getNamespaceSet().size()==1 && !iid.getNamespaceSet().contains("<default>"))
 				localfilter.setNamespaceFilter(null);
 			if(localfilter.getNamespaceFilter() != null)
-				log.info("Using namespace filter: "+localfilter);
-			TopDocs hits = searcher.search(q,localfilter,offset+limit);
+				log.info("Using namespace filter: "+localfilter); */
+			TopDocs hits = searcher.search(q,filter.getFilterOrNull(),offset+limit);
 			SearchResults res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
 			HighlightPack pack = new HighlightPack(res);
 			// pack extra info needed for highlighting
@@ -561,7 +561,7 @@ public class SearchEngine {
 			e.printStackTrace();
 			HighlightPack pack = new HighlightPack(new SearchResults());
 			pack.res.setErrorMsg("Internal error in SearchEngine: "+e.getMessage());
-			log.error("Internal error in SearchEngine while trying to search main part: "+e.getMessage());
+			log.error("Internal error in SearchEngine while trying to search main part: "+e.getMessage(),e);
 			return pack;
 		}
 		
@@ -600,6 +600,8 @@ public class SearchEngine {
 			// use default filter if it's cached or composable of cached entries
 			} else if(cachedFilters.containsValue(nsDefault) || NamespaceCache.isComposable(nsDefault))
 				nsfw.setNamespaceFilter(nsDefault);
+		} else{
+			nsfw.setNamespaceFilter(nsDefault);
 		}
 		
 		parser.extractPrefixFilter(searchterm);
@@ -647,7 +649,7 @@ public class SearchEngine {
 						res = pack.res;
 						res.addInfo("search",formatHost(host));
 						if(!searchOnly){
-							highlight(iid,q,parser.getWordsClean(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase,null,parser.hasPhrases(),false);
+							highlight(iid,q,parser.getWordsClean(),pack.terms,pack.dfs,pack.maxDoc,res,exactCase,null,parser.hasPhrases(),false,commonsWiki);
 							fetchTitles(res,searchterm,nsfw,iid,parser,offset,iwoffset,iwlimit,explain);
 							suggest(iid,searchterm,parser,res,offset,nsfw);
 						}
@@ -676,11 +678,11 @@ public class SearchEngine {
 				Wildcards wildcards = new Wildcards(searcher.getAllHosts(),exactCase);
 				q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll,wildcards);
 								
-				hits = searcher.search(q,nsfw,offset+limit);
+				hits = searcher.search(q,nsfw.getFilterOrNull(),offset+limit);
 				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
 				res.addInfo("search",formatHosts(searcher.getAllHosts().values()));
 				if(!searchOnly){
-					highlight(iid,q,parser.getWordsClean(),searcher,parser.getHighlightTerms(),res,exactCase,parser.hasPhrases(),false);
+					highlight(iid,q,parser.getWordsClean(),searcher,parser.getHighlightTerms(),res,exactCase,parser.hasPhrases(),false,commonsWiki);
 					fetchTitles(res,searchterm,nsfw,iid,parser,offset,iwoffset,iwlimit,explain);
 					suggest(iid,searchterm,parser,res,offset,nsfw);
 				}
@@ -695,19 +697,19 @@ public class SearchEngine {
 				e.printStackTrace();
 				res = new SearchResults();
 				res.retry();
-				log.warn("Retry, temportal error for query: ["+q+"] on "+iid+" : "+e.getMessage());
+				log.warn("Retry, temportal error for query: ["+q+"] on "+iid+" : "+e.getMessage(),e);
 				return res;
 			}			
 		} catch(ParseException e){
 			res = new SearchResults();
 			res.setErrorMsg("Error parsing query: "+searchterm);
-			log.error("Cannot parse query: "+searchterm+", error: "+e.getMessage());
+			log.error("Cannot parse query: "+searchterm+", error: "+e.getMessage(),e);
 			return res;
 		} catch (Exception e) {
 			res = new SearchResults();
 			e.printStackTrace();
 			res.setErrorMsg("Internal error in SearchEngine: "+e.getMessage());
-			log.error("Internal error in SearchEngine trying to make WikiSearcher: "+e.getMessage());
+			log.error("Internal error in SearchEngine trying to make WikiSearcher: "+e.getMessage(),e);
 			return res;
 		}
 	}
@@ -791,6 +793,8 @@ public class SearchEngine {
 			return;
 		if(offset != 0)
 			return; // do titles search only for first page of normal-search results
+		if(parser.hasPrefixFilter())
+			return; // TODO: implement, currently we don't do interwiki prefix queries
 		try{
 			IndexId titles = iid.getTitlesIndex();
 			IndexId main = titles.getDB();
@@ -842,7 +846,7 @@ public class SearchEngine {
 
 			TopDocs hits = searcher.search(q,wrap,iwoffset+iwlimit);
 			SearchResults r = makeTitlesSearchResults(searcher,hits,iwoffset,iwlimit,main,searchterm,q,searchStart,explain);
-			highlightTitles(main,q,words,searcher,r,parser.hasWildcards(),false);
+			highlightTitles(main,q,words,searcher,r,parser.hasWildcards(),false,null);
 
 			if(r.isSuccess()){
 				res.setTitles(r.getResults());				
@@ -855,7 +859,7 @@ public class SearchEngine {
 			
 		} catch(Exception e){
 			e.printStackTrace();
-			log.error("Error fetching grouped titles: "+e.getMessage());
+			log.error("Error fetching grouped titles: "+e.getMessage(),e);
 		}
 	}
 	
@@ -949,48 +953,50 @@ public class SearchEngine {
 	}
 	
 	/** Highlight search results, and set the property in ResultSet */
-	protected void highlight(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, Term[] terms, SearchResults res, boolean exactCase, boolean sortByPhrases, boolean alwaysIncludeFirst) throws IOException{
+	protected void highlight(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, Term[] terms, SearchResults res, boolean exactCase, boolean sortByPhrases, boolean alwaysIncludeFirst, IndexId commonsWiki) throws IOException{
 		if(terms == null)
 			return;
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
-		highlight(iid,q,words,terms,df,maxDoc,res,exactCase,null,sortByPhrases,alwaysIncludeFirst);
+		highlight(iid,q,words,terms,df,maxDoc,res,exactCase,null,sortByPhrases,alwaysIncludeFirst,commonsWiki);
 	}
 	
 	/** Highlight search results, and set the property in ResultSet */
-	protected void highlight(IndexId iid, Query q, ArrayList<String> words, IndexSearcherMul searcher, SearchResults res, boolean sortByPhrases, boolean alwaysIncludeFirst) throws IOException{
+	protected void highlight(IndexId iid, Query q, ArrayList<String> words, IndexSearcherMul searcher, SearchResults res, boolean sortByPhrases, boolean alwaysIncludeFirst, IndexId commonsWiki) throws IOException{
 		Term[] terms = getTerms(q,"contents");
 		if(terms == null)
 			return;
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
-		highlight(iid,q,words,terms,df,maxDoc,res,false,null,sortByPhrases,alwaysIncludeFirst);
+		highlight(iid,q,words,terms,df,maxDoc,res,false,null,sortByPhrases,alwaysIncludeFirst,commonsWiki);
 	}
 	
 	/** Highlight search results from titles index */
-	protected void highlightTitles(IndexId iid, Query q, ArrayList<String> words, IndexSearcherMul searcher, SearchResults res, boolean sortByPhrases, boolean alwaysIncludeFirst) throws IOException{
+	protected void highlightTitles(IndexId iid, Query q, ArrayList<String> words, IndexSearcherMul searcher, SearchResults res, boolean sortByPhrases, boolean alwaysIncludeFirst, IndexId commonsWiki) throws IOException{
 		Term[] terms = getTerms(q,"alttitle");
 		if(terms == null)
 			return;
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
-		highlight(iid,q,words,terms,df,maxDoc,res,false,searcher.getIndexReader(),sortByPhrases,alwaysIncludeFirst);
+		highlight(iid,q,words,terms,df,maxDoc,res,false,searcher.getIndexReader(),sortByPhrases,alwaysIncludeFirst,commonsWiki);
 		resolveInterwikiNamespaces(res,iid);
 	}
 	
 	/** Highlight search results from titles index using a wikisearcher */
-	protected void highlightTitles(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, SearchResults res, boolean sortByPhrases, boolean alwaysIncludeFirst) throws IOException{
+	protected void highlightTitles(IndexId iid, Query q, ArrayList<String> words, WikiSearcher searcher, SearchResults res, boolean sortByPhrases, boolean alwaysIncludeFirst, IndexId commonsWiki) throws IOException{
 		Term[] terms = getTerms(q,"alttitle");
 		if(terms == null)
 			return;
 		int[] df = searcher.docFreqs(terms); 
 		int maxDoc = searcher.maxDoc();
-		highlight(iid,q,words,terms,df,maxDoc,res,false,null,sortByPhrases,alwaysIncludeFirst);
+		highlight(iid,q,words,terms,df,maxDoc,res,false,null,sortByPhrases,alwaysIncludeFirst,commonsWiki);
 		resolveInterwikiNamespaces(res,iid);
 	}
 	
 	/** Highlight article (don't call directly, use one of the interfaces above instead) */
-	protected void highlight(IndexId iid, Query q, ArrayList<String> words, Term[] terms, int[] df, int maxDoc, SearchResults res, boolean exactCase, IndexReader reader, boolean sortByPhrases, boolean alwaysIncludeFirst) throws IOException{
+	protected void highlight(IndexId iid, Query q, ArrayList<String> words, Term[] terms, int[] df, 
+			int maxDoc, SearchResults res, boolean exactCase, IndexReader reader, 
+			boolean sortByPhrases, boolean alwaysIncludeFirst, IndexId commonsWiki) throws IOException{
 		// iid -> array of keys
 		HashMap<IndexId,ArrayList<String>> map = new HashMap<IndexId,ArrayList<String>>();
 		iid = iid.getHighlight();
@@ -999,12 +1005,17 @@ public class SearchEngine {
 		for(ResultSet r : res.getResults()){
 			IndexId piid = iid.getPartByNamespace(r.namespace);
 			ArrayList<String> hits = map.get(piid);
-			if(hits == null){
-				hits = new ArrayList<String>();
-				map.put(piid,hits);
-			}
+			if(hits == null)
+				map.put(piid,hits = new ArrayList<String>());
 			hits.add(r.getKey());
-			keys.put(r.getKey(),r);
+			keys.put(r.getKey(),r);			
+			// check for commons wiki images
+			if(commonsWiki!=null && r.namespace.equals("6")){
+				hits = map.get(commonsWiki);
+				if(hits == null)
+					map.put(commonsWiki,hits=new ArrayList<String>());				
+				hits.add(r.getKey());
+			}
 		}
 		// highlight!
 		HashSet<String> stopWords = StopWords.getPredefinedSet(iid);

@@ -41,7 +41,7 @@ public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 		try{
 			return src.getLength(docid,getSlot(pos));
 		} catch(ArrayIndexOutOfBoundsException e){
-			log.warn("Exception occured on pos="+pos);
+			log.warn("Exception occured on pos="+pos,e);
 			throw e;
 		}
 	}
@@ -50,7 +50,7 @@ public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 		try{
 			return src.getBoost(docid,getSlot(pos));
 		} catch(ArrayIndexOutOfBoundsException e){
-			log.warn("Exception occured on pos="+pos);
+			log.warn("Exception occured on pos="+pos,e);
 			throw e;
 		}
 	}
@@ -59,7 +59,7 @@ public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 		try{
 			return src.getLengthNoStopWords(docid,getSlot(pos));
 		} catch(ArrayIndexOutOfBoundsException e){
-			log.warn("Exception occured on pos="+pos);
+			log.warn("Exception occured on pos="+pos,e);
 			throw e;
 		}
 	}
@@ -68,7 +68,7 @@ public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 		try{
 			return src.getLengthComplete(docid,getSlot(pos));
 		} catch(ArrayIndexOutOfBoundsException e){
-			log.warn("Exception occured on pos="+pos);
+			log.warn("Exception occured on pos="+pos,e);
 			throw e;
 		}
 	}
@@ -92,7 +92,7 @@ public class AggregateInfoImpl implements AggregateInfo, Serializable  {
 		try{
 			return src.getFlags(docid,getSlot(pos));
 		} catch(ArrayIndexOutOfBoundsException e){
-			log.warn("Exception occured on pos="+pos);
+			log.warn("Exception occured on pos="+pos,e);
 			throw e;
 		}
 	}

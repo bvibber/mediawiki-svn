@@ -61,7 +61,7 @@ public class LinkReader implements DumpWriter {
 			if( page.Title.Namespace >= 0)
 				links.addArticleInfo(revision.Text,t,exactCase,Integer.toString(page.Id));
 		} catch(Exception e){
-			log.error("Error adding article "+t+" : "+e.getMessage());
+			log.error("Error adding article "+t+" : "+e.getMessage(),e);
 			e.printStackTrace();
 		}
 	}	

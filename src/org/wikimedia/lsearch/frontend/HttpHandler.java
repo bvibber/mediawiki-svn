@@ -59,7 +59,7 @@ abstract public class HttpHandler extends Thread {
 			istrm = new DataInputStream(new BufferedInputStream(s.getInputStream()));
 			ostrm = new PrintWriter(new BufferedWriter(new OutputStreamWriter(s.getOutputStream(),"utf-8")));			
 		} catch (IOException e) {
-			log.error("I/O in opening http socket.");
+			log.error("I/O in opening http socket.",e);
 		}
 	}
 
@@ -113,7 +113,7 @@ abstract public class HttpHandler extends Thread {
 			log.debug("No keep-alive, closing connection ... ");
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error(e.getMessage());
+			log.error(e.getMessage(),e);
 		} finally {
 			if (!headersSent) {
 				sendError(500, "Internal server error", "An internal error occurred: no header sent.");
@@ -174,7 +174,7 @@ abstract public class HttpHandler extends Thread {
 		} catch (URISyntaxException e) {
 			sendError(400, "Bad Request",
 			"Couldn't make sense of the given URI.");
-			log.warn("Bad URI in request: " + rawUri);
+			log.warn("Bad URI in request: " + rawUri,e);
 			return;
 		}	
 
@@ -261,7 +261,7 @@ abstract public class HttpHandler extends Thread {
 			//log.error("Internal error, read "+read+" bytes istead of "+contentLength+" from POST request");
 			return data; 
 		} catch (IOException e) {
-			log.warn("Could not send raw data in bytes to output stream.");
+			log.warn("Could not send raw data in bytes to output stream.",e);
 		}
 		return null;
 	}
@@ -273,7 +273,7 @@ abstract public class HttpHandler extends Thread {
 		try {
 			sin = istrm.readLine();
 		} catch (IOException e) {
-			log.warn("I/O problem in reading from stream");
+			log.warn("I/O problem in reading from stream",e);
 		}
 		log.debug("<<<"+ sin);
 		return sin;

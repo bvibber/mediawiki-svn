@@ -327,7 +327,7 @@ public class PrefixIndexBuilder {
 			}
 			reader.close();
 			} catch(Exception e){
-				log.warn("Error while opening prefix precursor "+pre+" : "+e.getMessage());
+				log.warn("Error while opening prefix precursor "+pre+" : "+e.getMessage(),e);
 			}
 			// batch add
 			writer = WikiIndexModifier.openForWrite(pre.getIndexPath(),false,new PrefixAnalyzer());

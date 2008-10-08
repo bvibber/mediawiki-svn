@@ -132,7 +132,7 @@ public class BuildAll {
 				}
 			} catch(IOException e){
 				e.printStackTrace();
-				log.error("Error during rebuild of "+iid+" : "+e.getMessage());
+				log.error("Error during rebuild of "+iid+" : "+e.getMessage(),e);
 			}			
 		}
 		// link titles

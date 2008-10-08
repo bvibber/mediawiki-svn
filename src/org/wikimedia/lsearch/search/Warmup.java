@@ -195,10 +195,10 @@ public class Warmup {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("Error warming up local IndexSearcherMul for "+iid);
+			log.error("Error warming up local IndexSearcherMul for "+iid,e);
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.error("Exception during warmup of "+iid+" : "+e.getMessage());
+			log.error("Exception during warmup of "+iid+" : "+e.getMessage(),e);
 		}		
 	}
 
@@ -223,7 +223,7 @@ public class Warmup {
 				is.search(new TermQuery(new Term("contents","wikipedia")),
 						new FilterWrapper(filter));
 			} catch (IOException e) {
-				log.warn("I/O error while preloading filter for "+iid+" for filter "+filter+" : "+e.getMessage());
+				log.warn("I/O error while preloading filter for "+iid+" for filter "+filter+" : "+e.getMessage(),e);
 			}
 		}
 	}
@@ -236,7 +236,7 @@ public class Warmup {
 			Query q = parser.parse("wikimedia foundation");
 			is.search(q,new FilterWrapper(new NamespaceFilter("0")));
 		} catch (IOException e) {
-			log.error("Error warming up local IndexSearcherMul for "+iid);
+			log.error("Error warming up local IndexSearcherMul for "+iid,e);
 		}
 	}
 

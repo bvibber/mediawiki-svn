@@ -1301,7 +1301,7 @@ public class Suggest {
 				ret.add(res.get(i));
 			return ret;
 		} catch (IOException e) {
-			log.error("Cannot get suggestions for "+word+" at "+iid+" : "+e.getMessage());
+			log.error("Cannot get suggestions for "+word+" at "+iid+" : "+e.getMessage(),e);
 			e.printStackTrace();
 			return new ArrayList<SuggestResult>();
 		}		
@@ -1412,7 +1412,7 @@ public class Suggest {
 				ret.add(res.get(i));
 			return ret;
 		} catch (IOException e) {
-			log.error("Cannot get title suggestions for "+title+" at "+iid+" : "+e.getMessage());
+			log.error("Cannot get title suggestions for "+title+" at "+iid+" : "+e.getMessage(),e);
 			e.printStackTrace();
 			return new ArrayList<SuggestResult>();
 		}		
@@ -1516,7 +1516,7 @@ public class Suggest {
 				return res.get(0);
 			}			
 		} catch (IOException e) {
-			log.warn("I/O error while suggesting split on "+iid+" : "+e.getMessage());
+			log.warn("I/O error while suggesting split on "+iid+" : "+e.getMessage(),e);
 			e.printStackTrace();			
 		}
 		return null;
@@ -1531,7 +1531,7 @@ public class Suggest {
 			if(freqJoin > 0 && freqJoin > freqPhrase)
 				return new SuggestResult(word1+word2,freqJoin,1);				
 		} catch (IOException e) {
-			log.warn("I/O error while suggesting join on "+iid+" : "+e.getMessage());
+			log.warn("I/O error while suggesting join on "+iid+" : "+e.getMessage(),e);
 			e.printStackTrace();
 		}
 		return null;

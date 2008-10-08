@@ -180,7 +180,7 @@ public class IncrementalUpdater {
 							fileis.close();
 						}
 					} catch (IOException e) {
-						log.warn("I/O error reading status file for "+iid+" at "+iid.getStatusPath()+" : "+e.getMessage());
+						log.warn("I/O error reading status file for "+iid+" at "+iid.getStatusPath()+" : "+e.getMessage(),e);
 					}				
 					String from;
 					if(firstPass.contains(dbname) && timestamp!=null)
@@ -215,7 +215,7 @@ public class IncrementalUpdater {
 							}
 							
 						} catch (Exception e) {
-							log.warn("Error sending index update records of "+iid+" to indexer at "+iid.getIndexHost());
+							log.warn("Error sending index update records of "+iid+" to indexer at "+iid.getIndexHost(),e);
 							continue main_loop;
 						}
 						// more results?
@@ -261,13 +261,13 @@ public class IncrementalUpdater {
 						status.store(fileos,"Last incremental update timestamp");
 						fileos.close();
 					} catch (IOException e) {
-						log.warn("I/O error writing status file for "+iid+" at "+iid.getStatusPath()+" : "+e.getMessage());
+						log.warn("I/O error writing status file for "+iid+" at "+iid.getStatusPath()+" : "+e.getMessage(),e);
 					}
 					firstPass.remove(dbname);
 					log.info("Finished update of "+iid);
 				} catch(Exception e){
 					e.printStackTrace();
-					log.warn("Retry later: error while processing update for "+dbname+" : "+e.getMessage());
+					log.warn("Retry later: error while processing update for "+dbname+" : "+e.getMessage(),e);
 					errors = true;
 				}
 			}

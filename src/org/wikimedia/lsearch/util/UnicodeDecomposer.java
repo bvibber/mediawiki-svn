@@ -149,10 +149,10 @@ public class UnicodeDecomposer {
 			in.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("Error reading unicode data file from resource : "+e.getMessage());
+			log.error("Error reading unicode data file from resource : "+e.getMessage(),e);
 		} catch (Exception e){
 			e.printStackTrace();
-			log.error("Error in unicode data file : "+e.getMessage());
+			log.error("Error in unicode data file : "+e.getMessage(),e);
 		}
 	}
 

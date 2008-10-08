@@ -103,7 +103,7 @@ public class CleanIndexWriter {
 				}
 				reader.close();
 			} catch(Exception e){
-				log.warn("Error opening for batch update read "+iid+" : "+e.getMessage());
+				log.warn("Error opening for batch update read "+iid+" : "+e.getMessage(),e);
 			}
 			// batch add
 			openWriter(iid.getIndexPath(),false);
@@ -149,10 +149,10 @@ public class CleanIndexWriter {
 			log.debug(iid+": Adding document "+a);
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("I/O Error writing articlet "+a+" to index "+writer);
+			log.error("I/O Error writing articlet "+a+" to index "+writer,e);
 		} catch(Exception e){
 			e.printStackTrace();
-			log.error("Error adding document "+a+" with message: "+e.getMessage());
+			log.error("Error adding document "+a+" with message: "+e.getMessage(),e);
 		}
 	}
 	
@@ -170,7 +170,7 @@ public class CleanIndexWriter {
 			writer.addDocument(doc,analyzer);
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("Error adding title info for article "+article+" with message: "+e.getMessage());
+			log.error("Error adding title info for article "+article+" with message: "+e.getMessage(),e);
 		}
 	}
 	
@@ -181,7 +181,7 @@ public class CleanIndexWriter {
 			writer.optimize();
 			writer.close();
 		} catch(IOException e){
-			log.error("I/O error optimizing/closing index at "+iid.getImportPath()+" : "+e.getMessage());
+			log.error("I/O error optimizing/closing index at "+iid.getImportPath()+" : "+e.getMessage(),e);
 			throw e;
 		}
 	}
@@ -209,7 +209,7 @@ public class CleanIndexWriter {
 		try {
 			writer.addDocument(doc);
 		} catch (IOException e) {
-			log.warn("Cannot write metadata : "+e.getMessage());
+			log.warn("Cannot write metadata : "+e.getMessage(),e);
 		}
 	}
 
