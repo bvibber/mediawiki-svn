@@ -1,3 +1,18 @@
+wikimedia-task-search (1.03) hardy; urgency=low
+
+  * Increase the memory limit to 3 GB
+
+ -- Mark Bergsma <mark@wikimedia.org>  Wed, 08 Oct 2008 18:42:14 +0000
+
+wikimedia-task-search (1.02) hardy; urgency=low
+
+  * Use /bin/bash instead of /bin/sh
+  * Add dependency on curl
+  * Add Replaces: wikimedia-task-appserver field
+  * Depend on specific JDKs only
+
+ -- Mark Bergsma <mark@wikimedia.org>  Wed, 17 Sep 2008 22:04:31 +0000
+
 wikimedia-task-search (1.01) hardy; urgency=low
 
   * Add init script

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # chkconfig: 2345 84 16
 # description: MediaWiki Lucene Search daemon
 # vim: autoindent
@@ -26,7 +26,7 @@ case "$1" in
 		# Increase FD limit
 		ulimit -n 8192
 		# Run the daemon
-		if start-stop-daemon --start --quiet --background --user lsearch --chuid lsearch --pidfile $pid --make-pidfile --exec /usr/bin/java -- -Xmx1500m -Djava.rmi.server.codebase=file://$BINDIR/LuceneSearch.jar -Djava.rmi.server.hostname=$HOSTNAME -jar $BINDIR/LuceneSearch.jar
+		if start-stop-daemon --start --quiet --background --user lsearch --chuid lsearch --pidfile $pid --make-pidfile --exec /usr/bin/java -- -Xmx3000m -Djava.rmi.server.codebase=file://$BINDIR/LuceneSearch.jar -Djava.rmi.server.hostname=$HOSTNAME -jar $BINDIR/LuceneSearch.jar
 		then
 			rc=0
 			sleep 1
