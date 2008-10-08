@@ -60,7 +60,8 @@ export CPPFLAGS='-I/opt/ts/include -I/opt/mysql/include -I/usr/sfw/include'
         --with-bz2 \
         --enable-exif \
         --enable-ftp \
-        --with-mysqli=/opt/mysql/bin/mysql_config
+        --with-mysqli=/opt/mysql/bin/mysql_config \
+	--with-mcrypt=/opt/ts
 
 
 gmake -j$CPUS
@@ -95,6 +96,8 @@ rm -rf $RPM_BUILD_ROOT
 /etc/opt/php/pear.conf
 
 %changelog
+* Sun Oct  5 2008 - river@wikimedia.org
+- add build option: --with-mcrypt
 * Thu Oct  2 2008 - river@wikimedia.org
 - add build options: --with-zlib --with-bz2 --enable-exif --enable-ftp --with-mysqli
 * Sun Jul  6 2008 - river@wikimedia.org

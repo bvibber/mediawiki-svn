@@ -1,0 +1,20 @@
+--- pkgtool.pl.orig	Sun Oct  5 18:45:40 2008
++++ pkgtool.pl	Sun Oct  5 18:45:51 2008
+@@ -131,7 +131,7 @@
+ 		    1);
+     $defaults->add ('notify', '!',
+ 		    'whether to send a desktop notification when the build passes/fails, use --nonotify to disable',
+-		    1);
++		    0);
+     $defaults->add ('halt_on_errors', '!',
+ 		    'whether to abort the build if an error occurs', 
+ 		    0);
+@@ -316,7 +316,7 @@
+ 	$build_engine = $pkgbuild_path;
+     }
+ 
+-    find_in_path ('notify-send') or $defaults->set ('notify', 0);
++    #find_in_path ('notify-send') or $defaults->set ('notify', 0);
+ }
+ 
+ # return the name of the log file given the id of the spec file
