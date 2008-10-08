@@ -4,19 +4,19 @@
 BEGIN;
 
 CREATE TABLE hidden (
-  hidden_page         INTEGER   NOT NULL  DEFAULT 0,
-  hidden_namespace    INTEGER   NOT NULL  DEFAULT 0,
-  hidden_title        TEXT      NOT NULL  DEFAULT '',
-  hidden_comment      TEXT      NOT NULL,
-  hidden_user         INTEGER   NOT NULL  DEFAULT 0,
-  hidden_user_text    TEXT      NOT NULL,
-  hidden_timestamp    TEXT      NOT NULL  DEFAULT '',
-  hidden_minor_edit   SMALLINT  NOT NULL  DEFAULT 0,
-  hidden_deleted      SMALLINT  NOT NULL  DEFAULT 0,
+  hidden_page         INTEGER      NOT NULL  DEFAULT 0,
+  hidden_namespace    INTEGER      NOT NULL  DEFAULT 0,
+  hidden_title        TEXT         NOT NULL  DEFAULT '',
+  hidden_comment      TEXT         NOT NULL,
+  hidden_user         INTEGER      NOT NULL  DEFAULT 0,
+  hidden_user_text    TEXT         NOT NULL,
+  hidden_timestamp    TIMESTAMPTZ  NOT NULL  DEFAULT NOW(),
+  hidden_minor_edit   SMALLINT     NOT NULL  DEFAULT 0,
+  hidden_deleted      SMALLINT     NOT NULL  DEFAULT 0,
   hidden_rev_id       INTEGER,
   hidden_text_id      INTEGER,
   hidden_by_user      INTEGER,
-  hidden_on_timestamp TEXT,
+  hidden_on_timestamp TIMESTAMPTZ,
   hidden_reason       TEXT
 );
 

@@ -174,12 +174,12 @@ class HideRevisionForm extends SpecialPage {
 				'0 AS rc_logid',
 				'NULL AS rc_log_type',
 				'NULL AS rc_log_action',
-				'"" AS rc_params'
+				"'' AS rc_params"
 			),
 			array(
 				'ar_namespace' => $this->mTarget->getNamespace(),
 				'ar_title' => $this->mTarget->getDBkey(),
-				'ar_timestamp' => $this->mTimestamps,
+				'ar_timestamp' => array_map( array( $dbr, 'timestamp' ), $this->mTimestamps ),
 			),
 			__METHOD__ );
 
@@ -317,7 +317,7 @@ class HideRevisionForm extends SpecialPage {
 		$dbw->delete( 'archive', array(
 			'ar_namespace' => $this->mTarget->getNamespace(),
 			'ar_title'     => $this->mTarget->getDBkey(),
-			'ar_timestamp' => $timestamp ),
+			'ar_timestamp' => $dbw->timestamp( $timestamp ) ),
 			__METHOD__ );
 
 		$dbw->commit();
@@ -476,7 +476,7 @@ class SpecialOversight extends SpecialPage {
 			$skin->makeKnownLinkObj( $self, wfMsgHTML( 'diff' ),
 				'revision=' . $row->rev_id . '&diff=1') .
 			") " .
-			$wgLang->timeanddate( $row->hidden_on_timestamp ) .
+			$wgLang->timeanddate( wfTimestamp( TS_MW, $row->hidden_on_timestamp ) ) .
 			" " .
 			$skin->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) ) .
 			" " .
