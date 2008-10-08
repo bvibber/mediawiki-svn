@@ -7,7 +7,7 @@
 
 Name:                TSslang
 Summary:             multi-platform programmer's library
-Version:             2.1.3
+Version:             2.1.4
 Source:              ftp://ftp.fu-berlin.de/pub/unix/misc/slang/v2.1/slang-%{version}.tar.gz
 
 SUNW_BaseDir:        %{_basedir}
@@ -91,6 +91,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/slsh.rc
 
 %changelog
+* Wed Oct  8 2008 - river@wikimedia.org
+- 2.1.4
 * Thu Jun 19 2008 - river@wikimedia.org
 - modified for toolserver
 * Fri May 02 2008 - ananth@sun.com
