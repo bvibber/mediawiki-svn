@@ -12,6 +12,12 @@ SUNW_BaseDir:        /opt/php
 BuildRoot:           %{_tmppath}/%{name}-%{version}-build
 %include default-depend.inc
 
+BuildRequires: TSpcre-devel
+BuildRequires: TScurl-devel
+
+Requires: TSpcre
+Requires: TScurl
+
 %package root
 Summary:                 %{summary} - / filesystem
 SUNW_BaseDir:            /

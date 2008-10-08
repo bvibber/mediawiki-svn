@@ -10,6 +10,7 @@ BuildRoot:           %{_tmppath}/%{name}-%{version}-build
 %include default-depend.inc
 
 BuildRequires: TSphp
+BuildRequires: TSautoconf
 
 %prep
 %setup -q -n APC-%version
