@@ -68,14 +68,25 @@ wgExtendedOggPlayerStats = {
 	}
 }
 //extend the OggHandler object for stats collection
-for(i in wgOggPlayer){
-	if(typeof wgExtendedOggPlayerStats[i]!='undefined'){
-		wgOggPlayer['parent_'+i]= wgOggPlayer[i];
-		wgOggPlayer[i]=wgExtendedOggPlayerStats[i];
+if(typeof wgOggPlayer.doStats =='undefined'){
+	for(var i in wgExtendedOggPlayerStats){
+		if(typeof wgOggPlayer[i]!='undefined'){
+			wgOggPlayer['parent_'+i]= wgOggPlayer[i];		
+		}
+		wgOggPlayer[i]=wgExtendedOggPlayerStats[i];	
 	}
 }
 function wg_ran_stats(responseObj){
 	js_log('did stats with id:' + responseObj['id']);
+	//add a pointer to the log if we are on the survey page:
+	var formElm=document.getElementById('ps_editform'); 
+	if(formElm){
+		var inputElm = document.createElement('input');
+		inputElm.setAttribute( 'name', 'player_stats_log_id' );
+		inputElm.setAttribute( 'value', responseObj['id'] );
+		inputElm.setAttribute( 'type', 'hidden');		
+		formElm.appendChild(inputElm);		
+	}
 }
 /*
  * a few utily functions
@@ -88,8 +99,7 @@ function loadExternalJs(url){
     e.setAttribute('type',"text/javascript");
     document.getElementsByTagName("head")[0].appendChild(e);
 }
-function do_request(req_url, callback, mv_json_response){
- 	js_log('do request: ' + req_url);
+function do_request(req_url, callback, mv_json_response){ 	
  	global_req_cb.push(callback);
 	loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));
 }

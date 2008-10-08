@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS `player_stats_survey` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `user_hash` char(40) collate utf8_bin NOT NULL,
   `timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `embed_key` enum('youtube','oggHandler') collate utf8_bin default NULL,
+  `player_stats_log_id` int(11) unsigned default NULL,
   `ps_could_play` tinyint(1) NOT NULL,
   `ps_jumpy_playback` tinyint(1) NOT NULL,
   `ps_no_video` tinyint(1) NOT NULL,
@@ -34,4 +36,4 @@ CREATE TABLE IF NOT EXISTS `player_stats_survey` (
   `ps_problems_desc` text collate utf8_bin NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `user_hash` (`user_hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
