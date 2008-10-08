@@ -67,7 +67,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					# handlers since they may emit block-level elements as opposed to simple <img> tags.
 					# ref http://css-discuss.incutio.com/?page=CenteringBlockElement				
 					. '<div style="margin-left: auto; margin-right: auto; width: ' . htmlspecialchars( $this->mWidths ) . 'px;">'
-					. $mvTitle->getEmbedVideoHtml( '', $vidRes )
+					. $mvTitle->getEmbedVideoHtml( array('size'=>$vidRes ) )
 					// . '<img width="'.$this->mWidths.'" src="'.$mvTitle->getStreamImageURL() . '">'
 					. '</div>' .
 						'</div>' .

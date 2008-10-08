@@ -316,8 +316,15 @@
 					'&feed_format=roe' );
 		return $roeTitle->getFullURL( $query ) ;
 	}
-	function getEmbedVideoHtml( $vid_id = '', $size = '', $force_server = '', $autoplay = false ) {
+	function getEmbedVideoHtml( $options=array() ) {
 		global $mvDefaultFlashQualityKey, $mvDefaultVideoQualityKey;
+		//init options if unset:
+		$vid_id=(isset($options['id']))?$options['id']:'';
+		$size  = (isset($options['size']))?$options['size']:'';
+		$force_server = (isset($options['force_server']))?$options['force_server']:'';
+		$autoplay = (isset($options['autoplay']))?$options['autoplay']:false;
+		$showmeta =  (isset($options['showmeta']))?$options['showmeta']:false;
+		
 		$tag = 'video';
 		if ( $size == '' ) {
 			global $mvDefaultVideoPlaybackRes;
@@ -343,8 +350,8 @@
 			$o .= '<' . htmlspecialchars( $tag ) . ' ';
 			$o .= ( $vid_id == '' ) ? '':' id="' . htmlspecialchars( $vid_id ) . '" ';
 			$o .= 'thumbnail="' . $this->getStreamImageURL( $size, null, $force_server ) . '" ' .
-				'roe="' . $roe_url . '" ' .
-				'show_meta_link="false" ';
+				'roe="' . $roe_url . '" ';
+			$o .= ($showmeta)?'show_meta_link="true" ':'show_meta_link="false" ' ;
 			
 			$o .= ( $autoplay ) ? ' autoplay="true" ':'';
 			

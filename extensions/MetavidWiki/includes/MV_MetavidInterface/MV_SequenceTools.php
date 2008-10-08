@@ -81,7 +81,8 @@
 			$out .=  $row->name . '|' . $streamTitle->getStreamNameText() .
 				'|' . $streamTitle->getStreamImageURL( 'icon' ) .
 				'|' . $row->duration .
-				'|' . $streamTitle->getEmbedVideoHtml( 'vid_seq', $mvDefaultSearchVideoPlaybackRes, 'http://metavid.ucsc.edu/image_media/' ) . "\n";
+				'|' . $streamTitle->getEmbedVideoHtml( array('id'=>'vid_seq', 
+															 'size'=>$mvDefaultSearchVideoPlaybackRes)) . "\n";
 		}
 		// $out.='</ul>';
 		// return people people in the Person Category

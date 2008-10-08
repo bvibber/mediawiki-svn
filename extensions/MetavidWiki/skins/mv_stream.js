@@ -286,11 +286,11 @@ var mv_stream_interface = {
 	/* based on a a mvd_id update the video thumbnail to the correct location
 	 */
 	doRestore:function(){		
-		js_log('f:doRestore');
+		//js_log('f:doRestore');
 		var vid_elm = $j('#embed_vid').get(0);
 		if(vid_elm){
 			if( vid_elm.isPlaying()){
-				js_log('vid elm is playing delay restore:')			
+				//js_log('vid elm is playing delay restore:')			
 				if(!vid_elm.userSlide){ //dont' restore if userSlide is true			
 					if( ! this.monitorTimerId ){				    	
 				        this.monitorTimerId = setInterval('mv_stream_interface.doRestore()', 250);
@@ -537,17 +537,17 @@ function mv_history_disp(titleKey, mvd_id){
 
 /* non-ajax preview of clip adjustment*/
 function mv_adjust_preview(mvd_id){
-	mv_lock_vid_updates=true;
+	
 	
 	js_log('start val:#mv_start_hr_'+mvd_id+' ' + $j('#mv_start_hr_'+mvd_id).val() + ' end:'+ $j('#mv_end_hr_'+mvd_id).val() );
 	
 	$j('#embed_vid').get(0).stop();
-	
+	mv_lock_vid_updates=false;
 	do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
+	mv_lock_vid_updates=true;
 	//start playing
 	$j('#embed_vid').get(0).play();
-
-	mv_lock_vid_updates=false;
+	//mv_lock_vid_updates=false;
 }
 /*
  * adds autocomplete to semantic forms

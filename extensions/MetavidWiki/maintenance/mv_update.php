@@ -55,6 +55,17 @@ if ( !$wgDatabase->fieldExists( 'mv_mvd_index', 'view_count' ) ) {
 	echo '`mv_mvd_index` ADD `view_count`' . "\n";
 	$wgDatabase->query( "ALTER TABLE `mv_mvd_index` ADD `view_count` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0' AFTER `end_time`" );
 }
+//make sure enum for path_type is valid: 
+$res = $wgDatabase->query( 'DESCRIBE mv_stream_files');
+while($row = $wgDatabase->fetchObject( $res )){
+	if($row->Field =='path_type' ){
+		if($row->path_type != "enum('url_anx','wiki_title','url_file')"){
+			$wgDatabase->query( " ALTER TABLE `mv_stream_files` CHANGE `path_type` `path_type` ENUM( 'url_anx', 'wiki_title', 'url_file' ) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'url_anx'" );			
+		}
+	}
+	
+}
+
 // add view_count index:
 if ( !$wgDatabase->indexExists( 'mv_mvd_index', 'view_count' ) ) {
 	$wgDatabase->query( "ALTER TABLE `mv_mvd_index` ADD INDEX ( `view_count` )" );

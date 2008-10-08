@@ -828,7 +828,7 @@ class MV_SpecialMediaSearch {
 			if ( $mvTitle->validRequestTitle() ) {
 				list ( $vWidth, $vHeight ) = explode( 'x', $mvDefaultSearchVideoPlaybackRes );
 				$embedHTML = '<span style="float:left;width:' . htmlspecialchars( $vWidth + 20 ) . 'px">' .
-				$mvTitle->getEmbedVideoHtml( 'vid_' . $mvd_id, $mvDefaultSearchVideoPlaybackRes, '', $autoplay = true ) .
+				$mvTitle->getEmbedVideoHtml( array('id'=>'vid_' . $mvd_id, 'size'=>$mvDefaultSearchVideoPlaybackRes, 'autoplay'=> true ) ) .
 				'</span>';
 				$wgOut->clearHTML();
 				$MvOverlay = new MV_Overlay();

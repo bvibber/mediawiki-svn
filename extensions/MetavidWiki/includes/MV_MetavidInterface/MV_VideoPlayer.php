@@ -83,7 +83,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		list( $width, $height ) = explode( 'x', $vid_size );
 		// wrap the video container to prevent moving html on the page:			
 		return '<div style="display:block;width:' . $width . 'px;height:' . $height . 'px">' .
-					$mvTitle->getEmbedVideoHtml( $this->embed_id, $vid_size ) .
+					$mvTitle->getEmbedVideoHtml( array( 'id'=>$this->embed_id, 'size'=>$vid_size ) ) .
 			'</div>';
 	}
 	function render_menu() {

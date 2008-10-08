@@ -1450,8 +1450,8 @@ textInterface.prototype = {
 					getMsg('select_transcript_set')+'</a> | ' +
 				'<input onClick="document.getElementById(\''+this.pe.id+'\').textInterface.setAutoScroll(this.checked);return false;" ' +
 				'type="checkbox" '+as_checked +'>'+getMsg('auto_scroll');
-		if(this.pe.linkback){
-			out+=' | <a style="font-color:#000;" title="'+getMsg('improve_transcript')+'" href="'+this.pe.linkback+'">'+
+		if(this.pe.media_element.linkback){
+			out+=' | <a style="font-color:#000;" title="'+getMsg('improve_transcript')+'" href="'+this.pe.media_element.linkback+'" target="_new">'+
 				getMsg('improve_transcript')+'</a> ';
 		}
 		out+='</div>';
@@ -1815,7 +1815,7 @@ mediaElement.prototype =
     */
     tryAddSource:function(element)
     {
-    	js_log('f:tryAddSource:'+ $j(element).attr("src"));    	
+    	//js_log('f:tryAddSource:'+ $j(element).attr("src"));    	
         if (! $j(element).attr("src")){
         	//js_log("element has no src");
             return false;
@@ -1824,7 +1824,7 @@ mediaElement.prototype =
         //make sure an existing element with the same src does not already exist:         
         for(i in this.sources){            	
         	if(this.sources[i].getURI()==new_src){
-        		js_log('checking existing: '+this.sources[i].getURI() + ' != '+ new_src);     
+        		//js_log('checking existing: '+this.sources[i].getURI() + ' != '+ new_src);     
         		//can't add it all but try to update any additional attr: 
         		this.sources[i].updateSource(element);
         		return false;

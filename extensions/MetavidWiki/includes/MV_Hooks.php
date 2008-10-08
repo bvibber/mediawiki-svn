@@ -91,7 +91,7 @@ function LinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options, 
  			}
  		}
  		$mvTitle =  new MV_Title( substr( $title->getText(), strlen($mvEmbedKey)+1) ); 		
- 		$ret = $mvTitle->getEmbedVideoHtml('',$size);
+ 		$ret = $mvTitle->getEmbedVideoHtml( array( 'size'=>$size, 'showmeta'=>true ) );
  		return false;
  	}
  	return true;
@@ -357,7 +357,7 @@ function mv_pl_wt( $mvd_id ) {
 	global $wgRequest;
 	$mvd = MV_Index::getMVDbyId( $mvd_id );
 	$mvTitle = new MV_Title( $mvd->wiki_title );
-	return $mvTitle->getEmbedVideoHtml( 'vid_' . $mvd_id, $wgRequest->getVal( 'size' ), '', true );
+	return $mvTitle->getEmbedVideoHtml( array('id'=>'vid_' . $mvd_id, 'size'=>$wgRequest->getVal( 'size' ), 'autoplay'=>true ) );
 }
 function mv_date_obj() {
 	// returns the date object for existing stream set
