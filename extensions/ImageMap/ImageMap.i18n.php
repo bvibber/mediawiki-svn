@@ -521,6 +521,7 @@ $messages['ia'] = array(
 	'imagemap_invalid_coord' => 'Error: coordinata invalide al linea $1, debe esser un numero',
 	'imagemap_invalid_desc' => 'Error: specification "desc" invalide, debe esser un del sequentes: <tt>$1</tt>',
 	'imagemap_description' => 'A proposito de iste imagine',
+	'imagemap_poly_odd' => 'Error: se trova un polygono con un numero impar de coordinatas in linea $1',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -888,6 +889,7 @@ $messages['oc'] = array(
 	'imagemap_invalid_coord' => 'Error : coordenada invalida a la linha $1, deu èsser un nombre',
 	'imagemap_invalid_desc' => 'Error : paramètre « desc » invalid, los paramètres possibles son : $1',
 	'imagemap_description' => "A prepaus d'aqueste imatge",
+	'imagemap_poly_odd' => 'Error : trobat un poligòn amb un nombre impar de coordenadas a la linha $1',
 );
 
 /** Ossetic (Иронау)

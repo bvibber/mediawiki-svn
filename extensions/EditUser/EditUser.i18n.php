@@ -668,6 +668,19 @@ $messages['ro'] = array(
 	'edituser-nouser' => 'Utilizatorul specificat nu există.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'edituser-desc' => "L'utinde privilegiete ponne cangià le preferenze de l'otre utinde",
+	'edituser' => "Cange l'utende",
+	'edituser-logout' => 'Utende assute',
+	'edituser-username' => 'Nome',
+	'edituser-dosearch' => 'Cirche',
+	'edituser-nouser' => "Stu utende non g'esiste",
+	'edituser-exempt' => 'Stu utende non ge pò essere cangete',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

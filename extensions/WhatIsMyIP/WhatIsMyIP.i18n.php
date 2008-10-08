@@ -295,6 +295,13 @@ $messages['ro'] = array(
 	'whatismyip-out' => 'Adresa ta IP:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'whatismyip-out' => "L'IP tue:",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -106,6 +106,13 @@ $messages['ksh'] = array(
 # all de Appachtemangs, udder de Wääte för dat Houp-Appachtemeng aan.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'metakeywords-desc' => 'Erlaabt d\'Konfiguratioun vun <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> Tagen pro Nummraum',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

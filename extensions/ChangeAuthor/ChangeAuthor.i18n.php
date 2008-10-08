@@ -794,7 +794,7 @@ $messages['ja'] = array(
 	'changeauthor-weirderror' => '予測不能なエラーが発生しました。もう一度操作してください。それでもエラーが発生する場合は、恐らくデータベースが破壊されています。',
 	'changeauthor-invalidform' => '独自のフォームではなく、[[Special:ChangeAuthor|特定版編集者の変更]]が提供するフォームを利用してください。',
 	'changeauthor-success' => '要求された処理が完了しました。',
-	'changeauthor-logentry' => '$1 の特定版 $2 を $3 から $4 へ投稿者を変更しました。',
+	'changeauthor-logentry' => '$1 の特定版 $2 の投稿者を $3 から $4 へ変更しました。',
 	'changeauthor-logpagename' => '投稿者変更記録',
 	'changeauthor-rev' => '$1',
 );

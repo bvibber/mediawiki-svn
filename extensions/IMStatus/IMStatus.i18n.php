@@ -184,6 +184,7 @@ L’identifiant à fournir ici est composé des chiffres et lettres entre « $2 
  * @author Toliño
  */
 $messages['gl'] = array(
+	'imstatus-desc' => 'Engade etiquetas para amosar varios status IM en liña (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Sintaxe',
 	'imstatus_default' => 'Por defecto',
 	'imstatus_example' => 'Exemplo',
@@ -191,6 +192,48 @@ $messages['gl'] = array(
 	'imstatus_max' => 'máx.',
 	'imstatus_min' => 'mín.',
 	'imstatus_or' => 'ou',
+	'imstatus_style' => 'estilo do indicador do status',
+	'imstatus_action' => 'acción cando o botón é premido',
+	'imstatus_details_saa' => 'Para obter información sobre todos os estilos e accións, consulte $1.',
+	'imstatus_your_name' => 'o seu nome $1',
+	'imstatus_gtalk_height' => 'alto da caixa, en píxeles.',
+	'imstatus_gtalk_width' => 'ancho da caixa, en píxeles.',
+	'imstatus_icq_id' => 'o seu ID no ICQ',
+	'imstatus_xfire_size' => 'o botón do tamaño, de $1 (o maior) a $2 (o menor).',
+	'imstatus_yahoo_style' => 'o botón do estilo, de $1 (o menor) a $2 (o maior), $3 e $4 son para as mensaxes faladas.',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'imstatus-desc' => 'Adde etiquettas pro monstrar le stato in linea de varie servicios de messageria instantanee (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Syntaxe',
+	'imstatus_default' => 'Predefinition',
+	'imstatus_example' => 'Exemplo',
+	'imstatus_possible_val' => 'Valores possibile',
+	'imstatus_max' => 'max',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'o',
+	'imstatus_style' => 'stilo del indicator de stato',
+	'imstatus_action' => 'action quando le button es cliccate',
+	'imstatus_details_saa' => 'Pro plus detalios super tote le stilos e actiones, vide $1.',
+	'imstatus_your_name' => 'tu nomine de $1',
+	'imstatus_aim_presence' => '$1 monstra tu stato con un ligamine que lanceara AIM pro inviar te un message instantanee, a condition que le usator lo ha installate.',
+	'imstatus_aim_api' => '$1 monstra tu stato con un ligamine que lanceara in un <b>navigator del web</b> un version JavaScript de AIM pro inviar te un message instantanee.',
+	'imstatus_gtalk_code' => 'tu codice de Google Talk',
+	'imstatus_gtalk_get_code' => 'tu codice de Google Talk: obtene lo a $1.',
+	'imstatus_gtalk_height' => 'altitude del quadro, in pixeles.',
+	'imstatus_gtalk_width' => 'latitude del quadro, in pixeles.',
+	'imstatus_icq_id' => 'tu numero de ICQ',
+	'imstatus_icq_style' => 'un numero inter 0 e 26 (in effecto, il ha 27 stilos disponibile...).',
+	'imstatus_live_code' => 'tu ID del sito web Live Messenger',
+	'imstatus_live_get_code' => 'tu ID del sito web Live Messenger: <strong>isto non es tu adresse de e-mail.</strong> Tu debe generar un ID per medio de
+<a href="$1">tu optiones de Live Messenger</a>.
+Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
+	'imstatus_skype_nbstyle' => 'Nota: Si tu selige un stilo que es tamben un action, tu selection de action essera ultrapassate per le action correspondente a tu stilo seligite.',
+	'imstatus_xfire_size' => 'le grandor del button, de $1 (le plus grande) a $2 (le plus parve).',
+	'imstatus_yahoo_style' => 'le stilo del button, de $1 (le plus parve) a $2 (le plus grande), $3 e $4 es pro le messages vocal.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -242,6 +285,38 @@ Het nummer dat u moet opgeven is de nummers en letters tussen "$2" en "$3".',
 	'imstatus_skype_nbstyle' => 'Opmerking: als u een stijl kiest die ook een actie is, zal uw actiekeuze overschreven worden door de actie die past bij uw gekozen stijl.',
 	'imstatus_xfire_size' => 'de grootte van de knop, van $1 (grootst) tot $2 (kleinst)',
 	'imstatus_yahoo_style' => 'de stijl van de knop, van $1 (kleinste) tot $2 (grootste), $3 en $4 voor voicemail.',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'imstatus-desc' => 'Apond de balisas que mostran l’estat en linha sus divèrses reds de comunicacion (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Sintaxi',
+	'imstatus_default' => 'Per defaut',
+	'imstatus_example' => 'Exemple',
+	'imstatus_possible_val' => 'Valors possiblas',
+	'imstatus_max' => 'max',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'o',
+	'imstatus_style' => 'estil de l’indicador d’estat',
+	'imstatus_action' => 'accion quand lo boton es clicat',
+	'imstatus_details_saa' => 'Per mai de detalhs al subjècte dels estils e accions, consultatz $1.',
+	'imstatus_your_name' => 'vòstre nom $1',
+	'imstatus_aim_presence' => "$1 aficha vòstre estat amb un ligam qu'aviarà AIM per vos mandar un messatge instantanèu, baste que l’utilizaire l’aja installat.",
+	'imstatus_aim_api' => "$1 aficha vòstre estat amb un ligam qu'aviarà dins un <b>navigador</b> una version javascript de AIM per vos mandar un messatge instantanèu.",
+	'imstatus_gtalk_code' => 'vòstre còde Google Talk',
+	'imstatus_gtalk_get_code' => 'vòstre còde Google Talk : obtenètz-lo sus $1.',
+	'imstatus_gtalk_height' => 'nautor de la boita, en pixèls.',
+	'imstatus_gtalk_width' => 'largor de la boita, en pixèls.',
+	'imstatus_icq_id' => 'vòstre identificant ICQ',
+	'imstatus_icq_style' => 'un nombre entre 0 e 26 (òc, i a 27 estils disponibles...).',
+	'imstatus_live_code' => 'vòstre identificant sul sit Live Messenger',
+	'imstatus_live_get_code' => 'vòstre identificant sul sit Live Messenger : <strong>es pas vòstra adreça de messatjariá</strong>, vos ne cal generir un dins <a href="$1">vòstras opcions Live Messenger</a>.
+L’identificant de provesir aicí es compausat de chifras e letras entre « $2 » e « $3 ».',
+	'imstatus_skype_nbstyle' => "Nòta : se causissètz un estil que tanben es una accion, vòstra causida d’accion serà espotida per l’accion que correspond a l'estil qu'avètz causit.",
+	'imstatus_xfire_size' => 'la talha del boton, de $1 (la mai granda) a $2 (la mai pichona).',
+	'imstatus_yahoo_style' => "l'estil del boton, de $1 (lo mai pichon) a $2 (lo mai grand), $3 e $4 son pels messatges vocals.",
 );
 
 /** Slovak (Slovenčina)

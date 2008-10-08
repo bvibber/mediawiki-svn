@@ -224,6 +224,8 @@ $messages['oc'] = array(
 	'interwikilist-desc' => 'Apond una [[Special:Interwikilist|pagina especiala]] per veire totes los ligams interwikis disponibles',
 	'interwikilist-linkname' => 'Ligam interwiki',
 	'interwikilist-target' => 'Adreça concernida',
+	'interwikilist-filter' => 'Lista del filtre',
+	'interwikilist-prefix' => 'Prefix interwiki :',
 );
 
 /** Polish (Polski)
