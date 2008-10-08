@@ -83,7 +83,9 @@ class SpecialCode extends SpecialPage {
 					$view = new CodeRevisionStatusSetter( $params[0], $params[1] );
 					break;
 				}
-				throw new MWException( "Invalid action specified" );
+				$wgOut->addWikiText( wfMsg('nosuchactiontext') );
+				$wgOut->returnToMain( null, SpecialPage::getTitleFor( 'Code' ) );
+				return;
 			}
 		}
 		$view->execute();
