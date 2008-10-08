@@ -18,3 +18,21 @@ CREATE TABLE IF NOT EXISTS `player_stats_log` (
   PRIMARY KEY  (`id`),
   KEY `user_hash` (`user_hash`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `player_stats_survey` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `user_hash` char(40) collate utf8_bin NOT NULL,
+  `timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `ps_could_play` tinyint(1) NOT NULL,
+  `ps_jumpy_playback` tinyint(1) NOT NULL,
+  `ps_no_video` tinyint(1) NOT NULL,
+  `ps_bad_sync` tinyint(1) NOT NULL,
+  `ps_no_sound` tinyint(1) NOT NULL,
+  `ps_would_install` tinyint(1) NOT NULL,
+  `ps_would_switch` tinyint(1) NOT NULL,
+  `ps_your_email` varchar(200) collate utf8_bin NOT NULL,
+  `ps_problems_desc` text collate utf8_bin NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `user_hash` (`user_hash`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+

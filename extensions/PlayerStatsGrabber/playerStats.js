@@ -8,9 +8,16 @@ var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"str
 
 //extened version of OggHandler
 wgExtendedOggPlayerStats = {
-	init:function( player, params ) {
-		//call the parent function first
+	init:function(player, params){
 		this.parent_init( player, params );
+		this.doStats();
+	},
+	doStats:function() {
+		//make sure we ran detect:		
+		if (!this.detectionDone) {
+			this.detect();
+		}
+		
 		//build our request url: 
 		if( wgServerOveride!="" ){
 			url= wgServerOveride;
