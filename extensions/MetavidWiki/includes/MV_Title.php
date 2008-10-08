@@ -276,24 +276,13 @@
 	 */
 	function getWebStreamURL( $quality = null ) {
 		global $mvVideoArchivePaths;
-		global $mvDefaultVideoQualityKey, $mvDefaultVideoHighQualityKey, $mvDefaultFlashQualityKey;
 		// @@todo mediawiki path for media (insted of hard link to $mvVideoArchive)
 		// @@todo make sure file exisits		
 		if ( !$quality )$quality = $mvDefaultVideoQualityKey;
-		$time_req = '';
-		if ( $this->getStartTime() != '' && $this->getEndTime() != '' ) {
-			if ( $quality == $mvDefaultVideoQualityKey ||
-			   $quality == $mvDefaultVideoHighQualityKey ) {
-			   	//removed .anx
-				$time_req  = '?t=' . $this->getStartTime() . '/' . $this->getEndTime();
-			} else if ( $quality == $mvDefaultFlashQualityKey ) {
-				$time_req  = '?t=' . $this->getStartTime() . '/' . $this->getEndTime();
-			}
-		}
 		if ( $this->doesStreamExist() ) {
 			// @@todo cache this / have a more organized store for StreamFiles in streamTitle
 			$dbr = & wfGetDB( DB_READ );
-			$result = $dbr->select( 'mv_stream_files', array( 'path' ), array (
+			$result = $dbr->select( 'mv_stream_files', '*', array (
 				'stream_id' => $this->mvStream->id,
 				'file_desc_msg' => $quality
 			) );
@@ -305,6 +294,14 @@
 			$mvStreamFile = new MV_StreamFile( $this->mvStream, $streamFile );
 			// if link empty return false:			
 			if ( $mvStreamFile->getFullURL() == '' )return false;
+					$time_req = '';
+			if ( $this->getStartTime() != '' && $this->getEndTime() != '' ) {
+				if ( $mvStreamFile->supportsURLTimeEncoding() ) {
+					//removed .anx
+					$time_req  = '?t=' . $this->getStartTime() . '/' . $this->getEndTime();
+				}
+			}
+
 			return $mvStreamFile->getFullURL() . $time_req;
 		} else {
 			// @@todo throw ERROR

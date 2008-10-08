@@ -272,9 +272,7 @@ class MV_SpecialExport {
 			<switch distinction="quality">
 		<? foreach ( $this->file_list as $file ) {
 				$dAttr = ( $file->getNameKey() == $mvDefaultVideoQualityKey ) ? ' default="true"':'';
-				if ( $file->getNameKey()	== $mvDefaultVideoQualityKey ||
-					$file->getNameKey()	== $mvDefaultFlashQualityKey ||
-					$file->getNameKey()	== $mvDefaultVideoHighQualityKey )
+				if ( $file->supportsURLTimeEncoding() )
 				{
 					$dSrc = $this->mvTitle->getWebStreamURL( $file->getNameKey() );
 					$startendattr = '';

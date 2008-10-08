@@ -126,6 +126,9 @@
  	function getPathType() {
  		return $this->path_type;
  	}
+	function supportsURLTimeEncoding() {
+		return $this->path_type == 'url_anx';
+	}
  	function getFullURL() {
  		// @@todo check on path if local 
  		return $this->getPath();
