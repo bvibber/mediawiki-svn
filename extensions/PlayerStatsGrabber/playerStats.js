@@ -1,6 +1,6 @@
-//wgServerOveride: leave empty to use the current server 
-// (else provide the absolute url to index.php of the wiki you are recording stats to) 
-var wgServerOveride = "";  
+//wgServerOveride: leave empty to use the current server
+// (else provide the absolute url to index.php of the wiki you are recording stats to)
+var wgServerOveride = "";
 var global_req_cb = new Array();//the global request callback array
 
 /*parseUri class:*/
@@ -13,59 +13,59 @@ wgExtendedOggPlayerStats = {
 		this.doStats();
 	},
 	doStats:function() {
-		//make sure we ran detect:		
+		//make sure we ran detect:
 		if (!this.detectionDone) {
 			this.detect();
 		}
-		
-		//build our request url: 
+
+		//build our request url:
 		if( wgServerOveride!="" ){
 			url= wgServerOveride;
 		}else{
 			url = wgServer +((wgScript == null) ? (wgScriptPath + "/index.php") : wgScript);
 		}
-		url += "?action=ajax&rs=mw_push_player_stats";	
-			
-		//detect windows media player ( direct show filters could be installed) 
-		if ( navigator.mimeTypes && navigator.mimeTypes["video/x-ms-wm"]     &&  
+		url += "?action=ajax&rs=mw_push_player_stats";
+
+		//detect windows media player ( direct show filters could be installed)
+		if ( navigator.mimeTypes && navigator.mimeTypes["video/x-ms-wm"]     &&
 			navigator.mimeTypes["video/x-ms-wm"].enabledPlugin){
 			this.clientSupports['ms_video'];
 		}
 		//@@todo research if we can detect if MS video support a given codec
-		
+
 		//detect flash support
 		if( FlashDetect.installed )
-			this.clientSupports['flash']=true;							
-		
+			this.clientSupports['flash']=true;
+
 		var j=0;
 		for(var i in this.clientSupports){
 			url+='&cs[]='+encodeURIComponent(i);
 			j++;
 		}
-		
+
 		//get the flash version:
 		url+='&fv='+ encodeURIComponent( FlashDetect.raw );
-		
-		
-		//detect java version if possible: (ie not IE with default security) 
+
+
+		//detect java version if possible: (ie not IE with default security)
 		if( javaDetect.version ){
 			url+= '&jv='+ encodeURIComponent ( javaDetect.version );
 		}
-		
-		//add some additional params seperated out to enum keys: 
-		url+= '&b_user_agent=' +encodeURIComponent( navigator.userAgent ); 
+
+		//add some additional params seperated out to enum keys:
+		url+= '&b_user_agent=' +encodeURIComponent( navigator.userAgent );
 		url+= '&b_name=' + encodeURIComponent( BrowserDetect.browser ) ;
 		url+= '&b_version=' + encodeURIComponent( BrowserDetect.version );
-		url+= '&b_os=' + encodeURIComponent( BrowserDetect.OS ) ;						
-		
+		url+= '&b_os=' + encodeURIComponent( BrowserDetect.OS ) ;
+
 		//and finaly add the user hash:
 		url+='&uh=' + encodeURIComponent ( wgOggPlayer.userHash );
-		
-		//now send out our stats update (run via javascript include to support remote servers:		
+
+		//now send out our stats update (run via javascript include to support remote servers:
 		do_request ( url, function( responseObj ){
 			wg_ran_stats( responseObj );
-		});				
-	}	
+		});
+	}
 }
 //extend the OggHandler object for stats collection
 for(i in wgOggPlayer){
@@ -77,9 +77,9 @@ for(i in wgOggPlayer){
 function wg_ran_stats(responseObj){
 	js_log('did stats with id:' + responseObj['id']);
 }
-/* 
+/*
  * a few utily functions
- * to enable cross site requests via json: 
+ * to enable cross site requests via json:
  */
 function loadExternalJs(url){
    	js_log('load js: '+ url);
@@ -104,7 +104,7 @@ function mv_jsdata_cb(response){
 }
 function js_log(string){
   if( window.console ){
-        console.log(string);        
+        console.log(string);
   }else{
      /*
       * IE and non-firebug debug:
@@ -127,20 +127,20 @@ var javaDetect = {
 	javaEnabled: false,
 	version: false,
   	init:function(){
-	  if (typeof navigator != 'undefined' && typeof navigator.javaEnabled != 'undefined'){ 
+	  if (typeof navigator != 'undefined' && typeof navigator.javaEnabled != 'undefined'){
 	    this.javaEnabled = navigator.javaEnabled();
 	  }else{
 	    this.javaEnabled = 'unknown';
 	  }
 	  if (navigator.javaEnabled() && typeof java != 'undefined')
-	    this.version = java.lang.System.getProperty("java.version");  
-	  //try to get the IE version of java (not likely to work with default security setting) 
+	    this.version = java.lang.System.getProperty("java.version");
+	  //try to get the IE version of java (not likely to work with default security setting)
 	  if( wgOggPlayer.msie ){
 	    var shell;
 		try {
 			// Create WSH(WindowsScriptHost) shell, available on Windows only
 			shell = new ActiveXObject("WScript.Shell");
-			
+
 			if (shell != null) {
 			// Read JRE version from Window Registry
 			try {

@@ -35,4 +35,3 @@ CREATE TABLE IF NOT EXISTS `player_stats_survey` (
   PRIMARY KEY  (`id`),
   KEY `user_hash` (`user_hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
-
