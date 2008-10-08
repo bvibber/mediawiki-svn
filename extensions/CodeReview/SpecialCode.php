@@ -162,7 +162,7 @@ abstract class CodeView {
 		$message = trim( $value );
 		$lines = explode( "\n", $message, 2 );
 		$first = $lines[0];
-		$trimmed = $wgLang->truncate( $first, 60, '...' );
+		$trimmed = $wgLang->truncate( $first, 40, '...' );
 		return $this->formatMessage( $trimmed );
 	}
 	/*

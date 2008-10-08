@@ -63,9 +63,9 @@ class SvnRevTablePager extends TablePager {
 			'cr_id' => wfMsg( 'code-field-id' ),
 			'cr_status' => wfMsg( 'code-field-status' ),
 			'COUNT(cc_rev_id)' => wfMsg( 'code-field-comments' ),
+			'cr_path' => wfMsg( 'code-field-path' ),
 			'cr_message' => wfMsg( 'code-field-message' ),
 			'cr_author' => wfMsg( 'code-field-author' ),
-			'cr_path' => wfMsg( 'code-field-path' ),
 			'cr_timestamp' => wfMsg( 'code-field-timestamp' ),
 		);
 	}
