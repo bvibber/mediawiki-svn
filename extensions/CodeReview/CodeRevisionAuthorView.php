@@ -28,7 +28,8 @@ class CodeRevisionAuthorView extends CodeRevisionListView {
 		if ( $wgUser->isAllowed( 'codereview-link-user' ) ) {
 			$repo = $this->mRepo->getName();
 			$page = SpecialPage::getTitleFor( 'Code', "$repo/author/$this->mAuthor/link");
-			$linkInfo .= ' (' . $this->mSkin->link( $page, wfMsg( 'code-author-' . ($this->mUser?'un':'') . 'link') ) . ')' ;
+			$linkInfo .= ' (' . $this->mSkin->link( $page, 
+				wfMsg( 'code-author-' . ($this->mUser?'un':'') . 'link') ) . ')' ;
 		}
 
 		$repoLink = $wgUser->getSkin()->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ),
