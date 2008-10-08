@@ -174,6 +174,8 @@
 			$html .= '<option value="url_anx"' . $sel . '>' . wfMsg( 'mv_path_type_url_anx' ) . '</option>' .
 			$sel = ( $sf['path_type'] == 'wiki_title' ) ? ' selected':'';
 			$html .= '<option value="wiki_title"' . $sel . '>' . wfMsg( 'mv_path_type_wiki_title' ) . '</option>' .
+			$sel = ( $sf['path_type'] == 'url_file' ) ? ' selected':'';
+			$html .= '<option value="url_file"' . $sel . '>' . wfMsg( 'mv_path_type_url_file' ) . '</option>' .
 					'</select></td>';
 			$html .= '<td><input type="text" name="sf_' . htmlspecialchars( $sf['id'] ) . '[path]" value="' . htmlspecialchars( $sf['path'] ) . '" maxlength="250" size="50" />' .
 					'<input type="hidden" name="sf_' . htmlspecialchars( $sf['id'] ) . '[stream_id]" value="' . htmlspecialchars( $sf['stream_id'] ) . '">' .
