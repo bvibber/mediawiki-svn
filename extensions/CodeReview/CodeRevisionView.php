@@ -44,9 +44,9 @@ class CodeRevisionView extends CodeView {
 			'code-rev-date' => $wgLang->timeanddate( $this->mRev->getTimestamp() ),
 			'code-rev-author' => $this->authorLink( $this->mRev->getAuthor() ),
 			'code-rev-status' => $this->statusForm(),
+			'code-rev-tags' => $this->tagForm(),
 			'code-rev-message' => $this->formatMessage( $this->mRev->getMessage() ),
 			'code-rev-paths' => $paths,
-			'code-rev-tags' => $this->tagForm(),
 		);
 		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$this->mRev->getId() );
 
@@ -167,11 +167,14 @@ class CodeRevisionView extends CodeView {
 	function tagForm() {
 		global $wgUser;
 		$tags = $this->mRev->getTags();
-		$list = implode( ", ",
-			array_map(
-				array( $this, 'formatTag' ),
-				$tags ) 
-		) . '&nbsp;';
+		$list = '';
+		if( count($tags) ) {
+			$list = implode( ", ",
+				array_map(
+					array( $this, 'formatTag' ),
+					$tags ) 
+			) . '&nbsp;';
+		}
 		if( $wgUser->isAllowed( 'codereview-add-tag' ) ) {
 			$list .= $this->addTagForm();
 		}
