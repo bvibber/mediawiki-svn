@@ -198,6 +198,7 @@ $settings = array(
 			'wgExtraSubtitle' => 'text',
 			'wgHideInterlanguageLinks' => 'bool',
 			'wgLegalTitleChars' => 'text',
+			'wgMajorSiteNoticeID' => 'text',
 			'wgMaxArticleSize' => 'int',
 			'wgMetadataWhitelist' => 'text',
 			'wgNoFollowLinks' => 'bool',
@@ -416,12 +417,13 @@ $settings = array(
 	),
 	'reduction' => array(
 		'reduction' => array(
+			'wgAPIMaxDBRows' => 'int',
 			'wgDisableQueryPages' => 'bool',
 			'wgDisableQueryPageUpdate' => 'array',
 			'wgDisableSearchContext' => 'bool',
 			'wgDisableSearchUpdate' => 'bool',
 			'wgDisableTextSearch' => 'bool',
-			'wgAPIMaxDBRows' => 'int',
+			'wgFixDoubleRedirects' => 'bool',
 			'wgMaximumMovedPages' => 'int',
 			'wgMiserMode' => 'bool',
 			'wgShowHostnames' => 'bool',
@@ -1177,6 +1179,8 @@ $settingsVersion = array(
 	'wgRenderHashAppend' => array( array( '1.14alpha', '>=' ) ),
 	'wgExternalLinkTarget' => array( array( '1.14alpha', '>=' ) ),
 	'wgShellLocale' => array( array( '1.14alpha', '>=' ) ),
+	'wgMajorSiteNoticeID' => array( array( '1.14alpha', '>=' ) ),
+	'wgFixDoubleRedirects' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
