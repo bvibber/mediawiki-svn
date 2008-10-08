@@ -11,6 +11,7 @@ class CodeRevisionView extends CodeView {
 		$this->mPreviewText = false;
 		$this->mReplyTarget = $replyTarget ? 
 			(int)$replyTarget : $wgRequest->getIntOrNull( 'wpParent' );
+		$this->mSkipCache = ($wgRequest->getVal( 'action' ) == 'purge');
 	}
 
 	function execute(){
@@ -62,13 +63,12 @@ class CodeRevisionView extends CodeView {
 		$diffHtml = $this->formatDiff();
 		if( $diffHtml ) {
 			$html .=
-				"<h2>" . wfMsgHtml( 'code-rev-diff' ) . "</h2>" .
-				"<div class='mw-codereview-diff'>" .
-				$diffHtml .
-				"</div>\n";
+				"<h2>" . wfMsgHtml( 'code-rev-diff' ) .
+				' <small>[' . $wgUser->getSkin()->makeLinkObj( $special,
+					wfMsg('code-rev-purge-link'), 'action=purge' ) . ']</small></h2>' .
+				"<div class='mw-codereview-diff'>" . $diffHtml . "</div>\n";
 		}
-		$html .=
-			"<h2 id='code-comments'>". wfMsgHtml( 'code-comments' ) ."</h2>\n" .
+		$html .= "<h2 id='code-comments'>". wfMsgHtml( 'code-comments' ) ."</h2>\n" .
 			$this->formatComments();
 		
 		if( $this->mReplyTarget ) {
@@ -228,7 +228,7 @@ class CodeRevisionView extends CodeView {
 	}
 
 	function formatDiff() {
-		$diff = $this->mRepo->getDiff( $this->mRev->getId() );
+		$diff = $this->mRepo->getDiff( $this->mRev->getId(), $this->mSkipCache ? 'skipcache' : '' );
 		if( !$diff ) {
 			return false;
 		}

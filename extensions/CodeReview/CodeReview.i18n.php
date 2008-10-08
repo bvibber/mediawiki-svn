@@ -57,6 +57,7 @@ $messages['en'] = array(
 	'code-rev-comment-preview' => 'Preview',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-purge-link' => 'purge',
 	'code-status-new' => 'new',
 	'code-status-fixme' => 'fixme',
 	'code-status-resolved' => 'resolved',

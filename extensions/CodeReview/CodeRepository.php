@@ -147,7 +147,7 @@ class CodeRepository {
 		return CodeRevision::newFromRow( $row );
 	}
 
-	function getDiff( $rev ) {
+	function getDiff( $rev, $skipCache = '' ) {
 		global $wgMemc;
 
 		$rev1 = $rev - 1;
@@ -159,7 +159,11 @@ class CodeRepository {
 		}
 
 		$key = wfMemcKey( 'svn', md5( $this->mPath ), 'diff', $rev1, $rev2 );
-		$data = $wgMemc->get( $key );
+		if( $skipCache === 'skipcache' ) {
+			$data = NULL;
+		} else {
+			$data = $wgMemc->get( $key );
+		}
 
 		if( !$data ) {
 			$svn = SubversionAdaptor::newFromRepo( $this->mPath );
