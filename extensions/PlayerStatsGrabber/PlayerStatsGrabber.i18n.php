@@ -13,8 +13,8 @@ Please answer the following questions:',
 	'ps_problem_checkoff' => 'Please mark any of the following problems if they occurred:',
 
 	'ps_no_video' => 'No video played back at all',
-	'ps_jumpy_playback' => ' Jumping playback (the video played,, then paused then played)',
-	'ps_no_sound' => 'No audio, (my computer volume is on, but I hear no audio for this video)',
+	'ps_jumpy_playback' => ' Jumping playback (the video played, then paused, then played)',
+	'ps_no_sound' => 'No audio (my computer volume is on, but I hear no audio for this video)',
 	'ps_bad_sync' => 'Audio was out of sync with the video',
 
 	'ps_problems_desc' => 'Please describe any additional issues below (optional):',
@@ -26,13 +26,13 @@ Please answer the following questions:',
 	'ps_would_switch' => 'You appear to be running Internet Explorer.
 Would you consider installing a different browser to improve your media experience on this wiki?',
 	'ps_yes_switch' => 'Yes, I would switch browsers',
-	'ps_no_switch' => 'No, I would switch browsers',
+	'ps_no_switch' => 'No, I would not switch browsers',
 
 	'ps_your_email' => 'Your email address (optional)',
 	'ps_submit_survey' => 'Submit survey',
-	'ps_privacy' => 'Privacy link or note goes here',
+	'ps_privacy' => 'Privacy policy: The data collected here will be used to improve video and audio playback on Wikimedia Foundation projects. Only aggregate data will be published, and no personally identifiable information will be shared with any third party, ever. If you provide an email address, we may contact you for further information on any problems you have experienced.',
 	'ps_thanks' => 'Thank you for participating in this video survey',
-		'only_one_survey_pp'	=>'Only one survey per user currently accepted',
-		'stats_welcome_link'	=>'Stats will reported here once the survey is complete. <BR>' .
+		'only_one_survey_pp'	=>'Only one survey per user is currently accepted',
+		'stats_welcome_link'	=>'Statistics will reported here once the survey is complete. <BR>' .
 								'Please [[Special:PlayerStatsGrabber/Survey|take the suvey]] (if you have not already taken it)'
 );
