@@ -1481,6 +1481,8 @@ mediaSource.prototype =
     title:null,
     /** True if the source has been marked as the default. */
     marked_default:null,
+	/** True if the source supports url specification of offset and duration */
+	supports_url_time_encoding:null,
     /** Start offset of the requested segment */
     start_offset:null,
     /** Duration of the requested segment (NaN if not known) */
@@ -1548,7 +1550,7 @@ mediaSource.prototype =
     	js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp);
     	//js_log("pre uri:" + this.src);
     	//if we have time we can use:
-    	if(this.start_ntp!=null){
+    	if(this.supports_url_time_encoding){
     		var index_time_val = false;
     		var time_req_delimitator = '';
 	        if(this.src.indexOf('?t=')!=-1)index_time_val='?t=';
@@ -1559,11 +1561,17 @@ mediaSource.prototype =
 			    			this.src.indexOf('&', this.src.indexOf(index_time_val));
 	        	this.src = this.src.substring(0, this.src.indexOf(index_time_val) ) + index_time_val + start_ntp + '/'+end_ntp + end_req_string;
 	        }
+			this.parseURLDuration();
     	}
+			
     	//update the duration
-    	this.parseURLDuration();
 	  	//js_log("post uri:" + this.src);
     },
+	setDuration:function (duration)
+	{
+		this.duration = duration;
+		this.end_ntp = seconds2ntp(this.start_offset + duration);
+	},
     /** MIME type accessor function.
         @return the MIME type of the source.
         @type String
@@ -1623,10 +1631,13 @@ mediaSource.prototype =
 	   		this.duration = ntp2seconds( this.end_ntp ) - this.start_offset;
 	   		
 		    this.duration = this.duration;
+			this.supports_url_time_encoding = true;
         }else{
 	     	//else normal media request (can't predict the duration without the plugin reading it)
 	     	this.duration=null;
 	   	 	this.start_offset=0;
+			this.start_ntp=seconds2ntp(this.start_offset);
+			this.supports_url_time_encoding = false;
         }
 	},
     /** Attempts to detect the type of a media file based on the URI.
@@ -2089,7 +2100,7 @@ embedVideo.prototype = {
 			return default_time_req;
 		if(!this.media_element.selected_source)
 			return default_time_req;		
-		if(!this.media_element.selected_source.start_ntp)
+		if(!this.media_element.selected_source.end_ntp)
 			return default_time_req;		
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
 	},	
@@ -2437,7 +2448,10 @@ embedVideo.prototype = {
 		//reset slider
 		this.setSliderValue(0);
 		//reset seek_offset:
-		this.seek_time_sec=0;
+		if(this.media_element.selected_source.supports_url_time_encoding)
+			this.seek_time_sec=0;
+		else
+			this.seek_time_sec=ntp2seconds(start_time);
 	},
 	//updates the video src
 	updateVideoSrc : function(src){

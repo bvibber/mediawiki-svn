@@ -169,20 +169,28 @@ var flashEmbed = {
         if(!this.fla['getTime'])
             return js_log('can not monitor without time');
                         
-        this.currentTime = this.fla.getTime();              
+        this.currentTime = this.fla.getTime();
         
         if(this.currentTime > 1 && !this.startedTimedPlayback){
         	this.startedTimedPlayback=true;
-        	js_log("time is "+ this.currentTime + " started playback");        	
-        }        
+        	js_log("time is "+ this.currentTime + " started playback");
+			if(this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
+			{
+				js_log('Seeking to ' + this.seek_time_sec);
+				this.fla.Seek(this.seek_time_sec);
+				this.seek_time_sec = 0;
+			}
+        }
         
-        
-        //flash is giving bogus duration get from this (if available)      
+        //flash is giving bogus duration get from this (if available)
+		if(!this.media_element.selected_source.end_ntp  && this.fla.getDuration()>0)
+				this.media_element.selected_source.setDuration(this.fla.getDuration());
+
         var end_ntp = (this.media_element.selected_source.end_ntp)?
-        			   		this.media_element.selected_source.end_ntp : 
-        			   		seconds2ntp( this.fla.getDuration() );
-		var start_ntp =  (this.media_element.selected_source.start_ntp)?
-        			   		this.media_element.selected_source.start_ntp : 0;
+							this.media_element.selected_source.end_ntp : seconds2ntp(0);
+		// selected_source.start_ntp is now guaranteed to exist
+		var start_ntp =  this.media_element.selected_source.start_ntp;
+		
         if(!this.userSlide){			   		       		
 	        if((this.currentTime - ntp2seconds(start_ntp))<0){
 	        	this.setStatus('buffering...');
@@ -193,7 +201,7 @@ var flashEmbed = {
         }        
 	    
 	    //super hackery  to see if we have "probably" reached the end of playback: 
-        if(this.prevTime==this.currentTime && (this.currentTime > (ntp2seconds(end_ntp)-1)) ){
+        if(this.startedTimedPlayback && this.prevTime==this.currentTime && (this.currentTime > (ntp2seconds(end_ntp)-1)) ){
         	js_log('probablly reached end of stream: '+this.currentTime);
         	this.onClipDone();         	     
         }	   
