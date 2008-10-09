@@ -1,7 +1,7 @@
 <?php
 $messages = array();
 
-$messages['en'] = array( 
+$messages['en'] = array(
         'playerstatsgrabber' => 'Player stats survey',
 	'ps_take_video_survey' => 'Video playback survey',
 	'ps_survey_description' => 'This survey will help improve support for rich media.
@@ -30,9 +30,11 @@ Would you consider installing a different browser to improve your media experien
 
 	'ps_your_email' => 'Your email address (optional)',
 	'ps_submit_survey' => 'Submit survey',
-	'ps_privacy' => 'Privacy policy: The data collected here will be used to improve video and audio playback on Wikimedia Foundation projects. Only aggregate data will be published, and no personally identifiable information will be shared with any third party, ever. If you provide an email address, we may contact you for further information on any problems you have experienced.',
+	'ps_privacy' => 'Privacy policy: The data collected here will be used to improve video and audio playback on Wikimedia Foundation projects.
+Only aggregate data will be published, and no personally identifiable information will be shared with any third party, ever.
+If you provide an e-mail address, we may contact you for further information on any problems you have experienced.',
 	'ps_thanks' => 'Thank you for participating in this video survey',
-		'only_one_survey_pp'	=>'Only one survey per user is currently accepted',
-		'stats_welcome_link'	=>'Statistics will reported here once the survey is complete. <BR>' .
-								'Please [[Special:PlayerStatsGrabber/Survey|take the suvey]] (if you have not already taken it)'
+	'ps_only_one_survey_pp' => 'Only one survey per user is currently accepted',
+	'ps_stats_welcome_link' => 'Statistics will be reported here once the survey is complete.<br />
+Please [[Special:PlayerStatsGrabber/Survey|take the suvey]] (if you have not already taken it).'
 );
