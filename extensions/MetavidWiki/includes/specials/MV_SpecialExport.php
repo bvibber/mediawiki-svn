@@ -356,7 +356,7 @@ class MV_SpecialExport {
 						<' . $ns . 'clip id="mvd_' . htmlentities( $mvd->id ) . '" start="npt:' . htmlentities( seconds2ntp( $mvd->start_time ) ) . '" end="npt:' . htmlentities( seconds2ntp( $mvd->end_time ) ) . '">
 							<' . $ns . 'img src="' . htmlentities( $streamTitle->getFullStreamImageURL( null, seconds2ntp( $mvd->start_time ) ) ) . '"/>';
 				// output all metadata @@todo we should generalize the semantic properties.
-				$tracks[$mvd->mvd_type] .= ( isset( $mvd->Speech_by ) && trim( $mvd->Speech_by ) != '' ) ? '<meta name="Speech_by" content="' . htmlentities( $mvd->Speech_by ) . '"/>':'';
+				$tracks[$mvd->mvd_type] .= ( isset( $mvd->Speech_by ) && trim( $mvd->Speech_by ) != '' ) ? '<meta name="Speech_by" content="' . htmlentities ( htmlspecialchars( $mvd->Speech_by ) ) . '"/>':'';
 				$tracks[$mvd->mvd_type] .= ( isset( $mvd->Bill ) && trim( $mvd->Bill ) != '' ) ? '<meta name="Bill" content="' . htmlentities( $mvd->Bill ) . '"/>':'';
 				
 				// add in categories as "keywords" 
