@@ -120,8 +120,7 @@ class CodeRevisionView extends CodeView {
 
 	function checkPostings() {
 		global $wgRequest, $wgUser;
-		if( $wgRequest->wasPosted()
-			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal('wpEditToken') ) ) {
 			// Look for a posting...
 			$text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
 			$parent = $wgRequest->getIntOrNull( 'wpParent' );
@@ -130,9 +129,8 @@ class CodeRevisionView extends CodeView {
 			if( $isPreview ) {
 				// Save the text for reference on later comment display...
 				$this->mPreviewText = $text;
-			} else if( strlen($text) ) { // don't save blank comments
+			} else if( $wgUser->isAllowed('codereview-post-comment') && strlen($text) ) {
 				$id = $this->mRev->saveComment( $text, $review, $parent );
-				
 				// Redirect to the just-saved comment; this avoids POST
 				// horrors on forward/rewind. Hope we don't have slave issues?
 				$permaLink = $this->commentLink( $id );
@@ -329,6 +327,9 @@ class CodeRevisionView extends CodeView {
 		}
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
+		if( !$wgUser->isAllowed('codereview-post-comment') ) {
+			return '';
+		}
 		return '<div class="mw-codereview-post-comment">' .
 			$preview .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
