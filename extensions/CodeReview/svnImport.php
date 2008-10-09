@@ -21,14 +21,13 @@ $svn = SubversionAdaptor::newFromRepo( $repo->getPath() );
 $lastStoredRev = $repo->getLastStoredRev();
 
 $chunkSize = 200;
-$lastRev = 45000;
 
 $startTime = microtime( true );
 $revCount = 0;
 $start = $lastStoredRev + 1;
 
 echo "Syncing repo {$args[0]} from r$lastStoredRev to HEAD...\n";
-while( $start <= $lastRev ) {
+while( true ) {
 	$log = $svn->getLog( '', $start, $start + $chunkSize - 1 );
 	if( empty($log) ) {
 		# Repo seems to give a blank when max rev is invalid, which
