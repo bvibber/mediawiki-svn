@@ -220,17 +220,6 @@ function mv_setup_search_ac(){
 	//add the person choices div to searchInput
 	//turn off browser baseed autocomplete:
 	$j('#searchInput').attr('autocomplete',"off");
-
-	//make sure advs is set
-	if(typeof mvAdvSearch!= 'undefined'){
-		if(mvAdvSearch=='0'){
-			$j('#advs').val('0');
-		}else{
-			$j('#advs').val('1');
-		}
-	}else{
-		$j('#advs').val('0');
-	}
 	
 	// add the sugestions div (abolute positioned so it can be ontop of everything)
 	$j('body').prepend('<div id="suggestions" style="position:absolute;display:none;z-index:50;">'+
