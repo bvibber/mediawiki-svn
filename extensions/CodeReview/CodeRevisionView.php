@@ -37,7 +37,7 @@ class CodeRevisionView extends CodeView {
 			$paths .= $this->formatPathLine( $row->cp_path, $row->cp_action );
 		}
 		if( $paths ){
-			$paths = "<ul>\n$paths</ul>\n";
+			$paths = "<ul style='max-height:600px; overflow:scroll;'>\n$paths</ul>\n";
 		}
 		$fields = array(
 			'code-rev-repo' => $repoLink,
