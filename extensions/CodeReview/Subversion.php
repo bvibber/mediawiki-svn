@@ -109,7 +109,7 @@ class SubversionShell extends SubversionAdaptor {
 
 	function getLog( $path, $startRev=null, $endRev=null ) {
 		$command = sprintf(
-			"LC_MESSAGES=C svn log -v -r%s:%s --non-interactive %s",
+			"svn log -v -r%s:%s --non-interactive %s",
 			wfEscapeShellArg( $this->_rev( $startRev, 'BASE' ) ),
 			wfEscapeShellArg( $this->_rev( $endRev, 'HEAD' ) ),
 			wfEscapeShellArg( $this->mRepo . $path ) );
