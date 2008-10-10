@@ -670,10 +670,12 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 				//try the $sulightData array
 				if(isset($sulightData[ $dbKey ])){
 					$page_body.= $name . '=' . $sulightData[ $dbKey ]."| \n";
-				}else{				
-					if ( trim( $person->$dbKey ) != '' ) {
-						if ( $dbKey == 'state' )	$person->state = $states_ary[$person->state];
-						$page_body .= "{$name}={$person->$dbKey}|  \n";
+				}else{
+					if( isset($person->$dbKey) ){				
+						if ( trim( $person->$dbKey ) != '' ) {
+							if ( $dbKey == 'state' )	$person->state = $states_ary[$person->state];
+							$page_body .= "{$name}={$person->$dbKey}|  \n";
+						}
 					}
 				}
 			}

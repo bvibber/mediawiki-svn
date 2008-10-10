@@ -1107,6 +1107,10 @@ class MV_SpecialMediaSearch {
 	}
 	function auto_complete_category( $category, $val, $result_limit = '5', $format = 'ac_line', & $match_count = '' ) {
 		$dbr = & wfGetDB( DB_SLAVE );
+		//do value pre-proccessing if bill type: 
+		if($category=='Bill')
+			$val = MV_SpecialMediaSearch::bill_formater( $val );
+		
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
 			'cl_to' => $category,
 			'`cl_sortkey` LIKE \'%' . mysql_escape_string( $val
@@ -1123,37 +1127,39 @@ class MV_SpecialMediaSearch {
 			$out .= MV_SpecialMediaSearch :: format_ac_line( $row->cl_sortkey, $val, '', 'no_image', $format );
 		}
 		return $out;
-	}
+	}	
 	/*@@todo cache result for given values*/
 	function auto_complete_person( $val, $result_limit = '5', $format = 'ac_line', & $match_count = '', & $person_ary = array() ) {
 		$dbr = & wfGetDB( DB_SLAVE );
+		
+		//first check the nick names:
+		$nick_rows = MV_SpecialMediaSearch::getViaNickname($val, $result_limit);
+		foreach($nick_rows as $person){ 
+			$person_ary[$person]=true;
+		}
+		
 		$result = $dbr->select( 'categorylinks', 'cl_sortkey', array (
 			'cl_to' => 'Person',
 			'`cl_sortkey` LIKE \'%' . mysql_escape_string( $val
 		) . '%\' COLLATE latin1_general_ci' ), __METHOD__, array (
 			'LIMIT' => $result_limit
-		) );
-		$match_count = $dbr->numRows( $result );
-		if ( $dbr->numRows( $result ) == 0 )
-			return '';
-		// $out='<ul>'."\n";
+		) );		
 		$out = '';
 		while ( $row = $dbr->fetchObject( $result ) ) {
 			$person_name = $row->cl_sortkey;
 			$person_ary[$person_name] = true;
+		}
+		
+		if(count($person_ary)==0)
+			return '';
+
+
+		foreach($person_ary as $person_name=>$na){
 			// make sure the person page exists:
 			$personTitle = Title :: makeTitle( NS_MAIN, $person_name );
 			if ( $personTitle->exists() ) {
-				// get person full name from semantic table if available
-				$person_result = $dbr->select( 'smw_attributes', 'value_xsd', array (
-					'attribute_title' => 'Full_Name',
-				'subject_title' => $personTitle->getDBkey() ), __METHOD__ );
-				if ( $dbr->numRows( $person_result ) == 0 ) {
-					$person_full_name = $person_name;
-				} else {
-					$pvalue = $dbr->fetchObject( $person_result );
-					$person_full_name = $pvalue->value_xsd;
-				}
+				// dont try and get person full name from semantic table if available
+				$person_full_name = $person_name;				
 				// format and output the line:
 				$out .= MV_SpecialMediaSearch :: format_ac_line( $person_full_name, $val, '', MV_SpecialMediaSearch :: getPersonImageURL( $person_name ), $format );
 			}
@@ -1161,6 +1167,24 @@ class MV_SpecialMediaSearch {
 		// $out.='</ul>';
 		// return people people in the Person Category
 		return $out;
+	}
+	//returns results via nickname via semantic query:
+	function getViaNickname($partname, $limit=5){		
+		$query_string = '[[Nickname::~*'.ucfirst($partname).'*]] OR [[Nickname::'.ucfirst($partname).']]';		
+		$params=array('format' => 'broadtable',
+    				  'offset' => 0,
+					  'limit'	=>$limit);					
+		$results = array();
+		$queryobj = SMWQueryProcessor::createQuery($query_string, $params, false, '', array());
+		$queryobj->querymode = SMWQuery::MODE_INSTANCES; 
+		$res = smwfGetStore()->getQueryResult($queryobj);
+		
+		for($i=0;$i< $res->getCount();$i++){
+			$v =  $res->getNext();			
+			$v = current(current($v)->getContent());			
+			array_push( $results,$v->getXSDValue());
+		}			
+		return $results;
 	}
 	function getPersonImageURL( $person_name ) {
 		// make the missing person image ref:
@@ -1174,6 +1198,12 @@ class MV_SpecialMediaSearch {
 			$img = wfLocalFile( $imgTitle );
 		}
 		return $img->getURL();
+	}
+	function bill_formater($val){
+		$val = preg_replace('/[Ss]\.?\s?([0-9])/','S._$1',$val);
+		$val = preg_replace('/[Hh]\.?[Rr]\.?\s?([0-9])/','H.R._$1',$val);
+		$val = preg_replace('/[Hh][Rr][Ee][Ss]\.?\s?([0-9])/','HRes._$1',$val);		
+		return $val;
 	}
 	function format_ac_line( & $page_title, $val, $prefix = '', $img_link = 'no_image', $format = 'ac_line' ) {
 		// no underscores in display title:
