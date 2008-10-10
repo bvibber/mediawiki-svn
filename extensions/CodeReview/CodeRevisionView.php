@@ -60,13 +60,13 @@ class CodeRevisionView extends CodeView {
 		
 		$html .= $this->formatMetaData( $fields );
 
-		$diffHtml = $this->formatDiff();
-		if( $diffHtml ) {
+		if( $this->mRev->isDiffable() ) {
+			$diffHtml = $this->formatDiff();
 			$html .=
 				"<h2>" . wfMsgHtml( 'code-rev-diff' ) .
 				' <small>[' . $wgUser->getSkin()->makeLinkObj( $special,
 					wfMsg('code-rev-purge-link'), 'action=purge' ) . ']</small></h2>' .
-				"<div class='mw-codereview-diff'>" . $diffHtml . "</div>\n";
+				"<div class='mw-codereview-diff' id='mw-codereview-diff'>" . $diffHtml . "</div>\n";
 		}
 		$comments = $this->formatComments();
 		if( $comments ) {
@@ -228,12 +228,40 @@ class CodeRevisionView extends CodeView {
 	}
 
 	function formatDiff() {
-		$diff = $this->mRepo->getDiff( $this->mRev->getId(), $this->mSkipCache ? 'skipcache' : '' );
+		$diff = $this->mRepo->getDiff( $this->mRev->getId(), $this->mSkipCache ? 'skipcache' : 'cached' );
 		if( !$diff ) {
-			return false;
+			// We'll try loading it by AJAX...
+			return $this->stubDiffLoader();
 		}
 		$hilite = new CodeDiffHighlighter();
 		return $hilite->render( $diff );
+	}
+	
+	function stubDiffLoader() {
+		global $wgOut, $wgScriptPath;
+		$encRepo = Xml::encodeJsVar( $this->mRepo->getName() );
+		$encRev = Xml::encodeJsVar( $this->mRev->getId() );
+		$wgOut->addScriptFile( "$wgScriptPath/extensions/CodeReview/codereview.js" );
+		$wgOut->addInlineScript(
+			"addOnloadHook(
+				function() {
+					CodeReview.loadDiff($encRepo,$encRev);
+				}
+			);" );
+		return "Loading diff...";
+		/*
+		return
+			Xml::openElement( 'script',
+				array(
+					'src' => $wgServer . $wgScriptPath . '/api.php?' .
+						wfArrayToCgi( array(
+							'action' => 'codediff',
+							'repo' => $this->mRepo->getName(),
+							'rev' => $this->mRev->getId(),
+							'format' => 'json',
+							'callback' => 'alert' ) ) ) ) .
+			"</script>";
+		*/
 	}
 
 	function formatComments() {

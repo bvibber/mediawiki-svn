@@ -39,6 +39,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname(__FILE__) . '/';
 
 $wgAutoloadClasses['ApiCodeUpdate'] = $dir . 'ApiCodeUpdate.php';
+$wgAutoloadClasses['ApiCodeDiff'] = $dir . 'ApiCodeDiff.php';
 $wgAutoloadClasses['CodeDiffHighlighter'] = $dir . 'DiffHighlighter.php';
 $wgAutoloadClasses['CodeRepository'] = $dir . 'CodeRepository.php';
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'CodeRepoListView.php';
@@ -67,6 +68,7 @@ $wgSpecialPages['RepoAdmin'] = 'SpecialRepoAdmin';
 $wgSpecialPageGroups['RepoAdmin'] = 'developer';
 
 $wgAPIModules['codeupdate'] = 'ApiCodeUpdate';
+$wgAPIModules['codediff'] = 'ApiCodeDiff';
 
 $wgExtensionMessagesFiles['CodeReview'] = $dir . 'CodeReview.i18n.php';
 $wgExtensionAliasesFiles['CodeReview'] = $dir . 'CodeReview.alias.php';
@@ -78,11 +80,11 @@ $wgAvailableRights[] = 'codereview-post-comment';
 $wgAvailableRights[] = 'codereview-set-status';
 $wgAvailableRights[] = 'codereview-link-user';
 
-$wgGroupPermissions['*']['codereview-add-tag'] = true;
-$wgGroupPermissions['*']['codereview-remove-tag'] = true;
-$wgGroupPermissions['*']['codereview-post-comment'] = true;
-$wgGroupPermissions['*']['codereview-set-status'] = true;
-$wgGroupPermissions['*']['codereview-link-user'] = true;
+$wgGroupPermissions['user']['codereview-add-tag'] = true;
+$wgGroupPermissions['user']['codereview-remove-tag'] = true;
+$wgGroupPermissions['user']['codereview-post-comment'] = true;
+$wgGroupPermissions['user']['codereview-set-status'] = true;
+$wgGroupPermissions['user']['codereview-link-user'] = true;
 
 $wgGroupPermissions['steward']['repoadmin'] = true; // temp
 
