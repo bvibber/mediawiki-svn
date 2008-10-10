@@ -578,6 +578,25 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 		$person_title = Title :: newFromUrl( $person->name_clean );
 		// semantic data via template:
 		$mapk = null;
+		
+		//do sunlight api query:
+		global  $mvSunlightAPIKey;
+		$sulightData=array();
+		$req_url = 'http://services.sunlightlabs.com/api/legislators.getList.xml?govtrack_id='.$person->gov_track_id.'&apikey='.$mvSunlightAPIKey;
+		$raw_sunlight_xml = $mvScrape->doRequest($req_url);
+		$xml_parser = xml_parser_create( 'UTF-8' ); // UTF-8 or ISO-8859-1
+		xml_parser_set_option( $xml_parser, XML_OPTION_CASE_FOLDING, 0 );
+		xml_parser_set_option( $xml_parser, XML_OPTION_SKIP_WHITE, 1 );
+		if(xml_parse_into_struct( $xml_parser, $raw_sunlight_xml, $slightAry )){
+			foreach($slightAry as $tag){
+				if($tag['type']=='complete'){
+					$sulightData[ $tag['tag'] ]=$tag['value'];
+				}				
+			}
+		}else{
+			print 'error: '.xml_error_string(xml_get_error_code($xml_parser)).' at line '.xml_get_current_line_number($xml_parser);
+		}		
+		
 		$page_body = '{{Congress Person|' . "\n";
 		foreach ( $valid_attributes as $dbKey => $attr ) {
 			list ( $name, $desc ) = $attr;
@@ -645,10 +664,15 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 					$mapk = $person->$dbKey;
 				}
 				$page_body .= "{$name}=" . $mapk . "|\n";
-			} else {
-				if ( trim( $person->$dbKey ) != '' ) {
-					if ( $dbKey == 'state' )	$person->state = $states_ary[$person->state];
-					$page_body .= "{$name}={$person->$dbKey}|  \n";
+			} else {				
+				//try the $sulightData array
+				if(isset($sulightData[ $dbKey ])){
+					$page_body.= $name . '=' . $sulightData[ $dbKey ]."| \n";
+				}else{				
+					if ( trim( $person->$dbKey ) != '' ) {
+						if ( $dbKey == 'state' )	$person->state = $states_ary[$person->state];
+						$page_body .= "{$name}={$person->$dbKey}|  \n";
+					}
 				}
 			}
 		}
@@ -917,6 +941,11 @@ $valid_attributes = array (
 		'(last name)',
 		'string'
 	),
+	'name_suffix'=>array(
+		'Name Suffix',
+		'Legislator\'s suffix (Jr., III, etc.) ',
+		'string'
+	),
 	'district' => array(
 		'District',
 		'The district # page ie: 3rd District',
@@ -935,6 +964,61 @@ $valid_attributes = array (
 	'contribution_date_range' => array(
 		'Contributions Date Range',
 		'The date range of contributions',
+		'string'
+	),
+	'nickname'=> array(
+		'Nickname',
+		'Preferred nickname of legislator (if any)',
+		'string'
+	),
+	'in_office'=>array(
+		'In Office',
+		'1 if legislator is currently serving, 0 if legislator is no longer in office due to defeat/resignation/death/etc.',
+		'number'
+	),
+	'gender'=>array(
+		'Gender',
+		'M or F',
+		'string'
+	),
+	'phone'=>array(
+		'Phone',
+		'Congressional office phone number',
+		'string'
+	),
+	'fax'=>array(
+		'Fax',
+		'Congressional office fax number',
+		'string'
+	),
+	'congress_office'=>array(
+		'Congress Office',
+		'Legislator\'s Washington DC Office Address',
+		'string'
+	),
+	'votesmart_id'=>array(
+		'Votesmart ID',
+		'Legislator ID assigned by Project Vote Smart',
+		'string'
+	),
+	'fec_id'=>array(
+		'Fec ID',
+		'Federal Election Commission ID',
+		'string'
+	),
+	'congresspedia_url'=>array(
+		'Congresspedia url',
+		'URL of Legislator\'s entry on Congresspedia',
+		'URL'
+	),
+	'webform'=>array(
+		'Webform',
+		'URL of web contact form',
+		'URL'
+	),	
+	'twitter_id'=>array(
+		'Twitter ID',
+		'Congressperson\'s official Twitter account',
 		'string'
 	)
 );
