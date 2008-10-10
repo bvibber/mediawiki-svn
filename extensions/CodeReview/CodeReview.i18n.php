@@ -82,6 +82,7 @@ $messages['en'] = array(
 	'right-codereview-remove-tag' => 'Remove tags from revisions',
 	'right-codereview-post-comment' => 'Add comments on revisions',
 	'right-codereview-set-status' => 'Change revisions status',
+	'right-codereview-link-user' => 'Link authors to wiki users',
 	
 	'specialpages-group-developer' => 'Developer tools',
 );
