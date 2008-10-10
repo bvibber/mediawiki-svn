@@ -149,10 +149,10 @@ class CodeRepository {
 
 	/**
 	 * @param int $rev Revision ID
-	 * @param $skipCache 'skipcache' to avoid caching
+	 * @param $useCache 'skipcache' to avoid caching
 	 *                   'cached' to *only* fetch if cached
 	 */
-	function getDiff( $rev, $skipCache = '' ) {
+	function getDiff( $rev, $useCache = '' ) {
 		global $wgMemc;
 
 		$rev1 = $rev - 1;
@@ -164,13 +164,13 @@ class CodeRepository {
 		}
 
 		$key = wfMemcKey( 'svn', md5( $this->mPath ), 'diff', $rev1, $rev2 );
-		if( $skipCache === 'skipcache' ) {
+		if( $useCache === 'skipcache' ) {
 			$data = NULL;
 		} else {
 			$data = $wgMemc->get( $key );
 		}
 
-		if( !$data && $skipCache != 'cached' ) {
+		if( !$data && $useCache != 'cached' ) {
 			$svn = SubversionAdaptor::newFromRepo( $this->mPath );
 			$data = $svn->getDiff( '', $rev1, $rev2 );
 			$wgMemc->set( $key, $data, 3600*24*3 );
