@@ -389,19 +389,20 @@ foreach ($this->data['sidebar'] as $bar => $cont) {
 				<?php echo $sk->makeKnownLink('Main Page', 'home') ?>
 			</li>
 			<li>
-				<?php echo $sk->makeKnownLink('Metavid Overview', 'metavid overview') ?>				
+				<?php echo $sk->makeKnownLink('Metavid Overview', 'metavid overview & help') ?>				
 			</li>
 			<li>
 				<?php
-				$cMembers =  Title::newFromText('Congress_Person', NS_CATEGORY);
-				echo $sk->makeKnownLinkObj($cMembers, 'members of congress');
+				//$cMembers =  Title::newFromText('Congress_Person', NS_CATEGORY);
+				//echo $sk->makeKnownLinkObj($cMembers, 'members of congress');
+				echo $sk->makeKnownLink('Members_of_Congress', 'members of congress');
 				?>				
 			</li>
 			<li>
 				<?php
-				$cBills =  Title::newFromText('Special:Ask', NS_SPECIAL);
-				echo $sk->makeKnownLinkObj($cBills, 'bills', 'offset=0&limit=20&q=[[Category%3A%3ABill]&p=format%3Dbroadtable&po=%3FDate+Introduced%0A%3FBill+Sponsor%0A&sort=Date%20Introduced&order=DESC'
-							);					
+				//$cBills =  Title::newFromText('Special:Ask', NS_SPECIAL);
+				//echo $sk->makeKnownLinkObj($cBills, 'bills', 'offset=0&limit=20&q=[[Category%3A%3ABill]&p=format%3Dbroadtable&po=%3FDate+Introduced%0A%3FBill+Sponsor%0A&sort=Date%20Introduced&order=DESC');
+				echo $sk->makeKnownLink('Bills', 'bills');					
 				?>				
 			</li>
 			<li>
