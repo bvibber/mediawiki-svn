@@ -51,7 +51,8 @@ CREATE TABLE /*$wgDBprefix*/code_rev (
   -- 'fixme': This revision has some problem which needs to be resolved
   -- 'resolved': Issues with this rev have been since resolved
   -- 'ok': Reviewed, no issues
-  cr_status enum('new', 'fixme', 'resolved', 'ok') not null default 'new',
+  -- 'deferred': Not reviewed at this time (usually non-Wikimedia extension)
+  cr_status enum('new', 'fixme', 'resolved', 'ok', 'deferred') not null default 'new',
 
   -- Base path of this revision :
   -- * if the revision change only one file, the file path

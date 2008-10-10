@@ -80,7 +80,7 @@ class CodeRevision {
 	}
 	
 	static function getPossibleStates() {
-		return array( 'new', 'fixme', 'resolved', 'ok' );
+		return array( 'new', 'fixme', 'resolved', 'ok', 'deferred' );
 	}
 	
 	function isValidStatus( $status ) {
