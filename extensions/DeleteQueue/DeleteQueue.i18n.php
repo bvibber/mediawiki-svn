@@ -132,6 +132,7 @@ You may [{{fullurl:$1|action=delvote}} endorse or object] to deletion, or [{{ful
 	'deletequeue-role-vote-object' => 'objector to deletion',
 
 	// Endorsement and objection
+	'deletequeue-vote-tab' => 'Vote on the deletion',
 	'deletequeue-vote-title' => 'Endorse or object to deletion of "$1"',
 	'deletequeue-vote-text' => "You may use this form to endorse or object to the deletion of \"'''$1'''\".
 This action will override any previous endorsements/objections you have given to deletion of this page.
@@ -846,6 +847,7 @@ Vous pouvez [{{FULLURL:$1|action=delvote}} appuyez ou refuser] la suppression, o
 	'deletequeue-role-nominator' => 'initiateur original de la suppression',
 	'deletequeue-role-vote-endorse' => 'Partisan pour la suppression',
 	'deletequeue-role-vote-object' => 'Opposant à la suppression',
+	'deletequeue-vote-tab' => 'Voter sur la suppression',
 	'deletequeue-vote-title' => 'Appuyer ou refuser la suppression de « $1 »',
 	'deletequeue-vote-text' => "Vous pouvez utiliser ce formulaire pour appuyer ou refuser la suppression de « '''$1''' ».
 Cette action écrasera les avis que vous avez émis auparavant dans cette discussion.
@@ -2137,4 +2139,3 @@ $messages['vi'] = array(
 	'deletequeue-list-header-expiry' => 'Thời hạn',
 	'deletequeue-list-header-discusspage' => 'Trang thảo luận',
 );
-
