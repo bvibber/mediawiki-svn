@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS `player_stats_log` (
   `id` int(11) unsigned NOT NULL auto_increment,
   `time_stamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
+  `file_url` varchar(255) character set utf8 collate utf8_bin NOT NULL,
   `user_hash` char(40) character set utf8 collate utf8_bin NOT NULL,
   `html5_video_enabled` tinyint(1) default NULL,
   `java_enabled` tinyint(1) default NULL,
@@ -19,19 +20,20 @@ CREATE TABLE IF NOT EXISTS `player_stats_log` (
   KEY `user_hash` (`user_hash`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+
 CREATE TABLE IF NOT EXISTS `player_stats_survey` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `user_hash` char(40) collate utf8_bin NOT NULL,
   `timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `embed_key` enum('youtube','oggHandler') collate utf8_bin default NULL,
+  `embed_key` enum('youtube','oggHandler','flowplayer') collate utf8_bin default NULL,
   `player_stats_log_id` int(11) unsigned default NULL,
-  `ps_could_play` tinyint(1) NOT NULL,
+  `ps_could_play` tinyint(1) default NULL,
   `ps_jumpy_playback` tinyint(1) NOT NULL,
   `ps_no_video` tinyint(1) NOT NULL,
   `ps_bad_sync` tinyint(1) NOT NULL,
   `ps_no_sound` tinyint(1) NOT NULL,
-  `ps_would_install` tinyint(1) NOT NULL,
-  `ps_would_switch` tinyint(1) NOT NULL,
+  `ps_would_install` tinyint(1) default NULL,
+  `ps_would_switch` tinyint(1) default NULL,
   `ps_your_email` varchar(200) collate utf8_bin NOT NULL,
   `ps_problems_desc` text collate utf8_bin NOT NULL,
   PRIMARY KEY  (`id`),

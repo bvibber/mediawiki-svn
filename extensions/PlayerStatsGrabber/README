@@ -1,7 +1,24 @@
 Player Stats Grabber
 
+==Install==
+
+add to local seettings: 
+require( "$IP/extensions/PlayerStatsGrabber/PlayerStatsGrabber.php" );
+
+upload sample_barney.ogg (the survey site should include oggHandler)
+
+update oggHandler config (locally) 
+$wgPlayerStatsCollectionJs = $wgScriptPath . '/extensions/PlayerStatsGrabber/playerStats.js';
+
+run the sql: 
+playerStats.sql
+
+
 == Overview == 
-Player Stats Grabber is a simple survey and player stats collector. 
+Player Stats Grabber is a simple survey and player stats collector.
+
+The survey page:  
+Special:PlayerStatsGrabber/Survey
 
 config variables: 
 $psLogEveryPlayRequestPerUser: 

@@ -8,8 +8,10 @@ var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"str
 
 //extened version of OggHandler
 wgExtendedOggPlayerStats = {
+	videoUrl:false,
 	init:function(player, params){
 		this.parent_init( player, params );
+		this.videoUrl = params.videoUrl;
 		this.doStats();
 	},
 	doStats:function() {
@@ -57,7 +59,9 @@ wgExtendedOggPlayerStats = {
 		url+= '&b_name=' + encodeURIComponent( BrowserDetect.browser ) ;
 		url+= '&b_version=' + encodeURIComponent( BrowserDetect.version );
 		url+= '&b_os=' + encodeURIComponent( BrowserDetect.OS ) ;
-
+		
+		if(this.videoUrl)
+			url+= '&purl='+ encodeURIComponent( this.videoUrl ) ;
 		//and finaly add the user hash:
 		url+='&uh=' + encodeURIComponent ( wgOggPlayer.userHash );
 
