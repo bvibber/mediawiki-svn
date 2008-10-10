@@ -186,7 +186,6 @@ class CodeRevisionView extends CodeView {
 		if( $wgUser->isAllowed( 'codereview-set-status' ) ) {
 			$repo = $this->mRepo->getName();
 			$rev = $this->mRev->getId();
-			$special = SpecialPage::getTitleFor( 'Code', "$repo/$rev/set/status" );
 			return
 				Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
 				$this->buildStatusList() .
