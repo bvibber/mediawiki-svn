@@ -35,7 +35,6 @@ CodeReview.decodeAndShowDiff = function(jsonText) {
 		CodeReview.showDiff(data.code.rev.diff);
 	} else {
 		CodeReview.showDiff('Diff load failed. :(');
-		//alert(dumpWtf(data));
 	}
 };
 CodeReview.diffTarget = function() {
@@ -44,19 +43,3 @@ CodeReview.diffTarget = function() {
 CodeReview.showDiff = function(diffHtml) {
 	CodeReview.diffTarget().innerHTML = diffHtml;
 };
-
-
-function dumpWtf(obj) {
-	var out = typeof(obj) + ' ';
-	if (typeof(obj) == 'object' || typeof(obj) == 'array' ) {
-		out += '(';
-		for (var i in obj) {
-			out += i + ': ' +
-				dumpWtf(obj[i]) + "\n";
-		}
-		out += ')';
-	} else {
-		out += obj;
-	}
-	return out;
-}

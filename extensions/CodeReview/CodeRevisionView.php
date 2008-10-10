@@ -249,19 +249,6 @@ class CodeRevisionView extends CodeView {
 				}
 			);" );
 		return "Loading diff...";
-		/*
-		return
-			Xml::openElement( 'script',
-				array(
-					'src' => $wgServer . $wgScriptPath . '/api.php?' .
-						wfArrayToCgi( array(
-							'action' => 'codediff',
-							'repo' => $this->mRepo->getName(),
-							'rev' => $this->mRev->getId(),
-							'format' => 'json',
-							'callback' => 'alert' ) ) ) ) .
-			"</script>";
-		*/
 	}
 
 	function formatComments() {
