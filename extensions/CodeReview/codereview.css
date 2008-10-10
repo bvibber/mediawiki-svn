@@ -2,6 +2,11 @@ table.mw-codereview-meta td {
 	vertical-align: top;
 }
 
+.mw-codereview-paths {
+	max-height:600px;
+	overflow:auto;
+}
+
 .mw-codereview-comment {
 	border: solid 1px #aaaab3;
 	padding: 0px;
@@ -47,6 +52,11 @@ table.mw-codereview-meta td {
 }
 
 /* Diffs */
+.mw-codereview-diff {
+	max-width:100%;
+	overflow:auto;
+}
+
 .mw-codereview-diff ins {
 	text-decoration: none;
 	color: green;

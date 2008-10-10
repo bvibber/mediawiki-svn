@@ -37,7 +37,7 @@ class CodeRevisionView extends CodeView {
 			$paths .= $this->formatPathLine( $row->cp_path, $row->cp_action );
 		}
 		if( $paths ){
-			$paths = "<ul style='max-height:600px; overflow:auto;'>\n$paths</ul>\n";
+			$paths = "<div class='mw-codereview-paths'><ul>\n$paths</ul></div>\n";
 		}
 		$fields = array(
 			'code-rev-repo' => $repoLink,
@@ -68,8 +68,10 @@ class CodeRevisionView extends CodeView {
 					wfMsg('code-rev-purge-link'), 'action=purge' ) . ']</small></h2>' .
 				"<div class='mw-codereview-diff'>" . $diffHtml . "</div>\n";
 		}
-		$html .= "<h2 id='code-comments'>". wfMsgHtml( 'code-comments' ) ."</h2>\n" .
-			$this->formatComments();
+		$comments = $this->formatComments();
+		if( $comments ) {
+			$html .= "<h2 id='code-comments'>". wfMsgHtml( 'code-comments' ) ."</h2>\n" . $comments;
+		}
 		
 		if( $this->mReplyTarget ) {
 			global $wgJsMimeType;
