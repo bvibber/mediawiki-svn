@@ -590,7 +590,9 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 		if(xml_parse_into_struct( $xml_parser, $raw_sunlight_xml, $slightAry )){
 			foreach($slightAry as $tag){
 				if($tag['type']=='complete'){
-					$sulightData[ $tag['tag'] ]=$tag['value'];
+					if(isset($tag['value'])){
+						$sulightData[ $tag['tag'] ]=$tag['value'];
+					}
 				}				
 			}
 		}else{
