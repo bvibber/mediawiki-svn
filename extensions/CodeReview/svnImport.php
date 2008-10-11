@@ -20,7 +20,7 @@ if( !$repo ){
 $svn = SubversionAdaptor::newFromRepo( $repo->getPath() );
 $lastStoredRev = $repo->getLastStoredRev();
 
-$chunkSize = 200;
+$chunkSize = 400;
 
 $startTime = microtime( true );
 $revCount = 0;
@@ -63,6 +63,7 @@ while( true ) {
 			$codeRev->mAuthor,
 			$revSpeed );
 	}
+	wfWaitForSlaves( 5 );
 }
 
 echo "Pre-caching the latest 50 diffs...\n";
