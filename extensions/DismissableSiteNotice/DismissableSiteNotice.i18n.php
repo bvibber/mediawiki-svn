@@ -87,6 +87,13 @@ $messages['bcc'] = array(
 	'sitenotice-desc' => 'به کابران اجازت دنت دان یادداشت سایت بندیت',
 );
 
+/** Belarusian (Беларуская)
+ * @author Yury Tarasievich
+ */
+$messages['be'] = array(
+	'sitenotice_close' => 'зняць',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -130,6 +137,20 @@ $messages['ca'] = array(
 /** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
 $messages['cdo'] = array(
 	'sitenotice_close' => 'cĕk lâi',
+);
+
+/** Crimean Turkish (Latin) (Qırımtatarca (Latin))
+ * @author Alessandro
+ */
+$messages['crh-latn'] = array(
+	'sitenotice_close' => 'gizle',
+);
+
+/** Crimean Turkish (Cyrillic) (Qırımtatarca (Cyrillic))
+ * @author Alessandro
+ */
+$messages['crh-cyrl'] = array(
+	'sitenotice_close' => 'гизле',
 );
 
 /** Czech (Česky)
@@ -181,6 +202,13 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'sitenotice_close' => 'ocultar',
 	'sitenotice-desc' => 'Permite a los usuarios cerrar el mensaje central.',
+);
+
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'sitenotice_close' => 'kendu',
 );
 
 /** Persian (فارسی)
@@ -255,6 +283,13 @@ $messages['gl'] = array(
 	'sitenotice-desc' => 'Permite que os usuarios fechen o aviso do sitio',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'sitenotice_close' => 'ἀποπέμπειν',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
@@ -269,6 +304,13 @@ $messages['he'] = array(
 $messages['hi'] = array(
 	'sitenotice_close' => 'हटायें',
 	'sitenotice-desc' => 'सदस्योंको साईटनोटिस हटाने की अनुमति देता हैं',
+);
+
+/** Fiji Hindi (Latin) (Fiji Hindi (Latin))
+ * @author Thakurji
+ */
+$messages['hif-latn'] = array(
+	'sitenotice_close' => 'Is ke baare me bhuul jao',
 );
 
 /** Croatian (Hrvatski)
@@ -432,6 +474,13 @@ $messages['li'] = array(
 /** Lithuanian (Lietuvių) */
 $messages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'sitenotice_close' => 'сокриј',
 );
 
 /** Malayalam (മലയാളം)
