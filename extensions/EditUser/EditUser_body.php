@@ -130,6 +130,84 @@ class EditUser extends SpecialPage {
 			$this->mainPrefsForm( '' );
 		}
 	}
+	/**
+	 * @access private
+	 */
+	function validateInt( &$val, $min=0, $max=0x7fffffff ) {
+		$val = intval($val);
+		$val = min($val, $max);
+		$val = max($val, $min);
+		return $val;
+	}
+
+	/**
+	 * @access private
+	 */
+	function validateFloat( &$val, $min, $max=0x7fffffff ) {
+		$val = floatval( $val );
+		$val = min( $val, $max );
+		$val = max( $val, $min );
+		return( $val );
+	}
+
+	/**
+	 * @access private
+	 */
+	function validateIntOrNull( &$val, $min=0, $max=0x7fffffff ) {
+		$val = trim($val);
+		if($val === '') {
+			return $val;
+		} else {
+			return $this->validateInt( $val, $min, $max );
+		}
+	}
+
+	/**
+	 * @access private
+	 */
+	function validateDate( $val ) {
+		global $wgLang, $wgContLang;
+		if ( $val !== false && (
+			in_array( $val, (array)$wgLang->getDatePreferences() ) ||
+			in_array( $val, (array)$wgContLang->getDatePreferences() ) ) )
+		{
+			return $val;
+		} else {
+			return $wgLang->getDefaultDateFormat();
+		}
+	}
+
+	/**
+	 * Used to validate the user inputed timezone before saving it as
+	 * 'timecorrection', will return '00:00' if fed bogus data.
+	 * Note: It's not a 100% correct implementation timezone-wise, it will
+	 * accept stuff like '14:30',
+	 * @access private
+	 * @param string $s the user input
+	 * @return string
+	 */
+	function validateTimeZone( $s ) {
+		if ( $s !== '' ) {
+			if ( strpos( $s, ':' ) ) {
+				# HH:MM
+				$array = explode( ':' , $s );
+				$hour = intval( $array[0] );
+				$minute = intval( $array[1] );
+			} else {
+				$minute = intval( $s * 60 );
+				$hour = intval( $minute / 60 );
+				$minute = abs( $minute ) % 60;
+			}
+			# Max is +14:00 and min is -12:00, see:
+			# http://en.wikipedia.org/wiki/Timezone
+			$hour = min( $hour, 14 );
+			$hour = max( $hour, -12 );
+			$minute = min( $minute, 59 );
+			$minute = max( $minute, 0 );
+			$s = sprintf( "%02d:%02d", $hour, $minute );
+		}
+		return $s;
+	}
 
 	/**
 	 * @access private
@@ -194,21 +272,21 @@ class EditUser extends SpecialPage {
 		if( $wgUseTeX ) {
 			$this->user->setOption( 'math', $this->mMath );
 		}
-		$this->user->setOption( 'date', Validate::dateFormat( $this->mDate ) );
-		$this->user->setOption( 'searchlimit', Validate::intOrNull( $this->mSearch ) );
-		$this->user->setOption( 'contextlines', Validate::intOrNull( $this->mSearchLines ) );
-		$this->user->setOption( 'contextchars', Validate::intOrNull( $this->mSearchChars ) );
-		$this->user->setOption( 'rclimit', Validate::intOrNull( $this->mRecent ) );
-		$this->user->setOption( 'rcdays', Validate::int($this->mRecentDays, 1, ceil($wgRCMaxAge / (3600*24))));
-		$this->user->setOption( 'wllimit', Validate::intOrNull( $this->mWatchlistEdits, 0, 1000 ) );
-		$this->user->setOption( 'rows', Validate::int( $this->mRows, 4, 1000 ) );
-		$this->user->setOption( 'cols', Validate::int( $this->mCols, 4, 1000 ) );
-		$this->user->setOption( 'stubthreshold', Validate::intOrNull( $this->mStubs ) );
-		$this->user->setOption( 'timecorrection', Validate::timeZone( $this->mHourDiff, -12, 14 ) );
+		$this->user->setOption( 'date', $this->validateDate( $this->mDate ) );
+		$this->user->setOption( 'searchlimit', $this->validateIntOrNull( $this->mSearch ) );
+		$this->user->setOption( 'contextlines', $this->validateIntOrNull( $this->mSearchLines ) );
+		$this->user->setOption( 'contextchars', $this->validateIntOrNull( $this->mSearchChars ) );
+		$this->user->setOption( 'rclimit', $this->validateIntOrNull( $this->mRecent ) );
+		$this->user->setOption( 'rcdays', $this->validateInt($this->mRecentDays, 1, ceil($wgRCMaxAge / (3600*24))));
+		$this->user->setOption( 'wllimit', $this->validateIntOrNull( $this->mWatchlistEdits, 0, 1000 ) );
+		$this->user->setOption( 'rows', $this->validateInt( $this->mRows, 4, 1000 ) );
+		$this->user->setOption( 'cols', $this->validateInt( $this->mCols, 4, 1000 ) );
+		$this->user->setOption( 'stubthreshold', $this->validateIntOrNull( $this->mStubs ) );
+		$this->user->setOption( 'timecorrection', $this->validateTimeZone( $this->mHourDiff, -12, 14 ) );
 		$this->user->setOption( 'imagesize', $this->mImageSize );
 		$this->user->setOption( 'thumbsize', $this->mThumbSize );
-		$this->user->setOption( 'underline', Validate::int($this->mUnderline, 0, 2) );
-		$this->user->setOption( 'watchlistdays', Validate::float( $this->mWatchlistDays, 0, 7 ) );
+		$this->user->setOption( 'underline', $this->validateInt($this->mUnderline, 0, 2) );
+		$this->user->setOption( 'watchlistdays', $this->validateFloat( $this->mWatchlistDays, 0, 7 ) );
 
 		# Set search namespace options
 		foreach( $this->mSearchNs as $i => $value ) {

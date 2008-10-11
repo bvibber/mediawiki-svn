@@ -77,7 +77,7 @@ function wfSpecialPreferencesExtension()
                         if (isset($pref['save']))
                             $pref['save']($name, $value);
                         else
-                            $wgUser->setOption($name, Validate::IntOrNull($value, $min, $max));
+                            $wgUser->setOption($name, $this->validateIntOrNull($value, $min, $max));
                         break;
  
                     case PREF_PASSWORD_T:
