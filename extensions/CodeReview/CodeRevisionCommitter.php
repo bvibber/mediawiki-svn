@@ -11,6 +11,7 @@ class CodeRevisionCommitter extends CodeRevisionView {
 		$this->mRemoveTags = $this->splitTags( $wgRequest->getText( 'wpRemoveTag' ) );
 		$this->mStatus = $wgRequest->getText( 'wpStatus' );
 		$this->text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
+		$this->jumpToNext = $wgRequest->getCheck('wpSaveAndNext');
 	}
 
 	function execute() {
@@ -30,13 +31,23 @@ class CodeRevisionCommitter extends CodeRevisionView {
 			$isPreview = $wgRequest->getCheck( 'wpPreview' );
 			$id = $this->mRev->saveComment( $this->text, $review, $parent );
 			// For comments, take us back to the rev page focused on the new comment
-			$permaLink = $this->commentLink( $id );
-			$wgOut->redirect( $permaLink->getFullUrl() );
-			return;
+			if( !$this->jumpToNext ) {
+				$permaLink = $this->commentLink( $id );
+				$wgOut->redirect( $permaLink->getFullUrl() );
+				return;
+			}
 		}
 		// Return to rev page
-		$permaLink = $this->revLink();
-		$wgOut->redirect( $permaLink->getFullUrl() );
+		if( $this->jumpToNext ) {
+			if( $next = $this->mRev->getNextUnresolved() ) {
+				$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$next );
+			} else {
+				$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
+			}
+		} else {
+			$redirTitle = $this->revLink();
+		}
+		$wgOut->redirect( $redirTitle->getFullUrl() );
 	}
 	
 	function splitTags( $input ) {

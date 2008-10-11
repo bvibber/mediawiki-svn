@@ -334,14 +334,35 @@ class CodeRevision {
 			'cr_id',
 			array(
 				'cr_repo_id' => $this->mRepo,
-				"cr_id>$encId" ),
+				"cr_id > $encId" ),
 			__METHOD__,
 			array(
 				'ORDER BY' => 'cr_repo_id, cr_id',
 				'LIMIT' => 1 ) );
 		
 		if( $row ) {
-			return $row->cr_id;
+			return intval($row->cr_id);
+		} else {
+			return false;
+		}
+	}
+	
+	function getNextUnresolved() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$encId = $dbr->addQuotes( $this->mId );
+		$row = $dbr->selectRow( 'code_rev',
+			'cr_id',
+			array(
+				'cr_repo_id' => $this->mRepo,
+				"cr_id > $encId",
+				'cr_status' => array('new','fixme') ),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'cr_repo_id, cr_id',
+				'LIMIT' => 1 ) );
+		
+		if( $row ) {
+			return intval($row->cr_id);
 		} else {
 			return false;
 		}

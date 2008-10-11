@@ -55,6 +55,8 @@ class CodeRevisionView extends CodeView {
 		$html .= '<div>' .
 			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
 			' ' .
+			Xml::submitButton( wfMsg( 'code-rev-submit-next' ), array( 'name' => 'wpSaveAndNext' ) ) .
+			' ' .
 			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
 			'</div>';
 		
@@ -82,6 +84,8 @@ class CodeRevisionView extends CodeView {
 		}
 		$html .= '<div>' .
 			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
+			' ' .
+			Xml::submitButton( wfMsg( 'code-rev-submit-next' ), array( 'name' => 'wpSaveAndNext' ) ) .
 			' ' .
 			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
 			'</div>' . 

@@ -23,7 +23,7 @@ class SpecialCode extends SpecialPage {
 				$view = new CodeRevisionListView( $params[0] );
 				break;
 			case 2:
-				if( $wgRequest->wasPosted() && $wgRequest->getCheck('wpSave') ) {
+				if( $wgRequest->wasPosted() && !$wgRequest->getCheck('wpPreview') ) {
 					# Add any tags, Set status, Adds comments 
 					$submit = new CodeRevisionCommitter( $params[0], $params[1] );
 					$submit->execute();

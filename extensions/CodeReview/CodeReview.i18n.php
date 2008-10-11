@@ -64,6 +64,7 @@ $messages['en'] = array(
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'deferred',
 	'code-rev-submit' => 'Commit changes',
+	'code-rev-submit-next' => 'Commit & next unresolved',
 	
 	'codereview-reply-link' => 'reply',
 
