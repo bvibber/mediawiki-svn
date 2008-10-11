@@ -18,7 +18,7 @@ class ApiCodeDiff extends ApiBase {
 		
 		$repo = CodeRepository::newFromName( $params['repo'] );
 		if( !$repo ){
-			throw new MWException( "Invalid repo {$args[0]}" );
+			$this->dieUsage( "Invalid repo '".$params['repo'].'"');
 		}
 		
 		$svn = SubversionAdaptor::newFromRepo( $repo->getPath() );
@@ -26,8 +26,7 @@ class ApiCodeDiff extends ApiBase {
 		
 		$rev = intval( $params['rev'] );
 		if( $rev <= 0 || $rev > $lastStoredRev ) {
-			/// @fixme more sensible error
-			throw new MWException( 'Invalid input revision' );
+			$this->dieUsage( 'Invalid input revision' );
 		}
 		
 		$diff = $repo->getDiff( $rev );
