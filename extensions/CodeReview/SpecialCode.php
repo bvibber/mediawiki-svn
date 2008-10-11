@@ -24,15 +24,10 @@ class SpecialCode extends SpecialPage {
 				break;
 			case 2:
 				if( $wgRequest->wasPosted() && $wgRequest->getCheck('wpSave') ) {
-					# Add any tags
-					$crt = new CodeRevisionTagger( $params[0], $params[1] );
-					$crt->execute();
-					# Set status
-					$crs = new CodeRevisionStatusSetter( $params[0], $params[1] );
-					$crs->execute();
-					# Adds comments and makes output
-					$view = new CodeRevisionView( $params[0], $params[1] );
-					break;
+					# Add any tags, Set status, Adds comments 
+					$submit = new CodeRevisionCommitter( $params[0], $params[1] );
+					$submit->execute();
+					return;
 				} else if( $params[1] === 'tag' ) {
 					$view = new CodeTagListView( $params[0] );
 					break;
@@ -75,12 +70,6 @@ class SpecialCode extends SpecialPage {
 			default:
 				if( $params[2] == 'reply' ) {
 					$view = new CodeRevisionView( $params[0], $params[1], $params[3] );
-					break;
-				} elseif( $params[2] == 'add' && $params[3] == 'tag' ) {
-					$view = new CodeRevisionTagger( $params[0], $params[1] );
-					break;
-				} elseif( $params[2] == 'set' && $params[3] == 'status' ) {
-					$view = new CodeRevisionStatusSetter( $params[0], $params[1] );
 					break;
 				}
 				$wgOut->addWikiText( wfMsg('nosuchactiontext') );

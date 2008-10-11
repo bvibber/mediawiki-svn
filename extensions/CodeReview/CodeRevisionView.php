@@ -131,12 +131,6 @@ class CodeRevisionView extends CodeView {
 			if( $isPreview ) {
 				// Save the text for reference on later comment display...
 				$this->mPreviewText = $text;
-			} else if( $wgUser->isAllowed('codereview-post-comment') && strlen($text) ) {
-				$id = $this->mRev->saveComment( $text, $review, $parent );
-				// Redirect to the just-saved comment; this avoids POST
-				// horrors on forward/rewind. Hope we don't have slave issues?
-				$permaLink = $this->commentLink( $id );
-				return $permaLink->getFullUrl();
 			}
 		}
 		return false;
@@ -276,6 +270,13 @@ class CodeRevisionView extends CodeView {
 		$title->setFragment( "#c{$commentId}" );
 		return $title;
 	}
+	
+	function revLink() {
+		$repo = $this->mRepo->getName();
+		$rev = $this->mRev->getId();
+		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
+		return $title;
+	}	
 	
 	function previewComment( $text, $review=0 ) {
 		$comment = $this->mRev->previewComment( $text, $review );
