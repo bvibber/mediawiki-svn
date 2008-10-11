@@ -135,7 +135,11 @@ function mvSeqTag( &$input, &$argv, &$parser ) {
  	// confirm we are in the mvd Namespace & update the wiki_title
  	if ( $old_title->getNamespace() == MV_NS_MVD ) {
  		MV_Index::update_index_title( $old_title->getDBkey() , $new_title->getDBkey() );
+ 		//remove the old MVD having lots of redirects around is not fun
+ 		
+ 		
  	}
+ 	
 	return true;// always return true, in order not to stop MW's hook processing!
  }
  /*

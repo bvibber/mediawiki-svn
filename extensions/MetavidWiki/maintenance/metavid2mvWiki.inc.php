@@ -493,8 +493,9 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 		$file_list = $aos->getFileList( $stream->name );
 		$out .= '==More Media Sources==' . "\n";
 		// all streams have congretional cronical:
-		$out .= '*[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type ;
+		$out .= '*[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type .
 		' CSPAN\'s Congressional Chronicle]' . "\n";
+		
 		if ( $file_list ) {
 			$out .= '*[http://www.archive.org/details/mv_' . $stream->name . 
 			' Archive.org hosted original copy]' . "\n";

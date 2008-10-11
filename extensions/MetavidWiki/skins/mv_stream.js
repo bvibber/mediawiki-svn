@@ -882,6 +882,7 @@ function mv_play_or_pause(){
 	 	js_log('f:mv_play_or_pause:should stop');
 	 	ebvid.stop();
 	 	ebvid.pauseed=true;
+	 	mv_lock_vid_updates=false;
 	 }else{
 	 	js_log('f:mv_play_or_pause:should play');	 		 	
 	 	mv_do_play();	 	
