@@ -118,6 +118,20 @@ class CodeRevision {
 				'cr_path' => $this->mCommonPath ),
 			__METHOD__,
 			array( 'IGNORE' ) );
+		// Already exists? Update the row!
+		if( !$dbw->affectedRows() ) {
+			$dbw->update( 'code_rev',
+				array(
+					'cr_author' => $this->mAuthor,
+					'cr_timestamp' => $dbw->timestamp( $this->mTimestamp ),
+					'cr_message' => $this->mMessage,
+					'cr_status' => $this->mStatus,
+					'cr_path' => $this->mCommonPath ), 
+				array(
+					'cr_repo_id' => $this->mRepo,
+					'cr_id' => $this->mId ),
+				__METHOD__ );
+		}
 
 		if( $this->mPaths ) {
 			$data = array();

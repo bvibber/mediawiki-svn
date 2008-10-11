@@ -6,7 +6,7 @@ if( $IP === false )
 require "$IP/maintenance/commandLine.inc";
 
 if( !isset( $args[0] ) ){
-	echo "Usage: php svnImport.php <repo>\n";
+	echo "Usage: php svnImport.php <repo> [<start>]\n";
 	die;
 }
 
@@ -24,9 +24,13 @@ $chunkSize = 200;
 
 $startTime = microtime( true );
 $revCount = 0;
-$start = $lastStoredRev + 1;
+$start = isset( $args[1] ) ? intval($args[1]) : $lastStoredRev + 1;
+if( $start > ($lastStoredRev + 1) ){
+	echo "Invalid starting point r{$start}\n";
+	die;
+}
 
-echo "Syncing repo {$args[0]} from r$lastStoredRev to HEAD...\n";
+echo "Syncing repo {$args[0]} from r$start to HEAD...\n";
 while( true ) {
 	$log = $svn->getLog( '', $start, $start + $chunkSize - 1 );
 	if( empty($log) ) {
