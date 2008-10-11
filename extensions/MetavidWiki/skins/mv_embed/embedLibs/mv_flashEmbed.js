@@ -174,13 +174,13 @@ var flashEmbed = {
         if(this.currentTime > 1 && !this.startedTimedPlayback){
         	this.startedTimedPlayback=true;
         	js_log("time is "+ this.currentTime + " started playback");
-			if(this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
-			{
-				js_log('Seeking to ' + this.seek_time_sec);
-				this.fla.Seek(this.seek_time_sec);
-				this.seek_time_sec = 0;
-			}
         }
+		if(this.currentTime > 1 && this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
+		{
+			js_log('Seeking to ' + this.seek_time_sec);
+			this.fla.Seek(this.seek_time_sec);
+			this.seek_time_sec = 0;
+		}
         
         //flash is giving bogus duration get from this (if available)
 		if(!this.media_element.selected_source.end_ntp  && this.fla.getDuration()>0)

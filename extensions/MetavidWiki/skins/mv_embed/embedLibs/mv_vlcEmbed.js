@@ -172,8 +172,32 @@ var vlcEmbed = {
 		this.onPlaying();		
     },
     liveFeedRoll : 0,
-    onPlaying : function(){     	    
+    onPlaying : function(){
+		if(this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
+		{
+			// VLC seems to have a problem seeking into the future this way
+			var ms_difference = this.seek_time_sec * 1000 - this.vlc.input.time;
+			if(ms_difference <= 0)
+			{
+				js_log('Seeking to ' + this.seek_time_sec);
+				this.vlc.input.time = this.seek_time_sec * 1000;
+				this.vlc.input.rate=1.0;
+				this.seek_time_sec = 0;
+			}
+			else if (this.vlc.input.rate == 1.0)
+			{
+				var rate = Math.max(2, ms_difference / 500)
+				js_log('setting rate to: ' + rate);
+				this.vlc.input.rate=rate;
+			}
+		}
     	//for now trust the duration from url over vlc input.length
+		if(!this.media_element.selected_source.end_ntp && this.vlc.input.length>0)
+		{
+			js_log('setting duration to ' + this.vlc.input.length /1000);
+			this.media_element.selected_source.setDuration(this.vlc.input.length /1000);
+		}
+
     	this.duration = (this.getDuration())?this.getDuration():this.vlc.input.length /1000;
     	/*if(this.duration!=this.vlc.input.length /1000){
 	        this.duration = this.vlc.input.length /1000;   

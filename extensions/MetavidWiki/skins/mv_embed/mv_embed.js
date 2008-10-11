@@ -575,11 +575,15 @@ var ctrlBuilder = {
         	stop:function(e, ui){
         		_this.userSlide=false;
         		js_log('do jump to: '+_this.jump_time)
-        		//reset slider				
-        		_this.seek_time_sec=ntp2seconds(_this.jump_time);        		
-        		_this.stop();
+        		//reset slider		
+        		_this.seek_time_sec=ntp2seconds(_this.jump_time);
+				if(_this.media_element.selected_source.supports_url_time_encoding)
+				{
+					js_log('stopping due to support of url time encoding');
+					_this.stop();
         		//do play in 300ms (give things time to "cool down") 
-        		setTimeout('$j(\'#'+_this.id+'\').get(0).play()',300);        		
+					setTimeout('$j(\'#'+_this.id+'\').get(0).play()',300);
+				}
         	}
         });
     },
