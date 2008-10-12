@@ -16,6 +16,11 @@ class CodeRevisionCommitter extends CodeRevisionView {
 
 	function execute() {
 		global $wgRequest, $wgOut;
+		
+		$redirTarget = null;
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$dbw->begin();
 		if( $this->validPost('codereview-add-tag') && count($this->mAddTags) ) {
 			$this->mRev->addTags( $this->mAddTags );
 		}
@@ -32,20 +37,22 @@ class CodeRevisionCommitter extends CodeRevisionView {
 			$id = $this->mRev->saveComment( $this->text, $review, $parent );
 			// For comments, take us back to the rev page focused on the new comment
 			if( !$this->jumpToNext ) {
-				$permaLink = $this->commentLink( $id );
-				$wgOut->redirect( $permaLink->getFullUrl() );
-				return;
+				$redirTarget = $this->commentLink( $id );
 			}
 		}
+		$dbw->commit();
+		
 		// Return to rev page
-		if( $this->jumpToNext ) {
-			if( $next = $this->mRev->getNextUnresolved() ) {
-				$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$next );
+		if( !$redirTitle ) {
+			if( $this->jumpToNext ) {
+				if( $next = $this->mRev->getNextUnresolved() ) {
+					$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$next );
+				} else {
+					$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
+				}
 			} else {
-				$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
+				$redirTitle = $this->revLink();
 			}
-		} else {
-			$redirTitle = $this->revLink();
 		}
 		$wgOut->redirect( $redirTitle->getFullUrl() );
 	}
