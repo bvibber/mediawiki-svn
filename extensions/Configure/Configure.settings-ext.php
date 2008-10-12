@@ -309,6 +309,7 @@ $extensions = array(
 			'wgCUDMaxAge' => 'int',
 			'wgCheckUserMaxBlocks' => 'int',
 		),
+		'schema' => true,
 		'url' => 'http://www.mediawiki.org/wiki/Extension:CheckUser',
 	),
 	array(
