@@ -39,7 +39,7 @@ Please report this to the site administrator.',
 	'mvexportsearch' => 'Metavid export',
 	'mvexportsequence' => 'Metavid export sequence',
 	'mvexportstream' => 'Metavid export stream',
-
+	'mv_move_delete_msg'=>'mvd moved (removed original)',
 	'mv_add_stream_page' => 'Mv add stream',
 	'mv_edit_strea_docu' => '<p>Edit stream <b>admin</b><br />for normal user view/edit see $1 page',
 	'mv_add_stream_docu' => '<p>Add a new stream with the field below.</p>

@@ -136,7 +136,8 @@ function mvSeqTag( &$input, &$argv, &$parser ) {
  	if ( $old_title->getNamespace() == MV_NS_MVD ) {
  		MV_Index::update_index_title( $old_title->getDBkey() , $new_title->getDBkey() );
  		//remove the old MVD having lots of redirects around is not fun
- 		
+ 		$oldArticle = new Article($old_title);
+ 		$oldArticle->doDelete( wfMsg('mv_move_delete_msg'), false );
  		
  	}
  	
@@ -213,8 +214,10 @@ function mvDoMvPage ( &$title, &$article, $doOutput = true ) {
  		$mvTitle = new MV_Title( $title->getDBkey() );
 		// check if mvd type exist 
 		if ( $mvTitle->validRequestTitle() ) {
-			// this page can be edited seen the MVD page:				
-			$article = new MV_DataPage( $title, $mvTitle );
+			if( $title->exists() ){			
+				// this page can be edited seen the MVD page:				
+				$article = new MV_DataPage( $title, $mvTitle );
+			}
 			// $title = 'Stream: ' . $mvTitle['type_marker'] . $mvTitle['stream_name'];
 			// $body = 'body content';
 			// mvOutputSpecialPage($title,$body);
