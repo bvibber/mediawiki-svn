@@ -212,8 +212,12 @@ function efErrorHandlerGetMessage(){
 		}
 	}
 	if( $loaded ){
+		global $wgTitle;
 		$msg = array_shift( $args );
-		$callbackArgs = array_merge( array( $msg, array( 'parseinline', 'replaceafter' ) ), $args );
+		$opts = array( 'replaceafter' );
+		if( $wgTitle instanceof Title )
+			$opts[] = 'parseinline';
+		$callbackArgs = array_merge( array( $msg, $opts ), $args );
 		return call_user_func_array( 'wfMsgExt', $callbackArgs );
 	} else {
 		if( !is_array( $messages ) )
