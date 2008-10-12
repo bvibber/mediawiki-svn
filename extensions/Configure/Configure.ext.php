@@ -79,6 +79,24 @@ class WebExtension {
 	}
 
 	/**
+	 * Get a bool wheter this extension requires a schema change
+	 *
+	 * @return bool
+	 */
+	public function hasSchemaChange(){
+		return $this->mDbChange;
+	}
+	
+	/**
+	 * Get a url for the description of this extension (or null)
+	 *
+	 * @return string or null
+	 */
+	public function getUrl(){
+		return $this->mDoc;
+	}
+
+	/**
 	 * Get the main file (the one that should be included in LocalSettings.php)
 	 *
 	 * @return string

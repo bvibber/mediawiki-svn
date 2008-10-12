@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.7.19',
+	'version' => '0.8.0',
 );
 
 ## Configuration part
@@ -169,6 +169,10 @@ $wgAutoloadClasses['ConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['CorePreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['ExtPreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['HistoryConfigurationDiff'] = $dir . 'Configure.diff.php';
+
+## API module
+$wgAutoloadClasses['ApiConfigure'] = $dir . 'Configure.api.php';
+$wgAPIModules['configure'] = 'ApiConfigure';
 
 ## Adding the ajax function
 $wgAjaxExportList[] = 'efConfigureAjax';

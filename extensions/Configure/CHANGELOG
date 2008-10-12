@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.8.0 - 12 October 2008
+  Added a read-only API module.
+
+
 0.7.19 - 11 October 2008
   Removed $wgMajorSiteNoticeID.
 
