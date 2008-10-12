@@ -1239,7 +1239,7 @@ Rhaid defnyddio cyfrif ac o leiaf $1 o gyfraniadau cyn $2 arno, a'ch bod wedi gw
 	'boardvote_notloggedin' => 'Nid ydych wedi mewngofnodi.
 Er mwyn pleidleisio, rhaid i chi ddefnyddio cyfrif sydd ag o leiaf $1 o gyfraniadau cyn $2 ynghlwm wrtho, ac sydd wedi gwneud o leiaf $3 o gyfraniadau rhwng $4 a $5.',
 	'boardvote_notqualified' => 'Nid ydych yn gymwys i bleidleisio yn yr etholiad hwn.
-Er mwyn pleidleisio rhaid eich bod wedi cyfrannu o leiaf $1 gwaith cyn $2, a gwneud o leiaf $3 o gyfraniadau rhwng $4 a $5.',
+Er mwyn pleidleisio rhaid eich bod wedi cyfrannu o leiaf {{PLURAL:$1|$1 gwaith|unwaith|dwywaith|teirgwaith|$1 gwaith|$1 gwaith}} cyn $2, a gwneud o leiaf $3 {{PLURAL:$3|cyfraniad|cyfraniad|gyfraniad|chyfraniad|chyfraniad|o gyfraniadau}} rhwng $4 a $5.',
 	'boardvote_novotes' => 'Nid oes neb wedi pleidleisio eto.',
 	'boardvote_time' => 'Amser',
 	'boardvote_user' => 'Defnyddiwr',

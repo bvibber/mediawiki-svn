@@ -91,6 +91,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author McDutchie
  */
 $messages['qqq'] = array(
 	'code-comments' => '{{Identical|Comments}}',
@@ -102,6 +103,7 @@ $messages['qqq'] = array(
 	'code-rev-comment-preview' => '{{Identical|Preview}}',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
+	'right-codereview-link-user' => '{{Doc-right}}',
 );
 
 /** Arabic (العربية)
@@ -647,6 +649,7 @@ $messages['gl'] = array(
 	'code-notes' => 'revisar as notas',
 	'code-authors' => 'autores',
 	'code-tags' => 'etiquetas',
+	'code-authors-text' => 'Embaixo hai unha lista dos autores das respostas por orde de tarefas recentes.',
 	'code-author-haslink' => 'O autor é ligado co usuario do wiki chamado $1',
 	'code-author-orphan' => 'Este autor non ten ningunha ligazón con algunha conta do wiki',
 	'code-author-dolink' => 'Ligar este autor cun usuario do wiki:',
@@ -694,6 +697,7 @@ $messages['gl'] = array(
 	'code-status-ok' => 'de acordo',
 	'code-status-deferred' => 'diferido',
 	'code-rev-submit' => 'Facer os cambios',
+	'code-rev-submit-next' => 'Tarefas e problemas non resoltos',
 	'codereview-reply-link' => 'resposta',
 	'repoadmin' => 'Administración do repositorio',
 	'repoadmin-new-legend' => 'Crear un novo repositorio',
@@ -710,6 +714,7 @@ $messages['gl'] = array(
 	'right-codereview-remove-tag' => 'Eliminar as etiquetas das revisións',
 	'right-codereview-post-comment' => 'Engadir comentarios ás revisións',
 	'right-codereview-set-status' => 'Cambiar o status das revisións',
+	'right-codereview-link-user' => 'Ligar autores a usuarios do wiki',
 	'specialpages-group-developer' => 'Ferramentas dos desenvolvedores',
 );
 
@@ -837,6 +842,7 @@ $messages['ia'] = array(
 	'right-codereview-remove-tag' => 'Remover etiquettas de versiones',
 	'right-codereview-post-comment' => 'Adder commentos a versiones',
 	'right-codereview-set-status' => 'Cambiar le stato de versiones',
+	'right-codereview-link-user' => 'Ligar autores a usatores del wiki',
 	'specialpages-group-developer' => 'Instrumentos pro disveloppatores',
 );
 

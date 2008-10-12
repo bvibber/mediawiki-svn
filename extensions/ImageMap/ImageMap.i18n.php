@@ -409,6 +409,7 @@ $messages['gl'] = array(
 	'imagemap_invalid_coord' => 'Erro: coordenada non válida na liña $1, debe ser un número',
 	'imagemap_invalid_desc' => 'Erro: especificación da descrición non válida, debe ser unha de: <tt>$1</tt>',
 	'imagemap_description' => 'Sobre esta imaxe',
+	'imagemap_poly_odd' => 'Erro: atopouse un polígono cun número impar de coordenadas na liña $1',
 );
 
 /** Gujarati (ગુજરાતી) */

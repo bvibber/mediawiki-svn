@@ -197,9 +197,18 @@ $messages['gl'] = array(
 	'imstatus_action' => 'acción cando o botón é premido',
 	'imstatus_details_saa' => 'Para obter información sobre todos os estilos e accións, consulte $1.',
 	'imstatus_your_name' => 'o seu nome $1',
+	'imstatus_aim_presence' => '$1 mostra o seu status cunha ligazón que executará o AIM para enviarlle unha mensaxe instantánea, sempre que o usuario o teña instalado.',
+	'imstatus_aim_api' => '$1 mostra o seu status cunha ligazón que executará desde un <b>navegador</b> unha versión JavaScript de AIM para enviarlle unha mensaxe instantánea.',
+	'imstatus_gtalk_code' => 'o código da súa conversa Google',
+	'imstatus_gtalk_get_code' => 'o código da súa conversa Google: obtéñao en $1.',
 	'imstatus_gtalk_height' => 'alto da caixa, en píxeles.',
 	'imstatus_gtalk_width' => 'ancho da caixa, en píxeles.',
 	'imstatus_icq_id' => 'o seu ID no ICQ',
+	'imstatus_icq_style' => 'un número de 0 a 26 (si, hai dispoñibles 27 estilos...).',
+	'imstatus_live_code' => 'o seu ID da páxina web do Live Messenger',
+	'imstatus_live_get_code' => 'o seu ID da páxina web do Live Messenger: <strong>este non é o seu enderezo de correo electrónico</strong>, necesita xerar un <a href="$1">nas súas opcións do Live Messenger</a>.
+O ID que precisa proporcionar son os números e letras entre "$2" e "$3".',
+	'imstatus_skype_nbstyle' => 'Nota: se escolle un estilo que tamén sexa unha acción, a súa escolla da acción será sobreescrita pola acción que coincida co estilo elixido.',
 	'imstatus_xfire_size' => 'o botón do tamaño, de $1 (o maior) a $2 (o menor).',
 	'imstatus_yahoo_style' => 'o botón do estilo, de $1 (o menor) a $2 (o maior), $3 e $4 son para as mensaxes faladas.',
 );

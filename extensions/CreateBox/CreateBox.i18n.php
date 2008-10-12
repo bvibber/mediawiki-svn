@@ -189,7 +189,7 @@ Non puoi creare questa pagina, ma puoi [{{fullurl:{{FULLPAGENAME}}|action=edit}}
 $messages['ja'] = array(
 	'createbox-desc' => 'ページ作成専用のInputbox',
 	'createbox-create' => '作成',
-	'createbox-exists' => "申し訳ございません、\"'''{{FULLPAGENAME}}'''\" はすでに存在します。
+	'createbox-exists' => "申し訳ございません、\"'''{{FULLPAGENAME}}'''\" はすでに作成されています。
 
 このページを作成することはできませんが、あなたが[{{fullurl:{{FULLPAGENAME}}|action=edit}} それを編集する]か、[{{fullurl:{{FULLPAGENAME}}}} それを閲覧する]か、または以下のBoxを使用することで他のページを選んで作成することができます。
 

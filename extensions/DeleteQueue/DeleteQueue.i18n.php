@@ -1010,6 +1010,7 @@ Pode [{{fullurl:$1|action=delvote}} apoiar ou obxectar] ou [{{fullurl:$1|action=
 	'deletequeue-role-nominator' => 'nominador orixinal da eliminación',
 	'deletequeue-role-vote-endorse' => 'partícipe da eliminación',
 	'deletequeue-role-vote-object' => 'obxector da eliminación',
+	'deletequeue-vote-tab' => 'Votar na eliminación',
 	'deletequeue-vote-title' => 'Apoiar a/Obxectar na eliminación de "$1"',
 	'deletequeue-vote-text' => "Pode usar este formulario para apoiar ou obxectar na páxina de eliminación de \"'''\$1'''\".
 Esta acción ignorará calquera apoio/obxección anterior que teña dado na eliminación desta páxina.
