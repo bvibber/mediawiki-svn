@@ -350,6 +350,7 @@ $messages['sv'] = array(
  */
 $messages['th'] = array(
 	'purgecache' => 'ล้างแคช',
+	'purgecache-purged' => 'ล้างแคชเรีัยบร้อยแล้ว',
 );
 
 /** Ukrainian (Українська)

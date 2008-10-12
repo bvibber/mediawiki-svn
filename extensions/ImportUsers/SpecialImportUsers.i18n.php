@@ -161,6 +161,13 @@ $messages['bg'] = array(
 	'importusers-realname' => 'истинско име',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'importusers-log' => 'Zapisnik uvoza',
+);
+
 /** Catalan (Català)
  * @author Aleator
  */

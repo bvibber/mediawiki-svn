@@ -394,6 +394,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Masti
  * @author Sp5uhe
  */
@@ -401,10 +402,10 @@ $messages['pl'] = array(
 	'watchers' => 'Obserwujący',
 	'watchers_link_title' => 'Kto obserwuje tę stronę?',
 	'watchers_error_article' => '<b>Błąd:</b> Strona nie istnieje',
-	'watchers_header' => 'Obserwujący „$1”',
+	'watchers_header' => '{{PLURAL:$2|Obserwujący|Obserwujący}} „$1”',
 	'watchers_noone_watches' => 'Nikt nie obserwuje tej strony',
-	'watchers_x_or_more' => 'Osób obserwujących: $1 lub więcej',
-	'watchers_less_than_x' => 'Osób obserwujących mniej niż $1',
+	'watchers_x_or_more' => 'Przynajmniej $1 {{PLURAL:$1|użytkownik|użytkowników}} obserwuje tę stronę.',
+	'watchers_less_than_x' => 'Mniej niż $1 {{PLURAL:$1|użytkownik|użytkowników}} obserwuje tę stronę.',
 );
 
 /** Pashto (پښتو)

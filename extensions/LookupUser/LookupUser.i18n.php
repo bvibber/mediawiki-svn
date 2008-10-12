@@ -358,6 +358,26 @@ $messages['it'] = array(
 	'lookupuser_useroptions' => 'Opzioni utente:',
 );
 
+/** Japanese (日本語)
+ * @author Fievarsty
+ */
+$messages['ja'] = array(
+	'lookupuser' => '利用者情報を調査',
+	'lookupuser-desc' => 'EメールアドレスまたはIDなどの利用者に関する[[Special:LookupUser|情報を検索]]',
+	'lookupuser_intro' => '利用者名を入力して、その利用者の情報を調べてください。',
+	'lookupuser_nonexistent' => 'エラー: 利用者は存在しません',
+	'lookupuser_authenticated' => 'Eメール確認日: $1',
+	'lookupuser_not_authenticated' => '確認されてません',
+	'lookupuser_id' => '利用者ID: <tt>#$1</tt>',
+	'lookupuser_email' => 'Eメール: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => '提供されてません',
+	'lookupuser_realname' => '本名: $1',
+	'lookupuser_registration' => '登録日: $1',
+	'lookupuser_no_registration' => '記録がありません',
+	'lookupuser_touched' => '利用者の最終記録: $1',
+	'lookupuser_useroptions' => '利用者オプション:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -580,11 +600,12 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'lookupuser' => 'Показать сведения об участнике',
-	'lookupuser-desc' => '[[Special:LookupUser|получение сведений]] об участнике, таких как почтовый адрес и идентификатор',
+	'lookupuser-desc' => '[[Special:LookupUser|Получение сведений]] об участнике, таких как почтовый адрес и идентификатор',
 	'lookupuser_intro' => 'Введите имя участника, чтобы просмотреть его пользовательские настройки.',
 	'lookupuser_nonexistent' => 'Ошибка. Участника не существует',
 	'lookupuser_authenticated' => 'Аутентификация по эл. почте: $1',

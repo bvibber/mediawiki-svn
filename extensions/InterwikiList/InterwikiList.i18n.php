@@ -83,6 +83,18 @@ $messages['eo'] = array(
 	'interwikilist-target' => 'Cela URL-o',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'interwikilist' => 'فهرست میان‌ویکی',
+	'interwikilist-desc' => 'یک [[Special:Interwikilist|صفحهٔ ویژه]] برای مشاهدهٔ پیوندهای میان‌ویکی موجود می‌افزاید',
+	'interwikilist-linkname' => 'پیوند میان‌ویکی',
+	'interwikilist-target' => 'نشانی اینترنتی هدف',
+	'interwikilist-filter' => 'پالایش فهرست',
+	'interwikilist-prefix' => 'پیشوند میان‌ویکی:',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
@@ -102,6 +114,8 @@ $messages['fr'] = array(
 	'interwikilist-desc' => 'Ajoute une [[Special:Interwikilist|page spéciale]] afin de voir tous les liens interwikis disponibles',
 	'interwikilist-linkname' => 'Lien interwiki',
 	'interwikilist-target' => 'Adresse concernée',
+	'interwikilist-filter' => 'Liste du filtre',
+	'interwikilist-prefix' => 'Préfixe interwiki :',
 );
 
 /** Galician (Galego)

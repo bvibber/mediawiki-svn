@@ -102,6 +102,8 @@ Aufruf: $1
 Ausgabe: $2
 
 $3',
+	'latexdoc_get_dvi' => 'DVI herunterladen',
+	'latexdoc_get_pdf' => 'PDF herunterladen',
 );
 
 /** Esperanto (Esperanto)

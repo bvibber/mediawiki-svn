@@ -140,6 +140,14 @@ $messages['bg'] = array(
 	'deletebatch-file-missing' => 'Предоставеният файл не може да бъде прочетен',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'deletebatch-or' => '<b>o</b>',
+	'deletebatch-page' => 'Pàgines a esborrar',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Revolus

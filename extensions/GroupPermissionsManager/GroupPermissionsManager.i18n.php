@@ -774,6 +774,75 @@ $messages['it'] = array(
 	'right-edit-new' => 'Modifica pagine (che non sono pagine di discussione)',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ * @author Fievarsty
+ */
+$messages['ja'] = array(
+	'grouppermissions' => 'グループパーミッションの管理',
+	'sortpermissions' => 'パーミッションの分類',
+	'removeunusedgroups' => '未使用のグループを削除',
+	'grouppermissions-desc' => '[[Special:GroupPermissions|特別ページ]]経由でグループのパーミッションを管理する',
+	'grouppermissions-desc2' => '拡張パーミッションシステム',
+	'grouppermissions-desc3' => 'パーミッションの内容を操作（タブ）することが可能です',
+	'grouppermissions-desc4' => 'ツールボックスに追加できるアイテムを追加する',
+	'grouppermissions-desc-nsm' => '特別ページ経由で名前空間を管理する',
+	'grouppermissions-header' => 'あなたはこのページを使用することで、さまざまな利用者グループの基本的なパーミッションを変更することができます。',
+	'grouppermissions-search' => 'グループ:',
+	'grouppermissions-dologin' => 'ログイン',
+	'grouppermissions-dosearch' => '検索',
+	'grouppermissions-searchlabel' => 'グループの検索',
+	'grouppermissions-deletelabel' => 'グループの削除',
+	'grouppermissions-error' => '未知のエラーが発生しました、ブラウザの戻るボタンを押してもう一度試してください。',
+	'grouppermissions-change' => 'グループのパーミッションを変更',
+	'grouppermissions-add' => 'グループを追加',
+	'grouppermissions-delete' => 'グループを削除',
+	'grouppermissions-comment' => 'コメント:',
+	'grouppermissions-addsuccess' => '$1 は正常に追加されました',
+	'grouppermissions-deletesuccess' => '$1 は正常に削除されました',
+	'grouppermissions-changesuccess' => '$1 のパーミッションは正常に変更されました',
+	'grouppermissions-true' => '有効',
+	'grouppermissions-false' => '無効',
+	'grouppermissions-never' => '決してしない',
+	'grouppermissions-nooldrev' => '現在の設定ファイルのアーカイブ中にエラーが発生しました。アーカイブの作成は行われません。',
+	'grouppermissions-sort-read' => '閲覧',
+	'grouppermissions-sort-edit' => '編集',
+	'grouppermissions-sort-manage' => '管理',
+	'grouppermissions-sort-admin' => '開発',
+	'grouppermissions-sort-tech' => '技術',
+	'grouppermissions-sort-misc' => 'その他',
+	'grouppermissions-log-add' => 'グループ "$2" を追加しました',
+	'grouppermissions-log-change' => 'グループ "$2" のパーミッションを変更しました',
+	'grouppermissions-log-delete' => 'グループ "$2" を削除しました',
+	'grouppermissions-log-name' => 'グループパーミッションログ',
+	'grouppermissions-log-header' => 'これは、利用者グループの基本的なパーミッションの変更を記録したものです。',
+	'grouppermissions-needjs' => '警告: お使いのブラウザではJavaScriptが無効になっています。いくつかの機能が動作しない可能性があります。',
+	'grouppermissions-sp-header' => 'このページでパーミッションの分類方法を管理、または新しいパーミッションを追加することができます。パーミッションの説明を見るためには上にカーソルを置いてください。',
+	'grouppermissions-sp-sort' => 'パーミッションを並べ替える',
+	'grouppermissions-sp-save' => '保存',
+	'grouppermissions-sp-success' => 'パーミッションは正しく並べ替えられました',
+	'grouppermissions-sp-addtype' => '分類するタイプを追加',
+	'grouppermissions-sp-addperm' => 'パーミッションを追加',
+	'grouppermissions-sp-remove' => '削除',
+	'grouppermissions-sp-deltype' => '分類するタイプを削除',
+	'grouppermissions-rug-header' => 'あなたはこのページを使用することで、未使用のグループを利用者から取り外す（削除する）ことができます。',
+	'grouppermissions-rug-success' => '未使用のグループを利用者から正常に取り除きました!',
+	'grouppermissions-rug-confirm' => '未使用のグループを利用者から取り外す',
+	'right-grouppermissions' => 'グループのパーミッションを管理する',
+	'right-viewsource' => '保護されたページのウィキソースを表示',
+	'right-raw' => '生のページを表示',
+	'right-render' => 'ナビゲーションなしでレンダリングページを表示',
+	'right-info' => 'ページ情報の閲覧',
+	'right-credits' => 'ページのクレジットを閲覧',
+	'right-history' => 'ページの履歴を閲覧',
+	'right-search' => 'ウィキを検索',
+	'right-contributions' => '投稿記録を表示',
+	'right-recentchanges' => '最近の更新を表示',
+	'right-edittalk' => 'ノートページの編集',
+	'right-edit-new' => '主ページ（ノートページではないページ）の編集',
+	'right-readold' => '過去の版の内容および過去の版との差分の閲覧',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -1197,12 +1266,13 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Innv
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'grouppermissions' => 'Управление правами доступа',
 	'removeunusedgroups' => 'Удалить неиспользуемые группы',
-	'grouppermissions-desc' => 'Управлять правами доступа на [[Special:GroupPermissions|спецстранице]]',
+	'grouppermissions-desc' => 'Управление правами доступа через [[Special:GroupPermissions|спецстраницу]]',
 	'grouppermissions-search' => 'Группа:',
 	'grouppermissions-dologin' => 'Имя участника',
 	'grouppermissions-dosearch' => 'Перейти',

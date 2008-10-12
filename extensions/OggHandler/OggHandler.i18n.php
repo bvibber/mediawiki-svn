@@ -829,7 +829,7 @@ $messages['ga'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'ogg-desc' => 'Manipulador dos ficheiros Ogg Theora e Vorbis files co reprodutor JavaScript',
+	'ogg-desc' => 'Manipulador dos ficheiros Ogg Theora e mais dos ficheiros Vorbis co reprodutor JavaScript',
 	'ogg-short-audio' => 'Ficheiro de son Ogg $1, $2',
 	'ogg-short-video' => 'Ficheiro de vídeo Ogg $1, $2',
 	'ogg-short-general' => 'Ficheiro multimedia Ogg $1, $2',
@@ -1511,7 +1511,9 @@ $messages['lb'] = array(
 	'ogg-player-videoElement' => 'Ënnerstetzt duerch de Browser',
 	'ogg-player-oggPlugin' => 'Browser-Plugin',
 	'ogg-player-thumbnail' => 'Just als Bild weisen',
+	'ogg-player-soundthumb' => 'Keng Player-Software',
 	'ogg-player-selected' => '(erausgewielt)',
+	'ogg-use-player' => "Benotzt d'Player-Software:",
 	'ogg-more' => 'Méi ...',
 	'ogg-dismiss' => 'Zoumaachen',
 	'ogg-download' => 'Fichier eroflueden',
@@ -2045,6 +2047,13 @@ Te rog <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 	'ogg-dismiss' => 'Închide',
 	'ogg-download' => 'Descarcă fişier',
 	'ogg-desc-link' => 'Despre acest fişier',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'ogg-dismiss' => 'Chiude',
 );
 
 /** Russian (Русский)

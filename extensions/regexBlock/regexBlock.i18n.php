@@ -761,6 +761,7 @@ $messages['id'] = array(
  */
 $messages['is'] = array(
 	'regexblock-form-reason' => 'Ástæða:',
+	'regexblock-already-blocked' => '$1 er nú þegar í banni.',
 	'regexblock-stats-username' => 'Fyrir $1',
 );
 

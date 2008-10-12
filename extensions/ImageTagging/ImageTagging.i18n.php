@@ -89,6 +89,13 @@ $messages['af'] = array(
 	'imagetagging-imghistory' => 'Geskiedenis',
 );
 
+/** Aragonese (Aragonés)
+ * @author Remember the dot
+ */
+$messages['an'] = array(
+	'imagetagging-article' => 'Pachina:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -126,6 +133,13 @@ $messages['ar'] = array(
 	'imagetagging-taggedimages-displaying' => 'عرض $1 - $2 من $3 صورة ل"$4"',
 	'tag-logpagename' => 'سجل الوسم',
 	'tag-logpagetext' => 'هذا سجل بكل عمليات إضافة وإزالة وسم الصور.',
+);
+
+/** Araucanian (Mapudungun)
+ * @author Remember the dot
+ */
+$messages['arn'] = array(
+	'imagetagging-article' => 'Pakina:',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -217,6 +231,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author DaSch
+ * @author Revolus
  */
 $messages['de'] = array(
 	'taggedimages' => 'Bilder mit Tags',
@@ -224,6 +239,7 @@ $messages['de'] = array(
 	'imagetagging-article' => 'Seite:',
 	'imagetagging-imghistory' => 'Versionen',
 	'imagetagging-images' => 'Bild',
+	'imagetagging-inthisimage' => 'In diesem Bild: $1',
 	'imagetagging-log-tagged' => 'Bild [[$1|$2]] wurde von $4 mit [[$3]] getagged',
 	'imagetagging-new' => '<sup><span style="color:red">Neu!</span></sup>',
 	'imagetagging-removetag' => 'Tag entfernen',

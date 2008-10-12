@@ -1692,6 +1692,7 @@ Annulléiert dës Ännerung d'éischt.",
 	'oversight-hidden' => 'Verstoppte Versioun',
 	'oversight-header' => "Hei ass eng Lëscht vun de Versiounen déi permanent virun der Ëffentlechkeet verstoppt goufen.
 Verbreedung vun dësen Informatiounen kann zum definitve Verloscht vun den ''Oversight''-Rechter féieren.",
+	'oversight-legend' => 'Lëscht vun de Recherchen vu verstoppte Versiounen',
 );
 
 /** Limburgish (Limburgs)

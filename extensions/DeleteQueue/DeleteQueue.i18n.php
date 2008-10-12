@@ -211,6 +211,13 @@ $messages['qqq'] = array(
 	'deletequeue-list-header-expiry' => '{{Identical|Expiry}}',
 );
 
+/** Aragonese (Aragonés)
+ * @author Remember the dot
+ */
+$messages['an'] = array(
+	'deletequeue-list-header-page' => 'Pachina',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -350,6 +357,13 @@ $messages['ar'] = array(
 	'deletequeue-list-header-votes' => 'التأييد والاعتراضات',
 	'deletequeue-list-header-expiry' => 'تاريخ الانتهاء',
 	'deletequeue-list-header-discusspage' => 'صفحة نقاش',
+);
+
+/** Araucanian (Mapudungun)
+ * @author Remember the dot
+ */
+$messages['arn'] = array(
+	'deletequeue-list-header-page' => 'Pakina',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -520,6 +534,13 @@ $messages['bg'] = array(
 	'deletequeue-list-header-page' => 'Страница',
 	'deletequeue-list-header-queue' => 'Опашка',
 	'deletequeue-list-header-discusspage' => 'Дискусионна страница',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'deletequeue-delnom-otherreason' => 'Ostali razlozi',
 );
 
 /** German (Deutsch)
@@ -2139,3 +2160,4 @@ $messages['vi'] = array(
 	'deletequeue-list-header-expiry' => 'Thời hạn',
 	'deletequeue-list-header-discusspage' => 'Trang thảo luận',
 );
+

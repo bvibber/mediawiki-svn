@@ -393,6 +393,13 @@ Caution avisate: le expressiones non debe esser troppo curte o troppo commun.',
 	'spamregex-summary-log' => '(Summario)',
 );
 
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
+$messages['is'] = array(
+	'spamregex-already-blocked' => '„$1“ er nú þegar í banni',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

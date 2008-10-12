@@ -3379,6 +3379,7 @@ $wgGoogleMapsMessages['th'] = array(
 	'gm-balloon-title' => 'ชื่อเรื่อง :',
 	'gm-remove' => 'เอาออก',
 	'gm-save-point' => 'บันทึก และ ปิด',
+	'gm-load-map' => 'โหลดแผนที่',
 	'gm-clip-result' => 'เพิ่มไปที่แผนที่',
 	'gm-searching' => 'กำลังค้นหา...',
 	'gm-map' => 'แผนที่',

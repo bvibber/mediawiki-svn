@@ -96,7 +96,7 @@ $messages['arz'] = array(
 	'imstatus_aim_presence' => '$1 تعرض حالتك مع وصلة تطلق AIM لترسل لك IM، إذا كان لدى المستخدم منصبا.',
 	'imstatus_aim_api' => '$1 تعرض حالتك مع وصلة تطلق نسخة <b>متصفح</b>، جافاسكريبت من AIM لترسل لك IM.',
 	'imstatus_gtalk_code' => 'كود جوجل تولك الخاص بك',
-	'imstatus_gtalk_get_code' => 'كود جوجل تولك الخاص بك: احصل عليه في $1.',
+	'imstatus_gtalk_get_code' => 'كود جوجل تولك الخاص بك: احصل عليه فى $1.',
 	'imstatus_gtalk_height' => 'ارتفاع الصندوق، بالبكسل.',
 	'imstatus_gtalk_width' => 'عرض الصندوق، بالبكسل.',
 	'imstatus_icq_id' => 'رقم ICQ الخاص بك',
@@ -104,7 +104,7 @@ $messages['arz'] = array(
 	'imstatus_live_code' => 'رقم موقع ويب لايف ماسنجر الخاص بك',
 	'imstatus_live_get_code' => 'رقم موقع ويب لايف ماسنجر الخاص بك: <strong>هذا ليس عنوان بريدك الإلكترونى</strong>، تحتاج إلى توليد واحد في
 <a href="$1">خيارات لايف ماسنجر الخاصة بك</a>.
-الرقم الذي تحتاج إلى توفيره هو الأرقام والحروف بين "$2" و "$3".',
+الرقم الذى تحتاج إلى توفيره هو الأرقام والحروف بين "$2" و "$3".',
 	'imstatus_skype_nbstyle' => 'ملاحظة: إذا اخترت أسلوبا هو أيضا فعل، اختيارك للفعل سيطغى عليه بواسطة الفعل المطابق لأسلوبك المختار.',
 	'imstatus_xfire_size' => 'حجم الزر، من $1 (أكبر) إلى $2 (أصغر).',
 	'imstatus_yahoo_style' => 'أسلوب الزر، من $1 (أصغر) إلى $2 (أكبر)، $3 و $4 هما للبريد الصوتي.',
@@ -150,6 +150,7 @@ $messages['fa'] = array(
 
 /** French (Français)
  * @author Verdy p
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'imstatus-desc' => 'Ajoute des balises montrant l’état en ligne sur divers réseaux de communication (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
@@ -167,7 +168,7 @@ $messages['fr'] = array(
 	'imstatus_aim_presence' => '$1 affiche votre état avec un lien qui lancera AIM pour vous envoyer un message instantané, pourvu que l’utilisateur l’ait installé.',
 	'imstatus_aim_api' => '$1 affiche votre état avec un lien qui lancera dans un <b>navigateur</b> une version javascript de AIM pour vous envoyer un message instantané.',
 	'imstatus_gtalk_code' => 'votre code Google Talk',
-	'imstatus_gtalk_get_code' => 'votre code Google Talk : obtenez le sur $1.',
+	'imstatus_gtalk_get_code' => 'votre code Google Talk : obtenez-le sur $1.',
 	'imstatus_gtalk_height' => 'hauteur de la boîte, en pixels.',
 	'imstatus_gtalk_width' => 'largeur de la boîte, en pixels.',
 	'imstatus_icq_id' => 'votre identifiant ICQ',
@@ -317,6 +318,15 @@ L’identificant de provesir aicí es compausat de chifras e letras entre « $2 
 	'imstatus_skype_nbstyle' => "Nòta : se causissètz un estil que tanben es una accion, vòstra causida d’accion serà espotida per l’accion que correspond a l'estil qu'avètz causit.",
 	'imstatus_xfire_size' => 'la talha del boton, de $1 (la mai granda) a $2 (la mai pichona).',
 	'imstatus_yahoo_style' => "l'estil del boton, de $1 (lo mai pichon) a $2 (lo mai grand), $3 e $4 son pels messatges vocals.",
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'imstatus_syntax' => 'Sintaxe',
+	'imstatus_example' => 'Exemplo',
+	'imstatus_or' => 'ou',
 );
 
 /** Slovak (Slovenčina)

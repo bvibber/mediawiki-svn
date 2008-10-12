@@ -727,6 +727,7 @@ $messages['id'] = array(
 $messages['is'] = array(
 	'crosswikiblock-reason' => 'Ástæða:',
 	'crosswikiunblock-reason' => 'Ástæða:',
+	'crosswikiblock-alreadyblocked' => 'Notandi „$3“ er nú þegar í banni.',
 );
 
 /** Italian (Italiano)

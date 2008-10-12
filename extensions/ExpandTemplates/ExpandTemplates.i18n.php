@@ -1271,6 +1271,13 @@ $messages['ro'] = array(
 	'expand_templates_preview' => 'Previzualizare',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'expand_templates_ok' => 'OK',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

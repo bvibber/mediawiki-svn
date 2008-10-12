@@ -344,6 +344,15 @@ $messages['it'] = array(
 	'right-editclosedwikis' => 'Modifica le wiki chiuse',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'closewikis-page-close-wiki' => 'វិគី៖',
+	'closewikis-page-reopen-wiki' => 'វិគី៖',
+	'closewikis-page-reopen-reason' => 'មូលហេតុ៖',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

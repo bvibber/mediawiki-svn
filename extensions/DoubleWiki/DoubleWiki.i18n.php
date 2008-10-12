@@ -75,6 +75,13 @@ $messages['br'] = array(
 	'doublewiki-desc' => 'Diskouez a ra, war daou vann ha war an hevelep pajenn, ur bajenn hag he zroidigezh adal ur wiki all',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'doublewiki-desc' => 'Prikazuje stranicu i njen prijevod s drugog wiki projekta u dva stupca na istoj stranici',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

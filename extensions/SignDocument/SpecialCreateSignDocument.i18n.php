@@ -64,6 +64,13 @@ $messages['af'] = array(
 	'createsigndoc-create' => 'Skep',
 );
 
+/** Aragonese (Aragonés)
+ * @author Remember the dot
+ */
+$messages['an'] = array(
+	'createsigndoc-pagename' => 'Pachina:',
+);
+
 /** Old English (Anglo-Saxon)
  * @author Meno25
  */
@@ -103,6 +110,13 @@ $messages['ar'] = array(
 	'createsigndoc-success' => 'توقيع الوثيقة تم تفعيله بنجاح على [[$1]].
 لاختباره، من فضلك زر [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} هذه الصفحة].',
 	'createsigndoc-error-alreadycreated' => 'توقيع الوثيقة "$1" موجود بالفعل.',
+);
+
+/** Araucanian (Mapudungun)
+ * @author Remember the dot
+ */
+$messages['arn'] = array(
+	'createsigndoc-pagename' => 'Pakina:',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

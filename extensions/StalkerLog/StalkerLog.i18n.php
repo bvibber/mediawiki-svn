@@ -131,6 +131,17 @@ $messages['it'] = array(
 	'stalkerlog-log-text' => 'Questo è il registro delle azioni di login e logout degli utenti.',
 );
 
+/** Japanese (日本語)
+ * @author Fievarsty
+ */
+$messages['ja'] = array(
+	'stalkerlog-desc' => '利用者のログインとログアウトの[[Special:Log/stalkerlog|ログ]]を追加',
+	'stalkerlog-log-login' => 'ログインしました。',
+	'stalkerlog-log-logout' => 'ログアウトしました。',
+	'stalkerlog-log-type' => '利用者認証記録',
+	'stalkerlog-log-text' => 'これは、利用者のログインとログアウトの記録です。',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -125,6 +125,16 @@ $messages['bn'] = array(
 	'chemFunctions_ChemFormInputError' => 'রাসায়নিক ফর্ম: ইনপুট ত্রুটি!',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'chemicalsource-desc' => "Afegeix l'etiqueta <nowiki><chemform></nowiki>, per a fórmules químiques",
+	'chemFunctions_DataList' => 'A continuació disposeu d\'una llista d\'enllaços a llocs que ofereixen informació sobre les substàncies químiques que esteu cercant.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS a l\'Oxford University (RU) (no es pot cercar)</a><br />',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -160,6 +170,8 @@ $messages['de'] = array(
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbindung $MIXCASNameFormula auf NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS an der Oxford University (UK) (nicht durchsuchbar)</a><br />',
 	'chemFunctions_CAS' => 'CAS Nummer',
+	'chemFunctions_ATCCode' => 'ATC-Code',
+	'chemFunctions_ECNumber' => 'EC-Nummer',
 	'chemFunctions_Formula' => 'Formel',
 	'chemFunctions_Name' => 'IUPAC-Name',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Eingabe Fehler!',

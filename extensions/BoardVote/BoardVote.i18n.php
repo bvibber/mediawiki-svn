@@ -4813,9 +4813,9 @@ A versão encriptada resultante encontra-se abaixo. Ela será [[Special:Boardvot
 deixadas em branco.</p>',
 	'boardvote_nosession' => 'Não foi possível determinar o seu ID de utilizador Wikimedia.
 Por favor, efectue login no wiki onde está qualificado a votar e vá a <nowiki>[[Special:Boardvote]]</nowiki>.
-Deverá usar uma conta com pelo menos $1 contribuições feitas antes de $2, e ter feito pelo menos $3 contribuições entre $4 e $5.',
+Deverá usar uma conta com pelo menos $1 {{PLURAL:$1|contribuição|contribuições}} feitas antes de $2, e ter feito pelo menos $3 {{PLURAL:$3|contribuição|contribuições}} entre $4 e $5.',
 	'boardvote_notloggedin' => 'Você não está autenticado.
-Para votar, você deve usar uma conta com pelo menos $1 contribuições feitas antes de $2, tendo feito ao menos $3 entre $4 e $5.',
+Para votar, você deve usar uma conta com pelo menos $1 {{PLURAL:$1|contribuição|contribuições}} feitas antes de $2, tendo feito pelo menos $3 {{PLURAL:$3|contribuição|contribuições}} entre $4 e $5.',
 	'boardvote_notqualified' => 'Você não está qualificado a votar nesta eleição.
 Seria necessário ter feito pelo menos $1 {{PLURAL:$1|edição|edições}} antes de $2, tendo feito pelo menos $3 {{PLURAL:$3|edição|edições}} entre $4 e $5.',
 	'boardvote_novotes' => 'Ninguém votou até ao momento.',
@@ -6140,7 +6140,7 @@ Vögodam padälon jü yunul 22',
 	'boardvote_notstarted' => 'Daväl no nog eprimon',
 	'boardvote_closed' => 'Vögodam ya efinikon, logolös [http://meta.wikimedia.org/wiki/Board_elections/2008/Results davälapadi] suno ad getön sekis.',
 	'boardvote_edits_many' => 'mödik',
-	'group-boardvote' => 'guvans Daväla Kipedalefa',
+	'group-boardvote' => 'Guvans daväla Kipedalefa',
 	'group-boardvote-member' => 'guvan Daväla Kipedalefa',
 	'grouppage-boardvote' => '{{ns:project}}:guvan Daväla Kipedalefa',
 	'boardvote_blocked' => 'Liedo peblokol in vük olik. Gebans pebloköl no dalons vögodön.',

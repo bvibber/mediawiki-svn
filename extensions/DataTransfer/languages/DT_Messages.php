@@ -71,9 +71,11 @@ $messages['af'] = array(
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
+ * @author Remember the dot
  */
 $messages['an'] = array(
 	'dt_viewxml_namespaces' => 'Espazios de nombres',
+	'dt_xml_page' => 'Pachina',
 );
 
 /** Arabic (العربية)
@@ -93,6 +95,13 @@ $messages['ar'] = array(
 	'dt_xml_title' => 'عنوان',
 	'dt_xml_id' => 'رقم',
 	'dt_xml_freetext' => 'نص حر',
+);
+
+/** Araucanian (Mapudungun)
+ * @author Remember the dot
+ */
+$messages['arn'] = array(
+	'dt_xml_page' => 'Pakina',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

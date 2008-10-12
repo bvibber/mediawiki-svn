@@ -1158,6 +1158,7 @@ $allMessages['pa'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Sp5uhe
  * @author Wpedzich
  */
@@ -1206,7 +1207,7 @@ $2',
 	'whitelistnonrestricted' => "Na użytkownika '''$1''' nie nałożono ograniczeń.
 Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone ograniczenia.",
 	'whitelistnever' => 'nigdy',
-	'whitelistnummatches' => 'wyników: $1',
+	'whitelistnummatches' => '  - {{PLURAL:$1|1 wynik|$1 wyniki|$1 wyników}}',
 );
 
 /** Pashto (پښتو)

@@ -331,6 +331,7 @@ $messages['fa'] = array(
 	'imagemap_invalid_coord' => '<imagemap>: مختصات غیرمجاز در سطر $1، مختصات باید عدد باشد',
 	'imagemap_invalid_desc' => '<imagemap>: توضیحات غیرمجاز، باید یکی از این موارد باشد: <tt>$1</tt>',
 	'imagemap_description' => 'دربارهٔ این تصویر',
+	'imagemap_poly_odd' => 'خطا: چند ضلعی با تعداد فرعی از مختصات در سطر $1 پیدا شد',
 );
 
 /** Finnish (Suomi)
@@ -541,6 +542,7 @@ $messages['id'] = array(
 	'imagemap_invalid_coord' => '&lt;imagemap&gt;: koordinat tidak sah pada baris ke $1, haruslah berupa angka',
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: spesifikasi desc tidak sah, harus salah satu dari: $1',
 	'imagemap_description' => 'Tentang gambar ini',
+	'imagemap_poly_odd' => 'Kesalahan: terdapat poligon dengan nomor koordinat salah pada baris $1',
 );
 
 /** Ido (Ido)
@@ -871,6 +873,7 @@ $messages['no'] = array(
 	'imagemap_invalid_coord' => 'Error: ugyldig koordinat i slutten av linje $1, må være et tall',
 	'imagemap_invalid_desc' => 'Error: ugyldig desc-spesifisering, må være enten: <tt>$1</tt>',
 	'imagemap_description' => 'Om dette bildet',
+	'imagemap_poly_odd' => 'Feil: fant poly med et oddetall koordinater på rad $1',
 );
 
 /** Occitan (Occitan)
@@ -1183,6 +1186,7 @@ $messages['vec'] = array(
 	'imagemap_invalid_coord' => 'Error: coordinata mìa valida ne la riga $1, la gà da èssar un nùmaro',
 	'imagemap_invalid_desc' => 'Error: Valor mìa valido par el parametro desc, el gà da èssar uno dei seguenti: $1',
 	'imagemap_description' => 'Informazion su sta imagine',
+	'imagemap_poly_odd' => "Erór: gò catà un polìgono co' un nùmaro dispari de coordinate in te la riga $1",
 );
 
 /** Vietnamese (Tiếng Việt)

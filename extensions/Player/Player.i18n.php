@@ -69,6 +69,13 @@ $messages['af'] = array(
 	'player-goto-file' => 'lêer',
 );
 
+/** Aragonese (Aragonés)
+ * @author Remember the dot
+ */
+$messages['an'] = array(
+	'player-goto-page' => 'Pachina',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -88,6 +95,13 @@ $messages['ar'] = array(
 	'player-goto-file' => 'ملف',
 );
 
+/** Araucanian (Mapudungun)
+ * @author Remember the dot
+ */
+$messages['arn'] = array(
+	'player-goto-page' => 'Pakina',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -105,6 +119,13 @@ $messages['arz'] = array(
 	'player-goto-player' => 'برنامج',
 	'player-goto-page' => 'صفحة',
 	'player-goto-file' => 'ملف',
+);
+
+/** Asturian (Asturianu)
+ * @author Remember the dot
+ */
+$messages['ast'] = array(
+	'player-goto-file' => 'archivu',
 );
 
 /** Bulgarian (Български)
@@ -367,9 +388,11 @@ $messages['id'] = array(
 
 /** Ido (Ido)
  * @author Malafaya
+ * @author Remember the dot
  */
 $messages['io'] = array(
 	'player-goto-page' => 'Pagino',
+	'player-goto-file' => 'arkivo',
 );
 
 /** Icelandic (Íslenska)
@@ -457,6 +480,13 @@ $messages['ksh'] = array(
 $messages['la'] = array(
 	'player-goto-page' => 'Pagina',
 	'player-goto-file' => 'Fasciculus',
+);
+
+/** Ladino (Ladino)
+ * @author Remember the dot
+ */
+$messages['lad'] = array(
+	'player-goto-file' => 'archivo',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -156,11 +156,14 @@ $messages['ar'] = array(
 	'code-rev-comment-preview' => 'عرض مسبق',
 	'code-rev-diff' => 'فرق',
 	'code-rev-diff-link' => 'فرق',
+	'code-rev-purge-link' => 'إفراغ الكاش',
 	'code-status-new' => 'جديد',
 	'code-status-fixme' => 'أصلحني',
 	'code-status-resolved' => 'تم حلها',
 	'code-status-ok' => 'موافق',
+	'code-status-deferred' => 'مؤجل',
 	'code-rev-submit' => 'تنفيذ التغييرات',
+	'code-rev-submit-next' => 'تنفيذ والقادم غير محلول',
 	'codereview-reply-link' => 'رد',
 	'repoadmin' => 'إدارة المستودع',
 	'repoadmin-new-legend' => 'إنشاء مستودع جديد',
@@ -177,6 +180,7 @@ $messages['ar'] = array(
 	'right-codereview-remove-tag' => 'إزالة الوسوم من المراجعات',
 	'right-codereview-post-comment' => 'إضافة تعليقات على المراجعات',
 	'right-codereview-set-status' => 'تغيير حالة المراجعات',
+	'right-codereview-link-user' => 'وصل المؤلفين لمستخدمي الويكي',
 	'specialpages-group-developer' => 'أدوات المطورين',
 );
 
@@ -232,11 +236,14 @@ $messages['arz'] = array(
 	'code-rev-comment-preview' => 'عرض مسبق',
 	'code-rev-diff' => 'فرق',
 	'code-rev-diff-link' => 'فرق',
+	'code-rev-purge-link' => 'إفراغ الكاش',
 	'code-status-new' => 'جديد',
 	'code-status-fixme' => 'أصلحنى',
 	'code-status-resolved' => 'تم حلها',
 	'code-status-ok' => 'موافق',
+	'code-status-deferred' => 'مؤجل',
 	'code-rev-submit' => 'تنفيذ التغييرات',
+	'code-rev-submit-next' => 'تنفيذ والقادم غير محلول',
 	'codereview-reply-link' => 'رد',
 	'repoadmin' => 'إدارة المستودع',
 	'repoadmin-new-legend' => 'إنشاء مستودع جديد',
@@ -253,6 +260,7 @@ $messages['arz'] = array(
 	'right-codereview-remove-tag' => 'إزالة الوسوم من المراجعات',
 	'right-codereview-post-comment' => 'إضافة تعليقات على المراجعات',
 	'right-codereview-set-status' => 'تغيير حالة المراجعات',
+	'right-codereview-link-user' => 'وصل المؤلفين لمستخدمى الويكى',
 	'specialpages-group-developer' => 'أدوات المطورين',
 );
 
@@ -397,6 +405,7 @@ $messages['de'] = array(
 	'code-field-path' => 'Pfad',
 	'code-field-text' => 'Notiz',
 	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Datum:',
 	'code-rev-message' => 'Kommentar:',
 	'code-rev-repo' => 'Repositorium:',
 	'code-rev-rev' => 'Revision:',
@@ -416,10 +425,12 @@ $messages['de'] = array(
 	'code-rev-comment-preview' => 'Vorschau',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'Diff',
+	'code-rev-purge-link' => 'Cache löschen',
 	'code-status-new' => 'neu',
 	'code-status-fixme' => 'fixme',
 	'code-status-resolved' => 'erledigt',
 	'code-status-ok' => 'OK',
+	'code-status-deferred' => 'zurückgestellt',
 	'code-rev-submit' => 'Änderungen übertragen',
 	'codereview-reply-link' => 'antworten',
 	'repoadmin' => 'Repositoriums-Administration',
@@ -437,6 +448,7 @@ $messages['de'] = array(
 	'right-codereview-remove-tag' => 'Entfernen von Tags von Revisionen',
 	'right-codereview-post-comment' => 'Ergänzen von Kommentare zu Revisionen',
 	'right-codereview-set-status' => 'Ändern des Revisionsstatus',
+	'right-codereview-link-user' => 'Autoren auf Wiki-Benutzer verlinken',
 	'specialpages-group-developer' => 'Entwicklerwerkzeuge',
 );
 
@@ -545,6 +557,7 @@ $messages['fa'] = array(
  * @author Grondin
  * @author IAlex
  * @author Verdy p
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'code' => 'Vérification du code',
@@ -558,7 +571,7 @@ $messages['fr'] = array(
 	'code-author-haslink' => 'Cet auteur est lié au compte $1 de ce wiki',
 	'code-author-orphan' => 'Cet auteur n’a pas de lien avec un compte wiki',
 	'code-author-dolink' => 'Associer cet auteur à un compte wiki local :',
-	'code-author-alterlink' => 'Modififier l’utilisateur wiki lié à cet auteur :',
+	'code-author-alterlink' => 'Modifier l’utilisateur wiki lié à cet auteur :',
 	'code-author-orunlink' => 'Enlever le lien de cet utilisateur wiki :',
 	'code-author-name' => "Entrez un nom d'utilisateur :",
 	'code-author-success' => 'L’auteur $1 a été lié à l’utilisateur wiki $2',
@@ -575,6 +588,7 @@ $messages['fr'] = array(
 	'code-field-path' => 'Chemin',
 	'code-field-text' => 'Note',
 	'code-rev-author' => 'Auteur :',
+	'code-rev-date' => 'Date :',
 	'code-rev-message' => 'Commentaire :',
 	'code-rev-repo' => 'Dépôt :',
 	'code-rev-rev' => 'Révision :',
@@ -594,11 +608,14 @@ $messages['fr'] = array(
 	'code-rev-comment-preview' => 'Prévisualisation',
 	'code-rev-diff' => 'Différence',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-purge-link' => 'purger',
 	'code-status-new' => 'nouveau',
 	'code-status-fixme' => 'a réparer',
 	'code-status-resolved' => 'résolu',
 	'code-status-ok' => 'ok',
+	'code-status-deferred' => 'déféré',
 	'code-rev-submit' => 'Publier les modifications :',
+	'code-rev-submit-next' => 'Sauver & prochaine non résolue',
 	'codereview-reply-link' => 'répondre',
 	'repoadmin' => 'Administration des dépôts',
 	'repoadmin-new-legend' => 'Créer un nouveau dépôt',
@@ -615,6 +632,7 @@ $messages['fr'] = array(
 	'right-codereview-remove-tag' => 'Enlever de attributs aux révision',
 	'right-codereview-post-comment' => 'Ajouter un commentaire aux révisions',
 	'right-codereview-set-status' => 'Changer le statut des revisions',
+	'right-codereview-link-user' => 'Lie les auteurs aux utilisateurs wiki',
 	'specialpages-group-developer' => 'Outils du développeur',
 );
 
@@ -669,10 +687,12 @@ $messages['gl'] = array(
 	'code-rev-comment-preview' => 'Vista previa',
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
+	'code-rev-purge-link' => 'purgar',
 	'code-status-new' => 'novo',
 	'code-status-fixme' => 'arránxame',
 	'code-status-resolved' => 'resolto',
 	'code-status-ok' => 'de acordo',
+	'code-status-deferred' => 'diferido',
 	'code-rev-submit' => 'Facer os cambios',
 	'codereview-reply-link' => 'resposta',
 	'repoadmin' => 'Administración do repositorio',
@@ -795,6 +815,7 @@ $messages['ia'] = array(
 	'code-rev-comment-preview' => 'Previsualisation',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-purge-link' => 'purgar',
 	'code-status-new' => 'nove',
 	'code-status-fixme' => 'a reparar',
 	'code-status-resolved' => 'resolvite',
@@ -861,6 +882,17 @@ $messages['it'] = array(
 	'repoadmin-edit-button' => 'OK',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'code-field-author' => 'អ្នកនិពន្ធ',
+	'code-rev-date' => 'កាលបរិច្ឆេទ៖',
+	'code-status-new' => 'ថ្មី',
+	'repoadmin-new-button' => 'បង្កើត',
+	'repoadmin-edit-button' => 'យល់ព្រម',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -878,10 +910,14 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'code' => 'Code nokucken',
 	'code-comments' => 'Bemierkungen',
 	'code-authors' => 'Auteuren',
+	'code-tags' => 'Tagen',
+	'code-author-haslink' => 'Dësen Auteur ass mam Wiki-Benotzer $1 verbonn',
 	'code-author-dolink' => 'Dësen Auteur mat engem Wiki-Benotzer verbannen:',
 	'code-author-name' => 'Gitt e Benotzernmm an:',
+	'code-author-link' => 'verlinken?',
 	'code-field-id' => 'Revisioun',
 	'code-field-author' => 'Auteur',
 	'code-field-user' => 'Commentateur',
@@ -899,14 +935,18 @@ $messages['lb'] = array(
 	'code-rev-modified-m' => 'geännert',
 	'code-rev-status' => 'Status:',
 	'code-rev-status-set' => 'Status änneren',
+	'code-rev-tags' => 'Tagen:',
 	'code-rev-comment-by' => 'Bemierkung vum $1',
 	'code-rev-comment-preview' => 'Kucken ouni ze späicheren',
+	'code-rev-purge-link' => 'botzen (vum Cache)',
 	'code-status-new' => 'nei',
 	'code-status-resolved' => 'geléist',
 	'code-status-ok' => 'ok',
 	'codereview-reply-link' => 'äntwerten',
 	'repoadmin-new-button' => 'Uleeën',
 	'repoadmin-edit-button' => 'OK',
+	'right-codereview-link-user' => 'Auteure mat Wiki-Benotzer verbannen (verlinken)',
+	'specialpages-group-developer' => 'Handwierksgeschir fir Entwéckler (Programméierer)',
 );
 
 /** Dutch (Nederlands)
@@ -962,11 +1002,14 @@ $messages['nl'] = array(
 	'code-rev-comment-preview' => 'Nakijken',
 	'code-rev-diff' => 'Verschil',
 	'code-rev-diff-link' => 'verschil',
+	'code-rev-purge-link' => 'verversen',
 	'code-status-new' => 'nieuw',
 	'code-status-fixme' => 'fixme',
 	'code-status-resolved' => 'opgelost',
 	'code-status-ok' => 'ok',
-	'code-rev-submit' => 'Wijzigingen committen',
+	'code-status-deferred' => 'aangehouden',
+	'code-rev-submit' => 'Opmerking opslaan',
+	'code-rev-submit-next' => 'Opslaan en volgende ongecontroleerde',
 	'codereview-reply-link' => 'antwoorden',
 	'repoadmin' => 'Repositorybeheer',
 	'repoadmin-new-legend' => 'Nieuwe repository instellen',
@@ -983,6 +1026,7 @@ $messages['nl'] = array(
 	'right-codereview-remove-tag' => 'Labels verwijderen van versies',
 	'right-codereview-post-comment' => 'Opmerkingen toevoegen aan versies',
 	'right-codereview-set-status' => 'Versiestatus wijzigen',
+	'right-codereview-link-user' => 'Auteurs aan wikigebruikers koppelen',
 	'specialpages-group-developer' => 'Hulpmiddelen voor ontwikkelaars',
 );
 
@@ -1038,10 +1082,12 @@ $messages['oc'] = array(
 	'code-rev-comment-preview' => 'Previsualizacion',
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
+	'code-rev-purge-link' => 'purgar',
 	'code-status-new' => 'novèl',
 	'code-status-fixme' => 'de reparar',
 	'code-status-resolved' => 'resolgut',
 	'code-status-ok' => "d'acòrdi",
+	'code-status-deferred' => 'deferit',
 	'code-rev-submit' => 'Publicar las modificacions :',
 	'codereview-reply-link' => 'respondre',
 	'repoadmin' => 'Administracion dels depausses',
@@ -1059,6 +1105,7 @@ $messages['oc'] = array(
 	'right-codereview-remove-tag' => "Levar d'atributs a las revisions",
 	'right-codereview-post-comment' => 'Apondre un comentari a las revisions',
 	'right-codereview-set-status' => "Cambiar l'estatut de las revisions",
+	'right-codereview-link-user' => 'Liga los autors als utilizaires wiki',
 	'specialpages-group-developer' => 'Espleches del desvolopaire',
 );
 
@@ -1095,6 +1142,7 @@ $messages['ru'] = array(
 	'code-field-path' => 'Путь',
 	'code-field-text' => 'Замечание',
 	'code-rev-author' => 'Автор:',
+	'code-rev-date' => 'Дата:',
 	'code-rev-message' => 'Описание изменений:',
 	'code-rev-repo' => 'Хранилище:',
 	'code-rev-rev' => 'Редакция:',
@@ -1114,10 +1162,12 @@ $messages['ru'] = array(
 	'code-rev-comment-preview' => 'Предпросмотр',
 	'code-rev-diff' => 'Изменение',
 	'code-rev-diff-link' => 'изм.',
+	'code-rev-purge-link' => 'очистить кэш',
 	'code-status-new' => 'новое',
 	'code-status-fixme' => 'проверить',
 	'code-status-resolved' => 'решено',
 	'code-status-ok' => 'готово',
+	'code-status-deferred' => 'отложено',
 	'code-rev-submit' => 'Сохранить изменения',
 	'codereview-reply-link' => 'ответить',
 	'repoadmin' => 'Управление хранилищем программного кода',
@@ -1135,6 +1185,7 @@ $messages['ru'] = array(
 	'right-codereview-remove-tag' => 'Удаление меток из редакций',
 	'right-codereview-post-comment' => 'Добавление комментариев к редакциям',
 	'right-codereview-set-status' => 'Изменение статуса редакций',
+	'right-codereview-link-user' => 'Связь авторов с учётными записями вики-проекта',
 	'specialpages-group-developer' => 'Инструменты разработчика',
 );
 
@@ -1163,7 +1214,7 @@ $messages['sk'] = array(
 	'code-field-id' => 'Revízia',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Komentoval',
-	'code-field-message' => 'Zhrnutie komentára',
+	'code-field-message' => 'Zhrnutie commitu',
 	'code-field-status' => 'Stav',
 	'code-field-timestamp' => 'Dátum',
 	'code-field-comments' => 'Poznámky',
@@ -1190,11 +1241,14 @@ $messages['sk'] = array(
 	'code-rev-comment-preview' => 'Náhľad',
 	'code-rev-diff' => 'Rozdiel',
 	'code-rev-diff-link' => 'rozdiel',
+	'code-rev-purge-link' => 'vyčistiť',
 	'code-status-new' => 'nový',
 	'code-status-fixme' => 'fixme',
 	'code-status-resolved' => 'vyriešené',
 	'code-status-ok' => 'ok',
+	'code-status-deferred' => 'oddialené',
 	'code-rev-submit' => 'Commit zmien',
+	'code-rev-submit-next' => 'Commit & ďalší nevyriešený',
 	'codereview-reply-link' => 'odpovedať',
 	'repoadmin' => 'Správa úložiska',
 	'repoadmin-new-legend' => 'Vytvoriť nové úložisko',
@@ -1211,6 +1265,7 @@ $messages['sk'] = array(
 	'right-codereview-remove-tag' => 'Odstrániť značky z revízií',
 	'right-codereview-post-comment' => 'Pridať revíziám komentáre',
 	'right-codereview-set-status' => 'Zmeniť stav revízií',
+	'right-codereview-link-user' => 'Zviazať autorov s používateľmi wiki',
 	'specialpages-group-developer' => 'Nástroje vývojárov',
 );
 
@@ -1299,7 +1354,7 @@ $messages['vi'] = array(
 	'code-no-repo' => 'Chưa thiết lập kho dữ liệu!',
 	'code-field-id' => 'Phiên bản',
 	'code-field-author' => 'Tác giả',
-	'code-field-message' => 'Ghi chú',
+	'code-field-message' => 'Đăng tóm lược',
 	'code-field-status' => 'Trạng thái',
 	'code-field-timestamp' => 'Lúc giờ',
 	'code-rev-author' => 'Tác giả:',
