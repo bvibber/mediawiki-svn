@@ -12,7 +12,7 @@ CodeReview.loadDiff = function(repo, rev) {
 			injectSpinner(CodeReview.diffTarget(), 'codereview-diff');
 			xmlhttp.open("GET", path, true);
 			xmlhttp.onreadystatechange=function(){
-				if (xmlhttp.readyState==4 && typeof os_updateIfRelevant == 'function') {	        		
+				if (xmlhttp.readyState==4) {	        		
 					CodeReview.decodeAndShowDiff(xmlhttp.responseText);
 					removeSpinner('codereview-diff');
 				}
