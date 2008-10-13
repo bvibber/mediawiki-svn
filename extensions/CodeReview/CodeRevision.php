@@ -125,7 +125,6 @@ class CodeRevision {
 					'cr_author' => $this->mAuthor,
 					'cr_timestamp' => $dbw->timestamp( $this->mTimestamp ),
 					'cr_message' => $this->mMessage,
-					'cr_status' => $this->mStatus,
 					'cr_path' => $this->mCommonPath ), 
 				array(
 					'cr_repo_id' => $this->mRepo,
