@@ -263,6 +263,8 @@ $extensions = array(
 			'wgCentralAuthAutoLoginWikis' => 'array',
 			'wgCentralAuthLoginIcon' => 'text',
 			'wgCentralAuthCreateOnView' => 'bool',
+			'wgCentralAuthUDPAddress' => 'text',
+			'wgCentralAuthNew2UDPPrefix' => 'text',
 		),
 		'array' => array(
 			'wgCentralAuthAutoLoginWikis' => 'simple',
