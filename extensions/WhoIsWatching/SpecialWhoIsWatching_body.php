@@ -37,7 +37,7 @@ class WhoIsWatching extends SpecialPage
 
 		$title = $wgRequest->getVal('page');
 		if (!isset($title)) {
-			$wgOut->addWikiText(wfMsg('specialwhoiswatchingusage'));
+			$wgOut->addWikiMsg( 'specialwhoiswatchingusage' );
 			return;
 		}
 
