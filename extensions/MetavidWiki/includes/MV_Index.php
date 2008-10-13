@@ -619,14 +619,16 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 	                	$propTitle = Title::newFromText( $propKey, SMW_NS_PROPERTY );
 		                $smwProps = $smwStore->getPropertyValues( $rowTitle, $propTitle );
 						// just a temp hack .. we need to think about this abstraction a bit..
-						if($propKey=='speech_by' || $propKey=='spoken_by'){
-							$v = current( $smwProps );
-							$row->spoken_by = $v->getXSDValue();
-						}else if($propKey=='bill'){
-							$row->bills=array();
-							foreach($smwProps as $v){				
-								$row->bills[$v->getXSDValue()] = true;
-							}							
+						if(count($smwProps)!=0){
+							if($propKey=='speech_by' || $propKey=='spoken_by'){
+								$v = current( $smwProps );
+								$row->spoken_by = $v->getXSDValue();
+							}else if($propKey=='bill'){
+								$row->bills=array();
+								foreach($smwProps as $v){				
+									$row->bills[$v->getXSDValue()] = true;
+								}							
+							}
 						}
                 	}
                 }                			                 
