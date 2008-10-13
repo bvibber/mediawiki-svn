@@ -130,15 +130,16 @@ function mvSeqTag( &$input, &$argv, &$parser ) {
   * updates the time stamps when an article is moved
   */
  function mvMoveHook( &$old_title, &$new_title, &$user, $pageid, $redirid ) {
- 	global $mvgIP;
+ 	global $mvgIP,$wgOut;
  	// die;
  	// confirm we are in the mvd Namespace & update the wiki_title
  	if ( $old_title->getNamespace() == MV_NS_MVD ) {
  		MV_Index::update_index_title( $old_title->getDBkey() , $new_title->getDBkey() );
  		//remove the old MVD having lots of redirects around is not fun
  		$oldArticle = new Article($old_title);
- 		$oldArticle->doDelete( wfMsg('mv_move_delete_msg'), false );
- 		
+ 		$oldArticle->doDelete( wfMsg('mv_move_delete_msg'), false ); 		
+ 		//clear output  @@todo (should really check for errors and integrate info into move) 
+ 		$wgOut->clearHTML();
  	}
  	
 	return true;// always return true, in order not to stop MW's hook processing!

@@ -188,6 +188,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		}
 		// slow epecialy for lots of query results but join Query is crazy complicated for SMW >= 1.2 
 		// (and I have not been able to construct it without hitting exessive number of rows in the EXPLIN) 
+		// @@todo these queries should be merged with semantic wiki Ask with some ~special~ keywords for fulltext search
 		if ( $do_smw_lookup ) {
 			$smwStore =& smwfGetStore();
 			foreach ( $ret_ary as & $row ) {
@@ -292,7 +293,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		 $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvMediaSearchResultsLimit;
 
 		global $mvSpokenByInSearchResult, $mvCategoryInSearchResult, $mvBillInSearchResult;
-
+		
+		
 		// init vars
 		$from_tables = '';
 		$vars =	$conds = $options = array();
@@ -414,7 +416,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					$valid_filter_count++;
 				break;
 				case 'smw_property':
-					// more complicated query work needed
+					//@@todo merge doUnifiedFiltersQuery function with SMW Ask more complicated query work needed
 				break;
 			}
 		}
@@ -429,8 +431,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			'start_time, end_time, view_count, wiki_title,' .
 			$dbr->tableName( 'searchindex' ) . '.si_text AS `text` ';
 
-		if ( $mvSpokenByInSearchResult )
-			$vars .= ', smw_relations.object_title as spoken_by ';
+		/*if ( $mvSpokenByInSearchResult )
+			$vars .= ', smw_relations.object_title as spoken_by ';*/
 
 		$from_tables .= $dbr->tableName( 'mv_mvd_index' ) . ' ';
 		$from_tables .= 'JOIN ' . $dbr->tableName( 'searchindex' ) .
@@ -459,16 +461,16 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		// date range join:
 
 		// include spoken by relation in results (LEFT JOIN should not be *that* costly )
-		if ( $mvSpokenByInSearchResult ) {
-			/*$sql.="LEFT JOIN `smw_relations` ON (`mv_mvd_index`.`mv_page_id`=`smw_relations`.`subject_id` " .
-				"AND `smw_relations`.`relation_title`='Spoken_By') ";*/
+		/*if ( $mvSpokenByInSearchResult ) {
+			//$sql.="LEFT JOIN `smw_relations` ON (`mv_mvd_index`.`mv_page_id`=`smw_relations`.`subject_id` " .
+			//	"AND `smw_relations`.`relation_title`='Spoken_By') ";
 			$from_tables .= 'LEFT JOIN ' . $dbr->tableName( 'smw_relations' ) .
 				' ON ' .
 				'( ' . $dbr->tableName( 'mv_mvd_index' ) . '.mv_page_id = ' .
 					$dbr->tableName( 'smw_relations' ) . '.subject_id ' .
 					' AND ' . $dbr->tableName( 'smw_relations' ) . '.relation_title = \'Spoken_By\'' .
 				 ') ';
-		}
+		}*/
 		
 		// add conditions to last condition element (cuz we have to manually mannage and or):
 
@@ -558,6 +560,85 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				MV_Index::insert_merge_range( $stream_groups[$row->stream_id], $stream_groups, $row );
 			}
 		}
+		
+		if( $mvCategoryInSearchResult){
+			$or='';
+			$conds='';
+			$options=array();
+			//build the category query conditions: 
+			foreach($ret_ary as $row){
+				if ( !isset( $ret_ary[$row->id]->category ) )
+					$ret_ary[$row->id]->categories = array();
+				
+				$conds .= $or . ' cl_from =' . $dbr->addQuotes( $row->id );
+				$or = ' OR ';				
+			}
+			//do the lookup:
+			$from_tables = $dbr->tableName( 'categorylinks' );
+			$from_tables .= ' LEFT JOIN ' . $dbr->tableName( 'mv_mvd_index' ) .
+						  	' ON ( ' .
+								 $dbr->tableName( 'categorylinks' ) . '.cl_from = ' .
+								 $dbr->tableName( 'mv_mvd_index' ) . '.mv_page_id' .
+							' ) ';
+						
+			$vars = array( 'cl_from', 'cl_to' );				
+			$options['LIMIT'] = 2000; // max avarage 5 categories per page
+
+			$result_cat = $dbr->select( $from_tables,
+				$vars,
+				$conds,
+				__METHOD__,
+				$options );
+			while ( $cat_row = $dbr->fetchObject( $result_cat ) ) {
+				$ret_ary[$cat_row->cl_from]->categories[$cat_row->cl_to] = true;
+			}
+		}
+		
+		if($mvSpokenByInSearchResult || $mvBillInSearchResult){		
+		// slow epecialy for lots of query results but join Query is crazy complicated for SMW >= 1.2 
+		// (and I have not been able to construct it without hitting exessive number of rows in the EXPLIN) 
+		// @@todo these queries should be merged with semantic wiki Ask with some ~special~ keywords for fulltext search					
+			$smwStore =& smwfGetStore();
+			foreach ( $ret_ary as & $row ) {
+				//@@todo this is all very hackish but this is because SMW changed the db schema causing a few hacks:
+				// obviously this should be rewritten to use some SMW based query system. 
+				$smw_properties=array();
+				if($mvSpokenByInSearchResult && strtolower(substr($row->wiki_title,0,2))=='ht')
+					$smw_properties[]='spoken_by';
+					
+				if($mvSpokenByInSearchResult && strtolower(substr($row->wiki_title,0,4))=='anno')
+					$smw_properties[]='speech_by';
+				
+				if($mvBillInSearchResult)
+					$smw_properties[]='bill';				
+				
+				
+                $rowTitle = Title::newFromText( $row->wiki_title, MV_NS_MVD );
+                foreach ( $smw_properties as $propKey ) {
+                	if ( $propKey != 'category' ) {	              
+	                	$propTitle = Title::newFromText( $propKey, SMW_NS_PROPERTY );
+		                $smwProps = $smwStore->getPropertyValues( $rowTitle, $propTitle );
+						// just a temp hack .. we need to think about this abstraction a bit..
+						if($propKey=='speech_by' || $propKey=='spoken_by'){
+							$v = current( $smwProps );
+							$row->spoken_by = $v->getXSDValue();
+						}else if($propKey=='bill'){
+							$row->bills=array();
+							foreach($smwProps as $v){				
+								$row->bills[$v->getXSDValue()] = true;
+							}							
+						}
+                	}
+                }                			                 
+			}
+		}
+		
+		//print_r($ret_ary);
+		//die;
+		
+		
+		
+		
 		// print "<pre>";
 		// print_r($ret_ary);
 		// die;
@@ -571,7 +652,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 		}*/
 		// do category & bill lookup for search result ranges
-		if ( $mvCategoryInSearchResult || $mvBillInSearchResult ) {
+		/*if ( $mvCategoryInSearchResult || $mvBillInSearchResult ) {
 			$from_tables = $conds = '';
 			$vars = $options = array();
 
@@ -641,7 +722,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 			// print "AFTER MERGE: ";
 			// print_r($ret_ary);
-		}
+		}*/
 		// print "<pre>";
 		// print_r($ret_ary);
 		// die;
