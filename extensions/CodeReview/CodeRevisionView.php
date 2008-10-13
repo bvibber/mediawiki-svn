@@ -225,8 +225,27 @@ class CodeRevisionView extends CodeView {
 	}
 
 	function formatDiff() {
-		$diff = $this->mRepo->getDiff( $this->mRev->getId(), $this->mSkipCache ? 'skipcache' : 'cached' );
-		if( !$diff ) {
+		global $wgEnableAPI;
+		
+		// Asynchronous diff loads will require the API
+		// And JS in the client, but tough shit eh? ;)
+		$deferDiffs = $wgEnableAPI;
+		
+		if( $this->mSkipCache ) {
+			// We're purging the cache on purpose, probably
+			// because the cached data was corrupt.
+			$cache = 'skipcache';
+		} elseif( $deferDiffs ) {
+			// If data is already cached, we'll take it now;
+			// otherwise defer the load to an AJAX request.
+			// This lets the page be manipulable even if the
+			// SVN connection is slow or uncooperative.
+			$cache = 'cached';
+		} else {
+			$cache = '';
+		}
+		$diff = $this->mRepo->getDiff( $this->mRev->getId(), $cache );
+		if( !$diff && $deferDiffs ) {
 			// We'll try loading it by AJAX...
 			return $this->stubDiffLoader();
 		}
