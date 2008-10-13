@@ -30,14 +30,21 @@ class ApiCodeUpdate extends ApiBase {
 		$log = $svn->getLog( '', $lastStoredRev + 1, $endRev );
 		if( !$log ) {
 			throw new MWException( "Something awry..." );
-		}
+		}		
 		
+		$result = array();
 		foreach( $log as $data ) {
+			$r = array();
 			$codeRev = CodeRevision::newFromSvn( $repo, $data );
 			$codeRev->save();
-			// would be nice to output something but the api code is weird
-			// and i don't feel like figuring it out right now :)
+			$r['id'] = $codeRev->getId();
+			$r['author'] = $codeRev->getAuthor();
+			$r['timestamp'] = $codeRev->getTimestamp();
+			$r['message'] = $codeRev->getMessage();
+			$result[] = $r;
 		}
+		$this->getResult()->setIndexedTagName($result, 'rev');
+		$this->getResult()->addValue(null, $this->getModuleName(), $result);
 	}
 	
 	public function mustBePosted() {
