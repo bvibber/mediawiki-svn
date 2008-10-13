@@ -51,7 +51,16 @@ class CodeRevisionView extends CodeView {
 		);
 		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$this->mRev->getId() );
 
-		$html = $this->formatMetaData( $fields );
+		$html = Xml::openElement( 'form', array( 'action' => $special->getLocalUrl(), 'method' => 'post' ) );
+		$html .= '<div>' .
+			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
+			' ' .
+			Xml::submitButton( wfMsg( 'code-rev-submit-next' ), array( 'name' => 'wpSaveAndNext' ) ) .
+			' ' .
+			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
+			'</div>';
+		
+		$html .= $this->formatMetaData( $fields );
 
 		if( $this->mRev->isDiffable() ) {
 			$diffHtml = $this->formatDiff();
@@ -61,8 +70,10 @@ class CodeRevisionView extends CodeView {
 					wfMsg('code-rev-purge-link'), 'action=purge' ) . ']</small></h2>' .
 				"<div class='mw-codereview-diff' id='mw-codereview-diff'>" . $diffHtml . "</div>\n";
 		}
-
-		$html .= $this->formatComments();
+		$comments = $this->formatComments();
+		if( $comments ) {
+			$html .= "<h2 id='code-comments'>". wfMsgHtml( 'code-comments' ) ."</h2>\n" . $comments;
+		}
 		
 		if( $this->mReplyTarget ) {
 			global $wgJsMimeType;
@@ -71,11 +82,14 @@ class CodeRevisionView extends CodeView {
 				"document.getElementById('wpReplyTo$id').focus();" .
 				"});</script>\n";
 		}
-		
-		if ($wgUser->isAllowed( 'codereview-post-comment' ) ) {
-			$html = Xml::tags( 'form', array( 'action' => $special->getLocalUrl(), 'method' => 'post' ),
-								$this->submitButtons() . $html . $this->submitButtons() );
-		}
+		$html .= '<div>' .
+			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
+			' ' .
+			Xml::submitButton( wfMsg( 'code-rev-submit-next' ), array( 'name' => 'wpSaveAndNext' ) ) .
+			' ' .
+			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
+			'</div>' . 
+			'</form>';
 
 		$wgOut->addHtml( $html );
 	}
@@ -254,19 +268,13 @@ class CodeRevisionView extends CodeView {
 	}
 
 	function formatComments() {
-		$comments = implode( "\n",
-						array_map(
-							array( $this, 'formatCommentInline' ),
-							$this->mRev->getComments() 
-						) ) .
-					$this->postCommentForm();
-
-		if( $comments ) {
-			//Can be empty if : no comments && no postCommentForm
-			$comments = "<h2 id='code-comments'>". wfMsgHtml( 'code-comments' ) ."</h2>\n" . 
-					Xml::tags( 'div', array( 'class' => 'mw-codereview-comments' ), $comments ) . "\n";
-		}
-		return $comments;
+		return "<div class='mw-codereview-comments'>" .
+			implode( "\n",
+				array_map(
+					array( $this, 'formatCommentInline' ),
+					$this->mRev->getComments() ) ) .
+			$this->postCommentForm() .
+			"</div>";
 	}
 
 	function formatCommentInline( $comment ) {
@@ -350,11 +358,6 @@ class CodeRevisionView extends CodeView {
 	
 	function postCommentForm( $parent=null ) {
 		global $wgUser;
-
-		if( !$wgUser->isAllowed('codereview-post-comment') ) {
-			return '';
-		}
-
 		if( $this->mPreviewText != false && $parent === $this->mReplyTarget ) {
 			$preview = $this->previewComment( $this->mPreviewText );
 			$text = htmlspecialchars( $this->mPreviewText );
@@ -364,6 +367,9 @@ class CodeRevisionView extends CodeView {
 		}
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
+		if( !$wgUser->isAllowed('codereview-post-comment') ) {
+			return '';
+		}
 		return '<div class="mw-codereview-post-comment">' .
 			$preview .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
@@ -378,16 +384,5 @@ class CodeRevisionView extends CodeView {
 			'</textarea>' .
 			'</div>' .
 			'</div>';
-	}
-
-	function submitButtons() {
-		 return 
-			'<div>' .
-			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
-			' ' .
-			Xml::submitButton( wfMsg( 'code-rev-submit-next' ), array( 'name' => 'wpSaveAndNext' ) ) .
-			' ' .
-			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
-			"</div>\n";
 	}
 }
