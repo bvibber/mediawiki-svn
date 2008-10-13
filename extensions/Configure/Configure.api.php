@@ -13,13 +13,13 @@ class ApiConfigure extends ApiBase {
 		$result = $this->getResult();
 		
 		if( !$wgConf instanceof WebConfiguration ){
-			$this->dieusage( 'You need to call efConfigureSetup() to use this module', 'noconf' );	
+			$this->dieUsage( 'You need to call efConfigureSetup() to use this module', 'noconf' );	
 		}
 
 		// Version list
 		if( in_array( 'versionlist', $params['prop'] ) ) {
 			if( !$wgUser->isAllowed( 'viewconfig' ) )
-				$this->dieusage( 'viewconfig right required', 'noright' );
+				$this->dieUsage( 'viewconfig right required', 'noright' );
 			$versions = $wgConf->listArchiveFiles();
 			if( $wgUser->isAllowed( 'viewconfig-interwiki' ) ) {
 				$oldVersions = $versions;
@@ -39,7 +39,7 @@ class ApiConfigure extends ApiBase {
 		// Wiki list
 		if( in_array( 'wikilist', $params['prop'] ) ) {
 			if( !$wgUser->isAllowed( 'viewconfig-interwiki' ) && !$wgUser->isAllowed( 'configure-interwiki' ) && !$wgUser->isAllowed( 'extensions-interwiki' ) )
-				$this->dieusage( 'viewconfig-interwiki, configure-interwiki or extensions-interwiki right required', 'noright' );
+				$this->dieUsage( 'viewconfig-interwiki, configure-interwiki or extensions-interwiki right required', 'noright' );
 			global $wgConfigureWikis;
 			if( $wgConfigureWikis === false )
 				$result->addValue( 'configure', 'wikis', array( 'denied' => '' ) );
@@ -55,14 +55,14 @@ class ApiConfigure extends ApiBase {
 		// Settings
 		if( in_array( 'settings', $params['prop'] ) ) {
 			if( !$wgUser->isAllowed( 'viewconfig' ) )
-				$this->dieusage( 'viewconfig right required', 'noright' );
+				$this->dieUsage( 'viewconfig right required', 'noright' );
 			$version = $params['version'];
 			$wiki = $params['wiki'] ? $params['wiki'] : $wgConf->getWiki();
 			$settingsValues = $wgConf->getOldSettings( $version );
 			if( !is_array( $settingsValues ) )
-				$this->dieusage( 'version not found', 'noversion' );
+				$this->dieUsage( 'version not found', 'noversion' );
 			if( !isset( $settingsValues[$wiki] ) || !is_array( $settingsValues[$wiki] ) )
-				$this->dieusage( 'wiki not found in version', 'nowiki' );
+				$this->dieUsage( 'wiki not found in version', 'nowiki' );
 			$settingsValues = $settingsValues[$wiki];
 			$conf = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH );
 			$notEditable = $conf->getNotEditableSettings();
@@ -100,7 +100,7 @@ class ApiConfigure extends ApiBase {
 		// Extensions
 		if( in_array( 'extensions', $params['prop'] ) ) {
 			if( !$wgUser->isAllowed( 'extensions' ) )
-				$this->dieusage( 'extensions right required', 'noright' );
+				$this->dieUsage( 'extensions right required', 'noright' );
 			$conf = ConfigurationSettings::singleton( CONF_SETTINGS_EXT );
 			$ret = array();
 			foreach( $conf->getAllExtensionsObjects() as $ext ){
