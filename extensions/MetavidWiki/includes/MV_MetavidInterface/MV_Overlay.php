@@ -593,7 +593,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 				if ( $mvMetaCategoryHelper ) {
 					// list each category with a little - next to it that removes its respective hidden field.
 					$i = 0;
-					$o .= '<tr><td>' . wfMsg( 'mv_existing_categories' ) . '</td><td>';
+					$o .= '<tr><td>' . wfMsgExt( 'mv_existing_categories', array( 'parsemag', 'escapenoentities' ), count( $metaData['categories'] ) ) . '</td><td>';
 					$o .= '<div id="mv_ext_cat_container_' . htmlspecialchars( $mvd_id ) . '"></div>';
 					foreach ( $metaData['categories'] as $cat => $page ) {
 						$catTitle = Title::newFromText( $cat, NS_CATEGORY );
