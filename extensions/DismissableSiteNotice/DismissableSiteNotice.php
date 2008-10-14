@@ -38,7 +38,7 @@ EOT;
 
 	$notice = <<<EOT
 <script type="text/javascript" language="JavaScript">
-<!--
+/* <![CDATA[ */
 var cookieName = "dismissSiteNotice=";
 var cookiePos = document.cookie.indexOf(cookieName);
 var siteNoticeID = "$id";
@@ -66,7 +66,7 @@ if (cookieValue != siteNoticeID) {
 	document.writeln('<table width="100%" id="mw-dismissable-notice"><tr><td width="80%">'+siteNoticeValue+'</td>');
 	document.writeln('<td width="20%" align="right">[<a href="javascript:dismissNotice();">'+msgClose+'</a>]</td></tr></table>');
 }
--->
+/* ]]> */
 </script>
 EOT;
 	// Compact the string a bit
