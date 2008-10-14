@@ -482,6 +482,7 @@ $settings = array(
 			'wgGenerateThumbnailOnParse' => 'bool',
 			'wgIgnoreImageErrors' => 'bool',
 			'wgImageLimits' => 'array',
+			'wgMaxAnimatedGifArea' => 'int',
 			'wgMaxImageArea' => 'int',
 			'wgMediaHandlers' => 'array',
 			'wgThumbnailScriptPath' => 'text',
@@ -1183,6 +1184,7 @@ $settingsVersion = array(
 	'wgFixDoubleRedirects' => array( array( '1.14alpha', '>=' ) ),
 	'wgUniversalEditButton' => array( array( '1.14alpha', '>=' ) ),
 	'wgEdititis' => array( array( '1.14alpha', '>=' ) ),
+	'wgMaxAnimatedGifArea' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
