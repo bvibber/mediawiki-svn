@@ -1,3 +1,9 @@
+wikimedia-task-scaler (1.1) hardy; urgency=low
+
+  * Add LVS VIP on postinst
+
+ -- Tim Starling <tstarling@wikimedia.org>  Tue, 14 Oct 2008 11:40:12 +1100
+
 wikimedia-task-scaler (1.0) unstable; urgency=low
 
   * Initial Release. Moved scaling-related dependencies from

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+SCALER_SERVICE_IP=10.0.5.17
+
+set -e 
+
+case "$1" in
+	configure)
+		if ! grep -qF $SCALER_SERVICE_IP /etc/default/wikimedia-lvs-realserver
+		then
+			echo "
+### START: Added by wikimedia-task-scaler
+LVS_SERVICE_IPS=\"$SCALER_SERVICE_IP \$LVS_SERVICE_IPS\"
+### END: Added by wikimedia-task-scaler
+" >> /etc/default/wikimedia-lvs-realserver
+		fi
+
+		IFACE=lo /etc/network/if-up.d/wikimedia-lvs-realserver
+		;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+
+    	;;
+
+	*)
+		echo "postinst called with unknown argument \`$1'" >&2
+		exit 1
+		;;
