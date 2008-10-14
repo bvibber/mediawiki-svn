@@ -4,7 +4,7 @@
 /// This guy gets loaded from every page on every wiki, and is heavily cached.
 /// Its contents are small, and just load up another cached JS page, but this
 /// allows us to update everything with a single purge. Nice, eh?
-$wgNoticeLoader = 'http://smorgasbord.local/trunk/index.php/Special:NoticeLoader';
+$wgNoticeLoader = 'http://tomasz.ods.org/mediawiki-1.13.0/index.php/Special:NoticeLoader';
 
 /// Override these per-wiki to pass on via the loader to the text system
 /// for localization by language and project.
@@ -17,7 +17,7 @@ $wgNoticeProject = 'wikipedia';
 /// Enable the notice-hosting infrastructure on this wiki...
 /// Leave at false for wikis that only use a sister site for the control.
 /// All remaining options apply only to the infrastructure wiki.
-$wgNoticeInfrastructure = false;
+$wgNoticeInfrastructure = true;
 
 /// Enable the loader itself
 /// Allows to control the loader visibility, without destroying infrastructure
@@ -27,7 +27,7 @@ $wgCentralNoticeLoader = true;
 /// URL prefix to the raw-text loader special.
 /// Project/language and timestamp epoch keys get appended to this
 /// via the loader stub.
-$wgNoticeText = 'http://smorgasbord.local/trunk/index.php/Special:NoticeText';
+$wgNoticeText = 'http://tomasz.ods.org/mediawiki-1.13.0/index.php/Special:NoticeText';
 
 /// If true, notice only displays if 'sitenotice=yes' is in the query string
 $wgNoticeTestMode = false;
@@ -66,10 +66,30 @@ $wgExtensionCredits['other'][] = array(
 	'description'    => 'Adds a central sitenotice',
 	'descriptionmsg' => 'centralnotice-desc',
 );
+
 $wgExtensionMessagesFiles['CentralNotice'] = dirname(__FILE__) . '/CentralNotice.i18n.php';
 
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['CentralNotice'] = dirname(__FILE__) . '/CentralNotice_body.php';
+
+$wgAvailableRights[] = 'centralnotice_admin_rights';
+$wgGroupPermissions['sysop']['centralnotice_admin_rights'] = true; // Only sysops can make change
+	
+$wgSpecialPages['CentralNotice'] = 'CentralNotice';
+$wgSpecialPageGroups['CentralNotice'] = 'wiki'; // Wiki data and tools"
+
+function selectNotice($centralnotice_table) {
+	$dbr = wfGetDB( DB_SLAVE );
+	$current_date = date( 'o-m-d' );
+	$res = $dbr->select( $centralnotice_table, "notice_name", array ( "notice_start_date <= '$current_date'", "notice_end_date >= '$current_date'", "notice_enabled = 'Y'" )); 
+	$row = $dbr->fetchObject( $res );
+	return $row->notice_name;
+}
+
 function efCentralNoticeSetup() {
-	global $wgHooks, $wgNoticeInfrastructure;
+	$centralnotice_table = "central_notice_campaign";
+	$notice = selectNotice($centralnotice_table);
+ 	global $wgHooks, $wgNoticeInfrastructure;
 	global $wgAutoloadClasses, $wgSpecialPages;
 
 	global $wgCentralNoticeLoader;
@@ -80,43 +100,50 @@ function efCentralNoticeSetup() {
 	
 	$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeLocalSaveHook';
 	$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeLocalDeleteHook';
-	
+		
 	$wgAutoloadClasses['NoticePage'] =
-		dirname( __FILE__ ) . '/NoticePage.php';
+	dirname( __FILE__ ) . '/NoticePage.php';
 	
 	$wgSpecialPages['NoticeLocal'] = 'SpecialNoticeLocal';
 	$wgAutoloadClasses['SpecialNoticeLocal'] =
-		dirname( __FILE__ ) . '/SpecialNoticeLocal.php';
+	dirname( __FILE__ ) . '/SpecialNoticeLocal.php';
 
-
+	global $wgOut;
 	if( $wgNoticeInfrastructure ) {
-		$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeSaveHook';
-		$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeDeleteHook';
+	$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeSaveHook';
+	$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeDeleteHook';
+			
+	$wgSpecialPages['NoticeLoader'] = 'SpecialNoticeLoader';
+	$wgAutoloadClasses['SpecialNoticeLoader'] =
+				dirname( __FILE__ ) . '/SpecialNoticeLoader.php';
 
-		$wgSpecialPages['NoticeLoader'] = 'SpecialNoticeLoader';
-		$wgAutoloadClasses['SpecialNoticeLoader'] =
-			dirname( __FILE__ ) . '/SpecialNoticeLoader.php';
+	$wgSpecialPages['NoticeText'] = 'SpecialNoticeText';
+	$wgAutoloadClasses['SpecialNoticeText'] =
+				dirname( __FILE__ ) . '/SpecialNoticeText.php';
+		
+	$wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
+	$wgAutoloadClasses['SpecialNoticeTemplate'] =
+				dirname( __FILE__ ) . '/SpecialNoticeTemplate.php';
 
-		$wgSpecialPages['NoticeText'] = 'SpecialNoticeText';
-		$wgAutoloadClasses['SpecialNoticeText'] =
-			dirname( __FILE__ ) . '/SpecialNoticeText.php';
+	$wgSpecialPages['NoticeTranslate'] = 'SpecialNoticeTranslate';
+	$wgAutoloadClasses['SpecialNoticeTranslate'] =
+				dirname( __FILE__ ) . '/SpecialNoticeTranslate.php';
+
+			// The new SVG stuff
+			/*
+			$wgSpecialPages['NoticeRender'] = 'SpecialNoticeRender';
+			$wgAutoloadClasses['SpecialNoticeRender'] = dirname( __FILE__ ) . '/SpecialNoticeRender.php';
+			$wgAutoloadClasses['NoticeRender'] = dirname( __FILE__ ) . '/NoticeRender.php';
 		
-		// The new SVG stuff
-		/*
-		$wgSpecialPages['NoticeRender'] = 'SpecialNoticeRender';
-		$wgAutoloadClasses['SpecialNoticeRender'] = dirname( __FILE__ ) . '/SpecialNoticeRender.php';
-		$wgAutoloadClasses['NoticeRender'] = dirname( __FILE__ ) . '/NoticeRender.php';
-		
-		global $wgNoticeRenderDirectory, $wgNoticeRenderPath;
-		global $wgUploadDirectory, $wgUploadPath;
-		if( !$wgNoticeRenderDirectory )
+			global $wgNoticeRenderDirectory, $wgNoticeRenderPath;
+			global $wgUploadDirectory, $wgUploadPath;
+			if( !$wgNoticeRenderDirectory )
 			$wgNoticeRenderDirectory = "$wgUploadDirectory/notice";
-		if( !$wgNoticeRenderPath )
+			if( !$wgNoticeRenderPath )
 			$wgNoticeRenderPath = "$wgUploadPath/notice";
-		*/
+			*/
 	}
 }
-
 
 function efCentralNoticeLoader( &$notice ) {
 	global $wgScript, $wgUser;
@@ -135,7 +162,7 @@ function efCentralNoticeLoader( &$notice ) {
 	// Throw away the classic notice, use the central loader...
 	$notice = <<<EOT
 <script type="text/javascript">
-var wgNotice = "";
+var wgNotice = "CentralNotice";
 var wgNoticeLocal = "";
 var wgNoticeLang = $encLang;
 var wgNoticeProject = $encProject;

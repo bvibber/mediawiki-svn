@@ -9,13 +9,37 @@ $messages = array();
 
 $messages['en'] = array(
 	'centralnotice-desc' => 'Adds a central sitenotice',
-);
+	'centralnotice-summary' =>'This module allows you to edit your currently setup central notices. It can also be used to add or remove old notices.',
+	'centralnotice'	=> 'Central Notice',
+	'noticetemplate' => 'Central Notice Template',
+	'noticetranslate' => 'Central Notice Translate',
+	'centralnotice-query' => 'Modify Current Notices',
+	'centralnotice-notice-name' => 'Notice Name: ',
+	'centralnotice-start-date' => 'Start',
+	'centralnotice-end-date' => 'End',
+	'centralnotice-enabled' => 'Enabled',
+	'centralnotice-modify' => 'Submit',
+	'centralnotice-preview' => 'Preview',
+	'centralnotice-add-new' => 'Add a new central notice',
+	'centralnotice-remove' => 'Remove',
+	'centralnotice-translate-heading' => 'Translate Text',
+	'centralnotice-manage' => 'Manage Central Notice',
+	'centralnotice-add' => 'Add a Central Notice',
+	'centralnotice-add-notice' => 'Add a notice',
+	'centralnotice-add-template' => 'Add a template',
+	'centralnotice-show-notices' => 'Show notices',
+	'centralnotice-list-templates' => 'List Templates',
+	'centralnotice-translate-to' => 'Translate To',
+	'centralnotice-translate' => 'Translate',
+	'centralnotice-english' => 'English',
+	'centralnotice-template-name' => 'Template Name: ',
+	'centralnotice-templates' => 'Templates',
+	'centralnotice-weight' => 'Weight',
+	'centralnotice-notices' => 'Notices',
+	'centralnotice-notice-exists' => 'Notice already exists. Not adding',
+	'centralnotice-notice-doesnt-exist' => 'Notice doesnt exist. Nothing to remove',
+	'centralnotice-template-body' => 'Template Body: ',
 
-/** Message documentation (Message documentation)
- * @author Purodha
- */
-$messages['qqq'] = array(
-	'centralnotice-desc' => 'Short description of the Centralnotice extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -258,13 +282,6 @@ $messages['li'] = array(
 	'centralnotice-desc' => "Voegt 'n centrale sitemededeling toe",
 );
 
-/** Macedonian (Македонски)
- * @author Brest
- */
-$messages['mk'] = array(
-	'centralnotice-desc' => 'Додава централизирано известување',
-);
-
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -311,7 +328,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'centralnotice-desc' => 'Apond un sitenotice central',
+	'centralnotice-desc' => 'Apondís un sitenotice central',
 );
 
 /** Polish (Polski)

@@ -77,6 +77,9 @@ END;
 		if(wgUserName == null) {
 			document.writeln($encHideToggleStyle);
 		}
+		
+		pickTemplate();
+
 		function toggleNotice() {
 			var big = document.getElementById('siteNoticeBig');
 			var small = document.getElementById('siteNoticeSmall');
@@ -96,6 +99,23 @@ END;
 			e.setTime( e.getTime() + (7*24*60*60*1000) ); // one week
 			var work="hidesnmessage="+state+"; expires=" + e.toGMTString() + "; path=/";
 			document.cookie = work;
+		}
+		function pickTemplate() {
+			var templates = ["2007donationcount","2007donationcount-variant","2009-variant-c"]
+			var weights   = [20, 80, 0]
+			var totalWeight = eval(weights.join("+"))
+			var weightedTemplates = new Array()
+			var currentTemplate = 0
+			
+			while (currentTemplate < templates.length) {
+				for (i=0; i<weights[currentTemplate]; i++) {
+					weightedTemplates[weightedTemplates.length] = templates[currentTemplate]
+				}	
+				currentTemplate++
+			}
+			
+			var randomnumber=Math.floor(Math.random()*totalWeight)
+			document.write(weightedTemplates[randomnumber])
 		}
 END;
 		return $script;
@@ -177,6 +197,22 @@ END;
 			'}()';
 	}
 	
+	function chooseTemplate ( $notice ) {
+		 $dbr = wfGetDB( DB_SLAVE );
+		 $centralnotice_table = 'central_notice_template_assignments';
+		 $res = $dbr->select( $array ( $centralnotice_table,"central_notice_template_assignments"),
+		 		      "name,weight",
+				      array ( 'notice_name' => $notice, 'campaign_id = id'),
+				      '',
+				      array('ORDER BY' => 'id'),
+				      ''
+				     );
+		$templates = array();
+	  	while ( $row = $dbr->fetchObject( $res )) {
+			 push ( $templates, $row->name);
+		}
+
+	}
 	function getHtmlNotice() {
 		return $this->getMessage( 'centralnotice-template' );
 	}
@@ -192,7 +228,7 @@ END;
 	
 	private function getMeter() {
 		return $this->getMessage( 'centralnotice-meter' );
-		// return "<img src=\"http://upload.wikimedia.org/fundraising/2007/meter.png\" width='407' height='14' />";
+		#return "<img src=\"http://upload.wikimedia.org/fundraising/2007/meter.png\" width='407' height='14' />";
 	}
 	
 	private function getTarget() {
