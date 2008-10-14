@@ -162,7 +162,7 @@ class CodeRepository {
 		$rev2 = $rev;
 		
 		$revision = $this->getRevision( $rev );
-		if( !$revision->isDiffable() ) {
+		if( $revision == null || !$revision->isDiffable() ) {
 			return false;
 		}
 
