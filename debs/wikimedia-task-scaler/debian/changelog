@@ -1,3 +1,9 @@
+wikimedia-task-scaler (1.2) hardy; urgency=low
+
+  * Added netpbm dependency, needed for djvu post-processor
+
+ -- Tim Starling <tstarling@wikimedia.org>  Tue, 14 Oct 2008 14:50:22 +1100
+
 wikimedia-task-scaler (1.1) hardy; urgency=low
 
   * Add LVS VIP on postinst
