@@ -39,7 +39,7 @@ class ApiCodeUpdate extends ApiBase {
 			$codeRev->save();
 			$r['id'] = $codeRev->getId();
 			$r['author'] = $codeRev->getAuthor();
-			$r['timestamp'] = $codeRev->getTimestamp();
+			$r['timestamp'] = wfTimestamp( TS_ISO_8601, $codeRev->getTimestamp() );
 			$r['message'] = $codeRev->getMessage();
 			$result[] = $r;
 		}
