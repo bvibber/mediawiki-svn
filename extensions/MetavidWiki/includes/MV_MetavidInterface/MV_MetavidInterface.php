@@ -105,7 +105,8 @@
 			$this->page_header.=$wgOut->getHTML();
 			$wgOut->clearHTML();
 		}
-		
+		//clear no robots flag: 
+		$wgOut->setRobotpolicy( '' );
 		
 		// add export roe icon:
 		if($mvDispROEicon){

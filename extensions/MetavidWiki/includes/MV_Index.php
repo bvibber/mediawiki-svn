@@ -604,23 +604,25 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				// obviously this should be rewritten to use some SMW based query system. 
 				$smw_properties=array();
 				if($mvSpokenByInSearchResult && strtolower(substr($row->wiki_title,0,2))=='ht')
-					$smw_properties[]='spoken_by';
+					$smw_properties[]='Spoken_By';
 					
 				if($mvSpokenByInSearchResult && strtolower(substr($row->wiki_title,0,4))=='anno')
-					$smw_properties[]='speech_by';
+					$smw_properties[]='Speech_by';
 				
 				if($mvBillInSearchResult)
-					$smw_properties[]='bill';				
+					$smw_properties[]='Bill';				
 				
 				
-                $rowTitle = Title::newFromText( $row->wiki_title, MV_NS_MVD );
+                $rowTitle = Title::newFromText( $row->wiki_title, MV_NS_MVD );               
                 foreach ( $smw_properties as $propKey ) {
-                	if ( $propKey != 'category' ) {	              
+                	if ( $propKey != 'category' ) {	         
+                		//print "on key: $propKey";     
 	                	$propTitle = Title::newFromText( $propKey, SMW_NS_PROPERTY );
 		                $smwProps = $smwStore->getPropertyValues( $rowTitle, $propTitle );
 						// just a temp hack .. we need to think about this abstraction a bit..
+						//print_r($smwProps);
 						if(count($smwProps)!=0){
-							if($propKey=='speech_by' || $propKey=='spoken_by'){
+							if($propKey=='Spoken_By' || $propKey=='Speech_by'){
 								$v = current( $smwProps );
 								$row->spoken_by = $v->getXSDValue();
 							}else if($propKey=='bill'){
