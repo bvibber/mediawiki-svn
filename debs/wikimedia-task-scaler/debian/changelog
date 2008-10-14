@@ -1,3 +1,9 @@
+wikimedia-task-scaler (1.3) hardy; urgency=low
+
+  * (bug 8898) added ttf-liberation dependency
+
+ -- Tim Starling <tstarling@wikimedia.org>  Tue, 14 Oct 2008 15:59:19 +1100
+
 wikimedia-task-scaler (1.2) hardy; urgency=low
 
   * Added netpbm dependency, needed for djvu post-processor

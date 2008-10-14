@@ -51,5 +51,6 @@ Depends: wikimedia-task-appserver,
  xfonts-100dpi,
  xfonts-75dpi,
  xfonts-base,
- xfonts-mplus
+ xfonts-mplus,
+ ttf-liberation
 Description: Wikimedia image scaling server
