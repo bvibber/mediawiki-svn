@@ -132,6 +132,9 @@ class CodeRepository {
 	 * Load a particular revision out of the DB
 	 */
 	function getRevision( $id ) {
+		if ( !$this->isValidRev( $id ) ) {
+			return null;
+		}
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectRow(
 			'code_rev',
@@ -177,5 +180,18 @@ class CodeRepository {
 		}
 
 		return $data;
+	}
+
+	/**
+	 * Is the requested revid a valid revision to show?
+	 * @return bool
+	 * @param $rev int Rev id to check
+	 */
+	function isValidRev( $rev ) {
+		$rev = intval( $rev );
+		if ( $rev > 0 && $rev <= $this->getLastStoredRev() ) {
+			return true;
+		}
+		return false;
 	}
 }
