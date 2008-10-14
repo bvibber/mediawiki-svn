@@ -25,3 +25,5 @@ LVS_SERVICE_IPS=\"$SCALER_SERVICE_IP \$LVS_SERVICE_IPS\"
 		echo "postinst called with unknown argument \`$1'" >&2
 		exit 1
 		;;
+esac
+
