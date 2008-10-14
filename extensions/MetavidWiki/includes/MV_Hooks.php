@@ -130,16 +130,22 @@ function mvSeqTag( &$input, &$argv, &$parser ) {
   * updates the time stamps when an article is moved
   */
  function mvMoveHook( &$old_title, &$new_title, &$user, $pageid, $redirid ) {
- 	global $mvgIP,$wgOut;
+ 	global $mvgIP,$wgOut;		
+ 	
  	// die;
  	// confirm we are in the mvd Namespace & update the wiki_title
  	if ( $old_title->getNamespace() == MV_NS_MVD ) {
  		MV_Index::update_index_title( $old_title->getDBkey() , $new_title->getDBkey() );
  		//remove the old MVD having lots of redirects around is not fun
- 		$oldArticle = new Article($old_title);
- 		$oldArticle->doDelete( wfMsg('mv_move_delete_msg'), false ); 		
- 		//clear output  @@todo (should really check for errors and integrate info into move) 
+ 		$oldArticle = new Article($old_title); 		
+ 		$oldArticle->doDelete( wfMsg('mv_move_delete_msg', $new_title->getText() ), false ); 	 		 		
+ 		//clear output  @@todo (should really check for errors and integrate info into move) 		 
  		$wgOut->clearHTML();
+ 	}else{
+		 //make sure we call smwfMoveHook after and only if we don't delete
+	 	if(function_exists('smwfMoveHook')){
+	 		smwfMoveHook( $old_title, $new_title, $user, $pageid, $redirid );
+	 	}
  	}
  	
 	return true;// always return true, in order not to stop MW's hook processing!
@@ -304,6 +310,10 @@ function mv_edit_sequence_submit() {
 	$MV_SequenceTools = new MV_SequenceTools();
 	return $MV_SequenceTools->do_edit_submit();
 }
+/*
+ * mv_edit_submit
+ * @@todo this could be cleaned up by using the api .. lots of weridness otherwise
+ */
 function mv_edit_submit() {
 	global $wgOut, $wgRequest;
 	// @@todo more input scrubbing value checks
@@ -314,20 +324,21 @@ function mv_edit_submit() {
 				
 	$MV_Overlay = new MV_Overlay();
 	$do_adjust = $wgRequest->getVal( 'do_adjust' );
-	if ( $do_adjust == 'true' ) {
-		// first edit then move
-		$outputMVD = $MV_Overlay->do_edit_submit( $title_str, $mvd_id, false );
-		//print "got output: $outputMVD \n";
-		// clear the wgOut var: 
-		$wgOut->clearHTML();
-		// do move and display output page 			
-		return $MV_Overlay->do_adjust_submit( $wgRequest->getVal( 'titleKey' ),
+	if ( $do_adjust == 'true' ) { 		 		
+		//first move then edit 	 		
+		$adjust_ary = $MV_Overlay->do_adjust_submit( $wgRequest->getVal( 'titleKey' ),
 					$mvd_id,
 					$wgRequest->getVal( 'newTitle' ),
-					$wgRequest->getVal( 'wgTitle' ),
-					$outputMVD );
+					$wgRequest->getVal( 'wgTitle' )		);
+		
+		//do edit:  		
+		$outputMVD = $MV_Overlay->do_edit_submit( $wgRequest->getVal( 'newTitle' ), $mvd_id, false );
+		$wgOut->clearHTML();
+		$adjust_ary['fd_mvd']= $MV_Overlay->get_fd_mvd_request( $title_str, $mvd_id, 'enclosed', $outputMVD );
+					
+		return php2jsObj($adjust_ary);
 	} else {
-		return $MV_Overlay->do_edit_submit( $_POST['title'], $_POST['mvd_id'] );
+		return $MV_Overlay->do_edit_submit( $title_str, $mvd_id);
 	}
 }
 function mv_history_disp( $titleKey, $mvd_id ) {

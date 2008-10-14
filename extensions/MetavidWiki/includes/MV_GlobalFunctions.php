@@ -176,6 +176,12 @@ function mvSetupExtension() {
 	$wgHooks['LinkEnd'][] 					= 'mvLinkEnd';
 	$wgHooks['LinkBegin'][] 				= 'LinkBegin';
 	
+	//our move function hanndles calling SMW hook
+	foreach($wgHooks['TitleMoveComplete'] as $k=>$f){
+ 		if($f=='smwfMoveHook'){
+ 			unset($wgHooks['TitleMoveComplete'][$k]);
+ 		}
+	}
 	
 	if (version_compare($wgVersion,'1.13','>')) {
 		$wgHooks['SkinTemplateToolboxEnd'][] = 'mvAddToolBoxLinks'; // introduced only in 1.13

@@ -822,8 +822,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 	 */
 	 // very similar to SpecialMovepage.php doSubmit()
 	function do_adjust_submit( $titleKey, $mvd_id, $newTitle, $contextTitle, $outputMVD = '' ) {
-		global $wgOut, $mvgIP, $wgUser;
-		// print "js_log('do_adjust_submit, move $titleKey to: $newTitle ')\n";
+		global $wgOut, $mvgIP, $wgUser;		
 		// get context from MVStream request title:
 		$this->get_overlay_context_from_title( $contextTitle );
 		
@@ -834,7 +833,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		// do the move:
 		if ( $wgUser->pingLimiter( 'move' ) ) {
 			$wgOut->rateLimited();
-			return php2jsObj( array( 'status' => 'error', 'error_txt' => $wgOut->getHTML() ) );
+			return array( 'status' => 'error', 'error_txt' => $wgOut->getHTML() ) ;
 		}
 		
   		// we should only be adjusting MVD namespace items:
@@ -843,8 +842,9 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		// make sure the old title exist (what we are moving from)
 		if ( !$ot->exists() ) {
 			$wgOut->addHTML( '<p class="error">' . wfMsg( 'mv_adjust_old_title_missing', $ot->getText() ) . "</p>\n" );
-			return php2jsObj( array( 'status' => 'error', 'error_txt' => $wgOut->getHTML() ) );
-		}
+			return array( 'status' => 'error', 'error_txt' => $wgOut->getHTML() );
+		}		
+		
 		// if the page we want to move to exists and starts with #REDIRECT override it
 		if ( $nt->exists() ) {
 			$ntArticle = new Article( $nt );
@@ -867,7 +867,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		# don't allow moving to pages with # in
 		if ( !$nt || $nt->getFragment() != '' ) {
 			$wgOut->addWikiText( '<p class="error">' . wfMsg( 'badtitletext' ) . "</p>\n" );
-			return php2jsObj( array( 'status' => 'error', 'error_txt' => $wgOut->getHTML() ) );
+			return array( 'status' => 'error', 'error_txt' => $wgOut->getHTML() );
 		}
 		$old_article = new Article( $ot );
 		$this->preMoveArtileText = $old_article->getContent();
@@ -876,9 +876,10 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		// @@todo we should really just remove the old article (instead of putting a redirect there)
 		$error = $ot->moveTo( $nt, true, $this->reason );
 		
+		
 		if ( $error !== true ) {
 			$wgOut->addWikiText( '<p class="error">' . wfMsg( $error ) . "</p>\n" );
-			return php2jsObj( array( 'status' => 'error', 'error_txt' => $wgOut->getHTML() ) );
+			return array( 'status' => 'error', 'error_txt' => $wgOut->getHTML() );
 		} else {
 			/*print "js_log('should have moved the page');\n";
 			print "js_log('new page title: ".$nt->getText()."');\n";
@@ -893,7 +894,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			print "js_log('new page content: " .$na->getContent() . "');\n";
 			*/
 		}
-		// wfRunHooks( 'SpecialMovepageAfterMove', array( &$this , &$ot , &$nt ) )	;
+		//wfRunHooks( 'SpecialMovepageAfterMove', array( &$this , &$ot , &$nt ) )	;
 
 		$ott = $ot->getTalkPage();
 		if ( $ott->exists() ) {
@@ -934,18 +935,16 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			print "js_log('{$tsTitle->getDBkey()}  present:');\n";
 		}else{
 			print "js_log('{$tsTitle->getDBkey()}  not present');\n";
-		}*/
-	
+		}*/						
 			
 		# return the javascript object (so that the inteface can update the user)
 		// get_fd_mvd_request($titleKey, $mvd_id, $mode='inner', $content='')
-		return php2jsObj( array( 'status' => 'ok',
+		return array( 'status' => 'ok',
 						'error_txt' => $wgOut->getHTML(),
 						'mv_adjust_ok_move' => wfMsg( 'mv_adjust_ok_move' ),
-						'titleKey' => $newTitle,
-						'fd_mvd' => $this->get_fd_mvd_request( $newTitle, $mvd_id, 'enclosed', $outputMVD ),
+						'titleKey' => $newTitle,						
 						'tl_mvd' => $this->get_tl_mvd_request( $newTitle, $mvd_id )
-			) );
+			);
 	}
 	function get_edit_disp( $titleKey, $mvd_id = 'new', $ns = MV_NS_MVD ) {
 		global $mvgIP, $wgOut, $wgScriptPath, $wgUser, $wgTitle, $mvMetaDataHelpers;
