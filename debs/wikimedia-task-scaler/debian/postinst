@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCALER_SERVICE_IP=10.0.5.17
+SCALER_SERVICE_IP=10.2.1.21
 
 set -e 
 
