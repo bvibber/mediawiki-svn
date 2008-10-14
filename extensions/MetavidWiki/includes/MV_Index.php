@@ -625,7 +625,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 							if($propKey=='Spoken_By' || $propKey=='Speech_by'){
 								$v = current( $smwProps );
 								$row->spoken_by = $v->getXSDValue();
-							}else if($propKey=='bill'){
+							}else if($propKey=='Bill'){
 								$row->bills=array();
 								foreach($smwProps as $v){				
 									$row->bills[$v->getXSDValue()] = true;
