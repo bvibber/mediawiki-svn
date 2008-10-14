@@ -1,9 +1,5 @@
 <?php
 
-// Please don't use this interface publicly yet.
-// I don't really know what I'm doing in the API and it might explode. ;)
-// -- brion
-
 class ApiCodeDiff extends ApiBase {
 
 	public function execute() {
@@ -18,37 +14,42 @@ class ApiCodeDiff extends ApiBase {
 		
 		$repo = CodeRepository::newFromName( $params['repo'] );
 		if( !$repo ){
-			$this->dieUsage( "Invalid repo '".$params['repo'].'"');
+			$this->dieUsage("Invalid repo ``{$params['repo']}''", 'invalidrepo');
 		}
 		
 		$svn = SubversionAdaptor::newFromRepo( $repo->getPath() );
 		$lastStoredRev = $repo->getLastStoredRev();
 		
-		$rev = intval( $params['rev'] );
-		if( $rev <= 0 || $rev > $lastStoredRev ) {
-			$this->dieUsage( 'Invalid input revision' );
+		if( $params['rev'] > $lastStoredRev ) {
+			$this->dieUsage("There is no revision with ID {$params['rev']}", 'nosuchrev');
 		}
 		
-		$diff = $repo->getDiff( $rev );
+		$diff = $repo->getDiff( $params['rev'] );
 		
 		if( $diff ) {
 			$hilite = new CodeDiffHighlighter();
 			$html = $hilite->render( $diff );
 		} else {
+			// FIXME: Are we sure we don't want to throw an error here?
 			$html = 'Failed to load diff.';
 		}
 		
-		$data = array();
-		$data['repo'] = $params['repo'];
-		$data['id'] = $rev;
-		$data['diff'] = $html;
+		$data = array(
+			'repo' => $params['repo'],
+			'id' => $params['rev'],
+			'diff' => $html
+		);
 		$this->getResult()->addValue( 'code', 'rev', $data );
 	}
 	
 	public function getAllowedParams() {
 		return array(
 			'repo' => null,
-			'rev' => null );
+			'rev' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_MIN => 1
+			)
+		);
 	}
 	
 	public function getParamDescription() {

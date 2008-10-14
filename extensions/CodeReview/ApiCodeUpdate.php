@@ -14,34 +14,37 @@ class ApiCodeUpdate extends ApiBase {
 		
 		$repo = CodeRepository::newFromName( $params['repo'] );
 		if( !$repo ){
-			throw new MWException( "Invalid repo {$args[0]}" );
+			$this->dieUsage("Invalid repo ``{$params['repo']}''", 'invalidrepo');
 		}
 		
 		$svn = SubversionAdaptor::newFromRepo( $repo->getPath() );
 		$lastStoredRev = $repo->getLastStoredRev();
 		
-		$endRev = intval( $params['rev'] );
-		if( $lastStoredRev >= $endRev ) {
+		if( $lastStoredRev >= $params['rev'] ) {
 			// Nothing to do, we're up to date.
+			// Return an empty result
+			$this->getResult()->addValue(null, $this->getModuleName(), array());
 			return;
 		}
 		
-		// fixme: this could be a lot?
-		$log = $svn->getLog( '', $lastStoredRev + 1, $endRev );
+		// FIXME: this could be a lot?
+		$log = $svn->getLog( '', $lastStoredRev + 1, $params['rev'] );
 		if( !$log ) {
-			throw new MWException( "Something awry..." );
+			// FIXME: When and how often does this happen?
+			// Should we use dieUsage() here instead?
+			ApiBase::dieDebug( __METHOD__, "Something awry..." );
 		}		
 		
 		$result = array();
 		foreach( $log as $data ) {
-			$r = array();
 			$codeRev = CodeRevision::newFromSvn( $repo, $data );
 			$codeRev->save();
-			$r['id'] = $codeRev->getId();
-			$r['author'] = $codeRev->getAuthor();
-			$r['timestamp'] = wfTimestamp( TS_ISO_8601, $codeRev->getTimestamp() );
-			$r['message'] = $codeRev->getMessage();
-			$result[] = $r;
+			$result[] = array(
+				'id' => $codeRev->getId(),
+				'author' => $codeRev->getAuthor(),
+				'timestamp' => wfTimestamp( TS_ISO_8601, $codeRev->getTimestamp() ),
+				'message' => $codeRev->getMessage()
+			);
 		}
 		$this->getResult()->setIndexedTagName($result, 'rev');
 		$this->getResult()->addValue(null, $this->getModuleName(), $result);
@@ -55,7 +58,11 @@ class ApiCodeUpdate extends ApiBase {
 	public function getAllowedParams() {
 		return array(
 			'repo' => null,
-			'rev' => null );
+			'rev' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_MIN => 1
+			)
+		);
 	}
 	
 	public function getParamDescription() {
