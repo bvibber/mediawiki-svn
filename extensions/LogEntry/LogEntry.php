@@ -1,4 +1,4 @@
-<?
+<?php
 
 # Check environment
 if( !defined( 'MEDIAWIKI' ) ) {
@@ -7,7 +7,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 # Shrtcut to this dirctory
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 
 # Credits
 $wgExtensionCredits['parserhook'][] = array(
@@ -32,22 +32,3 @@ $wgAutoloadClasses['LogEntry'] = $dir . 'LogEntry.body.php';
 
 # Let MediaWiki know about your new special page.
 $wgSpecialPages['LogEntry'] = 'LogEntry';
-
-/* Do we really need this?
- *
- *
-# Add any aliases for the special page.
-$wgHooks['LanguageGetSpecialPageAliases'][] = 'LogEntryLocalizedPageName';  
-function LogEntryLocalizedPageName( &$specialPageArray, $code ) {
-	# The localized title of the special page is among the messages of the extension:
-	wfLoadExtensionMessages('LogEntry');
-	
-	# Convert from title in text form to DBKey and put it into the alias array:
-	$title = Title::newFromText( wfMsg('logentry') );
-	$specialPageArray['LogEntry'][] = $title->getDBKey();
-	
-	return true;
-}
-*/
-
-?>

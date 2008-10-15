@@ -1,11 +1,10 @@
-<?
+<?php
 
 # Internationalization
 $messages = array();
 $messages['en'] = array(
-    'append' => 'Append',
+    'logentry-append' => 'Append',
 	'logentry' => 'LogEntry',
-	'invalidpage' => 'Invalid Page'
+	'logentry-invalidpage' => 'Invalid Page',
+	'logentry-invalidtoken' => 'Invalid Token'
 );
-
-?>
