@@ -94,18 +94,18 @@ function wfNewsArticleFromTitle( &$title, &$article ) {
     if ($action != 'view' && $action != 'purge') return true;
 
     if ( !isset($wgFeedClasses[$format] ) ) {
-	wfDebug( wfMsg( 'newsextension-unknownformat', $fname, $format) );
+	wfDebug( "$fname: unknown feed format: $format \n" );
         wfHttpError(400, "Bad Request", "unknown feed format: " . $format); //TODO: better code & text
         return false;
     }
 
     if (!$title->exists()) {
-	wfDebug( wfMsg( 'newsextension-feednotfound', $fname, $title->getPrefixedDBKey() ) );
+	wfDebug( "$fname: feed page not found: " . $title->getPrefixedDBKey() . "\n" );
         wfHttpError(404, "Not Found", "feed page not found: " . $title->getPrefixedText()); //TODO: better text
         return false;
     }
 
-    wfDebug( wfMsg( 'newsextension-feedrequest', $fname,  $title->getPrefixedDBKey() ) );
+    wfDebug( "$fname: handling feed request for " . $title->getPrefixedDBKey() . "\n" );
 
     $article = new NewsFeedPage( $title, $format );
     return false;
