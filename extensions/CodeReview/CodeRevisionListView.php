@@ -5,6 +5,7 @@ class CodeRevisionListView extends CodeView {
 	function __construct( $repoName ) {
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
+		$this->mPath = '';
 	}
 
 	function execute() {
@@ -24,14 +25,14 @@ class CodeRevisionListView extends CodeView {
 		);
 	}
 	
-	function showForm() {
+	function showForm( $path = '' ) {
 		global $wgOut, $wgScript;
 		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/path' );
 		$action = $wgScript;
 		$wgOut->addHTML( "<form action=\"$action\" method=\"get\">\n" .
 			"<fieldset><legend>".wfMsgHtml('code-pathsearch-legend')."</legend>" .
 				Xml::hidden( 'title', $special->getPrefixedDBKey() ) .
-				Xml::inputlabel( wfMsg("code-pathsearch-path"), 'path', 'path', 55, '' ) .
+				Xml::inputlabel( wfMsg("code-pathsearch-path"), 'path', 'path', 55, $this->mPath ) .
 				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
 			"</fieldset></form>"
 		);

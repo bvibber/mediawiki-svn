@@ -1,10 +1,10 @@
 <?php
 
 // Special:Code/MediaWiki
-class CodePathRevListView extends CodeView {
+class CodePathRevListView extends CodeRevisionListView {
 	function __construct( $repoName ) {
 		global $wgRequest;
-		parent::__construct();
+		parent::__construct( $repoName );
 		$this->mRepo = CodeRepository::newFromName( $repoName );
 		$this->mPath = htmlspecialchars( trim( $wgRequest->getVal( 'path' ) ) );
 		if( strlen($this->mPath) && $this->mPath[strlen($this->mPath)-1] !== '/' ) {
@@ -33,19 +33,6 @@ class CodePathRevListView extends CodeView {
 				$pager->getNavigationBar()
 			);
 		}
-	}
-	
-	function showForm() {
-		global $wgOut, $wgScript;
-		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/path' );
-		$action = $wgScript;
-		$wgOut->addHTML( "<form action=\"$action\" method=\"get\">\n" .
-			"<fieldset><legend>".wfMsgHtml('code-pathsearch-legend')."</legend>" .
-				Xml::hidden( 'title', $special->getPrefixedDBKey() ) .
-				Xml::inputlabel( wfMsg("code-pathsearch-path"), 'path', 'path', 55, $this->mPath ) .
-				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
-			"</fieldset></form>"
-		);
 	}
 	
 	function getPager() {
