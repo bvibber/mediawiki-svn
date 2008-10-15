@@ -2,6 +2,7 @@
 
 // Special:Code/MediaWiki
 class CodeRevisionListView extends CodeView {
+	public $mRepo, $mPath;
 	function __construct( $repoName ) {
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
@@ -46,7 +47,7 @@ class CodeRevisionListView extends CodeView {
 // Pager for CodeRevisionListView
 class SvnRevTablePager extends TablePager {
 
-	function __construct( CodeRevisionListView $view ){
+	function __construct( $view ) {
 		global $IP;
 		$this->mView = $view;
 		$this->mRepo = $view->mRepo;
@@ -54,28 +55,57 @@ class SvnRevTablePager extends TablePager {
 		$this->mCurSVN = SpecialVersion::getSvnRevision( $IP );
 		parent::__construct();
 	}
-
-	function isFieldSortable( $field ){
-		return $field == 'cr_id';
+	
+	function getSVNPath() {
+		return false;
 	}
 
-	function getDefaultSort(){ return 'cr_id'; }
-
-	function getQueryInfo(){
-		return array(
-			'tables' => array( 'code_rev', 'code_comment' ),
-			'fields' => array_keys( $this->getFieldNames() ),
-			'conds' => array( 'cr_repo_id' => $this->mRepo->getId() ),
-			'options' => array( 'GROUP BY' => 'cr_id' ),
-			'join_conds' => array( 
-				'code_comment' => array( 'LEFT JOIN', 'cc_repo_id = cr_repo_id AND cc_rev_id = cr_id' )
-			)
-		);
+	function isFieldSortable( $field ) {
+		return $field == $this->getDefaultSort();
 	}
 
-	function getFieldNames(){
+	function getDefaultSort() {
+		return strlen( $this->getSVNPath() ) ? 'cp_rev_id' : 'cr_id';
+	}
+
+	function getQueryInfo() {
+		// Path-based query...
+		if( $this->getDefaultSort() === 'cp_rev_id' ) {
+			return array(
+				'tables' => array( 'code_paths', 'code_rev', 'code_comment' ),
+				'fields' => array_keys( $this->getFieldNames() ),
+				'conds' => array( 
+					'cp_repo_id' => $this->mRepo->getId(),
+					'cp_repo_id = cr_repo_id',
+					'cp_rev_id = cr_id',
+					'cp_path LIKE '.$this->mDb->addQuotes($this->mDb->escapeLike( $this->getSVNPath() ).'%'),
+					// performance
+					'cp_rev_id > '.$this->mRepo->getLastStoredRev() - 20000
+				),
+				'options' => array( 'GROUP BY' => 'cp_rev_id',
+					'USE INDEX' => array( 'code_path' => 'cp_repo_id') ),
+				'join_conds' => array( 
+					'code_comment' => array( 'LEFT JOIN', 'cc_repo_id = cr_repo_id AND cc_rev_id = cr_id' )
+				)
+			);
+		// No path; entire repo...
+		} else {
+			return array(
+				'tables' => array( 'code_rev', 'code_comment' ),
+				'fields' => array_keys( $this->getFieldNames() ),
+				'conds' => array( 'cr_repo_id' => $this->mRepo->getId() ),
+				'options' => array( 'GROUP BY' => 'cr_id' ),
+				'join_conds' => array( 
+					'code_comment' => array('LEFT JOIN','cc_repo_id = cr_repo_id AND cc_rev_id = cr_id')
+				)
+			);
+		}
+		return false;
+	}
+
+	function getFieldNames() {
 		return array(
-			'cr_id' => wfMsg( 'code-field-id' ),
+			$this->getDefaultSort() => wfMsg( 'code-field-id' ),
 			'cr_status' => wfMsg( 'code-field-status' ),
 			'COUNT(cc_rev_id)' => wfMsg( 'code-field-comments' ),
 			'cr_path' => wfMsg( 'code-field-path' ),
@@ -85,10 +115,10 @@ class SvnRevTablePager extends TablePager {
 		);
 	}
 
-	function formatValue( $name, $value ){
+	function formatValue( $name, $value ) {
 		global $wgUser, $wgLang;
-		switch( $name ){
-		case 'cr_id':
+		switch( $name ) {
+		case $this->getDefaultSort():
 			return $this->mView->mSkin->link(
 				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $value ),
 				htmlspecialchars( $value ) );
@@ -114,18 +144,18 @@ class SvnRevTablePager extends TablePager {
 	// Note: this function is poorly factored in the parent class
 	function formatRow( $row ) {
 		global $wgWikiSVN;
-		$class = "mw-codereview-status-{$row->cr_status}";
-		if($this->mRepo->mName == $wgWikiSVN){
-			$class .= " mw-codereview-" . ( $row->cr_id <= $this->mCurSVN ? 'live' : 'notlive' );
+		$css = "mw-codereview-status-{$row->cr_status}";
+		if( $this->mRepo->mName == $wgWikiSVN ) {
+			$css .= " mw-codereview-" . ( $row->{$this->getDefaultSort()} <= $this->mCurSVN ? 'live' : 'notlive' );
 		}
 		return str_replace(
 			'<tr>',
 			Xml::openElement( 'tr',
-				array( 'class' => $class ) ),
+				array( 'class' => $css ) ),
 				parent::formatRow( $row ) );
 	}
 
-	function getTitle(){
+	function getTitle() {
 		return SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
 	}
 }
