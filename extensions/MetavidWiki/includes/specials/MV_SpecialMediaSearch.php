@@ -743,10 +743,10 @@ class MV_SpecialMediaSearch {
 					break;
 				case 'smw_property' :
 
-					break;
+				break;
 				case 'smw_property_number' :
 					// should be special case for numeric values
-					break;
+				break;
 			}
 		}
 		return $ret_ary + $cat_ary;

@@ -839,7 +839,7 @@ var mvJsLoader = {
 				 //}
 				 if(eval('typeof '+cur_path)=='undefined'){
 					 cur_load = loading=1;
-					 js_log("cur_load = loading=1");
+					 //js_log("cur_load = loading=1");
 					 break;
 				 }
 				 //if we have made the full comparison break out:

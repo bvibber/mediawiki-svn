@@ -806,5 +806,4 @@ function mvViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 }
 
 
-
 ?>

@@ -33,35 +33,10 @@ $plurl = 'http://metavid.ucsc.edu/m3u/filters/filter_seq?filters[0][type]=match&
 $sample_embed[6]['tag'] = '<playlist id="warplaylist" src="' . $plurl . '"/>';
 // $sample_embed[6]['desc'] = '<b>m3u</b> dynamic playlist search for "war"<br /> <textarea cols="70" rows="9">'.file_get_contents($plurl).'</textarea>';
 
-$sample_embed[7]['tag'] = '<playlist id="inline_pl">
-<!-- (hide from html rendering)
-#playlist attr:
-|title=Inline Playlist
-|linkback=http://metavid.ucsc.edu/wiki/index.php/Mv_embed
 
-#mvclip special for metavid clips can be refreces with a single key attribute
-|mvClip=senate_proceeding_12-07-06?t=04:46:27/04:46:58
-|image=http://metavid.ucsc.edu/image_media/senate_proceeding_12-07-06?t=04:46:27&size=320x240
-|title=I fancy Pencils
-
-#new clips are start with |mvclip or |clip_src (everything after will apply to that clip)
-|mvClip=house_proceeding_02-05-07_00?t=0:02:00/0:02:30
-|image=http://metavid.ucsc.edu/image_media/house_proceeding_02-05-07_00?t=0:02:00&size=320x240
-|desc=budget is like swiss cheese
-but smells like limburger
-
-#more verbose arbitrary clip listing: (be mindfull of cross site data policy of java for cortado playback)
-|srcClip=http://128.114.20.23/media/house_proceeding_04-05-06_3.ogg.anx?t=01:35:47/01:35:58
-|image=http://metavid.ucsc.edu/image_media/house_proceeding_04-05-06_3?t=01:35:47&size=320x240
-|desc=Jeb Hensarling uses the <b>dictionary</b>
-
--->
-</playlist>';
-$sample_embed[7]['desc'] = '<b>Inline Playlist:</b> for more info see <a href="http://metavid.ucsc.edu/wiki/index.php/Mv_embed">mv_embed wiki</a> page';
-
-// real video sample:
+// sample smil
 $smilURL = 'sample_smil.smil.xml';
-$sample_embed[8]['tag'] = '<playlist id="smil_pl" src="' . $smilURL . '">';
+$sample_embed[8]['tag'] = '<playlist id="smil_pl" src="' . $smilURL . '" />';
 $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/transit.htm">source</a>
 			The first video fades up from green when it starts to play, 
 			and the second video fades down to green when it ends. 
@@ -69,6 +44,13 @@ $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://s
 			though, the two videos crossfade into each other' .
 				'<br>' .
 				'<iframe width="500" height="200" src="' . $smilURL . '">rss feed here</iframe>';
+
+$smilURL = 'http://localhost/wiki/index.php/Special:MvExportSequence/Test';
+$sample_embed[9]['tag'] = '<playlist src="' . $smilURL . '" />';
+$sample_embed[9]['desc'] = ' <br><b>MediaWiki example:</b><br/>'.
+				'<br>' .
+				'<iframe width="500" height="200" src="' . $smilURL . '">rss feed here</iframe>';
+
 // empty sample embed (to only do one:)
 // $sample_embed = array();
 // $sample_embed[0]['tag']='<sequencer style="width:640px;height:480px;"/>';
@@ -78,7 +60,7 @@ $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://s
   <table border="1" cellpadding="6" width="600">
   	<? foreach ( $sample_embed as $key => $aval ) {
   		// $key!=8 
-  		if ( $key != 8 )continue;
+  		if ( $key != 9 )continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?=$aval['tag']?></td>

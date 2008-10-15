@@ -202,7 +202,9 @@ class MV_SequencePage extends Article {
 		}									
 		return $node;
 	}
-	function validateResourceAttributes(&$node){
+	//@@todo in the future we could do normal XML validation
+	function validateNodeAttributes(&$node){
+		//make sure only valid node Attributes per node name get through & htmlentities the values 
 	}
 	/*
 	 * parse the inner node as wiki text 

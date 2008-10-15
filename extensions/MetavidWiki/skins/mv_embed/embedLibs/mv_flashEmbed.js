@@ -44,6 +44,8 @@ var flashEmbed = {
 		config: { 	autoPlay: true, 
 					hideControls: true,
 					initialScale:'fit',
+					bufferLength:60,
+					startingBufferLength:5,
 					loop:false
 	           	}
 	},

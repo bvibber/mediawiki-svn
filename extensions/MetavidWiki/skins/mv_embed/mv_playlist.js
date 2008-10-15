@@ -883,7 +883,8 @@ mvClip.prototype = {
 	},
 	//@@todo group all remote data requests
 	//set src and image & title & desc from metavid source data 
-	getRemoteData:function(callback){
+	//mv_playlist depreciated getRemoteData
+	/*getRemoteData:function(callback){
 		var thisClip =this;	
 		//check for js_log("gDuration:setupEmbed" + this.embed.media_element.sources.length);mvclip type:	
 		if(thisClip.mvclip){
@@ -978,7 +979,7 @@ mvClip.prototype = {
 			});		
 		}
 		
-	},
+	},*/
 	doAdjust:function(side, delta){
 		if(this.embed){
 			if(this.src.indexOf('?')!=-1){
@@ -1304,93 +1305,6 @@ var m3uPlaylist = {
 			}
 		});
 		return true;
-	}
-}
-/*
- * parse inline playlist format
- */
-var inlinePlaylist = {
-	parseClipWait:{},
-	doParse:function(){
-		js_log("doParse inline");
-		var properties = { title:'title', linkback:'linkback', 
-						   desc:'desc', image:'img'};
-		var lines = this.data.split("\n");
-		var cur_attr=null;
-		var cur_clip=null;
-		var clip_inx=0;
-		var ajax_flag = false;
-		var plObj = this;
-		
-		function close_clip(){		
-			if(cur_clip!=null){	
-				plObj.addCliptoTrack(cur_clip);
-				if(cur_clip.src){
-					cur_clip.setUpEmbedObj();	
-				}else{
-					if(cur_clip.mvclip){
-						ajax_flag=true;
-						cur_clip.getRemoteData();
-					}else{					
-						js_log('clip '+ clip_inx +' not added (no src or mvclip');
-						return '';
-					}
-				}
-				cur_clip=null;
-				cur_attr=null;
-				clip_inx++;
-			}
-		}
-		js_log("line length: "+ lines.length);
-		for(var i=0;i<lines.length;i++){		
-			var n = lines[i];
-			if(n.charAt(0)!='#' && n.substring(0,3)!='-->' && n.substring(0,4)!='<!--'){
-				var ix = n.indexOf('=');
-				if(ix!=-1){
-					cur_attr=n.substring(1,ix);
-				}
-				js_log("on line: "+ i + ' n:'+ cur_attr);
-				if(cur_attr=='mvClip'){
-					close_clip();
-					cur_clip = new mvClip({type:'mvClip',id:'p_'+this.id+'_c_'+clip_inx,pp:this,order:clip_inx});
-					cur_clip.mvclip = n.substring(ix+1);
-					//js_log('NEW mvclip '+ clip_inx + ' '+ cur_clip.mvclip);
-					cur_attr=null;
-				}
-				if(cur_attr=='srcClip'){
-					close_clip();
-					cur_clip = new mvClip({type:'srcClip',id:'p_'+this.id+'_c_'+clip_inx,pp:this,order:clip_inx});				
-					cur_clip.src = n.substring(ix+1);
-					//js_log('NEW clip '+ clip_inx + ' '+ cur_clip.src);
-					cur_attr=null;
-				}		
-				if(properties[cur_attr]){
-					var k = properties[cur_attr]; 		
-					var v = n.substring(ix+1);	
-					if(cur_clip==null){ //not bound to any clip apply property to playlist
-						this[k]=v;			
-					}else{ //clip				
-						if(cur_clip[k]){
-							cur_clip[k]+=v;
-						}else{
-							cur_clip[k]=v;
-						}			
-					}
-				}
-				//close the current attr if not desc
-				if(cur_attr!='desc')cur_attr=null;
-			}
-		}
-		js_log("LINKBACK:"+ this.linkback);
-		//close the last clip:
-		close_clip();	
-		//paser done		
-		if(ajax_flag){
-			//we have to wait for an ajax request don't continue processing
-			return false;
-		}else{
-			return true;
-		}
 	}
 }
 
@@ -1810,7 +1724,7 @@ var mv_supported_media_attr = new Array(
 	'transOut',
 	'fill',
 	'dur'
-);	
+);
 //all the overwritten and new methods for playlist extension of mv_embed
 mvSMILClip.prototype = {	
 	init:function(smil_clip_element, mvClipInit){
@@ -1818,6 +1732,7 @@ mvSMILClip.prototype = {
 		
 		//make new mvCLip with ClipInit vals  
 		var myMvClip = new mvClip(mvClipInit);
+		
 		//inherit mvClip		
 		for(method in myMvClip){			
 			if(typeof this[method] != 'undefined' ){				
@@ -1868,20 +1783,29 @@ mvSMILClip.prototype = {
 		return this.dur;					
 	},
 	setUpEmbedObj:function(){
-		js_log('set up embed for smil based clip');
+		js_log('setup embed for smil based clip');
 		if(this.tagName=='video')
 			this.parent_setUpEmbedObj();
+					
 	}
 }
-
-//
-// ImgWrapperEmbed.
-//
-var imgWrapperEmbed=function(img_init){
+/* object to manage embedding html with smil timings  */
+var htmlEmedWrapper=function(init){
+	return this.init(init);
+}
+htmlEmbedWrapper.prototype={
+	init:function(init){
+		js_log('htmlEmbedWrapper');
+	}
+}
+/*
+* ImgWrapperEmbed extends htmlEmbedWrapper and but displays an image
+*/
+var imgEmbedWrapper=function(img_init){
 	return this.init;
 }
 //all the overwritten and new methods for playlist extension of mv_embed
-imgWrapperEmbed.prototype = {	
+imgEmbedWrapper.prototype = {	
 	init:function(){
 		js_log("imgWrapperEmbed init");
 	}
@@ -1893,7 +1817,7 @@ var mv_supported_transition_attr = new Array(
 	'fadeColor',
 	'dur'
 );
-//around 30 frames a second: 
+//around ~30~ frames a second: 
 var MV_ANIMATION_CB_RATE = 33;
 var transitionObj = function(element) {		
 	this.init(element);
