@@ -17,7 +17,7 @@ $messages['en'] = array(
 	'povwatch_not_subscribed'          => 'You are not subscribed to PovWatch, so you cannot unsubscribe.',
 	'povwatch_unsubscribed'            => 'You have now unsubscribed from PovWatch',
 	'povwatch_invalid_title'           => 'The title specified was invalid',
-	'povwatch_pushed'                  => '[[$1]] has successfully been pushed to $2 user watchlist(s)',
+	'povwatch_pushed'                  => '[[$1]] has successfully been pushed to $2 user {{PLURAL:$2|watchlist|watchlists}}',
 	'povwatch_intro'                   => 'PovWatch is a service which allows contentious pages to be discreetly pushed on to the watchlists of subscribing administrators.
 
 A log of recent watchlist pushes is available at [[Special:PovWatch/log]].',
