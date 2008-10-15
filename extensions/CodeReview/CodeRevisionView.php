@@ -16,8 +16,13 @@ class CodeRevisionView extends CodeView {
 
 	function execute(){
 		global $wgOut, $wgUser, $wgLang;
-		if( !$this->mRepo || !$this->mRev ) {
+		if( !$this->mRepo ) {
 			$view = new CodeRepoListView();
+			$view->execute();
+			return;
+		}
+		if( !$this->mRev ) {
+			$view = new CodeRevisionListView( $this->mRepo->getName() );
 			$view->execute();
 			return;
 		}
