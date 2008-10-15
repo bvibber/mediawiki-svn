@@ -2290,6 +2290,7 @@ embedVideo.prototype = {
     	//query current request time +|- 60s to get prev next speech links. 
     },
     showNextPrevLinks:function(){
+    	js_log('f:showNextPrevLinks');
     	//int requested links: 
     	var link = {
     		'prev':'',
@@ -2327,33 +2328,37 @@ embedVideo.prototype = {
 			}
     	}   
     	var html='';   
-    	for(var link_type in link){
-    		var link_id = link[link_type];    		
-    		if(link_id!=''){
-    			var clip = this.anno_data_cache[link_id];    			
-    			var title_msg='';
-				for(var j in clip['meta']){
-					title_msg+=j.replace(/_/g,' ') +': ' +clip['meta'][j].replace(/_/g,' ') +" <br>";
-				}    	
-				var time_req = 	clip.time_req;
-				if(link_type=='current') //if current start from end of current clip play to end of current meta: 				
-					time_req = curTime[1]+ '/' + seconds2ntp( clip.end_time_sec );
-				
-				//do special linkbacks for metavid content: 
-				var regTimeCheck = new RegExp(/[0-9]+:[0-9]+:[0-9]+\/[0-9]+:[0-9]+:[0-9]+/);				
-				html+='<p><a  ';
-				if( regTimeCheck.test( this.media_element.linkback ) ){
-					html+=' href="'+ this.media_element.linkback.replace(regTimeCheck,time_req) +'" '; 
-				}else{
-					html+=' href="#" onClick="$j(\'#'+this.id+'\').get(0).playByTimeReq(\''+ 
-	    					time_req + '\'); return false; "';				
-				}
-				html+=' title="' + title_msg + '">' + 
-	    	 		getMsg(link_type+'_clip_msg') + 	    	 	
-	    		'</a><br><span style="font-size:small">'+ title_msg +'<span></p>';
-    		}    	    				
-    	}
-    	//js_log("should set html:"+ html);
+    	if(link.prev=='' && link.current=='' && link.next==''){
+    		html='<p><a href="'+this.media_element.linkbackgetMsg+'">clip page</a>';
+    	}else{    	
+	    	for(var link_type in link){
+	    		var link_id = link[link_type];    		
+	    		if(link_id!=''){
+	    			var clip = this.anno_data_cache[link_id];    			
+	    			var title_msg='';
+					for(var j in clip['meta']){
+						title_msg+=j.replace(/_/g,' ') +': ' +clip['meta'][j].replace(/_/g,' ') +" <br>";
+					}    	
+					var time_req = 	clip.time_req;
+					if(link_type=='current') //if current start from end of current clip play to end of current meta: 				
+						time_req = curTime[1]+ '/' + seconds2ntp( clip.end_time_sec );
+					
+					//do special linkbacks for metavid content: 
+					var regTimeCheck = new RegExp(/[0-9]+:[0-9]+:[0-9]+\/[0-9]+:[0-9]+:[0-9]+/);				
+					html+='<p><a  ';
+					if( regTimeCheck.test( this.media_element.linkback ) ){
+						html+=' href="'+ this.media_element.linkback.replace(regTimeCheck,time_req) +'" '; 
+					}else{
+						html+=' href="#" onClick="$j(\'#'+this.id+'\').get(0).playByTimeReq(\''+ 
+		    					time_req + '\'); return false; "';				
+					}
+					html+=' title="' + title_msg + '">' + 
+		    	 		getMsg(link_type+'_clip_msg') + 	    	 	
+		    		'</a><br><span style="font-size:small">'+ title_msg +'<span></p>';
+	    		}    	    				
+	    	}
+    	}	
+    	//js_og("should set html:"+ html);
     	$j('#liks_info_'+this.id).html(html);
     },
     playByTimeReq: function(time_req){

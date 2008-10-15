@@ -55,18 +55,12 @@ class MV_SequencePage extends Article {
 		$this->parseHLRD_DOM();			    
 	    //this is the heavy lifting of the getSequenceSMIL function: 	    
 	    $this->resolveHLRD_to_SMIL();
-	    
-	    
-	    
-	    print "the final xml:\n";
-	    print_r($this->aHLRD);
-	    die;
-	    
-	    //get parser Output Object (maybe cleaner way to do this? 
+	    	    	    	    	    
+	    //@@todo get parser Output Object (maybe cleaner way to do this? 
 	    //maybe parser cache is not the right place for this?) 
 	    $parserOutput = $wgParser->parse('', $this->mTitle, ParserOptions::newFromUser( $wgUser ));	    
 	    //output header: 	    
-	    $parserOutput->mText.=$this->getSmilXml();
+	    $parserOutput->mText.=$this->smilDoc->saveXML();
 			
 		//save to cache if parser cache enabled:
 		if($wgEnableParserCache)
@@ -80,11 +74,11 @@ class MV_SequencePage extends Article {
 	    $this->hlrdDoc = new DOMDocument();
 	    $this->hlrdDoc->loadXML($this->mHLRD);	    
 	}
-	//resolve and build smile doc
+	//go from High level resource description to smile doc
 	function resolveHLRD_to_SMIL(){
 		global $wgTitle;
 		//init smil skeleton: 
-		$this->smilDoc = new DOMDocument();
+		$this->smilDoc = new DOMDocument('1.0','UTF-8');
 		
 		$rootNode = $this->smilDoc->createElement('smil');
 		$rootNode->setAttribute("xmlns", "http://www.w3.org/2001/SMIL20/Language");
@@ -119,29 +113,115 @@ class MV_SequencePage extends Article {
 			}
 			$bodyNode->appendChild($topSeqNode);
 		}
-		$rootNode->appendChild($bodyNode);
-		
+		$rootNode->appendChild($bodyNode);		
 		//append the root node to the SMIL DOM:
 		$this->smilDoc->appendChild($rootNode);
 		//set to pretty format:		
-		$this->smilDoc->formatOutput = true;				
-		
-		print "smilDoc DOM: ";
-		echo $this->smilDoc->saveXML();
-		die;
-				 
+		$this->smilDoc->formatOutput = true;						
 	}
 	/*takes an input node returns a resolved node*/
-	function resolveResourceNode(& $node){
+	function resolveResourceNode(& $node){		
+		global $wgUser,$wgParser;
 		//print 'resolveResourceNode:' . $node->nodeName . " : " . $node->nodeValue . "\n";
 		$nodeAttr = $node->attributes;
+		$node_uri=false;
 		if(!is_null($nodeAttr)){ 
 			foreach($nodeAttr as $atrr){
 				if($atrr->nodeName=='uri'){
 					//pull in node content
-				}
-				//print ": {$atrr->nodeName}={$atrr->nodeValue}\n";
+					$node_uri = $atrr->nodeValue;
+				}				
 			}
+		}
+		//if no resource uri is provided just parse inner html and return
+		if(!$node_uri){
+			$innerWikiText='';
+			return $this->parseInnerWikiText($node);			
+		}
+		$uriTitle = Title::newFromDBkey($node_uri);				
+		//figure out if how we should parse innerHTML:
+		switch( $uriTitle->getNamespace() ){
+ 			case NS_MAIN:
+ 				//top level ref includes of pages in the main namespace not supported
+ 			break;
+ 			case NS_TEMPLATE:
+ 				//if template look for template paramaters:
+ 				$templateText = '{{'. $uriTitle->getText();
+ 				$addedParamFlag=false;
+ 				while ($node->childNodes->length){
+ 					if($node->firstChild->nodeName=='param'){
+ 						$param = & $node->firstChild;
+ 						//make sure we have a name:  
+ 						if($param->hasAttribute('name')){
+ 							//we have paramaters:
+ 							$templateText.= "|\n";
+ 							$templateText .= $param->getAttribute('name') . '=';
+ 							//try and get the value from the value attribute or innerHTML
+ 							if($param->hasAttribute('value')){
+ 								$templateText .= $param->getAttribute('value');
+ 							}else{
+ 								//grab from innher html:
+ 								while ($param->childNodes->length){
+ 									$templateText .= $param->ownerDocument->saveXML( $param->firstChild );	
+ 									$param->removeChild( $param->firstChild );
+ 								} 								
+ 							} 							
+ 						}
+ 						$addedParamFlag=true;
+ 					}
+ 					$node->removeChild($node->firstChild);
+ 				}
+ 				//close up the template wikiText call:
+ 				$templateText.=($addedParamFlag)?"\n}}":'}}';
+ 				//$parserOutput = $wgParser->parse($templateText  ,$this->mTitle, ParserOptions::newFromUser( $wgUser ));
+ 				//print "should parse: \n $templateText";
+ 				$this->parseInnerWikiText($node, $templateText);
+ 			break;
+ 			case NS_IMAGE:
+ 			case NS_FILE:
+ 				//lookup the file/stream
+ 				global $mvDefaultVideoPlaybackRes;
+ 				list($width,$height)= explode('x',$mvDefaultVideoPlaybackRes);
+ 				//@@todo more flexiblity with image grabbing 				 				
+ 				
+ 				// (probably should be hanndled via "figure" namespace which could allow arbitary crop, resize, overlay) 				
+ 				$img = wfFindFile( $uriTitle ); 	
+ 				if(!$img){
+ 					//print "image not found \n";
+ 					$this->parseInnerWikiText($node, wfMsg('mv_resource_not_found',$uriTitle->getText()));
+ 				}else{
+ 					//print "resource found set: " . $img->getMimeType();
+	 				//set type attribute:  
+	 				//get a default wide media; 
+ 					$thumbnail = $img->transform( array('width'=>$width) );
+ 				
+ 					$node->setAttribute('type',$img->getMimeType());
+ 					$node->setAttribute('src', $thumbnail->file->getURL());
+ 				}
+ 			break; 
+		}									
+		return $node;
+	}
+	function validateResourceAttributes(&$node){
+	}
+	/*
+	 * parse the inner node as wiki text 
+	 */
+	function parseInnerWikiText(&$node, $innerWikiText=''){
+		global $wgParser;
+		if($innerWikiText==''){
+			if( $node->hasChildNodes() ){		
+				while ($node->childNodes->length){
+					$innerWikiText.= $node->ownerDocument->saveXML($node->firstChild);
+	     			$node->removeChild($node->firstChild);
+				}																							
+			}
+		}
+		if(trim($innerWikiText)!=''){	
+			$f = $node->ownerDocument->createDocumentFragment();
+			$parserOutput = $wgParser->parse($innerWikiText  ,$this->mTitle, ParserOptions::newFromUser( $wgUser ));				
+		    $f->appendXML($parserOutput->getText());				
+			$node->appendChild($f); 				 
 		}
 		return $node;
 	}
@@ -157,7 +237,7 @@ class MV_SequencePage extends Article {
 	 * sends all relevant data to wiki for parsing.
 	 * resolves/looks up all resources.
 	*/
-	function resolveHLRD(){
+	/*function resolveHLRD(){
 		global $wgParser,$wgOut, $wgUser, $wgEnableParserCache;
 	
 		//collapse all tags that can have values
@@ -222,11 +302,11 @@ class MV_SequencePage extends Article {
 		//print "resolveHLRD:";
 		//print_r($this->aHLRD);
 		//die;
-	}
+	}*/
 	/*
 	 * resolves any resource refrences and gets things ready to be parsed as wikiText
 	 */
-	function resolveResource(& $i){ //pass in the current index
+	/*function resolveResource(& $i){ //pass in the current index
 		$tag = $this->aHLRD[ $i ];
 		$uriTitle = Title::newFromDBkey($tag['attributes']['uri']);
 	 	if( !$uriTitle->exists() ){
@@ -312,8 +392,8 @@ class MV_SequencePage extends Article {
  				//include a media stream expose links to multiple formats 								
  			break; 							
  		}
-	}
-	function parseHLRD(){	
+	}*/
+	/*function parseHLRD(){	
 		//init the storage array: 
 		$this->aHLRD = array();
 		//temporarly parsed storage
@@ -382,9 +462,9 @@ class MV_SequencePage extends Article {
 	    		}	    		
 	    	}
 	    	$inx++;
-	    }*/
-	}
-	function ary2xml(&$ary, $baseIndent=0){
+	    }
+	}*/
+	/*function ary2xml(&$ary, $baseIndent=0){
 		$o='';
 		foreach( $ary as $tag ){
 	    	//tab space:
@@ -414,7 +494,7 @@ class MV_SequencePage extends Article {
 	    	}	    		
 	    }
 	    return $o;
-	}
+	}*/
 	/*function doSeqReplace(&$input, &$argv, &$parser){
 	 return
 	 }*/

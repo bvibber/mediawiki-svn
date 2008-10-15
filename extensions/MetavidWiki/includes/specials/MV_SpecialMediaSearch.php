@@ -731,7 +731,9 @@ class MV_SpecialMediaSearch {
 		$ret_ary = $cat_ary = array ();
 		foreach ( $this->filters as $filter ) {
 			switch ( $filter['t'] ) {
-				case 'match' :
+				case 'match' :					
+					$ret_ary = array_merge($ret_ary, explode(' ', $filter['v']));				
+				break;
 				case 'spoken_by' :
 				case 'stream_name' :
 					$ret_ary[] = $filter['v'];

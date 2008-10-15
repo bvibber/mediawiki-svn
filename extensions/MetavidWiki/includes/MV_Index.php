@@ -369,7 +369,12 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				case 'match':
 					// skip if empty value:
 					if ( trim( $f['v'] ) == '' )continue;
-					$ftq_match .= $aon . '"' . mysql_real_escape_string( $f['v'] ) . '"';
+					$mwords = explode(' ', $f['v']);
+					$space='';
+					foreach($mwords as $word){
+						$ftq_match .=$space. $aon . mysql_real_escape_string( $word );
+						$space=' ';
+					}
 					// only need to split out ftq match if spoken by is more than one
 					if ( $ftq_match_asql != '' )
 						$ftq_match_asql = $asql;
