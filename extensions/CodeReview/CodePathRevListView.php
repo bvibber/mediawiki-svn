@@ -80,7 +80,7 @@ class SvnPathRevTablePager extends TablePager {
 				'cp_repo_id' => $this->mRepo->getId(),
 				'cp_repo_id = cr_repo_id',
 				'cp_rev_id = cr_id',
-				'cp_path LIKE '.$this->mDb->addQuotes($this->mPath.'%'),
+				'cp_path LIKE '.$this->mDb->addQuotes( $this->mDb->escapeLike($this->mPath).'%' ),
 				// performance
 				'cp_rev_id > '.$this->mRepo->getLastStoredRev() - 20000
 			),
