@@ -15,7 +15,11 @@ LVS_SERVICE_IPS=\"$SCALER_SERVICE_IP \$LVS_SERVICE_IPS\"
 " >> /etc/default/wikimedia-lvs-realserver
 		fi
 
+		# Bring up the interface
 		IFACE=lo /etc/network/if-up.d/wikimedia-lvs-realserver
+
+		# Restart apache with -DSCALER
+		/etc/init.d/apache2 restart || true
 		;;
     abort-upgrade|abort-remove|abort-deconfigure)
 
