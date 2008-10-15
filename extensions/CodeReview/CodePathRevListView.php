@@ -10,6 +10,9 @@ class CodePathRevListView extends CodeView {
 		if( strlen($this->mPath) && $this->mPath[strlen($this->mPath)-1] !== '/' ) {
 			$this->mPath .= '/'; // make sure this is a dir
 		}
+		if( strlen($this->mPath) && $this->mPath[0] !== '/' ) {
+			$this->mPath = "/{$this->mPath}"; // make sure this is a dir
+		}
 	}
 
 	function execute() {
@@ -39,7 +42,7 @@ class CodePathRevListView extends CodeView {
 		$wgOut->addHTML( "<form action=\"$action\" method=\"get\">\n" .
 			"<fieldset><legend>".wfMsgHtml('code-pathsearch-legend')."</legend>" .
 				Xml::hidden( 'title', $special->getPrefixedDBKey() ) .
-				Xml::inputlabel( wfMsg("code-pathsearch-path"), 'path', 'path', 60, $this->mPath ) .
+				Xml::inputlabel( wfMsg("code-pathsearch-path"), 'path', 'path', 55, $this->mPath ) .
 				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
 			"</fieldset></form>"
 		);

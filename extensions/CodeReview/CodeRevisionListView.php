@@ -31,7 +31,7 @@ class CodeRevisionListView extends CodeView {
 		$wgOut->addHTML( "<form action=\"$action\" method=\"get\">\n" .
 			"<fieldset><legend>".wfMsgHtml('code-pathsearch-legend')."</legend>" .
 				Xml::hidden( 'title', $special->getPrefixedDBKey() ) .
-				Xml::inputlabel( wfMsg("code-pathsearch-path"), 'path', 'path', 60, '' ) .
+				Xml::inputlabel( wfMsg("code-pathsearch-path"), 'path', 'path', 55, '' ) .
 				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
 			"</fieldset></form>"
 		);
