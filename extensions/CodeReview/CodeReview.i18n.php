@@ -311,6 +311,7 @@ $messages['bg'] = array(
 );
 
 /** Czech (Česky)
+ * @author Danny B.
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
@@ -355,10 +356,11 @@ $messages['cs'] = array(
 	'code-rev-comment-preview' => 'Náhled',
 	'code-rev-diff' => 'Rozdíl',
 	'code-rev-diff-link' => 'rozdíl',
-	'code-status-new' => 'nový',
+	'code-status-new' => 'nové',
 	'code-status-fixme' => 'opravit',
 	'code-status-resolved' => 'vyřešeno',
 	'code-status-ok' => 'ok',
+	'code-status-deferred' => 'odloženo',
 	'code-rev-submit' => 'Uložit změny',
 	'codereview-reply-link' => 'odpovědět',
 	'repoadmin' => 'Správa úložiště',
@@ -435,6 +437,8 @@ $messages['de'] = array(
 	'code-status-resolved' => 'erledigt',
 	'code-status-ok' => 'OK',
 	'code-status-deferred' => 'zurückgestellt',
+	'code-pathsearch-legend' => 'Suche in diesem Repositorium nach Versionen, per Pfad',
+	'code-pathsearch-path' => 'Pfad:',
 	'code-rev-submit' => 'Änderungen übertragen',
 	'codereview-reply-link' => 'antworten',
 	'repoadmin' => 'Repositoriums-Administration',
@@ -460,12 +464,23 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'code-authors' => 'aŭtoroj',
+	'code-tags' => 'etikedoj',
+	'code-author-haslink' => 'Ĉi tiu aŭtoro estas ligita al la vikiuzanto $1',
+	'code-author-name' => 'Enigu salutnomon:',
+	'code-author-link' => 'ĉu ligigi?',
+	'code-author-unlink' => 'ĉu malligigi?',
 	'code-field-id' => 'Revizio',
 	'code-field-author' => 'Aŭtoro',
-	'code-field-message' => 'Komento',
+	'code-field-user' => 'Komentanto',
+	'code-field-message' => 'Resumo pri enigo',
 	'code-field-status' => 'Statuso',
 	'code-field-timestamp' => 'Dato',
+	'code-field-comments' => 'Notoj',
+	'code-field-path' => 'Vojo',
+	'code-field-text' => 'Noto',
 	'code-rev-author' => 'Aŭtoro:',
+	'code-rev-date' => 'Dato:',
 	'code-rev-message' => 'Komento:',
 	'code-rev-rev' => 'Revizio:',
 	'code-rev-modified-a' => 'aldonis',
@@ -474,11 +489,17 @@ $messages['eo'] = array(
 	'code-rev-status' => 'Statuso:',
 	'code-rev-status-set' => 'Ŝanĝi statuson',
 	'code-rev-tags' => 'Etikedoj:',
-	'code-rev-tag-add' => 'Aldoni etikedon',
+	'code-rev-tag-add' => 'Aldoni etikedojn:',
+	'code-rev-tag-remove' => 'Forigi etikedojn:',
+	'code-rev-comment-by' => 'Komento de $1',
 	'code-rev-comment-submit' => 'Enmeti komenton',
 	'code-rev-comment-preview' => 'Antaŭrigardi',
 	'code-status-new' => 'nova',
+	'code-status-ok' => 'Ek!',
 	'codereview-reply-link' => 'respondo',
+	'repoadmin-new-button' => 'Krei',
+	'repoadmin-edit-button' => 'Ek',
+	'right-codereview-post-comment' => 'Aldoni komentojn en revizioj',
 );
 
 /** Persian (فارسی)
@@ -957,6 +978,25 @@ $messages['lb'] = array(
 	'specialpages-group-developer' => 'Handwierksgeschir fir Entwéckler (Programméierer)',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'code-authors' => 'теицянзо',
+	'code-author-name' => 'Совавтт теицянь лем:',
+	'code-author-link' => 'аравтомс сюлмавома пе?',
+	'code-author-unlink' => 'саемс сюлмавома пененть?',
+	'code-author-unlinksuccess' => 'Теицянзо $1 сюлмавома пезэ саезь',
+	'code-field-id' => 'Лиякстомтома',
+	'code-field-author' => 'Теицязо',
+	'code-field-user' => 'Мелень-арьсемань каицязо',
+	'code-field-timestamp' => 'Чи',
+	'code-rev-author' => 'Теицязо:',
+	'code-rev-purge-link' => 'панемс',
+	'code-status-new' => 'од',
+	'repoadmin-new-button' => 'Шкик-теик',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -1016,6 +1056,8 @@ $messages['nl'] = array(
 	'code-status-resolved' => 'opgelost',
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'aangehouden',
+	'code-pathsearch-legend' => 'Op pad versies in deze repository zoeken',
+	'code-pathsearch-path' => 'Pad:',
 	'code-rev-submit' => 'Opmerking opslaan',
 	'code-rev-submit-next' => 'Opslaan en volgende ongecontroleerde',
 	'codereview-reply-link' => 'antwoorden',

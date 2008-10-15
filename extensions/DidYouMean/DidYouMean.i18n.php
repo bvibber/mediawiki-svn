@@ -74,6 +74,13 @@ $messages['eo'] = array(
 	'didyoumean-desc' => 'Aldonu ligilojn al paĝoj kun "similaj" titoloj',
 );
 
+/** Spanish (Español)
+ * @author Academo
+ */
+$messages['es'] = array(
+	'didyoumean-desc' => 'Añade links a las paginas con titulos "similares"',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike

@@ -579,6 +579,7 @@ Sia patiente.',
  * @author Rex
  */
 $messages['id'] = array(
+	'youtubeauthsub_title' => 'Judul',
 	'youtubeauthsub_category' => 'Kategori',
 );
 
@@ -920,6 +921,13 @@ Jekk jogħġbok kun pazjenti.",
 	'youtubeauthsub_jserror_nokeywords' => 'Jekk jogħġbok daħħal kelma jew aktar kliem ċavetta.',
 	'youtubeauthsub_jserror_notitle' => 'Jekk jogħġbok daħħal titlu għall-vidjo.',
 	'youtubeauthsub_jserror_nodesc' => 'Jekk jogħġbok daħħal deskrizzjoni għall-vidjo.',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'youtubeauthsub_title' => 'Конякс',
 );
 
 /** Nahuatl (Nāhuatl)

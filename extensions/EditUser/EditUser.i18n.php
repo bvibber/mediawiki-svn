@@ -385,9 +385,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
+ * @author Rex
  */
 $messages['id'] = array(
 	'edituser-username' => 'Nama',
+	'edituser-dosearch' => 'Cari',
 );
 
 /** Icelandic (Íslenska) */
@@ -549,6 +551,7 @@ $messages['mt'] = array(
  */
 $messages['myv'] = array(
 	'edituser-username' => 'Лемезэ',
+	'edituser-dosearch' => 'Вешнэмс',
 );
 
 /** Nahuatl (Nāhuatl)

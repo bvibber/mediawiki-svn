@@ -1068,6 +1068,7 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'crosswikiblock-expiry' => 'Таштомома шказо:',
 	'crosswikiblock-reason' => 'Тувталось:',
 	'crosswikiunblock-reason' => 'Тувталось:',
 );

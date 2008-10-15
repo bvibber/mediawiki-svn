@@ -435,6 +435,13 @@ $messages['ms'] = array(
 	'inspectcache-ok' => 'OK',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'inspectcache-delete' => 'Нардамс',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

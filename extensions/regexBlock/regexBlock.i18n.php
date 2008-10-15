@@ -1017,6 +1017,7 @@ $messages['mt'] = array(
  */
 $messages['myv'] = array(
 	'regexblock-form-reason' => 'Тувталось:',
+	'regexblock-form-expiry' => 'Таштомома шказо:',
 	'regexblock-view-all' => 'Весе',
 );
 

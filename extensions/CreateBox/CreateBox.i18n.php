@@ -184,14 +184,15 @@ Non puoi creare questa pagina, ma puoi [{{fullurl:{{FULLPAGENAME}}|action=edit}}
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fievarsty
  */
 $messages['ja'] = array(
 	'createbox-desc' => 'ページ作成専用のInputbox',
 	'createbox-create' => '作成',
-	'createbox-exists' => "申し訳ございません、\"'''{{FULLPAGENAME}}'''\" はすでに作成されています。
+	'createbox-exists' => "残念ながら\"'''{{FULLPAGENAME}}'''\" はすでに作成されています。
 
-このページを作成することはできませんが、あなたが[{{fullurl:{{FULLPAGENAME}}|action=edit}} それを編集する]か、[{{fullurl:{{FULLPAGENAME}}}} それを閲覧する]か、または以下のBoxを使用することで他のページを選んで作成することができます。
+このページを作成することはできませんが、[{{fullurl:{{FULLPAGENAME}}|action=edit}} 同名のページを編集]、[{{fullurl:{{FULLPAGENAME}}}} 閲覧]、または以下のBoxを使用して他の名前のページを作成することができます。
 
 <createbox>break=no</createbox>",
 );

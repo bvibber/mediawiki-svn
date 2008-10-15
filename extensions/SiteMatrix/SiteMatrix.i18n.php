@@ -989,11 +989,13 @@ $messages['mt'] = array(
 
 /** Erzya (Эрзянь)
  * @author Amdf
+ * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
 	'sitematrix' => 'Валпаргонь коряс Викимедиянь пелькстнэ',
 	'sitematrix-language' => 'Кель',
 	'sitematrix-others' => 'Лия Викимедиянь проекттнэ',
+	'sitematrix-sitetotal' => 'Весемезэ',
 );
 
 /** Nahuatl (Nāhuatl)

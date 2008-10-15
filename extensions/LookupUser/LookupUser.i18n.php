@@ -338,6 +338,26 @@ $messages['ia'] = array(
 	'lookupuser_useroptions' => 'Optiones del usator:',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'lookupuser' => 'Mencari informasi pengguna',
+	'lookupuser-desc' => '[[Special:LookupUser|Menampilkan informasi]] seorang pengguna seperti surat-e dan ID',
+	'lookupuser_intro' => 'Masukkan nama pengguna untuk melihat daftar preferensinya.',
+	'lookupuser_nonexistent' => 'Kesalahan: Pengguna tidak ditemukan',
+	'lookupuser_authenticated' => 'Konfirmasi surat-e: $1',
+	'lookupuser_not_authenticated' => 'tidak dikonfirmasi',
+	'lookupuser_id' => 'ID Pengguna: <tt>#$1</tt>',
+	'lookupuser_email' => 'Surat-e: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => 'tidak diberikan',
+	'lookupuser_realname' => 'Nama asli: $1',
+	'lookupuser_registration' => 'Tanggal pendaftaran: $1',
+	'lookupuser_no_registration' => 'tidak dicatat',
+	'lookupuser_touched' => 'Rekor terakhir yang tercapai: $1',
+	'lookupuser_useroptions' => 'Opsi pengguna:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -359,12 +379,13 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fievarsty
  */
 $messages['ja'] = array(
 	'lookupuser' => '利用者情報を調査',
 	'lookupuser-desc' => 'EメールアドレスまたはIDなどの利用者に関する[[Special:LookupUser|情報を検索]]',
-	'lookupuser_intro' => '利用者名を入力して、その利用者の情報を調べてください。',
+	'lookupuser_intro' => '利用者名を入力して、その利用者のオプション設定をみることができます。',
 	'lookupuser_nonexistent' => 'エラー: 利用者は存在しません',
 	'lookupuser_authenticated' => 'Eメール確認日: $1',
 	'lookupuser_not_authenticated' => '確認されてません',

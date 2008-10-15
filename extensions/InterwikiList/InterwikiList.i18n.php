@@ -141,6 +141,18 @@ $messages['he'] = array(
 	'interwikilist-target' => 'כתובת יעד',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'interwikilist' => 'Interwiki popis',
+	'interwikilist-desc' => 'Dodaje [[Special:Interwikilist|posebnu stranicu]] za pregled dostupnih interwiki poveznica',
+	'interwikilist-linkname' => 'Interwiki poveznica',
+	'interwikilist-target' => 'Ciljani URL',
+	'interwikilist-filter' => 'Filtriraj popis',
+	'interwikilist-prefix' => 'Interwiki prefiks:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -349,6 +349,28 @@ $messages['hil'] = array(
 	'multipleupload' => 'Mag karga mga files',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'multipleupload' => 'Postavi datoteke',
+	'multipleupload-desc' => 'Omogućava suradnicima [[Special:MultipleUpload|postavljanje više datoteka od jednom]]',
+	'multipleupload-ignoreallwarnings' => "Ignoriraj '''sva upozorenja''' i svejedno postavi datoteku.",
+	'multipleupload-saveallfiles' => 'Postavi sve datoteke',
+	'multipleupload-addresswarnings' => 'Molim prikaži sva upozorenja prije postavljanja novih inačica datoteka.',
+	'multipleupload-page' => '{{ns:project}}:Politika o brisanju datoteka',
+	'multipleupload-text' => "Postavljanje više datoteka.
+
+Kliknite 'Browse' i odaberite datoteku koju želite postaviti.
+Možete postaviti od 1 do $1 datoteka odjednom.
+
+Možete dodatno upisati '''Ime datoteke na wikiju''' i upisati '''Opis''' za sam opis datoteke.
+
+Neprimjerene datoteke će odmah biti obrisane, vidi [[{{MediaWiki:Multipleupload-page}}|politiku brisanja datoteka]].",
+	'multiupload-fileuploaded' => 'Datoteka postavljena.',
+	'multiupload-toolbox' => 'Postavi više datoteka',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -402,6 +424,28 @@ Tu pote entrar optionalmente un '''Nomine de file de destination''' e fornir un 
 Le files inappropriate essera delite immediatemente; vide le [[{{MediaWiki:Multipleupload-page}}|politica pro le deletion de files]].",
 	'multiupload-fileuploaded' => 'File cargate.',
 	'multiupload-toolbox' => 'Cargar plure files',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'multipleupload' => 'Muatkan berkas',
+	'multipleupload-desc' => 'Memungkinkan pengguna untuk [[Special:MultipleUpload|memuatkan beberapa berkas sekaligus]]',
+	'multipleupload-ignoreallwarnings' => "Abaikan '''semua peringatan''' dan langsung simpan semua berkas.",
+	'multipleupload-saveallfiles' => 'Simpan semua berkas',
+	'multipleupload-addresswarnings' => 'Silakan periksa terlebih dahulu pesan-pesan peringatan yang ditampilkan sebelum memuatkan kembali berkas.',
+	'multipleupload-page' => '{{ns:project}}:Kebijakan penghapusan berkas',
+	'multipleupload-text' => "Anda dapat memuatkan banyak berkas sekaligus di sini.
+
+Tekan 'Browse' dan pilih berkas-berkas yang ingin Anda muatkan.
+Anda dapat memuatkan 1 hingga $1 berkas sekaligus.
+
+Anda dapat memasukkan '''nama berkas tujuan''' yang berbeda dan memberikan '''Ikhtisar''' untuk mendeskripsikan berkas Anda.
+
+Berkas-berkas yang tidak layak akan segera dihapuskan, lihat [[{{MediaWiki:Multipleupload-page}}|kebijakan penghapusan berkas]].",
+	'multiupload-fileuploaded' => 'Berkas dimuatkan.',
+	'multiupload-toolbox' => 'Memuat banyak berkas sekaligus',
 );
 
 /** Italian (Italiano)

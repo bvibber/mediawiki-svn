@@ -470,6 +470,7 @@ $messages['hr'] = array(
 	'imagemap_invalid_coord' => 'Error: nevaljane koordinate u retku $1, mora biti broj',
 	'imagemap_invalid_desc' => 'Error: nevaljan opis, mora biti jedan od: <tt>$1</tt>',
 	'imagemap_description' => "Ovo je slika/karta s poveznicama (''imagemap'')",
+	'imagemap_poly_odd' => 'Greška: pronađen poly s neobičnim brojem koordinata u redu $1',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

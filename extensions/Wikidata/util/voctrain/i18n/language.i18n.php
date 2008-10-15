@@ -1171,6 +1171,7 @@ $messages['mt'] = array(
 $messages['myv'] = array(
 	'voctrain_Hello_World' => 'ШУМБРАТ ВИКИ!',
 	'voctrain_try_again_' => 'варчамс одов?',
+	'voctrain_Action_unknown' => 'Апак содань тев теемась',
 	'voctrain_User_added' => 'Теицясь поладозь',
 	'voctrain_continue' => 'сыргак седе тов',
 	'voctrain_bye' => 'шумбрынестэ',
@@ -1187,9 +1188,13 @@ $messages['myv'] = array(
 	'voctrain_Answer' => 'Кевкстемань пандома',
 	'voctrain_logout' => 'лисеме',
 	'voctrain_Omegawiki' => 'Омегавики',
+	'voctrain_User_name' => 'Теицянь лем',
+	'voctrain_Password' => 'Совамо вал',
 	'voctrain_Create_new_user' => 'Шкамс-теемс од теиця',
+	'voctrain_Switch_language' => 'Полавтомс кель',
 	'voctrain_Language' => 'Кель',
 	'voctrain_Log_in' => 'Совамо',
+	'voctrain_Vocview' => 'Валкскень ванома потмо',
 	'voctrain_Translation' => 'Ютавтома',
 );
 

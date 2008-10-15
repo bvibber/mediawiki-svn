@@ -552,7 +552,9 @@ $messages['mt'] = array(
  */
 $messages['myv'] = array(
 	'player-file' => 'Файланть лемезэ',
+	'player-play' => 'Седямс',
 	'player-invalid-title' => 'амаштовикс коняксось',
+	'player-clicktoplay' => 'Седик $1-нть',
 	'player-goto-page' => 'Лопа',
 	'player-goto-file' => 'файла',
 );

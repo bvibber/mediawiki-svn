@@ -81,6 +81,13 @@ $messages['ia'] = array(
 	'randomimage-desc' => 'Forni un selector de media aleatori usante <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'randomimage-desc' => 'Menampilkan berkas media acak menggunakan <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

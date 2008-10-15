@@ -163,6 +163,13 @@ $messages['pl'] = array(
 	'trustedxff-desc' => 'Obsługa listy zaufanych adresów proxy ([http://meta.wikimedia.org/wiki/XFF_project Projekt XFF])',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'trustedxff-desc' => 'Manuseamento de uma lista de endereços proxy confiáveis ([http://meta.wikimedia.org/wiki/XFF_project projecto XFF])',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

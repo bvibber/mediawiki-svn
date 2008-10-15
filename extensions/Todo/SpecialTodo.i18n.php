@@ -576,6 +576,7 @@ $messages['mt'] = array(
  */
 $messages['myv'] = array(
 	'todo-tab' => 'мезе теемс',
+	'todo-list-change' => 'Полавтомс',
 );
 
 /** Nahuatl (Nāhuatl)

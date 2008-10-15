@@ -396,9 +396,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Irwangatot
+ * @author Rex
  */
 $messages['id'] = array(
 	'dt_xml_name' => 'Nama',
+	'dt_xml_title' => 'Judul',
 );
 
 /** Icelandic (Íslenska)
@@ -563,8 +565,12 @@ $messages['mr'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'dt_viewxml_categories' => 'Категорият',
+	'dt_viewxml_namespaces' => 'Лем потмот',
 	'dt_xml_page' => 'Лопа',
+	'dt_xml_field' => 'Пакся',
 	'dt_xml_name' => 'Лемезэ',
+	'dt_xml_title' => 'Конякс',
 );
 
 /** Nahuatl (Nāhuatl)

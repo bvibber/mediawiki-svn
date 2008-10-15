@@ -290,6 +290,7 @@ $messages['ext'] = array(
  * @author Cimon Avaro
  * @author Jaakonam
  * @author Nike
+ * @author Silvonen
  */
 $messages['fi'] = array(
 	'contributors' => 'Muokkaajat',
@@ -300,6 +301,7 @@ $messages['fi'] = array(
 	'contributors-submit' => 'Näytä',
 	'contributors-subtitle' => 'Sivun $1 pääasialliset muokkaajat',
 	'contributors-others-long' => 'Tätä sivua on muokannut {{PLURAL:$1|yksi muu käyttäjä|$1 muuta käyttäjää}}.',
+	'contributors-others' => 'ja {{PLURAL:$1|yksi muu|$1 muuta}}',
 	'contributors-nosuchpage' => 'Sivua $1 ei ole olemassa.',
 );
 
@@ -725,6 +727,14 @@ $messages['mr'] = array(
  */
 $messages['mt'] = array(
 	'contributors' => 'Kontributuri',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'contributors-target' => 'Коняксозо:',
+	'contributors-submit' => 'Невтемс',
 );
 
 /** Nahuatl (Nāhuatl)

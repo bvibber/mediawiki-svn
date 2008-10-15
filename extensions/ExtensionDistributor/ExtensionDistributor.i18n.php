@@ -645,6 +645,14 @@ Déi meescht Erweiderungen fonctionnéieren mat verschiddene Versioune vu MediaW
 	'extdist-want-more' => 'Eng aner Erweiderung benotzen',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'extdist-submit-extension' => 'Поладомс',
+	'extdist-submit-version' => 'Поладомс',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

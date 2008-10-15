@@ -619,7 +619,7 @@ $messages['hr'] = array(
 	'grouppermissions-log-name' => 'Evidencije prava skupina',
 	'grouppermissions-log-header' => 'Ova stranica prati promjene za prava suradničkih skupina.',
 	'grouppermissions-needjs' => 'Upozorenje: JavaScript nije omogućen u vašem pregledniku. Neke mogućnosti možda neće raditi!',
-	'grouppermissions-sp-header' => 'Ovu stranicu možete koristiti za raspored prava i dodavanje novih prava.',
+	'grouppermissions-sp-header' => 'Ovu stranicu možete koristiti za raspored prava i dodavanje novih prava. Stavite pokazivač nad pravom za opis.',
 	'grouppermissions-sp-sort' => 'Raspored prava',
 	'grouppermissions-sp-save' => 'Spremi',
 	'grouppermissions-sp-success' => 'Prava su uspješno raspoređena',
@@ -642,6 +642,7 @@ $messages['hr'] = array(
 	'right-recentchanges' => 'Gledanje nedavnih promjena',
 	'right-edittalk' => 'Uređivanje stranica za razgovor',
 	'right-edit-new' => 'Uređivanje stranica (koje nisu stranice za razgovor)',
+	'right-readold' => 'Gledanje sadržaja starih izmjena i razlika',
 );
 
 /** Interlingua (Interlingua)
@@ -952,6 +953,7 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'grouppermissions-search' => 'Курось:',
 	'grouppermissions-true' => 'Виде',
 	'grouppermissions-sp-remove' => 'нардык',
 );

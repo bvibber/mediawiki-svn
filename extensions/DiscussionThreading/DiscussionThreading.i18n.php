@@ -154,6 +154,13 @@ $messages['lb'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Eng nei Bemierkung derbäisetzen',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'discussionthreading-threadnewsection' => 'од',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

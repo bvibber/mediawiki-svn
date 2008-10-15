@@ -117,6 +117,13 @@ $messages['mr'] = array(
 	'randomrootpage-desc' => 'अविशिष्ट मूळ पान मिळविण्यासाठीचे [[Special:Randomrootpage|विशेष पान]]',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'randomrootpage' => 'Кодама понгсь юрт лопа',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

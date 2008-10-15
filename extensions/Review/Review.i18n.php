@@ -799,6 +799,13 @@ $messages['mt'] = array(
 	'review_comment' => 'Kumment',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'review_total_statistics' => 'Весемезэ',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

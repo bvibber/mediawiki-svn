@@ -1381,7 +1381,7 @@ $messages['km'] = array(
 	'ogg-play-sound' => 'បន្លឺសំលេង',
 	'ogg-no-player' => 'សូមអភ័យទោស! ប្រព័ន្ធដំនើរការរបស់អ្នក ហាក់បីដូចជាមិនមានកម្មវិធី ណាមួយសំរាប់លេងទេ។ សូម <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ទាញយកកម្មវិធី សំរាប់លេងនៅទីនេះ</a> ។',
 	'ogg-no-xiphqt' => 'មិនឃើញមាន អង្គផ្សំ XiphQT សំរាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង តំលើង XiphQT</a> ឬ ជ្រើសរើស ឧបករអាន ផ្សេង ។',
-	'ogg-player-videoElement' => 'ធាតុ <វីដេអូ>',
+	'ogg-player-videoElement' => 'Native browser support',
 	'ogg-player-oggPlugin' => 'កម្មវិធីជំនួយ Ogg',
 	'ogg-player-thumbnail' => 'នៅតែជារូបភាព',
 	'ogg-player-soundthumb' => 'មិនមានឧបករណ៍លេងទេ',
@@ -1696,7 +1696,7 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'ogg-play' => 'Седык',
+	'ogg-play' => 'Седик',
 	'ogg-pause' => 'Аштевтик',
 	'ogg-stop' => 'Лоткавтык',
 	'ogg-play-video' => 'Нолдык видеонть',

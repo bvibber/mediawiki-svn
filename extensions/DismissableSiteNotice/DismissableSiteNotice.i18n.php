@@ -225,7 +225,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'sitenotice_close' => 'piilota',
-	'sitenotice-desc' => 'Sallii käyttäjien piilottaa sitenotice-tekstin.',
+	'sitenotice-desc' => 'Mahdollistaa käyttäjille sivutiedotteen piilottamisen.',
 );
 
 /** Võro (Võro) */

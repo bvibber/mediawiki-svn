@@ -188,9 +188,11 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'dplforum-desc' => 'Ekstensi forum berbasis-DPL',
+	'dplforum-by' => 'oleh',
 	'dplforum-edited' => '  - Terakhir disunting',
 	'dplforum-never' => 'Tidak pernah',
 	'dplforum-toofew' => 'Forum DPL: Terlalu sedikit kategori!',
+	'dplforum-toomany' => 'Forum DPL: Terlalu banyak kategori!',
 );
 
 /** Italian (Italiano)
@@ -260,6 +262,25 @@ $messages['mr'] = array(
 	'dplforum-never' => 'कधीच नाही',
 	'dplforum-toofew' => 'डीपीएल चर्चासत्र: खूपच कमी वर्ग!',
 	'dplforum-toomany' => 'डीपीएल चर्चासत्र: खूप जास्त वर्ग!',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'dplforum-desc' => 'penyambung forum berdasarkan DPL',
+	'dplforum-by' => 'oleh',
+	'dplforum-edited' => '  - Suntingan terakhir',
+	'dplforum-never' => 'Tiada',
+	'dplforum-toofew' => 'Forum DPL: Kategori terlalu sedikit!',
+	'dplforum-toomany' => 'Forum DPL: Kategori terlalu banyak!',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'dplforum-never' => 'Зярдояк',
 );
 
 /** Nahuatl (Nāhuatl)

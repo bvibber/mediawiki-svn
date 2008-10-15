@@ -398,6 +398,13 @@ $messages['mt'] = array(
 	'languageselector' => 'Lingwa',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'languageselector' => 'Кель',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

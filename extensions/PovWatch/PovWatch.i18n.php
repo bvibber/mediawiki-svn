@@ -351,7 +351,39 @@ $messages['hi'] = array(
  * @author Dalibor Bosits
  */
 $messages['hr'] = array(
+	'povwatch' => 'Predbilježeno praćenje',
 	'povwatch_desc' => 'Ekstenzija za [[Special:PovWatch|stavljanje stranica u popis praćenja]] drugih suradnika',
+	'povwatch_no_session' => 'Greška: Zahtjev nije mogao biti poslan zbog gubitka podataka o sesiji.',
+	'povwatch_not_allowed_push' => 'Vi niste admin za predbilježbu praćenja, ne možete postaviti stranice u popis praćenja',
+	'povwatch_already_subscribed' => 'Već ste upisani u predbilježno praćenje',
+	'povwatch_subscribed' => 'Niste upisani u predbilježeno praćenje',
+	'povwatch_not_subscribed' => 'Niste upisani u predbilježeno praćenje, stoga se ne možete ispisati.',
+	'povwatch_unsubscribed' => 'Sada ste se ispisali iz predbilježenog praćenja',
+	'povwatch_invalid_title' => 'Određeni naslov nije valjan',
+	'povwatch_pushed' => '[[$1]] je uspješno postavljeno u popis praćenja za $2 suradnika',
+	'povwatch_intro' => 'Predbilježeno praćenje je sustav koji omogućava diskretno postavljanje spornih stranica u popis praćenja upisanih administratora.
+
+Evidencija nedavno postavljenih stranica je dostupna [[Special:PovWatch/log|ovdje]].',
+	'povwatch_subscriber_list' => 'Dostupan je [[Special:PovWatch/subscribers|popis upisanih suradnika]].',
+	'povwatch_subscriber_list_intro' => '<strong>Popis upisanih</strong>',
+	'povwatch_not_allowed_subscribers' => 'Nije vam dopušteno gledanje popisa upisanih u predbilježeno praćenje',
+	'povwatch_unknown_subpage' => 'Nepoznata podstranica.',
+	'povwatch_push' => 'Postavi',
+	'povwatch_push_intro' => 'Koristite ovaj obrazac za postavljanje stranica u popis praćenja upisanih suradnika.
+Molimo budite oprezni kod upisivanja naslova: u popis praćenja mogu biti dodane i nepostojeće stranice, i ne postoji način za vraćanje kad se jednom postavi.',
+	'povwatch_title' => 'Naslov:',
+	'povwatch_comment' => 'Komentar za evidenciju:',
+	'povwatch_no_log' => 'Nema unosa u evidenciji',
+	'povwatch_no_subscribers' => 'Nema upisanih suradnika',
+	'povwatch_unsubscribe_intro' => 'Upisani ste u predbilježeno praćenje.
+Kliknite na tipku ispod za ispisivanje iz sustava.',
+	'povwatch_unsubscribe' => 'Ispiši se',
+	'povwatch_subscribe_intro' => 'Niste upisani u predbilježeno praćenje.
+Kliknite na tipku ispod za upisivanje u sustav.',
+	'povwatch_subscribe' => 'Upiši se',
+	'povwatch_added' => 'dodano',
+	'right-povwatch_admin' => 'Upravljanje suradničkim pravima za dodavanje stranica u popis praćenja drugih suradnika',
+	'right-povwatch_user' => 'Dodavanje stranica u popis praćenja drugih suradnika',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -431,6 +463,13 @@ Clicca le button infra pro inscriber te.',
 	'povwatch_added' => 'addite',
 	'right-povwatch_admin' => 'Gerer le derectos del usatores a mitter paginas in le observatorios de altere usatores',
 	'right-povwatch_user' => 'Mitter paginas in le observatorios de altere usatores',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'povwatch_title' => 'Judul:',
 );
 
 /** Italian (Italiano)
@@ -610,6 +649,13 @@ $messages['mr'] = array(
 	'povwatch_added' => 'वाढविले',
 	'right-povwatch_admin' => 'इतर सदस्यांच्या पहार्‍याच्या सूची मध्ये पाने वाढविण्यासाठी आवश्यक अशा सदस्य अधिकारांचे प्रबंधन करा',
 	'right-povwatch_user' => 'इतर सदस्यांच्या पहार्‍याच्या सूचीत पाने वाढवा',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'povwatch_title' => 'Коняксозо:',
 );
 
 /** Nahuatl (Nāhuatl)

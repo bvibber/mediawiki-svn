@@ -2481,6 +2481,7 @@ $wdMessages['myv'] = array(
 	'langman_title' => 'Келень кирдий',
 	'languages' => 'Келень кирдий',
 	'ow_save' => 'Ванстомс',
+	'ow_history' => 'Путовкст-юртт',
 	'ow_uiprefs' => 'Викидата',
 	'ow_none_selected' => '<Вейкеяк апакКочка>',
 	'ow_dm_not_present' => 'апак совавто',

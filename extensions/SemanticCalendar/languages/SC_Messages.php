@@ -284,6 +284,15 @@ $messages['mr'] = array(
 	'sc_gotomonth' => 'महीन्याकडे चला',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'sc_previousmonth' => 'Йутазь ковсто',
+	'sc_nextmonth' => 'Сы ковсто',
+	'sc_today' => 'Течи',
+);
+
 /** Dutch (Nederlands)
  * @author GerardM
  * @author Siebrand

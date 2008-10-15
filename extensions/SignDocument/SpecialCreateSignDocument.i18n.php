@@ -583,6 +583,10 @@ $messages['mr'] = array(
  */
 $messages['myv'] = array(
 	'createsigndoc-pagename' => 'Лопась:',
+	'createsigndoc-extaddress' => 'Ошось, штатось, масторось:',
+	'createsigndoc-phone' => 'Телефон номерэть:',
+	'createsigndoc-bday' => 'Чачома чить:',
+	'createsigndoc-hidden' => 'Кекшезь',
 );
 
 /** Nahuatl (Nāhuatl)

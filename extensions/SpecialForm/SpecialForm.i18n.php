@@ -535,6 +535,13 @@ $messages['mr'] = array(
 	'formsaveerrortext' => "'$1' पान जतन करण्यामध्ये अनोळखी त्रुटी आलेली आहे.",
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'formsave' => 'Ванстомс',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

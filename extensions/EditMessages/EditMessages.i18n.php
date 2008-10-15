@@ -369,6 +369,13 @@ $messages['ia'] = array(
 	'editmsg-patch-success' => 'Patch applicate con successo.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'editmsg-search' => 'Cari',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -509,6 +516,13 @@ $messages['mr'] = array(
 	'editmsg-no-patch' => '"patch" क्रिया करता आलेली नाही',
 	'editmsg-patch-failed' => '$1 अशी स्थिती दाखवून पॅच रद्द झालेला आहे',
 	'editmsg-patch-success' => 'पॅच यशस्वी.',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'editmsg-search' => 'Вешнэмс',
 );
 
 /** Low German (Plattdüütsch)

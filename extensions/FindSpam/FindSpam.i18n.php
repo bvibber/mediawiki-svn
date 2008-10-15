@@ -231,6 +231,17 @@ $messages['ia'] = array(
 	'findspam-notextfound' => 'Nulle contribution trovate',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'findspam' => 'Cari spam',
+	'findspam-desc' => 'Menambahkan [[Special:FindSpam|halaman istimewa]] untuk mencari spam yang baru ditambahkan',
+	'findspam-ip' => 'Alamat IP:',
+	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Tidak ada kontribusi ditemukan',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -324,9 +335,14 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aurora
+ * @author Aviator
  */
 $messages['ms'] = array(
+	'findspam' => 'Cari spam',
+	'findspam-desc' => 'Menambah sebuah [[Special:FindSpam|laman khas]] yang membolehkan pencarian penambahan spam terkini',
+	'findspam-ip' => 'Alamat IP:',
 	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Tiada sumbangan dijumpai',
 );
 
 /** Nahuatl (Nāhuatl)

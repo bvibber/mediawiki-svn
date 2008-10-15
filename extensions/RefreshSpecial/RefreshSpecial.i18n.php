@@ -274,6 +274,13 @@ $messages['lb'] = array(
 	'refreshspecial-total-display' => "<br />$1 Säite mat am Ganzen $2 Reien an $3 (Dauer) (d'Gesamtzäit déi de Script brauch ass $4)",
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'refreshspecial-here' => '<b>тесэ</b>',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

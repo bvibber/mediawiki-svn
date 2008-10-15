@@ -44,6 +44,13 @@ The id you need to provide is the numbers and letters between "$2" and "$3".',
         'imstatus_yahoo_style' => 'the button style, from $1 (smallest) to $2 (biggest), $3 and $4 are for voicemail.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'imstatus-desc' => 'Short description of the IMStatus extension, shown on [[Special:Version]].',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -110,7 +117,9 @@ $messages['arz'] = array(
 	'imstatus_yahoo_style' => 'أسلوب الزر، من $1 (أصغر) إلى $2 (أكبر)، $3 و $4 هما للبريد الصوتي.',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Purodha
+ */
 $messages['de'] = array(
 	'imstatus-desc' => 'Fügt Tags hinzu, um den Online-Status verschiedener Instant-Messenger anzuzeigen (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Syntax',
@@ -122,7 +131,7 @@ $messages['de'] = array(
 	'imstatus_or' => 'oder',
 	'imstatus_style' => 'Stil der Status-Anzeige',
 	'imstatus_action' => 'Aktion beim Klicken der Schaltfläche',
-	'imstatus_details_saa' => 'Für mehr Details zu den Stilen und Aktionen, siehe $1.',
+	'imstatus_details_saa' => 'Weitere Details zu den Stilen und Aktionen findet man auf: $1.',
 	'imstatus_your_name' => 'dein $1-Name',
 	'imstatus_aim_presence' => '$1 zeigt deinen Status mit einem Link, der AIM startet (sofern es installiert ist), um dir eine Nachricht zu senden.',
 	'imstatus_aim_api' => '$1 zeigt deinen Status mit einem Link, der eine <b>Browser</b>, JavaScript Version von AIM, startet, um dir eine Nachricht zu senden.',
@@ -246,6 +255,41 @@ Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
 	'imstatus_yahoo_style' => 'le stilo del button, de $1 (le plus parve) a $2 (le plus grande), $3 e $4 es pro le messages vocal.',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'imstatus-desc' => 'Brängk Befähle en et Wiki, öm der Online-Stattus en diverse <i lang="en">instant messengers (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)</i> ze zeije.',
+	'imstatus_syntax' => 'Syntax',
+	'imstatus_default' => 'Shtandatt',
+	'imstatus_example' => 'Bäijshpell',
+	'imstatus_possible_val' => 'Müjjelesche Wääte',
+	'imstatus_max' => 'et Hühßte',
+	'imstatus_min' => 'et Winnishßte',
+	'imstatus_or' => 'udder',
+	'imstatus_style' => 'Shtiil för et Aanzäije',
+	'imstatus_action' => 'wat sull paßeere, wam_mer drop kleck',
+	'imstatus_details_saa' => 'Mieh övver et Ußsinn un de Annzäije, un wat se donn künne, kanns De op $1 fenge.',
+	'imstatus_your_name' => 'Dinge Name op $1',
+	'imstatus_aim_presence' => '$1 zäijsch Dinge Shtattus met enem Lengk, dä dä AIM aanwerrfe deiht, öm Der en Nohresch ze schecke — wann dä drop kleck, en och op singem Rääschner enshtalleet hät.',
+	'imstatus_aim_api' => '$1 zäijsch Dinge Shtattus met enem Lengk, dä ene JavaScrip-Väsjohn fum AIM en Dingem Brauser aanwerrfe deiht, öm Der en Nohresch ze schecke.',
+	'imstatus_gtalk_code' => 'Dinge <i lang="en">Google</i>-Klaaf-<i lang="en">Code</i>',
+	'imstatus_gtalk_get_code' => 'Dinge <i lang="en">Google</i>-Klaaf-<i lang="en">Code</i> kriß De bäij $1.',
+	'imstatus_gtalk_height' => 'Däm Kaste sing Hühde en Pixelle.',
+	'imstatus_gtalk_width' => 'Däm Kaste sing Breed en Pixelle.',
+	'imstatus_icq_id' => 'Ding ICQ-Kennung',
+	'imstatus_icq_style' => 'En Zahl zwesche 0 un 26, et jitt nämmlesch 27 einzel Aate.',
+	'imstatus_live_code' => 'Ding <i lang="en">Live Messenger Website-ID</i>',
+	'imstatus_live_get_code' => 'Ding <i lang="en">Live Messenger Website-ID</i> — <strong>es nit Dinge e-mail-Address</strong> —
+kanns De en <a href="$1">Dinge <i lang="en">Live Messenger</i> Enstellunge</a> maache lohße.
+Wat De hee aanjevve moß, sen de Bochstave un Zahle zwesche „$2“ und „$3“.',
+	'imstatus_skype_nbstyle' => "'''Opjepaß:''' Wann De Der en Aanzeisch ußsökß, woh ene Akßjuhn met enjeschloße es,
+dann es ejal, wat De sellve hee för Dinge Lengk för en Akßjuhn ußjesooht häs.
+De Akßjuhn en dä Aanzeisch weet jenumme.",
+	'imstatus_xfire_size' => 'wi jruuß dä Knopp sinn sull, fum jrüüßte ($1) beß nohm kleijnßte ($2)',
+	'imstatus_yahoo_style' => 'wi dä Knopp ußsinn sull, fum kleijnßte ($1) beß nohm jrüüßte ($2) — ($3) un ($4) sin för <i lang="en">voicemail</i>.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -262,6 +306,15 @@ $messages['lb'] = array(
 	'imstatus_gtalk_width' => 'Breet vun der Këscht, a Pixel.',
 	'imstatus_icq_id' => 'är ICQ ID',
 	'imstatus_icq_style' => 'eng Zuel tëschent 0 a 26 (jo, et gëtt 27 verschidde Stylen ...).',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'imstatus_max' => 'весемеде ламо',
+	'imstatus_min' => 'весемеде аламо',
+	'imstatus_or' => 'эли',
 );
 
 /** Dutch (Nederlands)

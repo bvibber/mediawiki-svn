@@ -88,6 +88,13 @@ $messages['he'] = array(
 	'tab0-desc' => 'הוספת לשונית "0" המקשרת לעריכת הפסקה הראשונה בדף',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'tab0-desc' => 'Dodaje "0" tab, vodi na uređivanje prvog odlomka na stranici',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -171,6 +178,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'tab0-desc' => 'Dodaje zakładkę „0”, linkującą do edycji pierwszej sekcji na stronie',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'tab0-desc' => 'Adiciona uma pestana "0", que liga à página de edição da primeira secção da página',
 );
 
 /** Slovak (Slovenčina)

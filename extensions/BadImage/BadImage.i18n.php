@@ -1213,7 +1213,10 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'badimages-add-btn' => 'Поладомс',
 	'badimages-name' => 'Лемезэ:',
+	'badimages-not-added' => 'Неевтесь а поладови.',
+	'badimages-not-removed' => 'Неевтесь а нардави.',
 	'badimages-reason' => 'Тувталось:',
 	'badimages-remove' => '(нардык)',
 	'badimages-remove-btn' => 'Нардык',

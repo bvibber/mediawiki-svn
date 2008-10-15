@@ -339,6 +339,25 @@ Pro facer isto, per favor obtene un clave API ab [http://www.flickr.com/services
 	'importfreeimages_returntoform' => "O clicca <a href='$1'>hic</a> pro retornar al resultatos del recerca",
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'importfreeimages' => 'Impor gambar bebas',
+	'importfreeimages-desc' => 'Menambahkan halaman istimewa untuk [[Special:ImportFreeImages|mengimpor foto-foto dengan lisensi yang benar]] dari [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Halaman ini mengizinkan Anda untuk mencari foto-foto dengan lisensi yang benar dan mengimpornya ke wiki Anda.',
+	'importfreeimages_noapikey' => 'Anda belum mengkonfigurasi Kunci API Flickr Anda.
+Untuk melakukannya, Anda harus mendapatkan sebuah kunci API dari [http://www.flickr.com/services/api/misc.api_keys.html sini] dan mengeset wgFlickrAPIKey di ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => "Tidak ditemukan foto yang memenuhi kriteria pencarian '$1', silakan coba lagi.",
+	'importfreeimages_invalidurl' => 'URL "$1" bukanlah gambar Flickr yang valid.',
+	'importfreeimages_owner' => 'Pembuat',
+	'importfreeimages_importthis' => 'impor',
+	'importfreeimages_next' => 'Berikutnya $1',
+	'importfreeimages_filefromflickr' => '$1 oleh pengguna <b>[$2]</b> dari flickr. URL asli',
+	'importfreeimages_promptuserforfilename' => 'Harap masukkan nama berkas tujuan:',
+	'importfreeimages_returntoform' => "Atau, klik <a href='$1'>di sini</a> untuk kembali ke hasil pencarian Anda",
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -457,11 +476,36 @@ $messages['mr'] = array(
 	'importfreeimages_returntoform' => "किंवा, तुमच्या शोध निकालांकडे परत जाण्यासाठी <a href='$1'>इथे</a> टिचकी द्या",
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'importfreeimages' => 'Import imej bebas',
+	'importfreeimages-desc' => 'Membekalkan laluan untuk [[Special:ImportFreeImages|mengimport gambar dengan lesen yang sewajarnya]] dari [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Laman ini membolehkan anda mencari gambar dengan lesen yang sewajarnya dari flickr dan mengimportnya ke dalam wiki ini.',
+	'importfreeimages_noapikey' => 'Anda belum menetapkan Kekunci API Flickr anda. Untuk melakukan sedemikian, sila dapatkan sebuah kekunci API dari [http://www.flickr.com/services/api/misc.api_keys.html sini] dan tetapkan nilai wgFlickrAPIKey dalam ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => "Tiada gambar yang sepadan dengan kriteria '$1'. Sila cuba lagi.",
+	'importfreeimages_invalidurl' => 'URL "$1" bukan imej Flickr yang sah.',
+	'importfreeimages_owner' => 'Pemilik',
+	'importfreeimages_importthis' => 'import ini',
+	'importfreeimages_next' => '$1 berikutnya',
+	'importfreeimages_filefromflickr' => '$1 oleh pengguna <b>[$2]</b> dari flickr. URL asal',
+	'importfreeimages_promptuserforfilename' => 'Sila masukkan nama fail sasaran:',
+	'importfreeimages_returntoform' => "Atau klik <a href='$1'>di sini</a> untuk kembali ke keputusan carian anda",
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
 	'importfreeimages_next' => '$1 li jmiss',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'importfreeimages_owner' => 'Теицязо',
 );
 
 /** Nahuatl (Nāhuatl)

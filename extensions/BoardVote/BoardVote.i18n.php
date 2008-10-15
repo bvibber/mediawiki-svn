@@ -4168,6 +4168,7 @@ Sebuah amaran keselamatan mengenai sijil yang tidak ditandatangani mungkin akan 
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'boardvote_novotes' => 'Зярс кияк вайгелензэ эзизе кая.',
 	'boardvote_time' => 'Шка',
 	'boardvote_user' => 'Теиця',
 	'boardvote_days' => 'Чить',

@@ -118,6 +118,14 @@ $messages['oc'] = array(
 	'semanticgooglemaps-desc' => 'Permet als utilizaires d’apondre Google Maps sus de paginas wiki sus la banca de donadas estructuradas',
 );
 
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Pesquisar coordenadas',
+	'semanticgooglemaps-desc' => 'Permite aos utilizadores adicionarem mapas do Google Maps a páginas wiki baseadas em dados estruturados',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

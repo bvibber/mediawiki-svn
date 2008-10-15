@@ -51,6 +51,13 @@ $messages['gl'] = array(
 	'regexfunctions-desc' => 'Funcións de análise de expresións regulares',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'regexfunctions-desc' => 'Parserske funkcije s regularnim izrazom',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

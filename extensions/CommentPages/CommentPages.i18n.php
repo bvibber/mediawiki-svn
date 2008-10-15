@@ -85,6 +85,13 @@ $messages['eo'] = array(
 	'nstab-comments' => 'Komentaro',
 );
 
+/** Spanish (Español)
+ * @author Academo
+ */
+$messages['es'] = array(
+	'nstab-comments' => 'Comentario',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -192,6 +199,13 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'commentpages-desc' => 'Laman-laman komen bagi ruang nama utama',
 	'nstab-comments' => 'Ulasan',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'nstab-comments' => 'Мельть-арьсемат',
 );
 
 /** Low German (Plattdüütsch)

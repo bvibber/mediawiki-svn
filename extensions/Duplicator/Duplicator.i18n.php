@@ -692,6 +692,13 @@ $messages['mr'] = array(
 	'duplicator-toomanyrevisions' => '[[$1]] ला खूप जास्त ($2) आवृत्त्या आहेत व त्याची प्रत करता येत नाही. सध्याची मर्यादा $3 इतकी आहे.',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'duplicator-source' => 'Лисьмапрязо:',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

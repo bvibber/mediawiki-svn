@@ -2191,6 +2191,7 @@ Saltar verso le vista del fluxo: $2',
  * @author Rex
  */
 $messages['id'] = array(
+	'mv_tool_search' => 'Cari',
 	'mv_search_category' => 'Kategori',
 	'mv_search_and' => 'dan',
 	'mv_category' => 'kategori',
@@ -2681,6 +2682,8 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'mv_tool_search' => 'Вешнэмс',
+	'mv_play' => 'Седямс',
 	'mv_remove' => 'нардык',
 	'mv_search_categories' => 'Категорият',
 	'mv_search_category' => 'Категория',
@@ -2731,7 +2734,7 @@ Rapporteer dit aan de sitebeheerder.',
 	'mvexportsearch' => 'Metavid exporteren',
 	'mvexportsequence' => 'Metavid onderdeel exporteren',
 	'mvexportstream' => 'Metavid stream exporteren',
-	'mv_move_delete_msg' => 'mvd hernoemd en origineel verwijderd',
+	'mv_move_delete_msg' => 'mvd hernoemd naar $1',
 	'mv_add_stream_page' => 'Metavid-stream toevoegen',
 	'mv_edit_strea_docu' => '<p>Stream bewerken <b>beheerder</b><br />voor bekijken/bewerken als normale gebruikers, zie pagina $1',
 	'mv_add_stream_docu' => '<p>Voeg met het onderstaande veld een nieuwe stream toe.</p><p>Meer information staat op de <a href="$1">helppagina voor het toevoegen van een stream</a>.</p>',
@@ -2842,7 +2845,7 @@ Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
 	'mv_advanced_edit' => 'Uitgebreid bewerken',
 	'mv_basic_edit' => 'Basis bewerken',
 	'mv_remove_category' => 'Categorie verwijderen',
-	'mv_existing_categories' => 'categorieën:',
+	'mv_existing_categories' => '{{PLURAL:$1|categorie|categorieën}}:',
 	'mv_add_category' => 'Categorie toevoegen',
 	'mv_basic_text_desc' => 'Beschrijving (optioneel)',
 	'mv_viewnext' => 'Bekijken ($1)',
@@ -4385,9 +4388,11 @@ $messages['tg-cyrl'] = array(
 
 /** Thai (ไทย)
  * @author Octahedron80
+ * @author Passawuth
  */
 $messages['th'] = array(
 	'mv_tool_search' => 'ค้นหา',
+	'category-media-count' => 'สื่อ $1 อันอยู่ในหมวดหมู่นี้',
 	'mv_search_categories' => 'หมวดหมู่',
 );
 

@@ -841,6 +841,7 @@ $messages['eo'] = array(
 	'configure-section-cache' => 'Kaŝejo',
 	'configure-section-pcache' => 'Kaŝejo de sintaksa analizilo',
 	'configure-section-messagecache' => 'Memorkaŝejo de mesaĝoj',
+	'configure-section-access' => 'Atingo',
 	'configure-section-groups' => 'Grupoj',
 	'configure-section-block' => 'Forbaroj',
 	'configure-section-proxy' => 'Prokuriloj',
@@ -882,11 +883,55 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Academo
  * @author Sanbec
  */
 $messages['es'] = array(
+	'configure' => 'Configurar la wiki',
+	'configure-desc' => 'Permite autorizar usuarios a [[Special:Configure|configure]] la wiki desde una interfaz web',
+	'configure-desc-group' => 'Grupos',
+	'configure-desc-key' => 'Clave',
 	'configure-desc-ns' => 'Espacios de nombres',
+	'configure-desc-val' => 'Valor',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Extenciones',
+	'configure-ext-doc' => 'Ver documentación online',
+	'configure-ext-schemachange' => "'''Advertencia''' estas extencion requiere una actualización en la base de datos para trabajar correctamente",
+	'configure-ext-settings' => 'Configuraciones',
+	'configure-ext-use-extension' => 'Usar esta extención',
+	'configure-ext-use' => 'Usar',
+	'configure-summary' => 'Esta página especial le permite configurar esta wiki, vea [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] para mas información',
+	'configure-btn-save' => 'Guardar configuraciones',
+	'configure-directory-not-writable' => 'El directorio usado para guardar las configuraciones <tt>$1</tt>, no es escribible.
+Por favor haga que sea escribible por PHP para usar esta extención',
+	'configure-edit-old' => 'Advertencia: us esta editando una <strong>antigua</strong> versión de la configuración',
+	'configure-error' => 'La configuración no pudo ser guardada',
+	'configure-js-add' => 'Agregar una nueva entrada',
+	'configure-js-group-exists' => 'Error: el grupo ya existe',
+	'configure-js-prompt-group' => 'Ingrese el nombre del nuevo grupo:',
 	'configure-js-remove' => 'Borrar',
+	'configure-js-remove-row' => 'Eliminar esta entrada',
+	'configure-no-diff' => 'No hay cambios entre las versiones seleccionadas.',
+	'configure-no-directory' => 'El directorio usado para guardar las configuraciones, <tt>$1</tt>, no existe.
+Por favor, creelo o cambielo para usar esta extensión.',
+	'configure-no-old' => 'No hay una versión anterior de la configuración disponible.',
+	'configure-no-setup' => 'ud debe llamar <code>efConfigureSetup()</code> explícitamente en el archivo LocalSettings.php para usar esta extensión.',
+	'configure-no-transwiki' => 'Ud no esta autorizado para cambiar las configuraciones en otras wikis',
+	'configure-old' => 'Versiones antiguas',
+	'configure-old-versions' => 'Lista de las versiones anteriores de la configuración:',
+	'configure-old-not-available' => 'La versión anterior $1 de las configuraciones que usted solicita, no esta disponible',
+	'configure-saved' => 'La configuración ha sido guardada',
+	'configure-section-general' => 'Configuraciones generales',
+	'configure-section-paths' => 'Directorios',
+	'configure-section-db' => 'Base de datos',
+	'configure-section-db-notallowed' => 'usted no esta autorizado para cambiar las configuraciones de la base de datos.',
+	'configure-section-load-balancing' => 'Cargar balance',
+	'configure-section-mysql' => 'especificar MySQL',
+	'configure-section-postgres' => 'especificar PostgreSQL',
+	'configure-section-sqlite' => 'especificar SQLite',
+	'configure-section-email' => 'E-mail',
+	'configure-section-enotif' => 'Notificación por email',
+	'configure-section-timezone' => 'Zona Horaria',
 	'configure-section-namespaces' => 'Espacios de nombres',
 );
 
@@ -1322,6 +1367,13 @@ Per favor crea lo o cambia lo pro poter usar iste extension.',
 	'right-viewconfig-all' => 'Vider tote le configuration del wiki',
 	'right-viewconfig-interwiki' => 'Vider le configuration de altere wikis',
 	'viewconfig' => 'Vider le configuration del wiki',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'configure-section-search' => 'Cari',
 );
 
 /** Icelandic (Íslenska)
@@ -1818,6 +1870,20 @@ $messages['mt'] = array(
 	'configure-section-email' => 'E-mail',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'configure-desc-group' => 'Курот',
+	'configure-desc-ns' => 'Лем потмот',
+	'configure-ext-use' => 'Тевс нолдамо',
+	'configure-js-remove' => 'Нардамс',
+	'configure-section-email' => 'Е-сёрма',
+	'configure-section-namespaces' => 'Лем потмот',
+	'configure-section-category' => 'Категорият',
+	'configure-section-search' => 'Вешнэмс',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
@@ -1948,6 +2014,7 @@ Maak die map aan, of verander de instelling voordat u deze extensie kunt gebruik
 	'configure-setting-not-available' => 'Deze instelling is niet beschikbaar in deze versie van MediaWiki',
 	'configure-transwiki-not-in-range' => 'De opgegeven wiki ($1) is geen toegelaten waarde ($2).',
 	'configure-view' => 'Zie',
+	'configure-view-all-versions' => 'Volledige lijst van versies',
 	'configure-view-not-allowed' => 'U hebt geen rechten om deze instellingen te wijzigen',
 	'extensions' => 'Uitbreidingen instellen',
 	'right-configure' => 'Wiki-instellingen maken',

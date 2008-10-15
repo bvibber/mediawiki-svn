@@ -729,6 +729,13 @@ $messages['mr'] = array(
 	'usagestatistics-editpages' => 'एकटा सदस्य $1 पृष्ठ सांख्यिकी',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'usagestatisticsintervalmonth' => 'Ковось',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

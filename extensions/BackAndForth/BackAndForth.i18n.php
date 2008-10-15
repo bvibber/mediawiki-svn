@@ -447,6 +447,7 @@ $messages['mt'] = array(
  */
 $messages['myv'] = array(
 	'backforth-next' => 'Седе мейлень ($1)',
+	'backforth-prev' => 'Седе икелень ($1)',
 );
 
 /** Nahuatl (Nāhuatl)

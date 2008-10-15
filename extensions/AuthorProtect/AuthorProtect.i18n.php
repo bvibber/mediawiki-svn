@@ -243,6 +243,16 @@ $messages['eo'] = array(
 	'restriction-level-author' => 'Protektita per aŭtoro',
 );
 
+/** Spanish (Español)
+ * @author Academo
+ */
+$messages['es'] = array(
+	'authorprotect-desc' => 'Permite al autor de una página protegerla de otros usuarios',
+	'authorprotect-notauthor' => 'Ud no es el autor de esta página',
+	'authorprotect-confirm' => 'Cambiar niveles de protección',
+	'authorprotect-edit' => 'Restringir edición a autores',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Mardetanha
@@ -586,6 +596,7 @@ $messages['mr'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'authorprotect-expiry' => 'Таштомома шказо',
 	'authorprotect-reason' => 'Тувтал',
 );
 

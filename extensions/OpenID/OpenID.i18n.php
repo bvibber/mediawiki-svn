@@ -1320,6 +1320,7 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'openidlanguage' => 'Кель',
 	'openidchoosepassword' => 'совамо валось:',
 );
 

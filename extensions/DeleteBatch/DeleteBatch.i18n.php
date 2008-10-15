@@ -452,6 +452,15 @@ $messages['lb'] = array(
 	'deletebatch-select-yourself' => 'Dir',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'deletebatch-button' => 'Нардамс',
+	'deletebatch-here' => '<b>тесэ</b>',
+	'deletebatch-or' => '<b>эли</b>',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

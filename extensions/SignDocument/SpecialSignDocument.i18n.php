@@ -1428,7 +1428,19 @@ $messages['mt'] = array(
  */
 $messages['myv'] = array(
 	'sign-realname' => 'Леметь:',
+	'sign-city' => 'Ошось:',
+	'sign-state' => 'Штатось:',
+	'sign-country' => 'Масторось:',
+	'sign-bday' => 'Иеть:',
 	'sign-viewfield-realname' => 'Леметь',
+	'sign-viewfield-address' => 'Сёрма парго',
+	'sign-viewfield-city' => 'Ош',
+	'sign-viewfield-state' => 'Штат',
+	'sign-viewfield-country' => 'Мастор',
+	'sign-viewfield-zip' => 'Код',
+	'sign-viewfield-phone' => 'Телефон',
+	'sign-closed' => 'пекстазь',
+	'sig-anonymous' => '<i>Лемтеме</i>',
 );
 
 /** Nahuatl (Nāhuatl)

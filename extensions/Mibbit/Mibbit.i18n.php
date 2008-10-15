@@ -195,6 +195,19 @@ $messages['hi'] = array(
 	'mibbit-desc' => 'अन्य विकि सदस्योंसे इसी समय चैट करने के लिये उपयुक्त एक [[Special:Mibbit|विशेष पृष्ठ]]',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'mibbit' => 'Mibbit chat',
+	'mibbit-desc' => 'Dodaje [[Special:Mibbit|posebnu stranicu]] za korištenje chata u realnom vremenu s drugim wiki suradnicima',
+	'mibbit-header' => 'Ova posebna stranica vam omogućava razgovor u realnom vremenu s drugim suradnicima wikija.
+Za spajanje jednostavni pritisnite "Connect" tipku.
+Ako ste prijavljeni vaš nadimak će biti automatski upisan.
+Neprijavljeni suradnici dobiju automatski generirano ime, ali ono može biti promijenjeno.',
+	'right-mibbit' => 'Mogućnost korištenja Mibbit chat-a',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */

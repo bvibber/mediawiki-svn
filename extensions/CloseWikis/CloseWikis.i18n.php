@@ -388,6 +388,16 @@ $messages['lb'] = array(
 	'right-editclosedwikis' => 'Zougemaachte Wikien änneren',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'closewikis-page-close-wiki' => 'Вики:',
+	'closewikis-page-close-submit' => 'Пекстамс',
+	'closewikis-page-reopen-wiki' => 'Вики:',
+	'closewikis-page-reopen-reason' => 'Тувталось:',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

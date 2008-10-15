@@ -275,6 +275,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'vote' => 'Voĉdonu',
+	'vote-caption' => 'Via elekto:',
 	'vote-submit' => 'Balotu',
 	'vote-registered' => 'Via voĉdono estis registrita.',
 	'vote-view-results' => 'Vidi rezultojn',

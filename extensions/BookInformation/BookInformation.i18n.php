@@ -952,11 +952,13 @@ $messages['mr'] = array(
 
 /** Erzya (Эрзянь)
  * @author Amdf
+ * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'bookinfo-result-title' => 'Лемдевкс:',
-	'bookinfo-result-author' => 'Сёрмадыця:',
+	'bookinfo-result-title' => 'Коняксозо:',
+	'bookinfo-result-author' => 'Сёрмадыцязо:',
 	'bookinfo-result-year' => 'Ие:',
+	'bookinfo-error-invalidisbn' => 'А истямо ISBN максыть',
 );
 
 /** Nahuatl (Nāhuatl)

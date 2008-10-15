@@ -60,6 +60,8 @@ $messages['arz'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'categorywatch-emailbody' => 'Saluton $1, vi recivis ĉi tiun mesaĝon ĉar vi atentas la kategorion "$2".
+Ĉi tiu mesaĝo notigas vin ke je $3 uzanto $4 $5.',
 	'categorywatch-emailsubject' => 'Aktiveco pri atentata kategorio "$1"',
 	'categorywatch-catmovein' => 'movis $1 en kategorion $2 de $3',
 	'categorywatch-catmoveout' => 'movis $1 el kategorio $2 en $3',

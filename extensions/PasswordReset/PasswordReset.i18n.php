@@ -307,6 +307,30 @@ $messages['hil'] = array(
 	'passwordreset-username' => 'Ngalan sang Manog-gamit',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'passwordreset' => 'Ponovno postavi lozinku',
+	'passwordreset-desc' => "[[Special:Passwordreset|Ponovo postavljanje lozinke wiki suradnika]] - zahtijeva 'passwordreset' pravo",
+	'passwordreset-invalidusername' => 'Neispravno suradničko ime',
+	'passwordreset-emptyusername' => 'Prazno suradničko ime',
+	'passwordreset-nopassmatch' => 'Lozinke se ne poklapaju',
+	'passwordreset-badtoken' => 'Neispravan edit token',
+	'passwordreset-username' => 'Suradničko ime',
+	'passwordreset-newpass' => 'Nova lozinka',
+	'passwordreset-confirmpass' => 'Potvrdi lozinku',
+	'passwordreset-submit' => 'Postavi lozinku',
+	'passwordreset-success' => 'Lozinka je ponovno postavljena za user_id: $1',
+	'passwordreset-disableuser' => 'Onesposobi suradnički račun?',
+	'passwordreset-disableuserexplain' => '(postavlja neispravni hash za lozinku - suradnik se ne može prijaviti)',
+	'passwordreset-disablesuccess' => 'Suradnički račun je onesposobljen (user ID: $1)',
+	'passwordreset-accountdisabled' => 'Suradnički račun je onesposobljen',
+	'disabledusers' => 'Onesposobljeni suradnici',
+	'disabledusers-summary' => 'Ovo je popis suradnika koji su onesposobljeni putem Ponovnog postavljanja lozinke.',
+	'right-passwordreset' => 'Ponovno postavljanje lozinke za suradnika ([[Special:Passwordreset|posebna stranica]])',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -555,6 +579,7 @@ $messages['mt'] = array(
 $messages['myv'] = array(
 	'passwordreset-invalidusername' => 'Амаштовикс теицянь лемесь',
 	'passwordreset-username' => 'Теицянь лем',
+	'passwordreset-newpass' => 'Од совамо вал',
 	'passwordreset-confirmpass' => 'Кемекстык совамо валонть',
 	'passwordreset-submit' => 'Полавтык совамо валонть',
 );

@@ -1212,6 +1212,13 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
 	'deletequeue-list-header-discusspage' => 'Pagina de discussion',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'deletequeue-list-search' => 'Cari',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -1389,9 +1396,13 @@ $messages['lb'] = array(
 	'deletequeue-reviewspeedy-tab' => 'Séier läschen iwwerpréifen',
 	'deletequeue-reviewdeletediscuss-tab' => 'Läschen iwwerpréifen',
 	'deletequeue-discusscreate-text' => "D'Läsche gouf aus dësem Grond virgeschlo: $2",
+	'deletequeue-vote-tab' => "Iwwer d'Läschen ofstëmmen",
+	'deletequeue-vote-legend' => "Dem Läschen zoustëmmen/Géint d'Läsche stëmmen",
 	'deletequeue-vote-action' => 'Rot:',
 	'deletequeue-vote-object' => "Géint d'Läschen",
 	'deletequeue-vote-reason' => 'Bemierkungen:',
+	'deletequeue-showvotes-restrict-endorse' => 'Nëmmem Zoustëmmunge weisen',
+	'deletequeue-showvotes-showingonly-endorse' => "Nëmmen d'Zoustëmmunge gi gewisen",
 	'deletequeue-list-text' => 'Op dëser Sàit stinn all déi Säiten déi am Läschsystem dra sinn.',
 	'deletequeue-list-search-legend' => 'Säite sichen:',
 	'deletequeue-list-status' => 'Status:',
@@ -1406,7 +1417,14 @@ $messages['lb'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'deletequeue-review-newreason' => 'Од тувталось:',
+	'deletequeue-review-newextra' => 'Поладкс информациясь:',
+	'deletequeue-list-queue' => 'Чиполань пулось:',
+	'deletequeue-list-search' => 'Вешнэмс',
 	'deletequeue-list-header-page' => 'Лопа',
+	'deletequeue-list-header-queue' => 'Чиполань пуло',
+	'deletequeue-list-header-expiry' => 'Таштомома шказо',
+	'deletequeue-list-header-discusspage' => 'Кортнема лопа',
 );
 
 /** Dutch (Nederlands)
