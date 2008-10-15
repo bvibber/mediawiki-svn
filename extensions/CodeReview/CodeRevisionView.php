@@ -268,13 +268,15 @@ class CodeRevisionView extends CodeView {
 	}
 
 	function formatComments() {
-		return "<div class='mw-codereview-comments'>" .
-			implode( "\n",
+		$comments = implode( "\n",
 				array_map(
 					array( $this, 'formatCommentInline' ),
 					$this->mRev->getComments() ) ) .
-			$this->postCommentForm() .
-			"</div>";
+			$this->postCommentForm();
+		if( !$comments ) {
+			return false;
+		}
+		return "<div class='mw-codereview-comments'>$comments</div>";
 	}
 
 	function formatCommentInline( $comment ) {
