@@ -13,16 +13,17 @@ var javaEmbed = {
 			//make sure iframe and embed path match (java security model)
 			var iframe_src='';
             var src = this.media_element.selected_source.getURI();
-			//if the src is relative add in current_url as path:
+			//make url absolute: 
 			if(src[0]=='/'){
-				js_log('java: media relative path');
+				//js_log('java: media relative path from:'+ document.URL);
 				var pURL=parseUri(document.URL);
 				src=  pURL.protocol + '://' + pURL.authority + src;
-			}else if(parseUri(src).host==src){
-				js_log('java: media relative file');
+			}else if(src.indexOf('://')===-1){
+				//js_log('java: media relative file');
 				var pURL=parseUri(document.URL);
 				src=  pURL.protocol + '://' + pURL.authority + pURL.directory + src;
 			}
+			js_log('java media url: '+ src);
 			var parent_domain='';
 			if(parseUri(mv_embed_path).host != parseUri(src).host){
 				iframe_src = parseUri(src).protocol + '://'+
