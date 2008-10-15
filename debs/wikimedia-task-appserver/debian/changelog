@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.30) hardy; urgency=low
+
+  * Added -DSCALER support, needed to support wikimedia-task-scaler
+
+ -- Tim Starling <tstarling@wikimedia.org>  Wed, 15 Oct 2008 19:47:55 +1100
+
 wikimedia-task-appserver (1.29) hardy; urgency=low
 
   * Update /etc/apache2/envvars for Ubuntu 8.04
