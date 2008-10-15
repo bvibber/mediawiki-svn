@@ -115,7 +115,10 @@ if ( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
 	$xff = $_SERVER['REMOTE_ADDR'];
 }
 
-$headers = array( "X-Forwarded-For: " . $xff );
+$headers = array(
+	"X-Forwarded-For: " . str_replace( "\n", '', $xff ),
+	"X-Original-URI: " . str_replace( "\n", '', $uri )
+);
 
 # Pass through some other headers
 $passthrough = array( 
