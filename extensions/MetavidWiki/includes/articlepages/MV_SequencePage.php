@@ -52,15 +52,15 @@ class MV_SequencePage extends Article {
 		//print "raw text: " . $this->mHLRD . "\n\n";
 		
 		//print "parse HLDR\n\n";
-		$this->parseHLRD();		
-	    //print_r($this->aHLRD);	    
-	    //print "resolve all links:\n\n";
+		$this->parseHLRD_DOM();			    
 	    //this is the heavy lifting of the getSequenceSMIL function: 	    
-	    $this->resolveHLRD();
+	    $this->resolveHLRD_to_SMIL();
 	    
-	    //print "the final xml:\n";
-	    //print $this->getSmilXml();
-	    //die;
+	    
+	    
+	    print "the final xml:\n";
+	    print_r($this->aHLRD);
+	    die;
 	    
 	    //get parser Output Object (maybe cleaner way to do this? 
 	    //maybe parser cache is not the right place for this?) 
@@ -74,6 +74,76 @@ class MV_SequencePage extends Article {
 
 
 		return $parserOutput->getText();
+	}
+	//DOM based parse:
+	function parseHLRD_DOM(){  
+	    $this->hlrdDoc = new DOMDocument();
+	    $this->hlrdDoc->loadXML($this->mHLRD);	    
+	}
+	//resolve and build smile doc
+	function resolveHLRD_to_SMIL(){
+		global $wgTitle;
+		//init smil skeleton: 
+		$this->smilDoc = new DOMDocument();
+		
+		$rootNode = $this->smilDoc->createElement('smil');
+		$rootNode->setAttribute("xmlns", "http://www.w3.org/2001/SMIL20/Language");
+		
+		$headNode = $this->smilDoc->createElement('head');				
+		//add meta data:
+		$titleNode = $this->smilDoc->createElement('meta');
+		$titleNode->setAttribute("name", "title");
+		$titleNode->setAttribute("content", $wgTitle->getText() );
+		
+		
+		//add resolved transitions to the head: 
+		$tranNodeList = $this->hlrdDoc->getElementsByTagName('transition');
+		foreach ($tranNodeList as $tranNode){
+			//for now do a direct copy (future we should do additional validation even though it should be validated on the way in)
+			$node = $this->smilDoc->importNode($tranNode, true);
+			$headNode->appendChild($node);
+		}				
+		$rootNode->appendChild($headNode);
+		
+		//add the seq body: 
+		$bodyNode = $this->smilDoc->createElement('body');
+		$seqNodeList = $this->hlrdDoc->getElementsByTagName('seq');
+		foreach($seqNodeList as $seqNode){
+			//import the top seq node:
+			$topSeqNode = $this->smilDoc->importNode($seqNode, false);
+			//get all the refrences
+			$refNodeList = $seqNode->childNodes;
+			foreach($refNodeList as $refNode){			
+				 $refNode = $this->smilDoc->importNode( $this->resolveResourceNode($refNode), true );
+				 $topSeqNode->appendChild($refNode);
+			}
+			$bodyNode->appendChild($topSeqNode);
+		}
+		$rootNode->appendChild($bodyNode);
+		
+		//append the root node to the SMIL DOM:
+		$this->smilDoc->appendChild($rootNode);
+		//set to pretty format:		
+		$this->smilDoc->formatOutput = true;				
+		
+		print "smilDoc DOM: ";
+		echo $this->smilDoc->saveXML();
+		die;
+				 
+	}
+	/*takes an input node returns a resolved node*/
+	function resolveResourceNode(& $node){
+		//print 'resolveResourceNode:' . $node->nodeName . " : " . $node->nodeValue . "\n";
+		$nodeAttr = $node->attributes;
+		if(!is_null($nodeAttr)){ 
+			foreach($nodeAttr as $atrr){
+				if($atrr->nodeName=='uri'){
+					//pull in node content
+				}
+				//print ": {$atrr->nodeName}={$atrr->nodeValue}\n";
+			}
+		}
+		return $node;
 	}
 	function getSmilXml(){
 		$o= '<smil xmlns="http://www.w3.org/2001/SMIL20/Language">'."\n";
@@ -123,6 +193,7 @@ class MV_SequencePage extends Article {
 						//init val if not set: 					
 						if(!isset($this->aHLRD[ $open_inx-1 ][ 'value' ]))
 							$this->aHLRD[ $open_inx-1 ][ 'value' ]='';	
+							
 						//swap in the wiki parsed innerHTML:
 						$this->aHLRD[ $open_inx-1 ][ 'value' ].=
 							 				$this->ary2xml(
@@ -258,11 +329,7 @@ class MV_SequencePage extends Article {
 					xml_get_current_line_number($xml_parser) 
 				); 		   	
 		   }
-	    xml_parser_free($xml_parser);
-
-	    //maybe easier to go DOM based model:  
-	    //$doc = new DOMDocument();
-	    //$doc->loadXML($this->mHLRD);
+	    xml_parser_free($xml_parser);	  
 	    
 	    //validate input with $mvHLRDTags definition
 	    //*Currently dissabled ~~unclear if we really need to do this~~~
@@ -482,9 +549,7 @@ class MV_SequencePage extends Article {
 				//@@todo error can't find sequence
 			}
 		}
-		// return a "new empty sequence ..only set the title:"
-		return '';
-			
+		return '';			
 	}
 }
 ?>
