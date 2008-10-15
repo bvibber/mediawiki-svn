@@ -326,10 +326,19 @@ abstract class ConfigurationPage extends SpecialPage {
 			$text .= "<ul>\n";
 			$skin = $wgUser->getSkin();
 			$title = $this->getTitle();
-			foreach( $versions as $ts ){
-				$text .= "<li>" . $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" ) . "</li>\n";
+			if( count( $versions ) > 10 ){
+				$versions = array_slice( $versions, 0, 10 );
+				$link = is_callable( array( 'SpecialPage', 'getTitleFor' ) ) ? # 1.9 +
+					SpecialPage::getTitleFor( 'ViewConfig' ) :
+					Title::makeTitle( NS_SPECIAL, 'ViewConfig' );
+				$moreLink = $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) );
+			} else {
+				$moreLink = '';
 			}
-			$text .= '</ul>';
+			foreach( $versions as $ts ){
+				$text .= '<li>' . $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" ) . "</li>\n";
+			}
+			$text .= '</ul>' . $moreLink;
 		}
 		$text .= '</fieldset>';
 		return $text;

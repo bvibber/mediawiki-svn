@@ -121,7 +121,7 @@ class WebExtension {
 		}
 		$use = wfMsgExt( 'configure-ext-use', array( 'parseinline' ) );
 		$ret .= "<h2>{$use}</h2>\n";
-		$ret .= "<table><tr><td>\n";
+		$ret .= "<table class=\"configure-table\"><tr><td>\n";
 		$checkName = $this->getCheckName();
 		$ret .= Xml::checkLabel( wfMsg( 'configure-ext-use-extension' ), $checkName, $checkName, $this->isActivated() );
 		$ret .= "</td></tr>\n";
@@ -134,7 +134,7 @@ class WebExtension {
 		if( count( $this->mSettings ) ){
 			$settings = wfMsgExt( 'configure-ext-settings', array( 'parseinline' ) );
 			$ret .= "<h2>{$settings}</h2>\n";
-			$ret .= "<table>\n";
+			$ret .= "<table class=\"configure-table\">\n";
 			foreach( $this->mSettings as $name => $type ){
 				$val = $this->mObj->getSettingValue( $name );
 				$ret .= '<tr><td>$' . $name . '</td><td>' .

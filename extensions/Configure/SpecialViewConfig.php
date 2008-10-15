@@ -153,7 +153,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		
 		$editMsg = wfMsg( 'edit' ) . ': ';
 		$c = 0;
-		foreach( array_reverse( $versions ) as $ts ){
+		foreach( $versions as $ts ){
 			$c++;
 			$time = $wgLang->timeAndDate( $ts );
 			if( $allowedAll || $allowedConfigAll ){

@@ -118,9 +118,6 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array
 	 */
 	public function getCurrent( $wiki ){
-		if( !empty( $this->conf[$wiki] ) )
-			return $this->conf[$wiki];
-
 		list( $site, $lang ) = $this->siteFromDB( $wiki );
 		$rewrites = array( 'wiki' => $wiki, 'site' => $site, 'lang' => $lang );
 		return $this->getAll( $wiki, $site, $rewrites );
@@ -187,7 +184,8 @@ class WebConfiguration extends SiteConfiguration {
 			if( preg_match( '/conf-(\d{14}).ser$/', $file, $m ) )
 				$files[] = $m[1];
 		}
-		return $files;
+		sort( $files, SORT_NUMERIC );
+		return array_reverse( $files );
 	}
 
 	/**
