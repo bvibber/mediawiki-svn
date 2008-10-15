@@ -85,7 +85,7 @@ class MvpcfTemplate extends QuickTemplate {
 		<?php $this->get_portlet('p-personal')?>
 		<div style="position:absolute;width:100%;bottom:0px"><?php $this->get_top_nav() ?></div>		
 		<div id="searchSplash">
-			<div class="logo"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo.png" alt="Metavid" /></div>
+			<div class="logo"><img src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo_beta.png" alt="Metavid" /></div>
 			<p class="tagline">The Open Video archive of the US Congress</p>			
 			<?php $this->get_search_html(); ?>			
 		</div><!--searchSplash-->							
@@ -325,7 +325,7 @@ foreach ($this->data['sidebar'] as $bar => $cont) {
 	<div id="searchHeader">
 			<div class="logo2">
 				<a href="<?php echo $wgScript ?>">
-				<img alt="Metavid" src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo2.png"/>
+				<img alt="Metavid" src="<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/images/logo_sm_beta.png"/>
 				</a>
 				<p class="tagline2">Video archive of the US Congress</p>
 			</div>			
@@ -488,4 +488,3 @@ foreach ($this->data['sidebar'] as $bar => $cont) {
 	
 } // end of class
 ?>
-		
