@@ -63,6 +63,8 @@ $messages['en'] = array(
 	'code-status-resolved' => 'resolved',
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'deferred',
+	'code-pathsearch-legend' => 'Search revisions in this repo by path',
+	'code-pathsearch-path' => 'Path:',
 	'code-rev-submit' => 'Commit changes',
 	'code-rev-submit-next' => 'Commit & next unresolved',
 	
