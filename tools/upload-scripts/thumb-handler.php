@@ -107,6 +107,8 @@ header( "X-Wikimedia-Thumb: $reqURL" );
 $ch = curl_init( $reqURL );
 curl_setopt($ch, CURLOPT_PROXY, '10.2.1.21:80');
 
+# Set an XFF header for abuse tracking
+# Use $_SERVER not apache_request_headers beccause this runs under fastcgi
 if ( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
 	$xff = $_SERVER['HTTP_X_FORWARDED_FOR'] . ', ' . $_SERVER['REMOTE_ADDR'];
 } else {
@@ -115,9 +117,18 @@ if ( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
 
 $headers = array( "X-Forwarded-For: " . $xff );
 
-# Pass through IMS header
-if ( !empty( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) ) {
-	$headers[] = "If-Modified-Since: " . str_replace( "\n", '', $_SERVER['HTTP_IF_MODIFIED_SINCE'] );
+# Pass through some other headers
+$passthrough = array( 
+	'If-Modified-Since',
+	'Referer',
+	'User-Agent'
+);
+foreach ( $passthrough as $headerName ) {
+	$serverVarName = 'HTTP_' . str_replace( '-', '_', strtoupper( $headerName ) );
+	if ( !empty( $_SERVER[$serverVarName] ) ) {
+		$headers[] = $headerName . ': ' . 
+			str_replace( "\n", '', $_SERVER[$serverVarName] );
+	}
 }
 
 curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
