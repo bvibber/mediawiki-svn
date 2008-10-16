@@ -138,8 +138,8 @@ curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 
 # Leave it long enough to generate a ulimit timeout in ordinary cases
-# But short enough to avoid a local PHP timeout (~220s)
-curl_setopt( $ch, CURLOPT_TIMEOUT, 170 );
+# But short enough to avoid a local PHP timeout (55s)
+curl_setopt( $ch, CURLOPT_TIMEOUT, 53 );
 
 $text = curl_exec( $ch );
 
