@@ -1,0 +1,58 @@
+#! /bin/ksh
+
+MYSQL=/usr/local/mysql/bin/mysql
+MAIL=/usr/bin/mailx
+USER=root
+
+tmpdir=/tmp/repcheck.$$
+
+if [[ -z "$1" ]]; then
+	echo >&2 "usage: $0 <server>"
+	exit 1
+fi
+
+HOST=$1
+
+cleanup() {
+	rm -rf /tmp/repcheck.$$
+}
+
+mkdir $tmpdir || {
+	echo >&2 "can't create temporary directory $tmpdir"
+	exit 1
+}
+
+trap cleanup 0
+
+errfile=$tmpdir/errors
+
+if ! $MYSQL -h $HOST -BNEe 'SHOW SLAVE STATUS' >$tmpdir/status 2>&1; then
+	echo >>$errfile "WARNING: Cannot connect to MySQL server"
+	echo >>$errfile "WARNING: output from $MYSQL follows"
+	echo >>$errfile ""
+	cat $tmpdir/status >>$errfile
+	$MAIL -s "MySQL replication warnings for $HOST" $USER <$errfile
+	exit 0
+fi
+
+slave_io=$(awk '/^ *Slave_IO_Running: / { print $2 }' <$tmpdir/status)
+if [[ "$slave_io" != "Yes" ]]; then
+	echo >>$errfile "WARNING: Slave IO is not running"
+	echo >>$errfile "WARNING: Output from SHOW SLAVE STATUS follows"
+	echo >>$errfile ""
+	cat >>$errfile $tmpdir/status
+	$MAIL -s "MySQL replication warnings for $HOST" $USER <$errfile
+	exit 0
+fi
+
+slave_sql=$(awk '/^ *Slave_SQL_Running: / { print $2 }' <$tmpdir/status)
+if [[ "$slave_sql" != "Yes" ]]; then
+	echo >>$errfile "WARNING: Slave SQL is not running"
+	echo >>$errfile "WARNING: Output from SHOW SLAVE STATUS follows"
+	echo >>$errfile ""
+	cat >>$errfile $tmpdir/status
+	$MAIL -s "MySQL replication warnings for $HOST" $USER <$errfile
+	exit 0
+fi
+
+exit 0
