@@ -173,10 +173,15 @@ var flashEmbed = {
                         
         this.currentTime = this.fla.getTime();
         
-        if(this.currentTime > 1 && !this.startedTimedPlayback){
+        var end_ntp = (this.media_element.selected_source.end_ntp)?
+							this.media_element.selected_source.end_ntp : seconds2ntp(0);	
+		var start_ntp =  this.media_element.selected_source.start_ntp;
+		
+        if(this.currentTime > ntp2seconds(start_ntp) && !this.startedTimedPlayback){
         	this.startedTimedPlayback=true;
         	js_log("time is "+ this.currentTime + " started playback");
         }
+        /* to support local seeks */
 		if(this.currentTime > 1 && this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
 		{
 			js_log('Seeking to ' + this.seek_time_sec);
@@ -184,14 +189,10 @@ var flashEmbed = {
 			this.seek_time_sec = 0;
 		}
         
-        //flash is giving bogus duration get from this (if available)
+        //flash is giving bogus duration get from "this" (if available)
 		if(!this.media_element.selected_source.end_ntp  && this.fla.getDuration()>0)
 				this.media_element.selected_source.setDuration(this.fla.getDuration());
-
-        var end_ntp = (this.media_element.selected_source.end_ntp)?
-							this.media_element.selected_source.end_ntp : seconds2ntp(0);
-		// selected_source.start_ntp is now guaranteed to exist
-		var start_ntp =  this.media_element.selected_source.start_ntp;
+       
 		
         if(!this.userSlide){			   		       		
 	        if((this.currentTime - ntp2seconds(start_ntp))<0){

@@ -81,8 +81,8 @@ $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://s
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach ( $sample_embed as $key => $aval ) {
-  		// $key!=8 && $key!=3
-  		if ( $key != 0  && $key != 1 && $key!=2 )continue;
+  		// $key!=8 && $key!=3  $key != 0  && $key != 1 &&
+  		if ( $key!=2 )continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?=$aval['tag']?></td>
