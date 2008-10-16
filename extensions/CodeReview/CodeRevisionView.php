@@ -154,8 +154,12 @@ class CodeRevisionView extends CodeView {
 			$rev = $this->mRev->getId();
 			$prev = $rev - 1;
 			$safePath = wfUrlEncode( $path );
-			$link = $this->mSkin->makeExternalLink( "$viewvc$safePath?view=markup&pathrev=$rev", $encPath );
-			if( $action !== 'A' ) {
+			if( $action !== 'D' ) {
+				$link = $this->mSkin->makeExternalLink( "$viewvc$safePath?view=markup&pathrev=$rev", $encPath );
+			} else {
+				$link = $encPath;
+			}
+			if( $action !== 'A' && $action !== 'D' ) {
 				$diff = ' (' .
 					$this->mSkin->makeExternalLink( "$viewvc$safePath?&pathrev=$rev&r1=$prev&r2=$rev", 
 						wfMsgHtml('code-rev-diff-link') ) .
