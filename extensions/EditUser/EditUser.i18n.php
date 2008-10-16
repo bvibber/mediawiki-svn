@@ -11,13 +11,15 @@ $messages = array();
  * @author Ryan Schmidt
  */
 $messages['en'] = array(
-	'edituser-desc' => 'Allows privileged users to edit other users\' preferences',
-	'edituser' => 'Edit user',
-	'edituser-logout' => 'Log user out',
-	'edituser-username' => 'Name',
-	'edituser-dosearch' => 'Search',
-	'edituser-nouser' => 'The specified user does not exist',
-	'edituser-exempt' => 'The specified user cannot be edited',
+	'edituser-desc'         => 'Allows privileged users to edit other users\' preferences',
+	'edituser'              => 'Edit user',
+	'edituser-logout'       => 'Log user out',
+	'edituser-username'     => 'Name',
+	'edituser-dosearch'     => 'Search',
+	'edituser-nouser'       => 'The specified user does not exist',
+	'edituser-exempt'       => 'The specified user cannot be edited',
+	'right-edituser'        => 'Edit the preferences of other users',
+	'right-edituser-exempt' => 'Cannot have their preferences edited by others',
 );
 
 /** Message documentation (Message documentation)

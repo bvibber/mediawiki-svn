@@ -10,9 +10,7 @@ if(!defined('MEDIAWIKI')) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'EditUser',
-	'version'        => '1.4.1',
-	'svn-date'       => '$LastChangedDate$',
-	'svn-revision'   => '$LastChangedRevision$',
+	'version'        => '1.4.2',
 	'author'         => 'Ryan Schmidt',
 	'description'    => 'Allows privileged users to edit other users\' preferences',
 	'descriptionmsg' => 'edituser-desc',
@@ -28,3 +26,6 @@ $wgAvailableRights[] = 'edituser';
 $wgAvaliableRights[] = 'edituser-exempt';
 $wgSpecialPageGroups['EditUser'] = 'users';
 
+#Default group permissions
+$wgGroupPermissions['bureaucrat']['edituser'] = true;
+$wgGroupPermissions['sysop']['edituser-exempt'] = true;

@@ -1,25 +1,26 @@
 <?php
-/**
- * Shamelessly copied + modified from SpecialPreferences.php (best way to change them, after all ^_^)
- */
-
+/* Shamelessly copied and modified from /includes/specials/SpecialPreferences.php */
 class EditUser extends SpecialPage {
-	var $mQuickbar, $mNewpass, $mRetypePass, $mStubs;
+	var $mQuickbar, $mOldpass, $mNewpass, $mRetypePass, $mStubs;
 	var $mRows, $mCols, $mSkin, $mMath, $mDate, $mUserEmail, $mEmailFlag, $mNick;
 	var $mUserLanguage, $mUserVariant;
 	var $mSearch, $mRecent, $mRecentDays, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
 	var $mReset, $mPosted, $mToggles, $mSearchNs, $mRealName, $mImageSize;
 	var $mUnderline, $mWatchlistEdits;
+	var $user, $target, $mLogout;
 
-	public function __construct() {
+	function __construct() {
 		SpecialPage::SpecialPage('EditUser', 'edituser');
 	}
-
+	/**
+	 * Constructor
+	 * Load some values
+	 */
 	function loadGlobals( $par ) {
-		global $wgContLang, $wgAllowRealName, $wgUser, $wgRequest, $wgOut;
+		global $wgContLang, $wgAllowRealName, $wgRequest;
+		$request = $wgRequest;
 		$this->user = User::newFromName($par);
 		$this->user->load();
-		$request = $wgRequest;
 		$this->mQuickbar = $request->getVal( 'wpQuickbar' );
 		$this->mNewpass = $request->getVal( 'wpNewpass' );
 		$this->mRetypePass =$request->getVal( 'wpRetypePass' );
@@ -50,12 +51,12 @@ class EditUser extends SpecialPage {
 		$this->mSuccess = $request->getCheck( 'success' );
 		$this->mWatchlistDays = $request->getVal( 'wpWatchlistDays' );
 		$this->mWatchlistEdits = $request->getVal( 'wpWatchlistEdits' );
-
+		$this->mDisableMWSuggest = $request->getCheck( 'wpDisableMWSuggest' );
+		$this->mLogout = $request->getCheck( 'wpLogout' ) && $this->mPosted;
 		$this->mSaveprefs = $request->getCheck( 'wpSaveprefs' ) &&
 			$this->mPosted &&
-			$wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );
+			$this->user->matchEditToken( $request->getVal( 'wpEditToken' ) );
 
-		$this->mLogout = $request->getCheck( 'wpLogout' ) && $this->mPosted;
 		# User toggles  (the big ugly unsorted list of checkboxes)
 		$this->mToggles = array();
 		if ( $this->mPosted ) {
@@ -85,7 +86,6 @@ class EditUser extends SpecialPage {
 		}
 
 		wfRunHooks( 'InitPreferencesForm', array( $this, $request ) );
-		return true;
 	}
 
 	public function execute( $par ) {
@@ -98,11 +98,11 @@ class EditUser extends SpecialPage {
 		wfLoadExtensionMessages( 'EditUser' );
 
 		$this->setHeaders();
-		if(!isset($par))
-			$wgOut->addHtml($this->makeSearchForm());
 		$this->target = (isset($par)) ? $par : $wgRequest->getText('username', '');
-		if($this->target === '')
+		if($this->target === '') {
+			$wgOut->addHtml($this->makeSearchForm());
 			return;
+		}
 		$targetuser = User::NewFromName( $this->target );
 		if( $targetuser->getID() == 0 ) {
 			$wgOut->addWikiText( wfMsg( 'edituser-nouser' ) );
@@ -113,6 +113,7 @@ class EditUser extends SpecialPage {
 			return;
 		}
 		$this->loadGlobals($this->target);
+		$wgOut->addHtml($this->makeSearchForm());
 		$wgOut->addHtml('<br />');
 		if ( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
@@ -156,7 +157,7 @@ class EditUser extends SpecialPage {
 	function validateIntOrNull( &$val, $min=0, $max=0x7fffffff ) {
 		$val = trim($val);
 		if($val === '') {
-			return $val;
+			return null;
 		} else {
 			return $this->validateInt( $val, $min, $max );
 		}
@@ -213,13 +214,13 @@ class EditUser extends SpecialPage {
 	 * @access private
 	 */
 	function savePreferences() {
-		global $wgOut, $wgParser;
+		global $wgUser, $wgOut, $wgParser;
 		global $wgEnableUserEmail, $wgEnableEmail;
 		global $wgEmailAuthentication, $wgRCMaxAge;
 		global $wgAuth, $wgEmailConfirmToEdit;
 
 
-		if ( '' != $this->mNewpass && $wgAuth->allowPasswordChange() ) {
+		if ( $this->mNewpass !== '' && $wgAuth->allowPasswordChange() ) {
 			if ( $this->mNewpass != $this->mRetypePass ) {
 				wfRunHooks( 'PrefsPasswordAudit', array( $this->user, $this->mNewpass, 'badretype' ) );
 				$this->mainPrefsForm( 'error', wfMsg( 'badretype' ) );
@@ -229,7 +230,7 @@ class EditUser extends SpecialPage {
 			try {
 				$this->user->setPassword( $this->mNewpass );
 				wfRunHooks( 'PrefsPasswordAudit', array( $this->user, $this->mNewpass, 'success' ) );
-				$this->mNewpass = $this->mRetypePass = '';
+				$this->mNewpass = $this->mOldpass = $this->mRetypePass = '';
 			} catch( PasswordError $e ) {
 				wfRunHooks( 'PrefsPasswordAudit', array( $this->user, $this->mNewpass, 'error' ) );
 				$this->mainPrefsForm( 'error', $e->getMessage() );
@@ -237,6 +238,7 @@ class EditUser extends SpecialPage {
 			}
 		}
 		$this->user->setRealName( $this->mRealName );
+		$oldOptions = $this->user->mOptions;
 
 		if( $this->user->getOption( 'language' ) !== $this->mUserLanguage ) {
 			$needRedirect = true;
@@ -249,7 +251,7 @@ class EditUser extends SpecialPage {
 		if( mb_strlen( $this->mNick ) > $wgMaxSigChars ) {
 			global $wgLang;
 			$this->mainPrefsForm( 'error',
-				wfMsg( 'badsiglength', $wgLang->formatNum( $wgMaxSigChars ) ) );
+				wfMsgExt( 'badsiglength', 'parsemag', $wgLang->formatNum( $wgMaxSigChars ) ) );
 			return;
 		} elseif( $this->mToggles['fancysig'] ) {
 			if( $wgParser->validateSig( $this->mNick ) !== false ) {
@@ -287,6 +289,7 @@ class EditUser extends SpecialPage {
 		$this->user->setOption( 'thumbsize', $this->mThumbSize );
 		$this->user->setOption( 'underline', $this->validateInt($this->mUnderline, 0, 2) );
 		$this->user->setOption( 'watchlistdays', $this->validateFloat( $this->mWatchlistDays, 0, 7 ) );
+		$this->user->setOption( 'disablesuggest', $this->mDisableMWSuggest );
 
 		# Set search namespace options
 		foreach( $this->mSearchNs as $i => $value ) {
@@ -309,8 +312,10 @@ class EditUser extends SpecialPage {
 			if( ($newadr != '') && ($newadr != $oldadr) ) {
 				# the user has supplied a new email address on the login page
 				if( $this->user->isValidEmailAddr( $newadr ) ) {
-					$this->user->mEmail = $newadr; # new behaviour: set this new emailaddr from login-page into user database record
-					$this->user->mEmailAuthenticated = wfTimestampNow(); #automatically emailconfirm them
+					# new behaviour: set this new emailaddr from login-page into user database record
+					$this->user->setEmail( $newadr );
+					# auto-authenticate it
+					$this->user->confirmEmail();
 				} else {
 					$error = wfMsg( 'invalidemailaddress' );
 				}
@@ -326,14 +331,13 @@ class EditUser extends SpecialPage {
 			}
 		}
 
-		if (!$wgAuth->updateExternalDB($this->user)) {
+		if( !$wgAuth->updateExternalDB( $this->user ) ){
 			$this->mainPrefsForm( 'error', wfMsg( 'externaldberror' ) );
 			return;
 		}
 
 		$msg = '';
-		if ( !wfRunHooks( 'SavePreferences', array( $this, $this->user, &$msg ) ) ) {
-			print "(($msg))";
+		if ( !wfRunHooks( 'SavePreferences', array( $this, $this->user, &$msg, $oldOptions ) ) ) {
 			$this->mainPrefsForm( 'error', $msg );
 			return;
 		}
@@ -342,11 +346,11 @@ class EditUser extends SpecialPage {
 
 		if( $needRedirect && $error === false ) {
 			$title = SpecialPage::getTitleFor( 'Preferences' );
-			$wgOut->redirect($title->getFullURL('success'));
+			$wgOut->redirect( $title->getFullURL( 'success' ) );
 			return;
 		}
 
-		$wgOut->setParserOptions( ParserOptions::newFromUser( $this->user ) );
+		$wgOut->parserOptions( ParserOptions::newFromUser( $this->user ) );
 		$this->mainPrefsForm( $error === false ? 'success' : 'error', $error);
 	}
 
@@ -354,7 +358,7 @@ class EditUser extends SpecialPage {
 	 * @access private
 	 */
 	function resetPrefs() {
-		global $wgLang, $wgContLang, $wgContLanguageCode, $wgAllowRealName;
+		global $wgUser, $wgLang, $wgContLang, $wgContLanguageCode, $wgAllowRealName;
 
 		$this->mNewpass = $this->mRetypePass = '';
 		$this->mUserEmail = $this->user->getEmail();
@@ -386,6 +390,7 @@ class EditUser extends SpecialPage {
 		$this->mWatchlistEdits = $this->user->getOption( 'wllimit' );
 		$this->mUnderline = $this->user->getOption( 'underline' );
 		$this->mWatchlistDays = $this->user->getOption( 'watchlistdays' );
+		$this->mDisableMWSuggest = $this->user->getBoolOption( 'disablesuggest' );
 
 		$togs = User::getToggles();
 		foreach ( $togs as $tname ) {
@@ -428,7 +433,7 @@ class EditUser extends SpecialPage {
 
 
 	function getToggle( $tname, $trailer = false, $disabled = false ) {
-		global $wgLang;
+		global $wgUser, $wgLang;
 
 		$this->mUsedToggles[$tname] = true;
 		$ttext = $wgLang->getUserToggle( $tname );
@@ -457,7 +462,7 @@ class EditUser extends SpecialPage {
 	}
 
 	function addRow($td1, $td2) {
-		return "<tr><td align='right'>$td1</td><td align='left'>$td2</td></tr>";
+		return "<tr><td class='mw-label'>$td1</td><td class='mw-input'>$td2</td></tr>";
 	}
 
 	/**
@@ -468,24 +473,21 @@ class EditUser extends SpecialPage {
 	 * @return xhtml block
 	 */
 	function tableRow( $td1, $td2 = null, $td3 = null ) {
-		global $wgContLang;
-
-		$align['align'] = $wgContLang->isRtl() ? 'right' : 'left';
 
 		if ( is_null( $td3 ) ) {
 			$td3 = '';
 		} else {
 			$td3 = Xml::tags( 'tr', null,
-				Xml::tags( 'td', array( 'colspan' => '2' ), $td3 )
+				Xml::tags( 'td', array( 'class' => 'pref-label', 'colspan' => '2' ), $td3 )
 			);
 		}
 
 		if ( is_null( $td2 ) ) {
-			$td1 = Xml::tags( 'td', $align + array( 'colspan' => '2' ), $td1 );
+			$td1 = Xml::tags( 'td', array( 'class' => 'pref-label', 'colspan' => '2' ), $td1 );
 			$td2 = '';
 		} else {
-			$td1 = Xml::tags( 'td', $align, $td1 );
-			$td2 = Xml::tags( 'td', $align, $td2 );
+			$td1 = Xml::tags( 'td', array( 'class' => 'pref-label' ), $td1 );
+			$td2 = Xml::tags( 'td', array( 'class' => 'pref-input' ), $td2 );
 		}
 
 		return Xml::tags( 'tr', null, $td1 . $td2 ). $td3 . "\n";
@@ -496,27 +498,25 @@ class EditUser extends SpecialPage {
 	 * @access private
 	 */
 	function mainPrefsForm( $status , $message = '' ) {
-		global $wgOut, $wgLang, $wgContLang;
+		global $wgUser, $wgOut, $wgLang, $wgContLang, $wgAuth;
 		global $wgAllowRealName, $wgImageLimits, $wgThumbLimits;
-		global $wgDisableLangConversion;
+		global $wgDisableLangConversion, $wgDisableTitleConversion;
 		global $wgEnotifWatchlist, $wgEnotifUserTalk,$wgEnotifMinorEdits;
 		global $wgRCShowWatchingUsers, $wgEnotifRevealEditorAddress;
 		global $wgEnableEmail, $wgEnableUserEmail, $wgEmailAuthentication;
-		global $wgContLanguageCode, $wgDefaultSkin, $wgSkipSkins, $wgAuth;
-		global $wgEmailConfirmToEdit;
+		global $wgContLanguageCode, $wgDefaultSkin, $wgCookieExpiration;
+		global $wgEmailConfirmToEdit, $wgEnableMWSuggest;
 
-		$wgOut->setPageTitle( wfMsg( 'edituser' ) );
-		$wgOut->setArticleRelated( false );
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$wgOut->addScriptFile( 'prefs.js' );
 
 		$wgOut->disallowUserJs();  # Prevent hijacked user scripts from sniffing passwords etc.
 
 		if ( $this->mSuccess || 'success' == $status ) {
-			$wgOut->addWikitext( '<div class="successbox"><strong>'. wfMsg( 'savedprefs' ) . '</strong></div>' );
+			$wgOut->wrapWikiMsg( '<div class="successbox"><strong>$1</strong></div>', 'savedprefs' );
 		} else	if ( 'error' == $status ) {
-			$wgOut->addWikitext( '<div class="errorbox"><strong>' . $message  . '</strong></div>' );
+			$wgOut->addWikiText( '<div class="errorbox"><strong>' . $message  . '</strong></div>' );
 		} else if ( '' != $status ) {
-			$wgOut->addWikitext( $message . "\n----" );
+			$wgOut->addWikiText( $message . "\n----" );
 		}
 
 		$qbs = $wgLang->getQuickbarSettings();
@@ -526,7 +526,6 @@ class EditUser extends SpecialPage {
 		$togs = User::getToggles();
 
 		$titleObj = SpecialPage::getTitleFor( 'EditUser' );
-		$action = $titleObj->escapeLocalURL();
 
 		# Pre-expire some toggles so they won't show if disabled
 		$this->mUsedToggles[ 'shownumberswatching' ] = true;
@@ -537,6 +536,7 @@ class EditUser extends SpecialPage {
 		$this->mUsedToggles[ 'enotifrevealaddr' ] = true;
 		$this->mUsedToggles[ 'ccmeonemails' ] = true;
 		$this->mUsedToggles[ 'uselivepreview' ] = true;
+		$this->mUsedToggles[ 'noconvertlink' ] = true;
 
 
 		if ( !$this->mEmailFlag ) { $emfc = 'checked="checked"'; }
@@ -545,7 +545,13 @@ class EditUser extends SpecialPage {
 
 		if ($wgEmailAuthentication && ($this->mUserEmail != '') ) {
 			if( $this->user->getEmailAuthenticationTimestamp() ) {
-				$emailauthenticated = wfMsg('emailauthenticated',$wgLang->timeanddate($this->user->getEmailAuthenticationTimestamp(), true ) ).'<br />';
+				// date and time are separate parameters to facilitate localisation.
+				// $time is kept for backward compat reasons.
+				// 'emailauthenticated' is also used in SpecialConfirmemail.php
+				$time = $wgLang->timeAndDate( $this->user->getEmailAuthenticationTimestamp(), true );
+				$d = $wgLang->date( $this->user->getEmailAuthenticationTimestamp(), true );
+				$t = $wgLang->time( $this->user->getEmailAuthenticationTimestamp(), true );
+				$emailauthenticated = wfMsg('emailauthenticated', $time, $d, $t ).'<br />';
 				$disableEmailPrefs = false;
 			} else {
 				$disableEmailPrefs = true;
@@ -572,24 +578,55 @@ class EditUser extends SpecialPage {
 
 		# </FIXME>
 
-		$wgOut->addHTML( "<form action=\"$action\" method='post'>" );
-		$wgOut->addHTML( "<div id='preferences'>" );
+		$wgOut->addHTML(
+			Xml::openElement( 'form', array(
+				'action' => $titleObj->getLocalUrl(),
+				'method' => 'post',
+				'id'     => 'mw-preferences-form',
+			) ) .
+			Xml::openElement( 'div', array( 'id' => 'preferences' ) )
+		);
 
 		# User data
 
 		$wgOut->addHTML(
-			Xml::openElement( 'fieldset ' ) .
-			Xml::element( 'legend', null, wfMsg('prefs-personal') ) .
+			Xml::fieldset( wfMsg('prefs-personal') ) .
 			Xml::openElement( 'table' ) .
 			$this->tableRow( Xml::element( 'h2', null, wfMsg( 'prefs-personal' ) ) )
 		);
 
+		# Get groups to which the user belongs
+		$userEffectiveGroups = $this->user->getEffectiveGroups();
+		$userEffectiveGroupsArray = array();
+		foreach( $userEffectiveGroups as $ueg ) {
+			if( $ueg == '*' ) {
+				// Skip the default * group, seems useless here
+				continue;
+			}
+			$userEffectiveGroupsArray[] = User::makeGroupLinkHTML( $ueg );
+		}
+		asort( $userEffectiveGroupsArray );
+
+		$sk = $this->user->getSkin();
+		$toolLinks = array();
+		$toolLinks[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'ListGroupRights' ), wfMsg( 'listgrouprights' ) );
+		# At the moment one tool link only but be prepared for the future...
+		# FIXME: Add a link to Special:Userrights for users who are allowed to use it.
+		# $wgUser->isAllowed( 'userrights' ) seems to strict in some cases
+
 		$userInformationHtml =
 			$this->tableRow( wfMsgHtml( 'username' ), htmlspecialchars( $this->user->getName() ) ) .
-			$this->tableRow( wfMsgHtml( 'uid' ), htmlspecialchars( $this->user->getID() ) ) .
+			$this->tableRow( wfMsgHtml( 'uid' ), $wgLang->formatNum( htmlspecialchars( $this->user->getId() ) ) ).
+
+			$this->tableRow(
+				wfMsgExt( 'prefs-memberingroups', array( 'parseinline' ), count( $userEffectiveGroupsArray ) ),
+				$wgLang->commaList( $userEffectiveGroupsArray ) .
+				'<br />(' . implode( ' | ', $toolLinks ) . ')'
+			) .
+
 			$this->tableRow(
 				wfMsgHtml( 'prefs-edits' ),
-				$wgLang->formatNum( User::edits( $this->user->getId() ) )
+				$wgLang->formatNum( $this->user->getEditCount() )
 			);
 
 		if( wfRunHooks( 'PreferencesUserInformationPanel', array( $this, &$userInformationHtml ) ) ) {
@@ -624,7 +661,7 @@ class EditUser extends SpecialPage {
 			$invalidSig = $this->tableRow(
 				'&nbsp;',
 				Xml::element( 'span', array( 'class' => 'error' ),
-					wfMsg( 'badsiglength', $wgLang->formatNum( $wgMaxSigChars ) ) )
+					wfMsgExt( 'badsiglength', 'parsemag', $wgLang->formatNum( $wgMaxSigChars ) ) )
 			);
 		} elseif( !empty( $this->mToggles['fancysig'] ) &&
 			false === $wgParser->validateSig( $this->mNick ) ) {
@@ -688,6 +725,16 @@ class EditUser extends SpecialPage {
 					)
 				);
 			}
+
+			if(count($variantArray) > 1 && !$wgDisableLangConversion && !$wgDisableTitleConversion) {
+				$wgOut->addHtml(
+					Xml::tags( 'tr', null,
+						Xml::tags( 'td', array( 'colspan' => '2' ),
+							$this->getToggle( "noconvertlink" )
+						)
+					)
+				);
+			}
 		}
 
 		# Password
@@ -701,13 +748,19 @@ class EditUser extends SpecialPage {
 				$this->tableRow(
 					Xml::label( wfMsg( 'retypenew' ), 'wpRetypePass' ),
 					Xml::password( 'wpRetypePass', 25, $this->mRetypePass, array( 'id' => 'wpRetypePass' ) )
-				) .
-				Xml::tags( 'tr', null,
-					Xml::tags( 'td', array( 'colspan' => '2' ),
-						$this->getToggle( "rememberpassword" )
-					)
 				)
 			);
+			if( $wgCookieExpiration > 0 ){
+				$wgOut->addHTML(
+					Xml::tags( 'tr', null,
+						Xml::tags( 'td', array( 'colspan' => '2' ),
+							$this->getToggle( "rememberpassword" )
+						)
+					)
+				);
+			} else {
+				$this->mUsedToggles['rememberpassword'] = true;
+			}
 		}
 
 		# <FIXME>
@@ -716,10 +769,13 @@ class EditUser extends SpecialPage {
 
 			$moreEmail = '';
 			if ($wgEnableUserEmail) {
+				// fixme -- the "allowemail" pseudotoggle is a hacked-together
+				// inversion for the "disableemail" preference.
 				$emf = wfMsg( 'allowemail' );
 				$disabled = $disableEmailPrefs ? ' disabled="disabled"' : '';
 				$moreEmail =
-				"<input type='checkbox' $emfc $disabled value='1' name='wpEmailFlag' id='wpEmailFlag' /> <label for='wpEmailFlag'>$emf</label>";
+					"<input type='checkbox' $emfc $disabled value='1' name='wpEmailFlag' id='wpEmailFlag' /> <label for='wpEmailFlag'>$emf</label>" .
+					$this->getToggle( 'ccmeonemails', '', $disableEmailPrefs );
 			}
 
 
@@ -731,8 +787,7 @@ class EditUser extends SpecialPage {
 					$enotifwatchlistpages.
 					$enotifusertalkpages.
 					$enotifminoredits.
-					$moreEmail.
-					$this->getToggle( 'ccmeonemails' )
+					$moreEmail
 				)
 			);
 		}
@@ -764,10 +819,10 @@ class EditUser extends SpecialPage {
 		#
 		$wgOut->addHTML( "<fieldset>\n<legend>\n" . wfMsg('skin') . "</legend>\n" );
 		$mptitle = Title::newMainPage();
-		$previewtext = wfMsg('skinpreview');
+		$previewtext = wfMsg('skin-preview');
 		# Only show members of Skin::getSkinNames() rather than
 		# $skinNames (skins is all skin names from Language.php)
-		$validSkinNames = Skin::getSkinNames();
+		$validSkinNames = Skin::getUsableSkins();
 		# Sort by UI skin name. First though need to update validSkinNames as sometimes
 		# the skinkey & UI skinname differ (e.g. "standard" skinkey is "Classic" in the UI).
 		foreach ($validSkinNames as $skinkey => & $skinname ) {
@@ -777,13 +832,10 @@ class EditUser extends SpecialPage {
 		}
 		asort($validSkinNames);
 		foreach ($validSkinNames as $skinkey => $sn ) {
-			if ( in_array( $skinkey, $wgSkipSkins ) ) {
-				continue;
-			}
 			$checked = $skinkey == $this->mSkin ? ' checked="checked"' : '';
 
 			$mplink = htmlspecialchars($mptitle->getLocalURL("useskin=$skinkey"));
-			$previewlink = "<a target='_blank' href=\"$mplink\">$previewtext</a>";
+			$previewlink = "(<a target='_blank' href=\"$mplink\">$previewtext</a>)";
 			if( $skinkey == $wgDefaultSkin )
 				$sn .= ' (' . wfMsg( 'default' ) . ')';
 			$wgOut->addHTML( "<input type='radio' name='wpSkin' id=\"wpSkin$skinkey\" value=\"$skinkey\"$checked /> <label for=\"wpSkin$skinkey\">{$sn}</label> $previewlink<br />\n" );
@@ -815,7 +867,7 @@ class EditUser extends SpecialPage {
 		$imageLimitOptions = null;
 		foreach ( $wgImageLimits as $index => $limits ) {
 			$selected = ($index == $this->mImageSize);
-			$imageLimitOptions .= Xml::option( "{$limits[0]}ֻ$limits[1]}" .
+			$imageLimitOptions .= Xml::option( "{$limits[0]}×{$limits[1]}" .
 				wfMsg('unit-pixel'), $index, $selected );
 		}
 
@@ -849,40 +901,62 @@ class EditUser extends SpecialPage {
 		# Date/Time
 		#
 
-		$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg( 'datetime' ) . "</legend>\n" );
+		$wgOut->addHTML(
+			Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', null, wfMsg( 'datetime' ) ) . "\n"
+		);
 
 		if ($dateopts) {
-			$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg( 'dateformat' ) . "</legend>\n" );
+			$wgOut->addHTML(
+				Xml::openElement( 'fieldset' ) .
+				Xml::element( 'legend', null, wfMsg( 'dateformat' ) ) . "\n"
+			);
 			$idCnt = 0;
 			$epoch = '20010115161234'; # Wikipedia day
 			foreach( $dateopts as $key ) {
 				if( $key == 'default' ) {
-					$formatted = wfMsgHtml( 'datedefault' );
+					$formatted = wfMsg( 'datedefault' );
 				} else {
-					$formatted = htmlspecialchars( $wgLang->timeanddate( $epoch, false, $key ) );
+					$formatted = $wgLang->timeanddate( $epoch, false, $key );
 				}
-				($key == $this->mDate) ? $checked = ' checked="checked"' : $checked = '';
-				$wgOut->addHTML( "<div><input type='radio' name=\"wpDate\" id=\"wpDate$idCnt\" ".
-					"value=\"$key\"$checked /> <label for=\"wpDate$idCnt\">$formatted</label></div>\n" );
+				$wgOut->addHTML(
+					Xml::tags( 'div', null,
+						Xml::radioLabel( $formatted, 'wpDate', $key, "wpDate$idCnt", $key == $this->mDate )
+					) . "\n"
+				);
 				$idCnt++;
 			}
-			$wgOut->addHTML( "</fieldset>\n" );
+			$wgOut->addHTML( Xml::closeElement( 'fieldset' ) . "\n" );
 		}
 
 		$nowlocal = $wgLang->time( $now = wfTimestampNow(), true );
 		$nowserver = $wgLang->time( $now, false );
 
-		$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'timezonelegend' ). '</legend><table>' .
+		$wgOut->addHTML(
+			Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', null, wfMsg( 'timezonelegend' ) ) .
+			Xml::openElement( 'table' ) .
 		 	$this->addRow( wfMsg( 'servertime' ), $nowserver ) .
 			$this->addRow( wfMsg( 'localtime' ), $nowlocal ) .
 			$this->addRow(
-				'<label for="wpHourDiff">' . wfMsg( 'timezoneoffset' ) . '</label>',
-				"<input type='text' name='wpHourDiff' id='wpHourDiff' value=\"" . htmlspecialchars( $this->mHourDiff ) . "\" size='6' />"
-			) . "<tr><td colspan='2'>
-				<input type='button' value=\"" . wfMsg( 'guesstimezone' ) ."\"
-				onclick='javascript:guessTimezone()' id='guesstimezonebutton' style='display:none;' />
-				</td></tr></table><div class='prefsectiontip'>¹" .  wfMsg( 'timezonetext' ) . "</div></fieldset>
-		</fieldset>\n\n" );
+				Xml::label( wfMsg( 'timezoneoffset' ), 'wpHourDiff'  ),
+				Xml::input( 'wpHourDiff', 6, $this->mHourDiff, array( 'id' => 'wpHourDiff' ) ) ) .
+			"<tr>
+				<td></td>
+				<td class='mw-submit'>" .
+					Xml::element( 'input',
+						array( 'type' => 'button',
+							'value' => wfMsg( 'guesstimezone' ),
+							'onclick' => 'javascript:guessTimezone()',
+							'id' => 'guesstimezonebutton',
+							'style' => 'display:none;' ) ) .
+				"</td>
+			</tr>" .
+			Xml::closeElement( 'table' ) .
+			Xml::tags( 'div', array( 'class' => 'prefsectiontip' ), wfMsgExt( 'timezonetext', 'parseinline' ) ).
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'fieldset' ) . "\n\n"
+		);
 
 		# Editing
 		#
@@ -941,7 +1015,7 @@ class EditUser extends SpecialPage {
 		$wgOut->addHtml( wfInputLabel( wfMsg( 'prefs-watchlist-edits' ), 'wpWatchlistEdits', 'wpWatchlistEdits', 3, $this->mWatchlistEdits ) );
 		$wgOut->addHtml( '<br /><br />' );
 
-		$wgOut->addHtml( $this->getToggles( array( 'watchlisthideown', 'watchlisthidebots', 'watchlisthideminor' ) ) );
+		$wgOut->addHtml( $this->getToggles( array( 'watchlisthideminor', 'watchlisthidebots', 'watchlisthideown', 'watchlisthideanons', 'watchlisthideliu' ) ) );
 
 		if( $this->user->isAllowed( 'createpage' ) || $this->user->isAllowed( 'createtalk' ) )
 			$wgOut->addHtml( $this->getToggle( 'watchcreations' ) );
@@ -957,20 +1031,43 @@ class EditUser extends SpecialPage {
 		$wgOut->addHtml( '</fieldset>' );
 
 		# Search
-		$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'searchresultshead' ) . '</legend><table>' .
+		$mwsuggest = $wgEnableMWSuggest ?
 			$this->addRow(
-				wfLabel( wfMsg( 'resultsperpage' ), 'wpSearch' ),
-				wfInput( 'wpSearch', 4, $this->mSearch, array( 'id' => 'wpSearch' ) )
+				Xml::label( wfMsg( 'mwsuggest-disable' ), 'wpDisableMWSuggest' ),
+				Xml::check( 'wpDisableMWSuggest', $this->mDisableMWSuggest, array( 'id' => 'wpDisableMWSuggest' ) )
+			) : '';
+		$wgOut->addHTML(
+			// Elements for the search tab itself
+			Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', null, wfMsg( 'searchresultshead' ) ) .
+			// Elements for the search options in the search tab
+			Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', null, wfMsg( 'prefs-searchoptions' ) ) .
+			Xml::openElement( 'table' ) .
+			$this->addRow(
+				Xml::label( wfMsg( 'resultsperpage' ), 'wpSearch' ),
+				Xml::input( 'wpSearch', 4, $this->mSearch, array( 'id' => 'wpSearch' ) )
 			) .
 			$this->addRow(
-				wfLabel( wfMsg( 'contextlines' ), 'wpSearchLines' ),
-				wfInput( 'wpSearchLines', 4, $this->mSearchLines, array( 'id' => 'wpSearchLines' ) )
+				Xml::label( wfMsg( 'contextlines' ), 'wpSearchLines' ),
+				Xml::input( 'wpSearchLines', 4, $this->mSearchLines, array( 'id' => 'wpSearchLines' ) )
 			) .
 			$this->addRow(
-				wfLabel( wfMsg( 'contextchars' ), 'wpSearchChars' ),
-				wfInput( 'wpSearchChars', 4, $this->mSearchChars, array( 'id' => 'wpSearchChars' ) )
+				Xml::label( wfMsg( 'contextchars' ), 'wpSearchChars' ),
+				Xml::input( 'wpSearchChars', 4, $this->mSearchChars, array( 'id' => 'wpSearchChars' ) )
 			) .
-		"</table><fieldset><legend>" . wfMsg( 'defaultns' ) . "</legend>$ps</fieldset></fieldset>" );
+			$mwsuggest .
+			Xml::closeElement( 'table' ) .
+			Xml::closeElement( 'fieldset' ) .
+			// Elements for the namespace options in the search tab
+			Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', null, wfMsg( 'prefs-namespaces' ) ) .
+			wfMsgExt( 'defaultns', array( 'parse' ) ) .
+			$ps .
+			Xml::closeElement( 'fieldset' ) .
+			// End of the search tab
+			Xml::closeElement( 'fieldset' )
+		);
 
 		# Misc
 		#
@@ -1001,15 +1098,14 @@ class EditUser extends SpecialPage {
 		$wgOut->addHTML( '</fieldset>' );
 
 		wfRunHooks( 'RenderPreferencesForm', array( $this, $wgOut ) );
-		global $wgUser;
-		$token = htmlspecialchars( $wgUser->editToken() );
-		$skin = $wgUser->getSkin();
+
+		$token = htmlspecialchars( $this->user->editToken() );
+		$skin = $this->user->getSkin();
 		$wgOut->addHTML( "
 	<div id='prefsubmit'>
 	<div>
 		<input type='submit' name='wpSaveprefs' class='btnSavePrefs' value=\"" . wfMsgHtml( 'saveprefs' ) . '"'.$skin->tooltipAndAccesskey('save')." />
 		<input type='submit' name='wpReset' value=\"" . wfMsgHtml( 'resetprefs' ) . "\" />
-		<input type='submit' name='wpLogout' value=\"" . wfMsgHtml( 'edituser-logout' ) . "\" />
 	</div>
 
 	</div>
@@ -1021,9 +1117,8 @@ class EditUser extends SpecialPage {
 		$wgOut->addHtml( Xml::tags( 'div', array( 'class' => "prefcache" ),
 			wfMsgExt( 'clearyourcache', 'parseinline' ) )
 		);
-
 	}
-
+	
 	function makeSearchForm() {
 		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
 		$form = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) );
