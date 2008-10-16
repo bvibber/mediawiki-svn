@@ -22,6 +22,12 @@ class CodePathRevListView extends CodeRevisionListView {
 			$view->execute();
 			return;
 		}
+		// No path! Use regular lister!
+		if( !$this->mPath ) {
+			$view = new CodeRevisionListView( $this->mRepo->getName() );
+			$view->execute();
+			return;
+		}
 		$this->showForm();
 		// Path should have a bit of length...
 		if( strlen($this->mPath) > 3 ) {
