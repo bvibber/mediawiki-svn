@@ -118,7 +118,8 @@ class SvnRevTablePager extends TablePager {
 	function formatValue( $name, $value ) {
 		global $wgUser, $wgLang;
 		switch( $name ) {
-		case $this->getDefaultSort():
+		case 'cp_rev_id':
+		case 'cr_id':
 			return $this->mView->mSkin->link(
 				SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $value ),
 				htmlspecialchars( $value ) );
