@@ -1,8 +1,9 @@
 <?php
+if ( !defined( 'MEDIAWIKI' ) ) die();
 $messages = array();
 
 $messages['en'] = array(
-        'playerstatsgrabber' => 'Player stats survey',
+     'playerstatsgrabber' => 'Player stats survey',
 	'ps_take_video_survey' => 'Video playback survey',
 	'ps_survey_description' => 'This survey will help improve support for rich media.
 Please answer the following questions:',

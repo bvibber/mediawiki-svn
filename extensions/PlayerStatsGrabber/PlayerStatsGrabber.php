@@ -1,10 +1,10 @@
 <?php
 /*
  * simple stats output and gather for oggPlay and a "sample page" 
- */									 
+ */
 
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the special pages file directly.
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
         echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
 require_once( "\$IP/extensions/MyExtension/MyExtension.php" );
@@ -17,19 +17,19 @@ $psScriptPath = $wgScriptPath . '/extensions/PlayerStatsGrabber';
  * config values
  */
 
-//$psLogEveryPlayRequestPerUser 
-//true we log every play request 
-//false we only log play request from different users
+// $psLogEveryPlayRequestPerUser 
+// true we log every play request 
+// false we only log play request from different users
 $psLogEveryPlayRequestPerUser = true;
 
-//allow users to submit the suvey more than once
-$psAllowMultipleSurveysPerUser = false;
+// allow users to submit the suvey more than once
+$psAllowMultipleSurveysPerUser = true;
 
-//embed code and "weight" (ie weight of 3 is 3x more likely than weight of 1)  
-//flash embed code (the raw html that gets outputted to the browsers))
-//embed key gets recorded to the database to identify what player was sent to the client in the survey 
-//(you need to add it as an ENUM option) 
-$flowEmbedCode=<<<EOT
+// embed code and "weight" (ie weight of 3 is 3x more likely than weight of 1)  
+// flash embed code (the raw html that gets outputted to the browsers))
+// embed key gets recorded to the database to identify what player was sent to the client in the survey 
+// (you need to add it as an ENUM option) 
+$flowEmbedCode = <<<EOT
 <script type="text/javascript" src="{$psScriptPath}/flow_player/flashembed.min.js"></script>
 <script type="text/javascript">
 	flashembed("example", 
@@ -56,20 +56,20 @@ $flowEmbedCode=<<<EOT
 
 EOT;
 $psEmbedAry = array(
-	array( 'embed_key'=>'youtube',
-		   'name'=>'Sample Youtube Embed',
-		   'weight'=>1, 
-		   'html_code'=>'<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/Ga1kC6oGT9A&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/Ga1kC6oGT9A&hl=en&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object>' 
+	array( 'embed_key' => 'youtube',
+		   'name' => 'Sample Youtube Embed',
+		   'weight' => 1,
+		   'html_code' => '<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/Ga1kC6oGT9A&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/Ga1kC6oGT9A&hl=en&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object>'
 	),
-	array( 'embed_key'=>'oggHandler',
-	  	   'name'=>'Sample oggPlay Embed',
-		   'weight'=>1,
-		   'wiki_code'	=>'[[Image:Sample_barney.ogg]]'
+	array( 'embed_key' => 'oggHandler',
+	  	   'name' => 'Sample oggPlay Embed',
+		   'weight' => 1,
+		   'wiki_code'	=> '[[Image:Sample_barney.ogg]]'
 	),
-	array('embed_key'=>'flowplayer',
-		  'name'=>'Sample oggPlay Embed',
-		  'weight'=>1,
-		  'html_code'=>$flowEmbedCode  
+	array( 'embed_key' => 'flowplayer',
+		  'name' => 'Sample oggPlay Embed',
+		  'weight' => 1,
+		  'html_code' => $flowEmbedCode
 	)
 );
 
@@ -78,14 +78,13 @@ $psEmbedAry = array(
 /*
  * end config
  */
-
 $wgExtensionMessagesFiles['PlayerStatsGrabber'] 	= dirname( __FILE__ ) . '/PlayerStatsGrabber.i18n.php';
 $wgAutoloadClasses['SpecialPlayerStatsGrabber'] 	= dirname( __FILE__ ) . '/PlayerStatsGrabber_body.php';
 $wgSpecialPages['PlayerStatsGrabber']		   				=  array( 'SpecialPlayerStatsGrabber' );
 											 
 $wgSpecialPageGroups['PlayerStatsGrabber'] = 'wiki'; // like Special:Statistics
 
-//add ajax hook to accept the status input: 
+// add ajax hook to accept the status input: 
 $wgAjaxExportList[] = 'mw_push_player_stats';
 
 $wgExtensionCredits['media'][] = array(
@@ -94,7 +93,7 @@ $wgExtensionCredits['media'][] = array(
 	'svn-date' 		 => '$LastChangedDate: 2008-08-06 07:18:43 -0700 (Wed, 06 Aug 2008) $',
 	'svn-revision' 	 => '$LastChangedRevision: 38715 $',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:PlayerStats',
-	'description'    => 'PlayerStats and survey for monitoring theora support relative to flash'	
+	'description'    => 'PlayerStats and survey for monitoring theora support relative to flash'
 );
 
 
@@ -104,20 +103,20 @@ $wgExtensionCredits['media'][] = array(
  *  or 
  *  (ties survay page data to detection) 
  */
-function mw_push_player_stats(){
-	return SpecialPlayerStatsGrabber::do_submit_player_log();	
+function mw_push_player_stats() {
+	return SpecialPlayerStatsGrabber::do_submit_player_log();
 }
 
 /*
  * @@todo should use API json output wrappers
- */ 
-if( ! function_exists('php2jsObj') ){
+ */
+if ( ! function_exists( 'php2jsObj' ) ) {
 	function php2jsObj( $array, $objName = 'mv_result' )
 	{
 	   return  $objName . ' = ' . phpArrayToJsObject_Recurse( $array ) . ";\n";
 	}
 }
-if( ! function_exists('PhpArrayToJsObject_Recurse') ){
+if ( ! function_exists( 'PhpArrayToJsObject_Recurse' ) ) {
 	function PhpArrayToJsObject_Recurse( $array ) {
 	   // Base case of recursion: when the passed value is not a PHP array, just output it (in quotes).
 	   if ( ! is_array( $array ) && !is_object( $array ) ) {
@@ -150,7 +149,7 @@ if( ! function_exists('PhpArrayToJsObject_Recurse') ){
 	   return $retVal . "}";
 	}
 }
-if( ! function_exists('javascript_escape')){
+if ( ! function_exists( 'javascript_escape' ) ) {
 	function javascript_escape( $val ) {
 		// first strip /r
 		$val = str_replace( "\r", '', $val );
