@@ -296,7 +296,7 @@ class WhitelistEdit extends SpecialPage
 
         $wgOut->addScript(<<<END
 <script language = "Javascript">
-<!--
+/* <![CDATA[ */
 
 var form='mainform' //Give the form name here
 
@@ -310,7 +310,7 @@ dml.elements[i].checked=val;
 }
 }
 }
-// -->
+/* ]]> */
 </script>
 END
 );

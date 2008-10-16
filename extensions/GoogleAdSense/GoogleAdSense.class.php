@@ -21,13 +21,14 @@ class GoogleAdSense {
 
 		wfLoadExtensionMessages( 'GoogleAdSense' );
 
-		$bar['googleadsense'] = "<script type=\"text/javascript\"><!--
+		$bar['googleadsense'] = "<script type=\"text/javascript\">
+/* <![CDATA[ */
 google_ad_client = \"$wgGoogleAdSenseClient\";
 /* $wgGoogleAdSenseID */
 google_ad_slot = \"$wgGoogleAdSenseSlot\";
 google_ad_width = $wgGoogleAdSenseWidth;
 google_ad_height = $wgGoogleAdSenseHeight;
-//-->
+/* ]]> */
 </script>
 <script type=\"text/javascript\"
 src=\"$wgGoogleAdSenseSrc\">

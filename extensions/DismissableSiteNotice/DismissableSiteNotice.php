@@ -28,9 +28,9 @@ function wfDismissableSiteNotice( &$notice ) {
 	if ( $wgUser->isAnon() ) {
 		$notice = <<<EOT
 <script type="text/javascript" language="JavaScript">
-<!--
+/* <![CDATA[ */
 document.writeln("$encNotice");
--->
+/* ]]> */
 </script>
 EOT;
 		return true;
