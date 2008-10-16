@@ -1696,8 +1696,7 @@ var smilPlaylist ={
 							);
 					if(cur_clip){
 						//set up embed:						
-						cur_clip.setUpEmbedObj();
-						js_log('smil cur_clip len:'+ cur_clip.embed.media_element.sources.length);
+						cur_clip.setUpEmbedObj();						
 						//add clip to track: 
 						_this.addCliptoTrack(cur_clip);						
 						//valid clip up the order inx: 
@@ -1741,12 +1740,15 @@ mvSMILClip.prototype = {
 				this[method] = myMvClip[method];
 			}		
 		}				 
-		//get supported media attr 			
+		//get supported media attr init non-set		
 		$j.each(mv_supported_media_attr, function(i, attr){			
-			if( $j(smil_clip_element).attr(attr))
+			if( $j(smil_clip_element).attr(attr)){
 				_this[attr]=$j(smil_clip_element).attr(attr);
+			}else{
+				_this[attr]=false;
+			}
 		})				
-		this['tagName'] =smil_clip_element.tagName;
+		this['tagName'] =smil_clip_element.tagName;	
 		
 		//mv_embed specific property: 
 		if(smil_clip_element.hasAttribute('poster'))
@@ -1784,19 +1786,40 @@ mvSMILClip.prototype = {
 	},
 	setUpEmbedObj:function(){
 		js_log('setup embed for smil based clip');
+		if(this['type']){
+			switch(this['type']){
+				case 'text/html':
+					this.embed = new htmlEmbedWrapper({pc:this});
+				break;
+			}
+		}
 		if(this.tagName=='video')
-			this.parent_setUpEmbedObj();
+			return this.parent_setUpEmbedObj();
 					
 	}
 }
-/* object to manage embedding html with smil timings  */
-var htmlEmedWrapper=function(init){
+/* object to manage embedding html with smil timings 
+ *  grabs settings from parent clip 
+ */
+var htmlEmbedWrapper=function(init){
 	return this.init(init);
+}
+var pcHtmlEmbedDefaults={
+	'dur':4 //default duration of 4seconds
 }
 htmlEmbedWrapper.prototype={
 	init:function(init){
 		js_log('htmlEmbedWrapper');
-	}
+		if(init['pc']){
+			this['pc'] = init['pc'];
+		}
+	},
+	getDuration:function(){
+		if(this.pc.dur)
+			return this.pc.dur;
+		//no dur use default: 
+		return pcHtmlEmbedDefaults.dur;		
+	}	
 }
 /*
 * ImgWrapperEmbed extends htmlEmbedWrapper and but displays an image

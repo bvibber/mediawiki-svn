@@ -1172,7 +1172,14 @@ class MV_SpecialMediaSearch {
 	}
 	//returns results via nickname via semantic query:
 	function getViaNickname($partname, $limit=5){		
-		$query_string = '[[Nickname::~*'.ucfirst($partname).'*]] OR [[Nickname::'.ucfirst($partname).']]';		
+		//split the nickname via spaces: 
+		$nick_parts = split('_', $partname);
+		$query_string='';
+		$or='';
+		foreach($nick_parts as $pname){
+			$query_string.= $or .' [[Nickname::~*'.ucfirst($pname).'*]] OR [[Nickname::'.ucfirst($pname).']] ';
+			$or=' OR ';
+		}		
 		$params=array('format' => 'broadtable',
     				  'offset' => 0,
 					  'limit'	=>$limit);					

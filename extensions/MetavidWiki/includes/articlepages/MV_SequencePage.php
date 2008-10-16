@@ -123,19 +123,27 @@ class MV_SequencePage extends Article {
 	function resolveResourceNode(& $node){		
 		global $wgUser,$wgParser;
 		//print 'resolveResourceNode:' . $node->nodeName . " : " . $node->nodeValue . "\n";
+		
+		//dont' proccess free flowing text 
+		//@@todo (we should probably throw it out)
+		if($node instanceof DOMText)
+			return $node;
+		
 		$nodeAttr = $node->attributes;
 		$node_uri=false;
 		if(!is_null($nodeAttr)){ 
 			foreach($nodeAttr as $atrr){
 				if($atrr->nodeName=='uri'){
 					//pull in node content
-					$node_uri = $atrr->nodeValue;
+					$node_uri = $atrr->nodeValue;					
 				}				
+				//print "$attr = ".  $atrr->nodeValue . "\n";
 			}
-		}
+		}		
+		
 		//if no resource uri is provided just parse inner html and return
-		if(!$node_uri){
-			$innerWikiText='';
+		if(!$node_uri){					
+			$node->setAttribute('type','text/html');
 			return $this->parseInnerWikiText($node);			
 		}
 		$uriTitle = Title::newFromDBkey($node_uri);				
@@ -145,6 +153,9 @@ class MV_SequencePage extends Article {
  				//top level ref includes of pages in the main namespace not supported
  			break;
  			case NS_TEMPLATE:
+ 				//templates are of type text/html
+ 				$node->setAttribute('type','text/html');
+ 				//print "none type: ". $node->getAttribute('type');
  				//if template look for template paramaters:
  				$templateText = '{{'. $uriTitle->getText();
  				$addedParamFlag=false;
@@ -187,6 +198,7 @@ class MV_SequencePage extends Article {
  				// (probably should be hanndled via "figure" namespace which could allow arbitary crop, resize, overlay) 				
  				$img = wfFindFile( $uriTitle ); 	
  				if(!$img){
+ 					$node->setAttribute('type','text/html');
  					//print "image not found \n";
  					$this->parseInnerWikiText($node, wfMsg('mv_resource_not_found',$uriTitle->getText()));
  				}else{
@@ -227,13 +239,13 @@ class MV_SequencePage extends Article {
 		}
 		return $node;
 	}
-	function getSmilXml(){
+	/*function getSmilXml(){
 		$o= '<smil xmlns="http://www.w3.org/2001/SMIL20/Language">'."\n";
 		$o.=$this->ary2xml($this->aHLRD, $baseIndent=1);
 	    //close smil:
 	    $o.='</smil>';
 	    return $o;
-	}
+	}*/
 	/* function resolveHLRD()
 	 * collapses values for top level resource pointers
 	 * sends all relevant data to wiki for parsing.
