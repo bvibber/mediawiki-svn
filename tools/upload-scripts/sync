@@ -1,7 +1,6 @@
 #!/bin/bash
 
-for srv in amane storage1;do
+for srv in amane storage1 ms1;do
 	echo $srv
 	rsync --rsh=ssh -cr /home/wikipedia/upload-scripts/ root@$srv:/export/upload/sync-from-home
-	ssh root@$srv 'cd /export/upload/sync-from-home/HTCPpurger ; make all install'
 done

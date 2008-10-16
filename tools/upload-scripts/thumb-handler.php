@@ -137,6 +137,10 @@ foreach ( $passthrough as $headerName ) {
 curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
 curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 
+# Leave it long enough to generate a ulimit timeout in ordinary cases
+# But short enough to avoid a local PHP timeout (~220s)
+curl_setopt( $ch, CURLOPT_TIMEOUT, 170 );
+
 $text = curl_exec( $ch );
 
 # Send it on to the client
