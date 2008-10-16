@@ -3464,4 +3464,4 @@ $wgAllowDBRightSubtraction = true;
  * An array of class names. Generally not modified by users, but by extensions
  * and the like.
  */
-$wgRightsManagers = array( 'RightsManagerConfigDB' );
+$wgRightsManagers = array( 'RightsManagerConfigDB', 'RightsManagerForeignDB' );

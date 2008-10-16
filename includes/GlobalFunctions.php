@@ -1378,7 +1378,8 @@ function wfDiff( $before, $after, $params = '-u' ) {
 		unset($diff_lines[1]);
 	}
 	if (strpos( $diff_lines[count($diff_lines)-1], "\\" ) == 0) {
-		unset( $diff_lines[count($diff_lines-1] );
+		$line_count = count($diff_lines);
+		unset( $diff_lines[$line_count-1] );
 	}
 	
 	$diff = implode( "\n", $diff_lines );

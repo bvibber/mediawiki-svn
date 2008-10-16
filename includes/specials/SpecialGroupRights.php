@@ -26,33 +26,8 @@ class SpecialGroupRights extends SpecialPage
 		parent::__construct('GroupRights', 'grouprights');
 	}
 	
-	function getAvailableBackends( $user ) {
-		global $wgRightsManagers;
-		
-		$availableBackends = array();
-		
-		foreach( $wgRightsManagers as $rmClass ) {
-			$rm = new $rmClass;
-			
-			if ( $rm->canEditRights( $user ) ) {
-				$availableBackends[] = $rmClass;
-			}
-		}
-		
-		return $availableBackends;
-	}
-	
 	function userCanExecute( $user ) {
 		return (bool) count($this->getAvailableBackends( $user ));
-	}
-	
-	function getBackend() {
-		static $backend = null;
-		
-		if ( !is_null($backend) )
-			return $backend;
-		
-		return $backend = new $this->mBackend;
 	}
 
 	function execute( $subpage ) {
@@ -93,25 +68,43 @@ class SpecialGroupRights extends SpecialPage
 		}
 	}
 	
+	function getAvailableBackends( $user ) {
+		global $wgRightsManagers,$wgUser;
+		
+		$availableBackends = array();
+		
+		foreach( $wgRightsManagers as $rmClass ) {
+			if ( call_user_func( array($rmClass, 'canEditRights'), $wgUser ) ) {
+				$availableBackends[] = $rmClass;
+			}
+		}
+		
+		return $availableBackends;
+	}
+	
 	function showBackendSelector() {
 		global $wgUser, $wgOut;
 		
-		$wgOut->setSubTitle( wfMsg( 'grouprights-backendselect-subtitle' ) );
-		$wgOut->addWikiMsg( 'grouprights-backendselect-text' );
+		$wgOut->setSubTitle( wfMsg( 'userrights-backendselect-subtitle' ) );
+		$wgOut->addWikiMsg( 'userrights-backendselect-text' );
 		
 		// Produce list.
-		$sk = $wgUser->getSkin();
 		$availableBackends = $this->getAvailableBackends( $wgUser );
-		$list = '';
-		foreach( $availableBackends as $backend ) {
-			$text = wfMsg( "rights-backend-$backend" );
-			$link = $sk->link( $this->getTitle(), $text, array(), array( 'backend' => $backend ) );
-			$list .= Xml::tags( 'li', null, $link );
-		}
-		
-		$list = Xml::tags( 'ul', null, $list );
+		$list = RightsManager::buildBackendSelector( $availableBackends );
 		
 		$wgOut->addHTML( $list );
+	}
+	
+	function getBackend() {
+		static $backend = null;
+		
+		if (!is_null($backend)) {
+			return $backend;
+		}
+	
+		global $wgRequest;
+		
+		return $backend = new $this->mBackend( RightsManager::getBackendParameters( $this->mBackend ) );
 	}
 	
 	function getAllGroups() {
@@ -135,7 +128,7 @@ class SpecialGroupRights extends SpecialPage
 			$wgOut->addHTML( '<ul>' );
 
 			foreach ($groups as $group) {
-				$editLink = $sk->link( $this->getTitle( $group ), wfMsg( 'grouprights-editlink'), array(), array( 'backend' => $this->mBackend ) );
+				$editLink = $sk->link( $this->getTitle( $group ), wfMsg( 'grouprights-editlink'), array(), RightsManager::getURLParameters( $this->mBackend ) );
 				$text = htmlspecialchars($group) ." ($editLink)";
 
 				$wgOut->addHTML( "<li> $text </li>" );
@@ -151,7 +144,7 @@ class SpecialGroupRights extends SpecialPage
 		$html .= wfMsgExt( 'grouprights-newgroup-intro', array( 'parse' ) );
 		$html .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgScript, 'name' => 'grouprights-newgroup' ) );
 		$html .= Xml::hidden( 'title',  $this->getTitle()->getPrefixedText() );
-		$html .= Xml::hidden( 'backend', $this->mBackend );
+		$html .= RightsManager::getBackendHiddens( $this->mBackend );
 		
 		$fields = array( 'grouprights-newgroupname' => wfInput( 'wpGroup', 45 ) );
 		
@@ -173,7 +166,7 @@ class SpecialGroupRights extends SpecialPage
 		$html .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle( $group)->getLocalUrl(), 'name' => 'grouprights-newgroup' ) );
 		$html .= Xml::hidden( 'wpGroup', $group );
 		$html .= Xml::hidden( 'wpEditToken', $wgUser->editToken() );
-		$html .= Xml::hidden( 'backend', $this->mBackend );
+		$html .= RightsManager::getBackendHiddens( $this->mBackend );
 		
 		$fields = array();
 		
@@ -335,6 +328,6 @@ class SpecialGroupRights extends SpecialPage
 		$sk = $wgUser->getSkin();
 		$wgOut->setSubTitle( wfMsg( 'grouprights-editgroup-success' ) );
 		$wgOut->addWikiMsg( 'grouprights-editgroup-success-text', $group );
-		$wgOut->addHTML( $sk->link( $this->getTitle( ), wfMsg( 'grouprights-return' ), array(), array( 'backend' => $this->mBackend ) ) );
+		$wgOut->addHTML( $sk->link( $this->getTitle( ), wfMsg( 'grouprights-return' ), array(), RightsManager::getURLParameters( $this->mBackend ) ) );
 	}
 }

@@ -15,6 +15,29 @@ abstract class RightsManager {
 	}
 	
 	/**
+	 * Whether or not to apply the groups on this rights manager locally.
+	 * This is just a question.
+	 */
+	function applyLocally() {
+		return true;
+	}
+	
+	/** Can the given user change any groups at all? */
+	static function _userCanChangeGroups( $user, $class ) {
+		## PHP kinda sucks. There's no way to determine which class this was called on, so we have to add stubs in the subclasses.
+		$rm = new $class;
+		
+		$changeableGroups = $rm->getChangeableGroupsForUser( $user );
+		
+		$counts = array_map( 'count', $changeableGroups );
+		$enabled = array_filter( $counts );
+		
+		return count($enabled);
+	}
+	
+	static abstract function userCanChangeGroups( $user );
+	
+	/**
 	 * Invalidate the cache of rights for a group.
 	 * @param $group \type{\string} The group to invalidate the cache for.
 	 */
@@ -63,7 +86,7 @@ abstract class RightsManager {
 	 * @param $user \type{\object{User}} The user to check.
 	 * @return \type{\bool} Whether or not the user is allowed to change group rights.
 	 */
-	abstract function canEditRights( $user );
+	abstract static function canEditRights( $user );
 	
 	/**
 	 * Add a user to a group or groups.
@@ -99,7 +122,7 @@ abstract class RightsManager {
 	
 	function changeUserGroups( $user, $addgroups, $removegroups, $reason, $doer ) {
 		// Validate input set...
-		$changeable = $this->getChangeableGroupsForUser( $user );
+		$changeable = $this->getChangeableGroupsForUser( $doer );
 		$isself = $this->userEquals( $user, $doer );
 		
 		// Allow adding to self
@@ -152,6 +175,10 @@ abstract class RightsManager {
 	 * @return \type{\arrayof{\string}} Array of action => groups changeable by this group/groups
 	 */
 	function getChangeableGroups( $groups ) {
+		if (!is_array($groups)) {
+			$groups = array($groups);
+		}
+	
 		$changeable = $this->getAllChangeableGroups();
 		$result = array('add' => array(), 'remove' => array(), 'addself' => array(), 'removeself' => array());
 		
@@ -291,6 +318,74 @@ abstract class RightsManager {
 	 * @param $request \type{\string} The HTTP request for the submission.
 	 */
 	 function doExtraGroupSubmit( $group, $reason, $request ) {}
+	 
+	/** Get a list of parameters required to create this RightsManager.*/
+	static function getParameters() { return array(); }
+	
+	/** Build a form which can be used to input the parameters. No <form> or submit elements required. */
+	static function buildParamForm() { return null; }
+	
+	## Some static logic for building selectors.
+	static function buildBackendSelector( $availableBackends ) {
+		global $wgUser, $wgTitle;
+		
+		$sk = $wgUser->getSkin();
+		
+		$list = '';
+		foreach( $availableBackends as $backend ) {
+			$text = wfMsg( "rights-backend-$backend" );
+			
+			## Selector itself
+			$selector = Xml::radioLabel( $text, 'backend', $backend, "backend-selector-$backend" );
+			
+			if (count(call_user_func( array( $backend, 'getParameters' ) ) ) ) {
+				$selector = Xml::tags( 'p', null, $selector );
+				
+				$selector .= "\n" . call_user_func( array( $backend, 'getParameterForm' ) );
+			}
+			
+			$list .= Xml::tags( 'li', null, $selector );
+		}
+		
+		$list = Xml::tags( 'ul', null, $list );
+		$list .= Xml::submitButton( wfMsg( 'userrights-backendselect-submit' ) );
+		$list .= Xml::hidden( 'title', $wgTitle->getPrefixedText() );
+		$list = Xml::tags( 'form', array( 'action' => $wgTitle->getLocalURL(), 'method' => 'get' ), $list );
+		
+		return $list;
+	}
+	
+	static function getBackendParameters( $backend ) {
+		static $params = null;
+		
+		if (is_array( $params ))
+			return $params;
+			
+		global $wgRequest;
+		
+		$params = array();
+		foreach( call_user_func( array( $backend, 'getParameters' ) ) as $p ) {
+			$params[$p] = $wgRequest->getText( $p );
+		}
+		
+		return $params;
+	}
+	
+	static function getURLParameters( $backend ) {
+		return array_merge( self::getBackendParameters($backend), array( 'backend' => $backend ) );
+	}
+	
+	static function getBackendHiddens( $backend ) {
+		$params = self::getURLParameters($backend);
+		
+		$r = '';
+		
+		foreach( $params as $k => $v ) {
+			$r .= Xml::hidden( $k, $v );
+		}
+		
+		return $r;
+	}
 }
 
 // Derive from this class to produce a rights manager which is read-only.
@@ -300,7 +395,7 @@ abstract class RightsManagerReadOnly extends RightsManager {
 	function setRightsStatus( $group, $rights ) { return false; }
 	function addUserGroups( $user, $groups ) { return false; }
 	function removeUserGroups( $user, $groups ) { return false; }
-	function canEditRights( $user ) {return false;}
+	static function canEditRights( $user ) {return false;}
 }
 
 // Pseudo-concrete implementation of a rights manager
@@ -318,7 +413,8 @@ class RightsManagerMulti extends RightsManagerReadOnly {
 		
 		$groupPerms = array();
 		foreach( $wgRightsManagers as $rmClass ) {
-			$rm = new $rmClass;
+			if ( !( $rm = $this->getManager( $rmClass ) ) )
+				continue;
 			
 			$rights = $rm->getAllGroupPermissions();
 			
@@ -336,16 +432,25 @@ class RightsManagerMulti extends RightsManagerReadOnly {
 		return $groupPerms;
 	}
 	
+	function getManager( $class ) {
+		if (count(call_user_func( array($class, 'getParameters') ) ))
+			return false;
+			
+		$rm = new $class;
+		
+		if (!$rm->applyLocally())
+			return false;
+			
+		return $rm;
+	}
+	
 	function getGroupPermissions( $groups ) {
 		global $wgRightsManagers;
 		
-		if (!is_array( $wgRightsManagers ) ) {
-			die( var_dump( $wgRightsManagers ) );
-		}
-		
 		$perms = array();
 		foreach( $wgRightsManagers as $rmClass ) {
-			$rm = new $rmClass;
+			if ( !( $rm = $this->getManager( $rmClass ) ) )
+				continue;
 			
 			$perms = array_merge( $perms, $rm->getGroupPermissions( $groups ) );
 		}
@@ -358,7 +463,8 @@ class RightsManagerMulti extends RightsManagerReadOnly {
 		
 		$groups = array();
 		foreach( $wgRightsManagers as $rmClass ) {
-			$rm = new $rmClass;
+			if ( !( $rm = $this->getManager( $rmClass ) ) )
+				continue;
 			
 			$groups = array_merge( $groups, $rm->getUserGroups( $user ) );
 		}
@@ -371,7 +477,8 @@ class RightsManagerMulti extends RightsManagerReadOnly {
 		
 		$perms = array();
 		foreach( $wgRightsManagers as $rmClass ) {
-			$rm = new $rmClass;
+			if ( !( $rm = $this->getManager( $rmClass ) ) )
+				continue;
 			
 			$perms = array_merge( $perms, $rm->getPermissionsForUser( $user ) );
 		}
@@ -384,20 +491,23 @@ class RightsManagerMulti extends RightsManagerReadOnly {
 		
 		$groups = array();
 		foreach( $wgRightsManagers as $rmClass ) {
-			$rm = new $rmClass;
+			if ( !( $rm = $this->getManager( $rmClass ) ) )
+				continue;
 			
 			$groups = array_merge( $groups, $rm->getAllGroups( ) );
 		}
 		
 		return array_unique( $groups );
 	}
+	
+	static function userCanChangeGroups( $user ) { return parent::_userCanChangeGroups( $user, __CLASS__ ); }
 }
 
 // Concrete implementation of a rights manager - uses the default DB and configuration setup.
 class RightsManagerConfigDB extends RightsManager {
 	function getAllGroupPermissions() {
-		global $wgGroupPermissions,$wgAllowDBRightSubtraction;
-		$groupPerms = $wgGroupPermissions;
+		global $wgAllowDBRightSubtraction;
+		$groupPerms = $this->getConfig();
 		$dbGroupPerms = $this->loadGroupPermissions();
 		
 		foreach( $dbGroupPerms as $group => $rights ) {
@@ -410,7 +520,18 @@ class RightsManagerConfigDB extends RightsManager {
 		return $groupPerms;
 	}
 	
-	function canEditRights( $user ) {
+	static function userCanChangeGroups( $user ) { return parent::_userCanChangeGroups( $user, __CLASS__ ); }
+	
+	function getDB( $type ) {
+		return wfGetDB( $type );
+	}
+	
+	function getConfig() {
+		global $wgGroupPermissions;
+		return $wgGroupPermissions;
+	}
+	
+	static function canEditRights( $user ) {
 		return $user->isAllowed( 'grouprights' );
 	}
 	
@@ -435,8 +556,8 @@ class RightsManagerConfigDB extends RightsManager {
 		// Fetch from DB
 		
 		$groupPerms = array();
-		
-		$dbr = wfGetDB( DB_SLAVE );
+		// Master for caching
+		$dbr = $this->getDB( DB_MASTER );
 		$res = $dbr->select( 'group_rights', '*', array(), __METHOD__ );
 		
 		while ($row = $dbr->fetchObject( $res ) ) {
@@ -450,7 +571,7 @@ class RightsManagerConfigDB extends RightsManager {
 	
 	function getUserGroups( $user ) {
 		if ( !isset( $user->mGroups ) || is_null( $user->mGroups ) ) {
-			$dbr = wfGetDB( DB_MASTER );
+			$dbr = $this->getDB( DB_MASTER );
 			$res = $dbr->select( 'user_groups',
 				array( 'ug_group' ),
 				array( 'ug_user' => $user->getId() ),
@@ -484,7 +605,7 @@ class RightsManagerConfigDB extends RightsManager {
 		$changeableGroups = array();
 		$groupTemplate = array( 'add' => array(), 'remove' => array(), 'add-self' => array(), 'remove-self' => array() );
 		
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = $this->getDB( DB_MASTER ); // Master for caching
 		$res = $dbr->select( 'changeable_groups', '*', array(), __METHOD__ );
 		
 		while ( $row = $dbr->fetchObject( $res ) ) {
@@ -549,7 +670,7 @@ class RightsManagerConfigDB extends RightsManager {
 			}
 		}
 		
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = $this->getDB( DB_MASTER );
 		
 		$dbw->begin();
 		$dbw->delete( 'changeable_groups', array( 'cg_changer' => $group, 'cg_action' => $delete ), __METHOD__ );
@@ -559,7 +680,7 @@ class RightsManagerConfigDB extends RightsManager {
 	}
 	
 	function setRightsStatus( $group, $rights ) {
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = $this->getDB( DB_MASTER );
 		
 		$toDelete = array();
 		$toSet = array();
@@ -583,9 +704,9 @@ class RightsManagerConfigDB extends RightsManager {
 	}
 	
 	protected function rightInConfig( $group, $right ) {
-		global $wgGroupPermissions;
+		$conf = $this->getConfig();
 		
-		return isset($wgGroupPermissions[$group]) && isset($wgGroupPermissions[$group][$right]) && $wgGroupPermissions[$group][$right];
+		return isset($conf[$group]) && isset($conf[$group][$right]) && $conf[$group][$right];
 	}
 	
 	function changeUserGroups( $user, $addgroups, $removegroups, $reason, $doer ) {
@@ -599,7 +720,7 @@ class RightsManagerConfigDB extends RightsManager {
 		if (!count($groups))
 			return;
 			
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = $this->getDB( DB_MASTER );
 		
 		$rows = array();
 		
@@ -611,6 +732,8 @@ class RightsManagerConfigDB extends RightsManager {
 			$rows,
 			__METHOD__,
 			array( 'IGNORE' ) );
+		
+		$user->invalidateCache();
 	}
 	
 	function removeUserGroups( $user, $groups ) {
@@ -619,7 +742,7 @@ class RightsManagerConfigDB extends RightsManager {
 		if (!count($groups))
 			return;
 	
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = $this->getDB( DB_MASTER );
 		$dbw->delete( 'user_groups',
 			array(
 				'ug_user'  => $user->getID(),
@@ -714,10 +837,100 @@ class RightsManagerConfigDB extends RightsManager {
 		
 		$allgroups = array_diff( $this->getAllGroups(), User::getImplicitGroups() );
 		
+		if ($user instanceof UserRightsProxy)
+			die( wfBacktrace() );
+		
 		if ($user->isAllowed( 'userrights' )) {
 			$cg = array_merge_recursive( $cg, array_fill_keys(  array( 'add', 'remove', 'add-self', 'remove-self' ), $allgroups ) );
 		}
 		
 		return $cg;
+	}
+}
+
+## Concrete implementation - remote wiki's rights.
+class RightsManagerForeignDB extends RightsManagerConfigDB {
+	function __construct( $params ) {
+		extract($params);
+		$this->mDatabase = $database;
+	}
+
+	function applyLocally() { return false; } ## Don't apply here, of course!
+	
+	function fetchUser( $name ) {
+		global $wgOut, $wgUser;
+
+		if( $name == '' ) {
+			return null; ## Should have an error...
+		}
+
+		if( $name{0} == '#' ) {
+			// Numeric ID can be specified...
+			// We'll do a lookup for the name internally.
+			$id = intval( substr( $name, 1 ) );
+			
+			$user = UserRightsProxy::newFromId( $this->mDatabase, $id );
+		} else {
+			$user = UserRightsProxy::newFromName( $this->mDatabase, $name );
+		}
+		
+		return $user;
+	}
+	
+	function getDB( $type ) {
+		return wfGetDB( $type, array(), $this->mDatabase );
+	}
+	
+	function getConfig() {
+		// Stolen from CentralAuth - a dirty hack indeed.
+		global $wgConf, $IP;
+		static $initialiseSettingsDone = false;
+		
+		// This is a damn dirty hack
+		if ( !$initialiseSettingsDone ) {
+			$initialiseSettingsDone = true;
+			if( file_exists( "$IP/InitialiseSettings.php" ) ) {
+				require_once "$IP/InitialiseSettings.php";
+			}
+		}
+		
+		list( $major, $minor ) = $wgConf->siteFromDB( $this->mDatabase );
+		if( isset( $major ) ) {
+			$groupperms = $wgConf->get( 'wgGroupPermissions', $this->mDatabase, $major,
+				array( 'lang' => $minor, 'site' => $major ) );
+		}
+		
+		if (!count($groupperms)) { ## What?
+			global $wgGroupPermissions;
+			
+			return $wgGroupPermissions; ## Fallback to local groups.
+		}
+		
+		return $groupperms;
+	}
+	
+	static function getParameters() {
+		return array( 'database' );
+	}
+	
+	static function getParameterForm() {
+		global $wgConf;
+		
+		$selector = new XmlSelect( 'database', 'database');
+		
+		foreach( $wgConf->wikis as $wiki ) {
+			$selector->addOption( $wiki );
+		}
+		
+		$fields = array();
+		$fields['rightsmanager-interwiki-database'] = $selector->getHTML();
+		
+		return Xml::buildForm( $fields );
+	}
+	
+	static function userCanChangeGroups( $user ) { return $user->isAllowed( 'userrights-interwiki' ); }
+	
+	static function canEditRights( $user ) {
+		return $user->isAllowed( 'grouprights-interwiki' );
 	}
 }

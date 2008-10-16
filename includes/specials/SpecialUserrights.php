@@ -16,6 +16,7 @@ class UserrightsPage extends SpecialPage {
 	# variable for it.
 	protected $mTarget;
 	protected $isself = false;
+	protected $backendParams = array();
 
 	public function __construct() {
 		parent::__construct( 'Userrights' );
@@ -30,19 +31,12 @@ class UserrightsPage extends SpecialPage {
 	}
 	
 	function getAvailableBackends( $user ) {
-		global $wgRightsManagers;
+		global $wgRightsManagers,$wgUser;
 		
 		$availableBackends = array();
 		
 		foreach( $wgRightsManagers as $rmClass ) {
-			$rm = new $rmClass;
-			
-			$changeableGroups = $rm->getChangeableGroupsForUser( $user );
-			
-			$counts = array_map( 'count', $changeableGroups );
-			$enabled = array_filter( $counts );
-			
-			if ( count( $enabled ) ) {
+			if ( call_user_func( array($rmClass, 'userCanChangeGroups'), $wgUser ) ) {
 				$availableBackends[] = $rmClass;
 			}
 		}
@@ -57,22 +51,22 @@ class UserrightsPage extends SpecialPage {
 		$wgOut->addWikiMsg( 'userrights-backendselect-text' );
 		
 		// Produce list.
-		$sk = $wgUser->getSkin();
 		$availableBackends = $this->getAvailableBackends( $wgUser );
-		$list = '';
-		foreach( $availableBackends as $backend ) {
-			$text = wfMsg( "rights-backend-$backend" );
-			$link = $sk->link( $this->getTitle(), $text, array(), array( 'backend' => $backend ) );
-			$list .= Xml::tags( 'li', null, $link );
-		}
-		
-		$list = Xml::tags( 'ul', null, $list );
+		$list = RightsManager::buildBackendSelector( $availableBackends );
 		
 		$wgOut->addHTML( $list );
 	}
 	
 	function getBackend() {
-		return new $this->mBackend;
+		static $backend = null;
+		
+		if (!is_null($backend)) {
+			return $backend;
+		}
+	
+		global $wgRequest;
+		
+		return $backend = new $this->mBackend( RightsManager::getBackendParameters( $this->mBackend ) );
 	}
 
 	/**
@@ -258,7 +252,7 @@ class UserrightsPage extends SpecialPage {
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'name' => 'uluser', 'id' => 'mw-userrights-form1' ) ) .
 			Xml::hidden( 'title',  $this->getTitle()->getPrefixedText() ) .
-			Xml::hidden( 'backend', $this->mBackend ) .
+			RightsManager::getBackendHiddens( $this->mBackend ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'userrights-lookup-user' ) ) .
 			Xml::inputLabel( wfMsg( 'userrights-user-editname' ), 'user', 'username', 30, $this->mTarget ) . ' ' .
@@ -317,7 +311,7 @@ class UserrightsPage extends SpecialPage {
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getTitle()->getLocalURL(), 'name' => 'editGroup', 'id' => 'mw-userrights-form2' ) ) .
 			Xml::hidden( 'user', $this->mTarget ) .
-			Xml::hidden( 'backend', $this->mBackend ) .
+			RightsManager::getBackendHiddens( $this->mBackend ) .
 			Xml::hidden( 'wpEditToken', $wgUser->editToken( $this->mTarget ) ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'userrights-editusergroup' ) ) .

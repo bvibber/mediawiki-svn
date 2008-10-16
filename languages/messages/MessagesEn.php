@@ -1561,6 +1561,7 @@ please see math/README to configure.',
 'userrights-irreversible-marker' => '$1*', # only translate this message to other languages if you have to change it
 'userrights-backendselect-subtitle' => 'Select a rights manager',
 'userrights-backendselect-text' => "You are permitted to edit user groups for more than one rights management system. Please select the rights management system for which you wish to edit user groups from the list below:",
+'userrights-backendselect-submit' => 'Select system',
 
 # Groups
 'group'               => 'Group:',
@@ -3708,7 +3709,10 @@ Note that a group does not exist unless it has rights assigned to it.',
 'grouprights-editgroup-add-self' => 'Can add groups to self:',
 'grouprights-editgroup-remove-self' => 'Can remove groups from self:',
 
-'rights-backend-RightsManagerConfigDB' => "Users and groups for this MediaWiki site.",
+'rights-backend-RightsManagerConfigDB' => "Users and groups for this MediaWiki site",
+'rights-backend-RightsManagerForeignDB' => 'Users and groups on another site',
+
+'rightsmanager-interwiki-database' => 'Site:',
 
 # External image whitelist
 'external_image_whitelist' => ' #Leave this line exactly as it is<pre>
