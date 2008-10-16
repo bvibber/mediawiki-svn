@@ -46,7 +46,7 @@ $flowEmbedCode=<<<EOT
 			autoBuffering: true,
 			controlBarBackgroundColor:'0x2e8860',
 			initialScale: 'scale',
-			videoFile: '{$psScriptPath}/flow_player/sample_barney.flv'
+			videoFile: '{$psScriptPath}/sample_media/sample_barney.flv'
 		}} 
 	);
 </script>
