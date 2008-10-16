@@ -118,8 +118,11 @@ function setupConfigure(){
 	// ------------------
 
 	var tables = getElementsByClassName( configform, 'table', 'assoc' );
+	var reg = new RegExp( '(^| )disabled($| )' );
 	for( var t = 0; t < tables.length ; t++ ){
-		table = tables[t];
+		table = tables[t];	
+  		if( reg.test( table.className ) )
+  			continue;
 		// Button "remove this row"
 		var trs = table.getElementsByTagName( 'tr' );
 		for( var r = 0; r < trs.length; r++ ){

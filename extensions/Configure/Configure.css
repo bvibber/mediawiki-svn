@@ -95,7 +95,7 @@ a.configure-doc:visited {
 /**
  * disabled settings
  */
-td.disabled > hr {
+table.disabled > tr > td > hr {
 	border: 0 !important;
 	color: #777 !important;
 	background-color: #777 !important;

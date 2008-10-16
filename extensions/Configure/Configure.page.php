@@ -742,12 +742,12 @@ abstract class ConfigurationPage extends SpecialPage {
 			$keydesc = wfMsgHtml( 'configure-desc-key' );
 			$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$class = ( !$allowed ) ? array( 'class' => 'disabled' ) : array();
-			$encConf = htmlspecialchars( $conf );
-			$text = "<table class='assoc' id='{$encConf}'>\n<tr><th>{$keydesc}</th><th>{$valdesc}</th></tr>\n";
+			$text = Xml::openElement( 'table', array( 'class' => ( $allowed ? 'assoc' : 'assoc disabled' ), 'id' => $conf ) ) . "\n";
+			$text .= "<tr><th>{$keydesc}</th><th>{$valdesc}</th></tr>\n";
 			if( is_array( $default ) && count( $default ) > 0 ){
 				$i = 0;
 				foreach( $default as $key => $val ){
-					$text .= '<tr>' . Xml::openElement( 'td', $class );
+					$text .= '<tr><td>';
 					if( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-key-{$i}",
@@ -755,7 +755,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						) ) . "<br/>\n";
 					else
 						$text .= '<code>' . htmlspecialchars( $key ) . '</code>';
-					$text .= '</td>' . Xml::openElement( 'td', $class );
+					$text .= '</td><td>';
 					if( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-val-{$i}",
@@ -780,8 +780,8 @@ abstract class ConfigurationPage extends SpecialPage {
 					) ) . "<br/>\n";
 					$text .= '</td></tr>';
 				} else {
-					$text .= "<tr><td class='disabled' style='width:10em; height:1.5em;'><hr /></td>" .
-						"<td class='disabled' style='width:10em; height:1.5em;'><hr /></td></tr>\n";
+					$text .= "<tr><td style='width:10em; height:1.5em;'><hr /></td>" .
+						"<td style='width:10em; height:1.5em;'><hr /></td></tr>\n";
 				}
 			}
 			$text .= '</table>';
