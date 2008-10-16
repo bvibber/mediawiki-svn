@@ -194,4 +194,60 @@ class CodeRepository {
 		}
 		return false;
 	}
+	
+	/*
+	 * Link the $author to the wikiuser $user
+	 * @param string $author
+	 * @param User $user
+	 * @return bool success
+	 */
+	function linkTo( $author, User $user ) {
+		// We must link to an existing user
+		if( !$user->getId() ) {
+			return false;
+		}
+		$dbw = wfGetDB( DB_MASTER );
+		// Insert in the auther -> user link row.
+		// Skip existing rows.
+		$dbw->insert( 'code_authors',
+			array(
+				'ca_repo_id'   => $this->getId(),
+				'ca_author'    => $author,
+				'ca_user_text' => $user->getName()
+			),
+			__METHOD__,
+			array( 'IGNORE' )
+		);
+		// If the last query already found a row, then update it.
+		if( !$dbw->affectedRows() ) {
+			$dbw->update(
+				'code_authors',
+				array( 'ca_user_text' => $user->getName() ),
+				array(
+					'ca_repo_id'  => $this->getId(),
+					'ca_author'   => $author,
+				),
+				__METHOD__
+			);
+		}
+		return ( $dbw->affectedRows() > 0 );
+	}
+
+	/*
+	 * Link the $author to the wikiuser $user
+	 * @param string $author
+	 * @return bool success
+	 */
+	function unlink( $author ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete(
+			'code_authors',
+			array(
+				'ca_repo_id' => $this->getId(),
+				'ca_author'  => $author,
+			),
+			__METHOD__
+		);
+		return ( $dbw->affectedRows() > 0 );
+	}
 }
