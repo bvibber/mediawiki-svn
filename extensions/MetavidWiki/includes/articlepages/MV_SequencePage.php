@@ -76,7 +76,6 @@ class MV_SequencePage extends Article {
 	}
 	//go from High level resource description to smile doc
 	function resolveHLRD_to_SMIL(){
-		global $wgTitle;
 		//init smil skeleton: 
 		$this->smilDoc = new DOMDocument('1.0','UTF-8');
 		
@@ -87,8 +86,9 @@ class MV_SequencePage extends Article {
 		//add meta data:
 		$titleNode = $this->smilDoc->createElement('meta');
 		$titleNode->setAttribute("name", "title");
-		$titleNode->setAttribute("content", $wgTitle->getText() );
-		
+		$titleNode->setAttribute("content", $this->mTitle->getText() );
+		//add the title to the head node: 
+		$headNode->appendChild($titleNode);
 		
 		//add resolved transitions to the head: 
 		$tranNodeList = $this->hlrdDoc->getElementsByTagName('transition');
@@ -209,6 +209,14 @@ class MV_SequencePage extends Article {
  				
  					$node->setAttribute('type',$img->getMimeType());
  					$node->setAttribute('src', $thumbnail->file->getURL());
+ 					
+ 					//if type is ogg: (set dur and poster) 
+ 					if( $img->getMimeType()=='application/ogg') {
+ 						if( !$node->hasAttribute('dur') )
+ 							$node->setAttribute('dur',  $thumbnail->file->getLength() );
+ 						if( !$node->hasAttribute('poster') )
+ 							$node->setAttribute('poster', )
+ 					}
  				}
  			break; 
 		}									
@@ -234,7 +242,10 @@ class MV_SequencePage extends Article {
 		if(trim($innerWikiText)!=''){	
 			$f = $node->ownerDocument->createDocumentFragment();
 			$parserOutput = $wgParser->parse($innerWikiText  ,$this->mTitle, ParserOptions::newFromUser( $wgUser ));				
-		    $f->appendXML($parserOutput->getText());				
+		    $f->appendXML( "<![CDATA[\n".
+		    		$parserOutput->getText() . 
+		    		"]]>"		    		
+		    	);				
 			$node->appendChild($f); 				 
 		}
 		return $node;

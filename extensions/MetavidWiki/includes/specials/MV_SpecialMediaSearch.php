@@ -1173,7 +1173,7 @@ class MV_SpecialMediaSearch {
 	//returns results via nickname via semantic query:
 	function getViaNickname($partname, $limit=5){		
 		//split the nickname via spaces: 
-		$nick_parts = split('_', $partname);
+		$nick_parts = split('_', str_replace(' ', '_',$partname));
 		$query_string='';
 		$or='';
 		foreach($nick_parts as $pname){

@@ -365,6 +365,7 @@ mediaPlayers.prototype =
         this.default_players = new Object();
         this.default_players['video/x-flv']= ['flash','vlc'];
         this.default_players['video/ogg']=['native','vlc','java'];
+        this.default_players['application/ogg']=['native','vlc','java'];
 		this.default_players['video/mp4']=['vlc'];
     },
     addPlayer : function(player, mime_type)
@@ -385,7 +386,7 @@ mediaPlayers.prototype =
         this.players.push(player);
     },
     getMIMETypePlayers : function(mime_type)
-    {
+    {    	
         var mime_players = new Array();	
 		if(this.default_players[mime_type])
 			for (var d in this.default_players[mime_type])
@@ -398,14 +399,15 @@ mediaPlayers.prototype =
         return mime_players;
     },
     defaultPlayer : function(mime_type)
-    {
+    {    	    	
         var mime_players = this.getMIMETypePlayers(mime_type);
         if(mime_players.length)
         {
             // check for prior preference for this mime type
-            for(var i in mime_players)
-                if(mime_players[i].id==this.preference[mime_type])
+            for( var i in mime_players ){
+                if( mime_players[i].id==this.preference[mime_type] )
                     return mime_players[i];
+            }                    
             // otherwise just return the first compatible player
 			// (it will be chosen according to the default_players list
             return mime_players[0];
@@ -1761,12 +1763,13 @@ mediaElement.prototype =
             	 js_log('set via prefrence: '+playable_sources[source].mime_type);
             	 this.selected_source = playable_sources[source];        
             }                                	                        
-        }    
+        }           
         //set Ogg via player support:
         for(var source in playable_sources){
+        	js_log('f:autoSelectSource' + playable_sources[source].mime_type);
         	var mime_type =playable_sources[source].mime_type;        	
        		//set source via player                 
-            if(mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex'){
+            if(mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex' || mime_type=='application/ogg'){
             	for(var i in embedTypes.players){
 	        		var player = embedTypes.players[i];
 	        		//debugger;
@@ -1851,7 +1854,8 @@ mediaElement.prototype =
     },
     getPlayableSources: function(){
     	 var playable_sources= new Array();
-    	 for(var i in this.sources){    	 	    	 	
+    	 for(var i in this.sources){
+    	 	js_log('getPlayableSources:'+this.sources[i].mime_type);    	 	    	 	
     	 	if(this.isPlayableType(this.sources[i].mime_type)){
     	 		if(mv_restrict_roe_time_source){
     	 			if(this.sources[i]['start'])

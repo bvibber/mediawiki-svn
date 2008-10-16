@@ -60,7 +60,7 @@ mvPlayList.prototype = {
 	disp_play_head:null,
 	userSlide:false,
 	loading:true,
-	loading_external_data:true, //load external data by default
+	loading_external_data:true, //if we are loading external data (set to loading by default) 
 	tracks:{},
 	default_track:null, // the default track to add clips to.
 	init : function(element){
@@ -206,7 +206,7 @@ mvPlayList.prototype = {
 				_this.clip_ready_count++;
 				continue;
 			}
-			js_log('clip sources count: '+ clip.embed.media_element.sources.length);		
+			//js_log('clip sources count: '+ clip.embed.media_element.sources.length);		
 			clip.embed.on_dom_swap();
 			if(clip.embed.loading_external_data==false && 
 	   			clip.embed.init_with_sources_loadedDone==false){
@@ -437,11 +437,12 @@ mvPlayList.prototype = {
 		//js_log('found clip: '+ this.cur_clip.id + 'transIn:');
 		
 		//updte start offset (@@todo should probably happen somewhere else like in getDuration() ) 
-		if(!this.cur_clip.embed.start_offset)
+		if(typeof this.cur_clip.embed.start_offset=='undefined')
 			this.cur_clip.embed.start_offset=this.cur_clip.embed.media_element.selected_source.start_offset;	
 		
 		//render effects ontop:
-		//issue thumbnail update request: (if plugin supports it will render out frame (if media )  
+		//issue thumbnail update request: (if plugin supports it will render out frame 
+		// if not then we do a call to the server to get a new thumbnail  
 		this.cur_clip.embed.updateTimeThumb(perc);
 		
 		this.cur_clip.embed.currentTime = (float_sec -pl_sum_time)+this.cur_clip.embed.start_offset ;
@@ -1682,12 +1683,12 @@ var smilPlaylist ={
 		$j.each(seq_tags, function(i,seq_elm){
 			var inx = 0;
 			//get all the clips for the given seq:
-			$j.each(seq_elm.childNodes, function(i, mediaElemnt){ 
+			$j.each(seq_elm.childNodes, function(i, mediaElement){ 
 				//~complex~ have to hannlde a lot like "switch" "region" etc
 				//js_log('proccess: ' + mediaElemnt.tagName); 
-				if(typeof mediaElemnt.tagName!='undefined'){
+				if(typeof mediaElement.tagName!='undefined'){
 					//set up basic mvSMILClip send it the mediaElemnt & mvClip init: 
-					var cur_clip = new mvSMILClip(mediaElemnt, 
+					var cur_clip = new mvSMILClip(mediaElement, 
 								{
 									id:'p_' + _this.id + '_c_'+inx,
 									pp:_this,
@@ -1715,6 +1716,7 @@ var mvSMILClip=function(smil_clip_element, mvClipInit){
 	return this.init(smil_clip_element, mvClipInit);
 }
 //http://www.w3.org/TR/2007/WD-SMIL3-20070713/smil-extended-media-object.html#smilMediaNS-BasicMedia
+//and some resource description elements
 var mv_supported_media_attr = new Array(
 	'src',
 	'type',
@@ -1722,7 +1724,10 @@ var mv_supported_media_attr = new Array(
 	'transIn',
 	'transOut',
 	'fill',
-	'dur'
+	'dur',
+	
+	'uri',
+	'poster'
 );
 //all the overwritten and new methods for playlist extension of mv_embed
 mvSMILClip.prototype = {	
@@ -1749,7 +1754,11 @@ mvSMILClip.prototype = {
 			}
 		})				
 		this['tagName'] =smil_clip_element.tagName;	
-		
+		if( smil_clip_element.firstChild ){
+			this['wholeText']=smil_clip_element.firstChild.wholeText;
+			js_log("SET wholeText: "+ this['wholeText']);
+		}
+		//debugger;
 		//mv_embed specific property: 
 		if(smil_clip_element.hasAttribute('poster'))
 			this['img'] = smil_clip_element.getAttribute('poster');
@@ -1789,10 +1798,20 @@ mvSMILClip.prototype = {
 		if(this['type']){
 			switch(this['type']){
 				case 'text/html':
-					this.embed = new htmlEmbedWrapper({pc:this});
+				case 'image/jpeg':
+					this.embed = new htmlEmbedWrapper({pc:this, id:'e_'+this.id});					
+				break;
+				case 'application/ogg':
+				case 'video/ogg':
+					this['type']='video/ogg'; //conform to 'video/ogg' type
+					this.parent_setUpEmbedObj();
 				break;
 			}
 		}
+		//if we got embed we are done: 
+		if(this.embed)
+			return ;
+		//guess by less reliable tagName: 
 		if(this.tagName=='video')
 			return this.parent_setUpEmbedObj();
 					
@@ -1802,16 +1821,67 @@ mvSMILClip.prototype = {
  *  grabs settings from parent clip 
  */
 var htmlEmbedWrapper=function(init){
-	return this.init(init);
+	ve = document.createElement('div');
+	//extend ve with all this 
+	this.init(init);	
+	for(method in this){
+		if(method!='readyState' && method!='style'){						
+			ve[method]= this[method];
+		}
+	}	
+	return ve;
 }
 var pcHtmlEmbedDefaults={
 	'dur':4 //default duration of 4seconds
 }
 htmlEmbedWrapper.prototype={
+	 supports: {
+    	'play_head':true, 
+    	'play_or_pause':true,     	
+    	'fullscreen':false, 
+    	'time_display':true, 
+    	'volume_control':true,
+    	
+    	'overlays':true,
+    	'playlist_swap_loader':true //if the object supports playlist functions    	
+   	},
+   	start_offset:0,
 	init:function(init){
 		js_log('htmlEmbedWrapper');
 		if(init['pc']){
 			this['pc'] = init['pc'];
+		}	
+		ve = document.createElement('div');		
+		for(i in init){		
+			//set the parent clip pointer: 	
+			if(i=='pc'){
+				this['pc']=init['pc'];
+			}else{
+				ve.setAttribute(i,init[i]);
+			}
+		}		
+		var videoInterface = new embedVideo(ve);	
+		//inherit the base embed properties: 
+		for( var i in videoInterface){ 			
+			if(typeof this[i] == 'undefined'){
+				this[i]=videoInterface[i];
+			}else{
+				this['parent_'+i]=videoInterface[i];
+			}
+		}				
+	},
+	//nothing to update in static html display: 
+	updateTimeThumb:function(){
+		return ;
+	},
+	getHTML:function(){
+		//set up the css for our parent div: 		
+		$j(this).css({'width':this.pc.pp.width, 'height':this.pc.pp.height, 'overflow':"hidden"});
+		//@@todo support more smil stuff: 
+		if( this.pc.type =='image/jpeg'){
+			$j(this).html('<img src="'+this.pc.src+'">');
+		}else{
+			$j(this).html(this.pc.wholeText);
 		}
 	},
 	getDuration:function(){
@@ -1819,19 +1889,14 @@ htmlEmbedWrapper.prototype={
 			return this.pc.dur;
 		//no dur use default: 
 		return pcHtmlEmbedDefaults.dur;		
+	},	
+	//gives a chance to make any nesseary external requests
+	//@@todo we can "start loading images" if we want
+	on_dom_swap:function(){
+		this.loading_external_data=false
+		this.ready_to_play=true;
+		return ;
 	}	
-}
-/*
-* ImgWrapperEmbed extends htmlEmbedWrapper and but displays an image
-*/
-var imgEmbedWrapper=function(img_init){
-	return this.init;
-}
-//all the overwritten and new methods for playlist extension of mv_embed
-imgEmbedWrapper.prototype = {	
-	init:function(){
-		js_log("imgWrapperEmbed init");
-	}
 }
 var mv_supported_transition_attr = new Array(
 	'id',
@@ -1974,7 +2039,7 @@ trackObj.prototype = {
 		js_log('ignored pos: '+ pos);
 		//for now just add to the end: 
 		this.clips.push(clipObj);
-		js_log('addClip cur_clip len:'+ clipObj.embed.media_element.sources.length);		
+		//js_log('addClip cur_clip len:'+ clipObj.embed.media_element.sources.length);		
 	},
 	getClipCount:function(){		
 		return this.clips.length;
