@@ -15,7 +15,8 @@
 #	6) reload the apache webserver
 # NOTE: This script assumes that you already have the DNS entry set up
 #       for the wiki you are installing. Also, it assumes that you have
-#       Subversion client installed and in your path.
+#       Subversion client installed and in your path. Place this script 
+#       somewhere like /usr/local/bin to easily create uniwikis!
 
 # print usage message if not called with correct args
 if [ $# -eq 0 ]; then
@@ -28,13 +29,13 @@ INSTALL_DIRNAME=$1
 INSTALL_PATH=`pwd`
 
 # mediawiki settingsi
-MEDIAWIKI_SRC_URL="http://download.wikimedia.org/mediawiki/1.13/mediawiki-1.13.1.tar.gz"
-MEDIAWIKI_TARGZ="mediawiki-1.13.0.tar.gz"
-MEDIAWIKI_DIRNAME="mediawiki-1.13.0"
-MEDIAWIKI_LINENUM=1729
+MEDIAWIKI_SRC_URL="http://download.wikimedia.org/mediawiki/1.13/mediawiki-1.13.2.tar.gz"
+MEDIAWIKI_TARGZ="mediawiki-1.13.2.tar.gz"
+MEDIAWIKI_DIRNAME="mediawiki-1.13.2"
+MEDIAWIKI_LINENUM=1741
 
 # uniwiki settings
-UNIWIKI_SRC_URL="http://svn.mepemepe.com/uniwiki/trunk"
+UNIWIKI_SRC_URL="http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/uniwiki"
 UNIWIKI_DIRNAME="uniwiki"
 UNIWIKI_SETTINGS_FILE="$INSTALL_PATH/$INSTALL_DIRNAME/extensions/$UNIWIKI_DIRNAME/.make-uniwiki-settings"
 
