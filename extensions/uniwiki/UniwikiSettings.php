@@ -15,4 +15,3 @@ require_once("$uw/CustomToolbar/CustomToolbar.php");
 require_once("$uw/CreatePage/CreatePage.php"); 
 require_once("$uw/FormatChanges/FormatChanges.php"); 
 require_once("$uw/FormatSearch/FormatSearch.php");
-require_once("$uw/FormatHistory/FormatHistory.php");
