@@ -1,6 +1,5 @@
 //wgServerOveride: leave empty to use the current server
 // (else provide the absolute url to index.php of the wiki you are recording stats to)
-var wgServerOveride = "";
 var global_req_cb = new Array();//the global request callback array
 
 /*parseUri class:*/
@@ -21,8 +20,8 @@ wgExtendedOggPlayerStats = {
 		}
 
 		//build our request url:
-		if( wgServerOveride!="" ){
-			url= wgServerOveride;
+		if( wgServerOverride!="" ){
+			url= wgServerOverride;
 		}else{
 			url = wgServer +((wgScript == null) ? (wgScriptPath + "/index.php") : wgScript);
 		}
@@ -71,6 +70,7 @@ wgExtendedOggPlayerStats = {
 		});
 	}
 }
+
 //extend the OggHandler object for stats collection
 if(typeof wgOggPlayer.doStats =='undefined'){
 	for(var i in wgExtendedOggPlayerStats){
