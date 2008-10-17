@@ -318,6 +318,9 @@ She $3 dt'enmys IP troa, as she dt'enney ghlass ny #$5. Cur ad lesh dagh ooilley
 'accmailtitle'           => 'Fockle yn arrey currit.',
 'accmailtext'            => 'Ta fockle yn arrey da "$1" currit dy $2.',
 'newarticle'             => '(Noa)',
+'newarticletext'         => 'T’ou er jeet trooid kiangley dys duillag nagh vel ayn foast.  
+Son dy chroo y duillag, gow toshiaght screeuyn ‘sy chishtey çheu heese jeh shoh (jeeagh er [[{{MediaWiki:Helppage}}|duillag y chooney]] son ny smoo fys).  
+My haink oo dys shoh trooid marranys, crig er cramman ‘erash’ yn jeeagheyder ayd.',
 'note'                   => '<strong>Note:</strong>',
 'previewnote'            => '<strong>Ta shoh roie-haishbynys;
 cha nel ny caghlaaghyn sauailt foast!</strong>',
@@ -472,7 +475,6 @@ Foddee oo [[:\$1|croo yn duillag shoh]].",
 'nchanges'        => '$1 {{PLURAL:$1|caghlaa|caghlaaghyn}}',
 'recentchanges'   => "Caghlaaghyn s'noa",
 'rcnote'          => "Ny ta heese, she {{PLURAL:$1|yn '''1''' caghlaa|ny '''$1''' caghlaaghyn s'jerree}} ayns {{PLURAL:$2|yn laa|ny '''$2''' laaghyn s'jerree}}, kiart ec $4, $5.",
-'rcnotefrom'      => "Shoh heese ny caghlaaghyn veih '''$2''' (gys '''$1''' taishbynit).",
 'rclistfrom'      => "Taishbyney caghlaaghyn s'noa veih $1",
 'rcshowhideminor' => '$1 myn-arraghyn',
 'rcshowhidebots'  => '$1 robotyn',
@@ -529,9 +531,11 @@ Foddee oo [[:\$1|croo yn duillag shoh]].",
 
 # Image description page
 'filehist'                       => 'Shennaghys y choadan',
+'filehist-help'                  => 'Crig er date/traa ennagh son dy ‘akin y coadan myr v’eh ec y traa shen.',
 'filehist-deleteall'             => 'scryss ooilley',
 'filehist-deleteone'             => 'scryss eh shoh',
 'filehist-revert'                => 'goll er ash',
+'filehist-current'               => 'bio',
 'filehist-datetime'              => 'Date/Am',
 'filehist-user'                  => 'Ymmydeyr',
 'filehist-dimensions'            => 'Mooadyssyn',
@@ -543,6 +547,7 @@ Foddee oo [[:\$1|croo yn duillag shoh]].",
 'shareduploadwiki-linktext'      => 'duillag huarastyl y choadan',
 'shareduploadduplicate-linktext' => 'coadyn elley',
 'shareduploadconflict-linktext'  => 'coadan elley',
+'noimage'                        => 'Cha nel coadan erbee ayn as yn ennym shoh er, agh foddee oo $1',
 'noimage-linktext'               => 'laad neese eh',
 'uploadnewversion-linktext'      => "Laad neese lhieggan noa jeh'n choadan shoh",
 
@@ -612,6 +617,10 @@ Foddee oo [[:\$1|croo yn duillag shoh]].",
 'popularpages'            => 'Duillagyn cadjin',
 'wantedcategories'        => 'Ronnaghyn ry-laccal',
 'wantedpages'             => 'Duillagyn ry-laccal',
+'mostlinked'              => 'Duillagyn as mooarane kianglaghyn daue',
+'mostlinkedcategories'    => 'Ronnaghyn as mooarane kianglaghyn daue',
+'mostlinkedtemplates'     => 'Clowanyn as mooarane kianglaghyn daue',
+'mostimages'              => 'Coadanyn as mooarane kianglaghyn daue',
 'prefixindex'             => 'Ayndagh roie-ockle',
 'shortpages'              => 'Duillagyn giarey',
 'longpages'               => 'Duillagyn liauyr',
@@ -834,6 +843,7 @@ Bee caghlaaghyn jeant er y duillag shoh as e ghuillag resoonaght ry-akin ayns y 
 'move-page'               => '$1 y scughey',
 'move-page-legend'        => 'Duillag y scughey',
 'movearticle'             => 'Duillag y scughey:',
+'movenologin'             => 'Cha nel oo loggit stiagh',
 'newtitle'                => 'Gys ard-ennym noa:',
 'move-watch'              => 'Freill arrey er y duillag shoh',
 'movepagebtn'             => 'Yn duillag y scughey',
@@ -1067,5 +1077,8 @@ Kianglaghyn eiyrtyssagh erbee er yn linney shoh, t'ad goll er loaghtey myr lhimm
 'specialpages-group-other'       => 'Duillagyn elley er lheh',
 'specialpages-group-login'       => 'Log stiagh / croo coontys',
 'specialpages-group-users'       => 'Ymmydeyryn as kiartyn',
+
+# Special:Nuke
+'nuke-submit-user' => 'Gow',
 
 );

@@ -119,7 +119,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings MediaWiki Phi-chṳ sat-thin chhîn-tân]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki Phìn-sòng mun-thì kié-tap]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki fat-phu email chhîn-tân]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki fat-phu email chhîn-tân]',
 
 'about'          => 'Kôan-yî',
 'article'        => 'Vùn-chông',
@@ -677,7 +677,6 @@ Ngì thùng-sṳ̀ ya-yeu hiong Wikimedia pó-chṳn ngì só thì-kâu ke nui-y
 'recentchangestext'                 => 'Kiên-chiûng liá-ke wiki song ke chui-sîn kiên-kói.',
 'recentchanges-feed-description'    => 'Kiên-chiûng chhṳ-thin chhai wiki song chui-khiûn ke kiên-kói.',
 'rcnote'                            => "Yî-ha he chhai $3, chui-khiûn '''$2''' thiên-nui ke '''$1'''-chhṳ chui-khiûn ke kiên-kói ki-liu̍k:",
-'rcnotefrom'                        => "Ha-mien he chhṳ '''$2''' (Chui-tô hién-sṳ '''$1'''):",
 'rclistfrom'                        => 'Hién-sṳ chhṳ $1 yî-lòi ke sîn kiên-kói',
 'rcshowhideminor'                   => '$1 séu phiên-cho',
 'rcshowhidebots'                    => '$1 kî-hi-ngìn ke phiên-cho',
@@ -1243,6 +1242,8 @@ chhiáng chhai hàng-thung chṳ̂-chhièn siên liáu-kié khì-thâ khó-nèn 
 *Sîn vùn-chông yí-kîn yû yit-ke pâu-hàm nui-yùng ke tui-fa-hiong, fe̍t-he
 *Ngì put kiêu-sién ha-mien ke fu̍k-sién khiông. Chhai liá-chúng chhìn-khóng hâ, pit-sî sú-kûng yì-thung fe̍t-he ha̍p-phîn vùn-chông.",
 'movearticle'             => 'Yì-thung vùn-chông',
+'movenologin'             => 'Hàn-mò tên-ngi̍p',
+'movenologintext'         => 'Ngì pit-sî he yit-miàng tên-ki yung-fu pin-chhiâ [[Special:UserLogin|tên-ngi̍p]] heu chhòi-nèn Yì-thung yit-ke vùn-chông.',
 'newtitle'                => 'Sîn phêu-thì',
 'move-watch'              => 'Kam-sṳ chhṳ́-chông',
 'movepagebtn'             => 'Yì-thung vùn-chông',
@@ -1265,7 +1266,6 @@ Ngì khok-ngin sî-yeu chhù-thet ngièn hong-mien khi̍p chin-hàng yì-thung m
 'delete_and_move_confirm' => 'Chhie̍t-tui, chhù-thet chhṳ́ hong-mien',
 'delete_and_move_reason'  => 'Chhù-thet yî-phien yì-thung',
 'selfmove'                => 'Ngièn-sṳ́ phêu-thì khi̍p muk-phêu phêu-thì siông-thùng, vù-nèn yì-thung yit-chông fu̍k-koi pún-sṳ̂n.',
-'immobile_namespace'      => 'Muk-phêu phêu-thì su̍k-yî thi̍t-phe̍t lui-hìn; put-nèn chiông vùn-chông yì-ngi̍p liá-ke miàng-sṳ khûng-kiên.',
 
 # Export
 'export'            => 'Thô-chhut vùn-chông',

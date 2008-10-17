@@ -48,6 +48,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   whitelist on or off.
 * Added $wgRenderHashAppend to append some string to the parser cache and the
   sitenotice cache keys.
+* $wgRCChangedSizeThreshold is now a positive integer by default, 
 
 === Migrated extensions ===
 The following extensions are migrated into MediaWiki 1.14:
@@ -58,6 +59,8 @@ The following extensions are migrated into MediaWiki 1.14:
 * Special:LinkSearch to search for external links (was extension LinkSearch)
 * RenderHash
 * NoMoveUserPages
+* Poem (patch by Nathaniel Herman)
+* UniversalEditButton
 
 === New features in 1.14 ===
 
@@ -145,8 +148,27 @@ The following extensions are migrated into MediaWiki 1.14:
   $wgExternalLinkTarget
 * api.php now sends "Retry-After" and "X-Database-Lag" HTTP headers if the maxlag
   check fails, just like index.php does
-
-
+* Added "link" parameter to image links, to allow images to link to an 
+  arbitrary title or URL. This should replace inaccessible and incomplete
+  solutions such as CSS-based overlays and ImageMap.
+* (bug 368) Don't use caption for alt attribute; allow manual specification
+  using new "alt=" parameter for images
+* (bug 44) The {{ns:}} core parser function now also accepts localized namespace
+  names and aliases; also, its output now uses spaces instead of underscores to
+  match the behavior of the {{NAMESPACE}} magic word
+* Added the ability to display user edit counts in Special:ListUsers. Off by 
+  default, enabled with $wgEdititis = true (named after the medical condition 
+  marked by unhealthy obsession with edit counts).
+* Added a file cache to the parser to improve page rendering time on pages with
+  several uses of the same image.
+* (bug 1250) Users can still use "show preview" and "show changes" even if the 
+  wiki is set to read-only mode.
+* Added a call to the 'UnwatchArticleComplete' hook to the watchlist editor.  This 
+	should make it so that ALL user-accessible methods of removing a page from a watchlist
+  lead to this hook being called (it was previously only called from within Article.php
+* Maximum execution time for shell processes on linux is now configured with 
+  $wgMaxShellTime (180 seconds by default)
+   
 === Bug fixes in 1.14 ===
 
 * (bug 14907) DatabasePostgres::fieldType now defined.
@@ -234,6 +256,19 @@ The following extensions are migrated into MediaWiki 1.14:
 * (bug 15196) Free external links should be numbered in a localised manner
 * (bug 15388) Title of Special:PrefixIndex
 * Links with no title but a curid parameter now use the curid to pick a page
+* (bug 10323) Special:Undelete should have "inverse selection" button
+* (bug 15831) Modern skin RTL support is bugous
+* (bug 15869) Nostalgia skin does not show page title in printable mode
+* (bug 15795) Special:Userrights is now listed on Special:SpecialPages when the
+  user can only change his rights
+* (bug 15846) Categories "leak" from older revisions in certain circumstances
+* (bug 15928) Special pages dropdown should be inline in non-MonoBook skins
+* (bug 14178) Some uses of UserLoadFromSession hook cause segfault 
+* (bug 15925) Postitive bytes added on recentchanges and watchlists are now bolded
+  if above the threshold, previously it only worked for negatives
+* Specify apple-touch-icon before favicon in HTML head section to make the Konqueror
+  browser correctly use the latter
+
 
 === API changes in 1.14 ===
 
@@ -289,6 +324,21 @@ The following extensions are migrated into MediaWiki 1.14:
 * Add ApiDisabled and ApiQueryDisabled classes so individual modules can
   be disabled in LocalSettings.php
 * (bug 15653) Add prop=duplicatefiles
+* (bug 15768) Add list=watchlistraw
+* (bug 15647) action=edit with basetimestamp fails if the page has been deleted
+  and undeleted since the last edit
+* (bug 15785) Allow for different expiry times for different protections in
+  action=protect
+* Added allowsduplicates attribute to action=paraminfo output
+* (bug 15767) apfilterlanglinks returns duplicate results
+* (bug 15845) Added pageid/fromid parameter to action=delete/move, making
+  manipulation of legacy pages with invalid titles possible
+* (bug 15881) Empty or invalid parameters cause database errors 
+* The maxage and smaxage parameters are now properly validated
+* (bug 15945) list=recentchanges doesn't check $wgUseRCPatrol, $wgUseNPPatrol
+  and patrolmarks right
+* (bug 15985) acfrom and aifrom parameters didn't work when sorting in
+  descending order.
 
 === Languages updated in 1.14 ===
 
@@ -300,6 +350,7 @@ regularly. Below only new and removed languages are listed.
 * Krio (kri) (new)
 * Lezghian (lez) (new)
 * Laz (lzz) (new)
+* Eastern Mari (mhr) (new)
 * Niuean (niu) (new)
 * Oromo (om) (new)
 * Plautdietsch (pdt) (new)

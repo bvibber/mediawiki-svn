@@ -176,12 +176,16 @@ class Skin extends Linker {
 
 		wfProfileIn( __METHOD__ );
 
-		if( false !== $wgFavicon ) {
-			$out->addLink( array( 'rel' => 'shortcut icon', 'href' => $wgFavicon ) );
-		}
-
+		# Generally the order of the favicon and apple-touch-icon links
+		# should not matter, but Konqueror (3.5.9 at least) incorrectly
+		# uses whichever one appears later in the HTML source.  Make sure
+		# apple-touch-icon is specified first to avoid this.
 		if( false !== $wgAppleTouchIcon ) {
 			$out->addLink( array( 'rel' => 'apple-touch-icon', 'href' => $wgAppleTouchIcon ) );
+		}
+
+		if( false !== $wgFavicon ) {
+			$out->addLink( array( 'rel' => 'shortcut icon', 'href' => $wgFavicon ) );
 		}
 
 		# OpenSearch description link
@@ -1390,7 +1394,7 @@ END;
 		$sp = wfMsg( 'specialpages' );
 		$spp = $wgContLang->specialPage( 'Specialpages' );
 
-		$s = '<form id="specialpages" method="get" class="inline" ' .
+		$s = '<form id="specialpages" method="get" ' .
 		  'action="' . htmlspecialchars( "{$wgServer}{$wgRedirectScript}" ) . "\">\n";
 		$s .= "<select name=\"wpDropdown\">\n";
 		$s .= "<option value=\"{$spp}\">{$sp}</option>\n";

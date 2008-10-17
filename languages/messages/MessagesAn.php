@@ -5,6 +5,7 @@
  * @file
  *
  * @author Juanpabl
+ * @author Remember the dot
  * @author Willtron
  * @author לערי ריינהארט
  */
@@ -233,7 +234,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lista de carauteristicas confegurables]
 * [http://www.mediawiki.org/wiki/Manual:FAQ Preguntas cutianas sobre MediaWiki (FAQ)]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de correu sobre ta anunzios de MediaWiki]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de correu sobre ta anunzios de MediaWiki]",
 
 'about'          => 'Informazión sobre',
 'article'        => 'Articlo',
@@ -369,7 +370,7 @@ $messages = array(
 'red-link-title'          => '$1 (encara no escrita)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'      => 'Articlo',
+'nstab-main'      => 'Pachina',
 'nstab-user'      => "Pachina d'usuario",
 'nstab-media'     => 'Pachina multimedia',
 'nstab-special'   => 'Espezial',
@@ -728,27 +729,27 @@ Bellas plantillas no se bi encluyen.",
 A razón endicata por $3 ye ''$2''",
 
 # History pages
-'viewpagelogs'        => "Beyer os rechistros d'ista pachina",
-'nohistory'           => "Ista pachina no tiene un istorial d'edizions.",
-'currentrev'          => 'Bersión autual',
-'revisionasof'        => "Bersión d'o $1",
-'revision-info'       => "Bersión d'o $1 feita por $2",
-'previousrevision'    => '← Bersión anterior',
-'nextrevision'        => 'Bersión siguient →',
-'currentrevisionlink' => 'Beyer bersión autual',
-'cur'                 => 'aut',
-'next'                => 'siguient',
-'last'                => 'ant',
-'page_first'          => 'primeras',
-'page_last'           => 'zagueras',
-'histlegend'          => 'Leyenda: (aut) = esferenzias con a bersión autual,
+'viewpagelogs'           => "Beyer os rechistros d'ista pachina",
+'nohistory'              => "Ista pachina no tiene un istorial d'edizions.",
+'currentrev'             => 'Bersión autual',
+'revisionasof'           => "Bersión d'o $1",
+'revision-info'          => "Bersión d'o $1 feita por $2",
+'previousrevision'       => '← Bersión anterior',
+'nextrevision'           => 'Bersión siguient →',
+'currentrevisionlink'    => 'Beyer bersión autual',
+'cur'                    => 'aut',
+'next'                   => 'siguient',
+'last'                   => 'ant',
+'page_first'             => 'primeras',
+'page_last'              => 'zagueras',
+'histlegend'             => 'Leyenda: (aut) = esferenzias con a bersión autual,
 (ant) = diferenzias con a bersión anterior, m = edizión menor',
-'history-search'      => 'Mirar en o istorial',
-'deletedrev'          => '[borrato]',
-'histfirst'           => 'Primeras contrebuzions',
-'histlast'            => 'Zagueras',
-'historysize'         => '({{PLURAL:$1|1 byte|$1 bytes}})',
-'historyempty'        => '(buedo)',
+'history-fieldset-title' => 'Mirar en o istorial',
+'deletedrev'             => '[borrato]',
+'histfirst'              => 'Primeras contrebuzions',
+'histlast'               => 'Zagueras',
+'historysize'            => '({{PLURAL:$1|1 byte|$1 bytes}})',
+'historyempty'           => '(buedo)',
 
 # Revision feed
 'history-feed-title'          => 'Istorial de bersions',
@@ -1061,7 +1062,6 @@ Asegure-se que iste cambio no crebará a continidat de l'istorial d'a pachina.",
 'recentchangestext'                 => "Siga os cambeos más rezients d'a wiki en ista pachina.",
 'recentchanges-feed-description'    => "Seguir en ista canal de notizias os cambeos más rezients d'o wiki.",
 'rcnote'                            => "Contino {{PLURAL:$1|s'amuestra o unico cambeo feito|s'amuestran os zaguers '''$1''' cambeos feitos}} en {{PLURAL:$2|o zaguer día|os zaguers '''$2''' días}}, dica o $5, $4.",
-'rcnotefrom'                        => "Contino s'amuestran os cambeos dende '''$2''' (dica '''$1''').",
 'rclistfrom'                        => 'Amostrar cambeos rezients dende $1',
 'rcshowhideminor'                   => '$1 edizions menors',
 'rcshowhidebots'                    => '$1 bots',
@@ -1857,6 +1857,8 @@ por fabor, asegure-se d'acatar as consecuenzias que acarriará ista aizión anti
 
 En ixos casos, si lo deseya, abrá de tresladar u combinar manualment o conteniu d'a pachina de descusión.",
 'movearticle'             => 'Tresladar pachina:',
+'movenologin'             => 'No ha enzetato sesión',
+'movenologintext'         => 'Amenista estar un usuario rechistrato y [[Special:UserLogin|aber-se identificato enzetando una sesión]] ta tresladar una pachina.',
 'movenotallowed'          => 'No tiene premisos ta tresladar pachinas.',
 'newtitle'                => 'Ta o nuebo títol',
 'move-watch'              => 'Cosirar iste articlo',
@@ -1887,7 +1889,6 @@ A pachina de destino ("[[:$1]]") ya esiste. Quiere borrar-la ta premitir o tresl
 'delete_and_move_confirm' => 'Sí, borrar a pachina',
 'delete_and_move_reason'  => 'Borrata ta premitir o treslau',
 'selfmove'                => "Os títols d'orichen y destino son os mesmos. No se puede tresladar una pachina ta ella mesma.",
-'immobile_namespace'      => "O títol de destino ye d'una mena espezial. No se puede tresladar pachinas ta iste espazio de nombres.",
 'imagenocrossnamespace'   => "No se puede tresladar un archibo ta un espazio de nombres que no sía t'archibos",
 'imagetypemismatch'       => "A nueba estensión no concuerda con o tipo d'archibo",
 'imageinvalidfilename'    => "O nombre de l'archibo obchetibo no ye conforme",
@@ -2588,5 +2589,15 @@ Escriba o nombre de l\'archibo sin o prefixo "{{ns:image}}:".',
 # Special:BlankPage
 'blankpage'              => 'Pachina en blanco',
 'intentionallyblankpage' => "Esta pachina s'ha deixato en blanco aldredes y se fa serbir ta fer prebatinas, ezt.",
+
+# Special:Nuke
+'nuke'               => 'Borrato masibo',
+'nuke-nopages'       => 'No bi ha garra pachina nueba feita por [[Special:Contributions/$1|$1]] entre os zaguers cambeos.',
+'nuke-list'          => 'A siguients pachinas fuoron creyatas por [[Special:Contributions/$1|$1]]; escriba un comentario y punche o botón ta borrar-los.',
+'nuke-defaultreason' => "Borrato masibo d'as pachinas adibitas por $1",
+'nuke-tools'         => "Ista ferramienta fa posible de fer borratos masibos de pachinas adibitas en zaguerías por un usuario u adreza IP datos. Escriba o nombre d'usuario u l'adreza IP ta obtener una lista de pachinas ta borrar:",
+'nuke-submit-user'   => 'Ir-ie',
+'nuke-submit-delete' => 'Borrar as trigatas',
+'right-nuke'         => 'Borrar pachinas masibament',
 
 );

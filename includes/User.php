@@ -247,28 +247,12 @@ class User {
 				break;
 			case 'session':
 				$this->loadFromSession();
+				wfRunHooks( 'UserLoadAfterLoadFromSession', array( $this ) );
 				break;
 			default:
 				throw new MWException( "Unrecognised value for User->mFrom: \"{$this->mFrom}\"" );
 		}
 		wfProfileOut( __METHOD__ );
-	}
-	
-	protected function callAuthPlugin( $fname /* $args */ ) {
-		$args = func_get_args();
-		array_shift( $args );
-		// Load auth plugin conterpart functions for User functions
-		if( !$this->mAuthLoaded ) {
-			global $wgAuth;
-			$this->mAuthCallbacks = array();
-			$wgAuth->setUserCallbacks( $this, $this->mAuthCallbacks );
-			$this->mAuthLoaded = true;
-		}
-		// Try to call the auth plugin version of this function
-		if( isset($this->mAuthCallbacks[$fname]) && is_callable($this->mAuthCallbacks[$fname]) ) {
-			return call_user_func_array( $this->mAuthCallbacks[$fname], $args );
-		}
-		return NULL;
 	}
 
 	/**
@@ -817,20 +801,27 @@ class User {
 			return $result;
 		}
 
-		if ( isset( $_SESSION['wsUserID'] ) ) {
-			if ( 0 != $_SESSION['wsUserID'] ) {
+		if ( isset( $_COOKIE["{$wgCookiePrefix}UserID"] ) ) {
+			$sId = intval( $_COOKIE["{$wgCookiePrefix}UserID"] );
+			if( isset( $_SESSION['wsUserID'] ) && $sId != $_SESSION['wsUserID'] ) {
+				$this->loadDefaults(); // Possible collision!
+				wfDebugLog( 'loginSessions', "Session user ID ({$_SESSION['wsUserID']}) and 
+					cookie user ID ($sId) don't match!" );
+				return false;
+			}
+			$_SESSION['wsUserID'] = $sId;
+		} else if ( isset( $_SESSION['wsUserID'] ) ) {
+			if ( $_SESSION['wsUserID'] != 0 ) {
 				$sId = $_SESSION['wsUserID'];
 			} else {
 				$this->loadDefaults();
 				return false;
 			}
-		} else if ( isset( $_COOKIE["{$wgCookiePrefix}UserID"] ) ) {
-			$sId = intval( $_COOKIE["{$wgCookiePrefix}UserID"] );
-			$_SESSION['wsUserID'] = $sId;
 		} else {
 			$this->loadDefaults();
 			return false;
 		}
+
 		if ( isset( $_SESSION['wsUserName'] ) ) {
 			$sName = $_SESSION['wsUserName'];
 		} else if ( isset( $_COOKIE["{$wgCookiePrefix}UserName"] ) ) {
@@ -1347,7 +1338,9 @@ class User {
 		if( $this->mLocked !== null ) {
 			return $this->mLocked;
 		}
-		$this->mLocked = (bool)$this->callAuthPlugin( __FUNCTION__ );
+		global $wgAuth;
+		$authUser = $wgAuth->getUserInstance( $this );
+		$this->mLocked = (bool)$authUser->isLocked();
 		return $this->mLocked;
 	}
 	
@@ -1362,7 +1355,9 @@ class User {
 		}
 		$this->getBlockedStatus();
 		if( !$this->mHideName ) {
-			$this->mHideName = (bool)$this->callAuthPlugin( __FUNCTION__ );
+			global $wgAuth;
+			$authUser = $wgAuth->getUserInstance( $this );
+			$this->mHideName = (bool)$authUser->isHidden();
 		}
 		return $this->mHideName;
 	}
@@ -1606,6 +1601,7 @@ class User {
 	 * Called implicitly from invalidateCache() and saveSettings().
 	 */
 	private function clearSharedCache() {
+		$this->load();
 		if( $this->mId ) {
 			global $wgMemc;
 			$wgMemc->delete( wfMemcKey( 'user', 'id', $this->mId ) );
@@ -2313,7 +2309,10 @@ class User {
 		}
 		
 		wfRunHooks( 'UserSetCookies', array( $this, &$session, &$cookies ) );
-		$_SESSION = $session + $_SESSION;
+		#check for null, since the hook could cause a null value 
+		if ( !is_null( $session ) && !is_null( $_SESSION ) ){
+			$_SESSION = $session + $_SESSION;
+		}
 		foreach ( $cookies as $name => $value ) {
 			if ( $value === false ) {
 				$this->clearCookie( $name );

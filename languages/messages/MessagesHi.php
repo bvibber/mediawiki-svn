@@ -165,7 +165,7 @@ $messages = array(
 == शुरुवात करें ==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings कॉन्फिगरेशन सेटींगकी सूची]
 * [http://www.mediawiki.org/wiki/Manual:FAQ मीडियाविकिके बारे में प्राय: पूछे जाने वाले सवाल]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce मीडियाविकि मेलिंग लिस्ट]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce मीडियाविकि मेलिंग लिस्ट]',
 
 'about'          => 'अबाउट',
 'article'        => 'लेख',
@@ -1028,7 +1028,6 @@ latex, dvips, gs, और convert के इन्स्टॉलेशन की
 'recentchangestext'                 => 'इस विकिपर हाल में हुए बदलाव इस पन्ने पर देखें जा सकतें हैं।',
 'recentchanges-feed-description'    => 'इस फ़ीडमें होनेवाले विकिपर हाल में हुए बदलाव देखियें ।',
 'rcnote'                            => "नीचे $3 तक पिछले {{PLURAL:$2|'''१''' दिनमें हुआ|'''$2''' दिनोंमें हुए}} आखिरी $1 बदलाव {{PLURAL:$1|दिया है|दिये हैं}}।",
-'rcnotefrom'                        => "नीचे '''$2''' से हुए ('''$1''' या कम) बदलाव दर्शाये गये है ।",
 'rclistfrom'                        => '$1 से नये बदलाव दिखाएँ',
 'rcshowhideminor'                   => 'छोटे बदलाव $1',
 'rcshowhidebots'                    => 'बोटों $1',
@@ -1854,6 +1853,8 @@ $1 को बाध्य करने का कारण है: "$2"',
 
 इन मामलोंमे आपको स्वयं यह पन्ने जोडने पड़ सकते है ।",
 'movearticle'             => 'पृष्ठ का नाम बदलें',
+'movenologin'             => 'लॉग इन नहीं किया',
+'movenologintext'         => 'लेख स्थानांतरित करने के लिये आपने [[Special:UserLogin|लॉग इन]] किया होना जरूरी हैं।',
 'movenotallowed'          => '{{SITENAME}} पर पृष्ठ स्थानांतरणकी अनुमति आपको नहीं हैं।',
 'newtitle'                => 'नये शीर्षक की ओर:',
 'move-watch'              => 'ध्यान रखें',
@@ -2653,5 +2654,16 @@ $1',
 'specialpages-group-wiki'        => 'विकि डाटा और औज़ार',
 'specialpages-group-redirects'   => 'विशेष पन्ने अनुप्रेषित कर रहें हैं',
 'specialpages-group-spam'        => 'स्पैम औज़ार',
+
+# Special:Nuke
+'nuke'               => 'एकसाथ बहुत सारे पन्ने हटायें',
+'nuke-nopages'       => 'हाल में हुए बदलावोंमें [[Special:Contributions/$1|$1]] द्वारा नये पन्ने नहीं हैं।',
+'nuke-list'          => 'नीचे दिये हुए पन्ने [[Special:Contributions/$1|$1]] ने हाल में बनायें हैं; टिप्पणी दें और हटाने के लिये बटनपर क्लिक करें।',
+'nuke-defaultreason' => '$1 ने बनाये हुए पन्ने एकसाथ हटायें',
+'nuke-tools'         => 'यह उपकरण किसी सदस्य या IP द्वारा हाल ही में जोड़े गए पृष्ठों को सामूहिक रूप से हटाने में सहायक है।
+सदस्यनाम या IP डालकर हटाने वाले पृष्ठों की सूची प्राप्त करें।',
+'nuke-submit-user'   => 'जायें',
+'nuke-submit-delete' => 'चुने हुए हटायें',
+'right-nuke'         => 'बहुतसे पन्ने एकसाथ हटायें',
 
 );

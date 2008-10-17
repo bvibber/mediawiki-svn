@@ -103,6 +103,7 @@ class Parser
 	var $mTplExpandCache; // empty-frame expansion cache
 	var $mTplRedirCache, $mTplDomCache, $mHeadings, $mDoubleUnderscores;
 	var $mExpensiveFunctionCount; // number of expensive parser function calls
+	var $mFileCache;
 
 	# Temporary
 	# These are variables reset at least once per parse regardless of $clearState
@@ -127,7 +128,7 @@ class Parser
 		$this->mTransparentTagHooks = array();
 		$this->mFunctionHooks = array();
 		$this->mFunctionSynonyms = array( 0 => array(), 1 => array() );
-		$this->mDefaultStripList = $this->mStripList = array( 'nowiki', 'gallery' );
+		$this->mDefaultStripList = $this->mStripList = array( 'nowiki', 'gallery', 'poem' );
 		$this->mUrlProtocols = wfUrlProtocols();
 		$this->mExtLinkBracketedRegex = '/\[(\b(' . wfUrlProtocols() . ')'.
 			'[^][<>"\\x00-\\x20\\x7F]+) *([^\]\\x0a\\x0d]*?)\]/S';
@@ -229,6 +230,7 @@ class Parser
 		$this->mHeadings = array();
 		$this->mDoubleUnderscores = array();
 		$this->mExpensiveFunctionCount = 0;
+		$this->mFileCache = array();
 
 		# Fix cloning
 		if ( isset( $this->mPreprocessor ) && $this->mPreprocessor->parser !== $this ) {
@@ -3304,6 +3306,9 @@ class Parser
 				case 'gallery':
 					$output = $this->renderImageGallery( $content, $attributes );
 					break;
+				case 'poem':
+					$output = $this->renderPoem( $content, $attributes );
+					break;
 				default:
 					if( isset( $this->mTagHooks[$name] ) ) {
 						# Workaround for PHP bug 35229 and similar
@@ -3442,10 +3447,11 @@ class Parser
 		global $wgMaxTocLevel, $wgContLang;
 
 		$doNumberHeadings = $this->mOptions->getNumberHeadings();
-		if( !$this->mTitle->quickUserCan( 'edit' ) ) {
+		$showEditLink = $this->mOptions->getEditSection();
+
+		// Do not call quickUserCan unless necessary
+		if( $showEditLink && !$this->mTitle->quickUserCan( 'edit' ) ) {
 			$showEditLink = 0;
-		} else {
-			$showEditLink = $this->mOptions->getEditSection();
 		}
 
 		# Inhibit editsection links if requested in the page
@@ -4173,6 +4179,45 @@ class Parser
 		return $ig->toHTML();
 	}
 
+	/** Renders any text in between <poem></poem> tags
+	 * based on http://www.mediawiki.org/wiki/Extension:Poem
+	 */
+
+	function renderPoem( $in, $param = array() ) {
+
+		/* using newlines in the text will cause the parser to add <p> tags,
+ 	 	* which may not be desired in some cases
+	 	*/
+		$nl = array_key_exists( 'compact', $param ) ? '' : "\n";
+  
+		$replacer = new DoubleReplacer( ' ', '&nbsp;' );
+		$text = $this->recursiveTagParse( $in );
+		$text = $this->mStripState->unstripNoWiki( $text );
+		// Only strip the very first and very last \n (which trim cannot do)
+		if( substr( $text, 0, 1 ) == "\n" )
+			$text = substr( $text, 1 );
+		if( substr( $text, -1 ) == "\n" )
+			$text = substr( $text, 0, -1 );
+		
+		$text = str_replace( "\n", "<br />\n", $text );
+		$text = preg_replace_callback(
+			"/^( +)/m",
+			$replacer->cb(),
+			$text );
+
+		// Pass HTML attributes through to the output.
+		$attribs = Sanitizer::validateTagAttributes( $param, 'div' );
+
+		// Wrap output in a <div> with "poem" class.
+		if( array_key_exists( 'class', $attribs ) ) {
+			$attribs['class'] = 'poem ' . $attribs['class'];
+		} else {
+			$attribs['class'] = 'poem';
+		}
+
+		return Xml::openElement( 'div', $attribs ) . $nl . trim( $text ) . $nl . Xml::closeElement( 'div' );
+	}
+
 	function getImageParams( $handler ) {
 		if ( $handler ) {
 			$handlerClass = get_class( $handler );
@@ -4186,7 +4231,7 @@ class Parser
 				'vertAlign' => array( 'baseline', 'sub', 'super', 'top', 'text-top', 'middle',
 					'bottom', 'text-bottom' ),
 				'frame' => array( 'thumbnail', 'manualthumb', 'framed', 'frameless',
-					'upright', 'border' ),
+					'upright', 'border', 'link', 'alt' ),
 			);
 			static $internalParamMap;
 			if ( !$internalParamMap ) {
@@ -4222,16 +4267,17 @@ class Parser
 	function makeImage( $title, $options, $holders = false ) {
 		# Check if the options text is of the form "options|alt text"
 		# Options are:
-		#  * thumbnail       	make a thumbnail with enlarge-icon and caption, alignment depends on lang
-		#  * left		no resizing, just left align. label is used for alt= only
-		#  * right		same, but right aligned
-		#  * none		same, but not aligned
-		#  * ___px		scale to ___ pixels width, no aligning. e.g. use in taxobox
-		#  * center		center the image
-		#  * framed		Keep original image size, no magnify-button.
-		#  * frameless		like 'thumb' but without a frame. Keeps user preferences for width
-		#  * upright		reduce width for upright images, rounded to full __0 px
-		#  * border		draw a 1px border around the image
+		#  * thumbnail  make a thumbnail with enlarge-icon and caption, alignment depends on lang
+		#  * left       no resizing, just left align. label is used for alt= only
+		#  * right      same, but right aligned
+		#  * none       same, but not aligned
+		#  * ___px      scale to ___ pixels width, no aligning. e.g. use in taxobox
+		#  * center     center the image
+		#  * framed     Keep original image size, no magnify-button.
+		#  * frameless  like 'thumb' but without a frame. Keeps user preferences for width
+		#  * upright    reduce width for upright images, rounded to full __0 px
+		#  * border     draw a 1px border around the image
+		#  * alt        Text for HTML alt attribute (defaults to empty)
 		# vertical-align values (no % or length right now):
 		#  * baseline
 		#  * sub
@@ -4253,8 +4299,18 @@ class Parser
 			return $sk->link( $title );
 		}
 
+		# Get the file
+		$imagename = $title->getDBkey();
+		if ( isset( $this->mFileCache[$imagename][$time] ) ) {
+			$file = $this->mFileCache[$imagename][$time];
+		} else {
+			$file = wfFindFile( $title, $time );
+			if ( count( $this->mFileCache ) > 1000 ) {
+				$this->mFileCache = array();
+			}
+			$this->mFileCache[$imagename][$time] = $file;
+		}
 		# Get parameter map
-		$file = wfFindFile( $title, $time );
 		$handler = $file ? $file->getHandler() : false;
 
 		list( $paramMap, $mwArray ) = $this->getImageParams( $handler );
@@ -4300,10 +4356,36 @@ class Parser
 					} else {
 						# Validate internal parameters
 						switch( $paramName ) {
-						case "manualthumb":
-							/// @fixme - possibly check validity here?
-							/// downstream behavior seems odd with missing manual thumbs.
+						case 'manualthumb':
+						case 'alt':
+							// @fixme - possibly check validity here for
+							// manualthumb? downstream behavior seems odd with
+							// missing manual thumbs.
 							$validated = true;
+							$value = $this->stripAltText( $value, $holders );
+							break;
+						case 'link':
+							$chars = self::EXT_LINK_URL_CLASS;
+							$prots = $this->mUrlProtocols;
+							if ( $value === '' ) {
+								$paramName = 'no-link';
+								$value = true;
+								$validated = true;
+							} elseif ( preg_match( "/^$prots/", $value ) ) {
+								if ( preg_match( "/^($prots)$chars+$/", $value, $m ) ) {
+									$paramName = 'link-url';
+									$this->mOutput->addExternalLink( $value );
+									$validated = true;
+								}
+							} else {
+								$linkTitle = Title::newFromText( $value );
+								if ( $linkTitle ) {
+									$paramName = 'link-title';
+									$value = $linkTitle;
+									$this->mOutput->addLink( $linkTitle );
+									$validated = true;
+								}
+							}
 							break;
 						default:
 							// Most other things appear to be empty or numeric...
@@ -4329,23 +4411,32 @@ class Parser
 			$params['frame']['valign'] = key( $params['vertAlign'] );
 		}
 
-		# Strip bad stuff out of the alt text
-		# We can't just use replaceLinkHoldersText() here, because if this function
-		# is called from replaceInternalLinks2(), mLinkHolders won't be up to date.
-		if ( $holders ) {
-			$alt = $holders->replaceText( $caption );
-		} else {
-			$alt = $this->replaceLinkHoldersText( $caption );
-		}
-
-		# make sure there are no placeholders in thumbnail attributes
-		# that are later expanded to html- so expand them now and
-		# remove the tags
-		$alt = $this->mStripState->unstripBoth( $alt );
-		$alt = Sanitizer::stripAllTags( $alt );
-
-		$params['frame']['alt'] = $alt;
 		$params['frame']['caption'] = $caption;
+
+		$params['frame']['title'] = $this->stripAltText( $caption, $holders );
+
+		# In the old days, [[Image:Foo|text...]] would set alt text.  Later it
+		# came to also set the caption, ordinary text after the image -- which
+		# makes no sense, because that just repeats the text multiple times in
+		# screen readers.  It *also* came to set the title attribute.
+		#
+		# Now that we have an alt attribute, we should not set the alt text to
+		# equal the caption: that's worse than useless, it just repeats the
+		# text.  This is the framed/thumbnail case.  If there's no caption, we
+		# use the unnamed parameter for alt text as well, just for the time be-
+		# ing, if the unnamed param is set and the alt param is not.
+		#
+		# For the future, we need to figure out if we want to tweak this more,
+		# e.g., introducing a title= parameter for the title; ignoring the un-
+		# named parameter entirely for images without a caption; adding an ex-
+		# plicit caption= parameter and preserving the old magic unnamed para-
+		# meter for BC; ...
+		if( $caption !== '' && !isset( $params['frame']['alt'] )
+		&& !isset( $params['frame']['framed'] )
+		&& !isset( $params['frame']['thumbnail'] )
+		&& !isset( $params['frame']['manualthumb'] ) ) {
+			$params['frame']['alt'] = $params['frame']['title'];
+		}
 
 		wfRunHooks( 'ParserMakeImageParams', array( $title, $file, &$params ) );
 
@@ -4358,6 +4449,25 @@ class Parser
 		}
 
 		return $ret;
+	}
+	
+	protected function stripAltText( $caption, $holders ) {
+		# Strip bad stuff out of the title (tooltip).  We can't just use
+		# replaceLinkHoldersText() here, because if this function is called
+		# from replaceInternalLinks2(), mLinkHolders won't be up-to-date.
+		if ( $holders ) {
+			$tooltip = $holders->replaceText( $caption );
+		} else {
+			$tooltip = $this->replaceLinkHoldersText( $caption );
+		}
+
+		# make sure there are no placeholders in thumbnail attributes
+		# that are later expanded to html- so expand them now and
+		# remove the tags
+		$tooltip = $this->mStripState->unstripBoth( $tooltip );
+		$tooltip = Sanitizer::stripAllTags( $tooltip );
+		
+		return $tooltip;
 	}
 
 	/**

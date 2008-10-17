@@ -119,6 +119,7 @@ $messages = array(
 'tog-enotifwatchlistpages'    => 'Teata meili teel, kui minu jälgitavat artiklit muudetakse',
 'tog-enotifusertalkpages'     => 'Teata meili teel, kui minu arutelu lehte muudetakse',
 'tog-enotifminoredits'        => 'Teata meili teel ka pisiparandustest',
+'tog-shownumberswatching'     => 'Näita jälgivate kasutajate hulka',
 'tog-fancysig'                => 'Kasuta lihtsaid allkirju (ilma linkideta kasutajalehele)',
 'tog-externaleditor'          => 'Kasuta vaikimisi välist redaktorit',
 'tog-externaldiff'            => 'Kasuta vaikimisi välist võrdlusvahendit (diff)',
@@ -235,6 +236,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'searcharticle'     => 'Mine',
 'history'           => 'Artikli ajalugu',
 'history_short'     => 'Ajalugu',
+'updatedmarker'     => 'uuendatud pärast viimast külastust',
 'info_short'        => 'Info',
 'printableversion'  => 'Prinditav versioon',
 'permalink'         => 'Püsilink',
@@ -247,6 +249,7 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'deletethispage'    => 'Kustuta see artikkel',
 'undelete_short'    => 'Taasta {{PLURAL:$1|üks muudatus|$1 muudatust}}',
 'protect'           => 'Kaitse',
+'protect_change'    => 'muuda',
 'protectthispage'   => 'Kaitse seda artiklit',
 'unprotect'         => 'Ära kaitse',
 'unprotectthispage' => 'Ära kaitse seda artiklit',
@@ -263,10 +266,12 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'userpage'          => 'Kasutajalehekülg',
 'projectpage'       => 'Metalehekülg',
 'imagepage'         => 'Pildilehekülg',
+'mediawikipage'     => 'Vaata sõnumite lehekülge',
 'templatepage'      => 'Mallilehekülg',
+'viewhelppage'      => 'Vaata abilehekülge',
 'categorypage'      => 'Kategoorialehekülg',
 'viewtalkpage'      => 'Arutelulehekülg',
-'otherlanguages'    => 'Teised keeled',
+'otherlanguages'    => 'Teistes keeltes',
 'redirectedfrom'    => '(Ümber suunatud artiklist $1)',
 'redirectpagesub'   => 'Ümbersuunamisleht',
 'lastmodifiedat'    => 'Viimane muutmine: $2, $1', # $1 date, $2 time
@@ -305,12 +310,18 @@ ning [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide kasutusjuhendit].'
 'badaccess-group0' => 'Sul ei ole õigust läbi viia toimingut, mida üritasid.',
 'badaccess-groups' => 'Tegevus, mida üritasid, on piiratud kasutajatele {{PLURAL:$2|grupis|ühes neist gruppidest}}: $1.',
 
+'versionrequired'     => 'MediaWiki versioon $1 nõutav',
+'versionrequiredtext' => 'MediaWiki versioon $1 on selle lehe kasutamiseks nõutav.
+Vaata [[Special:Version|versiooni lehekülge]].',
+
+'ok'                  => 'OK',
 'retrievedfrom'       => 'Välja otsitud andmebaasist "$1"',
 'youhavenewmessages'  => 'Teile on $1 ($2).',
 'newmessageslink'     => 'uusi sõnumeid',
 'newmessagesdifflink' => 'erinevus eelviimasest redaktsioonist',
 'editsection'         => 'redigeeri',
 'editold'             => 'redigeeri',
+'editlink'            => 'toimeta',
 'editsectionhint'     => 'Redigeeri alaosa $1',
 'toc'                 => 'Sisukord',
 'showtoc'             => 'näita',
@@ -353,7 +364,7 @@ Viimane andmebaasipäring oli:
 "$1"
 ja see kutsuti funktsioonist "$2".
 MySQL andis vea "$3: $4".',
-'noconnect'            => 'Vabandame! Vikil on tehnilisi probleeme ning ta ei saa andmebaasiserveriga $1 ühendust.',
+'noconnect'            => 'Vabandame! Vikil on tehnilisi probleeme ning ei saa andmebaasiserveriga $1 ühendust.',
 'nodb'                 => 'Andmebaasi $1 ei õnnestunud kätte saada',
 'cachederror'          => 'Järgnev tekst pärineb serveri vahemälust ega pruugi olla lehekülje viimane versioon.',
 'readonly'             => 'Andmebaas on hetkel kirjutuskaitse all',
@@ -384,6 +395,11 @@ Päring: $2',
 'protectedinterface'   => 'Sellel leheküljel on tarkvara kasutajaliidese tekst. Kuritahtliku muutmise vältimiseks on lehekülg lukustatud.',
 'editinginterface'     => "'''Hoiatus:''' Te redigeerite tarkvara kasutajaliidese tekstiga lehekülge. Muudatused siin mõjutavad kõikide kasutajate kasutajaliidest. Tõlkijad, palun kaaluge MediaWiki tõlkimisprojekti – [http://translatewiki.net/wiki/Main_Page?setlang=et Betawiki] kasutamist.",
 'sqlhidden'            => '(SQL päring peidetud)',
+'namespaceprotected'   => "Teil ei ole õigusi redigeerida lehekülgi '''$1''' nimeruumis.",
+'ns-specialprotected'  => 'Erilehekülgi ei saa redigeerida.',
+
+# Virus scanner
+'virus-unknownscanner' => 'tundmatu viirusetõrje:',
 
 # Login and logout pages
 'logouttitle'                => 'Väljalogimine',
@@ -410,7 +426,8 @@ Võite kasutada süsteemi anonüümselt, aga ka sama või mõne teise kasutajana
 'gotaccountlink'             => 'logi sisse',
 'createaccountmail'          => 'meili teel',
 'badretype'                  => 'Sisestatud paroolid ei lange kokku.',
-'userexists'                 => 'Sisestatud kasutajanimi on juba kasutusel. Valige uus nimi.',
+'userexists'                 => 'Sisestatud kasutajanimi on juba kasutusel.
+Palun valige uus nimi.',
 'youremail'                  => 'Teie e-posti aadress*',
 'username'                   => 'Kasutajanimi:',
 'uid'                        => 'Kasutaja ID:',
@@ -445,11 +462,12 @@ Sinu {{SITENAME}}.',
 'passwordsent'               => 'Uus parool on saadetud kasutaja "$1" registreeritud meiliaadressil.
 Pärast parooli saamist logige palun sisse.',
 'mailerror'                  => 'Viga kirja saatmisel: $1',
-'acct_creation_throttle_hit' => 'Vabandame, aga te olete loonud juba $1 kontot. Rohkem te ei saa.',
-'emailauthenticated'         => 'Sinu e-posti aadress kinnitati $1.',
+'acct_creation_throttle_hit' => 'Vabandame, aga te olete loonud juba {{PLURAL:$1|1 konto|$1 kontot}}. Rohkem te ei saa.',
+'emailauthenticated'         => 'Sinu e-posti aadress kinnitati: $2 kell $3.',
 'emailnotauthenticated'      => 'Sinu e-posti aadress <strong>pole veel kinnitatud</strong>. E-posti kinnitamata aadressile ei saadeta.',
 'noemailprefs'               => 'Järgnevate võimaluste toimimiseks on vaja sisestada e-posti aadress.',
 'emailconfirmlink'           => 'Kinnita oma e-posti aadress',
+'accountcreated'             => 'Konto loodud',
 'loginlanguagelabel'         => 'Keel: $1',
 
 # Edit page toolbar
@@ -485,6 +503,7 @@ Pärast parooli saamist logige palun sisse.',
 'showlivepreview'          => 'Näita eelvaadet',
 'showdiff'                 => 'Näita muudatusi',
 'anoneditwarning'          => 'Te ei ole sisse logitud. Selle lehe redigeerimislogisse salvestatakse Teie IP-aadress.',
+'missingcommenttext'       => 'Palun sisesta siit allapoole kommentaar.',
 'summary-preview'          => 'Resümee eelvaade',
 'blockedtitle'             => 'Kasutaja on blokeeritud',
 'blockedtext'              => "<big>'''Teie kasutajanime või IP-aadressi blokeeris $1.'''</big>
@@ -499,8 +518,23 @@ Küsimuse arutamiseks võite pöörduda $1 või mõne teise [[{{MediaWiki:Groupp
 
 Pange tähele, et Te ei saa sellele kasutajale teadet saata, kui Te pole registreerinud oma [[Special:Preferences|eelistuste lehel]] kehtivat e-posti aadressi.
 
+Teie praegune IP on $3 ning blokeeringu number on #$5. Lisage need andmed kõigile järelepärimistele, mida kavatsete teha.",
+'autoblockedtext'          => "Teie IP-aadress blokeeriti automaatselt, sest seda kasutas teine kasutaja, kes oli blokeeritud $1 poolt.
+Põhjendus on järgmine:
+
+:''$2''
+
+* Blokeeringu algus: $8
+* Blokeeringu lõpp: $6
+* Sooviti blokeerida: $7
+
+Küsimuse arutamiseks võite pöörduda $1 või mõne teise [[{{MediaWiki:Grouppage-sysop}}|administraatori]] poole.
+
+Pange tähele, et Te ei saa sellele kasutajale teadet saata, kui Te pole registreerinud oma [[Special:Preferences|eelistuste lehel]] kehtivat e-posti aadressi ega ole selle kasutamisest blokeeritud.
+
 Teie praegune IP on $3 ning blokeeringu number on #$5. Lisage need andmed kõigile järelpärimistele, mida kavatsete teha.",
 'blockednoreason'          => 'põhjendust ei ole kirja pandud',
+'blockedoriginalsource'    => "'''$1''' allikas on näidatud allpool:",
 'whitelistedittitle'       => 'Redigeerimiseks tuleb sisse logida',
 'whitelistedittext'        => 'Lehekülgede toimetamiseks peate $1.',
 'loginreqtitle'            => 'Vajalik on sisselogimine',
@@ -550,7 +584,7 @@ Te kinnitate ka, et kirjutasite selle ise või võtsite selle kopeerimiskitsendu
 Te kinnitate ka, et kirjutasite selle ise või võtsite selle kopeerimiskitsenduseta allikast (vaata ka $1).<br />
 <strong>ÄRGE SAATKE AUTORIÕIGUSEGA KAITSTUD MATERJALI ILMA LOATA!</strong>",
 'longpagewarning'          => '<strong>HOIATUS: Selle lehekülje pikkus ületab $1 kilobaiti. Mõne brauseri puhul valmistab raskusi juba 32-le kilobaidile läheneva pikkusega lehekülgede redigeerimine. Palun kaaluge selle lehekülje sisu jaotamist lühemate lehekülgede vahel.</strong>',
-'readonlywarning'          => '<strong>HOIATUS: Andmebaas on lukustatud hooldustöödeks, nii et praegu ei saa parandusi salvestada. Võite teksti alal hoida tekstifailina ning salvestada hiljem.</strong>',
+'readonlywarning'          => '<strong>HOIATUS: Andmebaas on lukustatud hooldustöödeks, nii et praegu ei saa parandusi salvestada. Võite teksti alles hoida tekstifailina ning salvestada hilisemaks kasutamiseks.</strong>',
 'protectedpagewarning'     => '<strong>HOIATUS: See lehekülg on lukustatud, nii et seda saavad redigeerida ainult administraatori õigustega kasutajad.</strong>',
 'semiprotectedpagewarning' => "'''Märkus:''' See lehekülg on lukustatud nii, et üksnes registreeritud kasutajad saavad seda muuta.",
 'templatesused'            => 'Sellel lehel on kasutusel järgnevad mallid:',
@@ -562,6 +596,7 @@ Te kinnitate ka, et kirjutasite selle ise või võtsite selle kopeerimiskitsendu
 
 Kaaluge, kas lehe uuesti loomine on kohane.
 Lehe eelnevad kustutamised:",
+'deletelog-fulllog'        => 'Vaata täielikku logi',
 
 # "Undo" feature
 'undo-success' => 'Selle redaktsiooni käigus tehtud muudatusi saab eemaldada. Palun kontrolli allolevat võrdlust veendumaks, et tahad need muudatused tõepoolest eemaldada. Seejärel saad lehekülje salvestada.',
@@ -588,6 +623,14 @@ Legend: (viim) = erinevused võrreldes viimase redaktsiooniga,
 'histlast'            => 'Viimased',
 'historysize'         => '({{PLURAL:$1|1 bait|$1 baiti}})',
 'historyempty'        => '(tühi)',
+
+# Revision deletion
+'revdel-restore'    => 'Muuda nähtavust',
+'pagehist'          => 'Lehekülje ajalugu',
+'deletedhist'       => 'Kustutatud ajalugu',
+'revdelete-content' => 'sisu',
+'revdelete-summary' => 'toimeta kokkuvõtet',
+'revdelete-uname'   => 'kasutajanimi',
 
 # Diffs
 'history-title'           => '"$1" muudatuste ajalugu',
@@ -705,7 +748,6 @@ sisse logida.',
 'recentchanges'                     => 'Viimased muudatused',
 'recentchangestext'                 => 'Jälgige sellel leheküljel viimaseid muudatusi.',
 'rcnote'                            => "Allpool on esitatud {{PLURAL:$1|'''1''' muudatus|viimased '''$1''' muudatust}} viimase {{PLURAL:$2|päeva|'''$2''' päeva}} jooksul, seisuga $4, kell $5.",
-'rcnotefrom'                        => 'Allpool on esitatud muudatused alates <b>$2</b> (näidatakse kuni <b>$1</b> muudatust).',
 'rclistfrom'                        => 'Näita muudatusi alates $1',
 'rcshowhideminor'                   => '$1 pisiparandused',
 'rcshowhidebots'                    => '$1 robotid',
@@ -856,8 +898,18 @@ võidakse sinu ligipääs sulgeda.',
 'randomredirect' => 'Juhuslik ümbersuunamine',
 
 # Statistics
-'statistics'              => 'Statistika',
-'statistics-header-users' => 'Kasutaja statistika',
+'statistics'               => 'Statistika',
+'statistics-header-pages'  => 'Lehekülgede statistika',
+'statistics-header-edits'  => 'Redigeerimise statistika',
+'statistics-header-users'  => 'Kasutajate statistika',
+'statistics-articles'      => 'Sisulehekülgi',
+'statistics-pages'         => 'Lehekülgi',
+'statistics-files'         => 'Üleslaaditud faile',
+'statistics-edits'         => 'Redigeerimisi alates {{SITENAME}} loomisest',
+'statistics-edits-average' => 'Keskmiselt redigeerimisi lehekülje kohta',
+'statistics-jobqueue'      => '[http://www.mediawiki.org/wiki/Manual:Job_queue Ee] pikkus',
+'statistics-users'         => 'Registreeritud [[Special:ListUsers|kasutajaid]]',
+'statistics-users-active'  => 'Aktiivseid kasutajaid',
 
 'disambiguations' => 'Täpsustusleheküljed',
 
@@ -948,6 +1000,9 @@ võidakse sinu ligipääs sulgeda.',
 'newuserlogpage'          => 'Kasutaja loomise logi',
 'newuserlogpagetext'      => 'See logi sisaldab infot äsja loodud uute kasutajate kohta.',
 'newuserlog-create-entry' => 'Uus kasutaja',
+
+# Special:ListGroupRights
+'listgrouprights-members' => '(liikmete loend)',
 
 # E-mail user
 'mailnologintext' => 'Te peate olema [[Special:UserLogin|sisse logitud]] ja teil peab [[Special:Preferences|eelistustes]] olema kehtiv e-posti aadress, et saata teistele kasutajatele e-kirju.',
@@ -1210,6 +1265,9 @@ enne muudatuse tegemist mõelge palun järele, mis võib olla selle tagajärjeks
 
 Neil juhtudel teisaldage arutelulehekülg soovi korral eraldi või ühendage ta omal käel uue aruteluleheküljega.",
 'movearticle'             => 'Teisalda artiklilehekülg',
+'movenologin'             => 'Te ei ole sisse loginud',
+'movenologintext'         => 'Et lehekülge teisaldada, peate registreeruma
+kasutajaks ja [[Special:UserLogin|sisse logima]]',
 'newtitle'                => 'Uue pealkirja alla',
 'move-watch'              => 'Jälgi seda lehekülge',
 'movepagebtn'             => 'Teisalda artikkel',

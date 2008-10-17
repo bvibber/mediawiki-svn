@@ -165,7 +165,7 @@ $messages = array(
 == Yeni Başlayanlar ==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Yapılandırma ayarlarının listesi]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki SSS]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki e-posta listesi]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki e-posta listesi]',
 
 'about'          => 'Hakkında',
 'article'        => 'Madde',
@@ -449,7 +449,7 @@ Lütfen çerez kullanımını açınız ve yeni kullanıcı adınız ve şifreni
 'noname'                     => 'Geçerli bir kullanıcı adı girmediniz.',
 'loginsuccesstitle'          => 'Oturum açıldı',
 'loginsuccess'               => '{{SITENAME}} sitesinde "$1" kullanıcı adıyla oturum açmış bulunmaktasınız.',
-'nosuchuser'                 => '"$1" adında bir kullanıcı bulunmamaktadır. Yazılışı kontrol edin veya [[Special:Userlogin/signup|yeni bir hesap açın]].',
+'nosuchuser'                 => '"$1" adında bir kullanıcı bulunmamaktadır. Yazılışı kontrol edin veya [[Special:UserLogin/signup|yeni bir hesap açın]].',
 'nosuchusershort'            => '"<nowiki>$1</nowiki>" adında bir kullanıcı bulunmamaktadır. Yazılışı kontrol edin.',
 'nouserspecified'            => 'Bir kullanıcı adı belirtmek zorundasınız.',
 'wrongpassword'              => 'Parolayı yanlış girdiniz. Lütfen tekrar deneyiniz.',
@@ -584,7 +584,7 @@ Lütfen yapacağınız herhangi bir sorguda bu ID bulunsun.',
 'noarticletext'                    => 'Bu sayfa boştur. Bu başlığı diğer sayfalarda [[Special:Search/{{PAGENAME}}|arayabilir]] veya bu sayfayı siz  [{{fullurl:{{FULLPAGENAME}}|action=edit}} yazabilirsiniz].',
 'userpage-userdoesnotexist'        => '"$1" kullanıcı hesabı kayıtlı değil. Bu sayfayı oluşturmak/değiştirmek istiyorsanız lütfen kontrol edin.',
 'clearyourcache'                   => "'''Not:''' Ayarlarınızı kaydettikten sonra, tarayıcınızın belleğini de temizlemeniz gerekmektedir: '''Mozilla / Firefox / Safari:''' ''Shift'' e basılıyken safyayı yeniden yükleyerek veya ''Ctrl-Shift-R'' yaparak (Apple Mac için ''Cmd-Shift-R'');, '''IE:''' ''Ctrl-F5'', '''Konqueror:''' Sadece sayfayı yeniden yükle tuşuna basarak.",
-'usercssjsyoucanpreview'           => "<strong>İpucu:</strong> Sayfayı kaydetmeden önce <font style=\"border: 1px solid #0; background: #EEEEEE; padding : 2px\">'''önizlemeyi göster'''</font>'e tıklayarak yaptığınız yeni sayfayı gözden geçirin.",
+'usercssjsyoucanpreview'           => "<strong>İpucu:</strong> Sayfayı kaydetmeden önce '''önizlemeyi göster''''e tıklayarak yaptığınız yeni sayfayı gözden geçirin.",
 'usercsspreview'                   => "'''Sadece kullanıcı CSS dosyanızın önizlemesini görüyorsun.''' '''Kullanıcı CSS dosyası henüz kaydolmadı!'''",
 'userjspreview'                    => "'''Sadece test ediyorsun ya da önizleme görüyorsun - kullanıcı JavaScript'i henüz kaydolmadı.'''",
 'userinvalidcssjstitle'            => "''Uyarı:''' \"\$1\" adıyla bir tema yoktur. tema-adı.css ve .js dosyalarının adları küçük harf ile yazması gerek, yani {{ns:user}}:Temel/'''M'''onobook.css değil, {{ns:user}}:Temel/'''m'''onobook.css.",
@@ -650,29 +650,29 @@ Kolaylık olması açısından bu sayfanın silme kayıtları burada belirtilmi�
 $3 tarafından verilen sebep ''$2''",
 
 # History pages
-'viewpagelogs'        => 'Bu sayfa ile ilgili kayıtları göster',
-'nohistory'           => 'Bu sayfanın geçmiş sürümü yok.',
-'currentrev'          => 'Güncel sürüm',
-'currentrev-asof'     => '$1 itibarı ile sayfanın şu anki hâli.',
-'revisionasof'        => 'Sayfanın $1 tarihindeki hâli',
-'revision-info'       => '$2 tarafından oluşturulmuş $1 tarihli sürüm',
-'previousrevision'    => '← Önceki hali',
-'nextrevision'        => 'Sonraki hali →',
-'currentrevisionlink' => 'en güncel halini göster',
-'cur'                 => 'fark',
-'next'                => 'sonraki',
-'last'                => 'son',
-'page_first'          => 'ilk',
-'page_last'           => 'son',
-'histlegend'          => "Fark seçimi: karşılaştımayı istediğiniz 2 sürümün önündeki dairelere taıkayıp, enter'a basın ya da sayfanın en atında bulunan düğmeye basın.<br />
+'viewpagelogs'           => 'Bu sayfa ile ilgili kayıtları göster',
+'nohistory'              => 'Bu sayfanın geçmiş sürümü yok.',
+'currentrev'             => 'Güncel sürüm',
+'currentrev-asof'        => '$1 itibarı ile sayfanın şu anki hâli.',
+'revisionasof'           => 'Sayfanın $1 tarihindeki hâli',
+'revision-info'          => '$2 tarafından oluşturulmuş $1 tarihli sürüm',
+'previousrevision'       => '← Önceki hali',
+'nextrevision'           => 'Sonraki hali →',
+'currentrevisionlink'    => 'en güncel halini göster',
+'cur'                    => 'fark',
+'next'                   => 'sonraki',
+'last'                   => 'son',
+'page_first'             => 'ilk',
+'page_last'              => 'son',
+'histlegend'             => "Fark seçimi: karşılaştımayı istediğiniz 2 sürümün önündeki dairelere taıkayıp, enter'a basın ya da sayfanın en atında bulunan düğmeye basın.<br />
 Tanımlar: (güncel) = güncel sürümle aradaki fark,
 (önceki) = bir önceki sürümle aradaki fark, K = küçük değişiklik",
-'history-search'      => 'Geçmişte ara',
-'deletedrev'          => '[silindi]',
-'histfirst'           => 'En eski',
-'histlast'            => 'En yeni',
-'historysize'         => '({{PLURAL:$1|1 bayt|$1 bayt}})',
-'historyempty'        => '(boş)',
+'history-fieldset-title' => 'Geçmişte ara',
+'deletedrev'             => '[silindi]',
+'histfirst'              => 'En eski',
+'histlast'               => 'En yeni',
+'historysize'            => '({{PLURAL:$1|1 bayt|$1 bayt}})',
+'historyempty'           => '(boş)',
 
 # Revision feed
 'history-feed-title'          => 'Değişiklik geçmişis',
@@ -788,7 +788,7 @@ Bu sayfa değişikiliği kamu arşivlerinden silinmiştir.
 'mypreferences'            => 'Tercihlerim',
 'prefs-edits'              => 'Değişikilik sayısı:',
 'prefsnologin'             => 'Oturum açık değil',
-'prefsnologintext'         => 'Kullanıcı tercihlerinizi ayarlamak için <span class="plainlinks">[{{fullurl:Special:Userlogin|returnto=$1}} giriş yapmalısınız]</span>.',
+'prefsnologintext'         => 'Kullanıcı tercihlerinizi ayarlamak için <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} giriş yapmalısınız]</span>.',
 'prefsreset'               => 'Tercihler hafızadan sıfırlandı.',
 'qbsettings'               => 'Hızlı erişim sütun ayarları',
 'qbsettings-none'          => 'Hiçbiri',
@@ -907,8 +907,7 @@ Bu sayfa değişikiliği kamu arşivlerinden silinmiştir.
 'recentchanges-legend'              => 'Son değişiklikler seçenekleri',
 'recentchangestext'                 => 'Yapılan en son değişiklikleri bu sayfadan izleyin.',
 'recentchanges-feed-description'    => "Bu beslemedeki viki'de yapılan en son değişiklikleri takip edin.",
-'rcnote'                            => "$4 tarihi ve saat $5 itibariyle, son {{PLURAL:$2|1 günde|'''$2''' günde}} yapılan, {{PLURAL:$1|'''1''' değişiklik|'''$1''' değişiklik}}, aşağıdadır.",
-'rcnotefrom'                        => '<b>$2</b> tarihinden itibaren yapılan değişiklikler aşağıdadır (en fazla <b>$1</b> adet madde gösterilmektedir).',
+'rcnote'                            => "$4 tarihi ve saat $5 itibarı ile, son {{PLURAL:$2|1 günde|'''$2''' günde}} yapılan, {{PLURAL:$1|'''1''' değişiklik|'''$1''' değişiklik}}, aşağıdadır.",
 'rclistfrom'                        => '$1 tarihinden beri yapılan değişiklikleri göster',
 'rcshowhideminor'                   => 'küçük değişiklikleri $1',
 'rcshowhidebots'                    => 'botları $1',
@@ -1583,6 +1582,8 @@ Bu değişim popüler bir sayfa için beklenmeyen sonuçlar doğurabilir; lütfe
 
 Bu durumlarda sayfayı kendiniz aktarmalısınız.",
 'movearticle'             => 'Eski isim',
+'movenologin'             => 'Sistemde değilsiniz.',
+'movenologintext'         => 'Sayfanın adını değiştirebilmek için kayıtlı ve [[Special:UserLogin|sisteme]] giriş yapmış olmanız gerekmektedir.',
 'movenotallowed'          => '{{SITENAME}} sitesinde sayfa adlerını değiştirme izniniz yok.',
 'newtitle'                => 'Yeni isim',
 'move-watch'              => 'Bu sayfayı izle',
@@ -1784,7 +1785,7 @@ Lütfen başka bir isim deneyiniz.',
 'noimages'              => 'Görecek bir şey yok.',
 'ilsubmit'              => 'Ara',
 'bydate'                => 'kronolojik sırayla',
-'sp-newimages-showfrom' => '$1, $2 tarihi itibariyle yeni resimleri göster',
+'sp-newimages-showfrom' => '$1, $2 tarihi itibarı ile yeni resimleri göster',
 
 # Bad image list
 'bad_image_list' => 'Format şöyle:
@@ -2133,5 +2134,9 @@ Bir başlığı çıkarmak için, yanındaki kutucuğu işaretleyin, ve Başlık
 
 # Special:BlankPage
 'blankpage' => 'Boş sayfa',
+
+# Special:Nuke
+'nuke-submit-user'   => 'Git',
+'nuke-submit-delete' => 'Seçileni sil',
 
 );

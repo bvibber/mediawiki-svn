@@ -157,7 +157,7 @@ $messages = array(
 == Pirmie soļi ==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Konfigurācijas iespēju saraksts]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki J&A]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Parakstīties uz paziņojumiem par jaunām MediaWiki versijām]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Parakstīties uz paziņojumiem par jaunām MediaWiki versijām]',
 
 'about'          => 'Par',
 'article'        => 'Raksts',
@@ -378,7 +378,7 @@ Ja tu izvēlies to norādīt, šo lietos lai identificētu tavu darbu (ieguldīj
 'noname'                     => 'Tu neesi norādījis derīgu lietotāja vārdu.',
 'loginsuccesstitle'          => 'Ieiešana veiksmīga',
 'loginsuccess'               => 'Tu esi ienācis {{grammar:lokatīvs|{{SITENAME}}}} kā "$1".',
-'nosuchuser'                 => 'Šeit nav lietotāja ar vārdu "$1". Pārbaudi, vai pareizi uzrakstīts, vai arī [[Special:Userlogin/signup|izveido jaunu kontu]].',
+'nosuchuser'                 => 'Šeit nav lietotāja ar vārdu "$1". Pārbaudi, vai pareizi uzrakstīts, vai arī [[Special:UserLogin/signup|izveido jaunu kontu]].',
 'nosuchusershort'            => 'Šeit nav lietotāja ar vārdu "<nowiki>$1</nowiki>". Pārbaudi, vai nav drukas kļūda.',
 'nouserspecified'            => 'Tev jānorāda lietotājvārds.',
 'wrongpassword'              => 'Tu ievadīji nepareizu paroli. Lūdzu, mēģini vēlreiz.',
@@ -569,31 +569,31 @@ Lūdzu, pārbaudi zemāk redzamajā salīdzinājumā vai tu to tiešām vēlies 
 $3 norādītais iemesls ir ''$2''",
 
 # History pages
-'viewpagelogs'        => 'Apskatīties ar šo lapu saistītos reģistru ierakstus',
-'nohistory'           => 'Šai lapai nav pieejama versiju hronoloģija.',
-'currentrev'          => 'Pašreizējā versija',
-'currentrev-asof'     => 'Pašreizējā versija, $1',
-'revisionasof'        => 'Versija, kas saglabāta $1',
-'revision-info'       => 'Versija $1 laikā, kādu to atstāja $2',
-'previousrevision'    => '←Senāka versija',
-'nextrevision'        => 'Jaunāka versija→',
-'currentrevisionlink' => 'skatīt pašreizējo versiju',
-'cur'                 => 'ar pašreizējo',
-'next'                => 'nākamais',
-'last'                => 'ar iepriekšējo',
-'page_first'          => 'pirmā',
-'page_last'           => 'pēdējā',
-'histlegend'          => 'Atšķirību izvēle: atzīmē vajadzīgo versiju apaļās pogas un spied "Salīdzināt izvēlētās versijas".<br />
+'viewpagelogs'           => 'Apskatīties ar šo lapu saistītos reģistru ierakstus',
+'nohistory'              => 'Šai lapai nav pieejama versiju hronoloģija.',
+'currentrev'             => 'Pašreizējā versija',
+'currentrev-asof'        => 'Pašreizējā versija, $1',
+'revisionasof'           => 'Versija, kas saglabāta $1',
+'revision-info'          => 'Versija $1 laikā, kādu to atstāja $2',
+'previousrevision'       => '←Senāka versija',
+'nextrevision'           => 'Jaunāka versija→',
+'currentrevisionlink'    => 'skatīt pašreizējo versiju',
+'cur'                    => 'ar pašreizējo',
+'next'                   => 'nākamais',
+'last'                   => 'ar iepriekšējo',
+'page_first'             => 'pirmā',
+'page_last'              => 'pēdējā',
+'histlegend'             => 'Atšķirību izvēle: atzīmē vajadzīgo versiju apaļās pogas un spied "Salīdzināt izvēlētās versijas".<br />
 Apzīmējumi:
 "ar pašreizējo" = salīdzināt ar pašreizējo versiju,
 "ar iepriekšējo" = salīdzināt ar iepriekšējo versiju,
 m = maznozīmīgs labojums.',
-'history-search'      => 'Meklēt hronoloģijā',
-'deletedrev'          => '[izdzēsta]',
-'histfirst'           => 'Senākās',
-'histlast'            => 'Jaunākās',
-'historysize'         => '({{PLURAL:$1|1 baits|$1 baiti}})',
-'historyempty'        => '(tukša)',
+'history-fieldset-title' => 'Meklēt hronoloģijā',
+'deletedrev'             => '[izdzēsta]',
+'histfirst'              => 'Senākās',
+'histlast'               => 'Jaunākās',
+'historysize'            => '({{PLURAL:$1|1 baits|$1 baiti}})',
+'historyempty'           => '(tukša)',
 
 # Revision feed
 'history-feed-title'          => 'Versiju hronoloģija',
@@ -634,15 +634,16 @@ m = maznozīmīgs labojums.',
 'nonefound'             => "'''Piezīme:''' bieži vien meklēšana ir neveiksmīga, meklējot plaši izplatītus vārdus, piemēram, \"un\" vai \"ir\", jo tie netiek iekļauti meklēšanas datubāzē, vai arī meklējot vairāk par vienu vārdu (jo rezultātos parādīsies tikai lapas, kurās ir visi meklētie vārdi). Vēl, pēc noklusējuma, pārmeklē tikai dažas ''namespaces''. Lai meklētu visās, meklēšanas pieprasījumam priekšā jāieliek ''all:'', vai arī analogā veidā jānorāda pārmeklējamo ''namespaci''.",
 'powersearch'           => 'Izvērstā meklēšana',
 'powersearch-legend'    => 'Izvērstā meklēšana',
-'searchdisabled'        => '<p style="margin: 1.5em 2em 1em">Meklēšana {{grammar:lokatīvs|{{SITENAME}}}} šobrīd ir atslēgta darbības traucējumu dēļ. Pagaidām vari meklēt, izmantojot Google vai Yahoo.
-<span style="font-size: 89%; display: block; margin-left: .2em">Ņem vērā, ka meklētāju indeksētais {{grammar:ģenitīvs|{{SITENAME}}}} saturs var būt novecojis.</span></p>',
+'searchdisabled'        => 'Meklēšana {{grammar:lokatīvs|{{SITENAME}}}} šobrīd ir atslēgta darbības traucējumu dēļ.
+Pagaidām vari meklēt, izmantojot Google vai Yahoo.
+Ņem vērā, ka meklētāju indeksētais {{grammar:ģenitīvs|{{SITENAME}}}} saturs var būt novecojis.',
 
 # Preferences page
 'preferences'           => 'Izvēles',
 'mypreferences'         => 'manas izvēles',
 'prefs-edits'           => 'Izmaiņu skaits:',
 'prefsnologin'          => 'Neesi iegājis',
-'prefsnologintext'      => 'Tev jābūt <span class="plainlinks">[{{fullurl:Special:Userlogin|returnto=$1}} iegājušam], lai mainītu lietotāja izvēles.',
+'prefsnologintext'      => 'Tev jābūt <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} iegājušam], lai mainītu lietotāja izvēles.',
 'prefsreset'            => 'Sākotnējās izvēles ir atjaunotas.',
 'qbsettings'            => 'Rīku joslas stāvoklis',
 'changepassword'        => 'Mainīt paroli',
@@ -763,7 +764,6 @@ m = maznozīmīgs labojums.',
 'recentchanges-legend'              => 'Pēdējo izmaiņu opcijas',
 'recentchangestext'                 => 'Šajā lapā ir šitajā viki izdarītās pēdējās izmaiņas.',
 'rcnote'                            => 'Šobrīd ir {{PLURAL:$1|redzama pēdējā <strong>$1</strong> izmaiņa, kas izdarīta|redzamas pēdējās <strong>$1</strong> izmaiņas, kas izdarītas}} {{PLURAL:$2|pēdējā|pēdējās}} <strong>$2</strong> {{PLURAL:$2|dienā|dienās}} (līdz $4, $5).',
-'rcnotefrom'                        => "Šobrīd redzamas izmaiņas kopš '''$2''' (parādītas ne vairāk par '''$1''').",
 'rclistfrom'                        => 'Parādīt jaunas izmaiņas kopš $1',
 'rcshowhideminor'                   => '$1 maznozīmīgus',
 'rcshowhidebots'                    => '$1 botus',
@@ -1379,6 +1379,8 @@ pirms turpināšanas vēlreiz pārdomā, vai tu izproti visas iespējamās sekas
 
 Ja tomēr vēlēsies, tad tev šī diskusiju lapa būs jāpārvieto vai jāapvieno pašam.",
 'movearticle'             => 'Pārvietot lapu',
+'movenologin'             => 'Neesi iegājis kā reģistrēts lietotājs',
+'movenologintext'         => 'Tev ir jābūt reģistrētam lietotājam un jābūt [[Special:UserLogin|iegājušam]] {{grammar:lokatīvs|{{SITENAME}}}}, lai pārvietotu lapu.',
 'movenotallowed'          => 'Tev {{grammar:lokatīvs|{{SITENAME}}}} nav tiesību pārvietot lapas .',
 'newtitle'                => 'Uz šādu lapu',
 'move-watch'              => 'Uzraudzīt šo lapu',
@@ -1409,8 +1411,6 @@ Vai tu to gribi izdzēst, lai atbrīvotu vietu pārvietošanai?',
 'delete_and_move_reason'  => 'Izdzēsts, lai atbrīvotu vietu parvietošanai',
 'selfmove'                => 'Izejas un mērķa lapu nosaukumi ir vienādi;
 nevar pārvietot lapu uz sevi.',
-'immobile_namespace'      => "Izejas vai mērķa lapa ir īpašā lapa;
-nevar pārvietot lapas no un lapas uz to ''namespaci''.",
 'fix-double-redirects'    => 'Automātiski izmainīt visas pāradresācijas, kas ved uz sākotnējo nosaukumu',
 
 # Export

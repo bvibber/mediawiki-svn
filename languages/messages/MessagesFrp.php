@@ -186,7 +186,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lista des paramètres de configuracion]
 * [http://www.mediawiki.org/wiki/Manual:FAQ/fr FdeQ sur MediaWiki]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de discussion de les parucions de MediaWiki]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de discussion de les parucions de MediaWiki]',
 
 'about'          => 'A propôs',
 'article'        => 'Articllo',
@@ -893,7 +893,6 @@ Atencion, lor endèxacion du contegnu de {{SITENAME}} pôt pas étre a jorn.',
 'recentchangestext'                 => 'Siude sur ceta pâge los dèrriérs changements de {{SITENAME}}.',
 'recentchanges-feed-description'    => 'Siude los dèrriérs changements de ceti vouiqui dens un flux.',
 'rcnote'                            => 'Vê-que {{PLURAL:$1|la dèrriére modificacion|les <b>$1</b> dèrriéres modificacions}} dês {{PLURAL:$2|lo jorn passâ|los <b>$2</b> jorns passâs}}, dètèrmenâ{{PLURAL:$1||s}} ceti $3.',
-'rcnotefrom'                        => "Vê-que les modificacions fêtes dês lo '''$2''' ('''$1''' u fin ples).",
 'rclistfrom'                        => 'Afichiér les novèles modificacions dês lo $1.',
 'rcshowhideminor'                   => '$1 les modificacions minores',
 'rcshowhidebots'                    => '$1 los bots',
@@ -1648,6 +1647,8 @@ volyéd vos assurar que vos en compregnéd bien les consèquences devant que pro
 
 Dens cél câs, vos devréd renomar ou fusionar la pâge manuèlament se vos lo dèsirâd.',
 'movearticle'             => 'Renomar l’articllo :',
+'movenologin'             => 'Pas conèctâ',
+'movenologintext'         => 'Por povêr renomar una pâge, vos dête étre [[Special:UserLogin|conèctâ]] a titro d’utilisator enregistrâ et voutron compto dêt avêr una ancianatât sufisenta.',
 'movenotallowed'          => 'Vos avéd pas la pèrmission de renomar des pâges.',
 'newtitle'                => 'Novél titro :',
 'move-watch'              => 'Siuvre ceta pâge',
@@ -1673,7 +1674,6 @@ L’articllo de dèstinacion « [[:$1]] » ègziste ja. Voléd-vos lo suprimar p
 'delete_and_move_confirm' => 'Ouè, j/y’accèpto de suprimar la pâge de dèstinacion por pèrmetre lo renomâjo.',
 'delete_and_move_reason'  => 'Pâge suprimâ por pèrmetre un renomâjo',
 'selfmove'                => 'Los titros d’origina et de dèstinacion sont los mémos : empossiblo de renomar una pâge sur lyé-méma.',
-'immobile_namespace'      => 'Lo titro de dèstinacion est d’un tipo spèciâl ; o est empossiblo de renomar des pâges vers cél èspâço de nom.',
 
 # Export
 'export'            => 'Èxportar des pâges',
@@ -2390,5 +2390,14 @@ Entrâd lo nom du fichiér sen lo prèfixe « {{ns:image}}: ».',
 
 # Special:SpecialPages
 'specialpages' => 'Pâges spèciâles',
+
+# Special:Nuke
+'nuke'               => 'Suprèssion en massa',
+'nuke-nopages'       => 'Niona novèla pâge crèâ per [[Special:Contributions/$1|$1]] dens la lista des dèrriérs changements.',
+'nuke-list'          => 'Les pâges siuventes ont étâ crèâs dèrriérement per [[Special:Contributions/$1|$1]] ; endicâd un comentèro et pués clicâd sur lo boton por les suprimar.',
+'nuke-defaultreason' => 'Suprèssion en massa de les pâges apondues per $1',
+'nuke-tools'         => 'Ceti outil ôtorise les suprèssions en massa de les pâges apondues dèrriérement per un utilisator enregistrâ ou per una adrèce IP. Endicâd l’adrèce IP por obtegnir la lista de les pâges a suprimar :',
+'nuke-submit-user'   => 'Validar',
+'nuke-submit-delete' => 'Suprèssion sèlèccionâ',
 
 );

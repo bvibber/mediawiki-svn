@@ -94,15 +94,16 @@ class Title {
 	}
 
 	/**
-	 * Create a new Title from text, such as what one would
-	 * find in a link. Decodes any HTML entities in the text.
+	 * Create a new Title from text, such as what one would find in a link. De-
+	 * codes any HTML entities in the text.
 	 *
-	 * @param $text \type{\string} the link text; spaces, prefixes,
-	 *	and an initial ':' indicating the main namespace
-	 *	are accepted
-	 * @param $defaultNamespace \type{\int} the namespace to use if
-	 * 	none is specified by a prefix
-	 * @return \type{Title} the new object, or NULL on an error
+	 * @param $text             string  The link text; spaces, prefixes, and an
+	 *   initial ':' indicating the main namespace are accepted.
+	 * @param $defaultNamespace int     The namespace to use if none is speci-
+	 *   fied by a prefix.  If you want to force a specific namespace even if
+	 *   $text might begin with a namespace prefix, use makeTitle() or
+	 *   makeTitleSafe().
+	 * @return Title  The new object, or null on an error.
 	 */
 	public static function newFromText( $text, $defaultNamespace = NS_MAIN ) {
 		if( is_object( $text ) ) {
@@ -674,7 +675,8 @@ class Title {
 			$query = wfArrayToCGI( $query );
 		}
 
-		if ( '' == $this->mInterwiki ) {
+		$interwiki = Interwiki::fetch( $this->mInterwiki );
+		if ( !$interwiki ) {
 			$url = $this->getLocalUrl( $query, $variant );
 
 			// Ugly quick hack to avoid duplicate prefixes (bug 4571 etc)
@@ -683,7 +685,7 @@ class Title {
 				$url = $wgServer . $url;
 			}
 		} else {
-			$baseUrl = Interwiki::fetch( $this->mInterwiki )->getURL( );
+			$baseUrl = $interwiki->getURL( );
 
 			$namespace = wfUrlencode( $this->getNsText() );
 			if ( '' != $namespace ) {
@@ -1220,8 +1222,43 @@ class Title {
 				( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) {
 				$errors[] = $user->isAnon() ? array ('nocreatetext') : array ('nocreate-loggedin');
 			}
-		} elseif( $action == 'move' && !( $this->isMovable() && $user->isAllowed( 'move' ) ) ) {
-			$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
+
+		} elseif ( $action == 'move' ) {
+			if ( !$user->isAllowed( 'move' ) ) {
+				// User can't move anything
+				$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
+			} elseif ( !$user->isAllowed( 'move-rootuserpages' ) 
+					&& $this->getNamespace() == NS_USER && !$this->isSubpage() ) 
+			{
+				// Show user page-specific message only if the user can move other pages
+				$errors[] = array( 'cant-move-user-page' );
+			}
+
+			// Check for immobile pages
+			if ( !MWNamespace::isMovable( $this->getNamespace() ) ) {
+				// Specific message for this case
+				$errors[] = array( 'immobile-source-namespace', $this->getNsText() );
+			} elseif ( !$this->isMovable() ) {
+				// Less specific message for rarer cases
+				$errors[] = array( 'immobile-page' );
+			}
+
+		} elseif ( $action == 'move-target' ) {
+			if ( !$user->isAllowed( 'move' ) ) {
+				// User can't move anything
+				$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
+			} elseif ( !$user->isAllowed( 'move-rootuserpages' ) 
+					&& $this->getNamespace() == NS_USER && !$this->isSubpage() ) 
+			{
+				// Show user page-specific message only if the user can move other pages
+				$errors[] = array( 'cant-move-to-user-page' );
+			}
+			if ( !MWNamespace::isMovable( $this->getNamespace() ) ) {
+				$errors[] = array( 'immobile-target-namespace', $this->getNsText() );
+			} elseif ( !$this->isMovable() ) {
+				$errors[] = array( 'immobile-target-page' );
+			}
+
 		} elseif ( !$user->isAllowed( $action ) ) {
 			$return = null;
 			$groups = array_map( array( 'User', 'makeGroupLinkWiki' ),
@@ -2379,6 +2416,8 @@ class Title {
 	 * @return \type{\mixed} True on success, getUserPermissionsErrors()-like array on failure
 	 */
 	public function isValidMoveOperation( &$nt, $auth = true, $reason = '' ) {
+		global $wgUser;
+
 		$errors = array();	
 		if( !$nt ) {
 			// Normally we'd add this to $errors, but we'll get
@@ -2388,8 +2427,11 @@ class Title {
 		if( $this->equals( $nt ) ) {
 			$errors[] = array('selfmove');
 		}
-		if( !$this->isMovable() || !$nt->isMovable() ) {
-			$errors[] = array('immobile_namespace');
+		if( !$this->isMovable() ) {
+			$errors[] = array( 'immobile-source-namespace', $this->getNsText() );
+		}
+		if ( !$nt->isMovable() ) {
+			$errors[] = array('immobile-target-namespace', $nt->getNsText() );
 		}
 
 		$oldid = $this->getArticleID();
@@ -2421,11 +2463,10 @@ class Title {
 		}
 
 		if ( $auth ) {
-			global $wgUser;
 			$errors = wfArrayMerge($errors, 
 					$this->getUserPermissionsErrors('move', $wgUser),
 					$this->getUserPermissionsErrors('edit', $wgUser),
-					$nt->getUserPermissionsErrors('move', $wgUser),
+					$nt->getUserPermissionsErrors('move-target', $wgUser),
 					$nt->getUserPermissionsErrors('edit', $wgUser));
 		}
 
@@ -2435,7 +2476,6 @@ class Title {
 			$errors[] = array('spamprotectiontext');
 		}
 		
-		global $wgUser;
 		$err = null;
 		if( !wfRunHooks( 'AbortMove', array( $this, $nt, $wgUser, &$err, $reason ) ) ) {
 			$errors[] = array('hookaborted', $err);

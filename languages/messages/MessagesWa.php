@@ -710,7 +710,6 @@ Les ôtes manaedjeus so ç' wiki ci pôront todi vey li contnou catchî eyet l' 
 'recentchanges'                     => 'Dierins candjmints',
 'recentchangestext'                 => "Shuvoz chal les dierins candjmints k' i gn a yeu dsu {{SITENAME}}.",
 'rcnote'                            => 'Chal pa dzo les <strong>$1</strong> dierins candjmints des dierins <strong>$2</strong> djoûs, å $3.',
-'rcnotefrom'                        => "Chal pa dzo les candjmints dispoy li <b>$2</b> (disk' a <b>$1</b> di mostrés).",
 'rclistfrom'                        => "Mostrer les candjmints k' i gn a yeu a pårti do $1",
 'rcshowhideminor'                   => '$1 candjmints mineurs',
 'rcshowhidebots'                    => '$1 robots',
@@ -1189,6 +1188,8 @@ Dins ces cas la, vos dvroz displaecî l' pådje di copene al mwin, ou rcopyî
 si contnou, si vos l' vloz mete adlé l' novea no
 d' l' årtike.",
 'movearticle'             => 'Displaecî di',
+'movenologin'             => 'Nén elodjî',
+'movenologintext'         => 'I vs fåt esse èn uzeu eredjîstré eyet esse [[Special:UserLogin|elodjî]] por vos pleur displaecî ene pådje.',
 'newtitle'                => "Viè l' novea tite",
 'movepagebtn'             => 'Displaecî',
 'pagemovedsub'            => 'Li displaçaedje a stî comifåt',
@@ -1211,7 +1212,6 @@ L' årtike såme «[[:$1]]» egzistêye dedja. El voloz vs disfacer po vs permet
 'delete_and_move_confirm' => "Oyi, disfacer l' pådje",
 'delete_and_move_reason'  => 'Disfacé po permete on displaeçaedje',
 'selfmove'                => 'Les tites sourdant et såme sont les minmes; ene pådje ni pout nén esse displaeceye so leye minme.',
-'immobile_namespace'      => "Li tite såme est d' ene sôre especiåle; on n' pout nén displaecî des pådjes dins cist espåce di lomaedje la.",
 
 # Export
 'export'          => 'Ricopyî des pådjes foû',

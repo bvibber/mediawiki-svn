@@ -816,7 +816,7 @@ class Article {
 				$count = $pager->getNumRows();
 				if( $count > 0 ) {
 					$pager->mLimit = 10;
-					$wgOut->addHtml( '<div id="mw-deleted-notice">' );
+					$wgOut->addHtml( '<div class="mw-warning-with-logexcerpt">' );
 					$wgOut->addWikiMsg( 'deleted-notice' );
 					$wgOut->addHTML(
 						$loglist->beginLogEventsList() .
@@ -1593,8 +1593,8 @@ class Article {
 			}
 
 			# Invalidate cache of this article and all pages using this article
-			# as a template. Partly deferred.
-			Article::onArticleEdit( $this->mTitle, false ); // leave templatelinks for editUpdates()
+			# as a template. Partly deferred. Leave templatelinks for editUpdates().
+			Article::onArticleEdit( $this->mTitle, 'skiptransclusions' );
 			# Update links tables, site stats, etc.
 			$this->editUpdates( $text, $summary, $isminor, $now, $revisionId, $changed );
 		} else {
@@ -2257,8 +2257,7 @@ class Article {
 	 * @param $reason string Prefilled reason
 	 */
 	function confirmDelete( $reason ) {
-		global $wgOut, $wgUser, $wgContLang;
-		$align = $wgContLang->isRtl() ? 'left' : 'right';
+		global $wgOut, $wgUser;
 
 		wfDebug( "Article::confirmDelete\n" );
 
@@ -2267,9 +2266,13 @@ class Article {
 		$wgOut->addWikiMsg( 'confirmdeletetext' );
 
 		if( $wgUser->isAllowed( 'suppressrevision' ) ) {
-			$suppress = "<tr id=\"wpDeleteSuppressRow\" name=\"wpDeleteSuppressRow\"><td></td><td>";
-			$suppress .= Xml::checkLabel( wfMsg( 'revdelete-suppress' ), 'wpSuppress', 'wpSuppress', false, array( 'tabindex' => '2' ) );
-			$suppress .= "</td></tr>";
+			$suppress = "<tr id=\"wpDeleteSuppressRow\" name=\"wpDeleteSuppressRow\">
+					<td></td>
+					<td class='mw-input'>" .
+						Xml::checkLabel( wfMsg( 'revdelete-suppress' ),
+							'wpSuppress', 'wpSuppress', false, array( 'tabindex' => '4' ) ) .
+					"</td>
+				</tr>";
 		} else {
 			$suppress = '';
 		}
@@ -2279,37 +2282,39 @@ class Article {
 			'action' => $this->mTitle->getLocalURL( 'action=delete' ), 'id' => 'deleteconfirm' ) ) .
 			Xml::openElement( 'fieldset', array( 'id' => 'mw-delete-table' ) ) .
 			Xml::tags( 'legend', null, wfMsgExt( 'delete-legend', array( 'parsemag', 'escapenoentities' ) ) ) .
-			Xml::openElement( 'table' ) .
+			Xml::openElement( 'table', array( 'id' => 'mw-deleteconfirm-table' ) ) .
 			"<tr id=\"wpDeleteReasonListRow\">
-				<td align='$align'>" .
+				<td class='mw-label'>" .
 					Xml::label( wfMsg( 'deletecomment' ), 'wpDeleteReasonList' ) .
 				"</td>
-				<td>" .
+				<td class='mw-input'>" .
 					Xml::listDropDown( 'wpDeleteReasonList',
 						wfMsgForContent( 'deletereason-dropdown' ),
 						wfMsgForContent( 'deletereasonotherlist' ), '', 'wpReasonDropDown', 1 ) .
 				"</td>
 			</tr>
 			<tr id=\"wpDeleteReasonRow\">
-				<td align='$align'>" .
+				<td class='mw-label'>" .
 					Xml::label( wfMsg( 'deleteotherreason' ), 'wpReason' ) .
 				"</td>
-				<td>" .
+				<td class='mw-input'>" .
 					Xml::input( 'wpReason', 60, $reason, array( 'type' => 'text', 'maxlength' => '255', 
 						'tabindex' => '2', 'id' => 'wpReason' ) ) .
 				"</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td>" .
-					Xml::checkLabel( wfMsg( 'watchthis' ), 'wpWatch', 'wpWatch', $checkWatch, array( 'tabindex' => '3' ) ) .
+				<td class='mw-input'>" .
+					Xml::checkLabel( wfMsg( 'watchthis' ),
+						'wpWatch', 'wpWatch', $checkWatch, array( 'tabindex' => '3' ) ) .
 				"</td>
 			</tr>
 			$suppress
 			<tr>
 				<td></td>
-				<td>" .
-					Xml::submitButton( wfMsg( 'deletepage' ), array( 'name' => 'wpConfirmB', 'id' => 'wpConfirmB', 'tabindex' => '4' ) ) .
+				<td class='mw-submit'>" .
+					Xml::submitButton( wfMsg( 'deletepage' ),
+						array( 'name' => 'wpConfirmB', 'id' => 'wpConfirmB', 'tabindex' => '5' ) ) .
 				"</td>
 			</tr>" .
 			Xml::closeElement( 'table' ) .
@@ -2468,6 +2473,11 @@ class Article {
 		# If using cleanup triggers, we can skip some manual deletes
 		if ( !$dbw->cleanupTriggers() ) {
 			# Clean up recentchanges entries...
+			$dbw->delete( 'recentchanges',
+				array( 'rc_type != '.RC_LOG, 
+					'rc_namespace' => $this->mTitle->getNamespace(),
+					'rc_title' => $this->mTitle->getDBKey() ),
+				__METHOD__ );
 			$dbw->delete( 'recentchanges',
 				array( 'rc_type != '.RC_LOG, 'rc_cur_id' => $id ),
 				__METHOD__ );
@@ -3229,11 +3239,11 @@ class Article {
 	/**
 	 * Purge caches on page update etc
 	 */
-	public static function onArticleEdit( $title, $touchTemplates = true ) {
+	public static function onArticleEdit( $title, $transclusions = 'transclusions' ) {
 		global $wgDeferredUpdateList, $wgUseFileCache;
 
 		// Invalidate caches of articles which include this page
-		if( $touchTemplates )
+		if( $transclusions !== 'skiptransclusions' )
 			$wgDeferredUpdateList[] = new HTMLCacheUpdate( $title, 'templatelinks' );
 
 		// Invalidate the caches of all pages which redirect here
@@ -3487,7 +3497,7 @@ class Article {
 			$wgUseFileCache = false;
 		}
 
-		if ( !wfReadOnly() && $this->mTitle->areRestrictionsCascading() ) {
+		if ( $this->isCurrent() && !wfReadOnly() && $this->mTitle->areRestrictionsCascading() ) {
 			// templatelinks table may have become out of sync,
 			// especially if using variable-based transclusions.
 			// For paranoia, check if things have changed and if

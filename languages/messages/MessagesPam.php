@@ -129,7 +129,7 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 == Pamagumpisa ==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'about'          => 'Tungkul',
 'article'        => 'Kalamnan ning bulung',
@@ -969,7 +969,6 @@ pakilawe me ing math/README ba meng i-configure.',
 'recentchangestext'                 => 'Talukyan mo reng tawling diling mengayalilan king bulung a ini.',
 'recentchanges-feed-description'    => 'Talukian mo reng bayung diling mengayalili king wiki king feed a ini.',
 'rcnote'                            => "Atilu king lalam {{PLURAL:$1|ing '''1''' a miyalilan|deng tawling '''$1''' a miyalilan}} anyang tawling {{PLURAL:$2|aldo|'''$2''' aldo}}, ketang $3.",
-'rcnotefrom'                        => 'Atilu king lalam deng miyalilan manibat anyang <b>$2</b> (angga king <b>$1</b> makalto).',
 'rclistfrom'                        => 'Pakit la reng bayung miyalilan manibat anyang $1',
 'rcshowhideminor'                   => '$1 malating edit',
 'rcshowhidebots'                    => '$1 la reng bot',
@@ -1752,6 +1751,8 @@ pakisiguraduan mung aintindian mu ing kabaldugan na ampong epektu niti bayu mu i
 
 Nung makanyan pin ing milyari, kailangan meng iyalis o isanib (merge) ing bulung a saparadu nung ita ing buri mung gawan.",
 'movearticle'             => 'Ialis ya ing bulung',
+'movenologin'             => 'E maka-login',
+'movenologintext'         => 'Kailangan, metung kang talagamit a makarehistru at [[Special:UserLogin|maka-login]] ka ba kang makapanalis bulung.',
 'movenotallowed'          => 'Ala kang paintulut a manalis bulung king {{SITENAME}}.',
 'newtitle'                => 'King bayung bansag:',
 'move-watch'              => 'Banten ya ing bulung a ini',
@@ -1780,8 +1781,6 @@ Buri meng buran bang malaus ing pamanales?',
 'delete_and_move_reason'  => 'Mebura ya bang malaus ing pamanalis',
 'selfmove'                => 'Pareu ya ing penibatan ampo ing puntalan;
 e maliaring itumpak king sarili na ing metung a bulung.',
-'immobile_namespace'      => 'Makabukud/espesial yang uri ing bansag ning penibatan o puntalan;
-e maliaring manalis bulung manibat o papunta king pirinan lagyung (namespace) ita',
 'imagenocrossnamespace'   => 'E ne ayalis ing larawan king pirinan lagyung e-panglarawan (non-image namespace)',
 'imagetypemismatch'       => 'E ne kaparis ning bayung file extension itang kayang uri (type)',
 

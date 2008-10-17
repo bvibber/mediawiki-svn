@@ -131,7 +131,7 @@ $messages = array(
 == Файдалы ресурслар ==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Көйләнмәләр исемлеге];
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki турында еш бирелгән сораулар һәм җаваплар];
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki'нең яңа версияләре турында хәбәрләр җибәреп чыгу].",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki'нең яңа версияләре турында хәбәрләр җибәреп чыгу].",
 
 'about'          => 'Тасвир',
 'article'        => 'Эчтәлек бите',
@@ -632,7 +632,6 @@ $2',
 'nchanges'                          => '$1 {{PLURAL:$1|төзәтмә|төзәтмә}}',
 'recentchanges'                     => 'Баягы төзәтмәләр',
 'rcnote'                            => "Соңгы '''$1''' үзгәртмә '''$2''' көндә, сәгатьтә $5 $4.",
-'rcnotefrom'                        => "Астарак '''$2''' башлап ('''$1''' кадәр) төзәтмәләр күрсәтелгән.",
 'rclistfrom'                        => '$1 башлап яңа төзәтмәләрне күрсәтергә',
 'rcshowhideminor'                   => '$1 әһәмиятсез үзгәртүләр',
 'rcshowhidebots'                    => '$1 бот',

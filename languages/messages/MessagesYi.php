@@ -124,7 +124,7 @@ $magicWords = array(
 
 $messages = array(
 # User preference toggles
-'tog-underline'               => 'שטרייכט אונטער לינקס',
+'tog-underline'               => 'שטרייכט אונטער לינקען',
 'tog-highlightbroken'         => 'צייכן אן צובראכענע לינקען <a href="" class="new">אזוי</a> (אדער: אזוי<a href="" class="internal">?</a>)',
 'tog-justify'                 => 'גראד אויס פאראגראפן',
 'tog-hideminor'               => 'באהאלט קליינע עדיטס אין לעצטע ענדערונגען',
@@ -245,7 +245,7 @@ $messages = array(
 == נוצליכע לינקס ==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings רשימת ההגדרות]
 * [http://www.mediawiki.org/wiki/Manual:FAQ שאלות נפוצות]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce מידיעוויקי רעליס מעלינג ליסט]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce מידיעוויקי רעליס מעלינג ליסט]',
 
 'about'          => 'וועגן',
 'article'        => 'אינהאלט בלאט',
@@ -538,7 +538,7 @@ $2',
 'loginsuccess'               => "'''דו ביסט יעצט אַרײַנלאָגירט אַלץ \"\$1\" אינעם {{SITENAME}}.'''",
 'nosuchuser'                 => 'נישטא קיין באניצער מיטן נאמען  "$1".
 
-קוקט איבער אייער אויסלייג, אדער [[Special:Userlogin/signup|באשאפֿט א נייע קאנטע]].',
+קוקט איבער אייער אויסלייג, אדער [[Special:UserLogin/signup|באשאפֿט א נייע קאנטע]].',
 'nosuchusershort'            => 'נישטא קיין באנוצער מיטן נאמען "<nowiki>$1</nowiki>". קוק איבער דיין ספעלונג.',
 'nouserspecified'            => 'איר ברויכט ספעציפיזירן א באנוצער-נאמען.',
 'wrongpassword'              => 'אומריכטיגע פאסווארט אריינגעלייגט, ביטע פרובירט נאכאמאל.',
@@ -851,7 +851,7 @@ $2',
 'mypreferences'         => 'מיינע פרעפערענצן',
 'prefs-edits'           => 'צאל פון ענדערונגן:',
 'prefsnologin'          => 'נישט אריינלאגירט',
-'prefsnologintext'      => 'איר דארפט זיין  <span class="plainlinks">[{{fullurl:Special:Userlogin|returnto=$1}} אריינלאגירט]</span> כדי צו ענדערן באניצער פרעפֿערענצן.',
+'prefsnologintext'      => 'איר דארפט זיין  <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} אריינלאגירט]</span> כדי צו ענדערן באניצער פרעפֿערענצן.',
 'qbsettings-none'       => 'גארנישט',
 'qbsettings-fixedleft'  => 'קבוע לינקס',
 'qbsettings-fixedright' => 'קבוע רעכטס',
@@ -938,7 +938,6 @@ $2',
 'nchanges'                          => '{{PLURAL:$1|ענדערונג|$1 ענדערונגען}}',
 'recentchanges'                     => 'לעצטע ענדערונגען',
 'rcnote'                            => "אונטן {{PLURAL:$1|איז '''1''' ענדערונג|זײַנען די לעצטע '''$1''' ענדערונגען}} אין {{PLURAL:$2|דעם לעצטן טאג|די לעצטע $2 טעג}}, ביז $5, $4.",
-'rcnotefrom'                        => "פֿאלגנד זענען די ענדערונגען זײַט '''$2''' (ביז '''$1''')",
 'rclistfrom'                        => 'װײַז נײַע ענדערונגען זינט $1',
 'rcshowhideminor'                   => '$1 מינערדיגע ענדערונגען',
 'rcshowhidebots'                    => '$1 באטס',

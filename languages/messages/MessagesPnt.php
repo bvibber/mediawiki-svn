@@ -322,7 +322,7 @@ $messages = array(
 'loginsuccesstitle'          => "Έντον τ' εσέβεμαν",
 'loginsuccess'               => "'''Εσήβετεν σο {{SITENAME}} ους \"\$1\".'''",
 'nosuchuser'                 => 'Αδά \'κ εχ\' χρήστεν με τ\' όνεμαν "$1".
-Το γράψιμον ωρία γιά [[Special:Userlogin/signup|ποίσον καινούρεον λογαρίαν]].',
+Το γράψιμον ωρία γιά [[Special:UserLogin/signup|ποίσον καινούρεον λογαρίαν]].',
 'nosuchusershort'            => 'Αδά \'κ εχ\' χρήστεν με τ\' όνομα "<nowiki>$1</nowiki>".
 Το γράψιμονις ωρία.',
 'nouserspecified'            => "Πρέπ' να ψιλίζετε έναν όνεμαν.",
@@ -464,9 +464,9 @@ $messages = array(
 'currentrevisionlink' => 'Ατωριζνόν μορφήν',
 'cur'                 => 'ατωριζνόν',
 'next'                => 'επόμενον',
-'last'                => 'υστερνόν',
+'last'                => 'τελευταίον',
 'page_first'          => 'πρώτον',
-'page_last'           => 'υστερνόν',
+'page_last'           => 'τελευταίον',
 'histlegend'          => 'Σύγκριμα διαφορίων: βαλέστεν τα μορφάς το θέλετε και τερέστεν τα διαφοράσατουν. Για να τερείτε τα διαφοράς, ποίστεν έναν κλικ σο πεδίον το λεει "Γαρσουλαεύτε...". <br />
 Πληροφορία: (ατωριζνόν) = διαφοράς με τ\' ατωριζνόν τη μορφήν,
 (υστερνόν) = διαφοράς με τ\' υστερνόν τη μορφήν, μ = μικρά διαφοράς.',
@@ -510,6 +510,7 @@ $messages = array(
 'preferences'       => 'Προτιμήσαι',
 'mypreferences'     => "Τ' εμά τα προτιμήσαι",
 'skin-preview'      => 'Πρώτον τέρεμαν',
+'dateformat'        => 'Μορφή ημερομηνίας',
 'prefs-misc'        => 'Διαφ',
 'saveprefs'         => 'Αποθήκεμαν',
 'oldpassword'       => 'Παλαιόν σημάδιν:',
@@ -518,6 +519,8 @@ $messages = array(
 'searchresultshead' => 'Εύρον',
 
 # Groups
+'group-user'  => 'Χρήστες',
+'group-bot'   => 'Bots',
 'group-sysop' => 'Νοματέοι',
 'group-all'   => '(ούλαι)',
 
@@ -528,6 +531,11 @@ $messages = array(
 'grouppage-sysop' => '{{ns:project}}:Νοματέοι',
 
 # Rights
+'right-read'          => 'Δέβασον σελίδας',
+'right-edit'          => 'Άλλαξον σελίδας',
+'right-createpage'    => "Ποίσον σελίδας (ντο 'κ εν σελίδας καλατζεματί)",
+'right-createtalk'    => 'Ποίσον σελίδας καλατζεματί',
+'right-createaccount' => 'Ποίσον καινούρεα λογαρίας χρηστίων',
 'right-delete'        => 'Σβήσον σελίδας',
 'right-bigdelete'     => 'Σβήσον σελίδας με τρανά ιστορίας',
 'right-browsearchive' => 'Αράεμαν σα σβημένα σελίδας',
@@ -542,7 +550,6 @@ $messages = array(
 'recentchanges'                  => 'Υστερνά αλλαγάς',
 'recentchanges-feed-description' => "Τ' ασ' όλεα καινούρεα αλλαγάς τη wiki ωρία σ' αβούτεν την περίληψην.",
 'rcnote'                         => "Αφκά {{PLURAL:$1|έχ' '''1''' αλλαγήν|έχ' τα '''$1''' τελευταία αλλαγάς}} τη {{PLURAL:$2|τελευταίας ημέρας|τελευταίων '''$2''' ημερίων}}, σα $5, $4.",
-'rcnotefrom'                     => "Αφκά καικά ευρίουνταν τ' αλλαγάς ασό <b>$2</b> (εμφάνιση <b>$1</b> αλλαγίων max).",
 'rclistfrom'                     => "Δείξον τ' αλλαγάς ασα $1 μαναχόν",
 'rcshowhideminor'                => '$1 τα μικρά αλλαγάς',
 'rcshowhidebots'                 => '$1 bots',
@@ -562,7 +569,7 @@ $messages = array(
 # Recent changes linked
 'recentchangeslinked'          => 'Σχετικά αλλαγάς',
 'recentchangeslinked-title'    => 'Αλλαγάς τη "$1"',
-'recentchangeslinked-noresult' => "Σ' αβούτα τα σελίδας 'κ εγένταν αλλάγματα.",
+'recentchangeslinked-noresult' => "Σ' αβούτα τα σελίδας 'κ εγένταν αλλαγάς.",
 'recentchangeslinked-summary'  => "Αβούτος εν κατάλογον με τ' υστερνά τ' αλλαγάς σελιδίων με σύνδεσμον ασ' έναν συγκεκριμένον σελίδαν (για σε σελίδας συγκεκριμένου κατηγορίας).
 Τα σελίδας σον [[Special:Watchlist|κατάλογον ωριαγματί]] είν' '''σκηρά'''.",
 'recentchangeslinked-page'     => 'Όνεμαν σελίδας:',
@@ -785,6 +792,9 @@ $messages = array(
 'protect-expiry-options'      => '2 ώρας:2 hours,1 ημέρα:1 day,3 ημέρας:3 days,1 εβδομάδα:1 week,2 εβδομάδας:2 weeks,1 μήνα:1 month,3 μήνας:3 months,6 μήνας:6 months,1 χρόνο:1 year,αόριστα:infinite', # display1:time1,display2:time2,...
 'restriction-type'            => 'Δικαίωμαν:',
 'restriction-level'           => 'Επίπεδον περιορισμού:',
+
+# Restrictions (nouns)
+'restriction-upload' => "Σκώσ' ατό",
 
 # Undelete
 'undeletebtn'            => 'Ποίσον ξαν',

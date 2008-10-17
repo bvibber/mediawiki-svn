@@ -132,7 +132,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Den seti]
 * [http://www.mediawiki.org/wiki/Manual:FAQ Sani di ben aksi furu (FAQ)]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Boskopu grupu gi nyun meki]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Boskopu grupu gi nyun meki]',
 
 'about'          => 'Abra',
 'article'        => 'Papira',
@@ -632,7 +632,6 @@ Yu kan [[:\$1|meki a papira disi]].",
 'recentchanges'                  => 'Laste kenki',
 'recentchanges-feed-description' => 'Nanga a feed disi yu kan luku den moro nyun kenki fu a wiki disi.',
 'rcnote'                         => "Dya na ondrosey {{PLURAL:$1|'''1''' kenki|den '''$1''' laste kenki}} ini {{PLURAL:$2|a dei|den '''$2''' dei}} na fesi de fu si, tapu $4 na $5.",
-'rcnotefrom'                     => "Kenki fu '''$2''' (e sori te go miti '''$1''' kenki).",
 'rclistfrom'                     => 'Sori nyun kenki, bigin fu $1',
 'rcshowhideminor'                => '$1 den pikin kenki',
 'rcshowhidebots'                 => '$1 den bot',
@@ -980,6 +979,7 @@ Ben suri taki den folo abrasi ben pre yu disi aksi du.",
 * A takipapira ondro a nyun nen da ala ben;
 * Yu a ondroben box odu.",
 'movearticle'      => 'Dribi papira:',
+'movenologin'      => 'No kon',
 'newtitle'         => 'Na nyun papiranen:',
 'move-watch'       => 'Disi papira si',
 'movepagebtn'      => 'Dribi papira',

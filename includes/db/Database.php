@@ -312,7 +312,7 @@ class Database {
 	 * If the failFunction is set to a non-zero integer, returns success
 	 */
 	function open( $server, $user, $password, $dbName ) {
-		global $wguname, $wgAllDBsAreLocalhost;
+		global $wgAllDBsAreLocalhost;
 		wfProfileIn( __METHOD__ );
 
 		# Test for missing mysql.so
@@ -388,7 +388,7 @@ class Database {
 			$success = @/**/mysql_select_db( $dbName, $this->mConn );
 			if ( !$success ) {
 				$error = "Error selecting database $dbName on server {$this->mServer} " .
-					"from client host {$wguname['nodename']}\n";
+					"from client host " . wfHostname() . "\n";
 				wfLogDBError(" Error selecting database $dbName on server {$this->mServer} \n");
 				wfDebug( $error );
 			}
@@ -423,12 +423,22 @@ class Database {
 
 	protected function installErrorHandler() {
 		$this->mPHPError = false;
+		$this->htmlErrors = ini_set( 'html_errors', '0' );
 		set_error_handler( array( $this, 'connectionErrorHandler' ) );
 	}
 
 	protected function restoreErrorHandler() {
 		restore_error_handler();
-		return $this->mPHPError;
+		if ( $this->htmlErrors !== false ) {
+			ini_set( 'html_errors', $this->htmlErrors );
+		}
+		if ( $this->mPHPError ) {
+			$error = preg_replace( '!\[<a.*</a>\]!', '', $this->mPHPError );
+			$error = preg_replace( '!^.*?:(.*)$!', '$1', $error );
+			return $error;
+		} else {
+			return false;
+		}
 	}
 
 	protected function connectionErrorHandler( $errno,  $errstr ) {
@@ -1909,7 +1919,7 @@ class Database {
 		$res = $this->query( 'SHOW SLAVE STATUS', 'Database::getSlavePos' );
 		$row = $this->fetchObject( $res );
 		if ( $row ) {
-			return new MySQLMasterPos( $row->Master_Log_File, $row->Read_Master_Log_Pos );
+			return new MySQLMasterPos( $row->Relay_Master_Log_File, $row->Exec_master_log_pos );
 		} else {
 			return false;
 		}

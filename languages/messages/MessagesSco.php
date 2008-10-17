@@ -124,7 +124,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settins leet]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki releese mailin leet]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki releese mailin leet]",
 
 'about'          => 'Aboot',
 'article'        => 'Content page',
@@ -693,7 +693,6 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'recentchanges'                     => 'Recent chynges',
 'recentchangestext'                 => 'Follae the maist recent chynges tae the wiki on this page.',
 'rcnote'                            => "Ablo {{PLURAL:$1|is '''1''' chynge|are the last '''$1''' chynges}} in the last {{PLURAL:$2|day|'''$2''' days}}, as of $3.",
-'rcnotefrom'                        => 'Ablo is the chynges syne <b>$2</b> (up tae <b>$1</b> shawn).',
 'rclistfrom'                        => 'Shaw new chynges stertin frae $1',
 'rclinks'                           => 'Shaw last $1 chynges in last $2 days<br />$3',
 'show'                              => 'shaw',
@@ -988,6 +987,8 @@ This can be a drastic and unexpectit chynge for a popular page;
 please be siccar ye unnerstaun the consequences o this afore proceedin.",
 'movepagetalktext'        => "The associate Collogue page, gin onie, will be autaematically flittit alang wi it '''unless:''' *Ye'r flittin the page across namespaces, *A collogue page that isna tuim aareadies exists unner the new name, or *Ye tak the tick oot o the box ablo. In thae cases, ye maun flit or merge the page manually later gin ye hae saicont thochts.",
 'movearticle'             => 'Flit page:',
+'movenologin'             => 'No loggit in',
+'movenologintext'         => 'Ye maun be a registert uiser an [[Special:UserLogin|loggit in]] tae flit a page.',
 'newtitle'                => 'Tae new teitle',
 'movepagebtn'             => 'Flit page',
 'pagemovedsub'            => 'Flittin succeedit',
@@ -1007,7 +1008,6 @@ The destination airticle "[[:$1]]" aareadies exists. Div ye want tae delete it f
 'delete_and_move_confirm' => 'Aye, delete the page',
 'delete_and_move_reason'  => 'Delete for tae mak wey for flittin',
 'selfmove'                => 'Ootgaun an incomin teitles is the same; canna flit a page ower itsel.',
-'immobile_namespace'      => 'Destination teitle is o a speecial kin; canna flit pages intae that namespace.',
 
 # Export
 'exporttext'    => 'Ye can export the text an editin history o a parteicular page or set o pages wappit in some XML. In the futur, this micht can be importit intae anither wiki runnin MediaWiki saftware, altho the\'r nae support for this featur in the current version.

@@ -126,7 +126,7 @@ Li sighenti cullegamenti so in linga ingrese:
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Impusthazioni di cunfigurazioni]
 * [http://www.mediawiki.org/wiki/Manual:FAQ Prigonti friquenti i MediaWiki]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailing list annùnzii MediaWiki]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailing list annùnzii MediaWiki]",
 
 'about'          => 'Infuimmazioni',
 'article'        => 'Pagina',
@@ -835,7 +835,6 @@ Cunsulthà lu [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} rigisthru di ca
 'recentchangestext'                 => 'Chistha pàgina prisinta li mudìfigghi più rizzenti a li cuntinuddi di lu situ.',
 'recentchanges-feed-description'    => 'Chisthu feed cunteni li mudìfigghi più rizzenti a li cuntinuddi di lu situ.',
 'rcnote'                            => "Inogghi {{PLURAL:$1|è erencadda la mudìfigga più rizzenti arriggadda|so erencaddi li '''$1''' mudìfigghi più rizzenti arriggaddi}} a lu situ {{PLURAL:$2|i' li ulthimi 24 ori|i' li '''$2''' dì passaddi}}; i dati so aggiornaddi a $3.",
-'rcnotefrom'                        => "Inogghi so erencaddi li mudìfigghi arriggaddi a parthì da '''$2''' (finz'a '''$1''').",
 'rclistfrom'                        => 'Musthra li mudìfigghi arriggaddi à partì da $1',
 'rcshowhideminor'                   => '$1 li mudìfigghi minori',
 'rcshowhidebots'                    => '$1 li bot',
@@ -1496,6 +1495,8 @@ Azzirthati d'abé cumpresu li cunsiguènzi di l'ippusthamentu!",
 
 In chisthi casi, si lu vói avveru, débi ippusthà o aggiugnì a manu le infuimmazioni cuntinuddi i' la pàgina di dischussioni.",
 'movearticle'             => 'Ippustha la pàgina',
+'movenologin'             => 'Intradda nò effettuadda',
+'movenologintext'         => "L'ippusthamentu di li pàgini è cunsintiddu soru a l'utenti registhraddi chi so [[Special:UserLogin|intraddi]] i' lu situ.",
 'movenotallowed'          => "Nò si diponi di li primmissi nezzessàri a l'ippusthamentu di pàgini.",
 'newtitle'                => 'Nobu tìturu:',
 'move-watch'              => "Aggiungi a l'abbaidaddi ippiziari",
@@ -1519,7 +1520,6 @@ La pàgina di disthinazioni "[[:$1]]" isisthi già. Vói canzillalla pa rindì p
 'delete_and_move_confirm' => 'Emmo, sobbraischribì la pàgini',
 'delete_and_move_reason'  => "Canzilladda pa rindì pussìbiri l'ippusthamentu",
 'selfmove'                => "Lu nobu tìturu è uguari a lu vécciu; impussìbiri ippusthà la pàgina cu' lu matessi innòmmu.",
-'immobile_namespace'      => 'Lu nobu tìturu curripondi à una pàgina ippiziari; impussìbiri ippusthà pàgini in chiddu tipu di pàgina.',
 
 # Export
 'export'            => 'Ippurtha li pàgini',

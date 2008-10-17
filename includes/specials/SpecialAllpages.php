@@ -153,10 +153,9 @@ class SpecialAllpages extends IncludableSpecialPage {
 			$done = false;
 			while( !$done ) {
 				// Fetch the last title of this chunk and the first of the next
-				$chunk = is_null( $lastTitle )
-					? ''
-					: 'page_title >= ' . $dbr->addQuotes( $lastTitle );
-				$chunk = array($chunk);
+				$chunk = ( $lastTitle === false )
+					? array()
+					: array( 'page_title >= ' . $dbr->addQuotes( $lastTitle ) );
 				$res = $dbr->select( 'page', /* FROM */
 					'page_title', /* WHAT */
 					array_merge($where,$chunk),
@@ -227,8 +226,9 @@ class SpecialAllpages extends IncludableSpecialPage {
 	}
 
 	/**
-	 * @todo Document
-	 * @param string $from
+	 * Show a line of "ABC to DEF" ranges of articles
+	 * @param string $inpoint Lower limit of pagenames
+	 * @param string $outpout Upper limit of pagenames
 	 * @param integer $namespace (Default NS_MAIN)
 	 */
 	function showline( $inpoint, $outpoint, $namespace = NS_MAIN ) {

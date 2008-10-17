@@ -933,4 +933,35 @@ class RightsManagerForeignDB extends RightsManagerConfigDB {
 	static function canEditRights( $user ) {
 		return $user->isAllowed( 'grouprights-interwiki' );
 	}
+	
+	function addGroupLogEntry( $group, $addRights, $removeRights, $reason, $user ) {
+		global $wgUser;
+		
+		if ($user == null)
+			$user = $wgUser;
+		
+		$log = new LogPage( 'rights' );
+
+		$log->addEntry( 'grprights',
+			SpecialPage::getTitleFor( 'ListUsers', $group ),
+			$reason,
+			array(
+				$this->makeRightsList( $addRights ),
+				$this->makeRightsList( $removeRights )
+			)
+		, $user);
+	}
+	
+	function addUserGroupsLogEntry( $user, $addgroups, $removegroups, $reason, $doer ) {
+		$log = new LogPage( 'rights' );
+	
+		$log->addEntry( 'rights2',
+			$user->getUserPage(),
+			$reason,
+			array(
+				$this->makeGroupNameListForLog( $addgroups ),
+				$this->makeGroupNameListForLog( $removegroups )
+			)
+		);
+	}
 }

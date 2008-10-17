@@ -110,7 +110,7 @@ class EditPage {
 	 * @private
 	 */
 	function getContent( $def_text = '' ) {
-		global $wgOut, $wgRequest, $wgParser, $wgMessageCache;
+		global $wgOut, $wgRequest, $wgParser, $wgContLang, $wgMessageCache;
 
 		wfProfileIn( __METHOD__ );
 		# Get variables from query string :P
@@ -124,9 +124,12 @@ class EditPage {
 		// For other non-existent articles, use preload text if any.
 		if ( !$this->mTitle->exists() ) {
 			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
-				$wgMessageCache->loadAllMessages();
 				# If this is a system message, get the default text.
-				$text = wfMsgWeirdKey( $this->mTitle->getText() ) ;
+				list( $message, $lang ) = $wgMessageCache->figureMessage( $wgContLang->lcfirst( $this->mTitle->getText() ) );
+				$wgMessageCache->loadAllMessages( $lang );
+				$text = wfMsgGetKey( $message, false, $lang, false );
+				if( wfEmptyMsg( $message, $text ) )
+					$text = '';
 			} else {
 				# If requested, preload some text.
 				$text = $this->getPreloadedText( $preload );
@@ -372,18 +375,10 @@ class EditPage {
 			return;
 		}
 
-		if ( wfReadOnly() ) {
-			if ( $this->save ){
+		if ( wfReadOnly() && $this->save ) {
 				// Force preview
 				$this->save = false;
 				$this->preview = true;
-			} elseif ( $this->preview || $this->diff ) {
-				// A warning will be displayed instead
-			} else {
-				$this->readOnlyPage( $this->getContent() );
-				wfProfileOut( __METHOD__ );
-				return;
-			}
 		}
 
 		$wgOut->addScriptFile( 'edit.js' );
@@ -571,7 +566,7 @@ class EditPage {
 
 			$this->scrolltop = $request->getIntOrNull( 'wpScrolltop' );
 
-			if ( is_null( $this->edittime ) ) {
+			if ( is_null($this->section) || !$this->edittime || !$this->starttime ) {
 				# If the form is incomplete, force to preview.
 				wfDebug( "$fname: Form data appears to be incomplete\n" );
 				wfDebug( "POST DATA: " . var_export( $_POST, true ) . "\n" );
@@ -911,7 +906,7 @@ class EditPage {
 		}
 
 		# Suppress edit conflict with self, except for section edits where merging is required.
-		if ( ( $this->section == '' ) && ( 0 != $userid ) && ( $this->mArticle->getUser() == $userid ) ) {
+		if ( $this->section == '' && $userid && $this->userWasLastToEdit($userid,$this->edittime) ) {
 			wfDebug( "EditPage::editForm Suppressing edit conflict, same user.\n" );
 			$this->isConflict = false;
 		} else {
@@ -1020,6 +1015,29 @@ class EditPage {
 	}
 	
 	/**
+	 * Check if no edits were made by other users since
+	 * the time a user started editing the page. Limit to
+	 * 50 revisions for the sake of performance.
+	 */
+	protected function userWasLastToEdit( $id, $edittime ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$res = $dbw->select( 'revision',
+			'rev_user',
+			array( 
+				'rev_page' => $this->mArticle->getId(),
+				'rev_timestamp > '.$dbw->addQuotes( $dbw->timestamp($edittime) )
+			),
+			__METHOD__,
+			array( 'ORDER BY' => 'rev_timestamp ASC', 'LIMIT' => 50 ) );
+		while( $row = $res->fetchObject() ) {
+			if( $row->rev_user != $id ) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
 	 * Check given input text against $wgSpamRegex, and return the text of the first match.
 	 * @return mixed -- matching string or false
 	 */
@@ -1044,11 +1062,8 @@ class EditPage {
 	 */
 	function initialiseForm() {
 		$this->edittime = $this->mArticle->getTimestamp();
-		$this->textbox1 = $this->getContent(false);
-		if ( $this->textbox1 === false) return false;
-
-		if ( !$this->mArticle->exists() && $this->mTitle->getNamespace() == NS_MEDIAWIKI )
-			$this->textbox1 = wfMsgWeirdKey( $this->mTitle->getText() );
+		$this->textbox1 = $this->getContent( false );
+		if ( $this->textbox1 === false ) return false;
 		wfProxyCheck();
 		return true;
 	}
@@ -1201,7 +1216,7 @@ class EditPage {
 				$noticeMsg = 'protectedpagewarning';
 				$classes[] = 'mw-textarea-protected';
 			}
-			$wgOut->addHTML( "<div id='mw-edit-$noticeMsg'>\n" );
+			$wgOut->addHTML( "<div class='mw-warning-with-logexcerpt'>\n" );
 			$wgOut->addWikiMsg( $noticeMsg );
 			LogEventsList::showLogExtract( $wgOut, 'protect', $this->mTitle->getPrefixedText(), '', 1 );
 			$wgOut->addHTML( "</div>\n" );
@@ -1226,7 +1241,7 @@ class EditPage {
 			$this->kblength = (int)(strlen( $this->textbox1 ) / 1024);
 		}
 		if ( $this->tooBig || $this->kblength > $wgMaxArticleSize ) {
-			$wgOut->addHTML( "<div id='mw-edit-longpageerror'>\n" );
+			$wgOut->addHTML( "<div class='error' id='mw-edit-longpageerror'>\n" );
 			$wgOut->addWikiMsg( 'longpageerror', $wgLang->formatNum( $this->kblength ), $wgLang->formatNum( $wgMaxArticleSize ) );
 			$wgOut->addHTML( "</div>\n" );
 		} elseif ( $this->kblength > 29 ) {
@@ -2344,7 +2359,7 @@ END
 		$count = $pager->getNumRows();
 		if ( $count > 0 ) {
 			$pager->mLimit = 10;
-			$out->addHtml( '<div id="mw-recreate-deleted-warn">' );
+			$out->addHtml( '<div class="mw-warning-with-logexcerpt">' );
 			$out->addWikiMsg( 'recreate-deleted-warn' );
 			$out->addHTML(
 				$loglist->beginLogEventsList() .

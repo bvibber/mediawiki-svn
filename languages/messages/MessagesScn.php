@@ -241,7 +241,7 @@ $messages = array(
 == P'accuminzari == 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Alencu di mpustazzioni di cunfigurazzioni] 
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ] 
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailing list dî rilassi di MediaWiki]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailing list dî rilassi di MediaWiki]",
 
 'about'          => 'pàggina',
 'article'        => 'artìculu',
@@ -988,7 +988,6 @@ S'havi accirtari ca la cuntinuità storica di la pàggina nun veni altirata.",
 'recentchangestext'                 => 'Chista pàggina prisenta li canci cchiù ricenti ê cuntinuti dô situ.',
 'recentchanges-feed-description'    => 'Stu feed riporta li canciamenti cchiù ricenti a li cuntinuti dû situ.',
 'rcnote'                            => "Ccà sutta {{PLURAL:$1|c'è lu canciamentu cchiù ricenti appurtatu|cci sunnu l'ùrtimi '''$1''' canciamenti appurtati}} ô situ {{PLURAL:$2|nta l'ùrtimi 24 uri|nta l'ùrtimi '''$2''' giorni}}; li dati sunnu aggiurnati ê $5 dû $4.",
-'rcnotefrom'                        => 'Ccà sutta cci sunnu li canciamenti a pàrtiri dû <b>$2</b> (ammustrati nzinu ô <b>$1</b>).',
 'rclistfrom'                        => 'Ammustra li canciamenti novi a pàrtiri di $1',
 'rcshowhideminor'                   => '$1 li canciamenti nichi',
 'rcshowhidebots'                    => '$1 li bot',
@@ -1696,6 +1695,8 @@ Chistu pò èssiri nu canciamentu dràsticu pi na pàggina pupulari; aviti a ès
 
 Nta sti casi, tu hai a spustari o agghiùnciri manuarmenti la pàggina di discussioni.",
 'movearticle'             => 'Sposta la pàggina',
+'movenologin'             => 'Accessu nun effittuatu',
+'movenologintext'         => "Lu spustamentu dî pàggini è cunzintitu sulu a l'utenti riggistrati c'hannu esiquitu l'[[Special:UserLogin|accessu]] a lu situ.",
 'movenotallowed'          => 'Nun hai li pirmessi nicissari a lu spustamentu dê pàggini.',
 'newtitle'                => 'Cu lu tìtulu novu di',
 'move-watch'              => 'Talìa sta pàggina',
@@ -1717,7 +1718,6 @@ La pàggina di distinazzioni "[[:$1]]" asisti già. S\'addisìa cancillàrila pi
 'delete_and_move_confirm' => 'Sì, suvrascrivi la pàggina asistenti',
 'delete_and_move_reason'  => 'Cancillata pi rènniri pussìbbili lu spustamentu',
 'selfmove'                => 'Lu tìtulu di distinazzioni nziritu è agguali a chiddu di pruvinenza; mpossibbili spustari la pàggina su idda stissa.',
-'immobile_namespace'      => 'Lu novu tìtulu currispunni a na pàggina spiciali; mpussìbbili spustari pàggini nta ddu namespace.',
 
 # Export
 'export'            => 'Esporta pàggini',

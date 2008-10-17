@@ -273,3 +273,18 @@ td#mw-emailuser-sender, td#mw-emailuser-recipient {
 	font-weight: bold;
 }
 
+/*
+ * Recreating deleted page warning
+ * Reupload file warning
+ * Page protection warning
+ * incl. log entries for these warnings
+ */
+div.mw-warning-with-logexcerpt {
+	padding: 3px;
+	margin-bottom: 3px;
+	border: 2px solid #2F6FAB;
+}
+div.mw-warning-with-logexcerpt ul li {
+	font-size: 90%;
+}
+

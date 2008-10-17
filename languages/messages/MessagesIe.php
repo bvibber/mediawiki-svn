@@ -6,6 +6,7 @@
  *
  * @author Jmb
  * @author Malafaya
+ * @author Remember the dot
  * @author לערי ריינהארט
  */
 
@@ -144,7 +145,7 @@ $messages = array(
 'viewdeleted'        => 'Vider $1?',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'      => 'Articul',
+'nstab-main'      => 'Págine',
 'nstab-user'      => 'Usator',
 'nstab-project'   => 'Págine de projecte',
 'nstab-mediawiki' => 'Missage',
@@ -328,6 +329,7 @@ Vu posse continuar usar {{SITENAME}} anonimimen, o vu posse aperter un session d
 
 # Move page
 'movearticle' => 'Moer págine:',
+'movenologin' => 'Vu ne ha intrat',
 'movepagebtn' => 'Moer págine',
 'movedto'     => 'moet a',
 '1movedto2'   => '[[$1]] moet a [[$2]]',

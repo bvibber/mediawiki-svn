@@ -823,6 +823,9 @@ function wfHostname() {
 		}
 		if( is_array( $uname ) && isset( $uname['nodename'] ) ) {
 			$host = $uname['nodename'];
+		} elseif ( getenv( 'COMPUTERNAME' ) ) {
+			# Windows computer name
+			$host = getenv( 'COMPUTERNAME' );
 		} else {
 			# This may be a virtual server.
 			$host = $_SERVER['SERVER_NAME'];
@@ -1270,7 +1273,7 @@ function wfMerge( $old, $mine, $yours, &$result ){
 
 	# This check may also protect against code injection in
 	# case of broken installations.
-	if(! file_exists( $wgDiff3 ) ){
+	if( !$wgDiff3 || !file_exists( $wgDiff3 ) ) {
 		wfDebug( "diff3 not found\n" );
 		return false;
 	}
@@ -1388,7 +1391,10 @@ function wfDiff( $before, $after, $params = '-u' ) {
 }
 
 /**
- * @todo document
+ * A wrapper around the PHP function var_export().
+ * Either print it or add it to the regular output ($wgOut).
+ *
+ * @param $var A PHP variable to dump.
  */
 function wfVarDump( $var ) {
 	global $wgOut;
@@ -2143,7 +2149,7 @@ function wfIniGetBool( $setting ) {
  * @return collected stdout as a string (trailing newlines stripped)
  */
 function wfShellExec( $cmd, &$retval=null ) {
-	global $IP, $wgMaxShellMemory, $wgMaxShellFileSize;
+	global $IP, $wgMaxShellMemory, $wgMaxShellFileSize, $wgMaxShellTime;
 
 	if( wfIniGetBool( 'safe_mode' ) ) {
 		wfDebug( "wfShellExec can't run in safe_mode, PHP's exec functions are too broken.\n" );
@@ -2153,7 +2159,7 @@ function wfShellExec( $cmd, &$retval=null ) {
 	wfInitShellLocale();
 
 	if ( php_uname( 's' ) == 'Linux' ) {
-		$time = intval( ini_get( 'max_execution_time' ) );
+		$time = intval( $wgMaxShellTime );
 		$mem = intval( $wgMaxShellMemory );
 		$filesize = intval( $wgMaxShellFileSize );
 

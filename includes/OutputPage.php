@@ -794,7 +794,8 @@ class OutputPage {
 		global $wgUser, $wgOutputEncoding, $wgRequest;
 		global $wgContLanguageCode, $wgDebugRedirects, $wgMimeType;
 		global $wgJsMimeType, $wgUseAjax, $wgAjaxWatch;
-		global $wgEnableMWSuggest;
+		global $wgEnableMWSuggest, $wgUniversalEditButton;
+		global $wgArticle, $wgTitle;
 
 		if( $this->mDoNothing ){
 			return;
@@ -901,6 +902,18 @@ class OutputPage {
 			$this->addScriptFile( 'rightclickedit.js' );
 		}
 
+		if( $wgUniversalEditButton ) {
+			if( isset( $wgArticle ) && isset( $wgTitle ) && $wgTitle->quickUserCan( 'edit' )
+				&& ( $wgTitle->exists() || $wgTitle->quickUserCan( 'create' ) ) ) {
+				$this->addLink( array(
+					'rel' => 'alternate',
+					'type' => 'application/x-wiki',
+					'title' => wfMsg( 'edit' ),
+					'href' => $wgTitle->getFullURL( 'action=edit' )
+				) );
+			}
+		}
+		
 		# Buffer output; final headers may depend on later processing
 		ob_start();
 
@@ -1185,8 +1198,7 @@ class OutputPage {
 			$text = wfMsgNoTrans( 'permissionserrorstext', count($errors)). "\n\n";
 		} else {
 			global $wgLang;
-			$action_desc = wfMsg( "right-$action" );
-			$action_desc = $wgLang->lcfirst( $action_desc ); // FIXME: TERRIBLE HACK
+			$action_desc = wfMsg( "action-$action" );
 			$text = wfMsgNoTrans( 'permissionserrorstext-withaction', count($errors), $action_desc ) . "\n\n";
 		}
 

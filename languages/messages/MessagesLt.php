@@ -7,6 +7,7 @@
  * @author Garas
  * @author Hugo.arg
  * @author Matasg
+ * @author Meno25
  * @author Pdxx
  * @author Siggis
  * @author Tomasdd
@@ -189,7 +190,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Konfigūracijos nustatymų sąrašas]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki DUK]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki pranešimai paštu apie naujas versijas]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki pranešimai paštu apie naujas versijas]',
 
 'about'          => 'Apie',
 'article'        => 'Turinys',
@@ -476,7 +477,7 @@ Jei jūs jį įvesite, jis bus naudojamas pažymėti jūsų darbą.',
 'noname'                     => 'Jūs nesate nurodęs teisingo naudotojo vardo.',
 'loginsuccesstitle'          => 'Sėkmingai prisijungėte',
 'loginsuccess'               => "'''Dabar jūs prisijungęs prie {{SITENAME}} kaip „$1“.'''",
-'nosuchuser'                 => 'Nėra jokio naudotojo turinčio vardą „$1“. Patikrinkite rašybą, arba [[Special:Userlogin/signup|sukurkite naują paskyrą]].',
+'nosuchuser'                 => 'Nėra jokio naudotojo turinčio vardą „$1“. Patikrinkite rašybą, arba [[Special:UserLogin/signup|sukurkite naują paskyrą]].',
 'nosuchusershort'            => 'Nėra jokio naudotojo, pavadinto „<nowiki>$1</nowiki>“. Patikrinkite rašybą.',
 'nouserspecified'            => 'Jums reikia nurodyti naudotojo vardą.',
 'wrongpassword'              => 'Įvestas neteisingas slaptažodis. Pamėginkite dar kartą.',
@@ -724,29 +725,29 @@ Kai kurie šablonai nebus įtraukti.',
 $3 nurodyta priežastis yra ''$2''",
 
 # History pages
-'viewpagelogs'        => 'Rodyti šio puslapio specialiuosius veiksmus',
-'nohistory'           => 'Šis puslapis neturi keitimų istorijos.',
-'currentrev'          => 'Dabartinė versija',
-'currentrev-asof'     => 'Dabartinė $1 versija',
-'revisionasof'        => '$1 versija',
-'revision-info'       => '$1 versija naudotojo $2',
-'previousrevision'    => '←Ankstesnė versija',
-'nextrevision'        => 'Vėlesnė versija→',
-'currentrevisionlink' => 'Dabartinė versija',
-'cur'                 => 'dab',
-'next'                => 'kitas',
-'last'                => 'pask',
-'page_first'          => 'pirm',
-'page_last'           => 'pask',
-'histlegend'          => "Skirtumai tarp versijų: pažymėkite lyginamas versijas ir spustelkite ''Enter'' klavišą arba mygtuką apačioje.<br />
+'viewpagelogs'           => 'Rodyti šio puslapio specialiuosius veiksmus',
+'nohistory'              => 'Šis puslapis neturi keitimų istorijos.',
+'currentrev'             => 'Dabartinė versija',
+'currentrev-asof'        => 'Dabartinė $1 versija',
+'revisionasof'           => '$1 versija',
+'revision-info'          => '$1 versija naudotojo $2',
+'previousrevision'       => '←Ankstesnė versija',
+'nextrevision'           => 'Vėlesnė versija→',
+'currentrevisionlink'    => 'Dabartinė versija',
+'cur'                    => 'dab',
+'next'                   => 'kitas',
+'last'                   => 'pask',
+'page_first'             => 'pirm',
+'page_last'              => 'pask',
+'histlegend'             => "Skirtumai tarp versijų: pažymėkite lyginamas versijas ir spustelkite ''Enter'' klavišą arba mygtuką apačioje.<br />
 Žymėjimai: (dab) = palyginimas su naujausia versija,
 (pask) = palyginimas su prieš tai buvusia versija, S = smulkus keitimas.",
-'history-search'      => 'Ieškoti istorijoje',
-'deletedrev'          => '[ištrinta]',
-'histfirst'           => 'Seniausi',
-'histlast'            => 'Paskutiniai',
-'historysize'         => '($1 {{PLURAL:$1|baitas|baitai|baitų}})',
-'historyempty'        => '(tuščia)',
+'history-fieldset-title' => 'Ieškoti istorijoje',
+'deletedrev'             => '[ištrinta]',
+'histfirst'              => 'Seniausi',
+'histlast'               => 'Paskutiniai',
+'historysize'            => '($1 {{PLURAL:$1|baitas|baitai|baitų}})',
+'historyempty'           => '(tuščia)',
 
 # Revision feed
 'history-feed-title'          => 'Versijų istorija',
@@ -926,7 +927,7 @@ Kiti administratoriai šiame projekte vis dar galės pasiekti paslėptą turinį
 'mypreferences'            => 'Mano nustatymai',
 'prefs-edits'              => 'Keitimų skaičius:',
 'prefsnologin'             => 'Neprisijungęs',
-'prefsnologintext'         => 'Jums reikia būti <span class="plainlinks">[{{fullurl:Special:Userlogin|returnto=$1}} prisijungusiam]</span>, kad galėtumėte keisti savo nustatymus.',
+'prefsnologintext'         => 'Jums reikia būti <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} prisijungusiam]</span>, kad galėtumėte keisti savo nustatymus.',
 'prefsreset'               => 'Nustatymai buvo atstatyti iš saugyklos.',
 'qbsettings'               => 'Greitasis pasirinkimas',
 'qbsettings-none'          => 'Nerodyti',
@@ -1082,7 +1083,6 @@ teisės",
 'recentchangestext'                 => 'Šiame puslapyje yra patys naujausi pakeitimai šiame projekte.',
 'recentchanges-feed-description'    => 'Sekite pačius naujausius projekto keitimus šiame šaltinyje.',
 'rcnote'                            => "Žemiau yra {{PLURAL:$1|'''1''' pakeitimas|paskutiniai '''$1''' pakeitimai|paskutinių '''$1''' pakeitimų}} per {{PLURAL:$2|dieną|paskutiniąsias '''$2''' dienas|paskutiniųjų '''$2''' dienų}} skaičiuojant nuo $5, $4.",
-'rcnotefrom'                        => "Žemiau yra pakeitimai pradedant '''$2''' (rodoma iki '''$1''' pakeitimų).",
 'rclistfrom'                        => 'Rodyti naujus pakeitimus pradedant $1',
 'rcshowhideminor'                   => '$1 smulkius keitimus',
 'rcshowhidebots'                    => '$1 robotus',
@@ -1912,6 +1912,8 @@ kad suprantate visas pasekmes.",
 
 Šiais atvejais jūs savo nuožiūra turite perkelti arba apjungti aptarimo puslapį.",
 'movearticle'             => 'Pervardinti puslapį:',
+'movenologin'             => 'Neprisijungęs',
+'movenologintext'         => 'Norėdami pervadinti puslapį, turite būti užsiregistravęs naudotojas ir būti  [[Special:UserLogin|prisijungęs]].',
 'movenotallowed'          => 'Jūs neturite teisių pervadinti puslapių šiame projekte.',
 'newtitle'                => 'Naujas pavadinimas:',
 'move-watch'              => 'Stebėti šį puslapį',
@@ -1945,7 +1947,6 @@ Paskirties puslapis „[[:$1]]“ jau yra. Ar norite jį ištrinti, kad galėtum
 'delete_and_move_confirm' => 'Taip, trinti puslapį',
 'delete_and_move_reason'  => 'Ištrinta dėl perkėlimo',
 'selfmove'                => 'Šaltinio ir paskirties pavadinimai yra tokie patys; negalima pervardinti puslapio į save.',
-'immobile_namespace'      => 'Šaltinio arba paskirties pavadinimas yra specialiojo tipo; negalima pervadinti iš ir į tą vardų sritį.',
 'imagenocrossnamespace'   => 'Negalima pervadinti failo į ne failo vardų sritį',
 'imagetypemismatch'       => 'Naujas failo plėtinys neatitinka jo tipo',
 'imageinvalidfilename'    => 'Failo adreso pavadinimas yra klaidingas',
@@ -1962,7 +1963,7 @@ Pastaruoju atveju, jūs taip pat galite naudoti nuorodą, pvz. [[{{ns:special}}:
 'exportcuronly'     => 'Eksportuoti tik dabartinę versiją, neįtraukiant istorijos',
 'exportnohistory'   => "----
 '''Pastaba:''' Pilnos puslapių istorijos eksportavimas naudojantis šia forma yra išjungtas dėl spartos.",
-'export-submit'     => 'Ekportuoti',
+'export-submit'     => 'Eksportuoti',
 'export-addcattext' => 'Pridėti puslapius iš kategorijos:',
 'export-addcat'     => 'Pridėti',
 'export-download'   => 'Saugoti kaip failą',
@@ -2493,7 +2494,7 @@ Patvirtinimo kodas jau nusiųstas jums; jei neseniai sukūrėte savo paskyrą, j
 'confirmemail_sent'        => 'Patvirtinimo laiškas išsiųstas.',
 'confirmemail_oncreate'    => 'Patvirtinimo kodas buvo išsiųstas jūsų el. pašto adresu.
 Šis kodas nėra būtinas, kad prisijungtumėte, bet jums reikės jį duoti prieš įjungiant el. pašto paslaugas projekte.',
-'confirmemail_sendfailed'  => '{{SITENAME}) neišsiuntė patvirtinamojo laiško. Patikrinkite, ar adrese nėra klaidingų simbolių.
+'confirmemail_sendfailed'  => '{{SITENAME}} neišsiuntė patvirtinamojo laiško. Patikrinkite, ar adrese nėra klaidingų simbolių.
 
 Pašto tarnyba atsakė: $1',
 'confirmemail_invalid'     => 'Neteisingas patvirtinimo kodas. Kodo galiojimas gali būti jau pasibaigęs.',
@@ -2668,5 +2669,11 @@ Jūs taip pat galite [[Special:Watchlist/edit|naudoti standartinį redaktorių]]
 # Special:BlankPage
 'blankpage'              => 'Tuščias puslapis',
 'intentionallyblankpage' => 'Šis puslapis specialiai paliktas tuščias',
+
+# Special:Nuke
+'nuke'               => 'Masinis trynimas',
+'nuke-nopages'       => 'Nėra naujų puslapių, sukurtų [[Special:Contributions/$1|$1]] naujausiuose keitimuose.',
+'nuke-submit-user'   => 'Išsiųsti',
+'nuke-submit-delete' => 'Ištrinti pasirinktus(ą)',
 
 );

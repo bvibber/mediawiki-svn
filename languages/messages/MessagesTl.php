@@ -144,7 +144,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'about'          => 'Patungkol',
 'article'        => 'Pahina ng nilalaman',
@@ -562,6 +562,8 @@ $1',
 
 # Move page
 'movearticle'             => 'Ilipat ang pahina:',
+'movenologin'             => 'Hindi nakalagda',
+'movenologintext'         => 'Kailangang ikaw ay isang naka-rehistrong manggagamit at ay [[Special:UserLogin|nakalagda]] upang makapaglipat ng pahina.',
 'movenotallowed'          => 'Wala kang permisong maglipat ng pahina.',
 'newtitle'                => 'Sa bagong pamagat:',
 'move-watch'              => 'Bantayan itong pahina',

@@ -297,7 +297,6 @@ per poter personalizzare le tue preferenze.',
 # Recent changes
 'recentchanges'   => 'Ultime Modifiche',
 'rcnote'          => 'Qui di seguito sono elencate le ultime <strong>$1</strong> pagine modificate negli ultimi <strong>$2</strong> giorni.',
-'rcnotefrom'      => ' Qui di seguito sono elencate le modifiche da <b>$2</b> (fino a <b>$1</b>).',
 'rclistfrom'      => 'Mostra modifiche a partire da $1',
 'rclinks'         => 'Mostra le ultime $1 modifiche negli ultimi $2 giorni.',
 'hist'            => 'cron',
@@ -525,6 +524,9 @@ Questo cambiamento drastico potrebbe creare inattesi contrattempi, specialmente 
 
 In questi casi, se lo ritieni opportuno, dovrai spostare o aggiungere manualmente la pagina di discussione.",
 'movearticle'      => 'Rinomina articolo',
+'movenologin'      => 'Non hai effettuato il login',
+'movenologintext'  => 'Devi essere un Utente registrato ed aver effettuato il [[Special:UserLogin|login]]
+per poter spostare una pagina.',
 'newtitle'         => 'Al nuovo titolo di',
 'movepagebtn'      => 'Sposta questa pagina',
 'pagemovedsub'     => 'Spostamento effettuato con successo',

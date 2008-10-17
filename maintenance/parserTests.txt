@@ -3081,7 +3081,7 @@ Right-aligned image
 !! input
 [[Image:foobar.jpg|right]]
 !! result
-<div class="floatright"><span><a href="/wiki/Image:Foobar.jpg" class="image" title="Foobar.jpg"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a></span></div>
+<div class="floatright"><a href="/wiki/Image:Foobar.jpg" class="image" title="Foobar.jpg"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a></div>
 
 !! end
 
@@ -3090,17 +3090,73 @@ Image with caption
 !! input
 [[Image:foobar.jpg|right|Caption text]]
 !! result
-<div class="floatright"><span><a href="/wiki/Image:Foobar.jpg" class="image" title="Caption text"><img alt="Caption text" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a></span></div>
+<div class="floatright"><a href="/wiki/Image:Foobar.jpg" class="image" title="Caption text"><img alt="Caption text" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a></div>
 
 !! end
+
+!! test
+Image with link parameter, wiki target
+!! input
+[[Image:foobar.jpg|link=Target page]]
+!! result
+<p><a href="/wiki/Target_page" title="Target page"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a>
+</p>
+!! end
+
+!! test
+Image with link parameter, URL target
+!! input
+[[Image:foobar.jpg|link=http://example.com/]]
+!! result
+<p><a href="http://example.com/"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a>
+</p>
+!! end
+
+!! test
+Image with empty link parameter
+!! input
+[[Image:foobar.jpg|link=]]
+!! result
+<p><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" />
+</p>
+!! end
+
+
 
 !! test
 Image with frame and link
 !! input
 [[Image:Foobar.jpg|frame|left|This is a test image [[Main Page]]]]
 !! result
-<div class="thumb tleft"><div class="thumbinner" style="width:1943px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="This is a test image Main Page"><img alt="This is a test image Main Page" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" class="thumbimage" /></a>  <div class="thumbcaption">This is a test image <a href="/wiki/Main_Page" title="Main Page">Main Page</a></div></div></div>
+<div class="thumb tleft"><div class="thumbinner" style="width:1943px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="This is a test image Main Page"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" class="thumbimage" /></a>  <div class="thumbcaption">This is a test image <a href="/wiki/Main_Page" title="Main Page">Main Page</a></div></div></div>
 
+!! end
+
+!! test
+Image with frame and link and explicit alt
+!! input
+[[Image:Foobar.jpg|frame|left|This is a test image [[Main Page]]|alt=Altitude]]
+!! result
+<div class="thumb tleft"><div class="thumbinner" style="width:1943px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="This is a test image Main Page"><img alt="Altitude" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" class="thumbimage" /></a>  <div class="thumbcaption">This is a test image <a href="/wiki/Main_Page" title="Main Page">Main Page</a></div></div></div>
+
+!! end
+
+!! test
+Image with wiki markup in implicit alt
+!! input
+[[Image:Foobar.jpg|testing '''bold''' in alt]]
+!! result
+<p><a href="/wiki/Image:Foobar.jpg" class="image" title="testing bold in alt"><img alt="testing bold in alt" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a>
+</p>
+!! end
+
+!! test
+Image with wiki markup in explicit alt
+!! input
+[[Image:Foobar.jpg|alt=testing '''bold''' in alt]]
+!! result
+<p><a href="/wiki/Image:Foobar.jpg" class="image" title="Foobar.jpg"><img alt="testing bold in alt" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a>
+</p>
 !! end
 
 !! test
@@ -3128,7 +3184,16 @@ Thumbnail image caption with a free URL
 !! input
 [[Image:foobar.jpg|thumb|http://example.com]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="http://example.com"><img alt="http://example.com" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><a href="http://example.com" class="external free" title="http://example.com" rel="nofollow">http://example.com</a></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="http://example.com"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><a href="http://example.com" class="external free" title="http://example.com" rel="nofollow">http://example.com</a></div></div></div>
+
+!! end
+
+!! test
+Thumbnail image caption with a free URL and explicit alt
+!! input
+[[Image:foobar.jpg|thumb|http://example.com|alt=Alteration]]
+!! result
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="http://example.com"><img alt="Alteration" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><a href="http://example.com" class="external free" title="http://example.com" rel="nofollow">http://example.com</a></div></div></div>
 
 !! end
 
@@ -3137,7 +3202,7 @@ BUG 1887: A ISBN with a thumbnail
 !! input
 [[Image:foobar.jpg|thumb|ISBN 1235467890]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="ISBN 1235467890"><img alt="ISBN 1235467890" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><a href="/wiki/Special:BookSources/1235467890" class="internal">ISBN 1235467890</a></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="ISBN 1235467890"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><a href="/wiki/Special:BookSources/1235467890" class="internal">ISBN 1235467890</a></div></div></div>
 
 !! end
 
@@ -3146,7 +3211,7 @@ BUG 1887: A RFC with a thumbnail
 !! input
 [[Image:foobar.jpg|thumb|This is RFC 12354]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="This is RFC 12354"><img alt="This is RFC 12354" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>This is <a href="http://tools.ietf.org/html/rfc12354" class="external" title="http://tools.ietf.org/html/rfc12354">RFC 12354</a></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="This is RFC 12354"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>This is <a href="http://tools.ietf.org/html/rfc12354" class="external" title="http://tools.ietf.org/html/rfc12354">RFC 12354</a></div></div></div>
 
 !! end
 
@@ -3155,7 +3220,7 @@ BUG 1887: A mailto link with a thumbnail
 !! input
 [[Image:foobar.jpg|thumb|Please mailto:nobody@example.com]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="Please mailto:nobody@example.com"><img alt="Please mailto:nobody@example.com" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Please <a href="mailto:nobody@example.com" class="external free" title="mailto:nobody@example.com" rel="nofollow">mailto:nobody@example.com</a></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="Please mailto:nobody@example.com"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Please <a href="mailto:nobody@example.com" class="external free" title="mailto:nobody@example.com" rel="nofollow">mailto:nobody@example.com</a></div></div></div>
 
 !! end
 
@@ -3165,7 +3230,7 @@ so math is not stripped and turns up as escaped &lt;math&gt; tags.
 !! input
 [[Image:foobar.jpg|thumb|<math>2+2</math>]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="&lt;math&gt;2+2&lt;/math&gt;"><img alt="&lt;math&gt;2+2&lt;/math&gt;" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>&lt;math&gt;2+2&lt;/math&gt;</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="&lt;math&gt;2+2&lt;/math&gt;"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>&lt;math&gt;2+2&lt;/math&gt;</div></div></div>
 
 !! end
 
@@ -3176,7 +3241,7 @@ math
 !! input
 [[Image:foobar.jpg|thumb|<math>2+2</math>]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="2 + 2"><img alt="2 + 2" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><span class="texhtml">2 + 2</span></div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="2 + 2"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div><span class="texhtml">2 + 2</span></div></div></div>
 
 !! end
 
@@ -3249,7 +3314,7 @@ Image caption containing another image
 !! input
 [[Image:Foobar.jpg|thumb|This is a caption with another [[Image:icon.png|image]] inside it!]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="This is a caption with another Image:Icon.png inside it!"><img alt="This is a caption with another Image:Icon.png inside it!" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>This is a caption with another <a href="/index.php?title=Special:Upload&amp;wpDestFile=Icon.png" class="new" title="Image:Icon.png">Image:Icon.png</a> inside it!</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="This is a caption with another Image:Icon.png inside it!"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>This is a caption with another <a href="/index.php?title=Special:Upload&amp;wpDestFile=Icon.png" class="new" title="Image:Icon.png">Image:Icon.png</a> inside it!</div></div></div>
 
 !! end
 
@@ -3269,7 +3334,7 @@ Bug 3090: External links other than http: in image captions
 !! input
 [[Image:Foobar.jpg|thumb|200px|This caption has [irc://example.net irc] and [https://example.com Secure] ext links in it.]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="This caption has irc and Secure ext links in it."><img alt="This caption has irc and Secure ext links in it." src="http://example.com/images/thumb/3/3a/Foobar.jpg/200px-Foobar.jpg" width="200" height="23" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>This caption has <a href="irc://example.net" class="external text" title="irc://example.net" rel="nofollow">irc</a> and <a href="https://example.com" class="external text" title="https://example.com" rel="nofollow">Secure</a> ext links in it.</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="This caption has irc and Secure ext links in it."><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/200px-Foobar.jpg" width="200" height="23" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>This caption has <a href="irc://example.net" class="external text" title="irc://example.net" rel="nofollow">irc</a> and <a href="https://example.com" class="external text" title="https://example.com" rel="nofollow">Secure</a> ext links in it.</div></div></div>
 
 !! end
 
@@ -6189,7 +6254,7 @@ Centre-aligned image
 !! input
 [[Image:foobar.jpg|centre]]
 !! result
-<div class="center"><div class="floatnone"><span><a href="/wiki/Image:Foobar.jpg" class="image" title="Foobar.jpg"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a></span></div></div>
+<div class="center"><div class="floatnone"><a href="/wiki/Image:Foobar.jpg" class="image" title="Foobar.jpg"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a></div></div>
 
 !!end
 
@@ -6198,7 +6263,7 @@ None-aligned image
 !! input
 [[Image:foobar.jpg|none]]
 !! result
-<div class="floatnone"><span><a href="/wiki/Image:Foobar.jpg" class="image" title="Foobar.jpg"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a></span></div>
+<div class="floatnone"><a href="/wiki/Image:Foobar.jpg" class="image" title="Foobar.jpg"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" border="0" /></a></div>
 
 !!end
 
@@ -7086,7 +7151,129 @@ Free external link invading image caption
 !! input
 [[Image:Foobar.jpg|thumb|http://x|hello]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="hello"><img alt="hello" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>hello</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/Image:Foobar.jpg" class="image" title="hello"><img alt="" src="http://example.com/images/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" width="180" height="20" border="0" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/Image:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>hello</div></div></div>
+
+!! end
+
+!! test
+Bug 15196: localised external link numbers
+!! options
+language=fa
+!! input
+[http://en.wikipedia.org/]
+!! result
+<p><a href="http://en.wikipedia.org/" class="external autonumber" title="http://en.wikipedia.org/" rel="nofollow">[۱]</a>
+</p>
+!! end
+
+!!test
+<poem>
+!!input
+<poem>
+this
+is
+a
+test
+</poem>
+!!result
+<div class="poem">
+<p>this<br />
+is<br />
+a<br />
+test
+</p>
+</div>
+
+!!end
+
+!!test
+  <poem> with recursive parsing
+!!input
+<poem>
+this ''is'' a '''test'''
+</poem>
+!! result
+<div class="poem">
+<p>this <i>is</i> a <b>test</b>
+</p>
+</div>
+
+!!end
+
+
+!!test
+  <poem> with leading whitespace
+!!input
+<poem>
+
+   test
+
+</poem>
+!!result
+<div class="poem">
+<p><br />
+&nbsp;&nbsp;&nbsp;test<br />
+</p>
+</div>
+
+!!end
+
+!!test
+Horizontal rule
+!!input
+<poem>
+some
+-----
+text
+</poem>
+!!result
+<div class="poem">
+<p>some<br />
+</p>
+<hr /><br />
+<p>text
+</p>
+</div>
+
+!!end
+
+!!test
+  nested <poem><nowiki>
+!!input
+<poem><nowiki>
+this
+is
+a
+test
+</nowiki></poem>
+!!result
+<div class="poem">
+<p>this<br />
+is<br />
+a<br />
+test
+</p>
+</div>
+
+!!end
+
+!!test
+  nested <poem><nowiki> with formatting
+!!input
+<poem><nowiki>
+this
+'''is'''
+a
+test
+</nowiki></poem>
+!!result
+<div class="poem">
+<p>this<br />
+'''is'''<br />
+a<br />
+test
+</p>
+</div>
 
 !! end
 

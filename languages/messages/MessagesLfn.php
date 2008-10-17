@@ -118,7 +118,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lista de ajustas de la desinia]
 * [http://www.mediawiki.org/wiki/Manual:FAQ Demandas comun de MediaWiki]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista per receta anunsias de novas supra MediaWiki]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista per receta anunsias de novas supra MediaWiki]',
 
 'about'          => 'Supra',
 'article'        => 'Paje de contenis',
@@ -379,26 +379,26 @@ Tu debe pensa ce es bon continua edita esta paje.
 La arcivo de sutraes per esta paje es asi per conveni:",
 
 # History pages
-'viewpagelogs'        => 'Vide la arcivo de esta paje',
-'currentrev'          => 'Cambia presente',
-'revisionasof'        => 'Revisa de $1',
-'revision-info'       => 'Revisa de $1 par $2',
-'previousrevision'    => '← Altera presedente',
-'nextrevision'        => 'Revisa plu nova→',
-'currentrevisionlink' => 'Revisa presente',
-'cur'                 => 'aora',
-'next'                => 'seguente',
-'last'                => 'dife',
-'page_first'          => 'prima',
-'page_last'           => 'final',
-'histlegend'          => 'Diferente eleje: Marca la caxas de radio de esta varias per compare e clica entra o la boton a la funda.<br />
+'viewpagelogs'           => 'Vide la arcivo de esta paje',
+'currentrev'             => 'Cambia presente',
+'revisionasof'           => 'Revisa de $1',
+'revision-info'          => 'Revisa de $1 par $2',
+'previousrevision'       => '← Altera presedente',
+'nextrevision'           => 'Revisa plu nova→',
+'currentrevisionlink'    => 'Revisa presente',
+'cur'                    => 'aora',
+'next'                   => 'seguente',
+'last'                   => 'dife',
+'page_first'             => 'prima',
+'page_last'              => 'final',
+'histlegend'             => 'Diferente eleje: Marca la caxas de radio de esta varias per compare e clica entra o la boton a la funda.<br />
 (presente) = difere de la varia presente,
 (presedente) = difere con varia presedente, M = edita minor.',
-'history-search'      => 'Xerca en istoria',
-'histfirst'           => 'Prima',
-'histlast'            => 'Ultima',
-'historysize'         => '({{PLURAL:$1|1 otuple|$1 otuples}})',
-'historyempty'        => '(vacua)',
+'history-fieldset-title' => 'Xerca en istoria',
+'histfirst'              => 'Prima',
+'histlast'               => 'Ultima',
+'historysize'            => '({{PLURAL:$1|1 otuple|$1 otuples}})',
+'historyempty'           => '(vacua)',
 
 # Revision feed
 'history-feed-title'          => 'Istoria de revises',
@@ -463,7 +463,6 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'recentchangestext'              => 'Asi la lista de cambias resente en la vici.',
 'recentchanges-feed-description' => 'Seque la cambias plu resente a la vici en esta flue.',
 'rcnote'                         => 'Su es {{PLURAL:$1|cambia|cambias}} en la presedente {{PLURAL:$2|dia|dias}}, en $5, $4.',
-'rcnotefrom'                     => "A su es la cambias de '''$2''' (asta '''$1''' es mostrada).",
 'rclistfrom'                     => 'Mostra cambias nova, comensante de $1',
 'rcshowhideminor'                => '$1 editas minor',
 'rcshowhidebots'                 => '$1 botes',

@@ -8,6 +8,7 @@
  * @author Artomo
  * @author Lakaoso
  * @author Malafaya
+ * @author Remember the dot
  * @author לערי ריינהארט
  */
 
@@ -226,7 +227,7 @@ $messages = array(
 'nstab-user'      => 'Uzanto-pagino',
 'nstab-special'   => 'Specala',
 'nstab-project'   => 'Projeto pagino',
-'nstab-image'     => 'Imajo',
+'nstab-image'     => 'Arkivo',
 'nstab-mediawiki' => 'Mesajo',
 'nstab-template'  => 'Modelo',
 'nstab-help'      => 'Helpo',
@@ -528,7 +529,6 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'recentchanges'     => 'Recenta chanji',
 'recentchangestext' => 'Regardez la maxim recenta chanji en Wiki per ica pagino.',
 'rcnote'            => "Infre esas la lasta {{PLURAL:$1|'''1''' chanjo|'''$1''' chanji}} dum la lasta {{PLURAL:$2|dio|'''$2''' dii}} ($3).",
-'rcnotefrom'        => "Infre esas la lasta chanji depos '''$2''' (montrita til '''$1''').",
 'rclistfrom'        => 'Montrar nova chanji startante de $1',
 'rcshowhideminor'   => '$1 mikra redakti',
 'rcshowhidebots'    => '$1 roboti',
@@ -886,6 +886,8 @@ Ico signifikas ke vu povos rinomizar pagino a olua originala titulo se eroras sk
 Ica povas esar drastika chanjo e ne-esperinda por populara pagino;
 voluntez certigar ke vu komprenas la konsequi qui eventos ante durar adavane.",
 'movearticle'             => 'Movar pagino',
+'movenologin'             => 'Sesiono ne iniciata',
+'movenologintext'         => 'Vu mustas esar registragita uzanto ed [[Special:UserLogin|enirir]] por rinomizar pagino.',
 'newtitle'                => 'a nova titulo',
 'movepagebtn'             => 'Movar pagino',
 'pagemovedsub'            => 'Rinomizita sucese',
@@ -1086,5 +1088,8 @@ Voluntez selektar altra nomo.',
 
 # Special:BlankPage
 'blankpage' => 'Pagino sen-skribura',
+
+# Special:Nuke
+'nuke-submit-user' => 'Irar',
 
 );

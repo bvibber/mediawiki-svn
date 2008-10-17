@@ -1219,24 +1219,6 @@ $movePage: MovePageForm object
 $oldTitle: old title (object)
 $newTitle: new title (object)
 
-'SpecialPageExecuteAfterPage': called after executing a special page
-Warning: Not all the special pages call this hook
-$specialPage: SpecialPage object
-$par: paramter passed to the special page (string)
-$funct: function called to execute the special page
-
-'SpecialPageExecuteBeforeHeader': called before setting the header text of the special page
-Warning: Not all the special pages call this hook
-$specialPage: SpecialPage object
-$par: paramter passed to the special page (string)
-$funct: function called to execute the special page
-
-'SpecialPageExecuteBeforePage': called after setting the special page header text but before the main execution
-Warning: Not all the special pages call this hook
-$specialPage: SpecialPage object
-$par: paramter passed to the special page (string)
-$funct: function called to execute the special page
-
 'SpecialPage_initList': called when setting up SpecialPage::$mList, use this hook to remove a core special page
 $list: list (array) of core special pages
 
@@ -1372,9 +1354,12 @@ $user: User to get rights for
 $user: user object
 $name: user name
 
-'UserLoadFromSession': called to authenticate users on external/environmental means
+'UserLoadFromSession': called to authenticate users on external/environmental means; occurs before session is loaded
 $user: user object being loaded
 &$result: set this to a boolean value to abort the normal authentification process
+
+'UserLoadAfterLoadFromSession': called to authenticate users on external/environmental means; occurs after session is loaded
+$user: user object being loaded
 
 'UserLoginComplete': after a user has logged in
 $user: the user object that was created on login

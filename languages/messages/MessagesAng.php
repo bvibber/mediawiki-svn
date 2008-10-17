@@ -92,7 +92,7 @@ $messages = array(
 == Onginnende ==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]',
 
 'about'          => 'Ymbe',
 'article'        => 'Innungtramet',
@@ -338,7 +338,6 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'nchanges'        => '$1 hwierfunga',
 'recentchanges'   => 'Nīwlica hweorfunga',
 'rcnote'          => 'Under sind þā æftemestan <strong>$1</strong> hweorfunga in þǣm æftemestum <strong>$2</strong> dagum.',
-'rcnotefrom'      => 'Under sind þā hweorfunga siþþan <b>$2</b> (oþ <b>$1</b> geīewed).',
 'rclistfrom'      => 'Īewan nīwa hweorfunga, onginnenda of $1',
 'rcshowhideminor' => '$1 lȳtla ādihtunga',
 'rcshowhideliu'   => '$1 inmeldode brūcend',

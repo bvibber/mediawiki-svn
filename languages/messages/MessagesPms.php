@@ -157,7 +157,7 @@ dj'artìcol ancó pa scrit",
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'about'          => 'A propòsit ëd',
 'article'        => 'Pàgina ëd contnù',
@@ -874,7 +874,6 @@ për podej specifiché ij sò gust.',
 'recentchangestext'                 => "Costa a l'é la pàgina che a ten ël registr dij cambiament a la wiki pì davsin ant ël temp.",
 'recentchanges-feed-description'    => 'Tracé le modìfiche dla wiki pì davsin ant ël temp ant sta score-sì.',
 'rcnote'                            => "Ambelessì sota a-i {{PLURAL:$1|é l'ùltima pàgina|son j'ùltime '''$1''' pàgine}} modificà ant {{PLURAL:$2|l'ùltim|j'ùltim '''$2'''}} dì, a fé data dël $3.",
-'rcnotefrom'                        => ' Ambelessì sota a-i é la lista dle modìfiche da <b>$2</b> (fin-a a <b>$1</b>).',
 'rclistfrom'                        => 'Most-me le modìfiche a parte da $1',
 'rcshowhideminor'                   => '$1 le modìfiche cite',
 'rcshowhidebots'                    => '$1 ij trigomiro',
@@ -1656,6 +1655,9 @@ Se a l'ha dij dùbit, che a contata pura n'aministrator për ciameje 'd consej."
 *a l'ha deselessionà ël quadrèt ëd conferma ambelessì sota.
 Ant costi cas-sì, se a chërd dë felo, a-j farà da manca dë tramudesse la pàgina ëd discussion daspërchiel, a man.",
 'movearticle'             => "Cang-je nòm a l'artìcol",
+'movenologin'             => "Che a varda che chiel (chila) a l'è pa rintrà ant ël sistema",
+'movenologintext'         => "A venta esse n'Utent registrà e esse [[Special:UserLogin|rintrà ant ël sistema]]
+për podej tramudé na pàgina.",
 'movenotallowed'          => "A l'ha pa ij përmess dont a fa da manca për tramudé pàgine.",
 'newtitle'                => 'Neuv tìtol ëd',
 'move-watch'              => 'Ten sot euj sta pàgina-sì',
@@ -1680,7 +1682,6 @@ L\'artìcol ëd destinassion "[[:$1]]" a-i é già. Veul-lo scancelelo për avej
 'delete_and_move_confirm' => 'É, scancela la pàgina',
 'delete_and_move_reason'  => "Scancelà për liberé ël pòst për tramudene n'àutra",
 'selfmove'                => "Tìtol neuv e tìtol vej a resto midem antra lor; as peul pa tramudesse na pàgina butand-la andoa che a l'é già.",
-'immobile_namespace'      => "Belavans ël tìtol ëd destinassion a l'é ëd na sòrt riservà; as peulo pa tramudé dle pàgine anvers a col ëspassi nominal-lì.",
 
 # Export
 'export'            => 'Esporté dle pàgine',
@@ -2407,5 +2408,12 @@ Ch'a bata 'l nòm dl'archivi sensa pa bute-ie 'l prefiss \"{{ns:image}}:\".",
 
 # Special:SpecialPages
 'specialpages' => 'Pàgine Speciaj',
+
+# Special:Nuke
+'nuke'               => "Scancelament d'amblé",
+'nuke-nopages'       => "Gnun-a pàgine faite da [[Special:Contributions/$1|$1]] ant j'ùltim cambiament.",
+'nuke-list'          => "Ste pàgine-sì a son staite faite ant j'ùltim temp da [[Special:Contributions/$1|$1]]; ch'a lassa un coment e ch'a-i daga 'n colp ansima al boton për gaveje via tute d'amblé.",
+'nuke-defaultreason' => "Scancelament d'amblé dle pàgine faite da $1",
+'nuke-tools'         => "St'utiss-sì a lassa scancelé d'amblé le pàgine gionta ant j'ùltim temp da un chèich utent ò da 'nt na chèich adrëssa IP. Ch'a buta lë stranòm ò l'adrëssa IP për tiré giù na lista dle pàgine da scancelé:",
 
 );

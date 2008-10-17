@@ -269,10 +269,18 @@ class WatchlistEditor {
 	private function watchTitles( $titles, $user ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$rows = array();
+		$articles = array();
 		foreach( $titles as $title ) {
 			if( !$title instanceof Title )
 				$title = Title::newFromText( $title );
 			if( $title instanceof Title ) {
+				$article = new Article( $title );
+				if ( !wfRunHooks('WatchArticle',array( &$user, &$article ) ) ){
+					continue;
+				}
+				// queue the ids rather than the objects, since the hook could potentially
+				// load the entire object and  make  memory trouble 
+				$articleIds[] = $article->getID();
 				$rows[] = array(
 					'wl_user' => $user->getId(),
 					'wl_namespace' => ( $title->getNamespace() & ~1 ),
@@ -288,6 +296,10 @@ class WatchlistEditor {
 			}
 		}
 		$dbw->insert( 'watchlist', $rows, __METHOD__, 'IGNORE' );
+		foreach( $articleIds as $articleId ){
+			$article = Article::newFromID($articleId);
+			wfRunHooks('WatchArticleComplete',array(&$user,&$article));
+		}
 	}
 
 	/**
@@ -305,6 +317,10 @@ class WatchlistEditor {
 			if( !$title instanceof Title )
 				$title = Title::newFromText( $title );
 			if( $title instanceof Title ) {
+				$article = new Article($title);
+				if(!wfRunHooks('UnwatchArticle',array(&$user,&$article))){
+					continue;
+				}
 				$dbw->delete(
 					'watchlist',
 					array(
@@ -323,6 +339,7 @@ class WatchlistEditor {
 					),
 					__METHOD__
 				);
+				wfRunHooks('UnwatchArticleComplete',array(&$user,&$article));
 			}
 		}
 	}
@@ -340,16 +357,16 @@ class WatchlistEditor {
 			$form  = Xml::openElement( 'form', array( 'method' => 'post',
 				'action' => $self->getLocalUrl( 'action=edit' ) ) );
 			$form .= Xml::hidden( 'token', $wgUser->editToken( 'watchlistedit' ) );
-			$form .= '<fieldset><legend>' . wfMsgHtml( 'watchlistedit-normal-legend' ) . '</legend>';
+			$form .= "<fieldset>\n<legend>" . wfMsgHtml( 'watchlistedit-normal-legend' ) . "</legend>";
 			$form .= wfMsgExt( 'watchlistedit-normal-explain', 'parse' );
 			foreach( $this->getWatchlistInfo( $user ) as $namespace => $pages ) {
-				$form .= '<h2>' . $this->getNamespaceHeading( $namespace ) . '</h2>';
-				$form .= '<ul>';
+				$form .= "<h2>" . $this->getNamespaceHeading( $namespace ) . "</h2>\n";
+				$form .= "<ul>\n";
 				foreach( $pages as $dbkey => $redirect ) {
 					$title = Title::makeTitleSafe( $namespace, $dbkey );
 					$form .= $this->buildRemoveLine( $title, $redirect, $wgUser->getSkin() );
 				}
-				$form .= '</ul>';
+				$form .= "</ul>\n";
 			}
 			$form .= '<p>' . Xml::submitButton( wfMsg( 'watchlistedit-normal-submit' ) ) . '</p>';
 			$form .= '</fieldset></form>';
@@ -389,9 +406,9 @@ class WatchlistEditor {
 		if( $title->getNamespace() == NS_USER && !$title->isSubpage() ) {
 			$tools[] = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $title->getText() ), wfMsgHtml( 'contributions' ) );
 		}
-		return '<li>'
+		return "<li>"
 			. Xml::check( 'titles[]', false, array( 'value' => $title->getPrefixedText() ) )
-			. $link . ' (' . implode( ' | ', $tools ) . ')' . '</li>';
+			. $link . " (" . implode( ' | ', $tools ) . ")" . "</li>\n";
 		}
 
 	/**

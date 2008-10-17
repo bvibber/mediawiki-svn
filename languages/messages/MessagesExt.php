@@ -129,7 +129,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'about'          => 'Al tentu',
 'article'        => 'Artículu',
@@ -893,7 +893,6 @@ Asigurati e qu'esti chambu mantenga la continuiá el estorial la páhina.",
 'recentchangestext'                 => 'Sigui los úrtimus chambus d´esti güiqui nesta páhina.',
 'recentchanges-feed-description'    => 'Sigui los úrtimus chambus nel güiqui nesti feed.',
 'rcnote'                            => "Embahu se {{PLURAL:$1|muestra '''1''' chambu|muestran los úrtimus '''$1''' chambus}} {{PLURAL:$2|dendi ayel|enus úrtimus '''$2''' dias}}, atualizaus a las $3.",
-'rcnotefrom'                        => "Embahu se muestran los chambus hechus dendi el '''$2''' (hata el '''$1''').",
 'rclistfrom'                        => 'Muestral los chambus hechus dendi el $1',
 'rcshowhideminor'                   => '$1 eicionis chiqueninas',
 'rcshowhidebots'                    => '$1 bots',
@@ -1625,6 +1624,8 @@ pol favol, asigurati e qu'entiendis las consecuéncias enantis d'acontinal.",
 
 En dambus los dos chascus, si lo deseas, tendrás que movel u mestural la páhina manualmenti.",
 'movearticle'             => 'Movel páhina:',
+'movenologin'             => "Nu t'alcuentras rustriu",
+'movenologintext'         => 'Ebis estal rustriu i [[Special:UserLogin|entral ena tu cuenta]] pa movel una páhina.',
 'movenotallowed'          => 'Nu tiinis premisu pa mual páhinas nesti güiqui.',
 'newtitle'                => 'Nuevu entítulu:',
 'move-watch'              => 'Vehilal esta páhina',
@@ -1649,7 +1650,6 @@ Ya desisti la páhina "[[:$1]]". Te petaria esborrala pa premitil el treslau?',
 'delete_and_move_confirm' => 'Sí, esborral la páhina',
 'delete_and_move_reason'  => 'Esborrá pa premitil el treslau',
 'selfmove'                => "Los entítulus d'orihin i destinu son los mesmus. Nu es posibri movel una páhina sobri sí mesma..",
-'immobile_namespace'      => 'El entítulu e destinu es dun tipu especial. Nu es posibri movel páhinas a esi espaciu e nombris.',
 
 # Export
 'export'            => 'Esporteal páhinas',

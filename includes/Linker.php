@@ -699,6 +699,9 @@ class Linker {
 	 *                          bottom, text-bottom)
 	 *          alt             Alternate text for image (i.e. alt attribute). Plain text.
 	 *          caption         HTML for image caption.
+	 *          link-url        URL to link to
+	 *          link-title      Title object to link to
+	 *          no-link         Boolean, suppress description link
 	 *
 	 * @param array $handlerParams Associative array of media handler parameters, to be passed
 	 *       to transform(). Typical keys are "width" and "page".
@@ -727,11 +730,12 @@ class Linker {
 		$page = isset( $hp['page'] ) ? $hp['page'] : false;
 		if ( !isset( $fp['align'] ) ) $fp['align'] = '';
 		if ( !isset( $fp['alt'] ) ) $fp['alt'] = '';
+		# Backward compatibility, title used to always be equal to alt text
+		if ( !isset( $fp['title'] ) ) $fp['title'] = $fp['alt'];
 
 		$prefix = $postfix = '';
 
-		if ( 'center' == $fp['align'] )
-		{
+		if ( 'center' == $fp['align'] ) {
 			$prefix  = '<div class="center">';
 			$postfix = '</div>';
 			$fp['align']   = 'none';
@@ -762,7 +766,6 @@ class Linker {
 		}
 
 		if ( isset( $fp['thumbnail'] ) || isset( $fp['manualthumb'] ) || isset( $fp['framed'] ) ) {
-
 			# Create a thumbnail. Alignment depends on language
 			# writing direction, # right aligned for left-to-right-
 			# languages ("Western languages"), left-aligned
@@ -795,15 +798,26 @@ class Linker {
 		if ( !$thumb ) {
 			$s = $this->makeBrokenImageLinkObj( $title, '', '', '', '', $time==true );
 		} else {
-			$s = $thumb->toHtml( array(
-				'desc-link' => true,
-				'desc-query' => $query,
+			$params = array(
 				'alt' => $fp['alt'],
+				'title' => $fp['title'],
 				'valign' => isset( $fp['valign'] ) ? $fp['valign'] : false ,
-				'img-class' => isset( $fp['border'] ) ? 'thumbborder' : false ) );
+				'img-class' => isset( $fp['border'] ) ? 'thumbborder' : false );
+			if ( !empty( $fp['link-url'] ) ) {
+				$params['custom-url-link'] = $fp['link-url'];
+			} elseif ( !empty( $fp['link-title'] ) ) {
+				$params['custom-title-link'] = $fp['link-title'];
+			} elseif ( !empty( $fp['no-link'] ) ) {
+				// No link
+			} else {
+				$params['desc-link'] = true;
+				$params['desc-query'] = $query;
+			}
+
+			$s = $thumb->toHtml( $params );
 		}
 		if ( '' != $fp['align'] ) {
-			$s = "<div class=\"float{$fp['align']}\"><span>{$s}</span></div>";
+			$s = "<div class=\"float{$fp['align']}\">{$s}</div>";
 		}
 		return str_replace("\n", ' ',$prefix.$s.$postfix);
 	}
@@ -835,6 +849,8 @@ class Linker {
 		$page = isset( $hp['page'] ) ? $hp['page'] : false;
 		if ( !isset( $fp['align'] ) ) $fp['align'] = 'right';
 		if ( !isset( $fp['alt'] ) ) $fp['alt'] = '';
+		# Backward compatibility, title used to always be equal to alt text
+		if ( !isset( $fp['title'] ) ) $fp['title'] = $fp['alt'];
 		if ( !isset( $fp['caption'] ) ) $fp['caption'] = '';
 
 		if ( empty( $hp['width'] ) ) {
@@ -894,6 +910,7 @@ class Linker {
 		} else {
 			$s .= $thumb->toHtml( array(
 				'alt' => $fp['alt'],
+				'title' => $fp['title'],
 				'img-class' => 'thumbimage',
 				'desc-link' => true,
 				'desc-query' => $query ) );
@@ -1626,7 +1643,12 @@ class Linker {
 				} else {
 					$protected = '';
 				}
-				$outText .= '<li>' . $sk->link( $titleObj ) . ' ' . $protected . '</li>';
+				if( $titleObj->quickUserCan( 'edit' ) ) {
+					$editLink = $sk->makeLinkObj( $titleObj, wfMsg('editlink'), 'action=edit' );
+				} else {
+					$editLink = $sk->makeLinkObj( $titleObj, wfMsg('viewsourcelink'), 'action=edit' );
+				}
+				$outText .= '<li>' . $sk->link( $titleObj ) . ' (' . $editLink . ') ' . $protected . '</li>';
 			}
 			$outText .= '</ul>';
 		}

@@ -160,7 +160,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings কনফিগারেশন সেটিংর তালিকাহান]
 * [http://www.mediawiki.org/wiki/Manual:FAQ মিডিয়া উইকি আঙলাক]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce মিডিয়া উইকির ফঙপার বারে মেইলর তালিকাহান]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce মিডিয়া উইকির ফঙপার বারে মেইলর তালিকাহান]',
 
 'about'          => 'বারে',
 'article'        => 'মেথেলর পাতা',
@@ -496,7 +496,6 @@ $messages = array(
 'recentchanges'                  => 'হাদিএহান পতাসিতা',
 'recentchanges-feed-description' => 'ফিড এহানর মা পাতা এহার পতানিহানর গজে মিল্লেং দে।',
 'rcnote'                         => 'গেলগা <strong>$2</strong> দিনে পতাসি <strong>$1</strong> হান পরিবর্তন তলে দেখাদেনা ইলতা $5, $4 পেয়া।',
-'rcnotefrom'                     => "তলে গেলগা '''$2''' ত্ত পতাসিতা দেনা অইল ('''$1''' পেয়া)।",
 'rclistfrom'                     => 'নুৱাতা পতাসিতা $1 পাতাহানাত্ত চিঙকরিয়া',
 'rcshowhideminor'                => '$1 হুরু পতানিহান',
 'rcshowhidebots'                 => '$1 বটগি',

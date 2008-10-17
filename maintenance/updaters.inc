@@ -1459,12 +1459,13 @@ function do_postgres_updates() {
 		array("archive",       "ar_page_id",           "INTEGER"),
 		array("archive",       "ar_parent_id",         "INTEGER"),
 		array("image",         "img_sha1",             "TEXT NOT NULL DEFAULT ''"),
-		array("ipblocks",      "ipb_anon_only",        "SMALLINT NOT NULL DEFAULT '0'"),
+		array("ipblocks",      "ipb_anon_only",        "SMALLINT NOT NULL DEFAULT 0"),
 		array("ipblocks",      "ipb_by_text",          "TEXT NOT NULL DEFAULT ''"),
-		array("ipblocks",      "ipb_block_email",      "SMALLINT NOT NULL DEFAULT '0'"),
-		array("ipblocks",      "ipb_create_account",   "SMALLINT NOT NULL DEFAULT '1'"),
+		array("ipblocks",      "ipb_block_email",      "SMALLINT NOT NULL DEFAULT 0"),
+		array("ipblocks",      "ipb_create_account",   "SMALLINT NOT NULL DEFAULT 1"),
 		array("ipblocks",      "ipb_deleted",          "SMALLINT NOT NULL DEFAULT 0"),
-		array("ipblocks",      "ipb_enable_autoblock", "SMALLINT NOT NULL DEFAULT '1'"),
+		array("ipblocks",      "ipb_enable_autoblock", "SMALLINT NOT NULL DEFAULT 1"),
+		array("ipblocks",      "ipb_allow_usertalk",   "SMALLINT NOT NULL DEFAULT 0"),
 		array("filearchive",   "fa_deleted",           "SMALLINT NOT NULL DEFAULT 0"),
 		array("logging",       "log_deleted",          "SMALLINT NOT NULL DEFAULT 0"),
 		array("logging",       "log_id",               "INTEGER NOT NULL PRIMARY KEY DEFAULT nextval('log_log_id_seq')"),
@@ -1524,6 +1525,7 @@ function do_postgres_updates() {
 		array("mwuser",       "user_email_token","text",     ""),
 		array("objectcache",  "keyname",         "text",     ""),
 		array("oldimage",     "oi_height",       "integer",  ""),
+		array("oldimage",     "oi_metadata",     "bytea",    "decode(img_metadata,'escape')"),
 		array("oldimage",     "oi_size",         "integer",  ""),
 		array("oldimage",     "oi_width",        "integer",  ""),
 		array("page",         "page_is_redirect","smallint", "page_is_redirect::smallint DEFAULT 0"),
@@ -1548,6 +1550,7 @@ function do_postgres_updates() {
 		array("oldimage",      "oi_sha1",            "(oi_sha1)"),
 		array("revision",      "rev_text_id_idx",    "(rev_text_id)"),
 		array("recentchanges", "rc_timestamp_nobot", "(rc_timestamp) WHERE rc_bot = 0"),
+		array("templatelinks", "templatelinks_from", "(tl_from)"),
 		array("watchlist",     "wl_user",            "(wl_user)"),
 	);
 
@@ -1704,9 +1707,14 @@ function do_postgres_updates() {
 	}
 
 	# Fix ipb_address index
+	if (pg_index_exists('ipblocks', 'ipb_address' )) {
+		echo "Removing deprecated index 'ipb_address'...\n";
+		$wgDatabase->query('DROP INDEX ipb_address');
+	}
 	if (pg_index_exists('ipblocks', 'ipb_address_unique' )) {
 		echo "... have ipb_address_unique\n";
-	} else {
+	}
+	else {
 		echo "Adding ipb_address_unique index\n";
 		dbsource(archive('patch-ipb_address_unique.sql'));
 	}
@@ -1745,7 +1753,7 @@ function do_postgres_updates() {
 	# This is create or replace, so harmless to call if not needed
 	dbsource(archive('patch-ts2pagetitle.sql'));
 
-	## If the server is 8.3 or higher, rewrite teh tsearch2 triggers
+	## If the server is 8.3 or higher, rewrite the tsearch2 triggers
 	## in case they have the old 'default' versions
 	if ( $numver >= 8.3 )
 		dbsource(archive('patch-tsearch2funcs.sql'));

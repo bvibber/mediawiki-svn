@@ -208,18 +208,35 @@ class RecentChange
 	/**
 	 * Send some text to UDP
 	 * @param string $line
+	 * @param string $prefix
+	 * @param string $address
+	 * @return bool success
 	 */
-	static function sendToUDP( $line ) {
-		global $wgRC2UDPAddress, $wgRC2UDPPort, $wgRC2UDPPrefix;
+	public static function sendToUDP( $line, $address = '', $prefix = '' ) {
+		global $wgRC2UDPAddress, $wgRC2UDPPrefix, $wgRC2UDPPort;
+		# Assume default for standard RC case
+		$address = $address ? $address : $wgRC2UDPAddress;
+		$prefix = $prefix ? $prefix : $wgRC2UDPPrefix;
 		# Notify external application via UDP
-		if( $wgRC2UDPAddress ) {
+		if( $address ) {
 			$conn = socket_create( AF_INET, SOCK_DGRAM, SOL_UDP );
 			if( $conn ) {
-				$line = $wgRC2UDPPrefix . $line;
-				socket_sendto( $conn, $line, strlen($line), 0, $wgRC2UDPAddress, $wgRC2UDPPort );
+				$line = $prefix . $line;
+				socket_sendto( $conn, $line, strlen($line), 0, $address, $wgRC2UDPPort );
 				socket_close( $conn );
+				return true;
 			}
 		}
+		return false;
+	}
+	
+	/**
+	 * Remove newlines and carriage returns
+	 * @param string $line
+	 * @return string
+	 */
+	public static function cleanupForIRC( $text ) {
+		return str_replace(array("\n", "\r"), array("", ""), $text);
 	}
 
 	/**
@@ -587,10 +604,6 @@ class RecentChange
 		return $trail;
 	}
 
-	function cleanupForIRC( $text ) {
-		return str_replace(array("\n", "\r"), array("", ""), $text);
-	}
-
 	function getIRCLine() {
 		global $wgUseRCPatrol;
 
@@ -605,7 +618,7 @@ class RecentChange
 			$titleObj =& $this->getTitle();
 		}
 		$title = $titleObj->getPrefixedText();
-		$title = $this->cleanupForIRC( $title );
+		$title = self::cleanupForIRC( $title );
 
 		// FIXME: *HACK* these should be getFullURL(), hacked for SSL madness --brion 2005-12-26
 		if ( $rc_type == RC_LOG ) {
@@ -632,14 +645,14 @@ class RecentChange
 			$szdiff = '';
 		}
 
-		$user = $this->cleanupForIRC( $rc_user_text );
+		$user = self::cleanupForIRC( $rc_user_text );
 
 		if ( $rc_type == RC_LOG ) {
-			$logTargetText = $this->getTitle()->getPrefixedText();
-			$comment = $this->cleanupForIRC( str_replace($logTargetText,"\00302$logTargetText\00310",$actionComment) );
+			$targetText = $this->getTitle()->getPrefixedText();
+			$comment = self::cleanupForIRC( str_replace("[[$targetText]]","[[\00302$targetText\00310]]",$actionComment) );
 			$flag = $rc_log_action;
 		} else {
-			$comment = $this->cleanupForIRC( $rc_comment );
+			$comment = self::cleanupForIRC( $rc_comment );
 			$flag = ($rc_new ? "N" : "") . ($rc_minor ? "M" : "") . ($rc_bot ? "B" : "");
 		}
 		# see http://www.irssi.org/documentation/formats for some colour codes. prefix is \003,
@@ -671,14 +684,20 @@ class RecentChange
 		$formatedSize = wfMsgExt( 'rc-change-size', array( 'parsemag', 'escape'),
 			$wgLang->formatNum($szdiff) );
 
-		if( $szdiff < $wgRCChangedSizeThreshold ) {
-			return '<strong class=\'mw-plusminus-neg\'>(' . $formatedSize . ')</strong>';
-		} elseif( $szdiff === 0 ) {
-			return '<span class=\'mw-plusminus-null\'>(' . $formatedSize . ')</span>';
+		
+		if( abs( $szdiff ) > abs( $wgRCChangedSizeThreshold ) ) {
+			$tag = 'strong';
+		} 
+		else{
+		    $tag = 'span';
+		}
+
+		if( $szdiff === 0 ) {
+			return "<$tag class='mw-plusminus-null'>($formatedSize)</$tag>";
 		} elseif( $szdiff > 0 ) {
-			return '<span class=\'mw-plusminus-pos\'>(+' . $formatedSize . ')</span>';
-		} else {
-			return '<span class=\'mw-plusminus-neg\'>(' . $formatedSize . ')</span>';
+			return "<$tag class='mw-plusminus-pos'>(+$formatedSize)</$tag>";
+	    } else {
+			return "<$tag class='mw-plusminus-neg'>($formatedSize)</$tag>";
 		}
 	}
 }

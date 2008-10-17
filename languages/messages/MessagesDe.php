@@ -17,6 +17,7 @@
  * @author Revolus
  * @author Spacebirdy
  * @author Tim Bartel (avatar) <wikipedistik@computerkultur.org> small changes
+ * @author UV
  * @author W (aka Wuzur)
  * @author לערי ריינהארט
  */
@@ -322,7 +323,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Liste der Konfigurationsvariablen]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki-FAQ]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailingliste neuer MediaWiki-Versionen]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailingliste neuer MediaWiki-Versionen]',
 
 'about'          => 'Über',
 'article'        => 'Seite',
@@ -442,6 +443,8 @@ $messages = array(
 'editsection'             => 'Bearbeiten',
 'editold'                 => 'Bearbeiten',
 'viewsourceold'           => 'Quelltext zeigen',
+'editlink'                => 'bearbeiten',
+'viewsourcelink'          => 'Quelltext einsehen',
 'editsectionhint'         => 'Abschnitt bearbeiten: $1',
 'toc'                     => 'Inhaltsverzeichnis',
 'showtoc'                 => 'Anzeigen',
@@ -492,7 +495,7 @@ $1',
 'nodb'                 => 'Konnte Datenbank $1 nicht auswählen',
 'cachederror'          => 'Das Folgende ist eine Kopie aus dem Cache und möglicherweise nicht aktuell.',
 'laggedslavemode'      => 'Achtung: Die angezeigte Seite enthält unter Umständen nicht die jüngsten Bearbeitungen.',
-'readonly'             => 'Datenbank ist gesperrt',
+'readonly'             => 'Datenbanksperre',
 'enterlockreason'      => 'Bitte gib einen Grund ein, warum die Datenbank gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung',
 'readonlytext'         => 'Die Datenbank ist vorübergehend für Neueinträge und Änderungen gesperrt. Bitte versuche es später noch einmal.
 
@@ -599,7 +602,7 @@ Mit anderen Benutzer kannst du auch über die Benutzerdiskussionsseiten Kontakt 
 'loginsuccesstitle'          => 'Anmeldung erfolgreich',
 'loginsuccess'               => 'Du bist jetzt als „$1“ bei {{SITENAME}} angemeldet.',
 'nosuchuser'                 => 'Der Benutzername „$1“ existiert nicht.
-Überprüfe die Schreibweise oder [[Special:Userlogin/signup|melde dich als neuer Benutzer an]].',
+Überprüfe die Schreibweise oder [[Special:UserLogin/signup|melde dich als neuer Benutzer an]].',
 'nosuchusershort'            => 'Der Benutzername „<nowiki>$1</nowiki>“ existiert nicht. Bitte überprüfe die Schreibweise.',
 'nouserspecified'            => 'Bitte gib einen Benutzernamen an.',
 'wrongpassword'              => 'Das Passwort ist falsch (oder fehlt). Bitte versuche es erneut.',
@@ -816,7 +819,8 @@ Grund für die Sperre: $1',
 'nocreate-loggedin'                => 'Du hast keine Berechtigung, neue Seiten zu erstellen.',
 'permissionserrors'                => 'Berechtigungsfehler',
 'permissionserrorstext'            => 'Du bist nicht berechtigt, die Aktion auszuführen. {{PLURAL:$1|Grund|Gründe}}:',
-'permissionserrorstext-withaction' => 'Du bist nicht berechtigt, die Aktion „$2“ auszuführen, {{PLURAL:$1|Grund|Gründe}}:',
+'permissionserrorstext-withaction' => 'Du bist nicht berechtigt, $2.
+{{PLURAL:$1|Grund|Gründe}}:',
 'recreate-deleted-warn'            => "'''Achtung: Du erstellst eine Seite, die bereits früher gelöscht wurde.'''
 
 Bitte prüfe sorgfältig, ob die erneute Seitenerstellung den Richtlinien entspricht.
@@ -853,29 +857,29 @@ Es {{PLURAL:$2|darf nicht mehr als 1 Aufruf|dürfen nicht mehr als $1 Aufrufe}} 
 Grund der Sperre: ''$2''",
 
 # History pages
-'viewpagelogs'        => 'Logbücher für diese Seite anzeigen',
-'nohistory'           => 'Es gibt keine Versionsgeschichte für diese Seite.',
-'currentrev'          => 'Aktuelle Version',
-'currentrev-asof'     => 'Aktuelle Version vom $1',
-'revisionasof'        => 'Version vom $1',
-'revision-info'       => 'Dies ist eine alte Version. Zeitpunkt der Bearbeitung: $1 durch $2.',
-'previousrevision'    => '← Nächstältere Version',
-'nextrevision'        => 'Nächstjüngere Version →',
-'currentrevisionlink' => 'Aktuelle Version',
-'cur'                 => 'Aktuell',
-'next'                => 'Nächste',
-'last'                => 'Vorherige',
-'page_first'          => 'Anfang',
-'page_last'           => 'Ende',
-'histlegend'          => 'Zur Anzeige der Änderungen einfach die zu vergleichenden Versionen auswählen und die Schaltfläche „{{int:compareselectedversions}}“ klicken.<br />
+'viewpagelogs'           => 'Logbücher für diese Seite anzeigen',
+'nohistory'              => 'Es gibt keine Versionsgeschichte für diese Seite.',
+'currentrev'             => 'Aktuelle Version',
+'currentrev-asof'        => 'Aktuelle Version vom $1',
+'revisionasof'           => 'Version vom $1',
+'revision-info'          => 'Dies ist eine alte Version. Zeitpunkt der Bearbeitung: $1 durch $2.',
+'previousrevision'       => '← Nächstältere Version',
+'nextrevision'           => 'Nächstjüngere Version →',
+'currentrevisionlink'    => 'Aktuelle Version',
+'cur'                    => 'Aktuell',
+'next'                   => 'Nächste',
+'last'                   => 'Vorherige',
+'page_first'             => 'Anfang',
+'page_last'              => 'Ende',
+'histlegend'             => 'Zur Anzeige der Änderungen einfach die zu vergleichenden Versionen auswählen und die Schaltfläche „{{int:compareselectedversions}}“ klicken.<br />
 * (Aktuell) = Unterschied zur aktuellen Version, (Vorherige) = Unterschied zur vorherigen Version
 * Uhrzeit/Datum = Version zu dieser Zeit, Benutzername/IP-Adresse des Bearbeiters, K = Kleine Änderung',
-'history-search'      => 'Suche in der Versionsgeschichte',
-'deletedrev'          => '[gelöscht]',
-'histfirst'           => 'Älteste',
-'histlast'            => 'Neueste',
-'historysize'         => '({{PLURAL:$1|1 Byte|$1 Bytes}})',
-'historyempty'        => '(leer)',
+'history-fieldset-title' => 'Suche in der Versionsgeschichte',
+'deletedrev'             => '[gelöscht]',
+'histfirst'              => 'Älteste',
+'histlast'               => 'Neueste',
+'historysize'            => '({{PLURAL:$1|1 Byte|$1 Bytes}})',
+'historyempty'           => '(leer)',
 
 # Revision feed
 'history-feed-title'          => 'Versionsgeschichte',
@@ -1072,7 +1076,7 @@ Wenn du dich mit dem Thema auskennst, kannst du selbst [[:$1|die Seite verfassen
 'mypreferences'            => 'Einstellungen',
 'prefs-edits'              => 'Anzahl Bearbeitungen:',
 'prefsnologin'             => 'Nicht angemeldet',
-'prefsnologintext'         => 'Du musst <span class="plainlinks">[{{fullurl:Special:Userlogin|returnto=$1}} angemeldet]</span> sein, um deine Einstellungen ändern zu können.',
+'prefsnologintext'         => 'Du musst <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} angemeldet]</span> sein, um deine Einstellungen ändern zu können.',
 'prefsreset'               => 'Die Eingaben wurden verworfen, es erfolgte keine Speicherung.',
 'qbsettings'               => 'Seitenleiste',
 'qbsettings-none'          => 'Keine',
@@ -1089,7 +1093,7 @@ Wenn du dich mit dem Thema auskennst, kannst du selbst [[:$1|die Seite verfassen
 'datetime'                 => 'Datum und Zeit',
 'math_failure'             => 'Parser-Fehler',
 'math_unknown_error'       => 'Unbekannter Fehler',
-'math_unknown_function'    => 'Unbekannte Funktion&nbsp;',
+'math_unknown_function'    => 'Unbekannte Funktion ',
 'math_lexing_error'        => "'Lexing'-Fehler",
 'math_syntax_error'        => 'Syntaxfehler',
 'math_image_error'         => 'die PNG-Konvertierung schlug fehl',
@@ -1140,7 +1144,7 @@ Wenn du dich mit dem Thema auskennst, kannst du selbst [[:$1|die Seite verfassen
 'userrights-editusergroup'    => 'Benutzer-Gruppenzugehörigkeit bearbeiten',
 'saveusergroups'              => 'Gruppenzugehörigkeit ändern',
 'userrights-groupsmember'     => 'Mitglied von:',
-'userrights-groups-help'      => 'Du kannst du Gruppenzugehörigkeit für diesen Benutzer ändern:
+'userrights-groups-help'      => 'Du kannst die Gruppenzugehörigkeit für diesen Benutzer ändern:
 * Ein markiertes Kästchen bedeutet, dass der Benutzer Mitglied dieser Gruppe ist
 * Ein * bedeutet, dass du das Benutzerrecht nach Erteilung nicht wieder zurücknehmen kannst (oder umgekehrt).',
 'userrights-reason'           => 'Grund:',
@@ -1234,6 +1238,40 @@ Wenn du dich mit dem Thema auskennst, kannst du selbst [[:$1|die Seite verfassen
 'rightslogentry' => 'änderte die Benutzerrechte für „[[$1]]“ von „$2“ auf „$3“',
 'rightsnone'     => '(–)',
 
+# Associated actions - in the sentence "You do not have permission to X"
+'action-read'                 => 'die Seite zu lesen',
+'action-edit'                 => 'die Seite zu bearbeiten',
+'action-createpage'           => 'Seiten zu erstellen',
+'action-createtalk'           => 'Diskussionsseiten zu erstellen',
+'action-createaccount'        => 'ein Benutzerkonto zu erstellen',
+'action-minoredit'            => 'diese Bearbeitung als klein zu markieren',
+'action-move'                 => 'die Seite zu verschieben',
+'action-move-subpages'        => 'diese Seite und zugehörige Unterseiten zu verschieben',
+'action-upload'               => 'Dateien hochzuladen',
+'action-reupload'             => 'die vorhandene Datei zu überschreiben',
+'action-reupload-shared'      => 'diese Datei aus dem gemeinsam genutzten Repositorium zu überschreiben',
+'action-upload_by_url'        => 'Dateien von einer Webadresse (URL) hochzuladen',
+'action-writeapi'             => 'die API mit Schreibzugriffen zu verwenden',
+'action-delete'               => 'Seiten zu löschen',
+'action-deleterevision'       => 'Versionen zu löschen',
+'action-deletedhistory'       => 'Liste der gelöschten Versionen zu sehen',
+'action-browsearchive'        => 'nach gelöschten Seiten zu suchen',
+'action-undelete'             => 'die Seite wiederherzustellen',
+'action-suppressrevision'     => 'die versteckte Version einzusehen und wiederherzustellen',
+'action-suppressionlog'       => 'das private Logbuch einzusehen',
+'action-block'                => 'den Benutzer zu sperren',
+'action-protect'              => 'den Schutzstatus von Seiten zu ändern',
+'action-import'               => 'Seiten aus einem anderen Wiki zu importieren',
+'action-importupload'         => 'Seiten über das Hochladen einer Datei zu importieren',
+'action-patrol'               => 'die Bearbeitungen andere Benutzer zu kontrollieren',
+'action-autopatrol'           => 'eigene Bearbeitungen als kontrolliert zu markieren',
+'action-unwatchedpages'       => 'die Liste der unbeobachteten Seiten einzusehen',
+'action-trackback'            => 'einen Trackback zu übertragen',
+'action-mergehistory'         => 'die Versionengeschichten von Seiten zu vereinen',
+'action-userrights'           => 'Benutzerrechte zu ändern',
+'action-userrights-interwiki' => 'die Rechte von Benutzern in anderen Wikis zu ändern',
+'action-siteadmin'            => 'die Datenbank zu sperren oder freizugeben',
+
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|Änderung|Änderungen}}',
 'recentchanges'                     => 'Letzte Änderungen',
@@ -1241,7 +1279,6 @@ Wenn du dich mit dem Thema auskennst, kannst du selbst [[:$1|die Seite verfassen
 'recentchangestext'                 => "Auf dieser Seite kannst du die letzten Änderungen auf '''{{SITENAME}}''' nachverfolgen.",
 'recentchanges-feed-description'    => 'Verfolge mit diesem Feed die letzten Änderungen in {{SITENAME}}.',
 'rcnote'                            => "Angezeigt {{PLURAL:$1|wird '''1''' Änderung|werden die letzten '''$1''' Änderungen}} {{PLURAL:$2|des letzten Tages|der letzten '''$2''' Tage}}. Stand: $4, $5. (<b><tt>Neu</tt></b>&nbsp;– neuer Eintrag; <b><tt>K</tt></b>&nbsp;– kleine Änderung; <b><tt>B</tt></b>&nbsp;– Änderung durch einen Bot; ''(± Zahl)''&nbsp;– Größenänderung in Byte)",
-'rcnotefrom'                        => "Angezeigt werden die Änderungen seit '''$2''' (max. '''$1''' Einträge).",
 'rclistfrom'                        => 'Nur Änderungen seit $1 zeigen.',
 'rcshowhideminor'                   => 'Kleine Änderungen $1',
 'rcshowhidebots'                    => 'Bots $1',
@@ -1702,49 +1739,51 @@ Als Absender wird die E-Mail-Adresse aus deinen [[Special:Preferences|Einstellun
 'emailuserfooter' => 'Diese E-Mail wurde von {{SITENAME}}-Benutzer „$1“ an „$2“ gesendet.',
 
 # Watchlist
-'watchlist'            => 'Beobachtungsliste',
-'mywatchlist'          => 'Beobachtungsliste',
-'watchlistfor'         => "(für '''$1''')",
-'nowatchlist'          => 'Du hast keine Einträge auf deiner Beobachtungsliste.',
-'watchlistanontext'    => 'Du musst dich $1, um deine Beobachtungsliste zu sehen oder Einträge auf ihr zu bearbeiten.',
-'watchnologin'         => 'Du bist nicht angemeldet',
-'watchnologintext'     => 'Du musst [[Special:UserLogin|angemeldet]] sein, um deine Beobachtungsliste zu bearbeiten.',
-'addedwatch'           => 'Zur Beobachtungsliste hinzugefügt',
-'addedwatchtext'       => 'Die Seite „<nowiki>$1</nowiki>“ wurde zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzugefügt.
+'watchlist'                => 'Beobachtungsliste',
+'mywatchlist'              => 'Beobachtungsliste',
+'watchlistfor'             => "(für '''$1''')",
+'nowatchlist'              => 'Du hast keine Einträge auf deiner Beobachtungsliste.',
+'watchlistanontext'        => 'Du musst dich $1, um deine Beobachtungsliste zu sehen oder Einträge auf ihr zu bearbeiten.',
+'watchnologin'             => 'Du bist nicht angemeldet',
+'watchnologintext'         => 'Du musst [[Special:UserLogin|angemeldet]] sein, um deine Beobachtungsliste zu bearbeiten.',
+'addedwatch'               => 'Zur Beobachtungsliste hinzugefügt',
+'addedwatchtext'           => 'Die Seite „<nowiki>$1</nowiki>“ wurde zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzugefügt.
 
 Spätere Änderungen an dieser Seite und der dazugehörigen Diskussionsseite werden dort gelistet und
 in der Übersicht der [[Special:RecentChanges|letzten Änderungen]] in Fettschrift dargestellt.
 
 Wenn du die Seite wieder von deiner Beobachtungsliste entfernen möchtest, klicke auf der jeweiligen Seite auf „nicht mehr beobachten“.',
-'removedwatch'         => 'Von der Beobachtungsliste entfernt',
-'removedwatchtext'     => 'Die Seite „[[:$1]]“ wurde von deiner [[Special:Watchlist|Beobachtungsliste]] entfernt.',
-'watch'                => 'Beobachten',
-'watchthispage'        => 'Seite beobachten',
-'unwatch'              => 'nicht mehr beobachten',
-'unwatchthispage'      => 'Nicht mehr beobachten',
-'notanarticle'         => 'Keine Seite',
-'notvisiblerev'        => 'Version wurde gelöscht',
-'watchnochange'        => 'Keine der von dir beobachteten Seiten wurde während des angezeigten Zeitraums bearbeitet.',
-'watchlist-details'    => 'Du beobachtest {{PLURAL:$1|1 Seite|$1 Seiten}}.',
-'wlheader-enotif'      => '* Der E-Mail-Benachrichtigungsdienst ist aktiviert.',
-'wlheader-showupdated' => "* Seiten mit noch nicht gesehenen Änderungen werden '''fett''' dargestellt.",
-'watchmethod-recent'   => 'Überprüfen der letzten Bearbeitungen für die Beobachtungsliste',
-'watchmethod-list'     => 'Überprüfen der Beobachtungsliste nach letzten Bearbeitungen',
-'watchlistcontains'    => 'Deine Beobachtungsliste enthält $1 {{PLURAL:$1|Seite|Seiten}}.',
-'iteminvalidname'      => 'Problem mit dem Eintrag „$1“, ungültiger Name.',
-'wlnote'               => "Es {{PLURAL:$1|folgt die letzte Änderung|folgen die letzten '''$1''' Änderungen}} der letzten {{PLURAL:$2|Stunde|'''$2''' Stunden}}.",
-'wlshowlast'           => 'Zeige die Änderungen der letzten $1 Stunden, $2 Tage oder $3.',
-'watchlist-show-bots'  => 'Bot-Änderungen einblenden',
-'watchlist-hide-bots'  => 'Bot-Änderungen ausblenden',
-'watchlist-show-own'   => 'Eigene Änderungen einblenden',
-'watchlist-hide-own'   => 'Eigene Änderungen ausblenden',
-'watchlist-show-minor' => 'Kleine Änderungen einblenden',
-'watchlist-hide-minor' => 'Kleine Änderungen ausblenden',
-'watchlist-show-anons' => 'Anonyme Benutzer einblenden',
-'watchlist-hide-anons' => 'Anonyme Benutzer ausblenden',
-'watchlist-show-liu'   => 'Angemeldete Benutzer einblenden',
-'watchlist-hide-liu'   => 'Angemeldete Benutzer ausblenden',
-'watchlist-options'    => 'Anzeigeoptionen',
+'removedwatch'             => 'Von der Beobachtungsliste entfernt',
+'removedwatchtext'         => 'Die Seite „[[:$1]]“ wurde von deiner [[Special:Watchlist|Beobachtungsliste]] entfernt.',
+'watch'                    => 'Beobachten',
+'watchthispage'            => 'Seite beobachten',
+'unwatch'                  => 'nicht mehr beobachten',
+'unwatchthispage'          => 'Nicht mehr beobachten',
+'notanarticle'             => 'Keine Seite',
+'notvisiblerev'            => 'Version wurde gelöscht',
+'watchnochange'            => 'Keine der von dir beobachteten Seiten wurde während des angezeigten Zeitraums bearbeitet.',
+'watchlist-details'        => 'Du beobachtest {{PLURAL:$1|1 Seite|$1 Seiten}}.',
+'wlheader-enotif'          => '* Der E-Mail-Benachrichtigungsdienst ist aktiviert.',
+'wlheader-showupdated'     => "* Seiten mit noch nicht gesehenen Änderungen werden '''fett''' dargestellt.",
+'watchmethod-recent'       => 'Überprüfen der letzten Bearbeitungen für die Beobachtungsliste',
+'watchmethod-list'         => 'Überprüfen der Beobachtungsliste nach letzten Bearbeitungen',
+'watchlistcontains'        => 'Deine Beobachtungsliste enthält $1 {{PLURAL:$1|Seite|Seiten}}.',
+'iteminvalidname'          => 'Problem mit dem Eintrag „$1“, ungültiger Name.',
+'wlnote'                   => "Es {{PLURAL:$1|folgt die letzte Änderung|folgen die letzten '''$1''' Änderungen}} der letzten {{PLURAL:$2|Stunde|'''$2''' Stunden}}.",
+'wlshowlast'               => 'Zeige die Änderungen der letzten $1 Stunden, $2 Tage oder $3.',
+'watchlist-show-bots'      => 'Bot-Änderungen einblenden',
+'watchlist-hide-bots'      => 'Bot-Änderungen ausblenden',
+'watchlist-show-own'       => 'Eigene Änderungen einblenden',
+'watchlist-hide-own'       => 'Eigene Änderungen ausblenden',
+'watchlist-show-minor'     => 'Kleine Änderungen einblenden',
+'watchlist-hide-minor'     => 'Kleine Änderungen ausblenden',
+'watchlist-show-anons'     => 'Anonyme Benutzer einblenden',
+'watchlist-hide-anons'     => 'Anonyme Benutzer ausblenden',
+'watchlist-show-liu'       => 'Angemeldete Benutzer einblenden',
+'watchlist-hide-liu'       => 'Angemeldete Benutzer ausblenden',
+'watchlist-show-patrolled' => 'Kontrollierte Änderungen einblenden',
+'watchlist-hide-patrolled' => 'Kontrollierte Änderungen ausblenden',
+'watchlist-options'        => 'Anzeigeoptionen',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Beobachten …',
@@ -1818,9 +1857,9 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'rollbacklink'     => 'Zurücksetzen',
 'rollbackfailed'   => 'Zurücksetzen gescheitert',
 'cantrollback'     => 'Die Änderung kann nicht zurückgesetzt werden, da es keine früheren Autoren gibt.',
-'alreadyrolled'    => "Das Zurücksetzen der Änderungen von [[User:$2|$2]] <span style='font-size: smaller'>([[User talk:$2|Diskussion]], [[Special:Contributions/$2|{{int:contribslink}}]])</span> an [[:$1]] ist gescheitert, da in der Zwischenzeit ein anderer Benutzer die Seite geändert hat.
+'alreadyrolled'    => 'Das Zurücksetzen der Änderungen von [[User:$2|$2]] ([[User talk:$2|Diskussion]], [[Special:Contributions/$2|{{int:contribslink}}]]) an [[:$1]] ist gescheitert, da in der Zwischenzeit ein anderer Benutzer die Seite geändert hat.
 
-Die letzte Änderung stammt von [[User:$3|$3]] <span style='font-size: smaller'>([[Special:Contributions/$3|{{int:contribslink}}]])</span>.",
+Die letzte Änderung stammt von [[User:$3|$3]] ([[User talk:$3|Diskussion]], [[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment'      => 'Der Änderungskommentar lautet: „<i>$1</i>“.', # only shown if there is an edit comment
 'revertpage'       => 'Änderungen von [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskussion]]) rückgängig gemacht und letzte Version von [[User:$1|$1]] wiederhergestellt', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Die Änderungen von $1 wurden rückgängig gemacht und die letzte Version von $2 wurde wiederhergestellt.',
@@ -1860,7 +1899,7 @@ Siehe die [[Special:ProtectedPages|Liste der geschützten Seiten]] für alle akt
 'protect-cantedit'            => 'Du kannst die Sperre dieser Seite nicht ändern, da du keine Berechtigung zum Bearbeiten der Seite hast.',
 'protect-othertime'           => 'Andere Sperrdauer:',
 'protect-othertime-op'        => 'andere Sperrdauer',
-'protect-existing-expiry'     => 'Aktuelles Seitenschutzende: $1',
+'protect-existing-expiry'     => 'Aktuelles Seitenschutzende: $2, $3 Uhr',
 'protect-otherreason'         => 'Anderer/ergänzender Grund:',
 'protect-otherreason-op'      => 'anderer/ergänzender Grund',
 'protect-dropdown'            => '*Allgemeine Schutzgründe
@@ -1911,6 +1950,7 @@ Der aktuelle Text der gelöschten Seite ist nur Administratoren zugänglich.',
 'undeletebtn'                  => 'Wiederherstellen',
 'undeletelink'                 => 'wiederherstellen',
 'undeletereset'                => 'Abbrechen',
+'undeleteinvert'               => 'Auswahl umkehren',
 'undeletecomment'              => 'Begründung:',
 'undeletedarticle'             => 'hat „[[$1]]“ wiederhergestellt',
 'undeletedrevisions'           => '{{PLURAL:$1|1 Version wurde|$1 Versionen wurden}} wiederhergestellt',
@@ -2019,6 +2059,7 @@ Zur Aufhebung der Sperre siehe die [[Special:IPBlockList|Liste aller aktiven Spe
 'ipb-unblock'                     => 'IP-Adresse/Benutzer freigeben',
 'ipb-blocklist-addr'              => 'Aktuelle Sperre für „$1“ anzeigen',
 'ipb-blocklist'                   => 'Alle aktuellen Sperren anzeigen',
+'ipb-blocklist-contribs'          => 'Benutzerbeiträge für „$1“',
 'unblockip'                       => 'IP-Adresse freigeben',
 'unblockiptext'                   => 'Mit diesem Formular kannst du eine IP-Adresse oder einen Benutzer freigeben.',
 'ipusubmit'                       => 'Freigeben',
@@ -2027,6 +2068,9 @@ Zur Aufhebung der Sperre siehe die [[Special:IPBlockList|Liste aller aktiven Spe
 'ipblocklist'                     => 'Gesperrte IP-Adressen und Benutzernamen',
 'ipblocklist-legend'              => 'Suche nach einem gesperrten Benutzer',
 'ipblocklist-username'            => 'Benutzername oder IP-Adresse:',
+'ipblocklist-sh-userblocks'       => '$1 Benutzersperren',
+'ipblocklist-sh-tempblocks'       => '$1 befristete Sperren',
+'ipblocklist-sh-addressblocks'    => '$1 IP-Sperren',
 'ipblocklist-submit'              => 'Suchen',
 'blocklistline'                   => '$1, $2 sperrte $3 (bis $4)',
 'infiniteblock'                   => 'unbegrenzt',
@@ -2069,7 +2113,7 @@ Siehe die [[Special:IPBlockList|{{int:ipblocklist}}]] für alle aktiven Sperren.
 'proxyblocksuccess'               => 'Fertig.',
 'sorbsreason'                     => 'Die IP-Adresse ist in der DNSBL von {{SITENAME}} als offener PROXY gelistet.',
 'sorbs_create_account_reason'     => 'Die IP-Adresse ist in der DNSBL von {{SITENAME}} als offener PROXY gelistet. Das Anlegen neuer Benutzer ist nicht möglich.',
-'cant-block-while-blocked'        => 'Du darfst keine andere Benutzer sperren, während du selber gesperrt bist.',
+'cant-block-while-blocked'        => 'Du darfst keine anderen Benutzer sperren, während du selber gesperrt bist.',
 
 # Developer tools
 'lockdb'              => 'Datenbank sperren',
@@ -2089,9 +2133,9 @@ Siehe die [[Special:IPBlockList|{{int:ipblocklist}}]] für alle aktiven Sperren.
 'databasenotlocked'   => 'Die Datenbank ist nicht gesperrt.',
 
 # Move page
-'move-page'                   => 'Verschiebe „$1“',
-'move-page-legend'            => 'Seite verschieben',
-'movepagetext'                => "Mit diesem Formular kannst du eine Seite umbenennen (mitsamt allen Versionen).
+'move-page'                 => 'Verschiebe „$1“',
+'move-page-legend'          => 'Seite verschieben',
+'movepagetext'              => "Mit diesem Formular kannst du eine Seite umbenennen (mitsamt allen Versionen).
 Der alte Titel wird zum neuen weiterleiten.
 Du kannst Weiterleitungen, die auf den Originaltitel verlinken, automatisch korrigieren lassen.
 Falls du dies nicht tust, prüfe auf [[Special:DoubleRedirects|doppelte]] oder [[Special:BrokenRedirects|defekte Weiterleitungen]].
@@ -2102,50 +2146,57 @@ Die Seite wird '''nicht''' verschoben, wenn es bereits eine Seite mit demselben 
 '''Warnung'''
 Die Verschiebung kann weitreichende und unerwartete Folgen für beliebte Seiten haben.
 Du solltest daher die Konsequenzen verstanden haben, bevor du fortfährst.",
-'movepagetalktext'            => "Die dazugehörige Diskussionsseite wird, sofern vorhanden, mitverschoben, '''es sei denn:'''
+'movepagetalktext'          => "Die dazugehörige Diskussionsseite wird, sofern vorhanden, mitverschoben, '''es sei denn:'''
 *Es existiert bereits eine Diskussionsseite mit diesem Namen, oder
 *du wählst die unten stehende Option ab.
 
 In diesen Fällen musst du, falls gewünscht, den Inhalt der Seite von Hand verschieben oder zusammenführen.
 
 Bitte den '''neuen''' Titel unter '''Ziel''' eintragen, darunter die Umbenennung bitte '''begründen.'''",
-'movearticle'                 => 'Seite verschieben:',
-'movenotallowed'              => 'Du hast keine Berechtigung, Seiten zu verschieben.',
-'moverootuserpagesnotallowed' => 'Du hast keine Berechtigung, Benutzerhauptseiten zu verschieben.',
-'newtitle'                    => 'Ziel:',
-'move-watch'                  => 'Diese Seite beobachten',
-'movepagebtn'                 => 'Seite verschieben',
-'pagemovedsub'                => 'Verschiebung erfolgreich',
-'movepage-moved'              => "<big>'''Die Seite „$1“ wurde nach „$2“ verschoben.'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'articleexists'               => 'Unter diesem Namen existiert bereits eine Seite. Bitte wähle einen anderen Namen.',
-'cantmove-titleprotected'     => 'Die Verschiebung kann nicht durchgeführt werden, da der Zieltitel zur Erstellung gesperrt ist.',
-'talkexists'                  => 'Die Seite selbst wurde erfolgreich verschoben, aber die zugehörige Diskussions-Seite nicht, da bereits eine mit dem neuen Titel existiert. Bitte gleiche die Inhalte von Hand ab.',
-'movedto'                     => 'verschoben nach',
-'movetalk'                    => 'Die Diskussionsseite mitverschieben, wenn möglich',
-'move-subpages'               => 'Alle Unterseiten, falls vorhanden, mitverschieben',
-'move-talk-subpages'          => 'Alle Unterseiten von Diskussionsseiten, falls vorhanden, mitverschieben',
-'movepage-page-exists'        => 'Die Seite „$1“ ist bereits vorhanden und kann nicht automatisch überschrieben werden.',
-'movepage-page-moved'         => 'Die Seite „$1“ wurde nach „$2“ verschoben.',
-'movepage-page-unmoved'       => 'Die Seite „$1“ konnte nicht nach „$2“ verschoben werden.',
-'movepage-max-pages'          => 'Die Maximalanzahl von $1 {{PLURAL:$1|Seite|Seiten}} wurde verschoben, Alle weiteren Seiten können nicht automatisch verschoben werden.',
-'1movedto2'                   => 'hat „[[$1]]“ nach „[[$2]]“ verschoben',
-'1movedto2_redir'             => 'hat „[[$1]]“ nach „[[$2]]“ verschoben und dabei eine Weiterleitung überschrieben',
-'movelogpage'                 => 'Verschiebungs-Logbuch',
-'movelogpagetext'             => 'Dies ist eine Liste aller verschobenen Seiten.',
-'movereason'                  => 'Begründung:',
-'revertmove'                  => 'zurück verschieben',
-'delete_and_move'             => 'Löschen und Verschieben',
-'delete_and_move_text'        => '==Zielseite vorhanden, löschen?==
+'movearticle'               => 'Seite verschieben:',
+'movenologin'               => 'Du bist nicht angemeldet',
+'movenologintext'           => 'Du musst ein registrierter Benutzer und [[Special:UserLogin|angemeldet]] sein, um eine Seite zu verschieben.',
+'movenotallowed'            => 'Du hast keine Berechtigung, Seiten zu verschieben.',
+'cant-move-user-page'       => 'Du hast keine Berechtigung, Benutzerhauptseiten zu verschieben.',
+'cant-move-to-user-page'    => 'Du hast nicht die Berechtigung, Seiten auf eine Benutzerseite zu verschieben (mit Ausnahme von Benutzerunterseiten).',
+'newtitle'                  => 'Ziel:',
+'move-watch'                => 'Diese Seite beobachten',
+'movepagebtn'               => 'Seite verschieben',
+'pagemovedsub'              => 'Verschiebung erfolgreich',
+'movepage-moved'            => "<big>'''Die Seite „$1“ wurde nach „$2“ verschoben.'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'articleexists'             => 'Unter diesem Namen existiert bereits eine Seite. Bitte wähle einen anderen Namen.',
+'cantmove-titleprotected'   => 'Die Verschiebung kann nicht durchgeführt werden, da der Zieltitel zur Erstellung gesperrt ist.',
+'talkexists'                => 'Die Seite selbst wurde erfolgreich verschoben, aber die zugehörige Diskussions-Seite nicht, da bereits eine mit dem neuen Titel existiert. Bitte gleiche die Inhalte von Hand ab.',
+'movedto'                   => 'verschoben nach',
+'movetalk'                  => 'Die Diskussionsseite mitverschieben, wenn möglich',
+'move-subpages'             => 'Alle Unterseiten, falls vorhanden, mitverschieben',
+'move-talk-subpages'        => 'Alle Unterseiten von Diskussionsseiten, falls vorhanden, mitverschieben',
+'movepage-page-exists'      => 'Die Seite „$1“ ist bereits vorhanden und kann nicht automatisch überschrieben werden.',
+'movepage-page-moved'       => 'Die Seite „$1“ wurde nach „$2“ verschoben.',
+'movepage-page-unmoved'     => 'Die Seite „$1“ konnte nicht nach „$2“ verschoben werden.',
+'movepage-max-pages'        => 'Die Maximalanzahl von $1 {{PLURAL:$1|Seite|Seiten}} wurde verschoben, Alle weiteren Seiten können nicht automatisch verschoben werden.',
+'1movedto2'                 => 'hat „[[$1]]“ nach „[[$2]]“ verschoben',
+'1movedto2_redir'           => 'hat „[[$1]]“ nach „[[$2]]“ verschoben und dabei eine Weiterleitung überschrieben',
+'movelogpage'               => 'Verschiebungs-Logbuch',
+'movelogpagetext'           => 'Dies ist eine Liste aller verschobenen Seiten.',
+'movereason'                => 'Begründung:',
+'revertmove'                => 'zurück verschieben',
+'delete_and_move'           => 'Löschen und Verschieben',
+'delete_and_move_text'      => '==Zielseite vorhanden, löschen?==
 
 Die Seite „[[:$1]]“ existiert bereits. Möchtest du diese löschen, um die Seite verschieben zu können?',
-'delete_and_move_confirm'     => 'Zielseite für die Verschiebung löschen',
-'delete_and_move_reason'      => 'gelöscht, um Platz für Verschiebung zu machen',
-'selfmove'                    => 'Ursprungs- und Zielname sind gleich; eine Seite kann nicht auf sich selbst verschoben werden.',
-'immobile_namespace'          => 'Der Quell- oder Zielnamensraum ist geschützt; Verschiebungen in diesen Namensraum hinein oder aus diesem heraus sind nicht möglich.',
-'imagenocrossnamespace'       => 'Dateien können nicht aus dem {{ns:image}}-Namensraum heraus verschoben werden',
-'imagetypemismatch'           => 'Die neue Dateierweiterung ist nicht mit der alten identisch',
-'imageinvalidfilename'        => 'Der Ziel-Dateiname ist ungültig',
-'fix-double-redirects'        => 'Nach dem Verschieben doppelte Weiterleitungen auflösen',
+'delete_and_move_confirm'   => 'Zielseite für die Verschiebung löschen',
+'delete_and_move_reason'    => 'gelöscht, um Platz für Verschiebung zu machen',
+'selfmove'                  => 'Ursprungs- und Zielname sind gleich; eine Seite kann nicht auf sich selbst verschoben werden.',
+'immobile-source-namespace' => 'Seiten des „$1“-Namensraums können nicht verschoben werden',
+'immobile-target-namespace' => 'Seiten können nicht in den „$1“-Namensraum verschoben werden',
+'immobile-source-page'      => 'Diese Seite ist nicht verschiebbar.',
+'immobile-target-page'      => 'Es kann nicht auf diese Zielseite verschoben werden.',
+'imagenocrossnamespace'     => 'Dateien können nicht aus dem {{ns:image}}-Namensraum heraus verschoben werden',
+'imagetypemismatch'         => 'Die neue Dateierweiterung ist nicht mit der alten identisch',
+'imageinvalidfilename'      => 'Der Ziel-Dateiname ist ungültig',
+'fix-double-redirects'      => 'Nach dem Verschieben doppelte Weiterleitungen auflösen',
+'move-leave-redirect'       => 'Weiterleitung erstellen',
 
 # Export
 'export'            => 'Seiten exportieren',
@@ -2907,5 +2958,16 @@ Die Eingabe muss ohne den Zusatz „{{ns:image}}:“ erfolgen.',
 #Ein positiver Vergleich führt zur Anzeige des Bildes, andernfalls wird das Bild nur als Link angezeigt
 #Zeilen, die mit einem # beginnen, werden als Kommentar behandelt
 #Fragmente regulärer Ausdrücke nach dieser Zeile eintragen. Diese Zeile nicht verändern</pre>',
+
+# Special:Nuke
+'nuke'               => 'Massenlöschung',
+'nuke-nopages'       => 'Es gibt in den Letzten Änderungen keine neuen Seiten von [[Special:Contributions/$1|$1]].',
+'nuke-list'          => 'Die folgenden Seiten wurden von [[Special:Contributions/$1|$1]] erzeugt;
+gib einen Kommentar ein und drücke auf den Löschknopf.',
+'nuke-defaultreason' => 'Massenlöschung von Seiten, die von „$1“ angelegt wurden',
+'nuke-tools'         => 'Dieses Werkzeug ermöglicht die Massenlöschung von Seiten, die von einer IP-Adresse oder einem Benutzer angelegt wurden. Gib die IP-Adresse/den Benutzernamen ein, um eine Liste zu erhalten.',
+'nuke-submit-user'   => 'Hole Liste',
+'nuke-submit-delete' => 'Löschen',
+'right-nuke'         => 'Massenlöschung von Seiten',
 
 );

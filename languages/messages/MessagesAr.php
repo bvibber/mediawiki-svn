@@ -99,6 +99,21 @@ $dateFormats = array(
 	'ISO 8601 both' => 'xnY-xnm-xnd"T"xnH:xni:xns',
 );
 
+$digitTransformTable = array(
+	'0' => '٠', # &#x0660;
+	'1' => '١', # &#x0661;
+	'2' => '٢', # &#x0662;
+	'3' => '٣', # &#x0663;
+	'4' => '٤', # &#x0664;
+	'5' => '٥', # &#x0665;
+	'6' => '٦', # &#x0666;
+	'7' => '٧', # &#x0667;
+	'8' => '٨', # &#x0668;
+	'9' => '٩', # &#x0669;
+	'.' => '٫', # &#x066b; wrong table ?
+	',' => '٬', # &#x066c;
+);
+
 $namespaceNames = array(
 	NS_MEDIA          => 'ميديا',
 	NS_SPECIAL        => 'خاص',
@@ -121,7 +136,18 @@ $namespaceNames = array(
 );
 
 $namespaceAliases = array(
-	'ملف'             => NS_MEDIA,
+	'وسائط'             => NS_MEDIA,
+);
+
+$skinNames = array(
+	'standard'      => 'كلاسيك',
+	'nostalgia'     => 'نوستالجيا',
+	'cologneblue'   => 'كولون بلو',
+	'monobook'      => 'مونوبوك',
+	'myskin'        => 'ماي سكين',
+	'chick'         => 'تشيك',
+	'simple'        => 'سيمبل',
+	'modern'        => 'مودرن',
 );
 
 $magicWords = array(
@@ -131,6 +157,7 @@ $magicWords = array(
 	'forcetoc'              => array( '0', '__لصق_فهرس__', '__FORCETOC__' ),
 	'toc'                   => array( '0', '__فهرس__', '__TOC__' ),
 	'noeditsection'         => array( '0', '__لاتحريرقسم__', '__NOEDITSECTION__' ),
+	'noheader'              => array( '0', '__لاعنوان__', '__NOHEADER__' ),
 	'currentmonth'          => array( '1', 'شهر_حالي', 'شهر', 'CURRENTMONTH' ),
 	'currentmonthname'      => array( '1', 'اسم_الشهر_الحالي', 'اسم_شهر_حالي', 'اسم_شهر', 'CURRENTMONTHNAME' ),
 	'currentmonthnamegen'   => array( '1', 'اسم_الشهر_الحالي_المولد', 'اسم_شهر_حالي_مولد', 'CURRENTMONTHNAMEGEN' ),
@@ -197,6 +224,8 @@ $magicWords = array(
 	'img_middle'            => array( '1', 'وسط', 'middle' ),
 	'img_bottom'            => array( '1', 'أسفل', 'bottom' ),
 	'img_text_bottom'       => array( '1', 'نص_أسفل', 'text-bottom' ),
+	'img_link'              => array( '1', 'وصلة=$1', 'رابط=$1', 'link=$1' ),
+	'img_alt'               => array( '1', 'بديل=$1', 'alt=$1' ),
 	'int'                   => array( '0', 'محتوى:', 'INT:' ),
 	'sitename'              => array( '1', 'اسم_الموقع', 'اسم_موقع', 'SITENAME' ),
 	'ns'                    => array( '0', 'نط:', 'NS:' ),
@@ -253,32 +282,6 @@ $magicWords = array(
 	'noindex'               => array( '1', '__لافهرسة__', '__NOINDEX__' ),
 	'numberingroup'         => array( '1', 'عدد_في_المجموعة', 'عدد_في_مجموعة', 'NUMBERINGROUP', 'NUMINGROUP' ),
 	'staticredirect'        => array( '1', '__تحويلة_إستاتيكية__', '__تحويلة_ساكنة__', '__STATICREDIRECT__' ),
-);
-
-$skinNames = array(
-	'standard'      => 'كلاسيك',
-	'nostalgia'     => 'نوستالجيا',
-	'cologneblue'   => 'كولون بلو',
-	'monobook'      => 'مونوبوك',
-	'myskin'        => 'ماي سكين',
-	'chick'         => 'تشيك',
-	'simple'        => 'سيمبل',
-	'modern'        => 'مودرن',
-);
-
-$digitTransformTable = array(
-	'0' => '٠', # &#x0660;
-	'1' => '١', # &#x0661;
-	'2' => '٢', # &#x0662;
-	'3' => '٣', # &#x0663;
-	'4' => '٤', # &#x0664;
-	'5' => '٥', # &#x0665;
-	'6' => '٦', # &#x0666;
-	'7' => '٧', # &#x0667;
-	'8' => '٨', # &#x0668;
-	'9' => '٩', # &#x0669;
-	'.' => '٫', # &#x066b; wrong table ?
-	',' => '٬', # &#x066c;
 );
 
 $specialPageAliases = array(
@@ -502,7 +505,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings قائمة إعدادات الضبط]
 * [http://www.mediawiki.org/wiki/Manual:FAQ أسئلة متكررة حول ميدياويكي]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce القائمة البريدية الخاصة بإصدار ميدياويكي]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce القائمة البريدية الخاصة بإصدار ميدياويكي]',
 
 'about'          => 'حول',
 'article'        => 'صفحة محتوى',
@@ -621,6 +624,8 @@ $messages = array(
 'editsection'             => 'عدل',
 'editold'                 => 'عدل',
 'viewsourceold'           => 'عرض المصدر',
+'editlink'                => 'عدل',
+'viewsourcelink'          => 'عرض المصدر',
 'editsectionhint'         => 'تحرير القسم: $1',
 'toc'                     => 'محتويات',
 'showtoc'                 => 'عرض',
@@ -799,7 +804,7 @@ $2',
 'loginsuccesstitle'          => 'تم الدخول بشكل صحيح',
 'loginsuccess'               => "'''لقد قمت بتسجيل الدخول ل{{SITENAME}} باسم \"\$1\".'''",
 'nosuchuser'                 => 'لا يوجد مستخدم بالاسم "$1".
-تأكد من إملاء الاسم، أو [[Special:Userlogin/signup|قم بإنشاء حساب جديد]].',
+تأكد من إملاء الاسم، أو [[Special:UserLogin/signup|قم بإنشاء حساب جديد]].',
 'nosuchusershort'            => 'لا يوجد مستخدم باسم <nowiki>$1</nowiki>".
 تأكد من إملاء الاسم.',
 'nouserspecified'            => 'يجب عليك تحديد اسم مستخدم.',
@@ -1068,29 +1073,29 @@ $2',
 السبب المعطى بواسطة $3 هو ''$2''",
 
 # History pages
-'viewpagelogs'        => 'عرض السجلات لهذه الصفحة',
-'nohistory'           => 'لا يوجد تاريخ للتعديلات لهذه الصفحة.',
-'currentrev'          => 'المراجعة الحالية',
-'currentrev-asof'     => 'المراجعة الحالية بتاريخ $1',
-'revisionasof'        => 'مراجعة $1',
-'revision-info'       => 'مراجعة $1 بواسطة $2',
-'previousrevision'    => '←مراجعة أقدم',
-'nextrevision'        => 'مراجعة أحدث→',
-'currentrevisionlink' => 'المراجعة الحالية',
-'cur'                 => 'الحالي',
-'next'                => 'التالي',
-'last'                => 'السابق',
-'page_first'          => 'الأولى',
-'page_last'           => 'الأخيرة',
-'histlegend'          => 'اختيار الفرق: علم على صناديق النسخ للمقارنة و اضغط قارن بين النسخ المختارة أو الزر بالأسفل.<br />
+'viewpagelogs'           => 'عرض السجلات لهذه الصفحة',
+'nohistory'              => 'لا يوجد تاريخ للتعديلات لهذه الصفحة.',
+'currentrev'             => 'المراجعة الحالية',
+'currentrev-asof'        => 'المراجعة الحالية بتاريخ $1',
+'revisionasof'           => 'مراجعة $1',
+'revision-info'          => 'مراجعة $1 بواسطة $2',
+'previousrevision'       => '←مراجعة أقدم',
+'nextrevision'           => 'مراجعة أحدث→',
+'currentrevisionlink'    => 'المراجعة الحالية',
+'cur'                    => 'الحالي',
+'next'                   => 'التالي',
+'last'                   => 'السابق',
+'page_first'             => 'الأولى',
+'page_last'              => 'الأخيرة',
+'histlegend'             => 'اختيار الفرق: علم على صناديق النسخ للمقارنة و اضغط قارن بين النسخ المختارة أو الزر بالأسفل.<br />
 مفتاح: (الحالي) = الفرق مع النسخة الحالية
 (السابق) = الفرق مع النسخة السابقة، ط = تغيير طفيف',
-'history-search'      => 'بحث في التاريخ',
-'deletedrev'          => '[محذوفة]',
-'histfirst'           => 'أول',
-'histlast'            => 'آخر',
-'historysize'         => '({{PLURAL:$1|1 بايت|$1 بايت}})',
-'historyempty'        => '(فارغ)',
+'history-fieldset-title' => 'تصفح التاريخ',
+'deletedrev'             => '[محذوفة]',
+'histfirst'              => 'أول',
+'histlast'               => 'آخر',
+'historysize'            => '({{PLURAL:$1|1 بايت|$1 بايت}})',
+'historyempty'           => '(فارغ)',
 
 # Revision feed
 'history-feed-title'          => 'تاريخ المراجعة',
@@ -1300,7 +1305,7 @@ $2',
 'mypreferences'            => 'تفضيلاتي',
 'prefs-edits'              => 'عدد التعديلات:',
 'prefsnologin'             => 'غير مسجل',
-'prefsnologintext'         => 'يجب أن تكون <span class="plainlinks">[{{fullurl:Special:Userlogin|returnto=$1}} مسجل الدخول]</span>  حتى تتمكن من تعديل تفضيلات المستخدم.',
+'prefsnologintext'         => 'يجب أن تكون <span class="plainlinks">[{{fullurl:Special:UserLogin|returnto=$1}} مسجل الدخول]</span>  حتى تتمكن من تعديل تفضيلات المستخدم.',
 'prefsreset'               => 'أعيدت التفضيلات إلى الإعداد الافتراضي المخزن.',
 'qbsettings'               => 'لوح سريع',
 'qbsettings-none'          => 'بلا تحديد',
@@ -1465,6 +1470,40 @@ $2',
 'rightslogentry' => 'غير صلاحيات $1 من $2 إلى $3',
 'rightsnone'     => '(لا شيء)',
 
+# Associated actions - in the sentence "You do not have permission to X"
+'action-read'                 => 'قراءة هذه الصفحة',
+'action-edit'                 => 'تعديل هذه الصفحة',
+'action-createpage'           => 'إنشاء الصفحات',
+'action-createtalk'           => 'إنشاء صفحات النقاش',
+'action-createaccount'        => 'إنشاء حساب المستخدم هذا',
+'action-minoredit'            => 'التعليم على هذا التعديل كطفيف',
+'action-move'                 => 'نقل هذه الصفحة',
+'action-move-subpages'        => 'نقل هذه الصفحة، وصفحاتها الفرعية',
+'action-upload'               => 'رفع هذا الملف',
+'action-reupload'             => 'الكتابة على هذا الملف الموجود',
+'action-reupload-shared'      => 'الكتابة على هذا الملف في مستودع مشترك',
+'action-upload_by_url'        => 'رفع هذا الملف من عنوان مسار',
+'action-writeapi'             => 'استخدام API الكتابة',
+'action-delete'               => 'حذف هذه الصفحة',
+'action-deleterevision'       => 'حذف هذه المراجعة',
+'action-deletedhistory'       => 'رؤية تاريخ هذه الصفحة المحذوف',
+'action-browsearchive'        => 'البحث في الصفحات المحذوفة',
+'action-undelete'             => 'استرجاع هذه الصفحة',
+'action-suppressrevision'     => 'مراجعة واسترجاع هذه المراجعة المخفية',
+'action-suppressionlog'       => 'رؤية هذا السجل الخاص',
+'action-block'                => 'منع هذا المستخدم من التعديل',
+'action-protect'              => 'تغيير مستويات الحماية لهذه الصفحة',
+'action-import'               => 'استيراد هذه الصفحة من ويكي آخر',
+'action-importupload'         => 'استيراد هذه الصفحة من ملف مرفوع',
+'action-patrol'               => 'التعليم على تعديلات الآخرين كمراجعة',
+'action-autopatrol'           => 'جعل تعديلك معلم عليه كمراجع',
+'action-unwatchedpages'       => 'رؤية قائمة الصفحات غير المراقبة',
+'action-trackback'            => 'تنفيذ تراكباك',
+'action-mergehistory'         => 'دمج تاريخ هذه الصفحة',
+'action-userrights'           => 'تعديل كل صلاحيات المستخدم',
+'action-userrights-interwiki' => 'تعديل صلاحيات المستخدم للمستخدمين في الويكيات الأخرى',
+'action-siteadmin'            => 'غلق أو رفع غلق قاعدة البيانات',
+
 # Recent changes
 'nchanges'                          => '{{PLURAL:$1|تغيير|تغييران|$1 تغييرات|$1 تغيير|$1 تغييرا}}',
 'recentchanges'                     => 'أحدث التغييرات',
@@ -1472,7 +1511,6 @@ $2',
 'recentchangestext'                 => 'تابع آخر التغييرات في الويكي من هذه الصفحة.',
 'recentchanges-feed-description'    => 'تابع أحدث التغييرات للويكي عبر هذه التلقيمة.',
 'rcnote'                            => "بالأسفل {{PLURAL:$1|'''1''' تغيير|آخر '''$1''' تغيير}} في آخر {{PLURAL:$2|يوم|'''$2''' يوم}}، بدءا من $5، $4.",
-'rcnotefrom'                        => "بالأسفل التغييرات منذ '''$2''' (إلى '''$1''' معروضة).",
 'rclistfrom'                        => 'أظهر التغييرات بدءا من $1',
 'rcshowhideminor'                   => '$1 التعديلات الطفيفة',
 'rcshowhidebots'                    => '$1 البوتات',
@@ -1948,45 +1986,47 @@ PICT # متنوع
 'emailuserfooter' => 'هذا البريد الإلكتروني تم إرساله بواسطة $1 إلى $2 بواسطة وظيفة "مراسلة المستخدم" في {{SITENAME}}.',
 
 # Watchlist
-'watchlist'            => 'قائمة مراقبتي',
-'mywatchlist'          => 'قائمة مراقبتي',
-'watchlistfor'         => "(ل'''$1''')",
-'nowatchlist'          => 'لا توجد مدخلات في قائمة مراقبتك.',
-'watchlistanontext'    => 'الرجاء $1 لعرض أو تعديل الصفحات في قائمة مراقبتك.',
-'watchnologin'         => 'غير مسجل',
-'watchnologintext'     => 'يجب أن تكون [[Special:UserLogin|مسجلا الدخول]] لتعدل قائمة مراقبتك.',
-'addedwatch'           => 'تمت الإضافة لقائمة المراقبة',
-'addedwatchtext'       => "تمت إضافة الصفحة  \"\$1\" إلى [[Special:Watchlist|قائمة المراقبتك]].
+'watchlist'                => 'قائمة مراقبتي',
+'mywatchlist'              => 'قائمة مراقبتي',
+'watchlistfor'             => "(ل'''$1''')",
+'nowatchlist'              => 'لا توجد مدخلات في قائمة مراقبتك.',
+'watchlistanontext'        => 'الرجاء $1 لعرض أو تعديل الصفحات في قائمة مراقبتك.',
+'watchnologin'             => 'غير مسجل',
+'watchnologintext'         => 'يجب أن تكون [[Special:UserLogin|مسجلا الدخول]] لتعدل قائمة مراقبتك.',
+'addedwatch'               => 'تمت الإضافة لقائمة المراقبة',
+'addedwatchtext'           => "تمت إضافة الصفحة  \"\$1\" إلى [[Special:Watchlist|قائمة المراقبتك]].
 التغييرات القادمة على هذه الصفحة وصفحة النقاش الخاصة بها سيتم وضعها هناك، وسيتم إظهار اسم الصفحة بخط '''عريض''' في صفحة [[Special:RecentChanges|أحدث التغييرات]] لتسهيل تحديدها واكتشافها.",
-'removedwatch'         => 'تمت الإزالة من قائمة المراقبة',
-'removedwatchtext'     => 'الصفحة "[[:$1]]" تمت إزالتها من [[Special:Watchlist|قائمة مراقبتك]].',
-'watch'                => 'مراقبة',
-'watchthispage'        => 'راقب هذه الصفحة',
-'unwatch'              => 'إيقاف المراقبة',
-'unwatchthispage'      => 'توقف عن المراقبة',
-'notanarticle'         => 'ليست صفحة محتوى',
-'notvisiblerev'        => 'المراجعة تم حذفها',
-'watchnochange'        => 'لم يتم تعديل أي صفحة في قائمة مراقبتك خلال الفترة الزمنية المحددة.',
-'watchlist-details'    => '{{PLURAL:$1|$1 صفحة|$1 صفحة}} في قائمة مراقبتك، بدون عد صفحات النقاش.',
-'wlheader-enotif'      => '* الإخطار بالبريد الإلكتروني مفعل.',
-'wlheader-showupdated' => "* الصفحات التي تم تحريرها بعد زيارتك لها لآخر مرة معروضة بالخط '''العريض'''",
-'watchmethod-recent'   => 'فحص التعديلات الأخيرة للصفحات المراقبة',
-'watchmethod-list'     => 'فحص الصفحات المراقبة للتعديلات الحديثة',
-'watchlistcontains'    => 'تحتوي قائمة مراقبتك على $1 {{PLURAL:$1|صفحة|صفحة}}.',
-'iteminvalidname'      => "مشكلة في المدخل '$1'، اسم غير صحيح...",
-'wlnote'               => "بالأسفل {{PLURAL:$1|آخر تغيير|آخر '''$1''' تغيير}} في آخر {{PLURAL:$2|ساعة|'''$2''' ساعة}}.",
-'wlshowlast'           => 'عرض آخر $1 ساعات $2 أيام $3',
-'watchlist-show-bots'  => 'عرض تعديلات البوتات',
-'watchlist-hide-bots'  => 'إخفاء تعديلات البوت',
-'watchlist-show-own'   => 'عرض تعديلاتي',
-'watchlist-hide-own'   => 'إخفاء تعديلاتي',
-'watchlist-show-minor' => 'عرض التعديلات الطفيفة',
-'watchlist-hide-minor' => 'إخفاء التعديلات الطفيفة',
-'watchlist-show-anons' => 'إظهار تعديلات المجهولين',
-'watchlist-hide-anons' => 'إخفاء تعديلات المجهولين',
-'watchlist-show-liu'   => 'إظهار تعديلات المستخدمين المسجلين',
-'watchlist-hide-liu'   => 'إخفاء تعديلات المستخدمين المسجلين',
-'watchlist-options'    => 'خيارات قائمة المراقبة',
+'removedwatch'             => 'تمت الإزالة من قائمة المراقبة',
+'removedwatchtext'         => 'الصفحة "[[:$1]]" تمت إزالتها من [[Special:Watchlist|قائمة مراقبتك]].',
+'watch'                    => 'مراقبة',
+'watchthispage'            => 'راقب هذه الصفحة',
+'unwatch'                  => 'إيقاف المراقبة',
+'unwatchthispage'          => 'توقف عن المراقبة',
+'notanarticle'             => 'ليست صفحة محتوى',
+'notvisiblerev'            => 'المراجعة تم حذفها',
+'watchnochange'            => 'لم يتم تعديل أي صفحة في قائمة مراقبتك خلال الفترة الزمنية المحددة.',
+'watchlist-details'        => '{{PLURAL:$1|$1 صفحة|$1 صفحة}} في قائمة مراقبتك، بدون عد صفحات النقاش.',
+'wlheader-enotif'          => '* الإخطار بالبريد الإلكتروني مفعل.',
+'wlheader-showupdated'     => "* الصفحات التي تم تحريرها بعد زيارتك لها لآخر مرة معروضة بالخط '''العريض'''",
+'watchmethod-recent'       => 'فحص التعديلات الأخيرة للصفحات المراقبة',
+'watchmethod-list'         => 'فحص الصفحات المراقبة للتعديلات الحديثة',
+'watchlistcontains'        => 'تحتوي قائمة مراقبتك على $1 {{PLURAL:$1|صفحة|صفحة}}.',
+'iteminvalidname'          => "مشكلة في المدخل '$1'، اسم غير صحيح...",
+'wlnote'                   => "بالأسفل {{PLURAL:$1|آخر تغيير|آخر '''$1''' تغيير}} في آخر {{PLURAL:$2|ساعة|'''$2''' ساعة}}.",
+'wlshowlast'               => 'عرض آخر $1 ساعات $2 أيام $3',
+'watchlist-show-bots'      => 'عرض تعديلات البوتات',
+'watchlist-hide-bots'      => 'إخفاء تعديلات البوت',
+'watchlist-show-own'       => 'عرض تعديلاتي',
+'watchlist-hide-own'       => 'إخفاء تعديلاتي',
+'watchlist-show-minor'     => 'عرض التعديلات الطفيفة',
+'watchlist-hide-minor'     => 'إخفاء التعديلات الطفيفة',
+'watchlist-show-anons'     => 'إظهار تعديلات المجهولين',
+'watchlist-hide-anons'     => 'إخفاء تعديلات المجهولين',
+'watchlist-show-liu'       => 'إظهار تعديلات المستخدمين المسجلين',
+'watchlist-hide-liu'       => 'إخفاء تعديلات المستخدمين المسجلين',
+'watchlist-show-patrolled' => 'عرض التعديلات المراجعة',
+'watchlist-hide-patrolled' => 'إخفاء التعديلات المراجعة',
+'watchlist-options'        => 'خيارات قائمة المراقبة',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'مراقبة...',
@@ -2115,7 +2155,7 @@ $NEWPAGE
 'protect-cantedit'            => 'لا يمكنك تغيير مستويات الحماية لهذه الصفحة، لأنك لا تمتلك الصلاحية لتعديلها.',
 'protect-othertime'           => 'وقت آخر:',
 'protect-othertime-op'        => 'وقت آخر',
-'protect-existing-expiry'     => 'تاريخ الانتهاء الموجود: $1',
+'protect-existing-expiry'     => 'تاريخ الانتهاء الموجود: $3، $2',
 'protect-otherreason'         => 'سبب آخر/إضافي:',
 'protect-otherreason-op'      => 'سبب آخر/إضافي',
 'protect-dropdown'            => '*أسباب الحماية الشائعة
@@ -2168,6 +2208,7 @@ $NEWPAGE
 'undeletebtn'                  => 'استرجاع',
 'undeletelink'                 => 'استرجاع',
 'undeletereset'                => 'إلغاء',
+'undeleteinvert'               => 'اعكس الاختيار',
 'undeletecomment'              => 'تعليق:',
 'undeletedarticle'             => 'استرجع "[[$1]]"',
 'undeletedrevisions'           => 'تم استرجاع {{PLURAL:$1|تعديل واحد|تعديلان|$1 تعديلات|$1 تعديل|$1 تعديلا}}',
@@ -2274,8 +2315,9 @@ $1',
 'ipb-edit-dropdown'               => 'عدل أسباب المنع',
 'ipb-unblock-addr'                => 'رفع منع $1',
 'ipb-unblock'                     => 'رفع المنع عن مستخدم أو عنوان أيبي',
-'ipb-blocklist-addr'              => 'عرض المنع الحالي ل$1',
+'ipb-blocklist-addr'              => 'عمليات المنع الموجودة ل$1',
 'ipb-blocklist'                   => 'عرض حالات المنع الحالية',
+'ipb-blocklist-contribs'          => 'المساهمات ل$1',
 'unblockip'                       => 'رفع منع مستخدم',
 'unblockiptext'                   => 'استخدم الاستمارة أدناه لاسترجاع صلاحية الكتابة الخاصة بعنوان أيبي أو مستخدم تم سحبها منه مسبقا.',
 'ipusubmit'                       => 'رفع منع هذا العنوان',
@@ -2284,6 +2326,9 @@ $1',
 'ipblocklist'                     => 'عناوين الأيبي وأسماء المستخدمين الممنوعة',
 'ipblocklist-legend'              => 'إيجاد مستخدم ممنوع',
 'ipblocklist-username'            => 'اسم المستخدم أو عنوان الأيبي:',
+'ipblocklist-sh-userblocks'       => '$1 عمليات منع الحسابات',
+'ipblocklist-sh-tempblocks'       => '$1 عمليات المنع المؤقتة',
+'ipblocklist-sh-addressblocks'    => '$1 عمليات منع الأيبي المفردة',
 'ipblocklist-submit'              => 'بحث',
 'blocklistline'                   => '$1, $2 منع $3 ($4)',
 'infiniteblock'                   => 'لا نهائي',
@@ -2356,9 +2401,9 @@ $1',
 'databasenotlocked'   => 'قاعدة البيانات ليست مغلقة.',
 
 # Move page
-'move-page'                   => 'نقل $1',
-'move-page-legend'            => 'نقل صفحة',
-'movepagetext'                => "باستخدام  الاستمارة بالأسفل بإمكانك أن تغير اسم الصفحة، وأن تنقل تاريخها للاسم الجديد.
+'move-page'                 => 'نقل $1',
+'move-page-legend'          => 'نقل صفحة',
+'movepagetext'              => "باستخدام  الاستمارة بالأسفل بإمكانك أن تغير اسم الصفحة، وأن تنقل تاريخها للاسم الجديد.
 العنوان القديم سيصبح تحويلة للعنوان الجديد.
 يمكنك تحديث التحويلات التي تشير إلى العنوان الأصلي تلقائيا.
 لو اخترت ألا تفعل، تأكد من عدم وجود تحويلات [[Special:DoubleRedirects|مزدوجة]] أو [[Special:BrokenRedirects|مكسورة]].
@@ -2370,52 +2415,58 @@ $1',
 '''تحذير!'''
 هذا قد يكون تغييرا كارثيا وغير متوقع لصفحة مشهورة؛
 من فضلك تأكد من فهم عواقب هذا قبل المتابعة.",
-'movepagetalktext'            => "صفحة النقاش المرفقة سيتم نقلها كذلك، '''إلا في حالة''':
+'movepagetalktext'          => "صفحة النقاش المرفقة سيتم نقلها كذلك، '''إلا في حالة''':
 * توجد صفحة نقاش غير فارغة تحت العنوان الجديد، أو
 * قمت بإزالة اختيار الصندوق بالأسفل.
 
 وفي هذه الحالات، يجب عليك نقل أو دمج محتويات الصفحة يدويا، إذا رغب في ذلك.",
-'movearticle'                 => 'انقل الصفحة:',
-'movenotallowed'              => 'أنت لا تمتلك الصلاحية لنقل الصفحات.',
-'moverootuserpagesnotallowed' => 'أنت لا تمتلك الصلاحية لنقل صفحات المستخدم الرئيسية.',
-'newtitle'                    => 'إلى العنوان الجديد:',
-'move-watch'                  => 'راقب هذه الصفحة',
-'movepagebtn'                 => 'نقل الصفحة',
-'pagemovedsub'                => 'تم النقل بنجاح',
-'movepage-moved'              => '<big>\'\'\'"$1" نقلت إلى "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'articleexists'               => 'توجد صفحة بهذا الاسم، أو أن الاسم الذي تم اختياره غير صالح.
+'movearticle'               => 'انقل الصفحة:',
+'movenologin'               => 'غير مسجل',
+'movenologintext'           => 'يجب أن تكون مستخدما مسجلا وأن تقوم [[Special:UserLogin|بالدخول]] لكي تنقل صفحة.',
+'movenotallowed'            => 'أنت لا تمتلك الصلاحية لنقل الصفحات.',
+'cant-move-user-page'       => 'أنت لا تمتلك الصلاحية لنقل صفحات المستخدم الرئيسية.',
+'cant-move-to-user-page'    => 'أنت لا تمتلك الصلاحية لنقل صفحة إلى صفحة مستخدم (ماعدا إلى صفحة مستخدم فرعية).',
+'newtitle'                  => 'إلى العنوان الجديد:',
+'move-watch'                => 'راقب هذه الصفحة',
+'movepagebtn'               => 'نقل الصفحة',
+'pagemovedsub'              => 'تم النقل بنجاح',
+'movepage-moved'            => '<big>\'\'\'"$1" نقلت إلى "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'articleexists'             => 'توجد صفحة بهذا الاسم، أو أن الاسم الذي تم اختياره غير صالح.
 من فضلك اختر اسم آخر.',
-'cantmove-titleprotected'     => 'لا يمكنك نقل صفحة إلى هذا الموقع، لأن العنوان الجديد تمت حمايته ضد الإنشاء',
-'talkexists'                  => "'''الصفحة نفسها تم نقلها بنجاح، ولكن صفحة النقاش لم يمكن نقلها لوجود صفحة مسبقا تحت العنوان الجديد.
+'cantmove-titleprotected'   => 'لا يمكنك نقل صفحة إلى هذا الموقع، لأن العنوان الجديد تمت حمايته ضد الإنشاء',
+'talkexists'                => "'''الصفحة نفسها تم نقلها بنجاح، ولكن صفحة النقاش لم يمكن نقلها لوجود صفحة مسبقا تحت العنوان الجديد.
 من فضلك ادمجهما يدويا.'''",
-'movedto'                     => 'تم نقلها إلى',
-'movetalk'                    => 'انقل صفحة النقاش المرفقة',
-'move-subpages'               => 'انقل كل الصفحات الفرعية، إذا كان هذا ممكنا',
-'move-talk-subpages'          => 'انقل كل الصفحات الفرعية لصفحة النقاش، إذا كان هذا ممكنا',
-'movepage-page-exists'        => 'الصفحة $1 موجودة بالفعل ولا يمكن الكتابة عليها تلقائيا.',
-'movepage-page-moved'         => 'تم نقل الصفحة $1 إلى $2.',
-'movepage-page-unmoved'       => 'لم يمكن نقل الصفحة $1 إلى $2.',
-'movepage-max-pages'          => 'الحد الأقصى $1 {{PLURAL:$1|صفحة|صفحة}} تم نقله ولن يتم نقل المزيد تلقائيا.',
-'1movedto2'                   => '[[$1]] تم نقلها إلى [[$2]]',
-'1movedto2_redir'             => '[[$1]] تم نقلها إلى [[$2]] فوق التحويلة',
-'movelogpage'                 => 'سجل النقل',
-'movelogpagetext'             => 'بالأسفل قائمة بالصفحات التي تم نقلها.',
-'movereason'                  => 'السبب:',
-'revertmove'                  => 'استرجاع',
-'delete_and_move'             => 'حذف ونقل',
-'delete_and_move_text'        => '==الحذف مطلوب==
+'movedto'                   => 'تم نقلها إلى',
+'movetalk'                  => 'انقل صفحة النقاش المرفقة',
+'move-subpages'             => 'انقل كل الصفحات الفرعية، إذا كان هذا ممكنا',
+'move-talk-subpages'        => 'انقل كل الصفحات الفرعية لصفحة النقاش، إذا كان هذا ممكنا',
+'movepage-page-exists'      => 'الصفحة $1 موجودة بالفعل ولا يمكن الكتابة عليها تلقائيا.',
+'movepage-page-moved'       => 'تم نقل الصفحة $1 إلى $2.',
+'movepage-page-unmoved'     => 'لم يمكن نقل الصفحة $1 إلى $2.',
+'movepage-max-pages'        => 'الحد الأقصى $1 {{PLURAL:$1|صفحة|صفحة}} تم نقله ولن يتم نقل المزيد تلقائيا.',
+'1movedto2'                 => '[[$1]] تم نقلها إلى [[$2]]',
+'1movedto2_redir'           => '[[$1]] تم نقلها إلى [[$2]] فوق التحويلة',
+'movelogpage'               => 'سجل النقل',
+'movelogpagetext'           => 'بالأسفل قائمة بالصفحات التي تم نقلها.',
+'movereason'                => 'السبب:',
+'revertmove'                => 'استرجاع',
+'delete_and_move'           => 'حذف ونقل',
+'delete_and_move_text'      => '==الحذف مطلوب==
 الصفحة الهدف "[[:$1]]" موجودة بالفعل.
 هل تريد حذفها لإفساح المجال للنقل؟',
-'delete_and_move_confirm'     => 'نعم، احذف الصفحة',
-'delete_and_move_reason'      => 'تم الحذف لإفساح مجال للنقل',
-'selfmove'                    => 'لا يوجد اختلاف في عنوان المصدر والهدف؛
+'delete_and_move_confirm'   => 'نعم، احذف الصفحة',
+'delete_and_move_reason'    => 'تم الحذف لإفساح مجال للنقل',
+'selfmove'                  => 'لا يوجد اختلاف في عنوان المصدر والهدف؛
 لا يمكن نقل الصفحة على نفسها.',
-'immobile_namespace'          => 'عنوان المصدر أو الهدف ذو طبيعة خاصة؛
-لا يمكن نقل الصفحات من وإلى هذا النطاق.',
-'imagenocrossnamespace'       => 'لا يمكن نقل الملف إلى نطاق غير نطاق الملفات',
-'imagetypemismatch'           => 'امتداد الملف الجديد لا يطابق نوعه',
-'imageinvalidfilename'        => 'اسم الملف الهدف غير صحيح',
-'fix-double-redirects'        => 'حدث أي تحويلات تشير إلى العنوان الأصلي',
+'immobile-source-namespace' => 'غير قادر على نقل الصفحات في النطاق "$1"',
+'immobile-target-namespace' => 'غير قادر على نقل الصفحات إلى النطاق "$1"',
+'immobile-source-page'      => 'هذه الصفحة غير قابلة للنقل.',
+'immobile-target-page'      => 'غير قادر على النقل إلى العنوان الوجهة هذا.',
+'imagenocrossnamespace'     => 'لا يمكن نقل الملف إلى نطاق غير نطاق الملفات',
+'imagetypemismatch'         => 'امتداد الملف الجديد لا يطابق نوعه',
+'imageinvalidfilename'      => 'اسم الملف الهدف غير صحيح',
+'fix-double-redirects'      => 'حدث أي تحويلات تشير إلى العنوان الأصلي',
+'move-leave-redirect'       => 'اترك تحويلة خلفك',
 
 # Export
 'export'            => 'تصدير صفحات',
@@ -3286,5 +3337,17 @@ $1',
 #السطور التي تبدأ ب# تتم معاملتها كتعليقات
 
 #ضع كل منثورات التعبيرات المنتظمة فوق هذا السطر. اترك هذا السطر تماما كما هو</pre>',
+
+# Special:Nuke
+'nuke'               => 'حذف كمي',
+'nuke-nopages'       => 'لا صفحات جديدة بواسطة [[Special:Contributions/$1|$1]] في أحدث التغييرات.',
+'nuke-list'          => 'الصفحات التالية تم إنشاؤها حديثا بواسطة [[Special:Contributions/$1|$1]]؛
+ضع تعليقا واضغط الزر لحذفهم.',
+'nuke-defaultreason' => 'إزالة كمية للصفحات المضافة بواسطة $1',
+'nuke-tools'         => 'هذه الأداة تسمح بالحذف الضخم للصفحات المضافة حديثا بواسطة مستخدم أو أيبي معطى.
+أدخل اسم المستخدم أو الأيبي لعرض قائمة بالصفحات للحذف:',
+'nuke-submit-user'   => 'اذهب',
+'nuke-submit-delete' => 'حذف المختار',
+'right-nuke'         => 'حذف الصفحات كميا',
 
 );

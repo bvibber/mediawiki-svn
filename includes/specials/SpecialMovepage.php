@@ -56,7 +56,7 @@ function wfSpecialMovepage( $par = null ) {
 class MovePageForm {
 	var $oldTitle, $newTitle; # Objects
 	var $reason; # Text input
-	var $moveTalk, $deleteAndMove, $moveSubpages, $fixRedirects; # Checks
+	var $moveTalk, $deleteAndMove, $moveSubpages, $fixRedirects, $leaveRedirect; # Checks
 
 	private $watch = false;
 
@@ -69,17 +69,25 @@ class MovePageForm {
 		if ( $wgRequest->wasPosted() ) {
 			$this->moveTalk = $wgRequest->getBool( 'wpMovetalk', false );
 			$this->fixRedirects = $wgRequest->getBool( 'wpFixRedirects', false );
+			$this->leaveRedirect = $wgRequest->getBool( 'wpLeaveRedirect', false );
 		} else {
 			$this->moveTalk = $wgRequest->getBool( 'wpMovetalk', true );
 			$this->fixRedirects = $wgRequest->getBool( 'wpFixRedirects', true );
+			$this->leaveRedirect = $wgRequest->getBool( 'wpLeaveRedirect', true );
 		}
 		$this->moveSubpages = $wgRequest->getBool( 'wpMovesubpages', false );
 		$this->deleteAndMove = $wgRequest->getBool( 'wpDeleteAndMove' ) && $wgRequest->getBool( 'wpConfirm' );
 		$this->watch = $wgRequest->getCheck( 'wpWatch' );
 	}
 
+	/**
+	 * Show the form
+	 * @param mixed $err Error message. May either be a string message name or 
+	 *    array message name and parameters, like the second argument to 
+	 *    OutputPage::wrapWikiMsg(). 
+	 */
 	function showForm( $err ) {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgFixDoubleRedirects;
 
 		$skin = $wgUser->getSkin();
 
@@ -95,21 +103,17 @@ class MovePageForm {
 			# when the form is first opened.
 			$newTitle = $this->oldTitle;
 		}
-		// WTF is this doing, passing title *object* to newFromUrl()??
-		/*else {
+		else {
 			if( empty($err) ) {
-				$nt = Title::newFromURL( $this->newTitle );
-				if( $nt ) {
-					# If a title was supplied, probably from the move log revert
-					# link, check for validity. We can then show some diagnostic
-					# information and save a click.
-					$newerr = $this->oldTitle->isValidMoveOperation( $nt );
-					if( is_string( $newerr ) ) {
-						$err = $newerr;
-					}
+				# If a title was supplied, probably from the move log revert
+				# link, check for validity. We can then show some diagnostic
+				# information and save a click.
+				$newerr = $this->oldTitle->isValidMoveOperation( $newTitle );
+				if( $newerr ) {
+					$err = $newerr[0];
 				}
 			}
-		}*/
+		}
 
 		if ( !empty($err) && $err[0] == 'articleexists' && $wgUser->isAllowed( 'delete' ) ) {
 			$wgOut->addWikiMsg( 'delete_and_move_text', $newTitle->getPrefixedText() );
@@ -134,12 +138,16 @@ class MovePageForm {
 		$considerTalk = ( !$this->oldTitle->isTalkPage() && $oldTalk->exists() );
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$hasRedirects = $dbr->selectField( 'redirect', '1', 
-			array( 
-				'rd_namespace' => $this->oldTitle->getNamespace(),
-				'rd_title' => $this->oldTitle->getDBkey(),
-			) , __METHOD__ );
-		
+		if ( $wgFixDoubleRedirects ) {
+			$hasRedirects = $dbr->selectField( 'redirect', '1', 
+				array( 
+					'rd_namespace' => $this->oldTitle->getNamespace(),
+					'rd_title' => $this->oldTitle->getDBkey(),
+				) , __METHOD__ );
+		} else {
+			$hasRedirects = false;
+		}
+
 		if ( $considerTalk ) {
 			$wgOut->addWikiMsg( 'movepagetalktext' );
 		}
@@ -196,6 +204,18 @@ class MovePageForm {
 					<td></td>
 					<td class='mw-input'>" .
 						Xml::checkLabel( wfMsg( 'movetalk' ), 'wpMovetalk', 'wpMovetalk', $this->moveTalk ) .
+					"</td>
+				</tr>"
+			);
+		}
+
+		if ( $wgUser->isAllowed( 'suppressredirect' ) ) {
+			$wgOut->addHTML( "
+				<tr>
+					<td></td>
+					<td class='mw-input' >" .
+						Xml::checkLabel( wfMsg( 'move-leave-redirect' ), 'wpLeaveRedirect', 
+							'wpLeaveRedirect', $this->leaveRedirect ) .
 					"</td>
 				</tr>"
 			);
@@ -263,6 +283,7 @@ class MovePageForm {
 
 	function doSubmit() {
 		global $wgOut, $wgUser, $wgRequest, $wgMaximumMovedPages, $wgLang;
+		global $wgFixDoubleRedirects;
 
 		if ( $wgUser->pingLimiter( 'move' ) ) {
 			$wgOut->rateLimited();
@@ -294,13 +315,20 @@ class MovePageForm {
 			return;
 		}
 
-		$error = $ot->moveTo( $nt, true, $this->reason );
+		if ( $wgUser->isAllowed( 'suppressredirect' ) ) {
+			$createRedirect = $this->leaveRedirect;
+		} else {
+			$createRedirect = true;
+		}
+
+		$error = $ot->moveTo( $nt, true, $this->reason, $createRedirect );
 		if ( $error !== true ) {
-			call_user_func_array( array($this, 'showForm'), $error );
+			# FIXME: show all the errors in a list, not just the first one
+			$this->showForm( reset( $error ) );
 			return;
 		}
 
-		if ( $this->fixRedirects ) {
+		if ( $wgFixDoubleRedirects && $this->fixRedirects ) {
 			DoubleRedirectJob::fixRedirects( 'move', $ot, $nt );
 		}
 

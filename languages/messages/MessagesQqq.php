@@ -348,6 +348,12 @@ The format is: "{{int:youhavenewmessages| [[MediaWiki:Newmessageslink/{{SUBPAGEN
 {{Identical|Edit}}',
 'editsection-brackets'    => '{{doc-important|This message should most probably not be translated.}}',
 'editold'                 => '{{Identical|Edit}}',
+'editlink'                => 'Text of the edit link shown next to every (editable) template in the list of used templates below the edit window. See also {{msg-mw|Viewsourcelink}}.
+
+{{Identical|Edit}}',
+'viewsourcelink'          => 'Text of the link shown next to every uneditable (protected) template in the list of used templates below the edit window. See also {{msg-mw|Editlink}}.
+
+{{Identical|View source}}',
 'editsectionhint'         => "Tool tip shown when hovering the mouse over the link to '[{{MediaWiki:Editsection}}]' a section. Example: Edit section: Heading name",
 'toc'                     => 'This is the title of the table of contents displayed in pages with more than 3 sections
 
@@ -427,7 +433,9 @@ The title of the warning is the message [[MediaWiki:Nosuchspecialpage/{{SUBPAGEN
 'internalerror'        => '{{Identical|Internal error}}',
 'badtitle'             => '{{Identical|Bad title}}',
 'querypage-no-updates' => 'Text on some special pages, e.g. [[Special:FewestRevisions]].',
-'viewsource'           => 'the text displayed in place of the "edit" tab when the user has no permission to edit the page',
+'viewsource'           => 'The text displayed in place of the "edit" tab when the user has no permission to edit the page.
+
+{{Identical|View source}}',
 'viewsourcefor'        => 'Subtitle shown when trying to edit a protected page.
 
 {{Identical|For $1}}',
@@ -494,8 +502,7 @@ The title of the warning is the message [[MediaWiki:Nosuchspecialpage/{{SUBPAGEN
 * [[Special:CreateAccount]]
 
 $1 is the minimum number of characters in the password.',
-'mailmypassword'             => 'Shown at [[Special:UserLogin]]
-{{Identical|E-mail password}}',
+'mailmypassword'             => 'Shown at [[Special:UserLogin]]',
 'passwordremindertitle'      => 'Title of e-mail which contains temporary password',
 'passwordremindertext'       => 'This text is used in an e-mail sent when a user requests a new temporary password (he has forgotten his password) or when an sysop creates a new user account choosing to have password and username sent to the new user by e-mail.
 * $1 is an IP addres. Example: 123.123.123.123
@@ -605,7 +612,7 @@ Parameter $1 is the content of section parameter in the URL (for example 1234 in
 'hiddencategories'                 => "This message is shown below the edit form, like you have a section ''\"Templates used on this page\"''.",
 'edittools'                        => 'This text will be shown below edit and upload forms. It can be used to offer special characters not present on most keyboards for copying/pasting, and also often makes them clickable for insertion via a javascript. Since these are seen as specific to a wiki, however, this message should not contain anything but an html comment explaining how it should be used once the wiki has been installed.',
 'permissionserrorstext-withaction' => '* $1 is the number of reasons that were found why the action cannot be performed.
-* $2 is one of the right-* messages.
+* $2 is one of the action-* messages (for example {{msg|action-edit}}).
 
 Please report at [[Support]] if you are unable to properly translate this message. Also see [[bugzilla:14246]]',
 'recreate-deleted-warn'            => 'Warning shown when creating a page which has already been deleted. See for example [[Test]].',
@@ -620,36 +627,36 @@ Please report at [[Support]] if you are unable to properly translate this messag
 'post-expand-template-inclusion-category' => 'When templates are expanded, there is a size limit for the number of bytes yielded. Usually that occurs from excessively nested templates, recursive templates, or ones having x-zillion of #if #case or similar contructs in them. When the wikicode parser detects this, it outputs a red warning message to the page.',
 
 # History pages
-'viewpagelogs'        => 'Link displayed in history of pages',
-'currentrev'          => '{{Identical|Current revision}}',
-'currentrev-asof'     => 'The text appears at the right side when comparing 2 different edits of the same page. For example: [http://translatewiki.net/w/i.php?title=FreeCol%3AIntegerAboveZero%2Fca&diff=788645&oldid=788644]',
-'revisionasof'        => "Used on a difference page when comparing different versions of a page or when viewing an non-current version of a page. \$1 is the date/time at which the revision was created. Example: \"''Revision as of 14:44, 24 January 2008''\".",
-'revision-info'       => 'Appears just below the page title when an old version of the page is being viewed.
+'viewpagelogs'           => 'Link displayed in history of pages',
+'currentrev'             => '{{Identical|Current revision}}',
+'currentrev-asof'        => 'The text appears at the right side when comparing 2 different edits of the same page. For example: [http://translatewiki.net/w/i.php?title=FreeCol%3AIntegerAboveZero%2Fca&diff=788645&oldid=788644]',
+'revisionasof'           => "Used on a difference page when comparing different versions of a page or when viewing an non-current version of a page. \$1 is the date/time at which the revision was created. Example: \"''Revision as of 14:44, 24 January 2008''\".",
+'revision-info'          => 'Appears just below the page title when an old version of the page is being viewed.
 
 $1 indicates the time of that revision and 
 $2 the author of the revision',
-'currentrevisionlink' => '{{Identical|Current revision}}',
-'cur'                 => 'Link in page history',
-'next'                => 'Link in page history
+'currentrevisionlink'    => '{{Identical|Current revision}}',
+'cur'                    => 'Link in page history',
+'next'                   => 'Link in page history
 
 {{Identical|Next}}',
-'last'                => 'Link in page history
+'last'                   => 'Link in page history
 
 {{Identical|Last}}',
-'page_first'          => "This is part of the navigation message on the top and bottom of Special pages which are lists of things in alphabetical order, e.g. the 'Categories' special page. It is followed by the message [[Mediawiki:viewprevnext]].
+'page_first'             => "This is part of the navigation message on the top and bottom of Special pages which are lists of things in alphabetical order, e.g. the 'Categories' special page. It is followed by the message [[Mediawiki:viewprevnext]].
 
 first",
-'page_last'           => "This is part of the navigation message on the top and bottom of Special pages which are lists of things in alphabetical order, e.g. the 'Categories' special page. It is followed by the message [[Mediawiki:viewprevnext]].
+'page_last'              => "This is part of the navigation message on the top and bottom of Special pages which are lists of things in alphabetical order, e.g. the 'Categories' special page. It is followed by the message [[Mediawiki:viewprevnext]].
 
 {{Identical|Last}}",
-'histlegend'          => 'Text in history page',
-'history-search'      => 'Fieldset label in the edit history pages.',
-'deletedrev'          => 'When comparing deleted revisions for sysops
+'histlegend'             => 'Text in history page',
+'history-fieldset-title' => 'Fieldset label in the edit history pages.',
+'deletedrev'             => 'When comparing deleted revisions for sysops
 
 {{Identical|Deleted}}',
-'histfirst'           => 'Used in page history.',
-'histlast'            => 'Used in page history.',
-'historyempty'        => 'Text in page history for empty page revisions
+'histfirst'              => 'Used in page history.',
+'histlast'               => 'Used in page history.',
+'historyempty'           => 'Text in page history for empty page revisions
 
 {{Identical|Empty}}',
 
@@ -737,9 +744,17 @@ Parameter $1 is either {{msg|revdelete-content}} (when unhiding the page content
 'editundo'                => 'Undo link when viewing diffs',
 'diff-multi'              => "This message appears in the revision history of a page when comparing two versions which aren't consecutive.",
 'diff-src'                => '{{Identical|Source}}',
+'diff-with'               => '* "<code><nowiki>&amp;#32;</nowiki></code>" is a forced space; leave it in if your language uses spaces
+* $1 is <need more info>
+* $2 is <need more info>
+Used in conjunction with {{msg-mw|diff-with-additional}} and {{msg-mw|diff-with-final}} in the head position before a {{msg-mw|comma-separator}} separated list.',
+'diff-with-additional'    => '* $1 is <need more info>
+* $2 is <need more info>
+Used, possibly repeatedly, in a {{msg-mw|comma-separator}} separated list after {{msg-mw|diff-with}} and before {{msg-mw|diff-with-final}}.',
 'diff-with-final'         => '* "<code><nowiki>&amp;#32;</nowiki></code>" is a forced space; leave it in if your language uses spaces
 * $1 is <need more info>
-* $2 is <need more info>',
+* $2 is <need more info>
+Used in the final position of a {{msg-mw|comma-separator}} separated list headed by {{msg-mw|diff-with}} followed by zero or more repetitions of {{msg-mw|diff-with-additional}}.',
 'diff-width'              => '{{Identical|Width}}',
 'diff-height'             => '{{Identical|Height}}',
 
@@ -968,6 +983,40 @@ The rate limits have no effect on the groups that have this right. Rate limits i
 
 {{Identical|None}}',
 
+# Associated actions - in the sentence "You do not have permission to X"
+'action-read'                 => '{{Doc-action}}',
+'action-edit'                 => '{{Doc-action}}',
+'action-createpage'           => '{{Doc-action}}',
+'action-createtalk'           => '{{Doc-action}}',
+'action-createaccount'        => '{{Doc-action}}',
+'action-minoredit'            => '{{Doc-action}}',
+'action-move'                 => '{{Doc-action}}',
+'action-move-subpages'        => '{{Doc-action}}',
+'action-upload'               => '{{Doc-action}}',
+'action-reupload'             => '{{Doc-action}}',
+'action-reupload-shared'      => '{{Doc-action}}',
+'action-upload_by_url'        => '{{Doc-action}}',
+'action-writeapi'             => '{{Doc-action}}',
+'action-delete'               => '{{Doc-action}}',
+'action-deleterevision'       => '{{Doc-action}}',
+'action-deletedhistory'       => '{{Doc-action}}',
+'action-browsearchive'        => '{{Doc-action}}',
+'action-undelete'             => '{{Doc-action}}',
+'action-suppressrevision'     => '{{Doc-action}}',
+'action-suppressionlog'       => '{{Doc-action}}',
+'action-block'                => '{{Doc-action}}',
+'action-protect'              => '{{Doc-action}}',
+'action-import'               => '{{Doc-action}}',
+'action-importupload'         => '{{Doc-action}}',
+'action-patrol'               => '{{Doc-action}}',
+'action-autopatrol'           => '{{Doc-action}}',
+'action-unwatchedpages'       => '{{Doc-action}}',
+'action-trackback'            => '{{Doc-action}}',
+'action-mergehistory'         => '{{Doc-action}}',
+'action-userrights'           => '{{Doc-action}}',
+'action-userrights-interwiki' => '{{Doc-action}}',
+'action-siteadmin'            => '{{Doc-action}}',
+
 # Recent changes
 'nchanges'             => 'Appears on the [[Special:RecentChanges]] special page in brackets after pages having more than one change on that date. $1 is the number of changes on that day.',
 'recentchanges'        => 'The text of the link in sidebar going to the special page [[Special:RecentChanges]]. Also the page title of that special page.
@@ -983,10 +1032,6 @@ The rate limits have no effect on the groups that have this right. Rate limits i
 * $5 is a time alone.
 
  Example: "\'\'Below are the last 50 changes in the last 7 days, as of 14:48, 24 January 2008.\'\'"',
-'rcnotefrom'           => 'This message is displayed at [[Special:RecentChanges]] when viewing recentchanges from some specific time.
-
-Parameter $1 is the maximum number of changes that are displayed.
-Parameter $2 is a date and time.',
 'rclistfrom'           => 'Used on [[Special:RecentChanges]]. Parameter $1 is a date.',
 'rcshowhideminor'      => 'Option text in [[Special:RecentChanges]]',
 'rcshowhidebots'       => "Option text in [[Special:RecentChanges]]. $1 is the 'show/hide' command, with the text taken from either [[Mediawiki:Show]] or [[Mediawiki:Hide]].
@@ -1093,9 +1138,9 @@ Parameter $1 is a link to the deletion log, with the text in {{msg|deletionlog}}
 'filehist-thumb'                 => 'Shown in the file history list of a file desription page.
 
 Example: [[:Image:Addon-icn.png]]',
-'filehist-thumbtext'             => 'Shown in the file history list of a file description page.
+'filehist-thumbtext'             => "Shown in the file history list of a file description page. '''$1''' is a time followed by a date, e.g. ''10:23, 18 april 2007''.
 
-Example: [[wikipedia:Image:Madeleine close2.jpg]]',
+Example: [[wikipedia:Image:Madeleine close2.jpg]]",
 'filehist-nothumb'               => 'Shown if no thumbnail is available in the file history list of a file desription page.
 
 Example: [[:Image:Addon-icn.png]]',
@@ -1127,8 +1172,8 @@ Example: [[:Image:Addon-icn.png]]',
 'shareduploadduplicate-linktext' => '{{Identical|Another file}}',
 'shareduploadconflict'           => '$1 is contents of message shareduploadconflict-linktext (i.e. "another file")',
 'shareduploadconflict-linktext'  => '{{Identical|Another file}}',
-'noimage'                        => 'In image description page when there is no file by that name.  The variable $1 comes from {{msg|noimage-linktext}}.',
-'noimage-linktext'               => 'This message is used as a variable in {{msg|noimage}}.',
+'noimage'                        => 'In image description page when there is no file by that name.  The variable $1 comes from {{msg|noimage-linktext}}, which is only substituted in this message.',
+'noimage-linktext'               => 'This message is used as a variable in {{msg|noimage}}, and will not be used anywhere else.',
 'imagepage-searchdupe'           => 'This message is used as text on a link from image pages to [[Special:FileDuplicateSearch]].',
 
 # File reversion
@@ -1378,7 +1423,11 @@ Example: [[:Image:Addon-icn.png]]',
 
 # E-mail user
 'emailuser'       => 'Link in the sidebar',
-'emailpagetext'   => 'This is the text that is displayed above the e-mail form on Special:EmailUser.',
+'emailpagetext'   => 'This is the text that is displayed above the e-mail form on Special:EmailUser.
+
+Special:EmailUser appears when you click on the link "E-mail this user" in the sidebar, but only if there is an e-mail address in the recipient\'s user preferences. If there isn\'t then the message [[Mediawiki:Noemailtext]] will appear instead of Special:EmailUser.',
+'noemailtitle'    => 'The title of the message that appears instead of Special:EmailUser after clicking the "E-mail this user" link in the sidebar, if no e-mail can be sent to the user.',
+'noemailtext'     => 'The text of the message that appears instead of Special:EmailUser after clicking the "E-mail this user" link in the sidebar, if no e-mail can be sent to the user.',
 'email-legend'    => 'Title of the box in [[Special:EmailUser]]',
 'emailfrom'       => 'Field in [[Special:EmailUser]].',
 'emailto'         => 'Field in [[Special:EmailUser]].',
@@ -1498,7 +1547,9 @@ Shown as subtitle of the protection form. $1 is the title of the page to be (un)
 {{Identical|Other time}}',
 'protect-existing-expiry' => 'Shows the existing expiry time in the drop down menu of the protection form ([http://translatewiki.net/w/i.php?title=User:Raymond/test&action=unprotect example])
 
-* $1: date and time of the existing expiry time',
+* $1: date and time of the existing expiry time (kept for backward compatibility purposes)
+* $2: date of the existing expiry time
+* $3: time of the existing expiry time',
 'protect-otherreason'     => 'Shown on the page protection form as label for the following input field (text)
 {{Identical|Other/additional reason}}',
 'protect-otherreason-op'  => 'Shown on the page protection form in the drop down menu
@@ -1550,12 +1601,15 @@ Shown as subtitle of the protection form. $1 is the title of the page to be (un)
 {{Identical|Restore}}',
 'undeletereset'          => 'Shown on [[Special:Undelete]] as button caption.
 {{Identical|Reset}}',
+'undeleteinvert'         => '{{Identical|Invert selection}}',
 'undeletecomment'        => '{{Identical|Comment}}',
 'undelete-search-submit' => '{{Identical|Search}}',
 
 # Namespace form on various pages
 'namespace'      => '{{Identical|Namespace}}',
-'invert'         => 'Displayed in [[Special:RecentChanges]].',
+'invert'         => 'Displayed in [[Special:RecentChanges]].
+
+{{Identical|Invert selection}}',
 'blanknamespace' => 'Name for main namespace (blank namespace) in drop-down menus at [[Special:RecentChanges]] and other special pages.',
 
 # Contributions
@@ -1611,61 +1665,71 @@ Example line:
 'whatlinkshere-filters'    => '{{Identical|Filter}}',
 
 # Block/unblock
-'blockip'                     => 'The title of the special page [[Special:BlockIP]].
+'blockip'                      => 'The title of the special page [[Special:BlockIP]].
 
 {{Identical|Block user}}',
-'blockip-legend'              => 'Legend/Header for the fieldset around the input form of [[Special:BlockIP]].
+'blockip-legend'               => 'Legend/Header for the fieldset around the input form of [[Special:BlockIP]].
 
 {{Identical|Block user}}',
-'ipaddress'                   => '{{Identical|IP Address}}',
-'ipbexpiry'                   => '{{Identical|Expiry}}',
-'ipbreason'                   => 'Label of the block reason dropdown in [[Special:BlockIP]] and the unblock reason textfield in [{{fullurl:Special:IPBlockList|action=unblock}} Special:IPBlockList?action=unblock].
+'ipaddress'                    => '{{Identical|IP Address}}',
+'ipbexpiry'                    => '{{Identical|Expiry}}',
+'ipbreason'                    => 'Label of the block reason dropdown in [[Special:BlockIP]] and the unblock reason textfield in [{{fullurl:Special:IPBlockList|action=unblock}} Special:IPBlockList?action=unblock].
 
 {{Identical|Reason}}',
-'ipbreasonotherlist'          => '{{Identical|Other reason}}',
-'ipbanononly'                 => '{{Identical|Block anonymous users only}}',
-'ipbcreateaccount'            => '{{Identical|Prevent account creation}}',
-'ipbemailban'                 => '{{Identical|Prevent user from sending e-mail}}',
-'ipbenableautoblock'          => '{{Identical|Automatically block ...}}',
-'ipbsubmit'                   => '{{Identical|Block this user}}',
-'ipbother'                    => '{{Identical|Other time}}',
-'ipboptions'                  => "* Description: Options for the duration of the block. 
+'ipbreasonotherlist'           => '{{Identical|Other reason}}',
+'ipbanononly'                  => '{{Identical|Block anonymous users only}}',
+'ipbcreateaccount'             => '{{Identical|Prevent account creation}}',
+'ipbemailban'                  => '{{Identical|Prevent user from sending e-mail}}',
+'ipbenableautoblock'           => '{{Identical|Automatically block ...}}',
+'ipbsubmit'                    => '{{Identical|Block this user}}',
+'ipbother'                     => '{{Identical|Other time}}',
+'ipboptions'                   => "* Description: Options for the duration of the block. 
 * <font color=\"red\">Be careful:</font> '''1 translation:1 english''', so the first part is the translation and the second part should stay in English. 
 * Example: See e.g. [[MediaWiki:Ipboptions/nl]] if you still don't know how to do it.", # display1:time1,display2:time2,...
-'ipbotheroption'              => '{{Identical|Other}}',
-'ipbotherreason'              => '{{Identical|Other/additional reason}}',
-'ipbhidename'                 => 'This is the label for a checkbox in the user block form on [[Special:BlockIP]].',
-'ipbwatchuser'                => 'This is an option on [[Special:BlockIP]] to watch the user page and talk page of the blocked user',
-'ipballowusertalk'            => 'Option in [[Special:BlockIP]] that allows the blocked user to edit own talk page.',
-'ipb-edit-dropdown'           => 'Shown beneath the user block form on the right side. It is a link to [[MediaWiki:Ipbreason-dropdown]]. See also {{msg|Delete-edit-reasonlist}} and {{msg|Protect-edit-reasonlist}}.',
-'ipblocklist-submit'          => '{{Identical|Search}}',
-'blocklistline'               => 'This is the text of an entry in the Special:IPBlockList.
+'ipbotheroption'               => '{{Identical|Other}}',
+'ipbotherreason'               => '{{Identical|Other/additional reason}}',
+'ipbhidename'                  => 'This is the label for a checkbox in the user block form on [[Special:BlockIP]].',
+'ipbwatchuser'                 => 'This is an option on [[Special:BlockIP]] to watch the user page and talk page of the blocked user',
+'ipballowusertalk'             => 'Option in [[Special:BlockIP]] that allows the blocked user to edit own talk page.',
+'ipb-edit-dropdown'            => 'Shown beneath the user block form on the right side. It is a link to [[MediaWiki:Ipbreason-dropdown]]. See also {{msg|Delete-edit-reasonlist}} and {{msg|Protect-edit-reasonlist}}.',
+'ipblocklist-sh-userblocks'    => 'Top selection button at [[Special:IPBlockList]], which means Show/Hide indefinite blocks
+
+* $1 - word "{{msg|Hide}}" or "{{msg|Show}}"',
+'ipblocklist-sh-tempblocks'    => 'Top selection button at [[Special:IPBlockList]]
+
+* $1 - word "{{msg|Hide}}" or "{{msg|Show}}"',
+'ipblocklist-sh-addressblocks' => 'Top selection button at [[Special:IPBlockList]]
+
+* $1 - word "{{msg|Hide}}" or "{{msg|Show}}"',
+'ipblocklist-submit'           => '{{Identical|Search}}',
+'blocklistline'                => 'This is the text of an entry in the Special:IPBlockList.
 *$1 is the hour and date of the block. 
 *$2 is the sysop. 
 *$3 is the blocked user or IP (with link to contributions and talk)
 *$4 contains "hour and date of expiry, details (\'\'reason\'\')"
 
 See also [[MediaWiki:Blocklogentry]].',
-'anononlyblock'               => '{{Identical|Anon only}}',
-'noautoblockblock'            => '{{Identical|Autoblock disabled}}',
-'emailblock'                  => '{{Identical|E-mail blocked}}',
-'blocklink'                   => "Display name for a link that, when selected, leads to a form where a user can be blocked. Used in page history and recent changes pages. Example: \"''UserName (Talk | contribs | '''block''')''\".",
-'contribslink'                => 'Short for "contributions". Used as display name for a link to user contributions on history pages, [[Special:RecentChanges]], [[Special:Watchlist]], etc.',
-'blocklogpage'                => '{{Identical|Block log}}',
-'blocklog-fulllog'            => 'Shown at Special:BlockIP at the end of the block log if there are more than 10 entries for this user, see [[Special:BlockIP/Raymond]] as example (visible for sysops only).',
-'blocklogentry'               => 'This is the text of an entry in the Block log (and RC), after hour (and date, only in the Block log) and sysop name: 
+'anononlyblock'                => '{{Identical|Anon only}}',
+'noautoblockblock'             => '{{Identical|Autoblock disabled}}',
+'emailblock'                   => '{{Identical|E-mail blocked}}',
+'blocklist-nousertalk'         => 'Used in [[Special:IPBlockList]] when "Allow this user to edit own talk page while blocked" option hasn\'t been flagged. See also {{msg-mw|Block-log-flags-nousertalk}}.',
+'blocklink'                    => "Display name for a link that, when selected, leads to a form where a user can be blocked. Used in page history and recent changes pages. Example: \"''UserName (Talk | contribs | '''block''')''\".",
+'contribslink'                 => 'Short for "contributions". Used as display name for a link to user contributions on history pages, [[Special:RecentChanges]], [[Special:Watchlist]], etc.',
+'blocklogpage'                 => '{{Identical|Block log}}',
+'blocklog-fulllog'             => 'Shown at Special:BlockIP at the end of the block log if there are more than 10 entries for this user, see [[Special:BlockIP/Raymond]] as example (visible for sysops only).',
+'blocklogentry'                => 'This is the text of an entry in the Block log (and RC), after hour (and date, only in the Block log) and sysop name: 
 *$1 is the blocked user or IP (with link to contributions and talk)
 *$2 is the duration of the block (hours, days etc.) or the specified expiry date
 *$3 contains "(details) (\'\'reason\'\')"
 See also [[MediaWiki:Blocklistline]].',
-'block-log-flags-noautoblock' => '{{Identical|Autoblock disabled}}',
-'block-log-flags-noemail'     => "Log message for [[Special:Log/block]] to note that a user cannot use the 'email another user' option.
+'block-log-flags-noautoblock'  => '{{Identical|Autoblock disabled}}',
+'block-log-flags-noemail'      => "Log message for [[Special:Log/block]] to note that a user cannot use the 'email another user' option.
 
 {{Identical|E-mail blocked}}",
-'block-log-flags-nousertalk'  => 'Used in [[Special:Log/block]] when "Allow this user to edit own talk page while blocked" option hasn\'t been flagged.',
-'ipb_expiry_temp'             => 'Warning message displayed on [[Special:BlockIP]] if the option "hide username" is selected but the expiry time is not infinite.',
-'ipb_already_blocked'         => '{{Identical|$1 is already blocked}}',
-'blockme'                     => 'The page title of [[Special:Blockme]], a feature which is disabled by default.',
+'block-log-flags-nousertalk'   => 'Used in [[Special:Log/block]] when "Allow this user to edit own talk page while blocked" option hasn\'t been flagged. See also {{msg-mw|Blocklist-nousertalk}}.',
+'ipb_expiry_temp'              => 'Warning message displayed on [[Special:BlockIP]] if the option "hide username" is selected but the expiry time is not infinite.',
+'ipb_already_blocked'          => '{{Identical|$1 is already blocked}}',
+'blockme'                      => 'The page title of [[Special:Blockme]], a feature which is disabled by default.',
 
 # Developer tools
 'lockdb'              => 'The title of the special page [[Special:LockDB]].
@@ -1695,6 +1759,8 @@ Shown as subtitle of [[Special:MovePage/testpage]]. $1 is the title of the page 
 'movearticle'             => 'The text before the name of the page that you are moving.
 
 {{Identical|Move page}}',
+'movenologin'             => '{{Identical|Not logged in}}',
+'movenologintext'         => "Text of message on special page 'Permissions Errors', which appears when somebody tries to move a page without being logged in.",
 'newtitle'                => 'Used in the special page "[[Special:MovePage]]". The text for the inputbox to give the new page title.',
 'move-watch'              => 'The text of the checkbox to watch the page you are moving.
 
@@ -2206,5 +2272,9 @@ $1 is the name of the requested file.',
 
 # Special:BlankPage
 'intentionallyblankpage' => 'Text displayed in [[Special:BlankPage]].',
+
+# Special:Nuke
+'nuke-submit-user' => '{{Identical|Go}}',
+'right-nuke'       => '{{doc-right}}',
 
 );

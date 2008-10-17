@@ -511,7 +511,7 @@ $messages = array(
 == Bastaw üşin ==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Baptalım qalawlarınıñ tizimi]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MedïaWïkïdiñ Jïı Qoýılğan Sawaldarı]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MedïaWïkï şığw twralı xat taratw tizimi]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MedïaWïkï şığw twralı xat taratw tizimi]',
 
 'about'          => 'Joba twralı',
 'article'        => 'Mağlumat beti',
@@ -1387,7 +1387,6 @@ baptaw üşin math/README qujatın qarañız.',
 'recentchangestext'                 => 'Bul bette osı wïkïdegi bolğan jwıqtağı özgerister baýqaladı.',
 'recentchanges-feed-description'    => 'Bul arnamenen wïkïdegi eñ soñğı özgerister qadağalanadı.',
 'rcnote'                            => "$3 kezine deýin — tömende soñğı {{PLURAL:$2|kündegi|'''$2''' kündegi}}, soñğı '''$1''' özgeris körsetiledi.",
-'rcnotefrom'                        => "'''$2''' kezinen beri — tömende '''$1''' jetkenşe deýin özgerister körsetiledi.",
 'rclistfrom'                        => '$1 kezinen beri — jaña özgeristerdi körset.',
 'rcshowhideminor'                   => 'Şağın öñdemelerdi $1',
 'rcshowhidebots'                    => 'Bottardı $1',
@@ -2201,6 +2200,8 @@ osınıñ saldarın baýımdawıñızdı ärekettiñ aldınan batıl bolıñız.
 
 Osı oraýda, qalawıñız bolsa, betti qoldan jıljıta ne qosa alasız.",
 'movearticle'             => 'Jıljıtpaq bet:',
+'movenologin'             => 'Jüýege kirmegensiz',
+'movenologintext'         => 'Betti jıljıtw üşin tirkelgen bolwıñız jäne [[{{#special:Userlogin}}|kirwiñiz]] jön.',
 'movenotallowed'          => '{{SITENAME}} jobasında betterdi jıljıtw rwqsatıñız joq.',
 'newtitle'                => 'Jaña taqırıp atına:',
 'move-watch'              => 'Bul betti baqılaw',
@@ -2234,8 +2235,6 @@ Jıljıtwğa jol berw üşin bunı joyasız ba?',
 'delete_and_move_reason'  => 'Jıljıtwğa jol berw üşin joýılğan',
 'selfmove'                => 'Qaýnar jäne nısana taqırıp attarı birdeý;
 bet öziniñ üstine jıljıtılmaýdı.',
-'immobile_namespace'      => 'Qaýnar ne nısana taqırıp atı arnawlı türine jatadı;
-better bul esim ayası sırtına jäne işine jıljıtılmaýdı.',
 'imagenocrossnamespace'   => 'Faýl emes esim ayasına faýl jıljıtılmaýdı',
 'imagetypemismatch'       => 'Faýldıñ jaña keñeýtimi bunıñ türine säýkes emes',
 

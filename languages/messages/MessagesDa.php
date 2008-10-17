@@ -10,8 +10,10 @@
  * @author Jan Friberg
  * @author Jon Harald Søby
  * @author Lars J. Helbo <lars.helbo@gmail.com>
+ * @author MinuteElectron
  * @author Morten LJ
  * @author Peter Andersen
+ * @author Remember the dot
  */
 
 $namespaceNames = array(
@@ -409,12 +411,12 @@ $messages = array(
 'red-link-title'          => '$1 (uoprettet)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'      => 'artikel',
+'nstab-main'      => 'Side',
 'nstab-user'      => 'brugerside',
 'nstab-media'     => 'medie',
 'nstab-special'   => 'speciel',
 'nstab-project'   => 'om',
-'nstab-image'     => 'billede',
+'nstab-image'     => 'Fil',
 'nstab-mediawiki' => 'besked',
 'nstab-template'  => 'skabelon',
 'nstab-help'      => 'hjælp',
@@ -593,7 +595,7 @@ Denne besked kan ignorewres, hvis denne konto er oprettet som følge af en fejl.
 'resetpass_submit'        => 'Send password og log på',
 'resetpass_success'       => 'Dit password er nu ændret. Nu følger tilmelding …',
 'resetpass_bad_temporary' => 'Ugyldigt foreløbigt password. Du har allerede ændret dit password eller bestilt et nyt foreløbigt password.',
-'resetpass_forbidden'     => 'Dette password kan ikke ændres på {{SITENAME}}.',
+'resetpass_forbidden'     => 'Dette password kan ikke ændres.',
 'resetpass_missing'       => 'Tom formular.',
 
 # Edit page toolbar
@@ -766,27 +768,27 @@ Der bør være færre end $2, lige nu er der $1.',
 'cantcreateaccount-text' => "Oprettelsen af en brugerkonto fra IP-adressen <b>$1</b> er spærret af [[User:$3|$3]]. Årsagen til blokeringen er angivet som ''$2''",
 
 # History pages
-'viewpagelogs'        => 'Vis loglister for denne side',
-'nohistory'           => 'Der er ingen versionshistorik for denne side.',
-'currentrev'          => 'Nuværende version',
-'revisionasof'        => 'Versionen fra $1',
-'revision-info'       => 'Version fra $1 til $2',
-'previousrevision'    => '←Ældre version',
-'nextrevision'        => 'Nyere version→',
-'currentrevisionlink' => 'se nuværende version',
-'cur'                 => 'nuværende',
-'next'                => 'næste',
-'last'                => 'forrige',
-'page_first'          => 'Startem',
-'page_last'           => 'Enden',
-'histlegend'          => 'Forklaring: (nuværende) = forskel til den nuværende
+'viewpagelogs'           => 'Vis loglister for denne side',
+'nohistory'              => 'Der er ingen versionshistorik for denne side.',
+'currentrev'             => 'Nuværende version',
+'revisionasof'           => 'Versionen fra $1',
+'revision-info'          => 'Version fra $1 til $2',
+'previousrevision'       => '←Ældre version',
+'nextrevision'           => 'Nyere version→',
+'currentrevisionlink'    => 'se nuværende version',
+'cur'                    => 'nuværende',
+'next'                   => 'næste',
+'last'                   => 'forrige',
+'page_first'             => 'Startem',
+'page_last'              => 'Enden',
+'histlegend'             => 'Forklaring: (nuværende) = forskel til den nuværende
 version, (forrige) = forskel til den forrige version, M = mindre ændring',
-'history-search'      => 'Find dato',
-'deletedrev'          => '[slettet]',
-'histfirst'           => 'Ældste',
-'histlast'            => 'Nyeste',
-'historysize'         => '($1 {{PLURAL:$1|Byte|Bytes}})',
-'historyempty'        => '(tom)',
+'history-fieldset-title' => 'Find dato',
+'deletedrev'             => '[slettet]',
+'histfirst'              => 'Ældste',
+'histlast'               => 'Nyeste',
+'historysize'            => '($1 {{PLURAL:$1|Byte|Bytes}})',
+'historyempty'           => '(tom)',
 
 # Revision feed
 'history-feed-title'          => 'Versionshistorie',
@@ -880,7 +882,7 @@ Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 'lineno'                  => 'Linje $1:',
 'compareselectedversions' => 'Sammenlign valgte versioner',
 'editundo'                => 'annuller',
-'diff-multi'              => "<span style='font-size: smaller'>(Versionssammenligningen medtager {{plural:$1|en mellemliggende version|$1 mellemliggende versioner}}.)</span>",
+'diff-multi'              => '(Versionssammenligningen medtager {{plural:$1|en mellemliggende version|$1 mellemliggende versioner}}.)',
 
 # Search results
 'searchresults'             => 'Søgeresultater',
@@ -1098,7 +1100,6 @@ Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 'recentchangestext'                 => "På denne side kan du følge de seneste ændringer på '''{{SITENAME}}'''.",
 'recentchanges-feed-description'    => 'Med dette feed kan du følge de seneste ændringer på {{SITENAME}}.',
 'rcnote'                            => "Herunder ses {{PLURAL:$1|'''1''' ændring|de sidste '''$1''' ændringer}} fra {{PLURAL:$2|i dag|de sidste '''$2''' dage}} fra den $4, kl. $5.",
-'rcnotefrom'                        => 'Nedenfor ses ændringerne fra <b>$2</b> til <b>$1</b> vist.',
 'rclistfrom'                        => 'Vis nye ændringer startende fra $1',
 'rcshowhideminor'                   => '$1 mindre ændringer',
 'rcshowhidebots'                    => '$1 robotter',
@@ -1198,7 +1199,7 @@ Kontroller om du har billedet i fuld størrelse og upload det under det original
 'uploadedimage'               => 'Lagde "[[$1]]" op',
 'overwroteimage'              => 'Lagde en ny version af "[[$1]]" op',
 'uploaddisabled'              => 'Desværre er funktionen til at lægge billeder op afbrudt på denne server.',
-'uploaddisabledtext'          => 'Upload af filer er deaktiveret på {{SITENAME}}.',
+'uploaddisabledtext'          => 'Upload af filer er deaktiveret.',
 'uploadscripted'              => 'Denne fil indeholder HTML eller script-kode, der i visse tilfælde can fejlfortolkes af en browser.',
 'uploadcorrupt'               => 'Denne fil er beskadiget eller forsynet med en forkert endelse. Kontroller venligst filen og prøv at lægge den op igen.',
 'uploadvirus'                 => 'Denne fil indeholder en virus! Virusnavn: $1',
@@ -1874,6 +1875,10 @@ $1',
 
 I disse tilfælde er du nødt til at flytte eller sammenflette siden manuelt.",
 'movearticle'             => 'Flyt side',
+'movenologin'             => 'Ikke logget på',
+'movenologintext'         => 'Du skal være registreret bruger og være [[Special:UserLogin|logget på]]
+
+for at flytte en side.',
 'movenotallowed'          => 'Du har ikke rettigheder til at flytte sider.',
 'newtitle'                => 'Til ny titel',
 'move-watch'              => 'Denne side overvåges',
@@ -1905,7 +1910,6 @@ Artiklen "[[:$1]]" eksisterer allerede. Vil du slette den for at lave plads til 
 'delete_and_move_confirm' => 'Slette eksisterende side før flytning',
 'delete_and_move_reason'  => 'Slet for at lave plads til flyningen',
 'selfmove'                => 'Begge sider har samme navn. Man kan ikke flytte en side oven i sig selv.',
-'immobile_namespace'      => 'Måltitlen er en speciel type; man kan ikke flytte sider ind i det navnerum.',
 'imagenocrossnamespace'   => 'Filer kan ikke flyttes til et navnerum der ikke indeholder filer',
 'imagetypemismatch'       => 'Den nye filendelse passer ikke til filtypen',
 'imageinvalidfilename'    => 'Destinationsnavnet er ugyldigt',

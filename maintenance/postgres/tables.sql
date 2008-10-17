@@ -173,6 +173,7 @@ CREATE TABLE templatelinks (
   tl_title      TEXT     NOT NULL
 );
 CREATE UNIQUE INDEX templatelinks_unique ON templatelinks (tl_namespace,tl_title,tl_from);
+CREATE INDEX templatelinks_from          ON templatelinks (tl_from);
 
 CREATE TABLE imagelinks (
   il_from  INTEGER  NOT NULL  REFERENCES page(page_id) ON DELETE CASCADE,
@@ -210,7 +211,7 @@ CREATE TABLE site_stats (
   ss_row_id         INTEGER  NOT NULL  UNIQUE,
   ss_total_views    INTEGER            DEFAULT 0,
   ss_total_edits    INTEGER            DEFAULT 0,
-  ss_good_articles  INTEGER             DEFAULT 0,
+  ss_good_articles  INTEGER            DEFAULT 0,
   ss_total_pages    INTEGER            DEFAULT -1,
   ss_users          INTEGER            DEFAULT -1,
   ss_active_users   INTEGER            DEFAULT -1,
@@ -240,7 +241,9 @@ CREATE TABLE ipblocks (
   ipb_range_start       TEXT,
   ipb_range_end         TEXT,
   ipb_deleted           SMALLINT     NOT NULL  DEFAULT 0,
-  ipb_block_email       SMALLINT     NOT NULL  DEFAULT 0
+  ipb_block_email       SMALLINT     NOT NULL  DEFAULT 0,
+  ipb_allow_usertalk    SMALLINT     NOT NULL  DEFAULT 0
+
 );
 CREATE UNIQUE INDEX ipb_address_unique ON ipblocks (ipb_address,ipb_user,ipb_auto,ipb_anon_only);
 CREATE INDEX ipb_user    ON ipblocks (ipb_user);
@@ -351,7 +354,7 @@ CREATE TABLE recentchanges (
   rc_params          TEXT
 );
 CREATE INDEX rc_timestamp       ON recentchanges (rc_timestamp);
-CREATE INDEX rc_timestamp_bot   ON recentchanges (rc_timestamp) WHERE rc_bot = '0';
+CREATE INDEX rc_timestamp_bot   ON recentchanges (rc_timestamp) WHERE rc_bot = 0;
 CREATE INDEX rc_namespace_title ON recentchanges (rc_namespace, rc_title);
 CREATE INDEX rc_cur_id          ON recentchanges (rc_cur_id);
 CREATE INDEX new_name_timestamp ON recentchanges (rc_new, rc_namespace, rc_timestamp);

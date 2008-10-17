@@ -268,7 +268,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lista de opções de configuração]
 * [http://www.mediawiki.org/wiki/Manual:FAQ FAQ do MediaWiki]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de discussão com avisos de novas versões do MediaWiki]',
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de discussão com avisos de novas versões do MediaWiki]',
 
 'about'          => 'Sobre',
 'article'        => 'Página de conteúdo',
@@ -1114,7 +1114,6 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desat
 'recentchangestext'                 => 'Veja as mais novas mudanças na {{SITENAME}} nesta página.',
 'recentchanges-feed-description'    => 'Acompanhe as Mudanças recentes deste wiki por este feed.',
 'rcnote'                            => "A seguir {{PLURAL:$1|está listada '''uma''' alteração ocorrida|estão listadas '''$1''' alterações ocorridas}} {{PLURAL:$2|no último dia|nos últimos '''$2''' dias}}, a partir das $5 de $4.",
-'rcnotefrom'                        => 'Abaixo estão as mudanças desde <b>$2</b> (mostradas até <b>$1</b>).',
 'rclistfrom'                        => 'Mostrar as novas alterações a partir de $1',
 'rcshowhideminor'                   => '$1 edições menores',
 'rcshowhidebots'                    => '$1 robôs',
@@ -1885,6 +1884,8 @@ Isto pode ser uma mudança drástica e inesperada para uma página popular; por 
 
 Nestes casos, você terá que mover ou mesclar a página manualmente, se assim desejar.",
 'movearticle'             => 'Mover página',
+'movenologin'             => 'Não autenticado',
+'movenologintext'         => 'Você precisa ser um usuário registrado e [[Special:UserLogin|autenticado]] para poder mover uma página.',
 'movenotallowed'          => 'Você não possui permissão de mover páginas neste wiki.',
 'newtitle'                => 'Para novo título',
 'move-watch'              => 'Vigiar esta página',
@@ -1915,7 +1916,6 @@ A página de destino ("[[:$1]]") já existe. Deseja eliminá-la de modo a poder 
 'delete_and_move_confirm' => 'Sim, eliminar a página',
 'delete_and_move_reason'  => 'Eliminada para poder mover outra página para este título',
 'selfmove'                => 'O título fonte e o título destinatário são os mesmos; não é possível mover uma página para ela mesma.',
-'immobile_namespace'      => 'O título destinatário é de um tipo especial; não é possível mover páginas para esse espaço nominal.',
 'imagenocrossnamespace'   => 'Não é possível mover imagem para espaço nominal que não de imagens',
 'imagetypemismatch'       => 'A extensão do novo arquivo não corresponde ao seu tipo',
 'imageinvalidfilename'    => 'O nome do arquivo alvo é inválido',

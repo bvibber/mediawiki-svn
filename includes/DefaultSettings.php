@@ -27,8 +27,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
  * Create a site configuration object
  * Not used for much in a default install
  */
-require_once( "$IP/includes/SiteConfiguration.php" );
-$wgConf = new SiteConfiguration;
+if ( !defined( 'MW_PHP4' ) ) {
+	require_once( "$IP/includes/SiteConfiguration.php" );
+	$wgConf = new SiteConfiguration;
+}
 
 /** MediaWiki version number */
 $wgVersion			= '1.14alpha';
@@ -539,10 +541,10 @@ $wgSMTP				= false;
  */
 /** database host name or ip address */
 $wgDBserver         = 'localhost';
-/** database port number */
-$wgDBport           = '';
+/** database port number (for PostgreSQL) */
+$wgDBport           = 5432;
 /** name of the database */
-$wgDBname           = 'wikidb';
+$wgDBname           = 'my_wiki';
 /** */
 $wgDBconnection     = '';
 /** Database username */
@@ -1181,7 +1183,6 @@ $wgGroupPermissions['sysop']['upload_by_url']    = true;
 $wgGroupPermissions['sysop']['ipblock-exempt']   = true;
 $wgGroupPermissions['sysop']['blockemail']       = true;
 $wgGroupPermissions['sysop']['markbotedits']     = true;
-$wgGroupPermissions['sysop']['suppressredirect'] = true;
 $wgGroupPermissions['sysop']['apihighlimits']    = true;
 $wgGroupPermissions['sysop']['browsearchive']    = true;
 $wgGroupPermissions['sysop']['noratelimit']      = true;
@@ -1384,7 +1385,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '179';
+$wgStyleVersion = '181';
 
 
 # Server-side caching:
@@ -1465,7 +1466,7 @@ $wgRCShowChangedSize				= true;
  * before and after the edit is below that value, the value will be
  * highlighted on the RC page.
  */
-$wgRCChangedSizeThreshold			= -500;
+$wgRCChangedSizeThreshold			= 500;
 
 /**
  * Show "Updated (since my last visit)" marker in RC view, watchlist and history
@@ -1953,6 +1954,13 @@ $wgSVGMaxSize = 2048;
  * 12.5 million pixels or 3500x3500
  */
 $wgMaxImageArea = 1.25e7;
+/**
+ * Force thumbnailing of animated GIFs above this size to a single
+ * frame instead of an animated thumbnail. ImageMagick seems to
+ * get real unhappy and doesn't play well with resource limits. :P
+ * Defaulting to 1 megapixel (1000x1000)
+ */
+$wgMaxAnimatedGifArea = 1.0e6;
 /**
  * If rendered thumbnail files are older than this timestamp, they
  * will be rerendered on demand as if the file didn't already exist.
@@ -3252,6 +3260,11 @@ $wgMaxShellMemory = 102400;
 $wgMaxShellFileSize = 102400;
 
 /**
+ * Maximum CPU time in seconds for shell processes under linux
+ */
+$wgMaxShellTime = 180;
+
+/**
 * Executable name of PHP cli client (php/php5)
 */
 $wgPhpCli = 'php';
@@ -3433,6 +3446,12 @@ $wgExpensiveParserFunctionLimit = 100;
 $wgMaximumMovedPages = 100;
 
 /**
+ * Fix double redirects after a page move.
+ * Tends to conflict with page move vandalism, use only on a private wiki. 
+ */
+$wgFixDoubleRedirects = false;
+
+/**
  * Array of namespaces to generate a sitemap for when the
  * maintenance/generateSitemap.php script is run, or false if one is to be ge-
  * nerated for all namespaces.
@@ -3465,3 +3484,15 @@ $wgAllowDBRightSubtraction = true;
  * and the like.
  */
 $wgRightsManagers = array( 'RightsManagerConfigDB', 'RightsManagerForeignDB' );
+
+/**
+ * Display user edit counts in various prominent places.
+ */
+$wgEdititis = false;
+
+/**
+* Enable the UniversalEditButton for browsers that support it
+* (currently only Firefox with an extension)
+* See http://universaleditbutton.org for more background information
+*/
+$wgUniversalEditButton = true;

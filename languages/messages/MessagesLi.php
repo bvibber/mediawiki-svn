@@ -183,7 +183,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lies mit instellinge]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki VGV (FAQ)]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki mailinglies veur nuuj versies]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki mailinglies veur nuuj versies]",
 
 'about'          => 'Informatie',
 'article'        => 'Contentpazjena',
@@ -824,8 +824,9 @@ Wees zeker det deze wieziging de gesjiedenisdoorloupendheid van de pagina zal be
 'powersearch-redir'         => 'Doorverwiezinge waergaeve',
 'powersearch-field'         => 'Zeuk nao',
 'search-external'           => 'Extern zeuke',
-'searchdisabled'            => '<p style="margin: 1.5em 2em 1em">Zeuke op {{SITENAME}} is oetgesjakeld vanweige gebrek aan servercapaciteit. Zoelang as de servers nog neet sjterk genog zunt kins e zeuke bie Google.
-<span style="font-size: 89%; display: block; margin-left: .2em">Mèrk op dat hun indexe van {{SITENAME}} content e bietje gedatierd kint zien.</span></p>',
+'searchdisabled'            => 'Zeuke op {{SITENAME}} is oetgesjakeld vanweige gebrek aan servercapaciteit.
+Zoelang as de servers nog neet sjterk genog zunt kins e zeuke bie Google.
+Mèrk op dat hun indexe van {{SITENAME}} content e bietje gedatierd kint zien.',
 
 # Preferences page
 'preferences'              => 'Veurkäöre',
@@ -1001,7 +1002,6 @@ Wees zeker det deze wieziging de gesjiedenisdoorloupendheid van de pagina zal be
 'recentchangestext'                 => 'literal translation',
 'recentchanges-feed-description'    => 'Volg de meis recente bewerkinge in deze wiki via deze feed.',
 'rcnote'                            => "Hiejónger {{PLURAL:$1|steit de letste bewerking|staon de letste '''$1''' bewerkinge}} van de aafgeloupe <strong>$2</strong> {{PLURAL:$2|daag|daag}}, op $3.",
-'rcnotefrom'                        => "Verangeringe sins <b>$2</b> (mit 'n maximum van <b>$1</b> verangeringe).",
 'rclistfrom'                        => 'Toen de verangeringe vanaaf $1',
 'rcshowhideminor'                   => '$1 klein bewèrkinge',
 'rcshowhidebots'                    => 'bots $1',
@@ -1759,6 +1759,8 @@ Vergaet neet de database opnuuj te [[Special:UnlockDB|deblokkere]] wens te klaor
 * es al 'n euverlikpazjena besjteit ónger de angere naam
 * es doe 't óngersjtaond vekske neet aanvinks",
 'movearticle'             => 'Verplaats pazjena',
+'movenologin'             => 'Neet aangemèld',
+'movenologintext'         => "Veur 't verplaatsje van 'n pazjena mos e zien [[Special:UserLogin|aangemèld]].",
 'movenotallowed'          => "De kèns gein pazjena's verplaatse.",
 'newtitle'                => 'Nao de nuje titel',
 'move-watch'              => 'Volg deze pazjena',
@@ -1788,7 +1790,6 @@ De doeltitel "[[:$1]]" besjteit al. Wils te dit artikel wisse óm ruumde te make
 'delete_and_move_confirm' => 'Jao, wis de pazjena',
 'delete_and_move_reason'  => 'Gewis óm artikel te kónne verplaatse',
 'selfmove'                => "De kèns 'n pazjena neet verplaatse nao dezelfde paginanaam.",
-'immobile_namespace'      => "De gewinsde paginanaam is van 'n speciaal type. 'ne Pazjena kin neet hernömp waere nao die naamruumde.",
 'imagenocrossnamespace'   => "'n Mediabestandj kin neet nao 'ne angere naamruumdje verplaats waere",
 'imagetypemismatch'       => "De nuje bestandjsextensie is neet gliek aan 't bestandjstype.",
 'imageinvalidfilename'    => 'De nuje bestandsnaam is ongeldig',
@@ -2491,5 +2492,15 @@ Gaef de bestandjsnaam zónger \'t "{{ns:image}}:" veurvoogsel.',
 # Special:BlankPage
 'blankpage'              => 'Laeg pazjena',
 'intentionallyblankpage' => 'Deze pagina is bewus laeg gelaote en wurt gebroek veur benchmarks, enzovoort.',
+
+# Special:Nuke
+'nuke'               => 'Massaal verwijdere',
+'nuke-nopages'       => "Gein nuje pagina's van [[special:Contributions/$1|$1]] in de recente wijziginge.",
+'nuke-list'          => "De onderstaonde pagina's zien recentelijk aangemaakt door [[Special:Contributions/$1|$1]]; voer 'n rede in en klik op de knop om ze te verwijdere/",
+'nuke-defaultreason' => "Massaal verwijdere van pagina's van $1",
+'nuke-tools'         => "Dit hulpmiddel maakt 't meugelik massaal pagina's te wisse die recentelijk zien aangemaakt door 'n gebroeker of IP-adres. Voer de gebroekersnaam of 't IP-adres in veur 'n lijst van te wisse pagina's:",
+'nuke-submit-user'   => 'Gao',
+'nuke-submit-delete' => 'Geslecteerd wisse',
+'right-nuke'         => "Massaal pagina's verwi'jdere",
 
 );

@@ -41,7 +41,7 @@ $namespaceNames = array(
 );
 
 $namespaceAliases = array(
-	NS_SPECIAL => 'Սպասարկող',
+	'Սպասարկող' => NS_SPECIAL,
 );
 
 $skinNames = array(
@@ -387,7 +387,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'about'          => 'Էությունը',
 'article'        => 'Հոդված',
@@ -1045,7 +1045,6 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'recentchangestext'                 => 'Հետևեք վիքիում կատարված վերջին փոփոխություններին այս էջում։',
 'recentchanges-feed-description'    => 'Հետևեք վիքիում կատարված վերջին փոփոխություններին այս սնուցման մեջ։',
 'rcnote'                            => 'Ստորև բերված են վերջին <strong>$1</strong> փոփոխությունները վերջին <strong>$2</strong> {{PLURAL:$2|օրվա|օրվա}} ընթացքում՝ $3-ի դրությամբ։',
-'rcnotefrom'                        => "Ստորև բերված են փոփոխությունները սկսած՝ '''$2''' (մինչև՝ '''$1''')։",
 'rclistfrom'                        => 'Ցույց տալ նոր փոփոխությունները սկսած $1',
 'rcshowhideminor'                   => '$1 չնչին խմբագրումները',
 'rcshowhidebots'                    => '$1 բոտերին',
@@ -1718,6 +1717,8 @@ $1',
 
 Այսպիսի դեպքերում հարկավոր է տեղափոխել կամ միաձուլել էջերը ձեռքով, եթե դա ցանկանաք։",
 'movearticle'             => 'Տեղափոխել էջը',
+'movenologin'             => 'Դուք չեք մտել համակարգ',
+'movenologintext'         => 'Անհրաժեշտ է [[Special:UserLogin|մտնել համակարգ]]՝ էջը տեղափոխելու համար։',
 'movenotallowed'          => 'Դուք չունեք {{SITENAME}}ում էջերի տեղափոխման իրավունք։',
 'newtitle'                => 'Նոր անվանում.',
 'move-watch'              => 'Հսկել էջը',

@@ -7,6 +7,7 @@
  * @author Clerc
  * @author Lin linao
  * @author Poquil
+ * @author Remember the dot
  */
 
 $fallback = 'es';
@@ -139,7 +140,7 @@ $messages = array(
 'restorelink'             => '{{PLURAL:$1|kiñe wirin ñamümgün|$1 wirin ñamümün}}',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'      => 'pakina',
+'nstab-main'      => 'Pakina',
 'nstab-user'      => 'Lludüchi',
 'nstab-special'   => 'Kangelu',
 'nstab-mediawiki' => 'Dungu',
@@ -181,10 +182,10 @@ $messages = array(
 'template-protected' => '(Ngünaytun)',
 
 # History pages
-'page_first'     => 'wünen',
-'history-search' => 'Kintun pünon',
-'deletedrev'     => '[ñamümüngelu]',
-'historyempty'   => '(welli)',
+'page_first'             => 'wünen',
+'history-fieldset-title' => 'Kintun pünon',
+'deletedrev'             => '[ñamümüngelu]',
+'historyempty'           => '(welli)',
 
 # Revision feed
 'history-feed-item-nocomment' => '$1 $2 mew', # user at time
