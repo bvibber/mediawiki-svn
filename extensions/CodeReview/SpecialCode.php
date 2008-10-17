@@ -89,7 +89,6 @@ class SpecialCode extends SpecialPage {
  */
 abstract class CodeView {
 	var $mRepo;
-	static $userLinks = array();
 
 	function __construct() {
 		global $wgUser;
@@ -110,27 +109,7 @@ abstract class CodeView {
 	 *	of false
 	*/
 	function authorWikiUser( $author ) {
-		if( isset( self::$userLinks[$author] ) )
-			return self::$userLinks[$author];
-
-		$dbr = wfGetDB( DB_SLAVE );
-		$wikiUser = $dbr->selectField(
-			'code_authors',
-			'ca_user_text',
-			array(
-				'ca_repo_id' => $this->mRepo->getId(),
-				'ca_author' => $author,
-			),
-			__METHOD__
-		);
-		$user = null;
-		if( $wikiUser )
-			$user = User::newFromName( $wikiUser );
-		if( $user instanceof User )
-			$res = $user;
-		else
-			$res = false;
-		return self::$userLinks[$author] = $res;
+		return $this->mRepo->authorWikiUser( $author );
 	}
 
 	function authorLink( $author ) {

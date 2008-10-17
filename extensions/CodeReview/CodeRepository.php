@@ -2,6 +2,8 @@
 if (!defined('MEDIAWIKI')) die();
 
 class CodeRepository {
+	static $userLinks = array();
+
 	public static function newFromName( $name ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$row = $dbw->selectRow(
@@ -42,26 +44,26 @@ class CodeRepository {
 		return $repos;
 	}
 
-	function getId() {
+	public function getId() {
 		return intval( $this->mId );
 	}
 
-	function getName() {
+	public function getName() {
 		return $this->mName;
 	}
 
-	function getPath(){
+	public function getPath(){
 		return $this->mPath;
 	}
 
-	function getViewVcBase(){
+	public function getViewVcBase(){
 		return $this->mViewVc;
 	}
 
 	/**
 	 * Return a bug URL or false.
 	 */
-	function getBugPath( $bugId ) {
+	public function getBugPath( $bugId ) {
 		if( $this->mBugzilla ) {
 			return str_replace( '$1',
 				urlencode( $bugId ), $this->mBugzilla );
@@ -69,7 +71,7 @@ class CodeRepository {
 		return false;
 	}
 
-	function getLastStoredRev() {
+	public function getLastStoredRev() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$row = $dbr->selectField(
 			'code_rev',
@@ -80,7 +82,7 @@ class CodeRepository {
 		return intval( $row );
 	}
 	
-	function getAuthorList() {
+	public function getAuthorList() {
 		global $wgMemc;
 		$key = wfMemcKey( 'codereview', 'authors', $this->getId() );
 		$authors = $wgMemc->get( $key );
@@ -104,7 +106,7 @@ class CodeRepository {
 		return $authors;
 	}
 	
-	function getTagList() {
+	public function getTagList() {
 		global $wgMemc;
 		$key = wfMemcKey( 'codereview', 'tags', $this->getId() );
 		$tags = $wgMemc->get( $key );
@@ -131,7 +133,7 @@ class CodeRepository {
 	/**
 	 * Load a particular revision out of the DB
 	 */
-	function getRevision( $id ) {
+	public function getRevision( $id ) {
 		if ( !$this->isValidRev( $id ) ) {
 			return null;
 		}
@@ -155,7 +157,7 @@ class CodeRepository {
 	 * @param $useCache 'skipcache' to avoid caching
 	 *                   'cached' to *only* fetch if cached
 	 */
-	function getDiff( $rev, $useCache = '' ) {
+	public function getDiff( $rev, $useCache = '' ) {
 		global $wgMemc;
 
 		$rev1 = $rev - 1;
@@ -187,7 +189,7 @@ class CodeRepository {
 	 * @return bool
 	 * @param $rev int Rev id to check
 	 */
-	function isValidRev( $rev ) {
+	public function isValidRev( $rev ) {
 		$rev = intval( $rev );
 		if ( $rev > 0 && $rev <= $this->getLastStoredRev() ) {
 			return true;
@@ -201,7 +203,7 @@ class CodeRepository {
 	 * @param User $user
 	 * @return bool success
 	 */
-	function linkTo( $author, User $user ) {
+	public function linkTo( $author, User $user ) {
 		// We must link to an existing user
 		if( !$user->getId() ) {
 			return false;
@@ -238,7 +240,7 @@ class CodeRepository {
 	 * @param string $author
 	 * @return bool success
 	 */
-	function unlink( $author ) {
+	public function unlink( $author ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete(
 			'code_authors',
@@ -249,5 +251,33 @@ class CodeRepository {
 			__METHOD__
 		);
 		return ( $dbw->affectedRows() > 0 );
+	}
+	
+	/* 
+	*	returns a User object if $author has a wikiuser associated,
+	*	of false
+	*/
+	public function authorWikiUser( $author ) {
+		if( isset( self::$userLinks[$author] ) )
+			return self::$userLinks[$author];
+
+		$dbr = wfGetDB( DB_SLAVE );
+		$wikiUser = $dbr->selectField(
+			'code_authors',
+			'ca_user_text',
+			array(
+				'ca_repo_id' => $this->getId(),
+				'ca_author' => $author,
+			),
+			__METHOD__
+		);
+		$user = null;
+		if( $wikiUser )
+			$user = User::newFromName( $wikiUser );
+		if( $user instanceof User )
+			$res = $user;
+		else
+			$res = false;
+		return self::$userLinks[$author] = $res;
 	}
 }
