@@ -29,13 +29,13 @@ class CodeRevisionListView extends CodeView {
 	function showForm( $path = '' ) {
 		global $wgOut, $wgScript;
 		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/path' );
-		$action = $wgScript;
-		$wgOut->addHTML( "<form action=\"$action\" method=\"get\">\n" .
+		$wgOut->addHTML( 
+			Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get' ) ) .
 			"<fieldset><legend>".wfMsgHtml('code-pathsearch-legend')."</legend>" .
 				Xml::hidden( 'title', $special->getPrefixedDBKey() ) .
 				Xml::inputlabel( wfMsg("code-pathsearch-path"), 'path', 'path', 55, $this->mPath ) .
 				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
-			"</fieldset></form>"
+			"</fieldset>" . Xml::closeElement( 'form' )
 		);
 	}
 	
