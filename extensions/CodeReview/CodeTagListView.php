@@ -14,7 +14,7 @@ class CodeTagListView extends CodeView {
 		$text = '';
 		foreach( $tags as $tag ) {
 			$msg = "code-status-$tag-desc";
-			$exp = wfEmptyMsg( $msg, wfMsg($msg) ) ? '' : ' - ' . wfMsgHtml( "code-status-$tag-desc" );
+			$exp = wfEmptyMsg( $msg, wfMsg( $msg ) ) ? '' : ' - ' . wfMsgHtml( $msg );
 			$text .= "* [[Special:Code/$name/tag/$tag|$tag]]$exp\n";
 		}
 		$wgOut->addWikiText( $text );
