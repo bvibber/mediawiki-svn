@@ -34,6 +34,15 @@ $wgExtensionCredits['media'][] = array(
 
 /******************* CONFIGURATION STARTS HERE **********************/
 
+//if wgPlayerStats collection is enabled or not 
+$wgPlayerStatsCollection=false;
+
+//the player stats js file  (does not have to be the same server as OggHandler is installed on)
+$wgPlayerStatsCollectionJs = $wgScriptPath . '/extensions/PlayerStatsGrabber/playerStats.js';
+
+//url to the wiki index.php your submitting stats to (leave empty for the same server as current)  
+$wgPlayerStatsCollectionScriptPath =  '';
+
 // Location of the FFmpeg binary
 $wgFFmpegLocation = 'ffmpeg';
 
