@@ -697,6 +697,7 @@ $settings = array(
 			'wgExternalDiffEngine' => 'text',
 			'wgMaxShellFileSize' => 'int',
 			'wgMaxShellMemory' => 'int',
+			'wgMaxShellTime' => 'int',
 			'wgShellLocale' => 'text',
 			'wgUpdateRowsPerQuery' => 'int',
 			'wgUseAutomaticEditSummaries' => 'bool',
@@ -1185,6 +1186,7 @@ $settingsVersion = array(
 	'wgUniversalEditButton' => array( array( '1.14alpha', '>=' ) ),
 	'wgEdititis' => array( array( '1.14alpha', '>=' ) ),
 	'wgMaxAnimatedGifArea' => array( array( '1.14alpha', '>=' ) ),
+	'wgMaxShellTime' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
