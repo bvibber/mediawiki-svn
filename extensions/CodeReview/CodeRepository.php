@@ -173,7 +173,7 @@ class CodeRepository {
 			$data = $wgMemc->get( $key );
 		}
 
-		if( !$data && $useCache != 'cached' ) {
+		if( !$data && $useCache !== 'cached' ) {
 			$svn = SubversionAdaptor::newFromRepo( $this->mPath );
 			$data = $svn->getDiff( '', $rev1, $rev2 );
 			$wgMemc->set( $key, $data, 3600*24*3 );
