@@ -459,7 +459,7 @@ EOT
 			$out->addHeadItem('playerStatsCollection',  <<<EOT
 <script type="text/javascript">
 wgOggPlayer.userHash = $enUserHash;
-wgServerOveride = "$wgPlayerStatsCollectionScriptPath";
+wgServerOverride = "$wgPlayerStatsCollectionScriptPath";
 </script>	
 <script type="text/javascript" src="$wgPlayerStatsCollectionJs"></script>
 EOT
