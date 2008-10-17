@@ -82,7 +82,7 @@ class LogEntry extends UnlistedSpecialPage {
 				$article = new Article( $title );
 				
 				# Build new line
-				$newLine = sprintf( "* %s %s: %s", date( 'H:i' ), $wgUser->getName(),
+				$newLine = sprintf( "* %s %s: %s", gmdate( 'H:i' ), $wgUser->getName(),
 					trim( htmlspecialchars( $wgRequest->getText( 'line' ) ) ) );
 				
 				# Get content without logentry tag in it
@@ -92,7 +92,7 @@ class LogEntry extends UnlistedSpecialPage {
 				$contentLines = explode( "\n", $content );
 				
 				# Build heading
-				$heading = sprintf( '== %s ==', date( 'F j' ) );
+				$heading = sprintf( '== %s ==', gmdate( 'F j' ) );
 				
 				# Find line of first section
 				$sectionLine = false;
