@@ -104,14 +104,14 @@ function wfSpecialCustomToolbarUpload() {
     $form = new CustomToolbarUploadForm($wgRequest);
     $form->execute();
 }
-
 $wgHooks['UploadComplete'][] = array('CustomToolbarUploadForm::showSuccess');
 //XX TODO investigate FileUpload hook for attachment purposes
 //$wgHooks['FileUpload'][] = array('CustomToolbarUploadForm::showSuccess', 'attachment');
-if ($wgVersion == '1.13.0') {
-    require_once('includes/specials/SpecialUpload.php');
-} else {
+$wgSpecialRefactorVersion = '1.13.0';
+if (version_compare($wgVersion, $wgSpecialRefactorVersion, '<')) {
     require_once('includes/SpecialUpload.php');
+} else {
+    require_once('includes/specials/SpecialUpload.php');
 }
 class CustomToolbarUploadForm extends UploadForm {
 	/* Some code poached from Travis Derouin's <travis@wikihow.com>
