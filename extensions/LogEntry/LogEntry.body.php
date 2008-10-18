@@ -64,10 +64,7 @@ class LogEntry extends UnlistedSpecialPage {
 			if( !$wgUser->matchEditToken( $wgRequest->getText('token') ) )
 			{
 				# Alert of invalid page
-				$wgOut->addHTML(
-					sprintf("%s<pre>%s\n%s</pre>",
-						wfMsgHtml( 'logentry-invalidtoken' ), $wgRequest->getText('token'), $wgUser->getToken() )
-				);
+				$wgOut->addWikiMsg( 'logentry-invalidtoken' );
 				return;
 			}
 			
