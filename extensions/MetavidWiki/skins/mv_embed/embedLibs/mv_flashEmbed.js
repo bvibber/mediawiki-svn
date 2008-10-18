@@ -123,7 +123,7 @@ var flashEmbed = {
         }
     },
     /* js hooks/controls */
-    play : function(){    	
+    play: function(){    	
     	this.getFLA();
     	if(!this.fla || this.thumbnail_disp)
         {

@@ -31,13 +31,13 @@ class MV_SequencePage extends Article {
 		return parent::__construct( $title );
 	}
 	/*
-	 * returns the xml output of the sequence with all wiki-text templates/magic words swaped out
+	 * returns the xml output of the sequence with all wiki-text templates/magic words swapped out
 	 * also resolves all image and media locations with absolute paths.
 	 */
 	function getSequenceSMIL(){
 		global $wgParser,$wgOut, $wgUser, $wgEnableParserCache;
 		$parserOutput=false;
-		//temporarlly stop cache: 
+		//temporally stop cache:  
 		$wgEnableParserCache=false;
 		
 		if($wgEnableParserCache){
@@ -105,7 +105,7 @@ class MV_SequencePage extends Article {
 		foreach($seqNodeList as $seqNode){
 			//import the top seq node:
 			$topSeqNode = $this->smilDoc->importNode($seqNode, false);
-			//get all the refrences
+			//get all the references
 			$refNodeList = $seqNode->childNodes;
 			foreach($refNodeList as $refNode){			
 				 $refNode = $this->smilDoc->importNode( $this->resolveResourceNode($refNode), true );
@@ -124,7 +124,7 @@ class MV_SequencePage extends Article {
 		global $wgUser,$wgParser;
 		//print 'resolveResourceNode:' . $node->nodeName . " : " . $node->nodeValue . "\n";
 		
-		//dont' proccess free flowing text 
+		//don't process free flowing text 
 		//@@todo (we should probably throw it out)
 		if($node instanceof DOMText)
 			return $node;
@@ -156,7 +156,7 @@ class MV_SequencePage extends Article {
  				//templates are of type text/html
  				$node->setAttribute('type','text/html');
  				//print "none type: ". $node->getAttribute('type');
- 				//if template look for template paramaters:
+ 				//if template look for template parameters:
  				$templateText = '{{'. $uriTitle->getText();
  				$addedParamFlag=false;
  				while ($node->childNodes->length){
@@ -164,14 +164,14 @@ class MV_SequencePage extends Article {
  						$param = & $node->firstChild;
  						//make sure we have a name:  
  						if($param->hasAttribute('name')){
- 							//we have paramaters:
+ 							//we have parameters:
  							$templateText.= "|\n";
  							$templateText .= $param->getAttribute('name') . '=';
  							//try and get the value from the value attribute or innerHTML
  							if($param->hasAttribute('value')){
  								$templateText .= $param->getAttribute('value');
  							}else{
- 								//grab from innher html:
+ 								//grab from inner html:
  								while ($param->childNodes->length){
  									$templateText .= $param->ownerDocument->saveXML( $param->firstChild );	
  									$param->removeChild( $param->firstChild );
@@ -193,9 +193,9 @@ class MV_SequencePage extends Article {
  				//lookup the file/stream
  				global $mvDefaultVideoPlaybackRes;
  				list($width,$height)= explode('x',$mvDefaultVideoPlaybackRes);
- 				//@@todo more flexiblity with image grabbing 				 				
+ 				//@@todo more flexibility with image grabbing 				 				
  				
- 				// (probably should be hanndled via "figure" namespace which could allow arbitary crop, resize, overlay) 				
+ 				// (probably should be handled via "figure" namespace which could allow arbitrary crop, resize, overlay) 				
  				$img = wfFindFile( $uriTitle ); 	
  				if(!$img){
  					$node->setAttribute('type','text/html');
@@ -214,8 +214,9 @@ class MV_SequencePage extends Article {
  					if( $img->getMimeType()=='application/ogg') {
  						if( !$node->hasAttribute('dur') )
  							$node->setAttribute('dur',  $thumbnail->file->getLength() );
- 						if( !$node->hasAttribute('poster') )
- 							$node->setAttribute('poster', )
+ 						if( !$node->hasAttribute('poster') ){
+ 							$node->setAttribute('poster',  $thumbnail->url);
+ 						}
  					}
  				}
  			break; 

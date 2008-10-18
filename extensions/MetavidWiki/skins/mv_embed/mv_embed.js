@@ -332,7 +332,10 @@ mediaPlayer.prototype =
 		}
 	}	
 }
-
+/* this is too verbose, 
+* and we should not have to redefine it below with default_players
+* should just be a single array with types.
+*/
 var flowPlayer = new mediaPlayer('flowplayer',['video/x-flv'],'flash');
 var cortadoPlayer = new mediaPlayer('cortado',['video/ogg'],'java');
 var videoElementPlayer = new mediaPlayer('videoElement',['video/ogg'],'native');
@@ -342,6 +345,8 @@ var oggPlayPlayer = new mediaPlayer('oggPlay',['video/ogg'],'oggplay');
 var oggPluginPlayer = new mediaPlayer('oggPlugin',['video/ogg'],'generic');
 var quicktimeMozillaPlayer = new mediaPlayer('quicktime-mozilla',['video/ogg'],'quicktime');
 var quicktimeActiveXPlayer = new mediaPlayer('quicktime-activex',['video/ogg'],'quicktime');
+
+var htmlPlayer = new mediaPlayer('html',['text/html', 'image/jpeg'],'html');
 
 /**
   * mediaPlayers is a collection of mediaPlayer objects supported by the client.
@@ -367,6 +372,9 @@ mediaPlayers.prototype =
         this.default_players['video/ogg']=['native','vlc','java'];
         this.default_players['application/ogg']=['native','vlc','java'];
 		this.default_players['video/mp4']=['vlc'];
+		
+		this.default_players['text/html']=['html'];
+		this.default_players['image/jpeg']=['html'];
     },
     addPlayer : function(player, mime_type)
     {
@@ -553,11 +561,12 @@ var ctrlBuilder = {
         	axis:'x',
         	opacity:.6,
         	start:function(e, ui){
+        		var id = (_this.pc!=null)?_this.pc.pp.id:_this.id;
         		_this.userSlide=true;
         		js_log("started draging set userSlide"+_this.userSlide)
         		var options = ui.options;      
         		//remove "play button"   	
-        		$j('#big_play_link_'+_this.id).fadeOut('fast');
+        		$j('#big_play_link_'+id).fadeOut('fast');
         		 //if playlist always start at 0
 		        _this.start_time_sec = (_this.instanceOf == 'mvPlayList')?0:
         						_this.start_time_sec = ntp2seconds(_this.getTimeReq().split('/')[0]);       
@@ -579,12 +588,14 @@ var ctrlBuilder = {
         		js_log('do jump to: '+_this.jump_time)
         		//reset slider		
         		_this.seek_time_sec=ntp2seconds(_this.jump_time);
+        		//@@todo make compatible with playlist
+        		// ie this should be checked at the embed lib level not so high up in the controls. 
 				if(_this.media_element.selected_source.supports_url_time_encoding)
 				{
-					js_log('stopping due to support of url time encoding');
+					js_log('url support timed requests: do stop & jump');
 					_this.stop();
-        		//do play in 300ms (give things time to "cool down") 
-					setTimeout('$j(\'#'+_this.id+'\').get(0).play()',300);
+        			//do play in 100ms (give things time to clear) 
+					setTimeout('$j(\'#'+_this.id+'\').get(0).play()',100);
 				}
         	}
         });
@@ -686,7 +697,8 @@ var embedTypes = {
  	detect: function() {
  		js_log("running detect");
         this.players = new mediaPlayers();
-
+		//every browser supports html rendering:
+		this.players.addPlayer(htmlPlayer);
 		 // First some browser detection
 		 this.msie = ( navigator.appName == "Microsoft Internet Explorer" );
 		 this.msie6 = ( navigator.userAgent.indexOf("MSIE 6")===false);
@@ -1018,8 +1030,10 @@ function mv_embed(){
 		mvJsLoader.doLoad({'mvPlayList':'mv_playlist.js'},function(){
 			$j('playlist').each(function(){							
 				//create new playlist interface:
-				var playlistInterface = new mvPlayList( this );
-				swapEmbedVideoElement(this, playlistInterface);				
+				var plObj = new mvPlayList( this );
+				swapEmbedVideoElement(this, plObj);		
+				//move into a blocking display container with height + controls + title height: 
+				$j('#'+plObj.id).wrap('<div style="display:block;height:' + (plObj.height+55) + 'px;"></div>');		
 			});
 		});
 	}

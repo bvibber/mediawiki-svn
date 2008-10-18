@@ -22,6 +22,9 @@ var mv_default_playlist_attributes = {
 	"sequencer":false
 }
 
+//the callback rate for animations and internal timers in ms: 33 is about 30 frames a second: 
+var MV_ANIMATION_CB_RATE = 33;
+
 //the layout for the playlist object
 var pl_layout = {
 	seq_title:.1,
@@ -238,7 +241,7 @@ mvPlayList.prototype = {
 		var durSum=0;		
 		$j.each(this.default_track.clips, function(i,clip){	
 			if(clip.embed){			
-				js_log('plDUR:add : '+ clip.getDuration());
+				js_log('plDUR:add : '+ clip.getDuration() + ' src:' + clip.embed.src);
 				clip.dur_offset=durSum;
 				durSum+=clip.getDuration();
 			}else{
@@ -337,6 +340,12 @@ mvPlayList.prototype = {
 			}
 		}
 	},	
+	//set up minimal media_element emulation: 	
+	media_element:{	
+		selected_source:{
+			supports_url_time_encoding:true
+		}
+	},
 	//@@todo needs to update for multi-track clip counts
 	getClipCount:function(){
 		return this.default_track.clips.length; 
@@ -366,7 +375,7 @@ mvPlayList.prototype = {
 			//setup layout for title and dc_ clip container  
 			$j(this).html('<div id="dc_'+this.id+'" style="width:'+this.width+'px;' +
 					'height:'+(this.height+pl_layout.title_bar_height + pl_layout.control_height)+'px;position:relative;">' +
-					'	<div style="font-size:13px" id="ptitle_'+this.id+'"></div>' +
+					'	<div style="font-size:13px;width:'+this.width+'px;" id="ptitle_'+this.id+'"></div>' +
 					'</div>');												
 			
 			//add the playlist controls:			
@@ -434,13 +443,14 @@ mvPlayList.prototype = {
 			}
 			pl_sum_time+=clip.getDuration();
 		}	
-		//js_log('found clip: '+ this.cur_clip.id + 'transIn:');
+		//js_log('updateTimeThumb: found clip: '+ this.cur_clip.id + 'transIn:');
 		
-		//updte start offset (@@todo should probably happen somewhere else like in getDuration() ) 
+		//update start_offset 
 		if(typeof this.cur_clip.embed.start_offset=='undefined')
 			this.cur_clip.embed.start_offset=this.cur_clip.embed.media_element.selected_source.start_offset;	
 		
 		//render effects ontop:
+		
 		//issue thumbnail update request: (if plugin supports it will render out frame 
 		// if not then we do a call to the server to get a new thumbnail  
 		this.cur_clip.embed.updateTimeThumb(perc);
@@ -448,8 +458,7 @@ mvPlayList.prototype = {
 		this.cur_clip.embed.currentTime = (float_sec -pl_sum_time)+this.cur_clip.embed.start_offset ;
 		this.cur_clip.embed.seek_time_sec = (float_sec -pl_sum_time );
 				
-		this.doSmilActions();
-		
+		this.doSmilActions();		
 	},
 	updateBaseStatus:function(){
 		js_log('f:updateBaseStatus');
@@ -457,10 +466,12 @@ mvPlayList.prototype = {
 			'<b>' + this.title + '</b> '+				
 			this.getClipCount()+' clips, <i>'+
 			seconds2ntp( this.getDuration() ) + '</i>' + 
-			'<a href="#" onclick="$j(\'#'+this.id+'\').get(0).doEditor();" style="float:right">edit</a>');		
+			'<a href="#" onclick="$j(\'#'+this.id+'\').get(0).doEditor();" style="position:absolute;top:0px;right:0px">edit</a>');
+		//render out the dividers on the timeline: 
+		this.colorPlayHead();		
 		//update status:
 		this.setStatus('0:0:00/'+seconds2ntp( this.getDuration() ));				
-	},
+	},	
 	/*setStatus overide (could call the jquery directly) */
 	setStatus:function(value){
 		$j('#mv_time_'+this.id).html(value);
@@ -668,35 +679,46 @@ mvPlayList.prototype = {
 	},	
 	//ads colors/dividers between tracks
 	colorPlayHead: function(){
+		if( !this.mv_seeker_width)
+			this.mv_seeker_width = $j('#mv_seeker_slider_'+this.id).width();								
+	
+		if( !this.track_len ) 
+			this.track_len = $j('#seeker_bar_'+this.id).css('width').replace(/px/, '');
+			
 		//total duration:		
 		var pl_duration = this.getDuration();
-		var track_len = $j('#slider_'+this.id).css('width').replace(/px/, '');
-		var cur_pixle=0;
 		
+		var cur_pixle=0;		
 		//set up plObj
-		var plObj = this;
+		var _this = this;
 		//js_log("do play head total dur: "+pl_duration );
-		$j.each(this.default_track.clips, function(i, clip){
-			var perc = (clip.embed.getDuration() / pl_duration );
-			pwidth = Math.round(perc*track_len);
-			//do div border-1 from pixle to current pixle
-			$j('#slider_'+plObj.id).append('<div style="' +
+		$j.each(this.default_track.clips, function(i, clip){			
+			var perc = (clip.getDuration() / pl_duration );
+			var pwidth = Math.round( perc * _this.track_len);
+			//var pwidth = Math.round( perc  * _this.track_len - (_this.mv_seeker_width*perc) );
+			
+			var barHtml = '<div id="cl_status_'+clip.id+'"  style="' +
 					'position:absolute;' + 
 					'left:'+cur_pixle +'px;'+
 					'width:'+pwidth + 'px;'+
-					'height:4px;'+
+					'height:12px;'+
 					'top:0px;'+
-					'z-index:1;'+
-					'border:solid thin;' +
-					'filter:alpha(opacity=40);'+
-					'-moz-opacity:.40;'+
-					'background:'+clip.getColor()+'"></div>');			
-			//put colors on top of playhead/track						
-			//js_log('offset:' + cur_pixle +' width:'+pwidth+' add clip'+ clipID + 'is '+clip.embed.getDuration()+' = ' + perc +' of ' + track_len);
-			cur_pixle+=pwidth;						
-		});
+					'z-index:1;';
+			//set left or right border based on track pos 
+			barHtml+=( i == _this.default_track.getClipCount()-1 )?
+				 'border-left:solid thin black;':
+				 'border-right:solid thin black;';
 				
-		//$j('#dc_'+this.id).append('');
+							
+			barHtml+= 'filter:alpha(opacity=40);'+
+					'-moz-opacity:.40;">'
+					'</div>';
+			//background:#DDDclip.getColor()
+			$j('#seeker_bar_'+_this.id).append(barHtml);
+																										
+			//js_log('offset:' + cur_pixle +' width:'+pwidth+' add clip'+ clip.id + ' is '+clip.embed.getDuration() +' = ' + perc +' of ' + _this.track_len);
+			cur_pixle+=pwidth;								
+		});				
 	},
 	setUpHover:function(){
 		js_log('Setup Hover');
@@ -877,110 +899,6 @@ mvClip.prototype = {
 		
 		//js_log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);
 	},
-	//returns the mvClip representation of the clip ie stream_name?start_time/end_time
-	getMvClip:function(){
-		if(this.mvclip)return this.mvclip;
-		return false;
-	},
-	//@@todo group all remote data requests
-	//set src and image & title & desc from metavid source data 
-	//mv_playlist depreciated getRemoteData
-	/*getRemoteData:function(callback){
-		var thisClip =this;	
-		//check for js_log("gDuration:setupEmbed" + this.embed.media_element.sources.length);mvclip type:	
-		if(thisClip.mvclip){
-			thisClip.loading=true;
-			if(!thisClip.mvMetaDataProvider){
-				thisClip.mvMetaDataProvider = defaultMetaDataProvider;
-			}
-			//get xml data to resolve location of the media, desc + caption data
-			var url = thisClip.mvMetaDataProvider +	this.mvclip.replace(/\?/, "&");			
-			
-			do_request(url, function(data){
-				//ajax return (done loading) 
-				thisClip.loading=false;
-				//search for and set video src:
-				js_log('data:'+data);
-				$j.each(data.getElementsByTagName('video'), function(inx,n){	
-					if(n.getAttribute('default')=='true'){
-						thisClip.src=n.getAttribute('src');						
-					};
-				});				
-				js_log('set src: '+ thisClip.src);
-				
-				//idorate through top head nodes: 			
-				$j.each(data.getElementsByTagName('head')[0].childNodes, function(inx,n){
-					//js_log('node:'+ n.nodeName+ ' inx:'+inx);
-					if(!thisClip.title){
-						if(n.nodeName.toLowerCase()=='title'){
-							thisClip.title = n.textContent;
-						}
-					}
-					//search for and set linkback: 
-					if(!thisClip.linkback){							
-						if(n.nodeName.toLowerCase()=='link' && n.getAttribute('type')=='text/html'){
-							thisClip.linkback=n.getAttribute('href');
-						};
-					}
-					//search for and set img:
-					if(!thisClip.img){
-						if(n.nodeName.toLowerCase()=='img'){
-							thisClip.img=n.getAttribute('src');
-						};
-					}
-				});
-				js_log('set title to: ' + thisClip.title + "\n"+
-					   'set linkback to: '+ thisClip.linkback + "\n"+
-					   'set img to: ' + thisClip.img);
-																				
-				//now build the desc (if not already set) 
-				if(!thisClip.desc){
-					thisClip.desc='';
-					$j.each(data.getElementsByTagName('clip'), function(inx,n){						
-						if(n.getElementsByTagName('desc').length!=0){
-							for(i=0;i< n.getElementsByTagName('desc').length; i++){
-								thisClip.desc += n.getElementsByTagName('desc')[i].textContent + '<br>';
-							}
-						}
-						if(n.getElementsByTagName('meta').length!=0){
-							for(i=0;i<n.getElementsByTagName('meta').length;i++){
-								if( n.getElementsByTagName('meta')[i].getAttribute('name')=='Person'){
-									thisClip.desc+='<i>'+n.getElementsByTagName('meta')[i].getAttribute('content') + '</i><br>';
-								}
-							}
-						}
-					});
-				}								
-				//set up the embed object for this clip: 
-				thisClip.setUpEmbedObj();					
-				js_log('thisClip len:'+ thisClip.embed.media_element.sources.length);
-				//check if we are in callbackmode or clip batch load
-				js_log('callback: '+ callback);
-				if(typeof callback!='undefined'){
-					callback();
-				}else{				
-					//check if the rest of the clips are done loading
-					//  if so call doWhenParseDone
-					var parseDone=true;
-					$j.each(thisClip.pp.default_track.clips, function(i,clip){
-						if(clip.loading==true)
-							parseDone=false;
-					});		
-					if(parseDone){
-						//@@todo need to fix to use abstraction
-						js_log('parse done for:' + thisClip.pp.default_track.clips.length);
-						//re-order clips based on clip.order: 
-						function sortClip(cA,cB){return cA.order-cB.order;}
-						thisClip.pp.default_track.clips.sort(sortClip);
-						//set the current clip to the first clip: 
-						thisClip.pp.cur_clip = thisClip.pp.default_track.clips[0];
-						thisClip.pp.doWhenParseDone();
-					}
-				}
-			});		
-		}
-		
-	},*/
 	doAdjust:function(side, delta){
 		if(this.embed){
 			if(this.src.indexOf('?')!=-1){
@@ -1258,10 +1176,6 @@ PlMvEmbed.prototype = {
 	setSliderValue:function(value){
 		//setSlider value hanndled by playlist obj
 	},
-	/*activateSlider:function(){
-		//map the slider to the parent playlist slider id:
-		this.pe_activateSlider(this.pc.pp.id);
-	},*/
 	doSeek:function(v){
 		var plObj = this.pc.pp;
 		var prevClip=null;
@@ -1422,18 +1336,14 @@ var xspfPlaylist ={
  *****************************/
 /*playlist driver extensions to the playlist object*/
 mvPlayList.prototype.monitor = function(){	
-	//js_log('pl:monitor');
-	var ct = new Date();		
+	js_log('pl:monitor');		
 	//js_log('mvPlayList:monitor trueTime: '+ ( (ct.getTime() - this.clockStartTime )/1000));	
 
 	//update the playlist current time: 
-	this.currentTime = this.cur_clip.dur_offset + this.cur_clip.embed.currentTime;
-
-	//update status
-	this.setStatus(seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.getDuration()) );
-	
+	this.currentTime = this.cur_clip.dur_offset + this.cur_clip.embed.currentTime;	
 	//update slider: 
-	if(!this.userSlide){				
+	if(!this.userSlide){
+		this.setStatus(seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.getDuration()) );				
 		this.setSliderValue(this.currentTime / this.getDuration());
 	}
 
@@ -1449,7 +1359,7 @@ mvPlayList.prototype.monitor = function(){
 //handles the rendering of overlays loaind of future clips (if nessesary)
 //@@todo could be lazy loaded if nessesary 
 mvPlayList.prototype.doSmilActions = function(){ 		
-	//js_log('f:doSmilActions: ' + this.cur_clip.id + ' tid: ' + this.cur_clip.transIn.pClip.id );		
+	js_log('f:doSmilActions: ' + this.cur_clip.id + ' tid: ' + this.cur_clip.transOut );
 	var offSetTime = 0; //offset time should let us start a transition later on if we have to. 
 	var _clip = this.cur_clip;	//setup a local pointer to cur_clip
 	
@@ -1571,17 +1481,18 @@ var mvTransLib = {
 		tObj.overlay_selector_id=null;
 	},
 	getOverlaySelector:function(tObj){	
-			var overlay_selector_id= tObj.transAttrType + tObj.pClip.id; 	
-			js_log('f:getOverlaySelector: '+overlay_selector_id);
-			if( ! $j('#'+overlay_selector_id).get(0) ){																											
-				$j('#videoPlayer_'+tObj.pClip.embed.id).prepend(''+
-					'<div id="'+overlay_selector_id+'" ' +
-						'style="position:absolute;top:0px;left:0px;' +
-						'height:'+parseInt(tObj.pClip.pp.height)+'px;'+
-						'width:'+parseInt(tObj.pClip.pp.width)+'px;' +					
-						'z-index:2">' +
-					'</div>');
-			}				
+		js_log('f:getOverlaySelector');
+		var overlay_selector_id= tObj.transAttrType + tObj.pClip.id; 	
+		js_log('f:getOverlaySelector: '+overlay_selector_id);
+		if( ! $j('#'+overlay_selector_id).get(0) ){																											
+			$j('#videoPlayer_'+tObj.pClip.embed.id).prepend(''+
+				'<div id="'+overlay_selector_id+'" ' +
+					'style="position:absolute;top:0px;left:0px;' +
+					'height:'+parseInt(tObj.pClip.pp.height)+'px;'+
+					'width:'+parseInt(tObj.pClip.pp.width)+'px;' +					
+					'z-index:2">' +
+				'</div>');
+		}				
 		return overlay_selector_id;	
 	},
 	doUpdate:function(tObj, percent){
@@ -1718,6 +1629,7 @@ var mvSMILClip=function(smil_clip_element, mvClipInit){
 //http://www.w3.org/TR/2007/WD-SMIL3-20070713/smil-extended-media-object.html#smilMediaNS-BasicMedia
 //and some resource description elements
 var mv_supported_media_attr = new Array(
+	'id',
 	'src',
 	'type',
 	'region',
@@ -1755,8 +1667,8 @@ mvSMILClip.prototype = {
 		})				
 		this['tagName'] =smil_clip_element.tagName;	
 		if( smil_clip_element.firstChild ){
-			this['wholeText']=smil_clip_element.firstChild.wholeText;
-			js_log("SET wholeText: "+ this['wholeText']);
+			this['wholeText'] = smil_clip_element.firstChild.nodeValue;
+			js_log("SET wholeText for: "+this['tagName'] + ' '+ this['wholeText']);
 		}
 		//debugger;
 		//mv_embed specific property: 
@@ -1768,13 +1680,15 @@ mvSMILClip.prototype = {
 		if(this.transIn && this.pp.transitions[this.transIn]){			
 			this.transIn = this.pp.transitions[this.transIn].clone();
 			this.transIn.pClip = _this;
-			this.transIn.transAttrType='transIn'; 			
+			this.transIn.transAttrType='transIn'; 		
+			//js_log("SET transIn for " + this.id);	
 		}		
 		
 		if(this.transOut && this.pp.transitions[this.transOut]){		
 			this.transOut = this.pp.transitions[ this.transOut ].clone();
 			this.transOut.pClip = _this;
-			this.transOut.transAttrType = 'transOut';			
+			this.transOut.transAttrType = 'transOut';
+			//js_log("SET transOut for " + this.id);			
 		}		
 		//parse duration / begin times: 
 		if(this.dur)
@@ -1793,12 +1707,12 @@ mvSMILClip.prototype = {
 			this.dur = this.embed.getDuration();
 		return this.dur;					
 	},
-	setUpEmbedObj:function(){
+	/*setUpEmbedObj:function(){
 		js_log('setup embed for smil based clip');
 		if(this['type']){
 			switch(this['type']){
 				case 'text/html':
-				case 'image/jpeg':
+				case 'image/jpeg':				
 					this.embed = new htmlEmbedWrapper({pc:this, id:'e_'+this.id});					
 				break;
 				case 'application/ogg':
@@ -1815,89 +1729,11 @@ mvSMILClip.prototype = {
 		if(this.tagName=='video')
 			return this.parent_setUpEmbedObj();
 					
-	}
+	}*/
 }
 /* object to manage embedding html with smil timings 
  *  grabs settings from parent clip 
  */
-var htmlEmbedWrapper=function(init){
-	ve = document.createElement('div');
-	//extend ve with all this 
-	this.init(init);	
-	for(method in this){
-		if(method!='readyState' && method!='style'){						
-			ve[method]= this[method];
-		}
-	}	
-	return ve;
-}
-var pcHtmlEmbedDefaults={
-	'dur':4 //default duration of 4seconds
-}
-htmlEmbedWrapper.prototype={
-	 supports: {
-    	'play_head':true, 
-    	'play_or_pause':true,     	
-    	'fullscreen':false, 
-    	'time_display':true, 
-    	'volume_control':true,
-    	
-    	'overlays':true,
-    	'playlist_swap_loader':true //if the object supports playlist functions    	
-   	},
-   	start_offset:0,
-	init:function(init){
-		js_log('htmlEmbedWrapper');
-		if(init['pc']){
-			this['pc'] = init['pc'];
-		}	
-		ve = document.createElement('div');		
-		for(i in init){		
-			//set the parent clip pointer: 	
-			if(i=='pc'){
-				this['pc']=init['pc'];
-			}else{
-				ve.setAttribute(i,init[i]);
-			}
-		}		
-		var videoInterface = new embedVideo(ve);	
-		//inherit the base embed properties: 
-		for( var i in videoInterface){ 			
-			if(typeof this[i] == 'undefined'){
-				this[i]=videoInterface[i];
-			}else{
-				this['parent_'+i]=videoInterface[i];
-			}
-		}				
-	},
-	//nothing to update in static html display: 
-	updateTimeThumb:function(){
-		return ;
-	},
-	getHTML:function(){
-		//set up the css for our parent div: 		
-		$j(this).css({'width':this.pc.pp.width, 'height':this.pc.pp.height, 'overflow':"hidden"});
-		//@@todo support more smil stuff: 
-		if( this.pc.type =='image/jpeg'){
-			$j(this).html('<img src="'+this.pc.src+'">');
-		}else{
-			$j(this).html(this.pc.wholeText);
-		}
-	},
-	getDuration:function(){
-		if(this.pc.dur)
-			return this.pc.dur;
-		//no dur use default: 
-		return pcHtmlEmbedDefaults.dur;		
-	},	
-	//gives a chance to make any nesseary external requests
-	//@@todo we can "start loading images" if we want
-	on_dom_swap:function(){
-		this.loading_external_data=false
-		this.ready_to_play=true;
-		return ;
-	}	
-}
 var mv_supported_transition_attr = new Array(
 	'id',
 	'type',
@@ -1905,8 +1741,7 @@ var mv_supported_transition_attr = new Array(
 	'fadeColor',
 	'dur'
 );
-//around ~30~ frames a second: 
-var MV_ANIMATION_CB_RATE = 33;
+
 var transitionObj = function(element) {		
 	this.init(element);
 };

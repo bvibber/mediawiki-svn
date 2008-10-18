@@ -140,20 +140,20 @@ mvSequencer.prototype = {
 			'<div id="'+this.timeline_id+'_left_cnt" class="mv_tl_left_cnt">'+
 				'<div id="'+this.timeline_id+'_head_control" style="position:absolute;top:0px;left:0px;right:0px;height:30px;">' +
 					'<a title="'+getMsg('play_clip')+'" href="javascript:'+this.instance_name+'.play_jt()">'+
-						getTransparentPng({id:this.timeline_id+'_play', width:"16", height:"16", border:"0", 
-							src:mv_embed_path + 'images/control_play_blue.png' }) +						
+						/*getTransparentPng({id:this.timeline_id+'_play', width:"16", height:"16", border:"0", 
+							src:mv_embed_path + 'images/control_play_blue.png' }) +*/						
 					'</a>'+
 					'<a title="'+getMsg('zoom_in')+'" href="javascript:'+this.instance_name+'.zoom_in()">'+
-						getTransparentPng({id:this.timeline_id+'_zoom_in_icon', width:"16", height:"16", border:"0", 
-							src:mv_embed_path + 'images/zoom_in.png' }) +						
+						/*getTransparentPng({id:this.timeline_id+'_zoom_in_icon', width:"16", height:"16", border:"0", 
+							src:mv_embed_path + 'images/zoom_in.png' }) +*/						
 					'</a>'+
 					'<a title="'+getMsg('zoom_out')+'" href="javascript:'+this.instance_name+'.zoom_out()">'+
-						getTransparentPng({id:this.timeline_id+'_zoom_in_icon', width:"16", height:"16", border:"0", 
-							src:mv_embed_path + 'images/zoom_out.png' }) +						
+						/*getTransparentPng({id:this.timeline_id+'_zoom_in_icon', width:"16", height:"16", border:"0", 
+							src:mv_embed_path + 'images/zoom_out.png' }) +*/						
 					'</a>'+
 					'<a title="'+getMsg('cut_clip')+'" href="javascript:'+this.instance_name+'.cut_mode()">'+
-						getTransparentPng({id:this.timeline_id+'_cut', width:"16", height:"16", border:"0", 
-							src:mv_embed_path + 'images/cut.png' }) +						
+						/*getTransparentPng({id:this.timeline_id+'_cut', width:"16", height:"16", border:"0", 
+							src:mv_embed_path + 'images/cut.png' }) +*/						
 					'</a>'+					
 				'</div>' +			
 			'</div>' + 
