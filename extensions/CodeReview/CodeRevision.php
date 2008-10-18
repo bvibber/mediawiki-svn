@@ -4,7 +4,7 @@ if (!defined('MEDIAWIKI')) die();
 class CodeRevision {
 	static function newFromSvn( CodeRepository $repo, $data ) {
 		$rev = new CodeRevision();
-		$rev->mRepo = $repo->getId();
+		$rev->mRepo = CodeRepository::newFromId( $repo->getId() );
 		$rev->mId = intval($data['rev']);
 		$rev->mAuthor = $data['author'];
 		$rev->mTimestamp = wfTimestamp( TS_MW, strtotime( $data['date'] ) );
@@ -45,7 +45,7 @@ class CodeRevision {
 
 	static function newFromRow( $row ) {
 		$rev = new CodeRevision();
-		$rev->mRepo = intval($row->cr_repo_id);
+		$rev->mRepo = CodeRepository::newFromId( intval($row->cr_repo_id) );
 		$rev->mId = intval($row->cr_id);
 		$rev->mAuthor = $row->cr_author;
 		$rev->mTimestamp = wfTimestamp( TS_MW, $row->cr_timestamp );
@@ -61,6 +61,14 @@ class CodeRevision {
 
 	function getAuthor() {
 		return $this->mAuthor;
+	}
+	
+	function getRepo() {
+		return $this->mRepo;
+	}
+	
+	function getWikiUser() {
+		return $this->mRepo->authorWikiUser( $this->getAuthor() );
 	}
 
 	function getTimestamp() {
@@ -98,7 +106,7 @@ class CodeRevision {
 		$dbw->update( 'code_rev',
 			array( 'cr_status' => $status ),
 			array(
-				'cr_repo_id' => $this->mRepo,
+				'cr_repo_id' => $this->mRepo->getId(),
 				'cr_id' => $this->mId ),
 			__METHOD__ );
 	}
@@ -109,7 +117,7 @@ class CodeRevision {
 		
 		$dbw->insert( 'code_rev',
 			array(
-				'cr_repo_id' => $this->mRepo,
+				'cr_repo_id' => $this->mRepo->getId(),
 				'cr_id' => $this->mId,
 				'cr_author' => $this->mAuthor,
 				'cr_timestamp' => $dbw->timestamp( $this->mTimestamp ),
@@ -127,16 +135,16 @@ class CodeRevision {
 					'cr_message' => $this->mMessage,
 					'cr_path' => $this->mCommonPath ), 
 				array(
-					'cr_repo_id' => $this->mRepo,
+					'cr_repo_id' => $this->mRepo->getId(),
 					'cr_id' => $this->mId ),
 				__METHOD__ );
 		}
-
+		// Update path tracking used for output and searching
 		if( $this->mPaths ) {
 			$data = array();
 			foreach( $this->mPaths as $path ) {
 				$data[] = array(
-					'cp_repo_id' => $this->mRepo,
+					'cp_repo_id' => $this->mRepo->getId(),
 					'cp_rev_id' => $this->mId,
 					'cp_path' => $path['path'],
 					'cp_action' => $path['action'] );
@@ -155,7 +163,8 @@ class CodeRevision {
 		return $dbr->select(
 			'code_paths',
 			array( 'cp_path', 'cp_action' ),
-			array( 'cp_repo_id' => $this->mRepo, 'cp_rev_id' => $this->mId ),
+			array( 'cp_repo_id' => $this->mRepo->getId(), 
+				'cp_rev_id' => $this->mId ),
 			__METHOD__
 		);
 	}
@@ -175,17 +184,47 @@ class CodeRevision {
 	}
 	
 	function saveComment( $text, $review, $parent=null ) {
+		global $wgUser;
 		if( !strlen($text) ) {
 			return 0;
 		}
 		$dbw = wfGetDB( DB_MASTER );
 		$data = $this->commentData( $text, $review, $parent );
+
+		$dbw->begin();
 		$data['cc_id'] = $dbw->nextSequenceValue( 'code_comment_cc_id' );
-		$dbw->insert( 'code_comment',
-			$data,
-			__METHOD__ );
+		$dbw->insert( 'code_comment', $data, __METHOD__ );
+		$commentId = $dbw->insertId();
+		$dbw->commit();
+
+		// Give email notices to committer and commentors
+		global $wgCodeReviewENotif, $wgEnableEmail;
+		if( $wgCodeReviewENotif && $wgEnableEmail ) {
+			// Make list of users to send emails to
+			$users = $this->getCommentingUsers();
+			if( $user = $this->getWikiUser() ) {
+				$users[$user->getId()] = $user;
+			}
+			// Get repo and build comment title (for url)
+			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$this->mId );
+			$title->setFragment( "#c{$commentId}" );
+			$url = $title->getFullUrl();
+			$preview = htmlspecialchars($text);
+			foreach( $users as $userId => $user ) {
+				// No sense in notifying this commentor
+				if( $wgUser->getId() == $user->getId() ) {
+					continue;
+				}
+				if( $user->canReceiveEmail() ) {
+					$user->sendMail(
+						wfMsg( 'codereview-email-subj', $repo->getName(), $this->mId ),
+						wfMsg( 'codereview-email-body', $wgUser->getName(), $url, $this->mId, $preview )
+					);
+				}
+			}
+		}
 		
-		return $dbw->insertId();
+		return $commentId;
 	}
 	
 	protected function commentData( $text, $review, $parent=null ) {
@@ -194,7 +233,7 @@ class CodeRevision {
 		$ts = wfTimestamp( TS_MW );
 		$sortkey = $this->threadedSortkey( $parent, $ts );
 		return array(
-			'cc_repo_id' => $this->mRepo,
+			'cc_repo_id' => $this->mRepo->getId(),
 			'cc_rev_id' => $this->mId,
 			'cc_text' => $text,
 			'cc_parent' => $parent,
@@ -238,7 +277,7 @@ class CodeRevision {
 				'cc_review',
 				'cc_sortkey' ),
 			array(
-				'cc_repo_id' => $this->mRepo,
+				'cc_repo_id' => $this->mRepo->getId(),
 				'cc_rev_id' => $this->mId ),
 			__METHOD__,
 			array(
@@ -252,12 +291,30 @@ class CodeRevision {
 		return $comments;
 	}
 	
+	function getCommentingUsers() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'code_comment',
+			'DISTINCT(cc_user)',
+			array(
+				'cc_repo_id' => $this->mRepo->getId(),
+				'cc_rev_id' => $this->mId,
+				'cc_user != 0' // users only
+			),
+			__METHOD__ 
+		);
+		$users = array();
+		while( $row = $res->fetchObject() ) {
+			$users[$row->cc_user] = User::newFromId( $row->cc_user );
+		}
+		return $users;
+	}
+	
 	function getTags() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select( 'code_tags',
 			array( 'ct_tag' ),
 			array(
-				'ct_repo_id' => $this->mRepo,
+				'ct_repo_id' => $this->mRepo->getId(),
 				'ct_rev_id' => $this->mId ),
 			__METHOD__ );
 		
@@ -284,7 +341,7 @@ class CodeRevision {
 		}
 		$result = $dbw->delete( 'code_tags',
 			array( 
-				'ct_repo_id' => $this->mRepo,
+				'ct_repo_id' => $this->mRepo->getId(),
 				'ct_rev_id' => $this->mId,
 				'ct_tag' => $tagsNormal ),
 			__METHOD__ );
@@ -294,7 +351,7 @@ class CodeRevision {
 		$data = array();
 		foreach( $tags as $tag ) {
 			$data[] = array(
-				'ct_repo_id' => $this->mRepo,
+				'ct_repo_id' => $this->mRepo->getId(),
 				'ct_rev_id' => $this->mId,
 				'ct_tag' => $this->normalizeTag( $tag ) );
 		}
@@ -332,7 +389,7 @@ class CodeRevision {
 		$row = $dbr->selectRow( 'code_rev',
 			'cr_id',
 			array(
-				'cr_repo_id' => $this->mRepo,
+				'cr_repo_id' => $this->mRepo->getId(),
 				"cr_id > $encId" ),
 			__METHOD__,
 			array(
@@ -352,7 +409,7 @@ class CodeRevision {
 		$row = $dbr->selectRow( 'code_rev',
 			'cr_id',
 			array(
-				'cr_repo_id' => $this->mRepo,
+				'cr_repo_id' => $this->mRepo->getId(),
 				"cr_id > $encId",
 				'cr_status' => array('new','fixme') ),
 			__METHOD__,
