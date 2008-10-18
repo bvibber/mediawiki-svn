@@ -1,5 +1,5 @@
 <?php
-// die('delay load is dissabled by default, should only be used for testing');
+die('delay load is disabled by default, should only be used for testing');
 
 sleep( 1 );
 if ( isset( $_SERVER['PATH_INFO'] ) ) {
@@ -11,6 +11,9 @@ if ( isset( $_SERVER['PATH_INFO'] ) ) {
 		break;
 		case '.js':
 			header( 'Content-type:text/javascript' );
+		break;
+		default:
+			die('delay load can only be used for delayed load of css or javascript');
 		break;
 	}
 	if ( is_file( $file_path ) ) {
