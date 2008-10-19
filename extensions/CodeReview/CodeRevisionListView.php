@@ -138,7 +138,7 @@ class SvnRevTablePager extends TablePager {
 		case 'COUNT(cc_rev_id)':
 			return intval( $value );
 		case 'cr_path':
-			return $wgLang->truncate( $value, 30, '...' );
+			return Xml::element('div', array( 'title' => htmlspecialchars( $value ) ), $wgLang->truncate( $value, 30, '...' ));
 		}
 	}
 	
