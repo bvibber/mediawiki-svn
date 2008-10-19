@@ -78,7 +78,7 @@ pfatal(c, e)
 	fprintf(stderr, "%s: %s (%s)\n", e, strerror(errno), c);
 }
 
-#if defined(__sun) && !defined(__svr4)
+#if defined(__sun) && !defined(__svr4__)
 extern int sys_nerr;
 extern char *sys_errlist[];
 

@@ -12,20 +12,20 @@ clean:
 	rm -f trickle trickle.o tar.o util.o rdcp.o proto.o ldflags $(CFGHDRS)
 t_sysparam.h:
 	echo "#include <sys/param.h>" >test.c
-	-($(CC) -c -o /dev/null test.c && echo "#define T_SYS_PARAM_H 1") >t_sysparam.h
-	rm -f test.c
+	-($(CC) -c -o _conftest test.c && echo "#define T_SYS_PARAM_H 1") >t_sysparam.h
+	rm -f test.c _conftest
 t_stdint.h:
 	echo "#include <stdint.h>" >test.c
-	-($(CC) -c -o /dev/null test.c && echo "#define T_STDINT 1") >t_stdint.h
-	rm -f test.c
+	-($(CC) -c -o _conftest test.c && echo "#define T_STDINT 1") >t_stdint.h
+	rm -f test.c _conftest
 t_xti.h:
 	echo "#include <xti.h>" >test.c
-	-($(CC) -c -o /dev/null test.c && echo "#define T_XTI 1") >t_xti.h
-	rm -f test.c
+	-($(CC) -c -o _conftest test.c && echo "#define T_XTI 1") >t_xti.h
+	rm -f test.c _conftest
 t_alloca.h:
 	echo "#include <alloca.h>" >test.c
-	-($(CC) -c -o /dev/null test.c && echo "#define T_ALLOCA 1") >t_alloca.h
-	rm -f test.c
+	-($(CC) -c -o _conftest test.c && echo "#define T_ALLOCA 1") >t_alloca.h
+	rm -f test.c _conftest
 ldflags:
 	echo "int main() { return 0; }" > test.c
 	-($(CC) test.c -lsocket -lnsl -o _conftest && echo -lsocket -lnsl) >ldflags
