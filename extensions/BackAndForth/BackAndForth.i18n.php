@@ -249,6 +249,14 @@ $messages['gl'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'backforth-next' => 'Ἑπομέναι ($1)',
+	'backforth-prev' => 'Προηγουμέναι ($1)',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author דניאל ב.
@@ -309,6 +317,15 @@ $messages['ia'] = array(
 	'backforth-next' => 'Sequente ($1)',
 	'backforth-desc' => 'Adde ligamines de navigation alphabetic "Sequente" e "Precedente" in alto del paginas',
 	'backforth-prev' => 'Precedente ($1)',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'backforth-next' => 'Selanjutnya ($1)',
+	'backforth-desc' => 'Menambahkan pranala halaman alfabetis "Sebelumnya" dan "Selanjutnya" di bagian atas halaman',
+	'backforth-prev' => 'Sebelumnya ($1)',
 );
 
 /** Ido (Ido)
@@ -571,6 +588,14 @@ $messages['sah'] = array(
 $messages['scn'] = array(
 	'backforth-next' => 'Succissivi ($1)',
 	'backforth-prev' => 'Pricidenti ($1)',
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'backforth-next' => 'ඊළඟ($1)',
+	'backforth-prev' => 'පූර්ව ($1)',
 );
 
 /** Slovak (Slovenčina)

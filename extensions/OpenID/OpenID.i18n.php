@@ -118,13 +118,6 @@ $messages['rtm'] = array(
 	'openidchoosepassword' => 'ou password:',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'openidchoosepassword' => 'шолыпмут:',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -676,8 +669,10 @@ Hai moitos [http://wiki.openid.net/Public_OpenID_providers proveedores públicos
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'openidnickname' => 'Ψευδώνυμον',
 	'openidlanguage' => 'Γλῶττα',
 );
 
@@ -936,7 +931,76 @@ Il ha multe [http://wiki.openid.net/Public_OpenID_providers providitores de Open
  * @author Rex
  */
 $messages['id'] = array(
+	'openid-desc' => 'Masuk log ke wiki dengan sebuah [http://openid.net/ OpenID], dan masuk log ke situs web lain yang berbasis OpenID dengan sebuah akun pengguna wiki',
+	'openidlogin' => 'Masuk log dengan OpenID',
+	'openidfinish' => 'Selesai masuk log dengan OpenID',
+	'openidserver' => 'Server OpenID',
+	'openidxrds' => 'berkas Yadis',
+	'openidconvert' => 'Konverter OpenID',
+	'openiderror' => 'Verifikasi gagal',
+	'openiderrortext' => 'Sebuah kesalahan terjadi ketika melakukan verifikasi atas URL OpenID.',
+	'openidconfigerror' => 'Kesalahan konfigurasi OpenID',
+	'openidconfigerrortext' => 'Konfigurasi penyimpanan OpenID di wiki ini tidak sah.
+Silakan hubungi salah satu [[Special:ListUsers/sysop|administrator]].',
+	'openidpermission' => 'Izin OpenID tidak sah',
+	'openidpermissiontext' => 'OpenID yang Anda berikan tidak diperbolehkan untuk mengakses server ini.',
+	'openidcancel' => 'Verifikasi dibatalkan',
+	'openidcanceltext' => 'Verifikasi URL OpenID tersebut dibatalkan.',
+	'openidfailure' => 'Verifikasi gagal',
+	'openidfailuretext' => 'Verifikasi dari URL OpenID tersebut gagal.
+Pesan kesalahan: "$1"',
+	'openidsuccess' => 'Verifikasi berhasil',
+	'openidsuccesstext' => 'Verifikasi dari URL OpenID tersebut berhasil.',
+	'openidusernameprefix' => 'PenggunaOpenID',
+	'openidserverlogininstructions' => 'Masukkan kata sandi Anda di bawah ini untuk masuk log ke $3 sebagai pengguna $2 (halaman pengguna $1).',
+	'openidtrustinstructions' => 'Berikan tanda cek jika Anda ingin berbagi data dengan $1.',
+	'openidallowtrust' => 'Izinkan $1 untuk mempercayai akun pengguna ini.',
+	'openidnopolicy' => 'Situs ini tidak memiliki kebijakan privasi.',
+	'openidpolicy' => 'Lihat <a target="_new" href="$1">kebijakan privasi</a> untuk informasi lebih lanjut.',
+	'openidoptional' => 'Opsional',
+	'openidrequired' => 'Diperlukan',
+	'openidnickname' => 'Nama panggilan',
+	'openidfullname' => 'Nama lengkap',
+	'openidemail' => 'Alamat surat-e',
 	'openidlanguage' => 'Bahasa',
+	'openidnotavailable' => 'Nama panggilan yang Anda masukkan ($1) sudah digunakan oleh pengguna lain.',
+	'openidnotprovided' => 'Server OpenID Anda tidak menyediakan nama panggilan (entah karena server tersebut tidak bisa, atau Anda telah menspesifikasikan untuk tidak menyediakannya).',
+	'openidchooseinstructions' => 'Semua pengguna memerlukan sebuah nama panggilan;
+Anda dapat memilih dari salah satu opsi berikut.',
+	'openidchoosefull' => 'Nama lengkap Anda ($1)',
+	'openidchooseurl' => 'Sebuah nama diambil dari OpenID Anda ($1)',
+	'openidchooseauto' => 'Nama yang dibuat secara otomatis ($1)',
+	'openidchoosemanual' => 'Nama pilihan Anda:',
+	'openidchooseexisting' => 'Akun telah ada di wiki ini:',
+	'openidchoosepassword' => 'kata sandi:',
+	'openidconvertinstructions' => 'Form ini mengizinkan Anda untuk mengubah akun pengguna Anda menjadi menggunakan sebuah URL OpenID.',
+	'openidconvertsuccess' => 'Berhasil dikonversi menjadi OpenID',
+	'openidconvertsuccesstext' => 'Anda telah berhasil mengkonversi OpenID Anda menjadi $1.',
+	'openidconvertyourstext' => 'Sudah merupakan OpenID Anda.',
+	'openidconvertothertext' => 'Itu adalah OpenID orang lain.',
+	'openidalreadyloggedin' => "'''Anda telah masuk log, $1!'''
+
+Jika Anda ingin menggunakan OpenID untuk masuk log di masa yang akan datang, Anda dapat [[Special:OpenIDConvert|mengkonversi akun Anda menjadi OpenID]].",
+	'tog-hideopenid' => 'Sembunyikan <a href="http://openid.net/">OpenID</a> Anda di halaman pengguna Anda, jika Anda masuk log dengan OpenID.',
+	'openidnousername' => 'Tidak ada nama pengguna diberikan.',
+	'openidbadusername' => 'Nama pengguna salah.',
+	'openidautosubmit' => 'Dalam halaman ini terdapat formulir yang akan dikirimkan secara otomatis jika Anda mengaktifkan JavaScript.
+Jika tidak, coba tombol \\"Lanjutkan\\".',
+	'openidclientonlytext' => 'Anda tidak dapat menggunakan akun dari wiki ini sebagai OpenID di situs lain.',
+	'openidloginlabel' => 'URL OpenID',
+	'openidlogininstructions' => "{{SITENAME}} ini mendukung standar [http://openid.net/ OpenID] untuk masuk log lintas situs web.
+OpenID mengizinkan Anda untuk masuk log di lintas situs web dengan menggunakan kata sandi yang sama.
+(Lihat [http://id.wikipedia.org/wiki/OpenID artikel Wikipedia mengenai OpenID] untuk informasi lebih lanjut.)
+
+Jika Anda telah memiliki akun di {{SITENAME}}, Anda dapat [[Special:UserLogin|masuk log]] dengan nama pengguna dan kata sandi Anda seperti biasa.
+Untuk menggunakan OpenID di masa yang akan datang, Anda dapat [[Special:OpenIDConvert|mengkonversi akun Anda menjadi OpenID]] setelah Anda masuk log seperti biasa.
+
+Ada banyak [http://wiki.openid.net/Public_OpenID_providers penyedia OpenID Publik], dan Anda mungkin telah memiliki akun OpenID di salah satu layanan situs lain.
+
+; Wiki lain : Jika Anda memiliki akun di wiki lain dengan OpenID, seperti [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs], atau [http://kei.ki/ Keiki], Anda dapat masuk log ke {{SITENAME}} menggunakan '''URL lengkap''' dari halaman pengguna Anda di wiki lain tersebut di kotak di atas. Sebagai contoh, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!] : Jika Anda memiliki akun di Yahoo!, Anda dapat masuk log di situs ini dengan menggunakan OpenID Yahoo! Anda di kotak di atas. URL OpenID Yahoo! memiliki format ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Jika Anda memiliki akun di [http://www.aol.com/ AOL], seperti akun [http://www.aim.com/ AIM], Anda dapat masuk log di {{SITENAME}} dengan menggunakan OpenID AOL Anda di kotak di atas. URL OpenID AOL memiliki format ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Nama pengguna Anda haruslah dalam huruf kecil semua dan tanpa spasi.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Jika Anda memiliki blog di situs-situs layanan ini, masukkan URL blog Anda di kotak di atas. Sebagai contoh, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', atau ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
 /** Icelandic (Íslenska)
@@ -1199,6 +1263,13 @@ $messages['lb'] = array(
 	'openidbadusername' => 'Falsche Benotzernumm uginn.',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'openidchoosepassword' => 'шолыпмут:',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -1309,6 +1380,37 @@ $messages['mr'] = array(
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html ब्लॉगर], [http://faq.wordpress.com/2007/03/06/what-is-openid/ वर्डप्रेस.कॉम], [http://www.livejournal.com/openid/about.bml लाईव्ह जर्नल], [http://bradfitz.vox.com/library/post/openid-for-vox.html वॉक्स] : जर यापैकी कुठेही तुमचा ब्लॉग असेल, तर वरील पृष्ठपेटीमध्ये तुमच्या ब्लॉगची URL भरा. उदाहरणार्थ, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', किंवा ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'openidlogin' => 'Log masuk dengan OpenID',
+	'openidserver' => 'Pelayan OpenID',
+	'openidxrds' => 'Fail Yadis',
+	'openidconvert' => 'Penukar OpenID',
+	'openiderror' => 'Ralat pengesahan',
+	'openiderrortext' => 'Berlaku ralat ketika pengesahan URL OpenID.',
+	'openidconfigerror' => 'Ralat konfigurasi OpenID',
+	'openidconfigerrortext' => 'Konfigurasi storan OpenID bagi wiki ini tidak sah.
+Sila hubungi [[Special:ListUsers/sysop|pentadbir]].',
+	'openidpermission' => 'Ralat keizinan OpenID',
+	'openidcancel' => 'Pengesahan telah dibatalkan',
+	'openidcanceltext' => 'Pengesahan URL OpenID telah dibatalkan.',
+	'openidoptional' => 'Pilihan',
+	'openidrequired' => 'Wajib',
+	'openidnickname' => 'Nama ringkas',
+	'openidfullname' => 'Nama penuh',
+	'openidemail' => 'Alamat e-mel',
+	'openidlanguage' => 'Bahasa',
+	'openidchoosefull' => 'Nama penuh anda ($1)',
+	'openidchooseurl' => 'Nama yang dipilih daripada OpenID anda ($1)',
+	'openidchooseauto' => 'Nama janaan automatik ($1)',
+	'openidchoosemanual' => 'Nama pilihan anda:',
+	'openidnousername' => 'Nama pengguna tidak dinyatakan.',
+	'openidbadusername' => 'Nama pengguna yang dinyatakan tidak sah.',
+	'openidloginlabel' => 'URL OpenID',
+);
+
 /** Maltese (Malti)
  * @author Roderick Mallia
  */
@@ -1352,8 +1454,8 @@ Raadpleeg een  [[Special:ListUsers/sysop|beheerder]].",
 	'openidcanceltext' => 'De verificatie van de OpenID URL is geannuleerd.',
 	'openidfailure' => 'Verificatie mislukt',
 	'openidfailuretext' => 'De verificatie van de OpenID URL is mislukt. Foutmelding: "$1"',
-	'openidsuccess' => 'Verificatie geslaagd',
-	'openidsuccesstext' => 'De verificatie van de OpenID URL is geslaagd.',
+	'openidsuccess' => 'Verificatie uitgevoerd',
+	'openidsuccesstext' => 'De OpenID-URL is geverifieerd.',
 	'openidusernameprefix' => 'OpenIDGebruiker',
 	'openidserverlogininstructions' => 'Voer uw wachtwoord hieronder in om aan te melden bij $3 als gebruiker $2 (gebruikerspagina $1).',
 	'openidtrustinstructions' => 'Controleer of u gegevens wilt delen met $1.',
@@ -1376,8 +1478,8 @@ Raadpleeg een  [[Special:ListUsers/sysop|beheerder]].",
 	'openidchooseexisting' => 'Een bestaande gebruiker op deze wiki:',
 	'openidchoosepassword' => 'wachtwoord:',
 	'openidconvertinstructions' => 'Met dit formulier kunt u uw gebruiker als OpenID URL gebruiken.',
-	'openidconvertsuccess' => 'Omzetten naar OpenID geslaagd',
-	'openidconvertsuccesstext' => 'U hebt uw OpenID succesvol omgezet naar $1.',
+	'openidconvertsuccess' => 'Omzetten naar OpenID is uitgevoerd',
+	'openidconvertsuccesstext' => 'Uw OpenID is omgezet naar $1.',
 	'openidconvertyourstext' => 'Dat is al uw OpenID.',
 	'openidconvertothertext' => 'Iemand anders heeft die OpenID al in gebruik.',
 	'openidalreadyloggedin' => "'''U bent al aangemeld, $1!'''

@@ -335,6 +335,33 @@ Clicca <a href='$1'>hic</a> pro retornar.",
 	'spamdifftool_submit_buttom' => 'Submitter',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'spamdifftool' => 'Pemeliharaan daftar hitam spam',
+	'spamdifftool-desc' => 'Menyediakan fungsi dasar untuk menambahkan entri baru ke daftar hitam spam langsung dari halaman perbedaan antar revisi',
+	'spamdifftool_cantedit' => 'Maaf - Anda tidak memiliki hak akses untuk menyunting daftar hitam spam.',
+	'spamdifftool_notext' => "Tidak ada teks yang dapat ditambahkan ke daftar hitam spam.
+Klik <a href='$1'>di sini</a> untuk melanjutkan.",
+	'spamdifftool_confirm' => "Konfirmasi untuk meyakinkan bahwa Anda ingin menambahkan entri ini ke daftar hitam spam.
+(Klik <a href='$1' target='new'>di sini</a> untuk melaporkan suatu masalah.)",
+	'spamdifftool_summary' => 'Sedang menambahkan ke daftar hitam spam',
+	'spamdifftool_urls_detected' => 'URL berikut terdeteksi dalam suntingan. URL yang mana saja yang ingin ditambahkan ke daftar hitam spam?
+Opsi berikut diurutkan dari yang paling dibatasi hingga yang lebih sedikit dibatasi. Memblokir seluruh domain akan sekaligus memblokir pranala yang berasal dari domain tersebut.
+
+Pastikan Anda tidak memblokir semua domain yang meladeni akun-akun pengguna, seperti blogpost.com, geocities.com, dan lain-lain.',
+	'spamdifftool_no_urls_detected' => "Tidak ada url yang terdeteksi.
+Klik <a href='$1'>di sini</a> untuk kembali.",
+	'spamdifftool_spam_link_text' => 'tambahkan ke spam',
+	'spamdifftool_option_domain' => 'semua dari domain ini',
+	'spamdifftool_option_subdomain' => 'semua dari subdomain ini',
+	'spamdifftool_option_directory' => 'subdomain dan direktori ini',
+	'spamdifftool_option_none' => 'tidak ada',
+	'spamdifftool_block' => 'Blokir:',
+	'spamdifftool_submit_buttom' => 'Kirim',
+);
+
 /** Icelandic (Íslenska) */
 $messages['is'] = array(
 	'spamdifftool_option_none' => 'ekkert',

@@ -174,6 +174,14 @@ $messages['gl'] = array(
 	'findspam-notextfound' => 'Non foron atopadas contribucións',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'findspam-ip' => 'IP-διεύθυνσις:',
+	'findspam-ok' => 'εἶεν',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

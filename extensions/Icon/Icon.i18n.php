@@ -104,6 +104,15 @@ $messages['gl'] = array(
 	'icon-desc' => 'Permítelle usar as imaxes como iconas e ligazóns a iconas',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'icon-badimage' => 'Κακὴ εἰκών',
+	'icon-badwidth' => 'Κακὸν πλάτος',
+	'icon-desc' => 'Ἐπιτρέπει σοι χρῆσθαι εἰκόνας ὡς εἴδωλα καὶ ὡς σύνδεσμους εἰς εἴδωλα',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

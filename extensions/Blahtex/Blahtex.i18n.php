@@ -820,6 +820,13 @@ Debe ser un díxito único entre 1 e 9, ambos os dous inclusive.',
 	'math_WrongFontEncodingWithHint' => 'O símbolo "$1" non pode aparecer na codificación de fonte "$2" (tente usando o comando "$3{...}")',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'math_LatexFontNotSpecified' => 'Οὐδεμία γραμματοσειρά LaTeX κεκαθωρισμένη ἐστὶν διὰ τὴν "$1"',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

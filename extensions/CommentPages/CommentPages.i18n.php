@@ -108,11 +108,18 @@ $messages['gl'] = array(
 	'nstab-comments' => 'Comentario',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'nstab-comments' => 'Σχολιασμός',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
 $messages['gv'] = array(
-	'commentpages-desc' => "Duillagyn coontey da'n ard-boayl ennym",
+	'commentpages-desc' => "Duillagyn cohaggloo da'n ard-voayl ennym",
 	'nstab-comments' => 'Coontey',
 );
 

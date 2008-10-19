@@ -409,6 +409,13 @@ Se ten algunha dúbida ou pregunta acerca do sistema de distribución das extens
 	'extdist-want-more' => 'Obter outra extensión',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'extdist-submit-extension' => 'Συνεχίζειν',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

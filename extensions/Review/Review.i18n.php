@@ -501,6 +501,14 @@ $messages['gl'] = array(
 	'review_comment' => 'Comentario',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'review_topic' => 'Θέμα',
+	'review_rating' => 'Βάθμισις',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

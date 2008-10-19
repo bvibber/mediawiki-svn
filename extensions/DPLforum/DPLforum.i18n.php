@@ -28,13 +28,6 @@ $messages['qqq'] = array(
 	'dplforum-never' => '{{Identical|Never}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'dplforum-never' => 'Нигунам',
-);
-
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -159,6 +152,15 @@ $messages['gl'] = array(
 	'dplforum-toomany' => 'Foro DPL: demasiadas categorías!',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'dplforum-by' => 'ὑπὸ',
+	'dplforum-edited' => '  - Ἐσχάτως μεταγεγραμμένη',
+	'dplforum-never' => 'Οὔποτε',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -240,6 +242,13 @@ $messages['lb'] = array(
 	'dplforum-never' => 'Ni',
 	'dplforum-toofew' => 'DPL Forum: Ze wéineg Kategorien!',
 	'dplforum-toomany' => 'DPL Forum: Ze wéineg Kategorien!',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'dplforum-never' => 'Нигунам',
 );
 
 /** Malayalam (മലയാളം)
@@ -362,9 +371,12 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'dplforum-desc' => 'Extensão de fórum baseada em DPL',
 	'dplforum-by' => 'por',
 	'dplforum-edited' => '  - Última edição',
 	'dplforum-never' => 'Nunca',
+	'dplforum-toofew' => 'DPL Forum: Categorias em número insuficiente!',
+	'dplforum-toomany' => 'DPL Forum: Demasiadas categorias!',
 );
 
 /** Romanian (Română)

@@ -150,6 +150,14 @@ Die ID, die du benötigst, sind die Zahlen und Buchstaben zwischen „$2“ und 
 	'imstatus_yahoo_style' => 'der Stil der Schaltfläche, von $1 (kleinste) bis $2 (größte), $3 und $4 sind für Voicemail.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'imstatus_default' => 'Defaŭlta',
+	'imstatus_example' => 'Ekzemplo',
+);
+
 /** Persian (فارسی)
  * @author Mardetanha
  */
@@ -220,6 +228,16 @@ O ID que precisa proporcionar son os números e letras entre "$2" e "$3".',
 	'imstatus_skype_nbstyle' => 'Nota: se escolle un estilo que tamén sexa unha acción, a súa escolla da acción será sobreescrita pola acción que coincida co estilo elixido.',
 	'imstatus_xfire_size' => 'o botón do tamaño, de $1 (o maior) a $2 (o menor).',
 	'imstatus_yahoo_style' => 'o botón do estilo, de $1 (o menor) a $2 (o maior), $3 e $4 son para as mensaxes faladas.',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'imstatus_syntax' => 'Σύνταξις',
+	'imstatus_max' => 'μέγ',
+	'imstatus_min' => 'ἐλάχ',
+	'imstatus_or' => 'ἢ',
 );
 
 /** Interlingua (Interlingua)

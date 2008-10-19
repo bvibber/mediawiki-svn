@@ -42,13 +42,6 @@ $messages['rtm'] = array(
 	'countedits-username' => 'Asa:',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'countedits-username' => 'Пайдаланышын лӱмжӧ:',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -320,6 +313,14 @@ Non xulgue a un colaborador polo seu número de edicións.",
 	'countedits-resulttext' => '$1 ten feitas $2 edicións',
 	'countedits-mostactive' => 'Colaboradores máis activos',
 	'countedits-nocontribs' => 'Non houbo ningunha colaboración neste wiki.',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'countedits-username' => 'Ὄνομα χρωμένου:',
+	'countedits-ok' => 'εἶεν',
 );
 
 /** Manx (Gaelg)
@@ -650,6 +651,13 @@ $messages['lt'] = array(
 	'countedits-resulttext' => '$1 atliko $2 keitimų',
 	'countedits-mostactive' => 'Aktyviausi naudotojai',
 	'countedits-nocontribs' => 'Šioje wiki nebuvo naudotojų.',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'countedits-username' => 'Пайдаланышын лӱмжӧ:',
 );
 
 /** Malayalam (മലയാളം)

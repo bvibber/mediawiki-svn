@@ -156,15 +156,6 @@ $wdMessages['krl'] = array(
 	'ow_LinkAttributeValues' => 'Viippaukset',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$wdMessages['mhr'] = array(
-	'ow_save' => 'Аралаш',
-	'ow_history' => 'Историй',
-	'ow_LinkAttributeValues' => 'Ссылке-влак',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -2319,6 +2310,15 @@ $wdMessages['mai'] = array(
 	'langman_title' => 'भाषा प्रबंधक',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$wdMessages['mhr'] = array(
+	'ow_save' => 'Аралаш',
+	'ow_history' => 'Историй',
+	'ow_LinkAttributeValues' => 'Ссылке-влак',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -2642,7 +2642,8 @@ Controleer het webadres.',
 	'ow_please_proved_dmid' => 'Uw invoer mist een "?dmid=<ID>" (dmid=Defined Meaning-ID)<br />Neem alstublieft contact op met een systeembeheerder.',
 	'ow_please_proved_dc1' => 'Uw invoer mist een "?dc1=<iets>" (dc1=datasetcontext 1, dataset WAARVAN te kopiëren)<br />Neem alstublieft contact op met een systeembeheerder.',
 	'ow_please_proved_dc2' => 'Uw invoer mist een "?dc2==<iets>" (dc2=datasetcontext 2, dataset WAARNAAR te kopiëren)<br />Neem alstublieft contact op met een systeembeheerder.',
-	'ow_copy_successful' => '<h2>Kopiëren succesvol</h2>Het lijkt erop dat het kopiëren van de gegevens goed gegaan is. Vergeet niet om dit te controleren!',
+	'ow_copy_successful' => '<h2>Kopiëren uitgevoerd</h2>Het lijkt erop dat het kopiëren van de gegevens goed gegaan is.
+Vergeet niet om dit te controleren!',
 	'ow_copy_unsuccessful' => '<h3>Kopiëren mislukt</h3> Er is niets gekopieerd.',
 	'ow_no_action_specified' => '<h3>Er is geen handeling opgegeven</h3> Mogelijk bent u direct naar deze pagina gekomen. Normaliter hoort dat niet te gebeuren.',
 	'ow_db_consistency_not_found' => '<h2>Fout</h2>Er is een probleem met de consistentie van de database. Wikidata kan geen valide gegevens vinden die met dit Defined Meaning-ID zijn verbonden. Wellicht zijn die gegevens verloren gegaan. Neem alstublieft contact op met een systeembeheerder.',

@@ -707,6 +707,8 @@ $messages['eo'] = array(
 	'right-speedy-nominate' => 'Kandidatigi paĝojn por rapida forigo',
 	'right-speedy-review' => 'Kontroli kandidatojn por rapida forigo',
 	'right-prod-nominate' => 'Proponi forigon de paĝo',
+	'right-deletediscuss-nominate' => 'malfermi diskuton pri forigado',
+	'right-deletediscuss-review' => 'Fermi diskuton pri forigado',
 	'right-deletequeue-vote' => 'Kunsenti aŭ malkunsenti forigojn',
 	'deletequeue-queue-speedy' => 'Rapida forigo',
 	'deletequeue-queue-prod' => 'Proponita forigo',
@@ -728,8 +730,11 @@ Vi povas kontraŭi la forigon de ĉi tiu paĝo de [{{fullurl:{{FULLPAGENAME}}|ac
 	'deletequeue-reviewspeedy-tab' => 'Kontroli rapidan forigon',
 	'deletequeue-reviewprod-tab' => 'Kontroli proponitan forigon',
 	'deletequeue-reviewdeletediscuss-tab' => 'Kontroli forigon',
+	'deletequeue-discusscreate-text' => 'Forigo estis proponita pro la jena kialo: $2',
+	'deletequeue-role-nominator' => 'originala proponinto por forigo',
 	'deletequeue-role-vote-endorse' => 'konsentanto de forigo',
 	'deletequeue-role-vote-object' => 'malkonsentanto de forigo',
+	'deletequeue-vote-tab' => 'Konsenti/Malkonsenti forigon',
 	'deletequeue-vote-legend' => 'Konsenti/Malkonsenti forigon.',
 	'deletequeue-vote-action' => 'Rekomendo:',
 	'deletequeue-vote-endorse' => 'Konsenti forigon.',
@@ -1058,9 +1063,21 @@ Pode rexistrar o seu propio apoio ou obxección na páxina da eliminación: [{{f
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'deletequeue-action-queued' => 'Διαγραφή',
+	'deletequeue-action' => 'Πρότασις διαγραφῆς',
+	'deletequeue-action-title' => 'Πρότασις διαγραφῆς τοῦ "$1"',
+	'deletequeue-delnom-otherreason' => 'Ἑτέρα αἰτία',
+	'deletequeue-review-reason' => 'Σχόλια:',
+	'deletequeue-vote-submit' => 'Ὑποβάλλειν',
+	'deletequeue-list-queue' => 'Οὐρά:',
+	'deletequeue-list-status' => 'Καθεστώς:',
+	'deletequeue-list-search' => 'Ζητεῖν',
+	'deletequeue-list-anyqueue' => '(οἱαδήποτε)',
 	'deletequeue-list-header-page' => 'Δέλτος',
+	'deletequeue-list-header-queue' => 'Οὐρά',
 );
 
 /** Croatian (Hrvatski)
@@ -1390,6 +1407,7 @@ $messages['lb'] = array(
 	'deletequeue-queue-prod' => 'Virgeschlo fir ze läschen',
 	'deletequeue-queue-deletediscuss' => 'Läschdiskussioun',
 	'deletequeue-review-delete' => "D'Säit läschen",
+	'deletequeue-review-change' => 'Dës Säit läschen, awer mat engem anere Grond.',
 	'deletequeue-review-reason' => 'Bemierkungen:',
 	'deletequeue-review-newreason' => 'Neie Grond:',
 	'deletequeue-review-newextra' => 'Zousätzlech Informatioun:',

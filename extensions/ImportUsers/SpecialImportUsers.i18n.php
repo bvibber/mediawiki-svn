@@ -57,16 +57,6 @@ $messages['rtm'] = array(
 	'importusers-password' => 'Ou password',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'importusers-uploadfile' => 'Файлым пурташ',
-	'importusers-log-summary' => 'Чылаже',
-	'importusers-password' => 'шолыпмут',
-	'importusers-email' => 'электрон почто',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -350,6 +340,18 @@ $messages['gl'] = array(
 	'importusers-realname' => 'nome real',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'importusers-uploadfile' => 'Ἐπιφορτίζειν ἀρχεῖον',
+	'importusers-form-caption' => 'Ἐντιθέναι CSV-ἀρχεῖον (UTF-8)',
+	'importusers-form-button' => 'Εἰσάγειν',
+	'importusers-password' => 'σύνθημα',
+	'importusers-email' => 'ἠλ-ταχυδρομεῖον',
+	'importusers-realname' => 'ἀληθὲς ὄνομα',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -593,6 +595,16 @@ $messages['lb'] = array(
 	'importusers-password' => 'Passwuert',
 	'importusers-email' => 'E-Mailadress',
 	'importusers-realname' => 'richtege Numm',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'importusers-uploadfile' => 'Файлым пурташ',
+	'importusers-log-summary' => 'Чылаже',
+	'importusers-password' => 'шолыпмут',
+	'importusers-email' => 'электрон почто',
 );
 
 /** Malayalam (മലയാളം)

@@ -263,6 +263,15 @@ Para facelo, por favor, obteña a clave API [http://www.flickr.com/services/api/
 	'importfreeimages_returntoform' => "Ou prema <a href='$1'>aquí</a> para voltar á súa procura de resultados",
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'importfreeimages_owner' => 'Δημιουργός',
+	'importfreeimages_importthis' => 'τόδε εἰσάγειν',
+	'importfreeimages_next' => 'Ἑπόμεναι $1',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

@@ -42,13 +42,6 @@ $messages['krl'] = array(
 	'editmsg-search' => 'Ečindy',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'editmsg-search' => 'Кычал',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -270,6 +263,13 @@ $messages['gl'] = array(
 	'editmsg-patch-success' => 'Parcheado exitoso.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'editmsg-search' => 'Ζητεῖν',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -481,6 +481,13 @@ $messages['lt'] = array(
 	'editmsg-search' => 'Ieškoti',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'editmsg-search' => 'Кычал',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -552,7 +559,7 @@ $messages['nl'] = array(
 	'editmsg-apply-patch' => 'Aanpassingen uitvoeren',
 	'editmsg-no-patch' => 'Het commando "patch" kan niet uitgevoerd worden',
 	'editmsg-patch-failed' => 'Aanpassen is mislukt met als foutcode $1',
-	'editmsg-patch-success' => 'Aanpassen geslaagd.',
+	'editmsg-patch-success' => 'De aanpassingen zijn gemaakt.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

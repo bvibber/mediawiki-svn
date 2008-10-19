@@ -23,6 +23,7 @@ $fallback=array(
 	'fr'  => 'en',
 	'fy'  => 'en',
 	'gl'  => 'en',
+	'he'  => 'en',
 	'ia'  => 'en',
 	'id'  => 'en',
 	'it'  => 'en',
@@ -199,14 +200,6 @@ $messages['rtm'] = array(
 	'voctrain_User_name' => 'Asa',
 	'voctrain_Login' => 'Surum',
 	'voctrain_Log_in' => 'Surum',
-);
-
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'voctrain_logout' => 'лекташ',
-	'voctrain_User_name' => 'Пайдаланышын лӱмжӧ',
 );
 
 /** Afrikaans (Afrikaans)
@@ -894,6 +887,23 @@ $messages['gl'] = array(
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Separe os valores por comas para usar varias linguas.',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'voctrain_Hello_World' => 'שלום ויקי!',
+	'voctrain_Permission_Denied' => 'הגישה נדחתה',
+	'voctrain_try_again_' => 'לנסות שוב?',
+	'voctrain_Action_unknown' => 'פעולה לא ידועה',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "אני לא יודע מה לעשות עם '%action'.",
+	'voctrain_User_added' => 'המשתמש נוסף',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'שלום, %username, וברוך/ה הבא/ה למתרגל השפה אומגה',
+	'voctrain_continue' => 'המשך',
+	'voctrain_hello_place' => 'שלום %place',
+	'voctrain_bye' => 'להתראות',
+	'voctrain_Set_up_your_exercise' => 'הגדר את האימון שלך',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -1155,6 +1165,14 @@ $messages['lfn'] = array(
 	'voctrain_Answer_s_' => 'Responde(s)',
 	'voctrain_Language' => 'Lingua',
 	'voctrain_Translation' => 'Tradui',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'voctrain_logout' => 'лекташ',
+	'voctrain_User_name' => 'Пайдаланышын лӱмжӧ',
 );
 
 /** Maltese (Malti)

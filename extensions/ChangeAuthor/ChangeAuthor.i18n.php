@@ -389,7 +389,7 @@ Změń jadnorje jadne wužywarske mě ze slědujuceje lisćiny, pśidaj komentar
 	'changeauthor-weirderror' => 'Wjelgin źiwna zmólka jo wustupiła.
 Wóspjetuj pšosym swóju změnu.
 Jolic toś ta zmólka dalej wustupujo, jo nejskerjej datowa banka wobškóźona.',
-	'changeauthor-invalidform' => 'Wužyj pšosym formular z Special:ChangeAuthor a nic swójski formular.',
+	'changeauthor-invalidform' => 'Wužyj pšosym formular ze [[Special:ChangeAuthor|specialnego boka]] a nic swójski formular.',
 	'changeauthor-success' => 'Twójo změnjenje jo se wuspěšnje pśewjadło.',
 	'changeauthor-logentry' => 'Awtora za $2 $1 wót $3 do $4 změnjony',
 	'changeauthor-logpagename' => 'Protokol změnow awtorow',
@@ -729,6 +729,36 @@ Si iste error persiste, le base de datos es probabilemente defecte.',
 	'changeauthor-logpagename' => 'Registro de cambiamentos de autores',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'changeauthor' => 'Mengganti penulis revisi',
+	'changeauthor-desc' => 'Mengizinkan pengubahan penulis revisi',
+	'changeauthor-title' => 'Mengganti penulis suatu revisi',
+	'changeauthor-search-box' => 'Mencari revisi',
+	'changeauthor-pagename-or-revid' => 'Nama halaman atau kode revisi:',
+	'changeauthor-pagenameform-go' => 'Kirim',
+	'changeauthor-comment' => 'Komentar:',
+	'changeauthor-changeauthors-multi' => 'Ganti {{PLURAL:$1|penulis|penulis}}',
+	'changeauthor-explanation-multi' => "Dalam formulir ini Anda dapat mengubah penulis suatu revisi.
+Anda hanya perlu mengubah satu atau lebih nama pengguna di dalam daftar di bawah ini, menambahkan komentar (opsional) dan klik tombol 'Ganti penulis'.",
+	'changeauthor-changeauthors-single' => 'Ganti penulis',
+	'changeauthor-explanation-single' => "Dalam formulir ini Anda dapat mengubah penulis suatu revisi.
+Anda hanya perlu mengubah satu atau lebih nama pengguna di dalam daftar di bawah ini, menambahkan komentar (opsional) dan klik tombol 'Ganti penulis'.",
+	'changeauthor-invalid-username' => 'Nama pengguna tidak sah "$1".',
+	'changeauthor-nosuchuser' => 'Tidak ada pengguna dengan nama "$1".',
+	'changeauthor-revview' => 'Revisi #$1 dari $2',
+	'changeauthor-nosuchtitle' => 'Tidak ada halaman dengan judul "$1".',
+	'changeauthor-weirderror' => 'Terjadi kesalahan yang sangat tidak biasa.
+Harap coba mengulang permintaan Anda.
+Jika kesalahan ini tetap terulang, kemungkinan terjadi kerusakan di basis data.',
+	'changeauthor-invalidform' => 'Harap gunakan formulir yang disediakan di [[Special:ChangeAuthor|halaman istimewa]] dan bukan formulir kustom.',
+	'changeauthor-success' => 'Permintaan Anda telah berhasil diproses.',
+	'changeauthor-logentry' => 'Mengubah penulis revisi $2 halaman $1 dari $3 menjadi $4',
+	'changeauthor-logpagename' => 'Log perubahan penulis',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -1012,7 +1042,7 @@ $messages['nl'] = array(
 Probeer het nogmaals.
 Als u deze foutmelding elke keer weer ziet, is er waarschijnlijk iets mis met de database.',
 	'changeauthor-invalidform' => 'Gebruik het formulier van de [[Special:ChangeAuthor|speciale pagina]], in plaats van een aangepast formulier.',
-	'changeauthor-success' => 'Uw verzoek is succesvol verwerkt.',
+	'changeauthor-success' => 'Uw verzoek is verwerkt.',
 	'changeauthor-logentry' => 'Auteur van $2 van $1 gewijzigd van $3 naar $4',
 	'changeauthor-logpagename' => 'Auteurswijzigingenlogboek',
 );

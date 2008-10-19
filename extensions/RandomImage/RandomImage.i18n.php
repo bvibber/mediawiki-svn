@@ -116,6 +116,13 @@ $messages['mr'] = array(
 	'randomimage-desc' => '<tt>&lt;randomimage /&gt;</tt> वापरून एक अविशिष्ट संचिका देतो',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'randomimage-desc' => 'Membekalkan pemilih media rawak menggunakan <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

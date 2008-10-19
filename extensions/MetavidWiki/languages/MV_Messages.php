@@ -339,15 +339,6 @@ $messages['krl'] = array(
 	'mv_edit' => 'Muokkaus',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'mv_upload_file' => 'Файлым пурташ',
-	'mv_tool_search' => 'Кычал',
-	'mv_history' => 'Историй',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -401,7 +392,7 @@ $messages['ar'] = array(
 	'mvexportsearch' => 'تصدير ميتافيد',
 	'mvexportsequence' => 'تتابع تصدير ميتافيد',
 	'mvexportstream' => 'ستريم تصدير ميتافيد',
-	'mv_move_delete_msg' => 'ميتافيد تم نقله (أزال الأصلي)',
+	'mv_move_delete_msg' => 'ميتافيد تم نقله إلى $1',
 	'mv_add_stream_page' => 'أضف ستريم إم في',
 	'mv_edit_strea_docu' => '<p>عدل الستريم <b>إداري</b> <br /> للمستخدم العادي عرض/تعديل انظر صفحة $1',
 	'mv_add_stream_docu' => '<p>إضافة ستريم جديد بالحقل بالأسفل.</p>
@@ -519,7 +510,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_advanced_edit' => 'تعديل متقدم',
 	'mv_basic_edit' => 'تعديل أساسي',
 	'mv_remove_category' => 'إزالة التصنيف',
-	'mv_existing_categories' => 'التصنيفات:',
+	'mv_existing_categories' => '{{PLURAL:$1|تصنيف|تصنيفات}}:',
 	'mv_add_category' => 'إضافة تصنيف',
 	'mv_basic_text_desc' => 'وصف نصي (اختياري)',
 	'mv_viewnext' => 'عرض ($1)',
@@ -632,7 +623,7 @@ $messages['arz'] = array(
 	'mvexportsearch' => 'تصدير ميتافيد',
 	'mvexportsequence' => 'تتابع تصدير ميتافيد',
 	'mvexportstream' => 'ستريم تصدير ميتافيد',
-	'mv_move_delete_msg' => 'ميتافيد تم نقله (أزال الأصلى)',
+	'mv_move_delete_msg' => 'ميتافيد تم نقله إلى $1',
 	'mv_add_stream_page' => 'أضف ستريم إم في',
 	'mv_edit_strea_docu' => '<p>عدل الستريم <b>إداري</b> <br /> للمستخدم العادى عرض/تعديل انظر صفحة $1',
 	'mv_add_stream_docu' => '<p>إضافة ستريم جديد بالحقل بالأسفل.</p>
@@ -750,7 +741,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_advanced_edit' => 'تعديل متقدم',
 	'mv_basic_edit' => 'تعديل أساسي',
 	'mv_remove_category' => 'إزالة التصنيف',
-	'mv_existing_categories' => 'التصنيفات:',
+	'mv_existing_categories' => '{{PLURAL:$1|تصنيف|تصنيفات}}:',
 	'mv_add_category' => 'إضافة تصنيف',
 	'mv_basic_text_desc' => 'وصف نصى (اختياري)',
 	'mv_viewnext' => 'عرض ($1)',
@@ -1035,6 +1026,7 @@ $messages['eo'] = array(
 	'mv_add_category' => 'Aldoni kategorion',
 	'mv_viewnext' => 'Vidi ($1)',
 	'mv_viewprevnext' => 'Vidi ($1) ($2)',
+	'mv_results_for' => 'Rezultoj por $1',
 	'mv_add_filter' => 'Aldonu Filtrilon',
 	'mv_search_spoken_by' => 'Parolata de',
 	'mv_search_category' => 'Kategorio',
@@ -1087,7 +1079,7 @@ $messages['fr'] = array(
 	'mvexportsearch' => 'Exporter Metavid',
 	'mvexportsequence' => 'Exporter une séquence Metavid',
 	'mvexportstream' => 'Exporter un flux de Metavid',
-	'mv_move_delete_msg' => 'mvd déplacé (original enlevé)',
+	'mv_move_delete_msg' => 'mvd déplacé vers $1',
 	'mv_add_stream_page' => "Ajout d'un flux metavid",
 	'mv_edit_strea_docu' => '<p>Éditer des flux</b> <b>(admin)</b><br />Pour la visualisation/modification par des utilisateurs normaux, voyez la page $1',
 	'mv_add_stream_docu' => "<p>Ajouter un nouveau flux avec le champ ci-dessous.</p><p>Plus d'informations sont données sur <a href=\"\$1\">la page d'aide concernant l'ajout d'un flux.",
@@ -1196,7 +1188,7 @@ $messages['fr'] = array(
 	'mv_advanced_edit' => 'Modification avancée',
 	'mv_basic_edit' => 'Modification de base',
 	'mv_remove_category' => 'Enlever la catégorie',
-	'mv_existing_categories' => 'catégories :',
+	'mv_existing_categories' => '{{PLURAL:$1|catégorie|catégories}} :',
 	'mv_add_category' => 'Ajouter une catégorisation',
 	'mv_basic_text_desc' => 'Description du texte (facultatif)',
 	'mv_viewnext' => 'Voir ($1)',
@@ -1325,7 +1317,7 @@ $messages['gl'] = array(
 	'mvexportsearch' => 'Exportar Metavid',
 	'mvexportsequence' => 'Exportar unha secuencia Metavid',
 	'mvexportstream' => 'Exportar un fluxo Metavid',
-	'mv_move_delete_msg' => 'mvd movido (eliminado o orixinal)',
+	'mv_move_delete_msg' => 'mvd movido a $1',
 	'mv_add_stream_page' => 'Engadir un fluxo Metavid',
 	'mv_edit_strea_docu' => '<p>Editar a <b>administración</b> do fluxo<br />para a visualización/edición dos usuarios, vexa a páxina $1',
 	'mv_add_stream_docu' => '<p>Engadir un novo fluxo co campo de embaixo.</p>
@@ -1442,7 +1434,7 @@ Saltar á vista do fluxo: $2',
 	'mv_advanced_edit' => 'Edición avanzada',
 	'mv_basic_edit' => 'Edición básica',
 	'mv_remove_category' => 'Eliminar a categoría',
-	'mv_existing_categories' => 'categorías:',
+	'mv_existing_categories' => '{{PLURAL:$1|categoría|categorías}}:',
 	'mv_add_category' => 'Engadir unha clasificación',
 	'mv_basic_text_desc' => 'Descrición do texto (opcional)',
 	'mv_viewnext' => 'Ver ($1)',
@@ -1536,6 +1528,19 @@ Saltar á vista do fluxo: $2',
  */
 $messages['got'] = array(
 	'mv_edit' => 'Máidjan',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'mv_duration_label' => 'Διάρκεια',
+	'mv_tool_embed' => 'Ἐμβαπτίζειν',
+	'mv_search_categories' => 'Κατηγορίαι',
+	'mv_search_category' => 'Κατηγορία',
+	'mv_search_and' => 'καὶ',
+	'mv_search_or' => 'ἢ',
+	'mv_search_not' => 'οὐ',
 );
 
 /** Manx (Gaelg)
@@ -2401,7 +2406,7 @@ $messages['lb'] = array(
 	'mv_start_desc' => 'Ufankszäit',
 	'mv_edit_metadata' => 'Meta-Donnéeën änneren',
 	'mv_remove_category' => 'Kategorie ewechhuelen',
-	'mv_existing_categories' => 'Kategorien:',
+	'mv_existing_categories' => '{{PLURAL:$1|Kategorie|Kategorien}}:',
 	'mv_add_category' => 'Eng Kategorie derbäisetzen',
 	'mv_viewnext' => '($1) weisen',
 	'mv_viewprevnext' => '($1) ($2) weisen',
@@ -2433,6 +2438,15 @@ $messages['lb'] = array(
  */
 $messages['lt'] = array(
 	'mv_tool_search' => 'Paieška',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'mv_upload_file' => 'Файлым пурташ',
+	'mv_tool_search' => 'Кычал',
+	'mv_history' => 'Историй',
 );
 
 /** Macedonian (Македонски)
@@ -2837,7 +2851,7 @@ Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
 	'mv_adjust_preview_stop' => 'Proefvertoning afbreken',
 	'mv_adjust_default_reason' => 'metavid-interface aanpassen',
 	'mv_adjust_old_title_missing' => 'De pagina die u probeert te hernoemen ($1) bestaat niet',
-	'mv_adjust_ok_move' => 'Geslaagd. Bezig met aanpassen...',
+	'mv_adjust_ok_move' => 'Bezig met aanpassen...',
 	'mv_start_desc' => 'Begintijd',
 	'mv_end_desc' => 'Eindtijd',
 	'mv_of' => '&#32;van&#32;',
@@ -3170,6 +3184,7 @@ $messages['oc'] = array(
 	'mvexportsearch' => 'Exportar Metavid',
 	'mvexportsequence' => 'Sequéncia d’exportacion de Metavid',
 	'mvexportstream' => 'Flus d’exportacion de Metavid',
+	'mv_move_delete_msg' => 'mvd desplaçat cap a $1',
 	'mv_add_stream_page' => "Apondon d'un flus metavid",
 	'mv_edit_strea_docu' => "<b>Editar l'administracion dels fluses</b> <br /> per qu'un utilizaire pòsca veire o editar la pagina $1 de visualizacion.",
 	'mv_add_stream_docu' => "<p>Apondre un flus novèl amb lo camp çaijós.</p><p>Mai d'entrenhas son balhadas sus <a href=\"\$1\">la pagina d'ajuda concernent l'ajuston d'un flus.",
@@ -3279,7 +3294,7 @@ Aqueste tipe de presentacion es pel tèxt qu'es parlat amb lo flus vidèo. De li
 	'mv_advanced_edit' => 'Modificacion avançada',
 	'mv_basic_edit' => 'Modificacion de basa',
 	'mv_remove_category' => 'Levar la categoria',
-	'mv_existing_categories' => 'categorias :',
+	'mv_existing_categories' => '{{PLURAL:$1|categoria|categorias}}:',
 	'mv_add_category' => 'Apondre una categorizacion',
 	'mv_basic_text_desc' => 'Descripcion del tèxt (facultatiu)',
 	'mv_viewnext' => 'Veire ($1)',
@@ -3807,7 +3822,7 @@ Prosím, oznámte to správcovi webovej lokality.',
 	'mvexportsearch' => 'Export Metavid',
 	'mvexportsequence' => 'Export Metavid sekvencie',
 	'mvexportstream' => 'Export Metavid streamu',
-	'mv_move_delete_msg' => 'mvd presunuté (originál odstránený)',
+	'mv_move_delete_msg' => 'mvd presunuté na $1',
 	'mv_add_stream_page' => 'Mv Pridať stream',
 	'mv_edit_strea_docu' => '<p>Upraviť stream, <b>správca</b><br />
 prehliadanie/úprava pre bežného používateľa na stránke $1',
@@ -3919,7 +3934,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mv_advanced_edit' => 'Rozšírené úpravy',
 	'mv_basic_edit' => 'Základné úpravy',
 	'mv_remove_category' => 'Odstrániť kategóriu',
-	'mv_existing_categories' => 'kategórie:',
+	'mv_existing_categories' => '{{PLURAL:$1|kategória|kategórie|kategórií}}:',
 	'mv_add_category' => 'Pridať kategorizáciu',
 	'mv_basic_text_desc' => 'Textový popis (nepovinné)',
 	'mv_viewnext' => 'Zobraziť ($1)',

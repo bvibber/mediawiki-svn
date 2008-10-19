@@ -215,6 +215,16 @@ $messages['gl'] = array(
 	'watchers_less_than_x' => 'Menos de $1 {{PLURAL:$1|usuarios|usuarios}} están vixiando esta páxina.',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'watchers' => 'עוקבים',
+	'watchers_link_title' => 'מי עוקב אחר עמוד זה?',
+	'watchers_error_article' => "'''שגיאה:''' העמוד אינו קיים.",
+	'watchers_noone_watches' => 'אף אחד לא עוקב אחר עמוד זה.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

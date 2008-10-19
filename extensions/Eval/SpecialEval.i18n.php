@@ -98,6 +98,13 @@ $messages['gl'] = array(
 	'eval_code' => 'Código',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'eval_code' => 'Κῶδιξ',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

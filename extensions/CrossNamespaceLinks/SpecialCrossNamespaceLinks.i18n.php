@@ -279,6 +279,13 @@ $messages['gl'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|ligazón|ligazóns}} cara a $3',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'crossnamespacelinks' => 'Σύνδεσμοι μεταξὺ ὀνοματείων',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

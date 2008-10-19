@@ -147,6 +147,14 @@ $messages['gl'] = array(
 	'categoryintersection-results' => 'A procura deu $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'categoryintersection' => 'Crossag ronney',
+	'categoryintersection-doit' => 'Cur duillagyn ayns ny ronnaghyn shen er rolley',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

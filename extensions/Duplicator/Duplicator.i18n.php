@@ -364,6 +364,14 @@ de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
 	'duplicator-toomanyrevisions' => '[[$1]] ten demasiadas ($2) revisións e non se pode copiar. O límite actual é $3.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'duplicator-source' => 'Πηγή:',
+	'duplicator-dest' => 'Προορισμός:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

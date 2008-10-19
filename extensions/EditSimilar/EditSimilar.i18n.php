@@ -193,6 +193,13 @@ Esta páxina pode tamén precisar da súa axuda: $1.',
 	'tog-edit-similar' => 'Permitir suxestións de páxinas similares',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'editsimilar-link-disable' => 'τιθέναι τὰς προαιρέσεις',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

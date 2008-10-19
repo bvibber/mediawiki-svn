@@ -88,7 +88,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'contributionseditcount' => 'Toś ten wužywaŕ ma $1 {{PLURAL:$1|změnu|změnje|změny|změnow}}.',
-	'contributionseditcount-desc' => 'Zwobraznujo licak změnow na [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Zwobraznujo licak změnow na [[Special:Contributions|boku wužywarskich pśinoskow]]',
 );
 
 /** Greek (Ελληνικά)

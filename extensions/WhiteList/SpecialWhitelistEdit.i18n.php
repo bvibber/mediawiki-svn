@@ -111,14 +111,6 @@ $allMessages['rtm'] = array(
 	'whitelisttableedit' => "A'tū'ạki",
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$allMessages['mhr'] = array(
-	'mywhitelistpages' => 'Мыйын лаштык-влак',
-	'whitelistnever' => 'нигунам',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -874,6 +866,14 @@ $2',
 	'whitelistnummatches' => '- $1 {{PLURAL:$1|Resultat|Resultater}}',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$allMessages['mhr'] = array(
+	'mywhitelistpages' => 'Мыйын лаштык-влак',
+	'whitelistnever' => 'нигунам',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -1497,6 +1497,7 @@ $allMessages['vi'] = array(
 	'whitelisttablemodifyall' => 'Tất cả',
 	'whitelisttablemodifynone' => 'Không có',
 	'whitelisttableedit' => 'Sửa',
+	'whitelisttableremove' => 'Dời',
 	'whitelistbadtitle' => 'Tựa trang sai –',
 	'whitelistnever' => 'không bao giờ',
 );

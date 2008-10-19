@@ -42,13 +42,6 @@ $messages['krl'] = array(
 	'multipleupload' => 'Panna fajlit',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'multipleupload' => 'Файлым пурташ',
-);
-
 /** Goanese Konkani (Latin) (कोंकणी/Konknni  (Latin))
  * @author Deepak D'Souza
  */
@@ -548,6 +541,13 @@ $messages['lb'] = array(
 	'multiupload-fileuploaded' => 'Fichier eropgelueden',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'multipleupload' => 'Файлым пурташ',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -581,6 +581,27 @@ $messages['mr'] = array(
 अयोग्य संचिका ताबडतोब वगळल्या जातील, कॄपया [[{{MediaWiki:Multipleupload-page}}|संचिका वगळण्याची नीती]] पहा.",
 	'multiupload-fileuploaded' => 'संचिका चढविलेली आहे.',
 	'multiupload-toolbox' => 'अनेक संचिका चढवा',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'multipleupload' => 'Muat naik fail',
+	'multipleupload-desc' => 'Membolehkan pengguna [[Special:MultipleUpload|memuat naik pelbagai fail serentak]]',
+	'multipleupload-ignoreallwarnings' => "Abaikan '''semua amaran''' dan simpan sahaja fail-fail tersebut.",
+	'multipleupload-saveallfiles' => 'Simpan semua fail',
+	'multipleupload-page' => '{{ns:project}}:Dasar penghapusan fail',
+	'multipleupload-text' => "Anda boleh menggunakan laman ini untuk memuat naik pelbagai fail secara serentak.
+
+Klik 'Browse' dan pilih setiap fail yang ingin dimuat naik.
+Anda boleh memuat naik 1 hingga $1 fail pada satu-satu masa.
+
+Anda boleh memasukkan '''Nama fail sasaran''' (kalau mahu) dan membekalkan '''Ringkasan''' sebagai keterangan bagi fail anda.
+
+Fail-fail yang tidak sesuai akan dihapuskan serta-merta. Sila baca [[{{MediaWiki:Multipleupload-page}}|dasar penghapusan fail]].",
+	'multiupload-fileuploaded' => 'Fail telah dimuat naik.',
+	'multiupload-toolbox' => 'Muat naik pelbagai fail',
 );
 
 /** Maltese (Malti)
@@ -726,7 +747,16 @@ $messages['pt'] = array(
 	'multipleupload-desc' => 'Permite aos utilizadores [[Special:MultipleUpload|carregar vários ficheiros de uma vez]]',
 	'multipleupload-ignoreallwarnings' => "Ignorar '''todos os avisos''' e, mesmo assim, gravar os ficheiros.",
 	'multipleupload-saveallfiles' => 'Gravar todos os ficheiros',
+	'multipleupload-addresswarnings' => 'Por favor, trate quaisquer avisos antes de carregar novamente os ficheiros.',
 	'multipleupload-page' => '{{ns:project}}:Política de eliminação de ficheiros',
+	'multipleupload-text' => "Carregue múltiplos ficheiros aqui.
+
+Escolha 'Procurar' e seleccione cada ficheiro que pretenda carregar.
+Pode carregar entre 1 e $1 ficheiros de cada vez.
+
+Pode opcionalmente introduzir um '''Nome de ficheiro destino''' e fornecer um '''Sumário''' que descreva o seu ficheiro.
+
+Ficheiros impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Multipleupload-page}}|política de eliminação de ficheiros]].",
 	'multiupload-fileuploaded' => 'Ficheiro carregado.',
 	'multiupload-toolbox' => 'Carregar múltiplos ficheiros',
 );

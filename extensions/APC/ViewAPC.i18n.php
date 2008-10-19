@@ -1178,6 +1178,15 @@ A nova versión $2 está dispoñible en http://pecl.php.net/package/APC/$2',
 	'viewapc-usercache-cleared' => "'''''A memoria caché da aplicación foi borrada.'''''",
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'viewapc-display-value' => 'Τιμή',
+	'viewapc-display-device' => 'Σκεῦος',
+	'viewapc-display-mtime' => 'Τετροποποιημένη',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  * @author Singularity

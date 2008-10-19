@@ -76,9 +76,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Academo
+ * @author Sanbec
  */
 $messages['es'] = array(
-	'didyoumean-desc' => 'Añade links a las paginas con titulos "similares"',
+	'didyoumean-desc' => 'Añade enlaces a páginas con títulos «similares»',
 );
 
 /** Finnish (Suomi)

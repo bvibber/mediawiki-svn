@@ -32,13 +32,6 @@ $messages['qqq'] = array(
 	'inspectcache-list' => 'Text on button to have the keys listing shown.',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'inspectcache-delete' => 'Шӧраш',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -212,6 +205,14 @@ $messages['gl'] = array(
  */
 $messages['got'] = array(
 	'inspectcache-delete' => 'Taíran',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'inspectcache-ok' => 'εἶεν',
+	'inspectcache-list' => 'Καταλογή',
 );
 
 /** Manx (Gaelg)
@@ -401,6 +402,13 @@ $messages['lfn'] = array(
  */
 $messages['lt'] = array(
 	'inspectcache-delete' => 'Ištrinti',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'inspectcache-delete' => 'Шӧраш',
 );
 
 /** Malayalam (മലയാളം)

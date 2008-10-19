@@ -65,15 +65,6 @@ $messages['rtm'] = array(
 	'imagetagging-tagcancel-button' => "Mao'ạki",
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'imagetagging-article' => 'Лаштык:',
-	'imagetagging-imghistory' => 'Историй',
-	'imagetagging-tagcancel-button' => 'Чараш',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -272,7 +263,10 @@ $messages['eo'] = array(
 	'imagetagging-removingtag' => 'Forigante markon...',
 	'imagetagging-addtagsuccess' => 'Aldoniĝis etikedo.',
 	'imagetagging-removetagsuccess' => 'Foriĝis etikedo.',
+	'imagetagging-oneuniquetagmessage' => 'Ĉi tiu bildo jam havas etikedon kun ĉi tiu nomo.',
 	'imagetagging-taggedimages-title' => 'Bildoj de "$1"',
+	'tag-logpagename' => 'Etikeda protokolo',
+	'tag-logpagetext' => 'Jen protokolo de ĉiuj aldonoj kaj forigoj de bildaj etikedoj.',
 );
 
 /** Finnish (Suomi)
@@ -395,6 +389,15 @@ Por favor, agarde a que a acción actual remate.',
 	'imagetagging-taggedimages-displaying' => 'Amosando da $1 á $2, dun total de $3 imaxes de "$4"',
 	'tag-logpagename' => 'Rexistro de etiquetas',
 	'tag-logpagetext' => 'Este é un rexitro de todas as incorporacións e eliminacións de etiquetas de imaxe.',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'imagetagging-article' => 'Δέλτος:',
+	'imagetagging-images' => 'εἰκόνες',
+	'imagetagging-tagcancel-button' => 'Ἀκυροῦν',
 );
 
 /** Hawaiian (Hawai`i)
@@ -520,6 +523,15 @@ $messages['lb'] = array(
 	'imagetagging-imagetag-seemoreimages' => 'Kuckt méi Biller vu(n) "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Biller vun "$1"',
 	'imagetagging-taggedimages-displaying' => 'Weis $1 - $2 vu(n) $3 Biller vu(n) "$4"',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'imagetagging-article' => 'Лаштык:',
+	'imagetagging-imghistory' => 'Историй',
+	'imagetagging-tagcancel-button' => 'Чараш',
 );
 
 /** Malayalam (മലയാളം)

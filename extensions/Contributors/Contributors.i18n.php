@@ -44,13 +44,6 @@ $messages['rtm'] = array(
 	'contributors-submit' => "Kel'äk",
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Jose77
- */
-$messages['mhr'] = array(
-	'contributors-submit' => 'ончыкташ',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -346,6 +339,13 @@ $messages['gl'] = array(
 	'contributors-others' => 'e {{PLURAL:$1|outro|outros $1}}',
 	'contributors-badtitle' => 'Título non válido.',
 	'contributors-nosuchpage' => 'Non existe a páxina $1.',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'contributors-badtitle' => 'Ἄκυρος ἐπιγραφή.',
 );
 
 /** Swiss German (Alemannisch)
@@ -686,6 +686,13 @@ $messages['lb'] = array(
 	'contributors-others' => 'a(n) $1 {{PLURAL:$1|aneren|anerer}}',
 	'contributors-badtitle' => 'Dës Säit gëtt et net.',
 	'contributors-nosuchpage' => "D'Säit $1 gëtt et net.",
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Jose77
+ */
+$messages['mhr'] = array(
+	'contributors-submit' => 'ончыкташ',
 );
 
 /** Malayalam (മലയാളം)

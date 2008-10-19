@@ -113,6 +113,13 @@ $messages['gl'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Comezar un novo fío de conversa',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'discussionthreading-threadnewsection' => 'νέα',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -300,7 +300,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'bookinfo-header' => 'Informacije wó knigłach',
-	'bookinfo-desc' => 'Wudopołnjujo [[Special:Booksources]] wó informacije websłužby',
+	'bookinfo-desc' => 'Wudopołnjujo [[Special:Booksources|specialny bok žrědłow knigłow ]] wó informacije z websłužby',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Awtor:',
 	'bookinfo-result-publisher' => 'Wudawaŕ:',
@@ -490,6 +490,13 @@ $messages['gl'] = array(
 	'bookinfo-error-noresponse' => 'Non se recibiu resposta ou a solicitude caducou.',
 	'bookinfo-purchase' => 'Compre este libro de $1',
 	'bookinfo-provider' => 'Fornecedor de datos: $1',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'bookinfo-result-publisher' => 'Ἐκδότης:',
 );
 
 /** Swiss German (Alemannisch)
@@ -911,6 +918,17 @@ $messages['lt'] = array(
 	'bookinfo-result-year' => 'Metai:',
 	'bookinfo-error-invalidisbn' => 'Įvestas blogas ISBN',
 	'bookinfo-purchase' => 'Pirkti šią knygą iš $1',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'bookinfo-result-title' => 'Наслов:',
+	'bookinfo-result-author' => 'Автор:',
+	'bookinfo-result-publisher' => 'Издавач:',
+	'bookinfo-result-year' => 'Година:',
+	'bookinfo-error-invalidisbn' => 'Погрешно внесен ISBN код:',
 );
 
 /** Malayalam (മലയാളം)

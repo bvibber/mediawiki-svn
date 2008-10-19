@@ -136,6 +136,22 @@ $messages['gl'] = array(
 	'categoryonupload-label' => 'Categoría:',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'categoryonupload-desc' => 'Προτρέπει χρώμενον τινὰ ἐπιλέξειν κατηγορίαν τινὰ ὅτε ἐπιφορτίζει ἀρχεῖον τι',
+	'categoryonupload-label' => 'Κατηγορία:',
+);
+
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'categoryonupload-desc' => 'Jannoo greinnaghey ymmyderyn dy reih ronney as ad cur coadan neese',
+	'categoryonupload-label' => 'Ronney:',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

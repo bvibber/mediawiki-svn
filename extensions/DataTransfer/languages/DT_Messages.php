@@ -50,13 +50,6 @@ $messages['rtm'] = array(
 	'dt_viewxml_categories' => 'Katekori',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'dt_xml_page' => 'Лаштык',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -289,9 +282,14 @@ $messages['got'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'dt_xml_page' => 'Δέλτος',
+	'dt_xml_field' => 'Πεδίον',
+	'dt_xml_name' => 'Ὄνομα',
+	'dt_xml_title' => 'Ἐπιγραφή',
+	'dt_xml_freetext' => 'Ἐλεύθερον κείμενον',
 );
 
 /** Swiss German (Alemannisch)
@@ -524,6 +522,13 @@ $messages['lb'] = array(
  */
 $messages['lt'] = array(
 	'dt_viewxml_categories' => 'Kategorijos',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'dt_xml_page' => 'Лаштык',
 );
 
 /** Malayalam (മലയാളം)

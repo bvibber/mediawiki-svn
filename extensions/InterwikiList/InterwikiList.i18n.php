@@ -130,6 +130,18 @@ $messages['gl'] = array(
 	'interwikilist-prefix' => 'Prefixo interwiki:',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'interwikilist' => 'Καταλογή διαϝίκι',
+	'interwikilist-desc' => 'Προσθέτει [[Special:Interwikilist|εἰδικὴν δέλτον]] τινὰ διὰ τὸ ὁρᾶν τοὺς διαθέσιμους διαϝικι-συνδέσμους',
+	'interwikilist-linkname' => 'Σύνδεσμος διαϝίκι:',
+	'interwikilist-target' => 'URL-στόχος',
+	'interwikilist-filter' => 'Κατάλογος διηθητηρίων',
+	'interwikilist-prefix' => 'Πρόθεμα διαϝίκι:',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

@@ -89,13 +89,6 @@ $messages['qqq'] = array(
 	'regexblock-view-block-temporary' => '{{Identical|Expires on}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'regexblock-stats-username' => '$1 лан',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -880,6 +873,7 @@ $messages['lb'] = array(
 	'regexblock-form-submit' => 'Dëse Benotzer spären',
 	'regexblock-block-log' => "De Benotzer oder d'IP-Adress '''$1''' gouf gespaart.",
 	'regexblock-block-success' => "D'Spär ass elo ageschalt",
+	'regexblock-form-submit-empty' => 'Gitt e Benotzernumm oder eng IP-Adress un fir ze spären.',
 	'regexblock-already-blocked' => '$1 ass scho gespaart.',
 	'regexblock-stats-username' => 'Fir $1',
 	'regexblock-stats-times' => 'gespaart den',
@@ -901,6 +895,13 @@ $messages['lb'] = array(
  */
 $messages['mdf'] = array(
 	'regexblock-already-blocked' => '"$1" сёлкфоль ни',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'regexblock-stats-username' => '$1 лан',
 );
 
 /** Malayalam (മലയാളം)

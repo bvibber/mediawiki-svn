@@ -343,6 +343,13 @@ Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que,
 	'right-asksql' => 'Facer procuras SQL',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'asksql' => 'SQL πεῦσις',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
@@ -439,15 +446,18 @@ Iste function frequentemente adde un carga considerabile al servitor, ergo usa l
 
 /** Indonesian (Bahasa Indonesia)
  * @author Ivan Lanin
+ * @author Rex
  */
 $messages['id'] = array(
 	'asksql' => 'Kueri SQL',
+	'asksql-desc' => 'Menambahkan [[Special:Asksql|halaman istimewa]] untuk melakukan kueri SQL',
 	'asksqltext' => "Gunakan isian berikut untuk melakukan kueri langsung ke basis data. Gunakan kutip tunggal ('seperti ini') untuk membatasi literal string. Hal ini cukup membebani server, jadi gunakanlah fungsi ini secukupnya.",
 	'sqlislogged' => 'Ingatlah bahwa semua kueri akan dicatat.',
 	'sqlquery' => 'Masukkan kueri',
 	'querybtn' => 'Kirim',
 	'selectonly' => 'Hanya kueri baca-saja yang diijinkan.',
 	'querysuccessful' => 'Kueri berhasil',
+	'right-asksql' => 'Melakukan kueri SQL',
 );
 
 /** Icelandic (Íslenska)

@@ -231,6 +231,14 @@ $messages['gl'] = array(
 	'intersection_noincludecats' => 'Erro: ten que incluír unha categoría polo menos ou especificar un espazo de nomes!',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'intersection_noresults' => 'Σφάλμα: οὐδὲν ἀποτέλεσμα',
+	'intersection_noincludecats' => 'Σφάλμα: Ἔξεστί σοι περιλαμβάνειν μίαν τοὐλάχιστον κατηγορίαν, ἢ καθορίζειν ὀνοματεῖον τι!',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

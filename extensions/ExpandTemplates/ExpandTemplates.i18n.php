@@ -37,13 +37,6 @@ $messages['qqq'] = array(
 	'expand_templates_preview' => '{{Identical|Preview}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'expand_templates_preview' => 'Ончылгоч ончымаш',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -545,6 +538,15 @@ Faino chamando a etapa de análise correspondente do propio MediaWiki.',
 	'expand_templates_preview' => 'Vista previa',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'expandtemplates' => 'Ἐπεκτείνειν τὰ πρότυπα',
+	'expand_templates_ok' => 'εἶεν',
+	'expand_templates_preview' => 'Προθεώρησις',
+);
+
 /** Swiss German (Alemannisch)
  * @author J. 'mach' wust
  */
@@ -992,6 +994,13 @@ $messages['lt'] = array(
  */
 $messages['lv'] = array(
 	'expand_templates_preview' => 'Pirmskats',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'expand_templates_preview' => 'Ончылгоч ончымаш',
 );
 
 /** Malayalam (മലയാളം)

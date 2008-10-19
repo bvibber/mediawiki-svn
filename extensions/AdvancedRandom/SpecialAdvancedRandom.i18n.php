@@ -138,6 +138,13 @@ $messages['gl'] = array(
 	'advancedrandom-desc' => 'Obter unha páxina ao chou a partir dunha conversa ou dunha ligazón dunha páxina de asunto á páxina dada. Pode ser usado como [[Special:AdvancedRandom/Template:Featured/Talk]] para obter un artigo destacado ao chou ou como [[Special:AdvancedRandom/Template:GFDL/Image]] para obter un ficeiro GFDL ao chou',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'advancedrandom' => 'Προοδευμένη τυχοῦσα',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

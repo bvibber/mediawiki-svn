@@ -257,6 +257,16 @@ href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">
 	'chemFunctions_ChemFormInputError' => 'Chemform: Erro na entrada!',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'chemicalsources' => 'Χημικαὶ πηγαί',
+	'chemFunctions_ListPage' => 'Χημικαὶ πηγαί',
+	'chemFunctions_Formula' => 'Τύπος',
+	'chemFunctions_Name' => 'Ὄνομα IUPAC',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author StuB

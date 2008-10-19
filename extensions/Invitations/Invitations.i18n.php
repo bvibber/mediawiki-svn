@@ -301,6 +301,14 @@ Para xestionar as invitacións para unha característica individual, faga clic n
 	'invitations-invite-success' => 'Invitou con éxito a $1 para usar esta característica!',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'invite-logpage' => 'Κατάλογος προσκλήσεων',
+	'invitations-inviteform-submit' => 'Προσκαλεῖν',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

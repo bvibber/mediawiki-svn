@@ -123,13 +123,6 @@ $messages['qqq'] = array(
 	'sign-submitreview' => '{{Identical|Submit review}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'sign-viewfield-email' => 'Электрон почто',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -1250,6 +1243,13 @@ $messages['lt'] = array(
 	'sign-realname' => 'Vardas:',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'sign-viewfield-email' => 'Электрон почто',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
@@ -1490,7 +1490,7 @@ Omdat het gebruik van open en anonimiserende proxy\'s voorkomt dat deze taak uit
 Als u op dit moment verbonden bent via een proxyserver, maak dan voor het ondertekenen een directe verbinding.</div>
 
 $1',
-	'sig-success' => 'U hebt het document succesvol ondertekend.',
+	'sig-success' => 'U hebt het document ondertekend.',
 	'sign-view-selectfields' => '<b>Weer te geven velden:</b>',
 	'sign-viewfield-entryid' => 'ID-nummer',
 	'sign-viewfield-timestamp' => 'Tijdstip',

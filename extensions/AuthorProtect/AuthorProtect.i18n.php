@@ -318,6 +318,13 @@ $messages['gl'] = array(
 	'restriction-level-author' => 'Protexido polo autor',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'authorprotect-reason' => 'Αἰτία',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -416,6 +423,25 @@ $messages['ia'] = array(
 	'authorprotect-failure' => 'Protection non succedite',
 	'protect-level-author' => 'Proteger contra non-autores',
 	'restriction-level-author' => 'Protegite per le autor',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'authorprotect' => 'Melindungi halaman dari non-penulis',
+	'authorprotect-desc' => 'Mengizinkan penulis suatu halaman untuk melindunginya dari pengguna lain',
+	'authorprotect-notauthor' => 'Anda bukan penulis halaman ini',
+	'authorprotect-confirm' => 'Mengganti tingkat perlindungan',
+	'authorprotect-edit' => 'Membatasi penyuntingan hanya untuk penulis',
+	'authorprotect-move' => 'Membatasi perpindahan ke penulis',
+	'authorprotect-expiry' => 'Waktu kadaluwarsa',
+	'authorprotect-reason' => 'Alasan',
+	'authorprotect-intro' => 'Gunakan formulir berikut untuk mengunci halaman ini dari non-penulis',
+	'authorprotect-success' => 'Perlindungan berhasil!',
+	'authorprotect-failure' => 'Perlindungan tidak berhasil',
+	'protect-level-author' => 'Melindungi dari non-penulis',
+	'restriction-level-author' => 'Khusus-penulis',
 );
 
 /** Ido (Ido)
@@ -620,8 +646,8 @@ $messages['nl'] = array(
 	'authorprotect-expiry' => 'Verlooptijd',
 	'authorprotect-reason' => 'Reden',
 	'authorprotect-intro' => 'Gebruik dit formulier om de pagina voor niet-auteurs te beveiligen',
-	'authorprotect-success' => 'Beveiligen geslaagd.',
-	'authorprotect-failure' => 'Beveiligen niet geslaagd.',
+	'authorprotect-success' => 'Beveiliging ingesteld.',
+	'authorprotect-failure' => 'Beveiliging niet ingesteld',
 	'protect-level-author' => 'Beveiligen voor niet-auteurs',
 	'restriction-level-author' => 'Alleen te bewerken door auteurs',
 );

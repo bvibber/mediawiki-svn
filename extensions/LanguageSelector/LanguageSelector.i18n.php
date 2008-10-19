@@ -190,10 +190,12 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'languageselector' => 'Γλῶττα',
-	'languageselector-setlang' => 'Θετόν',
+	'languageselector-desc' => 'Ἐπιλογεὺς γλῶττας ἐν πἀσαις δέλτοις, τῶν ἐπισκεπτῶν συμπεριλαμβανομένων',
+	'languageselector-setlang' => 'τιθέναι',
 );
 
 /** Manx (Gaelg)
@@ -534,6 +536,13 @@ $messages['ru'] = array(
  */
 $messages['shi'] = array(
 	'languageselector' => 'tutlayt',
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'languageselector' => 'භාෂාව',
 );
 
 /** Slovak (Slovenčina)

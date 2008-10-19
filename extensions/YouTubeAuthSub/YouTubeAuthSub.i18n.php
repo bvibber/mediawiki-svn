@@ -489,6 +489,44 @@ $messages['haw'] = array(
 	'youtubeauthsub_category' => 'Mahele',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'youtubeauthsub' => 'העלה סרטון ל־YouTube',
+	'youtubeauthsub-desc' => 'מאפשר למשתמשים [[Special:YouTubeAuthSub|להעלות סרטונים]] ישירות ל־YouTube',
+	'youtubeauthsub_info' => 'על מנת להעלות סרטון ל־YouTube ולהכלילו בעמוד, את את הפרטים הבאים:',
+	'youtubeauthsub_title' => 'כותרת',
+	'youtubeauthsub_description' => 'תיאור',
+	'youtubeauthsub_password' => 'הסיסמה ב־YouTube',
+	'youtubeauthsub_username' => 'שם המשתמש ב־YouTube',
+	'youtubeauthsub_keywords' => 'מילות מפתח',
+	'youtubeauthsub_category' => 'קטגוריה',
+	'youtubeauthsub_submit' => 'שליחה',
+	'youtubeauthsub_clickhere' => 'לחץ כאן כדי להתחבר ל־YouTube',
+	'youtubeauthsub_tokenerror' => 'שגיאה ביצירת אסימון אימות, נסה לרענן.',
+	'youtubeauthsub_success' => "ברכות!
+הסרטון שלך הועלה.
+על מנת לצפות בסרטון שלך לחץ <a href='http://www.youtube.com/watch?v=$1'>כאן</a>.
+יתכן ול־YouTube יידרש מעט זמן לעיבוד הסרטון שלך, כך שיתכן שאינו מוכן עדיין.
+
+על מנת לכלול את הסרטון שלך בעמוד בויקי, הוסף את הקוד הבא אל תוך העמוד:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'על מנת להעלות סרטון, יהיה עליך ראשית להתחבר ל־YouTube',
+	'youtubeauthsub_uploadhere' => 'העלה את הסרטון שלך מכאן:',
+	'youtubeauthsub_uploadbutton' => 'העלה',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+ניתן לצפות בסרטון זה [http://www.youtube.com/watch?v=$1 כאן]',
+	'youtubeauthsub_summary' => 'מעלה סרטון ל־YouTube',
+	'youtubeauthsub_uploading' => 'הסרטון שלך כעת נמצא בתהליכי העלאה.
+אנא האזר בסבלנות.',
+	'youtubeauthsub_viewpage' => 'לחלופין, תוכל לצפות בסרטון שלך [[$1|כאן]].',
+	'youtubeauthsub_jserror_nokeywords' => 'נא הזן מילת מפתח אחת או יותר.',
+	'youtubeauthsub_jserror_notitle' => 'נא הזן כותרת עבור הסרטון.',
+	'youtubeauthsub_jserror_nodesc' => 'נא הזן תיאור לסרטון.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -579,8 +617,37 @@ Sia patiente.',
  * @author Rex
  */
 $messages['id'] = array(
+	'youtubeauthsub' => 'Unggah video YouTube',
+	'youtubeauthsub-desc' => 'Mengizinkan pengguna untuk [[Special:YouTubeAuthSub|mengunggah video]] langsung ke YouTube',
+	'youtubeauthsub_info' => 'Untuk mengunggah video ke YouTube dan memasukkannya dalam suatu halaman, silakan isi informasi berikut ini:',
 	'youtubeauthsub_title' => 'Judul',
+	'youtubeauthsub_description' => 'Keterangan',
+	'youtubeauthsub_password' => 'Kata sandi YouTube',
+	'youtubeauthsub_username' => 'Nama pengguna YouTube',
+	'youtubeauthsub_keywords' => 'Kata kunci',
 	'youtubeauthsub_category' => 'Kategori',
+	'youtubeauthsub_submit' => 'Kirim',
+	'youtubeauthsub_clickhere' => 'Klik di sini untuk masuk log ke YouTube',
+	'youtubeauthsub_tokenerror' => 'Gagal menghasilkan token otorisasi, coba muat kembali.',
+	'youtubeauthsub_success' => "Selamat!
+Video Anda berhasil dimuatkan.
+Untuk melihat video Anda, klik <a href='http://www.youtube.com/watch?v=$1'>di sini</a>.
+YouTube mungkin memerlukan beberapa saat untuk memproses video Anda, sehingga video tersebut mungkin belum siap pada saat ini.
+
+Untuk menampilkan video Anda di suatu halaman di wiki ini, gunakan kode berikut di halaman tersebut: <code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Untuk mengunggah video, Anda harus masuk log terlebih dahulu di YouTube.',
+	'youtubeauthsub_uploadhere' => 'Unggah vide Anda dari sini:',
+	'youtubeauthsub_uploadbutton' => 'Unggah',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Video ini dapat dilihat [http://www.youtube.com/watch?v=$1 di sini]',
+	'youtubeauthsub_summary' => 'Sedang memuatkan video YouTube',
+	'youtubeauthsub_uploading' => 'Video Anda sedang dimuatkan.
+Silakan menunggu.',
+	'youtubeauthsub_viewpage' => 'Alternatifnya, Anda dapat menampilkan video Anda [[$1|di sini]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Silakan masukkan 1 atau lebih kata kunci.',
+	'youtubeauthsub_jserror_notitle' => 'Silakan masukkan judul video tersebut.',
+	'youtubeauthsub_jserror_nodesc' => 'Silakan masukkan keterangan video tersebut.',
 );
 
 /** Icelandic (Íslenska)

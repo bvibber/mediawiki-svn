@@ -516,6 +516,25 @@ $messages['mr'] = array(
 	'lookupuser_useroptions' => 'सदस्य विकल्प:',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'lookupuser' => 'Dapatkan maklumat pengguna',
+	'lookupuser-desc' => '[[Special:LookupUser|Dapatkan maklumat]] mengenai seseorang pengguna sepreti alamat e-mel dan ID',
+	'lookupuser_intro' => 'Masukkan nama pengguna untuk melihat keutamaannya.',
+	'lookupuser_nonexistent' => 'Ralat: Pengguna tidak wujud',
+	'lookupuser_authenticated' => 'Pengesahan e-mel: $1',
+	'lookupuser_not_authenticated' => 'belum disahkan',
+	'lookupuser_id' => 'ID pengguna: <tt>#$1</tt>',
+	'lookupuser_email' => 'E-mel: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => 'tidak dibekalkan',
+	'lookupuser_realname' => 'Nama sebenar: $1',
+	'lookupuser_registration' => 'Tarikh pendaftaran: $1',
+	'lookupuser_no_registration' => 'tidak direkodkan',
+	'lookupuser_useroptions' => 'Pilihan pengguna:',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author SPQRobin

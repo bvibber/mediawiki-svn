@@ -168,15 +168,6 @@ $messages['rtm'] = array(
 	'configure-section-category' => 'Katekori',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'configure-js-remove' => 'Шӧраш',
-	'configure-section-email' => 'Электрон почто',
-	'configure-section-specialpages' => 'Лӱмын ыштыме лаштык-влак',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -323,6 +314,7 @@ $messages['ar'] = array(
 	'configure-setting-not-available' => 'هذا الإعداد غير متاح في هذه النسخة من ميدياويكي',
 	'configure-transwiki-not-in-range' => 'الويكي المطلوب، $1، ليس ضمن القيم المسموح بها ($2).',
 	'configure-view' => 'انظر',
+	'configure-view-all-versions' => 'القائمة الكاملة للنسخ',
 	'configure-view-not-allowed' => 'أنت غير مسموح لك برؤية هذه الإعدادات',
 	'extensions' => 'ضبط الامتدادات',
 	'right-configure' => 'ضبط الويكي',
@@ -441,6 +433,7 @@ $messages['arz'] = array(
 	'configure-setting-not-available' => 'هذا الإعداد غير متاح فى هذه النسخة من ميدياويكي',
 	'configure-transwiki-not-in-range' => 'الويكى المطلوب، $1، ليس ضمن القيم المسموح بها ($2).',
 	'configure-view' => 'انظر',
+	'configure-view-all-versions' => 'القائمة الكاملة للنسخ',
 	'configure-view-not-allowed' => 'أنت غير مسموح لك برؤية هذه الإعدادات',
 	'extensions' => 'ضبط الامتدادات',
 	'right-configure' => 'ضبط الويكي',
@@ -888,23 +881,23 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'configure' => 'Configurar la wiki',
-	'configure-desc' => 'Permite autorizar usuarios a [[Special:Configure|configure]] la wiki desde una interfaz web',
+	'configure-desc' => 'Permite que usuarios autorizados [[Special:Configure|configuren]] la wiki desde una interfaz web',
 	'configure-desc-group' => 'Grupos',
 	'configure-desc-key' => 'Clave',
 	'configure-desc-ns' => 'Espacios de nombres',
 	'configure-desc-val' => 'Valor',
 	'configure-edit-core' => 'MediaWiki',
-	'configure-edit-ext' => 'Extenciones',
+	'configure-edit-ext' => 'Extensiones',
 	'configure-ext-doc' => 'Ver documentación online',
-	'configure-ext-schemachange' => "'''Advertencia''' estas extencion requiere una actualización en la base de datos para trabajar correctamente",
+	'configure-ext-schemachange' => "'''Advertencia:''' ¡esta extensión requiere una actualización en la base de datos para trabajar correctamente!",
 	'configure-ext-settings' => 'Configuraciones',
-	'configure-ext-use-extension' => 'Usar esta extención',
+	'configure-ext-use-extension' => 'Usar esta extensión',
 	'configure-ext-use' => 'Usar',
 	'configure-summary' => 'Esta página especial le permite configurar esta wiki, vea [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] para mas información',
 	'configure-btn-save' => 'Guardar configuraciones',
-	'configure-directory-not-writable' => 'El directorio usado para guardar las configuraciones <tt>$1</tt>, no es escribible.
-Por favor haga que sea escribible por PHP para usar esta extención',
-	'configure-edit-old' => 'Advertencia: us esta editando una <strong>antigua</strong> versión de la configuración',
+	'configure-directory-not-writable' => 'El directorio usado para guardar las configuraciones <tt>$1</tt>, está protegido contra escritura.
+Por favor cambie los permisos para que PHP pueda escribir si quiere usar esta extensión.',
+	'configure-edit-old' => 'Advertencia: estás editando una versión <strong>antigua</strong> de la configuración.',
 	'configure-error' => 'La configuración no pudo ser guardada',
 	'configure-js-add' => 'Agregar una nueva entrada',
 	'configure-js-group-exists' => 'Error: el grupo ya existe',
@@ -924,14 +917,14 @@ Por favor, creelo o cambielo para usar esta extensión.',
 	'configure-section-general' => 'Configuraciones generales',
 	'configure-section-paths' => 'Directorios',
 	'configure-section-db' => 'Base de datos',
-	'configure-section-db-notallowed' => 'usted no esta autorizado para cambiar las configuraciones de la base de datos.',
+	'configure-section-db-notallowed' => 'No estás autorizado para cambiar las configuraciones de la base de datos.',
 	'configure-section-load-balancing' => 'Cargar balance',
 	'configure-section-mysql' => 'especificar MySQL',
 	'configure-section-postgres' => 'especificar PostgreSQL',
 	'configure-section-sqlite' => 'especificar SQLite',
-	'configure-section-email' => 'E-mail',
-	'configure-section-enotif' => 'Notificación por email',
-	'configure-section-timezone' => 'Zona Horaria',
+	'configure-section-email' => 'Correo electrónico',
+	'configure-section-enotif' => 'Notificación por correo electrónico',
+	'configure-section-timezone' => 'Zona horaria',
 	'configure-section-namespaces' => 'Espacios de nombres',
 );
 
@@ -1159,6 +1152,7 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'configure-setting-not-available' => 'A configuración non está dispoñible nesta versión de MediaWiki',
 	'configure-transwiki-not-in-range' => 'O wiki solicitado, $1, non está nos valores permitidos ($2).',
 	'configure-view' => 'Ver',
+	'configure-view-all-versions' => 'Lista completa das versións',
 	'configure-view-not-allowed' => 'Non ten permiso para ver este parámetro',
 	'extensions' => 'Configurar as extensións',
 	'right-configure' => 'Configurar o wiki',
@@ -1171,6 +1165,26 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 	'right-viewconfig-all' => 'Ver toda a configuración do wiki',
 	'right-viewconfig-interwiki' => 'Ver a configuración do wiki estranxeiro',
 	'viewconfig' => 'Ver a configuración do wiki',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'configure-desc-ns' => 'Ὀνοματεῖα',
+	'configure-desc-val' => 'Τιμή',
+	'configure-js-remove' => 'Διαγράφειν',
+	'configure-section-users' => 'Χρώμενοι',
+	'configure-section-misc' => 'Λοιπά',
+	'configure-section-mw-extensions' => 'Ἐπεκτάσεις MediaWiki',
+	'configure-select-wiki' => 'Ϝικι-επιλογή',
+);
+
+/** Manx (Gaelg)
+ * @author MacTire02
+ */
+$messages['gv'] = array(
+	'configure-edit-core' => 'MediaWiki',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -1683,6 +1697,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-select-wiki-submit' => 'Validéieren',
 	'configure-setting-not-available' => 'Dës Astellung kann an dëser Versioun vu MediaWiki net geännert ginn',
 	'configure-view' => 'Kuckt',
+	'configure-view-all-versions' => 'Komplett Lëscht vun de Versiounen',
 	'configure-view-not-allowed' => 'Dir sidd net autoriséiert fir dës Astellung ze gesinn',
 	'extensions' => "D'Erweiderunge configuréieren",
 	'right-configure' => "D'Wiki configuréieren",
@@ -1717,6 +1732,15 @@ $messages['lt'] = array(
 	'configure-section-copyright' => 'Autorinės teisės',
 	'configure-section-htcp' => 'HTCP protokolo perdavimas',
 	'configure-section-misc' => 'Įvairūs nustatymai',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'configure-js-remove' => 'Шӧраш',
+	'configure-section-email' => 'Электрон почто',
+	'configure-section-specialpages' => 'Лӱмын ыштыме лаштык-влак',
 );
 
 /** Malayalam (മലയാളം)
@@ -2232,6 +2256,7 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 	'configure-setting-not-available' => 'Aqueste paramètre es pas disponible sus aquesta version de MediaWiki',
 	'configure-transwiki-not-in-range' => 'Lo wiki demandat, $1, es pas dins las valors autorizadas ($2).',
 	'configure-view' => 'Veire',
+	'configure-view-all-versions' => 'Lista completa de las versions',
 	'configure-view-not-allowed' => 'Sètz pas autorizat(ada) a veire aqueste paramètre',
 	'extensions' => 'Configurar las extensions',
 	'right-configure' => 'Configurar lo wiki',
@@ -2689,6 +2714,7 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 	'configure-setting-not-available' => 'Toto nastavenie nie je v tejto verzii MediaWiki dostupné',
 	'configure-transwiki-not-in-range' => 'Požadovaná wiki $1 nepatrí medzi prípustné hodnoty ($2).',
 	'configure-view' => 'Pozri',
+	'configure-view-all-versions' => 'Úplný zoznam verzií',
 	'configure-view-not-allowed' => 'Nemáte oprávnenie zobraziť toto nastavenie',
 	'extensions' => 'Nastaviť rozšírenia',
 	'right-configure' => 'Nastavenie wiki',

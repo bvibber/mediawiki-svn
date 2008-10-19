@@ -130,6 +130,13 @@ $messages['ia'] = array(
 	'ajax-qp-desc' => 'Adde un poco de AJAX a paginas de consulta como [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'ajax-qp-desc' => 'Menambahkan beberapa teknik AJAX ke halaman kueri seperti [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn
@@ -168,9 +175,10 @@ $messages['lb'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
-	'ajax-qp-desc' => "Voog get AJAX bie aan QueryPAges wie [[Special:Shortpages|kótte pazjena's]]",
+	'ajax-qp-desc' => "Voog get AJAX bie aan QueryPAges wie [[Special:Shortpages|kórte pazjena's]]",
 );
 
 /** Macedonian (Македонски)

@@ -117,6 +117,7 @@ $messages['ast'] = array(
 	'imagemap_invalid_coord' => 'Error: coordenada non válida en llinia $1, ha ser un númberu',
 	'imagemap_invalid_desc' => "Error: parámetru 'desc' non válidu, ha ser ún d'estos: <tt>$1</tt>",
 	'imagemap_description' => 'Tocante a esta imaxe',
+	'imagemap_poly_odd' => 'Error: atopóse un polígonu con un númberu impar de coordenaes na llinia $1',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -410,6 +411,13 @@ $messages['gl'] = array(
 	'imagemap_invalid_desc' => 'Erro: especificación da descrición non válida, debe ser unha de: <tt>$1</tt>',
 	'imagemap_description' => 'Sobre esta imaxe',
 	'imagemap_poly_odd' => 'Erro: atopouse un polígono cun número impar de coordenadas na liña $1',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'imagemap_description' => 'Περὶ τῆσδε τῆς εἰκόνος',
 );
 
 /** Gujarati (ગુજરાતી) */
@@ -718,6 +726,7 @@ $messages['lb'] = array(
 	'imagemap_invalid_desc' => 'Feeler: Ongëltegen „desc“-Parameter, méiglech sinn: <tt>$1</tt>',
 	'imagemap_description' => 'Iwwert dëst Bild',
 	'imagemap_desc_types' => 'uewe-riets, ënne-riets, ënne-lénks, uewe-lénks, keen',
+	'imagemap_poly_odd' => 'Feeler: e Polygon mat enger ongerueder Zuel vu Koordinate gouf an der Linn $1 fonnt',
 );
 
 /** Limburgish (Limburgs)

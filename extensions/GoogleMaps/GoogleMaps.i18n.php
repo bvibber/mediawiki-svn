@@ -117,14 +117,6 @@ $wgGoogleMapsMessages['krl'] = array(
 	'gm-search' => 'Ečindy',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$wgGoogleMapsMessages['mhr'] = array(
-	'gm-search' => 'Кычал',
-	'gm-save-path' => 'Аралаш',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -1294,6 +1286,13 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
 	'gm-mars' => 'Marte',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$wgGoogleMapsMessages['grc'] = array(
+	'gm-moon' => 'Σελήνη',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -1326,6 +1325,7 @@ $wgGoogleMapsMessages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author YaronSh
  * @author שומבלע
  */
 $wgGoogleMapsMessages['he'] = array(
@@ -1337,6 +1337,8 @@ $wgGoogleMapsMessages['he'] = array(
 	'gm-make-marker' => 'הסבר (תחביר ויקי אפשרי):',
 	'gm-remove' => 'הסרה',
 	'gm-caption' => 'הסבר',
+	'gm-tab-title' => 'כותרת הלשונית',
+	'gm-tab' => 'לשונית',
 	'gm-start-path' => 'התחלת מסלול',
 	'gm-trace-area' => 'סימון איזור',
 	'gm-save-point' => 'שמירה וסגירה',
@@ -1356,6 +1358,7 @@ $wgGoogleMapsMessages['he'] = array(
 	'gm-width' => 'רוחב',
 	'gm-height' => 'גובה',
 	'gm-scale-control' => 'קנה מידה',
+	'gm-overview-control' => 'סקירה',
 	'gm-selector-control' => 'בוחר מפה/לויין',
 	'gm-zoom-control' => 'סרגל ניווט',
 	'gm-large' => 'גדול',
@@ -2135,6 +2138,14 @@ $wgGoogleMapsMessages['lt'] = array(
  */
 $wgGoogleMapsMessages['lv'] = array(
 	'gm-kml-loading' => 'ielādējas...',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$wgGoogleMapsMessages['mhr'] = array(
+	'gm-search' => 'Кычал',
+	'gm-save-path' => 'Аралаш',
 );
 
 /** Malayalam (മലയാളം)

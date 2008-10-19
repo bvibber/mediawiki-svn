@@ -136,6 +136,13 @@ Non pode crear esta páxina, pero pode [{{fullurl:{{FULLPAGENAME}}|action=edit}}
 <createbox>break=no</createbox>",
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'createbox-create' => 'Ποεῖν',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

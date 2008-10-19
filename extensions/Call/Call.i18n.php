@@ -227,6 +227,13 @@ En caso de que haxa algún problema pode probar con <b>Special:Call/DebuG</b>",
 	'call-save-failed' => 'O texto seguinte NON se gardou na páxina <big>[[$1]]</big> porque xa existe esa páxina.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'call' => 'Καλεῖν',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

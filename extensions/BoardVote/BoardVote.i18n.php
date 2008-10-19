@@ -138,13 +138,6 @@ $messages['qqq'] = array(
 	'right-boardvote' => '{{doc-right}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'boardvote_user' => 'Пайдаланыше',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author SPQRobin
@@ -1216,7 +1209,7 @@ Rydym yn cymryd yn ganiataol bod yn well gennych yr ymgeiswyr sydd wedi derbyn r
 class=\"external\">Candidates</a></li>
 <li><a href=\"http://en.wikipedia.org/wiki/Schulze_method\" class=\"external\">Schulze method</a></li></ul>",
 	'boardvote_intro_change' => "<p>Rydych eisoes wedi bwrw pleidlais. Gallwch newid eich pleidlais drwy ddefnyddio'r ffurflen isod. Byddwch gystal â gosod yr ymgeiswyr yn y trefn y maent yn orau gennych, gan roi rhif is i'r rhai sydd yn well gennych. Gallwch roi'r un rhif i fwy nag un ymgeisydd, a gallwch adael rhai ymgeiswyr heb rif ac felly heb fynegi barn arnynt.</p>",
-	'boardvote_entered' => "Diolch, rydym wedi cofnodi'ch pleidlais.
+	'boardvote_entered' => "Diolch; rydym wedi cofnodi'ch pleidlais.
 
 Os dymunwch, gallwch gofnodi'r manylion canlynol. Cofnod eich pleidlais yw:
 
@@ -1226,7 +1219,7 @@ Cafodd ei amgryptio ag allwedd cyhoeddus Gweinyddwyr yr Etholiad:
 
 <pre>$2</pre>
 
-Fe ddilyn y fersiwn wedi ei amgryptio. Fe gaiff ei arddangos yn gyhoeddus ar [[Special:Boardvote/dump]].
+Fe ddilyn y fersiwn wedi ei amgryptio. Fe gaiff ei [[Special:Boardvote/dump|arddangos yn gyhoeddus]].
 
 <pre>$3</pre>
 
@@ -1235,9 +1228,9 @@ Fe ddilyn y fersiwn wedi ei amgryptio. Fe gaiff ei arddangos yn gyhoeddus ar [[S
 trwy adael blwch yn wag.</p>",
 	'boardvote_nosession' => "Ni ellid adnabod eich ID defnyddiwr Wikimedia.
 Byddwch gystal â mewngofnodi ar y wici lle rydych yn gymwys i bleidleisio, a chewch i <nowiki>[[Special:Boardvote]]</nowiki>.
-Rhaid defnyddio cyfrif ac o leiaf $1 o gyfraniadau cyn $2 arno, a'ch bod wedi gwneud o leiaf $3 o gyfraniadau rhwng $4 a $5 arno.",
+Rhaid defnyddio cyfrif ac o leiaf $1 {{PLURAL:$1|cyfraniad|cyfraniad|gyfraniad|chyfraniad|chyfraniad|o gyfraniadau}} cyn $2 arno, a'ch bod wedi gwneud o leiaf $3 {{PLURAL:$3|cyfraniad|cyfraniad|gyfraniad|chyfraniad|chyfraniad|o gyfraniadau}} rhwng $4 a $5 arno.",
 	'boardvote_notloggedin' => 'Nid ydych wedi mewngofnodi.
-Er mwyn pleidleisio, rhaid i chi ddefnyddio cyfrif sydd ag o leiaf $1 o gyfraniadau cyn $2 ynghlwm wrtho, ac sydd wedi gwneud o leiaf $3 o gyfraniadau rhwng $4 a $5.',
+Er mwyn pleidleisio, rhaid i chi ddefnyddio cyfrif sydd ag o leiaf $1 {{PLURAL:$1|cyfraniad|cyfraniad|gyfraniad|chyfraniad|chyfraniad|o gyfraniadau}} cyn $2 ynghlwm wrtho, ac sydd wedi gwneud o leiaf $3 {{PLURAL:$3|cyfraniad|cyfraniad|gyfraniad|chyfraniad|chyfraniad|o gyfraniadau}} rhwng $4 a $5.',
 	'boardvote_notqualified' => 'Nid ydych yn gymwys i bleidleisio yn yr etholiad hwn.
 Er mwyn pleidleisio rhaid eich bod wedi cyfrannu o leiaf {{PLURAL:$1|$1 gwaith|unwaith|dwywaith|teirgwaith|$1 gwaith|$1 gwaith}} cyn $2, a gwneud o leiaf $3 {{PLURAL:$3|cyfraniad|cyfraniad|gyfraniad|chyfraniad|chyfraniad|o gyfraniadau}} rhwng $4 a $5.',
 	'boardvote_novotes' => 'Nid oes neb wedi pleidleisio eto.',
@@ -2208,8 +2201,10 @@ Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen as
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'boardvote_time' => 'Χρόνος',
 	'boardvote_user' => 'Χρώμενος',
 );
 
@@ -3890,6 +3885,13 @@ Paskutinė koduota versija žemiau. Ji bus viešai rodoma [[Special:Boardvote/du
 Jūs būsite peradresuotas į šį išorinį serverį po 20 sekundžių. [$1 Spauskite čia], jei norite patekti dabar.
 
 Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'boardvote_user' => 'Пайдаланыше',
 );
 
 /** Malayalam (മലയാളം)

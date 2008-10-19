@@ -566,6 +566,14 @@ $messages['got'] = array(
 	'crosswikiunblock-reason' => 'Faírina:',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'crosswikiblock-reason' => 'Αἰτία:',
+	'crosswikiunblock-reason' => 'Αἰτία:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -1131,7 +1139,7 @@ Ga terug naar:
 	'crosswikiblock-notoken' => 'Onjuist bewerkingstoken.',
 	'crosswikiblock-alreadyblocked' => 'Gebruiker $3 is al geblokkeerd.',
 	'crosswikiblock-noblock' => 'Deze gebruiker is niet geblokkeerd',
-	'crosswikiblock-success' => "Gebruiker '''$3''' succesvol geblokkeerd.
+	'crosswikiblock-success' => "Gebruiker '''$3''' is geblokkeerd.
 
 Teruggaan naar:
 * [[Special:CrosswikiBlock|Blokkeerformulier]]

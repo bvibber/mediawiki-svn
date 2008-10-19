@@ -643,6 +643,14 @@ $messages['got'] = array(
 	'badimages-reason' => 'Faírina:',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'badimages-add-btn' => 'Προστιθέναι',
+	'badimages-reason' => 'Αἰτία:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

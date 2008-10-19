@@ -197,6 +197,14 @@ $messages['gl'] = array(
 	'block_title_error' => 'Sentímolo, non se permite gardar o título desta páxina.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'block_title_error_page_title' => 'Κεκλῃσμένη ἐπιγραφή',
+	'block_title_error' => 'Συγγνώμην, ἡ ἐπιγραφή τῆσδε τῆς δέλτου μὴ ἀποθηκεύσιμός ἐστιν.',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -267,6 +275,15 @@ $messages['ia'] = array(
 	'block_title_error_page_title' => 'Titulo blocate',
 	'block_title_error-desc' => 'Forni un methodo simple pro impedir le creation o immagazinage de paginas con certe titulos',
 	'block_title_error' => 'Pardono, non es permittite immagazinar un pagina con iste titulo.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'block_title_error_page_title' => 'Judul diblokir',
+	'block_title_error-desc' => 'Menambahkan fungsi dasar untuk mencegah judul tertentu disimpan atau dibuat',
+	'block_title_error' => 'Maaf, judul halaman ini tidak diperbolehkan untuk disimpan.',
 );
 
 /** Icelandic (Íslenska)

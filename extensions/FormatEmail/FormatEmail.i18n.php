@@ -127,6 +127,16 @@ Esta mensaxe foille enviada a través do sistema de correo electrónico de {{SIT
 $2',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+Ἥδε ἡ ἐπιστολὴ ἐστάλη πρὸς ἐσὲ μέσῳ τοῦ συστήματος ἠλεκτρονικοῦ ταχυδρομείου τοῦ {{SITENAME}} ὑπὸ τὸν $1.
+
+$2',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -166,6 +176,17 @@ $messages['ia'] = array(
 	'email-desc' => 'Permitte adder capites/pedes personalisate al messages de e-mail inviate inter usatores.',
 	'email_footer' => '----------------------------------------------------------------------------
 $1 te inviava iste message con le systema de e-mail de {{SITENAME}}.
+
+$2',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'email-desc' => 'Mengizinkan kepala/akhiran kustom ditambahkan dalam surat-e antar pengguna',
+	'email_footer' => '----------------------------------------------------------------------------
+Surat-e ini telah dikirim kepada Anda melalui sistem surat-e {{SITENAME}} oleh $1.
 
 $2',
 );
@@ -211,6 +232,16 @@ $messages['lb'] = array(
 	'email_footer' => '
 ------------------------------------------------------------------------------
 Dës E-Mail gouf iech vun $1 iwwer den E-Mail-System vun {{SITENAME}} geschéckt.
+
+$2',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+Оваа е-пошта е испратена преку {{SITENAME}} е-поштенскиот систем од $1.
 
 $2',
 );

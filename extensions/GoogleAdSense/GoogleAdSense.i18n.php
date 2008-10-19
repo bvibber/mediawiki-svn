@@ -58,6 +58,13 @@ $messages['de'] = array(
 	'googleadsense-desc' => 'Fügt [http://www.google.com/adsense Google AdSense] zur Sidebar hinzu',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'googleadsense-desc' => 'Aldonas reklamilon [http://www.google.com/adsense Google AdSense] al la flanka kolumno',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -141,6 +148,13 @@ $messages['oc'] = array(
  */
 $messages['ru'] = array(
 	'googleadsense-desc' => 'Добавляет [http://www.google.com/adsense рекламу Google AdSense] в навигационную панель',
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'googleadsense-desc' => '[http://www.google.com/adsense ගූගල් ප්‍රචාරකවේදිකාව] පැති කොටුවට එක් කරයි',
 );
 
 /** Slovak (Slovenčina)

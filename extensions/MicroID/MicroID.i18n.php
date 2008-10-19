@@ -113,6 +113,14 @@ $messages['ia'] = array(
 	'tog-microid' => 'Publicar un <a href="http://microid.org/">MicroID</a> pro confirmar le conto con servicios externe',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'microid-desc' => 'Menambahkan sebuah [http://www.microid.org/ MicroID] di halaman pengguna untuk mengkonfirmasi akun dengan layanan eksternal',
+	'tog-microid' => 'Mempublikasikan sebuah <a href="http://microid.org/">MicroID</a> untuk mengkonfirmasikan akun dengan layanan eksternal',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

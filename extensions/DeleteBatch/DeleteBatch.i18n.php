@@ -318,6 +318,15 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
 	'deletebatch-no-page' => 'Por favor, especifique, polo menos, unha páxina para borrar OU escolla un ficheiro que conteña unha lista de páxinas.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'deletebatch-button' => 'Διαγράφειν',
+	'deletebatch-or' => '<b>ἢ</b>',
+	'deletebatch-select-yourself' => 'σύ',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

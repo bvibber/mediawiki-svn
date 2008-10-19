@@ -424,6 +424,7 @@ $messages['eo'] = array(
 	'grouppermissions-sp-success' => 'Rajtoj estis sukcese ordigitaj',
 	'grouppermissions-sp-addperm' => 'Aldoni rajton',
 	'grouppermissions-sp-remove' => 'forigi',
+	'right-grouppermissions' => 'Administri gruprajtojn',
 	'right-raw' => 'Vidi krudajn paĝojn',
 	'right-info' => 'Vidi paĝan informon',
 	'right-history' => 'Vidi paĝajn historiojn',
@@ -575,6 +576,14 @@ $messages['gl'] = array(
 	'right-edittalk' => 'Editar as páxinas de conversa',
 	'right-edit-new' => 'Editar páxinas (que non son de conversa)',
 	'right-readold' => 'Ver o contido de revisións vellas e diferenzas antigas',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'grouppermissions-comment' => 'Σχόλιον:',
+	'grouppermissions-never' => 'Οὔποτε',
 );
 
 /** Croatian (Hrvatski)

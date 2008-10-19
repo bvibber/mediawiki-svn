@@ -211,6 +211,14 @@ $messages['gl'] = array(
 	'assert_edit_message' => 'A afirmación especificada ($1) fracasou.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'assert_edit_title' => 'Ἀποτευκτὴ ἐπιβεβαιωμένως',
+	'assert_edit_message' => 'Ἡ καθωρισμένη δήλωσις ($1) ἀπετεύχθη.',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

@@ -259,6 +259,15 @@ $messages['gl'] = array(
 	'right-editclosedwikis' => 'Editar wikis pechados',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'closewikis-page-close-submit' => 'Κλῄειν',
+	'closewikis-page-reopen-reason' => 'Αἰτία:',
+	'closewikis-page-reopen-submit' => 'Ἀνοίγειν πάλιν',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -137,6 +137,13 @@ $messages['gl'] = array(
 	'sc_gotomonth' => 'Ir ao mes',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'sc_today' => 'Σήμερον',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

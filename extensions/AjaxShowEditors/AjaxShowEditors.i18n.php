@@ -301,6 +301,25 @@ $messages['gl'] = array(
 	'ajax-se-usernotfound' => 'ERRO: o usuario non foi atopado',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'ajax-se-userinvalid' => 'Σφάλμα: ἄκυρος χρώμενος',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'ajax-se-desc' => 'מציג משתמשים עורכים העורכים את אותו העמוד',
+	'ajax-se-title' => 'עורך כעת:',
+	'ajax-se-pending' => 'רענון בהמתנה... (לחץ על תיבה זו כדי להתחיל בעריכה)',
+	'ajax-se-pagedoesnotexist' => 'העמוד אינו קיים',
+	'ajax-se-userinvalid' => 'שגיאה: משתמש שגוי',
+	'ajax-se-usernotfound' => 'שגיאה: משתמש לא נמצא',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -373,11 +392,17 @@ $messages['ia'] = array(
 	'ajax-se-usernotfound' => 'Error: usator non trovate',
 );
 
-/** Indonesian (Bahasa Indonesia) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
 $messages['id'] = array(
+	'ajax-se-desc' => 'Menampilkan siapa saja yang sedang menyunting di halaman yang sama',
 	'ajax-se-title' => 'Sedang menyunting:',
 	'ajax-se-pending' => 'pemuatan ulang ditunda ... (klik kotak ini atau mulai menyunting)',
 	'ajax-se-idling' => '($1d lalu)',
+	'ajax-se-pagedoesnotexist' => 'halaman tidak ditemukan',
+	'ajax-se-userinvalid' => 'Kesalahan: pengguna tidak sah',
+	'ajax-se-usernotfound' => 'Kesalahan: pengguna tidak ditemukan',
 );
 
 /** Icelandic (Íslenska)
@@ -537,6 +562,17 @@ $messages['lt'] = array(
 	'ajax-se-pagedoesnotexist' => 'puslapis neegzistuoja',
 	'ajax-se-userinvalid' => 'ERR: naudotojas neteisingas',
 	'ajax-se-usernotfound' => 'ERR: naudotojas nerastas',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'ajax-se-desc' => 'Прикажува активни корисници кои уредуваат иста страница',
+	'ajax-se-title' => 'Во моментот уредуваат:',
+	'ajax-se-pagedoesnotexist' => 'страницата не постои',
+	'ajax-se-userinvalid' => 'Грешка: погрешен корисник',
+	'ajax-se-usernotfound' => 'Грешка: не е пронајден корисник',
 );
 
 /** Malayalam (മലയാളം)

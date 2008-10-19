@@ -144,6 +144,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'errorhandler-desc' => 'Erara traktilo por MediaWiki',
 	'errorhandler-errors' => 'Eraroj:',
 	'errorhandler-error-fatal' => 'Neriparebla eraro',
 	'errorhandler-error-warning' => 'Averto',
@@ -160,6 +161,7 @@ $messages['eo'] = array(
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> en <b>$3</b> (linio <b>$4</b>)',
 	'errorhandler-trace' => 'spuro:',
 	'errorhandler-trace-line' => '$1 (linio $2): $3',
+	'errorhandler-trace-line-internal' => '[interna funkcio]: $1',
 );
 
 /** Spanish (Español)
@@ -246,6 +248,13 @@ $messages['gl'] = array(
 	'errorhandler-trace' => 'trazo:',
 	'errorhandler-trace-line' => '$1 (liña $2): $3',
 	'errorhandler-trace-line-internal' => '[función interna]: $1',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'errorhandler-trace' => 'ἴχνος:',
 );
 
 /** Interlingua (Interlingua)

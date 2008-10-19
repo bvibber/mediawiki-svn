@@ -78,7 +78,7 @@ $messages['ar'] = array(
 	'povwatch_not_subscribed' => 'أنت غير مشترك في مراقبة بي أو في، لذا فلا يمكنك إلغاء الاشتراك.',
 	'povwatch_unsubscribed' => 'أنت الآن ألغيت الاشتراك في مراقبة بي أو في',
 	'povwatch_invalid_title' => 'العنوان المحدد كان غير صحيح',
-	'povwatch_pushed' => '[[$1]] تم دفعها بنجاح إلى $2 قائمة مراقبة مستخدم',
+	'povwatch_pushed' => '[[$1]] تم دفعها بنجاح إلى $2 {{PLURAL:$2|قائمة مراقبة مستخدم|قائمة مراقبة مستخدم}}',
 	'povwatch_intro' => 'مراقبة بي أو في هي خدمة تسمح بإضافة صفحات معينة إلى قوائم مراقبة الإداريين المشتركين.
 
 السجل بعمليات دفع قوائم المراقبة الحديثة متوفر في [[Special:PovWatch/log]].',
@@ -117,7 +117,7 @@ $messages['arz'] = array(
 	'povwatch_not_subscribed' => 'أنت غير مشترك فى مراقبة بى أو في، لذا فلا يمكنك إلغاء الاشتراك.',
 	'povwatch_unsubscribed' => 'أنت الآن ألغيت الاشتراك فى مراقبة بى أو في',
 	'povwatch_invalid_title' => 'العنوان المحدد كان غير صحيح',
-	'povwatch_pushed' => '[[$1]] تم دفعها بنجاح إلى $2 قائمة مراقبة مستخدم',
+	'povwatch_pushed' => '[[$1]] تم دفعها بنجاح إلى $2 {{PLURAL:$2|قائمة مراقبة مستخدم|قائمة مراقبة مستخدم}}',
 	'povwatch_intro' => 'مراقبة بى أو فى هى خدمة تسمح بإضافة صفحات معينة إلى قوائم مراقبة الإداريين المشتركين.
 
 السجل بعمليات دفع قوائم المراقبة الحديثة متوفر فى [[Special:PovWatch/log]].',
@@ -201,7 +201,7 @@ $messages['de'] = array(
 	'povwatch_not_subscribed' => 'Du bist nicht für PovWatch registriert; eine Abmeldung ist daher nicht möglich.',
 	'povwatch_unsubscribed' => 'Du bist nun von PovWatch abgemeldet',
 	'povwatch_invalid_title' => 'Der angegebene Seitenname ist ungültig',
-	'povwatch_pushed' => '[[$1]] wurde erfolgreich der Beobachtungsliste von $2 hinzugefügt.',
+	'povwatch_pushed' => '[[$1]] wurde erfolgreich {{PLURAL:$2|der Beobachtungsliste eines Benutzers|den Beobachtungslisten von $2 Benutzern}} hinzugefügt.',
 	'povwatch_intro' => 'PovWatch ist ein Service, um umstrittene Seiten diskret den Beobachtungslisten von registrierten Administratoren hinzuzufügen.
 
 Ein Logbuch der über mittels PovWatch hinzugefügten Seiten ist verfügbar unter [[Special:PovWatch/log]].',
@@ -257,7 +257,7 @@ $messages['fr'] = array(
 	'povwatch_not_subscribed' => 'Vous n’êtes pas inscrit pour la surveillance des guerres d’édition. Par conséquent, vous ne pouvez pas résilier d’inscription.',
 	'povwatch_unsubscribed' => 'Votre inscription pour la surveillance des guerres d’édition est maintenant résiliée.',
 	'povwatch_invalid_title' => 'Le titre indiqué est invalide.',
-	'povwatch_pushed' => '[[$1]] a été inscrite avec succès dans la liste de surveillance de l’utilisateur $2.',
+	'povwatch_pushed' => '[[$1]] a été inscrite avec succès dans {{PLURAL:$2|la liste|les listes}} de surveillance de l’utilisateur $2.',
 	'povwatch_intro' => 'La surveillance des guerres d’édition est un service qui autorise la surveillance discrète des articles conflictuels. Ceux-ci peuvent être inscrits dans la liste de surveillance des administrateurs enregistrés.
 
 Un journal de surveillance des articles inscrits est disponible sur [[Special:PovWatch/log]].',
@@ -294,7 +294,7 @@ $messages['gl'] = array(
 	'povwatch_not_subscribed' => 'Non ten unha subscrición a PovWatch, polo que non a pode cancelar.',
 	'povwatch_unsubscribed' => 'Cancelouse a súa subscrición a PovWatch',
 	'povwatch_invalid_title' => 'O título especificado foi non válido',
-	'povwatch_pushed' => '"[[$1]]" foi engadida con éxito á(s) páxinas(s) de vixilancia de $2',
+	'povwatch_pushed' => '"[[$1]]" foi engadida con éxito {{PLURAL:$2|á páxina|ás páxinas}} de vixilancia de $2',
 	'povwatch_intro' => 'PovWatch é un servizo que permite que páxinas polémicas sexan "empurradas" discretamente ás listaxes de vixilancia dos adminitradores subscritos.
 
 un rexistro dos "empurróns" ás listaxes de vixilancia recentes está dispoñible en [[Special:PovWatch/log]].',
@@ -398,7 +398,7 @@ $messages['hsb'] = array(
 	'povwatch_not_subscribed' => 'Njejsy PovWatch abonował, tohodla njemóžeš jón wotskazać.',
 	'povwatch_unsubscribed' => 'Sy nětko PovWatch wotskazał',
 	'povwatch_invalid_title' => 'Podaty titul je njepłaćiwy',
-	'povwatch_pushed' => '[[$1]] bu wuspěšnje do wobkedźbowankow wužiwarja $2 sunjeny.',
+	'povwatch_pushed' => '[[$1]] bu wuspěšnje {{PLURAL:$2|wobkedźbowankam|wobkedźbowankam|wobkedźbowankam|wobkedźbowankam}} wužiwarja $2 přidaty.',
 	'povwatch_intro' => 'PovWatch je słužba, kotraž dowola zwadne nastawki diskretnje do wobkedźbowankow abonowacych administratorow sunyć.
 
 Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispoziciji.',
@@ -524,7 +524,7 @@ $messages['lb'] = array(
 	'povwatch_not_subscribed' => "Dir sidd net ageschriwwen fir Ännerungskonflikter z'iwwerwwachen. Dofir kënnt Dir iech och net ofmelden.",
 	'povwatch_unsubscribed' => "Dir hutt iech elo ofgemeld fir Ännerungskonflikter z'iwwerwaachen.",
 	'povwatch_invalid_title' => 'Den Titel deen Dir uginn hutt ass ongëlteg.',
-	'povwatch_pushed' => '[[$1]] gouf op Iwwerwwachungslëscht(en) vum Bentzer $2 derbäigesat',
+	'povwatch_pushed' => '[[$1]] gouf op $2 {{PLURAL:$2|Iwwerwwachungslëscht|Iwwerwwachungslëschte}} vu Benotzer derbäigesat',
 	'povwatch_intro' => "D'Iwwerwaache vun Ännerungskonflikten (PovWatch) erlaabt et fir ëmstridde Säiten diskret op d'Iwwerwaachungslëscht vun ageschriwwenen Administrateuren ze setzen.
 
 Eng Lëscht vun de Säiten déi rezent ageschriwwe goufen ass [[Special:PovWatch/log|hei disponibel]].",
@@ -680,7 +680,7 @@ $messages['nl'] = array(
 	'povwatch_not_subscribed' => 'U bent niet geabonneerd op PovWatch, dus u kunt niet uitschrijven.',
 	'povwatch_unsubscribed' => 'U bent uitgeschreven van PovWatch',
 	'povwatch_invalid_title' => 'De opgegeven paginanaam is ongeldig',
-	'povwatch_pushed' => '[[$1]] is succesvol toegewezen aan $2 volglijsten van gebruikers.',
+	'povwatch_pushed' => '[[$1]] is toegewezen aan de volglijst van $2 {{PLURAL:$2|gebruiker|gebruikers}}.',
 	'povwatch_intro' => "PovWatch is een dienst die het mogelijk maakt gevoelige pagina's discreet op de volglijst van geabonneerde beheerders te zetten.
 
 Een logboek met recent toegewezen pagina's op volglijsten is te bekijken op [[Special:PovWatch/log]].",
@@ -769,7 +769,7 @@ $messages['oc'] = array(
 	'povwatch_not_subscribed' => 'Sètz pas marcat(ada) per la susvelhança de las guèrras d’edicions. Atal doncas, vos podètz pas desmarcar.',
 	'povwatch_unsubscribed' => 'Vòstra inscripcion per la susvelhança de las guèrras d’edicion ara es resiliada.',
 	'povwatch_invalid_title' => 'Lo títol indicat es invalid.',
-	'povwatch_pushed' => '[[$1]] es estada inscricha amb succès dins la lista de susvelhança de l’utilizaire $2.',
+	'povwatch_pushed' => '[[$1]] es estada inscricha amb succès dins {{PLURAL:$2|la lista de susvelhança|las listas de susvelhança}} de l’utilizaire $2.',
 	'povwatch_intro' => "La susvelhança de las guèrras d’edicion es un servici qu'autoriza la susvelhança discrèta dels articles conflictuals. Aquestes pòdon èsser inscriches dins la lista de susvelhança dels administrators enregistrats. Un jornal de susvelhança dels articles inscriches es disponible sus [[Special:PovWatch/log]].",
 	'povwatch_subscriber_list' => 'Una [[Special:PovWatch/subscribers|lista dels abonats]] es disponibla.',
 	'povwatch_subscriber_list_intro' => '<strong>Lista dels abonats</strong>',

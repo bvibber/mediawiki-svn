@@ -107,6 +107,14 @@ $messages['gl'] = array(
 	'right-forcepreviewexempt' => 'Poder gardar sen usar a vista previa',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'forcepreview' => 'Γράφειν δέλτον (προθεώρησις προηγουμένως)',
+	'forcepreview-desc' => 'Ἀναγκαστικὴ προθεώρησις διὰ τοὺς μὴ προνομιούχους χρωμένους',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

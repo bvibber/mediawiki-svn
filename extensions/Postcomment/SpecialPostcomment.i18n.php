@@ -231,6 +231,24 @@ $messages['ia'] = array(
 	'postcomment_nopostingtoadd' => 'Nulle message a adder.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Rex
+ */
+$messages['id'] = array(
+	'postcomment_desc' => 'Mengizinkan pengguna untuk memasukkan komentar langsung ke halaman diskusi.',
+	'postcomment_discussionprotected' => 'Halaman diskusi ini telah dilindungi dari komentar lebih lanjut.',
+	'postcomment_notloggedin' => 'Anda belum masuk log.',
+	'postcomment_youareloggedinas' => 'Anda masuk log sebagai $1',
+	'postcomment_addcommentdiscussionpage' => 'Tambahkan komentar Anda di halaman diskusi ini',
+	'postcomment_leavemessagefor' => 'Tinggalkan pesan untuk $1',
+	'postcomment_post' => 'Kirim',
+	'postcomment_on' => 'Pada',
+	'postcomment_said' => 'berkata',
+	'postcomment_invalidrequest' => 'Permintaan tidak sah.',
+	'postcomment_replyto' => 'Balas ke $1',
+	'postcomment_nopostingtoadd' => 'Tidak ada komentar yang dapat ditambahkan.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
