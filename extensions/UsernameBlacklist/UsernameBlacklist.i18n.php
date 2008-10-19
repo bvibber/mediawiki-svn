@@ -549,6 +549,7 @@ $messages['hsb'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|slědowaca linka|slědowacej lince|slědowace linki|slědowacych linkow}} {{PLURAL:$1|je|stej|su|je}}w lisćinje njewitanych wužiwarskich mjenow je {{PLURAL:$1|njepłaćiwa|njepłaćiwje|njepłaćiwe|njepłaćiwe}}; prošu skoriguj {{PLURAL:$1|ju|jej|je|je}} před składowanjom:',
+	'right-uboverride' => 'Płaćiwosć čorneje lisćiny wužiwarskich mjenow zběhnyć',
 );
 
 /** Hungarian (Magyar)

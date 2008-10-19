@@ -248,6 +248,8 @@ riddler|Riddler',
 	'vote-registered' => 'Deine Stimme wurde registriert.',
 	'vote-view-results' => 'Ergebnisse zeigen',
 	'vote-results' => 'Wahlergebnisse',
+	'vote-results-choice' => 'Wahl',
+	'vote-results-count' => 'Anzahl',
 	'vote-results-none' => 'Es wurden noch keine Stimmen abgegeben.',
 	'vote-login-link' => 'Anmelden',
 	'vote-invalid-choice' => 'Du musst eine der möglichen Optionen wählen.',
@@ -557,6 +559,9 @@ $messages['lb'] = array(
 	'vote' => 'Ofstëmmen',
 	'vote-header' => "Dir kënnt hei iwwer den '''Supreme Overlord of the World''' ofstëmmen!",
 	'vote-caption' => 'Är Wiel:',
+	'vote-choices' => 'joker|Den Joker
+penguin|De Pinguin
+riddler|Riddler',
 	'vote-submit' => 'Ofstëmmen',
 	'vote-registered' => 'Är Stëmm gouf ofgespäichert.',
 	'vote-view-results' => "Kuckt d'Resultater",

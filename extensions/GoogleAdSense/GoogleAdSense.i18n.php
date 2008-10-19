@@ -86,6 +86,13 @@ $messages['gl'] = array(
 	'googleadsense-desc' => 'Engade [http://www.google.com/adsense Google AdSense] á barra lateral',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'googleadsense-desc' => 'מוסיף את [http://www.google.com/adsense Google AdSense] לסרגל הצד',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

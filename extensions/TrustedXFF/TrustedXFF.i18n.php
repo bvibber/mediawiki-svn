@@ -93,6 +93,13 @@ $messages['hr'] = array(
 	'trustedxff-desc' => 'Omogućava stvaranje popisa odobrenih proxy adresa ([http://meta.wikimedia.org/wiki/XFF_project XFF projekt])',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'trustedxff-desc' => 'Wobchadźenje z lisćinu dowěrliwych proksyjowych adresow ([http://meta.wikimedia.org/wiki/XFF_project projekt XFF])',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -91,6 +91,17 @@ $messages['gl'] = array(
 	'unicodeconverter-newtext' => 'Texto transformado:',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'unicodeconverter' => 'Unicodowy konwerter',
+	'unicodeconverter-desc' => 'Jednory přikład modula specialneje strony. [[Special:UnicodeConverter|Zapodate znamješko w UTF-8]] konwertuje so do entitow HTML za wužiwanje na webstronje z kodowanjom ISO 8859-1',
+	'unicodeconverter-ok' => 'W porjadku',
+	'unicodeconverter-oldtext' => 'Originalny tekst',
+	'unicodeconverter-newtext' => 'Konwertowany tekst:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

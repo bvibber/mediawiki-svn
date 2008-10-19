@@ -140,7 +140,7 @@ $messages['as'] = array(
  */
 $messages['ast'] = array(
 	'expandtemplates' => 'Esparder plantíes',
-	'expandtemplates-desc' => "[[Special:ExpandTemplate|Espande plantíes, funciones d'análisis sintáuticu y variables]] p'amosar wikitestu espandíu y previsualizar páxines renderizaes",
+	'expandtemplates-desc' => "[[Special:ExpandTemplates|Espande plantíes, funciones d'análisis sintáuticu y variables]] p'amosar wikitestu espandíu y previsualizar páxines renderizaes",
 	'expand_templates_intro' => "Esta páxina especial ellabora un testu espardiendo toles
 plantíes de forma recursiva. Tamién esparde les funciones d'análisis sintáuticu
 como <nowiki>{{</nowiki>#if:...}}, y variables como
@@ -150,7 +150,7 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 	'expand_templates_input' => "Testu d'entrada:",
 	'expand_templates_output' => 'Resultáu',
 	'expand_templates_xml_output' => 'Salida XML',
-	'expand_templates_ok' => 'Dir',
+	'expand_templates_ok' => 'Aceutar',
 	'expand_templates_remove_comments' => 'Eliminar comentarios',
 	'expand_templates_generate_xml' => "Amosar l'árbole d'análisis sintáuticu XML",
 	'expand_templates_preview' => 'Previsualizar',

@@ -328,9 +328,11 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Purodha
+ * @author Revolus
  */
 $messages['de'] = array(
 	'regexblock-form-reason' => 'Grund:',
+	'regexblock-view-go' => 'Los',
 );
 
 /** Greek (Ελληνικά)

@@ -562,7 +562,7 @@ hasta la fecha. $1 pa los datos encriptaos.</p>',
 	'boardvote_closed' => 'La votación ta zarrada, mira en breve [http://meta.wikimedia.org/wiki/Board_elections/2008/Results la páxina de resultaos de les eleiciones].',
 	'boardvote_edits_many' => 'munches',
 	'group-boardvote' => "Alministradores de votaciones pal Conseyu d'Alministración",
-	'group-boardvote-member' => "Alministrador de votaciones pal Conseyu d'Alministración",
+	'group-boardvote-member' => "alministrador de votaciones pal Conseyu d'Alministración",
 	'grouppage-boardvote' => "{{ns:project}}:Alministrador de votaciones pal Conseyu d'Alministración",
 	'boardvote_blocked' => 'Sentímoslo, fuisti bloquiáu na to wiki. Los usuarios bloquiaos nun puen votar.',
 	'boardvote_bot' => 'Tas marcáu como bot na to wiki rexistrada.

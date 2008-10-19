@@ -109,6 +109,14 @@ $messages['gl'] = array(
 	'usercontactlink-desc' => 'Proporciona a capacidade de engadir sinxela e consistentemente outros nomes de usuario usando a sintaxe ^^^user^^^',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'usercontactlink-baduser' => 'שם המשתמש שגוי',
+	'usercontactlink-desc' => 'מספק את האפשרות להוסיף שמות משתמשים אחרים בפשטות ובעקביות באמצעות התחביר ^^^user^^^',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

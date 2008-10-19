@@ -313,6 +313,7 @@ $messages['de'] = array(
 	'usagestatisticsincremental' => 'Inkrementell',
 	'usagestatisticsincremental-text' => 'aufsteigend',
 	'usagestatisticscumulative' => 'Kumulativ',
+	'usagestatisticscalselect' => 'Wähle',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -461,23 +462,32 @@ $messages['gl'] = array(
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'specialuserstats' => 'סטטיסטיקות שימוש',
 	'usagestatistics' => 'סטטיסטיקות שימוש',
-	'usagestatisticsfor' => '<h2>סטטיסטיקות שימוש של [[User:$1|$1]]</h2>',
+	'usagestatistics-desc' => 'הצג את סטטיסטיקת השימוש של משתמש יחיד ושל הכלל',
+	'usagestatisticsfor' => '<h2>סטטיסטיקות השימוש של [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>סטטיסטיקות שימוש של כל המשתמשים</h2>',
+	'usagestatisticsinterval' => 'מרווח',
 	'usagestatisticstype' => 'סוג',
-	'usagestatisticsstart' => 'תאריך התחלה',
-	'usagestatisticsend' => 'תאריך סיום',
-	'usagestatisticssubmit' => 'יצירת סטטיסטיקות',
+	'usagestatisticsstart' => 'תאריך ההתחלה',
+	'usagestatisticsend' => 'תאריך הסיום',
+	'usagestatisticssubmit' => 'צור סטטיסטיקות',
 	'usagestatisticsnostart' => '* <font color=red>אנא ציינו תאריך התחלה</font>',
 	'usagestatisticsnoend' => '* <font color=red>אנא ציינו תאריך סיום</font>',
-	'usagestatisticsbadstartend' => '<b>תאריך התחלה ו/או תאריך סיום בעייתי!</b>',
+	'usagestatisticsbadstartend' => '<b>תאריך <i>ההתחלה</i> ו/או תאריך <i>הסיום</i> בעייתיים!</b>',
 	'usagestatisticsintervalday' => 'יום',
 	'usagestatisticsintervalweek' => 'שבוע',
 	'usagestatisticsintervalmonth' => 'חודש',
+	'usagestatisticsincremental' => 'מתווספת',
+	'usagestatisticsincremental-text' => 'מתווספת',
+	'usagestatisticscumulative' => 'מצטברת',
+	'usagestatisticscumulative-text' => 'מצטבר',
 	'usagestatisticscalselect' => 'בחירה',
+	'usagestatistics-editindividual' => 'סטטיסטיקת עריכות של משתמש יחיד $1',
+	'usagestatistics-editpages' => 'סטטיסטיקות העמודים של משתמש יחיד $1',
 );
 
 /** Hindi (हिन्दी)
@@ -526,6 +536,7 @@ $messages['hsb'] = array(
 	'usagestatistics' => 'Wužiwanska statistika',
 	'usagestatistics-desc' => 'Statistika jednotliwych wužiwarja a cyłkownu wikijowu statistiku pokazać',
 	'usagestatisticsfor' => '<h2>Wužiwanska statistika za [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Wužiwanska statistika za wšěch wužiwarjow</h2>',
 	'usagestatisticsinterval' => 'Interwal',
 	'usagestatisticstype' => 'Typ',
 	'usagestatisticsstart' => 'Spočatny datum',

@@ -281,6 +281,7 @@ Operatori ovih stranica ne mogu preuzeti odgovornost za sadržaj takvih komentar
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'talkhere-desc' => 'Zasunje diskusijnu stronu do strony',
 	'talkhere-foottext' => 'Horjeka podate komentary buchu snano wot wopytarjow zawostajene.
 
 Wothladowarjo tutoho websydła njemóža zamołwitosć za wobsah tajkich komentarow přewzać.',

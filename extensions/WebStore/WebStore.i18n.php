@@ -319,10 +319,20 @@ $1',
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Revolus
  */
 $messages['de'] = array(
+	'inplace_scaler_not_enough_params' => 'Zu wenige Parameter.',
+	'webstore_temp_open' => 'Kann temporäre Datei „$1“ nicht öffnen.',
 	'webstore_no_file' => 'Es wurde keine Datei hochgeladen.',
+	'webstore_invalid_zone' => 'Ungültige Zone „$1“.',
+	'webstore_no_deleted' => 'Es wurde kein Archivverzeichnis für gelöschte Dateien definiert.',
+	'webstore_curl' => 'Fehler von cURL: $1',
+	'webstore_404' => 'Datei nicht gefunden.',
+	'webstore_php_warning' => 'PHP-Warnung: $1',
 	'webstore_metadata_not_found' => 'Datei nicht gefunden: $1',
+	'webstore_no_response' => 'Keine Antwort vom Server',
+	'webstore_php_error' => 'Es traten PHP-Fehler auf:',
 );
 
 /** Greek (Ελληνικά)

@@ -237,7 +237,7 @@ $messages['ast'] = array(
 	'hiderevision' => 'Revisiones escondíes permanentemente',
 	'hiderevision-desc' => 'Oculta revisiones individuales a tolos usuarios por motivos llegales, etc.',
 	'group-oversight' => 'Güeyadores',
-	'group-oversight-member' => 'Güeyador',
+	'group-oversight-member' => 'güeyador',
 	'grouppage-oversight' => '{{ns:project}}:Güeyador',
 	'right-oversight' => 'Ver una revisión ocultada previamente',
 	'right-hiderevision' => 'Revisar y restaurar revisiones ocultes a los alministradores',
@@ -250,21 +250,21 @@ $messages['ast'] = array(
 '''L'abusu d'esti sistema llevará a la perda de privilexos.'''
 
 Los elementos eliminaos nun van ser visibles por naide nel sitiu web,
-pero los borraos queden rexistraos y si t'enquivoques puen ser restauraos
+pero los esborraos queden rexistraos y si t'enquivoques puen ser restauraos
 manualmente por un alministrador de la base de datos.",
 	'hiderevision-reason' => 'Motivu (rexistraráse de forma privada):',
 	'hiderevision-submit' => 'Esconder permanentemente estos datos',
 	'hiderevision-tab' => 'Esconder revisión',
-	'hiderevision-norevisions' => "Nun s'especificaron revisiones pa borrar.",
+	'hiderevision-norevisions' => "Nun s'especificaron revisiones pa esborrar.",
 	'hiderevision-noreason' => "Has describir el motivu d'esta eliminación.",
 	'hiderevision-status' => 'Revisión $1: $2',
-	'hiderevision-success' => 'Archivada y borrada con ésitu.',
+	'hiderevision-success' => 'Archivada y esborrada con ésitu.',
 	'hiderevision-error-missing' => 'Non atopada na base de datos.',
-	'hiderevision-error-current' => "Nun se pue borrar la cabera edición d'una páxina. Revierti primero esti cambéu.",
-	'hiderevision-error-delete' => 'Nun se pudo archivar; ¿taría yá borrada previamente?',
-	'hiderevision-archive-status' => 'Revisión borrada de $1: $2',
+	'hiderevision-error-current' => "Nun se pue esborrar la cabera edición d'una páxina. Revierti primero esti cambéu.",
+	'hiderevision-error-delete' => 'Nun se pudo archivar; ¿taría yá esborrada previamente?',
+	'hiderevision-archive-status' => 'Revisión esborrada de $1: $2',
 	'oversight-nodiff' => 'Nun se pudieron deteutar cambeos yá que nestos momentos nun hai revisiones previes de la páxina.
-*La páxina foi borrada; o
+*La páxina foi esborrada; o
 *Esta revisión escondida yera la primer revisión',
 	'oversight-log-hiderev' => 'eliminó una edición de $1',
 	'oversight' => 'Supervisión',

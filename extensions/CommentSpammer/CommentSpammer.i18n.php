@@ -141,6 +141,20 @@ $messages['gl'] = array(
 	'cspammer-log-page' => 'Rexistro dos comentarios Spam',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'commentspammer-save-blocked' => 'כתובת ה־IP שלך נחשדת כזבלן הערות, לכן העמוד לא נשמר.
+[[Special:UserLogin|התחבר או צור חשבון]] כדי למנוע זאת.',
+	'commentspammer-desc' => 'דוחה עריכות מזבלני הערות חשודים ברשימת חסימה ב־DNS',
+	'commentspammer-log-msg' => 'עריכה מאת [[Special:Contributions/$1|$1]] אל [[:$2]].',
+	'commentspammer-log-msg-info' => 'נשלח זבל לפני $1 ימים, רמת האיום הינה $2, וקוד הפגיעה הינו $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 צפה בפרטים], או [[Special:Blockip/$4|חסום]].',
+	'cspammerlogpagetext' => 'רשומת העריכות שמתקבלות או נדחות בהתאם לזיהוי המקור כזבלן הערות (spammer).',
+	'cspammer-log-page' => 'רשומת זבלני ההערות',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

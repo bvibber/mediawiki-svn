@@ -302,8 +302,13 @@ $messages['da'] = array(
  * @author Revolus
  */
 $messages['de'] = array(
+	'review_error' => 'Irgendetwas stimmt nicht!',
 	'review_version_statistic_cell' => '$1 von $2',
 	'review_user_details_link' => '(Details)',
+	'review_blocked' => 'Du bist gesperrt, es gibt nichts für dich zu tun.',
+	'review_topic' => 'Überschrift',
+	'review_rating' => 'Bewertung',
+	'review_comment' => 'Kommentar',
 );
 
 /** Greek (Ελληνικά)

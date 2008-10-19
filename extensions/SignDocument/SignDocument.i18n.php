@@ -41,9 +41,11 @@ $messages['arz'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Revolus
  */
 $messages['de'] = array(
 	'signaturelogpage' => 'Unterschrifts-Logbuch',
+	'signature-desc' => 'Ermöglicht es Dokumente zu [[Special:SignDocument|unterzeichnen]]',
 	'signaturelogpagetext' => 'Dies ist das [[Special:SignDocument|Unterschrifts-Logbuch für Dokumente]].',
 	'signaturelogentry' => 'hat das Dokument $1 unterschrieben',
 );

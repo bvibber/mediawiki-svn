@@ -230,6 +230,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'watchers' => 'Wobkedźbowarjo',
+	'watchers-desc' => 'Pokazuje [[Special:Watchers|kotři wužiwarjo maja stronu na swojich wobkedźbowankach]]',
 	'watchers_link_title' => 'Štó tutu stronu wobkedźbuje?',
 	'watchers_error_article' => '<b>Zmylk:</b> Strona njeeksistuje.',
 	'watchers_header' => '{{PLURAL:$2|Wužiwar|Wužiwarjej|Wužiwarjo|Wužiwarjo}}, {{PLURAL:$2|kotryž|kotrajž|kotřiž|kotřiž}} "$1" {{PLURAL:$2|wobkedźbuje|wobkedźbujetaj|wobkedźbuja|wobkedźbuja}}',

@@ -109,6 +109,17 @@ $messages['he'] = array(
 	'stalkerlog-log-text' => 'זהו יומן הכניסות והיציאות מהחשבון.',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'stalkerlog-desc' => 'Přida [[Special:Log/stalkerlog|protokol]] wužiwarskich přizjewjenjow a wotzjewjenjow',
+	'stalkerlog-log-login' => 'přizjewjeny.',
+	'stalkerlog-log-logout' => 'wotzjewjeny.',
+	'stalkerlog-log-type' => 'Protokol wužiwarskeje awtentifikacije',
+	'stalkerlog-log-text' => 'To je protokol přizjewjenjow a wotzjewjenjow wužiwarja.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -97,6 +97,17 @@ $messages['da'] = array(
 	'profiling-ok' => 'OK',
 );
 
+/** German (Deutsch)
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'profiling-ok' => 'Okay',
+	'profiling-data-process' => 'Fortschritt',
+	'profiling-data-count' => 'Anzahl',
+	'profiling-data-time' => 'Zeit (gesamt)',
+	'profiling-data-average' => 'Zeit (durchschnittlich)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

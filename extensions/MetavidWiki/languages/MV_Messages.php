@@ -973,6 +973,7 @@ $messages['de'] = array(
 	'mv_edit' => 'Bearbeiten',
 	'mv_history' => 'Versionen/Autoren',
 	'mv_remove' => 'entfernen',
+	'mv_adjust' => 'Anpassen',
 	'mv_adjust_preview_stop' => 'Vorschau anhalten',
 	'mv_of' => '&#32;von&#32;',
 	'mv_add_filter' => 'Filter hinzufügen',

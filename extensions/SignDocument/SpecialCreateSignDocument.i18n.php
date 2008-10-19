@@ -46,13 +46,6 @@ $messages['qqq'] = array(
 	'createsigndoc-create' => '{{Identical|Create}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'createsigndoc-pagename' => 'Лаштык:',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -212,10 +205,14 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Revolus
  */
 $messages['de'] = array(
+	'createsigndoc-pagename' => 'Seite:',
 	'createsigndoc-email' => 'E-Mail-Adresse:',
+	'createsigndoc-bday' => 'Geburtstag:',
 	'createsigndoc-minage' => 'Mindestalter:',
+	'createsigndoc-hidden' => 'Versteckt',
 	'createsigndoc-error-generic' => 'Fehler: $1',
 	'createsigndoc-error-pagenoexist' => 'Fehler: Die Seite [[$1]] existiert nicht.',
 );
@@ -523,6 +520,13 @@ $messages['lb'] = array(
 	'createsigndoc-error-generic' => 'Feeler: $1',
 	'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
 	'createsigndoc-error-alreadycreated' => 'Dokument ënnerschreiwen "$1" gëtt et schonn',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'createsigndoc-pagename' => 'Лаштык:',
 );
 
 /** Malayalam (മലയാളം)

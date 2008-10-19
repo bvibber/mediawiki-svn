@@ -145,6 +145,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'templatelink' => 'Předłohowy wotkaz',
+	'templatelink_desc' => 'Tute rozšěrjenje móž předłohu jako nowu stronu pokazać',
 	'templatelink_empty' => 'Dyrbiš parameter podać.',
 	'templatelink_newtitle' => '$1 (narunany)',
 );

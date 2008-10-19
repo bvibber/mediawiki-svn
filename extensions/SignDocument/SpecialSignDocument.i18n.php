@@ -451,12 +451,39 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Revolus
  */
 $messages['de'] = array(
+	'sign-selectdoc' => 'Dokument:',
+	'sign-error-nosuchdoc' => 'Das angeforderte Dokument ($1) existiert nicht.',
+	'sign-realname' => 'Name:',
+	'sign-address' => 'Straße:',
+	'sign-city' => 'Stadt:',
+	'sign-state' => 'Bundesland:',
+	'sign-zip' => 'Postleitzahl:',
+	'sign-country' => 'Land:',
+	'sign-phone' => 'Telefonnummer:',
 	'sign-bday' => 'Alter:',
 	'sign-email' => 'E-Mail-Adresse:',
+	'sign-submit' => 'Dokument unterzeichnen',
+	'sig-success' => 'Du hast das Dokument erfolgreich unterschrieben.',
+	'sign-view-selectfields' => '<b>Anzuzeigende Felder:</b>',
+	'sign-viewfield-timestamp' => 'Zeitstempel',
+	'sign-viewfield-realname' => 'Name',
+	'sign-viewfield-address' => 'Adresse',
+	'sign-viewfield-city' => 'Stadt',
+	'sign-viewfield-state' => 'Bundesland',
+	'sign-viewfield-country' => 'Land',
+	'sign-viewfield-zip' => 'Postleitzahl',
+	'sign-viewfield-ip' => 'IP-Adresse',
+	'sign-viewfield-agent' => 'Browser',
 	'sign-viewfield-email' => 'E-Mail',
 	'sign-viewfield-age' => 'Alter',
+	'sign-viewfield-options' => 'Optionen',
+	'sign-closed' => 'geschlossen',
+	'sig-anonymous' => '<i>Anonym</i>',
+	'sig-private' => '<i>Privat</i>',
+	'sign-review-comment' => 'Kommentar',
 );
 
 /** Greek (Ελληνικά)

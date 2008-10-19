@@ -185,6 +185,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'whoiswatching' => 'Štó wobkedźbuje wiki-stronu',
+	'whoiswatching-desc' => 'Dodawa lisćinu mjenow wužiwarjow, kotřiž wikijowu stronu wobkedźbuja.',
 	'specialwhoiswatchingthepage' => 'Štó wobkedźbuje %s',
 	'specialwhoiswatchingusage' => 'Tuta specialna strona njeda so na so wužiwać. Prošu wužij stronu [[MediaWiki:Number_of_watching_users_pageview]], zo by přistupny dypk za tutu specialnu stronu definował.',
 	'specialwhoiswatchingaddusers' => 'Přidaj wužiwarjow za wobkedźbowanje strony',

@@ -53,13 +53,6 @@ $messages['qqq'] = array(
 	'spamregex-summary-log' => '{{Identical|Summary}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'spamregex-summary-log' => '(Чылаже)',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -207,6 +200,7 @@ $messages['de'] = array(
 	'spamregex-move' => 'Die Zusammenfassung, die du angabst, enthält eine gesperrte Phrase.',
 	'spamregex-no-currently-blocked' => "'''Es gibt derzeit keine gesperrten Phrasen.'''",
 	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 entfernen]), hinzugefügt von",
+	'spamregex-error-1' => 'Ungültiger regulärer Ausdruck.',
 	'spamregex-block-submit' => 'Diese&nbsp;Phrase&nbsp;sperren',
 	'spamregex-text' => '(Text)',
 	'spamregex-summary-log' => '(Beschreibung)',
@@ -469,6 +463,13 @@ $messages['lb'] = array(
  */
 $messages['mdf'] = array(
 	'spamregex-already-blocked' => '"$1" сёлкфоль ни',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'spamregex-summary-log' => '(Чылаже)',
 );
 
 /** Malayalam (മലയാളം)

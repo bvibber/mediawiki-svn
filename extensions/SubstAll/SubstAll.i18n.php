@@ -66,6 +66,13 @@ $messages['gl'] = array(
 	'substall-desc' => 'Crea unha etiqueta <nowiki><substall></nowiki> que expande todos os modelos en sintaxe wiki',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'substall-desc' => 'Wutwori tafličku <nowiki><substall></nowikim kotraž wšě předłohi do wikijoweje syntaksy ekspanduje',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

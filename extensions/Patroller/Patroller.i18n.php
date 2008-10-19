@@ -651,6 +651,7 @@ $messages['lb'] = array(
 	'patrol-reasons' => "* Einfache Vandalismus
 * Test vun engem neie Benotzer
 * Kuckt d'Diskussiounssäit",
+	'patrol-another' => 'Weis eng aner Ännerung, wann se disponibel ass',
 	'patrol-resume' => 'Hei clicke fir weiderzefueren.',
 );
 

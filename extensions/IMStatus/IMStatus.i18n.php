@@ -240,6 +240,38 @@ $messages['grc'] = array(
 	'imstatus_or' => 'ἢ',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'imstatus-desc' => 'מוסיף תגיות מגוונות עבור המצבים המקוונים של רשתות המסרים המידיים (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'תחביר',
+	'imstatus_default' => 'ברירת מחדל',
+	'imstatus_example' => 'דוגמה',
+	'imstatus_possible_val' => 'ערכים אפשריים',
+	'imstatus_max' => 'מקס',
+	'imstatus_min' => 'מינ',
+	'imstatus_or' => 'או',
+	'imstatus_style' => 'סגנון מחוון המצב',
+	'imstatus_action' => 'פעולה בעת הלחיצה על הלחצן',
+	'imstatus_details_saa' => 'לפרטים נוספים אודות כל הסגנונות והפעולות, ראה $1.',
+	'imstatus_your_name' => 'שם ה־$1 שלך',
+	'imstatus_aim_presence' => '$1 מציג את המצב שלך עם קישור שיפעיל את AIM לשליחת הודעה, במידה ולמשתמש יש AIM מותקן.',
+	'imstatus_aim_api' => "$1 מציג את המצב שלך עם קישור שיפעיל את ה<b>דפדפן</b> שלך, גירסאת ג'אווהסקריפט של AIM לשליחת הודעות אליך.",
+	'imstatus_gtalk_code' => 'קוד ה־google talk שלך',
+	'imstatus_gtalk_get_code' => 'קוד ה־google talk שלך: קבל אותו ב־$1.',
+	'imstatus_gtalk_height' => 'גובה התיבה, בפיקסלים.',
+	'imstatus_gtalk_width' => 'רוחב התיבה, בפיקסלים.',
+	'imstatus_icq_id' => 'מזהה ה־ICQ שלך',
+	'imstatus_icq_style' => 'מספר בין 0 ל־26 (כן, ישנם 27 סגנונות זמינים...).',
+	'imstatus_live_code' => 'מזהה אתר ה־Live Messenger שלך',
+	'imstatus_live_get_code' => 'מזהה אתר ה־Live Messenger שלך: <strong>זוהי אינה כתובת הדואל שלך</strong>, יהיה עליך לייצר אחת תחת <a href="$1">אפשרויות ה־live messenger</a>.
+המזהה אותו תצטרך לספק הינו המספרים והאותיות שבין "$2" ו־"$3".',
+	'imstatus_skype_nbstyle' => 'לתשומת לבך: אם תבחר בסגנון שהינו גם פעולה, בחירת הפעולה שלך תדרס על ידי הפעולה התואמת לסגנון שבחרת.',
+	'imstatus_xfire_size' => 'גדלי הלחצנים, מ־$1 (הגדול ביותר) עד $2 (הקטן ביותר).',
+	'imstatus_yahoo_style' => 'סגנון הלחצן, מ־ $1 (הקטן ביותר) עד $2 (הגדול ביותר), $3 ו־$4 הינם לתא קולי.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

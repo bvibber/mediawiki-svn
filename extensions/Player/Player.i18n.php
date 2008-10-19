@@ -47,14 +47,6 @@ $messages['qqq'] = array(
 	'player-goto-file' => '{{Identical|File}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'player-goto-page' => 'Лаштык',
-	'player-goto-file' => 'файл',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -170,8 +162,11 @@ $messages['da'] = array(
 	'player-goto-file' => 'fil',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Revolus
+ */
 $messages['de'] = array(
+	'player' => 'Spieler',
 	'player-file' => 'Dateiname',
 	'player-play' => 'Abspielen',
 	'player-not-allowed' => 'Unerlaubtes Format',
@@ -500,6 +495,14 @@ $messages['lb'] = array(
 	'player-not-found' => 'Fichier net fonnt',
 	'player-goto-page' => 'Säit',
 	'player-goto-file' => 'Fichier',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'player-goto-page' => 'Лаштык',
+	'player-goto-file' => 'файл',
 );
 
 /** Malayalam (മലയാളം)

@@ -51,10 +51,12 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Revolus
  */
 $messages['de'] = array(
 	'nomoveuserpages-desc' => "Schränkt die Verschiebung von Benutzerseiten auf Benutzer mit dem ''move-userpages''-Recht ein",
 	'nomoveuserpages-error' => 'Das Verschieben von Benutzerseiten wurde deaktiviert',
+	'right-move-userpages' => 'Benutzerseite verschieben',
 );
 
 /** French (Français)
