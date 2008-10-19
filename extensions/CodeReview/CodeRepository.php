@@ -223,7 +223,7 @@ class CodeRepository {
 	 * @param User $user
 	 * @return bool success
 	 */
-	public function linkTo( $author, User $user ) {
+	public function linkUser( $author, User $user ) {
 		// We must link to an existing user
 		if( !$user->getId() ) {
 			return false;
@@ -252,15 +252,16 @@ class CodeRepository {
 				__METHOD__
 			);
 		}
+		self::$userLinks[$author] = $user;
 		return ( $dbw->affectedRows() > 0 );
 	}
 
 	/*
-	 * Link the $author to the wikiuser $user
+	 * Remove local user links for $author
 	 * @param string $author
 	 * @return bool success
 	 */
-	public function unlink( $author ) {
+	public function unlinkUser( $author ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete(
 			'code_authors',
@@ -270,13 +271,14 @@ class CodeRepository {
 			),
 			__METHOD__
 		);
+		self::$userLinks[$author] = false;
 		return ( $dbw->affectedRows() > 0 );
 	}
 	
 	/* 
-	*	returns a User object if $author has a wikiuser associated,
-	*	of false
-	*/
+	 * returns a User object if $author has a wikiuser associated,
+	 * or false
+	 */
 	public function authorWikiUser( $author ) {
 		if( isset( self::$userLinks[$author] ) )
 			return self::$userLinks[$author];

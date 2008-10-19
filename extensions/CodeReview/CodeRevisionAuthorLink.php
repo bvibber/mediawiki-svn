@@ -62,12 +62,11 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 		if ( strlen($this->mTarget) && $wgRequest->getCheck( 'newname' ) ) {
 			$user = User::newFromName( $this->mTarget, false );
 			if( !$user || !$user->getId() ) {
-				$wgOut->addWikiMsg( 'nosuchusershort', $name );
+				$wgOut->addWikiMsg( 'nosuchusershort', $this->mTarget );
 				return;
 			}
-			$this->mRepo->linkTo( $this->mAuthor, $user );
+			$this->mRepo->linkUser( $this->mAuthor, $user );
 			$userlink = $this->mSkin->userLink( $user->getId(), $user->getName() );	
-			parent::$userLinks[$this->mAuthor] = $user;
 			$wgOut->addHtml(
 				'<div class="successbox">' . 
 				wfMsgHtml( 'code-author-success', $this->authorLink( $this->mAuthor ), $userlink) .
@@ -79,8 +78,7 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 				$wgOut->addHtml( wfMsg( 'code-author-orphan' ) );
 				return;
 			}
-			$this->mRepo->unlink( $this->mAuthor );
-			parent::$userLinks[$this->mAuthor] = false;
+			$this->mRepo->unlinkUser( $this->mAuthor );
 			$wgOut->addHtml(
 				'<div class="successbox">' . 
 				wfMsgHtml( 'code-author-unlinksuccess', $this->authorLink( $this->mAuthor ) ) .
