@@ -13,9 +13,7 @@ class CodeTagListView extends CodeView {
 		$name = $this->mRepo->getName();
 		$text = '';
 		foreach( $tags as $tag ) {
-			$msg = "code-status-$tag-desc";
-			$exp = wfEmptyMsg( $msg, wfMsg( $msg ) ) ? '' : ' - ' . wfMsgHtml( $msg );
-			$text .= "* [[Special:Code/$name/tag/$tag|$tag]]$exp\n";
+			$text .= "* [[Special:Code/$name/tag/$tag|$tag]]\n";
 		}
 		$wgOut->addWikiText( $text );
 	}
