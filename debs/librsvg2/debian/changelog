@@ -1,3 +1,10 @@
+librsvg (2.22.2-100wm2) unstable; urgency=low
+
+  * (WM bug 16014) Fixed UTF-8 command-line input
+  * Fixed missing newline in rsvg-convert error display
+
+ -- Tim Starling <tstarling@wikimedia.org>  Mon, 20 Oct 2008 16:42:45 +1100
+
 librsvg (2.22.2-100wm1) unstable; urgency=low
 
   * Wikimedia fork. Applied security patch by Brion Vibber.
