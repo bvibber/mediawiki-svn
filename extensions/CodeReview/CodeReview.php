@@ -99,4 +99,5 @@ $wgCodeReviewStyleVersion = 2;
 // The name of a repo which represents the code running on this wiki, used to highlight active revisions
 $wgWikiSVN = 'MediaWiki';
 
-$wgCodeReviewENotif = true;
+// Leave this off by default until it works right
+$wgCodeReviewENotif = false;

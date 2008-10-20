@@ -44,10 +44,13 @@ class CodeRevision {
 		return $rev;
 	}
 
-	static function newFromRow( $row ) {
+	static function newFromRow( CodeRepository $repo, $row ) {
 		$rev = new CodeRevision();
 		$rev->mRepoId = intval($row->cr_repo_id);
-		$rev->mRepo = NULL;
+		if( $rev->mRepoId != $repo->getId() ) {
+			throw new MWException( "Invalid repo ID in " . __METHOD__ );
+		}
+		$rev->mRepo = $repo;
 		$rev->mId = intval($row->cr_id);
 		$rev->mAuthor = $row->cr_author;
 		$rev->mTimestamp = wfTimestamp( TS_MW, $row->cr_timestamp );
@@ -69,15 +72,8 @@ class CodeRevision {
 		return $this->mAuthor;
 	}
 	
-	function getRepo() {
-		if( !isset($this->mRepo) ) {
-			$this->mRepo = CodeRepository::newFromId( $this->mRepoId );
-		}
-		return $this->mRepo;
-	}
-	
 	function getWikiUser() {
-		return $this->getRepo()->authorWikiUser( $this->getAuthor() );
+		return $this->mRepo->authorWikiUser( $this->getAuthor() );
 	}
 
 	function getTimestamp() {
@@ -214,7 +210,7 @@ class CodeRevision {
 				$users[$user->getId()] = $user;
 			}
 			// Get repo and build comment title (for url)
-			$title = SpecialPage::getTitleFor( 'Code', $this->getRepo()->getName().'/'.$this->mId );
+			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$this->mId );
 			$title->setFragment( "#c{$commentId}" );
 			$url = $title->getFullUrl();
 			foreach( $users as $userId => $user ) {
@@ -224,7 +220,7 @@ class CodeRevision {
 				}
 				if( $user->canReceiveEmail() ) {
 					$user->sendMail(
-						wfMsg( 'codereview-email-subj', $this->getRepo()->getName(), $this->mId ),
+						wfMsg( 'codereview-email-subj', $this->mRepo->getName(), $this->mId ),
 						wfMsg( 'codereview-email-body', $wgUser->getName(), $url, $this->mId, $text )
 					);
 				}

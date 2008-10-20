@@ -169,7 +169,7 @@ class CodeRepository {
 		);
 		if( !$row )
 			throw new MWException( 'Failed to load expected revision data' );
-		return CodeRevision::newFromRow( $row );
+		return CodeRevision::newFromRow( $this, $row );
 	}
 
 	/**
