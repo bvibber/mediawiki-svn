@@ -71,7 +71,11 @@ $messages['en'] = array(
 	'codereview-reply-link' => 'reply',
 	
 	'codereview-email-subj' => '[$1] [r$2]: New comment added',
-	'codereview-email-body' => 'User <b>$1</b> posted the <a href="$2">following comment</a> on r$3:
+	'codereview-email-body' => 'User "$1" posted a comment on r$3.
+	
+Full URL: $2
+
+Comment:
 	
 $4',
 
