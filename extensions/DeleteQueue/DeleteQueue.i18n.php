@@ -314,6 +314,7 @@ $messages['ar'] = array(
 	'deletequeue-role-nominator' => 'المرشح الأصلي للحذف',
 	'deletequeue-role-vote-endorse' => 'مؤيد للحذف',
 	'deletequeue-role-vote-object' => 'معترض على الحذف',
+	'deletequeue-vote-tab' => 'تصويت على الحذف',
 	'deletequeue-vote-title' => 'تأييد أو معارضة حذف "$1"',
 	'deletequeue-vote-text' => "أنت يمكنك استخدام هذه الاستمارة لتأييد أو معارضة حذف \"'''\$1'''\".
 هذا الفعل سيلغي أي تأييدات/اعتراضات قمت بها لحذف هذه الصفحة.
@@ -462,6 +463,7 @@ $messages['arz'] = array(
 	'deletequeue-role-nominator' => 'المرشح الأصلى للحذف',
 	'deletequeue-role-vote-endorse' => 'مؤيد للحذف',
 	'deletequeue-role-vote-object' => 'معترض على الحذف',
+	'deletequeue-vote-tab' => 'تصويت على الحذف',
 	'deletequeue-vote-title' => 'تأييد أو معارضة حذف "$1"',
 	'deletequeue-vote-text' => "أنت يمكنك استخدام هذه الاستمارة لتأييد أو معارضة حذف \"'''\$1'''\".
 هذا الفعل سيلغى أى تأييدات/اعتراضات قمت بها لحذف هذه الصفحة.

@@ -206,6 +206,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Leon Weber
+ * @author Metalhead64
  * @author Purodha
  * @author Revolus
  */
@@ -225,10 +226,10 @@ $messages['de'] = array(
 	'duplicator-success-talkcopied' => 'Die Diskussionsseite wurde auch dupliziert.',
 	'duplicator-success-talknotcopied' => 'Die Diskussionsseite konnte nicht dupliziert werden.',
 	'duplicator-failed' => 'Die Seite konnte nicht dupliziert werden, da ein unbekannter Fehler auftrat.',
-	'duplicator-source-invalid' => 'Bitte gebe eine gültigen Quell-Seite an.',
-	'duplicator-source-notexist' => 'Die Seite [[$1]] existiert nicht. Bitte gebe eine existierende Seite an.',
-	'duplicator-dest-invalid' => 'Bitte gebe eine gültige Ziel-Seite an.',
-	'duplicator-dest-exists' => 'Die Seite [[$1]] existiert bereits. Bitte gebe eine nicht existierende Seite an.',
+	'duplicator-source-invalid' => 'Bitte gib eine gültige Quell-Seite an.',
+	'duplicator-source-notexist' => 'Die Seite [[$1]] existiert nicht. Bitte gib eine existierende Seite an.',
+	'duplicator-dest-invalid' => 'Bitte gib eine gültige Ziel-Seite an.',
+	'duplicator-dest-exists' => 'Die Seite [[$1]] existiert bereits. Bitte gib eine nicht existierende Seite an.',
 	'duplicator-toomanyrevisions' => 'Die Seite [[$1]] hat {{PLURAL:$2|eine Version|$2 Versionen}}, und kann daher nicht dupliziert werden. Es können nur Seiten mit {{PLURAL:$3|einer Version|maximal $3 Versionen}} dupliziert werden.',
 );
 

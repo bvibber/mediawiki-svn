@@ -473,7 +473,11 @@ $messages['de'] = array(
 	'code-rev-submit' => 'Änderungen übertragen',
 	'codereview-reply-link' => 'antworten',
 	'codereview-email-subj' => '[$1] [r$2]: Neuer Kommentar hinzugefügt',
-	'codereview-email-body' => 'Benutzer <b>$1</b> hat r$3 <a href="$2">kommentiert</a>:
+	'codereview-email-body' => 'Benutzer „$1“ hat r$3 kommentiert:
+
+Vollständige URL: $2
+
+Kommentar:
 
 $4',
 	'repoadmin' => 'Repositoriums-Administration',
@@ -687,9 +691,13 @@ $messages['fr'] = array(
 	'code-rev-submit-next' => 'Sauver & prochaine non résolue',
 	'codereview-reply-link' => 'répondre',
 	'codereview-email-subj' => '[$1] [r$2] : Nouveau commentaire ajouté',
-	'codereview-email-body' => 'L\'utiliseur <b>$1</b> a envoyé le <a href="$2">commentaire suivant</a> dans r$3 :
+	'codereview-email-body' => "L'utiliseur « $1 » a posté un commentaire sur r$3.
 
-$4',
+Adresse complète : $2
+
+Commentaire :
+
+$4",
 	'repoadmin' => 'Administration des dépôts',
 	'repoadmin-new-legend' => 'Créer un nouveau dépôt',
 	'repoadmin-new-label' => 'Nom du dépôt:',
@@ -1125,7 +1133,11 @@ $messages['nl'] = array(
 	'code-rev-submit-next' => 'Opslaan en volgende ongecontroleerde',
 	'codereview-reply-link' => 'antwoorden',
 	'codereview-email-subj' => '[$1] [r$2]: Nieuwe opmerking toegevoegd',
-	'codereview-email-body' => 'Gebruiker <b>$1</b> heeft de <a href="$2">volgende opmerking</a> toegevoegd aan r$3:
+	'codereview-email-body' => 'Gebruiker "$1" heeft een opmerking toegevoegd aan r$3:
+
+Volledige URL: $2
+
+Opmerking:
 
 $4',
 	'repoadmin' => 'Repositorybeheer',
@@ -1205,9 +1217,15 @@ $messages['oc'] = array(
 	'code-status-resolved' => 'resolgut',
 	'code-status-ok' => "d'acòrdi",
 	'code-status-deferred' => 'deferit',
+	'code-pathsearch-legend' => 'Recèrca las versions dins aqueste depaus segon lo camin',
+	'code-pathsearch-path' => 'Camin :',
 	'code-rev-submit' => 'Publicar las modificacions :',
 	'code-rev-submit-next' => 'Salvar & venenta pas resolguda',
 	'codereview-reply-link' => 'respondre',
+	'codereview-email-subj' => '[$1] [r$2] : Comentari novèl apondut',
+	'codereview-email-body' => 'L\'utilizaire <b>$1</b> a mandat lo <a href="$2">comentari seguent</a> dins r$3 :
+
+$4',
 	'repoadmin' => 'Administracion dels depausses',
 	'repoadmin-new-legend' => 'Crear un depaus novèl',
 	'repoadmin-new-label' => 'Nom del depaus :',
@@ -1236,7 +1254,7 @@ $messages['ru'] = array(
 	'code-comments' => 'Комментарии',
 	'code-desc' => '[[Special:Code|Инструмент проверки кода]] с [[Special:RepoAdmin|поддержкой Subversion]]',
 	'code-no-repo' => 'Отсутствует настроенное хранилище!',
-	'code-notes' => 'просмотр замечаний',
+	'code-notes' => 'замечания',
 	'code-authors' => 'авторы',
 	'code-tags' => 'метки',
 	'code-authors-text' => 'Ниже находится список авторов в порядке свежести вносимых ими изменений (более новые — сверху).',
@@ -1286,8 +1304,19 @@ $messages['ru'] = array(
 	'code-status-resolved' => 'решено',
 	'code-status-ok' => 'готово',
 	'code-status-deferred' => 'отложено',
-	'code-rev-submit' => 'Сохранить изменения',
+	'code-pathsearch-legend' => 'Поиск в этом репозитории конкретных редакций по их адресу',
+	'code-pathsearch-path' => 'Путь:',
+	'code-rev-submit' => 'Сохранить',
+	'code-rev-submit-next' => 'Сохранить и перейти к следующей задаче',
 	'codereview-reply-link' => 'ответить',
+	'codereview-email-subj' => '[$1] [r$2]: Добавлен новый комментарий',
+	'codereview-email-body' => 'Участник "$1" разместил комментарий к редакции r$3.
+
+Полный URL: $2
+
+Комментарий:
+
+$4',
 	'repoadmin' => 'Управление хранилищем программного кода',
 	'repoadmin-new-legend' => 'Создать новое хранилище',
 	'repoadmin-new-label' => 'Название хранилища:',
@@ -1370,6 +1399,10 @@ $messages['sk'] = array(
 	'code-rev-submit' => 'Commit zmien',
 	'code-rev-submit-next' => 'Commit & ďalší nevyriešený',
 	'codereview-reply-link' => 'odpovedať',
+	'codereview-email-subj' => '[$1] [r$2]: Pridaný nový komentár',
+	'codereview-email-body' => 'Používateľ <b>$1</b> poslal <a href="$2">nasledovný komentár</a> k r$3:
+
+$4',
 	'repoadmin' => 'Správa úložiska',
 	'repoadmin-new-legend' => 'Vytvoriť nové úložisko',
 	'repoadmin-new-label' => 'Názov úložiska',

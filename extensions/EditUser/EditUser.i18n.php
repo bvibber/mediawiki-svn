@@ -635,6 +635,8 @@ $messages['oc'] = array(
 	'edituser-dosearch' => 'Recercar',
 	'edituser-nouser' => "L'utilizaire especificat existís pas",
 	'edituser-exempt' => "L'utilizaire especificat pòt pas èsser modificat",
+	'right-edituser' => 'Modifica las preferéncias dels autres utilizaires',
+	'right-edituser-exempt' => 'Pòt pas obténer lors preferéncias modificadas pels autres',
 );
 
 /** Polish (Polski)
