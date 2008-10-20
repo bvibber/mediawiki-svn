@@ -49,11 +49,20 @@ class File_Ogg_Theora extends File_Ogg_Media
         File_Ogg_Media::File_Ogg_Media($streamSerial, $streamData, $filePointer);
         $this->_decodeIdentificationHeader();
         $this->_decodeCommentsHeader();
-      	
+      	$endSec = $this->getSecondsFromGranulePos( $this->_lastGranulePos );
+      	   
         $startSec =  $this->getSecondsFromGranulePos( $this->_firstGranulePos );
-		$endSec = $this->getSecondsFromGranulePos( $this->_lastGranulePos );		
-		$this->_streamLength = $endSec - $startSec;
-		
+        
+        //make sure the offset is worth taking into account oggz_chop related hack
+	    if( $startSec > 1)
+            $this->_streamLength = $endSec - $startSec;
+        else
+            $this->_streamLength = $endSec;
+        				
+        /*print "last gran: $this->_lastGranulePos  =  $endSec \n
+first gran: $this->_firstGranulePos  = $startSec \n
+stream len: $this->_streamLength;";*/
+
         $this->_avgBitrate = $this->_streamLength ? ($this->_streamSize * 8) / $this->_streamLength : 0;
     }
 	function getSecondsFromGranulePos($granulePos){

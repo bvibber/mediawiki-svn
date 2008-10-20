@@ -390,7 +390,9 @@ class OggHandler extends MediaHandler {
 	}
 
 	function setHeaders( $out ) {
-		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer;
+		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgUser, $wgScriptPath,
+				$wgPlayerStatsCollection;
+
 		if ( $out->hasHeadItem( 'OggHandler' ) ) {
 			return;
 		}
@@ -430,7 +432,24 @@ wgOggPlayer.extPathUrl = $encExtPathUrl;
 }
 </style>
 EOT
-		);
+);
+
+		//if collecting stats add relevant code: 
+		if( $wgPlayerStatsCollection ){			
+			//the player stats js file  MUST be on the same server as OggHandler
+			$playerStats_js = htmlspecialchars ( $wgScriptPath ). '/extensions/PlayerStatsGrabber/playerStats.js';
+
+			$jsUserHash = sha1( $wgUser->getName() . $wgProxyKey );
+			$enUserHash = Xml::encodeJsVar( $jsUserHash );			
+						
+			$out->addHeadItem('playerStatsCollection',  <<<EOT
+<script type="text/javascript">
+wgOggPlayer.userHash = $enUserHash;
+</script>	
+<script type="text/javascript" src="$playerStats_js"></script>
+EOT
+);
+		}
 		
 	}
 

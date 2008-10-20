@@ -34,6 +34,9 @@ $wgExtensionCredits['media'][] = array(
 
 /******************* CONFIGURATION STARTS HERE **********************/
 
+//if wgPlayerStats collection is enabled or not 
+$wgPlayerStatsCollection=false;
+
 // Location of the FFmpeg binary
 $wgFFmpegLocation = 'ffmpeg';
 

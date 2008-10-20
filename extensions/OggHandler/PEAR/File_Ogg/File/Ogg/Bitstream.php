@@ -83,11 +83,14 @@ class File_Ogg_Bitstream
         foreach ( $streamData as $packet ) {
             $this->_streamSize += $packet['data_length'];
             # Reject -1 as a granule pos, that means no segment finished in the packet
-            if ( $packet['abs_granule_pos'] != 'ffffffffffffffff' ) {
-                $this->_lastGranulePos = max($this->_lastGranulePos, $packet['abs_granule_pos']);
+            if ( $packet['abs_granule_pos'] != 'ffffffffffffffff' ) {            	
+				$currentPos = $packet['abs_granule_pos'];            	
+                $this->_lastGranulePos = max($this->_lastGranulePos, $currentPos);
                 //set the _firstGranulePos
-                if( $this->_firstGranulePos == 0)
-                	$this->_firstGranulePos =$this->_lastGranulePos;
+                if( hexdec( $this->_firstGranulePos ) === 0){
+                    //print "on stream: $streamSerial set first gran:". $currentPos.": ". hexdec( $currentPos ) ."\n";
+                    $this->_firstGranulePos = $currentPos;
+                }
             }
         }
         $this->_group = $streamData[0]['group'];
