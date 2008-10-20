@@ -277,7 +277,7 @@ EOT
 	#-------------------------------------------------------------------------
 
 	function message( $message, $arg1 = '', $arg2 = '' ) {
-		return wfMsg( 'povwatch_' . $message, $arg1, $arg2 );
+		return wfMsgNoTrans( 'povwatch_' . $message, $arg1, $arg2 );
 	}
 
 	function isSubscribed( User $user ) {
