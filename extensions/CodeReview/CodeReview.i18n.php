@@ -69,6 +69,11 @@ $messages['en'] = array(
 	'code-rev-submit-next' => 'Commit & next unresolved',
 	
 	'codereview-reply-link' => 'reply',
+	
+	'codereview-email-subj' => '[$1] [r$2]: New comment added',
+	'codereview-email-body' => 'User <b>$1</b> posted the <a href="$2">following comment</a> on r$3:
+	
+$4',
 
 	'repoadmin' => 'Repository Administration',
 	'repoadmin-new-legend' => 'Create a new repository',
