@@ -4,7 +4,7 @@ if (!defined('MEDIAWIKI')) die();
 class CodeRevision {
 	static function newFromSvn( CodeRepository $repo, $data ) {
 		$rev = new CodeRevision();
-		$rev->mRepo = $repo->getId();
+		$rev->mRepoId = $repo->getId();
 		$rev->mId = intval($data['rev']);
 		$rev->mAuthor = $data['author'];
 		$rev->mTimestamp = wfTimestamp( TS_MW, strtotime( $data['date'] ) );
@@ -45,7 +45,7 @@ class CodeRevision {
 
 	static function newFromRow( $row ) {
 		$rev = new CodeRevision();
-		$rev->mRepo = intval($row->cr_repo_id);
+		$rev->mRepoId = intval($row->cr_repo_id);
 		$rev->mId = intval($row->cr_id);
 		$rev->mAuthor = $row->cr_author;
 		$rev->mTimestamp = wfTimestamp( TS_MW, $row->cr_timestamp );
@@ -98,7 +98,7 @@ class CodeRevision {
 		$dbw->update( 'code_rev',
 			array( 'cr_status' => $status ),
 			array(
-				'cr_repo_id' => $this->mRepo,
+				'cr_repo_id' => $this->mRepoId,
 				'cr_id' => $this->mId ),
 			__METHOD__ );
 	}
@@ -109,7 +109,7 @@ class CodeRevision {
 		
 		$dbw->insert( 'code_rev',
 			array(
-				'cr_repo_id' => $this->mRepo,
+				'cr_repo_id' => $this->mRepoId,
 				'cr_id' => $this->mId,
 				'cr_author' => $this->mAuthor,
 				'cr_timestamp' => $dbw->timestamp( $this->mTimestamp ),
@@ -127,7 +127,7 @@ class CodeRevision {
 					'cr_message' => $this->mMessage,
 					'cr_path' => $this->mCommonPath ), 
 				array(
-					'cr_repo_id' => $this->mRepo,
+					'cr_repo_id' => $this->mRepoId,
 					'cr_id' => $this->mId ),
 				__METHOD__ );
 		}
@@ -136,7 +136,7 @@ class CodeRevision {
 			$data = array();
 			foreach( $this->mPaths as $path ) {
 				$data[] = array(
-					'cp_repo_id' => $this->mRepo,
+					'cp_repo_id' => $this->mRepoId,
 					'cp_rev_id' => $this->mId,
 					'cp_path' => $path['path'],
 					'cp_action' => $path['action'] );
@@ -155,7 +155,7 @@ class CodeRevision {
 		return $dbr->select(
 			'code_paths',
 			array( 'cp_path', 'cp_action' ),
-			array( 'cp_repo_id' => $this->mRepo, 'cp_rev_id' => $this->mId ),
+			array( 'cp_repo_id' => $this->mRepoId, 'cp_rev_id' => $this->mId ),
 			__METHOD__
 		);
 	}
@@ -194,7 +194,7 @@ class CodeRevision {
 		$ts = wfTimestamp( TS_MW );
 		$sortkey = $this->threadedSortkey( $parent, $ts );
 		return array(
-			'cc_repo_id' => $this->mRepo,
+			'cc_repo_id' => $this->mRepoId,
 			'cc_rev_id' => $this->mId,
 			'cc_text' => $text,
 			'cc_parent' => $parent,
@@ -238,7 +238,7 @@ class CodeRevision {
 				'cc_review',
 				'cc_sortkey' ),
 			array(
-				'cc_repo_id' => $this->mRepo,
+				'cc_repo_id' => $this->mRepoId,
 				'cc_rev_id' => $this->mId ),
 			__METHOD__,
 			array(
@@ -257,7 +257,7 @@ class CodeRevision {
 		$result = $dbr->select( 'code_tags',
 			array( 'ct_tag' ),
 			array(
-				'ct_repo_id' => $this->mRepo,
+				'ct_repo_id' => $this->mRepoId,
 				'ct_rev_id' => $this->mId ),
 			__METHOD__ );
 		
@@ -284,7 +284,7 @@ class CodeRevision {
 		}
 		$result = $dbw->delete( 'code_tags',
 			array( 
-				'ct_repo_id' => $this->mRepo,
+				'ct_repo_id' => $this->mRepoId,
 				'ct_rev_id' => $this->mId,
 				'ct_tag' => $tagsNormal ),
 			__METHOD__ );
@@ -294,7 +294,7 @@ class CodeRevision {
 		$data = array();
 		foreach( $tags as $tag ) {
 			$data[] = array(
-				'ct_repo_id' => $this->mRepo,
+				'ct_repo_id' => $this->mRepoId,
 				'ct_rev_id' => $this->mId,
 				'ct_tag' => $this->normalizeTag( $tag ) );
 		}
@@ -332,7 +332,7 @@ class CodeRevision {
 		$row = $dbr->selectRow( 'code_rev',
 			'cr_id',
 			array(
-				'cr_repo_id' => $this->mRepo,
+				'cr_repo_id' => $this->mRepoId,
 				"cr_id > $encId" ),
 			__METHOD__,
 			array(
@@ -352,7 +352,7 @@ class CodeRevision {
 		$row = $dbr->selectRow( 'code_rev',
 			'cr_id',
 			array(
-				'cr_repo_id' => $this->mRepo,
+				'cr_repo_id' => $this->mRepoId,
 				"cr_id > $encId",
 				'cr_status' => array('new','fixme') ),
 			__METHOD__,
