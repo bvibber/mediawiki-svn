@@ -23,6 +23,26 @@ class CodeRepository {
 			return null;
 		}
 	}
+	
+	public static function newFromId( $id ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$row = $dbw->selectRow(
+			'code_repo',
+			array(
+				'repo_id',
+				'repo_name',
+				'repo_path',
+				'repo_viewvc',
+				'repo_bugzilla' ),
+			array( 'repo_id' => intval($id) ),
+			__METHOD__ );
+
+		if( $row ) {
+			return self::newFromRow( $row );
+		} else {
+			return null;
+		}
+	}
 
 	static function newFromRow( $row ) {
 		$repo = new CodeRepository();
