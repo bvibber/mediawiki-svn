@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'LookupUser' => array( 'مطالعة_مستخدم' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'LookupUser' => array( 'Pogledaj_suradnika' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'LookupUser' => array( 'Benotzer nokucken' ),

@@ -29,6 +29,11 @@ $aliases['fa'] = array(
 	'Form' => array( 'فرم' ),
 );
 
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'Form' => array( 'טופס' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Form' => array( 'Formulir' ),

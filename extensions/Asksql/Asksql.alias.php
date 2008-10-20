@@ -67,3 +67,8 @@ $aliases['no'] = array(
 	'Asksql' => array( 'SQL-spørring' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Asksql' => array( 'Requèsta SQL', 'Requesta SQL', 'RequèstaSQL', 'RequestaSQL' ),
+);
+

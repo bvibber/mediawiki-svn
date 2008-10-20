@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'CloseWiki' => array( 'إغلاق_الويكى' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'CloseWiki' => array( 'Wiki schließen' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'CloseWiki' => array( 'Wiki zoumaachen' ),

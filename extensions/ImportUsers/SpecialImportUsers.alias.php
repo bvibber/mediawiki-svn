@@ -114,6 +114,11 @@ $aliases['no'] = array(
 	'ImportUsers' => array( 'Importer brukere' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'ImportUsers' => array( 'ImportarUtilizaire' ),
+);
+
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'ImportUsers' => array( 'کارونکي واردول' ),

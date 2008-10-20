@@ -69,6 +69,11 @@ $aliases['no'] = array(
 	'WhatIsMyIP' => array( 'Min IP' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'WhatIsMyIP' => array( 'Quina es mon IP', 'QuinaEsMonIP' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'WhatIsMyIP' => array( 'IPjaIme' ),

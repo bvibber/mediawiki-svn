@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'PovWatch' => array( 'مراقبة_وجهة_النظر' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'PovWatch' => array( 'Predbilježeno_praćenje' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'PovWatch' => array( 'Staandpuntsvolglieste' ),

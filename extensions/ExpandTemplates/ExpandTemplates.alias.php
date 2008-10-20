@@ -102,6 +102,11 @@ $aliases['lb'] = array(
 	'ExpandTemplates' => array( 'Schablounen erweideren' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'ExpandTemplates' => array( 'ПрошириШаблони' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'ExpandTemplates' => array( 'Kembangkan_templat' ),

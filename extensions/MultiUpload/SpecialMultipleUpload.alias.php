@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'MultiUpload' => array( 'رفع_متعدد' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'MultiUpload' => array( 'Višestruko_postavljanje' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'MultiUpload' => array( 'Multi unggah' ),

@@ -28,10 +28,25 @@ $aliases['arz'] = array(
 	'Watchers' => array( 'مراقبون' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'Watchers' => array( 'پی‌گیری‌کنندگان' ),
+);
+
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'Watchers' => array( 'עוקבים' ),
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $aliases['nl'] = array(
 	'Watchers' => array( 'Volgers' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Watchers' => array( 'Overvåkere' ),
 );
 

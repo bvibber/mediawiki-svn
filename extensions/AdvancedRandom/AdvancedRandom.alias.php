@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'AdvancedRandom' => array( 'عشوائى_متقدم' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'AdvancedRandom' => array( 'تصادفی_پیشرفته' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'AdvancedRandom' => array( 'Ehdollinen satunnaissivu' ),

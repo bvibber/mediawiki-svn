@@ -39,6 +39,16 @@ $aliases['fr'] = array(
 	'WhosOnline' => array( 'Qui est en ligne', 'QuiEstEnLigne' ),
 );
 
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'WhosOnline' => array( 'מי_מחובר' ),
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'WhosOnline' => array( 'អ្នកកំពុងនៅអនឡាញ' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WhosOnline' => array( 'Wien ass online' ),
@@ -57,5 +67,10 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'WhosOnline' => array( 'Hvem er pålogget' ),
+);
+
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'WhosOnline' => array( 'Qui es en linha', 'QuiEsEnLinha' ),
 );
 

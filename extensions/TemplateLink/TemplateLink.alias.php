@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'TemplateLink' => array( 'وصلة_قالب' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'TemplateLink' => array( 'پیوند_الگو' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'TemplateLink' => array( 'Schabloune Link' ),

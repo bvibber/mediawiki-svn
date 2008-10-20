@@ -42,6 +42,11 @@ $aliases['fi'] = array(
 	'Badimages' => array( 'Arveluttavat kuvat' ),
 );
 
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'Badimages' => array( 'תמונות_פגומות' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'Badimages' => array( 'Hibás képek' ),
@@ -55,6 +60,11 @@ $aliases['id'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Badimages' => array( 'Net gewënschte Biller' ),
+);
+
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'Badimages' => array( 'ЛошаСлика', 'ЛошиСлики' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

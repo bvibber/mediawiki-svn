@@ -70,3 +70,8 @@ $aliases['no'] = array(
 	'Eval' => array( 'Eval' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Eval' => array( 'Evaluar' ),
+);
+

@@ -29,9 +29,19 @@ $aliases['fi'] = array(
 	'ShowProcesslist' => array( 'Prosessilistaus' ),
 );
 
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'ShowProcesslist' => array( 'הצגת_רשימת_תהליכים' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'ShowProcesslist' => array( 'Daftar proses' ),
+);
+
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'ShowProcesslist' => array( "Weis d'Lëscht vun den Prozessen" ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

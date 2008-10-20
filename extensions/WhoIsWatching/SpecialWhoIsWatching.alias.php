@@ -25,6 +25,21 @@ $aliases['de'] = array(
 	'WhoIsWatching' => array( 'Wer beobachtet' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'WhoIsWatching' => array( 'چه_کسی_پی‌گیری_می‌کند' ),
+);
+
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'WhoIsWatching' => array( 'מי_עוקב' ),
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'WhoIsWatching' => array( 'អ្នកកំពុងតាមដាន' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WhoIsWatching' => array( 'Wien iwwerwaacht' ),
@@ -43,5 +58,10 @@ $aliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhoIsWatching' => array( 'WieVolgt' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'WhoIsWatching' => array( 'Hvem overvåker' ),
 );
 

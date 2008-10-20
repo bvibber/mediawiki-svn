@@ -54,3 +54,8 @@ $aliases['no'] = array(
 	'InspectCache' => array( 'Inspiser mellomlager' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'InspectCache' => array( 'InspectarAmagatal' ),
+);
+

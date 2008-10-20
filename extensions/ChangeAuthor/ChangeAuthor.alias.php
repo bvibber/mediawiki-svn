@@ -42,6 +42,11 @@ $aliases['fr'] = array(
 	'ChangeAuthor' => array( 'Changer auteur', 'ChangerAuteur' ),
 );
 
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'ChangeAuthor' => array( 'שנה_מחבר' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'ChangeAuthor' => array( 'Promjeni_Autora' ),
@@ -50,6 +55,11 @@ $aliases['hr'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ChangeAuthor' => array( 'Szerző megváltoztatása' ),
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'ChangeAuthor' => array( 'ផ្លាស់ប្ដូអ្នកនិព្វន្ធ' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
@@ -75,6 +85,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'ChangeAuthor' => array( 'Endre forfatter' ),
+);
+
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'ChangeAuthor' => array( 'Cambiar autor', 'CambiarAutor' ),
 );
 
 /** Albanian (Shqip) */

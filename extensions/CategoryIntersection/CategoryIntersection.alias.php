@@ -107,6 +107,11 @@ $aliases['lb'] = array(
 	'CategoryIntersection' => array( 'Iwwerschneide vu Kategorien' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'CategoryIntersection' => array( 'ПресекНаКатегории' ),
+);
+
 /** Marathi (मराठी) */
 $aliases['mr'] = array(
 	'CategoryIntersection' => array( 'वर्ग चौक' ),

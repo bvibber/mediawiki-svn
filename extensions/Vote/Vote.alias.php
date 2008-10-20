@@ -29,6 +29,11 @@ $aliases['as'] = array(
 	'Vote' => array( 'ভোট' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'Vote' => array( 'رای_دادن' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'Vote' => array( 'Äänestys' ),
@@ -57,6 +62,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'Vote' => array( 'Avstemning' ),
+);
+
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Vote' => array( 'Votar' ),
 );
 
 /** Albanian (Shqip) */

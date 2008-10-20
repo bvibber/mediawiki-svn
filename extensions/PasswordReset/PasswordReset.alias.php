@@ -36,6 +36,17 @@ $aliases['de'] = array(
 	'Disabledusers' => array( 'Deaktivierte Benutzer' ),
 );
 
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'PasswordReset' => array( 'איפוס_סיסמה' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'PasswordReset' => array( 'Ponovno_postavi_lozinku' ),
+	'Disabledusers' => array( 'Onesposobljeni_suradnici' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PasswordReset' => array( 'Passwuert zrécksetzen' ),

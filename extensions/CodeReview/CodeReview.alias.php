@@ -31,9 +31,29 @@ $aliases['arz'] = array(
 	'RepoAdmin' => array( 'إدارة_المستودع' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'Code' => array( 'កូដ' ),
+);
+
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'Code' => array( 'Code' ),
+);
+
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'Code' => array( 'ПрограмскиКод' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Code' => array( 'Code' ),
 	'RepoAdmin' => array( 'Repobeheer' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Code' => array( 'Kode' ),
 );
 

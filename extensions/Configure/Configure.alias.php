@@ -170,6 +170,12 @@ $aliases['no'] = array(
 	'ViewConfig' => array( 'Vis konfigurasjon' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Configure' => array( 'Configurar' ),
+	'ViewConfig' => array( 'Veire la configuracion', 'VeireConfiguracion' ),
+);
+
 /** Portuguese (Português) */
 $aliases['pt'] = array(
 	'Configure' => array( 'Configurar' ),

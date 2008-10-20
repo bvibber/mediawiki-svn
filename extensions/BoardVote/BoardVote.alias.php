@@ -45,6 +45,11 @@ $aliases['el'] = array(
 	'BoardVote' => array( 'ΕκλογέςΣυμβουλίου' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'BoardVote' => array( 'رای_به_هیئت_امنا' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
@@ -65,6 +70,11 @@ $aliases['id'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'BoardVote' => array( 'Wiel fir de Verwaltungsrot' ),
+);
+
+/** Malay (Bahasa Melayu) */
+$aliases['ms'] = array(
+	'BoardVote' => array( 'Undi_Lembaga' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

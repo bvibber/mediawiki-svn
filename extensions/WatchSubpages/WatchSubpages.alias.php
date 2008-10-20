@@ -24,6 +24,21 @@ $aliases['arz'] = array(
 	'WatchSubpages' => array( 'مراقبة_الصفحات_الفرعية' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'WatchSubpages' => array( 'پی‌گیری_زیرصفحه‌ها' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'WatchSubpages' => array( 'Prati_podstranice' ),
+);
+
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'WatchSubpages' => array( 'Ënnersäiten iwwerwaachen' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'WatchSubpages' => array( "Subpagina's_op_volglieste" ),

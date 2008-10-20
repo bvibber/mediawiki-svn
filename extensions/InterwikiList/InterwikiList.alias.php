@@ -35,12 +35,22 @@ $aliases['de'] = array(
 
 /** Persian (فارسی) */
 $aliases['fa'] = array(
-	'InterwikiList' => array( 'لیست_میانویکی' ),
+	'InterwikiList' => array( 'فهرست_میان‌ویکی' ),
 );
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'InterwikiList' => array( 'Interwikilista' ),
+);
+
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'InterwikiList' => array( 'רשימת_בינוויקי' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'InterwikiList' => array( 'Interwiki_popis' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'StalePages' => array( 'صفحات_ميتة' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'StalePages' => array( 'صفحه‌های_کهنه' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'StalePages' => array( "Verouwerde_pagina's" ),

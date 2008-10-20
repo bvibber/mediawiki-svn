@@ -77,6 +77,11 @@ $aliases['no'] = array(
 	'DeleteBatch' => array( 'Slett en serie sider' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'DeleteBatch' => array( 'Supression en seria', 'SupressionEnSeria' ),
+);
+
 /** Portuguese (Português) */
 $aliases['pt'] = array(
 	'DeleteBatch' => array( 'Apagar em massa' ),

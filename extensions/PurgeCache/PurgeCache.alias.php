@@ -59,3 +59,8 @@ $aliases['no'] = array(
 	'PurgeCache' => array( 'Oppdater mellomlager' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'PurgeCache' => array( "Purgar l'amagatal", 'Purgar amagatal', 'PurgarAmagatal' ),
+);
+

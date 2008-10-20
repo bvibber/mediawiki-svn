@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'NewsChannel' => array( 'قناة_أخبار' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'NewsChannel' => array( 'کانال_خبری' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'NewsChannel' => array( 'Uutiskanava' ),

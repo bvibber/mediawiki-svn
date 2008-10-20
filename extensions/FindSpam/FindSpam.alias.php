@@ -32,6 +32,11 @@ $aliases['lb'] = array(
 	'FindSpam' => array( 'Spam fannen' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'FindSpam' => array( 'НајдиСпем' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'FindSpam' => array( 'Spam_vienen' ),

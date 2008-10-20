@@ -37,6 +37,11 @@ $aliases['fr'] = array(
 	'Contributors' => array( 'Contributeurs' ),
 );
 
+/** Hebrew (עברית) */
+$aliases['he'] = array(
+	'Contributors' => array( 'תורמים' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'Contributors' => array( 'Doprinositelji' ),
@@ -57,6 +62,11 @@ $aliases['lb'] = array(
 	'Contributors' => array( 'Auteuren' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'Contributors' => array( 'Придонесувачи' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Contributors' => array( 'Biedragers' ),
@@ -70,5 +80,10 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'Contributors' => array( 'Bidragsytere' ),
+);
+
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Contributors' => array( 'Contributors' ),
 );
 

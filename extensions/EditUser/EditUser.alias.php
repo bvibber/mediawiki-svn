@@ -92,6 +92,11 @@ $aliases['no'] = array(
 	'EditUser' => array( 'Rediger bruker' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'EditUser' => array( 'EditarUtilizaire', 'Editar l’utilizaire' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'EditUser' => array( 'Redigera användare' ),

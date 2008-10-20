@@ -30,6 +30,7 @@ $aliases['arz'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'SignDocument' => array( 'Dokument ënnerschreiwen' ),
+	'CreateSignDocument' => array( 'Dokument ënnerschreiwen erméiglechen' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

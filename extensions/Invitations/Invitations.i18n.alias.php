@@ -33,6 +33,11 @@ $aliases['de'] = array(
 	'Invitations' => array( 'Einladungen' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'Invitations' => array( 'دعوت‌ها' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'Invitations' => array( 'Kutsut' ),

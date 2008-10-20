@@ -42,6 +42,11 @@ $aliases['lb'] = array(
 	'Call' => array( 'Opruff' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'Call' => array( 'Повик' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Call' => array( 'Anreupen' ),
@@ -50,5 +55,10 @@ $aliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Call' => array( 'Aanroepen' ),
+);
+
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Call' => array( 'Ampèl', 'Ampèls' ),
 );
 

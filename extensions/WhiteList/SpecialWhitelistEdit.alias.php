@@ -29,7 +29,8 @@ $aliases['arz'] = array(
 
 /** Persian (فارسی) */
 $aliases['fa'] = array(
-	'WhiteList' => array( 'لیست_سفید' ),
+	'WhiteList' => array( 'فهرست_سفید' ),
+	'WhitelistEdit' => array( 'ویرایش_فهرست_سفید' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

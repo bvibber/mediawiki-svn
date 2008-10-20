@@ -39,6 +39,12 @@ $aliases['de'] = array(
 	'Oversight' => array( 'Oversight-Logbuch' ),
 );
 
+/** Persian (فارسی) */
+$aliases['fa'] = array(
+	'HideRevision' => array( 'پنهان_کردن_نسخه' ),
+	'Oversight' => array( 'نظارت' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'HideRevision' => array( 'Piilota versio' ),
@@ -91,6 +97,12 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'HideRevision' => array( 'Skjul revisjon' ),
+);
+
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'HideRevision' => array( 'Amagar revision', 'AmagarRevision' ),
+	'Oversight' => array( 'Supervisar' ),
 );
 
 /** Swedish (Svenska) */
