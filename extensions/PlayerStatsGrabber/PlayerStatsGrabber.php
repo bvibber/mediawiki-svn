@@ -25,10 +25,16 @@ $psLogEveryPlayRequestPerUser = true;
 // allow users to submit the suvey more than once
 $psAllowMultipleSurveysPerUser = true;
 
+
+//a central DB for the ogg Hanndler:
+$wgPlayerStatsDB='';
+//$psCentralDB = wfGetDB( DB_MASTER, array(), $wgPlayerStatsDB );
+
 // embed code and "weight" (ie weight of 3 is 3x more likely than weight of 1)  
 // flash embed code (the raw html that gets outputted to the browsers))
 // embed key gets recorded to the database to identify what player was sent to the client in the survey 
 // (you need to add it as an ENUM option) 
+$flowFLVurl = $psScriptPath .'sample_media/sample_barney.flv';
 $flowEmbedCode = <<<EOT
 <script type="text/javascript" src="{$psScriptPath}/flow_player/flashembed.min.js"></script>
 <script type="text/javascript">
@@ -46,7 +52,7 @@ $flowEmbedCode = <<<EOT
 			autoBuffering: true,
 			controlBarBackgroundColor:'0x2e8860',
 			initialScale: 'scale',
-			videoFile: '{$psScriptPath}/sample_media/sample_barney.flv'
+			videoFile: '{$flowFLVurl}'
 		}} 
 	);
 </script>
@@ -59,6 +65,7 @@ $psEmbedAry = array(
 	array( 'embed_key' => 'youtube',
 		   'name' => 'Sample Youtube Embed',
 		   'weight' => 1,
+		   'url'	=> 'http://www.youtube.com/v/Ga1kC6oGT9A',
 		   'html_code' => '<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/Ga1kC6oGT9A&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/Ga1kC6oGT9A&hl=en&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object>'
 	),
 	array( 'embed_key' => 'oggHandler',
@@ -69,6 +76,7 @@ $psEmbedAry = array(
 	array( 'embed_key' => 'flowplayer',
 		  'name' => 'Sample oggPlay Embed',
 		  'weight' => 1,
+		  'url'	=> $flowFLVurl,
 		  'html_code' => $flowEmbedCode
 	)
 );
@@ -99,9 +107,9 @@ $wgExtensionCredits['media'][] = array(
 
 /*
  * does a player stats request.. returns the "db key"
- *  (lets people fill out survay after playing clip) 
+ *  (lets people fill out survey after playing clip) 
  *  or 
- *  (ties survay page data to detection) 
+ *  (ties survey page data to detection) 
  */
 function mw_push_player_stats() {
 	return SpecialPlayerStatsGrabber::do_submit_player_log();

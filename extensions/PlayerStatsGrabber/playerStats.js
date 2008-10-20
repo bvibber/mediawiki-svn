@@ -2,9 +2,6 @@
 // (else provide the absolute url to index.php of the wiki you are recording stats to)
 var global_req_cb = new Array();//the global request callback array
 
-/*parseUri class:*/
-var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
-
 //extened version of OggHandler
 wgExtendedOggPlayerStats = {
 	videoUrl:false,
@@ -18,14 +15,15 @@ wgExtendedOggPlayerStats = {
 		if (!this.detectionDone) {
 			this.detect();
 		}
-
-		//build our request url:
-		if( wgServerOverride!="" ){
+		
+		//build our request url
+		/*if( wgServerOverride!="" ){
 			url= wgServerOverride;
 		}else{
 			url = wgServer +((wgScript == null) ? (wgScriptPath + "/index.php") : wgScript);
 		}
 		url += "?action=ajax&rs=mw_push_player_stats";
+		*/
 
 		//detect windows media player ( direct show filters could be installed)
 		if ( navigator.mimeTypes && navigator.mimeTypes["video/x-ms-wm"]     &&
@@ -37,47 +35,46 @@ wgExtendedOggPlayerStats = {
 		//detect flash support
 		if( FlashDetect.installed )
 			this.clientSupports['flash']=true;
-
+		var post_vars='';
 		var j=0;
 		for(var i in this.clientSupports){
-			url+='&cs[]='+encodeURIComponent(i);
+			post_vars+='&cs[]='+encodeURIComponent(i);
 			j++;
 		}
 
 		//get the flash version:
-		url+='&fv='+ encodeURIComponent( FlashDetect.raw );
+		post_vars+='&fv='+ encodeURIComponent( FlashDetect.raw );
 
 
 		//detect java version if possible: (ie not IE with default security)
 		if( javaDetect.version ){
-			url+= '&jv='+ encodeURIComponent ( javaDetect.version );
+			post_vars+= '&jv='+ encodeURIComponent ( javaDetect.version );
 		}
 
 		//add some additional params seperated out to enum keys:
-		url+= '&b_user_agent=' +encodeURIComponent( navigator.userAgent );
-		url+= '&b_name=' + encodeURIComponent( BrowserDetect.browser ) ;
-		url+= '&b_version=' + encodeURIComponent( BrowserDetect.version );
-		url+= '&b_os=' + encodeURIComponent( BrowserDetect.OS ) ;
+		post_vars+= '&b_user_agent=' +encodeURIComponent( navigator.userAgent );		
 		
 		if(this.videoUrl)
-			url+= '&purl='+ encodeURIComponent( this.videoUrl ) ;
+			post_vars+= '&purl='+ encodeURIComponent( this.videoUrl ) ;
 		//and finaly add the user hash:
-		url+='&uh=' + encodeURIComponent ( wgOggPlayer.userHash );
+		post_vars+='&uh=' + encodeURIComponent ( wgOggPlayer.userHash );
 
 		//now send out our stats update (run via javascript include to support remote servers:
-		do_request ( url, function( responseObj ){
-			wg_ran_stats( responseObj );
-		});
+		//force logger on same server using ajax call:
+		mv_sajax_do_call('mw_push_player_stats', '', mv_proc_result, post_vars);
+		
+		//do_request ( url, function( responseObj ){
+		//	wg_ran_stats( responseObj );
+		//});
 	}
 }
-
 //extend the OggHandler object for stats collection
-if(typeof wgOggPlayer.doStats =='undefined'){
+if( typeof wgOggPlayer.doStats =='undefined' ){
 	for(var i in wgExtendedOggPlayerStats){
-		if(typeof wgOggPlayer[i]!='undefined'){
+		if(typeof wgOggPlayer[ i ]!='undefined'){
 			wgOggPlayer['parent_'+i]= wgOggPlayer[i];		
 		}
-		wgOggPlayer[i]=wgExtendedOggPlayerStats[i];	
+		wgOggPlayer[ i ]=wgExtendedOggPlayerStats[i];	
 	}
 }
 function wg_ran_stats(responseObj){
@@ -91,6 +88,104 @@ function wg_ran_stats(responseObj){
 		inputElm.setAttribute( 'type', 'hidden');		
 		formElm.appendChild(inputElm);		
 	}
+}
+function mv_proc_result( request ){
+	if ( request.status != 200 ) {
+		alert("Error: " + request.status + " " + request.statusText + ": " + request.responseText);
+		return;
+	}
+	//the resutl is just the insert id:
+	var result = request.responseText;
+	wg_ran_stats({'id':result});
+}
+//proposed modifications to sajax_do_call:
+function mv_sajax_do_call(func_name, args, target, post_vars) {
+	var i, x, n;
+	var uri;
+	var post_data;
+	sajax_request_type="POST";
+	
+	uri = wgServer +
+		((wgServer == null) ? (wgScriptPath + "/index.php") : wgScript) +
+		"?action=ajax";
+	if (sajax_request_type == "GET") {
+		if (uri.indexOf("?") == -1)
+			uri = uri + "?rs=" + encodeURIComponent(func_name);
+		else
+			uri = uri + "&rs=" + encodeURIComponent(func_name);
+		for (i = 0; i < args.length; i++)
+			uri = uri + "&rsargs[]=" + encodeURIComponent(args[i]);
+		//uri = uri + "&rsrnd=" + new Date().getTime();
+		post_data = null;
+	} else {
+		post_data = "rs=" + encodeURIComponent(func_name);
+		for (var i = 0; i < args.length; i++)
+			post_data = post_data + "&rsargs[]=" + encodeURIComponent(args[i]);		
+	}
+	x = sajax_init_object();
+	if (!x) {
+		alert("AJAX not supported");
+		return false;
+	}
+
+	try {
+		x.open(sajax_request_type, uri, true);
+	} catch (e) {
+		if (window.location.hostname == "localhost") {
+			alert("Your browser blocks XMLHttpRequest to 'localhost', try using a real hostname for development/testing.");
+		}
+		throw e;
+	}
+	if (sajax_request_type == "POST") {
+		x.setRequestHeader("Method", "POST " + uri + " HTTP/1.1");
+		x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	}
+	x.setRequestHeader("Pragma", "cache=yes");
+	x.setRequestHeader("Cache-Control", "no-transform");
+	x.onreadystatechange = function() {
+		if (x.readyState != 4)
+			return;
+
+		sajax_debug("received (" + x.status + " " + x.statusText + ") " + x.responseText);
+
+		//if (x.status != 200)
+		//	alert("Error: " + x.status + " " + x.statusText + ": " + x.responseText);
+		//else
+
+		if ( typeof( target ) == 'function' ) {
+			target( x );
+		}
+		else if ( typeof( target ) == 'object' ) {
+			if ( target.tagName == 'INPUT' ) {
+				if (x.status == 200) target.value= x.responseText;
+				//else alert("Error: " + x.status + " " + x.statusText + " (" + x.responseText + ")");
+			}
+			else {
+				if (x.status == 200) target.innerHTML = x.responseText;
+				else target.innerHTML= "<div class='error'>Error: " + x.status + " " + x.statusText + " (" + x.responseText + ")</div>";
+			}
+		}
+		else {
+			alert("bad target for sajax_do_call: not a function or object: " + target);
+		}
+
+		return;
+	}
+	//add payload to post data 	
+	if(typeof post_vars=='object' ){
+		for(var i in post_vars){
+			if(i!='rs' && i!='rsargs')
+				post_data+= '&'+ i +'='+ encodeURIComponent(post_vars[i]);
+		}
+	}else if(typeof post_vars=='string'){
+		post_data+='&'+post_vars;
+	}
+	//js_log(func_name + " uri = " + uri + " / post = " + post_data);
+	x.send(post_data);
+	sajax_debug(func_name + " waiting..");
+	delete x;
+
+	return true;
 }
 /*
  * a few utily functions
@@ -136,7 +231,7 @@ function js_log(string){
    return false;
 }
 
-//checks for java support records java version if possible
+//records java version if possible (without full applet based check)
 var javaDetect = {
 	javaEnabled: false,
 	version: false,
@@ -173,120 +268,118 @@ var javaDetect = {
 }
 javaDetect.init();
 
-//http://www.featureblend.com/license.txt
-var FlashDetect=new function(){var self=this;self.installed=false;self.raw="";self.major=-1;self.minor=-1;self.revision=-1;self.revisionStr="";var activeXDetectRules=[{"name":"ShockwaveFlash.ShockwaveFlash.7","version":function(obj){return getActiveXVersion(obj);}},{"name":"ShockwaveFlash.ShockwaveFlash.6","version":function(obj){var version="6,0,21";try{obj.AllowScriptAccess="always";version=getActiveXVersion(obj);}catch(err){}
-return version;}},{"name":"ShockwaveFlash.ShockwaveFlash","version":function(obj){return getActiveXVersion(obj);}}];var getActiveXVersion=function(activeXObj){var version=-1;try{version=activeXObj.GetVariable("$version");}catch(err){}
-return version;};var getActiveXObject=function(name){var obj=-1;try{obj=new ActiveXObject(name);}catch(err){}
-return obj;};var parseActiveXVersion=function(str){var versionArray=str.split(",");return{"raw":str,"major":parseInt(versionArray[0].split(" ")[1],10),"minor":parseInt(versionArray[1],10),"revision":parseInt(versionArray[2],10),"revisionStr":versionArray[2]};};var parseStandardVersion=function(str){var descParts=str.split(/ +/);var majorMinor=descParts[2].split(/\./);var revisionStr=descParts[3];return{"raw":str,"major":parseInt(majorMinor[0],10),"minor":parseInt(majorMinor[1],10),"revisionStr":revisionStr,"revision":parseRevisionStrToInt(revisionStr)};};var parseRevisionStrToInt=function(str){return parseInt(str.replace(/[a-zA-Z]/g,""),10)||self.revision;};self.majorAtLeast=function(version){return self.major>=version;};self.FlashDetect=function(){if(navigator.plugins&&navigator.plugins.length>0){var type='application/x-shockwave-flash';var mimeTypes=navigator.mimeTypes;if(mimeTypes&&mimeTypes[type]&&mimeTypes[type].enabledPlugin&&mimeTypes[type].enabledPlugin.description){var version=mimeTypes[type].enabledPlugin.description;var versionObj=parseStandardVersion(version);self.raw=versionObj.raw;self.major=versionObj.major;self.minor=versionObj.minor;self.revisionStr=versionObj.revisionStr;self.revision=versionObj.revision;self.installed=true;}}else if(navigator.appVersion.indexOf("Mac")==-1&&window.execScript){var version=-1;for(var i=0;i<activeXDetectRules.length&&version==-1;i++){var obj=getActiveXObject(activeXDetectRules[i].name);if(typeof obj=="object"){self.installed=true;version=activeXDetectRules[i].version(obj);if(version!=-1){var versionObj=parseActiveXVersion(version);self.raw=versionObj.raw;self.major=versionObj.major;self.minor=versionObj.minor;self.revision=versionObj.revision;self.revisionStr=versionObj.revisionStr;}}}}}();};FlashDetect.release="1.0.3";
-
-//http://www.quirksmode.org/js/detect.html
-var BrowserDetect = {
-	init: function () {
-		this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
-		this.version = this.searchVersion(navigator.userAgent)
-			|| this.searchVersion(navigator.appVersion)
-			|| "an unknown version";
-		this.OS = this.searchString(this.dataOS) || "an unknown OS";
-	},
-	searchString: function (data) {
-		for (var i=0;i<data.length;i++)	{
-			var dataString = data[i].string;
-			var dataProp = data[i].prop;
-			this.versionSearchString = data[i].versionSearch || data[i].identity;
-			if (dataString) {
-				if (dataString.indexOf(data[i].subString) != -1)
-					return data[i].identity;
+/*
+Copyright (c) Copyright (c) 2007, Carl S. Yestrau All rights reserved.
+Code licensed under the BSD License: http://www.featureblend.com/license.txt
+Version: 1.0.3
+*/
+var FlashDetect = new function(){
+	var self = this;
+	self.installed = false;
+	self.raw = "";
+	self.major = -1;
+	self.minor = -1;
+	self.revision = -1;
+	self.revisionStr = "";
+	var activeXDetectRules = [
+		{
+			"name":"ShockwaveFlash.ShockwaveFlash.7",
+			"version":function(obj){
+				return getActiveXVersion(obj);
 			}
-			else if (dataProp)
-				return data[i].identity;
+		},
+		{
+			"name":"ShockwaveFlash.ShockwaveFlash.6",
+			"version":function(obj){
+				var version = "6,0,21";
+				try{
+					obj.AllowScriptAccess = "always";
+					version = getActiveXVersion(obj);
+				}catch(err){}
+				return version;
+			}
+		},
+		{
+			"name":"ShockwaveFlash.ShockwaveFlash",
+			"version":function(obj){
+				return getActiveXVersion(obj);
+			}
 		}
-	},
-	searchVersion: function (dataString) {
-		var index = dataString.indexOf(this.versionSearchString);
-		if (index == -1) return;
-		return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
-	},
-	dataBrowser: [
-		{
-			string: navigator.userAgent,
-			subString: "Chrome",
-			identity: "Chrome"
-		},
-		{ 	string: navigator.userAgent,
-			subString: "OmniWeb",
-			versionSearch: "OmniWeb/",
-			identity: "OmniWeb"
-		},
-		{
-			string: navigator.vendor,
-			subString: "Apple",
-			identity: "Safari"
-		},
-		{
-			prop: window.opera,
-			identity: "Opera"
-		},
-		{
-			string: navigator.vendor,
-			subString: "iCab",
-			identity: "iCab"
-		},
-		{
-			string: navigator.vendor,
-			subString: "KDE",
-			identity: "Konqueror"
-		},
-		{
-			string: navigator.userAgent,
-			subString: "Firefox",
-			identity: "Firefox"
-		},
-		{
-			string: navigator.vendor,
-			subString: "Camino",
-			identity: "Camino"
-		},
-		{		// for newer Netscapes (6+)
-			string: navigator.userAgent,
-			subString: "Netscape",
-			identity: "Netscape"
-		},
-		{
-			string: navigator.userAgent,
-			subString: "MSIE",
-			identity: "Explorer",
-			versionSearch: "MSIE"
-		},
-		{
-			string: navigator.userAgent,
-			subString: "Gecko",
-			identity: "Mozilla",
-			versionSearch: "rv"
-		},
-		{ 		// for older Netscapes (4-)
-			string: navigator.userAgent,
-			subString: "Mozilla",
-			identity: "Netscape",
-			versionSearch: "Mozilla"
+	];
+	var getActiveXVersion = function(activeXObj){
+		var version = -1;
+		try{
+			version = activeXObj.GetVariable("$version");
+		}catch(err){}
+		return version;
+	};
+	var getActiveXObject = function(name){
+		var obj = -1;
+		try{
+			obj = new ActiveXObject(name);
+		}catch(err){}
+		return obj;
+	};
+	var parseActiveXVersion = function(str){
+		var versionArray = str.split(",");//replace with regex
+		return {
+			"raw":str,
+			"major":parseInt(versionArray[0].split(" ")[1], 10),
+			"minor":parseInt(versionArray[1], 10),
+			"revision":parseInt(versionArray[2], 10),
+			"revisionStr":versionArray[2]
+		};
+	};
+	var parseStandardVersion = function(str){
+		var descParts = str.split(/ +/);
+		var majorMinor = descParts[2].split(/\./);
+		var revisionStr = descParts[3];
+		return {
+			"raw":str,
+			"major":parseInt(majorMinor[0], 10),
+			"minor":parseInt(majorMinor[1], 10), 
+			"revisionStr":revisionStr,
+			"revision":parseRevisionStrToInt(revisionStr)
+		};
+	};
+	var parseRevisionStrToInt = function(str){
+		return parseInt(str.replace(/[a-zA-Z]/g, ""), 10) || self.revision;
+	};
+	self.majorAtLeast = function(version){
+		return self.major >= version;
+	};
+	self.FlashDetect = function(){
+		if(navigator.plugins && navigator.plugins.length>0){
+			var type = 'application/x-shockwave-flash';
+			var mimeTypes = navigator.mimeTypes;
+			if(mimeTypes && mimeTypes[type] && mimeTypes[type].enabledPlugin && mimeTypes[type].enabledPlugin.description){
+				var version = mimeTypes[type].enabledPlugin.description;
+				var versionObj = parseStandardVersion(version);
+				self.raw = versionObj.raw;
+				self.major = versionObj.major;
+				self.minor = versionObj.minor; 
+				self.revisionStr = versionObj.revisionStr;
+				self.revision = versionObj.revision;
+				self.installed = true;
+			}
+		}else if(navigator.appVersion.indexOf("Mac")==-1 && window.execScript){
+			var version = -1;
+			for(var i=0; i<activeXDetectRules.length && version==-1; i++){
+				var obj = getActiveXObject(activeXDetectRules[i].name);
+				if(typeof obj == "object"){
+					self.installed = true;
+					version = activeXDetectRules[i].version(obj);
+					if(version!=-1){
+						var versionObj = parseActiveXVersion(version);
+						self.raw = versionObj.raw;
+						self.major = versionObj.major;
+						self.minor = versionObj.minor; 
+						self.revision = versionObj.revision;
+						self.revisionStr = versionObj.revisionStr;
+					}
+				}
+			}
 		}
-	],
-	dataOS : [
-		{
-			string: navigator.platform,
-			subString: "Win",
-			identity: "Windows"
-		},
-		{
-			string: navigator.platform,
-			subString: "Mac",
-			identity: "Mac"
-		},
-		{
-			string: navigator.platform,
-			subString: "Linux",
-			identity: "Linux"
-		}
-	]
-
+	}();
 };
-BrowserDetect.init();
+FlashDetect.release = "1.0.3";
