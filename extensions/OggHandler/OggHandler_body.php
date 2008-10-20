@@ -238,36 +238,23 @@ class OggHandler extends MediaHandler {
 			# No audio, one frame
 			' -f mjpeg -an -vframes 1 ' .
 			wfEscapeShellArg( $dstPath ) . ' 2>&1';
-				
+
 		$retval = 0;
 		$returnText = wfShellExec( $cmd, $retval );
 
 		if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {
-			#re-attempt encode command on frame time 1 and with mapping (special case for chopped oggs)			
-			$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . 
-			' -map 0:1 '.
-			' -ss 1 ' .
-			' -i ' . wfEscapeShellArg( $file->getPath() ) . 
-			' -f mjpeg -an -vframes 1 ' .
-			wfEscapeShellArg( $dstPath ) . ' 2>&1';
-				
-			$retval = 0;
-			$returnText = wfShellExec( $cmd, $retval );
-			//if still bad return error: 
-			if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {						
-				// Filter nonsense
-				$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
-				if ( substr( $lines[0], 0, 6 ) == 'FFmpeg' ) {
-					for ( $i = 1; $i < count( $lines ); $i++ ) {
-						if ( substr( $lines[$i], 0, 2 ) != '  ' ) {
-							break;
-						}
+			// Filter nonsense
+			$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
+			if ( substr( $lines[0], 0, 6 ) == 'FFmpeg' ) {
+				for ( $i = 1; $i < count( $lines ); $i++ ) {
+					if ( substr( $lines[$i], 0, 2 ) != '  ' ) {
+						break;
 					}
-					$lines = array_slice( $lines, $i );
 				}
-				// Return error box
-				return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
+				$lines = array_slice( $lines, $i );
 			}
+			// Return error box
+			return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
 		}
 		return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length, $dstPath );
 	}
@@ -403,8 +390,7 @@ class OggHandler extends MediaHandler {
 	}
 
 	function setHeaders( $out ) {
-		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgUser, 
-				$wgPlayerStatsCollection, $wgPlayerStatsCollectionJs, $wgPlayerStatsCollectionScriptPath;
+		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer;
 		if ( $out->hasHeadItem( 'OggHandler' ) ) {
 			return;
 		}
@@ -444,27 +430,7 @@ wgOggPlayer.extPathUrl = $encExtPathUrl;
 }
 </style>
 EOT
-);
-		//if collecting stats add relevant code: 
-		if( $wgPlayerStatsCollection ){			
-			$jsUserHash = sha1( $wgUser->getName() . $wgProxyKey );
-			$enUserHash = Xml::encodeJsVar( $jsUserHash );
-			//escape the javascript url:
-			$wgPlayerStatsCollectionJs = htmlspecialchars( $wgPlayerStatsCollectionJs );
-			
-			if( trim($wgPlayerStatsCollectionScriptPath ) != '' )
-					$wgPlayerStatsCollectionScriptPath= htmlentities( $wgPlayerStatsCollectionScriptPath );
-			
-			$wgPlayerStatsCollectionScriptPath = htmlspecialchars( $wgPlayerStatsCollectionScriptPath );
-			$out->addHeadItem('playerStatsCollection',  <<<EOT
-<script type="text/javascript">
-wgOggPlayer.userHash = $enUserHash;
-wgServerOverride = "$wgPlayerStatsCollectionScriptPath";
-</script>	
-<script type="text/javascript" src="$wgPlayerStatsCollectionJs"></script>
-EOT
-);
-		}
+		);
 		
 	}
 
