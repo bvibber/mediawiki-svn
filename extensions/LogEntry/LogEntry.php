@@ -16,7 +16,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:LogEntry', 
-	'description'    => 'This tag extension provides a form for appending to log pages'
+	'description'    => 'This tag extension provides a form for appending to log pages',
 	'descriptionmsg' => 'logentry-parserhook-desc',
 );
 $wgExtensionCredits['specialpage'][] = array(
