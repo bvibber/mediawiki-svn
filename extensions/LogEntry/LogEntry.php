@@ -11,20 +11,27 @@ $dir = dirname( __FILE__ ) . '/';
 
 # Credits
 $wgExtensionCredits['parserhook'][] = array(
-   'name' => 'LogEntry',
-   'author' =>'Trevor Parscal', 
-   'url' => 'http://www.mediawiki.org/wiki/Extension:Trevor_Parscal', 
-   'description' => 'This Tag Extension provides a form for apending to log pages'
+	'name'           => 'LogEntry',
+	'author'         => 'Trevor Parscal', 
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:LogEntry', 
+	'description'    => 'This tag extension provides a form for appending to log pages'
+	'descriptionmsg' => 'logentry-parserhook-desc',
 );
 $wgExtensionCredits['specialpage'][] = array(
-   'name' => 'LogEntry',
-   'author' =>'Trevor Parscal', 
-   'url' => 'http://www.mediawiki.org/wiki/Extension:Trevor_Parscal', 
-   'description' => 'This Tag Extension provides processing for apending to log pages'
+	'name'           => 'LogEntry',
+	'author'         => 'Trevor Parscal', 
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:LogEntry', 
+	'description'    => 'This tag extension provides processing for appending to log pages',
+	'descriptionmsg' => 'logentry-specialpage-desc',
 );
 
 # Internationalization
 $wgExtensionMessagesFiles['LogEntry'] = $dir . 'LogEntry.i18n.php';
+$wgExtensionAliasesFiles['LogEntry'] = $dir . 'LogEntry.alias.php';
 
 # Body
 require_once $dir . 'LogEntry.body.php';
