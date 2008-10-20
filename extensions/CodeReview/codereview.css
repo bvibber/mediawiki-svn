@@ -7,6 +7,14 @@ table.mw-codereview-meta td {
 	overflow:auto;
 }
 
+.TablePager_col_cr_message {
+	max-width: 20em;
+}
+
+.TablePager_col_cr_timestamp {
+	white-space: nowrap;
+}
+
 .mw-codereview-comment {
 	border: solid 1px #aaaab3;
 	padding: 0px;
