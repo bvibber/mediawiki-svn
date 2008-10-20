@@ -20,6 +20,7 @@ class SpecialNoticeText extends NoticePage {
 	
 	function getJsOutput( $par ) {
 		$this->setLanguage( $par );
+		//need to return all site notices here
 		return
 			'wgNotice="' .
 			strtr(
@@ -68,6 +69,12 @@ END;
 		$encShowStyle = Xml::encodeJsVar( $showStyle );
 		$encHideStyle = Xml::encodeJsVar( $hideStyle );
 		$encHideToggleStyle = Xml::encodeJsVar( $hideToggleStyle );
+
+		$noticeName = '2008 Fundraiser';
+		$templates = CentralNotice::getTemplatesForNotice( $noticeName );
+		$templateNames = array_keys( $templates );
+		$weights = array_values( $templates );
+
 		$script = <<<END
 		var wgNoticeToggleState = (document.cookie.indexOf("hidesnmessage=1")==-1);
 		document.writeln(
@@ -101,21 +108,21 @@ END;
 			document.cookie = work;
 		}
 		function pickTemplate() {
-			var templates = ["2007donationcount","2007donationcount-variant","2009-variant-c"]
-			var weights   = [20, 80, 0]
-			var totalWeight = eval(weights.join("+"))
-			var weightedTemplates = new Array()
-			var currentTemplate = 0
+			var templates = $templateNames;
+			var weights   = $weights;
+			var totalWeight = eval(weights.join("+"));
+			var weightedTemplates = new Array();
+			var currentTemplate = 0;
 			
 			while (currentTemplate < templates.length) {
 				for (i=0; i<weights[currentTemplate]; i++) {
-					weightedTemplates[weightedTemplates.length] = templates[currentTemplate]
+					weightedTemplates[weightedTemplates.length] = templates[currentTemplate];
 				}	
-				currentTemplate++
+				currentTemplate++;
 			}
 			
-			var randomnumber=Math.floor(Math.random()*totalWeight)
-			document.write(weightedTemplates[randomnumber])
+			var randomnumber=Math.floor(Math.random()*totalWeight);
+			document.write(weightedTemplates[randomnumber]);
 		}
 END;
 		return $script;

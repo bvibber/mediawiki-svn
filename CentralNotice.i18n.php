@@ -14,9 +14,8 @@ $messages['en'] = array(
 	'noticetemplate' => 'Central Notice Template',
 	'noticetranslate' => 'Central Notice Translate',
 	'centralnotice-query' => 'Modify Current Notices',
-	'centralnotice-notice-name' => 'Notice Name: ',
-	'centralnotice-start-date' => 'Start',
-	'centralnotice-end-date' => 'End',
+	'centralnotice-notice-name' => 'Notice Name',
+	'centralnotice-end-date' => 'End Date',
 	'centralnotice-enabled' => 'Enabled',
 	'centralnotice-modify' => 'Submit',
 	'centralnotice-preview' => 'Preview',
@@ -24,7 +23,7 @@ $messages['en'] = array(
 	'centralnotice-remove' => 'Remove',
 	'centralnotice-translate-heading' => 'Translate Text',
 	'centralnotice-manage' => 'Manage Central Notice',
-	'centralnotice-add' => 'Add a Central Notice',
+	'centralnotice-add' => 'Add',
 	'centralnotice-add-notice' => 'Add a notice',
 	'centralnotice-add-template' => 'Add a template',
 	'centralnotice-show-notices' => 'Show notices',
@@ -35,11 +34,127 @@ $messages['en'] = array(
 	'centralnotice-template-name' => 'Template Name: ',
 	'centralnotice-templates' => 'Templates',
 	'centralnotice-weight' => 'Weight',
+	'centralnotice-locked' => 'Locked',
 	'centralnotice-notices' => 'Notices',
 	'centralnotice-notice-exists' => 'Notice already exists. Not adding',
 	'centralnotice-notice-doesnt-exist' => 'Notice doesnt exist. Nothing to remove',
 	'centralnotice-template-body' => 'Template Body: ',
-
+	'centralnotice-days' => '* Day
+**01
+**02
+**03
+**04
+**05
+**06
+**07
+**08
+**09
+**10
+**11
+**12
+**13
+**14
+**15
+**16
+**17
+**18
+**19
+**20
+**21
+**22
+**23
+**24
+**25
+**26
+**27
+**28
+**29
+**30
+**31',
+	'centralnotice-years' => '* Year
+**2007 
+**2008
+**2009
+**2010
+**2011
+**2012',
+	'centralnotice-months' => '* Month
+**01 
+**02
+**03
+**04
+**05
+**06
+**07
+**08 
+**09
+**10
+**11
+**12',
+	'centralnotice-hours' => '* Hour
+**00:00
+**01:00
+**02:00
+**03:00
+**04:00
+**05:00
+**06:00
+**07:00
+**08:00
+**09:00
+**10:00
+**11:00
+**12:00
+**13:00
+**14:00
+**15:00
+**16:00
+**17:00
+**18:00
+**19:00
+**20:00
+**21:00
+**22:00
+**23:00
+',
+	'centralnotice-project-lang' => 'Project Language',
+	'centralnotice-project-lang-list' => '* Project Language
+** en
+** pl
+** vt
+** jp',
+	'centralnotice-project-name' => 'Project Name',
+	'centralnotice-project-name-list' => '* Project Name
+** wikipedia
+** wikinews
+** wikitionary',
+	'centralnotice-start-date' => 'Start date',
+	'centralnotice-no-templates' => 'No templates found. Add some!',
+	'centralnotice-available-templates' => 'Available Templates',
+	'centralnotice-template-already-exists' => 'Template is already tied to campaing. Not adding',
+	'centralnotice-start-hour' => 'Start Hour',
+	'centralnotice-weights' => '* Weights
+**0
+**5
+**10
+**15
+**20
+**25
+**30
+**35
+**40
+**45
+**50
+**55
+**60
+**65
+**70
+**75
+**80
+**85
+**90
+**95
+**100'
 );
 
 /** Afrikaans (Afrikaans)

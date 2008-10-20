@@ -46,8 +46,6 @@ class SpecialNoticeTemplate extends SpecialPage {
 
 				$diff_set = array_diff( $allNotices, $enabledNotices);
 
-				$wgOut->addHtml("<p>diff set is $diff_set[1]");
-
 				foreach ( $enabledNotices as $notice) {
 					$this->updateEnabled( $notice, 'Y');
 				}

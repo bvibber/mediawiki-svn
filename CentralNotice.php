@@ -4,7 +4,7 @@
 /// This guy gets loaded from every page on every wiki, and is heavily cached.
 /// Its contents are small, and just load up another cached JS page, but this
 /// allows us to update everything with a single purge. Nice, eh?
-$wgNoticeLoader = 'http://tomasz.ods.org/mediawiki-1.13.0/index.php/Special:NoticeLoader';
+$wgNoticeLoader = 'http://192.168.250.130/mediawiki-1.13.2/index.php/Special:NoticeLoader';
 
 /// Override these per-wiki to pass on via the loader to the text system
 /// for localization by language and project.
@@ -27,7 +27,7 @@ $wgCentralNoticeLoader = true;
 /// URL prefix to the raw-text loader special.
 /// Project/language and timestamp epoch keys get appended to this
 /// via the loader stub.
-$wgNoticeText = 'http://tomasz.ods.org/mediawiki-1.13.0/index.php/Special:NoticeText';
+$wgNoticeText = 'http://192.168.250.130/mediawiki-1.13.2/index.php/Special:NoticeText';
 
 /// If true, notice only displays if 'sitenotice=yes' is in the query string
 $wgNoticeTestMode = false;
@@ -78,70 +78,50 @@ $wgGroupPermissions['sysop']['centralnotice_admin_rights'] = true; // Only sysop
 $wgSpecialPages['CentralNotice'] = 'CentralNotice';
 $wgSpecialPageGroups['CentralNotice'] = 'wiki'; // Wiki data and tools"
 
-function selectNotice($centralnotice_table) {
-	$dbr = wfGetDB( DB_SLAVE );
-	$current_date = date( 'o-m-d' );
-	$res = $dbr->select( $centralnotice_table, "notice_name", array ( "notice_start_date <= '$current_date'", "notice_end_date >= '$current_date'", "notice_enabled = 'Y'" )); 
-	$row = $dbr->fetchObject( $res );
-	return $row->notice_name;
-}
-
 function efCentralNoticeSetup() {
-	$centralnotice_table = "central_notice_campaign";
-	$notice = selectNotice($centralnotice_table);
- 	global $wgHooks, $wgNoticeInfrastructure;
-	global $wgAutoloadClasses, $wgSpecialPages;
+ 		global $wgHooks, $wgNoticeInfrastructure;
+		global $wgAutoloadClasses, $wgSpecialPages;
 
-	global $wgCentralNoticeLoader;
+		global $wgCentralNoticeLoader;
 
-	if ($wgCentralNoticeLoader) {
-		$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeLoader';
-	}
+		if ($wgCentralNoticeLoader) {
+			$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeLoader';
+		}
 	
-	$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeLocalSaveHook';
-	$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeLocalDeleteHook';
+		$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeLocalSaveHook';
+		$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeLocalDeleteHook';
 		
-	$wgAutoloadClasses['NoticePage'] =
-	dirname( __FILE__ ) . '/NoticePage.php';
+		$wgAutoloadClasses['NoticePage'] =
+		dirname( __FILE__ ) . '/NoticePage.php';
 	
-	$wgSpecialPages['NoticeLocal'] = 'SpecialNoticeLocal';
-	$wgAutoloadClasses['SpecialNoticeLocal'] =
-	dirname( __FILE__ ) . '/SpecialNoticeLocal.php';
+		$wgSpecialPages['NoticeLocal'] = 'SpecialNoticeLocal';
+		$wgAutoloadClasses['SpecialNoticeLocal'] =
+		dirname( __FILE__ ) . '/SpecialNoticeLocal.php';
 
 	global $wgOut;
 	if( $wgNoticeInfrastructure ) {
-	$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeSaveHook';
-	$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeDeleteHook';
+		$wgCentralnoticeTable = "central_notice_campaign";
+		$wgNotice = efSelectNotice($wgCentralnoticeTable);
+	   	if ( isset( $wgNotice ) ) { //Do we have an active notice campaign
+			$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeSaveHook';
+			$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeDeleteHook';
 			
-	$wgSpecialPages['NoticeLoader'] = 'SpecialNoticeLoader';
-	$wgAutoloadClasses['SpecialNoticeLoader'] =
-				dirname( __FILE__ ) . '/SpecialNoticeLoader.php';
+			$wgSpecialPages['NoticeLoader'] = 'SpecialNoticeLoader';
+			$wgAutoloadClasses['SpecialNoticeLoader'] =
+					dirname( __FILE__ ) . '/SpecialNoticeLoader.php';
 
-	$wgSpecialPages['NoticeText'] = 'SpecialNoticeText';
-	$wgAutoloadClasses['SpecialNoticeText'] =
-				dirname( __FILE__ ) . '/SpecialNoticeText.php';
+			$wgSpecialPages['NoticeText'] = 'SpecialNoticeText';
+			$wgAutoloadClasses['SpecialNoticeText'] =
+					dirname( __FILE__ ) . '/SpecialNoticeText.php';
 		
-	$wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
-	$wgAutoloadClasses['SpecialNoticeTemplate'] =
-				dirname( __FILE__ ) . '/SpecialNoticeTemplate.php';
+			$wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
+			$wgAutoloadClasses['SpecialNoticeTemplate'] =
+					dirname( __FILE__ ) . '/SpecialNoticeTemplate.php';
 
-	$wgSpecialPages['NoticeTranslate'] = 'SpecialNoticeTranslate';
-	$wgAutoloadClasses['SpecialNoticeTranslate'] =
-				dirname( __FILE__ ) . '/SpecialNoticeTranslate.php';
-
-			// The new SVG stuff
-			/*
-			$wgSpecialPages['NoticeRender'] = 'SpecialNoticeRender';
-			$wgAutoloadClasses['SpecialNoticeRender'] = dirname( __FILE__ ) . '/SpecialNoticeRender.php';
-			$wgAutoloadClasses['NoticeRender'] = dirname( __FILE__ ) . '/NoticeRender.php';
-		
-			global $wgNoticeRenderDirectory, $wgNoticeRenderPath;
-			global $wgUploadDirectory, $wgUploadPath;
-			if( !$wgNoticeRenderDirectory )
-			$wgNoticeRenderDirectory = "$wgUploadDirectory/notice";
-			if( !$wgNoticeRenderPath )
-			$wgNoticeRenderPath = "$wgUploadPath/notice";
-			*/
+			$wgSpecialPages['NoticeTranslate'] = 'SpecialNoticeTranslate';
+			$wgAutoloadClasses['SpecialNoticeTranslate'] =
+					dirname( __FILE__ ) . '/SpecialNoticeTranslate.php';
+		}
 	}
 }
 
@@ -178,9 +158,29 @@ if (wgNoticeLocal != "") {
 }
 </script>
 EOT;
-	
 	return true;
 }
+
+
+/** 
+ * Lookup function for active notice under a given language and project
+ * Returns and id for the running notice
+ */
+function efSelectNotice( $centralnotice_table ) {
+	global $wgNoticeLang, $wgNoticeProject;
+
+	$dbr = wfGetDB( DB_SLAVE );
+	$timestamp = wfTimestampNow();
+	$res = $dbr->select( $centralnotice_table, "id", array ( "notice_start_date <= '$timestamp'", "notice_end_date >= '$timestamp'", "notice_enabled = 'Y'", "notice_language = '$wgNoticeLang'", "notice_project = '$wgNoticeProject'")); 
+	if ( $dbr->numRows( $res > 1 )) {
+		//notice overlap! not returning anything for safety
+	}
+	else {
+		$row = $dbr->fetchObject( $res );
+		return $row->id;
+	}
+}
+
 
 /**
  * 'ArticleSaveComplete' hook
