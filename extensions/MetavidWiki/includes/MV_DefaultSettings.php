@@ -99,6 +99,9 @@ $mvDefaultVideoQualityKey = 'mv_ogg_low_quality';
 $mvDefaultFlashQualityKey = 'mv_flash_low_quality';
 $mvDefaultVideoHighQualityKey = 'mv_ogg_high_quality';
 
+$mvVidQualityMsgKeyType['mv_ogg_low_quality']=$mvVidQualityMsgKeyType['mv_ogg_high_quality']='video/ogg';
+$mvVidQualityMsgKeyType['mv_flash_low_quality']='video/x-flv';
+
 # local path to video archive (if hosted locally)
 $mvLocalVideoLoc = '/metavid/video_archive';
 

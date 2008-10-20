@@ -1145,7 +1145,7 @@ function mv_proc_tool_result(tool_id, mv_result){
  * existing mediawiki code (if adopted upstream these can be removed)
  * @@todo we could switch to jquery ajax calls)
  */
- //added in payload submit single dimension key.value pair object:
+//added in payload submit single dimension key.value pair object:
 function mv_sajax_do_call(func_name, args, target, post_vars) {
 	var i, x, n;
 	var uri;

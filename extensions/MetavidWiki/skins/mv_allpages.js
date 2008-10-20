@@ -236,7 +236,6 @@ function mv_setup_search_ac(){
 		//js_log("moved sugest to: " + sf_pos['top'] + ' '+ sf_pos['left']);
 		$j('#suggestions').css(sf_pos);
 	}
-
 	//add hook:
 	$j('#searchInput').autocomplete(
 		uri,

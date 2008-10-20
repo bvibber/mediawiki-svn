@@ -511,6 +511,7 @@ class MV_SpecialExport {
 			strip_tags( $sms->getFilterDesc() ), // description
 			$msTitle->getFullUrl() . '?' . $sms->get_httpd_filters_query() // link 
 		);
+		
 		$this->feed->outHeader();
 		$MV_Overlay = new MV_Overlay();
 		// for each search result: 	
@@ -552,7 +553,7 @@ class mvRSSFeed extends ChannelFeed {
 		if ( !$mvTitle->doesStreamExist() )return ;
 
 		// @@todo this should be cached 	
-		$thumb_ref = $mvTitle->getStreamImageURL( '320x240' );
+		$thumb_ref = $mvTitle->getStreamImageURL( '320x240', null, '', true );
 		if ( $desc_html == '' ) {
 			$article = new Article( $wikiTitle );
 			$wgOut->clearHTML();
@@ -562,13 +563,13 @@ class mvRSSFeed extends ChannelFeed {
 		}
 		$desc_xml = '<![CDATA[				
 			<center class="mv_rss_view_only">
-				<a href="' . htmlspecialchars( $mStreamTitle->getFullUrl() ) . '"><img src="' . htmlspecialchars( $thumb_ref ) . '" border="0" /></a>
+				<a href="' . htmlspecialchars( $mStreamTitle->getFullUrl() ) . '"><img src="' . $thumb_ref . '" border="0" /></a>
 			</center>
 			<br />' .
 			$desc_html .
 			']]>';
 				
-		$stream_url = $mvTitle->getWebStreamURL();
+		$stream_url = $mvTitle->getWebStreamURL();		
 		$talkpage = $wikiTitle->getTalkPage();
 					
 		$type_desc = ( $mvTitle->getMvdTypeKey() ) ? wfMsg( $mvTitle->getMvdTypeKey() ):'';
@@ -579,15 +580,31 @@ class mvRSSFeed extends ChannelFeed {
 		<title><?php echo mvRSSFeed::xmlEncode(
 			$mvTitle->getStreamNameText() . ' ' .  $time_desc )?></title>
 		<description><?php echo $desc_xml?></description>
-		<enclosure type="video/ogg" url="<?php echo mvRSSFeed::xmlEncode( $stream_url )?>"/>
+		<?php
+			global $mvDefaultVideoQualityKey;
+			//check a few different types:  			
+			$stream_url = $mvTitle->getWebStreamURL($mvDefaultVideoQualityKey);
+			if($stream_url !== false && isset( $mvVidQualityMsgKeyType[ $vid_key ]) ) {	
+				echo '<enclosure name="'. wfMsg($vid_key) .'" type="video/ogg" url="'. mvRSSFeed::xmlEncode( $ogg_stream_url ) .'"/>';
+			}
+		?>		
 		<comments><?php echo mvRSSFeed::xmlEncode( $talkpage->getFullUrl() )?></comments>
-		<media:thumbnail url="<?php echo mvRSSFeed::xmlEncode( $thumb_ref )?>"/>
-		<? /*todo add in alternate streams HQ, lowQ archive.org etc: 
+		<media:thumbnail url="<?php echo mvRSSFeed::xmlEncode( $thumb_ref ) ?>"/>
+		<media:roe_embed url="<?php echo mvRSSFeed::xmlEncode( $mvTitle->getROEURL() )?>"/>
 		<media:group>
-    		<media:content blip:role="Source" expression="full" fileSize="2702848" height="240" isDefault="true" type="video/msvideo" url="http://blip.tv/file/get/Conceptdude-EroticDanceOfANiceBabe266.avi" width="360"></media:content>
-    		<media:content blip:role="web" expression="full" fileSize="3080396" height="240" isDefault="false" type="video/x-flv" url="http://blip.tv/file/get/Conceptdude-EroticDanceOfANiceBabe266.flv" width="360"></media:content>
+			<?php
+			global  $mvDefaultFlashQualityKey, $mvVidQualityMsgKeyType, $mvDefaultFlashQualityKey;
+			//add in media group: 
+			$vid_types = array($mvDefaultVideoQualityKey, 'mv_ogg_high_quality',$mvDefaultFlashQualityKey ); 
+			foreach($vid_types as $vid_key){
+				$stream_url = $mvTitle->getWebStreamURL($vid_key);			
+				if($stream_url !== false && isset( $mvVidQualityMsgKeyType[ $vid_key ] ) ) {		
+				?>
+	<media:content blip:role="<?php echo mvRSSFeed::xmlEncode( $vid_key ) ?>" expression="full" type="<?php echo mvRSSFeed::xmlEncode( $mvVidQualityMsgKeyType[ $vid_key ] ) ?>" url="<?php echo htmlentities( $stream_url )?>"></media:content>
+			<?php
+				} 
+			}?>    		
   		</media:group>
-  		*/ ?> 
 		</item>
 		<?
 	}

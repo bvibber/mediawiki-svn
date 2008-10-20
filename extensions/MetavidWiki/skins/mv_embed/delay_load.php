@@ -16,8 +16,7 @@ if ( isset( $_SERVER['PATH_INFO'] ) ) {
 			die('delay load can only be used for delayed load of css or javascript');
 		break;
 	}
-	if ( is_file( $file_path ) ) {
-		// use 'include' to execute php (avoid sending out text of php files) 
+	if ( is_file( $file_path ) ) {		
 		@include( $file_path );
 	}
 }

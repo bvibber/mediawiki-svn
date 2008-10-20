@@ -221,7 +221,7 @@
 		}
 	}
 	// @@todo force_server is a weird hack ... @@todo remove and update other code locations 
-	function getStreamImageURL( $size = null, $req_time = null, $foce_server = '' ) {
+	function getStreamImageURL( $size = null, $req_time = null, $foce_server = '', $direct_link=false ) {
 		global $mvDefaultVideoPlaybackRes;
 		if ( $size == null ) {
 			$size = $mvDefaultVideoPlaybackRes;
@@ -232,14 +232,14 @@
 		}
 		if ( $foce_server == '' ) {
 			// get the image path: (and generate the image if necessary)				
-			return MV_StreamImage::getStreamImageURL( $this->getStreamId(), $req_time, $size );
+			return MV_StreamImage::getStreamImageURL( $this->getStreamId(), $req_time, $size, $direct_link );
 		} else {
 			return $foce_server . $this->getStreamName() . '?t=' . $req_time;
 		}
 	}
 	/* gets all ~direct~ metadata for the current MV_Title
-	 * (does not grab overlaping metadata) 
-	 * (semenatic properities and categories)
+	 * (does not grab overlapping metadata) 
+	 * (semantic properties and categories)
 	 * */
 	function getMetaData( $normalized_prop_name = true ) {
 		global $wgUser, $wgParser;
@@ -275,9 +275,9 @@
 	 * 
 	 */
 	function getWebStreamURL( $quality = null ) {
-		global $mvVideoArchivePaths;
-		// @@todo mediawiki path for media (insted of hard link to $mvVideoArchive)
-		// @@todo make sure file exisits		
+		global $mvVideoArchivePaths, $mvDefaultVideoQualityKey;
+		// @@todo mediawiki path for media (instead of hard link to $mvVideoArchive)
+		// @@todo make sure file exists		
 		if ( !$quality )$quality = $mvDefaultVideoQualityKey;
 		if ( $this->doesStreamExist() ) {
 			// @@todo cache this / have a more organized store for StreamFiles in streamTitle
@@ -300,8 +300,7 @@
 					//removed .anx
 					$time_req  = '?t=' . $this->getStartTime() . '/' . $this->getEndTime();
 				}
-			}
-
+			}			
 			return $mvStreamFile->getFullURL() . $time_req;
 		} else {
 			// @@todo throw ERROR

@@ -45,7 +45,7 @@ class MV_StreamImage {
 			return $mvExternalImgServerPath . '?action=ajax&rs=mv_frame_server&stream_name=' . $sn . '&t=' . $req_time . $req_size_out;
 		}
 		
-		// by default return a non-direct link so that javascript can modify the url to get new images
+		// by default return a non-direct link so that javascript can modify the url to get time offsets
 		if ( !$directLink ) {
 			return $wgScript . '?action=ajax&rs=mv_frame_server&stream_id=' .
 						htmlspecialchars( $stream_id ) .
@@ -197,7 +197,7 @@ class MV_StreamImage {
 					// print "missing base img $base_img \n";			
 					$img_file = MV_StreamImage::genLocalStreamImage( $stream_id, $req_time, $req_size );
 					if ( is_file( $base_img ) ) {
-						// got file succesfull: 
+						// got file successful: 
 						// continue:
 					} else {
 						return false;

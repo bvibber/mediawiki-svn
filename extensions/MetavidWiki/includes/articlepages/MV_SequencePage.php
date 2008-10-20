@@ -107,7 +107,8 @@ class MV_SequencePage extends Article {
 			$topSeqNode = $this->smilDoc->importNode($seqNode, false);
 			//get all the references
 			$refNodeList = $seqNode->childNodes;
-			foreach($refNodeList as $refNode){			
+			foreach($refNodeList as $refNode){		
+				 //make sure its a valid ref node: 	
 				 $refNode = $this->smilDoc->importNode( $this->resolveResourceNode($refNode), true );
 				 $topSeqNode->appendChild($refNode);
 			}

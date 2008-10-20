@@ -479,48 +479,53 @@ function sffLoadMessagesManually() {
 /*
  * Utility functions:
  */
-	
-function php2jsObj( $array, $objName = 'mv_result' )
-{
-   return  $objName . ' = ' . phpArrayToJsObject_Recurse( $array ) . ";\n";
+if ( ! function_exists( 'php2jsObj' ) ) {
+	function php2jsObj( $array, $objName = 'mv_result' )
+	{
+	   return  $objName . ' = ' . phpArrayToJsObject_Recurse( $array ) . ";\n";
+	}
 }
-function PhpArrayToJsObject_Recurse( $array ) {
-   // Base case of recursion: when the passed value is not a PHP array, just output it (in quotes).
-   if ( ! is_array( $array ) && !is_object( $array ) ) {
-       // Handle null specially: otherwise it becomes "".
-       if ( $array === null )
-       {
-           return 'null';
-       }
-       return '"' . javascript_escape( $array ) . '"';
-   }
-   // Open this JS object.
-   $retVal = "{";
-   // Output all key/value pairs as "$key" : $value
-   // * Output a JS object (using recursion), if $value is a PHP array.
-   // * Output the value in quotes, if $value is not an array (see above).
-   $first = true;
-   foreach ( $array as $key => $value ) {
-       // Add a comma before all but the first pair.
-       if ( ! $first ) {
-           $retVal .= ', ';
-       }
-       $first = false;
-       // Quote $key if it's a string.
-       if ( is_string( $key ) ) {
-           $key = '"' . $key . '"';
-       }
-       $retVal .= $key . ' : ' . PhpArrayToJsObject_Recurse( $value );
-   }
-   // Close and return the JS object.
-   return $retVal . "}";
+if ( ! function_exists( 'PhpArrayToJsObject_Recurse' ) ) {
+	function PhpArrayToJsObject_Recurse( $array ) {
+	   // Base case of recursion: when the passed value is not a PHP array, just output it (in quotes).
+	   if ( ! is_array( $array ) && !is_object( $array ) ) {
+	       // Handle null specially: otherwise it becomes "".
+	       if ( $array === null )
+	       {
+	           return 'null';
+	       }
+	       return '"' . javascript_escape( $array ) . '"';
+	   }
+	   // Open this JS object.
+	   $retVal = "{";
+	   // Output all key/value pairs as "$key" : $value
+	   // * Output a JS object (using recursion), if $value is a PHP array.
+	   // * Output the value in quotes, if $value is not an array (see above).
+	   $first = true;
+	   foreach ( $array as $key => $value ) {
+	       // Add a comma before all but the first pair.
+	       if ( ! $first ) {
+	           $retVal .= ', ';
+	       }
+	       $first = false;
+	       // Quote $key if it's a string.
+	       if ( is_string( $key ) ) {
+	           $key = '"' . $key . '"';
+	       }
+	       $retVal .= $key . ' : ' . PhpArrayToJsObject_Recurse( $value );
+	   }
+	   // Close and return the JS object.
+	   return $retVal . "}";
+	}
 }
-function javascript_escape( $val ) {
-	// first strip /r
-	$val = str_replace( "\r", '', $val );
-	return str_replace(	array( '"', "\n", '{', '}' ),
-						array( '\"', '"' . "+\n" . '"', '\{', '\}' ),
-						$val );
+if ( ! function_exists( 'javascript_escape' ) ) {
+	function javascript_escape( $val ) {
+		// first strip /r
+		$val = str_replace( "\r", '', $val );
+		return str_replace(	array( '"', "\n", '{', '}' ),
+							array( '\"', '"' . "+\n" . '"', '\{', '\}' ),
+							$val );
+	}
 }
  /*
   * Check if time is NTP based: hh:mm:ss.(fraction of a second)
