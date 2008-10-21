@@ -44,7 +44,7 @@ $aliases['fi'] = array(
 
 /** Hebrew (עברית) */
 $aliases['he'] = array(
-	'Badimages' => array( 'תמונות_פגומות' ),
+	'Badimages' => array( 'תמונות_אסורות' ),
 );
 
 /** Hungarian (Magyar) */

@@ -44,7 +44,7 @@ $aliases['fr'] = array(
 
 /** Hebrew (עברית) */
 $aliases['he'] = array(
-	'ChangeAuthor' => array( 'שנה_מחבר' ),
+	'ChangeAuthor' => array( 'שינוי_כותב' ),
 );
 
 /** Croatian (Hrvatski) */
