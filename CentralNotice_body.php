@@ -98,8 +98,6 @@ class CentralNotice extends SpecialPage
 
 		$method = $wgRequest->getVal('method');
 		$this->showAll = $wgRequest->getVal('showAll');
-		$wgOut->addHtml("<p>got method $method");
-		$wgOut->addHtml("<p>got sub $sub");
 
 		if ( $method == 'addNotice' ) { 
 			$noticeName       = $wgRequest->getVal('noticeName');
@@ -146,7 +144,7 @@ class CentralNotice extends SpecialPage
 		 $res = $dbw->update($centralnotice_table, array( notice_enabled => $enabled ), array( notice_name => $update_notice));
 	}
 
-	private function printHeader() {
+	static public function printHeader() {
 		global $wgOut;
 		$wgOut->addWikiText(   '[[' . 'Special:CentralNotice/listNotices ' . '|' . wfMsg( 'centralnotice-notices') . ']]' . " | "
 				     . '[[' . 'Special:NoticeTemplate/listTemplates' . '|' . wfMsg ( 'centralnotice-templates' ) . ']]' . " | "
@@ -224,6 +222,8 @@ class CentralNotice extends SpecialPage
 			$end_year = substr( $end_timestamp, 0 , 4);
 			$end_month = substr( $end_timestamp, 4, 2);
 			$end_day = substr( $end_timestamp, 6, 2);
+
+			
 	
 			$table .= "<td>" . Xml::listDropDown( "start_date[$row->notice_name][year]",  wfMsg( 'centralnotice-years'), '', $start_year, '', 3) 
 					 . Xml::listDropDown( "start_date[$row->notice_name][month]", wfMsg( 'centralnotice-months'), '', $start_month, '', 4 ) 
@@ -253,6 +253,9 @@ class CentralNotice extends SpecialPage
 
 		global $wgNoticeProject,$wgNoticeLang;
 
+		list( $sLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
+		$form .= $this->tableRow( $lsLabel, $lsSelect) ;
+
 		$wgOut->addHtml( 
 			Xml::openElement( 'form', array(
                                 'method' => 'post',
@@ -269,11 +272,10 @@ class CentralNotice extends SpecialPage
 		      Xml::listDropDown( 'start_day',  wfMsg( 'centralnotice-days'), '', $current_day, '', 7 )  .
 		      Xml::listDropDown( 'start_year', wfMsg( 'centralnotice-years'), '', $current_year, '', 8) .
 		      " " . wfMsg( 'centralnotice-start-hour' ) . ": " .
-		      Xml::listDropDown( 'start_hour', wfMsg( 'centralnotice-hours'), '', "00:00", '', 9) .
-		      " " . wfMsg( 'centralnotice-project-name' ) . ": " .
+		      Xml::listDropDown( 'start_hour', wfMsg( 'centralnotice-hours'), '', "00:00", '', 9) . "<p>" .
+		      " " . wfMsg( 'centralnotice-project-name' ) . ": " . 
 		      Xml::listDropDown( 'project_name', wfMsg( 'centralnotice-project-name-list'), '', $wgNoticeProject, '', 10) .
-		      " " . wfMsg( 'centralnotice-project-lang') . ": " .
-		      Xml::listDropDown( 'project_lang', wfMsg( 'centralnotice-project-lang-list'), '', $wgNoticeLang, '', 11) .
+		      " " . wfMsg( 'centralnotice-project-lang') . ":" . $this->tableRow( $lsLabel, $lsSelect) . 		 
 		      '</p>' .
 		      '<p>' .
 		      Xml::submitButton( wfMsg( 'centralnotice-modify' ) ) .
@@ -282,6 +284,13 @@ class CentralNotice extends SpecialPage
 	              '</form>'
 		    );
 	}
+
+	function tableRow( $td1, $td2 ) { 
+                $td3 = ''; 
+                $td1 = Xml::tags( 'td', array( 'class' => 'pref-label' ), $td1 );
+                $td2 = Xml::tags( 'td', array( 'class' => 'pref-input' ), $td2 );
+                return Xml::tags( 'tr', null, $td1 . $td2 ). $td3 . "\n";
+        }
 
 	function listNoticeDetail( $notice ) {
 		global $wgOut,$wgRequest;

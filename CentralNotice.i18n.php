@@ -118,11 +118,6 @@ $messages['en'] = array(
 **23:00
 ',
 	'centralnotice-project-lang' => 'Project Language',
-	'centralnotice-project-lang-list' => '* Project Language
-** en
-** pl
-** vt
-** jp',
 	'centralnotice-project-name' => 'Project Name',
 	'centralnotice-project-name-list' => '* Project Name
 ** wikipedia
@@ -132,7 +127,9 @@ $messages['en'] = array(
 	'centralnotice-no-templates' => 'No templates found. Add some!',
 	'centralnotice-available-templates' => 'Available Templates',
 	'centralnotice-template-already-exists' => 'Template is already tied to campaing. Not adding',
+	'centralnotice-preview-template' => 'Preview Template',
 	'centralnotice-start-hour' => 'Start Hour',
+	'centralnotice-change-lang' => 'Change Translation Language',
 	'centralnotice-weights' => '* Weights
 **0
 **5

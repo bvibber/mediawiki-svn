@@ -25,18 +25,30 @@ class SpecialNoticeTranslate extends SpecialPage
 		}
 		
 		$wgOut->addWikiText( wfMsg( 'centralnotice-summary' ));
-		$this->printHeader();
-
-	
+		CentralNotice::printHeader();
 
 		if ( $wgRequest->wasPosted() ) {
 			$body = file_get_contents('php://input');
 			$wgOut->addHtml("Body of post: $body");
+		        
+			$previewNotice = $wgRequest->getVal('preview');
+			if ( isset( $previewNotice ) ) {
+				//SpecialNoticeText::previewTemplate( $noticename, $updateText );
+				return;
+			}
+		        $update = $wgRequest->getArray('updateText');
+        		$token  = $wgRequest->getArray('token');
+			if (isset ( $update ) ) {
+				foreach ( $update as $lang => $messages ) {
+					foreach ( $messages as $text => $translation) { 
+					$this->updateMessage( $text, $translation, $lang, $token );
+					}
+				}
+
+			}
 		}
 
 		$method = $wgRequest->getVal('method');
-		$wgOut->addHtml("<p>got method $method<p>");
-		$wgOut->addHtml("got sub $sub<p>");
 
 		if ( $sub == 'listTranslations' ) { // Show tranlsation text
 			$this->showTranslateForm();
@@ -46,61 +58,60 @@ class SpecialNoticeTranslate extends SpecialPage
   	  	$this->showTranslateForm();
 	}
 
-	private function printHeader() {
-		global $wgOut;
-		$wgOut->addWikiText(   '[[' . 'Special:CentralNotice/listNotices ' . '|' . wfMsg( 'centralnotice-notices') . ']]' . " | "
-				     . '[[' . 'Special:NoticeTemplate/listTemplates' . '|' . wfMsg ( 'centralnotice-templates' ) . ']]' . " | "
-				     . '[[' . 'Special:NoticeTranslate/listTranslations' . '|' . wfMsg( 'centralnotice-translate') . ']]' . " | ");
-	
-	}
-
 	function showTranslateForm() {
-		global $wgOut;
-		$translateTo = 'pl'; //hack till we can autodetect
+		global $wgOut,$wgUser,$wgRequest,$wgContLanguageCode;
+
+		$token = $wgUser->editToken();
+		$wpUserLang = $wgRequest->getVal('wpUserLanguage') ? $wgRequest->getVal('wpUserLanguage') : $wgContLanguageCode;
 		$requiredFields = array( 'counter','donate','headlines');
 		// Two column listing of : text : translation
-		$table  = "<form name='centranoticetranslate' id='centralnoticetranslate' action=\"$action\" method='post'>";
+		$table  = "<form name='centranoticetranslate' id='centralnoticetranslate' method='post'>";
 		$table .= "<fieldset><legend>" . wfMsgHtml( "centralnotice-translate-heading" ) . "</legend>";
 		$table .= "<table cellpadding=\"9\">";
 		$table .= "<tr><th colspan =\"4\"></th></tr>";
-		$table .= "<th>source</th>";
+		$table .= "<th>field</th>";
 		$table .=  "<th>" . wfMsg ( 'centralnotice-english') . "</th>";
-		$table .= "<th>source</th>"; 
-		$table .= "<th>" . "$translateTo" . "</th></tr>";
+		$table .= "<th>field</th>"; 
+		$table .= "<th>" . $wpUserLang . "</th></tr>";
 		foreach( $requiredFields as $field) {
-			$table .= "<tr><td>". "$field" . "</td>";
-			$table .= "<td>" . wfMsg( "centralnotice-$field" ) . "</td>";
-			$table .= "<td>". "$field/$translateTo" . "</td>";
-			$table .= "<td><input type=\"text\" name=\"centralnotice-$field/$translateTo\"" .
-			  "value=\"" . wfMsgExt( "centralnotice-$field", array ( language => $translateTo) ) . "\" size=\"50\">". "</td></tr>";
+			$table .= "<tr><td>". "$field/en" . "</td>";
+			$table .= "<td>" . wfMsgExt( "centralnotice-$field", array ( language => 'en') ) . "</td>";
+			$table .= "<td>". "$field/$wpUserLang" . "</td>"; //translations start with english
+			$table .= "<td>" . Xml::input( "updateText[$wpUserLang][$field]", 80, wfMsgExt( "centralnotice-$field", array ( language => $wpUserLang))) . "</td></tr>";
 		}
-		$table .= "<td><input type='submit' value='Submit'></td>";
-		$table .= "</tr></table></fieldset>";
+		$table .= Xml::hidden( token, $token );
+		$table .= Xml::hidden( wpUserLanguage, $wpUserLang ); //keep track of set language
+		$table .= "<tr><td>" . Xml::submitButton( wfMsg('centralnotice-modify', array( name => 'update'))) . "</td>" . 
+			      "<td>" . Xml::submitButton( wfMsg('centralnotice-preview-template'), array( name => 'preview')) . "</td></tr>";
+		$table .= "</table></fieldset>";
 		$table .= "</form>";
 
 		$wgOut->addHTML( $table );
-	}
-
-# Private Functions
-
-	####
- 	# checkTranslateUpdate
-	###
-	# Check data source to see if a newer update has already been entered and warng accordingly.
-	###
-
-	private function checkTranslateUpdate() {
-	 	global $wgOut, $wgUser, $wgRequest;
-
-		$errors = array();
 		
-		$textToTranslate = $wgRequest->getArray('textToTranslate');
-		foreach( $textToTranslate as $text ) {
-			if ( $text == 'new' ) { // Somehow detect new
-				$warning = "<b>$text</b>";
-			}
-		}
-		$wgOut->addHTML("$warning");
+		$form = "<form name='centranoticetranslate' id='centralnoticetranslate' action=\"$action\" method='post'>";
+		$form .= "<fieldset><legend>" . wfMsgHtml( "centralnotice-change-lang" ) . "</legend>";
+		list( $sLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
+		$form .= $this->tableRow( $lsLabel, $lsSelect) ;
+		$form .= "<p><p>" . Xml::submitButton( wfMsgHtml('centralnotice-modify'));
+		$form .= "</fieldset>";
+		$form .= "</form>";
+		$wgOut->addHTML( $form ) ;
 	}
 
+	function tableRow( $td1, $td2 ) {
+		$td3 = '';
+		$td1 = Xml::tags( 'td', array( 'class' => 'pref-label' ), $td1 );
+		$td2 = Xml::tags( 'td', array( 'class' => 'pref-input' ), $td2 );
+		return Xml::tags( 'tr', null, $td1 . $td2 ). $td3 . "\n";
+	}
+	function updateMessage( $text, $translation, $lang, $token ) {
+		global $wgUser,$wgOut;
+		
+		$saveTo = "Centralnotice-" . $text;
+		$saveTo .= "/$lang";
+
+		$title = Title::newFromText( $saveTo, NS_MEDIAWIKI );
+		$article = new Article( $title );	
+		$article->doEdit( $translation, '' );
+	}
 }

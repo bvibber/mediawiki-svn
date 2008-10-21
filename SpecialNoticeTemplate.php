@@ -24,7 +24,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 		}
 		
 		$wgOut->addWikiText( wfMsg( 'centralnotice-summary' ));
-		$this->printHeader();
+		CentralNotice::printHeader();
 
 
 		if ( $wgRequest->wasPosted() ) {
@@ -79,15 +79,6 @@ class SpecialNoticeTemplate extends SpecialPage {
 	private function previewTemplate() {
 	}
 
-# Display methods
-
-	private function printHeader() {
-		global $wgOut;
-		$wgOut->addWikiText(   '[[' . 'Special:CentralNotice/listNotices ' . '|' . wfMsg( 'centralnotice-notices') . ']]' . " | "
-				     . '[[' . 'Special:NoticeTemplate/listTemplates' . '|' . wfMsg ( 'centralnotice-templates' ) . ']]' . " | "
-				     . '[[' . 'Special:NoticeTranslate/listTranslations' . '|' . wfMsg( 'centralnotice-translate') . ']]' . " | ");
-	
-	}
 
 	function queryTemplates() {
 		$centralnotice_template_table = "central_notice_templates";
