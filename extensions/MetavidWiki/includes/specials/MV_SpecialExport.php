@@ -138,7 +138,12 @@ class MV_SpecialExport {
 				}
 			break;
 			case 'search':
-				$this->get_search_feed();
+				switch($this->feed_format){
+					case 'rss':
+					default:
+						$this->get_search_feed();	
+					break;
+				}				
 			break;
 			case 'sequence':
 				if ( $this->par != '' ) {

@@ -585,18 +585,15 @@ var ctrlBuilder = {
         	},
         	stop:function(e, ui){
         		_this.userSlide=false;
-        		js_log('do jump to: '+_this.jump_time)
-        		//reset slider		
-        		_this.seek_time_sec=ntp2seconds(_this.jump_time);
-        		//@@todo make compatible with playlist
-        		// ie this should be checked at the embed lib level not so high up in the controls. 
-				if(_this.media_element.selected_source.supports_url_time_encoding)
-				{
-					js_log('url support timed requests: do stop & jump');
-					_this.stop();
-        			//do play in 100ms (give things time to clear) 
-					setTimeout('$j(\'#'+_this.id+'\').get(0).play()',100);
-				}
+        		var perc = (($j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft-_this.base_seeker_slider_offset)
+						/
+					($j('#mv_seeker_'+_this.id).width()-14));   
+        		js_log('do jump to: '+_this.jump_time + ' perc:' +perc);
+        		
+        		//set seek time (incase we have to do a url seek)        		
+        		_this.seek_time_sec=ntp2seconds(_this.jump_time);   
+        		var test = _this;        		
+        		_this.doSeek(perc);
         	}
         });
     },
@@ -1761,10 +1758,10 @@ mediaElement.prototype =
     /** selects the default source via cookie preference, default marked, or by id order
      * */
     autoSelectSource:function(){ 
-    	js_log('f:autoSelectSource');
+    	js_log('f:autoSelectSource:mv');    
     	//@@todo read user preference for source    	
     	// Select the default source
-    	var playable_sources = this.getPlayableSources();  
+    	var playable_sources = this.getPlayableSources();              		
     	var flash_flag=ogg_flag=false;  	    
         for (var source in playable_sources){
         	var mime_type =playable_sources[source].mime_type;
@@ -1877,7 +1874,7 @@ mediaElement.prototype =
     	 		}
     	 		playable_sources.push(this.sources[i]);
     	 	}else{
-    	 		//js_log("type "+ this.sources[i].mime_type + 'is not playable');
+    	 		js_log("type "+ this.sources[i].mime_type + 'is not playable');
     	 	}
     	 }    	 
     	 return playable_sources;
@@ -2029,22 +2026,28 @@ embedVideo.prototype = {
 	},
 	init_with_sources_loaded : function()
 	{	
-		js_log('f:init_with_sources_loaded');
+		js_log('f:init_with_sources_loaded');		
+		
 		//autoseletct the source
 		this.media_element.autoSelectSource();		
 		//auto select player based on prefrence or default order
-		if(!this.media_element.selected_source)
+		if( !this.media_element.selected_source )
 		{
-			js_log('no sources');
-			return this;
+			js_log('no sources, set to ready (to display missing source html)');
+			//do load player if just displaying innerHTML: 
+			if(this.type =='text/html'){
+				this.selected_player = embedTypes.players.defaultPlayer( 'text/html' );	
+			}						
+		}else{		
+        	this.selected_player = embedTypes.players.defaultPlayer(this.media_element.selected_source.mime_type);
 		}
-
-        this.selected_player = embedTypes.players.defaultPlayer(this.media_element.selected_source.mime_type);
+		
         if(this.selected_player){
             js_log('selected ' + this.selected_player.getName());
             js_log("PLAYBACK TYPE: "+this.selected_player.library);
-        }else
+        }else{
             js_log('no player found for mime type ' + this.media_element.selected_source.mime_type);
+        }
 
         this.thumbnail_disp = true;
 	    /*
@@ -2079,7 +2082,7 @@ embedVideo.prototype = {
 		//set up the new embedObj
         js_log('embedding with ' + this.selected_player.library);
 		var _this = this;		
-		this.selected_player.load(function()
+		this.selected_player.load( function()
 		{
 			js_log('inheriting '+_this.selected_player.library +'Embed to ' + _this.id + ' ' + $j('#'+_this.id).length);
 			//var _this = $j('#'+_this.id).get(0);
@@ -2151,6 +2154,18 @@ embedVideo.prototype = {
 	getEmbedHTML : function(){
 		//return this.wrapEmebedContainer( this.getEmbedObj() );
 		return 'function getEmbedHTML should be overiten by embedLib ';
+	},
+	//do seek function (should be overwritten by implementing embedLibs)
+	// first check if seek can be done on locally downloaded content. 
+	doSeek : function( perc ){
+		js_log('f:mv_embed:doSeek:'+perc);
+		if(this.media_element.selected_source.supports_url_time_encoding){
+			js_log('Seeking to ' + this.seek_time_sec + ' (local copy of clip not loaded at' + perc + '%)');
+			this.stop();			
+			this.seek_time_sec = 0; 
+		}
+		//do play in 100ms (give things time to clear) 
+		setTimeout('$j(\'#'+this.id+'\').get(0).play()',100);
 	},
     doEmbedHTML:function()
     {
@@ -2850,6 +2865,7 @@ embedVideo.prototype = {
 			js_log("we are already playing..." );
 		}
 		 //update "paused state"      
+		 js_log("SHOULD UPDATE play BUTTON");
          $j("#mv_play_pause_button_"+this_id).attr('class', 'pause_button');
 	},
 	toggleMute:function(){

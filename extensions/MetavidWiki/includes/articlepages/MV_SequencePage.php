@@ -47,6 +47,8 @@ class MV_SequencePage extends Article {
 		}
 		if($parserOutput!=false)
 			return $parserOutput->getText();
+		//make sure the article exist: 
+		
 		//get the high level sequence description: 
 		$this->getSequenceHLRD();
 		//print "raw text: " . $this->mHLRD . "\n\n";
@@ -643,7 +645,7 @@ class MV_SequencePage extends Article {
 			return trim( substr( $base_text, $seqClose + strlen( '</' . SEQUENCE_TAG . '>' ) ) );
 		}
 	}
-	//@@support static call if aritle is provided: 
+	//@@support static call if article is provided: 
 	function getSequenceHLRD($article=null) {		
 		// check if the current article exists:
 		if ( $this->mTitle->exists() ) {
@@ -654,7 +656,11 @@ class MV_SequencePage extends Article {
 				$this->mHLRD = trim( substr( $base_text, $seqOpen, $seqClose+strlen('</' . SEQUENCE_TAG . '>')  ) );				
 			}else{
 				//@@todo error can't find sequence
+				throw new MWException( 'missing sequence tag in sequence article' );
 			}
+		}else{
+			//@@todo maybe we should output an empty sequence skeleton. 
+			throw new MWException( ' missing sequence ' );
 		}
 		return '';			
 	}

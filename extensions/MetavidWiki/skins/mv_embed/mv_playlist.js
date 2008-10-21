@@ -205,13 +205,13 @@ mvPlayList.prototype = {
 		_this.clip_ready_count=0;		
 		for(var i in this.default_track.clips){
 			var clip = 	this.default_track.clips[i];
-			if(clip.embed.ready_to_play){
+			if( clip.embed.ready_to_play ){
 				_this.clip_ready_count++;
 				continue;
 			}
 			//js_log('clip sources count: '+ clip.embed.media_element.sources.length);		
 			clip.embed.on_dom_swap();
-			if(clip.embed.loading_external_data==false && 
+			if( clip.embed.loading_external_data==false && 
 	   			clip.embed.init_with_sources_loadedDone==false){
 					clip.embed.init_with_sources_loaded();
 			}					
@@ -642,7 +642,21 @@ mvPlayList.prototype = {
 	//wrappers for call to pl object to current embed obj
 	play_or_pause:function(){
 		js_log('pl:play_or_pause');			
-		this.cur_clip.embed.play_or_pause();		
+		this.cur_clip.embed.play_or_pause();
+		//set the playlist monitor state:
+		if(this.cur_clip.embed.paused)
+			this.paused=true;
+		else
+			this.paused=false;
+			
+	},
+	pause:function(){		
+		js_log('f:pause: playlist');
+		var ct = new Date();
+		this.pauseTime = this.currentTime;
+		js_log('pause time: '+ this.pauseTime);				
+		
+		window.clearInterval( this.smil_monitorTimerId );	
 	},
 	fullscreen:function(){
 		this.cur_clip.embed.fullscreen();
@@ -669,6 +683,29 @@ mvPlayList.prototype = {
 		
 		//do stop current clip
 		this.cur_clip.embed.stop();
+	},	
+	doSeek:function(v){
+		js_log('pl:doSeek:'+v);
+		var plObj = this;
+		var prevClip=null;
+		//jump to the clip in the current percent. 
+		var perc_offset=0;
+		var next_perc_offset=0;
+		for(var i in plObj.default_track.clips){
+			var clip = plObj.default_track.clips[i];		
+			next_perc_offset+=( clip.getDuration() /  plObj.getDuration()) ;
+			//js_log('on ' + clip.getDuration() +' next_perc_offset:'+ next_perc_offset);
+			if(next_perc_offset > v ){	
+				//pass along the relative percetage to embed object: 				
+				//js_log('seek:'+ v +' - '+perc_offset + ') /  (' + next_perc_offset +' - '+ perc_offset);
+				var relative_perc =  (v -perc_offset) /  (next_perc_offset - perc_offset);  					
+				plObj.cur_clip = clip;
+				plObj.cur_clip.embed.doSeek( relative_perc );
+				this.play();
+				return '';
+			}
+			perc_offset = next_perc_offset;
+		} 	
 	},
 	//gets playlist controls large control height for sporting 
 	//next prev button and more status display
@@ -873,7 +910,7 @@ mvClip.prototype = {
 		var init_pl_embed={id:'e_'+this.id,
 			pc:this, //parent clip
 			src:this.src};
-		
+
 		this.setBaseEmbedDim(init_pl_embed);
 		//always display controls for playlists: 
 		
@@ -896,8 +933,8 @@ mvClip.prototype = {
 				
 		js_log('ve src len:'+ this.embed.media_element.sources.length);
 		//js_log('media element:'+ this.embed.media_element.length);
-		
 		//js_log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);
+		
 	},
 	doAdjust:function(side, delta){
 		if(this.embed){
@@ -1030,7 +1067,7 @@ mvClip.prototype = {
 		}
 		if(num >= 10)num=num % 10;
 		return mv_clip_colors[num];
-	}
+	}	
 }
 /* mv_embed extensions for playlists */
 var PlMvEmbed=function(vid_init){
@@ -1077,8 +1114,7 @@ PlMvEmbed.prototype = {
 			if(this[method]=="true")this[method]=true;
 		}
 		//continue init (load sorces) 
-		js_log('this Video src len:'+ this.media_element.sources.length);
-		
+		js_log('this Video src len:'+ this.media_element.sources.length);		
 	},
 	stop:function(){
 		//set up connivance pointer to parent playlist
@@ -1175,24 +1211,7 @@ PlMvEmbed.prototype = {
 	},
 	setSliderValue:function(value){
 		//setSlider value hanndled by playlist obj
-	},
-	doSeek:function(v){
-		var plObj = this.pc.pp;
-		var prevClip=null;
-		//jump to the clip in the current percent. 
-		var perc_offset=0;
-		for(var i in plObj.default_track.clips){
-			var clip = plObj.default_track.clips[i];		
-			perc_offset+=(clip.embed.duration /  plObj.getDuration());
-			if(perc_offset > v ){	
-				if(this.playMovieAt){							
-					this.playMovieAt(i);				
-					plObj.cur_clip = clip;
-					return '';
-				}
-			}
-		} 	
-	}
+	}	
 }
 
 /* 
@@ -1338,7 +1357,15 @@ var xspfPlaylist ={
 mvPlayList.prototype.monitor = function(){	
 	js_log('pl:monitor');		
 	//js_log('mvPlayList:monitor trueTime: '+ ( (ct.getTime() - this.clockStartTime )/1000));	
-
+	//if paused stop updates
+	if( this.paused ){
+		clearInterval( this.smil_monitorTimerId );
+		return ;
+	}
+	//check if we should be done:
+	if( this.currentTime >  this.getDuration() ) 
+		this.stop();
+	
 	//update the playlist current time: 
 	this.currentTime = this.cur_clip.dur_offset + this.cur_clip.embed.currentTime;	
 	//update slider: 
@@ -1348,7 +1375,7 @@ mvPlayList.prototype.monitor = function(){
 	}
 
 	//status updates are hanndled by children clips ... playlist just mannages smil actions
-	this.doSmilActions();
+	this.doSmilActions();	
 	
 	if( ! this.smil_monitorTimerId ){
     	if(document.getElementById(this.id)){
@@ -1523,8 +1550,8 @@ var mvTransLib = {
 				'init':function(tObj){										
 					//js_log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
 					if(!tObj.fadeColor)
-						return js_log('missing fadeColor');		
-					if($j('#'+tObj.overlay_selector_id).get(0).length==0){
+						return js_log('missing fadeColor');							
+					if($j('#'+tObj.overlay_selector_id).length==0){
 						js_log("ERROR cant find: "+ tObj.overlay_selector_id);
 					}	
 					//set the initial state
@@ -1641,7 +1668,7 @@ var mv_supported_media_attr = new Array(
 	'uri',
 	'poster'
 );
-//all the overwritten and new methods for playlist extension of mv_embed
+//all the overwritten and new methods for SMIL extension of mv_embed
 mvSMILClip.prototype = {	
 	init:function(smil_clip_element, mvClipInit){
 		_this = this;				
@@ -1661,8 +1688,6 @@ mvSMILClip.prototype = {
 		$j.each(mv_supported_media_attr, function(i, attr){			
 			if( $j(smil_clip_element).attr(attr)){
 				_this[attr]=$j(smil_clip_element).attr(attr);
-			}else{
-				_this[attr]=false;
 			}
 		})				
 		this['tagName'] =smil_clip_element.tagName;	
@@ -1694,7 +1719,12 @@ mvSMILClip.prototype = {
 		if(this.dur)
 			this.dur = smilParseTime(this.dur);							
 		
-		//@@todo check if valid transition id		
+		//conform type:
+		if(this['type']=='application/ogg'){
+			this['type']='video/ogg'; //conform to 'video/ogg' type
+		}
+		//@@todo check if valid transition id	
+		//debugger;	
 		return this;		
 	},
 	/*
@@ -1712,7 +1742,8 @@ mvSMILClip.prototype = {
 		if(this['type']){
 			switch(this['type']){
 				case 'text/html':
-				case 'image/jpeg':				
+				case 'image/jpeg':		
+							
 					this.embed = new htmlEmbedWrapper({pc:this, id:'e_'+this.id});					
 				break;
 				case 'application/ogg':

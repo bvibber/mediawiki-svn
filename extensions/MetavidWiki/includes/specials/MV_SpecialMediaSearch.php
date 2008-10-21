@@ -448,7 +448,7 @@ class MV_SpecialMediaSearch {
 					<span class="vid_img" id="mvimg_' . htmlspecialchars( $mvd->id ) . '">
 						' . $sk->makeKnownLinkObj( $mvStreamTitle,
 								'<img alt="image for ' . htmlspecialchars( $mvTitle->getStreamNameText() ) .
-								' ' . $mvTitle->getTimeDesc() . '" src="' . $mvTitle->getStreamImageURL( 'small' ) .
+								' ' . $mvTitle->getTimeDesc() . '" src="' . $mvTitle->getStreamImageURL( 'small' , $req_time = null, $foce_server = '', $direct_link=false ) .
 							 '"/>' ) . '
 					</span>
 					<div class="result_description">
