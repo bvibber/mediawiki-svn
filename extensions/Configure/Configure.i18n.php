@@ -20,7 +20,7 @@ $messages['en'] = array(
 	'configure-edit-ext'                  => 'Extensions',
 
 	'configure-ext-doc'                   => 'See online documentation',
-	'configure-ext-schemachange'          => "'''Warning:''' this extension require a database update to work correctly!",
+	'configure-ext-schemachange'          => "'''Warning:''' this extension requires a database update to work correctly!",
 	'configure-ext-settings'              => 'Settings',
 	'configure-ext-use-extension'         => 'Use this extension',
 	'configure-ext-use'                   => 'Use',
