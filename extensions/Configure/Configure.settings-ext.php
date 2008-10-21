@@ -366,6 +366,7 @@ $extensions = array(
 		'settings' => array(
 			'wgCollectionMWServeURL' => 'text',
 			'wgCollectionMWServeCredentials' => 'text',
+			'wgCollectionArticleNamespaces' => 'array',
 			'wgCommunityCollectionNamespace' => 'int',
 			'wgCollectionMaxArticles' => 'int',
 			'wgLicenseName' => 'text',
@@ -376,6 +377,7 @@ $extensions = array(
 			'wgCollectionPortletForLoggedInUsersOnly' => 'bool',
 		),
 		'array' => array(
+			'wgCollectionArticleNamespaces' => 'ns-simple',
 			'wgCollectionFormats' => 'assoc',
 		),
 		'empty' => array(
