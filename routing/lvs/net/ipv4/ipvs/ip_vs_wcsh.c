@@ -300,11 +300,12 @@ ip_vs_wcsh_get_feasible_dest(struct ip_vs_wcsh_dest_point *start,
 		const struct ip_vs_wcsh_data *sched_data)
 {
 	struct ip_vs_wcsh_dest_point *point = start;
+	unsigned int points_left = sched_data->pointcount;
 	
 	/* linear search */
-	while (1) {
-		for ( ; point != &sched_data->continuum[sched_data->pointcount]
-		      ; point++) {
+	while (points_left) {
+		for ( ; points_left && point != &sched_data->continuum[sched_data->pointcount]
+		      ; points_left--, point++) {
 			IP_VS_DBG(6, "[wcsh] Evaluating feasibility of server "
 					"%u.%u.%u.%u:%d [%u]: %d\n",
 					NIPQUAD(point->dest->addr), ntohs(point->dest->port), 
@@ -312,12 +313,12 @@ ip_vs_wcsh_get_feasible_dest(struct ip_vs_wcsh_dest_point *start,
 			
 			if (likely(ip_vs_wcsh_is_feasible(point->dest)))
 				return point;
-			else if (point+1 == start)
-				return NULL;	/* No feasible servers available */
 		}
 		/* Start over from the beginning of the array */
 		point = sched_data->continuum;
 	}
+	
+	return NULL; /* No feasible servers available */
 }
 
 static struct ip_vs_dest *
