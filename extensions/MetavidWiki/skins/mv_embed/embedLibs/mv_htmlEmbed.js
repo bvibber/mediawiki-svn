@@ -32,6 +32,10 @@ var htmlEmbed ={
 		//start up monitor: 
 		this.monitor();				
 	},
+	stop:function(){
+		this.pause();
+		window.clearInterval( this.monitorTimerId );
+	},
 	pause:function(){
 		js_log('f:pause: htmlEmbedWrapper');
 		var ct = new Date();
@@ -85,6 +89,10 @@ var htmlEmbed ={
 		}else{
 			$j(this).html(this.pc.wholeText);
 		}
+	},
+	doThumbnailHTML:function(){
+		js_log('f:htmlEmbed:doThumbnailHTML');
+		this.getEmbedHTML();
 	},
 	/* since its just html display get the "embed" right away */
 	getHTML:function(){

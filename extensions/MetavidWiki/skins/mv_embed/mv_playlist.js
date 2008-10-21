@@ -683,6 +683,8 @@ mvPlayList.prototype = {
 		
 		//do stop current clip
 		this.cur_clip.embed.stop();
+		//stop the monitor: 
+		window.clearInterval( this.smil_monitorTimerId );	
 	},	
 	doSeek:function(v){
 		js_log('pl:doSeek:'+v);
@@ -1362,6 +1364,7 @@ mvPlayList.prototype.monitor = function(){
 		clearInterval( this.smil_monitorTimerId );
 		return ;
 	}
+	js_log("pl check: " + this.currentTime + ' < '+this.getDuration());
 	//check if we should be done:
 	if( this.currentTime >  this.getDuration() ) 
 		this.stop();
