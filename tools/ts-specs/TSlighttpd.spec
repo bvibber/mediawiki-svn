@@ -14,6 +14,9 @@ SUNW_BaseDir:        %{_basedir}
 BuildRoot:           %{_tmppath}/%{name}-%{version}-build
 %include default-depend.inc
 
+Requires: TSpcre
+BuildRequires: TSpcre-devel
+
 %prep
 %setup -q -n lighttpd-%version
 

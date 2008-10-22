@@ -33,6 +33,7 @@ Requires: TSneon
 BuildRequires: SUNWPython
 BuildRequires: SUNWopenssl-include
 BuildRequires: TSgdbm-devel
+BuildRequires: TSneon-devel
 
 %description
 Subversion source code management system.
