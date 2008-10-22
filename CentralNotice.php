@@ -70,10 +70,11 @@ $wgExtensionCredits['other'][] = array(
 $wgExtensionMessagesFiles['CentralNotice'] = dirname(__FILE__) . '/CentralNotice.i18n.php';
 
 $dir = dirname(__FILE__) . '/';
-$wgAutoloadClasses['CentralNotice'] = dirname(__FILE__) . '/CentralNotice_body.php';
+$wgAutoloadClasses['CentralNotice'] = dirname(__FILE__) . '/SpecialNoticeCentral.php';
 
 $wgAvailableRights[] = 'centralnotice_admin_rights';
 $wgGroupPermissions['sysop']['centralnotice_admin_rights'] = true; // Only sysops can make change
+$wgGroupPermissions['sysop']['centralnotice_translate_rights'] = true; // Only sysops can make change
 	
 $wgSpecialPages['CentralNotice'] = 'CentralNotice';
 $wgSpecialPageGroups['CentralNotice'] = 'wiki'; // Wiki data and tools"
@@ -171,13 +172,14 @@ function efSelectNotice( $centralnotice_table ) {
 
 	$dbr = wfGetDB( DB_SLAVE );
 	$timestamp = wfTimestampNow();
-	$res = $dbr->select( $centralnotice_table, "id", array ( "notice_start_date <= '$timestamp'", "notice_end_date >= '$timestamp'", "notice_enabled = 'Y'", "notice_language = '$wgNoticeLang'", "notice_project = '$wgNoticeProject'")); 
+	$res = $dbr->select( $centralnotice_table, "notice_id", array ( "notice_start_date <= '$timestamp'", "notice_end_date >= '$timestamp'", "notice_enabled = 'Y'", "notice_language = '$wgNoticeLang'", "notice_project = '$wgNoticeProject'")); 
 	if ( $dbr->numRows( $res > 1 )) {
 		//notice overlap! not returning anything for safety
+		return;
 	}
 	else {
 		$row = $dbr->fetchObject( $res );
-		return $row->id;
+		return $row->notice_id;
 	}
 }
 

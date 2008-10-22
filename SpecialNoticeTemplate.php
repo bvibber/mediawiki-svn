@@ -55,12 +55,12 @@ class SpecialNoticeTemplate extends SpecialPage {
 			}
 		}
 
-		$method = $wgRequest->getVal('method');
-		$wgOut->addHtml("got method $method");
+		$method = $wgRequest->getVal('wpMethod');
 
 		if ( $method == 'addTemplate') { 
-			$this->addTemplate();
-			return;
+			$templateName = $wgRequest->getVal('templateName');
+			$templateBody = $wgRequest->getVal('templateBody');
+			$this->addTemplate( $templateName, $templateBody);
 		}
 		if ( $sub == 'listTemplates' ) { 
 			$this->listTemplates();
@@ -76,18 +76,18 @@ class SpecialNoticeTemplate extends SpecialPage {
 		 $res = $dbw->update($centralnotice_table, array( cnc_enabled => $enabled ), array( cnc_template => $update_notice));
 	}
 
-	private function previewTemplate() {
+	public static function previewTemplate() {
 	}
 
 
 	function queryTemplates() {
 		$centralnotice_template_table = "central_notice_templates";
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( $centralnotice_template_table, "name");
+		$res = $dbr->select( $centralnotice_template_table, "template_name");
 
 		$templates = array();
 		while ( $row = $dbr->fetchObject( $res )) {
-			array_push($templates, $row->name);
+			array_push($templates, $row->template_name);
 		}
 		return $templates;
 	}
@@ -100,30 +100,30 @@ class SpecialNoticeTemplate extends SpecialPage {
 	function templatesForm( $templates ) {
 		global $wgOut, $wgTitle;
 		
-		$table .= Xml::openElement('table', array ( 'id' => 'templates')) . 
+		$table .= Xml::fieldset( 'Available Templates' );
+		$table .= Xml::openElement( 'table', array ( 'id' => 'templates')) ; 
 		$templates = $this->queryTemplates();
 		foreach ( $templates as $templateName ) {
 			$table .= "<tr><td>" . $templateName . "</td></tr>";
 		}
 		$table .= Xml::closeElement( 'table' );
+		$table .= XML::closeElement( 'fieldset' );
 
 		$wgOut->addHtml( $table );
 
 		$wgOut->addHtml( 
 			Xml::openElement( 'form', array(
-                                'method' => 'get',
-				'action' =>  $this->getTitle( $this->mUserName )->getLocalUrl( 'method=addTemplate' ) )) .
+                                'method' => 'post',
+				'action' => SpecialPage::getTitleFor( 'NoticeTemplate' )->getFullUrl ) ) .
 			'<fieldset>' .
 		       Xml::element( 'legend', array(), wfMsg( 'centralnotice-add-template' ) ) .
-		       Xml::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
-		       Xml::hidden( 'wpMethod', $action ) .
+		       Xml::hidden( 'wpMethod', 'addTemplate' ) .
 		      '<p>' .
 		      Xml::inputLabel( wfMsg( 'centralnotice-template-name' ),
 			'templateName', 'templateName', 25, $this->mTemplateName) .
 		      '</p>' .
 		      '<p>' . 
-		      Xml::inputLabel( wfMsg( 'centralnotice-template-body'),
-		      	'templateBody', 'templateBody', 60, $this->templateBody) .
+		      Xml::textarea( 'templateBody', '', 60, 20) .
 		      '<p>' .
 		      Xml::submitButton( wfMsg( 'centralnotice-modify' ) ) .
 		      Xml::submitButton( wfMsg( 'centralnotice-preview' ) ) .
@@ -153,21 +153,31 @@ class SpecialNoticeTemplate extends SpecialPage {
 		$wgOut->addHTML( $form );
 	}
 
-	function addTemplate ( $template ) {
+	function addTemplate ( $templateName, $templateBody ) {
+		global $wgOut;
+
 		$dbr = wfGetDB( DB_SLAVE );
 		$centralnotice_table = 'central_notice_templates';
 
-		$eTemplateName = mysql_real_escape_string( $templateName );
+		$eTemplateName = htmlspecialchars ( $templateName );
 		 
-		$res = $dbr->select( $centralnotice_table, 'name', "notice_name = '$eTemplateName' " );
+		$res = $dbr->select( $centralnotice_table, 'template_name', "template_name = '$eTemplateName' " );
 		if ( $dbr->numRows( $res ) > 0 ) { 
 		 	$wgOut->addHTML( wfMsg( 'centralnotice-template-exists' ) );
 			return;
 		}
 		else {
 			 $dbw = wfGetDB( DB_MASTER );
-			 $res = $dbw->insert( $centralnotice_table, array( notice_name => "$noticeName"));
+			 $res = $dbw->insert( $centralnotice_table, array( template_name => "$templateName"));
+			 
+			 //perhaps these should move into the db as blob
+			 $templatePage = "Centralnotice-" . "template-" . "$templateName";
+			 $title = Title::newFromText( $templatePage, NS_MEDIAWIKI );
+			 $article = new Article( $title );
+			 $templateBody = htmlspecialchars ( $templateBody );
+			 $article->doEdit( $templateBody, '' );
 			 return;
+			
 		}
 	}
 }
