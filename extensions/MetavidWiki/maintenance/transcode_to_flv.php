@@ -15,7 +15,7 @@ $mvMountedDest	 = '/media/mv_ssh_flvMediaStorage/';
 //include commandLine.inc from the mediaWiki maintance dir: 
 require_once ('../../../maintenance/commandLine.inc');
 
-//for gennerate flv metadata:
+//for generate flv metadata:
 include_once('../skins/mv_embed/flvServer/MvFlv.php');
 
 define('MV_BASE_MEDIA_SERVER_PATH', 'http://mvbox2.cse.ucsc.edu/mvFlvServer.php/');

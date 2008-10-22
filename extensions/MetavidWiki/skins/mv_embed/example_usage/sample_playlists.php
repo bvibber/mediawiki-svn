@@ -45,7 +45,7 @@ $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://s
 				'<br>' .
 				'<iframe width="500" height="200" src="' . $smilURL . '">rss feed here</iframe>';
 
-$smilURL = 'http://localhost/mvw-exp/index.php/Special:MvExportSequence/Test';
+$smilURL = 'http://localhost/wiki/index.php/Special:MvExportSequence/Test';
 $sample_embed[9]['tag'] = '<playlist src="' . $smilURL . '" />';
 $sample_embed[9]['desc'] = ' <br><b>MediaWiki example:</b><br/>'.
 				'<br>' .

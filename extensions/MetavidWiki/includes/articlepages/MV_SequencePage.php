@@ -155,6 +155,9 @@ class MV_SequencePage extends Article {
  			case NS_MAIN:
  				//top level ref includes of pages in the main namespace not supported
  			break;
+ 			case MV_NS_SEQUENCE:
+ 				//type sequence ..@@todo transclude the sequence into present sequence (try to avoid id) 
+ 			break;
  			case NS_TEMPLATE:
  				//templates are of type text/html
  				$node->setAttribute('type','text/html');
@@ -200,26 +203,28 @@ class MV_SequencePage extends Article {
  				
  				// (probably should be handled via "figure" namespace which could allow arbitrary crop, resize, overlay) 				
  				$img = wfFindFile( $uriTitle ); 	
- 				if(!$img){
- 					$node->setAttribute('type','text/html');
- 					//print "image not found \n";
+ 				if( !$img ){
+ 					$node->setAttribute('type','text/html'); 					
  					$this->parseInnerWikiText($node, wfMsg('mv_resource_not_found',$uriTitle->getText()));
  				}else{
  					//print "resource found set: " . $img->getMimeType();
 	 				//set type attribute:  
 	 				//get a default wide media; 
- 					$thumbnail = $img->transform( array('width'=>$width) );
- 				
- 					$node->setAttribute('type',$img->getMimeType());
- 					$node->setAttribute('src', $thumbnail->file->getURL());
- 					
- 					//if type is ogg: (set dur and poster) 
- 					if( $img->getMimeType()=='application/ogg') {
- 						if( !$node->hasAttribute('dur') )
- 							$node->setAttribute('dur',  $thumbnail->file->getLength() );
- 						if( !$node->hasAttribute('poster') ){
- 							$node->setAttribute('poster',  $thumbnail->url);
- 						}
+	 				$thumbnail = $img->transform( array('width'=>$width) );
+ 					if( $thumbnail->isError()  ){
+ 						$this->parseInnerWikiText( $node, $thumbnail->toHtml() );
+ 					}else{ 					 				
+		 				$node->setAttribute( 'type', $img->getMimeType() );
+		 				$node->setAttribute( 'src', $thumbnail->file->getURL() );
+		 				
+		 				//if type is ogg: (set dur and poster) 
+		 				if( $img->getMimeType()=='application/ogg') {
+		 					if( !$node->hasAttribute('dur') )
+		 						$node->setAttribute('dur',  $thumbnail->file->getLength() );
+		 					if( !$node->hasAttribute('poster') ){
+		 						$node->setAttribute('poster',  $thumbnail->url);
+		 					}
+		 				}
  					}
  				}
  			break; 
@@ -227,33 +232,43 @@ class MV_SequencePage extends Article {
 		return $node;
 	}
 	//@@todo in the future we could do normal XML validation
-	function validateNodeAttributes(&$node){
+	function validateNodeAttributes( &$node ){
 		//make sure only valid node Attributes per node name get through & htmlentities the values 
 	}
 	/*
 	 * parse the inner node as wiki text 
 	 */
-	function parseInnerWikiText(&$node, $innerWikiText=''){
+	function parseInnerWikiText( &$node, $innerWikiText=''){
 		global $wgParser;
-		if($innerWikiText==''){
-			if( $node->hasChildNodes() ){		
-				while ($node->childNodes->length){
-					$innerWikiText.= $node->ownerDocument->saveXML($node->firstChild);
-	     			$node->removeChild($node->firstChild);
-				}																							
-			}
-		}
+		//put all the child nodes into $innerWikiText
+		if( $node->hasChildNodes() ){		
+			while ($node->childNodes->length){
+				$innerWikiText.= $node->ownerDocument->saveXML($node->firstChild);					
+     			$node->removeChild($node->firstChild);
+			}																							
+		}				
 		if(trim($innerWikiText)!=''){	
 			$f = $node->ownerDocument->createDocumentFragment();
 			$parserOutput = $wgParser->parse($innerWikiText  ,$this->mTitle, ParserOptions::newFromUser( $wgUser ));				
 		    $f->appendXML( "<![CDATA[\n".
 		    		$parserOutput->getText() . 
-		    		"]]>"		    		
+		    		"\n]]>"		    		
 		    	);				
 			$node->appendChild($f); 				 
 		}
 		return $node;
 	}
+	function replaceInnerNodeText( &$node, $text){
+		while ($node->childNodes->length){			
+     		$node->removeChild($node->firstChild);
+		}	
+		$f = $node->ownerDocument->createDocumentFragment();
+		$f->appendXML(  "<![CDATA[\n". 
+		 					$text .
+		 				  "\n]]>"		); 
+		$node->appendChild($f);
+		return $node; 	
+	}		
 	/*function getSmilXml(){
 		$o= '<smil xmlns="http://www.w3.org/2001/SMIL20/Language">'."\n";
 		$o.=$this->ary2xml($this->aHLRD, $baseIndent=1);

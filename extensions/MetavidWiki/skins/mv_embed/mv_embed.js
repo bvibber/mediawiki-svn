@@ -97,8 +97,9 @@ gMsg['ogg-player-quicktime-activex']='Quicktime ActiveX';
 gMsg['ogg-player-cortado']='Java Cortado';
 gMsg['ogg-player-flowplayer']='Flowplayer';
 gMsg['ogg-player-selected']=' (selected)';
-gMsg['generic_missing_plugin']='You don\'t appear to have a supported in browser playback method<br>' +
-		'visit the <a href="http://metavid.ucsc.edu/wiki/index.php/Client_Download">Playback Methods</a> page to download a player<br>';
+gMsg['generic_missing_plugin']='You browser does not appear to support playback type: <b>$1</b><br>' +
+		'visit the <a href="http://metavid.org/wiki/Client_Playback">Playback Methods</a> page to download a player<br>';
+		
 gMsg['add_to_end_of_sequence']='Add to End of Sequence';
 
 gMsg['missing_video_stream']='The video file for this stream is missing';
@@ -116,9 +117,16 @@ gMsg['seek_to']='Seek to';
 
 //grabs from the globalMsg obj
 //@@todo integrate msg serving into CMS
-function getMsg( key ) {
+function getMsg( key , args ) {
 	 if ( key in gMsg ) {
-	 	return gMsg[key];getCont
+	    if(typeof args == 'object'){	 	
+		 	for(var v in args){
+		 		gMsg[key] = gMsg[key].replace('/\$'+v+'/', args[v]);
+		 	}
+	 	}else if(typeof args =='string'){
+	 		gMsg[key] = gMsg[key].replace(/\$1/, args);
+	 	}
+	 	return gMsg[key];
 	 } else{
 	 	return '[' + key + ']';
 	 }
@@ -194,13 +202,17 @@ var mvEmbed = {
 	'$j.ui.progressbar':'jquery/jquery-ui-personalized-1.6rc1.debug.js'	
    */
   pc:null, //used to store pointer to parent clip (when in playlist mode)
-  load_libs:function(callback){
+  load_libs:function( callback , target_id){
+  	js_log('f:load_libs'+callback);
   	if(callback)this.load_callback = callback;
   	//if libs are already loaded jump directly to the callback
   	if(this.libs_loaded){
-  		callback();
+  		mvEmbed.init( target_id );
   		return true;
   	}
+  	//set up embedTypes		
+	embedTypes.init();
+		
  	//two loading stages, first get jQuery
 	var _this = this;
   	mvJsLoader.doLoad(this.lib_jquery,function(){
@@ -225,12 +237,12 @@ var mvEmbed = {
   addLoadEvent:function(fn){
   	this.flist.push(fn);
   },
-  init: function(){
+  init: function( target_id ){
     //load mv_embed skin stylesheet: 
   	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/styles.css'))
 		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/styles.css');
   	
-	mv_embed();	
+	mv_embed( target_id );	
 	
 	this.check_init_done();
   },
@@ -238,18 +250,18 @@ var mvEmbed = {
    * should be cleaned up ... the embedType loading should be part of load_libs above:
    */
   check_init_done:function(){
-  	//js_log('f:check_init_done');
+  	js_log('f:check_init_done');
   	//check if all videos are "ready to play"
   	var is_ready=true;
   	for(var i in global_player_list)
-    	is_ready = ( $j('#'+global_player_list[i]).get(0).ready_to_play ) ? is_ready : false;  	
-    	
+    	is_ready = ( $j('#'+global_player_list[i]).get(0).ready_to_play ) ? is_ready : false;  	    	
   	if(!is_ready){
   		//js_log('some ' + global_player_list + ' not ready');
   		setTimeout( 'mvEmbed.check_init_done()', 250 );
   	}else{
 		//call the callback:
-		if(this.load_callback)this.load_callback();
+		if(typeof this.load_callback == 'function')
+			if(this.load_callback)this.load_callback();		
 		
 		//js_log('run queue functions:' + mvEmbed.flist);
 		while (mvEmbed.flist.length){
@@ -913,9 +925,7 @@ function init_mv_embed(force){
 	//check if this page does have video or playlist
 	if(document.getElementsByTagName("video").length!=0 ||
 	   document.getElementsByTagName("playlist").length!=0){
-		js_log('we have vids to process');
-		//set up embedTypes		
-		embedTypes.init();
+		js_log('we have vids to process');		
 		//load libaries		    		
 		mvEmbed.load_libs();		
 	}else{
@@ -928,19 +938,12 @@ function init_mv_embed(force){
 }
 
 /*
- * this function allows for targeted rewriting (the host element does not have to be <video> tag)
+ * this function allows for targeted rewriting 
  */
-function rewrite_by_id(vid_id){
-	js_log('f:rewrite_by_id');
-	//confirm the nessesary libs are loaded.
-	if(!mvEmbed.libs_loaded){
-		//set up embedTypes		
-		embedTypes.init();			
-		//load libs and swap <video> tag: 
-		mvEmbed.load_libs(function(){
-			js_log('rewrite_by_id done');			
-		});
-	}
+function rewrite_by_id( vid_id ){
+	js_log('f:rewrite_by_id: ' + vid_id);
+	//force a recheck of the dom for playlist or video element: 	
+	mvEmbed.load_libs( vid_id );
 }
 
 
@@ -994,13 +997,18 @@ if (document.addEventListener && !embedTypes.safari) {
 /*
 * Coverts all occurrences of <video> tag into video object
 */
-function mv_embed(){
+function mv_embed( force_id ){
 	//get mv_embed location if it has not been set
 	js_log('mv_embed ' + mvEmbed.Version);
 	
 	var loadPlaylistLib=false;
-	//jquery version: 
-	$j('video,playlist').each(function(){
+	//set up the jquery selector: 
+	var j_selector = 'video,playlist';
+	if(force_id!=null)
+		var j_selector = '#'+force_id;
+		
+	//procces selected elements: 
+	$j(j_selector).each(function(){
 		js_log( "LOOP ON: " +this.id + ' tag: '+ this.tagName);
 		
 		elm_id = $j(this).attr("id");
@@ -1016,10 +1024,10 @@ function mv_embed(){
         //if video doSwap
         if(this.tagName=='VIDEO'){
         	var videoInterface = new embedVideo(this);	  
-			swapEmbedVideoElement(this, videoInterface);
+			swapEmbedVideoElement( this, videoInterface );
         }
         //if playlist set do load playlist
-        if(this.tagName=='PLAYLIST')
+        if( this.tagName == 'PLAYLIST' )
         	loadPlaylistLib=true; 
 	});
 	if(loadPlaylistLib){
@@ -1027,7 +1035,7 @@ function mv_embed(){
 		mvJsLoader.doLoad({'mvPlayList':'mv_playlist.js'},function(){
 			$j('playlist').each(function(){							
 				//create new playlist interface:
-				var plObj = new mvPlayList( this );
+				var plObj = new mvPlayList( this );				
 				swapEmbedVideoElement(this, plObj);		
 				//move into a blocking display container with height + controls + title height: 
 				$j('#'+plObj.id).wrap('<div style="display:block;height:' + (plObj.height+55) + 'px;"></div>');		
@@ -1091,8 +1099,8 @@ function mv_do_sequence(initObj){
 	//issue a request to get the css file (if not already included):
 	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css'))
 		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');
-	//make sure we have the required mv_ebed libs (they are not loaded when no video element is on the page)
-	mvEmbed.load_libs(function(){
+	//make sure we have the required mv_embed libs (they are not loaded when no video element is on the page)	
+	mvEmbed.load_libs(function(){		
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
 				'mvPlayList':'mv_playlist.js'
@@ -1603,9 +1611,9 @@ mediaSource.prototype =
         @type String
     */
     getURI : function(seek_time_sec)
-    {
-    	if(!seek_time_sec)
-       		return this.src;		       		       
+    {    	
+    	if( !seek_time_sec || !this.supports_url_time_encoding )
+       		return this.src;		       		              	
        	var new_url = getUpdateTimeURL(this.src,  seconds2ntp(seek_time_sec)+'/'+ this.end_ntp);   
        	return new_url;
     },
@@ -1932,6 +1940,7 @@ embedVideo.prototype = {
     media_element:null,
 	slider:null,		
 	ready_to_play:false, //should use html5 ready state
+	load_error:false, //used to set error in case of error
 	loading_external_data:false,
 	thumbnail_updating:false,
 	thumbnail_disp:true,
@@ -2033,37 +2042,29 @@ embedVideo.prototype = {
 		//auto select player based on prefrence or default order
 		if( !this.media_element.selected_source )
 		{
-			js_log('no sources, set to ready (to display missing source html)');
-			//do load player if just displaying innerHTML: 
-			if(this.type =='text/html'){
-				this.selected_player = embedTypes.players.defaultPlayer( 'text/html' );	
-			}						
+			//check for parent clip: 
+			if(typeof this.pc != 'undefined'){			
+				js_log('no sources, type:' +this.type + ' check for html');				
+				//do load player if just displaying innerHTML: 
+				if(this.pc.type =='text/html'){
+					this.selected_player = embedTypes.players.defaultPlayer( 'text/html' );
+					js_log('set selected player:'+ this.selected_player);	
+				}
+			}
 		}else{		
-        	this.selected_player = embedTypes.players.defaultPlayer(this.media_element.selected_source.mime_type);
+        	this.selected_player = embedTypes.players.defaultPlayer( this.media_element.selected_source.mime_type );
 		}
-		
+				
         if(this.selected_player){
             js_log('selected ' + this.selected_player.getName());
             js_log("PLAYBACK TYPE: "+this.selected_player.library);
+            this.thumbnail_disp = true;	    
+			this.inheritEmbedObj();
+			this.init_with_sources_loadedDone=true;
         }else{
-            js_log('no player found for mime type ' + this.media_element.selected_source.mime_type);
-        }
-
-        this.thumbnail_disp = true;
-	    /*
-	    * @@TODO lazy load plugin types
-	    * override all relevant exported functions with the {embed_type} Object
-	    * place the base functions in parent.{function name}
-	    */	    
-		this.inheritEmbedObj();
-
-  		//update HTML
-  		//$j('#'+embed_video.id).get(0).getHTML();
-
-		//js_log('HTML FROM IN OBJECT' + this.getHTML());
-		//return this object:
-		//return this;		
-		this.init_with_sources_loadedDone=true;
+            js_log('no player found for given source type ' + this.pc.type);
+            this.load_error= getMsg('generic_missing_plugin', this.pc.type );
+        }        
 	},
 	inheritEmbedObj:function(){
 		js_log("f: inheritEmbedObj");
@@ -2863,6 +2864,7 @@ embedVideo.prototype = {
 		}else{
 			//the plugin is already being displayed
 			js_log("we are already playing..." );
+			this.paused=false; //make sure we are not "paused"
 		}
 		 //update "paused state"      
 		 js_log("SHOULD UPDATE play BUTTON");

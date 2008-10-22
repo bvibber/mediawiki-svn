@@ -27,8 +27,7 @@ var htmlEmbed ={
 		js_log('f:play: htmlEmbedWrapper');
 		var ct = new Date();	
 		this.clockStartTime = ct.getTime();
-		
-		this.monitorTimerId=false;	
+			
 		//start up monitor: 
 		this.monitor();				
 	},
@@ -55,8 +54,8 @@ var htmlEmbed ={
 		if( ! this.monitorTimerId ){
 	    	if(document.getElementById(this.id)){
 	    		if( !MV_ANIMATION_CB_RATE )
-	    			var MV_ANIMATION_CB_RATE= 33;
-	        	this.monitorTimerId = window.setInterval('$j(\'#'+this.id+'\').get(0).monitor()', MV_ANIMATION_CB_RATE);
+	    			var MV_ANIMATION_CB_RATE= 33;	    			
+	        	this.monitorTimerId = window.setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
 	    	}
 	    }
 	},
@@ -83,12 +82,15 @@ var htmlEmbed ={
 		//set up the css for our parent div: 		
 		$j(this).css({'width':this.pc.pp.width, 'height':this.pc.pp.height, 'overflow':"hidden"});
 		//@@todo support more smil stuff: 
+		var out='';
 		if( this.pc.type =='image/jpeg'){
 			js_log('should put src: '+this.pc.src);
-			$j(this).html('<img src="'+this.pc.src+'">');
+			out = '<img src="'+this.pc.src+'">';
 		}else{
-			$j(this).html(this.pc.wholeText);
+			out = this.pc.wholeText;
 		}
+		//wrap output in videoPlayer_ div:
+		$j(this).html('<div id="videoPlayer_'+ this.id+'">'+out+'</div>');
 	},
 	doThumbnailHTML:function(){
 		js_log('f:htmlEmbed:doThumbnailHTML');

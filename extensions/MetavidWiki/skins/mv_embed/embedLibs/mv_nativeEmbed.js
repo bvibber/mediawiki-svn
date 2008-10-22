@@ -2,6 +2,7 @@
 var nativeEmbed = {
 	instanceOf:'nativeEmbed',
 	canPlayThrough:false,
+	grab_try_count:0,
     supports: {
     	'play_head':true, 
     	'play_or_pause':true,     	
@@ -12,13 +13,13 @@ var nativeEmbed = {
     	'overlays':true,
     	'playlist_swap_loader':true //if the object supports playlist functions    	
    },
-    getEmbedHTML : function (){
-		setTimeout('$j(\'#'+this.id+'\').get(0).postEmbedJS()', 150);
-		//set a default duration of 30 seconds: cortao should detect duration.
+    getEmbedHTML : function (){				
 		var embed_code =  this.getEmbedObj();
 		js_log('embed code: ' + embed_code);
 		js_log("DURATION: "+ this.getDuration() );
 		return this.wrapEmebedContainer( embed_code);
+		
+		setTimeout('$j(\'#'+this.id+'\').get(0).postEmbedJS()', 150);
     },
     getEmbedObj:function(){
     	//we want to let mv_embed handle the controls so notice the absence of control attribute
@@ -28,23 +29,32 @@ var nativeEmbed = {
 					'id="'+this.pid + '" ' +
 					'style="width:'+this.width+'px;height:'+this.height+'px;" ' +
 					'width="'+this.width+'" height="'+this.height+'" '+
-				   	'src="' + this.media_element.selected_source.getURI(this.seek_time_sec) + '" ' +				   	
+				   	'src="' + this.media_element.selected_source.getURI( this.seek_time_sec ) + '" ' +				   	
 				   	'oncanplaythrough="$j(\'#'+this.id+'\').get(0).oncanplaythrough();return false;" ' +
 				   	'onloadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' + 
 				   	'loadedmetadata="$j(\'#'+this.id+'\').get(0).onloadedmetadata();return false;" ' +
 				   	'onended="$j(\'#'+this.id+'\').get(0).onended();return false;" >' +
 				'</video>';
 	},
-	//@@todo : loading progress
+	//@@todo : loading progress	
 	postEmbedJS:function(){		
 		this.getVID();
 		if(typeof this.vid != 'undefined'){
+			js_log("GOT video object sending PLAY()");			
 			this.vid.play();
 			//this.vid.load(); //does not seem to work so well	
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()',100);		
 		}else{
 			js_log('could not grab vid obj trying again:' + typeof this.vid);
-			setTimeout('$j(\'#'+this.id+'\').get(0).postEmbedJS()',100);	
+			this.grab_try_count++;
+			if(	this.grab_count == 10 ){
+				js_log(' could not get vid object after 10 tries re-run: getEmbedObj()' ) ;
+				//reload the dom:
+				this.grab_try_count=0;
+				this.getEmbedObj();				
+			}else{
+				setTimeout('$j(\'#'+this.id+'\').get(0).postEmbedJS()',100);
+			}			
 		}		
 	},	
 	monitor : function(){
@@ -98,7 +108,7 @@ var nativeEmbed = {
 	 */
 	oncanplaythrough : function(){		
 		js_log("f:oncanplaythrough start playback");			
-		//this.play();
+		this.play();
 	},
 	onloadedmetadata: function(){
 		js_log('f:onloadedmetadata get duration: ' +this.vid.duration);

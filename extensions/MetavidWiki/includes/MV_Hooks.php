@@ -75,8 +75,8 @@ function LinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options, 
 */
  function mvLinkEnd($skin, $title, $options, &$text, &$attribs, &$ret){
  	global $mvEmbedKey, $mvDefaultAspectRatio,$mvDefaultVideoPlaybackRes; 	 
- 	
- 	if( substr( $title->getText(), 0, strlen($mvEmbedKey) )==$mvEmbedKey){
+ 	//print "linkend: $mvEmbedKey\n";
+ 	if( substr( $title->getText(), 0, strlen($mvEmbedKey) ) == $mvEmbedKey ){
  		//parse text for extra params: 
  		$params = explode('|', $text);
  		//set up defaults:
@@ -102,7 +102,7 @@ function mvAddToolBoxLinks(){
 		//make sure the Messages are loaded		
 		//add export cmml link: 		
 		$sTitle = Title::makeTitle( NS_SPECIAL, 'MvExportStream' );
-		$sk = $wgUser->getSkin();		
+		$sk = $wgUser->getSkin();
 		$link = $sk->makeKnownLinkObj( $sTitle,wfMsg('mv_stream_resource_export'),
 				'feed_format=roe&stream_name=' . htmlspecialchars( $wgArticle->mvTitle->getStreamName() ) . '&t=' . htmlspecialchars($wgArticle->mvTitle->getTimeRequest() ),
 				'', '', 'title="' . htmlspecialchars( wfMsg( 'mv_export_cmml' ) ) . '"' );

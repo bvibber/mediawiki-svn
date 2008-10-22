@@ -129,6 +129,7 @@ $mvDefaultVideoIconSize = '80x60';
 
 //if to display the ROE resource link
 $mvDispROEicon=false;
+
 //The text Embed a metavid Stream inline in the wiki 
 $mvEmbedKey = 'EmbedStream';
 

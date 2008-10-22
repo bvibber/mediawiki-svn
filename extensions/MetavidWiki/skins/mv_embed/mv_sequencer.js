@@ -39,9 +39,14 @@ var sequencerDefaultValues = {
 	instance_name:'mvSeq', //for now only one instance by name mvSeq is allowed	
 	sequence_container_id:'null',//text value (so that its a valid property) 
 	video_container_id:'mv_video_container',
+	
+	video_width : 400,
+	video_height: 300,	
+	
 	sequence_tools_id:'mv_sequence_tools',
 	timeline_id:'mv_timeline',
-	plObj_id:'plobj',
+	plObj_id:'seq_plobj',
+	plObj_clone:null,
 
 	track_timeline_format:'boxes', //boxes (imovie like) or timeline ( finalCut like) 
 	
@@ -58,7 +63,7 @@ var sequencerDefaultValues = {
 	//tack/clips can be pushed via json or inline playlist format
 	inline_playlist:'null', //text value so its a valid property 
 	inline_playlist_id:'null',
-	mv_pl_url_id:'null',
+	mv_pl_src:'null',
 	//the edit stack:
 	edit_stack:new Array(),
 	
@@ -69,7 +74,8 @@ var mvSequencer = function(initObj) {
 	return this.init(initObj);
 };
 //set up the mvSequencer object
-mvSequencer.prototype = {				
+mvSequencer.prototype = {			
+	plObj:null,	
 	init:function(initObj){	
 		//set the default values:
 		for(i in sequencerDefaultValues){
@@ -98,18 +104,18 @@ mvSequencer.prototype = {
 						  Math.round(this['base_width']*.5):320;
 			var vid_height =  Math.round(vid_width*.75)+30;
 			*/
-			var vid_width=320;
-			var vid_height=240+30;
+			//var vid_width=320;
+			//var vid_height=240+30;
 			
 			
 			//add the container divs (with basic layout) 
 			$j('#'+this.sequence_container_id).html(''+
 				'<div id="'+this.video_container_id+'" style="position:absolute;right:0px;top:0px;' +
-					'width:'+vid_width+'px;height:'+vid_height+'px;border:solid thin blue;"/>'+
+					'width:'+this.video_width+'px;height:'+this.video_height+'px;border:solid thin blue;background:#FFF;font-color:black;"/>'+
 				'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
-					'left:0px;right:'+(vid_width+10)+'px;top:0px;height:'+vid_height+'px;border:solid thin black;"/>'+
+					'left:0px;right:'+(this.video_width+10)+'px;top:0px;height:'+this.video_height+'px;border:solid thin black;"/>'+
 				'<div id="'+this.timeline_id+'" style="position:absolute;' + 
-					'left:0px;right:0px;top:'+(vid_height+10)+'px;bottom:0px;border:solid thin red;"/>');
+					'left:0px;right:0px;top:'+(this.video_height+10)+'px;bottom:0px;border:solid thin red;"/>');
 			
 			js_log('set: '+this.sequence_container_id + ' html to:'+ "\n"+
 				$j('#'+this.sequence_container_id).html()
@@ -127,10 +133,7 @@ mvSequencer.prototype = {
 			}
 			menu_html+='</ul>';
 			$j('#'+this.sequence_tools_id).html( menu_html + 
-				'<div id="seq_tool_disp_'+this.instance_name+'">Welcome bla bla<br>' +
-					'1<br>' +
-					'2<br>' +
-					'3<br>' +
+				'<div id="seq_tool_disp_'+this.instance_name+'">Welcome to The sequencer demo<br>' +					
 				'</div>'
 			);
 			
@@ -161,46 +164,31 @@ mvSequencer.prototype = {
 				'<div id="'+this.timeline_id+'_head_jump" class="mv_head_jump" style="position:absolute;top:0px;left:0px;height:20px;"></div>'+
 				'<div id="'+this.timeline_id+'_playline" class="mv_playline"></div>'+
 			'</div>'
-		);		
-		//add inline pl:
-		if(this.inline_playlist_id!='null'){			
-			var pl_txt = $j('#'+this.inline_playlist_id).html();
-			//free the inline placeholder
-			$j('#'+this.inline_playlist_id).remove();
-			//js_log('add to '+ this.video_container_id);
-			$j('#'+this.video_container_id).html('<playlist sequencer="true" id="'+this.plObj_id+'">'+pl_txt+'</playlist>');
-		}
+		);			
 		//add src based pl: 
-		if(this.mv_pl_url_id!='null'){
-			js_log(' id: '+ this.mv_pl_url_id);
-			var pl_url = $j('#'+this.mv_pl_url_id).html();
-			js_log("PL URL : " + pl_url)
-			$j('#'+this.video_container_id).html('<playlist sequencer="true" id="'+this.plObj_id+'" src="'+pl_url+'"/>');
+		if( this.mv_pl_src != 'null' ) {
+			js_log( ' pl src:: '+ this.mv_pl_src );			
+			var src_attr=' src="'+ this.mv_pl_src+'" ';
 		}else{
-			js_log(' id: '+ this.mv_pl_url_id);
+			js_log( ' null playlist src .. (start empty) '); 
+			var src_attr='';
 		}	
-	
-		//js_log('added: '+ pl_txt);
-		//js_log('video now has: '+ $j('#'+this.video_container_id).html() );
-		//run rewrite playlist tag: 
-		do_playlist_functions();	
-		//set the local plObj:
-		this.plObj = $j('#'+this.plObj_id).get(0);			
-		if(this.plObj){				
-			this.plReadyTimeout=0;
-			setTimeout(this.instance_name +'.checkReadyPlObj()', 25);
-		}
+		$j('#'+this.video_container_id).html('<playlist ' + src_attr +
+			' style="width:'+this.video_width+'px;height:'+this.video_height+'px;" '+
+			' sequencer="true" id="'+this.plObj_id+'" />');
+		//@@todo extend playlist object (overwite 
+		rewrite_by_id( this.plObj_id );
 	},
 	//once playlist is ready continue 
-	checkReadyPlObj:function(){
-		if(this.plObj.loading){
+	checkReadyPlObj:function(){		
+		if( this.plObj.loading ){
 			if(this.plReadyTimeout==200){
 				js_error('error playlist never ready');
 			}else{
 				this.plReadyTimeout++;
 				setTimeout(this.instance_name +'.checkReadyPlObj()', 25);
 			}
-		}else{
+		}else{			
 			this.plReadyInit();
 		}
 	},
@@ -748,3 +736,5 @@ mvSequencer.prototype = {
 	}
 		
 }
+
+

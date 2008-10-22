@@ -67,14 +67,17 @@ mvPlayList.prototype = {
 	tracks:{},
 	default_track:null, // the default track to add clips to.
 	init : function(element){
-		js_log('init');				
+		js_log('mvPlayList:init:');		
+		this.tracks={};		
+		this.default_track=null;						
+	    	
 		//add default track & default track pointer: 
-		this.tracks[0]= new trackObj;
-		this.default_track = this.tracks[0];
+		this.tracks[0]= new trackObj();
+		this.default_track = this.tracks[0];				
 		
 		//get all the attributes:
 	  	for(var attr in mv_default_playlist_attributes){       
-	        if(element.getAttribute(attr)){
+	        if( element.getAttribute(attr) ){
 	            this[attr]=element.getAttribute(attr);
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+'elm_val:' + element.getAttribute(attr) + "\n (set by elm)");  
 	        }else{        
@@ -88,12 +91,13 @@ mvPlayList.prototype = {
 		
 	    //if style is set override width and height
 	    if(element.style.width)this.width = parseInt(element.style.width.replace('px',''));
-	    if(element.style.height)this.height = parseInt(element.style.height.replace('px',''));	    	   	    
+	    if(element.style.height)this.height = parseInt(element.style.height.replace('px',''));	    	   	    	    	   
 	    
 	    //@@todo more attribute value checking: 
 	    
     	//if no src is specified try and use the innerHTML as a sorce type:
-    	if(!this.src){	    	
+    	//we only support playlist via src now: 
+    	/*if(!this.src){	    	
     		//no src set check for innerHTML: 
     		if(element.innerHTML==''){
     			//check if we are in IE .. (ie does not expose innerHTML for video or playlist tags) 
@@ -117,10 +121,10 @@ mvPlayList.prototype = {
     	}else{
     		js_log('src exists');
 	        this.inner_playlist_html=element.innerHTML;
-    	}
+    	}*/    	
 	    //get and parse the src playlist *and update the page*
-	    return this;	    
-	},
+	    //return this;	    
+	},			
 	//the element has now been swaped into the dom: 
 	on_dom_swap:function(){
 		js_log('pl: dom swap');
@@ -145,12 +149,21 @@ mvPlayList.prototype = {
 		$j('#modalbox').html('loading editor<blink>...</blink>');
 		var _this=this;
 		js_log("calling sequence with url:"+ _this.src);
+		
+		//clone the playlist (deep=true) : 
+		/*
+		this_plObj_Clone = this.clone( true );		
+		this_plObj_Clone.sequencer=true;
+		this_plObj_Clone.id= 'seq_plobj';
+		*/
+		
 		//load sequencer: 
 		mv_do_sequence({
 				"sequence_container_id":'modalbox', 
-				"mv_pl_url_id":_this.src, //kind of redundant but make for a clean "cancel".. 
-				"mv_pl_hlrd_url":_this.hlrd
-				// we could switch to moving around dom elements if performance is an issue 
+				//@@todo we should copy over "this" playlist object 
+				//for cases where the playlist is already in the page 
+				"mv_pl_src":this.src
+				//"mv_pl_obj":this_plObj_Clone 								
 			});
 					
 	},
@@ -202,9 +215,13 @@ mvPlayList.prototype = {
 		js_log('f:doWhenParseDone');
 		//do additional int for clips: 
 		var _this = this;
+		var error=false;
 		_this.clip_ready_count=0;		
 		for(var i in this.default_track.clips){
 			var clip = 	this.default_track.clips[i];
+			if(clip.embed.load_error){
+				var error = clip.embed.load_error;
+			}
 			if( clip.embed.ready_to_play ){
 				_this.clip_ready_count++;
 				continue;
@@ -220,10 +237,11 @@ mvPlayList.prototype = {
 		// ie vlc can play flash _followed_by_ ogg _followed_by_ whatever 
 		// 		but
 		// native ff 3.1a2 can only play ogg 
-		if(_this.clip_ready_count == this.getClipCount() ){
-			js_log("done initing all clips");
-			this.loading=false;
-			this.getHTML();
+		if( error){
+			$j(this).html( error );
+		}else if(_this.clip_ready_count == this.getClipCount() ){
+			js_log("done initing all clips");			
+			this.doWhenClipLoadDone();
 		}else{
 			js_log("only "+ _this.clip_ready_count +" clips done, scheduling callback:");
 			setTimeout('document.getElementById(\''+this.id+'\').doWhenParseDone()', 250);
@@ -231,6 +249,7 @@ mvPlayList.prototype = {
 	},
 	doWhenClipLoadDone:function(){
 		this.loading=false;
+		this.ready_to_play=true;
 		this.getHTML();
 	},	
 	getDuration:function(regen){			
@@ -378,7 +397,7 @@ mvPlayList.prototype = {
 					'	<div style="font-size:13px;width:'+this.width+'px;" id="ptitle_'+this.id+'"></div>' +
 					'</div>');												
 			
-			//add the playlist controls:			
+			//add the playlist controls:						
 			$j('#dc_'+plObj.id).append(
 				'<div class="videoPlayer" style="position:absolute;top:'+(plObj.height+pl_layout.title_bar_height)+'px">' +
 					'<div id="mv_embedded_controls_'+plObj.id+'" ' +
@@ -396,31 +415,34 @@ mvPlayList.prototype = {
 		  		this.cur_clip.embed.getPlayButton()
 		  	);
 			
-				
-			$j.each(this.default_track.clips, function(i, clip){
-				$j('#dc_'+plObj.id).append('<div class="clip_container" id="clipDesc_'+clip.id+'" '+
-					'style="display:none;position:absolute;text-align: center;width:'+plObj.width + 'px;'+
-					'height:'+(plObj.height )+'px;'+
-					'top:20px;left:0px"></div>');	
-				//update the embed html: 					
-				clip.embed.height=plObj.height;
-				clip.embed.width=plObj.width;				
-				clip.embed.play_button=false;
-				
-				clip.embed.getHTML();//get the thubnails for everything			
-				$j(clip.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});					
-				if($j('#clipDesc_'+clip.id).get(0)){
-					$j('#clipDesc_'+clip.id).get(0).appendChild(clip.embed);
-				}else{
-					js_log('cound not find: clipDesc_'+clip.id);					
-				}																
-			}); 	
-			if(this.cur_clip)
-				$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});						 	
+			this.setupClipDisplay();									 	
 							
 			//update the title and status bar
 			this.updateBaseStatus();									
 		}
+	},
+	setupClipDisplay:function(){
+		var plObj = this;
+		$j.each(this.default_track.clips, function(i, clip){
+			$j('#dc_'+plObj.id).append('<div class="clip_container" id="clipDesc_'+clip.id+'" '+
+				'style="display:none;position:absolute;text-align: center;width:'+plObj.width + 'px;'+
+				'height:'+(plObj.height )+'px;'+
+				'top:20px;left:0px"></div>');	
+			//update the embed html: 					
+			clip.embed.height=plObj.height;
+			clip.embed.width=plObj.width;				
+			clip.embed.play_button=false;
+			
+			clip.embed.getHTML();//get the thubnails for everything			
+			$j(clip.embed).css({ 'position':"absolute",'top':"0px", 'left':"0px"});					
+			if($j('#clipDesc_'+clip.id).get(0)){
+				$j('#clipDesc_'+clip.id).get(0).appendChild(clip.embed);
+			}else{
+				js_log('cound not find: clipDesc_'+clip.id);					
+			}																
+		}); 				
+		if(this.cur_clip)
+			$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});
 	},
 	updateTimeThumb:function(perc){
 		//get float seconds:
@@ -482,8 +504,7 @@ mvPlayList.prototype = {
 	},
 	/*gets adds hidden desc to the #dc container*/
 	getAllClipDesc : function(){		
-		//js_log("build all clip details pages");		
-		//debugger;
+		//js_log("build all clip details pages");				
 		var ay=Math.round(this.height* pl_layout.clip_desc);		
 		var plObj =this;
 		$j.each(plObj.default_track.clips, function(i, clip){
@@ -610,6 +631,10 @@ mvPlayList.prototype = {
 		//hide the playlist play button: 
 		$j('#big_play_link_'+this.id).hide();				
 		
+		//un-pause if paused:
+		if(this.paused)
+			this.paused=false;
+		
 		this.start_clip = this.cur_clip;		
 		this.start_clip_src= this.cur_clip.src;
 		 
@@ -644,11 +669,12 @@ mvPlayList.prototype = {
 		js_log('pl:play_or_pause');			
 		this.cur_clip.embed.play_or_pause();
 		//set the playlist monitor state:
-		if(this.cur_clip.embed.paused)
+		if(this.cur_clip.embed.paused){
 			this.paused=true;
-		else
+		}else{			
 			this.paused=false;
-			
+			this.monitor();
+		}			
 	},
 	pause:function(){		
 		js_log('f:pause: playlist');
@@ -1176,20 +1202,6 @@ PlMvEmbed.prototype = {
 		/*$j('#big_play_link_'+this.id+',#seqThumb_'+plObj.id+',#pl_desc_txt_'+this.pc.id).fadeOut("slow");*/		
 		js_log('got here in play');
 		plEmbed.pe_play();			
-		/*$j('#'+this.id+',#dc_'+this.id).css({
-			position:'absolute', zindex:5,
-			width:plObj.width,
-			height:plObj.height
-		});		
-		$j('#img_thumb_'+this.id).animate({
-			height:plObj.height,
-			width:plObj.width
-		},"slow",null,function(){
-			//set the parent properties: 
-			plEmbed.height=plObj.height;
-			plEmbed.width=plObj.width;
-			plEmbed.pe_play();						
-		});	*/
 	},
 	//do post interface operations
 	postEmbedJS:function(){		
@@ -1357,14 +1369,14 @@ var xspfPlaylist ={
  *****************************/
 /*playlist driver extensions to the playlist object*/
 mvPlayList.prototype.monitor = function(){	
-	js_log('pl:monitor');		
+	//js_log('pl:monitor');		
 	//js_log('mvPlayList:monitor trueTime: '+ ( (ct.getTime() - this.clockStartTime )/1000));	
 	//if paused stop updates
 	if( this.paused ){
-		clearInterval( this.smil_monitorTimerId );
+		//clearInterval( this.smil_monitorTimerId );
 		return ;
 	}
-	js_log("pl check: " + this.currentTime + ' < '+this.getDuration());
+	//js_log("pl check: " + this.currentTime + ' < '+this.getDuration());
 	//check if we should be done:
 	if( this.currentTime >  this.getDuration() ) 
 		this.stop();
@@ -1389,7 +1401,7 @@ mvPlayList.prototype.monitor = function(){
 //handles the rendering of overlays loaind of future clips (if nessesary)
 //@@todo could be lazy loaded if nessesary 
 mvPlayList.prototype.doSmilActions = function(){ 		
-	js_log('f:doSmilActions: ' + this.cur_clip.id + ' tid: ' + this.cur_clip.transOut );
+	//js_log('f:doSmilActions: ' + this.cur_clip.id + ' tid: ' + this.cur_clip.transOut );
 	var offSetTime = 0; //offset time should let us start a transition later on if we have to. 
 	var _clip = this.cur_clip;	//setup a local pointer to cur_clip
 	
@@ -1511,10 +1523,10 @@ var mvTransLib = {
 		tObj.overlay_selector_id=null;
 	},
 	getOverlaySelector:function(tObj){	
-		js_log('f:getOverlaySelector');
 		var overlay_selector_id= tObj.transAttrType + tObj.pClip.id; 	
-		js_log('f:getOverlaySelector: '+overlay_selector_id);
-		if( ! $j('#'+overlay_selector_id).get(0) ){																											
+		js_log('f:getOverlaySelector: '+overlay_selector_id + ' append to: ' +'#videoPlayer_'+tObj.pClip.embed.id );
+		//make sure overlay_selector_id not already here:	
+		if( $j('#'+overlay_selector_id).length == 0  ){ 																										
 			$j('#videoPlayer_'+tObj.pClip.embed.id).prepend(''+
 				'<div id="'+overlay_selector_id+'" ' +
 					'style="position:absolute;top:0px;left:0px;' +
@@ -1722,7 +1734,7 @@ mvSMILClip.prototype = {
 		if(this.dur)
 			this.dur = smilParseTime(this.dur);							
 		
-		//conform type:
+		//conform type to video/ogg:
 		if(this['type']=='application/ogg'){
 			this['type']='video/ogg'; //conform to 'video/ogg' type
 		}
@@ -1869,7 +1881,7 @@ transitionObj.prototype = {
 		for(var i in this)
 			cObj[i]=this[i];				
 		return cObj;
-	}	
+	}		
 }
 /*
  * takes an input 
@@ -1886,23 +1898,25 @@ function smilParseTime(time_str){
 /***************************
  * end SMIL specific code
  ***************************/
- var trackObj = function(initObj){
- 	return this.init(initObj);
+ var trackObj = function( initObj ){
+ 	return this.init( initObj );
  }
  var supported_track_attr = {
  	title:'untitled track',
 	desc:'empty description',		
  }
-trackObj.prototype = {			
-	clips:new Array(),	
+trackObj.prototype = {					
 	init : function(initObj){
 		if(!initObj)
 			initObj={};
+			
+		this.clips = new Array();
+				
 		var _this = this;
 		$j.each(supported_track_attr, function(i, attr){
 			if(initObj[attr])
 				_this[attr] = initObj[attr];
-		});
+		});			
 	},
 	addClip:function(clipObj, pos){
 		js_log('ignored pos: '+ pos);
@@ -1923,6 +1937,8 @@ trackObj.prototype = {
 /* utility functions 
  * (could be combined with other stuff) 
  */
+
+
 
 function getAbsolutePos(objectId) {
 	// Get an object left position from the upper left viewport corner
@@ -1976,3 +1992,4 @@ String.prototype.htmlEntities = function(){
   }
   return newString;
 }
+
