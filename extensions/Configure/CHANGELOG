@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.8.7 - 22 October 2008
+  Added Special:Configure, Special:Extensions and Special:ViewConfig to
+  "Wiki data and tools" group on Special:SpecialPages.
+
 0.8.6 - 21 October 2008
   Updated Collection extension.
 

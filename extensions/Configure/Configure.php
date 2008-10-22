@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.8.6',
+	'version' => '0.8.7',
 );
 
 ## Configuration part
@@ -163,6 +163,13 @@ define( 'CONF_SETTINGS_BOTH', 3 );
 
 ## Helper for configuration settings
 $wgAutoloadClasses['ConfigurationSettings'] = $dir . 'Configure.settings.php';
+
+## Groups
+if( isset( $wgSpecialPageGroups ) && is_array( $wgSpecialPageGroups ) ){
+ 	$wgSpecialPageGroups['Configure'] = 'wiki';
+ 	$wgSpecialPageGroups['Extensions'] = 'wiki';
+ 	$wgSpecialPageGroups['ViewConfig'] = 'wiki';
+}
 
 ## Diff stuff
 $wgAutoloadClasses['ConfigurationDiff'] = $dir . 'Configure.diff.php';
