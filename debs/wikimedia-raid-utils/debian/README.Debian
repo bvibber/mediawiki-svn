@@ -1,0 +1,8 @@
+wikimedia-raid-utils
+--------------------
+
+A package for the following proprietary RAID utilities:
+
+* Adaptec UCLI (arcconf)
+* MEGARC MegaRAID Configuration Utility (megarc)
+* AMCC/3ware CLI (arcconf)

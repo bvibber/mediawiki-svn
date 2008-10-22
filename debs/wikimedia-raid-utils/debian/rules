@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+
+DESTDIR = $(CURDIR)/debian/wikimedia-raid-utils
+FILES = arcconf megamgr megamgr.bin megarc megarc.bin tw_cli
+
+configure:
+	# no action
+
+build:
+	# no action
+
+clean:
+	# no action
+
+install: build
+	dh_testdir
+	dh_testroot
+	install -d $(DESTDIR)/usr/bin
+	install $(FILES) $(DESTDIR)
+
+binary-indep:
+	# no action
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs 
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure

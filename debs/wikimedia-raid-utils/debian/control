@@ -1,0 +1,11 @@
+Source: wikimedia-raid-utils
+Section: admin
+Priority: optional
+Maintainer: Tim Starling <tstarling@wikimedia.org>
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.7.2
+
+Package: wikimedia-raid-utils
+Architecture: amd64
+Depends: libstdc++5
+Description: A collection of vendor-supplied binaries for RAID controllers.
