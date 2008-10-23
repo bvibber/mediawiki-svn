@@ -28,8 +28,8 @@ class CentralNotice extends SpecialPage
 
 
 		if ( $wgRequest->wasPosted() ) {
-			$body = file_get_contents('php://input');
-			$wgOut->addHtml("Body of post: $body");
+			//$body = file_get_contents('php://input');
+			//$wgOut->addHtml("Body of post: $body");
 
 			$toRemove = $wgRequest->getArray('removeNotices');
 			if ( isset($toRemove) ){  
@@ -422,7 +422,13 @@ class CentralNotice extends SpecialPage
 				$end_year = $start_year;
 			}
 			$end_date =  wfTimeStamp( TS_MW,  $end_year . $end_month . $start_day . $start_hour . "000000");
-			$res = $dbw->insert( $centralnotice_table, array( notice_name => "$noticeName", notice_enabled => "$enabled", notice_start_date => "$start_date" , notice_end_date => "$end_date", notice_project => $project_name, notice_language => $project_language));
+			$res = $dbr->select( $centralnotice_table, 'notice_name', array ( "notice_start_date >= '$start_date'", "notice_end_date <= '$end_date'", "notice_project = '$project_name'", "notice_language = '$project_language'") );
+			if ( $dbr->numRows( $res ) > 0 ) {
+				$wgOut->addHtml( wfMsg( 'centralnotice-overlap'));
+			}
+			else {	
+				$res = $dbw->insert( $centralnotice_table, array( notice_name => "$noticeName", notice_enabled => "$enabled", notice_start_date => "$start_date" , notice_end_date => "$end_date", notice_project => $project_name, notice_language => $project_language));
+			}
 			return;
 		}
 	}

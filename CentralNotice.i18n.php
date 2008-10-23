@@ -58,6 +58,7 @@ $messages['en'] = array(
 	'centralnotice-change-lang' => 'Change Translation Language',
 	'centralnotice-weights' => 'Weights',
 	'centralnotice-notice-is-locked' => 'Notice is locked. Not removing',
+	'centralnotice-overlap' => 'Notice overlaps within the time of another notice. Not adding',
 );
 
 /** Afrikaans (Afrikaans)
