@@ -16,7 +16,7 @@ install: build
 	dh_testdir
 	dh_testroot
 	install -d $(DESTDIR)/usr/bin
-	install $(FILES) $(DESTDIR)
+	install $(FILES) $(DESTDIR)/usr/bin
 
 binary-indep:
 	# no action

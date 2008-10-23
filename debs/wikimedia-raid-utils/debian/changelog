@@ -1,3 +1,15 @@
+wikimedia-raid-utils (1.2) hardy; urgency=low
+
+  * Fixed MegaRAID scripts
+
+ -- Tim Starling <tstarling@wikimedia.org>  Thu, 23 Oct 2008 12:37:13 +1100
+
+wikimedia-raid-utils (1.1) hardy; urgency=low
+
+  * Packaging fix
+
+ -- Tim Starling <tstarling@wikimedia.org>  Thu, 23 Oct 2008 12:17:39 +1100
+
 wikimedia-raid-utils (1.0) unstable; urgency=low
 
   * Initial release
