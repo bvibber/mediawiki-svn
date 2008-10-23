@@ -9,7 +9,7 @@
  * @url http://metavid.ucsc.edu
  *
  *
- * Metavid.js hanndles all interface js functions for Metavid: namespace
+ * Metavid.js handles all interface js functions for Metavid: namespace
  * [DEPENDENT ON mv_embed]
  * http://metavid.ucsc.edu/wiki/index.php/Mv_embed
  *
@@ -123,8 +123,8 @@ var mv_stream_interface = {
 				ebvid['play_or_pause'] = function(){mv_play_or_pause();}
 			}
 			//use mvd images for time updates (avoids lots of arbitrary time hits to server) 
-			if(ebvid['updateTimeThumb'].toString()!='function(){return true;}'){
-				ebvid['updateTimeThumb']=function(){return true;}
+			if(ebvid['updateThumbPerc'].toString()!='function(){return true;}'){
+				ebvid['updateThumbPerc']=function(){return true;}
 			}
 			
 			/*if(ebvid['showVideoDownload'].toString!='function(){mv_doShowVideoDownload();}'){

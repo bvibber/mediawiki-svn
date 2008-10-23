@@ -109,12 +109,6 @@ div.autocomplete ul li {
       font-size:1.2em;
 }
 
-#resizable css:
-.ui-resizable-handle { position: absolute; background: #ddd; display: none; }
-.ui-resizable .ui-resizable-handle { display: block }
-.ui-resizable-e { z-index:5; position:absolute; cursor: e-resize; width: 15px;height:19px; top: 0px; bottom: 0px; right: 0px;}
-.ui-resizable-w { z-index:5; position:absolute; cursor: w-resize; width: 15px;height:19px; top: 0px; bottom: 0px; left: 0px;}
-.ui-dragSpan {filter: alpha(opacity=70); -moz-opacity: .7; background-color:#AAF; position:absolute; left: 10px; right:10px;height:19px;  }
 
 #auto complete css:
 .ac_results {

@@ -74,14 +74,15 @@ var htmlEmbed ={
 	inheritEmbedObj:function(){
 		return true;
 	},
-	//nothing to update in static html display: 
-	updateTimeThumb:function(){
+	//nothing to update in static html display: (return a static representation) 
+	//@@todo render out a mini text "preview"
+	pdateThumbTime:function( float_time ){
 		return ;
 	},
 	getEmbedHTML:function(){
 		//set up the css for our parent div: 		
 		$j(this).css({'width':this.pc.pp.width, 'height':this.pc.pp.height, 'overflow':"hidden"});
-		//@@todo support more smil stuff: 
+		//@@todo support more smil image layout stuff: 
 		var out='';
 		if( this.pc.type =='image/jpeg'){
 			js_log('should put src: '+this.pc.src);

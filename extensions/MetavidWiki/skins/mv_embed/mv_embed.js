@@ -63,14 +63,14 @@ var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"str
 if(!mv_embed_path){
 	var mv_embed_path =getMvEmbedPath();
 }
-//here you can add in delay load refrence to test things with delayed load time: 
+//here you can add in delay load referance to test things with delayed load time: 
 //mv_embed_path = mv_embed_path + 'delay_load.php/'; 
 
 //the default thumbnail for missing images:
 var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
 
 if(!gMsg){var gMsg={};}
-//all default msg in [english] should be overwritten by the CMS language msg system.
+//all default msg in [English] should be overwritten by the CMS language msg system.
 gMsg['loading_txt'] ='loading <blink>...</blink>';
 gMsg['loading_plugin'] ='loading plugin<blink>...</blink>';
 gMsg['select_playback']='Set Playback Preference';
@@ -110,7 +110,7 @@ gMsg['close']='close';
 gMsg['improve_transcript']='Improve Transcript';
 
 gMsg['next_clip_msg']='Play Next Clip';
-gMsg['prev_clip_msg']='Play Previus Clip';
+gMsg['prev_clip_msg']='Play Preveus Clip';
 gMsg['current_clip_msg']='Continue Playing this Clip';
 
 gMsg['seek_to']='Seek to';
@@ -203,7 +203,7 @@ var mvEmbed = {
    */
   pc:null, //used to store pointer to parent clip (when in playlist mode)
   load_libs:function( callback , target_id){
-  	js_log('f:load_libs'+callback);
+  	js_log('f:load_libs: '+callback);
   	if(callback)this.load_callback = callback;
   	//if libs are already loaded jump directly to the callback
   	if(this.libs_loaded){
@@ -523,15 +523,15 @@ var ctrlBuilder = {
     	//make pointer to the embedObj
     	ctrlBuilder.embedObj =embedObj;
     	//build local support var
-    	ctrlBuilder.suports ={
+    	ctrlBuilder.supports ={
     			'options':true,     			
     			'borders':true   			
     		};
     	for(i in embedObj.supports)
-    		ctrlBuilder.suports[i] = embedObj.supports[i];
+    		ctrlBuilder.supports[i] = embedObj.supports[i];
     	//special case vars: 
     	if(embedObj.roe && embedObj.show_meta_link)
-    		ctrlBuilder.suports['closed_captions']=true;   
+    		ctrlBuilder.supports['closed_captions']=true;   
     		
     	//append options to body (if not already there) 		
 		if($j('#mv_embedded_options_'+ctrlBuilder.id).length==0)
@@ -539,7 +539,7 @@ var ctrlBuilder = {
 		    		
     	var o='';    
     	for(i in ctrlBuilder.components){
-    		if(ctrlBuilder.suports[i]){
+    		if(ctrlBuilder.supports[i]){
     			if(ctrlBuilder.avaliable_width > ctrlBuilder.components[i].w ){
     				//special case with playhead don't add unless we have 60px
 	    			if( i=='play_head' && ctrlBuilder.avaliable_width < 60 )
@@ -567,7 +567,7 @@ var ctrlBuilder = {
         //js_log('looking for: #mv_seeker_slider_'+_this.id + "\n " +
 		//		'start sec: '+_this.start_time_sec + ' base offset: '+_this.base_seeker_slider_offset);
         
-        //buid dragable hook here:        
+        //build draggable hook here:        
 	    $j('#mv_seeker_slider_'+_this.id).draggable({
         	containment:'#seeker_bar_'+_this.id,
         	axis:'x',
@@ -575,7 +575,7 @@ var ctrlBuilder = {
         	start:function(e, ui){
         		var id = (_this.pc!=null)?_this.pc.pp.id:_this.id;
         		_this.userSlide=true;
-        		js_log("started draging set userSlide"+_this.userSlide)
+        		js_log("started dragging set userSlide"+_this.userSlide)
         		var options = ui.options;      
         		//remove "play button"   	
         		$j('#big_play_link_'+id).fadeOut('fast');
@@ -592,8 +592,8 @@ var ctrlBuilder = {
 				_this.jump_time = seconds2ntp(parseInt(_this.getDuration()*perc)+ _this.start_time_sec);	
 				//js_log('perc:' + perc + ' * ' + _this.getDuration() + ' jt:'+  this.jump_time);
 				_this.setStatus( getMsg('seek_to')+' '+_this.jump_time );    
-				//update the thumbnail/ frame 
-				_this.updateTimeThumb(perc);					
+				//update the thumbnail / frame 
+				_this.updateThumbPerc( perc );					
         	},
         	stop:function(e, ui){
         		_this.userSlide=false;
@@ -673,7 +673,7 @@ var ctrlBuilder = {
 			}
 		},
 		'play_head':{
-			'w':0, //special case (takes up remaning space) 
+			'w':0, //special case (takes up remanning space) 
 			'o':function(){
 				return '<div class="seeker" id="mv_seeker_'+ctrlBuilder.id+'" style="width: ' + (ctrlBuilder.avaliable_width - 18) + 'px;">'+           
                     '		<div id="seeker_bar_'+ctrlBuilder.id+'" class="seeker_bar">'+
@@ -825,7 +825,7 @@ var embedTypes = {
 var mvJsLoader = {
 	 libreq:{},
 	 libs:{},
-	 //to keep consistancy across threads: 
+	 //to keep consistency across threads: 
 	 ptime:0,
 	 ctime:0,
 	 
@@ -891,7 +891,7 @@ var mvJsLoader = {
 		 	this.libs={};		 			 			 			
 		 	//js_log('done loading do call: ' + this.callbacks[0] );		 
 		 	while(this.callbacks.length !=0 ){
-		 		if(this.ptime== ( this.ctime-1) ){ //enforce thread consistancy
+		 		if(this.ptime== ( this.ctime-1) ){ //enforce thread consistency
 		 			this.callbacks.pop()();
 		 			//func = this.callbacks.pop();
 		 			//js_log(' run: '+this.ctime+ ' p: ' + this.ptime + ' ' +loading+ ' :'+ func);
@@ -969,45 +969,22 @@ if (document.addEventListener && !embedTypes.safari) {
       init_mv_embed();
   }
 }*/
-//safari now supports dom injection
-/*if(embedTypes.safari){
-	//load the base lib_jquery library:
-	for(var i in mvEmbed.lib_jquery){
-		var cur_lib_url = mv_embed_path + mvEmbed.lib_jquery[i];
-		js_log('load lib:' + cur_lib_url);
-		document.write('<script type="text/javascript" src="'+cur_lib_url+'"><\/script>');
-	}
-
-	//load the rest (@@todo we could merge these)
-  	for(var i in mvEmbed.lib_plugins){
-		var cur_lib_url = mv_embed_path + mvEmbed.lib_plugins[i];
-		js_log('load lib:' + cur_lib_url);
-		document.write('<script type="text/javascript" src="'+cur_lib_url+'"><\/script>');
-	}
-	window.onload=function(){
-		//once jQuery is loaded set up no conflict:
-        js_log('setting up jQuery no conflict');
-		_global['$j'] = jQuery.noConflict();
-        mvEmbed.libs_loaded=true;
-		init_mv_embed();
-	}
-}
-*/
+//safari now supports dom injection (code removed below)
 
 /*
-* Coverts all occurrences of <video> tag into video object
+* Converts all occurrences of <video> tag into video object
 */
 function mv_embed( force_id ){
 	//get mv_embed location if it has not been set
 	js_log('mv_embed ' + mvEmbed.Version);
 	
 	var loadPlaylistLib=false;
-	//set up the jquery selector: 
+	//set up the jQuery selector: 
 	var j_selector = 'video,playlist';
 	if(force_id!=null)
 		var j_selector = '#'+force_id;
 		
-	//procces selected elements: 
+	//process selected elements: 
 	$j(j_selector).each(function(){
 		js_log( "LOOP ON: " +this.id + ' tag: '+ this.tagName);
 		
@@ -1018,9 +995,10 @@ function mv_embed( force_id ){
 		}
 		//store a global reference to the id    
     	global_player_list.push(elm_id);
-		//add loading:		
-		$j(this).after('<div id="pre_loading_div_'+elm_id + '">'+
-            	getMsg('loading_txt')+'</div>' ); 
+		//add loading: (pre-loading div) 		
+		/*$j(this).after('<div id="pre_loading_div_'+elm_id + '">'+
+            	getMsg('loading_txt')+'</div>' );
+        */ 
         //if video doSwap
         if(this.tagName=='VIDEO'){
         	var videoInterface = new embedVideo(this);	  
@@ -1033,65 +1011,25 @@ function mv_embed( force_id ){
 	if(loadPlaylistLib){
 		js_log('f:load Playlist Lib:');
 		mvJsLoader.doLoad({'mvPlayList':'mv_playlist.js'},function(){
-			$j('playlist').each(function(){							
-				//create new playlist interface:
-				var plObj = new mvPlayList( this );				
-				swapEmbedVideoElement(this, plObj);		
-				//move into a blocking display container with height + controls + title height: 
-				$j('#'+plObj.id).wrap('<div style="display:block;height:' + (plObj.height+55) + 'px;"></div>');		
+			$j('playlist').each(function(){		
+				//check if we are in sequence mode load sequence libs (if not already loaded)				 				
+				if( $j(this).attr('sequencer')=="true" ){
+					var pl_element = this;
+					mvJsLoader.doLoad({'mvSeqPlayList':'mv_sequencer.js'},function(){
+						var seqObj = new mvSeqPlayList( pl_element );
+						swapEmbedVideoElement( pl_element, seqObj );	
+					}); 
+				}else{					
+					//create new playlist interface:
+					var plObj = new mvPlayList( this );		
+					swapEmbedVideoElement(this, plObj);
+					var added_height = plObj.pl_layout.title_bar_height + plObj.pl_layout.control_height;		
+					//move into a blocking display container with height + controls + title height: 
+					$j('#'+plObj.id).wrap('<div style="display:block;height:' + (plObj.height + added_height) + 'px;"></div>');	
+				}											
 			});
 		});
-	}
-	
-	/*
-    //send a request to load the given type
-    //js_log('detected: '+ embedTypes.getPlayerType() );
-    video_elements = document.getElementsByTagName("video");
-    //js_log('found video '+ video_elements.length);
-    if( video_elements.length > 0) {
-        for(var i = 0; i < video_elements.length; i++) {        	
-            //grab id:
-            vid_id = $j(video_elements[i]).attr("id");           
-            //set id if empty:
-            if(!vid_id || vid_id==''){
-  				video_elements[i].id= 'v'+ global_player_list.length;
-            }            
-            //store a global reference to the id    
-    		global_player_list.push(vid_id);
-    		
-            //create and swap in the video interface:             
-	   		var videoInterface = new embedVideo(video_elements[i]);	   		
-   			//swap in:
-	   		if(swapEmbedVideoElement(video_elements[i], videoInterface)){
-	   			//remove pre_loading_div_	   			
-	   			i--;	   				   			
-	   		}else{
-	   			//replace loading with failed 
-	   			$j('#pre_loading_div_'+vid_id).html(getMsg('error_swap_vid'));	   		
-	   		}
-        }
-    }else{
-    	js_log('f:mv_embed no more <video> elements found');
-    }
-    //if there are no playlist elements do not load the playlist-js
-    playlist_elements = document.getElementsByTagName("playlist");
-    if( playlist_elements.length > 0) {    	
-    	for(var i = 0; i < playlist_elements.length; i++) {
-    		var pl_id = $j(playlist_elements[i]).attr("id");   
-    		if(!pl_id || pl_id==''){
-    			pl_id = 'v'+ global_player_list.length;
-  				$j(playlist_elements[i]).attr("id", pl_id);
-            }
-            //add loading: 
-            $j(playlist_elements[i]).after('<div id="pre_loading_div_'+pl_id + '">'+
-            	getMsg('loading_txt')+'</div>' );          
-            
-            //store a global reference to the id         
-    		global_player_list.push(pl_id);
-    	}  
-		do_playlist_functions();
-    }
-    * */
+	}		
 }
 
 function mv_do_sequence(initObj){
@@ -1103,7 +1041,9 @@ function mv_do_sequence(initObj){
 	mvEmbed.load_libs(function(){		
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
-				'mvPlayList':'mv_playlist.js'
+				'mvPlayList':'mv_playlist.js',
+				'$j.ui.sortable':'jquery/jquery.ui-1.5.2/ui/minified/ui.sortable.min.js',
+				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js'				
 				//'$j.ui.sortable':'jquery/plugins/ui.sortable.js'
 			},function(){
 				//load the sequencer and draggable ext
@@ -1117,21 +1057,6 @@ function mv_do_sequence(initObj){
 	});
 }
 
-/*var pl_load_time=0;
-function do_playlist_functions(){	
-	js_log('f:do_playlist_functions:');
-	mvJsLoader.doLoad({'mvPlayList':'mv_playlist.js'},function(){
-		playlist_elements = document.getElementsByTagName("playlist");
-		js_log('loded pl js ' +playlist_elements.length );
-		for(var i = 0; i < playlist_elements.length; i++) {				
-			//create new playlist interface:
-			var playlistInterface = new mvPlayList( playlist_elements[i] );
-			if(swapEmbedVideoElement(playlist_elements[i], playlistInterface) ){				
-				i--;
-			}
-		}
-	});
-}*/
 
 /*
 * swapEmbedVideoElement
@@ -1195,22 +1120,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
     js_log('done with child: ' + embed_video.id + ' len:'+global_player_list.length);
  	return true;
 }
-/*
-*  The base embedVideo object constructor
-*/
-/*var textTrack = function(track){
-	return this.init(track);
-}
-textTrack.prototype ={
-	init:function(track){
-		for(i in track){
-			this[i]=track[i];
-		}
-	},
-	loadTrack:function(){
-
-	}
-}*/
+// text interface object (for inline display captions) 
 var textInterface = function(parentEmbed){
 	return this.init(parentEmbed);
 }
@@ -1324,7 +1234,7 @@ textInterface.prototype = {
 		});
 	},
 	add_merge_text_clip:function(text_clip){
-		//make sure the clip does not alreay exist:
+		//make sure the clip does not already exist:
 		if($j('#tc_'+text_clip.id).length==0){
 			var inserted = false;
 			var text_clip_start_time = ntp2seconds(text_clip.start);
@@ -1354,7 +1264,7 @@ textInterface.prototype = {
 	},
 	show:function(){
 		js_log("f:show() text interface");	
-		/*slide in intefrace container*/
+		/*slide in interface container*/
 		//dont' know how 'px' creeps in here: 
 		this.pe.height = this.pe.height.replace('px', '');
 		
@@ -1443,7 +1353,7 @@ textInterface.prototype = {
 	setAutoScroll:function(timer){
 		this.autoscroll = timer;
 		if(this.autoscroll){
-			//start the timmer if its not alreay running
+			//start the timer if its not already running
 			if(!this.scrollTimerId){
 				this.scrollTimerId = setInterval('document.getElementById(\''+this.pe.id+'\').textInterface.monitor()', 500);
 			}
@@ -1459,7 +1369,7 @@ textInterface.prototype = {
 				}
 			});
 		}else{
-			//stop the timmer
+			//stop the timer
 			clearInterval(this.scrollTimerId);
 			this.scrollTimerId=0;
 		}
@@ -1724,7 +1634,7 @@ mediaElement.prototype =
             this.thumbnail=$j(video_element).attr('poster');
             
         // Process all inner <source> elements    
-        //js_log("inner sorce count: " + video_element.getElementsByTagName('source').length );
+        //js_log("inner source count: " + video_element.getElementsByTagName('source').length );
         $j.each(video_element.getElementsByTagName('source'), function(inx, inner_source)
         {
         	//js_log(' on inner source: '+i + ' obj: '+ inner_source);
@@ -1779,7 +1689,7 @@ mediaElement.prototype =
             }
             //set via user-preference
             if(embedTypes.players.preference['format_prefrence']==mime_type){
-            	 js_log('set via prefrence: '+playable_sources[source].mime_type);
+            	 js_log('set via preference: '+playable_sources[source].mime_type);
             	 this.selected_source = playable_sources[source];        
             }                                	                        
         }           
@@ -1804,7 +1714,7 @@ mediaElement.prototype =
 	        for(var source in playable_sources){    
 	        	var mime_type =playable_sources[source].mime_type;        
 	            if(mime_type=='video/x-flv'){
-	            	js_log('seeting flash by player prefrence')
+	            	js_log('seeting flash by player preference')
 	            	this.selected_source = playable_sources[source];
 	            }            	        
 	        }
@@ -2501,19 +2411,25 @@ embedVideo.prototype = {
 		js_log("UPDATE SRC:"+src);
 		this.src = src;
 	},	
-	updateTimeThumb: function(perc){
-		var _this = this;								   		
-		//do quick thumb update 
-		if(typeof org_thum_src=='undefined'){		
+	updateThumbTime:function( float_sec ){
+		var _this = this;									   				
+		if( typeof org_thum_src=='undefined' ){		
 			org_thum_src = this.media_element.getThumbnailURL();
 		}							
-		if(org_thum_src.indexOf('t=')!==-1){
-			this.last_thumb_url = getUpdateTimeURL(org_thum_src,seconds2ntp( (this.getDuration() * perc) + parseInt(this.start_offset)));									
+		var thumb_at_perc_src =org_thum_src;	
+		if( org_thum_src.indexOf('t=') !== -1){
+			this.last_thumb_url = getUpdateTimeURL(org_thum_src,seconds2ntp( float_sec + parseInt(this.start_offset)));									
 			if(!this.thumbnail_updating){				
 				this.updateThumbnail(this.last_thumb_url ,false);
+				thumb_at_perc_src = this.last_thumb_url;
 				this.last_thumb_url =null;
 			}
-		}				
+		}
+		return thumb_at_perc_src;
+	},
+	//for now provide a src url .. but need to figure out how to copy frames from video for plug-in based thumbs
+	updateThumbPerc:function( perc ){	
+		return this.updateThumbTime( (this.getDuration() * perc) );
 	},
 	//updates the thumbnail if the thumbnail is being displayed
 	updateThumbnail : function(src, quick_switch){		
@@ -2706,8 +2622,7 @@ embedVideo.prototype = {
         var height = (this.pc)?this.pc.pp.height:this.playerPixelHeight();
         
         if(this.pc)
-        	height+=(pl_layout.title_bar_height + pl_layout.control_height);
-
+        	height+=(plObj.pl_layout.title_bar_height + plObj.pl_layout.control_height);
       
         var fade_in = true;
         if($j('#blackbg_'+sel_id).length!=0)

@@ -59,7 +59,7 @@ var sequencerDefaultValues = {
 	// note some options will be lost in block rendering mode (like cutting clips etc) 	
 	timeline_mode:'time', 
 	//Msg are all the language specific values ... 
-	// (@@todo overwite by msg values preloaded in the page)	
+	// (@@todo overwrite by msg values preloaded in the page)	
 	//tack/clips can be pushed via json or inline playlist format
 	inline_playlist:'null', //text value so its a valid property 
 	inline_playlist_id:'null',
@@ -133,7 +133,10 @@ mvSequencer.prototype = {
 			}
 			menu_html+='</ul>';
 			$j('#'+this.sequence_tools_id).html( menu_html + 
-				'<div id="seq_tool_disp_'+this.instance_name+'">Welcome to The sequencer demo<br>' +					
+				'<div id="seq_tool_disp_'+this.instance_name+'">Welcome to The sequencer demo<br>' +
+					'Select your editor preferance:<br> '+
+					'<blockquote><input type="radio" value="A" name="radio_button">simple editor </blockquote>' +
+					'<blockquote><input type="radio" value="A" name="radio_button" checked>advanced editor </blockquote>' +																	
 				'</div>'
 			);
 			
@@ -143,20 +146,16 @@ mvSequencer.prototype = {
 			'<div id="'+this.timeline_id+'_left_cnt" class="mv_tl_left_cnt">'+
 				'<div id="'+this.timeline_id+'_head_control" style="position:absolute;top:0px;left:0px;right:0px;height:30px;">' +
 					'<a title="'+getMsg('play_clip')+'" href="javascript:'+this.instance_name+'.play_jt()">'+
-						/*getTransparentPng({id:this.timeline_id+'_play', width:"16", height:"16", border:"0", 
-							src:mv_embed_path + 'images/control_play_blue.png' }) +*/						
+						'<img style="width:16px;height:16px;border:0" src="' + mv_embed_path + 'images/control_play_blue.png">'+												
 					'</a>'+
 					'<a title="'+getMsg('zoom_in')+'" href="javascript:'+this.instance_name+'.zoom_in()">'+
-						/*getTransparentPng({id:this.timeline_id+'_zoom_in_icon', width:"16", height:"16", border:"0", 
-							src:mv_embed_path + 'images/zoom_in.png' }) +*/						
+						'<img style="width:16px;height:16px;border:0" src="' + mv_embed_path + 'images/zoom_in.png">'+															
 					'</a>'+
 					'<a title="'+getMsg('zoom_out')+'" href="javascript:'+this.instance_name+'.zoom_out()">'+
-						/*getTransparentPng({id:this.timeline_id+'_zoom_in_icon', width:"16", height:"16", border:"0", 
-							src:mv_embed_path + 'images/zoom_out.png' }) +*/						
+						'<img style="width:16px;height:16px;border:0" src="' + mv_embed_path + 'images/zoom_out.png">'+					
 					'</a>'+
 					'<a title="'+getMsg('cut_clip')+'" href="javascript:'+this.instance_name+'.cut_mode()">'+
-						/*getTransparentPng({id:this.timeline_id+'_cut', width:"16", height:"16", border:"0", 
-							src:mv_embed_path + 'images/cut.png' }) +*/						
+						'<img style="width:16px;height:16px;border:0" src="' + mv_embed_path + 'images/cut.png">'+		
 					'</a>'+					
 				'</div>' +			
 			'</div>' + 
@@ -176,24 +175,30 @@ mvSequencer.prototype = {
 		$j('#'+this.video_container_id).html('<playlist ' + src_attr +
 			' style="width:'+this.video_width+'px;height:'+this.video_height+'px;" '+
 			' sequencer="true" id="'+this.plObj_id+'" />');
-		//@@todo extend playlist object (overwite 
-		rewrite_by_id( this.plObj_id );
+		 
+		rewrite_by_id( this.plObj_id );	
+		setTimeout(this.instance_name +'.checkReadyPlObj()', 25);
 	},
 	//once playlist is ready continue 
 	checkReadyPlObj:function(){		
-		if( this.plObj.loading ){
+		this.plObj = $j('#'+ this.plObj_id ).get(0);
+		if( this.plObj )
+			if( ! this.plObj.loading )
+				this.plReadyInit();
+						
+		//else keep checking for the playlist to be ready 
+		if( this.plObj.loading ){ 
 			if(this.plReadyTimeout==200){
 				js_error('error playlist never ready');
 			}else{
 				this.plReadyTimeout++;
 				setTimeout(this.instance_name +'.checkReadyPlObj()', 25);
 			}
-		}else{			
-			this.plReadyInit();
-		}
+		}		
 	},
 	plReadyInit:function(){
-		js_log('plReadyInit');							
+		js_log('plReadyInit');		
+		js_log( this.plObj );					
 		//update playlist (since if its empty right now) 
 		if(this.plObj.getClipCount()==0){
 			$j('#'+this.plObj_id).html('empty playlist');
@@ -225,8 +230,8 @@ mvSequencer.prototype = {
 			$j('#'+this.timeline_id+'_left_cnt').append(
 				'<div id="track_cnt_'+i+'" style="top:'+top_pos+'px;height:'+track_height+'px;" class="track_name">'+
 					'<a id="mv_exc_'+i+'" title="'+exc_msg+'" href="javascript:'+this_sq.instance_name+'.exc_track('+i+',\''+exc_action+'\')">'+
-					getTransparentPng({id:this_sq.timeline_id+'_close_expand', width:"16", height:"16", border:"0", 
-							src:mv_embed_path + 'images/'+exc_img+'.png' }) +
+						'<img id="'+this_sq.timeline_id+'_close_expand" style="width:16px;height:16px;border:0" '+ 
+							' src="'+mv_embed_path + 'images/'+exc_img+'.png">'+
 					'</a>'+
 				track.title+'</div>'
 			);
@@ -254,41 +259,10 @@ mvSequencer.prototype = {
 			case'json':
 				return this.plObj.tracks.toSource();
 			break;
-			case 'inline':
-				var s='';
-				s+='#inline playlist '+"\n"+'#mvEmbedVersion:'+mvEmbed.Version+"\n";
-				//output title and linkback: 
-				s+='|title='+this.plObj.title+"\n";
-				s+='|linkback='+this.plObj.linkback+"\n";
-				//output all clips (for now not full multi-track supported)
-				for(track_id in this.plObj.tracks){					
-					track = this.plObj.tracks[track_id];
-					for(j in track.clips){
-						clip = track.clips[j];						
-						//output clip header for varius types: 
-						js_log('on clip'+j+' type:'+ clip.type);
-						s+="\n"+'|mvClip='+clip.getMvClip()+"\n";	
-						/*switch(clip.type){
-							case 'srcClip':
-								s+="\n"+'|srcClip='+clip.src+"\n";
-								s+='|image='+clip.img+"\n";
-								//output other properties if src clip
-								if(clip.title)s+='|title='+clip.title+"\n";
-								if(clip.desc)s+='|desc='+clip.desc+"\n";																						
-							break;
-							case 'mvClip':
-								s+="\n"+'|mvClip='+clip.mvclip+"\n";
-							break;
-						}*/
-						
-					}
-				}
-				return s;
-			break;			
+			case 'xml':
+				return "@@todo xml output";
+			break;
 		}		
-	},
-	addRss:function(rssObj){
-		
 	},
 	//add clips to the pl object: (by default to the end of the track) 
 	addClip:function(clip_init){
@@ -301,7 +275,7 @@ mvSequencer.prototype = {
 		clip_init.pp = this.plObj;
 		//set up current clip Object: 
 		var cur_clip = new mvClip(clip_init);	
-		//do any special per-type proccessing before doAddClip
+		//do any special per-type processing before doAddClip
 		switch(cur_clip.type){
 			case 'srcClip':
 				this_seq.doAddClip(cur_clip, track_inx);
@@ -350,7 +324,7 @@ mvSequencer.prototype = {
 			if(this_seq.plObj.tracks[track_inx].clips.length==0){
 				this_seq.plObj.getHTML();
 			}else{
-				//udate playlist desc: 		
+				//update playlist desc: 		
 				this_seq.plObj.pl_duration=null;
 				this_seq.plObj.updateTitle();	
 			}
@@ -425,35 +399,36 @@ mvSequencer.prototype = {
 				var track = this.plObj.tracks[track_id];
 				var cur_clip_time=0;
 				//for each clip: 
-				for(j in track.clips){
+				for(var j in track.clips){
 					clip = track.clips[j];
 					//var img = clip.getClipImg('icon');					
 					//do per display type rendering: 
 					if(this.timeline_mode=='time'){
 						clip.left_px = Math.round( cur_clip_time/this.timeline_scale);					
-						clip.width_px = Math.round( Math.round(clip.getDuration()/1000)/this.timeline_scale);
-						js_log('at time:' + cur_clip_time + ' left: ' +clip.left_px + ' clip dur: ' +  Math.round(clip.getDuration()/1000) + ' clip wdith:' + clip.width_px);
+						clip.width_px = Math.round( Math.round( clip.getDuration() )/this.timeline_scale);
+						js_log('at time:' + cur_clip_time + ' left: ' +clip.left_px + ' clip dur: ' +  Math.round( clip.getDuration() ) + ' clip wdith:' + clip.width_px);
 												
 						//for every clip_width pixle output image 
 						if(track.disp_mode=='thumb'){
 							track_html+='<span id="track_'+track_id+'_clip_'+j+'" style="left:'+clip.left_px+'px;width:'+clip.width_px+'px;" class="mv_time_clip mv_clip_drag">';	
-							track_html+= this.render_clip_frames(clip);																				
+							track_html+= this.render_clip_frames( clip );																				
 						}else if(track.disp_mode=='text'){
 							//'+left_px+
 							track_html+='<span id="track_'+track_id+'_clip_'+j+'" style="left:'+clip.left_px+'px;'+
 								'width:'+clip.width_px+'px;background:'+clip.getColor()+
 									'" class="mv_time_clip_text mv_clip_drag">'+clip.title;	
 						}																																										
-						//add in per clip controls
-						track_html+='<div title="'+getMsg('clip_in')+' '+clip.embed.start_ntp+'" class="ui-resizable-w ui-resizable-handle" style="width: 16px; height: 16px; left: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_contract.png\');"></div>'+"\n";
-						track_html+='<div title="'+getMsg('clip_out')+' '+clip.embed.end_ntp+'" class="ui-resizable-e ui-resizable-handle" style="width: 16px; height: 16px; right: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_expand.png\');"></div>'+"\n";
-						track_html+='<div title="'+getMsg('rmclip')+'" onClick="'+this.instance_name+'.removeClip('+track_id+','+j+')" style="position:absolute;cursor:pointer;width: 16px; height: 16px; left: 0px; bottom:2px;background:url(\''+mv_embed_path+'images/delete.png\');"></div>'+"\n";
-						track_html+='<span style="display:none;" class="mv_clip_stats"></span>';																							
+							//add in per clip controls
+							track_html+='<div title="'+getMsg('clip_in')+' '+clip.embed.start_ntp+'" class="ui-resizable-w ui-resizable-handle" style="width: 16px; height: 16px; left: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_contract.png\');"></div>'+"\n";
+							track_html+='<div title="'+getMsg('clip_out')+' '+clip.embed.end_ntp+'" class="ui-resizable-e ui-resizable-handle" style="width: 16px; height: 16px; right: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_expand.png\');"></div>'+"\n";
+							track_html+='<div title="'+getMsg('rmclip')+'" onClick="'+this.instance_name+'.removeClip('+track_id+','+j+')" style="position:absolute;cursor:pointer;width: 16px; height: 16px; left: 0px; bottom:2px;background:url(\''+mv_embed_path+'images/delete.png\');"></div>'+"\n";
+							track_html+='<span style="display:none;" class="mv_clip_stats"></span>';	
+																													
 						track_html+='</span>';	
 						//droppable_html+='<div id="dropBefore_'+i+'_c_'+j+'" class="mv_droppable" style="height:'+this.track_thumb_height+'px;left:'+clip.left_px+'px;width:'+Math.round(clip.width_px/2)+'px"></div>';
 						//droppable_html+='<div id="dropAfter_'+i+'_c_'+j+'" class="mv_droppable" style="height:'+this.track_thumb_height+'px;left:'+(clip.left_px+Math.round(clip.width_px/2))+'px;width:'+(clip.width_px/2)+'px"></div>';
 					}
-					cur_clip_time+=Math.round(clip.getDuration()/1000); //increment time
+					cur_clip_time+=Math.round( clip.getDuration() ); //increment time
 				}	
 				//js_log("new htmL for track i: "+track_id + ' html:'+track_html);
 				$j('#container_track_'+track_id).html(track_html);
@@ -537,7 +512,7 @@ mvSequencer.prototype = {
 							function sort_func(a, b){								
 								return a.order - b.order;
 							}
-							//assing keys back to order:
+							//assign keys back to order:
 							for(k in clips){
 								clips[k].order=k;
 							}																												
@@ -552,7 +527,7 @@ mvSequencer.prototype = {
 							//set border to red
 							$j(this).css({'border':'solid thin red'});
 							//fade In Time stats (end or start based on handle) 							
-							//draging east (adjusting end time) 	
+							//dragging east (adjusting end time) 	
 							js_log( 'append to: '+ this.id);												
 							$j('#' + this.id + ' > .mv_clip_stats').fadeIn("fast");
 						},
@@ -585,6 +560,7 @@ mvSequencer.prototype = {
 	},
 	//renders clip frames
 	render_clip_frames:function(clip, frame_offset_count){
+		js_log('f:render_clip_frames: ' + clip.id + ' foc:' + frame_offset_count); 
 		var clip_frames_html='';					
 		var frame_width = Math.round(this.track_thumb_height*1.3333333);
 
@@ -613,11 +589,11 @@ mvSequencer.prototype = {
 		//would be nice if getting the width did not flicker the border
 		//@@todo do a work around e in resize function has some screen based offset values
 		clip.width_px = $j(clip_element).width();
-		var width_dif = clip.width_px - Math.round( Math.round(clip.getDuration()/1000)/this.timeline_scale);		
+		var width_dif = clip.width_px - Math.round( Math.round( clip.getDuration() )/this.timeline_scale);		
 		//var left_px = $j(clip_element).css('left');
 		
-		var new_clip_dur = Math.round(clip.width_px*this.timeline_scale);
-		var clip_dif=(new_clip_dur-(clip.getDuration()/1000));
+		var new_clip_dur = Math.round( clip.width_px*this.timeline_scale );
+		var clip_dif = (new_clip_dur - clip.getDuration() );
 		var clip_dif_str = (clip_dif >0)?'+'+clip_dif:clip_dif;
 		//set the edit global delta
 		this.edit_delta = clip_dif;
@@ -677,7 +653,8 @@ mvSequencer.prototype = {
 		}	
 		$j('#'+this.timeline_id+'_head_jump').html(out);
 	},
-	jt:function(jh_time){
+	jt:function( jh_time ){
+		js_log('jt:' + jh_time);
 		var this_seq = this;
 		this.playline_time = jh_time;
 		js_log('time: ' + seconds2ntp(jh_time) + ' ' + Math.round(jh_time/this.timeline_scale));
@@ -685,38 +662,8 @@ mvSequencer.prototype = {
 		$j('#'+this.timeline_id+'_playline').css('left', Math.round(jh_time/this.timeline_scale)+'px' );
 		//@@ in the future this will render the state at that time point (combining tracks etc) 
 		cur_pl_time=0;
-		for(i in this.plObj.tracks){
-			track = this.plObj.tracks[i];
-			//find out which clip we are in: 
-			for(j in track.clips){
-				var clip = track.clips[j];
-				var clip_inx = j;
-				if( (cur_pl_time + clip.getDuration()/1000)>jh_time ){
-					//in range: offset is 
-					var in_clip_offset = parseInt(jh_time -cur_pl_time);					
-					var ts = clip.embed.thumbnail;					
-					//js_log('old src: ' + ts + 'cofset:' + in_clip_offset + ' cstart:' +clip.embed.start_offset );
-					var st = ts.indexOf('t=');
-					if(st!=-1){						
-						var et_req = (ts.indexOf('&', st)==-1)?"":'&'+ts.substring(ts.indexOf('&', st));
-						var jt_time_ntp = seconds2ntp( in_clip_offset + parseInt(clip.embed.start_offset/1000) );
-						var new_frame_src =ts.substring(0,st) + 't=' + 
-							jt_time_ntp+
-							et_req;			
-						if(clip.id!=this.plObj.cur_clip.id){
-							clip.embed.updateThumbnail(new_frame_src);	
-							this.plObj.swapClipDesc(clip.id);
-						}else{
-							this.plObj.cur_clip.embed.updateThumbnail(new_frame_src);												
-						}
-					}else{
-						js_log('error:thumbnail is not in metavid request format');
-					}
-					break;
-				}
-				cur_pl_time+=parseInt(clip.getDuration()/1000);
-			}
-		}
+		//update the thumb with the requested time: 		
+		this.plObj.updateThumbTime( jh_time );		
 	},
 	//adjusts the current scale
 	zoom_in:function(){
@@ -736,5 +683,31 @@ mvSequencer.prototype = {
 	}
 		
 }
-
-
+/* extension to mvPlayList to support smil properties */
+var mvSeqPlayList = function( element ){
+	return this.init( element );
+}
+mvSeqPlayList.prototype = {
+	init:function(element){
+		var myPlObj = new mvPlayList(element);
+		//inherit mvClip		
+		for(method in myPlObj){			
+			if(typeof this[method] != 'undefined' ){				
+				this['parent_'+method]=myPlObj[method];				
+			}else{		
+				this[method] = myPlObj[method];
+			}		
+		}
+		//do specific mods:(controls and title are managed by the sequencer)  
+		this.pl_layout.title_bar_height=0;
+		this.pl_layout.control_height=0;
+	},
+	//override renderDisplay
+	renderDisplay:function(){
+		//setup layout for title and dc_ clip container  
+		$j(this).html('<div id="dc_'+this.id+'" style="width:'+this.width+'px;' +
+				'height:'+(this.height)+'px;position:relative;" />');			
+				
+		this.setupClipDisplay();
+	}
+}
