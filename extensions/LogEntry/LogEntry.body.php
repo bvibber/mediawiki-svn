@@ -21,6 +21,9 @@ function efLogEntryInit() {
 function efLogEntryRender( $input, $args, &$parser ) {
 	global $wgUser;
 	
+	# Don't cache since we are passing the token in the form
+	$parser->disableCache();
+	
 	# Create token
 	$token = $wgUser->editToken();
 	
