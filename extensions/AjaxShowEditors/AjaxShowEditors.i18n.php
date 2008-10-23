@@ -309,15 +309,17 @@ $messages['grc'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'ajax-se-desc' => 'מציג משתמשים עורכים העורכים את אותו העמוד',
-	'ajax-se-title' => 'עורך כעת:',
-	'ajax-se-pending' => 'רענון בהמתנה... (לחץ על תיבה זו כדי להתחיל בעריכה)',
-	'ajax-se-pagedoesnotexist' => 'העמוד אינו קיים',
-	'ajax-se-userinvalid' => 'שגיאה: משתמש שגוי',
-	'ajax-se-usernotfound' => 'שגיאה: משתמש לא נמצא',
+	'ajax-se-desc' => 'הצגת משתמשים העורכים את אותו הדף',
+	'ajax-se-title' => 'עורכים כעת:',
+	'ajax-se-pending' => 'בהמתנה לרענון… (לחצו על תיבה זו כדי להתחיל בעריכה)',
+	'ajax-se-idling' => '(לפני $1s)',
+	'ajax-se-pagedoesnotexist' => 'הדף אינו קיים',
+	'ajax-se-userinvalid' => 'שגיאה: המשתמש אינו תקין',
+	'ajax-se-usernotfound' => 'שגיאה: המשתמש לא נמצא',
 );
 
 /** Hindi (हिन्दी)
@@ -765,6 +767,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'ajax-se-idling' => '($1 passate)',
 	'ajax-se-pagedoesnotexist' => "'A pàgene non g'esiste",
 );
 

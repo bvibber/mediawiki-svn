@@ -322,6 +322,13 @@ $messages['hil'] = array(
 	'spamregex-summary-log' => '(Kabilogan)',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'spamregex-summary-log' => '(Sažetak)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

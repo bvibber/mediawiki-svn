@@ -181,7 +181,11 @@ $messages['ar'] = array(
 	'code-rev-submit-next' => 'تنفيذ والقادم غير محلول',
 	'codereview-reply-link' => 'رد',
 	'codereview-email-subj' => '[$1] [r$2]: تعليق جديد تمت إضافته',
-	'codereview-email-body' => 'المستخدم <b>$1</b> أرسل <a href="$2">التعليق التالي</a> على r$3:
+	'codereview-email-body' => 'المستخدم "$1" كتب تعليقا على r$3.
+
+المسار الكامل: $2
+
+التعليق:
 
 $4',
 	'repoadmin' => 'إدارة المستودع',
@@ -267,7 +271,11 @@ $messages['arz'] = array(
 	'code-rev-submit-next' => 'تنفيذ والقادم غير محلول',
 	'codereview-reply-link' => 'رد',
 	'codereview-email-subj' => '[$1] [r$2]: تعليق جديد تمت إضافته',
-	'codereview-email-body' => 'المستخدم <b>$1</b> أرسل <a href="$2">التعليق التالى</a> على r$3:
+	'codereview-email-body' => 'المستخدم "$1" كتب تعليقا على r$3.
+
+المسار الكامل: $2
+
+التعليق:
 
 $4',
 	'repoadmin' => 'إدارة المستودع',
@@ -780,6 +788,14 @@ $messages['gl'] = array(
 	'code-rev-submit' => 'Facer os cambios',
 	'code-rev-submit-next' => 'Tarefas e problemas non resoltos',
 	'codereview-reply-link' => 'resposta',
+	'codereview-email-subj' => '[$1] [r$2]: Engadido un novo comentario',
+	'codereview-email-body' => 'O usuario "$1" deixou un comentario en r$3.
+
+Enderezo URL: $2
+
+Comentario:
+
+$4',
 	'repoadmin' => 'Administración do repositorio',
 	'repoadmin-new-legend' => 'Crear un novo repositorio',
 	'repoadmin-new-label' => 'Nome do repositorio:',
@@ -804,6 +820,104 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'code-authors' => 'δημιουργοί',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'code' => 'מהדורת קוד',
+	'code-comments' => 'הערות',
+	'code-desc' => '[[Special:Code|כלי מהדורות קוד]] עם [[Special:RepoAdmin|תמיכה ב־Subversion]]',
+	'code-no-repo' => 'לא הוגדר מאגר!',
+	'code-notes' => 'הערות מהדורה',
+	'code-authors' => 'יוצרים',
+	'code-tags' => 'תגיות',
+	'code-authors-text' => 'להלן רשימת יוצרי מאגרים לפי סדר המסירות האחרונות.',
+	'code-author-haslink' => 'יוצר זה מקושר אל משתמש הוויקי $1',
+	'code-author-orphan' => 'יוצר זה אינו מקושר למשתמש בוויקי',
+	'code-author-dolink' => 'קשר יוצר זה למשתמש ויקי:',
+	'code-author-alterlink' => 'שנה את משתמש הוויקי המקושר ליוצר זה:',
+	'code-author-orunlink' => 'או בטל את הקישור למשתמש ויקי זה:',
+	'code-author-name' => 'הזנת שם משתמש:',
+	'code-author-success' => 'היוצר $1 קושר אל משתמש הוויקי $2',
+	'code-author-link' => 'לקשר?',
+	'code-author-unlink' => 'לבטל קישור?',
+	'code-author-unlinksuccess' => 'בוטל הקישור ליוצר $1',
+	'code-field-id' => 'מהדורה',
+	'code-field-author' => 'יוצר',
+	'code-field-user' => 'מגיב',
+	'code-field-message' => 'סיכום המסירה',
+	'code-field-status' => 'מצב',
+	'code-field-timestamp' => 'תאריך',
+	'code-field-comments' => 'הערות',
+	'code-field-path' => 'נתיב',
+	'code-field-text' => 'הערה',
+	'code-rev-author' => 'יוצר:',
+	'code-rev-date' => 'תאריך:',
+	'code-rev-message' => 'הערה:',
+	'code-rev-repo' => 'מאגר:',
+	'code-rev-rev' => 'מהדורה:',
+	'code-rev-rev-viewvc' => 'על גבי ViewVC',
+	'code-rev-paths' => 'נתיבים ששונו:',
+	'code-rev-modified-a' => 'נוסף',
+	'code-rev-modified-r' => 'הוחלף',
+	'code-rev-modified-d' => 'נמחק',
+	'code-rev-modified-m' => 'שונה',
+	'code-rev-status' => 'מצב:',
+	'code-rev-status-set' => 'שינוי מצב',
+	'code-rev-tags' => 'תגיות:',
+	'code-rev-tag-add' => 'הוספת תגיות:',
+	'code-rev-tag-remove' => 'הסרת תגיות:',
+	'code-rev-comment-by' => 'הערה על ידי $1',
+	'code-rev-comment-submit' => 'שליחת ההערה',
+	'code-rev-comment-preview' => 'תצוגה מקדימה',
+	'code-rev-diff' => 'שינוי',
+	'code-rev-diff-link' => 'שינוי',
+	'code-rev-purge-link' => 'טיהור',
+	'code-status-new' => 'חדש',
+	'code-status-fixme' => 'לתיקון',
+	'code-status-resolved' => 'נפתר',
+	'code-status-ok' => 'אישור',
+	'code-status-deferred' => 'נדחה',
+	'code-pathsearch-legend' => 'חפש מהדורות במאגר זה לפי נתיב',
+	'code-pathsearch-path' => 'נתיב:',
+	'code-rev-submit' => 'מסירת השינויים',
+	'code-rev-submit-next' => 'מסירה ומעבר לבא שלא נפתר',
+	'codereview-reply-link' => 'תגובה',
+	'codereview-email-subj' => '[$1] [r$2]: נוספה הערה חדשה',
+	'codereview-email-body' => 'המשתמש "$1" פירסם הערה אודות r$3.
+
+הכתובת המלאה: $2
+
+הערה:
+
+$4',
+	'repoadmin' => 'ניהול מאגרים',
+	'repoadmin-new-legend' => 'יצירת מאגר חדש',
+	'repoadmin-new-label' => 'שם המאגר:',
+	'repoadmin-new-button' => 'יצירה',
+	'repoadmin-edit-legend' => 'שינוי במאגר "$1"',
+	'repoadmin-edit-path' => 'נתיב המאגר:',
+	'repoadmin-edit-bug' => 'נתיב ה־Bugzilla:',
+	'repoadmin-edit-view' => 'נתיב ה־ViewVC:',
+	'repoadmin-edit-button' => 'אישור',
+	'repoadmin-edit-sucess' => 'המאגר "[[Special:Code/$1|$1]]" שונה בהצלחה.',
+	'right-repoadmin' => 'ניהול מאגרי קוד',
+	'right-codereview-add-tag' => 'הוספת תגיות חדשות למהדורות',
+	'right-codereview-remove-tag' => 'הסרת תגיות מהמהדורות',
+	'right-codereview-post-comment' => 'הוסף הערות למהדורות',
+	'right-codereview-set-status' => 'שינוי מצב המהדורות',
+	'right-codereview-link-user' => 'קשר את היוצרים למשתמשי ויקי',
+	'specialpages-group-developer' => 'כלי פיתוח',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'code-field-author' => 'Autor',
+	'code-rev-author' => 'Autor:',
 );
 
 /** Hungarian (Magyar)
@@ -981,8 +1095,15 @@ $messages['it'] = array(
  */
 $messages['km'] = array(
 	'code-field-author' => 'អ្នកនិពន្ធ',
+	'code-field-timestamp' => 'កាលបរិច្ឆេទ',
+	'code-rev-author' => 'អ្នកនិពន្ធ៖',
 	'code-rev-date' => 'កាលបរិច្ឆេទ៖',
+	'code-rev-modified-d' => 'បានលុប',
+	'code-rev-tags' => 'ប្លាក៖',
+	'code-rev-tag-add' => 'បន្ថែមប្លាក៖',
+	'code-rev-comment-preview' => 'មើលជាមុន',
 	'code-status-new' => 'ថ្មី',
+	'code-status-ok' => 'យល់ព្រម',
 	'repoadmin-new-button' => 'បង្កើត',
 	'repoadmin-edit-button' => 'យល់ព្រម',
 );
@@ -1223,9 +1344,13 @@ $messages['oc'] = array(
 	'code-rev-submit-next' => 'Salvar & venenta pas resolguda',
 	'codereview-reply-link' => 'respondre',
 	'codereview-email-subj' => '[$1] [r$2] : Comentari novèl apondut',
-	'codereview-email-body' => 'L\'utilizaire <b>$1</b> a mandat lo <a href="$2">comentari seguent</a> dins r$3 :
+	'codereview-email-body' => "L'utilizaire « $1 » a mandat un comentari sus r$3.
 
-$4',
+Adreça completa : $2
+
+Comentari :
+
+$4",
 	'repoadmin' => 'Administracion dels depausses',
 	'repoadmin-new-legend' => 'Crear un depaus novèl',
 	'repoadmin-new-label' => 'Nom del depaus :',
@@ -1304,13 +1429,13 @@ $messages['ru'] = array(
 	'code-status-resolved' => 'решено',
 	'code-status-ok' => 'готово',
 	'code-status-deferred' => 'отложено',
-	'code-pathsearch-legend' => 'Поиск в этом репозитории конкретных редакций по их адресу',
+	'code-pathsearch-legend' => 'Поиск в этом хранилище конкретных редакций по их адресу',
 	'code-pathsearch-path' => 'Путь:',
 	'code-rev-submit' => 'Сохранить',
 	'code-rev-submit-next' => 'Сохранить и перейти к следующей задаче',
 	'codereview-reply-link' => 'ответить',
 	'codereview-email-subj' => '[$1] [r$2]: Добавлен новый комментарий',
-	'codereview-email-body' => 'Участник "$1" разместил комментарий к редакции r$3.
+	'codereview-email-body' => 'Участник «$1» разместил комментарий к редакции r$3.
 
 Полный URL: $2
 
@@ -1400,7 +1525,11 @@ $messages['sk'] = array(
 	'code-rev-submit-next' => 'Commit & ďalší nevyriešený',
 	'codereview-reply-link' => 'odpovedať',
 	'codereview-email-subj' => '[$1] [r$2]: Pridaný nový komentár',
-	'codereview-email-body' => 'Používateľ <b>$1</b> poslal <a href="$2">nasledovný komentár</a> k r$3:
+	'codereview-email-body' => 'Používateľ „$1” poslal komentár k r$3.
+
+Plný URL: $2
+
+Komentár:
 
 $4',
 	'repoadmin' => 'Správa úložiska',
@@ -1516,6 +1645,8 @@ $messages['sv'] = array(
 	'code-comments' => 'Kommentarer',
 	'code-desc' => '[[Special:Code|Kodgranskningsverktyg]] med [[Special:RepoAdmin|stöd för Subversion]]',
 	'code-no-repo' => 'Ingen databas konfigurerad!',
+	'code-notes' => 'granska noter',
+	'code-authors' => 'författare',
 	'code-author-haslink' => 'Denna författare är länkad till wiki-användaren $1',
 	'code-author-dolink' => 'Länka denna författare till en wiki-användare :',
 	'code-author-name' => 'Skriv in ett användarnamn:',
@@ -1526,7 +1657,9 @@ $messages['sv'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Noter',
+	'code-field-text' => 'Not',
 	'code-rev-author' => 'Författare:',
+	'code-rev-date' => 'Datum:',
 	'code-rev-message' => 'Kommentar:',
 	'code-rev-repo' => 'Databas:',
 	'code-rev-rev' => 'Version:',
@@ -1545,11 +1678,21 @@ $messages['sv'] = array(
 	'code-rev-comment-preview' => 'Förhandsgranska',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-purge-link' => 'rensa',
 	'code-status-new' => 'ny',
 	'code-status-fixme' => 'fixa-mig',
 	'code-status-resolved' => 'löst',
 	'code-status-ok' => 'ok',
+	'code-rev-submit' => 'Lägg in ändringar',
 	'codereview-reply-link' => 'svara',
+	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar tillagd',
+	'codereview-email-body' => 'Användaren "$1" postade en kommenter på r$3
+
+Fullständig URL: $2
+
+Kommentar:
+
+$4',
 	'repoadmin' => 'Databasadministration',
 	'repoadmin-new-legend' => 'Skapa en ny databas',
 	'repoadmin-new-label' => 'Databasnamn:',
@@ -1565,6 +1708,7 @@ $messages['sv'] = array(
 	'right-codereview-remove-tag' => 'Ta bort taggar från versioner',
 	'right-codereview-post-comment' => 'Lägga till kommentarer till versioner',
 	'right-codereview-set-status' => 'Ändra versioners status',
+	'specialpages-group-developer' => 'Utvecklarverktyg',
 );
 
 /** Telugu (తెలుగు)

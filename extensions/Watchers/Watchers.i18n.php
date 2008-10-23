@@ -216,13 +216,14 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'watchers' => 'עוקבים',
-	'watchers_link_title' => 'מי עוקב אחר עמוד זה?',
-	'watchers_error_article' => "'''שגיאה:''' העמוד אינו קיים.",
-	'watchers_noone_watches' => 'אף אחד לא עוקב אחר עמוד זה.',
+	'watchers_link_title' => 'מי עוקב אחרי דף זה?',
+	'watchers_error_article' => "'''שגיאה:''' הדף אינו קיים.",
+	'watchers_noone_watches' => 'אף אחד לא עוקב אחר דף זה.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -477,12 +478,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'watchers' => 'Bevakare',
+	'watchers-desc' => 'Visar [[Special:Watchers|vilka användare som bevakar en viss sida]]',
 	'watchers_link_title' => 'Användare som bevakar sidan',
 	'watchers_error_article' => '<b>Fel:</b> Sidan finns inte.',
 	'watchers_header' => '{{PLURAL:$2|Användare}} som bevakar "$1"',
 	'watchers_noone_watches' => 'Ingen bevakar denna sida.',
-	'watchers_x_or_more' => '$1 eller fler användare bevakar sidan.',
-	'watchers_less_than_x' => 'Färre än $1 användare bevakar sidan.',
+	'watchers_x_or_more' => '$1 eller fler {{PLURAL:$1|användare|användare}} bevakar den här sidan.',
+	'watchers_less_than_x' => 'Färre än $1 {{PLURAL:$1|användare|användare}} bevakar den här sidan.',
 );
 
 /** Telugu (తెలుగు)

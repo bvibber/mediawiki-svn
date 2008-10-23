@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ViewAPC' => array( 'عرض_إيه_بى_سى' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'ViewAPC' => array( 'APC-Informationen' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ViewAPC' => array( 'APC-tiedot' ),

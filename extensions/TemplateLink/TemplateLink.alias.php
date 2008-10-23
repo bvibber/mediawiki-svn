@@ -29,6 +29,11 @@ $aliases['fa'] = array(
 	'TemplateLink' => array( 'پیوند_الگو' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'TemplateLink' => array( 'តំនភ្ជាប់ទំព័រគំរូ' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'TemplateLink' => array( 'Schabloune Link' ),

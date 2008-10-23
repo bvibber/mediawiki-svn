@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Patroller' => array( 'مراجع' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'Patroller' => array( 'Prüfer' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Patroller' => array( 'Contreleren' ),

@@ -782,6 +782,7 @@ $messages['es'] = array(
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author Meno25
  */
 $messages['fr'] = array(
 	'deletequeue-desc' => 'Crée un [[Special:DeleteQueue|système de queue pour gérer les suppression]]',
@@ -834,7 +835,7 @@ La raison invoquée pour cela est ''« $1 »''.",
 	'deletequeue-page-prod' => "Il a été proposé la suppression de cette page.
 La raison invoquée est ''« $1 »''.
 Si la proposition ne rencontre aucune objection sur ''$2'', la page sera supprimée.
-Vous pouvez contester cette suppression en [{{fullurl:{{fullpagename}}|action=delvote}} vous y opposant].",
+Vous pouvez contester cette suppression en [{{fullurl:{{FULLPAGENAME}}|action=delvote}} vous y opposant].",
 	'deletequeue-page-deletediscuss' => "Cette page a été proposé à la suppression, celle-ci a été contestée.
 Le motif invoqué était ''« $1 »''
 Une discussion est intervenue sur [[$3]], laquelle sera conclue le ''$2''.",
@@ -1358,8 +1359,16 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
  * @author Lovekhmer
  */
 $messages['km'] = array(
+	'deletequeue-action-queued' => 'ការលុប',
+	'deletequeue-delnom-otherreason' => 'មូលហេតុផ្សេងទៀត',
+	'deletequeue-delnom-extra' => 'ពត៌មានបន្ថែម៖',
+	'deletequeue-review-delete' => 'លុបទំព័រ។',
+	'deletequeue-review-reason' => 'យោបល់៖',
 	'deletequeue-review-newreason' => 'មូលហេតុថ្មី៖',
 	'deletequeue-review-newextra' => 'ពត៌មានបន្ថែម៖',
+	'deletequeue-vote-submit' => 'ដាក់ស្នើ',
+	'deletequeue-list-search' => 'ស្វែងរក',
+	'deletequeue-list-header-page' => 'ទំព័រ',
 );
 
 /** Krio (Krio)
@@ -1681,6 +1690,7 @@ Forsikre deg om at siden kan hurtigslettes ifm. retningslinjene.",
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author Meno25
  */
 $messages['oc'] = array(
 	'deletequeue-desc' => 'Crea un [[Special:DeleteQueue|sistèma de coa per gerir las supressions]]',
@@ -1733,7 +1743,7 @@ La rason invocada per aquò es ''« $1 »''.",
 	'deletequeue-page-prod' => "Es estat prepausada la supression d'aquesta pagina.
 La rason invocada es ''« $1 »''.
 Se la proposicion rencontra pas cap d'objeccion sus ''$2'', la pagina serà suprimida.
-Podètz contestar aquesta supression en [{{fullurl:{{fullpagename}}|action=delvote}} vos i opausant].",
+Podètz contestar aquesta supression en [{{fullurl:{{FULLPAGENAME}}|action=delvote}} vos i opausant].",
 	'deletequeue-page-deletediscuss' => "Aquesta pagina es estada prepausada a la supression, aquesta es estada contestada.
 Lo motiu invocat èra ''« $1 »''
 Una discussion es intervenguda sus [[$3]], laquala serà concluida lo ''$2''.",
@@ -1774,6 +1784,7 @@ Podètz [{{FULLURL:$1|action=delvote}} sosténer o refusar] la supression, o [{{
 	'deletequeue-role-nominator' => 'iniciaire original de la supression',
 	'deletequeue-role-vote-endorse' => 'Partidari de la supression',
 	'deletequeue-role-vote-object' => 'Opausant a la supression',
+	'deletequeue-vote-tab' => 'Sosténer/Refusar la supression',
 	'deletequeue-vote-title' => 'Sosténer o refusar la supression de « $1 »',
 	'deletequeue-vote-text' => "Podètz utilizar aqueste formulari per apiejar o refusar la supression de « '''$1''' ».
 Aquesta accion espotirà los vejaires qu'avètz emeses deperabans dins aquesta discussion.
@@ -2050,10 +2061,12 @@ Du koast dien oaine Unnerstutsenge of Oulienenge fon ju Läskenge [{{fullurl:{{F
  * @author Boivie
  * @author Leo Johannes
  * @author M.M.S.
+ * @author Najami
  * @author StefanB
  */
 $messages['sv'] = array(
 	'deletequeue-desc' => 'Skapar en [[Special:DeleteQueue|köbaserat system för att hantera raderingar]]',
+	'deletequeue-action-queued' => 'Radering',
 	'deletequeue-action' => 'Föreslå radering',
 	'deletequeue-action-title' => 'Föreslå radering av "$1"',
 	'deletequeue-permissions-noedit' => 'Du måste kunna redigera en sida för att kunna påverka dess raderingsstatus.',
@@ -2062,6 +2075,7 @@ $messages['sv'] = array(
   ** Spam
   ** Underhåll
   ** Inte relevant för projektet',
+	'deletequeue-nom-alreadyqueued' => 'Den här sidan ligger redan i raderingskön.',
 	'deletequeue-speedy-title' => 'Märk "$1" för snabbradering',
 	'deletequeue-speedy-text' => "Du kan använda det här formuläret för att märka sidan \"'''\$1'''\" för snabbradering.
 

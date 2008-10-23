@@ -39,6 +39,11 @@ $aliases['id'] = array(
 	'Form' => array( 'Formulir' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'Form' => array( 'បែបបទ' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Form' => array( 'Formulaire' ),

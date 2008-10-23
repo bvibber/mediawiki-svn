@@ -321,6 +321,13 @@ $messages['jv'] = array(
 	'onlinestatus-toggle-online' => "Sajroning jaringan (''online'')",
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'onlinestatus-toggle-online' => 'អនឡាញ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

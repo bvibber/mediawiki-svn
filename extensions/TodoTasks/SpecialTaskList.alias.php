@@ -27,10 +27,21 @@ $aliases['arz'] = array(
 	'TaskListByProject' => array( 'قائمة_المهام_حسب_المشروع' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'TaskList' => array( 'Aufgabenliste' ),
+	'TaskListByProject' => array( 'Aufgabenliste pro Projekt' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'TaskList' => array( 'Tehtävälista' ),
 	'TaskListByProject' => array( 'Projektin tehtävälista' ),
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'TaskList' => array( 'បញ្ជីភារកិច្ច' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

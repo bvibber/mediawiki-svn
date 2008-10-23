@@ -294,6 +294,25 @@ $messages['hi'] = array(
 	'importfreeimages_returntoform' => "या फिर, आपके खोज रिज़ल्टपर वापिस जाने के लिये <a href='$1'>यहां</a> क्लिक करें",
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'importfreeimages' => 'Uvezi slobodne slike',
+	'importfreeimages-desc' => 'Omogućava [[Special:ImportFreeImages|uvoženje pravilno licenciranih fotografija]] iz [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Ova stranica vam omogućava traženje pravilno licenciranih fotografija na flickr-u i njihovo uvoženje na wiki.',
+	'importfreeimages_noapikey' => 'Niste konfigurirali svoj Flickr API ključ.
+Da biste to napravili, potražite API ključ [http://www.flickr.com/services/api/misc.api_keys.html ovdje] i postavite wgFlickrAPIKey u ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => "Za vaš traženi pojam '$1' nije pronađena ni jedna fotografija, molimo pokušajte ponovo.",
+	'importfreeimages_invalidurl' => "URL '$1' nije valjana Flickr slika.",
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'uvezi ovo',
+	'importfreeimages_next' => 'Slijedeće $1',
+	'importfreeimages_filefromflickr' => '$1 suradnika <b>[$2]</b> iz flickr. Originalni URL',
+	'importfreeimages_promptuserforfilename' => 'Molimo upišite naziv odredišne datoteke:',
+	'importfreeimages_returntoform' => "Ili, kliknite <a href='$1'>ovdje</a> za povratak na rezultate pretrage",
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

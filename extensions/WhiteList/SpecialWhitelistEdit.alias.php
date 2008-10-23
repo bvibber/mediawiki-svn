@@ -33,6 +33,11 @@ $aliases['fa'] = array(
 	'WhitelistEdit' => array( 'ویرایش_فهرست_سفید' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'WhiteList' => array( 'បញ្ជីស' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WhiteList' => array( 'WhiteList' ),

@@ -740,6 +740,13 @@ $messages['hil'] = array(
 	'openidchoosepassword' => 'kontra-senyas:',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'openidchoosepassword' => 'lozinka:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -1733,6 +1740,7 @@ $messages['pt'] = array(
 	'openidusernameprefix' => 'UtilizadorOpenID',
 	'openidserverlogininstructions' => 'Introduza a sua palavra-chave abaixo para se autenticar em $3 como utilizador $2 (página de utilizador $1).',
 	'openidtrustinstructions' => 'Verifique se pretender partilhar dados com $1.',
+	'openidallowtrust' => 'Permitir que $1 confie nesta conta de utilizador.',
 	'openidnopolicy' => 'O sítio não especificou uma política de privacidade.',
 	'openidpolicy' => 'Consulte a <a target="_new" href="$1">política de privacidade</a> para mais informações.',
 	'openidoptional' => 'Opcional',
@@ -1743,6 +1751,7 @@ $messages['pt'] = array(
 	'openidlanguage' => 'Língua',
 	'openidnotavailable' => 'A sua alcunha preferida ($1) já está em uso por outro utilizador.',
 	'openidchoosefull' => 'O seu nome completo ($1)',
+	'openidchooseurl' => 'Um nome escolhido a partir do seu OpenID ($1)',
 	'openidchooseauto' => 'Um nome gerado automaticamente ($1)',
 	'openidchoosemanual' => 'Um nome à sua escolha:',
 	'openidchooseexisting' => 'Uma conta existente neste wiki:',
@@ -1756,6 +1765,8 @@ $messages['pt'] = array(
 Se de futuro pretender usar OpenID para se autenticar, pode [[Special:OpenIDConvert|converter a sua conta para usar OpenID]].",
 	'openidnousername' => 'Nenhum nome de utilizador especificado.',
 	'openidbadusername' => 'Nome de utilizador especificado inválido.',
+	'openidautosubmit' => 'Esta página inclui um formulário que deverá ser automaticamente submetido se tiver JavaScript activado.
+Caso contrário, utilize o botão \\"Continuar\\".',
 	'openidclientonlytext' => 'Você pode usar contas deste wiki como OpenIDs noutro sítio.',
 	'openidloginlabel' => 'URL do OpenID',
 );

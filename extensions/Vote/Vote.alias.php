@@ -29,6 +29,11 @@ $aliases['as'] = array(
 	'Vote' => array( 'ভোট' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'Vote' => array( 'Abstimmen' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'Vote' => array( 'رای_دادن' ),
@@ -47,6 +52,11 @@ $aliases['fr'] = array(
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Vote' => array( 'Beri suara' ),
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'Vote' => array( 'បោះឆ្នោត' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

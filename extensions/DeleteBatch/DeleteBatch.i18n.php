@@ -401,16 +401,36 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fievarsty
  */
 $messages['ja'] = array(
 	'deletebatch' => 'ページを一括削除する',
 	'deletebatch-desc' => '[[Special:DeleteBatch|ページを一括削除する]]',
 	'deletebatch-button' => '削除',
+	'deletebatch-here' => '<b>こちらへ</b>',
+	'deletebatch-help' => 'ページを一括削除することができます。ページ毎の削除の他に、ファイルにリストしたページ群を削除することができます。
+削除記録に表示される利用者を選択してください。
+アップロードされたファイルについては、各行にページ名とパイプ記号（ "|" ）で区切った理由の追加説明を記す必要があります。',
 	'deletebatch-caption' => 'ページリスト',
 	'deletebatch-title' => '一括削除',
+	'deletebatch-link-back' => '前のページに戻る',
+	'deletebatch-as' => 'スクリプトを実行',
+	'deletebatch-both-modes' => '指定された1つのページか、または与えられたページリストのどちらかを選んでください。',
 	'deletebatch-or' => '<b>または</b>',
 	'deletebatch-page' => '削除するページ',
+	'deletebatch-reason' => '削除の理由',
+	'deletebatch-processing' => 'ページを削除する',
+	'deletebatch-from-file' => 'ファイルリストから',
+	'deletebatch-from-form' => 'フォームから',
+	'deletebatch-success-subtitle' => '$1',
+	'deletebatch-omitting-nonexistant' => '存在しないページ $1 は省略しました。',
+	'deletebatch-omitting-invalid' => '無効なページ $1 は省略しました。',
+	'deletebatch-file-bad-format' => 'ファイルは、プレーンテキストであるべきです',
+	'deletebatch-file-missing' => '与えられたファイルを読む込むことができません。',
+	'deletebatch-select-script' => 'Delete page script',
+	'deletebatch-select-yourself' => 'あなた',
+	'deletebatch-no-page' => '削除するページを少なくとも1ページ指定するか、ページリストを含むファイルを選んでください。',
 );
 
 /** Khmer (ភាសាខ្មែរ)

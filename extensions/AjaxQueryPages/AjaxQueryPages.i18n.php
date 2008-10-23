@@ -109,6 +109,13 @@ $messages['gl'] = array(
 	'ajax-qp-desc' => 'Engadir algún AJAX a QueryPages tales como [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'ajax-qp-desc' => 'הוסף מעט AJAX לעמודי שאילתה כגון [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

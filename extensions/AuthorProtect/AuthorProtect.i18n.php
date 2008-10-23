@@ -336,6 +336,7 @@ $messages['gv'] = array(
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author StuB
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'authorprotect' => 'הגנה על הדף מפני לא־יוצרים',
@@ -346,7 +347,11 @@ $messages['he'] = array(
 	'authorprotect-move' => 'הגבלת העברה ליוצרים בלבד',
 	'authorprotect-expiry' => 'זמן הפקיעה',
 	'authorprotect-reason' => 'סיבה',
-	'protect-level-author' => 'הגנה מפני לא-יוצרים',
+	'authorprotect-intro' => 'השתמשו בטופס זה כדי לנעול עמוד זה מאלו שאינם היוצרים',
+	'authorprotect-success' => 'ההגנה חלה בהצלחה!',
+	'authorprotect-failure' => 'החלת ההגנה נכשלה',
+	'protect-level-author' => 'הגנה מפני לא־יוצרים',
+	'restriction-level-author' => 'מוגן ליוצר',
 );
 
 /** Hindi (हिन्दी)

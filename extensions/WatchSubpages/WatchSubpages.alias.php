@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'WatchSubpages' => array( 'مراقبة_الصفحات_الفرعية' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'WatchSubpages' => array( 'Unterseiten beobachten' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WatchSubpages' => array( 'پی‌گیری_زیرصفحه‌ها' ),

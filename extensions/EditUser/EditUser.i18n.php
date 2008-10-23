@@ -273,6 +273,8 @@ $messages['gl'] = array(
 	'edituser-dosearch' => 'Procurar',
 	'edituser-nouser' => 'O usuario especificado non existe',
 	'edituser-exempt' => 'O usuario especificado non pode ser editado',
+	'right-edituser' => 'Editar as preferencias doutros usuarios',
+	'right-edituser-exempt' => 'As súas preferencias non poden ser editadas por outros',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -363,6 +365,8 @@ $messages['hsb'] = array(
 	'edituser-dosearch' => 'Pytanje',
 	'edituser-nouser' => 'Podaty wužiwar njeeksistuje.',
 	'edituser-exempt' => 'Podaty wužiwar njehodźi so wobdźěłać',
+	'right-edituser' => 'Nastajenja druhich wužiwarjow wobdźěłać',
+	'right-edituser-exempt' => 'Nastajenja njedadźa so wot druhich změnić',
 );
 
 /** Hungarian (Magyar)
@@ -504,6 +508,8 @@ $messages['lb'] = array(
 	'edituser-dosearch' => 'Sichen',
 	'edituser-nouser' => 'Dee Benotzer gëtt et net',
 	'edituser-exempt' => 'Dee Benotzer kann net geännert ginn',
+	'right-edituser' => "D'Astellunge vun anere Benotzer änneren",
+	'right-edituser-exempt' => "D'Astellunge kënnen net vun Anere geännert ginn",
 );
 
 /** Lithuanian (Lietuvių)
@@ -763,6 +769,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'edituser-desc' => 'Gör det möjligt för användare med viss behörighet att ändra andra användares inställningar',
@@ -772,6 +779,8 @@ $messages['sv'] = array(
 	'edituser-dosearch' => 'Sök',
 	'edituser-nouser' => 'Den angivna användaren finns inte',
 	'edituser-exempt' => 'Den angivna användaren kan inte redigeras',
+	'right-edituser' => 'Redigera andra användares inställningar',
+	'right-edituser-exempt' => 'Deras inställningar kan inte redigeras av andra',
 );
 
 /** Silesian (Ślůnski)

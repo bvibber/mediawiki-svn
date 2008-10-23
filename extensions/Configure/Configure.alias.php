@@ -176,6 +176,13 @@ $aliases['oc'] = array(
 	'ViewConfig' => array( 'Veire la configuracion', 'VeireConfiguracion' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'Configure' => array( 'Konfiguracja' ),
+	'Extensions' => array( 'Rozszerzenia' ),
+	'ViewConfig' => array( 'Pokaż konfigurację' ),
+);
+
 /** Portuguese (Português) */
 $aliases['pt'] = array(
 	'Configure' => array( 'Configurar' ),

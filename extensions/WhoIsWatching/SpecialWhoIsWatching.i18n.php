@@ -265,6 +265,7 @@ ene Eijnshtiish för di Söndersigg enreschte.',
  */
 $messages['lb'] = array(
 	'whoiswatching' => 'Wien iwwerwaacht eng Säit',
+	'whoiswatching-desc' => 'Liwwert eng Säit mat de Benotzer déi eng Wiki-Säit iwwerwaachen',
 	'specialwhoiswatchingthepage' => 'Wien iwwerwaacht %s',
 	'specialwhoiswatchingusage' => 'Dës Spezialsäit kann net eleng benotzt ginn. Benotz w.e.g. [[MediaWiki:Number_of_watching_users_pageview|Zuel vun de Benotzer déi eng Sàit iwwerwaachen]] fir eng Ufankssäit fir dës Spezialsäit ze definéieren.',
 	'specialwhoiswatchingaddusers' => "Setzt Benotzer derbäi déi d'Säit iwwerwaachen",
@@ -394,6 +395,19 @@ $messages['pt'] = array(
 	'specialwhoiswatchingaddbtn' => 'Adicionar Utilizadores seleccionados',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Carla404
+ */
+$messages['pt-br'] = array(
+	'whoiswatching' => 'Quem está vigiando uma página wiki',
+	'whoiswatching-desc' => 'Fornece uma lista dos usuários que estão vigiando uma página wiki',
+	'specialwhoiswatchingthepage' => 'Quem está vigiando %s',
+	'specialwhoiswatchingusage' => 'Esta página especial não pode ser usada individualmente.
+Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] para definir um ponto de entrada para esta página especial.',
+	'specialwhoiswatchingaddusers' => 'Adicionar usuários para vigiar a página',
+	'specialwhoiswatchingaddbtn' => 'Adicionar os usuários selecionados',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -420,9 +434,11 @@ $messages['stq'] = array(
 /** Swedish (Svenska)
  * @author Boivie
  * @author Lejonel
+ * @author Najami
  */
 $messages['sv'] = array(
 	'whoiswatching' => 'Användare som bevakar en sida',
+	'whoiswatching-desc' => 'Visar en lista över användare som bevakar en viss sida',
 	'specialwhoiswatchingthepage' => 'Vem bevakar %s',
 	'specialwhoiswatchingusage' => 'Den här specialsidan kan inte användas utan parametrar.
 Använd [[MediaWiki:Number_of_watching_users_pageview]] för att ange en ingång till denna specialsida.',

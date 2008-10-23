@@ -490,12 +490,13 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'youtubeauthsub' => 'העלה סרטון ל־YouTube',
-	'youtubeauthsub-desc' => 'מאפשר למשתמשים [[Special:YouTubeAuthSub|להעלות סרטונים]] ישירות ל־YouTube',
-	'youtubeauthsub_info' => 'על מנת להעלות סרטון ל־YouTube ולהכלילו בעמוד, את את הפרטים הבאים:',
+	'youtubeauthsub' => 'העלאת סרטון ל־YouTube',
+	'youtubeauthsub-desc' => 'אפשרות למשתמשים [[Special:YouTubeAuthSub|להעלות סרטונים]] ישירות ל־YouTube',
+	'youtubeauthsub_info' => 'על מנת להעלות סרטון ל־YouTube ולהכלילו בדף, מלאו את הפרטים הבאים:',
 	'youtubeauthsub_title' => 'כותרת',
 	'youtubeauthsub_description' => 'תיאור',
 	'youtubeauthsub_password' => 'הסיסמה ב־YouTube',
@@ -503,28 +504,28 @@ $messages['he'] = array(
 	'youtubeauthsub_keywords' => 'מילות מפתח',
 	'youtubeauthsub_category' => 'קטגוריה',
 	'youtubeauthsub_submit' => 'שליחה',
-	'youtubeauthsub_clickhere' => 'לחץ כאן כדי להתחבר ל־YouTube',
-	'youtubeauthsub_tokenerror' => 'שגיאה ביצירת אסימון אימות, נסה לרענן.',
+	'youtubeauthsub_clickhere' => 'לחצו כאן כדי להתחבר ל־YouTube',
+	'youtubeauthsub_tokenerror' => 'שגיאה ביצירת אסימון אימות, נסו לרענן.',
 	'youtubeauthsub_success' => "ברכות!
-הסרטון שלך הועלה.
-על מנת לצפות בסרטון שלך לחץ <a href='http://www.youtube.com/watch?v=$1'>כאן</a>.
-יתכן ול־YouTube יידרש מעט זמן לעיבוד הסרטון שלך, כך שיתכן שאינו מוכן עדיין.
+הסרטון שלכם הועלה.
+על מנת לצפות בסרטון, לחצו <a href='http://www.youtube.com/watch?v=$1'>כאן</a>.
+ייתכן שיידרש ל־YouTube מעט זמן לעיבוד הסרטון שלך, כך שייתכן שאינו מוכן עדיין.
 
-על מנת לכלול את הסרטון שלך בעמוד בויקי, הוסף את הקוד הבא אל תוך העמוד:
+כדי לכלול את הסרטון שלך בעמוד בוויקי, יש להוסיף לדף את הקוד הבא:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'על מנת להעלות סרטון, יהיה עליך ראשית להתחבר ל־YouTube',
-	'youtubeauthsub_uploadhere' => 'העלה את הסרטון שלך מכאן:',
-	'youtubeauthsub_uploadbutton' => 'העלה',
+	'youtubeauthsub_authsubinstructions' => 'על מנת להעלות סרטון, ראשית עליכם להתחבר ל־YouTube',
+	'youtubeauthsub_uploadhere' => 'העלו את הסרטון שלכם מכאן:',
+	'youtubeauthsub_uploadbutton' => 'העלאה',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 ניתן לצפות בסרטון זה [http://www.youtube.com/watch?v=$1 כאן]',
-	'youtubeauthsub_summary' => 'מעלה סרטון ל־YouTube',
-	'youtubeauthsub_uploading' => 'הסרטון שלך כעת נמצא בתהליכי העלאה.
-אנא האזר בסבלנות.',
-	'youtubeauthsub_viewpage' => 'לחלופין, תוכל לצפות בסרטון שלך [[$1|כאן]].',
-	'youtubeauthsub_jserror_nokeywords' => 'נא הזן מילת מפתח אחת או יותר.',
-	'youtubeauthsub_jserror_notitle' => 'נא הזן כותרת עבור הסרטון.',
-	'youtubeauthsub_jserror_nodesc' => 'נא הזן תיאור לסרטון.',
+	'youtubeauthsub_summary' => 'העלאת סרטון ל־YouTube',
+	'youtubeauthsub_uploading' => 'הסרטון שלכם נמצא כעת בתהליכי העלאה.
+אנא האזרו בסבלנות.',
+	'youtubeauthsub_viewpage' => 'לחלופין, תוכלו לצפות בסרטון שלכם [[$1|כאן]].',
+	'youtubeauthsub_jserror_nokeywords' => 'נא הזינו מילת מפתח אחת או יותר.',
+	'youtubeauthsub_jserror_notitle' => 'נא הזינו כותרת לסרטון.',
+	'youtubeauthsub_jserror_nodesc' => 'נא הזינו תיאור לסרטון.',
 );
 
 /** Hindi (हिन्दी)
@@ -848,6 +849,7 @@ $messages['lb'] = array(
 	'youtubeauthsub_category' => 'Kategorie',
 	'youtubeauthsub_submit' => 'Späicheren',
 	'youtubeauthsub_clickhere' => 'Klickt hei fir Iech op YouTube eranzeloggen',
+	'youtubeauthsub_tokenerror' => "Feeler beim generéieren bäi der Autorisatioun, versicht et nach eml andem Dir d'Säit aktualiséiert.",
 	'youtubeauthsub_success' => "Gratulatioun!
 
 Äre Video ass eropgelueden.

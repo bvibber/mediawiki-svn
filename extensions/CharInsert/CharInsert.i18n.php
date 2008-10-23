@@ -227,6 +227,13 @@ $messages['ms'] = array(
 	'charinsert-desc' => 'Membolehkan penciptaan kotak JavaScript untuk [[MediaWiki:Edittools|menyisipkan aksara bukan piawai]]',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'charinsert-desc' => 'Максы теемс-шкамс JavaScript-умине [[MediaWiki:Edittools|аволь эрьва чинь символонь путома]]нь туртов',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

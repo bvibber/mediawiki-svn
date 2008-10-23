@@ -613,6 +613,7 @@ $allMessages['hil'] = array(
  * @author Dalibor Bosits
  */
 $allMessages['hr'] = array(
+	'whitelisttablemodifyall' => 'Sve',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistnever' => 'nikad',
 );

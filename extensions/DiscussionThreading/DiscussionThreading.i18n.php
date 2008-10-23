@@ -215,7 +215,10 @@ $messages['sk'] = array(
  * @author Najami
  */
 $messages['sv'] = array(
+	'discussionthreading-replysection' => 'svar',
+	'discussionthreading-replysectionhint' => 'Svar på den här posten',
 	'discussionthreading-threadnewsection' => 'ny',
+	'discussionthreading-threadnewsectionhint' => 'Starta en ny tråd',
 );
 
 /** Telugu (తెలుగు)

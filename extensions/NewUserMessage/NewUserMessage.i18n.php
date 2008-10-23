@@ -320,6 +320,14 @@ $messages['pt'] = array(
 	'newuseredit-summary' => 'Adicionado [[{{int:newusermessage-template}}|mensagem de boas-vindas]] à página de discussão do novo utilizador',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Carla404
+ */
+$messages['pt-br'] = array(
+	'newusermessage-desc' => 'Adiciona uma mensagem à página de discussão de novos usuários',
+	'newuseredit-summary' => 'Adicionando uma [[{{int:newusermessage-template}}|mensagem de boas-vindas]] à página de discussão do novo usuário',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

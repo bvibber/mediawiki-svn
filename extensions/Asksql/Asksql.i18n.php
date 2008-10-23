@@ -353,11 +353,19 @@ $messages['grc'] = array(
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'asksql' => 'שאילתת SQL',
 	'asksql-desc' => 'ביצוע שאילתות SQL באמצעות [[Special:Asksql|דף מיוחד]]',
+	'asksqltext' => "השתמשו בטופס שלהלן כדי לתשאל ישירות את מסד הנתונים.
+השתמשו בגרשיים בודדים ('כמו אלו') כדי לתחום מחרוזות מילוליות.
+פעולה זו עלולה להוסיף עומס משמעותי לשרת, לכן אנא השתמשו בפוקנציה זו בחסכנות.",
+	'sqlislogged' => 'אנא שימו לב כי מתבצע רישום של כל השאילתות.',
+	'sqlquery' => 'הזנת שאילתה',
 	'querybtn' => 'שליחת שאילתה',
+	'selectonly' => 'רק שאילתות לקריאה בלבד מורשות.',
+	'querysuccessful' => 'השאילתה יושמה בהצלחה',
 	'right-asksql' => 'ביצוע שאילתות SQL',
 );
 

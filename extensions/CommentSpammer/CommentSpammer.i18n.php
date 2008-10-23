@@ -142,17 +142,18 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'commentspammer-save-blocked' => 'כתובת ה־IP שלך נחשדת כזבלן הערות, לכן העמוד לא נשמר.
-[[Special:UserLogin|התחבר או צור חשבון]] כדי למנוע זאת.',
-	'commentspammer-desc' => 'דוחה עריכות מזבלני הערות חשודים ברשימת חסימה ב־DNS',
-	'commentspammer-log-msg' => 'עריכה מאת [[Special:Contributions/$1|$1]] אל [[:$2]].',
-	'commentspammer-log-msg-info' => 'נשלח זבל לפני $1 ימים, רמת האיום הינה $2, וקוד הפגיעה הינו $3.
-[http://www.projecthoneypot.org/search_ip.php?ip=$4 צפה בפרטים], או [[Special:Blockip/$4|חסום]].',
-	'cspammerlogpagetext' => 'רשומת העריכות שמתקבלות או נדחות בהתאם לזיהוי המקור כזבלן הערות (spammer).',
-	'cspammer-log-page' => 'רשומת זבלני ההערות',
+	'commentspammer-save-blocked' => 'כתובת ה־IP שלכם נחשדת כספאמר, לכן העמוד לא נשמר.
+באפשרותכם [[Special:UserLogin|להיכנס לחשבון או ליצור אחד]] כדי למנוע זאת.',
+	'commentspammer-desc' => 'דחיית עריכות ממשתמשים החשודים כספאמרים באמצעות רשימה שחורה של DNS',
+	'commentspammer-log-msg' => 'עריכה של [[Special:Contributions/$1|$1]] ל[[:$2]].',
+	'commentspammer-log-msg-info' => 'נשלח זבל לפני {{PLURAL:$1|יום אחד|$1 ימים}}, רמת האיום הינה $2, וקוד הפגיעה הינו $3.
+[http://www.projecthoneypot.org/search_ip.php?ip=$4 צפייה בפרטים]; [[Special:Blockip/$4|חסימה]].',
+	'cspammerlogpagetext' => 'יומן העריכות שמתקבלות או נדחות בהתאם לזיהוי המקור כספאמר.',
+	'cspammer-log-page' => 'יומן ספאמרים',
 );
 
 /** Hindi (हिन्दी)

@@ -202,9 +202,11 @@ $messages['sk'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'rightfunctions-desc' => 'Parserfunktioner som är baserade på användarrättigheter',
+	'rightfunctions-casc' => '(från kaskaderande källor)',
 	'rightfunctions-local' => '(från lokal sida)',
 );
 

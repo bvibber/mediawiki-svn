@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'Watchers' => array( 'مراقبون' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'Watchers' => array( 'Beobachter' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'Watchers' => array( 'پی‌گیری‌کنندگان' ),

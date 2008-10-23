@@ -233,6 +233,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Leithian
  * @author MF-Warburg
+ * @author Metalhead64
  * @author Revolus
  */
 $messages['de'] = array(
@@ -251,7 +252,8 @@ riddler|Riddler',
 	'vote-results-choice' => 'Wahl',
 	'vote-results-count' => 'Anzahl',
 	'vote-results-none' => 'Es wurden noch keine Stimmen abgegeben.',
-	'vote-login-link' => 'Anmelden',
+	'vote-login' => 'Du musst $1, um abstimmen zu können.',
+	'vote-login-link' => 'dich anmelden',
 	'vote-invalid-choice' => 'Du musst eine der möglichen Optionen wählen.',
 );
 

@@ -162,6 +162,11 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'createbox-desc' => 'Specielne zapodatny kašćik za wutworjenje stronow',
 	'createbox-create' => 'Wutworić',
+	'createbox-exists' => "Wodaj, \"'''{{FULLPAGENAME}}'''\" hižo eksistuje.
+
+Njemóžeš tutu stronu wutworić, ale móžeš [{{fullurl:{{FULLPAGENAME}}|action=edit}} ju wobdźěłać], [{{fullurl:{{FULLPAGENAME}}}} čitać] abo z pomocu slědowaceho kašćik druhu stronu wutworić.
+
+<createbox>break=no</createbox>",
 );
 
 /** Interlingua (Interlingua)

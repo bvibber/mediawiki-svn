@@ -782,6 +782,7 @@ $messages['km'] = array(
 /** Korean (한국어)
  * @author Albamhandae
  * @author Klutzy
+ * @author Kwj2772
  * @author ToePeu
  */
 $messages['ko'] = array(
@@ -798,6 +799,7 @@ $messages['ko'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '계정 이름 블랙리스트 목록에서 다음 줄이 잘못되었습니다. 저장하기 전에 올바르게 고쳐 주세요:',
+	'right-uboverride' => '계정 이름 블랙리스트를 무시',
 );
 
 /** Ripoarisch (Ripoarisch)

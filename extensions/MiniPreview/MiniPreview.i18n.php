@@ -443,11 +443,12 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'minipreview-desc' => 'Miniförhandsgranskning visar små förhandsgranskningar av media i samma kategorier eller från samma sidor',
-	'minipreview-files_in_category' => '$1 filer totelt in denna kategori.',
-	'minipreview-files_in_gallery' => '$1 filer totalt i detta galleri.',
+	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|fil|filer}} totalt in den här kategorin.",
+	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|fil|filer}} totalt i det här galleriet.",
 	'minipreview-no_more_files_here' => 'Inga fler filer i denna rättningen.',
 	'minipreview-no_category_gallery' => 'Inga kategorier eller gallerier!',
 	'minipreview-ignore_categories' => 'Följande är en lista över kategorinamn eller början på sådana. Dessa kategorierna kommer inte visas av Miniförhandsgranskning. För exempel kommer "* PD-" göra att bilder inte väljs ut för dom är i kategorier som börjar med "PD-", lik som "PD-old".

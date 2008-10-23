@@ -422,7 +422,16 @@ $messages['sk'] = array(
  * @author Najami
  */
 $messages['sv'] = array(
+	'refreshspecial' => 'Uppdatera specialsidor',
+	'refreshspecial-desc' => 'Möjliggör [[Special:RefreshSpecial|manuell uppdatering]] av specialsidor',
+	'refreshspecial-title' => 'Uppdatera specialsidor',
+	'refreshspecial-refreshing' => 'uppdaterar specialsidor',
+	'refreshspecial-success-subtitle' => 'uppdaterar specialsidor',
+	'refreshspecial-choice' => 'uppdaterar specialsidor',
 	'refreshspecial-here' => '<b>här</b>',
+	'refreshspecial-no-page' => 'Ingen sådan specialsida',
+	'refreshspecial-reconnected' => 'Återansluten.',
+	'refreshspecial-reconnecting' => 'Anslutning misslyckades, återansluter om 10 sekunder...',
 );
 
 /** Telugu (తెలుగు)

@@ -160,6 +160,13 @@ $messages['mr'] = array(
 	'didyoumean-desc' => 'शीर्षकात "सारखेपणा" असणार्‍या पानांचे दुवे देतो',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'didyoumean-desc' => 'Полады сюлмавома пенеть, конатнень вельде ютават «ёнов молиця» конякс марто лопатнес',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

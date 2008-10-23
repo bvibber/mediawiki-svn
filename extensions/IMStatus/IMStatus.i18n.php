@@ -241,35 +241,36 @@ $messages['grc'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'imstatus-desc' => 'מוסיף תגיות מגוונות עבור המצבים המקוונים של רשתות המסרים המידיים (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus-desc' => 'הוספת תגיות מגוונות עבור המצבים המקוונים של רשתות המסרים המידיים (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'תחביר',
 	'imstatus_default' => 'ברירת מחדל',
 	'imstatus_example' => 'דוגמה',
 	'imstatus_possible_val' => 'ערכים אפשריים',
-	'imstatus_max' => 'מקס',
-	'imstatus_min' => 'מינ',
+	'imstatus_max' => 'מקסימום',
+	'imstatus_min' => 'מינימום',
 	'imstatus_or' => 'או',
 	'imstatus_style' => 'סגנון מחוון המצב',
-	'imstatus_action' => 'פעולה בעת הלחיצה על הלחצן',
-	'imstatus_details_saa' => 'לפרטים נוספים אודות כל הסגנונות והפעולות, ראה $1.',
+	'imstatus_action' => 'פעולה בעת הלחיצה על הכפתור',
+	'imstatus_details_saa' => 'לפרטים נוספים על כל הסגנונות והפעולות, ראו $1.',
 	'imstatus_your_name' => 'שם ה־$1 שלך',
-	'imstatus_aim_presence' => '$1 מציג את המצב שלך עם קישור שיפעיל את AIM לשליחת הודעה, במידה ולמשתמש יש AIM מותקן.',
-	'imstatus_aim_api' => "$1 מציג את המצב שלך עם קישור שיפעיל את ה<b>דפדפן</b> שלך, גירסאת ג'אווהסקריפט של AIM לשליחת הודעות אליך.",
-	'imstatus_gtalk_code' => 'קוד ה־google talk שלך',
-	'imstatus_gtalk_get_code' => 'קוד ה־google talk שלך: קבל אותו ב־$1.',
+	'imstatus_aim_presence' => '$1 מציג את המצב שלך וקישור שיפעיל את AIM לשליחת הודעה, במידה ולמשתמש יש AIM מותקן.',
+	'imstatus_aim_api' => '$1 מציג את המצב שלך וקישור שיפעיל את גרסת <b>דפדפן</b> מבוססת JavaScript של AIM לשליחת הודעות אליך.',
+	'imstatus_gtalk_code' => 'קוד ה־Google talk שלך',
+	'imstatus_gtalk_get_code' => 'קוד ה־Google talk שלך: ניתן לקבלו ב־$1.',
 	'imstatus_gtalk_height' => 'גובה התיבה, בפיקסלים.',
 	'imstatus_gtalk_width' => 'רוחב התיבה, בפיקסלים.',
-	'imstatus_icq_id' => 'מזהה ה־ICQ שלך',
+	'imstatus_icq_id' => 'מספר ה־ICQ שלך',
 	'imstatus_icq_style' => 'מספר בין 0 ל־26 (כן, ישנם 27 סגנונות זמינים...).',
 	'imstatus_live_code' => 'מזהה אתר ה־Live Messenger שלך',
-	'imstatus_live_get_code' => 'מזהה אתר ה־Live Messenger שלך: <strong>זוהי אינה כתובת הדואל שלך</strong>, יהיה עליך לייצר אחת תחת <a href="$1">אפשרויות ה־live messenger</a>.
-המזהה אותו תצטרך לספק הינו המספרים והאותיות שבין "$2" ו־"$3".',
-	'imstatus_skype_nbstyle' => 'לתשומת לבך: אם תבחר בסגנון שהינו גם פעולה, בחירת הפעולה שלך תדרס על ידי הפעולה התואמת לסגנון שבחרת.',
-	'imstatus_xfire_size' => 'גדלי הלחצנים, מ־$1 (הגדול ביותר) עד $2 (הקטן ביותר).',
-	'imstatus_yahoo_style' => 'סגנון הלחצן, מ־ $1 (הקטן ביותר) עד $2 (הגדול ביותר), $3 ו־$4 הינם לתא קולי.',
+	'imstatus_live_get_code' => 'מזהה אתר ה־Live Messenger שלך: <strong>זו אינה כתובת הדוא"ל שלך</strong>, צריך לייצר אותו באמצעות <a href="$1">אפשרויות ה־Live Messenger</a>.
+המזהה שיש לכתוב כאן הוא המספרים והאותיות שבין "$2" ו־"$3".',
+	'imstatus_skype_nbstyle' => 'הערה: בחירה בסגנון שהוא גם פעולה תגרום לכך שהפעולה שבחרת תידרס על ידי הפעולה התואמת לסגנון שבחרת.',
+	'imstatus_xfire_size' => 'גדלי הכפתורים, מ־$1 (הגדול ביותר) עד $2 (הקטן ביותר).',
+	'imstatus_yahoo_style' => 'סגנון הכפתור, מ־$1 (הקטן ביותר) עד $2 (הגדול ביותר). $3 ו־$4 משמשים לתא קולי.',
 );
 
 /** Interlingua (Interlingua)
@@ -303,6 +304,14 @@ Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
 	'imstatus_skype_nbstyle' => 'Nota: Si tu selige un stilo que es tamben un action, tu selection de action essera ultrapassate per le action correspondente a tu stilo seligite.',
 	'imstatus_xfire_size' => 'le grandor del button, de $1 (le plus grande) a $2 (le plus parve).',
 	'imstatus_yahoo_style' => 'le stilo del button, de $1 (le plus parve) a $2 (le plus grande), $3 e $4 es pro le messages vocal.',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'imstatus_example' => 'ឧទាហរណ៍',
+	'imstatus_or' => 'ឬ',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -471,6 +480,25 @@ Identifikátor, ktorý musíte zadať, sú písmená a číslice medzi „$2” 
 	'imstatus_skype_nbstyle' => 'Pozn.: Ak si zvolíte štýl, ktorý je aj operáciou, pred vašou voľbou operácie bude mať prednosť operácia zodpovedajúca zvolenému štýlu.',
 	'imstatus_xfire_size' => 'veľkosť tlačidla od $1 (najväčšia) do $2 (najmenšia).',
 	'imstatus_yahoo_style' => 'štýl tlačidla od $1 (najväčší) do $2 (najmenší). $3 a $4 slúžia pre hlasovú poštu.',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'imstatus_syntax' => 'Syntax',
+	'imstatus_default' => 'Standard',
+	'imstatus_example' => 'Exempel',
+	'imstatus_max' => 'högst',
+	'imstatus_min' => 'minst',
+	'imstatus_or' => 'eller',
+	'imstatus_your_name' => 'ditt $1 namn',
+	'imstatus_gtalk_code' => 'din google talk-kod',
+	'imstatus_gtalk_get_code' => 'din google talk-kod: få den på $1.',
+	'imstatus_gtalk_height' => 'boxens höjd, i pixlar.',
+	'imstatus_gtalk_width' => 'boxens bredd, i pixlar.',
+	'imstatus_icq_id' => 'ditt ICQ-ID',
+	'imstatus_xfire_size' => 'knappens storlek, från $1 (störst) till $2 (minst).',
 );
 
 /** Telugu (తెలుగు)

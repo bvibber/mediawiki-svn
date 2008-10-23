@@ -240,10 +240,12 @@ $messages['fo'] = array(
 	'sitenotice_close' => 'flyt burtur',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author IAlex
+ */
 $messages['fr'] = array(
 	'sitenotice_close' => 'cacher',
-	'sitenotice-desc' => 'Permet aux utilisateurs de fermer le sitenotice',
+	'sitenotice-desc' => 'Permet aux utilisateurs de cacher le sitenotice',
 );
 
 /** Franco-Provençal (Arpetan)

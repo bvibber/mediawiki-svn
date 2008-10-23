@@ -467,14 +467,14 @@ $messages['gl'] = array(
 $messages['he'] = array(
 	'specialuserstats' => 'סטטיסטיקות שימוש',
 	'usagestatistics' => 'סטטיסטיקות שימוש',
-	'usagestatistics-desc' => 'הצג את סטטיסטיקת השימוש של משתמש יחיד ושל הכלל',
+	'usagestatistics-desc' => 'הצגת סטטיסטיקת השימוש של משתמש יחיד ושל כל האתר',
 	'usagestatisticsfor' => '<h2>סטטיסטיקות השימוש של [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>סטטיסטיקות שימוש של כל המשתמשים</h2>',
 	'usagestatisticsinterval' => 'מרווח',
 	'usagestatisticstype' => 'סוג',
 	'usagestatisticsstart' => 'תאריך ההתחלה',
 	'usagestatisticsend' => 'תאריך הסיום',
-	'usagestatisticssubmit' => 'צור סטטיסטיקות',
+	'usagestatisticssubmit' => 'יצירת סטטיסטיקות',
 	'usagestatisticsnostart' => '* <font color=red>אנא ציינו תאריך התחלה</font>',
 	'usagestatisticsnoend' => '* <font color=red>אנא ציינו תאריך סיום</font>',
 	'usagestatisticsbadstartend' => '<b>תאריך <i>ההתחלה</i> ו/או תאריך <i>הסיום</i> בעייתיים!</b>',
@@ -486,8 +486,8 @@ $messages['he'] = array(
 	'usagestatisticscumulative' => 'מצטברת',
 	'usagestatisticscumulative-text' => 'מצטבר',
 	'usagestatisticscalselect' => 'בחירה',
-	'usagestatistics-editindividual' => 'סטטיסטיקת עריכות של משתמש יחיד $1',
-	'usagestatistics-editpages' => 'סטטיסטיקות העמודים של משתמש יחיד $1',
+	'usagestatistics-editindividual' => 'סטטיסטיקת עריכות של המשתמש היחיד $1',
+	'usagestatistics-editpages' => 'סטטיסטיקות הדפים של המשתמש היחיד $1',
 );
 
 /** Hindi (हिन्दी)

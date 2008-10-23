@@ -27,6 +27,16 @@ $aliases['arz'] = array(
 	'CountEdits' => array( 'عد_التعديلات' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'CountEdits' => array( 'Beiträge zählen' ),
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'CountEdits' => array( 'ការរាប់ចំនួនកំនែប្រែ' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'CountEdits' => array( 'Ännerungen zielen' ),

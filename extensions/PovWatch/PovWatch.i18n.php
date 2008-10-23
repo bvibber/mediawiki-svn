@@ -934,6 +934,7 @@ $messages['sr-ec'] = array(
  * @author Boivie
  * @author Jon Harald Søby
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'povwatch' => 'PovBevakning',
@@ -945,7 +946,7 @@ $messages['sv'] = array(
 	'povwatch_not_subscribed' => 'Du abonnerar inte på PovBevakning, så du kan inte sluta abonnera.',
 	'povwatch_unsubscribed' => 'Du har nu slutat abonnera på PovBevakning',
 	'povwatch_invalid_title' => 'Den angivna titeln var ogiltig',
-	'povwatch_pushed' => '[[$1]] har placerats på $2 {{PLURAL:$2|bevakningslista|bevakningslistor}}',
+	'povwatch_pushed' => '[[$1]] har placerats på användaren $2:s {{PLURAL:$2|bevakningslista|bevakningslistor}}',
 	'povwatch_intro' => 'PovBevakning är en tjänst som låter kontroversiella sidor bli placerade på abonnerande administratörers bevakningslistor.
 
 En logg över dom senaste placeringarna är tillgänglig på [[Special:PovWatch/log]].',

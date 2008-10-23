@@ -126,6 +126,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'postcomment_desc' => 'Rajtigas al uzantoj afiŝi komentojn rekte al diskuto-paĝoj.',
 	'postcomment_discussionprotected' => 'Ĉi tiu diskuto-paĝo estis protektita de pluaj aldonaĵoj.',
 	'postcomment_notloggedin' => 'Vi ne estas ensalutita.',
 	'postcomment_youareloggedinas' => 'Vi estas ensalutita kiel $1',

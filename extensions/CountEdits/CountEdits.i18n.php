@@ -338,6 +338,23 @@ $messages['haw'] = array(
 	'countedits-ok' => 'Hiki nō',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'countedits' => 'מספור עריכות',
+	'countedits-desc' => '[[Special:CountEdits|דף מיוחד]] הסופר את עריכות המשתמש ומספק את רשימת עשרת התורמים המובילים',
+	'countedits-warning' => "'''אזהרה:''' אין לשפוט ספר לפי כריכתו.
+לכן אין לשפוט את המשתמשים לפי מספר עריכותיהם.",
+	'countedits-username' => 'שם המשתמש:',
+	'countedits-ok' => 'אישור',
+	'countedits-nosuchuser' => 'אין משתמש העונה לשם $1',
+	'countedits-resultheader' => 'תוצאות עבור $1',
+	'countedits-resulttext' => '$1 ביצע/ה $2 עריכות',
+	'countedits-mostactive' => 'התורמים הפעילים ביותר',
+	'countedits-nocontribs' => 'אין תורמים לוויקי זה.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

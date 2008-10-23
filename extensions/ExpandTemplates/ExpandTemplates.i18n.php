@@ -578,13 +578,14 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Meno25
  * @author Rotem Liss
  */
 $messages['he'] = array(
 	'expandtemplates' => 'פריסת תבניות',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|פריסת תבניות, הוראות תנאי ומשתנים]] כדי להציג את טקסט הוויקי הפרוס ולבצע תצוגה מקדימה של דף מפוענח',
 	'expand_templates_intro' => 'דף זה מקבל כמות מסוימת של טקסט ופורס ומפרש את כל התבניות שבתוכו באופן רקורסיבי. בנוסף, הוא פורס הוראות פירוש כגון <nowiki>{{</nowiki>#תנאי:...}}, ומשתנים כגון <nowiki>{{</nowiki>יום נוכחי}}, ולמעשה פחות או יותר כל דבר בסוגריים מסולסלות כפולות. הוא עושה זאת באמצעות קריאה לפונקציות הפענוח המתאימות מתוך תוכנת מדיה־ויקי עצמה.',
-	'expand_templates_title' => 'כותרת ההקשר לפענוח, בשביל משתנים כגון {{שם הדף}} וכדומה:',
+	'expand_templates_title' => 'כותרת ההקשר לפענוח, בשביל משתנים כגון {{PAGENAME}} וכדומה:',
 	'expand_templates_input' => 'טקסט:',
 	'expand_templates_output' => 'תוצאה',
 	'expand_templates_xml_output' => 'פלט XML',
@@ -891,7 +892,7 @@ $messages['ko'] = array(
 <nowiki>{{</nowiki>#if:…}} 같은 파서 함수나 <nowiki>{{</nowiki>CURRENTDAY}} 같은 변수를 포함해 두개의 중괄호 사이에 있는 것은 모두 풀어줍니다.
 미디어위키의 자체 파서로 작동합니다.',
 	'expand_templates_title' => '문서 이름 ({{PAGENAME}} 등):',
-	'expand_templates_input' => '입력:',
+	'expand_templates_input' => '전개할 내용:',
 	'expand_templates_output' => '결과',
 	'expand_templates_xml_output' => 'XML 출력',
 	'expand_templates_ok' => '확인',

@@ -110,11 +110,12 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'usercontactlink-baduser' => 'שם המשתמש שגוי',
-	'usercontactlink-desc' => 'מספק את האפשרות להוסיף שמות משתמשים אחרים בפשטות ובעקביות באמצעות התחביר ^^^user^^^',
+	'usercontactlink-desc' => 'הוספת אפשרות להוסיף שמות משתמשים אחרים בפשטות ובעקביות באמצעות התחביר ^^^user^^^',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

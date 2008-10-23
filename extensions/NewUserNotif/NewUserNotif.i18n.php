@@ -335,6 +335,13 @@ $messages['pt'] = array(
 Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Carla404
+ */
+$messages['pt-br'] = array(
+	'newusernotifsubj' => 'Notificação de novo usuário para $1',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

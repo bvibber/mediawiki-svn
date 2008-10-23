@@ -92,6 +92,11 @@ $aliases['oc'] = array(
 	'ChangeAuthor' => array( 'Cambiar autor', 'CambiarAutor' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'ChangeAuthor' => array( 'Zmiana autora' ),
+);
+
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ChangeAuthor' => array( 'NdërroAutor' ),

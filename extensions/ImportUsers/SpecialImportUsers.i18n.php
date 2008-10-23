@@ -412,6 +412,32 @@ $messages['hil'] = array(
 	'importusers-email' => 'e-mail',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'importusers' => 'Uvezi suradnike',
+	'importusers-desc' => '[[Special:ImportUsers|Uvoženje suradnika]] u grupi iz CSV datoteke; enkodiranje: UTF-8',
+	'importusers-uploadfile' => 'Postavi datoteku',
+	'importusers-form-caption' => 'Umetni CSV datoteku (UTF-8)',
+	'importusers-form-file' => 'Format datoteke za suradnike (csv):',
+	'importusers-form-replace-present' => 'Zamijeni postojeće suradnike',
+	'importusers-form-button' => 'Uvezi',
+	'importusers-user-added' => 'Suradnik <b>%s</b> je dodan',
+	'importusers-user-present-update' => 'Suradnik <b>%s</b> već postoji. Ažurirano.',
+	'importusers-user-present-not-update' => 'Suradnik <b>%s</b> već postoji. Nije ažurirano.',
+	'importusers-user-invalid-format' => 'Suradnički podaci u redu #%s su u neispravnom formatu ili prazni. Preskočeno.',
+	'importusers-log' => 'Evidencija uvoza',
+	'importusers-log-summary' => 'Sažetak',
+	'importusers-log-summary-all' => 'Sve',
+	'importusers-log-summary-added' => 'Dodano',
+	'importusers-log-summary-updated' => 'Ažurirano',
+	'importusers-login-name' => 'Ime za prijavu',
+	'importusers-password' => 'lozinka',
+	'importusers-email' => 'elektronička pošta',
+	'importusers-realname' => 'pravo ime',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

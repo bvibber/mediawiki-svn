@@ -87,10 +87,11 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'googleadsense-desc' => 'מוסיף את [http://www.google.com/adsense Google AdSense] לסרגל הצד',
+	'googleadsense-desc' => 'הוספת [http://www.google.com/adsense Google AdSense] לסרגל הצד',
 );
 
 /** Interlingua (Interlingua)

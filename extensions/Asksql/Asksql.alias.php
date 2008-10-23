@@ -72,3 +72,8 @@ $aliases['oc'] = array(
 	'Asksql' => array( 'Requèsta SQL', 'Requesta SQL', 'RequèstaSQL', 'RequestaSQL' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'Asksql' => array( 'Zapytanie SQL' ),
+);
+

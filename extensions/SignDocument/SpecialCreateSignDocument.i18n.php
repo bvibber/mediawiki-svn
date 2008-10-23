@@ -344,6 +344,13 @@ e un texto introdutorio breve que describa o documento e lles dea instrucións a
 	'createsigndoc-error-alreadycreated' => 'O documento asinado "$1" xa existe.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'createsigndoc-pagename' => 'Δέλτος:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

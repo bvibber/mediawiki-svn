@@ -519,13 +519,21 @@ $messages['gv'] = array(
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
+	'bookinfo-header' => 'נתוני הספר',
 	'bookinfo-desc' => 'הרחבת [[Special:Booksources|הדף המיוחד משאבי ספרות חיצוניים]] באמצעות מידע משירות אינטרנטי',
 	'bookinfo-result-title' => 'כותרת:',
 	'bookinfo-result-author' => 'מחבר:',
 	'bookinfo-result-publisher' => 'מוציא לאור:',
 	'bookinfo-result-year' => 'שנה:',
+	'bookinfo-error-invalidisbn' => 'המסת"ב שהוזן שגוי.',
+	'bookinfo-error-nosuchitem' => 'הפריט לא קיים או שלא ניתן למצאו.',
+	'bookinfo-error-nodriver' => 'לא ניתן להפעיל את מנהל נתוני הספרים הראוי.',
+	'bookinfo-error-noresponse' => 'אין תגובה או שהתגובה משתהה.',
+	'bookinfo-purchase' => 'רכשו ספר זה מ־$1',
+	'bookinfo-provider' => 'מספק הנתונים: $1',
 );
 
 /** Hindi (हिन्दी)

@@ -128,7 +128,7 @@ $messages['mr'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'psinotocnum-desc' => 'Voegt het magische woord "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>" to',
+	'psinotocnum-desc' => 'Voegt het magische woord "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>" toe',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -143,6 +143,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'psinotocnum-desc' => 'Mot magic novèl « <nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki> »',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'psinotocnum-desc' => 'Nova palavra mágica "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
 /** Slovak (Slovenčina)

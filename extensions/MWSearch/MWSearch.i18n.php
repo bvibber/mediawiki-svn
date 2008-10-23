@@ -306,6 +306,13 @@ $messages['pt'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Carla404
+ */
+$messages['pt-br'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

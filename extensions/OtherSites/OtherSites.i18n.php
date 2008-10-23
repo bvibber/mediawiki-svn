@@ -92,6 +92,13 @@ $messages['it'] = array(
 	'othersites' => 'Altri siti',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'othersites' => 'គេហទំព័រផ្សេងទៀត',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -138,6 +145,13 @@ $messages['oc'] = array(
 $messages['sk'] = array(
 	'othersites' => 'iné stránky',
 	'othersites-desc' => 'Presunie interwiki odkazy okrem odkazov na iné jazyky do ich vlastných portletov.',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'othersites' => 'Andra sajter',
 );
 
 /** Telugu (తెలుగు)

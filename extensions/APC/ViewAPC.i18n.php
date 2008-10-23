@@ -1325,6 +1325,7 @@ APC izgleda nije prisutan.',
 	'viewapc-clear-confirm' => 'Želite očistiti priručnu memoriju?',
 	'viewapc-clear-user-cache' => 'Očisti priručnu memoriju suradnika',
 	'viewapc-ls-submit' => 'Kreni!',
+	'viewapc-ls-limit-none' => 'Sve',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -2798,6 +2799,18 @@ $messages['ro'] = array(
 O versiune mai nouă $2 este disponibilă la http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared' => "'''''Fişierul cache a fost şters.'''''",
 	'viewapc-usercache-cleared' => "'''''Cache-ul aplicaţiei a fost şters.'''''",
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'viewapc-display-mem_size' => 'Dimenzione',
+	'viewapc-ls-submit' => 'Veje!',
+	'viewapc-ls-header-modified' => 'Urteme cangiamende',
+	'viewapc-ls-header-created' => 'Ccrejete',
+	'viewapc-ls-header-deleted' => 'Scangellete',
+	'viewapc-ls-limit-none' => 'Tutte',
 );
 
 /** Russian (Русский)
