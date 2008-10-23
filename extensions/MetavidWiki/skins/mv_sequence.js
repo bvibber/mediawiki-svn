@@ -11,7 +11,6 @@ function setup_sequencer(){
 	});
 }
 
-
 /*
  * similar to mv_d_ajax_form_submit in mv_stream.js
  * @@todo could be merged with mv_do_ajax_form_submit from mv_stream (into mv_common.js or something like that)

@@ -50,7 +50,7 @@ mvPlayList.prototype = {
 	start_clip_src:null,
 	disp_play_head:null,
 	userSlide:false,
-	loading:true,
+	loading:true,	
 	loading_external_data:true, //if we are loading external data (set to loading by default) 
 	tracks:{},
 	default_track:null, // the default track to add clips to.
@@ -188,7 +188,9 @@ mvPlayList.prototype = {
 		for( var i in this.default_track.clips ){
 			var clip = 	this.default_track.clips[i];
 			if(clip.embed.load_error){
-				var error = clip.embed.load_error;
+				var error = clip.embed.load_error;				
+				//break on any clip we can't playback:
+				break;
 			}
 			if( clip.embed.ready_to_play ){
 				_this.clip_ready_count++;
@@ -201,14 +203,16 @@ mvPlayList.prototype = {
 					clip.embed.init_with_sources_loaded();
 			}					
 		}
+		
 		//@@todo for some plugins we have to conform types of clips
 		// ie vlc can play flash _followed_by_ ogg _followed_by_ whatever 
 		// 		but
 		// native ff 3.1a2 can only play ogg 
 		if( error){
-			$j(this).html( error );
-		}else if(_this.clip_ready_count == this.getClipCount() ){
-			js_log("done initing all clips");			
+			this.load_error=error;
+			this.is_ready=false;
+		}else if( _this.clip_ready_count == this.getClipCount() ){
+			js_log("done init all clips");			
 			this.doWhenClipLoadDone();
 		}else{
 			js_log("only "+ _this.clip_ready_count +" clips done, scheduling callback:");
@@ -418,7 +422,7 @@ mvPlayList.prototype = {
 		if(this.cur_clip)
 			$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});
 	},	
-	updateThumbPerc:function(perc){
+	updateThumbPerc:function( perc ){
 		//get float seconds:
 		var float_sec =  (this.getDuration()*perc);
 		this.updateThumbTime( float_sec );			
@@ -454,7 +458,7 @@ mvPlayList.prototype = {
 		this.cur_clip.embed.currentTime = (float_sec -pl_sum_time)+this.cur_clip.embed.start_offset ;
 		this.cur_clip.embed.seek_time_sec = (float_sec -pl_sum_time );
 				
-		this.doSmilActions();	
+		this.doSmilActions( single_line = true );	
 	},
 	updateBaseStatus:function(){
 		js_log('f:updateBaseStatus');
@@ -605,6 +609,7 @@ mvPlayList.prototype = {
 			//update cur clip based if sequence playhead set: 
 			var d = new Date();
 			this.clockStartTime = d.getTime();
+			
 			this.monitor();
 		
 			//@@todo pre-load each clip: 
@@ -1012,9 +1017,8 @@ mvClip.prototype = {
 		$j('#seqThumb_'+this.pp.id).append(out);
 	},
 	getClipImg:function(start_offset, size){
-		js_log('f:getClipImg ' + start_offset + ' s:'+size);
-		//if its a metavid image (grab the requested size)
-		if(!this.img){
+		js_log('f:getClipImg ' + start_offset + ' s:'+size);	
+		if( !this.img){
 			return mv_default_thumb_url; 
 		}else{
 			if(!size && !start_offset){			
@@ -1349,14 +1353,14 @@ mvPlayList.prototype.monitor = function(){
 }
 //handles the rendering of overlays load of future clips (if necessary)
 //@@todo could be lazy loaded if necessary 
-mvPlayList.prototype.doSmilActions = function(){ 		
+mvPlayList.prototype.doSmilActions = function( single_frame ){ 		
 	//js_log('f:doSmilActions: ' + this.cur_clip.id + ' tid: ' + this.cur_clip.transOut );
 	var offSetTime = 0; //offset time should let us start a transition later on if we have to. 
 	var _clip = this.cur_clip;	//setup a local pointer to cur_clip
 	
 	
 	//do any smil time actions that may change the current clip
-	if(this.userSlide){
+	if( this.userSlide ){
 		//current clip set is set via updateThumbTime function 			
 	}else{
 		//assume playing and go to next: 
@@ -1387,7 +1391,7 @@ mvPlayList.prototype.doSmilActions = function(){
 			in_range = (_clip.embed.currentTime >= (_clip.dur - tObj.dur))?true:false;
 		
 		if(in_range){
-			if(this.userSlide){				
+			if( this.userSlide || single_frame ){				
 				if(tid=='transIn')
 					mvTransLib.doUpdate(tObj, (_clip.embed.currentTime / tObj.dur) );
 					
@@ -1422,7 +1426,7 @@ mvPlayList.prototype.doSmilActions = function(){
 var mvTransLib = {
 	/*
 	 * function doTransition lookups up the transition in the  mvTransLib obj
-	 * 		and init the transition if its avaliable 
+	 * 		and init the transition if its available 
 	 * @param tObj transition attribute object
 	 * @param offSetTime default value 0 if we need to start rendering from a given time 
 	 */
@@ -1740,26 +1744,29 @@ transitionObj.prototype = {
 	 * the main animation loop called every MV_ANIMATION_CB_RATE or 34ms ~around 30frames per second~
 	 */
 	run_transition:function(){
-		//js_log('f:run_transition:' + this.interValCount);	 			
-		//read directly from plugin if avalible (for native video)  
+		//js_log('f:run_transition:' + this.interValCount);
+			 			
+		//update the time from the video if native:   
 		if(typeof this.pClip.embed.vid !='undefined'){
 			this.interValCount=0;
 			this.pClip.embed.currentTime = this.pClip.embed.vid.currentTime;
-		}else{
+		}
+		
+		//}else{
 			//relay on currentTime update grabs (every 250ms or so) (ie for images)
-			if(this.prev_curtime!=this.pClip.embed.currentTime){	
-				this.prev_curtime =	this.pClip.embed.currentTime;
-				this.interValCount=0;
-			}
-		}		
-		//start_time =asinged by doSmilActions
+		//	if(this.prev_curtime!=this.pClip.embed.currentTime){	
+		//		this.prev_curtime =	this.pClip.embed.currentTime;
+		//		this.interValCount=0;
+		//	}
+		//}		
+		//start_time =asigned by doSmilActions
 		//base_cur_time = pClip.embed.currentTime;
-		//dur = asinged by attribute		
+		//dur = asigned by attribute		
 		if(this.animation_state==0){
 			mvTransLib.doInitTransition(this);
 			this.animation_state=1;
 		}
-		//set percentage include diffrence of currentTime to prev_curTime 
+		//set percentage include difrence of currentTime to prev_curTime 
 		// ie updated in-between currentTime updates) 
 		
 		if(this.transAttrType=='transIn')
@@ -1781,7 +1788,7 @@ transitionObj.prototype = {
 		//update state based on current time + cur_time_offset (for now just use pClip.embed.currentTime)
 		mvTransLib.doUpdate(this, percentage);
 		
-		if(percentage >= 1){
+		if( percentage >= 1 ){
 			js_log("transition done update with percentage "+percentage);
 			this.animation_state=2;					
 			clearInterval(this.timerId);	
@@ -1791,7 +1798,7 @@ transitionObj.prototype = {
 						
 		this.interValCount++;
 		//setInterval in we are still in running state and user is not using the playhead 
-		if(this.animation_state==1){
+		if( this.animation_state==1 ){
 			if(!this.timerId){
 				this.timerId = setInterval('document.getElementById(\''+this.pClip.pp.id+'\').cur_clip.'+this.transAttrType+'.run_transition()',
 						 MV_ANIMATION_CB_RATE);
@@ -1831,7 +1838,7 @@ function smilParseTime(time_str){
 	desc:'empty description',		
  }
 trackObj.prototype = {					
-	disp_mode:'thumb',
+	disp_mode:'timeline_thumb',
 	init : function(initObj){
 		if(!initObj)
 			initObj={};

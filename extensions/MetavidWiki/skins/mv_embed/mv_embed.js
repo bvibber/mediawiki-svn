@@ -249,8 +249,7 @@ var mvEmbed = {
   /*
    * should be cleaned up ... the embedType loading should be part of load_libs above:
    */
-  check_init_done:function(){
-  	js_log('f:check_init_done');
+  check_init_done:function(){  	
   	//check if all videos are "ready to play"
   	var is_ready=true;
   	for(var i in global_player_list){
@@ -261,7 +260,8 @@ var mvEmbed = {
     		$j(cur_vid).html( cur_vid.load_error );
     	}
     }  	    	
-  	if(!is_ready){
+    js_log('f:check_init_done '+ is_ready + ' ' + cur_vid.load_error + ' rtp: '+ cur_vid.ready_to_play);
+  	if( !is_ready ){
   		//js_log('some ' + global_player_list + ' not ready');
   		setTimeout( 'mvEmbed.check_init_done()', 250 );
   	}else{
@@ -326,7 +326,7 @@ mediaPlayer.prototype =
 			this.loading_callbacks.push(callback);
 			
 			js_log('plugin not loaded, queing callback');	
-			js_log('requesting plugin: ' + plugin_path);			
+			js_log('requesting plugin: ' + plugin_path + ' should define lib:' + this.library+'Embed');			
 				
 			/*$j.getScript(plugin_path, function(){				
 				js_log(_this.id + ' plugin loaded');
@@ -693,8 +693,6 @@ var ctrlBuilder = {
 	}    
 }
 
-
-
 js_log("mv embed path:"+ mv_embed_path);
 /*
  * embedTypes object handles setting and getting of supported embed types:
@@ -883,7 +881,7 @@ var mvJsLoader = {
 		 }
 		 if(loading){
 			 if( this.load_time++ > 2000){ //time out after ~50seconds
-			 	js_error( getMsg('error_load_lib') );
+			 	js_error( getMsg('error_load_lib') +  cur_path);
 			 }else{
 				setTimeout('mvJsLoader.doLoad()',25);
 			 }
@@ -1049,7 +1047,10 @@ function mv_do_sequence(initObj){
 		mvJsLoader.doLoad({
 				'mvPlayList':'mv_playlist.js',
 				'$j.ui.sortable':'jquery/jquery.ui-1.5.2/ui/minified/ui.sortable.min.js',
-				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js'				
+				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
+				//'$j.ui'			:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
+				//'$j.effects':'jquery/jquery.ui-1.5.2/ui/minified/effects.core.min.js',	
+				//'$j.effects.puff':'jquery/jquery.ui-1.5.2/ui/minified/effects.scale.min.js'
 				//'$j.ui.sortable':'jquery/plugins/ui.sortable.js'
 			},function(){
 				//load the sequencer and draggable ext
@@ -1931,7 +1932,7 @@ embedVideo.prototype = {
         this.media_element = new mediaElement(element);                         	
 	},
 	on_dom_swap: function(){
-		js_log('f:on_dom_swap');		
+		js_log('f:on_dom_swap');			
 		// Process the provided ROE file... if we don't yet have sources
         if(this.roe && this.media_element.sources.length==0 ){
 			js_log('loading external data');
@@ -1941,18 +1942,20 @@ embedVideo.prototype = {
             {            	            
             	//continue      	         	
             	_this.media_element.addROE(data);                                      
-                js_log('added_roe::' + _this.media_element.sources);                               
-                js_log('done loading ROE  '+_this.thumbnail_disp )                        
-                _this.init_with_sources_loaded();
+                js_log('added_roe::' + _this.media_element.sources.length);                               
+                                                       
                 js_log('set loading_external_data=false');     
                 _this.loading_external_data=false;                               
+                
+                _this.init_with_sources_loaded();
             });
     	}
 	},
 	init_with_sources_loaded : function()
 	{	
-		js_log('f:init_with_sources_loaded');		
-		
+		js_log('f:init_with_sources_loaded');
+		//set flag that we have run this function:
+		this.init_with_sources_loadedDone=true;				
 		//autoseletct the source
 		this.media_element.autoSelectSource();		
 		//auto select player based on prefrence or default order
@@ -1964,27 +1967,30 @@ embedVideo.prototype = {
 				//do load player if just displaying innerHTML: 
 				if(this.pc.type =='text/html'){
 					this.selected_player = embedTypes.players.defaultPlayer( 'text/html' );
-					js_log('set selected player:'+ this.selected_player);	
+					js_log('set selected player:'+ this.selected_player.mime_type);	
 				}
 			}
 		}else{		
         	this.selected_player = embedTypes.players.defaultPlayer( this.media_element.selected_source.mime_type );
-		}
-				
+		}			      
         if(this.selected_player){
             js_log('selected ' + this.selected_player.getName());
             js_log("PLAYBACK TYPE: "+this.selected_player.library);
             this.thumbnail_disp = true;	    
 			this.inheritEmbedObj();
-			this.init_with_sources_loadedDone=true;
         }else{        	        
-        	//select first source as not playable 
-        	var missing_type =this.media_element.sources[0].mime_type; 
+        	//no source's playable
+        	var missing_type ='';
+        	var or ='';  
+        	for( var i in  this.media_element.sources){
+        		missing_type+=or + this.media_element.sources[i].mime_type;
+        		or=' or ';
+        	}        	
         	if( this.pc )
         		var missing_type = this.pc.type;        		        	
         	
            	js_log('no player found for given source type ' + missing_type);
-           	this.load_error= getMsg('generic_missing_plugin', missing_type );           
+           	this.load_error= getMsg('generic_missing_plugin', missing_type );             	          	            
         }        
 	},
 	inheritEmbedObj:function(){
@@ -2421,22 +2427,31 @@ embedVideo.prototype = {
 	updateVideoSrc : function(src){
 		js_log("UPDATE SRC:"+src);
 		this.src = src;
-	},	
+	},		
+	//@@todo overwite by embed library if we can render frames natavily 
+	renderTimelineThumbnail:function( options ){
+		var my_thumb_src = this.media_element.getThumbnailURL();
+		
+		if( my_thumb_src.indexOf('t=') !== -1){
+			var time_ntp =  seconds2ntp ( options.time + parseInt(this.start_offset) );
+			my_thumb_src = getUpdateTimeURL( org_thum_src, time_ntp, options.size );
+		}
+		return '<img src="' + my_thumb_src +'" '+
+				'style="height:' + options.height + 'px;' +
+				'width:' + options.width + 'px" >';
+	},
 	updateThumbTime:function( float_sec ){
 		var _this = this;									   				
 		if( typeof org_thum_src=='undefined' ){		
 			org_thum_src = this.media_element.getThumbnailURL();
 		}							
-		var thumb_at_perc_src =org_thum_src;	
 		if( org_thum_src.indexOf('t=') !== -1){
 			this.last_thumb_url = getUpdateTimeURL(org_thum_src,seconds2ntp( float_sec + parseInt(this.start_offset)));									
 			if(!this.thumbnail_updating){				
 				this.updateThumbnail(this.last_thumb_url ,false);
-				thumb_at_perc_src = this.last_thumb_url;
 				this.last_thumb_url =null;
 			}
 		}
-		return thumb_at_perc_src;
 	},
 	//for now provide a src url .. but need to figure out how to copy frames from video for plug-in based thumbs
 	updateThumbPerc:function( perc ){	
@@ -2935,15 +2950,22 @@ function getTransparentPng(image){
 /*
 * utility functions:
 */
-function getUpdateTimeURL(url, new_time){	
+//simple url re-writer for standard temporal and size request urls: 
+function getUpdateTimeURL(url, new_time, size){	
 	pSrc =parseUri(url);
 	var new_url = pSrc.protocol +'://'+ pSrc.host + pSrc.path +'?';       	
 	var amp = '';
-	for(i in pSrc.queryKey){
-		new_url +=(i=='t')? amp + 't=' + new_time:
-					amp+i+'='+ pSrc.queryKey[i];
+
+	if(new_time && pSrc.queryKey['t'])
+		pSrc.queryKey['t'] = new_time;
+	
+	if(size &&  pSrc.queryKey['size'])
+		pSrc.queryKey['size']=size;
+			
+	for(var i in pSrc.queryKey){		
+		new_url+= amp+i+'='+ pSrc.queryKey[i];			
 		amp = '&';    	
-	}	
+	}		
 	return new_url;
 }
 function seconds2ntp(sec){	

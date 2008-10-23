@@ -191,8 +191,7 @@ var flashEmbed = {
         
         //flash is giving bogus duration get from "this" (if available)
 		if(!this.media_element.selected_source.end_ntp  && this.fla.getDuration()>0)
-				this.media_element.selected_source.setDuration(this.fla.getDuration());
-       
+				this.media_element.selected_source.setDuration(this.fla.getDuration());       
 		
         if(!this.userSlide){			   		       		
 	        if((this.currentTime - ntp2seconds(start_ntp))<0){
