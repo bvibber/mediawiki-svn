@@ -374,17 +374,18 @@ class SpecialOversight extends SpecialPage {
 		$this->outputHeader();
 		$page = $wgRequest->getVal( 'page' );
 		$user = $wgRequest->getVal( 'user' );
+		$offender = $wgRequest->getVal( 'author' );
 		$revision = $wgRequest->getIntOrNull( 'revision' );
 		if( $wgRequest->getCheck( 'diff' ) && !is_null( $revision )) {
 			$this->showDiff( $revision);
 		} else if( is_null( $revision ) ) {
-			$this->showList( $page, $user );
+			$this->showList( $page, $user, $offender );
 		} else {
 			$this->showRevision( $revision );
 		}
 	}
 
-	function showList( $page, $user ) {
+	function showList( $page, $user, $offender ) {
 		global $wgOut, $wgScript, $wgTitle;
 		
 		$title = Title::newFromUrl( $page );
@@ -395,13 +396,15 @@ class SpecialOversight extends SpecialPage {
 		$wgOut->addHTML( "<form action=\"$action\" method=\"get\"><fieldset>" );
 		$wgOut->addHTML( '<legend>' . wfMsgHtml('oversight-legend') . '</legend>' );
 		$wgOut->addHTML( Xml::hidden( 'title', $wgTitle->getPrefixedDbKey() ) );
-		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'specialloguserlabel' ), 'user', 'user', 20, $user ) );
+		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'oversight-oversighter' ), 'user', 'user', 20, $user ) );
 		$wgOut->addHTML( '&nbsp;' );
-		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'page', 30, $page ) );
+		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'page', 25, $page ) );
+		$wgOut->addHTML( '&nbsp;' );
+		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'oversight-offender' ), 'author', 'author', 20, $offender ) );
 		$wgOut->addHTML( '&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) );
 		$wgOut->addHTML( '</fieldset></form>' );
 		
-		$pager = new HiddenRevisionsPager( $this, array(), $title, $u );
+		$pager = new HiddenRevisionsPager( $this, array(), $title, $u, $offender );
 		if( $pager->getNumRows() ) {
 			$wgOut->addHTML( wfMsgExt('oversight-header', array('parse') ) );
 			$wgOut->addHTML( $pager->getNavigationBar() );
@@ -593,12 +596,13 @@ class SpecialOversight extends SpecialPage {
 class HiddenRevisionsPager extends ReverseChronologicalPager {
 	public $mForm, $mConds, $namespace, $dbKey, $uid;
 
-	function __construct( $form, $conds = array(), $title = NULL, $user = NULL ) {
+	function __construct( $form, $conds = array(), $title = NULL, $user = NULL, $offender = '' ) {
 		$this->mForm = $form;
 		$this->mConds = $conds;
 		$this->namespace = $title ? $title->getNamespace() : -1;
 		$this->dbKey = $title ? $title->getDBKey() : null;
 		$this->uid = $user ? $user->getId() : null;
+		$this->author = strlen($offender) ? $offender : null;
 
 		parent::__construct();
 	}
@@ -616,6 +620,9 @@ class HiddenRevisionsPager extends ReverseChronologicalPager {
 		}
 		if( !is_null($this->uid) ) {
 			$conds['hidden_by_user'] = $this->uid;
+		}
+		if( !is_null($this->author) ) {
+			$conds['hidden_user_text'] = $this->author;
 		}
 		$indexes = array( 'hidden' => array('hidden_on_timestamp','page_title_timestamp','hidden_by_user') );
 		return array(

@@ -62,6 +62,8 @@ Revert this change first.',
 	'oversight-header'     => 'Below is a list of revisions recently permanently hidden from public view.
 Releasing this information can result in permanent loss of Oversight privileges.',
 	'oversight-legend'     => 'Search revision hiding log',
+	'oversight-oversighter' => 'Oversighter:',
+	'oversight-offender'   => 'Offender:',
 );
 
 /** Message documentation (Message documentation)
