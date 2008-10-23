@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 DESTDIR = $(CURDIR)/debian/wikimedia-raid-utils
-FILES = arcconf megamgr megamgr.bin megarc megarc.bin tw_cli
+FILES = arcconf megamgr megamgr.bin megarc megarc.bin MegaCli tw_cli check-raid.py
 
 configure:
 	# no action
@@ -10,7 +10,7 @@ build:
 	# no action
 
 clean:
-	# no action
+	rm -f $(CURDIR)/debian/files
 
 install: build
 	dh_testdir
