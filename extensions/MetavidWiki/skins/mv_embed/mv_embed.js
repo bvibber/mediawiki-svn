@@ -244,7 +244,7 @@ var mvEmbed = {
   	
 	mv_embed( target_id );	
 	
-	this.check_init_done();
+	this.check_init_done();	
   },
   /*
    * should be cleaned up ... the embedType loading should be part of load_libs above:
@@ -253,8 +253,14 @@ var mvEmbed = {
   	js_log('f:check_init_done');
   	//check if all videos are "ready to play"
   	var is_ready=true;
-  	for(var i in global_player_list)
-    	is_ready = ( $j('#'+global_player_list[i]).get(0).ready_to_play ) ? is_ready : false;  	    	
+  	for(var i in global_player_list){
+  		var cur_vid =  $j('#'+global_player_list[i]).get(0);
+    	is_ready = (cur_vid.ready_to_play ) ? is_ready : false;
+    	if( !is_ready && cur_vid.load_error ){ 
+    		is_ready=true;
+    		$j(cur_vid).html( cur_vid.load_error );
+    	}
+    }  	    	
   	if(!is_ready){
   		//js_log('some ' + global_player_list + ' not ready');
   		setTimeout( 'mvEmbed.check_init_done()', 250 );
@@ -1971,9 +1977,14 @@ embedVideo.prototype = {
             this.thumbnail_disp = true;	    
 			this.inheritEmbedObj();
 			this.init_with_sources_loadedDone=true;
-        }else{
-            js_log('no player found for given source type ' + this.pc.type);
-            this.load_error= getMsg('generic_missing_plugin', this.pc.type );
+        }else{        	        
+        	//select first source as not playable 
+        	var missing_type =this.media_element.sources[0].mime_type; 
+        	if( this.pc )
+        		var missing_type = this.pc.type;        		        	
+        	
+           	js_log('no player found for given source type ' + missing_type);
+           	this.load_error= getMsg('generic_missing_plugin', missing_type );           
         }        
 	},
 	inheritEmbedObj:function(){
@@ -2070,10 +2081,10 @@ embedVideo.prototype = {
 	// first check if seek can be done on locally downloaded content. 
 	doSeek : function( perc ){
 		js_log('f:mv_embed:doSeek:'+perc);
-		if(this.media_element.selected_source.supports_url_time_encoding){
+		if( this.media_element.selected_source.supports_url_time_encoding ){
 			js_log('Seeking to ' + this.seek_time_sec + ' (local copy of clip not loaded at' + perc + '%)');
 			this.stop();			
-			this.seek_time_sec = 0; 
+			//this.seek_time_sec = 0; 
 		}
 		//do play in 100ms (give things time to clear) 
 		setTimeout('$j(\'#'+this.id+'\').get(0).play()',100);

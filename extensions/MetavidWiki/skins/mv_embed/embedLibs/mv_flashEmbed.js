@@ -184,7 +184,7 @@ var flashEmbed = {
         /* to support local seeks */
 		if(this.currentTime > 1 && this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
 		{
-			js_log('Seeking to ' + this.seek_time_sec);
+			js_log('flashEmbed: _local_ Seeking to ' + this.seek_time_sec);
 			this.fla.Seek(this.seek_time_sec);
 			this.seek_time_sec = 0;
 		}

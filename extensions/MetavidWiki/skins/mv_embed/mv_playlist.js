@@ -185,7 +185,7 @@ mvPlayList.prototype = {
 		var _this = this;
 		var error=false;
 		_this.clip_ready_count=0;		
-		for(var i in this.default_track.clips){
+		for( var i in this.default_track.clips ){
 			var clip = 	this.default_track.clips[i];
 			if(clip.embed.load_error){
 				var error = clip.embed.load_error;
