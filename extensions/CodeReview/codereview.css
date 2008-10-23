@@ -51,6 +51,9 @@ table.mw-codereview-meta td {
 	background: #df0000 !important;
 	color: white;
 }
+.mw-codereview-status-fixme:hover td a {
+	color: #ff0 !important;
+}
 
 .mw-codereview-status-resolved td {
 	background: #c0ffc0 !important;
