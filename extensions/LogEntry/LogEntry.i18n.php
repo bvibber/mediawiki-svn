@@ -1,6 +1,10 @@
 <?php
+/**
+ * Internationalisation file for extension LogEntry.
+ *
+ * @addtogroup Extensions
+ */
 
-# Internationalization
 $messages = array();
 
 /** English
@@ -12,5 +16,5 @@ $messages['en'] = array(
 	'logentry-specialpage-desc' => 'This tag extension provides processing for appending to log pages',
 	'logentry' => 'LogEntry',
 	'logentry-invalidpage' => 'Invalid page',
-	'logentry-invalidtoken' => 'Invalid token'
+	'logentry-invalidtoken' => 'Invalid token',
 );
