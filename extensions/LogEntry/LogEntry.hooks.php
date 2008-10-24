@@ -12,7 +12,7 @@ class LogEntryHooks {
 	/* Functions */
 	
 	// Initialization
-	static function register() {
+	public static function register() {
 		global $wgParser;
 		
 		// Register the hook with the parser
@@ -23,7 +23,7 @@ class LogEntryHooks {
 	}
 	
 	// Render the entry form
-	static function render( $input, $args, &$parser ) {
+	public static function render( $input, $args, &$parser ) {
 		global $wgUser;
 		
 		// Don't cache since we are passing the token in the form
