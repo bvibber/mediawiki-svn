@@ -50,7 +50,7 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'backforth-next' => 'التالي ($1)',
-	'backforth-desc' => 'يضيف وصلات "التالي" و "السابق" الأبجدية لأعلى الصفحات',
+	'backforth-desc' => 'يضيف وصلات "التالي" و"السابق" الأبجدية لأعلى الصفحات',
 	'backforth-prev' => 'السابق ($1)',
 );
 

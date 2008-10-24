@@ -212,6 +212,7 @@ $messages['km'] = array(
 	'interwikilist' => 'បញ្ជីអន្តរវិគី',
 	'interwikilist-desc' => 'បន្ថែម[[Special:Interwikilist|ទំព័រពិសេស]]ដើម្បីមើលតំនភ្ជាប់អន្តរវិគីដែលអាចមើលបាន',
 	'interwikilist-linkname' => 'តំនភ្ជាប់អន្តរវិគី',
+	'interwikilist-prefix' => 'បុព្វបទអន្តរវិគី៖',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -48,7 +48,7 @@ $messages['an'] = array(
 $messages['ar'] = array(
 	'crossnamespacelinks' => 'وصلات من نطاقات مختلفة',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|يعرض الوصلات عبر النطاقات]] التي لا ينبغي أن توجد في {{SITENAME}}',
-	'crossnamespacelinks-summary' => 'تعرض هذه الصفحة قائمة بالصفحات التي تقع في نطاق المقالات و تحتوي على روابط من نطاقات أخرى (ماعدا {{ns:special}} و {{ns:talk}}و {{ns:project}} و{{ns:template}})، والتي لا ينصح باستعمالها.',
+	'crossnamespacelinks-summary' => 'تعرض هذه الصفحة قائمة بالصفحات التي تقع في نطاق المقالات وتحتوي على روابط من نطاقات أخرى (ماعدا {{ns:special}}، {{ns:talk}}، {{ns:project}}، {{ns:template}})، والتي لا ينصح باستعمالها.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|وصلة|وصلات}} ل $3',
 );
 

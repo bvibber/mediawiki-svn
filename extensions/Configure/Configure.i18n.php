@@ -2659,6 +2659,19 @@ $messages['ro'] = array(
 	'viewconfig' => 'Vizualizează configuraţia wiki',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'configure-desc-group' => 'Gruppe',
+	'configure-ext-use' => 'Ause',
+	'configure-section-db' => 'Databeise',
+	'configure-section-category' => 'Categorije',
+	'configure-section-users' => 'Utinde',
+	'configure-section-feed' => 'Feed',
+	'configure-section-job' => 'Fatje',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Flrn

@@ -182,6 +182,8 @@ $messages['ar'] = array(
 	'oversight-header' => 'بالأسفل قائمة بالمراجعات التي تم إخفاؤها بشكل دائم حديثا عن العامة.
 إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
 	'oversight-legend' => 'بحث في سجل إخفاء المراجعات',
+	'oversight-oversighter' => 'ناظر:',
+	'oversight-offender' => 'مسيء:',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -230,6 +232,8 @@ $messages['arz'] = array(
 	'oversight-header' => 'تحت فى لستة بالتغييرات اللى اتخبت قريب و على طول من العرض العمومي.
 تطليع المعلومات دى بره ممكن يتسبب فى سحب صلاحيات الاوفرسايت منك و على طول.',
 	'oversight-legend' => 'دور فى سجل تخبية المراجعات',
+	'oversight-oversighter' => 'ناظر:',
+	'oversight-offender' => 'مسىء:',
 );
 
 /** Asturian (Asturianu)
@@ -915,6 +919,8 @@ administrador das bases de datos no caso de que vostede cometa un erro.",
 	'oversight-header' => 'Embaixo amósase unha listaxe recente das revisións ocultas permanentemente á opinión pública.
 Á liberación desta información pode resultar na perda permanente dos privilexios de Supervisión.',
 	'oversight-legend' => 'Rexistro de procura de revisións agochadas',
+	'oversight-oversighter' => 'Supervisor:',
+	'oversight-offender' => 'Delincuente:',
 );
 
 /** Hebrew (עברית)
@@ -2888,6 +2894,8 @@ Không ai có thể dùng website để xem phiên bản sau khi nó được gi
 	'oversight-header' => 'Đây là các phiên bản bị giấu luôn khỏi các độc giả.
 Nếu đưa ra thông tin này, bạn sẽ mất vĩnh viễn quyền giám sát.',
 	'oversight-legend' => 'Tìm kiếm trong nhật trình giấu phiên bản',
+	'oversight-oversighter' => 'Giám sát viên:',
+	'oversight-offender' => 'Tội nhân:',
 );
 
 /** Volapük (Volapük)

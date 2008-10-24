@@ -342,6 +342,7 @@ $messages['bg'] = array(
 /** Czech (Česky)
  * @author Danny B.
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'code' => 'Kontrola kódu',
@@ -351,6 +352,7 @@ $messages['cs'] = array(
 	'code-notes' => 'poznámky',
 	'code-authors' => 'autoři',
 	'code-tags' => 'značky',
+	'code-authors-text' => 'Toto je seznam autorů v úložišti seřazený podle posledních commitů.',
 	'code-author-haslink' => 'Tento autor je spojen s wiki uživatelem $1',
 	'code-author-orphan' => 'Tento autor není svázaný s žádným wikiuživatelem',
 	'code-author-dolink' => 'Svázat tohoto autora s wikiuživatelem:',
@@ -371,6 +373,7 @@ $messages['cs'] = array(
 	'code-field-path' => 'Cesta',
 	'code-field-text' => 'Poznámka',
 	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Datum:',
 	'code-rev-message' => 'Komentář:',
 	'code-rev-repo' => 'Úložiště:',
 	'code-rev-rev' => 'Revize:',
@@ -401,6 +404,14 @@ $messages['cs'] = array(
 	'code-rev-submit' => 'Uložit změny',
 	'code-rev-submit-next' => 'Uložit & další nevyřešená',
 	'codereview-reply-link' => 'odpovědět',
+	'codereview-email-subj' => '[$1] [r$2]: Přidán nový komentář',
+	'codereview-email-body' => 'Uživatel „$1“ přidal komentář k r$3.
+
+Plné URL: $2
+
+Komentář:
+
+$4',
 	'repoadmin' => 'Správa úložiště',
 	'repoadmin-new-legend' => 'Vytvořit nové úložiště',
 	'repoadmin-new-label' => 'Název úložiště:',
@@ -558,6 +569,7 @@ $messages['eo'] = array(
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Komeil 4life
  */
 $messages['fa'] = array(
 	'code' => 'مرور کد',
@@ -588,6 +600,7 @@ $messages['fa'] = array(
 	'code-field-path' => 'مسیر',
 	'code-field-text' => 'نکته',
 	'code-rev-author' => 'مولف:',
+	'code-rev-date' => 'تاریخ:',
 	'code-rev-message' => 'توضیحات:',
 	'code-rev-repo' => 'مخزن:',
 	'code-rev-rev' => 'نسخه:',
@@ -607,6 +620,7 @@ $messages['fa'] = array(
 	'code-rev-comment-preview' => 'پیش‌نمایش',
 	'code-rev-diff' => 'تفاوت',
 	'code-rev-diff-link' => 'تفاوت',
+	'code-rev-purge-link' => 'خالی کردن',
 	'code-status-new' => 'تازه',
 	'code-status-fixme' => 'درستم کن',
 	'code-status-resolved' => 'حل شده',
@@ -1051,6 +1065,7 @@ $messages['ia'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Melos
  */
 $messages['it'] = array(
 	'code-comments' => 'Commenti',
@@ -1061,7 +1076,7 @@ $messages['it'] = array(
 	'code-author-orunlink' => 'O rimuovere il collegamento con questo utente wiki:',
 	'code-author-name' => 'Inserire un nome utente:',
 	'code-author-success' => "L'autore $1 è stato collegato all'utente wiki $2",
-	'code-author-unlinksuccess' => "È stato rimosso il collegamento all'autore",
+	'code-author-unlinksuccess' => "È stato rimosso il collegamento all'autore $1",
 	'code-field-id' => 'Revisione',
 	'code-field-author' => 'Autore',
 	'code-field-message' => 'Commento',
@@ -1089,6 +1104,7 @@ $messages['it'] = array(
 	'codereview-reply-link' => 'rispondi',
 	'repoadmin-new-button' => 'Crea',
 	'repoadmin-edit-button' => 'OK',
+	'specialpages-group-developer' => 'Tool di sviluppo',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1128,6 +1144,8 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'code' => 'Code nokucken',
 	'code-comments' => 'Bemierkungen',
+	'code-desc' => "[[Special:Code|Tool fir de Code nozekucken]] matt [[Special:RepoAdmin|Subversioun's Ënnerstëtzung]]",
+	'code-notes' => 'Notizen nokucken',
 	'code-authors' => 'Auteuren',
 	'code-tags' => 'Tagen',
 	'code-author-haslink' => 'Dësen Auteur ass mam Wiki-Benotzer $1 verbonn',
@@ -1136,6 +1154,7 @@ $messages['lb'] = array(
 	'code-author-name' => 'Gitt e Benotzernmm an:',
 	'code-author-success' => 'Den Auteur $1 gouf mat dem Wiki-Benotzer $2 verbonn (verlinkt)',
 	'code-author-link' => 'verlinken?',
+	'code-author-unlink' => 'Link ophiewen?',
 	'code-field-id' => 'Revisioun',
 	'code-field-author' => 'Auteur',
 	'code-field-user' => 'Commentateur',
@@ -1147,6 +1166,7 @@ $messages['lb'] = array(
 	'code-rev-author' => 'Auteur:',
 	'code-rev-date' => 'Datum:',
 	'code-rev-message' => 'Bemierkung:',
+	'code-rev-rev' => 'Versioun:',
 	'code-rev-modified-a' => 'derbäigesat',
 	'code-rev-modified-r' => 'ersat',
 	'code-rev-modified-d' => 'geläscht',
@@ -1163,12 +1183,37 @@ $messages['lb'] = array(
 	'code-status-fixme' => 'verbesser mech',
 	'code-status-resolved' => 'geléist',
 	'code-status-ok' => 'ok',
+	'code-pathsearch-path' => 'Pad:',
+	'code-rev-submit' => 'Ännerungen publizéieren',
 	'codereview-reply-link' => 'äntwerten',
 	'codereview-email-subj' => '[$1] [r$2]: Nei Bemierkung derbäigesat',
 	'repoadmin-new-button' => 'Uleeën',
 	'repoadmin-edit-button' => 'OK',
 	'right-codereview-link-user' => 'Auteure mat Wiki-Benotzer verbannen (verlinken)',
 	'specialpages-group-developer' => 'Handwierksgeschir fir Entwéckler (Programméierer)',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aviator
+ */
+$messages['ms'] = array(
+	'repoadmin' => 'Pentadbiran Gedung',
+	'repoadmin-new-legend' => 'Cipta gedung baru',
+	'repoadmin-new-label' => 'Nama gedung:',
+	'repoadmin-new-button' => 'Cipta',
+	'repoadmin-edit-legend' => 'Ubah suai gedung "$1"',
+	'repoadmin-edit-path' => 'Laluan gedung:',
+	'repoadmin-edit-bug' => 'Laluan Bugzilla:',
+	'repoadmin-edit-view' => 'Laluan ViewVC:',
+	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'Gedung "[[Special:Code/$1|$1]]" telah diubahsuai.',
+	'right-repoadmin' => 'Mengurus gedung kod',
+	'right-codereview-add-tag' => 'Menambah label pada semakan',
+	'right-codereview-remove-tag' => 'Membuang label daripada semakan',
+	'right-codereview-post-comment' => 'Menambah ulasan pada semakan',
+	'right-codereview-set-status' => 'Menukar status semakan',
+	'right-codereview-link-user' => 'Membuat pautan dari pengarang ke pengguna wiki',
+	'specialpages-group-developer' => 'Alatan pembangun',
 );
 
 /** Erzya (Эрзянь)
@@ -1648,16 +1693,26 @@ $messages['sv'] = array(
 	'code-no-repo' => 'Ingen databas konfigurerad!',
 	'code-notes' => 'granska noter',
 	'code-authors' => 'författare',
+	'code-tags' => 'taggar',
+	'code-authors-text' => 'Nedan är en lista av repo-författare ordnade efter senaste commits.',
 	'code-author-haslink' => 'Denna författare är länkad till wiki-användaren $1',
+	'code-author-orphan' => 'Författaren är inte länkad med något wiki-konto',
 	'code-author-dolink' => 'Länka denna författare till en wiki-användare :',
+	'code-author-alterlink' => 'Ändrade wikianvändaren som är länkad till denna författare:',
+	'code-author-orunlink' => 'Eller avlänka denna wikianvändare:',
 	'code-author-name' => 'Skriv in ett användarnamn:',
 	'code-author-success' => 'Författaren $1 har med framgång länkats till wiki-användaren $2',
+	'code-author-link' => 'länk?',
+	'code-author-unlink' => 'avlänka?',
+	'code-author-unlinksuccess' => 'Författaren $1 har avlänkats',
 	'code-field-id' => 'Version',
 	'code-field-author' => 'Författare',
+	'code-field-user' => 'Kommenerare',
 	'code-field-message' => 'Gör sammanfattning',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Noter',
+	'code-field-path' => 'Sökväg',
 	'code-field-text' => 'Not',
 	'code-rev-author' => 'Författare:',
 	'code-rev-date' => 'Datum:',
@@ -1674,6 +1729,7 @@ $messages['sv'] = array(
 	'code-rev-status-set' => 'Ändra status',
 	'code-rev-tags' => 'Taggar:',
 	'code-rev-tag-add' => 'Lägg till taggar:',
+	'code-rev-tag-remove' => 'Ta bort taggar:',
 	'code-rev-comment-by' => 'Kommentar av $1',
 	'code-rev-comment-submit' => 'Skicka kommentar',
 	'code-rev-comment-preview' => 'Förhandsgranska',
@@ -1684,7 +1740,11 @@ $messages['sv'] = array(
 	'code-status-fixme' => 'fixa-mig',
 	'code-status-resolved' => 'löst',
 	'code-status-ok' => 'ok',
+	'code-status-deferred' => 'uppskjuten',
+	'code-pathsearch-legend' => 'Sök versioner i denna repo efter sökväg',
+	'code-pathsearch-path' => 'Sökväg:',
 	'code-rev-submit' => 'Lägg in ändringar',
+	'code-rev-submit-next' => 'Commit & nästa olösta',
 	'codereview-reply-link' => 'svara',
 	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar tillagd',
 	'codereview-email-body' => 'Användaren "$1" postade en kommenter på r$3
@@ -1709,6 +1769,7 @@ $4',
 	'right-codereview-remove-tag' => 'Ta bort taggar från versioner',
 	'right-codereview-post-comment' => 'Lägga till kommentarer till versioner',
 	'right-codereview-set-status' => 'Ändra versioners status',
+	'right-codereview-link-user' => 'Länka författare med wikianvändare',
 	'specialpages-group-developer' => 'Utvecklarverktyg',
 );
 
@@ -1735,12 +1796,31 @@ $messages['vi'] = array(
 	'code-comments' => 'Ghi chú',
 	'code-desc' => '[[Special:Code|Công cụ duyệt mã]] [[Special:RepoAdmin|hỗ trợ Subversion]]',
 	'code-no-repo' => 'Chưa thiết lập kho dữ liệu!',
+	'code-notes' => 'xem ghi chú',
+	'code-authors' => 'tác giả',
+	'code-tags' => 'thẻ',
+	'code-authors-text' => 'Đây có danh sách tác giả trong kho, xếp theo những thay đổi gần đây nhất.',
+	'code-author-haslink' => 'Tác giả này được liên kết đến thành viên wiki $1',
+	'code-author-orphan' => 'Tác giả này chưa được liên kết đến tài khoản wiki nào',
+	'code-author-dolink' => 'Liên kết tác giả mã nguồn này đến thành viên wiki:',
+	'code-author-alterlink' => 'Đổi thành viên wiki được liên kết đến tác giả này:',
+	'code-author-orunlink' => 'Hoặc bỏ liên kết đến thành viên wiki này:',
+	'code-author-name' => 'Hãy nhập tên người dùng:',
+	'code-author-success' => 'Tác giả mã nguồn $1 được liên kết đến thành viên wiki $2',
+	'code-author-link' => 'đặt liên kết?',
+	'code-author-unlink' => 'bỏ liên kết?',
+	'code-author-unlinksuccess' => 'Đã bỏ liên kết đến tác giả $1',
 	'code-field-id' => 'Phiên bản',
 	'code-field-author' => 'Tác giả',
+	'code-field-user' => 'Người bình luận',
 	'code-field-message' => 'Đăng tóm lược',
 	'code-field-status' => 'Trạng thái',
 	'code-field-timestamp' => 'Lúc giờ',
+	'code-field-comments' => 'Ghi chú',
+	'code-field-path' => 'Đường dẫn',
+	'code-field-text' => 'Ghi chú',
 	'code-rev-author' => 'Tác giả:',
+	'code-rev-date' => 'Ngày giờ:',
 	'code-rev-message' => 'Ghi chú:',
 	'code-rev-repo' => 'Kho dữ liệu:',
 	'code-rev-rev' => 'Phiên bản:',
@@ -1754,16 +1834,31 @@ $messages['vi'] = array(
 	'code-rev-status-set' => 'Thay đổi trạng thái',
 	'code-rev-tags' => 'Các thẻ:',
 	'code-rev-tag-add' => 'Thêm thẻ:',
+	'code-rev-tag-remove' => 'Dời thẻ:',
 	'code-rev-comment-by' => '$1 ghi chú',
 	'code-rev-comment-submit' => 'Lưu ghi chú',
 	'code-rev-comment-preview' => 'Xem trước',
 	'code-rev-diff' => 'So sánh',
 	'code-rev-diff-link' => 'so sánh',
+	'code-rev-purge-link' => 'làm mới',
 	'code-status-new' => 'mới',
 	'code-status-fixme' => 'cần sửa',
 	'code-status-resolved' => 'giải quyết',
 	'code-status-ok' => 'được',
+	'code-status-deferred' => 'hoãn',
+	'code-pathsearch-legend' => 'Tìm kiếm các thay đổi trong kho này theo đường dẫn',
+	'code-pathsearch-path' => 'Đường dẫn:',
+	'code-rev-submit' => 'Đệ trình các thay đổi',
+	'code-rev-submit-next' => 'Đệ trình và xem thay đổi chưa giải quyết sau',
 	'codereview-reply-link' => 'trả lời',
+	'codereview-email-subj' => '[$1] [r$2]: Tin nhắn mới',
+	'codereview-email-body' => 'Người dùng “$1” đã bình luận về r$3.
+
+URL đầy đủ: $2
+
+Tin nhắn:
+
+$4',
 	'repoadmin' => 'Quản lý kho dữ liệu',
 	'repoadmin-new-legend' => 'Tạo kho dữ liệu',
 	'repoadmin-new-label' => 'Tên kho dữ liệu:',
@@ -1779,5 +1874,7 @@ $messages['vi'] = array(
 	'right-codereview-remove-tag' => 'Dời thẻ khỏi phiên bản',
 	'right-codereview-post-comment' => 'Ghi chú về phiên bản',
 	'right-codereview-set-status' => 'Thay đổi trạng thái phiên bản',
+	'right-codereview-link-user' => 'Liên kết tác giả mã nguồn đến thành viên wiki',
+	'specialpages-group-developer' => 'Công cụ dành cho lập trình viên',
 );
 
