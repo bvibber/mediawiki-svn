@@ -194,7 +194,17 @@ class CentralNotice extends SpecialPage
 					     ''
 				 	   );
 		}
-  		$table  = "<form name='centranoticeform' id='centralnoticeform' method='post'>"; 
+		
+		$years = range( 2007, 2012);
+		$months = range( 1, 12 );
+		$months = array_map( array( $this, 'addZero'), $months );  
+		$days = range( 1 , 31);
+		$days = array_map( array( $this, 'addZero'), $days);
+		$hours = range( 0 , 23);
+		$hours = array_map( array( $this, 'addZero'), $hours);
+		$hours = array_map( array( $this, 'addTimeFormat'), $hours);
+		
+		$table  = "<form name='centranoticeform' id='centralnoticeform' method='post'>"; 
 		$table .= "<fieldset><legend>" . wfMsgHtml( "centralnotice-manage" ) . "</legend>";
 		$table .= "<table cellpadding=\"9\">";
 		$table .= "<tr><th colspan = \"9\"></th></tr>"; 
@@ -224,14 +234,6 @@ class CentralNotice extends SpecialPage
 			$end_month = substr( $end_timestamp, 4, 2);
 			$end_day = substr( $end_timestamp, 6, 2);
 
-			$years = range( 2007, 2012);
-			$months = range( 1, 12 );
-			$months = array_map( array( $this, 'addZero'), $months );  
-			$days = range( 1 , 31);
-			$days = array_map( array( $this, 'addZero'), $days);
-			$hours = range( 0 , 23);
-			$hours = array_map( array( $this, 'addZero'), $hours);
-			$hours = array_map( array( $this, 'addTimeFormat'), $hours);
 			$table .= "<td>" . Xml::listDropDown( "start_date[$row->notice_name][year]", $this->dropDownList( wfMsg( 'centralnotice-year'), $years ), '', $start_year, '', 3) 
 					 . Xml::listDropDown( "start_date[$row->notice_name][month]", $this->dropDownList( wfMsg( 'centralnotice-month'), $months), '', $start_month, '', 4 ) 
 			                 . Xml::listDropDown( "start_date[$row->notice_name][day]",  $this->dropDownList( wfMsg( 'centralnotice-day' ), $days ) ,  '', $start_day, '', 5)

@@ -129,7 +129,6 @@ class SpecialNoticeTranslate extends SpecialPage
 		
 		$title = Title::newFromText( $saveTo, NS_MEDIAWIKI );
 		$article = new Article( $title );	
-		$translation = htmlspecialchars ( $translation );
 		$article->doEdit( $translation, '' );
 	}
 }
