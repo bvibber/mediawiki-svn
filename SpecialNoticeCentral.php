@@ -255,9 +255,9 @@ class CentralNotice extends SpecialPage
 		$table .= "</table></fieldset></form>";
 		$wgOut->addHTML( $table);
 		
-		$current_day   = date( 'd' );
-		$current_month = date( 'm');
-		$current_year  = date( 'o' );
+		$current_day   = gmdate( 'd' );
+		$current_month = gmdate( 'm');
+		$current_year  = gmdate( 'o' );
 		$action = "addNotice";
 
 		global $wgNoticeProject,$wpUserLang;
@@ -280,7 +280,7 @@ class CentralNotice extends SpecialPage
 		      Xml::listDropDown( 'start_month', $this->dropDownList( wfMsg( 'centralnotice-month'), $months ), '', $current_month, '', 6 ) .
 		      Xml::listDropDown( 'start_day',  $this->dropDownList( wfMsg( 'centralnotice-day'), $days ), '', $current_day, '', 7 )  .
 		      Xml::listDropDown( 'start_year',  $this->dropDownList( wfMsg( 'centralnotice-year'), $years ), '', $current_year, '', 8) .
-		      " " . wfMsg( 'centralnotice-start-hour' ) . ": " .
+		      " " . wfMsg( 'centralnotice-start-hour' ) . "(GMT)" . ": " .
 		      Xml::listDropDown( 'start_hour', $this->dropDownList( wfMsg( 'centralnotice-hours'), $hours), '', "00:00", '', 9) . "<p>" .
 		      " " . wfMsg( 'centralnotice-project-name' ) . ": " . 
 		      Xml::listDropDown( 'project_name', wfMsg( 'centralnotice-project-name-list'), '', $wgNoticeProject, '', 10) .
@@ -419,11 +419,15 @@ class CentralNotice extends SpecialPage
 				$end_month = '01'; 
 				$end_year = ($start_year + 1);
 			}
+			elseif ( $start_month == '09' ) {
+				$end_month = '10';
+				$end_year = $start_year;
+			}	
 			else {
 				$end_month = (substr ( $start_month, 0, 1)) == 0 ? 0 . (intval($start_month) + 1) : ($start_month + 1);  
 				$end_year = $start_year;
 			}
-			$end_date =  wfTimeStamp( TS_MW,  $end_year . ":" . $end_month . ":" . $start_day . " " . $start_hour . ":00" . ":00");
+			$end_date = wfTimeStamp( TS_MW,  $end_year . ":" . $end_month . ":" . $start_day . " " . $start_hour . ":00" . ":00");
 			$res = $dbr->select( $centralnotice_table, 'notice_name', array ( "notice_start_date >= '$start_date'", "notice_end_date <= '$end_date'", "notice_project = '$project_name'", "notice_language = '$project_language'") );
 			if ( $dbr->numRows( $res ) > 0 ) {
 				$wgOut->addHtml( wfMsg( 'centralnotice-overlap'));

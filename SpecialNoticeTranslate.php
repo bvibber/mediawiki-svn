@@ -73,7 +73,7 @@ class SpecialNoticeTranslate extends SpecialPage
 		$table .= "<th>field</th>"; 
 		$table .= "<th>" . $wpUserLang . "</th></tr>";
 		foreach( $requiredFields as $field) {
-			$message = "Centralnotice-" . "$field" . "/" . $wpUserLang;
+			$message = ( $wpUserLang == 'en' ) ? "Centralnotice-" . "$field" : "Centralnotice-" . "$field" . "/" . $wpUserLang;
 			$title = Title::newFromText( $message, NS_MEDIAWIKI );
 			$text = $title->exists() ? wfMsgExt( "centralnotice-$field", array ( 'language' => $wpUserLang ) ) : '';  // only load text if a message exists to avoild default english text display
 			$table .= "<tr><td>". "$field" . "</td>";
