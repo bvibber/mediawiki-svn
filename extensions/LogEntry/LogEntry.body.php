@@ -25,7 +25,7 @@ function efLogEntryRender( $input, $args, &$parser ) {
 	$parser->disableCache();
 	
 	# Create token
-	$token = $wgUser->editToken();
+	$token = htmlspecialchars( $wgUser->editToken() );
 	
 	# Internationalization
 	wfLoadExtensionMessages( 'LogEntry' );
@@ -52,7 +52,7 @@ END;
 
 # Special Page
 class LogEntry extends UnlistedSpecialPage {
-	function LogEntry() {
+	function __construct() {
 		UnlistedSpecialPage::UnlistedSpecialPage( 'LogEntry' );
 		wfLoadExtensionMessages( 'LogEntry' );
 	}
@@ -64,8 +64,7 @@ class LogEntry extends UnlistedSpecialPage {
 		
 		if( $wgRequest->wasPosted() ) {
 			# Check token
-			if( !$wgUser->matchEditToken( $wgRequest->getText('token') ) )
-			{
+			if( !$wgUser->matchEditToken( $wgRequest->getText('token') ) ) {
 				# Alert of invalid page
 				$wgOut->addWikiMsg( 'logentry-invalidtoken' );
 				return;
@@ -76,8 +75,7 @@ class LogEntry extends UnlistedSpecialPage {
 			
 			# Get title
 			$title = Title::newFromText( $page );
-			if( $title && $title->userCan( 'edit', $page ) )
-			{
+			if( $title && $title->userCan( 'edit') ) {
 				# Get article
 				$article = new Article( $title );
 				
@@ -96,8 +94,7 @@ class LogEntry extends UnlistedSpecialPage {
 				
 				# Find line of first section
 				$sectionLine = false;
-				foreach( $contentLines as $i => $contentLine )
-				{
+				foreach( $contentLines as $i => $contentLine ) {
 					# Look for == starting at the first character
 					if(strpos( $contentLine, '==' ) === 0) {
 						$sectionLine = $i;
@@ -107,8 +104,7 @@ class LogEntry extends UnlistedSpecialPage {
 				
 				# Assemble final output
 				$output = '';
-				if( $sectionLine !== false )
-				{
+				if( $sectionLine !== false ) {
 					# Lines up to section
 					$preLines = array_slice( $contentLines, 0, $sectionLine );
 					
@@ -128,9 +124,7 @@ class LogEntry extends UnlistedSpecialPage {
 							),
 							$postLines
 						);
-					}
-					else
-					{
+					} else {
 						# Top section is old
 						$outputLines = array_merge(
 							$preLines,
@@ -143,9 +137,7 @@ class LogEntry extends UnlistedSpecialPage {
 						);
 					}
 					$output = implode( "\n", $outputLines );
-				}
-				else
-				{
+				} else {
 					# There is no section, make one
 					$output = sprintf( "%s\n%s\n%s", $content, $heading, $newLine );
 				}
