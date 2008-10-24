@@ -348,7 +348,7 @@ class CentralNotice extends SpecialPage
 			$wgOut->addHtml( $this->addTemplatesForm());
 			return;
 		}
-		$table .= "<form name='centranoticeform' id='centralnoticeform' action=\"$action\" method='post'>";
+		$table = "<form name='centranoticeform' id='centralnoticeform' method='post'>";
 		$table .= '<fieldset><legend>' . $eNotice . "</legend>";
 		$table .= "<table cellpadding=\"9\">";
 	        $table .= "<tr><th colspan = \"3\"></th></tr>";
@@ -374,7 +374,7 @@ class CentralNotice extends SpecialPage
 				     '',
 				     '',
 				     array('ORDER BY' => 'template_id'));
-		$table = "<form name='centranoticeform' id='centralnoticeform' action=\"$action\" method='post'>";
+		$table = "<form name='centranoticeform' id='centralnoticeform' method='post'>";
 		$table .= '<fieldset><legend>' . wfMsg( "centralnotice-available-templates") . '</legend>';
 		$table .= "<table cellpadding=\"9\">"; 
 		$table .= "<tr><th colspan = \"2\"></th></tr>";
