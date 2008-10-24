@@ -43,6 +43,7 @@ $messages['en'] = array(
 	'centralnotice-year' => 'Year',
 	'centralnotice-month' => 'Month',
 	'centralnotice-hours' => 'Hour',
+	'centralnotice-min' => 'Minute',
 	'centralnotice-project-lang' => 'Project Language',
 	'centralnotice-project-name' => 'Project Name',
 	'centralnotice-project-name-list' => '* Project Name
@@ -59,6 +60,7 @@ $messages['en'] = array(
 	'centralnotice-weights' => 'Weights',
 	'centralnotice-notice-is-locked' => 'Notice is locked. Not removing',
 	'centralnotice-overlap' => 'Notice overlaps within the time of another notice. Not adding',
+	'centralnotice-invalid-date-range' => 'Invalid Date Range. Not Updating',
 );
 
 /** Afrikaans (Afrikaans)
