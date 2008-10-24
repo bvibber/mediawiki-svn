@@ -1,8 +1,9 @@
 <?php
 /**
- * Aliases for Special:LogEntry
+ * Aliases for the LogEntry extension special page
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

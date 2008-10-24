@@ -1,8 +1,9 @@
 <?php
 /**
- * Internationalisation file for extension LogEntry.
+ * Internationalisation for LogEntry extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
