@@ -412,10 +412,7 @@ class CentralNotice extends SpecialPage
 		}
 		else {
 			$dbw = wfGetDB( DB_MASTER );
-			$wgOut->addHtml("$start_year $start_month $start_day $start_hour");
 			$start_date = wfTimeStamp( TS_MW, $start_year . ":" .  $start_month . ":" . $start_day . " " . $start_hour . ":00" . ":00");
-			$wgOut->addHtml("start date is $start_date");
-			$wgOut->addHtml("start hour is $start_hour");
 			if ( $start_month == 12) {
 				$end_month = '01'; 
 				$end_year = ($start_year + 1);
