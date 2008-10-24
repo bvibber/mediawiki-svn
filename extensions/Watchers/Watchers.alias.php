@@ -43,6 +43,11 @@ $aliases['he'] = array(
 	'Watchers' => array( 'עוקבים' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Watchers' => array( 'Wobkedźbowarjo' ),
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

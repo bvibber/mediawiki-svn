@@ -660,6 +660,7 @@ $messages['cu'] = array(
  * @author ChrisiPK
  * @author Church of emacs
  * @author Leithian
+ * @author Metalhead64
  * @author Purodha
  * @author Raimond Spekking
  * @author Revolus
@@ -754,6 +755,7 @@ $messages['de'] = array(
 	'configure-setting-not-available' => 'Diese Einstellung ist in dieser Version von MediaWiki nicht verfügbar',
 	'configure-transwiki-not-in-range' => 'Das gewünschte Wiki, $1, ist kein erlaubter Wert ($2).',
 	'configure-view' => 'Ansehen',
+	'configure-view-all-versions' => 'Volle Versionsliste',
 	'configure-view-not-allowed' => 'Es ist dir nicht gestattet diese Einstellung einzusehen',
 	'extensions' => 'Erweiterungen konfigurieren',
 	'right-configure' => 'Wiki einrichten',

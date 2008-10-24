@@ -1978,6 +1978,8 @@ teruggezet worden door databasebeheerders als u een fout maakt.",
 	'oversight-header' => 'Hieronder staat een lijst met versies die permanent verborgen zijn voor iedereen.
 Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten worden ingenomen.',
 	'oversight-legend' => 'Logboek verborgen versies doorzoeken',
+	'oversight-oversighter' => 'Oversightgebruiker:',
+	'oversight-offender' => 'Dader:',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2637,6 +2639,8 @@ Borttagna objekt kommer inte att vara synliga för någon genom webbplatsen, men
 	'oversight-header' => 'Här nedanför visas en lista över sidversioner som nyligen dolts permanent från allmän visning.
 Användare som sprider den här informationen vidare kan få sina censorrättigheter permanent borttagna.',
 	'oversight-legend' => 'Sök i versionsborttagningsloggen',
+	'oversight-oversighter' => 'Censor:',
+	'oversight-offender' => 'Syndare:',
 );
 
 /** Silesian (Ślůnski)

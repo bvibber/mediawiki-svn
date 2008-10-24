@@ -5119,6 +5119,19 @@ $messages['sah'] = array(
 	'right-boardvote' => 'Быыбары салайыы',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Gmelfi
+ */
+$messages['scn'] = array(
+	'group-boardvote' => 'Cummissioni eletturali',
+	'group-boardvote-member' => 'Cummissariu eletturali',
+	'grouppage-boardvote' => '{{ns:project}}:Cummissariu eletturali',
+	'boardvote_blocked' => "Ni dispiaci, fusti bluccatu ntô pruggetu n cui ti rigistrasti. L'utilizzatura bluccati nun hannu dirittu di votu.",
+	'boardvote_bot' => 'Ntâ tò wiki unni ti riggistrasti hai lu status di bot. Li cunti bot nun sunnu auturizzati a vutari',
+	'boardvote_welcome' => "Binvinutu '''\$'''!",
+	'go_to_board_vote' => 'Elizzioni 2008 ntô Board di Wikimedia',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -5843,6 +5856,7 @@ $messages['ty'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author NickK
  */
 $messages['uk'] = array(
 	'boardvote' => 'Вибори до Ради повірених фонду «Вікімедіа»',
@@ -5876,7 +5890,7 @@ $messages['uk'] = array(
 
 <pre>$2</pre>
 
-Зашифрований текст наведено нижче. Будь-хто може знайти його на [[Special:Boardvote/dump|тут]].
+Зашифрований текст наведено нижче. Будь-хто може знайти його [[Special:Boardvote/dump|тут]].
 
 <pre>$3</pre>
 

@@ -828,12 +828,13 @@ $messages['grc'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'math_noblahtex' => 'לא ניתן להפעיל את blahtex, האמור להיות ב־$1',
 	'math-desc' => 'פלט MathML עבור תגיות &lt;math&gt;',
-	'math_AmbiguousInfix' => 'הצבה שנויה במחלוקת של "$1".
+	'math_AmbiguousInfix' => 'הצבה דו־משמעית של "$1".
 נסו להשתמש בסוגריים נוספים "{ ... }" להתרת כפל המשמעות.',
 	'math_CannotChangeDirectory' => 'לא ניתן לשנות את תיקיית העבודה',
 	'math_CannotCreateTexFile' => 'לא ניתן ליצור קובץ tex',
@@ -842,47 +843,47 @@ $messages['he'] = array(
 	'math_CannotWritePngDirectory' => 'לא ניתן לכתוב אל תיקיית פלט ה־PNG',
 	'math_CannotWriteTexFile' => 'לא ניתן לכתוב אל קובץ ה־tex',
 	'math_CasesRowTooBig' => 'יכולות להיות שתי רשומות בלבד בכל שורה של מקטע "cases"',
-	'math_DoubleSubscript' => 'מופיעות שתי מחרוזות בכתב תחתי באותו הבסיס.
+	'math_DoubleSubscript' => 'מופיעות שתי מחרוזות בכתב תחתי עם אותו הבסיס.
 מותרת מחרוזת אחת בלבד.',
-	'math_DoubleSuperscript' => 'מופיעות שתי מחרוזות בכתב עילי באותו הבסיס.
+	'math_DoubleSuperscript' => 'מופיעות שתי מחרוזות בכתב עילי עם אותו הבסיס.
 מותרת מחרוזת אחת בלבד.',
 	'math_IllegalCharacter' => 'תו לא חוקי בקלט',
-	'math_IllegalCommandInMathMode' => 'הפקודה "$1" אינה חוקית במצב המתמטי',
-	'math_IllegalCommandInMathModeWithHint' => 'הפקודה "$1" אינה חוקית במצב המתמטי
-יתכן והתכוונתם להשתמש ב־"$2" במקום?',
+	'math_IllegalCommandInMathMode' => 'הפקודה "$1" אינה חוקית במצב מתמטיקה',
+	'math_IllegalCommandInMathModeWithHint' => 'הפקודה "$1" אינה חוקית במצב מתמטיקה.
+האם התכוונתם להשתמש ב־"$2" במקום זאת?',
 	'math_IllegalCommandInTextMode' => 'הפקודה "$1" אינה חוקית במצב טקסט',
-	'math_IllegalCommandInTextModeWithHint' => 'הפקודה "$1" אינה חוקית במצב טקסט
-יתכן והתכוונתם להשתמש ב־"$2" במקום?',
-	'math_IllegalDelimiter' => 'מפריד לא חוקי לאחר "$1"',
-	'math_IllegalFinalBackslash' => 'לוכסן הפוך לא חוקי "\\" בסוף הפלט',
+	'math_IllegalCommandInTextModeWithHint' => 'הפקודה "$1" אינה חוקית במצב טקסט.
+האם התכוונתם להשתמש ב־"$2" במקום זאת?',
+	'math_IllegalDelimiter' => 'תו מפריד בלתי חוקי לאחר "$1"',
+	'math_IllegalFinalBackslash' => 'לוכסן הפוך לא חוקי "\\" בסוף הקלט',
 	'math_IllegalNestedFontEncodings' => 'לא ניתן לקנן פקודות קידוד גופנים',
 	'math_IllegalRedefinition' => 'הפקודה "$1" כבר הוגדרה; לא ניתן להגדיר אותה מחדש',
 	'math_InvalidColour' => 'הצבע "$1" שגוי',
-	'math_InvalidUtf8Input' => 'מחרוזת הקלט לא היתה מחרוזת UTF-8 תקנית',
-	'math_LatexFontNotSpecified' => 'לא צויין גופן LaTeX עבור "$1"',
-	'math_LatexPackageUnavailable' => 'לא ניתן לעבד את ה־PNG כיוון שחבילת ה־LaTeX "$1" אינה זמינה',
+	'math_InvalidUtf8Input' => 'מחרוזת הקלט אינה מחרוזת UTF-8 תקנית',
+	'math_LatexFontNotSpecified' => 'לא צוין גופן LaTeX עבור "$1"',
+	'math_LatexPackageUnavailable' => 'לא ניתן לעבד את ה־PNG כיוון שחבילת LaTeX "$1" אינה זמינה',
 	'math_MismatchedBeginAndEnd' => 'הפקודות "$1" ו־"$2" אינן תואמות',
-	'math_MisplacedLimits' => 'הפקודה "$1" יכולה להופיע לאחר פעולה מתמטית.
+	'math_MisplacedLimits' => 'הפקודה "$1" יכולה להופיע רק לאחר פעולה מתמטית.
 שקלו להשתמש ב־"\\mathop".',
-	'math_MissingCommandAfterNewcommand' => 'שם פקודה חדש חסר או לא חוקי לאחר "\\newcommand".
+	'math_MissingCommandAfterNewcommand' => 'שם פקודה חדש חסר או בלתי תקין לאחר "\\newcommand".
 יש להגדיר פקודה אחת בדיוק;
-עליה להתחיל בלוכסן הפוך "\\" ולהכיל תווים אלפביתיים בלבד.',
-	'math_MissingDelimiter' => 'חסר מפריד לאחר "$1"',
+על הפקודה להתחיל בלוכסן הפוך "\\" ולהכיל תווים אלפביתיים בלבד.',
+	'math_MissingDelimiter' => 'חסר תו מפריד לאחר "$1"',
 	'math_MissingOpenBraceAfter' => 'חסר סוגר פתיחה "}" לאחר "$1"',
 	'math_MissingOpenBraceAtEnd' => 'חסר סוגר פתיחה "}" בסוף הקלט',
 	'math_MissingOpenBraceBefore' => 'חסר סוגר פתיחה "}" לפני "$1"',
-	'math_MissingOrIllegalParameterCount' => 'ספירת המשתנים חסרה או בלתי חוקית בהגדרת "$1".
-חייבת להיות ספרה בודדת בין 1 ל־9 כולל.',
-	'math_MissingOrIllegalParameterIndex' => 'אינדקס פרמטר חסר או לא חוקי בהגדרת "$1"',
-	'math_NonAsciiInMathMode' => 'ניתן להשתמש בתווים שאינם מתקן ASCII במצב טקסט בלבד
+	'math_MissingOrIllegalParameterCount' => 'מספר המשתנים חסר או בלתי תקין בהגדרת "$1".
+המספר חייב להיות ספרה בודדת בין 1 ל־9 כולל.',
+	'math_MissingOrIllegalParameterIndex' => 'אינדקס פרמטר חסר או בלתי תקין בהגדרת "$1"',
+	'math_NonAsciiInMathMode' => 'ניתן להשתמש בתווים שאינם מתקן ASCII במצב טקסט בלבד.
 נסו לבודד את התו הבעייתי באמצעות "\\text{...}".',
 	'math_NotEnoughArguments' => 'לא סופקו די ארגומנטים עבור "$1"',
 	'math_PngIncompatibleCharacter' => 'לא ניתן לייצר PNG כראוי שיכיל את התו $1',
-	'math_ReservedCommand' => 'הפקודה "$1" שמורה לשימוש פנימי על ידי blahtex',
+	'math_ReservedCommand' => 'הפקודה "$1" שמורה לשימוש פנימי של blahtex',
 	'math_SubstackRowTooBig' => 'יכולה להיות רשומה אחת בלבד בכל שורה של מקטע "substack"',
-	'math_TooManyMathmlNodes' => 'ישנם יותר מדי ענפים בעץ ה־MathML',
+	'math_TooManyMathmlNodes' => 'ישנם יותר מדי צמתים בעץ ה־MathML',
 	'math_TooManyTokens' => 'הקלט ארוך מדי',
-	'math_UnavailableSymbolFontCombination' => 'הסימן "$1" אינו זמין עבור הגופן "$2"',
+	'math_UnavailableSymbolFontCombination' => 'הסימן "$1" אינו זמין בגופן "$2"',
 	'math_UnexpectedNextCell' => 'הפקודה "&" יכולה להופיע אך ורק בתוך מקטע "\\begin ... \\end"',
 	'math_UnexpectedNextRow' => 'הפקודה "\\\\" יכולה להופיע אך ורק בתוך מקטע "\\begin ... \\end"',
 	'math_UnmatchedBegin' => 'מופיע "\\begin" ללא "\\end" תואם',

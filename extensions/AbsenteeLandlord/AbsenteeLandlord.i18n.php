@@ -423,6 +423,13 @@ $messages['sah'] = array(
 	'absenteelandlord-desc' => 'Дьаһабыллар (администраатардар) өр кэмҥэ көхтөрө суох буоллаҕына биики-бырайыак билэтин олоҕун аптамаатынан бүөлүүр',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Gmelfi
+ */
+$messages['scn'] = array(
+	'absenteelandlord-reason' => "Lu databbasi fu autumaticamenti bluccatu a causa di l'inattività di l'amministratura.",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

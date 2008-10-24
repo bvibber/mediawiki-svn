@@ -34,6 +34,11 @@ $aliases['fr'] = array(
 	'PurgeCache' => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'PurgeCache' => array( 'Pufrowak wuprózdnić' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'PurgeCache' => array( 'Pembersihan tembolok' ),

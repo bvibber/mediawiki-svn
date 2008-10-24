@@ -347,9 +347,9 @@ $messages['he'] = array(
 	'authorprotect-move' => 'הגבלת העברה ליוצרים בלבד',
 	'authorprotect-expiry' => 'זמן הפקיעה',
 	'authorprotect-reason' => 'סיבה',
-	'authorprotect-intro' => 'השתמשו בטופס זה כדי לנעול עמוד זה מאלו שאינם היוצרים',
-	'authorprotect-success' => 'ההגנה חלה בהצלחה!',
-	'authorprotect-failure' => 'החלת ההגנה נכשלה',
+	'authorprotect-intro' => 'ניתן להשתמש בטופס זה כדי להגן על דף זה מפני משתמשים שלא יצרו אותו',
+	'authorprotect-success' => 'ההגנה הופעלה בהצלחה!',
+	'authorprotect-failure' => 'הפעלת ההגנה נכשלה',
 	'protect-level-author' => 'הגנה מפני לא־יוצרים',
 	'restriction-level-author' => 'מוגן ליוצר',
 );

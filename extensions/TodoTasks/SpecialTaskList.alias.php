@@ -39,6 +39,12 @@ $aliases['fi'] = array(
 	'TaskListByProject' => array( 'Projektin tehtävälista' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'TaskList' => array( 'Lisćina nadawkow' ),
+	'TaskListByProject' => array( 'Lisćina nadawkow na projekt' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'TaskList' => array( 'បញ្ជីភារកិច្ច' ),

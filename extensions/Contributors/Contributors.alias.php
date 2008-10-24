@@ -47,6 +47,11 @@ $aliases['hr'] = array(
 	'Contributors' => array( 'Doprinositelji' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Contributors' => array( 'Awtorojo' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Contributors' => array( 'Kontributor' ),

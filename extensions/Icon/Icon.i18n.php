@@ -136,6 +136,7 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'icon-badimage' => 'Špatny wobraz',
 	'icon-badwidth' => 'Špatna šěrokosć',
+	'icon-desc' => 'Dowola ći wobrazy jako symbole a symbolowe wotkazy wužiwać',
 );
 
 /** Hungarian (Magyar)

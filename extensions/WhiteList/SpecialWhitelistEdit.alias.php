@@ -33,6 +33,11 @@ $aliases['fa'] = array(
 	'WhitelistEdit' => array( 'ویرایش_فهرست_سفید' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'WhiteList' => array( 'Běła lisćina' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'WhiteList' => array( 'បញ្ជីស' ),

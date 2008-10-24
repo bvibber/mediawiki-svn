@@ -39,6 +39,11 @@ $aliases['hr'] = array(
 	'WatchSubpages' => array( 'Prati_podstranice' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'WatchSubpages' => array( 'Podstrony wobkedźbować' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WatchSubpages' => array( 'Ënnersäiten iwwerwaachen' ),

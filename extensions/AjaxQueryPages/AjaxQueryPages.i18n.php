@@ -110,10 +110,11 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'ajax-qp-desc' => 'הוסף מעט AJAX לעמודי שאילתה כגון [[Special:Shortpages|{{int:shortpages}}]]',
+	'ajax-qp-desc' => 'הוספת מעט AJAX לעמודי שאילתה כגון [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Hindi (हिन्दी)

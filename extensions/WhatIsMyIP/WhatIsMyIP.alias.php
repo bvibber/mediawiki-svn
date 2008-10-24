@@ -49,6 +49,11 @@ $aliases['hr'] = array(
 	'WhatIsMyIP' => array( 'Moj_IP' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'WhatIsMyIP' => array( 'Moja IP-adresa' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WhatIsMyIP' => array( 'Wéi ass meng IP-Adress' ),

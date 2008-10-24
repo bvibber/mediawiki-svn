@@ -53,6 +53,11 @@ $aliases['hr'] = array(
 	'InterwikiList' => array( 'Interwiki_popis' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'InterwikiList' => array( 'Lisćina interwikijow' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'InterwikiList' => array( 'Daftar interwiki' ),

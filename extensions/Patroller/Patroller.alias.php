@@ -32,6 +32,11 @@ $aliases['de'] = array(
 	'Patroller' => array( 'Prüfer' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Patroller' => array( 'Dohladowar' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Patroller' => array( 'Contreleren' ),

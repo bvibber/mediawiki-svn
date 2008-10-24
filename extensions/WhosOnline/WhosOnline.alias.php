@@ -44,6 +44,11 @@ $aliases['he'] = array(
 	'WhosOnline' => array( 'מי_מחובר' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'WhosOnline' => array( 'Štó je online' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'WhosOnline' => array( 'អ្នកកំពុងនៅអនឡាញ' ),

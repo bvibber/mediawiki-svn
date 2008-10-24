@@ -978,6 +978,13 @@ $messages['nov'] = array(
 	'searchfulltext' => 'Sercha kompleti texte',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'createarticle' => 'Tlhoma letlakala',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

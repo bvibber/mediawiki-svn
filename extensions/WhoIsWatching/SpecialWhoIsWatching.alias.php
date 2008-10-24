@@ -35,6 +35,11 @@ $aliases['he'] = array(
 	'WhoIsWatching' => array( 'מי_עוקב' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'WhoIsWatching' => array( 'Štó wobkedźbuje' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'WhoIsWatching' => array( 'អ្នកកំពុងតាមដាន' ),

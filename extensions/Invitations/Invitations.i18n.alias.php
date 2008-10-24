@@ -55,6 +55,11 @@ $aliases['he'] = array(
 	'Invitations' => array( 'הזמנות' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Invitations' => array( 'Přeprošenja' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
 	'Invitations' => array( 'Envitasyon' ),

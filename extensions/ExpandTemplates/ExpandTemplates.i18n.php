@@ -1536,6 +1536,7 @@ $messages['ts'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author NickK
  */
 $messages['uk'] = array(
 	'expandtemplates' => 'Розгортання шаблонів',
@@ -1550,7 +1551,7 @@ $messages['uk'] = array(
 	'expand_templates_output' => 'Результат',
 	'expand_templates_xml_output' => 'XML-вивід',
 	'expand_templates_ok' => 'Гаразд',
-	'expand_templates_remove_comments' => 'Вилучити коменатрі',
+	'expand_templates_remove_comments' => 'Вилучити коментарі',
 	'expand_templates_generate_xml' => 'Показати дерево аналізу XML',
 	'expand_templates_preview' => 'Попередній перегляд',
 );

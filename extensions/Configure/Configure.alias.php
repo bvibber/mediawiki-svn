@@ -105,6 +105,13 @@ $aliases['hr'] = array(
 	'ViewConfig' => array( 'Vidi_konfiguraciju' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'Configure' => array( 'Konfigurować' ),
+	'Extensions' => array( 'Rozšěrjenja' ),
+	'ViewConfig' => array( 'Konfiguraciju wobhladać' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
 	'Configure' => array( 'Konfigire' ),

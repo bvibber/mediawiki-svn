@@ -339,18 +339,19 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'countedits' => 'מספור עריכות',
-	'countedits-desc' => '[[Special:CountEdits|דף מיוחד]] הסופר את עריכות המשתמש ומספק את רשימת עשרת התורמים המובילים',
-	'countedits-warning' => "'''אזהרה:''' אין לשפוט ספר לפי כריכתו.
-לכן אין לשפוט את המשתמשים לפי מספר עריכותיהם.",
+	'countedits' => 'ספירת עריכות',
+	'countedits-desc' => '[[Special:CountEdits|דף מיוחד]] הסופר את העריכות של המשתמשים ומציג רשימה של עשרת התורמים המובילים',
+	'countedits-warning' => "'''אזהרה:''' אין לשפוט ספר על פי הכריכה שלו.
+אל תשפטו את המשתמשים לפי מספר העריכות שלהם.",
 	'countedits-username' => 'שם המשתמש:',
 	'countedits-ok' => 'אישור',
-	'countedits-nosuchuser' => 'אין משתמש העונה לשם $1',
+	'countedits-nosuchuser' => 'אין משתמש בשם $1',
 	'countedits-resultheader' => 'תוצאות עבור $1',
-	'countedits-resulttext' => '$1 ביצע/ה $2 עריכות',
+	'countedits-resulttext' => '$1 ביצע $2 עריכות',
 	'countedits-mostactive' => 'התורמים הפעילים ביותר',
 	'countedits-nocontribs' => 'אין תורמים לוויקי זה.',
 );

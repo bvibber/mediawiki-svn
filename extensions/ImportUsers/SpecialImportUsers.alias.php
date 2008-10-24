@@ -60,6 +60,11 @@ $aliases['hr'] = array(
 	'ImportUsers' => array( 'Uvezi_suradnike' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
+$aliases['hsb'] = array(
+	'ImportUsers' => array( 'Wužiwarjow importować' ),
+);
+
 /** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
 	'ImportUsers' => array( 'EnpòteItlizatè' ),
