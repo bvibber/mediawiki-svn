@@ -171,12 +171,8 @@ function efSelectNotice( $centralnotice_table ) {
 
 	$dbr = wfGetDB( DB_SLAVE );
 	$timestamp = wfTimestampNow();
-	$res = $dbr->select( $centralnotice_table, "notice_id", array ( "notice_start_date <= '$timestamp'", "notice_end_date >= '$timestamp'", "notice_enabled = 'Y'", "notice_language = '$wgNoticeLang'", "notice_project = '$wgNoticeProject'")); 
-	if ( $dbr->numRows( $res > 1 )) {
-		//notice overlap! not returning anything for safety
-		return;
-	}
-	else {
+	$res = $dbr->select( $centralnotice_table, 'notice_id', array ( "notice_start_date <= '$timestamp'", "notice_end_date >= '$timestamp'", "notice_enabled = 'Y'", "notice_language = '$wgNoticeLang'", "notice_project = '$wgNoticeProject'")); 
+	if ( $dbr->numRows( $res ) == 1) {
 		$row = $dbr->fetchObject( $res );
 		return $row->notice_id;
 	}

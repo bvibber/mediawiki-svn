@@ -28,8 +28,8 @@ class SpecialNoticeTemplate extends SpecialPage {
 
 
 		if ( $wgRequest->wasPosted() ) {
-			$body = file_get_contents('php://input');
-			$wgOut->addHtml("Body of post: $body");
+			//$body = file_get_contents('php://input');
+			//$wgOut->addHtml("Body of post: $body");
 
 			$toRemove = $wgRequest->getArray('removeTemplate');
 			if ( isset($toRemove) ){  
@@ -100,7 +100,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 	function templatesForm( $templates ) {
 		global $wgOut, $wgTitle;
 		
-		$table .= Xml::fieldset( 'Available Templates' );
+		$table  = Xml::fieldset( 'Available Templates' );
 		$table .= Xml::openElement( 'table', array ( 'id' => 'templates')) ; 
 		$templates = $this->queryTemplates();
 		foreach ( $templates as $templateName ) {
@@ -114,13 +114,13 @@ class SpecialNoticeTemplate extends SpecialPage {
 		$wgOut->addHtml( 
 			Xml::openElement( 'form', array(
                                 'method' => 'post',
-				'action' => SpecialPage::getTitleFor( 'NoticeTemplate' )->getFullUrl ) ) .
+				'action' => SpecialPage::getTitleFor( 'NoticeTemplate' )->getFullUrl() ) ) .
 			'<fieldset>' .
 		       Xml::element( 'legend', array(), wfMsg( 'centralnotice-add-template' ) ) .
 		       Xml::hidden( 'wpMethod', 'addTemplate' ) .
 		      '<p>' .
 		      Xml::inputLabel( wfMsg( 'centralnotice-template-name' ),
-			'templateName', 'templateName', 25, $this->mTemplateName) .
+			'templateName', 'templateName', 25) .
 		      '</p>' .
 		      '<p>' . 
 		      Xml::textarea( 'templateBody', '', 60, 20) .
@@ -168,7 +168,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 		}
 		else {
 			 $dbw = wfGetDB( DB_MASTER );
-			 $res = $dbw->insert( $centralnotice_table, array( template_name => "$templateName"));
+			 $res = $dbw->insert( $centralnotice_table, array( 'template_name' => "$templateName"));
 			 
 			 //perhaps these should move into the db as blob
 			 $templatePage = "Centralnotice-" . "template-" . "$templateName";

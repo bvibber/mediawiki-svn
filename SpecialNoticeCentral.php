@@ -104,13 +104,14 @@ class CentralNotice extends SpecialPage
 			$start_day        = $wgRequest->getVal('start_day');
 			$start_month      = $wgRequest->getVal('start_month');
 			$start_year       = $wgRequest->getVal('start_year');
+			$start_hour       = $wgRequest->getVal('start_hour');
 			$project_name     = $wgRequest->getVal('project_name');
 			$project_language = $wgRequest->getVal('wpUserLanguage');
 			if ( $noticeName == '') {
 				$wgOut->addHtml("Can't add a null string");
 			}
 			else {
-				$this->addNotice( $noticeName, 'N', $start_year, $start_month, $start_day, $project_name, $project_language );
+				$this->addNotice( $noticeName, 'N', $start_year, $start_month, $start_day, $start_hour, $project_name, $project_language );
 			}
 		}
 		if ( $method == 'removeNotice' ) {
@@ -141,7 +142,7 @@ class CentralNotice extends SpecialPage
 	private function updateEnabled( $update_notice, $enabled) {
 		 $centralnotice_table = "central_notice_campaign";
 		 $dbw = wfGetDB( DB_MASTER );
-		 $res = $dbw->update($centralnotice_table, array( notice_enabled => $enabled ), array( notice_name => $update_notice));
+		 $res = $dbw->update($centralnotice_table, array( 'notice_enabled' => $enabled ), array( 'notice_name' => $update_notice));
 	}
 
 	static public function printHeader() {
@@ -193,7 +194,7 @@ class CentralNotice extends SpecialPage
 					     ''
 				 	   );
 		}
-  		$table .= "<form name='centranoticeform' id='centralnoticeform' action=\"$action\" method='post'>"; 
+  		$table  = "<form name='centranoticeform' id='centralnoticeform' method='post'>"; 
 		$table .= "<fieldset><legend>" . wfMsgHtml( "centralnotice-manage" ) . "</legend>";
 		$table .= "<table cellpadding=\"9\">";
 		$table .= "<tr><th colspan = \"9\"></th></tr>"; 
@@ -223,8 +224,6 @@ class CentralNotice extends SpecialPage
 			$end_month = substr( $end_timestamp, 4, 2);
 			$end_day = substr( $end_timestamp, 6, 2);
 
-			$greg_days = array( 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
-	
 			$years = range( 2007, 2012);
 			$months = range( 1, 12 );
 			$months = array_map( array( $this, 'addZero'), $months );  
@@ -259,10 +258,10 @@ class CentralNotice extends SpecialPage
 		$current_year  = date( 'o' );
 		$action = "addNotice";
 
-		global $wgNoticeProject,$wgNoticeLang;
+		global $wgNoticeProject,$wpUserLang;
 
-		list( $sLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
-		$languagebar .= $this->tableRow( $lsLabel, $lsSelect) ;
+		list( $lsLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
+		$languagebar = $this->tableRow( $lsLabel, $lsSelect) ;
 
 		$wgOut->addHtml( 
 			Xml::openElement( 'form', array(
@@ -274,7 +273,7 @@ class CentralNotice extends SpecialPage
 		       Xml::hidden( 'method', $action ) .
 		      '<p>' .
 		      Xml::inputLabel( wfMsg( 'centralnotice-notice-name' ),
-			'noticeName', 'noticeName', 25, $this->mNoticeName) .
+			'noticeName', 'noticeName', 25) .
 		      " " . Xml::label( wfMsg('centralnotice-start-date'), 'start-date') . ": " .
 		      Xml::listDropDown( 'start_month', $this->dropDownList( wfMsg( 'centralnotice-month'), $months ), '', $current_month, '', 6 ) .
 		      Xml::listDropDown( 'start_day',  $this->dropDownList( wfMsg( 'centralnotice-day'), $days ), '', $current_day, '', 7 )  .
@@ -399,10 +398,11 @@ class CentralNotice extends SpecialPage
 
 	}
 
-	function addNotice( $noticeName, $enabled, $start_year, $start_month, $start_day, $project_name, $project_language ) { 
+	function addNotice( $noticeName, $enabled, $start_year, $start_month, $start_day, $start_hour, $project_name, $project_language ) { 
 		global $wgOut;
 		$dbr = wfGetDB( DB_SLAVE );
 		$centralnotice_table = 'central_notice_campaign';
+		$start_hour = substr( $start_hour, 0 , 2 );
 		
 		$eNoticeName = mysql_real_escape_string( $noticeName ) ;
 		$res = $dbr->select( $centralnotice_table, 'notice_name', "notice_name = '$eNoticeName' " );
@@ -412,7 +412,10 @@ class CentralNotice extends SpecialPage
 		}
 		else {
 			$dbw = wfGetDB( DB_MASTER );
-			$start_date = wfTimeStamp( TS_MW, $start_year . $start_month . $start_day . $start_hour . "000000");
+			$wgOut->addHtml("$start_year $start_month $start_day $start_hour");
+			$start_date = wfTimeStamp( TS_MW, $start_year . ":" .  $start_month . ":" . $start_day . " " . $start_hour . ":00" . ":00");
+			$wgOut->addHtml("start date is $start_date");
+			$wgOut->addHtml("start hour is $start_hour");
 			if ( $start_month == 12) {
 				$end_month = '01'; 
 				$end_year = ($start_year + 1);
@@ -421,13 +424,13 @@ class CentralNotice extends SpecialPage
 				$end_month = (substr ( $start_month, 0, 1)) == 0 ? 0 . (intval($start_month) + 1) : ($start_month + 1);  
 				$end_year = $start_year;
 			}
-			$end_date =  wfTimeStamp( TS_MW,  $end_year . $end_month . $start_day . $start_hour . "000000");
+			$end_date =  wfTimeStamp( TS_MW,  $end_year . ":" . $end_month . ":" . $start_day . " " . $start_hour . ":00" . ":00");
 			$res = $dbr->select( $centralnotice_table, 'notice_name', array ( "notice_start_date >= '$start_date'", "notice_end_date <= '$end_date'", "notice_project = '$project_name'", "notice_language = '$project_language'") );
 			if ( $dbr->numRows( $res ) > 0 ) {
 				$wgOut->addHtml( wfMsg( 'centralnotice-overlap'));
 			}
 			else {	
-				$res = $dbw->insert( $centralnotice_table, array( notice_name => "$noticeName", notice_enabled => "$enabled", notice_start_date => "$start_date" , notice_end_date => "$end_date", notice_project => $project_name, notice_language => $project_language));
+				$res = $dbw->insert( $centralnotice_table, array( 'notice_name' => "$noticeName", 'notice_enabled' => "$enabled", 'notice_start_date' => "$start_date" , 'notice_end_date' => "$end_date", 'notice_project' => $project_name, 'notice_language' => $project_language));
 			}
 			return;
 		}
@@ -452,8 +455,8 @@ class CentralNotice extends SpecialPage
 		else {
 			 $dbw = wfGetDB( DB_MASTER );
 			 $noticeId = htmlspecialchars($this->getNoticeId( $noticeName ));
-			 $res = $dbw->delete( "central_notice_template_assignments",  array ( campaign_id => $noticeId)); 
-			 $res = $dbw->delete( $centralnotice_table, array ( notice_name => "$noticeName"));
+			 $res = $dbw->delete( "central_notice_template_assignments",  array ( 'campaign_id' => $noticeId)); 
+			 $res = $dbw->delete( $centralnotice_table, array ( 'notice_name' => "$noticeName"));
 			 return;
 		}
 	}
@@ -476,7 +479,7 @@ class CentralNotice extends SpecialPage
 		else {
 			$dbw = wfGetDB( DB_MASTER );
 			$noticeId = $this->getNoticeId( $eNoticeName );
-			$res = $dbw->insert($centralnotice_table, array( template_id => $templateId, template_weight => $eWeight, campaign_id => $noticeId));
+			$res = $dbw->insert($centralnotice_table, array( 'template_id' => $templateId, 'template_weight' => $eWeight, 'campaign_id' => $noticeId));
 		}
 	}
 
@@ -504,7 +507,7 @@ class CentralNotice extends SpecialPage
 		$dbw = wfGetDB( DB_MASTER );
 		$noticeId = $this->getNoticeId( $noticeName );
 		$templateId = $this->getTemplateId( $templateName );
-		$res = $dbw->delete( $centralnotice_table, array ( template_id => "$templateId", campaign_id => $noticeId));
+		$res = $dbw->delete( $centralnotice_table, array ( 'template_id' => "$templateId", 'campaign_id' => $noticeId));
 	}
 
 	function updateNotice ( $noticeName, $startDate, $endDate , $enabled) {
@@ -516,34 +519,34 @@ class CentralNotice extends SpecialPage
 		}
 		else {
 			$dbw = wfGetDB( DB_MASTER );
-			$res = $dbw->update( $centralnotice_table, array( notice_start_date => $startDate, notice_end_Date => $endDate, notice_enabled => $enabled), "notice_name = '$noticeName'");
+			$res = $dbw->update( $centralnotice_table, array( 'notice_start_date' => $startDate, 'notice_end' => $endDate, notice_enabled => $enabled), "notice_name = '$noticeName'");
 		}
 	}
 	
 	function updateStartDate ( $noticeName, $startDate ) {
 		$centralnotice_table = 'central_notice_campaign';
    	        $dbw = wfGetDB( DB_MASTER );
-		$res = $dbw->update( $centralnotice_table, array( notice_start_date => $startDate), array( notice_name => $noticeName));
+		$res = $dbw->update( $centralnotice_table, array( 'notice_start_date' => $startDate), array( 'notice_name' => $noticeName));
 	}
 	
 	
 	function updateEndDate ( $noticeName, $endDate ) {
 		$centralnotice_table = 'central_notice_campaign';
    	        $dbw = wfGetDB( DB_MASTER );
-		$res = $dbw->update( $centralnotice_table, array( notice_end_date => $endDate), array( notice_name => $noticeName));
+		$res = $dbw->update( $centralnotice_table, array( 'notice_end_date' => $endDate), array( 'notice_name' => $noticeName));
 	}
 
 	function updateLock ( $noticeName, $isLocked ) {
 		global $wgOut;
 		$centralnotice_table = 'central_notice_campaign';
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( $centralnotice_table, notice_name, "notice_name = '$noticeName'" );
+		$res = $dbr->select( $centralnotice_table, 'notice_name', "notice_name = '$noticeName'" );
 		if ($dbr->numRows( $res ) < 1) {
 			$wgOut->addHTML( wfMsg( 'centralnotice-doesnt-exist'));
 		}
 		else {
 			$dbw = wfGetDB( DB_MASTER );
-			$res = $dbw->update( $centralnotice_table, array( notice_locked => $isLocked ), array( notice_name => $noticeName));
+			$res = $dbw->update( $centralnotice_table, array( 'notice_locked' => $isLocked ), array( 'notice_name' => $noticeName));
 		}
 	}	
 	
@@ -552,7 +555,7 @@ class CentralNotice extends SpecialPage
 		 $dbw = wfGetDB( DB_MASTER );
 		 $noticeId = $this->getNoticeId( $noticeName );
   		 $templateId = $this->getTemplateId( $templateName );
-		 $res = $dbw->update( $centralnotice_table, array ( template_weight => $weight ), array( template_id => $templateId, campaign_id => $noticeId));
+		 $res = $dbw->update( $centralnotice_table, array ( 'template_weight' => $weight ), array( 'template_id' => $templateId, 'campaign_id' => $noticeId));
 	}
 	
 	function dropDownList ( $text, $values ) {

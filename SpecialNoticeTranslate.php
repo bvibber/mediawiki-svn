@@ -75,21 +75,31 @@ class SpecialNoticeTranslate extends SpecialPage
 		foreach( $requiredFields as $field) {
 			$message = "Centralnotice-" . "$field" . "/" . $wpUserLang;
 			$title = Title::newFromText( $message, NS_MEDIAWIKI );
-			$text = $title->exists() ? wfMsgExt( "centralnotice-$field", array ( language => $wpUserLang ) ) : '';  // only load text if a message exists to avoild default english text display
-			$table .= "<tr><td>". "$field/en" . "</td>";
-			$table .= "<td>" . wfMsgExt( "centralnotice-$field", array ( language => 'en') ) . "</td>";
+			$text = $title->exists() ? wfMsgExt( "centralnotice-$field", array ( 'language' => $wpUserLang ) ) : '';  // only load text if a message exists to avoild default english text display
+			$table .= "<tr><td>". "$field" . "</td>";
+			$table .= "<td>" . wfMsgExt( "centralnotice-$field", array ( 'language' => 'en') ) . "</td>";
 			if ( $text ) {
-				$table .= "<td>". "$field/$wpUserLang" . "</td>";
+				if ( $wpUserLang == 'en' ) {
+					$table .= "<td>" . "$field" . "</td>";
+				}
+				else {
+					$table .= "<td>". "$field/$wpUserLang" . "</td>";
+				}
 			}
 			else {
-				$table .= "<td>" . "<font color=\"red\">" . "$field/$wpUserLang" . "</td>";
+				if ( $wpUserLang == 'en' ) {
+					$table .= "<td>" . "<font color=\"red\">" . "$field" . "</td>";
+				}
+				else {
+					$table .= "<td>" . "<font color=\"red\">" . "$field/$wpUserLang" . "</td>";
+				}
 			}  		
 			$table .= "<td>" . Xml::input( "updateText[$wpUserLang][$field]", 80, $text) . "</td></tr>";
 		}
-		$table .= Xml::hidden( token, $token );
-		$table .= Xml::hidden( wpUserLanguage, $wpUserLang ); //keep track of set language
-		$table .= "<tr><td>" . Xml::submitButton( wfMsg('centralnotice-modify', array( name => 'update'))) . "</td>" . 
-			      "<td>" . Xml::submitButton( wfMsg('centralnotice-preview-template'), array( name => 'preview')) . "</td></tr>";
+		$table .= Xml::hidden( 'token', $token );
+		$table .= Xml::hidden( 'wpUserLanguage', $wpUserLang ); //keep track of set language
+		$table .= "<tr><td>" . Xml::submitButton( wfMsg('centralnotice-modify', array( 'name' => 'update'))) . "</td>" . 
+			      "<td>" . Xml::submitButton( wfMsg('centralnotice-preview-template'), array( 'name' => 'preview')) . "</td></tr>";
 		$table .= "</table></fieldset>";
 		$table .= "</form>";
 
@@ -97,7 +107,7 @@ class SpecialNoticeTranslate extends SpecialPage
 		
 		$form = "<form name='translatelang' id='translatelang' method='post'>";
 		$form .= "<fieldset><legend>" . wfMsgHtml( "centralnotice-change-lang" ) . "</legend>";
-		list( $sLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
+		list( $lsLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
 		$form .= $this->tableRow( $lsLabel, $lsSelect) ;
 		$form .= "<p><p>" . Xml::submitButton( wfMsgHtml('centralnotice-modify'));
 		$form .= "</fieldset>";
@@ -115,7 +125,7 @@ class SpecialNoticeTranslate extends SpecialPage
 	private function updateMessage( $text, $translation, $lang, $token ) {
 		global $wgUser;
 
-		$saveTo = "Centralnotice-" . $text . "/$lang";
+		$saveTo = ( $lang == 'en' ) ? "Centralnotice-" . $text : "Centralnotice-" . $text . "/$lang";
 		
 		$title = Title::newFromText( $saveTo, NS_MEDIAWIKI );
 		$article = new Article( $title );	
