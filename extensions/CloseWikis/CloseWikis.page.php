@@ -41,7 +41,8 @@ class SpecialCloseWiki extends SpecialPage {
 		}
 
 		$this->closeForm();
-		$this->reopenForm();
+		if( CloseWikis::getList() )
+			$this->reopenForm();
 	}
 
 	protected function buildSelect( $list, $name, $default = '' ) {
@@ -66,7 +67,7 @@ class SpecialCloseWiki extends SpecialPage {
 			if( !in_array( $wiki, $wgLocalDatabases ) ) {
 				$status = wfMsgExt( 'closewikis-page-err-nowiki', 'parseinline' );
 			} else {
-				$statusOK = $this->doClose( $wiki, $dreason );
+				$statusOK = CloseWikis::close( $wiki, $dreason, $wgUser );
 				if( $statusOK ) {
 					$status = wfMsgExt( 'closewikis-page-close-success', 'parseinline' );
 					$logpage = new LogPage( 'closewiki' );
@@ -92,7 +93,7 @@ class SpecialCloseWiki extends SpecialPage {
 			$statusStyle = $statusOK ? 'success' : 'error';
 			$wgOut->addHTML( "<p><strong class=\"{$statusStyle}\">{$status}</strong></p>" );
 		}
-		$wgOut->addHTML( '<form method="post" action="' . $wgTitle->getLocalURL() . '">' );
+		$wgOut->addHTML( '<form method="post" action="' . htmlspecialchars( $wgTitle->getLocalURL() ) . '">' );
 		$form = array();
 		$form['closewikis-page-close-wiki'] = $this->buildSelect( CloseWikis::getUnclosedList(), 'wpcWiki', $defaultWiki );
 		$form['closewikis-page-close-dreason'] = Xml::textarea( 'wpcDisplayReason', $defaultDisplayReason );
@@ -100,25 +101,6 @@ class SpecialCloseWiki extends SpecialPage {
 		$wgOut->addHTML( Xml::buildForm( $form, 'closewikis-page-close-submit' ) );
 		$wgOut->addHTML( Xml::hidden( 'wpcEdittoken', $wgUser->editToken() ) );
 		$wgOut->addHTML( "</form></fieldset>" );
-	}
-
-	public function doClose( $wiki, $dispreason ) {
-		global $wgMemc;
-		$dbw = CloseWikis::getMasterDB();
-		$dbw->begin();
-		$dbw->insert(
-			'closedwikis',
-			array(
-				'cw_wiki' => $wiki,
-				'cw_reason' => $dispreason,
-			),
-			__METHOD__,
-			array( 'IGNORE' )	// Better error handling
-		);
-		$result = (bool)$dbw->affectedRows();
-		$dbw->commit();
-		$wgMemc->delete( 'closedwikis' );
-		return $result;
 	}
 
 	protected function reopenForm() {
@@ -133,7 +115,7 @@ class SpecialCloseWiki extends SpecialPage {
 			if( !in_array( $wiki, $wgLocalDatabases ) ) {
 				$status = wfMsgExt( 'closewikis-page-err-nowiki', 'parseinline' );
 			} else {
-				$statusOK = $this->doReopen( $wiki );
+				$statusOK = CloseWikis::reopen( $wiki );
 				if( $statusOK ) {
 					$status = wfMsgExt( 'closewikis-page-reopen-success', 'parseinline' );
 					$logpage = new LogPage( 'closewiki' );
@@ -155,27 +137,14 @@ class SpecialCloseWiki extends SpecialPage {
 			$statusStyle = $statusOK ? 'success' : 'error';
 			$wgOut->addHTML( "<p><strong class=\"{$statusStyle}\">{$status}</strong></p>" );
 		}
-		$wgOut->addHTML( '<form method="post" action="' . $wgTitle->getLocalURL() . '">' );
+		$wgOut->addHTML( '<form method="post" action="' . htmlspecialchars( $wgTitle->getLocalURL() ) . '">' );
 		$form = array();
-		$form['closewikis-page-reopen-wiki'] = $this->buildSelect( array_keys( CloseWikis::getList() ), 'wprWiki', $defaultWiki );
+		$form['closewikis-page-reopen-wiki'] = $this->buildSelect( CloseWikis::getList(), 'wprWiki', $defaultWiki );
 		$form['closewikis-page-reopen-reason'] = Xml::input( 'wprReason', false, $defaultReason );
 		$wgOut->addHTML( Xml::buildForm( $form, 'closewikis-page-reopen-submit' ) );
 		$wgOut->addHTML( Xml::hidden( 'wprEdittoken', $wgUser->editToken() ) );
 		$wgOut->addHTML( "</form></fieldset>" );
 	}
 
-	public function doReopen( $wiki ) {
-		global $wgMemc;
-		$dbw = CloseWikis::getMasterDB();
-		$dbw->begin();
-		$dbw->delete(
-			'closedwikis',
-			array( 'cw_wiki' => $wiki ),
-			__METHOD__
-		);
-		$result = (bool)$dbw->affectedRows();
-		$dbw->commit();
-		$wgMemc->delete( 'closedwikis' );
-		return $result;
-	}
+
 }

@@ -12,7 +12,6 @@ $messages = array();
 $messages['en'] = array(
 	'closewikis-desc'           => 'Allows to close wiki sites in wiki farms',
 	'closewikis-closed'         => '$1',
-	'closewikis-closed-default' => 'This wiki is closed',
 	'closewikis-page'           => 'Close wiki',
 
 	'closewikis-page-close' => 'Close wiki',
@@ -30,11 +29,19 @@ $messages['en'] = array(
 	'closewikis-page-err-closed' => 'Wiki is already closed',
 	'closewikis-page-err-opened' => 'Wiki is not closed',
 
+	'closewikis-list'                   => 'Closed wikis list',
+	'closewikis-list-intro'             => 'This list contains wikis which were closed by stewards.',
+	'closewikis-list-header-wiki'       => 'Wiki',
+	'closewikis-list-header-by'         => 'Closer',
+	'closewikis-list-header-timestamp'  => 'Closure time',
+	'closewikis-list-header-dispreason' => 'Displayed reason',
+
 	'closewikis-log'         => 'Wikis closure log',
 	'closewikis-log-header'  => 'Here is a log of all wiki closures and reopenings made by stewards',
 	'closewikis-log-close'   => 'closed $2',
 	'closewikis-log-reopen'  => 'reopened $2',
 	'right-editclosedwikis'  => 'Edit closed wikis',
+	'right-closewikis'       => 'Close wikis',
 );
 
 /** Message documentation (Message documentation)
