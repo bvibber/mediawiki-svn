@@ -1,0 +1,6 @@
+Dependancies: 
+	mwclient: svn co http:// mwclient.svn.sourceforge.net/viewvc/mwclient/trunk/mwclient/
+	irclib: http://downloads.sourceforge.net/python-irclib/python-irclib-0.4.6.tar.gz?modtime=1135442433&big_mirror=0
+
+for HTTPS sites one needs to change http.py in mwclient to assign
+HTTPSPersistentCnnection to pool, instead of HTTPPersistentConnection
