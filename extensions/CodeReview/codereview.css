@@ -63,11 +63,6 @@ table.mw-codereview-meta td {
 }
 
 /* Diffs */
-.mw-codereview-diff {
-	max-width:100%;
-	overflow:auto;
-}
-
 .mw-codereview-diff ins {
 	text-decoration: none;
 	color: green;
