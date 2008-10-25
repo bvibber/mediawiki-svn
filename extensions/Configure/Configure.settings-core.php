@@ -238,7 +238,6 @@ $settings = array(
 			'wgNamespaceProtection' => 'array',
 			'wgNamespaceRobotPolicies' => 'array',
 			'wgNamespacesToBeSearchedDefault' => 'array',
-			'wgNamespacesToBeSearchedProject' => 'array',
 			'wgNamespacesWithSubpages' => 'array',
 			'wgNoFollowNsExceptions' => 'array',
 			'wgNonincludableNamespaces' => 'array',
@@ -755,7 +754,6 @@ $arrayDefs = array(
 	'wgNamespaceProtection' => 'ns-array',
 	'wgNamespaceRobotPolicies' => 'ns-text',
 	'wgNamespacesToBeSearchedDefault' => 'ns-bool',
-	'wgNamespacesToBeSearchedProject' => 'ns-bool',
 	'wgNamespacesWithSubpages' => 'ns-bool',
 	'wgNoFollowNsExceptions' => 'ns-text',
 	'wgNonincludableNamespaces' => 'ns-simple',
@@ -1189,7 +1187,6 @@ $settingsVersion = array(
 	'wgEdititis' => array( array( '1.14alpha', '>=' ) ),
 	'wgMaxAnimatedGifArea' => array( array( '1.14alpha', '>=' ) ),
 	'wgMaxShellTime' => array( array( '1.14alpha', '>=' ) ),
-	'wgNamespacesToBeSearchedProject' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
