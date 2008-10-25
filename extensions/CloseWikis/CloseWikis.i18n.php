@@ -32,8 +32,8 @@ $messages['en'] = array(
 	'closewikis-list'                   => 'Closed wikis list',
 	'closewikis-list-intro'             => 'This list contains wikis which were closed by stewards.',
 	'closewikis-list-header-wiki'       => 'Wiki',
-	'closewikis-list-header-by'         => 'Closer',
-	'closewikis-list-header-timestamp'  => 'Closure time',
+	'closewikis-list-header-by'         => 'Closed by',
+	'closewikis-list-header-timestamp'  => 'Closed on',
 	'closewikis-list-header-dispreason' => 'Displayed reason',
 
 	'closewikis-log'         => 'Wikis closure log',
