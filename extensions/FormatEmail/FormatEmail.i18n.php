@@ -8,7 +8,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'email-desc'   => 'Allows custom headers/footers to be added to user to user e-mails',
+	'email-desc'   => 'Allows custom headers/footers to be added to user e-mails',
 	'email_header' => '', # do not translate or duplicate this message to other languages
 	'email_footer' => '----------------------------------------------------------------------------
 This e-mail has been sent to you through the {{SITENAME}} e-mail system by $1.
