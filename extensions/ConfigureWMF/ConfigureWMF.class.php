@@ -49,7 +49,9 @@ class ConfigureWMF {
 		global $IP;
 
 		// No Setup.php yet. Initialise everything by ourselves
+		require_once( $IP . '/includes/GlobalFunctions.php' );
 		require_once( $IP . '/includes/ObjectCache.php' );
+		
 		$wgMemc = wfGetMainCache();
 
 		// Caching not yet working
