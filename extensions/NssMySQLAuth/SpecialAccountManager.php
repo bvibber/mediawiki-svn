@@ -188,12 +188,25 @@ class SpecialAccountManager extends SpecialPage {
 		global $wgAuth;
 		$password = $wgAuth->createAccount($username, $options);
 		
-		$user = UserProps::loadFromDb( $username );
-		if ( !$user ) {
+		$userprops = UserProps::loadFromDb( $username );
+		if ( !$userprops ) {
 			$this->mErrors[] = 'nss-db-error';
 			return false;
 		}
-		$this->users[$user->getName()] = $user;
+		$this->users[$userprops->getName()] = $userprops;
+		
+		global $wgPasswordSender;
+		$email = wfMsg( 'nss-welcome-mail', $username, $password );
+		$mailSubject = wfMsg( 'nss-welcome-mail-subject' );
+		$mailFrom = new MailAddress( $wgPasswordSender );
+		$mailTo = new MailAddress( User::newFromName( $username ) );
+		
+		$mailResult = UserMailer::send( $mailTo, $mailFrom, $mailSubject, $email );
+		
+		if ( WikiError::isError( $mailResult ) ) {
+			$this->mErrors[] = $mailResult->getMessage();
+			return false;
+		}
 		
 		return true;
 	}
