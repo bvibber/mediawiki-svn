@@ -5,7 +5,7 @@ class SpecialAccountManager extends SpecialPage {
 		parent::__construct( 'AccountManager', 'accountmanager', false );
 		$this->mErrors = array();
 	}
-	
+
 	function execute() {
 		global $wgUser;
 		if( !$this->userCanExecute( $wgUser ) )
@@ -18,16 +18,16 @@ class SpecialAccountManager extends SpecialPage {
 			$this->showSuccess();
 		if( $this->processCreateAccount() === true )
 			$this->showSuccessCreate();
-			
+
 		$this->showErrors();
-			
+
 		$this->constructForm();
 		$this->constructCreateForm();
 	}
 
 	function showSuccess() {
 		global $wgOut;
-		$wgOut->addHTML( Xml::element('p', array(), 'Your changes have been successfully updated' ) );
+		$wgOut->addHTML( Xml::element('p', array(), wfMsg( 'am-updated' ) ) );
 	}
 	function showSuccessCreate() {
 		return $this->showSuccess();
@@ -49,7 +49,7 @@ class SpecialAccountManager extends SpecialPage {
 			"</th><th>".wfMsgHtml( 'am-active' )."</th>");
 		foreach( $wgUserProperties as $i ) {
 			$msg = 'am-'.$i;
-			$wgOut->addHTML( Xml::element( 'th', null, 
+			$wgOut->addHTML( Xml::element( 'th', null,
 				wfEmptyMsg( $msg, wfMsg( $msg ) ) ? $i : wfMsgHtml( $msg ) ) );
 		}
 		$wgOut->addHTML("</tr>\n\n");
@@ -68,14 +68,14 @@ class SpecialAccountManager extends SpecialPage {
 			$props = $user->getProps();
 			foreach( $wgUserProperties as $key ) {
 				$value = isset( $props[$key] ) ? $props[$key] : '';
-				$row .= "<td>".Xml::input( 
+				$row .= "<td>".Xml::input(
 						"am-{$name}-{$key}", 40, $value
 					)."</td>";
 			}
 			$row .= "</tr>\n";
 			$wgOut->addHTML( $row );
 		}
-		
+
 		$wgOut->addHTML( "</table>\n" );
 		$wgOut->addHTML( "<div id=\"userprops-submit\">\n".
 			Xml::hidden( 'action', 'submit' ).
@@ -83,10 +83,10 @@ class SpecialAccountManager extends SpecialPage {
 				'type' => 'submit',
 				'value' => wfMsg( 'nss-save-changes' )
 			) ).
-			"</div>\n</form>" 
+			"</div>\n</form>"
 		);
 	}
-	
+
 	function constructCreateForm() {
 		global $wgOut, $wgScript;
 		global $wgUserProperties, $wgActivityModes;
@@ -95,11 +95,11 @@ class SpecialAccountManager extends SpecialPage {
 			'action' => $this->getTitle()->getLocalURL(),
 			'method' => 'post' )
 		) );
-		
+
 		$wgOut->addHTML( Xml::element( 'h2', null, wfMsg( 'nss-create-account-header' ) )."\n" );
 
 		$wgOut->addHTML( "<table border=\"1\" id=\"newuser\">\n" );
-		
+
 		$props = array_merge( array( 'username', 'email' ), $wgUserProperties );
 		foreach( $props as $i ) {
 			$msg = 'am-'.$i;
@@ -109,7 +109,7 @@ class SpecialAccountManager extends SpecialPage {
 				"</td></tr>\n"
 			 );
 		}
-		
+
 		global $wgActivityModes;
 		$select = new XmlSelect( "am-active" );
 		$select->setDefault( 'active' );
@@ -118,7 +118,7 @@ class SpecialAccountManager extends SpecialPage {
 				$select->addOption( $key );
 		$wgOut->addHTML( "\t<tr><th>".wfMsgHtml( 'am-active' ).
 			"</th><td>".$select->getHTML()."</td></tr>\n" );
-		
+
 		$wgOut->addHTML( "</table>\n" );
 		$wgOut->addHTML( "<div id=\"newaccount-submit\">\n".
 			Xml::hidden( 'action', 'create' ).
@@ -126,8 +126,8 @@ class SpecialAccountManager extends SpecialPage {
 				'type' => 'submit',
 				'value' => wfMsg( 'nss-create-account' )
 			) ).
-			"</div>\n</form>" 
-		);		
+			"</div>\n</form>"
+		);
 	}
 
 	function processData() {
@@ -145,13 +145,13 @@ class SpecialAccountManager extends SpecialPage {
 
 			$username = strtolower( $parts[1] );
 			$keyname = strtolower( $parts[2] );
-		
+
 			if( !isset( $this->users[$username] ) )
 				continue;
 
 			if( !in_array( $keyname, $wgUserProperties ) )
 				continue;
-			
+
 			$this->users[$username]->set( $keyname, $value );
 		}
 
@@ -159,14 +159,14 @@ class SpecialAccountManager extends SpecialPage {
 			$user->update();
 		return true;
 	}
-	
+
 	function processCreateAccount() {
 		global $wgRequest, $wgUserProperties;
 		if( !$wgRequest->wasPosted() || $wgRequest->getVal('action') != 'create' )
 			return;
 
 		$options = array();
-		
+
 		$post = $wgRequest->getValues();
 		foreach( $post as $key => $value ) {
 			if( substr( $key, 0, 3 ) != 'am-' )
@@ -179,22 +179,22 @@ class SpecialAccountManager extends SpecialPage {
 			$options[$keyname] = $value;
 		}
 		if( empty( $options['username'] ) ) {
-			$this->mErrors[] = 'noname'; 
+			$this->mErrors[] = 'noname';
 			return false;
 		}
 		$username = $options['username'];
 		unset( $options['username'] );
-		
+
 		global $wgAuth;
 		$password = $wgAuth->createAccount($username, $options);
-		
+
 		$userprops = UserProps::loadFromDb( $username );
 		if ( !$userprops ) {
 			$this->mErrors[] = 'nss-db-error';
 			return false;
 		}
 		$this->users[$userprops->getName()] = $userprops;
-		
+
 		global $wgPasswordSender;
 		$email = wfMsg( 'nss-welcome-mail', $username, $password );
 		$mailSubject = wfMsg( 'nss-welcome-mail-subject' );
@@ -210,13 +210,13 @@ class SpecialAccountManager extends SpecialPage {
 		
 		return true;
 	}
-	
+
 	function showErrors() {
 		if ( !$this->mErrors )
 			return;
 		global $wgOut;
 		foreach( $this->mErrors as $error )
-			$wgOut->addHTML( 
+			$wgOut->addHTML(
 				Xml::element( 'p',
 					array( 'class' => 'error' ),
 					wfMsg( $error )
@@ -240,11 +240,11 @@ class UserProps {
 	static function loadFromDb( $username ) {
 		$res = self::select( $username );
 		$row = $res->fetchObject();
-		if ( !$row ) 
+		if ( !$row )
 			return false;
 		return new self( $row->pwd_name, $row->pwd_email, $row->pwd_active );
 	}
-	
+
 	function __construct( $username, $email = null, $active = null ) {
 		$this->username = $username;
 		$this->props = array();
@@ -267,7 +267,7 @@ class UserProps {
 		return $this->active;
 	}
 	function setActive( $active ) {
-		$this->active = $active; 
+		$this->active = $active;
 	}
 
 	static function select($username = null) {
@@ -278,7 +278,7 @@ class UserProps {
 		return $dbr->select(
 			array( 'user_props', 'passwd' ),
 			array( 'up_name', 'up_value', 'pwd_name', 'pwd_email', 'pwd_active' ),
-			$where, 
+			$where,
 			__METHOD__,
 			array( 'ORDER BY' => 'pwd_name ASC, up_timestamp ASC' ),
 			array( 'passwd' => array( 'RIGHT JOIN', 'pwd_name = up_user' ) )
@@ -301,7 +301,7 @@ class UserProps {
 		$diff = array_diff_assoc($this->props, $this->old_props);
 		if( !count( $diff ) ) return;
 
-		
+
 		global $wgAuth;
 		$dbw = $wgAuth->getDB( DB_WRITE );
 		$timestamp = $dbw->timestamp();
@@ -309,8 +309,8 @@ class UserProps {
 		if( isset( $diff['email'] ) || isset( $diff['active'] ) ) {
 			if ( isset( $diff['email'] ) ) $this->email = $diff['email'];
 			if ( isset( $diff['active'] ) ) $this->active = $diff['active'];
-			$dbw->update( 'passwd', 
-				array( 'pwd_email' => $this->email, 'pwd_active' => $this->active ), 
+			$dbw->update( 'passwd',
+				array( 'pwd_email' => $this->email, 'pwd_active' => $this->active ),
 				array( 'pwd_user' => $this->username ),
 				__METHOD__
 			);

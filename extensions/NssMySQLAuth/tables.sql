@@ -12,7 +12,7 @@ CREATE TABLE passwd (
 	pwd_shell varchar(255) default '/bin/sh',
 	pwd_active varchar(15) default 1,
 	pwd_email varchar(255) not null,
-	
+
 	PRIMARY KEY (pwd_uid),
 	UNIQUE INDEX (pwd_name)
 ) character set ascii collate ascii_general_ci;
@@ -21,7 +21,7 @@ CREATE TABLE groups (
 	grp_gid int not null,
 	grp_name varchar(255),
 	grp_password varchar(255) not null,
-	
+
 	PRIMARY KEY(grp_gid),
 	INDEX (grp_name)
 ) character set ascii collate ascii_general_ci;
@@ -29,7 +29,7 @@ CREATE TABLE groups (
 CREATE TABLE group_membership (
 	gm_user int not null,
 	gm_group varchar(255),
-	
+
 	PRIMARY KEY (gm_user, gm_group),
 	KEY (gm_group)
 ) character set ascii collate ascii_general_ci;
@@ -57,4 +57,3 @@ GRANT SELECT ON nss_auth.* TO `nss-root`@`localhost`;
 GRANT SELECT (pwd_uid, pwd_name, pwd_gid, pwd_home, pwd_shell, pwd_active) ON nss_auth.passwd TO `nss-user`@`localhost`;
 GRANT SELECT ON nss_auth.groups TO `nss-user`@`localhost`;
 GRANT SELECT ON nss_auth.group_membership TO `nss-user`@`localhost`;
-

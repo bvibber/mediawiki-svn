@@ -49,13 +49,13 @@ DESCRIPTION
 */
 
 class Md5crypt {
-	private static $itoa64 = './0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; 
+	private static $itoa64 = './0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
 	static function to64($v, $n) {
 		$ret = '';
-		
+
 		while(--$n >= 0) {
-			$ret .= self::$itoa64{$v & 0x3f};   
+			$ret .= self::$itoa64{$v & 0x3f};
 			$v = $v >> 6;
 		}
 		return $ret;
@@ -73,29 +73,29 @@ class Md5crypt {
 		} else {
 			$salt = '';
 			mt_srand((double)(microtime() * 10000000));
-			
+
 			while(strlen($salt) < 8) {
 				$salt .= self::$itoa64{mt_rand(0, strlen(self::$itoa64))};
 			}
 		}
-		
+
 		$ctx = $pw . $Magic . $salt;
-		
+
 		$final = pack('H*', md5($pw . $salt . $pw));
-		
+
 		for ($pl = strlen($pw); $pl > 0; $pl -= 16) {
 		   $ctx .= substr($final, 0, ($pl > 16) ? 16 : $pl);
 		}
-			
+
 		// Now the 'weird' xform
-		for($i = strlen($pw); $i; $i >>= 1) {   
+		for($i = strlen($pw); $i; $i >>= 1) {
 			if($i & 1) {			// This comes from the original version,
-				$ctx .= pack("C", 0);   // where a memset() is done to $final						
+				$ctx .= pack("C", 0);   // where a memset() is done to $final
 			} else {			// before this loop
 				$ctx .= $pw{0};
 			}
 		}
-		
+
 		$final = pack('H*', md5($ctx)); // The following is supposed to make
 						// things run slower
 
@@ -135,10 +135,10 @@ class Md5crypt {
 					|(intval(ord($final{9})) << 8)
 					|(intval(ord($final{15}))), 4);
 		$passwd .= self::to64((intval(ord($final{4}) << 16)
-					|(intval(ord($final{10})) << 8)						
+					|(intval(ord($final{10})) << 8)
 					|(intval(ord($final{5})))), 4);
 		$passwd .= self::to64((intval(ord($final{11}))), 2);
-		
+
 		// Return the final string
 		return $Magic . $salt . '$' . $passwd;
 	}

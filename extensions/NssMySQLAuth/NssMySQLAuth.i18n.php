@@ -1,14 +1,23 @@
 <?php
+/*
+ * Internationalization for NssMySQLAuth extension.
+ */
 
 $messages = array();
 
+/**
+ * English
+ * @author Bryan Tong Minh
+ */
 $messages['en'] = array(
 	'accountmanager' => 'Account manager',
 	
 	'am-username' 	=> 'username',
-	'am-email'		=> 'email',
+	'am-email' => 'e-mail',
 	'am-active' 	=> 'active',
-	
+	'am-updated' => 'Your changes have been saved successfully',
+
+	'nss-desc' => 'A plugin to authenticate against a libnss-mysql database. Contains an [[Special:AccountManager|account manager]]',
 	'nss-save-changes'	=> 'Save changes',
 	'nss-create-account-header'	=> 'Create new account',
 	'nss-create-account'	=> 'Create account',

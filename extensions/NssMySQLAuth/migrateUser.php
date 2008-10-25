@@ -25,7 +25,7 @@ function migrateUser( $username, $email ) {
 			'pwd_email' => $email
 		), __METHOD__ ) )
 		return false;
-	if ( false == $dbw->insert( 'user_props',  array( 
+	if ( false == $dbw->insert( 'user_props',  array(
 			'up_timestamp' => $dbw->timestamp(),
 			'up_user' => $username,
 			'up_name' => 'email',
