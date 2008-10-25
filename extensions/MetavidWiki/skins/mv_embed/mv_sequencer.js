@@ -10,7 +10,7 @@
  *
  * 
  * mv_sequencer.js 
- * 	is a basic embedable sequencer. 
+ * 	is a basic embeddable sequencer. 
  *  extends the playlist with drag/drop/sortable/add/remove functionality
  *  editing of annotative content (mostly for wiki)
  *  enables more dynamic layouts
@@ -19,14 +19,22 @@
  
 gMsg['menu_welcome']='Welcome';
 gMsg['menu_cliplib']='Resource Locator';
-gMsg['menu_transition']='Transitions';
-gMsg['menu_soundtrack']='Soundtrack';
+gMsg['menu_transition']='Transitions Effects';
+gMsg['menu_resource_overview']='Resource Overview';
+gMsg['menu_options']='Options';
+
+gMsg['loading_timeline']='Loading TimeLine <blink>...</blink>';
+
+gMsg['edit_clip']='Edit Clip';
+gMsg['edit_save']='Save Changes';
+gMsg['edit_cancel']='Cancel Edit';
+gMsg['edit_cancel_confirm']='Are you sure you want to cancel your edit, changes will be lost';
 		
 gMsg['zoom_in']='Zoom In';
 gMsg['zoom_out']='Zoom Out';
 gMsg['cut_clip']='Cut Clips';
 gMsg['expand_track']='Expand Track';
-gMsg['colapse_track']='Colapse Track';
+gMsg['colapse_track']='Collapse Track';
 gMsg['play_clip']='Play From Playline Position';
 gMsg['pixle2sec']='pixles to seconds';
 gMsg['rmclip']='Remove Clip';
@@ -49,16 +57,19 @@ var sequencerDefaultValues = {
 	plObj_clone:null,
 	
 	
-	timeline_scale:.25, //in pixel to second ratio ie 100pixles for every ~30seconds
+	timeline_scale:.125, //in pixel to second ratio ie 100pixles for every ~30seconds
 	timeline_duration:500, //default timeline length in seconds
 	playline_time:0,
 	track_thumb_height:60,
 	track_text_height:20,
+	
 	//possible options:block rendering?
-	// note some options will be lost in block rendering mode (like cutting clips etc) 	
-
-	timeline_mode:'time', //clip (imovie like) or timeline (finalCut like) 
-	 
+		
+	//default timeline mode: "clip" (i-movie like) or "time" (finalCut like) 
+	timeline_mode:'clip', 
+	
+	track_clipThumb_height:80, // how large are the i-movie type clips
+	
 	//Msg are all the language specific values ... 
 	// (@@todo overwrite by msg values preloaded in the page)	
 	//tack/clips can be pushed via json or inline playlist format
@@ -76,7 +87,14 @@ var mvSequencer = function(initObj) {
 };
 //set up the mvSequencer object
 mvSequencer.prototype = {			
-	plObj:null,	
+	plObj:null,
+	menu_items : {
+		'welcome':1,
+		'cliplib':0,
+		'transition':0,
+		'resource_overview':0,
+		'options':0
+	},	
 	init:function(initObj){	
 		//set the default values:
 		for(i in sequencerDefaultValues){
@@ -109,7 +127,6 @@ mvSequencer.prototype = {
 		//var vid_width=320;
 		//var vid_height=240+30;
 		
-		
 		//add the container divs (with basic layout ~universal~ 
 		$j('#'+this.sequence_container_id).html(''+
 			'<div id="'+this.video_container_id+'" style="position:absolute;right:0px;top:0px;' +
@@ -117,35 +134,24 @@ mvSequencer.prototype = {
 			'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
 				'left:0px;right:'+(this.video_width+10)+'px;top:0px;height:'+this.video_height+'px;border:solid thin black;"/>'+
 			'<div id="'+this.timeline_id+'" style="position:absolute;' + 
-				'left:0px;right:0px;top:'+(this.video_height+10)+'px;bottom:0px;border:solid thin red;"/>');
+				'left:0px;right:0px;top:'+(this.video_height+10)+'px;bottom:0px;overflow:auto;">'+
+					getMsg('loading_timeline')+ '</div>');
 		
 		js_log('set: '+this.sequence_container_id + ' html to:'+ "\n"+
 			$j('#'+this.sequence_container_id).html()
-		);
-		//add some sample tool content: (not translated since sequence_tools_id is generally overwritten
-		//set the default display item to 1:
-		var menu_items = {
-			'welcome':1,
-			'cliplib':0,
-			'transition':0,
-			'soundtrack':0
-		};
+		);		
 		var menu_html = '<ul style="list-style-type:none;list-style-position:outside;display:block;">';
-		var item_container ='';
-		for(var i in menu_items){
-			menu_html+='<li style="display:inline;padding:10px;"><a style="color:#fff" href="javascript:'+this.instance_name+'.disp(\''+i+'\')">'+getMsg('menu_'+i)+'</a></li>';
-			var disp_style= (menu_items[i])?'block':'none';
-			//item_container+='<div id="'+i+'"
+		var item_containers ='';
+		for(var i in this.menu_items){
+			var disp_style = (this.menu_items[i])?'block':'none'; //@@todo should use classes
+			menu_html+='<li style="display:inline;padding:10px;"><a style="color:#fff" href="javascript:' + this.instance_name + '.disp(\''+ i +'\')">' + getMsg('menu_' + i ) +'</a></li>';			
+			item_containers += '<div id="' + i + '_ic" style="display:' + disp_style +';'+ 				
+				'position:absolute;top:40px;padding:10px;overflow:auto;' + 
+				'bottom:0px;left:0px;right:0px;"> '+ this.getInitItem(i) + '</div>';
 		}
-		menu_html+='</ul>';
-		var advChecked = (this.timeline_mode=='time')?' checked ':'';
-		var simpleChecked = (this.timeline_mode=='clip')?' checked ':'';
+		menu_html+='</ul>';		
 		//debugger;
-		$j('#'+this.sequence_tools_id).html( menu_html + 
-			
-		);			
-		
-		this.renderTimeLine();
+		$j('#'+this.sequence_tools_id).html( menu_html + item_containers );						
 					
 		//add src based pl: 
 		if( this.mv_pl_src != 'null' ) {
@@ -154,7 +160,7 @@ mvSequencer.prototype = {
 		}else{
 			js_log( ' null playlist src .. (start empty) '); 
 			var src_attr='';
-		}	
+		}			
 		$j('#'+this.video_container_id).html('<playlist ' + src_attr +
 			' style="width:'+this.video_width+'px;height:'+this.video_height+'px;" '+
 			' sequencer="true" id="'+this.plObj_id+'" />');
@@ -162,14 +168,25 @@ mvSequencer.prototype = {
 		rewrite_by_id( this.plObj_id );	
 		setTimeout(this.instance_name +'.checkReadyPlObj()', 25);		
 	},
-	//@@todo should switch this over to php gennerated
-	getInitItem:function(item){
+	//display a menu item (hide the rest) 
+	disp:function( item ){
+		js_log('disp: ' + item);
+		for(var i in this.menu_items){
+			if(i==item)
+				$j('#'+i+'_ic').show("slide", { direction: "up" }, "fast");	
+			else
+				$j('#'+i+'_ic').filter(':visible').hide("slide", { direction: "down" }, "fast");		
+		}
+	},
+	//@@todo probably should switch this over to php generated...or ajax request.
+	//since this content could/should be more dynamic 
+	getInitItem:function(item){		
 		switch(item){
 			case 'welcome':
-				return '<h3>Welcome to The sequencer demo<h3>' +
-					'Select your editor preference:<br> '+
-					'<blockquote><input onClick="'+this.instance_name+'.doSimpleTl()" type="radio" value="A" name="radio_button" ' + simpleChecked + '>simple editor (imovie style) </blockquote>' +
-					'<blockquote><input onClick="'+this.instance_name+'.doAdvancedTl()" type="radio" value="A" name="radio_button" '  + advChecked + '>advanced editor (final cut style) </blockquote>';				
+				var advChecked = (this.timeline_mode=='time')?' checked ':'';
+				var simpleChecked = (this.timeline_mode=='clip')?' checked ':'';
+				return '<h3>Welcome to The sequencer demo</h3>'+
+						'very <b>limited</b> functionality atm';									
 			break;
 			case 'cliplib':
 				return '<h3>Resource Finder</h3>';
@@ -177,12 +194,20 @@ mvSequencer.prototype = {
 			case 'transition':
 				return '<h3>Transition Library</h3>';
 			break;
-			case 'soundtrack':
-				return '<h3>Sound Track?</h3>';
+			case 'resource_overview':
+				return '<h3>Resource Overview</h3>Lists all the resources in-use in this sequence';
+			break;
+			case 'options':
+				return '<h3>Editor Options</h3>'+
+						'Editor Mode:<br> '+
+						'<blockquote><input onClick="'+this.instance_name+'.doSimpleTl()" type="radio" value="A" name="radio_button" ' + simpleChecked + '>simple editor (imovie style) </blockquote>' +
+						'<blockquote><input onClick="'+this.instance_name+'.doAdvancedTl()" type="radio" value="A" name="radio_button" '  + advChecked + '>advanced editor (final cut style) </blockquote>';						
 			break;
 		}
 	},
 	renderTimeLine:function(){
+		//empty out the top level html: 
+		$j('#'+this.timeline_id).html('');
 		//add html content for timeline		
 		if( this.timeline_mode=='time'){
 			$j('#'+this.timeline_id).html(''+
@@ -207,8 +232,58 @@ mvSequencer.prototype = {
 					'<div id="'+this.timeline_id+'_playline" class="mv_playline"></div>'+
 				'</div>'
 			);				
-		}else{
-			$j('#'+this.timeline_id).html('simple editor goes here');
+			//add playlist hook to update timeline
+			this.plObj.update_tl_hook = this.instance_name+'.update_tl_hook';		
+			var this_sq = this;
+			var top_pos=25;		
+			//add tracks:
+			for(var i in this.plObj.tracks){
+				var track = this.plObj.tracks[i];
+				//js_log("on track: "+ i + ' t:'+ $j('#'+this.timeline_id+'_left_cnt').html() );
+				//set up track based on disp type
+				switch(track.disp_mode){
+					case 'timeline_thumb':
+						var track_height=60;
+						var exc_img = 'opened';
+						var exc_action='close';
+						var exc_msg = getMsg('colapse_track');
+					break;
+					case 'text':
+						var track_height=20;
+						var exc_img = 'closed';
+						var exc_action='open';
+						var exc_msg = getMsg('expand_track');
+					break;
+				}
+				//add track name:
+				$j('#'+this.timeline_id+'_left_cnt').append(
+					'<div id="track_cnt_'+i+'" style="top:'+top_pos+'px;height:'+track_height+'px;" class="track_name">'+
+						'<a id="mv_exc_'+i+'" title="'+exc_msg+'" href="javascript:'+this_sq.instance_name+'.exc_track('+i+',\''+exc_action+'\')">'+
+							'<img id="'+this_sq.timeline_id+'_close_expand" style="width:16px;height:16px;border:0" '+ 
+								' src="'+mv_embed_path + 'images/'+exc_img+'.png">'+
+						'</a>'+
+					track.title+'</div>'
+				);
+				//also render the clips in the trackset container: (thumb or text view)
+				$j('#'+this.timeline_id+'_tracks').append(
+					'<div id="container_track_'+i+'" style="top:'+top_pos+'px;height:'+(track_height+2)+'px;left:0px;right:0px;" class="container_track">' +					
+					'</div>'
+				);		
+				top_pos+=track_height+10;		
+			}					
+		}
+		if( this.timeline_mode=='clip'){
+			var top_pos=this.plObj.org_control_height;
+			//debugger;
+			for(var i in this.plObj.tracks){
+				var track_height=this.track_clipThumb_height;
+				//add in play box and container tracks
+				$j('#'+this.timeline_id).append(''+
+					'<div id="container_track_'+i+'" style="position:absolute;top:'+top_pos+'px;height:'+(track_height+20)+'px;left:10px;right:0px;" class="container_track">' +					
+					'</div>'
+				);
+				top_pos+=track_height+10;	
+			}			
 		}	
 	},
 	//once playlist is ready continue 
@@ -235,45 +310,7 @@ mvSequencer.prototype = {
 		if(this.plObj.getClipCount()==0){
 			$j('#'+this.plObj_id).html('empty playlist');
 		}						
-		//add playlist hook to update timeline
-		this.plObj.update_tl_hook = this.instance_name+'.update_tl_hook';		
-		var this_sq = this;
-		var top_pos=25;		
-		//add tracks:
-		for(i in this.plObj.tracks){
-			var track = this.plObj.tracks[i];
-			//js_log("on track: "+ i + ' t:'+ $j('#'+this.timeline_id+'_left_cnt').html() );
-			//set up track based on disp type
-			switch(track.disp_mode){
-				case 'timeline_thumb':
-					var track_height=60;
-					var exc_img = 'opened';
-					var exc_action='close';
-					var exc_msg = getMsg('colapse_track');
-				break;
-				case 'text':
-					var track_height=20;
-					var exc_img = 'closed';
-					var exc_action='open';
-					var exc_msg = getMsg('expand_track');
-				break;
-			}
-			//add track name:
-			$j('#'+this.timeline_id+'_left_cnt').append(
-				'<div id="track_cnt_'+i+'" style="top:'+top_pos+'px;height:'+track_height+'px;" class="track_name">'+
-					'<a id="mv_exc_'+i+'" title="'+exc_msg+'" href="javascript:'+this_sq.instance_name+'.exc_track('+i+',\''+exc_action+'\')">'+
-						'<img id="'+this_sq.timeline_id+'_close_expand" style="width:16px;height:16px;border:0" '+ 
-							' src="'+mv_embed_path + 'images/'+exc_img+'.png">'+
-					'</a>'+
-				track.title+'</div>'
-			);
-			//also render the clips in the trackset container: (thumb or text view)
-			$j('#'+this.timeline_id+'_tracks').append(
-				'<div id="container_track_'+i+'" style="top:'+top_pos+'px;height:'+(track_height+2)+'px;" class="container_track">' +					
-				'</div>'
-			);		
-			top_pos+=track_height+10;		
-		}					
+		this.renderTimeLine();		
 		this.do_refresh_timeline();
 	},
 	update_tl_hook:function(jh_time_ms){			
@@ -292,7 +329,7 @@ mvSequencer.prototype = {
 				return this.plObj.tracks.toSource();
 			break;
 			case 'xml':
-				return "@@todo xml output";
+				return "@@todo hlrd xml output";
 			break;
 		}		
 	},
@@ -339,13 +376,44 @@ mvSequencer.prototype = {
 		this.plObj.updateTitle();
 						
 	},
+	//hide everything and bring up edit clip. interface:
+	editClip:function(track_inx, clip_inx){
+		$j('#modalbox').hide();
+		if($j('#modal_window').length==0){
+			$j('body').append('<div id="modal_window" class="modal_editor" />');	
+		}
+		//empty out the modal_window and show it
+		$j('#modal_window').empty().show();
+		//set to the current clip in "clip mode"
+		var clip = this.plObj.tracks[track_inx].clips[ clip_inx ];
+		$j('#modal_window').append('<div style="position:absolute;top:10%left:auto;right:auto;">'+
+										
+								   '</div>');
+		$j('#modal_window').append('<div style="position:absolute;bottom:10%;left:50%;">'+
+									'<a style="border:solid gray;font-size:1.2em;" onClick="window.confirm(\''+getMsg('edit_cancel_confirm')+'\')" '+ 
+									'href="javascript:'+this.instance_name+'.closeModWindow()">'+
+										getMsg('edit_cancel') + '</a> '+
+									'<a style="border:solid gray;font-size:1.2em;" href="javascript:'+this.instance_name+'.saveClipEdit()">'+
+										getMsg('edit_save')+
+									'</a>'+								
+								'</div>'
+						);
+	},
+	//save new clip segment
+	saveClipEdit:function(){
+		//saves the clip updates
+	},
+	closeModWindow:function(){
+		$j('#modal_window').hide();
+		$j('#modalbox').show();
+	},
 	removeClip:function(track_inx, clip_inx){
 		//fade out fast: 
 		var this_seq = this;
 		$j('#track_'+track_inx+'_clip_'+clip_inx).fadeOut("fast",function(){
 			this_seq.plObj.tracks[track_inx].clips.splice(clip_inx, 1);
 			//reorder:
-			for(k in this_seq.plObj.tracks[track_inx].clips){
+			for( var k in this_seq.plObj.tracks[track_inx].clips){
 				if(typeof this_seq.plObj.tracks[track_inx].clips[i]!= 'undefined'){
 					this_seq.plObj.tracks[track_inx].clips[i].order=k;
 				}
@@ -362,11 +430,11 @@ mvSequencer.prototype = {
 			}
 		});	
 	},
-	doEdit:function(editObj){
+	doEdit:function( editObj ){
 		//add the current editObj to the edit stack
-		this.edit_stack.push(editObj);
+		this.edit_stack.push( editObj );
 		//make the adjustments
-		this.makeAdjustment(editObj);		
+		this.makeAdjustment( editObj );		
 	},
 	makeAdjustment:function(e){	
 		switch(e.type){
@@ -381,6 +449,7 @@ mvSequencer.prototype = {
 		//re-render the video track
 		this.render_tracks(e.track_inx);
 	},
+	//@@todo set up key bindings for undo
 	undoEdit:function(){
 		var editObj = this.edit_stack.pop();
 		//invert the delta
@@ -441,24 +510,44 @@ mvSequencer.prototype = {
 				//set up per track vars:
 				var track = this.plObj.tracks[track_id];
 				var cur_clip_time=0;
+			
+				//set up some constants for timeline_mode == clip: 	
+				if(this.timeline_mode == 'clip'){			
+					var frame_width = Math.round(this.track_clipThumb_height*1.3333333);
+					var container_width = frame_width+60;
+				}
+				
 				//for each clip: 
 				for(var j in track.clips){
-					clip = track.clips[j];
+					clip = track.clips[j];					
 					//var img = clip.getClipImg('icon');
-					if(this.timeline_mode=='clip'){
-						var frame_width = Math.round(this.track_thumb_height*1.3333333);
-						track_html+='<span id="track_'+track_id+'_clip_'+j+'" style="width:'+(frame_width+30)+'" '+
-						 				+' class="mv_time_clip mv_clip_drag" >';						
+					if(this.timeline_mode == 'clip'){												
+						clip.left_px = j*container_width;
+						clip.width_px = container_width;
+						var base_id = 'track_'+track_id+'_clip_'+j;
+						track_html+='<span id="'+base_id+'" style="'+
+										'border:none;'+	
+										'left:'+clip.left_px+'px;'+									
+										'height:' + (this.track_clipThumb_height+20) + 'px;' +										
+										'width:'+(container_width)+'px;" '+
+						 				'class="mv_time_clip mv_clip_drag" >';						
 						track_html+=clip.embed.renderTimelineThumbnail({
 										'width':frame_width,
-										'height':this.track_thumb_height,
+										'height':this.track_clipThumb_height,
 										'time':0
-									});					
-						track_html+='</span>';
+									});			
+						//render out edit button
+						track_html+='<div onClick="'+this.instance_name+'.editClip('+track_id+','+j+')" class="clip_edit_button clip_edit_base"/>';
+													
+						//render out transition edit box 
+						track_html+='<div style="" id="tb_' + base_id + '" class="clip_trans_box"/>';
+						
+						track_html+='</span>';						
+													
 					}														
 					//do per display type rendering: 
-					if(this.timeline_mode=='time'){						
-						clip.left_px = Math.round( cur_clip_time/this.timeline_scale);					
+					if(this.timeline_mode == 'time'){		
+						clip.left_px = Math.round( cur_clip_time/this.timeline_scale);															
 						clip.width_px = Math.round( Math.round( clip.getDuration() )/this.timeline_scale);
 						js_log('at time:' + cur_clip_time + ' left: ' +clip.left_px + ' clip dur: ' +  Math.round( clip.getDuration() ) + ' clip wdith:' + clip.width_px);
 																
@@ -481,21 +570,33 @@ mvSequencer.prototype = {
 						track_html+='</span>';	
 						//droppable_html+='<div id="dropBefore_'+i+'_c_'+j+'" class="mv_droppable" style="height:'+this.track_thumb_height+'px;left:'+clip.left_px+'px;width:'+Math.round(clip.width_px/2)+'px"></div>';
 						//droppable_html+='<div id="dropAfter_'+i+'_c_'+j+'" class="mv_droppable" style="height:'+this.track_thumb_height+'px;left:'+(clip.left_px+Math.round(clip.width_px/2))+'px;width:'+(clip.width_px/2)+'px"></div>';
-					}
-					cur_clip_time+=Math.round( clip.getDuration() ); //increment time
+						cur_clip_time+=Math.round( clip.getDuration() ); //increment cur_clip_time	
+					}				
+					
 				}	
-				//js_log("new htmL for track i: "+track_id + ' html:'+track_html);
-				$j('#container_track_'+track_id).html(track_html);
-				//add in control hooks: 				
 				
-				$j('.ui-resizable-handle').mousedown( function(){
-					js_log('hid: ' +  $j(this).attr('class'));
-					this_seq.resize_mode = ($j(this).attr('class').indexOf('ui-resizable-e')!=-1)?
-									'resize_end':'resize_start';
-				});			
+				//js_log("new htmL for track i: "+track_id + ' html:'+track_html);
+				$j('#container_track_'+track_id).html( track_html );
+				
+				//apply edit button mouse over effect:
+				$j('.clip_edit_button').hover(function(){
+					$j(this).removeClass("clip_edit_base").addClass("clip_edit_over");
+				},function(){
+					$j(this).removeClass("clip_edit_over").addClass("clip_edit_base");
+				});
+				
+				//add in control for time based display 											
+				//debugger;			
+				if(this.timeline_mode == 'time'){			
+					$j('.ui-resizable-handle').mousedown( function(){
+						js_log('hid: ' +  $j(this).attr('class'));
+						this_seq.resize_mode = ($j(this).attr('class').indexOf('ui-resizable-e')!=-1)?
+										'resize_end':'resize_start';
+					});
+				}			
 				var insert_key='na';
-				//add resize and drag hooks:					
-				for(j in track.clips){			
+				// drag hooks:					
+				for(var j in track.clips){			
 					$j('#track_'+track_id+'_clip_'+j).draggable({ 		
 						axis:'x', 
 						containment:'#container_track_'+track_id,
@@ -514,7 +615,7 @@ mvSequencer.prototype = {
 							var return_org = true;
 							$j(this).css('zindex',10);
 							//find out where we are inserting and set left border to solid red thick
-							for(k in clips){
+							for(var k in clips){
 								if(	ui.position.left > clips[k].left_px &&
 									ui.position.left < (clips[k].left_px + clips[k].width_px)){
 									if(clip_inx!=k){
@@ -574,42 +675,46 @@ mvSequencer.prototype = {
 							this_seq.render_tracks(track_inx);
 						}
 					});
-					$j('#track_'+track_id+'_clip_'+j).resizable({		
-						minWidth:10,
-						maxWidth:6000,
-						start: function(e,ui) {									
-							//set border to red
-							$j(this).css({'border':'solid thin red'});
-							//fade In Time stats (end or start based on handle) 							
-							//dragging east (adjusting end time) 	
-							js_log( 'append to: '+ this.id);												
-							$j('#' + this.id + ' > .mv_clip_stats').fadeIn("fast");
-						},
-						stop: function(e,ui) {
-							//restore border
-							$j(this).css('border', 'solid thin white');
-							//remove stats
-							var clip_drag = this;
-							$j('#'+this.id+' > .mv_clip_stats').fadeOut("fast",function(){
-								var id_parts = clip_drag.id.split('_');		
-								var track_inx = id_parts[1];
-								var clip_inx = id_parts[3];
-								//update clip 
-								this_seq.doEdit({
-									type:this_seq.resize_mode,
-									delta:this_seq.edit_delta,
-									track_inx:track_inx,
-									clip_inx:clip_inx})
-								});							
-						},
-						resize: function(e,ui) {												
-							//update time stats / render images: 
-							this_seq.update_clip_resize(this);
-						}		
-					});
+					//add in resize hook if in time mode: 
+					if(this.timeline_mode == 'time'){	
+						$j('#track_'+track_id+'_clip_'+j).resizable({		
+							minWidth:10,
+							maxWidth:6000,
+							start: function(e,ui) {									
+								//set border to red
+								$j(this).css({'border':'solid thin red'});
+								//fade In Time stats (end or start based on handle) 							
+								//dragging east (adjusting end time) 	
+								js_log( 'append to: '+ this.id);												
+								$j('#' + this.id + ' > .mv_clip_stats').fadeIn("fast");
+							},
+							stop: function(e,ui) {
+								//restore border
+								$j(this).css('border', 'solid thin white');
+								//remove stats
+								var clip_drag = this;
+								$j('#'+this.id+' > .mv_clip_stats').fadeOut("fast",function(){
+									var id_parts = clip_drag.id.split('_');		
+									var track_inx = id_parts[1];
+									var clip_inx = id_parts[3];
+									//update clip 
+									this_seq.doEdit({
+										type:this_seq.resize_mode,
+										delta:this_seq.edit_delta,
+										track_inx:track_inx,
+										clip_inx:clip_inx})
+									});							
+							},
+							resize: function(e,ui) {												
+								//update time stats / render images: 
+								this_seq.update_clip_resize(this);
+							}		
+						});
+					}
 				}			
 				$j('#container_track_'+track_id).width(Math.round(	this.timeline_duration / this.timeline_scale));
 			}
+			//debugger;
 		}
 	},
 	//renders clip frames
@@ -625,9 +730,9 @@ mvSequencer.prototype = {
 			var clip_time = (p==0)?0:Math.round(p*this.timeline_scale);
 			js_log('rendering clip frames: p:' +p+' '+ (p*this.timeline_scale)+' ' + clip_time);
 			clip_frames_html+=clip.embed.renderTimelineThumbnail({
-				'width':frame_width,
-				'height':this.track_thumb_height,
-				'time':clip_time
+				'width':  frame_width,
+				'height': this.track_thumb_height,
+				'time':   clip_time
 			});
 		}	
 		js_log('render_clip_frames:'+clip_frames_html);
@@ -688,26 +793,41 @@ mvSequencer.prototype = {
 		
 	},
 	//renders cnt_time
-	render_head_jump:function(){
+	render_playheadhead_seeker:function(){	 	
 		//render out time stamps and time "jump" links 
 		//first get total width
-		
-		//set width based on pixle to time and current length:
-		pixle_length = Math.round(	this.timeline_duration / this.timeline_scale);
-		$j('#'+this.timeline_id+'_head_jump').width(pixle_length);
-		//output times every 50pixles 
-		var out='';
-		//output time-desc every 50pixles and jump links every 10 pixles
-		var n=0;
-		for(i=0;i<pixle_length;i+=10){
-			out+='<div onclick="'+this.instance_name+'.jt('+i*this.timeline_scale+');"' +
-					' style="z-index:2;position:absolute;left:'+i+'px;width:10px;height:20px;top:0px;"></div>';			
-			if(n==0)				
-				out+='<span style="position:absolute;left:'+i+'px;">|'+seconds2ntp(Math.round(i*this.timeline_scale))+'</span>';						
-			n++;
-			if(n==10)n=0;
-		}	
-		$j('#'+this.timeline_id+'_head_jump').html(out);
+		if(this.timeline_mode=='time'){
+			//hide the old control if present	
+			$j('#'+this.timeline_id + '_pl_control').hide();
+			//set width based on pixle to time and current length:
+			pixle_length = Math.round(	this.timeline_duration / this.timeline_scale);
+			$j('#'+this.timeline_id+'_head_jump').width(pixle_length);
+			//output times every 50pixles 
+			var out='';
+			//output time-desc every 50pixles and jump links every 10 pixles
+			var n=0;
+			for(i=0;i<pixle_length;i+=10){
+				out+='<div onclick="'+this.instance_name+'.jt('+i*this.timeline_scale+');"' +
+						' style="z-index:2;position:absolute;left:'+i+'px;width:10px;height:20px;top:0px;"></div>';			
+				if(n==0)				
+					out+='<span style="position:absolute;left:'+i+'px;">|'+seconds2ntp(Math.round(i*this.timeline_scale))+'</span>';						
+				n++;
+				if(n==10)n=0;
+			}	
+			$j('#'+this.timeline_id+'_head_jump').html(out);
+		}
+		if(this.timeline_mode=='clip'){		
+			//render out a playlist clip wide and all the way to the right (only playhead and play button) (outside of timeline)
+			$j('#'+this.sequence_container_id).append('<div id="' + this.timeline_id + '_pl_control"'+
+				' style="position:absolute;top:' + (this.plObj.height) +'px;'+
+				'right:1px;width:'+this.plObj.width+'px;height:'+this.plObj.org_control_height+'" '+
+				'class="videoPlayer"><div class="controls">'+
+					 	this.plObj.getControlsHTML() +
+					 '</div>'+
+				'</div>');
+			//once the controls are in the DOM add hooks: 
+			ctrlBuilder.addControlHooks(this.plObj);
+		}
 	},
 	jt:function( jh_time ){
 		js_log('jt:' + jh_time);
@@ -733,7 +853,7 @@ mvSequencer.prototype = {
 		js_log('zoom out: '+this.timeline_scale);
 	},
 	do_refresh_timeline:function(){		
-		this.render_head_jump();
+		this.render_playheadhead_seeker();
 		this.render_tracks();
 		this.jt(this.playline_time);
 	}
@@ -754,10 +874,17 @@ mvSeqPlayList.prototype = {
 				this[method] = myPlObj[method];
 			}		
 		}
+		this.org_control_height = this.pl_layout.control_height;		
 		//do specific mods:(controls and title are managed by the sequencer)  
 		this.pl_layout.title_bar_height=0;
 		this.pl_layout.control_height=0;
 	},
+	getControlsHTML:function(){
+		//get controls from current clip  (add some playlist specific controls:  		
+		this.cur_clip.embed.supports['prev_next'] = true;	
+		this.cur_clip.embed.supports['options']   = false;
+		return ctrlBuilder.getControls(this.cur_clip.embed);
+	},	
 	//override renderDisplay
 	renderDisplay:function(){
 		//setup layout for title and dc_ clip container  

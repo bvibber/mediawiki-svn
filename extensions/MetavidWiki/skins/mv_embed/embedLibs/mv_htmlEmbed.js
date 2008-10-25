@@ -77,28 +77,34 @@ var htmlEmbed ={
 		return true;
 	},
 	renderTimelineThumbnail:function( options ){
-		//generate a scaled down version _that_ we can clone if nessesary
-		//add a not vissable container to the body:				
-		if($j('#'+this.id+'_thumb_render').length == 0){
+		//generate a scaled down version _that_ we can clone if nessisary 
+		//add a not visiable container to the body:		
+		var do_refresh = (typeof options['refresh'] != 'undefined')?true:false;
+		
+		var thumb_render_id =   this.id +'_thumb_render_'+ options.height;
+		if( $j('#' + thumb_render_id ).length == 0 ||  do_refresh ){
 			//set the font scale down percentage: (kind of arbitrary) 
-			var scale_perc = options.width / $j(this).width();
-			var font_perc  = Math.round( scale_perc*400 ); //fonts don't scale uniformly arbitrary adjust perc			
-			$j('body').append( '<div id="' + this.id +'_thumb_render" style="display:none">'+
-									'<div style="display:block;'+
+			var scale_perc = options.width / $j(this).width();			
+			//min scale font percent of 70 (overflow is hidden) 
+			var font_perc  = ( Math.round( scale_perc*100 ) < 80 )?80:Math.round( scale_perc*100 ); 		
+						
+			$j('body').append( '<div id="' + thumb_render_id + '" style="display:none">'+
+									'<div style="display:block;border:solid thin black;'+
 									'width:'+options.width+'px;height:'+options.height+'px;overflow:hidden;" >'+								    	
 											this.getThumbnailHTML() + 
 									'</div>'+
 						  	  '</div>' 
 						  	);
 			//scale down the font:		
-			$j('#'+this.id+'_thumb_render *').filter('span,div,p,h,h1,h2,h3,h4,h5,h6').css('font-size',font_perc+'%')
-			//replace links:
-			//$j('#'+this.id+'_thumb_render a').each(function(){
-			//	$j(this).replaceWith("<span>" + $j(this).text() + "</span>");
-			//});	
+			$j('#' + thumb_render_id + ' *').filter('span,div,p,h,h1,h2,h3,h4,h5,h6').css('font-size',font_perc+'%')
+			
+			//replace out links:
+			$j('#' + thumb_render_id +' a').each(function(){
+				$j(this).replaceWith("<span>" + $j(this).html() + "</span>");
+			});	
 			
 			//scale images that have width or height:
-			$j('#'+this.id+'_thumb_render img').filter('[width]').each(function(){
+			$j('#' + thumb_render_id + ' img').filter('[width]').each(function(){
 				$j(this).attr({ 
 						'width':$j(this).attr('width') * scale_perc,
 					 	'height':$j(this).attr('height') * scale_perc
@@ -106,7 +112,7 @@ var htmlEmbed ={
 				);
 			});
 		} 			
-		return $j('#'+this.id+'_thumb_render').html();  			 
+		return $j('#' + thumb_render_id ).html();  			 
 	},
 	//nothing to update in static html display: (return a static representation) 
 	//@@todo render out a mini text "preview"

@@ -533,7 +533,7 @@ var ctrlBuilder = {
     			'options':true,     			
     			'borders':true   			
     		};
-    	for(i in embedObj.supports)
+    	for( var i in embedObj.supports )
     		ctrlBuilder.supports[i] = embedObj.supports[i];
     	//special case vars: 
     	if(embedObj.roe && embedObj.show_meta_link)
@@ -1049,7 +1049,8 @@ function mv_do_sequence(initObj){
 				'$j.ui.sortable':'jquery/jquery.ui-1.5.2/ui/minified/ui.sortable.min.js',
 				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
 				//'$j.ui'			:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
-				//'$j.effects':'jquery/jquery.ui-1.5.2/ui/minified/effects.core.min.js',	
+				'$j.effects':'jquery/jquery.ui-1.5.2/ui/minified/effects.core.min.js',	
+				'$j.effects.slide':'jquery/jquery.ui-1.5.2/ui/minified/effects.slide.min.js'
 				//'$j.effects.puff':'jquery/jquery.ui-1.5.2/ui/minified/effects.scale.min.js'
 				//'$j.ui.sortable':'jquery/plugins/ui.sortable.js'
 			},function(){

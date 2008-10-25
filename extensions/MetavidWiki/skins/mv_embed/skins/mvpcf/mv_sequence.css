@@ -33,8 +33,31 @@
 }
 .container_track{
 	position:absolute;
-	border:solid thin red;
+	border:solid thin gray;
 
+}
+.clip_edit_button{	
+	width:16px;
+	height:16px;
+	position:absolute;
+	top:0px;
+	right:60px;
+	cursor:pointer;
+}
+.clip_trans_box{
+	border:solid thin black;
+	width:32px;
+	height:32px;
+	position:absolute;
+	top:20px;
+	right:15px;
+}
+
+.clip_edit_base{
+	background: url("images/uni_edit_bw.png");
+}
+.clip_edit_over{
+	background: url('images/uni_edit_color.png');
 }
 .mv_time_clip_text{
 	font-family:"verdana","helvetica","arial",sans-serif;

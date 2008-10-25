@@ -112,8 +112,9 @@ mvPlayList.prototype = {
 	//pulls up the video editor inline
 	doEditor:function(){
 		//black out the page: 
-		$j('body').append('<div id="overlay"/> '+
-						'<div id="modalbox" class="editor">');
+		$j('body').append('<div id="mv_overlay"/> '+
+						'<div id="modalbox" class="modal_editor">');
+						
 		$j('#modalbox').html('loading editor<blink>...</blink>');
 		var _this=this;
 		js_log("calling sequence with url:"+ _this.src);
@@ -1103,8 +1104,8 @@ PlMvEmbed.prototype = {
 		var plEmbed = this;					
 			
 		js_log('do stop');
-		var th=Math.round( this.pl_layout.clip_desc * plObj.height );	
-		var tw=Math.round( th * this.pl_layout.clip_aspect );
+		var th=Math.round( plObj.pl_layout.clip_desc * plObj.height );	
+		var tw=Math.round( th * plObj.pl_layout.clip_aspect );
 		//run the parent stop:
 		this.pe_stop();
 		var pl_height = (plObj.sequencer=='true')?plObj.height+27:plObj.height;
@@ -1834,8 +1835,8 @@ function smilParseTime(time_str){
  	return this.init( initObj );
  }
  var supported_track_attr = {
- 	title:'untitled track',
-	desc:'empty description',		
+ 	title:'track',
+	desc:'track description',		
  }
 trackObj.prototype = {					
 	disp_mode:'timeline_thumb',
@@ -1870,8 +1871,6 @@ trackObj.prototype = {
 /* utility functions 
  * (could be combined with other stuff) 
  */
-
-
 
 function getAbsolutePos(objectId) {
 	// Get an object left position from the upper left viewport corner

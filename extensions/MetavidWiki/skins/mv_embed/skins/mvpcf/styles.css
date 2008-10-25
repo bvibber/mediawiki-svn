@@ -1,4 +1,4 @@
-#overlay {
+#mv_overlay {
 	background:transparent url(images/transparent_bg.png) repeat scroll 0 0;
 	cursor:wait;
 	height:100%;
@@ -9,7 +9,7 @@
 	z-index:99;
 }
 
-#modalbox.editor {
+.modal_editor {
 	background:#AAA none repeat scroll 0 0;
 	border:3px solid #666666;
 	left:10%;
@@ -19,7 +19,6 @@
 	height:90%;	
 	z-index:100;
 }
-
 .mv_track {
 	margin-bottom:20px;
 	position:relative;
