@@ -1,4 +1,4 @@
---- Additional table for the SharedUserrights extension
+--- Additional table for the SharedUserRights extension
 --- To be added to $wgSharedDB
 
 CREATE TABLE `shared_user_groups` (
