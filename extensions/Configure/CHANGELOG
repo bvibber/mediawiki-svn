@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.8.10 - 26 October 2008
+  Settings which have the same value as in DefaultSettings.php are now removed
+  from the saved configuration.
+
 0.8.9 - 25 October 2008
   Removed $wgNamespacesToBeSearchedProject.
 

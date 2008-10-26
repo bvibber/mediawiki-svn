@@ -27,6 +27,7 @@ class SpecialExtensions extends ConfigurationPage {
 		$current = $wgConf->getCurrent( $this->mWiki );
 		$settings = $this->importFromRequest();
 		$new = $settings + $current;
+		$new = $this->removeDefaults( $new );
 		$new['__includes'] = $this->getRequiredFiles(); 
 		$ok = $wgConf->saveNewSettings( $new, $this->mWiki );
 		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );

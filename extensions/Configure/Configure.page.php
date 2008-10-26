@@ -298,9 +298,22 @@ abstract class ConfigurationPage extends SpecialPage {
 		if( $version = $wgRequest->getVal( 'version' ) ){
 			$versions = $wgConf->listArchiveFiles();
 			if( in_array( $version, $versions ) ){
-				 $conf = $wgConf->getOldSettings( $version );
-				 $this->conf = $conf[$this->mWiki];
-				 $wgOut->addWikiText( wfMsgNoTrans( 'configure-edit-old' ) );
+				$conf = $wgConf->getOldSettings( $version );
+				$this->conf = $conf[$this->mWiki];
+				if( !isset( $conf[$this->mWiki] ) ){
+					$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
+					$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
+					return false;
+				}
+				$current = null;
+				foreach( $this->conf as $name => $value ){
+					if( $this->canBeMerged( $name, $value ) ){
+						if( is_null( $current ) )
+							$current = $wgConf->getCurrent( $this->mWiki );
+						$this->conf[$name] += $current[$name];
+					}	
+				}
+				$wgOut->addWikiText( wfMsgNoTrans( 'configure-edit-old' ) );
 			} else {
 				$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
 				$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
@@ -377,6 +390,8 @@ abstract class ConfigurationPage extends SpecialPage {
 
 		$settings = array();
 		foreach( $this->getEditableSettings() as $name => $type ){
+			if( !$this->mConfSettings->isSettingAvailable( $name ) )
+				continue;
 			if( !$this->userCanEdit( $name ) ){
 				$settings[$name] = $this->getSettingValue( $name );
 				continue;
@@ -555,13 +570,77 @@ abstract class ConfigurationPage extends SpecialPage {
 	}
 
 	/**
+	 * Removes the defaults values from settings
+	 *
+	 * @param $settings Array
+	 * @return array
+	 */
+	protected function removeDefaults( $settings ) {
+		global $wgConf;
+		$defaultValues = $wgConf->getDefaultsForWiki( $this->mWiki );
+		foreach( $defaultValues as $name => $default ) {
+			if( isset( $settings[$name] ) ){
+				if( $settings[$name] === $default ){
+					unset( $settings[$name] );
+				} elseif( $this->canBeMerged( $name, $default ) ){
+					$value = $settings[$name];
+					$type = $this->getArrayType( $name );
+					switch( $type ){
+					case 'assoc':
+					case 'ns-bool':
+					case 'ns-text':
+					case 'ns-array':
+						foreach( array_keys( array_intersect_key( $default, $value ) ) as $key ){
+							if( $default[$key] === $value[$key] )
+								unset( $settings[$name][$key] );
+						}
+						break;
+					case 'group-bool':
+						foreach( array_unique( array_merge( array_keys( $default ), array_keys( $value ) ) ) as $group ){
+							$defGroup = isset( $default[$group] ) ? $default[$group] : array();
+							$valGroup = isset( $value[$group] ) ? $value[$group] : array();
+							foreach( array_unique( array_merge( array_keys( $defGroup ), array_keys( $valGroup ) ) ) as $right ){
+								if( ( isset( $defGroup[$right] ) && isset( $valGroup[$right] ) && $defGroup[$right] === $valGroup[$right] ) ||
+									( isset( $valGroup[$right] ) && !isset( $defGroup[$right] ) && $valGroup[$right] === false ) ) {
+									unset( $settings[$name][$group][$right] );
+								}
+							}
+							if( !count( $settings[$name][$group] ) )
+								unset( $settings[$name][$group] );
+						}
+						break;
+					}	
+				}
+			}
+		}
+		return $settings;
+	}
+
+	/**
+	 * Returns a bool wheter the setting can be merged with the default in
+	 * DefaultSettings.php
+	 *
+	 * @param $name String: setting name
+	 * @param $value Mixed: new value of the setting
+	 * @return bool
+	 */
+	protected function canBeMerged( $name, $value ){
+		if( !is_array( $value ) )
+			return false;
+		if( $this->getSettingType( $name ) != 'array' )
+			return false;
+		global $wgConf;
+		return ( !isset( $wgConf->settings[$name] ) && isset( $wgConf->settings["+$name"] ) );
+	}
+
+	/**
 	 * Show the main form
 	 */
 	protected function showForm(){
 		global $wgOut, $wgUser;
 
 		$action = $this->getTitle()->escapeLocalURL();
-		# We use <div id="preferences"> to have the tabs like in Special:Preferences
+
 		$wgOut->addHtml(
 			$this->buildOldVersionSelect() . "\n" .
 

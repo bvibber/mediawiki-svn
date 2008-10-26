@@ -12,9 +12,11 @@ if( !class_exists( 'SiteConfiguration' ) )
  * @ingroup Extensions
  */
 class WebConfiguration extends SiteConfiguration {
-	protected $mDir;            // Directory of files, *with* leading /
-	protected $mWiki;           // Wiki name
-	protected $mConf = array(); // Our array of settings
+	protected $mDir;                   // Directory of files, *with* leading /
+	protected $mWiki;                  // Wiki name
+	protected $mConf = array();        // Our array of settings
+	protected $mOldSettings = array(); // Old settings (before applying our overrides)
+	protected $mDefaults = array();    // Default values
 
 	/**
 	 * Construct a new object.
@@ -38,6 +40,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * directory
 	 */
 	public function initialise(){
+		parent::initialise();
 		$file = $this->getFileName();
 		if( !file_exists( $file ) )
 			# maybe the first time the user use this extensions, do not override
@@ -52,45 +55,37 @@ class WebConfiguration extends SiteConfiguration {
 			# Weird, should not happen too
 			return;
 		$this->mConf = $arr;
+		$this->mOldSettings = $this->settings;
 
-		# We'll need to invert the order of keys as SiteConfiguration use
-		# $settings[$setting][$wiki] and the extension use $settings[$wiki][$setting]
+		# We'll need to invert the order of keys as SiteConfiguration uses
+		# $settings[$setting][$wiki] and the extension uses $settings[$wiki][$setting]
 		foreach( $this->mConf as $site => $settings ){
 			if( !is_array( $settings ) )
 				continue;
 			foreach( $settings as $name => $val ){
-				if( $name != '__includes' )
-					$this->settings[$name][$site] = $val;
+				if( $name != '__includes' ) {
+					# Merge if possible
+					if( isset( $this->settings[$name][$site] ) && is_array( $this->settings[$name][$site] ) && is_array( $val ) ){
+						$this->settings[$name][$site] = self::arrayMerge( $val, $this->settings[$name][$site] );
+					}
+					elseif( isset( $this->settings[$name]["+$site"] ) && is_array( $this->settings[$name]["+$site"] ) && is_array( $val ) ) {
+						$this->settings[$name]["+$site"] = self::arrayMerge( $val, $this->settings[$name]["+$site"] );
+					}
+					elseif( isset( $this->settings["+$name"][$site] ) && is_array( $this->settings["+$name"][$site] ) && is_array( $val ) ) {
+						$this->settings["+$name"][$site] = self::arrayMerge( $val, $this->settings["+$name"][$site] );
+					}
+					elseif( isset( $this->settings["+$name"]["+$site"] ) && is_array( $this->settings["+$name"]["+$site"] ) && is_array( $val ) ) {
+						$this->settings["+$name"]["+$site"] = self::arrayMerge( $val, $this->settings["+$name"]["+$site"] );
+					}
+					elseif( isset( $this->settings["+$name"] ) && is_array( $val ) ) {
+						$this->settings["+$name"][$site] = $val;
+					}
+					else {
+						$this->settings[$name][$site] = $val;	
+					}
+				}
 			}
 		}
-	}
-
-	/**
-	 * Save a new configuration
-	 * @param $settings array of settings
-	 * @param $wiki String: wiki name or false to use the current one
-	 * @return bool true on success
-	 */
-	public function saveNewSettings( $settings, $wiki = false ){
-		if( !is_array( $settings ) || $settings === array() )
-			# hmmm
-			return false;
-
-		if( $wiki === null ){
-			$this->mConf = $settings;
-		} else {
-			if( $wiki === false )
-				$wiki = $this->mWiki;
-			if( isset( $this->mConf[$wiki] ) && is_array( $this->mConf[$wiki] ) )
-				$settings += $this->mConf[$wiki];
-			$this->mConf[$wiki] = $settings;
-		}
-
-		$arch = $this->getArchiveFileName();
-		$cur = $this->getFileName();
-		$cont = serialize( $this->mConf );
-		file_put_contents( $arch, $cont );
-		return ( file_put_contents( $cur, $cont ) !== false );
 	}
 
 	/**
@@ -111,18 +106,6 @@ class WebConfiguration extends SiteConfiguration {
 		$this->extractAllGlobals( $this->mWiki, $site, $rewrites );
 	}
 
-	/**
-	 * Get the array representing the current configuration
-	 *
-	 * @param $wiki String: wiki name
-	 * @return array
-	 */
-	public function getCurrent( $wiki ){
-		list( $site, $lang ) = $this->siteFromDB( $wiki );
-		$rewrites = array( 'wiki' => $wiki, 'site' => $site, 'lang' => $lang );
-		return $this->getAll( $wiki, $site, $rewrites );
-	}
-
 	public function getIncludedFiles(){
 		if( isset( $this->mConf[$this->mWiki]['__includes'] ) )
 			return $this->mConf[$this->mWiki]['__includes'];
@@ -134,11 +117,14 @@ class WebConfiguration extends SiteConfiguration {
 	 * Include all extensions files of actived extensions
 	 */
 	public function includeFiles(){
+		$includes = $this->getIncludedFiles();
+		if( !count( $includes ) )
+			return;
+		
 		// Since the files should be included from the global scope, we'll need
 		// to import that variabled in this function
 		extract( $GLOBALS, EXTR_REFS );
 
-		$includes = $this->getIncludedFiles();
 		foreach( $includes as $file ){
 			if( file_exists( $file ) ){
 				require_once( $file );
@@ -149,43 +135,15 @@ class WebConfiguration extends SiteConfiguration {
 	}
 
 	/**
-	 * Get the current file name
-	 * @return String full path to the file
+	 * Get the array representing the current configuration
+	 *
+	 * @param $wiki String: wiki name
+	 * @return array
 	 */
-	protected function getFileName(){
-		return "{$this->mDir}conf-now.ser";
-	}
-
-	/**
-	 * Get the an archive file
-	 * @param $ts String: 14 char timestamp (YYYYMMDDHHMMSS) or null to use the
-	 *            current timestamp
-	 * @return String full path to the file
-	 */
-	public function getArchiveFileName( $ts = null ){
-		global $IP;
-
-		if( $ts === null )
-			$ts = wfTimestampNow();
-
-		$file = "{$this->mDir}conf-$ts.ser";
-		return $file;
-	}
-
-	/**
-	 * List all archived files that are like conf-{$ts}.ser
-	 * @return array of timestamps
-	 */
-	public function listArchiveFiles(){
-		if( !$dir = opendir( $this->mDir ) )
-			return array();
-		$files = array();
-		while( ( $file = readdir( $dir ) ) !== false ) {
-			if( preg_match( '/conf-(\d{14}).ser$/', $file, $m ) )
-				$files[] = $m[1];
-		}
-		sort( $files, SORT_NUMERIC );
-		return array_reverse( $files );
+	public function getCurrent( $wiki ){
+		list( $site, $lang ) = $this->siteFromDB( $wiki );
+		$rewrites = array( 'wiki' => $wiki, 'site' => $site, 'lang' => $lang );
+		return $this->getAll( $wiki, $site, $rewrites );
 	}
 
 	/**
@@ -213,6 +171,120 @@ class WebConfiguration extends SiteConfiguration {
 	}
 
 	/**
+	 * Get the defalut values for all settings
+	 * Very, very hacky...
+	 *
+	 * @return array
+	 */
+	public function getDefaults() {
+		if( count( $this->mDefaults ) )
+			return $this->mDefaults;
+
+		global $IP;
+		require( "$IP/includes/DefaultSettings.php" );
+		foreach( get_defined_vars() as $name => $var ){
+			if( substr( $name, 0, 2 ) == 'wg' && $name != 'wgConf' )
+				$this->mDefaults[$name] = $var;
+		}
+		return $this->mDefaults;
+	}
+
+	/**
+	 * Get the default settings (i.e. before apply Configure's overrides)
+	 * Very hacky too...
+	 *
+	 * @param $wiki String
+	 * @return array
+	 */
+	public function getDefaultsForWiki( $wiki ){
+		// Hmm, a better solution would be nice!
+		$savedSettings = $this->settings;
+		$this->settings = $this->mOldSettings;
+
+		$wikiDefaults = $this->getCurrent( $wiki );
+
+		$this->settings = $savedSettings;
+		unset( $savedSettings );
+
+		$globalDefaults = $this->getDefaults();
+		$ret = array();
+		$keys = array_unique( array_merge( array_keys( $wikiDefaults ), array_keys( $globalDefaults ) ) );
+		foreach( $keys as $setting ){
+			if( isset( $wikiDefaults[$setting] ) && !is_null( $wikiDefaults[$setting] ) )
+				$ret[$setting] = $wikiDefaults[$setting];
+			elseif( isset( $globalDefaults[$setting] ) )
+				$ret[$setting] = $globalDefaults[$setting];
+		}
+		return $ret;
+	}
+
+	/**
+	 * Save a new configuration
+	 * @param $settings array of settings
+	 * @param $wiki String: wiki name or false to use the current one
+	 * @return bool true on success
+	 */
+	public function saveNewSettings( $settings, $wiki = false ){
+		if( !is_array( $settings ) || $settings === array() )
+			# hmmm
+			return false;
+
+		if( $wiki === null ){
+			$this->mConf = $settings;
+		} else {
+			if( $wiki === false )
+				$wiki = $this->mWiki;
+			$this->mConf[$wiki] = $settings;
+		}
+
+		$arch = $this->getArchiveFileName();
+		$cur = $this->getFileName();
+		$cont = serialize( $this->mConf );
+		file_put_contents( $arch, $cont );
+		return ( file_put_contents( $cur, $cont ) !== false );
+	}
+
+	/**
+	 * List all archived files that are like conf-{$ts}.ser
+	 * @return array of timestamps
+	 */
+	public function listArchiveFiles(){
+		if( !$dir = opendir( $this->mDir ) )
+			return array();
+		$files = array();
+		while( ( $file = readdir( $dir ) ) !== false ) {
+			if( preg_match( '/conf-(\d{14}).ser$/', $file, $m ) )
+				$files[] = $m[1];
+		}
+		sort( $files, SORT_NUMERIC );
+		return array_reverse( $files );
+	}
+
+	/**
+	 * Get the current file name
+	 * @return String full path to the file
+	 */
+	protected function getFileName(){
+		return "{$this->mDir}conf-now.ser";
+	}
+
+	/**
+	 * Get the an archive file
+	 * @param $ts String: 14 char timestamp (YYYYMMDDHHMMSS) or null to use the
+	 *            current timestamp
+	 * @return String full path to the file
+	 */
+	public function getArchiveFileName( $ts = null ){
+		global $IP;
+
+		if( $ts === null )
+			$ts = wfTimestampNow();
+
+		$file = "{$this->mDir}conf-$ts.ser";
+		return $file;
+	}
+
+	/**
 	 * Get the directory used to store the files
 	 *
 	 * @return String
@@ -228,5 +300,35 @@ class WebConfiguration extends SiteConfiguration {
 	 */
 	public function getWiki(){
 		return $this->mWiki;
+	}
+	
+	/**
+	 * Merge array settings
+	 *
+	 * @return Array
+	 */
+	public static function mergeArrays( /* $array1, ... */ ) {
+		$args = func_get_args();
+		$canAdd = true;
+		foreach( $args as $arr ){
+			if( $arr !== array_values( $arr ) ){
+				$canAdd = false;
+				break;
+			}
+		}
+
+		$out = array_shift( $args );
+		foreach( $args as $arr ){
+			foreach( $arr as $key => $value ) {
+				if( isset( $out[$key] ) && is_array( $out[$key] ) && is_array( $value ) ) {
+					$out[$key] = self::mergeArrays( $out[$key], $value );
+				} elseif( $canAdd ) {
+					$out[] = $value;
+				} else {
+					$out[$key] = $value;
+				}
+			}
+		}
+		return $out;
 	}
 }
