@@ -283,7 +283,7 @@ HEADER;
 			return var_export( $val, true );
 
 		if( $arrType == 'simple' ){
-			$ret = "array(\n  " . implode( ",\n  ", array_map( array( __CLASS__, 'map_simple' ), $val ) ) . "\n)";
+			$ret = "array(\n  " . implode( ",\n  ", array_map( array( __CLASS__, 'map_simple' ), (array)$val ) ) . "\n)";
 			return $ret;
 				
 		}
