@@ -1922,6 +1922,7 @@ $messages['lb'] = array(
 	'viewapc-display-filename' => 'Numm vum Fichier',
 	'viewapc-display-device' => 'Apparat',
 	'viewapc-display-info' => 'Numm',
+	'viewapc-display-ttl' => 'Verfallsdatum',
 	'viewapc-display-type' => 'Typ',
 	'viewapc-display-num_hits' => 'Treffer',
 	'viewapc-display-mtime' => 'Geännert',

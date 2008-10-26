@@ -48,6 +48,11 @@ $aliases['hsb'] = array(
 	'Watchers' => array( 'Wobkedźbowarjo' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'Watchers' => array( 'Iwwerwacher' ),
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -105,6 +105,12 @@ $aliases['oc'] = array(
 	'Oversight' => array( 'Supervisar' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'HideRevision' => array( 'Ukryj wersję' ),
+	'Oversight' => array( 'Rejestr ukrywania' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'HideRevision' => array( 'Dölj version' ),

@@ -223,6 +223,18 @@ $messages['eo'] = array(
 	'ajax-se-usernotfound' => 'Eraro: Uzanto ne estas trovita',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'ajax-se-desc' => 'Muestra a los usuarios que están editando quién más está editando la misma página',
+	'ajax-se-title' => 'Editando actualmente:',
+	'ajax-se-pending' => 'refresco pendiente... (pulsa en esta caja o comienza a editar)',
+	'ajax-se-pagedoesnotexist' => 'no existe la página',
+	'ajax-se-userinvalid' => 'Error: usuario no válido',
+	'ajax-se-usernotfound' => 'Error: usuario no encontrado',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

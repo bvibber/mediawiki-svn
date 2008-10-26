@@ -903,6 +903,7 @@ $messages['mdf'] = array(
  * @author Сай
  */
 $messages['mhr'] = array(
+	'regexblock-form-reason' => 'Амал:',
 	'regexblock-stats-username' => '$1 лан',
 );
 

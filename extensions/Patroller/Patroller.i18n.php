@@ -655,6 +655,13 @@ $messages['lb'] = array(
 	'patrol-resume' => 'Hei clicke fir weiderzefueren.',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'patrol-revert-reason' => 'Амал:',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

@@ -113,6 +113,15 @@ $messages['grc'] = array(
 	'icon-desc' => 'Ἐπιτρέπει σοι χρῆσθαι εἰκόνας ὡς εἴδωλα καὶ ὡς σύνδεσμους εἰς εἴδωλα',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'icon-badimage' => 'תמונה בלתי תקינה',
+	'icon-badwidth' => 'רוחב בלתי תקין',
+	'icon-desc' => 'אפשרות לשימוש בתמונות כסמלים וכסמלים מקושרים',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -11,3 +11,9 @@ $aliases = array();
 $aliases['en'] = array(
 	'AccountManager' => array( 'AccountManager' ),
 );
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'AccountManager' => array( 'Gebruikersbeheer' ),
+);
+

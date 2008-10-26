@@ -163,6 +163,26 @@ $3',
 	'latexdoc-desc' => 'Edición colaborativa de documentos LaTeX',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'latexdoc_no_text' => 'הדף לא מכיל טקסט, לא ניתן לייצר DVI',
+	'latexdoc_cant_create_dir' => 'לא ניתן ליצור את התיקייה הזמנית $1',
+	'latexdoc_cant_write' => 'לא ניתן לכתוב אל הקובץ $1',
+	'latexdoc_error' => 'שגיאת LaTeX
+
+פקודה: $1
+
+פלט: $2
+
+$3',
+	'latexdoc_get_dvi' => 'איחזור DVI',
+	'latexdoc_get_pdf' => 'איחזור PDF',
+	'latexdoc-desc' => 'עריכה שיתופית של מסמכי LaTeX',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

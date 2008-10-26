@@ -585,6 +585,13 @@ $messages['lt'] = array(
 	'authorprotect-reason' => 'Priežastis',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'authorprotect-reason' => 'Амал',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

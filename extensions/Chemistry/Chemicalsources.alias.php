@@ -32,6 +32,11 @@ $aliases['as'] = array(
 	'ChemicalSources' => array( 'ৰাসায়নিক উৎসসমূহ' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'ChemicalSources' => array( 'Chemisch Quellen' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ChemicalSources' => array( 'Scheikundige_bronnen' ),

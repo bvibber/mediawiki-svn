@@ -11,3 +11,8 @@ $aliases = array();
 $aliases['en'] = array(
 	'SharedUserRights' => array( 'SharedUserRights' ),
 );
+
+$aliases['nl'] = array(
+	'SharedUserRights' => array( 'GedeeldeGebruikersrechten' ),
+);
+

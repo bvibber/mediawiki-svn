@@ -156,6 +156,13 @@ $messages['bcl'] = array(
 	'createsigndoc-error-generic' => 'Salâ: $1',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'createsigndoc-pagename' => 'Старонка:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

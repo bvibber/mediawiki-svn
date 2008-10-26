@@ -279,6 +279,26 @@ $messages['gv'] = array(
 	'importfreeimages_owner' => 'Ughtar',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'importfreeimages' => 'ייבוא תמונות חופשיות',
+	'importfreeimages-desc' => 'אפשרות ל[[Special:ImportFreeImages|ייבוא תמונות בעלות רשיון מתאים]] מ־[http://www.flickr.com Flickr]',
+	'importfreeimages_description' => 'דף זה מאפשר לכם לחפש תמונות בעלות רשיון מתאים מ־Flickr ולייבא אותן אל הוויקי שלכם.',
+	'importfreeimages_noapikey' => 'לא הוגדר מפתח ה־API של Flickr.
+כדי לעשות זאת, אנא ייבאו את מפתח ה־API מהכתובת [http://www.flickr.com/services/api/misc.api_keys.html הזו] והגדירו את wgFlickrAPIKey בקובץ ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => 'לא נמצאו תמונות לפי קריטריון החיפוש "$1", אנא נסו שנית.',
+	'importfreeimages_invalidurl' => 'הכתובת "$1" אינה תמונה תקינה של Flickr.',
+	'importfreeimages_owner' => 'יוצר',
+	'importfreeimages_importthis' => 'ייבוא תמונה זו',
+	'importfreeimages_next' => '$1 הבאות',
+	'importfreeimages_filefromflickr' => '$1 על ידי המשתמש <b>[$2]</b> מ־Flickr. כתובת מקורית',
+	'importfreeimages_promptuserforfilename' => 'אנא הקלידו את שם קובץ היעד:',
+	'importfreeimages_returntoform' => "או, לחצו <a href='$1'>כאן</a> כדי לחזור לתוצאות החיפוש",
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

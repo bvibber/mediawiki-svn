@@ -102,16 +102,25 @@ $4',
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Jon Harald Søby
  * @author McDutchie
  */
 $messages['qqq'] = array(
 	'code-comments' => '{{Identical|Comments}}',
+	'code-field-id' => '{{Identical|Revision}}',
 	'code-field-author' => '{{Identical|Author}}',
 	'code-field-message' => '{{Identical|Comment}}',
+	'code-field-timestamp' => '{{Identical|Date}}',
 	'code-field-comments' => '{{Identical|Notes}}',
+	'code-field-path' => '{{Identical|Path}}',
 	'code-rev-author' => '{{Identical|Author}}',
 	'code-rev-message' => '{{Identical|Comment}}',
+	'code-rev-rev' => '{{Identical|Revision}}',
+	'code-rev-status' => '{{Identical|Status}}',
 	'code-rev-comment-preview' => '{{Identical|Preview}}',
+	'code-status-new' => '{{Identical|New}}',
+	'code-status-ok' => '{{Identical|OK}}',
+	'code-pathsearch-path' => '{{Identical|Path}}',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
 	'right-codereview-link-user' => '{{Doc-right}}',
@@ -431,7 +440,9 @@ $4',
 	'specialpages-group-developer' => 'Vývojářské nástroje',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Metalhead64
+ */
 $messages['de'] = array(
 	'code' => 'Codeprüfung',
 	'code-comments' => 'Kommentare',
@@ -490,6 +501,7 @@ $messages['de'] = array(
 	'code-pathsearch-legend' => 'Suche in diesem Repositorium nach Versionen, per Pfad',
 	'code-pathsearch-path' => 'Pfad:',
 	'code-rev-submit' => 'Änderungen übertragen',
+	'code-rev-submit-next' => 'Übertragen und nächster ungeprüfter',
 	'codereview-reply-link' => 'antworten',
 	'codereview-email-subj' => '[$1] [r$2]: Neuer Kommentar hinzugefügt',
 	'codereview-email-body' => 'Benutzer „$1“ hat r$3 kommentiert:
@@ -1066,6 +1078,7 @@ $messages['ia'] = array(
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Melos
+ * @author Santu
  */
 $messages['it'] = array(
 	'code-comments' => 'Commenti',
@@ -1104,7 +1117,7 @@ $messages['it'] = array(
 	'codereview-reply-link' => 'rispondi',
 	'repoadmin-new-button' => 'Crea',
 	'repoadmin-edit-button' => 'OK',
-	'specialpages-group-developer' => 'Tool di sviluppo',
+	'specialpages-group-developer' => 'Tool di sviluppu',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1151,10 +1164,13 @@ $messages['lb'] = array(
 	'code-author-haslink' => 'Dësen Auteur ass mam Wiki-Benotzer $1 verbonn',
 	'code-author-orphan' => 'Dëse Benotzer huet kee Link mat engem Wiki-Benotzerkont',
 	'code-author-dolink' => 'Dësen Auteur mat engem Wiki-Benotzer verbannen:',
+	'code-author-alterlink' => 'De Wiki-Benotzer de mat dësem Auteur verlinkt ass änneren:',
+	'code-author-orunlink' => 'oder dëse Benotzer net méi verlinken:',
 	'code-author-name' => 'Gitt e Benotzernmm an:',
 	'code-author-success' => 'Den Auteur $1 gouf mat dem Wiki-Benotzer $2 verbonn (verlinkt)',
 	'code-author-link' => 'verlinken?',
 	'code-author-unlink' => 'Link ophiewen?',
+	'code-author-unlinksuccess' => 'Den Auteur $1 ass net méi verlinkt',
 	'code-field-id' => 'Revisioun',
 	'code-field-author' => 'Auteur',
 	'code-field-user' => 'Commentateur',
@@ -1162,6 +1178,7 @@ $messages['lb'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Notizen',
+	'code-field-path' => 'Pad',
 	'code-field-text' => 'Notiz',
 	'code-rev-author' => 'Auteur:',
 	'code-rev-date' => 'Datum:',
@@ -1177,6 +1194,7 @@ $messages['lb'] = array(
 	'code-rev-tag-add' => 'Tagen derbäisetzen:',
 	'code-rev-tag-remove' => 'Tagen ewechhuelen:',
 	'code-rev-comment-by' => 'Bemierkung vum $1',
+	'code-rev-comment-submit' => 'Bemierkung fortschécken',
 	'code-rev-comment-preview' => 'Kucken ouni ze späicheren',
 	'code-rev-purge-link' => 'botzen (vum Cache)',
 	'code-status-new' => 'nei',
@@ -1187,8 +1205,19 @@ $messages['lb'] = array(
 	'code-rev-submit' => 'Ännerungen publizéieren',
 	'codereview-reply-link' => 'äntwerten',
 	'codereview-email-subj' => '[$1] [r$2]: Nei Bemierkung derbäigesat',
+	'codereview-email-body' => 'De Benotzer "$1" huet eng Bemierkung op r$3 hannerlooss.
+
+Ganz URL: $2
+
+Bemierkung:
+
+$4',
 	'repoadmin-new-button' => 'Uleeën',
 	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'De \'\'Repositoire\'\' "[[Special:Code/$1|$1]]" gouf geännert.',
+	'right-codereview-add-tag' => "Nei Tagen bäi d'Versiounen derbäisetzen",
+	'right-codereview-post-comment' => "Bemierkunge Bài d'Versiounen derbäisetzen",
+	'right-codereview-set-status' => 'Ännere vum Status vun de Versiounen',
 	'right-codereview-link-user' => 'Auteure mat Wiki-Benotzer verbannen (verlinken)',
 	'specialpages-group-developer' => 'Handwierksgeschir fir Entwéckler (Programméierer)',
 );
@@ -1197,6 +1226,41 @@ $messages['lb'] = array(
  * @author Aviator
  */
 $messages['ms'] = array(
+	'code-authors' => 'pengarang',
+	'code-tags' => 'label',
+	'code-field-id' => 'Semakan',
+	'code-field-author' => 'Pengarang',
+	'code-field-user' => 'Pengulas',
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Tarikh',
+	'code-field-comments' => 'Catatan',
+	'code-field-path' => 'Laluan',
+	'code-field-text' => 'Catatan',
+	'code-rev-author' => 'Pengarang:',
+	'code-rev-date' => 'Tarikh:',
+	'code-rev-message' => 'Ulasan:',
+	'code-rev-repo' => 'Gudang:',
+	'code-rev-rev' => 'Semakan:',
+	'code-rev-rev-viewvc' => 'di ViewVC',
+	'code-rev-tags' => 'Label:',
+	'code-rev-tag-add' => 'Tambah label:',
+	'code-rev-tag-remove' => 'Buang label:',
+	'code-rev-comment-by' => 'Ulasan oleh $1',
+	'code-rev-comment-submit' => 'Serah ulasan',
+	'code-status-new' => 'baru',
+	'code-status-resolved' => 'beres',
+	'code-status-ok' => 'ok',
+	'code-status-deferred' => 'tunda',
+	'code-pathsearch-path' => 'Laluan:',
+	'codereview-reply-link' => 'balas',
+	'codereview-email-subj' => '[$1] [s$2]: Ulasan baru',
+	'codereview-email-body' => 'Pengguna "$1" mengirim ulasan bagi s$3.
+
+URL penuh: $2
+
+Ulasan:
+
+$4',
 	'repoadmin' => 'Pentadbiran Gedung',
 	'repoadmin-new-legend' => 'Cipta gedung baru',
 	'repoadmin-new-label' => 'Nama gedung:',
@@ -1326,6 +1390,29 @@ $4',
 	'specialpages-group-developer' => 'Hulpmiddelen voor ontwikkelaars',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'code-comments' => 'Kommentarer',
+	'code-field-id' => 'Revisjon',
+	'code-field-timestamp' => 'Dato',
+	'code-field-comments' => 'Notater',
+	'code-field-path' => 'Sti',
+	'code-field-text' => 'Notat',
+	'code-rev-date' => 'Dato:',
+	'code-rev-message' => 'Kommentar:',
+	'code-rev-rev' => 'Revisjon:',
+	'code-rev-status' => 'Status:',
+	'code-rev-comment-preview' => 'Forhåndsvisning',
+	'code-status-new' => 'ny',
+	'code-status-ok' => 'OK',
+	'code-pathsearch-path' => 'Sti:',
+	'codereview-reply-link' => 'svar',
+	'repoadmin-new-button' => 'Opprett',
+	'repoadmin-edit-button' => 'OK',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -1414,6 +1501,42 @@ $4",
 	'right-codereview-set-status' => "Cambiar l'estatut de las revisions",
 	'right-codereview-link-user' => 'Liga los autors als utilizaires wiki',
 	'specialpages-group-developer' => 'Espleches del desvolopaire',
+);
+
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'specialpages-group-developer' => 'Narzędzia dewelopera',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'code-comments' => 'Comentários',
+	'code-no-repo' => 'Nenhum repositório configurado!',
+	'code-authors' => 'autores',
+	'code-author-name' => 'Introduza um nome de utilizador:',
+	'code-field-id' => 'Revisão',
+	'code-field-author' => 'Autor',
+	'code-field-user' => 'Comentador',
+	'code-field-timestamp' => 'Data',
+	'code-field-comments' => 'Notas',
+	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Data:',
+	'code-rev-repo' => 'Repositório:',
+	'codereview-reply-link' => 'responder',
+	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em r$3.
+
+URL completa: $2
+
+Comentário:
+
+$4',
+	'repoadmin-new-label' => 'Nome do repositório:',
+	'repoadmin-new-button' => 'Criar',
+	'right-repoadmin' => 'Gerir repositórios de código',
 );
 
 /** Russian (Русский)
@@ -1787,6 +1910,43 @@ $messages['te'] = array(
 	'repoadmin-edit-button' => 'సరే',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'code-authors' => 'autori',
+	'code-tags' => 'tag',
+	'code-author-name' => 'Inserissi un nome utente:',
+	'code-author-unlinksuccess' => "El colegamento a l'autor $1 el xe stà cavà",
+	'code-field-id' => 'Revision',
+	'code-field-author' => 'Autor',
+	'code-field-status' => 'Stato',
+	'code-field-timestamp' => 'Data',
+	'code-field-comments' => 'Note',
+	'code-field-path' => 'Percorso',
+	'code-field-text' => 'Note',
+	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Data:',
+	'code-rev-message' => 'Comento:',
+	'code-rev-rev' => 'Revision:',
+	'code-rev-paths' => 'Percorsi modificài:',
+	'code-rev-modified-a' => 'zontà',
+	'code-rev-modified-r' => 'rinpiazà',
+	'code-rev-modified-d' => 'scancelà',
+	'code-rev-modified-m' => 'canbià',
+	'code-rev-status' => 'Stato:',
+	'code-rev-status-set' => 'Canbia stato',
+	'code-rev-tags' => 'Tag:',
+	'code-rev-comment-preview' => 'Anteprima',
+	'code-rev-diff' => 'Dif',
+	'code-rev-diff-link' => 'dif',
+	'code-pathsearch-path' => 'Percorso:',
+	'codereview-reply-link' => 'rispondi',
+	'codereview-email-subj' => '[$1] [r$2]: Zontà un comento nóvo',
+	'repoadmin-new-button' => 'Crea',
+	'specialpages-group-developer' => "Strumenti pa' i svilupadori",
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
@@ -1848,7 +2008,7 @@ $messages['vi'] = array(
 	'code-status-deferred' => 'hoãn',
 	'code-pathsearch-legend' => 'Tìm kiếm các thay đổi trong kho này theo đường dẫn',
 	'code-pathsearch-path' => 'Đường dẫn:',
-	'code-rev-submit' => 'Đệ trình các thay đổi',
+	'code-rev-submit' => 'Trình các thay đổi',
 	'code-rev-submit-next' => 'Đệ trình và xem thay đổi chưa giải quyết sau',
 	'codereview-reply-link' => 'trả lời',
 	'codereview-email-subj' => '[$1] [r$2]: Tin nhắn mới',

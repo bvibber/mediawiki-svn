@@ -376,6 +376,33 @@ $messages['haw'] = array(
 	'importusers-log-summary-all' => 'Apau',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'importusers' => 'ייבוא משתמשים',
+	'importusers-desc' => '[[Special:ImportUsers|ייבוא משתמשים]] במקובץ מקובץ CSV; קידוד: UTF-8',
+	'importusers-uploadfile' => 'העלאת קובץ',
+	'importusers-form-caption' => 'קובץ CSV המשמש כקלט (UTF-8)',
+	'importusers-form-file' => 'מבנה קובץ המשתמשים (csv):',
+	'importusers-form-replace-present' => 'החלפת משתמשים קיימים',
+	'importusers-form-button' => 'ייבוא',
+	'importusers-user-added' => 'המשתמש <b>%s</b> נוסף.',
+	'importusers-user-present-update' => 'המשתמש <b>%s</b> כבר קיים. עודכן.',
+	'importusers-user-present-not-update' => 'המשתמש <b>%s</b> כבר קיים. לא עודכן.',
+	'importusers-user-invalid-format' => 'נתוני המשתמש בשורה %s ריקים או שהם בפורמט בלתי תקין, ולכן דולגו.',
+	'importusers-log' => 'יומן ייבוא',
+	'importusers-log-summary' => 'תקציר',
+	'importusers-log-summary-all' => 'הכול',
+	'importusers-log-summary-added' => 'נוסף',
+	'importusers-log-summary-updated' => 'עודכן',
+	'importusers-login-name' => 'שם המשתמש',
+	'importusers-password' => 'סיסמה',
+	'importusers-email' => 'דוא"ל',
+	'importusers-realname' => 'שם אמיתי',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

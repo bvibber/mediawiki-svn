@@ -201,6 +201,14 @@ $messages['it'] = array(
 	'categoryonupload-label' => 'Categoria:',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'categoryonupload-desc' => 'ファイルのアップロード時にカテゴリを選択する入力欄',
+	'categoryonupload-label' => 'カテゴリ:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

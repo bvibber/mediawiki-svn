@@ -120,6 +120,13 @@ $messages['ast'] = array(
 	'player-goto-file' => 'archivu',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'player-goto-page' => 'Старонка',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

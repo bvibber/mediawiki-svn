@@ -43,6 +43,11 @@ $aliases['id'] = array(
 	'MultiUpload' => array( 'Multi unggah' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'MultiUpload' => array( 'Vill Fichieren eroplueden' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'MultiUpload' => array( 'Meerdere_bestanden_toevoegen' ),

@@ -2446,6 +2446,7 @@ $messages['lt'] = array(
  * @author Сай
  */
 $messages['mhr'] = array(
+	'mv_remove_reason' => 'Шӧрымын амалже:',
 	'mv_upload_file' => 'Файлым пурташ',
 	'mv_tool_search' => 'Кычал',
 	'mv_history' => 'Историй',

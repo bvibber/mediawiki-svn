@@ -978,6 +978,14 @@ $messages['mdf'] = array(
 	'crosswikiblock-alreadyblocked' => '"$1" сёлкфоль ни',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'crosswikiblock-reason' => 'Амал:',
+	'crosswikiunblock-reason' => 'Амал:',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

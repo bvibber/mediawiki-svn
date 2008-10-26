@@ -211,11 +211,11 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Zetud
  */
 $messages['fr'] = array(
 	'closewikis-desc' => 'Permet de clôturer les sites wiki dans ce gestionnaire de wiki',
-	'closewikis-closed-default' => 'Ce wiki est clôturé',
 	'closewikis-page' => 'Clôturer le wiki',
 	'closewikis-page-close' => 'Clôturer le wiki',
 	'closewikis-page-close-wiki' => 'Wiki :',
@@ -231,11 +231,18 @@ $messages['fr'] = array(
 	'closewikis-page-err-nowiki' => 'Le wiki indiqué est incorrect',
 	'closewikis-page-err-closed' => 'Ce wiki est déjà clôturé',
 	'closewikis-page-err-opened' => 'Wiki non clôturé',
+	'closewikis-list' => 'Liste des wikis clos',
+	'closewikis-list-intro' => 'Cette liste contient les wiki clos par les stewards.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Clos par',
+	'closewikis-list-header-timestamp' => 'Clos le',
+	'closewikis-list-header-dispreason' => 'Raison donnée',
 	'closewikis-log' => 'Journal de clôture des wiki',
 	'closewikis-log-header' => 'Voici un journal de toutes les fermetures et réouvertures de wiki faites par les stewards',
 	'closewikis-log-close' => 'a clôturé $2',
 	'closewikis-log-reopen' => 'a réouvert $2',
 	'right-editclosedwikis' => 'Modifier les wikis clôturés',
+	'right-closewikis' => 'Clôturer les wikis',
 );
 
 /** Galician (Galego)
@@ -420,7 +427,6 @@ $messages['myv'] = array(
  */
 $messages['nl'] = array(
 	'closewikis-desc' => "Maakt het sluiten en heropenen van wiki's in een wikifarm mogelijk",
-	'closewikis-closed-default' => 'Deze wiki is gesloten',
 	'closewikis-page' => 'Wiki sluiten',
 	'closewikis-page-close' => 'Wiki sluiten',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -436,11 +442,18 @@ $messages['nl'] = array(
 	'closewikis-page-err-nowiki' => 'Ongeldige naam van wiki opgegeven',
 	'closewikis-page-err-closed' => 'Deze wiki is al gesloten',
 	'closewikis-page-err-opened' => 'Deze wiki was niet gesloten',
+	'closewikis-list' => "Gesloten wiki's",
+	'closewikis-list-intro' => "Deze lijst bevat wiki's die gesloten zijn door stewards.",
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Gesloten door',
+	'closewikis-list-header-timestamp' => 'Gesloten op',
+	'closewikis-list-header-dispreason' => 'Weergegeven reden',
 	'closewikis-log' => 'Wikisluitingslogboek',
 	'closewikis-log-header' => "Dit is een logboek van alle sluitingen en heropeningen van wiki's uitgevoerd door stewards",
 	'closewikis-log-close' => 'heeft $2 gesloten',
 	'closewikis-log-reopen' => 'heeft $2 heropend',
 	'right-editclosedwikis' => 'Gesloten wikis bewerken',
+	'right-closewikis' => "Gesloten wiki's",
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

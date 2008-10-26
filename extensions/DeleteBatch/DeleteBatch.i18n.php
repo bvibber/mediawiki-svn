@@ -481,6 +481,13 @@ $messages['lb'] = array(
 	'deletebatch-select-yourself' => 'Dir',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'deletebatch-reason' => 'Шӧрымын амалже',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -516,6 +516,13 @@ $messages['as'] = array(
 	'deletequeue-list-search' => 'সন্ধান কৰক',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'deletequeue-list-header-page' => 'Старонка',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -1440,6 +1447,13 @@ $messages['lb'] = array(
 	'deletequeue-list-votes' => 'Lëscht vun de Stëmmen',
 	'deletequeue-list-header-page' => 'Säit',
 	'deletequeue-list-header-discusspage' => 'Diskussiounssäit',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'deletequeue-delnom-otherreason' => 'Вес амал',
 );
 
 /** Erzya (Эрзянь)

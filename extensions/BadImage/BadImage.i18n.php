@@ -1142,6 +1142,13 @@ $messages['lt'] = array(
 	'badimages-remove-confirm' => 'Patvirtinkite, jog norite pašalinti $1 iš sąrašo:',
 );
 
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'badimages-reason' => 'Амал:',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  * @author Shijualex

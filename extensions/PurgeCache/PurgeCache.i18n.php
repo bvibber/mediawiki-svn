@@ -225,7 +225,7 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'purgecache' => 'Cache legen',
-	'purgecache-desc' => '[[Special:PurgeCache|Speciale pagina]] om de table OBJECTCACHE op legen',
+	'purgecache-desc' => '[[Special:PurgeCache|Speciale pagina]] om de tabel OBJECTCACHE op legen',
 	'purgecache-warning' => 'Hiermee worden de cachetabellen geleegd.',
 	'purgecache-purged' => 'De cache is geleegd.',
 	'purgecache-button' => 'Cache legen',

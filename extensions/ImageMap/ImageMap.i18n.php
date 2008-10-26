@@ -915,6 +915,7 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -930,6 +931,7 @@ $messages['pl'] = array(
 	'imagemap_invalid_coord' => 'Error: nieprawidłowa współrzędna w linii $1; należy podać liczbę',
 	'imagemap_invalid_desc' => 'Error: nieprawidłowa specyfikacja opisu; należy wpisać jeden z wariantów: <tt>$1</tt>',
 	'imagemap_description' => 'Informacje o tej grafice',
+	'imagemap_poly_odd' => 'Błąd: w linii $1 znaleziono wielokąt z nieparzystą liczbą współrzędnych',
 );
 
 /** Piedmontese (Piemontèis)

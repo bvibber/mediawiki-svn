@@ -121,6 +121,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'dt_viewxml_categories' => 'Катэгорыі',
+	'dt_xml_page' => 'Старонка',
 );
 
 /** Bulgarian (Български)

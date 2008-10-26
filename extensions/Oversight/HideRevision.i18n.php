@@ -512,6 +512,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Heuler06
+ * @author Metalhead64
  * @author Raimond Spekking
  */
 $messages['de'] = array(
@@ -554,6 +555,8 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'oversight-hidden' => 'Entfernte Version',
 	'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
 	'oversight-legend' => 'Logbuch durchsuchen',
+	'oversight-oversighter' => 'Oversight-Berechtigter:',
+	'oversight-offender' => 'Benutzer:',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -824,6 +827,8 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 	'oversight-hidden' => 'Révision cachée',
 	'oversight-header' => 'Ci-dessous figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges de {{MediaWiki:Oversight}}.',
 	'oversight-legend' => 'Journal des recherches des versions cachées',
+	'oversight-oversighter' => 'Superviseur :',
+	'oversight-offender' => 'Diffamateur :',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -2170,6 +2175,8 @@ Najpierw wycofaj ostatnią edycję.',
 	'oversight-header' => 'Poniżej znajduje się lista ukrytych, w ostatnim czasie, trwale przed dostępem publicznym wersji.
 Ujawnianie tych informacji może skutkować stałą utratą uprawnień Rewizora.',
 	'oversight-legend' => 'Szukaj ukrytych wersji w rejestrze',
+	'oversight-oversighter' => 'Rewizor:',
+	'oversight-offender' => 'Autor usuniętej edycji:',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2431,6 +2438,8 @@ administrátorom databázy v prípade, že spravíte chybu.",
 	'oversight-hidden' => 'Skrytá revízia',
 	'oversight-header' => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok permanentnú stratu práv Dozrcu (oversight).',
 	'oversight-legend' => 'Hľadať v zázname skrývania revízií',
+	'oversight-oversighter' => 'Dozorca:',
+	'oversight-offender' => 'Previnilec:',
 );
 
 /** Samoan (Gagana Samoa)
@@ -2895,7 +2904,7 @@ Không ai có thể dùng website để xem phiên bản sau khi nó được gi
 Nếu đưa ra thông tin này, bạn sẽ mất vĩnh viễn quyền giám sát.',
 	'oversight-legend' => 'Tìm kiếm trong nhật trình giấu phiên bản',
 	'oversight-oversighter' => 'Giám sát viên:',
-	'oversight-offender' => 'Tội nhân:',
+	'oversight-offender' => 'Người phạm lỗi:',
 );
 
 /** Volapük (Volapük)
