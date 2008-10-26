@@ -66,16 +66,16 @@ class WebConfiguration extends SiteConfiguration {
 				if( $name != '__includes' ) {
 					# Merge if possible
 					if( isset( $this->settings[$name][$site] ) && is_array( $this->settings[$name][$site] ) && is_array( $val ) ){
-						$this->settings[$name][$site] = self::arrayMerge( $val, $this->settings[$name][$site] );
+						$this->settings[$name][$site] = self::mergeArrays( $val, $this->settings[$name][$site] );
 					}
 					elseif( isset( $this->settings[$name]["+$site"] ) && is_array( $this->settings[$name]["+$site"] ) && is_array( $val ) ) {
-						$this->settings[$name]["+$site"] = self::arrayMerge( $val, $this->settings[$name]["+$site"] );
+						$this->settings[$name]["+$site"] = self::mergeArrays( $val, $this->settings[$name]["+$site"] );
 					}
 					elseif( isset( $this->settings["+$name"][$site] ) && is_array( $this->settings["+$name"][$site] ) && is_array( $val ) ) {
-						$this->settings["+$name"][$site] = self::arrayMerge( $val, $this->settings["+$name"][$site] );
+						$this->settings["+$name"][$site] = self::mergeArrays( $val, $this->settings["+$name"][$site] );
 					}
 					elseif( isset( $this->settings["+$name"]["+$site"] ) && is_array( $this->settings["+$name"]["+$site"] ) && is_array( $val ) ) {
-						$this->settings["+$name"]["+$site"] = self::arrayMerge( $val, $this->settings["+$name"]["+$site"] );
+						$this->settings["+$name"]["+$site"] = self::mergeArrays( $val, $this->settings["+$name"]["+$site"] );
 					}
 					elseif( isset( $this->settings["+$name"] ) && is_array( $val ) ) {
 						$this->settings["+$name"][$site] = $val;
