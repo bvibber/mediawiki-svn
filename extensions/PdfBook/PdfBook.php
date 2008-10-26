@@ -16,29 +16,24 @@
  */
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('PDFBOOK_VERSION', '1.0.0, 2008-09-25');
+define('PDFBOOK_VERSION', '1.0.1, 2008-10-26');
 
-$wgPdfBookMagic                = "book";
 $wgExtensionFunctions[]        = 'wfSetupPdfBook';
 $wgHooks['LanguageGetMagic'][] = 'wfPdfBookLanguageGetMagic';
 
 $wgExtensionCredits['parserhook'][] = array(
-	'name'	      => 'Pdf Book',
+	'name'	      => 'PdfBook',
 	'author'      => '[http://www.organicdesign.co.nz/nad User:Nad]',
 	'description' => 'Composes a book from articles in a category and exports as a PDF book',
-	'url'	      => 'http://www.mediawiki.org/wiki/Extension:Pdf_Book',
+	'url'	      => 'http://www.mediawiki.org/wiki/Extension:PdfBook',
 	'version'     => PDFBOOK_VERSION
 	);
 
 class PdfBook {
 
-	/**
-	 * Constructor
-	 */
 	function PdfBook() {
 		global $wgHooks, $wgParser, $wgPdfBookMagic;
 		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
-		$wgParser->setFunctionHook($wgPdfBookMagic, array($this, 'magicBook'));
 		$wgHooks['UnknownAction'][] = $this;
 
 		# Add a new pdf log type
@@ -49,28 +44,16 @@ class PdfBook {
 	}
 
 	/**
-	 * Expand the book-magic
-	 * (not used yet)
-	 */
-	function magicBook(&$parser) {
-
-		# Populate $argv with both named and numeric parameters
-		$argv = array();
-		foreach (func_get_args() as $arg) if (!is_object($arg)) {
-			if (preg_match('/^(.+?)\\s*=\\s*(.+)$/', $arg, $match)) $argv[$match[1]] = $match[2]; else $argv[] = $arg;
-		}
-
-		return $text;
-	}
-
-	/**
 	 * Perform the export operation
 	 */
-	function onUnknownAction($action,$article) {
-		global $wgOut, $wgUser, $wgTitle, $wgParser;
+	function onUnknownAction($action, $article) {
+		global $wgOut, $wgUser, $wgTitle, $wgParser, $wgRequest;
 		global $wgServer, $wgArticlePath, $wgScriptPath, $wgUploadPath, $wgUploadDirectory, $wgScript;
 
 		if ($action == 'pdfbook') {
+
+			$title = $article->getTitle();
+			$opt = ParserOptions::newFromUser($wgUser);
 
 			# Log the export
 			$msg = $wgUser->getUserPage()->getPrefixedText().' exported as a PDF book';
@@ -78,43 +61,48 @@ class PdfBook {
 			$log->addEntry('book', $wgTitle, $msg);
 
 			# Initialise PDF variables
-			$layout  = '--firstpage toc';
+			$format  = $wgRequest->getText('format');
+			$notitle = $wgRequest->getText('notitle');
+			$layout  = $format == 'single' ? '--webpage' : '--firstpage toc';
 			$left    = $this->setProperty('LeftMargin',  '1cm');
 			$right   = $this->setProperty('RightMargin', '1cm');
 			$top     = $this->setProperty('TopMargin',   '1cm');
 			$bottom  = $this->setProperty('BottomMargin','1cm');
-			$font    = $this->setProperty('Font',	'Arial');
+			$font    = $this->setProperty('Font',	     'Arial');
 			$size    = $this->setProperty('FontSize',    '8');
-			$link    = $this->setProperty('LinkColour',  '217A28');
+			$linkcol = $this->setProperty('LinkColour',  '217A28');
 			$levels  = $this->setProperty('TocLevels',   '2');
 			$exclude = $this->setProperty('Exclude',     array());
+			$width   = $this->setProperty('Width',       '');
+			$width   = $width ? "--browserwidth $width" : '';
 			if (!is_array($exclude)) $exclude = split('\\s*,\\s*', $exclude);
  
 			# Select articles from members if a category or links in content if not
-			$articles = array();
-			$title    = $article->getTitle();
-			$opt      = ParserOptions::newFromUser($wgUser);
-			if ($title->getNamespace() == NS_CATEGORY) {
-				$db     = &wfGetDB(DB_SLAVE);
-				$cat    = $db->addQuotes($title->getDBkey());
-				$result = $db->select(
-					'categorylinks',
-					'cl_from',
-					"cl_to = $cat",
-					'PdfBook',
-					array('ORDER BY' => 'cl_sortkey')
-				);
-				if ($result instanceof ResultWrapper) $result = $result->result;
-				while ($row = $db->fetchRow($result)) $articles[] = Title::newFromID($row[0]);
-			}
+			if ($format == 'single') $articles = array($title);
 			else {
-				$text = $article->fetchContent();
-				$text = $wgParser->preprocess($text,$title,$opt);
-				if (preg_match_all('/^\\*\\s*\\[{2}\\s*([^\\|\\]]+)\\s*.*?\\]{2}/m',$text,$links))
-					foreach ($links[1] as $link) $articles[] = Title::newFromText($link);
+				$articles = array();
+				if ($title->getNamespace() == NS_CATEGORY) {
+					$db     = &wfGetDB(DB_SLAVE);
+					$cat    = $db->addQuotes($title->getDBkey());
+					$result = $db->select(
+						'categorylinks',
+						'cl_from',
+						"cl_to = $cat",
+						'PdfBook',
+						array('ORDER BY' => 'cl_sortkey')
+					);
+					if ($result instanceof ResultWrapper) $result = $result->result;
+					while ($row = $db->fetchRow($result)) $articles[] = Title::newFromID($row[0]);
+				}
+				else {
+					$text = $article->fetchContent();
+					$text = $wgParser->preprocess($text, $title, $opt);
+					if (preg_match_all('/^\\*\\s*\\[{2}\\s*([^\\|\\]]+)\\s*.*?\\]{2}/m', $text, $links))
+						foreach ($links[1] as $link) $articles[] = Title::newFromText($link);
+				}
 			}
 
-			# Format the article's as a single HTML document with absolute URL's
+			# Format the article(s) as a single HTML document with absolute URL's
 			$book = $title->getText();
 			$html = '';
 			$wgArticlePath = $wgServer.$wgArticlePath;
@@ -136,14 +124,15 @@ class PdfBook {
 					$text    = preg_replace('|(<img[^>]+?src=")(/.+?>)|', "$1$wgServer$2", $text);       # make image urls absolute
 					$text    = preg_replace('|<div\s*class=[\'"]?noprint["\']?>.+?</div>|s', '', $text); # non-printable areas
 					$text    = preg_replace('|@{4}([^@]+?)@{4}|s', '<!--$1-->', $text);                  # HTML comments hack
-					$text    = preg_replace('|<table|', '<table border borderwidth=2 cellpadding=3 cellspacing=0', $text);
+					#$text    = preg_replace('|<table|', '<table border borderwidth=2 cellpadding=3 cellspacing=0', $text);
 					$ttext   = basename($ttext);
-					$html   .= utf8_decode("<h1>$ttext</h1>$text\n");
+					$h1      = $notitle ? '' : "<center><h1>$ttext</h1></center>";
+					$html   .= utf8_decode("$h1$text\n");
 				}
 			}
 
 			# If format=html in query-string, return html content directly
-			if (isset($_REQUEST['format']) && $_REQUEST['format'] == 'html') {
+			if ($format == 'html') {
 				$wgOut->disable();
 				header("Content-Type: text/html");
 				header("Content-Disposition: attachment; filename=\"$book.html\"");
@@ -156,14 +145,17 @@ class PdfBook {
 				fwrite($fh, $html);
 				fclose($fh);
 
+				$footer = $format == 'single' ? '...' : '.1.';
+				$toc    = $format == 'single' ? '' : " --toclevels $levels";
+
 				# Send the file to the client via htmldoc converter
 				$wgOut->disable();
 				header("Content-Type: application/pdf");
 				header("Content-Disposition: attachment; filename=\"$book.pdf\"");
 				$cmd  = "--left $left --right $right --top $top --bottom $bottom";
-				$cmd .= " --header ... --footer .1. --headfootsize 8 --quiet --jpeg --color";
-				$cmd .= " --bodyfont $font --fontsize $size --linkstyle plain --linkcolor $links";
-				$cmd .= " --toclevels $levels --format pdf14 --numbered $layout";
+				$cmd .= " --header ... --footer $footer --headfootsize 8 --quiet --jpeg --color";
+				$cmd .= " --bodyfont $font --fontsize $size --linkstyle plain --linkcolor $linkcol";
+				$cmd .= "$toc --format pdf14 --numbered $layout $width";
 				$cmd  = "htmldoc -t pdf --charset iso-8859-1 $cmd $file";
 				putenv("HTMLDOC_NOCGI=1");
 				passthru($cmd);
@@ -178,8 +170,9 @@ class PdfBook {
 	/**
 	 * Return a property for htmldoc using global, request or passed default
 	 */
-	function setProperty($name,$default) {
-		if (isset($_REQUEST["pdf$name"]))      return $_REQUEST["pdf$name"];
+	function setProperty($name, $default) {
+		global $wgRequest;
+		if ($wgRequest->getText("pdf$name"))   return $wgRequest->getText("pdf$name");
 		if (isset($GLOBALS["wgPdfBook$name"])) return $GLOBALS["wgPdfBook$name"];
 		return $default;
 	}
