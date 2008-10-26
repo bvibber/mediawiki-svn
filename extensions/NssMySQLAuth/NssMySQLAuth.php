@@ -27,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['nssmysqlauth'] = $dir . 'NssMySQLAuth.i18n.php';
-$wgExtensionAliasFiles['nssmysqlauth'] = $dir . 'NssMySQLAuth.alias.php';
+$wgExtensionAliasesFiles['nssmysqlauth'] = $dir . 'NssMySQLAuth.alias.php';
 
 $wgAutoloadClasses['NssMySQLAuthPlugin'] = $dir . 'NssMySQLAuthPlugin.php';
 $wgAutoloadClasses['Md5crypt'] = $dir . 'Md5crypt.php';
