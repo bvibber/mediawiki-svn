@@ -1,20 +1,32 @@
 <?php
+if ( !defined( 'MEDIAWIKI' ) ) die();
+
 class Hanp {
 
 	/**
-	 * {{#hanp:word|particle}}
+	 * {{#hanp:word|particle|output}}
 	 */
-	static function hangulParticle( $parser, $word = '', $particle = '') {
-		switch ($particle) {
+	static function hangulParticle( $parser, $word = '', $particle = '', $output = '' ) {
+
+	/**
+	 * Initialization of $output parameter
+	 * This parameter used if $word contains signs not read
+	 * For example: {{#hanp:Wikimedia|particle|[[Wikimedia]]}}
+	 */
+	if ( $output == '' ) {
+		$output = $word;
+	}
+
+	switch ( $particle ) {
 
 		case '로':   # ro
 		case '으로': # euro
-			if ( self::endsInHangulRieul($word) ) {
-				return $word . '로';
-			} elseif ( self::endsInHangulConsonant($word) ) {
-				return $word . '으로';
+			if ( self::endsInHangulRieul( $word ) ) {
+				return $output . '로';
+			} elseif ( self::endsInHangulConsonant( $word ) ) {
+				return $output . '으로';
 			} else {
-				return $word . '로'; // Vowel or non-hangul
+				return $output . '로'; // Vowel or non-hangul
 			}
 			break;
 
@@ -26,19 +38,14 @@ class Hanp {
 		case '가':   # ga
 		case '과':   # gwa
 		case '는':   # neun
-			if ( self::endsInHangulConsonant($word) ) {
-				return $word . self::particleMap( $particle, self::SOFT );
+			if ( self::endsInHangulConsonant( $word ) ) {
+				return $output . self::particleMap( $particle, self::SOFT );
 			} else {
-				return $word . self::particleMap( $particle, self::HARD );
+				return $output . self::particleMap( $particle, self::HARD );
 			}
 			break;
 
-		case '의':   # yi
-			return $word . $particle;
-			break;
-
-		default: return $word;
-
+		default: return $output . $particle;
 		}
 	}
 
@@ -60,7 +67,7 @@ class Hanp {
 
 		if ( $dir === self::SOFT ) $map = array_flip( $map );
 
-		if ( isset($map[$particle]) ) {
+		if ( isset( $map[$particle] ) ) {
 			return $map[$particle];
 		} else {
 			return $particle; # We want only valid input, so it is already correct

@@ -1,5 +1,5 @@
 <?php
-if (!defined('MEDIAWIKI')) die();
+if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * This exension provides a parser function that aids in choosing the correct
  * particle that is attached to the words.
@@ -20,7 +20,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'hanp-desc',
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['hanp'] = $dir . 'Hanp.i18n.php';
 $wgAutoloadClasses['Hanp'] = $dir . 'Hanp.body.php';
 $wgHooks['LanguageGetMagic'][] = 'efHanpLanguageGetMagic';
