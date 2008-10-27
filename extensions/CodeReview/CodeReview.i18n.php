@@ -530,10 +530,101 @@ $4',
 	'specialpages-group-developer' => 'Entwicklerwerkzeuge',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'code' => 'Kodowa kontrola',
+	'code-comments' => 'Komentary',
+	'code-desc' => '[[Special:Code|Rěd za kodowu kontrolu]] z [[Special:RepoAdmin|pódpěru za Subversion]]',
+	'code-no-repo' => 'Žeden repozitorium konfigurěrowany!',
+	'code-notes' => 'Kontrolowe pśipiski',
+	'code-authors' => 'awtory',
+	'code-tags' => 'toflicki',
+	'code-authors-text' => 'to jo lisćina awtorow repozitoriuma w rěźe aktualnych nagraśow.',
+	'code-author-haslink' => 'Awtor jo z wikijowym wužywarjom $1 zwězany',
+	'code-author-orphan' => 'Toś ten awtor njama wótkaz k wikijowemu kontoju',
+	'code-author-dolink' => 'Toś togo awtora z wikijowym wužywarjom zwězaś:',
+	'code-author-alterlink' => 'Wikijowego wužywarja změniś, kótaryž jo z toś tym awtorom zwězany:',
+	'code-author-orunlink' => 'Abo toś togo wikijowego wužywarja rozwězaś:',
+	'code-author-name' => 'Wužywarske mě zapódaś:',
+	'code-author-success' => 'Awtor $1 jo se z wikijowym wužywarjom $2 zwězał',
+	'code-author-link' => 'zwězaś?',
+	'code-author-unlink' => 'rozwězaś?',
+	'code-author-unlinksuccess' => 'Awtor $1 jo se rozwězał',
+	'code-field-id' => 'Rewizija',
+	'code-field-author' => 'Awtor',
+	'code-field-user' => 'Komentator',
+	'code-field-message' => 'Zespominanje nagraś',
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Datum',
+	'code-field-comments' => 'Pśipiski',
+	'code-field-path' => 'Sćažka',
+	'code-field-text' => 'Pśipisk',
+	'code-rev-author' => 'Awtor:',
+	'code-rev-date' => 'Datum:',
+	'code-rev-message' => 'Komentar:',
+	'code-rev-repo' => 'Repozitorium:',
+	'code-rev-rev' => 'Rewizija:',
+	'code-rev-rev-viewvc' => 'na ViewVC',
+	'code-rev-paths' => 'Změnjone sćažki:',
+	'code-rev-modified-a' => 'pśidany',
+	'code-rev-modified-r' => 'wuměnjony',
+	'code-rev-modified-d' => 'wulašowany',
+	'code-rev-modified-m' => 'změnjony',
+	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Status změniś',
+	'code-rev-tags' => 'Toflicki:',
+	'code-rev-tag-add' => 'Toflicki pśidaś:',
+	'code-rev-tag-remove' => 'Toflicki wótwónoźeś:',
+	'code-rev-comment-by' => 'Komentar wót $1',
+	'code-rev-comment-submit' => 'Komentar wótpósłaś',
+	'code-rev-comment-preview' => 'Pśeglěd',
+	'code-rev-diff' => 'Rozdźěl',
+	'code-rev-diff-link' => 'rozdźěl',
+	'code-rev-purge-link' => 'Cache wuprozniś',
+	'code-status-new' => 'nowy',
+	'code-status-fixme' => 'pórěźiś',
+	'code-status-resolved' => 'wótbyty',
+	'code-status-ok' => 'w pórěźe',
+	'code-status-deferred' => 'wótstarcony',
+	'code-pathsearch-legend' => 'Wersije w toś tom repozitoriumje pó sćažce pytaś',
+	'code-pathsearch-path' => 'Sćažka:',
+	'code-rev-submit' => 'Změny nagraś',
+	'code-rev-submit-next' => 'Nagraś a pśiducy njewótbyty',
+	'codereview-reply-link' => 'wótegroniś',
+	'codereview-email-subj' => '[$1] [r$2]: Nowy komentar pśidany',
+	'codereview-email-body' => 'Wužywaŕ "$1" jo komentar wó r$3 pósłał.
+
+Dopołny URL: $2
+
+Komentar:
+
+$4',
+	'repoadmin' => 'Administracija repozitoriuma',
+	'repoadmin-new-legend' => 'Nowy repozitorium napóraś',
+	'repoadmin-new-label' => 'Mě repozitoriuma:',
+	'repoadmin-new-button' => 'Napóraś',
+	'repoadmin-edit-legend' => 'Změnjenje repozitoriuma "$1"',
+	'repoadmin-edit-path' => 'Sćažka repozitoriuma:',
+	'repoadmin-edit-bug' => 'Sćažka Bugzilla:',
+	'repoadmin-edit-view' => 'Sćažka k ViewVC:',
+	'repoadmin-edit-button' => 'W pórěźe',
+	'repoadmin-edit-sucess' => 'Repozitorium "[[Special:Code/$1|$1]]" jo se wuspěšnje změnił.',
+	'right-repoadmin' => 'Kodowe repozitoriumy zastojaś',
+	'right-codereview-add-tag' => 'Nowe toflicki rewizijam pśidaś',
+	'right-codereview-remove-tag' => 'Toflicki z rewizijow wótwónoźeś',
+	'right-codereview-post-comment' => 'Komentary wó rewizijach pśidaś',
+	'right-codereview-set-status' => 'Status rewizijow změniś',
+	'right-codereview-link-user' => 'Awtorow z wikijowymi wužywarjami zwězaś',
+	'specialpages-group-developer' => 'Rědy wuwiwarjow',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'code' => 'Kontrolo de Programkodo',
 	'code-comments' => 'Komentoj',
 	'code-authors' => 'aŭtoroj',
 	'code-tags' => 'etikedoj',
@@ -573,6 +664,7 @@ $messages['eo'] = array(
 	'code-pathsearch-path' => 'Vojo:',
 	'code-rev-submit' => 'Konfirmi ŝanĝojn',
 	'codereview-reply-link' => 'respondo',
+	'repoadmin-new-label' => 'Nomo de dosierujo:',
 	'repoadmin-new-button' => 'Krei',
 	'repoadmin-edit-path' => 'Vojo al dosierujo:',
 	'repoadmin-edit-button' => 'Ek',
@@ -947,6 +1039,96 @@ $messages['hr'] = array(
 	'code-rev-author' => 'Autor:',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'code' => 'Kodowa kontrola',
+	'code-comments' => 'Komentary',
+	'code-desc' => '[[Special:Code|Nastroj za kodowu kontrolu]] z [[Special:RepoAdmin|podpěru za Subversion]]',
+	'code-no-repo' => 'Žadyn repozitorij konfigurowany',
+	'code-notes' => 'Kontrolowe noticy',
+	'code-authors' => 'awtorojo',
+	'code-tags' => 'taflički',
+	'code-authors-text' => 'To je lisćina awtorojo repozitorija po porjedźe aktualnych nahraćow.',
+	'code-author-haslink' => 'Tutón awtor ma wotkaz na wikijoweho wužiwarja $1',
+	'code-author-orphan' => 'Tutón awtor nima wotkaz k wikijowemu kontu',
+	'code-author-dolink' => 'Tutoho awtora z wikijowym wužiwarjom zwjazać:',
+	'code-author-alterlink' => 'Wikijoweho wužiwarja změnić, kotryž ma wotkaz k tutomu awtorej:',
+	'code-author-orunlink' => 'Abo tutoho wikijoweho wužiwarja wotwjazać:',
+	'code-author-name' => 'Wužiwarske mjeno zapodać:',
+	'code-author-success' => 'Awtor $1 je z wikijowym wužiwarjom $2 zwjazany',
+	'code-author-link' => 'zwjazać?',
+	'code-author-unlink' => 'wotwjazać?',
+	'code-author-unlinksuccess' => 'Awtor $1 bu wotwjazany',
+	'code-field-id' => 'Rewizija',
+	'code-field-author' => 'Awtor',
+	'code-field-user' => 'Komentator',
+	'code-field-message' => 'Zjeće nahrać',
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Datum',
+	'code-field-comments' => 'Přispomnjenki',
+	'code-field-path' => 'Šćežka',
+	'code-field-text' => 'Přispomnjenka',
+	'code-rev-author' => 'Awtor:',
+	'code-rev-date' => 'Datum:',
+	'code-rev-message' => 'Komentar:',
+	'code-rev-repo' => 'Repozitorij:',
+	'code-rev-rev' => 'Rewizija:',
+	'code-rev-rev-viewvc' => 'na ViewVC',
+	'code-rev-paths' => 'Změnjene šćežki:',
+	'code-rev-modified-a' => 'přidaty',
+	'code-rev-modified-r' => 'narunany',
+	'code-rev-modified-d' => 'wušmórnjeny',
+	'code-rev-modified-m' => 'změnjeny',
+	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Status změnić',
+	'code-rev-tags' => 'Taflički:',
+	'code-rev-tag-add' => 'Taflički přidać:',
+	'code-rev-tag-remove' => 'Taflički wotstronić:',
+	'code-rev-comment-by' => 'Komentar wot $1',
+	'code-rev-comment-submit' => 'Komentar wotesłać',
+	'code-rev-comment-preview' => 'Přehlad',
+	'code-rev-diff' => 'Rozdźěl',
+	'code-rev-diff-link' => 'rozdźěl',
+	'code-rev-purge-link' => 'Pufrowak wuprózdnić',
+	'code-status-new' => 'nowy',
+	'code-status-fixme' => 'porjedźić',
+	'code-status-resolved' => 'sčinjeny',
+	'code-status-ok' => 'w porjadku',
+	'code-status-deferred' => 'zadźerženy',
+	'code-pathsearch-legend' => 'W tutym repozitoriju po šćežce pytać',
+	'code-pathsearch-path' => 'Šćežka:',
+	'code-rev-submit' => 'Změny nahrać',
+	'code-rev-submit-next' => 'Nahrać a přichodny njesčinjeny',
+	'codereview-reply-link' => 'wotmołwić',
+	'codereview-email-subj' => '[$1] [r$2]: Nowy komentar přidaty',
+	'codereview-email-body' => 'Wužiwar "$1" je komentar wo r$3 pósłał.
+
+Dospołny URL: $2
+
+Komentar:
+
+$4',
+	'repoadmin' => 'Administracija repozitorija',
+	'repoadmin-new-legend' => 'Nowy repozitorij wutworić',
+	'repoadmin-new-label' => 'Mjeno repozitorija:',
+	'repoadmin-new-button' => 'Wutworić',
+	'repoadmin-edit-legend' => 'Změnjenje repozitorija "$1"',
+	'repoadmin-edit-path' => 'Šćežka repozitorija:',
+	'repoadmin-edit-bug' => 'Šćežka k Bugzilla:',
+	'repoadmin-edit-view' => 'Šćežka k ViewVC:',
+	'repoadmin-edit-button' => 'W porjadku',
+	'repoadmin-edit-sucess' => 'Repozitorij "[[Special:Code/$1|$1]]" bu wuspěšnje změnjeny.',
+	'right-repoadmin' => 'Kodowe repozitorije zrjadować',
+	'right-codereview-add-tag' => 'Nowe taflički rewizijam přidać',
+	'right-codereview-remove-tag' => 'Taflički z rewizijow wotstronić',
+	'right-codereview-post-comment' => 'Komentary wo rewizijach přidać',
+	'right-codereview-set-status' => 'Status rewizijow změnić',
+	'right-codereview-link-user' => 'Awtorow z wikijowymi wužiwarjemi zwjazać',
+	'specialpages-group-developer' => 'Nastroje wuwiwarjow',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */
@@ -1117,7 +1299,7 @@ $messages['it'] = array(
 	'codereview-reply-link' => 'rispondi',
 	'repoadmin-new-button' => 'Crea',
 	'repoadmin-edit-button' => 'OK',
-	'specialpages-group-developer' => 'Tool di sviluppu',
+	'specialpages-group-developer' => 'Tool di sviluppo',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1411,6 +1593,7 @@ $messages['no'] = array(
 	'codereview-reply-link' => 'svar',
 	'repoadmin-new-button' => 'Opprett',
 	'repoadmin-edit-button' => 'OK',
+	'specialpages-group-developer' => 'Utviklerverktøy',
 );
 
 /** Occitan (Occitan)
@@ -1521,6 +1704,7 @@ $messages['pt'] = array(
 	'code-field-id' => 'Revisão',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentador',
+	'code-field-status' => 'Estado',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
 	'code-rev-author' => 'Autor:',
@@ -1536,6 +1720,7 @@ Comentário:
 $4',
 	'repoadmin-new-label' => 'Nome do repositório:',
 	'repoadmin-new-button' => 'Criar',
+	'repoadmin-edit-sucess' => 'O repositório "[[Special:Code/$1|$1]]" foi modificado com sucesso.',
 	'right-repoadmin' => 'Gerir repositórios de código',
 );
 
@@ -1914,6 +2099,7 @@ $messages['te'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'code-comments' => 'Comenti',
 	'code-authors' => 'autori',
 	'code-tags' => 'tag',
 	'code-author-name' => 'Inserissi un nome utente:',
@@ -1937,13 +2123,29 @@ $messages['vec'] = array(
 	'code-rev-status' => 'Stato:',
 	'code-rev-status-set' => 'Canbia stato',
 	'code-rev-tags' => 'Tag:',
+	'code-rev-tag-add' => 'Zonta tag:',
+	'code-rev-tag-remove' => 'Cava tag:',
+	'code-rev-comment-by' => 'Comento de $1',
+	'code-rev-comment-submit' => 'Invia comento',
 	'code-rev-comment-preview' => 'Anteprima',
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
 	'code-pathsearch-path' => 'Percorso:',
 	'codereview-reply-link' => 'rispondi',
 	'codereview-email-subj' => '[$1] [r$2]: Zontà un comento nóvo',
+	'codereview-email-body' => 'L\'utente "$1" el gà scrito un comento su r$3.
+
+URL par intiero: $2
+
+Comento:
+
+$4',
 	'repoadmin-new-button' => 'Crea',
+	'right-codereview-add-tag' => 'Zonta tag novi a le revision',
+	'right-codereview-remove-tag' => 'Cava tag da le revision',
+	'right-codereview-post-comment' => 'Zonta comenti su le revision',
+	'right-codereview-set-status' => 'Canbia el stato de le revision',
+	'right-codereview-link-user' => 'Liga i autori a dei utenti wiki',
 	'specialpages-group-developer' => "Strumenti pa' i svilupadori",
 );
 
@@ -2036,5 +2238,13 @@ $4',
 	'right-codereview-set-status' => 'Thay đổi trạng thái phiên bản',
 	'right-codereview-link-user' => 'Liên kết tác giả mã nguồn đến thành viên wiki',
 	'specialpages-group-developer' => 'Công cụ dành cho lập trình viên',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'code-authors' => 'lautans',
+	'code-rev-author' => 'Lautan:',
 );
 

@@ -58,7 +58,6 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'closewikis-desc' => 'يسمح بغلق مواقع الويكي في مزارع الويكي',
-	'closewikis-closed-default' => 'هذا الويكي مغلق',
 	'closewikis-page' => 'إغلاق الويكي',
 	'closewikis-page-close' => 'إغلاق الويكي',
 	'closewikis-page-close-wiki' => 'الويكي:',
@@ -74,11 +73,18 @@ $messages['ar'] = array(
 	'closewikis-page-err-nowiki' => 'ويكي غير صحيح تم تحديده',
 	'closewikis-page-err-closed' => 'الويكي مغلق بالفعل',
 	'closewikis-page-err-opened' => 'الويكي ليس مغلقا',
+	'closewikis-list' => 'قائمة الويكيات المغلقة',
+	'closewikis-list-intro' => 'هذه القائمة تحتوي على الويكيات التي تم إغلاقها بواسطة المضيفين.',
+	'closewikis-list-header-wiki' => 'الويكي',
+	'closewikis-list-header-by' => 'أغلق بواسطة',
+	'closewikis-list-header-timestamp' => 'أغلق في',
+	'closewikis-list-header-dispreason' => 'السبب المعروض',
 	'closewikis-log' => 'سجل إغلاق الويكيات',
 	'closewikis-log-header' => 'هنا يوجد سجل بكل عمليات إغلاق وإعادة فتح الويكيات بواسطة المضيفين',
 	'closewikis-log-close' => 'أغلق $2',
 	'closewikis-log-reopen' => 'أعاد فتح $2',
 	'right-editclosedwikis' => 'تعديل الويكيات المغلقة',
+	'right-closewikis' => 'إغلاق الويكيات',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -86,7 +92,6 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'closewikis-desc' => 'يسمح بغلق مواقع الويكى فى مزارع الويكي',
-	'closewikis-closed-default' => 'هذا الويكى مغلق',
 	'closewikis-page' => 'إغلاق الويكي',
 	'closewikis-page-close' => 'إغلاق الويكي',
 	'closewikis-page-close-wiki' => 'الويكي:',
@@ -102,11 +107,18 @@ $messages['arz'] = array(
 	'closewikis-page-err-nowiki' => 'ويكى غير صحيح تم تحديده',
 	'closewikis-page-err-closed' => 'الويكى مغلق بالفعل',
 	'closewikis-page-err-opened' => 'الويكى ليس مغلقا',
+	'closewikis-list' => 'قائمة الويكيات المغلقة',
+	'closewikis-list-intro' => 'هذه القائمة تحتوى على الويكيات التي تم إغلاقها بواسطة المضيفين.',
+	'closewikis-list-header-wiki' => 'الويكى',
+	'closewikis-list-header-by' => 'أغلق بواسطة',
+	'closewikis-list-header-timestamp' => 'أغلق فى',
+	'closewikis-list-header-dispreason' => 'السبب المعروض',
 	'closewikis-log' => 'سجل إغلاق الويكيات',
 	'closewikis-log-header' => 'هنا يوجد سجل بكل عمليات إغلاق وإعادة فتح الويكيات بواسطة المضيفين',
 	'closewikis-log-close' => 'أغلق $2',
 	'closewikis-log-reopen' => 'أعاد فتح $2',
 	'right-editclosedwikis' => 'تعديل الويكيات المغلقة',
+	'right-closewikis' => 'إغلاق الويكيات',
 );
 
 /** Bulgarian (Български)
@@ -181,6 +193,40 @@ $messages['de'] = array(
 	'closewikis-log-close' => 'schloss $2',
 	'closewikis-log-reopen' => 'öffnete $2 wieder',
 	'right-editclosedwikis' => 'Geschlossene Wikis bearbeiten',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'closewikis-desc' => 'Zmóžnja wikijowe sedła we wikijowych farmach zacyniś',
+	'closewikis-page' => 'Wiki zacyniś',
+	'closewikis-page-close' => 'Wiki zacyniś',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Pśicyna (zwobraznjona):',
+	'closewikis-page-close-reason' => 'Pśicyna (sprotokolěrowana):',
+	'closewikis-page-close-submit' => 'Zacyniś',
+	'closewikis-page-close-success' => 'Wiki wuspěšnje zacynjony',
+	'closewikis-page-reopen' => 'Wiki zasej wócyniś',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Pśicyna:',
+	'closewikis-page-reopen-submit' => 'Zasej wócyniś',
+	'closewikis-page-reopen-success' => 'Wiki wuspěšnje zasej wócynjony',
+	'closewikis-page-err-nowiki' => 'Njepłaśiwy wiki pódany',
+	'closewikis-page-err-closed' => 'Wiki jo južo zacynjony',
+	'closewikis-page-err-opened' => 'Wiki njejo zacynjony',
+	'closewikis-list' => 'Lisćina zacynjonych wikijow',
+	'closewikis-list-intro' => 'Toś ta lisćina wopśimujo wikije, kótarež stewardy su zacynili.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Zacynjony wót',
+	'closewikis-list-header-timestamp' => 'Zacynjony',
+	'closewikis-list-header-dispreason' => 'Zwobraznjona pśicyna',
+	'closewikis-log' => 'Protokol wikijowego zacynjenja',
+	'closewikis-log-header' => 'How jo protokol wšych wikijowych zacynjenjow a zasejwócynjenjow, kótarež stewardy su cynili',
+	'closewikis-log-close' => 'jo $2 zacynił',
+	'closewikis-log-reopen' => 'jo $2 zasej wócynił',
+	'right-editclosedwikis' => 'Zacynjone wikije wobźěłaś',
+	'right-closewikis' => 'Wikije zacyniś',
 );
 
 /** Esperanto (Esperanto)
@@ -282,12 +328,46 @@ $messages['grc'] = array(
 	'closewikis-page-reopen-submit' => 'Ἀνοίγειν πάλιν',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'closewikis-desc' => 'הרחבה המאפשרת לסגור אתרי ויקי בחוות ויקי',
+	'closewikis-page' => 'סגירת ויקי',
+	'closewikis-page-close' => 'סגירת ויקי',
+	'closewikis-page-close-wiki' => 'ויקי:',
+	'closewikis-page-close-dreason' => 'סיבה (לתצוגה):',
+	'closewikis-page-close-reason' => 'סיבה (לרישום ביומן):',
+	'closewikis-page-close-submit' => 'סגירה',
+	'closewikis-page-close-success' => 'הוויקי נסגר בהצלחה',
+	'closewikis-page-reopen' => 'פתיחת הוויקי מחדש',
+	'closewikis-page-reopen-wiki' => 'ויקי:',
+	'closewikis-page-reopen-reason' => 'סיבה:',
+	'closewikis-page-reopen-submit' => 'פתיחה מחדש',
+	'closewikis-page-reopen-success' => 'הוויקי נפתח מחדש בהצלחה',
+	'closewikis-page-err-nowiki' => 'הוויקי שצוין שגוי',
+	'closewikis-page-err-closed' => 'הוויקי כבר סגור',
+	'closewikis-page-err-opened' => 'הוויקי אינו סגור',
+	'closewikis-list' => 'רשימת אתרי הוויקי הסגורים',
+	'closewikis-list-intro' => 'הרשימה מכילה ויקים שנסגרו על ידי דיילים.',
+	'closewikis-list-header-wiki' => 'ויקי',
+	'closewikis-list-header-by' => 'נסגר על ידי',
+	'closewikis-list-header-timestamp' => 'נסגר בתאריך',
+	'closewikis-list-header-dispreason' => 'הסיבה המוצגת',
+	'closewikis-log' => 'רישום סגירת הוויקים',
+	'closewikis-log-header' => 'להלן רישום של כול הסגירות והפתיחות מחדש של ויקים שבוצעו על ידי דיילים.',
+	'closewikis-log-close' => 'נסגר $2',
+	'closewikis-log-reopen' => 'נפתח מחדש $2',
+	'right-editclosedwikis' => 'עריכת הוויקים הסגורים',
+	'right-closewikis' => 'סגירת ויקים',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'closewikis-desc' => 'Zmóžnja začinjenje wikijowych sydłow we wikijowych farmach',
-	'closewikis-closed-default' => 'Tutón wikij je začinjeny',
 	'closewikis-page' => 'Wiki začinić',
 	'closewikis-page-close' => 'Wiki začinić',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -303,11 +383,18 @@ $messages['hsb'] = array(
 	'closewikis-page-err-nowiki' => 'Njepłaćiwy wiki podaty',
 	'closewikis-page-err-closed' => 'Wiki je hižo začinjeny',
 	'closewikis-page-err-opened' => 'Wiki njeje začinjeny',
+	'closewikis-list' => 'Lisćina začinjenych wikijow',
+	'closewikis-list-intro' => 'Tuta lisćina wobsahuje wikije, kotrež buchu wot stewardow začinjene.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Začinjeny wot',
+	'closewikis-list-header-timestamp' => 'Začinjeny',
+	'closewikis-list-header-dispreason' => 'Zwobraznjena přičina',
 	'closewikis-log' => 'Protokol začinjenjow wikijow',
 	'closewikis-log-header' => 'To je protokol wšěch začinjenjow a zasowočinjenjow wikijow, kotrež su stewardźa činili.',
 	'closewikis-log-close' => 'je $2 začinił',
 	'closewikis-log-reopen' => 'je $2 zaso wočinił',
 	'right-editclosedwikis' => 'Začinjene wikije wobdźěłać',
+	'right-closewikis' => 'Wikije začinić',
 );
 
 /** Interlingua (Interlingua)
@@ -489,7 +576,6 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'closewikis-desc' => 'Permet de clausurar los sits wiki dins aqueste gestionari de wiki',
-	'closewikis-closed-default' => 'Aqueste wiki es claus',
 	'closewikis-page' => 'Clausar lo wiki',
 	'closewikis-page-close' => 'Clausurar lo wiki',
 	'closewikis-page-close-wiki' => 'Wiki :',
@@ -505,11 +591,18 @@ $messages['oc'] = array(
 	'closewikis-page-err-nowiki' => 'Lo wiki indicat es incorrècte',
 	'closewikis-page-err-closed' => 'Aqueste wiki ja es estat clausurat',
 	'closewikis-page-err-opened' => 'Wiki pas clausurat',
+	'closewikis-list' => 'Tièra dels wikis clauses',
+	'closewikis-list-intro' => 'Aquesta tièra conten los wiki clauses pels stewards.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Claus per',
+	'closewikis-list-header-timestamp' => 'Claus lo',
+	'closewikis-list-header-dispreason' => 'Rason balhada',
 	'closewikis-log' => 'Jornal de clausura dels wiki',
 	'closewikis-log-header' => 'Vaquí un jornal de totas las tampaduras e redoberturas de wiki fachas pels stewards',
 	'closewikis-log-close' => 'a clausurat $2',
 	'closewikis-log-reopen' => 'a redobert $2',
 	'right-editclosedwikis' => 'Modificar los wikis clausurats',
+	'right-closewikis' => 'Wikis clauses',
 );
 
 /** Polish (Polski)
@@ -642,7 +735,6 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'closewikis-desc' => 'Möjliggör stängning av wikier inom wikisamlingar',
-	'closewikis-closed-default' => 'Den här wikin är stängd',
 	'closewikis-page' => 'Stäng wiki',
 	'closewikis-page-close' => 'Stäng wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -658,11 +750,14 @@ $messages['sv'] = array(
 	'closewikis-page-err-nowiki' => 'Ogiltig wiki specificerad',
 	'closewikis-page-err-closed' => 'Wiki är redan stängd',
 	'closewikis-page-err-opened' => 'Wiki är inte stängd',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Stängd av',
 	'closewikis-log' => 'Logg över stängning av wikier',
 	'closewikis-log-header' => 'Här är en logg över alla stängningar och återöppningar av wikier som gjorts av stewarder',
 	'closewikis-log-close' => 'stängde $2',
 	'closewikis-log-reopen' => 'återöppnade $2',
 	'right-editclosedwikis' => 'Redigera stängda wikier',
+	'right-closewikis' => 'Stäng wikier',
 );
 
 /** Telugu (తెలుగు)

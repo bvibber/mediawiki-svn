@@ -278,6 +278,7 @@ $messages['mt'] = array(
  */
 $messages['nds'] = array(
 	'newusermessage-desc' => 'Föögt en Naricht op de Diskuschoonssiet vun nee opstellte Brukers to',
+	'newuseredit-summary' => 'Tofögen vun en [[{{int:newusermessage-template}}|Willkamensnaricht]] op de Diskuschoonssied vun en ne’en Bruker to',
 );
 
 /** Dutch (Nederlands)

@@ -27,6 +27,42 @@ $messages['en'] = array(
 	'nss-db-error' => 'Error reading from authentication database'
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'accountmanager' => 'مدير الحساب',
+	'am-username' => 'اسم المستخدم',
+	'am-email' => 'البريد الإلكتروني',
+	'am-active' => 'نشط',
+	'am-updated' => 'تغييراتك تم حفظها بنجاح',
+	'nss-desc' => 'إضافة للتحقق ضد قاعدة بيانات libnss-mysql. يحتوي على [[Special:AccountManager|مدير حساب]]',
+	'nss-save-changes' => 'حفظ التغييرات',
+	'nss-create-account-header' => 'إنشاء حساب جديد',
+	'nss-create-account' => 'إنشاء الحساب',
+	'nss-welcome-mail' => 'الحساب باسم المستخدم $1 وكلمة السر $2 تم إنشاؤه من أجلك.',
+	'nss-welcome-mail-subject' => 'إنشاء الحساب',
+	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'accountmanager' => 'مدير الحساب',
+	'am-username' => 'اسم المستخدم',
+	'am-email' => 'البريد الإلكترونى',
+	'am-active' => 'نشط',
+	'am-updated' => 'تغييراتك تم حفظها بنجاح',
+	'nss-desc' => 'إضافة للتحقق ضد قاعدة بيانات libnss-mysql. يحتوى على [[Special:AccountManager|مدير حساب]]',
+	'nss-save-changes' => 'حفظ التغييرات',
+	'nss-create-account-header' => 'إنشاء حساب جديد',
+	'nss-create-account' => 'إنشاء الحساب',
+	'nss-welcome-mail' => 'الحساب باسم المستخدم $1 وكلمة السر $2 تم إنشاؤه من أجلك.',
+	'nss-welcome-mail-subject' => 'إنشاء الحساب',
+	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -36,6 +72,11 @@ $messages['lb'] = array(
 	'am-active' => 'aktiv',
 	'am-updated' => 'är Ännerunge goufe gespäichert',
 	'nss-save-changes' => 'Ännerunge späicheren',
+	'nss-create-account-header' => 'Een neie Benotzerkont opmaachen',
+	'nss-create-account' => 'Benotzerkont opmaachen',
+	'nss-welcome-mail' => 'E Benotzerkont mat dem Benotzernumm $1 an dem Passwuert $2 gouf fir Iech opgemaach.',
+	'nss-welcome-mail-subject' => 'Benotzerkont opmaachen',
+	'nss-db-error' => 'Feeler beim Liese vun der Datebank mat den Authentifikatiounen',
 );
 
 /** Dutch (Nederlands)
@@ -85,6 +126,15 @@ $messages['ro'] = array(
 	'nss-create-account-header' => 'Crează un cont nou.',
 	'nss-create-account' => 'Crează un cont',
 	'nss-welcome-mail-subject' => 'Crearea contului',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'am-username' => 'användarnamn',
+	'am-email' => 'e-post',
+	'am-active' => 'aktiv',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -67,6 +67,7 @@ Releasing this information can result in permanent loss of Oversight privileges.
 );
 
 /** Message documentation (Message documentation)
+ * @author Darth Kule
  * @author Jon Harald Søby
  * @author Meno25
  */
@@ -81,6 +82,8 @@ $messages['qqq'] = array(
 
 {{Identical|Oversight}}',
 	'oversight-view' => '{{Identical|Details}}',
+	'oversight-oversighter' => "Option of fieldset in Special:Oversight. ''Overisight'' is the user who has hidden revision",
+	'oversight-offender' => "Option of fieldset in Special:Oversight. ''Offender'' is the author of the hidden revision",
 );
 
 /** Afrikaans (Afrikaans)
