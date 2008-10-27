@@ -321,8 +321,8 @@ class SharedUserRights extends SpecialPage {
 	protected function showEditUserGroupsForm( $user, $username, $groups ) {
 		global $wgOut, $wgUser, $wgLang;
 
-		$addable = $this->getAllRights();
-		$removable = $this->getAllRights();
+		$addable = $this->getAllGroups();
+		$removable = $this->getAllGroups();
 
 		$list = array();
 		foreach ( $this->listGroups( $username ) as $group )
