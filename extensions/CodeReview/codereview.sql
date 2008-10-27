@@ -170,3 +170,29 @@ CREATE TABLE /*$wgDBprefix*/code_comment (
   key (cc_repo_id,cc_rev_id,cc_sortkey),
   key cc_repo_time (cc_repo_id,cc_timestamp)
 ) /*$wgDBTableOptions*/;
+
+--
+-- Changes to review metadata for a single code revision.
+--
+CREATE TABLE /*$wgDBprefix*/code_prop_changes (
+  -- Repository ID
+  cpc_repo_id int not null,
+  -- Native ID number of this revision within the repository.
+  cpc_rev_id int not null,
+
+  -- The item that was changed
+  cpc_attrib enum('status','tags') not null,
+  -- How it was changed
+  cpc_removed blob,
+  cpc_added blob,
+
+  -- Timestamp of the change, in MediaWiki format.
+  cpc_timestamp binary(14) not null default '',
+
+  -- User id/name of the commentor
+  cpc_user int not null,
+  cpc_user_text varchar(255) not null,
+
+  key cpc_repo_rev_time (cpc_repo_id, cpc_rev_id, cpc_timestamp),
+  key cpc_repo_time (cpc_repo_id, cpc_timestamp)
+) /*$wgDBTableOptions*/;
