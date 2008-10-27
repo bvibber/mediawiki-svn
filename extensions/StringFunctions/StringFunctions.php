@@ -97,375 +97,374 @@
 */
 
 $wgExtensionCredits['parserhook'][] = array(
-'name'         => 'StringFunctions',
-'version'      => '2.0.1', // Aug 27, 2008
-'description'  => 'Enhances parser with string functions',
-'author'       => array('Ross McClure', 'Juraj Simlovic'),
-'url'          => 'http://www.mediawiki.org/wiki/Extension:StringFunctions',
+	'name'            => 'StringFunctions',
+	'version'         => '2.0.2', // Oct 27, 2008
+	'description'     => 'Enhances parser with string functions',
+	'descriptionmsg'  => 'stringfunctions-desc',
+	'author'          => array('Ross McClure', 'Juraj Simlovic'),
+	'url'             => 'http://www.mediawiki.org/wiki/Extension:StringFunctions',
 );
+
+$dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles['StringFunctions'] = $dir . 'StringFunctions.i18n.php';
 
 $wgExtensionFunctions[] = 'wfStringFunctions';
 
 $wgHooks['LanguageGetMagic'][] = 'wfStringFunctionsLanguageGetMagic';
 
 function wfStringFunctions ( ) {
-    global $wgParser, $wgExtStringFunctions;
-    global $wgStringFunctionsLimitSearch;
-    global $wgStringFunctionsLimitReplace;
-    global $wgStringFunctionsLimitPad;
+	global $wgParser, $wgExtStringFunctions;
+	global $wgStringFunctionsLimitSearch;
+	global $wgStringFunctionsLimitReplace;
+	global $wgStringFunctionsLimitPad;
 
-    $wgExtStringFunctions = new ExtStringFunctions ( );
-    $wgStringFunctionsLimitSearch  =  30;
-    $wgStringFunctionsLimitReplace =  30;
-    $wgStringFunctionsLimitPad     = 100;
+	$wgExtStringFunctions = new ExtStringFunctions ( );
+	$wgStringFunctionsLimitSearch  =  30;
+	$wgStringFunctionsLimitReplace =  30;
+	$wgStringFunctionsLimitPad     = 100;
 
-    $wgParser->setFunctionHook('len',      array(&$wgExtStringFunctions,'runLen'      ));
-    $wgParser->setFunctionHook('pos',      array(&$wgExtStringFunctions,'runPos'      ));
-    $wgParser->setFunctionHook('rpos',     array(&$wgExtStringFunctions,'runRPos'     ));
-    $wgParser->setFunctionHook('sub',      array(&$wgExtStringFunctions,'runSub'      ));
-    $wgParser->setFunctionHook('pad',      array(&$wgExtStringFunctions,'runPad'      ));
-    $wgParser->setFunctionHook('replace',  array(&$wgExtStringFunctions,'runReplace'  ));
-    $wgParser->setFunctionHook('explode',  array(&$wgExtStringFunctions,'runExplode'  ));
-    $wgParser->setFunctionHook('urlencode',array(&$wgExtStringFunctions,'runUrlEncode'));
-    $wgParser->setFunctionHook('urldecode',array(&$wgExtStringFunctions,'runUrlDecode'));
+	$wgParser->setFunctionHook('len',      array(&$wgExtStringFunctions,'runLen'      ));
+	$wgParser->setFunctionHook('pos',      array(&$wgExtStringFunctions,'runPos'      ));
+	$wgParser->setFunctionHook('rpos',     array(&$wgExtStringFunctions,'runRPos'     ));
+	$wgParser->setFunctionHook('sub',      array(&$wgExtStringFunctions,'runSub'      ));
+	$wgParser->setFunctionHook('pad',      array(&$wgExtStringFunctions,'runPad'      ));
+	$wgParser->setFunctionHook('replace',  array(&$wgExtStringFunctions,'runReplace'  ));
+	$wgParser->setFunctionHook('explode',  array(&$wgExtStringFunctions,'runExplode'  ));
+	$wgParser->setFunctionHook('urlencode',array(&$wgExtStringFunctions,'runUrlEncode'));
+	$wgParser->setFunctionHook('urldecode',array(&$wgExtStringFunctions,'runUrlDecode'));
 }
 
 function wfStringFunctionsLanguageGetMagic( &$magicWords, $langCode = "en" ) {
-    switch ( $langCode ) {
-        default:
-            $magicWords['len']          = array ( 0, 'len' );
-            $magicWords['pos']          = array ( 0, 'pos' );
-            $magicWords['rpos']         = array ( 0, 'rpos' );
-            $magicWords['sub']          = array ( 0, 'sub' );
-            $magicWords['pad']          = array ( 0, 'pad' );
-            $magicWords['replace']      = array ( 0, 'replace' );
-            $magicWords['explode']      = array ( 0, 'explode' );
-            $magicWords['urlencode']    = array ( 0, 'urlencode' );
-            $magicWords['urldecode']    = array ( 0, 'urldecode' );
-    }
-    return true;
+	switch ( $langCode ) {
+		default:
+		$magicWords['len']          = array ( 0, 'len' );
+		$magicWords['pos']          = array ( 0, 'pos' );
+		$magicWords['rpos']         = array ( 0, 'rpos' );
+		$magicWords['sub']          = array ( 0, 'sub' );
+		$magicWords['pad']          = array ( 0, 'pad' );
+		$magicWords['replace']      = array ( 0, 'replace' );
+		$magicWords['explode']      = array ( 0, 'explode' );
+		$magicWords['urlencode']    = array ( 0, 'urlencode' );
+		$magicWords['urldecode']    = array ( 0, 'urldecode' );
+	}
+	return true;
 }
 
 class ExtStringFunctions {
 
-    /**
-     * Returns part of the perl regexp pattern that matches a marker.
-     * Unfortunatelly, we are still backward-supporting old versions.
-     */
-    function mwMarkerRE ( &$parser )
-    {
-        if( isset($parser->mMarkerSuffix) )
-            $suffix = preg_quote( $parser->mMarkerSuffix, '/' );
-        else if ( strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
-            $suffix = "QINU\x07";
-        else $suffix = 'QINU';
+	/**
+	 * Returns part of the perl regexp pattern that matches a marker.
+	 * Unfortunatelly, we are still backward-supporting old versions.
+	 */
+	function mwMarkerRE ( &$parser )
+	{
+		if( isset($parser->mMarkerSuffix) )
+			$suffix = preg_quote( $parser->mMarkerSuffix, '/' );
+		else if ( strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
+			$suffix = "QINU\x07";
+		else $suffix = 'QINU';
 
-    	return preg_quote( $parser->mUniqPrefix, '/' ) . '.*?' . $suffix;
-    }
+		return preg_quote( $parser->mUniqPrefix, '/' ) . '.*?' . $suffix;
+	}
 
-    /**
-     * {{#len:value}}
-     *
-     * Main idea: Count multibytes. Find markers. Substract.
-     */
-    function runLen ( &$parser, $inStr = '' ) {
+	/**
+	 * {{#len:value}}
+	 *
+	 * Main idea: Count multibytes. Find markers. Substract.
+	 */
+	function runLen ( &$parser, $inStr = '' ) {
 
-	$len = mb_strlen ( (string)$inStr );
+		$len = mb_strlen ( (string)$inStr );
 
-	$count = preg_match_all (
-		'/' . $this->mwMarkerRE($parser) . '/',
-		(string) $inStr, $matches
-	);
+		$count = preg_match_all (
+			'/' . $this->mwMarkerRE($parser) . '/',
+			(string) $inStr, $matches
+		);
 
-	foreach ($matches[0] as $match)
-		$len -= strlen ($match) - 1;
+		foreach ($matches[0] as $match)
+			$len -= strlen ($match) - 1;
 
-        return $len;
-    }
+		return $len;
+	}
 
+	/**
+	 * Splits the string into its component parts using preg_match_all().
+	 * $chars is set to the resulting array of multibyte characters.
+	 * Returns count($chars).
+	 */
+	function mwSplit ( &$parser, $str, &$chars ) {
+		# Get marker prefix & suffix
+		$prefix = preg_quote( $parser->mUniqPrefix, '/' );
+		if( isset($parser->mMarkerSuffix) )
+			$suffix = preg_quote( $parser->mMarkerSuffix, '/' );
+		else if ( strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
+			$suffix = "QINU\x07";
+		else $suffix = 'QINU';
 
+		# Treat strip markers as single multibyte characters
+		$count = preg_match_all('/' . $prefix . '.*?' . $suffix . '|./su', $str, $arr);
+		$chars = $arr[0];
+		return $count;
+	}
 
+	/**
+	 * {{#pos:value|key|offset}}
+	 * Note: If the needle is an empty string, single space is used instead.
+	 * Note: If the needle is not found, empty string is returned.
+	 * Note: The needle is limited to specific length.
+	 */
+	function runPos ( &$parser, $inStr = '', $inNeedle = '', $inOffset = 0 ) {
+		global $wgStringFunctionsLimitSearch;
 
+		if ( $inNeedle === '' ) {
+			# empty needle
+			$needle = array(' ');
+			$nSize = 1;
+		} else {
+			# convert needle
+			$nSize = $this->mwSplit ( $parser, $inNeedle, $needle );
 
+			if ( $nSize > $wgStringFunctionsLimitSearch ) {
+				$nSize = $wgStringFunctionsLimitSearch;
+				$needle = array_slice ( $needle, 0, $nSize );
+			}
+		}
 
-    /**
-     * Splits the string into its component parts using preg_match_all().
-     * $chars is set to the resulting array of multibyte characters.
-     * Returns count($chars).
-     */
-    function mwSplit ( &$parser, $str, &$chars ) {
-        # Get marker prefix & suffix
-        $prefix = preg_quote( $parser->mUniqPrefix, '/' );
-        if( isset($parser->mMarkerSuffix) )
-            $suffix = preg_quote( $parser->mMarkerSuffix, '/' );
-        else if ( strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
-            $suffix = "QINU\x07";
-        else $suffix = 'QINU';
+		# convert string
+		$size = $this->mwSplit( $parser, $inStr, $chars ) - $nSize;
+		$inOffset = max ( intval($inOffset), 0 );
 
-        # Treat strip markers as single multibyte characters
-        $count = preg_match_all('/' . $prefix . '.*?' . $suffix . '|./su', $str, $arr);
-        $chars = $arr[0];
-        return $count;
-    }
+		# find needle
+		for ( $i = $inOffset; $i <= $size; $i++ ) {
+			if ( $chars[$i] !== $needle[0] ) continue;
+			for ( $j = 1; ; $j++ ) {
+				if ( $j >= $nSize ) return $i;
+				if ( $chars[$i + $j] !== $needle[$j] ) break;
+			}
+		}
 
-    /**
-     * {{#pos:value|key|offset}}
-     * Note: If the needle is an empty string, single space is used instead.
-     * Note: If the needle is not found, empty string is returned.
-     * Note: The needle is limited to specific length.
-     */
-    function runPos ( &$parser, $inStr = '', $inNeedle = '', $inOffset = 0 ) {
-        global $wgStringFunctionsLimitSearch;
+		# return empty string upon not found
+		return '';
+	}
 
-        if ( $inNeedle === '' ) {
-            # empty needle
-            $needle = array(' ');
-            $nSize = 1;
-        } else {
-            # convert needle
-            $nSize = $this->mwSplit ( $parser, $inNeedle, $needle );
+	/**
+	 * {{#rpos:value|key}}
+	 * Note: If the needle is an empty string, single space is used instead.
+	 * Note: If the needle is not found, -1 is returned.
+	 * Note: The needle is limited to specific length.
+	 */
+	function runRPos ( &$parser, $inStr = '', $inNeedle = '' ) {
+		global $wgStringFunctionsLimitSearch;
 
-            if ( $nSize > $wgStringFunctionsLimitSearch ) {
-                $nSize = $wgStringFunctionsLimitSearch;
-                $needle = array_slice ( $needle, 0, $nSize );
-            }
-        }
+		if ( $inNeedle === '' ) {
+			# empty needle
+			$needle = array(' ');
+			$nSize = 1;
+		} else {
+			# convert needle
+			$nSize = $this->mwSplit ( $parser, $inNeedle, $needle );
 
-        # convert string
-        $size = $this->mwSplit( $parser, $inStr, $chars ) - $nSize;
-        $inOffset = max ( intval($inOffset), 0 );
+			if ( $nSize > $wgStringFunctionsLimitSearch ) {
+				$nSize = $wgStringFunctionsLimitSearch;
+				$needle = array_slice ( $needle, 0, $nSize );
+			}
+		}
 
-        # find needle
-        for ( $i = $inOffset; $i <= $size; $i++ ) {
-            if ( $chars[$i] !== $needle[0] ) continue;
-            for ( $j = 1; ; $j++ ) {
-                if ( $j >= $nSize ) return $i;
-                if ( $chars[$i + $j] !== $needle[$j] ) break;
-            }
-        }
+		# convert string
+		$size = $this->mwSplit( $parser, $inStr, $chars ) - $nSize;
 
-        # return empty string upon not found
-        return '';
-    }
+		# find needle
+		for ( $i = $size; $i >= 0; $i-- ) {
+			if ( $chars[$i] !== $needle[0] ) continue;
+			for ( $j = 1; ; $j++ ) {
+				if ( $j >= $nSize ) return $i;
+				if ( $chars[$i + $j] !== $needle[$j] ) break;
+			}
+		}
 
-    /**
-     * {{#rpos:value|key}}
-     * Note: If the needle is an empty string, single space is used instead.
-     * Note: If the needle is not found, -1 is returned.
-     * Note: The needle is limited to specific length.
-     */
-    function runRPos ( &$parser, $inStr = '', $inNeedle = '' ) {
-        global $wgStringFunctionsLimitSearch;
+		# return -1 upon not found
+		return "-1";
+	}
 
-        if ( $inNeedle === '' ) {
-            # empty needle
-            $needle = array(' ');
-            $nSize = 1;
-        } else {
-            # convert needle
-            $nSize = $this->mwSplit ( $parser, $inNeedle, $needle );
+	/**
+	 * {{#sub:value|start|length}}
+	 * Note: If length is zero, the rest of the input is returned.
+	 */
+	function runSub ( &$parser, $inStr = '', $inStart = 0, $inLength = 0 ) {
+		# convert string
+		$this->mwSplit( $parser, $inStr, $chars );
 
-            if ( $nSize > $wgStringFunctionsLimitSearch ) {
-                $nSize = $wgStringFunctionsLimitSearch;
-                $needle = array_slice ( $needle, 0, $nSize );
-            }
-        }
+		# zero length
+		if ( intval($inLength) == 0 )
+		return join('', array_slice( $chars, intval($inStart) ));
 
-        # convert string
-        $size = $this->mwSplit( $parser, $inStr, $chars ) - $nSize;
+		# non-zero length
+		return join('', array_slice( $chars, intval($inStart), intval($inLength) ));
+	}
 
-        # find needle
-        for ( $i = $size; $i >= 0; $i-- ) {
-            if ( $chars[$i] !== $needle[0] ) continue;
-            for ( $j = 1; ; $j++ ) {
-                if ( $j >= $nSize ) return $i;
-                if ( $chars[$i + $j] !== $needle[$j] ) break;
-            }
-        }
+	/**
+	 * {{#pad:value|length|with|direction}}
+	 * Note: Length of the resulting string is limited.
+	 */
+	function runPad( &$parser, $inStr = '', $inLen = 0, $inWith = '', $inDirection = '' ) {
+		global $wgStringFunctionsLimitPad;
 
-        # return -1 upon not found
-        return "-1";
-    }
+		# direction
+		switch ( strtolower ( $inDirection ) ) {
+			case 'center':
+				$direction = STR_PAD_BOTH;
+				break;
+			case 'right':
+				$direction = STR_PAD_RIGHT;
+				break;
+			case 'left':
+			default:
+				$direction = STR_PAD_LEFT;
+				break;
+		}
 
-    /**
-     * {{#sub:value|start|length}}
-     * Note: If length is zero, the rest of the input is returned.
-     */
-    function runSub ( &$parser, $inStr = '', $inStart = 0, $inLength = 0 ) {
-        # convert string
-        $this->mwSplit( $parser, $inStr, $chars );
+		# prevent markers in padding
+		$a = explode ( $parser->mUniqPrefix, $inWith, 2 );
+		if ( $a[0] === '' )
+			$inWith = ' ';
+		else $inWith = $a[0];
 
-        # zero length
-        if ( intval($inLength) == 0 )
-            return join('', array_slice( $chars, intval($inStart) ));
+		# limit pad length
+		$inLen = intval ( $inLen );
+		if ($wgStringFunctionsLimitPad > 0)
+			$inLen = min ( $inLen, $wgStringFunctionsLimitPad );
 
-        # non-zero length
-        return join('', array_slice( $chars, intval($inStart), intval($inLength) ));
-    }
+		# adjust for multibyte strings
+		$inLen += strlen( $inStr ) - $this->mwSplit( $parser, $inStr, $a );
 
-    /**
-     * {{#pad:value|length|with|direction}}
-     * Note: Length of the resulting string is limited.
-     */
-    function runPad( &$parser, $inStr = '', $inLen = 0, $inWith = '', $inDirection = '' ) {
-        global $wgStringFunctionsLimitPad;
+		# pad
+		return str_pad ( $inStr, $inLen, $inWith, $direction );
+	}
 
-        # direction
-        switch ( strtolower ( $inDirection ) ) {
-          case 'center':
-            $direction = STR_PAD_BOTH;
-            break;
-          case 'right':
-            $direction = STR_PAD_RIGHT;
-            break;
-          case 'left':
-          default:
-            $direction = STR_PAD_LEFT;
-            break;
-        }
+	/**
+	 * {{#replace:value|from|to}}
+	 * Note: If the needle is an empty string, single space is used instead.
+	 * Note: The needle is limited to specific length.
+	 * Note: The product is limited to specific length.
+	 */
+	function runReplace( &$parser, $inStr = '', $inReplaceFrom = '', $inReplaceTo = '' ) {
+		global $wgStringFunctionsLimitSearch, $wgStringFunctionsLimitReplace;
 
-        # prevent markers in padding
-        $a = explode ( $parser->mUniqPrefix, $inWith, 2 );
-        if ( $a[0] === '' )
-            $inWith = ' ';
-        else $inWith = $a[0];
+		if ( $inReplaceFrom === '' ) {
+			# empty needle
+			$needle = array(' ');
+			$nSize = 1;
+		} else {
+			# convert needle
+			$nSize = $this->mwSplit ( $parser, $inReplaceFrom, $needle );
+			if ( $nSize > $wgStringFunctionsLimitSearch ) {
+				$nSize = $wgStringFunctionsLimitSearch;
+				$needle = array_slice ( $needle, 0, $nSize );
+			}
+		}
 
-        # limit pad length
-        $inLen = intval ( $inLen );
-        if ($wgStringFunctionsLimitPad > 0)
-            $inLen = min ( $inLen, $wgStringFunctionsLimitPad );
+		# convert product
+		$pSize = $this->mwSplit ( $parser, $inReplaceTo, $product );
+		if ( $pSize > $wgStringFunctionsLimitReplace ) {
+			$pSize = $wgStringFunctionsLimitReplace;
+			$product = array_slice ( $product, 0, $pSize );
+		}
 
-        # adjust for multibyte strings
-        $inLen += strlen( $inStr ) - $this->mwSplit( $parser, $inStr, $a );
+		# remove markers in product
+		for( $i = 0; $i < $pSize; $i++ ) {
+			if( strlen( $product[$i] ) > 6 ) $product[$i] = ' ';
+		}
 
-        # pad
-        return str_pad ( $inStr, $inLen, $inWith, $direction );
-    }
+		# convert string
+		$size = $this->mwSplit ( $parser, $inStr, $chars ) - $nSize;
 
-    /**
-     * {{#replace:value|from|to}}
-     * Note: If the needle is an empty string, single space is used instead.
-     * Note: The needle is limited to specific length.
-     * Note: The product is limited to specific length.
-     */
-    function runReplace( &$parser, $inStr = '', $inReplaceFrom = '', $inReplaceTo = '' ) {
-        global $wgStringFunctionsLimitSearch, $wgStringFunctionsLimitReplace;
+		# replace
+		for ( $i = 0; $i <= $size; $i++ ) {
+			if ( $chars[$i] !== $needle[0] ) continue;
+			for ( $j = 1; ; $j++ ) {
+				if ( $j >= $nSize ) {
+					array_splice ( $chars, $i, $j, $product );
+					$size += ( $pSize - $nSize );
+					$i += ( $pSize - 1 );
+					break;
+				}
+				if ( $chars[$i + $j] !== $needle[$j] ) break;
+			}
+		}
+		return join('', $chars);
+	}
 
-        if ( $inReplaceFrom === '' ) {
-            # empty needle
-            $needle = array(' ');
-            $nSize = 1;
-        } else {
-            # convert needle
-            $nSize = $this->mwSplit ( $parser, $inReplaceFrom, $needle );
-            if ( $nSize > $wgStringFunctionsLimitSearch ) {
-                $nSize = $wgStringFunctionsLimitSearch;
-                $needle = array_slice ( $needle, 0, $nSize );
-            }
-        }
+	/**
+	 * {{#explode:value|delimiter|position}}
+	 * Note: Negative position can be used to specify tokens from the end.
+	 * Note: If the divider is an empty string, single space is used instead.
+	 * Note: The divider is limited to specific length.
+	 * Note: Empty string is returned, if there is not enough exploded chunks.
+	 */
+	function runExplode ( &$parser, $inStr = '', $inDiv = '', $inPos = 0 ) {
+		global $wgStringFunctionsLimitSearch;
 
-        # convert product
-        $pSize = $this->mwSplit ( $parser, $inReplaceTo, $product );
-        if ( $pSize > $wgStringFunctionsLimitReplace ) {
-            $pSize = $wgStringFunctionsLimitReplace;
-            $product = array_slice ( $product, 0, $pSize );
-        }
+		if ( $inDiv === '' ) {
+			# empty divider
+			$div = array(' ');
+			$dSize = 1;
+		} else {
+			# convert divider
+			$dSize = $this->mwSplit ( $parser, $inDiv, $div );
+			if ( $dSize > $wgStringFunctionsLimitSearch ) {
+				$dSize = $wgStringFunctionsLimitSearch;
+				$div = array_slice ( $div, 0, $dSize );
+			}
+		}
 
-        # remove markers in product
-        for( $i = 0; $i < $pSize; $i++ ) {
-            if( strlen( $product[$i] ) > 6 ) $product[$i] = ' ';
-        }
+		# convert string
+		$size = $this->mwSplit ( $parser, $inStr, $chars ) - $dSize;
 
-        # convert string
-        $size = $this->mwSplit ( $parser, $inStr, $chars ) - $nSize;
+		# explode
+		$inPos = intval ( $inPos );
+		$tokens = array();
+		$start = 0;
+		for ( $i = 0; $i <= $size; $i++ ) {
+			if ( $chars[$i] !== $div[0] ) continue;
+			for ( $j = 1; ; $j++ ) {
+				if ( $j >= $dSize ) {
+					if ( $inPos > 0 ) $inPos--;
+					else {
+						$tokens[] = join('', array_slice($chars, $start, ($i - $start)));
+						if ( $inPos == 0 ) return $tokens[0];
+					}
+					$start = $i + $j;
+					$i = $start - 1;
+					break;
+				}
+				if ( $chars[$i + $j] !== $div[$j] ) break;
+			}
+		}
+		$tokens[] = join('', array_slice( $chars, $start ));
 
-        # replace
-        for ( $i = 0; $i <= $size; $i++ ) {
-            if ( $chars[$i] !== $needle[0] ) continue;
-            for ( $j = 1; ; $j++ ) {
-                if ( $j >= $nSize ) {
-                    array_splice ( $chars, $i, $j, $product );
-                    $size += ( $pSize - $nSize );
-                    $i += ( $pSize - 1 );
-                    break;
-                }
-                if ( $chars[$i + $j] !== $needle[$j] ) break;
-            }
-        }
-        return join('', $chars);
-    }
+		# negative $inPos
+		if ( $inPos < 0 ) $inPos += count ( $tokens );
 
-    /**
-     * {{#explode:value|delimiter|position}}
-     * Note: Negative position can be used to specify tokens from the end.
-     * Note: If the divider is an empty string, single space is used instead.
-     * Note: The divider is limited to specific length.
-     * Note: Empty string is returned, if there is not enough exploded chunks.
-     */
-    function runExplode ( &$parser, $inStr = '', $inDiv = '', $inPos = 0 ) {
-        global $wgStringFunctionsLimitSearch;
+		# out of range
+		if ( !isset ( $tokens[$inPos] ) ) return "";
 
-        if ( $inDiv === '' ) {
-            # empty divider
-            $div = array(' ');
-            $dSize = 1;
-        } else {
-            # convert divider
-            $dSize = $this->mwSplit ( $parser, $inDiv, $div );
-            if ( $dSize > $wgStringFunctionsLimitSearch ) {
-                $dSize = $wgStringFunctionsLimitSearch;
-                $div = array_slice ( $div, 0, $dSize );
-            }
-        }
+		# in range
+		return $tokens[$inPos];
+	}
 
-        # convert string
-        $size = $this->mwSplit ( $parser, $inStr, $chars ) - $dSize;
+	/**
+	 * {{#urlencode:value}}
+	 */
+	function runUrlEncode ( &$parser, $inStr = '' ) {
+		# encode
+		return urlencode ( $inStr );
+	}
 
-        # explode
-        $inPos = intval ( $inPos );
-        $tokens = array();
-        $start = 0;
-        for ( $i = 0; $i <= $size; $i++ ) {
-            if ( $chars[$i] !== $div[0] ) continue;
-            for ( $j = 1; ; $j++ ) {
-                if ( $j >= $dSize ) {
-                    if ( $inPos > 0 ) $inPos--;
-                    else {
-                        $tokens[] = join('', array_slice($chars, $start, ($i - $start)));
-                        if ( $inPos == 0 ) return $tokens[0];
-                    }
-                    $start = $i + $j;
-                    $i = $start - 1;
-                    break;
-                }
-                if ( $chars[$i + $j] !== $div[$j] ) break;
-            }
-        }
-        $tokens[] = join('', array_slice( $chars, $start ));
-
-        # negative $inPos
-        if ( $inPos < 0 ) $inPos += count ( $tokens );
-
-        # out of range
-        if ( !isset ( $tokens[$inPos] ) ) return "";
-
-        # in range
-        return $tokens[$inPos];
-    }
-
-    /**
-     * {{#urlencode:value}}
-     */
-    function runUrlEncode ( &$parser, $inStr = '' ) {
-        # encode
-        return urlencode ( $inStr );
-    }
-
-    /**
-     * {{#urldecode:value}}
-     */
-    function runUrlDecode ( &$parser, $inStr = '' ) {
-        # decode
-        return urldecode ( $inStr );
-    }
+	/**
+	 * {{#urldecode:value}}
+	 */
+	function runUrlDecode ( &$parser, $inStr = '' ) {
+		# decode
+		return urldecode ( $inStr );
+	}
 }
