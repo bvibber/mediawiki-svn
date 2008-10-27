@@ -21,9 +21,24 @@ $wgExtensionCredits['parserhook'][] = array(
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:LogEntry', 
-	'description'    => 'This tag extension provides a form for appending to log pages',
+	'description'    => 'This tag extension provides a form for appending/prepending to log pages',
 	'descriptionmsg' => 'logentry-parserhook-desc',
 );
+
+// Append == true, Prepend == false
+$egLogEntryAppend = true;
+
+// Show TimeStamp == true, No TimeStamp == false
+$egLogEntryTimeStamp = true;
+
+// Show UserName == true, No UserName == false
+$egLogEntryUserName = true;
+
+// Use MultiLine == true, Use SingleLine == false
+$egLogEntryMultiLine = false;
+
+// Number of rows if MultiLine is enabled
+$egLogEntryMultiLineRows = 3;
 
 // Shortcut to this extension directory
 $dir = dirname( __FILE__ ) . '/';

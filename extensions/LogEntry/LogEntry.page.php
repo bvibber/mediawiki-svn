@@ -21,6 +21,7 @@ class LogEntry extends UnlistedSpecialPage {
 	
 	public function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
+		global $egLogEntryAppend, $egLogEntryUserName, $egLogEntryTimeStamp;
 		
 		// Begin output
 		$this->setHeaders();
@@ -48,8 +49,16 @@ class LogEntry extends UnlistedSpecialPage {
 				$article = new Article( $title );
 				
 				// Build new line
-				$newLine = sprintf( "* %s %s: %s", gmdate( 'H:i' ), $wgUser->getName(),
-					trim( htmlspecialchars( $wgRequest->getText( 'line' ) ) ) );
+				$newLine = '*';
+				if ( $egLogEntryUserName ) {
+					$newLine .= ' ' . $wgUser->getName();
+				}
+				if ( $egLogEntryTimeStamp ) {
+					$newLine .= ' ' . gmdate( 'H:i' );
+				}
+				$newLine .= ': ' . str_replace( "\n", '<br />',
+					trim( htmlspecialchars( $wgRequest->getText( 'line' ) ) )
+				);
 				
 				// Get content without logentry tag in it
 				$content = $article->getContent();
