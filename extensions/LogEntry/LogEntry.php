@@ -25,9 +25,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'logentry-parserhook-desc',
 );
 
-// Append == true, Prepend == false
-$egLogEntryAppend = true;
-
 // Show TimeStamp == true, No TimeStamp == false
 $egLogEntryTimeStamp = true;
 

@@ -21,7 +21,7 @@ class LogEntry extends UnlistedSpecialPage {
 	
 	public function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
-		global $egLogEntryAppend, $egLogEntryUserName, $egLogEntryTimeStamp;
+		global $egLogEntryUserName, $egLogEntryTimeStamp;
 		
 		// Begin output
 		$this->setHeaders();
