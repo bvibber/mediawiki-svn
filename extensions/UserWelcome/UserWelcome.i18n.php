@@ -11,7 +11,8 @@ $messages = array();
  * @author Wikia, Inc.
  */
 $messages['en'] = array(
-	'mp-userlevels-link' => 'User Levels', // This is the help page...e.g. English default is Help:User Levels -- you can define a new help page with this msg.
+	'userwelcome-desc' => 'Adds <tt>&lt;welcomeUser&gt;</tt> tag to display user-specific social info to logged-in users',
+	'mp-userlevels-link' => 'User levels', // This is the help page...e.g. English default is Help:User Levels -- you can define a new help page with this msg.
 	'mp-welcome-upload' => 'Upload',
 	'mp-welcome-edit' => 'Edit',
 	'mp-welcome-points' => '$1 points',
