@@ -28,6 +28,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 
+$wgAvailableRights[] = 'userrights-global';
 $wgAutoloadClasses['SharedUserRights'] = $dir . 'SharedUserRights_body.php';
 $wgExtensionMessagesFiles['SharedUserRights'] = $dir . 'SharedUserRights.i18n.php';
 $wgExtensionAliasesFiles['SharedUserRights'] = $dir . 'SharedUserRights.alias.php';
@@ -60,4 +61,18 @@ function efAddSharedUserRights( $user, $groups ) {
 	}
 
 	return $groups;
+}
+
+/**  
+ * Get a shared table name
+ */
+function efSharedTable( $table )
+{
+        global $wgSharedDB;
+
+        if (!empty( $wgSharedDB )) {
+                return "`$wgSharedDB`.`$table`";
+        } else {
+                return "`$table`";
+        }
 }
