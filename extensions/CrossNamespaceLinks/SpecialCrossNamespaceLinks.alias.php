@@ -79,7 +79,7 @@ $aliases['lb'] = array(
 
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
-	'CrossNamespaceLinks' => array( 'Pautan_silang_ruang_nama' ),
+	'CrossNamespaceLinks' => array( 'Pautan silang ruang nama' ),
 );
 
 /** Low German (Plattdüütsch) */

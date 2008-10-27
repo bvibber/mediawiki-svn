@@ -44,6 +44,11 @@ $aliases['hsb'] = array(
 	'WatchSubpages' => array( 'Podstrony wobkedźbować' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'WatchSubpages' => array( 'Op Ungersigge oppasse', 'Op Ongersigge oppasse' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WatchSubpages' => array( 'Ënnersäiten iwwerwaachen' ),

@@ -72,7 +72,7 @@ $aliases['lb'] = array(
 
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
-	'EditUser' => array( 'Jumlah_pengguna' ),
+	'EditUser' => array( 'Jumlah pengguna' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

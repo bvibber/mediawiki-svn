@@ -54,6 +54,11 @@ $aliases['km'] = array(
 	'WhosOnline' => array( 'អ្នកកំពុងនៅអនឡាញ' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'WhosOnline' => array( 'Wä es online' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WhosOnline' => array( 'Wien ass online' ),

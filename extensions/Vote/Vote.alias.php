@@ -59,6 +59,11 @@ $aliases['km'] = array(
 	'Vote' => array( 'បោះឆ្នោត' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Vote' => array( 'Afstemme', 'Avstemme' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Vote' => array( 'Ofstëmmen' ),

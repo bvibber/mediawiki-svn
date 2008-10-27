@@ -54,6 +54,11 @@ $aliases['hsb'] = array(
 	'WhatIsMyIP' => array( 'Moja IP-adresa' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'WhatIsMyIP' => array( 'Ming IP Address' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WhatIsMyIP' => array( 'Wéi ass meng IP-Adress' ),

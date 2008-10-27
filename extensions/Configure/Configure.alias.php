@@ -48,7 +48,7 @@ $aliases['bcc'] = array(
 
 /** Czech (Česky) */
 $aliases['cs'] = array(
-	'Configure' => array( 'Konfigurace', 'Nastavení' ),
+	'Configure' => array( 'Konfigurace' ),
 	'Extensions' => array( 'Rozšíření', 'Dopňky' ),
 	'ViewConfig' => array( 'Zobrazit konfiguraci', 'Zobrazit nastavení' ),
 );

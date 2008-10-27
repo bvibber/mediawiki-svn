@@ -39,6 +39,11 @@ $aliases['id'] = array(
 	'ShowProcesslist' => array( 'Daftar proses' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'ShowProcesslist' => array( 'Prozessless' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ShowProcesslist' => array( "Weis d'Lëscht vun den Prozessen" ),

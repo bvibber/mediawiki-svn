@@ -49,6 +49,11 @@ $aliases['km'] = array(
 	'Form' => array( 'បែបបទ' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Form' => array( 'Fommulaa', 'Formular' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Form' => array( 'Formulaire' ),

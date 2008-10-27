@@ -109,7 +109,7 @@ $aliases['mk'] = array(
 
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
-	'ExpandTemplates' => array( 'Kembangkan_templat' ),
+	'ExpandTemplates' => array( 'Kembangkan templat' ),
 );
 
 /** Erzya (Эрзянь) */

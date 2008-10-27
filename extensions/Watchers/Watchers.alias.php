@@ -48,6 +48,11 @@ $aliases['hsb'] = array(
 	'Watchers' => array( 'Wobkedźbowarjo' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'Watchers' => array( 'Oppassere' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Watchers' => array( 'Iwwerwacher' ),

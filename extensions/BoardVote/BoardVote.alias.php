@@ -74,7 +74,7 @@ $aliases['lb'] = array(
 
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
-	'BoardVote' => array( 'Undi_Lembaga' ),
+	'BoardVote' => array( 'Undi Lembaga' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

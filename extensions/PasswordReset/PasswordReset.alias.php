@@ -55,7 +55,7 @@ $aliases['lb'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'PasswordReset' => array( 'Wachwoord_opniej_instellen' ),
+	'PasswordReset' => array( 'Niej wachwoord instellen' ),
 	'Disabledusers' => array( 'Uut-eschaokelde_gebrukers' ),
 );
 

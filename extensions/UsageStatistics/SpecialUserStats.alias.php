@@ -52,6 +52,11 @@ $aliases['id'] = array(
 	'UserStats' => array( 'Statistik pengguna' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'UserStats' => array( 'Statistik vun fun de Metmaacher', 'Statistik vun fun de Medmaacher', 'Metmaacher ier Zahle', 'Medmaacher ier Zahle' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'UserStats' => array( 'Benotzerstistiken' ),

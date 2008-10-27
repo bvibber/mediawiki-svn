@@ -72,6 +72,11 @@ $aliases['id'] = array(
 	'SiteMatrix' => array( 'Matriks situs' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'SiteMatrix' => array( 'Leß met de Wikimedia Steffung ier Wikis' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'SiteMatrix' => array( 'Lëscht vun de Wikimedia-Wikien' ),
@@ -79,7 +84,7 @@ $aliases['lb'] = array(
 
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
-	'SiteMatrix' => array( 'Wiki_Wikimedia' ),
+	'SiteMatrix' => array( 'Wiki Wikimedia' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
