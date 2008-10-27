@@ -233,8 +233,7 @@ ENDFORM;
 	<input type="hidden" name="editintro" value="{$editintro}" />
 	{$comment}<input class="createboxInput" name="title" type="{$type}"
 	value="{$defaulttext}" size="{$this->width}" />{$this->br}
-	<input type='submit' name="create" class="createboxButton"
-	value="{$buttonlabel}" />
+	<input type="submit" name="create" class="createboxButton" value="{$buttonlabel}" />
 </form>
 </td>
 </tr>
