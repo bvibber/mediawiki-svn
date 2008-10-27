@@ -62,6 +62,11 @@ $aliases['lb'] = array(
 	'UserStats' => array( 'Benotzerstistiken' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'UserStats' => array( 'СтатистикиЗаКорисник', 'СпецијалниСтатистикиЗаКорисник' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'UserStats' => array( 'Gebrukersgegevens' ),

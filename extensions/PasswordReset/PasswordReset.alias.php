@@ -49,7 +49,7 @@ $aliases['hr'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'PasswordReset' => array( 'Passwuert zrécksetzen' ),
+	'PasswordReset' => array( 'Zrécksetzen vum Passwuert' ),
 	'Disabledusers' => array( 'Desaktivéiert Benotzer' ),
 );
 

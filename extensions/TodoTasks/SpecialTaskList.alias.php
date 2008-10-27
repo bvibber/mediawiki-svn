@@ -56,6 +56,12 @@ $aliases['lb'] = array(
 	'TaskListByProject' => array( 'Lëscht vun den Aufgaben pro Projet' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'TaskList' => array( 'ЛистаНаЗадачи' ),
+	'TaskListByProject' => array( 'ЛистаНаЗадачиПоПроекти' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'TaskList' => array( 'Takenlieste' ),

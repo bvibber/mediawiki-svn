@@ -27,9 +27,19 @@ $aliases['arz'] = array(
 	'CountEdits' => array( 'عد_التعديلات' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'CountEdits' => array( 'BrojacIzmjena' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'CountEdits' => array( 'Beiträge zählen' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'CountEdits' => array( 'Contador_de_Ediciones' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */

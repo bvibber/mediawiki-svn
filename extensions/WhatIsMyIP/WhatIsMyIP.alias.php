@@ -64,6 +64,11 @@ $aliases['lb'] = array(
 	'WhatIsMyIP' => array( 'Wéi ass meng IP-Adress' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'WhatIsMyIP' => array( 'МојатаIP' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'WhatIsMyIP' => array( 'Wat_is_mien_IP-adres' ),

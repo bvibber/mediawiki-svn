@@ -296,7 +296,6 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'closewikis-desc' => 'Permite pechar wikis nas granxas wiki',
-	'closewikis-closed-default' => 'Este wiki está pechado',
 	'closewikis-page' => 'Pechar o wiki',
 	'closewikis-page-close' => 'Pechar o wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -312,11 +311,18 @@ $messages['gl'] = array(
 	'closewikis-page-err-nowiki' => 'Especificou un wiki inválido',
 	'closewikis-page-err-closed' => 'O wiki xa está pechado',
 	'closewikis-page-err-opened' => 'O wiki non está pechado',
+	'closewikis-list' => 'Lista dos wikis pechados',
+	'closewikis-list-intro' => 'Esta lista contén os wikis que foron pechados polos stewards.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Pechado por',
+	'closewikis-list-header-timestamp' => 'Pechado o',
+	'closewikis-list-header-dispreason' => 'Motivo exposto',
 	'closewikis-log' => 'Rexistro de peches de wikis',
 	'closewikis-log-header' => 'Aquí hai un rexistro de todos os peches e reaperturas de wikis feitos polos stewards',
 	'closewikis-log-close' => 'pechou "$2"',
 	'closewikis-log-reopen' => 'volveu abrir "$2"',
 	'right-editclosedwikis' => 'Editar wikis pechados',
+	'right-closewikis' => 'Pechar wikis',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

@@ -58,6 +58,11 @@ $aliases['lb'] = array(
 	'Watchers' => array( 'Iwwerwacher' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'Watchers' => array( 'Набљудувачи' ),
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

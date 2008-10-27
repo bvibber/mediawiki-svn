@@ -33,6 +33,11 @@ $aliases['de'] = array(
 	'InterwikiList' => array( 'Interwiki-Liste' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'InterwikiList' => array( 'Lista_de_Interwikis' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'InterwikiList' => array( 'فهرست_میان‌ویکی' ),

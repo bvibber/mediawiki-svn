@@ -63,6 +63,21 @@ $messages['arz'] = array(
 	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'accountmanager' => 'Xestor de contas',
+	'am-username' => 'nome de usuario',
+	'am-email' => 'correo electrónico',
+	'am-active' => 'activar',
+	'am-updated' => 'Os seus cambios foron gardados con éxito',
+	'nss-save-changes' => 'Gardar os cambios',
+	'nss-create-account-header' => 'Crear unha conta nova',
+	'nss-create-account' => 'Crear a conta',
+	'nss-welcome-mail-subject' => 'Creación de contas',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

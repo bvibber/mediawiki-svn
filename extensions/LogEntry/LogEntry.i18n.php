@@ -81,7 +81,7 @@ $messages['gl'] = array(
  */
 $messages['nl'] = array(
 	'logentry-append' => 'Toevoegen',
-	'logentry-parserhook-desc' => "Deze tagextensie biedt een formulier voor het toevoegen van logboekpagina's",
+	'logentry-parserhook-desc' => "Deze tagextensie biedt een formulier voor het toevoegen aan/voorvoegen in logboekpagina's",
 	'logentry-specialpage-desc' => "Deze tagextensie maakt het mogelijk om logboekpagina's toe te voegen",
 	'logentry' => 'Logboekregel',
 	'logentry-invalidpage' => 'Ongeldige pagina',

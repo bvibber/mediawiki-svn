@@ -325,8 +325,12 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'code-comments' => 'Коментари',
+	'code-desc' => '[[Special:Code|Инструмент за преглеждане на код]] с [[Special:RepoAdmin|поддръжка на Subversion]]',
+	'code-no-repo' => 'Не е конфигурирано хранилище!',
 	'code-authors' => 'автори',
 	'code-tags' => 'етикети',
+	'code-author-name' => 'Въведете потребителско име:',
 	'code-field-id' => 'Версия',
 	'code-field-author' => 'Автор',
 	'code-field-status' => 'Статут',
@@ -334,7 +338,9 @@ $messages['bg'] = array(
 	'code-field-comments' => 'Бележки',
 	'code-field-path' => 'Път',
 	'code-rev-author' => 'Автор:',
+	'code-rev-date' => 'Дата:',
 	'code-rev-message' => 'Коментар:',
+	'code-rev-repo' => 'Хранилище:',
 	'code-rev-rev' => 'Версия:',
 	'code-rev-status' => 'Статут:',
 	'code-rev-tags' => 'Етикети:',
@@ -343,6 +349,7 @@ $messages['bg'] = array(
 	'code-rev-comment-by' => 'Коментар от $1',
 	'code-rev-comment-submit' => 'Публикуване на коментар',
 	'code-rev-comment-preview' => 'Предварителен преглед',
+	'code-pathsearch-path' => 'Път:',
 	'repoadmin-new-button' => 'Създаване',
 	'repoadmin-edit-bug' => 'Път до Bugzilla:',
 	'repoadmin-edit-view' => 'Път до ViewVC:',
@@ -729,8 +736,20 @@ $messages['fa'] = array(
 	'code-status-fixme' => 'درستم کن',
 	'code-status-resolved' => 'حل شده',
 	'code-status-ok' => 'مورد تایید',
+	'code-status-deferred' => 'معوق',
+	'code-pathsearch-legend' => 'جستجوی نسخه‌ها در این مخزن بر اساس مسیر',
+	'code-pathsearch-path' => 'مسیر:',
 	'code-rev-submit' => 'سپردن تغییرات',
+	'code-rev-submit-next' => 'سپردن و حرکت به مورد حل نشدهٔ بعدی',
 	'codereview-reply-link' => 'پاسخ',
+	'codereview-email-subj' => '[$1] [r$2]: نظر جدید اضافه شد',
+	'codereview-email-body' => 'کاربر «$1» یک نظر برای r$3 ارسال کرد.
+
+نشانی کامل: $2
+
+نظر:
+
+$4',
 	'repoadmin' => 'مدیریت مخزن',
 	'repoadmin-new-legend' => 'ایجاد یک مخزن جدید',
 	'repoadmin-new-label' => 'نام محزن:',
@@ -746,6 +765,7 @@ $messages['fa'] = array(
 	'right-codereview-remove-tag' => 'برداشتن برچسب از نسخه‌ها',
 	'right-codereview-post-comment' => 'افزودن توضیحات به نسخه‌ها',
 	'right-codereview-set-status' => 'تغییر وضعیت نسخه‌ها',
+	'right-codereview-link-user' => 'پیوند کردن نویسندگان به کاربران ویکی',
 	'specialpages-group-developer' => 'ابزارهای توسعه‌دهندگان',
 );
 
@@ -1408,8 +1428,10 @@ $4',
  * @author Aviator
  */
 $messages['ms'] = array(
+	'code-comments' => 'Ulasan',
 	'code-authors' => 'pengarang',
 	'code-tags' => 'label',
+	'code-author-name' => 'Masukkan nama pengguna:',
 	'code-field-id' => 'Semakan',
 	'code-field-author' => 'Pengarang',
 	'code-field-user' => 'Pengulas',

@@ -42,6 +42,14 @@ $messages['arz'] = array(
 	'gblrights-rights-entry' => 'غير عضوية المجموعة العامة ل$1 من $2 إلى $3',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'gblrights-logpage' => 'Rexistro de dereitos globais',
+	'gblrights-rights-entry' => 'cambiou o grupo global ao que pertence "$1" de $2 a $3',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

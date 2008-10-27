@@ -348,6 +348,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'inplace_access_denied' => 'Ĉi tiu servo estas limigita laŭ klienta IP-adreso.',
 	'inplace_scaler_not_enough_params' => 'Ne sufiĉaj parametroj',
 	'inplace_scaler_invalid_image' => 'Nevalida bildo; ne eblis determini pezon.',
 	'webstore_access' => 'Ĉi tiu servo estas limigita laŭ klienta IP-adreso.',

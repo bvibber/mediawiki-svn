@@ -29,6 +29,11 @@ $aliases['de'] = array(
 	'WhosOnline' => array( 'Wer ist online' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'WhosOnline' => array( 'Quién_Está_Conectado' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WhosOnline' => array( 'چه_کسی_بر_خط_است' ),

@@ -40,6 +40,11 @@ $aliases['de'] = array(
 	'SiteMatrix' => array( 'Liste der Wikimedia-Wikis' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'SiteMatrix' => array( 'Todos_los_Wikis_de_Wikimedia' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'SiteMatrix' => array( 'ماتریس_وبگاه' ),

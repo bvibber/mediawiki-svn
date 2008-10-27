@@ -70,6 +70,6 @@ $aliases['no'] = array(
 
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'GroupPermissions' => array( 'Grupprättigheter' ),
+	'GroupPermissions' => array( 'Gruppbehörigheter' ),
 );
 

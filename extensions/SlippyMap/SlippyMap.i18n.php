@@ -312,6 +312,7 @@ $messages['lb'] = array(
 	'slippymap_zoombig' => 'Zoom (z) de Wert kann net méi grouss si wéi 17.',
 	'slippymap_code' => 'Wikicode fir dës Kaart ze kucken:',
 	'slippymap_button_code' => 'Wikicode weisen',
+	'slippymap_resetview' => 'Zrécksetzen',
 );
 
 /** Dutch (Nederlands)

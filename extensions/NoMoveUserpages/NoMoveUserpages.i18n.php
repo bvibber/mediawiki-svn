@@ -59,6 +59,15 @@ $messages['de'] = array(
 	'right-move-userpages' => 'Benutzerseite verschieben',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'nomoveuserpages-desc' => 'Rajtigus al uzantoj movi uzulpaĝojn se havus la rajton "movi-uzulpaĝojn".',
+	'nomoveuserpages-error' => 'Movado de uzulpaĝoj estis malŝaltita',
+	'right-move-userpages' => 'Movi uzulpaĝojn',
+);
+
 /** French (Français)
  * @author IAlex
  */
