@@ -401,28 +401,13 @@ class SharedUserRights extends SpecialPage {
 
 		foreach ( $allgroups as $group ) {
 			$set = in_array( $group, $usergroups );
-			# Should the checkbox be disabled?
-			$disabled = !(
-				( $set && $this->canRemove( $group ) ) ||
-				( !$set && $this->canAdd( $group ) ) );
-			# Do we need to point out that this action is irreversible?
-			$irreversible = !$disabled && (
-				( $set && !$this->canAdd( $group ) ) ||
-				( !$set && !$this->canRemove( $group ) ) );
-
-			$attr = $disabled ? array( 'disabled' => 'disabled' ) : array();
-			$text = $irreversible
-				? wfMsgHtml( 'userrights-irreversible-marker', User::getGroupMember( $group ) )
-				: User::getGroupMember( $group );
+			
+			$attr = array();
+			$text = User::getGroupMember( $group );
 			$checkbox = Xml::checkLabel( $text, "wpGroup-$group",
 				"wpGroup-$group", $set, $attr );
-			$checkbox = $disabled ? Xml::tags( 'span', array( 'class' => 'mw-userrights-disabled' ), $checkbox ) : $checkbox;
-
-			if ( $disabled ) {
-				$unsettable_col .= "$checkbox<br />\n";
-			} else {
-				$settable_col .= "$checkbox<br />\n";
-			}
+			
+			$settable_col .= "$checkbox<br />\n";
 		}
 
 		if ( $column ) {
