@@ -43,8 +43,8 @@
  		$this->parseTitle( $title->getDBKey() );
  		// print "mv_title stream name: " . $this->stream_name. "\n";
  	}
- 	function inheritTitle( & $tilte ) {
- 		foreach ( $tilte as $k => $v ) {
+ 	function inheritTitle( & $title ) {
+ 		foreach ( $title as $k => $v ) {
  			$this->$k = $v;
  		}
  	}
@@ -335,10 +335,15 @@
 			
 		$stream_web_url = $this->getWebStreamURL( $mvDefaultVideoQualityKey );
 		$flash_stream_url = $this->getWebStreamURL( $mvDefaultFlashQualityKey );
-		// print "lookign for q: $mvDefaultFlashQualityKey ";
+		// print "looking for q: $mvDefaultFlashQualityKey ";
 
 		// print "FOUND: $flash_stream_url";		
 		$roe_url = 	$this->getROEURL();
+		//if no urls available return missing: 
+		if ( !$stream_web_url &&  !$flash_stream_url ) {
+			return wfMsg( 'mv_error_stream_missing' );
+		}
+		
 		if ( $stream_web_url || $flash_stream_url ) {
 			$o = '';
 			/*if($this->dispVideoPlayerTime){				
@@ -369,10 +374,8 @@
 				
 			$o .= '</' . htmlspecialchars( $tag ) . '>';
 			return $o;
-		} else {
-			return wfMsg( 'mv_error_stream_missing' );
-		}
-	}
+		}					
+	}	
 	function getViewCount() {
 		if ( $this->view_count == null ) {
 			$dbr = & wfGetDB( DB_READ );

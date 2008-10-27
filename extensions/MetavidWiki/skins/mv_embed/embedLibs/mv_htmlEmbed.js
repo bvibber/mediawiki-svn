@@ -35,7 +35,7 @@ var htmlEmbed ={
 	},
 	stop:function(){
 		this.pause();
-		window.clearInterval( this.monitorTimerId );
+		//window.clearInterval( this.monitorTimerId );
 	},
 	pause:function(){
 		js_log('f:pause: htmlEmbedWrapper');

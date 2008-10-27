@@ -158,6 +158,44 @@ class MV_SequencePage extends Article {
  			case MV_NS_SEQUENCE:
  				//type sequence ..@@todo transclude the sequence into present sequence (try to avoid id) 
  			break;
+ 			case MV_NS_STREAM:
+ 				global $mvDefaultVideoQualityKey, $mvDefaultFlashQualityKey;
+ 				//we could include relevant timed text and relevant different source types.
+ 				  
+				//make sure the stream exists:
+ 				$mvTitle = new MV_Title($uriTitle);
+ 				if(!$mvTitle->doesStreamExist() ){ 					
+ 					$node->setAttribute('type','text/html'); 					
+ 					$this->parseInnerWikiText($node, wfMsg('mv_resource_not_found',$uriTitle->getText()));
+ 					return $node;
+ 				}
+ 				
+ 				//get urls for flash and ogg 	
+ 							
+ 				$stream_web_url = $mvTitle->getWebStreamURL( $mvDefaultVideoQualityKey );
+				$flash_stream_url = $mvTitle->getWebStreamURL( $mvDefaultFlashQualityKey );
+				
+				if( !$stream_web_url && !$flash_stream_url ){
+					$node->setAttribute('type','text/html'); 					
+ 					$this->parseInnerWikiText($node, wfMsg('mv_resource_not_found',$uriTitle->getText()));
+ 					return $node;
+				}
+				
+ 				//@@todo parse child nodes for stream request params?  				
+ 				$f = $node->ownerDocument->createDocumentFragment();		
+ 				if( $stream_web_url ){				 					
+		    		$f->appendXML( '<source type="' .
+					htmlspecialchars( MV_StreamFile::getTypeForQK( $mvDefaultVideoQualityKey ) ) .
+					'" src="' . $stream_web_url . '"></source>' );
+ 				}
+ 				if( $flash_stream_url ){
+ 					$f->appendXML(  '<source type="' .
+					htmlspecialchars( MV_StreamFile::getTypeForQK( $mvDefaultFlashQualityKey ) ) .
+					'" src="' . $flash_stream_url . '"></source>' );
+ 				}
+				$node->appendChild($f); 				
+ 				
+ 			break;
  			case NS_TEMPLATE:
  				//templates are of type text/html
  				$node->setAttribute('type','text/html');
@@ -206,28 +244,34 @@ class MV_SequencePage extends Article {
  				if( !$img ){
  					$node->setAttribute('type','text/html'); 					
  					$this->parseInnerWikiText($node, wfMsg('mv_resource_not_found',$uriTitle->getText()));
- 				}else{
- 					//print "resource found set: " . $img->getMimeType();
-	 				//set type attribute:  
-	 				//get a default wide media; 
-	 				$thumbnail = $img->transform( array('width'=>$width) );
- 					if( $thumbnail->isError()  ){
- 						$this->parseInnerWikiText( $node, $thumbnail->toHtml() );
- 					}else{ 					 				
-		 				$node->setAttribute( 'type', $img->getMimeType() );
-		 				$node->setAttribute( 'src', $thumbnail->file->getURL() );
-		 				
-		 				//if type is ogg: (set dur and poster) 
-		 				if( $img->getMimeType()=='application/ogg') {
-		 					if( !$node->hasAttribute('dur') )
-		 						$node->setAttribute('dur',  $thumbnail->file->getLength() );
-		 					if( !$node->hasAttribute('poster') ){
-		 						$node->setAttribute('poster',  $thumbnail->url);
-		 					}
-		 				}
- 					}
+ 					return $node;
  				}
+ 				
+ 				//print "resource found set: " . $img->getMimeType();
+ 				//set type attribute:  
+ 				//get a default wide media; 
+ 				$thumbnail = $img->transform( array('width'=>$width) );
+ 				if( $thumbnail->isError()  ){
+ 					$this->parseInnerWikiText( $node, $thumbnail->toHtml() );
+ 				}else{ 					 				
+	 				$node->setAttribute( 'type', $img->getMimeType() );
+	 				$node->setAttribute( 'src', $thumbnail->file->getURL() );
+	 				
+	 				//if type is ogg: (set dur and poster) 
+	 				if( $img->getMimeType()=='application/ogg') {
+	 					if( !$node->hasAttribute('dur') )
+	 						$node->setAttribute('dur',  $thumbnail->file->getLength() );
+	 					if( !$node->hasAttribute('poster') ){
+	 						$node->setAttribute('poster',  $thumbnail->url);
+	 					}
+	 				}
+ 				} 				
  			break; 
+ 			default:
+ 				$node->setAttribute('type','text/html'); 					
+ 				$this->parseInnerWikiText($node, wfMsg('mv_resource_not_supported', 
+ 								$uriTitle->getNsText() . $uriTitle->getText()) );
+ 			break;
 		}									
 		return $node;
 	}
