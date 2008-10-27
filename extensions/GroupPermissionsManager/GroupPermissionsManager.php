@@ -88,7 +88,7 @@ $wgGPManagerSort['manage'] = array( 'delete', 'bigdelete', 'deletedhistory', 'un
 'patrol', 'editinterface', 'editusercssjs', 'hiderevision', 'deleterevision', 'browsearchive', 'suppressrevision',
 'suppressionlog' );
 $wgGPManagerSort['admin'] = array( 'siteadmin', 'import', 'importupload', 'trackback', 'unwatchedpages',
-'grouppermissions'/*, 'nsmanager' */);
+'grouppermissions');
 $wgGPManagerSort['tech'] = array( 'bot', 'purge', 'minoredit', 'nominornewtalk', 'ipblock-exempt',
 'proxyunbannable', 'autopatrol', 'apihighlimits', 'suppressredirect', 'autoconfirmed',
 'emailconfirmed', 'noratelimit' );
