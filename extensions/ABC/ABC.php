@@ -41,6 +41,12 @@ $abctimidity = false;
 # specification or your TiMidity++ patch description for others.
 $abcMIDIvoice = 1;
 
+# If you have the OggHandler extension installed, set this to
+# 'true' to embed the OggHandler below the music.  This will
+# allow users to listen to the music on the page.  To use this,
+# you must enable Ogg Vorbis rendering.
+$abcOggHandler = false;
+
 $wgExtensionCredits['parserhooks'][] = array(
 	'name' => 'ABC',
 	'author' => 'River Tarnell',
@@ -58,15 +64,21 @@ if (defined('MW_SUPPORTS_PARSERFIRSTCALLINIT')) {
 
 function
 efABCInit() {
-global	$wgParser;
+global	$wgParser, $wgOut, $abcOggHandler;
 	wfLoadExtensionMessages('ABC');
 	$wgParser->setHook( 'abc', 'efABCRender' );
+	
+	if ($abcOggHandler) {
+		$oh = new OggHandler();
+		$oh->setHeaders($wgOut);
+	}
+	
 	return true;
 }
  
 function
 efABCRender($input, $args, $parser) {
-global	$abcPath, $abcURL, $abc2midi, $abctimidity;
+global	$abcPath, $abcURL, $abc2midi, $abctimidity, $abcOggHandler;
 	if ($abcPath == false || $abcURL == false)
 		return 'Error: $abcPath and $abcURL must be set to use the ABC extension.';
 
@@ -106,7 +118,7 @@ global	$abcPath, $abcURL, $abc2midi, $abctimidity;
 	if ($abc2midi && $abctimidity)
 		if (!abcCreateVorbis($abc, $hash, $error))
 			return str_replace("\n", "<br />", htmlspecialchars($error));
-			
+	
 	/*
 	 * Succeeded to create all the output formats, return the
 	 * output.  We produce an image from the PNG, and include
@@ -131,12 +143,24 @@ global	$abcPath, $abcURL, $abc2midi, $abctimidity;
 		
 	$e_dllinks = wfMsg('abcdownload') . " " .
 		join(" " . wfMsg('abcsep') . " ", $links);
-			
+	
+	$ogghtml = "";
+	
+	if ($abcOggHandler) {
+		$oh = new OggTransformOutput(null,
+			"$abcURL/$hash.ogg", false,
+			250, 0, 0, false, 
+			"$abcPath/$hash.ogg", false);
+		$ogghtml = $oh->toHtml(array('alt' => $title));
+	}
+	
 	$output = <<<EOF
 <div style="float: $float; border: solid 1px #aaaaaa; margin: 0.2em;" class="abc-music">
 	<img src="$e_imgpath" alt="$e_title" />
 	<div style="text-align: center">
 		$e_dllinks
+		<br />
+		$ogghtml
 	</div>
 </div>
 EOF;
@@ -153,6 +177,9 @@ global	$abcPath;
 	}
 	
 	$filename = "$abcPath/$hash.abc";
+	if (file_exists($filename))
+		return true;
+		
 	if (($f = @fopen($filename, "w")) === false) {
 		$last = error_get_last();
 		$msg = $last['msg'];
@@ -190,6 +217,9 @@ global	$abcm2ps, $abcPath;
 	
 	$input = "$abcPath/$hash.abc";
 	$output = "$abcPath/$hash.ps";
+
+	if (file_exists($output))
+		return true;
 	
 	$cmd = "$abcm2ps -E $input -O $abcPath/$hash";
 	@exec($cmd, $cmd_out, $ret);
@@ -218,7 +248,10 @@ global	$abcps2pdf, $abcPath;
 	
 	$input = "$abcPath/$hash.ps";
 	$output = "$abcPath/$hash.pdf";
-	
+
+	if (file_exists($output))
+		return true;
+
 	$cmd = "$abcps2pdf $input $output";
 	@exec($cmd, $cmd_out, $ret);
 	if ($ret != 0 || !@file_exists("$abcPath/$hash.pdf")) {
@@ -241,7 +274,10 @@ global	$wgImageMagickConvertCommand, $abcPath;
 	
 	$input = "$abcPath/$hash.ps";
 	$output = "$abcPath/$hash.png";
-	
+
+	if (file_exists($output))
+		return true;
+
 	$cmd = "$wgImageMagickConvertCommand $input $output";
 	@exec($cmd, $cmd_out, $ret);
 	if ($ret != 0 || !@file_exists($output)) {
@@ -264,7 +300,10 @@ global	$abc2midi, $abcPath;
 	
 	$input = "$abcPath/$hash.abc";
 	$output = "$abcPath/$hash.mid";
-	
+
+	if (file_exists($output))
+		return true;
+
 	$cmd = "$abc2midi $input -o $output";
 	@exec($cmd, $cmd_out, $ret);
 	if ($ret != 0 || !@file_exists($output)) {
@@ -287,7 +326,10 @@ global	$abctimidity, $abcMIDIvoice, $abcPath;
 	
 	$input = "$abcPath/$hash.mid";
 	$output = "$abcPath/$hash.ogg";
-	
+
+	if (file_exists($output))
+		return true;
+
 	$cmd = "$abctimidity -Ei$abcMIDIvoice -Ov -id $input";
 	@exec($cmd, $cmd_out, $ret);
 	if ($ret != 0 || !@file_exists($output)) {
