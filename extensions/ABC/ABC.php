@@ -113,18 +113,21 @@ global	$abcPath, $abcURL, $abc2midi, $abctimidity, $abcOggHandler,
 	
 	if (!abcCreateABC($abc, $hash, $error))
 		return str_replace("\n", "<br />", htmlspecialchars($error));
-	if (!abcCreatePS($abc, $hash, $error))
-		return str_replace("\n", "<br />", htmlspecialchars($error));
-	if (!abcCreatePNG($abc, $hash, $error))
-		return str_replace("\n", "<br />", htmlspecialchars($error));
-	if (!abcCreatePDF($abc, $hash, $error))
-		return str_replace("\n", "<br />", htmlspecialchars($error));
-	if ($abc2midi)
-		if (!abcCreateMIDI($abc, $hash, $error))
+
+	if (!$abcDelayedRendering) {
+		if (!abcCreatePS($abc, $hash, $error))
 			return str_replace("\n", "<br />", htmlspecialchars($error));
-	if ($abc2midi && $abctimidity)
-		if (!abcCreateVorbis($abc, $hash, $error))
+		if (!abcCreatePNG($abc, $hash, $error))
 			return str_replace("\n", "<br />", htmlspecialchars($error));
+		if (!abcCreatePDF($abc, $hash, $error))
+			return str_replace("\n", "<br />", htmlspecialchars($error));
+		if ($abc2midi)
+			if (!abcCreateMIDI($abc, $hash, $error))
+				return str_replace("\n", "<br />", htmlspecialchars($error));
+		if ($abc2midi && $abctimidity)
+			if (!abcCreateVorbis($abc, $hash, $error))
+				return str_replace("\n", "<br />", htmlspecialchars($error));
+	}
 	
 	/*
 	 * Succeeded to create all the output formats, return the
