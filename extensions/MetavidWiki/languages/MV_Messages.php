@@ -245,10 +245,10 @@ Jump to stream view: $2',
 	'mv_welcome_to_sequencer' => '<h3>Welcome to The sequencer demo</h3>'.
 						'very <b>limited</b> functionality right now', 
 
-	'mv_editor_options'=>'Editor Options',
-	'mv_editor_mode'	=>'Editor Mode',
-	'mv_simple_editor_desc'=>'simple editor (imovie style)',
-	'mv_advanced_editor_desc' => 'advanced editor (final cut style)',
+	'mv_editor_options'=>'Editor options',
+	'mv_editor_mode'	=>'Editor mode',
+	'mv_simple_editor_desc'=>'simple editor (iMovie style)',
+	'mv_advanced_editor_desc' => 'advanced editor (Final Cut style)',
 
 	'mv_save_sequence' => 'Save sequence',
 	'mv_sequence_page_desc' => 'Save the current sequence',
