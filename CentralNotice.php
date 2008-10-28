@@ -46,7 +46,7 @@ $wgNoticeTimeout = 0;
 $wgNoticeServerTimeout = 0;
 
 /// Use a god-forsaken <marquee> to scroll multiple quotes...
-$wgNoticeScroll = true;
+$wgNoticeScroll = false;
 
 /// Source for live counter information
 $wgNoticeCounterSource = "http://donate.wikimedia.org/counter.php";
@@ -77,7 +77,11 @@ $wgGroupPermissions['sysop']['centralnotice_admin_rights'] = true; // Only sysop
 $wgGroupPermissions['sysop']['centralnotice_translate_rights'] = true; // Only sysops can make change
 	
 $wgSpecialPages['CentralNotice'] = 'CentralNotice';
+$wgSpecialPages['NoticeTranslate'] = 'SpecialNoticeTranslate';
+$wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
 $wgSpecialPageGroups['CentralNotice'] = 'wiki'; // Wiki data and tools"
+$wgSpecialPageGroups['NoticeTranslate'] = 'wiki'; // Wiki data and tools"
+$wgSpecialPageGroups['NoticeTemplate'] = 'wiki'; // Wiki data and tools"
 
 function efCentralNoticeSetup() {
  		global $wgHooks, $wgNoticeInfrastructure;

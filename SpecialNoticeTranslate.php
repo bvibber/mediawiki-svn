@@ -62,7 +62,7 @@ class SpecialNoticeTranslate extends SpecialPage
 
 		$token = $wgUser->editToken();
 		$wpUserLang = $wgRequest->getVal('wpUserLanguage') ? $wgRequest->getVal('wpUserLanguage') : $wgContLanguageCode;
-		$requiredFields = array( 'counter','donate','headlines');
+		$requiredFields = array( 'heading','target','button','hide');
 		// Four column listing of field : text : field/lang : translation
 		$table  = "<form name='centranoticetranslate' id='centralnoticetranslate' method='post'>";
 		$table .= "<fieldset><legend>" . wfMsgHtml( "centralnotice-translate-heading" ) . "</legend>";

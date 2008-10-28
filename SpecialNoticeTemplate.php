@@ -28,15 +28,15 @@ class SpecialNoticeTemplate extends SpecialPage {
 
 
 		if ( $wgRequest->wasPosted() ) {
-			//$body = file_get_contents('php://input');
-			//$wgOut->addHtml("Body of post: $body");
+		//	$body = file_get_contents('php://input');
+		//	$wgOut->addHtml("Body of post: $body");
 
-			$toRemove = $wgRequest->getArray('removeTemplate');
+			$toRemove = $wgRequest->getArray('removeTemplates');
 			if ( isset($toRemove) ){  
 				foreach ( $toRemove as $template ) {
-					$this->removeNotice( $template );
+					$this->removeTemplate( $template );
 				}
-				$this->listNotices();
+				$this->listTemplates();
 				return;
 			}
 
@@ -83,7 +83,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 	function queryTemplates() {
 		$centralnotice_template_table = "central_notice_templates";
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( $centralnotice_template_table, "template_name");
+		$res = $dbr->select( $centralnotice_template_table, "template_name, template_id", '', '', array('ORDER BY' => 'template_id'));
 
 		$templates = array();
 		while ( $row = $dbr->fetchObject( $res )) {
@@ -100,12 +100,24 @@ class SpecialNoticeTemplate extends SpecialPage {
 	function templatesForm( $templates ) {
 		global $wgOut, $wgTitle;
 		
-		$table  = Xml::fieldset( 'Available Templates' );
-		$table .= Xml::openElement( 'table', array ( 'id' => 'templates')) ; 
+		$table = Xml::openElement( 'form', array(
+						'method' => 'post',
+						'action' => ''));
+		$table .= Xml::fieldset( 'Available Templates' );
+		$table .= Xml::openElement( 'table', array ( 'cellpadding' => 9)) ; 
+		$table .= "<th>" . wfMsg ( 'centralnotice-template-name' ) . "</th>";
+		$table .= "<th>" . wfMsg ( 'centralnotice-remove') . "</th>";
+
 		$templates = $this->queryTemplates();
 		foreach ( $templates as $templateName ) {
-			$table .= "<tr><td>" . $templateName . "</td></tr>";
+			$table .= "<tr><td>" . 
+					$templateName .
+				  "</td>";
+			$table .=  "<td>" .
+					Xml::check( 'removeTemplates[]', false, array( 'value' => $templateName)) .
+				   "</td></tr>";
 		}
+		$table .= "<tr><td>" . Xml::submitButton( wfMsg( 'centralnotice-modify')) . "</td></tr>"; 
 		$table .= Xml::closeElement( 'table' );
 		$table .= XML::closeElement( 'fieldset' );
 
@@ -156,6 +168,11 @@ class SpecialNoticeTemplate extends SpecialPage {
 	function addTemplate ( $templateName, $templateBody ) {
 		global $wgOut;
 
+		if ( $templateBody == '' || $templateName == '' ) {
+			$wgOut->addHtml( wfMsg( 'centralnotice-null-string' ) );
+			return;
+		}
+
 		$dbr = wfGetDB( DB_SLAVE );
 		$centralnotice_table = 'central_notice_templates';
 
@@ -174,10 +191,43 @@ class SpecialNoticeTemplate extends SpecialPage {
 			 $templatePage = "Centralnotice-" . "template-" . "$templateName";
 			 $title = Title::newFromText( $templatePage, NS_MEDIAWIKI );
 			 $article = new Article( $title );
-			 $templateBody = htmlspecialchars ( $templateBody );
 			 $article->doEdit( $templateBody, '' );
 			 return;
 			
 		}
+	}
+
+	function removeTemplate ( $templateName ) {
+		global $wgOut;
+
+		if ( $templateName == '' ) {
+			$wgOut->addHtml( wfMsg( 'centralnotice-template-doesnt-exist' ) );
+			$return;
+		}
+		
+		$templateId = $this->getTemplateId( $templateName );
+		$centralnotice_table = 'central_notice_template_assignments';
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( $centralnotice_table, 'template_assignment_id', 
+							   "template_id =" . $dbr->addQuotes( $templateId ) );
+		if ( $dbr->numRows( $res ) > 0 ) {
+			$wgOut->addHtml( wfMsg( 'centralnotice-template-still-bound' ) );
+			$return;
+		}
+		else {
+			$centralnotice_table = 'central_notice_templates';
+			$dbw = wfGetDB( DB_MASTER );
+			$res = $dbw->delete( $centralnotice_table, array( "template_id =" . $dbr->addQuotes($templateId)));
+		}
+	}
+
+	function getTemplateId ( $templateName ) {
+		global $wgOut;
+		
+		$centralnotice_table = 'central_notice_templates';
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( $centralnotice_table, 'template_id', array( "template_name =" . $dbr->addQuotes( $templateName )));
+		$row = $dbr->fetchObject( $res );
+		return $row->template_id;
 	}
 }

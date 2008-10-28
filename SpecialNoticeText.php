@@ -25,32 +25,19 @@ class SpecialNoticeText extends NoticePage {
 			'wgNotice="' .
 			strtr(
 				Xml::escapeJsString( $this->getHtmlNotice() ),
-				array_merge(
-					array_map(
-						array( $this, 'interpolateScroller' ),
-						array(
-							'$quote' => $this->getQuotes(),
-						)
-					),
 					array_map(
 						array( $this, 'interpolateStrings' ),
 						array(
-							'$headline' => $this->getHeadlines(),
-							'$meter' => $this->getMeter(),
-							'$progress' => $this->getMessage( 'centralnotice-progress' ),
-							'$target' => $this->getTarget(),
-							'$media' => $this->getMessage( 'centralnotice-media' ),
-							'$show' => $this->getMessage( 'centralnotice-show' ),
-							'$hide' => $this->getMessage( 'centralnotice-hide' ),
-							'$donate' => $this->getMessage( 'centralnotice-donate' ),
-							'$counter' => $this->getMessage( 'centralnotice-counter',
-								array( $this->formatNum( $this->getDonorCount() ) ) ),
-							'$blog' => $this->getBlog(),
+							'$heading' => $this->getHeadlines(), // Wikipedia: Making Life Easier. 
 							'$subheading' => $this->getSubheading(),
-							'$thanks' => $this->getThanks(),
+							'$meter' => $this->getMeter(), // dynamic selection
+							'$amount' => $this->getMessage( 'centralnotice-amount' ),
+									array ( $this->formatNum( $this->getDonationAmount() )), // lookup
+							'$target' => $this->getMessage( 'centralnotice-target' ), // "Our Goal 6 million
+							'$show' => $this->getMessage( 'centralnotice-show' ), // show
+							'$hide' => $this->getMessage( 'centralnotice-hide' ), // hide
 						)
 					)
-				)
 			) .
 			'";' .
 			$this->getScripts();
@@ -379,6 +366,10 @@ END;
 		return $count;
 	}
 	
+	private function getDonationAmount() {
+		return 2543454;
+	}
+
 	private function getFallbackDonorCount() {
 		global $wgMemc;
 		$count = intval( $wgMemc->get( 'centralnotice:counter:fallback' ) );
