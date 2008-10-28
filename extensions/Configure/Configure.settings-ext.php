@@ -87,6 +87,12 @@ $extensions = array(
 		'settings' => array(
 			'wgAllowSysopQueries' => 'bool',
 			'wgSqlLogFile' => 'text',
+			'wgDBsqlpassword' => 'text',
+			'wgDBsqluser' => 'text',
+		),
+		'view-restricted' => array(
+			'wgDBsqlpassword',
+			'wgDBsqluser',
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Asksql',
 	),

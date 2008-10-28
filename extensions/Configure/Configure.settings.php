@@ -137,7 +137,9 @@ class ConfigurationSettings {
 			$ret += $this->viewRestricted;
 		}
 		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
-			$ret += array(); // Nothing for extensions
+			foreach( $this->getAllExtensionsObjects() as $ext ){
+				$ret = array_merge( $ret, $ext->getViewRestricted() );
+			}
 		}
 		return $ret;
 	}
@@ -154,7 +156,9 @@ class ConfigurationSettings {
 			$ret += $this->editRestricted;
 		}
 		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
-			$ret += array(); // Nothing for extensions
+			foreach( $this->getAllExtensionsObjects() as $ext ){
+				$ret = array_merge( $ret, $ext->getEditRestricted() );
+			}
 		}
 		return $ret;
 	}

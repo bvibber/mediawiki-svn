@@ -1,6 +1,11 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.8.11 - 28 October 2008
+  * Added the possibiliy to restrict extensions settings in
+    $wgConfigureAdditionalExtensions.
+  * Updated Asksql extension
+
 0.8.10 - 26 October 2008
   Settings which have the same value as in DefaultSettings.php are now removed
   from the saved configuration.

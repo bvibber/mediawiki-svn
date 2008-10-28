@@ -10,6 +10,8 @@ class WebExtension {
 	protected $mSettings;
 	protected $mArrays;
 	protected $mEmptyValues;
+	protected $mViewRestricted;
+	protected $mEditRestricted;
 	protected $mName;
 	protected $mDbChange;
 	protected $mInputCallback = null;
@@ -30,6 +32,8 @@ class WebExtension {
 		$this->mFile = isset( $conf['file'] ) ? $conf['file'] : $conf['name'] . '.php' ;
 		$this->mArrays = isset( $conf['array'] ) ? $conf['array'] : array();
 		$this->mEmptyValues = isset( $conf['empty'] ) ? $conf['empty'] : array();
+		$this->mViewRestricted = isset( $conf['view-restricted'] ) ? $conf['view-restricted'] : array();
+		$this->mEditRestricted = isset( $conf['edit-restricted'] ) ? $conf['edit-restricted'] : array();
 		$this->mDoc = isset( $conf['url'] ) ? $conf['url'] : null;
 	}
 
@@ -67,6 +71,24 @@ class WebExtension {
 	 */
 	public function getEmptyValues(){
 		return $this->mEmptyValues;
+	}
+
+	/**
+	 * Get settings that can only be viewed by users with *-all right
+	 *
+	 * @return array
+	 */
+	public function getViewRestricted(){
+		return $this->mViewRestricted;
+	}
+
+	/**
+	 * Get settings that can only be modified by users with *-all right
+	 *
+	 * @return array
+	 */
+	public function getEditRestricted(){
+		return $this->mEditRestricted;
 	}
 
 	/**
