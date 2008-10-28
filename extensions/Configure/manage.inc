@@ -56,7 +56,7 @@ class ConfigurationManager {
 		echo "Script that helps to do maintenance with configuration files.\n";
 		echo "\n";
 		echo "Usage:\n";
-		echo "  php findSettings.php [--revert version] [--list] [--delete version] [--help]\n";
+		echo "  php manage.php [--revert version] [--list] [--delete version] [--help]\n";
 		echo "\n";
 		echo "options:\n";
 		echo "--help: display this screen\n";
