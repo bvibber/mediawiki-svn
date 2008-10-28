@@ -20,14 +20,16 @@ $abcPath = false;
 # Example: $abcURL = "/wiki/abc";
 $abcURL = false;
 
-# Path to the abcm2ps executable.
+# Path to the abcm2ps executable.  Required.
 $abcm2ps = "/usr/bin/abcm2ps";
 
-# Path to the ps2pdf executable.
+# Path to the ps2pdf executable.  Required.
 $abcps2pdf = "/usr/bin/ps2pdf14";
 
-# Path to the abc2midi executable.
-$abc2midi = "/usr/bin/abc2midi";
+# Path to the abc2midi executable.  Optional; set this if you
+# want to enable MIDI rendering.
+#$abc2midi = "/usr/bin/abc2midi";
+$abc2midi = false;
 
 $wgExtensionCredits['parserhooks'][] = array(
 	'name' => 'ABC',
@@ -88,8 +90,9 @@ global	$abcPath, $abcURL;
 		return str_replace("\n", "<br />", htmlspecialchars($error));
 	if (!abcCreatePDF($abc, $hash, $error))
 		return str_replace("\n", "<br />", htmlspecialchars($error));
-	if (!abcCreateMIDI($abc, $hash, $error))
-		return str_replace("\n", "<br />", htmlspecialchars($error));
+	if ($abc2midi)
+		if (!abcCreateMIDI($abc, $hash, $error))
+			return str_replace("\n", "<br />", htmlspecialchars($error));
 	
 	/*
 	 * Succeeded to create all the output formats, return the
@@ -103,14 +106,15 @@ global	$abcPath, $abcURL;
 	$e_pdfpath = htmlspecialchars("$abcURL/$hash.pdf");
 	$e_midipath = htmlspecialchars("$abcURL/$hash.mid");
 	
-	$e_abclink = "<a href=\"$e_abcpath\">" . wfMsg('abcabc') . "</a>";
-	$e_pslink = "<a href=\"$e_pspath\">" . wfMsg('abcps') . "</a>";
-	$e_pdflink = "<a href=\"$e_pdfpath\">" . wfMsg('abcpdf') . "</a>";
-	$e_midilink = "<a href=\"$e_midipath\">" . wfMsg('abcmidi') . "</a>";
+	$links = array();
+	$links[] = "<a href=\"$e_abcpath\">" . wfMsg('abcabc') . "</a>";
+	$links[] = "<a href=\"$e_pspath\">" . wfMsg('abcps') . "</a>";
+	$links[] = "<a href=\"$e_pdfpath\">" . wfMsg('abcpdf') . "</a>";
+	if ($abc2midi)
+		$links[] = "<a href=\"$e_midipath\">" . wfMsg('abcmidi') . "</a>";
 
 	$e_dllinks = wfMsg('abcdownload') . " " .
-		join(" " . wfMsg('abcsep') . " ", 
-			array($e_abclink, $e_pslink, $e_pdflink, $e_midilink));
+		join(" " . wfMsg('abcsep') . " ", $links);
 			
 	$output = <<<EOF
 <div style="float: $float; border: solid 1px #aaaaaa; margin: 0.2em;" class="abc-music">
