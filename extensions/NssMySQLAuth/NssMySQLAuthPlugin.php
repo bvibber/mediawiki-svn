@@ -18,7 +18,9 @@ class NssMySQLAuthPlugin extends AuthPlugin {
 		$wgHooks['UserEffectiveGroups'][]	= array( $wgAuth, 'onUserEffectiveGroups' );
 		$wgHooks['UserGetEmail'][]		= array( $wgAuth, 'onUserGetEmail' );
 		$wgHooks['UserSetEmail'][]		= array( $wgAuth, 'onUserSetEmail' );
+		$wgHooks['UserRights'][]		= array( $wgAuth, 'onUserRights' );
 
+		
 		wfLoadExtensionMessages( 'nssmysqlauth' );
 	}
 
@@ -32,15 +34,23 @@ class NssMySQLAuthPlugin extends AuthPlugin {
 	}
 
 	function userExists( $username ) {
-		if( isset( $this->users[$username] ))
-			return $this->users[$username];
-
+		$this->loadUser( $username );
+		return $this->users[$username] !== false; 
+	}
+	function getUid( $username ) {
+		$this->loadUser( $username );
+		return $this->users[$username];		
+	}
+	
+	function loadUser( $username ) {
+		if ( isset( $this->users[$username] ) )
+			return;
 		$dbr = $this->getDB( DB_READ );
-		return $this->users[$username] =
-			false !== $dbr->select(
-				'passwd', 1, array( 'pwd_name' => $username ),
+		$row = $dbr->selectRow( 
+				'passwd', 'pwd_uid', array( 'pwd_name' => $username ),
 				__METHOD__
 			);
+		$this->users[$username] = ($row === false ? false : $row->pwd_uid); 	
 	}
 
 	function authenticate( $username, $password ) {
@@ -148,6 +158,35 @@ class NssMySQLAuthPlugin extends AuthPlugin {
 		);
 	}
 
+	function onUserRights( &$user, $addgroup, $removegroup ) {
+		$uid = $this->getUid( $user->getName() );
+		if( $uid === false ) 
+			return true;
+		
+		$dbr = $this->getDB( DB_READ );
+		$res = $dbr->select( 'groups', 'grp_name', array(), __METHOD__ );
+		$groups = array();
+		while ( $row = $res->fetchObject() ) 
+			$groups[] = $row->grp_name;
+		$res->free();
+		
+		$addgroup = array_intersect( $groups, $addgroup );
+		$removegroup = array_intersect( $groups, $removegroup );
+		
+		$dbw = $this->getDB( DB_WRITE );
+		foreach ( $addgroup as $group )
+			$dbw->insert( 'group_membership', array( 
+				'gm_user' => $uid,
+				'gm_group' => $group,
+				), __METHOD__, 'IGNORE' );
+		foreach ( $removegroup as $group )
+			$dbw->delete( 'group_membership', array( 
+				'gm_user' => $uid,
+				'gm_group' => $group,
+				), __METHOD__ );
+		return true;
+	}
+	
 	/**
 	* Create an account, returning a random password
 	*/
