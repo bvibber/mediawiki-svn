@@ -159,7 +159,8 @@ global	$abcPath, $abcURL, $abc2midi, $abctimidity, $abcOggHandler;
 	<img src="$e_imgpath" alt="$e_title" />
 	<div style="text-align: center">
 		$e_dllinks
-		<br />
+	</div>
+	<div style='margin-left: auto; margin-right: auto;'>
 		$ogghtml
 	</div>
 </div>
@@ -252,7 +253,7 @@ global	$abcps2pdf, $abcPath;
 	if (file_exists($output))
 		return true;
 
-	$cmd = "$abcps2pdf $input $output";
+	$cmd = "$abcps2pdf -dEPSCrop $input $output";
 	@exec($cmd, $cmd_out, $ret);
 	if ($ret != 0 || !@file_exists("$abcPath/$hash.pdf")) {
 		$error = "Error: $abcps2pdf failed to convert input (ret: $ret).\n";
