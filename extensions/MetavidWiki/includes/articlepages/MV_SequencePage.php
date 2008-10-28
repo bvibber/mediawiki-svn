@@ -78,6 +78,7 @@ class MV_SequencePage extends Article {
 	}
 	//go from High level resource description to smile doc
 	function resolveHLRD_to_SMIL(){
+		global $wgServer, $wgScript;
 		//init smil skeleton: 
 		$this->smilDoc = new DOMDocument('1.0','UTF-8');
 		
@@ -86,11 +87,13 @@ class MV_SequencePage extends Article {
 		
 		$headNode = $this->smilDoc->createElement('head');				
 		//add meta data:
-		$titleNode = $this->smilDoc->createElement('meta');
-		$titleNode->setAttribute("name", "title");
-		$titleNode->setAttribute("content", $this->mTitle->getText() );
-		//add the title to the head node: 
-		$headNode->appendChild($titleNode);
+		$metaData = array('title'=> $this->mTitle->getText(), 'interface_url'=>$wgServer . $wgScript);
+		foreach($metaData as $name=>$val){
+			$titleNode = $this->smilDoc->createElement('meta');
+			$titleNode->setAttribute("name", htmlentities($name) );
+			$titleNode->setAttribute("content", htmlentities($val) );
+			$headNode->appendChild($titleNode);
+		}
 		
 		//add resolved transitions to the head: 
 		$tranNodeList = $this->hlrdDoc->getElementsByTagName('transition');

@@ -63,7 +63,7 @@ var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"str
 if(!mv_embed_path){
 	var mv_embed_path =getMvEmbedPath();
 }
-//here you can add in delay load referance to test things with delayed load time: 
+//here you can add in delay load reference to test things with delayed load time: 
 //mv_embed_path = mv_embed_path + 'delay_load.php/'; 
 
 //the default thumbnail for missing images:
@@ -71,49 +71,49 @@ var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
 
 if(!gMsg){var gMsg={};}
 //all default msg in [English] should be overwritten by the CMS language msg system.
-gMsg['loading_txt'] ='loading <blink>...</blink>';
-gMsg['loading_plugin'] ='loading plugin<blink>...</blink>';
-gMsg['select_playback']='Set Playback Preference';
-gMsg['link_back']='Link Back';
-gMsg['error_load_lib']='mv_embed: Unable to load required javascript libraries\n'+
+gMsg['loading_txt'] = 'loading <blink>...</blink>';
+gMsg['loading_plugin'] = 'loading plugin<blink>...</blink>';
+gMsg['select_playback'] = 'Set Playback Preference';
+gMsg['link_back'] = 'Link Back';
+gMsg['error_load_lib'] = 'mv_embed: Unable to load required javascript libraries\n'+
 			 	'insert script via DOM has failed, try reloading?  ';
 			 	
-gMsg['error_swap_vid']='Error:mv_embed was unable to swap the video tag for the mv_embed interface';
+gMsg['error_swap_vid'] = 'Error:mv_embed was unable to swap the video tag for the mv_embed interface';
 
-gMsg['download_segment']='Download Selection:';
-gMsg['download_full']='Download Full Video File:'
-gMsg['download_clip']='Download the Clip';
-gMsg['download_text']='Download Text (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">cmml</a> xml):';
+gMsg['download_segment'] = 'Download Selection:';
+gMsg['download_full'] = 'Download Full Video File:'
+gMsg['download_clip'] = 'Download the Clip';
+gMsg['download_text'] = 'Download Text (<a style="color:white" title="cmml" href="http://wiki.xiph.org/index.php/CMML">cmml</a> xml):';
 
-gMsg['clip_linkback']='Clip Source Page';
+gMsg['clip_linkback'] = 'Clip Source Page';
 //plugin names:
-gMsg['ogg-player-vlc-mozilla']='VLC Plugin';
-gMsg['ogg-player-videoElement']='Native Ogg Video Support';
-gMsg['ogg-player-vlc-activex']='VLC ActiveX';
-gMsg['ogg-player-oggPlay']='Annodex OggPlay Plugin';
-gMsg['ogg-player-oggPlugin']='Generic Ogg Plugin';
-gMsg['ogg-player-quicktime-mozilla']='Quicktime Plugin';
-gMsg['ogg-player-quicktime-activex']='Quicktime ActiveX';
-gMsg['ogg-player-cortado']='Java Cortado';
-gMsg['ogg-player-flowplayer']='Flowplayer';
-gMsg['ogg-player-selected']=' (selected)';
-gMsg['generic_missing_plugin']='You browser does not appear to support playback type: <b>$1</b><br>' +
+gMsg['ogg-player-vlc-mozilla'] = 'VLC Plugin';
+gMsg['ogg-player-videoElement'] = 'Native Ogg Video Support';
+gMsg['ogg-player-vlc-activex'] = 'VLC ActiveX';
+gMsg['ogg-player-oggPlay'] = 'Annodex OggPlay Plugin';
+gMsg['ogg-player-oggPlugin'] = 'Generic Ogg Plugin';
+gMsg['ogg-player-quicktime-mozilla'] = 'Quicktime Plugin';
+gMsg['ogg-player-quicktime-activex'] = 'Quicktime ActiveX';
+gMsg['ogg-player-cortado'] = 'Java Cortado';
+gMsg['ogg-player-flowplayer'] = 'Flowplayer';
+gMsg['ogg-player-selected'] = ' (selected)';
+gMsg['generic_missing_plugin'] = 'You browser does not appear to support playback type: <b>$1</b><br>' +
 		'visit the <a href="http://metavid.org/wiki/Client_Playback">Playback Methods</a> page to download a player<br>';
 		
-gMsg['add_to_end_of_sequence']='Add to End of Sequence';
+gMsg['add_to_end_of_sequence'] = 'Add to End of Sequence';
 
-gMsg['missing_video_stream']='The video file for this stream is missing';
+gMsg['missing_video_stream'] = 'The video file for this stream is missing';
 
-gMsg['select_transcript_set']='Select Transcripts';
-gMsg['auto_scroll']='auto scroll';
-gMsg['close']='close';
-gMsg['improve_transcript']='Improve Transcript';
+gMsg['select_transcript_set'] = 'Select Transcripts';
+gMsg['auto_scroll'] = 'auto scroll';
+gMsg['close'] = 'close';
+gMsg['improve_transcript'] = 'Improve Transcript';
 
-gMsg['next_clip_msg']='Play Next Clip';
-gMsg['prev_clip_msg']='Play Preveus Clip';
-gMsg['current_clip_msg']='Continue Playing this Clip';
+gMsg['next_clip_msg'] = 'Play Next Clip';
+gMsg['prev_clip_msg'] = 'Play Previous Clip';
+gMsg['current_clip_msg'] = 'Continue Playing this Clip';
 
-gMsg['seek_to']='Seek to';
+gMsg['seek_to'] = 'Seek to';
 
 //grabs from the globalMsg obj
 //@@todo integrate msg serving into CMS
@@ -539,7 +539,7 @@ var ctrlBuilder = {
     	if(embedObj.roe && embedObj.show_meta_link)
     		ctrlBuilder.supports['closed_captions']=true;   
     		
-    	//append options to body (if not already there) 		
+    	//append options to body (if not already there)
 		if($j('#mv_embedded_options_'+ctrlBuilder.id).length==0)
 			$j('body').append(ctrlBuilder.components['mv_embedded_options'].o());		
 		    		
@@ -3011,37 +3011,13 @@ function do_request(req_url, callback, mv_json_response){
 				}
 			});
 		}else{			
-			//check if MV_embed path matches document.URL then we can use the local proxy:
-			if(parseUri(document.URL).host == parseUri(mv_embed_path).host && MV_ENABLE_DATA_PROXY){
-				js_log('use mv_embed_proxy : ' + parseUri(document.URL).host + ' == '+ parseUri(mv_embed_path).host);				
-				$j.ajax({
-					type: "POST",
-					url:mv_embed_path + 'mv_data_proxy.php',
-					data:{url:req_url},
-                    async: false,
-					success:function(data){
-						js_log("did ajax req:"+ typeof data);
-						callback(data);
-					}
-				});
-			}else{
-				//get data via DOM injection of proxy request with callback
-				global_req_cb.push(callback);
-				if(!mv_json_response && MV_ENABLE_DATA_PROXY){
-					//@@todo should remove this functionality from mv_data_proxy
-					//and require sites serve up data as javascript with a callback
-					req_url  =req_url.replace(/&/g,'__amp__');
-					loadExternalJs(mv_embed_path+'mv_data_proxy.php?url='+req_url+
-						'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1) );
-				}else{
-					//add json_ to req url
-					if(req_url.indexOf("feed_format=")!=-1)
-						req_url = req_url.replace(/feed_format=/, 'feed_format=json_');
-					//js_log('json url: '+ req_url);
-					//response type is mv_json_response or proxy dissabled			
-					loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));
-				}
-			}
+			//get data via DOM injection with callback
+			global_req_cb.push(callback);
+			//prepend json_ to feed_format
+			if(req_url.indexOf("feed_format=")!=-1)
+				req_url = req_url.replace(/feed_format=/, 'feed_format=json_');
+													
+			loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));			
 		}
 }
 function mv_jsdata_cb(response){
@@ -3188,8 +3164,8 @@ function js_log(string){
      	log_elm.value+=string+"\n";
      }*/
    }
-   //in case of "throw error" type usage
-   return false;
+   //give the string back (ie in cases of returning an error)
+   return string;
 }
 
 function js_error(string){

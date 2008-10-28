@@ -1,7 +1,11 @@
 <?php
 // sample embed page (this could be plain html its a php script so that we can grab its location)
-$mv_path = 'http://' . $_SERVER['SERVER_NAME'] . substr( $_SERVER['REQUEST_URI'], 0, strrpos( $_SERVER['REQUEST_URI'], '/' ) ) . '/';
-$mv_path = str_replace( 'example_usage/', '', $mv_path );
+
+do_sample_page();
+
+function do_sample_page(){
+	$mv_path = 'http://' . $_SERVER['SERVER_NAME'] . substr( $_SERVER['REQUEST_URI'], 0, strrpos( $_SERVER['REQUEST_URI'], '/' ) ) . '/';
+	$mv_path = str_replace( 'example_usage/', '', $mv_path );
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -82,7 +86,7 @@ $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://s
   <table border="1" cellpadding="6" width="600">
   	<? foreach ( $sample_embed as $key => $aval ) {
   		// $key!=8 && $key!=3  $key != 0  && $key != 1 &&
-  		if ( $key!=2 )continue;
+  		if ( $key!=2 && $key!=3 )continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?=$aval['tag']?></td>
@@ -101,3 +105,6 @@ $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://s
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />&nbsp;
   </body>
 </html>
+<?
+}
+?>

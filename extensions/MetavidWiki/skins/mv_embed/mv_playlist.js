@@ -51,7 +51,9 @@ mvPlayList.prototype = {
 	disp_play_head:null,
 	userSlide:false,
 	loading:true,	
-	loading_external_data:true, //if we are loading external data (set to loading by default) 
+	loading_external_data:true, //if we are loading external data (set to loading by default)
+	
+	interface_url:null, //the interface url 
 	tracks:{},
 	default_track:null, // the default track to add clips to.
 	//the layout for the playlist object
@@ -168,17 +170,20 @@ mvPlayList.prototype = {
         	if(this[method])this['parent_' + method] = this[method];
             this[method]=plObj[method];
             js_log('inherit:'+ method);
-        }                
+        } 
+            
+        if(typeof this.doParse != 'function'){
+        	return js_log('error: method doParse not found in plObj'+ this.srcType);		        	
+        }   
+                         
         if(typeof this.doParse == 'function'){
 	   	  	if( this.doParse() ){
 	   	  		this.doWhenParseDone();	
 	   	  	}else{
-	   	  		js_log("error: failed to parse playlist");
+	   	  		return js_log("error: failed to parse playlist");
 	   	  		//error or parse needs to do ajax requests	
 	   	  	}
-        }else{
-        	js_log('error: method doParse not found in plObj'+ this.srcType);		        	
-        }        		
+        }       		
 	},
 	doWhenParseDone:function(){				
 		js_log('f:doWhenParseDone');
@@ -296,16 +301,8 @@ mvPlayList.prototype = {
 					this.srcType = 'smil';
 				}
 			}
-		}else{
-			js_log("data is inline");
-			//inline xml not supported:
-			//if(this.data.getAttribute('xmlns')=='http://xspf.org/ns/0/'){
-			//	this.srcType='xspf';
-			//}else{
-				//@@todo do inline version processing: 
-				this.srcType='inline';
-			//}		
 		}
+		
 		if(this.srcType){
 			js_log('is of type:'+ this.srcType);
 			this.getPlaylist();
@@ -1572,6 +1569,8 @@ var smilPlaylist ={
 			if(meta_elm.hasAttribute('name') && meta_elm.hasAttribute('content')){
 				if(meta_elm.getAttribute('name')=='title' ){
 					_this.title = meta_elm.getAttribute('content');					
+				}else if(meta_elm.getAttribute('name')=='interface_url' ){
+					_this.interface_url = meta_elm.getAttribute('content');	
 				}
 			}
 		});				

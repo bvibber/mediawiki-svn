@@ -17,29 +17,29 @@
  *  exports back out to json or inline format
  */
  
-gMsg['menu_welcome']='Welcome';
-gMsg['menu_cliplib']='Resource Locator';
-gMsg['menu_transition']='Transitions Effects';
-gMsg['menu_resource_overview']='Resource Overview';
-gMsg['menu_options']='Options';
+gMsg['menu_welcome'] = 'Welcome';
+gMsg['menu_cliplib'] = 'Resource Locator';
+gMsg['menu_transition'] = 'Transitions Effects';
+gMsg['menu_resource_overview'] = 'Resource Overview';
+gMsg['menu_options'] = 'Options';
 
-gMsg['loading_timeline']='Loading TimeLine <blink>...</blink>';
+gMsg['loading_timeline'] = 'Loading TimeLine <blink>...</blink>';
 
-gMsg['edit_clip']='Edit Clip';
-gMsg['edit_save']='Save Changes';
-gMsg['edit_cancel']='Cancel Edit';
-gMsg['edit_cancel_confirm']='Are you sure you want to cancel your edit, changes will be lost';
+gMsg['edit_clip'] = 'Edit Clip';
+gMsg['edit_save'] = 'Save Changes';
+gMsg['edit_cancel'] = 'Cancel Edit';
+gMsg['edit_cancel_confirm'] = 'Are you sure you want to cancel your edit, changes will be lost';
 		
-gMsg['zoom_in']='Zoom In';
-gMsg['zoom_out']='Zoom Out';
-gMsg['cut_clip']='Cut Clips';
-gMsg['expand_track']='Expand Track';
-gMsg['colapse_track']='Collapse Track';
-gMsg['play_clip']='Play From Playline Position';
-gMsg['pixle2sec']='pixles to seconds';
-gMsg['rmclip']='Remove Clip';
-gMsg['clip_in']='clip in';
-gMsg['clip_out']='clip out';
+gMsg['zoom_in'] = 'Zoom In';
+gMsg['zoom_out'] = 'Zoom Out';
+gMsg['cut_clip'] = 'Cut Clips';
+gMsg['expand_track'] = 'Expand Track';
+gMsg['colapse_track'] = 'Collapse Track';
+gMsg['play_clip'] = 'Play From Playline Position';
+gMsg['pixle2sec'] = 'pixles to seconds';
+gMsg['rmclip'] = 'Remove Clip';
+gMsg['clip_in'] = 'clip in';
+gMsg['clip_out'] = 'clip out';
 
  //used to set default values and validate the passed init object
 var sequencerDefaultValues = {
@@ -61,9 +61,7 @@ var sequencerDefaultValues = {
 	timeline_duration:500, //default timeline length in seconds
 	playline_time:0,
 	track_thumb_height:60,
-	track_text_height:20,
-	
-	//possible options:block rendering?
+	track_text_height:20,	
 		
 	//default timeline mode: "clip" (i-movie like) or "time" (finalCut like) 
 	timeline_mode:'clip', 
@@ -98,7 +96,7 @@ mvSequencer.prototype = {
 	init:function(initObj){	
 		//set the default values:
 		for(i in sequencerDefaultValues){
-			this[i]=sequencerDefaultValues[i];
+			this[ i ] = sequencerDefaultValues[i];
 		}
 		//@@todo deal with multi-dimensional object updates 
 		// (ie one word in wfMsg does not replace the whole wfMsg default set)
@@ -139,20 +137,7 @@ mvSequencer.prototype = {
 		
 		js_log('set: '+this.sequence_container_id + ' html to:'+ "\n"+
 			$j('#'+this.sequence_container_id).html()
-		);		
-		var menu_html = '<ul style="list-style-type:none;list-style-position:outside;display:block;">';
-		var item_containers ='';
-		for(var i in this.menu_items){
-			var disp_style = (this.menu_items[i])?'block':'none'; //@@todo should use classes
-			menu_html+='<li style="display:inline;padding:10px;"><a style="color:#fff" href="javascript:' + this.instance_name + '.disp(\''+ i +'\')">' + getMsg('menu_' + i ) +'</a></li>';			
-			item_containers += '<div id="' + i + '_ic" style="display:' + disp_style +';'+ 				
-				'position:absolute;top:40px;padding:10px;overflow:auto;' + 
-				'bottom:0px;left:0px;right:0px;"> '+ this.getInitItem(i) + '</div>';
-		}
-		menu_html+='</ul>';		
-		//debugger;
-		$j('#'+this.sequence_tools_id).html( menu_html + item_containers );						
-					
+		);										
 		//add src based pl: 
 		if( this.mv_pl_src != 'null' ) {
 			js_log( ' pl src:: '+ this.mv_pl_src );			
@@ -178,30 +163,40 @@ mvSequencer.prototype = {
 				$j('#'+i+'_ic').filter(':visible').hide("slide", { direction: "down" }, "fast");		
 		}
 	},
-	//@@todo probably should switch this over to php generated...or ajax request.
+	//@@todo probably should switch this over to php generated...or via an ajax request.
 	//since this content could/should be more dynamic 
-	getInitItem:function(item){		
-		switch(item){
-			case 'welcome':
-				var advChecked = (this.timeline_mode=='time')?' checked ':'';
-				var simpleChecked = (this.timeline_mode=='clip')?' checked ':'';
-				return '<h3>Welcome to The sequencer demo</h3>'+
-						'very <b>limited</b> functionality atm';									
-			break;
+	loadInitMenuItem:function(item, target_id){	
+		if( !this.plObj.interface_url )
+			return js_log( 'Error:missing interface_url, can not load item' );						
+				
+		var req_url =this.plObj.interface_url+ '?action=ajax&rs=mv_seqtool_disp&rsargs[]='+item;				
+			
+		//set to loading: 
+		$j('#'+target_id).html( getMsg('loading_txt') );
+		//load req content: 			
+		var _this = this;
+		$j('#'+target_id).load(req_url, function(responseText, textStatus, XMLHttpRequest){
+			_this.doMenuItemDispJs(item, target_id);			
+		});							
+	},
+	doMenuItemDispJs:function(item, target_id){
+		var _this = this;
+		//do any menu item post embed js hook processing:
+		switch(item){				
 			case 'cliplib':
-				return '<h3>Resource Finder</h3>';
-			break;
-			case 'transition':
-				return '<h3>Transition Library</h3>';
-			break;
-			case 'resource_overview':
-				return '<h3>Resource Overview</h3>Lists all the resources in-use in this sequence';
-			break;
-			case 'options':
-				return '<h3>Editor Options</h3>'+
-						'Editor Mode:<br> '+
-						'<blockquote><input onClick="'+this.instance_name+'.doSimpleTl()" type="radio" value="A" name="radio_button" ' + simpleChecked + '>simple editor (imovie style) </blockquote>' +
-						'<blockquote><input onClick="'+this.instance_name+'.doAdvancedTl()" type="radio" value="A" name="radio_button" '  + advChecked + '>advanced editor (final cut style) </blockquote>';						
+				//setup extra search functions																
+			break;			
+			case 'options':											
+				$j('#'+target_id+" input[value='simple_editor']").attr({
+					'checked':(_this.timeline_mode=='clip')?true:false					
+				}).click(function(){
+					_this.doSimpleTl();
+				});
+				$j('#'+target_id+" input[value='advanced_editor']").attr({
+					'checked':(_this.timeline_mode=='time')?true:false					
+				}).click(function(){					
+					_this.doAdvancedTl();
+				});						
 			break;
 		}
 	},
@@ -282,9 +277,9 @@ mvSequencer.prototype = {
 					'<div id="container_track_'+i+'" style="position:absolute;top:'+top_pos+'px;height:'+(track_height+20)+'px;left:10px;right:0px;" class="container_track">' +					
 					'</div>'
 				);
-				top_pos+=track_height+10;	
-			}			
-		}	
+				top_pos+=track_height+10;
+			}
+		}
 	},
 	//once playlist is ready continue 
 	checkReadyPlObj:function(){		
@@ -309,8 +304,29 @@ mvSequencer.prototype = {
 		//update playlist (since if its empty right now) 
 		if(this.plObj.getClipCount()==0){
 			$j('#'+this.plObj_id).html('empty playlist');
-		}						
-		this.renderTimeLine();		
+		}	
+		
+		//render the menu: 
+		var menu_html = '<ul style="list-style-type:none;list-style-position:outside;display:block;">';
+		var item_containers ='';
+		
+		//@@todo load menu via ajax request (avoid so much hmtl in js) 
+		for(var i in this.menu_items){
+			var disp_style = (this.menu_items[i])?'block':'none'; //@@todo should use classes
+			menu_html+='<li style="display:inline;padding:10px;"><a style="color:#fff" href="javascript:' + this.instance_name + '.disp(\''+ i +'\')">' + getMsg('menu_' + i ) +'</a></li>';			
+			item_containers += '<div id="' + i + '_ic" style="display:' + disp_style +';'+ 				
+				'position:absolute;top:40px;padding:10px;overflow:auto;' + 
+				'bottom:0px;left:0px;right:0px;"></div>';
+		}
+		menu_html+='</ul>';				
+		$j('#'+this.sequence_tools_id).html( menu_html + item_containers );
+		
+		//load init content into containers 
+		for(var i in this.menu_items)
+			this.loadInitMenuItem(i, i+'_ic');			
+		
+		//render the timeline					
+		this.renderTimeLine();			
 		this.do_refresh_timeline();
 	},
 	update_tl_hook:function(jh_time_ms){			
@@ -321,7 +337,7 @@ mvSequencer.prototype = {
 		$j('#'+this.timeline_id+'_playline').css('left', Math.round(jh_time_sec_float/this.timeline_scale)+'px' );
 		//js_log('at time:'+ jh_time_sec + ' px:'+ Math.round(jh_time_sec_float/this.timeline_scale));
 	},
-	/*returns a inline or json format for current sequence */
+	/*returns a xml or json representation of the current sequence */
 	getSeqText:function(mode){
 		if(!mode)mode='json';
 		switch(mode){
@@ -348,17 +364,7 @@ mvSequencer.prototype = {
 		switch(cur_clip.type){
 			case 'srcClip':
 				this_seq.doAddClip(cur_clip, track_inx);
-			break;
-			case 'mvClip':										
-				//check if we need to get remote data: 
-				if(!cur_clip.src){
-					cur_clip.getRemoteData(function(){						
-						this_seq.doAddClip(cur_clip, track_inx);
-					});		
-				}else{
-					this_seq.doAddClip(cur_clip, track_inx);
-				}
-			break;			
+			break;						
 		}
 	},
 	doAddClip:function(cur_clip, track_inx){
@@ -798,7 +804,7 @@ mvSequencer.prototype = {
 		//first get total width
 		if(this.timeline_mode=='time'){
 			//hide the old control if present	
-			$j('#'+this.timeline_id + '_pl_control').hide();
+			$j('#'+this.timeline_id + '_pl_control').remove();
 			//set width based on pixle to time and current length:
 			pixle_length = Math.round(	this.timeline_duration / this.timeline_scale);
 			$j('#'+this.timeline_id+'_head_jump').width(pixle_length);
@@ -818,7 +824,7 @@ mvSequencer.prototype = {
 		}
 		if(this.timeline_mode=='clip'){		
 			//render out a playlist clip wide and all the way to the right (only playhead and play button) (outside of timeline)
-			$j('#'+this.sequence_container_id).append('<div id="' + this.timeline_id + '_pl_control"'+
+			$j('#'+this.sequence_container_id).append('<div id="'+ this.timeline_id +'_pl_control"'+
 				' style="position:absolute;top:' + (this.plObj.height) +'px;'+
 				'right:1px;width:'+this.plObj.width+'px;height:'+this.plObj.org_control_height+'" '+
 				'class="videoPlayer"><div class="controls">'+

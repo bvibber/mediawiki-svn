@@ -58,6 +58,7 @@ Index: /includes/Article.php
 
 
 ==Short technical Description==
+For more uptodate info see metavid.org/wiki/MetavidWiki
 Metavid builds off of semantic mediaWiki but is should not be too difficult
 to set up without semantic wiki... Its just a matter of how structured you 
 want your temporal metadata.

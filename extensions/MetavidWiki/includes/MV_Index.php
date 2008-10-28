@@ -599,8 +599,8 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 		}
 		
-		if($mvSpokenByInSearchResult || $mvBillInSearchResult){		
-		// slow epecialy for lots of query results but join Query is crazy complicated for SMW >= 1.2 
+		if( $mvSpokenByInSearchResult || $mvBillInSearchResult ){		
+		// slow especially for lots of query results but join Query is crazy complicated for SMW >= 1.2 
 		// (and I have not been able to construct it without hitting exessive number of rows in the EXPLIN) 
 		// @@todo these queries should be merged with semantic wiki Ask with some ~special~ keywords for fulltext search					
 			$smwStore =& smwfGetStore();

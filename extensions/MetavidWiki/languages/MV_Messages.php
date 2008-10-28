@@ -242,6 +242,13 @@ Jump to stream view: $2',
 	'mv_sequence_player_title' => 'sequence player',
 	'mv_resource_not_found' => "Resource '''$1''' not found",
 	'mv_resource_not_supported'=>"Resource '''$1''' type not supported",
+	'mv_welcome_to_sequencer' => '<h3>Welcome to The sequencer demo</h3>'.
+						'very <b>limited</b> functionality right now', 
+
+	'mv_editor_options'=>'Editor Options',
+	'mv_editor_mode'	=>'Editor Mode',
+	'mv_simple_editor_desc'=>'simple editor (imovie style)',
+	'mv_advanced_editor_desc' => 'advanced editor (final cut style)',
 
 	'mv_save_sequence' => 'Save sequence',
 	'mv_sequence_page_desc' => 'Save the current sequence',

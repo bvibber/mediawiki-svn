@@ -268,7 +268,7 @@ function do_video_time_update(start_time, end_time){
 		var sloc = org_thum_src.indexOf('size=');
 		if( sloc !=-1 ){
 			var size = '&'+ org_thum_src.substr(org_thum_src.indexOf('size=')) ;
-			//strip additonal arguments if they past size=
+			//strip additional arguments if they past size=
 			if(size.indexOf('&')!=-1){
 				size = size.substr(0, size.indexOf('&'));
 			}

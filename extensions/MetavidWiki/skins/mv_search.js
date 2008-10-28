@@ -3,7 +3,7 @@ var mvSearchSetupFlag =false;
 var maxFilters = 8;
 var mv_search_action='';
 function mv_pre_setup_search(req_mode){
-	//make sure we have jQuery and any base requried libs:
+	//make sure we have jQuery and any base required libs:
 	mvJsLoader.doLoad(mvEmbed.lib_jquery, function(){
  		_global['$j'] = jQuery.noConflict();
 		mv_setup_search(req_mode);
@@ -51,7 +51,7 @@ function mv_do_setup_search(req_mode){
 	}else{
 		js_log('mvDateInitObj is undefined');
 	}
-	//remove all old search_text binddings:
+	//remove all old search_text bindings:
 	$j('.mv_search_select').unbind();
 	//set up actions:
 	$j('.mv_search_select').each(function(){
