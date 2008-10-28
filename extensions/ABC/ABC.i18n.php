@@ -18,4 +18,5 @@ $messages['en'] = array(
 	'abcpdf' => 'PDF',
 	'abcps' => 'PostScript',
 	'abcmidi' => 'MIDI',
+	'abcvorbis' => 'Ogg Vorbis',
 );

@@ -31,6 +31,16 @@ $abcps2pdf = "/usr/bin/ps2pdf14";
 #$abc2midi = "/usr/bin/abc2midi";
 $abc2midi = false;
 
+# Path to the TiMidity++ executable.  Optional; set this if you
+# want Ogg Vorbis rendering.  Requires MIDI rendering.
+#$abctimidity = "/usr/bin/timidity";
+$abctimidity = false;
+
+# Default instrument number for Vorbis.
+# 0 = Piano, 40 = Violin, 73 = Flute.  See General MIDI
+# specification or your TiMidity++ patch description for others.
+$abcMIDIvoice = 1;
+
 $wgExtensionCredits['parserhooks'][] = array(
 	'name' => 'ABC',
 	'author' => 'River Tarnell',
@@ -56,7 +66,7 @@ global	$wgParser;
  
 function
 efABCRender($input, $args, $parser) {
-global	$abcPath, $abcURL;
+global	$abcPath, $abcURL, $abc2midi, $abctimidity;
 	if ($abcPath == false || $abcURL == false)
 		return 'Error: $abcPath and $abcURL must be set to use the ABC extension.';
 
@@ -93,7 +103,10 @@ global	$abcPath, $abcURL;
 	if ($abc2midi)
 		if (!abcCreateMIDI($abc, $hash, $error))
 			return str_replace("\n", "<br />", htmlspecialchars($error));
-	
+	if ($abc2midi && $abctimidity)
+		if (!abcCreateVorbis($abc, $hash, $error))
+			return str_replace("\n", "<br />", htmlspecialchars($error));
+			
 	/*
 	 * Succeeded to create all the output formats, return the
 	 * output.  We produce an image from the PNG, and include
@@ -105,6 +118,7 @@ global	$abcPath, $abcURL;
 	$e_pspath = htmlspecialchars("$abcURL/$hash.ps");
 	$e_pdfpath = htmlspecialchars("$abcURL/$hash.pdf");
 	$e_midipath = htmlspecialchars("$abcURL/$hash.mid");
+	$e_vorbispath = htmlspecialchars("$abcURL/$hash.ogg");
 	
 	$links = array();
 	$links[] = "<a href=\"$e_abcpath\">" . wfMsg('abcabc') . "</a>";
@@ -112,7 +126,9 @@ global	$abcPath, $abcURL;
 	$links[] = "<a href=\"$e_pdfpath\">" . wfMsg('abcpdf') . "</a>";
 	if ($abc2midi)
 		$links[] = "<a href=\"$e_midipath\">" . wfMsg('abcmidi') . "</a>";
-
+	if ($abctimidity)
+		$links[] = "<a href=\"$e_vorbispath\">" . wfMsg('abcvorbis') . "</a>";
+		
 	$e_dllinks = wfMsg('abcdownload') . " " .
 		join(" " . wfMsg('abcsep') . " ", $links);
 			
@@ -253,6 +269,29 @@ global	$abc2midi, $abcPath;
 	@exec($cmd, $cmd_out, $ret);
 	if ($ret != 0 || !@file_exists($output)) {
 		$error = "Error: $abc2midi failed to convert input [$output] (ret: $ret).";
+		$error .= "Output: " . join("\n", $cmd_out);
+		return false;
+	}
+
+	return true;
+}
+
+function
+abcCreateVorbis($abc, $hash, &$error)
+{
+global	$abctimidity, $abcMIDIvoice, $abcPath;
+	if (!@file_exists($abctimidity)) {
+		$error = "Error: TiMidity++ not enabled.";
+		return false;
+	}
+	
+	$input = "$abcPath/$hash.mid";
+	$output = "$abcPath/$hash.ogg";
+	
+	$cmd = "$abctimidity -Ei$abcMIDIvoice -Ov -id $input";
+	@exec($cmd, $cmd_out, $ret);
+	if ($ret != 0 || !@file_exists($output)) {
+		$error = "Error: TiMidity++ failed to convert input [$output] (ret: $ret).";
 		$error .= "Output: " . join("\n", $cmd_out);
 		return false;
 	}
