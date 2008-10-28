@@ -47,6 +47,11 @@ $abcMIDIvoice = 1;
 # you must enable Ogg Vorbis rendering.
 $abcOggHandler = false;
 
+# Set this if you will render the outputs (ps, pdf, png, etc.) 
+# outside of the extension.  Nothing will be generated except the
+# .abc file.
+$abcDelayedRendering = false;
+
 $wgExtensionCredits['parserhooks'][] = array(
 	'name' => 'ABC',
 	'author' => 'River Tarnell',
@@ -78,7 +83,9 @@ global	$wgParser, $wgOut, $abcOggHandler;
  
 function
 efABCRender($input, $args, $parser) {
-global	$abcPath, $abcURL, $abc2midi, $abctimidity, $abcOggHandler;
+global	$abcPath, $abcURL, $abc2midi, $abctimidity, $abcOggHandler,
+	$abcDelayedRendering;
+	
 	if ($abcPath == false || $abcURL == false)
 		return 'Error: $abcPath and $abcURL must be set to use the ABC extension.';
 
