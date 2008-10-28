@@ -28,8 +28,8 @@ class SpecialNoticeTemplate extends SpecialPage {
 
 
 		if ( $wgRequest->wasPosted() ) {
-		//	$body = file_get_contents('php://input');
-		//	$wgOut->addHtml("Body of post: $body");
+			$body = file_get_contents('php://input');
+			$wgOut->addHtml("Body of post: $body");
 
 			$toRemove = $wgRequest->getArray('removeTemplates');
 			if ( isset($toRemove) ){  

@@ -28,8 +28,8 @@ class CentralNotice extends SpecialPage
 
 
 		if ( $wgRequest->wasPosted() ) {
-		//	$body = file_get_contents('php://input');
-		//	$wgOut->addHtml("Body of post: $body");
+			$body = file_get_contents('php://input');
+			$wgOut->addHtml("Body of post: $body");
 
 			$toRemove = $wgRequest->getArray('removeNotices');
 			if ( isset($toRemove) ){  
@@ -88,15 +88,10 @@ class CentralNotice extends SpecialPage
 			}
 			$noticeName = $wgRequest->getVal('notice');
 			$updatedWeights = $wgRequest->getArray('weight');
-			$keys = array_keys ( $updatedWeights );
 			if ( isset( $updatedWeights ) ) {
-				if ( array_sum ( $updatedWeights != 100 )) 
-					$wgOut->addHtml( wfMsg( 'centralnotice-doesnt-add-up' ) );
-				else { 
 					foreach( $updatedWeights as $templateName => $weight) {
 						$this->updateWeight( $noticeName, $templateName, $weight);
 					}	
-				}		
 			}
 		}
 
@@ -357,6 +352,9 @@ class CentralNotice extends SpecialPage
 		$table .= Xml::fieldset( $notice );
 		$table .= Xml::openElement( 'table', array( 
 							'cellpadding' => 9 ));
+
+                $table .= "<th>" . wfMsg ( 'centralnotice-project-name') . "</th>";
+                $table .= "<th>" . wfMsg ( 'centralnotice-project-lang') . "</th>";
 		$table .= "<th>" . wfMsg ( 'centralnotice-start-date') . "</th>";
 		$table .= "<th>" . wfMsg ( 'centralnotice-end-date') . "</th>";
 		$table .= "<th>" . wfMsg ( 'centralnotice-enabled') . "</th>";
@@ -378,6 +376,12 @@ class CentralNotice extends SpecialPage
 			$end_day = substr( $end_timestamp, 6, 2);
 
 			$table .= "<tr><td>" .  
+                                        $row->notice_project . 
+                                        "</td>" .
+                                     "<td>" .
+                                        $row->notice_language .
+                                        "</td>" .
+                                     "<td>" .
 					Xml::listDropDown( "start_date[$row->notice_name][year]",
 							   	$this->dropDownList( wfMsg( 'centralnotice-year'), $years ), '', $start_year, '', 3) .
 					Xml::listDropDown( "start_date[$row->notice_name][month]", 
