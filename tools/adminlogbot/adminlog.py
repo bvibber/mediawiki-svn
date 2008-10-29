@@ -1,4 +1,4 @@
-site="wikitech.leuksman.com"
+site=('https', "wikitech.leuksman.com")
 path="/"
 user="More Bots"
 password="..."
