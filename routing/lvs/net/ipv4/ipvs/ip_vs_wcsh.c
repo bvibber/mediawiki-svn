@@ -90,7 +90,7 @@ ip_vs_wcsh_hashkey_port(const unsigned addr, const unsigned port)
  */
 static int 
 ip_vs_wcsh_alloc_continuum(struct ip_vs_wcsh_data *sched_data, 
-		const struct ip_vs_service *svc)
+	const struct ip_vs_service *svc)
 {
 	struct ip_vs_dest *dest;
 	
@@ -137,7 +137,7 @@ static inline int ip_vs_wcsh_cmp_point(const void *va, const void *vb)
  */
 static void
 ip_vs_wcsh_create_continuum(const struct ip_vs_wcsh_data *sched_data, 
-		const struct ip_vs_service *svc)
+	const struct ip_vs_service *svc)
 {
 	struct ip_vs_wcsh_dest_point *point;
 	struct ip_vs_dest *dest;
@@ -184,8 +184,7 @@ static void ip_vs_wcsh_flush_continuum(struct ip_vs_wcsh_data *sched_data)
 {
 	struct ip_vs_wcsh_dest_point *point;
 	
-	if (sched_data->pointcount == 0 || sched_data->continuum == NULL)
-		return;
+	if (sched_data->continuum == NULL) return;
 	
 	for (point = sched_data->continuum
 			; point != &sched_data->continuum[sched_data->pointcount]
@@ -263,7 +262,7 @@ static inline int ip_vs_wcsh_is_feasible(const struct ip_vs_dest *dest) {
 
 static struct ip_vs_wcsh_dest_point *
 ip_vs_wcsh_get_nearest_point(const unsigned hashkey,
-		const struct ip_vs_wcsh_data *sched_data)
+	const struct ip_vs_wcsh_data *sched_data)
 {
 	unsigned int left, right;
 	
@@ -288,7 +287,7 @@ ip_vs_wcsh_get_nearest_point(const unsigned hashkey,
 		
 		if (hashkey <= sched_data->continuum[mid].value)
 			right = mid;
-		else /* hashkey > sched_data->continuum[mid].value */
+		else
 			left = mid;
 	}
 	/* continuum[right-1] < hashkey <= continuum[right] */
@@ -297,7 +296,7 @@ ip_vs_wcsh_get_nearest_point(const unsigned hashkey,
 
 static struct ip_vs_wcsh_dest_point *
 ip_vs_wcsh_get_feasible_dest(struct ip_vs_wcsh_dest_point *start, 
-		const struct ip_vs_wcsh_data *sched_data)
+	const struct ip_vs_wcsh_data *sched_data)
 {
 	struct ip_vs_wcsh_dest_point *point = start;
 	unsigned int points_left = sched_data->pointcount;
