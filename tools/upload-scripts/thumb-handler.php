@@ -185,7 +185,7 @@ EOT;
 	# Cache the file locally if this is a cache server
 	$uname = posix_uname();
 	$server = $uname['nodename'];
-	if ( $server != 'amane.pmtpa.wmnet' && $server != 'storage1' ) {
+	if ( !in_array($server, array('amane.pmtpa.wmnet', 'storage1', 'ms1', 'ms2')) ) {
 		$dest = pathFromUrl( $_SERVER['REQUEST_URI'] );
 		if( $dest ) {
 			if ( strpos( $dest, '..' ) === false ) {
