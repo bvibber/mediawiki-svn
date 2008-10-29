@@ -35,6 +35,8 @@ class ApiCodeComments extends ApiQueryBase {
 		$this->props = array_flip( $params['prop'] );
 		
 		$listview = new CodeCommentsListView( $params['repo'] );
+		if( is_null( $listview->mRepo ) )
+			$this->dieUsage( "Invalid repo ``{$params['repo']}''", 'invalidrepo' );
 		$pager = $listview->getPager();
 		
 		if ( !is_null( $params['start'] ) )
@@ -48,27 +50,29 @@ class ApiCodeComments extends ApiQueryBase {
 		$data = array();
 
 		$count = 0;
-		$lastTimestamp = 0; // Stop Eclipse from whining
+		$lastTimestamp = 0;
 		while ( $row = $comments->fetchObject() ) {
 			if ( $count == $limit ) {
-				$this->setContinueEnumParameter( 'start', $lastTimestamp );
+				$this->setContinueEnumParameter( 'start',
+					wfTimestamp( TS_ISO_8601, $lastTimestamp ) );
 				break;
 			}
 			
-			$data[] = self::formatRow( $row );
+			$data[] = $this->formatRow( $row );
 			$lastTimestamp = $row->cc_timestamp;
 			$count++;
 		}
 		$comments->free();
 		
-		$result = $this->getMain()->getResult();
+		$result = $this->getResult();
 		$result->setIndexedTagName( $data, 'comment' );
 		$result->addValue( 'query', $this->getModuleName(), $data );
 	}
+	
 	private function formatRow( $row ) {
 		$item = array();
 		if ( isset( $this->props['timestamp'] ) )
-			$item['timestamp'] = $row->cc_timestamp;
+			$item['timestamp'] = wfTimestamp( TS_ISO_8601, $row->cc_timestamp );
 		if ( isset( $this->props['user'] ) )
 			$item['user'] = $row->cc_user_text;
 		if ( isset( $this->props['revision'] ) )
@@ -101,6 +105,26 @@ class ApiCodeComments extends ApiQueryBase {
 					'text',
 				),
 			),
+		);
+	}
+	
+	public function getParamDescription() {
+		return array(
+			'repo' => 'Name of the repository',
+			'limit' => 'How many comments to return',
+			'start' => 'Timestamp to start listing at',
+			'prop' => 'Which properties to return',
+		);
+	}
+	
+	public function getDescription() {
+		return 'List comments on revisions in CodeReview';
+	}
+	
+	public function getExamples() {
+		return array(
+			'api.php?action=query&list=codecomments&ccrepo=MediaWiki',
+			'api.php?action=query&list=codecomments&ccrepo=MediaWiki&ccprop=timestamp|user|revision|text',
 		);
 	}
 	

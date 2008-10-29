@@ -63,6 +63,12 @@ class ApiCodeDiff extends ApiBase {
 			'Fetch formatted diff from CodeReview\'s backing revision control system.' );
 	}
 	
+	public function getExamples() {
+		return array(
+			'api.php?action=codediff&repo=MediaWiki&rev=42080',
+		);
+	}
+	
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}

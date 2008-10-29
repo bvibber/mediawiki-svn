@@ -76,6 +76,12 @@ class ApiCodeUpdate extends ApiBase {
 			'Update CodeReview repository data from master revision control system.' );
 	}
 	
+	public function getExamples() {
+		return array(
+			'api.php?action=codeupdate&repo=MediaWiki&rev=42080',
+		);
+	}
+	
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}

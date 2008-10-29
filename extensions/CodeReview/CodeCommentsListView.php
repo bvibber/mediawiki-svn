@@ -2,6 +2,8 @@
 
 // Special:Code/MediaWiki
 class CodeCommentsListView extends CodeView {
+	public $mRepo;
+
 	function __construct( $repoName ) {
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
@@ -17,7 +19,7 @@ class CodeCommentsListView extends CodeView {
 			$pager->getNavigationBar()
 		);
 	}
-	
+
 	function getPager() {
 		return new CodeCommentsTablePager( $this );
 	}
