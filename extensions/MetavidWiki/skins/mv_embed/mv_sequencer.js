@@ -93,14 +93,14 @@ mvSequencer.prototype = {
 		'resource_overview':0,
 		'options':0
 	},	
-	init:function(initObj){	
+	init:function( initObj ){	
 		//set the default values:
-		for(i in sequencerDefaultValues){
+		for(var i in sequencerDefaultValues){
 			this[ i ] = sequencerDefaultValues[i];
 		}
 		//@@todo deal with multi-dimensional object updates 
 		// (ie one word in wfMsg does not replace the whole wfMsg default set)
-		for(i in initObj){
+		for(var i in initObj){
 			//js_log('on '+ i + ' :' + initObj[i]);
 			if(sequencerDefaultValues[i]){ //make sure its a valid property
 				this[i]=initObj[i];
@@ -132,8 +132,21 @@ mvSequencer.prototype = {
 			'<div id="'+this.sequence_tools_id+'" style="position:absolute;' +
 				'left:0px;right:'+(this.video_width+10)+'px;top:0px;height:'+this.video_height+'px;border:solid thin black;"/>'+
 			'<div id="'+this.timeline_id+'" style="position:absolute;' + 
-				'left:0px;right:0px;top:'+(this.video_height+10)+'px;bottom:0px;overflow:auto;">'+
-					getMsg('loading_timeline')+ '</div>');
+				'left:0px;right:0px;top:'+(this.video_height+10)+'px;bottom:25px;overflow:auto;">'+
+					getMsg('loading_timeline')+ '</div>'+
+			'<div id="'+this.id+'_save_cancel" style="position:absolute;'+
+				'right:0px;bottom:0px;height:25px;overflow:hidden;">'+					
+					'<a style="border:solid gray;font-size:1.2em;" onClick="window.confirm(\''+getMsg('edit_cancel_confirm')+'\')" '+ 
+					'href="javascript:'+this.instance_name+'.closeModEditor()">'+
+						getMsg('edit_cancel') + '</a> '+
+					'<a style="border:solid gray;font-size:1.2em;" href="#" onClick="'+this.instance_name+'.getSeqOutputJSON()">'+
+						'Preview Json Output'+
+					'</a>' +
+					'<a style="border:solid gray;font-size:1.2em;" href="#" onClick="'+this.instance_name+'.getSeqOutputHLRDXML()">'+
+						'Preview XML Output (will be save shortly) ' + 
+					'</a>' + 
+			'</div>'
+		);
 		
 		js_log('set: '+this.sequence_container_id + ' html to:'+ "\n"+
 			$j('#'+this.sequence_container_id).html()
@@ -163,30 +176,49 @@ mvSequencer.prototype = {
 				$j('#'+i+'_ic').filter(':visible').hide("slide", { direction: "down" }, "fast");		
 		}
 	},
-	//@@todo probably should switch this over to php generated...or via an ajax request.
-	//since this content could/should be more dynamic 
-	loadInitMenuItem:function(item, target_id){	
+	//load the menu items: 	
+	loadInitMenuItems:function(){	
+		js_log('loadInitMenuItems');
 		if( !this.plObj.interface_url )
 			return js_log( 'Error:missing interface_url, can not load item' );						
 				
-		var req_url =this.plObj.interface_url+ '?action=ajax&rs=mv_seqtool_disp&rsargs[]='+item;				
-			
-		//set to loading: 
-		$j('#'+target_id).html( getMsg('loading_txt') );
+		var req_url =this.plObj.interface_url+ '?action=ajax&rs=mv_seqtool_disp&rsargs[]=';
+		//ouput the requested items list: 
+		for(var i in this.menu_items){
+			req_url+='|'+i;
+			$j('#'+i+'_ic').html( getMsg('loading_txt') );//set targets to loading
+		}
+		var _this = this;
+		do_request(req_url, function(data){
+			if(typeof data=='string'){
+				js_log(' eval data: ' + data);					
+				eval(data);
+				var data = mv_result['pay_load'];				
+			}
+			for(var i in data){
+				js_log('set '+ i + ' to: '+ data[i] );
+				$j('#'+i+'_ic').html( data[i] );
+				_this.doMenuItemDispJs(i)
+			}
+		});
+										
 		//load req content: 			
-		var _this = this;
-		$j('#'+target_id).load(req_url, function(responseText, textStatus, XMLHttpRequest){
-			_this.doMenuItemDispJs(item, target_id);			
-		});							
+		//var _this = this;
+		//$j('#'+target_id).load(req_url, function(responseText, textStatus, XMLHttpRequest){
+		//	_this.doMenuItemDispJs(item, target_id);			
+		//});							
 	},
-	doMenuItemDispJs:function(item, target_id){
+	doMenuItemDispJs:function(item){
 		var _this = this;
+		var target_id = item + '_ic';
 		//do any menu item post embed js hook processing:
 		switch(item){				
-			case 'cliplib':
-				//setup extra search functions																
+			case 'cliplib':				 		
+				$j('#mv_ams_submit').click(function(){
+					_this.doClipSearch();
+				}) 														
 			break;			
-			case 'options':											
+			case 'options':							
 				$j('#'+target_id+" input[value='simple_editor']").attr({
 					'checked':(_this.timeline_mode=='clip')?true:false					
 				}).click(function(){
@@ -199,7 +231,7 @@ mvSequencer.prototype = {
 				});						
 			break;
 		}
-	},
+	},	
 	renderTimeLine:function(){
 		//empty out the top level html: 
 		$j('#'+this.timeline_id).html('');
@@ -322,8 +354,7 @@ mvSequencer.prototype = {
 		$j('#'+this.sequence_tools_id).html( menu_html + item_containers );
 		
 		//load init content into containers 
-		for(var i in this.menu_items)
-			this.loadInitMenuItem(i, i+'_ic');			
+		this.loadInitMenuItems();	
 		
 		//render the timeline					
 		this.renderTimeLine();			
@@ -338,16 +369,52 @@ mvSequencer.prototype = {
 		//js_log('at time:'+ jh_time_sec + ' px:'+ Math.round(jh_time_sec_float/this.timeline_scale));
 	},
 	/*returns a xml or json representation of the current sequence */
-	getSeqText:function(mode){
-		if(!mode)mode='json';
-		switch(mode){
-			case'json':
-				return this.plObj.tracks.toSource();
-			break;
-			case 'xml':
-				return "@@todo hlrd xml output";
-			break;
-		}		
+	getSeqOutputJSON:function(){
+		js_log('json output');
+	},
+	getSeqOutputHLRDXML:function(){
+		var o='<sequence_hlrd>' +"\n"+
+		o+="\t<head>";		
+		//get transitions 
+		for(var i in this.plObj.transitions){
+			var tObj = this.plObj.transitions[i].getAttributeObj();
+			o+="\t<transition ";
+			for(var j in tObj){
+				o+=' '+j+'="' + tObj[j] + '"\n\t\t';
+			}
+			o+='/>'+"\n"; //transitions don't have children
+		}
+		o+="\t</head>\n";	
+			
+		//get clips 
+		o+="\t<body>\n";
+		//output each track: 
+		for(var i in this.plObj.tracks){
+			var curTrack = this.plObj.tracks[i];			
+			o+="\t<seq";
+				var tAttr = curTrack.getAttributeObj();
+				for(var j in  tAttr){
+					o+=' '+j+'="' + tAttr[j] + '"\n\t\t\t';
+				}
+			o+=">\n";			
+			for(var k in curTrack.clips){
+				var curClip = curTrack.clips[k];
+				o+="\t\t<ref ";
+					var cAttr = curClip.getAttributeObj();
+					for(var j in  cAttr){
+						o+=' '+j+'="' + cAttr[j] + '"\n\t\t\t';
+					}
+				o+="/>\n" //close the clip
+			}
+			o+="\n</seq>n";
+		}
+		o+="\t</body>\n";		
+		//close the tag
+		o+='</sequence_hlrd>';	
+		
+		js_log('f:getSeqOutputHLRDXML'+ o);
+		
+		return false;	
 	},
 	//add clips to the pl object: (by default to the end of the track) 
 	addClip:function(clip_init){
@@ -409,6 +476,9 @@ mvSequencer.prototype = {
 	saveClipEdit:function(){
 		//saves the clip updates
 	},
+	closeModEditor:function(){
+		$j('#modalbox').hide();
+	},
 	closeModWindow:function(){
 		$j('#modal_window').hide();
 		$j('#modalbox').show();
@@ -425,19 +495,19 @@ mvSequencer.prototype = {
 				}
 			}
 			//re-render tracks: 
-			this_seq.render_tracks(track_inx);			
+			this_seq.render_tracks( track_inx );			
 			
 			if(this_seq.plObj.tracks[track_inx].clips.length==0){
 				this_seq.plObj.getHTML();
 			}else{
-				//update playlist desc: 		
+				//update playlist desc:
 				this_seq.plObj.pl_duration=null;
 				this_seq.plObj.updateTitle();	
 			}
 		});	
 	},
 	doEdit:function( editObj ){
-		//add the current editObj to the edit stack
+		//add the current editObj to the edit stack (should allow for "undo")
 		this.edit_stack.push( editObj );
 		//make the adjustments
 		this.makeAdjustment( editObj );		
@@ -695,6 +765,7 @@ mvSequencer.prototype = {
 								$j('#' + this.id + ' > .mv_clip_stats').fadeIn("fast");
 							},
 							stop: function(e,ui) {
+								js_log('stop resize');
 								//restore border
 								$j(this).css('border', 'solid thin white');
 								//remove stats
@@ -712,7 +783,7 @@ mvSequencer.prototype = {
 									});							
 							},
 							resize: function(e,ui) {												
-								//update time stats / render images: 
+								//update time stats & render images: 
 								this_seq.update_clip_resize(this);
 							}		
 						});
@@ -738,6 +809,7 @@ mvSequencer.prototype = {
 			clip_frames_html+=clip.embed.renderTimelineThumbnail({
 				'width':  frame_width,
 				'height': this.track_thumb_height,
+				'size' : "icon", //set size to "icon" preset
 				'time':   clip_time
 			});
 		}	
@@ -785,7 +857,7 @@ mvSequencer.prototype = {
 			var new_start = seconds2ntp(ntp2seconds(clip.embed.start_ntp)+clip_dif);
 			clip_desc+='<br>start time: ' + new_start;					
 		}
-		
+			
 		//update clip stats:
 		$j('#'+clip_element.id+' > .mv_clip_stats').html(clip_desc);
 		var frame_width = Math.round(this.track_thumb_height*1.3333333);

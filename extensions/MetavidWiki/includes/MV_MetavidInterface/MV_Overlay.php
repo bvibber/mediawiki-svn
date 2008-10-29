@@ -453,7 +453,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		global $wgUser, $mvgScriptPath, $wgRequest;
 		$sk = $wgUser->getSkin();
 		
-		// hack to get menu correct... (previsuly menu was not encapulsated) 
+		// hack to get menu correct...
 		$do_adjust = $wgRequest->getVal( 'do_adjust' );
 		//fix boolean string issue: 
 		$do_adjust = ( $do_adjust == 'false' ) ? false : $do_adjust;
@@ -477,6 +477,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 		$hTitle = Title::newFromText( $mvd_page->wiki_title, MV_NS_MVD );
 		// print $hTitle->
 		$hlink =  $sk->makeKnownLinkObj( $hTitle, wfMsg( 'mv_history' ), 'action=history' );
+		
 		$dTitle =  Title::newFromText( $mvd_page->wiki_title, MV_NS_MVD_TALK );
 		$dlink = $sk->makeKnownLinkObj( $dTitle,  wfMsg( 'talk' ) );
 		
@@ -750,12 +751,12 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 				$wpTextbox1 .= "\n[[" . $catNStxt . ":" . $v . "]]";
 			}
 		}
-		// add the text to the end after a line break to not confuse mannual editors		
+		// add the text to the end after a line break to not confuse manual editors		
 		$editPageAjax = new MV_EditPageAjax( $Article );
 		$editPageAjax->mvd_id = $mvd_id;
 		
 		// if preview just return the parsed preview 
-		// @@todo refactor to use as much EditPage code as possible
+		// @@todo refactor to use as much EditPage code as possible or (switch over to the API)
 		// use the "livePreview" functionality of Edit page. 
 		if ( isset( $_POST['wpPreview'] ) ) {
 			// $out = $editPageAjax->getPreviewText();

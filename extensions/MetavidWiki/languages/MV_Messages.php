@@ -244,6 +244,9 @@ Jump to stream view: $2',
 	'mv_resource_not_supported'=>"Resource '''$1''' type not supported",
 	'mv_welcome_to_sequencer' => '<h3>Welcome to The sequencer demo</h3>'.
 						'very <b>limited</b> functionality right now', 
+	'mv_resource_locator'=>'Resource Locator',
+	
+	'mv_media_search'=>'Media Search',
 
 	'mv_editor_options'=>'Editor options',
 	'mv_editor_mode'	=>'Editor mode',
@@ -273,7 +276,7 @@ Jump to stream view: $2',
 	'mv_embed_options' => 'Embed options',
 	'mv_overlay' => 'Overlay controls',
 	'mv_stream_tool_heading' => 'Stream tools',
-	'mv_tool_missing' => 'tool request ($1) does not exist',
+	'mv_tool_missing' => 'requested tool does not exist',
 	'mv_bad_tool_request' => 'bad tool line should be form: tool_name|tool_display_name',
 	'mv_update_layers' => 'update layers view',
 

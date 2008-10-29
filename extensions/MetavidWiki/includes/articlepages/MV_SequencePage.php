@@ -152,6 +152,7 @@ class MV_SequencePage extends Article {
 			$node->setAttribute('type','text/html');
 			return $this->parseInnerWikiText($node);			
 		}
+		
 		$uriTitle = Title::newFromDBkey($node_uri);				
 		//figure out if how we should parse innerHTML:
 		switch( $uriTitle->getNamespace() ){
@@ -184,20 +185,23 @@ class MV_SequencePage extends Article {
  					return $node;
 				}
 				
+				//by default set the ogg source 
  				//@@todo parse child nodes for stream request params?  				
- 				$f = $node->ownerDocument->createDocumentFragment();		
+ 			
  				if( $stream_web_url ){				 					
-		    		$f->appendXML( '<source type="' .
-					htmlspecialchars( MV_StreamFile::getTypeForQK( $mvDefaultVideoQualityKey ) ) .
-					'" src="' . $stream_web_url . '"></source>' );
- 				}
+		    		$node->setAttribute('type', htmlspecialchars( MV_StreamFile::getTypeForQK( $mvDefaultVideoQualityKey ) ));
+					$node->setAttribute('src', $stream_web_url );
+					$node->setAttribute('poster',   $mvTitle->getStreamImageURL() );
+ 				} 					
+ 				//add in flash as a fallback method:
  				if( $flash_stream_url ){
+ 					$f = $node->ownerDocument->createDocumentFragment();
  					$f->appendXML(  '<source type="' .
 					htmlspecialchars( MV_StreamFile::getTypeForQK( $mvDefaultFlashQualityKey ) ) .
 					'" src="' . $flash_stream_url . '"></source>' );
- 				}
-				$node->appendChild($f); 				
- 				
+					$node->appendChild($f); 
+ 				}							
+				 				
  			break;
  			case NS_TEMPLATE:
  				//templates are of type text/html
@@ -258,7 +262,7 @@ class MV_SequencePage extends Article {
  					$this->parseInnerWikiText( $node, $thumbnail->toHtml() );
  				}else{ 					 				
 	 				$node->setAttribute( 'type', $img->getMimeType() );
-	 				$node->setAttribute( 'src', $thumbnail->file->getURL() );
+	 				$node->setAttribute( 'src', $thumbnail->getURL() );
 	 				
 	 				//if type is ogg: (set dur and poster) 
 	 				if( $img->getMimeType()=='application/ogg') {
@@ -268,7 +272,7 @@ class MV_SequencePage extends Article {
 	 						$node->setAttribute('poster',  $thumbnail->url);
 	 					}
 	 				}
- 				} 				
+ 				}	
  			break; 
  			default:
  				$node->setAttribute('type','text/html'); 					

@@ -84,7 +84,8 @@ var htmlEmbed ={
 		var thumb_render_id =   this.id +'_thumb_render_'+ options.height;
 		if( $j('#' + thumb_render_id ).length == 0 ||  do_refresh ){
 			//set the font scale down percentage: (kind of arbitrary) 
-			var scale_perc = options.width / $j(this).width();			
+			var scale_perc = options.width / this.pc.pp.width;
+			//js_log('scale_perc:'+options.width + ' / '+ $j(this).width()+ ' = '+scale_perc );			
 			//min scale font percent of 70 (overflow is hidden) 
 			var font_perc  = ( Math.round( scale_perc*100 ) < 80 )?80:Math.round( scale_perc*100 ); 		
 						
@@ -104,12 +105,12 @@ var htmlEmbed ={
 			});	
 			
 			//scale images that have width or height:
-			$j('#' + thumb_render_id + ' img').filter('[width]').each(function(){
+			$j('#' + thumb_render_id + ' img').filter('[width]').each(function(){								
 				$j(this).attr({ 
-						'width':$j(this).attr('width') * scale_perc,
-					 	'height':$j(this).attr('height') * scale_perc
+						'width': Math.round( $j(this).attr('width') * scale_perc ),
+					 	'height': Math.round( $j(this).attr('height') * scale_perc )
 					 } 
-				);
+				);				
 			});
 		} 			
 		return $j('#' + thumb_render_id ).html();  			 
@@ -118,12 +119,12 @@ var htmlEmbed ={
 	//@@todo render out a mini text "preview"
 	updateThumbTime:function( float_time ){
 		return ;
-	},
+	},	
 	getEmbedHTML:function(){
 		js_log('f:html:getEmbedHTML');
 		//set up the css for our parent div: 		
 		$j(this).css({'width':this.pc.pp.width, 'height':this.pc.pp.height, 'overflow':"hidden"});
-		//@@todo support more smil image layout stuff: 
+		//@@todo support more smil annimation layout stuff: 
 		
 		//wrap output in videoPlayer_ div:
 		$j(this).html('<div id="videoPlayer_'+ this.id+'">'+this.getThumbnailHTML()+'</div>');
@@ -132,10 +133,11 @@ var htmlEmbed ={
 		var out='';
 		if( this.pc.type =='image/jpeg'){
 			js_log('should put src: '+this.pc.src);
-			out = '<img src="'+this.pc.src+'">';
+			out = '<img width="'+this.pc.pp.width+'" height="'+this.pc.pp.height+'" src="'+this.pc.src+'">';
 		}else{
 			out = this.pc.wholeText;
 		}
+		js_log('f:getThumbnailHTML: got thumb: '+out);
 		return out;
 	},
 	doThumbnailHTML:function(){

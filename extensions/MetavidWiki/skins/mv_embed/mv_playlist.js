@@ -285,7 +285,7 @@ mvPlayList.prototype = {
 				//check for smil tag: 
 				smilElm = this.data.getElementsByTagName('smil')[0];
 				if(smilElm){
-					//don't check for dtd yet.. (have not defined the smil subset) 
+					//don't check dtd yet.. (have not defined the smil subset) 
 					this.srcType='smil';
 				}
 			}else if(typeof this.data == 'string'){		
@@ -927,27 +927,32 @@ mvClip.prototype = {
 		
 	},
 	doAdjust:function(side, delta){
-		if(this.embed){
-			if(this.src.indexOf('?')!=-1){
-				var base_src = this.src.substr(0,this.src.indexOf('?'));
-				js_log("delta:"+ delta);
-				if(side=='start'){
-					//since we adjust start invert the delta: 
-					var start_offset =parseInt(this.embed.start_offset/1000)+parseInt(delta*-1);
-					this.src = base_src +'?t='+ seconds2ntp(start_offset) +'/'+ this.embed.end_ntp;							
-				}else if(side=='end'){
-					//put back into seconds for adjustment: 
-					var end_offset = parseInt(this.embed.start_offset/1000) + parseInt(this.embed.duration/1000) + parseInt(delta);
-					this.src = base_src +'?t='+ this.embed.start_ntp +'/'+ seconds2ntp(end_offset);
-				}
-				js_log('new src:'+this.src);
-				this.embed.updateVideoSrc(this.src);
-				//update values
-				this.duration = this.embed.getDuration();
-				this.pp.pl_duration=null;
-				//update playlist stuff:
-				this.pp.updateTitle();
+		js_log("f:doAdjust: "+side+ ' , ' +  delta);
+		if(this.embed){		
+			if(side=='start'){
+				var start_offset =parseInt(this.embed.start_offset)+parseInt(delta*-1);				
+				this.embed.updateVideoTime( seconds2ntp(start_offset), seconds2ntp ( this.embed.start_offset + this.embed.getDuration() ) );
+			}else if(side=='end'){
+				var end_offset = parseInt(this.embed.start_offset) + parseInt( this.embed.getDuration() ) + parseInt(delta);
+				this.embed.updateVideoTime( seconds2ntp(this.embed.start_offset), seconds2ntp(end_offset) );
 			}
+			/*var base_src = this.src.substr(0,this.src.indexOf('?'));
+			js_log("delta:"+ delta);
+			if(side=='start'){
+				//since we adjust start invert the delta: 
+				var start_offset =parseInt(this.embed.start_offset/1000)+parseInt(delta*-1);
+				this.src = base_src +'?t='+ seconds2ntp(start_offset) +'/'+ this.embed.end_ntp;							
+			}else if(side=='end'){
+				//put back into seconds for adjustment: 
+				var end_offset = parseInt(this.embed.start_offset/1000) + parseInt(this.embed.duration/1000) + parseInt(delta);
+				this.src = base_src +'?t='+ this.embed.start_ntp +'/'+ seconds2ntp(end_offset);
+			}				
+			this.embed.updateVideoTime( this.src );
+			//update values
+			this.duration = this.embed.getDuration();
+			this.pp.pl_duration=null;
+			//update playlist stuff:
+			this.pp.updateTitle();*/
 		}
 	},	
 	getDuration:function(){		
@@ -1573,7 +1578,7 @@ var smilPlaylist ={
 					_this.interface_url = meta_elm.getAttribute('content');	
 				}
 			}
-		});				
+		});						
 		//add transition objects: 
 		var transition_tags = this.data.getElementsByTagName('transition');			
 		$j.each(transition_tags, function(i,trans_elm){		
@@ -1583,8 +1588,9 @@ var smilPlaylist ={
 				js_log('skipping transition: (missing id) ' + trans_elm );
 			}
 		});
-		js_log('loaded transitions:' + _this.transitions.length);	
-		//add seq (latter we will have support than one) 
+		js_log('loaded transitions:' + _this.transitions.length);
+			
+		//add seq (latter we will have support more than one seq tag) 
 		var seq_tags = this.data.getElementsByTagName('seq');
 		$j.each(seq_tags, function(i,seq_elm){
 			var inx = 0;
@@ -1621,23 +1627,23 @@ var smilPlaylist ={
 var mvSMILClip=function(smil_clip_element, mvClipInit){
 	return this.init(smil_clip_element, mvClipInit);
 }
-//http://www.w3.org/TR/2007/WD-SMIL3-20070713/smil-extended-media-object.html#smilMediaNS-BasicMedia
-//and some resource description elements
-var mv_supported_media_attr = new Array(
-	'id',
-	'src',
-	'type',
-	'region',
-	'transIn',
-	'transOut',
-	'fill',
-	'dur',
-	
-	'uri',
-	'poster'
-);
 //all the overwritten and new methods for SMIL extension of mv_embed
 mvSMILClip.prototype = {	
+	//http://www.w3.org/TR/2007/WD-SMIL3-20070713/smil-extended-media-object.html#smilMediaNS-BasicMedia
+	//and added resource description elements
+	supported_attributes : new Array(
+			'id',
+			'src',
+			'type',
+			'region',
+			'transIn',
+			'transOut',
+			'fill',
+			'dur',
+			
+			'uri',
+			'poster'
+	),
 	init:function(smil_clip_element, mvClipInit){
 		_this = this;				
 		
@@ -1653,7 +1659,7 @@ mvSMILClip.prototype = {
 			}		
 		}				 
 		//get supported media attr init non-set		
-		$j.each(mv_supported_media_attr, function(i, attr){			
+		$j.each(this.supported_attributes, function(i, attr){			
 			if( $j(smil_clip_element).attr(attr)){
 				_this[attr]=$j(smil_clip_element).attr(attr);
 			}
@@ -1695,32 +1701,41 @@ mvSMILClip.prototype = {
 		//debugger;	
 		return this;		
 	},
+	//returns the values of supported_attributes: 
+	getAttributeObj:function(){
+		var elmObj = {};
+		for(var i in this.supported_attributes){
+			var attr = this.supported_attributes[i];
+			if(this[attr])
+				elmObj[ attr ] = this[attr]; 
+		}		
+		return elmObj;
+	},
 	/*
 	 * getDuration
 	 * @returns duration in int
 	 */
 	getDuration:function(){
 		//check for smil dur: 
-		if(!this.dur)
-			this.dur = this.embed.getDuration();
-		return this.dur;					
+		if( this.dur )
+			return this.dur;			
+		return this.embed.getDuration();					
 	}	
 }
 /* object to manage embedding html with smil timings 
  *  grabs settings from parent clip 
  */
-var mv_supported_transition_attr = new Array(
-	'id',
-	'type',
-	'subtype',
-	'fadeColor',
-	'dur'
-);
-
 var transitionObj = function(element) {		
 	this.init(element);
 };
 transitionObj.prototype = {	
+	supported_attributes : new Array(
+		'id',
+		'type',
+		'subtype',
+		'fadeColor',
+		'dur'
+	),
 	transAttrType:null, //transIn or transOut
 	overlay_selector_id:null,
 	pClip:null,
@@ -1731,7 +1746,7 @@ transitionObj.prototype = {
 	init:function(element){
 		//load supported attributes: 	
 		var _this = this;
-		$j.each(mv_supported_transition_attr, function(i, attr){
+		$j.each(this.supported_attributes, function(i, attr){
 			if(element.getAttribute(attr))
 				_this[attr]= element.getAttribute(attr);
 		});				
@@ -1739,6 +1754,16 @@ transitionObj.prototype = {
 		//http://www.w3.org/TR/SMIL3/smil-timing.html#Timing-ClockValueSyntax
 		if(_this.dur)
 			_this.dur = smilParseTime(_this.dur);
+	},
+	//returns the values of supported_attributes: 
+	getAttributeObj:function(){
+		var elmObj = {};
+		for(var i in this.supported_attributes){
+			var attr = this.supported_attributes[i];
+			if(this[attr])
+				elmObj[ attr ] = this[attr]; 
+		}		
+		return elmObj;
 	},
 	/*
 	 * the main animation loop called every MV_ANIMATION_CB_RATE or 34ms ~around 30frames per second~
@@ -1833,23 +1858,37 @@ function smilParseTime(time_str){
  var trackObj = function( initObj ){
  	return this.init( initObj );
  }
- var supported_track_attr = {
- 	title:'track',
-	desc:'track description',		
- }
-trackObj.prototype = {					
+ var supported_track_attr =
+trackObj.prototype = {
+	//http://www.w3.org/TR/SMIL3/smil-timing.html#edef-seq
+	//(We don't closely mirror the smil spec at this point)
+	// but we don't really support anywhere near the full concept of seq containers yet either
+	supported_attributes: new Array(
+ 		'title',
+		'desc:'		
+ 	),					
 	disp_mode:'timeline_thumb',
 	init : function(initObj){
 		if(!initObj)
 			initObj={};
-			
+		//make sure clips is new: 
 		this.clips = new Array();
 				
 		var _this = this;
-		$j.each(supported_track_attr, function(i, attr){
+		$j.each(this.supported_attributes, function(i, attr){
 			if(initObj[attr])
 				_this[attr] = initObj[attr];
 		});			
+	},
+	//returns the values of supported_attributes: 
+	getAttributeObj:function(){
+		var elmObj = {};
+		for(var i in this.supported_attributes){
+			var attr = this.supported_attributes[i];
+			if(this[attr])
+				elmObj[ attr ] = this[attr]; 
+		}		
+		return elmObj;
 	},
 	addClip:function(clipObj, pos){
 		js_log('ignored pos: '+ pos);

@@ -13,6 +13,13 @@
  // make sure the parent class mv_component is included
 
  class MV_SequenceTools extends MV_Component {
+ 	var $valid_tools=array(
+ 		'sequence_page',
+ 		'add_clips_manual',
+		'welcome',
+ 		'cliplib',
+ 		'options' 		 		
+ 	);
  	function getHTML() {
  		global $wgOut;
  		// @@todo look at mv_interface context to get what to display in tool box:
@@ -24,7 +31,20 @@
 		$wgOut->addHTML( '</div>' );
 	}
 	function get_tool_html( $tool_id,  $ns = '', $title_str = '' ) {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser;		
+		//check if we are proccessing a set:
+		$tool_set = explode('|', $tool_id); 
+		if(count($tool_set)>1){
+			$tool_values = array();
+			foreach($tool_set as $tool_id){
+				if( in_array($tool_id, $this->valid_tools )){
+					$tool_values[$tool_id] = $this->get_tool_html($tool_id);
+				}
+			}
+			return mvOutputJSON( $tool_values );
+		}
+		$wgOut->clearHTML();
+		//else process a single tool: 
 		switch( $tool_id ) {
 			case 'sequence_page':
 				global $mvgIP, $wgOut, $wgParser, $wgTitle;
@@ -54,17 +74,22 @@
 			case 'options':
 				$this->add_editor_options();
 			break;
-			default:
-				$wgOut->addHTML( wfMsg('mv_tool_missing'),  $tool_id);
+			default:				
+				$wgOut->addHTML( wfMsg('mv_tool_missing',  htmlspecialchars ($tool_id) ) );
 			break;
 		}
 		return $wgOut->getHTML();
 	}	
 	function add_embed_search() {
 		global $wgOut;
-		// grab a de-encapsulated search with prefix
-		
-		//$wgOut->addHTML( 'results go here' );
+		// grab a de-encapsulated search with prefix		
+		$wgOut->addHTML( '<h3>'. wfMsg('mv_resource_locator') . '</h3>' );
+		//add the input form 
+		$wgOut->addHTML( 			
+			xml::input('mv_ams_search', 255,'', array('class'=>'searchField')) . 
+			xml::submitButton( wfMsg('mv_media_search'), array('id'=>'mv_ams_submit') ) .
+			xml::element('div',array('id'=>'mv_ams_results'))
+		);
 	}
 	function add_editor_options(){
 		global $wgOut;
@@ -162,12 +187,6 @@
 			// error: retrun error msg and form: 
 			return $wgOut->getHTML();
 		}
-	}
- 	function render_menu() {
-		return
-			'<a title="' . htmlspecialchars( wfMsg( 'mv_sequence_page_desc' ) ) . '" href="javascript:mv_seqtool_disp(\'sequence_page\')">' . wfMsg( 'mv_save_sequence' ) . '</a>' .
-		' | ' .	'<a title="' . htmlspecialchars( wfMsg( 'mv_sequence_add_manual_desc' ) ) . '" href="javascript:mv_seqtool_disp(\'add_clips_manual\')">' . wfMsg( 'mv_sequence_add_manual' ) . '</a>' .
-		' | ' .	'<a title="' . htmlspecialchars( wfMsg( 'mv_sequence_add_search_desc' ) ) . '" href="javascript:mv_seqtool_disp(\'add_clips_search\')">' . wfMsg( 'mv_sequence_add_search' ) . '</a>' ;
 	}
  }
 ?>

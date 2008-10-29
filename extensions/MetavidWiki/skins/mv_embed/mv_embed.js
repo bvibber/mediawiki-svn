@@ -1490,24 +1490,22 @@ mediaSource.prototype =
      *  @param {String} end_time in NTP format
      */
     updateSrcTime:function (start_ntp, end_ntp){
-    	js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp);
+    	js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp + ' from org: ' + this.start_ntp+ '/'+this.end_ntp);
     	//js_log("pre uri:" + this.src);
     	//if we have time we can use:
-    	if(this.supports_url_time_encoding){
-    		var index_time_val = false;
-    		var time_req_delimitator = '';
-	        if(this.src.indexOf('?t=')!=-1)index_time_val='?t=';
-	        if(this.src.indexOf('&t=')!=-1)index_time_val='&t=';
-	        if(index_time_val){
-	        	var end_req_string = (this.src.indexOf('&', this.src.indexOf(index_time_val)+3)==-1)?
-	     					'':
-			    			this.src.indexOf('&', this.src.indexOf(index_time_val));
-	        	this.src = this.src.substring(0, this.src.indexOf(index_time_val) ) + index_time_val + start_ntp + '/'+end_ntp + end_req_string;
-	        }
+    	if( this.supports_url_time_encoding ){
+    		//make sure its a valid start time / end time (else set default) 
+    		if( !ntp2seconds(start_ntp) ) 
+    			start_ntp = this.start_ntp;
+    			
+    		if( !ntp2seconds(end_ntp) )
+    			end_ntp = this.end_ntp;
+    			
+    		this.src = getUpdateTimeURL(this.src, start_ntp +'/'+end_ntp);
+	        //update the duration
 			this.parseURLDuration();
-    	}
-			
-    	//update the duration
+    	}    	
+    	//this.setDuration( )
 	  	//js_log("post uri:" + this.src);
     },
 	setDuration:function (duration)
@@ -1557,7 +1555,7 @@ mediaSource.prototype =
 	 * supports media_url?t=ntp_start/ntp_end url request format
      */
     parseURLDuration : function(){
-        //js_log('f:parseURLDuration() for:' + this.src);
+        js_log('f:parseURLDuration() for:' + this.src);
         var index_time_val = false;
         if(this.src.indexOf('?t=')!=-1)index_time_val='?t=';
         if(this.src.indexOf('&t=')!=-1)index_time_val='&t=';
@@ -1651,10 +1649,10 @@ mediaElement.prototype =
     },  
     /** Updates the time request for all sources that have a standard time request argument (ie &t=start_time/end_time)
      */
-    updateSourceTimes:function(start_time, end_time){
+    updateSourceTimes:function(start_ntp, end_ntp){
     	var _this = this;
     	$j.each(this.sources, function(inx, mediaSource){
-    		mediaSource.updateSrcTime(start_time, end_time);
+    		mediaSource.updateSrcTime(start_ntp, end_ntp);
     	});
     },
     /** Returns the array of mediaSources of this element.
@@ -2059,8 +2057,12 @@ embedVideo.prototype = {
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
 	},	
     getDuration:function(){    	
+    	//update some local pointers for the selected source:     	
         this.duration = this.media_element.selected_source.duration;
         this.start_offset = this.media_element.selected_source.start_offset;
+        this.start_ntp = this.media_element.selected_source.start_ntp;
+        this.end_ntp = this.media_element.selected_source.end_ntp;
+        //return the duration
         return this.duration;
     },
   	/* get the duration in ntp format */
@@ -2411,23 +2413,18 @@ embedVideo.prototype = {
 		this.updateVideoTime(time_parts[0], time_parts[1]);
 	},
 	//update video time
-	updateVideoTime:function(start_time, end_time){
+	updateVideoTime:function(start_ntp, end_ntp){					
 		//update media
-		this.media_element.updateSourceTimes(start_time, end_time);
+		this.media_element.updateSourceTimes( start_ntp, end_ntp );
 		//update mv_time
-		this.setStatus(start_time+'/'+end_time);
+		this.setStatus(start_ntp+'/'+end_ntp);
 		//reset slider
 		this.setSliderValue(0);
 		//reset seek_offset:
 		if(this.media_element.selected_source.supports_url_time_encoding)
 			this.seek_time_sec=0;
 		else
-			this.seek_time_sec=ntp2seconds(start_time);
-	},
-	//updates the video src
-	updateVideoSrc : function(src){
-		js_log("UPDATE SRC:"+src);
-		this.src = src;
+			this.seek_time_sec=ntp2seconds(start_ntp);
 	},		
 	//@@todo overwite by embed library if we can render frames natavily 
 	renderTimelineThumbnail:function( options ){
@@ -2435,7 +2432,7 @@ embedVideo.prototype = {
 		
 		if( my_thumb_src.indexOf('t=') !== -1){
 			var time_ntp =  seconds2ntp ( options.time + parseInt(this.start_offset) );
-			my_thumb_src = getUpdateTimeURL( org_thum_src, time_ntp, options.size );
+			my_thumb_src = getUpdateTimeURL( my_thumb_src, time_ntp, options.size );
 		}
 		return '<img src="' + my_thumb_src +'" '+
 				'style="height:' + options.height + 'px;' +
@@ -2792,7 +2789,7 @@ embedVideo.prototype = {
 		js_log("mv_embed play:"+this.id);		
 		js_log('thum disp:'+this.thumbnail_disp);
 		//check if thumbnail is being displayed and embed html
-		if(this.thumbnail_disp){			
+		if( this.thumbnail_disp ){			
 			if(!this.selected_player){
 				js_log('no selected_player');
 				//this.innerHTML = this.getPluginMissingHTML();
@@ -2982,14 +2979,12 @@ function seconds2ntp(sec){
  * takes hh:mm:ss input returns number of seconds 
  */
 function ntp2seconds(ntp){
-	if(!ntp){
-		js_log('ntp2seconds:not valid ntp:'+ntp);
-		return null;
+	if(!ntp){		
+		return js_log('ntp2seconds:not valid ntp:'+ntp);
 	}
 	times = ntp.split(':');
-	if(times.length!=3){
-		js_log('ntp2seconds:not valid ntp:'+ntp);
-		return null;
+	if(times.length!=3){		
+		return js_log('ntp2seconds:not valid ntp:'+ntp);
 	}
 	//return seconds float (ie take seconds float value if present):
 	return parseInt(times[0]*3600)+parseInt(times[1]*60)+parseFloat(times[2]);
@@ -2998,7 +2993,7 @@ function ntp2seconds(ntp){
 function mv_addLoadEvent(func) {
 	mvEmbed.addLoadEvent(func);
 }
-function do_request(req_url, callback, mv_json_response){
+function do_request(req_url, callback){
  	js_log('do request: ' + req_url);
 		if( parseUri(document.URL).host == parseUri(req_url).host){
 			//no proxy at all do a direct request:
@@ -3006,8 +3001,8 @@ function do_request(req_url, callback, mv_json_response){
 				type: "GET",
 				url:req_url,
                 async: false,
-				success:function(data){
-					callback(data);
+				success:function(data){		
+					callback( data );
 				}
 			});
 		}else{			
@@ -3055,7 +3050,7 @@ function mv_jsdata_cb(response){
 			return false;
 		break;
 	}
-	global_req_cb[response['cb_inx']](response['pay_load']);
+	global_req_cb[response['cb_inx']]( response['pay_load'] );
 }
 //load external js via dom injection
 //@@todo swich over to jQuery injection
@@ -3165,7 +3160,7 @@ function js_log(string){
      }*/
    }
    //give the string back (ie in cases of returning an error)
-   return string;
+   return false;
 }
 
 function js_error(string){

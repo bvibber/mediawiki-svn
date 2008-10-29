@@ -479,6 +479,32 @@ function sffLoadMessagesManually() {
 /*
  * Utility functions:
  */
+function mvOutputJSON( & $data ) {
+	$fname = 'Mv_output_json_data';
+	wfProfileIn( $fname );
+	
+	global $wgRequest;
+
+	// get callback index and wrap function:
+	$callback_index = $wgRequest->getVal( 'cb_inx' );
+	$wrap_function = $wgRequest->getVal( 'cb' );
+	
+	//header( 'Content-Type: text/javascript' );
+	if($callback_index!='' && $wrap_function!=''){
+		$output =  htmlspecialchars( $wrap_function ) . '(' . PhpArrayToJsObject_Recurse(
+		array(	'cb_inx' => htmlspecialchars( $callback_index ),
+				'content-type' => 'text/xml',
+				'pay_load' => $data
+			)
+		) . ');';
+	}else{
+		//just produce a results var: 
+		$output = php2jsObj( array('pay_load'=>$data) );
+	}
+	wfProfileOut( $fname );
+	//if all is well return true:
+	return $output;
+}
 if ( ! function_exists( 'php2jsObj' ) ) {
 	function php2jsObj( $array, $objName = 'mv_result' )
 	{
