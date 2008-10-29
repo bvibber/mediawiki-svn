@@ -53,11 +53,13 @@ $abcOggHandler = false;
 $abcDelayedRendering = false;
 
 $wgExtensionCredits['parserhooks'][] = array(
-	'name' => 'ABC',
-	'author' => 'River Tarnell',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ABC',
-	'description' => 'Adds <tt>&lt;abc&gt;</tt> tag to format ABC music',
-	'descriptionmsg' => 'abcdesc'
+	'name'           => 'ABC',
+	'author'         => 'River Tarnell',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:ABC',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'description'    => 'Adds <tt>&lt;abc&gt;</tt> tag to format ABC music',
+	'descriptionmsg' => 'abcdesc',
 );
 $wgExtensionMessagesFiles['ABC'] =  dirname(__FILE__) . '/ABC.i18n.php';
 
