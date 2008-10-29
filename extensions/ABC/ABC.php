@@ -103,6 +103,17 @@ global	$abcPath, $abcURL, $abc2midi, $abctimidity, $abcOggHandler,
 	$hash = sha1($input);
 	$error = "";
 	
+	$hashbits = array(
+		substr($hash, 0, 2),
+		substr($hash, 2, 2),
+		substr($hash, 4, 2));
+	$directory = "{$hashbits[0]}/{$hashbits[1]}/{$hashbits[2]}";
+	$filename = "$abcPath/$directory/$hash";
+	
+	if (!@file_exists("$abcPath/$directory"))
+		if (!@mkdir("$abcPath/$directory", 0777, true))
+			return "Cannot create directory \"$abcPath/$directory\".";
+		
 	/*
 	 * Try to extract the title from the ABC.  This is used as the
 	 * alt text for the image.
@@ -111,21 +122,21 @@ global	$abcPath, $abcURL, $abc2midi, $abctimidity, $abcOggHandler,
 	if (preg_match("/^T:\s*(.*)$/m", $input, $matches))
 		$title = $matches[1];
 	
-	if (!abcCreateABC($abc, $hash, $error))
+	if (!abcCreateABC($abc, $filename, $error))
 		return str_replace("\n", "<br />", htmlspecialchars($error));
 
 	if (!$abcDelayedRendering) {
-		if (!abcCreatePS($abc, $hash, $error))
+		if (!abcCreatePS($abc, $filename, $error))
 			return str_replace("\n", "<br />", htmlspecialchars($error));
-		if (!abcCreatePNG($abc, $hash, $error))
+		if (!abcCreatePNG($abc, $filename, $error))
 			return str_replace("\n", "<br />", htmlspecialchars($error));
-		if (!abcCreatePDF($abc, $hash, $error))
+		if (!abcCreatePDF($abc, $filename, $error))
 			return str_replace("\n", "<br />", htmlspecialchars($error));
 		if ($abc2midi)
-			if (!abcCreateMIDI($abc, $hash, $error))
+			if (!abcCreateMIDI($abc, $filename, $error))
 				return str_replace("\n", "<br />", htmlspecialchars($error));
 		if ($abc2midi && $abctimidity)
-			if (!abcCreateVorbis($abc, $hash, $error))
+			if (!abcCreateVorbis($abc, $filename, $error))
 				return str_replace("\n", "<br />", htmlspecialchars($error));
 	}
 	
@@ -135,12 +146,12 @@ global	$abcPath, $abcURL, $abc2midi, $abctimidity, $abcOggHandler,
 	 * links to the ABC and PS.
 	 */
 	$e_title = htmlspecialchars($title);
-	$e_imgpath = htmlspecialchars("$abcURL/$hash.png");
-	$e_abcpath = htmlspecialchars("$abcURL/$hash.abc");
-	$e_pspath = htmlspecialchars("$abcURL/$hash.ps");
-	$e_pdfpath = htmlspecialchars("$abcURL/$hash.pdf");
-	$e_midipath = htmlspecialchars("$abcURL/$hash.mid");
-	$e_vorbispath = htmlspecialchars("$abcURL/$hash.ogg");
+	$e_imgpath = htmlspecialchars("$abcURL/$directory/$hash.png");
+	$e_abcpath = htmlspecialchars("$abcURL/$directory/$hash.abc");
+	$e_pspath = htmlspecialchars("$abcURL/$directory/$hash.ps");
+	$e_pdfpath = htmlspecialchars("$abcURL/$directory/$hash.pdf");
+	$e_midipath = htmlspecialchars("$abcURL/$directory/$hash.mid");
+	$e_vorbispath = htmlspecialchars("$abcURL/$directory/$hash.ogg");
 	
 	$links = array();
 	$links[] = "<a href=\"$e_abcpath\">" . wfMsg('abcabc') . "</a>";
@@ -158,9 +169,9 @@ global	$abcPath, $abcURL, $abc2midi, $abctimidity, $abcOggHandler,
 	
 	if ($abcOggHandler) {
 		$oh = new OggTransformOutput(null,
-			"$abcURL/$hash.ogg", false,
+			"$filename.ogg", false,
 			250, 0, 0, false, 
-			"$abcPath/$hash.ogg", false);
+			"$filename.ogg", false);
 		$ogghtml = $oh->toHtml(array('alt' => $title));
 	}
 	
@@ -179,7 +190,7 @@ EOF;
 }
 
 function
-abcCreateABC($abc, $hash, &$error)
+abcCreateABC($abc, $pfx, &$error)
 {
 global	$abcPath;
 	if (!@file_exists($abcPath)) {
@@ -187,7 +198,7 @@ global	$abcPath;
 		return false;
 	}
 	
-	$filename = "$abcPath/$hash.abc";
+	$filename = "$pfx.abc";
 	if (file_exists($filename))
 		return true;
 		
@@ -218,7 +229,7 @@ global	$abcPath;
 }
 
 function
-abcCreatePS($abc, $hash, &$error)
+abcCreatePS($abc, $pfx, &$error)
 {
 global	$abcm2ps, $abcPath;
 	if (!@file_exists($abcm2ps)) {
@@ -226,21 +237,21 @@ global	$abcm2ps, $abcPath;
 		return false;
 	}
 	
-	$input = "$abcPath/$hash.abc";
-	$output = "$abcPath/$hash.ps";
+	$input = "$pfx.abc";
+	$output = "$pfx.ps";
 
 	if (file_exists($output))
 		return true;
 	
-	$cmd = "$abcm2ps -E $input -O $abcPath/$hash";
+	$cmd = "$abcm2ps -E $input -O $pfx";
 	@exec($cmd, $cmd_out, $ret);
-	if ($ret != 0 || !@file_exists("$abcPath/{$hash}001.eps")) {
+	if ($ret != 0 || !@file_exists("{$pfx}001.eps")) {
 		$error = "Error: $abcm2ps failed to convert input (ret: $ret).\n";
 		$error .= "Output: " . join("\n", $cmd_out);
 		return false;
 	}
 	
-	if (@rename("$abcPath/{$hash}001.eps", "$abcPath/{$hash}.ps") === false) {
+	if (@rename("{$pfx}001.eps", "{$pfx}.ps") === false) {
 		$error = "Error: cannot rename output file.";
 		return false;
 	}
@@ -249,7 +260,7 @@ global	$abcm2ps, $abcPath;
 }
 
 function
-abcCreatePDF($abc, $hash, &$error)
+abcCreatePDF($abc, $pfx, &$error)
 {
 global	$abcps2pdf, $abcPath;
 	if (!@file_exists($abcps2pdf)) {
@@ -257,15 +268,15 @@ global	$abcps2pdf, $abcPath;
 		return false;
 	}
 	
-	$input = "$abcPath/$hash.ps";
-	$output = "$abcPath/$hash.pdf";
+	$input = "$pfx.ps";
+	$output = "$pfx.pdf";
 
 	if (file_exists($output))
 		return true;
 
 	$cmd = "$abcps2pdf -dEPSCrop $input $output";
 	@exec($cmd, $cmd_out, $ret);
-	if ($ret != 0 || !@file_exists("$abcPath/$hash.pdf")) {
+	if ($ret != 0 || !@file_exists("$pfx.pdf")) {
 		$error = "Error: $abcps2pdf failed to convert input (ret: $ret).\n";
 		$error .= "Output: " . join("\n", $cmd_out);
 		return false;
@@ -275,7 +286,7 @@ global	$abcps2pdf, $abcPath;
 }
 
 function
-abcCreatePNG($abc, $hash, &$error)
+abcCreatePNG($abc, $pfx, &$error)
 {
 global	$wgImageMagickConvertCommand, $abcPath;
 	if (!$wgImageMagickConvertCommand) {
@@ -283,8 +294,8 @@ global	$wgImageMagickConvertCommand, $abcPath;
 		return false;
 	}
 	
-	$input = "$abcPath/$hash.ps";
-	$output = "$abcPath/$hash.png";
+	$input = "$pfx.ps";
+	$output = "$pfx.png";
 
 	if (file_exists($output))
 		return true;
@@ -301,7 +312,7 @@ global	$wgImageMagickConvertCommand, $abcPath;
 }
 
 function
-abcCreateMIDI($abc, $hash, &$error)
+abcCreateMIDI($abc, $pfx, &$error)
 {
 global	$abc2midi, $abcPath;
 	if (!$abc2midi) {
@@ -309,8 +320,8 @@ global	$abc2midi, $abcPath;
 		return false;
 	}
 	
-	$input = "$abcPath/$hash.abc";
-	$output = "$abcPath/$hash.mid";
+	$input = "$pfx.abc";
+	$output = "$pfx.mid";
 
 	if (file_exists($output))
 		return true;
@@ -327,7 +338,7 @@ global	$abc2midi, $abcPath;
 }
 
 function
-abcCreateVorbis($abc, $hash, &$error)
+abcCreateVorbis($abc, $pfx, &$error)
 {
 global	$abctimidity, $abcMIDIvoice, $abcPath;
 	if (!@file_exists($abctimidity)) {
@@ -335,8 +346,8 @@ global	$abctimidity, $abcMIDIvoice, $abcPath;
 		return false;
 	}
 	
-	$input = "$abcPath/$hash.mid";
-	$output = "$abcPath/$hash.ogg";
+	$input = "$pfx.mid";
+	$output = "$pfx.ogg";
 
 	if (file_exists($output))
 		return true;
