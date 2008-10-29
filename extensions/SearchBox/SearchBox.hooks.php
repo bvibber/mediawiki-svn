@@ -40,6 +40,8 @@ class SearchBoxHooks {
 		 */
 		if ( !isset( $args['label'] ) ) {
 			$args['label'] = '';
+		} else {
+			$args['label'] = $parser->recursiveTagParse( $args['label'] );
 		}
 		
 		/*
@@ -97,6 +99,8 @@ class SearchBoxHooks {
 		 */
 		if ( !isset( $args['namespaceslabel'] ) ) {
 			$args['namespaceslabel'] = wfMsg( 'searchbox-namespaces' );
+		} else {
+			$args['namespaceslabel'] = $parser->recursiveTagParse( $args['namespaceslabel'] );
 		}
 		
 		/*
@@ -231,10 +235,10 @@ class SearchBoxHooks {
 			)
 		);
 		
-		// If the label is not empty
+		// If the label is not empty (label is already safe HTML)
 		if ( !empty( $args['label'] ) ) {
 			// Label
-			$htmlOut .= Xml::element( 'label',
+			$htmlOut .= Xml::tags( 'label',
 				array(
 					'for' => 'search',
 					'style' => 'margin:' . $args['spacing'] . 'px'
@@ -286,10 +290,10 @@ class SearchBoxHooks {
 					)
 				);
 				
-				// If the namespaces label is not empty
+				// If the namespaces label is not empty (namespaceslabel is already safe HTML)
 				if( !empty( $args['namespaceslabel'] ) ) {
 					// Namespaces label
-					$htmlNamespaces .= Xml::element( 'label',
+					$htmlNamespaces .= Xml::tags( 'label',
 						array(
 							'style' => 'margin:' . $args['spacing'] . 'px'
 						),
