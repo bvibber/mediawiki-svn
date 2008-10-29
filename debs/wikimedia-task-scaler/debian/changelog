@@ -1,3 +1,9 @@
+wikimedia-task-scaler (1.5) hardy; urgency=low
+
+  * Set fontconfig to ignore bitmap fonts.
+
+ -- Brion Vibber <brion@wikimedia.org>  Wed, 29 Oct 2008 11:42:00 -0700
+
 wikimedia-task-scaler (1.4) hardy; urgency=low
 
   * Restart apache on postinst and postrm so that it has the right -DSCALER

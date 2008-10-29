@@ -6,6 +6,18 @@ set -e
 
 case "$1" in
 	configure)
+		# Disable bitmap fonts in fontconfig...
+		# They can cause problems with fonts like "Helvetica",
+		# since they look horrible and don't scale correctly.
+		if ! [ -e /etc/fonts/conf.d/70-no-bitmaps.conf ]
+		then
+		  ln -s ../conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/70-no-bitmaps.conf
+		fi
+		if -e [ /etc/fonts/conf.d/70-yes-bitmaps.conf ]
+		then
+			rm -f /etc/fonts/conf.d/70-yes-bitmaps.conf
+		fi
+		
 		if ! grep -qF $SCALER_SERVICE_IP /etc/default/wikimedia-lvs-realserver
 		then
 			echo "
