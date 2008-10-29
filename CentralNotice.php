@@ -4,7 +4,7 @@
 /// This guy gets loaded from every page on every wiki, and is heavily cached.
 /// Its contents are small, and just load up another cached JS page, but this
 /// allows us to update everything with a single purge. Nice, eh?
-$wgNoticeLoader = $IP . '/Special:NoticeLoader';
+$wgNoticeLoader = $wgArticlePath . '/Special:NoticeLoader';
 
 /// Override these per-wiki to pass on via the loader to the text system
 /// for localization by language and project.
@@ -27,7 +27,7 @@ $wgCentralNoticeLoader = true;
 /// URL prefix to the raw-text loader special.
 /// Project/language and timestamp epoch keys get appended to this
 /// via the loader stub.
-$wgNoticeText = $IP . '/Special:NoticeText';
+$wgNoticeText = $wgArticlePath . '/Special:NoticeText';
 
 /// If true, notice only displays if 'sitenotice=yes' is in the query string
 $wgNoticeTestMode = false;
@@ -82,6 +82,11 @@ $wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
 $wgSpecialPageGroups['CentralNotice'] = 'wiki'; // Wiki data and tools"
 $wgSpecialPageGroups['NoticeTranslate'] = 'wiki'; // Wiki data and tools"
 $wgSpecialPageGroups['NoticeTemplate'] = 'wiki'; // Wiki data and tools"
+
+
+$egCentralNoticeTableNames['templates'] = 'central_notice_templates';
+$egCentralNoticeTableNames['campaign'] = 'central_notice_campaign';
+$egCentralNoticeTableNames['assignments'] = 'central_notice_template_assignments';
 
 function efCentralNoticeSetup() {
  		global $wgHooks, $wgNoticeInfrastructure;
