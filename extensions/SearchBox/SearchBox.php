@@ -5,12 +5,15 @@
  * @file
  * @ingroup Extensions
  *
+ * This file contains the main include file for the SearchBox extension of
+ * MediaWiki.
+ *
  * Usage: Add the following line in LocalSettings.php:
  * require_once( "$IP/extensions/SearchBox/SearchBox.php" );
  *
  * @author Trevor Parscal <tparscal@wikimedia.org>
- * @copyright Public domain
- * @license Public domain
+ * @license GPL v2
+ * @version 0.1.0
  */
 
 // Check environment
