@@ -35,7 +35,7 @@ class ApiCodeComments extends ApiQueryBase {
 		$this->props = array_flip( $params['prop'] );
 		
 		$listview = new CodeCommentsListView( $params['repo'] );
-		if( is_null( $listview->mRepo ) )
+		if( is_null( $listview->getRepo() ) )
 			$this->dieUsage( "Invalid repo ``{$params['repo']}''", 'invalidrepo' );
 		$pager = $listview->getPager();
 		
