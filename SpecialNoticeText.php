@@ -194,7 +194,7 @@ END;
 	function chooseTemplate ( $notice ) {
 		 $dbr = wfGetDB( DB_SLAVE );
 		 $centralnotice_table = 'central_notice_template_assignments';
-		 $res = $dbr->select( $array ( $centralnotice_table,"central_notice_template_assignments"),
+		 $res = $dbr->select( array ( $centralnotice_table,"central_notice_template_assignments"),
 		 		      "name,weight",
 				      array ( 'notice_name' => $notice, 'campaign_id = id'),
 				      '',
