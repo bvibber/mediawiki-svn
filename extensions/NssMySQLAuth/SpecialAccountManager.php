@@ -34,7 +34,7 @@ class SpecialAccountManager extends SpecialPage {
 	}
 
 	function constructForm() {
-		global $wgOut, $wgScript;
+		global $wgOut, $wgScript, $wgUser;
 		global $wgUserProperties, $wgActivityModes;
 
 		// TODO: wfMsg etc.
@@ -45,7 +45,7 @@ class SpecialAccountManager extends SpecialPage {
 
 		$wgOut->addHTML("<table id=\"userprops\" border=\"1\">\n\t<tr>".
 			"<th>".wfMsgHtml( 'am-username' ).
-			"</th><th>".wfMsgHtml( 'am-email' ).
+			"</th><th></th><th>".wfMsgHtml( 'am-email' ).
 			"</th><th>".wfMsgHtml( 'am-active' )."</th>");
 		foreach( $wgUserProperties as $i ) {
 			$msg = 'am-'.$i;
@@ -54,11 +54,14 @@ class SpecialAccountManager extends SpecialPage {
 		}
 		$wgOut->addHTML("</tr>\n\n");
 
+		$sk = $wgUser->getSkin();
 		foreach( $this->users as $user ) {
 			$name = $user->getName();
 			$row = "\t<tr>";
 			$row .= Xml::element( 'td', null, $name );
-			$row .= "<td>".Xml::input( "am-{$name}-email", 40, $user->getEmail() )."</td>";
+			$row .= "<td>".$sk->link( SpecialPage::getTitleFor( 'Userrights' ),
+				wfMsg( 'nss-rights' ), array(), array( 'user' => $name ) )."</td>";
+			$row .= "<td>".Xml::input( "am-{$name}-email", 30, $user->getEmail() )."</td>";
 			$select = new XmlSelect( "am-{$name}-active" );
 			$select->setDefault( $user->getActive() );
 			foreach( $wgActivityModes as $key )
@@ -69,7 +72,7 @@ class SpecialAccountManager extends SpecialPage {
 			foreach( $wgUserProperties as $key ) {
 				$value = isset( $props[$key] ) ? $props[$key] : '';
 				$row .= "<td>".Xml::input(
-						"am-{$name}-{$key}", 40, $value
+						"am-{$name}-{$key}", 30, $value
 					)."</td>";
 			}
 			$row .= "</tr>\n";

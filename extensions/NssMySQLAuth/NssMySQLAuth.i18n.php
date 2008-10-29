@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'am-updated' => 'Your changes have been saved successfully',
 
 	'nss-desc' => 'A plugin to authenticate against a libnss-mysql database. Contains an [[Special:AccountManager|account manager]]',
+	'nss-rights'	=>  'rights',
 	'nss-save-changes'	=> 'Save changes',
 	'nss-create-account-header'	=> 'Create new account',
 	'nss-create-account'	=> 'Create account',
