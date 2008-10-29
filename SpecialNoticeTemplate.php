@@ -202,7 +202,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 
 		if ( $templateName == '' ) {
 			$wgOut->addHtml( wfMsg( 'centralnotice-template-doesnt-exist' ) );
-			$return;
+			return;
 		}
 		
 		$templateId = $this->getTemplateId( $templateName );
@@ -212,7 +212,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 							   "template_id =" . $dbr->addQuotes( $templateId ) );
 		if ( $dbr->numRows( $res ) > 0 ) {
 			$wgOut->addHtml( wfMsg( 'centralnotice-template-still-bound' ) );
-			$return;
+			return;
 		}
 		else {
 			$centralnotice_table = 'central_notice_templates';
