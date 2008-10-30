@@ -13,6 +13,28 @@ $wgNoticeLoader = $wgArticlePath . '/Special:NoticeLoader';
 $wgNoticeLang = 'en';
 $wgNoticeProject = 'wikipedia';
 
+/// List of available projects, which will be used to generate static
+/// output .js in the batch generation...
+$wgNoticeProjects = array(
+	'wikipedia',
+	'wiktionary',
+	'wikiquote',
+	'wikibooks',
+	'wikiquote',
+	'wikinews',
+	'wikisource',
+	'wikiversity',
+	'wikimedia',
+	'commons',
+	'meta',
+	'wikispecies',
+);
+
+/// Local filesystem path under which static .js output is written
+$wgNoticeStaticDirectory = "$wgUploadDirectory/centralnotice";
+
+/// Remote URL path from which static .js output is loaded
+$wgNoticeStaticPath = "$wgUploadPath/centralntoice";
 
 /// Enable the notice-hosting infrastructure on this wiki...
 /// Leave at false for wikis that only use a sister site for the control.
@@ -119,7 +141,6 @@ function efCentralNoticeLoader( &$notice ) {
 	global $wgScript, $wgUser;
 	global $wgNoticeLoader, $wgNoticeLang, $wgNoticeProject;
 
-	$wgNotice = efSelectNotice( 'cn_notices' );
 	if ( isset( $wgNotice ) ) { //Do we have an active notice campaign
 		$encNoticeLoader = htmlspecialchars( $wgNoticeLoader );
 		$encProject = Xml::encodeJsVar( $wgNoticeProject );
@@ -153,35 +174,6 @@ EOT;
 	}
 		return true;
 }
-
-
-/** 
- * Lookup function for active notice under a given language and project
- * Returns and id for the running notice
- */
-function efSelectNotice( $dbTable ) {
-	global $wgNoticeLang, $wgNoticeProject;
-	
-	$dbr = wfGetDB( DB_SLAVE );
-	$timestamp = wfTimestampNow();
-	$res = $dbr->select( $dbTable, 'not_id',
-		array (
-			"not_start <= '{$timestamp}'",
-			"not_end >= '{$timestamp}'",
-			"not_enabled = 'Y'",
-			"not_language = '{$wgNoticeLang}'",
-			"not_project = '{$wgNoticeProject}'"
-		)
-	); 
-	if ( $dbr->numRows( $res ) == 1) {
-		$row = $dbr->fetchObject( $res );
-		if( $row ) {
-			return $row->not_id;
-		}
-		return null;
-	}
-}
-
 
 /**
  * 'ArticleSaveComplete' hook

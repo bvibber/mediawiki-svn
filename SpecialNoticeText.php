@@ -57,7 +57,7 @@ END;
 		$encHideStyle = Xml::encodeJsVar( $hideStyle );
 		$encHideToggleStyle = Xml::encodeJsVar( $hideToggleStyle );
 
-		$noticeName = '2008 Fundraiser';
+		$noticeName = CentralNotice::selectNotice( $this->language, $this->project );
 		$templates = CentralNotice::getTemplatesForNotice( $noticeName );
 		$templateNames = array_keys( $templates );
 		$weights = array_values( $templates );

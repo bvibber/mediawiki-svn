@@ -695,7 +695,35 @@ class CentralNotice extends SpecialPage {
 		return $table;
 	}
 	
-	public function getTemplatesForNotice ( $noticeName ) {
+	
+	/** 
+	 * Lookup function for active notice under a given language and project
+	 * Returns and id for the running notice
+	 */
+	function selectNotice( $project, $language ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$encTimestamp = $dbr->addQuotes( $dbr->timestamp() );
+		$res = $dbr->select( 'cn_notices',
+			'not_id',
+			array (
+				"not_start <= $encTimestamp",
+				"not_end >= $encTimestamp",
+				"not_enabled = 1",
+				"not_language" => $language,
+				"not_project" => $project,
+			)
+		); 
+		if ( $dbr->numRows( $res ) == 1) {
+			$row = $dbr->fetchObject( $res );
+			if( $row ) {
+				return $row->not_id;
+			}
+			return null;
+		}
+	}
+	
+
+	public function getTemplatesForNotice( $noticeName ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		
 		$res = $dbr->select(
@@ -718,7 +746,7 @@ class CentralNotice extends SpecialPage {
 		);
 		$templates = array();
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			$templates[$row->name] = $row->weight;
+			$templates[$row->tmp_name] = $row->tmp_weight;
 		}
 		return $templates;
 
