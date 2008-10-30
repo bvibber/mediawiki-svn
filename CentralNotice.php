@@ -83,11 +83,6 @@ $wgSpecialPageGroups['CentralNotice'] = 'wiki'; // Wiki data and tools"
 $wgSpecialPageGroups['NoticeTranslate'] = 'wiki'; // Wiki data and tools"
 $wgSpecialPageGroups['NoticeTemplate'] = 'wiki'; // Wiki data and tools"
 
-
-$egCentralNoticeTableNames['templates'] = 'central_notice_templates';
-$egCentralNoticeTableNames['campaign'] = 'central_notice_campaign';
-$egCentralNoticeTableNames['assignments'] = 'central_notice_template_assignments';
-
 function efCentralNoticeSetup() {
  		global $wgHooks, $wgNoticeInfrastructure;
 		global $wgAutoloadClasses, $wgSpecialPages;
