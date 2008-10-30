@@ -1,6 +1,13 @@
 <?php
 
-$uri = $_SERVER['REQUEST_URI'];
+# lighttpd puts the original request in REQUEST_URI, while
+# sjs sets that to the 404 handler, and puts the original
+# request in REDIRECT_URL.
+if (isset($_SERVER['REDIRECT_URL'])) {
+	$uri = $_SERVER['REDIRECT_URL'];
+} else {
+	$uri = $_SERVER['REQUEST_URI'];
+}
 	
 # Is this a thumbnail?
 if ( preg_match('!^(?:http://upload.wikimedia.org)?/([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*)/' . 
@@ -186,7 +193,7 @@ EOT;
 	$uname = posix_uname();
 	$server = $uname['nodename'];
 	if ( !in_array($server, array('amane.pmtpa.wmnet', 'storage1', 'ms1', 'ms2')) ) {
-		$dest = pathFromUrl( $_SERVER['REQUEST_URI'] );
+		$dest = pathFromUrl( $uri );
 		if( $dest ) {
 			if ( strpos( $dest, '..' ) === false ) {
 				# Make directory and parents
