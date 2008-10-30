@@ -1,204 +1,276 @@
 <?php
-	
+
 if ( !defined( 'MEDIAWIKI' ) ) {
-        echo "CentralNotice extension\n";
-        exit( 1 );
+	echo "CentralNotice extension\n";
+	exit( 1 );
 }
 
 class SpecialNoticeTemplate extends SpecialPage { 
-
-        function __construct() {
-	                parent::__construct( "NoticeTemplate" );
-			wfLoadExtensionMessages('CentralNotice');
+	
+	/* Functions */
+	
+	function __construct() {
+		// Initialize special page
+		parent::__construct( 'NoticeTemplate' );
+		
+		// Internationalization
+		wfLoadExtensionMessages( 'CentralNotice' );
 	}
-
+	
 	function execute( $sub ) {
 		global $wgOut, $wgUser, $wgRequest;
 		
+		// Begin output
 		$this->setHeaders();
+		
+		// Get current skin
 		$sk = $wgUser->getSkin();
-
-		if ( !$wgUser->isAllowed( 'centralnotice_admin_rights' )) {
+		
+		// Check permissions
+		if ( !$wgUser->isAllowed( 'centralnotice_admin_rights' ) ) {
 			$wgOut->permissionRequired( 'centralnotice_admin_rights' );
 			return;
 		}
 		
-		$wgOut->addWikiText( wfMsg( 'centralnotice-summary' ));
+		// Show summary
+		$wgOut->addWikiText( wfMsg( 'centralnotice-summary' ) );
+		
+		// Show header
 		CentralNotice::printHeader();
-
-
+		
+		// Handle forms
 		if ( $wgRequest->wasPosted() ) {
-			$body = file_get_contents('php://input');
-			$wgOut->addHtml("Body of post: $body");
-
-			$toRemove = $wgRequest->getArray('removeTemplates');
-			if ( isset($toRemove) ){  
+			
+			/*
+			 * For debugging purposes only
+			 */
+			$body = file_get_contents( 'php://input' );
+			$wgOut->addHtml( Xml::element( 'pre', null, $body ) );
+			
+			// Build list of templates to remove
+			$toRemove = $wgRequest->getArray( 'removeTemplates' );
+			if ( isset( $toRemove ) ) { 
+				// Remove templates in list
 				foreach ( $toRemove as $template ) {
 					$this->removeTemplate( $template );
 				}
+				
+				// Show a list of templates 
 				$this->listTemplates();
 				return;
 			}
-
-			$enabledNotices = $wgRequest->getArray('enabled');
+			
+			// Build a list of notices to enable
+			$enabledNotices = $wgRequest->getArray( 'enabled' );
 			if ( isset( $enabledNotices ) ) {
-				$allNotices = $this->getNoticesName();
-
-				$diff_set = array_diff( $allNotices, $enabledNotices);
-
-				foreach ( $enabledNotices as $notice) {
-					$this->updateEnabled( $notice, 'Y');
+				// Build a list of notices to disable
+				$disabledNotices = array_diff( $this->getNoticesName(), $enabledNotices );
+				
+				// Set enabled/disabled flag accordingly
+				foreach ( $enabledNotices as $notice ) {
+					$this->updateEnabled( $notice, 'Y' );
 				}
-				foreach ( $diff_set as $notice) {
-					$this->updateEnabled( $notice, 'N');
+				foreach ( $disabledNotices as $notice ) {
+					$this->updateEnabled( $notice, 'N' );
 				}
 			}
 		}
-
-		$method = $wgRequest->getVal('wpMethod');
-
-		if ( $method == 'addTemplate') { 
-			$templateName = $wgRequest->getVal('templateName');
-			$templateBody = $wgRequest->getVal('templateBody');
-			$this->addTemplate( $templateName, $templateBody);
+		
+		// Handle adding
+		if ( $wgRequest->getVal( 'wpMethod' ) == 'addTemplate' ) {
+			$this->addTemplate(
+				$wgRequest->getVal( 'templateName' ),
+				$wgRequest->getVal( 'templateBody' )
+			);
 		}
+		
+		// If this is a sub-page, show list of templates
 		if ( $sub == 'listTemplates' ) { 
 			$this->listTemplates();
 			return;
 		}
-
-  	  	$this->listTemplates();
+		
+		$this->listTemplates();
 	}
 
-	private function updateEnabled( $update_notice, $enabled) {
-		 $centralnotice_table = "central_notice_campaign";
-		 $dbw = wfGetDB( DB_MASTER );
-		 $res = $dbw->update($centralnotice_table, array( cnc_enabled => $enabled ), array( cnc_template => $update_notice));
+	private function updateEnabled( $update_notice, $enabled ) {
+		global $egCentralNoticeTables;
+		
+		$dbw = wfGetDB( DB_MASTER );
+		$res = $dbw->update( 'central_notice_campaign',
+			array( cnc_enabled => $enabled ),
+			array( cnc_template => $update_notice ),
+			__METHOD__
+		);
 	}
 
 	public static function previewTemplate() {
+		//
 	}
-
 
 	function queryTemplates() {
-		$centralnotice_template_table = "central_notice_templates";
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( $centralnotice_template_table, "template_name, template_id", '', '', array('ORDER BY' => 'template_id'));
-
+		$res = $dbr->select( 'central_notice_templates',
+			array( 'template_name', 'template_id' ),
+			'',
+			__METHOD__,
+			array( 'ORDER BY' => 'template_id' )
+		);
+		
 		$templates = array();
-		while ( $row = $dbr->fetchObject( $res )) {
-			array_push($templates, $row->template_name);
+		while ( $row = $dbr->fetchObject( $res ) ) {
+			array_push( $templates, $row->template_name );
 		}
+		
 		return $templates;
 	}
-		
+
 	function listTemplates() {
 		$templates = $this->queryTemplates();
 		return $this->templatesForm( $templates );
 	}
-
+	
 	function templatesForm( $templates ) {
 		global $wgOut, $wgTitle;
 		
-		$table = Xml::openElement( 'form', array(
-						'method' => 'post',
-						'action' => ''));
-		$table .= Xml::fieldset( 'Available Templates' );
-		$table .= Xml::openElement( 'table', array ( 'cellpadding' => 9)) ; 
-		$table .= "<th>" . wfMsg ( 'centralnotice-template-name' ) . "</th>";
-		$table .= "<th>" . wfMsg ( 'centralnotice-remove') . "</th>";
-
+		// Templates
+		$htmlOut = Xml::openElement( 'form', 
+			array( 
+				'method' => 'post', 
+				'action' => ''
+			 )
+		);
+		$htmlOut .= Xml::fieldset( 'Available Templates' );
+		$htmlOut .= Xml::openElement( 'table', array ( 'cellpadding' => 9 ) ) ; 
+		$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-template-name' ) );
+		$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-remove' ) );
 		$templates = $this->queryTemplates();
 		foreach ( $templates as $templateName ) {
-			$table .= "<tr><td>" . 
-					$templateName .
-				  "</td>";
-			$table .=  "<td>" .
-					Xml::check( 'removeTemplates[]', false, array( 'value' => $templateName)) .
-				   "</td></tr>";
+			$htmlOut .= Xml::tags( 'tr', null, 
+				Xml::element( 'td', null, $templateName ) .
+				Xml::tags( 'td', null, 
+					Xml::check( 'removeTemplates[]', false, 
+						array( 'value' => $templateName )
+			 		)
+			 	)
+			);
 		}
-		$table .= "<tr><td>" . Xml::submitButton( wfMsg( 'centralnotice-modify')) . "</td></tr>"; 
-		$table .= Xml::closeElement( 'table' );
-		$table .= XML::closeElement( 'fieldset' );
-
-		$wgOut->addHtml( $table );
-
-		$wgOut->addHtml( 
-			Xml::openElement( 'form', array(
-                                'method' => 'post',
-				'action' => SpecialPage::getTitleFor( 'NoticeTemplate' )->getFullUrl() ) ) .
-			'<fieldset>' .
-		       Xml::element( 'legend', array(), wfMsg( 'centralnotice-add-template' ) ) .
-		       Xml::hidden( 'wpMethod', 'addTemplate' ) .
-		      '<p>' .
-		      Xml::inputLabel( wfMsg( 'centralnotice-template-name' ),
-			'templateName', 'templateName', 25) .
-		      '</p>' .
-		      '<p>' . 
-		      Xml::textarea( 'templateBody', '', 60, 20) .
-		      '<p>' .
-		      Xml::submitButton( wfMsg( 'centralnotice-modify' ) ) .
-		      Xml::submitButton( wfMsg( 'centralnotice-preview' ) ) .
-		      '</p>' .
-		      '</fieldset>' .
-	              '</form>' .
-		      Xml::closeElement( 'form' )
-		    );
+		$htmlOut .= Xml::tags( 'tr', null, 
+			Xml::tags( 'td', null, 
+				Xml::submitButton( wfMsg( 'centralnotice-modify' ) )
+			)
+		);
+		$htmlOut .= Xml::closeElement( 'table' );
+		$htmlOut .= XML::closeElement( 'fieldset' );
+		
+		// Notices
+		$htmlOut .= Xml::openElement( 'form', 
+			array(
+				'method' => 'post', 
+				'action' => SpecialPage::getTitleFor( 'NoticeTemplate' )->getFullUrl()
+			)
+		);
+		$htmlOut .= Xml::openElement( 'fieldset' );
+		$htmlOut .= Xml::element( 'legend', null, wfMsg( 'centralnotice-add-template' ) );
+		$htmlOut .= Xml::hidden( 'wpMethod', 'addTemplate' );
+		$htmlOut .= Xml::tags( 'p', null, 
+			Xml::inputLabel(
+				wfMsg( 'centralnotice-template-name' ), 
+				'templateName', 
+				'templateName', 
+				25
+			)
+		);
+		$htmlOut .= Xml::tags( 'p', null, 
+			Xml::textarea( 'templateBody', '', 60, 20 )
+		);
+		$htmlOut .= Xml::tags( 'p', null, 
+			Xml::submitButton( wfMsg( 'centralnotice-modify' ) ) .
+			Xml::submitButton( wfMsg( 'centralnotice-preview' ) )
+		);
+		$htmlOut .= Xml::closeElement( 'fieldset' );
+		$htmlOut .= Xml::closeElement( 'form' );
+		
+		// Output HTML
+		$wgOut->addHtml( $htmlOut );
 	}
-
+	
 	function listTemplateDetail ( $template ) {
-		global $wgOut,$wgUser;
-
-		$form  .= "Preview";
-		$form  .= "Template";
-		$form  .= "Button";
-		$form  .= "Link";
-
+		global $wgOut, $wgUser;
+		
+		/*
+		 * What is this supposed to be?
+		 * 
+			$form .= 'Preview';
+			$form .= 'Template';
+			$form .= 'Button';
+			$form .= 'Link';
+		 */
+		
 		if ( $wgUser->isAllowed( 'centralnotice-template-edit' ) ) {
-			$form .= "<tr><td><center>" . Xml::submitButton( wfMsgHtml('centralnotice-modify'),
-					array('id' => 'centralnoticesubmit','name' => 'centralnoticesubmit') ) . "</td>";
-			$form .= "<tr><td>" . Xml::submitButton( wfMsgHtml('centralnotice-preview'),
-					array('id' => 'centralnoticepreview','name' => 'centralnoticepreview') ) . "</center></td>";
-
+			$form .= Xml::tags( 'tr', null,
+				Xml::tags( 'td', null,
+					Xml::submitButton(
+						wfMsgHtml( 'centralnotice-modify' ),
+						array(
+							'id' => 'centralnoticesubmit',
+							'name' => 'centralnoticesubmit'
+						)
+					)
+				)
+			);
+			$form .= Xml::tags( 'tr', null,
+				Xml::tags( 'td', null,
+					Xml::submitButton(
+						wfMsgHtml( 'centralnotice-preview' ), 
+						array(
+							'id' => 'centralnoticepreview',
+							'name' => 'centralnoticepreview'
+						)
+					)
+				)
+			);
 		}
-	        
 		$wgOut->addHTML( $form );
 	}
+	
+	function addTemplate ( $name, $body ) {
+		global $wgOut, $egCentralNoticeTables;
 
-	function addTemplate ( $templateName, $templateBody ) {
-		global $wgOut;
-
-		if ( $templateBody == '' || $templateName == '' ) {
+		if ( $body == '' || $name == '' ) {
 			$wgOut->addHtml( wfMsg( 'centralnotice-null-string' ) );
 			return;
 		}
-
+		
 		$dbr = wfGetDB( DB_SLAVE );
-		$centralnotice_table = 'central_notice_templates';
-
-		$eTemplateName = htmlspecialchars ( $templateName );
-		 
-		$res = $dbr->select( $centralnotice_table, 'template_name', "template_name = '$eTemplateName' " );
+		$res = $dbr->select( 'central_notice_templates', 'template_name',
+			array( 'template_name' => $name ),
+			__METHOD__
+		);
+		
 		if ( $dbr->numRows( $res ) > 0 ) { 
-		 	$wgOut->addHTML( wfMsg( 'centralnotice-template-exists' ) );
+			$wgOut->addHTML( wfMsg( 'centralnotice-template-exists' ) );
 			return;
-		}
-		else {
-			 $dbw = wfGetDB( DB_MASTER );
-			 $res = $dbw->insert( $centralnotice_table, array( 'template_name' => "$templateName"));
-			 
-			 //perhaps these should move into the db as blob
-			 $templatePage = "Centralnotice-" . "template-" . "$templateName";
-			 $title = Title::newFromText( $templatePage, NS_MEDIAWIKI );
-			 $article = new Article( $title );
-			 $article->doEdit( $templateBody, '' );
-			 return;
+		} else {
+			$dbw = wfGetDB( DB_MASTER );
+			$res = $dbw->insert( 'central_notice_templates',
+				array( 'template_name' => $name ),
+				__METHOD__
+			);
 			
+			/*
+			 * Perhaps these should move into the db as blob
+			 */
+			$article = new Article(
+				Title::newFromText( "centralnotice-template-{$name}", NS_MEDIAWIKI )
+			);
+			$article->doEdit( $body, '' );
+			return;
 		}
 	}
 
 	function removeTemplate ( $templateName ) {
-		global $wgOut;
+		global $wgOut, $egCentralNoticeTables;
 
 		if ( $templateName == '' ) {
 			$wgOut->addHtml( wfMsg( 'centralnotice-template-doesnt-exist' ) );
@@ -206,28 +278,37 @@ class SpecialNoticeTemplate extends SpecialPage {
 		}
 		
 		$templateId = $this->getTemplateId( $templateName );
-		$centralnotice_table = 'central_notice_template_assignments';
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( $centralnotice_table, 'template_assignment_id', 
-							   "template_id =" . $dbr->addQuotes( $templateId ) );
+		$res = $dbr->select( 'central_notice_template_assignments', 'template_assignment_id',
+			array( 'template_id' => $templateId ),
+			__METHOD__
+		);
+		
 		if ( $dbr->numRows( $res ) > 0 ) {
 			$wgOut->addHtml( wfMsg( 'centralnotice-template-still-bound' ) );
 			return;
-		}
-		else {
-			$centralnotice_table = 'central_notice_templates';
+		} else {
 			$dbw = wfGetDB( DB_MASTER );
-			$res = $dbw->delete( $centralnotice_table, array( "template_id =" . $dbr->addQuotes($templateId)));
+			$res = $dbw->delete( 'central_notice_templates',
+				array( 'template_id' => $templateId ),
+				__METHOD__
+			);
 		}
 	}
-
+	
 	function getTemplateId ( $templateName ) {
-		global $wgOut;
+		global $wgOut, $egCentralNoticeTables;
 		
-		$centralnotice_table = 'central_notice_templates';
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( $centralnotice_table, 'template_id', array( "template_name =" . $dbr->addQuotes( $templateName )));
+		$res = $dbr->select( 'central_notice_templates', 'template_id',
+			array( 'template_name' => $templateName ),
+			__METHOD__
+		);
+		
 		$row = $dbr->fetchObject( $res );
-		return $row->template_id;
+		if( $row ) {
+			return $row->template_id;
+		}
+		return null;
 	}
 }
