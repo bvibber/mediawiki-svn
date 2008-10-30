@@ -85,7 +85,9 @@ $wgSpecialPageGroups['NoticeTemplate'] = 'wiki'; // Wiki data and tools"
 
 function efCentralNoticeSetup() {
 	global $wgHooks, $wgNoticeInfrastructure, $wgAutoloadClasses, $wgSpecialPages;
-	global $wgCentralNoticeLoader, $dir;
+	global $wgCentralNoticeLoader;
+	
+	$dir = dirname( __FILE__ ) . '/';
 	
 	if ($wgCentralNoticeLoader) {
 		$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeLoader';
