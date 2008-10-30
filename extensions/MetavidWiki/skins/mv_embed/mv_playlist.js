@@ -602,7 +602,7 @@ mvPlayList.prototype = {
 		if(this.cur_clip.embed.supports['playlist_swap_loader'] ){
 			//navtive support:
 			// * pre-loads clips
-			// * mv_playlist smil extension, mannages transitions animations overlays etc. 			
+			// * mv_playlist smil extension, manages transitions animations overlays etc. 			
 			js_log('clip obj supports playlist swap_loader (ie playlist controlled playback)');
 			//update cur clip based if sequence playhead set: 
 			var d = new Date();
@@ -1523,7 +1523,7 @@ var mvTransLib = {
 					if(!tObj.fadeColor)
 						return js_log('missing fadeColor');							
 					if($j('#'+tObj.overlay_selector_id).length==0){
-						js_log("ERROR cant find: "+ tObj.overlay_selector_id);
+						js_log("ERROR can't find: "+ tObj.overlay_selector_id);
 					}	
 					//set the initial state
 					$j('#'+tObj.overlay_selector_id).css({

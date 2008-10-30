@@ -16,6 +16,7 @@
  	var $valid_tools=array(
  		'sequence_page',
  		'add_clips_manual',
+ 		'transition',
 		'welcome',
  		'cliplib',
  		'options' 		 		
@@ -74,6 +75,9 @@
 			case 'options':
 				$this->add_editor_options();
 			break;
+			case 'transition':
+				$this->add_transitions();
+			break;
 			default:				
 				$wgOut->addHTML( wfMsg('mv_tool_missing',  htmlspecialchars ($tool_id) ) );
 			break;
@@ -86,7 +90,7 @@
 		$wgOut->addHTML( '<h3>'. wfMsg('mv_resource_locator') . '</h3>' );
 		//add the input form 
 		$wgOut->addHTML( 			
-			xml::input('mv_ams_search', 255,'', array('class'=>'searchField')) . 
+			xml::input('mv_ams_search', 255,'', array( 'id' => 'mv_ams_search' , 'class' => 'searchField' )) . 
 			xml::submitButton( wfMsg('mv_media_search'), array('id'=>'mv_ams_submit') ) .
 			xml::element('div',array('id'=>'mv_ams_results'))
 		);
@@ -99,6 +103,10 @@
 						wfMsg('mv_simple_editor_desc') . ' </blockquote>' .
 				'<blockquote><input type="radio" value="advanced_editor" name="opt_editor">' .
 						wfMsg('mv_advanced_editor_desc') . ' </blockquote>' );				
+	}
+	function add_transitions(){
+		global $wgOut;
+		$wgOut->addHTML('<h3>'. wfMsg('mv_transitions') .'</h3>');				
 	}
 	function auto_complete_stream_name( $val ) {
 		global $mvDefaultSearchVideoPlaybackRes;

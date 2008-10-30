@@ -89,9 +89,9 @@ mvSequencer.prototype = {
 	menu_items : {
 		'welcome':1,
 		'cliplib':0,
-		'transition':0,
-		'resource_overview':0,
+		'transition':0,		
 		'options':0
+		//menu_resource_overview
 	},	
 	init:function( initObj ){	
 		//set the default values:
@@ -187,7 +187,7 @@ mvSequencer.prototype = {
 		for(var i in this.menu_items){
 			req_url+='|'+i;
 			$j('#'+i+'_ic').html( getMsg('loading_txt') );//set targets to loading
-		}
+		}				
 		var _this = this;
 		do_request(req_url, function(data){
 			if(typeof data=='string'){
@@ -200,23 +200,33 @@ mvSequencer.prototype = {
 				$j('#'+i+'_ic').html( data[i] );
 				_this.doMenuItemDispJs(i)
 			}
-		});
-										
-		//load req content: 			
-		//var _this = this;
-		//$j('#'+target_id).load(req_url, function(responseText, textStatus, XMLHttpRequest){
-		//	_this.doMenuItemDispJs(item, target_id);			
-		//});							
+		});						
 	},
-	doMenuItemDispJs:function(item){
+	doMenuItemDispJs:function(item){		
 		var _this = this;
 		var target_id = item + '_ic';
 		//do any menu item post embed js hook processing:
-		switch(item){				
-			case 'cliplib':				 		
-				$j('#mv_ams_submit').click(function(){
-					_this.doClipSearch();
-				}) 														
+		switch(item){		
+			case 'transition':
+				//render out the transitions library
+				this.renderTransitionsSet(target_id);
+			break;		
+			case 'cliplib':
+				//load the search interface with sequence tool targets 
+				//@@todo it maybe cleaner to just pass along msg text in JSON 
+				//and have the search interface build the html 				
+				if( !this.plObj.interface_url )
+					return js_log( 'Error:missing interface_url, can not load search interface' );
+																										
+				mvJsLoader.doLoad({'mvRemoteSearch':'mv_remote_media_search.js'}, function(){					
+					_this.mySearch = new mvRemoteSearch( {
+						'p_seq':_this,
+						'instance_name': _this.instance_name + '.mySearch',
+						'target_input':'mv_ams_search',
+						'target_submit':'mv_ams_submit',
+						'target_results':'mv_ams_results'
+					 });
+				});							
 			break;			
 			case 'options':							
 				$j('#'+target_id+" input[value='simple_editor']").attr({
@@ -231,7 +241,28 @@ mvSequencer.prototype = {
 				});						
 			break;
 		}
-	},	
+	},
+	//renders out the transitions effects set			
+	renderTransitionsSet:function(target_id){
+		js_log('f:renderTransitionsSet:' + target_id);
+		var o = '';
+		if(typeof mvTransLib == 'undefined')
+			return js_log('Error: missing mvTransLib');
+		
+		for(var i in mvTransLib['type']){	
+			js_log('on tran type: ' + i);			
+			var base_trans_name = i;
+			var tLibSet = mvTransLib['type'][ i ];
+			for(var j in tLibSet){			
+				trans_name=base_trans_name+'_'+j;
+				js_log('tname: ' + trans_name);
+				o+='<img style="float:left;padding:10px;" '+
+					'src="'+mv_embed_path +'/skins/'+mv_skin_name+'/transition_images/'+ trans_name + '.png">';		
+			}
+		}
+		js_log('should set: ' + target_id + ' to: ' + o);
+		$j('#'+target_id).append(o);
+	},
 	renderTimeLine:function(){
 		//empty out the top level html: 
 		$j('#'+this.timeline_id).html('');
@@ -373,7 +404,7 @@ mvSequencer.prototype = {
 		js_log('json output');
 	},
 	getSeqOutputHLRDXML:function(){
-		var o='<sequence_hlrd>' +"\n"+
+		var o='<sequence_hlrd>' +"\n";
 		o+="\t<head>";		
 		//get transitions 
 		for(var i in this.plObj.transitions){

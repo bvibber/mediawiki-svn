@@ -92,3 +92,10 @@
 	top:0px;
 	z-index:-1;
 }
+.mv_clip_box_result{
+	padding:10px;
+	float:left;
+}
+mv_clip_list_result{
+	padding:10px;
+}

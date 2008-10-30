@@ -45,6 +45,7 @@ var global_player_list = new Array();
 var global_req_cb = new Array();//the global request callback array
 var _global = this;
 var mv_init_done=false;
+var global_cb_count =0;
 
 
 /*
@@ -2966,6 +2967,7 @@ function getUpdateTimeURL(url, new_time, size){
 	}		
 	return new_url;
 }
+
 function seconds2ntp(sec){	
 	var sec = parseInt(sec);
 	var hours = Math.floor(sec/ 3600);
@@ -2989,10 +2991,50 @@ function ntp2seconds(ntp){
 	//return seconds float (ie take seconds float value if present):
 	return parseInt(times[0]*3600)+parseInt(times[1]*60)+parseFloat(times[2]);
 }
+
 //addLoadEvent for adding functions to be run when the page DOM is done loading
 function mv_addLoadEvent(func) {
 	mvEmbed.addLoadEvent(func);
 }
+
+//does a remote or local api request based on request url 
+function do_api_req(req_param, api_url, callback){
+	if(typeof req_param != 'object')
+		return js_log('Error: request paramaters must be an object');
+	if( !api_url){
+		if(!wgServer || ! wgScriptPath)
+			return js_log('Error: no api url');
+		
+		api_url =  wgServer +((wgServer == null) ? parseUri(document.URL).host + (wgScriptPath + "/api.php") : parseUri(document.URL).host + wgScript);
+		//update to api.php (if index.php was in the wgScript path): 
+		api_url = api_url.replace('index.php', 'api.php');		
+	}
+				
+	//build request string: (force the format to json): 
+	var req_url = api_url +'?format=json';	
+	for(var i in req_param){
+		req_url += '&' + encodeURIComponent( i ) + '=' + encodeURIComponent( req_param[i] );		
+	}
+		
+	if( parseUri(document.URL).host == parseUri(api_url).host ){
+		//local request do api request directly		
+		$j.ajax({
+			type: "GET",
+			url:req_url,
+            async: false,
+			success:function(data){
+				eval('var result_data=' + data );		
+				callback(  result_data );
+			}
+		});
+	}else{		
+		//remote request append callback			
+		eval('_global.mycpfn' + ( global_cb_count++ ) + ' = ' + callback );			
+		req_url += '&callback=mycpfn' + global_cb_count;
+		loadExternalJs( req_url );		
+	}	
+}
+//do a "normal" request (should be deprecated via extending the mediaWiki API) 
 function do_request(req_url, callback){
  	js_log('do request: ' + req_url);
 		if( parseUri(document.URL).host == parseUri(req_url).host){

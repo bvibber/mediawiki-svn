@@ -253,6 +253,8 @@ Jump to stream view: $2',
 	'mv_simple_editor_desc'=>'simple editor (iMovie style)',
 	'mv_advanced_editor_desc' => 'advanced editor (Final Cut style)',
 
+	'mv_transitions'=>'Transitions',
+
 	'mv_save_sequence' => 'Save sequence',
 	'mv_sequence_page_desc' => 'Save the current sequence',
 	'mv_sequence_add' => 'Add clips',
