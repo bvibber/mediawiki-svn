@@ -193,14 +193,16 @@ END;
 	
 	function chooseTemplate ( $notice ) {
 		 $dbr = wfGetDB( DB_SLAVE );
-		 $centralnotice_table = 'central_notice_template_assignments';
-		 $res = $dbr->select( array ( $centralnotice_table,"central_notice_template_assignments"),
-		 		      "name,weight",
-				      array ( 'notice_name' => $notice, 'campaign_id = id'),
-				      '',
-				      array('ORDER BY' => 'id'),
-				      ''
-				     );
+		 /*
+		  * This select statement is really wrong, and needs to be fixed.
+		  * What's wrong is the use of just id instead of not_id, tmp_id or asn_id
+		  */
+		 $res = $dbr->select( 'cn_assignments',
+			array( 'not_name', 'not_weight' ),
+			array( 'not_name' => $notice, 'not_id = id'),
+			__METHOD__,
+			array('ORDER BY' => 'id')
+		);
 		$templates = array();
 	  	while ( $row = $dbr->fetchObject( $res )) {
 			 push ( $templates, $row->name);

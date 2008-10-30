@@ -47,7 +47,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 			$body = file_get_contents( 'php://input' );
 			$wgOut->addHtml( Xml::element( 'pre', null, $body ) );
 			
-			// Build list of templates to remove
+			// Handle removing
 			$toRemove = $wgRequest->getArray( 'removeTemplates' );
 			if ( isset( $toRemove ) ) { 
 				// Remove templates in list
@@ -60,7 +60,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 				return;
 			}
 			
-			// Build a list of notices to enable
+			// Handle enabling/disabling
 			$enabledNotices = $wgRequest->getArray( 'enabled' );
 			if ( isset( $enabledNotices ) ) {
 				// Build a list of notices to disable
@@ -97,7 +97,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 		global $egCentralNoticeTables;
 		
 		$dbw = wfGetDB( DB_MASTER );
-		$res = $dbw->update( 'central_notice_campaign',
+		$res = $dbw->update( 'cn_notices',
 			array( cnc_enabled => $enabled ),
 			array( cnc_template => $update_notice ),
 			__METHOD__
@@ -110,16 +110,16 @@ class SpecialNoticeTemplate extends SpecialPage {
 
 	function queryTemplates() {
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'central_notice_templates',
-			array( 'template_name', 'template_id' ),
+		$res = $dbr->select( 'cn_templates',
+			array( 'tmp_name', 'tmp_id' ),
 			'',
 			__METHOD__,
-			array( 'ORDER BY' => 'template_id' )
+			array( 'ORDER BY' => 'tmp_id' )
 		);
 		
 		$templates = array();
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			array_push( $templates, $row->template_name );
+			array_push( $templates, $row->tmp_name );
 		}
 		
 		return $templates;
@@ -162,6 +162,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 		);
 		$htmlOut .= Xml::closeElement( 'table' );
 		$htmlOut .= XML::closeElement( 'fieldset' );
+		$htmlOut .= XML::closeElement( 'form' );
 		
 		// Notices
 		$htmlOut .= Xml::openElement( 'form', 
@@ -243,8 +244,8 @@ class SpecialNoticeTemplate extends SpecialPage {
 		}
 		
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'central_notice_templates', 'template_name',
-			array( 'template_name' => $name ),
+		$res = $dbr->select( 'cn_templates', 'tmp_name',
+			array( 'tmp_name' => $name ),
 			__METHOD__
 		);
 		
@@ -253,8 +254,8 @@ class SpecialNoticeTemplate extends SpecialPage {
 			return;
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
-			$res = $dbw->insert( 'central_notice_templates',
-				array( 'template_name' => $name ),
+			$res = $dbw->insert( 'cn_templates',
+				array( 'tmp_name' => $name ),
 				__METHOD__
 			);
 			
@@ -279,8 +280,8 @@ class SpecialNoticeTemplate extends SpecialPage {
 		
 		$templateId = $this->getTemplateId( $templateName );
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'central_notice_template_assignments', 'template_assignment_id',
-			array( 'template_id' => $templateId ),
+		$res = $dbr->select( 'cn_assignments', 'asn_id',
+			array( 'tmp_id' => $templateId ),
 			__METHOD__
 		);
 		
@@ -289,8 +290,8 @@ class SpecialNoticeTemplate extends SpecialPage {
 			return;
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
-			$res = $dbw->delete( 'central_notice_templates',
-				array( 'template_id' => $templateId ),
+			$res = $dbw->delete( 'cn_templates',
+				array( 'tmp_id' => $templateId ),
 				__METHOD__
 			);
 		}
@@ -300,14 +301,14 @@ class SpecialNoticeTemplate extends SpecialPage {
 		global $wgOut, $egCentralNoticeTables;
 		
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'central_notice_templates', 'template_id',
-			array( 'template_name' => $templateName ),
+		$res = $dbr->select( 'cn_templates', 'tmp_id',
+			array( 'tmp_name' => $templateName ),
 			__METHOD__
 		);
 		
 		$row = $dbr->fetchObject( $res );
 		if( $row ) {
-			return $row->template_id;
+			return $row->tmp_id;
 		}
 		return null;
 	}

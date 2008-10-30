@@ -67,15 +67,15 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'centralnotice-desc',
 );
 
-$wgExtensionMessagesFiles['CentralNotice'] = dirname(__FILE__) . '/CentralNotice.i18n.php';
+$dir = dirname( __FILE__ ) . '/';
 
-$dir = dirname(__FILE__) . '/';
-$wgAutoloadClasses['CentralNotice'] = dirname(__FILE__) . '/SpecialNoticeCentral.php';
+$wgExtensionMessagesFiles['CentralNotice'] = $dir . 'CentralNotice.i18n.php';
+$wgAutoloadClasses['CentralNotice'] = $dir . 'SpecialNoticeCentral.php';
 
 $wgAvailableRights[] = 'centralnotice_admin_rights';
 $wgGroupPermissions['sysop']['centralnotice_admin_rights'] = true; // Only sysops can make change
 $wgGroupPermissions['sysop']['centralnotice_translate_rights'] = true; // Only sysops can make change
-	
+
 $wgSpecialPages['CentralNotice'] = 'CentralNotice';
 $wgSpecialPages['NoticeTranslate'] = 'SpecialNoticeTranslate';
 $wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
@@ -84,44 +84,36 @@ $wgSpecialPageGroups['NoticeTranslate'] = 'wiki'; // Wiki data and tools"
 $wgSpecialPageGroups['NoticeTemplate'] = 'wiki'; // Wiki data and tools"
 
 function efCentralNoticeSetup() {
- 		global $wgHooks, $wgNoticeInfrastructure;
-		global $wgAutoloadClasses, $wgSpecialPages;
-
-		global $wgCentralNoticeLoader;
-
-		if ($wgCentralNoticeLoader) {
-			$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeLoader';
-		}
+	global $wgHooks, $wgNoticeInfrastructure, $wgAutoloadClasses, $wgSpecialPages;
+	global $wgCentralNoticeLoader, $dir;
 	
-		$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeLocalSaveHook';
-		$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeLocalDeleteHook';
-		
-		$wgAutoloadClasses['NoticePage'] =
-		dirname( __FILE__ ) . '/NoticePage.php';
+	if ($wgCentralNoticeLoader) {
+		$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeLoader';
+	}
 	
-		$wgSpecialPages['NoticeLocal'] = 'SpecialNoticeLocal';
-		$wgAutoloadClasses['SpecialNoticeLocal'] =
-		dirname( __FILE__ ) . '/SpecialNoticeLocal.php';
+	$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeLocalSaveHook';
+	$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeLocalDeleteHook';
+	
+	$wgAutoloadClasses['NoticePage'] = $dir . 'NoticePage.php';
+	
+	$wgSpecialPages['NoticeLocal'] = 'SpecialNoticeLocal';
+	$wgAutoloadClasses['SpecialNoticeLocal'] = $dir . 'SpecialNoticeLocal.php';
 
 	if( $wgNoticeInfrastructure ) {
-			$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeSaveHook';
-			$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeDeleteHook';
-			
-			$wgSpecialPages['NoticeLoader'] = 'SpecialNoticeLoader';
-			$wgAutoloadClasses['SpecialNoticeLoader'] =
-					dirname( __FILE__ ) . '/SpecialNoticeLoader.php';
-
-			$wgSpecialPages['NoticeText'] = 'SpecialNoticeText';
-			$wgAutoloadClasses['SpecialNoticeText'] =
-					dirname( __FILE__ ) . '/SpecialNoticeText.php';
+		$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeSaveHook';
+		$wgHooks['ArticleSaveComplete'][] = 'efCentralNoticeDeleteHook';
 		
-			$wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
-			$wgAutoloadClasses['SpecialNoticeTemplate'] =
-					dirname( __FILE__ ) . '/SpecialNoticeTemplate.php';
-
-			$wgSpecialPages['NoticeTranslate'] = 'SpecialNoticeTranslate';
-			$wgAutoloadClasses['SpecialNoticeTranslate'] =
-					dirname( __FILE__ ) . '/SpecialNoticeTranslate.php';
+		$wgSpecialPages['NoticeLoader'] = 'SpecialNoticeLoader';
+		$wgAutoloadClasses['SpecialNoticeLoader'] = $dir . 'SpecialNoticeLoader.php';
+		
+		$wgSpecialPages['NoticeText'] = 'SpecialNoticeText';
+		$wgAutoloadClasses['SpecialNoticeText'] = $dir . 'SpecialNoticeText.php';
+		
+		$wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
+		$wgAutoloadClasses['SpecialNoticeTemplate'] = $dir . 'SpecialNoticeTemplate.php';
+		
+		$wgSpecialPages['NoticeTranslate'] = 'SpecialNoticeTranslate';
+		$wgAutoloadClasses['SpecialNoticeTranslate'] = $dir . 'SpecialNoticeTranslate.php';
 	}
 }
 
@@ -129,8 +121,7 @@ function efCentralNoticeLoader( &$notice ) {
 	global $wgScript, $wgUser;
 	global $wgNoticeLoader, $wgNoticeLang, $wgNoticeProject;
 
-	$wgCentralnoticeTable = "central_notice_campaign";
-	$wgNotice = efSelectNotice($wgCentralnoticeTable);
+	$wgNotice = efSelectNotice( 'cn_notices' );
 	if ( isset( $wgNotice ) ) { //Do we have an active notice campaign
 		$encNoticeLoader = htmlspecialchars( $wgNoticeLoader );
 		$encProject = Xml::encodeJsVar( $wgNoticeProject );
@@ -170,15 +161,26 @@ EOT;
  * Lookup function for active notice under a given language and project
  * Returns and id for the running notice
  */
-function efSelectNotice( $centralnotice_table ) {
+function efSelectNotice( $dbTable ) {
 	global $wgNoticeLang, $wgNoticeProject;
-
+	
 	$dbr = wfGetDB( DB_SLAVE );
 	$timestamp = wfTimestampNow();
-	$res = $dbr->select( $centralnotice_table, 'notice_id', array ( "notice_start_date <= '$timestamp'", "notice_end_date >= '$timestamp'", "notice_enabled = 'Y'", "notice_language = '$wgNoticeLang'", "notice_project = '$wgNoticeProject'")); 
+	$res = $dbr->select( $dbTable, 'not_id',
+		array (
+			"not_start <= '{$timestamp}'",
+			"not_end >= '{$timestamp}'",
+			"not_enabled = 'Y'",
+			"not_language = '{$wgNoticeLang}'",
+			"not_project = '{$wgNoticeProject}'"
+		)
+	); 
 	if ( $dbr->numRows( $res ) == 1) {
 		$row = $dbr->fetchObject( $res );
-		return $row->notice_id;
+		if( $row ) {
+			return $row->not_id;
+		}
+		return null;
 	}
 }
 
@@ -188,9 +190,11 @@ function efSelectNotice( $centralnotice_table ) {
  * Trigger a purge of the notice loader when we've updated the source pages.
  */
 function efCentralNoticeSaveHook( $article, $user, $text, $summary, $isMinor,
-                                $isWatch, $section, $flags, $revision ) {
+	$isWatch, $section, $flags, $revision ) {
 	efCentralNoticeMaybePurge( $article->getTitle() );
-	return true; // Continue hook processing
+	
+	// Continue
+	return true;
 }
 
 /**
@@ -198,9 +202,11 @@ function efCentralNoticeSaveHook( $article, $user, $text, $summary, $isMinor,
  * Trigger a purge of the local notice when we've updated the source pages.
  */
 function efCentralNoticeLocalSaveHook( $article, $user, $text, $summary, $isMinor,
-                                $isWatch, $section, $flags, $revision ) {
+    $isWatch, $section, $flags, $revision ) {
 	efCentralNoticeMaybePurgeLocal( $article->getTitle() );
-	return true; // Continue hook processing
+	
+	// Continue
+	return true;
 }
 
 /**
@@ -209,7 +215,9 @@ function efCentralNoticeLocalSaveHook( $article, $user, $text, $summary, $isMino
  */
 function efCentralNoticeDeleteHook( $article, $user, $reason ) {
 	efCentralNoticeMaybePurge( $article->getTitle() );
-	return true; // Continue hook processing
+	
+	// Continue
+	return true;
 }
 
 /**
@@ -218,7 +226,9 @@ function efCentralNoticeDeleteHook( $article, $user, $reason ) {
  */
 function efCentralNoticeLocalDeleteHook( $article, $user, $reason ) {
 	efCentralNoticeMaybePurgeLocal( $article->getTitle() );
-	return true; // Continue hook processing
+	
+	// Continue
+	return true;
 }
 
 /**
@@ -276,6 +286,7 @@ function efCentralNoticePurge() {
  */
 function efCentralNoticeEpoch() {
 	global $wgMemc;
+	
 	$epoch = $wgMemc->get( 'centralnotice-epoch' );
 	if( $epoch ) {
 		return wfTimestamp( TS_MW, $epoch );
@@ -290,6 +301,7 @@ function efCentralNoticeEpoch() {
  */
 function efCentralNoticeUpdateEpoch() {
 	global $wgMemc, $wgNoticeServerTimeout;
+	
 	$epoch = wfTimestamp( TS_MW );
 	$wgMemc->set( "centralnotice-epoch", $epoch, $wgNoticeServerTimeout );
 	return $epoch;

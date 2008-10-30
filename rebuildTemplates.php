@@ -12,7 +12,7 @@ if( isset( $options['help'] ) ) {
     echo "  php extensions/CentralNotice/rebuildTemplates\n";
 } else {
     echo "Rebuilding templates ...\n";
-    $notice = efSelectNotice( 'central_notice_campaign' );
+    $notice = efSelectNotice( 'cn_notices' );
     $templates = array();
     $templates = CentralNotice::getTemplatesForNotice( $notice );
     
