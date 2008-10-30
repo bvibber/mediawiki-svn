@@ -687,7 +687,7 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'createsigndocument' => "Activar l'autentificacion dels documents",
 	'createsigndoc-head' => "Utilizatz aqueste formulari per crear una pagina d'autentificacion de documents per l'article en question, de biais que cada utilizaire serà capable d'autentificar via [[Special:SignDocument|Signit]].
-Mercés d'indicar lo nom de l'article pelqual desiratz activar la foncion, los membres del grop d'utilizaires, quals camps seràn accessibles als utilizaires (losquals seràn opcionals), l'edat minimala per èsser membre del grop (pas de minimom siquenon) e un document brèu explicant lo document e balhant d'instruccions als utilizaires. 
+Mercés d'indicar lo nom de l'article pelquin desiratz activar la foncion, los membres del grop d'utilizaires, quins camps seràn accessibles als utilizaires (seràn opcionals), l'edat minimala per èsser membre del grop (pas de minimom siquenon) e un document brèu explicant lo document e balhant d'instruccions als utilizaires. 
 
 <b>Presentadament, i a pas cap de mejan d'escafar los documents un còp creats</b>, al despart en editant la banca de donadas del wiki. E mai, lo tèxt de l'article afichat sus la pagina autentificada serà lo tèxt ''corrent'', pauc impòrta las modificacions fachas de per aprèp. Per aquesta rason, siatz segur que lo document es sufisentament estable per èsser autentificat e, ''abans de sometre lo formulari'', verificatz qu'avètz plan causit los camps tals coma desiratz que sián.",
 	'createsigndoc-pagename' => 'Pagina :',
@@ -813,6 +813,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -833,6 +834,7 @@ $messages['ru'] = array(
 	'createsigndoc-minage' => 'Минимальный возраст:',
 	'createsigndoc-introtext' => 'Вступление:',
 	'createsigndoc-hidden' => 'Скрыто',
+	'createsigndoc-optional' => 'Опционально',
 	'createsigndoc-create' => 'Создать',
 	'createsigndoc-error-generic' => 'Ошибка: $1',
 	'createsigndoc-error-pagenoexist' => 'Ошибка: страницы [[$1]] не существует.',

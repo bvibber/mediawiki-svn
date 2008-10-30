@@ -42,6 +42,19 @@ $messages['arz'] = array(
 	'interwikilist-prefix' => 'بادئة الإنترويكى:',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'interwikilist' => 'Сьпіс інтэрвікі',
+	'interwikilist-desc' => 'Дадае [[Special:Interwikilist|спэцыяльную старонку]] для прагляду даступных інтэрвікі-спасылак',
+	'interwikilist-linkname' => 'Інтэрвікі-спасылкі',
+	'interwikilist-target' => 'Мэтавы URL-адрас',
+	'interwikilist-filter' => 'Сьпіс фільтраў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -275,6 +288,18 @@ $messages['pl'] = array(
 	'interwikilist-desc' => 'Dodaje [[Special:Interwikilist|stronę specjalną]] ze spisem dostępnych interwiki',
 	'interwikilist-linkname' => 'Link interwiki',
 	'interwikilist-target' => 'Docelowy adres URL',
+);
+
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'interwikilist' => 'Список интервики',
+	'interwikilist-desc' => 'Добавляет [[Special:Interwikilist|служебную страницу]] для просмотра и правки интервики ссылок',
+	'interwikilist-linkname' => 'Интервики ссылка',
+	'interwikilist-target' => 'URL',
+	'interwikilist-filter' => 'Список фильтров',
+	'interwikilist-prefix' => 'Префикс интервики:',
 );
 
 /** Slovak (Slovenčina)

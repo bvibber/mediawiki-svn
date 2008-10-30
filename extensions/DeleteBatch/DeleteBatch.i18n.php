@@ -661,11 +661,24 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  */
 $messages['ru'] = array(
 	'deletebatch-button' => 'Удалить',
+	'deletebatch-here' => '<b>здесь</b>',
+	'deletebatch-caption' => 'Список страниц',
+	'deletebatch-as' => 'Пустить скрипт как',
+	'deletebatch-both-modes' => 'Пожалуйста, выберите одну страницу или список страниц.',
+	'deletebatch-or' => '<b>или</b>',
+	'deletebatch-page' => 'Страницы к удалению',
+	'deletebatch-reason' => 'Причина удаления',
+	'deletebatch-from-file' => 'из списка файлов',
 	'deletebatch-success-subtitle' => 'для $1',
+	'deletebatch-omitting-nonexistant' => 'За исключением несуществующей страницы $1.',
+	'deletebatch-omitting-invalid' => 'За исключением ошибочной страницы $1.',
+	'deletebatch-select-script' => 'скрипт удаления страниц',
+	'deletebatch-select-yourself' => 'вы',
 );
 
 /** Slovak (Slovenčina)

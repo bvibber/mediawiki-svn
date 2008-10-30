@@ -350,10 +350,17 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  */
 $messages['ru'] = array(
+	'createbox-desc' => 'Специальные формы для создания страниц',
 	'createbox-create' => 'Создать',
+	'createbox-exists' => "Извините, \"'''{{FULLPAGENAME}}'''\" уже существует.
+
+Вы не можете создать эту страницу, но вы можете [{{fullurl:{{FULLPAGENAME}}|action=edit}} редактировать её], [{{fullurl:{{FULLPAGENAME}}}} просмотреть её], или выбрать для создания другую страницу в форме.
+
+<createbox>break=no</createbox>",
 );
 
 /** Slovak (Slovenčina)

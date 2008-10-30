@@ -27,3 +27,8 @@ $aliases['nl'] = array(
 	'AccountManager' => array( 'Gebruikersbeheer' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'AccountManager' => array( 'Kontobehandling' ),
+);
+

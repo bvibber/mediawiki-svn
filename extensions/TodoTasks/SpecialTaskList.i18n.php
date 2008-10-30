@@ -618,6 +618,13 @@ $messages['pt'] = array(
 	'tasklistbyname' => '== Lista de tarefas de %s ==',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'tasklistchooseproj' => 'Выберите проект:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

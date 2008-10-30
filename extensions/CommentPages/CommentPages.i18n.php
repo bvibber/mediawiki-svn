@@ -123,6 +123,14 @@ $messages['gv'] = array(
 	'nstab-comments' => 'Coontey',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'commentpages-desc' => 'הוספת דפי תגובות לדפים במרחב השם הראשי',
+	'nstab-comments' => 'תגובות',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

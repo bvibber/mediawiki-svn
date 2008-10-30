@@ -408,6 +408,14 @@ Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] par
 	'specialwhoiswatchingaddbtn' => 'Adicionar os usuários selecionados',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'specialwhoiswatchingaddusers' => 'Добавить участников для наблюдения страницы',
+	'specialwhoiswatchingaddbtn' => 'Добавить выбранных участников',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -43,6 +43,12 @@ $aliases['km'] = array(
 	'WhiteList' => array( 'បញ្ជីស' ),
 );
 
+/** Ripoarisch (Ripoarisch) */
+$aliases['ksh'] = array(
+	'WhiteList' => array( 'Wiiße Less' ),
+	'WhitelistEdit' => array( 'Wiiße Less Ändere' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WhiteList' => array( 'WhiteList' ),
@@ -64,5 +70,10 @@ $aliases['nds-nl'] = array(
 $aliases['nl'] = array(
 	'WhiteList' => array( 'WitteLijst' ),
 	'WhitelistEdit' => array( 'WitteLijstBewerken' ),
+);
+
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'WhiteList' => array( 'Tièra blanca', 'Tièrablanca' ),
 );
 

@@ -471,12 +471,16 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  */
 $messages['ru'] = array(
 	'errorhandler-errors' => 'Ошибки:',
 	'errorhandler-error-fatal' => 'Серьёзная ошибка',
 	'errorhandler-error-warning' => 'Внимание',
+	'errorhandler-msg-text' => '$1 : $2 в $3 (линия $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> в <b>$3</b> (линия <b>$4</b>)',
+	'errorhandler-trace-line' => '$1 (линия $2): $3',
 );
 
 /** Slovak (Slovenčina)

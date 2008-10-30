@@ -27,3 +27,8 @@ $aliases['nl'] = array(
 	'SharedUserRights' => array( 'GedeeldeGebruikersrechten' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'SharedUserRights' => array( 'Delte brukerrettigheter' ),
+);
+

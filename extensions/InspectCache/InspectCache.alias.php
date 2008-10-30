@@ -56,6 +56,6 @@ $aliases['no'] = array(
 
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'InspectCache' => array( 'InspectarAmagatal' ),
+	'InspectCache' => array( "Inspectar l'amagatal", 'InspectarAmagatal' ),
 );
 

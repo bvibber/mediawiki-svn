@@ -82,3 +82,8 @@ $aliases['no'] = array(
 	'Badimages' => array( 'Dårlige bilder' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Badimages' => array( 'Imatges marrits', 'ImatgesMarrits' ),
+);
+

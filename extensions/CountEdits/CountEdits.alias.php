@@ -69,6 +69,6 @@ $aliases['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'CountEdits' => array( 'Redigeringsteller' ),
+	'CountEdits' => array( 'Tell redigeringer' ),
 );
 

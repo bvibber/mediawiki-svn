@@ -25,7 +25,7 @@ $messages['en'] = array(
  */
 $messages['ar'] = array(
 	'logentry-append' => 'إضافة',
-	'logentry-parserhook-desc' => 'امتداد الوسم هذا يوفر استمارة للإضافة لصفحات السجلات',
+	'logentry-parserhook-desc' => 'امتداد الوسم هذا يوفر استمارة للإضافة/التخطيط لصفحات السجلات',
 	'logentry-specialpage-desc' => 'امتداد الوسم هذا يوفر معالجة للإضافة لصفحات السجلات',
 	'logentry' => 'مدخلة سجل',
 	'logentry-invalidpage' => 'صفحة غير صحيحة',
@@ -37,7 +37,7 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'logentry-append' => 'إضافة',
-	'logentry-parserhook-desc' => 'امتداد الوسم هذا يوفر استمارة للإضافة لصفحات السجلات',
+	'logentry-parserhook-desc' => 'امتداد الوسم هذا يوفر استمارة للإضافة/التخطيط لصفحات السجلات',
 	'logentry-specialpage-desc' => 'امتداد الوسم هذا يوفر معالجة للإضافة لصفحات السجلات',
 	'logentry' => 'مدخلة سجل',
 	'logentry-invalidpage' => 'صفحة غير صحيحة',
@@ -54,10 +54,11 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
 	'logentry-append' => 'Ajouter',
-	'logentry-parserhook-desc' => 'Cette extension de balise fournit un formulaire pour ajouter aux pages de journaux',
+	'logentry-parserhook-desc' => 'Cette extension ajoute une balise fournissant un formulaire pour ajouter / préfixer du texte aux pages de journaux',
 	'logentry-specialpage-desc' => 'Cette extension de balise ajoute un processus pour ajouter aux pages de journaux',
 	'logentry' => 'Journal des entrées',
 	'logentry-invalidpage' => 'Page incorrecte',
@@ -98,6 +99,13 @@ $messages['oc'] = array(
 	'logentry' => 'Jornal de las entradas',
 	'logentry-invalidpage' => 'Pagina incorrècta',
 	'logentry-invalidtoken' => 'Presa incorrècta',
+);
+
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'logentry-invalidpage' => 'Неправильная страница',
 );
 
 /** Slovak (Slovenčina)

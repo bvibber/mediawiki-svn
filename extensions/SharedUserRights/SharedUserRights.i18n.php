@@ -42,6 +42,17 @@ $messages['arz'] = array(
 	'gblrights-rights-entry' => 'غير عضوية المجموعة العامة ل$1 من $2 إلى $3',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'shareduserrights' => "Gestion des droits d'utilisateur partagés",
+	'gblrights-desc' => "[[Special:SharedUserRights|gestion simple des droits d'utilisateur partagés]]",
+	'gblrights-logpage' => 'Historique des droits globaux',
+	'gblrights-pagetext' => "Ceci est l'historique de toutes les modification effectuées dans la table globale des droits d'utilisateur",
+	'gblrights-rights-entry' => "a modifié l'appartenance globale aux groupes pour $1 de $2 à $3",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -54,8 +65,10 @@ $messages['gl'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'shareduserrights' => 'Administratioun vun de gedeelte Benotzerrechter',
 	'gblrights-desc' => 'Einfach [[Special:SharedUserRights|Administratioun vun de globale Benotzerrechter]]',
 	'gblrights-logpage' => 'Lëscht vun de globale Rechter',
+	'gblrights-rights-entry' => 'huet déi global Benotzerrechter vum $1 vun $2 op $3 geännert',
 );
 
 /** Dutch (Nederlands)
@@ -67,6 +80,14 @@ $messages['nl'] = array(
 	'gblrights-logpage' => 'Globaal rechtenlogboek',
 	'gblrights-pagetext' => 'Dit is een logboek met alle wijzigingen aan de tabel voor globale rechten van de wikifamilie',
 	'gblrights-rights-entry' => 'heeft globaal groepslidmaatschap voor $1 gewijzigd van $2 naar $3',
+);
+
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'gblrights-desc' => 'Простое [[Special:SharedUserRights|администрирование глобальных прав участников]]',
+	'gblrights-logpage' => 'Журнал глобальных прав',
 );
 
 /** Ukrainian (Українська)

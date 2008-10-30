@@ -356,17 +356,17 @@ $messages['he'] = array(
 	'closewikis-page-err-closed' => 'הוויקי כבר סגור',
 	'closewikis-page-err-opened' => 'הוויקי אינו סגור',
 	'closewikis-list' => 'רשימת אתרי הוויקי הסגורים',
-	'closewikis-list-intro' => 'הרשימה מכילה ויקים שנסגרו על ידי דיילים.',
+	'closewikis-list-intro' => 'הרשימה מכילה אתרי ויקי שנסגרו על ידי דיילים.',
 	'closewikis-list-header-wiki' => 'ויקי',
 	'closewikis-list-header-by' => 'נסגר על ידי',
 	'closewikis-list-header-timestamp' => 'נסגר בתאריך',
 	'closewikis-list-header-dispreason' => 'הסיבה המוצגת',
-	'closewikis-log' => 'רישום סגירת הוויקים',
-	'closewikis-log-header' => 'להלן רישום של כול הסגירות והפתיחות מחדש של ויקים שבוצעו על ידי דיילים.',
+	'closewikis-log' => 'יומן סגירת אתרי ויקי',
+	'closewikis-log-header' => 'להלן יומן של כל הסגירות והפתיחות מחדש של אתרי ויקי שבוצעו על ידי דיילים.',
 	'closewikis-log-close' => 'נסגר $2',
 	'closewikis-log-reopen' => 'נפתח מחדש $2',
-	'right-editclosedwikis' => 'עריכת הוויקים הסגורים',
-	'right-closewikis' => 'סגירת ויקים',
+	'right-editclosedwikis' => 'עריכת אתרי הוויקי הסגורים',
+	'right-closewikis' => 'סגירת אתרי ויקי',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -662,18 +662,34 @@ $messages['ro'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'closewikis-closed-default' => 'Эта вики закрыта',
+	'closewikis-desc' => 'Позволяет закрывать вики-сайты в вики ферме',
 	'closewikis-page' => 'Закрыть вики',
 	'closewikis-page-close' => 'Закрыть вики',
 	'closewikis-page-close-wiki' => 'Вики:',
 	'closewikis-page-close-dreason' => 'Причина (отображаемая):',
 	'closewikis-page-close-reason' => 'Причина (для журнала):',
 	'closewikis-page-close-submit' => 'Закрыть',
+	'closewikis-page-close-success' => 'Вики успешно закрыта',
+	'closewikis-page-reopen' => 'Открыть вики',
 	'closewikis-page-reopen-wiki' => 'Вики:',
 	'closewikis-page-reopen-reason' => 'Причина:',
+	'closewikis-page-reopen-submit' => 'Открыть',
+	'closewikis-page-reopen-success' => 'Вики успешно открыта',
+	'closewikis-page-err-nowiki' => 'Указана неправильная вики',
+	'closewikis-page-err-closed' => 'Вики уже закрыта',
+	'closewikis-page-err-opened' => 'Вики не закрыта',
+	'closewikis-list' => 'Список закрытых вики',
+	'closewikis-list-intro' => 'Этот список содержит вики, закрытые стюардами.',
+	'closewikis-list-header-wiki' => 'Вики',
+	'closewikis-list-header-by' => 'Закрыто',
+	'closewikis-list-header-timestamp' => 'Закрыто',
+	'closewikis-list-header-dispreason' => 'Отображаемая причина',
 	'closewikis-log' => 'Журнал закрытия вики',
+	'closewikis-log-header' => 'Журнал всех закрытий и открытый вики стюардами',
 	'closewikis-log-close' => 'закрыто $2',
+	'closewikis-log-reopen' => 'открыта $2',
 	'right-editclosedwikis' => 'Править закрытые вики',
+	'right-closewikis' => 'Закрытие вики',
 );
 
 /** Slovak (Slovenčina)

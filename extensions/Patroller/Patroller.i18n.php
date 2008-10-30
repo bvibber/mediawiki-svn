@@ -40,6 +40,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Ferrer
  * @author Jon Harald Søby
  * @author Purodha
  */
@@ -47,6 +48,7 @@ $messages['qqq'] = array(
 	'patrol-desc' => 'Short description of the Patrol extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'patrol-revert' => '{{Identical|Revert}}',
 	'patrol-revert-reason' => '{{Identical|Reason}}',
+	'right-patroller' => '{{doc-right}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -958,6 +960,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Illusion
  * @author Александр Сигачёв
  */
@@ -984,6 +987,7 @@ $messages['ru'] = array(
 	'group-patroller' => 'Патрулирующие',
 	'group-patroller-member' => 'патрулирующий',
 	'grouppage-patroller' => '{{ns:project}}:Патрулирование',
+	'right-patroller' => 'Патрулирование страниц',
 );
 
 /** Slovak (Slovenčina)

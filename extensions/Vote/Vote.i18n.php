@@ -223,6 +223,13 @@ sfinks|Sfinks',
 	'vote-invalid-choice' => "Ret eo deoc'h dibab unan eus an dibarzhioù hegerz.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'vote-login-link' => 'prijavi se',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -829,13 +836,29 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'vote' => 'Голосование',
+	'vote-header' => "Вы можете проголосовать за '''Высшего повелителя мира''' здесь!",
+	'vote-current' => "Ваш текущий голос за '''$1'''.",
+	'vote-legend' => 'Проголосовать или изменить голос',
+	'vote-caption' => 'Ваш выбор:',
+	'vote-choices' => 'джокер|Джокер
+пингвин|Пингвин
+загадка|Загадка',
+	'vote-submit' => 'Голосовать',
+	'vote-registered' => 'Ваш голос был зарегистрирован.',
 	'vote-view-results' => 'Посмотреть результаты',
 	'vote-results' => 'Результаты голосования',
+	'vote-results-choice' => 'Выбор',
 	'vote-results-count' => 'Количество',
+	'vote-results-none' => 'Нет голосов, отданных в это время',
+	'vote-login' => 'Вы должны $1 для голосования.',
+	'vote-login-link' => 'представиться системе',
+	'vote-invalid-choice' => 'Вы можете выбрать один из доступных вариантов',
 );
 
 /** Slovak (Slovenčina)

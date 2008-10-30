@@ -184,6 +184,7 @@ You can register your own endorsement of, or objection to this deletion [{{fullu
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author Ferrer
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
@@ -200,6 +201,7 @@ $messages['qqq'] = array(
 	'right-prod-review' => '{{doc-right}}',
 	'right-deletediscuss-nominate' => '{{doc-right}}',
 	'right-deletediscuss-review' => '{{doc-right}}',
+	'right-deletequeue-vote' => '{{doc-right}}',
 	'deletequeue-review-reason' => '{{Identical|Comments}}',
 	'deletequeue-review-newextra' => '{{Identical|Extra information}}',
 	'deletequeue-vote-reason' => '{{Identical|Comments}}',
@@ -1414,6 +1416,7 @@ $messages['lb'] = array(
 ** Spam
 ** Maintenance
 ** Net am Sënn vum Projet',
+	'deletequeue-nom-alreadyqueued' => 'Dës Säit steet schon op der Lëscht fir ze läschen.',
 	'deletequeue-prod-title' => 'D\'Läsche vu(n) "$1" virschloen',
 	'deletequeue-delnom-reason' => "Grond fir d'Ufro (fir ze läschen):",
 	'deletequeue-delnom-otherreason' => 'Anere Grond',
@@ -1431,7 +1434,10 @@ $messages['lb'] = array(
 	'deletequeue-review-newextra' => 'Zousätzlech Informatioun:',
 	'deletequeue-reviewspeedy-tab' => 'Séier läschen iwwerpréifen',
 	'deletequeue-reviewdeletediscuss-tab' => 'Läschen iwwerpréifen',
+	'deletequeue-reviewdeletediscuss-title' => 'Diskussioun iwwer d\'Läsche vu(n) "$1" nokucken',
 	'deletequeue-discusscreate-text' => "D'Läsche gouf aus dësem Grond virgeschlo: $2",
+	'deletequeue-role-vote-endorse' => "Fir d'Läschen",
+	'deletequeue-role-vote-object' => "Géint d'Läschen",
 	'deletequeue-vote-tab' => "Iwwer d'Läschen ofstëmmen",
 	'deletequeue-vote-legend' => "Dem Läschen zoustëmmen/Géint d'Läsche stëmmen",
 	'deletequeue-vote-action' => 'Rot:',
@@ -1760,7 +1766,7 @@ Se la proposicion rencontra pas cap d'objeccion sus ''$2'', la pagina serà supr
 Podètz contestar aquesta supression en [{{fullurl:{{FULLPAGENAME}}|action=delvote}} vos i opausant].",
 	'deletequeue-page-deletediscuss' => "Aquesta pagina es estada prepausada a la supression, aquesta es estada contestada.
 Lo motiu invocat èra ''« $1 »''
-Una discussion es intervenguda sus [[$3]], laquala serà concluida lo ''$2''.",
+Una discussion es intervenguda sus [[$3]], laquina serà concluida lo ''$2''.",
 	'deletequeue-notqueued' => "La pagina qu'avètz seleccionada es pas dins la coa de las supressions",
 	'deletequeue-review-action' => 'Accion de prene :',
 	'deletequeue-review-delete' => 'Suprimir la pagina.',
@@ -1863,6 +1869,56 @@ $messages['pt'] = array(
 	'deletequeue-vote-submit' => 'Submeter',
 	'deletequeue-list-anyqueue' => '(qualquer)',
 	'deletequeue-list-header-page' => 'Página',
+);
+
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'deletequeue-action-queued' => 'Удаление',
+	'deletequeue-action' => 'Предложить удаление',
+	'deletequeue-action-title' => 'Предложить удаление "$1"',
+	'deletequeue-nom-alreadyqueued' => 'Эта страница уже находится в очереди удаления.',
+	'deletequeue-speedy-title' => 'Отметить "$1" к быстрому удалению',
+	'deletequeue-speedy-text' => "Вы можете использовать эту форму для пометки страницы \"'''\$1'''\" к быстрому удалению.
+
+Администратор рассмотрит этот запрос и, если он обоснован, может удалить эту страницу.
+Вы можете добавить причину удаления в списке и добавить любую другую необходимую информацию.",
+	'deletequeue-prod-title' => 'Предложить удаление "$1"',
+	'deletequeue-delnom-reason' => 'Причина номинации:',
+	'deletequeue-delnom-otherreason' => 'Другие причины',
+	'deletequeue-delnom-extra' => 'Дополнительная информация:',
+	'deletequeue-delnom-submit' => 'Подтвердить номинацию',
+	'deletequeue-log-nominate' => "номинирована [[$1]] для удаления в очереди '$2'.",
+	'deletequeue-log-dequeue' => "удалено [[$1]] из очереди удаления '$2'.",
+	'right-speedy-nominate' => 'Номинация страниц к быстрому удалению',
+	'right-prod-nominate' => 'Предложение страниц к удалению',
+	'right-prod-review' => 'Просмотр предложений к удалению',
+	'right-deletediscuss-nominate' => 'Начать обсуждение удаления',
+	'right-deletediscuss-review' => 'Закрыть обсуждение удаления',
+	'right-deletequeue-vote' => 'Одобрение или отклонение удаления',
+	'deletequeue-queue-speedy' => 'Быстрое удаление',
+	'deletequeue-queue-prod' => 'Предлагаемые удаления',
+	'deletequeue-queue-deletediscuss' => 'Обсуждение удаления',
+	'deletequeue-page-speedy' => "Эта страница была номинирована на быстрое удаление.
+Причина для этого удаления - ''$1''.",
+	'deletequeue-review-delete' => 'Удалить страницу.',
+	'deletequeue-review-change' => 'Удалить эту страницу, но по другой причине.',
+	'deletequeue-review-requeue' => 'Переместить эту страницу в следующую очередь:',
+	'deletequeue-review-reason' => 'Комментарии:',
+	'deletequeue-review-newreason' => 'Новая причина:',
+	'deletequeue-review-newextra' => 'Дополнительная информация:',
+	'deletequeue-review-original' => 'Причина номинации',
+	'deletequeue-review-badaction' => 'Вы указали неправильное действие',
+	'deletequeue-vote-reason' => 'Комментарии:',
+	'deletequeue-vote-submit' => 'Подтвердить',
+	'deletequeue' => 'Очередь удаления',
+	'deletequeue-list-queue' => 'Очередь:',
+	'deletequeue-list-status' => 'Статус:',
+	'deletequeue-list-search' => 'Поиск',
+	'deletequeue-list-votes' => 'Список голосований',
+	'deletequeue-list-header-page' => 'Страница',
+	'deletequeue-list-header-queue' => 'Очередь',
 );
 
 /** Slovak (Slovenčina)

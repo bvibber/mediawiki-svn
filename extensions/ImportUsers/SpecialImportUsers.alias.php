@@ -121,7 +121,7 @@ $aliases['no'] = array(
 
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'ImportUsers' => array( 'ImportarUtilizaire' ),
+	'ImportUsers' => array( 'Importar un utilizaire', 'ImportarUtilizaire' ),
 );
 
 /** Pashto (پښتو) */

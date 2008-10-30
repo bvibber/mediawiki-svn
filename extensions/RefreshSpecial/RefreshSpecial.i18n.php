@@ -391,6 +391,14 @@ $messages['pt'] = array(
 	'refreshspecial-total-display' => '<br />$1 páginas refrescadas, totalizando $2 linhas em tempo $3 (tempo total de execução do script é $4)',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'refreshspecial-select-all-pages' => '  выбрать все страницы',
+	'refreshspecial-here' => '<b>здесь</b>',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

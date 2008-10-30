@@ -779,6 +779,25 @@ $messages['ro'] = array(
 	'imagetagging-removetagsuccess' => 'Şters etichetă.',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'imagetagging-article' => 'Страница:',
+	'imagetagging-imghistory' => 'История',
+	'imagetagging-images' => 'изображения',
+	'imagetagging-inthisimage' => 'В изображении: $1',
+	'imagetagging-removetag' => 'удалить метку',
+	'imagetagging-tag-button' => 'Метка',
+	'imagetagging-tagcancel-button' => 'Отмена',
+	'imagetagging-addingtag' => 'Добавление метки…',
+	'imagetagging-removingtag' => 'Удаление метки…',
+	'imagetagging-addtagsuccess' => 'Метка добавлена.',
+	'imagetagging-removetagsuccess' => 'Метка удалена.',
+	'imagetagging-imagetag-seemoreimages' => 'Смотреть больше изоюражений "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Изображения "$1"',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

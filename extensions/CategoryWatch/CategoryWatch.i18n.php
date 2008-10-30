@@ -206,6 +206,10 @@ Aqueste messatge es destinat a vos far saber que lo $3 l’utilizaire $4 $5.',
  * @author Ferrer
  */
 $messages['ru'] = array(
+	'categorywatch-emailbody' => 'Привет $1, вы получили это сообщение, потому что следите за категорией "$2"
+Это сообщение уведомляет вас о $3 участника $4 $5.',
+	'categorywatch-catmovein' => 'перенесён $1 в категорию $2 из $3',
+	'categorywatch-catmoveout' => 'перенесён $1 из категории $2 в $3',
 	'categorywatch-catadd' => 'добавлено $1 в категорию $2',
 	'categorywatch-catsub' => 'удалено $1 из категории $2',
 );

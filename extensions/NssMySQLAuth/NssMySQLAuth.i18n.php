@@ -38,6 +38,7 @@ $messages['ar'] = array(
 	'am-active' => 'نشط',
 	'am-updated' => 'تغييراتك تم حفظها بنجاح',
 	'nss-desc' => 'إضافة للتحقق ضد قاعدة بيانات libnss-mysql. يحتوي على [[Special:AccountManager|مدير حساب]]',
+	'nss-rights' => 'صلاحيات',
 	'nss-save-changes' => 'حفظ التغييرات',
 	'nss-create-account-header' => 'إنشاء حساب جديد',
 	'nss-create-account' => 'إنشاء الحساب',
@@ -56,12 +57,33 @@ $messages['arz'] = array(
 	'am-active' => 'نشط',
 	'am-updated' => 'تغييراتك تم حفظها بنجاح',
 	'nss-desc' => 'إضافة للتحقق ضد قاعدة بيانات libnss-mysql. يحتوى على [[Special:AccountManager|مدير حساب]]',
+	'nss-rights' => 'صلاحيات',
 	'nss-save-changes' => 'حفظ التغييرات',
 	'nss-create-account-header' => 'إنشاء حساب جديد',
 	'nss-create-account' => 'إنشاء الحساب',
 	'nss-welcome-mail' => 'الحساب باسم المستخدم $1 وكلمة السر $2 تم إنشاؤه من أجلك.',
 	'nss-welcome-mail-subject' => 'إنشاء الحساب',
 	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
+);
+
+/** French (Français)
+ * @author Grondin
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'accountmanager' => 'Gestionnaire de comptes',
+	'am-username' => "Nom d'utilisateur",
+	'am-email' => 'Courriel',
+	'am-active' => 'actif',
+	'am-updated' => 'Vos modifications ont été sauvegardées avec succès',
+	'nss-desc' => "Une extension qui permet d'authentifier au moyen d'une base de données libnss-mysql. Contient un [[Special:AccountManager|gestionnaire de comptes]]",
+	'nss-rights' => 'droits',
+	'nss-save-changes' => 'Sauvegarder les modifications',
+	'nss-create-account-header' => 'Créer un nouveau compte',
+	'nss-create-account' => 'Créer le compte',
+	'nss-welcome-mail' => 'Un compte avec le nom $1 et le mot de passe $2 a été créé pour vous.',
+	'nss-welcome-mail-subject' => 'Création de compte',
+	'nss-db-error' => "Erreur pendant la lecture de la base de données d'authentification",
 );
 
 /** Galician (Galego)
@@ -105,12 +127,22 @@ $messages['nl'] = array(
 	'am-active' => 'actief',
 	'am-updated' => 'Uw wijzigingen zijn opgeslagen',
 	'nss-desc' => 'Een plug-in om te authenticeren tegen een libnss-mysql database. Bevat [[Special:AccountManager|gebruikersbeheer]]',
+	'nss-rights' => 'rechten',
 	'nss-save-changes' => 'Wijzigingen opslaan',
 	'nss-create-account-header' => 'Nieuwe gebruiker aanmaken',
 	'nss-create-account' => 'Gebruiker aanmaken',
 	'nss-welcome-mail' => 'Er is een gebruiker met gebruikersnaam $1 en wachtwoord $2 voor u aangemaakt.',
 	'nss-welcome-mail-subject' => 'Gebruiker aangemaakt',
 	'nss-db-error' => 'Fout bij het lezen van de authenticatiedatabase',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'nss-save-changes' => 'Enregistrar los cambiaments',
+	'nss-create-account-header' => 'Crear un compte novèl',
+	'nss-create-account' => 'Crear un compte',
 );
 
 /** Portuguese (Português)
@@ -132,6 +164,7 @@ $messages['pt'] = array(
 );
 
 /** Romanian (Română)
+ * @author KlaudiuMihaila
  * @author Silviubogan
  */
 $messages['ro'] = array(
@@ -139,9 +172,23 @@ $messages['ro'] = array(
 	'am-email' => 'e-mail',
 	'am-active' => 'activ',
 	'nss-save-changes' => 'Salvează modificările',
-	'nss-create-account-header' => 'Crează un cont nou.',
-	'nss-create-account' => 'Crează un cont',
+	'nss-create-account-header' => 'Creează cont nou',
+	'nss-create-account' => 'Creează cont',
 	'nss-welcome-mail-subject' => 'Crearea contului',
+);
+
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'accountmanager' => 'Управление аккаунтами',
+	'am-username' => 'имя участника',
+	'am-email' => 'электронная почта',
+	'nss-rights' => 'права',
+	'nss-save-changes' => 'Сохранить изменения',
+	'nss-create-account-header' => 'Создать новую учётную запись',
+	'nss-create-account' => 'Создание учётной записи',
+	'nss-welcome-mail' => 'Аккаунт с именем $1 и паролем $2 был создан вами.',
 );
 
 /** Swedish (Svenska)

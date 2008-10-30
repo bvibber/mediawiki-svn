@@ -2116,6 +2116,8 @@ $messages['oc'] = array(
 	'oversight-hidden' => 'Revision amagada',
 	'oversight-header' => "Çaijós, figura la lista de las revisions amagadas de biais permanent al public. La divulgacion d'aquesta entresenha pòt aver coma consequéncia la descasença dels privilègis d’Oversight.",
 	'oversight-legend' => 'Jornal de las recèrcas de las versions amagadas',
+	'oversight-oversighter' => 'Supervisor :',
+	'oversight-offender' => 'Difamator :',
 );
 
 /** Pangasinan (Pangasinan) */
@@ -2348,6 +2350,8 @@ $messages['ru'] = array(
 	'oversight-header' => 'Ниже приведены правки, которые недавно были скрыты.
 Распространение данной информации может повлечь лишение прав ревизора.',
 	'oversight-legend' => 'Поиск по журналу сокрытия правок',
+	'oversight-oversighter' => 'Ревизор:',
+	'oversight-offender' => 'Нарушитель:',
 );
 
 /** Yakut (Саха тыла)

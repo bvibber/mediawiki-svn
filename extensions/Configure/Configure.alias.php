@@ -138,7 +138,8 @@ $aliases['km'] = array(
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'Configure' => array( 'Enstellunge', 'Eshtällonge' ),
+	'Configure' => array( 'Wiki Enstellunge', 'Wiki enställe' ),
+	'Extensions' => array( 'Wiki Zosätz' ),
 	'ViewConfig' => array( 'Enstellunge Zeije', 'Eshtällonge Zeije', 'EnstellungeZeije', 'EshtällongeZeije' ),
 );
 

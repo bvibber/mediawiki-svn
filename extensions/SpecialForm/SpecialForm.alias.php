@@ -79,6 +79,11 @@ $aliases['no'] = array(
 	'Form' => array( 'Skjema' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'Form' => array( 'Formulari' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Form' => array( 'Formulär' ),

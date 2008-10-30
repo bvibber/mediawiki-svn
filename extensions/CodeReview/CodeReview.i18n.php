@@ -674,8 +674,11 @@ $messages['eo'] = array(
 	'repoadmin-new-label' => 'Nomo de dosierujo:',
 	'repoadmin-new-button' => 'Krei',
 	'repoadmin-edit-path' => 'Vojo al dosierujo:',
+	'repoadmin-edit-bug' => 'Bugzilla-vojo:',
 	'repoadmin-edit-button' => 'Ek',
+	'right-repoadmin' => 'Administri kodujojn',
 	'right-codereview-post-comment' => 'Aldoni komentojn en revizioj',
+	'specialpages-group-developer' => 'Disvolvistaj iloj',
 );
 
 /** Persian (فارسی)
@@ -1344,6 +1347,9 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'code-authors' => 'de Schriiver',
+	'code-field-timestamp' => 'Dattum',
+	'code-rev-date' => 'Dattum:',
 	'code-rev-modified-a' => 'dobeij jedonn',
 	'code-rev-modified-r' => 'ußjetuusch',
 	'code-rev-modified-d' => 'fottjeschmeße',

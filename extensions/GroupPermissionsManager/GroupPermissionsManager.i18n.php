@@ -305,6 +305,13 @@ $messages['bg'] = array(
 	'right-edit-new' => 'редактиране на страници',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'grouppermissions-dologin' => 'Prijava',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian
@@ -1346,6 +1353,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  * @author Kaganer
  * @author Александр Сигачёв
@@ -1365,7 +1373,30 @@ $messages['ru'] = array(
 	'grouppermissions-addsuccess' => '$1 были успешно добавлены',
 	'grouppermissions-deletesuccess' => '$1 были успешно удалены',
 	'grouppermissions-changesuccess' => 'Права доступа для $1 были успешно изменены',
+	'grouppermissions-sort-read' => 'Чтение',
+	'grouppermissions-sort-edit' => 'Правка',
+	'grouppermissions-sort-manage' => 'Управление',
+	'grouppermissions-sort-admin' => 'Администрирование',
+	'grouppermissions-sort-tech' => 'Технические',
+	'grouppermissions-sort-misc' => 'Разные',
+	'grouppermissions-log-add' => 'добавлена группа "$2"',
+	'grouppermissions-log-change' => 'изменить разрешения для группы "$2"',
+	'grouppermissions-log-delete' => 'удалена группа "$2"',
 	'grouppermissions-log-name' => 'Журнал групповых прав доступа',
+	'grouppermissions-needjs' => 'Внимание: JavaScript отключён в вашем браузере. Что-то может не работать!',
+	'grouppermissions-sp-save' => 'Сохранить',
+	'grouppermissions-sp-addperm' => 'Добавить разрешение',
+	'grouppermissions-sp-remove' => 'удалить',
+	'grouppermissions-rug-confirm' => 'Удалить участников из неиспользуемых групп',
+	'right-grouppermissions' => 'Управление групп разрешений',
+	'right-info' => 'Просмотр информации страниц',
+	'right-history' => 'Просмотр истории страниц',
+	'right-search' => 'Поиск в вики',
+	'right-contributions' => 'Просмотр вклада',
+	'right-recentchanges' => 'Просмотр свежих правок',
+	'right-edittalk' => 'Правка страниц обсуждения',
+	'right-edit-new' => 'Правка страниц, не являющихся страницами обсуждения',
+	'right-readold' => 'Просмотр старых версий страниц и сравнения версий',
 );
 
 /** Slovak (Slovenčina)

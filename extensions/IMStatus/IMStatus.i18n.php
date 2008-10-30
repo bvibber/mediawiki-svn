@@ -117,6 +117,16 @@ $messages['arz'] = array(
 	'imstatus_yahoo_style' => 'أسلوب الزر، من $1 (أصغر) إلى $2 (أكبر)، $3 و $4 هما للبريد الصوتي.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'imstatus_syntax' => 'Синтаксис',
+	'imstatus_example' => 'Пример',
+	'imstatus_possible_val' => 'Допустими стойности',
+	'imstatus_or' => 'или',
+);
+
 /** German (Deutsch)
  * @author Purodha
  */
@@ -367,6 +377,22 @@ $messages['lb'] = array(
 	'imstatus_icq_style' => 'eng Zuel tëschent 0 a 26 (jo, et gëtt 27 verschidde Stylen ...).',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'imstatus_syntax' => 'Синтакса',
+	'imstatus_default' => 'Основно',
+	'imstatus_example' => 'Пример',
+	'imstatus_possible_val' => 'Можни вредности',
+	'imstatus_max' => 'max',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'или',
+	'imstatus_style' => 'стил на статус индикаторот',
+	'imstatus_action' => 'акција кога ќе се кликне на копчето',
+	'imstatus_your_name' => 'вашето $1 име',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
@@ -448,6 +474,16 @@ $messages['pt'] = array(
 	'imstatus_syntax' => 'Sintaxe',
 	'imstatus_example' => 'Exemplo',
 	'imstatus_or' => 'ou',
+);
+
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'imstatus_max' => 'макс.',
+	'imstatus_min' => 'мин.',
+	'imstatus_or' => 'или',
+	'imstatus_icq_id' => 'ваш ICQ ID',
 );
 
 /** Slovak (Slovenčina)

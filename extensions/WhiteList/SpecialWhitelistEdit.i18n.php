@@ -1266,13 +1266,31 @@ $allMessages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  * @author Александр Сигачёв
  */
 $allMessages['ru'] = array(
+	'whitelist-desc' => 'Редактировать права доступа участников',
+	'whitelistedit' => 'Редактор доступа белого списка',
+	'whitelist' => 'Страницы белого списка',
+	'mywhitelistpages' => 'Мои страницы',
+	'whitelistfor' => '<center>Актуальная информация для <b>$1</b></center>',
+	'whitelisttablemodify' => 'Модифицировать',
+	'whitelisttablemodifyall' => 'Все',
+	'whitelisttablepage' => 'Страница вики',
+	'whitelisttabletype' => 'Тип доступа',
 	'whitelisttableedit' => 'Править',
 	'whitelisttableview' => 'Просмотр',
+	'whitelisttablenewdate' => 'Новая дата:',
+	'whitelisttablesetedit' => 'Установить для правки',
+	'whitelisttablesetview' => 'Установить для просмотра',
 	'whitelistnewtableprocess' => 'Процесс',
+	'whitelistselectrestricted' => '== Выберите имя участника ==',
+	'whitelistpagelist' => 'Страницы {{SITENAME}} для $1',
+	'whitelistbadtitle' => 'Неправильный заголовок -',
+	'whitelistoverviewsa' => "* Установить доступ '''$1''' для [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Снять права [[:$1|$1]]',
 );
 
 /** Slovak (Slovenčina)

@@ -109,6 +109,13 @@ $messages['as'] = array(
 	'editmsg-search' => 'সন্ধান কৰক',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Рэдагаваньне праз Ўэб]] вялікай колькасьці файлаў Messages*.php',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -592,20 +592,22 @@ $messages['it'] = array(
  * @author Aotake
  * @author JtFuruhata
  * @author Kahusi
+ * @author Mizusumashi
  */
 $messages['ja'] = array(
 	'imagemap_desc' => '<tt><nowiki><imagemap></nowiki></tt>タグによるクライアントサイドのクリッカブルマップ機能を有効にする',
-	'imagemap_no_image' => 'Error: 最初の行で画像を指定して下さい。',
-	'imagemap_invalid_image' => 'Error: 画像が無効、又は存在しません。',
+	'imagemap_no_image' => 'エラー: 最初の行で画像を指定して下さい。',
+	'imagemap_invalid_image' => 'エラー: 画像が無効、又は存在しません。',
 	'imagemap_bad_image' => 'エラー: このページでは画像が排除されています',
-	'imagemap_no_link' => 'Error: 有効なリンクが$1行目の最後に存在しません。',
-	'imagemap_invalid_title' => 'Error: $1行目のリンクのタイトルが無効です。',
-	'imagemap_missing_coord' => 'Error: $1行目にある図形の座標指定が不足しています。',
-	'imagemap_unrecognised_shape' => 'Error: $1行目の図形は認められません。各行は次のどれかで始まる必要があります: default, rect, circle, poly',
-	'imagemap_no_areas' => 'Error: 図形の指定がありません。',
-	'imagemap_invalid_coord' => 'Error: $1行目の座標が無効です。数字を指定して下さい。',
-	'imagemap_invalid_desc' => 'Error: 無効なdescの指定です。次のどれかを指定して下さい: <tt>$1</tt>',
+	'imagemap_no_link' => 'エラー: 有効なリンクが$1行目の最後に存在しません。',
+	'imagemap_invalid_title' => 'エラー: $1行目のリンクのタイトルが無効です。',
+	'imagemap_missing_coord' => 'エラー: $1行目にある図形の座標指定が不足しています。',
+	'imagemap_unrecognised_shape' => 'エラー: $1行目の図形は認められません。各行は次のどれかで始まる必要があります: default, rect, circle, poly',
+	'imagemap_no_areas' => 'エラー: 図形の指定がありません。',
+	'imagemap_invalid_coord' => 'エラー: $1行目の座標が無効です。数字を指定して下さい。',
+	'imagemap_invalid_desc' => 'エラー: 無効なdescの指定です。次のどれかを指定して下さい: <tt>$1</tt>',
 	'imagemap_description' => '画像の詳細',
+	'imagemap_poly_odd' => 'エラー: $1行目に、奇数個の座標値が指定されたpolyがあります。',
 );
 
 /** Javanese (Basa Jawa)

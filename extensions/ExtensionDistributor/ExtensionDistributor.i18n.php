@@ -807,7 +807,7 @@ Jos Windows, podètz utilizar [http://www.7-zip.org/ 7-zip] per extraire los fic
 
 Se vòstre wiki se tròba sus un servidor distant, extractatz los fichièrs dins un fichièr temporari sus vòstre ordenador local, e en seguida televersatz los '''totes''' dins lo repertòri d'extensions del servidor.
 
-Notatz plan que qualques extensions necessitan un fichièr nomenat ExtensionFunctions.php, localizat sus  <tt>extensions/ExtensionFunctions.php</tt>, qu'es dins lo repertòri ''parent'' del repertòri particular de ladicha extension. L’imatge d'aquestas extensions contenon aqueste fichièr dins l’archiu tar loqual serà extrach jos ./ExtensionFunctions.php. Neglijatz pas de le televersar tanben sul servidor.
+Notatz plan que qualques extensions necessitan un fichièr nomenat ExtensionFunctions.php, localizat sus  <tt>extensions/ExtensionFunctions.php</tt>, qu'es dins lo repertòri ''parent'' del repertòri particular de ladicha extension. L’imatge d'aquestas extensions contenon aqueste fichièr dins l’archiu tar que serà extrach jos ./ExtensionFunctions.php. Neglijatz pas de le televersar tanben sul servidor.
 
 Un còp l’extraccion facha, aurètz besonh d’enregistrar l’extension dins LocalSettings.php. Aquesta deuriá aver un mòde operatòri per aquò.
 

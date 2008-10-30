@@ -343,6 +343,16 @@ $messages['ps'] = array(
 	'watchsubpages-desc' => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتلي لړليک ته ورګډ شي',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'watchsubpages' => 'Следить за подстраницами',
+	'watchsubpages-addedtowatchlist' => 'Страница была добавлена в ваш список наблюдения.',
+	'watchsubpages-addtitles' => 'Добавить страницы',
+	'watchsubpages-addtitlestowatchlist' => 'Добавить страницы в список наблюдения',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

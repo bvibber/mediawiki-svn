@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'AdvancedRandom' => array( 'عشوائى_متقدم' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'AdvancedRandom' => array( 'Aleatorio_Avanzado' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'AdvancedRandom' => array( 'تصادفی_پیشرفته' ),

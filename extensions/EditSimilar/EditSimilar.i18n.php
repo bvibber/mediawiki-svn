@@ -399,6 +399,17 @@ Vizitaţi şi pagina conexă: $1.',
 	'editsimilar-thankyou' => 'Mulţumim pentru contribuţia dumneaovastră, $1!',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'editsimilar-thanks' => 'Спасибо за ваш вклад.
+Проверьте эти связанные страницы: $1.',
+	'editsimilar-thanks-singleresult' => 'Спасибо за ваш вклад.
+Проверьте эту связанную страницу: $1.',
+	'editsimilar-thankyou' => 'Спасибо за ваш вклад, $1!',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

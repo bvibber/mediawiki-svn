@@ -17,3 +17,52 @@ $messages['en'] = array(
 	'searchbox-go' => 'Go',
 	'searchbox-namespaces' => 'Namespaces:'
 );
+
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'searchbox-desc' => 'يسمح بتضمين استمارات البحث',
+	'searchbox-search' => 'بحث',
+	'searchbox-go' => 'اذهب',
+	'searchbox-namespaces' => 'النطاقات:',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'searchbox-desc' => 'يسمح بتضمين استمارات البحث',
+	'searchbox-search' => 'بحث',
+	'searchbox-go' => 'اذهب',
+	'searchbox-namespaces' => 'النطاقات:',
+);
+
+/** German (Deutsch) */
+$messages['de'] = array(
+	'searchbox-desc' => 'Ermöglicht das Einbinden eines Suchformulares',
+	'searchbox-search' => 'Suche',
+	'searchbox-go' => 'OK',
+	'searchbox-namespaces' => 'Namensräume:',
+);
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'searchbox-desc' => 'Permet l’inclusion des formulaires de recherche',
+	'searchbox-search' => 'Rechercher',
+	'searchbox-go' => 'Lancer',
+	'searchbox-namespaces' => 'Espaces de nom :',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'searchbox-desc' => 'Maakt het mogelijk om zoekformulieren op te nemen',
+	'searchbox-search' => 'Zoeken',
+	'searchbox-go' => 'OK',
+	'searchbox-namespaces' => 'Naamruimten:',
+);
+

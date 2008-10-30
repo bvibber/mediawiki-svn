@@ -92,3 +92,8 @@ $aliases['no'] = array(
 	'BoardVote' => array( 'Styrevalg' ),
 );
 
+/** Occitan (Occitan) */
+$aliases['oc'] = array(
+	'BoardVote' => array( 'Tablèu de vòte' ),
+);
+
