@@ -66,10 +66,10 @@ class CentralNotice extends SpecialPage {
 				
 				// Set locked/unlocked flag accordingly
 				foreach( $lockedNotices as $notice ) {
-				     $this->updateLock( $notice, 'Y' );
+				     $this->updateLock( $notice, '1' );
 				}
 				foreach( $unlockedNotices as $notice ) {
-				     $this->updateLock( $notice, 'N' );
+				     $this->updateLock( $notice, '0' );
 				}
 			}
 			
@@ -81,10 +81,10 @@ class CentralNotice extends SpecialPage {
 				
 				// Set enabled/disabled flag accordingly
 				foreach ( $enabledNotices as $notice) {
-					$this->updateEnabled( $notice, 'Y');
+					$this->updateEnabled( $notice, '1');
 				}
 				foreach ( $disabledNotices as $notice) {
-					$this->updateEnabled( $notice, 'N');
+					$this->updateEnabled( $notice, '0');
 				}
 			}
 			
@@ -110,7 +110,22 @@ class CentralNotice extends SpecialPage {
 				}
 				$this->updateNoticeDate( $noticeName, $updatedStart, $updatedEnd );
 			}
+	
+			// Handle updates if no post content came through	
+			if ( !isset( $lockedNotices ) ) {
+                                $allNotices = $this->getNoticesName();
+                                foreach ( $allNotices as $notice ) {
+                                         $this->updateLock( $notice, '0' );
+                                }
+                        }
 			
+			if ( !isset( $enabledNotices ) ) {
+                                $allNotices = $this->getNoticesName();
+                                foreach ( $allNotices as $notice ) {
+                                        $this->updateEnabled( $notice, '0' );
+                                }
+                        }
+
 			// Handle weight change
 			$updatedWeights = $wgRequest->getArray( 'weight' );
 			if ( isset( $updatedWeights ) ) {
@@ -338,13 +353,13 @@ class CentralNotice extends SpecialPage {
 			
 			// Enabled
 			$htmlOut .= Xml::tags( 'td', null,
-				Xml::check( 'enabled[]', ( $row->not_enabled == 'Y' ),
+				Xml::check( 'enabled[]', ( $row->not_enabled == '1' ),
 				array( 'value' => $row->not_name) )
 			);
 			
 			// Disabled
 			$htmlOut .= Xml::tags( 'td', null,
-				Xml::check( 'locked[]', ( $row->not_locked == 'Y' ),
+				Xml::check( 'locked[]', ( $row->not_locked == '1' ),
 				array( 'value' => $row->not_name) )
 			);
 			
@@ -379,7 +394,7 @@ class CentralNotice extends SpecialPage {
 			)
 		);
 		$htmlOut .= Xml::openElement( 'fieldset' );
-		$htmlOut .= Xml::element( 'legend', null, wfMsg( 'centralnotice-add-template' ) );
+		$htmlOut .= Xml::element( 'legend', null, wfMsg( 'centralnotice-add-notice' ) );
 		$htmlOut .= Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
 		$htmlOut .= Xml::hidden( 'method', 'addNotice' );
 		
@@ -747,16 +762,15 @@ class CentralNotice extends SpecialPage {
 		global $wgOut;
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		$eNoticeName = mysql_real_escape_string( $noticeName ) ;
 		$res = $dbr->select( 'cn_notices', 'not_name, not_locked',
-			array( 'not_name' => $eNoticeName )
+			array( 'not_name' => $noticeName )
 		);
 		if ( $dbr->numRows( $res ) < 1 ) {
 			 $wgOut->addHTML( wfMsg( 'centralnotice-notice-doesnt-exist' ) );
 			 return; 
 		}
 		$row = $dbr->fetchObject( $res );
-		if ( $row->not_locked == 'Y' ) {
+		if ( $row->not_locked == '1' ) {
 			 $wgOut->addHTML( wfMsg( 'centralnotice-notice-is-locked' ) );
 			 return; 
 		} else {
