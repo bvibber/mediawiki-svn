@@ -48,7 +48,7 @@ class SGMResultPrinter extends SMWResultPrinter {
 			if ($lat != '' && $lon != '') {
 				// look for display_options field, which can
 				// be set by Semantic Compound Queries
-				if (is_array($row[0]->display_options)) {
+				if (property_exists($row[0], 'display_options')) {
 					if (array_key_exists('icon', $row[0]->display_options)) {
 						$icon = $row[0]->display_options['icon'];
 						// this is somewhat of a hack - if a
