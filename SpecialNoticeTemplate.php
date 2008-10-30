@@ -112,13 +112,18 @@ class SpecialNoticeTemplate extends SpecialPage {
 		$htmlOut .= Xml::openElement( 'table', array ( 'cellpadding' => 9 ) ) ; 
 		$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-template-name' ) );
 		$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-remove' ) );
+		
+		$msgConfirmDelete = wfMsgHTML( 'centralnotice-confirm-delete' );
 		$templates = $this->queryTemplates();
 		foreach ( $templates as $templateName ) {
 			$htmlOut .= Xml::tags( 'tr', null, 
 				Xml::element( 'td', null, $templateName ) .
 				Xml::tags( 'td', null, 
 					Xml::check( 'removeTemplates[]', false, 
-						array( 'value' => $templateName )
+						array(
+							'value' => $templateName,
+							'onchange' => "if(this.checked){this.checked=confirm('{$msgConfirmDelete}')}"
+						)
 			 		)
 			 	)
 			);
