@@ -701,7 +701,7 @@ class CentralNotice extends SpecialPage {
 		$res = $dbr->select(
 			array(
 				'cn_notices',
-				'cn_notices',
+				'cn_assignments',
 				'cn_templates'
 			),
 			array(
@@ -710,10 +710,11 @@ class CentralNotice extends SpecialPage {
 			),
 			array( 
 				'not_name' => $noticeName,
-				'not_id' => 'not_id'
+				'cn_notices.not_id=cn_assignments.not_id',
+				'cn_assignments.tmp_id=cn_templates.tmp_id',
 			),
 			__METHOD__,
-			array( 'ORDER BY' => 'not_id' )
+			array( 'ORDER BY' => 'cn_notices.not_id' )
 		);
 		$templates = array();
 		while ( $row = $dbr->fetchObject( $res ) ) {
