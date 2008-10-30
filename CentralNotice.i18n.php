@@ -63,7 +63,8 @@ $messages['en'] = array(
 	'centralnotice-notice-is-locked' => 'Notice is locked. Not removing',
 	'centralnotice-overlap' => 'Notice overlaps within the time of another notice. Not adding',
 	'centralnotice-invalid-date-range' => 'Invalid Date Range. Not Updating',
-	'centralnotice-null-string' => 'Can\'t add a null string. Not adding'
+	'centralnotice-null-string' => 'Can\'t add a null string. Not adding',
+	'centralnotice-confirm-delete' => 'Are you sure you want to delete this item? This action will be unrecoverable.'
 );
 
 /** Afrikaans (Afrikaans)
