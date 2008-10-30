@@ -601,10 +601,10 @@ class CentralNotice extends SpecialPage {
 								$this->dropDownList( wfMsg( 'centralnotice-day'), $days ), '', $end_day, '', 10 ) .
 					"</td>";
 			
-			$enabled = ( $row->not_enabled == 'Y' ) ? true : false;
+			$enabled = ( $row->not_enabled == '1' ) ? true : false;
 		        $table .= "<td>" . 
 					Xml::check( 'enabled[]', $enabled, array ( 'value' => $row->not_name)) . "</td>";
-			$locked = ( $row->not_locked == 'Y' ) ? true : false;
+			$locked = ( $row->not_locked == '1' ) ? true : false;
 			$table .= "<td>" .
 					 Xml::check( 'locked[]', $locked, array ( 'value' => $row->not_name)) . "</td>";
 			$table .= "<td>" . 
