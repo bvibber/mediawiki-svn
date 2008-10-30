@@ -28,6 +28,7 @@ $messages['en'] = array(
 	'centralnotice-add-template' => 'Add a template',
 	'centralnotice-show-notices' => 'Show notices',
 	'centralnotice-list-templates' => 'List Templates',
+	'centralnotice-translations' => 'Translations',
 	'centralnotice-translate-to' => 'Translate To',
 	'centralnotice-translate' => 'Translate',
 	'centralnotice-english' => 'English',
