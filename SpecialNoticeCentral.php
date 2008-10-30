@@ -206,9 +206,9 @@ class CentralNotice extends SpecialPage {
 		foreach ( $pages as $page => $msg ) {
 			$title = Title::newFromText( $page );
 			
-			$style = array( 'style' => 'border-bottom:solid 1px silver' );
+			$style = array( 'style' => 'border-bottom:solid 1px silver;' );
 			if ( $title->getPrefixedText() == $wgTitle->getPrefixedText() . "/{$sub}" ) {
-				$style = array( 'style' => 'border-bottom:solid 1px black' );
+				$style = array( 'style' => 'border-bottom:solid 1px black;' );
 			}
 			
 			$htmlOut .= Xml::tags( 'td', $style,
@@ -454,7 +454,11 @@ class CentralNotice extends SpecialPage {
 		);
 		
 		// Submit
-		$htmlOut .= Xml::submitButton( wfMsg( 'centralnotice-modify' ) );
+		$htmlOut .= Xml::tags( 'tr', null,
+			Xml::tags( 'td', array( 'colspan' => 2 ),
+				Xml::submitButton( wfMsg( 'centralnotice-modify' ) )
+			)
+		);
 		
 		$htmlOut .= Xml::closeElement( 'table' );
 		$htmlOut .= Xml::closeElement( 'fieldset' );
