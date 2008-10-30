@@ -26,7 +26,7 @@ function sgmSetup() {
 	// credits
 	$wgExtensionCredits['parserhook'][] = array(
 		'name'            => 'Semantic Google Maps',
-		'version'         => '0.4.1',
+		'version'         => '0.4.2',
 		'author'          => array( 'Robert Buzink', 'Yaron Koren' ),
 		'url'             => 'http://www.mediawiki.org/wiki/Extension:Semantic_Google_Maps',
 		'description'     => 'Allows users to add Google Maps to wiki pages based on structured data',
