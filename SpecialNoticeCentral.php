@@ -40,10 +40,6 @@ class CentralNotice extends SpecialPage {
 		
 		// Handle form sumissions
 		if ( $wgRequest->wasPosted() ) {
-			/*
-			 * This is for debugging only
-			 */
-			$wgOut->addHtml( Xml::element( 'pre', null, file_get_contents( 'php://input' ) ) );
 			
 			// Handle removing
 			$toRemove = $wgRequest->getArray( 'removeNotices' );
@@ -642,8 +638,8 @@ class CentralNotice extends SpecialPage {
 			),
 			array(
 				'cn_notices.not_name' => $notice,
-				'cn_notices.not_id' => 'cn_assignments.not_id',
-				'cn_assignments.tmp_id' => 'cn_templates.tmp_id'
+				'cn_notices.not_id = cn_assignments.not_id',
+				'cn_assignments.tmp_id = cn_templates.tmp_id'
 			), 
 			__METHOD__,
 			array('ORDER BY' => 'cn_notices.not_id')
