@@ -51,10 +51,6 @@ $wgNoticeScroll = false;
 /// Source for live counter information
 $wgNoticeCounterSource = "http://donate.wikimedia.org/counter.php";
 
-/// Directory for SVG-to-PNG rasterizations
-$wgNoticeRenderDirectory = false; // "$wgUploadDirectory/notice"
-$wgNoticeRenderPath = false; // $wgUploadPath/notice
-
 $wgExtensionFunctions[] = 'efCentralNoticeSetup';
 
 $wgExtensionCredits['other'][] = array(
