@@ -1,5 +1,5 @@
 <?php
-	
+
 if ( !defined( 'MEDIAWIKI' ) ) {
         echo "CentralNotice extension\n";
         exit( 1 );
@@ -59,17 +59,52 @@ class SpecialNoticeTranslate extends SpecialPage {
 			}
 		}
 		
-		// Show tranlsation text
+		// Show list of translations
 		if ( $sub == 'listTranslations' ) {
-			$this->showTranslateForm();
+			$this->showList();
 			return;
 		}
 		
 		// Show translation form
-  	  	$this->showTranslateForm();
+  	  	$this->showForm();
 	}
 	
-	private function showTranslateForm() {
+	private function showList() {
+		global $wgOut;
+		
+		$htmlOut = Xml::fieldset( wfMsgHtml( 'centralnotice-translations' ) );
+		$htmlOut .= Xml::openElement( 'table',
+			array (
+				'cellpadding' => 9,
+				'width' => '100%'
+			)
+		);
+		
+		// Headers
+		$htmlOut .= Xml::element( 'th', null, wfMsg( 'centralnotice-template-name' ) );
+		
+		// Rows
+		$templates = SpecialNoticeTemplate::queryTemplates();
+		$title = Title::newFromText( 'Special:NoticeTranslate' );
+		foreach ( $templates as $templateName ) {
+			$htmlOut .= Xml::tags( 'tr', null, 
+				Xml::tags( 'td', null,
+					Xml::element( 'a',
+						array( 'href' => $title->getFullURL( "template={$templateName}" ) ),
+						$templateName
+					)
+				)
+			);
+		}
+		
+		$htmlOut .= Xml::closeElement( 'table' );
+		$htmlOut .= Xml::closeElement( 'fieldset' );
+		
+		// Output HTML
+		$wgOut->addHTML( $htmlOut );
+	}
+	
+	private function showForm() {
 		global $wgOut, $wgUser, $wgRequest, $wgContLanguageCode;
 		
 		// Get token
@@ -78,9 +113,11 @@ class SpecialNoticeTranslate extends SpecialPage {
 		// Get user's language
 		$wpUserLang = $wgRequest->getVal('wpUserLanguage') ? $wgRequest->getVal('wpUserLanguage') : $wgContLanguageCode;
 		
+		$currentTemplate = $wgRequest->getText( 'template' );
+		
 		// Build HTML
 		$htmlOut = Xml::openElement( 'form', array( 'method' => 'post' ) );
-		$htmlOut .= Xml::fieldset( wfMsgHtml( "centralnotice-translate-heading" ) );
+		$htmlOut .= Xml::fieldset( wfMsgHtml( 'centralnotice-translate-heading' ) );
 		$htmlOut .= Xml::openElement( 'table',
 			array (
 				'cellpadding' => 9,
@@ -98,25 +135,31 @@ class SpecialNoticeTranslate extends SpecialPage {
 		$fields = array( 'heading', 'target', 'button', 'hide' );
 		foreach( $fields as $field) {
 			// Message
-			$message = ( $wpUserLang == 'en' ) ? "Centralnotice-{$field}" : "Centralnotice-{$field}/{$wpUserLang}";
+			$message = ( $wpUserLang == 'en' ) ? "Centralnotice-{$currentTemplate}-{$field}" : "Centralnotice-{$currentTemplate}-{$field}/{$wpUserLang}";
 			
 			// Text -- only load text if a message exists to avoild default english text display
 
 			// English value
 			$htmlOut .= Xml::openElement( 'tr' );
-			$htmlOut .= Xml::element( 'td', null, $field );
+			
+			$title = Title::newFromText( "MediaWiki:{$message}" );
+			$htmlOut .= Xml::tags( 'td', null,
+				Xml::element( 'a', array( 'href' => $title->getFullURL() ), $field )
+			);
+			
 			$htmlOut .= Xml::element( 'td', null,
-				wfMsgExt( "centralnotice-{$field}", array( 'language' => 'en') )
+				wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}", array( 'language' => 'en') )
 			);
 			
 			// Input
-			$title = Title::newFromText( $message, NS_MEDIAWIKI );
 			$text = '';
-			if( $title->exists() ) {
-				$text = wfMsgExt( "centralnotice-{$field}", array ( 'language' => $wpUserLang ) );
+			if( Title::newFromText( $message, NS_MEDIAWIKI )->exists() ) {
+				$text = wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}",
+					array( 'language' => $wpUserLang )
+				);
 			}
 			$htmlOut .= Xml::tags( 'td', null,
-				Xml::input( "updateText[$wpUserLang][$field]", '', $text,
+				Xml::input( "updateText[{$wpUserLang}][{$currentTemplate}-{$field}]", '', $text,
 					array( 'style' => 'width:100%;' . ( $text == '' ? 'color:red' : '' ) )
 				)
 			);
