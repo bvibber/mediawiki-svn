@@ -41,12 +41,6 @@ class SpecialNoticeTemplate extends SpecialPage {
 		// Handle forms
 		if ( $wgRequest->wasPosted() ) {
 			
-			/*
-			 * For debugging purposes only
-			 */
-			$body = file_get_contents( 'php://input' );
-			$wgOut->addHtml( Xml::element( 'pre', null, $body ) );
-			
 			// Handle removing
 			$toRemove = $wgRequest->getArray( 'removeTemplates' );
 			if ( isset( $toRemove ) ) { 
@@ -58,21 +52,6 @@ class SpecialNoticeTemplate extends SpecialPage {
 				// Show a list of templates 
 				$this->listTemplates();
 				return;
-			}
-			
-			// Handle enabling/disabling
-			$enabledNotices = $wgRequest->getArray( 'enabled' );
-			if ( isset( $enabledNotices ) ) {
-				// Build a list of notices to disable
-				$disabledNotices = array_diff( $this->getNoticesName(), $enabledNotices );
-				
-				// Set enabled/disabled flag accordingly
-				foreach ( $enabledNotices as $notice ) {
-					$this->updateEnabled( $notice, 'Y' );
-				}
-				foreach ( $disabledNotices as $notice ) {
-					$this->updateEnabled( $notice, 'N' );
-				}
 			}
 		}
 		
@@ -91,17 +70,6 @@ class SpecialNoticeTemplate extends SpecialPage {
 		}
 		
 		$this->listTemplates();
-	}
-
-	private function updateEnabled( $update_notice, $enabled ) {
-		global $egCentralNoticeTables;
-		
-		$dbw = wfGetDB( DB_MASTER );
-		$res = $dbw->update( 'cn_notices',
-			array( cnc_enabled => $enabled ),
-			array( cnc_template => $update_notice ),
-			__METHOD__
-		);
 	}
 
 	public static function previewTemplate() {

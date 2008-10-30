@@ -600,7 +600,6 @@ class CentralNotice extends SpecialPage {
 		$table .= Xml::closeElement( 'form' );
 		$table .= "</fieldset>";
 		$wgOut->addHtml( $table ) ;
-		
 		/*
 		$res = $dbr->select( array ( $centralnotice_table,
 					     "central_notice_template_assignments",
