@@ -32,8 +32,8 @@ $wgExtensionAliasesFiles['ContactPage'] = $dir . 'ContactPage.alias.php';
 $wgAutoloadClasses['SpecialContact'] = $dir . 'SpecialContact.php';
 $wgSpecialPages['Contact'] = 'SpecialContact';
 
-$wgContactUser = NULL;
-$wgContactSender = NULL;
+$wgContactUser = 'Stories';
+$wgContactSender = 'stories@wikimedia.org';
 $wgContactSenderName = 'Contact Form on ' . $wgSitename;
 
 $wgContactRequireAll = false;

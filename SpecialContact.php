@@ -40,53 +40,82 @@ class SpecialContact extends SpecialPage {
 		wfLoadExtensionMessages( 'ContactPage' );
 		$fname = "SpecialContact::execute";
 
-		if( !$wgEnableEmail || !$wgContactUser ) {
-			$wgOut->showErrorPage( "nosuchspecialpage", "nospecialpagetext" );
-			return;
+	 	if ( $wgRequest->wasPosted() ) {
+			$nu = User::newFromName( $wgContactUser );
+			$f = new EmailContactForm( $nu );
+
+			$form['fname']     = $wgRequest->getVal('fname');
+			$form['lname']     = $wgRequest->getVal('lname');
+			$form['orgname']   = $wgRequest->getVal('orgname');
+			$form['jobname']   = $wgRequest->getVal('jobname');
+			$form['urlname']   = $wgRequest->getVal('urlname');
+			$form['email']     = $wgRequest->getVal('email');
+			$form['telephone'] = $wgRequest->getVal('telephone');
+			$form['other']	   = $wgRequest->getVal('other');
+			$form['url']	   = $wgRequest->getVal('url');
+			$form['country']   = $wgRequest->getVal('country');
+			$form['citytown']  = $wgRequest->getVal('city-town');
+		        $form['provstat']  = $wgRequest->getVal('prov-state');	
+			$form['story']	   = $wgRequest->getVal('story');
+
+			$text = '';
+			foreach( $form as $key => $value) {
+				$text .= "$key\t\t\t:\t\t\t$value\n";
+			}
+			$f->setText( $text );
+			$f->doSubmit();
 		}
 
-		$action = $wgRequest->getVal( 'action' );
-
-		$nu = User::newFromName( $wgContactUser );
-		if( is_null( $nu ) || !$nu->canReceiveEmail() ) {
-			wfDebug( "Target is invalid user or can't receive.\n" );
-			$wgOut->showErrorPage( "noemailtitle", "noemailtext" );
-			return;
-		}
-
-		$f = new EmailContactForm( $nu );
-
-		if ( "success" == $action ) {
-			wfDebug( "$fname: success.\n" );
-			$f->showSuccess( );
-		} else if ( "submit" == $action && $wgRequest->wasPosted() && $f->hasAllInfo() ) {
-			$token = $wgRequest->getVal( 'wpEditToken' );
-
-			if( $wgUser->isAnon() ) {
-				# Anonymous users may not have a session
-				# open. Check for suffix anyway.
-				$tokenOk = ( EDIT_TOKEN_SUFFIX == $token );
-			} else {
-				$tokenOk = $wgUser->matchEditToken( $token );
+		else {
+				
+			}		
+			if( !$wgEnableEmail || !$wgContactUser ) {
+				$wgOut->showErrorPage( "nosuchspecialpage", "nospecialpagetext" );
+				return;
 			}
 
-			if ( !$tokenOk ) {
-				wfDebug( "$fname: bad token (".($wgUser->isAnon()?'anon':'user')."): $token\n" );
-				$wgOut->addWikiText( wfMsg( 'sessionfailure' ) );
-				$f->showForm();
-			} else if ( !$f->passCaptcha() ) {
-				wfDebug( "$fname: captcha failed" );
-				$wgOut->addWikiText( wfMsg( 'contactpage-captcha-failed' ) ); //TODO: provide a message for this!
-				$f->showForm();
-			} else {
-				wfDebug( "$fname: submit\n" );
-				$f->doSubmit();
+			$action = $wgRequest->getVal( 'action' );
+
+			$nu = User::newFromName( $wgContactUser );
+			if( is_null( $nu ) || !$nu->canReceiveEmail() ) {
+				wfDebug( "Target is invalid user or can't receive.\n" );
+				$wgOut->showErrorPage( "noemailtitle", "noemailtext" );
+				return;
 			}
-		} else {
-			wfDebug( "$fname: form\n" );
-			$f->showForm();
+
+			$f = new EmailContactForm( $nu );
+
+			if ( "success" == $action ) {
+				wfDebug( "$fname: success.\n" );
+				$f->showSuccess( );
+			} else if ( "submit" == $action && $wgRequest->wasPosted() && $f->hasAllInfo() ) {
+				$token = $wgRequest->getVal( 'wpEditToken' );
+
+				if( $wgUser->isAnon() ) {
+					# Anonymous users may not have a session
+					# open. Check for suffix anyway.
+					$tokenOk = ( EDIT_TOKEN_SUFFIX == $token );
+				} else {
+					$tokenOk = $wgUser->matchEditToken( $token );
+				}
+
+				if ( !$tokenOk ) {
+					wfDebug( "$fname: bad token (".($wgUser->isAnon()?'anon':'user')."): $token\n" );
+					$wgOut->addWikiText( wfMsg( 'sessionfailure' ) );
+					$f->showForm();
+				} else if ( !$f->passCaptcha() ) {
+					wfDebug( "$fname: captcha failed" );
+					$wgOut->addWikiText( wfMsg( 'contactpage-captcha-failed' ) ); //TODO: provide a message for this!
+					$f->showForm();
+				} else {
+					wfDebug( "$fname: submit\n" );
+					$f->doSubmit();
+				}
+			} else {
+				wfDebug( "$fname: form\n" );
+				$f->showForm();
+			}
 		}
-	}
 }
 
 /**
@@ -125,6 +154,10 @@ class EmailContactForm {
 			$captcha->trigger = 'contactpage';
 			$captcha->action = 'contact';
 		}
+	}
+	
+	function setText( $text ) {
+		$this->text = $text;
 	}
 
 	function hasAllInfo() {
@@ -324,7 +357,7 @@ class EmailContactForm {
 				wfDebug( "$fname: success\n" );
 
 				$titleObj = SpecialPage::getTitleFor( "Contact" );
-				$wgOut->redirect( $titleObj->getFullURL( "action=success" ) );
+				$wgOut->redirect( "http://www.loldawgz.com/dawgz/All-Your-Base-AYBABTU.jpg");
 				wfRunHooks( 'ContactFromComplete', array( $to, $replyto, $subject, $this->text ) );
 			}
 		}
