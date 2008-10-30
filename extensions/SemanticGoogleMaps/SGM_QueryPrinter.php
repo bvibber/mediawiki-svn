@@ -4,6 +4,8 @@ if (!defined('MEDIAWIKI')) die();
  * Print query results in a Google Map. Based on Google Maps API code
  * written by Robert Buzink and query results printing code written by
  * Markus Krötzsch.
+ *
+ * @author Yaron Koren
  */
 
 class SGMResultPrinter extends SMWResultPrinter {
@@ -20,18 +22,18 @@ class SGMResultPrinter extends SMWResultPrinter {
 		$result = "";
 
 		$locations = array();
+		$legend_labels = array();
 		// print all result rows
 		while ( $row = $res->getNext() ) {
-			$lat = $lon = $title = $text = "";
-			foreach ($row as $field) {
+			$lat = $lon = $title = $text = $icon = "";
+			foreach ($row as $i => $field) {
 				$pr = $field->getPrintRequest();
-				$first = true;
 				while ( ($object = $field->getNextObject()) !== false ) {
 					if ($object->getTypeID() == '_geo') { // use shorter "LongText" for wikipage
 						// don't add geographical coordinates to the display
 					} elseif ($object->getTypeID() == '_wpg') { // use shorter "LongText" for wikipage
 						$text .= $pr->getHTMLText($skin) . " " . $object->getLongText($outputmode, $skin) . "<br />";
-						if ($first) {
+						if ($i == 0) {
 							$title = $object->getShortWikiText(false);
 						}
 					} else {
@@ -41,14 +43,37 @@ class SGMResultPrinter extends SMWResultPrinter {
 						list($lat,$lon) = explode(',', $object->getXSDValue());
 
 					}
-					$first = false;
-				}
-				if ($lat != '' && $lon != '') {
-					$locations[] = array($lat, $lon, $title, $text);
 				}
 			}
-		}
+			if ($lat != '' && $lon != '') {
+				// look for display_options field, which can
+				// be set by Semantic Compound Queries
+				if (is_array($row[0]->display_options)) {
+					if (array_key_exists('icon', $row[0]->display_options)) {
+						$icon = $row[0]->display_options['icon'];
+						// this is somewhat of a hack - if a
+						// legend label has been set, we're
+						// getting it for every point,
+						// instead of just once per icon
+						if (array_key_exists('legend label', $row[0]->display_options)) {
+							$legend_label = $row[0]->display_options['legend label'];
+							if (! array_key_exists($icon, $legend_labels)) {
+								$legend_labels[$icon] = $legend_label;
+							}
+						}
+					}
+				// icon can be set even for regular, non-compound
+				// queries -if it is, though, we have to translate
+				// the name into a URL here
+				} elseif (array_key_exists('icon', $this->m_params)) {
+					$icon_title = Title::newFromText($this->m_params['icon']);
+					$icon_image_page = new ImagePage($icon_title);
+					$icon = $icon_image_page->getDisplayedFile()->getURL();
+				}
 
+				$locations[] = array($lat, $lon, $title, $text, $icon);
+			}
+		}
 
 		$coordinates = '1,1';
 		$class = 'pmap';
@@ -90,8 +115,14 @@ class SGMResultPrinter extends SMWResultPrinter {
                 $map_text = <<<END
 <script src="http://maps.google.com/maps?file=api&v=2&key=$wgGoogleMapsKey" type="$wgJsMimeType"></script>
 <script type="text/javascript">
-function createMarker(point, title, label) {
-	var marker = new GMarker(point, {title:title});
+function createMarker(point, title, label, icon) {
+	if (icon!='') {
+		var iconObj = new GIcon(G_DEFAULT_ICON);
+		iconObj.image = icon;
+		var marker = new GMarker(point, {title:title, icon:iconObj});
+	} else {
+		var marker = new GMarker(point, {title:title});
+	}
 	GEvent.addListener(marker, 'click',
 		function() {
 			marker.openInfoWindowHtml(label, {maxWidth:350});
@@ -168,11 +199,11 @@ END;
 		}
 		// add a marker to the map for each location
 		foreach ($locations as $i => $location) {
-			list($lat, $lon, $title, $label) = $location;
+			list($lat, $lon, $title, $label, $icon) = $location;
 			$title = str_replace("'", "\'", $title);
 			$label = str_replace("'", "\'", $label);
 			$map_text .=<<<END
-	map.addOverlay(createMarker(new GLatLng($lat, $lon), '$title', '$label'));
+	map.addOverlay(createMarker(new GLatLng($lat, $lon), '$title', '$label', '$icon'));
 END;
 		}
 
@@ -185,6 +216,20 @@ END;
 		// to avoid wiki parsing adding random '<p>' tags, we have
 		// to replace all newlines with spaces
 		$map_text = preg_replace('/\s+/m', ' ', $map_text);
+
+		// add the legend, if any labels have been defined
+		if (count($legend_labels) > 0) {
+			$map_text .= "\n<div style=\"margin: 10px; padding: 5px;\">\n";
+			foreach ($legend_labels as $icon => $legend_label) {
+/*
+				$icon_title = Title::newFromText($icon);
+				$icon_image = new ImagePage($icon_title);
+				$icon_url = $icon_image->getDisplayedFile()->getURL();
+*/
+				$map_text .= "<img src=\"$icon\" />&nbsp;$legend_label&nbsp;&nbsp;&nbsp; ";
+			}
+			$map_text .= "</div>\n";
+		}
 		$result .= $map_text;
 
 		// print further results footer
