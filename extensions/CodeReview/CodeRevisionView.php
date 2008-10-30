@@ -147,7 +147,6 @@ class CodeRevisionView extends CodeView {
 
 	function formatPathLine( $path, $action ) {
 		$desc = wfMsgHtml( 'code-rev-modified-'.strtolower( $action ) );
-		$encPath = htmlspecialchars( $path );
 		$viewvc = $this->mRepo->getViewVcBase();
 		$diff = '';
 		if( $viewvc ) {
@@ -155,14 +154,17 @@ class CodeRevisionView extends CodeView {
 			$prev = $rev - 1;
 			$safePath = wfUrlEncode( $path );
 			if( $action !== 'D' ) {
-				$link = $this->mSkin->makeExternalLink( "$viewvc$safePath?view=markup&pathrev=$rev", $encPath );
+				$link = $this->mSkin->makeExternalLink(
+					"$viewvc$safePath?view=markup&pathrev=$rev",
+					$path );
 			} else {
 				$link = $encPath;
 			}
 			if( $action !== 'A' && $action !== 'D' ) {
 				$diff = ' (' .
-					$this->mSkin->makeExternalLink( "$viewvc$safePath?&pathrev=$rev&r1=$prev&r2=$rev", 
-						wfMsgHtml('code-rev-diff-link') ) .
+					$this->mSkin->makeExternalLink(
+						"$viewvc$safePath?&pathrev=$rev&r1=$prev&r2=$rev", 
+						wfMsg('code-rev-diff-link') ) .
 					')';
 			}
 		} else {
