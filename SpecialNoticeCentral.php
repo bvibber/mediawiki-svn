@@ -698,7 +698,7 @@ class CentralNotice extends SpecialPage {
 	
 	/** 
 	 * Lookup function for active notice under a given language and project
-	 * Returns and id for the running notice
+	 * Returns an id for the running notice
 	 */
 	function selectNotice( $project, $language ) {
 		$dbr = wfGetDB( DB_SLAVE );
@@ -723,7 +723,7 @@ class CentralNotice extends SpecialPage {
 	}
 	
 
-	public function getTemplatesForNotice( $noticeName ) {
+	public function getTemplatesForNotice( $noticeId ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		
 		$res = $dbr->select(
@@ -737,16 +737,15 @@ class CentralNotice extends SpecialPage {
 				'tmp_weight'
 			),
 			array( 
-				'not_name' => $noticeName,
+				'cn_notices.not_id' => $noticeId,
 				'cn_notices.not_id=cn_assignments.not_id',
 				'cn_assignments.tmp_id=cn_templates.tmp_id',
 			),
-			__METHOD__,
-			array( 'ORDER BY' => 'cn_notices.not_id' )
+			__METHOD__
 		);
 		$templates = array();
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			$templates[$row->tmp_name] = $row->tmp_weight;
+			$templates[$row->tmp_name] = intval( $row->tmp_weight );
 		}
 		return $templates;
 

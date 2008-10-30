@@ -21,9 +21,27 @@ class SpecialNoticeText extends NoticePage {
 	function getJsOutput( $par ) {
 		$this->setLanguage( $par );
 		//need to return all site notices here
+		$noticeId = CentralNotice::selectNotice( $this->project, $this->language );
+		$templates = CentralNotice::getTemplatesForNotice( $noticeId );
+		$templateNames = array_keys( $templates );
+		
+		$templateTexts = array_map(
+			array( $this, 'fillNotice' ),
+			$templateNames );
+		$weights = array_values( $templates );
 		return
-			'wgNotice="' .
-			strtr(
+			$this->getScriptFunctions() .
+			'wgNotice=pickTemplate(' .
+				Xml::encodeJsVar($templateTexts) .
+				"," .
+				Xml::encodeJsVar($weights) .
+				");\n" .
+			$this->getToggleScripts();
+	}
+	
+	function fillNotice( $noticeName ) {
+		$this->noticeName = $noticeName;
+		return strtr(
 				Xml::escapeJsString( $this->getHtmlNotice() ),
 					array_map(
 						array( $this, 'interpolateStrings' ),
@@ -38,12 +56,10 @@ class SpecialNoticeText extends NoticePage {
 							'$hide' => $this->getMessage( 'centralnotice-hide' ), // hide
 						)
 					)
-			) .
-			'";' .
-			$this->getScripts();
+			);
 	}
 	
-	function getScripts() {
+	function getToggleScripts() {
 		$showStyle = <<<END
 <style type="text/css">#siteNoticeSmall{display:none;}</style>
 END;
@@ -57,61 +73,53 @@ END;
 		$encHideStyle = Xml::encodeJsVar( $hideStyle );
 		$encHideToggleStyle = Xml::encodeJsVar( $hideToggleStyle );
 
-		$noticeName = CentralNotice::selectNotice( $this->language, $this->project );
-		$templates = CentralNotice::getTemplatesForNotice( $noticeName );
-		$templateNames = array_keys( $templates );
-		$weights = array_values( $templates );
-
-		$script = <<<END
-		var wgNoticeToggleState = (document.cookie.indexOf("hidesnmessage=1")==-1);
-		document.writeln(
-			wgNoticeToggleState
-			? $encShowStyle
-			: $encHideStyle);
-		if(wgUserName == null) {
-			document.writeln($encHideToggleStyle);
-		}
-		
-		pickTemplate();
-
-		function toggleNotice() {
-			var big = document.getElementById('siteNoticeBig');
-			var small = document.getElementById('siteNoticeSmall');
-			if (!wgNoticeToggleState) {
-				if(big) big.style.display = 'block';
-				if(small) small.style.display = 'none';
-				toggleNoticeCookie("0");
-			} else {
-				if(big) big.style.display = 'none';
-				if(small) small.style.display = 'block';
-				toggleNoticeCookie("1");
-			}
-			wgNoticeToggleState = !wgNoticeToggleState;
-		}
-		function toggleNoticeCookie(state) {
-			var e = new Date();
-			e.setTime( e.getTime() + (7*24*60*60*1000) ); // one week
-			var work="hidesnmessage="+state+"; expires=" + e.toGMTString() + "; path=/";
-			document.cookie = work;
-		}
-		function pickTemplate() {
-			var templates = $templateNames;
-			var weights   = $weights;
-			var totalWeight = eval(weights.join("+"));
-			var weightedTemplates = new Array();
-			var currentTemplate = 0;
-			
-			while (currentTemplate < templates.length) {
-				for (i=0; i<weights[currentTemplate]; i++) {
-					weightedTemplates[weightedTemplates.length] = templates[currentTemplate];
-				}	
-				currentTemplate++;
-			}
-			
-			var randomnumber=Math.floor(Math.random()*totalWeight);
-			document.write(weightedTemplates[randomnumber]);
-		}
-END;
+		$script = "
+var wgNoticeToggleState = (document.cookie.indexOf('hidesnmessage=1')==-1);
+document.writeln(
+	wgNoticeToggleState
+	? $encShowStyle
+	: $encHideStyle);
+document.writeln($encHideToggleStyle);\n\n";
+		return $script;
+	}
+	
+	function getScriptFunctions() {
+		$script = "
+function toggleNotice() {
+	var big = document.getElementById('siteNoticeBig');
+	var small = document.getElementById('siteNoticeSmall');
+	if (!wgNoticeToggleState) {
+		if(big) big.style.display = 'block';
+		if(small) small.style.display = 'none';
+		toggleNoticeCookie('0');
+	} else {
+		if(big) big.style.display = 'none';
+		if(small) small.style.display = 'block';
+		toggleNoticeCookie('1');
+	}
+	wgNoticeToggleState = !wgNoticeToggleState;
+}
+function toggleNoticeCookie(state) {
+	var e = new Date();
+	e.setTime( e.getTime() + (7*24*60*60*1000) ); // one week
+	var work='hidesnmessage='+state+'; expires=' + e.toGMTString() + '; path=/';
+	document.cookie = work;
+}
+function pickTemplate(templates, weights) {
+	var totalWeight = eval(weights.join('+'));
+	var weightedTemplates = new Array();
+	var currentTemplate = 0;
+	
+	while (currentTemplate < templates.length) {
+		for (i=0; i<weights[currentTemplate]; i++) {
+			weightedTemplates[weightedTemplates.length] = templates[currentTemplate];
+		}	
+		currentTemplate++;
+	}
+	
+	var randomnumber=Math.floor(Math.random()*totalWeight);
+	document.write(weightedTemplates[randomnumber]);
+}\n\n";
 		return $script;
 	}
 	
