@@ -36,7 +36,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 		$wgOut->addWikiText( wfMsg( 'centralnotice-summary' ) );
 		
 		// Show header
-		CentralNotice::printHeader();
+		CentralNotice::printHeader( $sub );
 		
 		// Handle forms
 		if ( $wgRequest->wasPosted() ) {

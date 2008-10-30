@@ -33,7 +33,7 @@ class SpecialNoticeTranslate extends SpecialPage {
 		$wgOut->addWikiText( wfMsg( 'centralnotice-summary' ));
 		
 		// Show header
-		CentralNotice::printHeader();
+		CentralNotice::printHeader( $sub );
 		
 		// Handle form submissions
 		if ( $wgRequest->wasPosted() ) {
