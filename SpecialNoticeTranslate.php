@@ -81,13 +81,18 @@ class SpecialNoticeTranslate extends SpecialPage {
 		// Build HTML
 		$htmlOut = Xml::openElement( 'form', array( 'method' => 'post' ) );
 		$htmlOut .= Xml::fieldset( wfMsgHtml( "centralnotice-translate-heading" ) );
-		$htmlOut .= Xml::openElement( 'table', array ( 'cellpadding' => 9 ) );
+		$htmlOut .= Xml::openElement( 'table',
+			array (
+				'cellpadding' => 9,
+				'width' => '100%'
+			)
+		);
 		
 		// Headers
-		$htmlOut .= Xml::element( 'th' );
-		$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-english') );
-		$htmlOut .= Xml::element( 'th' );
-		$htmlOut .= Xml::element( 'th', null, $wpUserLang );
+		$htmlOut .= Xml::element( 'th', array( 'width' => '20%' ) );
+		$htmlOut .= Xml::element( 'th', array( 'width' => '40%' ), wfMsg ( 'centralnotice-english') );
+		$languages = Language::getLanguageNames();
+		$htmlOut .= Xml::element( 'th', array( 'width' => '40%' ), $languages[$wpUserLang] );
 		
 		// Rows
 		$fields = array( 'heading', 'target', 'button', 'hide' );
@@ -96,12 +101,7 @@ class SpecialNoticeTranslate extends SpecialPage {
 			$message = ( $wpUserLang == 'en' ) ? "Centralnotice-{$field}" : "Centralnotice-{$field}/{$wpUserLang}";
 			
 			// Text -- only load text if a message exists to avoild default english text display
-			$title = Title::newFromText( $message, NS_MEDIAWIKI );
-			$text = '';
-			if( $title->exists() ) {
-				$text = wfMsgExt( "centralnotice-{$field}", array ( 'language' => $wpUserLang ) );
-			}
-			
+
 			// English value
 			$htmlOut .= Xml::openElement( 'tr' );
 			$htmlOut .= Xml::element( 'td', null, $field );
@@ -109,18 +109,16 @@ class SpecialNoticeTranslate extends SpecialPage {
 				wfMsgExt( "centralnotice-{$field}", array( 'language' => 'en') )
 			);
 			
-			// Field
-			$style = $text !== '' ? array( 'style' => 'color:red' ) : array();
-			if ( $wpUserLang == 'en' ) {
-				$htmlOut .= Xml::element( 'td', $style, $field );
-			}
-			else {
-				$htmlOut .= Xml::element( 'td', $style, "{$field}/{$wpUserLang}" );
-			}
-			
 			// Input
+			$title = Title::newFromText( $message, NS_MEDIAWIKI );
+			$text = '';
+			if( $title->exists() ) {
+				$text = wfMsgExt( "centralnotice-{$field}", array ( 'language' => $wpUserLang ) );
+			}
 			$htmlOut .= Xml::tags( 'td', null,
-				Xml::input( "updateText[$wpUserLang][$field]", 80, $text )
+				Xml::input( "updateText[$wpUserLang][$field]", '', $text,
+					array( 'style' => 'width:100%;' . ( $text == '' ? 'color:red' : '' ) )
+				)
 			);
 			
 			$htmlOut .= Xml::closeElement( 'tr' );
