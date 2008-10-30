@@ -4,7 +4,8 @@
 # sjs sets that to the 404 handler, and puts the original
 # request in REDIRECT_URL.
 if (isset($_SERVER['REDIRECT_URL'])) {
-	$uri = $_SERVER['REDIRECT_URL'];
+	# The URL is un-encoded, so put it back how it was.
+	$uri = str_replace("%2F", "/", urlencode($_SERVER['REDIRECT_URL']));
 } else {
 	$uri = $_SERVER['REQUEST_URI'];
 }
