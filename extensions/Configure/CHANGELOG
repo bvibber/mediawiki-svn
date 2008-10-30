@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.8.12 - 30 October 2008
+  * Added $wgFilterLogTypes and $wgRC2UDPInterwikiPrefix.
+  * Fixed type of $wgNoFollowNsExceptions.
+
 0.8.11 - 28 October 2008
   * Added the possibiliy to restrict extensions settings in
     $wgConfigureAdditionalExtensions.

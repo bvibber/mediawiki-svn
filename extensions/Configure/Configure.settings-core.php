@@ -564,6 +564,7 @@ $settings = array(
 			'wgExportAllowHistory' => 'bool',
 			'wgExportAllowListContributors' => 'bool',
 			'wgExportMaxHistory' => 'int',
+			'wgFilterLogTypes' => 'array',
 			'wgImportTargetNamespace' => 'text',
 			'wgLogActions' => 'array',
 			'wgLogActionsHandlers' => 'array',
@@ -590,6 +591,7 @@ $settings = array(
 			'wgShowUpdatedMarker' => 'bool',
 			'wgUseRCPatrol' => 'bool',
 			'wgRC2UDPAddress' => 'text',
+			'wgRC2UDPInterwikiPrefix' => 'bool',
 			'wgRC2UDPOmitBots' => 'bool',
 			'wgRC2UDPPort' => 'int',
 			'wgRC2UDPPrefix' => 'text',
@@ -755,7 +757,7 @@ $arrayDefs = array(
 	'wgNamespaceRobotPolicies' => 'ns-text',
 	'wgNamespacesToBeSearchedDefault' => 'ns-bool',
 	'wgNamespacesWithSubpages' => 'ns-bool',
-	'wgNoFollowNsExceptions' => 'ns-text',
+	'wgNoFollowNsExceptions' => 'ns-simple',
 	'wgNonincludableNamespaces' => 'ns-simple',
 	'wgSitemapNamespaces' => 'ns-simple',
 	'wgArticleRobotPolicies' => 'assoc',
@@ -815,6 +817,7 @@ $arrayDefs = array(
 # Feed
 	'wgOverrideSiteFeed' => 'assoc',
 # Special pages
+	'wgFilterLogTypes' => 'assoc',
 	'wgLogActions' => 'assoc',
 	'wgLogActionsHandlers' => 'assoc',
 	'wgLogHeaders' => 'assoc',
@@ -1219,6 +1222,8 @@ $settingsVersion = array(
 	'wgEdititis' => array( array( '1.14alpha', '>=' ) ),
 	'wgMaxAnimatedGifArea' => array( array( '1.14alpha', '>=' ) ),
 	'wgMaxShellTime' => array( array( '1.14alpha', '>=' ) ),
+	'wgFilterLogTypes' => array( array( '1.14alpha', '>=' ) ),
+	'wgRC2UDPInterwikiPrefix' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgProfileSampleRate' => array( array( '1.8alpha', '<' ) ),
 	'wgProfilerType' => array( array( '1.8alpha', '<' ) ),
