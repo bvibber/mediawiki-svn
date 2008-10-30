@@ -76,7 +76,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 		//
 	}
 
-	function queryTemplates() {
+	static function queryTemplates() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'cn_templates',
 			array( 'tmp_name', 'tmp_id' ),
