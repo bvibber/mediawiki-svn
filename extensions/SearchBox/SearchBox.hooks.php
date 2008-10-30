@@ -25,15 +25,15 @@ class SearchBoxHooks {
 	// Render the input box
 	public static function render( $input, $args, $parser ) {
 		global $wgContLang;
-		
+
 		// Internationalization
 		wfLoadExtensionMessages( 'SearchBox' );
-		
+
 		/*
 		 * Label
-		 * 
+		 *
 		 * Inserted before the text input box.
-		 * 
+		 *
 		 * default:	''
 		 * format:	string
 		 * example:	'Search this wiki for:'
@@ -43,12 +43,12 @@ class SearchBoxHooks {
 		} else {
 			$args['label'] = $parser->recursiveTagParse( $args['label'] );
 		}
-		
+
 		/*
 		 * SearchLabel
-		 * 
+		 *
 		 * Applied as the value of the search button
-		 * 
+		 *
 		 * default:	internationalized message
 		 * format:	string
 		 * example:	'Find It!'
@@ -56,12 +56,12 @@ class SearchBoxHooks {
 		if ( !isset( $args['searchlabel'] ) ) {
 			$args['searchlabel'] = wfMsg( 'searchbox-search' );
 		}
-		
+
 		/*
 		 * GoLabel
-		 * 
+		 *
 		 * Applied as the value of the go button
-		 * 
+		 *
 		 * default:	internationalized message
 		 * format:	string
 		 * example:	'Go!'
@@ -69,12 +69,12 @@ class SearchBoxHooks {
 		if ( !isset( $args['golabel'] ) ) {
 			$args['golabel'] = wfMsg( 'searchbox-go' );
 		}
-		
+
 		/*
 		 * Hide
-		 * 
+		 *
 		 * A list of elements to hide
-		 * 
+		 *
 		 * default:	''
 		 * format:	List of comma delimited names: input | go | search | namespaces
 		 * example:	'go'
@@ -87,12 +87,12 @@ class SearchBoxHooks {
 				$args['hide'][strtolower( trim( $value ) )] = true;
 			}
 		}
-		
+
 		/*
 		 * NamespacesLabel
-		 * 
+		 *
 		 * Inserted before the list of namespace checkboxes
-		 * 
+		 *
 		 * default:	internationalized message
 		 * format:	string
 		 * example:	'Namespaces to search:'
@@ -102,14 +102,14 @@ class SearchBoxHooks {
 		} else {
 			$args['namespaceslabel'] = $parser->recursiveTagParse( $args['namespaceslabel'] );
 		}
-		
+
 		/*
 		 * Namespaces
-		 * 
+		 *
 		 * If there is more than 1 valid namespace in this list, a list of checkboxes
 		 * will be inserted after the text input box and before the search button, in
 		 * place of the go button.
-		 * 
+		 *
 		 * default:	''
 		 * format: 	List of comma delimited names, items with ** in them are check by default
 		 * example:	'**Main,Special,User**'
@@ -117,12 +117,12 @@ class SearchBoxHooks {
 		if ( !isset( $args['namespaces'] ) ) {
 			$args['namespaces'] = '';
 		}
-		
+
 		/*
 		 * Align
-		 * 
+		 *
 		 * Applied to the entire box
-		 * 
+		 *
 		 * default:	'center'
 		 * format:	'left' | 'center' | 'right'
 		 * example:	'left'
@@ -138,17 +138,17 @@ class SearchBoxHooks {
 					$valid = true;
 				}
 			}
-			if( !$valid ) {
+			if ( !$valid ) {
 				// Use default
 				$args['align'] == 'center';
 			}
 		}
-		
+
 		/*
 		 * Style
-		 * 
+		 *
 		 * CSS applied to the entire box
-		 * 
+		 *
 		 * default:	''
 		 * format:	inline CSS
 		 * example:	'border:1px solid red;'
@@ -156,12 +156,12 @@ class SearchBoxHooks {
 		if ( !isset( $args['style'] ) ) {
 			$args['style'] = '';
 		}
-		
+
 		/*
 		 * Default
-		 * 
+		 *
 		 * Applied as the value of the text input box
-		 * 
+		 *
 		 * default:	''
 		 * format:	string
 		 * example:	'something in particular'
@@ -169,12 +169,12 @@ class SearchBoxHooks {
 		if ( !isset( $args['default'] ) ) {
 			$args['default'] = '';
 		}
-		
+
 		/*
 		 * Size
-		 * 
+		 *
 		 * Applied as the width (in characters) of the text input box
-		 * 
+		 *
 		 * default:	50
 		 * format:	integer
 		 * example:	20
@@ -184,12 +184,12 @@ class SearchBoxHooks {
 		} else {
 			$args['size'] = intval( $args['size'] <= 0 ? 50 : $args['size'] );
 		}
-		
+
 		/*
 		 * Width
-		 * 
+		 *
 		 * Applied as the width (in pixels) of the text input box
-		 * 
+		 *
 		 * default:	'auto'
 		 * format:	integer | 'auto'
 		 * example:	25
@@ -197,17 +197,17 @@ class SearchBoxHooks {
 		if ( !isset( $args['width'] ) ) {
 			$args['width'] = 'auto';
 		} else {
-			if( $args['width'] !== 'auto' ) {
+			if ( $args['width'] !== 'auto' ) {
 				// Force positive integer
 				$args['width'] = abs( intval( $args['width'] ) );
 			}
 		}
-		
+
 		/*
 		 * Spacing
-		 * 
+		 *
 		 * Applied to all controls in the box as amount of space (in pixels) between them
-		 * 
+		 *
 		 * default:	5
 		 * format:	integer
 		 * example:	10
@@ -218,7 +218,7 @@ class SearchBoxHooks {
 			// Force positive integer
 			$args['spacing'] = intval( $args['spacing'] < 0 ? 5 : $args['spacing'] );
 		}
-		
+
 		// Build HTML
 		$htmlOut = Xml::openElement( 'div',
 			array(
@@ -234,7 +234,7 @@ class SearchBoxHooks {
 				'action' => SpecialPage::getTitleFor( 'Search' )->escapeLocalUrl(),
 			)
 		);
-		
+
 		// If the label is not empty (label is already safe HTML)
 		if ( !empty( $args['label'] ) ) {
 			// Label
@@ -246,8 +246,8 @@ class SearchBoxHooks {
 				$args['label']
 			);
 		}
-		
-		// If the input box is not on the hide list 
+
+		// If the input box is not on the hide list
 		if ( !isset( $args['hide']['input'] ) ) {
 			// Input box
 			$htmlOut .= Xml::element( 'input',
@@ -262,7 +262,7 @@ class SearchBoxHooks {
 			);
 		} else {
 			// If the default is not empty
-			if( !empty( $args['default'] ) ) {
+			if ( !empty( $args['default'] ) ) {
 				// Hidden query field
 				$htmlOut .= Xml::element( 'input',
 					array(
@@ -273,14 +273,14 @@ class SearchBoxHooks {
 				);
 			}
 		}
-		
+
 		// Build namespace checkboxes
 		$htmlNamespaces = '';
 		$matchedNamespaces = 0;
 		if ( !empty( $args['namespaces'] ) ) {
 			$namespaces = $wgContLang->getNamespaces();
 			$namespacesArray = explode( ',', $args['namespaces'] );
-			
+
 			// If the namespaces controls are not on the hide list
 			if ( !isset( $args['hide']['namespaces'] ) ) {
 				// Namespaces controls
@@ -289,9 +289,9 @@ class SearchBoxHooks {
 						'align' => $args['align']
 					)
 				);
-				
+
 				// If the namespaces label is not empty (namespaceslabel is already safe HTML)
-				if( !empty( $args['namespaceslabel'] ) ) {
+				if ( !empty( $args['namespaceslabel'] ) ) {
 					// Namespaces label
 					$htmlNamespaces .= Xml::tags( 'label',
 						array(
@@ -303,16 +303,16 @@ class SearchBoxHooks {
 				// Insert checkboxes
 				foreach ( $namespacesArray as $userNamespace ) {
 					$checked = array();
-					
+
 					// Checked by default if flagged with **
 					if ( strstr( $userNamespace, '**' ) || count( $namespacesArray ) == 1 ) {
 						// Remove the flag
 						$userNamespace = str_replace( '**', '', $userNamespace );
-						
+
 						// Create the checked attribute
 						$checked = array( 'checked' => 'checked' );
 					}
-					
+
 					// Namespace checkboxes
 					foreach ( $namespaces as $i => $name ) {
 						// Recognize 0 as the Main namespace, and skip negetive numbers
@@ -324,7 +324,7 @@ class SearchBoxHooks {
 						// Only show checkboxes for existing namespaces
 						if ( $userNamespace == $name ) {
 							$matchedNamespaces++;
-							
+
 							// Checkbox
 							$htmlNamespaces .= Xml::element( 'input',
 								array(
@@ -336,7 +336,7 @@ class SearchBoxHooks {
 									'align' => 'absmiddle'
 								) + $checked
 							);
-							
+
 							// Label
 							$htmlNamespaces .= Xml::element( 'label',
 								array(
@@ -354,7 +354,7 @@ class SearchBoxHooks {
 				foreach ( $namespacesArray as $userNamespace ) {
 					// Remove flags if any
 					$userNamespace = str_replace( '**', '', $userNamespace );
-					
+
 					// Namespace hidden fields
 					foreach ( $namespaces as $i => $name ) {
 						// Recognize 0 as the Main namespace, and skip negetive numbers
@@ -363,7 +363,7 @@ class SearchBoxHooks {
 						} elseif ( $i == 0 ) {
 							$name = 'Main';
 						}
-						
+
 						// Only insert hidden fields for existing namespaces
 						if ( $userNamespace == $name ) {
 							// Hidden field
@@ -382,7 +382,7 @@ class SearchBoxHooks {
 		// If there are no namespaces
 		if ( $matchedNamespaces <= 1 ) {
 			// If the go button is not on the hide list
-			if( !isset( $args['hide']['go'] ) ) {
+			if ( !isset( $args['hide']['go'] ) ) {
 				// Go button
 				$htmlOut .= Xml::element( 'input',
 					array(
@@ -397,7 +397,7 @@ class SearchBoxHooks {
 			// Insert namespaces controls
 			$htmlOut .= $htmlNamespaces;
 		}
-		
+
 		// If the search button is not on the hide list
 		if ( !isset( $args['hide']['search'] ) ) {
 			// Search button
@@ -412,7 +412,7 @@ class SearchBoxHooks {
 		}
 		$htmlOut .= Xml::closeElement( 'form' );
 		$htmlOut .= Xml::closeElement( 'div' );
-		
+
 		// Return HTML
 		return $htmlOut;
 	}

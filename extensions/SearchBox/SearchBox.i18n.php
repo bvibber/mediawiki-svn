@@ -1,6 +1,6 @@
 <?php
 /**
- * Inernationalization for SearchBox extension
+ * Internationalisation for SearchBox extension
  *
  * @file
  * @ingroup Extensions
@@ -8,6 +8,9 @@
 
 $messages = array();
 
+/** English
+ * @author Trevor Parscal
+ */
 $messages['en'] = array(
 	'searchbox-desc' => 'Allow inclusion of search forms',
 	'searchbox-search' => 'Search',
