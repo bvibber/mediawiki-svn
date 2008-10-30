@@ -141,19 +141,18 @@ function efCentralNoticeLoader( &$notice ) {
 	global $wgScript, $wgUser;
 	global $wgNoticeLoader, $wgNoticeLang, $wgNoticeProject;
 
-	if ( isset( $wgNotice ) ) { //Do we have an active notice campaign
-		$encNoticeLoader = htmlspecialchars( $wgNoticeLoader );
-		$encProject = Xml::encodeJsVar( $wgNoticeProject );
-		$encLang = Xml::encodeJsVar( $wgNoticeLang );
-	
-		$anon = (is_object( $wgUser ) && $wgUser->isLoggedIn())
-			? ''
-			: '/anon';
-		$localText = "$wgScript?title=Special:NoticeLocal$anon&action=raw";
-		$encNoticeLocal = htmlspecialchars( $localText );
-	
-		// Throw away the classic notice, use the central loader...
-		$notice = <<<EOT
+	$encNoticeLoader = htmlspecialchars( $wgNoticeLoader );
+	$encProject = Xml::encodeJsVar( $wgNoticeProject );
+	$encLang = Xml::encodeJsVar( $wgNoticeLang );
+
+	$anon = (is_object( $wgUser ) && $wgUser->isLoggedIn())
+		? ''
+		: '/anon';
+	$localText = "$wgScript?title=Special:NoticeLocal$anon&action=raw";
+	$encNoticeLocal = htmlspecialchars( $localText );
+
+	// Throw away the classic notice, use the central loader...
+	$notice = <<<EOT
 <script type="text/javascript">
 var wgNotice = "CentralNotice";
 var wgNoticeLocal = "";
@@ -171,8 +170,7 @@ if (wgNoticeLocal != "") {
 }
 </script>
 EOT;
-	}
-		return true;
+	return true;
 }
 
 /**

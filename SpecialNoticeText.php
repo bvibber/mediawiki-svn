@@ -31,12 +31,12 @@ class SpecialNoticeText extends NoticePage {
 		$weights = array_values( $templates );
 		return
 			$this->getScriptFunctions() .
+			$this->getToggleScripts() .
 			'wgNotice=pickTemplate(' .
 				Xml::encodeJsVar($templateTexts) .
 				"," .
 				Xml::encodeJsVar($weights) .
-				");\n" .
-			$this->getToggleScripts();
+				");\n";
 	}
 	
 	function fillNotice( $noticeName ) {
@@ -106,19 +106,20 @@ function toggleNoticeCookie(state) {
 	document.cookie = work;
 }
 function pickTemplate(templates, weights) {
-	var totalWeight = eval(weights.join('+'));
 	var weightedTemplates = new Array();
 	var currentTemplate = 0;
+	var totalWeight = 0;
 	
 	while (currentTemplate < templates.length) {
+		totalWeight += weights[currentTemplate];
 		for (i=0; i<weights[currentTemplate]; i++) {
 			weightedTemplates[weightedTemplates.length] = templates[currentTemplate];
-		}	
+		}
 		currentTemplate++;
 	}
 	
 	var randomnumber=Math.floor(Math.random()*totalWeight);
-	document.write(weightedTemplates[randomnumber]);
+	return weightedTemplates[randomnumber];
 }\n\n";
 		return $script;
 	}
