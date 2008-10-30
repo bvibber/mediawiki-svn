@@ -117,7 +117,7 @@ class SpecialNoticeTranslate extends SpecialPage {
 		
 		// Build HTML
 		$htmlOut = Xml::openElement( 'form', array( 'method' => 'post' ) );
-		$htmlOut .= Xml::fieldset( wfMsgHtml( 'centralnotice-translate-heading' ) );
+		$htmlOut .= Xml::fieldset( wfMsgHtml( 'centralnotice-translate-heading', $currentTemplate ) );
 		$htmlOut .= Xml::openElement( 'table',
 			array (
 				'cellpadding' => 9,
