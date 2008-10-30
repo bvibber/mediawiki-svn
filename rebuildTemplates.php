@@ -16,26 +16,21 @@ if( isset( $options['help'] ) ) {
     $templates = array();
     $templates = CentralNotice::getTemplatesForNotice( $notice );
     
-
-    $script_header = <<<END
-<style type="text/css">
-END;
-   $script_footer = <<<END
-</style>
-END;
-
-   $css_filename = 'tomas.css';
-   $css = fopen("$css_filename", "r");
-   $css_body = fread($css, filesize($css_filename));
-   fclose ( $css );
-
-   foreach( $templates as $template => $weight) {
-        $fh = fopen("js/centralnotice-$template-en.js", "w");
-	fwrite( $fh, $script_header );
-	fwrite( $fh, $css_body );
-	fwrite( $fh, $script_footer );
-        fwrite( $fh, wfMsg( "Template:$template" ));
-	fwrite( $fh, wfMsg( "Template:$template/en" ));
-	fclose ( $fh );
-   }
+    $script_header = '<style type="text/css">';
+	$script_footer = '</style>';
+	
+	$css_filename = 'tomas.css';
+	$css = fopen( $css_filename, 'r' );
+	$css_body = fread ($css, filesize( $css_filename) );
+	fclose ( $css );
+	
+	foreach( $templates as $template => $weight) {
+		$fh = fopen("js/centralnotice-$template-en.js", "w");
+		fwrite( $fh, $script_header );
+		fwrite( $fh, $css_body );
+		fwrite( $fh, $script_footer );
+		fwrite( $fh, wfMsg( "Template:$template" ) );
+		fwrite( $fh, wfMsg( "Template:$template/en" ) );
+		fclose ( $fh );
+	}
 } 
