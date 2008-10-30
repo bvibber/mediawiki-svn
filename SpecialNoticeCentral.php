@@ -36,7 +36,7 @@ class CentralNotice extends SpecialPage {
 		$wgOut->addWikiText( wfMsg( 'centralnotice-summary' ) );
 		
 		// Show header
-		$this->printHeader();
+		$this->printHeader( $sub );
 		
 		// Handle form sumissions
 		if ( $wgRequest->wasPosted() ) {
@@ -197,17 +197,32 @@ class CentralNotice extends SpecialPage {
 		 );
 	}
 	
-	static public function printHeader() {
-		global $wgOut;
+	static public function printHeader( $sub ) {
+		global $wgOut, $wgTitle;
 		
-		$wgOut->addWikiText(
-			'[[Special:CentralNotice/listNotices |' .
-			wfMsg( 'centralnotice-notices') . ']] | ' .
-			'[[Special:NoticeTemplate/listTemplates|' .
-			wfMsg ( 'centralnotice-templates' ) . ']] |' .
-			'[[Special:NoticeTranslate/listTranslations|' .
-			wfMsg( 'centralnotice-translate') . ']]'
+		$pages = array(
+			'Special:CentralNotice/listNotices' => wfMsg( 'centralnotice-notices' ),
+			'Special:NoticeTemplate/listTemplates' => wfMsg ( 'centralnotice-templates' ),
+			'Special:NoticeTranslate/listTranslations' => wfMsg( 'centralnotice-translate' )
 		);
+		$htmlOut = Xml::openElement( 'table', array( 'cellpadding' => 9 ) );
+		$htmlOut .= Xml::openElement( 'tr' );
+		foreach ( $pages as $page => $msg ) {
+			$title = Title::newFromText( $page );
+			
+			$style = array( 'style' => 'border-bottom:solid 1px silver' );
+			if ( $title->getPrefixedText() == $wgTitle->getPrefixedText() . "/{$sub}" ) {
+				$style = array( 'style' => 'border-bottom:solid 1px black' );
+			}
+			
+			$htmlOut .= Xml::tags( 'td', $style,
+				Xml::tags( 'a', array( 'href' => $title->getFullURL() ), $msg )
+			);
+		}
+		$htmlOut .= Xml::closeElement( 'tr' );
+		$htmlOut .= Xml::closeElement( 'table' );
+		
+		$wgOut->addHTML( $htmlOut );
 	}
 	
 	function getNoticesName() {
@@ -600,6 +615,7 @@ class CentralNotice extends SpecialPage {
 		$table .= Xml::closeElement( 'form' );
 		$table .= "</fieldset>";
 		$wgOut->addHtml( $table ) ;
+		
 		/*
 		$res = $dbr->select( array ( $centralnotice_table,
 					     "central_notice_template_assignments",
