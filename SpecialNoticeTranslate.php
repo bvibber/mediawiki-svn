@@ -100,7 +100,7 @@ class SpecialNoticeTranslate extends SpecialPage {
 		} else {
 			// Show message telling user there are none
 			$htmlOut .= Xml::tags( 'tr', null, 
-				Xml::tags( 'td', null, wfMsg( 'centralnotice-no-templates' ) )
+				Xml::tags( 'td', null, wfMsg( 'centralnotice-no-templates-translate' ) )
 			);
 		}
 		

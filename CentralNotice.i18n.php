@@ -65,7 +65,7 @@ $messages['en'] = array(
 	'centralnotice-invalid-date-range' => 'Invalid Date Range. Not Updating',
 	'centralnotice-null-string' => 'Can\'t add a null string. Not adding',
 	'centralnotice-confirm-delete' => 'Are you sure you want to delete this item? This action will be unrecoverable.',
-	'centralnotice-no-templates' => 'There are not any templates to edit translations for'
+	'centralnotice-no-templates-translate' => 'There are not any templates to edit translations for'
 );
 
 /** Afrikaans (Afrikaans)
