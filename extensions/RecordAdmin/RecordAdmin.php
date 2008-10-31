@@ -15,7 +15,7 @@ define('RECORDADMIN_VERSION','0.3, 2008-10-31');
 
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'RecordAdmin.18n.php';
+$wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'RecordAdmin.i18n.php';
 $wgExtensionAliasesFiles['RecordAdmin'] = $dir . 'RecordAdmin.alias.php';
 $wgExtensionFunctions[] = 'wfSetupRecordAdmin';
 
