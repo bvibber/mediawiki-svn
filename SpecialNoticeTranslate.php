@@ -69,9 +69,11 @@ class SpecialNoticeTranslate extends UnlistedSpecialPage {
 		$currentTemplate = $wgRequest->getText( 'template' );
 		
 		// Show preview
-		$htmlOut = SpecialNoticeTemplate::previewTemplate(
-			$wgRequest->getText( 'template' ),
-			$wgRequest->getVal( 'wpUserLanguage' ) 
+		$render = new SpecialNoticeText();
+		$render->project = 'wikipedia';
+		$render->language = $wgRequest->getVal( 'wpUserLanguage' );
+		$htmlOut = Xml::fieldset( wfMsg( 'centralnotice-preview' ),
+			$render->getHtmlNotice( $wgRequest->getText( 'template' ) )
 		);
 		
 		// Build HTML
