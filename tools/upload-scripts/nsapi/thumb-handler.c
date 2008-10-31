@@ -106,7 +106,8 @@ int thumb_handler_init(pblock *pb UNUSED, Session *sn, Request *rq)
 			   "failed to initialise cURL");
 		return REQ_ABORTED;
 	}
-	log_error(LOG_INFORM, "thumb-handler", sn, rq, "thumb-handler $Id$ ready");
+	log_error(LOG_INFORM, "thumb-handler", sn, rq, 
+		   "thumb-handler $Id$ ready");
 	return REQ_PROCEED;
 }
 
@@ -197,7 +198,9 @@ request_t	 req;
 	if (thumb_url_from_path(&req) == -1)
 		return REQ_ABORTED;
 	
-	pblock_nvinsert("x-wikimedia-thumb", req.thumburl->str, rq->srvhdrs);
+	
+	pblock_nvinsert("x-wikimedia-thumb", 
+		util_uri_escape(req.thumburl->str, NULL), rq->srvhdrs);
 	
 	/*
 	 * Fetch the image.
@@ -321,7 +324,8 @@ static char const *passthrough[] = {
 	req->headers = curl_slist_append(req->headers, xff);
 	
 	str = g_string_new(NULL);
-	g_string_printf(str, "X-Original-URI: %s", pblock_findval("uri", req->rq->reqpb));
+	g_string_printf(str, "X-Original-URI: %s", 
+		util_uri_escape(pblock_findval("uri", req->rq->reqpb), NULL));
 	req->headers = curl_slist_append(req->headers, str->str);
 	g_string_free(str, TRUE);
 	
