@@ -33,6 +33,12 @@ $aliases['fa'] = array(
 	'WhitelistEdit' => array( 'ویرایش_فهرست_سفید' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'WhiteList' => array( 'ListeBlanche' ),
+	'WhitelistEdit' => array( 'ModifierListeBlanche' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'WhiteList' => array( 'Běła lisćina' ),

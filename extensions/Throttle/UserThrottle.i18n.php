@@ -64,7 +64,8 @@ $messages['de'] = array(
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
-	'acct_creation_global_soft_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einen Moment aufgehoben, da es eine ungewöhnlich hohe Anzahl an Anmeldeversuchen gab. Bitte wartem Sie einige Minuten und versuchen Sie es dann erneut.',
+	'acct_creation_global_soft_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einen Moment aufgehoben, da es eine ungewöhnlich hohe Anzahl an Anmeldeversuchen gab.
+Bitte warten Sie einige Minuten und versuchen Sie es dann erneut.',
 	'acct_creation_global_hard_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warten Sie einen Moment und drücken Sie dann die Neuladen-Schaltfläche an Ihrem Browser.',
 );
 

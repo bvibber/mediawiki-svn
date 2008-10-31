@@ -213,6 +213,13 @@ $messages['br'] = array(
 	'sitematrix-sitetotal' => 'Hollad',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'sitematrix-language' => 'Jezik',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author Paucabot

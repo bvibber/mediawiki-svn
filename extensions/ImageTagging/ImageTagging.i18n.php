@@ -781,21 +781,26 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'taggedimages' => 'Изображения с метками',
+	'imagetagging-addimagetag' => 'Отметить это изображение',
 	'imagetagging-article' => 'Страница:',
 	'imagetagging-imghistory' => 'История',
 	'imagetagging-images' => 'изображения',
 	'imagetagging-inthisimage' => 'В изображении: $1',
 	'imagetagging-removetag' => 'удалить метку',
+	'imagetagging-done-button' => 'Отметка сделана',
 	'imagetagging-tag-button' => 'Метка',
 	'imagetagging-tagcancel-button' => 'Отмена',
 	'imagetagging-addingtag' => 'Добавление метки…',
 	'imagetagging-removingtag' => 'Удаление метки…',
 	'imagetagging-addtagsuccess' => 'Метка добавлена.',
 	'imagetagging-removetagsuccess' => 'Метка удалена.',
-	'imagetagging-imagetag-seemoreimages' => 'Смотреть больше изоюражений "$1" ($2)',
-	'imagetagging-taggedimages-title' => 'Изображения "$1"',
+	'imagetagging-imagetag-seemoreimages' => 'Смотреть больше изображений «$1» ($2)',
+	'imagetagging-taggedimages-title' => 'Изображения «$1»',
+	'tag-logpagename' => 'Журнал меток',
 );
 
 /** Slovak (Slovenčina)

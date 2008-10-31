@@ -99,6 +99,13 @@ $messages['gl'] = array(
 	'breadcrumbs-desc' => 'Amosa aos usuarios a traxectoria a través do wiki.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'breadcrumbs-desc' => 'הצגת נתיבי המשתמשים דרך הוויקי',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

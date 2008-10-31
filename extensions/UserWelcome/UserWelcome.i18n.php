@@ -67,6 +67,26 @@ $messages['arz'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|صديق|صديق}} جديد',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'userwelcome-desc' => 'Dodaje <tt>&lt;dobrodoslicaKorisnik&gt;</tt> posebnu oznaku logiranim korisnicima sa posebnim socijalnim informacijama',
+	'mp-userlevels-link' => 'Nivoi korisnika',
+	'mp-welcome-upload' => 'Postavljanje',
+	'mp-welcome-edit' => 'Izmjena',
+	'mp-welcome-points' => '$1 bodova',
+	'mp-welcome-needed-points' => 'Da bi ste napredovali do <b><a href="$1">$2</a></b> trebate još <i>$3</i> bodova!',
+	'mp-welcome-logged-in' => 'Zdravo $1',
+	'mp-requests-title' => 'Zahtjevi',
+	'mp-requests-message' => 'Imate slijedeće zahtjeve.',
+	'mp-request-new-message' => 'nova poruka',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|nova nagrada|nove nagrade|novih nagrada}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|novi poklon|nova poklona|novih poklona}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|novi neprijatelj|nova neprijatelja|novih neprijatelja}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|novi prijatelja|nova prijatelja|novih prijatelja}}',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -104,6 +124,27 @@ $messages['gl'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|novo amigo|novos amigos}}',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'userwelcome-desc' => 'הוספת תגית <tt>&lt;welcomeUser&gt;</tt> כדי להציג, למשתמשים רשומים בלבד, נתונים חברתיים לפי משתמש',
+	'mp-userlevels-link' => 'רמות המשתמשים',
+	'mp-welcome-upload' => 'העלאה',
+	'mp-welcome-edit' => 'עריכה',
+	'mp-welcome-points' => '$1 נקודות',
+	'mp-welcome-needed-points' => 'כדי להתקדם ל<b><a href="$1">$2</a></b> הרוויחו <i>$3</i> נקודות נוספות!',
+	'mp-welcome-logged-in' => 'שלום $1',
+	'mp-requests-title' => 'בקשות',
+	'mp-requests-message' => 'הגיעו אליכם הבקשות הבאות.',
+	'mp-request-new-message' => 'הודעה חדשה',
+	'mp-request-new-award' => '{{PLURAL:$1|פרס חדש אחד|$1 פרסים חדשים}}',
+	'mp-request-new-gift' => '{{PLURAL:$1|מתנה חדשה אחת|$1 מתנות חדשות}}',
+	'mp-request-new-foe' => '{{PLURAL:$1|יריב חדש אחד|$1 יריבים חדשים}}',
+	'mp-request-new-friend' => '{{PLURAL:$1|חבר חדש אחד|$1 חברים חדשים}}',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -138,6 +179,46 @@ $messages['nl'] = array(
 	'mp-request-new-gift' => '{{PLURAL:$1|1 nieuw geschenk|$1 nieuwe geschenken}}',
 	'mp-request-new-foe' => '{{PLURAL:$1|1 nieuwe vijand|$1 nieuwe vijanden}}',
 	'mp-request-new-friend' => '{{PLURAL:$1|1 nieuwe vriend|$1 nieuwe vrienden}}',
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'userwelcome-desc' => 'පරිශීලක-විශේෂී සමාජීය තොරතුරු ප්‍රදක්ෂීණා කෙරුම සඳහා, ප්‍රවිෂ්ට-වූ පරිශීලකයන්ට <tt>&lt;welcomeUser&gt;</tt> ටැගය එකතු කෙරෙයි',
+	'mp-userlevels-link' => 'පරිශීලක මට්ටම්',
+	'mp-welcome-upload' => 'උඩුගත කිරීම',
+	'mp-welcome-edit' => 'සංස්කරණය',
+	'mp-welcome-points' => 'ලකුණු $1',
+	'mp-welcome-needed-points' => '<b><a href="$1">$2</a></b> වෙත උසස් වීමට, තවත් ලකුණු <i>$3</i> ක් උපයා ගන්න!',
+	'mp-welcome-logged-in' => 'සැරදේ $1',
+	'mp-requests-title' => 'ඉල්ලීම්',
+	'mp-requests-message' => 'පහත ඉල්ලීම් ඔබ වෙත යොමු වී ඇත.',
+	'mp-request-new-message' => 'නව පණිවුඩය',
+	'mp-request-new-award' => 'නව {{PLURAL:$1|සම්මානයක්|සම්මාන $1 ක්}}',
+	'mp-request-new-gift' => 'නව {{PLURAL:$1|ත්‍යාගයක්|ත්‍යාගයන් $1 ක්}}',
+	'mp-request-new-foe' => 'නව {{PLURAL:$1|ප්‍රතිමල්ලවයෙක්|ප්‍රතිමල්ලවයන් $1 ක්}}',
+	'mp-request-new-friend' => 'නව {{PLURAL:$1|මිතුරෙක්|මිතුරන් $1 ක්}}',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'userwelcome-desc' => 'Pridáva značku <tt>&lt;welcomeUser&gt;</tt> na zobrazovanie sociálnych informácií špecifických pre používateľa (pre prihlásených používateľov)',
+	'mp-userlevels-link' => 'Úrovne používateľov',
+	'mp-welcome-upload' => 'Nahrať súbor',
+	'mp-welcome-edit' => 'Upraviť',
+	'mp-welcome-points' => '$1 bodov',
+	'mp-welcome-needed-points' => 'Aby ste postúpili na <b><a href="$1">$2</a></b>, zarobte ešte <i>$3</i> bodov!',
+	'mp-welcome-logged-in' => 'Ahoj $1',
+	'mp-requests-title' => 'Požiadavky',
+	'mp-requests-message' => 'Máte nasledovné požiadavky.',
+	'mp-request-new-message' => 'nová správa',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|nové ocenenie|nové ocenenia|nových ocenení}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|nový dar|nové dary|nových darov}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|nový nepriateľ|noví nepriatelia|nových nepriateľov}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|nový priateľ|noví priatelia|nových priateľov}}',
 );
 
 /** Vietnamese (Tiếng Việt)

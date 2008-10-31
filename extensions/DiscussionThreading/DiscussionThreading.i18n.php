@@ -200,6 +200,17 @@ $messages['oc'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Començar una discussion novèla',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'discussionthreading-replysection' => 'ответ',
+	'discussionthreading-replysectionhint' => 'Ответить на это сообщение',
+	'discussionthreading-threadnewsection' => 'новые',
+	'discussionthreading-threadnewsectionhint' => 'Начать новую ветвь',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -490,6 +490,13 @@ $messages['bg'] = array(
 По-нова версия ($2) е налична на адрес http://pecl.php.net/package/APC/$2',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'viewapc-ls-options-legend' => 'Opcije',
+);
+
 /** Catalan (Català)
  * @author Aleator
  * @author Jordi Roqué

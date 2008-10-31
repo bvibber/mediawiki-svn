@@ -347,6 +347,13 @@ $messages['bg'] = array(
 	'openidloginlabel' => 'OpenID Адрес',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'openidlanguage' => 'Jezik',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

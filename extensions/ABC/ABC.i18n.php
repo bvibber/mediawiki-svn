@@ -65,10 +65,11 @@ $messages['fr'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'abcdesc' => 'מוסיף תגית <tt>&lt;abc&gt;</tt> למוסיקה מסוג ABC',
+	'abcdesc' => 'הוספת תגית <tt>&lt;abc&gt;</tt> למוסיקה בפורמט ABC',
 	'abcdownload' => 'הורדה:',
 	'abcsep' => '|',
 	'abcabc' => 'ABC',
@@ -86,6 +87,14 @@ $messages['hsb'] = array(
 	'abcdownload' => 'Sćahnyć',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'abcdesc' => "Setzt den <tt>&lt;abc&gt;</tt> Tag fir ''ABC music'' ze formatéieren",
+	'abcdownload' => 'Eroflueden:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -94,10 +103,41 @@ $messages['nl'] = array(
 	'abcdownload' => 'Downloaden:',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'abcdesc' => 'Dodaje znacznik <tt>&lt;abc&gt;</tt> do muzyki w formacie ABC',
+	'abcdownload' => 'Pobierz:',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */
 $messages['ru'] = array(
 	'abcdownload' => 'Загрузить:',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'abcdesc' => 'Pridáva značku <tt>&lt;abc&gt;</tt> na formátovanie ABC hudby',
+	'abcdownload' => 'Stiahnuť:',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'abcdownload' => 'Ladda ner:',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'abcdesc' => 'Thêm thẻ <tt>&lt;abc&gt;</tt> để định dạng nhạc ABC',
+	'abcdownload' => 'Tải xuống:',
 );
 

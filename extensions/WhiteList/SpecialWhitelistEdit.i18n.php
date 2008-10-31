@@ -274,6 +274,15 @@ $2',
 	'whitelistnummatches' => '  - {{PLURAL:$1|едно съвпадение|$1 съвпадения}}',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$allMessages['bs'] = array(
+	'whitelistrequestmsg' => '$1 zahtijeva pristup slijedećim stranicama:
+
+$2',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author SMP

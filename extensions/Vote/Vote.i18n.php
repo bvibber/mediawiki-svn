@@ -387,6 +387,7 @@ $messages['grc'] = array(
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author StuB
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'vote' => 'הצבעה',
@@ -403,6 +404,8 @@ $messages['he'] = array(
 	'vote-results' => 'תוצאות ההצבעה',
 	'vote-results-choice' => 'אפשרות',
 	'vote-results-count' => 'מספר מצביעים',
+	'vote-results-none' => 'עד כה טרם נשלחו הצבעות.',
+	'vote-login' => 'עליכם $1 כדי להצביע.',
 	'vote-login-link' => 'כניסה לחשבון',
 	'vote-invalid-choice' => 'יש לבחור באחת האפשרויות הזמינות.',
 );

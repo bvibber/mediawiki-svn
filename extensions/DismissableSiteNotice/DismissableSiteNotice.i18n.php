@@ -177,6 +177,14 @@ $messages['de'] = array(
 	'sitenotice-desc' => 'Erlaubt Benutzern das Schließen der Sitenotice',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'sitenotice_close' => 'zacyniś',
+	'sitenotice-desc' => 'Dowólujo wužywarjam sedłowe powěźeńku zacyniś',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author ZaDiak

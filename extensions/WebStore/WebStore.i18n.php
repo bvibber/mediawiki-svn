@@ -493,6 +493,62 @@ $1',
 	'webstore_no_handler' => 'Non hai un programa para transformar este tipo MIME',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'inplace_access_disabled' => 'הגישה לשירות זה בוטלה לכל הלקוחות.',
+	'inplace_access_denied' => 'שירות זה מוגבל לפי כתובת ה־IP של הלקוח.',
+	'inplace_scaler_no_temp' => 'אין תיקייה זמנית תקינה.
+הגדירו את $wgLocalTmpDirectory לתיקייה הניתנת לכתיבה.',
+	'inplace_scaler_not_enough_params' => 'אין מספיק פרמטרים.',
+	'inplace_scaler_invalid_image' => 'התמונה אינה תקינה, לא ניתן לזהות את גודלה.',
+	'inplace_scaler_failed' => 'אירעה שגיאה במהלך שינוי גודל התמונה: $1',
+	'inplace_scaler_no_handler' => 'אין הגדרה להצגת קבצים מסוג MIME זה',
+	'inplace_scaler_no_output' => 'לא נוצר קובץ הכולל את פלט המרה.',
+	'inplace_scaler_zero_size' => 'ההמרה יצרה קובץ פלט בן 0 בתים.',
+	'webstore_access' => 'שירות זה מוגבל לפי כתובת ה־IP של הלקוח.',
+	'webstore_path_invalid' => 'שם הקובץ שגוי.',
+	'webstore_dest_open' => 'לא ניתן לפתוח את קובץ היעד "$1".',
+	'webstore_dest_lock' => 'לא ניתן לבצע נעילת בלעדיות של קובץ היעד "$1".',
+	'webstore_dest_mkdir' => 'לא ניתן ליצור את תיקיית היעד "$1".',
+	'webstore_archive_lock' => 'לא ניתן לבצע נעילת בלעדיות על קובץ הארכיון "$1".',
+	'webstore_archive_mkdir' => 'לא ניתן ליצור את תיקיית הארכיון "$1".',
+	'webstore_src_open' => 'לא ניתן לפתוח את קובץ המקור "$1".',
+	'webstore_src_close' => 'שגיאה בסגירת קובץ המקור "$1".',
+	'webstore_src_delete' => 'שגיאה במחיקת קובץ המקור "$1".',
+	'webstore_rename' => 'שגיאה בשינוי שם הקובץ מ־"$1" ל־"$2".',
+	'webstore_lock_open' => 'שגיאה בפתיחת קובץ הנעילה "$1".',
+	'webstore_lock_close' => 'שגיאה בסגירת קובץ הנעילה "$1".',
+	'webstore_dest_exists' => 'שגיאה, קובץ היעד "$1" קיים.',
+	'webstore_temp_open' => 'שגיאה בפתיחת הקובץ הזמני "$1".',
+	'webstore_temp_copy' => 'שגיאה בהעתקת הקובץ הזמני "$1" לקובץ היעד "$2".',
+	'webstore_temp_close' => 'שגיאה בסגירת הקובץ הזמני "$1".',
+	'webstore_temp_lock' => 'שגיאה בנעילת הקובץ הזמני "$1".',
+	'webstore_no_archive' => 'קובץ היעד קיים ולא ניתן ארכיון.',
+	'webstore_no_file' => 'לא הועלה קובץ.',
+	'webstore_move_uploaded' => 'שגיאה בהעברת הקובץ שהועלה "$1" אל התיקייה הזמנית "$2".',
+	'webstore_invalid_zone' => 'אזור שגוי "$1".',
+	'webstore_no_deleted' => 'לא הוגדרה תיקיית ארכיון עבור קבצים שנמחקו.',
+	'webstore_curl' => 'שגיאת cURL: $1',
+	'webstore_404' => 'הקובץ לא נמצא.',
+	'webstore_php_warning' => 'אזהרת PHP: $1',
+	'webstore_metadata_not_found' => 'הקובץ לא נמצא: $1',
+	'webstore_postfile_not_found' => 'הקובץ לשליחה לא נמצא.',
+	'webstore_scaler_empty_response' => 'משנה גודלי התמונות החזיר תגובה ריקה עם קוד התגובה 200.
+יתכן והדבר נגרם עקב שגיאה קריטית של PHP במשנה הגודל.',
+	'webstore_invalid_response' => 'תגובה בלתי תקינה מהשרת:
+
+$1',
+	'webstore_no_response' => 'אין תגובה מהשרת',
+	'webstore_backend_error' => 'שגיאה משרת האיחסון:
+
+$1',
+	'webstore_php_error' => 'אירעו שגיאות PHP:',
+	'webstore_no_handler' => 'אין הגדרה להצגת קבצים מסוג MIME זה',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

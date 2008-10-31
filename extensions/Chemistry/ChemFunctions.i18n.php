@@ -166,7 +166,7 @@ $messages['de'] = array(
 	'chemicalsources' => 'Chemische Quellen',
 	'chemicalsource-desc' => 'Stellt das <nowiki><chemform></nowiki>-Tag für chemischen Formeln bereit',
 	'chemFunctions_ListPage' => 'Chemische Quellen',
-	'chemFunctions_DataList' => 'Nachfolgend finden Sie Links zu Seiten, die eventuell Informationen über chemische Substanzen anbieten, nach denen Sie suchen:<br /><br />
+	'chemFunctions_DataList' => 'Nachfolgend findest du Links zu Seiten, die eventuell Informationen über chemische Substanzen anbieten, nach denen du suchst:<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbindung $MIXCASNameFormula auf NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS an der Oxford University (UK) (nicht durchsuchbar)</a><br />',
 	'chemFunctions_CAS' => 'CAS Nummer',

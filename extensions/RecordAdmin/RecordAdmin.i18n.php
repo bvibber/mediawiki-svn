@@ -48,13 +48,18 @@ $messages['en'] = array(
 	'right-recordadmin' => 'Find and edit record pages',
 );
 
-$messages['qqq'] = array (
+/** Message documentation (Message documentation) */
+$messages['qqq'] = array(
 	'recordadmin-category' => 'Category which contains the templates used as records and having corresponding forms',
 );
 
-$messages['fr'] = array (
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
 	'recordadmin' => 'Gestion des enregistrements',
 	'recordadmin-desc' => 'Une page spéciale pour trouver et modifier l’enregistrement des pages par l’utilisation d’un formulaire',
+	'recordadmin-category' => 'Enregistrements',
 	'recordadmin-select' => 'Sélectionner le type d’enregistrement à rechercher pour',
 	'recordadmin-newsearch' => 'Nouvelle recherche $1',
 	'recordadmin-newrecord' => 'Sélectionner un autre type d’enregistrement',
@@ -83,3 +88,30 @@ $messages['fr'] = array (
 	'recordadmin-viewlink' => 'voir',
 	'recordadmin-editlink' => 'modifier',
 );
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'recordadmin-submit' => 'OK',
+	'recordadmin-alreadyexist' => '"$1" bestaat al!',
+	'recordadmin-createsuccess' => '$1 aangemaakt',
+	'recordadmin-badtitle' => 'Onjuiste paginanaam!',
+	'recordadmin-invert' => 'Omgekeerde selectie',
+	'recordadmin-buttonsearch' => 'Zoeken',
+	'recordadmin-buttoncreate' => 'Aanmaken',
+	'recordadmin-buttonreset' => 'Fomulier wissen',
+	'recordadmin-searchresult' => 'Zoekresultaten',
+	'recordadmin-edit' => 'Bezig met bewerken van $1',
+	'recordadmin-typeupdated' => 'De eigenschappen van $1 zijn bijgewerkt',
+	'recordadmin-updatesuccess' => '$1 is bijgewerkt',
+	'recordadmin-updateerror' => 'Er is een fout opgetreden tijdens het bijwerken',
+	'recordadmin-buttonsave' => 'Opslaan',
+	'recordadmin-createlink' => '<a href=$1>aanmaken</a>',
+	'recordadmin-newcreated' => 'Nieuwe $1 aangemaakt van openbaar formulier',
+	'recordadmin-summary-typecreated' => 'Nieuwe $1 aangemaakt',
+	'recordadmin-viewlink' => 'bekijken',
+	'recordadmin-editlink' => 'bewerken',
+	'recordadmin-created' => 'Aangemaakt',
+);
+

@@ -72,6 +72,13 @@ $messages['gl'] = array(
 	'woopra-desc' => 'Permite ao [http://www.woopra.com/ software de adestramento en vivo Woopra] traballar coa súa instalación MediaWiki',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'woopra-desc' => 'אפשרות ל[http://www.woopra.com/ תוכנת המעקב החי Woopra] לעבוד עבור התקנת מדיה־ויקי שלכם',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

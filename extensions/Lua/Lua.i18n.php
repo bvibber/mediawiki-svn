@@ -234,6 +234,16 @@ $messages['oc'] = array(
 	'lua_overflow_time' => 'Durada maximala d’execucion atencha',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'lua_error' => 'Ошибка на линии $1',
+	'lua_extension_notfound' => 'Расширение Lua не настроено',
+	'lua_interp_notfound' => 'Интерпретатор Lua не найден',
+	'lua_error_internal' => 'Внутренняя ошибка',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

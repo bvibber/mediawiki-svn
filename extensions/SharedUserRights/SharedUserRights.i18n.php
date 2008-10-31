@@ -90,6 +90,17 @@ $messages['ru'] = array(
 	'gblrights-logpage' => 'Журнал глобальных прав',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'shareduserrights' => 'Správa zdieľaných používateľských práv',
+	'gblrights-desc' => 'Jednoduchá [[Special:SharedUserRights|správa globálnych používateľských práv]]',
+	'gblrights-logpage' => 'Záznam globálnych práv',
+	'gblrights-pagetext' => 'Toto je záznam všetkých zmien v tabuľke globálnych práv tejto rodiny wiki',
+	'gblrights-rights-entry' => 'zmenené globálne členstvo v skupine používateľa $1 z $2 na $3',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

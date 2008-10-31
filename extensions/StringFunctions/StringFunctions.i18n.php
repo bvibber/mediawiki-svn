@@ -44,6 +44,13 @@ $messages['nl'] = array(
 	'stringfunctions-desc' => 'Breidt de parser uit met tekstfuncties',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'stringfunctions-desc' => 'Rozširuje syntaktický analyzátor o funkcie na prácu s reťazcami',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

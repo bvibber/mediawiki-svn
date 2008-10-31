@@ -171,6 +171,13 @@ $messages['br'] = array(
 	'duplicator-toomanyrevisions' => "Re a ($2) gemmoù zo gant [[$1]]. N'haller ket o eilañ. $3 eo ar vevenn e talvoud.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'duplicator-options' => 'Opcije',
+);
+
 /** Catalan (Català)
  * @author SMP
  * @author Toniher

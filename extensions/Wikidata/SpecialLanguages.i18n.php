@@ -700,6 +700,14 @@ $wdMessages['br'] = array(
 	'ow_db_consistency_not_found' => "<h2>Fazi</h2>Evit doare eo brein an diaz titouroù, n'hall ket wikidata kavout roadennoù reizh liammet ouzh ar ster termenet-mañ (ID). Marteze eo bet kollet. Kit e darempred gant oberiataer pe merer ar servijer.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$wdMessages['bs'] = array(
+	'ow_Language' => 'Jezik',
+	'ow_OptionAttributeOptions' => 'Opcije',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */
@@ -900,6 +908,11 @@ $wdMessages['de'] = array(
 	'ow_copy_unsuccessful' => '<h3>Kopieren nicht erfolgreich</h3> Es hat keine Kopieraktion stattgefunden.',
 	'ow_no_action_specified' => '<h3>Es wurde keine Aktion angegeben</h3> Vielleicht kamst du direkt zu dieser Seite?.',
 	'ow_db_consistency_not_found' => '<h2>Fehler</h2>Die Datenbank ist nicht mehr konsistent. Wikidata kann keine gültigen Daten zu der ID finden. Bitte kontaktiere den Server-Administrator.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form)) */
+$wdMessages['de-formal'] = array(
+	'ow_noedit' => 'Sie haben nicht die Erlaubnis Seiten im Dataset "$1" zu editieren. Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 );
 
 /** Greek (Ελληνικά)

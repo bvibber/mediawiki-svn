@@ -66,3 +66,22 @@ $messages['nl'] = array(
 	'searchbox-namespaces' => 'Naamruimten:',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'searchbox-desc' => 'Umožňuje vkladanie vyhľadávacích formulárov',
+	'searchbox-search' => 'Hľadať',
+	'searchbox-go' => 'Vykonať',
+	'searchbox-namespaces' => 'Menné priestory:',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'searchbox-search' => 'Sök',
+	'searchbox-go' => 'Gå',
+	'searchbox-namespaces' => 'Namnrymder:',
+);
+

@@ -152,6 +152,13 @@ $messages['pt'] = array(
 	'psinotocnum-desc' => 'Nova palavra mágica "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'psinotocnum-desc' => 'Новое волшебное слово «<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>»',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

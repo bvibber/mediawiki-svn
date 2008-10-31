@@ -321,6 +321,26 @@ $messages['haw'] = array(
 	'dt_xml_name' => 'Inoa',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'dt-desc' => 'אפשרות של ייבוא ושל ייצוא נתונים מבניים הנכללים בהכללות של תבניות',
+	'viewxml' => 'הצגת XML',
+	'dt_viewxml_docu' => 'אנא בחרו את מרחבי השם והקטגוריות אותם תרצו להציג בפורמט XML.',
+	'dt_viewxml_categories' => 'קטגוריות',
+	'dt_viewxml_namespaces' => 'מרחבי שם',
+	'dt_viewxml_simplifiedformat' => 'מבנה מפושט',
+	'dt_xml_namespace' => 'מרחב שם',
+	'dt_xml_page' => 'דף',
+	'dt_xml_field' => 'שדה',
+	'dt_xml_name' => 'שם',
+	'dt_xml_title' => 'כותרת',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'טקסט חופשי',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

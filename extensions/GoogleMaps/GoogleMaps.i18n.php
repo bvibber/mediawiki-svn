@@ -456,6 +456,14 @@ $wgGoogleMapsMessages['br'] = array(
 	'gm-mars' => 'Meurzh',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$wgGoogleMapsMessages['bs'] = array(
+	'gm-width' => 'Širina',
+	'gm-line-width' => 'Širina',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */

@@ -179,16 +179,37 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'accountmanager' => 'Управление аккаунтами',
+	'accountmanager' => 'Управление учётными записями',
 	'am-username' => 'имя участника',
 	'am-email' => 'электронная почта',
 	'nss-rights' => 'права',
 	'nss-save-changes' => 'Сохранить изменения',
 	'nss-create-account-header' => 'Создать новую учётную запись',
 	'nss-create-account' => 'Создание учётной записи',
-	'nss-welcome-mail' => 'Аккаунт с именем $1 и паролем $2 был создан вами.',
+	'nss-welcome-mail' => 'Для вас создана учётная запись с именем $1 и паролем $2.',
+	'nss-welcome-mail-subject' => 'Создание учётной записи',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'accountmanager' => 'Správca účtov',
+	'am-username' => 'používateľské meno',
+	'am-email' => 'email',
+	'am-active' => 'aktívny',
+	'am-updated' => 'Vaše zmeny boli úspešne uložené',
+	'nss-desc' => 'Zásuvný modul na overovanie voči databáze libnss-mysql. Obsahuje [[Special:AccountManager|správcu účtov]].',
+	'nss-rights' => 'práva',
+	'nss-save-changes' => 'Uložiť zmeny',
+	'nss-create-account-header' => 'Vytvoriť nový účet',
+	'nss-create-account' => 'Vytvoriť účet',
+	'nss-welcome-mail' => 'Bol pre vás vytvorený účet s používateľským menom $1 a heslom $2.',
+	'nss-welcome-mail-subject' => 'Vytvorenie účtu',
+	'nss-db-error' => 'Chyba pri čítaní z overovacej databázy',
 );
 
 /** Swedish (Svenska)
@@ -202,6 +223,7 @@ $messages['sv'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'accountmanager' => 'Trình quản lý tài khoản',
@@ -210,6 +232,7 @@ $messages['vi'] = array(
 	'am-active' => 'tích cực',
 	'am-updated' => 'Đã lưu các thay đổi của bạn thành công',
 	'nss-desc' => 'Phần bổ trợ để xác nhận tính danh theo cơ sở dữ liệu libnss-mysql, bao gồm [[Special:AccountManager|trình quản lý tài khoản]]',
+	'nss-rights' => 'quyền',
 	'nss-save-changes' => 'Lưu các thay đổi',
 	'nss-create-account-header' => 'Mở tài khoản mới',
 	'nss-create-account' => 'Mở tài khoản',

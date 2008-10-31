@@ -425,6 +425,13 @@ $messages['bg'] = array(
 	'sign-review-comment' => 'Коментар',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'sign-viewfield-options' => 'Opcije',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */
@@ -786,6 +793,37 @@ $messages['gu'] = array(
 $messages['haw'] = array(
 	'sign-realname' => 'Inoa:',
 	'sign-viewfield-realname' => 'Inoa',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'signdocument' => 'חתימת מסמכים',
+	'sign-nodocselected' => 'אנא בחרו את המסמך עליו תרצו לחתום.',
+	'sign-selectdoc' => 'מסמך:',
+	'sign-docheader' => '<div class="noarticletext">אנא השתמשו בטופס שלהלן כדי לחתום על המסמך "[[$1]]", המוצג להלן.
+אנא קראו את המסמך כולו בעיון, ואם ברצונכם לציין את תמיכתם בו, אנא מלאו את השדות הדרושים כדי לחתום עליו.</div>',
+	'sign-error-nosuchdoc' => 'המסמך המבוקש ($1) אינו קיים.',
+	'sign-realname' => 'שם:',
+	'sign-address' => 'כתובת (רחוב):',
+	'sign-city' => 'עיר:',
+	'sign-state' => 'מדינה:',
+	'sign-zip' => 'מיקוד:',
+	'sign-country' => 'ארץ:',
+	'sign-phone' => 'מספר טלפון:',
+	'sign-bday' => 'גיל:',
+	'sign-email' => 'כתובת דוא"ל:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> פירושה שדה חובה.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> הערה: גם נתונים שלא מוצגים יהיו גלויים בפני מפעילים.</i></small>',
+	'sign-list-anonymous' => 'חתימה אנונימית',
+	'sign-list-hideaddress' => 'מבלי להציג כתובת',
+	'sign-list-hideextaddress' => 'מבלי להציג עיר, מדינה, מיקוד או ארץ',
+	'sign-list-hidephone' => 'מבלי להציג מספר טלפון',
+	'sign-list-hidebday' => 'מבלי להציג גיל',
+	'sign-list-hideemail' => 'מבלי להציג כתובת דוא"ל',
+	'sign-submit' => 'חתימה על המסמך',
 );
 
 /** Hindi (हिन्दी)

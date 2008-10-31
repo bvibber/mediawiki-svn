@@ -292,12 +292,13 @@ $messages['pl'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'interwikilist' => 'Список интервики',
-	'interwikilist-desc' => 'Добавляет [[Special:Interwikilist|служебную страницу]] для просмотра и правки интервики ссылок',
-	'interwikilist-linkname' => 'Интервики ссылка',
-	'interwikilist-target' => 'URL',
+	'interwikilist-desc' => 'Добавляет [[Special:Interwikilist|служебную страницу]] для просмотра доступных интервики-ссылок',
+	'interwikilist-linkname' => 'Интервики-ссылка',
+	'interwikilist-target' => 'Целевой URL',
 	'interwikilist-filter' => 'Список фильтров',
 	'interwikilist-prefix' => 'Префикс интервики:',
 );

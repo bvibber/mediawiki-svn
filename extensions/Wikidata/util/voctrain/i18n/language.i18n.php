@@ -15,6 +15,7 @@ $fallback=array(
 	'bcc' => 'en',
 	'bg'  => 'en',
 	'br'  => 'en',
+	'bs'  => 'en',
 	'cs'  => 'en',
 	'de'  => 'en',
 	'el'  => 'en',
@@ -581,6 +582,14 @@ $messages['br'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Kuzhat an termenadurioù e yezh ar goulennoù',
 	'voctrain_hide_words_in_question_language' => 'Kuzhat ar gerioù e yezh ar goulenn',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Dispartiañ ar yezhoù dre skejoù a-benn gellout implijout meur a yezh.',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'voctrain_Login' => 'Prijava',
+	'voctrain_Language' => 'Jezik',
 );
 
 /** Czech (Česky)

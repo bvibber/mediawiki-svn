@@ -478,11 +478,17 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'imstatus_syntax' => 'Синтаксис',
+	'imstatus_default' => 'По умолчанию',
+	'imstatus_example' => 'Пример',
+	'imstatus_possible_val' => 'Возможные значения',
 	'imstatus_max' => 'макс.',
 	'imstatus_min' => 'мин.',
 	'imstatus_or' => 'или',
+	'imstatus_style' => 'стиль индикатора состояния',
 	'imstatus_icq_id' => 'ваш ICQ ID',
 );
 

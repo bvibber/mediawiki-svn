@@ -468,6 +468,7 @@ $messages['lb'] = array(
 	'deletebatch-caption' => 'Lëscht vun der Säit',
 	'deletebatch-title' => 'Zesumme läschen',
 	'deletebatch-link-back' => "Dir kënnt op d'Erweiderung zréckgoen",
+	'deletebatch-both-modes' => 'Wielt entweder eng spezifesch Säit oder eng spezifesch Lëscht vu Säiten.',
 	'deletebatch-or' => '<b>ODER</b>',
 	'deletebatch-page' => 'Säite fir ze läschen',
 	'deletebatch-reason' => 'Grond fir ze läschen',

@@ -361,6 +361,7 @@ $messages['ro'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'msfunc_desc' => 'Набор математических и статистических функций',
 	'msfunc_nan' => 'Результат не является числом',
 	'msfunc_inf' => 'Результат является бесконечностью',
 	'msfunc_div_zero' => 'Деление на ноль',
@@ -418,6 +419,13 @@ $messages['te'] = array(
 	'msfunc_nan' => 'ఫలితపు విలువ సంఖ్య కాదు',
 	'msfunc_inf' => 'ఫలితపు విలువ అనంతము',
 	'msfunc_div_zero' => 'సున్నాతో భాగాహారం',
+);
+
+/** Thai (ไทย)
+ * @author Ans
+ */
+$messages['th'] = array(
+	'msfunc_div_zero' => 'ตัวหารเป็นศูนย์',
 );
 
 /** Vietnamese (Tiếng Việt)

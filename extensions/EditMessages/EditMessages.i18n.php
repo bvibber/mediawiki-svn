@@ -136,6 +136,13 @@ $messages['bn'] = array(
 	'editmsg-search' => 'অনুসন্ধান',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'editmsg-warning-file' => '* Greške pri čitanju datoteke su se desile kod slijedećih jezika: $1',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */

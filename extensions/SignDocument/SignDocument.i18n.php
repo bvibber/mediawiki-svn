@@ -92,6 +92,17 @@ $messages['gl'] = array(
 	'signaturelogentry' => 'asinou o documento $1',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'signaturelogpage' => 'יומן החתימות',
+	'signature-desc' => 'ההרחבה מאפשרת [[Special:SignDocument|חתימה]] על מסמכים',
+	'signaturelogpagetext' => 'זהו יומן המעקב של [[Special:SignDocument|כל החתימות שנוספו למסמכים]].',
+	'signaturelogentry' => 'חתם על המסמך $1',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

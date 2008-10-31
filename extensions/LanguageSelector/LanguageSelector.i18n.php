@@ -81,6 +81,13 @@ $messages['br'] = array(
 	'languageselector-setlang' => 'Termeniñ',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'languageselector' => 'Jezik',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author SMP

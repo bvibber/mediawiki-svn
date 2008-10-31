@@ -1441,6 +1441,7 @@ $messages['lb'] = array(
 	'deletequeue-vote-tab' => "Iwwer d'Läschen ofstëmmen",
 	'deletequeue-vote-legend' => "Dem Läschen zoustëmmen/Géint d'Läsche stëmmen",
 	'deletequeue-vote-action' => 'Rot:',
+	'deletequeue-vote-endorse' => 'Läschen ënnerstetzen',
 	'deletequeue-vote-object' => "Géint d'Läschen",
 	'deletequeue-vote-reason' => 'Bemierkungen:',
 	'deletequeue-showvotes-restrict-endorse' => 'Nëmmem Zoustëmmunge weisen',
@@ -1873,18 +1874,24 @@ $messages['pt'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'deletequeue-action-queued' => 'Удаление',
 	'deletequeue-action' => 'Предложить удаление',
 	'deletequeue-action-title' => 'Предложить удаление "$1"',
+	'deletequeue-generic-reasons' => '* Типовые причины
+  ** Вандализм
+  ** Спам
+  ** Поддержка
+  ** Вне сферы проекта',
 	'deletequeue-nom-alreadyqueued' => 'Эта страница уже находится в очереди удаления.',
 	'deletequeue-speedy-title' => 'Отметить "$1" к быстрому удалению',
-	'deletequeue-speedy-text' => "Вы можете использовать эту форму для пометки страницы \"'''\$1'''\" к быстрому удалению.
+	'deletequeue-speedy-text' => "Вы можете использовать эту форму для пометки страницы «'''$1'''» к быстрому удалению.
 
-Администратор рассмотрит этот запрос и, если он обоснован, может удалить эту страницу.
-Вы можете добавить причину удаления в списке и добавить любую другую необходимую информацию.",
-	'deletequeue-prod-title' => 'Предложить удаление "$1"',
+Администратор рассмотрит этот запрос и, если он обоснован, удалит эту страницу.
+Вам следует выбрать причину удаления из выпадающего списка, добавить любую другую существенную информацию.",
+	'deletequeue-prod-title' => 'Предложить удаление «$1»',
 	'deletequeue-delnom-reason' => 'Причина номинации:',
 	'deletequeue-delnom-otherreason' => 'Другие причины',
 	'deletequeue-delnom-extra' => 'Дополнительная информация:',
@@ -1893,7 +1900,7 @@ $messages['ru'] = array(
 	'deletequeue-log-dequeue' => "удалено [[$1]] из очереди удаления '$2'.",
 	'right-speedy-nominate' => 'Номинация страниц к быстрому удалению',
 	'right-prod-nominate' => 'Предложение страниц к удалению',
-	'right-prod-review' => 'Просмотр предложений к удалению',
+	'right-prod-review' => 'Просмотр неоспоренных предложений к удалению',
 	'right-deletediscuss-nominate' => 'Начать обсуждение удаления',
 	'right-deletediscuss-review' => 'Закрыть обсуждение удаления',
 	'right-deletequeue-vote' => 'Одобрение или отклонение удаления',
@@ -1907,18 +1914,30 @@ $messages['ru'] = array(
 	'deletequeue-review-requeue' => 'Переместить эту страницу в следующую очередь:',
 	'deletequeue-review-reason' => 'Комментарии:',
 	'deletequeue-review-newreason' => 'Новая причина:',
-	'deletequeue-review-newextra' => 'Дополнительная информация:',
+	'deletequeue-review-newextra' => 'Дополнительные сведения:',
 	'deletequeue-review-original' => 'Причина номинации',
 	'deletequeue-review-badaction' => 'Вы указали неправильное действие',
+	'deletequeue-reviewprod-tab' => 'Просмотр предлагаемых удалений',
+	'deletequeue-reviewprod-title' => 'Просмотр предлагаемого удаления «$1»',
+	'deletequeue-discusscreate-summary' => 'Создание обсуждения удаления [[$1]].',
+	'deletequeue-discusscreate-text' => 'Удаление предлагается по следующей причине: $2',
+	'deletequeue-role-nominator' => 'оригинальный номинатор к удалению',
+	'deletequeue-vote-legend' => 'Одобрение/Отказ удаления',
+	'deletequeue-vote-action' => 'Рекомендация:',
+	'deletequeue-vote-endorse' => 'Одобрить удаление.',
+	'deletequeue-vote-object' => 'Отказать в удалении.',
 	'deletequeue-vote-reason' => 'Комментарии:',
-	'deletequeue-vote-submit' => 'Подтвердить',
+	'deletequeue-vote-submit' => 'Отправить',
 	'deletequeue' => 'Очередь удаления',
+	'deletequeue-list-search-legend' => 'Поиск по страницам',
 	'deletequeue-list-queue' => 'Очередь:',
 	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-list-search' => 'Поиск',
 	'deletequeue-list-votes' => 'Список голосований',
 	'deletequeue-list-header-page' => 'Страница',
 	'deletequeue-list-header-queue' => 'Очередь',
+	'deletequeue-list-header-expiry' => 'Истёкшие',
+	'deletequeue-list-header-discusspage' => 'Страница обсуждения',
 );
 
 /** Slovak (Slovenčina)

@@ -105,7 +105,9 @@ $messages['oc'] = array(
  * @author Ferrer
  */
 $messages['ru'] = array(
+	'logentry-append' => 'Добавить',
 	'logentry-invalidpage' => 'Неправильная страница',
+	'logentry-invalidtoken' => 'Неправильный токен',
 );
 
 /** Slovak (Slovenčina)

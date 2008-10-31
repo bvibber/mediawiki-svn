@@ -308,7 +308,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'usernameblacklist-desc' => 'Aldonas [[MediaWiki:Usernameblacklist|Forbarlisto de uzantonomoj]] por malpermesi la kreadon de uzantokontoj laŭ unu aŭ pluraj regulesprimoj.',
-	'blacklistedusername' => 'Malpermesita uzantnomo',
+	'blacklistedusername' => 'Malpermesita salutnomo',
 	'blacklistedusernametext' => 'La salutnomo kiun vi elektis kongruas listeron en [[MediaWiki:Usernameblacklist|listo de nigralistaj salutnomoj]].
 Bonvolu elekti alian nomon.',
 	'usernameblacklist' => '<pre>

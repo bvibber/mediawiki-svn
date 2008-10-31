@@ -355,6 +355,13 @@ $messages['bg'] = array(
 	'repoadmin-edit-view' => 'Път до ViewVC:',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'right-codereview-link-user' => 'Poveži autore sa wiki korisnicima',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Matěj Grabovský
@@ -633,12 +640,14 @@ $4',
 $messages['eo'] = array(
 	'code' => 'Kontrolo de Programkodo',
 	'code-comments' => 'Komentoj',
+	'code-notes' => 'konsulti notojn',
 	'code-authors' => 'aŭtoroj',
 	'code-tags' => 'etikedoj',
 	'code-author-haslink' => 'Ĉi tiu aŭtoro estas ligita al la vikiuzanto $1',
 	'code-author-name' => 'Enigu salutnomon:',
 	'code-author-link' => 'ĉu ligigi?',
 	'code-author-unlink' => 'ĉu malligigi?',
+	'code-author-unlinksuccess' => 'Aŭtoro $1 estis malligita',
 	'code-field-id' => 'Revizio',
 	'code-field-author' => 'Aŭtoro',
 	'code-field-user' => 'Komentanto',
@@ -667,17 +676,30 @@ $messages['eo'] = array(
 	'code-rev-comment-submit' => 'Enmeti komenton',
 	'code-rev-comment-preview' => 'Antaŭrigardi',
 	'code-status-new' => 'nova',
+	'code-status-fixme' => 'riparu-min',
 	'code-status-ok' => 'Ek!',
+	'code-pathsearch-legend' => 'Serĉi reviziojn en ĉi tiu kodujo laŭ vojo',
 	'code-pathsearch-path' => 'Vojo:',
 	'code-rev-submit' => 'Konfirmi ŝanĝojn',
 	'codereview-reply-link' => 'respondo',
+	'codereview-email-body' => 'Uzanto "$1" afiŝis komenton de $3.
+
+Plena URL-o: $2
+
+Komento:
+
+$4',
+	'repoadmin' => 'Administrado de Kodujo',
+	'repoadmin-new-legend' => 'Krei novan kodujon',
 	'repoadmin-new-label' => 'Nomo de dosierujo:',
 	'repoadmin-new-button' => 'Krei',
+	'repoadmin-edit-legend' => 'Modifado de kodujo "$1"',
 	'repoadmin-edit-path' => 'Vojo al dosierujo:',
 	'repoadmin-edit-bug' => 'Bugzilla-vojo:',
 	'repoadmin-edit-button' => 'Ek',
 	'right-repoadmin' => 'Administri kodujojn',
 	'right-codereview-post-comment' => 'Aldoni komentojn en revizioj',
+	'right-codereview-link-user' => 'Ligi aŭtorojn al viki-uzantoj',
 	'specialpages-group-developer' => 'Disvolvistaj iloj',
 );
 
@@ -1452,6 +1474,7 @@ $messages['ms'] = array(
 	'code-rev-repo' => 'Gudang:',
 	'code-rev-rev' => 'Semakan:',
 	'code-rev-rev-viewvc' => 'di ViewVC',
+	'code-rev-status-set' => 'Tukar status',
 	'code-rev-tags' => 'Label:',
 	'code-rev-tag-add' => 'Tambah label:',
 	'code-rev-tag-remove' => 'Buang label:',

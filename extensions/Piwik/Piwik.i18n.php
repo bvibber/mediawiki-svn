@@ -267,6 +267,13 @@ $messages['pt'] = array(
 	'piwik-browsers' => 'Browsers',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'piwik-browsers' => 'Браузеры',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
