@@ -146,8 +146,7 @@ class SpecialNoticeTranslate extends UnlistedSpecialPage {
 		// Submit and Preview
 		$htmlOut .= Xml::openElement( 'tr' );
 		$htmlOut .= Xml::tags( 'td', array( 'colspan' => 4 ),
-			Xml::submitButton( wfMsg('centralnotice-modify', array( 'name' => 'update') ) ) .
-			Xml::submitButton( wfMsg('centralnotice-preview-template'), array( 'name' => 'preview') )
+			Xml::submitButton( wfMsg('centralnotice-modify', array( 'name' => 'update') ) )
 		);
 		
 		$htmlOut .= Xml::closeElement( 'tr' );
