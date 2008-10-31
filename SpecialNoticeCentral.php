@@ -109,19 +109,19 @@ class CentralNotice extends SpecialPage {
 	
 			// Handle updates if no post content came through	
 			if ( !isset( $lockedNotices ) ) {
-                                $allNotices = $this->getNoticesName();
-                                foreach ( $allNotices as $notice ) {
-                                         $this->updateLock( $notice, '0' );
-                                }
-                        }
+                $allNotices = $this->getNoticesName();
+                foreach ( $allNotices as $notice ) {
+                	$this->updateLock( $notice, '0' );
+                }
+            }
 			
-			if ( !isset( $enabledNotices ) ) {
-                                $allNotices = $this->getNoticesName();
-                                foreach ( $allNotices as $notice ) {
-                                        $this->updateEnabled( $notice, '0' );
-                                }
-                        }
-
+			if ( !isset( $enabledNotices ) && $wgRequest->getText( 'change' ) !== 'weight' ) {
+				$allNotices = $this->getNoticesName();
+				foreach ( $allNotices as $notice ) {
+					$this->updateEnabled( $notice, '0' );
+				}
+			}
+			
 			// Handle weight change
 			$updatedWeights = $wgRequest->getArray( 'weight' );
 			if ( isset( $updatedWeights ) ) {
@@ -689,7 +689,8 @@ class CentralNotice extends SpecialPage {
 				'action' => '' 
 			)
 		);
-		$htmlOut .= Xml::fieldset( $notice );
+		$htmlOut .= Xml::hidden( 'change', 'weight' );
+		$htmlOut .= Xml::openElement( 'fieldset', null, $notice );
 		$htmlOut .= Xml::openElement( 'table', array( 'cellpadding' => 9) );
 		$htmlOut .= Xml::element( 'th', null, wfMsg ( "centralnotice-templates" ) );
 		$htmlOut .= Xml::element( 'th', null, wfMsg ( "centralnotice-weight" ) );
