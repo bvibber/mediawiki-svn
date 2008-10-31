@@ -64,10 +64,10 @@ class SpecialNoticeText extends NoticePage {
 	
 	function getToggleScripts() {
 		$showStyle = <<<END
-<style type="text/css">#siteNoticeSmall{display:none;}</style>
+<style type="text/css">.siteNoticeSmall{display:none;}</style>
 END;
 		$hideStyle = <<<END
-<style type="text/css">#siteNoticeBig{display:none;}</style>
+<style type="text/css">.siteNoticeBig{display:none;}</style>
 END;
 		$hideToggleStyle = <<<END
 <style type="text/css">.siteNoticeToggle{display:none;}</style>
@@ -89,18 +89,23 @@ document.writeln($encHideToggleStyle);\n\n";
 	function getScriptFunctions() {
 		$script = "
 function toggleNotice() {
-	var big = document.getElementById('siteNoticeBig');
-	var small = document.getElementById('siteNoticeSmall');
+	var big = getElementsByClassName(document,'div','siteNoticeBig');
+	var small = getElementsByClassName(document,'div','siteNoticeSmall');
 	if (!wgNoticeToggleState) {
-		if(big) big.style.display = 'block';
-		if(small) small.style.display = 'none';
+		toggleNoticeStyle(big,'block');
+		toggleNoticeStyle(small,'none');
 		toggleNoticeCookie('0');
 	} else {
-		if(big) big.style.display = 'none';
-		if(small) small.style.display = 'block';
+		toggleNoticeStyle(big,'none');
+		toggleNoticeStyle(small,'block');
 		toggleNoticeCookie('1');
 	}
 	wgNoticeToggleState = !wgNoticeToggleState;
+}
+function toggleNoticeStyle(elems, display) {
+	if(elems)
+		for(var i=0;i<elems.length;i++)
+			elems[i].style.display = display;
 }
 function toggleNoticeCookie(state) {
 	var e = new Date();
