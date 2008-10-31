@@ -319,84 +319,91 @@ class CentralNotice extends SpecialPage {
 		$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-remove' ) );
 		
 		// Rows
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			$htmlOut .= Xml::openElement( 'tr' );
+		if ( $dbr->numRows( $res ) >= 1 ) {  
+			while ( $row = $dbr->fetchObject( $res ) ) {
+				$htmlOut .= Xml::openElement( 'tr' );
 			
-			// Name
-			$urlNotice = $this->getTitle()->getLocalUrl(
-				'method=listNoticeDetail&notice=' . $row->not_name
-			);
-			$htmlOut .= Xml::tags( 'td', null,
-				Xml::element( 'a', array( 'href' => $urlNotice ), $row->not_name )
-			);
+				// Name
+				$urlNotice = $this->getTitle()->getLocalUrl(
+					'method=listNoticeDetail&notice=' . $row->not_name
+				);
+				$htmlOut .= Xml::tags( 'td', null,
+					Xml::element( 'a', array( 'href' => $urlNotice ), $row->not_name )
+				);
 			
-			// Project
-			$htmlOut .= Xml::tags( 'td', null, $row->not_project );
+				// Project
+				$htmlOut .= Xml::tags( 'td', null, $row->not_project );
 			
-			// Language
-			if ( isset ( $this->showAll ) ) {
-				$htmlOut .= Xml::tags( 'td', null, 
-					$row->not_language
-			 	);
+				// Language
+				if ( isset ( $this->showAll ) ) {
+					$htmlOut .= Xml::tags( 'td', null, 
+						$row->not_language
+				 	);
+				}
+			
+				// Date and time calculations
+				$start_timestamp = $row->not_start;
+				$start_year = substr( $start_timestamp, 0 , 4 );
+				$start_month = substr( $start_timestamp, 4, 2 );
+				$start_day = substr( $start_timestamp, 6, 2 );
+				$start_hour = substr( $start_timestamp, 8, 2 );
+				$start_min = substr( $start_timestamp, 10, 2 );
+				$end_timestamp = $row->not_end;
+				$end_year = substr( $end_timestamp, 0 , 4 );
+				$end_month = substr( $end_timestamp, 4, 2);
+				$end_day = substr( $end_timestamp, 6, 2 );
+			
+				// Start
+				$htmlOut .= Xml::element( 'td', null,
+					"{$start_year}/{$start_month}/{$start_day} {$start_hour}:{$start_min}"
+				);
+			
+				// End
+				$htmlOut .= Xml::element( 'td', null,
+					"{$end_year}/{$end_month}/{$end_day}"
+				);
+			
+				// Enabled
+				$htmlOut .= Xml::tags( 'td', null,
+					Xml::check( 'enabled[]', ( $row->not_enabled == '1' ),
+					array( 'value' => $row->not_name) )
+				);
+			
+				// Locked 
+				$htmlOut .= Xml::tags( 'td', null,
+					Xml::check( 'locked[]', ( $row->not_locked == '1' ),
+					array( 'value' => $row->not_name) )
+				);
+			
+				// Remove
+				$htmlOut .= Xml::tags( 'td', null,
+					Xml::check( 'removeNotices[]', false,
+					array( 'value' => $row->not_name) )
+				);
+			
+				$htmlOut .= Xml::closeElement( 'tr' );
 			}
-			
-			// Date and time calculations
-			$start_timestamp = $row->not_start;
-			$start_year = substr( $start_timestamp, 0 , 4 );
-			$start_month = substr( $start_timestamp, 4, 2 );
-			$start_day = substr( $start_timestamp, 6, 2 );
-			$start_hour = substr( $start_timestamp, 8, 2 );
-			$start_min = substr( $start_timestamp, 10, 2 );
-			$end_timestamp = $row->not_end;
-			$end_year = substr( $end_timestamp, 0 , 4 );
-			$end_month = substr( $end_timestamp, 4, 2);
-			$end_day = substr( $end_timestamp, 6, 2 );
-			
-			// Start
-			$htmlOut .= Xml::element( 'td', null,
-				"{$start_year}/{$start_month}/{$start_day} {$start_hour}:{$start_min}"
-			);
-			
-			// End
-			$htmlOut .= Xml::element( 'td', null,
-				"{$end_year}/{$end_month}/{$end_day}"
-			);
-			
-			// Enabled
-			$htmlOut .= Xml::tags( 'td', null,
-				Xml::check( 'enabled[]', ( $row->not_enabled == '1' ),
-				array( 'value' => $row->not_name) )
-			);
-			
-			// Locked 
-			$htmlOut .= Xml::tags( 'td', null,
-				Xml::check( 'locked[]', ( $row->not_locked == '1' ),
-				array( 'value' => $row->not_name) )
-			);
-			
-			// Remove
-			$htmlOut .= Xml::tags( 'td', null,
-				Xml::check( 'removeNotices[]', false,
-				array( 'value' => $row->not_name) )
-			);
-			
-			$htmlOut .= Xml::closeElement( 'tr' );
-		}
-		$htmlOut .= Xml::tags( 'tr', null,
-			Xml::tags( 'td', null,
-				Xml::submitButton( wfMsgHtml('centralnotice-modify'), 
-					array(
-						'id' => 'centralnoticesubmit',
-						'name' => 'centralnoticesubmit'
+			$htmlOut .= Xml::tags( 'tr', null,
+				Xml::tags( 'td', null,
+					Xml::submitButton( wfMsgHtml('centralnotice-modify'), 
+						array(
+							'id' => 'centralnoticesubmit',
+							'name' => 'centralnoticesubmit'
+						)
 					)
 				)
-			)
-		);
+			);
 		
-		$htmlOut .= Xml::closeElement( 'table' );
-		$htmlOut .= XML::closeElement( 'fieldset' );
-		$htmlOut .= XML::closeElement( 'form' );
+			$htmlOut .= Xml::closeElement( 'table' );
+			$htmlOut .= XML::closeElement( 'fieldset' );
+			$htmlOut .= XML::closeElement( 'form' );
 		
+			
+		// No notices to show
+	        } else {
+			$htmlOut = wfMsg('centralnotice-no-notices-exist');		
+    	        }
+
 		// Template Adding
 		$htmlOut .= Xml::openElement( 'form',
 			array(
@@ -408,13 +415,13 @@ class CentralNotice extends SpecialPage {
 		$htmlOut .= Xml::element( 'legend', null, wfMsg( 'centralnotice-add-notice' ) );
 		$htmlOut .= Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
 		$htmlOut .= Xml::hidden( 'method', 'addNotice' );
-		
+	
 		$htmlOut .= Xml::openElement( 'table', array ( 'cellpadding' => 9 ) );
-		
+
 		$current_day   = gmdate( 'd' );
 		$current_month = gmdate( 'm');
 		$current_year  = gmdate( 'o' );
-		
+
 		// Name
 		$htmlOut .= Xml::tags( 'tr', null, 
 			Xml::tags( 'td', null, wfMsg( 'centralnotice-notice-name' ) ) .
@@ -463,7 +470,6 @@ class CentralNotice extends SpecialPage {
 		$htmlOut .= Xml::closeElement( 'table' );
 		$htmlOut .= Xml::closeElement( 'fieldset' );
 		$htmlOut .= Xml::closeElement( 'form' );
-		
 		// Output HTML
 		$wgOut->addHTML( $htmlOut );
 	}
