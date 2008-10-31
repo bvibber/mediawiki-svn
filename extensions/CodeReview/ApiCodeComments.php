@@ -40,7 +40,7 @@ class ApiCodeComments extends ApiQueryBase {
 		$pager = $listview->getPager();
 		
 		if ( !is_null( $params['start'] ) )
-			$pager->setOffset( $params['start'] );
+			$pager->setOffset( wfTimestamp( TS_MW, $params['start'] ) );
 		$limit = $params['limit'];
 		$pager->setLimit( $limit );
 		
