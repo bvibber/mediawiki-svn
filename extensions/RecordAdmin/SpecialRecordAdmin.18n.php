@@ -56,6 +56,7 @@ $messages['fr'] = array (
 	'recordadmin-buttonsearch' => 'Rechercher',
 	'recordadmin-buttoncreate' => 'Créer',
 	'recordadmin-buttonreset' => 'Réinitialiser',
+	'recordadmin-searchresult' => 'Résultats de la recherche',
 	'recordadmin-nomatch' => 'Aucun enregistrement correspondant de trouvé !',
 	'recordadmin-edit' => 'Modifier $1',
 	'recordadmin-typeupdated' => 'propriété de $1 mises à jour',
