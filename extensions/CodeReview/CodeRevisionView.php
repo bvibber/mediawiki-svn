@@ -47,7 +47,7 @@ class CodeRevisionView extends CodeView {
 		$fields = array(
 			'code-rev-repo' => $repoLink,
 			'code-rev-rev' => $revText,
-			'code-rev-date' => $wgLang->timeanddate( $this->mRev->getTimestamp() ),
+			'code-rev-date' => $wgLang->timeanddate( $this->mRev->getTimestamp(), true ),
 			'code-rev-author' => $this->authorLink( $this->mRev->getAuthor() ),
 			'code-rev-status' => $this->statusForm(),
 			'code-rev-tags' => $this->tagForm(),
@@ -342,7 +342,7 @@ class CodeRevisionView extends CodeView {
 				$this->mSkin->userLink( $comment->user, $comment->userText ) .
 				$this->mSkin->userToolLinks( $comment->user, $comment->userText ) ) .
 			' &nbsp; ' .
-			$wgLang->timeanddate( $comment->timestamp ) .
+			$wgLang->timeanddate( $comment->timestamp, true ) .
 			' ' .
 			$this->commentReplyLink( $comment->id ) .
 			'</div>' .

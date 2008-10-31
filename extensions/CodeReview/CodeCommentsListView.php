@@ -95,7 +95,7 @@ class CodeCommentsTablePager extends TablePager {
 			return $preview;
 		case 'cc_timestamp':
 			global $wgLang;
-			return $wgLang->timeanddate( $value );
+			return $wgLang->timeanddate( $value, true );
 		}
 	}
 	

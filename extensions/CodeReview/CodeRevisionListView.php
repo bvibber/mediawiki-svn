@@ -134,7 +134,7 @@ class SvnRevTablePager extends TablePager {
 			return $this->mView->messageFragment( $value );
 		case 'cr_timestamp':
 			global $wgLang;
-			return $wgLang->timeanddate( $value );
+			return $wgLang->timeanddate( $value, true );
 		case 'COUNT(cc_rev_id)':
 			return intval( $value );
 		case 'cr_path':
