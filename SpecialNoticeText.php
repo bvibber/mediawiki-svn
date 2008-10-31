@@ -40,21 +40,6 @@ class SpecialNoticeText extends NoticePage {
 	
 	function getHtmlNotice( $noticeName ) {
 		$this->noticeName = $noticeName;
-		/*
-		return strtr(
-				$this->getHtmlNotice(),
-				array(
-					#'$heading' => $this->getHeadlines(), // Wikipedia: Making Life Easier. 
-					#'$subheading' => $this->getSubheading(),
-					#'$meter' => $this->getMeter(), // dynamic selection
-					'$amount' => $this->getMessage( 'amount' ),
-							array ( $this->formatNum( $this->getDonationAmount() )), // lookup
-					#'$target' => $this->getMessage( 'target' ), // "Our Goal 6 million
-					#'$show' => $this->getMessage( 'show' ), // show
-					#'$hide' => $this->getMessage( 'hide' ), // hide
-				)
-			);
-		*/
 		return preg_replace_callback(
 			'/{{{(.*?)}}}/',
 			array( $this, 'getNoticeField' ),
@@ -241,11 +226,7 @@ function pickTemplate(templates, weights) {
 		}
 		$message = "centralnotice-{$this->noticeName}-$field";
 		$source = $this->getMessage( $message, $params );
-		if( $source == '' ) {
-			return '{{{' . htmlspecialchars( $field ) . '}}}';
-		} else {
-			return $this->parse( $source );
-		}
+		return $source;
 	}
 	
 	/*
@@ -274,88 +255,23 @@ function pickTemplate(templates, weights) {
 	*/
 	
 	private function getMessage( $msg, $params=array() ) {
-		/*
-		$guard = array();
-		for( $lang = $this->language; $lang; $lang = $this->safeLangFallback( $lang ) ) {
-			if( isset( $guard[$lang] ) )
-				break; // avoid loops...
-			$guard[$lang] = true;
-			if( $text = $this->getRawMessage( "$msg/$lang", $params ) ) {
-				return $text;
-			}
-		}
-		return $this->getRawMessage( $msg, $params );
-		*/
-		array_unshift( $params, array( 'language' => $this->language ) );
-		array_unshift( $params, $msg );
-		return call_user_func_array( 'wfMsgExt', $params );
-	}
-	
-	private function safeLangFallback( $lang ) {
-		$fallback = Language::getFallbackFor( $lang );
-		if( $fallback == 'en' ) {
-			// We want to be able to special-case English
-			// This lets us put _regular_ English in 'blah' and special-case in 'blah/en'
-			return false;
-		} else {
-			return $fallback;
-		}
-	}
-	
-	private function getRawMessage( $msg, $params ) {
-		$searchPath = array(
-			"$msg/{$this->project}",
-			"$msg" );
-		foreach( $searchPath as $rawMsg ) {
-			wfDebug( __METHOD__ . ": $rawMsg\n" );
-			$xparams = array_merge( array( $rawMsg ), $params );
-			wfDebug( __METHOD__ . ': ' . str_replace( "\n", " ", var_export( $xparams, true ) ) . "\n" );
-			$text = call_user_func_array( 'wfMsgForContentNoTrans',
-				$xparams );
-			if( !wfEmptyMsg( $rawMsg, $text ) ) {
-				return $text;
-			}
-		}
-		return false;
-	}
-	
-	/*
-	private function splitList( $text, $callback=false ) {
-		$list = array_filter(
-			array_map(
-				array( $this, 'filterListLine' ),
-				explode( "\n", $text ) ) );
-		if( is_callable( $callback ) ) {
-			return array_map( $callback, $list );
-		} else {
-			return $list;
-		}
-	}
-	
-	private function filterListLine( $line ) {
-		if( substr( $line, 0, 1 ) == '#' ) {
-			return '';
-		} else {
-			return $this->parse( trim( ltrim( $line, '*' ) ) );
-		}
-	}
-	*/
-	
-	private function parse( $text ) {
-		global $wgOut, $wgSitename;
-		
-		// A god-damned dirty hack!
+		// A god-damned dirty hack! :D
+		global $wgSitename;
 		$old = array();
 		$old['wgSitename'] = $wgSitename;
 		$wgSitename = $this->projectName();
 		
-		$out = preg_replace(
-			'/^<p>(.*)\n?<\/p>\n?$/sU',
-			'$1',
-		 	$wgOut->parse( $text ) );
+		$options = array(
+			'language' => $this->language,
+			'parsemag',
+		);
+		array_unshift( $params, $options );
+		array_unshift( $params, $msg );
+		$out = call_user_func_array( 'wfMsgExt', $params );
 		
 		// Restore globals
 		$wgSitename = $old['wgSitename'];
+		
 		return $out;
 	}
 	
@@ -440,19 +356,7 @@ function pickTemplate(templates, weights) {
 			return '';
 		}
 	}
-	
-	private function getSubheading() {
-		// Sigh... hack in another one real quick
-		return $this->parse(
-			$this->getMessage( 'centralnotice-subheading' ) );
-	}
-	
-	private function getThanks() {
-		// Sigh... hack in another one real quick
-		return $this->parse(
-			$this->getMessage( 'centralnotice-thanks' ) );
-	}
-	
+
 	private function getCachedRssEntry( $url ) {
 		global $wgMemc;
 		$key = 'centralnotice:rss:' . md5( $url );
