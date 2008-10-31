@@ -239,7 +239,7 @@ class CentralNotice extends SpecialPage {
 
 	function listNotices() {
 		global $wgOut, $wgRequest, $wgTitle, $wgScript, $wgNoticeLang;
-		global $wgNoticeProject, $wpUserLang, $wgNoticeProjects;
+		global $wgNoticeProject, $wpUserLang;
 		
 		// Get connection
 		$dbr = wfGetDB( DB_SLAVE );
@@ -330,9 +330,9 @@ class CentralNotice extends SpecialPage {
 				$htmlOut .= Xml::tags( 'td', null,
 					Xml::element( 'a', array( 'href' => $urlNotice ), $row->not_name )
 				);
-			
+				
 				// Project
-				$htmlOut .= Xml::tags( 'td', null, $row->not_project );
+				$htmlOut .= Xml::tags( 'td', null, $this->getProjectName( $row->not_project ) );
 			
 				// Language
 				if ( isset ( $this->showAll ) ) {
@@ -450,13 +450,9 @@ class CentralNotice extends SpecialPage {
 		// Project
 		$htmlOut .= Xml::openElement( 'tr' );
 		$htmlOut .= Xml::element( 'td', null, wfMsg( 'centralnotice-project-name' ) );
-		$htmlOut .= Xml::openElement( 'td' );
-		$htmlOut .= Xml::openElement( 'select', array( 'name' => 'project_name' ) );
-		foreach( $wgNoticeProjects as $name => $value ) {
-			$htmlOut .= Xml::element( 'option', array( 'value' => $value ), $name );
-		}
-		$htmlOut .= Xml::closeElement( 'select' );
-		$htmlOut .= Xml::closeElement( 'td' );
+		$htmlOut .= Xml::tags( 'td', null,
+			$this->projectDropDownList()
+		);
 		$htmlOut .= Xml::closeElement( 'tr' );
 		
 		
@@ -603,11 +599,14 @@ class CentralNotice extends SpecialPage {
 			$end_day = substr( $end_timestamp, 6, 2);
 
 			$htmlOut .= Xml::openElement( 'tr' ) .
-				    // Project
-				    Xml::tags( 'td', null, $row->not_project ) .
+			
+					// Project
+					Xml::tags( 'td', null,
+						$this->projectDropDownList()
+					) .
 				    
-				    // Language
-                                    Xml::tags( 'td', null, $row->not_language) .
+					// Language
+					Xml::tags( 'td', null, $row->not_language) .
 				    
 				    // Start
 				    Xml::tags( 'td', null, 
@@ -1053,6 +1052,25 @@ class CentralNotice extends SpecialPage {
 				'not_id' => $noticeId
 			)
 		);
+	}
+	
+	function projectDropDownList() {
+		global $wgNoticeProjects;
+		
+		$htmlOut = Xml::openElement( 'select', array( 'name' => 'project_name' ) );
+		foreach( $wgNoticeProjects as $value => $name ) {
+			// Turn ! into nothing
+			$value = $value == '!' ? '' : $value;
+			$htmlOut .= Xml::element( 'option', array( 'value' => $value ), $name );
+		}
+		$htmlOut .= Xml::closeElement( 'select' );
+		return $htmlOut;
+	}
+	
+	function getProjectName( $value ) {
+		global $wgNoticeProjects;
+		
+		return $wgNoticeProjects[ $value == '' ? '!' : $value ];
 	}
 	
 	function dropDownList ( $text, $values ) {

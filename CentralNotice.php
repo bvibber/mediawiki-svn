@@ -16,18 +16,18 @@ $wgNoticeProject = 'wikipedia';
 /// List of available projects, which will be used to generate static
 /// output .js in the batch generation...
 $wgNoticeProjects = array(
-	'All Projects' => '',
-	'Wikipedia' => 'wikipedia',
-	'Wiktionary' => 'wiktionary',
-	'WikiQuote' => 'wikiquote',
-	'WikiBooks' => 'wikibooks',
-	'WikiNews' => 'wikinews',
-	'WikiSource' => 'wikisource',
-	'WikiVersity' => 'wikiversity',
-	'WikiMedia' => 'wikimedia',
-	'Commons' => 'commons',
-	'Meta' => 'meta',
-	'WikiSpecies' => 'wikispecies',
+	'!' => 'All Projects',
+	'wikipedia' => 'Wikipedia',
+	'wiktionary' => 'Wiktionary',
+	'wikiquote' => 'WikiQuote',
+	'wikibooks' => 'WikiBooks',
+	'wikinews' => 'WikiNews',
+	'wikisource' => 'WikiSource',
+	'wikiversity' => 'WikiVersity',
+	'wikimedia' => 'WikiMedia',
+	'commons' => 'Commons',
+	'meta' => 'Meta',
+	'wikispecies' => 'WikiSpecies',
 );
 
 /// Local filesystem path under which static .js output is written
