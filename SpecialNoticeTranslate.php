@@ -137,7 +137,8 @@ class SpecialNoticeTranslate extends SpecialPage {
 		);
 		
 		// Headers
-		$htmlOut .= Xml::element( 'th', array( 'width' => '20%' ) );
+		$htmlOut .= Xml::element( 'th', array( 'width' => '15%' ) );
+		$htmlOut .= Xml::element( 'th', array( 'width' => '5%' ), wfMsg ( 'centralnotice-number-uses')  );
 		$htmlOut .= Xml::element( 'th', array( 'width' => '40%' ), wfMsg ( 'centralnotice-english') );
 		$languages = Language::getLanguageNames();
 		$htmlOut .= Xml::element( 'th', array( 'width' => '40%' ), $languages[$wpUserLang] );
@@ -146,8 +147,14 @@ class SpecialNoticeTranslate extends SpecialPage {
 		$fields = array();
 		preg_match_all( '/\{\{\{([A-Za-z0-9\_\-}]+)\}\}\}/', wfMsg( "Centralnotice-template-{$currentTemplate}" ), $fields );
 		
-		// Rows
+		// Remove duplicates
+		$filteredFields = array();
 		foreach( $fields[1] as $field ) {
+			$filteredFields[$field] = array_key_exists( $field, $filteredFields ) ? $filteredFields[$field] + 1 : 1;
+		}
+		
+		// Rows
+		foreach( $filteredFields as $field => $count ) {
 			// Message
 			$message = ( $wpUserLang == 'en' ) ? "Centralnotice-{$currentTemplate}-{$field}" : "Centralnotice-{$currentTemplate}-{$field}/{$wpUserLang}";
 			
@@ -158,6 +165,8 @@ class SpecialNoticeTranslate extends SpecialPage {
 			$htmlOut .= Xml::tags( 'td', null,
 				Xml::element( 'a', array( 'href' => ''/*$title->getFullURL()*/ ), $field )
 			);
+			
+			$htmlOut .= Xml::element( 'td', null, $count);
 			
 			$htmlOut .= Xml::element( 'td', null,
 				wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}", array( 'language' => 'en') )

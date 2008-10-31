@@ -66,6 +66,7 @@ $messages['en'] = array(
 	'centralnotice-confirm-delete' => 'Are you sure you want to delete this item? This action will be unrecoverable.',
 	'centralnotice-no-templates-translate' => 'There are not any templates to edit translations for',
 	'centralnotice-no-templates' => 'There are no templates in the system. Create one',
+	'centralnotice-number-uses' => 'Uses',
 );
 
 /** Afrikaans (Afrikaans)
