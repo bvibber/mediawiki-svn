@@ -10,19 +10,21 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('RECORDADMIN_VERSION','0.1.4, 2008-10-29');
+define('RECORDADMIN_VERSION','0.2, 2008-10-31');
 
 $wgRecordAdminCategory      = 'Records'; # Category which contains the templates used as records and having corresponding forms
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
-
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'SpecialRecordAdmin.18n.php';
 $wgExtensionFunctions[] = 'wfSetupRecordAdmin';
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name'        => 'Record administration',
-	'author'      => '[http://www.organicdesign.co.nz/nad User:Nad]',
-	'description' => 'A special page for finding and editing record articles using a form',
-	'url'         => 'http://www.organicdesign.co.nz/Extension:SpecialExample',
-	'version'     => RECORDADMIN_VERSION
+	'name'           => 'Record administration',
+	'author'         => '[http://www.organicdesign.co.nz/nad User:Nad]',
+	'description'    => 'A special page for finding and editing record articles using a form',
+	'descriptionmsg' => 'recordadmin-desc',
+	'url'            => 'http://www.organicdesign.co.nz/Extension:SpecialExample',
+	'version'        => RECORDADMIN_VERSION
 );
 
 require_once "$IP/includes/SpecialPage.php";
@@ -37,7 +39,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $guid = '';
 
 	function __construct() {
-		
+		wfLoadExtensionMessages ('RecordAdmin');		
 		# Name to use for creating a new record either via RecordAdmin or a public form
 		# todo: should add a hook here for custom default-naming
 		$this->guid = strftime('%Y%m%d', time()).'-'.substr(strtoupper(uniqid()), -5);
@@ -68,8 +70,8 @@ class SpecialRecordAdmin extends SpecialPage {
 			if ($wpTitle && !ereg("^$type:.+$", $wpTitle)) $wpTitle = "$type:$wpTitle";
 		}
 
-		$wgOut->addHTML("<div class='center'><a href='".$title->getLocalURL()."/$type'>New $type search</a> | "
-			. "<a href='".$title->getLocalURL()."'>Select another record type</a></div><br>\n"
+		$wgOut->addHTML("<div class='center'><a href='".$title->getLocalURL()."/$type'>".wfMsg('recordadmin-newsearch', $type)."</a> | "
+			. "<a href='".$title->getLocalURL()."'>".wfMsg('recordadmin-newrecord')."</a></div><br>\n"
 		);
 			
 		# Get posted form values if any
@@ -87,7 +89,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# If no type selected, render select list of record types from Category:Records
 		if (empty($type)) {
-			$wgOut->addWikiText("== Select the type of record to search for ==\n");
+			$wgOut->addWikiText("==".wfMsg('recordadmin-select')."==\n");
 			
 			# Get titles in Category:Records and build option list
 			$options = '';
@@ -100,14 +102,14 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Render type-selecting form
 			$wgOut->addHTML(wfElement('form', array('action' => $title->getLocalURL('action=submit'), 'method' => 'post'), null)
 				. "<select name='wpType'>$options</select> "
-				. wfElement('input', array('type' => 'submit', 'value' => 'Submit'))
+				. wfElement('input', array('type' => 'submit', 'value' => wfMsg('recordadmin-submit')))
 				. '</form>'
 			);
 		}
 				
 		# Record type known, but no record selected, render form for searching or creating
 		elseif (empty($record)) {
-			$wgOut->addWikiText("== Find or Create a \"$type\" record ==\n");
+			$wgOut->addWikiText("==".wfMsg('recordadmin-create', $type)."==\n");
 			
 			# Process Create submission
 			if (count($posted) && $wgRequest->getText('wpCreate')) {
@@ -117,7 +119,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				}
 				$t = Title::newFromText($wpTitle);
 				if (is_object($t)) {
-					if ($t->exists()) $wgOut->addHTML("<div class='errorbox'>Sorry, \"$wpTitle\" already exists!</div>\n");
+					if ($t->exists()) $wgOut->addHTML("<div class='errorbox'>".wfMsg('recordadmin-alreadyexist' ,$wpTitle)."</div>\n");
 					else {
 
 						# Attempt to create the article
@@ -132,10 +134,10 @@ class SpecialRecordAdmin extends SpecialPage {
 						$success = $article->doEdit($text, $summary, EDIT_NEW);
 						
 						# Report success or error
-						if ($success) $wgOut->addHTML("<div class='successbox'>\"$wpTitle\" created successfully</div>\n");
-						else $wgOut->addHTML("<div class='errorbox'>An error occurred while attempting to create the $type!</div>\n");
+						if ($success) $wgOut->addHTML("<div class='successbox'>".wfMsg('recordadmin-createsuccess',$wpTitle)."</div>\n");
+						else $wgOut->addHTML("<div class='errorbox'>".wfMsg('recordadmin-createerror', $type)."</div>\n");
 					}
-				} else $wgOut->addHTML("<div class='errorbox'>Bad title!</div>\n");
+				} else $wgOut->addHTML("<div class='errorbox'>".wfMsg('recordadmin-badtitle')."</div>\n");
 				$wgOut->addHTML("<br><br><br><br>\n");
 			}
 				
@@ -145,20 +147,20 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Render the form
 			$wgOut->addHTML(
 				wfElement('form', array('class' => 'recordadmin', 'action' => $title->getLocalURL('action=submit'), 'method' => 'post'), null)
-				.'<b>Record ID:</b> '.wfElement('input', array('name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle))
-				.'&nbsp;&nbsp;&nbsp;'.wfElement('input', array('name' => 'wpInvert', 'type' => 'checkbox')).' Invert selection'
+				.'<b>'.wfMsg('recordadmin-recordid').'</b> '.wfElement('input', array('name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle))
+				.'&nbsp;&nbsp;&nbsp;'.wfElement('input', array('name' => 'wpInvert', 'type' => 'checkbox')).' '.wfMsg('recordadmin-invert')
 				."\n<br><br><hr><br>\n{$this->form}"
 				.wfElement('input', array('type' => 'hidden', 'name' => 'wpType', 'value' => $type))
 				.'<br><hr><br><table width="100%"><tr>'
-				.'<td>'.wfElement('input', array('type' => 'submit', 'name' => 'wpFind', 'value' => "Search")).'</td>'
-				.'<td>'.wfElement('input', array('type' => 'submit', 'name' => 'wpCreate', 'value' => "Create")).'</td>'
-				.'<td width="100%" align="left">'.wfElement('input', array('type' => 'reset', 'value' => "Reset")).'</td>'
+				.'<td>'.wfElement('input', array('type' => 'submit', 'name' => 'wpFind', 'value' => wfMsg('recordadmin-buttonsearch'))).'</td>'
+				.'<td>'.wfElement('input', array('type' => 'submit', 'name' => 'wpCreate', 'value' => wfMsg('recordadmin-buttoncreate'))).'</td>'
+				.'<td width="100%" align="left">'.wfElement('input', array('type' => 'reset', 'value' => wfMsg('recordadmin-buttonreset'))).'</td>'
 				.'</tr></table></form>'
 			);
 			
 			# Process Find submission
 			if (count($posted) && $wgRequest->getText('wpFind')) {
-				$wgOut->addWikiText("<br>\n== Search results ==\n");
+				$wgOut->addWikiText("<br>\n== ".wfMsg('recordadmin-searchresult')." ==\n");
 
 				# Select records which use the template and exhibit a matching title and other fields
 				$records = array();
@@ -228,13 +230,13 @@ class SpecialRecordAdmin extends SpecialPage {
 					}
 					$table .= "</table>\n";
 					$wgOut->addHTML($table);
-				} else $wgOut->addWikiText("''No matching records found!''\n");
+				} else $wgOut->addWikiText(wfMsg('recordadmin-nomatch')."\n");
 			}	
 		}
 		
 		# A specific record has been selected, render form for updating
 		else {
-			$wgOut->addWikiText("== Editing \"$record\" ==\n");
+			$wgOut->addWikiText("== ".wfMsg('recordadmin-edit',$record)." ==\n");
 			$article = new Article(Title::newFromText($record));
 			$text = $article->fetchContent();
 
@@ -245,7 +247,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				foreach ($this->examineBraces($text) as $brace) if ($brace['NAME'] == $type) $braces = $brace;
 
 				# Attempt to save the article
-				$summary = "[[Special:RecordAdmin/$type|RecordAdmin]]: $type properties updated";
+				$summary = "[[Special:RecordAdmin/$type|RecordAdmin]]: ".wfMsg('recordadmin-typeupdated',$type);
 				$replace = '';
 				foreach ($posted as $k => $v) if ($v) {
 					if ($this->types[$k] == 'bool') $v = 'yes';
@@ -256,8 +258,8 @@ class SpecialRecordAdmin extends SpecialPage {
 				$success = $article->doEdit($text, $summary, EDIT_UPDATE);
 				
 				# Report success or error
-				if ($success) $wgOut->addHTML("<div class='successbox'>$type updated successfully</div>\n");
-				else $wgOut->addHTML("<div class='errorbox'>An error occurred during update!</div>\n");
+				if ($success) $wgOut->addHTML("<div class='successbox'>".wfMsg('recordadmin-updatesuccess',$type)."</div>\n");
+				else $wgOut->addHTML("<div class='errorbox'>".wfMsg('recordadmin-updateerror')."</div>\n");
 				$wgOut->addHTML("<br><br><br><br>\n");
 			}
 			
@@ -271,8 +273,8 @@ class SpecialRecordAdmin extends SpecialPage {
 			$wgOut->addHTML(wfElement('input', array('type' => 'hidden', 'name' => 'wpType', 'value' => $type)));
 			$wgOut->addHTML(wfElement('input', array('type' => 'hidden', 'name' => 'wpRecord', 'value' => $record)));
 			$wgOut->addHTML('<br><hr><br><table width="100%"><tr>'
-				.'<td>'.wfElement('input', array('type' => 'submit', 'value' => "Save")).'</td>'
-				.'<td width="100%" align="left">'.wfElement('input', array('type' => 'reset', 'value' => "Reset")).'</td>'
+				.'<td>'.wfElement('input', array('type' => 'submit', 'value' => wfMsg('recordadmin-buttonsave'))).'</td>'
+				.'<td width="100%" align="left">'.wfElement('input', array('type' => 'reset', 'value' => wfMsg('recordadmin-buttonreset'))).'</td>'
 				.'</tr></table></form>'
 			);
 		}
@@ -297,8 +299,8 @@ class SpecialRecordAdmin extends SpecialPage {
 		
 		# Create a red link to the form if it doesn't exist
 		else {
-			$form = "<b>There is no form associated with \"$type\" records!</b>"
-			       ."<br><br>click <a href=\"".$title->getLocalURL('action=edit')."\">here</a> to create one</div>";
+			$form = "<b>".wfMsg('recordadmin-noform',$type)."</b>"
+			       ."<br><br>".wfMsg('recordadmin-createlink',$title->getLocalURL('action=edit') )."</div>";
 		}
 		$this->form = $form;
 	}
@@ -433,7 +435,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$title = Title::newFromText($title);
 		if (is_object($title) && !$title->exists()) {
 			$article = new Article($title);
-			$summary = "New $type created from public form";
+			$summary = wfMsg('recordadmin-newcreated');
 			$text = '';
 			foreach ($_POST as $k => $v) if ($v && isset($this->types[$k])) {
 				if ($this->types[$k] == 'bool') $v = 'yes';
@@ -457,13 +459,6 @@ class SpecialRecordAdmin extends SpecialPage {
  */
 function wfSetupRecordAdmin() {
 	global $wgSpecialRecordAdmin, $wgParser, $wgLanguageCode, $wgMessageCache, $wgRequest;
-
-	# Add the messages used by the specialpage
-	if ($wgLanguageCode == 'en') {
-		$wgMessageCache->addMessages(array(
-			'recordadmin' => 'Record administration'
-			));
-	}
 
 	# Make a global singleton so methods are accessible as callbacks etc
 	$wgSpecialRecordAdmin = new SpecialRecordAdmin();
