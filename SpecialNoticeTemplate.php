@@ -283,7 +283,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			// English text
 			$englishText = wfMsg( 'centralnotice-message-not-set' );
 			$englishTextExists = false;
-			if( Title::newFromText( $message, NS_MEDIAWIKI )->exists() ) {
+			if( Title::newFromText( "Centralnotice-{$currentTemplate}-{$field}", NS_MEDIAWIKI )->exists() ) {
 				$englishText = wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}",
 					array( 'language' => 'en' )
 				);
