@@ -31,23 +31,45 @@
 /* Size of the output array for pcre_exec */
 #define OVECSIZE	15
 
-struct call_context {
-	Session	*sn;
-	Request	*rq;
-	char *data;
-	size_t sz;
-};
+typedef struct request {
+	Session		*sn;
+	Request		*rq;
+	char const	*uri;
+	char const	*uripath;
+	GString		*thumburl;
+	CURL		*curl;
+struct	curl_slist	*headers;
+#if 0
+	char		*data;
+	size_t		 sz;
+#endif
+	int		 output_started;
+} request_t;
 
-static char *strip_hostname(char *uri);
-static int re_match(Session *, Request *, char const *re, char const *subj, char ***output);
-static int prepare_curl(Session *, Request *, CURL *, GString *requrl, struct curl_slist **);
-static int add_headers(Session *, Request *rq, CURL *curl, struct curl_slist **);
-static char *make_xff_header(Session *, Request *rq);
+static char const *strip_hostname(char const *uri);
+static int re_match(request_t *, char const *re, char const *subj, char ***output);
+static int prepare_curl(request_t *);
+static int add_headers(request_t *);
+static char *make_xff_header(request_t *);
 static GString *pblock_to_query(pblock const *);
 static GString *hostname_from_site_lang(char const *site, char const *lang);
-static GString *thumb_url_from_path(Session *sn, Request *rq, char const *path);
+static int thumb_url_from_path(request_t *);
 static size_t write_data(void *ptr, size_t, size_t, void *);
-static void send_error(Session *sn, Request *rq, int code, char const *fmt, ...);
+static void send_error(request_t *, int code, char const *fmt, ...);
+static void free_request(request_t *);
+static int start_output(request_t *, void *, size_t);
+
+static void
+free_request(req)
+	request_t *req;
+{
+	if (req->thumburl)
+		g_string_free(req->thumburl, TRUE);
+	if (req->curl)
+		curl_easy_cleanup(req->curl);
+	if (req->headers)
+		curl_slist_free_all(req->headers);
+}
 
 #ifdef __GNUC__
 # define UNUSED __attribute__((unused))
@@ -63,16 +85,15 @@ write_data(ptr, size, num, data)
 	void *ptr, *data;
 	size_t size, num;
 {
-size_t	sz = size * num;
-struct call_context *ctx = (struct call_context *)data;
-	ctx->data = realloc(ctx->data, ctx->sz + sz);
-	if (ctx->data == NULL) {
-		log_error(LOG_FAILURE, "thumb-handler", ctx->sn, ctx->rq, "out of memory");
-		return 0;
+size_t		 sz = size * num;
+request_t	*req = (request_t *)data;
+	if (!req->output_started) {
+		if (start_output(req, ptr, sz) == -1)
+			return 0;
+		req->output_started = 1;
 	}
-	memcpy(ctx->data + ctx->sz, ptr, sz);
-	ctx->sz += sz;
-	return sz;
+	
+	return net_write(req->sn->csd, ptr, sz);
 }
 
 /*
@@ -91,8 +112,7 @@ int thumb_handler_init(pblock *pb UNUSED, Session *sn, Request *rq)
 
 static void
 send_error(
-	Session *sn,
-	Request *rq,
+	request_t *req,
 	int code,
 	char const *fmt,
 	...)
@@ -123,11 +143,11 @@ GString	*err = g_string_new(NULL);
 	va_end(ap);
 
 	g_string_append(err, "</body>\r\n</html>\r\n");
-	pblock_nvinsert("content-type", "text/html;charset=UTF-8", rq->srvhdrs);
-	pblock_nvinsert("cache-control", "no-cache", rq->srvhdrs);
-	protocol_status(sn, rq, code, NULL);
-	if (protocol_start_response(sn, rq) != REQ_NOACTION)
-		net_write(sn->csd, err->str, err->len);
+	pblock_nvinsert("content-type", "text/html;charset=UTF-8", req->rq->srvhdrs);
+	pblock_nvinsert("cache-control", "no-cache", req->rq->srvhdrs);
+	protocol_status(req->sn, req->rq, code, NULL);
+	if (protocol_start_response(req->sn, req->rq) != REQ_NOACTION)
+		net_write(req->sn->csd, err->str, err->len);
 	g_string_free(err, TRUE);
 }
 
@@ -137,27 +157,25 @@ GString	*err = g_string_new(NULL);
 int
 thumb_handler(pblock *pb UNUSED, Session *sn, Request *rq)
 {
-char			*uri, *uripath;
-GString			*thumburl;
-CURL			*curl;
-struct call_context	 context;
-char			 curlerror[CURL_ERROR_SIZE];
-long			 httpcode;
-char			*contenttype;
-struct curl_slist	*headers = NULL;
+char		 curlerror[CURL_ERROR_SIZE];
+request_t	 req;
 
+	memset(&req, 0, sizeof(req));
+	req.sn = sn;
+	req.rq = rq;
+	
 	/* Get the URI from the request */
-	if ((uri = pblock_findval("uri", rq->reqpb)) == NULL) {
+	if ((req.uri = pblock_findval("uri", rq->reqpb)) == NULL) {
 		/* Shouldn't happen, but just in case... */
 		log_error(LOG_WARN, "thumb-handler", sn, rq,
 			   "received a request with a NULL URI");
 		return REQ_ABORTED;
 	}
 
-	if (util_uri_is_evil(uri)) {
+	if (util_uri_is_evil(req.uri)) {
 		log_error(LOG_WARN, "thumb-handler", sn, rq,
 			   "received a request with an evil URI: %s",
-			   uri);
+			   req.uri);
 		return REQ_ABORTED;
 	}
 	
@@ -166,142 +184,127 @@ struct curl_slist	*headers = NULL;
 	 * strip it off.  Squid sends requests like this.
 	 */
 
-	if ((uripath = strip_hostname(uri)) == NULL) {
+	if ((req.uripath = strip_hostname(req.uri)) == NULL) {
 		/*
 		 * A request like "GET http://example.com" will leave uripath empty.
 		 */
 		log_error(LOG_WARN, "thumb-handler", sn, rq,
 			   "received a request with invalid URI: %s",
-			   uri);
+			   req.uri);
 		return REQ_ABORTED;
 	}
 	
-	if ((thumburl = thumb_url_from_path(sn, rq, uripath)) == NULL)
+	if (thumb_url_from_path(&req) == -1)
 		return REQ_ABORTED;
 	
-	pblock_nvinsert("x-wikimedia-thumb", thumburl->str, rq->srvhdrs);
+	pblock_nvinsert("x-wikimedia-thumb", req.thumburl->str, rq->srvhdrs);
 	
 	/*
 	 * Fetch the image.
 	 */
-	curl = curl_easy_init();
-	if (!curl) {
+	if ((req.curl = curl_easy_init()) == NULL) {
 		log_error(LOG_WARN, "thumb-handler", sn, rq,
 			   "failed to initialise libcURL");
-		send_error(sn, rq, PROTOCOL_SERVER_ERROR, "Error initialising cURL");
-		g_string_free(thumburl, TRUE);
+		send_error(&req, PROTOCOL_SERVER_ERROR, "Error initialising cURL");
+		free_request(&req);
 		return REQ_PROCEED;
 	}
 
-	if (prepare_curl(sn, rq, curl, thumburl, &headers) == -1) {
-		send_error(sn, rq, PROTOCOL_SERVER_ERROR, "Error preparing cURL");
-		curl_easy_cleanup(curl);
-		g_string_free(thumburl, TRUE);
+	if (prepare_curl(&req) == -1) {
+		send_error(&req, PROTOCOL_SERVER_ERROR, "Error preparing cURL");
+		free_request(&req);
 		return REQ_PROCEED;
 	}
 	
-	memset(&context, 0, sizeof(context));
-	context.sn = sn;
-	context.rq = rq;
+	curl_easy_setopt(req.curl, CURLOPT_WRITEFUNCTION, write_data);
+	curl_easy_setopt(req.curl, CURLOPT_WRITEDATA, (void *)&req);
+	curl_easy_setopt(req.curl, CURLOPT_ERRORBUFFER, curlerror);
 	
-	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
-	curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&context);
-	curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, curlerror);
-	
-	if (curl_easy_perform(curl) != 0) {
+	if (curl_easy_perform(req.curl) != 0) {
 		/*
 		 * Some kind of cURL error occurred.
 		 */
-		send_error(sn, rq, PROTOCOL_SERVER_ERROR, 
+		send_error(&req, PROTOCOL_SERVER_ERROR, 
 			    "Error retrieving thumbnail from scaling servers: %s",
 			    curlerror);
 		
 		log_error(LOG_WARN, "thumb-handler", sn, rq,
 			   "cURL failed to fetch image [url=%s]: %s",
-			   thumburl->str, curlerror);
-		free(context.data);
-		curl_easy_cleanup(curl);
-		curl_slist_free_all(headers);
-		g_string_free(thumburl, TRUE);
-		return REQ_PROCEED;
-	}
-
-	g_string_free(thumburl, TRUE);
-
-	curl_easy_getinfo(curl, CURLINFO_CONTENT_TYPE, &contenttype);
-	curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &httpcode);
-
-	curl_slist_free_all(headers);
-	
-	switch (httpcode) {
-	case 304:
-		protocol_status(sn, rq, PROTOCOL_NOT_MODIFIED, NULL);
-		curl_easy_cleanup(curl);
-		free(context.data);
-		return REQ_PROCEED;
-	
-	case 404:
-		log_error(LOG_WARN, "thumb-handler", sn, rq,
-			   "Response code was 404");
-		send_error(sn, rq, PROTOCOL_NOT_FOUND, 
-			   "Received 404 response from scaling server");
-		curl_easy_cleanup(curl);
-		free(context.data);
+			   req.thumburl->str, curlerror);
+		free_request(&req);
 		return REQ_PROCEED;
 	}
 	
-	if (context.sz == 0) {
-		log_error(LOG_WARN, "thumb-handler", sn, rq,
-			  "Empty response from scaling server");
-		send_error(sn, rq, PROTOCOL_SERVER_ERROR, 
-		    "Error retrieving thumbnail from scaling servers: empty response");
-		curl_easy_cleanup(curl);
-		free(context.data);
-		return REQ_PROCEED;
-	}
-	
-	if (httpcode != 200 || strncmp(contenttype, "text/html", 9) == 0 ||
-	    (context.sz > 5 && memcmp(context.data, "<html", 5) == 0)) {
-		protocol_status(sn, rq, PROTOCOL_SERVER_ERROR, NULL);
-		pblock_nvinsert("cache-control", "nocache", rq->srvhdrs);
-	} else {
-		protocol_status(sn, rq, PROTOCOL_OK, NULL);
-	}
-	
-	pblock_nvinsert("content-type", contenttype, rq->srvhdrs);
-	if (protocol_start_response(sn, rq) != REQ_NOACTION)
-		net_write(sn->csd, context.data, context.sz);
-	curl_easy_cleanup(curl);
-	free(context.data);
-	
+	free_request(&req);
 	return REQ_PROCEED;
 }
 
-static int
-prepare_curl(sn, rq, curl, requrl, headers)
-	Session *sn;
-	Request *rq;
-	CURL *curl;
-	GString *requrl;
-	struct curl_slist **headers;
+int
+start_output(req, data, sz)
+	request_t *req;
+	void *data;
+	size_t sz;
 {
-	curl_easy_setopt(curl, CURLOPT_NOSIGNAL, (long) 1);
-	curl_easy_setopt(curl, CURLOPT_TIMEOUT, (long) 53);
-	curl_easy_setopt(curl, CURLOPT_URL, requrl->str);
-	curl_easy_setopt(curl, CURLOPT_PROXY, "10.2.1.21:80");
+long	 httpcode;
+char	*contenttype;
 
-	if (add_headers(sn, rq, curl, headers) == -1)
+	curl_easy_getinfo(req->curl, CURLINFO_CONTENT_TYPE, &contenttype);
+	curl_easy_getinfo(req->curl, CURLINFO_RESPONSE_CODE, &httpcode);
+
+	switch (httpcode) {
+	case 304:
+		protocol_status(req->sn, req->rq, PROTOCOL_NOT_MODIFIED, NULL);	
+		return -1;
+	
+	case 404:
+		log_error(LOG_WARN, "thumb-handler", req->sn, req->rq,
+			   "Response code was 404");
+		send_error(req, PROTOCOL_NOT_FOUND, 
+			   "Received 404 response from scaling server");
+		return -1;
+	}
+	
+	if (sz == 0) {
+		log_error(LOG_WARN, "thumb-handler", req->sn, req->rq,
+			  "Empty response from scaling server");
+		send_error(req, PROTOCOL_SERVER_ERROR, 
+		    "Error retrieving thumbnail from scaling servers: empty response");
+		return -1;
+	}
+	
+	if (httpcode != 200 || strncmp(contenttype, "text/html", 9) == 0 ||
+	    (sz > 5 && memcmp(data, "<html", 5) == 0)) {
+		protocol_status(req->sn, req->rq, PROTOCOL_SERVER_ERROR, NULL);
+		pblock_nvinsert("cache-control", "nocache", req->rq->srvhdrs);
+	} else {
+		protocol_status(req->sn, req->rq, PROTOCOL_OK, NULL);
+	}
+	
+	pblock_nvinsert("content-type", contenttype, req->rq->srvhdrs);
+	if (protocol_start_response(req->sn, req->rq) == REQ_NOACTION)
 		return -1;
 	
 	return 0;
 }
 
 static int
-add_headers(sn, rq, curl, headers)
-	Session *sn;
-	Request *rq;
-	CURL *curl;
-	struct curl_slist **headers;
+prepare_curl(req)
+	request_t *req;
+{
+	curl_easy_setopt(req->curl, CURLOPT_NOSIGNAL, (long) 1);
+	curl_easy_setopt(req->curl, CURLOPT_TIMEOUT, (long) 53);
+	curl_easy_setopt(req->curl, CURLOPT_URL, req->thumburl->str);
+	curl_easy_setopt(req->curl, CURLOPT_PROXY, "10.2.1.21:80");
+
+	if (add_headers(req) == -1)
+		return -1;
+	
+	return 0;
+}
+
+static int
+add_headers(req)
+	request_t *req;
 {
 GString			*str;
 const char		**h;
@@ -312,58 +315,57 @@ static char const *passthrough[] = {
 	"user-agent",
 	NULL
 };
-	if ((xff = make_xff_header(sn, rq)) == NULL)
+	if ((xff = make_xff_header(req)) == NULL)
 		return -1;
 	
-	*headers = curl_slist_append(*headers, xff);
+	req->headers = curl_slist_append(req->headers, xff);
 	
 	str = g_string_new(NULL);
-	g_string_printf(str, "X-Original-URI: %s", pblock_findval("uri", rq->reqpb));
-	*headers = curl_slist_append(*headers, str->str);
+	g_string_printf(str, "X-Original-URI: %s", pblock_findval("uri", req->rq->reqpb));
+	req->headers = curl_slist_append(req->headers, str->str);
 	g_string_free(str, TRUE);
 	
 	for (h = passthrough; *h; ++h) {
 	char	*s;
-		if ((s = pblock_findval(*h, rq->headers)) != NULL) {
+		if ((s = pblock_findval(*h, req->rq->headers)) != NULL) {
 		GString	*hdr;
 			hdr = g_string_new(NULL);
 			g_string_printf(hdr, "%s: %s", *h, s);
-			*headers = curl_slist_append(*headers, hdr->str);
+			req->headers = curl_slist_append(req->headers, hdr->str);
 			g_string_free(hdr, TRUE);
 		}
 	}
 	
-	curl_easy_setopt(curl, CURLOPT_HTTPHEADER, *headers);
+	curl_easy_setopt(req->curl, CURLOPT_HTTPHEADER, req->headers);
 	return 0;
 }
 
 static char *
-make_xff_header(sn, rq)
-	Session *sn;
-	Request *rq;
+make_xff_header(req)
+	request_t *req;
 {
 	/*
 	 * Set an XFF header for abuse tracking.
 	 */
 char	*xff, *s, *r;
-	if ((s = pblock_findval("x-forwarded-for", rq->headers)) != NULL) {
-		char *raddr = pblock_findval("ip", sn->client);
+	if ((s = pblock_findval("x-forwarded-for", req->rq->headers)) != NULL) {
+		char *raddr = pblock_findval("ip", req->sn->client);
 		if (raddr == NULL) {
-			log_error(LOG_FAILURE, "thumb-handler", sn, rq,
+			log_error(LOG_FAILURE, "thumb-handler", req->sn, req->rq,
 				   "could not find remote address for client");
 			return NULL;
 		}
 		
 		char *xff = CALLOC(strlen(raddr) + strlen(s) + 3);
 		if (xff == NULL) {
-			log_error(LOG_FAILURE, "thumb-handler", sn, rq, "out of memory");
+			log_error(LOG_FAILURE, "thumb-handler", req->sn, req->rq, "out of memory");
 			return NULL;
 		}
 		sprintf(xff, "%s, %s", s, raddr);
 	} else {
-		xff = pblock_findval("ip", sn->client);
+		xff = pblock_findval("ip", req->sn->client);
 		if (xff == NULL) {
-			log_error(LOG_FAILURE, "thumb-handler", sn, rq,
+			log_error(LOG_FAILURE, "thumb-handler", req->sn, req->rq,
 				   "could not find remote address for client");
 			return NULL;
 		}
@@ -371,7 +373,7 @@ char	*xff, *s, *r;
 	
 	r = CALLOC(sizeof("X-Forwarded-For: ") + strlen(xff));
 	if (r == NULL) {
-		log_error(LOG_FAILURE, "thumb-handler", sn, rq, "out of memory");
+		log_error(LOG_FAILURE, "thumb-handler", req->sn, req->rq, "out of memory");
 		return NULL;
 	}
 	sprintf(r, "X-Forwarded-For: %s", xff);
@@ -383,9 +385,9 @@ char	*xff, *s, *r;
  * Given a string like "http://example.com/a/b/c", remove
  * "http://example.com" and leave "/a/b/c".
  */
-static char *
+static char const *
 strip_hostname(uri)
-	char *uri;
+	char const *uri;
 {
 	if (strncmp(uri, "http://", 7) == 0)
 		return strchr(uri + 7, '/');
@@ -394,9 +396,8 @@ strip_hostname(uri)
 }
 
 static int 
-re_match(sn, rq, rex, subj, matches)
-	Session *sn;
-	Request *rq;
+re_match(req, rex, subj, matches)
+	request_t *req;
 	char const *rex, *subj;
 	char ***matches;
 {
@@ -409,7 +410,7 @@ int		 erroffset;
 	re = pcre_compile(rex, 0, &error, &erroffset, NULL);
 	
 	if (re == NULL) {
-		log_error(LOG_WARN, "thumb-handler", sn, rq,
+		log_error(LOG_WARN, "thumb-handler", req->sn, req->rq,
 			   "pcre_compile failed (offset=%d): %s",
 			   erroffset, error);
 		return -1;
@@ -426,7 +427,7 @@ int		 erroffset;
 			return -1;
 			
 		default:
-			log_error(LOG_WARN, "thumb-handler", sn, rq,
+			log_error(LOG_WARN, "thumb-handler", req->sn, req->rq,
 				   "pcre_exec failed: %d", rc);
 			return rc;
 		}
@@ -434,7 +435,7 @@ int		 erroffset;
 	
 	*matches = CALLOC(sizeof(char *) * rc);
 	if (*matches == NULL) {
-		log_error(LOG_FAILURE, "thumb-handler", sn, rq, "out of memory");
+		log_error(LOG_FAILURE, "thumb-handler", req->sn, req->rq, "out of memory");
 		return -1;
 	}
 
@@ -443,7 +444,7 @@ int		 erroffset;
 		int len = ovector[2*i + 1] - ovector[2 * i];
 		(*matches)[i] = CALLOC(len + 1);
 		if ((*matches)[i] == NULL) {
-			log_error(LOG_FAILURE, "thumb-handler", sn, rq, "out of memory");
+			log_error(LOG_FAILURE, "thumb-handler", req->sn, req->rq, "out of memory");
 			return -1;
 		}
 
@@ -453,16 +454,13 @@ int		 erroffset;
 	return rc;
 }
 	
-static GString *
-thumb_url_from_path(sn, rq, path)
-	Session *sn;
-	Request *rq;
-	char const *path;
+static int
+thumb_url_from_path(req)
+	request_t *req;
 {
 char		*site, *lang, *width, *filename, *page;
 pblock		*params;
 char		**matches;
-GString		*requrl;
 GString		*host, *paramstr;
 	/*
 	 * Extract the various parts from the URI.  These regexes come from
@@ -479,7 +477,7 @@ GString		*host, *paramstr;
 	params = pblock_create(19);
 
 	/* First, look for a thumbnail */
-	if (re_match(sn, rq, THUMB_REGEXP, path, &matches) > 0) {
+	if (re_match(req, THUMB_REGEXP, req->uripath, &matches) > 0) {
 		site = matches[1];
 		lang = matches[2];
 		filename = matches[4];
@@ -496,7 +494,7 @@ GString		*host, *paramstr;
 #define MEDIA_REGEXP							\
 	"^/([\\w-]*)/([\\w-]*)/thumb(/archive|)/\\w/\\w\\w/"		\
 	"([^/]*\\.(?:(?i)ogg|ogv|oga))/(mid|seek(?:=|%3D|%3d)(\\d+))-([^/]*)$"
-	} else if (re_match(sn, rq, MEDIA_REGEXP, path, &matches) > 0) {
+	} else if (re_match(req, MEDIA_REGEXP, req->uripath, &matches) > 0) {
 		site = matches[1];
 		lang = matches[2];
 		filename = matches[4];
@@ -506,15 +504,15 @@ GString		*host, *paramstr;
 		if (matches[3][0])
 			pblock_nvinsert("archived", "1", params);
 	} else {
-		pblock_nvinsert("x-debug", "No regex match", rq->srvhdrs);
-		send_error(sn, rq, PROTOCOL_NOT_FOUND, "No regex match for filename");
-		return NULL;
+		pblock_nvinsert("x-debug", "No regex match", req->rq->srvhdrs);
+		send_error(req, PROTOCOL_NOT_FOUND, "No regex match for filename");
+		return -1;
 	}
 
 	if (strstr(filename, "%20") != NULL) {
-		pblock_nvinsert("x-debug", "filename contains a space", rq->srvhdrs);
-		send_error(sn, rq, PROTOCOL_NOT_FOUND, "Filename contains a space");
-		return NULL;
+		pblock_nvinsert("x-debug", "filename contains a space", req->rq->srvhdrs);
+		send_error(req, PROTOCOL_NOT_FOUND, "Filename contains a space");
+		return -1;
 	}
 
 	/*
@@ -523,13 +521,13 @@ GString		*host, *paramstr;
 	host = hostname_from_site_lang(site, lang);
 	paramstr = pblock_to_query(params);
 
-	requrl = g_string_new(NULL);
-	g_string_sprintf(requrl, "http://%s/thumb.php?%s", host->str, paramstr->str);
+	req->thumburl = g_string_new(NULL);
+	g_string_sprintf(req->thumburl, "http://%s/thumb.php?%s", host->str, paramstr->str);
 	
 	g_string_free(host, TRUE);
 	g_string_free(paramstr, TRUE);
 
-	return requrl;
+	return 0;
 }
 
 static GString *
