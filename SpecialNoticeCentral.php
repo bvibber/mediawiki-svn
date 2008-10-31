@@ -404,7 +404,7 @@ class CentralNotice extends SpecialPage {
 			$htmlOut = wfMsg('centralnotice-no-notices-exist');		
     	        }
 
-		// Template Adding
+		// Notice Adding
 		$htmlOut .= Xml::openElement( 'form',
 			array(
 				'method' => 'post',
@@ -491,6 +491,7 @@ class CentralNotice extends SpecialPage {
 			)
 		);
 		
+		$htmlOut .= Xml::hidden( 'change', 'weight');
 		$htmlOut .= Xml::closeElement( 'table' );
 		$htmlOut .= Xml::closeElement( 'fieldset' );
 		$htmlOut .= Xml::closeElement( 'form' );
