@@ -69,10 +69,13 @@ $wgTaskExtensionTasksCachedTitle = '' ;
 # Integrating into the MediaWiki environment
 
 $wgExtensionCredits['Tasks'][] = array(
-        'name' => 'Tasks',
-        'description' => 'An extension to manage tasks.',
-        'author' => 'Magnus Manske',
-		'descriptionmsg' => 'tasks_desc',
+	'name'           => 'Tasks',
+	'description'    => 'An extension to manage tasks.',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'author'         => 'Magnus Manske',
+	'descriptionmsg' => 'tasks_desc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Tasks',
 );
 
 $wgExtensionFunctions[] = 'wfTasksExtension';
