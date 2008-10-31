@@ -216,6 +216,9 @@ class SpecialNoticeTemplate extends SpecialPage {
 			return;
 		}
 		
+		// Format name so there are only letters, numbers, and underscores
+		$name = ereg_replace( '[^A-Za-z0-9\_]', '', $name );
+		
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'cn_templates', 'tmp_name',
 			array( 'tmp_name' => $name ),
