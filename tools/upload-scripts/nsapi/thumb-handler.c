@@ -80,8 +80,11 @@ struct call_context *ctx = (struct call_context *)data;
  */
 int thumb_handler_init(pblock *pb UNUSED, Session *sn, Request *rq)
 {
-	if (curl_global_init(CURL_GLOBAL_NOTHING) != 0)
+	if (curl_global_init(CURL_GLOBAL_NOTHING) != 0) {
+		log_error(LOG_FAILURE, "thumb-handler", sn, rq,
+			   "failed to initialise cURL");
 		return REQ_ABORTED;
+	}
 	log_error(LOG_INFORM, "thumb-handler", sn, rq, "thumb-handler $Id$ ready");
 	return REQ_PROCEED;
 }
@@ -97,9 +100,9 @@ send_error(
 va_list	 ap;
 GString	*err = g_string_new(NULL);
 	g_string_assign(err,
-"<html>\n"
-"<head><title>Thumbnail error</title></head>\n"
-"<body>\n");
+"<html>\r\n"
+"<head><title>Thumbnail error</title></head>\r\n"
+"<body>\r\n");
 	
 	va_start(ap, fmt);
 #if GLIB_CHECK_VERSION(2, 14, 0)
@@ -111,7 +114,7 @@ GString	*err = g_string_new(NULL);
 		char *s;
 		len = vsnprintf(NULL, 0, fmt, ap);
 		s = malloc(len + 1);
-		vsnprintf(NULL, 0, fmt, ap);
+		vsnprintf(s, len + 1, fmt, ap);
 		g_string_append(err, s);
 		free(s);
 	}
@@ -119,8 +122,8 @@ GString	*err = g_string_new(NULL);
 	
 	va_end(ap);
 
-	g_string_append(err, "</body>\n</html>\n");
-	pblock_nvinsert("content-type", "text/html", rq->srvhdrs);
+	g_string_append(err, "</body>\r\n</html>\r\n");
+	pblock_nvinsert("content-type", "text/html;charset=UTF-8", rq->srvhdrs);
 	pblock_nvinsert("cache-control", "no-cache", rq->srvhdrs);
 	protocol_status(sn, rq, code, NULL);
 	if (protocol_start_response(sn, rq) != REQ_NOACTION)
@@ -186,7 +189,6 @@ struct curl_slist	*headers = NULL;
 		log_error(LOG_WARN, "thumb-handler", sn, rq,
 			   "failed to initialise libcURL");
 		send_error(sn, rq, PROTOCOL_SERVER_ERROR, "Error initialising cURL");
-		curl_easy_cleanup(curl);
 		g_string_free(thumburl, TRUE);
 		return REQ_PROCEED;
 	}
