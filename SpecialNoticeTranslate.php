@@ -37,20 +37,6 @@ class SpecialNoticeTranslate extends UnlistedSpecialPage {
 		
 		// Handle form submissions
 		if ( $wgRequest->wasPosted() ) {
-		    // Handle preview
-			$previewNotice = $wgRequest->getVal('preview');
-			if ( isset( $previewNotice ) ) {
-				
-				$render = new SpecialNoticeText();
-				$render->project = 'wikipedia';
-				$render->language = $wgRequest->getVal( 'wpUserLanguage' );
-				$htmlOut = Xml::fieldset( wfMsg( 'centralnotice-preview' ),
-					$render->getHtmlNotice( $wgRequest->getText( 'template' ) )
-				);
-				
-				$wgOut->addHTML( $htmlOut );
-			}
-			
 			// Handle update
 			$update = $wgRequest->getArray('updateText');
 			$token  = $wgRequest->getArray('token');
@@ -66,56 +52,8 @@ class SpecialNoticeTranslate extends UnlistedSpecialPage {
 			}
 		}
 		
-		// Show list of translations
-		if ( $sub == 'listTranslations' ) {
-			$this->showList();
-			return;
-		}
-		
 		// Show translation form
   	  	$this->showForm();
-	}
-	
-	private function showList() {
-		global $wgOut;
-		
-		$htmlOut = Xml::fieldset( wfMsgHtml( 'centralnotice-translations' ) );
-		$htmlOut .= Xml::openElement( 'table',
-			array (
-				'cellpadding' => 9,
-				'width' => '100%'
-			)
-		);
-		
-		// Headers
-		$htmlOut .= Xml::element( 'th', null, wfMsg( 'centralnotice-template-name' ) );
-		
-		// Rows
-		$templates = SpecialNoticeTemplate::queryTemplates();
-		if ( count( $templates ) > 0 ) {
-			$title = Title::newFromText( 'Special:NoticeTranslate' );
-			foreach ( $templates as $templateName ) {
-				$htmlOut .= Xml::tags( 'tr', null, 
-					Xml::tags( 'td', null,
-						Xml::element( 'a',
-							array( 'href' => $title->getFullURL( "template={$templateName}" ) ),
-							$templateName
-						)
-					)
-				);
-			}
-		} else {
-			// Show message telling user there are none
-			$htmlOut .= Xml::tags( 'tr', null, 
-				Xml::tags( 'td', null, wfMsg( 'centralnotice-no-templates-translate' ) )
-			);
-		}
-		
-		$htmlOut .= Xml::closeElement( 'table' );
-		$htmlOut .= Xml::closeElement( 'fieldset' );
-		
-		// Output HTML
-		$wgOut->addHTML( $htmlOut );
 	}
 	
 	private function showForm() {
@@ -129,8 +67,16 @@ class SpecialNoticeTranslate extends UnlistedSpecialPage {
 		
 		$currentTemplate = $wgRequest->getText( 'template' );
 		
+		// Show preview
+		$render = new SpecialNoticeText();
+		$render->project = 'wikipedia';
+		$render->language = $wgRequest->getVal( 'wpUserLanguage' );
+		$htmlOut = Xml::fieldset( wfMsg( 'centralnotice-preview' ),
+			$render->getHtmlNotice( $wgRequest->getText( 'template' ) )
+		);
+		
 		// Build HTML
-		$htmlOut = Xml::openElement( 'form', array( 'method' => 'post' ) );
+		$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post' ) );
 		$htmlOut .= Xml::fieldset( wfMsgHtml( 'centralnotice-translate-heading', $currentTemplate ) );
 		$htmlOut .= Xml::openElement( 'table',
 			array (
