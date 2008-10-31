@@ -7,9 +7,9 @@
 $aliases = array();
 
 $aliases['en'] = array(
-	RecordAdmin => array(RecordAdmin),
+	'RecordAdmin' => array(RecordAdmin),
 );
 
 $aliases['fr'] = array(
-	RecordAdmin => array(GérerEnregistrement),
+	'RecordAdmin' => array(GérerEnregistrement),
 );
