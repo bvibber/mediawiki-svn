@@ -198,8 +198,7 @@ class CentralNotice extends SpecialPage {
 		
 		$pages = array(
 			'Special:CentralNotice/listNotices' => wfMsg( 'centralnotice-notices' ),
-			'Special:NoticeTemplate/listTemplates' => wfMsg ( 'centralnotice-templates' ),
-			'Special:NoticeTranslate/listTranslations' => wfMsg( 'centralnotice-translate' )
+			'Special:NoticeTemplate/listTemplates' => wfMsg ( 'centralnotice-templates' )
 		);
 		$htmlOut = Xml::openElement( 'table', array( 'cellpadding' => 9 ) );
 		$htmlOut .= Xml::openElement( 'tr' );

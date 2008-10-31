@@ -113,17 +113,31 @@ class SpecialNoticeTemplate extends SpecialPage {
 			$htmlOut .= Xml::fieldset( 'Available Templates' );
 			$htmlOut .= Xml::openElement( 'table', array ( 'cellpadding' => 9 ) ) ; 
 			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-template-name' ) );
+			$htmlOut .= Xml::element( 'th' );
+			$htmlOut .= Xml::element( 'th' );
 			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-remove' ) );
 			
 			$msgConfirmDelete = wfMsgHTML( 'centralnotice-confirm-delete' );
 			foreach ( $templates as $templateName ) {
 				$templateTitle = Title::newFromText( "MediaWiki:Centralnotice-template-{$templateName}" );
+				$translateTitle = Title::newFromText( 'Special:NoticeTranslate' );
 				$htmlOut .= Xml::tags( 'tr', null, 
+					Xml::element( 'td', null, $templateName ) .
 					Xml::tags( 'td', null,
 						Xml::element( 'a',
-							array( 'href' => $templateTitle->getEditURL() ),
-							$templateName
-						)
+							array(
+								'href' => $templateTitle->getEditURL(),
+							),
+							wfMsg ( 'centralnotice-edit' )
+				 		)
+					) .
+					Xml::tags( 'td', null,
+						Xml::element( 'a',
+							array(
+								'href' => $translateTitle->getFullURL( "template={$templateName}" ),
+							),
+							wfMsg ( 'centralnotice-translate' )
+				 		)
 					) .
 					Xml::tags( 'td', null, 
 						Xml::check( 'removeTemplates[]', false, 
