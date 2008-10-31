@@ -1,11 +1,15 @@
 <?php
-#Internationalisation message file of Record Admin extension
-
+/*Internationalisation message file of Record Admin extension
+* Created by Bertrand GRONDIN
+*
+* @addtogroup Extensions
+*
+*/
 $messages=array();
 
 $messages['en'] = array (
 	'recordadmin' => 'Record Administration',
-	'recordadmin-desc' => 'A special page for finding and editing record articles using a form',
+	'recordadmin-desc' => 'A special page for finding and editing record pages using a form',
 	'recordadmin-select' => 'Select the type of record to search for ',
 	'recordadmin-newsearch' => 'New $1 search',
 	'recordadmin-newrecord' => 'Select another record type',
@@ -29,12 +33,15 @@ $messages['en'] = array (
 	'recordadmin-buttonsave' => 'Save',
 	'recordadmin-noform' => 'There is no form associated with "$1" records!',
 	'recordadmin-createlink' => 'click <a href=$1>here</a> to create one',
-	'recordadmin-newcreated' => 'New $type created from public form',
+	'recordadmin-newcreated' => 'New $1 created from public form',
+	'recordadmin-summary-typecreated' => 'New $1 created',
+	'recordadmin-viewlink' => '(<a href="$1">view</a>)',
+	'recordadmin-editlink' => '<a href="$1").">edit</a>',
 );
 
 $messages['fr'] = array (
 	'recordadmin' => 'Gestion des enregistrements',
-	'recordadmin-desc' => 'Une page spéciale pour trouver et modifier l’enregistrement des articles par l’utilisation d’un formulaire',
+	'recordadmin-desc' => 'Une page spéciale pour trouver et modifier l’enregistrement des pages par l’utilisation d’un formulaire',
 	'recordadmin-select' => 'Sélectionner le type d’enregistrement à rechercher pour',
 	'recordadmin-newsearch' => 'Nouvelle recherche $1',
 	'recordadmin-newrecord' => 'Sélectionner un autre type d’enregistrement',
@@ -57,4 +64,8 @@ $messages['fr'] = array (
 	'recordadmin-buttonsave' => 'Sauvegarder',
 	'recordadmin-noform' => 'Il n’y a aucun formulaire avec l’enregistrement « $1 » !',
 	'recordadmin-createlink' => 'cliquez <a href=$1>ici</a> pour en créer un',
+	'recordadmin-newcreated' => 'Nouveau $1 créé à partir d’un formulaire public',
+	'recordadmin-summary-typecreated' => 'Nouveau $1 de créer',
+	'recordadmin-viewlink' => 'voir',
+	'recordadmin-editlink' => 'modifier',
 );

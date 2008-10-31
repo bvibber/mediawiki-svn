@@ -10,17 +10,18 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('RECORDADMIN_VERSION','0.2, 2008-10-31');
+define('RECORDADMIN_VERSION','0.2.1, 2008-10-31');
 
 $wgRecordAdminCategory      = 'Records'; # Category which contains the templates used as records and having corresponding forms
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'SpecialRecordAdmin.18n.php';
+$wgExtensionAliasesFiles['RecordAdmin'] = $dir . 'SpecialRecordAdmin.alias.php';
 $wgExtensionFunctions[] = 'wfSetupRecordAdmin';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Record administration',
-	'author'         => '[http://www.organicdesign.co.nz/nad User:Nad]',
+	'author'         => '[http://www.organicdesign.co.nz/nad User:Nad], Bertrand GRONDIN',
 	'description'    => 'A special page for finding and editing record articles using a form',
 	'descriptionmsg' => 'recordadmin-desc',
 	'url'            => 'http://www.organicdesign.co.nz/Extension:SpecialExample',
@@ -39,7 +40,6 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $guid = '';
 
 	function __construct() {
-		wfLoadExtensionMessages ('RecordAdmin');		
 		# Name to use for creating a new record either via RecordAdmin or a public form
 		# todo: should add a hook here for custom default-naming
 		$this->guid = strftime('%Y%m%d', time()).'-'.substr(strtoupper(uniqid()), -5);
@@ -59,6 +59,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function execute($param) {
 		global $wgOut, $wgRequest, $wgRecordAdminCategory, $wgRecordAdminUseNamespaces;
+		wfLoadExtensionMessages ('RecordAdmin');		
 		$this->setHeaders();
 		$type     = $wgRequest->getText('wpType') or $type = $param;
 		$record   = $wgRequest->getText('wpRecord');
@@ -124,7 +125,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 						# Attempt to create the article
 						$article = new Article($t);
-						$summary = "[[Special:RecordAdmin/$type|RecordAdmin]]: New $type created";
+						$summary = "[[Special:RecordAdmin/$type|RecordAdmin]]:".wfMsg('recordadmin-summary-typecreated');
 						$text = '';
 						foreach ($posted as $k => $v) if ($v) {
 							if ($this->types[$k] == 'bool') $v = 'yes';
@@ -218,8 +219,8 @@ class SpecialRecordAdmin extends SpecialPage {
 						$t = $r[0];
 						$k = $r[1];
 						$stripe = $stripe ? '' : ' class="stripe"';
-						$table .= "<tr$stripe><td class='col1'>(<a href='".$t->getLocalURL()."'>view</a>)";
-						$table .= "(<a href='".$title->getLocalURL("wpType=$type&wpRecord=$k")."'>edit</a>)</td>\n";
+						$table .= "<tr$stripe><td class='col1'>(<a href='".$t->getLocalURL()."'>".wfMsg('recordadmin-viewlink')."</a>)";
+						$table .= "(<a href='".$title->getLocalURL("wpType=$type&wpRecord=$k")."'>".wfMsg('recordadmin-editlink')."</a>)</td>\n";
 						$table .= "<td class='col2'>$ts</td>\n";
 						$i = 0;
 						foreach (array_keys($this->types) as $k) {
