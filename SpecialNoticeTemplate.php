@@ -199,8 +199,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			Xml::textarea( 'templateBody', '', 60, 20 )
 		);
 		$htmlOut .= Xml::tags( 'p', null, 
-			Xml::submitButton( wfMsg( 'centralnotice-modify' ) ) .
-			Xml::submitButton( wfMsg( 'centralnotice-preview' ) )
+			Xml::submitButton( wfMsg( 'centralnotice-modify' ) ) 
 		);
 		$htmlOut .= Xml::closeElement( 'fieldset' );
 		$htmlOut .= Xml::closeElement( 'form' );
