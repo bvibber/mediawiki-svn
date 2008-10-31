@@ -68,6 +68,7 @@ $messages['en'] = array(
 	'centralnotice-no-templates' => 'There are no templates in the system. Create one',
 	'centralnotice-number-uses' => 'Uses',
 	'centralnotice-edit' => 'Edit',
+	'centralnotice-message' => 'Message',
 );
 
 /** Afrikaans (Afrikaans)

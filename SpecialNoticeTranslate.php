@@ -65,14 +65,13 @@ class SpecialNoticeTranslate extends UnlistedSpecialPage {
 		// Get user's language
 		$wpUserLang = $wgRequest->getVal('wpUserLanguage') ? $wgRequest->getVal('wpUserLanguage') : $wgContLanguageCode;
 		
+		// Get current template
 		$currentTemplate = $wgRequest->getText( 'template' );
 		
 		// Show preview
-		$render = new SpecialNoticeText();
-		$render->project = 'wikipedia';
-		$render->language = $wgRequest->getVal( 'wpUserLanguage' );
-		$htmlOut = Xml::fieldset( wfMsg( 'centralnotice-preview' ),
-			$render->getHtmlNotice( $wgRequest->getText( 'template' ) )
+		$htmlOut = SpecialNoticeTemplate::previewTemplate(
+			$wgRequest->getText( 'template' ),
+			$wgRequest->getVal( 'wpUserLanguage' ) 
 		);
 		
 		// Build HTML
@@ -86,7 +85,7 @@ class SpecialNoticeTranslate extends UnlistedSpecialPage {
 		);
 		
 		// Headers
-		$htmlOut .= Xml::element( 'th', array( 'width' => '15%' ) );
+		$htmlOut .= Xml::element( 'th', array( 'width' => '15%' ), wfMsg( 'centralnotice-message' ) );
 		$htmlOut .= Xml::element( 'th', array( 'width' => '5%' ), wfMsg ( 'centralnotice-number-uses')  );
 		$htmlOut .= Xml::element( 'th', array( 'width' => '40%' ), wfMsg ( 'centralnotice-english') );
 		$languages = Language::getLanguageNames();
@@ -110,9 +109,9 @@ class SpecialNoticeTranslate extends UnlistedSpecialPage {
 			// English value
 			$htmlOut .= Xml::openElement( 'tr' );
 			
-			//$title = Title::newFromText( "MediaWiki:{$message}" );
+			$title = Title::newFromText( "MediaWiki:{$message}" );
 			$htmlOut .= Xml::tags( 'td', null,
-				Xml::element( 'a', array( 'href' => ''/*$title->getFullURL()*/ ), $field )
+				Xml::element( 'a', array( 'href' => $title->getFullURL() ), $field )
 			);
 			
 			$htmlOut .= Xml::element( 'td', null, $count);
@@ -123,7 +122,7 @@ class SpecialNoticeTranslate extends UnlistedSpecialPage {
 			
 			// Input
 			$text = '';
-			if( true /*Title::newFromText( $message, NS_MEDIAWIKI )->exists()*/ ) {
+			if( Title::newFromText( $message, NS_MEDIAWIKI )->exists() ) {
 				$text = wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}",
 					array( 'language' => $wpUserLang )
 				);
