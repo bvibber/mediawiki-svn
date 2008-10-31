@@ -1,9 +1,9 @@
-<?php error_reporting(E_ALL); 
+<?php
 
 require_once dirname( dirname( dirname( __FILE__ ) ) ) . "/maintenance/commandLine.inc";
 
-if( !class_exists( 'CentralNotice' ) ) {
-    require dirname( __FILE__ ) . '/SpecialCentralNotice.php';
+if( !$wgNoticeCentralDirectory ) {
+	echo "\$wgNoticeCentralDirectory isn't set -- we're not configured to build static templates.";
 }
 
 if( isset( $options['help'] ) ) {
@@ -28,9 +28,9 @@ if( isset( $options['help'] ) ) {
 			$builder = new SpecialNoticeText();
 			$js = $builder->getJsOutput( $key );
 			
-			$outputDir = "$wgNoticeStaticDirectory/$project/$lang";
+			$outputDir = "$wgNoticeCentralDirectory/$project/$lang";
 			if( wfMkDirParents( $outputDir ) ) {
-				$outputFile = "$outputDir/notice.js";
+				$outputFile = "$outputDir/centralnotice.js";
 				$ok = file_put_contents( $outputFile, $js );
 				if( !$ok ) {
 					echo "FAILED to write $outputFile!\n";

@@ -131,7 +131,7 @@ function pickTemplate(templates, weights) {
 		
 		// Special:NoticeText/project/language
 		$bits = explode( '/', $par );
-		if( count( $bits ) == 2 ) {
+		if( count( $bits ) >= 2 ) {
 			$this->project = $bits[0];
 			$this->language = $bits[1];
 		}
