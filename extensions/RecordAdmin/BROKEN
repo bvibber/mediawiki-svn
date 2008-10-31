@@ -1,0 +1,3 @@
+The code extension represents what we mustn't do for mediawiki.
+* No explanation for configuration of the extension.
+* The main form only runs, the another one doesn't run.
