@@ -5,12 +5,12 @@ class SpecialCodeBrowse extends SpecialPage {
 		parent::__construct( 'CodeBrowse', 'codebrowse' );
 	}
 	function execute( $par = '' ) {
-		if ( !$par )
-			$par = '/';
-		$this->setHeaders();
-			
+		$this->setHeaders();		
+		
 		global $wgRequest;
-		$view = CodeBrowseView::newFromPath( $par, $wgRequest );
+		$path = $wgRequest->getText( 'path', $par );
+
+		$view = CodeBrowseView::newFromPath( $path, $wgRequest );
 		
 		global $wgOut;
 		$wgOut->addHTML( 

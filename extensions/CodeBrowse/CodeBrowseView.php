@@ -2,7 +2,7 @@
 
 class CodeBrowseView {
 	static function newFromPath( $path, $request ) {
-		if ( strpos( $path, '/' ) === false || $path == '/' )
+		if ( ltrim( $path, '/' ) == '' )
 			return new CodeBrowseRepoListView( $path, $request );
 		else
 			return new CodeBrowseItemView( $path, $request );

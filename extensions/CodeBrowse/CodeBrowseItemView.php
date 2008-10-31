@@ -5,7 +5,7 @@ class CodeBrowseItemView extends CodeBrowseView {
 		parent::__construct( $path, $request );
 		$parts = explode( '/', $path, 2 );
 		$this->mRepoName = $parts[0];
-		$this->mBasePath = $parts[1];
+		$this->mBasePath = '/'.$parts[1];
 		$this->mRepository = CodeRepository::newFromName( $this->mRepoName );
 	}
 	
@@ -17,8 +17,8 @@ class CodeBrowseItemView extends CodeBrowseView {
 		
 		if ( !is_array( $contents ) )
 			return ''; // FIXME
-		if ( count( $contents ) == 1 && $contents[0]['kind'] == 'file' ) {
-			return $this->svn->getFile( $this->mBasePath, $this->mRev == 'HEAD' ? null : $this->mRev );
+		if ( count( $contents ) == 1 && $contents[0]['type'] == 'file' ) {
+			return $this->showFile();
 		} else {
 			if ( substr( $this->mPath, -1 ) !== '/' ) {
 				$this->mPath .= '/';
@@ -62,8 +62,9 @@ class CodeBrowseItemView extends CodeBrowseView {
 		global $wgUser, $wgLang;
 		$sk = $wgUser->getSkin();
 		return 
-			"\t<tr><td>".$sk->link( SpecialPage::getTitleFor( 
-				'CodeBrowse', $this->mPath.$item['name'] ), $item['name'] ).
+			"\t<tr><td>".$sk->link( SpecialPage::getTitleFor( 'CodeBrowse'  ), 
+				$item['name'], array(), array( 'path' => $this->mPath.$item['name'] )
+				 ).
 			"</td><td>".$item['created_rev'].
 			"</td><td>".$sk->link( SpecialPage::getTitleFor( 
 				'Code', "{$this->mRepoName}/author/{$item['last_author']}" ), $item['last_author'] ).
@@ -71,5 +72,23 @@ class CodeBrowseItemView extends CodeBrowseView {
 			"</td><td>".$wgLang->formatSize( $item['size'] ).
 			"</td></tr>\n";
 			
+	}
+	
+	function showFile() {
+		$contents = $this->svn->getFile( $this->mBasePath, $this->mRev == 'HEAD' ? null : $this->mRev );
+		if ( $this->mAction == 'raw' || $this->mAction == 'download' ) {
+			global $wgOut;
+			$wgOut->disable();
+			
+			if ( $this->mAction == 'raw' )
+				header( 'Content-Type: text/plain' );
+			else
+				header( 'Content-Type: application/octet-stream' );
+			header( 'Content-Length: '.strlen( $contents ) );
+			print $contents;
+			return;
+		}
+		
+		return Xml::element( 'pre', array( 'style' => 'overflow: auto;' ), $contents );			
 	}
 }
