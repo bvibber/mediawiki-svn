@@ -48,12 +48,9 @@ $messages['en'] = array(
 	'centralnotice-min' => 'Minute',
 	'centralnotice-project-lang' => 'Project Language',
 	'centralnotice-project-name' => 'Project Name',
-	'centralnotice-project-name-list' => '* Project Name
-** wikipedia
-** wikinews
-** wikitionary',
 	'centralnotice-start-date' => 'Start Date',
 	'centralnotice-no-templates' => 'No templates found. Add some!',
+	'centralnotice-no-templates-assigned' => 'No templates assigned to notice. Add some!',
 	'centralnotice-available-templates' => 'Available Templates',
 	'centralnotice-template-already-exists' => 'Template is already tied to campaing. Not adding',
 	'centralnotice-preview-template' => 'Preview Template',
@@ -68,7 +65,7 @@ $messages['en'] = array(
 	'centralnotice-no-notices-exist' => 'No Notices Exist. Add one below',
 	'centralnotice-confirm-delete' => 'Are you sure you want to delete this item? This action will be unrecoverable.',
 	'centralnotice-no-templates-translate' => 'There are not any templates to edit translations for',
-	'centralnotice-no-templates' => 'There are no templates',
+	'centralnotice-no-templates' => 'There are no templates in the system. Create one',
 );
 
 /** Afrikaans (Afrikaans)

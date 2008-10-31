@@ -679,7 +679,7 @@ class CentralNotice extends SpecialPage {
 			array('ORDER BY' => 'cn_notices.not_id')
 		);
 		if ( $dbr->numRows( $res ) < 1) {
-			$wgOut->addHtml( wfMsg ("centralnotice-no-templates") );
+			$wgOut->addHtml( wfMsg ("centralnotice-no-templates-assigned") );
 			$wgOut->addHtml( $this->addTemplatesForm() );
 			return;
 		}
@@ -739,43 +739,52 @@ class CentralNotice extends SpecialPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'cn_templates', 'tmp_name', '', '', array( 'ORDER BY' => 'tmp_id' ) );
 	
-		// Build HTML	
-		$htmlOut = Xml::openElement( 'form',
-			array(
-				'method' => 'post',
-				'action' => '',
-			)
-		);		
-		$htmlOut .= Xml::fieldset( wfMsg( "centralnotice-available-templates") );
-		$htmlOut .= Xml::openElement( 'table', array( 'cellpadding' => 9 ) );
+		if ( $dbr->numRows( $res ) > 0 ) {
+			// Build HTML	
+			$htmlOut = Xml::openElement( 'form',
+				array(
+					'method' => 'post',
+					'action' => '',
+				)
+			);		
+			$htmlOut .= Xml::fieldset( wfMsg( "centralnotice-available-templates") );
+			$htmlOut .= Xml::openElement( 'table', array( 'cellpadding' => 9 ) );
 	
-		$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-template-name') );
-		$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-add' ) );
+			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-template-name') );
+			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-add' ) );
 
-		// Build rows
-		while ( $row = $dbr->fetchObject( $res )) { 
-			$htmlOut .= Xml::openElement( 'tr' );
-
-			// Name
-			$htmlOut .= Xml::tags( 'td', null, Xml::label( $row->tmp_name, 'tmp_name' ));
+			// Build rows
+			while ( $row = $dbr->fetchObject( $res )) { 
+				$htmlOut .= Xml::openElement( 'tr' );
 	
-			// Add
-			$htmlOut .= Xml::tags( 'td', null, 
-					Xml::check( 'addTemplates[]', '', array ( 'value' => $row->tmp_name)) 
+				// Name
+				$htmlOut .= Xml::tags( 'td', null, Xml::label( $row->tmp_name, 'tmp_name' ));
+		
+				// Add
+				$htmlOut .= Xml::tags( 'td', null, 
+						Xml::check( 'addTemplates[]', '', array ( 'value' => $row->tmp_name)) 
+				   	    );
+				$htmlOut .= Xml::closeElement( 'tr' );
+			}
+
+			// Submit
+			$htmlOut .= Xml::tags( 'tr', null, 
+		 		Xml::tags( 'td', array( 'collspan' => 2), 
+					Xml::submitButton( wfMsgHtml('centralnotice-modify'))
+				)
+			);
+
+			$htmlOut .= Xml::closeElement( 'table' );
+			$htmlOut .= Xml::closeElement( 'fieldset' );
+			$htmlOut .= Xml::closeElement( 'form' );
+		} else {
+			$htmlOut = Xml::element( 'p' );
+			$htmlOut .= Xml::element( 'a', 
+						array( 'href' =>  SpecialPage::getTitleFor( 'NoticeTemplate' )->getFullUrl()),
+							wfMsg( 'centralnotice-no-templates' )
 			   	    );
-			$htmlOut .= Xml::closeElement( 'tr' );
+				    
 		}
-
-		// Submit
-		$htmlOut .= Xml::tags( 'tr', null, 
-		 	Xml::tags( 'td', array( 'collspan' => 2), 
-				Xml::submitButton( wfMsgHtml('centralnotice-modify'))
-			)
-		);
-
-		$htmlOut .= Xml::closeElement( 'table' );
-		$htmlOut .= Xml::closeElement( 'fieldset' );
-		$htmlOut .= Xml::closeElement( 'form' );
 		return $htmlOut;
 	}
 	

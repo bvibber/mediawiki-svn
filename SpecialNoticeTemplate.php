@@ -102,20 +102,20 @@ class SpecialNoticeTemplate extends SpecialPage {
 		global $wgOut, $wgTitle, $wgUser;
 		
 		// Templates
-		$htmlOut = Xml::openElement( 'form', 
-			array( 
-				'method' => 'post', 
-				'action' => ''
-			 )
-		);
-		$htmlOut .= Xml::fieldset( 'Available Templates' );
-		$htmlOut .= Xml::openElement( 'table', array ( 'cellpadding' => 9 ) ) ; 
-		$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-template-name' ) );
-		$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-remove' ) );
-		
-		$msgConfirmDelete = wfMsgHTML( 'centralnotice-confirm-delete' );
 		$templates = $this->queryTemplates();
 		if ( count( $templates ) > 0 ) {
+			$htmlOut = Xml::openElement( 'form', 
+				array( 
+					'method' => 'post', 
+					'action' => ''
+				 )
+			);
+			$htmlOut .= Xml::fieldset( 'Available Templates' );
+			$htmlOut .= Xml::openElement( 'table', array ( 'cellpadding' => 9 ) ) ; 
+			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-template-name' ) );
+			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-remove' ) );
+			
+			$msgConfirmDelete = wfMsgHTML( 'centralnotice-confirm-delete' );
 			foreach ( $templates as $templateName ) {
 				$templateTitle = Title::newFromText( "MediaWiki:Centralnotice-template-{$templateName}" );
 				$htmlOut .= Xml::tags( 'tr', null, 
@@ -141,7 +141,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 				)
 			);
 		} else {
-			$htmlOut .= Xml::tags( 'tr', null,
+			$htmlOut = Xml::tags( 'tr', null,
 				Xml::element( 'td', null, wfMsg( 'centralnotice-no-templates' ) )
 			);
 		}
