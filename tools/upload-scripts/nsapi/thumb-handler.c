@@ -66,6 +66,10 @@ write_data(ptr, size, num, data)
 size_t	sz = size * num;
 struct call_context *ctx = (struct call_context *)data;
 	ctx->data = realloc(ctx->data, ctx->sz + sz);
+	if (ctx->data == NULL) {
+		log_error(LOG_FAILURE, "thumb-handler", ctx->sn, ctx->rq, "out of memory");
+		return 0;
+	}
 	memcpy(ctx->data + ctx->sz, ptr, sz);
 	ctx->sz += sz;
 	return sz;
@@ -335,6 +339,10 @@ char	*xff, *s, *r;
 		}
 		
 		char *xff = CALLOC(strlen(raddr) + strlen(s) + 3);
+		if (xff == NULL) {
+			log_error(LOG_FAILURE, "thumb-handler", sn, rq, "out of memory");
+			return NULL;
+		}
 		sprintf(xff, "%s, %s", s, raddr);
 	} else {
 		xff = pblock_findval("ip", sn->client);
@@ -346,6 +354,10 @@ char	*xff, *s, *r;
 	}
 	
 	r = CALLOC(sizeof("X-Forwarded-For: ") + strlen(xff));
+	if (r == NULL) {
+		log_error(LOG_FAILURE, "thumb-handler", sn, rq, "out of memory");
+		return NULL;
+	}
 	sprintf(r, "X-Forwarded-For: %s", xff);
 	
 	return r;
@@ -405,10 +417,20 @@ int		 erroffset;
 	}
 	
 	*matches = CALLOC(sizeof(char *) * rc);
+	if (*matches == NULL) {
+		log_error(LOG_FAILURE, "thumb-handler", sn, rq, "out of memory");
+		return -1;
+	}
+
 	for (i = 0; i < rc; ++i) {
 		char const *start = subj + ovector[2 * i];
 		int len = ovector[2*i + 1] - ovector[2 * i];
 		(*matches)[i] = CALLOC(len + 1);
+		if ((*matches)[i] == NULL) {
+			log_error(LOG_FAILURE, "thumb-handler", sn, rq, "out of memory");
+			return -1;
+		}
+
 		memcpy((*matches)[i], start, len);
 	}
 	
