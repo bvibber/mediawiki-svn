@@ -161,7 +161,7 @@ class CentralNotice extends SpecialPage {
 		if ( $method == 'addTemplateTo' ) {
 			$noticeName = $wgRequest->getVal( 'noticeName' );
 			$templateName = $wgRequest->getVal( 'templateName' );
-			$this->addTemplateTo( $noticeName, $templateName, 0 );
+			$this->addTemplateTo( $noticeName, $templateName, 100 );
 			$this->listNoticeDetail( $noticeName );
 			return;
 		}
