@@ -113,6 +113,9 @@ function pickTemplate(templates, weights) {
 	var currentTemplate = 0;
 	var totalWeight = 0;
 	
+	if (templates.length == 0)
+		return '';
+	
 	while (currentTemplate < templates.length) {
 		totalWeight += weights[currentTemplate];
 		for (i=0; i<weights[currentTemplate]; i++) {
