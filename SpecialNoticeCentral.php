@@ -455,6 +455,28 @@ class CentralNotice extends SpecialPage {
 		
 		// Language
 		list( $lsLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
+		
+		/*
+		 * Dirty hack to add our very own "All" option
+		 */
+		// Strip selected flag
+		$lsSelect = str_replace( ' selected="selected"', '', $lsSelect );
+		
+		// Find the first select tag
+		$insertPoint = stripos( $lsSelect , '<option' );
+		
+		// Create our own option
+		$option = Xml::element( 'option',
+			array(
+				'selected' => 'selected',
+				'value' => ''
+			),
+			'All Languages'
+		);
+		
+		// Insert our option
+		$lsSelect = substr( $lsSelect, 0, $insertPoint ) . $option . substr( $lsSelect, $insertPoint );
+		
 		$htmlOut .= Xml::tags( 'tr', null,
 			Xml::tags( 'td', null, $lsLabel ) .
 			Xml::tags( 'td', null, $lsSelect )
