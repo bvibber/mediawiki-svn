@@ -233,7 +233,12 @@ function pickTemplate(templates, weights) {
 			$params = array( $this->formatNum( $this->getDonationAmount() ) );
 		}
 		$message = "centralnotice-{$this->noticeName}-$field";
-		return $this->parse( $this->getMessage( $message, $params ) );
+		$source = $this->getMessage( $message, $params );
+		if( $source == '' ) {
+			return '{{{' . htmlspecialchars( $field ) . '}}}';
+		} else {
+			return $this->parse( $source );
+		}
 	}
 	
 	/*
