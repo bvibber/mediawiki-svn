@@ -85,15 +85,22 @@ class SpecialNoticeTranslate extends SpecialPage {
 		
 		// Rows
 		$templates = SpecialNoticeTemplate::queryTemplates();
-		$title = Title::newFromText( 'Special:NoticeTranslate' );
-		foreach ( $templates as $templateName ) {
-			$htmlOut .= Xml::tags( 'tr', null, 
-				Xml::tags( 'td', null,
-					Xml::element( 'a',
-						array( 'href' => $title->getFullURL( "template={$templateName}" ) ),
-						$templateName
+		if ( count( $templates ) > 0 ) {
+			$title = Title::newFromText( 'Special:NoticeTranslate' );
+			foreach ( $templates as $templateName ) {
+				$htmlOut .= Xml::tags( 'tr', null, 
+					Xml::tags( 'td', null,
+						Xml::element( 'a',
+							array( 'href' => $title->getFullURL( "template={$templateName}" ) ),
+							$templateName
+						)
 					)
-				)
+				);
+			}
+		} else {
+			// Show message telling user there are none
+			$htmlOut .= Xml::tags( 'tr', null, 
+				Xml::tags( 'td', null, wfMsg( 'centralnotice-no-templates' ) )
 			);
 		}
 		
