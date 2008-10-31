@@ -26,7 +26,7 @@ class SpecialNoticeText extends NoticePage {
 		$templateNames = array_keys( $templates );
 		
 		$templateTexts = array_map(
-			array( $this, 'fillNotice' ),
+			array( $this, 'getHtmlNotice' ),
 			$templateNames );
 		$weights = array_values( $templates );
 		return
@@ -39,24 +39,27 @@ class SpecialNoticeText extends NoticePage {
 				");\n";
 	}
 	
-	function fillNotice( $noticeName ) {
+	function getHtmlNotice( $noticeName ) {
 		$this->noticeName = $noticeName;
+		/*
 		return strtr(
-				Xml::escapeJsString( $this->getHtmlNotice() ),
-					array_map(
-						array( $this, 'interpolateStrings' ),
-						array(
-							'$heading' => $this->getHeadlines(), // Wikipedia: Making Life Easier. 
-							'$subheading' => $this->getSubheading(),
-							'$meter' => $this->getMeter(), // dynamic selection
-							'$amount' => $this->getMessage( 'centralnotice-amount' ),
-									array ( $this->formatNum( $this->getDonationAmount() )), // lookup
-							'$target' => $this->getMessage( 'centralnotice-target' ), // "Our Goal 6 million
-							'$show' => $this->getMessage( 'centralnotice-show' ), // show
-							'$hide' => $this->getMessage( 'centralnotice-hide' ), // hide
-						)
-					)
+				$this->getHtmlNotice(),
+				array(
+					#'$heading' => $this->getHeadlines(), // Wikipedia: Making Life Easier. 
+					#'$subheading' => $this->getSubheading(),
+					#'$meter' => $this->getMeter(), // dynamic selection
+					'$amount' => $this->getMessage( 'amount' ),
+							array ( $this->formatNum( $this->getDonationAmount() )), // lookup
+					#'$target' => $this->getMessage( 'target' ), // "Our Goal 6 million
+					#'$show' => $this->getMessage( 'show' ), // show
+					#'$hide' => $this->getMessage( 'hide' ), // hide
+				)
 			);
+		*/
+		return preg_replace_callback(
+			'/{{{(.*?)}}}/',
+			array( $this, 'getNoticeField' ),
+			$this->getNoticeTemplate() );
 	}
 	
 	function getToggleScripts() {
@@ -141,7 +144,7 @@ function pickTemplate(templates, weights) {
 			$this->language = $bits[1];
 		}
 	}
-	
+	/*
 	private function interpolateStrings( $data ) {
 		if( is_array( $data ) ) {
 			if( count( $data ) == 1 ) {
@@ -199,6 +202,7 @@ function pickTemplate(templates, weights) {
 				'return r.join(" ");' .
 			'}()';
 	}
+	*/
 	
 	function chooseTemplate ( $notice ) {
 		 $dbr = wfGetDB( DB_SLAVE );
@@ -218,10 +222,21 @@ function pickTemplate(templates, weights) {
 		}
 
 	}
-	function getHtmlNotice() {
-		return $this->getMessage( 'centralnotice-template' );
+	function getNoticeTemplate() {
+		return $this->getMessage( "centralnotice-template-{$this->noticeName}" );
 	}
 	
+	function getNoticeField( $matches ) {
+		$field = $matches[1];
+		$params = array();
+		if( $field == 'amount' ) {
+			$params = array( $this->formatNum( $this->getDonationAmount() ) );
+		}
+		$message = "centralnotice-{$this->noticeName}-$field";
+		return $this->parse( $this->getMessage( $message, $params ) );
+	}
+	
+	/*
 	private function getHeadlines() {
 		return $this->splitListMessage( 'centralnotice-headlines' );
 	}
@@ -244,6 +259,7 @@ function pickTemplate(templates, weights) {
 		$text = $this->getMessage( $msg );
 		return $this->splitList( $text, $callback );
 	}
+	*/
 	
 	private function getMessage( $msg, $params=array() ) {
 		$guard = array();
@@ -286,6 +302,7 @@ function pickTemplate(templates, weights) {
 		return false;
 	}
 	
+	/*
 	private function splitList( $text, $callback=false ) {
 		$list = array_filter(
 			array_map(
@@ -305,6 +322,7 @@ function pickTemplate(templates, weights) {
 			return $this->parse( trim( ltrim( $line, '*' ) ) );
 		}
 	}
+	*/
 	
 	private function parse( $text ) {
 		global $wgOut, $wgSitename;
@@ -352,6 +370,7 @@ function pickTemplate(templates, weights) {
 		}
 	}
 	
+	/*
 	function wrapQuote( $text ) {
 		return "<span class='fundquote'>" .
 			$this->getMessage(
@@ -359,7 +378,8 @@ function pickTemplate(templates, weights) {
 				array( $text ) ) .
 			"</span>";
 	}
-
+	*/
+	
 	private function getDonorCount() {
 		global $wgNoticeCounterSource, $wgMemc;
 		$count = intval( $wgMemc->get( 'centralnotice:counter' ) );
@@ -390,6 +410,7 @@ function pickTemplate(templates, weights) {
 		return $count;
 	}
 	
+	/*
 	private function getBlog() {
 		$url = $this->getMessage( 'centralnotice-blog-url' );
 		$entry = $this->getCachedRssEntry( $url );
@@ -429,10 +450,13 @@ function pickTemplate(templates, weights) {
 		}
 		return $title;
 	}
+	*/
+	
 	/**
 	 * Fetch the first link and title from an RSS feed
 	 * @return array
 	 */
+	/*
 	private function getFirstRssEntry( $url ) {
 		wfSuppressWarnings();
 		$feed = simplexml_load_file( $url );
@@ -446,5 +470,6 @@ function pickTemplate(templates, weights) {
 			return array();
 		}
 	}
+	*/
 	
 }
