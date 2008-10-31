@@ -16,3 +16,4 @@ $wgAutoloadClasses['CodeRepoListView'] = $dir.'/CodeBrowseRepoListView.php';
 $wgAutoloadClasses['SpecialCodeBrowse'] = $dir.'/SpecialCodeBrowse.php';
 $wgSpecialPages['CodeBrowse'] = 'SpecialCodeBrowse';
 
+$wgExtensionMessagesFiles['CodeBrowse'] = $dir . '/CodeBrowse.i18n.php';

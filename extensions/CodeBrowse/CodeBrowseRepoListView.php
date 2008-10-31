@@ -2,7 +2,9 @@
 
 class CodeBrowseRepoListView extends CodeBrowseView { 
 	function getContent() {
-		return self::reallyGetContent();
+		global $wgOut;
+		return $wgOut->parse( self::reallyGetContent() );
+		
 	}
 	static function reallyGetContent() {
 		$repos = CodeRepository::getRepoList();

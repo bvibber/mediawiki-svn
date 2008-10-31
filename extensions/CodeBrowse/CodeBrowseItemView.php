@@ -16,7 +16,7 @@ class CodeBrowseItemView extends CodeBrowseView {
 		$contents = $this->svn->getDirList( $this->mBasePath );
 		
 		if ( !is_array( $contents ) )
-			return ''; // FIXME
+			return wfMsgHtml( 'codebrowse-not-found', $this->mPath ); // FIXME
 		if ( count( $contents ) == 1 && $contents[0]['type'] == 'file' ) {
 			return $this->showFile();
 		} else {
@@ -61,9 +61,14 @@ class CodeBrowseItemView extends CodeBrowseView {
 	function contentLine( $item ) {
 		global $wgUser, $wgLang;
 		$sk = $wgUser->getSkin();
+		
+		$name = $item['name'];
+		if ( $item['type'] == 'dir' && substr( $name, -1 ) != '/' )
+			$name .= '/'; 
+		
 		return 
 			"\t<tr><td>".$sk->link( SpecialPage::getTitleFor( 'CodeBrowse'  ), 
-				$item['name'], array(), array( 'path' => $this->mPath.$item['name'] )
+				$name, array(), array( 'path' => $this->mPath.$name )
 				 ).
 			"</td><td>".$item['created_rev'].
 			"</td><td>".$sk->link( SpecialPage::getTitleFor( 
