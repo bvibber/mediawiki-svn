@@ -239,7 +239,7 @@ class CentralNotice extends SpecialPage {
 
 	function listNotices() {
 		global $wgOut, $wgRequest, $wgTitle, $wgScript, $wgNoticeLang;
-		global $wgNoticeProject, $wpUserLang;
+		global $wgNoticeProject, $wpUserLang, $wgNoticeProjects;
 		
 		// Get connection
 		$dbr = wfGetDB( DB_SLAVE );
@@ -448,12 +448,17 @@ class CentralNotice extends SpecialPage {
 		);
 		
 		// Project
-		global $wgNoticeProjects;
-		$dropDownList = $this->dropDownList( wfMsg( 'centralnotice-project-name') ,  $wgNoticeProjects );
-		$htmlOut .= Xml::tags( 'tr', null,
-			Xml::tags( 'td', null, wfMsg( 'centralnotice-project-name' ) ) .
-			Xml::tags( 'td', null, Xml::listDropDown( 'project_name',  $dropDownList, '', $wgNoticeProject, '', 11 ) )
-		);
+		$htmlOut .= Xml::openElement( 'tr' );
+		$htmlOut .= Xml::element( 'td', null, wfMsg( 'centralnotice-project-name' ) );
+		$htmlOut .= Xml::openElement( 'td' );
+		$htmlOut .= Xml::openElement( 'select', array( 'name' => 'project_name' ) );
+		foreach( $wgNoticeProjects as $name => $value ) {
+			$htmlOut .= Xml::element( 'option', array( 'value' => $value ), $name );
+		}
+		$htmlOut .= Xml::closeElement( 'select' );
+		$htmlOut .= Xml::closeElement( 'td' );
+		$htmlOut .= Xml::closeElement( 'tr' );
+		
 		
 		// Language
 		list( $lsLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
@@ -1052,8 +1057,8 @@ class CentralNotice extends SpecialPage {
 	
 	function dropDownList ( $text, $values ) {
 		$dropDown = "* {$text}\n";
-		foreach( $values as $element ) {
-			$dropDown .= "**{$element}\n";
+		foreach( $values as $value ) {
+			$dropDown .= "**{$value}\n";
 		}
 		return $dropDown;
 	}
