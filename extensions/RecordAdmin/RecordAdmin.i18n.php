@@ -23,7 +23,7 @@ $messages['en'] = array(
 	'recordadmin-submit' => 'Submit',
 	'recordadmin-create' => 'Find or create a "$1" record',
 	'recordadmin-alreadyexist' => 'Sorry, "$1" already exists!',
-	'recordadmin-createsuccess' => '$1 created successfully',
+	'recordadmin-createsuccess' => '$1 created',
 	'recordadmin-createerror' => 'An error occurred while attempting to create the $1!',
 	'recordadmin-badtitle' => 'Bad title!',
 	'recordadmin-recordid' => 'Record ID:',
@@ -35,7 +35,7 @@ $messages['en'] = array(
 	'recordadmin-nomatch' => 'No matching records found!',
 	'recordadmin-edit' => 'Editing $1',
 	'recordadmin-typeupdated' => '$1 properties updated',
-	'recordadmin-updatesuccess' => '$1 updated successfully',
+	'recordadmin-updatesuccess' => '$1 updated',
 	'recordadmin-updateerror' => 'An error occurred during update',
 	'recordadmin-buttonsave' => 'Save',
 	'recordadmin-noform' => 'There is no form associated with "$1" records!',
@@ -44,6 +44,8 @@ $messages['en'] = array(
 	'recordadmin-summary-typecreated' => 'New $1 created',
 	'recordadmin-viewlink' => 'view',
 	'recordadmin-editlink' => 'edit',
+	'recordadmin-created' => 'Created',
+	'right-recordadmin' => 'Find and edit record pages',
 );
 
 $messages['qqq'] = array (
