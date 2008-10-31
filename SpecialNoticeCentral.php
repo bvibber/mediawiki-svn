@@ -161,7 +161,8 @@ class CentralNotice extends SpecialPage {
 		if ( $method == 'addTemplateTo' ) {
 			$noticeName = $wgRequest->getVal( 'noticeName' );
 			$templateName = $wgRequest->getVal( 'templateName' );
-			$this->addTemplateTo( $noticeName, $templateName, 100 );
+			$templateWeight = $wgRequest->getVal ( 'weight' );
+			$this->addTemplateTo( $noticeName, $templateName, $weight );
 			$this->listNoticeDetail( $noticeName );
 			return;
 		}
@@ -528,8 +529,9 @@ class CentralNotice extends SpecialPage {
 			// Handle adding of templates
 			$templatesToAdd = $wgRequest->getArray( 'addTemplates' );
 			if ( isset( $templatesToAdd ) ) {
+				$weight = $wgRequest->getArray( 'weight' );
 				foreach ( $templatesToAdd as $template ) {
-					$this->addTemplateTo( $notice, $template, 0 );
+					$this->addTemplateTo( $notice, $template, $weight[$template] );
 				}
 			}
 		}
@@ -541,7 +543,7 @@ class CentralNotice extends SpecialPage {
 		 */
 		$this->showAll = 'Y';
 		
-        if ( isset( $this->showAll )) {
+       	 if ( isset( $this->showAll )) {
             $res = $dbr->select( 'cn_notices',
             	array(
             		'not_id',
@@ -768,6 +770,7 @@ class CentralNotice extends SpecialPage {
 			$htmlOut .= Xml::openElement( 'table', array( 'cellpadding' => 9 ) );
 	
 			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-template-name') );
+			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-weight' ) );
 			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-add' ) );
 
 			// Build rows
@@ -785,8 +788,16 @@ class CentralNotice extends SpecialPage {
 				);
 		
 				// Add
+				$htmlOut .= Xml::tags( 'td', null,
+					Xml::listDropDown( "weight[$row->tmp_name]",
+						$this->dropDownList( wfMsg( 'centralnotice-weight' ), range ( 0, 100, 5)),
+						'',
+						0,
+						'',
+						16)
+				);
 				$htmlOut .= Xml::tags( 'td', null, 
-						Xml::check( 'addTemplates[]', '', array ( 'value' => $row->tmp_name)) 
+					Xml::check( 'addTemplates[]', '', array ( 'value' => $row->tmp_name)) 
 				   	    );
 				$htmlOut .= Xml::closeElement( 'tr' );
 			}
