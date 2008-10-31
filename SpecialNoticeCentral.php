@@ -210,6 +210,14 @@ class CentralNotice extends SpecialPage {
 				$style = array( 'style' => 'border-bottom:solid 1px black;' );
 			}
 			
+			/* Crappy hack! */
+			// Fake translate page's state to look like it's part of the template page
+			$translateTitle = Title::newFromText( 'Special:NoticeTranslate' );
+			if ( $page == 'Special:NoticeTemplate/listTemplates' &&
+				$translateTitle->getPrefixedText() == $wgTitle->getPrefixedText() ) {
+				$style = array( 'style' => 'border-bottom:solid 1px black;' );
+			}
+			
 			$htmlOut .= Xml::tags( 'td', $style,
 				Xml::tags( 'a', array( 'href' => $title->getFullURL() ), $msg )
 			);
