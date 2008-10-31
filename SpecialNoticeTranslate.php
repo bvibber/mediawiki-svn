@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
         exit( 1 );
 }
 
-class SpecialNoticeTranslate extends SpecialPage {
+class SpecialNoticeTranslate extends UnlistedSpecialPage {
 	
 	/* Functions */
 	
