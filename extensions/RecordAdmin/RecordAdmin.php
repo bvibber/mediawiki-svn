@@ -1,31 +1,31 @@
 <?php
 /**
  * Extension:RecordAdmin - MediaWiki extension
- *{{Category:Extensions|RecordAdmin}}{{php}}{{Category:Extensions created with Template:SpecialPage}}
+ * {{Category:Extensions|RecordAdmin}}{{php}}{{Category:Extensions created with Template:SpecialPage}}
  * @package MediaWiki
  * @subpackage Extensions
  * @author Aran Dunkley [http://www.organicdesign.co.nz/nad User:Nad]
+ * @author Bertrand GRONDIN
  * @licence GNU General Public Licence 2.0 or later
  */
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('RECORDADMIN_VERSION','0.2.1, 2008-10-31');
+define('RECORDADMIN_VERSION','0.3, 2008-10-31');
 
-$wgRecordAdminCategory      = 'Records'; # Category which contains the templates used as records and having corresponding forms
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 $dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'SpecialRecordAdmin.18n.php';
+$wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'RecordAdmin.18n.php';
 $wgExtensionAliasesFiles['RecordAdmin'] = $dir . 'RecordAdmin.alias.php';
 $wgExtensionFunctions[] = 'wfSetupRecordAdmin';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Record administration',
-	'author'         => '[http://www.organicdesign.co.nz/nad User:Nad], Bertrand GRONDIN',
+	'author'         => array( '[http://www.organicdesign.co.nz/nad User:Nad]', 'Bertrand GRONDIN' ),
 	'description'    => 'A special page for finding and editing record articles using a form',
 	'descriptionmsg' => 'recordadmin-desc',
 	'url'            => 'http://www.organicdesign.co.nz/Extension:SpecialExample',
-	'version'        => RECORDADMIN_VERSION
+	'version'        => RECORDADMIN_VERSION,
 );
 
 require_once "$IP/includes/SpecialPage.php";
@@ -43,7 +43,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		# Name to use for creating a new record either via RecordAdmin or a public form
 		# todo: should add a hook here for custom default-naming
 		$this->guid = strftime('%Y%m%d', time()).'-'.substr(strtoupper(uniqid()), -5);
-		
+
 		SpecialPage::SpecialPage(
 			'RecordAdmin', # name as seen in links etc
 			'sysop',       # user rights required
@@ -58,8 +58,8 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Override SpecialPage::execute()
 	 */
 	function execute($param) {
-		global $wgOut, $wgRequest, $wgRecordAdminCategory, $wgRecordAdminUseNamespaces;
-		wfLoadExtensionMessages ('RecordAdmin');		
+		global $wgOut, $wgRequest, $wgRecordAdminUseNamespaces;
+		wfLoadExtensionMessages ('RecordAdmin');
 		$this->setHeaders();
 		$type     = $wgRequest->getText('wpType') or $type = $param;
 		$record   = $wgRequest->getText('wpRecord');
@@ -74,7 +74,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$wgOut->addHTML("<div class='center'><a href='".$title->getLocalURL()."/$type'>".wfMsg('recordadmin-newsearch', $type)."</a> | "
 			. "<a href='".$title->getLocalURL()."'>".wfMsg('recordadmin-newrecord')."</a></div><br>\n"
 		);
-			
+
 		# Get posted form values if any
 		$posted = array();
 		foreach ($_POST as $k => $v) if (ereg('^ra_(.+)$', $k, $m)) $posted[$m[1]] = $v;
@@ -91,12 +91,12 @@ class SpecialRecordAdmin extends SpecialPage {
 		# If no type selected, render select list of record types from Category:Records
 		if (empty($type)) {
 			$wgOut->addWikiText("==".wfMsg('recordadmin-select')."==\n");
-			
-			# Get titles in Category:Records and build option list
+
+			# Get titles in 'recordadmin-category' (default: Category:Records) and build option list
 			$options = '';
 			$dbr  = &wfGetDB(DB_SLAVE);
 			$cl   = $dbr->tableName('categorylinks');
-			$cat  = $dbr->addQuotes($wgRecordAdminCategory);
+			$cat  = $dbr->addQuotes( wfMsgForContent( 'recordadmin-category' ) );
 			$res  = $dbr->select($cl, 'cl_from', "cl_to = $cat", __METHOD__, array('ORDER BY' => 'cl_sortkey'));
 			while ($row = $dbr->fetchRow($res)) $options .= '<option>'.Title::newFromID($row[0])->getText().'</option>';
 
@@ -107,11 +107,11 @@ class SpecialRecordAdmin extends SpecialPage {
 				. '</form>'
 			);
 		}
-				
+
 		# Record type known, but no record selected, render form for searching or creating
 		elseif (empty($record)) {
 			$wgOut->addWikiText("==".wfMsg('recordadmin-create', $type)."==\n");
-			
+
 			# Process Create submission
 			if (count($posted) && $wgRequest->getText('wpCreate')) {
 				if (empty($wpTitle)) {
@@ -133,7 +133,7 @@ class SpecialRecordAdmin extends SpecialPage {
 						}
 						$text = $text ? "{{"."$type\n$text}}" : "{{"."$type}}";
 						$success = $article->doEdit($text, $summary, EDIT_NEW);
-						
+
 						# Report success or error
 						if ($success) $wgOut->addHTML("<div class='successbox'>".wfMsg('recordadmin-createsuccess',$wpTitle)."</div>\n");
 						else $wgOut->addHTML("<div class='errorbox'>".wfMsg('recordadmin-createerror', $type)."</div>\n");
@@ -141,10 +141,10 @@ class SpecialRecordAdmin extends SpecialPage {
 				} else $wgOut->addHTML("<div class='errorbox'>".wfMsg('recordadmin-badtitle')."</div>\n");
 				$wgOut->addHTML("<br><br><br><br>\n");
 			}
-				
+
 			# Populate the search form with any posted values
 			$this->populateForm($posted);
-			
+
 			# Render the form
 			$wgOut->addHTML(
 				wfElement('form', array('class' => 'recordadmin', 'action' => $title->getLocalURL('action=submit'), 'method' => 'post'), null)
@@ -158,7 +158,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				.'<td width="100%" align="left">'.wfElement('input', array('type' => 'reset', 'value' => wfMsg('recordadmin-buttonreset'))).'</td>'
 				.'</tr></table></form>'
 			);
-			
+
 			# Process Find submission
 			if (count($posted) && $wgRequest->getText('wpFind')) {
 				$wgOut->addWikiText("<br>\n== ".wfMsg('recordadmin-searchresult')." ==\n");
@@ -190,7 +190,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 				# Render search results
 				if (count($records)) {
-					
+
 					# Pass1, scan the records to find the create date of each and sort by that
 					$sorted = array();
 					foreach ($records as $k => $r) {
@@ -208,7 +208,7 @@ class SpecialRecordAdmin extends SpecialPage {
 						$sorted[$row->rev_timestamp] = $r;
 					}
 					krsort($sorted);
-					
+
 					$table = "<table class='sortable recordadmin $type-record'>\n<tr>
 					          <th class='col1'>$type<br></th><th class='col2'>Created<br></th>";
 					foreach (array_keys($this->types) as $k) $table .= "<th class='col$k'>$k<br></th>";
@@ -218,9 +218,11 @@ class SpecialRecordAdmin extends SpecialPage {
 						$ts = preg_replace('|^..(..)(..)(..)(..)(..)..$|', '$3/$2/$1&nbsp;$4:$5', $ts);
 						$t = $r[0];
 						$k = $r[1];
+						$msgView = wfMsg( 'recordadmin-viewlink' );
+						$msgEdit = wfMsg( 'recordadmin-editlink' );
 						$stripe = $stripe ? '' : ' class="stripe"';
-						$table .= "<tr$stripe><td class='col1'>(<a href='".$t->getLocalURL()."'>".wfMsg('recordadmin-viewlink')."</a>)";
-						$table .= "(<a href='".$title->getLocalURL("wpType=$type&wpRecord=$k")."'>".wfMsg('recordadmin-editlink')."</a>)</td>\n";
+						$table .= "<tr$stripe><td class='col1'>(<a href='".$t->getLocalURL()."'>" .$msgView . "</a>)";
+						$table .= "(<a href='".$title->getLocalURL("wpType=$type&wpRecord=$k")."'>" .$msgEdit . "</a>)</td>\n";
 						$table .= "<td class='col2'>$ts</td>\n";
 						$i = 0;
 						foreach (array_keys($this->types) as $k) {
@@ -232,9 +234,9 @@ class SpecialRecordAdmin extends SpecialPage {
 					$table .= "</table>\n";
 					$wgOut->addHTML($table);
 				} else $wgOut->addWikiText(wfMsg('recordadmin-nomatch')."\n");
-			}	
+			}
 		}
-		
+
 		# A specific record has been selected, render form for updating
 		else {
 			$wgOut->addWikiText("== ".wfMsg('recordadmin-edit',$record)." ==\n");
@@ -243,7 +245,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 			# Update article if form posted
 			if (count($posted)) {
-				
+
 				# Get the location and length of the record braces to replace
 				foreach ($this->examineBraces($text) as $brace) if ($brace['NAME'] == $type) $braces = $brace;
 
@@ -255,19 +257,19 @@ class SpecialRecordAdmin extends SpecialPage {
 					$replace .= "| $k = $v\n";
 				}
 				$replace = $replace ? "{{"."$type\n$replace}}" : "{{"."$type}}";
-				$text = substr_replace($text, $replace, $braces['OFFSET'], $braces['LENGTH']);				
+				$text = substr_replace($text, $replace, $braces['OFFSET'], $braces['LENGTH']);
 				$success = $article->doEdit($text, $summary, EDIT_UPDATE);
-				
+
 				# Report success or error
 				if ($success) $wgOut->addHTML("<div class='successbox'>".wfMsg('recordadmin-updatesuccess',$type)."</div>\n");
 				else $wgOut->addHTML("<div class='errorbox'>".wfMsg('recordadmin-updateerror')."</div>\n");
 				$wgOut->addHTML("<br><br><br><br>\n");
 			}
-			
+
 			# Populate the form with the current values in the article
 			foreach ($this->examineBraces($text) as $brace) if ($brace['NAME'] == $type) $braces = $brace;
 			$this->populateForm(substr($text, $braces['OFFSET'], $braces['LENGTH']));
-			
+
 			# Render the form
 			$wgOut->addHTML(wfElement('form', array('class' => 'recordadmin', 'action' => $title->getLocalURL('action=submit'), 'method' => 'post'), null));
 			$wgOut->addHTML($this->form);
@@ -297,7 +299,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			$form = preg_replace('#name\s*=\s*([\'"])(.*?)\\1#s', 'name="ra_$2"', $form);            # prefix input names with ra_
 			$form = preg_replace('#(<select.+?>)\s*(?!<option/>)#s', '$1<option selected/>', $form); # ensure all select lists have default blank
 		}
-		
+
 		# Create a red link to the form if it doesn't exist
 		else {
 			$form = "<b>".wfMsg('recordadmin-noform',$type)."</b>"
@@ -313,7 +315,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * - $values may be a hash or wikitext template syntax
 	 */
 	function populateForm($values) {
-		
+
 		# If values are wikitext, convert to hash
 		if (!is_array($values)) {
 			$text = $values;
@@ -350,7 +352,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					$html = preg_replace("|>.*?(?=</textarea>)|s", ">$v", $html);
 				break;
 			}
-			
+
 			# Replace the element in the form with the modified html
 			$this->form = substr_replace($this->form, $html, $pos, $len);
 		}
@@ -425,7 +427,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		# Get types in this kind of record from form
 		$this->preProcessForm($type);
 		$this->examineForm();
-		
+
 		# Use guid if no title specified
 		if (empty($title)) {
 			$title = $this->guid;
@@ -443,7 +445,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				$text .= "| $k = $v\n";
 			}
 			$text = $text ? "{{"."$type\n$text}}" : "{{"."$type}}";
-			$success = $article->doEdit($text, $summary, EDIT_NEW);		
+			$success = $article->doEdit($text, $summary, EDIT_NEW);
 		}
 	}
 

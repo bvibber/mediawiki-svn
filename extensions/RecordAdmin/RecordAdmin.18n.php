@@ -1,20 +1,27 @@
 <?php
-/*Internationalisation message file of Record Admin extension
-* Created by Bertrand GRONDIN
-*
-* @addtogroup Extensions
-*
-*/
-$messages=array();
+/**
+ * Internationalisation for RecordAdmin extension
+ *
+ * @author Bertrand GRONDIN
+ * @file
+ * @ingroup Extensions
+ */
 
-$messages['en'] = array (
-	'recordadmin' => 'Record Administration',
-	'recordadmin-desc' => 'A special page for finding and editing record pages using a form',
+$messages = array();
+
+/** English
+ * @author Nad
+ * @author Bertrand GRONDIN
+ */
+$messages['en'] = array(
+	'recordadmin' => 'Record administration',
+	'recordadmin-desc' => 'A [[Special:RecordAdmin|special page]] for finding and editing record pages using a form',
+	'recordadmin-category' => 'Records',
 	'recordadmin-select' => 'Select the type of record to search for ',
 	'recordadmin-newsearch' => 'New $1 search',
 	'recordadmin-newrecord' => 'Select another record type',
 	'recordadmin-submit' => 'Submit',
-	'recordadmin-create' => 'Find or Create a "$1" record',
+	'recordadmin-create' => 'Find or create a "$1" record',
 	'recordadmin-alreadyexist' => 'Sorry, "$1" already exists!',
 	'recordadmin-createsuccess' => '$1 created successfully',
 	'recordadmin-createerror' => 'An error occurred while attempting to create the $1!',
@@ -32,12 +39,15 @@ $messages['en'] = array (
 	'recordadmin-updateerror' => 'An error occurred during update',
 	'recordadmin-buttonsave' => 'Save',
 	'recordadmin-noform' => 'There is no form associated with "$1" records!',
-	'recordadmin-createlink' => 'click <a href=$1>here</a> to create one',
+	'recordadmin-createlink' => '<a href=$1>create one</a>',
 	'recordadmin-newcreated' => 'New $1 created from public form',
 	'recordadmin-summary-typecreated' => 'New $1 created',
-	'recordadmin-viewlink' => '(<a href="$1">view</a>)',
-	'recordadmin-editlink' => '<a href="$1").">edit</a>',
+	'recordadmin-viewlink' => 'view',
+	'recordadmin-editlink' => 'edit',
 );
+
+$messages['qqq'] = array (
+	'recordadmin-category' => 'Category which contains the templates used as records and having corresponding forms',
 
 $messages['fr'] = array (
 	'recordadmin' => 'Gestion des enregistrements',
