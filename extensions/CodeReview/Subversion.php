@@ -23,6 +23,8 @@ abstract class SubversionAdaptor {
 
 	abstract function getDiff( $path, $rev1, $rev2 );
 
+	abstract function getDirList( $path, $rev = null );
+
 	/*
 	  array of array(
 		'rev' => 123,
@@ -74,6 +76,11 @@ class SubversionPecl extends SubversionAdaptor {
 		} else {
 			return new MWException("Diffing error");
 		}
+	}
+
+	function getDirList( $path, $rev = null ) {
+		return svn_ls( $this->mRepo . $path,
+			$this->_rev( $rev, SVN_REVISION_HEAD ) );
 	}
 
 	function getLog( $path, $startRev=null, $endRev=null ) {
@@ -200,6 +207,51 @@ class SubversionShell extends SubversionAdaptor {
 
 		return $out;
 	}
+	
+	function getDirList( $path, $rev = null ) {
+		$command = sprintf(
+			"svn list --xml -r%s --non-interactive %s",
+			wfEscapeShellArg( $this->_rev( $rev, 'HEAD' ) ),
+			wfEscapeShellArg( $this->mRepo . $path ) );
+		$document = new DOMDocument(); 
+		
+		if ( !@$document->loadXML( wfShellExec( $command ) ) )
+			// svn list --xml returns invalid XML if the file does not exist
+			// FIXME: report bug upstream
+			return false;
+		
+		$entries = $document->getElementsByTagName( 'entry' );
+		$result = array();
+		foreach ( $entries as $entry ) {
+			$item = array();
+			$item['type'] = $entry->getAttribute( 'kind' );
+			foreach ( $entry->childNodes as $child ) {
+				switch ( $child->nodeName ) {
+				case 'name':
+					$item['name'] = $child->textContent;
+					break;
+				case 'size':
+					$item['size'] = intval( $child->textContent ); 
+					break;
+				case 'commit':
+					$item['created_rev'] = intval( $child->getAttribute( 'revision' ) );
+					foreach ( $child->childNodes as $commitEntry ) {
+						switch ( $commitEntry->nodeName ) {
+						case 'author':
+							$item['last_author'] = $commitEntry->textContent;
+							break;
+						case 'date':
+							$item['time_t'] = wfTimestamp( TS_UNIX, $commitEntry->textContent ); 
+							break;
+						}
+					}
+					break;	
+				}
+			}
+			$result[] = $item;
+		}
+		return $result;
+	}
 }
 
 /**
@@ -230,6 +282,13 @@ class SubversionProxy extends SubversionAdaptor {
 			'path' => $path,
 			'start' => $startRev,
 			'end' => $endRev ) );
+	}
+	
+	function getDirList( $path, $rev = null ) {
+		return $this->_proxy( array(
+			'action' => 'list',
+			'path' => $path,
+			'rev' => $rev ) );
 	}
 	
 	protected function _proxy( $params ) {
