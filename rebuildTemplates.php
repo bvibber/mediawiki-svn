@@ -22,10 +22,11 @@ if( isset( $options['help'] ) ) {
 	
 	foreach( $projects as $project ) {
 		foreach( $langs as $lang ) {
-			echo "$project/$lang\n";
+			$key = "$project/$lang";
+			echo "$key\n";
 			
 			$builder = new SpecialNoticeText();
-			$js = $builder->getJsOutput( $wgNoticeProject, $wgNoticeLang );
+			$js = $builder->getJsOutput( $key );
 			
 			$outputDir = "$wgNoticeStaticDirectory/$project/$lang";
 			if( wfMkDirParents( $outputDir ) ) {

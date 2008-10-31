@@ -1058,19 +1058,16 @@ class CentralNotice extends SpecialPage {
 		global $wgNoticeProjects;
 		
 		$htmlOut = Xml::openElement( 'select', array( 'name' => 'project_name' ) );
-		foreach( $wgNoticeProjects as $value => $name ) {
-			// Turn ! into nothing
-			$value = $value == '!' ? '' : $value;
-			$htmlOut .= Xml::element( 'option', array( 'value' => $value ), $name );
+		$htmlOut .= Xml::element( 'option', array( 'value' => '' ), 'All projects' );
+		foreach( $wgNoticeProjects as $value ) {
+			$htmlOut .= Xml::element( 'option', array( 'value' => $value ), $value );
 		}
 		$htmlOut .= Xml::closeElement( 'select' );
 		return $htmlOut;
 	}
 	
 	function getProjectName( $value ) {
-		global $wgNoticeProjects;
-		
-		return $wgNoticeProjects[ $value == '' ? '!' : $value ];
+		return $value; // @fixme -- use wfMsg()
 	}
 	
 	function dropDownList ( $text, $values ) {

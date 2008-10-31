@@ -274,6 +274,7 @@ function pickTemplate(templates, weights) {
 	*/
 	
 	private function getMessage( $msg, $params=array() ) {
+		/*
 		$guard = array();
 		for( $lang = $this->language; $lang; $lang = $this->safeLangFallback( $lang ) ) {
 			if( isset( $guard[$lang] ) )
@@ -284,6 +285,10 @@ function pickTemplate(templates, weights) {
 			}
 		}
 		return $this->getRawMessage( $msg, $params );
+		*/
+		array_unshift( $params, array( 'language' => $this->language ) );
+		array_unshift( $params, $msg );
+		return call_user_func_array( 'wfMsgExt', $params );
 	}
 	
 	private function safeLangFallback( $lang ) {

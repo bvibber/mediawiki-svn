@@ -16,18 +16,17 @@ $wgNoticeProject = 'wikipedia';
 /// List of available projects, which will be used to generate static
 /// output .js in the batch generation...
 $wgNoticeProjects = array(
-	'!' => 'All Projects',
-	'wikipedia' => 'Wikipedia',
-	'wiktionary' => 'Wiktionary',
-	'wikiquote' => 'WikiQuote',
-	'wikibooks' => 'WikiBooks',
-	'wikinews' => 'WikiNews',
-	'wikisource' => 'WikiSource',
-	'wikiversity' => 'WikiVersity',
-	'wikimedia' => 'WikiMedia',
-	'commons' => 'Commons',
-	'meta' => 'Meta',
-	'wikispecies' => 'WikiSpecies',
+	'wikipedia',
+	'wiktionary',
+	'wikiquote',
+	'wikibooks',
+	'wikinews',
+	'wikisource',
+	'wikiversity',
+	'wikimedia',
+	'commons',
+	'meta',
+	'wikispecies',
 );
 
 /// Local filesystem path under which static .js output is written
@@ -141,19 +140,21 @@ function efCentralNoticeSetup() {
 }
 
 function efCentralNoticeLoader( &$notice ) {
-	global $wgScript, $wgUser;
-	global $wgNoticeLoader, $wgNoticeLang, $wgNoticeProject;
+	global $wgScript, $wgUser, $wgLang;
+	global $wgNoticeLoader, $wgNoticeProject;
 	global $wgNoticeStaticPath;
+	
+	$lang = $wgLang->getCode();
 
 	if( $wgNoticeStaticPath ) {
-		$noticeLoader = "$wgNoticeStaticPath/$wgNoticeProject/$wgNoticeLang/notice.js";
+		$noticeLoader = "$wgNoticeStaticPath/$wgNoticeProject/$lang/notice.js";
 	} else {
 		// Dynamic loader special page thingy
 		$noticeLoader = $wgNoticeLoader;
 	}
 	$encNoticeLoader = htmlspecialchars( $noticeLoader );
 	$encProject = Xml::encodeJsVar( $wgNoticeProject );
-	$encLang = Xml::encodeJsVar( $wgNoticeLang );
+	$encLang = Xml::encodeJsVar( $lang );
 
 	$anon = (is_object( $wgUser ) && $wgUser->isLoggedIn())
 		? ''
