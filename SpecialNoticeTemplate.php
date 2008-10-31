@@ -424,7 +424,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			$article = new Article(
 				Title::newFromText( "centralnotice-template-{$name}", NS_MEDIAWIKI )
 			);
-			$article->doDelete( 'CentralNotice Automated Removal', true );
+			$article->doDeleteArticle( 'CentralNotice Automated Removal', true );
 		}
 	}
 	
