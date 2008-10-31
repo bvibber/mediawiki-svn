@@ -42,7 +42,7 @@ class SpecialNoticeTranslate extends SpecialPage {
 			if ( isset( $previewNotice ) ) {
 				$render = new SpecialNoticeText();
 				$render->project = 'wikipedia';
-				$render->language = 'en';
+				$render->language = $wgRequest->getVal( 'wpUserLanguage' );
 				$htmlOut = $render->getHtmlNotice( $wgRequest->getText( 'template' ) );
 				
 				$wgOut->addHTML( $htmlOut );
@@ -193,7 +193,7 @@ class SpecialNoticeTranslate extends SpecialPage {
 		
 		// Keep track of set language
 		$htmlOut .= Xml::hidden( 'wpUserLanguage', $wpUserLang );
-		
+
 		// Submit and Preview
 		$htmlOut .= Xml::openElement( 'tr' );
 		$htmlOut .= Xml::tags( 'td', array( 'colspan' => 4 ),
