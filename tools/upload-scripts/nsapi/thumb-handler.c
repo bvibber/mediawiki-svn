@@ -503,7 +503,7 @@ GString		*host, *paramstr;
 		pblock_nvinsert("f", filename, params);
 		pblock_nvinsert("width", width, params);
 		if (*page)
-		pblock_nvinsert("page", page, params);
+			pblock_nvinsert("page", page, params);
 		if (matches[3][0])
 			pblock_nvinsert("archived", "1", params);
 	
@@ -525,7 +525,7 @@ GString		*host, *paramstr;
 		return -1;
 	}
 
-	if (strstr(filename, "%20") != NULL) {
+	if (strstr(filename, " ") != NULL) {
 		pblock_nvinsert("x-debug", "filename contains a space", req->rq->srvhdrs);
 		send_error(req, PROTOCOL_NOT_FOUND, "Filename contains a space");
 		return -1;
