@@ -86,6 +86,7 @@ Create one',
 	'centralnotice-number-uses' => 'Uses',
 	'centralnotice-edit-template' => 'Edit template',
 	'centralnotice-message' => 'Message',
+	'centralnotice-message-not-set' => 'Message not set',
 );
 
 /** Afrikaans (Afrikaans)

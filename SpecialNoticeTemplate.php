@@ -280,20 +280,34 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			
 			$htmlOut .= Xml::element( 'td', null, $count);
 			
-			$htmlOut .= Xml::element( 'td', null,
-				wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}", array( 'language' => 'en') )
+			// English text
+			$englishText = wfMsg( 'centralnotice-message-not-set' );
+			$englishTextExists = false;
+			if( Title::newFromText( $message, NS_MEDIAWIKI )->exists() ) {
+				$englishText = wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}",
+					array( 'language' => 'en' )
+				);
+				$englishTextExists = true;
+			}
+			$htmlOut .= Xml::tags( 'td', null, 
+				Xml::element( 'span',
+					array( 'style' => 'font-style:italic;' . ( !$englishTextExists ? 'color:silver' : '' ) ),
+					$englishText
+				)
 			);
 			
-			// Input
-			$text = '';
+			// Foreign text input
+			$foreignText = '';
+			$foreignTextExists = false;
 			if( Title::newFromText( $message, NS_MEDIAWIKI )->exists() ) {
-				$text = wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}",
+				$foreignText = wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}",
 					array( 'language' => $wpUserLang )
 				);
+				$foreignTextExists = true;
 			}
 			$htmlOut .= Xml::tags( 'td', null,
-				Xml::input( "updateText[{$wpUserLang}][{$currentTemplate}-{$field}]", '', $text,
-					array( 'style' => 'width:100%;' . ( $text == '' ? 'color:red' : '' ) )
+				Xml::input( "updateText[{$wpUserLang}][{$currentTemplate}-{$field}]", '', $foreignText,
+					array( 'style' => 'width:100%;' . ( !$foreignTextExists ? 'color:red' : '' ) )
 				)
 			);
 			
