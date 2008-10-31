@@ -38,6 +38,7 @@ $messages['en'] = array(
 	'centralnotice-locked' => 'Locked',
 	'centralnotice-notices' => 'Notices',
 	'centralnotice-notice-exists' => 'Notice already exists. Not adding',
+	'centralnotice-template-exists' => 'Template already exists. Not adding',
 	'centralnotice-notice-doesnt-exist' => 'Notice doesnt exist. Nothing to remove',
 	'centralnotice-template-still-bound' => 'Template is still bound to a notice. Not removing.',
 	'centralnotice-template-body' => 'Template Body: ',
@@ -67,7 +68,7 @@ $messages['en'] = array(
 	'centralnotice-no-templates-translate' => 'There are not any templates to edit translations for',
 	'centralnotice-no-templates' => 'There are no templates in the system. Create one',
 	'centralnotice-number-uses' => 'Uses',
-	'centralnotice-edit' => 'Edit',
+	'centralnotice-edit-template' => 'Edit Template',
 	'centralnotice-message' => 'Message',
 );
 

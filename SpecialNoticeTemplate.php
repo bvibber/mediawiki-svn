@@ -48,10 +48,20 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 				foreach ( $toRemove as $template ) {
 					$this->removeTemplate( $template );
 				}
-				
-				// Show a list of templates 
-				$this->listTemplates();
-				return;
+			}
+			
+			// Handle translation message update
+			$update = $wgRequest->getArray('updateText');
+			$token  = $wgRequest->getArray('token');
+			if (isset ( $update ) ) {
+				foreach ( $update as $lang => $messages ) {
+					foreach ( $messages as $text => $translation) {
+						// If we actually have text
+						if ( $translation ) {
+							$this->updateMessage( $text, $translation, $lang, $token );
+						}
+					}
+				}
 			}
 		}
 		
@@ -61,51 +71,38 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 				$wgRequest->getVal( 'templateName' ),
 				$wgRequest->getVal( 'templateBody' )
 			);
+			$sub = 'view';
 		}
 		
-		// If this is a sub-page, show list of templates
-		if ( $sub == 'listTemplates' ) { 
-			$this->listTemplates();
+		// Handle Editing
+		if ( $wgRequest->getVal( 'wpMethod' ) == 'editTemplate' ) {
+			$this->editTemplate(
+				$wgRequest->getVal( 'template' ),
+				$wgRequest->getVal( 'templateBody' )
+			);
+			$sub = 'view';
+		}
+		
+		// Handle viewing a specific template
+		if ( $sub == 'view' && $wgRequest->getText( 'template' ) != '' ) {
+			$this->showView();
 			return;
 		}
-		if ( $sub == 'preview' ) {
-	
-			$userLang = $wgRequest->getVal( 'wpUserLanguage' );
-			$template = $wgRequest->getText( 'template' );
-			
-			$htmlOut = $this->previewTemplate( $template, $userLang );	
-			$wgOut->addHTML( $htmlOut );
-
+		
+		// Handle viewing a specific template
+		if ( $sub == 'add' ) {
+			$this->showAdd();
 			return;
 		}
 		
-		$this->listTemplates();
+		// Show list by default
+		$this->showList();
 	}
 
-	static function queryTemplates() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'cn_templates',
-			array( 'tmp_name', 'tmp_id' ),
-			'',
-			__METHOD__,
-			array( 'ORDER BY' => 'tmp_id' )
-		);
+	function showList() {
+		global $wgOut, $wgTitle, $wgUser, $wgRequest;
 		
-		$templates = array();
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			array_push( $templates, $row->tmp_name );
-		}
-		
-		return $templates;
-	}
-
-	function listTemplates() {
 		$templates = $this->queryTemplates();
-		return $this->templatesForm( $templates );
-	}
-	
-	function templatesForm( $templates ) {
-		global $wgOut, $wgTitle, $wgUser;
 		
 		// Templates
 		$templates = $this->queryTemplates();
@@ -117,54 +114,54 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 				 )
 			);
 			$htmlOut .= Xml::fieldset( 'Available Templates' );
-			$htmlOut .= Xml::openElement( 'table', array ( 'cellpadding' => 9 ) ) ; 
-			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-template-name' ) );
-			$htmlOut .= Xml::element( 'th' );
-			$htmlOut .= Xml::element( 'th' );
-			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-remove' ) );
+			$htmlOut .= Xml::openElement( 'table',
+				array(
+					'cellpadding' => 9,
+					'width' => '100%'
+				)
+			) ; 
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'left', 'width' => '5%' ),
+				wfMsg ( 'centralnotice-remove' )
+			);
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ),
+				wfMsg ( 'centralnotice-template-name' )
+			);
 			
 			$msgConfirmDelete = wfMsgHTML( 'centralnotice-confirm-delete' );
 			foreach ( $templates as $templateName ) {
-				$templateTitle = Title::newFromText( "MediaWiki:Centralnotice-template-{$templateName}" );
-				$translateTitle = Title::newFromText( 'Special:NoticeTranslate' );
-				$templatePage = SpecialPage::getTitleFor( 'NoticeTemplate/preview' );
-				$htmlOut .= Xml::tags( 'tr', null, 
-					Xml::tags( 'td', null, 
-						Xml::element( 'a',
-							array( 
-								'href' => $templatePage->getFullUrl( "template=$templateName" ) 
-							),
-							 $templateName
-						) 
+				$viewPage = SpecialPage::getTitleFor( 'NoticeTemplate/view' );
+				$htmlOut .= Xml::openElement( 'tr' );
+				
+				// Remove box
+				$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ), 
+					Xml::check( 'removeTemplates[]', false, 
+						array(
+							'value' => $templateName,
+							'onchange' => "if(this.checked){this.checked=confirm('{$msgConfirmDelete}')}"
+						)
+					)
+			 	);
+			 	
+				// Link and Preview
+				$render = new SpecialNoticeText();
+				$render->project = 'wikipedia';
+				$render->language = $wgRequest->getVal( 'wpUserLanguage' );
+				$htmlOut .= Xml::tags( 'td', null, 
+					Xml::element( 'a',
+						array( 
+							'href' => $viewPage->getFullUrl( "template=$templateName" ) 
+						),
+						$templateName
 					) .
-					Xml::tags( 'td' , null,
-						Xml::element( 'a',
-							array(
-								'href' => $templateTitle->getEditURL(),
-							),
-							wfMsg ( 'centralnotice-edit' )
-				 		)
-					) .
-					Xml::tags( 'td', null,
-						Xml::element( 'a',
-							array(
-								'href' => $translateTitle->getFullURL( "template={$templateName}" ),
-							),
-							wfMsg ( 'centralnotice-translate' )
-				 		)
-					) .
-					Xml::tags( 'td', null, 
-						Xml::check( 'removeTemplates[]', false, 
-							array(
-								'value' => $templateName,
-								'onchange' => "if(this.checked){this.checked=confirm('{$msgConfirmDelete}')}"
-							)
-				 		)
-				 	)
+					Xml::fieldset( wfMsg( 'centralnotice-preview' ),
+						$render->getHtmlNotice( $templateName )
+					)
 				);
+				
+				$htmlOut .= Xml::closeElement( 'tr' );
 			}
 			$htmlOut .= Xml::tags( 'tr', null, 
-				Xml::tags( 'td', null, 
+				Xml::tags( 'td', array( 'colspan' => 3 ), 
 					Xml::submitButton( wfMsg( 'centralnotice-modify' ) )
 				)
 			);
@@ -177,13 +174,24 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$htmlOut .= XML::closeElement( 'fieldset' );
 		$htmlOut .= XML::closeElement( 'form' );
 		
-		// Notices
-		$htmlOut .= Xml::openElement( 'form', 
-			array(
-				'method' => 'post', 
-				'action' => SpecialPage::getTitleFor( 'NoticeTemplate' )->getFullUrl()
-			)
+		// Show add link
+		$newPage = SpecialPage::getTitleFor( 'NoticeTemplate/add' );
+		$htmlOut .= Xml::element( 'a',
+		array( 
+			'href' => $newPage->getFullUrl() 
+			),
+			wfMsg( 'centralnotice-add-template' )
 		);
+		
+		// Output HTML
+		$wgOut->addHtml( $htmlOut );
+	}
+	
+	function showAdd() {
+		global $wgOut, $wgTitle, $wgUser;
+		
+		// Build HTML
+		$htmlOut = Xml::openElement( 'form', array( 'method' => 'post' ) );
 		$htmlOut .= Xml::openElement( 'fieldset' );
 		$htmlOut .= Xml::element( 'legend', null, wfMsg( 'centralnotice-add-template' ) );
 		$htmlOut .= Xml::hidden( 'wpMethod', 'addTemplate' );
@@ -208,46 +216,219 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$wgOut->addHtml( $htmlOut );
 	}
 	
-	function listTemplateDetail ( $template ) {
-		global $wgOut, $wgUser;
+	private function showView() {
+		global $wgOut, $wgUser, $wgRequest, $wgContLanguageCode;
+		
+		// Get token
+		$token = $wgUser->editToken();
+		
+		// Get user's language
+		$wpUserLang = $wgRequest->getVal('wpUserLanguage') ? $wgRequest->getVal('wpUserLanguage') : $wgContLanguageCode;
+		
+		// Get current template
+		$currentTemplate = $wgRequest->getText( 'template' );
+		
+		// Show preview
+		$render = new SpecialNoticeText();
+		$render->project = 'wikipedia';
+		$render->language = $wgRequest->getVal( 'wpUserLanguage' );
+		$htmlOut = Xml::fieldset( wfMsg( 'centralnotice-preview' ),
+			$render->getHtmlNotice( $wgRequest->getText( 'template' ) )
+		);
+		
+		// Build HTML
+		$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post' ) );
+		$htmlOut .= Xml::fieldset( wfMsgHtml( 'centralnotice-translate-heading', $currentTemplate ) );
+		$htmlOut .= Xml::openElement( 'table',
+			array (
+				'cellpadding' => 9,
+				'width' => '100%'
+			)
+		);
+		
+		// Headers
+		$htmlOut .= Xml::element( 'th', array( 'width' => '15%' ), wfMsg( 'centralnotice-message' ) );
+		$htmlOut .= Xml::element( 'th', array( 'width' => '5%' ), wfMsg ( 'centralnotice-number-uses')  );
+		$htmlOut .= Xml::element( 'th', array( 'width' => '40%' ), wfMsg ( 'centralnotice-english') );
+		$languages = Language::getLanguageNames();
+		$htmlOut .= Xml::element( 'th', array( 'width' => '40%' ), $languages[$wpUserLang] );
+		
+		$body = wfMsg( "Centralnotice-template-{$currentTemplate}" );
+		
+		// Generate fields from parsing the body
+		$fields = array();
+		preg_match_all( '/\{\{\{([A-Za-z0-9\_\-}]+)\}\}\}/', $body, $fields );
+		
+		// Remove duplicates
+		$filteredFields = array();
+		foreach( $fields[1] as $field ) {
+			$filteredFields[$field] = array_key_exists( $field, $filteredFields ) ? $filteredFields[$field] + 1 : 1;
+		}
+		
+		// Rows
+		foreach( $filteredFields as $field => $count ) {
+			// Message
+			$message = ( $wpUserLang == 'en' ) ? "Centralnotice-{$currentTemplate}-{$field}" : "Centralnotice-{$currentTemplate}-{$field}/{$wpUserLang}";
+			
+			// English value
+			$htmlOut .= Xml::openElement( 'tr' );
+			
+			$title = Title::newFromText( "MediaWiki:{$message}" );
+			$htmlOut .= Xml::tags( 'td', null,
+				Xml::element( 'a', array( 'href' => $title->getFullURL() ), $field )
+			);
+			
+			$htmlOut .= Xml::element( 'td', null, $count);
+			
+			$htmlOut .= Xml::element( 'td', null,
+				wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}", array( 'language' => 'en') )
+			);
+			
+			// Input
+			$text = '';
+			if( Title::newFromText( $message, NS_MEDIAWIKI )->exists() ) {
+				$text = wfMsgExt( "Centralnotice-{$currentTemplate}-{$field}",
+					array( 'language' => $wpUserLang )
+				);
+			}
+			$htmlOut .= Xml::tags( 'td', null,
+				Xml::input( "updateText[{$wpUserLang}][{$currentTemplate}-{$field}]", '', $text,
+					array( 'style' => 'width:100%;' . ( $text == '' ? 'color:red' : '' ) )
+				)
+			);
+			
+			$htmlOut .= Xml::closeElement( 'tr' );
+		}
+		$htmlOut .= Xml::hidden( 'token', $token );
+		$htmlOut .= Xml::hidden( 'wpUserLanguage', $wpUserLang );
+		$htmlOut .= Xml::openElement( 'tr' );
+		$htmlOut .= Xml::tags( 'td', array( 'colspan' => 4 ),
+			Xml::submitButton( wfMsg('centralnotice-modify', array( 'name' => 'update') ) )
+		);
+		
+		$htmlOut .= Xml::closeElement( 'tr' );
+		$htmlOut .= Xml::closeElement( 'table' );
+		$htmlOut .= Xml::closeElement( 'fieldset' );
+		$htmlOut .= Xml::closeElement( 'form' );
 		
 		/*
-		 * What is this supposed to be?
-		 * 
-			$form .= 'Preview';
-			$form .= 'Template';
-			$form .= 'Button';
-			$form .= 'Link';
+		 * Show language selection form
 		 */
+		$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post' ) );
+		$htmlOut .= Xml::fieldset( wfMsgHtml( 'centralnotice-change-lang' ) );
+		$htmlOut .= Xml::openElement( 'table', array ( 'cellpadding' => 9 ) );
+		list( $lsLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
+		$htmlOut .= Xml::tags( 'tr', null,
+			Xml::tags( 'td', null, $lsLabel ) .
+			Xml::tags( 'td', null, $lsSelect ) .
+			Xml::tags( 'td', array( 'colspan' => 2 ),
+				Xml::submitButton( wfMsgHtml('centralnotice-modify') )
+			)
+		);
+		$htmlOut .= Xml::closeElement( 'table' );
+		$htmlOut .= Xml::closeElement( 'fieldset' );
+		$htmlOut .= Xml::closeElement( 'form' );
 		
-		if ( $wgUser->isAllowed( 'centralnotice-template-edit' ) ) {
-			$form .= Xml::tags( 'tr', null,
-				Xml::tags( 'td', null,
-					Xml::submitButton(
-						wfMsgHtml( 'centralnotice-modify' ),
-						array(
-							'id' => 'centralnoticesubmit',
-							'name' => 'centralnoticesubmit'
-						)
-					)
-				)
-			);
-			$form .= Xml::tags( 'tr', null,
-				Xml::tags( 'td', null,
-					Xml::submitButton(
-						wfMsgHtml( 'centralnotice-preview' ), 
-						array(
-							'id' => 'centralnoticepreview',
-							'name' => 'centralnoticepreview'
-						)
-					)
-				)
-			);
-		}
-		$wgOut->addHTML( $form );
+		/*
+		 * Show edit form
+		 */
+		$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post' ) );
+		$htmlOut .= Xml::fieldset( wfMsgHtml( 'centralnotice-edit-template' ) );
+		$htmlOut .= Xml::hidden( 'wpMethod', 'editTemplate' );
+		$htmlOut .= Xml::openElement( 'table',
+			array(
+				'cellpadding' => 9,
+				'width' => '100%'
+			)
+		);
+		$htmlOut .= Xml::tags( 'tr', null,
+			Xml::tags( 'td', null, Xml::textarea( 'templateBody', $body, 60, 20 ) )
+		);
+		$htmlOut .= Xml::tags( 'tr', null,
+			Xml::tags( 'td', null, Xml::submitButton( wfMsgHtml('centralnotice-modify') ) )
+		);
+		$htmlOut .= Xml::closeElement( 'table' );
+		$htmlOut .= Xml::closeElement( 'fieldset' );
+		$htmlOut .= Xml::closeElement( 'form' );
+		
+		// Output HTML
+		$wgOut->addHTML( $htmlOut );
 	}
 	
-	function addTemplate ( $name, $body ) {
+	private function updateMessage( $text, $translation, $lang, $token ) {
+		global $wgUser;
+		
+		$title = Title::newFromText(
+			( $lang == 'en' ) ? "Centralnotice-{$text}" : "Centralnotice-{$text}/{$lang}",
+			NS_MEDIAWIKI
+		);
+		$article = new Article( $title );	
+		$article->doEdit( $translation, '' );
+	}
+	
+	static function queryTemplates() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'cn_templates',
+			array( 'tmp_name', 'tmp_id' ),
+			'',
+			__METHOD__,
+			array( 'ORDER BY' => 'tmp_id' )
+		);
+		
+		$templates = array();
+		while ( $row = $dbr->fetchObject( $res ) ) {
+			array_push( $templates, $row->tmp_name );
+		}
+		
+		return $templates;
+	}
+	
+	private function getTemplateId ( $templateName ) {
+		global $wgOut, $egCentralNoticeTables;
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'cn_templates', 'tmp_id',
+			array( 'tmp_name' => $templateName ),
+			__METHOD__
+		);
+		
+		$row = $dbr->fetchObject( $res );
+		if( $row ) {
+			return $row->tmp_id;
+		}
+		return null;
+	}
+	
+	private function removeTemplate ( $name ) {
+		global $wgOut, $egCentralNoticeTables;
+
+		if ( $name == '' ) {
+			$wgOut->addHtml( wfMsg( 'centralnotice-template-doesnt-exist' ) );
+			return;
+		}
+		
+		$id = $this->getTemplateId( $name );
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'cn_assignments', 'asn_id', array( 'tmp_id' => $id ), __METHOD__ );
+		
+		if ( $dbr->numRows( $res ) > 0 ) {
+			$wgOut->addHtml( wfMsg( 'centralnotice-template-still-bound' ) );
+			return;
+		} else {
+			$dbw = wfGetDB( DB_MASTER );
+			$res = $dbw->delete( 'cn_templates',
+				array( 'tmp_id' => $id ),
+				__METHOD__
+			);
+			
+			$article = new Article(
+				Title::newFromText( "centralnotice-template-{$name}", NS_MEDIAWIKI )
+			);
+			$article->doDelete( 'CentralNotice Automated Removal', true );
+		}
+	}
+	
+	private function addTemplate ( $name, $body ) {
 		global $wgOut, $egCentralNoticeTables;
 
 		if ( $body == '' || $name == '' ) {
@@ -284,81 +465,30 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			return;
 		}
 	}
-
-	function removeTemplate ( $templateName ) {
+		
+	private function editTemplate ( $name, $body ) {
 		global $wgOut, $egCentralNoticeTables;
-
-		if ( $templateName == '' ) {
-			$wgOut->addHtml( wfMsg( 'centralnotice-template-doesnt-exist' ) );
+		
+		if ( $body == '' || $name == '' ) {
+			$wgOut->addHtml( wfMsg( 'centralnotice-null-string' ) );
 			return;
 		}
 		
-		$templateId = $this->getTemplateId( $templateName );
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'cn_assignments', 'asn_id',
-			array( 'tmp_id' => $templateId ),
+		$res = $dbr->select( 'cn_templates', 'tmp_name',
+			array( 'tmp_name' => $name ),
 			__METHOD__
 		);
 		
-		if ( $dbr->numRows( $res ) > 0 ) {
-			$wgOut->addHtml( wfMsg( 'centralnotice-template-still-bound' ) );
-			return;
-		} else {
-			$dbw = wfGetDB( DB_MASTER );
-			$res = $dbw->delete( 'cn_templates',
-				array( 'tmp_id' => $templateId ),
-				__METHOD__
+		if ( $dbr->numRows( $res ) > 0 ) { 
+			/*
+			 * Perhaps these should move into the db as blob
+			 */
+			$article = new Article(
+				Title::newFromText( "centralnotice-template-{$name}", NS_MEDIAWIKI )
 			);
+			$article->doEdit( $body, '' );
+			return;
 		}
 	}
-	
-	function getTemplateId ( $templateName ) {
-		global $wgOut, $egCentralNoticeTables;
-		
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'cn_templates', 'tmp_id',
-			array( 'tmp_name' => $templateName ),
-			__METHOD__
-		);
-		
-		$row = $dbr->fetchObject( $res );
-		if( $row ) {
-			return $row->tmp_id;
-		}
-		return null;
-	}
-	
-	public static function previewTemplate ( $template, $userLang ) {
-		 $render = new SpecialNoticeText();
-                 $render->project = 'wikipedia';
-                 $render->language = $userLang;
-                 $htmlOut = Xml::fieldset( wfMsg( 'centralnotice-preview' ),
-                        $render->getHtmlNotice( $template ) 
-                 );
-		 $htmlOut .= Xml::openElement( 'form',
-			array (
-				'method' => 'post',
-				'action' => SpecialPage::getTitleFor( 'NoticeTemplate','preview' )->getLocalUrl( "template=$template")
-			)
-		);
-		list( $lsLabel, $lsSelect) = Xml::languageSelector( $userLang );
-		$htmlOut .= Xml::tags( 'tr', null,
-			Xml::tags( 'td', null, $lsLabel ) .
-			Xml::tags( 'td', null, $lsSelect ) 
-		);
-		$htmlOut .=  Xml::tags( 'tr', null,
-			Xml::tags( 'td', null,
-			 	Xml::submitButton( wfMsgHtml('centralnotice-modify'),
-					array(
-						'id' => 'centralnoticesubmit',
-						'name' => 'centralnoticesubmit'
-					)
-				)
-			) 
-		);
-		$htmlOut .= Xml::closeElement( 'form');
-				
-		return $htmlOut;
-		
-	} 
 }
