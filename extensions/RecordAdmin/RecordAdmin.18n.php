@@ -48,6 +48,7 @@ $messages['en'] = array(
 
 $messages['qqq'] = array (
 	'recordadmin-category' => 'Category which contains the templates used as records and having corresponding forms',
+);
 
 $messages['fr'] = array (
 	'recordadmin' => 'Gestion des enregistrements',
