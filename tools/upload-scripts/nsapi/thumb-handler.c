@@ -100,7 +100,8 @@ int		 written;
 /*
  * Handle initialisation on server startup.
  */
-int thumb_handler_init(pblock *pb UNUSED, Session *sn, Request *rq)
+int 
+thumb_handler_init(pblock *pb UNUSED, Session *sn, Request *rq)
 {
 	if (curl_global_init(CURL_GLOBAL_NOTHING) != 0) {
 		log_error(LOG_FAILURE, "thumb-handler", sn, rq,
@@ -108,7 +109,7 @@ int thumb_handler_init(pblock *pb UNUSED, Session *sn, Request *rq)
 		return REQ_ABORTED;
 	}
 	log_error(LOG_INFORM, "thumb-handler", sn, rq, 
-		   "thumb-handler $Id$ ready");
+		   "thumb-handler ready, version: $Revision$");
 	return REQ_PROCEED;
 }
 
@@ -132,7 +133,7 @@ GString	*err = g_string_new(NULL);
 	g_string_assign(err,
 "<html>\r\n"
 "<head><title>Thumbnail error</title></head>\r\n"
-"<body>\r\n");
+"<body><p>\r\n");
 	
 	va_start(ap, fmt);
 #if GLIB_CHECK_VERSION(2, 14, 0)
@@ -152,7 +153,7 @@ GString	*err = g_string_new(NULL);
 	
 	va_end(ap);
 
-	g_string_append(err, "</body>\r\n</html>\r\n");
+	g_string_append(err, "</p></body>\r\n</html>\r\n");
 	pblock_nvinsert("content-type", "text/html;charset=UTF-8", req->rq->srvhdrs);
 	pblock_nvinsert("cache-control", "no-cache", req->rq->srvhdrs);
 	protocol_status(req->sn, req->rq, code, NULL);
@@ -204,9 +205,10 @@ request_t	 req;
 		return REQ_ABORTED;
 	}
 	
-	if (thumb_url_from_path(&req) == -1)
+	if (thumb_url_from_path(&req) == -1) {
+		free_request(&req);
 		return REQ_ABORTED;
-	
+	}	
 	
 	pblock_nvinsert("x-wikimedia-thumb", 
 		util_uri_escape(NULL, req.thumburl->str), rq->srvhdrs);
@@ -216,7 +218,7 @@ request_t	 req;
 	 */
 	if ((req.curl = curl_easy_init()) == NULL) {
 		log_error(LOG_WARN, "thumb-handler", sn, rq,
-			   "failed to initialise libcURL");
+			   "failed to initialise cURL");
 		send_error(&req, PROTOCOL_SERVER_ERROR, "Error initialising cURL");
 		free_request(&req);
 		return REQ_PROCEED;
