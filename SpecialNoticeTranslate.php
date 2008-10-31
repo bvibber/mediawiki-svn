@@ -132,7 +132,7 @@ class SpecialNoticeTranslate extends SpecialPage {
 		$htmlOut .= Xml::element( 'th', array( 'width' => '40%' ), $languages[$wpUserLang] );
 		
 		// Rows
-		$fields = array( 'heading', 'target', 'button', 'hide' );
+		$fields = array( 'heading', 'target', 'button', 'hide', 'goal' );
 		foreach( $fields as $field) {
 			// Message
 			$message = ( $wpUserLang == 'en' ) ? "Centralnotice-{$currentTemplate}-{$field}" : "Centralnotice-{$currentTemplate}-{$field}/{$wpUserLang}";
