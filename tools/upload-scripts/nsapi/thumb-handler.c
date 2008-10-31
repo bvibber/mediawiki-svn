@@ -200,7 +200,7 @@ request_t	 req;
 	
 	
 	pblock_nvinsert("x-wikimedia-thumb", 
-		util_uri_escape(req.thumburl->str, NULL), rq->srvhdrs);
+		util_uri_escape(NULL, req.thumburl->str), rq->srvhdrs);
 	
 	/*
 	 * Fetch the image.
@@ -325,7 +325,7 @@ static char const *passthrough[] = {
 	
 	str = g_string_new(NULL);
 	g_string_printf(str, "X-Original-URI: %s", 
-		util_uri_escape(pblock_findval("uri", req->rq->reqpb), NULL));
+		util_uri_escape(NULL, pblock_findval("uri", req->rq->reqpb)));
 	req->headers = curl_slist_append(req->headers, str->str);
 	g_string_free(str, TRUE);
 	
