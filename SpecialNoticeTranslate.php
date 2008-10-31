@@ -41,6 +41,14 @@ class SpecialNoticeTranslate extends SpecialPage {
 			$previewNotice = $wgRequest->getVal('preview');
 			if ( isset( $previewNotice ) ) {
 				//SpecialNoticeText::previewTemplate( $noticename, $updateText );
+				
+				$render = new SpecialNoticeText();
+				$render->project = 'wikipedia';
+				$render->language = 'en';
+				$htmlOut = $render->getHtmlNotice( $wgRequest->getText( 'template' ) );
+				
+				$wgOut->addHTML( $htmlOut );
+				
 				return;
 			}
 			

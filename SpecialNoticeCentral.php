@@ -207,7 +207,7 @@ class CentralNotice extends SpecialPage {
 			$title = Title::newFromText( $page );
 			
 			$style = array( 'style' => 'border-bottom:solid 1px silver;' );
-			if ( $title->getPrefixedText() == $wgTitle->getPrefixedText() . "/{$sub}" ) {
+			if ( dirname( $title->getPrefixedText() ) == $wgTitle->getPrefixedText() ) {
 				$style = array( 'style' => 'border-bottom:solid 1px black;' );
 			}
 			

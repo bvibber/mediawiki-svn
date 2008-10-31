@@ -99,7 +99,7 @@ class SpecialNoticeTemplate extends SpecialPage {
 	}
 	
 	function templatesForm( $templates ) {
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgTitle, $wgUser;
 		
 		// Templates
 		$htmlOut = Xml::openElement( 'form', 
@@ -117,8 +117,14 @@ class SpecialNoticeTemplate extends SpecialPage {
 		$templates = $this->queryTemplates();
 		if ( count( $templates ) > 0 ) {
 			foreach ( $templates as $templateName ) {
+				$templateTitle = Title::newFromText( "MediaWiki:Centralnotice-template-{$templateName}" );
 				$htmlOut .= Xml::tags( 'tr', null, 
-					Xml::element( 'td', null, $templateName ) .
+					Xml::tags( 'td', null,
+						Xml::element( 'a',
+							array( 'href' => $templateTitle->getEditURL() ),
+							$templateName
+						)
+					) .
 					Xml::tags( 'td', null, 
 						Xml::check( 'removeTemplates[]', false, 
 							array(
