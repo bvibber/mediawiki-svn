@@ -108,12 +108,12 @@ class CentralNotice extends SpecialPage {
 			}
 	
 			// Handle updates if no post content came through	
-			if ( !isset( $lockedNotices ) ) {
-                $allNotices = $this->getNoticesName();
-                foreach ( $allNotices as $notice ) {
-                	$this->updateLock( $notice, '0' );
-                }
-            }
+			if ( !isset( $lockedNotices )  && $wgRequest->getText( 'change' ) !== 'weight' )  {
+               			 $allNotices = $this->getNoticesName();
+                			foreach ( $allNotices as $notice ) {
+                				$this->updateLock( $notice, '0' );
+                			}
+            		}
 			
 			if ( !isset( $enabledNotices ) && $wgRequest->getText( 'change' ) !== 'weight' ) {
 				$allNotices = $this->getNoticesName();
@@ -448,9 +448,11 @@ class CentralNotice extends SpecialPage {
 		);
 		
 		// Project
+		global $wgNoticeProjects;
+		$dropDownList = $this->dropDownList( wfMsg( 'centralnotice-project-name') ,  $wgNoticeProjects );
 		$htmlOut .= Xml::tags( 'tr', null,
 			Xml::tags( 'td', null, wfMsg( 'centralnotice-project-name' ) ) .
-			Xml::tags( 'td', null, Xml::listDropDown( 'project_name', wfMsg( 'centralnotice-project-name-list'), '', $wgNoticeProject, '', 11 ) )
+			Xml::tags( 'td', null, Xml::listDropDown( 'project_name',  $dropDownList, '', $wgNoticeProject, '', 11 ) )
 		);
 		
 		// Language
