@@ -144,7 +144,7 @@ class SpecialNoticeTranslate extends SpecialPage {
 		
 		// Generate fields from parsing the body
 		$fields = array();
-		preg_match_all( '/\{\{\{([A-Za-z0-9\_}]+)\}\}\}/', wfMsg( "Centralnotice-template-{$currentTemplate}" ), $fields );
+		preg_match_all( '/\{\{\{([A-Za-z0-9\_\-}]+)\}\}\}/', wfMsg( "Centralnotice-template-{$currentTemplate}" ), $fields );
 		
 		// Rows
 		foreach( $fields[1] as $field ) {
