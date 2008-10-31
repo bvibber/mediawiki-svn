@@ -218,10 +218,12 @@ class CodeRevision {
 				if( $wgUser->getId() == $user->getId() ) {
 					continue;
 				}
+				// Send message in receiver's language
+				$lang = array( 'language' => $user->getOption( 'language' ) );
 				if( $user->canReceiveEmail() ) {
 					$user->sendMail(
-						wfMsg( 'codereview-email-subj', $this->mRepo->getName(), $this->mId ),
-						wfMsg( 'codereview-email-body', $wgUser->getName(), $url, $this->mId, $text )
+						wfMsgExt( 'codereview-email-subj', $lang, $this->mRepo->getName(), $this->mId ),
+						wfMsgExt( 'codereview-email-body', $lang, $wgUser->getName(), $url, $this->mId, $text )
 					);
 				}
 			}
