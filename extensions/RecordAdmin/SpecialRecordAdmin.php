@@ -16,7 +16,7 @@ $wgRecordAdminCategory      = 'Records'; # Category which contains the templates
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'SpecialRecordAdmin.18n.php';
-$wgExtensionAliasesFiles['RecordAdmin'] = $dir . 'SpecialRecordAdmin.alias.php';
+$wgExtensionAliasesFiles['RecordAdmin'] = $dir . 'RecordAdmin.alias.php';
 $wgExtensionFunctions[] = 'wfSetupRecordAdmin';
 
 $wgExtensionCredits['specialpage'][] = array(
