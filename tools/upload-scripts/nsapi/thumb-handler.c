@@ -39,11 +39,8 @@ typedef struct request {
 	GString		*thumburl;
 	CURL		*curl;
 struct	curl_slist	*headers;
-#if 0
-	char		*data;
-	size_t		 sz;
-#endif
 	int		 output_started;
+	int		 error;
 } request_t;
 
 static char const *strip_hostname(char const *uri);
@@ -124,6 +121,14 @@ send_error(
 {
 va_list	 ap;
 GString	*err = g_string_new(NULL);
+
+	/*
+	 * Only send one error for each request.
+	 */
+	if (req->error)
+		return;
+	req->error = 1;
+
 	g_string_assign(err,
 "<html>\r\n"
 "<head><title>Thumbnail error</title></head>\r\n"
@@ -282,11 +287,12 @@ char	*contenttype;
 	if (httpcode != 200 || strncmp(contenttype, "text/html", 9) == 0 ||
 	    (sz > 5 && memcmp(data, "<html", 5) == 0)) {
 		protocol_status(req->sn, req->rq, PROTOCOL_SERVER_ERROR, NULL);
-		pblock_nvinsert("cache-control", "nocache", req->rq->srvhdrs);
+		pblock_nvinsert("cache-control", "no-cache", req->rq->srvhdrs);
 	} else {
 		protocol_status(req->sn, req->rq, PROTOCOL_OK, NULL);
 	}
 	
+	param_free(pblock_remove("content-type", req->rq->srvhdrs));
 	pblock_nvinsert("content-type", contenttype, req->rq->srvhdrs);
 	if (protocol_start_response(req->sn, req->rq) == REQ_NOACTION)
 		return -1;
