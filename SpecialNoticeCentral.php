@@ -794,55 +794,40 @@ class CentralNotice extends SpecialPage {
 	 * Lookup function for active notice under a given language and project
 	 * Returns an id for the running notice
 	 */
-	function selectNotice( $project, $language ) {
+	function selectNoticeTemplates( $project, $language ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$encTimestamp = $dbr->addQuotes( $dbr->timestamp() );
-		$res = $dbr->select( 'cn_notices',
-			'not_id',
-			array (
-				"not_start <= $encTimestamp",
-				"not_end >= $encTimestamp",
-				"not_enabled = 1",
-				"not_language" => $language,
-				"not_project" => $project,
-			)
-		); 
-		if ( $dbr->numRows( $res ) == 1) {
-			$row = $dbr->fetchObject( $res );
-			if( $row ) {
-				return $row->not_id;
-			}
-			return null;
-		}
-	}
-	
-
-	public function getTemplatesForNotice( $noticeId ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		
 		$res = $dbr->select(
 			array(
 				'cn_notices',
 				'cn_assignments',
-				'cn_templates'
+				'cn_templates',
 			),
 			array(
 				'tmp_name',
-				'tmp_weight'
+				'SUM(tmp_weight) AS total_weight'
 			),
-			array( 
-				'cn_notices.not_id' => $noticeId,
+			array (
+				"not_start <= $encTimestamp",
+				"not_end >= $encTimestamp",
+				"not_enabled = 1",
+				"not_language" => array( '', $language ),
+				"not_project" => array( '', $project ),
 				'cn_notices.not_id=cn_assignments.not_id',
 				'cn_assignments.tmp_id=cn_templates.tmp_id',
 			),
-			__METHOD__
+			__METHOD__,
+			array(
+				'GROUP BY' => 'tmp_name',
+			)
 		);
-		$templates = array();
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			$templates[$row->tmp_name] = intval( $row->tmp_weight );
+		$templateWeights = array();
+		foreach( $res as $row ) {
+			$name = $row->tmp_name;
+			$weight = intval( $row->total_weight );
+			$templateWeights[$name] = $weight;
 		}
-		return $templates;
-
+		return $templateWeights;
 	}
 
 	function addNotice( $noticeName, $enabled, $start_year, $start_month, $start_day, $start_hour, $start_min, $project_name, $project_language ) { 

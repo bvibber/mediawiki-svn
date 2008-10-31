@@ -5,7 +5,7 @@ CREATE TABLE `cn_notices` (
   `not_end` char(14) NOT NULL,
   `not_enabled` bool NOT NULL default '0',
   `not_locked` bool NOT NULL default '0',
-  `not_language` char(2) NOT NULL,
+  `not_language` varchar(32) NOT NULL,
   `not_project` varchar(255) NOT NULL,
   PRIMARY KEY  (`not_id`)
 ) /*$wgDBTableOptions*/;

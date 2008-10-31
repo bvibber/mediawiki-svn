@@ -21,8 +21,7 @@ class SpecialNoticeText extends NoticePage {
 	function getJsOutput( $par ) {
 		$this->setLanguage( $par );
 		//need to return all site notices here
-		$noticeId = CentralNotice::selectNotice( $this->project, $this->language );
-		$templates = CentralNotice::getTemplatesForNotice( $noticeId );
+		$templates = CentralNotice::selectNoticeTemplates( $this->project, $this->language );
 		$templateNames = array_keys( $templates );
 		
 		$templateTexts = array_map(
