@@ -87,13 +87,17 @@ write_data(ptr, size, num, data)
 {
 size_t		 sz = size * num;
 request_t	*req = (request_t *)data;
+int		 written;
 	if (!req->output_started) {
 		if (start_output(req, ptr, sz) == -1)
 			return 0;
 		req->output_started = 1;
 	}
-	
-	return net_write(req->sn->csd, ptr, sz);
+	if ((written = net_write(req->sn->csd, ptr, sz)) < (ssize_t) sz)
+		log_error(LOG_FAILURE, "thumb-handler", req->sn, req->rq,
+			   "failed writing data to client (%d < %d)",
+			   (int) written, (int) sz);
+	return written;
 }
 
 /*
@@ -526,7 +530,7 @@ GString		*host, *paramstr;
 	paramstr = pblock_to_query(params);
 
 	req->thumburl = g_string_new(NULL);
-	g_string_sprintf(req->thumburl, "http://%s/thumb.php?%s", host->str, paramstr->str);
+	g_string_sprintf(req->thumburl, "http://%s/w/thumb.php?%s", host->str, paramstr->str);
 	
 	g_string_free(host, TRUE);
 	g_string_free(paramstr, TRUE);
