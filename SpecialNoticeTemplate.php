@@ -115,24 +115,30 @@ class SpecialNoticeTemplate extends SpecialPage {
 		
 		$msgConfirmDelete = wfMsgHTML( 'centralnotice-confirm-delete' );
 		$templates = $this->queryTemplates();
-		foreach ( $templates as $templateName ) {
+		if ( count( $templates ) > 0 ) {
+			foreach ( $templates as $templateName ) {
+				$htmlOut .= Xml::tags( 'tr', null, 
+					Xml::element( 'td', null, $templateName ) .
+					Xml::tags( 'td', null, 
+						Xml::check( 'removeTemplates[]', false, 
+							array(
+								'value' => $templateName,
+								'onchange' => "if(this.checked){this.checked=confirm('{$msgConfirmDelete}')}"
+							)
+				 		)
+				 	)
+				);
+			}
 			$htmlOut .= Xml::tags( 'tr', null, 
-				Xml::element( 'td', null, $templateName ) .
 				Xml::tags( 'td', null, 
-					Xml::check( 'removeTemplates[]', false, 
-						array(
-							'value' => $templateName,
-							'onchange' => "if(this.checked){this.checked=confirm('{$msgConfirmDelete}')}"
-						)
-			 		)
-			 	)
+					Xml::submitButton( wfMsg( 'centralnotice-modify' ) )
+				)
+			);
+		} else {
+			$htmlOut .= Xml::tags( 'tr', null,
+				Xml::element( 'td', null, wfMsg( 'centralnotice-no-templates' ) )
 			);
 		}
-		$htmlOut .= Xml::tags( 'tr', null, 
-			Xml::tags( 'td', null, 
-				Xml::submitButton( wfMsg( 'centralnotice-modify' ) )
-			)
-		);
 		$htmlOut .= Xml::closeElement( 'table' );
 		$htmlOut .= XML::closeElement( 'fieldset' );
 		$htmlOut .= XML::closeElement( 'form' );
