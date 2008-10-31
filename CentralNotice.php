@@ -31,10 +31,13 @@ $wgNoticeProjects = array(
 );
 
 /// Local filesystem path under which static .js output is written
-$wgNoticeStaticDirectory = "$wgUploadDirectory/centralnotice";
+//$wgNoticeStaticDirectory = "$wgUploadDirectory/centralnotice";
+$wgNoticeStaticDirectory = false;
 
-/// Remote URL path from which static .js output is loaded
-$wgNoticeStaticPath = "$wgUploadPath/centralntoice";
+/// Remote URL path from which static .js output is loaded,
+/// if set this will be used instead of Special:NoticeText
+//$wgNoticeStaticPath = "$wgUploadPath/centralntoice";
+$wgNoticeStaticPath = false;
 
 /// Enable the notice-hosting infrastructure on this wiki...
 /// Leave at false for wikis that only use a sister site for the control.
@@ -140,8 +143,15 @@ function efCentralNoticeSetup() {
 function efCentralNoticeLoader( &$notice ) {
 	global $wgScript, $wgUser;
 	global $wgNoticeLoader, $wgNoticeLang, $wgNoticeProject;
+	global $wgNoticeStaticPath;
 
-	$encNoticeLoader = htmlspecialchars( $wgNoticeLoader );
+	if( $wgNoticeStaticPath ) {
+		$noticeLoader = "$wgNoticeStaticPath/$wgNoticeProject/$wgNoticeLang/notice.js";
+	} else {
+		// Dynamic loader special page thingy
+		$noticeLoader = $wgNoticeLoader;
+	}
+	$encNoticeLoader = htmlspecialchars( $noticeLoader );
 	$encProject = Xml::encodeJsVar( $wgNoticeProject );
 	$encLang = Xml::encodeJsVar( $wgNoticeLang );
 

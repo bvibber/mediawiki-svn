@@ -16,8 +16,12 @@ if( isset( $options['help'] ) ) {
 	// Hack for parser to avoid barfing from no $wgTitle
 	$wgTitle = Title::newFromText( wfMsg( 'mainpage' ) );
 	
-	foreach( $wgNoticeProjects as $project ) {
-		foreach( array_keys( Language::getLanguageNames() ) as $lang ) {
+	$projects = $wgNoticeProjects;
+	$langs = array_keys( Language::getLanguageNames() );
+	//$langs = array( 'en' );
+	
+	foreach( $projects as $project ) {
+		foreach( $langs as $lang ) {
 			echo "$project/$lang\n";
 			
 			$builder = new SpecialNoticeText();
@@ -25,7 +29,11 @@ if( isset( $options['help'] ) ) {
 			
 			$outputDir = "$wgNoticeStaticDirectory/$project/$lang";
 			if( wfMkDirParents( $outputDir ) ) {
-				file_put_contents( "$outputDir/notice.js", $js );
+				$outputFile = "$outputDir/notice.js";
+				$ok = file_put_contents( $outputFile, $js );
+				if( !$ok ) {
+					echo "FAILED to write $outputFile!\n";
+				}
 			} else {
 				echo "FAILED to create $outputDir!\n";
 			}
