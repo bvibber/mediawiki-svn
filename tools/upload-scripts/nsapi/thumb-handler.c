@@ -102,7 +102,21 @@ GString	*err = g_string_new(NULL);
 "<body>\n");
 	
 	va_start(ap, fmt);
+#if GLIB_CHECK_VERSION(2, 14, 0)
 	g_string_append_vprintf(err, fmt, ap);
+#else
+	/* <= 2.14.10 doesn't have g_string_append_vprintf */
+	{
+		int len;
+		char *s;
+		len = vsnprintf(NULL, 0, fmt, ap);
+		s = malloc(len + 1);
+		vsnprintf(NULL, 0, fmt, ap);
+		g_string_append(err, s);
+		free(s);
+	}
+#endif
+	
 	va_end(ap);
 
 	g_string_append(err, "</body>\n</html>\n");
