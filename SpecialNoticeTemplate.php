@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-class SpecialNoticeTemplate extends SpecialPage { 
+class SpecialNoticeTemplate extends UnlistedSpecialPage { 
 	
 	/* Functions */
 	
@@ -68,12 +68,18 @@ class SpecialNoticeTemplate extends SpecialPage {
 			$this->listTemplates();
 			return;
 		}
+		if ( $sub == 'preview' ) {
+	
+			$userLang = $wgRequest->getVal( 'wpUserLanguage' );
+			$template = $wgRequest->getText( 'template' );
+			
+			$htmlOut = $this->previewTemplate( $template, $userLang );	
+			$wgOut->addHTML( $htmlOut );
+
+			return;
+		}
 		
 		$this->listTemplates();
-	}
-
-	public static function previewTemplate() {
-		//
 	}
 
 	static function queryTemplates() {
@@ -121,9 +127,17 @@ class SpecialNoticeTemplate extends SpecialPage {
 			foreach ( $templates as $templateName ) {
 				$templateTitle = Title::newFromText( "MediaWiki:Centralnotice-template-{$templateName}" );
 				$translateTitle = Title::newFromText( 'Special:NoticeTranslate' );
+				$templatePage = SpecialPage::getTitleFor( 'NoticeTemplate/preview' );
 				$htmlOut .= Xml::tags( 'tr', null, 
-					Xml::element( 'td', null, $templateName ) .
-					Xml::tags( 'td', null,
+					Xml::tags( 'td', null, 
+						Xml::element( 'a',
+							array( 
+								'href' => $templatePage->getFullUrl( "template=$templateName" ) 
+							),
+							 $templateName
+						) 
+					) .
+					Xml::tags( 'td' , null,
 						Xml::element( 'a',
 							array(
 								'href' => $templateTitle->getEditURL(),
@@ -314,4 +328,38 @@ class SpecialNoticeTemplate extends SpecialPage {
 		}
 		return null;
 	}
+	
+	public static function previewTemplate ( $template, $userLang ) {
+		 $render = new SpecialNoticeText();
+                 $render->project = 'wikipedia';
+                 $render->language = $userLang;
+                 $htmlOut = Xml::fieldset( wfMsg( 'centralnotice-preview' ),
+                        $render->getHtmlNotice( $template ) 
+                 );
+		 $htmlOut .= Xml::openElement( 'form',
+			array (
+				'method' => 'post',
+				'action' => SpecialPage::getTitleFor( 'NoticeTemplate','preview' )->getLocalUrl( "template=$template")
+			)
+		);
+		list( $lsLabel, $lsSelect) = Xml::languageSelector( $userLang );
+		$htmlOut .= Xml::tags( 'tr', null,
+			Xml::tags( 'td', null, $lsLabel ) .
+			Xml::tags( 'td', null, $lsSelect ) 
+		);
+		$htmlOut .=  Xml::tags( 'tr', null,
+			Xml::tags( 'td', null,
+			 	Xml::submitButton( wfMsgHtml('centralnotice-modify'),
+					array(
+						'id' => 'centralnoticesubmit',
+						'name' => 'centralnoticesubmit'
+					)
+				)
+			) 
+		);
+		$htmlOut .= Xml::closeElement( 'form');
+				
+		return $htmlOut;
+		
+	} 
 }

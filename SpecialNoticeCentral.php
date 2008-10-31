@@ -716,8 +716,13 @@ class CentralNotice extends SpecialPage {
 			// Name
 			$htmlOut .=  Xml::openElement( 'tr' ) .
 				     Xml::tags( 'td', null,	
-				     	Xml::label( $row->tmp_name, 'name') 
-			);
+					XMl::tags( 'a', 
+						array(
+							'href' =>  SpecialPage::getTitleFor( 'NoticeTemplate/preview')->getLocalUrl("template=$row->tmp_name")
+						),
+					       $row->tmp_name
+					)
+				    );
 	
 			// Weight
 			$htmlOut .= Xml::tags( 'td', null,
@@ -770,7 +775,14 @@ class CentralNotice extends SpecialPage {
 				$htmlOut .= Xml::openElement( 'tr' );
 	
 				// Name
-				$htmlOut .= Xml::tags( 'td', null, Xml::label( $row->tmp_name, 'tmp_name' ));
+				$htmlOut .= Xml::tags( 'td', null,
+					Xml::tags( 'a', 
+				 	array(
+                                          'href' =>  SpecialPage::getTitleFor( 'NoticeTemplate/preview')->getLocalUrl("template=$row->tmp_name")
+			       	        ),
+		 			$row->tmp_name
+					)
+				);
 		
 				// Add
 				$htmlOut .= Xml::tags( 'td', null, 
