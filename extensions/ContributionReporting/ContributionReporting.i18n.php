@@ -12,6 +12,7 @@ $messages = array();
  * @author Trevor Parscal
  */
 $messages['en'] = array(
+	'contributionreporting-desc' => 'Live reporting on the Wikimedia fundraiser',
 	'contributiontotal' => 'Contribution total',
 	'contributionhistory' => 'Contribution history',
 	
