@@ -487,6 +487,17 @@ class CentralNotice extends SpecialPage {
 				}
 			}
 			
+			// Handle new project name
+			$projectName = $wgRequest->getVal( 'project_name' );
+			if ( isset( $projectName ) ) {
+				$this->updateProjectName ( $notice, $projectName );
+			}
+
+			$projectLang = $wgRequest->getVal( 'wpUserLanguage' );
+			if ( isset( $projectLang ) ) {
+				$this->updateProjectLanguage( $notice, $projectLang );
+			}
+
 			// Handle adding of templates
 			$templatesToAdd = $wgRequest->getArray( 'addTemplates' );
 			if ( isset( $templatesToAdd ) ) {
@@ -1189,6 +1200,26 @@ class CentralNotice extends SpecialPage {
 		return $value; // @fixme -- use wfMsg()
 	}
 	
+	function updateProjectName( $notice, $projectName ) {
+                 $dbw = wfGetDB( DB_MASTER );
+                 $res = $dbw->update( 'cn_notices',
+                        array ( 'not_project' => $projectName ),
+                        array(
+                                'not_name' => $notice
+                        )
+                );
+        }
+		
+	function updateProjectLanguage( $notice, $language ) {
+                 $dbw = wfGetDB( DB_MASTER );
+                 $res = $dbw->update( 'cn_notices',
+                        array ( 'not_language' => $language ),
+                        array(
+                                'not_name' => $notice
+                        )
+                );
+        }
+
 	function dropDownList ( $text, $values ) {
 		$dropDown = "* {$text}\n";
 		foreach( $values as $value ) {
