@@ -496,9 +496,27 @@ class Title {
 
 	/** Simple accessors */
 	/**
+<<<<<<< .mine
 	 * Get the interface text form of the main part
+	 * @param \type{\int} the revision id of the ui title to use
+=======
+	 * Get the interface text form of the main part
+>>>>>>> .r42989
 	 * @return \type{\string} Main part of the title
 	 */
+<<<<<<< .mine
+	public function getText( $oldid = 0 ) {
+		if( !isset($this->mTextform) || $oldid != 0 ) {
+			$rev = Revision::newFromTitle($this, $oldid);
+			$ui = $rev ? $rev->getTitleUI() : null;
+			$title = isset($ui) ? $ui
+				: str_replace( '_', ' ', $this->mDbkeyform );
+			if( $oldid == 0 ) $this->mTextform = $title;
+			return $title;
+		}
+		return $this->mTextform;
+	}
+=======
 	public function getText() {
 		if( !isset($this->mTextform) ) {
 			$rev = Revision::newFromTitle($this);
@@ -508,6 +526,7 @@ class Title {
 		}
 		return $this->mTextform;
 	}
+>>>>>>> .r42989
 	/**
 	 * Get the URL-encoded form of the main part
 	 * @return \type{\string} Main part of the title, URL-encoded
@@ -621,12 +640,21 @@ class Title {
 	/**
 	 * Get the prefixed title with spaces.
 	 * This is the form usually used for display
+	 * @param \type{\int} the revision id of the ui title to use
 	 * @return \type{\string} the prefixed title, with spaces
 	 */
+<<<<<<< .mine
+	public function getPrefixedText( $oldid = 0 ) {
+		if ( !isset( $this->mPrefixedText ) || $oldid != 0 ) {
+			$s = $this->prefix( $this->getText( $oldid ) );
+			if( $oldid == 0 ) $this->mPrefixedText = $s;
+			return $s;
+=======
 	public function getPrefixedText() {
 		if ( empty( $this->mPrefixedText ) ) { // FIXME: bad usage of empty() ?
 			$s = $this->prefix( $this->getText() );
 			$this->mPrefixedText = $s;
+>>>>>>> .r42989
 		}
 		return $this->mPrefixedText;
 	}
@@ -634,11 +662,12 @@ class Title {
 	/**
 	 * Get the prefixed title with spaces, plus any fragment
 	 * (part beginning with '#')
+	 * @param \type{\int} the revision id of the ui title to use
 	 * @return \type{\string} the prefixed title, with spaces and
 	 * 	the fragment, including '#'
 	 */
-	public function getFullText() {
-		$text = $this->getPrefixedText();
+	public function getFullText( $oldid = 0 ) {
+		$text = $this->getPrefixedText( $oldid = 0 );
 		if( '' != $this->mFragment ) {
 			$text .= '#' . $this->mFragment;
 		}

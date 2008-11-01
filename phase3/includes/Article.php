@@ -731,7 +731,7 @@ class Article {
 		# diff page instead of the article.
 
 		if ( !is_null( $diff ) ) {
-			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+			$wgOut->setPageTitle( $this->mTitle->getPrefixedText( $oldid ) );
 
 			$diff = $wgRequest->getVal( 'diff' );
 			$htmldiff = $wgRequest->getVal( 'htmldiff' , false);
@@ -868,7 +868,7 @@ class Article {
 					if( $this->mRevision->isDeleted( Revision::DELETED_TEXT ) ) {
 						if( !$this->mRevision->userCan( Revision::DELETED_TEXT ) ) {
 							$wgOut->addWikiMsg( 'rev-deleted-text-permission' );
-							$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+							$wgOut->setPageTitle( $this->mTitle->getPrefixedText( $oldid ) );
 							wfProfileOut( __METHOD__ );
 							return;
 						} else {
@@ -927,7 +927,7 @@ class Article {
 		/* title may have been set from the cache */
 		$t = $wgOut->getPageTitle();
 		if( empty( $t ) ) {
-			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+			$wgOut->setPageTitle( $this->mTitle->getPrefixedText( $oldid ) );
 
 			# For the main page, overwrite the <title> element with the con-
 			# tents of 'pagetitle-view-mainpage' instead of the default (if
@@ -2579,8 +2579,7 @@ class Article {
 			return array(array('notanarticle'));
 		}
 
-		$from = str_replace( '_', ' ', $fromP );
-		if( $from != $current->getUserText() ) {
+		if( $fromP != $current->getUser() ) {
 			$resultDetails = array( 'current' => $current );
 			return array(array('alreadyrolled',
 				htmlspecialchars($this->mTitle->getPrefixedText()),
@@ -2591,7 +2590,7 @@ class Article {
 
 		# Get the last edit not by this guy
 		$user = intval( $current->getUser() );
-		$user_text = $dbw->addQuotes( $current->getUserText() );
+		$user_text = $dbw->addQuotes( $current->getUser() );
 		$s = $dbw->selectRow( 'revision',
 			array( 'rev_id', 'rev_timestamp', 'rev_deleted' ),
 			array(	'rev_page' => $current->getPage(),
