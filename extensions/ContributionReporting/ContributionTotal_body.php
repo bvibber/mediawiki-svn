@@ -13,8 +13,9 @@ class ContributionTotal extends SpecialPage {
 		$this->setHeaders();
 
 		# Get request data from, e.g.
-		$start = $wgRequest->getText( 'start' );
+		$start = intval( wfTimestampOrNull( TS_UNIX, $wgRequest->getVal( 'start' ) ) );
 		$action = $wgRequest->getText( 'action' );
+		$fudgeFactor = $wgRequest->getInt( 'fudgefactor' );
 
 		$db = contributionReportingConnection();
 
@@ -30,6 +31,8 @@ class ContributionTotal extends SpecialPage {
 
 		# Output
 		$output = $row['ttl'] ? $row['ttl'] : '0';
+		
+		$output += $fudgeFactor;
 
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
 		if ( $action == 'raw' ) {
