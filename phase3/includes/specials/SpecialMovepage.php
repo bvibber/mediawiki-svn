@@ -20,8 +20,8 @@ function wfSpecialMovepage( $par = null ) {
 	$oldTitleText = $wgRequest->getText( 'wpOldTitle', $target );
 	$newTitleText = $wgRequest->getText( 'wpNewTitle' );
 
-	$oldTitle = Title::newFromText( $oldTitleText );
-	$newTitle = Title::newFromText( $newTitleText );
+	$oldTitle = Title::newFromUIText( $oldTitleText );
+	$newTitle = Title::newFromUIText( $newTitleText );
 
 	if( is_null( $oldTitle ) ) {
 		$wgOut->showErrorPage( 'notargettitle', 'notargettext' );

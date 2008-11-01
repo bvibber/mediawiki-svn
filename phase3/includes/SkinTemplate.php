@@ -166,7 +166,7 @@ class SkinTemplate extends Skin {
 		$this->loggedin = $wgUser->isLoggedIn();
 		$this->iscontent = ($this->mTitle->getNamespace() != NS_SPECIAL );
 		$this->iseditable = ($this->iscontent and !($action == 'edit' or $action == 'submit'));
-		$this->username = $wgUser->getName();
+		$this->username = $wgUser->getNameText();
 
 		if ( $wgUser->isLoggedIn() || $this->showIPinHeader() ) {
 			$this->userpageUrlDetails = self::makeUrlDetails( $this->userpage );

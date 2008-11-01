@@ -196,7 +196,7 @@ class LoginForm {
 			$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
 			$wgOut->setArticleRelated( false );
 			$wgOut->setRobotPolicy( 'noindex,nofollow' );
-			$wgOut->addHtml( wfMsgWikiHtml( 'accountcreatedtext', $u->getName() ) );
+			$wgOut->addHtml( wfMsgWikiHtml( 'accountcreatedtext', $u->getNameText() ) );
 			$wgOut->returnToMain( false, $self );
 			wfRunHooks( 'AddNewAccount', array( $u ) );
 			$u->addNewUserLogEntry();
@@ -621,7 +621,7 @@ class LoginForm {
 			return;
 		}
 		if ( 0 == $u->getID() ) {
-			$this->mainLoginForm( wfMsgWikiHtml( 'nosuchuser', htmlspecialchars( $u->getName() ) ) );
+			$this->mainLoginForm( wfMsgWikiHtml( 'nosuchuser', htmlspecialchars( $u->getNameText() ) ) );
 			return;
 		}
 
@@ -639,7 +639,7 @@ class LoginForm {
 		if( WikiError::isError( $result ) ) {
 			$this->mainLoginForm( wfMsg( 'mailerror', $result->getMessage() ) );
 		} else {
-			$this->mainLoginForm( wfMsg( 'passwordsent', $u->getName() ), 'success' );
+			$this->mainLoginForm( wfMsg( 'passwordsent', $u->getNameText() ), 'success' );
 		}
 	}
 
@@ -657,7 +657,7 @@ class LoginForm {
 		global $wgServer, $wgScript, $wgUser;
 
 		if ( '' == $u->getEmail() ) {
-			return new WikiError( wfMsg( 'noemail', $u->getName() ) );
+			return new WikiError( wfMsg( 'noemail', $u->getNameText() ) );
 		}
 		$ip = wfGetIP();
 		if( !$ip ) {
@@ -670,7 +670,7 @@ class LoginForm {
 		$u->setNewpassword( $np, $throttle );
 		$u->saveSettings();
 
-		$m = wfMsg( $emailText, $ip, $u->getName(), $np, $wgServer . $wgScript );
+		$m = wfMsg( $emailText, $ip, $u->getNameText(), $np, $wgServer . $wgScript );
 		$result = $u->sendMail( wfMsg( $emailTitle ), $m );
 
 		return $result;
@@ -731,7 +731,7 @@ class LoginForm {
 		$wgOut->setPageTitle( wfMsg( 'loginsuccesstitle' ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
-		$wgOut->addWikiMsg( $msgname, $wgUser->getName() );
+		$wgOut->addWikiMsg( $msgname, $wgUser->getNameText() );
 		$wgOut->addHtml( $injected_html );
 
 		if ( !empty( $this->mReturnTo ) ) {

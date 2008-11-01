@@ -30,7 +30,7 @@ function wfSpecialWatchlist( $par ) {
 
 	$wgOut->setPageTitle( wfMsg( 'watchlist' ) );
 
-	$sub  = wfMsgExt( 'watchlistfor', 'parseinline', $wgUser->getName() );
+	$sub  = wfMsgExt( 'watchlistfor', 'parseinline', $wgUser->getNameText() );
 	$sub .= '<br />' . WatchlistEditor::buildTools( $wgUser->getSkin() );
 	$wgOut->setSubtitle( $sub );
 

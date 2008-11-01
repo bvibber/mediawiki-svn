@@ -44,7 +44,7 @@ class Title {
 	 */
 	//@{
 
-	var $mTextform = '';           	  ///< Text form (spaces not underscores) of the main part
+	var $mTextform = null;            ///< Text form (spaces not underscores) of the main part
 	var $mUrlform = '';            	  ///< URL-encoded form of the main part
 	var $mDbkeyform = '';          	  ///< Main part with underscores
 	var $mUserCaseDBKey;              ///< DB key with the initial letter in the case specified by the user
@@ -142,6 +142,44 @@ class Title {
 				$cachedcount++;
 				Title::$titleCache[$text] =& $t;
 			}
+			return $t;
+		} else {
+			$ret = NULL;
+			return $ret;
+		}
+	}
+	
+	/**
+	 * Create a new Title from text, and preserve that text as the ui text
+	 * overriding the normal ui text for the title.
+	 * 
+	 * newFromUIText is primarily used on page moves. Please use newFromText
+	 * when handling links, and any other user input that is not meant for
+	 * altering the ui text of the title.
+	 *
+	 * @param $uitext	string	The link text; spaces, prefixes, and an
+	 *   initial ':' indicating the main namespace are accepted.
+	 * @param $defaultNamespace int     The namespace to use if none is speci-
+	 *   fied by a prefix.  If you want to force a specific namespace even if
+	 *   $text might begin with a namespace prefix, use makeTitle() or
+	 *   makeTitleSafe().
+	 * @return Title  The new object, or null on an error.
+	 */
+	public static function newFromUIText( $uitext, $defaultNamespace = NS_MAIN ) {
+		if( is_object( $text ) ) {
+			throw new MWException( 'Title::newFromUIText given an object' );
+		}
+		
+		// Note: This is not meant for the same purpose as newFromText
+		// please do not make it use the title cache, that could pollute
+		// the cache with invalid ui title forms
+		
+		$t = new Title();
+		$t->mDbkeyform = str_replace( ' ', '_', $uitext );
+		$t->mTextform = $uitext; // ToDo: This should be sanitized, but only a little
+		$t->mDefaultNamespace = $defaultNamespace;
+		
+		if( $t->secureAndSplit() ) {
 			return $t;
 		} else {
 			$ret = NULL;
@@ -253,7 +291,7 @@ class Title {
 		$t->mDbkeyform = str_replace( ' ', '_', $title );
 		$t->mArticleID = ( $ns >= 0 ) ? -1 : 0;
 		$t->mUrlform = wfUrlencode( $t->mDbkeyform );
-		$t->mTextform = str_replace( '_', ' ', $title );
+		//$t->mTextform = str_replace( '_', ' ', $title );
 		return $t;
 	}
 
@@ -458,10 +496,18 @@ class Title {
 
 	/** Simple accessors */
 	/**
-	 * Get the text form (spaces not underscores) of the main part
+	 * Get the interface text form of the main part
 	 * @return \type{\string} Main part of the title
 	 */
-	public function getText() { return $this->mTextform; }
+	public function getText() {
+		if( !isset($this->mTextform) ) {
+			$rev = Revision::newFromTitle($this);
+			$ui = $rev ? $rev->getTitleUI() : null;
+			$this->mTextform = isset($ui) ? $ui
+				: str_replace( '_', ' ', $this->mDbkeyform );
+		}
+		return $this->mTextform;
+	}
 	/**
 	 * Get the URL-encoded form of the main part
 	 * @return \type{\string} Main part of the title, URL-encoded
@@ -560,7 +606,7 @@ class Title {
 	 * 	search index
 	 */
 	public function getIndexTitle() {
-		return Title::indexTitle( $this->mNamespace, $this->mTextform );
+		return Title::indexTitle( $this->mNamespace, $this->getText() );
 	}
 
 	/**
@@ -569,9 +615,7 @@ class Title {
 	 * 	any interwiki and namespace prefixes
 	 */
 	public function getPrefixedDBkey() {
-		$s = $this->prefix( $this->mDbkeyform );
-		$s = str_replace( ' ', '_', $s );
-		return $s;
+		return $this->prefix( $this->mDbkeyform, true );
 	}
 
 	/**
@@ -581,8 +625,7 @@ class Title {
 	 */
 	public function getPrefixedText() {
 		if ( empty( $this->mPrefixedText ) ) { // FIXME: bad usage of empty() ?
-			$s = $this->prefix( $this->mTextform );
-			$s = str_replace( '_', ' ', $s );
+			$s = $this->prefix( $this->getText() );
 			$this->mPrefixedText = $s;
 		}
 		return $this->mPrefixedText;
@@ -624,9 +667,9 @@ class Title {
 	 */
 	public function getSubpageText() {
 		if( !MWNamespace::hasSubpages( $this->mNamespace ) ) {
-			return( $this->mTextform );
+			return( $this->getText() );
 		}
-		$parts = explode( '/', $this->mTextform );
+		$parts = explode( '/', $this->getText() );
 		return( $parts[ count( $parts ) - 1 ] );
 	}
 
@@ -646,8 +689,7 @@ class Title {
 	 * @return \type{\string} the URL-encoded form
 	 */
 	public function getPrefixedURL() {
-		$s = $this->prefix( $this->mDbkeyform );
-		$s = str_replace( ' ', '_', $s );
+		$s = $this->prefix( $this->mDbkeyform, true );
 
 		$s = wfUrlencode ( $s ) ;
 
@@ -1150,7 +1192,7 @@ class Title {
 		# XXX: Find a way to work around the php bug that prevents using $this->userCanEditCssJsSubpage() from working
 		if( $this->isCssJsSubpage()
 			&& !$user->isAllowed('editusercssjs')
-			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) ) {
+			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->getDBkey()) ) {
 			$errors[] = array('customcssjsprotected');
 		}
 
@@ -1532,7 +1574,7 @@ class Title {
 	 */
 	public function isCssOrJsPage() {
 		return $this->mNamespace == NS_MEDIAWIKI
-			&& preg_match( '!\.(?:css|js)$!u', $this->mTextform ) > 0;
+			&& preg_match( '!\.(?:css|js)$!u', $this->getText() ) > 0;
 	}
 
 	/**
@@ -1540,7 +1582,7 @@ class Title {
 	 * @return \type{\bool} TRUE or FALSE
 	 */
 	public function isCssJsSubpage() {
-		return ( NS_USER == $this->mNamespace and preg_match("/\\/.*\\.(?:css|js)$/", $this->mTextform ) );
+		return ( NS_USER == $this->mNamespace and preg_match("/\\/.*\\.(?:css|js)$/", $this->getText() ) );
 	}
 	/**
 	 * Is this a *valid* .css or .js subpage of a user page?
@@ -1559,7 +1601,7 @@ class Title {
 	 * Trim down a .css or .js subpage title to get the corresponding skin name
 	 */
 	public function getSkinFromCssJsSubpage() {
-		$subpage = explode( '/', $this->mTextform );
+		$subpage = explode( '/', $this->getText() );
 		$subpage = $subpage[ count( $subpage ) - 1 ];
 		return( str_replace( array( '.css', '.js' ), array( '', '' ), $subpage ) );
 	}
@@ -1568,14 +1610,14 @@ class Title {
 	 * @return \type{\bool} TRUE or FALSE
 	 */
 	public function isCssSubpage() {
-		return ( NS_USER == $this->mNamespace && preg_match("/\\/.*\\.css$/", $this->mTextform ) );
+		return ( NS_USER == $this->mNamespace && preg_match("/\\/.*\\.css$/", $this->getText() ) );
 	}
 	/**
 	 * Is this a .js subpage of a user page?
 	 * @return \type{\bool} TRUE or FALSE
 	 */
 	public function isJsSubpage() {
-		return ( NS_USER == $this->mNamespace && preg_match("/\\/.*\\.js$/", $this->mTextform ) );
+		return ( NS_USER == $this->mNamespace && preg_match("/\\/.*\\.js$/", $this->getText() ) );
 	}
 	/**
 	 * Protect css/js subpages of user pages: can $wgUser edit
@@ -1586,7 +1628,7 @@ class Title {
 	 */
 	public function userCanEditCssJsSubpage() {
 		global $wgUser;
-		return ( $wgUser->isAllowed('editusercssjs') || preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) );
+		return ( $wgUser->isAllowed('editusercssjs') || preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->getDBkey()) );
 	}
 
 	/**
@@ -2002,10 +2044,11 @@ class Title {
 	 * of this object
 	 *
 	 * @param $name \type{\string} the text
+	 * @param $key \type{\bool} output prefix with underscores instead of spaces
 	 * @return \type{\string} the prefixed text
 	 * @private
 	 */
-	/* private */ function prefix( $name ) {
+	/* private */ function prefix( $name, $key = false ) {
 		$p = '';
 		if ( '' != $this->mInterwiki ) {
 			$p = $this->mInterwiki . ':';
@@ -2013,6 +2056,10 @@ class Title {
 		if ( 0 != $this->mNamespace ) {
 			$p .= $this->getNsText() . ':';
 		}
+		
+		if($key) $p = str_replace( ' ', '_', $p );
+		else $p = str_replace( '_', ' ', $p );
+		
 		return $p . $name;
 	}
 
@@ -2223,8 +2270,6 @@ class Title {
 		# Fill fields
 		$this->mDbkeyform = $dbkey;
 		$this->mUrlform = wfUrlencode( $dbkey );
-
-		$this->mTextform = str_replace( '_', ' ', $dbkey );
 
 		return true;
 	}
@@ -2686,6 +2731,7 @@ class Title {
 				'page_touched'   => $dbw->timestamp($now),
 				'page_namespace' => $nt->getNamespace(),
 				'page_title'     => $nt->getDBkey(),
+				'page_title_ui'  => $nt->getText(),
 				'page_latest'    => $nullRevId,
 			),
 			/* WHERE */ array( 'page_id' => $oldid ),
@@ -2783,6 +2829,7 @@ class Title {
 				'page_touched'   => $now,
 				'page_namespace' => $nt->getNamespace(),
 				'page_title'     => $nt->getDBkey(),
+				'page_title_ui'  => $nt->getText(),
 				'page_latest'    => $nullRevId,
 			),
 			/* WHERE */ array( 'page_id' => $oldid ),

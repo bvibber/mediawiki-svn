@@ -1114,7 +1114,7 @@ END;
 				$wgLang->getNsText( NS_TALK ) );
 
 			$ret .= $this->link( $wgUser->getUserPage(),
-				htmlspecialchars( $wgUser->getName() ) );
+				htmlspecialchars( $wgUser->getNameText() ) );
 			$ret .= " ($talkLink)<br />";
 			$ret .= $this->link(
 				SpecialPage::getTitleFor( 'Userlogout' ), wfMsg( 'logout' ),

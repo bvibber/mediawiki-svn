@@ -322,7 +322,7 @@ class PreferencesForm {
 						if( WikiError::isError( $result ) ) {
 							$error = wfMsg( 'mailerror', htmlspecialchars( $result->getMessage() ) );
 						} else {
-							$error = wfMsg( 'eauthentsent', $wgUser->getName() );
+							$error = wfMsg( 'eauthentsent', $wgUser->getNameText() );
 						}
 					}
 				} else {
@@ -628,7 +628,7 @@ class PreferencesForm {
 		# $wgUser->isAllowed( 'userrights' ) seems to strict in some cases
 
 		$userInformationHtml =
-			$this->tableRow( wfMsgHtml( 'username' ), htmlspecialchars( $wgUser->getName() ) ) .
+			$this->tableRow( wfMsgHtml( 'username' ), htmlspecialchars( $wgUser->getNameText() ) ) .
 			$this->tableRow( wfMsgHtml( 'uid' ), $wgLang->formatNum( htmlspecialchars( $wgUser->getId() ) ) ).
 
 			$this->tableRow(

@@ -368,7 +368,7 @@ class UserrightsPage extends SpecialPage {
 			Xml::hidden( 'wpEditToken', $wgUser->editToken( $this->mTarget ) ) .
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'userrights-editusergroup' ) ) .
-			wfMsgExt( 'editinguser', array( 'parse' ), wfEscapeWikiText( $user->getName() ) ) .
+			wfMsgExt( 'editinguser', array( 'parse' ), wfEscapeWikiText( $user->getNameText() ) ) .
 			wfMsgExt( 'userrights-groups-help', array( 'parse' ) ) .
 			$grouplist .
 			Xml::tags( 'p', null, $this->groupCheckboxes( $groups ) ) .

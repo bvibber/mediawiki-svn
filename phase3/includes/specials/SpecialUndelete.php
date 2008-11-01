@@ -445,6 +445,7 @@ class PageArchive {
 		$result = $dbw->select( 'archive',
 			/* fields */ array(
 				'ar_rev_id',
+				'ar_title_ui',
 				'ar_text',
 				'ar_comment',
 				'ar_user',

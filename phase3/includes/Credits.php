@@ -171,7 +171,7 @@ class Credits {
 		$skin = $wgUser->getSkin();
 		$page = $user->getUserPage();
 			
-		return $skin->link( $page, htmlspecialchars( $real ? $real : $user->getName() ) );
+		return $skin->link( $page, htmlspecialchars( $real ? $real : $user->getNameText() ) );
 	}
 
 	/**

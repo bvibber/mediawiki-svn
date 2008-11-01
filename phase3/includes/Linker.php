@@ -1045,12 +1045,13 @@ class Linker {
 	 * @private
 	 */
 	function userLink( $userId, $userText ) {
+		$user = User::newFromName($userText);
 		if( $userId == 0 ) {
-			$page = SpecialPage::getTitleFor( 'Contributions', $userText );
+			$page = $user->getContributionsPage();
 		} else {
-			$page = Title::makeTitle( NS_USER, $userText );
+			$page = $user->getUserPage();
 		}
-		return $this->link( $page, htmlspecialchars( $userText ) );
+		return $this->link( $page, htmlspecialchars( $user->getNameText() ) );
 	}
 
 	/**

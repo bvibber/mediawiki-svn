@@ -36,6 +36,7 @@ class Article {
 	var $mRevision;                   //!<
 	var $mTimestamp = '';             //!<
 	var $mTitle;                      //!<
+	var $mTitleText;
 	var $mTotalAdjustment = 0;        //!<
 	var $mTouched = '19700101000000'; //!<
 	var $mUser = -1;                  //!< Not loaded
@@ -450,6 +451,8 @@ class Article {
 		// We should instead work with the Revision object when we need it...
 		$this->mContent   = $revision->getText( Revision::FOR_THIS_USER ); // Loads if user is allowed
 
+		$this->mTitleText = $revision->getTitleUI();
+		
 		$this->mUser      = $revision->getUser();
 		$this->mUserText  = $revision->getUserText();
 		$this->mComment   = $revision->getComment();
@@ -1444,7 +1447,7 @@ class Article {
 		global $wgUser, $wgDBtransactions, $wgUseAutomaticEditSummaries;
 
 		# Low-level sanity check
-		if( $this->mTitle->getText() == '' ) {
+		if( $this->mTitle->getDBkey() == '' ) {
 			throw new MWException( 'Something is trying to edit an article with an empty title' );
 		}
 
@@ -1526,6 +1529,7 @@ class Article {
 
 				$revision = new Revision( array(
 					'page'       => $this->getId(),
+					'title_ui'   => $this->mTitleText,
 					'comment'    => $summary,
 					'minor_edit' => $isminor,
 					'text'       => $text,
@@ -2423,6 +2427,7 @@ class Article {
 			array(
 				'ar_namespace'  => 'page_namespace',
 				'ar_title'      => 'page_title',
+				'ar_title_ui'   => 'rev_title_ui',
 				'ar_comment'    => 'rev_comment',
 				'ar_user'       => 'rev_user',
 				'ar_user_text'  => 'rev_user_text',

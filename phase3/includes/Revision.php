@@ -259,6 +259,7 @@ class Revision {
 		return array(
 			'rev_id',
 			'rev_page',
+			'rev_title_ui',
 			'rev_text_id',
 			'rev_timestamp',
 			'rev_comment',
@@ -300,6 +301,7 @@ class Revision {
 		if( is_object( $row ) ) {
 			$this->mId        = intval( $row->rev_id );
 			$this->mPage      = intval( $row->rev_page );
+			$this->mTitleUI   =         $row->rev_title_ui;
 			$this->mTextId    = intval( $row->rev_text_id );
 			$this->mComment   =         $row->rev_comment;
 			$this->mUserText  =         $row->rev_user_text;
@@ -342,6 +344,7 @@ class Revision {
 			$this->mId        = isset( $row['id']         ) ? intval( $row['id']         ) : null;
 			$this->mPage      = isset( $row['page']       ) ? intval( $row['page']       ) : null;
 			$this->mTextId    = isset( $row['text_id']    ) ? intval( $row['text_id']    ) : null;
+			$this->mTitleUI   = isset( $row['title_ui']   ) ? strval( $row['title_ui']   ) : null;
 			$this->mUserText  = isset( $row['user_text']  ) ? strval( $row['user_text']  ) : $wgUser->getName();
 			$this->mUser      = isset( $row['user']       ) ? intval( $row['user']       ) : $wgUser->getId();
 			$this->mMinorEdit = isset( $row['minor_edit'] ) ? intval( $row['minor_edit'] ) : 0;
@@ -430,6 +433,22 @@ class Revision {
 	public function setTitle( $title ) {
 		$this->mTitle = $title;
 	}
+	
+	/**
+	 * Returns the ui title of the revision
+	 * @return String
+	 */
+	public function getTitleUI() {
+		return $this->mTitleUI;
+	}
+	
+	/**
+	 * Set the ui title of the revision
+	 * @param String $titleui
+	 */
+	public function setTitleUI( $titleui ) {
+		$this->mTitleUI = $titleui;
+	}
 
 	/**
 	 * Get the page ID
@@ -438,7 +457,7 @@ class Revision {
 	public function getPage() {
 		return $this->mPage;
 	}
-
+	
 	/**
 	 * Fetch revision's user id if it's available to the specified audience.
 	 * If the specified audience does not have access to it, zero will be 
@@ -809,6 +828,7 @@ class Revision {
 			array(
 				'rev_id'         => $rev_id,
 				'rev_page'       => $this->mPage,
+				'rev_title_ui'   => $this->mTitleUI,
 				'rev_text_id'    => $this->mTextId,
 				'rev_comment'    => $this->mComment,
 				'rev_minor_edit' => $this->mMinorEdit ? 1 : 0,
@@ -906,7 +926,7 @@ class Revision {
 
 		$current = $dbw->selectRow(
 			array( 'page', 'revision' ),
-			array( 'page_latest', 'rev_text_id' ),
+			array( 'page_latest', 'rev_text_id', 'rev_text_ui' ),
 			array(
 				'page_id' => $pageId,
 				'page_latest=rev_id',
@@ -918,6 +938,7 @@ class Revision {
 				'page'       => $pageId,
 				'comment'    => $summary,
 				'minor_edit' => $minor,
+				'title_ui'   => $current->rev_title_ui,
 				'text_id'    => $current->rev_text_id,
 				'parent_id'  => $current->page_latest
 				) );

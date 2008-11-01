@@ -612,7 +612,7 @@ class EditPage {
 
 			# Don't force edit summaries when a user is editing their own user or talk page
 			if ( ( $this->mTitle->mNamespace == NS_USER || $this->mTitle->mNamespace == NS_USER_TALK ) && 
-				$this->mTitle->getText() == $wgUser->getName() ) 
+				$this->mTitle->getDBkey() == $wgUser->getName() ) 
 			{
 				$this->allowBlankSummary = true;
 			} else {

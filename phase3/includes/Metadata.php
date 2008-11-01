@@ -122,7 +122,7 @@ abstract class RdfMetaData {
 		} else if( $real = $user->getRealName() ) {
 			$this->element( $name, $real );
 		} else {
-			$this->pageOrString( $name, $user->getUserPage(), wfMsg( 'siteuser', $user->getName() ) );
+			$this->pageOrString( $name, $user->getUserPage(), wfMsg( 'siteuser', $user->getNameText() ) );
 		}
 	}
 

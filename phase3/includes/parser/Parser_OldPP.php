@@ -3874,7 +3874,7 @@ class Parser_OldPP
 	function getUserSig( &$user ) {
 		global $wgMaxSigChars;
 
-		$username = $user->getName();
+		$username = $user->getNameText();
 		$nickname = $user->getOption( 'nickname' );
 		$nickname = $nickname === '' ? $username : $nickname;
 

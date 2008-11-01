@@ -112,7 +112,7 @@ class EmailUserForm {
 					Xml::label( wfMsg( 'emailfrom' ), 'emailfrom' ) .
 				"</td>
 				<td class='mw-input' id='mw-emailuser-sender'>" .
-					$skin->link( $wgUser->getUserPage(), htmlspecialchars( $wgUser->getName() ) ) .
+					$skin->link( $wgUser->getUserPage(), htmlspecialchars( $wgUser->getNameText() ) ) .
 				"</td>
 			</tr>
 			<tr>
@@ -120,7 +120,7 @@ class EmailUserForm {
 					Xml::label( wfMsg( 'emailto' ), 'emailto' ) .
 				"</td>
 				<td class='mw-input' id='mw-emailuser-recipient'>" .
-					$skin->link( $this->target->getUserPage(), htmlspecialchars( $this->target->getName() ) ) .
+					$skin->link( $this->target->getUserPage(), htmlspecialchars( $this->target->getNameText() ) ) .
 				"</td>
 			</tr>
 			<tr>
@@ -214,7 +214,7 @@ class EmailUserForm {
 				// if the user requested a copy of this mail, do this now,
 				// unless they are emailing themselves, in which case one copy of the message is sufficient.
 				if ($this->cc_me && $to != $from) {
-					$cc_subject = wfMsg('emailccsubject', $this->target->getName(), $subject);
+					$cc_subject = wfMsg('emailccsubject', $this->target->getNameText(), $subject);
 					if( wfRunHooks( 'EmailUser', array( &$from, &$from, &$cc_subject, &$this->text ) ) ) {
 						$ccResult = UserMailer::send( $from, $from, $cc_subject, $this->text );
 						if( WikiError::isError( $ccResult ) ) {

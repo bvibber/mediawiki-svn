@@ -147,7 +147,13 @@ $wgMysqlUpdates = array(
 	// 1.14
 	array( 'add_field', 'site_stats',     'ss_active_users',  'patch-ss_active_users.sql' ),
 	array( 'do_active_users_init' ),
-	array( 'add_field', 'ipblocks',     'ipb_allow_usertalk',  'patch-ipb_allow_usertalk.sql' )
+	array( 'add_field', 'ipblocks',     'ipb_allow_usertalk',  'patch-ipb_allow_usertalk.sql' ),
+	
+	// TitleRewrite
+	array( 'add_field', 'revision',         'rev_title_ui',    'patch-rev_title_ui.sql'),
+	array( 'add_field', 'archive',          'ar_title_ui',          'patch-ar_title_ui.sql'),
+	array( 'do_username_schema_change' ),
+
 );
 
 
@@ -1047,6 +1053,35 @@ function do_active_users_init() {
 	}
 	echo( "...ss_active_users user count set...\n" );
 }
+
+function do_username_schema_change() {
+	global $wgDatabase;
+	$update = array();
+	$fields = array(
+		array( 'archive', 'ar_user_text' ),
+		array( 'filearchive', 'fa_user_text' ),
+		array( 'image', 'img_user_text' ),
+		array( 'ipblocks', 'ipb_by_text' ),
+		array( 'oldimage', 'oi_user_text' ),
+		array( 'recentchanges', 'rc_user_text' ),
+		array( 'revision', 'rev_user_text' ),
+		array( 'user', 'user_name' ),
+	);
+	
+	foreach( $fields as $field ) {
+		if( update_row_exists( "schema_change {$field[0]}.{$field[1]}" ) ) {
+			echo "...{$field[0]}.{$field[1]} column already converted.\n";
+		} else {
+			$update[] = $field;
+		}
+	}
+	if( count($update) > 1 ) {
+		$dontAutoRun = true;
+		require_once( 'convertUsernames.php' );
+		convert_usernames( $wgDatabase, $update );
+	}
+}
+
 
 function purge_cache() {
 	global $wgDatabase;

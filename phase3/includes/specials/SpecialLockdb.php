@@ -108,7 +108,7 @@ END
 			return;
 		}
 		fwrite( $fp, $this->reason );
-		fwrite( $fp, "\n<p>(by " . $wgUser->getName() . " at " .
+		fwrite( $fp, "\n<p>(by " . $wgUser->getNameText() . " at " .
 		  $wgLang->timeanddate( wfTimestampNow() ) . ")\n" );
 		fclose( $fp );
 
