@@ -54,9 +54,9 @@ Not removing.',
 	'centralnotice-min' => 'Minute',
 	'centralnotice-project-lang' => 'Project language',
 	'centralnotice-project-name' => 'Project name',
-	'centralnotice-start-date' => 'Start Date',
-	'centralnotice-start-time' => 'Start Time (GMT) ',
-	'centralnotice-assigned-templates' => 'Assigned Templates',
+	'centralnotice-start-date' => 'Start date',
+	'centralnotice-start-time' => 'Start time (UTC) ',
+	'centralnotice-assigned-templates' => 'Assigned templates',
 	'centralnotice-no-templates' => 'No templates found.
 Add some!',
 	'centralnotice-no-templates-assigned' => 'No templates assigned to notice.
