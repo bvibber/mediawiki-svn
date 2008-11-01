@@ -1,13 +1,16 @@
 <?php
-/* vim: noet ts=4 sw=4
- * http://www.gnu.org/licenses/gpl-3.0.txt */
+/**
+ * Internationalisation for Uniwiki/Authors extension
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
-if (!defined("MEDIAWIKI"))
-	die();
+$messages = array();
 
-$wgAuthorsMessages = array();
-
-$wgAuthorsMessages['en'] = array(
-	'authors_authors' => "Authors",
-	'authors_anonymous'  => "Anonymous",
+/** English */
+$messages['en'] = array(
+	'authors-desc' => 'Appends a list of contributors to articles',
+	'authors_authors' => 'Authors',
+	'authors_anonymous'  => 'Anonymous',
 );

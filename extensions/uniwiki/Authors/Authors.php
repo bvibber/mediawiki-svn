@@ -3,52 +3,46 @@
  * http://www.mediawiki.org/wiki/Extension:Uniwiki_Authors
  * http://www.gnu.org/licenses/gpl-3.0.txt */
 
-if (!defined("MEDIAWIKI"))
+if ( !defined( "MEDIAWIKI" ) )
 	die();
 
-/* ---- CREDITS ---- */
+/* ---- CONFIGURABLE OPTIONS ---- */
+$wgShowAuthorsNamespaces = array ( NS_MAIN );
+$wgShowAuthors = true;
+
 $wgExtensionCredits['other'][] = array(
-	'name'        => "Authors",
-	'author'      => "Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)",
-	'description' => "Appends a list of contributors to articles"
+	'name'           => 'Authors',
+	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
+	'description'    => 'Appends a list of contributors to articles'
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki/Authors',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'descriptionmsg' => 'authors-desc',
 );
 
-/* ---- INTERNATIONALIZATION ---- */
-require_once ("Authors.i18n.php");
-$wgExtensionFunctions[] = "UW_Authors_i18n";
-
-function UW_Authors_i18n() {
-    // add this extension's messages to the message cache
-	global $wgMessageCache, $wgAuthorsMessages;
-	foreach ($wgAuthorsMessages as $lang => $messages)
-		$wgMessageCache->addMessages ($messages, $lang);
-}
-
-/* ---- CONFIGURABLE OPTIONS ---- */
-$wgShowAuthorsNamespaces = array (NS_MAIN);
-$wgShowAuthors = true;
+$wgExtensionMessagesFiles['Authors'] = dirname( __FILE__ ) . '/Authors.i18n.php';
 
 /* ---- HOOKS ---- */
 $wgHooks['OutputPageBeforeHTML'][] = "UW_Authors_List";
-function UW_Authors_List (&$out, &$text) {
+function UW_Authors_List ( &$out, &$text ) {
 	global $wgTitle, $wgRequest, $wgShowAuthorsNamespaces, $wgShowAuthors;
 
 	/* do nothing if the option is disabled
 	 * (but why would the extension be enabled?) */
-	if (!wgShowAuthors)
+	if ( !wgShowAuthors )
 		return true;
 
 	// only build authors on namespaces in $wgShowAuthorsNamespaces
-	if (!in_array ($wgTitle->getNamespace(), $wgShowAuthorsNamespaces))
+	if ( !in_array ( $wgTitle->getNamespace(), $wgShowAuthorsNamespaces ) )
 		return true;
 
 	/* get the contribs from the database (don't use the default
 	 * MediaWiki one since it ignores the current user) */
-	$article = new Article ($wgTitle);
+	$article = new Article ( $wgTitle );
 	$contribs = array();
-	$db = wfGetDB (DB_MASTER);
-	$rev_table  = $db->tableName ("revision");
-	$user_table = $db->tableName ("user");
+	$db = wfGetDB ( DB_MASTER );
+	$rev_table  = $db->tableName ( "revision" );
+	$user_table = $db->tableName ( "user" );
 
 	$sql = "SELECT rev_user, rev_user_text, user_real_name, MAX(rev_timestamp) as timestamp
 		FROM $rev_table LEFT JOIN $user_table ON rev_user = user_id
@@ -56,8 +50,8 @@ function UW_Authors_List (&$out, &$text) {
 		GROUP BY rev_user, rev_user_text, user_real_name
 		ORDER BY timestamp DESC";
 
-	$results = $db->query ($sql, __METHOD__);
-	while ($line = $db->fetchObject ($results)) {
+	$results = $db->query ( $sql, __METHOD__ );
+	while ( $line = $db->fetchObject ( $results ) ) {
 		$contribs[] = array(
 			$line->rev_user,
 			$line->rev_user_text,
@@ -65,36 +59,36 @@ function UW_Authors_List (&$out, &$text) {
 		);
 	}
 
-	$db->freeResult ($results);
+	$db->freeResult ( $results );
 
 
 	// return if there are no authors
-	if (sizeof ($results) <= 0)
+	if ( sizeof ( $results ) <= 0 )
 		return true;
 
 	// now build a sensible authors display in HTML
-	require_once ("includes/Credits.php");
-	$authors = "\n<div class='authors'>".
-	           "<h4>" . wfMsg('authors_authors') . "</h4>".
-			   "<ul>";
+	require_once ( "includes/Credits.php" );
+	$authors = "\n<div class='authors'>" .
+		"<h4>" . wfMsg( 'authors_authors' ) . "</h4>" .
+		"<ul>";
 	$anons = 0;
-	foreach ($contribs as $author) {
+	foreach ( $contribs as $author ) {
 		$id       = $author[0];
 		$username = $author[1];
 		$realname = $author[2];
 
-		if ($id != "0") { // user with an id
+		if ( $id != "0" ) { // user with an id
 			$author_link = $realname
-				? creditLink($username, $realname)
-				: creditLink($username);
+				? creditLink( $username, $realname )
+				: creditLink( $username );
 			$authors .= "<li>$author_link</li>";
 		} else { // anonymous
 			$anons++;
 		}
 	}
 	// add the anonymous entries
-	if ($anons > 0)
-		$authors .= "<li>" . wfMsg('authors_anonymous') . "</li>";
+	if ( $anons > 0 )
+		$authors .= "<li>" . wfMsg( 'authors_anonymous' ) . "</li>";
 	$authors .= "</ul></div>";
 
 	$text .= $authors;
