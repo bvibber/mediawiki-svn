@@ -147,10 +147,9 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 				$render->project = 'wikipedia';
 				$render->language = $wgRequest->getVal( 'wpUserLanguage' );
 				$htmlOut .= Xml::tags( 'td', null, 
-					$sk->link( $viewPage,
+					$sk->makeLinkObj( $viewPage,
 						htmlspecialchars( $templateName ),
-						array(),
-						array( 'template' => $templateName ) ) .
+						'template=' . urlencode( $templateName ) ) .
 					Xml::fieldset( wfMsg( 'centralnotice-preview' ),
 						$render->getHtmlNotice( $templateName )
 					)
@@ -174,7 +173,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		
 		// Show add link
 		$newPage = SpecialPage::getTitleFor( 'NoticeTemplate/add' );
-		$htmlOut .= $sk->link( $newPage, wfMsgHtml( 'centralnotice-add-template' ) );
+		$htmlOut .= $sk->makeLinkObj( $newPage, wfMsgHtml( 'centralnotice-add-template' ) );
 		
 		// Output HTML
 		$wgOut->addHtml( $htmlOut );
@@ -270,7 +269,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			
 			$title = Title::newFromText( "MediaWiki:{$message}" );
 			$htmlOut .= Xml::tags( 'td', null,
-				$sk->link( $title, htmlspecialchars( $field ) )
+				$sk->makeLinkObj( $title, htmlspecialchars( $field ) )
 			);
 			
 			$htmlOut .= Xml::element( 'td', null, $count);

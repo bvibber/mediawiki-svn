@@ -205,7 +205,7 @@ class CentralNotice extends SpecialPage {
 			}
 			
 			$htmlOut .= Xml::tags( 'td', $style,
-				$sk->link( $title, htmlspecialchars( $msg ) )
+				$sk->makeLinkObj( $title, htmlspecialchars( $msg ) )
 			);
 		}
 		$htmlOut .= Xml::closeElement( 'tr' );
@@ -364,12 +364,9 @@ class CentralNotice extends SpecialPage {
 				$fields = array();
 			
 				// Name
-				$fields[] = $sk->link( $this->getTitle(),
+				$fields[] = $sk->makeLinkObj( $this->getTitle(),
 						htmlspecialchars( $row->not_name ),
-						array(),
-						array(
-							'method' => 'listNoticeDetail',
-							'notice' => $row->not_name ) );
+						'method=listNoticeDetail&notice=' . urlencode( $row->not_name ) );
 				
 				// Project
 				$fields[] = htmlspecialchars( $this->getProjectName( $row->not_project ) );
@@ -724,10 +721,9 @@ class CentralNotice extends SpecialPage {
 			global $wgRequest;
 			$render->language = $wgRequest->getVal( 'wpUserLanguage' );
 			$htmlOut .= Xml::tags( 'td', null,
-				$sk->link( $viewPage,
+				$sk->makeLinkObj( $viewPage,
 					htmlspecialchars( $row->tmp_name ),
-					array(),
-					array( 'template' => $row->tmp_name ) ) .
+					'template=' . urlencode( $row->tmp_name ) ) .
 				Xml::fieldset( wfMsg( 'centralnotice-preview' ),
 					$render->getHtmlNotice( $row->tmp_name )
 				)
@@ -808,10 +804,9 @@ class CentralNotice extends SpecialPage {
 					global $wgRequest;
 					$render->language = $wgRequest->getVal( 'wpUserLanguage' );
 					$htmlOut .= Xml::tags( 'td', null,
-						$sk->link( $viewPage,
+						$sk->makeLinkObj( $viewPage,
 							htmlspecialchars( $row->tmp_name ),
-							array(),
-							array( 'template' => $row->tmp_name ) ) .
+							'template=' . urlencode( $row->tmp_name ) ) .
 						Xml::fieldset( wfMsg( 'centralnotice-preview' ),
 							$render->getHtmlNotice( $row->tmp_name )
 						)
