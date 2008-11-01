@@ -13,7 +13,7 @@ $wgShowAuthors = true;
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'Authors',
 	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
-	'description'    => 'Appends a list of contributors to articles'
+	'description'    => 'Appends a list of contributors to articles',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki/Authors',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
@@ -29,7 +29,7 @@ function UW_Authors_List ( &$out, &$text ) {
 
 	/* do nothing if the option is disabled
 	 * (but why would the extension be enabled?) */
-	if ( !wgShowAuthors )
+	if ( !$wgShowAuthors )
 		return true;
 
 	// only build authors on namespaces in $wgShowAuthorsNamespaces

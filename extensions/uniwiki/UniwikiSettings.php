@@ -10,7 +10,8 @@ require_once("$uw/AutoCreateCategoryPages/AutoCreateCategoryPages.php");
 require_once("$uw/GenericEditPage/GenericEditPage.php"); 
 require_once("$uw/CatBoxAtTop/CatBoxAtTop.php"); 
 require_once("$uw/Layouts/Layouts.php"); 
-require_once("$uw/Authors/Authors.php"); 
+# Broken. creditLink() missing.
+#require_once("$uw/Authors/Authors.php"); 
 require_once("$uw/CustomToolbar/CustomToolbar.php"); 
 require_once("$uw/CreatePage/CreatePage.php"); 
 require_once("$uw/FormatChanges/FormatChanges.php"); 
