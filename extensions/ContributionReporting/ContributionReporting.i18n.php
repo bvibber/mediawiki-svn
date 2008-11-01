@@ -24,3 +24,20 @@ $messages['en'] = array(
 	
 	'contrib-hist-anonymous' => 'Anonymous',
 );
+
+/** Hebrew (עברית)
+ * @author Rotem Liss
+ */
+$messages['he'] = array(
+	'contributionreporting-desc' => 'עדכון חי מההתרמה לוויקימדיה',
+	'contributiontotal' => 'סיכום התרומות',
+	'contributionhistory' => 'היסטוריית התרומות',
+	
+	'contrib-hist-header' => 'הערות של תורמים מרחבי העולם מוצגות בשידור חי',
+	
+	'contrib-hist-name' => 'שם',
+	'contrib-hist-date' => 'תאריך ושעה',
+	'contrib-hist-amount' => 'סכום',
+	
+	'contrib-hist-anonymous' => 'אנונימי',
+);
