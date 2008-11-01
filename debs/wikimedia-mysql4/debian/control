@@ -1,0 +1,13 @@
+Source: wikimedia-mysql4
+Section: unknown
+Priority: extra
+Maintainer: Domas Mituzas <domas.mituzas@gmail.com>
+Build-Depends: debhelper (>= 5), autotools-dev, libncurses5-dev, g++-4.1, gcc-4.1, bison
+Standards-Version: 3.7.2
+
+Package: wikimedia-mysql4
+Architecture: any
+Depends: libncurses5, adduser, libz1
+Provides: mysql-server
+Conflicts: mysql-server-4.1, mysql-server-5.0, mysql-server-5.1
+Description: MySQL Four Oh Forever

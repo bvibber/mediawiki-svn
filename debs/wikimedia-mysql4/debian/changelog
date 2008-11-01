@@ -1,0 +1,6 @@
+wikimedia-mysql4 (4.0.40.r10-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- root <domas.mituzas@gmail.com>  Sat, 01 Nov 2008 19:08:50 +0000
+
