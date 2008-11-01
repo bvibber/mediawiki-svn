@@ -455,35 +455,8 @@ class CentralNotice extends SpecialPage {
 		);
 		$htmlOut .= Xml::closeElement( 'tr' );
 		
-		
-		// Language
-		list( $lsLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
-		
-		/*
-		 * Dirty hack to add our very own "All" option
-		 */
-		// Strip selected flag
-		$lsSelect = str_replace( ' selected="selected"', '', $lsSelect );
-		
-		// Find the first select tag
-		$insertPoint = stripos( $lsSelect , '<option' );
-		
-		// Create our own option
-		$option = Xml::element( 'option',
-			array(
-				'selected' => 'selected',
-				'value' => ''
-			),
-			'All Languages'
-		);
-		
-		// Insert our option
-		$lsSelect = substr( $lsSelect, 0, $insertPoint ) . $option . substr( $lsSelect, $insertPoint );
-		
-		$htmlOut .= Xml::tags( 'tr', null,
-			Xml::tags( 'td', null, $lsLabel ) .
-			Xml::tags( 'td', null, $lsSelect )
-		);
+		// Languages + All
+		$htmlOut .= $this->languageDropDownList( $wpUserLang );	
 		
 		// Submit
 		$htmlOut .= Xml::tags( 'tr', null,
@@ -610,14 +583,6 @@ class CentralNotice extends SpecialPage {
 		$htmlOut  = Xml::fieldset( $notice );
 		$htmlOut .= Xml::openElement( 'table', array(  'cellpadding' => 9 ) );
 
-                $htmlOut .= Xml::Element( 'th', null, wfMsg ( 'centralnotice-project-name') );
-                $htmlOut .= Xml::Element( 'th', null, wfMsg ( 'centralnotice-project-lang') );
-		$htmlOut .= Xml::Element( 'th', null, wfMsg ( 'centralnotice-start-date') );
-		$htmlOut .= Xml::Element( 'th', null, wfMsg ( 'centralnotice-end-date') );
-		$htmlOut .= Xml::Element( 'th', null, wfMsg ( 'centralnotice-enabled') );
-		$htmlOut .= Xml::Element( 'th', null, wfMsg ( 'centralnotice-locked') );
-		$htmlOut .= Xml::Element( 'th', null, wfMsg ( 'centralnotice-remove') );
-	
 		// Rows
 		while ( $row = $dbr->fetchObject( $res )) { 	
 	
@@ -634,56 +599,74 @@ class CentralNotice extends SpecialPage {
 			$end_month = substr( $end_timestamp, 4, 2);
 			$end_day = substr( $end_timestamp, 6, 2);
 
-			$htmlOut .= Xml::openElement( 'tr' ) .
-			
-					// Project
-					Xml::tags( 'td', null,
-						$this->projectDropDownList()
-					) .
-				    
-					// Language
-					Xml::tags( 'td', null, $row->not_language) .
-				    
-				       // Start
-				        Xml::tags( 'td', null, 
-			    	       		Xml::listDropDown( "start[$row->not_name][year]",
-							$this->dropDownList( wfMsg( 'centralnotice-year'), $years ), '', $start_year, '', 3) .
-				   		Xml::listDropDown( "start[$row->not_name][month]", 
-					  		$this->dropDownList( wfMsg( 'centralnotice-month'), $months), '', $start_month, '', 4 ) .
-    						Xml::listDropDown( "start[$row->not_name][day]",	
-							$this->dropDownList( wfMsg( 'centralnotice-day' ), $days ) ,  '', $start_day, '', 5) .
-				    		Xml::listDropDown( "start[$row->not_name][hour]", 
-							$this->dropDownList( wfMsg( 'centralnotice-hours'), $hours), '', $start_hour, '', 6) .
-				        	Xml::listDropDown( "start[$row->not_name][min]",
-							$this->dropDownList( wfMsg( 'centralnotice-min'), $min), '', $start_min, '', 7)
-			            	) .
+		       // Day
+		       $htmlOut .= Xml::tags( 'tr', null,
+			        Xml::tags( 'td', null, wfMsg ( 'centralnotice-start-date') ) .
+				Xml::tags( 'td', null, 
+			    	       	Xml::listDropDown( "start[$row->not_name][year]",
+						$this->dropDownList( wfMsg( 'centralnotice-year'), $years ), '', $start_year, '', 3) .
+				   	Xml::listDropDown( "start[$row->not_name][month]", 
+					  	$this->dropDownList( wfMsg( 'centralnotice-month'), $months), '', $start_month, '', 4 ) .
+    					Xml::listDropDown( "start[$row->not_name][day]",	
+						$this->dropDownList( wfMsg( 'centralnotice-day' ), $days ) ,  '', $start_day, '', 5) )
+		       );
+		       
+                       // Time of day
+		       $htmlOut .=  Xml::tags( 'tr', null,	    		
+			      Xml::tags( 'td', null, wfMsg ( 'centralnotice-start-time' ) ) .
+				Xml::tags( 'td', null,
+					Xml::listDropDown( "start[$row->not_name][hour]", 
+						$this->dropDownList( wfMsg( 'centralnotice-hours'), $hours), '', $start_hour, '', 6) .
+					Xml::listDropDown( "start[$row->not_name][min]",
+						$this->dropDownList( wfMsg( 'centralnotice-min'), $min), '', $start_min, '', 7) )
+		       );		            	  
 
-				       // End
-				    Xml::tags( 'td', null,
+			// End
+			$htmlOut .= Xml::tags( 'tr', null, 
+			       Xml::tags( 'td', null, wfMsg ( 'centralnotice-end-date') ) .
+			       Xml::tags( 'td', null,
 				    	Xml::listDropDown( "end[$row->not_name][year]", 
 							$this->dropDownList( wfMsg( 'centralnotice-year'), $years ), '', $end_year, '', 8) .
 					Xml::listDropDown( "end[$row->not_name][month]", 
 							$this->dropDownList( wfMsg( 'centralnotice-month'), $months ), '', $end_month, '', 9 ) .
 				   	Xml::listDropDown( "end[$row->not_name][day]", 
-							$this->dropDownList( wfMsg( 'centralnotice-day'), $days ), '', $end_day, '', 10 )
-				    );
+							$this->dropDownList( wfMsg( 'centralnotice-day'), $days ), '', $end_day, '', 10 ) )
+		        );
 
+			// Project
+			$htmlOut .= Xml::tags( 'tr', null,
+                	     Xml::tags( 'td', null, wfMsg ( 'centralnotice-project-name') ) .
+				Xml::tags( 'td', null,
+					$this->projectDropDownList() )
+			); 
+			// Language 
+		  	$htmlOut .= Xml::tags( 'tr', null,
+				Xml::tags( 'td', null, 
+					$this->languageDropDownList( $row->not_language) )
+			);
+				    
 			// Enabled
-		        $htmlOut .= Xml::tags( 'td', null, 
-				Xml::check( 'enabled[]', ( $row->not_enabled == '1' ),
-				array( 'value' => $row->not_name))
+		        $htmlOut .= Xml::tags( 'tr', null, 
+				Xml::tags( 'td', null, wfMsg ( 'centralnotice-enabled') ) .
+					Xml::tags( 'td', null,
+						Xml::check( 'enabled[]', ( $row->not_enabled == '1' ),
+							array( 'value' => $row->not_name) ) )
 			);
 			
 			// Locked
-			$htmlOut .= Xml::tags( 'td', null, 
-				Xml::check( 'locked[]', ( $row->not_locked == '1' ), 
-				array( 'value' => $row->not_name))
+			$htmlOut .= Xml::tags( 'tr', null, 
+			     Xml::tags( 'td', null, wfMsg ( 'centralnotice-locked') ) .
+				Xml::tags( 'td', null,
+					Xml::check( 'locked[]', ( $row->not_locked == '1' ), 
+						array( 'value' => $row->not_name) ) )
 			);
 
 			// Remove
-			$htmlOut .= Xml::tags( 'td', null,
-				Xml::check( 'removeNotices[]', false, 
-				array( 'value' => $row->not_name))
+			$htmlOut .= Xml::tags( 'tr', null,
+			     Xml::tags( 'td', null, wfMsg ( 'centralnotice-remove' ) ) .
+					Xml::tags( 'td', null,
+						Xml::check( 'removeNotices[]', false, 
+						array( 'value' => $row->not_name) ) )
 			);		
 			$htmlOut .= Xml::closeElement( 'tr' );
 			$htmlOut .= Xml::closeElement( 'table' );
@@ -1169,6 +1152,39 @@ class CentralNotice extends SpecialPage {
 		return $htmlOut;
 	}
 	
+	function languageDropDownList( $wpUserLang ) {
+		// Language
+		list( $lsLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
+		
+		/*
+		 * Dirty hack to add our very own "All" option
+		 */
+		// Strip selected flag
+		$lsSelect = str_replace( ' selected="selected"', '', $lsSelect );
+		
+		// Find the first select tag
+		$insertPoint = stripos( $lsSelect , '<option' );
+		
+		// Create our own option
+		$option = Xml::element( 'option',
+			array(
+				'selected' => 'selected',
+				'value' => ''
+			),
+			'All Languages'
+		);
+		
+		// Insert our option
+		$lsSelect = substr( $lsSelect, 0, $insertPoint ) . $option . substr( $lsSelect, $insertPoint );
+		
+		$htmlOut = Xml::tags( 'tr', null,
+			Xml::tags( 'td', null, $lsLabel ) .
+			Xml::tags( 'td', null, $lsSelect )
+		);
+
+		return $htmlOut;		
+	}
+
 	function getProjectName( $value ) {
 		return $value; // @fixme -- use wfMsg()
 	}
