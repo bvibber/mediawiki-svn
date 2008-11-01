@@ -194,21 +194,21 @@ class CentralNotice extends SpecialPage {
 		 );
 	}
 	
-	static public function printHeader( $sub ) {
+	static public function printHeader() {
 		global $wgOut, $wgTitle, $wgUser;
 		$sk = $wgUser->getSkin();
 		
 		$pages = array(
-			'Special:CentralNotice/listNotices' => wfMsg( 'centralnotice-notices' ),
-			'Special:NoticeTemplate' => wfMsg ( 'centralnotice-templates' )
+			'CentralNotice' => wfMsg( 'centralnotice-notices' ),
+			'NoticeTemplate' => wfMsg ( 'centralnotice-templates' )
 		);
 		$htmlOut = Xml::openElement( 'table', array( 'cellpadding' => 9 ) );
 		$htmlOut .= Xml::openElement( 'tr' );
 		foreach ( $pages as $page => $msg ) {
-			$title = Title::newFromText( $page );
+			$title = SpecialPage::getTitleFor( $page );
 			
 			$style = array( 'style' => 'border-bottom:solid 1px silver;' );
-			if ( dirname( $title->getPrefixedText() ) == $wgTitle->getPrefixedText() ) {
+			if ( $page == $wgTitle->getText() ) {
 				$style = array( 'style' => 'border-bottom:solid 1px black;' );
 			}
 			

@@ -36,7 +36,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$wgOut->addWikiText( wfMsg( 'centralnotice-summary' ) );
 		
 		// Show header
-		CentralNotice::printHeader( $sub );
+		CentralNotice::printHeader();
 		
 		// Handle forms
 		if ( $wgRequest->wasPosted() ) {
