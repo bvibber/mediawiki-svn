@@ -9,14 +9,21 @@ if (!defined("MEDIAWIKI"))
 /* ---- CREDITS ---- */
 
 $wgExtensionCredits['other'][] = array(
-	'name'        => "Uniwiki Category Box at Top",
-	'author'      => "Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)",
-	'description' => "Adds a category box to the top right of articles"
+	'name'           => 'CatBoxAtTop',
+	'author'         => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
+	'description'    => 'Adds a category box to the top right of pages',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki/CatBoxAtTop',
+	'svn-date'       => '$LastChangedDate',
+	'svn-revision'   => '$LastChangedRevision$',
+	'descriptionmsg' => 'catboxattop-desc',
 );
 
-/* ---- HOOKS ---- */
+$wgExtensionMessagesFiles['CatBoxAtTop'] = dirname( __FILE__ ) . '/CatBoxAtTop.i18n.php';
 
+/* ---- HOOKS ---- */
 $wgHooks['BeforePageDisplay'][] = "UW_CatBoxAtTop_CSS";
+$wgHooks['OutputPageBeforeHTML'][] = "UW_CatBoxAtTop_Rejig";
+
 function UW_CatBoxAtTop_CSS (&$out) {
 	global $wgScriptPath;
 	$href = "$wgScriptPath/extensions/uniwiki/CatBoxAtTop/style.css";
@@ -24,7 +31,6 @@ function UW_CatBoxAtTop_CSS (&$out) {
 	return true;
 }
 
-$wgHooks['OutputPageBeforeHTML'][] = "UW_CatBoxAtTop_Rejig";
 function UW_CatBoxAtTop_Rejig (&$out, &$text) {
 	global $wgVersion;
 
