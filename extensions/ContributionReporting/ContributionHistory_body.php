@@ -69,12 +69,12 @@ class ContributionHistory extends SpecialPage {
 		$output .= '</table>';
 
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
-		$wgOut->addWikiText( '{{Template:Donate-header/' . $language . '}}' );
+		$wgOut->addWikiText( '{{Template:2008/Donate-header/' . $language . '}}' );
 		$wgOut->addWikiText( '<skin>Tomas</skin>' );
 		$wgOut->addHTML( '<h1>' . $this->msg( 'contrib-hist-header' ) . '</h1>' );
-		$wgOut->addWikiText( '<strong>{{Template:Contribution history introduction/' . $language . '}}</strong>' );
+		$wgOut->addWikiText( '<strong>{{Template:2008/Contribution history introduction/' . $language . '}}</strong>' );
 		$wgOut->addHTML( $output );
-		$wgOut->addWikiText( '{{Template:Donate-footer/' . $language . '}}' );
+		$wgOut->addWikiText( '{{Template:2008/Donate-footer/' . $language . '}}' );
 	}
 	
 	function msg( $key ) {
