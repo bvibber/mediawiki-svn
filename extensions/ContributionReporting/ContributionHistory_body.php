@@ -10,6 +10,7 @@ class ContributionHistory extends SpecialPage {
 		if ( !$language ) {
 			$language = 'en';
 		}
+		$this->lang = Language::factory( $language );
 
 		// Get request data
 		$dir = $wgRequest->getText( 'dir', '' );
@@ -34,29 +35,33 @@ class ContributionHistory extends SpecialPage {
 		$output .= '</style>';
 
 		$output .= '<table style="width: 100%">';
-		$output .= '<tr><th style="width: 200px;">Name</th><th>Date</th><th style="text-align: right;">Amount</th></tr>';
+		$output .= '<tr>';
+		$output .= '<th style="width: 200px;">' . $this->msg( 'contrib-hist-name' ) . '</th>';
+		$output .= '<th>' . $this->msg( 'contrib-hist-date' ) . '</th>';
+		$output .= '<th style="text-align: right;">' . $this->msg( 'contrib-hist-amount' ) . '</th>';
+		$output .= '</tr>';
 
 		$alt = TRUE;
 		while ( $row = $res->fetchRow() ) {
-			$name = htmlspecialchars( $row['name'] );
-			if ( !$name ) {
-				$name = 'Anonymous';
-			}
-
-			$name = '<strong>' . $name . '</strong>';
+			$name = $this->formatName( $row );
 
 			if ( $row['note'] ) {
 				$name .= '<br />' . htmlspecialchars( $row['note'] );
 			}
 
 			$amount = $this->formatAmount( $row );
+			$date = $this->formatDate( $row );
 
 			$class = '';
 			if ( $alt ) {
 				$class = ' alt';
 			}
 
-			$output .= '<tr><td class="left' . $class . '">' . $name . '</td><td class="left' . $class . '" style="width: 50px;">' . date( 'Y-m-j', $row['received'] ) . '</td><td class="right' . $class . '" style="width: 75px;">' . $amount . '</td></tr>';
+			$output .= "<tr>";
+			$output .= "<td class=\"left $class\">$name</td>";
+			$output .= "<td class=\"left $class\" style=\"width: 100px;\">$date</td>";
+			$output .= "<td class=\"right $class\" style=\"width: 75px;\">$amount</td>";
+			$output .= "</tr>";
 
 			$alt = !$alt;
 		}
@@ -66,10 +71,29 @@ class ContributionHistory extends SpecialPage {
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
 		$wgOut->addWikiText( '{{Template:Donate-header/' . $language . '}}' );
 		$wgOut->addWikiText( '<skin>Tomas</skin>' );
-		$wgOut->addHTML( '<h1>Real-time donor comments from around the world</h1>' );
+		$wgOut->addHTML( '<h1>' . $this->msg( 'contrib-hist-header' ) . '</h1>' );
 		$wgOut->addWikiText( '<strong>{{Template:Contribution history introduction/' . $language . '}}</strong>' );
 		$wgOut->addHTML( $output );
 		$wgOut->addWikiText( '{{Template:Donate-footer/' . $language . '}}' );
+	}
+	
+	function msg( $key ) {
+		return wfMsgExt( $key, array( 'escape', 'lang' => $this->lang ) );
+	}
+	
+	function formatName( $row ) {
+		$name = htmlspecialchars( $row['name'] );
+		if ( !$name ) {
+			$name = $this->msg( 'contrib-hist-anonymous' );
+		}
+
+		$name = '<strong>' . $name . '</strong>';
+		return $name;
+	}
+	
+	function formatDate( $row ) {
+		$ts = wfTimestamp( TS_MW, $row['received'] );
+		return $this->lang->timeanddate( $ts );
 	}
 
 	function formatAmount( $row ) {
