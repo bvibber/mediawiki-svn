@@ -48,10 +48,7 @@ class ContributionHistory extends SpecialPage {
         $name .= '<br />' . htmlspecialchars($row['note']);
       }
       
-      $amount = htmlspecialchars($row['original_currency'] . ' ' . $row['original_amount']);
-      if (!$row['original_currency'] || !$row['original_amount']) {
-        $amount = 'USD ' . htmlspecialchars($row['converted_amount']);
-      }
+      $amount = $this->formatAmount( $row );
       
       $class = '';
       if ($alt) {
@@ -73,4 +70,22 @@ class ContributionHistory extends SpecialPage {
     $wgOut->addHTML( $output );
     $wgOut->addWikiText('{{Template:Donate-footer/' . $language . '}}');
   }
+
+  function formatAmount( $row ) {
+    if( $row['original_currency'] ) {
+      $currency = $row['original_currency'];
+      $amount = $row['original_amount'];
+    } else {
+      $currency = 'USD';
+      $amount = $row['converted_amount'];
+    }
+    
+    if( $currency == 'JPY' ) {
+      // No decimals for yen
+      $amount = intval( $amount );
+    }
+    
+    return htmlspecialchars( "$currency $amount" );
+  }
+
 }
