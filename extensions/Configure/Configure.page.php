@@ -17,7 +17,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Constructor
 	 */
 	public function __construct( $name, $right ) {
-		efConfigureLoadMessages();
+		wfLoadExtensionMessages( 'Configure' );
 		$this->mConfSettings = ConfigurationSettings::singleton( $this->getSettingMask() );
 		parent::__construct( $name, $right );
 	}
@@ -41,22 +41,13 @@ abstract class ConfigurationPage extends SpecialPage {
 			// Since efConfigureSetup() should be explicitely called, don't go
 			// further if that function wasn't called
 			if( !$wgConf instanceof WebConfiguration ){
-				$msg = wfMsgNoTrans( 'configure-no-setup' );
-				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
+				$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>', 'configure-no-setup' );
 				return;
 			}
 
-			// Check that the directory exists...
-			if( !is_dir( $wgConf->getDir() ) ){
-				$msg = wfMsgNoTrans( 'configure-no-directory', $wgConf->getDir() );
-				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
-				return;
-			}
-
-			// And that it's writable by PHP
-			if( !is_writable( $wgConf->getDir() ) ){
-				$msg = wfMsgNoTrans( 'configure-directory-not-writable', $wgConf->getDir() );
-				$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
+			$ret = $wgConf->doChecks();
+			if( count( $ret ) ) {
+				$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>', $ret );
 				return;
 			}
 		}
@@ -65,13 +56,12 @@ abstract class ConfigurationPage extends SpecialPage {
 		if( $wiki = $wgRequest->getVal( $wikiParam, false ) ){
 			if( $wgConf->getWiki() != $wiki ){
 				if( !$this->isUserAllowedInterwiki() || $wgConfigureWikis === false ){
-					$msg = wfMsgNoTrans( 'configure-no-transwiki' );
-					$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
+					$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>', 'configure-no-transwiki' );
 					return;
 				}
 				if( is_array( $wgConfigureWikis ) && !in_array( $wiki, $wgConfigureWikis ) ){
-					$msg = wfMsgNoTrans( 'configure-transwiki-not-in-range', $wiki, implode( ', ', $wgConfigureWikis ) );
-					$wgOut->addWikiText( "<div class='errorbox'><strong>$msg</strong></div>" );
+					$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>',
+						array( 'configure-transwiki-not-in-range', $wiki, implode( ', ', $wgConfigureWikis ) ) );
 					return;	
 				}
 			}
@@ -96,7 +86,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					$type = 'diff';
 				}
 			} else {
-				$wgOut->addWikiText( wfMsgNoTrans( 'sessionfailure' ) );
+				$wgOut->addWikiMsg( 'sessionfailure' );
 				$type = 'diff';
 			}
 		} else {
@@ -296,13 +286,12 @@ abstract class ConfigurationPage extends SpecialPage {
 		global $wgConf, $wgOut, $wgRequest;
 
 		if( $version = $wgRequest->getVal( 'version' ) ){
-			$versions = $wgConf->listArchiveFiles();
+			$versions = $wgConf->listArchiveVersions();
 			if( in_array( $version, $versions ) ){
 				$conf = $wgConf->getOldSettings( $version );
 				$this->conf = $conf[$this->mWiki];
 				if( !isset( $conf[$this->mWiki] ) ){
-					$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
-					$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
+					$wgOut->addWikiText( '<div class="errorbox">$1</div>', array( 'configure-old-not-available', $version ) );
 					return false;
 				}
 				$current = null;
@@ -313,10 +302,9 @@ abstract class ConfigurationPage extends SpecialPage {
 						$this->conf[$name] += $current[$name];
 					}	
 				}
-				$wgOut->addWikiText( wfMsgNoTrans( 'configure-edit-old' ) );
+				$wgOut->addWikiMsg( 'configure-edit-old' );
 			} else {
-				$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
-				$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
+				$wgOut->addWikiText( '<div class="errorbox">$1</div>', array( 'configure-old-not-available', $version ) );
 				return false;
 			}
 		} else {
@@ -330,7 +318,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function buildOldVersionSelect(){
 		global $wgConf, $wgLang, $wgUser;
-		$versions = $wgConf->listArchiveFiles();
+		$versions = $wgConf->listArchiveVersions();
 		$text = '<fieldset><legend>' . wfMsgHtml( 'configure-old' ) . '</legend>';
 		if( empty( $versions ) ){
 			$text .= wfMsgExt( 'configure-no-old', array( 'parse' ) );
@@ -341,9 +329,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			$title = $this->getTitle();
 			if( count( $versions ) > 10 ){
 				$versions = array_slice( $versions, 0, 10 );
-				$link = is_callable( array( 'SpecialPage', 'getTitleFor' ) ) ? # 1.9 +
-					SpecialPage::getTitleFor( 'ViewConfig' ) :
-					Title::makeTitle( NS_SPECIAL, 'ViewConfig' );
+				$link = SpecialPage::getTitleFor( 'ViewConfig' );
 				$moreLink = $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) );
 			} else {
 				$moreLink = '';
@@ -488,18 +474,9 @@ abstract class ConfigurationPage extends SpecialPage {
 						$iter = array_keys( $this->getSettingValue( 'wgGroupPermissions' ) );
 					}
 					if( $arrType == 'group-bool' ){
-						if( is_callable( array( 'User', 'getAllRights' ) ) ){ // 1.13 +
-							$all = User::getAllRights();
-						} else {
-							foreach( $this->getSettingValue( 'wgGroupPermissions' ) as $rights )
-								$all = array_merge( $all, array_keys( $rights ) );
-							$all = array_unique( $all );
-						}
+						$all = User::getAllRights();
 					} else {
-						if( $this->isSettingAvailable( 'wgImplicitGroups' ) ) // 1.12 +
-							$all = array_diff( $iter, $this->getSettingValue( 'wgImplicitGroups' ) );
-						else
-							$all = array_diff( $all, User::getImplicitGroups() );
+						$all = array_diff( $iter, $this->getSettingValue( 'wgImplicitGroups' ) );
 					}
 					foreach( $iter as $group ){
 						foreach( $all as $right ){
@@ -674,7 +651,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected function injectScriptsAndStyles() {
 		global $wgOut, $wgScriptPath, $wgUseAjax, $wgJsMimeType, $wgConfigureStyleVersion;
 		$href = "{$wgScriptPath}/extensions/Configure/Configure.css?{$wgConfigureStyleVersion}";
-		if( is_callable( array( $wgOut, 'addExtensionStyle' ) ) ){
+		if( is_callable( array( $wgOut, 'addExtensionStyle' ) ) ){ # 1.14+
 			$wgOut->addExtensionStyle( $href );
 		} else {
 			$wgOut->addLink(
@@ -685,19 +662,11 @@ abstract class ConfigurationPage extends SpecialPage {
 				)
 			);
 		}
-		if( is_callable( array( 'Xml', 'encodeJsVar' ) ) ){ # 1.9 +
-			$add = Xml::encodeJsVar( wfMsg( 'configure-js-add' ) );
-			$remove = Xml::encodeJsVar( wfMsg( 'configure-js-remove' ) );
-			$removeRow = Xml::encodeJsVar( wfMsg( 'configure-js-remove-row' ) );
-			$promptGroup = Xml::encodeJsVar( wfMsg( 'configure-js-prompt-group' ) );
-			$groupExists = Xml::encodeJsVar( wfMsg( 'configure-js-group-exists' ) );
-		} else {
-			$add = '"' . Xml::escapeJsString( wfMsg( 'configure-js-add' ) ). '"';
-			$remove = '"' . Xml::escapeJsString( wfMsg( 'configure-js-remove' ) ) . '"';
-			$removeRow = '"' . Xml::escapeJsString( wfMsg( 'configure-js-remove-row' ) ) . '"';
-			$promptGroup = '"' . Xml::escapeJsString( wfMsg( 'configure-js-prompt-group' ) ) . '"';
-			$groupExists = '"' . Xml::escapeJsString( wfMsg( 'configure-js-group-exists' ) ) . '"';
-		}
+		$add = Xml::encodeJsVar( wfMsg( 'configure-js-add' ) );
+		$remove = Xml::encodeJsVar( wfMsg( 'configure-js-remove' ) );
+		$removeRow = Xml::encodeJsVar( wfMsg( 'configure-js-remove-row' ) );
+		$promptGroup = Xml::encodeJsVar( wfMsg( 'configure-js-prompt-group' ) );
+		$groupExists = Xml::encodeJsVar( wfMsg( 'configure-js-group-exists' ) );
 		$ajax = isset( $wgUseAjax ) && $wgUseAjax ? 'true' : 'false';
 		$script = array(
 			"<script type=\"$wgJsMimeType\">/*<![CDATA[*/",
@@ -760,7 +729,6 @@ abstract class ConfigurationPage extends SpecialPage {
 			return $this->buildArrayInput( $conf, $default, $allowed );
 		}
 		if( $type == 'lang' ){
-			// Code taken from Xml.php, Xml::LanguageSelector only available since 1.11 and Xml::option since 1.8
 			$languages = Language::getLanguageNames( true );
 
 			if( $allowed ){
@@ -961,23 +929,14 @@ abstract class ConfigurationPage extends SpecialPage {
 			$all = array();
 			$attr = ( !$allowed ) ? array( 'disabled' => 'disabled' ) : array();
 			if( $type == 'group-bool' ){
-				if( is_callable( array( 'User', 'getAllRights' ) ) ){ // 1.13 +
-						$all = User::getAllRights();
-				} else {
-					foreach( $default as $rights )
-						$all = array_merge( $all, array_keys( $rights ) );
-					$all = array_unique( $all );
-				}
+				$all = User::getAllRights();
 				$iter = $default;
 			} else {
 				$all = array_keys( $this->getSettingValue( 'wgGroupPermissions' ) );
 				$iter = array();
 				foreach( $all as $group )
 					$iter[$group] = isset( $default[$group] ) && is_array( $default[$group] ) ? $default[$group] : array();
-				if( $this->isSettingAvailable( 'wgImplicitGroups' ) ) // 1.12 +
-					$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
-				else
-					$all = array_diff( $all, User::getImplicitGroups() );
+				$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
 			}
 			$groupdesc = wfMsgHtml( 'configure-desc-group' );
 			$valdesc = wfMsgHtml( 'configure-desc-val' );

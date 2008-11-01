@@ -24,14 +24,7 @@ function efConfigureAjax( $group ){
 	if( isset( $wgGroupPermissions[$group] ) ){
 		$html = '<err#>';
 	} else {
-		if( is_callable( array( 'User', 'getAllRights' ) ) ){ // 1.13 +
-			$all = User::getAllRights();
-		} else {
-			$all = array();
-			foreach( $wgGroupPermissions as $rights )
-				$all = array_merge( $all, array_keys( $rights ) );
-			$all = array_unique( $all );
-		}
+		$all = User::getAllRights();
 		$row = '<div style="-moz-column-count:2"><ul>';
 		foreach( $all as $right ){
 			$id = Sanitizer::escapeId( 'wpwgGroupPermissions-'.$group.'-'.$right );
@@ -80,40 +73,7 @@ function efConfigureSetup( $wiki = 'default' ){
 }
 
 /**
- * Function that loads the messages in $wgMessageCache, it is used for backward
- * compatibility with 1.10 and older versions
- */
-function efConfigureLoadMessages(){
-	if( function_exists( 'wfLoadExtensionMessages' ) ){
-		wfLoadExtensionMessages( 'Configure' );
-	} else {
-		global $wgMessageCache;
-		require( dirname( __FILE__ ) . '/Configure.i18n.php' );
-		foreach( $messages as $lang => $messages ){
-			$wgMessageCache->addMessages( $messages, $lang );
-		}
-	}
-}
-
-/**
- * Loads special pages aliases, for backward compatibility with < 1.13
- */
-function efConfigureLoadAliases( &$spAliases, $code ){
-	require( dirname( __FILE__ ) . '/Configure.alias.php' );
-	do {
-		if( isset( $aliases[$code] ) ){
-			foreach( $aliases[$code] as $can => $aliasArr ){
-				foreach( $aliasArr as $alias )
-					$spAliases[$can][] = str_replace( ' ', '_', $alias );
-			}
-		}
-	} while( $code = Language::getFallbackFor( $code ) );
-	return true;
-}
-
-/**
  * Add custom rights defined in $wgRestrictionLevels
- * Note that this only works on 1.13+
  */
 function efConfigureGetAllRights( &$rights ){
 	global $wgRestrictionLevels;

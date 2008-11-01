@@ -177,6 +177,8 @@ class ConfigurationSettings {
 		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
 			$ret += array(); // Nothing for extensions
 		}
+		global $wgConf;
+		$ret = array_merge( $ret, $wgConf->getNotEditableSettings() );
 		return $ret;
 	}
 

@@ -3,7 +3,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 /**
  * Special page to allow users to configure the wiki by a web based interface
- * Require MediaWiki version 1.7.0 or greater
+ * Require MediaWiki version 1.13.0 or greater
  *
  * @file
  * @ingroup Extensions
@@ -17,16 +17,26 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.8.12',
+	'version' => '0.9.0',
 );
 
 ## Configuration part
 
 /**
- * Default path for the serialized files
+ * Configuration handler, either "files" or "db"
+ */
+$wgConfigureHandler = 'files';
+
+/**
+ * Default path for the serialized files, if $wgConfigureHandler is 'files'
  * Be sure that this directory is *not* accessible by the web
  */
 $wgConfigureFilesPath = "$IP/serialized";
+
+/**
+ * Database used to store the configuration, if $wgConfigureHandler is 'db'
+ */
+$wgConfigureDatabase = 'config';
 
 /**
  * Allow foreign wiki configuration? either:
@@ -117,24 +127,18 @@ $dir = dirname( __FILE__ ) . '/';
 require_once( $dir . 'Configure.func.php' );
 
 ## Adding internationalisation...
-if( isset( $wgExtensionMessagesFiles ) && is_array( $wgExtensionMessagesFiles ) ){
-	$wgExtensionMessagesFiles['Configure'] = $dir . 'Configure.i18n.php';
-} else {
-	$wgHooks['LoadAllMessages'][] = 'efConfigureLoadMessages';
-}
+$wgExtensionMessagesFiles['Configure'] = $dir . 'Configure.i18n.php';
 
 ## And special pages aliases...
-if( isset( $wgExtensionAliasesFiles ) && is_array( $wgExtensionAliasesFiles ) ){
-	$wgExtensionAliasesFiles['Configure'] = $dir . 'Configure.alias.php';
-} else {
-	# For 1.12 and 1.11
-	$wgHooks['LanguageGetSpecialPageAliases'][] = 'efConfigureLoadAliases';
-	# And for 1.10 and 1.9 :)
-	$wgHooks['LangugeGetSpecialPageAliases'][] = 'efConfigureLoadAliases';
-}
+$wgExtensionAliasesFiles['Configure'] = $dir . 'Configure.alias.php';
 
 ## Add custom rights defined in $wgRestrictionLevels
 $wgHooks['UserGetAllRights'][] = 'efConfigureGetAllRights';
+
+## Handlers
+$wgAutoloadClasses['ConfigureHandler'] = $dir . 'Configure.handler.php';
+$wgAutoloadClasses['ConfigureHandlerFiles'] = $dir . 'Configure.handler-files.php';
+$wgAutoloadClasses['ConfigureHandlerDb'] = $dir . 'Configure.handler-db.php';
 
 ## Adding the new special pages...
 ## Common code
@@ -165,11 +169,9 @@ define( 'CONF_SETTINGS_BOTH', 3 );
 $wgAutoloadClasses['ConfigurationSettings'] = $dir . 'Configure.settings.php';
 
 ## Groups
-if( isset( $wgSpecialPageGroups ) && is_array( $wgSpecialPageGroups ) ){
- 	$wgSpecialPageGroups['Configure'] = 'wiki';
- 	$wgSpecialPageGroups['Extensions'] = 'wiki';
- 	$wgSpecialPageGroups['ViewConfig'] = 'wiki';
-}
+$wgSpecialPageGroups['Configure'] = 'wiki';
+$wgSpecialPageGroups['Extensions'] = 'wiki';
+$wgSpecialPageGroups['ViewConfig'] = 'wiki';
 
 ## Diff stuff
 $wgAutoloadClasses['ConfigurationDiff'] = $dir . 'Configure.diff.php';
@@ -178,10 +180,8 @@ $wgAutoloadClasses['ExtPreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['HistoryConfigurationDiff'] = $dir . 'Configure.diff.php';
 
 ## API module
-if( version_compare( $wgVersion, '1.11alpha', '>=' ) ){
-	$wgAutoloadClasses['ApiConfigure'] = $dir . 'Configure.api.php';
-	$wgAPIModules['configure'] = 'ApiConfigure';
-}
+$wgAutoloadClasses['ApiConfigure'] = $dir . 'Configure.api.php';
+$wgAPIModules['configure'] = 'ApiConfigure';
 
 ## Adding the ajax function
 $wgAjaxExportList[] = 'efConfigureAjax';

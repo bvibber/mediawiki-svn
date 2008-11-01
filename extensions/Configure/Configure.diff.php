@@ -114,8 +114,7 @@ abstract class ConfigurationDiff {
 	 */
 	function getHTML(){
 		global $wgOut;
-		if( is_callable( array( $wgOut, 'addStyle' ) ) ) # 1.11 +
-			$wgOut->addStyle( 'common/diff.css' );
+		$wgOut->addStyle( 'common/diff.css' );
 		$old = $this->getOldVersion();
 		$new = $this->getNewVersion();
 		if( !( $wikis = $this->cleanWikis( $old, $new ) ) ){

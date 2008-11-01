@@ -12,7 +12,7 @@ if( !class_exists( 'SiteConfiguration' ) )
  * @ingroup Extensions
  */
 class WebConfiguration extends SiteConfiguration {
-	protected $mDir;                   // Directory of files, *with* leading /
+	protected $mHandler;               // Configuration handler
 	protected $mWiki;                  // Wiki name
 	protected $mConf = array();        // Our array of settings
 	protected $mOldSettings = array(); // Old settings (before applying our overrides)
@@ -24,14 +24,10 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param string $path path to the directory that contains the configuration
 	 *                     files
 	 */
-	public function __construct( $wiki = 'default', $path = null ){
-		if( $path === null ){
-			global $IP;
-			$path = "$IP/serialized/";
-		} else if( substr( $path, -1 ) != '/' && substr( $path, -1 ) != '\\' ) {
-			$path .= '/';
-		}
-		$this->mDir = $path;
+	public function __construct( $wiki = 'default' ){
+		global $wgConfigureHandler;
+		$class = 'ConfigureHandler' . ucfirst( $wgConfigureHandler );
+		$this->mHandler = new $class();
 		$this->mWiki = $wiki;
 	}
 
@@ -41,20 +37,7 @@ class WebConfiguration extends SiteConfiguration {
 	 */
 	public function initialise(){
 		parent::initialise();
-		$file = $this->getFileName();
-		if( !file_exists( $file ) )
-			# maybe the first time the user use this extensions, do not override
-			# anything
-			return;
-		$cont = file_get_contents( $file );
-		if( empty( $cont ) )
-			# Weird, should not happen
-			return;
-		$arr = unserialize( $cont );
-		if( !is_array( $arr ) || $arr === array() )
-			# Weird, should not happen too
-			return;
-		$this->mConf = $arr;
+		$this->mConf = $this->mHandler->getCurrent();
 		$this->mOldSettings = $this->settings;
 
 		# We'll need to invert the order of keys as SiteConfiguration uses
@@ -154,20 +137,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array
 	 */
 	public function getOldSettings( $ts ){
-		$file = $this->getArchiveFileName( $ts );
-		if( !file_exists( $file ) )
-			# maybe the time the user use this extensions, do not override
-			# anything
-			return array();
-		$cont = file_get_contents( $file );
-		if( empty( $cont ) )
-			# Weird, should not happen
-			return array();
-		$arr = unserialize( $cont );
-		if( !is_array( $arr ) )
-			# Weird, should not happen too
-			return array();
-		return $arr;
+		return $this->mHandler->getOldSettings( $ts );
 	}
 
 	/**
@@ -231,68 +201,39 @@ class WebConfiguration extends SiteConfiguration {
 
 		if( $wiki === null ){
 			$this->mConf = $settings;
+			$wiki = true;
 		} else {
 			if( $wiki === false )
-				$wiki = $this->mWiki;
+				$wiki = $this->getWiki();
 			$this->mConf[$wiki] = $settings;
 		}
 
-		$arch = $this->getArchiveFileName();
-		$cur = $this->getFileName();
-		$cont = serialize( $this->mConf );
-		file_put_contents( $arch, $cont );
-		return ( file_put_contents( $cur, $cont ) !== false );
+		return $this->mHandler->saveNewSettings( $this->mConf, $wiki );
 	}
 
 	/**
 	 * List all archived files that are like conf-{$ts}.ser
 	 * @return array of timestamps
 	 */
-	public function listArchiveFiles(){
-		if( !$dir = opendir( $this->mDir ) )
-			return array();
-		$files = array();
-		while( ( $file = readdir( $dir ) ) !== false ) {
-			if( preg_match( '/conf-(\d{14}).ser$/', $file, $m ) )
-				$files[] = $m[1];
-		}
-		sort( $files, SORT_NUMERIC );
-		return array_reverse( $files );
+	public function listArchiveVersions(){
+		return $this->mHandler->listArchiveVersions();
 	}
 
 	/**
-	 * Get the current file name
-	 * @return String full path to the file
+	 * Do some checks
 	 */
-	protected function getFileName(){
-		return "{$this->mDir}conf-now.ser";
+	public function doChecks(){
+		return $this->mHandler->doChecks();
 	}
 
 	/**
-	 * Get the an archive file
-	 * @param $ts String: 14 char timestamp (YYYYMMDDHHMMSS) or null to use the
-	 *            current timestamp
-	 * @return String full path to the file
+	 * Get not editable settings with the current handler
+	 * @return array
 	 */
-	public function getArchiveFileName( $ts = null ){
-		global $IP;
-
-		if( $ts === null )
-			$ts = wfTimestampNow();
-
-		$file = "{$this->mDir}conf-$ts.ser";
-		return $file;
+	public function getNotEditableSettings(){
+		return $this->mHandler->getNotEditableSettings();
 	}
 
-	/**
-	 * Get the directory used to store the files
-	 *
-	 * @return String
-	 */
-	public function getDir(){
-		return $this->mDir;
-	}
-	
 	/**
 	 * Get the wiki in use
 	 *
@@ -300,6 +241,14 @@ class WebConfiguration extends SiteConfiguration {
 	 */
 	public function getWiki(){
 		return $this->mWiki;
+	}
+
+	/**
+	 * Get the configuration handler
+	 * @return ConfigurationHandler
+	 */
+	public function getHandler(){
+		return $this->mHandler;	
 	}
 	
 	/**

@@ -10,7 +10,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'configure'                           => 'Configure the wiki',
-	'configure-desc'                      => 'Allow authorised users to [[Special:Configure|configure]] the wiki by a web-based interface',
+	'configure-desc'                      => 'Allow authorised users to [[Special:Configure|configure]] the wiki via a web-based interface',
 	'configure-desc-group'                => 'Groups',
 	'configure-desc-key'                  => 'Key',
 	'configure-desc-ns'                   => 'Namespaces',
@@ -27,6 +27,9 @@ $messages['en'] = array(
 
 	'configure-summary'                   => 'This special page allow you to configure this wiki, see [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] for more information.',
 	'configure-btn-save'                  => 'Save settings',
+	'configure-db-error'                  => 'The database you specified to hold the configuration ($1) does not exist.
+Please create it and apply configure.sql or correct its name.',
+	'configure-db-table-error'            => 'The database you specified does not have the required tables. Please apply configure.sql in that database.',
 	'configure-directory-not-writable'    => 'The directory used to store the settings, <tt>$1</tt>, is not writable.
 Please make it writable by PHP to use this extension.',
 	'configure-edit-old'                  => 'Warning: you are editing an <strong>old</strong> version of the configuration.',

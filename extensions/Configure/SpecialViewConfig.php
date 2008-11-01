@@ -29,7 +29,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		$this->isWebConfig = $wgConf instanceof WebConfiguration;
 
 		if( $this->isWebConfig && $version = $wgRequest->getVal( 'version' ) ){
-			$versions = $wgConf->listArchiveFiles();
+			$versions = $wgConf->listArchiveVersions();
 			if( in_array( $version, $versions ) ){
 				$conf = $wgConf->getOldSettings( $version );
 				if( $this->isUserAllowedAll() ){
@@ -118,7 +118,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		if( !$this->isWebConfig )
 			return '';
 
-		$versions = $wgConf->listArchiveFiles();
+		$versions = $wgConf->listArchiveVersions();
 		if( empty( $versions ) ){
 			return wfMsgExt( 'configure-no-old', array( 'parse' ) );
 		}
@@ -135,14 +135,10 @@ class SpecialViewConfig extends ConfigurationPage {
 		$allowedExtensionsAll = $wgUser->isAllowed( 'extensions-interwiki' );
 
 		if( $allowedConfig )
-			$configTitle = is_callable( array( 'SpecialPage', 'getTitleFor' ) ) ? # 1.9 +
-				SpecialPage::getTitleFor( 'Configure' ) :
-				Title::makeTitle( NS_SPECIAL, 'Configure' );
+			$configTitle = SpecialPage::getTitleFor( 'Configure' );
 
 		if( $allowedExtensions )
-			$extTitle = is_callable( array( 'SpecialPage', 'getTitleFor' ) ) ? # 1.9 +
-				SpecialPage::getTitleFor( 'Extensions' ) :
-				Title::makeTitle( NS_SPECIAL, 'Extensions' );
+			$extTitle = SpecialPage::getTitleFor( 'Extensions' );
 
 		$text = wfMsgExt( 'configure-old-versions', array( 'parse' ) );
 		if( $showDiff )

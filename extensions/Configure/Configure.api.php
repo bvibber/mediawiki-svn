@@ -20,7 +20,7 @@ class ApiConfigure extends ApiBase {
 		if( in_array( 'versionlist', $params['prop'] ) ) {
 			if( !$wgUser->isAllowed( 'viewconfig' ) )
 				$this->dieUsage( 'viewconfig right required', 'noright' );
-			$versions = $wgConf->listArchiveFiles();
+			$versions = $wgConf->listArchiveVersions();
 			if( $wgUser->isAllowed( 'viewconfig-interwiki' ) ) {
 				$oldVersions = $versions;
 				$versions = array();
@@ -213,13 +213,7 @@ class ApiConfigure extends ApiBase {
 				case 'group-bool':
 					$settingRet['values'] = array();
 					$result->setIndexedTagName( $settingRet['values'], 'group' );
-					if( is_callable( array( 'User', 'getAllRights' ) ) ){ // 1.13 +
-						$all = User::getAllRights();
-					} else {
-						foreach( $settingVal as $rights )
-							$all = array_merge( $all, array_keys( $rights ) );
-						$all = array_unique( $all );
-					}
+					$all = User::getAllRights();
 					foreach( $settingVal as $group => $rights ){
 						$arr = array( 'name' => $group, 'rights' => array() );
 						$result->setIndexedTagName( $arr['rights'], 'permission' );
@@ -239,16 +233,13 @@ class ApiConfigure extends ApiBase {
 					$iter = array();
 					foreach( $all as $group )
 						$iter[$group] = isset( $settingVal[$group] ) && is_array( $settingVal[$group] ) ? $settingVal[$group] : array();
-					if( $conf->isSettingAvailable( 'wgImplicitGroups' ) ) // 1.12 +
-						$all = array_diff( $all, $settingsValues['wgImplicitGroups'] );
-					else
-						$all = array_diff( $all, User::getImplicitGroups() );
-					}
+					$all = array_diff( $all, $settingsValues['wgImplicitGroups'] );
 					foreach( $iter as $group => $value ){
 						$arr = array( 'name' => $group, 'values' => $value );
 						$result->setIndexedTagName( $arr['values'], 'value' );
 						$settingRet['values'][] = $arr;
 					}
+				}
 				break;
 			default:
 				if( is_array( $type ) ){
