@@ -97,12 +97,15 @@ class ContributionHistory extends SpecialPage {
 	}
 
 	function formatAmount( $row ) {
+		global $wgLang;
+		$converted = $row['converted_amount'];
+		
 		if ( $row['original_currency'] ) {
 			$currency = $row['original_currency'];
 			$amount = $row['original_amount'];
 		} else {
 			$currency = 'USD';
-			$amount = $row['converted_amount'];
+			$amount = $converted;
 		}
 
 		if ( $currency == 'JPY' ) {
@@ -110,6 +113,8 @@ class ContributionHistory extends SpecialPage {
 			$amount = intval( $amount );
 		}
 
-		return htmlspecialchars( "$currency $amount" );
+		return Xml::element( 'span',
+			array( 'title' => "USD " . $this->lang->formatNum( $converted ) ),
+			"$currency " . $this->lang->formatNum( $amount ) );
 	}
 }
