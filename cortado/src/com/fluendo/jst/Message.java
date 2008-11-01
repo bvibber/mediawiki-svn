@@ -41,6 +41,7 @@ public class Message {
   public static final int SEGMENT_DONE      = (1 << 17);
   public static final int DURATION          = (1 << 18);
   public static final int RESOURCE          = (1 << 19);
+  public static final int BYTEPOSITION      = (1 << 20);
 
   private com.fluendo.jst.Object src;
   private int type;
@@ -182,4 +183,13 @@ public class Message {
   public long parseDurationValue() {
     return longVal;
   }
+  public static Message newBytePosition(com.fluendo.jst.Object src, long aPos) {
+    Message msg = new Message(src, BYTEPOSITION);
+    msg.longVal = aPos;
+    return msg;
+  }
+  public long parseBytePosition() {
+      return longVal;
+  }
+
 }

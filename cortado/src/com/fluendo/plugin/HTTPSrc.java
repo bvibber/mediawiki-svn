@@ -34,6 +34,7 @@ public class HTTPSrc extends Element
   private InputStream input;
   private long contentLength;
   private long offset;
+  private long offsetLastMessage = 0;
   private long skipBytes = 0;
   private String mime;
   private Caps outCaps;
@@ -164,6 +165,10 @@ public class HTTPSrc extends Element
       }
       if (data.length <= 0) {
 	/* EOS */
+          
+        postMessage (Message.newBytePosition(this, offset));
+        offsetLastMessage = offset;
+          
         try {
 	  input.close();
 	}
@@ -179,6 +184,13 @@ public class HTTPSrc extends Element
       }
 
       offset += data.length;
+      if(offsetLastMessage > offset) {
+          offsetLastMessage = 0;
+      }
+      if(offset - offsetLastMessage > contentLength / 100) {
+          postMessage (Message.newBytePosition(this, offset));
+          offsetLastMessage = offset;
+      }
 
       // Negotiate capabilities
       if (srcpad.getCaps() == null) {

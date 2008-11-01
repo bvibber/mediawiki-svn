@@ -70,6 +70,8 @@ public class Status extends Component implements MouseListener,
     private double position = 0;
     private long time;
     private double duration;
+    private long byteDuration;
+    private long bytePosition;
 
     private String speaker = "\0\0\0\0\0\357\0\0\357U\27"
             + "\36\0\0\0\0\357\357\0\0" + "\0\357U\30\0\0\0\357\0\357"
@@ -217,8 +219,8 @@ public class Status extends Component implements MouseListener,
     }
 
     private void paintSeekBar(Graphics g) {
-	Rectangle sr = getSeekBarRect();
-	Rectangle tr = getThumbRect();
+        Rectangle sr = getSeekBarRect();
+        Rectangle tr = getThumbRect();
 
         // Bounding rectangle
         g.setColor(Color.darkGray);
@@ -227,7 +229,7 @@ public class Status extends Component implements MouseListener,
         // Progress bar
         g.setColor(Color.gray);
         g.fillRect(sr.x + 2, sr.y + 3, tr.x - (sr.x + 2), sr.height - 6);
-
+        
         // Thumb
         g.setColor(Color.white);
         g.drawLine(tr.x + 1,        tr.y,             tr.x + tr.width - 1, tr.y);                 // Top
@@ -331,22 +333,44 @@ public class Status extends Component implements MouseListener,
         if (clicked == NONE) {
             double newPosition;
 	    
-            if (seconds < duration)
+            if (seconds < duration || seekable)
                 time = (long) seconds;
             else
                 time = (long) duration;
 
-            newPosition = ((double) time) / duration;
-	    if (newPosition != position) {
-	      position = newPosition;
-              component.repaint();
-	    }
+            if(duration > -1) {
+                newPosition = ((double) time) / duration;
+                if (newPosition != position) {
+                    position = newPosition;
+                    component.repaint();
+                }
+            } else {
+                newPosition = ((double)bytePosition) / (double)byteDuration;
+                position = newPosition;
+                component.repaint();
+            }
         }
     }
 
     public void setDuration(double seconds) {
         duration = seconds;
         component.repaint();
+    }
+    
+    public void setByteDuration(long bytes) {
+        this.byteDuration = bytes;
+        if(duration == -1) {
+            position = ((double)bytePosition) / (double)byteDuration;
+            component.repaint();
+        }
+    }
+    
+    public void setBytePosition(long bytes) {
+        this.bytePosition = bytes;
+        if(duration == -1) {
+            position = ((double)bytePosition) / (double)byteDuration;
+            component.repaint();
+        }
     }
 
     public void setMessage(String m) {

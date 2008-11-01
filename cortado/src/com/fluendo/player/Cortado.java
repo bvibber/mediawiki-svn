@@ -544,6 +544,8 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
 	    long duration;
 
 	    duration = msg.parseDurationValue();
+            
+            status.setByteDuration(duration);
 
             Debug.log(Debug.DEBUG, "got duration: "+duration);
 	    if (duration != -1) {
@@ -617,6 +619,9 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
                     break;
                 }
             }
+            break;
+        case Message.BYTEPOSITION:
+            status.setBytePosition(msg.parseBytePosition());
             break;
         default:
             break;
