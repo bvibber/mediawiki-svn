@@ -5,7 +5,7 @@ class CodeBrowseItemView extends CodeBrowseView {
 		parent::__construct( $path, $request );
 		$parts = explode( '/', $path, 2 );
 		$this->mRepoName = $parts[0];
-		$this->mBasePath = '/'.$parts[1];
+		$this->mBasePath = '/'.@$parts[1];
 		$this->mRepository = CodeRepository::newFromName( $this->mRepoName );
 	}
 	
@@ -74,7 +74,7 @@ class CodeBrowseItemView extends CodeBrowseView {
 			"</td><td>".$sk->link( SpecialPage::getTitleFor( 
 				'Code', "{$this->mRepoName}/author/{$item['last_author']}" ), $item['last_author'] ).
 			"</td><td>".$wgLang->timeanddate( $item['time_t'] ).
-			"</td><td>".$wgLang->formatSize( $item['size'] ).
+			"</td><td>". ( isset( $item['size'] ) ? $wgLang->formatSize( $item['size'] ) : '' ) .
 			"</td></tr>\n";
 			
 	}
