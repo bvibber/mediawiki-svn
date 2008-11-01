@@ -7,17 +7,21 @@
 /// match that up with $wgNoticeStaticDirectory and use rebuildTemplates.php
 /// to fill out the directory tree.
 ///
+/// Default: Local path to Special:NoticeText
+///
 /// Loads: $wgNoticeCentralPath/<project>/<lang>/centralnotice.js
 ///
-$wgNoticeCentralPath = str_replace( '$1', 'Special:NoticeText', $wgArticlePath );
+$wgNoticeCentralPath = false;
 
 /// This guy does much the same, but with the local sitenotice/anonnotice.
 /// Static generation isn't quite supported yet.
 ///
+/// Default: Local path to Special:NoticeLocal
+///
 /// Loads: $wgNoticeLocalPath/sitenotice.js
 ///   -or- $wgNoticeLocalPath/anonnotice.js
 ///
-$wgNoticeLocalPath = str_replace( '$1', 'Special:NoticeLocal', $wgArticlePath );
+$wgNoticeLocalPath = false;
 
 /// Override these per-wiki to pass on via the loader to the text system
 /// for localization by language and project.
@@ -144,15 +148,24 @@ function efCentralNoticeLoader( &$notice ) {
 	global $wgNoticeLocalPath;
 	
 	$lang = $wgLang->getCode();
-	$notice = (is_object( $wgUser ) && $wgUser->isLoggedIn())
+	$centralNotice = "$wgNoticeProject/$lang/centralnotice.js";
+	$localNotice = (is_object( $wgUser ) && $wgUser->isLoggedIn())
 		? 'sitenotice.js'
 		: 'anonnotice.js';
 
 	
-	$centralLoader = "$wgNoticeCentralPath/$wgNoticeProject/$lang/centralnotice.js";
+	if( $wgNoticeCentralPath === false ) {
+		$centralLoader = SpecialPage::getTitleFor( 'NoticeText', $centralNotice )->getLocalUrl();
+	} else {
+		$centralLoader = "$wgNoticeCentralPath/$centralNotice";
+	}
 	$encCentralLoader = htmlspecialchars( $centralLoader );
 
-	$localLoader = "$wgNoticeLocalPath/$notice";
+	if( $wgNoticeLocalPath === false ) {
+		$localLoader = SpecialPage::getTitleFor( 'NoticeLocal', $localNotice )->getLocalUrl();
+	} else {
+		$localLoader = "$wgNoticeLocalPath/$localNotice";
+	}
 	$encLocalLoader = htmlspecialchars( $localLoader );
 
 	// Throw away the classic notice, use the central loader...
