@@ -16,15 +16,15 @@ if ( !defined( 'MEDIAWIKI' ) )
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'CreatePage',
-	'author'         => 'Travis Derouin, Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF), Siebrand Mazeland',
+	'author'         => 'Travis Derouin, Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description'    => 'Adds a [[Special:CreatePage|special page]] for creating new pages',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki/AutoCreateCategoryPages',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki/CreatePage',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'descriptionmsg' => 'createpage-desc',
 );
 
-$dir = dirname( __FILE__ ) . '/';
+$dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['CreatePage'] = $dir . '/CreatePage.i18n.php';
 $wgExtensionAliasesFiles['CreatePage'] = $dir . 'CreatePage.alias.php';
 $wgAutoloadClasses['SpecialCreatePage'] = $dir . '/CreatePage_body.php';
