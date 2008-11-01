@@ -195,7 +195,8 @@ class CentralNotice extends SpecialPage {
 	}
 	
 	static public function printHeader( $sub ) {
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgTitle, $wgUser;
+		$sk = $wgUser->getSkin();
 		
 		$pages = array(
 			'Special:CentralNotice/listNotices' => wfMsg( 'centralnotice-notices' ),
@@ -212,7 +213,7 @@ class CentralNotice extends SpecialPage {
 			}
 			
 			$htmlOut .= Xml::tags( 'td', $style,
-				Xml::tags( 'a', array( 'href' => $title->getFullURL() ), $msg )
+				$sk->link( $title, htmlspecialchars( $msg ) )
 			);
 		}
 		$htmlOut .= Xml::closeElement( 'tr' );
@@ -238,11 +239,12 @@ class CentralNotice extends SpecialPage {
 	 */
 
 	function listNotices() {
-		global $wgOut, $wgRequest, $wgTitle, $wgScript, $wgNoticeLang;
+		global $wgOut, $wgRequest, $wgTitle, $wgScript, $wgUser;
 		global $wgNoticeProject, $wpUserLang;
 		
 		// Get connection
 		$dbr = wfGetDB( DB_SLAVE );
+		$sk = $wgUser->getSkin();
 		
 		/*
 		 * This is temporarily hard-coded
@@ -324,11 +326,13 @@ class CentralNotice extends SpecialPage {
 				$htmlOut .= Xml::openElement( 'tr' );
 			
 				// Name
-				$urlNotice = $this->getTitle()->getLocalUrl(
-					'method=listNoticeDetail&notice=' . $row->not_name
-				);
 				$htmlOut .= Xml::tags( 'td', null,
-					Xml::element( 'a', array( 'href' => $urlNotice ), $row->not_name )
+					$sk->link( $this->getTitle(),
+						htmlspecialchars( $row->not_name ),
+						array(),
+						array(
+							'method' => 'listNoticeDetail',
+							'notice' => $row->not_name ) )
 				);
 				
 				// Project
@@ -686,6 +690,9 @@ class CentralNotice extends SpecialPage {
 
 
 	function assignedTemplatesForm( $notice ) {
+		global $wgUser;
+		$sk = $wgUser->getSkin();
+		
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			array(
@@ -754,12 +761,10 @@ class CentralNotice extends SpecialPage {
 			global $wgRequest;
 			$render->language = $wgRequest->getVal( 'wpUserLanguage' );
 			$htmlOut .= Xml::tags( 'td', null,
-				Xml::element( 'a',
-					array(
-						 'href' => $viewPage->getFullUrl( "template=$row->tmp_name" )
-					),
-					$row->tmp_name
-				) .
+				$sk->link( $viewPage,
+					htmlspecialchars( $row->tmp_name ),
+					array(),
+					array( 'template' => $row->tmp_name ) ) .
 				Xml::fieldset( wfMsg( 'centralnotice-preview' ),
 					$render->getHtmlNotice( $row->tmp_name )
 				)
@@ -775,6 +780,8 @@ class CentralNotice extends SpecialPage {
 
 
 	function addTemplatesForm( $notice ) {
+		global $wgUser;
+		$sk = $wgUser->getSkin();
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'cn_templates', 'tmp_name', '', '', array( 'ORDER BY' => 'tmp_id' ) );
 	
@@ -838,12 +845,10 @@ class CentralNotice extends SpecialPage {
 					global $wgRequest;
 					$render->language = $wgRequest->getVal( 'wpUserLanguage' );
 					$htmlOut .= Xml::tags( 'td', null,
-						Xml::element( 'a',
-							array(
-								 'href' => $viewPage->getFullUrl( "template=$row->tmp_name" )
-							),
-							$row->tmp_name
-						) .
+						$sk->link( $viewPage,
+							htmlspecialchars( $row->tmp_name ),
+							array(),
+							array( 'template' => $row->tmp_name ) ) .
 						Xml::fieldset( wfMsg( 'centralnotice-preview' ),
 							$render->getHtmlNotice( $row->tmp_name )
 						)

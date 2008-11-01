@@ -102,7 +102,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 	function showList() {
 		global $wgOut, $wgTitle, $wgUser, $wgRequest;
 		
-		$templates = $this->queryTemplates();
+		$sk = $wgUser->getSkin();
 		
 		// Templates
 		$templates = $this->queryTemplates();
@@ -147,12 +147,10 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 				$render->project = 'wikipedia';
 				$render->language = $wgRequest->getVal( 'wpUserLanguage' );
 				$htmlOut .= Xml::tags( 'td', null, 
-					Xml::element( 'a',
-						array( 
-							'href' => $viewPage->getFullUrl( "template=$templateName" ) 
-						),
-						$templateName
-					) .
+					$sk->link( $viewPage,
+						htmlspecialchars( $templateName ),
+						array(),
+						array( 'template' => $templateName ) ) .
 					Xml::fieldset( wfMsg( 'centralnotice-preview' ),
 						$render->getHtmlNotice( $templateName )
 					)
@@ -171,17 +169,12 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			);
 		}
 		$htmlOut .= Xml::closeElement( 'table' );
-		$htmlOut .= XML::closeElement( 'fieldset' );
-		$htmlOut .= XML::closeElement( 'form' );
+		$htmlOut .= Xml::closeElement( 'fieldset' );
+		$htmlOut .= Xml::closeElement( 'form' );
 		
 		// Show add link
 		$newPage = SpecialPage::getTitleFor( 'NoticeTemplate/add' );
-		$htmlOut .= Xml::element( 'a',
-		array( 
-			'href' => $newPage->getFullUrl() 
-			),
-			wfMsg( 'centralnotice-add-template' )
-		);
+		$htmlOut .= $sk->link( $newPage, wfMsgHtml( 'centralnotice-add-template' ) );
 		
 		// Output HTML
 		$wgOut->addHtml( $htmlOut );
@@ -218,6 +211,8 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 	
 	private function showView() {
 		global $wgOut, $wgUser, $wgRequest, $wgContLanguageCode;
+		
+		$sk = $wgUser->getSkin();
 		
 		// Get token
 		$token = $wgUser->editToken();
@@ -275,7 +270,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			
 			$title = Title::newFromText( "MediaWiki:{$message}" );
 			$htmlOut .= Xml::tags( 'td', null,
-				Xml::element( 'a', array( 'href' => $title->getFullURL() ), $field )
+				$sk->link( $title, htmlspecialchars( $field ) )
 			);
 			
 			$htmlOut .= Xml::element( 'td', null, $count);
