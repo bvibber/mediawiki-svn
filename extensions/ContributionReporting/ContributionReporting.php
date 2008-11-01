@@ -45,6 +45,7 @@ function contributionReportingConnection() {
 			$wgContributionReportingDBuser,
 			$wgContributionReportingDBpassword,
 			$wgContributionReportingDBname );
+		$db->query( "SET names utf8" );
 	}
 
 	return $db;
