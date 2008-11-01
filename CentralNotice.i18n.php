@@ -55,6 +55,7 @@ Not removing.',
 	'centralnotice-project-lang' => 'Project language',
 	'centralnotice-project-name' => 'Project name',
 	'centralnotice-start-date' => 'Start Date',
+	'centralnotice-assigned-templates' => 'Assigned Templates',
 	'centralnotice-no-templates' => 'No templates found.
 Add some!',
 	'centralnotice-no-templates-assigned' => 'No templates assigned to notice.
