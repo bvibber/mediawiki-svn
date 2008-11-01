@@ -94,3 +94,8 @@ $aliases['sq'] = array(
 	'WhatIsMyIP' => array( 'IPjaIme' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'WhatIsMyIP' => array( 'ไอพีของฉัน' ),
+);
+

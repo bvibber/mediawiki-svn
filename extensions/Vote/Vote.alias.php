@@ -104,3 +104,8 @@ $aliases['sv'] = array(
 	'Vote' => array( 'Rösta' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'Vote' => array( 'โหวต' ),
+);
+

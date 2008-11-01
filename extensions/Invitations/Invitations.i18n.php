@@ -240,6 +240,18 @@ $messages['es'] = array(
 	'invitations-invite-success' => 'Ha invitado con éxito a $1 usar esta función.',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'invite-logpage' => 'Kutsuloki',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Yksi kutsu|$1 kutsua}} jäljellä)',
+	'invitations-feature-pagetitle' => 'Kutsujen hallinta – $1',
+	'invitations-feature-numleft' => 'Sinulla on vielä {{PLURAL:$2|yksi kutsu jäljellä|<b>$1</b> kaikkiaan $2 kutsusta jäljellä}}.',
+	'invitations-inviteform-username' => 'Kutsuttava käyttäjä',
+	'invitations-inviteform-submit' => 'Kutsu',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p

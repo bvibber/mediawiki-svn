@@ -525,6 +525,15 @@ Se vi volas utiligi OpenID por ensaluti estontece, vi povas [[Special:OpenIDConv
 	'openidloginlabel' => 'URL-o OpenID',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'openidserver' => 'OpenID-palvelin',
+	'openidlanguage' => 'Kieli',
+	'openidchoosepassword' => 'salasana:',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

@@ -69,3 +69,8 @@ $aliases['oc'] = array(
 	'PurgeCache' => array( "Purgar l'amagatal", 'Purgar amagatal', 'PurgarAmagatal' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'PurgeCache' => array( 'ล้างแคช' ),
+);
+

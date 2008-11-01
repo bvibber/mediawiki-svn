@@ -120,6 +120,18 @@ $messages['grc'] = array(
 	'discussionthreading-threadnewsection' => 'νέα',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'discussionthreading-desc' => 'הוספת אפשרות שרשור לדפי שיחה',
+	'discussionthreading-replysection' => 'תגובה',
+	'discussionthreading-replysectionhint' => 'תגובה להודעה זו',
+	'discussionthreading-threadnewsection' => 'חדשה',
+	'discussionthreading-threadnewsectionhint' => 'התחלת שרשור חדש',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

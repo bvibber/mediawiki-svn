@@ -124,6 +124,14 @@ $messages['eo'] = array(
 	'categorystepper-start' => '(Komenco de kategorio)',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'categorystepper-end' => '(Luokan loppu)',
+	'categorystepper-start' => '(Luokan alku)',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Louperivois

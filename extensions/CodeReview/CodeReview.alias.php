@@ -31,6 +31,12 @@ $aliases['arz'] = array(
 	'RepoAdmin' => array( 'إدارة_المستودع' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'Code' => array( 'Kod' ),
+	'RepoAdmin' => array( 'Admin_repozitorija' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Code' => array( 'កូដ' ),

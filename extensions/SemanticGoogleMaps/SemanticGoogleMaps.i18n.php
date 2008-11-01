@@ -47,6 +47,14 @@ $messages['arz'] = array(
 	'semanticgooglemaps-desc' => 'يسمح للمستخدمين بإضافة خرائط جوجل لصفحات الويكى بالاعتماد على بيانات هيكلية',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Istimañ an daveennoù',
+	'semanticgooglemaps-desc' => 'Aotren a ra an implijerien da ouzhpennañ Google Maps war pajennoù diazezet war roadennoù frammet',
+);
+
 /** German (Deutsch)
  * @author DaSch
  */

@@ -42,6 +42,11 @@ $aliases['fa'] = array(
 	'UserStats' => array( 'آمار_کاربر' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'UserStats' => array( 'StatistiquesUtilisateur' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'UserStats' => array( 'Felhasználói statisztikák' ),

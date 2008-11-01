@@ -158,12 +158,15 @@ $messages['grc'] = array(
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'interwikilist' => 'רשימת בינוויקי',
 	'interwikilist-desc' => 'הוספת [[Special:Interwikilist|דף מיוחד]] להצגת קישורי הבינוויקי הזמינים',
 	'interwikilist-linkname' => 'קישור בינוויקי',
 	'interwikilist-target' => 'כתובת יעד',
+	'interwikilist-filter' => 'רשימת מסננים',
+	'interwikilist-prefix' => 'קידומת בינוויקי:',
 );
 
 /** Croatian (Hrvatski)

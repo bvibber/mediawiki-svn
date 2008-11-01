@@ -388,6 +388,36 @@ $messages['gv'] = array(
 	'duplicator-source' => 'Bun:',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'duplicator' => 'שכפול דף',
+	'duplicator-desc' => 'יצירת [[Special:Duplicate|עותקים]] בלתי תלויים של הדף שכוללים את היסטוריית הגרסאות המלאה',
+	'duplicator-toolbox' => 'שכפול דף זה',
+	'duplicator-header' => 'דף זה מאפשר לכם לשכפל דף באופן מלא, תוך יצירת עותקים בלתי תלויים של כל הגרסאות הקודמות.
+שימושי לפיצול דפים וכדומה.',
+	'duplicator-options' => 'אפשרויות',
+	'duplicator-source' => 'מקור:',
+	'duplicator-dest' => 'יעד:',
+	'duplicator-dotalk' => 'שכפול של דף השיחה (אם קיים)',
+	'duplicator-submit' => 'שכפול',
+	'duplicator-summary' => 'הועתק מ[[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] הועתק ל[[$2]].'''</big>",
+	'duplicator-success-revisions' => '{{PLURAL:$1|הועתקה גרסה אחת|הועתקו $1 גרסאות}}.',
+	'duplicator-success-talkcopied' => 'דף השיחה הועתק גם כן.',
+	'duplicator-success-talknotcopied' => 'לא ניתן היה להעתיק את דף השיחה.',
+	'duplicator-failed' => 'לא ניתן היה לשכפל את הדף.
+אירעה שגיאה בלתי ידועה.',
+	'duplicator-source-invalid' => 'אנא ספקו כותרת מקור תקינה.',
+	'duplicator-source-notexist' => '[[$1]] אינו קיים. אנא ספקו כותרת של דף קיים.',
+	'duplicator-dest-invalid' => 'אנא ספקו כותרת יעד תקינה.',
+	'duplicator-dest-exists' => '[[$1]] כבר קיים. אנא ספקו כותרת יעד תקינה שאינה קיימת.',
+	'duplicator-toomanyrevisions' => 'לדף [[$1]] יש גרסאות רבות מדי ($2) ולכן לא ניתן להעתיקו.
+המגבלה הנוכחית הינה $3.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -563,7 +593,7 @@ $messages['ja'] = array(
 	'duplicator-dest' => '複製先:',
 	'duplicator-dotalk' => '可能なら{{int:talk}}も複製する',
 	'duplicator-submit' => '複製',
-	'duplicator-summary' => '[[$1]] を複製しました。',
+	'duplicator-summary' => '[[$1]] を複製',
 	'duplicator-success' => "<big>'''[[$1]] を [[$2]] へ複製しました'''</big>",
 	'duplicator-success-revisions' => '$1 版を複製しました。',
 	'duplicator-success-talkcopied' => '{{int:talk}}ページも複製しました。',

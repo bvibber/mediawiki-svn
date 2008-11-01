@@ -1073,6 +1073,8 @@ učinite pogrešku.",
 	'oversight-header' => 'Slijedi popis uređivanja nedavno trajno skrivenih od javnosti.
 Objavljivanje ove informacije može prouzročiti trajan gubitak prava nadzora.',
 	'oversight-legend' => 'Pretraživanje evidencije sakrivanja izmjena',
+	'oversight-oversighter' => 'Nadzornik:',
+	'oversight-offender' => 'Prekršitelj:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

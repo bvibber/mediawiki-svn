@@ -89,3 +89,8 @@ $aliases['oc'] = array(
 	'WhosOnline' => array( 'Qui es en linha', 'QuiEsEnLinha' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'WhosOnline' => array( 'ใครออนไลน์อยู่' ),
+);
+

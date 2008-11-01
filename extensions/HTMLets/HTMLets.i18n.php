@@ -60,6 +60,13 @@ $messages['gl'] = array(
 	'htmlets-desc' => 'Déixalle introducir liñas de conversa HTML dende ficheiros usando a etiqueta <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'htmlets-desc' => 'אפשרות להוספת קטעי קוד HTML מקבצים באמצעות שימוש בתגית <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

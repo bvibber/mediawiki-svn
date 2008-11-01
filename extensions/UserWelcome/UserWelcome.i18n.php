@@ -153,6 +153,7 @@ $messages['lb'] = array(
 	'mp-welcome-upload' => 'Eroplueden',
 	'mp-welcome-edit' => 'Änneren',
 	'mp-welcome-points' => '$1 Punkten',
+	'mp-welcome-needed-points' => 'Fir weiderzekommen <b><a href="$1">$2</a></b> verdéngt <i>$3</i> méi Punkten!',
 	'mp-welcome-logged-in' => 'Salut $1',
 	'mp-requests-title' => 'Ufroen',
 	'mp-requests-message' => 'Dir hutt dës Ufroen',

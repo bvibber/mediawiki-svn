@@ -446,6 +446,7 @@ $messages['es'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Nike
+ * @author Silvonen
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -459,6 +460,9 @@ $messages['fi'] = array(
 	'changeauthor-invalid-username' => 'Virheellinen käyttäjätunnus ”$1”.',
 	'changeauthor-nosuchuser' => 'Käyttäjää ”$1” ei ole olemassa.',
 	'changeauthor-nosuchtitle' => 'Sivua nimeltä ”$1” ei ole.',
+	'changeauthor-weirderror' => 'Tapahtui hyvin outo virhe.
+Yritä uudestaan.
+Jos tämä virhe toistuu, tietokanta on luultavasti rikki.',
 	'changeauthor-success' => 'Pyyntö on suoritettu onnistuneesti.',
 );
 
@@ -561,6 +565,7 @@ $messages['gv'] = array(
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'changeauthor' => 'שינוי כותב של גרסה',
@@ -576,11 +581,18 @@ $messages['he'] = array(
 	'changeauthor-changeauthors-single' => 'שינוי כותב',
 	'changeauthor-explanation-single' => 'בעזרת טופס זה תוכלו לשנות כותב של גרסה.
 פשוט שנו את שם המשתמש שלהלן, הוסיפו הערה (אופציונאלי) ולחצו על הכפתור "שינוי כותב".',
+	'changeauthor-invalid-username' => 'שם משתמש שגוי "$1".',
 	'changeauthor-nosuchuser' => 'אין משתמש בשם "$1".',
 	'changeauthor-revview' => 'גרסה #$1 של $2',
 	'changeauthor-nosuchtitle' => 'אין דף בשם "$1".',
+	'changeauthor-weirderror' => 'אירעה שגיאה מוזרה ביותר.
+אנא נסו שנית לשלוח את הבקשה.
+אם שגיאה זו ממשיכה להופיע, כנראה שמסד הנתונים פגום.',
+	'changeauthor-invalidform' => 'אנא השתמשו בטופס הנמצא ב[[Special:ChangeAuthor|דף המיוחד]] ולא בטופס מותאם אישית.',
+	'changeauthor-success' => 'בקשתכם עובדה בהצלחה.',
 	'changeauthor-logentry' => 'שינה את הכותב של $2 של $1 מ$3 ל$4',
 	'changeauthor-logpagename' => 'יומן שינויי כותבים',
+	'changeauthor-rev' => 'גרסה $1',
 );
 
 /** Hindi (हिन्दी)
@@ -812,7 +824,7 @@ $messages['ja'] = array(
 	'changeauthor-search-box' => '特定版の検索',
 	'changeauthor-pagename-or-revid' => 'ページ名または特定版ID:',
 	'changeauthor-pagenameform-go' => '検索',
-	'changeauthor-comment' => '編集内容の要約:',
+	'changeauthor-comment' => '変更理由:',
 	'changeauthor-changeauthors-multi' => '$1人の投稿者を変更',
 	'changeauthor-explanation-multi' => 'このフォームから特定版投稿者を変更することができます。一人または複数の利用者名を下のリストから選択し、編集内容の要約を付記し（任意です）、変更ボタンを押してください。',
 	'changeauthor-changeauthors-single' => '変更',
@@ -826,7 +838,7 @@ $messages['ja'] = array(
 	'changeauthor-success' => '要求された処理が完了しました。',
 	'changeauthor-logentry' => '$1 の特定版 $2 の投稿者を $3 から $4 へ変更しました。',
 	'changeauthor-logpagename' => '投稿者変更記録',
-	'changeauthor-rev' => '$1',
+	'changeauthor-rev' => '第$1版',
 );
 
 /** Javanese (Basa Jawa)

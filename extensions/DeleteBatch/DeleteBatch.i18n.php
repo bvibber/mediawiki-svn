@@ -327,6 +327,39 @@ $messages['grc'] = array(
 	'deletebatch-select-yourself' => 'σύ',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'deletebatch' => 'מחיקת מקבץ דפים',
+	'deletebatch-desc' => '[[Special:DeleteBatch|מחיקת מקבץ דפים]]',
+	'deletebatch-button' => 'מחיקה',
+	'deletebatch-here' => '<b>כאן</b>',
+	'deletebatch-help' => 'מחיקת מקבץ דפים. באפשרותכם לבצע מחיקה בודדת, או למחוק דפים הרשומים בקובץ.
+נא בחרו משתמש שיופיע ביומני המחיקה.
+הקובץ המועלה אמור לכלול שם של דף בכל שורה, ואפשר גם לכלול סיבה המופרדת בתו "|" משם הדף בכל אחת מהשורות.',
+	'deletebatch-caption' => 'רשימת דפים',
+	'deletebatch-title' => 'מחיקת מקבץ',
+	'deletebatch-link-back' => 'באפשרותכם לחזור להרחבה',
+	'deletebatch-as' => 'הרצת הסקריפט בתור',
+	'deletebatch-both-modes' => 'אנא בחרו בדף אחד מסוים או ברשימה נתונה של דפים.',
+	'deletebatch-or' => '<b>או</b>',
+	'deletebatch-page' => 'דפים למחיקה',
+	'deletebatch-reason' => 'סיבה למחיקה',
+	'deletebatch-processing' => 'מחיקת דפים',
+	'deletebatch-from-file' => 'מרשימת בקובץ',
+	'deletebatch-from-form' => 'מתוך טופס',
+	'deletebatch-success-subtitle' => 'עבור $1',
+	'deletebatch-omitting-nonexistant' => 'השמטת דף שאינו קיים $1.',
+	'deletebatch-omitting-invalid' => 'השמטת דף בלתי תקין $1.',
+	'deletebatch-file-bad-format' => 'הקובץ אמור להיות קובץ טקסט פשוט.',
+	'deletebatch-file-missing' => 'לא ניתן לקרוא את הקובץ הנתון.',
+	'deletebatch-select-script' => 'סקריפט מחיקת דפים',
+	'deletebatch-select-yourself' => 'אתם',
+	'deletebatch-no-page' => 'אנא ציינו לפחות דף אחד למחיקה או בחרו קובץ המכיל רשימת דפים.',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

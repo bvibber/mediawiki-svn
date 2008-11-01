@@ -60,6 +60,13 @@ $messages['gl'] = array(
 	'contributorsaddon-desc' => 'Engade emerxentes JS onMouseOver ás ligazóns das "Colaboradores principais"',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'contributorsaddon-desc' => 'הוספת תוויות JavaScript לקישורי "התורמים הראשיים" באמצעות onMouseOver',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

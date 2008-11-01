@@ -161,6 +161,19 @@ $messages['grc'] = array(
 	'dplforum-never' => 'Οὔποτε',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'dplforum-desc' => 'הרחבת פורום מבוסס DPL',
+	'dplforum-by' => 'על ידי',
+	'dplforum-edited' => '  - נערכה לאחרונה',
+	'dplforum-never' => 'מעולם לא',
+	'dplforum-toofew' => 'פורום DPL: מעט מדי קטגוריות!',
+	'dplforum-toomany' => 'פורום DPL: יותר מדי קטגוריות!',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

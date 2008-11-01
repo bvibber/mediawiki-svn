@@ -68,6 +68,13 @@ $messages['eo'] = array(
 	'unicodeconverter-newtext' => 'Konvertita teksto:',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'unicodeconverter' => 'Unicode-muunnin',
+);
+
 /** French (Français)
  * @author McDutchie
  * @author Zetud

@@ -68,6 +68,13 @@ $messages['gl'] = array(
 	'crowdauthentication-desc' => 'Complemento de autentificación para Atlassian Crowd',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'crowdauthentication-desc' => 'תוסף אימות עבור Atlassian Crowd',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

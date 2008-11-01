@@ -590,6 +590,52 @@ $messages['haw'] = array(
 	'crosswikiunblock-reason' => 'Kumu:',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'crosswikiblock-desc' => 'אפשרות לחסימת משתמשים באתרי ויקי אחרים באמצעות [[Special:Crosswikiblock|דף מיוחד]]',
+	'crosswikiblock' => 'חסימת משתמש בוויקי אחר',
+	'crosswikiblock-header' => 'דף זה מאפשר חסימת משתמש בוויקי אחר.
+אנא ודאו שאתם מורשים לפעול בוויקי זה ושפעולותיכם תואמות את כל דפי המדיניות.',
+	'crosswikiblock-target' => 'כתובת ה־IP או שם המשתמש ווויקי היעד:',
+	'crosswikiblock-expiry' => 'זמן פקיעה:',
+	'crosswikiblock-reason' => 'סיבה:',
+	'crosswikiblock-submit' => 'חסימת משתמש זה',
+	'crosswikiblock-anononly' => 'חסימה של משתמשים אנונימיים בלבד',
+	'crosswikiblock-nocreate' => 'חסימה של יצירת חשבונות',
+	'crosswikiblock-autoblock' => 'חסימה גם של כתובת ה־IP שלו וכל כתובת IP אחרת שישתמש בה',
+	'crosswikiblock-noemail' => 'חסימה של שליחת דואר אלקטרוני',
+	'crosswikiunblock' => 'שחרור חסימת משתמש בוויקי אחר',
+	'crosswikiunblock-header' => 'דף זה מאפשר לכם לשחרר חסימה של משתמש באתר ויקי אחרים.
+אנא ודאו שאתם מורשים לפעול בוויקי זה ושפעולותיכם תואמות את כל דפי המדיניות.',
+	'crosswikiunblock-user' => 'שם משתמש, כתובת IP או מספר חסימה ווויקי היעד:',
+	'crosswikiunblock-reason' => 'סיבה:',
+	'crosswikiunblock-submit' => 'שחרור חסימת משתמש זה',
+	'crosswikiunblock-success' => "שחרור חסימת המשתמש '''$1''' בוצע בהצלחה.
+
+חזרה ל:
+* [[Special:CrosswikiBlock|טופס החסימה]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'לא הוזן שם משתמש',
+	'crosswikiblock-local' => 'חסימות מקומיות אינן נתמכות בממשק זה. השתמשו ב[[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'מסד הנתונים $1 אינו קיים',
+	'crosswikiblock-noname' => '"$1" אינו שם משתמש תקין.',
+	'crosswikiblock-nouser' => 'המשתמש "$3" לא נמצא.',
+	'crosswikiblock-noexpiry' => 'זמן פקיעה בלתי תקין: $1.',
+	'crosswikiblock-noreason' => 'לא צוינה סיבה.',
+	'crosswikiblock-notoken' => 'אסימון עריכה שגוי.',
+	'crosswikiblock-alreadyblocked' => 'המשתמש $3 כבר נחסם.',
+	'crosswikiblock-noblock' => 'משתמש זה לא נחסם.',
+	'crosswikiblock-success' => "המשתמש '''$3''' נחסם בהצלחה.
+
+חזרה ל:
+* [[Special:CrosswikiBlock|טופס החסימה]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'שחרור חסימות מקומיות אינו נתמך דרך ממשק זה. השתמשו ב[[Special:IPBlockList|{{int:ipblocklist}}]]',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

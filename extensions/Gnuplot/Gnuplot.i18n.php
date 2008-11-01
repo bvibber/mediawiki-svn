@@ -65,6 +65,13 @@ $messages['gl'] = array(
 	'gnuplot-desc' => 'Engade a etiqueta <code><nowiki><gnuplot></nowiki></code> para usar Gnuplot',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'gnuplot-desc' => 'הוספת את התגית <code><nowiki><gnuplot></nowiki></code> לשימוש ב־Gnuplot',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

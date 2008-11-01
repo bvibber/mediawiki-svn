@@ -1124,6 +1124,7 @@ Contacta por favor el operador o el administrador del servicio.',
 
 /** Finnish (Suomi)
  * @author Nike
+ * @author Silvonen
  */
 $wdMessages['fi'] = array(
 	'ow_AlternativeDefinition' => 'Vaihtoehtoinen määritelmä',
@@ -1133,6 +1134,7 @@ $wdMessages['fi'] = array(
 	'ow_ClassAttributes' => 'Luokkaominaisuudet',
 	'ow_ClassAttributeLevel' => 'Taso',
 	'ow_ClassAttributeType' => 'Tyyppi',
+	'ow_Collection' => 'Kokoelma',
 	'ow_Definition' => 'Määritelmä',
 	'ow_ExactMeanings' => 'Tarkat merkityset',
 	'ow_Expression' => 'Ilmaisu',
@@ -1140,15 +1142,20 @@ $wdMessages['fi'] = array(
 	'ow_IdenticalMeaning' => 'Identtinen merkitys',
 	'ow_Language' => 'Kieli',
 	'ow_LevelAnnotation' => 'Annotaatio',
+	'ow_OptionAttribute' => 'Ominaisuus',
 	'ow_Spelling' => 'Kirjoitusasu',
 	'ow_SynonymsAndTranslations' => 'Synonyymit ja käännökset',
 	'ow_Source' => 'Lähde',
 	'ow_SourceIdentifier' => 'Lähdetunnus',
+	'ow_TextAttribute' => 'Ominaisuus',
 	'ow_Text' => 'Teksti',
+	'ow_TranslatedTextAttribute' => 'Ominaisuus',
 	'ow_TranslatedText' => 'Käännetty teksti',
 	'ow_TranslatedTextAttributeValue' => 'Teksti',
 	'ow_TranslatedTextAttributeValues' => 'Käännettävä teksti',
+	'ow_LinkAttribute' => 'Ominaisuus',
 	'ow_Property' => 'Ominaisuus',
+	'ow_Value' => 'Arvo',
 );
 
 /** French (Français)

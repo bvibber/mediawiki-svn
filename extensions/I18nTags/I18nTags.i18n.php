@@ -73,6 +73,13 @@ $messages['gl'] = array(
 	'i18ntags-desc' => 'Accede ás funcións i18n para darlles formato aos números, á gramática e ao plural nas linguas dispoñibles',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'i18ntags-desc' => 'גישה לפונקציות הבינאום לעיצוב מספרים, דקדוק ולשון רבים בכל שפה זמינה.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

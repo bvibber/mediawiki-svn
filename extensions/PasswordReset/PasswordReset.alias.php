@@ -71,3 +71,8 @@ $aliases['no'] = array(
 	'Disabledusers' => array( 'Inaktive kontoer' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'PasswordReset' => array( 'เปลี่ยนรหัสผ่าน' ),
+);
+

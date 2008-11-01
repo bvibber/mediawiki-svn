@@ -150,6 +150,13 @@ $messages['hsb'] = array(
 	'charinsert-desc' => 'Dowola wutworjenje JavaScriptoweho kašćika za [[MediaWiki:Edittools|zasunjenje specialnych znamješkow]]',
 );
 
+/** Hungarian (Magyar)
+ * @author Terik
+ */
+$messages['hu'] = array(
+	'charinsert-desc' => 'JavaScript doboz létrehozását engedélyezi [[MediaWiki:Edittools|nem-standard karakterek beillesztéséhez]]',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

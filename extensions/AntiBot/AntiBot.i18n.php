@@ -135,6 +135,13 @@ $messages['hsb'] = array(
 	'antibot-desc' => 'Jednory framework za kontrolu spambotow',
 );
 
+/** Hungarian (Magyar)
+ * @author Terik
+ */
+$messages['hu'] = array(
+	'antibot-desc' => 'Egyszerű szerkezet spambot ellenőrzésre és trigger payload-ra',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -57,6 +57,11 @@ $aliases['he'] = array(
 	'BoardVote' => array( 'בחירות_לחבר_הנאמנים' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'BoardVote' => array( 'Glasovanje_za_odbor' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'BoardVote' => array( 'Kuratóriumválasztás' ),

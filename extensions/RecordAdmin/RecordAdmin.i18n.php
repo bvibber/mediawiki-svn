@@ -87,6 +87,8 @@ $messages['fr'] = array(
 	'recordadmin-summary-typecreated' => 'Nouveau $1 de créer',
 	'recordadmin-viewlink' => 'voir',
 	'recordadmin-editlink' => 'modifier',
+	'recordadmin-created' => 'Créé',
+	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 );
 
 /** Dutch (Nederlands)

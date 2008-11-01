@@ -255,6 +255,15 @@ $messages['eo'] = array(
 	'right-editclosedwikis' => 'Redakti fermitajn vikiojn',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'closewikis-page' => 'Sulje wiki',
+	'closewikis-page-close' => 'Sulje wiki',
+	'closewikis-page-reopen' => 'Avaa wiki uudestaan',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

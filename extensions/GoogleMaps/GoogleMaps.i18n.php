@@ -462,6 +462,7 @@ $wgGoogleMapsMessages['br'] = array(
 $wgGoogleMapsMessages['bs'] = array(
 	'gm-width' => 'Širina',
 	'gm-line-width' => 'Širina',
+	'gm-make-map' => 'napravi mapu',
 );
 
 /** Catalan (Català)
@@ -1490,6 +1491,8 @@ $wgGoogleMapsMessages['hil'] = array(
  */
 $wgGoogleMapsMessages['hr'] = array(
 	'gm-remove' => 'ukloni',
+	'gm-yes' => 'Da',
+	'gm-no' => 'Ne',
 	'gm-save-path' => 'Spremi',
 );
 

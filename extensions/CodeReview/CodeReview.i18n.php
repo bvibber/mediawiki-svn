@@ -644,6 +644,7 @@ $messages['eo'] = array(
 	'code-authors' => 'aŭtoroj',
 	'code-tags' => 'etikedoj',
 	'code-author-haslink' => 'Ĉi tiu aŭtoro estas ligita al la vikiuzanto $1',
+	'code-author-dolink' => 'Ligi ĉi tiun autoron al vikiuzanto:',
 	'code-author-name' => 'Enigu salutnomon:',
 	'code-author-link' => 'ĉu ligigi?',
 	'code-author-unlink' => 'ĉu malligigi?',
@@ -698,7 +699,10 @@ $4',
 	'repoadmin-edit-bug' => 'Bugzilla-vojo:',
 	'repoadmin-edit-button' => 'Ek',
 	'right-repoadmin' => 'Administri kodujojn',
+	'right-codereview-add-tag' => 'Aldoni etikedojn al revizioj',
+	'right-codereview-remove-tag' => 'Forigi etikedojn de revizioj',
 	'right-codereview-post-comment' => 'Aldoni komentojn en revizioj',
+	'right-codereview-set-status' => 'Ŝanĝi revizionan statuson',
 	'right-codereview-link-user' => 'Ligi aŭtorojn al viki-uzantoj',
 	'specialpages-group-developer' => 'Disvolvistaj iloj',
 );
@@ -1738,9 +1742,21 @@ $4",
 );
 
 /** Polish (Polski)
+ * @author Equadus
  * @author Leinad
  */
 $messages['pl'] = array(
+	'code' => 'Podgląd kodu',
+	'code-comments' => 'Komentarze',
+	'code-authors' => 'autorzy',
+	'code-author-name' => 'Wprowadź nazwę użytkownika:',
+	'code-field-author' => 'Autor',
+	'code-field-timestamp' => 'Data',
+	'code-field-path' => 'Ścieżka',
+	'repoadmin-new-button' => 'Utwórz',
+	'repoadmin-edit-legend' => 'Modyfikacja repozytorium „$1”',
+	'repoadmin-edit-path' => 'Ścieżka składu:',
+	'repoadmin-edit-button' => 'OK',
 	'specialpages-group-developer' => 'Narzędzia dewelopera',
 );
 
@@ -2153,7 +2169,15 @@ $messages['vec'] = array(
 	'code-comments' => 'Comenti',
 	'code-authors' => 'autori',
 	'code-tags' => 'tag',
+	'code-author-haslink' => "Sto autor el xe ligà a l'utente wiki $1",
+	'code-author-orphan' => "Sto autor no'l xe ligà a nissun utente wiki",
+	'code-author-dolink' => 'Ligar sto autor a un utente wiki:',
+	'code-author-alterlink' => "Canbiar l'utente wiki ligà a sto autor:",
+	'code-author-orunlink' => "O cavar el ligamento co' sto utente wiki:",
 	'code-author-name' => 'Inserissi un nome utente:',
+	'code-author-success' => "L'autor $1 el xe stà ligà a l'utente wiki $2",
+	'code-author-link' => 'ligar?',
+	'code-author-unlink' => 'desligar?',
 	'code-author-unlinksuccess' => "El colegamento a l'autor $1 el xe stà cavà",
 	'code-field-id' => 'Revision',
 	'code-field-author' => 'Autor',
@@ -2165,6 +2189,7 @@ $messages['vec'] = array(
 	'code-rev-author' => 'Autor:',
 	'code-rev-date' => 'Data:',
 	'code-rev-message' => 'Comento:',
+	'code-rev-repo' => 'Deposito:',
 	'code-rev-rev' => 'Revision:',
 	'code-rev-paths' => 'Percorsi modificài:',
 	'code-rev-modified-a' => 'zontà',
@@ -2182,6 +2207,7 @@ $messages['vec'] = array(
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
 	'code-pathsearch-path' => 'Percorso:',
+	'code-rev-submit' => 'Salva le modìfeghe',
 	'codereview-reply-link' => 'rispondi',
 	'codereview-email-subj' => '[$1] [r$2]: Zontà un comento nóvo',
 	'codereview-email-body' => 'L\'utente "$1" el gà scrito un comento su r$3.
@@ -2191,7 +2217,13 @@ URL par intiero: $2
 Comento:
 
 $4',
+	'repoadmin-new-legend' => 'Crea un deposito novo',
+	'repoadmin-new-label' => 'Nome del deposito:',
 	'repoadmin-new-button' => 'Crea',
+	'repoadmin-edit-legend' => 'Modìfega del deposito "$1"',
+	'repoadmin-edit-path' => 'Percorso del deposito:',
+	'repoadmin-edit-bug' => 'Percorso de Bugzilla:',
+	'repoadmin-edit-button' => 'Va ben',
 	'right-codereview-add-tag' => 'Zonta tag novi a le revision',
 	'right-codereview-remove-tag' => 'Cava tag da le revision',
 	'right-codereview-post-comment' => 'Zonta comenti su le revision',

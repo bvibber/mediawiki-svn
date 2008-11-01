@@ -75,6 +75,13 @@ $messages['gl'] = array(
 Crear versións dentro dunha páxina, útil especialmente nas Galinovas.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'catfeed-desc' => 'שימוש בחלקים מהזנות השינויים האחרונים כדי ליצור גרסה בתוך הדף. פעולה זו שימושית במיוחד בוויקיחדשות.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

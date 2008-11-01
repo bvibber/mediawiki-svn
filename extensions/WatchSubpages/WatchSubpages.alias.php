@@ -34,6 +34,11 @@ $aliases['fa'] = array(
 	'WatchSubpages' => array( 'پی‌گیری_زیرصفحه‌ها' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'WatchSubpages' => array( 'VoirSousPages' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'WatchSubpages' => array( 'Prati_podstranice' ),

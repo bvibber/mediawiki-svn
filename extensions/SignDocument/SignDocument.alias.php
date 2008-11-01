@@ -57,3 +57,8 @@ $aliases['sv'] = array(
 	'CreateSignDocument' => array( 'Skapa signeringsdokument' ),
 );
 
+/** Thai (ไทย) */
+$aliases['th'] = array(
+	'SignDocument' => array( 'เซ็นเอกสาร' ),
+);
+

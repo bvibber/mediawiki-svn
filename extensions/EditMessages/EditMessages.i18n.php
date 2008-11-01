@@ -300,12 +300,27 @@ $messages['hak'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author StuB
+ * @author YaronSh
  */
 $messages['he'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|עריכה דרך דף Web]] של מספר גדול של קובצי Messages*.php',
 	'editmessages' => 'עריכת הודעות',
 	'editmsg-target' => 'הודעת יעד:',
 	'editmsg-search' => 'חיפוש',
+	'editmsg-show-list' => 'הצגת הערכים עבור שם ההודעה "$1"',
+	'editmsg-get-patch' => 'יצירת טלאי',
+	'editmsg-new-search' => 'חיפוש חדש',
+	'editmsg-warning-parse1' => '* הביטוי הרגולרי של שם ההודעה לא תואם: $1',
+	'editmsg-warning-parse2' => '* דרושים גרשיים לאחר החץ: $1',
+	'editmsg-warning-parse3' => '* סוף ערך המחרוזת לא נמצא: $1',
+	'editmsg-warning-file' => '* אירעו שגיאות קריאת קובץ בשפות הבאות: $1',
+	'editmsg-warning-mismatch' => '* לטקסט המקורי אין את הערך הצפוי בשפות הבאות: $1',
+	'editmsg-apply-patch' => 'החלת הטלאי',
+	'editmsg-no-patch' => 'לא ניתן להפעיל את הפקודה "patch"',
+	'editmsg-patch-failed' => 'החלת הטלאי נכשלה עם מצב יציאה $1',
+	'editmsg-patch-success' => 'הטלאי הוחל בהצלחה.',
 );
 
 /** Hindi (हिन्दी)

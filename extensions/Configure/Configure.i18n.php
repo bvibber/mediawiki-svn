@@ -940,6 +940,20 @@ $messages['eu'] = array(
 	'configure-section-specialpages' => 'Aparteko orrialdeak',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'configure-ext-use-extension' => 'Käytä tätä laajennosta',
+	'configure-ext-use' => 'Käytä',
+	'configure-btn-save' => 'Tallenna',
+	'configure-old' => 'Vanhat versiot',
+	'configure-section-db' => 'Tietokanta',
+	'configure-section-timezone' => 'Aikavyöhyke',
+	'configure-section-css-js' => 'CSS ja JavaScript',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex
@@ -962,6 +976,9 @@ $messages['fr'] = array(
 	'configure-ext-use' => 'Utilisation',
 	'configure-summary' => "Cette page spéciale vous permet de configurer ce wiki, voyez les [http://www.mediawiki.org/wiki/Manual:Configuration_settings/fr paramètres de configuration] pour plus d'informations.",
 	'configure-btn-save' => 'Sauvegarder les réglages',
+	'configure-db-error' => "La base de données que vous avez spécifié pour contenir la configuration ($1) n'existe pas.
+Créez-la et appliquez-y configure.sql or corrigez son nom.",
+	'configure-db-table-error' => 'La base de données que vous avez spécifié ne contient pas les tables requises, appliquez-y configure.sql.',
 	'configure-directory-not-writable' => 'Le dossier utilisé pour sauvegarder la configuration, <tt>$1</tt>, ne peut pas être modifié.
 Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-edit-old' => 'Attention : vous êtes en train de modifier une <strong>ancienne</strong> version de la configuration.',
@@ -2096,6 +2113,10 @@ $messages['nl'] = array(
 	'configure-ext-use' => 'Gebruiken',
 	'configure-summary' => 'Via deze special pagina kunt u instellingen maken voor deze wiki. Zie [http://www.mediawiki.org/wiki/Manual:Configuration_settings Instellingen] voor meer informatie.',
 	'configure-btn-save' => 'Instellingen opslaan',
+	'configure-db-error' => 'De aangegeven database voor de instellingen ($1) bestaat niet.
+Maak deze aan en voer configure.sql uit, of corrigeer de naam.',
+	'configure-db-table-error' => 'De aangegeven database heeft de vereiste tabellen niet.
+Voer configure.sql in de database.',
 	'configure-directory-not-writable' => 'In de map waarin de instellingen worden opgeslagen, <tt>$1</tt>, kan niet geschreven worden.
 Zorg er voor dat PHP in de map kan schrijven om deze extensie te gebruiken.',
 	'configure-edit-old' => 'Waarschuwing: u bent een <strong>oude</strong> versie van de instellingen aan het bewerken.',

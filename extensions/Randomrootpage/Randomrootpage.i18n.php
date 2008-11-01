@@ -101,6 +101,14 @@ $messages['ia'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Pagina special]] que obtene un pagina-radice aleatori',
 );
 
+/** Japanese (日本語)
+ * @author Fievarsty
+ */
+$messages['ja'] = array(
+	'randomrootpage' => 'おまかせルートページ',
+	'randomrootpage-desc' => 'ランダムにルートページを取得する[[Special:Randomrootpage|特別ページ]]',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

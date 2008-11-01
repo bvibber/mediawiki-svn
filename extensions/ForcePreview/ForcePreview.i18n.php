@@ -124,6 +124,15 @@ $messages['haw'] = array(
 	'right-forcepreviewexempt' => 'Mālama paha me ka nānā ‘ana ‘ole o "Nānā i ka nāmua"',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'forcepreview' => 'שמירה (השתמשו קודם בתצוגה מקדימה)',
+	'forcepreview-desc' => 'הכרחת משתמשים לא מורשים להשתמש בתצוגה מקדימה',
+	'right-forcepreviewexempt' => 'שמירה מבלי להשתמש בתצוגה מקדימה',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

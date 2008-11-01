@@ -104,6 +104,13 @@ $messages['gl'] = array(
 	'didyoumean-desc' => 'Engade ligazóns cara a páxinas con títulos "similares"',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'didyoumean-desc' => 'הוספת קישורים לדפים עם כותרות "דומות"',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

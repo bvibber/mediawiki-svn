@@ -409,6 +409,45 @@ $messages['haw'] = array(
 	'imagetagging-imghistory' => 'Mo‘olelo',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'taggedimages' => 'תמונות מתויגות',
+	'imagetagging-desc' => 'אפשרות למשתמש לבחור אזורים מתמונה הנמצאת בדף, ולשייך דף לאזור זה',
+	'imagetagging-addimagetag' => 'תיוג תמונה זו',
+	'imagetagging-article' => 'דף:',
+	'imagetagging-articletotag' => 'דף לתיוג',
+	'imagetagging-canteditothermessage' => 'אינכם יכולים לערוך דף זה, כיוון שאין לכם את ההרשאות לעשות כך או כיוון שהדף נעול מסיבות אחרות.',
+	'imagetagging-imghistory' => 'היסטוריה',
+	'imagetagging-images' => 'תמונות',
+	'imagetagging-inthisimage' => 'בתמונה זו: $1',
+	'imagetagging-logentry' => 'הסיר את התגית של $2 לדף [[$1]]',
+	'imagetagging-log-tagged' => 'התמונה [[$1|$2]] תויגה לדף [[$3]] על ידי $4',
+	'imagetagging-new' => '<sup><span style="color:red">חדש!</span></sup>',
+	'imagetagging-removetag' => 'הסרת תגית',
+	'imagetagging-done-button' => 'סיום התיוג',
+	'imagetagging-tag-button' => 'תגית',
+	'imagetagging-tagcancel-button' => 'ביטול',
+	'imagetagging-tagging-instructions' => 'לחיצה על אנשים או חפצים בתמונה מתייגת אותם.',
+	'imagetagging-addingtag' => 'התגית נוספת...',
+	'imagetagging-removingtag' => 'התגית מוסרת...',
+	'imagetagging-addtagsuccess' => 'התגית נוספה.',
+	'imagetagging-removetagsuccess' => 'התגית הוסרה.',
+	'imagetagging-canteditneedloginmessage' => 'אינכם יכולים לערוך דף זה.
+ייתכן שיהיה עליכם להיכנס לחשבון כדי לתייג תמונות.
+האם ברצונכם להיכנס כעת לחשבון?',
+	'imagetagging-oneactionatatimemessage' => 'מותר לבצע רק פעולת תיוג אחת בו זמנית.
+אנא המתינו להשלמת הפעולה הנוכחית.',
+	'imagetagging-oneuniquetagmessage' => 'לתמונה זו כבר ישנה תגית בשם זה.',
+	'imagetagging-imagetag-seemoreimages' => 'הצגת תמונות נוספות עבור "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'תמונות של "$1"',
+	'imagetagging-taggedimages-displaying' => 'הצגת $1 - $2 מתוך $3 תמונות של "$4"',
+	'tag-logpagename' => 'יומן תיוג',
+	'tag-logpagetext' => 'זהו יומן המציג את כל ההוספות וההסרות של התגיות מתמונות.',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */

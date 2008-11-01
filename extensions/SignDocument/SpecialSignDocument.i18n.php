@@ -824,6 +824,64 @@ $messages['he'] = array(
 	'sign-list-hidebday' => 'מבלי להציג גיל',
 	'sign-list-hideemail' => 'מבלי להציג כתובת דוא"ל',
 	'sign-submit' => 'חתימה על המסמך',
+	'sign-information' => '<div class="noarticletext">תודה לכם על שהשקעתם את הזמן לקריאת המסמך הזה.
+אם אתם מסכימים לתוכנו, אנא הביעו את תמיכתכם על ידי מילוי השדות הדרושים להלן ולחיצה על "חתימה על המסמך".
+אנא ודאו כי הנתונים האישיים שלכם נכונים ושתהיה לנו אפשרות ליצור איתכם קשר לאימות זהותכם.
+שימו לב שכתובת ה־IP שלכם וכל מידע מזהה אחר יישמר עם הטופס וישמש את המפעילים כדי למנוע חתימות כפולות וכדי לאמת את פרטיכם האישיים.
+כיוון שהשימוש בשרתי פרוקסי פתוחים עלול למנוע מאיתנו לבצע משימה זו, חתימות שנשלחו משרתים כאלה ככל הנראה לא ייחשבו.
+אם אתם מחוברים כרגע דרך שרת פרוקסי, אנא התנתקו ממנו והשתמשו בחיבור הרגיל בעת החתימה.</div>
+
+$1',
+	'sig-success' => 'החתימה על המסמך נרשמה בהצלחה.',
+	'sign-view-selectfields' => '<b>שדות להצגה:</b>',
+	'sign-viewfield-entryid' => 'מספר הרשומה',
+	'sign-viewfield-timestamp' => 'תאריך ושעה',
+	'sign-viewfield-realname' => 'שם',
+	'sign-viewfield-address' => 'כתובת',
+	'sign-viewfield-city' => 'עיר',
+	'sign-viewfield-state' => 'מדינה',
+	'sign-viewfield-country' => 'ארץ',
+	'sign-viewfield-zip' => 'מיקוד',
+	'sign-viewfield-ip' => 'כתובת IP',
+	'sign-viewfield-agent' => 'מזהה הדפדפן',
+	'sign-viewfield-phone' => 'טלפון',
+	'sign-viewfield-email' => 'דוא"ל',
+	'sign-viewfield-age' => 'גיל',
+	'sign-viewfield-options' => 'אפשרויות',
+	'sign-viewsigs-intro' => 'להלן החתימות על <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'ניתן כעת לחתום על מסמך זה.',
+	'sign-sigadmin-close' => 'ביטול אפשרות החתימה',
+	'sign-sigadmin-currentlyclosed' => 'לא ניתן כעת לחתום על מסמך זה.',
+	'sign-sigadmin-open' => 'הפעלת אפשרות החתימה',
+	'sign-signatures' => 'חתימות',
+	'sign-sigadmin-closesuccess' => 'אפשרות החתימה בוטלה בהצלחה.',
+	'sign-sigadmin-opensuccess' => 'אפשרות החתימה הופעלה בהצלחה.',
+	'sign-viewsignatures' => 'צפייה בחתימות',
+	'sign-closed' => 'סגור',
+	'sign-error-closed' => 'לא ניתן כעת לחתום על מסמך זה.',
+	'sig-anonymous' => '<i>אנונימי</i>',
+	'sig-private' => '<i>פרטי</i>',
+	'sign-sigdetails' => 'פרטי החתימה',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|שיחה]] • <!--
+-->[[Special:Contributions/$1|תרומות]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|חסימת המשתמש]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} יומן חסימות] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} בדיקת IP])<!--
+--></span>',
+	'sign-viewfield-reviewedby' => 'בודק',
+	'sign-viewfield-reviewcomment' => 'הערה',
+	'sign-detail-uniquequery' => 'יישויות דומות',
+	'sign-detail-uniquequery-run' => 'הרצת שאילתה',
+	'sign-reviewsig' => 'בדיקת החתימה',
+	'sign-review-comment' => 'הערה',
+	'sign-submitreview' => 'שליחת בדיקה',
+	'sign-uniquequery-similarname' => 'שם דומה',
+	'sign-uniquequery-similaraddress' => 'כתובת דומה',
 );
 
 /** Hindi (हिन्दी)

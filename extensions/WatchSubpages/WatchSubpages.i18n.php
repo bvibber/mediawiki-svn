@@ -138,6 +138,14 @@ $messages['eo'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Aldoni paĝojn al atentaro',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'watchsubpages' => 'Tarkkaile alasivuja',
+	'watchsubpages-desc' => '[[Special:WatchSubpages|Lisää kaikki sivun alasivut]] nopeasti tarkkailulistalle',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Louperivois

@@ -38,6 +38,16 @@ $messages['arz'] = array(
 	'searchbox-namespaces' => 'النطاقات:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'searchbox-desc' => 'Aotren a ra enklozañ furmskridoù enklask',
+	'searchbox-search' => 'Klask',
+	'searchbox-go' => 'Mont',
+	'searchbox-namespaces' => 'Esaouennoù anv :',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'searchbox-desc' => 'Ermöglicht das Einbinden eines Suchformulares',

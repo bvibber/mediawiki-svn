@@ -70,6 +70,13 @@ $messages['gl'] = array(
 	'editown-desc' => 'Os usuarios sen o dereito de editar só poden editar as páxinas que crearon',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'editown-desc' => 'משתמשים שאין ברשותם את הרשאת העריכה הכללית (editall) יכולים לערוך אך ורק דפים שנוצרו על ידם',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

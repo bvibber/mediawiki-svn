@@ -371,6 +371,24 @@ $messages['haw'] = array(
 	'contributors-submit' => 'Hō‘ike',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'contributors' => 'תורמים',
+	'contributors-desc' => 'סיכום את התורמים הראשיים לדף',
+	'contributors-toolbox' => 'תורמים ראשיים',
+	'contributors-legend' => 'הצגת רשימת התורמים הראשיים לדף',
+	'contributors-target' => 'כותרת:',
+	'contributors-submit' => 'הצגה',
+	'contributors-subtitle' => 'תורמים ראשיים ל$1',
+	'contributors-others-long' => '{{PLURAL:$1|ישנו תורם אחר אחד|ישנם $1 תורמים אחרים}} לדף זה.',
+	'contributors-others' => 'ו{{PLURAL:$1|אחד אחר|־$1 אחרים}}',
+	'contributors-badtitle' => 'כותרת בלתי תקינה.',
+	'contributors-nosuchpage' => 'הדף $1 אינו קיים.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

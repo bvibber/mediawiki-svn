@@ -57,6 +57,13 @@ $messages['gl'] = array(
 	'gotocategory-desc' => 'Comproba os termos da procura contra o espazo de nomes Categoría: para "Ir" a partir da funcionalidade "saltar a unha páxina"',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'gotocategory-desc' => 'בדיקת מונחי החיפוש מול מרחב הקטגוריות בעת שימוש באפשרות הישירה "לדף"',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

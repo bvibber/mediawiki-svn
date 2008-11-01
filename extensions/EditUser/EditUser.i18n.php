@@ -135,6 +135,18 @@ $messages['br'] = array(
 	'edituser-dosearch' => 'Klask',
 );
 
+/** Buginese (ᨅᨔ ᨕᨘᨁᨗ)
+ * @author Kurniasan
+ */
+$messages['bug'] = array(
+	'edituser' => 'Papaké padécé',
+	'edituser-logout' => 'Log papaké maessu',
+	'edituser-username' => 'Aseŋ',
+	'edituser-dosearch' => 'Sappa',
+	'edituser-nouser' => "Iyaro papaké dé' gaga",
+	'edituser-exempt' => "Iyaro papaké dé'na ullé ripadécé",
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */
@@ -310,6 +322,7 @@ $messages['haw'] = array(
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author StuB
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'edituser-desc' => 'אפשרות למשתמשים מורשים לערוך העדפות של משתמשים אחרים',
@@ -319,6 +332,7 @@ $messages['he'] = array(
 	'edituser-dosearch' => 'חיפוש',
 	'edituser-nouser' => 'המשתמש המבוקש אינו קיים',
 	'edituser-exempt' => 'לא ניתן לערוך את המשתמש המבוקש',
+	'right-edituser' => 'עריכת ההעדפות של משתמשים אחרים',
 );
 
 /** Hindi (हिन्दी)

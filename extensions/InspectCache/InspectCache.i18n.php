@@ -158,6 +158,14 @@ $messages['es'] = array(
 	'inspectcache-delete' => 'Borrar',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'inspectcache' => 'Tutki välimuistia',
+	'inspectcache-general' => 'Yleinen välimuisti',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Urhixidur
@@ -236,6 +244,23 @@ $messages['hak'] = array(
  */
 $messages['haw'] = array(
 	'inspectcache-ok' => 'Hiki nō',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'inspectcache' => 'בדיקת המטמון',
+	'inspectcache-desc' => 'כלי ניפוי שגיאות פשוט לבדיקת התכנים של זיכרון המטמון המשותף',
+	'inspectcache-ok' => 'אישור',
+	'inspectcache-general' => 'מטמון כללי',
+	'inspectcache-parser' => 'מטמון המפענח',
+	'inspectcache-message' => 'מטמון ההודעות',
+	'inspectcache-get' => 'איחזור',
+	'inspectcache-delete' => 'מחיקה',
+	'inspectcache-deleted' => 'מטמון שנמחק',
+	'inspectcache-list' => 'הצגה',
 );
 
 /** Hindi (हिन्दी)

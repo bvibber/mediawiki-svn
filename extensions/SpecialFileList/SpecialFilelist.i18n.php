@@ -150,6 +150,14 @@ $messages['eo'] = array(
 	'filelist-show-gallery' => 'Montru galerion',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'filelist' => 'Tiedostoluettelo',
+	'filelist-show-list' => 'Näytä luettelo',
+);
+
 /** Võro (Võro) */
 $messages['fiu-vro'] = array(
 	'filelist-image-desc' => 'seletüs',
