@@ -99,7 +99,7 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['CentralNotice'] = $dir . 'CentralNotice.i18n.php';
-$wgAutoloadClasses['CentralNotice'] = $dir . 'SpecialNoticeCentral.php';
+$wgAutoloadClasses['CentralNotice'] = $dir . 'SpecialCentralNotice.php';
 
 $wgAvailableRights[] = 'centralnotice_admin_rights';
 $wgGroupPermissions['sysop']['centralnotice_admin_rights'] = true; // Only sysops can make change
