@@ -16,7 +16,7 @@
  */
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('PDFBOOK_VERSION', '1.0.1, 2008-10-26');
+define('PDFBOOK_VERSION', '1.0.2, 2008-11-01');
 
 $wgExtensionFunctions[]        = 'wfSetupPdfBook';
 $wgHooks['LanguageGetMagic'][] = 'wfPdfBookLanguageGetMagic';
@@ -115,7 +115,7 @@ class PdfBook {
 					$article = new Article($title);
 					$text    = $article->fetchContent();
 					$text    = preg_replace('/<!--([^@]+?)-->/s', '@@'.'@@$1@@'.'@@', $text); # preserve HTML comments
-					$text   .= '__NOTOC__';
+					if ($format != 'single') $text .= '__NOTOC__';
 					$opt->setEditSection(false);    # remove section-edit links
 					$wgOut->setHTMLTitle($ttext);   # use this so DISPLAYTITLE magic works
 					$out     = $wgParser->parse($text, $title, $opt, true, true);
