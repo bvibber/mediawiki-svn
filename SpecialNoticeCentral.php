@@ -648,12 +648,12 @@ class CentralNotice extends SpecialPage {
 			$htmlOut .= Xml::tags( 'tr', null,
                 	     Xml::tags( 'td', null, wfMsg ( 'centralnotice-project-name') ) .
 				Xml::tags( 'td', null,
-					$this->projectDropDownList() )
+					$this->projectDropDownList( $row->not_project ) )
 			); 
 			// Language 
 		  	$htmlOut .= Xml::tags( 'tr', null,
 				Xml::tags( 'td', null, 
-					$this->languageDropDownList( $row->not_language) )
+					$this->languageDropDownList( $row->not_language ) )
 			);
 				    
 			// Enabled
@@ -1151,39 +1151,35 @@ class CentralNotice extends SpecialPage {
 		);
 	}
 	
-	function projectDropDownList() {
+	function projectDropDownList( $selected='' ) {
 		global $wgNoticeProjects;
 		
 		$htmlOut = Xml::openElement( 'select', array( 'name' => 'project_name' ) );
-		$htmlOut .= Xml::element( 'option', array( 'value' => '' ), 'All projects' );
+		$htmlOut .= Xml::option( 'All projects', '', ($selected == '') );
 		foreach( $wgNoticeProjects as $value ) {
-			$htmlOut .= Xml::element( 'option', array( 'value' => $value ), $value );
+			$htmlOut .= Xml::option( $value, $value, ($selected == $value) );
 		}
 		$htmlOut .= Xml::closeElement( 'select' );
 		return $htmlOut;
 	}
 	
-	function languageDropDownList( $wpUserLang ) {
+	function languageDropDownList( $selected='' ) {
 		// Language
-		list( $lsLabel, $lsSelect) = Xml::languageSelector( $wpUserLang );
+		list( $lsLabel, $lsSelect) = Xml::languageSelector( $selected );
 		
 		/*
 		 * Dirty hack to add our very own "All" option
 		 */
 		// Strip selected flag
-		$lsSelect = str_replace( ' selected="selected"', '', $lsSelect );
+		if( $selected == '' ) {
+			$lsSelect = str_replace( ' selected="selected"', '', $lsSelect );
+		}
 		
 		// Find the first select tag
 		$insertPoint = stripos( $lsSelect , '<option' );
 		
 		// Create our own option
-		$option = Xml::element( 'option',
-			array(
-				'selected' => 'selected',
-				'value' => ''
-			),
-			'All Languages'
-		);
+		$option = Xml::option( 'All languages', '', ($selected == '') );
 		
 		// Insert our option
 		$lsSelect = substr( $lsSelect, 0, $insertPoint ) . $option . substr( $lsSelect, $insertPoint );
