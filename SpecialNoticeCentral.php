@@ -722,25 +722,29 @@ class CentralNotice extends SpecialPage {
 		// Build Assigned Template HTML
 		$htmlOut  = Xml::hidden( 'change', 'weight' );
 		$htmlOut .= Xml::fieldset( wfMsg( 'centralnotice-assigned-templates' ));
-		$htmlOut .= Xml::openElement( 'table', array( 'cellpadding' => 9) );
-		$htmlOut .= Xml::element( 'th', null, wfMsg ( "centralnotice-templates" ) );
-		$htmlOut .= Xml::element( 'th', null, wfMsg ( "centralnotice-weight" ) );
-		$htmlOut .= Xml::element( 'th', null, wfMsg ( "centralnotice-remove" ) );
+		$htmlOut .= Xml::openElement( 'table', 
+			array( 
+				'cellpadding' => 9,
+				'width' => '100%'
+			)
+		);
+		$htmlOut .= Xml::element( 'th', array( 'align' => 'left', 'width' => '5%' ),
+			 wfMsg ( "centralnotice-remove" ) );
+		$htmlOut .= Xml::element( 'th', array( 'align' => 'left', 'width' => '5%' ),
+			 wfMsg ( "centralnotice-weight" ) );
+		$htmlOut .= Xml::element( 'th', array( 'align' => 'left', 'width' => '70%' ),
+			 wfMsg ( "centralnotice-templates" ) );
 
 		// Rows
 		while ( $row = $dbr->fetchObject( $res )) {
 	
-			// Name
 			$htmlOut .=  Xml::openElement( 'tr' );
-			$htmlOut .=  Xml::tags( 'td', null,	
-				XMl::tags( 'a', 
-					array(
-						'href' =>  SpecialPage::getTitleFor( 'NoticeTemplate/view')->getLocalUrl("template=$row->tmp_name")
-					),
-					$row->tmp_name
-				)
-			);	
-	
+
+			// Remove
+			$htmlOut .= Xml::tags( 'td', null, 
+					Xml::check( 'removeTemplates[]', false, array( 'value' => $row->tmp_name)) 
+			);
+
 			// Weight
 			$htmlOut .= Xml::tags( 'td', null,
 					 Xml::listDropDown( "weight[$row->tmp_name]",
@@ -751,11 +755,24 @@ class CentralNotice extends SpecialPage {
 						 '',
 						 1)
 			);
-	
-			// Remove
-			$htmlOut .= Xml::tags( 'td', null, 
-					Xml::check( 'removeTemplates[]', false, array( 'value' => $row->tmp_name)) 
+		
+			$viewPage = SpecialPage::getTitleFor( 'NoticeTemplate/view' );
+			$render = new SpecialNoticeText();
+			$render->project = 'wikipedia';
+			global $wgRequest;
+			$render->language = $wgRequest->getVal( 'wpUserLanguage' );
+			$htmlOut .= Xml::tags( 'td', null,
+				Xml::element( 'a',
+					array(
+						 'href' => $viewPage->getFullUrl( "template=$row->tmp_name" )
+					),
+					$row->tmp_name
+				) .
+				 Xml::fieldset( wfMsg( 'centralnotice-preview' ),
+					$render->getHtmlNotice( $row->tmp_name )
+				)
 			);
+
 			$htmlOut .= Xml::closeElement( 'tr' );
 		}
 		$htmlOut .= XMl::closeElement( 'table' );
@@ -792,10 +809,13 @@ class CentralNotice extends SpecialPage {
 			$htmlOut  = Xml::fieldset( wfMsg( "centralnotice-available-templates") );
 			$htmlOut .= Xml::openElement( 'table', array( 'cellpadding' => 9 ) );
 	
-			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-template-name') );
-			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-weight' ) );
-			$htmlOut .= Xml::element( 'th', null, wfMsg ( 'centralnotice-add' ) );
-
+			
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'left', 'width' => '5%' ),
+				 wfMsg ( "centralnotice-add" ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'left', 'width' => '5%' ),
+				 wfMsg ( "centralnotice-weight" ) );
+			$htmlOut .= Xml::element( 'th', array( 'align' => 'left', 'width' => '70%' ),
+				 wfMsg ( "centralnotice-templates" ) );
 			// Find dups
 			$templatesAssigned = $this->selectTemplatesAssigned( $notice );
 			
@@ -804,17 +824,12 @@ class CentralNotice extends SpecialPage {
 				if ( !in_array ( $row->tmp_name, $templatesAssigned ) ) {
 					$htmlOut .= Xml::openElement( 'tr' );
 	
-					// Name
-					$htmlOut .= Xml::tags( 'td', null,
-						Xml::tags( 'a', 
-						 	array(
-                                        		  'href' =>  SpecialPage::getTitleFor( 'NoticeTemplate/view')->getLocalUrl("template=$row->tmp_name")
-			       	        		),
-		 					$row->tmp_name
-						)
-					);
-		
 					// Add
+					$htmlOut .= Xml::tags( 'td', null, 
+						Xml::check( 'addTemplates[]', '', array ( 'value' => $row->tmp_name)) 
+					);
+
+					// Weight 
 					$htmlOut .= Xml::tags( 'td', null,
 						Xml::listDropDown( "weight[$row->tmp_name]",
 							$this->dropDownList( wfMsg( 'centralnotice-weight' ), range ( 0, 100, 5)),
@@ -823,9 +838,25 @@ class CentralNotice extends SpecialPage {
 							'',
 							16)
 					);
-					$htmlOut .= Xml::tags( 'td', null, 
-						Xml::check( 'addTemplates[]', '', array ( 'value' => $row->tmp_name)) 
-					   	    );
+	
+					// Render preview
+					$viewPage = SpecialPage::getTitleFor( 'NoticeTemplate/view' );
+					$render = new SpecialNoticeText();
+					$render->project = 'wikipedia';
+					global $wgRequest;
+					$render->language = $wgRequest->getVal( 'wpUserLanguage' );
+					$htmlOut .= Xml::tags( 'td', null,
+						Xml::element( 'a',
+							array(
+								 'href' => $viewPage->getFullUrl( "template=$row->tmp_name" )
+							),
+							$row->tmp_name
+						) .
+						Xml::fieldset( wfMsg( 'centralnotice-preview' ),
+							$render->getHtmlNotice( $row->tmp_name )
+						)
+					);
+
 					$htmlOut .= Xml::closeElement( 'tr' );
 				}
 			}

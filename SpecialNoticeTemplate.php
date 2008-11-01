@@ -113,7 +113,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 					'action' => ''
 				 )
 			);
-			$htmlOut .= Xml::fieldset( 'Available Templates' );
+			$htmlOut .= Xml::fieldset( wfMsg( 'centralnotice-available-templates' ) );
 			$htmlOut .= Xml::openElement( 'table',
 				array(
 					'cellpadding' => 9,
