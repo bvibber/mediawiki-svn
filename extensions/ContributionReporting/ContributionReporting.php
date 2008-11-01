@@ -20,7 +20,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ContributionReporting',
 	'svn-date' => '$LastChangedDate$',
 	'svn-revision' => '$LastChangedRevision$',
-	'author' => array( 'David Strauss', 'Brion Vibber', 'Siebrand Mazeland' );
+	'author' => array( 'David Strauss', 'Brion Vibber', 'Siebrand Mazeland' ),
 	'descriptionmsg' => 'contributionreporting-desc',
 );
 
