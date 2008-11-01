@@ -3,7 +3,7 @@
  * http://www.mediawiki.org/wiki/Extension:Uniwiki_Category_Box_at_Top
  * http://www.gnu.org/licenses/gpl-3.0.txt */
 
-if (!defined("MEDIAWIKI"))
+if ( !defined( "MEDIAWIKI" ) )
 	die();
 
 /* ---- CREDITS ---- */
@@ -24,18 +24,18 @@ $wgExtensionMessagesFiles['CatBoxAtTop'] = dirname( __FILE__ ) . '/CatBoxAtTop.i
 $wgHooks['BeforePageDisplay'][] = "UW_CatBoxAtTop_CSS";
 $wgHooks['OutputPageBeforeHTML'][] = "UW_CatBoxAtTop_Rejig";
 
-function UW_CatBoxAtTop_CSS (&$out) {
+function UW_CatBoxAtTop_CSS ( &$out ) {
 	global $wgScriptPath;
 	$href = "$wgScriptPath/extensions/uniwiki/CatBoxAtTop/style.css";
-	$out->addScript ("<link rel='stylesheet' href='$href' />");
+	$out->addScript ( "<link rel='stylesheet' href='$href' />" );
 	return true;
 }
 
-function UW_CatBoxAtTop_Rejig (&$out, &$text) {
+function UW_CatBoxAtTop_Rejig ( &$out, &$text ) {
 	global $wgVersion;
 
 	// no categories = no box
-	if (!$out->mCategoryLinks)
+	if ( !$out->mCategoryLinks )
 		return true;
 
 	/* add a category box to the top of the output,
@@ -43,16 +43,16 @@ function UW_CatBoxAtTop_Rejig (&$out, &$text) {
 	$catbox = "<div id=\"catbox\"><div>\n";
 	$catbox .= "<h5>Categories</h5><ul>\n";
 	$catlinks = array();
-	if ($wgVersion == '1.13.0') {
+	if ( $wgVersion == '1.13.0' ) {
 		$catlinks = $out->mCategoryLinks['normal'];
 	} else {
 		$catlinks = $out->mCategoryLinks;
 	}
 
-	foreach ($catlinks as $cat)
+	foreach ( $catlinks as $cat )
 		$catbox .= "<li>$cat</li>\n";
 	$catbox .= "</ul></div></div>\n";
 
-	$text = $catbox.$text;
+	$text = $catbox . $text;
 	return true;
 }
