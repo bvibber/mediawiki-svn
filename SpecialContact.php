@@ -358,8 +358,11 @@ class EmailContactForm {
 
 				wfDebug( "$fname: success\n" );
 
-				$titleObj = SpecialPage::getTitleFor( "Contact" );
-				$wgOut->redirect( "http://dev.donate.wikimedia.org/index.php/Donate/Support/en");
+				$returnto = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
+				if( is_null( $returnto ) || !$returnto->isLocal() ) {
+					$returnto = SpecialPage::getTitleFor( "Contact" );
+				}
+				$wgOut->redirect( $returnto->getFullUrl() );
 				wfRunHooks( 'ContactFromComplete', array( $to, $replyto, $subject, $this->text ) );
 			}
 		}
