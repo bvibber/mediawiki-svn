@@ -30,7 +30,10 @@ function UW_AutoCreateCategoryPages_Save ( &$article, &$user, &$text, &$summary,
 	 * and see if they exists as "proper" pages; if not
 	 * then create a simple page for them automatically */
 
-	// extract the categories on this page
+	// Extract the categories on this page
+	//
+	// FIXME: this obviously only works for the English namespaces
+	//
 	$regex = "/\[\[category:(.+?)(?:\|.*)?\]\]/i";
 	preg_match_all ( $regex, $text, $matches );
 
@@ -53,6 +56,8 @@ function UW_AutoCreateCategoryPages_Save ( &$article, &$user, &$text, &$summary,
 	 * see if they already exist as a category page */
 	foreach ( $on_page as $db_key ) {
 		if ( !in_array( $db_key, $in_db ) ) {
+
+			wfLoadExtensionMessages( 'AutoCreateCategoryPages' );
 
 			// if it doesn't exist, then create it here
 			$page_title = Title::newFromDBkey ( $db_key )->getText();
