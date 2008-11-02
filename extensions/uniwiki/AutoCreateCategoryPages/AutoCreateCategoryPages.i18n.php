@@ -13,7 +13,8 @@ $messages['en'] = array(
 	'autocreatecategorypages-desc' => 'Create missing category pages automatically on save',
 	'autocreatecategorypages-stub' => 'This is a category page.
 It lists all of the pages in category "$1" as well as all subcategories of category "$1" if any exist.',
-	'autocreatecategorypages-createdby' => 'Created automatically by the AutoCreateCategoryPages extension.'
+	'autocreatecategorypages-createdby' => 'Created automatically by the AutoCreateCategoryPages extension.',
+	'autocreatecategorypages-editor' => 'Automatic category creator', // The username used for the edit
 );
 
 $messages['es'] = array(
