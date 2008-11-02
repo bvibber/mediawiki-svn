@@ -80,13 +80,25 @@ class CodeBrowseItemView extends CodeBrowseView {
 	}
 	
 	function showFile() {
+		$i = strpos( $this->mBasePath, '/' );
+		$i = $i === false ? 0 : $i + 1;
+		$filename = substr( $this->mBasePath, $i );
+		$i = strpos( $filename, '.' );
+		if ( $i !== false ) {
+			$ext = substr( $filename, $i + 1 );
+			$mime = MimeMagic::singleton();
+			$ctype = $mime->guessTypesForExtension( $ext ); 
+		} else {
+			$ctype = 'application/octet-stream';
+		}
+		
 		$contents = $this->svn->getFile( $this->mBasePath, $this->mRev == 'HEAD' ? null : $this->mRev );
 		if ( $this->mAction == 'raw' || $this->mAction == 'download' ) {
 			global $wgOut;
 			$wgOut->disable();
 			
 			if ( $this->mAction == 'raw' )
-				header( 'Content-Type: text/plain' );
+				header( 'Content-Type: '.$ctype );
 			else
 				header( 'Content-Type: application/octet-stream' );
 			header( 'Content-Length: '.strlen( $contents ) );
@@ -94,6 +106,9 @@ class CodeBrowseItemView extends CodeBrowseView {
 			return;
 		}
 		
-		return Xml::element( 'pre', array( 'style' => 'overflow: auto;' ), $contents );			
+		if ( substr( $ctype, 0, 5 ) == 'text/' )
+			return Xml::element( 'pre', array( 'style' => 'overflow: auto;' ), $contents );
+		else
+			return wfMsgHTML( 'codebrowse-binary-file' );			
 	}
 }

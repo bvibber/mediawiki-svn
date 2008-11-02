@@ -13,6 +13,7 @@ $messages['en'] = array(
 	'codebrowse-revision'	=> 'Revision',
 	'codebrowse-lastchange'	=> 'Last modified date',
 	'codebrowse-size' 	=> 'Size',
+	'codebrowse-binary-file'	=> 'Binary files will not be shown.'
 );
 
 	
