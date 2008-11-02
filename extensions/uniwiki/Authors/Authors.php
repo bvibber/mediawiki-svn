@@ -24,6 +24,7 @@ $wgExtensionMessagesFiles['Authors'] = dirname( __FILE__ ) . '/Authors.i18n.php'
 
 /* ---- HOOKS ---- */
 $wgHooks['OutputPageBeforeHTML'][] = "UW_Authors_List";
+
 function UW_Authors_List ( &$out, &$text ) {
 	global $wgTitle, $wgRequest, $wgShowAuthorsNamespaces, $wgShowAuthors;
 
@@ -68,6 +69,9 @@ function UW_Authors_List ( &$out, &$text ) {
 
 	// now build a sensible authors display in HTML
 	require_once ( "includes/Credits.php" );
+
+	wfLoadExtensionMessages( 'Authors' );
+
 	$authors = "\n<div class='authors'>" .
 		"<h4>" . wfMsg( 'authors_authors' ) . "</h4>" .
 		"<ul>";
