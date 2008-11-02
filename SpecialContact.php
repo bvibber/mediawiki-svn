@@ -359,7 +359,7 @@ class EmailContactForm {
 				wfDebug( "$fname: success\n" );
 
 				$titleObj = SpecialPage::getTitleFor( "Contact" );
-				$wgOut->redirect( "http://www.loldawgz.com/dawgz/All-Your-Base-AYBABTU.jpg");
+				$wgOut->redirect( "http://dev.donate.wikimedia.org/index.php/Donate/Support/en");
 				wfRunHooks( 'ContactFromComplete', array( $to, $replyto, $subject, $this->text ) );
 			}
 		}
