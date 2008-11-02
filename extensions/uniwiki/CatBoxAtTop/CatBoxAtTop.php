@@ -38,11 +38,17 @@ function UW_CatBoxAtTop_Rejig ( &$out, &$text ) {
 	if ( !$out->mCategoryLinks )
 		return true;
 
+	wfLoadExtensionMessages( 'CatBoxAtTop' );
+
 	/* add a category box to the top of the output,
 	 * to be dropped into the top right via CSS */
 	$catbox = "<div id=\"catbox\"><div>\n";
-	$catbox .= "<h5>Categories</h5><ul>\n";
+	$catbox .= "<h5>" . wfMsgForContent( 'catboxattop-categories' ) . "</h5><ul>\n";
 	$catlinks = array();
+
+	//
+	// FIXME: outputs "Array" in the box instead of the categories (r43050)
+	//
 	if ( $wgVersion == '1.13.0' ) {
 		$catlinks = $out->mCategoryLinks['normal'];
 	} else {
