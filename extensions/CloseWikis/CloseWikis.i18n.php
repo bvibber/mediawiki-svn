@@ -125,7 +125,7 @@ $messages['arz'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'closewikis-closed-default' => 'Това уики е затворено',
+	'closewikis-desc' => 'Позволява да се затварят уикита в уики ферми',
 	'closewikis-page' => 'Затваряне на уикито',
 	'closewikis-page-close' => 'Затваряне на уикито',
 	'closewikis-page-close-wiki' => 'Уики:',
@@ -137,6 +137,13 @@ $messages['bg'] = array(
 	'closewikis-page-err-nowiki' => 'Посоченото уики е невалидно',
 	'closewikis-page-err-closed' => 'Уикито вече беше затворено',
 	'closewikis-page-err-opened' => 'Уикито не беше затворено',
+	'closewikis-list' => 'Списък на затворените уикита',
+	'closewikis-list-intro' => 'Този списък съдържа уикита, които са били затворени от стюардите.',
+	'closewikis-list-header-wiki' => 'Уики',
+	'closewikis-list-header-by' => 'Затворено от',
+	'closewikis-list-header-timestamp' => 'Затворено на',
+	'right-editclosedwikis' => 'Редактиране на затворени уикита',
+	'right-closewikis' => 'Затваряне на уикита',
 );
 
 /** Czech (Česky)

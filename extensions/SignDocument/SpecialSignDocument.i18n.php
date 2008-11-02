@@ -873,15 +873,20 @@ $1',
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} יומן חסימות] • <!--
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} בדיקת IP])<!--
 --></span>',
+	'sign-viewfield-stricken' => 'מחוקה',
 	'sign-viewfield-reviewedby' => 'בודק',
 	'sign-viewfield-reviewcomment' => 'הערה',
 	'sign-detail-uniquequery' => 'יישויות דומות',
 	'sign-detail-uniquequery-run' => 'הרצת שאילתה',
+	'sign-detail-strike' => 'מחיקת החתימה',
 	'sign-reviewsig' => 'בדיקת החתימה',
 	'sign-review-comment' => 'הערה',
 	'sign-submitreview' => 'שליחת בדיקה',
 	'sign-uniquequery-similarname' => 'שם דומה',
 	'sign-uniquequery-similaraddress' => 'כתובת דומה',
+	'sign-uniquequery-similarphone' => 'טלפון דומה',
+	'sign-uniquequery-similaremail' => 'דוא"ל דומה',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] חתם על [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Hindi (हिन्दी)

@@ -47,6 +47,14 @@ $messages['arz'] = array(
 	'unicodeconverter-newtext' => 'النص المحول:',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'unicodeconverter-oldtext' => 'Оригинален текст:',
+	'unicodeconverter-newtext' => 'Преобразуван текст:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -149,7 +157,11 @@ Dat deit för en ISO 8859-1 Websigg paße.',
  * @author Robby
  */
 $messages['lb'] = array(
+	'unicodeconverter' => 'Unicode Ëmwandler',
+	'unicodeconverter-desc' => 'En einfacht Beispillvun engem Modul vun enger Spezialsäit. [[Special:UnicodeConverter|E puer Zeechen am UTF-8 Format]] ginn an HTML Eenheeten ëmgewandelt déi dann an enger Websäit no ISO 8859-1 agesat kënne ginn',
+	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Originaltext:',
+	'unicodeconverter-newtext' => 'Text ëmwandelen:',
 );
 
 /** Dutch (Nederlands)

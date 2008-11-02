@@ -267,7 +267,7 @@ $messages['cs'] = array(
  * @author ОйЛ
  */
 $messages['cu'] = array(
-	'sitematrix' => 'Викимє́дїѩ опꙑтьствова́нии катало́гъ',
+	'sitematrix' => 'Викимє́дїѩ опꙑтьствова́нии ката́логъ',
 	'sitematrix-language' => 'ѩꙁꙑ́къ',
 );
 

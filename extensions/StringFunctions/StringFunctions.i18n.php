@@ -37,6 +37,13 @@ $messages['hsb'] = array(
 	'stringfunctions-desc' => 'Rozšěrja parser wo funkcije za znamješkowe slědy',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'stringfunctions-desc' => 'Extende le analysator syntactic con functiones de texto',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

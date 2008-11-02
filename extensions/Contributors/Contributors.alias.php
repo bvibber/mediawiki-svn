@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Contributors' => array( 'مساهمون' ),
 );
 
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'Contributors' => array( 'Kenlabourerien' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'Contributors' => array( 'Autoren' ),

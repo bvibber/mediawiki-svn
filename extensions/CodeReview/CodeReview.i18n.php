@@ -353,12 +353,14 @@ $messages['bg'] = array(
 	'repoadmin-new-button' => 'Създаване',
 	'repoadmin-edit-bug' => 'Път до Bugzilla:',
 	'repoadmin-edit-view' => 'Път до ViewVC:',
+	'specialpages-group-developer' => 'Инструменти за разработчици',
 );
 
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
+	'code-field-comments' => 'Bilješke',
 	'right-codereview-link-user' => 'Poveži autore sa wiki korisnicima',
 );
 
@@ -1084,8 +1086,61 @@ $4',
  * @author Dalibor Bosits
  */
 $messages['hr'] = array(
+	'code' => 'Pregled koda',
+	'code-comments' => 'Komentari',
+	'code-desc' => '[[Special:Code|Alat za pregled koda]] s podrškom za [[Special:RepoAdmin|Subversion]]',
+	'code-no-repo' => 'Nema konfiguracije repozitorija!',
+	'code-notes' => 'zabilješke pregleda',
+	'code-authors' => 'autori',
+	'code-tags' => 'oznake',
+	'code-authors-text' => 'Ispod je popis autora iz repozitorija u redu po nedavnim predajama.',
+	'code-author-haslink' => 'Ovaj autor je povezan s wiki suradnikom $1',
+	'code-author-orphan' => 'Ovaj autor nema poveznicu s wiki računom',
+	'code-author-dolink' => 'Poveži ovog autora na wiki suradnika:',
+	'code-author-alterlink' => 'Promijeni povezanog wiki suradnika za ovog autora:',
+	'code-author-orunlink' => 'Ili ukloni poveznicu za ovog wiki suradnika:',
+	'code-author-name' => 'Upišite suradničko ime:',
+	'code-author-success' => 'Autor $1 je povezan na wiki suradnika $2',
+	'code-author-link' => 'poveznica?',
+	'code-author-unlink' => 'ukloniti poveznicu?',
+	'code-author-unlinksuccess' => 'Uklonjena poveznica za autora $1',
+	'code-field-id' => 'Izmjena',
 	'code-field-author' => 'Autor',
+	'code-field-user' => 'Komentator',
+	'code-field-message' => 'Sažetak predaje',
+	'code-field-status' => 'Stanje',
+	'code-field-timestamp' => 'Datum',
+	'code-field-comments' => 'Bilješke',
+	'code-field-path' => 'Putanja',
+	'code-field-text' => 'Bilješka',
 	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Datum:',
+	'code-rev-message' => 'Komentar:',
+	'code-rev-repo' => 'Repozitorij:',
+	'code-rev-rev' => 'Izmjena:',
+	'code-rev-rev-viewvc' => 'na ViewVC',
+	'code-rev-paths' => 'Promijenjene putanje:',
+	'code-rev-modified-a' => 'dodano',
+	'code-rev-modified-r' => 'zamijenjeno',
+	'code-rev-modified-d' => 'izbrisano',
+	'code-rev-modified-m' => 'promijenjeno',
+	'code-rev-status' => 'Stanje:',
+	'code-rev-status-set' => 'Promijeni stanje',
+	'code-rev-tags' => 'Oznake:',
+	'code-rev-tag-add' => 'Dodaj oznake:',
+	'code-rev-tag-remove' => 'Ukloni oznake:',
+	'code-rev-comment-by' => 'Komentirao $1',
+	'code-rev-comment-submit' => 'Postavi komentar',
+	'code-rev-diff' => 'Raz',
+	'code-rev-diff-link' => 'raz',
+	'code-status-new' => 'novo',
+	'code-status-resolved' => 'riješeno',
+	'code-status-ok' => 'ok',
+	'code-status-deferred' => 'odgođeno',
+	'code-pathsearch-legend' => 'Traži izmjene u ovom repozitoriju preko putanje',
+	'code-pathsearch-path' => 'Putanja:',
+	'code-rev-submit' => 'Predaj izmjene',
+	'codereview-reply-link' => 'odgovori',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1285,8 +1340,20 @@ $messages['ia'] = array(
 	'code-status-fixme' => 'a reparar',
 	'code-status-resolved' => 'resolvite',
 	'code-status-ok' => 'ok',
+	'code-status-deferred' => 'differite',
+	'code-pathsearch-legend' => 'Cercar versiones in iste repo per cammino',
+	'code-pathsearch-path' => 'Cammino:',
 	'code-rev-submit' => 'Committer cambiamentos',
+	'code-rev-submit-next' => 'Committer & proxime non resolvite',
 	'codereview-reply-link' => 'responder',
+	'codereview-email-subj' => '[$1] [v$2]: Nove commento addite',
+	'codereview-email-body' => 'Le usator "$1" publicava un commento in v$3.
+
+Adresse URL complete: $2
+
+Commento:
+
+$4',
 	'repoadmin' => 'Administration del repositorios',
 	'repoadmin-new-legend' => 'Crear un nove repositorio',
 	'repoadmin-new-label' => 'Nomine del repositorio:',
@@ -2166,7 +2233,10 @@ $messages['te'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'code' => 'Revision del codice',
 	'code-comments' => 'Comenti',
+	'code-no-repo' => 'Nissun deposito configurà!',
+	'code-notes' => 'note de revision',
 	'code-authors' => 'autori',
 	'code-tags' => 'tag',
 	'code-author-haslink' => "Sto autor el xe ligà a l'utente wiki $1",
@@ -2191,6 +2261,7 @@ $messages['vec'] = array(
 	'code-rev-message' => 'Comento:',
 	'code-rev-repo' => 'Deposito:',
 	'code-rev-rev' => 'Revision:',
+	'code-rev-rev-viewvc' => 'su ViewVC',
 	'code-rev-paths' => 'Percorsi modificài:',
 	'code-rev-modified-a' => 'zontà',
 	'code-rev-modified-r' => 'rinpiazà',
@@ -2206,6 +2277,9 @@ $messages['vec'] = array(
 	'code-rev-comment-preview' => 'Anteprima',
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
+	'code-status-new' => 'novo',
+	'code-status-resolved' => 'sistemà',
+	'code-status-deferred' => 'rimandà',
 	'code-pathsearch-path' => 'Percorso:',
 	'code-rev-submit' => 'Salva le modìfeghe',
 	'codereview-reply-link' => 'rispondi',
@@ -2223,6 +2297,7 @@ $4',
 	'repoadmin-edit-legend' => 'Modìfega del deposito "$1"',
 	'repoadmin-edit-path' => 'Percorso del deposito:',
 	'repoadmin-edit-bug' => 'Percorso de Bugzilla:',
+	'repoadmin-edit-view' => 'Percorso de ViewVC:',
 	'repoadmin-edit-button' => 'Va ben',
 	'right-codereview-add-tag' => 'Zonta tag novi a le revision',
 	'right-codereview-remove-tag' => 'Cava tag da le revision',

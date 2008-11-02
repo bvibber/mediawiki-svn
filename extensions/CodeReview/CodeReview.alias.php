@@ -31,6 +31,11 @@ $aliases['arz'] = array(
 	'RepoAdmin' => array( 'إدارة_المستودع' ),
 );
 
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'Code' => array( 'Kod' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'Code' => array( 'Kod' ),

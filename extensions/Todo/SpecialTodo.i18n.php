@@ -67,13 +67,6 @@ $messages['krl'] = array(
 	'todo-list-cancel' => 'Keskevytä',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'todo-list-cancel' => 'Чараш',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -310,7 +303,7 @@ $4',
 	'todo-issue-summary' => 'Resumo do tema:',
 	'todo-form-details' => 'Detalles:',
 	'todo-form-email' => 'Para recibir unha notificación por correo electrónico cando o artigo esté pechado, teclee o seu enderezo aquí:',
-	'todo-form-submit' => 'Presentar Consulta',
+	'todo-form-submit' => 'Enviar a consulta',
 );
 
 /** Swiss German (Alemannisch)
@@ -525,6 +518,13 @@ $messages['lb'] = array(
 	'todo-new-item' => 'Neien Objet',
 	'todo-issue-summary' => 'Resumé vun der Aufgab:',
 	'todo-form-details' => 'Detailer:',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'todo-list-cancel' => 'Чараш',
 );
 
 /** Malayalam (മലയാളം)

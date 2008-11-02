@@ -46,6 +46,12 @@ $aliases['bcc'] = array(
 	'ViewConfig' => array( 'چارگ تنظیم' ),
 );
 
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'Configure' => array( 'Kefluniañ' ),
+	'Extensions' => array( 'Astennoù' ),
+);
+
 /** Czech (Česky) */
 $aliases['cs'] = array(
 	'Configure' => array( 'Konfigurace' ),

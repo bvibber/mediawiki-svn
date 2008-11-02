@@ -183,6 +183,16 @@ $messages['eo'] = array(
 	'watchers_less_than_x' => 'Malpli ol $1 {{PLURAL:$1|uzanto|uzantoj}} atentas ĉi tiun paĝon.',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'watchers' => 'Tarkkailijat',
+	'watchers_error_article' => "'''Virhe:''' Sivua ei ole olemassa.",
+	'watchers_header' => '{{PLURAL:$2|Käyttäjä, joka tarkkailee|Käyttäjät, jotka tarkkailevat}} sivua ”$1”',
+	'watchers_noone_watches' => 'Kukaan ei tarkkaile tätä sivua.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

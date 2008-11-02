@@ -55,6 +55,11 @@ $aliases['ht'] = array(
 	'AdvancedRandom' => array( 'RandonmAvanse' ),
 );
 
+/** Interlingua (Interlingua) */
+$aliases['ia'] = array(
+	'AdvancedRandom' => array( 'AleatoriAvantiate' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'AdvancedRandom' => array( 'Zoufall' ),

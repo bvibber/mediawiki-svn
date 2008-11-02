@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Player' => array( 'لاعب' ),
 );
 
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'Player' => array( "C'hoarier" ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Player' => array( 'Mediaspeuler' ),

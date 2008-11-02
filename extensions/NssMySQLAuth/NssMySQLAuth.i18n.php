@@ -66,6 +66,19 @@ $messages['arz'] = array(
 	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'am-username' => 'потребителско име',
+	'am-email' => 'е-поща',
+	'am-updated' => 'Промените бяха съхранени успешно!',
+	'nss-save-changes' => 'Съхраняване на промените',
+	'nss-create-account-header' => 'Създаване на нова сметка',
+	'nss-create-account' => 'Създаване на сметка',
+	'nss-welcome-mail' => 'Беше ви създадена сметка с потребителско име $1 и парола $2.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

@@ -129,6 +129,13 @@ $messages['eo'] = array(
 	'specialwhoiswatchingaddbtn' => 'Aldonas selektitajn Uzantojn',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'specialwhoiswatchingthepage' => 'Kuka tarkkailee sivua %s',
+);
+
 /** French (Français)
  * @author Dereckson
  * @author Grondin

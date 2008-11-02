@@ -337,7 +337,7 @@ Use só as comiñas ("deste xeito") para delimitar cadeas literais.
 Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que, por favor, use esta función moderadamente.',
 	'sqlislogged' => 'Por favor dese conta de que todas as consultas son rexistradas.',
 	'sqlquery' => 'Introducir consulta',
-	'querybtn' => 'Enviar consulta',
+	'querybtn' => 'Enviar a consulta',
 	'selectonly' => 'Só se permiten consultas de só lectura',
 	'querysuccessful' => 'Consulta con éxito',
 	'right-asksql' => 'Facer procuras SQL',

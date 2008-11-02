@@ -20,4 +20,9 @@ $aliases['nl'] = array(
 	'ContributionTotal' => array( 'Giftentotaal' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'ContributionHistory' => array( 'Historia darowizn' ),
+	'ContributionTotal' => array( 'Łączna suma darowizn' ),
+);
 

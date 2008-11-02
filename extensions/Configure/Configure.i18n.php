@@ -545,6 +545,7 @@ $messages['bg'] = array(
 	'configure-select-wiki-submit' => 'Потвърждаване',
 	'configure-setting-not-available' => 'Тази настройка не е налична в използваната версия на МедияУики',
 	'configure-view' => 'Вижте',
+	'configure-view-all-versions' => 'Пълен списък на версиите',
 	'configure-view-not-allowed' => 'Не ви е позволено да виждате тази настройка',
 	'extensions' => 'Конфигуриране на разширенията',
 	'right-configure' => 'Конфигуриране на уикито',

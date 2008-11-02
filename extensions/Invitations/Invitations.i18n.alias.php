@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'Invitations' => array( 'دعوات' ),
 );
 
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'Invitations' => array( 'Pedadennoù' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'Invitations' => array( 'Einladungen' ),

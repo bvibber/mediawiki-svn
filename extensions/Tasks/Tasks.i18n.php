@@ -94,6 +94,27 @@ $messages['qqq'] = array(
 	'tasks_desc' => 'Short description of the Tasks extension, shown on [[Special:Version]].',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'tasks_close' => 'Затваряне на задачата',
+	'tasks_delete' => 'Изтриване',
+	'tasks_created_by' => 'Създадена от $1',
+	'tasks_discussion_page_link' => 'Беседа на задачата',
+	'tasks_closedby' => 'Затворена от $1',
+	'tasks_sidebar_title' => 'Отворени задачи',
+	'tasks_here' => 'тук',
+	'tasks_more_like_it' => 'още',
+	'tasks_table_header_page' => 'Страница',
+	'tasks_search_form_title' => 'Търсене',
+	'tasks_search_tasks' => 'Задачи',
+	'tasks_search_status' => 'Статут',
+	'tasks_previous' => 'Предишна',
+	'tasks_next' => 'Следваща',
+	'tasks_sort' => 'Сортиране',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -180,6 +201,17 @@ Falls Sie nicht in ein paar Sekunden weitergeleitet wurden, klicken Sie $1.',
 	'tasks_you_have_no_assignments' => 'Sie haben keine offenen Aufgaben',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'tasks' => 'Tehtävät',
+	'tasks_tab' => 'Tehtävät',
+	'tasks_delete' => 'Poista',
+	'tasks_see_page_tasks' => '(tämän sivun tehtävät)',
+	'tasks_table_header_page' => 'Sivu',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Korrigan
@@ -255,6 +287,21 @@ $messages['fr'] = array(
 	'tasks_logpagetext' => 'Ceci est un historique des changements dans les tâches',
 	'tasks_logentry' => 'Pour « [[$1]] »',
 	'tog-show_task_comments' => 'Voir la page de commentaires à propos des tâches.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'tasks_form_comment' => 'Comentario',
+	'tasks_delete' => 'Borrar',
+	'tasks_here' => 'aquí',
+	'tasks_more_like_it' => 'máis',
+	'tasks_table_header_page' => 'Páxina',
+	'tasks_search_form_title' => 'Procurar',
+	'tasks_previous' => 'Anterior',
+	'tasks_next' => 'Seguinte',
+	'tasks_logentry' => 'De "[[$1]]"',
 );
 
 /** Italian (Italiano)

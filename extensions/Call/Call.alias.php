@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Call' => array( 'استدعاء' ),
 );
 
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'Call' => array( 'Pellgomz' ),
+);
+
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'Call' => array( 'Κλήση' ),

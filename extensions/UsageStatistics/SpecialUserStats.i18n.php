@@ -383,6 +383,7 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Japsu
+ * @author Silvonen
  */
 $messages['fi'] = array(
 	'specialuserstats' => 'Käyttäjäkohtaiset tilastot',
@@ -396,6 +397,8 @@ $messages['fi'] = array(
 	'usagestatisticsnostart' => '* <font color=red>Syötä aloituspäivä</font>',
 	'usagestatisticsnoend' => '* <font color=red>Syötä lopetuspäivä</font>',
 	'usagestatisticsbadstartend' => '<b>Aloitus- tai lopetuspäivä ei kelpaa! Tarkista päivämäärät.</b>',
+	'usagestatisticsintervalweek' => 'Viikko',
+	'usagestatisticsintervalmonth' => 'Kuukausi',
 );
 
 /** French (Français)

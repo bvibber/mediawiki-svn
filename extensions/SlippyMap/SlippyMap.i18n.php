@@ -496,3 +496,36 @@ $messages['te'] = array(
 	'slippymap_maperror' => 'పటపు పొరపాటు:',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'slippymap_desc' => 'Thêm thẻ <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> để nhúng bản đồ trơn OpenLayers. Các bản đồ do [http://openstreetmap.org openstreetmap.org] cung cấp.',
+	'slippymap_latmissing' => 'Thiếu giá trị lat (vĩ độ).',
+	'slippymap_lonmissing' => 'Thiếu giá trị lon (kinh độ).',
+	'slippymap_zoommissing' => 'Thiếu giá trị z (cấp thu phóng).',
+	'slippymap_longdepreciated' => 'Xin hãy dùng “lon” thay vì “long” (tham số đã được đổi tên).',
+	'slippymap_widthnan' => 'giá trị chiều rộng (w), “%1”, không phải là nguyên số hợp lệ',
+	'slippymap_heightnan' => 'giá trị chiều cao (h), “%1”, không phải là nguyên số hợp lệ',
+	'slippymap_zoomnan' => 'giá trị cấp thu phóng (z), “%1”, không phải là nguyên số hợp lệ',
+	'slippymap_latnan' => 'giá trị vĩ độ (lat), “%1”, không phải là số hợp lệ',
+	'slippymap_lonnan' => 'giá trị kinh độ (lon), “%1”, không phải là số hợp lệ',
+	'slippymap_widthbig' => 'giá trị chiều rộng (w) tối đa là “1000”',
+	'slippymap_widthsmall' => 'giá trị chiều rộng (w) tối thiểu là “100”',
+	'slippymap_heightbig' => 'giá trị chiều cao (h) tối đa là “1000”',
+	'slippymap_heightsmall' => 'giá trị chiều cao (h) tối thiểu là “100”',
+	'slippymap_latbig' => 'giá trị vĩ độ (lat) tối đa là “90”',
+	'slippymap_latsmall' => 'giá trị vĩ độ (lat) tối thiểu là “-90”',
+	'slippymap_lonbig' => 'giá trị kinh độ (lon) tối đa là “180”',
+	'slippymap_lonsmall' => 'giá trị kinh độ (lon) tối thiểu là “-180”',
+	'slippymap_zoomsmall' => 'giá trị cấp thu phóng tối thiểu là “0”',
+	'slippymap_zoom18' => 'giá trị cấp thu phóng (z) tối đa là 17. Lưu ý rằng phần mở rộng MediaWiki này dựa trên lớp “osmarender” của OpenStreetMap, nó không vẽ rõ hơn cấp 17. Lớp Mapnik tại openstreetmap.org tới được cấp 18.',
+	'slippymap_zoombig' => 'giá trị cấp thu phóng (z) tối đa là 17.',
+	'slippymap_invalidlayer' => 'Giá trị “layer” không hợp lệ: “%1”.',
+	'slippymap_maperror' => 'Lỗi trong bản đồ:',
+	'slippymap_osmtext' => 'Xem bản đồ này tại OpenStreetMap.org',
+	'slippymap_code' => 'Mã wiki để nhúng phần bản đồ này:',
+	'slippymap_button_code' => 'Xem mã wiki',
+	'slippymap_resetview' => 'Mặc định lại bản đồ',
+);
+

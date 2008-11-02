@@ -475,6 +475,7 @@ $messages['bg'] = array(
 	'viewapc-display-type' => 'Тип',
 	'viewapc-display-mem_size' => 'Размер',
 	'viewapc-ls-options-legend' => 'Настройки',
+	'viewapc-ls-submit' => 'Отиване',
 	'viewapc-ls-header-name' => 'Име',
 	'viewapc-ls-header-size' => 'Размер',
 	'viewapc-ls-sort-size' => 'Размер',

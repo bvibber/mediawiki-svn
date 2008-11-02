@@ -333,6 +333,7 @@ $messages['he'] = array(
 	'edituser-nouser' => 'המשתמש המבוקש אינו קיים',
 	'edituser-exempt' => 'לא ניתן לערוך את המשתמש המבוקש',
 	'right-edituser' => 'עריכת ההעדפות של משתמשים אחרים',
+	'right-edituser-exempt' => 'העדפותיהם לא ניתנות לשינוי על ידי אחרים',
 );
 
 /** Hindi (हिन्दी)

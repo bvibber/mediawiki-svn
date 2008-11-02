@@ -112,6 +112,8 @@ $messages['bg'] = array(
 	'errorhandler-error-user-notice' => 'Потребителска забележка',
 	'errorhandler-msg-text' => '$1 : $2 в $3 (ред $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> в <b>$3</b> (ред <b>$4</b>)',
+	'errorhandler-trace-line' => '$1 (ред $2): $3',
+	'errorhandler-trace-line-internal' => '[вътрешна функция]: $1',
 );
 
 /** German (Deutsch)

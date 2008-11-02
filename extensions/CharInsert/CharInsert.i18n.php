@@ -151,10 +151,11 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Terik
  */
 $messages['hu'] = array(
-	'charinsert-desc' => 'JavaScript doboz létrehozását engedélyezi [[MediaWiki:Edittools|nem-standard karakterek beillesztéséhez]]',
+	'charinsert-desc' => 'JavaScript-alapú doboz létrehozása [[MediaWiki:Edittools|különleges karakterek beillesztéséhez]]',
 );
 
 /** Interlingua (Interlingua)

@@ -1210,6 +1210,8 @@ Reverte primo iste modification.',
 	'oversight-header' => 'Infra es un lista de revisiones recentemente celate permanentemente del publico.
 Le divulgation de iste informationes pote resultar in le perdita permanente del privilegios supervisorial.',
 	'oversight-legend' => 'Cercar in registro de celamento de revisiones',
+	'oversight-oversighter' => 'Supervisor:',
+	'oversight-offender' => 'Transgressor:',
 );
 
 /** Indonesian (Bahasa Indonesia)

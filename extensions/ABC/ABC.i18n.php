@@ -42,6 +42,14 @@ $messages['arz'] = array(
 	'abcdownload' => 'تنزيل:',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'abcdesc' => 'Добавя етикет <tt>&lt;abc&gt;</tt> за форматиране на АВС музика',
+	'abcdownload' => 'Изтегляне:',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'abcdesc' => 'Ergänzt das <tt>&lt;abc&gt;</tt>-Tag zur Notation von Musik in ABC',
@@ -62,6 +70,13 @@ $messages['dsb'] = array(
 $messages['fr'] = array(
 	'abcdesc' => 'Ajoute une balise <tt>&lt;abc&gt;</tt> pour formater la musique ABC',
 	'abcdownload' => 'Télécharger :',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'abcdownload' => 'Descargar:',
 );
 
 /** Hebrew (עברית)

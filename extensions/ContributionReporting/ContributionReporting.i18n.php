@@ -25,6 +25,14 @@ $messages['en'] = array(
 	'contrib-hist-anonymous' => 'Anonymous',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'contrib-hist-name' => 'Име',
+	'contrib-hist-date' => 'Час и дата',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'contributionreporting-desc' => 'Live-Berichterstattung von der Wikimedia-Spendenkampagne',
@@ -47,15 +55,33 @@ $messages['fa'] = array(
 	'contrib-hist-amount' => 'مبلغ',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'contrib-hist-name' => 'Nimi',
+);
+
 /** French (Français)
+ * @author Grondin
  * @author IAlex
  */
 $messages['fr'] = array(
+	'contributionreporting-desc' => 'Rapport en direct concernant la collecte de fonds de Wikimedia',
+	'contributiontotal' => 'Contributions totales',
+	'contributionhistory' => 'Historique des contributions',
 	'contrib-hist-header' => 'Commentaires en direct des donateurs à travers le monde',
 	'contrib-hist-name' => 'Nom',
 	'contrib-hist-date' => 'Date et heure',
 	'contrib-hist-amount' => 'Quantité',
 	'contrib-hist-anonymous' => 'Anonymes',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'contrib-hist-name' => 'Nome',
 );
 
 /** Hebrew (עברית)
@@ -75,12 +101,28 @@ $messages['he'] = array(
 	'contrib-hist-anonymous' => 'אנונימי',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'contributionreporting-desc' => 'Reporto in directo super le collecta de fundos de Wikimedia',
+	'contributiontotal' => 'Total de contributiones',
+	'contributionhistory' => 'Historia de contributiones',
+	'contrib-hist-header' => 'Commentos in directo de donatores in tote le mundo',
+	'contrib-hist-name' => 'Nomine',
+	'contrib-hist-date' => 'Hora e data',
+	'contrib-hist-amount' => 'Quantitate',
+	'contrib-hist-anonymous' => 'Anonyme',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
+	'contributionreporting-desc' => 'Live-Reportage vun der Wikimedia-Spendenaktioun',
 	'contributiontotal' => 'Total vun den Donen',
 	'contributionhistory' => 'Evolutioun vun den Donen',
+	'contrib-hist-header' => 'Bemierkungen vun Donateuren aus der ganzer Welt (real-time)',
 	'contrib-hist-name' => 'Numm',
 	'contrib-hist-date' => 'Zäit an Datum',
 	'contrib-hist-amount' => 'Héicht vum Don',
@@ -99,6 +141,20 @@ $messages['nl'] = array(
 	'contrib-hist-date' => 'Datum en tijd',
 	'contrib-hist-amount' => 'Bedrag',
 	'contrib-hist-anonymous' => 'Anoniem',
+);
+
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'contributionreporting-desc' => 'Bieżące sprawozdanie na temat zebranych funduszy dla Wikimedia',
+	'contributiontotal' => 'Łączna suma darowizn',
+	'contributionhistory' => 'Historia darowizn',
+	'contrib-hist-header' => 'Wpłaty darowizn z całego świata w czasie rzeczywistym',
+	'contrib-hist-name' => 'Nazwa',
+	'contrib-hist-date' => 'Godzina i data',
+	'contrib-hist-amount' => 'Kwota',
+	'contrib-hist-anonymous' => 'Anonimowy',
 );
 
 /** Portuguese (Português)
@@ -120,8 +176,24 @@ $messages['pt'] = array(
 $messages['vec'] = array(
 	'contributiontotal' => 'Contributi totali',
 	'contributionhistory' => 'Storia dei contributi',
+	'contrib-hist-header' => 'Comenti in tenpo reàle dai donatori de tuto el mondo',
 	'contrib-hist-name' => 'Nome',
 	'contrib-hist-date' => 'Ora e data',
+	'contrib-hist-amount' => 'Inporto',
 	'contrib-hist-anonymous' => 'Anonimo',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'contributionreporting-desc' => 'Báo cáo tức thời về cuộc vận động gây quỹ Wikimedia',
+	'contributiontotal' => 'Tổng số quyên góp',
+	'contributionhistory' => 'Lịch sử quyên góp',
+	'contrib-hist-header' => 'Danh sách tức thời các lời ghi từ khắp thế giới',
+	'contrib-hist-name' => 'Tên',
+	'contrib-hist-date' => 'Ngày giờ',
+	'contrib-hist-amount' => 'Số tiền',
+	'contrib-hist-anonymous' => 'Vô danh',
 );
 

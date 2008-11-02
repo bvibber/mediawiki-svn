@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'Watchers' => array( 'مراقبون' ),
 );
 
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'Watchers' => array( 'Sellerien' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'Watchers' => array( 'Beobachter' ),

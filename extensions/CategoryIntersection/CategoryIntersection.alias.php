@@ -89,7 +89,7 @@ $aliases['hu'] = array(
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'CategoryIntersection' => array( 'Intersection de categorias' ),
+	'CategoryIntersection' => array( 'Intersection de categorias', 'IntersectionDeCategorias' ),
 );
 
 /** Javanese (Basa Jawa) */
