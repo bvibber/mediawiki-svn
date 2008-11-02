@@ -20,7 +20,7 @@ $wgHooks['GetBlockedStatus'][] = 'wfRegexBlockCheck';
 function wfRegexBlockCheck ($current_user) {
 	global $wgMemc, $wgSharedDB;
 	if (!wfSimplifiedRegexCheckSharedDB())
-		return;
+		return true;
 	$ip_to_check = wfGetIP();
 	$key = "$wgSharedDB:regexBlockCore:blockers";
 	$cached = $wgMemc->get($key);
