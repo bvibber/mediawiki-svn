@@ -158,7 +158,7 @@ class CodeRevisionView extends CodeView {
 					"$viewvc$safePath?view=markup&pathrev=$rev",
 					$path );
 			} else {
-				$link = $encPath;
+				$link = $safePath;
 			}
 			if( $action !== 'A' && $action !== 'D' ) {
 				$diff = ' (' .
@@ -168,7 +168,7 @@ class CodeRevisionView extends CodeView {
 					')';
 			}
 		} else {
-			$link = $encPath;
+			$link = $safePath;
 		}
 		return "<li>$link ($desc)$diff</li>\n";
 	}
