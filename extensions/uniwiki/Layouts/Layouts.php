@@ -76,9 +76,9 @@ function UW_Layouts_maybeRedirectToLayout( $article, $user ) {
 	/* don't hijack the request if we are
 	 * in the middle of switching modes,
 	 * previewing,  or showing changes */
-	if ( $wgRequest->data['switch-mode']
-	|| $wgRequest->data['wpTextbox1']
-	|| $wgRequest->data['section-0'] )
+	if ( isset( $wgRequest->data['switch-mode'] )
+	|| isset( $wgRequest->data['wpTextbox1'] )
+	|| isset( $wgRequest->data['section-0'] ) )
 		return true;
 
 	/* if this page is new,
@@ -86,7 +86,7 @@ function UW_Layouts_maybeRedirectToLayout( $article, $user ) {
 	 * and the page is in a namespace that is using the extension
 	 * and we are not submitting the form (either saving OR preview)
 	 * and we're NOT editing an old revision */
-	if ( $article->fetchContent( $wgRequest->data['oldid'] ) === false
+	if ( ( !isset( $wgRequest->data['oldid'] ) || $article->fetchContent( $wgRequest->data['oldid'] ) === false )
 	&& ( $wgRequest->getVal ( "layout" ) === NULL )
 	&& in_array ( $article->mTitle->getNamespace(), $wgLayoutWhiteList )
 	&& ( $wgRequest->getVal( "action" ) != "submit" ) )
