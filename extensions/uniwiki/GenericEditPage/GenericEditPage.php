@@ -82,7 +82,9 @@ function UW_GenericEditPage_extractLayout ( &$text ) {
 
 	/* if no layout tag was found, this
 	 * function does nothing useful */
-	if ( !$matches[1][0] ) return array();
+	if ( !isset( $matches[1][0] ) ) {
+		return array();
+	}
 
 	/* get the wiki markup (containing the
 	 * directives) from this page's layout */
@@ -437,6 +439,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 
 	/* special case: if the first (un-named) section has text in the layout,
 	 * but not in the page, copy it. otherwise, use the page text (even if empty) */
+	// FIXME: Undefined offset:  0 in scenario without layout
 	$result[] = ( $layout[0]['text'] && !$page[0]['text'] ) ? $layout[0] : $page[0];
 
 	/* only show the un-named section if it is being used. as
@@ -482,8 +485,10 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 			}
 		}
 
-		if ( $insert_at === null ) $result[] = $page[$i];
-		else                    array_splice ( $result, $insert_at, 0, array( $page[$i] ) );
+		if ( $insert_at === null )
+			$result[] = $page[$i];
+		else
+			array_splice ( $result, $insert_at, 0, array( $page[$i] ) );
 	}
 
 	/* check to see if there were any sections in use
@@ -584,6 +589,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 
 
 		// if this section has a title, show it
+		// FIXME: Undefined index: title in scenario without layout
 		if ( $result[$i]['title'] ) {
 			$title = $result[$i]['title'];
 			if ( $result[$i]['lock-header'] ) {
@@ -601,6 +607,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 		/* always add a textarea, whether or
 		 * not it is currently in use. titles
 		 * without text are kind of useless */
+		// FIXME: Undefined index: lock-text in scenario without layout
 		if ( $result[$i]['lock-text'] ) {
 
 			/* render the wiki markup into HTML, the old-school
@@ -647,6 +654,7 @@ function UW_GenericEditPage_displayEditPage ( $editor, $out ) {
 
 
 	// pass the layout name back, to be re-appended
+	// FIXME: Undefined offset: 0 in scenario without layout
 	$out->addHTML ( "<input type='hidden' name='layout-name' value='{$layout[0]['name']}' />" );
 
 
@@ -695,12 +703,12 @@ function UW_GenericEditPage_combineBeforeSave ( &$editpage_Obj ) {
 	 * pressing the "switch mode" button, then
 	 * set a global to do some jiggery-pokery
 	 * in the displayEditPage function, later */
-	if ( $data['switch-mode'] )
+	if ( isset( $data['switch-mode'] ) )
 		$wgSwitchMode = true;
 
 	/* if we are editing in classic mode,
 	 * then this function does nothing! */
-	if ( $data['edit-mode'] != "generic" )
+	if ( isset( $data['edit-mode'] ) && $data['edit-mode'] != "generic" )
 		return true;
 
 	/* otherwise, clear the textbox and rebuild it
@@ -759,7 +767,7 @@ function UW_GenericEditPage_combineBeforeSave ( &$editpage_Obj ) {
 	}
 
 	// finally, re-add the layout name
-	if ( $data['layout-name'] ) {
+	if ( isset( $data['layout-name'] ) ) {
 		$editpage_Obj->textbox1 .= "<layout name=\"{$data['layout-name']}\" />";
 	}
 
