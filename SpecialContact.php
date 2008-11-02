@@ -283,7 +283,7 @@ class EmailContactForm {
 	}
 
 	function doSubmit( ) {
-		global $wgOut;
+		global $wgOut, $wgRequest;
 		global $wgEnableEmail, $wgUserEmailUseReplyTo, $wgEmergencyContact;
 		global $wgContactUser, $wgContactSender, $wgContactSenderName;
 
