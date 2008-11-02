@@ -52,7 +52,7 @@ class UniwikiChangesList extends ChangesList {
 			// handle these?
 		}
 		// new unpatrolled pages
-		else if ( $rc->unpatrolled && $rc_type == RC_NEW ) {
+		else if ( isset( $rc->unpatrolled ) && $rc_type == RC_NEW ) {
 			// handle these?
 		}
 		// log entries
