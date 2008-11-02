@@ -9,7 +9,7 @@ if ( !defined( "MEDIAWIKI" ) )
 /* ---- CREDITS ---- */
 
 $wgExtensionCredits['other'][] = array(
-	'name'        => 'Uniwiki CSS Hooks',
+	'name'        => 'CssHooks',
 	'author'      => 'Merrick Schaefer, Mark Johnston, Evan Wheeler and Adam Mckaig (at UNICEF)',
 	'description' => 'Add some CSS hooks to the HTML output of articles, for better styling',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_CSS_Hooks',
@@ -17,6 +17,8 @@ $wgExtensionCredits['other'][] = array(
 	'svn-revision'   => '$LastChangedRevision$',
 	'descriptionmsg' => 'csshooks-desc',
 );
+
+$wgExtensionMessagesFiles['CssHooks'] = dirname( __FILE__ ) . '/CssHooks.i18n.php';
 
 /* ---- HOOKS ---- */
 $wgHooks['OutputPageBeforeHTML'][] = 'UW_CssHooks_AddHooks';
