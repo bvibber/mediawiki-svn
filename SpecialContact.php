@@ -57,10 +57,12 @@ class SpecialContact extends SpecialPage {
 			$form['citytown']  = $wgRequest->getVal('city-town');
 		        $form['provstat']  = $wgRequest->getVal('prov-state');	
 			$form['story']	   = $wgRequest->getVal('story');
+			$form['followup']  = $wgRequest->getVal('follow-up');
 
 			$text = '';
 			foreach( $form as $key => $value) {
-				$text .= "$key\t\t\t:\t\t\t$value\n";
+				$text .= pack('A10A2A10', $key, ":", $value);
+				$text .= "\n";
 			}
 			$f->setText( $text );
 			$f->doSubmit();
