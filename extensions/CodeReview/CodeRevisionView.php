@@ -147,6 +147,11 @@ class CodeRevisionView extends CodeView {
 
 	function formatPathLine( $path, $action ) {
 		$desc = wfMsgHtml( 'code-rev-modified-'.strtolower( $action ) );
+		// Find any ' (from x)' from rename comment in the path.
+		preg_match( '/ \([^\)]+\)$/', $path, $matches );
+		$from = isset($matches[0]) ? $matches[0] : '';
+		// Remove ' (from x)' from rename comment in the path.
+		$path = preg_replace( '/ \([^\)]+\)$/', '', $path );
 		$viewvc = $this->mRepo->getViewVcBase();
 		$diff = '';
 		if( $viewvc ) {
@@ -156,7 +161,7 @@ class CodeRevisionView extends CodeView {
 			if( $action !== 'D' ) {
 				$link = $this->mSkin->makeExternalLink(
 					"$viewvc$safePath?view=markup&pathrev=$rev",
-					$path );
+					$path . $from );
 			} else {
 				$link = $safePath;
 			}
