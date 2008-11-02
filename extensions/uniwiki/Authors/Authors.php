@@ -82,6 +82,7 @@ function UW_Authors_List ( &$out, &$text ) {
 		$realname = $author[2];
 
 		if ( $id != "0" ) { // user with an id
+			// FIME: broken. Incompatible with 1.14. Method creditLink() was renamed and changed.
 			$author_link = $realname
 				? creditLink( $username, $realname )
 				: creditLink( $username );
