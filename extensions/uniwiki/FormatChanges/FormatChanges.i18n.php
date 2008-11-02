@@ -1,14 +1,17 @@
 <?php
-/* vim: noet ts=4 sw=4
- * http://www.gnu.org/licenses/gpl-3.0.txt */
+/**
+ * Internationalisation for Uniwiki/FormatChanges extension
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
-if (!defined("MEDIAWIKI"))
-	die();
+$messages = array();
 
-$wgFormatChangesMessages = array();
-
-$wgFormatChangesMessages['en'] = array(
-	'fc_anonymous' => "Anonymous",
-	'fc_createdby' => "created by",
-	'fc_editedby'  => "edited by",
+/** English */
+$messages['en'] = array(
+	'formatchanges-desc' => 'Reformats the [[Special:RecentChanges|recent changes]]',
+	'formatchanges-anonymous' => 'Anonymous',
+	'formatchanges-createdby' => 'created by',
+	'formatchanges-editedby' => 'edited by',
 );
