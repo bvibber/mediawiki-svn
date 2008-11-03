@@ -11,10 +11,9 @@ class ContributionTracking extends SpecialPage {
     
     $this->setHeaders();
     
-    $values = $wgRequest->getValues();
+    $gateway = $wgRequest->getText( 'gateway' );
     if( !$wgRequest->wasPosted() ||
-    	!isset( $values['gateway'] ) ||
-    	!in_array( $values['gateway'], array( 'paypal', 'moneybookers' ) ) ) {
+    	!in_array( $gateway, array( 'paypal', 'moneybookers' ) ) ) {
     	$wgOut->showErrorPage( 'contrib-tracking-error', 'contrib-tracking-error-text' );
     	return;
     }
@@ -55,7 +54,7 @@ class ContributionTracking extends SpecialPage {
     // Set the action and tracking ID fields
     $repost = array();
     $action = 'http://wikimediafoundation.org/';
-    if ( $values['gateway'] == 'paypal' ) {
+    if ( $gateway == 'paypal' ) {
       $action = 'https://www.paypal.com/cgi-bin/webscr';
       
       // Tracking
@@ -70,9 +69,9 @@ class ContributionTracking extends SpecialPage {
       $repost['notify_url'] = 'https://civicrm.wikimedia.org/fundcore_gateway/paypal';
       $repost['return'] = $returnto;
       
-      $repost['currency_code'] = $values['currency_code'];
+      $repost['currency_code'] = $wgRequest->getText( 'currency_code', 'USD' );
     }
-    else if ( $values['gateway'] == 'moneybookers' ) {
+    else if ( $gateway == 'moneybookers' ) {
       $action = 'https://www.moneybookers.com/app/payment.pl';
 
       // Tracking
@@ -84,15 +83,15 @@ class ContributionTracking extends SpecialPage {
       $repost['language'] = 'en';
       $repost['detail1_description'] = 'One-time donation';
       $repost['detail1_text'] = 'DONATE';
-      $repost['currency'] = $values['currency_code'];
+      $repost['currency'] = $wgRequest->getText( 'currency_code', 'USD' );
     } else {
     	throw new MWException( "This shouldn't happen, we validated the gateway earlier." );
     }
     
     // Normalized amount
-    $repost['amount'] = $values['amount'];
-    if ( $values['amountGiven'] ) {
-      $repost['amount'] = $values['amountGiven'];
+    $repost['amount'] = $wgRequest->getVal( 'amount' );
+    if ( $wgRequest->getVal( 'amountGiven' ) ) {
+      $repost['amount'] = $wgRequest->getVal( 'amountGiven' );
     }
     
     // Tracking
