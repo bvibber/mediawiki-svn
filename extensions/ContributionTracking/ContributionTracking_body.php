@@ -15,11 +15,11 @@ class ContributionTracking extends SpecialPage {
 		$tracked_contribution = array(
 		'note' => $wgRequest->getText( 'comment', NULL ),
 		'referrer' => $wgRequest->getText( 'referrer', NULL ),
-		'anonymous' => ( $wgRequest->getInt( 'comment', 0 ) ? 0 : 1 ),
+		'anonymous' => ( $wgRequest->getCheck( 'comment-option' ) ? 0 : 1 ),
 		'utm_source' => $wgRequest->getText( 'utm_source', NULL ),
 		'utm_medium' => $wgRequest->getText( 'utm_medium', NULL ),
 		'utm_campaign' => $wgRequest->getText( 'utm_campaign', NULL ),
-		'optout' => ( $wgRequest->getInt( 'email', 0 ) ? 0 : 1 ),
+		'optout' => ( $wgRequest->getCheck( 'email' ) ? 0 : 1 ),
 		'language' => $wgRequest->getText( 'language', NULL ),
 		);
 
