@@ -288,9 +288,11 @@ h1
 
 .red-input-button
 {
+	background-repeat: no-repeat;
 	background-image: url(images/button-red.png);
-	width: 158px;
-	height: 27px;
+	background-color: white;
+	width: 160px;
+	height: 29px;
 	color: #fff;
 	font-size: 0.8em;
 	font-weight: bold;
@@ -298,7 +300,7 @@ h1
 	display: block;
 	vertical-align: middle;
 	font-family: Verdana, Arial, Helvetica,Tahoma,sans-serif;
-	border: 0px sold white;
+	border: 1px solid white;
 }
 
 #red-button a:hover { text-decoration: none; }
@@ -380,6 +382,7 @@ img { border: none; }
 {
 	width: 400px;
 	margin: 0px auto;
+	padding-bottom: 50px;
 	background: #fff url(images/curves/leftside.gif) repeat-y left top;
 }
 
@@ -406,7 +409,7 @@ img { border: none; }
 .center-content
 {
 	position: relative;
-	padding: 1px 36px 1px 36px;
+	padding: 1px 36px 20px 36px;
 	margin: -1px 0 -50px 0;
 }
 
