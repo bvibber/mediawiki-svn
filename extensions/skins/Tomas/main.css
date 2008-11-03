@@ -286,6 +286,20 @@ h1
 	font-family: Verdana, Arial, Helvetica,Tahoma,sans-serif;
 }
 
+.red-input-button
+{
+	background-image: url(images/button-red.png);
+	width: 158px;
+	height: 27px;
+	color: #fff;
+	font-size: 0.8em;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	vertical-align: middle;
+	font-family: Verdana, Arial, Helvetica,Tahoma,sans-serif;
+}
+
 #red-button a:hover { text-decoration: none; }
 
 .submit-button{
