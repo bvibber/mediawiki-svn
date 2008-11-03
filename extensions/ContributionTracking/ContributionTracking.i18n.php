@@ -12,7 +12,7 @@ $messages = array();
  * @author David Strauss
  */
 $messages['en'] = array(
-	'contributiontracking-desc' => '[[Special:ContributionTracking|Contribution tracking]] for the Wikimedia fundraiser',
+	'contributiontracking-desc' => 'Contribution tracking for the Wikimedia fundraiser',
 	'contributiontracking' => 'Contribution tracking',
 
 	'contrib-tracking-error' => 'Error',
@@ -26,7 +26,7 @@ $messages['en'] = array(
  * @author Rotem Liss
  */
 $messages['he'] = array(
-	'contributiontracking-desc' => '[[Special:ContributionTracking|מעקב תרומות]] להתרמה לקרן ויקימדיה',
+	'contributiontracking-desc' => 'מעקב תרומות להתרמה לקרן ויקימדיה',
 	'contributiontracking' => 'מעקב תרומות',
 
 	'contrib-tracking-error' => 'שגיאה',
