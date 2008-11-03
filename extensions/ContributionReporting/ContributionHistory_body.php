@@ -18,6 +18,7 @@ class ContributionHistory extends SpecialPage {
 		$limit = $wgRequest->getText( 'limit', 50 );
 
 		wfLoadExtensionMessages( 'ContributionReporting' );
+		wfLoadExtensionMessages( 'ContributionReporting', $language );
 
 		$this->setHeaders();
 
@@ -78,7 +79,7 @@ class ContributionHistory extends SpecialPage {
 	}
 	
 	function msg( $key ) {
-		return wfMsgExt( $key, array( 'escape', 'lang' => $this->lang ) );
+		return wfMsgExt( $key, array( 'escape', 'language' => $this->lang ) );
 	}
 	
 	function formatName( $row ) {
