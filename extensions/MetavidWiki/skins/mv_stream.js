@@ -119,7 +119,8 @@ var mv_stream_interface = {
 				ebvid['stop'] = function(){mv_do_stop();}
 			}*/
 			if(ebvid['play_or_pause'].toString()!='function(){mv_play_or_pause();}'){
-				ebvid['org_eb_play_or_pause'] = ebvid['play_or_pause'];
+				if(!ebvid['org_eb_play_or_pause'])
+                    ebvid['org_eb_play_or_pause'] = ebvid['play_or_pause'];
 				ebvid['play_or_pause'] = function(){mv_play_or_pause();}
 			}
 			//use mvd images for time updates (avoids lots of arbitrary time hits to server) 
@@ -238,7 +239,8 @@ var mv_stream_interface = {
 	mvdOver:function(mvd_id){
 		js_log('f:mvdOver' + mvd_id );
 		var vid_elm = $j('#embed_vid').get(0);
-		if( vid_elm.isPlaying() ){
+		if( mv_lock_vid_updates ){
+            js_log('f:mvdOver' + mvd_id + ' updates locked');
 			if(!vid_elm.onClipDone_disp){
 				this.delay_cur_mvd_id= mvd_id;
 				setTimeout("mv_stream_interface.delayDoVidMvdUpdate()", 250);
@@ -271,7 +273,7 @@ var mv_stream_interface = {
 	},
 	//delay video updates until we are not playing the clip and clipEnd is not displayed
 	delayDoVidMvdUpdate:function(){
-		if($j('#embed_vid').get(0).isPlaying()){
+		if(mv_lock_vid_updates){
 			setTimeout("mv_stream_interface.delayDoVidMvdUpdate()", 250);
 		}else{
 			//only restore if the onClipDone_disp is false
@@ -876,13 +878,16 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 	return false;
 }
 function mv_play_or_pause(){
-	 //issue a stop since we want mouse_overs to work 
+	 // unlock updates, but issue a pause - if an update occurs, it should
+     // stop.
 	 var ebvid = $j('#embed_vid').get(0);
-	 if( ebvid.isPlaying() ){
-	 	js_log('f:mv_play_or_pause:should stop');
-	 	ebvid.stop();
-	 	ebvid.pauseed=true;
-	 	mv_lock_vid_updates=false;
+	 if( ebvid.isPlaying())
+     {
+        js_log('f:mv_play_or_pause:should pause_or_play');
+        // calling original play_or_pause
+	 	ebvid.org_eb_play_or_pause();
+        // lock updates if we're not paused,  and vice versa
+	 	mv_lock_vid_updates=!ebvid.isPaused();
 	 }else{
 	 	js_log('f:mv_play_or_pause:should play');	 		 	
 	 	mv_do_play();	 	
@@ -1021,6 +1026,9 @@ function do_video_time_update(start_time, end_time, mvd_id)	{
 	if(mv_lock_vid_updates==false){
 		//update the vid title:
 		$j('#mv_videoPlayerTime').html( start_time + ' to ' + end_time );
+        var ebvid = $j('#embed_vid').get(0);
+        if(ebvid.isPaused())
+            ebvid.stop();
 		$j('#embed_vid').get(0).updateVideoTime(start_time, end_time);
 		do_update_thumb(mvd_id, start_time);
 	}

@@ -333,9 +333,9 @@ function onStop(clip)
 
 function onPause(clip)
 {
-    var embed = locateFlashEmbed(clip);
+//    var embed = locateFlashEmbed(clip);
     js_log('f:flash_CB:onPause');
-    embed.pause();
+//    embed.pause();
     embed.setStatus("Paused...");
 }
 

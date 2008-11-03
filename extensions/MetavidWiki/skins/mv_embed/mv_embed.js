@@ -2881,7 +2881,7 @@ embedVideo.prototype = {
 	fullscreen:function(){
 		js_log('fullscreen not supported for this plugin type');
 	},
-	/* returns bool true if playing false if paused or stooped
+	/* returns bool true if playing or paused, false if stooped
 	 */
 	isPlaying : function(){
 		if(this.thumbnail_disp){
@@ -2890,6 +2890,9 @@ embedVideo.prototype = {
 		}else{
 			return true;
 		}
+	},
+	isPaused : function(){
+		return this.isPlaying() && this.paused;
 	},
 	playlistSupport:function(){
 		//by default not supported (implemented in js)
