@@ -60,7 +60,7 @@ if (cookieValue != siteNoticeID) {
 		var date = new Date();
 		date.setTime(date.getTime() + 30*86400*1000);
 		document.cookie = cookieName + siteNoticeID + "; expires="+date.toGMTString() + "; path=/";
-		var element = document.getElementById('siteNotice');
+		var element = document.getElementById('mw-dismissable-notice');
 		element.parentNode.removeChild(element);
 	}
 	document.writeln('<table width="100%" id="mw-dismissable-notice"><tr><td width="80%">'+siteNoticeValue+'</td>');
