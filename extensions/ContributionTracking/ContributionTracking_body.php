@@ -5,9 +5,16 @@ class ContributionTracking extends UnlistedSpecialPage {
 		parent::__construct( 'ContributionTracking' );
 	}
 
-	function execute( $par ) {
+	function execute( $language ) {
 		global $wgRequest, $wgOut;
 		wfLoadExtensionMessages( 'ContributionTracking' );
+		
+		if ( !preg_match( '/^[a-z-]+$/', $language ) ) {
+			$language = 'en';
+		}
+		$this->lang = Language::factory( $language );
+		wfLoadExtensionMessages( 'ContributionTracking' );
+		wfLoadExtensionMessages( 'ContributionTracking', $language );
 		
 		$this->setHeaders();
 		
@@ -43,12 +50,12 @@ class ContributionTracking extends UnlistedSpecialPage {
 		
 		$contribution_tracking_id = $db->insertId();
 		
-		$returnText = $wgRequest->getText( 'returnto', 'Donate-thanks/en' );
+		$returnText = $wgRequest->getText( 'returnto', "Donate-thanks/$language" );
 		$returnTitle = Title::newFromText( $returnText );
 		if( $returnTitle ) {
 			$returnto = $returnTitle->getFullUrl();
 		} else {
-			$returnto = 'http://wikimediafoundation.org/wiki/Donate-thanks/en';
+			$returnto = "http://wikimediafoundation.org/wiki/Donate-thanks/$language";
 		}
 		
 		// Set the action and tracking ID fields
@@ -97,8 +104,8 @@ class ContributionTracking extends UnlistedSpecialPage {
 		// Tracking
 		$repost['os0'] = $contribution_tracking_id;
 		
-		$wgOut->addWikiText( "<skin>Tomas</skin>{{2008/Donate-header/en}}" );
-		$wgOut->addWikiMsg( 'contrib-tracking-submitting' );
+		$wgOut->addWikiText( "<skin>Tomas</skin>{{2008/Donate-header/$language}}" );
+		$wgOut->addHtml( $this->msgWiki( 'contrib-tracking-submitting' ) );
 		
 		// Output the repost form
 		$output = '<form method="post" name="contributiontracking" action="' . $action . '">';
@@ -108,19 +115,26 @@ class ContributionTracking extends UnlistedSpecialPage {
 		}
 		
 		// Offer a button to post the form if the user has no Javascript support
-		$output .= '<noscript>';
-		$output .= wfMsgExt( 'contrib-tracking-continue', array( 'parse' ) );
-		$output .= '<input type="submit" value="Continue" />';
-		$output .= '</noscript>';
+		$output .= $this->msgWiki( 'contrib-tracking-continue' );
+		$output .= '<input type="submit" value="' . $this->msg( 'contrib-tracking-button' ) . '" />';
 
 		$output .= '</form>';
 
 		$wgOut->addHTML( $output );
 
-		$wgOut->addWikiText( "{{2008/Donate-footer/en}}\n" );
+		$wgOut->addWikiText( "{{2008/Donate-footer/$language}}\n" );
 
 		// Automatically post the form if the user has Javascript support
 		$wgOut->addHTML( '<script type="text/javascript">document.contributiontracking.submit();</script>' );
 
 	}
+
+	function msg( $key ) {
+		return wfMsgExt( $key, array( 'escape', 'language' => $this->lang ) );
+	}
+
+	function msgWiki( $key ) {
+		return wfMsgExt( $key, array( 'parse', 'language' => $this->lang ) );
+	}
+
 }

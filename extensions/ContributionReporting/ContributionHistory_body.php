@@ -7,7 +7,7 @@ class ContributionHistory extends SpecialPage {
 	function execute( $language = NULL ) {
 		global $wgRequest, $wgOut;
 
-		if ( !$language ) {
+		if ( !preg_match( '/^[a-z-]+$/', $language ) ) {
 			$language = 'en';
 		}
 		$this->lang = Language::factory( $language );
