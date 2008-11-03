@@ -61,8 +61,7 @@ class SpecialContact extends SpecialPage {
 
 			$text = '';
 			foreach( $form as $key => $value) {
-				$text .= pack('A10A2A10', $key, ":", $value);
-				$text .= "\n";
+				$text .= sprintf("%10s : %s\n", $key,$value);
 			}
 			$f->setText( $text );
 			$f->doSubmit();
