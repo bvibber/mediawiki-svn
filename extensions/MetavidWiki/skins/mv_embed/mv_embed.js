@@ -34,19 +34,17 @@ var mv_java_iframe = true;
 //media_server mv_embed_path (the path on media servers to mv_embed for java iframe with leading and trailing slashes)
 var mv_media_iframe_path = '/mv_embed/';
 
-//the default height/width of the vidoe (if no style or width attr provided)
+//the default height/width of the video (if no style or width attr provided)
 var mv_default_video_size = '400x300'; 
 
-//this restricts playable sources to ROE xml media without start end time atttribute
+//this restricts playable sources to ROE xml media without start end time attribute
 var mv_restrict_roe_time_source = true;
-
 
 var global_player_list = new Array();
 var global_req_cb = new Array();//the global request callback array
 var _global = this;
 var mv_init_done=false;
 var global_cb_count =0;
-
 
 /*
  * its best if you just require all your external data sources to serve up json data.
@@ -254,13 +252,15 @@ var mvEmbed = {
   	//check if all videos are "ready to play"
   	var is_ready=true;
   	for(var i in global_player_list){
-  		var cur_vid =  $j('#'+global_player_list[i]).get(0);
-    	is_ready = (cur_vid.ready_to_play ) ? is_ready : false;
-    	if( !is_ready && cur_vid.load_error ){ 
-    		is_ready=true;
-    		$j(cur_vid).html( cur_vid.load_error );
+  		if( $j('#'+global_player_list[i]).length !=0){
+	  		var cur_vid =  $j('#'+global_player_list[i]).get(0);  		
+	    	is_ready = (cur_vid.ready_to_play ) ? is_ready : false;
+	    	if( !is_ready && cur_vid.load_error ){ 
+	    		is_ready=true;
+	    		$j(cur_vid).html( cur_vid.load_error );
+	    	}
     	}
-    }  	    	
+    }
     js_log('f:check_init_done '+ is_ready + ' ' + cur_vid.load_error + ' rtp: '+ cur_vid.ready_to_play);
   	if( !is_ready ){
   		//js_log('some ' + global_player_list + ' not ready');
@@ -2647,7 +2647,7 @@ embedVideo.prototype = {
         var height = (this.pc)?this.pc.pp.height:this.playerPixelHeight();
         
         if(this.pc)
-        	height+=(plObj.pl_layout.title_bar_height + plObj.pl_layout.control_height);
+        	height+=(this.pc.pp.pl_layout.title_bar_height + this.pc.pp.pl_layout.control_height);
       
         var fade_in = true;
         if($j('#blackbg_'+sel_id).length!=0)
@@ -2690,9 +2690,10 @@ embedVideo.prototype = {
         var supporting_players = embedTypes.players.getMIMETypePlayers(mime_type);
 
 		var select_html='<div id="player_select_list_' + index + '" class="player_select_list"><ul>';
-		for(i in supporting_players){
-			//put colored plugin icon and no link for supported player:
-			if(embedTypes.players.defaultPlayer(mime_type).id==supporting_players[i].id ){
+		for(var i in supporting_players){
+			//js_log('checking 
+			//put colored (selected) display if selected_player matches current
+			if( this.selected_player.id == supporting_players[i].id  ){
 				select_html+='<li>'+
 									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin.png">'+
 									supporting_players[i].getName() +
@@ -2721,9 +2722,9 @@ embedVideo.prototype = {
         //js_log('selected src'+ _this.media_element.selected_source.url);
 		$j.each(this.media_element.getPlayableSources(), function(index, source)
         {     		
-	        var default_player = embedTypes.players.defaultPlayer(source.getMIMEType());
+	        var default_player = embedTypes.players.defaultPlayer( source.getMIMEType() );
 	        var source_select_code = '$j(\'#'+this_id+'\').get(0).closeDisplayedHTML(); $j(\'#'+_this.id+'\').get(0).media_element.selectSource(\''+index+'\');';
-	        var player_code = _this.getPlayerSelectList(source.getMIMEType(), index, source_select_code);
+	        var player_code = _this.getPlayerSelectList( source.getMIMEType(), index, source_select_code);
 	        var is_not_selected = (source != _this.media_element.selected_source);
 	        var image_src = mv_embed_path+'/images/stream/';
 	        image_src += (source.mime_type == 'video/x-flv')?'flash_icon_':'fish_xiph_org_';

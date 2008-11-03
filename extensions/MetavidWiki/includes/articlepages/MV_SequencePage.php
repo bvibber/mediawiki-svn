@@ -110,8 +110,9 @@ class MV_SequencePage extends Article {
 		foreach($seqNodeList as $seqNode){
 			//import the top seq node:
 			$topSeqNode = $this->smilDoc->importNode($seqNode, false);
-			//get all the references
-			$refNodeList = $seqNode->childNodes;
+			//get all the media references
+			//@@todo also get the alias tags (video, audio, image ..etc) 
+			$refNodeList = $seqNode->getElementsByTagName('ref');
 			foreach($refNodeList as $refNode){		
 				 //make sure its a valid ref node: 	
 				 $refNode = $this->smilDoc->importNode( $this->resolveResourceNode($refNode), true );
@@ -262,14 +263,14 @@ class MV_SequencePage extends Article {
  					$this->parseInnerWikiText( $node, $thumbnail->toHtml() );
  				}else{ 					 				
 	 				$node->setAttribute( 'type', $img->getMimeType() );
-	 				$node->setAttribute( 'src', $thumbnail->getURL() );
+	 				$node->setAttribute( 'src', $img->getURL() );
 	 				
 	 				//if type is ogg: (set dur and poster) 
 	 				if( $img->getMimeType()=='application/ogg') {
 	 					if( !$node->hasAttribute('dur') )
 	 						$node->setAttribute('dur',  $thumbnail->file->getLength() );
 	 					if( !$node->hasAttribute('poster') ){
-	 						$node->setAttribute('poster',  $thumbnail->url);
+	 						$node->setAttribute('poster',  $thumbnail->getURL() );
 	 					}
 	 				}
  				}	

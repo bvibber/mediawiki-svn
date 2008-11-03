@@ -996,6 +996,12 @@ mvClip.prototype = {
 			'</div>');		
 		}
 	},
+	getTitle:function(){
+		if(typeof this.title == 'string')
+			return this.title
+			
+		return 'untitled clip ' + this.order;
+	},
 	getThumb:function(){
 		var out='';
 		//if we have the parent playlist grab it to get the image scale 

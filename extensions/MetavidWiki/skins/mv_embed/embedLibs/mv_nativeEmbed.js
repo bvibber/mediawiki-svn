@@ -1,4 +1,4 @@
-
+//native embed library:
 var nativeEmbed = {
 	instanceOf:'nativeEmbed',
 	canPlayThrough:false,
@@ -133,7 +133,10 @@ var nativeEmbed = {
 	    }
 	},
 	pause : function(){		
-		this.vid.pause();
+		this.getVID();
+		if(this.vid){
+			this.vid.pause();
+		}
 		//stop updates: 
 		this.stopMonitor();
 	},

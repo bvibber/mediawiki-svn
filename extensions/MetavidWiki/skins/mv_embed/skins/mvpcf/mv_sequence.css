@@ -36,12 +36,15 @@
 	border:solid thin gray;
 
 }
+/**************************/
+.clip_img{
+	}
 .clip_edit_button{	
 	width:16px;
 	height:16px;
 	position:absolute;
 	top:0px;
-	right:60px;
+	right:50px;
 	cursor:pointer;
 }
 .clip_trans_box{

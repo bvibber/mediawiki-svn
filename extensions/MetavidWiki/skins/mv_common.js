@@ -1,10 +1,24 @@
 /*@@TODO should be set by mediaWiki so it uses wfMsg */
 var global_loading_txt = 'loading<blink>...</blink>';
 
-
-function add_adjust_hooks(mvd_id, track_dur){
+/*
+* adds adjustment hooks
+* @mvd_id  set to the mvd_id  
+*/
+function add_adjust_hooks(mvd_id, track_dur, targets){
 	if(track_dur)track_dur=parseInt(track_dur);
 	js_log('add_adjust_hooks: ' + mvd_id + ' td: '+ track_dur);
+	
+	/*var base_targets = new Array('mv_end_hr', 'mv_start_hr', 'track_target' );	
+		
+	if( typeof targets == 'object'){
+		for(var i in targets){
+		
+		}
+	}else{
+		
+	}*/
+	
 	//if options are unset populate functions:
 	//add mouse over end time frame highlight
 	$j('#mv_end_hr_'+mvd_id).hoverIntent({interval:200,over:function(){

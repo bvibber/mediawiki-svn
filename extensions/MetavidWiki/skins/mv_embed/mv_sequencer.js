@@ -54,8 +54,7 @@ var sequencerDefaultValues = {
 	sequence_tools_id:'mv_sequence_tools',
 	timeline_id:'mv_timeline',
 	plObj_id:'seq_plobj',
-	plObj_clone:null,
-	
+	plObj_clone:null,	
 	
 	timeline_scale:.125, //in pixel to second ratio ie 100pixles for every ~30seconds
 	timeline_duration:500, //default timeline length in seconds
@@ -443,7 +442,7 @@ mvSequencer.prototype = {
 		//close the tag
 		o+='</sequence_hlrd>';	
 		
-		js_log('f:getSeqOutputHLRDXML'+ o);
+		alert('f:getSeqOutputHLRDXML'+ o);
 		
 		return false;	
 	},
@@ -490,10 +489,26 @@ mvSequencer.prototype = {
 		$j('#modal_window').empty().show();
 		//set to the current clip in "clip mode"
 		var clip = this.plObj.tracks[track_inx].clips[ clip_inx ];
-		$j('#modal_window').append('<div style="position:absolute;top:10%left:auto;right:auto;">'+
-										
-								   '</div>');
-		$j('#modal_window').append('<div style="position:absolute;bottom:10%;left:50%;">'+
+		//@@todo do per clip type edit modes: 
+		$j('#modal_window').append('<div style="position:absolute;top:10px;left:25%;width:'+this.plObj.width+'px;">'+
+										'<h3>' + clip.getTitle() + '</h3>'+
+										'<video id="chop_clip_' + track_inx + '_' + clip_inx + '" ' +
+											'style="width:'+this.plObj.width+'px;height:'+this.plObj.height+'px;" '+
+											'poster="'+clip.embed.media_element.getThumbnailURL()+'" '	+									
+											'src="' + clip.src + '"></video>'+
+									'<div style="padding-top:10px;">'+
+										'<span style="position:absolute;left:0px;">'+
+											'start time:<input id="chop_start" type="text" size="10" value="0:0:0">'+
+										'</span>'+
+										'<span style="position:absolute;right:0px;">'+
+											'end time:<input id="chop_end" type="text" size="10" '+											 
+												'value="' + seconds2ntp(clip.getDuration()) + '" >' +											
+										'</span>'+
+									'</div>'+																
+								   '</div>'
+								   //start time end time field display								
+								);
+		$j('#modal_window').append('<div style="position:absolute;bottom:10px;left:50%;">'+
 									'<a style="border:solid gray;font-size:1.2em;" onClick="window.confirm(\''+getMsg('edit_cancel_confirm')+'\')" '+ 
 									'href="javascript:'+this.instance_name+'.closeModWindow()">'+
 										getMsg('edit_cancel') + '</a> '+
@@ -502,13 +517,18 @@ mvSequencer.prototype = {
 									'</a>'+								
 								'</div>'
 						);
+		rewrite_by_id('chop_clip_' + track_inx + '_' + clip_inx ); 
+		//add in-out setters
+		
+		//add start / end hooks
+		
 	},
 	//save new clip segment
 	saveClipEdit:function(){
 		//saves the clip updates
 	},
 	closeModEditor:function(){
-		$j('#modalbox').hide();
+		$j('#modalbox,#mv_overlay').remove();
 	},
 	closeModWindow:function(){
 		$j('#modal_window').hide();
