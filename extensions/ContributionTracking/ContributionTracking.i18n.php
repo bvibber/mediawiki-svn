@@ -1,5 +1,17 @@
 <?php
+/**
+ * Internationalisation for ContributionTracking extension
+ *
+ * @file
+ * @ingroup Extensions
+ */
+
 $messages = array();
-$messages['en'] = array( 
-        'contributiontracking' => 'Contribution tracking',
-        );
+
+/** English
+ * @author David Strauss
+ */
+$messages['en'] = array(
+	'contributiontracking-desc' => '[[Special:ContributionTracking|Contribution tracking]] for the Wikimedia fundraiser',
+	'contributiontracking' => 'Contribution tracking',
+);
