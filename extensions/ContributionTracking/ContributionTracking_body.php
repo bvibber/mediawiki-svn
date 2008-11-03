@@ -44,6 +44,14 @@ class ContributionTracking extends SpecialPage {
     
     $contribution_tracking_id = $db->insertId();
     
+    $returnText = $wgRequest->getText( 'returnto', 'Donate-thanks/en' );
+    $returnTitle = Title::newFromText( $returnText );
+    if( $returnTitle ) {
+    	$returnto = $returnTitle->getFullUrl();
+    } else {
+    	$returnto = 'http://wikimediafoundation.org/wiki/Donate-thanks/en';
+    }
+    
     // Set the action and tracking ID fields
     $repost = array();
     $action = 'http://wikimediafoundation.org/';
@@ -60,7 +68,7 @@ class ContributionTracking extends SpecialPage {
       $repost['cmd'] = '_xclick';
       $repost['no_note'] = '0';
       $repost['notify_url'] = 'https://civicrm.wikimedia.org/fundcore_gateway/paypal';
-      $repost['return'] = 'http://wikimediafoundation.org/wiki/Donate-thanks/en';
+      $repost['return'] = $returnto;
       
       $repost['currency_code'] = $values['currency_code'];
     }
