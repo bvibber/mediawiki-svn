@@ -25,6 +25,11 @@ $wgExtensionAliasesFiles['ContributionTracking'] = $dir . 'ContributionTracking.
 $wgAutoloadClasses['ContributionTracking'] = $dir . 'ContributionTracking_body.php';
 $wgSpecialPages['ContributionTracking'] = 'ContributionTracking';
 
+$wgContributionTrackingDBserver = $wgDBserver;
+$wgContributionTrackingDBname = $wgDBname;
+$wgContributionTrackingDBuser = $wgDBuser;
+$wgContributionTrackingDBpassword = $wgDBpassword;
+
 function contributionTrackingConnection() {
 	global $wgContributionTrackingDBserver, $wgContributionTrackingDBname;
 	global $wgContributionTrackingDBuser, $wgContributionTrackingDBpassword;
@@ -32,7 +37,12 @@ function contributionTrackingConnection() {
 	static $db;
 
 	if ( !$db ) {
-		$db = new DatabaseMysql( $wgContributionTrackingDBserver, $wgContributionTrackingDBuser, $wgContributionTrackingDBpassword, $wgContributionTrackingDBname );
+		$db = new DatabaseMysql(
+			$wgContributionTrackingDBserver,
+			$wgContributionTrackingDBuser,
+			$wgContributionTrackingDBpassword,
+			$wgContributionTrackingDBname );
+		$db->query( "SET names utf8" );
 	}
 
 	return $db;
