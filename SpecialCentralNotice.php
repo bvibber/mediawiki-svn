@@ -232,7 +232,7 @@ class CentralNotice extends SpecialPage {
 		return Xml::tags( 'tr', array(), implode( "\n", $cells ) ) . "\n";
 	}
 	
-	function dateSelector( $prefix, $timestamp=null ) {
+	function dateSelector( $prefix, $timestamp = null ) {
 		// Default ranges...
 		$years = range( 2007, 2012 );
 		$months = range( 1, 12 );
@@ -252,7 +252,7 @@ class CentralNotice extends SpecialPage {
 		return $this->genSelector( $prefix, $fields );
 	}
 	
-	function timeSelector( $prefix, $timestamp=null ) {
+	function timeSelector( $prefix, $timestamp = null ) {
 		// Default ranges...
 		$minutes = range( 0, 59 ); // formerly in 15-minute increments
 		$minutes = array_map( array( $this, 'addZero' ), $minutes);
@@ -700,12 +700,12 @@ class CentralNotice extends SpecialPage {
 			$htmlOut .=  Xml::openElement( 'tr' );
 
 			// Remove
-			$htmlOut .= Xml::tags( 'td', null, 
+			$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ), 
 					Xml::check( 'removeTemplates[]', false, array( 'value' => $row->tmp_name) ) 
 			);
 
 			// Weight
-			$htmlOut .= Xml::tags( 'td', null,
+			$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ),
 				 Xml::listDropDown( "weight[$row->tmp_name]",
 					 $this->dropDownList( wfMsg( 'centralnotice-weight' ),
 					 range ( 0, 100, 5) ),
@@ -720,7 +720,7 @@ class CentralNotice extends SpecialPage {
 			$render->project = 'wikipedia';
 			global $wgRequest;
 			$render->language = $wgRequest->getVal( 'wpUserLanguage' );
-			$htmlOut .= Xml::tags( 'td', null,
+			$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ),
 				$sk->makeLinkObj( $viewPage,
 					htmlspecialchars( $row->tmp_name ),
 					'template=' . urlencode( $row->tmp_name ) ) .
@@ -783,12 +783,12 @@ class CentralNotice extends SpecialPage {
 					$htmlOut .= Xml::openElement( 'tr' );
 	
 					// Add
-					$htmlOut .= Xml::tags( 'td', null, 
+					$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ), 
 						Xml::check( 'addTemplates[]', '', array ( 'value' => $row->tmp_name)) 
 					);
 
 					// Weight 
-					$htmlOut .= Xml::tags( 'td', null,
+					$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ),
 						Xml::listDropDown( "weight[$row->tmp_name]",
 							$this->dropDownList( wfMsg( 'centralnotice-weight' ), range ( 0, 100, 5)) ,
 							'',
@@ -796,14 +796,14 @@ class CentralNotice extends SpecialPage {
 							'',
 							16)
 					);
-	
+					
 					// Render preview
 					$viewPage = SpecialPage::getTitleFor( 'NoticeTemplate/view' );
 					$render = new SpecialNoticeText();
 					$render->project = 'wikipedia';
 					global $wgRequest;
 					$render->language = $wgRequest->getVal( 'wpUserLanguage' );
-					$htmlOut .= Xml::tags( 'td', null,
+					$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ),
 						$sk->makeLinkObj( $viewPage,
 							htmlspecialchars( $row->tmp_name ),
 							'template=' . urlencode( $row->tmp_name ) ) .
