@@ -1,8 +1,9 @@
 <?php
 /**
- * Internationalisation file for extension CategoryTree.
+ * Internationalisation file for extension CodeBrowse.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Bryan Tong Minh
  */
 
