@@ -1,8 +1,8 @@
 <?php
 
-class ContributionTracking extends SpecialPage {
-	function ContributionTracking() {
-		SpecialPage::SpecialPage( 'ContributionTracking' );
+class ContributionTracking extends UnlistedSpecialPage {
+	function __construct() {
+		parent::__construct( 'ContributionTracking' );
 	}
 
   function execute( $par ) {
