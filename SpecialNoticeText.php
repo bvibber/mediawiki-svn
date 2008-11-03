@@ -313,14 +313,14 @@ function pickTemplate(templates, weights) {
 	}
 	*/
 	
-	private function getDonorCount() {
+	private function getDonationAmount() {
 		global $wgNoticeCounterSource, $wgMemc;
 		$count = intval( $wgMemc->get( 'centralnotice:counter' ) );
 		if( !$count ) {
 			$count = intval( @file_get_contents( $wgNoticeCounterSource ) );
 			if( !$count ) {
 				// nooooo
-				return $this->getFallbackDonorCount();
+				return $this->getFallbackDonationCount();
 			}
 			
 			$wgMemc->set( 'centralnotice:counter', $count, 60 );
@@ -329,12 +329,8 @@ function pickTemplate(templates, weights) {
 
 		return $count;
 	}
-	
-	private function getDonationAmount() {
-		return 2543454;
-	}
 
-	private function getFallbackDonorCount() {
+	private function getFallbackDonationCount() {
 		global $wgMemc;
 		$count = intval( $wgMemc->get( 'centralnotice:counter:fallback' ) );
 		if( !$count ) {
