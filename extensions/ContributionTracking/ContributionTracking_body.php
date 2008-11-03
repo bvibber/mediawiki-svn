@@ -97,6 +97,9 @@ class ContributionTracking extends SpecialPage {
     // Tracking
     $repost['os0'] = $contribution_tracking_id;
     
+    $wgOut->addWikiText( "<skin>Tomas</skin>{{2008/Donate-header/en}}" );
+    $wgOut->addWikiMsg( 'contrib-tracking-submitting' );
+    
     // Output the repost form
     $output = '<form method="post" name="contributiontracking" action="' . $action . '">';
 
@@ -106,14 +109,18 @@ class ContributionTracking extends SpecialPage {
     
     // Offer a button to post the form if the user has no Javascript support
     $output .= '<noscript>';
+    $output .= wfMsgExt( 'contrib-tracking-continue', array( 'parse' ) );
     $output .= '<input type="submit" value="Continue" />';
     $output .= '</noscript>';
 
-		$output .= '</form>';
+	$output .= '</form>';
 
-		// Automatically post the form if the user has Javascript support
-		$output .= '<script type="text/javascript">document.contributiontracking.submit();</script>';
+	$wgOut->addHTML( $output );
 
-		$wgOut->addHTML( $output );
+    $wgOut->addWikiText( "{{2008/Donate-footer/en}}\n" );
+
+	// Automatically post the form if the user has Javascript support
+	$wgOut->addHTML( '<script type="text/javascript">document.contributiontracking.submit();</script>' );
+
 	}
 }
