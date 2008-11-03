@@ -7,8 +7,17 @@ class ContributionTracking extends SpecialPage {
 
   function execute( $par ) {
     global $wgRequest, $wgOut;
-  
+    wfLoadExtensionMessages( 'ContributionTracking' );
+    
     $this->setHeaders();
+    
+    $values = $wgRequest->getValues();
+    if( !$wgRequest->wasPosted() ||
+    	!isset( $values['gateway'] ) ||
+    	!in_array( $values['gateway'], array( 'paypal', 'moneybookers' ) ) ) {
+    	$wgOut->showErrorPage( 'contrib-tracking-error', 'contrib-tracking-error-text' );
+    	return;
+    }
     
     $db = contributionTrackingConnection();
     
@@ -34,8 +43,6 @@ class ContributionTracking extends SpecialPage {
     $db->insert( 'contribution_tracking', $tracked_contribution );
     
     $contribution_tracking_id = $db->insertId();
-    
-    $values = $wgRequest->getValues();
     
     // Set the action and tracking ID fields
     $repost = array();
@@ -70,6 +77,8 @@ class ContributionTracking extends SpecialPage {
       $repost['detail1_description'] = 'One-time donation';
       $repost['detail1_text'] = 'DONATE';
       $repost['currency'] = $values['currency_code'];
+    } else {
+    	throw new MWException( "This shouldn't happen, we validated the gateway earlier." );
     }
     
     // Normalized amount
