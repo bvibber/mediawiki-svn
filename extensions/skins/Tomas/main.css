@@ -298,6 +298,7 @@ h1
 	display: block;
 	vertical-align: middle;
 	font-family: Verdana, Arial, Helvetica,Tahoma,sans-serif;
+	border: 0px sold white;
 }
 
 #red-button a:hover { text-decoration: none; }
