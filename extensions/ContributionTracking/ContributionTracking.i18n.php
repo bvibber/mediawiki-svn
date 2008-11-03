@@ -13,4 +13,5 @@ $messages = array();
  */
 $messages['en'] = array(
 	'contributiontracking-desc' => '[[Special:ContributionTracking|Contribution tracking]] for the Wikimedia fundraiser',
+	'contributiontracking' => 'Contribution tracking',
 );
