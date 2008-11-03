@@ -368,6 +368,11 @@ img { border: none; }
 	background: #fff url(images/curves/leftside.gif) repeat-y left top;
 }
 
+#liquid-round .rightside
+{
+	 background: url(images/curves/rightside.gif) repeat-y right top;
+}
+
 .top
 {
 	width: 100%;
@@ -386,7 +391,6 @@ img { border: none; }
 .center-content
 {
 	position: relative;
-	background: url(images/curves/rightside.gif) repeat-y right top;
 	padding: 1px 36px 1px 36px;
 	margin: -1px 0 -50px 0;
 }
@@ -394,16 +398,12 @@ img { border: none; }
 .bottom
 {
 	width: 100%;
-	height: 60px;
 	background: url(images/curves/bottom.gif) no-repeat left bottom;
 }
 
-.bottom span
+.bottom-right 
 {
-	display: block;
-	position: relative;
-	height: 60px;
-	background: url(images/curves/bottom-right.gif) no-repeat right top;
+	background: url(images/curves/bottom-right.gif) no-repeat right bottom; 
 }
 
 p { margin: 0 0 1em 0; }
