@@ -1,3 +1,10 @@
+wikimedia-raid-utils (1.6) hardy; urgency=low
+
+  * Added MegaCli handling.
+  * Suppress stderr from arcconf
+
+ -- Tim Starling <tstarling@wikimedia.org>  Thu, 23 Oct 2008 20:50:42 +1100
+
 wikimedia-raid-utils (1.5) hardy; urgency=low
 
   * Added sudoers entry to allow nagios to run the check script

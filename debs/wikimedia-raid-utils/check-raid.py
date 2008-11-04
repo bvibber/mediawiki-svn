@@ -34,6 +34,8 @@ def main():
 			status = checkAdaptec()
 		elif utility == 'tw_cli':
 			status = check3ware()
+		elif utility == 'MegaCli':
+			status = checkMegaSas()
 		else:
 			print 'WARNING: %s is not yet supported by this check script' % (utility)
 			status = 1
@@ -48,11 +50,12 @@ def checkAdaptec():
 	# Need to change directory so that the log file goes to the right place
 	oldDir = os.getcwd()
 	os.chdir('/var/log')
+	devNull = open('/dev/null', 'w')
 
 	# Run the command
 	try:
 		proc = subprocess.Popen(['/usr/bin/arcconf', 'getconfig', '1'], 
-				stdout = subprocess.PIPE)
+				stdout = subprocess.PIPE, stderr = devNull)
 	except:
 		print 'WARNING: Unable to execute arcconf'
 		os.chdir(oldDir)
@@ -151,5 +154,45 @@ def check3ware():
 	else:
 		print 'OK: %d drives checked' % numDrives
 		return 0
+
+def checkMegaSas():
+	try:
+		proc = subprocess.Popen(['/usr/bin/MegaCli', '-LDInfo', '-LALL', '-aALL'], 
+				stdout=subprocess.PIPE)
+	except:
+		error = sys.exc_info()[1]
+		print 'WARNING: error executing MegaCli: %s' % str(error)
+		return 1
+	
+	stateRegex = re.compile('^State:\s*([^\n]*)')
+	drivesRegex = re.compile('^Number Of Drives:\s*([^\n]*)')
+	state = None
+	numDrives = None
+	for line in proc.stdout:
+		m = stateRegex.match(line)
+		if m != None:
+			state = m.group(1)
+			continue
+		
+		m = drivesRegex.match(line)
+		if m != None:
+			numDrives = int(m.group(1))
+			continue
+	
+	ret = proc.wait()
+	if ret != 0:
+		print 'WARNING: MegaCli returned exit status %d' % (ret)
+		return 1
+
+	if numDrives == None:
+		print 'WARNING: Parse error processing MegaCli output'
+		return 1
+
+	if state != 'Optimal':
+		print 'CRITICAL: %s' % (state)
+		return 2
+
+	print 'OK: State is %s, checked %d logical device(s)' % (state, numDrives)
+	return 0
 
 main()

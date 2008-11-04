@@ -16,7 +16,7 @@ echo "Building package..."
 cd $package
 prebuild_date=`TZ=UTC0 date +'%Y-%m-%d %H:%M:%SZ'`
 sleep 1
-dpkg-buildpackage -rfakeroot
+dpkg-buildpackage -rfakeroot -aamd64
 
 echo
 echo "Uploading files..."
