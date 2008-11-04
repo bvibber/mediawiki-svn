@@ -447,7 +447,7 @@ mvSequencer.prototype = {
 		return false;	
 	},
 	//add clips to the pl object: (by default to the end of the track) 
-	addClip:function(clip_init){
+	addClip:function( clip_init ){
 		js_log("seq: add clip");
 		this_seq = this;
 		var track_inx = (typeof clip_init.track_id !='undefined')?clip_init.track_id:0;				
@@ -469,15 +469,7 @@ mvSequencer.prototype = {
 		this.plObj.addCliptoTrack(cur_clip, track_inx);	
 		//set up embed: 
 		cur_clip.setUpEmbedObj();
-		//update playlist: 
-		this.plObj.getHTML();
-		//update tracks:
-		this.render_tracks(track_inx);
-		js_log('called render tracks: length:'+ this.plObj.tracks[track_inx].clips.length );
-		this.plObj.pl_duration=null;
-		//update playlist desc:
-		this.plObj.updateTitle();
-						
+		this.do_refresh_timeline();						
 	},
 	//hide everything and bring up edit clip. interface:
 	editClip:function(track_inx, clip_inx){
@@ -625,7 +617,7 @@ mvSequencer.prototype = {
 		return false;
 	},
 	//renders updates the timeline based on the current scale
-	render_tracks:function(track_inx){		
+	render_tracks:function( track_inx ){		
 		js_log("f::render track: "+track_inx);
 		var this_seq = this;
 		//inject the tracks into the timeline (if not already there)
@@ -795,11 +787,12 @@ mvSequencer.prototype = {
 								return a.order - b.order;
 							}
 							//assign keys back to order:
-							for(k in clips){
+							for(var k in clips){
 								clips[k].order=k;
 							}																												
-							//redraw clips: 
-							this_seq.render_tracks(track_inx);
+							//redraw: 														 
+							//@@todo if performace becomes an issue we could move dom items around
+							this_seq.do_refresh_timeline();
 						}
 					});
 					//add in resize hook if in time mode: 
@@ -836,7 +829,7 @@ mvSequencer.prototype = {
 							resize: function(e,ui) {												
 								//update time stats & render images: 
 								this_seq.update_clip_resize(this);
-							}		
+							}
 						});
 					}
 				}			
@@ -918,8 +911,7 @@ mvSequencer.prototype = {
 			//if dragging left append 
 			js_log('width_px:'+clip.width_px+' framecount:'+frame_count+' Xcw='+(frame_count *  frame_width));
 			$j('#'+clip_element.id).append(this.render_clip_frames(clip, frame_count));						
-		}
-		
+		}		
 	},
 	//renders cnt_time
 	render_playheadhead_seeker:function(){	 	
@@ -945,7 +937,9 @@ mvSequencer.prototype = {
 			}	
 			$j('#'+this.timeline_id+'_head_jump').html(out);
 		}
-		if(this.timeline_mode=='clip'){		
+		if(this.timeline_mode=='clip'){
+			//remove the old one if its still there		
+			$j('#'+this.timeline_id +'_pl_control').remove();
 			//render out a playlist clip wide and all the way to the right (only playhead and play button) (outside of timeline)
 			$j('#'+this.sequence_container_id).append('<div id="'+ this.timeline_id +'_pl_control"'+
 				' style="position:absolute;top:' + (this.plObj.height) +'px;'+
@@ -954,6 +948,10 @@ mvSequencer.prototype = {
 					 	this.plObj.getControlsHTML() +
 					 '</div>'+
 				'</div>');
+			
+			//update time and render out clip dividers .. should be used to show load progress
+			this.plObj.updateBaseStatus();
+			
 			//once the controls are in the DOM add hooks: 
 			ctrlBuilder.addControlHooks(this.plObj);
 		}
@@ -981,7 +979,12 @@ mvSequencer.prototype = {
 		this.do_refresh_timeline();
 		js_log('zoom out: '+this.timeline_scale);
 	},
-	do_refresh_timeline:function(){		
+	do_refresh_timeline:function(){
+		//regen duration 
+		this.plObj.getDuration( true );
+		//refresh player: 		
+		this.plObj.getHTML();
+		
 		this.render_playheadhead_seeker();
 		this.render_tracks();
 		this.jt(this.playline_time);
@@ -1009,10 +1012,10 @@ mvSeqPlayList.prototype = {
 		this.pl_layout.control_height=0;
 	},
 	getControlsHTML:function(){
-		//get controls from current clip  (add some playlist specific controls:  		
+		//get controls from current clip add some playlist specific controls:  		
 		this.cur_clip.embed.supports['prev_next'] = true;	
 		this.cur_clip.embed.supports['options']   = false;
-		return ctrlBuilder.getControls(this.cur_clip.embed);
+		return ctrlBuilder.getControls( this.cur_clip.embed );
 	},	
 	//override renderDisplay
 	renderDisplay:function(){

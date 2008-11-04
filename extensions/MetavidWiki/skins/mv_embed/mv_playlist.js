@@ -418,7 +418,7 @@ mvPlayList.prototype = {
 			}																
 		}); 				
 		if(this.cur_clip)
-			$j('#clipDesc_'+this.cur_clip.id).css({display:'inline'});
+			$j('#clipDesc_'+this.cur_clip.id).css( { display:'inline' } );
 	},	
 	updateThumbPerc:function( perc ){
 		//get float seconds:
@@ -470,13 +470,13 @@ mvPlayList.prototype = {
 		//update status:
 		this.setStatus('0:0:00/'+seconds2ntp( this.getDuration() ));				
 	},	
-	/*setStatus overide (could call the jquery directly) */
+	/*setStatus override (could call the jquery directly) */
 	setStatus:function(value){
-		$j('#mv_time_'+this.id).html(value);
+		$j('#mv_time_'+this.id).html( value );
 	},
 	setSliderValue:function(value){
 		//js_log('calling original embed slider with val: '+value);
-		this.cur_clip.embed.pe_setSliderValue(value);
+		this.cur_clip.embed.pe_setSliderValue( value );
 	},	
 	getSeqThumb: function(){
 		//for each clip 
@@ -534,7 +534,8 @@ mvPlayList.prototype = {
 	},
 	next: function(){		
 		//advance the playhead to the next clip			
-		var next_clip = this.getClip(1);
+		var next_clip = this.getClip(1);	
+		//debugger;	
 		if(this.cur_clip.embed.supports['playlist_driver']){ //where the plugin is just feed a playlist
 			//do next clip action on start_clip embed cuz its the one being displayed: 
 			this.start_clip.embed.playlistNext();
@@ -550,7 +551,8 @@ mvPlayList.prototype = {
 			this.switchPlayingClip(next_clip);
 		}		
 	},
-	updateCurrentClip:function(new_clip){
+	updateCurrentClip:function(new_clip){		
+		js_log('f:updateCurrentClip:'+new_clip.id);		
 		//do swap:		
 		$j('#clipDesc_'+this.cur_clip.id).hide();			
 		this.cur_clip=new_clip;			
@@ -720,7 +722,7 @@ mvPlayList.prototype = {
 		var _this = this;
 		//js_log("do play head total dur: "+pl_duration );
 		$j.each(this.default_track.clips, function(i, clip){			
-			var perc = (clip.getDuration() / pl_duration );
+			var perc = ( clip.getDuration() / pl_duration );
 			var pwidth = Math.round( perc * _this.track_len);
 			//var pwidth = Math.round( perc  * _this.track_len - (_this.mv_seeker_width*perc) );
 			
@@ -768,19 +770,19 @@ mvPlayList.prototype = {
       });     
 	},
 	//returns a clip. If offset is out of bound returns first or last clip
-	getClip: function(clip_offset){		
+	getClip: function(clip_offset){				
 		if(!clip_offset)clip_offset=0;	
 					
-		var cov = this.cur_clip.order + clip_offset;
+		var cov = parseInt( this.cur_clip.order ) + parseInt( clip_offset );
 		var cmax = this.getClipCount()-1;
-		//js_log('cov:'+cov +' cmax:'+ cmax);
+		js_log( 'f:getClip: '+clip_offset + ' cov:'+cov +' cmax:'+ cmax);
 		
 		//force first or last clip if offset is outOfBounds 
-		if( cov >= 0 && cov <= cmax ){
-			return this.default_track.clips[cov]
+		if( cov >= 0 && cov <= cmax ){			
+			return this.default_track.clips[ cov ];
 		}else{
-			if(cov<0)return this.default_track.clips[0];
-			if(cov>cmax)return this.default_track.clips[cmax];
+			if(cov < 0) return this.default_track.clips[0];
+			if(cov > cmax) return this.default_track.clips[cmax];
 		}
 	},
 	/* 
@@ -837,6 +839,12 @@ mvPlayList.prototype = {
 					getTransparentPng({id:'mv_next_btn_'+this.id,style:'float:left',width:'27', height:'27', border:"0", 
 						src:mv_embed_path+'images/vid_next_sm.png' }) + 
 				'</a>';		
+	},
+	run_transition: function( clip_inx, trans_type){		
+		if(typeof this.default_track.clips[ clip_inx ][ trans_type ] == 'undefined')
+			clearInterval( this.default_track.clips[ clip_inx ].timerId );
+		else
+			this.default_track.clips[ clip_inx ][ trans_type ].run_transition();		
 	}
 }	
 var gclipFocus=null;
@@ -968,7 +976,7 @@ mvClip.prototype = {
 	},		
 	//output the detail view:
 	//@@todo
-	getDetail:function(){
+	/*getDetail:function(){
 		//js_log('get detail:' + this.pp.title);
 		var th=Math.round( this.pl_layout.clip_desc * this.pp.height );	
 		var tw=Math.round( th * this.pl_layout.clip_aspect );		
@@ -995,7 +1003,7 @@ mvClip.prototype = {
 					'<b>clip length:</b> '+ this.embed.getDurationNTP()+ 
 			'</div>');		
 		}
-	},
+	},*/
 	getTitle:function(){
 		if(typeof this.title == 'string')
 			return this.title
@@ -1161,8 +1169,7 @@ PlMvEmbed.prototype = {
 		}*/
 		js_log('controls: '+plObj.controls);
 		//fade out interface elements
-		/*$j('#big_play_link_'+this.id+',#seqThumb_'+plObj.id+',#pl_desc_txt_'+this.pc.id).fadeOut("slow");*/		
-		js_log('got here in play');
+		/*$j('#big_play_link_'+this.id+',#seqThumb_'+plObj.id+',#pl_desc_txt_'+this.pc.id).fadeOut("slow");*/				
 		plEmbed.pe_play();			
 	},
 	//do post interface operations
@@ -1376,10 +1383,10 @@ mvPlayList.prototype.doSmilActions = function( single_frame ){
 		if( _clip.dur <= _clip.embed.currentTime 
 			 && _clip.order != _clip.pp.getClipCount()-1 ){
 			//force next clip
-			js_log('order:' +_clip.order + ' != count:' + (_clip.pp.getClipCount()-1) +
-				' smil dur: '+_clip.dur + ' <= curTime: ' + _clip.embed.currentTime + ' go to next clip..');		
+			js_log('order:'  + _clip.order + ' != count:' + ( _clip.pp.getClipCount()-1 ) +
+				' smil dur: ' + _clip.dur + ' <= curTime: ' + _clip.embed.currentTime + ' go to next clip..');		
 				//do a _play next:
-				_clip.pp.next();
+				_clip.pp.next();				
 		}
 	}						
 	//@@todo could maybe generalize transIn with trasOut into one "flow" with a few scattered if statements	
@@ -1393,22 +1400,22 @@ mvPlayList.prototype.doSmilActions = function( single_frame ){
 			continue;			
 		//js_log('f:doSmilActions: ' + _clip.id + ' tid:'+tObj.id + ' tclip_id:'+ tObj.pClip.id);					
 		//make sue we are in range: 
-		if(tid=='transIn')
+		if( tid=='transIn' )
 			in_range = (_clip.embed.currentTime <= tObj.dur)?true:false;			
 		
-		if(tid=='transOut')
+		if( tid=='transOut' )
 			in_range = (_clip.embed.currentTime >= (_clip.dur - tObj.dur))?true:false;
 		
-		if(in_range){
+		if( in_range ){
 			if( this.userSlide || single_frame ){				
-				if(tid=='transIn')
+				if( tid=='transIn' )
 					mvTransLib.doUpdate(tObj, (_clip.embed.currentTime / tObj.dur) );
 					
-				if(tid=='transOut')
+				if( tid=='transOut' )
 					mvTransLib.doUpdate(tObj, (_clip.embed.currentTime-(_clip.dur - tObj.dur)) /tObj.dur);
 					
 			}else{
-				if(tObj.animation_state==0){
+				if( tObj.animation_state==0 ){
 					js_log('init/run_transition ');
 					tObj.run_transition();	
 				}
@@ -1500,11 +1507,11 @@ var mvTransLib = {
 		return overlay_selector_id;	
 	},
 	doUpdate:function(tObj, percent){
-		//init the transition if nesesary:
+		//init the transition if nessesary:
 		if(!tObj.overlay_selector_id)
 			this.doInitTransition(tObj);
 		
-		//@@todo we should ensure vissability outside of doUpate loop			
+		//@@todo we should ensure visability outside of doUpate loop			
 		if(!$j('#'+tObj.overlay_selector_id).is(':visible'))
 			$j('#'+tObj.overlay_selector_id).show();
 			
@@ -1831,7 +1838,9 @@ transitionObj.prototype = {
 		//setInterval in we are still in running state and user is not using the playhead 
 		if( this.animation_state==1 ){
 			if(!this.timerId){
-				this.timerId = setInterval('document.getElementById(\''+this.pClip.pp.id+'\').cur_clip.'+this.transAttrType+'.run_transition()',
+				this.timerId = setInterval('document.getElementById(\'' + this.pClip.pp.id + '\').'+ 
+							'run_transition(\'' + this.pClip.pp.cur_clip.order + '\','+
+								'\''+ this.transAttrType + '\')',
 						 MV_ANIMATION_CB_RATE);
 			}
 		}else{

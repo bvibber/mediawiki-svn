@@ -90,7 +90,7 @@ var htmlEmbed ={
 			var font_perc  = ( Math.round( scale_perc*100 ) < 80 )?80:Math.round( scale_perc*100 ); 		
 						
 			$j('body').append( '<div id="' + thumb_render_id + '" style="display:none">'+
-									'<div style="display:block;border:solid thin black;'+
+									'<div class="mv_tl_thumb" style="display:block;border:solid thin black;'+
 									'width:'+options.width+'px;height:'+options.height+'px;overflow:hidden;" >'+								    	
 											this.getThumbnailHTML() + 
 									'</div>'+

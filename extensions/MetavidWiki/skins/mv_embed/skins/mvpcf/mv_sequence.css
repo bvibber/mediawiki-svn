@@ -52,7 +52,7 @@
 	width:32px;
 	height:32px;
 	position:absolute;
-	top:20px;
+	top:27px;
 	right:15px;
 }
 
@@ -99,6 +99,10 @@
 	padding:10px;
 	float:left;
 }
-mv_clip_list_result{
+.mv_clip_list_result{
 	padding:10px;
+}
+.mv_tl_thumb{
+	position:absolute;
+	top:7px;
 }

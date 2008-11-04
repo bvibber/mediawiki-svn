@@ -523,37 +523,36 @@ var setCookie = function ( name, value, expiry, path, domain, secure ) {
  */
 var ctrlBuilder = {
 	height:29,
+	supports:{
+  		'options':true,     			
+  		'borders':true   			
+   	},
 	getControls:function(embedObj){	
 		js_log('f:controlsBuilder');		
-    	ctrlBuilder.id = (embedObj.pc)?embedObj.pc.pp.id:embedObj.id;
-    	ctrlBuilder.avaliable_width=embedObj.playerPixelWidth();
+    	this.id = (embedObj.pc)?embedObj.pc.pp.id:embedObj.id;
+    	this.avaliable_width=embedObj.playerPixelWidth();
     	//make pointer to the embedObj
-    	ctrlBuilder.embedObj =embedObj;
-    	//build local support var
-    	ctrlBuilder.supports ={
-    			'options':true,     			
-    			'borders':true   			
-    		};
+    	this.embedObj =embedObj;    	
     	for( var i in embedObj.supports )
-    		ctrlBuilder.supports[i] = embedObj.supports[i];
+    		this.supports[i] = embedObj.supports[i];
     	//special case vars: 
     	if(embedObj.roe && embedObj.show_meta_link)
-    		ctrlBuilder.supports['closed_captions']=true;   
+    		this.supports['closed_captions']=true;   
     		
     	//append options to body (if not already there)
 		if($j('#mv_embedded_options_'+ctrlBuilder.id).length==0)
-			$j('body').append(ctrlBuilder.components['mv_embedded_options'].o());		
+			$j('body').append( this.components['mv_embedded_options'].o() );		
 		    		
     	var o='';    
-    	for(i in ctrlBuilder.components){
-    		if(ctrlBuilder.supports[i]){
-    			if(ctrlBuilder.avaliable_width > ctrlBuilder.components[i].w ){
+    	for(var i in this.components){
+    		if(this.supports[i]){
+    			if(this.avaliable_width > this.components[i].w ){
     				//special case with playhead don't add unless we have 60px
 	    			if( i=='play_head' && ctrlBuilder.avaliable_width < 60 )
 	    				continue;
 	    				
-    				o+=ctrlBuilder.components[i].o();
-    				ctrlBuilder.avaliable_width -= ctrlBuilder.components[i].w;
+    				o+=this.components[i].o();
+    				this.avaliable_width -= this.components[i].w;
     			}else{
     				js_log('not enough space for control component:'+i);
     			}
@@ -565,54 +564,53 @@ var ctrlBuilder = {
      * addControlHooks
      * to be run once controls are attached to the dom
      */
-    addControlHooks:function(embedObj){        	    	
-    	var _this = embedObj;
+    addControlHooks:function(embedObj){        	    	    	
     	//add in drag/seek hooks: 
-		if(!_this.base_seeker_slider_offset &&  $j('#mv_seeker_slider_'+_this.id).get(0))
-        	_this.base_seeker_slider_offset = $j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft;              
+		if(!embedObj.base_seeker_slider_offset &&  $j('#mv_seeker_slider_'+embedObj.id).get(0))
+        	embedObj.base_seeker_slider_offset = $j('#mv_seeker_slider_'+embedObj.id).get(0).offsetLeft;              
         
-        //js_log('looking for: #mv_seeker_slider_'+_this.id + "\n " +
-		//		'start sec: '+_this.start_time_sec + ' base offset: '+_this.base_seeker_slider_offset);
+        //js_log('looking for: #mv_seeker_slider_'+embedObj.id + "\n " +
+		//		'start sec: '+embedObj.start_time_sec + ' base offset: '+embedObj.base_seeker_slider_offset);
         
         //build draggable hook here:        
-	    $j('#mv_seeker_slider_'+_this.id).draggable({
-        	containment:'#seeker_bar_'+_this.id,
+	    $j('#mv_seeker_slider_'+embedObj.id).draggable({
+        	containment:'#seeker_bar_'+embedObj.id,
         	axis:'x',
         	opacity:.6,
         	start:function(e, ui){
-        		var id = (_this.pc!=null)?_this.pc.pp.id:_this.id;
-        		_this.userSlide=true;
-        		js_log("started dragging set userSlide"+_this.userSlide)
+        		var id = (embedObj.pc!=null)?embedObj.pc.pp.id:embedObj.id;
+        		embedObj.userSlide=true;
+        		js_log("started dragging set userSlide"+embedObj.userSlide)
         		var options = ui.options;      
         		//remove "play button"   	
         		$j('#big_play_link_'+id).fadeOut('fast');
         		 //if playlist always start at 0
-		        _this.start_time_sec = (_this.instanceOf == 'mvPlayList')?0:
-        						_this.start_time_sec = ntp2seconds(_this.getTimeReq().split('/')[0]);       
+		        embedObj.start_time_sec = (embedObj.instanceOf == 'mvPlayList')?0:
+        						_this.start_time_sec = ntp2seconds(embedObj.getTimeReq().split('/')[0]);       
         	},
         	drag:function(e, ui){
         		//@@todo get the -14 number from the skin somehow
-        		var perc = (($j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft-_this.base_seeker_slider_offset)
+        		var perc = (($j('#mv_seeker_slider_'+embedObj.id).get(0).offsetLeft-embedObj.base_seeker_slider_offset)
 						/
-					($j('#mv_seeker_'+_this.id).width()-14));   							
+					($j('#mv_seeker_'+embedObj.id).width()-14));   							
 									 													
-				_this.jump_time = seconds2ntp(parseInt(_this.getDuration()*perc)+ _this.start_time_sec);	
-				//js_log('perc:' + perc + ' * ' + _this.getDuration() + ' jt:'+  this.jump_time);
-				_this.setStatus( getMsg('seek_to')+' '+_this.jump_time );    
+				embedObj.jump_time = seconds2ntp(parseInt(embedObj.getDuration()*perc)+ embedObj.start_time_sec);	
+				//js_log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
+				embedObj.setStatus( getMsg('seek_to')+' '+embedObj.jump_time );    
 				//update the thumbnail / frame 
-				_this.updateThumbPerc( perc );					
+				embedObj.updateThumbPerc( perc );					
         	},
         	stop:function(e, ui){
-        		_this.userSlide=false;
-        		var perc = (($j('#mv_seeker_slider_'+_this.id).get(0).offsetLeft-_this.base_seeker_slider_offset)
+        		embedObj.userSlide=false;
+        		var perc = (($j('#mv_seeker_slider_'+embedObj.id).get(0).offsetLeft-embedObj.base_seeker_slider_offset)
 						/
-					($j('#mv_seeker_'+_this.id).width()-14));   
-        		js_log('do jump to: '+_this.jump_time + ' perc:' +perc);
+					($j('#mv_seeker_'+embedObj.id).width()-14));   
+        		js_log('do jump to: '+embedObj.jump_time + ' perc:' +perc);
         		
         		//set seek time (incase we have to do a url seek)        		
-        		_this.seek_time_sec=ntp2seconds(_this.jump_time);   
-        		var test = _this;        		
-        		_this.doSeek(perc);
+        		embedObj.seek_time_sec=ntp2seconds(embedObj.jump_time);   
+        		var test = embedObj;        		
+        		embedObj.doSeek(perc);
         	}
         });
     },
@@ -2435,7 +2433,7 @@ embedVideo.prototype = {
 			var time_ntp =  seconds2ntp ( options.time + parseInt(this.start_offset) );
 			my_thumb_src = getUpdateTimeURL( my_thumb_src, time_ntp, options.size );
 		}
-		return '<img src="' + my_thumb_src +'" '+
+		return '<img class="mv_tl_thumb" src="' + my_thumb_src +'" '+
 				'style="height:' + options.height + 'px;' +
 				'width:' + options.width + 'px" >';
 	},
@@ -2828,14 +2826,14 @@ embedVideo.prototype = {
 
         //check state and set play or pause
         if(this.paused){
-            //js_log('do play');            
+            js_log('mv_embed:do play');            
             //(paused) do play
             this.play();
             this.paused=false;        
             //update "paused state" onPlay	        
 	        $j("#mv_play_pause_button_"+this_id).attr('class', 'pause_button');
         }else{
-            js_log('do pause');
+            js_log('mv_embed:do pause');
             //(playing) do pause
             this.pause();
             this.paused=true; 
