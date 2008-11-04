@@ -21,4 +21,5 @@ $dateFormat = 'Y-m-d';
 $emailSubject = 'Invoice for period $periodStart to $periodEnd';
 $emailTo = 'example@example';
 $bccTo = 'example2@example';
+$ccTo = false;
 $emailFrom = 'example2@example';

@@ -88,7 +88,12 @@ class Invoice {
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 		$headers .= "From: {$this->conf->emailFrom}\r\n";
-		$headers .= "Bcc: {$this->conf->bccTo}\r\n";
+		if ( $this->conf->bccTo ) {
+			$headers .= "Bcc: {$this->conf->bccTo}\r\n";
+		}
+		if ( $this->conf->ccTo ) {
+			$headers .= "Cc: {$this->conf->ccTo}\r\n";
+		}
 
 		mail( $this->conf->emailTo, $invoice['subject'], $invoice['text'], $headers );
 	}
