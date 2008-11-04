@@ -297,6 +297,13 @@ $messages['br'] = array(
 	'badimages-page' => '{{ns:help}}:Roll ar skeudennoù didalvoud',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'badimages-name' => 'Naziv:',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

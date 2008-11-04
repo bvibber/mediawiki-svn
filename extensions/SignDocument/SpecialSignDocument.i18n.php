@@ -429,6 +429,8 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'sign-realname' => 'Ime:',
+	'sign-viewfield-realname' => 'Ime',
 	'sign-viewfield-options' => 'Opcije',
 );
 

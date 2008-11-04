@@ -37,6 +37,11 @@ $aliases['hr'] = array(
 	'CloseWiki' => array( 'Zatvori_wiki' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'CloseWiki' => array( 'បិទវិគី' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'CloseWiki' => array( 'Wiki zoumaachen' ),

@@ -35,7 +35,7 @@ $aliases['de'] = array(
 
 /** Spanish (Español) */
 $aliases['es'] = array(
-	'InterwikiList' => array( 'Lista_de_Interwikis' ),
+	'InterwikiList' => array( 'ListaDeInterwikis', 'Lista de interwikis' ),
 );
 
 /** Persian (فارسی) */

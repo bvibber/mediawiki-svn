@@ -296,6 +296,13 @@ $messages['bg'] = array(
 	'regexblock-view-time' => 'на $1',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'regexblock-view-all' => 'Sve',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

@@ -109,6 +109,11 @@ $aliases['no'] = array(
 	'SiteMatrix' => array( 'Wikimedia-wikier' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'SiteMatrix' => array( 'Lista projektów' ),
+);
+
 /** Portuguese (Português) */
 $aliases['pt'] = array(
 	'SiteMatrix' => array( 'Lista de wikis da Wikimedia' ),

@@ -380,6 +380,29 @@ $messages['it'] = array(
 	'tog-show_task_comments' => "Inclusione della pagina dei commenti dell'attività",
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'tasks' => 'Aufgaben',
+	'tasks_desc' => "Eng Erweiderung fir Aufgaben z'administréieren",
+	'tasks_tab' => 'Aufgaben',
+	'tasks_form_comment' => 'Bemierkung',
+	'tasks_noone' => 'keen',
+	'tasks_delete' => 'Läschen',
+	'tasks_no_task_delete_title' => 'Net erlaabt',
+	'tasks_action_delete' => 'Eng Aufgab gouf geläscht.',
+	'tasks_closedby' => 'Zougemaach vum $1',
+	'tasks_here' => 'hei',
+	'tasks_help_page' => 'Aufgaben',
+	'tasks_more_like_it' => 'méi',
+	'tasks_table_header_page' => 'Säit',
+	'tasks_search_tasks' => 'Aufgaben',
+	'tasks_status_open' => 'Op',
+	'tasks_status_closed' => 'Zou',
+	'tasks_logentry' => 'Fir [[$1}}',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -456,6 +479,84 @@ Zie uw $2.',
 	'tasks_logpagetext' => 'Hieronder staan alle wijzigingen aan taken',
 	'tasks_logentry' => 'Voor "[[$1]]"',
 	'tog-show_task_comments' => 'Opmerkingenpagina voor taak transcluderen.',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'tasks' => 'Prètzfaches',
+	'tasks_desc' => 'Una extension que servís a gerir los prètzfaches de far',
+	'tasks_tab' => 'Prètzfaches',
+	'tasks_title' => 'Prètzfaches per « $1 »',
+	'tasks_form_new' => 'Crear un prètzfach novèl',
+	'tasks_form_comment' => 'Comentari',
+	'tasks_error1' => "Prètfech pas creat : ja existís un prètfach d'aqueste tipe !",
+	'tasks_ok1' => 'Prètzfach novèl creat !',
+	'tasks_create_header' => 'Crear un prètzfach novèl',
+	'tasks_existing_header' => 'Prètzfaches existents',
+	'tasks_existing_table_header' => 'Prètfach|Datas|Comentari|Assignament/Accions/Pagina',
+	'tasks_noone' => 'cap',
+	'tasks_assign_me' => 'Me l’assignar',
+	'tasks_assign_to' => 'Assignar a',
+	'tasks_unassign_me' => 'Me desassignar',
+	'tasks_close' => 'Clausurar',
+	'tasks_wontfix' => 'Serà pas reparat',
+	'tasks_delete' => 'Suprimir',
+	'tasks_no_task_delete_title' => 'Pas autorizat',
+	'tasks_no_task_delete_texe' => 'Avètz pas lo drech de suprimir un prètzfach. Sols los administrators o pòdon far.',
+	'tasks_action_delete' => 'Un prètzfach es estat suprimit.',
+	'tasks_task_was_deleted' => 'Lo prètzfach es estat suprimit amb succès.',
+	'tasks_reopen' => 'Tornar dobrir',
+	'tasks_assignedto' => 'Assignat a $1',
+	'tasks_created_by' => 'Creat per $1',
+	'tasks_discussion_page_link' => 'Discutir del prètzfach',
+	'tasks_closedby' => 'Tampat per $1',
+	'tasks_assigned_myself_log' => 'Auto assignament del prètzfach « $1 »',
+	'tasks_discussion_page_for' => "Aqueste prètzfach es per la pagina « $1 ». La lista de totes los prètzfaches d'aquesta pagina es $2.",
+	'tasks_sidebar_title' => 'Prètzfaches en cors',
+	'tasks_here' => 'aicí',
+	'tasks_returnto' => "Ara anatz èsser redirigit(ida). S'o sètz pas, clicatz $1.",
+	'tasks_see_page_tasks' => '(prètzfaches de la pagina)',
+	'tasks_task_is_assigned' => '(assignat)',
+	'tasks_plain_text_only' => '(tèxt brut solament)',
+	'tasks_help_page' => 'Prètzfaches',
+	'tasks_help_page_link' => '?',
+	'tasks_help_separator' => '$2 | $1',
+	'tasks_more_like_it' => 'mai',
+	'tasks_task_types' => '1:cleanup:Cleanup|2:wikify:Wikify|3:rewrite:Rewrite|4:delete:Delete|5:create:Create|6:write:Write',
+	'tasks_significance_order' => 'tornar escriure<suprimir',
+	'tasks_creation_tasks' => '5,6',
+	'tasks_event_on_creation' => 'verificar',
+	'tasks_event_on_creation_anon' => 'verificar',
+	'tasks_on_creation_comment' => "Prètzfach automatic, creat al moment de la creacion de l'article",
+	'tasks_link_your_assignments' => 'distribucions dobertas',
+	'tasks_see_your_assignments' => 'Actualament, avètz $1 prètzfaches assignats. Vejatz vòstres $2.',
+	'tasks_my_assignments' => 'Vòstres assignaments en cors',
+	'tasks_table_header_page' => 'Pagina',
+	'tasks_you_have_no_assignments' => 'Avètz pas cap de prètzfach',
+	'tasks_search_form_title' => 'Cercar',
+	'tasks_search_tasks' => 'Prètzfaches',
+	'tasks_search_status' => 'Estatut',
+	'tasks_search_no_tasks_chosen_note' => '(Pas cap de seleccion, recèrca de totes los tipes de prètzfaches.)',
+	'tasks_search_results' => 'Resultats de recèrca',
+	'tasks_previous' => 'Precedent',
+	'tasks_next' => 'Seguent',
+	'tasks_sort' => 'Triar',
+	'tasks_ascending' => 'Mai ancians d’en primièr',
+	'tasks_status_open' => 'Dobert',
+	'tasks_status_assigned' => 'Assignat',
+	'tasks_status_closed' => 'Tampat',
+	'tasks_status_wontfix' => 'Serà pas fach',
+	'tasks_action_open' => 'Prètzfach « $1 » dobert.',
+	'tasks_action_assigned' => 'Prètzfach « $1 » assignat.',
+	'tasks_action_closed' => 'Prètzfach « $1 » tampat.',
+	'tasks_action_wontfix' => 'Indicar que lo prètzfach « $1 » serà pas fach.',
+	'tasks_sign_delete' => '<b>Aquesta pagina es estada prepausada a la supression !</b>',
+	'tasks_logpage' => 'Istoric dels prètzfaches',
+	'tasks_logpagetext' => 'Aquò es un istoric dels cambiaments dins los prètzfaches',
+	'tasks_logentry' => 'Per « [[$1]] »',
+	'tog-show_task_comments' => 'Veire la pagina de comentaris a prepaus dels prètzfaches.',
 );
 
 /** Russian (Русский) */
@@ -600,5 +701,56 @@ $messages['sk'] = array(
 	'tasks_logpagetext' => 'Toto je záznam zmien v úlohách',
 	'tasks_logentry' => 'Pre "[[$1]]"',
 	'tog-show_task_comments' => 'Transklúzia diskusnej stránky úlohy.',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'tasks' => 'Uppgifter',
+	'tasks_desc' => 'Ett programtillägg för att hantera uppgifter',
+	'tasks_tab' => 'Uppgifter',
+	'tasks_title' => 'Uppgifter för "$1"',
+	'tasks_form_new' => 'Skapa ny uppgift',
+	'tasks_form_comment' => 'Kommentar',
+	'tasks_error1' => 'Uppgiften skapades inte: det finns redan en sådan uppgift!',
+	'tasks_ok1' => 'En ny uppgift har skapats!',
+	'tasks_create_header' => 'Skapa en ny uppgift',
+	'tasks_existing_header' => 'Existerande uppgifter',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'tasks' => 'Việc cần làm',
+	'tasks_tab' => 'Việc cần làm',
+	'tasks_form_new' => 'Tạo việc mới',
+	'tasks_form_comment' => 'Lời ghi',
+	'tasks_create_header' => 'Tạo việc',
+	'tasks_existing_header' => 'Việc hiện có',
+	'tasks_noone' => 'không ai',
+	'tasks_assign_me' => 'Chỉ định cho mình',
+	'tasks_assign_to' => 'Chỉ định cho',
+	'tasks_close' => 'Đóng việc',
+	'tasks_delete' => 'Xóa',
+	'tasks_reopen' => 'Mở lại việc cần làm',
+	'tasks_discussion_page_link' => 'Trang thảo luận về việc cần làm',
+	'tasks_here' => 'đây',
+	'tasks_task_is_assigned' => '(chỉ định)',
+	'tasks_help_page' => 'Việc cần làm',
+	'tasks_more_like_it' => 'thêm',
+	'tasks_table_header_page' => 'Trang',
+	'tasks_search_form_title' => 'Tìm kiếm',
+	'tasks_search_tasks' => 'Việc cần làm',
+	'tasks_search_status' => 'Trạng thái',
+	'tasks_search_results' => 'Kết quả tìm kiếm',
+	'tasks_previous' => 'Trước',
+	'tasks_next' => 'Sau',
+	'tasks_sort' => 'Xếp',
+	'tasks_status_open' => 'Mở',
+	'tasks_status_assigned' => 'Chỉ định',
+	'tasks_status_closed' => 'Đóng',
+	'tasks_logpage' => 'Nhật trình việc cần làm',
 );
 

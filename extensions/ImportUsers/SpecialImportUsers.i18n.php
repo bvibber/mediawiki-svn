@@ -156,6 +156,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'importusers-log' => 'Zapisnik uvoza',
+	'importusers-log-summary-all' => 'Sve',
 );
 
 /** Catalan (Català)

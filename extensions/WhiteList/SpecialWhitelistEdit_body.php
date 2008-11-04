@@ -688,7 +688,7 @@ class WhiteList extends SpecialPage
                 $to = User::newFromId($wgRequest->getint('manager',0));
             }
             $to->sendMail("[${wgSitename}] " . wfMsg('whitelistrequest'),
-                          wfMsg('whitelistrequestmsg',$wgUser->getRealName(), $wgRequest->getVal('newPages')),
+                          wfMsg('whitelistrequestmsg', $wgUser->getRealName(), $wgRequest->getVal('newPages') ),
                           $sender->toString()
                          );
 

@@ -436,6 +436,7 @@ $messages['sv'] = array(
 	'refreshspecial-refreshing' => 'uppdaterar specialsidor',
 	'refreshspecial-success-subtitle' => 'uppdaterar specialsidor',
 	'refreshspecial-choice' => 'uppdaterar specialsidor',
+	'refreshspecial-select-all-pages' => ' välj alla sidor',
 	'refreshspecial-here' => '<b>här</b>',
 	'refreshspecial-no-page' => 'Ingen sådan specialsida',
 	'refreshspecial-reconnected' => 'Återansluten.',

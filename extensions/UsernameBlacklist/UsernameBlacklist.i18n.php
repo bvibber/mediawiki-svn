@@ -249,6 +249,15 @@ $messages['cs'] = array(
 	'right-uboverride' => 'Potlačení nepovolených uživatelských jmen',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'blacklistedusername' => 'Enw gwaharddedig ar gyfer defnyddwyr',
+	'blacklistedusernametext' => "Mae'r enw defnyddiwr y dewisoch ar y [[MediaWiki:Usernameblacklist|rhestr enwau gwaharddedig]].
+Dewiswch enw arall os gwelwch yn dda.",
+);
+
 /** Danish (Dansk)
  * @author Morten LJ
  */

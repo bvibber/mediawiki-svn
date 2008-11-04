@@ -142,6 +142,14 @@ $messages['bg'] = array(
 	'dt_xml_freetext' => 'Свободен текст',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'dt_viewxml_namespaces' => 'Imenski prostori',
+	'dt_xml_name' => 'Naziv',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author SMP

@@ -252,3 +252,13 @@ $messages['th'] = array(
 	'unicodeconverter-ok' => 'ตกลง',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'unicodeconverter' => 'Chuyển đổi Unicode',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Nguyên văn:',
+	'unicodeconverter-newtext' => 'Văn bản chuyển đổi:',
+);
+

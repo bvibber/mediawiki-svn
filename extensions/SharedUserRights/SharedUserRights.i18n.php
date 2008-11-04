@@ -42,6 +42,15 @@ $messages['arz'] = array(
 	'gblrights-rights-entry' => 'غير عضوية المجموعة العامة ل$1 من $2 إلى $3',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'shareduserrights' => 'Управление на споделените потребителски права',
+	'gblrights-desc' => 'Лесно [[Special:SharedUserRights|администриране на глобалните потребителски права]]',
+	'gblrights-logpage' => 'Дневник на глобалните права',
+);
+
 /** French (Français)
  * @author IAlex
  */

@@ -104,6 +104,11 @@ $aliases['no'] = array(
 	'CrossNamespaceLinks' => array( 'Lenker mellom navnerom' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'CrossNamespaceLinks' => array( 'Linki między przestrzeniami nazw' ),
+);
+
 /** Portuguese (Português) */
 $aliases['pt'] = array(
 	'CrossNamespaceLinks' => array( 'Links espalhados em diversos espaços nominais', 'Links espalhados em diversos domínios' ),

@@ -31,7 +31,7 @@ $aliases['de'] = array(
 
 /** Spanish (Español) */
 $aliases['es'] = array(
-	'WhosOnline' => array( 'Quién_Está_Conectado' ),
+	'WhosOnline' => array( 'QuiénEstáConectado' ),
 );
 
 /** Persian (فارسی) */

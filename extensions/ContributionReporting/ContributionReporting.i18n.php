@@ -25,12 +25,33 @@ $messages['en'] = array(
 	'contrib-hist-anonymous' => 'Anonymous',
 );
 
+/** Message documentation (Message documentation)
+ * @author Darth Kule
+ */
+$messages['qqq'] = array(
+	'contrib-hist-name' => '{{Identical|Name}}',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
 	'contrib-hist-name' => 'Име',
 	'contrib-hist-date' => 'Час и дата',
+);
+
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'contributionreporting-desc' => 'Živé monitorování sbírky Wikimedia',
+	'contributiontotal' => 'Celková suma darů',
+	'contributionhistory' => 'Historie darů',
+	'contrib-hist-header' => 'Komentáře dárců z celého světa v reálném čase',
+	'contrib-hist-name' => 'Jméno',
+	'contrib-hist-date' => 'Čas a datum',
+	'contrib-hist-amount' => 'Výše',
+	'contrib-hist-anonymous' => 'Anonym',
 );
 
 /** German (Deutsch) */
@@ -43,6 +64,19 @@ $messages['de'] = array(
 	'contrib-hist-date' => 'Zeit und Datum',
 	'contrib-hist-amount' => 'Betrag',
 	'contrib-hist-anonymous' => 'Anonym',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'contributiontotal' => 'Kontribua tuto',
+	'contributionhistory' => 'Kontribua historio',
+	'contrib-hist-header' => 'Aktualaj komentoj de donacantoj ĉirkaŭ la mondo',
+	'contrib-hist-name' => 'Nomo',
+	'contrib-hist-date' => 'Tempo kaj dato',
+	'contrib-hist-amount' => 'Iom',
+	'contrib-hist-anonymous' => 'Anonimulo',
 );
 
 /** Persian (فارسی)
@@ -115,6 +149,27 @@ $messages['ia'] = array(
 	'contrib-hist-anonymous' => 'Anonyme',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'contrib-hist-name' => 'Nome',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'contributionreporting-desc' => 'Tirek övver de Wikimedia Shtefftung ier Spende-Sammlong bereeschte',
+	'contributiontotal' => 'De Spende zosamme jeräshnet',
+	'contributionhistory' => 'De Spende bes jäz',
+	'contrib-hist-header' => 'De Spender uß alle Welt ier Annmerkunge tirek aanzeije',
+	'contrib-hist-name' => 'Name',
+	'contrib-hist-date' => 'Uhrzick un Dattum',
+	'contrib-hist-amount' => 'Betraach',
+	'contrib-hist-anonymous' => 'Namelos',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -168,6 +223,20 @@ $messages['pt'] = array(
 	'contrib-hist-date' => 'Hora e data',
 	'contrib-hist-amount' => 'Quantia',
 	'contrib-hist-anonymous' => 'Anónimo',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'contributionreporting-desc' => 'Liverapportering av Wikimedias insamling',
+	'contributiontotal' => 'Totalt bidrag',
+	'contributionhistory' => 'Bidragshistorik',
+	'contrib-hist-header' => 'Realtids-kommentarer från bidragsgivare världen runt',
+	'contrib-hist-name' => 'Namn',
+	'contrib-hist-date' => 'Tid och datum',
+	'contrib-hist-amount' => 'Belopp',
+	'contrib-hist-anonymous' => 'Anonym',
 );
 
 /** Vèneto (Vèneto)

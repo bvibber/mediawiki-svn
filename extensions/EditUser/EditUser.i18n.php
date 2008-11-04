@@ -135,6 +135,13 @@ $messages['br'] = array(
 	'edituser-dosearch' => 'Klask',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'edituser-username' => 'Ime',
+);
+
 /** Buginese (ᨅᨔ ᨕᨘᨁᨗ)
  * @author Kurniasan
  */

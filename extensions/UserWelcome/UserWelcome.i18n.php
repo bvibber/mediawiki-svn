@@ -67,6 +67,24 @@ $messages['arz'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|صديق|صديق}} جديد',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'mp-userlevels-link' => 'Потребителски рангове',
+	'mp-welcome-upload' => 'Качване',
+	'mp-welcome-edit' => 'Редактиране',
+	'mp-welcome-points' => '$1 точки',
+	'mp-welcome-logged-in' => 'Здрасти $1',
+	'mp-requests-title' => 'Заявки',
+	'mp-requests-message' => 'Имате следните заявки.',
+	'mp-request-new-message' => 'ново съобщение',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|нова награда|нови награди}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|нов подарък|нови подаръка}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|нов неприятел|нови неприятели}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|нов приятел|нови приятели}}',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -104,6 +122,28 @@ $messages['fi'] = array(
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|uusi lahja|uutta lahjaa}}',
 	'mp-request-new-foe' => '$1 {{PLURAL:$1|uusi vihollinen|uutta vihollista}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|uusi ystävä|uutta ystävää}}',
+);
+
+/** French (Français)
+ * @author Cedric31
+ * @author Grondin
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'userwelcome-desc' => 'Ajoute une balise <tt>&lt;welcomeUser&gt;</tt> pour afficher des informations sociales spécifiques à chaque utilisateur aux utilisateurs enregistrés',
+	'mp-userlevels-link' => "Niveaux de l'utilisateur",
+	'mp-welcome-upload' => 'Télécharger',
+	'mp-welcome-edit' => 'Modifier',
+	'mp-welcome-points' => '$1 points',
+	'mp-welcome-needed-points' => 'Avancer vers <b><a href="$1">$2</a></b> gagne <i>$3</i> points en plus !',
+	'mp-welcome-logged-in' => 'Bienvenue $1',
+	'mp-requests-title' => 'Requêtes',
+	'mp-requests-message' => 'Vous avez les requêtes suivantes.',
+	'mp-request-new-message' => 'nouveau message',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|nouveau|nouveaux}} prix',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|nouveau don|nouveaux dons}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|nouveau ennemi|nouveaux ennemis}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|nouvel ami|nouveaux amis}}',
 );
 
 /** Galician (Galego)
@@ -145,6 +185,20 @@ $messages['he'] = array(
 	'mp-request-new-friend' => '{{PLURAL:$1|חבר חדש אחד|$1 חברים חדשים}}',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'mp-welcome-upload' => 'ផ្ទុកឯកសារឡើង',
+	'mp-welcome-edit' => 'កែប្រែ',
+	'mp-welcome-logged-in' => 'សួរស្តី $1',
+	'mp-requests-title' => 'សំនើ',
+	'mp-request-new-message' => 'សារថ្មី',
+	'mp-request-new-award' => 'រង្វាន់ថ្មីចំនួន$1',
+	'mp-request-new-gift' => 'អំអោយថ្មីចំនួន$1',
+	'mp-request-new-friend' => 'មិត្តថ្មី$1នាក់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -158,6 +212,7 @@ $messages['lb'] = array(
 	'mp-requests-title' => 'Ufroen',
 	'mp-requests-message' => 'Dir hutt dës Ufroen',
 	'mp-request-new-message' => 'neie Message',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|neie Cadeau|nei Cadeauen}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|neie Frënd|nei Frënn}}',
 );
 
@@ -180,6 +235,26 @@ $messages['nl'] = array(
 	'mp-request-new-gift' => '{{PLURAL:$1|1 nieuw geschenk|$1 nieuwe geschenken}}',
 	'mp-request-new-foe' => '{{PLURAL:$1|1 nieuwe vijand|$1 nieuwe vijanden}}',
 	'mp-request-new-friend' => '{{PLURAL:$1|1 nieuwe vriend|$1 nieuwe vrienden}}',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'userwelcome-desc' => "Apond una balisa <tt>&lt;welcomeUser&gt;</tt> per afichar d'informacions socialas especificas a cada utilizaire als utilizaires enregistrats",
+	'mp-userlevels-link' => "Nivèls de l'utilizaire",
+	'mp-welcome-upload' => 'Telecargar',
+	'mp-welcome-edit' => 'Modificar',
+	'mp-welcome-points' => '$1 punts',
+	'mp-welcome-needed-points' => 'Avançar cap a <b><a href="$1">$2</a></b> ganha <i>$3</i> punts de mai !',
+	'mp-welcome-logged-in' => 'Benvenguda $1',
+	'mp-requests-title' => 'Requèstas',
+	'mp-requests-message' => 'Avètz las requèstas seguentas.',
+	'mp-request-new-message' => 'messatge novèl',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|prèmi novèl|prèmis novèls}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|present novèl|presents novèls}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|enemic novèl|enemics novèls}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|amic novèl|amics novèls}}',
 );
 
 /** Sinhala (සිංහල)
@@ -220,6 +295,22 @@ $messages['sk'] = array(
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|nový dar|nové dary|nových darov}}',
 	'mp-request-new-foe' => '$1 {{PLURAL:$1|nový nepriateľ|noví nepriatelia|nových nepriateľov}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|nový priateľ|noví priatelia|nových priateľov}}',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'mp-userlevels-link' => 'Användarnivåer',
+	'mp-welcome-upload' => 'Ladda upp',
+	'mp-welcome-edit' => 'Redigera',
+	'mp-welcome-points' => '$1 poäng',
+	'mp-welcome-logged-in' => 'Hej $1',
+	'mp-request-new-message' => 'nytt meddelande',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|ny utmärkelse|nya utmärkelser}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|ny present|nya presenter}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|ny fiende|nya fiender}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|ny vän|nya vänner}}',
 );
 
 /** Vietnamese (Tiếng Việt)

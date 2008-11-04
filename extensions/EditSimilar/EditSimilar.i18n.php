@@ -200,6 +200,18 @@ $messages['grc'] = array(
 	'editsimilar-link-disable' => 'τιθέναι τὰς προαιρέσεις',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'editsimilar-desc' => 'עידוד המשתמשים לערוך דפים דומים לאחר שמירת דף',
+	'editsimilar-thanks' => 'תודה על תרומתכם.
+אנא עיינו בדפים קשורים אלו: $1.',
+	'editsimilar-thanks-singleresult' => 'תודה על תרומתכם.
+אנא עיינו בדף קשור זה: $1.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -12,3 +12,9 @@ $aliases = array();
 $aliases['en'] = array(
 	'ContributionTracking' => array( 'ContributionTracking' ),
 );
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'ContributionTracking' => array( 'DonatiesVolgen' ),
+);
+

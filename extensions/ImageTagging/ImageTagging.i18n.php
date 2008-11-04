@@ -522,6 +522,7 @@ $messages['km'] = array(
 	'imagetagging-inthisimage' => 'ក្នុងរូបភាពនេះ: $1',
 	'imagetagging-tag-button' => 'ប្លាក់',
 	'imagetagging-tagcancel-button' => 'បោះបង់',
+	'imagetagging-addingtag' => 'កំពុងដាក់ប្លាក…',
 	'imagetagging-addtagsuccess' => 'ប្លាក់ដែលបានដាក់៖',
 );
 

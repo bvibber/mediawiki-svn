@@ -274,10 +274,25 @@ $2',
 	'whitelistnummatches' => '  - {{PLURAL:$1|едно съвпадение|$1 съвпадения}}',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$allMessages['br'] = array(
+	'mywhitelistpages' => 'Ma fajennoù',
+	'whitelisttablemodifyall' => 'Pep tra',
+	'whitelisttablemodifynone' => 'Hini ebet',
+	'whitelisttablepage' => 'Pajenn wiki',
+	'whitelisttableedit' => 'Kemmañ',
+	'whitelisttableview' => 'Gwelet',
+	'whitelisttablenewdate' => 'Deiziad nevez :',
+	'whitelisttableremove' => 'Tennañ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $allMessages['bs'] = array(
+	'whitelisttablemodifyall' => 'Sve',
 	'whitelistrequestmsg' => '$1 zahtijeva pristup slijedećim stranicama:
 
 $2',

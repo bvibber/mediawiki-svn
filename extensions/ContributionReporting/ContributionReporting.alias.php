@@ -14,10 +14,16 @@ $aliases['en'] = array(
 	'ContributionTotal' => array( 'ContributionTotal' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'ContributionHistory' => array( 'ប្រវត្តិនៃការរួមចំនែក' ),
+	'ContributionTotal' => array( 'ការរួមចំនែកសរុប' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'ContributionHistory' => array( 'Giftenhistorie' ),
-	'ContributionTotal' => array( 'Giftentotaal' ),
+	'ContributionHistory' => array( 'Donatiehistorie' ),
+	'ContributionTotal' => array( 'Donatietotaal' ),
 );
 
 /** Polish (Polski) */

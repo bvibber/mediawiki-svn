@@ -2228,6 +2228,7 @@ $wdMessages['lb'] = array(
 	'ow_history' => 'Versiounen',
 	'ow_datasets' => 'Auswiel vun den Donnéeën',
 	'ow_noedit_title' => "Keng Erlabniss fir z'änneren",
+	'ow_uipref_datasets' => 'Standard Astellung',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => '<Näischt ausgewielt>',
 	'ow_conceptmapping_no_action_specified' => 'Ëntschëllegt, ech wees net wéi een "$1".',

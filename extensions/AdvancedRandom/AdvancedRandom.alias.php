@@ -30,7 +30,7 @@ $aliases['arz'] = array(
 
 /** Spanish (Español) */
 $aliases['es'] = array(
-	'AdvancedRandom' => array( 'Aleatorio_Avanzado' ),
+	'AdvancedRandom' => array( 'AleatorioAvanzado', 'Aleatorio avanzado' ),
 );
 
 /** Persian (فارسی) */

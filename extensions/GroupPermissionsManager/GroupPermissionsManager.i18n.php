@@ -313,6 +313,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'grouppermissions-search' => 'Grupa:',
 	'grouppermissions-dologin' => 'Prijava',
 );
 

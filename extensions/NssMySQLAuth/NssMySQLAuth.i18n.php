@@ -73,6 +73,7 @@ $messages['bg'] = array(
 	'am-username' => 'потребителско име',
 	'am-email' => 'е-поща',
 	'am-updated' => 'Промените бяха съхранени успешно!',
+	'nss-rights' => 'права',
 	'nss-save-changes' => 'Съхраняване на промените',
 	'nss-create-account-header' => 'Създаване на нова сметка',
 	'nss-create-account' => 'Създаване на сметка',

@@ -558,6 +558,14 @@ $messages['bg'] = array(
 	'viewconfig' => 'Преглед на конфигурацията на уикито',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'configure-desc-ns' => 'Imenski prostori',
+	'configure-section-namespaces' => 'Imenski prostori',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */

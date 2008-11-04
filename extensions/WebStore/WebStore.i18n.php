@@ -797,11 +797,17 @@ $1',
  * @author Robby
  */
 $messages['lb'] = array(
+	'inplace_access_disabled' => 'Den Zougang zu dësem Service gouf fir all Cliente gespaart.',
 	'inplace_access_denied' => 'Dëse Service ass limitéiert op Grond vun der IP-Adress vum Client.',
 	'inplace_scaler_not_enough_params' => 'Net genuch Parameteren.',
 	'webstore_access' => 'Dëse Service ass pro IP-Adress limitéiert.',
 	'webstore_path_invalid' => 'De Numm vum Fichier war ongëlteg.',
 	'webstore_rename' => 'Feeler beim Ëmbennen vum Fichier "$1" op "$2".',
+	'webstore_lock_open' => 'Feeler beim Opmaache vum gespaarte Fichier "$1".',
+	'webstore_lock_close' => 'Feeler beim Zoumaache vum gespaarte Fichier "$1".',
+	'webstore_temp_open' => 'Feeler beim Opmaache vum temporäre Fichier "$1".',
+	'webstore_temp_close' => 'Feeler beim Zoumaache vum temporäre Fichier "$1".',
+	'webstore_temp_lock' => 'Feeler beim Zoumaache vum tempräre Fichier "$1".',
 	'webstore_no_file' => 'Et gouf kee Fichier eropgelueden.',
 	'webstore_404' => 'De Fichier gouf net fonnt.',
 	'webstore_php_warning' => 'PHP Warnung: $1',

@@ -47,6 +47,7 @@ $aliases['hsb'] = array(
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'WhiteList' => array( 'បញ្ជីស' ),
+	'WhitelistEdit' => array( 'កែប្រែបញ្ជីស' ),
 );
 
 /** Ripoarisch (Ripoarisch) */
