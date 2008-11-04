@@ -46,10 +46,6 @@ class ContributionHistory extends SpecialPage {
 		while ( $row = $res->fetchRow() ) {
 			$name = $this->formatName( $row );
 
-			if ( $row['note'] ) {
-				$name .= '<br />' . htmlspecialchars( $row['note'] );
-			}
-
 			$amount = $this->formatAmount( $row );
 			$date = $this->formatDate( $row );
 
@@ -84,12 +80,52 @@ class ContributionHistory extends SpecialPage {
 	
 	function formatName( $row ) {
 		$name = htmlspecialchars( $row['name'] );
-		if ( !$name ) {
+		if( !$name ) {
 			$name = $this->msg( 'contrib-hist-anonymous' );
 		}
-
 		$name = '<strong>' . $name . '</strong>';
+		
+		if( $row['note'] && !$this->isTiny( $row ) ) {
+			$name .= '<br />' . htmlspecialchars( $row['note'] );
+		}
+
 		return $name;
+	}
+	
+	function isTiny( $row ) {
+		$mins = array(
+			'USD' => 1,
+			'GBP' => 1, // $1.26
+			'EUR' => 1, // $1.26
+			'AUD' => 2, // $1.35
+			'CAD' => 1, // $0.84
+			'CHF' => 1, // $0.85
+			'CZK' => 20, // $1.03
+			'DKK' => 5, // $0.85
+			'HKD' => 10, // $1.29
+			'HUF' => 200, // $0.97
+			'JPY' => 100, // $1
+			'NZD' => 2, // $1.18
+			'NOK' => 1, // $1.48
+			'PLN' => 5, // $1.78
+			'SGD' => 2, // $1.35
+			'SEK' => 10, // $1.28
+		);
+		$currency = $row['original_currency'];
+		if( $currency ) {
+			$amount = $row['original_amount'];
+		} else {
+			$currency = 'USD';
+			$amount = $row['converted_amount'];
+		}
+		if( isset( $mins[$currency] ) && $amount < $mins[$currency] ) {
+			// Too small... don't show comments for 1-yen donations,
+			// they tend to be disruptive.
+			return true;
+		} else {
+			// dunno !
+			return false;
+		}
 	}
 	
 	function formatDate( $row ) {
