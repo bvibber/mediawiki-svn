@@ -248,6 +248,9 @@ class LuceneResult extends SearchResult {
 		
 		if($this->mInterwiki == '')
 			$this->mRevision = Revision::newFromTitle( $this->mTitle );
+			
+		if($this->mTitle->getNamespace() == NS_IMAGE)
+			$this->mImage = wfFindFile( $this->mTitle );	
 	}
 	
 	/**
