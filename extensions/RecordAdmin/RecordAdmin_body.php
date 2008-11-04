@@ -111,7 +111,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 			# Render the form
 			$wgOut->addHTML(
-				wfElement( 'form', array( 'class' => 'recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
+				wfElement( 'form', array( 'class' => strtolower($type).'-record', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
 				. '<b>' . wfMsg( 'recordadmin-recordid' ) . '</b> ' . wfElement( 'input', array( 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
 				. '&nbsp;&nbsp;&nbsp;' . wfElement( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
 				. "\n<br><br><hr><br>\n{$this->form}"

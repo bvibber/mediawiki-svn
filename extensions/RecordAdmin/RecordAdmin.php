@@ -11,13 +11,13 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @licence GNU General Public Licence 2.0 or later
  */
 
-define( 'RECORDADMIN_VERSION', '0.4, 2008-10-31' );
+define( 'RECORDADMIN_VERSION', '0.4.1, 2008-11-04' );
 
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['RecordAdmin'] = $dir . 'RecordAdmin.i18n.php';
-$wgExtensionAliasesFiles['RecordAdmin'] = $dir . 'RecordAdmin.alias.php';
+$wgExtensionAliasesFiles['RecordAdmin']  = $dir . 'RecordAdmin.alias.php';
 $wgAutoloadClasses['SpecialRecordAdmin'] = $dir . 'RecordAdmin_body.php';
 $wgSpecialPages['RecordAdmin'] = 'SpecialRecordAdmin';
 $wgSpecialPageGroups['RecordAdmin'] = 'wiki';
