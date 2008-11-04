@@ -22,7 +22,7 @@ Please see [[{{MediaWiki:Ow editing policy url}}|our editing policy]].',
 	'ow_editing_policy_url'                 => 'Project:Permission policy',
 	'ow_uipref_datasets'                    => 'Default view',
 	'ow_uiprefs'                            => 'Wikidata',
-	'ow_none_selected'                      => '<None selected>',
+	'ow_none_selected'                      => 'None selected',
 	'ow_conceptmapping_help'                => '<p>possible actions: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
 <li>&action=get&concept=<concept_id>  read a mapping back</li>
