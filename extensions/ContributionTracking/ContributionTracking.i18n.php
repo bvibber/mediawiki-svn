@@ -74,7 +74,9 @@ $messages['he'] = array(
 	'contrib-tracking-error-text' => 'שליחת פורום בלתי תקינה',
 
 	'contrib-tracking-submitting' => 'נשלח למעבד התרומות...',
-	'contrib-tracking-continue' => 'נא לחצו על הכפתור כדי להשלים את תרומתכם באתר PayPal.',
+	'contrib-tracking-continue' => 'אם ההפניה אינה מתבצעת אוטומטית, לחצו על הכפתור כדי להשלים את תרומתכם באתר PayPal.',
+
+	'contrib-tracking-button' => 'המשך',
 );
 
 /** Italian (Italiano)
