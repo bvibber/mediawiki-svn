@@ -274,7 +274,7 @@ class SpecialEmailPage extends SpecialPage {
 	/**
 	 * Replace triple-brace fields in message
 	 */
-	function replaceFields(&$text, $email) {
+	function replaceFields($text, $email) {
 		
 		# Scan all records of this type for the first containing matching email address
 		$dbr  = $this->db;
@@ -300,6 +300,7 @@ class SpecialEmailPage extends SpecialPage {
 			}
 		}
 		$dbr->freeResult($res);
+		return $text;
 	}
 
 	/**
