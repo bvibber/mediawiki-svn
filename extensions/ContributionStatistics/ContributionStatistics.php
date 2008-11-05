@@ -38,12 +38,8 @@ $wgExtensionCredits['other'][] = array(
 // Shortcut to this extension directory
 $dir = dirname( __FILE__ ) . '/';
 
-// Thresholds for averages
-$egContributionStatisticsAverageThresholdMin = 1;
-$egContributionStatisticsAverageThresholdMax = 999.99;
-
 // CutOff for fiscal year
-$egContributionStatisticsFiscalYearCutOff = 'July 1st';
+$egContributionStatisticsFiscalYearCutOff = 'July 1';
 
 // Days back to show
 $egContributionStatisticsViewDays = 7;
