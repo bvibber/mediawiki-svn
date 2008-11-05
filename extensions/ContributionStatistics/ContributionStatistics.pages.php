@@ -1,6 +1,6 @@
 <?php
 /**
- * Special Pages for Drafts extension
+ * Special Pages for ContributionStatistics extension
  *
  * @file
  * @ingroup Extensions

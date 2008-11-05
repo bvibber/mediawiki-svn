@@ -25,14 +25,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /* Configuration */
 
 // Credits
-$wgExtensionCredits['other'][] = array(
+$wgExtensionCredits['specialpage'][] = array(
 	'name' => 'ContributionStatistics',
 	'author' => 'Trevor Parscal',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ContributionStatistics',
 	'description' => 'Displays statistics for contributions made to the WikiMedia Foundation',
 	'svn-date' => '$LastChangedDate$',
 	'svn-revision' => '$LastChangedRevision$',
-	'description-msg' => 'drafts-desc',
+	'description-msg' => 'contribstats-desc',
 );
 
 // Shortcut to this extension directory
