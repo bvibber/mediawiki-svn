@@ -50,3 +50,6 @@ function contributionReportingConnection() {
 
 	return $db;
 }
+
+// Add ContributionStatistics extension
+require_once $dir . 'ContributionStatistics.php';
