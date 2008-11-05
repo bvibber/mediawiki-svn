@@ -272,7 +272,8 @@ class SpecialEmailPage extends SpecialPage {
 	}
 
 	/**
-	 * Replace triple-brace fields in message
+	 * Replace fields in message (enclosed in single braces)
+	 * - fields can have a default value, eg {name|default}
 	 */
 	function replaceFields($text, $email) {
 		
@@ -287,14 +288,14 @@ class SpecialEmailPage extends SpecialPage {
 			
 			# Check if this records email address matches
 			if (preg_match("|\s*\|\s*\w+\s*=\s*$email\s*(?=[\|\}])|s", $c)) {
-				
+
 				# Extract all the fields from the content (should use examineBraces here)
 				$this->args = array();
-				preg_match_all("|\|\s*(.+?)\s*=\s*(.*?)\s*(?=[\|\}])|s", $text, $m);
+				preg_match_all("|\|\s*(.+?)\s*=\s*(.*?)\s*(?=[\|\}])|s", $c, $m);
 				foreach ($m[1] as $i => $k) $this->args[strtolower($k)] = $m[2][$i];
-				
+
 				# Replace any fields in the message text with our extracted args (should use wiki parser for this)
-				$text = preg_replace_callback("|\{{3}(\w+)(\|(.+?))?\}{3}|s", array($this, 'replaceField'), $text);
+				$text = preg_replace_callback("|\{(\w+)(\|(.+?))?\}|s", array($this, 'replaceField'), $text);
 				
 				break;
 			}
