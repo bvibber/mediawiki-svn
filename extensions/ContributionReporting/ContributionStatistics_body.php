@@ -287,10 +287,7 @@ class SpecialContributionStatistics extends SpecialPage {
 				'min(converted_amount)',
 				'max(converted_amount)'
 			),
-			array(
-				'received > ' . $this->mStartDate,
-				'received < ' . $this->mEndDate
-			),
+			$this->dateConds( $dbr ),
 			__METHOD__,
 			array(
 				'ORDER BY' => 'received DESC',
@@ -323,10 +320,7 @@ class SpecialContributionStatistics extends SpecialPage {
 				'min(converted_amount)',
 				'max(converted_amount)'
 			),
-			array(
-				'received > ' . $this->mStartDate,
-				'received < ' . $this->mEndDate
-			),
+			$this->dateConds( $dbr ),
 			__METHOD__,
 			array(
 				'ORDER BY' => 'received DESC',
@@ -358,10 +352,7 @@ class SpecialContributionStatistics extends SpecialPage {
 				'min(converted_amount)',
 				'max(converted_amount)'
 			),
-			array(
-				'received > ' . $this->mStartDate,
-				'received < ' . $this->mEndDate
-			),
+			$this->dateConds( $dbr ),
 			__METHOD__,
 			array(
 				'ORDER BY' => 'sum(converted_amount) DESC',
@@ -399,11 +390,9 @@ class SpecialContributionStatistics extends SpecialPage {
 				'avg(converted_amount)'
 			),
 			array(
-				'converted_amount > ' . $min,
-				'converted_amount < ' . $max,
-				'received > ' . $this->mStartDate,
-				'received < ' . $this->mEndDate
-			),
+				'converted_amount > ' . $dbr->addQuotes( $min ),
+				'converted_amount < ' . $dbr->addQuotes( $max ),
+			) + $this->dateConds( $dbr ),
 			__METHOD__
 		);
 		
@@ -422,9 +411,7 @@ class SpecialContributionStatistics extends SpecialPage {
 			),
 			array(
 				'converted_amount' => $value,
-				'received > ' . $this->mStartDate,
-				'received < ' . $this->mEndDate
-			),
+			) + $this->dateConds( $dbr ),
 			__METHOD__
 		);
 		
@@ -440,10 +427,7 @@ class SpecialContributionStatistics extends SpecialPage {
 			array(
 				'count(*)'
 			),
-			array(
-				'received > ' . $this->mStartDate,
-				'received < ' . $this->mEndDate
-			),
+			$this->dateConds( $dbr ),
 			__METHOD__
 		);
 	}
@@ -457,12 +441,17 @@ class SpecialContributionStatistics extends SpecialPage {
 			array(
 				'sum(converted_amount)'
 			),
-			array(
-				'received > ' . $this->mStartDate,
-				'received < ' . $this->mEndDate
-			),
+			$this->dateConds( $dbr ),
 			__METHOD__
 		);
+	}
+	
+	protected function dateConds( $dbr ) {
+		return
+			array(
+				'received > ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, $this->mStartDate ) ),
+				'received < ' . $dbr->addQuotes( wfTimestamp( TS_UNIX, $this->mEndDate ) )
+			);
 	}
 	
 	public function getCurrentFiscalYear() {
@@ -477,10 +466,6 @@ class SpecialContributionStatistics extends SpecialPage {
 		}
 		
 		return $year;
-	}
-	
-	private function isDate( $date ) {
-		
 	}
 	
 	public function evalDateRange( $startDate = null, $endDate = null ) {
