@@ -38,13 +38,18 @@ class SpecialContributionStatistics extends SpecialPage {
 			
 			// Handle ranges
 			if ( $params[0] == 'range' && isset( $params[1] ) ) {
+				$valid = false;
 				$range = explode( ':', $params[1] );
-				if ( count( $range ) >= 2 ) {			
-					// Start to end
-					$this->evalDateRange( $range[0], $range[1] );
+				if ( count( $range ) >= 2 ) {
+					// From start to end
+					$valid = $this->evalDateRange( $range[0], $range[1] );
 				} else if ( count( $range ) == 1 ) {
-					// Start to end of current fiscal year
-					$this->evalDateRange( $range[0] );
+					// From start to end of current fiscal year
+					$valid = $this->evalDateRange( $range[0] );
+				}
+				if ( !$valid ) {
+					// Revert changes to range
+					$this->evalDateRange();
 				}
 			}
 		}
@@ -474,11 +479,17 @@ class SpecialContributionStatistics extends SpecialPage {
 		return $year;
 	}
 	
+	private function isDate( $date ) {
+		
+	}
+	
 	public function evalDateRange( $startDate = null, $endDate = null ) {
 		global $egContributionStatisticsFiscalYearCutOff;
 		
 		if ( $startDate !== null || $endDate !== null ) {
 			$this->mMode = 'range';
+		} else {
+			$this->mMode = false;
 		}
 		
 		$year = $this->getCurrentFiscalYear();
@@ -498,5 +509,8 @@ class SpecialContributionStatistics extends SpecialPage {
 		} else {
 			$this->mEndDate = strtotime( $endDate );
 		}
+		
+		// Catch invalid dates
+		return !( $this->mStartDate === false || $this->mEndDate === false );
 	}
 }
