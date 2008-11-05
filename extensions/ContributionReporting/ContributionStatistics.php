@@ -30,8 +30,8 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Trevor Parscal',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ContributionStatistics',
 	'description' => 'Displays statistics for contributions made to the WikiMedia Foundation',
-	'svn-date' => '$LastChangedDate: 2008-11-05 11:44:10 -0800 (Wed, 05 Nov 2008) $',
-	'svn-revision' => '$LastChangedRevision: 43233 $',
+	'svn-date' => '$LastChangedDate$',
+	'svn-revision' => '$LastChangedRevision$',
 	'description-msg' => 'contribstats-desc',
 );
 

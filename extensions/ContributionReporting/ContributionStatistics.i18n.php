@@ -12,7 +12,7 @@ $messages = array();
  * @author Trevor Parscal
  */
 $messages['en'] = array(
-	'contributionstatistics' => 'Contribution Statistics',
+	'contributionstatistics' => 'Contribution statistics',
 	'contribstats-desc' => 'Displays statistics for contributions made to the WikiMedia Foundation',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Total for today|Daily totals for the past $1 days}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Total for this month|Monthly totals for the past $1 months}}',
