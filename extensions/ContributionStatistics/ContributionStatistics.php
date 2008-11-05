@@ -50,3 +50,12 @@ $wgExtensionMessagesFiles['ContributionStatistics'] = $dir . 'ContributionStatis
 // Register the Drafts special page
 $wgSpecialPages['ContributionStatistics'] = 'SpecialContributionStatistics';
 $wgAutoloadClasses['SpecialContributionStatistics'] = $dir . 'ContributionStatistics.pages.php';
+
+// Automatically use a local or special database connection
+function efContributionStatisticsConnection() {
+	if ( function_exists( 'contributionReportingConnection' ) ) {
+		return contributionReportingConnection();
+	} else {
+		return wfGetDB( DB_SLAVE );
+	}
+}
