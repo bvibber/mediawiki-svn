@@ -16,7 +16,6 @@ $extensions = array(
 		'name' => 'AbsenteeLandlord',
 		'settings' => array(
 			'wgAbsenteeLandlordMaxDays' => 'int',
-			'wgAbsenteeLandlordTouchFile' => 'text',
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:AbsenteeLandlord',
 	),
@@ -281,24 +280,30 @@ $extensions = array(
 	array(
 		'name' => 'CentralNotice',
 		'settings' => array(
-			'wgNoticeLoader' => 'text',
+			'wgNoticeCentralPath' => 'text',
+			'wgNoticeLocalPath' => 'text',
 			'wgNoticeLang' => 'text',
 			'wgNoticeProject' => 'text',
+			'wgNoticeProjects' => 'array',
+			'wgNoticeCentralDirectory' => 'text',
+			'wgNoticeLocalDirectory' => 'text',
 			'wgNoticeInfrastructure' => 'bool',
 			'wgCentralNoticeLoader' => 'bool',
-			'wgNoticeText' => 'text',
 			'wgNoticeTestMode' => 'bool',
 			'wgNoticeEnabledSites' => 'array',
 			'wgNoticeTimeout' => 'int',
 			'wgNoticeServerTimeout' => 'int',
-			'wgNoticeScroll' => 'bool',
 			'wgNoticeCounterSource' => 'text',
-			'wgNoticeRenderDirectory' => 'text',
-			'wgNoticeRenderPath' => 'text',
 		),
 		'array' => array(
-			'wgNoticeEnabledSites' => 'simple',
+			'wgNoticeProjects' => 'simple',
 		),
+		'empty' => array(
+			'wgNoticeCentralPath' => false,
+			'wgNoticeLocalPath' => false,
+			'wgNoticeCentralDirectory' => false,
+			'wgNoticeLocalDirectory' => false,
+		),	
 		'url' => 'http://www.mediawiki.org/wiki/Extension:CentralNotice',
 	),
 	array(
@@ -361,6 +366,7 @@ $extensions = array(
 	array(
 		'name' => 'CodeReview',
 		'settings' => array(
+			'wgCodeReviewENotif' => 'bool',
 			'wgSubversionProxy' => 'text',
 			'wgSubversionProxyTimeout' => 'int',
 			'wgWikiSVN' => 'text',
@@ -372,6 +378,7 @@ $extensions = array(
 		'settings' => array(
 			'wgCollectionMWServeURL' => 'text',
 			'wgCollectionMWServeCredentials' => 'text',
+			'wgCollectionMWServeCert' => 'text',
 			'wgCollectionArticleNamespaces' => 'array',
 			'wgCommunityCollectionNamespace' => 'int',
 			'wgCollectionMaxArticles' => 'int',
@@ -387,6 +394,7 @@ $extensions = array(
 			'wgCollectionFormats' => 'assoc',
 		),
 		'empty' => array(
+			'wgCollectionMWServeCert' => null,
 			'wgLicenseName' => null,
 			'wgLicenseURL' => null,
 		),

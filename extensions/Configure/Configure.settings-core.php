@@ -113,6 +113,7 @@ $settings = array(
 			'wgEnotifMinorEdits' => 'bool',
 			'wgEnotifRevealEditorAddress' => 'bool',
 			'wgEnotifUseJobQ' => 'bool',
+			'wgEnotifUseRealName' => 'bool',
 			'wgEnotifUserTalk' => 'bool',
 			'wgEnotifWatchlist' => 'bool',
 			'wgUsersNotifiedOnAllChanges' => 'array',
@@ -161,6 +162,7 @@ $settings = array(
 			'wgDebugLogFile' => 'text',
 			'wgDebugLogGroups' => 'array',
 			'wgDebugRawPage' => 'bool',
+			'wgDebugLogPrefix' => 'text',
 			'wgDebugRedirects' => 'bool',
 			'wgLogQueries' => 'bool',
 			'wgShowExceptionDetails' => 'bool',
@@ -488,6 +490,7 @@ $settings = array(
 		),
 		'imagemagick' => array(
 			'wgImageMagickConvertCommand' => 'text',
+			'wgImageMagickTempDir' => 'text',
 			'wgSharpenParameter' => 'int',
 			'wgSharpenReductionThreshold' => 'text',
 			'wgUseImageMagick' => 'bool',
@@ -589,6 +592,7 @@ $settings = array(
 			'wgAutoConfirmAge' => 'int',
 			'wgAutoConfirmCount' => 'int',
 			'wgAllowRealName' => 'bool',
+			'wgAllowUserSkin' => 'bool',
 			'wgDefaultUserOptions' => 'array',
 			'wgDisableAnonTalk' => 'bool',
 			'wgMaxNameChars' => 'int',
@@ -1080,6 +1084,10 @@ $settingsVersion = array(
 	'wgMaxShellTime' => array( array( '1.14alpha', '>=' ) ),
 	'wgFilterLogTypes' => array( array( '1.14alpha', '>=' ) ),
 	'wgRC2UDPInterwikiPrefix' => array( array( '1.14alpha', '>=' ) ),
+	'wgAllowUserSkin' => array( array( '1.14alpha', '>=' ) ),
+	'wgDebugLogPrefix' => array( array( '1.14alpha', '>=' ) ),
+	'wgEnotifUseRealName' => array( array( '1.14alpha', '>=' ) ),
+	'wgImageMagickTempDir' => array( array( '1.14alpha', '>=' ) ),
 ## Obsolete
 	'wgAjaxSearch' => array( array( '1.14alpha', '<' ) ),
 );
