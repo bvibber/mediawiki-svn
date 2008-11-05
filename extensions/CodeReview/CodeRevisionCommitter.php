@@ -15,20 +15,25 @@ class CodeRevisionCommitter extends CodeRevisionView {
 	}
 
 	function execute() {
-		global $wgRequest, $wgOut;
+		global $wgRequest, $wgOut, $wgUser;
 		
 		$redirTarget = null;
 		$dbw = wfGetDB( DB_MASTER );
 		
 		$dbw->begin();
+		$addTags = $removeTags = array();
 		if( $this->validPost('codereview-add-tag') && count($this->mAddTags) ) {
-			$this->mRev->addTags( $this->mAddTags );
+			$addTags = $this->mAddTags;
 		}
 		if( $this->validPost('codereview-remove-tag') && count($this->mRemoveTags) ) {
-			$this->mRev->removeTags( $this->mRemoveTags );
+			$removeTags = $this->mRemoveTags;
+		}
+		// If allowed to change any tags, then do so
+		if( count($addTags) || count($removeTags) ) {
+			$this->mRev->changeTags( $addTags, $removeTags, $wgUser );
 		}
 		if( $this->validPost('codereview-set-status') && $this->mRev->isValidStatus($this->mStatus) ) {
-			$this->mRev->setStatus( $this->mStatus );
+			$this->mRev->setStatus( $this->mStatus, $wgUser );
 		}
 		if( $this->validPost('codereview-post-comment') && strlen($this->text) ) {
 			$parent = $wgRequest->getIntOrNull( 'wpParent' );

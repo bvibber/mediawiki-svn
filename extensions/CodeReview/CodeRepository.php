@@ -158,8 +158,7 @@ class CodeRepository {
 			return null;
 		}
 		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow(
-			'code_rev',
+		$row = $dbr->selectRow( 'code_rev',
 			'*',
 			array(
 				'cr_id' => $id,

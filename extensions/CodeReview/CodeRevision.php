@@ -100,20 +100,45 @@ class CodeRevision {
 		return in_array( $status, self::getPossibleStates(), true );
 	}
 	
-	function setStatus( $status ) {
+	function setStatus( $status, $user ) {
 		if( !$this->isValidStatus( $status ) ) {
 			throw new MWException( "Tried to save invalid code revision status" );
 		}
-		
-		$this->mStatus = $status;
-		
+		// Get the old status from the master
 		$dbw = wfGetDB( DB_MASTER );
+		$oldStatus = $dbw->selectField( 'code_rev',
+			'cr_status',
+			array( 'cr_repo_id' => $this->mRepoId, 'cr_id' => $this->mId ),
+			__METHOD__
+		);
+		if( $oldStatus === $status ) {
+			return false; // nothing to do here
+		}
+		// Update status
+		$this->mStatus = $status;
 		$dbw->update( 'code_rev',
 			array( 'cr_status' => $status ),
 			array(
 				'cr_repo_id' => $this->mRepoId,
 				'cr_id' => $this->mId ),
-			__METHOD__ );
+			__METHOD__
+		);
+		// Log this change
+		if( $user && $user->getId() ) {
+			$dbw->insert( 'code_prop_changes',
+				array( 
+					'cpc_repo_id'   => $this->getRepoId(),
+					'cpc_rev_id'    => $this->getId(),
+					'cpc_attrib'    => 'status',
+					'cpc_removed'   => $oldStatus,
+					'cpc_added'     => $status,
+					'cpc_timestamp' => $dbw->timestamp(),
+					'cpc_user'      => $user->getId()
+				),
+				__METHOD__
+			);
+		}
+		return true;
 	}
 
 	function save() {
@@ -314,9 +339,9 @@ class CodeRevision {
 		return $users;
 	}
 	
-	function getTags() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$result = $dbr->select( 'code_tags',
+	public function getTags( $from = DB_SLAVE ) {
+		$db = wfGetDB( $from );
+		$result = $db->select( 'code_tags',
 			array( 'ct_tag' ),
 			array(
 				'ct_repo_id' => $this->mRepoId,
@@ -330,26 +355,55 @@ class CodeRevision {
 		return $tags;
 	}
 	
-	function addTags( $tags ) {
+	public function changeTags( $addTags, $removeTags, $user = NULL ) {
+		// Get the current tags and see what changes
+		$tagsNow = $this->getTags( DB_MASTER );
+		// Normalize our input tags
+		$addTags = $this->normalizeTags( $addTags );
+		$removeTags = $this->normalizeTags( $removeTags );
+		$addTags = array_diff( $addTags, $tagsNow );
+		$removeTags = array_intersect( $removeTags, $tagsNow );
+		// Do the queries
 		$dbw = wfGetDB( DB_MASTER );
-		$result = $dbw->insert( 'code_tags',
-			$this->tagData( $tags ),
-			__METHOD__,
-			array( 'IGNORE' ) );
+		if( $addTags ) {
+			$dbw->insert( 'code_tags',
+				$this->tagData( $addTags ),
+				__METHOD__,
+				array( 'IGNORE' )
+			);
+		}
+		if( $removeTags ) {
+			$dbw->delete( 'code_tags',
+				array( 
+					'ct_repo_id' => $this->mRepoId,
+					'ct_rev_id'  => $this->mId,
+					'ct_tag'     => $removeTags ),
+				__METHOD__
+			);
+		}
+		// Log this change
+		if( $user && $user->getId() ) {
+			$dbw->insert( 'code_prop_changes',
+				array( 
+					'cpc_repo_id'   => $this->getRepoId(),
+					'cpc_rev_id'    => $this->getId(),
+					'cpc_attrib'    => 'tags',
+					'cpc_removed'   => implode(',',$removeTags),
+					'cpc_added'     => implode(',',$addTags),
+					'cpc_timestamp' => $dbw->timestamp(),
+					'cpc_user'      => $user->getId()
+				),
+				__METHOD__
+			);
+		}
 	}
 	
-	function removeTags( $tags ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$tagsNormal = array();
+	protected function normalizeTags( $tags ) {
+		$out = array();
 		foreach( $tags as $tag ) {
-			$tagsNormal[] = $this->normalizeTag( $tag );
+			$out[] = $this->normalizeTag( $tag );
 		}
-		$result = $dbw->delete( 'code_tags',
-			array( 
-				'ct_repo_id' => $this->mRepoId,
-				'ct_rev_id' => $this->mId,
-				'ct_tag' => $tagsNormal ),
-			__METHOD__ );
+		return $out;
 	}
 	
 	protected function tagData( $tags ) {
@@ -357,8 +411,8 @@ class CodeRevision {
 		foreach( $tags as $tag ) {
 			$data[] = array(
 				'ct_repo_id' => $this->mRepoId,
-				'ct_rev_id' => $this->mId,
-				'ct_tag' => $this->normalizeTag( $tag ) );
+				'ct_rev_id'  => $this->mId,
+				'ct_tag'     => $this->normalizeTag( $tag ) );
 		}
 		return $data;
 	}
