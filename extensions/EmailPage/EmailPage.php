@@ -13,7 +13,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('EMAILPAGE_VERSION', '1.2.2, 2008-09-28');
+define('EMAILPAGE_VERSION', '1.2.3, 2008-10-26');
 
 $wgEmailPageGroup           = 'sysop';            # Users must belong to this group to send emails (empty string means anyone can send)
 $wgEmailPageContactsCat     = '';                 # This specifies the name of a category containing categories of contact pages
@@ -35,7 +35,7 @@ $wgExtensionAliasesFiles['EmailPage']  = $dir . 'EmailPage.alias.php';
 $wgSpecialPages['EmailPage']           = 'SpecialEmailPage';
 
 $wgExtensionCredits['specialpage'][] = array(
-	'name'           => 'Special:EmailPage',
+	'name'           => 'EmailPage',
 	'author'         => '[http://www.organicdesign.co.nz/nad User:Nad]',
 	'description'    => 'Send rendered HTML page to an email address or list of addresses using [http://phpmailer.sourceforge.net phpmailer].',
 	'descriptionmsg' => 'ea-desc',

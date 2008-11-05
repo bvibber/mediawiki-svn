@@ -32,6 +32,7 @@ $messages['en'] = array(
 	'ea-subject'          => 'Enter a subject line for the e-mail',
 	'ea-header'           => 'Prepend content with optional message (wikitext)',
 	'ea-selectcss'        => 'Select a CSS stylesheet',
+	'ea-selectrecord'     => 'Select a record type'
 );
 
 /** Message documentation (Message documentation)

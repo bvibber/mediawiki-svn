@@ -12,6 +12,7 @@ class SpecialEmailPage extends SpecialPage {
 	var $list;
 	var $textonly;
 	var $css;
+	var $record;
 
 	public function __construct() {
 		global $wgEmailPageGroup;
@@ -39,6 +40,7 @@ class SpecialEmailPage extends SpecialPage {
 		$this->list     = isset($_REQUEST['ea-list'])     ? $_REQUEST['ea-list']     : '';
 		$this->textonly = isset($_REQUEST['ea-textonly']) ? $_REQUEST['ea-textonly'] : false;
 		$this->css      = isset($_REQUEST['ea-css'])      ? $_REQUEST['ea-css']      : $wgEmailPageCss;
+		$this->record   = isset($_REQUEST['ea-record'])   ? $_REQUEST['ea-record']   : false;
 
 		# Bail if no page title to send has been specified
 		if ($this->title) $wgOut->addWikiText(wfMsg('ea-heading', $this->title));
@@ -104,7 +106,7 @@ class SpecialEmailPage extends SpecialPage {
 		$wgOut->addHTML("<textarea name=\"ea-header\" rows=\"5\">{$this->header}</textarea><br />\n");
 
 		# CSS
-		$csss = '';
+		$options = '<option value="">'.$wgEmailPageCss.'</option>';
 		$result = $db->select(
 			'page',
 			'page_id',
@@ -116,12 +118,19 @@ class SpecialEmailPage extends SpecialPage {
 		if ($result) while ($row = $db->fetchRow($result)) {
 			$t = Title::newFromID($row[0])->getPrefixedText();
 			$selected = $t == $this->css ? ' selected' : '';
-			$csss .= "<option$selected>$t</option>";
+			$options .= "<option$selected>$t</option>";
 		}
-		if ($csss) {
-			$wgOut->addWikiText(wfMsg('ea-selectcss'));
-			$wgOut->addHTML("<select name=\"ea-css\"><option/>$csss</select>\n");
-		}
+		if ($options) $wgOut->addHTML(wfMsg('ea-selectcss')." <select name=\"ea-css\">$options</select><br>\n");
+
+		# Get titles in Category:Records and build option list
+		global $wgRecordAdminCategory;
+		$options = '<option/>';
+		$dbr  = &wfGetDB(DB_SLAVE);
+		$cl   = $dbr->tableName('categorylinks');
+		$cat  = $dbr->addQuotes($wgRecordAdminCategory ? $wgRecordAdminCategory : 'Records');
+		$res  = $dbr->select($cl, 'cl_from', "cl_to = $cat", __METHOD__, array('ORDER BY' => 'cl_sortkey'));
+		while ($row = $dbr->fetchRow($res)) $options .= '<option>'.Title::newFromID($row[0])->getText().'</option>';
+		$wgOut->addHTML(wfMsg('ea-selectrecord')." <select name=\"ea-record\">$options</select>");
 
 		$wgOut->addHTML("</fieldset>");
 
@@ -199,12 +208,11 @@ class SpecialEmailPage extends SpecialPage {
 			if ($this->css) {
 				$page = new Article(Title::newFromText($this->css));
 				$css = '<style type="text/css">'.$page->getContent().'</style>';
-				}
+				} else $css = '';
 
 			# Create a html wrapper for the message
 			$head    = "<head>$css</head>";
 			$message = "<html>$head<body style=\"margin:10px\"><div id=\"#bodyContent\">$message</div></body></html>";
-
 		}
 
 		# Send message or list recipients
@@ -223,18 +231,21 @@ class SpecialEmailPage extends SpecialPage {
 			else $msg = wfMsg('ea-listrecipients', $count);
 
 			# Loop through recipients sending or adding to list
-			foreach ($this->recipients as $recipient) $send ? $mail->AddAddress($recipient) : $msg .= "\n*[mailto:$recipient $recipient]";
-
-			if ($send) {
-				if ($state = $mail->Send()) $msg = wfMsg('ea-sent', $this->title, $count, $wgUser->getName());
-				else $msg = wfMsg('ea-error', $this->title, $mail->ErrorInfo);
+			foreach ($this->recipients as $recipient) {
+				$error = '';
+				if ($send) {
+					$mail->AddAddress($recipient);
+					if ($state = $mail->Send()) $msg = wfMsg('ea-sent', $this->title, $count, $wgUser->getName());
+					else $error .= "Couldn't send to $recipient: {$mail->ErrorInfo}<br>\n";
+					$mail->ClearAddresses();
+				} else $msg .= "\n*[mailto:$recipient $recipient]";
+				if ($error) $msg = wfMsg('ea-error', $this->title, $error);
 			}
-			else $state = $count;
 		}
 		else $msg = wfMsg('ea-error', $this->title, wfMsg('ea-norecipients'));
 
 		$wgOut->addWikiText($msg);
-		return $state;
+		return $send ? $state : $count;
 	}
 
 	/**
