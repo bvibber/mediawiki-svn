@@ -31,7 +31,7 @@ $wgExtensionAliasesFiles['ContributionReporting'] = $dir . 'ContributionReportin
 
 $wgAutoloadClasses['ContributionHistory'] = $dir . 'ContributionHistory_body.php';
 $wgAutoloadClasses['ContributionTotal'] = $dir . 'ContributionTotal_body.php';
-$wgAutoloadClasses['SpecialContributionStatistics'] = $dir . 'ContributionStatistics.pages.php';
+$wgAutoloadClasses['SpecialContributionStatistics'] = $dir . 'ContributionStatistics_body.php';
 
 $wgSpecialPages['ContributionHistory'] = 'ContributionHistory';
 $wgSpecialPages['ContributionTotal'] = 'ContributionTotal';
