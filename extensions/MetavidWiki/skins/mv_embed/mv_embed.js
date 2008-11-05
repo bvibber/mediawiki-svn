@@ -11,11 +11,11 @@
  * http://stevenlevithan.com/demo/parseuri/js/
  *
  * config values you can manually set the location of the mv_embed folder here
- * (in cases where media will be hosted in a different place than the embbeding page)
+ * (in cases where media will be hosted in a different place than the embedding page)
  *
  */
 
-//fix multiple instances of mv_embed 
+//fix multiple instances of mv_embed (ie include twice from two diffrent servers) 
 var MV_DO_INIT=true;
 if(MV_EMBED_VERSION){
 	js_log('mv_embed already included do nothing');
@@ -34,7 +34,7 @@ var mv_java_iframe = true;
 //media_server mv_embed_path (the path on media servers to mv_embed for java iframe with leading and trailing slashes)
 var mv_media_iframe_path = '/mv_embed/';
 
-//the default height/width of the video (if no style or width attr provided)
+//the default height/width of the video (if no style or width attribute provided)
 var mv_default_video_size = '400x300'; 
 
 //this restricts playable sources to ROE xml media without start end time attribute
@@ -51,7 +51,7 @@ var global_cb_count =0;
  * or
  * have a limited set of domains that you accept data from
  * enabling mv_proxy is not such a good idea from security standpoint but if you know what your doing 
- * you can enable it here (also you have to uncomment mv_data_proxy die(); line)  
+ * you can enable it here (also you have to un comment mv_data_proxy die(); line)  
 */  
 var MV_ENABLE_DATA_PROXY=false;
 
@@ -261,7 +261,7 @@ var mvEmbed = {
 	    	}
     	}
     }
-    js_log('f:check_init_done '+ is_ready + ' ' + cur_vid.load_error + ' rtp: '+ cur_vid.ready_to_play);
+    //js_log('f:check_init_done '+ is_ready + ' ' + cur_vid.load_error + ' rtp: '+ cur_vid.ready_to_play);
   	if( !is_ready ){
   		//js_log('some ' + global_player_list + ' not ready');
   		setTimeout( 'mvEmbed.check_init_done()', 250 );
@@ -3201,7 +3201,9 @@ function js_log(string){
      }
      if(log_elm){
      	log_elm.value+=string+"\n";
-     }*/
+     } 
+     */
+         
    }
    //give the string back (ie in cases of returning an error)
    return false;

@@ -612,7 +612,7 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 							<div class=\"autocomplete\" id=\"category_choices_{$mvd_id}\" style=\"display: none;\"/></td></tr>";
 				}
 				// output a short desc field (the text with striped semantic values)...
-				$o .= '<tr><td>' . wfMsg( "mv_basic_text_desc" ) . '</td></td><textarea name="basic_wpTextbox" rows="2" cols="40">';
+				$o .= '<tr><td>' . wfMsg( "mv_basic_text_desc" ) . '</td><td><textarea name="basic_wpTextbox" rows="2" cols="40">';
 				if ( isset( $metaData['striped_text'] ) )
 					$o .= htmlspecialchars( $metaData['striped_text'] );
 				$o .= '</textarea></td></tr>';

@@ -21,7 +21,6 @@ var mv_default_playlist_attributes = {
 	//enable sequencer? (only display top frame no navigation or accompanying text
 	"sequencer":false
 }
-
 //the call back rate for animations and internal timers in ms: 33 is about 30 frames a second: 
 var MV_ANIMATION_CB_RATE = 33;
 
@@ -534,22 +533,12 @@ mvPlayList.prototype = {
 	},
 	next: function(){		
 		//advance the playhead to the next clip			
-		var next_clip = this.getClip(1);	
-		//debugger;	
-		if(this.cur_clip.embed.supports['playlist_driver']){ //where the plugin is just feed a playlist
-			//do next clip action on start_clip embed cuz its the one being displayed: 
-			this.start_clip.embed.playlistNext();
-			this.cur_clip=next_clip;					
-		}else if(this.cur_clip.embed.supports['playlist_swap_loader']){
-			//where the plugin supports pre_loading future clips and manage that in javascript
-			//stop current clip
-			this.cur_clip.embed.stop();
-			this.updateCurrentClip(next_clip);				
-			this.cur_clip.embed.play();			
-		}else{
-			js_log('do next');								
-			this.switchPlayingClip(next_clip);
-		}		
+		var next_clip = this.getClip(1);									
+		//@@todo where the plugin supports pre_loading future clips and manage that in javascript
+		//stop current clip
+		this.cur_clip.embed.stop();
+		this.updateCurrentClip(next_clip);				
+		this.cur_clip.embed.play();					
 	},
 	updateCurrentClip:function(new_clip){		
 		js_log('f:updateCurrentClip:'+new_clip.id);		
@@ -561,10 +550,9 @@ mvPlayList.prototype = {
 	prev: function(){
 		//advance the playhead to the previous clip			
 		var prev_clip = this.getClip(-1);
-		if(this.cur_clip.embed.supports['playlist_driver']){
-			this.start_clip.embed.playlistPrev();
-			this.cur_clip=prev_clip;	
-		}else if(this.cur_clip.embed.supports['playlist_swap_loader']){
+		//@@todo we could do something fancy like use playlist for sets of clips where supported. 
+		// or in cases where the player nativly supports the playlist format we can just pass it in (ie m3u or xspf)
+		if(this.cur_clip.embed.supports['playlist_swap_loader']){
 			//where the plugin supports pre_loading future clips and manage that in javascript
 			//pause current clip
 			this.cur_clip.embed.pause;
@@ -1071,7 +1059,7 @@ mvClip.prototype = {
 var PlMvEmbed=function(vid_init){
 	//js_log('PlMvEmbed: '+ vid_init.id);	
 	//create the div container
-	ve = document.createElement('div');
+	var ve = document.createElement('div');
 	//extend ve with all this 
 	this.init(vid_init);	
 	for(method in this){
@@ -1541,7 +1529,7 @@ var mvTransLib = {
 					//set the initial state
 					$j('#'+tObj.overlay_selector_id).css({
 						'background-color':tObj.fadeColor,
-						'opacity':"1",
+						'opacity':"1"
 					});
 				},			
 				'u':function(tObj, percent){
@@ -1583,20 +1571,20 @@ var smilPlaylist ={
 		//@@todo get/parse meta: 
 		var meta_tags = this.data.getElementsByTagName('meta');
 		$j.each(meta_tags, function(i,meta_elm){
-			js_log("ON META TAG: "+meta_elm.getAttribute('name'));
-			if(meta_elm.hasAttribute('name') && meta_elm.hasAttribute('content')){
-				if(meta_elm.getAttribute('name')=='title' ){
-					_this.title = meta_elm.getAttribute('content');					
+			js_log("on META tag: "+ $j(meta_elm).attr('name') );
+			if( $j(meta_elm).attr('name') && $j(meta_elm).attr('content') ){
+				if( $j(meta_elm).attr('name')=='title' ){
+					_this.title = $j(meta_elm).attr('content');					
 				}else if(meta_elm.getAttribute('name')=='interface_url' ){
-					_this.interface_url = meta_elm.getAttribute('content');	
+					_this.interface_url = $j(meta_elm).attr('content');	
 				}
 			}
-		});						
+		});	
 		//add transition objects: 
-		var transition_tags = this.data.getElementsByTagName('transition');			
-		$j.each(transition_tags, function(i,trans_elm){		
-			if(trans_elm.hasAttribute("id")){
-				_this.transitions[trans_elm.getAttribute("id")]= new transitionObj(trans_elm);
+		var transition_tags = this.data.getElementsByTagName('transition');	
+		$j.each(transition_tags, function( i, trans_elm ){		
+			if( $j(trans_elm).attr("id") ){
+				_this.transitions[ $j(trans_elm).attr("id")]= new transitionObj(trans_elm);
 			}else{
 				js_log('skipping transition: (missing id) ' + trans_elm );
 			}
@@ -1661,10 +1649,10 @@ mvSMILClip.prototype = {
 		_this = this;				
 		
 		//make new mvCLip with ClipInit vals  
-		var myMvClip = new mvClip(mvClipInit);
+		var myMvClip = new mvClip( mvClipInit );
 		
 		//inherit mvClip		
-		for(method in myMvClip){			
+		for(var method in myMvClip){			
 			if(typeof this[method] != 'undefined' ){				
 				this['parent_'+method]=myMvClip[method];				
 			}else{		
@@ -1684,19 +1672,19 @@ mvSMILClip.prototype = {
 		}
 		//debugger;
 		//mv_embed specific property: 
-		if(smil_clip_element.hasAttribute('poster'))
-			this['img'] = smil_clip_element.getAttribute('poster');
+		if( $j(smil_clip_element).attr('poster') )
+			this['img'] = $j(smil_clip_element).attr('poster');
 		
 		//lookup and assign copies of transitions 
 		// (since transition needs to hold some per-instance state info)		
-		if(this.transIn && this.pp.transitions[this.transIn]){			
-			this.transIn = this.pp.transitions[this.transIn].clone();
+		if(this.transIn && this.pp.transitions[ this.transIn ]){			
+			this.transIn = this.pp.transitions[ this.transIn ].clone();
 			this.transIn.pClip = _this;
 			this.transIn.transAttrType='transIn'; 		
 			//js_log("SET transIn for " + this.id);	
 		}		
 		
-		if(this.transOut && this.pp.transitions[this.transOut]){		
+		if(this.transOut && this.pp.transitions[ this.transOut ]){		
 			this.transOut = this.pp.transitions[ this.transOut ].clone();
 			this.transOut.pClip = _this;
 			this.transOut.transAttrType = 'transOut';
@@ -1977,4 +1965,3 @@ String.prototype.htmlEntities = function(){
   }
   return newString;
 }
-
