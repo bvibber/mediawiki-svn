@@ -32,7 +32,7 @@ $wgExtensionCredits['other'][] = array(
 	'description' => 'Displays statistics for contributions made to the WikiMedia Foundation',
 	'svn-date' => '$LastChangedDate: 2008-11-05 11:44:10 -0800 (Wed, 05 Nov 2008) $',
 	'svn-revision' => '$LastChangedRevision: 43233 $',
-	'description-msg' => 'drafts-desc',
+	'description-msg' => 'contribstats-desc',
 );
 
 // Shortcut to this extension directory
@@ -46,6 +46,7 @@ $egContributionStatisticsViewDays = 7;
 
 // Internationalization
 $wgExtensionMessagesFiles['ContributionStatistics'] = $dir . 'ContributionStatistics.i18n.php';
+$wgExtensionAliasesFiles['ContributionStatistics'] = $dir . 'ContributionStatistics.alias.php';
 
 // Register the Drafts special page
 $wgSpecialPages['ContributionStatistics'] = 'SpecialContributionStatistics';
