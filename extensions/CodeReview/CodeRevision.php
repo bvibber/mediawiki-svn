@@ -2,7 +2,7 @@
 if (!defined('MEDIAWIKI')) die();
 
 class CodeRevision {
-	static function newFromSvn( CodeRepository $repo, $data ) {
+	public static function newFromSvn( CodeRepository $repo, $data ) {
 		$rev = new CodeRevision();
 		$rev->mRepoId = $repo->getId();
 		$rev->mRepo = $repo;
@@ -44,7 +44,7 @@ class CodeRevision {
 		return $rev;
 	}
 
-	static function newFromRow( CodeRepository $repo, $row ) {
+	public static function newFromRow( CodeRepository $repo, $row ) {
 		$rev = new CodeRevision();
 		$rev->mRepoId = intval($row->cr_repo_id);
 		if( $rev->mRepoId != $repo->getId() ) {
@@ -60,47 +60,47 @@ class CodeRevision {
 		return $rev;
 	}
 
-	function getId() {
+	public function getId() {
 		return intval( $this->mId );
 	}
 	
-	function getRepoId() {
+	public function getRepoId() {
 		return intval( $this->mRepoId );
 	}
 
-	function getAuthor() {
+	public function getAuthor() {
 		return $this->mAuthor;
 	}
 	
-	function getWikiUser() {
+	public function getWikiUser() {
 		return $this->mRepo->authorWikiUser( $this->getAuthor() );
 	}
 
-	function getTimestamp() {
+	public function getTimestamp() {
 		return $this->mTimestamp;
 	}
 
-	function getMessage() {
+	public function getMessage() {
 		return $this->mMessage;
 	}
 	
-	function getStatus() {
+	public function getStatus() {
 		return $this->mStatus;
 	}
 
-	function getCommonPath() {
+	public function getCommonPath() {
 		return $this->mCommonPath;
 	}
 	
-	static function getPossibleStates() {
+	public static function getPossibleStates() {
 		return array( 'new', 'fixme', 'resolved', 'ok', 'deferred' );
 	}
 	
-	function isValidStatus( $status ) {
+	public function isValidStatus( $status ) {
 		return in_array( $status, self::getPossibleStates(), true );
 	}
 	
-	function setStatus( $status, $user ) {
+	public function setStatus( $status, $user ) {
 		if( !$this->isValidStatus( $status ) ) {
 			throw new MWException( "Tried to save invalid code revision status" );
 		}
@@ -141,7 +141,7 @@ class CodeRevision {
 		return true;
 	}
 
-	function save() {
+	public function save() {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
 		
@@ -188,7 +188,7 @@ class CodeRevision {
 		$dbw->commit();
 	}
 
-	function getModifiedPaths(){
+	public function getModifiedPaths() {
 		$dbr = wfGetDB( DB_SLAVE );
 		return $dbr->select(
 			'code_paths',
@@ -198,7 +198,7 @@ class CodeRevision {
 		);
 	}
 	
-	function isDiffable() {
+	public function isDiffable() {
 		$paths = $this->getModifiedPaths();
 		if( !$paths->numRows() || $paths->numRows() > 20 ) {
 			return false; // things need to get done this year
@@ -206,13 +206,13 @@ class CodeRevision {
 		return true;
 	}
 
-	function previewComment( $text, $review, $parent=null ) {
+	public function previewComment( $text, $review, $parent=null ) {
 		$data = $this->commentData( $text, $review, $parent );
 		$data['cc_id'] = null;
 		return CodeComment::newFromData( $this, $data );
 	}
 	
-	function saveComment( $text, $review, $parent=null ) {
+	public function saveComment( $text, $review, $parent=null ) {
 		global $wgUser;
 		if( !strlen($text) ) {
 			return 0;
@@ -294,7 +294,7 @@ class CodeRevision {
 		}
 	}
 
-	function getComments() {
+	public function getComments() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$result = $dbr->select( 'code_comment',
 			array(
@@ -321,7 +321,7 @@ class CodeRevision {
 		return $comments;
 	}
 	
-	function getCommentingUsers() {
+	protected function getCommentingUsers() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'code_comment',
 			'DISTINCT(cc_user)',
@@ -417,7 +417,7 @@ class CodeRevision {
 		return $data;
 	}
 	
-	function normalizeTag( $tag ) {
+	public function normalizeTag( $tag ) {
 		global $wgContLang;
 		$lower = $wgContLang->lc( $tag );
 		
@@ -429,11 +429,11 @@ class CodeRevision {
 		}
 	}
 	
-	function isValidTag( $tag ) {
+	public function isValidTag( $tag ) {
 		return ($this->normalizeTag( $tag ) !== false );
 	}
 	
-	function getPrevious() {
+	public function getPrevious() {
 		// hack!
 		if( $this->mId > 1 ) {
 			return $this->mId - 1;
@@ -442,7 +442,7 @@ class CodeRevision {
 		}
 	}
 	
-	function getNext() {
+	public function getNext() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$encId = $dbr->addQuotes( $this->mId );
 		$row = $dbr->selectRow( 'code_rev',
@@ -462,7 +462,7 @@ class CodeRevision {
 		}
 	}
 	
-	function getNextUnresolved() {
+	public function getNextUnresolved() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$encId = $dbr->addQuotes( $this->mId );
 		$row = $dbr->selectRow( 'code_rev',
@@ -474,8 +474,8 @@ class CodeRevision {
 			__METHOD__,
 			array(
 				'ORDER BY' => 'cr_repo_id, cr_id',
-				'LIMIT' => 1 ) );
-		
+				'LIMIT' => 1 )
+		);
 		if( $row ) {
 			return intval($row->cr_id);
 		} else {
