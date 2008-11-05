@@ -20,7 +20,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ContributionReporting',
 	'svn-date' => '$LastChangedDate$',
 	'svn-revision' => '$LastChangedRevision$',
-	'author' => array( 'David Strauss', 'Brion Vibber', 'Siebrand Mazeland' ),
+	'author' => array( 'David Strauss', 'Brion Vibber', 'Siebrand Mazeland', 'Trevor Parscal' ),
 	'descriptionmsg' => 'contributionreporting-desc',
 );
 
@@ -28,12 +28,26 @@ $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['ContributionReporting'] = $dir . 'ContributionReporting.i18n.php';
 $wgExtensionAliasesFiles['ContributionReporting'] = $dir . 'ContributionReporting.alias.php';
+
 $wgAutoloadClasses['ContributionHistory'] = $dir . 'ContributionHistory_body.php';
 $wgAutoloadClasses['ContributionTotal'] = $dir . 'ContributionTotal_body.php';
+$wgAutoloadClasses['SpecialContributionStatistics'] = $dir . 'ContributionStatistics.pages.php';
+
 $wgSpecialPages['ContributionHistory'] = 'ContributionHistory';
 $wgSpecialPages['ContributionTotal'] = 'ContributionTotal';
+$wgSpecialPages['ContributionStatistics'] = 'SpecialContributionStatistics';
 
-function contributionReportingConnection() {
+// Shortcut to this extension directory
+$dir = dirname( __FILE__ ) . '/';
+
+// CutOff for fiscal year
+$egContributionStatisticsFiscalYearCutOff = 'July 1';
+
+// Days back to show
+$egContributionStatisticsViewDays = 7;
+
+// Automatically use a local or special database connection
+function efContributionReportingConnection() {
 	global $wgContributionReportingDBserver, $wgContributionReportingDBname;
 	global $wgContributionReportingDBuser, $wgContributionReportingDBpassword;
 
@@ -51,5 +65,3 @@ function contributionReportingConnection() {
 	return $db;
 }
 
-// Add ContributionStatistics extension
-require_once $dir . 'ContributionStatistics.php';

@@ -11,6 +11,7 @@ $aliases = array();
 /** English */
 $aliases['en'] = array(
 	'ContributionHistory' => array( 'ContributionHistory' ),
+	'ContributionStatistics' => array( 'ContributionStatistics' ),
 	'ContributionTotal' => array( 'ContributionTotal' ),
 );
 

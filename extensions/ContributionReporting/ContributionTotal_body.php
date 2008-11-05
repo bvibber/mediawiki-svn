@@ -17,7 +17,7 @@ class ContributionTotal extends SpecialPage {
 		$action = $wgRequest->getText( 'action' );
 		$fudgeFactor = $wgRequest->getInt( 'fudgefactor' );
 
-		$db = contributionReportingConnection();
+		$db = efContributionReportingConnection();
 
 		$sql = 'SELECT SUM(converted_amount) AS ttl FROM public_reporting';
 

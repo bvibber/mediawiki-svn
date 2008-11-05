@@ -22,7 +22,7 @@ class ContributionHistory extends SpecialPage {
 
 		$this->setHeaders();
 
-		$db = contributionReportingConnection();
+		$db = efContributionReportingConnection();
 
 		$sql = 'SELECT * FROM public_reporting ORDER BY received DESC LIMIT ' . intval( $limit );
 

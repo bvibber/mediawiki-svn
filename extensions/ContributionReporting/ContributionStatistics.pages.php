@@ -22,7 +22,7 @@ class SpecialContributionStatistics extends SpecialPage {
 		parent::__construct( 'ContributionStatistics' );
 		
 		// Internationalization
-		wfLoadExtensionMessages( 'ContributionStatistics' );
+		wfLoadExtensionMessages( 'ContributionReporting' );
 	}
 	
 	public function execute( $sub ) {
@@ -275,7 +275,7 @@ class SpecialContributionStatistics extends SpecialPage {
 	
 	public function getDailyTotals( $limit = 30 ) {
 		// Get connection
-		$dbr = efContributionStatisticsConnection();
+		$dbr = efContributionReportingConnection();
 		
 		// Select sums and dates of contributions grouped by day
 		$res = $dbr->select( 'public_reporting',
@@ -311,7 +311,7 @@ class SpecialContributionStatistics extends SpecialPage {
 	
 	public function getMonthlyTotals() {
 		// Get connection
-		$dbr = efContributionStatisticsConnection();
+		$dbr = efContributionReportingConnection();
 		
 		// Select sums and dates of contributions grouped by day
 		$res = $dbr->select( 'public_reporting',
@@ -346,7 +346,7 @@ class SpecialContributionStatistics extends SpecialPage {
 	
 	public function getCurrencyTotals() {
 		// Get connection
-		$dbr = efContributionStatisticsConnection();
+		$dbr = efContributionReportingConnection();
 		
 		// Select sums and dates of contributions grouped by day
 		$res = $dbr->select( 'public_reporting',
@@ -390,7 +390,7 @@ class SpecialContributionStatistics extends SpecialPage {
 	
 	public function getNumContributionsWithin( $min, $max ) {
 		// Get connection
-		$dbr = efContributionStatisticsConnection();
+		$dbr = efContributionReportingConnection();
 		
 		// Return average contribution amount
 		$res = $dbr->select( 'public_reporting',
@@ -412,7 +412,7 @@ class SpecialContributionStatistics extends SpecialPage {
 	
 	public function getNumContributionsOf( $value ) {
 		// Get connection
-		$dbr = efContributionStatisticsConnection();
+		$dbr = efContributionReportingConnection();
 		
 		// Return average contribution amount
 		$res = $dbr->select( 'public_reporting',
@@ -433,7 +433,7 @@ class SpecialContributionStatistics extends SpecialPage {
 	
 	public function getNumContributions() {
 		// Get connection
-		$dbr = efContributionStatisticsConnection();
+		$dbr = efContributionReportingConnection();
 		
 		// Return average contribution amount
 		return $dbr->selectField( 'public_reporting',
@@ -450,7 +450,7 @@ class SpecialContributionStatistics extends SpecialPage {
 	
 	public function getTotalContributions() {
 		// Get connection
-		$dbr = efContributionStatisticsConnection();
+		$dbr = efContributionReportingConnection();
 		
 		// Return average contribution amount
 		return $dbr->selectField( 'public_reporting',
