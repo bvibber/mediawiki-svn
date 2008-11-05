@@ -294,7 +294,7 @@ class SpecialEmailPage extends SpecialPage {
 				foreach ($m[1] as $i => $k) $this->args[strtolower($k)] = $m[2][$i];
 				
 				# Replace any fields in the message text with our extracted args (should use wiki parser for this)
-				preg_replace_callback("|\{{3}(\w+)(\|(.+?))?\}{3}|s", array($this, 'replaceField'), $text);
+				$text = preg_replace_callback("|\{{3}(\w+)(\|(.+?))?\}{3}|s", array($this, 'replaceField'), $text);
 				
 				break;
 			}
