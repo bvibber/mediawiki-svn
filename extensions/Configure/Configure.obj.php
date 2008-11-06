@@ -170,13 +170,27 @@ class WebConfiguration extends SiteConfiguration {
 		// Hmm, a better solution would be nice!
 		$savedSettings = $this->settings;
 		$this->settings = $this->mOldSettings;
+		$globalDefaults = $this->getDefaults();
+		
+		$savedGlobals = array();
+		foreach( $this->settings as $name => $val ){
+			if( substr( $name, 0, 1 ) == '+' ){
+				$setting = substr( $name, 1 );
+				if( isset( $globalDefaults[$setting] ) ){
+					$savedGlobals[$setting] = $GLOBALS[$setting];
+					$GLOBALS[$setting] = $globalDefaults[$setting];
+				}
+			}
+		}
 
 		$wikiDefaults = $this->getCurrent( $wiki );
 
 		$this->settings = $savedSettings;
 		unset( $savedSettings );
+		foreach( $savedGlobals as $name => $val ){
+			$GLOBALS[$setting] = $savedGlobals[$setting];
+		}
 
-		$globalDefaults = $this->getDefaults();
 		$ret = array();
 		$keys = array_unique( array_merge( array_keys( $wikiDefaults ), array_keys( $globalDefaults ) ) );
 		foreach( $keys as $setting ){
