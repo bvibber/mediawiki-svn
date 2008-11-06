@@ -280,13 +280,13 @@ class DPLForum {
 		for($i = 0; $i < $cats; $i++) {
 			$sSqlSelectFrom .= " INNER JOIN $categorylinks AS" .
 			" c{$n} ON page_id = c{$n}.cl_from AND c{$n}.cl_to=" .
-			$dbr->addQuotes( $aCategories[$i]->getDbKey() );
+			$dbr->addQuotes( $aCategories[$i]->getDBKey() );
 			$n++;
 		}
 		for($i = 0; $i < $nocats; $i++) {
 			$sSqlSelectFrom .= " LEFT OUTER JOIN $categorylinks AS" .
 			" c{$n} ON page_id = c{$n}.cl_from AND c{$n}.cl_to=" .
-			$dbr->addQuotes( $aExcludeCategories[$i]->getDbKey() );
+			$dbr->addQuotes( $aExcludeCategories[$i]->getDBKey() );
 			$sSqlWhere .= " AND c{$n}.cl_to IS NULL";
 			$n++;
 		}
