@@ -23,8 +23,8 @@ $messages['en'] = array(
 	'contrib-hist-date' => 'Time and date',
 	'contrib-hist-amount' => 'Amount',
 	
-	'contrib-hist-next' => 'Next',
-	'contrib-hist-previous' => 'Previous',
+	'contrib-hist-next' => 'Earlier donations',
+	'contrib-hist-previous' => 'Newer donations',
 	
 	'contrib-hist-anonymous' => 'Anonymous',
 

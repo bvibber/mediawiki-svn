@@ -37,7 +37,7 @@ class ContributionHistory extends SpecialPage {
 			),
 			__METHOD__
 		);
-
+		$count = 500;
 		$prevOffset = max( $offset - $limit , 0 );
 		$nextOffset = min( $offset + $limit, max( $count - $limit, 0 ) );
 		
