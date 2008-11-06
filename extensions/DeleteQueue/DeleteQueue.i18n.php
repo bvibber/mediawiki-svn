@@ -213,6 +213,14 @@ $messages['qqq'] = array(
 	'deletequeue-list-header-expiry' => '{{Identical|Expiry}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'deletequeue-review-reason' => 'Opmerkings:',
+	'deletequeue-vote-reason' => 'Opmerkings:',
+);
+
 /** Aragonese (Aragonés)
  * @author Remember the dot
  */
@@ -1095,6 +1103,17 @@ $messages['grc'] = array(
 	'deletequeue-list-header-queue' => 'Οὐρά',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'deletequeue-desc' => 'יצירת [[Special:DeleteQueue|מערכת מבוססת תורים לניהול המחיקות]]',
+	'deletequeue-action-queued' => 'מחיקה',
+	'deletequeue-action' => 'הצעת מחיקה',
+	'deletequeue-action-title' => 'הצעת מחיקה של "$1"',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -1856,9 +1875,21 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
 
 /** Polish (Polski)
  * @author Jwitos
+ * @author Maikking
  */
 $messages['pl'] = array(
+	'deletequeue-speedy-title' => 'Oznacz "$1" do ekspresowego skasowania',
+	'right-speedy-nominate' => 'Oznacz strony do ekspresowego skasowania',
+	'right-speedy-review' => 'Przejrzyj strony do ekspresowego skasowania',
+	'deletequeue-review-delete' => 'Usuń stronę.',
+	'deletequeue-vote-reason' => 'Komentarze:',
+	'deletequeue-vote-submit' => 'Zapisz',
+	'deletequeue-list-search-legend' => 'Szukaj stron',
+	'deletequeue-list-queue' => 'Kolejka:',
+	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-search' => 'Szukaj',
 	'deletequeue-list-header-page' => 'Strona',
+	'deletequeue-list-header-discusspage' => 'Strona dyskusji',
 );
 
 /** Portuguese (Português)

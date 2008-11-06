@@ -52,6 +52,13 @@ $aliases['br'] = array(
 	'Extensions' => array( 'Astennoù' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'Configure' => array( 'Konfiguriraj' ),
+	'Extensions' => array( 'Ekstenzije' ),
+	'ViewConfig' => array( 'PogledajPostavke' ),
+);
+
 /** Czech (Česky) */
 $aliases['cs'] = array(
 	'Configure' => array( 'Konfigurace' ),

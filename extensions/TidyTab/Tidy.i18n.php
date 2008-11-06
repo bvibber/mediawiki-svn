@@ -76,6 +76,16 @@ $messages['gl'] = array(
 	'untidy' => 'Desordenado',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'tidy-desc' => 'הוספת לשונית "tidy" או "הסרת tidy" (בהתאם ל־$wgUseTidy) בדפים רגילים, כדי לאפשר את דריסת הגדרות ה־HTML tidy עבור תצוגה בודדת',
+	'tidy' => 'Tidy',
+	'untidy' => 'הסרת Tidy',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

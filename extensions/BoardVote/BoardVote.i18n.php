@@ -972,6 +972,17 @@ Adkaset e viot war-du ar servijer diavaez-se a-benn 20 eilenn. [$1 Klikañ amañ
 Ur c'hemenn surentez diwall a-zivout un testeni disin a c'hallo dont war wel marteze.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'boardvote' => 'Glasanje za Wikimedijin Nadzorni odbor',
+	'boardvote-desc' => '[[meta:Board elections/2008|Izbori za Wikimedijin Nadzorni odbor]]',
+	'boardvote_entry' => '* [[Special:Boardvote/vote|Glasaj]]
+* [[Special:Boardvote/list|Spisak glasanja do danas]]
+* [[Special:Boardvote/dump|Arhiva šifriranih podataka o izborima]]',
+);
+
 /** Catalan (Català)
  * @author Aleator
  * @author Paucabot
@@ -3672,7 +3683,7 @@ Déi verschlësselt Versioun dovunner fannt dir ënnen. Si gëtt [[Special:Board
 	'boardvote_invalidentered' => "<p><strong>Feeler:</strong> D'Präferenz vun de Kandidaten muss a ganze, positiven Zuelen ausgedréckt ginn (1, 2, 3, ...) oder loosst eidelgelooss ginn.</p>",
 	'boardvote_nosession' => "Är Wikimedia Benotzernummer (ID) konnt net festgestallt ginn.
 Logged iech w.e.g. an déi Wiki an wou dir d'Bedingunge vun de Walen erfëllt a gitt op <nowiki>[[Special:Boardvote]]</nowiki>.
-Dir musst e Benotzerkont benotzen mat mindestens $1 {{PLURAL:$1|Kontributioun|Kontributiounen}} virum $2, an Dir musst mindestens $3 {{PLURAL:$1|Kontributioun|Kontributiounen}} tëschent dem $4 an dem $5 gemaach hun.",
+Dir musst e Benotzerkont benotzen mat mindestens $1 {{PLURAL:$1|Kontributioun|Kontributioune}} virum $2, an Dir musst mindestens $3 {{PLURAL:$1|Kontributioun|Kontributiounen}} tëschent dem $4 an dem $5 gemaach hun.",
 	'boardvote_notloggedin' => 'Dir sidd net agelogged.
 Fir ze wiele musst Dir e Benotzerkont benotze matt mindestens $1 {{PLURAL:$1|Kontributioun|Kontributioune}} virum $2, an Dir musst mindestens $3 {{PLURAL:$1|Kontributioun|Kontributiounen}} tëschent dem $4 an dem $5 gemaach hunn.',
 	'boardvote_notqualified' => 'Dir sidd net berechtegt fir un dëser Wal deelzehuelen. 

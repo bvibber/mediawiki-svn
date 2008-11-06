@@ -216,6 +216,26 @@ $messages['lb'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|neie Frënd|nei Frënn}}',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'userwelcome-desc' => 'Додава <tt>&lt;welcomeUser&gt;</tt> таг за приказ на специфични социјални информации за корисникот на најавени корисници',
+	'mp-userlevels-link' => 'Кориснички нивоа',
+	'mp-welcome-upload' => 'Подигнување',
+	'mp-welcome-edit' => 'Уреди',
+	'mp-welcome-points' => '$1 поени',
+	'mp-welcome-needed-points' => 'За да напредувате до <b><a href="$1">$2</a></b> заработете <i>$3</i> повеќе поени!',
+	'mp-welcome-logged-in' => 'Добредојдовте $1',
+	'mp-requests-title' => 'Барања',
+	'mp-requests-message' => 'Вие ги имате следниве барања.',
+	'mp-request-new-message' => 'нова порака',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|нова награда|нови награди}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|нов подарок|нови подароци}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|нов непријател|нови непријатели}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|нов пријател|нови пријатели}}',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -255,6 +275,28 @@ $messages['oc'] = array(
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|present novèl|presents novèls}}',
 	'mp-request-new-foe' => '$1 {{PLURAL:$1|enemic novèl|enemics novèls}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|amic novèl|amics novèls}}',
+);
+
+/** Polish (Polski)
+ * @author Maikking
+ */
+$messages['pl'] = array(
+	'mp-userlevels-link' => 'Poziomy użytkownika',
+	'mp-welcome-upload' => 'Prześlij',
+	'mp-welcome-edit' => 'Edytuj',
+	'mp-request-new-message' => 'nowa wiadomość',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'mp-requests-title' => 'Cereri',
+	'mp-request-new-message' => 'mesaj nou',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|premiu nou|premii noi}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|cadou nou|cadouri noi}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|inamic nou|inamici noi}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|prieten nou|prieteni noi}}',
 );
 
 /** Sinhala (සිංහල)

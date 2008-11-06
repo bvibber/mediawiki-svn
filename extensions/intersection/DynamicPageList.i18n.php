@@ -157,7 +157,7 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'intersection-desc' => 'Eligas bulpunktitan liston de la plej lastaj kategorianoj, aŭ unuigo de pluraj kategorioj',
-	'intersection_toomanycats' => 'Error: Tro da kategorioj!',
+	'intersection_toomanycats' => 'Eraro: Tro da kategorioj!',
 	'intersection_toofewcats' => 'Error: Tro malmultaj da kategorioj!',
 	'intersection_noresults' => 'Error: Neniom da rezultoj!',
 	'intersection_noincludecats' => 'Error: Vi devas inkluzivi almenaŭ unu kategorion, aŭ specifigu nomspacon!',

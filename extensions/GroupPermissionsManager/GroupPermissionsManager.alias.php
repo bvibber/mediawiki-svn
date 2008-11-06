@@ -33,6 +33,13 @@ $aliases['arz'] = array(
 	'SortPermissions' => array( 'ترتيب_السماحات' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'GroupPermissions' => array( 'DopustenjaGrupe' ),
+	'RemoveUnusedGroups' => array( 'UkloniNeiskoristeneGrupe' ),
+	'SortPermissions' => array( 'PoredajDopustenja' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'GroupPermissions' => array( 'Prava_suradničkih_skupina' ),

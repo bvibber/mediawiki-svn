@@ -251,6 +251,14 @@ Un tamm pasianted mar plij.',
 	'youtubeauthsub_jserror_nodesc' => 'Lakait un deskrivadur evit ar video mar plij',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'youtubeauthsub_title' => 'Naslov',
+	'youtubeauthsub_category' => 'Kategorija',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author SMP
@@ -359,7 +367,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'youtubeauthsub' => 'Alŝuti YouTube Video',
+	'youtubeauthsub' => 'Alŝuti YouTube Videon',
 	'youtubeauthsub_info' => 'Por alŝuti videon al YouTube inkluzivi en paĝo, plenumi la jenan informon:',
 	'youtubeauthsub_title' => 'Titolo',
 	'youtubeauthsub_description' => 'Priskribo',

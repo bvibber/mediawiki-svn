@@ -32,6 +32,11 @@ $aliases['br'] = array(
 	'Contributors' => array( 'Kenlabourerien' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'Contributors' => array( 'Urednici' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'Contributors' => array( 'Autoren' ),

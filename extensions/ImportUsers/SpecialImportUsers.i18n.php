@@ -156,7 +156,9 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'importusers-log' => 'Zapisnik uvoza',
+	'importusers-log-summary' => 'Sažetak',
 	'importusers-log-summary-all' => 'Sve',
+	'importusers-password' => 'šifra',
 );
 
 /** Catalan (Català)
@@ -232,7 +234,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'importusers' => 'Importu Uzantojn',
+	'importusers' => 'Importi uzantojn',
 	'importusers-uploadfile' => 'Alŝuti dosieron',
 	'importusers-form-button' => 'Importi',
 	'importusers-user-added' => 'Uzanto <b>%s</b> estis aldonita.',

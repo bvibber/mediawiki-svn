@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Badimages' => array( 'صور_سيئة' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'Badimages' => array( 'PogresnaSlika' ),
+);
+
 /** Catalan (Català) */
 $aliases['ca'] = array(
 	'Badimages' => array( 'Imatges dolentes' ),

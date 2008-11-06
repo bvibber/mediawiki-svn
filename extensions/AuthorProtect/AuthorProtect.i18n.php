@@ -245,10 +245,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Academo
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'authorprotect-desc' => 'Permite al autor de una página protegerla de otros usuarios',
-	'authorprotect-notauthor' => 'Ud no es el autor de esta página',
+	'authorprotect-notauthor' => 'No eres el autor de esta página',
 	'authorprotect-confirm' => 'Cambiar niveles de protección',
 	'authorprotect-edit' => 'Restringir edición a autores',
 );

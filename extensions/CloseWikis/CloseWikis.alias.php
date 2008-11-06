@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'CloseWiki' => array( 'إغلاق_الويكى' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'CloseWiki' => array( 'ZatvoriWiki' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'CloseWiki' => array( 'Wiki schließen' ),

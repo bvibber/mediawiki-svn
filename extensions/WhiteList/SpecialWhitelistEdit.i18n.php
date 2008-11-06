@@ -613,6 +613,58 @@ $allMessages['haw'] = array(
 	'whitelistbadtitle' => 'Inoa ‘ino -',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$allMessages['he'] = array(
+	'whitelist-desc' => 'עריכת הרשאות הגישה של משתמשים מוגבלים',
+	'whitelistedit' => 'עורך הגישה לרשימה הלבנה',
+	'whitelist' => 'דפי הרשימה הלבנה',
+	'mywhitelistpages' => 'הדפים שלי',
+	'whitelistfor' => '<center>המידע הנוכחי אודות <b>$1</b></center>',
+	'whitelisttablemodify' => 'שינוי',
+	'whitelisttablemodifyall' => 'הכול',
+	'whitelisttablemodifynone' => 'כלום',
+	'whitelisttablepage' => 'דף ויקי',
+	'whitelisttabletype' => 'סוג הגישה',
+	'whitelisttableexpires' => 'תאריך פקיעה',
+	'whitelisttablemodby' => 'שונה לאחרונה בידי',
+	'whitelisttablemodon' => 'שונה לאחרונה בתאריך',
+	'whitelisttableedit' => 'עריכה',
+	'whitelisttableview' => 'תצוגה',
+	'whitelisttablenewdate' => 'תאריך חדש:',
+	'whitelisttablechangedate' => 'שינוי תאריך הפקיעה',
+	'whitelisttablesetedit' => 'הגדרה לעריכה',
+	'whitelisttablesetview' => 'הגדרה לתצוגה',
+	'whitelisttableremove' => 'הסרה',
+	'whitelistnewpagesfor' => 'הוסp, דפים חדשים לרשימה הלבנה של <b>$1</b><br />
+ניתן להשתמש ב־* או ב־% כתווים כלליים',
+	'whitelistnewtabledate' => 'תאריך הפקיעה:',
+	'whitelistnewtableedit' => 'הגדרה לעריכה',
+	'whitelistnewtableview' => 'הגדרה לתצוגה',
+	'whitelistnewtableprocess' => 'עיבוד',
+	'whitelistnewtablereview' => 'סקירה',
+	'whitelistselectrestricted' => '== בחירת שם המשתמש המוגבל ==',
+	'whitelistpagelist' => 'דפי {{SITENAME}} עבור $1',
+	'whitelistnocalendar' => "<font color='red' size=3>נראה ש־[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], דרישת קדם להרחבה זו, לא הותקנה כראוי!</font>",
+	'whitelistbadtitle' => 'כותרת בלתי תקינה -',
+	'whitelistoverview' => '== סקירת השינויים עבור $1 ==',
+	'whitelistoverviewcd' => "* שינוי התאריך ל־'''$1''' עבור [[:$2|$2]]",
+	'whitelistoverviewsa' => "* הגדרת הגישה אל '''$1''' עבור [[:$2|$2]]",
+	'whitelistoverviewrm' => '* הסרת הגישה אל [[:$1|$1]]',
+	'whitelistoverviewna' => "* הוספת [[:$1|$1]] לרשימה הלבנה עם הגישה '''$2''' ותאריך הפקיעה '''$3'''",
+	'whitelistrequest' => 'בקשת גישה לדפים נוספים',
+	'whitelistrequestmsg' => '$1 ביקש גישה לדפים הבאים:
+
+$2',
+	'whitelistrequestconf' => 'הבקשה לדפים חדשים נשלחה אל $1',
+	'whitelistnonrestricted' => "המשתמש '''$1''' אינו משתמש מוגבל.
+ניתן להשתמש בדף זה עבור משתמשים מוגבלים בלבד",
+	'whitelistnever' => 'לעולם לא',
+	'whitelistnummatches' => '  - {{PLURAL:$1|תוצאה אחת|$1 תוצאות}}',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

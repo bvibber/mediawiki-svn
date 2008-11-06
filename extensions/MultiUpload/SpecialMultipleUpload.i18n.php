@@ -319,7 +319,10 @@ $messages['haw'] = array(
 $messages['he'] = array(
 	'multipleupload' => 'העלאת קבצים',
 	'multipleupload-desc' => 'אפשרות של [[Special:MultipleUpload|העלאת מספר קבצים בבת אחת]]',
+	'multipleupload-ignoreallwarnings' => "התעלמות מ'''כל האזהרות''' ושמירת הקבצים בכל זאת.",
 	'multipleupload-saveallfiles' => 'שמירת כל הקבצים',
+	'multipleupload-addresswarnings' => 'נא בדקו את כל האזהרות המופיעות לפני העלאת הקבצים מחדש.',
+	'multipleupload-page' => '{{ns:project}}:מדיניות מחיקת קבצים',
 );
 
 /** Hindi (हिन्दी)

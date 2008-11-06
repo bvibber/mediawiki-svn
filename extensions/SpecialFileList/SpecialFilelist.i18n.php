@@ -207,6 +207,18 @@ $messages['hak'] = array(
 	'filelist-image-desc' => 'mèu-sut',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'filelist' => 'רשימת קבצים',
+	'filelist-desc' => '[[Special:Filelist|דף מיוחד]] להצגת הקבצים שהועלו',
+	'filelist-show-list' => 'הצגת הרשימה',
+	'filelist-show-gallery' => 'הצגת הגלריה',
+	'filelist-image-desc' => 'תיאור',
+);
+
 /** Hindi (हिन्दी) */
 $messages['hi'] = array(
 	'filelist-image-desc' => 'ज़ानकारी',

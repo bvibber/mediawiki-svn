@@ -380,6 +380,26 @@ $messages['it'] = array(
 	'tog-show_task_comments' => "Inclusione della pagina dei commenti dell'attività",
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'tasks_form_comment' => 'យោបល់',
+	'tasks_delete' => 'លុប',
+	'tasks_created_by' => 'បានបង្កើតដោយ $1',
+	'tasks_closedby' => 'បានបិទដោយ $1',
+	'tasks_here' => 'ទីនេះ',
+	'tasks_more_like_it' => 'បន្ថែម',
+	'tasks_table_header_page' => 'ទំព័រ',
+	'tasks_search_form_title' => 'ស្វែងរក',
+	'tasks_search_results' => 'លទ្ធផលស្វែងរក',
+	'tasks_previous' => 'មុន',
+	'tasks_next' => 'បន្ទាប់',
+	'tasks_status_open' => 'បើក',
+	'tasks_status_closed' => 'បានបិទ',
+	'tasks_logentry' => 'សំរាប់"[[$1]]"',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -387,19 +407,25 @@ $messages['lb'] = array(
 	'tasks' => 'Aufgaben',
 	'tasks_desc' => "Eng Erweiderung fir Aufgaben z'administréieren",
 	'tasks_tab' => 'Aufgaben',
+	'tasks_title' => 'Aufgabe fir "$1"',
 	'tasks_form_comment' => 'Bemierkung',
 	'tasks_noone' => 'keen',
 	'tasks_delete' => 'Läschen',
 	'tasks_no_task_delete_title' => 'Net erlaabt',
 	'tasks_action_delete' => 'Eng Aufgab gouf geläscht.',
+	'tasks_discussion_page_link' => 'Diskussiounssäit vun der Aufgab',
 	'tasks_closedby' => 'Zougemaach vum $1',
 	'tasks_here' => 'hei',
+	'tasks_see_page_tasks' => '(Aufgabe vun dëser Säit)',
 	'tasks_help_page' => 'Aufgaben',
 	'tasks_more_like_it' => 'méi',
 	'tasks_table_header_page' => 'Säit',
+	'tasks_search_form_title' => 'Sichen',
 	'tasks_search_tasks' => 'Aufgaben',
 	'tasks_status_open' => 'Op',
 	'tasks_status_closed' => 'Zou',
+	'tasks_sign_delete' => '<b>Et gouf gefrot fir dëse Säit ze läschen</b>',
+	'tasks_logpage' => 'Lëscht vun den Aufgaben',
 	'tasks_logentry' => 'Fir [[$1}}',
 );
 
@@ -557,6 +583,36 @@ $messages['oc'] = array(
 	'tasks_logpagetext' => 'Aquò es un istoric dels cambiaments dins los prètzfaches',
 	'tasks_logentry' => 'Per « [[$1]] »',
 	'tog-show_task_comments' => 'Veire la pagina de comentaris a prepaus dels prètzfaches.',
+);
+
+/** Polish (Polski)
+ * @author Maikking
+ */
+$messages['pl'] = array(
+	'tasks' => 'Zadania',
+	'tasks_desc' => 'Rozszerzenie do zarządzania zadaniami',
+	'tasks_tab' => 'Zadania',
+	'tasks_title' => 'Zadania dla "$1"',
+	'tasks_form_new' => 'Utwórz nowe zadanie',
+	'tasks_form_comment' => 'Komentarz',
+	'tasks_error1' => 'Zadanie nie zostało utworzone: już takie istnieje!',
+	'tasks_ok1' => 'Nowe zadanie zostało utworzone!',
+	'tasks_create_header' => 'Utwórz nowe zadanie',
+	'tasks_existing_header' => 'Istniejące zadania',
+	'tasks_sidebar_title' => 'Rozpoczęte zadania',
+	'tasks_here' => 'tutaj',
+	'tasks_plain_text_only' => '(tylko tekst, maksymalnie 256 znaków)',
+	'tasks_event_on_creation' => 'sprawdź',
+	'tasks_event_on_creation_anon' => 'sprawdź',
+	'tasks_search_form_title' => 'Szukaj',
+	'tasks_search_tasks' => 'Zadania',
+	'tasks_search_status' => 'Status',
+	'tasks_search_results' => 'Wyniki wyszukiwania',
+	'tasks_previous' => 'Poprzednie',
+	'tasks_next' => 'Następne',
+	'tasks_sort' => 'Sortuj',
+	'tasks_ascending' => 'Od najstarszych',
+	'tasks_status_open' => 'Otwórz',
 );
 
 /** Russian (Русский) */
@@ -717,6 +773,20 @@ $messages['sv'] = array(
 	'tasks_ok1' => 'En ny uppgift har skapats!',
 	'tasks_create_header' => 'Skapa en ny uppgift',
 	'tasks_existing_header' => 'Existerande uppgifter',
+	'tasks_delete' => 'Radera',
+	'tasks_created_by' => 'Skapad av $1',
+	'tasks_here' => 'här',
+	'tasks_more_like_it' => 'mer',
+	'tasks_table_header_page' => 'Sida',
+	'tasks_search_form_title' => 'Sök',
+	'tasks_search_tasks' => 'Uppgifter',
+	'tasks_search_status' => 'Status',
+	'tasks_search_results' => 'Sökresultat',
+	'tasks_previous' => 'Föregående',
+	'tasks_next' => 'Nästa',
+	'tasks_sort' => 'Sortera',
+	'tasks_ascending' => 'Äldsta först',
+	'tasks_status_open' => 'Öppen',
 );
 
 /** Vietnamese (Tiếng Việt)

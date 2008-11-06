@@ -123,6 +123,7 @@ $messages['lb'] = array(
 	'am-email' => 'E-Mail',
 	'am-active' => 'aktiv',
 	'am-updated' => 'är Ännerunge goufe gespäichert',
+	'nss-rights' => 'Rechter',
 	'nss-save-changes' => 'Ännerunge späicheren',
 	'nss-create-account-header' => 'Een neie Benotzerkont opmaachen',
 	'nss-create-account' => 'Benotzerkont opmaachen',
@@ -154,9 +155,19 @@ $messages['nl'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'accountmanager' => 'Gestionari de comptes',
+	'am-username' => "Nom d'utilizaire",
+	'am-email' => 'Corrièr electronic',
+	'am-active' => 'actiu',
+	'am-updated' => 'Vòstras modificacions son estadas salvadas amb succès',
+	'nss-desc' => "Una extension que permet d'autentificar gràcias a una banca de donadas libnss-mysql. Conten un [[Special:AccountManager|gestionari de comptes]]",
+	'nss-rights' => 'dreches',
 	'nss-save-changes' => 'Enregistrar los cambiaments',
 	'nss-create-account-header' => 'Crear un compte novèl',
 	'nss-create-account' => 'Crear un compte',
+	'nss-welcome-mail' => 'Un compte amb lo nom $1 e lo senhal $2 es estat creat per vos.',
+	'nss-welcome-mail-subject' => 'Creacion de compte',
+	'nss-db-error' => "Error pendent la lectura de la banca de donadas d'autentificacion",
 );
 
 /** Portuguese (Português)

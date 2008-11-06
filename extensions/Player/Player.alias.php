@@ -32,6 +32,11 @@ $aliases['br'] = array(
 	'Player' => array( "C'hoarier" ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'Player' => array( 'Igrac' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Player' => array( 'Mediaspeuler' ),

@@ -410,3 +410,16 @@ $messages['uk'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'createbox-desc' => 'Hộp nhập liệu đặc biệt dùng để tạo trang',
+	'createbox-create' => 'Tạo',
+	'createbox-exists' => "Xin lỗi, \"'''{{FULLPAGENAME}}'''\" đã tồn tại.
+
+Bạn không thể tạo trang này, nhưng bạn có thể [{{fullurl:{{FULLPAGENAME}}|action=edit}} sửa đổi nó], [{{fullurl:{{FULLPAGENAME}}}} đọc nó], hoặc chọn tạo một trang khác sử dụng hộp phía dưới.
+
+<createbox>break=no</createbox>",
+);
+

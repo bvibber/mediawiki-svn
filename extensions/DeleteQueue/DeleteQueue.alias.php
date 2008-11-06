@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'DeleteQueue' => array( 'طابور_الحذف' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'DeleteQueue' => array( 'ObrisiCekanje' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'DeleteQueue' => array( 'Poistojono' ),

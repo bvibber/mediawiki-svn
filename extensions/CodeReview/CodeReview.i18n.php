@@ -126,6 +126,35 @@ $messages['qqq'] = array(
 	'right-codereview-link-user' => '{{Doc-right}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'code-comments' => 'Opmerkings',
+	'code-authors' => 'outeurs',
+	'code-author-name' => "Sleutel 'n gebruikersnaam in:",
+	'code-field-author' => 'Outeur',
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Datum',
+	'code-field-text' => 'Opmerking',
+	'code-rev-author' => 'Outeur:',
+	'code-rev-date' => 'Datum:',
+	'code-rev-message' => 'Opmerking:',
+	'code-rev-repo' => 'Repository:',
+	'code-rev-modified-a' => 'bygevoeg',
+	'code-rev-modified-r' => 'vervang',
+	'code-rev-modified-d' => 'verwyder',
+	'code-rev-modified-m' => 'verander',
+	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Wysigingsstatus',
+	'code-rev-comment-by' => 'Opmerking van $1',
+	'code-rev-comment-preview' => 'Voorskou',
+	'code-status-resolved' => 'opgelos',
+	'codereview-reply-link' => 'antwoord',
+	'repoadmin-new-button' => 'Skep',
+	'repoadmin-edit-button' => 'OK',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -361,6 +390,8 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'code-field-comments' => 'Bilješke',
+	'code-rev-modified-d' => 'obrisano',
+	'code-status-new' => 'novi',
 	'right-codereview-link-user' => 'Poveži autore sa wiki korisnicima',
 );
 
@@ -458,6 +489,7 @@ $4',
 
 /** German (Deutsch)
  * @author Metalhead64
+ * @author Purodha
  */
 $messages['de'] = array(
 	'code' => 'Codeprüfung',
@@ -470,7 +502,7 @@ $messages['de'] = array(
 	'code-authors-text' => 'Dies ist die Liste der Autoren in der Reihefolge der Einspielungen.',
 	'code-author-haslink' => 'Dieser Autor ist zu dem Wiki-Benutzer $1 verlinkt',
 	'code-author-orphan' => 'Dieser Autor hat keinen Link zu einem Wiki-Benutzerkonto',
-	'code-author-dolink' => 'Diese Autor zu einem Wiki-Benutzerkonto verlinken:',
+	'code-author-dolink' => 'Diesen Autor zu einem Wiki-Benutzerkonto verlinken:',
 	'code-author-alterlink' => 'Die Verlinkung zu einem Wiki-Benutzerkonto für diesen Autor ändern:',
 	'code-author-orunlink' => 'Verlinkung zu dem Wiki-Benutzerkonto aufheben:',
 	'code-author-name' => 'Benutzername:',
@@ -1456,13 +1488,34 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'code' => 'Projramme beärbeide',
+	'code-comments' => 'Kommäntaare',
+	'code-desc' => 'Werkzeuch för [[Special:Code|Projramme ze beärbeide]] met [[Special:RepoAdmin|Ongershtözung för <i lang="en">Subversion</i>]]',
+	'code-no-repo' => ' Kei
+Kei xxxxx enjeshtallt.',
+	'code-notes' => 'Aanmerkunge beärbeide',
 	'code-authors' => 'de Schriiver',
+	'code-author-haslink' => 'Dä Schriiver es em Wiki mem Metmaacher $1 verlengk',
+	'code-author-orphan' => 'Dä Schriiver es nit met enem Metmaacher em Wiki verlengk',
+	'code-author-dolink' => 'Donn dä Schriiver hee met enem Metmaacher em Wiki verlengke:',
+	'code-author-alterlink' => 'Donn dä Lengk för dä Schriiver hee met enem Metmaacher em Wiki verändere:',
+	'code-author-orunlink' => 'Donn dä Lengk fö dä Schriiver hee met enem Metmaacher em Wiki ophävve:',
+	'code-author-name' => 'Däm Metmaacher singe Name:',
+	'code-author-success' => 'Dä Schriiver $1 es jäz met dämm Metmaacher $2 em Wiki verlengk',
+	'code-author-link' => 'donn dä Lengk mache?',
+	'code-author-unlink' => 'donn dä Lengk fott nämme?',
+	'code-author-unlinksuccess' => 'Dä Schriiver $1 es jäz nit mieh met dämm Wiki verlengk',
+	'code-field-id' => 'Version',
+	'code-field-author' => 'Schriiver',
+	'code-field-status' => 'Shtattus',
 	'code-field-timestamp' => 'Dattum',
 	'code-rev-date' => 'Dattum:',
 	'code-rev-modified-a' => 'dobeij jedonn',
 	'code-rev-modified-r' => 'ußjetuusch',
 	'code-rev-modified-d' => 'fottjeschmeße',
 	'code-rev-modified-m' => 'jeändert',
+	'code-rev-status' => 'Shtattus:',
+	'code-rev-status-set' => 'Shtattus ändere',
 	'code-status-new' => 'neu',
 	'codereview-reply-link' => 'antwoote',
 	'repoadmin-new-button' => 'Aanläje',
@@ -1547,9 +1600,12 @@ $messages['ms'] = array(
 	'code-authors' => 'pengarang',
 	'code-tags' => 'label',
 	'code-author-name' => 'Masukkan nama pengguna:',
+	'code-author-link' => 'pautan?',
+	'code-author-unlink' => 'buang pautan?',
 	'code-field-id' => 'Semakan',
 	'code-field-author' => 'Pengarang',
 	'code-field-user' => 'Pengulas',
+	'code-field-message' => 'Ringkasan lakuan',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Tarikh',
 	'code-field-comments' => 'Catatan',
@@ -1561,6 +1617,7 @@ $messages['ms'] = array(
 	'code-rev-repo' => 'Gudang:',
 	'code-rev-rev' => 'Semakan:',
 	'code-rev-rev-viewvc' => 'di ViewVC',
+	'code-rev-status' => 'Status:',
 	'code-rev-status-set' => 'Tukar status',
 	'code-rev-tags' => 'Label:',
 	'code-rev-tag-add' => 'Tambah label:',
@@ -1568,10 +1625,12 @@ $messages['ms'] = array(
 	'code-rev-comment-by' => 'Ulasan oleh $1',
 	'code-rev-comment-submit' => 'Serah ulasan',
 	'code-status-new' => 'baru',
+	'code-status-fixme' => 'baiki',
 	'code-status-resolved' => 'beres',
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'tunda',
 	'code-pathsearch-path' => 'Laluan:',
+	'code-rev-submit' => 'Lakukan perubahan',
 	'codereview-reply-link' => 'balas',
 	'codereview-email-subj' => '[$1] [s$2]: Ulasan baru',
 	'codereview-email-body' => 'Pengguna "$1" mengirim ulasan bagi s$3.
@@ -1857,9 +1916,12 @@ $messages['pt'] = array(
 	'code-field-status' => 'Estado',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
+	'code-field-text' => 'Nota',
 	'code-rev-author' => 'Autor:',
 	'code-rev-date' => 'Data:',
+	'code-rev-message' => 'Comentário:',
 	'code-rev-repo' => 'Repositório:',
+	'code-rev-status' => 'Estado:',
 	'codereview-reply-link' => 'responder',
 	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em r$3.
 

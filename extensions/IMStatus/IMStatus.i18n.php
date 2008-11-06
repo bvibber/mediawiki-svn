@@ -166,6 +166,8 @@ Die ID, die du benötigst, sind die Zahlen und Buchstaben zwischen „$2“ und 
 $messages['eo'] = array(
 	'imstatus_default' => 'Defaŭlta',
 	'imstatus_example' => 'Ekzemplo',
+	'imstatus_possible_val' => 'Eblaj valutoj',
+	'imstatus_or' => 'aŭ',
 );
 
 /** Persian (فارسی)

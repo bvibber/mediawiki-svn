@@ -603,6 +603,8 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'lookupuser_intro' => 'Wprowadź nazwę użytkownika, żeby zobaczyć jego preferencje.',
+	'lookupuser_nonexistent' => 'Błąd: użytkownik nie istnieje',
 	'lookupuser_id' => 'ID użytkownika: <tt>$1</tt>',
 	'lookupuser_email' => 'E-mail: [[Special:Emailuser/$2|$1]]',
 	'lookupuser_no_email' => 'nie podał adresu e-mail',

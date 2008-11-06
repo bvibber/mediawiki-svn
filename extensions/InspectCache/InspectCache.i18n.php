@@ -140,7 +140,7 @@ $messages['ee'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'inspectcache' => 'Rigardu Kaŝmemoro',
+	'inspectcache' => 'Rigardi Kaŝmemoro',
 	'inspectcache-ok' => 'Ek!',
 	'inspectcache-general' => 'Ĝenerala kaŝmemoro',
 	'inspectcache-parser' => 'Sintaksa kaŝmemoro',

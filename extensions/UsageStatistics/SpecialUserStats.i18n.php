@@ -695,6 +695,24 @@ $messages['lb'] = array(
 	'usagestatistics-editpages' => 'Individuell $1 Statistiken vun de Säite pro Benotzer',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'specialuserstats' => 'Статистики на користење',
+	'usagestatistics' => 'Статистики на користење',
+	'usagestatistics-desc' => 'Приказ на статистики на користење поединечно за корисник и за целото вики',
+	'usagestatisticsfor' => '<h2>Статистики на користење за [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Статистики на користење за сите корисници</h2>',
+	'usagestatisticsinterval' => 'Интервал',
+	'usagestatisticstype' => 'Тип',
+	'usagestatisticsstart' => 'Почетен датум',
+	'usagestatisticsend' => 'Краен датум',
+	'usagestatisticssubmit' => 'Генерирање на статистики',
+	'usagestatisticsnostart' => '* <font color=red>Специфицирајте почетен датум</font>',
+	'usagestatisticsnoend' => '* <font color=red>Специфицирајте краен датум</font>',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

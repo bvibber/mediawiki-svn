@@ -32,6 +32,11 @@ $aliases['br'] = array(
 	'Call' => array( 'Pellgomz' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'Call' => array( 'Poziv' ),
+);
+
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'Call' => array( 'Κλήση' ),

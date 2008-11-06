@@ -327,11 +327,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Maikking
  * @author Wpedzich
  */
 $messages['pl'] = array(
 	'contributionseditcount' => 'Ten użytkownik ma $1 edycji.',
-	'contributionseditcount-desc' => 'Wyświetla liczbę edycji na stronie [[Specjalna:Wkład]]',
+	'contributionseditcount-desc' => 'Wyświetla liczbę edycji na stronie [[Specjalna:Wkład|stronie wkładu użytkownika]]',
 );
 
 /** Piedmontese (Piemontèis)

@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'InterwikiList' => array( 'قائمة_الإنترويكى' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'InterwikiList' => array( 'SpisakInterwiki' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'InterwikiList' => array( 'Interwiki-Liste' ),

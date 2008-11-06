@@ -23,6 +23,16 @@ $messages['qqq'] = array(
 	'msfunc_div_zero' => '{{Identical|Divizion by zero}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'msfunc_desc' => "'n Versameling wiskundige en statistiese funksies",
+	'msfunc_nan' => "Resulterende waarde is nie 'n getal nie",
+	'msfunc_inf' => 'Resulterende waarde is oneindig',
+	'msfunc_div_zero' => 'Deling deur nul',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -141,6 +151,17 @@ $messages['gl'] = array(
 	'msfunc_nan' => 'O valor resultante non é un número',
 	'msfunc_inf' => 'O valor resultante é infinito',
 	'msfunc_div_zero' => 'División por cero',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'msfunc_desc' => 'אוסף של פונקציות מתמטיות וסטטיסטיות',
+	'msfunc_nan' => 'התוצאה שהתקבלה איננה מספרית',
+	'msfunc_inf' => 'התוצאה שהתקבלה היא אינסוף',
+	'msfunc_div_zero' => 'חלוקה באפס',
 );
 
 /** Hindi (हिन्दी)

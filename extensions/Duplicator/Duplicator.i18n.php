@@ -176,6 +176,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'duplicator-options' => 'Opcije',
+	'duplicator-source' => 'Izvor:',
 );
 
 /** Catalan (Català)
@@ -861,11 +862,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Maikking
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'duplicator' => 'Duplikowanie strony',
-	'duplicator-desc' => 'Stwórz niezależną kopię tej strony z pełną historią edycji',
+	'duplicator-desc' => 'Stwórz niezależną [[Special:Duplicate|kopię]] tej strony z pełną historią edycji',
 	'duplicator-toolbox' => 'Duplikuj tę stronę',
 	'duplicator-header' => 'Ta strona pozwala na stworzenie kompletnego duplikatu artykułu, tworząc niezależne kopie aktualnej treści wraz z pełną historią zmian. Jest to przydatne przy rozwidlaniu (klonowaniu) artykułów itp.',
 	'duplicator-options' => 'Opcje',

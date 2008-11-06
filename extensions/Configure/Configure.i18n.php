@@ -920,9 +920,9 @@ Por favor cambie los permisos para que PHP pueda escribir si quiere usar esta ex
 	'configure-js-remove-row' => 'Eliminar esta entrada',
 	'configure-no-diff' => 'No hay cambios entre las versiones seleccionadas.',
 	'configure-no-directory' => 'El directorio usado para guardar las configuraciones, <tt>$1</tt>, no existe.
-Por favor, creelo o cambielo para usar esta extensión.',
+Por favor, créelo o cámbielo para usar esta extensión.',
 	'configure-no-old' => 'No hay una versión anterior de la configuración disponible.',
-	'configure-no-setup' => 'ud debe llamar <code>efConfigureSetup()</code> explícitamente en el archivo LocalSettings.php para usar esta extensión.',
+	'configure-no-setup' => 'Debes llamar a <code>efConfigureSetup()</code> explícitamente en el archivo LocalSettings.php para usar esta extensión.',
 	'configure-no-transwiki' => 'Ud no esta autorizado para cambiar las configuraciones en otras wikis',
 	'configure-old' => 'Versiones antiguas',
 	'configure-old-versions' => 'Lista de las versiones anteriores de la configuración:',
@@ -2343,6 +2343,9 @@ $messages['oc'] = array(
 	'configure-ext-use' => 'Utilizacion',
 	'configure-summary' => "Aquesta pagina especiala vos permet de configurar aqueste wiki, vejatz los [http://www.mediawiki.org/wiki/Manual:Configuration_settings/oc paramètres de configuracion] per mai d'entresenhas.",
 	'configure-btn-save' => 'Salvar los reglatges',
+	'configure-db-error' => "La banca de donadas qu'avètz especificada per conténer la configuracion ($1) existís pas.
+Creatz-la e aplicatz-i configure.sql o corregissètz son nom.",
+	'configure-db-table-error' => "La banca de donadas qu'avètz especificada conten pas las taulas requeridas, aplicatz-i configure.sql.",
 	'configure-directory-not-writable' => "Lo dorsièr utilizat per salvar la configuracion, <tt>$1</tt>, pòt pas èsser modificat.
 Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 	'configure-edit-old' => 'Atencion : sètz a modificar una version <strong>anciana</strong> de la configuracion.',

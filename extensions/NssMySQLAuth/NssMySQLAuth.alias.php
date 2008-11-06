@@ -22,6 +22,11 @@ $aliases['arz'] = array(
 	'AccountManager' => array( 'مدير_الحسابات' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'AccountManager' => array( 'UpravljanjeRacunima' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'AccountManager' => array( 'Gebruikersbeheer' ),

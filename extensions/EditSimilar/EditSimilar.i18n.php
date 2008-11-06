@@ -210,6 +210,13 @@ $messages['he'] = array(
 אנא עיינו בדפים קשורים אלו: $1.',
 	'editsimilar-thanks-singleresult' => 'תודה על תרומתכם.
 אנא עיינו בדף קשור זה: $1.',
+	'editsimilar-thanks-notsimilar' => 'תודה לכם על תרומתכם.
+ייתכן שדפים אלו זקוקים לעזרתכם גם כן: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'תודה לכם על תרומתכם.
+ייתכן שדף זה זקוק לעזרתכם גם כן: $1.',
+	'editsimilar-thankyou' => 'תודה לך על תרומתך, $1!',
+	'editsimilar-link-disable' => 'הגדרת העדפות',
+	'tog-edit-similar' => 'הצגת הצעות בנוגע לדפים דומים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -270,6 +277,7 @@ Anche questa pagina potrebbe usufruire del tuo aiuto: $1.',
  * @author Lovekhmer
  */
 $messages['km'] = array(
+	'editsimilar-thankyou' => 'សូម​ថ្លែងអំណរគុណ​ចំពោះ​ការរួមចំនែក​របស់អ្នក $1!',
 	'editsimilar-link-disable' => 'កំនត់ចំនង់ចំនូលចិត្ត',
 );
 

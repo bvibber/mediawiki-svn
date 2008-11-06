@@ -171,7 +171,10 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'whoiswatching' => 'מי עוקב אחרי דף הוויקי',
+	'whoiswatching-desc' => 'רשימת שמות המשתמשים העוקבים אחרי דף ויקי',
 	'specialwhoiswatchingthepage' => 'מי עוקב אחרי %s',
+	'specialwhoiswatchingusage' => 'לא ניתן להשתמש בדף מיוחד זה בפני עצמו.
+אנא השתמשו בדף [[MediaWiki:Number_of_watching_users_pageview]] כדי להגדיר נקודת כניסה לדף זה.',
 	'specialwhoiswatchingaddusers' => 'הוספת משתמשים למעקב אחרי דף זה',
 	'specialwhoiswatchingaddbtn' => 'הוספת המשתמשים שנבחרו',
 );
@@ -372,10 +375,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Maikking
  * @author Masti
  */
 $messages['pl'] = array(
 	'whoiswatching' => 'Kto obserwuje stronę',
+	'whoiswatching-desc' => 'Pokazuje listę użytkowników mających daną stronę w obserwowanych',
 	'specialwhoiswatchingthepage' => 'Kto obserwuje %s',
 	'specialwhoiswatchingusage' => 'Ta strona nie może być użyta samoistnie. Skorzystaj ze strony [[MediaWiki:Number_of_watching_users_pageview]], aby zdefiniować punkt startowy dla tej strony',
 	'specialwhoiswatchingaddusers' => 'Dodaj użytkowników obserwujących stronę',

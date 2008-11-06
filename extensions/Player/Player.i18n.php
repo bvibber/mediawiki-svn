@@ -298,6 +298,26 @@ $messages['haw'] = array(
 	'player-goto-page' => '‘Ao‘ao',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'player' => 'נגן',
+	'player-desc' => 'נגינת מולטימדיה המוטמעת על ידי שימוש בתוספי דפדפנים נפוצים, ו[[Special:Player|דף מיוחד]]',
+	'player-title' => 'נגן',
+	'player-playertitle' => 'נגן: $1',
+	'player-file' => 'שם הקובץ',
+	'player-play' => 'ניגון',
+	'player-not-allowed' => 'פורמט לא מורשה',
+	'player-not-found' => 'הקובץ לא נמצא',
+	'player-invalid-title' => 'כותרת בלתי תקינה',
+	'player-clicktoplay' => 'נגינת $1',
+	'player-goto-player' => 'נגן',
+	'player-goto-page' => 'דף',
+	'player-goto-file' => 'קובץ',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

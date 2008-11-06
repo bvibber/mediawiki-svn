@@ -470,6 +470,8 @@ $messages['ja'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
+	'deletebatch-button' => 'លុប',
+	'deletebatch-here' => '<b>ទីនេះ</b>',
 	'deletebatch-reason' => 'មូលហេតុនៃការលុប',
 	'deletebatch-processing' => 'ការលុបទំព័រ',
 	'deletebatch-success-subtitle' => 'សំរាប់$1',
@@ -823,5 +825,37 @@ $messages['uk'] = array(
 	'deletebatch-success-subtitle' => 'для $1',
 	'deletebatch-file-missing' => 'Не в змозі прочитати наданий файл',
 	'deletebatch-select-yourself' => 'ви',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'deletebatch' => 'Xóa một nhóm trang',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Xóa một nhóm trang]]',
+	'deletebatch-button' => 'Xóa',
+	'deletebatch-here' => '<b>tại đây</b>',
+	'deletebatch-help' => 'Xóa một nhóm trang. Bạn có thể thực hiện việc xóa từng trang, hoặc xóa các trang liệt kê trong một tập tin.
+Chọn một thành viên sẽ hiện ra trong nhật trình xóa.
+Tập tin đã tải nên có chứa tên trang và lý do tùy chọn phân tách bằng ký tự "|" tại mỗi dòng.',
+	'deletebatch-caption' => 'Danh sách trang',
+	'deletebatch-title' => 'Xóa nhóm',
+	'deletebatch-link-back' => 'Bạn có thể trở lại bộ mở rộng',
+	'deletebatch-as' => 'Chạy script với tên',
+	'deletebatch-both-modes' => 'Xin hãy chọn một trang hoặc một danh sách trang cho trước.',
+	'deletebatch-or' => '<b>hoặc</b>',
+	'deletebatch-page' => 'Các trang sẽ bị xóa',
+	'deletebatch-reason' => 'Lý do xóa',
+	'deletebatch-processing' => 'đang xóa trang',
+	'deletebatch-from-file' => 'từ danh sách tập tin',
+	'deletebatch-from-form' => 'từ mẫu',
+	'deletebatch-success-subtitle' => 'đối với $1',
+	'deletebatch-omitting-nonexistant' => 'Đang bỏ trang $1 không tồn tại.',
+	'deletebatch-omitting-invalid' => 'Đang bỏ trang $1 không hợp lệ.',
+	'deletebatch-file-bad-format' => 'Tập tin nên ở dạng thuần ký tự',
+	'deletebatch-file-missing' => 'Không thể đọc tập tin có sẵn',
+	'deletebatch-select-script' => 'xóa script của trang',
+	'deletebatch-select-yourself' => 'bạn',
+	'deletebatch-no-page' => 'Xin hãy chỉ định ít nhất một trang để xóa HOẶC chọn một tập tin có chứa danh sách các trang.',
 );
 

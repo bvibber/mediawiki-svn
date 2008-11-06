@@ -106,6 +106,16 @@ $messages['haw'] = array(
 	'stalepages' => 'Nā ‘ao‘ao malo‘o',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'stalepages' => 'דפים מיושנים',
+	'stalepages-desc' => 'יצירת [[Special:Stalepages|רשימת דפים]] שלא נערכו לאחרונה',
+	'stalepages-summary' => 'זוהי רשימת דפים שלא נערכו במשך $1 הימים האחרונים.',
+);
+
 /** Croatian (Hrvatski)
  * @author Dnik
  */

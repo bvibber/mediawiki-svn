@@ -172,6 +172,13 @@ $messages['bg'] = array(
 	'todo-form-submit' => 'Изпращане на заявка',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'todo-new-queue' => 'novi',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

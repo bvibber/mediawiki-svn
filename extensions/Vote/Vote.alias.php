@@ -29,6 +29,11 @@ $aliases['as'] = array(
 	'Vote' => array( 'ভোট' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'Vote' => array( 'Glasaj' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'Vote' => array( 'Abstimmen' ),
@@ -92,6 +97,11 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'Vote' => array( 'Votar' ),
+);
+
+/** Tarandíne (Tarandíne) */
+$aliases['roa-tara'] = array(
+	'Vote' => array( 'Vote' ),
 );
 
 /** Albanian (Shqip) */

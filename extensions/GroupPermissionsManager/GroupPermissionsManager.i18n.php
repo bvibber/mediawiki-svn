@@ -432,6 +432,7 @@ $messages['eo'] = array(
 	'grouppermissions-log-change' => 'ŝanĝis rajtojn por grupon "$2"',
 	'grouppermissions-log-delete' => 'forigis grupon "$2"',
 	'grouppermissions-log-name' => 'Protokolo pri grup-rajtoj',
+	'grouppermissions-sp-sort' => 'Ordigi rajtojn',
 	'grouppermissions-sp-save' => 'Konservi',
 	'grouppermissions-sp-success' => 'Rajtoj estis sukcese ordigitaj',
 	'grouppermissions-sp-addperm' => 'Aldoni rajton',

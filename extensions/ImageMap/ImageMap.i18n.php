@@ -228,6 +228,13 @@ $messages['cs'] = array(
 	'imagemap_poly_odd' => 'Chyba: na řádku $1 nalezen mnohoúhelník s lichým počtem souřadnic',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'imagemap_description' => "Ynglŷn â'r ddelwedd hon",
+);
+
 /** Danish (Dansk)
  * @author Wegge
  */

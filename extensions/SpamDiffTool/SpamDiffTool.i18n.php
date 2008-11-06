@@ -279,6 +279,34 @@ Asegúrese de non bloquear dominios enteiros que bloqueen contas de usuario; com
 	'spamdifftool_submit_buttom' => 'Enviar',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'spamdifftool' => 'ניהול מסנן הספאם',
+	'spamdifftool-desc' => 'הוספת דרך בסיסית להוספת רשומות חדשות למסנן הספאם מתוך דפי הבדלים בין גרסאות',
+	'spamdifftool_cantedit' => 'מצטערים - אין ברשותכם את ההרשאות המתאימות לעריכת מסנן הספאם.',
+	'spamdifftool_notext' => "אין טקסט להוספה למסנן הספאם.
+לחצו <a href='$1'>כאן</a> להמשך.",
+	'spamdifftool_confirm' => "אשרו כי ברצונכם להוסיף רשומות אלו אל מנגנון הספאם.
+(לחצו <a href='$1' target='new'>כאן</a> לדיווח על תקלה.)",
+	'spamdifftool_summary' => 'הוספה למסנן הספאם',
+	'spamdifftool_urls_detected' => "הכתובות הבאות זוהו בעריכה/ות, אילו מהכתובות תרצו להוסיף למסנן הספאם?
+אפשרויות אלו מסודרות מהמגבילות ביותר עד למגבילות פחות. חסימת שם הדומיין כולו תחסום את כל הקישורים ואת כל מה שבא מאותו הדומיין.
+
+וודאו כי אינכם חוסמים דומיינים שלמים המארחים חשבונות משתמשים, כגון blogpost.com, geocities.com וכו'.",
+	'spamdifftool_no_urls_detected' => "לא זוהו כתובות.
+לחצו <a href='$1'>כאן</a> לחזרה.",
+	'spamdifftool_spam_link_text' => 'הוספה לספאם',
+	'spamdifftool_option_domain' => 'הכול מדומיין זה',
+	'spamdifftool_option_subdomain' => 'הכול מדומיין משנה זה',
+	'spamdifftool_option_directory' => 'דומיין משנה זה ותיקייה',
+	'spamdifftool_option_none' => 'כלום',
+	'spamdifftool_block' => 'חסימה:',
+	'spamdifftool_submit_buttom' => 'שליחה',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

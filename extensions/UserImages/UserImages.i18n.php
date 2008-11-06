@@ -236,6 +236,15 @@ $messages['lt'] = array(
 	'userimages-noimages' => '$1 nėra įkėlęs iliustracijų.',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'userimages-caption' => 'Слики подигнати од $1',
+	'userimages-noname' => 'Погрешно корисничко име или воопшто не е наведено.',
+	'userimages-noimages' => '$1 нема подигнато слики.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

@@ -321,6 +321,37 @@ $messages['grc'] = array(
 	'invitations-inviteform-submit' => 'Προσκαλεῖν',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'invite-logpage' => 'יומן ההזמנות',
+	'invite-logpagetext' => 'זהו יומן ההזמנות שנשלחו בין המשתמשים לשימוש בתכונות תוכנה שונות.',
+	'invite-logentry' => 'הזמין את $1 להשתמש בתכונה <i>$2</i>.',
+	'invitations' => 'ניהול ההזמנות לתכונות תוכנה',
+	'invitations-desc' => 'אפשרות ל[[Special:Invitations|ניהול תכונות חדשות]] באמצעות הגבלתם למערכת המבוססת על הזמנות בלבד',
+	'invitations-invitedlist-description' => 'יש לכם גישה לתכונות התוכנה הבאות הדורשות הזמנה בלבד.
+על מנת לנהל את ההזמנות לתכונה כלשהי, לחצו על שמה.',
+	'invitations-invitedlist-none' => 'לא הוזמנתם להשתמש בתכונות תוכנה הזמינות בהזמנה בלבד כלשהן.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|הזמנה אחת זמינה|$1 הזמנות זמינות}})',
+	'invitations-pagetitle' => 'תכונות תוכנה בהזמנה בלבד',
+	'invitations-uninvitedlist-description' => 'אין לך גישה לתכונות תוכנה בהזמנה בלבד אלו.',
+	'invitations-uninvitedlist-none' => 'לעת עתה, אין כל תכונות תוכנה המוקצות להזמנות בלבד.',
+	'invitations-feature-pagetitle' => 'ניהול הזמנות - $1',
+	'invitations-feature-access' => 'יש לכם כרגע גישה להשתמש בתכונה <i>$1</i>.',
+	'invitations-feature-numleft' => 'עדיין {{PLURAL:$2|נותרה לכם הזמנה אחת|נותרו לכם <b>$1</b> מתוך $2 ההזמנות שלכם}}.',
+	'invitations-feature-noneleft' => 'השתמשתם בכל ההזמנות המוקצות לכם עבור תכונה זו',
+	'invitations-feature-noneyet' => 'עדיין לא קיבלתם את הקצאת ההזמנות עבור תכונה זו.',
+	'invitations-feature-notallowed' => 'אין לכם גישה לשימוש בתכונה <i>$1</i>.',
+	'invitations-inviteform-title' => 'הזמנת משתמשים לשימוש בתכונה $1',
+	'invitations-inviteform-username' => 'משתמש להזמנה',
+	'invitations-inviteform-submit' => 'הזמנה',
+	'invitations-error-baduser' => 'ייתכן כי המשתמש שציינתם איננו קיים.',
+	'invitations-error-alreadyinvited' => 'למשתמש שציינתם כבר יש גישה לתכונה זו!',
+	'invitations-invite-success' => 'הזמנתם את המשתמש $1 בהצלחה להשתמש בתכונה זו!',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

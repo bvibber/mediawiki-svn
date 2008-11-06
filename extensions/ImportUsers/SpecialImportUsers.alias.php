@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'ImportUsers' => array( 'استيراد_المستخدمين' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'ImportUsers' => array( 'UvozKorisnika' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'ImportUsers' => array( 'Benutzer importieren' ),

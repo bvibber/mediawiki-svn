@@ -31,6 +31,12 @@ $aliases['arz'] = array(
 	'Oversight' => array( 'أوفرسايت' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'HideRevision' => array( 'SakrijReviziju' ),
+	'Oversight' => array( 'Nadzor' ),
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

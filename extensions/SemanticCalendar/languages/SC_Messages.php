@@ -155,8 +155,10 @@ $messages['gv'] = array(
 
 /** Hebrew (עברית)
  * @author StuB
+ * @author YaronSh
  */
 $messages['he'] = array(
+	'sc_desc' => 'לוח שנה המציג נתונים סמנטיים אודות התאריך',
 	'sc_previousmonth' => 'החודש הקודם',
 	'sc_nextmonth' => 'החודש הבא',
 	'sc_today' => 'היום',

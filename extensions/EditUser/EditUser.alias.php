@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'EditUser' => array( 'تعديل_المستخدم' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'EditUser' => array( 'UrediKorisnika' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'EditUser' => array( 'Benutzereinstellungen bearbeiten' ),

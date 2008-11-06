@@ -260,11 +260,13 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Maikking
  * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
 	'templatelink' => 'Link do szablonu',
+	'templatelink_desc' => 'To rozszerzenie pokazuje szablon jako nową stronę',
 	'templatelink_empty' => 'Musisz podać parametr',
 	'templatelink_newtitle' => '$1 (po transkluzji)',
 );

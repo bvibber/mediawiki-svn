@@ -102,6 +102,13 @@ $messages['hsb'] = array(
 	'abcdownload' => 'Sćahnyć',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'abcdownload' => 'ទាញយក៖',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -116,6 +123,17 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'abcdesc' => 'Voegt de tag <tt>&lt;abc&gt;</tt> voor de opmaak van ABC-muziek',
 	'abcdownload' => 'Downloaden:',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'abcdesc' => 'Apond una balisa <tt>&lt;abc&gt;</tt> per formatar la musica ABC',
+	'abcdownload' => 'Telecargar :',
+	'abcsep' => '|',
+	'abcabc' => 'ABC',
+	'abcpdf' => 'PDF',
 );
 
 /** Polish (Polski)

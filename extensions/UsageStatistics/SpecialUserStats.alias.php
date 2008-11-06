@@ -32,6 +32,11 @@ $aliases['as'] = array(
 	'UserStats' => array( 'সদস্য পৰিসংখ্যা', 'বিশেষ সদস্য পৰিসংখ্যা' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'UserStats' => array( 'KorisnickeStatistike' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'UserStats' => array( 'Benutzerstatistik' ),

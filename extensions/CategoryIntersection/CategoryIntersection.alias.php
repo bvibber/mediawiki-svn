@@ -37,6 +37,11 @@ $aliases['br'] = array(
 	'CategoryIntersection' => array( 'Kengej rummadoù' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'CategoryIntersection' => array( 'PresjekKategorija' ),
+);
+
 /** Catalan (Català) */
 $aliases['ca'] = array(
 	'CategoryIntersection' => array( 'Intersecció de categories' ),

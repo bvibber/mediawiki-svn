@@ -91,6 +91,17 @@ $messages['nl'] = array(
 	'gblrights-rights-entry' => 'heeft globaal groepslidmaatschap voor $1 gewijzigd van $2 naar $3',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'shareduserrights' => "Gestion dels dreches d'utilizaire partejats",
+	'gblrights-desc' => "[[Special:SharedUserRights|gestion simpla dels dreches d'utilizaire partejats]]",
+	'gblrights-logpage' => 'Istoric dels dreches globals',
+	'gblrights-pagetext' => "Aquò es l'istoric de totas las modificacion efectuadas dins la taula globala dels dreches d'utilizaire",
+	'gblrights-rights-entry' => "a modificat l'apartenéncia globala als gropes per $1 de $2 a $3",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

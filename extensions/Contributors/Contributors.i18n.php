@@ -165,6 +165,23 @@ $messages['br'] = array(
 	'contributors-nosuchpage' => "N'eus ket eus ar pennad $",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'contributors' => 'Autori',
+	'contributors-desc' => 'Kratki pregled glavnih autora stranice',
+	'contributors-toolbox' => 'Glavni autori',
+	'contributors-legend' => 'Prikaži glavne autore stranice',
+	'contributors-target' => 'Naslov:',
+	'contributors-submit' => 'Pokaži',
+	'contributors-subtitle' => 'Glavni autori stranice $1',
+	'contributors-others-long' => 'Postoji {{PLURAL:$1|još jedan autor|još $1 autora}} ove stranice.',
+	'contributors-others' => 'i {{PLURAL:$1|još jedan|još $1 ostala|još $1 ostalih}}',
+	'contributors-badtitle' => 'Pogrešan naslov.',
+	'contributors-nosuchpage' => 'Stranica $1 ne postoji.',
+);
+
 /** Catalan (Català)
  * @author Aleator
  * @author SMP

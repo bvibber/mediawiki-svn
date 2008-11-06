@@ -51,6 +51,13 @@ $messages['nl'] = array(
 	'stringfunctions-desc' => 'Breidt de parser uit met tekstfuncties',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'stringfunctions-desc' => 'Melhora lo parser amb las foncions sus las cadenas de caractèrs',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -480,9 +480,19 @@ $messages['it'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
+	'closewikis-page' => 'បិទវិគី',
+	'closewikis-page-close' => 'បិទវិគី',
 	'closewikis-page-close-wiki' => 'វិគី៖',
+	'closewikis-page-close-submit' => 'បិទ',
+	'closewikis-page-reopen' => 'បើកវិគីឡើងវិញ',
 	'closewikis-page-reopen-wiki' => 'វិគី៖',
 	'closewikis-page-reopen-reason' => 'មូលហេតុ៖',
+	'closewikis-page-reopen-submit' => 'បើកឡើងវិញ',
+	'closewikis-list-header-wiki' => 'វិគី',
+	'closewikis-list-header-by' => 'បានបិទដោយ',
+	'closewikis-list-header-timestamp' => 'បានបិទនៅ',
+	'closewikis-log-close' => 'បានបិទ$2',
+	'right-closewikis' => 'បិទវិគី',
 );
 
 /** Ripoarisch (Ripoarisch)

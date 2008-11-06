@@ -32,6 +32,11 @@ $aliases['as'] = array(
 	'ChemicalSources' => array( 'ৰাসায়নিক উৎসসমূহ' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'ChemicalSources' => array( 'HemijskiIzvori' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ChemicalSources' => array( 'Chemisch Quellen' ),

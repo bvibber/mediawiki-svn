@@ -15,6 +15,12 @@ $aliases['en'] = array(
 	'ContributionTotal' => array( 'ContributionTotal' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'ContributionHistory' => array( 'DoprinosiHistorija' ),
+	'ContributionTotal' => array( 'DoprinosiUkupno' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'ContributionHistory' => array( 'ប្រវត្តិនៃការរួមចំនែក' ),
@@ -24,6 +30,7 @@ $aliases['km'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ContributionHistory' => array( 'Donatiehistorie' ),
+	'ContributionStatistics' => array( 'Donatiestatistieken' ),
 	'ContributionTotal' => array( 'Donatietotaal' ),
 );
 

@@ -94,6 +94,7 @@ $messages['eo'] = array(
 	'interwikilist' => 'Intervikia listo',
 	'interwikilist-linkname' => 'Intervikia ligilo',
 	'interwikilist-target' => 'Cela URL-o',
+	'interwikilist-prefix' => 'Intervikia prefikso:',
 );
 
 /** Persian (فارسی)

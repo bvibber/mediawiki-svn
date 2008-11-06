@@ -222,6 +222,13 @@ $messages['cs'] = array(
 	'imagetagging-taggedimages-displaying' => 'Zobrazuje se $1 - $2 z $3 obrázků „$4”',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'imagetagging-taggedimages-title' => 'Delweddau "$1"',
+);
+
 /** German (Deutsch)
  * @author DaSch
  * @author Revolus
@@ -256,8 +263,10 @@ $messages['eo'] = array(
 	'imagetagging-imghistory' => 'Historio',
 	'imagetagging-images' => 'bildoj',
 	'imagetagging-inthisimage' => 'En ĉi tiu bildo: $1',
+	'imagetagging-logentry' => 'Forigis etikedon de pago [[$1]] de $2',
 	'imagetagging-new' => '<sup><span style="color:red">Nova!</span></sup>',
 	'imagetagging-removetag' => 'forigi etikedon',
+	'imagetagging-done-button' => 'Etikeda markado estas finita.',
 	'imagetagging-tag-button' => 'Etikedo',
 	'imagetagging-tagcancel-button' => 'Nuligi',
 	'imagetagging-tagging-instructions' => 'Klaku homojn aŭ aĵojn en la bildo por marki kun etikedo.',
@@ -267,6 +276,7 @@ $messages['eo'] = array(
 	'imagetagging-removetagsuccess' => 'Foriĝis etikedo.',
 	'imagetagging-oneuniquetagmessage' => 'Ĉi tiu bildo jam havas etikedon kun ĉi tiu nomo.',
 	'imagetagging-taggedimages-title' => 'Bildoj de "$1"',
+	'imagetagging-taggedimages-displaying' => 'Montrante $1 - $2 de $3 bildoj de "$4"',
 	'tag-logpagename' => 'Etikeda protokolo',
 	'tag-logpagetext' => 'Jen protokolo de ĉiuj aldonoj kaj forigoj de bildaj etikedoj.',
 );

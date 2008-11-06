@@ -223,7 +223,7 @@ $wdMessages['ar'] = array(
 من فضلك انظر [[{{MediaWiki:Ow editing policy url}}|سياسة التحرير الخاصة بنا]].',
 	'ow_uipref_datasets' => 'عرض افتراضي',
 	'ow_uiprefs' => 'ويكي داتا',
-	'ow_none_selected' => '<لا شيء تم اختياره>',
+	'ow_none_selected' => 'لا شيء تم اختياره',
 	'ow_conceptmapping_help' => '<p>الأفعال الممكنة: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  إدراج رابطة</li>
 <li>&action=get&concept=<concept_id>  قراءة رابطة</li>
@@ -334,7 +334,7 @@ $wdMessages['arz'] = array(
 من فضلك انظر [[{{MediaWiki:Ow editing policy url}}|سياسة التحرير الخاصة بنا]].',
 	'ow_uipref_datasets' => 'عرض افتراضي',
 	'ow_uiprefs' => 'ويكى داتا',
-	'ow_none_selected' => '<لا شيء تم اختياره>',
+	'ow_none_selected' => 'لا شيء تم اختياره',
 	'ow_conceptmapping_help' => '<p>الأفعال الممكنة: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  إدراج رابطة</li>
 <li>&action=get&concept=<concept_id>  قراءة رابطة</li>
@@ -452,7 +452,7 @@ $wdMessages['avk'] = array(
 	'ow_noedit' => 'Rin me zorictal ta bubetara koe "$1" origlospa. Va [[{{MediaWiki:Ow editing policy url}}|betaraverteem]] vay wil !',
 	'ow_uipref_datasets' => 'Omavawira',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<Mecoba rebana>',
+	'ow_none_selected' => 'Mecoba rebana',
 	'ow_conceptmapping_help' => '<p>rotisa tegira se : <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  walbura va skura</li>
 <li>&action=get&concept=<concept_id>  sutera va dimskura</li>
@@ -561,7 +561,7 @@ $wdMessages['bg'] = array(
 	'ow_history' => 'История',
 	'ow_noedit_title' => 'Необходими са права за редактиране',
 	'ow_uiprefs' => 'Уикиданни',
-	'ow_none_selected' => '<Нищо не е избрано>',
+	'ow_none_selected' => 'Нищо не е избрано',
 	'ow_dm_OK' => 'Добре',
 	'ow_will_insert' => 'Ще бъде вмъкнато следното:',
 	'ow_AlternativeDefinition' => 'Алтернативно определение',
@@ -622,7 +622,7 @@ $wdMessages['br'] = array(
 	'ow_noedit' => 'N\'oc\'h ket aotreet da zegas kemmoù war pajennoù an diaz "$1". Sellit ouzh [[{{MediaWiki:Ow editing policy url}}|ar reolennoù kemmañ]].',
 	'ow_uipref_datasets' => 'Gwel dre ziouer',
 	'ow_uiprefs' => 'Roadennoù wiki',
-	'ow_none_selected' => '<Netra diuzet>',
+	'ow_none_selected' => 'Netra diuzet',
 	'ow_conceptmapping_help' => "<p>oberoù posupl : <ul> <li>&action=insert&<data_context_prefix>=<defined_id>&... ensoc'hañ ul liamm</li> <li>&action=get&concept=<concept_id> adkavout ul liamm</li> <li>&action=list_sets degas ur rollad rakgerioù eus kendestennoù roadennoù posupl, hag ar pezh a reont dave dezhañ.</li> <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> evit ur ster termenet en ur gendestenn, degas an holl re all</li> <li>&action=help Diskouez ar skoazell.</li> </ul></p>",
 	'ow_conceptmapping_uitext' => "<p>Dre liammañ ar meizadoù e c'haller lakaat war wel sterioù termenet ur strobad roadennoù heñvel ouzh sterioù termenet strobadoù roadennoù all.</p>",
 	'ow_conceptmapping_no_action_specified' => 'Fazi, dibosupl ober "$1"',
@@ -706,6 +706,7 @@ $wdMessages['br'] = array(
 $wdMessages['bs'] = array(
 	'ow_Language' => 'Jezik',
 	'ow_OptionAttributeOptions' => 'Opcije',
+	'ow_Source' => 'Izvor',
 );
 
 /** Catalan (Català)
@@ -832,7 +833,7 @@ $wdMessages['de'] = array(
 	'ow_noedit' => 'Du hast nicht die Erlaubnis Seiten im Dataset "$1" zu editieren. Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_uipref_datasets' => 'Standardansicht',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<nichts ausgewählt>',
+	'ow_none_selected' => 'nichts ausgewählt',
 	'ow_conceptmapping_help' => '<p>Mögliche Aktionen: <ul> <li>&action=insert&<data_context_prefix>=<defined_id>&... Eine Verknüpfung hinzufügen</li> <li>&action=get&concept=<concept_id> Eine Verknüpfung abrufen</li> <li>&action=list_sets Zeige eine Liste von möglichen Datenkontextpräfixen und auf was sie sich beziehen</li> <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> für eine DefinedMeaning in einem Kontext, zeige alle anderen</li> <li>&action=help Hilfe anzeigen.</li> </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mit Concept Mapping kann festgelegt werden, welche DefinedMeaning in einem Dataset mit anderen DefinedMeanings aus anderen Datasets identisch ist.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Entschuldigung, ich kann nicht "$1".',
@@ -960,7 +961,7 @@ $wdMessages['eo'] = array(
 	'ow_noedit_title' => 'Neniu permeso por redakti',
 	'ow_uipref_datasets' => 'Defaŭlta vido',
 	'ow_uiprefs' => 'Vikidatenoj',
-	'ow_none_selected' => '<Nenio elektita>',
+	'ow_none_selected' => 'Nenio elektita',
 	'ow_conceptmapping_no_action_specified' => 'Bedaŭrinde, mi ne scias kiel "$1".',
 	'ow_dm_OK' => 'Ek!',
 	'ow_dm_not_present' => 'ne enigita',
@@ -1033,7 +1034,7 @@ $wdMessages['es'] = array(
 	'ow_noedit' => 'No tienes permiso de modificar las páginas de la base "$1". Mira [[{{MediaWiki:Ow editing policy url}}|nuestras reglas de modificación]].',
 	'ow_uipref_datasets' => 'Vista por defecto',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<No hay nada seleccionado>',
+	'ow_none_selected' => 'No hay nada seleccionado',
 	'ow_conceptmapping_help' => '<p>acciones posibles: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  insertar una correspondencia</li>
 <li>&action=get&concept=<concept_id>  leer una correspondencia almacenada</li>
@@ -1176,7 +1177,7 @@ $wdMessages['fr'] = array(
 Veuillez voir [[{{MediaWiki:Ow editing policy url}}|nos règles d'édition]].",
 	'ow_uipref_datasets' => 'Vue par défaut',
 	'ow_uiprefs' => 'Données wiki',
-	'ow_none_selected' => '<Aucune sélection>',
+	'ow_none_selected' => 'Aucune sélection',
 	'ow_conceptmapping_help' => '<p>actions possibles : <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  insérer une correspondance</li>
 <li>&action=get&concept=<concept_id>  revoir une correspondance</li>
@@ -1307,7 +1308,7 @@ $wdMessages['gl'] = array(
 Por favor, vexa [[{{MediaWiki:Ow editing policy url}}|a nosa política de edición]].',
 	'ow_uipref_datasets' => 'Vista por defecto',
 	'ow_uiprefs' => 'Wikidatos',
-	'ow_none_selected' => '<Ningún seleccionado>',
+	'ow_none_selected' => 'Ningún seleccionado',
 	'ow_conceptmapping_help' => '<p>accións posibles: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  inserir un mapa</li>
 <li>&action=get&concept=<concept_id>  ler un mapa</li>
@@ -1435,9 +1436,31 @@ $wdMessages['haw'] = array(
 	'ow_dm_OK' => 'Hiki nō',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
 $wdMessages['he'] = array(
 	'langman_title' => 'מנהל שפות',
+	'ow_save' => 'שמירה',
+	'ow_history' => 'היסטוריה',
+	'ow_datasets' => 'בחירת ערכת נתונים',
+	'ow_noedit_title' => 'אין הרשאות עריכה',
+	'ow_noedit' => 'אינכם מורשים לערוך דפים בערכת הנתונים "$1".
+אנא עיינו ב[[{{MediaWiki:Ow editing policy url}}|מדיניות העריכה שלנו]].',
+	'ow_uipref_datasets' => 'תצוגת ברירת המחדל',
+	'ow_none_selected' => 'לא נבחרו',
+	'ow_conceptmapping_help' => '<p>פעולות אפשריות: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  הוספת מיפוי</li>
+<li>&action=get&concept=<concept_id>  קריאת מיפוי בחזרה</li>
+<li>&action=list_sets  החזרת רשימה של קידומות הקשר אפשריות ולמה הן מפנות.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> עבור משמעות אחת מוגדרת ברעיון, החזרת כל השאר</li>
+<li>&action=help  הצגת עזרה מועילה.</li>
+</ul></p>',
+	'ow_conceptmapping_no_action_specified' => 'מצטערים, איננו יודעים כיצד לבצע "$1".',
+	'ow_dm_OK' => 'אישור',
+	'ow_dm_not_present' => 'לא הוכנס',
+	'ow_dm_not_found' => 'לא נמצא במסד הנתונים או שהוא פגום',
 );
 
 /** Hindi (हिन्दी)
@@ -1452,7 +1475,7 @@ $wdMessages['hi'] = array(
 	'ow_history' => 'इतिहास',
 	'ow_noedit_title' => 'संपादन की अनुमति नहीं है',
 	'ow_noedit' => 'आपको डाटासेट "$1" में पन्ने संपादन करने की अनुमति नहीं है. कृपया हमारी [[{{MediaWiki:Ow editing policy url}}|संपादन नीति]] देखें.',
-	'ow_none_selected' => '<कुछ चयनित नहीं>',
+	'ow_none_selected' => 'कुछ चयनित नहीं',
 	'ow_dm_OK' => 'ओके',
 	'ow_dm_not_present' => 'प्रवेश नहीं किया गया',
 	'ow_will_insert' => 'निम्न को अन्तर्निविष्ट करेगा:',
@@ -1499,7 +1522,7 @@ $wdMessages['hsb'] = array(
 	'ow_noedit' => 'Njesměš strony w sadźbje datow "$1" wobdźěłować. Prošu hlej [[{{MediaWiki:Ow editing policy url}}|naše směrnicy za wobdźěłowanje]].',
 	'ow_uipref_datasets' => 'Standardny napohlad',
 	'ow_uiprefs' => 'Wikidaty',
-	'ow_none_selected' => '<Ničo wubrane>',
+	'ow_none_selected' => 'Ničo wubrane',
 	'ow_conceptmapping_help' => '<p>Móžne akcije: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  Zwjazanje zasunyć</li>
 <li>&action=get&concept=<concept_id>  Zwjazanje wotwołać</li>
@@ -1630,7 +1653,7 @@ $wdMessages['ia'] = array(
 Per favor vide [[{{MediaWiki:Ow editing policy url}}|nostre politica de modification]].',
 	'ow_uipref_datasets' => 'Vista predefinite',
 	'ow_uiprefs' => 'Wikidatos',
-	'ow_none_selected' => '<Nihil seligite>',
+	'ow_none_selected' => 'Nihil seligite',
 	'ow_conceptmapping_help' => '<p>actiones possibile: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  inserer un correspondentia</li>
 <li>&action=get&concept=<concept_id>  revider un correspondentia</li>
@@ -1742,7 +1765,7 @@ $wdMessages['id'] = array(
 Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'ow_uipref_datasets' => 'Tampilan baku',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<Belum dipilih>',
+	'ow_none_selected' => 'Belum dipilih',
 	'ow_conceptmapping_no_action_specified' => 'Maaf, sistem tidak mengerti untuk "$1".',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'tidak dimasukkan',
@@ -1866,7 +1889,7 @@ $wdMessages['jv'] = array(
 Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan kita]].',
 	'ow_uipref_datasets' => 'Pamandhangan baku',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<Ora ana sing disèlèksi>',
+	'ow_none_selected' => 'Ora ana sing disèlèksi',
 	'ow_conceptmapping_no_action_specified' => 'Nuwun sèwu, aku ora ngerti carané "$1".',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'ora dilebokaké',
@@ -1945,7 +1968,7 @@ $wdMessages['ka'] = array(
 	'ow_noedit' => 'თქვენ არ გაქვთ მონაცემთა ნაკრებში "$1" გვერდების რედაქტირების ნებართვა. იხილეთ [[{{MediaWiki:Ow editing policy url}}|ჩვენი სარედაქციო პოლიტიკა]].',
 	'ow_uipref_datasets' => 'სტანდარტული ჩვენება',
 	'ow_uiprefs' => 'ვიკიდატა',
-	'ow_none_selected' => '<არაფერია შერჩეული>',
+	'ow_none_selected' => 'არაფერია შერჩეული',
 	'ow_conceptmapping_uitext' => '<p>ცნებათა შესაბამისობა (Concept Mapping) საშუალებას გაძლევთ დაადგინოთ, ამა თუ იმ მონაცემთა ნაკრებში რომელი განსაზღვრული მნიშვნელობაა სხვა მონაცემთა ნაკრებებში არსებულ განსაზღვრულ მნიშვნელობათა იდენტური.</p>',
 	'ow_conceptmapping_no_action_specified' => 'ბოდიში, არ ვიცი როგორ "$1".',
 	'ow_dm_not_present' => 'არ არის შეტანილი',
@@ -2042,7 +2065,7 @@ $wdMessages['km'] = array(
 	'ow_noedit_title' => 'មិនអនុញ្ញាត​អោយ​កែប្រែទេ',
 	'ow_uipref_datasets' => 'បង្ហាញ​តាមលំនាំដើម',
 	'ow_uiprefs' => 'ទិន្នន័យ​វិគី',
-	'ow_none_selected' => '<គ្មានអ្វីត្រូវបានជ្រើសយកទេ>',
+	'ow_none_selected' => 'គ្មានអ្វីត្រូវបានជ្រើសយកទេ',
 	'ow_conceptmapping_no_action_specified' => 'អភ័យទោស, ខ្ញុំមិនដឹងពីរបៀប "$1" ទេ។',
 	'ow_dm_OK' => 'យល់ព្រម',
 	'ow_dm_not_present' => 'មិនបានបញ្ចូល',
@@ -2118,7 +2141,7 @@ $wdMessages['ksh'] = array(
 Jangk Der de [[{{MediaWiki:Ow editing policy url}}|Räjelle un wat nüdesch es zom Ändere]] beloore.',
 	'ow_uipref_datasets' => 'Standat-Ansich',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<Nix ußjewählt>',
+	'ow_none_selected' => 'Nix ußjewählt',
 	'ow_conceptmapping_help' => '<p>Müjjelesche Akßjuhne: <ul>
 <li><code>&action=insert&<data_context_prefix>=<defined_id>&... </code> donn en Afbelldung dobei</li>
 <li><code>&action=get&concept=<concept_id> </code> liß en Afbelldung zerök</li>
@@ -2230,7 +2253,7 @@ $wdMessages['lb'] = array(
 	'ow_noedit_title' => "Keng Erlabniss fir z'änneren",
 	'ow_uipref_datasets' => 'Standard Astellung',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<Näischt ausgewielt>',
+	'ow_none_selected' => 'Näischt ausgewielt',
 	'ow_conceptmapping_no_action_specified' => 'Ëntschëllegt, ech wees net wéi een "$1".',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'net aginn',
@@ -2350,7 +2373,7 @@ $wdMessages['ml'] = array(
 	'ow_noedit_title' => 'തിരുത്തുവാനുള്ള അനുമതി ഇല്ല',
 	'ow_uipref_datasets' => 'സ്വതവെയുള്ള കാഴ്ച',
 	'ow_uiprefs' => 'വിക്കിഡാറ്റ',
-	'ow_none_selected' => '<ഒന്നും തിരഞ്ഞെടുത്തിട്ടില്ല>',
+	'ow_none_selected' => 'ഒന്നും തിരഞ്ഞെടുത്തിട്ടില്ല',
 	'ow_conceptmapping_no_action_specified' => 'ക്ഷമിക്കുക, എനിക്ക് "$1" ചെയ്യുന്നതു എങ്ങനെയെന്നു അറിയില്ല.',
 	'ow_dm_OK' => 'ശരി',
 	'ow_AlternativeDefinition' => 'വേറൊരു നിര്‍‌വചനം',
@@ -2384,7 +2407,7 @@ $wdMessages['mr'] = array(
 	'ow_noedit' => 'विदासंच "$1"मधील पाने संपादीत करण्याची तुम्हाला परवानगी नाही.कृपया [[{{MediaWiki:Ow editing policy url}}|आमची संपादन निती]]पहा.',
 	'ow_uipref_datasets' => 'अविचल दृश्य',
 	'ow_uiprefs' => 'विकिविदा',
-	'ow_none_selected' => '<कोणतेही निवडले नाही>',
+	'ow_none_selected' => 'कोणतेही निवडले नाही',
 	'ow_conceptmapping_help' => '<p>शक्य क्रिया: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  एक मॅपिंग टाका</li>
 <li>&action=get&concept=<concept_id>  एक मॅपिंग वाचा</li>
@@ -2504,7 +2527,7 @@ $wdMessages['myv'] = array(
 	'ow_save' => 'Ванстомс',
 	'ow_history' => 'Путовкст-юртт',
 	'ow_uiprefs' => 'Викидата',
-	'ow_none_selected' => '<Вейкеяк апакКочка>',
+	'ow_none_selected' => 'Вейкеяк апакКочка',
 	'ow_dm_not_present' => 'апак совавто',
 	'ow_dm_not_found' => 'датабазасто а муеви эли берянь хвормазо',
 	'ow_Collection' => 'Пурнавкс',
@@ -2584,7 +2607,7 @@ $wdMessages['nl'] = array(
 Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
 	'ow_uipref_datasets' => 'Standaard overzicht',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<Geen selectie>',
+	'ow_none_selected' => 'Geen selectie',
 	'ow_conceptmapping_help' => '<p>mogelijke handelingen:<ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  een mapping toevoegen</li>
 <li>&action=get&concept=<concept_id>  een mapping teruglezen</li>
@@ -2684,7 +2707,7 @@ $wdMessages['nn'] = array(
 	'ow_noedit' => 'Du har ikkje tilgang til å endre sider i datavalet «$1». Ver venleg og sjå [[{{MediaWiki:Ow editing policy url}}|retningslinene våre for endring]].',
 	'ow_uipref_datasets' => 'Standardvising',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<Ingen er valde>',
+	'ow_none_selected' => 'Ingen er valde',
 	'ow_conceptmapping_help' => '<p>moglege handlingar: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  set inn eit kart</li>
 <li>&action=get&concept=<concept_id>  sjå att eit kart</li>
@@ -2782,7 +2805,7 @@ $wdMessages['no'] = array(
 	'ow_noedit' => 'Du har ikke tilgang til å redigere sider i datasettet «$1». Se [[{{MediaWiki:Ow editing policy url}}|våre retningslinjer for redigering]].',
 	'ow_uipref_datasets' => 'Standardvisning',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<Ingen valgt>',
+	'ow_none_selected' => 'Ingen valgt',
 	'ow_conceptmapping_help' => '<p>mulige handlinger: <ul>
 <li>&action=insert&<datakontekstprefiks>=<definert_id>&... sett inn et kart</li>
 <li>&action=get&concept=<konsept-id> se igjen et kart</li>
@@ -2900,7 +2923,7 @@ $wdMessages['oc'] = array(
 Vejatz [[{{MediaWiki:Ow editing policy url}}|nòstras règlas d'edicion]].",
 	'ow_uipref_datasets' => 'Vista per defaut',
 	'ow_uiprefs' => 'Donadas wiki',
-	'ow_none_selected' => '<Cap de seleccion>',
+	'ow_none_selected' => 'Cap de seleccion',
 	'ow_conceptmapping_help' => "<p>accions possiblas : <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  inserir una mapa</li>
 <li>&action=get&concept=<concept_id>  tornar veire una mapa</li>
@@ -2978,9 +3001,9 @@ als senses definits dins las autras donadas.</p>",
 	'ow_copy_no_action_specified' => "Mercé d'especificar una accion",
 	'ow_copy_help' => 'Ajuda de venir...',
 	'ow_please_proved_dmid' => 'Sembla que manca un "?dmid=<...>" (dmid=SensDefinit ID)<br />Contactatz l’administrator del servidor.',
-	'ow_please_proved_dc1' => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI laquala òm copia)<br />
+	'ow_please_proved_dc1' => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI laquina òm copia)<br />
 Contactatz l’administrator.',
-	'ow_please_proved_dc2' => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca CAP A laquala òm copia)<br />
+	'ow_please_proved_dc2' => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca CAP A laquina òm copia)<br />
 Contactatz l’administrator.',
 	'ow_copy_successful' => '<h2>Capitada de la còpia</h2>Vòstras donadas son estadas copiadas amb succès (verificatz çaquelà).',
 	'ow_copy_unsuccessful' => "<h3>Còpia infructuosa</h3> Cap d'operacion de còpia a pas pres plaça.",
@@ -3014,7 +3037,7 @@ $wdMessages['pl'] = array(
 	'ow_noedit' => 'Nie masz uprawnień do wykonania edycji w zbiorze danych „$1”. Zobacz [[{{MediaWiki:Ow editing policy url}}|zasady nadawania uprawnień do edycji]].',
 	'ow_uipref_datasets' => 'Widok domyślny',
 	'ow_uiprefs' => 'Dane wiki',
-	'ow_none_selected' => '<Nic nie zaznaczono>',
+	'ow_none_selected' => 'Nic nie zaznaczono',
 	'ow_conceptmapping_help' => '<p>możliwe działania: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  wstawia mapowanie</li>
 <li>&action=get&concept=<concept_id>  odczytuje mapowanie</li>
@@ -3149,7 +3172,7 @@ $wdMessages['ps'] = array(
 	'ow_save' => 'خوندي کول',
 	'ow_history' => 'پېښليک',
 	'ow_uiprefs' => 'ويکيډاټا',
-	'ow_none_selected' => '<هېڅ هم نه دی ټاکل شوی>',
+	'ow_none_selected' => 'هېڅ هم نه دی ټاکل شوی',
 	'ow_conceptmapping_no_action_specified' => 'بښنه غواړم، زه نه پوهېږم چې څنګه "$1".',
 	'ow_dm_not_present' => 'نه دی ورکړ شوی',
 	'ow_ApproximateMeanings' => 'نژدې ماناګانې',
@@ -3193,7 +3216,7 @@ $wdMessages['pt'] = array(
 	'ow_noedit' => 'Não está autorizado a editar páginas no conjunto de dados "$1". Por favor, veja [[{{MediaWiki:Ow editing policy url}}|a nossa política de edição]].',
 	'ow_uipref_datasets' => 'Vista padrão',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<Nenhum seleccionado>',
+	'ow_none_selected' => 'Nenhum seleccionado',
 	'ow_conceptmapping_help' => '<p>acções possíveis:
 <ul>
  <li>&action=insert&<data_context_prefix>=<defined_id>&... inserir um mapeamento</li>
@@ -3322,7 +3345,7 @@ $wdMessages['ru'] = array(
 	'ow_noedit' => 'Вам не разрешено редактировать страницы в наборе данных «$1». Обратите внимание на [[{{MediaWiki:Ow editing policy url}}|наши правила редактирования]].',
 	'ow_uipref_datasets' => 'Вид по умолчанию',
 	'ow_uiprefs' => 'Викиданные',
-	'ow_none_selected' => '<Ничего не выбрано>',
+	'ow_none_selected' => 'Ничего не выбрано',
 	'ow_conceptmapping_help' => '<p>возможные действия: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  вставить соответствие</li>
 <li>&action=get&concept=<concept_id>  прочитать соответствие</li>
@@ -3421,7 +3444,7 @@ $wdMessages['sk'] = array(
 Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadne upravovania]].',
 	'ow_uipref_datasets' => 'Štandardné zobrazenie',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<žiadne vybrané>',
+	'ow_none_selected' => 'žiadne vybrané',
 	'ow_conceptmapping_help' => '<p>možné činnosti: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  vložiť mapovanie</li>
 <li>&action=get&concept=<concept_id>  prečítať mapovanie</li>
@@ -3524,7 +3547,7 @@ $wdMessages['sr-ec'] = array(
 	'ow_noedit' => 'Није ти дозвољено да мењаш стране у скупу података "$1". Види [[{{MediaWiki:Ow editing policy url}}|нашу уређивачку политику]].',
 	'ow_uipref_datasets' => 'Подразумевани поглед',
 	'ow_uiprefs' => 'Викидата',
-	'ow_none_selected' => '<Ништа није означено>',
+	'ow_none_selected' => 'Ништа није означено',
 	'ow_conceptmapping_help' => '<p>могуће акције: <ul> <li>&action=insert&<data_context_prefix>=<defined_id>&... унеси мапирање</li> <li>&action=get&concept=<concept_id> поново прочитај мапирање</li> <li>&action=list_sets врати листу могућих контекстуалних префикса и оног на шта упућују.</li> <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> за једно дефинисано значење у концепту врати сва остала</li> <li>&action=help Прикажи помоћ.</li> </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Мапирање концепата ти омогућава да установиш које је дефинисано значење у једном скупу података истоветно с дефинисаним значењима у другим скуповима података.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Извињавам се, не знам како да урадим "$1".',
@@ -3613,7 +3636,7 @@ $wdMessages['stq'] = array(
 	'ow_noedit' => 'Du hääst nit dät Ferlof Sieden in dän Dataset "$1" tou editierjen. Sjuch [[{{MediaWiki:Ow editing policy url}}|uus Gjuchtlienjen]].',
 	'ow_uipref_datasets' => 'Standoardansicht',
 	'ow_uiprefs' => 'Wikidoata',
-	'ow_none_selected' => '<niks uutwääld>',
+	'ow_none_selected' => 'niks uutwääld',
 	'ow_conceptmapping_help' => '<p>Muugelke Aktione: <ul> <li>&action=insert&<data_context_prefix>=<defined_id>&... Ne Ferknättenge bietoutouföigjen</li> <li>&action=get&concept=<concept_id> Ne Ferknättenge ouroupe</li> <li>&action=list_sets Wies ne Lieste fon muugelke Doatenkontextpräfixe un ap wät jo sik beluuke</li> <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> foar ne DefinedMeaning in n Kontext, wies aal uur</li> <li>&action=help Hälpe anwiese.</li> </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mäd Concept Mapping kon fäästlaid wäide, wäkke DefinedMeaning in n Doataset mäd uur DefinedMeanings uut uur Doatasets identisk is.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Äntscheeldenge, iek kon nit "$1".',
@@ -3716,7 +3739,7 @@ $wdMessages['sv'] = array(
 	'ow_noedit' => 'Du är inte tillåten till att redigera sidor i datasetet "$1". Var god se [[{{MediaWiki:Ow editing policy url}}|våra redigerings riktlinjer]].',
 	'ow_uipref_datasets' => 'Standardvisning',
 	'ow_uiprefs' => 'Wikidata',
-	'ow_none_selected' => '<Ingen vald>',
+	'ow_none_selected' => 'Ingen vald',
 	'ow_conceptmapping_help' => '<p>möjliga handlingar: <ul>
 <li>&action=insert&<datakontextprefix>=<definerad_id>&... sätta in en karta</li>
 <li>&action=get&concept=<koncept-id> läsa en karta igen</li>
@@ -3840,7 +3863,7 @@ $wdMessages['te'] = array(
 	'ow_datasets' => 'డాటాసెట్ ఎంపిక',
 	'ow_noedit_title' => 'మార్చడానికి అనుమతి లేదు',
 	'ow_uiprefs' => 'వికీడాటా',
-	'ow_none_selected' => '<ఏమీ ఎంచుకోలేదు>',
+	'ow_none_selected' => 'ఏమీ ఎంచుకోలేదు',
 	'ow_conceptmapping_no_action_specified' => 'క్షమాపణలు, "$1"ని ఎలా చేయాలో నాకు తెలియదు.',
 	'ow_dm_OK' => 'సరే',
 	'ow_available_contexts' => 'అందుబాటులో ఉన్న సందర్భాలు',

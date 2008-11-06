@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'RefreshSpecial' => array( 'تحديث_خاص' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'RefreshSpecial' => array( 'PosebnoOsvjezavanje' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'RefreshSpecial' => array( 'Toimintosivun päivitys' ),

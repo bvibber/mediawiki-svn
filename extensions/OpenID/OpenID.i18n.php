@@ -352,6 +352,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'openidlanguage' => 'Jezik',
+	'openidchoosepassword' => 'šifra:',
 );
 
 /** Czech (Česky)

@@ -66,6 +66,15 @@ $messages['fr'] = array(
 	'searchbox-namespaces' => 'Espaces de nom :',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'searchbox-search' => 'ស្វែងរក',
+	'searchbox-go' => 'ទៅ',
+	'searchbox-namespaces' => 'លំហឈ្មោះ៖',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -74,6 +83,16 @@ $messages['nl'] = array(
 	'searchbox-search' => 'Zoeken',
 	'searchbox-go' => 'OK',
 	'searchbox-namespaces' => 'Naamruimten:',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'searchbox-desc' => 'Permet l’inclusion dels formularis de recèrca',
+	'searchbox-search' => 'Recercar',
+	'searchbox-go' => 'Aviar',
+	'searchbox-namespaces' => 'Espacis de nom :',
 );
 
 /** Slovak (Slovenčina)

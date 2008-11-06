@@ -25,6 +25,11 @@ $aliases['arz'] = array(
 	'LogEntry' => array( 'مدخلة_سجل' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'LogEntry' => array( 'UnosZapisa' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'LogEntry' => array( 'Logbucheintrag' ),

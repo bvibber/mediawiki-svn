@@ -33,6 +33,11 @@ $aliases['br'] = array(
 	'Invitations' => array( 'Pedadennoù' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'Invitations' => array( 'Pozivi' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'Invitations' => array( 'Einladungen' ),
