@@ -5,43 +5,75 @@ class ContributionHistory extends SpecialPage {
 	}
 
 	function execute( $language = NULL ) {
-		global $wgRequest, $wgOut;
+		global $wgRequest, $wgOut, $wgTitle;
 
 		if ( !preg_match( '/^[a-z-]+$/', $language ) ) {
 			$language = 'en';
 		}
 		$this->lang = Language::factory( $language );
-
+		
 		// Get request data
-		$dir = $wgRequest->getText( 'dir', '' );
-		$offset = $wgRequest->getText( 'offset' );
-		$limit = $wgRequest->getText( 'limit', 50 );
-
+		$offset = intval( $wgRequest->getText( 'offset', 0 ) );
+		$limit = intval( $wgRequest->getText( 'limit', 50 ) );
+		
 		wfLoadExtensionMessages( 'ContributionReporting' );
 		wfLoadExtensionMessages( 'ContributionReporting', $language );
-
+		
 		$this->setHeaders();
-
+		
 		$db = efContributionReportingConnection();
-
-		$sql = 'SELECT * FROM public_reporting ORDER BY received DESC LIMIT ' . intval( $limit );
-
-		$res = $db->query( $sql );
-
+		
 		$output = '<style type="text/css">';
 		$output .= 'td {vertical-align: top; padding: 5px;}';
 		$output .= 'td.left {padding-right: 10px;}';
 		$output .= 'td.right {padding-left: 10px; text-align: right;}';
 		$output .= 'td.alt {background-color: #DDDDDD;}';
 		$output .= '</style>';
-
+		
+		// Paging controls
+		$count = $db->selectField( 'public_reporting', 'count(*)',
+			array(
+				'received > ' . strtotime( 'July 1st 2008' )
+			),
+			__METHOD__
+		);
+		
+		$output .= Xml::openElement( 'div', array( 'align' => 'right', 'style' => 'padding-bottom:20px' ) );
+		
+		$output .= Xml::element( 'a',
+			array(
+				'href' => $wgTitle->getFullURL( 'offset=' . max( $offset - $limit , 0 ) ),
+			),
+			wfMsg( 'contrib-hist-previous' )
+		);
+		$output .= ' | ';
+		$output .= Xml::element( 'a',
+			array(
+				'href' => $wgTitle->getFullURL( 'offset=' . min( $offset + $limit, $count - $limit ) ),
+			),
+			wfMsg( 'contrib-hist-next' )
+		);
+		
+		$output .= Xml::closeElement( 'div' );
+		
 		$output .= '<table style="width: 100%">';
 		$output .= '<tr>';
 		$output .= '<th style="width: 200px;">' . $this->msg( 'contrib-hist-name' ) . '</th>';
 		$output .= '<th>' . $this->msg( 'contrib-hist-date' ) . '</th>';
 		$output .= '<th style="text-align: right;">' . $this->msg( 'contrib-hist-amount' ) . '</th>';
 		$output .= '</tr>';
-
+		
+		$res = $db->select( 'public_reporting', '*',
+			array(
+				'received > ' . strtotime( 'July 1st 2008' )
+			),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'received DESC',
+				'LIMIT' => $limit,
+				'OFFSET' => $offset
+			)
+		);
 		$alt = TRUE;
 		while ( $row = $res->fetchRow() ) {
 			$name = $this->formatName( $row );
@@ -62,9 +94,9 @@ class ContributionHistory extends SpecialPage {
 
 			$alt = !$alt;
 		}
-
+		
 		$output .= '</table>';
-
+		
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
 		$wgOut->addWikiText( '{{Template:2008/Donate-header/' . $language . '}}' );
 		$wgOut->addWikiText( '<skin>Tomas</skin>' );
