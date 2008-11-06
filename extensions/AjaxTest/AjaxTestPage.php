@@ -38,7 +38,7 @@ class AjaxTestPage extends SpecialPage {
 		);
 		
 		
-		$wgOut->addHtml( $this->makeInputForm() );
+		$wgOut->addHTML( $this->makeInputForm() );
 	}
 	        
 	/**

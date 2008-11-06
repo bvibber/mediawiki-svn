@@ -46,7 +46,7 @@ class RepoAdminListView {
 
 	function execute() {
 		global $wgOut;
-		$wgOut->addHtml( $this->getForm() );
+		$wgOut->addHTML( $this->getForm() );
 		$repos = CodeRepository::getRepoList();
 		if( !count( $repos ) ){
 			return;
@@ -104,7 +104,7 @@ class RepoAdminRepoView {
 			$wgOut->wrapWikiMsg( '<div class="successbox">$1</div>', array( 'repoadmin-edit-sucess', $this->mRepoName ) );
 			return;
 		}
-		$wgOut->addHtml(
+		$wgOut->addHTML(
 			Xml::fieldset( wfMsg( 'repoadmin-edit-legend', $this->mRepoName ) ) .
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->mPage->getTitle( $this->mRepoName )->getLocalURL() ) ) .
 			Xml::buildForm(

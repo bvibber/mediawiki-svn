@@ -24,7 +24,7 @@ function wfSisterDisplay( $out ) {
 		$matches = $sister->siblings( $title );
 		
 		if( $matches ) {
-			$out->addHtml( wfSisterList( $matches ) );
+			$out->addHTML( wfSisterList( $matches ) );
 		}
 	}
 	return true;

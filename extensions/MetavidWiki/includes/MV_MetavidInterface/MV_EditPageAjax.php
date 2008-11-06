@@ -294,11 +294,11 @@
 			)
 		);
 		if ( $reader->hasRows() ) {
-			$out->addHtml( '<div id="mw-recreate-deleted-warn">' );
+			$out->addHTML( '<div id="mw-recreate-deleted-warn">' );
 			$out->addWikiText( wfMsg( 'recreate-deleted-warn' ) );
 			$viewer = new LogViewer( $reader );
 			$viewer->showList( $out );
-			$out->addHtml( '</div>' );
+			$out->addHTML( '</div>' );
 		}
 	}
 	/**
@@ -738,9 +738,9 @@ END
 </div><!-- editButtons -->
 </div><!-- editOptions -->" );
 
-		$wgOut->addHtml( '<div class="mw-editTools">' );
+		$wgOut->addHTML( '<div class="mw-editTools">' );
 		$wgOut->addWikiText( wfMsgForContent( 'edittools' ) );
-		$wgOut->addHtml( '</div>' );
+		$wgOut->addHTML( '</div>' );
 
 		$wgOut->addHTML( $this->editFormTextAfterTools );
 
@@ -777,7 +777,7 @@ END
 		# For a bit more sophisticated detection of blank summaries, hash the
 		# automatic one and pass that in a hidden field.
 		$autosumm = $this->autoSumm ? $this->autoSumm : md5( $this->summary );
-		$wgOut->addHtml( wfHidden( 'wpAutoSummary', $autosumm ) );
+		$wgOut->addHTML( wfHidden( 'wpAutoSummary', $autosumm ) );
 
 		if ( $this->isConflict ) {
 			$wgOut->addWikiText( '==' . wfMsg( "yourdiff" ) . '==' );

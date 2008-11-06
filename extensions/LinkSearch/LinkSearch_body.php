@@ -57,7 +57,7 @@ class LinkSearchSpecialPage extends SpecialPage {
 		$s .=	Xml::submitButton( wfMsg( 'linksearch-ok' ) ) .
 			'</fieldset>' .
 			Xml::closeElement( 'form' );
-		$wgOut->addHtml( $s );
+		$wgOut->addHTML( $s );
 
 		if( $target != '' ) {
 			$searcher = new LinkSearchPage( $target2, $namespace, $protocol );

@@ -96,7 +96,7 @@ class CodeRevisionView extends CodeView {
 			'</div>' . 
 			'</form>';
 
-		$wgOut->addHtml( $html );
+		$wgOut->addHTML( $html );
 	}
 	
 	function navigationLinks() {

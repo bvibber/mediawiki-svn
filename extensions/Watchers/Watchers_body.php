@@ -36,7 +36,7 @@ class SpecialWatchers extends UnlistedSpecialPage {
 		if ( $id == 0 || $title->getArticleID() <= 0 ) {
 			$out = wfMsg ( 'watchers_error_article' );
 			$this->setHeaders();
-			$wgOut->addHtml( $out );
+			$wgOut->addHTML( $out );
 			return;
 		}
 
@@ -97,6 +97,6 @@ class SpecialWatchers extends UnlistedSpecialPage {
 		$dbr->freeResult( $watcherscountquery );
 
 		$this->setHeaders();
-		$wgOut->addHtml( $out );
+		$wgOut->addHTML( $out );
 	}
 }

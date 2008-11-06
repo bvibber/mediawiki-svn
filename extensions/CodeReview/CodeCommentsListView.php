@@ -12,7 +12,7 @@ class CodeCommentsListView extends CodeView {
 	function execute() {
 		global $wgOut;
 		$pager = $this->getPager();
-		$wgOut->addHtml( 
+		$wgOut->addHTML( 
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() . 
 			$pager->getBody() . 

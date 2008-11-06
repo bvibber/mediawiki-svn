@@ -32,7 +32,7 @@ class CodePathRevListView extends CodeRevisionListView {
 		// Path should have a bit of length...
 		if( strlen($this->mPath) > 3 ) {
 			$pager = $this->getPager();
-			$wgOut->addHtml( 
+			$wgOut->addHTML( 
 				$pager->getNavigationBar() .
 				$pager->getLimitForm() . 
 				$pager->getBody() . 

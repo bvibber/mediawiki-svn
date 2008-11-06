@@ -618,7 +618,7 @@ abstract class ConfigurationPage extends SpecialPage {
 
 		$action = $this->getTitle()->escapeLocalURL();
 
-		$wgOut->addHtml(
+		$wgOut->addHTML(
 			$this->buildOldVersionSelect() . "\n" .
 
 			( $this->mCanEdit ?

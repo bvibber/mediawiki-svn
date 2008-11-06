@@ -39,7 +39,7 @@ class CodeRevisionAuthorView extends CodeRevisionListView {
 			'code-rev-author' => $this->authorLink( $this->mAuthor ),
 		);
 
-		$wgOut->addHtml($this->formatMetaData( $fields ) . $linkInfo );
+		$wgOut->addHTML($this->formatMetaData( $fields ) . $linkInfo );
 
 		parent::execute();
 	}

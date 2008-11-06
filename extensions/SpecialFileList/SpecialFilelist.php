@@ -443,7 +443,7 @@ function wfSpecialFilelist () {
 
 
 			$this->setHeaders();
-			$wgOut->addHtml( $out );
+			$wgOut->addHTML( $out );
 		}
 	}
 

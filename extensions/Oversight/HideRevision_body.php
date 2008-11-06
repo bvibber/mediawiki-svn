@@ -62,7 +62,7 @@ class HideRevisionForm extends SpecialPage {
 		global $wgOut, $wgUser;
 		$special = Title::makeTitle( NS_SPECIAL, 'HideRevision' );
 
-		$wgOut->addHtml(
+		$wgOut->addHTML(
 			Xml::openElement( 'form', array(
 				'action' => $special->getLocalUrl(),
 				'method' => 'post' ) ) .
@@ -86,7 +86,7 @@ class HideRevisionForm extends SpecialPage {
 		$special = Title::makeTitle( NS_SPECIAL, 'HideRevision' );
 
 		$wgOut->addWikiText( wfMsg( 'hiderevision-text' ) );
-		$wgOut->addHtml(
+		$wgOut->addHTML(
 			$this->revisionList() .
 
 			$this->archiveList() .
@@ -500,7 +500,7 @@ class SpecialOversight extends SpecialPage {
 			$list = $this->revisionInfo( $row );
 			$rev = new Revision( $row );
 			$text = $rev->getText();
-			$wgOut->addHtml(
+			$wgOut->addHTML(
 				"<ul>" .
 				$info .
 				"</ul>\n" .
@@ -508,7 +508,7 @@ class SpecialOversight extends SpecialPage {
 			if ( $text === false ) {
 				$wgOut->addWikiText(wfmsg('hiderevision-error-missing'));
 			} else {
-				$wgOut->addHtml(
+				$wgOut->addHTML(
 					"<div>" .
 					Xml::openElement( 'textarea',
 						array(
@@ -551,7 +551,7 @@ class SpecialOversight extends SpecialPage {
 				$prev = Revision::newFromTitle( $rev->mTitle, $prevId );
 				$otext = strval( $prev->getText());
 			} else {
-				$wgOut->addHtml(
+				$wgOut->addHTML(
 				"<ul>" .
 				$info .
 				"</ul>\n" .
@@ -563,7 +563,7 @@ class SpecialOversight extends SpecialPage {
 
 			$diffEngine = new DifferenceEngine();
 			$diffEngine->showDiffStyle();
-			$wgOut->addHtml(
+			$wgOut->addHTML(
 				"<ul>" .
 				$info .
 				"</ul>\n" .

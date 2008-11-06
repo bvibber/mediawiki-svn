@@ -80,7 +80,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		$wikis = $this->isUserAllowedAll() ? true : array( $this->wiki );
 		$diffEngine = new HistoryConfigurationDiff( $this->diff, $this->version, $wikis );
 		$diffEngine->setViewCallback( array( $this, 'userCanRead' ) );
-		$wgOut->addHtml( $diffEngine->getHTML() );
+		$wgOut->addHTML( $diffEngine->getHTML() );
 	}
 
 	/**
@@ -93,7 +93,7 @@ class SpecialViewConfig extends ConfigurationPage {
 			if( isset( $this->diff ) ){
 				$this->showDiff();
 			} else {
-				$wgOut->addHtml(
+				$wgOut->addHTML(
 					Xml::openElement( 'div', array( 'id' => 'configure-form' ) ) . "\n" .
 					Xml::openElement( 'div', array( 'id' => 'configure' ) ) . "\n" .
 	
@@ -104,7 +104,7 @@ class SpecialViewConfig extends ConfigurationPage {
 				);
 			}
 		} else {
-			$wgOut->addHtml( $this->buildOldVersionSelect() );
+			$wgOut->addHTML( $this->buildOldVersionSelect() );
 		}
 		$this->injectScriptsAndStyles();
 	}

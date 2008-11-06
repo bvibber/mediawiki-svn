@@ -48,7 +48,7 @@ class GroupPermissions extends SpecialPage {
 		//sort the array in alphabetical order for ease of finding things
 		sort($this->permissionslist);
 
-		$wgOut->addHtml( $this->makeSearchForm() );
+		$wgOut->addHTML( $this->makeSearchForm() );
 				
 		//test if we have a valid target to act upon
 		if( $this->target != '') {
@@ -61,15 +61,15 @@ class GroupPermissions extends SpecialPage {
 					//group exists, so we can change it, can't delete it if it's an implicit group
 					if(in_array($this->target, $wgImplicitGroups)){
 						//cannot delete group, show just show the change form
-						$wgOut->addHtml( $this->makeChangeForm() );
+						$wgOut->addHTML( $this->makeChangeForm() );
 					} else {
 						//can delete group, so show that form as well
-						$wgOut->addHtml( $this->makeDeleteForm() );
-						$wgOut->addHtml( $this->makeChangeForm() );
+						$wgOut->addHTML( $this->makeDeleteForm() );
+						$wgOut->addHTML( $this->makeChangeForm() );
 					}
 				} else {
 					//group doesn't exist, let's make it and assign some rights
-					$wgOut->addHtml( $this->makeAddForm() );
+					$wgOut->addHTML( $this->makeAddForm() );
 				}
 			} elseif( $wgRequest->wasPosted() && $wgRequest->getVal('doadd') == '1' ) {
 				//we just added a new group!

@@ -32,7 +32,7 @@ class FindSpamPage extends SpecialPage {
 		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'findspam-ip' ) . '</td>';
 		$form .= '<td>' . wfInput( 'ip', 50, $ip ) . '</td></tr>';
 		$form .= '<tr><td></td><td>' . wfSubmitButton( wfMsg( 'findspam-ok' ) ) . '</td></tr></table></form>';
-		$wgOut->addHtml( $form );
+		$wgOut->addHTML( $form );
 
 		if ( $ip ) {
 			$dbr =& wfGetDB( DB_READ );

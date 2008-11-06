@@ -225,7 +225,7 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 
 	if ($wgUserStatsGoogleCharts)
 	{
-		$wgOut->addHtml('<img src="' .
+		$wgOut->addHTML('<img src="' .
 				self::generate_google_chart($ary_dates, $ary_edits, $ary_pages) . 
 				'"/>');
 	}
@@ -295,7 +295,7 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
 
 	if ($wgUserStatsGoogleCharts)
 	{
-		$wgOut->addHtml('<img src="' .
+		$wgOut->addHTML('<img src="' .
 				self::generate_google_chart($ary_dates, $ary_edits, $ary_pages) . 
 				'"/>');
 	}
@@ -348,16 +348,16 @@ plot '-' using 1:2 t 'edits' with linesp lt 1 lw 3, '-' using 1:2 t 'pages'  wit
             $nature = wfMsg ('usagestatisticsincremental-text');
         }
 
-        $wgOut->addHtml('<div class="NavFrame" style="padding:0px;border-style:none;">');
-        $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
+        $wgOut->addHTML('<div class="NavFrame" style="padding:0px;border-style:none;">');
+        $wgOut->addHTML('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
         $wgOut->addWikiText(wfMsg ('usagestatistics-editindividual', $nature));
-        $wgOut->addHtml('</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">');
+        $wgOut->addHTML('</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">');
         $wgOut->AddHtml("<pre>$csv$csv_edits</pre></div></div><br />");
 
-        $wgOut->addHtml('<div class="NavFrame" style="padding:0px;border-style:none;">');
-        $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
+        $wgOut->addHTML('<div class="NavFrame" style="padding:0px;border-style:none;">');
+        $wgOut->addHTML('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
         $wgOut->addWikiText(wfMsg ('usagestatistics-editpages', $nature));
-        $wgOut->addHtml('</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">');
+        $wgOut->addHTML('</div><div class="NavContent" style="display:none; font-size:normal; text-align:left">');
         $wgOut->AddHtml("<pre>$csv$csv_pages</pre></div></div>");
 
         return;

@@ -53,7 +53,7 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 				$additional .
 				Xml::closeElement( 'form' ) . "\n";
 
-		$wgOut->addHtml( $this->linkStatus() . $form );
+		$wgOut->addHTML( $this->linkStatus() . $form );
 	}
 
 	function doSubmit() {
@@ -67,7 +67,7 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 			}
 			$this->mRepo->linkUser( $this->mAuthor, $user );
 			$userlink = $this->mSkin->userLink( $user->getId(), $user->getName() );	
-			$wgOut->addHtml(
+			$wgOut->addHTML(
 				'<div class="successbox">' . 
 				wfMsgHtml( 'code-author-success', $this->authorLink( $this->mAuthor ), $userlink) .
 				'</div>'
@@ -75,11 +75,11 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 		// Unlink an author to a wiki users
 		} else if ( $wgRequest->getVal( 'unlink' ) ) {
 			if ( !$this->mUser ) {
-				$wgOut->addHtml( wfMsg( 'code-author-orphan' ) );
+				$wgOut->addHTML( wfMsg( 'code-author-orphan' ) );
 				return;
 			}
 			$this->mRepo->unlinkUser( $this->mAuthor );
-			$wgOut->addHtml(
+			$wgOut->addHTML(
 				'<div class="successbox">' . 
 				wfMsgHtml( 'code-author-unlinksuccess', $this->authorLink( $this->mAuthor ) ) .
 				'</div>'

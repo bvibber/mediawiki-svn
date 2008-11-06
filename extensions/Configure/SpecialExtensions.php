@@ -46,7 +46,7 @@ class SpecialExtensions extends ConfigurationPage {
 		$new = array( $wiki => $this->conf );
 		$diff = new ExtPreviewConfigurationDiff( $old, $new, array( $wiki ) );
 		$diff->setViewCallback( array( $this, 'userCanRead' ) );
-		$wgOut->addHtml( $diff->getHtml() );
+		$wgOut->addHTML( $diff->getHtml() );
 	}
 
 	/**

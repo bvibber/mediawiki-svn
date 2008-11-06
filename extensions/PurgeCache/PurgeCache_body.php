@@ -23,7 +23,7 @@ class SpecialPurgeCache extends SpecialPage {
 				$wgOut->addWikiText( wfMsg('purgecache-purged') );
 			} else {
 				$wgOut->addWikiText( wfMsg('purgecache-warning') );
-				$wgOut->addHtml( $this->makeForm() );
+				$wgOut->addHTML( $this->makeForm() );
 			}
 		} else {
 			$wgOut->permissionRequired( 'purgecache' );

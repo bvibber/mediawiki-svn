@@ -207,19 +207,19 @@ class TodoList {
 			return;
 		}
 
-		$wgOut->addHtml( "<table>\n<tr>" );
+		$wgOut->addHTML( "<table>\n<tr>" );
 		foreach( $queues as $queue ) {
-			$wgOut->addHtml( wfElement( 'th', null, $queue ) );
+			$wgOut->addHTML( wfElement( 'th', null, $queue ) );
 		}
-		$wgOut->addHtml( "</tr>\n<tr>\n" );
+		$wgOut->addHTML( "</tr>\n<tr>\n" );
 
 		foreach( $queues as $queue ) {
-			$wgOut->addHtml( "<td valign='top'>\n<table border='1'>\n" );
+			$wgOut->addHTML( "<td valign='top'>\n<table border='1'>\n" );
 			$this->showQueue( $queue, $queues );
-			$wgOut->addHtml( "</table>\n</td>\n" );
+			$wgOut->addHTML( "</table>\n</td>\n" );
 		}
 
-		$wgOut->addHtml( "</tr>\n</table>\n" );
+		$wgOut->addHTML( "</tr>\n</table>\n" );
 	}
 
 	/**
@@ -245,9 +245,9 @@ class TodoList {
 	function showQueue( $queue, $queues ) {
 		global $wgOut;
 		foreach( $this->items[$queue] as $item ) {
-			$wgOut->addHtml( "<tr><td><div>" );
+			$wgOut->addHTML( "<tr><td><div>" );
 			$item->show( $queues );
-			$wgOut->addHtml( "</div></td></tr>\n" );
+			$wgOut->addHTML( "</div></td></tr>\n" );
 		}
 	}
 }
@@ -308,27 +308,27 @@ class TodoItem {
 		global $wgOut, $wgUser, $wgLang;
 		$id = $this->id;
 
-		$wgOut->addHtml( wfElement( 'div', array(
+		$wgOut->addHTML( wfElement( 'div', array(
 			'class' => 'mwTodoTitle',
 			'id' => "mwTodoTitle$id",
 			'ondblclick' => "todoEditTitle($id,true)" ) ) .
 			htmlspecialchars( $this->title ) .
 			"&nbsp;</div>\n" );
 
-		$wgOut->addHtml( $this->buildHiddenForm( 'title', $this->title, 1 ) );
+		$wgOut->addHTML( $this->buildHiddenForm( 'title', $this->title, 1 ) );
 
-		$wgOut->addHtml( "<div class='mwTodoTimestamp'>" . $wgLang->timeanddate( $this->timestamp ) . "</div>\n" );
+		$wgOut->addHTML( "<div class='mwTodoTimestamp'>" . $wgLang->timeanddate( $this->timestamp ) . "</div>\n" );
 
-		$wgOut->addHtml( wfOpenElement( 'div', array(
+		$wgOut->addHTML( wfOpenElement( 'div', array(
 			'class' => 'mwTodoComment',
 			'id' => "mwTodoComment$id",
 			'ondblclick' => "todoEditComment($id,true)" ) ) );
 		$wgOut->addWikiText( $this->comment );
-		$wgOut->addHtml( "&nbsp;</div>" );
+		$wgOut->addHTML( "&nbsp;</div>" );
 
-		$wgOut->addHtml( $this->buildHiddenForm( 'comment', $this->comment, 6 ) );
+		$wgOut->addHTML( $this->buildHiddenForm( 'comment', $this->comment, 6 ) );
 
-		$wgOut->addHtml( $this->buildQueueForm( $queues ) );
+		$wgOut->addHTML( $this->buildQueueForm( $queues ) );
 	}
 
 	function buildHiddenForm( $field, $val, $rows ) {

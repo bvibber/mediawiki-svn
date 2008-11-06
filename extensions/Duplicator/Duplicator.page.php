@@ -57,7 +57,7 @@ class SpecialDuplicator extends SpecialPage {
 
 		$this->setOptions( $wgRequest, $title );
 		$wgOut->addWikiMsg( 'duplicator-header' );
-		$wgOut->addHtml( $this->buildForm() );
+		$wgOut->addHTML( $this->buildForm() );
 
 		# If the token doesn't match or the form wasn't POSTed, stop
 		if( !$wgRequest->wasPosted() || !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'duplicator' ) )
@@ -109,7 +109,7 @@ class SpecialDuplicator extends SpecialPage {
 				}
 				# Report success to the user
 				$parsed = $wgOut->parse( $success, /*linestart*/true, /*uilang*/true );
-				$wgOut->addHtml( $parsed );
+				$wgOut->addHTML( $parsed );
 			} else {
 				# Something went wrong, abort the entire operation
 				$wgOut->addWikiMsg( 'duplicator-failed' );

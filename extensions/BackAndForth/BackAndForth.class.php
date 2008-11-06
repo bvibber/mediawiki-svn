@@ -18,7 +18,7 @@ class BackAndForth {
 		global $wgOut, $wgUser;
 		$title = $article->getTitle();
 		if( Namespace::isContent( $title->getNamespace() ) ) {
-			$wgOut->addHtml( self::buildLinks( $title ) );
+			$wgOut->addHTML( self::buildLinks( $title ) );
 			$wgOut->addHeadItem( 'backandforth', self::buildHeadItem() );
 		}
 		return true;

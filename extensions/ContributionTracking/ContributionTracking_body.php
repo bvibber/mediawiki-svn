@@ -105,7 +105,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 		$repost['os0'] = $contribution_tracking_id;
 		
 		$wgOut->addWikiText( "<skin>Tomas</skin>{{2008/Donate-header/$language}}" );
-		$wgOut->addHtml( $this->msgWiki( 'contrib-tracking-submitting' ) );
+		$wgOut->addHTML( $this->msgWiki( 'contrib-tracking-submitting' ) );
 		
 		// Output the repost form
 		$output = '<form method="post" name="contributiontracking" action="' . $action . '">';

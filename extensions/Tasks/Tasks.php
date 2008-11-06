@@ -1226,7 +1226,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				$wgOut->addHTML( $msg );
 			} else {
 				$this->setHeaders();
-				$wgOut->addHtml( $out );
+				$wgOut->addHTML( $out );
 			}
 		}
 		
@@ -1542,7 +1542,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 				'href'	=> TASKS_CSS,
 			));
 			$this->setHeaders();
-			$wgOut->addHtml( $out );
+			$wgOut->addHTML( $out );
 		}
 		
 		/**

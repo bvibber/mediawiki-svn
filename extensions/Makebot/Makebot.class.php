@@ -31,10 +31,10 @@ class MakeBot extends SpecialPage {
 						: $wgRequest->getText( 'username', '' );
 
 		$wgOut->addWikiText( wfMsgNoTrans( 'makebot-header' ) );
-		$wgOut->addHtml( $this->makeSearchForm() );
+		$wgOut->addHTML( $this->makeSearchForm() );
 
 		if( $this->target != '' ) {
-			//$wgOut->addHtml( wfElement( 'p', NULL, NULL ) );
+			//$wgOut->addHTML( wfElement( 'p', NULL, NULL ) );
 			$user = User::newFromName( $this->target );
 			if( is_object( $user ) && !is_null( $user ) ) {
 				global $wgVersion;
@@ -52,11 +52,11 @@ class MakeBot extends SpecialPage {
 						if( in_array( 'bot', $user->getGroups() ) ) {
 							# Has a bot flag
 							$wgOut->addWikiText( wfMsg( 'makebot-isbot', $user->getName() ) );
-							$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_REVOKE ) );
+							$wgOut->addHTML( $this->makeGrantForm( MW_MAKEBOT_REVOKE ) );
 						} elseif ( $canBecomeBot ) {
 							# Not a bot; show the grant form
 							$wgOut->addWikiText( wfMsg( 'makebot-notbot', $user->getName() ) );
-							$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_GRANT ) );
+							$wgOut->addHTML( $this->makeGrantForm( MW_MAKEBOT_GRANT ) );
 						} else {
 							# User account is privileged and can't be given a bot flag
 							$wgOut->addWikiText( wfMsg( 'makebot-privileged', $user->getName() ) );
@@ -167,7 +167,7 @@ class MakeBot extends SpecialPage {
 	function showLogEntries( &$user, $logtype = 'makebot' ) {
 		global $wgOut;
 		$title = $user->getUserPage();
-		$wgOut->addHtml( wfElement( 'h2', NULL, htmlspecialchars( LogPage::logName( $logtype ) ) ) );
+		$wgOut->addHTML( wfElement( 'h2', NULL, htmlspecialchars( LogPage::logName( $logtype ) ) ) );
 		$logViewer = new LogViewer( new LogReader( new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => $logtype ) ) ) );
 		$logViewer->showList( $wgOut );
 	}

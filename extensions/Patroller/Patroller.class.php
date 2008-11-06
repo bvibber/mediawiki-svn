@@ -74,7 +74,7 @@ class Patroller extends SpecialPage {
 			$skin =& $wgUser->getSkin();
 			$self = Title::makeTitle( NS_SPECIAL, 'Patrol' );
 			$link = $skin->makeKnownLinkObj( $self, wfMsgHtml( 'patrol-resume' ) );
-			$wgOut->addHtml( wfMsgWikiHtml( 'patrol-stopped', $link ) );
+			$wgOut->addHTML( wfMsgWikiHtml( 'patrol-stopped', $link ) );
 			return;
 		}
 
@@ -87,9 +87,9 @@ class Patroller extends SpecialPage {
 				if( $this->assignChange( $edit ) ) {
 					$haveEdit = true;
 					$this->showDiffDetails( $edit );
-					$wgOut->addHtml( '<br /><hr />' );
+					$wgOut->addHTML( '<br /><hr />' );
 					$this->showDiff( $edit );
-					$wgOut->addHtml( '<br /><hr />' );
+					$wgOut->addHTML( '<br /><hr />' );
 					$this->showControls( $edit );
 				}
 			} else {
@@ -110,7 +110,7 @@ class Patroller extends SpecialPage {
 		$edit->counter = 1;
 		$edit->mAttribs['rc_patrolled'] = 1;
 		$list = ChangesList::newFromUser( $wgUser );
-		$wgOut->addHtml( $list->beginRecentChangesList() .
+		$wgOut->addHTML( $list->beginRecentChangesList() .
 						 $list->recentChangesLine( $edit ) .
 						 $list->endRecentChangesList() );
 	}
@@ -144,7 +144,7 @@ class Patroller extends SpecialPage {
 		$form .= wfHidden( 'wpRcId', $edit->mAttribs['rc_id'] );
 		$form .= wfHidden( 'wpToken', $wgUser->editToken() );
 		$form .= '</form>';
-		$wgOut->addHtml( $form );
+		$wgOut->addHTML( $form );
 	}
 
 	/**

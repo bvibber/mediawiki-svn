@@ -102,12 +102,12 @@ class WhitelistEdit extends SpecialPage
         if (!$doit)
         {
             # create the form for submitting the same data after review
-            $wgOut->addHtml("<form name='mainform' method='post'>");
-            $wgOut->addHtml("<input type='hidden' name='contractor' value='$contractorId'>");
+            $wgOut->addHTML("<form name='mainform' method='post'>");
+            $wgOut->addHTML("<input type='hidden' name='contractor' value='$contractorId'>");
             foreach ($modify_array as $modify)
-                $wgOut->addHtml("<input type='hidden' name='cb_modify[]' value='$modify'>");
-            $wgOut->addHtml("<input type='hidden' name='NewExpiryDate' value='$NewExpiryDate'>");
-            $wgOut->addHtml("<input type='hidden' name='action' value='$action'>");
+                $wgOut->addHTML("<input type='hidden' name='cb_modify[]' value='$modify'>");
+            $wgOut->addHTML("<input type='hidden' name='NewExpiryDate' value='$NewExpiryDate'>");
+            $wgOut->addHTML("<input type='hidden' name='action' value='$action'>");
 
             $ContractorUser = User::newFromID($contractorId);
             $wgOut->addWikiText(wfMsg('whitelistoverview', $ContractorUser->getRealName()));
@@ -199,9 +199,9 @@ class WhitelistEdit extends SpecialPage
 
         if (!$doit)
         {
-            $wgOut->addHtml("<input type='hidden' name='newPages' value='$newPages'>");
-            $wgOut->addHtml("<input type='hidden' name='ExpiryDate' value='$expiryDate'>");
-            $wgOut->addHtml("<input type='hidden' name='newAction' value='$newAction'>");
+            $wgOut->addHTML("<input type='hidden' name='newPages' value='$newPages'>");
+            $wgOut->addHTML("<input type='hidden' name='ExpiryDate' value='$expiryDate'>");
+            $wgOut->addHTML("<input type='hidden' name='newAction' value='$newAction'>");
         }
 
         $pages = preg_split('/\n/', $newPages, -1, PREG_SPLIT_NO_EMPTY);
@@ -257,7 +257,7 @@ class WhitelistEdit extends SpecialPage
         if (!$doit)
         {
             $wgOut->addHTML("<p><input type='submit' value='" . wfMsg('whitelistnewtableprocess') . "' />");
-            $wgOut->addHtml("</form>");
+            $wgOut->addHTML("</form>");
         }
 
         return;
@@ -335,8 +335,8 @@ END;
         ob_clean();
 
         $ContractorUser = User::newFromID($contractorId);
-        $wgOut->addHtml(wfMsg('whitelistfor', $ContractorUser->getRealName()));
-        $wgOut->addHtml('</td></tr><tr><th><center>' .
+        $wgOut->addHTML(wfMsg('whitelistfor', $ContractorUser->getRealName()));
+        $wgOut->addHTML('</td></tr><tr><th><center>' .
                         wfMsg('whitelisttablemodify') .
                         "<br /><a href=\"javascript:SetChecked(1,'cb_modify[]')\">" .
                         wfMsg('whitelisttablemodifyall') .
@@ -356,18 +356,18 @@ END;
                         );
         $res = self::contractorWhitelistTable($dbr,$contractorId);
         for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) {
-            $wgOut->addHtml("<tr><td><center><input type='checkbox' name='cb_modify[]' value='$row->wl_id'></center></td><td>");
+            $wgOut->addHTML("<tr><td><center><input type='checkbox' name='cb_modify[]' value='$row->wl_id'></center></td><td>");
             $page_title = Title::newFromText($row->wl_page_title);
             self::DisplayWildCardMatches($row->wl_page_title, $row->wl_page_title, 0);
             $wgOut->addHTML("</td><td><center>");
             if ($row->wl_allow_edit)
-                $wgOut->addHtml(wfMsg('whitelisttableedit'));
+                $wgOut->addHTML(wfMsg('whitelisttableedit'));
             else
-                $wgOut->addHtml(wfMsg('whitelisttableview'));
-            $wgOut->addHtml("</center></td><td>&nbsp;$row->wl_expires_on</td><td>");
+                $wgOut->addHTML(wfMsg('whitelisttableview'));
+            $wgOut->addHTML("</center></td><td>&nbsp;$row->wl_expires_on</td><td>");
             $u = User::newFromId($row->wl_updated_by_user_id);
-            $wgOut->addHtml($u->getRealName());
-            $wgOut->addHtml("</td><td>$row->wl_updated_on</td></tr>");
+            $wgOut->addHTML($u->getRealName());
+            $wgOut->addHTML("</td><td>$row->wl_updated_on</td></tr>");
         }
         $dbr->freeResult($res);
 
@@ -394,7 +394,7 @@ END;
             ob_clean();
         }
 
-        $wgOut->addHtml(wfMsg('whitelisttablenewdate') .
+        $wgOut->addHTML(wfMsg('whitelisttablenewdate') .
                         "</A> <input type='text' size='10'  name='NewExpiryDate'/><input type='radio' name='action' value='ChangeDate'>" .
                         wfMsg('whitelisttablechangedate') .
                         " <input type='radio' name='action' value='SetEdit'>" .
@@ -406,7 +406,7 @@ END;
                         "</td><td><DIV ID='testdiv1' STYLE=\"position:absolute;visibility:hidden;background-color:white;layer-background-color:white;\">" .
                         "</DIV></td></tr><tr><td><table border=1 cellspacing=0 cellpadding=2 width=100%><tr><td><center>"
                        );
-        $wgOut->addHtml(wfMsg('whitelistnewpagesfor', $ContractorUser->getRealName()));
+        $wgOut->addHTML(wfMsg('whitelistnewpagesfor', $ContractorUser->getRealName()));
 print  <<<END
               <textarea name="newPages" cols=60 rows=5></textarea></center>
             </td>
@@ -430,7 +430,7 @@ END;
             ob_clean();
         }
 
-        $wgOut->addHtml(wfMsg('whitelistnewtabledate') .
+        $wgOut->addHTML(wfMsg('whitelistnewtabledate') .
                         "</A><input type='text' size='10'  name='ExpiryDate'/> <input type='radio' name='newAction' value='SetEdit'>" .
                         wfMsg('whitelistnewtableedit') .
                         " <input type='radio' name='newAction' value='SetView' checked>" .
@@ -603,11 +603,11 @@ END;
         if ($debug)
             print "Adding '$headertext'\n";
 
-        $wgOut->addHtml('<div class="NavFrame" style="padding:0px;border-style:none;">');
-        $wgOut->addHtml('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
+        $wgOut->addHTML('<div class="NavFrame" style="padding:0px;border-style:none;">');
+        $wgOut->addHTML('<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">');
         # this is a hack to make the [show]/[hide] always appear after the text
         $wgOut->addWikiText("$headertext" . wfMsgExt('whitelistnummatches', array( 'parsemag' ), array( $num_matches ) ) . "&nbsp;<font color='#ffffff'>[show]</font>&nbsp;</div>");
-        $wgOut->addHtml('<div class="NavContent" style="display:none; font-size:normal; text-align:left">');
+        $wgOut->addHTML('<div class="NavContent" style="display:none; font-size:normal; text-align:left">');
 
         foreach ($wildcard_match as $pageid)
         {
@@ -617,7 +617,7 @@ END;
             if ($debug)
                 print "Adding '$link'\n";
         }
-        $wgOut->addHtml('</div></div>');
+        $wgOut->addHTML('</div></div>');
     }
 }
 
@@ -697,9 +697,9 @@ class WhiteList extends SpecialPage
         }
 
 
-        $wgOut->addHtml("<table cellspacing=0 cellpadding=2 border=1 width=100%><tr>");
-        $wgOut->addHtml("<th>" . wfMsg('whitelistpagelist', $user->getRealName()) . "</th><th>" . wfMsg('whitelistrequest') . "</th>");
-        $wgOut->addHtml("</tr><tr><td width=30%>");
+        $wgOut->addHTML("<table cellspacing=0 cellpadding=2 border=1 width=100%><tr>");
+        $wgOut->addHTML("<th>" . wfMsg('whitelistpagelist', $user->getRealName()) . "</th><th>" . wfMsg('whitelistrequest') . "</th>");
+        $wgOut->addHTML("</tr><tr><td width=30%>");
 
         $res = WhitelistEdit::contractorWhitelistTable($dbr, $user->getId());
         for ($row = $dbr->fetchObject($res); $row; $row = $dbr->fetchObject($res)) 
@@ -715,8 +715,8 @@ class WhiteList extends SpecialPage
             WhitelistEdit::DisplayWildCardMatches($page,$page,0);
 
 
-        $wgOut->addHtml("</td><td valign=top>");
-        $wgOut->addHtml("<table cellspacing=0 cellpadding=2 border=0 width=100%><tr><td align='right'>$wgWhiteListManagerGroup:</td><td>");
+        $wgOut->addHTML("</td><td valign=top>");
+        $wgOut->addHTML("<table cellspacing=0 cellpadding=2 border=0 width=100%><tr><td align='right'>$wgWhiteListManagerGroup:</td><td>");
         $wgOut->addHTML("<form method=\"post\">");
         $wgOut->addHTML('<select name="manager">');
 
@@ -735,13 +735,13 @@ class WhiteList extends SpecialPage
         $wgOut->addHTML('</select> ');
 
 
-        $wgOut->addHtml("</td></tr><tr><td align='right'>" . wfMsg('mywhitelistpages') . ":</td><td>");
-        $wgOut->addHtml("<textarea name='newPages' cols=40 rows=5></textarea>");
-        $wgOut->addHtml("</td></tr><tr><td colspan=2><center>");
+        $wgOut->addHTML("</td></tr><tr><td align='right'>" . wfMsg('mywhitelistpages') . ":</td><td>");
+        $wgOut->addHTML("<textarea name='newPages' cols=40 rows=5></textarea>");
+        $wgOut->addHTML("</td></tr><tr><td colspan=2><center>");
         $wgOut->addHTML("<input type='submit' name='submit' value='" . wfMsg('whitelistnewtableprocess') . "' />");
         $wgOut->addHTML("</form>");
-        $wgOut->addHtml("</center></td></tr></table>");
-        $wgOut->addHtml("</td></tr></table>");
-        $wgOut->addHtml("</td></tr></table>");
+        $wgOut->addHTML("</center></td></tr></table>");
+        $wgOut->addHTML("</td></tr></table>");
+        $wgOut->addHTML("</td></tr></table>");
     }
 }

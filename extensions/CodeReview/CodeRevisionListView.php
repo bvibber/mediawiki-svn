@@ -18,7 +18,7 @@ class CodeRevisionListView extends CodeView {
 		}
 		$this->showForm();
 		$pager = $this->getPager();
-		$wgOut->addHtml( 
+		$wgOut->addHTML( 
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() . 
 			$pager->getBody() . 

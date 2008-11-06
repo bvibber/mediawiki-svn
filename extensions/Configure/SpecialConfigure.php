@@ -57,7 +57,7 @@ class SpecialConfigure extends ConfigurationPage {
 		$new = array( $wiki => $this->conf );
 		$diff = new CorePreviewConfigurationDiff( $old, $new, array( $wiki ) );
 		$diff->setViewCallback( array( $this, 'isSettingEditable' ) );
-		$wgOut->addHtml( $diff->getHtml() );
+		$wgOut->addHTML( $diff->getHtml() );
 	}
 
 	/**

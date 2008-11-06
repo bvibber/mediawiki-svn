@@ -27,9 +27,9 @@
 		}
 		// include the metavid headers (for embedding video in the page) 		
 		$wgOut->setPageTitle( $this->mvTitle->getTitleDesc() );
-		$wgOut->addHtml( $this->mvArticleTop() );
+		$wgOut->addHTML( $this->mvArticleTop() );
 		Article::view();
-		$wgOut->addHtml( $this->mvArticleBot() );
+		$wgOut->addHTML( $this->mvArticleBot() );
 	}
 	/*ui entry point for delete (similar to article.php delete)*/
 	function delete() {

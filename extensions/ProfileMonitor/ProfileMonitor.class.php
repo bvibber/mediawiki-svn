@@ -22,7 +22,7 @@ class ProfileMonitor extends SpecialPage {
 
 		$process = $wgRequest->getText( 'process' );
 		$wild = $wgRequest->getCheck( 'wildcard' );
-		$wgOut->addHtml( $this->makeSearchForm( $process, $wild ) );
+		$wgOut->addHTML( $this->makeSearchForm( $process, $wild ) );
 
 		if( $wgRequest->getCheck( 'submit' ) ) {
 			$dbr =& wfGetDB( DB_SLAVE );
@@ -31,8 +31,8 @@ class ProfileMonitor extends SpecialPage {
 				while( $row = $dbr->fetchObject( $res ) )
 					$data[] = $row;
 				$dbr->freeResult( $res );
-				$wgOut->addHtml( '<h2>' . wfMsgHtml( 'profiling-data', htmlspecialchars( $process ) ) . '</h2>' );
-				$wgOut->addHtml( $this->makeTable( $data ) );
+				$wgOut->addHTML( '<h2>' . wfMsgHtml( 'profiling-data', htmlspecialchars( $process ) ) . '</h2>' );
+				$wgOut->addHTML( $this->makeTable( $data ) );
 			} else {
 				$wgOut->addWikiText( wfMsg( 'profiling-no-data' ) );
 			}

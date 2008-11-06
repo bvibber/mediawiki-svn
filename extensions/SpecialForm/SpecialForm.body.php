@@ -94,37 +94,37 @@ class SpecialForm extends SpecialPage {
 
 		if (!is_null($form->instructions)) {
 
-			$wgOut->addHtml(wfOpenElement('div', array('class' => 'instructions')) .
+			$wgOut->addHTML(wfOpenElement('div', array('class' => 'instructions')) .
 							$wgOut->parse($form->instructions) .
 							wfCloseElement('div') .
 							wfElement('br'));
 		}
 
 		if (!is_null($errmsg)) {
-			$wgOut->addHtml(wfOpenElement('div', array('class' => 'error')) .
+			$wgOut->addHTML(wfOpenElement('div', array('class' => 'error')) .
 							$wgOut->parse($errmsg) .
 							wfCloseElement('div') .
 							wfElement('br'));
 		}
 
-		$wgOut->addHtml(wfOpenElement('form',
+		$wgOut->addHTML(wfOpenElement('form',
 									  array('method' => 'POST',
 											'action' => $self->getLocalURL())));
 
 		foreach ($form->fields as $field) {
-			$wgOut->addHtml($field->render($wgRequest->getText($field->name)) . wfElement('br') . "\n");
+			$wgOut->addHTML($field->render($wgRequest->getText($field->name)) . wfElement('br') . "\n");
 		}
 
 		if ($wgUser->getId() == 0 && $wgSpecialFormRecaptcha) { # Anonymous user, use recaptcha
 			require_once('recaptchalib.php');
 			global $recaptcha_public_key; # same as used by Recaptcha plugin
-			$wgOut->addHtml(recaptcha_get_html($recaptcha_public_key));
+			$wgOut->addHTML(recaptcha_get_html($recaptcha_public_key));
 		}
 
-		$wgOut->addHtml(wfElement('input', array('type' => 'submit',
+		$wgOut->addHTML(wfElement('input', array('type' => 'submit',
 												 'value' => wfMsg('formsave'))));
 
-		$wgOut->addHtml(wfCloseElement('form'));
+		$wgOut->addHTML(wfCloseElement('form'));
 	}
 
 	function createArticle($form) {
