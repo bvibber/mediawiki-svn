@@ -37,9 +37,7 @@ class ContributionHistory extends SpecialPage {
 			),
 			__METHOD__
 		);
-		
-		$output .= Xml::openElement( 'div', array( 'align' => 'right', 'style' => 'padding-bottom:20px' ) );
-		
+
 		$prevOffset = max( $offset - $limit , 0 );
 		$nextOffset = min( $offset + $limit, max( $count - $limit, 0 ) );
 		
@@ -60,9 +58,11 @@ class ContributionHistory extends SpecialPage {
 				wfMsg( 'contrib-hist-next' )
 			);
 		}
-		$output .= implode( " | ", $pagingLinks );
-		
-		$output .= Xml::closeElement( 'div' );
+		$pagingDiv = Xml::openElement( 'div',
+				array( 'align' => 'right', 'style' => 'padding-bottom:20px' ) ) .
+			implode( " | ", $pagingLinks ) .
+			Xml::closeElement( 'div' );
+		$output .= $pagingDiv;
 		
 		$output .= '<table style="width: 100%">';
 		$output .= '<tr>';
@@ -105,6 +105,8 @@ class ContributionHistory extends SpecialPage {
 		
 		$output .= '</table>';
 		
+		$output .= $pagingDiv;
+
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
 		$wgOut->addWikiText( '{{Template:2008/Donate-header/' . $language . '}}' );
 		$wgOut->addWikiText( '<skin>Tomas</skin>' );
