@@ -1,12 +1,12 @@
 <?php
 /**
- * Special Pages for Drafts extension
+ * Special Page for Contribution statistics extension
  *
  * @file
  * @ingroup Extensions
  */
 
-// Drafts Special Page
+// Special page ContributionStatistics
 class SpecialContributionStatistics extends SpecialPage {
 
 	/* Members */
