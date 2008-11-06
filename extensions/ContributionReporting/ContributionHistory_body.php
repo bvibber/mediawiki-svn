@@ -40,19 +40,27 @@ class ContributionHistory extends SpecialPage {
 		
 		$output .= Xml::openElement( 'div', array( 'align' => 'right', 'style' => 'padding-bottom:20px' ) );
 		
-		$output .= Xml::element( 'a',
-			array(
-				'href' => $wgTitle->getFullURL( 'offset=' . max( $offset - $limit , 0 ) ),
-			),
-			wfMsg( 'contrib-hist-previous' )
-		);
-		$output .= ' | ';
-		$output .= Xml::element( 'a',
-			array(
-				'href' => $wgTitle->getFullURL( 'offset=' . min( $offset + $limit, $count - $limit ) ),
-			),
-			wfMsg( 'contrib-hist-next' )
-		);
+		$prevOffset = max( $offset - $limit , 0 );
+		$nextOffset = min( $offset + $limit, max( $count - $limit, 0 ) );
+		
+		$pagingLinks = array();
+		if( $prevOffset < $offset ) {
+			$pagingLinks[] = Xml::element( 'a',
+				array(
+					'href' => $wgTitle->getFullURL( 'offset=' . $prevOffset ),
+				),
+				wfMsg( 'contrib-hist-previous' )
+			);
+		}
+		if( $nextOffset > 0 ) {
+			$pagingLinks[] = Xml::element( 'a',
+				array(
+					'href' => $wgTitle->getFullURL( 'offset=' . $nextOffset ),
+				),
+				wfMsg( 'contrib-hist-next' )
+			);
+		}
+		$output .= implode( " | ", $pagingLinks );
 		
 		$output .= Xml::closeElement( 'div' );
 		
