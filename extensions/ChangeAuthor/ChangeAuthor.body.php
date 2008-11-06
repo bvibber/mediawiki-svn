@@ -210,7 +210,7 @@ class ChangeAuthor extends SpecialPage
 		// $errMsg: Error message
 		// Returns: HTML.
 		global $wgScript;
-		$dbr = wfGetDb(DB_SLAVE);
+		$dbr = wfGetDB(DB_SLAVE);
 		$res = $dbr->select(
 					'revision',
 					Revision::selectFields(),
@@ -314,7 +314,7 @@ class ChangeAuthor extends SpecialPage
 	{
 		// Changes revision authors in the database
 		// $authors: array, key=revid value=array(User from, User to)
-		$dbw = wfGetDb(DB_MASTER);
+		$dbw = wfGetDB(DB_MASTER);
 		$dbw->begin();
 		$editcounts = array(); // Array to keep track of EC mutations; key=userid, value=mutation
 		$log = new LogPage('changeauth');

@@ -444,7 +444,7 @@ class MV_BillScraper extends MV_BaseScraper {
 					$article = new Article( $cspanTitle );
 					$mRestrictions['edit']['sysop'] = true;
 					$expiry = Block::infinity();
-					$dbw = wfGetDb( DB_MASTER );
+					$dbw = wfGetDB( DB_MASTER );
 					$dbw->begin();
 					$ok = $article->updateRestrictions( $mRestrictions, wfMsg( 'mv_source_material' ), false, $expiry );
 					if ( $ok ) {
