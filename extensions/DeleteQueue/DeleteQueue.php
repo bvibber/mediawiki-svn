@@ -45,14 +45,14 @@ $wgAvailableRights[] = 'prod-review';
 $wgAvailableRights[] = 'deletediscuss-review';
 $wgAvailableRights[] = 'deletequeue-vote';
 
-$wgGroupPermissions['sysop']['prod-admin'] = true;
 $wgGroupPermissions['sysop']['speedy-review'] = true;
 $wgGroupPermissions['sysop']['deletediscuss-review'] = true;
+$wgGroupPermissions['sysop']['prod-review'] = true;
 
-$wgGroupPermissions['autoconfirmed']['prod-review'] = true;
 $wgGroupPermissions['autoconfirmed']['deletequeue-vote'] = true;
 $wgGroupPermissions['autoconfirmed']['speedy-nominate'] = true;
 $wgGroupPermissions['autoconfirmed']['prod-nominate'] = true;
+$wgGroupPermissions['autoconfirmed']['deletediscuss-nominate'] = true;
 
 $wgLogActions['delete/nominate'] = 'deletequeue-log-nominate';
 $wgLogActions['delete/dequeue'] = 'deletequeue-log-dequeue';

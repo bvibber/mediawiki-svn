@@ -300,6 +300,9 @@ class DeleteQueueItem {
 	 * @param User $user The user to assign to that role. Optional.
 	 */
 	public function addRole( $role, $user=null ) {
+		if (!$this->getCaseID())
+			return; // Case doesn't exist anymore.
+			
 		if ( $user == null ) {
 			global $wgUser;
 			$user = $wgUser;
@@ -322,6 +325,9 @@ class DeleteQueueItem {
 	 * @param string $user The user who's voted (Optional)
 	 */
 	public function addVote( $action, $comments, $user = null ) {
+		if (!$this->getCaseID())
+			return; // Case doesn't exist anymore.
+	
 		if ( $user == null ) {
 			global $wgUser;
 			$user = $wgUser;
@@ -355,6 +361,10 @@ class DeleteQueueItem {
 	 * @param string $timestamp Timestamp in database format. Optional.
 	 */
 	public function setQueue( $queue, $reason, $timestamp = null ) {
+	
+		if (!$this->getCaseID())
+			return; // Case doesn't exist anymore.
+	
 		$dbw = wfGetDB( DB_MASTER );
 
 		if ($timestamp == null) {
@@ -405,15 +415,20 @@ class DeleteQueueItem {
 		// Reload new data from the master.
 		$this->loadData(true);
 
-		$this->getArticle()->mTitle->invalidateCache();
-		$this->getArticle()->mTitle->purgeSquid();
+		if ($this->getArticle()->mTitle) {
+			$this->getArticle()->mTitle->invalidateCache();
+			$this->getArticle()->mTitle->purgeSquid();
+		}
 	}
 
 	/**
 	 * Remove this page from all queues
 	 */
-	public function deQueue( $article ) {
+	public function deQueue(  ) {
 		$dbw = wfGetDB( DB_MASTER );
+		
+		if (!$this->getCaseID())
+			return; // Case doesn't exist anymore.
 
 		$dbw->update( 'delete_queue', array( 'dq_active' => 0 ), array( 'dq_case' => $this->getCaseID() ), __METHOD__ );
 

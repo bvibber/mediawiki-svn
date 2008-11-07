@@ -43,9 +43,9 @@ class DeleteQueueHooks {
 					'class' => $selected ? 'selected' : false );
 			}
 
-			$actions['delvote'] = array(
-				'text' => wfMsg('deletequeue-vote-tab'),
-				'href' => $st->mTitle->getLocalUrl( 'action=delvote' ),
+			$actions['deletequeue'] = array(
+				'text' => wfMsg('deletequeue-action-queued'),
+				'href' => $st->mTitle->getLocalUrl( 'action=deletequeue' ),
 				'class' => ($action == 'delvote') ? 'selected' : false );
 		}
 
@@ -65,7 +65,15 @@ class DeleteQueueHooks {
 			global $wgOut;
 
 			$wgOut->setPageTitle( wfMsg( 'deletequeue-action-title', $article->mTitle->getPrefixedText() ) );
-			$wgOut->addWikitext( wfMsg( 'deletequeue-action-text' ) );
+			
+			$dqi = DeleteQueueItem::newFromArticle( $article );
+			
+			if ( $dqi->getQueue() == '' )
+				$wgOut->addWikiMsg('deletequeue-action-text' );
+			else {
+				self::onArticleViewHeader( $article );
+				$wgOut->addWikiMsg( 'deletequeue-action-text-queued' );
+			}
 			return false;
 		} elseif ( $action == 'delreview' ) {
 			wfLoadExtensionMessages( 'DeleteQueue' );

@@ -78,7 +78,7 @@ class DeleteQueueReviewForm {
 		if ($processed) {
 			// Delete from the DB
 			$dqi->deQueue( );
-
+			
 			// Redirect to the page
 			$wgOut->redirect( $article->mTitle->getLocalURL() );
 
