@@ -240,7 +240,10 @@ class SpecialContributionStatistics extends SpecialPage {
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-percentage-ytd' ) );
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-avg' ) );
 		
-		$factor = $this->getNumContributions() > 0 ? 100.0 / $this->getNumContributions() : 0;
+		$numContributions = $this->getNumContributions();
+		$factor = $numContributions > 0 ? 100.0 / $numContributions : 0;
+		
+		$htmlOut .= $numContributions;
 		
 		$list = array(
 			'Exactly 30.00' => array( 30 ),
@@ -384,15 +387,17 @@ class SpecialContributionStatistics extends SpecialPage {
 		$dbr = efContributionReportingConnection();
 		
 		// Return average contribution amount
+		$sizes = array(
+				'converted_amount >= ' . $dbr->addQuotes( $min ),
+				'converted_amount <= ' . $dbr->addQuotes( $max ),
+			);
+		$dates = $this->dateConds( $dbr );
 		$res = $dbr->select( 'public_reporting',
 			array(
 				'count(*)',
 				'avg(converted_amount)'
 			),
-			array(
-				'converted_amount > ' . $dbr->addQuotes( $min ),
-				'converted_amount < ' . $dbr->addQuotes( $max ),
-			) + $this->dateConds( $dbr ),
+			array_merge( $sizes, $dates ),
 			__METHOD__
 		);
 		
