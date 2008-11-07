@@ -243,8 +243,6 @@ class SpecialContributionStatistics extends SpecialPage {
 		$numContributions = $this->getNumContributions();
 		$factor = $numContributions > 0 ? 100.0 / $numContributions : 0;
 		
-		$htmlOut .= $numContributions;
-		
 		$list = array(
 			'Exactly 30.00' => array( 30 ),
 			'Exactly 75.00' => array( 75 ),
