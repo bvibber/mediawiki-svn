@@ -125,6 +125,8 @@ class SpecialAccountManager extends SpecialPage {
 		$wgOut->addHTML( "</table>\n" );
 		$wgOut->addHTML( "<div id=\"newaccount-submit\">\n".
 			Xml::hidden( 'action', 'create' ).
+			Xml::checkLabel( wfMsg( 'nss-no-mail' ), 'nss-no-mail', 'nss-no-mail' ).
+			"<br />\n".
 			Xml::element( 'input', array(
 				'type' => 'submit',
 				'value' => wfMsg( 'nss-create-account' )
@@ -152,7 +154,8 @@ class SpecialAccountManager extends SpecialPage {
 			if( !isset( $this->users[$username] ) )
 				continue;
 
-			if( !in_array( $keyname, $wgUserProperties ) )
+			if( !in_array( $keyname, $wgUserProperties ) && 
+					!in_array( $keyname, array( 'email', 'active' )) )
 				continue;
 
 			$this->users[$username]->set( $keyname, $value );
@@ -198,6 +201,9 @@ class SpecialAccountManager extends SpecialPage {
 		}
 		$this->users[$userprops->getName()] = $userprops;
 
+		if ( $wgRequest->getCheck( 'nss-no-mail' ) )
+			return true;
+		
 		global $wgPasswordSender;
 		$email = wfMsg( 'nss-welcome-mail', $username, $password );
 		$mailSubject = wfMsg( 'nss-welcome-mail-subject' );
@@ -252,7 +258,9 @@ class UserProps {
 		$this->username = $username;
 		$this->props = array();
 		$this->email = $email;
+		$this->setInternal( 'email', $email );
 		$this->active = $active;
+		$this->setInternal( 'active', $active );
 	}
 	function getProps() {
 		return $this->props;
@@ -298,6 +306,10 @@ class UserProps {
 			$this->old_props = array();
 		}
 		$this->old_props[$name] = $this->props[$name] = $value;
+		if( $name == 'active' )
+			$this->active = $value;
+		if( $name == 'email' )
+			$this->email = $value;
 	}
 
 	function update() {
@@ -314,7 +326,7 @@ class UserProps {
 			if ( isset( $diff['active'] ) ) $this->active = $diff['active'];
 			$dbw->update( 'passwd',
 				array( 'pwd_email' => $this->email, 'pwd_active' => $this->active ),
-				array( 'pwd_user' => $this->username ),
+				array( 'pwd_name' => $this->username ),
 				__METHOD__
 			);
 			// Put it into user_props as well for history
