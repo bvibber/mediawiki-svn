@@ -1875,10 +1875,11 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
 
 /** Polish (Polski)
  * @author Jwitos
+ * @author Leinad
  * @author Maikking
  */
 $messages['pl'] = array(
-	'deletequeue-speedy-title' => 'Oznacz "$1" do ekspresowego skasowania',
+	'deletequeue-speedy-title' => 'Oznacz „$1” do ekspresowego skasowania',
 	'right-speedy-nominate' => 'Oznacz strony do ekspresowego skasowania',
 	'right-speedy-review' => 'Przejrzyj strony do ekspresowego skasowania',
 	'deletequeue-review-delete' => 'Usuń stronę.',
@@ -1889,6 +1890,8 @@ $messages['pl'] = array(
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-search' => 'Szukaj',
 	'deletequeue-list-header-page' => 'Strona',
+	'deletequeue-list-header-queue' => 'Kolejka',
+	'deletequeue-list-header-expiry' => 'Upływa',
 	'deletequeue-list-header-discusspage' => 'Strona dyskusji',
 );
 

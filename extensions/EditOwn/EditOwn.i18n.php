@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'editown-desc' => 'Extension description displayed on [[Special:Version]].',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'editown-desc' => 'Brūcendas būton þæt eallādihtan riht mæȝ efne trametas ādihtan þe hīe macod',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

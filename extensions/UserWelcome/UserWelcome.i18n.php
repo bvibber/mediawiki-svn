@@ -105,6 +105,13 @@ $messages['bs'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|novi prijatelja|nova prijatelja|novih prijatelja}}',
 );
 
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
+$messages['de'] = array(
+	'userwelcome-desc' => 'Fügt ein <tt>&lt;welcomeUser&gt;</tt>-Tag hinzu, mit dem man benutzerspezifische soziale Informationen eingeloggten Benutzern zeigen kann',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

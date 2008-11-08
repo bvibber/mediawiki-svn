@@ -48,13 +48,6 @@ $messages['rtm'] = array(
 	'passwordreset-username' => 'Asa',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'passwordreset-username' => 'Пайдаланышын лӱмжӧ',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -208,6 +201,29 @@ $messages['eo'] = array(
 	'passwordreset-disablesuccess' => 'Konto de uzanto estis malebligita (uzanto-identigo: $1)',
 	'passwordreset-accountdisabled' => 'Konto estis malŝaltita',
 	'disabledusers' => 'Malebligitaj uzantoj',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'passwordreset' => 'Salasanan palautus',
+	'passwordreset-desc' => "[[Special:Passwordreset|Palauttaa wikin käyttäjän salasanan]] – vaatii ''passwordreset''-oikeuden.",
+	'passwordreset-invalidusername' => 'Virheellinen käyttäjänimi',
+	'passwordreset-emptyusername' => 'Tyhjä käyttäjänimi',
+	'passwordreset-nopassmatch' => 'Salasanat eivät vastaa toisiaan',
+	'passwordreset-username' => 'Käyttäjänimi',
+	'passwordreset-newpass' => 'Uusi salasana',
+	'passwordreset-confirmpass' => 'Vahvista salasana',
+	'passwordreset-submit' => 'Palauta salasana',
+	'passwordreset-success' => 'Salasana on palautettu käyttäjälle numero $1.',
+	'passwordreset-disableuser' => 'Poista käyttäjätunnus käytöstä?',
+	'passwordreset-disableuserexplain' => '(asettaa käyttäjälle virheellisen salasanatiivisteen, jolloin käyttäjä ei voi kirjautua sisään)',
+	'passwordreset-disablesuccess' => 'Käyttäjätunnus on otettu pois käytöstä. Käyttäjän numero on $1.',
+	'passwordreset-accountdisabled' => 'Käyttäjätunnus on otettu pois käytöstä',
+	'disabledusers' => 'Käytöstä poistetut tunnukset',
+	'disabledusers-summary' => 'Tämä on luettelo käyttäjistä, joiden tunnus on otettu pois käytöstä PasswordResetin kautta.',
 );
 
 /** French (Français)
@@ -520,6 +536,13 @@ $messages['lb'] = array(
 	'passwordreset-accountdisabled' => 'De Benotzerkont gouf desaktivéiert',
 	'disabledusers' => 'Desaktivéiert Benotzer',
 	'disabledusers-summary' => 'Dëst ass eng Lëscht vun den, iwwer PasswordReset, deaktivéierte Benotzer.',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'passwordreset-username' => 'Пайдаланышын лӱмжӧ',
 );
 
 /** Malayalam (മലയാളം)

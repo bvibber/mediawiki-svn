@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ViewAPC' => array( 'عرض_إيه_بى_سى' ),
 );
 
+/** Bulgarian (Български) */
+$aliases['bg'] = array(
+	'ViewAPC' => array( 'Информация за APC' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'ViewAPC' => array( 'APC-Informationen' ),

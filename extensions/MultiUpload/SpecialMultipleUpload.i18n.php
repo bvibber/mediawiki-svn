@@ -315,6 +315,7 @@ $messages['haw'] = array(
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'multipleupload' => 'העלאת קבצים',
@@ -323,6 +324,16 @@ $messages['he'] = array(
 	'multipleupload-saveallfiles' => 'שמירת כל הקבצים',
 	'multipleupload-addresswarnings' => 'נא בדקו את כל האזהרות המופיעות לפני העלאת הקבצים מחדש.',
 	'multipleupload-page' => '{{ns:project}}:מדיניות מחיקת קבצים',
+	'multipleupload-text' => "ניתן להעלות כאן מספר קבצים.
+
+בחרו ב־\"Browse\" ובחרו בכל קובץ אותו תרצו להעלות.
+תוכלו להעלות מקובץ אחד עד \$1 קבצים בכל פעם.
+
+תוכלו להזין '''שם קובץ יעד''' ולספק '''תקציר''' המתאר את הקבצים שלכם
+
+קבצים לא מתאימים יימחקו מיידית, עיינו ב[[{{MediaWiki:Multipleupload-page}}|מדיניות מחיקת הקבצים]].",
+	'multiupload-fileuploaded' => 'הקובץ הועלה.',
+	'multiupload-toolbox' => 'העלאת מספר קבצים',
 );
 
 /** Hindi (हिन्दी)

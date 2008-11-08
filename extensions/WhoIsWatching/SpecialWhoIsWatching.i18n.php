@@ -106,11 +106,13 @@ $messages['br'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Purodha
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'whoiswatching' => 'Wer beobachtet eine Seite',
+	'whoiswatching-desc' => 'Zeigt eine Liste von Benutzern an, die eine Seite beobachten',
 	'specialwhoiswatchingthepage' => 'Wer beobachtet %s',
 	'specialwhoiswatchingusage' => 'Diese Spezialseite ist nicht auf sich allein gestellt einsetzbar.
 Bitte definiere über die Seite [[MediaWiki:Number_of_watching_users_pageview]] eine Einstiegsseite für diese Spezialseite.',

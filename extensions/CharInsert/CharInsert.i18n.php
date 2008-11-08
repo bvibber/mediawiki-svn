@@ -264,10 +264,11 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'charinsert-desc' => 'Umożliwia stworzenie z użyciem JavaScript ramki z linkami [[MediaWiki:Edittools|wstawiającymi niestandardowe znaki]]',
+	'charinsert-desc' => 'Umożliwia stworzenie z użyciem JavaScriptu ramki z linkami [[MediaWiki:Edittools|wstawiającymi niestandardowe znaki]]',
 );
 
 /** Portuguese (Português)

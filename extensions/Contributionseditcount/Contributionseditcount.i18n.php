@@ -332,7 +332,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'contributionseditcount' => 'Ten użytkownik ma $1 edycji.',
-	'contributionseditcount-desc' => 'Wyświetla liczbę edycji na stronie [[Specjalna:Wkład|stronie wkładu użytkownika]]',
+	'contributionseditcount-desc' => 'Wyświetla liczbę edycji na [[Special:Contribution|stronie wkładu użytkownika]]',
 );
 
 /** Piedmontese (Piemontèis)

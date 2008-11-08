@@ -31,6 +31,13 @@ $messages['af'] = array(
 	'newusermessage-desc' => "Plaas 'n boodskap op alle nuwe gebruikers se besprekingsbladsye",
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'newuseredit-summary' => 'Ēacende [[{{int:newusermessage-template}}|ƿilcumenǣrende]] tō þǣm mōtungtramete þæs nīƿes brūcendes',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -639,8 +639,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Jwitos
+ * @author Maikking
  */
 $messages['pl'] = array(
+	'closewikis-page' => 'Zamknij wiki',
+	'closewikis-page-close' => 'Zamknij wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-submit' => 'Zamknij',
 );
 

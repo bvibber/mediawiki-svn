@@ -1646,7 +1646,7 @@ $messages['ksh'] = array(
 '''Wä dat Rääsch zom Versteiche ze mißbruch, dä kritt et afjenomme.'''
 
 Verstoche Saache sin denoh nit mieh em Web ze sin,
-ävver dat Versteiche shteit em Logbooch, un mer kann
+ävver dat Versteiche shteit em Logboch, un mer kann
 et widder retuur maache, falls De enne Fäähler määß.
 Dat moß ene Datebank-Köbes maache.",
 	'hiderevision-reason' => 'Dä Jrund (weed unseeschba faßjehallde):',

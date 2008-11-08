@@ -1236,19 +1236,25 @@ $messages['pa'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Maikking
  * @author McMonster
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'regexblock' => 'BlokadaRegEx',
+	'regexblock' => 'Blokada wyrażeniem regularnym',
 	'regexblock-desc' => 'Rozszerzenie umożliwiające blokowanie nazw użytkowników oraz adresów IP opisanych wyrażeniami regularnymi. Zawiera mechanizm blokujący oraz [[Special:Regexblock|stronę specjalną]] dla dodawania i zarządzania blokadami',
+	'regexblock-special-desc' => 'inne sposoby blokowania (poprzez nazwę, wyrażenie regularne)',
+	'regexblock-stat-desc' => 'Pokazuje [[Special:Regexblockstats|statystykę blokad]] wyrażeniami regularnymi',
+	'regexblock-page-title' => 'Blokada wyrażeniem regularnym',
+	'regexblockstats' => 'Statystyki blokad z wyrażeniami regularnymi',
 	'regexblock-reason-ip' => 'Ten adres IP został zablokowany z powodu wandalizmu lub innego naruszenia zasad przez Ciebie lub przez kogoś, z kim współdzielisz ten adres IP.
 Jeżeli uważasz, że nastąpiła pomyłka, $1',
 	'regexblock-reason-name' => 'Nazwa użytkownika została zablokowana z powodu wandalizmu lub innego naruszenia zasad.
 Jeżeli uważasz, że nastąpiła pomyłka, $1',
 	'regexblock-reason-regex' => 'Nazwa użytkownika została zablokowana z powodu wandalizmu lub innego naruszenia zasad, wykonanych przez użytkownika o bardzo podobnej nazwie.
 Utwórz nową nazwę użytkownika lub skontaktuj się z $1 w celu rozwiązania problemu.',
+	'regexblock-page-title-1' => 'Zablokuj adres, używając wyrażenia regularnego',
 	'regexblock-unblock-success' => 'Odblokowano',
 	'regexblock-unblock-log' => "Użytkownik lub adres IP '''$1''' został odblokowany.",
 	'regexblock-unblock-error' => 'Błąd przy odblokowaniu $1.
@@ -1256,15 +1262,29 @@ Prawdopodobnie brak takiego użytkownika.',
 	'regexblock-form-username' => 'Adres IP lub nazwa użytkownika:',
 	'regexblock-form-reason' => 'Powód:',
 	'regexblock-form-expiry' => 'Czas blokady:',
+	'regexblock-form-match' => 'Dokładnie',
 	'regexblock-form-account-block' => 'Zablokuj możliwość tworzenia nowych kont',
 	'regexblock-form-submit' => 'Zablokuj użytkownika',
 	'regexblock-block-log' => "Nazwa użytkownika lub adres IP '''$1''' zostały zablokowane.",
 	'regexblock-block-success' => 'Pomyślnie zablokowano',
+	'regexblock-form-submit-empty' => 'Podaj nazwę użytkownika lub adres IP do zablokowania.',
 	'regexblock-form-submit-regex' => 'Nieprawidłowe wyrażenie regularne',
+	'regexblock-form-submit-expiry' => 'Określ czas zakończenia blokady.',
 	'regexblock-already-blocked' => '$1 jest już zablokowany',
+	'regexblock-stats-title' => 'Statystyki blokad wyrażeń regularnych',
 	'regexblock-stats-username' => 'Dla $1',
+	'regexblock-stats-times' => 'zablokowano w dniu',
+	'regexblock-stats-logging' => 'logowanie spod adresu',
 	'regexblock-currently-blocked' => 'Zablokowane adresy:',
 	'regexblock-view-blocked' => 'Pokaż zablokowanych, posortowanych według',
+	'regexblock-view-all' => 'Wszystkie',
+	'regexblock-view-go' => 'Przejdź',
+	'regexblock-view-match' => '(dokładnie)',
+	'regexblock-view-regex' => '(dopasowanie wyrażenia regularnego)',
+	'regexblock-view-account' => '(blokada tworzenia konta)',
+	'regexblock-view-reason' => 'powód: $1',
+	'regexblock-view-block-temporary' => 'upływa',
+	'regexblock-view-block-expired' => 'upłynęła',
 	'regexblock-view-block-by' => 'zablokowany przez',
 	'regexblock-view-block-unblock' => 'odblokuj',
 	'regexblock-view-stats' => '(statystyki)',

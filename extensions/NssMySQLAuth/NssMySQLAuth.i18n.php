@@ -81,6 +81,24 @@ $messages['bg'] = array(
 	'nss-welcome-mail' => 'Беше ви създадена сметка с потребителско име $1 и парола $2.',
 );
 
+/** German (Deutsch) */
+$messages['de'] = array(
+	'accountmanager' => 'Benutzerkonten-Verwaltung',
+	'am-username' => 'Benutzername',
+	'am-email' => 'E-Mail',
+	'am-active' => 'aktiv',
+	'am-updated' => 'Die Änderungen wurden erfolgreich gespeichert',
+	'nss-desc' => 'Eine Erweiterung, um gegen eine libnss-mysql-Datenbank zu authentifizieren. Inklusive einer [[Special:AccountManager|Benutzerkonten-Verwaltung]]',
+	'nss-rights' => 'Rechte',
+	'nss-save-changes' => 'Änderungen speichern',
+	'nss-create-account-header' => 'Neues Benutzerkonto erstellen',
+	'nss-create-account' => 'Benutzerkonto erstellen',
+	'nss-no-mail' => 'Sende keine E-Mail',
+	'nss-welcome-mail' => 'Ein Benutzerkonto mit dem Benutzernamen „$1“ und dem Passwort „$2“ wurde für dich erstellt.',
+	'nss-welcome-mail-subject' => 'Benutzerkonto erstellen',
+	'nss-db-error' => 'Fehler beim Lesen aus der Authentifizierungs-Datenbank',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex
@@ -96,6 +114,7 @@ $messages['fr'] = array(
 	'nss-save-changes' => 'Sauvegarder les modifications',
 	'nss-create-account-header' => 'Créer un nouveau compte',
 	'nss-create-account' => 'Créer le compte',
+	'nss-no-mail' => 'Ne pas envoyer de courriel',
 	'nss-welcome-mail' => 'Un compte avec le nom $1 et le mot de passe $2 a été créé pour vous.',
 	'nss-welcome-mail-subject' => 'Création de compte',
 	'nss-db-error' => "Erreur pendant la lecture de la base de données d'authentification",
@@ -147,6 +166,7 @@ $messages['nl'] = array(
 	'nss-save-changes' => 'Wijzigingen opslaan',
 	'nss-create-account-header' => 'Nieuwe gebruiker aanmaken',
 	'nss-create-account' => 'Gebruiker aanmaken',
+	'nss-no-mail' => 'Geen e-mail versturen',
 	'nss-welcome-mail' => 'Er is een gebruiker met gebruikersnaam $1 en wachtwoord $2 voor u aangemaakt.',
 	'nss-welcome-mail-subject' => 'Gebruiker aangemaakt',
 	'nss-db-error' => 'Fout bij het lezen van de authenticatiedatabase',
@@ -166,6 +186,7 @@ $messages['oc'] = array(
 	'nss-save-changes' => 'Enregistrar los cambiaments',
 	'nss-create-account-header' => 'Crear un compte novèl',
 	'nss-create-account' => 'Crear un compte',
+	'nss-no-mail' => 'Mandar pas de corrièr electronic',
 	'nss-welcome-mail' => 'Un compte amb lo nom $1 e lo senhal $2 es estat creat per vos.',
 	'nss-welcome-mail-subject' => 'Creacion de compte',
 	'nss-db-error' => "Error pendent la lectura de la banca de donadas d'autentificacion",

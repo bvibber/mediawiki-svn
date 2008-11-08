@@ -938,6 +938,7 @@ $messages['bn'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'mv_history' => 'Historija',
 	'mv_search_and' => 'i',
 );
 
@@ -1112,6 +1113,7 @@ $messages['fr'] = array(
 	'mv_ogg_low_quality' => 'Internet en flux – Ogg Theora à 300 kbauds',
 	'mv_ogg_high_quality' => 'Haute qualité– Ogg Theora à 900 kbauds',
 	'mv_flash_low_quality' => 'Flux Internet - Flash video',
+	'mv_archive_org_mp4' => 'Archive.org mp4 a encapsulé le flux h.264',
 	'mv_archive_org_link' => 'Liens vers les originaux mpeg2 dans Archive.org',
 	'ao_file_512Kb_MPEG4' => 'Archive.org - MPEG4 512 kb/s',
 	'ao_file_64Kb_MPEG4' => 'Archive.org - MPEG4 64 kb/s',
@@ -1136,6 +1138,7 @@ $messages['fr'] = array(
 	'mv_path_type_url_anx' => 'Adresse Internet complète du média',
 	'mv_path_type_wiki_title' => 'Titre wiki du media',
 	'mv_path_type_url_file' => 'Adresse internet complète du média utilisant une recherche locale',
+	'mv_path_type_mp4_stream' => 'Serveur de flux Mp4',
 	'mv_path_type_label' => 'type de chemin',
 	'mv_base_offset_label' => 'décalage de base',
 	'mv_duration_label' => 'Durée',
@@ -2800,10 +2803,12 @@ $messages['nl'] = array(
 	'mv_ogg_low_quality' => 'Via het web te streamen - Ogg Theora 300kb/s',
 	'mv_ogg_high_quality' => 'Hoge kwaliteit - Ogg Theora 900kb/s',
 	'mv_flash_low_quality' => 'Via web te streamen - Flash video',
+	'mv_archive_org_mp4' => 'Archive.org in mp4 verpakte h.264-stream',
 	'mv_archive_org_link' => 'Links naar de originele mpeg2 op Archive.org',
 	'ao_file_MPEG2' => 'Archive.org - mpeg2 origineel',
 	'mv_error_stream_missing' => '<span class="error">Fout: Er is geen videobestand gekoppeld aan deze stream.</span><br />
 Rapporteer dit aan de sitebeheerder.',
+	'mv_stream_addedd' => 'U hebt de stream $1 toegevoegd',
 	'mv_stream_meta' => 'Streampagina',
 	'mv_add_stream' => 'Metavid-stream toevoegen',
 	'mv_edit_stream' => 'Metavid-stream bewerken',
@@ -2820,6 +2825,7 @@ Rapporteer dit aan de sitebeheerder.',
 	'mv_path_type_url_anx' => 'volledige media-url',
 	'mv_path_type_wiki_title' => 'wiki medianaam',
 	'mv_path_type_url_file' => 'volledige URL van het mediabestand gebruikmakend van een lokale zoekopdracht',
+	'mv_path_type_mp4_stream' => 'Mp4 streamserver',
 	'mv_path_type_label' => 'padtype',
 	'mv_base_offset_label' => 'basisverschuiving',
 	'mv_duration_label' => 'Duur',
@@ -3245,6 +3251,7 @@ $messages['oc'] = array(
 	'mv_ogg_low_quality' => 'Internet en flus – Ogg Theora a 300 kbauds',
 	'mv_ogg_high_quality' => 'Nauta qualitat– Ogg Theora a 900 kbauds',
 	'mv_flash_low_quality' => 'Flus Internet - Flash vidèo',
+	'mv_archive_org_mp4' => 'Archive.org mp4 a encapsulat lo flus h.264',
 	'mv_archive_org_link' => 'Ligams cap als originals mpeg2 dins Archive.org',
 	'ao_file_64Kb_MPEG4' => 'Archive.org - mpeg4 64 kb/s',
 	'ao_file_256Kb_MPEG4' => 'Archive.org - mpeg4 256 kb/s',
@@ -3266,6 +3273,7 @@ $messages['oc'] = array(
 	'mv_path_type_url_anx' => 'Adreça internet complèta del mèdia',
 	'mv_path_type_wiki_title' => 'Títol wiki del mèdia',
 	'mv_path_type_url_file' => "Adreça internet completa del mèdia qu'utiliza una recèrca locala",
+	'mv_path_type_mp4_stream' => 'Servidor de flus Mp4',
 	'mv_path_type_label' => 'tipe de camin',
 	'mv_base_offset_label' => 'offset de basa',
 	'mv_duration_label' => 'Durada',

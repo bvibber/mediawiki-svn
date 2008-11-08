@@ -21,6 +21,13 @@ $messages['en'] = array(
 	'abcvorbis' => 'Ogg Vorbis',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'abcdesc' => 'Short description of the ABC extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -109,6 +116,20 @@ $messages['km'] = array(
 	'abcdownload' => 'ទាញយក៖',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'abcdesc' => 'Deit dä <tt>&lt;abc&gt;</tt>-Befähl en et Wiki domet mer Mussik em ABC Fommaat opschrieve kann.',
+	'abcdownload' => 'Eronger lahde:',
+	'abcsep' => '|',
+	'abcabc' => 'ABC',
+	'abcpdf' => 'PDF',
+	'abcps' => 'PostScript',
+	'abcmidi' => 'MIDI',
+	'abcvorbis' => 'Ogg Vorbis',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -142,6 +163,14 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'abcdesc' => 'Dodaje znacznik <tt>&lt;abc&gt;</tt> do muzyki w formacie ABC',
 	'abcdownload' => 'Pobierz:',
+);
+
+/** Romanian (Română)
+ * @author Silviubogan
+ */
+$messages['ro'] = array(
+	'abcdesc' => 'Adaugă elementul <tt>&lt;abc&gt;</tt> pentru a formata muzica ABC',
+	'abcdownload' => 'Descarcă:',
 );
 
 /** Russian (Русский)

@@ -249,6 +249,13 @@ $2',
 	'whitelistnummatches' => ' - {{PLURAL:$1|مطابقة واحده|$1 مطابقة}}',
 );
 
+/** Aymara (Aymar aru)
+ * @author Erebedhel
+ */
+$messages['ay'] = array(
+	'mywhitelistpages' => 'Uñstawinakaja',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -349,6 +356,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Liam Rosen
  */
 $messages['de'] = array(
@@ -379,7 +387,7 @@ Entweder * oder % als Maskenzeichen benutzen",
 	'whitelistnewtableview' => 'Anschauen',
 	'whitelistnewtableprocess' => 'Bearbeiten',
 	'whitelistnewtablereview' => 'Überprüfen',
-	'whitelistselectrestricted' => '== Beschränkter Benutzername selektieren ==',
+	'whitelistselectrestricted' => '== Beschränkten Benutzer auswählen ==',
 	'whitelistpagelist' => '{{SITENAME}} Seiten für $1',
 	'whitelistnocalendar' => "<font color='red' size=3>[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Die Extension:UsageStatistics], eine Vorraussetzung für dieses Extension, wurde nicht installiert oder kann nicht gefunden werden!</font>",
 	'whitelistbadtitle' => 'Titel inkompatibel -',
@@ -387,6 +395,7 @@ Entweder * oder % als Maskenzeichen benutzen",
 	'whitelistoverviewcd' => "* Datum '''($1)''' für [[:$2|$2]] wird geändert",
 	'whitelistoverviewsa' => "* Zugriff '''$1''' für [[:$2|$2]] wird angewendet",
 	'whitelistoverviewrm' => '* Zugriff auf [[:$1|$1]] wird entfernt',
+	'whitelistoverviewna' => "* [[:$1|$1]] wird zur Whitelist hinzugefügt. (Zugriff: '''$2''', Ablaufdatum: '''$3''')",
 	'whitelistrequest' => 'Weiteren Zugriff beantragen',
 	'whitelistrequestmsg' => '$1 hat Zugriff auf die folgenden Seiten beantragt:
 $2',
@@ -905,7 +914,7 @@ Donn entweder <b>*</b> udder <b>%</b> als en Platzhallder nämme för „<i>mer 
 	'whitelistnewtablereview' => 'Övverpröfe',
 	'whitelistselectrestricted' => '== Enjeschränkte Metmaacher-Name ußsöke ==',
 	'whitelistpagelist' => '{{SITENAME}} Sigge för $1',
-	'whitelistnocalendar' => '<font color=\'red\' size=3>Dä [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Zosatz <i lang="en">UsageStatistics</i>], weed för der [http://www.mediawiki.org/wiki/Extension:WhiteList Zosatz <i lang="en">WhiteList</i>] jebruch, eß ävver nit enstalleett, udder wood nit jefonge!</font>',
+	'whitelistnocalendar' => '<font color=\'red\' size=3>Dä [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Zosatz <i lang="en">UsageStatistics</i>], weed för der [http://www.mediawiki.org/wiki/Extension:WhiteList Zosatz  <i lang="en">WhiteList</i>] jebruch, eß ävver nit enstalleett, udder wood nit jefonge!</font>',
 	'whitelistbadtitle' => 'Dä Titel paß nit -',
 	'whitelistoverview' => '== Änderunge — Övverseech för $1 ==',
 	'whitelistoverviewcd' => "* Änder dat Dattum för [[:$2|$2]] op '''$1'''",
@@ -1099,6 +1108,8 @@ Gebruik * of % als wildcard",
 	'whitelistnewtabledate' => 'Verloopdatum:',
 	'whitelistnewtableedit' => 'Op bewerken instellen',
 	'whitelistnewtableview' => 'Op bekijken instellen',
+	'whitelistnowhitelistedusers' => 'Er zijn geen gebruikers die lid zijn van de groep "{{MediaWiki:Group-restricted}}".
+U moet [[Special:UserRights|gebruikers aan de groep toevoegen]] voordat u pagina\'s kunt toevoegen aan de witte lijst voor een gebruiker.',
 	'whitelistnewtableprocess' => 'Bewerken',
 	'whitelistnewtablereview' => 'Controleren',
 	'whitelistselectrestricted' => '== Gebruiker met beperkingen selecteren ==',
@@ -1111,7 +1122,7 @@ Gebruik * of % als wildcard",
 	'whitelistoverviewrm' => '* toegang voor [[:$1|$1]] wordt verwijderd',
 	'whitelistoverviewna' => "* [[:$1|$1]] wordt toegevoegd aan de witte lijst met toegangstype '''$2''' en verloopdatum '''$3'''",
 	'whitelistrequest' => "Toegang tot meer pagina's vragen",
-	'whitelistrequestmsg' => "$1 heeft toegang gevraagd tot de volgende pagina's:
+	'whitelistrequestmsg' => "$1 heeft toegang gevraagd tot de volgende {{PLURAL:$3|pagina|pagina's}}:
 
 $2",
 	'whitelistrequestconf' => "Het verzoek voor nieuwe pagina's is verzonden naar $1",
@@ -1119,6 +1130,14 @@ $2",
 Deze pagina is alleen van toepassing op gebruikers met beperkte rechten.",
 	'whitelistnever' => 'nooit',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|resultaat|resultaten}}',
+	'right-editwhitelist' => 'De witte lijst voor bestaande gebruikers aanpassen',
+	'right-restricttowhitelist' => "Alleen pagina's bekijken en bewerken die op de witte lijst staan",
+	'action-editwhitelist' => 'de witte lijst voor bestaande gebruikers aan te passen',
+	'action-restricttowhitelist' => "alleen pagina's te bekijken en te bewerken die op de witte lijst staan",
+	'group-restricted' => 'beperkte gebruikers',
+	'group-restricted-member' => 'beperkte gebruiker',
+	'group-manager' => 'managers',
+	'group-manager-member' => 'gebruiker',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

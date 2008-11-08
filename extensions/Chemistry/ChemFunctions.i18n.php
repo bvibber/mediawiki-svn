@@ -125,6 +125,14 @@ $messages['bn'] = array(
 	'chemFunctions_ChemFormInputError' => 'রাসায়নিক ফর্ম: ইনপুট ত্রুটি!',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'chemicalsources' => 'Hemijski izvori',
+	'chemFunctions_ListPage' => 'Hemijski izvori',
+);
+
 /** Catalan (Català)
  * @author Aleator
  */

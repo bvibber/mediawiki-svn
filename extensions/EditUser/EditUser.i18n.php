@@ -60,6 +60,16 @@ $messages['af'] = array(
 	'edituser-exempt' => 'Die gebruiker kan nie gewysig word nie',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'edituser' => 'Brūcend ādihtan',
+	'edituser-logout' => 'Brūcend ūtmeldian',
+	'edituser-username' => 'Nama',
+	'edituser-dosearch' => 'Sēċan',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

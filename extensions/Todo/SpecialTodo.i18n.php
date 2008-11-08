@@ -188,6 +188,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Revolus
  */
 $messages['de'] = array(
@@ -204,17 +205,38 @@ Eintrag: $2
 Dieser Eintrag wurde mit diesem Kommentar als abgeschlossen markiert:
 $4',
 	'todo-invalid-item' => 'Fehlender oder falscher Eintrag',
+	'todo-update-else-item' => 'Du versuchst, die Einträge von jemand anderem zu bearbeiten',
 	'todo-unrecognize-type' => 'Unbekannter Typ',
+	'todo-user-invalide' => 'Der erteilte Auftrag ist ungültig: Benutzer fehlt oder hat keine Aufgabenliste.',
 	'todo-item-list' => 'Deine Einträge',
 	'todo-no-item' => 'Keine Aufgaben.',
 	'todo-invalid-owner' => 'Ungültiger Besitzer für diesen Eintrag',
+	'todo-add-queue' => 'Warteschlange hinzufügen …',
+	'todo-move-queue' => 'In Warteschlange verschieben …',
 	'todo-list-for' => 'Aufgabenliste für',
 	'todo-list-change' => 'Ändern',
 	'todo-list-cancel' => 'Abbrechen',
 	'todo-new-item' => 'Neuer Eintrag',
+	'todo-issue-summary' => 'Zusammenfassung des Auftrags:',
 	'todo-form-details' => 'Details:',
 	'todo-form-email' => 'Gib deine E-Mail-Adresse ein, um eine Benachrichtigung zu erhalten, wenn der Eintrag geschlossen wurde:',
 	'todo-form-submit' => 'Anfrage übergeben',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author ChrisiPK
+ */
+$messages['de-formal'] = array(
+	'todo-mail-body' => 'Sie haben um eine Benachrichtigung gebeten, wenn ein Auftrag, den Sie an $1 übergeben haben, abgeschlossen wurde.
+
+Eintrag: $2
+Übergeben: $3
+
+Dieser Eintrag wurde mit diesem Kommentar als abgeschlossen markiert:
+$4',
+	'todo-update-else-item' => 'Sie versuchen, die Einträge von jemand anderem zu bearbeiten',
+	'todo-item-list' => 'Ihre Einträge',
+	'todo-form-email' => 'Geben Sie Ihre E-Mail-Adresse ein, um eine Benachrichtigung zu erhalten, wenn der Eintrag geschlossen wurde:',
 );
 
 /** Greek (Ελληνικά)

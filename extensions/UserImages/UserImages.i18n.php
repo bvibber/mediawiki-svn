@@ -82,6 +82,15 @@ $messages['bn'] = array(
 	'userimages-noimages' => '$1 কোন চিত্র আপলোড করেন নাই।',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'userimages-caption' => 'Slike je postavio $1',
+	'userimages-noname' => 'Pogrešno korisničko ime ili nije navedeno.',
+	'userimages-noimages' => '$1 nije postavljao slike.',
+);
+
 /** German (Deutsch)
  * @author Leithian
  */

@@ -192,6 +192,13 @@ $messages['bg'] = array(
 	'imagetagging-taggedimages-displaying' => 'Показване на $1 - $2 от $3 снимки на „$4“',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'imagetagging-imghistory' => 'Historija',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

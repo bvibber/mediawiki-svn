@@ -68,3 +68,9 @@ $aliases['no'] = array(
 	'Code' => array( 'Kode' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'Code' => array( 'Kod' ),
+	'RepoAdmin' => array( 'Administrowanie repozytorium' ),
+);
+

@@ -25,6 +25,14 @@ $messages['qqq'] = array(
 	'discussionthreading-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'discussionthreading-replysection' => 'andsƿarian',
+	'discussionthreading-threadnewsection' => 'nīƿe',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -213,11 +221,12 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Maikking
  */
 $messages['pl'] = array(
 	'discussionthreading-replysection' => 'odpowiedz',
-	'discussionthreading-replysectionhint' => 'Odpowiedz na tąa wiadomość',
+	'discussionthreading-replysectionhint' => 'Odpowiedz na tę wiadomość',
 	'discussionthreading-threadnewsection' => 'nowy',
 );
 

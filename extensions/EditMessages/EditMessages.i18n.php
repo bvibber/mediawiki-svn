@@ -56,6 +56,15 @@ $messages['af'] = array(
 	'editmsg-search' => 'Soek',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'editmessages' => 'Ǣrendu ādihtan',
+	'editmsg-search' => 'Sēċan',
+	'editmsg-new-search' => 'Nīƿu sēċung',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

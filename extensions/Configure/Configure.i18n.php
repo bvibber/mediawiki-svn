@@ -2445,6 +2445,7 @@ $messages['os'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Maikking
  * @author McMonster
  * @author Sp5uhe
@@ -2535,10 +2536,13 @@ Utwórz katalog lub wybierz inny, jeśli chcesz korzystać z tego rozszerzenia.'
 	'configure-section-misc' => 'Różne',
 	'configure-section-mw-extensions' => 'Rozszerzenia MediaWiki',
 	'configure-select-wiki' => 'Wybór wiki',
+	'configure-select-wiki-available' => 'Dozwolone wartości: $1',
 	'configure-select-wiki-desc' => 'Wybierz wiki do konfiguracji.',
 	'configure-select-wiki-submit' => 'Potwierdź',
 	'configure-setting-not-available' => 'Opcja nie jest dostępna w tej wersji MediaWiki',
+	'configure-transwiki-not-in-range' => 'Żądana wiki $1 nie zezwala na wartości ($2).',
 	'configure-view' => 'Zobacz',
+	'configure-view-all-versions' => 'Pełna lista wersji',
 	'configure-view-not-allowed' => 'Nie masz uprawnień do przeglądania tych ustawień',
 	'extensions' => 'Konfiguruj rozszerzenia',
 	'right-configure' => 'Konfiguracja wiki',
@@ -2836,6 +2840,10 @@ $messages['sk'] = array(
 	'configure-ext-use' => 'Používať',
 	'configure-summary' => 'Táto špeciálna stránka vám umožňuje konfiguráciu tejto wiki. Ďalšie informácie nájdete na stránke[http://www.mediawiki.org/wiki/Manual:Configuration_settings Nastavenie konfigurácie].',
 	'configure-btn-save' => 'Uložiť nastavenia',
+	'configure-db-error' => 'Databáza, ktorú ste zadali na uloženie konfigurácie ($1) neexistuje.
+Prosím, vytvorte ju a na opravenie jej názvu použite configure.sql.',
+	'configure-db-table-error' => 'Databáza, ktorú ste zadali neobsahuje požadované tabuľky.
+Prosím, použite na túto databázu configure.sql.',
 	'configure-directory-not-writable' => 'Do tohto adresára, ktorý sa používa na ukladanie nastavení, <tt>$1</tt>, nie je možné zapisovať. Prosím, umožnite PHP zápis doňho, aby ste mohli používať toto rozšírenie.',
 	'configure-edit-old' => 'Upozornenie: upravujete <strong>starú</strong> verziu konfigurácie.',
 	'configure-error' => 'Konfiguráciu nebolo možné uložiť',

@@ -33,6 +33,15 @@ $3 is replaced with the wiki site;
 $4 is replaced with the time and date of the account's creation.",
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'newusernotifbody' => 'Ēalā $1,
+
+Nīƿe brūcendȝerād, $2, ƿæs on $3 macod, on $4.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

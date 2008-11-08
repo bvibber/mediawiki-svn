@@ -318,21 +318,68 @@ $1',
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Leithian
  * @author Revolus
  */
 $messages['de'] = array(
+	'inplace_access_disabled' => 'Der Zugriff auf diesen Service wurde für alle Clients deaktiviert.',
+	'inplace_access_denied' => 'Der Zugriff auf diesen Service wird durch die IP-Adresse des Clients reguliert.',
+	'inplace_scaler_no_temp' => 'Kein gültiges temporäres Verzeichnis.
+Setze $wgLocalTmpDirectory auf ein Verzeichnis mit Schreibzugriff.',
 	'inplace_scaler_not_enough_params' => 'Zu wenige Parameter.',
+	'inplace_scaler_invalid_image' => 'Ungültiges Bild, Größe konnte nicht festgestellt werden.',
+	'inplace_scaler_failed' => 'Beim Skalieren des Bildes ist ein Fehler aufgetreten: $1',
+	'inplace_scaler_no_handler' => 'Keine Routine zur Transformation dieses MIME-Typ vorhanden',
+	'inplace_scaler_no_output' => 'Die Transformation erzeugte keine Ausgabedatei.',
+	'inplace_scaler_zero_size' => 'Die Transformation erzeugte eine Ausgabedatei der Länge Null.',
+	'webstore_access' => 'Der Zugriff auf diesen Service wird durch die IP-Adresse des Clients reguliert.',
+	'webstore_path_invalid' => 'Der Dateiname war ungültig.',
+	'webstore_dest_open' => 'Zieldatei „$1“ kann nicht geöffnet werden.',
+	'webstore_dest_lock' => 'Zieldatei „$1“ kann nicht gesperrt werden.',
+	'webstore_dest_mkdir' => 'Zielverzeichnis „$1“ kann nicht erstellt werden.',
+	'webstore_archive_lock' => 'Archivdatei „$1“ kann nicht gesperrt werden.',
+	'webstore_archive_mkdir' => 'Archivverzeichnis „$1“ kann nicht erstellt werden.',
+	'webstore_src_open' => 'Quelldatei „$1“ kann nicht geöffnet werden.',
+	'webstore_src_close' => 'Fehler beim Schließen von Quelldatei „$1“.',
+	'webstore_src_delete' => 'Fehler beim Löschen von Quelldatei „$1“.',
+	'webstore_rename' => 'Fehler beim Umbenennen der Datei „$1“ zu „$2“.',
+	'webstore_lock_open' => 'Fehler beim Öffnen der Lockdatei „$1“.',
+	'webstore_lock_close' => 'Fehler beim Schließen der Lockdatei „$1“.',
+	'webstore_dest_exists' => 'Fehler, Zieldatei „$1“ existiert.',
 	'webstore_temp_open' => 'Kann temporäre Datei „$1“ nicht öffnen.',
+	'webstore_temp_copy' => 'Fehler beim Kopieren der temporären Datei „$1“ zur Zieldatei „$2“.',
+	'webstore_temp_close' => 'Fehler beim Schließen der temporären Datei „$1“.',
+	'webstore_temp_lock' => 'Fehler beim Sperren der temporären Datei „$1“.',
+	'webstore_no_archive' => 'Zieldatei existiert und kein Archiv wurde angegeben.',
 	'webstore_no_file' => 'Es wurde keine Datei hochgeladen.',
+	'webstore_move_uploaded' => 'Fehler beim Verschieben der hochgeladenen Datei „$1“ zum Zwischenspeicherort „$2“.',
 	'webstore_invalid_zone' => 'Ungültige Zone „$1“.',
 	'webstore_no_deleted' => 'Es wurde kein Archivverzeichnis für gelöschte Dateien definiert.',
 	'webstore_curl' => 'Fehler von cURL: $1',
 	'webstore_404' => 'Datei nicht gefunden.',
 	'webstore_php_warning' => 'PHP-Warnung: $1',
 	'webstore_metadata_not_found' => 'Datei nicht gefunden: $1',
+	'webstore_postfile_not_found' => 'Keine Datei zum Einstellen gefunden.',
+	'webstore_scaler_empty_response' => 'Der Bildskalierer hat eine leere Antwort mit dem Antwortcode 200 zurückgegeben.
+Dies könnte durch einen fatalen PHP-Fehler im Skalierer verursacht werden.',
+	'webstore_invalid_response' => 'Ungültige Antwort vom Server:
+
+$1',
 	'webstore_no_response' => 'Keine Antwort vom Server',
+	'webstore_backend_error' => 'Fehler vom Speicherserver:
+
+$1',
 	'webstore_php_error' => 'Es traten PHP-Fehler auf:',
+	'webstore_no_handler' => 'Keine Routine zur Transformation dieses MIME-Typ vorhanden',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author ChrisiPK
+ */
+$messages['de-formal'] = array(
+	'inplace_scaler_no_temp' => 'Kein gültiges temporäres Verzeichnis.
+Setzen Sie $wgLocalTmpDirectory auf ein Verzeichnis mit Schreibzugriff.',
 );
 
 /** Greek (Ελληνικά)

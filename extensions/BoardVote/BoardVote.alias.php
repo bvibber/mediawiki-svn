@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'BoardVote' => array( 'انتخابات_المجلس' ),
 );
 
+/** Bulgarian (Български) */
+$aliases['bg'] = array(
+	'BoardVote' => array( 'Избори за борда' ),
+);
+
 /** Catalan (Català) */
 $aliases['ca'] = array(
 	'BoardVote' => array( 'Votació' ),

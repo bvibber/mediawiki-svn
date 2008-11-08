@@ -410,20 +410,32 @@ $messages['lb'] = array(
 	'tasks_title' => 'Aufgabe fir "$1"',
 	'tasks_form_comment' => 'Bemierkung',
 	'tasks_noone' => 'keen',
+	'tasks_close' => 'Aufgab ofschléissen',
 	'tasks_delete' => 'Läschen',
 	'tasks_no_task_delete_title' => 'Net erlaabt',
+	'tasks_no_task_delete_texe' => 'Dir Dàerft keng Aufgab läschen. Nëmmen Administrateuren kënnen dat maachen.',
 	'tasks_action_delete' => 'Eng Aufgab gouf geläscht.',
+	'tasks_task_was_deleted' => "D'Aufgab gouf geläscht.",
+	'tasks_created_by' => 'Vum $1 gemaach',
 	'tasks_discussion_page_link' => 'Diskussiounssäit vun der Aufgab',
 	'tasks_closedby' => 'Zougemaach vum $1',
 	'tasks_here' => 'hei',
+	'tasks_returnto' => 'Dir gitt elo virugeleed. Wann Dir net no e puer Sekonnen virugeleed sidd, da clickt $1.',
 	'tasks_see_page_tasks' => '(Aufgabe vun dëser Säit)',
 	'tasks_help_page' => 'Aufgaben',
 	'tasks_more_like_it' => 'méi',
+	'tasks_significance_order' => 'Iwwerschreiwen<läschen',
+	'tasks_event_on_creation' => 'nokucken',
+	'tasks_event_on_creation_anon' => 'nokucken',
 	'tasks_table_header_page' => 'Säit',
 	'tasks_search_form_title' => 'Sichen',
 	'tasks_search_tasks' => 'Aufgaben',
+	'tasks_previous' => 'Vireg',
+	'tasks_sort' => 'Sortéieren',
 	'tasks_status_open' => 'Op',
 	'tasks_status_closed' => 'Zou',
+	'tasks_action_open' => 'Aufgab "$1" opgemaach.',
+	'tasks_action_closed' => 'Aufgab "$1" ass fäerdeg.',
 	'tasks_sign_delete' => '<b>Et gouf gefrot fir dëse Säit ze läschen</b>',
 	'tasks_logpage' => 'Lëscht vun den Aufgaben',
 	'tasks_logentry' => 'Fir [[$1}}',
@@ -586,24 +598,30 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Maikking
  */
 $messages['pl'] = array(
 	'tasks' => 'Zadania',
 	'tasks_desc' => 'Rozszerzenie do zarządzania zadaniami',
 	'tasks_tab' => 'Zadania',
-	'tasks_title' => 'Zadania dla "$1"',
+	'tasks_title' => 'Zadania dla „$1”',
 	'tasks_form_new' => 'Utwórz nowe zadanie',
 	'tasks_form_comment' => 'Komentarz',
 	'tasks_error1' => 'Zadanie nie zostało utworzone: już takie istnieje!',
 	'tasks_ok1' => 'Nowe zadanie zostało utworzone!',
 	'tasks_create_header' => 'Utwórz nowe zadanie',
 	'tasks_existing_header' => 'Istniejące zadania',
+	'tasks_delete' => 'Usuń',
+	'tasks_action_delete' => 'Zadanie zostało usunięte.',
 	'tasks_sidebar_title' => 'Rozpoczęte zadania',
 	'tasks_here' => 'tutaj',
 	'tasks_plain_text_only' => '(tylko tekst, maksymalnie 256 znaków)',
+	'tasks_help_page' => 'Zadania',
+	'tasks_more_like_it' => 'więcej',
 	'tasks_event_on_creation' => 'sprawdź',
 	'tasks_event_on_creation_anon' => 'sprawdź',
+	'tasks_on_creation_comment' => 'Zadanie wygenerowane automatycznie przez utworzenie artykułu',
 	'tasks_search_form_title' => 'Szukaj',
 	'tasks_search_tasks' => 'Zadania',
 	'tasks_search_status' => 'Status',
@@ -687,8 +705,12 @@ $messages['ru'] = array(
 	'tog-show_task_comments' => 'Включить страницу примечаний задачи.',
 );
 
-/** Slovak (Slovenčina) */
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
+	'tasks' => 'Úlohy',
+	'tasks_desc' => 'Rozšírenie na správu úloh',
 	'tasks_tab' => 'Úlohy',
 	'tasks_title' => 'Úlohy pre "$1"',
 	'tasks_form_new' => 'Vytvoriť novú úlohu',

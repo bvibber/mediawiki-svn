@@ -661,7 +661,7 @@ $messages['os'] = array(
  */
 $messages['pl'] = array(
 	'importfreeimages' => 'Import grafik z odpowiednią licencją.',
-	'importfreeimages-desc' => 'Umożliwia [[Special:ImportFreeImages|import grafik z odpowiednią licencją]] z [http://www.flickr.com flickr]',
+	'importfreeimages-desc' => 'Umożliwia [[Special:ImportFreeImages|import grafik z odpowiednią licencją]] z [http://www.flickr.com flickra]',
 	'importfreeimages_description' => 'Ta strona pozwala na wyszukiwanie na serwisie flickr zdjęć z odpowiednią licencją i na ich import do wiki.',
 	'importfreeimages_nophotosfound' => 'Żadne zdjęcie nie zostało odnalezione na podstawie kryterium „$1”. Spróbuj ponownie.',
 	'importfreeimages_invalidurl' => 'Adres URL „$1” nie jest prawidłowym odwołaniem do obrazka w serwisie Flickr.',

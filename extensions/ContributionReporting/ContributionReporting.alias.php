@@ -37,6 +37,7 @@ $aliases['nl'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'ContributionHistory' => array( 'Historia darowizn' ),
+	'ContributionStatistics' => array( 'Statystyki darowizn' ),
 	'ContributionTotal' => array( 'Łączna suma darowizn' ),
 );
 

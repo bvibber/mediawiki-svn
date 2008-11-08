@@ -118,6 +118,7 @@ $messages['rtm'] = array(
 $messages['af'] = array(
 	'grouppermissions-dosearch' => 'Gaan',
 	'grouppermissions-comment' => 'Opmerking:',
+	'grouppermissions-sp-remove' => 'verwyder',
 );
 
 /** Arabic (العربية)
@@ -908,7 +909,7 @@ $messages['ja'] = array(
 	'grouppermissions-log-change' => 'グループ "$2" のパーミッションを変更しました',
 	'grouppermissions-log-delete' => 'グループ "$2" を削除しました',
 	'grouppermissions-log-name' => 'グループパーミッションログ',
-	'grouppermissions-log-header' => 'これは、利用者グループの基本的なパーミッションの変更を記録したものです。',
+	'grouppermissions-log-header' => 'これは、利用者グループとその基本的なパーミッションの変更を記録したものです。',
 	'grouppermissions-needjs' => '警告: お使いのブラウザではJavaScriptが無効になっています。いくつかの機能が動作しない可能性があります。',
 	'grouppermissions-sp-header' => 'このページでパーミッションの分類方法を管理、または新しいパーミッションを追加することができます。パーミッションの説明を見るためには上にカーソルを置いてください。',
 	'grouppermissions-sp-sort' => 'パーミッションを並べ替える',

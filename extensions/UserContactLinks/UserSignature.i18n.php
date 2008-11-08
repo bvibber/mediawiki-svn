@@ -72,9 +72,12 @@ $messages['bn'] = array(
 	'usercontactlink-baduser' => 'বেঠিক ব্যবহারকারী নাম',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
 $messages['de'] = array(
 	'usercontactlink-baduser' => 'falscher Benutzername',
+	'usercontactlink-desc' => 'Macht es möglich, Benutzernamen einfach mit ^^^Benutzer^^^ zu verlinken',
 );
 
 /** Lower Sorbian (Dolnoserbski)

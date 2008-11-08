@@ -981,6 +981,7 @@ $messages['bs'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Glasaj]]
 * [[Special:Boardvote/list|Spisak glasanja do danas]]
 * [[Special:Boardvote/dump|Arhiva šifriranih podataka o izborima]]',
+	'boardvote_welcome' => "Dobrodošao '''$1'''!",
 );
 
 /** Catalan (Català)
@@ -6258,13 +6259,15 @@ $1 po les dnêyes sourdant des bultins.</p>",
  * @author פוילישער
  */
 $messages['yi'] = array(
-	'boardvote_notloggedin' => 'איר זענט אריינלאגירט.
-צו שטימען דארפֿט איר ניצן א קאנטע מיט מינדערסטן $1 בײַשטייערונגען פֿאר $2, און מינדערסטן $3 בײַשטייערונגען צווישן $4 און $5.',
+	'boardvote_notloggedin' => 'איר זענט נישט אריינלאגירט.
+צו שטימען דארפֿט איר ניצן א קאנטע מיט מינדערסטן $1 {{PLURAL:$1|בײַשטייערונג| בײַשטייערונגען}} פֿאר $2, און מינדערסטן $3 {{PLURAL:$3|בײַשטייערונג| בײַשטייערונגען}} צווישן $4 און $5.',
+	'boardvote_novotes' => 'קיינער האט נאך נישט געשטימט.',
 	'boardvote_time' => 'צײַט',
 	'boardvote_user' => 'באניצער',
 	'boardvote_edits' => 'רעדאקטירונגען',
 	'boardvote_days' => 'טעג',
 	'boardvote_edits_many' => 'אסאך',
+	'boardvote_welcome' => "ברוך הבא '''$1'''!",
 );
 
 /** Yue (粵語) */

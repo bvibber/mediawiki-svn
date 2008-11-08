@@ -289,6 +289,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Gnu1742
  * @author Katharina Wolkwitz
  * @author Purodha
@@ -299,6 +300,7 @@ $messages['de'] = array(
 	'usagestatistics' => 'Nutzungs-Statistik',
 	'usagestatistics-desc' => 'Zeigt individuelle Benutzer- und allgemeine Wiki-Nutzungsstatistiken an',
 	'usagestatisticsfor' => '<h2>Nutzungs-Statistik für [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Nutzungs-Statistik für alle Benutzer</h2>',
 	'usagestatisticsinterval' => 'Zeitraum',
 	'usagestatisticstype' => 'Berechnungsart',
 	'usagestatisticsstart' => 'Start-Datum',

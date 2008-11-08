@@ -188,6 +188,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Revolus
  */
 $messages['de'] = array(
@@ -195,15 +196,41 @@ $messages['de'] = array(
 	'spamregex-desc' => '[[Special:SpamRegex|Filtere]] ungewollte Phrasen, basierend auf regulären Ausdrücken, aus geänderten Seiten aus',
 	'spamregex-error-unblocking' => 'Konnte „$1“ nicht freigeben. Wahrscheinlich existiert kein solches Muster.',
 	'spamregex-summary' => 'Der Text wurde in der Zusammenfassung gefunden.',
+	'spamregex-intro' => 'Benutze dieses Formular, um effektiv zu verhindern, dass angegebene Phrasen in den Text einer Seite eingefügt werden.
+Wenn der Text die angegebene Phrase enthält, wird die Änderung nicht gespeichert und ein Hinweis an den Benutzer ausgegeben, der versucht hat, die Seite zu speichern.
+Sei aber vorsichtig, Phrasen sollten nicht zu kurz oder zu allgemein sein.',
 	'spamregex-page-title' => 'Spam regex filtert ungewollte Ausdrücke',
 	'spamregex-currently-blocked' => "'''Derzeit gesperrte Phrasen:'''",
 	'spamregex-move' => 'Die Zusammenfassung, die du angabst, enthält eine gesperrte Phrase.',
 	'spamregex-no-currently-blocked' => "'''Es gibt derzeit keine gesperrten Phrasen.'''",
 	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 entfernen]), hinzugefügt von",
+	'spamregex-log-2' => '  auf $1',
+	'spamregex-page-title-1' => 'Sperre Phrase als regulären Ausdruck',
+	'spamregex-unblock-success' => 'Entsperrung erfolgreich',
+	'spamregex-unblock-message' => "Phrase '''$1''' wurde für Bearbeitungen entsperrt.",
+	'spamregex-page-title-2' => 'Sperre das Speichern der Phrase als regulären Ausdruck',
+	'spamregex-block-success' => 'Sperrung erfolgreich',
+	'spamregex-block-message' => "Phrase '''$1''' wurde gesperrt.",
+	'spamregex-warning-1' => 'Phrase zum Sperren angeben',
 	'spamregex-error-1' => 'Ungültiger regulärer Ausdruck.',
+	'spamregex-warning-2' => 'Bitte wähle mindestens eine Sperrmethode aus.',
+	'spamregex-already-blocked' => '„$1“ ist bereits gesperrt',
+	'spamregex-phrase-block' => 'Zu sperrende Phrase:',
+	'spamregex-phrase-block-text' => 'Phrase im Seitentext sperren',
+	'spamregex-phrase-block-summary' => 'Phrase in der Zusammenfassung sperren',
 	'spamregex-block-submit' => 'Diese&nbsp;Phrase&nbsp;sperren',
 	'spamregex-text' => '(Text)',
 	'spamregex-summary-log' => '(Beschreibung)',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author ChrisiPK
+ */
+$messages['de-formal'] = array(
+	'spamregex-intro' => 'Benutzen Sie dieses Formular, um effektiv zu verhindern, dass angegebene Phrasen in den Text einer Seite eingefügt werden.
+Wenn der Text die angegebene Phrase enthält, wird die Änderung nicht gespeichert und ein Hinweis an den Benutzer ausgegeben, der versucht hat, die Seite zu speichern.
+Seien Sie aber vorsichtig, Phrasen sollten nicht zu kurz oder zu allgemein sein.',
+	'spamregex-warning-2' => 'Bitte wählen Sie mindestens eine Sperrmethode aus.',
 );
 
 /** Greek (Ελληνικά)
@@ -656,6 +683,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Maikking
  * @author Sp5uhe
  * @author Wpedzich
@@ -665,7 +693,7 @@ $messages['pl'] = array(
 	'spamregex-no-currently-blocked' => "'''Nie ma zablokowanych wyrażeń.'''",
 	'spamregex-page-title-1' => 'Blokuj frazę za pomocą wyrażenia regularnego',
 	'spamregex-unblock-success' => 'Odblokowano',
-	'spamregex-unblock-message' => "Fraza '''$1'' została odblokowana.",
+	'spamregex-unblock-message' => "Fraza '''$1''' została odblokowana.",
 	'spamregex-block-success' => 'Zablokowano',
 	'spamregex-block-message' => "Wyrażenie '''$1''' zostało zablokowane.",
 	'spamregex-warning-1' => 'Podaj wyrażenie do zablokowania.',

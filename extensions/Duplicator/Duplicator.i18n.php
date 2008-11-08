@@ -867,7 +867,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'duplicator' => 'Duplikowanie strony',
-	'duplicator-desc' => 'Stwórz niezależną [[Special:Duplicate|kopię]] tej strony z pełną historią edycji',
+	'duplicator-desc' => 'Stwórz niezależne [[Special:Duplicate|kopie stron]] z pełną historią edycji',
 	'duplicator-toolbox' => 'Duplikuj tę stronę',
 	'duplicator-header' => 'Ta strona pozwala na stworzenie kompletnego duplikatu artykułu, tworząc niezależne kopie aktualnej treści wraz z pełną historią zmian. Jest to przydatne przy rozwidlaniu (klonowaniu) artykułów itp.',
 	'duplicator-options' => 'Opcje',

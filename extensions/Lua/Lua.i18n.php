@@ -81,6 +81,20 @@ $messages['bg'] = array(
 	'lua_error_internal' => 'Вътрешна грешка',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'lua_desc' => 'Proširuje parser sa podrškom za umetnute blokove [http://www.lua.org/ Lua] koda',
+	'lua_error' => 'Greška na liniji $1',
+	'lua_extension_notfound' => 'Lua ekstenzija nije podešena',
+	'lua_interp_notfound' => 'Lua prevodioc nije pronađen',
+	'lua_error_internal' => 'Unutrašnja greška',
+	'lua_overflow_recursion' => 'Ograničenje broja rekurzija je dostignuto',
+	'lua_overflow_loc' => 'Ograničenje maksimuma linija koda je dostignuto',
+	'lua_overflow_time' => 'Dostignuto maksimalno vrijeme izvršenja',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -816,15 +816,57 @@ S'avètz de questions a prepaus d'aqueste sistèma de distribucion de las extens
 );
 
 /** Polish (Polski)
+ * @author Derbeth
+ * @author Leinad
  * @author Maikking
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'extensiondistributor' => 'Pobierz rozszerzenie MediaWiki',
+	'extdist-desc' => 'Rozszerzenie odpowiedzialne za dystrybucję zarchiwizowanych rozszerzeń gotowych do pobrania',
+	'extdist-not-configured' => 'Proszę skonfigurować zmienne $wgExtDistTarDir i $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Skonfigurowany katalog z kopią roboczą nie istnieje!',
 	'extdist-no-such-extension' => 'Brak rozszerzenia „$1”',
+	'extdist-no-such-version' => 'Rozszerzenie „$1” w wersji „$2” nie istnieje.',
+	'extdist-choose-extension' => 'Wybierz rozszerzenie, które chcesz pobrać:',
+	'extdist-wc-empty' => 'Skonfigurowany katalog z kopią roboczą nie zawiera rozszerzeń, które można by było dystrybuować!',
 	'extdist-submit-extension' => 'Kontynuuj',
+	'extdist-current-version' => 'Bieżąca wersja (trunk)',
+	'extdist-choose-version' => '<big>Do pobrania zostało wybrane rozszerzenie <b>$1</b>.</big>
+
+Wybierz z listy wersję MediaWiki.
+
+Większość rozszerzeń działa na wszystkich wersjach MediaWiki, więc jeśli nie ma na liście Twojej wersji MediaWiki lub potrzebujesz najnowszą wersję rozszerzenia, należy wybrać bieżącą wersję.',
 	'extdist-no-versions' => 'Wybrane rozszerzenie „$1” nie jest dostępne w żadnej wersji oprogramowania!',
 	'extdist-submit-version' => 'Kontynuuj',
+	'extdist-no-remote' => 'Nie można połączyć się ze zdalnym klientem Subversion.',
+	'extdist-remote-error' => 'Błąd zdalnego klienta Subversion: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Nieprawidłowa odpowiedź zdalnego klienta Subversion.',
+	'extdist-svn-error' => 'Subversion napotkał błąd: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Nie można przetworzyć danych XML z „svn info”: <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar zwrócił kod zakończenia $1:',
+	'extdist-created' => "Utworzono skompresowane archiwum z rozszerzeniem <b>$1</b> na podstawie wersji <b>$2</b> dla MediaWiki <b>$3</b>. Pobieranie powinno rozpocząć się w ciągu 5 sekund.
+
+Archiwum znajduje się pod adresem URL:
+:$4
+Adresu można użyć do natychmiastowego pobrania archiwum na serwer, ale proszę nie zapisywać adresu, ponieważ jego zawartość nie będzie aktualizowana i w póżniejszym czasie może zostać usunięta.
+
+Archiwum tar powinno zostać rozpakowane do katalogu z rozszerzeniami, na przykładzie systemów uniksowych wygląda to następująco:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+W systemach Windows do rozpakowania plików możesz użyć programu [http://www.7-zip.org/ 7-zip].
+
+Jeśli Twoja wiki znajduje się na zdalnym serwerze, wypakuj pliki do tymczasowego katalogu na lokalnym komputerze a następnie prześlij na serwer '''wszystkie''' pliki do katalogu przechowującego rozszerzenia.
+
+Miej na uwadze, że niektóre rozszerzenia potrzebują pliku o nazwie ExtensionFunctions.php, który znajduje się w <tt>extensions/ExtensionFunctions.php</tt>, tzn. w głównym katalogu danego rozszerzenia. Dla tego typu rozszerzeń skompresowane archiwum zawiera ten plik jako tarbomb, który jest rozpakowywany w ./ExtensionFunctions.php. Nie zapomnij, aby przesłać ten plik na zdalny serwer.
+
+Po umieszczeniu plików w odpowiednim katalogu, należy włączyć rozszerzenie w pliku LocalSettings.php. Dokumentacja rozszerzenia powinna zawierać instrukcję jak to zrobić.
+
+Jeśli masz jakieś pytania na temat systemu dystrybuującego rozszerzenia, proszę je zadać na stronie [[Extension talk:ExtensionDistributor]].",
+	'extdist-want-more' => 'Pobierz inne rozszerzenie',
 );
 
 /** Portuguese (Português)
