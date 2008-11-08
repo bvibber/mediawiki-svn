@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'mv_missing_stream' => 'Missing stream: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki special pages',
 
-	'mv_warning_wiki'	=> '<i>Note: metavid video transcripts [[Help:FAQ#How_accurate_is_the_information.3F|may contain inaccuracies]], help us build [[Help:Participation#Improving_Archive_Accuracy|a more perfect archive]]</i>',
+	'mv_warning_wiki' => '<i>Note: metavid video transcripts [[Help:FAQ#How_accurate_is_the_information.3F|may contain inaccuracies]], help us build [[Help:Participation#Improving_Archive_Accuracy|a more perfect archive]]</i>',
 
 	# stream/files key descriptions:
 	'mv_ogg_low_quality' => 'Web streamable - Ogg Theora 300kbs',
@@ -34,8 +34,8 @@ $messages['en'] = array(
 
 	'mv_error_stream_missing' => '<span class="error">Error: There is no video file associated with this stream.</span><br />
 Please report this to the site administrator.',
-	
-	'mv_stream_addedd'=> 'You have added the stream $1',
+
+	'mv_stream_added' => 'You have added the stream $1',
 	# add/edit stream text:
 	'mv_stream_meta' => 'Stream page',
 	'mv_add_stream' => 'Metavid add stream',
@@ -43,7 +43,7 @@ Please report this to the site administrator.',
 	'mvexportsearch' => 'Metavid export',
 	'mvexportsequence' => 'Metavid export sequence',
 	'mvexportstream' => 'Metavid export stream',
-	'mv_move_delete_msg'=>'mvd moved to $1',
+	'mv_move_delete_msg' => 'mvd moved to $1',
 	'mv_add_stream_page' => 'Mv add stream',
 	'mv_edit_strea_docu' => '<p>Edit stream <b>admin</b><br />for normal user view/edit see $1 page',
 	'mv_add_stream_docu' => '<p>Add a new stream with the field below.</p>
@@ -118,7 +118,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_bill_matches' => 'Bill matches',
 	'mv_interest_group_matches' => 'Interest group matches',
 	'mv_click_to_edit' => 'click to edit',
-	
+
 	# mvd types:
 	'ht_en' => 'Transcript',
 	'ht_en_desc' => 'English transcripts.
@@ -190,14 +190,13 @@ Jump to stream view: $2',
 	'mv_add_category' => 'Add a categorization',
 	'mv_basic_text_desc' => 'Text description (optional)',
 
-
 	# search
 	'mv_viewnext' => 'View ($1) ',
 	'mv_viewprevnext' => 'View ($1) ($2) ',
 	'mediasearch' => 'Media search',
 	'mv_search_sel_t' => 'Select search type',
 	'mv_do_media_search' => 'Do Metavid media search for $1',
-	'mv_results_for' =>	'Results for $1',
+	'mv_results_for' => 'Results for $1',
 	'mv_video_search' => 'Video search',
 	'mv_page_search' => 'Do wiki page search for $1',
 	'mv_add_filter' => 'Add filter',
@@ -206,7 +205,7 @@ Jump to stream view: $2',
 	'mv_search_categories' => 'Categories',
 	'mv_search_bills' => 'Bill',
 	'mv_search_bill'  => 'Bill',
-	'mv_bill'		  => 'bill',
+	'mv_bill' => 'bill',
 	'mv_search_category' => 'Category',
 	'mv_search_smw_property' => 'Semantic properties',
 	'mv_search_smw_property_numeric' => 'Numeric semantic value',
@@ -248,19 +247,19 @@ Jump to stream view: $2',
 	'mv_edit_sequence' => 'Editing sequence:$1',
 	'mv_sequence_player_title' => 'sequence player',
 	'mv_resource_not_found' => "Resource '''$1''' not found",
-	'mv_resource_not_supported'=>"Resource '''$1''' type not supported",
-	'mv_welcome_to_sequencer' => '<h3>Welcome to The sequencer demo</h3>'.
-						'very <b>limited</b> functionality right now', 
-	'mv_resource_locator'=>'Resource Locator',
-	
-	'mv_media_search'=>'Media Search',
+	'mv_resource_not_supported' => "Resource '''$1''' type not supported",
+	'mv_welcome_to_sequencer' => '<h3>Welcome to the sequencer demo</h3>
+very <b>limited</b> functionality right now',
+	'mv_resource_locator' => 'Resource Locator',
 
-	'mv_editor_options'=>'Editor options',
-	'mv_editor_mode'	=>'Editor mode',
-	'mv_simple_editor_desc'=>'simple editor (iMovie style)',
+	'mv_media_search' => 'Media search',
+
+	'mv_editor_options' => 'Editor options',
+	'mv_editor_mode' => 'Editor mode',
+	'mv_simple_editor_desc' => 'simple editor (iMovie style)',
 	'mv_advanced_editor_desc' => 'advanced editor (Final Cut style)',
 
-	'mv_transitions'=>'Transitions',
+	'mv_transitions' => 'Transitions',
 
 	'mv_save_sequence' => 'Save sequence',
 	'mv_sequence_page_desc' => 'Save the current sequence',
@@ -291,10 +290,10 @@ Jump to stream view: $2',
 
 	'mv_prev_speech' => 'Previous speech: $1',
 	'mv_next_speech' => 'Next speech: $1',
-	'mv_prev_bill' =>	'Previous bill: $1',
-	'mv_next_bill' =>	'Next bill: $1',
-	'mv_prev_cat' =>	'Previous category: $1',
-	'mv_next_cat' =>	'Next category: $1',
+	'mv_prev_bill' => 'Previous bill: $1',
+	'mv_next_bill' => 'Next bill: $1',
+	'mv_prev_cat' => 'Previous category: $1',
+	'mv_next_cat' => 'Next category: $1',
 	'mv_navigate_stream' => 'Navigate stream',
 
 	# msg for overlay interface:
@@ -490,7 +489,7 @@ $messages['ar'] = array(
 	'thomas_en_desc' => "ترانس سكريبت توماس الرسمي من خدمة تسجيل THOMAS الرسمية.
 وقت المصدر معدل بواسطة C-SPAN's c-spanarchives.org",
 	'mvd_default_mismatch' => 'خطأ في ملف الإعدادات',
-	'mvd_default_mismatch_text' => 'هناك خطأ في ملف إعداداتك. 
+	'mvd_default_mismatch_text' => 'هناك خطأ في ملف إعداداتك.
 $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 ل$2 من $3',
 	'mv_time_separator' => '$1 إلى $2',
@@ -730,7 +729,7 @@ $messages['arz'] = array(
 	'thomas_en_desc' => "ترانس سكريبت توماس الرسمى من خدمة تسجيل THOMAS الرسمية.
 وقت المصدر معدل بواسطة C-SPAN's c-spanarchives.org",
 	'mvd_default_mismatch' => 'خطأ فى ملف الإعدادات',
-	'mvd_default_mismatch_text' => 'هناك خطأ فى ملف إعداداتك. 
+	'mvd_default_mismatch_text' => 'هناك خطأ فى ملف إعداداتك.
 $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 ل$2 من $3',
 	'mv_time_separator' => '$1 إلى $2',
