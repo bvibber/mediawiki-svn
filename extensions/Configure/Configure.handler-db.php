@@ -114,6 +114,19 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	}
 
 	/**
+	 * Returns the wikis in $ts version
+	 *
+	 * @param $ts timestamp
+	 * @return array
+	 */
+	public function getWikisInVersion( $ts ){
+		$wiki = $this->getSlaveDB()->selectField( 'config_version', 'cv_wiki', array( 'cv_timestamp' => $ts ), __METHOD__ );
+		if( $wiki === false )
+			return array();
+		return array( $wiki );
+	}
+
+	/**
 	 * Save a new configuration
 	 * @param $settings array of settings
 	 * @param $wiki String: wiki name or true for all

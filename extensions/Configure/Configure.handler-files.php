@@ -72,6 +72,17 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	}
 
 	/**
+	 * Returns the wikis in $ts version
+	 *
+	 * @param $ts timestamp
+	 * @return array
+	 */
+	public function getWikisInVersion( $ts ){
+		$settings = $this->getOldSettings( $ts );
+		return array_keys( $settings );
+	}
+
+	/**
 	 * Save a new configuration
 	 * @param $settings array of settings
 	 * @param $wiki String: wiki name or true for all

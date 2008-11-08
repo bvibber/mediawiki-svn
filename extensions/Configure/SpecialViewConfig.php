@@ -152,9 +152,8 @@ class SpecialViewConfig extends ConfigurationPage {
 		foreach( $versions as $ts ){
 			$c++;
 			$time = $wgLang->timeAndDate( $ts );
-			if( $allowedAll || $allowedConfigAll ){
-				$settings = $wgConf->getOldSettings( $ts );
-				$wikis = array_keys( $settings );
+			if( $allowedAll || $allowedConfigAll || $allowedExtensionsAll ){
+				$wikis = $wgConf->getWikisInVersion( $ts );
 			}
 			$actions = array();
 			$view = $skin->makeKnownLinkObj( $title, wfMsg( 'configure-view' ), "version=$ts" );

@@ -130,7 +130,7 @@ class WebConfiguration extends SiteConfiguration {
 	}
 
 	/**
-	 * Return the configuration from the conf-{$ts}.ser file in the $this->mDir
+	 * Return the old configuration from $ts timestamp
 	 * Does *not* return site specific settings but *all* settings
 	 *
 	 * @param $ts timestamp
@@ -138,6 +138,16 @@ class WebConfiguration extends SiteConfiguration {
 	 */
 	public function getOldSettings( $ts ){
 		return $this->mHandler->getOldSettings( $ts );
+	}
+
+	/**
+	 * Returns the wikis in $ts version
+	 *
+	 * @param $ts timestamp
+	 * @return array
+	 */
+	public function getWikisInVersion( $ts ){
+		return $this->mHandler->getWikisInVersion( $ts );
 	}
 
 	/**

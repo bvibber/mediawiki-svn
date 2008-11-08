@@ -28,6 +28,14 @@ interface ConfigureHandler {
 	public function getOldSettings( $ts );
 
 	/**
+	 * Returns the wikis in $ts version
+	 *
+	 * @param $ts timestamp
+	 * @return array
+	 */
+	public function getWikisInVersion( $ts );
+
+	/**
 	 * Save a new configuration
 	 * @param $settings array of settings
 	 * @param $wiki String: wiki name or false to use the current one

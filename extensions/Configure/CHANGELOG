@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.9.3 - 8 November 2008
+  Version listing on Special:ViewConfig now doesn't load the whole configuration
+  for each version when using database handler.
+
 0.9.2 - 6 November 2008
   Fixed a bug in settings merging (introduced in version 0.8.10).
 
