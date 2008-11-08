@@ -35,7 +35,7 @@ $messages['en'] = array(
 	'mv_error_stream_missing' => '<span class="error">Error: There is no video file associated with this stream.</span><br />
 Please report this to the site administrator.',
 	
-	'mv_stream_addedd'=> 'You have added the Stream $1',
+	'mv_stream_addedd'=> 'You have added the stream $1',
 	# add/edit stream text:
 	'mv_stream_meta' => 'Stream page',
 	'mv_add_stream' => 'Metavid add stream',
