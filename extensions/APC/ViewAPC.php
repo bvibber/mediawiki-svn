@@ -14,7 +14,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version'        => '2008-09-04',
 	'author'         => 'Niklas Laxström',
 	'descriptionmsg' => 'viewapc-desc',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:Apc',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:APC',
 );
 
 $dir = dirname(__FILE__) . '/';
