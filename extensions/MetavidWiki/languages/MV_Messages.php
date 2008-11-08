@@ -2807,7 +2807,7 @@ $messages['nl'] = array(
 	'ao_file_MPEG2' => 'Archive.org - mpeg2 origineel',
 	'mv_error_stream_missing' => '<span class="error">Fout: Er is geen videobestand gekoppeld aan deze stream.</span><br />
 Rapporteer dit aan de sitebeheerder.',
-	'mv_stream_addedd' => 'U hebt de stream $1 toegevoegd',
+	'mv_stream_added' => 'U hebt de stream $1 toegevoegd',
 	'mv_stream_meta' => 'Streampagina',
 	'mv_add_stream' => 'Metavid-stream toevoegen',
 	'mv_edit_stream' => 'Metavid-stream bewerken',
