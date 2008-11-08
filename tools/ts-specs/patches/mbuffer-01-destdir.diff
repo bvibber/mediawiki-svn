@@ -1,0 +1,8 @@
+--- Makefile.in.old	Wed May  7 14:56:43 2008
++++ Makefile.in	Sat Nov  8 04:38:56 2008
+@@ -35,4 +35,4 @@
+ install: $(TARGET)
+ 	-$(INSTALL) -d $(DESTDIR)$(bindir)
+ 	$(INSTALL) $(TARGET) $(DESTDIR)$(bindir)
+-	$(INSTALL) mbuffer.1 $(mandir)
++	$(INSTALL) mbuffer.1 $(DESTDIR)$(mandir)
