@@ -21,6 +21,8 @@ $messages['en'] = array(
 	'mv_ogg_low_quality' => 'Web streamable - Ogg Theora 300kbs',
 	'mv_ogg_high_quality' => 'High quality - Ogg Theora 900kbs',
 	'mv_flash_low_quality' => 'Web streamable - Flash video',
+	'mv_archive_org_mp4'  => 'Archive.org mp4 encapsulated h.264 stream',
+
 	'mv_archive_org_link' => 'Links into Archive.org mpeg2 originals',
 	'ao_file_512Kb_MPEG4' => 'Archive.org - mpeg4 512Kb',
 	'ao_file_64Kb_MPEG4' => 'Archive.org - mpeg4 64kbs',
@@ -29,9 +31,11 @@ $messages['en'] = array(
 	'ao_file_MPEG2' => 'Archive.org - mpeg2 original',
 	'ao_file_flash_flv' => 'Archive.org - flash video',
 
+
 	'mv_error_stream_missing' => '<span class="error">Error: There is no video file associated with this stream.</span><br />
 Please report this to the site administrator.',
-
+	
+	'mv_stream_addedd'=> 'You have added the Stream $1',
 	# add/edit stream text:
 	'mv_stream_meta' => 'Stream page',
 	'mv_add_stream' => 'Metavid add stream',
@@ -47,10 +51,13 @@ Please report this to the site administrator.',
 	'mv_add_stream_submit' => 'Add stream',
 	'mv_no_stream_files' => 'No existing stream files',
 	'mv_edit_stream_files' => 'Edit stream files',
+
 	'mv_path_type_url_anx' => 'full media url',
 	'mv_path_type_wiki_title' => 'wiki media title',
 	'mv_path_type_url_file' => 'full media url using local seek',
+	'mv_path_type_mp4_stream' => 'Mp4 stream server',
 	'mv_path_type_label' => 'path type',
+
 	'mv_base_offset_label' => 'base offset',
 	'mv_duration_label' => 'Duration',
 	'mv_file_desc_label' => 'stream desc msg',
@@ -78,7 +85,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_error_stream_insert' => 'failed to insert stream',
 	'mv_redirect_and_delete_reason' => 'removed redirect page',
 	'mv_remove_reason' => 'Reason for deletion:',
-	'mv_stream_delete_warrning' => '<b>Removing this stream will also remove $1 pieces of assocative metadata</b><br />',
+	'mv_stream_delete_warrning' => '<b>Removing this stream will also remove $1 pieces of associative metadata</b><br />',
 
 	# stream type
 	'mv_label_stream_type' => 'Stream type',

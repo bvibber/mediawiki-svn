@@ -95,9 +95,10 @@ $mvVideoArchivePaths['mvprime'] = 'http://metavid.ucsc.edu/media/';
 $mvVideoArchivePaths['cap1'] = 'http://128.114.20.64/media/';
 
 // stream msgKeys that support ?t=start_time/end_time temporal url media serving: 
-$mvDefaultVideoQualityKey = 'mv_ogg_low_quality';
-$mvDefaultFlashQualityKey = 'mv_flash_low_quality';
+$mvDefaultVideoQualityKey 	= 'mv_ogg_low_quality';
+$mvDefaultFlashQualityKey 	= 'mv_flash_low_quality';
 $mvDefaultVideoHighQualityKey = 'mv_ogg_high_quality';
+$mvDefaultMP4QualityKey 	= 'mv_archive_org_mp4';
 
 $mvVidQualityMsgKeyType['mv_ogg_low_quality']=$mvVidQualityMsgKeyType['mv_ogg_high_quality']='video/ogg';
 $mvVidQualityMsgKeyType['mv_flash_low_quality']='video/x-flv';
@@ -182,6 +183,7 @@ $mvStreamTypePermission['external_file'] = array();
 $wgGroupPermissions['user']['mv_delete_mvd'] = true;
 $wgGroupPermissions['sysop']['mv_edit_stream'] = true;
 $wgGroupPermissions['bot']['mv_edit_stream'] = true;
+
 $wgAvailableRights[] = 'mv_delete_mvd';
 $wgAvailableRights[] = 'mv_edit_stream';
 
@@ -192,8 +194,9 @@ $mvMsgContentTypeLookup = array(
  		'ao_file_MPEG1'			=> 'video/mpeg',
  		'ao_file_MPEG2'			=> 'video/mpeg-2',
 
+		'mv_archive_org_mp4'	=> 'video/h264',
  		'mv_flash_low_quality'	=> 'video/x-flv',
- 		'mv_ogg_high_quality'	=> 'video/ogg',
+ 		'mv_ogg_high_quality'	=> 'video/ogg',		
  		'mv_ogg_low_quality'	=> 'video/ogg'
  	);
 

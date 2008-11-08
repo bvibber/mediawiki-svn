@@ -19,7 +19,7 @@
 	var $context = null;
 	var $page_title = '';
 	var $page_header = '';
-	// list the properties we are intersted and there default values:
+	// list the properties we are set and there default values:
 	var $smwProperties = array( 'playback_resolution' => null );
 	function __construct( $contextType, & $contextArticle = null ) {
 		global $mv_default_view;
@@ -121,7 +121,7 @@
 		$this->page_header .= '</span>';
 		$this->page_title = $this->article->mvTitle->getStreamNameText() . ' ' . $this->article->mvTitle->getTimeDesc();
 	}
-	// grab semantic properties if availiable:
+	// grab semantic properties if available:
 	// @@todo we need to think this through a bit
 	function grabSemanticProp() {
 		if ( SMW_VERSION ) {

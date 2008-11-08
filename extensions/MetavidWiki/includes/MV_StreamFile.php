@@ -127,7 +127,7 @@
  		return $this->path_type;
  	}
 	function supportsURLTimeEncoding() {
-		return $this->path_type == 'url_anx';
+		return ( $this->path_type == 'url_anx' || $this->path_type=='mp4_stream' );
 	}
  	function getFullURL() {
  		// @@todo check on path if local 

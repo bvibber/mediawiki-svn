@@ -48,13 +48,13 @@ var vlcEmbed = {
     postEmbedJS : function(){
         //load a pointer to the vlc into the object (this.vlc)
     	this.getVLC();
-    	if(this.vlc.log){
+    	if( this.vlc.log ){
 	    	//manipulate the dom object to make sure vlc has the correct size: 
 	    	this.vlc.style.width=this.width;
 	    	this.vlc.style.height=this.height;       
 	    	this.vlc.playlist.items.clear();
 	    	//@@todo if client supports seeking no need to send seek_offset to URI
-	    	js_log('vlc play:' + this.media_element.selected_source.getURI(this.seek_time_sec));   
+	    	js_log('vlc play::' + this.media_element.selected_source.getURI( this.seek_time_sec ));   
 	    	var itemId = this.vlc.playlist.add( this.media_element.selected_source.getURI(this.seek_time_sec) );
 	    	if( itemId != -1 ){
 	    		//play

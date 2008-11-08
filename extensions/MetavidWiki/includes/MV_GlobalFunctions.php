@@ -46,7 +46,8 @@ function mvSetupExtension() {
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore,
 	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions, $markerList,$wgVersion,
 	$wgAjaxExportList, $mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite, 
-	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers;
+	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers,
+	$wgAPIModules;
 	
 
 	mvfInitMessages();
@@ -210,9 +211,9 @@ function mvSetupExtension() {
 	
 	
 	/*
-	* OggHandler extension overides
-	* if the OggHandler is included remap the object for copatibility with metavid
-	* MV_OggHandler.php hanndles all the re-mapping
+	* OggHandler extension overrides
+	* if the OggHandler is included remap the object for compatibility with metavid
+	* MV_OggHandler.php handles all the re-mapping
 	*/		
 	if($wgMediaHandlers['application/ogg'] == 'OggHandler'){
 		$wgAutoloadClasses['mvOggHandler']			= dirname( __FILE__ )  . '/MV_OggHandler.php';
@@ -230,7 +231,14 @@ function mvSetupExtension() {
 				 }
 			 }
 		}
-	}	
+	}
+
+	
+	 /************************************
+	 *  API extension (this may be integrated into semantic wiki at some point) 
+	 **************************************/
+	 
+	
 	
 	
 	// $wgHooks['BeforePageDisplay'][] = 'mvDoSpecialPage';	

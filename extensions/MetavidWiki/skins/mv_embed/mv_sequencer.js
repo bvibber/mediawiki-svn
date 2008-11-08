@@ -56,7 +56,7 @@ var sequencerDefaultValues = {
 	plObj_id:'seq_plobj',
 	plObj_clone:null,	
 	
-	timeline_scale:.125, //in pixel to second ratio ie 100pixles for every ~30seconds
+	timeline_scale:.06, //in pixel to second ratio ie 100pixles for every ~30seconds
 	timeline_duration:500, //default timeline length in seconds
 	playline_time:0,
 	track_thumb_height:60,
@@ -644,12 +644,13 @@ mvSequencer.prototype = {
 						clip.left_px = j*container_width;
 						clip.width_px = container_width;
 						var base_id = 'track_'+track_id+'_clip_'+j;
-						track_html+='<span id="'+base_id+'" style="'+
+						track_html+='<span id="'+base_id+'" '+
+										'class="mv_time_clip mv_clip_drag" '+  
+										'style="'+
 										'border:none;'+	
 										'left:'+clip.left_px+'px;'+									
-										'height:' + (this.track_clipThumb_height+20) + 'px;' +										
-										'width:'+(container_width)+'px;" '+
-						 				'class="mv_time_clip mv_clip_drag" >';						
+										'height:' + (this.track_clipThumb_height+20) + 'px;' +																				
+										'width:'+(container_width)+'px;" >';						
 						track_html+=clip.embed.renderTimelineThumbnail({
 										'width':frame_width,
 										'height':this.track_clipThumb_height,

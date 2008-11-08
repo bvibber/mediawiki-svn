@@ -42,7 +42,7 @@
  		$html = '';
  	
 		$streamFiles = $this->mArticle->mvTitle->mvStream->getFileList();
-		// proccess the requested changes
+		// process the requested changes
  		$this->proccessReq( $streamFiles );
 		if ( $this->status_error != '' )$html .= '<span class="error">' . htmlspecialchars( $this->status_error ) . '</span><br />';
 		if ( $this->status_ok != '' )$html .= $this->status_ok . '<br />';
@@ -99,8 +99,7 @@
  		if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
  			$this->status_error = wfMsg( 'token_suffix_mismatch' );
  			return ;
- 		}
- 		
+ 		} 		
  		
  		$this->mv_action = $wgRequest->getVal( 'mv_action' );
  		if ( $this->mv_action == 'new_stream_file' ) {
@@ -170,14 +169,21 @@
 			$html .= '<td><input type="text" name="sf_' . htmlspecialchars( $sf['id'] ) . '[duration]" value="' . htmlspecialchars( $sf['duration'] ) . '" maxlength="11" size="7" /></td>';
 			$html .= '<td><input type="text" name="sf_' . htmlspecialchars( $sf['id'] ) . '[base_offset]" value="' . htmlspecialchars( $sf['base_offset'] ) . '" maxlength="11" size="7" /></td>';
 			$html .= '<td><select name="sf_' . htmlspecialchars( $sf['id'] ) . '[path_type]">';
+			
 			$sel = ( $sf['path_type'] == 'url_anx' ) ? ' selected':'';
-			$html .= '<option value="url_anx"' . $sel . '>' . wfMsg( 'mv_path_type_url_anx' ) . '</option>' .
+			$html .= '<option value="url_anx"' . $sel . '>' . wfMsg( 'mv_path_type_url_anx' ) . '</option>';
+			
 			$sel = ( $sf['path_type'] == 'wiki_title' ) ? ' selected':'';
-			$html .= '<option value="wiki_title"' . $sel . '>' . wfMsg( 'mv_path_type_wiki_title' ) . '</option>' .
+			$html .= '<option value="wiki_title"' . $sel . '>' . wfMsg( 'mv_path_type_wiki_title' ) . '</option>';
+			
 			$sel = ( $sf['path_type'] == 'url_file' ) ? ' selected':'';
-			$html .= '<option value="url_file"' . $sel . '>' . wfMsg( 'mv_path_type_url_file' ) . '</option>' .
-					'</select></td>';
-			$html .= '<td><input type="text" name="sf_' . htmlspecialchars( $sf['id'] ) . '[path]" value="' . htmlspecialchars( $sf['path'] ) . '" maxlength="250" size="50" />' .
+			$html .= '<option value="url_file"' . $sel . '>' . wfMsg( 'mv_path_type_url_file' ) . '</option>';
+			
+			$sel = ( $sf['path_type'] == 'mp4_stream' ) ? ' selected':'';
+			$html .= '<option value="mp4_stream"' . $sel . '>' . wfMsg( 'mv_path_type_mp4_stream' ) . '</option>';
+			
+			$html .='</select></td>';
+			$html .= '<td><input type="text" name="sf_' . htmlspecialchars( $sf['id'] ) . '[path]" value="' . htmlspecialchars( $sf['path'] ) . '" maxlength="512" size="20" />' .
 					'<input type="hidden" name="sf_' . htmlspecialchars( $sf['id'] ) . '[stream_id]" value="' . htmlspecialchars( $sf['stream_id'] ) . '">' .
 					'</td>';
 		$html .= '</tr>';

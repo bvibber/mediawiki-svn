@@ -39,8 +39,8 @@ var flashEmbed = {
 		bgcolor: '#ffffff',
 		type: 'application/x-shockwave-flash',
 		pluginspage: 'http://www.adobe.com/go/getflashplayer'
-	},
-	flashVars :{
+	},		
+	flashVars :{	
 		config: { 	autoPlay: true, 
 					hideControls: true,
 					initialScale:'fit',
@@ -56,19 +56,30 @@ var flashEmbed = {
     getEmbedObj:function(){
     	if(!this.duration)this.duration=30;
        	var html = "";       		
-       	//set up custom params/config 
-	    this.flashParams.src	= mv_embed_path + 'FlowPlayerDark.swf';
+       	//set up custom params/config
+       	/*
+       	<embed id="player_api" height="100%" width="100%" 
+       	flashvars="config={"playerId":"player","clip":{},
+       		"playlist":[{"url":"http://www.archive.org/download/mv_senate_proceeding_10-23-08/senate_proceeding_10-23-08_512kb.mp4?start=10"}]}"
+       		 name="player_api" bgcolor="#000000" pluginspage="http://www.adobe.com/go/getflashplayer" 
+       		 type="application/x-shockwave-flash" quality="high" allowscriptaccess="always" 
+       		 allowfullscreen="true" src="../flowplayer-3.0.0-rc2.swf?0.5720695237577815"/>
+       	*/ 
+	    this.flashParams.src	= mv_embed_path + 'flowplayer-3.0.0-rc2.swf';
 	    this.flashParams.width 	= this.width;
 	    this.flashParams.height = this.height;
-	    this.flashParams.id		= this.pid;
+	    this.flashParams.id		= this.pid;	    
+	   
+	   	//set the id:
+	   	this.flashVars.config.playerId = this.pid;
 	   
 	   	js_log('set flash videoFile: '+ this.media_element.selected_source.getURI(this.seek_time_sec) );
-	    this.flashVars.config.videoFile = this.media_element.selected_source.getURI(this.seek_time_sec); 
+	    this.flashVars.config.playlist = new Array({"url":this.media_element.selected_source.getURI(this.seek_time_sec)}); 
 	    
 	    if(this.muted)
 	    	 this.flashVars.config.initialVolumePercentage=0;
 	    	 
-		// mozilla
+		// mozilla		
 		if (navigator.plugins && navigator.mimeTypes && navigator.mimeTypes.length) {
 			html = '<embed ' +
 					'id="'+this.pid+'" ';							
@@ -149,7 +160,6 @@ var flashEmbed = {
     pause : function()
     {
     	this.getFLA();
-    	var flv = document.getElementById(this.pid);
     	if(this.fla['Pause'])
     		this.fla.Pause();
 		//stop updates: 
@@ -170,6 +180,9 @@ var flashEmbed = {
 		this.getFLA();    		    
         if(!this.fla['getTime'])
             return js_log('can not monitor without time');
+        
+        var flash_state = this.fla.getStatus();
+        js_log('flash state: '+flash_state);
                         
         this.currentTime = this.fla.getTime();
         
@@ -255,17 +268,13 @@ function asString(obj) {
 	switch (typeOf(obj)){
 		case 'string':
 			return '"'+obj.replace(new RegExp('(["\\\\])', 'g'), '\\$1')+'"';
-		case 'array':
-
+		case 'array':			
 			return '['+ map(obj, function(el) {
 				return asString(el);
 			}).join(',') +']';
-
-
 		case 'object':
 			var str = [];
 			for (var property in obj) {
-
 				str.push('"'+property+'":'+ asString(obj[property]));
 			}
 			return '{'+str.join(',')+'}';
@@ -275,7 +284,15 @@ function asString(obj) {
 		.replace(/\s/g, " ")
 		.replace(/\'/g, "\""); //'
 }
-
+function map(arr,func){
+	var newArr=[];
+	for(var i in arr){
+		if(arr.hasOwnProperty(i)){
+			newArr[i]=func(arr[i]);
+		}
+	}
+	return newArr;
+}
 
 // private functions
 function typeOf(obj){

@@ -94,7 +94,7 @@ var mv_stream_interface = {
 		//add_custom_effects();
 		//set up the init values for mouse over restore:
 		org_vid_title = $j('#mv_stream_time').html();
-		if(!$j('#embed_vid').get(0).ready_to_play){
+		if( $j('#embed_vid').length==0 || !$j('#embed_vid').get(0).ready_to_play){
 			//no embed video present stop init
 			return js_log('no clip ready to play');
 		}
@@ -344,7 +344,7 @@ function mv_scroll2Time(sec_time){
 	if(previus_scroll2Time_time!=sec_time){
 		var scroll_mvd_id = null;
 		//init pMvd_id
-		if($j('.mv_fd_mvd:first')){
+		if( $j('.mv_fd_mvd:first').length != 0 ){
 			var pMvd_id=$j('.mv_fd_mvd:first').attr("id").split('_').pop();
 			$j('.mv_fd_mvd').each(function(){		
 				var curTitle = get_titleObject($j(this).attr('name'));

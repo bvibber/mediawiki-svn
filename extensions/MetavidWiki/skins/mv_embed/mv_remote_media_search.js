@@ -89,7 +89,7 @@ mvRemoteSearch.prototype = {
 		//empty out the current results: 
 		this.resultsObj={};
 		//do two queries against the Image / File namespace: 	
-		if( this.api_mode=='mediawiki' ){
+		if( this.api_mode =='mediawiki' ){
 			//construct search request:		
 			var req_url =this.p_seq.plObj.interface_url.replace(/index\.php/, 'api.php');			
 			//build the image request object: 
@@ -124,7 +124,7 @@ mvRemoteSearch.prototype = {
 		}
 		//do unified media search call to metavid toolset: 
 		if(this.api_mode == 'metavid'){
-			//do unified query request: 
+			//@@todo we should integrate semantic queries to the api.php 
 			
 		}
 	},
