@@ -1,5 +1,4 @@
 <?php
-
 /*
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -8,12 +7,12 @@ of the License.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
 /**
@@ -28,65 +27,82 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$allMessages = array();
+$messages = array();
 
 /** English
  * @author Paul Grinberg <gri6507@yahoo.com>
  * @author Mike Sullivan <ms-mediawiki@umich.edu>
+ * @author Siebrand Mazeland
  */
-$allMessages['en'] = array(
-	'whitelist-desc'              => 'Edit the access permissions of restricted users',
-	'whitelistedit'               => 'Whitelist access editor',
-	'whitelist'                   => 'Whitelist pages',
-	'mywhitelistpages'            => 'My pages',
-	'whitelistfor'                => "<center>Current information for <b>$1</b></center>",
-	'whitelisttablemodify'        => 'Modify',
-	'whitelisttablemodifyall'     => 'All',
-	'whitelisttablemodifynone'    => 'None',
-	'whitelisttablepage'          => 'Wiki page',
-	'whitelisttabletype'          => 'Access type',
-	'whitelisttableexpires'       => 'Expires on',
-	'whitelisttablemodby'         => 'Last modified by',
-	'whitelisttablemodon'         => 'Last modified on',
-	'whitelisttableedit'          => 'Edit',
-	'whitelisttableview'          => 'View',
-	'whitelisttablenewdate'       => 'New date:',
-	'whitelisttablechangedate'    => 'Change expiry date',
-	'whitelisttablesetedit'       => 'Set to edit',
-	'whitelisttablesetview'       => 'Set to view',
-	'whitelisttableremove'        => 'Remove',
-	'whitelistnewpagesfor'        => "Add new pages to <b>$1's</b> white list<br />
+$messages['en'] = array(
+	'whitelist-desc' => 'Edit the access permissions of restricted users',
+	'whitelistedit' => 'White list access editor',
+	'whitelist' => 'White list pages',
+	'mywhitelistpages' => 'My pages',
+	'whitelistfor' => "<center>Current information for <b>$1</b></center>",
+	'whitelisttablemodify' => 'Modify',
+	'whitelisttablemodifyall' => 'All',
+	'whitelisttablemodifynone' => 'None',
+	'whitelisttablepage' => 'Wiki page',
+	'whitelisttabletype' => 'Access type',
+	'whitelisttableexpires' => 'Expires on',
+	'whitelisttablemodby' => 'Last modified by',
+	'whitelisttablemodon' => 'Last modified on',
+	'whitelisttableedit' => 'Edit',
+	'whitelisttableview' => 'View',
+	'whitelisttablenewdate' => 'New date:',
+	'whitelisttablechangedate' => 'Change expiry date',
+	'whitelisttablesetedit' => 'Set to edit',
+	'whitelisttablesetview' => 'Set to view',
+	'whitelisttableremove' => 'Remove',
+	'whitelistnewpagesfor' => "Add new pages to <b>$1's</b> white list<br />
 Use either * or % as wildcard character",
-	'whitelistnewtabledate'       => 'Expiry date:',
-	'whitelistnewtableedit'       => 'Set to edit',
-	'whitelistnewtableview'       => 'Set to view',
-	'whitelistnewtableprocess'    => 'Process',
-	'whitelistnewtablereview'     => 'Review',
-	'whitelistselectrestricted'   => '== Select restricted user name ==',
-	'whitelistpagelist'           => "{{SITENAME}} pages for $1",
-	'whitelistnocalendar'         => "<font color='red' size=3>It looks like [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], a prerequisite for this extension, was not installed properly!</font>",
-	'whitelistbadtitle'           => 'Bad title - ',
-	'whitelistoverview'           => "== Overview of changes for $1 ==",
-	'whitelistoverviewcd'         => "* Changing date to '''$1''' for [[:$2|$2]]",
-	'whitelistoverviewsa'         => "* Setting access to '''$1''' for [[:$2|$2]]",
-	'whitelistoverviewrm'         => "* Removing access to [[:$1|$1]]",
-	'whitelistoverviewna'         => "* Adding [[:$1|$1]] to whitelist with access '''$2''' and '''$3''' expiry date",
-	'whitelistrequest'            => "Request access to more pages",
-	'whitelistrequestmsg'         => "$1 has requested access to the following pages:
+	'whitelistnewtabledate' => 'Expiry date:',
+	'whitelistnewtableedit' => 'Set to edit',
+	'whitelistnewtableview' => 'Set to view',
+	'whitelistnowhitelistedusers' => 'There are no users in the group "{{MediaWiki:Group-restricted}}".
+You have to [[Special:UserRights|add users to the group]] before you can add pages to a user\'s white list.',
+	'whitelistnewtableprocess' => 'Process',
+	'whitelistnewtablereview' => 'Review',
+	'whitelistselectrestricted' => '== Select restricted user name ==',
+	'whitelistpagelist' => "{{SITENAME}} pages for $1",
+	'whitelistnocalendar' => "<font color='red' size=3>It looks like [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], a prerequisite for this extension, was not installed properly!</font>",
+	'whitelistbadtitle' => 'Bad title - ',
+	'whitelistoverview' => "== Overview of changes for $1 ==",
+	'whitelistoverviewcd' => "* Changing date to '''$1''' for [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Setting access to '''$1''' for [[:$2|$2]]",
+	'whitelistoverviewrm' => "* Removing access to [[:$1|$1]]",
+	'whitelistoverviewna' => "* Adding [[:$1|$1]] to whitelist with access '''$2''' and '''$3''' expiry date",
+	'whitelistrequest' => "Request access to more pages",
+	'whitelistrequestmsg' => "$1 has requested access to the following {{PLURAL:$3|page|pages}}:
 
 $2",
-	'whitelistrequestconf'        => "Request for new pages was sent to $1",
-	'whitelistnonrestricted'      => "User '''$1''' is not a restricted user.
+	'whitelistrequestconf' => "Request for new pages was sent to $1",
+	'whitelistnonrestricted' => "User '''$1''' is not a restricted user.
 This page is only applicable to restricted users",
-	'whitelistnever'              => 'never',
-	'whitelistnummatches'         => " - {{PLURAL:$1|one match|$1 matches}}",
+	'whitelistnever' => 'never',
+	'whitelistnummatches' => ' - {{PLURAL:$1|one match|$1 matches}}',
+
+	# Right descriptions
+	'right-editwhitelist' => 'Modify the white list for existing users',
+	'right-restricttowhitelist' => 'Edit and view pages on the white list only',
+
+	# Action descriptions
+	'action-editwhitelist' => 'modify the white list for existing users',
+	'action-restricttowhitelist' => 'edit and view pages on the whitelist only',
+
+	# User groups and members
+	'group-restricted' => 'Restricted users',
+	'group-restricted-member' => 'Restricted user',
+	'group-manager' => 'Managers',
+	'group-manager-member' => 'Manager',
 );
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
  */
-$allMessages['qqq'] = array(
+$messages['qqq'] = array(
 	'whitelist-desc' => 'Short description of the White List extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'mywhitelistpages' => '{{Identical|My pages}}',
 	'whitelisttablemodifyall' => '{{Identical|All}}',
@@ -107,21 +123,21 @@ $allMessages['qqq'] = array(
 /** Faeag Rotuma (Faeag Rotuma)
  * @author Jose77
  */
-$allMessages['rtm'] = array(
+$messages['rtm'] = array(
 	'whitelisttableedit' => "A'tū'ạki",
 );
 
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
-$allMessages['niu'] = array(
+$messages['niu'] = array(
 	'whitelisttableedit' => 'Fakahakohako',
 );
 
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
-$allMessages['af'] = array(
+$messages['af'] = array(
 	'whitelisttablemodifyall' => 'Alle',
 	'whitelisttablemodifynone' => 'Geen',
 	'whitelisttableedit' => 'Wysig',
@@ -134,7 +150,7 @@ $allMessages['af'] = array(
  * @author Meno25
  * @author OsamaK
  */
-$allMessages['ar'] = array(
+$messages['ar'] = array(
 	'whitelist-desc' => 'عدل سماحات الوصول للمستخدمين المحددين',
 	'whitelistedit' => 'محرر وصول القائمة البيضاء',
 	'whitelist' => 'صفحات القائمة البيضاء',
@@ -179,13 +195,13 @@ $2',
 	'whitelistnonrestricted' => "المستخدم '''$1''' ليس مستخدما محددا.
 هذه الصفحة مطبقة فقط على المستخدمين المحددين",
 	'whitelistnever' => 'أبدا',
-	'whitelistnummatches' => '  - {{PLURAL:$1|مطابقة واحدة|$1 مطابقة}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|مطابقة واحدة|$1 مطابقة}}',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
-$allMessages['arz'] = array(
+$messages['arz'] = array(
 	'whitelist-desc' => 'عدل سماحات الوصول للمستخدمين المحددين',
 	'whitelistedit' => 'محرر وصول القائمة البيضاء',
 	'whitelist' => 'صفحات القائمة البيضاء',
@@ -230,20 +246,20 @@ $2',
 	'whitelistnonrestricted' => "المستخدم '''$1''' ليس مستخدما محددا.
 هذه الصفحة مطبقة فقط على المستخدمين المحددين",
 	'whitelistnever' => 'أبدا',
-	'whitelistnummatches' => '  - {{PLURAL:$1|مطابقة واحده|$1 مطابقة}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|مطابقة واحده|$1 مطابقة}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
-$allMessages['be-tarask'] = array(
+$messages['be-tarask'] = array(
 	'whitelisttableedit' => 'Рэдагаваць',
 );
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
-$allMessages['bg'] = array(
+$messages['bg'] = array(
 	'mywhitelistpages' => 'Моите страници',
 	'whitelistfor' => '<center>Текуща информация за <b>$1</b></center>',
 	'whitelisttablemodify' => 'Промяна',
@@ -271,13 +287,13 @@ $allMessages['bg'] = array(
 $2',
 	'whitelistrequestconf' => 'Заявка за нови страници беше изпратена на $1',
 	'whitelistnever' => 'никога',
-	'whitelistnummatches' => '  - {{PLURAL:$1|едно съвпадение|$1 съвпадения}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|едно съвпадение|$1 съвпадения}}',
 );
 
 /** Breton (Brezhoneg)
  * @author Fulup
  */
-$allMessages['br'] = array(
+$messages['br'] = array(
 	'mywhitelistpages' => 'Ma fajennoù',
 	'whitelisttablemodifyall' => 'Pep tra',
 	'whitelisttablemodifynone' => 'Hini ebet',
@@ -291,7 +307,7 @@ $allMessages['br'] = array(
 /** Bosnian (Bosanski)
  * @author CERminator
  */
-$allMessages['bs'] = array(
+$messages['bs'] = array(
 	'whitelisttablemodifyall' => 'Sve',
 	'whitelistrequestmsg' => '$1 zahtijeva pristup slijedećim stranicama:
 
@@ -302,7 +318,7 @@ $2',
  * @author Jordi Roqué
  * @author SMP
  */
-$allMessages['ca'] = array(
+$messages['ca'] = array(
 	'whitelisttablemodifynone' => 'Cap',
 	'whitelisttableedit' => 'Edita',
 	'whitelistnever' => 'mai',
@@ -311,14 +327,14 @@ $allMessages['ca'] = array(
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */
-$allMessages['ch'] = array(
+$messages['ch'] = array(
 	'whitelisttableedit' => 'Tulaika',
 );
 
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
-$allMessages['cy'] = array(
+$messages['cy'] = array(
 	'whitelisttablemodifyall' => 'Oll',
 	'whitelisttableedit' => 'Golygu',
 );
@@ -326,7 +342,7 @@ $allMessages['cy'] = array(
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
-$allMessages['da'] = array(
+$messages['da'] = array(
 	'whitelisttablemodifynone' => 'Ingen',
 	'whitelisttableedit' => 'Redigér',
 	'whitelistnever' => 'aldrig',
@@ -335,7 +351,7 @@ $allMessages['da'] = array(
 /** German (Deutsch)
  * @author Liam Rosen
  */
-$allMessages['de'] = array(
+$messages['de'] = array(
 	'whitelist-desc' => 'Zugriffsrechte von beschränkten Benutzern bearbeiten',
 	'whitelistedit' => 'Whitelist-Zugriff-Editor',
 	'whitelist' => 'Whitelist-Seiten',
@@ -384,28 +400,28 @@ Diese Seite gilt nur für beschränkte Bentzer.",
 /** Zazaki (Zazaki)
  * @author Belekvor
  */
-$allMessages['diq'] = array(
+$messages['diq'] = array(
 	'whitelisttablemodifynone' => 'çino',
 );
 
 /** Ewe (Eʋegbe)
  * @author Natsubee
  */
-$allMessages['ee'] = array(
+$messages['ee'] = array(
 	'whitelistnever' => 'gbeɖe',
 );
 
 /** Greek (Ελληνικά)
  * @author Consta
  */
-$allMessages['el'] = array(
+$messages['el'] = array(
 	'mywhitelistpages' => 'Οι Σελίδες μου',
 );
 
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
-$allMessages['eo'] = array(
+$messages['eo'] = array(
 	'whitelist' => 'Blanklisto Paĝoj',
 	'mywhitelistpages' => 'Miaj Paĝoj',
 	'whitelistfor' => '<center>Nuna informo por <b>$1</b></center>',
@@ -435,7 +451,7 @@ $allMessages['eo'] = array(
 $2',
 	'whitelistrequestconf' => 'Peto por novaj paĝoj estis sendita al $1',
 	'whitelistnever' => 'neniam',
-	'whitelistnummatches' => '- {{PLURAL:$1|unu trafo|$1 trafoj}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|unu trafo|$1 trafoj}}',
 );
 
 /** Spanish (Español)
@@ -443,7 +459,7 @@ $2',
  * @author Piolinfax
  * @author Sanbec
  */
-$allMessages['es'] = array(
+$messages['es'] = array(
 	'whitelist-desc' => 'Editar los permisos de acceso de usuarios restringidos',
 	'mywhitelistpages' => 'Mis páginas',
 	'whitelistfor' => '<center>Informacion actual para <b>$1</b></center>',
@@ -466,12 +482,12 @@ $allMessages['es'] = array(
 	'whitelistoverview' => '== Resumen de cambios para $1 ==',
 	'whitelistoverviewna' => "* Agregando [[:$1|$1]] a la lista con acceso '''$2''' y fecha de expiración '''$3'''",
 	'whitelistrequest' => 'Solicitar acceso a más páginas',
-	'whitelistrequestmsg' => '$1 solicitó acceso a las páginas siguientes: 
+	'whitelistrequestmsg' => '$1 solicitó acceso a las páginas siguientes:
 
 $2',
 	'whitelistrequestconf' => 'La solicitud de nuevas páginas fue enviada a $1',
 	'whitelistnever' => 'nunca',
-	'whitelistnummatches' => '  - $1 coincidencias.',
+	'whitelistnummatches' => ' - $1 coincidencias.',
 );
 
 /** French (Français)
@@ -479,7 +495,7 @@ $2',
  * @author McDutchie
  * @author Zetud
  */
-$allMessages['fr'] = array(
+$messages['fr'] = array(
 	'whitelist-desc' => 'Modifie les permissions d’accès des utilisateurs à pouvoirs restreints',
 	'whitelistedit' => 'Éditeur de la liste blanche des accès',
 	'whitelist' => 'Pages de listes blanches',
@@ -521,16 +537,16 @@ Utiliser soit le caractère * soit %',
 
 $2',
 	'whitelistrequestconf' => 'Une demande d’accès pour de nouvelles pages a été envoyée à $1',
-	'whitelistnonrestricted' => "L'utilisateur  '''$1''' n’est pas avec des droits restreints.
+	'whitelistnonrestricted' => "L'utilisateur '''$1''' n’est pas avec des droits restreints.
 Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.",
 	'whitelistnever' => 'jamais',
-	'whitelistnummatches' => '- {{PLURAL:$1|une occurence|$1 occurences}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|une occurence|$1 occurences}}',
 );
 
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
-$allMessages['fy'] = array(
+$messages['fy'] = array(
 	'whitelisttablemodifyall' => 'Alle',
 	'whitelisttablemodifynone' => 'Gjin',
 	'whitelisttableedit' => 'Wizigje',
@@ -539,7 +555,7 @@ $allMessages['fy'] = array(
 /** Galician (Galego)
  * @author Toliño
  */
-$allMessages['gl'] = array(
+$messages['gl'] = array(
 	'whitelist-desc' => 'Editar os permisos de acceso dos usuarios restrinxidos',
 	'whitelistedit' => 'Editor de acceso da listaxe branca (whitelist)',
 	'whitelist' => 'Páxinas da listaxe branca',
@@ -584,20 +600,20 @@ $2',
 	'whitelistnonrestricted' => "O usuario '''$1''' non é un usuario limitado.
 Esta páxina só é aplicable aos usuarios limitados",
 	'whitelistnever' => 'nunca',
-	'whitelistnummatches' => '  - {{PLURAL:$1|unha coincidencia|$1 coincidencias}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|unha coincidencia|$1 coincidencias}}',
 );
 
 /** Gothic
  * @author Jocke Pirat
  */
-$allMessages['got'] = array(
+$messages['got'] = array(
 	'whitelisttableedit' => 'Máidjan',
 );
 
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */
-$allMessages['hak'] = array(
+$messages['hak'] = array(
 	'whitelisttableedit' => 'Phiên-chho',
 );
 
@@ -605,7 +621,7 @@ $allMessages['hak'] = array(
  * @author Kalani
  * @author Singularity
  */
-$allMessages['haw'] = array(
+$messages['haw'] = array(
 	'mywhitelistpages' => 'Ka‘u mau ‘ao‘ao',
 	'whitelisttablemodifyall' => 'Apau',
 	'whitelisttableedit' => 'E ho‘opololei',
@@ -617,7 +633,7 @@ $allMessages['haw'] = array(
  * @author Rotemliss
  * @author YaronSh
  */
-$allMessages['he'] = array(
+$messages['he'] = array(
 	'whitelist-desc' => 'עריכת הרשאות הגישה של משתמשים מוגבלים',
 	'whitelistedit' => 'עורך הגישה לרשימה הלבנה',
 	'whitelist' => 'דפי הרשימה הלבנה',
@@ -662,13 +678,13 @@ $2',
 	'whitelistnonrestricted' => "המשתמש '''$1''' אינו משתמש מוגבל.
 ניתן להשתמש בדף זה עבור משתמשים מוגבלים בלבד",
 	'whitelistnever' => 'לעולם לא',
-	'whitelistnummatches' => '  - {{PLURAL:$1|תוצאה אחת|$1 תוצאות}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|תוצאה אחת|$1 תוצאות}}',
 );
 
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
-$allMessages['hi'] = array(
+$messages['hi'] = array(
 	'whitelisttablemodifyall' => 'सभी',
 	'whitelisttablemodifynone' => 'बिल्कुल नहीं',
 	'whitelisttableexpires' => 'समाप्ती',
@@ -681,14 +697,14 @@ $allMessages['hi'] = array(
 /** Hiligaynon (Ilonggo)
  * @author Jose77
  */
-$allMessages['hil'] = array(
+$messages['hil'] = array(
 	'whitelisttableedit' => 'Ilisan',
 );
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
-$allMessages['hr'] = array(
+$messages['hr'] = array(
 	'whitelisttablemodifyall' => 'Sve',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistnever' => 'nikad',
@@ -697,14 +713,14 @@ $allMessages['hr'] = array(
 /** Hungarian (Magyar)
  * @author Dani
  */
-$allMessages['hu'] = array(
+$messages['hu'] = array(
 	'whitelisttablemodifynone' => 'Nincs',
 );
 
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
-$allMessages['ia'] = array(
+$messages['ia'] = array(
 	'whitelist-desc' => 'Modificar le permissiones de accesso de usatores restringite',
 	'whitelistedit' => 'Editor de accesso al lista blanc',
 	'whitelist' => 'Adder paginas al lista blanc',
@@ -749,13 +765,13 @@ $2',
 	'whitelistnonrestricted' => "Le usator '''$1''' non es un usator restringite.
 Iste pagina es solmente applicabile al usatores restringite",
 	'whitelistnever' => 'nunquam',
-	'whitelistnummatches' => '  - {{PLURAL:$1|un occurrentia|$1 occurrentias}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|un occurrentia|$1 occurrentias}}',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
-$allMessages['id'] = array(
+$messages['id'] = array(
 	'whitelisttablemodifyall' => 'Semua',
 	'whitelisttablemodifynone' => 'Tidak ada',
 );
@@ -763,7 +779,7 @@ $allMessages['id'] = array(
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
-$allMessages['is'] = array(
+$messages['is'] = array(
 	'whitelistbadtitle' => 'Slæmur titill -',
 	'whitelistnever' => 'aldrei',
 );
@@ -771,14 +787,14 @@ $allMessages['is'] = array(
 /** Italian (Italiano)
  * @author Darth Kule
  */
-$allMessages['it'] = array(
+$messages['it'] = array(
 	'whitelisttableedit' => 'Modifica',
 );
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
-$allMessages['jv'] = array(
+$messages['jv'] = array(
 	'whitelistedit' => 'Editor Aksès Daftar Putih',
 	'whitelist' => 'Kaca-kaca Daftar Putih',
 	'mywhitelistpages' => 'Kaca-kacaku',
@@ -814,14 +830,14 @@ $allMessages['jv'] = array(
 $2',
 	'whitelistrequestconf' => 'Panyuwunan kaca-kaca anyar dikirimaké menyang $1',
 	'whitelistnever' => 'ora tau',
-	'whitelistnummatches' => '- pituwas $1 sing cocog',
+	'whitelistnummatches' => ' - pituwas $1 sing cocog',
 );
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
  */
-$allMessages['km'] = array(
+$messages['km'] = array(
 	'mywhitelistpages' => 'ទំព័ររបស់ខ្ញុំ',
 	'whitelisttablemodify' => 'កែសំរួល',
 	'whitelisttablemodifyall' => 'ទាំងអស់',
@@ -844,14 +860,14 @@ $allMessages['km'] = array(
 /** Krio (Krio)
  * @author Jose77
  */
-$allMessages['kri'] = array(
+$messages['kri'] = array(
 	'whitelisttableedit' => 'Chenj',
 );
 
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */
-$allMessages['krj'] = array(
+$messages['krj'] = array(
 	'whitelisttableedit' => 'Iislan',
 	'whitelistnever' => 'Indi gid',
 );
@@ -859,7 +875,7 @@ $allMessages['krj'] = array(
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
-$allMessages['ksh'] = array(
+$messages['ksh'] = array(
 	'whitelist-desc' => 'De Zohjangs-Rääschte fun beschrängkte Metmaachere Ändere.',
 	'whitelistedit' => '<i lang="en">whitelist</i> Zohjang Ändere',
 	'whitelist' => '<i lang="en">whitelist</i> Sigge',
@@ -889,7 +905,7 @@ Donn entweder <b>*</b> udder <b>%</b> als en Platzhallder nämme för „<i>mer 
 	'whitelistnewtablereview' => 'Övverpröfe',
 	'whitelistselectrestricted' => '== Enjeschränkte Metmaacher-Name ußsöke ==',
 	'whitelistpagelist' => '{{SITENAME}} Sigge för $1',
-	'whitelistnocalendar' => '<font color=\'red\' size=3>Dä [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Zosatz <i lang="en">UsageStatistics</i>], weed för der [http://www.mediawiki.org/wiki/Extension:WhiteList Zosatz  <i lang="en">WhiteList</i>] jebruch, eß ävver nit enstalleett, udder wood nit jefonge!</font>',
+	'whitelistnocalendar' => '<font color=\'red\' size=3>Dä [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Zosatz <i lang="en">UsageStatistics</i>], weed för der [http://www.mediawiki.org/wiki/Extension:WhiteList Zosatz <i lang="en">WhiteList</i>] jebruch, eß ävver nit enstalleett, udder wood nit jefonge!</font>',
 	'whitelistbadtitle' => 'Dä Titel paß nit -',
 	'whitelistoverview' => '== Änderunge — Övverseech för $1 ==',
 	'whitelistoverviewcd' => "* Änder dat Dattum för [[:$2|$2]] op '''$1'''",
@@ -910,7 +926,7 @@ Di Sigg hee is nor för beschränkte Metmaacher ze bruche.",
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
-$allMessages['lb'] = array(
+$messages['lb'] = array(
 	'whitelist-desc' => "Ännert d'Rechter vu Benotzer mat limitéierte Rechter",
 	'whitelist' => "''Whiteliste''-Säiten",
 	'mywhitelistpages' => 'Meng Säiten',
@@ -931,7 +947,7 @@ $allMessages['lb'] = array(
 	'whitelistpagelist' => 'Säite vu(n) {{SITENAME}} fir $1',
 	'whitelistbadtitle' => 'Schlechten Titel -',
 	'whitelistoverview' => '== Iwwersiicht vun den Ännerunge vun $1 ==',
-	'whitelistoverviewcd' => "* Datum vun '''$1''' ännere  fir [[:$2|$2]]",
+	'whitelistoverviewcd' => "* Datum vun '''$1''' ännere fir [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Autorisatioun vum '''$1''' op [[:$2|$2]] astellen",
 	'whitelistoverviewrm' => '* Autorisatioun fir [[:$1|$1]] gët ewechgeholl',
 	'whitelistrequest' => 'Zougang zu méi Säite froen',
@@ -940,13 +956,13 @@ $allMessages['lb'] = array(
 $2',
 	'whitelistrequestconf' => "D'Ufro fir nei Säite gouf geschéckt un $1",
 	'whitelistnever' => 'nie',
-	'whitelistnummatches' => '- $1 {{PLURAL:$1|Resultat|Resultater}}',
+	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Resultat|Resultater}}',
 );
 
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
-$allMessages['mhr'] = array(
+$messages['mhr'] = array(
 	'mywhitelistpages' => 'Мыйын лаштык-влак',
 	'whitelistnever' => 'нигунам',
 );
@@ -954,7 +970,7 @@ $allMessages['mhr'] = array(
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */
-$allMessages['ml'] = array(
+$messages['ml'] = array(
 	'mywhitelistpages' => 'എന്റെ താളുകള്‍',
 	'whitelisttablemodify' => 'തിരുത്തുക',
 	'whitelisttablemodifyall' => 'എല്ലാം',
@@ -978,14 +994,14 @@ $allMessages['ml'] = array(
 	'whitelistpagelist' => '{{SITENAME}} സം‌രംഭത്തില്‍ $1ന്റെ താളുകള്‍',
 	'whitelistbadtitle' => 'അസാധുവായ തലക്കെട്ട്',
 	'whitelistnever' => 'ഒരിക്കലും അരുത്:',
-	'whitelistnummatches' => '- $1 യോജിച്ച ഫലങ്ങള്‍',
+	'whitelistnummatches' => ' - $1 യോജിച്ച ഫലങ്ങള്‍',
 );
 
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar
  */
-$allMessages['mr'] = array(
+$messages['mr'] = array(
 	'mywhitelistpages' => 'माझी पाने',
 	'whitelistfor' => '<center><b>$1</b>बद्दलची सध्याची माहिती</center>',
 	'whitelisttablemodify' => 'बदला',
@@ -1018,7 +1034,7 @@ $2',
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
-$allMessages['myv'] = array(
+$messages['myv'] = array(
 	'whitelisttablemodifyall' => 'Весе',
 	'whitelisttableremove' => 'Нардык',
 );
@@ -1026,7 +1042,7 @@ $allMessages['myv'] = array(
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */
-$allMessages['nah'] = array(
+$messages['nah'] = array(
 	'whitelisttablemodifyall' => 'Mochīntīn',
 	'whitelisttablemodifynone' => 'Ahtlein',
 	'whitelisttableedit' => 'Ticpatlāz',
@@ -1038,7 +1054,7 @@ $allMessages['nah'] = array(
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
-$allMessages['nds'] = array(
+$messages['nds'] = array(
 	'whitelisttablemodify' => 'Ännern',
 	'whitelisttablemodifyall' => 'All',
 	'whitelisttablemodifynone' => 'Keen',
@@ -1050,14 +1066,14 @@ $allMessages['nds'] = array(
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
-$allMessages['nds-nl'] = array(
+$messages['nds-nl'] = array(
 	'whitelisttableedit' => 'Bewark',
 );
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
-$allMessages['nl'] = array(
+$messages['nl'] = array(
 	'whitelist-desc' => 'Toegangsrechten voor gebruikers met beperkte rechten bewerken',
 	'whitelistedit' => 'Toegang via witte lijst',
 	'whitelist' => "Pagina's op de witte lijst",
@@ -1083,7 +1099,7 @@ Gebruik * of % als wildcard",
 	'whitelistnewtabledate' => 'Verloopdatum:',
 	'whitelistnewtableedit' => 'Op bewerken instellen',
 	'whitelistnewtableview' => 'Op bekijken instellen',
-	'whitelistnewtableprocess' => 'Verwerken',
+	'whitelistnewtableprocess' => 'Bewerken',
 	'whitelistnewtablereview' => 'Controleren',
 	'whitelistselectrestricted' => '== Gebruiker met beperkingen selecteren ==',
 	'whitelistpagelist' => "{{SITENAME}} pagina's voor $1",
@@ -1102,13 +1118,13 @@ $2",
 	'whitelistnonrestricted' => "Gebruiker '''$1''' is geen gebruiker met beperkte rechten.
 Deze pagina is alleen van toepassing op gebruikers met beperkte rechten.",
 	'whitelistnever' => 'nooit',
-	'whitelistnummatches' => '- $1 {{PLURAL:$1|resultaat|resultaten}}',
+	'whitelistnummatches' => ' - $1 {{PLURAL:$1|resultaat|resultaten}}',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Jon Harald Søby
  */
-$allMessages['nn'] = array(
+$messages['nn'] = array(
 	'whitelisttablemodifynone' => 'Ingen',
 	'whitelisttableedit' => 'Endre',
 	'whitelisttableremove' => 'Fjern',
@@ -1118,7 +1134,7 @@ $allMessages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
-$allMessages['no'] = array(
+$messages['no'] = array(
 	'whitelist-desc' => 'Redigering av tilgangsrettigheter for begrensede brukere',
 	'whitelistedit' => 'Rettighetsredigering for hvitliste',
 	'whitelist' => 'Hvitelistede sider',
@@ -1162,13 +1178,13 @@ $2',
 	'whitelistnonrestricted' => "'''$1''' er ikke en begrenset bruker.
 Denne siden kan kun brukes på begrensede brukere.",
 	'whitelistnever' => 'aldri',
-	'whitelistnummatches' => '- $1 {{PLURAL:$1|treff}}',
+	'whitelistnummatches' => ' - $1 {{PLURAL:$1|treff}}',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
-$allMessages['oc'] = array(
+$messages['oc'] = array(
 	'whitelist-desc' => 'Modifica las permissions d’accès dels utilizaires de poders restrenches',
 	'whitelistedit' => 'Editor de la lista blanca dels accèsses',
 	'whitelist' => 'Paginas de listas blancas',
@@ -1210,16 +1226,16 @@ Utilizatz siá lo caractèr * siá %',
 
 $2',
 	'whitelistrequestconf' => 'Una demanda d’accès per de paginas novèlas es estada mandada a $1',
-	'whitelistnonrestricted' => "L'utilizaire  '''$1''' es pas amb de dreches restrenches.
+	'whitelistnonrestricted' => "L'utilizaire '''$1''' es pas amb de dreches restrenches.
 Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenches.",
 	'whitelistnever' => 'jamai',
-	'whitelistnummatches' => '- {{PLURAL:$1|una ocuréncia|$1 ocuréncias}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|una ocuréncia|$1 ocuréncias}}',
 );
 
 /** Ossetic (Иронау)
  * @author Amikeco
  */
-$allMessages['os'] = array(
+$messages['os'] = array(
 	'whitelisttableedit' => 'Баив æй',
 	'whitelistbadtitle' => 'Æнæмбæлон сæргонд —',
 	'whitelistnever' => 'никуы',
@@ -1228,7 +1244,7 @@ $allMessages['os'] = array(
 /** Punjabi (ਪੰਜਾਬੀ)
  * @author Gman124
  */
-$allMessages['pa'] = array(
+$messages['pa'] = array(
 	'whitelisttablemodifyall' => 'ਸਭ',
 	'whitelisttableedit' => 'ਬਦਲੋ',
 	'whitelisttableview' => 'ਵੇਖੋ',
@@ -1239,7 +1255,7 @@ $allMessages['pa'] = array(
  * @author Sp5uhe
  * @author Wpedzich
  */
-$allMessages['pl'] = array(
+$messages['pl'] = array(
 	'whitelist-desc' => 'Umożliwianie dostępu użytkownikom z ograniczeniami',
 	'whitelistedit' => 'Edytor listy stron ogólnie dostępnych',
 	'whitelist' => 'Strony z listy ogólnie dostępnych',
@@ -1284,13 +1300,13 @@ $2',
 	'whitelistnonrestricted' => "Na użytkownika '''$1''' nie nałożono ograniczeń.
 Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone ograniczenia.",
 	'whitelistnever' => 'nigdy',
-	'whitelistnummatches' => '  - {{PLURAL:$1|1 wynik|$1 wyniki|$1 wyników}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|1 wynik|$1 wyniki|$1 wyników}}',
 );
 
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
-$allMessages['ps'] = array(
+$messages['ps'] = array(
 	'mywhitelistpages' => 'زما پاڼې',
 	'whitelisttablemodifyall' => 'ټول',
 	'whitelisttablemodifynone' => 'هېڅ',
@@ -1308,7 +1324,7 @@ $allMessages['ps'] = array(
 /** Portuguese (Português)
  * @author Malafaya
  */
-$allMessages['pt'] = array(
+$messages['pt'] = array(
 	'mywhitelistpages' => 'Minhas Páginas',
 	'whitelisttablemodify' => 'Modificar',
 	'whitelisttableedit' => 'Editar',
@@ -1319,13 +1335,13 @@ $allMessages['pt'] = array(
 
 $2',
 	'whitelistnever' => 'nunca',
-	'whitelistnummatches' => '  - $1 resultados',
+	'whitelistnummatches' => ' - $1 resultados',
 );
 
 /** Tarifit (Tarifit)
  * @author Jose77
  */
-$allMessages['rif'] = array(
+$messages['rif'] = array(
 	'whitelisttablemodifyall' => 'Maṛṛa',
 	'whitelisttableedit' => 'Arri',
 );
@@ -1334,7 +1350,7 @@ $allMessages['rif'] = array(
  * @author KlaudiuMihaila
  * @author Mihai
  */
-$allMessages['ro'] = array(
+$messages['ro'] = array(
 	'whitelisttablemodifynone' => 'Nimic',
 	'whitelisttableedit' => 'Modifică',
 	'whitelisttableremove' => 'Elimină',
@@ -1346,7 +1362,7 @@ $allMessages['ro'] = array(
  * @author Innv
  * @author Александр Сигачёв
  */
-$allMessages['ru'] = array(
+$messages['ru'] = array(
 	'whitelist-desc' => 'Редактировать права доступа участников',
 	'whitelistedit' => 'Редактор доступа белого списка',
 	'whitelist' => 'Страницы белого списка',
@@ -1372,7 +1388,7 @@ $allMessages['ru'] = array(
 /** Slovak (Slovenčina)
  * @author Helix84
  */
-$allMessages['sk'] = array(
+$messages['sk'] = array(
 	'whitelist-desc' => 'Upraviť oprávnenia prístupu používateľov',
 	'whitelistedit' => 'Editor bielej listiny prístupu',
 	'whitelist' => 'Dať stránky na bielu listinu',
@@ -1417,13 +1433,13 @@ $2',
 	'whitelistnonrestricted' => "Používateľ '''$1''' nie je obmedzený používateľ.
 Táto stránka sa týka iba obmedzneých používateľov.",
 	'whitelistnever' => 'nikdy',
-	'whitelistnummatches' => '  - $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}',
+	'whitelistnummatches' => ' - $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
  */
-$allMessages['sr-ec'] = array(
+$messages['sr-ec'] = array(
 	'whitelisttablemodifynone' => 'Нема',
 	'whitelisttableedit' => 'Уреди',
 	'whitelisttableremove' => 'Уклони',
@@ -1432,7 +1448,7 @@ $allMessages['sr-ec'] = array(
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */
-$allMessages['su'] = array(
+$messages['su'] = array(
 	'whitelisttableedit' => 'Édit',
 );
 
@@ -1441,7 +1457,7 @@ $allMessages['su'] = array(
  * @author Najami
  * @author Sannab
  */
-$allMessages['sv'] = array(
+$messages['sv'] = array(
 	'whitelist-desc' => 'Redigera åtkomsträttigheter för begränsade användare',
 	'whitelistedit' => 'Rättighetsredigerare för vitlista',
 	'whitelist' => 'Vitlistade sidor',
@@ -1493,7 +1509,7 @@ Denna sida är endast tillämpbar på begränsade användare",
  * @author Herr Kriss
  * @author Pimke
  */
-$allMessages['szl'] = array(
+$messages['szl'] = array(
 	'whitelisttableedit' => 'Sprowjéj',
 	'whitelistbadtitle' => 'Zuy titel',
 );
@@ -1501,14 +1517,14 @@ $allMessages['szl'] = array(
 /** Tamil (தமிழ்)
  * @author Trengarasu
  */
-$allMessages['ta'] = array(
+$messages['ta'] = array(
 	'whitelisttablemodifyall' => 'அனைத்து',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
  */
-$allMessages['te'] = array(
+$messages['te'] = array(
 	'mywhitelistpages' => 'నా పేజీలు',
 	'whitelisttablemodifyall' => 'అన్నీ',
 	'whitelisttablepage' => 'వికీ పేజీ',
@@ -1518,13 +1534,13 @@ $allMessages['te'] = array(
 	'whitelistnewtabledate' => 'కాల పరిమితి:',
 	'whitelistnewtablereview' => 'సమీక్షించు',
 	'whitelistpagelist' => '$1 కై {{SITENAME}} పేజీలు',
-	'whitelistnummatches' => '  - {{PLURAL:$1|ఒక పోలిక|$1 పోలికలు}}',
+	'whitelistnummatches' => ' - {{PLURAL:$1|ఒక పోలిక|$1 పోలికలు}}',
 );
 
 /** Tetum (Tetun)
  * @author MF-Warburg
  */
-$allMessages['tet'] = array(
+$messages['tet'] = array(
 	'mywhitelistpages' => "Ha'u-nia pájina sira",
 	'whitelisttablemodifyall' => 'Hotu',
 	'whitelisttableedit' => 'Edita',
@@ -1533,7 +1549,7 @@ $allMessages['tet'] = array(
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
-$allMessages['tg-cyrl'] = array(
+$messages['tg-cyrl'] = array(
 	'whitelist-desc' => 'Иҷозаҳои дастрасии корбарони маҳдудшударо вироиш кунед',
 	'whitelist' => 'Саҳифаҳои Феҳристи сафед',
 	'mywhitelistpages' => 'Саҳифаҳои Ман',
@@ -1567,14 +1583,14 @@ $2',
 /** Thai (ไทย)
  * @author Octahedron80
  */
-$allMessages['th'] = array(
+$messages['th'] = array(
 	'whitelisttablemodifyall' => 'ทั้งหมด',
 );
 
 /** Turkish (Türkçe)
  * @author Karduelis
  */
-$allMessages['tr'] = array(
+$messages['tr'] = array(
 	'mywhitelistpages' => 'Sayfalarım',
 	'whitelisttablemodifyall' => 'Hepsi',
 	'whitelisttablemodifynone' => 'Hiçbiri',
@@ -1588,7 +1604,7 @@ $allMessages['tr'] = array(
  * @author Minh Nguyen
  * @author Vinhtantran
  */
-$allMessages['vi'] = array(
+$messages['vi'] = array(
 	'whitelisttablemodifyall' => 'Tất cả',
 	'whitelisttablemodifynone' => 'Không có',
 	'whitelisttableedit' => 'Sửa',
@@ -1600,14 +1616,14 @@ $allMessages['vi'] = array(
 /** Volapük (Volapük)
  * @author Malafaya
  */
-$allMessages['vo'] = array(
+$messages['vo'] = array(
 	'whitelisttablemodifynone' => 'Nonik',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)
  * @author Roc michael
  */
-$allMessages['zh-tw'] = array(
+$messages['zh-tw'] = array(
 	'whitelist-desc' => '設定受限制用戶的存取權',
 	'whitelistedit' => '授權名單內的編輯用戶',
 	'whitelist' => '授權清單頁面',

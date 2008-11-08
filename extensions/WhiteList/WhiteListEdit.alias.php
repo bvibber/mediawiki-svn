@@ -8,7 +8,7 @@ $aliases = array();
 
 $aliases['en'] = array(
 	'WhiteList' => array( 'WhiteList' ),
-	'WhitelistEdit' => array( 'WhitelistEdit' ),
+	'WhiteListEdit' => array( 'WhiteListEdit' ),
 );
 
 /** Arabic (العربية)
@@ -16,7 +16,7 @@ $aliases['en'] = array(
  */
 $aliases['ar'] = array(
 	'WhiteList' => array( 'قائمة_بيضاء' ),
-	'WhitelistEdit' => array( 'تعديل_القائمة_البيضاء' ),
+	'WhiteListEdit' => array( 'تعديل_القائمة_البيضاء' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -24,19 +24,19 @@ $aliases['ar'] = array(
  */
 $aliases['arz'] = array(
 	'WhiteList' => array( 'قائمة_بيضاء' ),
-	'WhitelistEdit' => array( 'تعديل_القائمة_البيضاء' ),
+	'WhiteListEdit' => array( 'تعديل_القائمة_البيضاء' ),
 );
 
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WhiteList' => array( 'فهرست_سفید' ),
-	'WhitelistEdit' => array( 'ویرایش_فهرست_سفید' ),
+	'WhiteListEdit' => array( 'ویرایش_فهرست_سفید' ),
 );
 
 /** French (Français) */
 $aliases['fr'] = array(
 	'WhiteList' => array( 'ListeBlanche' ),
-	'WhitelistEdit' => array( 'ModifierListeBlanche' ),
+	'WhiteListEdit' => array( 'ModifierListeBlanche' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
@@ -47,19 +47,19 @@ $aliases['hsb'] = array(
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'WhiteList' => array( 'បញ្ជីស' ),
-	'WhitelistEdit' => array( 'កែប្រែបញ្ជីស' ),
+	'WhiteListEdit' => array( 'កែប្រែបញ្ជីស' ),
 );
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'WhiteList' => array( 'Wiiße Less' ),
-	'WhitelistEdit' => array( 'Wiiße Less Ändere' ),
+	'WhiteListEdit' => array( 'Wiiße Less Ändere' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'WhiteList' => array( 'WhiteList' ),
-	'WhitelistEdit' => array( 'WhiteList änneren' ),
+	'WhiteListEdit' => array( 'WhiteList änneren' ),
 );
 
 /** Macedonian (Македонски) */
@@ -70,13 +70,13 @@ $aliases['mk'] = array(
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'WhiteList' => array( 'Witte_lieste' ),
-	'WhitelistEdit' => array( 'Witte_lieste_bewarken' ),
+	'WhiteListEdit' => array( 'Witte_lieste_bewarken' ),
 );
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'WhiteList' => array( 'WitteLijst' ),
-	'WhitelistEdit' => array( 'WitteLijstBewerken' ),
+	'WhiteListEdit' => array( 'WitteLijstBewerken' ),
 );
 
 /** Occitan (Occitan) */
