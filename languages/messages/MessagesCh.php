@@ -527,7 +527,7 @@ Nina'i i rasion ''$2'' as $3",
 'nohistory'           => "Tåya' historian tinilaika este na påhina.",
 'currentrev'          => 'Tinilaika modetnu',
 'revisionasof'        => 'Maribisa ginen $1',
-'revision-info'       => 'Tinilaika ginen $1 as $2',
+'revision-info'       => 'Tinilaika ginen $1 as $2', # Additionally available: $3: revision id
 'previousrevision'    => "←Ribision mas amko'",
 'nextrevision'        => 'Mas nuebu na tinilaika→',
 'currentrevisionlink' => 'I mas nuebu na tinilaika',
@@ -566,8 +566,8 @@ Komu administradot {{SITENAME}} siña un atan ha';
 fana'an guåha attikulo gi [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} log muna'susuha].</div>",
 'rev-delundel'                => "na'annok/nå'na'",
 'revisiondelete'              => "Na'suha/para håfa muna'suha i tinilaika",
-'revdelete-selected'          => "{{PLURAL:$2|Tinilaika ma'ayek|Tinilaika manma'ayek}} gi [[:$1]]:",
-'logdelete-selected'          => "{{PLURAL:$1|Kasun log ni ma'ayek|Kasun log ni manma'ayek}}:",
+'revdelete-selected'          => "'''{{PLURAL:$2|Tinilaika ma'ayek|Tinilaika manma'ayek}} gi [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Kasun log ni ma'ayek|Kasun log ni manma'ayek}}:'''",
 'revdelete-legend'            => "Po'lo i chinemma' lini'e'on siha",
 'revdelete-hide-text'         => "Nå'na' i tinige' ribision",
 'revdelete-hide-comment'      => "Nå'na' i kommentun tinilaika",
@@ -748,6 +748,7 @@ Fanapunta na fana'an ti gus nuebu i listan-ñiha i guinahan {{SITENAME}}.",
 'nchanges'        => '$1 {{PLURAL:$1|na tinilaika|na tinilaika siha}}',
 'recentchanges'   => 'Tinilaika siha gi halacha',
 'rcnote'          => "Guåha {{PLURAL:$1|'''1''' na tinilaika|'''$1''' na tinilaika siha}} gi {{PLURAL:$2|day|'''$2''' days}}, ginen $5, $4.",
+'rcnotefrom'      => "Gi papa' guåha i tinilaika siha ginen '''$2''' (fa'na'an '''$1''' ma'annok).",
 'rclistfrom'      => "Na'annok i mannuebun tinilaika siha ginen $1",
 'rcshowhideminor' => "$1 na mandikike' na tinilaika siha",
 'rcshowhidebots'  => '$1 na bots siha',
@@ -889,22 +890,19 @@ Fanapunta na fana'an ti gus nuebu i listan-ñiha i guinahan {{SITENAME}}.",
 'emailuser' => "Na'e-mail i muna'sesetbi este",
 
 # Watchlist
-'watchlist'            => 'Listan pinilan-hu',
-'mywatchlist'          => 'Listan pinilan-hu',
-'watchlistfor'         => "(para '''$1''')",
-'addedwatch'           => "Mapo'lo gi listan pinilan",
-'addedwatchtext'       => "Mana'suha i påhina \"[[:\$1]]\" para iyo-mu [[Special:Watchlist|Listan pinilan]].
+'watchlist'         => 'Listan pinilan-hu',
+'mywatchlist'       => 'Listan pinilan-hu',
+'watchlistfor'      => "(para '''$1''')",
+'addedwatch'        => "Mapo'lo gi listan pinilan",
+'addedwatchtext'    => "Mana'suha i påhina \"[[:\$1]]\" para iyo-mu [[Special:Watchlist|Listan pinilan]].
 I tinilaika siha mo'na gi tiempo kontodu i påhinan kombetsasion siha para u fana'lista guihi, yan para u '''na'potpot''' i påhina gi halom [[Special:RecentChanges|i listan tinilaika gi halacha]] para un ayek ha' mas libianu.",
-'removedwatch'         => "Mana'suha gi listan pinilan",
-'removedwatchtext'     => 'Mana\'suha i påhinan "[[:$1]]" gi [[Special:Watchlist|listan pinilan-mu]].',
-'watch'                => 'Pulan',
-'watchthispage'        => 'Pulan este na påhina',
-'unwatch'              => 'Basta mapulan',
-'watchlist-details'    => '{{PLURAL:$1|$1 påhina|$1 na påhina siha}} un pupulan, sin i påhinan kombetsasion siha.',
-'wlshowlast'           => "Na'annok $1 na ora yan $2 na diha siha gi halacha $3",
-'watchlist-hide-bots'  => "Nå'na' i tinilaikan bot",
-'watchlist-hide-own'   => "Nå'na' i tinilaika-hu",
-'watchlist-hide-minor' => "Nå'na' i tinilaika siha ni mandikike'",
+'removedwatch'      => "Mana'suha gi listan pinilan",
+'removedwatchtext'  => 'Mana\'suha i påhinan "[[:$1]]" gi [[Special:Watchlist|listan pinilan-mu]].',
+'watch'             => 'Pulan',
+'watchthispage'     => 'Pulan este na påhina',
+'unwatch'           => 'Basta mapulan',
+'watchlist-details' => '{{PLURAL:$1|$1 påhina|$1 na påhina siha}} un pupulan, sin i påhinan kombetsasion siha.',
+'wlshowlast'        => "Na'annok $1 na ora yan $2 na diha siha gi halacha $3",
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Mamulan...',
@@ -1137,8 +1135,5 @@ Ti mantattiyi i areklo ni sigienten ina'chetton siha gi mismo liña, i.e. i påh
 
 # Special:SpecialPages
 'specialpages' => 'Manespesiat na påhina',
-
-# Special:Nuke
-'nuke-submit-user' => 'Hånao',
 
 );

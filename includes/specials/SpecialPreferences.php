@@ -42,7 +42,7 @@ class PreferencesForm {
 		$this->mStubs = $request->getVal( 'wpStubs' );
 		$this->mRows = $request->getVal( 'wpRows' );
 		$this->mCols = $request->getVal( 'wpCols' );
-		$this->mSkin = $request->getVal( 'wpSkin' );
+		$this->mSkin = Skin::normalizeKey( $request->getVal( 'wpSkin' ) );
 		$this->mMath = $request->getVal( 'wpMath' );
 		$this->mDate = $request->getVal( 'wpDate' );
 		$this->mUserEmail = $request->getVal( 'wpUserEmail' );
@@ -268,7 +268,10 @@ class PreferencesForm {
 		$wgUser->setOption( 'variant', $this->mUserVariant );
 		$wgUser->setOption( 'nickname', $this->mNick );
 		$wgUser->setOption( 'quickbar', $this->mQuickbar );
-		$wgUser->setOption( 'skin', $this->mSkin );
+		global $wgAllowUserSkin;
+		if( $wgAllowUserSkin ) {
+			$wgUser->setOption( 'skin', $this->mSkin );
+		}
 		global $wgUseTeX;
 		if( $wgUseTeX ) {
 			$wgUser->setOption( 'math', $this->mMath );
@@ -643,7 +646,7 @@ class PreferencesForm {
 			);
 
 		if( wfRunHooks( 'PreferencesUserInformationPanel', array( $this, &$userInformationHtml ) ) ) {
-			$wgOut->addHtml( $userInformationHtml );
+			$wgOut->addHTML( $userInformationHtml );
 		}
 
 		if ( $wgAllowRealName ) {
@@ -728,7 +731,7 @@ class PreferencesForm {
 			}
 
 			if(count($variantArray) > 1) {
-				$wgOut->addHtml(
+				$wgOut->addHTML(
 					$this->tableRow(
 						Xml::label( wfMsg( 'yourvariant' ), 'wpUserVariant' ),
 						Xml::tags( 'select',
@@ -740,7 +743,7 @@ class PreferencesForm {
 			}
 
 			if(count($variantArray) > 1 && !$wgDisableLangConversion && !$wgDisableTitleConversion) {
-				$wgOut->addHtml(
+				$wgOut->addHTML(
 					Xml::tags( 'tr', null,
 						Xml::tags( 'td', array( 'colspan' => '2' ),
 							$this->getToggle( "noconvertlink" )
@@ -819,45 +822,47 @@ class PreferencesForm {
 		# Quickbar
 		#
 		if ($this->mSkin == 'cologneblue' || $this->mSkin == 'standard') {
-			$wgOut->addHtml( "<fieldset>\n<legend>" . wfMsg( 'qbsettings' ) . "</legend>\n" );
+			$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg( 'qbsettings' ) . "</legend>\n" );
 			for ( $i = 0; $i < count( $qbs ); ++$i ) {
 				if ( $i == $this->mQuickbar ) { $checked = ' checked="checked"'; }
 				else { $checked = ""; }
 				$wgOut->addHTML( "<div><label><input type='radio' name='wpQuickbar' value=\"$i\"$checked />{$qbs[$i]}</label></div>\n" );
 			}
-			$wgOut->addHtml( "</fieldset>\n\n" );
+			$wgOut->addHTML( "</fieldset>\n\n" );
 		} else {
 			# Need to output a hidden option even if the relevant skin is not in use,
 			# otherwise the preference will get reset to 0 on submit
-			$wgOut->addHtml( wfHidden( 'wpQuickbar', $this->mQuickbar ) );
+			$wgOut->addHTML( wfHidden( 'wpQuickbar', $this->mQuickbar ) );
 		}
 
 		# Skin
 		#
-		$wgOut->addHTML( "<fieldset>\n<legend>\n" . wfMsg('skin') . "</legend>\n" );
-		$mptitle = Title::newMainPage();
-		$previewtext = wfMsg('skin-preview');
-		# Only show members of Skin::getSkinNames() rather than
-		# $skinNames (skins is all skin names from Language.php)
-		$validSkinNames = Skin::getUsableSkins();
-		# Sort by UI skin name. First though need to update validSkinNames as sometimes
-		# the skinkey & UI skinname differ (e.g. "standard" skinkey is "Classic" in the UI).
-		foreach ($validSkinNames as $skinkey => & $skinname ) {
-			if ( isset( $skinNames[$skinkey] ) )  {
-				$skinname = $skinNames[$skinkey];
+		global $wgAllowUserSkin;
+		if( $wgAllowUserSkin ) {
+			$wgOut->addHTML( "<fieldset>\n<legend>\n" . wfMsg('skin') . "</legend>\n" );
+			$mptitle = Title::newMainPage();
+			$previewtext = wfMsg('skin-preview');
+			# Only show members of Skin::getSkinNames() rather than
+			# $skinNames (skins is all skin names from Language.php)
+			$validSkinNames = Skin::getUsableSkins();
+			# Sort by UI skin name. First though need to update validSkinNames as sometimes
+			# the skinkey & UI skinname differ (e.g. "standard" skinkey is "Classic" in the UI).
+			foreach ($validSkinNames as $skinkey => & $skinname ) {
+				if ( isset( $skinNames[$skinkey] ) )  {
+					$skinname = $skinNames[$skinkey];
+				}
 			}
+			asort($validSkinNames);
+			foreach ($validSkinNames as $skinkey => $sn ) {
+				$checked = $skinkey == $this->mSkin ? ' checked="checked"' : '';
+				$mplink = htmlspecialchars($mptitle->getLocalURL("useskin=$skinkey"));
+				$previewlink = $wgAllowUserSkin ? "(<a target='_blank' href=\"$mplink\">$previewtext</a>)" : '';
+				if( $skinkey == $wgDefaultSkin )
+					$sn .= ' (' . wfMsg( 'default' ) . ')';
+				$wgOut->addHTML( "<input type='radio' name='wpSkin' id=\"wpSkin$skinkey\" value=\"$skinkey\"$checked /> <label for=\"wpSkin$skinkey\">{$sn}</label> $previewlink<br />\n" );
+			}
+			$wgOut->addHTML( "</fieldset>\n\n" );
 		}
-		asort($validSkinNames);
-		foreach ($validSkinNames as $skinkey => $sn ) {
-			$checked = $skinkey == $this->mSkin ? ' checked="checked"' : '';
-
-			$mplink = htmlspecialchars($mptitle->getLocalURL("useskin=$skinkey"));
-			$previewlink = "(<a target='_blank' href=\"$mplink\">$previewtext</a>)";
-			if( $skinkey == $wgDefaultSkin )
-				$sn .= ' (' . wfMsg( 'default' ) . ')';
-			$wgOut->addHTML( "<input type='radio' name='wpSkin' id=\"wpSkin$skinkey\" value=\"$skinkey\"$checked /> <label for=\"wpSkin$skinkey\">{$sn}</label> $previewlink<br />\n" );
-		}
-		$wgOut->addHTML( "</fieldset>\n\n" );
 
 		# Math
 		#
@@ -997,11 +1002,12 @@ class PreferencesForm {
 				'externaldiff',
 				$wgLivePreview ? 'uselivepreview' : false,
 				'forceeditsummary',
-			) ) . '</fieldset>'
-		);
+			) ) );
+		
+		$wgOut->addHTML( '</fieldset>' );
 
 		# Recent changes
-		$wgOut->addHtml( '<fieldset><legend>' . wfMsgHtml( 'prefs-rc' ) . '</legend>' );
+		$wgOut->addHTML( '<fieldset><legend>' . wfMsgHtml( 'prefs-rc' ) . '</legend>' );
 
 		$rc  = '<table><tr>';
 		$rc .= '<td>' . Xml::label( wfMsg( 'recentchangesdays' ), 'wpRecentDays' ) . '</td>';
@@ -1010,42 +1016,42 @@ class PreferencesForm {
 		$rc .= '<td>' . Xml::label( wfMsg( 'recentchangescount' ), 'wpRecent' ) . '</td>';
 		$rc .= '<td>' . Xml::input( 'wpRecent', 3, $this->mRecent, array( 'id' => 'wpRecent' ) ) . '</td>';
 		$rc .= '</tr></table>';
-		$wgOut->addHtml( $rc );
+		$wgOut->addHTML( $rc );
 
-		$wgOut->addHtml( '<br />' );
+		$wgOut->addHTML( '<br />' );
 
 		$toggles[] = 'hideminor';
 		if( $wgRCShowWatchingUsers )
 			$toggles[] = 'shownumberswatching';
 		$toggles[] = 'usenewrc';
-		$wgOut->addHtml( $this->getToggles( $toggles ) );
+		$wgOut->addHTML( $this->getToggles( $toggles ) );
 
-		$wgOut->addHtml( '</fieldset>' );
+		$wgOut->addHTML( '</fieldset>' );
 
 		# Watchlist
-		$wgOut->addHtml( '<fieldset><legend>' . wfMsgHtml( 'prefs-watchlist' ) . '</legend>' );
+		$wgOut->addHTML( '<fieldset><legend>' . wfMsgHtml( 'prefs-watchlist' ) . '</legend>' );
 
-		$wgOut->addHtml( wfInputLabel( wfMsg( 'prefs-watchlist-days' ), 'wpWatchlistDays', 'wpWatchlistDays', 3, $this->mWatchlistDays ) );
-		$wgOut->addHtml( '<br /><br />' );
+		$wgOut->addHTML( wfInputLabel( wfMsg( 'prefs-watchlist-days' ), 'wpWatchlistDays', 'wpWatchlistDays', 3, $this->mWatchlistDays ) );
+		$wgOut->addHTML( '<br /><br />' );
 
-		$wgOut->addHtml( $this->getToggle( 'extendwatchlist' ) );
-		$wgOut->addHtml( wfInputLabel( wfMsg( 'prefs-watchlist-edits' ), 'wpWatchlistEdits', 'wpWatchlistEdits', 3, $this->mWatchlistEdits ) );
-		$wgOut->addHtml( '<br /><br />' );
+		$wgOut->addHTML( $this->getToggle( 'extendwatchlist' ) );
+		$wgOut->addHTML( wfInputLabel( wfMsg( 'prefs-watchlist-edits' ), 'wpWatchlistEdits', 'wpWatchlistEdits', 3, $this->mWatchlistEdits ) );
+		$wgOut->addHTML( '<br /><br />' );
 
-		$wgOut->addHtml( $this->getToggles( array( 'watchlisthideminor', 'watchlisthidebots', 'watchlisthideown', 'watchlisthideanons', 'watchlisthideliu' ) ) );
+		$wgOut->addHTML( $this->getToggles( array( 'watchlisthideminor', 'watchlisthidebots', 'watchlisthideown', 'watchlisthideanons', 'watchlisthideliu' ) ) );
 
 		if( $wgUser->isAllowed( 'createpage' ) || $wgUser->isAllowed( 'createtalk' ) )
-			$wgOut->addHtml( $this->getToggle( 'watchcreations' ) );
+			$wgOut->addHTML( $this->getToggle( 'watchcreations' ) );
 		foreach( array( 'edit' => 'watchdefault', 'move' => 'watchmoves', 'delete' => 'watchdeletion' ) as $action => $toggle ) {
 			if( $wgUser->isAllowed( $action ) )
-				$wgOut->addHtml( $this->getToggle( $toggle ) );
+				$wgOut->addHTML( $this->getToggle( $toggle ) );
 		}
 		$this->mUsedToggles['watchcreations'] = true;
 		$this->mUsedToggles['watchdefault'] = true;
 		$this->mUsedToggles['watchmoves'] = true;
 		$this->mUsedToggles['watchdeletion'] = true;
 
-		$wgOut->addHtml( '</fieldset>' );
+		$wgOut->addHTML( '</fieldset>' );
 
 		# Search
 		$mwsuggest = $wgEnableMWSuggest ?
@@ -1089,8 +1095,8 @@ class PreferencesForm {
 		# Misc
 		#
 		$wgOut->addHTML('<fieldset><legend>' . wfMsg('prefs-misc') . '</legend>');
-		$wgOut->addHtml( '<label for="wpStubs">' . wfMsg( 'stub-threshold' ) . '</label>&nbsp;' );
-		$wgOut->addHtml( Xml::input( 'wpStubs', 6, $this->mStubs, array( 'id' => 'wpStubs' ) ) );
+		$wgOut->addHTML( '<label for="wpStubs">' . wfMsg( 'stub-threshold' ) . '</label>&nbsp;' );
+		$wgOut->addHTML( Xml::input( 'wpStubs', 6, $this->mStubs, array( 'id' => 'wpStubs' ) ) );
 		$msgUnderline = htmlspecialchars( wfMsg ( 'tog-underline' ) );
 		$msgUnderlinenever = htmlspecialchars( wfMsg ( 'underline-never' ) );
 		$msgUnderlinealways = htmlspecialchars( wfMsg ( 'underline-always' ) );
@@ -1109,9 +1115,13 @@ class PreferencesForm {
 
 		foreach ( $togs as $tname ) {
 			if( !array_key_exists( $tname, $this->mUsedToggles ) ) {
-				$wgOut->addHTML( $this->getToggle( $tname ) );
+				if( $tname == 'norollbackdiff' && $wgUser->isAllowed( 'rollback' ) )
+					$wgOut->addHTML( $this->getToggle( $tname ) );
+				else
+					$wgOut->addHTML( $this->getToggle( $tname ) );
 			}
 		}
+
 		$wgOut->addHTML( '</fieldset>' );
 
 		wfRunHooks( 'RenderPreferencesForm', array( $this, $wgOut ) );
@@ -1130,7 +1140,7 @@ class PreferencesForm {
 	<input type='hidden' name='wpEditToken' value=\"{$token}\" />
 	</div></form>\n" );
 
-		$wgOut->addHtml( Xml::tags( 'div', array( 'class' => "prefcache" ),
+		$wgOut->addHTML( Xml::tags( 'div', array( 'class' => "prefcache" ),
 			wfMsgExt( 'clearyourcache', 'parseinline' ) )
 		);
 	}

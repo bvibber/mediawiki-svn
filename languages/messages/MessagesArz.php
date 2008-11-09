@@ -208,6 +208,7 @@ $specialPageAliases = array(
 	'Wantedpages'               => array( 'صفحات_مطلوبة', 'وصلات_مكسورة' ),
 	'Wantedcategories'          => array( 'تصنيفات_مطلوبة' ),
 	'Wantedfiles'               => array( 'ملفات_مطلوبة' ),
+	'Wantedtemplates'           => array( 'قوالب_مطلوبة' ),
 	'Mostlinked'                => array( 'الأكثر_وصلا' ),
 	'Mostlinkedcategories'      => array( 'أكثر_التصنيفات_وصلا', 'أكثر_التصنيفات_استخداما' ),
 	'Mostlinkedtemplates'       => array( 'أكثر_القوالب_وصلا', 'أكثر_القوالب_استخداما' ),
@@ -869,8 +870,8 @@ $2',
 'storedversion'                    => 'النسخة المخزنة',
 'nonunicodebrowser'                => '<strong>تحذير: البراوزر بتاعك مش متوافق مع اليونيكود.
 اتعالج الموضوع دا علشان تقدر تعدل الصفحة بامان: الحروف اللى مش ASCII ح تظهر فى صندوق التحرير كأكواد سداسية عشرية.</strong>',
-'editingold'                       => '<strong>   تحذير: أنت تقدلوقتى بتحرر نسخة قديمة من  الصفحة دي.
- ولو حفظتها، ح تضيع كل التغييرات اللى حصلت بعد  النسخة دي. </strong>',
+'editingold'                       => '<strong>   تحذير: انت دلوقتى بتحرر نسخة قديمة من  الصفحة دى.
+ ولو سييفتها، هاتضيع كل التغييرات اللى حصلت بعد  النسخة دى. </strong>',
 'yourdiff'                         => 'الفروق',
 'copyrightwarning'                 => 'من فضلك لاحظ ان كل المساهمات فى {{SITENAME}} بتتنشر حسب شروط ترخيص $2 (بص على $1 علشان تعرف  تفاصيل اكتر)
 لو مش عايز كتابتك تتعدل او تتوزع من غير مقابل و بدون اذنك ، ما تحطهاش هنا<br />. كمان انت  بتتعهد بانك كتبت كلام تعديلك بنفسك، او نسخته من مصدر يعتبر ضمن الملكيه العامه، أو مصدر حر تان.
@@ -950,7 +951,7 @@ $2',
 'currentrev'             => 'النسخه دلوقتى',
 'currentrev-asof'        => 'المراجعة الحالية بتاريخ $1',
 'revisionasof'           => 'تعديلات من $1',
-'revision-info'          => 'نسخه $1 بواسطة $2',
+'revision-info'          => 'نسخه $1 بواسطة $2', # Additionally available: $3: revision id
 'previousrevision'       => '←نسخه اقدم',
 'nextrevision'           => 'نسخه احدث→',
 'currentrevisionlink'    => 'النسخه دلوقتى',
@@ -994,12 +995,12 @@ $2',
 'revisiondelete'              => 'امسح/الغى المسح بتاع المراجعات',
 'revdelete-nooldid-title'     => 'مراجعة هدف مش صح',
 'revdelete-nooldid-text'      => 'أنت ياإما ما حددتش مراجعة (مراجعات) معينة كهدف للفعل دا، المراجعة المحددة مش موجودة، أو أنك بتحاول تخبى المراجعة الحالية.',
-'revdelete-selected'          => '{{PLURAL:$2|المراجعة المختارة|المراجعات المختارة}} ل[[:$1]]:',
-'logdelete-selected'          => '{{PLURAL:$1|حدث السجل المختار|أحداث السجل المختارة}}:',
-'revdelete-text'              => 'المراجعات والأحداث الممسوحة هاتفضل تظهر فى تاريخ الصفحة والسجلات،
+'revdelete-selected'          => "'''{{PLURAL:$2|المراجعة المختارة|المراجعات المختارة}} ل[[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|حدث السجل المختار|أحداث السجل المختارة}}:'''",
+'revdelete-text'              => "'''المراجعات والأحداث الممسوحة هاتفضل تظهر فى تاريخ الصفحة والسجلات،'''
 لكن أجزاء من محتواهم مش هايكون مسموح للعامة يشوفوها.
 
-الإداريون التانين فى {{SITENAME}}هايفضل بإمكانهم رؤية المحتوى المخفى وممكن يسترجعوه من جديد من خلال الواجهة نفسها، الا اذا تم وضع قيود إضافية.',
+الإداريون التانين فى {{SITENAME}}هايفضل بإمكانهم رؤية المحتوى المخفى وممكن يسترجعوه من جديد من خلال الواجهة نفسها، الا اذا تم وضع قيود إضافية.",
 'revdelete-legend'            => 'وضع حدود رؤية',
 'revdelete-hide-text'         => 'إخفاء نص النسخة',
 'revdelete-hide-name'         => 'تخبية الإجراء والهدف منه',
@@ -1358,7 +1359,7 @@ $2',
 'action-delete'               => 'حذف هذه الصفحة',
 'action-deleterevision'       => 'حذف هذه المراجعة',
 'action-deletedhistory'       => 'رؤية تاريخ هذه الصفحة المحذوف',
-'action-browsearchive'        => 'البحث في الصفحات المحذوفة',
+'action-browsearchive'        => 'البحث فى الصفحات المحذوفة',
 'action-undelete'             => 'استرجاع هذه الصفحة',
 'action-suppressrevision'     => 'مراجعة واسترجاع هذه المراجعة المخفية',
 'action-suppressionlog'       => 'رؤية هذا السجل الخاص',
@@ -1382,6 +1383,7 @@ $2',
 'recentchangestext'                 => 'تابع آخر التغييرات فى الويكى على الصفحة دي.',
 'recentchanges-feed-description'    => 'تابع احدث التعديلات للويكى ده عن طريق الفييد ده .',
 'rcnote'                            => "فيه تحت {{PLURAL:$1|'''1''' تغيير|آخر '''$1''' تغيير}} فى آخر {{PLURAL:$2|يوم|'''$2''' يوم}}، بدءا من $5، $4.",
+'rcnotefrom'                        => "دى التعديلات من '''$2''' (ل '''$1''' معروضه).",
 'rclistfrom'                        => 'اظهر التعديلات بدايه من $1',
 'rcshowhideminor'                   => '$1 تعديلات صغيره',
 'rcshowhidebots'                    => '$1 البوتات',
@@ -1402,6 +1404,8 @@ $2',
 'rc_categories'                     => 'حصر لتصنيفات (مفصولة برمز "|")',
 'rc_categories_any'                 => 'أى',
 'newsectionsummary'                 => '/* $1 */ قسم جديد',
+'rc-enhanced-expand'                => 'عرض التفاصيل (يتطلب جافاسكريبت)',
+'rc-enhanced-hide'                  => 'إخفاء التفاصيل',
 
 # Recent changes linked
 'recentchangeslinked'          => 'تعديلات  ليها علاقه',
@@ -1637,7 +1641,7 @@ PICT # misc.
 
 # Unused templates
 'unusedtemplates'     => 'قوالب مش مستعمله',
-'unusedtemplatestext' => 'الصفحة دى فيها لستة بالصفحات من نطاق قالب و اللى مش مستعملة فى صفحات تانية
+'unusedtemplatestext' => 'الصفحة دى فيها لستة بالصفحات من نطاق {{ns:template}} و اللى مش مستعملة فى صفحات تانية
 افتكر قبل ما تمسحها تشوف لو فى وصلات تانية للقوالب دي',
 'unusedtemplateswlh'  => 'وصلات  تانيه',
 
@@ -1702,7 +1706,7 @@ PICT # misc.
 'nviews'                  => '{{PLURAL:$1|مشاهدة واحدة|مشاهدتين|$1 مشاهدات|$1 مشاهدة}}',
 'specialpage-empty'       => 'مافيش نتايج للتقرير دا.',
 'lonelypages'             => 'صفحات يتيمه',
-'lonelypagestext'         => 'الصفحات دى ماعندهاش لينكات  من الصفحات التانية فى {{SITENAME}}.',
+'lonelypagestext'         => 'الصفحات دى ماعندهاش لينكات أو تضمينات من الصفحات التانية فى {{SITENAME}}.',
 'uncategorizedpages'      => 'صفحات مش متصنفه',
 'uncategorizedcategories' => 'تصنيفات مش متصنفه',
 'uncategorizedimages'     => 'ملفات مش متصنفه',
@@ -1713,6 +1717,7 @@ PICT # misc.
 'wantedcategories'        => 'تصانيف مطلوبه',
 'wantedpages'             => 'صفحات مطلوبه',
 'wantedfiles'             => 'ملفات مطلوبة',
+'wantedtemplates'         => 'قوالب متعازة',
 'mostlinked'              => 'اكتر صفحات موصولة بصفحات تانيه',
 'mostlinkedcategories'    => 'اكتر التصانيف فى عدد الارتباطات',
 'mostlinkedtemplates'     => 'اكتر القوالب فى عدد الوصلات',
@@ -1837,10 +1842,8 @@ PICT # misc.
 'mailnologintext' => 'لازم تعمل [[Special:UserLogin|تسجيل الدخول]] و تدخل ايميل صحيح فى صفحة [[Special:Preferences|التفضيلات]] علشان تقدر تبعت ايميلات لليوزرز التانيين.',
 'emailuser'       => 'ابعت ايميل لليوزر دا',
 'emailpage'       => 'ابعت ايميل لليوزر ده',
-'emailpagetext'   => 'لو اليوزر دا دخل ايميل صحيح فى التفضيلات بتاعته،
-ف حيتبعت له رسالة واحدة بس حسب الاستمارة اللى تحت دي.
-عنوان الايميل اللى دخلته فى [[Special:Preferences|التفضيلات بتاعتك]]
-ح يظهر فى  على انه عنوان الاستمارة و بكدة اللى حيستقبله ح يقدر يرد على الايميل.',
+'emailpagetext'   => 'ممكن تستعمل الاستمارة اللى تحت دى عشان تيعت ايميل لليوزر دا.
+عنوان الايميل اللى كتبته فى [[Special:Preferences|التفضيلات بتاعتك]] ح يظهر على انه عنوان الاستمارة و بكدة اللى حيستقبله ح يقدر يرد على الايميل.',
 'usermailererror' => 'البريد رجع غلط:',
 'defemailsubject' => 'إيميل من {{SITENAME}}',
 'noemailtitle'    => 'مافيش  عنوان ايميل',
@@ -1858,47 +1861,35 @@ PICT # misc.
 'emailuserfooter' => 'الايميل دا بعته $1 لـ $2 عن طريق خاصية "مراسلة اليوزر" فى {{SITENAME}}.',
 
 # Watchlist
-'watchlist'                => 'لستة الصفحات اللى باراقبها',
-'mywatchlist'              => 'لستة  الصفحات اللى باراقبها',
-'watchlistfor'             => "(ل '''$1''')",
-'nowatchlist'              => 'مافيش حاجة فى لستة مراقبتك.',
-'watchlistanontext'        => 'لو سمحت $1 لعرض أو تعديل الصفحات فى لستة مراقبتك.',
-'watchnologin'             => 'مش متسجل',
-'watchnologintext'         => 'لازم تكون [[Special:UserLogin|مسجل الدخول]] علشان تعدل لستة المراقبة بتاعتك.',
-'addedwatch'               => 'تمت الاضافه للستة الصفحات اللى بتراقبها',
-'addedwatchtext'           => 'تمت إضافة الصفحه  "$1"  [[Special:Watchlist|للستة الصفحات اللى بتراقبها]].
+'watchlist'            => 'لستة الصفحات اللى باراقبها',
+'mywatchlist'          => 'لستة  الصفحات اللى باراقبها',
+'watchlistfor'         => "(ل '''$1''')",
+'nowatchlist'          => 'مافيش حاجة فى لستة مراقبتك.',
+'watchlistanontext'    => 'لو سمحت $1 لعرض أو تعديل الصفحات فى لستة مراقبتك.',
+'watchnologin'         => 'مش متسجل',
+'watchnologintext'     => 'لازم تكون [[Special:UserLogin|مسجل الدخول]] علشان تعدل لستة المراقبة بتاعتك.',
+'addedwatch'           => 'تمت الاضافه للستة الصفحات اللى بتراقبها',
+'addedwatchtext'       => 'تمت إضافة الصفحه  "$1"  [[Special:Watchlist|للستة الصفحات اللى بتراقبها]].
 التعديلات اللى بعد كده ها تتحط على الصفحه دى، وصفحة المناقش الخاصه بها ها تتحط هناك. واسم الصفحة هايظهر  بخط <b>عريض</b> فى صفحة [[Special:RecentChanges|أحدث التعديلات]] لتسهيل تحديدها واكتشافها.',
-'removedwatch'             => 'اتشالت  من لستة الصفحات اللى بتراقبها',
-'removedwatchtext'         => 'الصفحه دى اتشالت "[[:$1]]" من [[Special:Watchlist|لستة الصفحات اللى بتراقبها]].',
-'watch'                    => 'راقب',
-'watchthispage'            => 'راقب الصفحه دى',
-'unwatch'                  => 'بطل مراقبه',
-'unwatchthispage'          => 'اتوقف عن المراقبة',
-'notanarticle'             => 'دى مش صفحة بتاعة محتوى',
-'notvisiblerev'            => 'النسحة اتمسحت',
-'watchnochange'            => 'مافيش ولا صفحة اتعدلت فى لستة مراقبتك فى الفترة الزمنية اللى حددتها.',
-'watchlist-details'        => '{{PLURAL:$1|$1 صفحه|$1 صفحه}} فى قايمه مراقبتك، بدون عد صفحات المناقشه.',
-'wlheader-enotif'          => '*خاصية الاعلام بالايميل متفعلة',
-'wlheader-showupdated'     => "* الصفحات اللى اتغيرت  بعد زيارتك ليها اخر مرة معروضة بالخط '''العريض'''",
-'watchmethod-recent'       => 'التشييك على التعديلات الاخيرة للصفحات المتراقبة',
-'watchmethod-list'         => 'التشييك فى الصفحات المتراقبة على التعديلات الاخيرة',
-'watchlistcontains'        => 'لستة المراقبة بتاعتك فيها $1 {{PLURAL:$1|صفحة|صفحات}}.',
-'iteminvalidname'          => "مشكلة فى '$1'، اسم مش صحيح...",
-'wlnote'                   => "تحت فى {{PLURAL:$1|آخر تغيير|آخر '''$1''' تغيير}} فى آخر {{PLURAL:$2|ساعة|'''$2''' ساعة}}.",
-'wlshowlast'               => 'عرض اخر $1 ساعات $2 ايام $3',
-'watchlist-show-bots'      => 'عرض تعديلات البوتات',
-'watchlist-hide-bots'      => 'تخبية تعديلات البوت',
-'watchlist-show-own'       => 'عرض تعديلاتى',
-'watchlist-hide-own'       => 'اخفاء تعديلاتى',
-'watchlist-show-minor'     => 'عرض التعديلات الطفيفة',
-'watchlist-hide-minor'     => 'خبى التعديلات الصغيره',
-'watchlist-show-anons'     => 'اعرض التعديلات بتاعة اليوزرز المجهولين',
-'watchlist-hide-anons'     => 'خبى التعديلات بتاعة اليوزرز المجهولين',
-'watchlist-show-liu'       => 'اعرض التعديلات بتاعة اليوزرز المسجلين دخولهم',
-'watchlist-hide-liu'       => 'خبى التعديلات بتاعة اليوزرز المسجلين دخولهم',
-'watchlist-show-patrolled' => 'عرض التعديلات المراجعة',
-'watchlist-hide-patrolled' => 'إخفاء التعديلات المراجعة',
-'watchlist-options'        => 'اختيارات قايمة المراقبة',
+'removedwatch'         => 'اتشالت  من لستة الصفحات اللى بتراقبها',
+'removedwatchtext'     => 'الصفحه دى اتشالت "[[:$1]]" من [[Special:Watchlist|لستة الصفحات اللى بتراقبها]].',
+'watch'                => 'راقب',
+'watchthispage'        => 'راقب الصفحه دى',
+'unwatch'              => 'بطل مراقبه',
+'unwatchthispage'      => 'اتوقف عن المراقبة',
+'notanarticle'         => 'دى مش صفحة بتاعة محتوى',
+'notvisiblerev'        => 'النسحة اتمسحت',
+'watchnochange'        => 'مافيش ولا صفحة اتعدلت فى لستة مراقبتك فى الفترة الزمنية اللى حددتها.',
+'watchlist-details'    => '{{PLURAL:$1|$1 صفحه|$1 صفحه}} فى قايمه مراقبتك، بدون عد صفحات المناقشه.',
+'wlheader-enotif'      => '*خاصية الاعلام بالايميل متفعلة',
+'wlheader-showupdated' => "* الصفحات اللى اتغيرت  بعد زيارتك ليها اخر مرة معروضة بالخط '''العريض'''",
+'watchmethod-recent'   => 'التشييك على التعديلات الاخيرة للصفحات المتراقبة',
+'watchmethod-list'     => 'التشييك فى الصفحات المتراقبة على التعديلات الاخيرة',
+'watchlistcontains'    => 'لستة المراقبة بتاعتك فيها $1 {{PLURAL:$1|صفحة|صفحات}}.',
+'iteminvalidname'      => "مشكلة فى '$1'، اسم مش صحيح...",
+'wlnote'               => "تحت فى {{PLURAL:$1|آخر تغيير|آخر '''$1''' تغيير}} فى آخر {{PLURAL:$2|ساعة|'''$2''' ساعة}}.",
+'wlshowlast'           => 'عرض اخر $1 ساعات $2 ايام $3',
+'watchlist-options'    => 'اختيارات قايمة المراقبة',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'راقب...',
@@ -1982,7 +1973,7 @@ $NEWPAGE
 
 آخر واحد  عدل الصفحة دى هوه [[User:$3|$3]] ([[User talk:$3|نقاش]]).',
 'editcomment'      => 'تعليق التعديل كان: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'استرجع التعديلات بواسطة [[Special:Contributions/$2|$2]] ([[User talk:$2|مناقشة]]) لآخر نسخة بواسطة [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'استرجع التعديلات بواسطة [[Special:Contributions/$2|$2]] ([[User talk:$2|مناقشة]]) لآخر نسخة بواسطة [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'استرجع تعديلات $1؛
 استرجع لآخر نسخة بواسطة $2.',
 'sessionfailure'   => 'الظاهر انه فى مشكلة فى جلسة دخولك دى ؛
@@ -2177,6 +2168,7 @@ $1',
 'ipbhidename'                     => 'خبى اسم اليوزر من سجل المنع، لستة المنع النشطة ولستة اليوزرز',
 'ipbwatchuser'                    => 'راقب صفحات اليوزر و النقاش بتوع اليوزر دا',
 'ipballowusertalk'                => 'السماح لهذا المستخدم بتعديل صفحة نقاشه الخاصة أثناء المنع',
+'ipb-change-block'                => 'أعد منع المستخدم بهذه الإعدادات',
 'badipaddress'                    => 'عنوان أيبى مش صحيح',
 'blockipsuccesssub'               => 'المنع حصل بنجاح',
 'blockipsuccesstext'              => 'اتمنع [[Special:Contributions/$1|$1]].<br />
@@ -2217,6 +2209,7 @@ $1',
 'blocklogpage'                    => 'سجل المنع',
 'blocklog-fulllog'                => 'سجل المنع الكامل',
 'blocklogentry'                   => 'منع "[[$1]]" لفترةه زمنيه مدتها $2 $3',
+'reblock-logentry'                => 'غير إعدادات المنع ل[[$1]] بتاريخ انتهاء $2 $3',
 'blocklogtext'                    => 'دا سجل بعمليات المنع ورفع المنع.
 عناوين الأيبى اللى اتمنعت اوتوماتيكى مش معروضة.
 شوف [[Special:IPBlockList|عناوين الأيبى الممنوعة]] علشان تشوف عمليات المنع الشغالة دلوقتي.',
@@ -2231,6 +2224,8 @@ $1',
 'ipb_expiry_invalid'              => 'تاريخ الانتهاء مش صحيح.',
 'ipb_expiry_temp'                 => 'عمليات منع أسماء اليوزرز المستخبية لازم تكون على طول.',
 'ipb_already_blocked'             => '"$1" ممنوع فعلا',
+'ipb-needreblock'                 => '== ممنوع بالفعل ==
+$1 ممنوع بالفعل. هل تريد تغيير الإعدادات؟',
 'ipb_cant_unblock'                => 'غلطه: عنوان الااى بى الممنوع  مش موجود  $1.
 يمكن اترفع منعه فعلا.',
 'ipb_blocked_as_range'            => 'غلط: الأيبى $1 مش ممنوع مباشرةو مش ممكن رفع المنع عنه.
@@ -2554,11 +2549,12 @@ $1',
 'markedaspatrollederror-noautopatrol' => 'مش مسموح ليك تعلم على تغييراتك الشخصية كأنها متراجعة.',
 
 # Patrol log
-'patrol-log-page'   => 'سجل المراجعة',
-'patrol-log-header' => 'دا سجل بالنسخ المتراجعة',
-'patrol-log-line'   => 'علم على $1 من $2 كأنها متراجعة $3',
-'patrol-log-auto'   => '(اوتوماتيكي)',
-'patrol-log-diff'   => 'ن$1',
+'patrol-log-page'      => 'سجل المراجعة',
+'patrol-log-header'    => 'دا سجل بالنسخ المتراجعة',
+'patrol-log-line'      => 'علم على $1 من $2 كأنها متراجعة $3',
+'patrol-log-auto'      => '(اوتوماتيكي)',
+'patrol-log-diff'      => 'ن$1',
+'log-show-hide-patrol' => '$1 سجل المراجعة',
 
 # Image deletion
 'deletedrevision'                 => 'مسح النسخة القديمة $1',
@@ -2979,10 +2975,9 @@ $1
 'unit-pixel' => 'بيكس',
 
 # action=purge
-'confirm_purge'        => 'امسح الكاش بتاع الصفحة دي؟
-
-$1',
 'confirm_purge_button' => 'طيب',
+'confirm-purge-top'    => 'امسح الكاش بتاع الصفحة دي؟',
+'confirm-purge-bottom' => 'إفراغ كاش صفحة يمحو الكاش ويجبر أحدث نسخة على الظهور.',
 
 # Separators for various lists, etc.
 'semicolon-separator' => '؛&#32;',
@@ -3192,17 +3187,5 @@ $1',
 #السطور اللى تبدأ ب# تتم معاملتها كتعليقات
 
 #ضع كل منثورات التعبيرات المنتظمة فوق السطر ده. سيب السطر ده تمام كما هو</pre>',
-
-# Special:Nuke
-'nuke'               => 'مسح كبير',
-'nuke-nopages'       => '[[Special:Contributions/$1|$1]]  ماعملش صفحات جديدة فى احدث التغيرات.',
-'nuke-list'          => 'الصفحات دى اتعملها انشاء قريب عى طريق [[Special:Contributions/$1|$1]];
-اكتب تعليق و دوس على الزرار علشان تمسحهم.',
-'nuke-defaultreason' => 'مسح كبير للصفحات اللى ضافها $1',
-'nuke-tools'         => 'الطريقة دى بتسمحلك تعمل مسح كبير للصفحات اللى اتضافت قريب عن طريق واحد من اليوزرز او الأى بي.
-دخل اسم اليوزر او عنوان الاى بى علشان تطلعلك لستة بالصفحات اللى ح تتمسح.',
-'nuke-submit-user'   => 'روح',
-'nuke-submit-delete' => 'امسح اللى اخترته',
-'right-nuke'         => 'مسح كبير للصفحات',
 
 );

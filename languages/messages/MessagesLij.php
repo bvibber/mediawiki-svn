@@ -7,10 +7,85 @@
  * @author Dario vet
  * @author Dedee
  * @author Malafaya
+ * @author Urhixidur
  * @author ZeneizeForesto
  */
 
 $fallback = 'it';
+
+$specialPageAliases = array(
+	'Userlogin'                 => array( 'Intra', 'Registrate' ),
+	'Userlogout'                => array( 'Sciorti' ),
+	'Preferences'               => array( 'Preferense' ),
+	'Watchlist'                 => array( 'Osservæ speçiali' ),
+	'Recentchanges'             => array( 'Ûrtime modiffiche' ),
+	'Upload'                    => array( 'Carrega' ),
+	'Imagelist'                 => array( 'Immaggini' ),
+	'Newimages'                 => array( 'Immaggini reçenti' ),
+	'Listusers'                 => array( 'Utenti' ),
+	'Statistics'                => array( 'Statistighe' ),
+	'Randompage'                => array( 'Paggina a brettio' ),
+	'Lonelypages'               => array( 'Paggine orfane' ),
+	'Uncategorizedpages'        => array( 'Paggine sensa categorîa' ),
+	'Uncategorizedcategories'   => array( 'Categorîe sensa categorîa' ),
+	'Uncategorizedimages'       => array( 'Immaggini sensa categorîa' ),
+	'Uncategorizedtemplates'    => array( 'Template sensa categorîa' ),
+	'Unusedcategories'          => array( 'Categorîe sensa ûso' ),
+	'Unusedimages'              => array( 'Immaggini sensa ûso' ),
+	'Wantedpages'               => array( 'Paggine domandæ' ),
+	'Wantedcategories'          => array( 'Categorîe domandæ' ),
+	'Mostlinked'                => array( 'Paggine ciû domandæ' ),
+	'Mostlinkedcategories'      => array( 'Categorîe ciû domandæ' ),
+	'Mostlinkedtemplates'       => array( 'Template ciû domandæ' ),
+	'Mostcategories'            => array( 'Paggine con ciû categorîe' ),
+	'Mostimages'                => array( 'Immaggini ciû domandæ' ),
+	'Mostrevisions'             => array( 'Paggine con ciû revixoîn' ),
+	'Fewestrevisions'           => array( 'Paggine con meno revixoîn' ),
+	'Shortpages'                => array( 'Paggine ciû cûrte' ),
+	'Longpages'                 => array( 'Paggine ciû longhe' ),
+	'Newpages'                  => array( 'Paggine ciû reçenti' ),
+	'Ancientpages'              => array( 'Paggine meno reçenti' ),
+	'Deadendpages'              => array( 'Paggine sensa sciortîa' ),
+	'Protectedpages'            => array( 'Paggine protezûe' ),
+	'Protectedtitles'           => array( 'Tittoli protezûi' ),
+	'Allpages'                  => array( 'Tûtte e paggine' ),
+	'Prefixindex'               => array( 'Prefisci' ),
+	'Ipblocklist'               => array( 'IP bloccæ' ),
+	'Specialpages'              => array( 'Paggine speçiali' ),
+	'Contributions'             => array( 'Contribûti' ),
+	'Emailuser'                 => array( 'Mandighe \'n\'e-mail' ),
+	'Confirmemail'              => array( 'Comferma l\'e-mail' ),
+	'Whatlinkshere'             => array( 'Cose appunta chì' ),
+	'Recentchangeslinked'       => array( 'Modiffiche correlæ' ),
+	'Movepage'                  => array( 'Sposta' ),
+	'Blockme'                   => array( 'BloccaProxy' ),
+	'Booksources'               => array( 'RiçercaISBN' ),
+	'Categories'                => array( 'Categorîe' ),
+	'Export'                    => array( 'Esporta' ),
+	'Version'                   => array( 'Verscion' ),
+	'Allmessages'               => array( 'Messaggi' ),
+	'Log'                       => array( 'Registri', 'Registro' ),
+	'Blockip'                   => array( 'Blocca' ),
+	'Import'                    => array( 'Importa' ),
+	'Lockdb'                    => array( 'BloccaDB' ),
+	'Unlockdb'                  => array( 'SbloccaDB' ),
+	'Userrights'                => array( 'Permissi utente' ),
+	'MIMEsearch'                => array( 'RiçercaMIME' ),
+	'Unwatchedpages'            => array( 'Paggine no osservæ' ),
+	'Listredirects'             => array( 'Rediression' ),
+	'Revisiondelete'            => array( 'Scassa revixon' ),
+	'Unusedtemplates'           => array( 'Template sensa ûso' ),
+	'Randomredirect'            => array( 'Rediression a brettio' ),
+	'Mypage'                    => array( 'Mæ Paggina Utente' ),
+	'Mytalk'                    => array( 'Mæ Discûscioîn' ),
+	'Mycontributions'           => array( 'Mæ Contribûti' ),
+	'Listadmins'                => array( 'Amministratoî' ),
+	'Listbots'                  => array( 'Bot' ),
+	'Popularpages'              => array( 'Paggine ciû viscitæ' ),
+	'Search'                    => array( 'Riçerca', 'Çerca' ),
+	'Resetpass'                 => array( 'Rimposta paròlla d\'ordine' ),
+	'Withoutinterwiki'          => array( 'Sensa Interwiki' ),
+);
 
 $messages = array(
 # User preference toggles
@@ -382,7 +457,7 @@ Se o s'ha intròu inte 'sto collegamento pe sbàllio, o basta sciaccâ '''Inderr
 Se no ti veu che i testi teu pêuan esse modificæ da quarchedùn sensa limitaçioìn, no mandâli a {{SITENAME}}.<br />
 Inviando o testo ti diciâri, sott'a teu responsabilitæ, ch'o l'é stæto scrîto da ti personalmente oppure ch'o l'é stæto piggiòu da 'na fonte de pùbrico domìnio òu anàlogamente lìbea.<br />
 <strong>NO INVIÂ MATERIÂLE COVERTO DA DRÎTI D'AUTÔ SENSA OUTORIZAÇION!</strong>",
-'longpagewarning'        => "<strong>ATTENSION: 'Sta paggina chì a g'ha $1 kilobyte; çerti browser porieivan avei di problemmi inta modiffica de-e paggine che s'avvixinn-an o che ecceddan i 32 KB.
+'longpagewarning'        => "<strong>ATTENSION: 'Sta paggina chì a g'ha $1 kilobyte; çerti browser porieivan avei di problemmi inta modiffica de-e paggine che s'avvixinn-an o che ecceddan i 32 kB.
 Pe piaxei conscidera l'opportûnitæ de soddividde a paggina in sessioîn ciû piccinn-e.</strong>",
 'templatesused'          => "Template dêuviæ inte 'sta paggina:",
 'templatesusedpreview'   => "Template dêuviæ inte 'st'anteprimma:",
@@ -405,7 +480,7 @@ A razon dæta a l'è ''$2''",
 'viewpagelogs'        => "Veddi i log relativi a 'sta paggina.",
 'currentrev'          => 'Verscion attuâle',
 'revisionasof'        => 'Verscion do $1',
-'revision-info'       => 'Verscion do $1, outô: $2',
+'revision-info'       => 'Verscion do $1, outô: $2', # Additionally available: $3: revision id
 'previousrevision'    => '← Verscion meno reçente',
 'nextrevision'        => 'Revixon ciû nêuva →',
 'currentrevisionlink' => 'Ûrtima revixon',
@@ -472,6 +547,7 @@ Leggenda: (corr) = differense co-a verscion corrente, (prec) = differense co-a v
 'recentchanges'                  => 'Ûrtimi cangiamenti',
 'recentchanges-feed-description' => "Questo feed o g'ha e modiffiche ciû reçenti a-i contegnûi do scîto.",
 'rcnote'                         => "Chì sotta {{PLURAL:$1|gh'é a modiffica ciù reçente|ghe son e '''$1''' modiffiche ciù reçenti}} de 'sto scîto {{PLURAL:$2|inte ûrtime 24 ôe|inti ûrtimi '''$2''' giorni}}; i dæti son aggiornæ a $3.",
+'rcnotefrom'                     => "Chì sotta gh'è i cangiamenti fæti comensando da '''$2''' (scinn-a '''$1''').",
 'rclistfrom'                     => 'Fâ vedde e modiffiche apportæ partendo da $1',
 'rcshowhideminor'                => '$1 cangiamenti minoi',
 'rcshowhidebots'                 => '$1 bot',
@@ -664,27 +740,21 @@ Ti te peu strinza a vista se ti te çerni un tipo de registro, un nomme de un ut
 'emailsenttext'   => "A teua lettìa elettronega a l'è stæta spèdïa.",
 
 # Watchlist
-'watchlist'            => 'A mæ lista in osservassion',
-'mywatchlist'          => 'Lista in osservaçion',
-'watchlistfor'         => "(pe '''$1''')",
-'watchnologin'         => "Non ti t'æ entroö",
-'watchnologintext'     => 'Devvi [[Special:UserLogin|entrâ]] pe cangiâ a toa lista in osservaçion.',
-'addedwatch'           => 'Azzonto a a lista in osservaçion',
-'addedwatchtext'       => "A paggina \"[[:\$1]]\" a l'è stæta azzonta a-a pròpia [[Special:Watchlist|lista in osservaçion]]. De chì in avanti, i cangiamenti fæti a-a paggina e a-a sêu discûxon sajàn missi in lista lì; o tittolo da paggina o sajà scrîo in '''grascietto''' inta paggina di [[Special:RecentChanges|ûrtimi cangiamenti]] coscì ti o veddi megio. Se ti vêu eliminâla da-a lista in osservaçion ciû târdi, sciacca \"no seguî\" inscia barra de d'âto.",
-'removedwatch'         => 'Scassæ da a lista in osservaçion',
-'removedwatchtext'     => 'A paggina "[[:$1]]" a l\'è stæta scassâa da-a têu lista in osservaçion.',
-'watch'                => 'Inta lista in osservaçion',
-'watchthispage'        => "Vigilâ 'sta paggina",
-'unwatch'              => 'No seguî',
-'watchlist-details'    => "A lista d'osservassion speçiâ a contegne {{PLURAL:$1|ûnn-a paggina (e a sêu paggina de discûxon)|$1 paggine (e e rispettive paggine de discûxon)}}.",
-'watchlistcontains'    => "A lista in osservaçion g'ha $1 {{PLURAL:$1|pagine|pagina}}.",
-'wlshowlast'           => 'Famme vedde e ûrtime $1 ôe $2 giorni $3',
-'watchlist-show-bots'  => 'Fanni vedde i cangiamenti de i bot',
-'watchlist-hide-bots'  => 'Ascondi i cangiamenti di bot',
-'watchlist-show-own'   => 'Fanni vedde i mæ cangiamenti',
-'watchlist-hide-own'   => 'Ascondi i mæ cangiamenti',
-'watchlist-show-minor' => 'Fanni vedde i cangiamenti minô',
-'watchlist-hide-minor' => 'Ascondi i cangiamenti minoî',
+'watchlist'         => 'A mæ lista in osservassion',
+'mywatchlist'       => 'Lista in osservaçion',
+'watchlistfor'      => "(pe '''$1''')",
+'watchnologin'      => "Non ti t'æ entroö",
+'watchnologintext'  => 'Devvi [[Special:UserLogin|entrâ]] pe cangiâ a toa lista in osservaçion.',
+'addedwatch'        => 'Azzonto a a lista in osservaçion',
+'addedwatchtext'    => "A paggina \"[[:\$1]]\" a l'è stæta azzonta a-a pròpia [[Special:Watchlist|lista in osservaçion]]. De chì in avanti, i cangiamenti fæti a-a paggina e a-a sêu discûxon sajàn missi in lista lì; o tittolo da paggina o sajà scrîo in '''grascietto''' inta paggina di [[Special:RecentChanges|ûrtimi cangiamenti]] coscì ti o veddi megio. Se ti vêu eliminâla da-a lista in osservaçion ciû târdi, sciacca \"no seguî\" inscia barra de d'âto.",
+'removedwatch'      => 'Scassæ da a lista in osservaçion',
+'removedwatchtext'  => 'A paggina "[[:$1]]" a l\'è stæta scassâa da-a têu lista in osservaçion.',
+'watch'             => 'Inta lista in osservaçion',
+'watchthispage'     => "Vigilâ 'sta paggina",
+'unwatch'           => 'No seguî',
+'watchlist-details' => "A lista d'osservassion speçiâ a contegne {{PLURAL:$1|ûnn-a paggina (e a sêu paggina de discûxon)|$1 paggine (e e rispettive paggine de discûxon)}}.",
+'watchlistcontains' => "A lista in osservaçion g'ha $1 {{PLURAL:$1|pagine|pagina}}.",
+'wlshowlast'        => 'Famme vedde e ûrtime $1 ôe $2 giorni $3',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Inti osservæ speçiâli...',
@@ -715,7 +785,7 @@ Ti te peu strinza a vista se ti te çerni un tipo de registro, un nomme de un ut
 da [[User:$2|$2]] ([[User talk:$2|Ciæti]]); quarche âtro 
 o l'à cangiâ ò o l'è zà tornòu inderê.
 L'ûrtimo cangiamento o ghe l'à fæto [[User:$3|$3]] ([[User talk:$3|Ciæti]]).",
-'revertpage'    => 'E modificaçioin de [[Special:Contributions/$2|$2]] ([[User talk:$2|Ciæti]]) son stæte eliminæ; riportæ a verscion de primma de [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'    => 'E modificaçioin de [[Special:Contributions/$2|$2]] ([[User talk:$2|Ciæti]]) son stæte eliminæ; riportæ a verscion de primma de [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectlogpage'              => 'Protessioîn',

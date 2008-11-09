@@ -67,6 +67,7 @@ class IPBlockForm {
 		# Re-check user's rights to hide names, very serious, defaults to 0
 		$this->BlockHideName = ( $wgRequest->getBool( 'wpHideName', 0 ) && $wgUser->isAllowed( 'hideuser' ) ) ? 1 : 0;
 		$this->BlockAllowUsertalk = ( $wgRequest->getBool( 'wpAllowUsertalk', $byDefault ) && $wgBlockAllowsUTEdit );
+		$this->BlockReblock = $wgRequest->getBool( 'wpChangeBlock', false );
 	}
 
 	function showForm( $err ) {
@@ -86,10 +87,26 @@ class IPBlockForm {
 		$mIpbreason = Xml::label( wfMsg( 'ipbotherreason' ), 'mw-bi-reason' );
 
 		$titleObj = SpecialPage::getTitleFor( 'Blockip' );
-
-		if ( "" != $err ) {
+		$user = User::newFromName( $this->BlockAddress );
+		
+		$alreadyBlocked = false;
+		if ( $err && $err[0] != 'ipb_already_blocked' ) {
+			$key = array_shift($err);
+			$msg = wfMsgReal($key, $err);
 			$wgOut->setSubtitle( wfMsgHtml( 'formerror' ) );
-			$wgOut->addHTML( Xml::tags( 'p', array( 'class' => 'error' ), $err ) );
+			$wgOut->addHTML( Xml::tags( 'p', array( 'class' => 'error' ), $msg ) );
+		} elseif ( $this->BlockAddress ) {
+			$userId = 0;
+			if ( is_object( $user ) )
+				$userId = $user->getId();
+			$currentBlock = Block::newFromDB( $this->BlockAddress, $userId );
+			if ( !is_null($currentBlock) && !$currentBlock->mAuto && # The block exists and isn't an autoblock
+				( $currentBlock->mRangeStart == $currentBlock->mRangeEnd || # The block isn't a rangeblock
+				# or if it is, the range is what we're about to block
+				( $currentBlock->mAddress == $this->BlockAddress ) ) ) {
+					$wgOut->addWikiMsg( 'ipb-needreblock', $this->BlockAddress );
+					$alreadyBlocked = true;
+			}
 		}
 
 		$scBlockExpiryOptions = wfMsgForContent( 'ipboptions' );
@@ -253,6 +270,18 @@ class IPBlockForm {
 				</tr>"
 			);
 		}
+		if ( $alreadyBlocked ) {
+			$wgOut->addHTML("
+				<tr id='wpChangeBlockRow'>
+					<td>&nbsp;</td>
+					<td class='mw-input'>" .
+						Xml::checkLabel( wfMsg( 'ipb-change-block' ),
+							'wpChangeBlock', 'wpChangeBlock', $this->BlockReblock,
+							array( 'tabindex' => '13' ) ) . "
+					</td>
+				</tr>"
+			);
+		}
 
 		$wgOut->addHTML("
 			<tr>
@@ -269,9 +298,8 @@ class IPBlockForm {
 			Xml::tags( 'script', array( 'type' => 'text/javascript' ), 'updateBlockOptions()' ) . "\n"
 		);
 
-		$wgOut->addHtml( $this->getConvenienceLinks() );
+		$wgOut->addHTML( $this->getConvenienceLinks() );
 
-		$user = User::newFromName( $this->BlockAddress );
 		if( is_object( $user ) ) {
 			$this->showLogFragment( $wgOut, $user->getUserPage() );
 		} elseif( preg_match( '/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/', $this->BlockAddress ) ) {
@@ -379,9 +407,18 @@ class IPBlockForm {
 		if ( wfRunHooks('BlockIp', array(&$block, &$wgUser)) ) {
 
 			if ( !$block->insert() ) {
-				return array('ipb_already_blocked', htmlspecialchars($this->BlockAddress));
+				if ( !$this->BlockReblock ) {
+					return array( 'ipb_already_blocked' );
+				} else {
+					# This returns direct blocks before autoblocks/rangeblocks, since we should be sure the user is blocked by now it should work for our purposes
+					$currentBlock = Block::newFromDB( $this->BlockAddress, $userId );
+					$currentBlock->delete();
+					$block->insert();
+					$log_action = 'reblock';
+				}
+			} else {
+				$log_action = 'block';
 			}
-
 			wfRunHooks('BlockIpComplete', array($block, $wgUser));
 
 			if ( $this->BlockWatchUser ) { 
@@ -396,7 +433,7 @@ class IPBlockForm {
 			# Make log entry, if the name is hidden, put it in the oversight log
 			$log_type = ($this->BlockHideName) ? 'suppress' : 'block';
 			$log = new LogPage( $log_type );
-			$log->addEntry( 'block', Title::makeTitle( NS_USER, $this->BlockAddress ),
+			$log->addEntry( $log_action, Title::makeTitle( NS_USER, $this->BlockAddress ),
 			  $reasonstr, $logParams );
 
 			# Report to the user
@@ -420,8 +457,7 @@ class IPBlockForm {
 				urlencode( $this->BlockAddress ) ) );
 			return;
 		}
-		$key = array_shift($retval);
-		$this->showForm(wfMsgReal($key, $retval));
+		$this->showForm( $retval );
 	}
 
 	function showSuccess() {
@@ -430,15 +466,15 @@ class IPBlockForm {
 		$wgOut->setPagetitle( wfMsg( 'blockip' ) );
 		$wgOut->setSubtitle( wfMsg( 'blockipsuccesssub' ) );
 		$text = wfMsgExt( 'blockipsuccesstext', array( 'parse' ), $this->BlockAddress );
-		$wgOut->addHtml( $text );
+		$wgOut->addHTML( $text );
 	}
 
 	function showLogFragment( $out, $title ) {
 		global $wgUser;
-		$out->addHtml( Xml::element( 'h2', NULL, LogPage::logName( 'block' ) ) );
+		$out->addHTML( Xml::element( 'h2', NULL, LogPage::logName( 'block' ) ) );
 		$count = LogEventsList::showLogExtract( $out, 'block', $title->getPrefixedText(), '', 10 );
 		if($count > 10){
-			$out->addHtml( $wgUser->getSkin()->link(
+			$out->addHTML( $wgUser->getSkin()->link(
 				SpecialPage::getTitleFor( 'Log' ),
 				wfMsgHtml( 'blocklog-fulllog' ),
 				array(),
@@ -581,7 +617,7 @@ class IPBlockForm {
 				0, // suppress name?
 				0 // block from sending email?
 			);
-			$oldblock = Block::newFromDB( $u->getName() );
+			$oldblock = Block::newFromDB( $u->getName(), $u->getId() );
 			if( !$oldblock ) {
 				$block->insert();
 				# Prepare log parameters

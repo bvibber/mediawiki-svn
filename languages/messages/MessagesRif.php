@@ -6,6 +6,7 @@
  *
  * @author Agzennay
  * @author Jose77
+ * @author Urhixidur
  */
 
 $messages = array(
@@ -251,7 +252,7 @@ Ur ten-teg ca da.<br />
 tjadjid-anɣ Ɛawt ila qa d cekk ig yuran manaya, niɣ tesneɣlet-id zi ca n uɣbal nniḍn d alelli.
 <strong>UR SADDAF CA TIRRA ƔARSENT COPYRIGHTE BLA MA AD-IXES BAB-INES !</strong>',
 'longpagewarning'        => '<strong>WARNING: Tasna ya dag-s $1 kilobyte ;
-ca n imsuṭṭuyen(browsers) war zemren ca ad ẓṛegen tasniwin dag-sent 32kb niɣ ktar.
+ca n imsuṭṭuyen(browsers) war zemren ca ad ẓṛegen tasniwin dag-sent 32 kb niɣ ktar.
 ixessa ad ten tebḍid ɣar tigezmin(sections) d timeẓyanin.</strong>',
 'templatesused'          => 'Timudmiwin itwaggen di Tasna ya:',
 'templatesusedpreview'   => 'Timudmiwin igg itwasxdemen dg uzar-ascan a :',
@@ -267,7 +268,7 @@ tzemred addewred ɣar deffar, niɣ [[Special:UserLogin|Adeff niɣ egg amiḍan]]
 'viewpagelogs'        => 'Ẓar aɣmis n Tasna ya',
 'currentrev'          => 'Afegged n ruxa',
 'revisionasof'        => 'Affegged am $1',
-'revision-info'       => 'Afegged am $1 s $2',
+'revision-info'       => 'Afegged am $1 s $2', # Additionally available: $3: revision id
 'previousrevision'    => '←Affegged n zik/zic',
 'nextrevision'        => 'Afegged d amaynu→',
 'currentrevisionlink' => 'Afegged n rux',
@@ -320,6 +321,7 @@ tzemred ad [[:\$1|tarnid cek]].",
 'recentchanges'                  => 'Tiẓṛigin tinggura',
 'recentchanges-feed-description' => 'Bbar tiẓṛigin timayutin n wiki deg usudem(feed) a .',
 'rcnote'                         => "Awadday {{PLURAL:$1|d '''1''' taẓṛigt|d '''$1''' tiẓṛigin tinggura}} deg {{PLURAL:$2|ass anggaru |'''$2''' ussan inggura}}, am di $5, $4.",
+'rcnotefrom'                     => "ɣar wadday d tiẓṛigin zi '''$2''' (ar '''$1''' ).",
 'rclistfrom'                     => 'Ẓar tiẓṛigin timaynutin ig ibeddan zi $1',
 'rcshowhideminor'                => '$1 tiẓṛigin d-timeẓyanin',
 'rcshowhidebots'                 => '$1 iroboten(robots)',
@@ -470,21 +472,18 @@ Tasniwin di [[Special:Watchlist|Tabdart uḥṭṭu inec]] d '''tizurarin'''.",
 'emailuser' => 'Ssek E-mail i bnadm a',
 
 # Watchlist
-'watchlist'            => 'Tabdart uḥṭṭu inu',
-'mywatchlist'          => 'Tabdart uḥṭṭu inu',
-'watchlistfor'         => "(i '''$1''')",
-'addedwatch'           => 'Temmarni ɣar Tabdart uḥṭṭu',
-'addedwatchtext'       => 'Tasna "[[:$1]]" Temmarni ɣar [[Special:Watchlist|Tabdart uḥṭṭu]].',
-'removedwatch'         => 'twakkes zi Tabdart uḥṭṭu',
-'removedwatchtext'     => 'Tasna "[[:$1]]" twakkes zi [[Special:Watchlist|Tabdart uḥṭṭu inec]].',
-'watch'                => 'Ẓar',
-'watchthispage'        => 'Ẓar Tasna ya',
-'unwatch'              => 'War-twaẓer',
-'watchlist-details'    => '{{PLURAL:$1|$1 n Tasniwin|$1 n Tasniwin}} Twaẓrent bla Tasniwin n usiwl.',
-'wlshowlast'           => 'Sseml-ad $1 tisεεatin $2 ussan $3 inggura',
-'watchlist-hide-bots'  => 'Snuffar tiẓṛigin n urobot',
-'watchlist-hide-own'   => 'Snuffar tiẓṛigin inu',
-'watchlist-hide-minor' => 'Snuffar tiẓṛigin timeẓyanin',
+'watchlist'         => 'Tabdart uḥṭṭu inu',
+'mywatchlist'       => 'Tabdart uḥṭṭu inu',
+'watchlistfor'      => "(i '''$1''')",
+'addedwatch'        => 'Temmarni ɣar Tabdart uḥṭṭu',
+'addedwatchtext'    => 'Tasna "[[:$1]]" Temmarni ɣar [[Special:Watchlist|Tabdart uḥṭṭu]].',
+'removedwatch'      => 'twakkes zi Tabdart uḥṭṭu',
+'removedwatchtext'  => 'Tasna "[[:$1]]" twakkes zi [[Special:Watchlist|Tabdart uḥṭṭu inec]].',
+'watch'             => 'Ẓar',
+'watchthispage'     => 'Ẓar Tasna ya',
+'unwatch'           => 'War-twaẓer',
+'watchlist-details' => '{{PLURAL:$1|$1 n Tasniwin|$1 n Tasniwin}} Twaẓrent bla Tasniwin n usiwl.',
+'wlshowlast'        => 'Sseml-ad $1 tisεεatin $2 ussan $3 inggura',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Twaxmim...',
@@ -737,8 +736,5 @@ mayn nniḍn ad itwasenfar.
 
 # Special:SpecialPages
 'specialpages' => 'Tasniwin timeẓlayin',
-
-# Special:Nuke
-'nuke-submit-user' => 'Raḥ ɣa',
 
 );

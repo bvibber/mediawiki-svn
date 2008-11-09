@@ -80,6 +80,7 @@ class ApiFormatXml extends ApiFormatBase {
 		} else {
 			$indstr = '';
 		}
+		$elemName = str_replace(' ', '_', $elemName);
 
 		switch (gettype($elemValue)) {
 			case 'array' :
@@ -104,6 +105,14 @@ class ApiFormatXml extends ApiFormatBase {
 				foreach ($elemValue as $subElemId => & $subElemValue) {
 					if (is_string($subElemValue) && $this->mDoubleQuote)
 						$subElemValue = $this->doubleQuote($subElemValue);
+					
+					// Replace spaces with underscores
+					$newSubElemId = str_replace(' ', '_', $subElemId);
+					if($newSubElemId != $subElemId) {
+						$elemValue[$newSubElemId] = $subElemValue;
+						unset($elemValue[$subElemId]);
+						$subElemId = $newSubElemId;
+					}
 
 					if (gettype($subElemId) === 'integer') {
 						$indElements[] = $subElemValue;
@@ -114,15 +123,15 @@ class ApiFormatXml extends ApiFormatBase {
 					}
 				}
 
-				if (is_null($subElemIndName) && !empty ($indElements))
+				if (is_null($subElemIndName) && count($indElements))
 					ApiBase :: dieDebug(__METHOD__, "($elemName, ...) has integer keys without _element value. Use ApiResult::setIndexedTagName().");
 
-				if (!empty ($subElements) && !empty ($indElements) && !is_null($subElemContent))
+				if (count($subElements) && count($indElements) && !is_null($subElemContent))
 					ApiBase :: dieDebug(__METHOD__, "($elemName, ...) has content and subelements");
 
 				if (!is_null($subElemContent)) {
 					$this->printText($indstr . wfElement($elemName, $elemValue, $subElemContent));
-				} elseif (empty ($indElements) && empty ($subElements)) {
+				} elseif (!count($indElements) && !count($subElements)) {
 						$this->printText($indstr . wfElement($elemName, $elemValue));
 				} else {
 					$this->printText($indstr . wfElement($elemName, $elemValue, null));

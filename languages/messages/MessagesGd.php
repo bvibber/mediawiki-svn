@@ -5,7 +5,6 @@
  * @file
  *
  * @author Alison
- * @author Raymond
  * @author Sionnach
  * @author לערי ריינהארט
  */
@@ -195,6 +194,7 @@ $1",
 'recentchanges'     => 'Mùthaidhean ùra',
 'recentchangestext' => 'Lean mùthaidhean ùra aig an wiki air an duilleag seo.',
 'rcnote'            => "Tha na {{PLURAL:$1|'''1''' mùthadh|$1 mùthaidhean}} deireanach air na {{PLURAL:$2|là|'''$2''' laithean}} deireanach gu h-ìosal as  $5, $4.",
+'rcnotefrom'        => "Gheibhear na mùthaidhean o chionn <b>$2</b> shios (a'nochdadh suas ri <b>$1</b>).",
 'rclistfrom'        => 'Nochd mùthaidhean ùra o chionn $1',
 'rclinks'           => 'Nochd na $1 mùthaidhean deireanach air na $2 laithean deireanach<br />$3',
 'diff'              => 'diof',
@@ -280,7 +280,7 @@ Ma bu toil leibh a dhubh a'dhuilleag as ur faire agaibh nas fadalache, cnap air 
 
 # Rollback
 'editcomment' => 'Bha mìneachadh an deasaicheidh: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'  => 'Tillte deasachadh aig [[Special:Contributions/$2|$2]] ([[User talk:$2|Deasbaireachd]]) ais ri lethbhreac mu dheireadh le [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'  => 'Tillte deasachadh aig [[Special:Contributions/$2|$2]] ([[User talk:$2|Deasbaireachd]]) ais ri lethbhreac mu dheireadh le [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectedarticle'   => 'dìonta "[[$1]]"',

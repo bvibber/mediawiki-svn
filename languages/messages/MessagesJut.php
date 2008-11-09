@@ -5,6 +5,7 @@
  * @file
  *
  * @author Huslåke
+ * @author Urhixidur
  * @author Ælsån
  */
 
@@ -412,7 +413,7 @@ Du ken ekke bruge æ funksje 'e-mail til denne bruger' vemendre der er ångevet 
 'copyrightwarning'       => "<strong>Husk: <big>åpskrev engen websider</big>, søm ekke tilhører dig selv, brug <big>engen åphavsretsligt beskyttede værker</big> uden tilladelse frå'n ejer!</strong><br />
 Du lover os hermed, at du selv <strong>har skrevet skrevselenger</strong>, at skrevselenger tilhører ålmenheden, er (<strong>åpværer hus</strong>), æller at æ <strong>åphavsrets-endehaver</strong> har gevet sen <strong>tilladelse</strong>. Ves denne skrevselenger ålerede er åfentliggkort andre steder, skrev det venligst på æ diskusjesside.
 <i>Bemærk venligst, at ål {{SITENAME}}-ertikler åtomatisk står under „$2“ (se $1 før lileskrevselenger). Ves du ekke vel, at dit arbejde her ændres og udbredes åf andre, så tryk ekke på „Gem“.</i>",
-'longpagewarning'        => "<strong>ADVARSEL: Denne side er $1 kilobyte stor; nogle browsere ken have pårblæmer ve at redigære sider der nærmer sig æller er større end 32 Kb. 
+'longpagewarning'        => "<strong>ADVARSEL: Denne side er $1 kilobyte stor; nogle browsere ken have pårblæmer ve at redigære sider der nærmer sig æller er større end 32 kb. 
 Åvervej æ side'm ken åpdeles i mendre dæle.</strong>",
 'templatesused'          => 'Skablåner der er brugt på denne side:',
 'templatesusedpreview'   => 'Følgende skablåner bruges åf denne ertikelførhåndsvesnenge:',
@@ -428,7 +429,7 @@ denne side er vest nedenfør:",
 'viewpagelogs'        => 'Ves loglister før denne side',
 'currentrev'          => 'Nuværende hersenenge',
 'revisionasof'        => 'Hersenenger frå $1',
-'revision-info'       => 'Hersenenge frå $1 til $2',
+'revision-info'       => 'Hersenenge frå $1 til $2', # Additionally available: $3: revision id
 'previousrevision'    => '←Ældre hersenenge',
 'nextrevision'        => 'Nyere hersenenge→',
 'currentrevisionlink' => 'se nuværende hersenenge',
@@ -476,6 +477,7 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'recentchanges'                  => 'Seneste ændrenger',
 'recentchanges-feed-description' => 'Ve dette fiid ken du følge de seneste ændrenger på {{SITENAME}}.',
 'rcnote'                         => "Herunder ses {{PLURAL:$1|'''1''' ændrenge|de sedste '''$1''' ændrenger}} frå {{PLURAL:$2|i dåg|de sedste '''$2''' dåg}}, søm i $3.",
+'rcnotefrom'                     => "Nedenfør ses ændrengerne frå '''$2''' til '''$1''' vest.",
 'rclistfrom'                     => 'Ves nye ændrenger startende frå $1',
 'rcshowhideminor'                => '$1 lile ændrenger',
 'rcshowhidebots'                 => '$1 råbotter',
@@ -627,21 +629,18 @@ hersenenge, (førge) = førskel til den førge hersenenge, l = lile til mendre �
 'emailuser' => 'E-mail til denne bruger',
 
 # Watchlist
-'watchlist'            => 'Åvervågnengsliste',
-'mywatchlist'          => 'Åvervågnengsliste',
-'watchlistfor'         => "(før '''$1''')",
-'addedwatch'           => 'Tilføjet til din åvervågnengsliste',
-'addedwatchtext'       => "Æ side \"[[:\$1]]\" er blevet tilføjet til din [[Special:Watchlist|åvervågningsliste]]. Fremtidige ændrenger til denne side og den tilhørende diskusjeside hvil bleve listet der, og æ side hvil fremstå '''fremhævet''' i'n [[Special:RecentChanges|liste ve de seneste ændrenger]] før at gøre det lettere at finde den. Hves du senere hvilst fjerne'n side frå din åvervågningsliste, så klik \"Fjern åvervågnenge\".",
-'removedwatch'         => 'Fjernet frå åvervågnengsliste',
-'removedwatchtext'     => 'Æ side "<nowiki>$1</nowiki>" er blevet fjernet frå din åvervågnengsliste.',
-'watch'                => 'Åvervåg',
-'watchthispage'        => 'Åvervåg side',
-'unwatch'              => 'Fjern åvervågnenge',
-'watchlist-details'    => 'Du har $1 {{PLURAL:$1|side|sider}} på din åvervågnengsliste (øn diskusjesider).',
-'wlshowlast'           => 'Ves de seneste $1 têmer $2 dåg $3',
-'watchlist-hide-bots'  => 'Skjule bot-ændrenger',
-'watchlist-hide-own'   => 'skjule egne ændrenger',
-'watchlist-hide-minor' => 'skjule små ændrenger',
+'watchlist'         => 'Åvervågnengsliste',
+'mywatchlist'       => 'Åvervågnengsliste',
+'watchlistfor'      => "(før '''$1''')",
+'addedwatch'        => 'Tilføjet til din åvervågnengsliste',
+'addedwatchtext'    => "Æ side \"[[:\$1]]\" er blevet tilføjet til din [[Special:Watchlist|åvervågningsliste]]. Fremtidige ændrenger til denne side og den tilhørende diskusjeside hvil bleve listet der, og æ side hvil fremstå '''fremhævet''' i'n [[Special:RecentChanges|liste ve de seneste ændrenger]] før at gøre det lettere at finde den. Hves du senere hvilst fjerne'n side frå din åvervågningsliste, så klik \"Fjern åvervågnenge\".",
+'removedwatch'      => 'Fjernet frå åvervågnengsliste',
+'removedwatchtext'  => 'Æ side "<nowiki>$1</nowiki>" er blevet fjernet frå din åvervågnengsliste.',
+'watch'             => 'Åvervåg',
+'watchthispage'     => 'Åvervåg side',
+'unwatch'           => 'Fjern åvervågnenge',
+'watchlist-details' => 'Du har $1 {{PLURAL:$1|side|sider}} på din åvervågnengsliste (øn diskusjesider).',
+'wlshowlast'        => 'Ves de seneste $1 têmer $2 dåg $3',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Åvervåge …',
@@ -867,14 +866,5 @@ Kun endholtet åf æ liste (lenjer startende ve *) bliver brugt. Den første hen
 
 # Special:SpecialPages
 'specialpages' => 'Sonst sider',
-
-# Special:Nuke
-'nuke'               => 'Massa slettenge',
-'nuke-nopages'       => 'Ekke ny pæge til [[Special:Contributions/$1|$1]] i seneste ændrenger.',
-'nuke-list'          => 'Æ følgende pæger åorte ræsentleg skep via [[Special:Contributions/$1|$1]]; set i en bemærkenge og slå æ knup til sletter hun.',
-'nuke-defaultreason' => 'Massa sletterenge der pæger skep via $1',
-'nuke-tools'         => 'Dette tool gæv men æ mågleghed før massa sletterenge der pæges ræsentleg skeppen via æ gæven bruger æller IP. Input æ brugernavn æller IP til kriige æ liste der pæges til sletterenge:',
-'nuke-submit-user'   => 'Gå',
-'nuke-submit-delete' => 'Sletterenge sælektærn',
 
 );

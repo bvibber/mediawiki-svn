@@ -321,9 +321,9 @@ CONTROL;
 				// Wrap the whole lot in a <pre> and don't parse
 				$m = array();
 				preg_match( '!\.(css|js)$!u', $this->mTitle->getText(), $m );
-				$wgOut->addHtml( "<pre class=\"mw-code mw-{$m[1]}\" dir=\"ltr\">\n" );
-				$wgOut->addHtml( htmlspecialchars( $this->mNewtext ) );
-				$wgOut->addHtml( "\n</pre>\n" );
+				$wgOut->addHTML( "<pre class=\"mw-code mw-{$m[1]}\" dir=\"ltr\">\n" );
+				$wgOut->addHTML( htmlspecialchars( $this->mNewtext ) );
+				$wgOut->addHTML( "\n</pre>\n" );
 			}
 		} else
 		$wgOut->addWikiTextTidy( $this->mNewtext );
@@ -393,7 +393,7 @@ CONTROL;
 		$differ = new HTMLDiffer(new DelegatingContentHandler($wgOut));
 		$differ->htmlDiff($oldHtml, $newHtml);
 		if ( $wgDebugComments ) {
-			$wgOut->addHtml( "\n<!-- HtmlDiff Debug Output:\n" . HTMLDiffer::getDebugOutput() . " End Debug -->" );
+			$wgOut->addHTML( "\n<!-- HtmlDiff Debug Output:\n" . HTMLDiffer::getDebugOutput() . " End Debug -->" );
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -546,7 +546,9 @@ CONTROL;
 		$difftext = $this->generateDiffBody( $this->mOldtext, $this->mNewtext );
 
 		// Save to cache for 7 days
-		if ( $key !== false && $difftext !== false ) {
+		if ( !wfRunHooks( 'AbortDiffCache', array( &$this ) ) ) {
+			wfIncrStats( 'diff_uncacheable' );
+		} else if ( $key !== false && $difftext !== false ) {
 			wfIncrStats( 'diff_cache_miss' );
 			$wgMemc->set( $key, $difftext, 7*86400 );
 		} else {

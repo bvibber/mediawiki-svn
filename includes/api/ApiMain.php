@@ -228,6 +228,8 @@ class ApiMain extends ApiBase {
 	 * Create an instance of an output formatter by its name
 	 */
 	public function createPrinterByName($format) {
+		if( !isset( $this->mFormats[$format] ) )
+			$this->dieUsage( "Unrecognized format: {$format}", 'unknown_format' );
 		return new $this->mFormats[$format] ($this, $format);
 	}
 
@@ -590,7 +592,7 @@ class ApiMain extends ApiBase {
 
 	public static function makeHelpMsgHeader($module, $paramName) {
 		$modulePrefix = $module->getModulePrefix();
-		if (!empty($modulePrefix))
+		if (strval($modulePrefix) !== '')
 			$modulePrefix = "($modulePrefix) ";
 
 		return "* $paramName={$module->getModuleName()} $modulePrefix*";

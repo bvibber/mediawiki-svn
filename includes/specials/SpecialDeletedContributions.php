@@ -68,8 +68,8 @@ class DeletedContribsPager extends IndexPager {
 		$linkTexts = array(
 			'prev' => wfMsgHtml( 'pager-newer-n', $this->mLimit ),
 			'next' => wfMsgHtml( 'pager-older-n', $this->mLimit ),
-			'first' => wfMsgHtml( 'page_first' ),
-			'last' => wfMsgHtml( 'page_last' )
+			'first' => wfMsgHtml( 'histlast' ),
+			'last' => wfMsgHtml( 'histfirst' )
 		);
 
 		$pagingLinks = $this->getPagingLinks( $linkTexts );
@@ -263,9 +263,9 @@ class DeletedContributionsPage extends SpecialPage {
 
 			$text = wfMsgNoTrans( $message, $target );
 			if( !wfEmptyMsg( $message, $text ) && $text != '-' ) {
-				$wgOut->addHtml( '<div class="mw-contributions-footer">' );
+				$wgOut->addHTML( '<div class="mw-contributions-footer">' );
 				$wgOut->addWikiText( $text );
-				$wgOut->addHtml( '</div>' );
+				$wgOut->addHTML( '</div>' );
 			}
 		}
 	}
@@ -303,6 +303,8 @@ class DeletedContributionsPage extends SpecialPage {
 			# Link to undeleted contributions
 			$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $nt->getDBkey() ),
 				wfMsgHtml( 'contributions' ) );
+				
+			wfRunHooks( 'ContributionsToolLinks', array( $id, $nt, &$tools ) );
 
 			$links = implode( ' | ', $tools );
 		}

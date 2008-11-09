@@ -338,6 +338,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'nchanges'        => '$1 hwierfunga',
 'recentchanges'   => 'Nīwlica hweorfunga',
 'rcnote'          => 'Under sind þā æftemestan <strong>$1</strong> hweorfunga in þǣm æftemestum <strong>$2</strong> dagum.',
+'rcnotefrom'      => 'Under sind þā hweorfunga siþþan <b>$2</b> (oþ <b>$1</b> geīewed).',
 'rclistfrom'      => 'Īewan nīwa hweorfunga, onginnenda of $1',
 'rcshowhideminor' => '$1 lȳtla ādihtunga',
 'rcshowhideliu'   => '$1 inmeldode brūcend',
@@ -458,15 +459,14 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'emailsenttext' => 'Þīn e-mail ǣrendgewrit wearþ gesend.',
 
 # Watchlist
-'watchlist'            => 'Mīn behealdnestalu',
-'mywatchlist'          => 'Mīn behealdnestalu',
-'addedwatch'           => 'Geīeht tō wæcctale',
-'watch'                => 'Behealdan',
-'unwatch'              => 'Unbehealdan',
-'watchlistcontains'    => 'Þīn behealdnestalu hæfþ $1 {{PLURAL:$1|trameta|trametas}} inn.',
-'wlnote'               => 'Under sind þā æftemestan $1 hweorfunga in þǣm æftemestum <b>$2</b> stundum.',
-'wlshowlast'           => 'Īewan æftemestan $1 stunda $2 daga $3',
-'watchlist-hide-minor' => 'Hȳdan smala ādihtunga',
+'watchlist'         => 'Mīn behealdnestalu',
+'mywatchlist'       => 'Mīn behealdnestalu',
+'addedwatch'        => 'Geīeht tō wæcctale',
+'watch'             => 'Behealdan',
+'unwatch'           => 'Unbehealdan',
+'watchlistcontains' => 'Þīn behealdnestalu hæfþ $1 {{PLURAL:$1|trameta|trametas}} inn.',
+'wlnote'            => 'Under sind þā æftemestan $1 hweorfunga in þǣm æftemestum <b>$2</b> stundum.',
+'wlshowlast'        => 'Īewan æftemestan $1 stunda $2 daga $3',
 
 'enotif_newpagetext' => 'Þēs is nīwe tramet.',
 'created'            => 'gescapen',
@@ -488,7 +488,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'rollbacklink'   => 'Edhwierfan',
 'rollbackfailed' => 'Edhwierft misfangen',
 'editcomment'    => 'Sēo ādihtungymbsprǣc wæs: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'     => 'Ācierde ādihtunga fram [[Special:Contributions/$2|$2]] ([[User talk:$2|Gesprec]]); wendede on bæc tō ǣrran fadunge fram [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'     => 'Ācierde ādihtunga fram [[Special:Contributions/$2|$2]] ([[User talk:$2|Gesprec]]); wendede on bæc tō ǣrran fadunge fram [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'unprotectedarticle'     => 'unweardod "[[$1]]"',

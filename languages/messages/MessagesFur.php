@@ -7,6 +7,7 @@
  * @author Helix84
  * @author Klenje
  * @author MF-Warburg
+ * @author Urhixidur
  * @author לערי ריינהארט
  */
 
@@ -83,7 +84,6 @@ $specialPageAliases = array(
 	'Booksources'               => array( 'RicercjeISBN' ),
 	'Categories'                => array( 'Categoriis' ),
 	'Export'                    => array( 'Espuarte' ),
-	'Version'                   => array( 'Version' ),
 	'Allmessages'               => array( 'Messaçs' ),
 	'Log'                       => array( 'Regjistri', 'Regjistris' ),
 	'Blockip'                   => array( 'BlocheIP' ),
@@ -526,7 +526,7 @@ Tu varâs di inserî di gnûf i tiei cambiaments tal test esistint.
 'copyrightwarning'          => 'Note: ducj i contribûts a {{SITENAME}} a si considerin come dâts fûr sot de licence $2 (cjale $1 pai detais). Se no tu vuelis che i tiei tescj a podedin jessi modificâts e tornâts a dâ fûr di ognidun cence limits, no stâ mandâju a {{SITENAME}}.<br />
 Cun di plui, inviant il test tu declaris che tu âs scrit tu chest o tu lu âs copiât di une sorzint tal domini public o di une sorzint libare.
 <strong>NO STÂ MANDÂ MATERIÂL CUVIERT DAL DIRIT DI AUTÔR CENCE AUTORIZAZION!</strong>',
-'longpagewarning'           => '<strong>ATENZION: cheste pagjine e je grande $1 kilobytes; cualchi sgarfadôr al podarès vê problemis a modificâ pagjinis di 32kb o plui grandis. Considere par plasê la pussibilitât di dividi la pagjine in sezions plui piçulis.</strong>',
+'longpagewarning'           => '<strong>ATENZION: cheste pagjine e je grande $1 kilobytes; cualchi sgarfadôr al podarès vê problemis a modificâ pagjinis di 32 kb o plui grandis. Considere par plasê la pussibilitât di dividi la pagjine in sezions plui piçulis.</strong>',
 'readonlywarning'           => "<strong>ATENZION: La base di dâts e je blocade par vie de manutenzion, par cui no si podin salvâ lis modifichis par cumò. Par no pierdilis, tu puedis copiâ e tacâ il test inserît fin cumò e salvâlu intun file di test.</strong>
 
 L'aministradôr che al à blocât la base di dâts al à ufiert chest spiegazion: $1",
@@ -547,7 +547,7 @@ Ve ca par comoditât l'elenc des eliminazions precedentis par cheste pagjine:",
 'nohistory'              => 'Nol è presint un storic dai cambiaments par cheste pagjine.',
 'currentrev'             => 'Version atuâl',
 'revisionasof'           => 'Version dai $1',
-'revision-info'          => 'Version dal $1, autôr: $2',
+'revision-info'          => 'Version dal $1, autôr: $2', # Additionally available: $3: revision id
 'previousrevision'       => '← Version plui vecje',
 'nextrevision'           => 'Version plui gnove →',
 'currentrevisionlink'    => 'Version atuâl',
@@ -682,6 +682,7 @@ Leiende: (cur) = difarencis cun la version atuâl, (prec) = difarencis cun la ve
 'recentchangestext'                 => 'Cheste pagjine e mostre i plui recents cambiaments inte {{SITENAME}}.',
 'recentchanges-feed-description'    => 'Chest canâl al ripuarte i cambiaments plui recents ai contignûts di cheste wiki.',
 'rcnote'                            => "Ca sot tu cjatis {{PLURAL:$1|l'ultin cambiament|i ultins '''$1''' cambiaments}} al sît {{PLURAL:$2|intes ultimis 24 oris|tes ultimis '''$2''' zornadis}}; i dâts a son inzornâts ai $4 a lis $5.",
+'rcnotefrom'                        => "Ca sot i cambiaments dal '''$2''' (fintremai al '''$1''').",
 'rclistfrom'                        => 'Mostre i ultins cambiaments dal $1',
 'rcshowhideminor'                   => '$1 i piçui cambiaments',
 'rcshowhidebots'                    => '$1 i bots',
@@ -949,13 +950,6 @@ e la pagjine e sarà '''gruessute''' te [[Special:RecentChanges|liste dai ultins
 'watchlistcontains'    => 'Tu stâs tignint di voli $1 {{PLURAL:$1|pagjine|pagjinis}}.',
 'wlnote'               => "Ca sot {{PLURAL:$1|al è il cambiament plui recent|a son i '''$1''' cambiaments plui recents}} {{PLURAL:$2|inte ultime ore|intes '''$2''' oris passadis}}.",
 'wlshowlast'           => 'Mostre ultimis $1 oris $2 zornadis $3',
-'watchlist-show-bots'  => 'Mostre i cambiaments dai bots',
-'watchlist-hide-bots'  => 'Plate i cambiaments dai bots',
-'watchlist-show-own'   => 'Mostre i miei cambiaments',
-'watchlist-hide-own'   => 'Plate i miei cammbiaments',
-'watchlist-show-minor' => 'Mostre i miei piçui cambiaments',
-'watchlist-hide-minor' => 'Plate i piçui cambiaments',
-'watchlist-show-anons' => 'Mostre cambiaments dai utents anonims',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Daûr a zontâ aes pagjinis tignudis di voli...',
@@ -1397,8 +1391,5 @@ Se il file al è stât cambiât rispiet al so stât origjinâl, cualchi informaz
 
 # Special:BlankPage
 'blankpage' => 'Pagjine vueide',
-
-# Special:Nuke
-'nuke-submit-user' => 'Va',
 
 );

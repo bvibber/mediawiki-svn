@@ -8,6 +8,7 @@
  * @author Kwekubo
  * @author Moilleadóir
  * @author Spacebirdy
+ * @author Urhixidur
  * @author לערי ריינהארט
  */
 
@@ -612,7 +613,7 @@ Murar mian leat go gcuirfí do chuid scríbhinne in eagar go héadrócaireach, n
 Ina theannta sin, geallann tú gur scríobh tú féin an dréacht seo, nó gur chóipeáil tú é ó fhoinse san fhearann poiblí nó acmhainn eile saor ó chóipcheart (féach ar $1 le haghaidh tuilleadh eolais). 
 <strong>NÁ CUIR ISTEACH OBAIR LE CÓIPCHEART GAN CHEAD!</strong>',
 'longpagewarning'        => 'AIRE: Tá an leathanach seo $1 cilibheart i bhfad; ní féidir le roinnt brabhsálaithe
-leathanaigh a athrú má tá siad breis agus $1KiB, nó níos fada ná sin.
+leathanaigh a athrú má tá siad breis agus $1 KiB, nó níos fada ná sin.
 Más féidir, giotaigh an leathanach i gcodanna níos bige.',
 'readonlywarning'        => "'''AIRE:''' Glasáladh an bunachar sonraí, agus mar sin
 ní féidir leat do chuid athruithe a shábháil díreach anois. B'fhéidir gur mhaith leat an téacs a ghearr is
@@ -627,6 +628,10 @@ An fáth a thabhairt an riarthóir a ghlasadh nach: '''$1'''",
 'template-semiprotected' => '(leath-ghlasáil)',
 'edittools'              => '<!-- Taispeánfar an téacs seo faoi foirmeacha eagarthóireachta agus uaslódála. -->',
 'permissionserrors'      => 'Cead rochtana earráidí',
+'recreate-deleted-warn'  => "'''Rabhadh: Tá tú ag athchruthú leathanach ina bhfuil scriostha roimhe.'''
+
+Bhreithneoidh tú cibé go bhfuil sé oiriúnach chun lean an leathanach seo a cur in eagar.<br />
+Tá an log scriosta ar fáil anseo mar áis:",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Ní féidir cuntas a chruthú',
@@ -636,7 +641,7 @@ An fáth a thabhairt an riarthóir a ghlasadh nach: '''$1'''",
 'nohistory'           => 'Níl aon stáir athraithe ag an leathanach seo.',
 'currentrev'          => 'Leagan reatha',
 'revisionasof'        => 'Leagan ó $1',
-'revision-info'       => 'Leagan mar $1 le $2',
+'revision-info'       => 'Leagan mar $1 le $2', # Additionally available: $3: revision id
 'previousrevision'    => '← An leasú roimhe seo',
 'nextrevision'        => 'An chéad leasú eile →',
 'currentrevisionlink' => 'Leagan reatha',
@@ -776,6 +781,7 @@ den am an freastalaí (UTC).',
 'recentchanges'                     => 'Athruithe is déanaí',
 'recentchangestext'                 => 'Déan faire ar na hathruithe is déanaí sa vicí ar an leathanach seo.',
 'rcnote'                            => "Is {{PLURAL:$1|é seo a leanas <strong>an t-athrú amháin</strong>|iad seo a leanas na <strong>$1</strong> athruithe is déanaí}} {{PLURAL:$2|ar feadh an lae dheireanaigh|ar feadh na '''$2''' lá deireanacha}}, as $5, $4.",
+'rcnotefrom'                        => 'Is iad seo a leanas na hathruithe ó <b>$2</b> (go dti <b>$1</b> taispeánaithe).',
 'rclistfrom'                        => 'Taispeáin nua-athruithe dom ó $1 anuas',
 'rcshowhideminor'                   => '$1 mionathruithe',
 'rcshowhidebots'                    => '$1 róbónna',
@@ -796,8 +802,9 @@ den am an freastalaí (UTC).',
 'newsectionsummary'                 => '/* $1 */ mír nua',
 
 # Recent changes linked
-'recentchangeslinked'       => 'Athruithe gaolmhara',
-'recentchangeslinked-title' => 'Athruithe gaolmhar le "$1"',
+'recentchangeslinked'          => 'Athruithe gaolmhara',
+'recentchangeslinked-title'    => 'Athruithe gaolmhar le "$1"',
+'recentchangeslinked-noresult' => 'Níl aon athruaithe ar na leathanaigh naiscthe le linn an tréimhse tugtha.',
 
 # Upload
 'upload'            => 'Uaslódáil comhad',
@@ -851,6 +858,7 @@ uaslódáil é arís, le do thoil.',
 
 # Image description page
 'filehist'                  => 'Stair comhad',
+'filehist-help'             => 'Clic ar dáta/am chun an comhad a radharc mar a bhí sé ar an am.',
 'filehist-current'          => 'reatha',
 'filehist-datetime'         => 'Dáta/Am',
 'filehist-user'             => 'Úsáideoir',
@@ -929,7 +937,11 @@ ghnáth tugann sé sin an sprioc-alt "fíor".',
 'popularpages'            => 'Leathanaigh coitianta',
 'wantedcategories'        => 'Catagóirí agus iarraidh ag gabháil leis',
 'wantedpages'             => 'Leathanaigh de dhíth',
+'mostlinked'              => 'Na leathanaigh naiscthe is mó',
+'mostlinkedcategories'    => 'Na chatagóirí naiscthe is mó',
+'mostlinkedtemplates'     => 'Na teimpléid naiscthe is mó',
 'mostcategories'          => 'Leathanaigh leis na chatagóir is mó',
+'mostimages'              => 'Na comhaid naiscthe is mó',
 'mostrevisions'           => 'Leathanaigh leis na leasaithe is mó',
 'prefixindex'             => 'Innéacs réimír',
 'shortpages'              => 'Leathanaigh gearra',
@@ -1044,9 +1056,6 @@ taobh istigh den tréimhse atá roghnaithe agat.',
 'iteminvalidname'      => "Fadhb leis an mír '$1', ainm neamhbhailí...",
 'wlnote'               => "Is {{PLURAL:$1|é seo thíos an t-athrú deireanach|iad seo thíos na '''$1''' athruithe deireanacha}} {{PLURAL:$2|san uair deireanach|sna '''$2''' uaire deireanacha}}.",
 'wlshowlast'           => 'Taispeáin an $1 uair $2 lá seo caite$3',
-'watchlist-hide-bots'  => 'Folaigh athruithe róbó',
-'watchlist-hide-own'   => 'Folaigh mo chuid athruithe',
-'watchlist-hide-minor' => 'Folaigh mionathruithe',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Á chur le do liosta faire...',
@@ -1122,7 +1131,7 @@ d'athúsáid duine eile eagrán níos luaí cheana féin.
 
 [[User:$3|$3]] ([[User talk:$3|Plé]]) an té a rinne an athrú is déanaí.",
 'editcomment'    => 'Seo a raibh an mínithe athraithe: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'     => "Filleadh eagarthóireachtaí le [[Special:Contributions/$2|$2]] ([[User talk:$2|Plé]]); d'athúsáideadh an athrú seo caite le [[User:$1|$1]]", # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'     => "Filleadh eagarthóireachtaí le [[Special:Contributions/$2|$2]] ([[User talk:$2|Plé]]); d'athúsáideadh an athrú seo caite le [[User:$1|$1]]", # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectlogpage'              => 'Cuntas_cosanta',
@@ -1829,10 +1838,8 @@ Rachaidh an cód deimhnithe seo as feidhm ag $4.',
 'recreate' => 'Athchruthaigh',
 
 # action=purge
-'confirm_purge'        => 'An bhfuil tú cinnte go dteastaíonn uait taisce an leathanaigh seo a bhánú?
-
-$1',
 'confirm_purge_button' => 'Tá',
+'confirm-purge-top'    => 'An bhfuil tú cinnte go dteastaíonn uait taisce an leathanaigh seo a bhánú?',
 
 # Multipage image navigation
 'imgmultigoto' => 'Téigh go leathanach $1',

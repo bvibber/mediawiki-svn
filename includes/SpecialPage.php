@@ -109,6 +109,7 @@ class SpecialPage
 		'Wantedpages'               => array( 'IncludableSpecialPage', 'Wantedpages' ),
 		'Wantedcategories'          => array( 'SpecialPage', 'Wantedcategories' ),
 		'Wantedfiles'               => array( 'SpecialPage', 'Wantedfiles' ),
+		'Wantedtemplates'           => array( 'SpecialPage', 'Wantedtemplates' ),
 		'Mostlinked'                => array( 'SpecialPage', 'Mostlinked' ),
 		'Mostlinkedcategories'      => array( 'SpecialPage', 'Mostlinkedcategories' ),
 		'Mostlinkedtemplates'       => array( 'SpecialPage', 'Mostlinkedtemplates' ),
@@ -138,7 +139,7 @@ class SpecialPage
 		'Booksources'               => 'SpecialBookSources',
 		'Categories'                => array( 'SpecialPage', 'Categories' ),
 		'Export'                    => array( 'SpecialPage', 'Export' ),
-		'Version'                   => array( 'SpecialPage', 'Version' ),
+		'Version'                   => 'SpecialVersion',
 		'Blankpage'                 => array( 'UnlistedSpecialPage', 'Blankpage' ),
 		'Allmessages'               => array( 'SpecialPage', 'Allmessages' ),
 		'Log'                       => array( 'SpecialPage', 'Log' ),
@@ -148,7 +149,6 @@ class SpecialPage
 		'Lockdb'                    => array( 'SpecialPage', 'Lockdb', 'siteadmin' ),
 		'Unlockdb'                  => array( 'SpecialPage', 'Unlockdb', 'siteadmin' ),
 		'Userrights'                => 'UserrightsPage',
-		'GroupRights'		    => 'SpecialGroupRights',
 		'MIMEsearch'                => array( 'SpecialPage', 'MIMEsearch' ),
 		'FileDuplicateSearch'       => array( 'SpecialPage', 'FileDuplicateSearch' ),
 		'Unwatchedpages'            => array( 'SpecialPage', 'Unwatchedpages', 'unwatchedpages' ),
@@ -580,7 +580,7 @@ class SpecialPage
 		if ( $subpage !== false && !is_null( $subpage ) ) {
 			$name = "$name/$subpage";
 		}
-		return $name;
+		return ucfirst( $name );
 	}
 
 	/**

@@ -195,6 +195,7 @@ function wfUrlencode( $s ) {
  */
 function wfDebug( $text, $logonly = false ) {
 	global $wgOut, $wgDebugLogFile, $wgDebugComments, $wgProfileOnly, $wgDebugRawPage;
+	global $wgDebugLogPrefix;
 	static $recursion = 0;
 
 	static $cache = array(); // Cache of unoutputted messages
@@ -227,6 +228,7 @@ function wfDebug( $text, $logonly = false ) {
 		# Strip unprintables; they can switch terminal modes when binary data
 		# gets dumped, which is pretty annoying.
 		$text = preg_replace( '![\x00-\x08\x0b\x0c\x0e-\x1f]!', ' ', $text );
+		$text = $wgDebugLogPrefix . $text;
 		wfErrorLog( $text, $wgDebugLogFile );
 	}
 }
@@ -682,7 +684,7 @@ function wfMsgWikiHtml( $key ) {
  * Behavior for conflicting options (e.g., parse+parseinline) is undefined.
  */
 function wfMsgExt( $key, $options ) {
-	global $wgOut, $wgParser;
+	global $wgOut;
 
 	$args = func_get_args();
 	array_shift( $args );
@@ -1042,7 +1044,7 @@ function wfCheckLimits( $deflimit = 50, $optionname = 'rclimit' ) {
  */
 function wfEscapeWikiText( $text ) {
 	$text = str_replace(
-		array( '[',     '|',      ']',     '\'',    'ISBN ',     'RFC ',     '://',     "\n=",     '{{' ),
+		array( '[',     '|',      ']',     '\'',    'ISBN ',     'RFC ',     '://',     "\n=",     '{{' ), # }}
 		array( '&#91;', '&#124;', '&#93;', '&#39;', 'ISBN&#32;', 'RFC&#32;', '&#58;//', "\n&#61;", '&#123;&#123;' ),
 		htmlspecialchars($text) );
 	return $text;
@@ -1380,10 +1382,6 @@ function wfDiff( $before, $after, $params = '-u' ) {
 	if (strpos( $diff_lines[1], '+++' ) === 0) {
 		unset($diff_lines[1]);
 	}
-	if (strpos( $diff_lines[count($diff_lines)-1], "\\" ) == 0) {
-		$line_count = count($diff_lines);
-		unset( $diff_lines[$line_count-1] );
-	}
 	
 	$diff = implode( "\n", $diff_lines );
 	
@@ -1717,11 +1715,11 @@ function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
 		# TS_ORACLE
 		$uts = strtotime(preg_replace('/(\d\d)\.(\d\d)\.(\d\d)(\.(\d+))?/', "$1:$2:$3",
 				str_replace("+00:00", "UTC", $ts)));
-	} elseif (preg_match('/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z$/', $ts, $da)) {
+	} elseif (preg_match('/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.*\d*)?Z$/', $ts, $da)) {
 		# TS_ISO_8601
-	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)[\+\- ](\d\d)$/',$ts,$da)) {
+	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)\.*\d*[\+\- ](\d\d)$/',$ts,$da)) {
 		# TS_POSTGRES
-	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d) GMT$/',$ts,$da)) {
+	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)\.*\d* GMT$/',$ts,$da)) {
 		# TS_POSTGRES
 	} else {
 		# Bogus value; fall back to the epoch...
@@ -2322,25 +2320,48 @@ function wfRelativePath( $path, $from ) {
 }
 
 /**
- * array_merge() does awful things with "numeric" indexes, including
- * string indexes when happen to look like integers. When we want
- * to merge arrays with arbitrary string indexes, we don't want our
- * arrays to be randomly corrupted just because some of them consist
- * of numbers.
- *
- * Fuck you, PHP. Fuck you in the ear!
+ * Backwards array plus for people who haven't bothered to read the PHP manual
+ * XXX: will not darn your socks for you.
  *
  * @param array $array1, [$array2, [...]]
  * @return array
  */
 function wfArrayMerge( $array1/* ... */ ) {
-	$out = $array1;
-	for( $i = 1; $i < func_num_args(); $i++ ) {
-		foreach( func_get_arg( $i ) as $key => $value ) {
-			$out[$key] = $value;
-		}
+	$args = func_get_args();
+	$args = array_reverse( $args, true );
+	$out = array();
+	foreach ( $args as $arg ) {
+		$out += $arg;
 	}
 	return $out;
+}
+
+/**
+ * Merge arrays in the style of getUserPermissionsErrors, with duplicate removal
+ * e.g.
+ *	wfMergeErrorArrays( 
+ *		array( array( 'x' ) ), 
+ *		array( array( 'x', '2' ) ), 
+ *		array( array( 'x' ) ), 
+ *		array( array( 'y') )
+ *	);
+ * returns:
+ * 		array( 
+ *   		array( 'x', '2' ),
+ *   		array( 'x' ),
+ *   		array( 'y' )
+ *   	)
+ */
+function wfMergeErrorArrays(/*...*/) {
+	$args = func_get_args();
+	$out = array();
+	foreach ( $args as $errors ) {
+		foreach ( $errors as $params ) {
+			$spec = implode( "\t", $params );
+			$out[$spec] = $params;
+		}
+	}
+	return array_values( $out );
 }
 
 /**

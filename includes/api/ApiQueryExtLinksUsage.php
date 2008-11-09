@@ -54,7 +54,7 @@ class ApiQueryExtLinksUsage extends ApiQueryGeneratorBase {
 
 		// Find the right prefix
 		global $wgUrlProtocols;
-		if(!is_null($protocol) && !empty($protocol) && !in_array($protocol, $wgUrlProtocols))
+		if($protocol && !in_array($protocol, $wgUrlProtocols))
 		{
 			foreach ($wgUrlProtocols as $p) {
 				if( substr( $p, 0, strlen( $protocol ) ) === $protocol ) {
@@ -66,7 +66,7 @@ class ApiQueryExtLinksUsage extends ApiQueryGeneratorBase {
 		else
 			$protocol = null;
 
-		$db = $this->getDb();
+		$db = $this->getDB();
 		$this->addTables(array('page','externallinks'));	// must be in this order for 'USE INDEX'
 		$this->addOption('USE INDEX', 'el_index');
 		$this->addWhere('page_id=el_from');

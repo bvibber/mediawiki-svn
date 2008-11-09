@@ -171,7 +171,7 @@ class LogPage {
 				$rv = wfMsg( $wgLogActions[$key] );
 			} else {
 				$titleLink = self::getTitleLink( $type, $skin, $title, $params );
-				if( $key == 'rights/rights' || $key = 'rights/rights2' ) {
+				if( $key == 'rights/rights' ) {
 					if( $skin ) {
 						$rightsnone = wfMsg( 'rightsnone' );
 						foreach ( $params as &$param ) {
@@ -196,7 +196,7 @@ class LogPage {
 				} else {
 					$details = '';
 					array_unshift( $params, $titleLink );
-					if ( $key == 'block/block' || $key == 'suppress/block' ) {
+					if ( $key == 'block/block' || $key == 'suppress/block' || $key == 'block/reblock' ) {
 						if ( $skin ) {
 							$params[1] = '<span title="' . htmlspecialchars( $params[1] ). '">' . 
 								$wgLang->translateBlockExpiry( $params[1] ) . '</span>';

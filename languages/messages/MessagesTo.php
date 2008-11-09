@@ -383,7 +383,7 @@ Ko e konga ʻi olunga, ko e '''konga pē ʻe taha''' ʻe haofaki ʻi he lomiʻi 
 'nohistory'           => 'ʻOku ʻikai ʻi ai ha hisitōlia fatu maʻa e kupú ni.',
 'currentrev'          => 'Paaki taka',
 'revisionasof'        => 'Paaki he ko $1',
-'revision-info'       => 'Paaki he ko $1 fai ʻe $2',
+'revision-info'       => 'Paaki he ko $1 fai ʻe $2', # Additionally available: $3: revision id
 'previousrevision'    => '←Paaki motuʻa ange',
 'nextrevision'        => 'Paaki foʻou ange→',
 'currentrevisionlink' => 'Paaki taka',
@@ -483,6 +483,7 @@ Ko e konga ʻi olunga, ko e '''konga pē ʻe taha''' ʻe haofaki ʻi he lomiʻi 
 'recentchanges'     => 'Ngaahi toki liliu',
 'recentchangestext' => 'Fakatotolo ʻa e ngaahi toki liliu ki he wiki ʻi he pēsí ni.',
 'rcnote'            => 'ʻOku ʻasi ʻi lalo ʻa e liliu fakamuimui ʻe <strong>$1</strong> lolotonga ʻa e ʻaho fakamuimui ʻe <strong>$2</strong> mei he taimi: $3',
+'rcnotefrom'        => "ʻOku ʻasi ʻi lalo ʻa e liliu talu mei '''$2''' (aʻu ki he '''$1''').",
 'rclistfrom'        => 'ʻAsi mai ha ngaahi liliu foʻou ʻo kamata mei he $1',
 'rcshowhideminor'   => '$1 fatu siʻi',
 'rcshowhidebots'    => '$1 fatu fakamīsini',
@@ -745,12 +746,6 @@ Kapau ʻaho ʻe taha, te ke fietoʻo ʻa e pēsí mei hoʻo hokohoko leʻo, lomi
 'iteminvalidname'      => "Meʻa fihi mo e meʻa '$1', hingo taʻeʻaongaʻi...",
 'wlnote'               => 'ʻOku ʻasi ʻi lalo ʻa e liliu fakamuimui ʻe $1 ʻi he houa fakamuimui ʻe <b>$2</b>.',
 'wlshowlast'           => 'ʻAsi mai houa fakamuimui ʻe $1, ʻaho ʻe $2, $3',
-'watchlist-show-bots'  => 'ʻAsi mai fatu fakamīsini',
-'watchlist-hide-bots'  => 'Toi fatu fakamīsini',
-'watchlist-show-own'   => 'ʻAsi mai fatu ʻaʻaku',
-'watchlist-hide-own'   => 'Toi fatu ʻaʻaku',
-'watchlist-show-minor' => 'ʻAsi mai fatu siʻi',
-'watchlist-hide-minor' => 'Toi fatu siʻi',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'ʻOku leʻo...',
@@ -1180,10 +1175,8 @@ Kātaki fakapapauʻi te ke fie toe fatu ʻa e kupu ni.",
 'recreate'            => 'Toe fakatupu',
 
 # action=purge
-'confirm_purge'        => 'Fakaʻatā ko e fafaʻo ʻo e pēsí ni?
-
-$1',
 'confirm_purge_button' => 'Fai ā',
+'confirm-purge-top'    => 'Fakaʻatā ko e fafaʻo ʻo e pēsí ni?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← Peesi ki muʻa',

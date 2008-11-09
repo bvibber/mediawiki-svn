@@ -197,7 +197,7 @@ class ApiQueryInfo extends ApiQueryBase {
 		$pageLength = $pageSet->getCustomField('page_len');
 
 		$db = $this->getDB();
-		if ($fld_protection && !empty($titles)) {
+		if ($fld_protection && count($titles)) {
 			$this->addTables('page_restrictions');
 			$this->addFields(array('pr_page', 'pr_type', 'pr_level', 'pr_expiry', 'pr_cascade'));
 			$this->addWhereFld('pr_page', array_keys($titles));
@@ -273,7 +273,7 @@ class ApiQueryInfo extends ApiQueryBase {
 		}
 
 		// We don't need to check for pt stuff if there are no nonexistent titles
-		if($fld_protection && !empty($missing))
+		if($fld_protection && count($missing))
 		{
 			$this->resetQueryParams();
 			// Construct a custom WHERE clause that matches all titles in $missing
@@ -296,7 +296,7 @@ class ApiQueryInfo extends ApiQueryBase {
 			$others = array();
 			foreach ($missing as $title)
 				if ($title->getNamespace() == NS_IMAGE)
-					$images[] = $title->getDbKey();
+					$images[] = $title->getDBKey();
 				else
 					$others[] = $title;					
 			
@@ -367,7 +367,7 @@ class ApiQueryInfo extends ApiQueryBase {
 				else if($fld_talkid)
 					$talktitles[] = $t->getTalkPage();
 			}
-			if(!empty($talktitles) || !empty($subjecttitles))
+			if(count($talktitles) || count($subjecttitles))
 			{
 				// Construct a custom WHERE clause that matches
 				// all titles in $talktitles and $subjecttitles
@@ -449,10 +449,10 @@ class ApiQueryInfo extends ApiQueryBase {
 					$result->setIndexedTagName($pageInfo['protection'], 'pr');
 				}
 			}
-			if($fld_talkid && isset($talkids[$title->getNamespace()][$title->getDbKey()]))
-				$pageInfo['talkid'] = $talkids[$title->getNamespace()][$title->getDbKey()];
-			if($fld_subjectid && isset($subjectids[$title->getNamespace()][$title->getDbKey()]))
-				$pageInfo['subjectid'] = $subjectids[$title->getNamespace()][$title->getDbKey()];
+			if($fld_talkid && isset($talkids[$title->getNamespace()][$title->getDBKey()]))
+				$pageInfo['talkid'] = $talkids[$title->getNamespace()][$title->getDBKey()];
+			if($fld_subjectid && isset($subjectids[$title->getNamespace()][$title->getDBKey()]))
+				$pageInfo['subjectid'] = $subjectids[$title->getNamespace()][$title->getDBKey()];
 			if($fld_url) {
 				$pageInfo['fullurl'] = $title->getFullURL();
 				$pageInfo['editurl'] = $title->getFullURL('action=edit');
@@ -480,7 +480,9 @@ class ApiQueryInfo extends ApiQueryBase {
 					foreach($params['token'] as $t)
 					{
 						$val = call_user_func($tokenFunctions[$t], $pageid, $title);
-						if($val !== false)
+						if($val === false)
+							$this->setWarning("Action '$t' is not allowed for the current user");
+						else
 							$res['query']['pages'][$pageid][$t . 'token'] = $val;
 					}
 				}
@@ -494,10 +496,10 @@ class ApiQueryInfo extends ApiQueryBase {
 						$res['query']['pages'][$pageid]['protection'] = array();
 					$result->setIndexedTagName($res['query']['pages'][$pageid]['protection'], 'pr');
 				}
-				if($fld_talkid && isset($talkids[$title->getNamespace()][$title->getDbKey()]))
-					$res['query']['pages'][$pageid]['talkid'] = $talkids[$title->getNamespace()][$title->getDbKey()];
-				if($fld_subjectid && isset($subjectids[$title->getNamespace()][$title->getDbKey()]))
-					$res['query']['pages'][$pageid]['subjectid'] = $subjectids[$title->getNamespace()][$title->getDbKey()];
+				if($fld_talkid && isset($talkids[$title->getNamespace()][$title->getDBKey()]))
+					$res['query']['pages'][$pageid]['talkid'] = $talkids[$title->getNamespace()][$title->getDBKey()];
+				if($fld_subjectid && isset($subjectids[$title->getNamespace()][$title->getDBKey()]))
+					$res['query']['pages'][$pageid]['subjectid'] = $subjectids[$title->getNamespace()][$title->getDBKey()];
 				if($fld_url) {
 					$res['query']['pages'][$pageid]['fullurl'] = $title->getFullURL();
 					$res['query']['pages'][$pageid]['editurl'] = $title->getFullURL('action=edit');

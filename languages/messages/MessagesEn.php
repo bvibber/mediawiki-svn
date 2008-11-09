@@ -247,6 +247,7 @@ $magicWords = array(
 	'numberoffiles'          => array( 1,    'NUMBEROFFILES'          ),
 	'numberofusers'          => array( 1,    'NUMBEROFUSERS'          ),
 	'numberofedits'          => array( 1,    'NUMBEROFEDITS'          ),
+	'numberofviews'          => array( 1,    'NUMBEROFVIEWS'          ),
 	'pagename'               => array( 1,    'PAGENAME'               ),
 	'pagenamee'              => array( 1,    'PAGENAMEE'              ),
 	'namespace'              => array( 1,    'NAMESPACE'              ),
@@ -383,6 +384,7 @@ $specialPageAliases = array(
 	'Wantedpages'               => array( 'WantedPages', 'BrokenLinks' ),
 	'Wantedcategories'          => array( 'WantedCategories' ),
 	'Wantedfiles'               => array( 'WantedFiles' ),
+	'Wantedtemplates'           => array( 'WantedTemplates' ),
 	'Mostlinked'                => array( 'MostLinked' ),
 	'Mostlinkedcategories'      => array( 'MostLinkedCategories', 'MostUsedCategories' ),
 	'Mostlinkedtemplates'       => array( 'MostLinkedTemplates', 'MostUsedTemplates' ),
@@ -419,7 +421,7 @@ $specialPageAliases = array(
 	'Import'                    => array( 'Import' ),
 	'Lockdb'                    => array( 'LockDB' ),
 	'Unlockdb'                  => array( 'UnlockDB' ),
-	'Userrights'                => array( 'UserGroups', 'UserRights' ),
+	'Userrights'                => array( 'UserRights' ),
 	'MIMEsearch'                => array( 'MIMESearch' ),
 	'FileDuplicateSearch'       => array( 'FileDuplicateSearch' ),
 	'Unwatchedpages'            => array( 'UnwatchedPages' ),
@@ -540,6 +542,7 @@ XHTML id names.
 'tog-diffonly'                => 'Do not show page content below diffs',
 'tog-showhiddencats'          => 'Show hidden categories',
 'tog-noconvertlink'           => 'Disable link title conversion', # only translate this message to other languages if you have to change it
+'tog-norollbackdiff'          => 'Omit diff after performing a rollback',
 
 'underline-always'  => 'Always',
 'underline-never'   => 'Never',
@@ -1234,8 +1237,8 @@ The reason given by $3 is ''$2''",
 'currentrev'             => 'Current revision',
 'currentrev-asof'        => 'Current revision as of $1',
 'revisionasof'           => 'Revision as of $1',
-'revision-info'          => 'Revision as of $1 by $2',
-'revision-info-current'  => '-', # do not translate or duplicate this message to other languages
+'revision-info'          => 'Revision as of $1 by $2', # Additionally available: $3: revision id
+'revision-info-current'  => '-', # Available parameters: $1: timestamp; $2: userlinks; $3: revision id; do not translate or duplicate this message to other languages
 'revision-nav'           => '($1) $2 | $3 ($4) | $5 ($6)', # do not translate or duplicate this message to other languages
 'previousrevision'       => '← Older revision',
 'nextrevision'           => 'Newer revision →',
@@ -1280,11 +1283,11 @@ there may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}
 'revdelete-nooldid-title'     => 'Invalid target revision',
 'revdelete-nooldid-text'      => 'You have either not specified a target revision(s) to perform this
 function, the specified revision does not exist, or you are attempting to hide the current revision.',
-'revdelete-selected'          => '{{PLURAL:$2|Selected revision|Selected revisions}} of [[:$1]]:',
-'logdelete-selected'          => '{{PLURAL:$1|Selected log event|Selected log events}}:',
-'revdelete-text'              => 'Deleted revisions and events will still appear in the page history and logs, but parts of their content will be inaccessible to the public.
+'revdelete-selected'          => "'''{{PLURAL:$2|Selected revision|Selected revisions}} of [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Selected log event|Selected log events}}:'''",
+'revdelete-text'              => "'''Deleted revisions and events will still appear in the page history and logs, but parts of their content will be inaccessible to the public.'''
 
-Other admins on {{SITENAME}} will still be able to access the hidden content and can undelete it again through this same interface, unless additional restrictions are set.',
+Other admins on {{SITENAME}} will still be able to access the hidden content and can undelete it again through this same interface, unless additional restrictions are set.",
 'revdelete-legend'            => 'Set visibility restrictions',
 'revdelete-hide-text'         => 'Hide revision text',
 'revdelete-hide-name'         => 'Hide action and target',
@@ -1543,12 +1546,12 @@ please see math/README to configure.',
 'files'                    => 'Files',
 
 # User rights
-'userrights'                     => 'Edit user groups', # Not used as normal message but as header for the special page itself
+'userrights'                     => 'User rights management', # Not used as normal message but as header for the special page itself
 'userrights-summary'             => '', # do not translate or duplicate this message to other languages
 'userrights-lookup-user'         => 'Manage user groups',
 'userrights-user-editname'       => 'Enter a username:',
 'editusergroup'                  => 'Edit user groups',
-'editinguser'                    => "Changing group membership for user '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
+'editinguser'                    => "Changing user rights of user '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]] | [[Special:Contributions/$1|{{int:contribslink}}]])",
 'userrights-editusergroup'       => 'Edit user groups',
 'saveusergroups'                 => 'Save user groups',
 'userrights-groupsmember'        => 'Member of:',
@@ -1557,16 +1560,13 @@ please see math/README to configure.',
 * An unchecked box means the user is not in that group.
 * A * indicates that you cannot remove the group once you have added it, or vice versa.',
 'userrights-reason'              => 'Reason for change:',
-'userrights-no-interwiki'        => 'You do not have permission to edit user group membership on other wikis.',
+'userrights-no-interwiki'        => 'You do not have permission to edit user rights on other wikis.',
 'userrights-nodatabase'          => 'Database $1 does not exist or is not local.',
-'userrights-nologin'             => 'You must [[Special:UserLogin|log in]] with an administrator account to assign user groups.',
-'userrights-notallowed'          => 'Your account does not have permission to assign user groups.',
+'userrights-nologin'             => 'You must [[Special:UserLogin|log in]] with an administrator account to assign user rights.',
+'userrights-notallowed'          => 'Your account does not have permission to assign user rights.',
 'userrights-changeable-col'      => 'Groups you can change',
 'userrights-unchangeable-col'    => 'Groups you cannot change',
 'userrights-irreversible-marker' => '$1*', # only translate this message to other languages if you have to change it
-'userrights-backendselect-subtitle' => 'Select a rights manager',
-'userrights-backendselect-text' => "You are permitted to edit user groups for more than one rights management system. Please select the rights management system for which you wish to edit user groups from the list below:",
-'userrights-backendselect-submit' => 'Select system',
 
 # Groups
 'group'               => 'Group:',
@@ -1601,6 +1601,7 @@ please see math/README to configure.',
 'right-minoredit'            => 'Mark edits as minor',
 'right-move'                 => 'Move pages',
 'right-move-subpages'        => 'Move pages with their subpages',
+'right-move-rootuserpages'   => 'Move root user pages',
 'right-suppressredirect'     => 'Not create a redirect from the old name when moving a page',
 'right-upload'               => 'Upload files',
 'right-reupload'             => 'Overwrite an existing file',
@@ -1641,16 +1642,14 @@ please see math/README to configure.',
 'right-unwatchedpages'       => 'View a list of unwatched pages',
 'right-trackback'            => 'Submit a trackback',
 'right-mergehistory'         => 'Merge the history of pages',
-'right-userrights'           => 'Modify membership of all user groups',
+'right-userrights'           => 'Edit all user rights',
 'right-userrights-interwiki' => 'Edit user rights of users on other wikis',
 'right-siteadmin'            => 'Lock and unlock the database',
-'right-grouprights'	     => 'Edit permissions assigned to local groups',
 
 # User rights log
 'rightslog'      => 'User rights log',
 'rightslogtext'  => 'This is a log of changes to user rights.',
 'rightslogentry' => 'changed group membership for $1 from $2 to $3',
-'rightslogentry2' => 'changed group membership for $1: added $2, removed $3',
 'rightsnone'     => '(none)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -1662,6 +1661,7 @@ please see math/README to configure.',
 'action-minoredit'            => 'mark this edit as minor',
 'action-move'                 => 'move this page',
 'action-move-subpages'        => 'move this page, and its subpages',
+'action-move-rootuserpages'   => 'move root user pages',
 'action-upload'               => 'upload this file',
 'action-reupload'             => 'overwrite this existing file',
 'action-reupload-shared'      => 'override this file on a shared repository',
@@ -1695,6 +1695,7 @@ please see math/README to configure.',
 'recentchangestext'                 => 'Track the most recent changes to the wiki on this page.',
 'recentchanges-feed-description'    => 'Track the most recent changes to the wiki in this feed.',
 'rcnote'                            => "Below {{PLURAL:$1|is '''1''' change|are the last '''$1''' changes}} in the last {{PLURAL:$2|day|'''$2''' days}}, as of $5, $4.",
+'rcnotefrom'                        => "Below are the changes since '''$2''' (up to '''$1''' shown).",
 'rclistfrom'                        => 'Show new changes starting from $1',
 'rcshowhideminor'                   => '$1 minor edits',
 'rcshowhidebots'                    => '$1 bots',
@@ -1717,6 +1718,8 @@ please see math/README to configure.',
 'rc_categories_any'                 => 'Any',
 'rc-change-size'                    => '$1', # only translate this message to other languages if you have to change it
 'newsectionsummary'                 => '/* $1 */ new section',
+'rc-enhanced-expand'                => 'Show details (requires JavaScript)',
+'rc-enhanced-hide'                  => 'Hide details',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Related changes',
@@ -1961,7 +1964,7 @@ Input: contenttype/subtype, e.g. <tt>image/jpeg</tt>.',
 # Unused templates
 'unusedtemplates'         => 'Unused templates',
 'unusedtemplates-summary' => '', # do not translate or duplicate this message to other languages
-'unusedtemplatestext'     => 'This page lists all pages in the template namespace which are not included in another page.
+'unusedtemplatestext'     => 'This page lists all pages in the {{ns:template}} namespace which are not included in another page.
 Remember to check for other links to the templates before deleting them.',
 'unusedtemplateswlh'      => 'other links',
 
@@ -2033,7 +2036,7 @@ Each row contains links to the first and second redirect, as well as the target 
 'specialpage-empty'               => 'There are no results for this report.',
 'lonelypages'                     => 'Orphaned pages',
 'lonelypages-summary'             => '', # do not translate or duplicate this message to other languages
-'lonelypagestext'                 => 'The following pages are not linked from other pages in {{SITENAME}}.',
+'lonelypagestext'                 => 'The following pages are not linked from or transcluded into other pages in {{SITENAME}}.',
 'uncategorizedpages'              => 'Uncategorized pages',
 'uncategorizedpages-summary'      => '', # do not translate or duplicate this message to other languages
 'uncategorizedcategories'         => 'Uncategorized categories',
@@ -2052,6 +2055,8 @@ Each row contains links to the first and second redirect, as well as the target 
 'wantedpages-summary'             => '', # do not translate or duplicate this message to other languages
 'wantedfiles'                     => 'Wanted files',
 'wantedfiles-summary'             => '', # do not translate or duplicate this message to other languages
+'wantedtemplates'                 => 'Wanted templates',
+'wantedtemplates-summary'         => '', # do not translate or duplicate this message to other languages
 'mostlinked'                      => 'Most linked-to pages',
 'mostlinked-summary'              => '', # do not translate or duplicate this message to other languages
 'mostlinkedcategories'            => 'Most linked-to categories',
@@ -2195,17 +2200,13 @@ There may be [[{{MediaWiki:Listgrouprights-helppage}}|additional information]] a
 'listgrouprights-removegroup'     => 'Can remove {{PLURAL:$2|group|groups}}: $1',
 'listgrouprights-addgroup-all'    => 'Can add all groups',
 'listgrouprights-removegroup-all' => 'Can remove all groups',
-'listgrouprights-addselfgroup-all'=> 'Can add all groups to self',
-'listgrouprights-addselfgroup'	  => 'Can add {{PLURAL:$2|group|groups}} to self: $1',
-'listgrouprights-removeselfgroup-all' => 'Can remove all groups from self',
-'listgrouprights-removeselfgroup' => 'Can add {{PLURAL:$2|group|groups}} from self: $1',
 
 # E-mail user
 'mailnologin'     => 'No send address',
 'mailnologintext' => 'You must be [[Special:UserLogin|logged in]] and have a valid e-mail address in your [[Special:Preferences|preferences]] to send e-mail to other users.',
 'emailuser'       => 'E-mail this user',
 'emailpage'       => 'E-mail user',
-'emailpagetext'   => 'If this user has entered a valid e-mail address in his or her user preferences, the form below will send a single message.
+'emailpagetext'   => 'You can use the form below to send an e-mail message to this user.
 The e-mail address you entered in [[Special:Preferences|your user preferences]] will appear as the "From" address of the e-mail, so the recipient will be able to reply directly to you.',
 'usermailererror' => 'Mail object returned error:',
 'defemailsubject' => '{{SITENAME}} e-mail',
@@ -2224,47 +2225,35 @@ The e-mail address you entered in [[Special:Preferences|your user preferences]] 
 'emailuserfooter' => 'This e-mail was sent by $1 to $2 by the "Email user" function at {{SITENAME}}.',
 
 # Watchlist
-'watchlist'                => 'My watchlist',
-'mywatchlist'              => 'My watchlist',
-'watchlistfor'             => "(for '''$1''')",
-'nowatchlist'              => 'You have no items on your watchlist.',
-'watchlistanontext'        => 'Please $1 to view or edit items on your watchlist.',
-'watchnologin'             => 'Not logged in',
-'watchnologintext'         => 'You must be [[Special:UserLogin|logged in]] to modify your watchlist.',
-'addedwatch'               => 'Added to watchlist',
-'addedwatchtext'           => "The page \"[[:\$1]]\" has been added to your [[Special:Watchlist|watchlist]].
+'watchlist'            => 'My watchlist',
+'mywatchlist'          => 'My watchlist',
+'watchlistfor'         => "(for '''$1''')",
+'nowatchlist'          => 'You have no items on your watchlist.',
+'watchlistanontext'    => 'Please $1 to view or edit items on your watchlist.',
+'watchnologin'         => 'Not logged in',
+'watchnologintext'     => 'You must be [[Special:UserLogin|logged in]] to modify your watchlist.',
+'addedwatch'           => 'Added to watchlist',
+'addedwatchtext'       => "The page \"[[:\$1]]\" has been added to your [[Special:Watchlist|watchlist]].
 Future changes to this page and its associated talk page will be listed there, and the page will appear '''bolded''' in the [[Special:RecentChanges|list of recent changes]] to make it easier to pick out.",
-'removedwatch'             => 'Removed from watchlist',
-'removedwatchtext'         => 'The page "[[:$1]]" has been removed from [[Special:Watchlist|your watchlist]].',
-'watch'                    => 'Watch',
-'watchthispage'            => 'Watch this page',
-'unwatch'                  => 'Unwatch',
-'unwatchthispage'          => 'Stop watching',
-'notanarticle'             => 'Not a content page',
-'notvisiblerev'            => 'Revision has been deleted',
-'watchnochange'            => 'None of your watched items were edited in the time period displayed.',
-'watchlist-details'        => '{{PLURAL:$1|$1 page|$1 pages}} on your watchlist, not counting talk pages.',
-'wlheader-enotif'          => '* E-mail notification is enabled.',
-'wlheader-showupdated'     => "* Pages which have been changed since you last visited them are shown in '''bold'''",
-'watchmethod-recent'       => 'checking recent edits for watched pages',
-'watchmethod-list'         => 'checking watched pages for recent edits',
-'watchlistcontains'        => 'Your watchlist contains $1 {{PLURAL:$1|page|pages}}.',
-'iteminvalidname'          => "Problem with item '$1', invalid name...",
-'wlnote'                   => "Below {{PLURAL:$1|is the last change|are the last '''$1''' changes}} in the last {{PLURAL:$2|hour|'''$2''' hours}}.",
-'wlshowlast'               => 'Show last $1 hours $2 days $3',
-'watchlist-show-bots'      => 'Show bot edits',
-'watchlist-hide-bots'      => 'Hide bot edits',
-'watchlist-show-own'       => 'Show my edits',
-'watchlist-hide-own'       => 'Hide my edits',
-'watchlist-show-minor'     => 'Show minor edits',
-'watchlist-hide-minor'     => 'Hide minor edits',
-'watchlist-show-anons'     => 'Show anonymous edits',
-'watchlist-hide-anons'     => 'Hide anonymous edits',
-'watchlist-show-liu'       => 'Show logged-in user edits',
-'watchlist-hide-liu'       => 'Hide logged-in user edits',
-'watchlist-show-patrolled' => 'Show patrolled edits',
-'watchlist-hide-patrolled' => 'Hide patrolled edits',
-'watchlist-options'        => 'Watchlist options',
+'removedwatch'         => 'Removed from watchlist',
+'removedwatchtext'     => 'The page "[[:$1]]" has been removed from [[Special:Watchlist|your watchlist]].',
+'watch'                => 'Watch',
+'watchthispage'        => 'Watch this page',
+'unwatch'              => 'Unwatch',
+'unwatchthispage'      => 'Stop watching',
+'notanarticle'         => 'Not a content page',
+'notvisiblerev'        => 'Revision has been deleted',
+'watchnochange'        => 'None of your watched items were edited in the time period displayed.',
+'watchlist-details'    => '{{PLURAL:$1|$1 page|$1 pages}} on your watchlist, not counting talk pages.',
+'wlheader-enotif'      => '* E-mail notification is enabled.',
+'wlheader-showupdated' => "* Pages which have been changed since you last visited them are shown in '''bold'''",
+'watchmethod-recent'   => 'checking recent edits for watched pages',
+'watchmethod-list'     => 'checking watched pages for recent edits',
+'watchlistcontains'    => 'Your watchlist contains $1 {{PLURAL:$1|page|pages}}.',
+'iteminvalidname'      => "Problem with item '$1', invalid name...",
+'wlnote'               => "Below {{PLURAL:$1|is the last change|are the last '''$1''' changes}} in the last {{PLURAL:$2|hour|'''$2''' hours}}.",
+'wlshowlast'           => 'Show last $1 hours $2 days $3',
+'watchlist-options'    => 'Watchlist options',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Watching...',
@@ -2353,7 +2342,7 @@ someone else has edited or rolled back the page already.
 
 The last edit to the page was by [[User:$3|$3]] ([[User talk:$3|Talk]] | [[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment'      => 'The edit comment was: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'Reverted edits by [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) to last version by [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'Reverted edits by [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) to last version by [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Reverted edits by $1;
 changed back to last version by $2.',
 'sessionfailure'   => 'There seems to be a problem with your login session;
@@ -2554,6 +2543,7 @@ Fill in a specific reason below (for example, citing particular pages that were 
 'ipbhidename'                     => 'Hide username from the block log, active block list and user list',
 'ipbwatchuser'                    => "Watch this user's user and talk pages",
 'ipballowusertalk'                => 'Allow this user to edit own talk page while blocked',
+'ipb-change-block'                => 'Re-block the user with these settings',
 'badipaddress'                    => 'Invalid IP address',
 'blockipsuccesssub'               => 'Block succeeded',
 'blockipsuccesstext'              => '[[Special:Contributions/$1|$1]] has been blocked.<br />
@@ -2595,6 +2585,7 @@ The reason given for $1\'s block is: "$2"',
 'blocklogpage'                    => 'Block log',
 'blocklog-fulllog'                => 'Full block log',
 'blocklogentry'                   => 'blocked [[$1]] with an expiry time of $2 $3',
+'reblock-logentry'                => 'changed block settings for [[$1]] with an expiry time of $2 $3',
 'blocklogtext'                    => 'This is a log of user blocking and unblocking actions.
 Automatically blocked IP addresses are not listed.
 See the [[Special:IPBlockList|IP block list]] for the list of currently operational bans and blocks.',
@@ -2609,6 +2600,8 @@ See the [[Special:IPBlockList|IP block list]] for the list of currently operatio
 'ipb_expiry_invalid'              => 'Expiry time invalid.',
 'ipb_expiry_temp'                 => 'Hidden username blocks must be permanent.',
 'ipb_already_blocked'             => '"$1" is already blocked',
+'ipb-needreblock'                 => '== Already blocked ==
+$1 is already blocked. Do you want to change the settings?',
 'ipb_cant_unblock'                => 'Error: Block ID $1 not found.
 It may have been unblocked already.',
 'ipb_blocked_as_range'            => 'Error: The IP $1 is not blocked directly and cannot be unblocked.
@@ -3000,11 +2993,12 @@ This is probably caused by a link to a blacklisted external site.',
 'markedaspatrollederror-noautopatrol' => 'You are not allowed to mark your own changes as patrolled.',
 
 # Patrol log
-'patrol-log-page'   => 'Patrol log',
-'patrol-log-header' => 'This is a log of patrolled revisions.',
-'patrol-log-line'   => 'marked $1 of $2 patrolled $3',
-'patrol-log-auto'   => '(automatic)',
-'patrol-log-diff'   => 'r$1', # only translate this message to other languages if you have to change it
+'patrol-log-page'      => 'Patrol log',
+'patrol-log-header'    => 'This is a log of patrolled revisions.',
+'patrol-log-line'      => 'marked $1 of $2 patrolled $3',
+'patrol-log-auto'      => '(automatic)',
+'patrol-log-diff'      => 'r$1', # only translate this message to other languages if you have to change it
+'log-show-hide-patrol' => '$1 patrol log',
 
 # Image deletion
 'deletedrevision'                 => 'Deleted old revision $1',
@@ -3487,10 +3481,9 @@ Please confirm that you really want to recreate this page.",
 'unit-pixel' => 'px', # only translate this message to other languages if you have to change it
 
 # action=purge
-'confirm_purge'        => 'Clear the cache of this page?
-
-$1',
 'confirm_purge_button' => 'OK',
+'confirm-purge-top'    => 'Clear the cache of this page?',
+'confirm-purge-bottom' => 'Purging a page clears the cache and forces the most current version to appear.',
 
 # Separators for various lists, etc.
 'catseparator'        => '|', # only translate this message to other languages if you have to change it
@@ -3656,6 +3649,7 @@ You can also [[Special:Watchlist/edit|use the standard editor]].',
 
 # Core parser functions
 'unknown_extension_tag' => 'Unknown extension tag "$1"',
+'duplicate-defaultsort' => 'Warning: Default sort key "$2" overrides earlier default sort key "$1".',
 
 # Special:Version
 'version'                          => 'Version', # Not used as normal message but as header for the special page itself
@@ -3721,49 +3715,6 @@ Enter the filename without the "{{ns:image}}:" prefix.',
 # Special:BlankPage
 'blankpage'              => 'Blank page',
 'intentionallyblankpage' => 'This page is intentionally left blank',
-
-# Special:GroupRights
-'grouprights'			=> "Edit group rights",
-'grouprights-grouplist'          => 'The following groups have been configured.
-You may view and edit the rights assigned to any group.
-A group may be deleted by removing all rights from it.',
-'grouprights-editlink' => 'view/edit',
-'grouprights-existinggroup-legend'                => 'Existing groups',
-'grouprights-newgroup-legend'                     => 'Create a new group',
-'grouprights-newgroup-intro'                      => 'You can use this form to assign rights to a new group.
-Note that a group does not exist unless it has rights assigned to it.',
-'grouprights-newgroupname'       => 'New group name:',
-'grouprights-creategroup-submit' => 'Assign rights',
-'grouprights-subtitle'                  => 'Editing $1',
-'grouprights-fieldset'                  => 'Rights for $1',
-'grouprights-editgroup-name'                      => 'Name of group:',
-'grouprights-editgroup-display'                   => 'Localised name of group:',
-'grouprights-editgroup-display-edit'              => '$2 ([[MediaWiki:Group-$1|edit]])',
-'grouprights-editgroup-member'                    => 'Localised name of group members:',
-'grouprights-editgroup-member-edit'               => '$2 ([[MediaWiki:Group-$1-member|edit]])',
-'grouprights-editgroup-members'                   => 'Member list:',
-'grouprights-editgroup-members-link'              => '[[Special:ListUsers/$1|List of users with $2 rights]]',
-'grouprights-editgroup-restrictions'              => 'Set of wikis where this group is active:',
-'grouprights-editgroup-noset'                     => '(none)',
-'grouprights-editgroup-submit'                    => 'Save changes to group rights',
-'grouprights-editgroup-perms'                     => 'Assigned rights:',
-'grouprights-editgroup-reason'                    => 'Reason for change:',
-'grouprights-editgroup-success'                   => 'Group rights changed',
-'grouprights-editgroup-success-text'              => 'You have successfully changed the group rights for the $1 group.',
-'grouprightslog' => 'changed group rights for $1. Added: $2; Removed: $3',
-'grouprights-return' => 'Return to group rights',
-'grouprights-backendselect-subtitle' => 'Select a rights manager',
-'grouprights-backendselect-text' => "You are permitted to edit group rights for more than one rights management system. Please select the rights management system for which you wish to edit group rights from the list below:",
-'grouprights-editgroup' => "'''Changeable groups'''",
-'grouprights-editgroup-add' => 'Can add groups:',
-'grouprights-editgroup-remove' => 'Can remove groups:',
-'grouprights-editgroup-add-self' => 'Can add groups to self:',
-'grouprights-editgroup-remove-self' => 'Can remove groups from self:',
-
-'rights-backend-RightsManagerConfigDB' => "Users and groups for this MediaWiki site",
-'rights-backend-RightsManagerForeignDB' => 'Users and groups on another site',
-
-'rightsmanager-interwiki-database' => 'Site:',
 
 # External image whitelist
 'external_image_whitelist' => ' #Leave this line exactly as it is<pre>

@@ -6,6 +6,7 @@
  *
  * @author Cgboeree
  * @author Malafaya
+ * @author Urhixidur
  */
 
 $messages = array(
@@ -289,7 +290,7 @@ $messages = array(
 'wrongpasswordempty'      => 'La sinia de entra es vacua. Per favore, atenta ancora.',
 'passwordtooshort'        => 'Tu sinia secreta no es legal o es tro corta.
 El debe ave a min {{PLURAL:$1|1 simbol|$1 simboles}} e debe difere de tu nom de usor.',
-'mailmypassword'          => 'Envia la sinia secreta par eposta',
+'mailmypassword'          => 'Envia la sinia secreta nova par eposta',
 'passwordremindertitle'   => 'Sinia secreta temporer nova per {{SITENAME}}',
 'passwordremindertext'    => 'Algun (tu, probable, de adirije IP $1)
 ia demanda ce nos envia a tu un sinia secreta nova per {{SITENAME}} ($4).
@@ -366,7 +367,7 @@ Si tu es asi par era, clica a la boton '''retro''' de tu surfador.",
 'copyrightwarning'       => 'Per favore nota ce tota labora a {{SITENAME}} es judida ce el es relasada su la $2 (vide $1 per detalias). Si tu no desira ce tu scrives ta es editada sin compati e redistribui sin tu permite, no sumita el asi!<br />
 Tu ance promete a nos ce tu ia scriveda esta par tu mesma, o copiada esta de un domina publica o otra orijin libre.
 <strong>NO SUMITA LABORA SU DIRETOS DE AUTOR SIN PERMITE!!</strong>',
-'longpagewarning'        => '<strong>AVISA: Esta paje usa $1 kilotetas; alga surfadores pote ave problemes con la edita de pajes plu grande ce 32ko.
+'longpagewarning'        => '<strong>AVISA: Esta paje usa $1 kilotetas; alga surfadores pote ave problemes con la edita de pajes plu grande ce 32 ko.
 Per favore, considera parti la paje en pesos plu poca.</strong>',
 'templatesused'          => 'Modeles usada a esta paje:',
 'templatesusedpreview'   => 'Modeles usada en esta previde:',
@@ -382,7 +383,7 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'viewpagelogs'           => 'Vide la arcivo de esta paje',
 'currentrev'             => 'Cambia presente',
 'revisionasof'           => 'Revisa de $1',
-'revision-info'          => 'Revisa de $1 par $2',
+'revision-info'          => 'Revisa de $1 par $2', # Additionally available: $3: revision id
 'previousrevision'       => '← Altera presedente',
 'nextrevision'           => 'Revisa plu nova→',
 'currentrevisionlink'    => 'Revisa presente',
@@ -463,6 +464,7 @@ La arcivo de sutraes per esta paje es asi per conveni:",
 'recentchangestext'              => 'Asi la lista de cambias resente en la vici.',
 'recentchanges-feed-description' => 'Seque la cambias plu resente a la vici en esta flue.',
 'rcnote'                         => 'Su es {{PLURAL:$1|cambia|cambias}} en la presedente {{PLURAL:$2|dia|dias}}, en $5, $4.',
+'rcnotefrom'                     => "A su es la cambias de '''$2''' (asta '''$1''' es mostrada).",
 'rclistfrom'                     => 'Mostra cambias nova, comensante de $1',
 'rcshowhideminor'                => '$1 editas minor',
 'rcshowhidebots'                 => '$1 botes',
@@ -515,7 +517,7 @@ Pajes a [[Special:Watchlist|tu lista de pajes oservada]] es en leteras '''forte'
 'linkstoimage'              => 'Esta {{PLURAL:$1|paje|pajes}} lia a esta fix:',
 'nolinkstoimage'            => 'Es no pajes ce lia a esta fix.',
 'sharedupload'              => 'Esta fix es parti es pote es usada par otra projetas.',
-'noimage'                   => 'Es no fix con esta nom; tu pote $1.',
+'noimage'                   => 'Es no fix con esta nom, ma tu pote $1.',
 'noimage-linktext'          => 'envia un',
 'uploadnewversion-linktext' => 'Envia un varia nova de esta fix',
 
@@ -618,26 +620,23 @@ Pajes a [[Special:Watchlist|tu lista de pajes oservada]] es en leteras '''forte'
 'emailto'   => 'Per',
 
 # Watchlist
-'watchlist'            => 'Pajes oservada',
-'mywatchlist'          => 'Me lista de pajes oservada',
-'watchlistfor'         => "(per '''$1''')",
-'nowatchlist'          => 'Tu ave no cosas en tu lista oservada',
-'addedwatch'           => 'Juntada a la lista de pajes oservada',
-'addedwatchtext'       => "La paje \"[[:\$1]]\" ia es juntada a tu [[Special:Watchlist|lista de pajes oservada]].
+'watchlist'         => 'Pajes oservada',
+'mywatchlist'       => 'Me lista de pajes oservada',
+'watchlistfor'      => "(per '''$1''')",
+'nowatchlist'       => 'Tu ave no cosas en tu lista oservada',
+'addedwatch'        => 'Juntada a la lista de pajes oservada',
+'addedwatchtext'    => "La paje \"[[:\$1]]\" ia es juntada a tu [[Special:Watchlist|lista de pajes oservada]].
 Cambias future a esta paje e se paje de discutes va es listada ala, e la paje va apera en leteras '''forte''' en la [[Special:RecentChanges|lista de cambias resente]] per es plu fasil oservada.
 
 Si tu vole sutrae la paje de tu lista de pajes oservada en la futur, clica a \"no oserva\" en la bara a la lado.",
-'removedwatch'         => 'Sutraeda de la lista de pajes oservada',
-'removedwatchtext'     => 'La paje "[[:$1]]" ia es sutraeda de tu lista de pajes oservada.',
-'watch'                => 'Oserva',
-'watchthispage'        => 'Oserva esta paje',
-'unwatch'              => 'Nonoserva',
-'watchlist-details'    => '{{PLURAL:$1|$1 paje|$1 pajes}} osservada, sin pajes de discutes.',
-'watchlistcontains'    => 'Tu lista oservada teni $1 {{PLURAL:$1|paje|pajes}}.',
-'wlshowlast'           => 'Mostra la $1 oras e $2 dias presedente $3',
-'watchlist-hide-bots'  => 'Asconde editas de bot',
-'watchlist-hide-own'   => 'Asconde me editas',
-'watchlist-hide-minor' => 'Asconde editas minor',
+'removedwatch'      => 'Sutraeda de la lista de pajes oservada',
+'removedwatchtext'  => 'La paje "[[:$1]]" ia es sutraeda de tu lista de pajes oservada.',
+'watch'             => 'Oserva',
+'watchthispage'     => 'Oserva esta paje',
+'unwatch'           => 'Nonoserva',
+'watchlist-details' => '{{PLURAL:$1|$1 paje|$1 pajes}} osservada, sin pajes de discutes.',
+'watchlistcontains' => 'Tu lista oservada teni $1 {{PLURAL:$1|paje|pajes}}.',
+'wlshowlast'        => 'Mostra la $1 oras e $2 dias presedente $3',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Oserva...',

@@ -5,6 +5,7 @@
  * @file
  *
  * @author Slomox
+ * @author Urhixidur
  * @author לערי ריינהארט
  */
 
@@ -95,81 +96,86 @@ $dateFormats = array(
 );
 
 $specialPageAliases = array(
-	'DoubleRedirects'           => array( 'Dubbelte_Redirects' ),
-	'BrokenRedirects'           => array( 'Kaputte_Redirects' ),
-	'Disambiguations'           => array( 'Mehrdüdige_Begrepen' ),
+	'DoubleRedirects'           => array( 'Dubbelte Redirects' ),
+	'BrokenRedirects'           => array( 'Kaputte Redirects' ),
+	'Disambiguations'           => array( 'Mehrdüdige Begrepen' ),
 	'Userlogin'                 => array( 'Anmellen' ),
 	'Userlogout'                => array( 'Afmellen' ),
+	'CreateAccount'             => array( 'Brukerkonto anleggen' ),
 	'Preferences'               => array( 'Instellungen' ),
 	'Watchlist'                 => array( 'Oppasslist' ),
-	'Recentchanges'             => array( 'Neeste_Ännern' ),
+	'Recentchanges'             => array( 'Toletzt ännert', 'Neeste Ännern' ),
 	'Upload'                    => array( 'Hoochladen' ),
 	'Imagelist'                 => array( 'Dateilist' ),
-	'Newimages'                 => array( 'Nee_Datein' ),
+	'Newimages'                 => array( 'Nee Datein' ),
 	'Listusers'                 => array( 'Brukers' ),
+	'Listgrouprights'           => array( 'Gruppenrechten' ),
 	'Statistics'                => array( 'Statistik' ),
-	'Randompage'                => array( 'Tofällige_Siet' ),
+	'Randompage'                => array( 'Tofällige Siet' ),
 	'Lonelypages'               => array( 'Weetsieden' ),
-	'Uncategorizedpages'        => array( 'Sieden_ahn_Kategorie' ),
-	'Uncategorizedcategories'   => array( 'Kategorien_ahn_Kategorie' ),
-	'Uncategorizedimages'       => array( 'Datein_ahn_Kategorie' ),
-	'Uncategorizedtemplates'    => array( 'Vörlagen_ahn_Kategorie' ),
-	'Unusedcategories'          => array( 'Nich_bruukte_Kategorien' ),
-	'Unusedimages'              => array( 'Nich_bruukte_Datein' ),
-	'Wantedpages'               => array( 'Wünschte_Sieden' ),
-	'Wantedcategories'          => array( 'Wünschte_Kategorien' ),
-	'Mostlinked'                => array( 'Veel_lenkte_Sieden' ),
-	'Mostlinkedcategories'      => array( 'Veel_bruukte_Kategorien' ),
-	'Mostlinkedtemplates'       => array( 'Veel_bruukte_Vörlagen' ),
-	'Mostcategories'            => array( 'Sieden_mit_vele_Kategorien' ),
-	'Mostimages'                => array( 'Veel_bruukte_Datein' ),
-	'Mostrevisions'             => array( 'Faken_ännerte_Sieden' ),
-	'Fewestrevisions'           => array( 'Kuum_ännerte_Sieden' ),
-	'Shortpages'                => array( 'Korte_Sieden' ),
-	'Longpages'                 => array( 'Lange_Sieden' ),
-	'Newpages'                  => array( 'Nee_Sieden' ),
-	'Ancientpages'              => array( 'Ole_Sieden' ),
+	'Uncategorizedpages'        => array( 'Sieden ahn Kategorie' ),
+	'Uncategorizedcategories'   => array( 'Kategorien ahn Kategorie' ),
+	'Uncategorizedimages'       => array( 'Datein ahn Kategorie' ),
+	'Uncategorizedtemplates'    => array( 'Vörlagen ahn Kategorie' ),
+	'Unusedcategories'          => array( 'Nich bruukte Kategorien' ),
+	'Unusedimages'              => array( 'Nich bruukte Datein' ),
+	'Wantedpages'               => array( 'Wünschte Sieden' ),
+	'Wantedcategories'          => array( 'Wünschte Kategorien' ),
+	'Mostlinked'                => array( 'Veel lenkte Sieden' ),
+	'Mostlinkedcategories'      => array( 'Veel bruukte Kategorien' ),
+	'Mostlinkedtemplates'       => array( 'Veel bruukte Vörlagen' ),
+	'Mostcategories'            => array( 'Sieden mit vele Kategorien' ),
+	'Mostimages'                => array( 'Veel bruukte Datein' ),
+	'Mostrevisions'             => array( 'Faken ännerte Sieden' ),
+	'Fewestrevisions'           => array( 'Kuum ännerte Sieden' ),
+	'Shortpages'                => array( 'Korte Sieden' ),
+	'Longpages'                 => array( 'Lange Sieden' ),
+	'Newpages'                  => array( 'Nee Sieden' ),
+	'Ancientpages'              => array( 'Ole Sieden' ),
 	'Deadendpages'              => array( 'Sackstraatsieden' ),
-	'Protectedpages'            => array( 'Schuulte_Sieden' ),
-	'Allpages'                  => array( 'Alle_Sieden' ),
-	'Prefixindex'               => array( 'Sieden_de_anfangt_mit' ),
-	'Ipblocklist'               => array( 'List_vun_blockte_IPs' ),
+	'Protectedpages'            => array( 'Schuulte Sieden' ),
+	'Protectedtitles'           => array( 'Sperrte Titels' ),
+	'Allpages'                  => array( 'Alle Sieden' ),
+	'Prefixindex'               => array( 'Sieden de anfangt mit' ),
+	'Ipblocklist'               => array( 'List vun blockte IPs' ),
 	'Specialpages'              => array( 'Spezialsieden' ),
 	'Contributions'             => array( 'Bidrääg' ),
-	'Emailuser'                 => array( 'E-Mail_an_Bruker' ),
-	'Confirmemail'              => array( 'E-Mail_bestätigen' ),
-	'Whatlinkshere'             => array( 'Wat_wiest_hier_hen' ),
-	'Recentchangeslinked'       => array( 'Ännern_an_lenkte_Sieden' ),
+	'Emailuser'                 => array( 'E-Mail an Bruker' ),
+	'Confirmemail'              => array( 'E-Mail bestätigen' ),
+	'Whatlinkshere'             => array( 'Wat wiest hier hen' ),
+	'Recentchangeslinked'       => array( 'Ännern an lenkte Sieden' ),
 	'Movepage'                  => array( 'Schuven' ),
 	'Blockme'                   => array( 'Proxy-Sparr' ),
 	'Booksources'               => array( 'ISBN-Söök' ),
 	'Categories'                => array( 'Kategorien' ),
 	'Export'                    => array( 'Exporteren' ),
-	'Version'                   => array( 'Version' ),
 	'Allmessages'               => array( 'Systemnarichten' ),
 	'Log'                       => array( 'Logbook' ),
 	'Blockip'                   => array( 'Blocken' ),
 	'Undelete'                  => array( 'Wedderhalen' ),
 	'Import'                    => array( 'Importeren' ),
-	'Lockdb'                    => array( 'Datenbank_sparren' ),
-	'Unlockdb'                  => array( 'Datenbank_freegeven' ),
+	'Lockdb'                    => array( 'Datenbank sparren' ),
+	'Unlockdb'                  => array( 'Datenbank freegeven' ),
 	'Userrights'                => array( 'Brukerrechten' ),
 	'MIMEsearch'                => array( 'MIME-Typ-Söök' ),
-	'Unwatchedpages'            => array( 'Sieden_op_keen_Oppasslist' ),
-	'Listredirects'             => array( 'List_vun_Redirects' ),
-	'Revisiondelete'            => array( 'Versionen_wegsmieten' ),
-	'Unusedtemplates'           => array( 'Nich_bruukte_Vörlagen' ),
-	'Randomredirect'            => array( 'Tofällig_Redirect' ),
-	'Mypage'                    => array( 'Miene_Brukersiet' ),
-	'Mytalk'                    => array( 'Miene_Diskuschoonssiet' ),
-	'Mycontributions'           => array( 'Miene_Bidrääg' ),
+	'FileDuplicateSearch'       => array( 'Dubbelte-Datein-Söök' ),
+	'Unwatchedpages'            => array( 'Sieden op keen Oppasslist' ),
+	'Listredirects'             => array( 'List vun Redirects' ),
+	'Revisiondelete'            => array( 'Versionen wegsmieten' ),
+	'Unusedtemplates'           => array( 'Nich bruukte Vörlagen' ),
+	'Randomredirect'            => array( 'Tofällig Redirect' ),
+	'Mypage'                    => array( 'Miene Brukersiet' ),
+	'Mytalk'                    => array( 'Miene Diskuschoonssiet' ),
+	'Mycontributions'           => array( 'Miene Bidrääg' ),
 	'Listadmins'                => array( 'Administraters' ),
 	'Listbots'                  => array( 'Bots' ),
-	'Popularpages'              => array( 'Veel_besöchte_Sieden' ),
+	'Popularpages'              => array( 'Veel besöchte Sieden' ),
 	'Search'                    => array( 'Söök' ),
-	'Resetpass'                 => array( 'Passwoort_trüchsetten' ),
-	'Withoutinterwiki'          => array( 'Sieden_ahn_Spraaklenken' ),
-	'MergeHistory'              => array( 'Versionshistorie_tohoopbringen' ),
+	'Resetpass'                 => array( 'Passwoort trüchsetten' ),
+	'Withoutinterwiki'          => array( 'Sieden ahn Spraaklenken' ),
+	'MergeHistory'              => array( 'Versionshistorie tohoopbringen' ),
+	'Filepath'                  => array( 'Dateipadd' ),
+	'Blankpage'                 => array( 'Leddige Sied' ),
 );
 
 $messages = array(
@@ -300,7 +306,7 @@ un dat [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] 
 'qbfind'         => 'Finnen',
 'qbbrowse'       => 'Blädern',
 'qbedit'         => 'Ännern',
-'qbpageoptions'  => 'Siedenopschonen',
+'qbpageoptions'  => 'Disse Sied',
 'qbpageinfo'     => 'Sietendaten',
 'qbmyoptions'    => 'Instellen',
 'qbspecialpages' => 'Spezialsieten',
@@ -746,7 +752,7 @@ Wenn du dat nich wullst, dröffst du dien Text hier nich apentlich maken.<br />
 
 Du bestätigst ok, dat du den Text sülvst schreven hest oder ut en „Public Domain“-Born oder en annere fre'e Born kopeert hest (Kiek ok $1 för Details).
 <strong>Kopeer kene Warken, de enen Oorheverrecht ünnerliggt, ahn Verlööv vun de Copyright-Inhebbers!</strong>",
-'longpagewarning'                  => '<strong>Wohrscho: Disse Siet is $1 KB groot; en poor Browser köönt Probleme hebben, Sieten to bearbeiden, de grötter as 32 KB sünd.
+'longpagewarning'                  => '<strong>Wohrscho: Disse Siet is $1 kB groot; en poor Browser köönt Probleme hebben, Sieten to bearbeiden, de grötter as 32 kB sünd.
 Bedenk of disse Siet vilicht in lüttere Afsnitten opdeelt warrn kann.</strong>',
 'longpageerror'                    => "'''Fehler: Dien Text is $1 Kilobytes lang. Dat is länger as dat Maximum vun $2 Kilobytes. Kann den Text nich spiekern.'''",
 'readonlywarning'                  => '<strong>Wohrscho: De Datenbank is för Pleegarbeiden sparrt worrn, so dat du de Sied en Stoot nich
@@ -814,7 +820,7 @@ De Grund weer: ''$2''",
 'revisionasof'           => 'Version vun’n $1',
 'revision-info'          => '<div id="viewingold-warning" style="background: #ffbdbd; border: 1px solid #BB7979; font-weight: bold; padding: .5em 1em;">
 Dit is en ole Version vun disse Siet, so as $2 de $1 ännert hett. De Version kann temlich stark vun de <a href="{{FULLURL:{{FULLPAGENAME}}}}" title="{{FULLPAGENAME}}">aktuelle Version</a> afwieken.
-</div>',
+</div>', # Additionally available: $3: revision id
 'previousrevision'       => 'Nächstöllere Version→',
 'nextrevision'           => 'Ne’ere Version →',
 'currentrevisionlink'    => 'aktuelle Version',
@@ -859,11 +865,11 @@ Mehr över dat Wegsmieten is in dat [{{fullurl:Special:Log/delete|page={{FULLPAG
 'revisiondelete'              => 'Versionen wegsmieten/wedderhalen',
 'revdelete-nooldid-title'     => 'kene Versionen dor, de passt',
 'revdelete-nooldid-text'      => 'Du hest keen Version för disse Akschoon angeven, de utwählte Version gifft dat nich oder du versöchst, de ne’este Version wegtodoon.',
-'revdelete-selected'          => '{{PLURAL:$2|Wählte Version|Wählte Versionen}} vun [[:$1]]:',
-'logdelete-selected'          => '{{PLURAL:$1|Wählt Logbook-Indrag|Wählte Logbook-Indrääg}}:',
-'revdelete-text'              => 'Wegsmetene Versionen staht noch jümmer in de Versionsgeschicht, sünd aver nich mehr apen intosehn.
+'revdelete-selected'          => "'''{{PLURAL:$2|Wählte Version|Wählte Versionen}} vun [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Wählt Logbook-Indrag|Wählte Logbook-Indrääg}}:'''",
+'revdelete-text'              => "'''Wegsmetene Versionen staht noch jümmer in de Versionsgeschicht, sünd aver nich mehr apen intosehn.'''
 
-{{SITENAME}}-Administraters köönt de Sieden noch jümmer sehn un ok wedderhalen, solang dat nich extra fastleggt is, dat ok Administraters dat nich mehr mehr dröfft.',
+{{SITENAME}}-Administraters köönt de Sieden noch jümmer sehn un ok wedderhalen, solang dat nich extra fastleggt is, dat ok Administraters dat nich mehr mehr dröfft.",
 'revdelete-legend'            => 'Inschränkungen för de Sichtborkeit setten',
 'revdelete-hide-text'         => 'Versiontext versteken',
 'revdelete-hide-name'         => 'Akschoon un Teel versteken',
@@ -1241,6 +1247,7 @@ de aver nich jümmer den aktuellsten Stand weerspegelt.<p>',
 Disse Siet warrt wiel dat Laden automatsch aktualiseert. Wiest warrn Sieten, de toletzt bearbeid worrn sünd, dorto de Tied un de Naam vun de Autor.',
 'recentchanges-feed-description'    => 'Behool mit dissen Feed de ne’esten Ännern op dit Wiki in’t Oog.',
 'rcnote'                            => "Hier sünd de letzten '''$1''' Ännern vun {{PLURAL:$2|den letzten Dag|de letzten '''$2''' Daag}} (Stand $5, $4). ('''N''' - Ne’e Sieden; '''L''' - Lütte Ännern)",
+'rcnotefrom'                        => 'Dit sünd de Ännern siet <b>$2</b> (bet to <b>$1</b> wiest).',
 'rclistfrom'                        => 'Wies ne’e Ännern siet $1',
 'rcshowhideminor'                   => '$1 lütte Ännern',
 'rcshowhidebots'                    => '$1 Bots',
@@ -1457,7 +1464,7 @@ En [[Special:WhatLinksHere/$2|kumplette List]] gifft dat ok.',
 
 # Unused templates
 'unusedtemplates'     => 'Nich bruukte Vörlagen',
-'unusedtemplatestext' => 'Disse Sied wiest all Sieden in’n Vörlagen-Naamruum, de nich op annere Sieden inbunnen warrt.
+'unusedtemplatestext' => 'Disse Sied wiest all Sieden in’n Naamruum „{{ns:template}}“, de nich op annere Sieden inbunnen warrt.
 Denk dor an, natokieken, wat nich noch annere Sieden na de Vörlagen wiest, ehrdat du jem wegsmittst.',
 'unusedtemplateswlh'  => 'Annere Lenken',
 
@@ -1522,7 +1529,7 @@ to den vun den tweeten Wiederleiden wiest warrt, un to den de eerste Wiederleide
 'nviews'                  => '$1 {{PLURAL:$1|Affraag|Affragen}}',
 'specialpage-empty'       => 'Disse Siet is leddig.',
 'lonelypages'             => 'Weetsieden',
-'lonelypagestext'         => 'Op disse Sieden wiest kene annern Sieden vun {{SITENAME}}.',
+'lonelypagestext'         => 'Op disse Sieden wiest kene annern Sieden vun {{SITENAME}} un se sünd ok narms inbunnen.',
 'uncategorizedpages'      => 'Sieden ahn Kategorie',
 'uncategorizedcategories' => 'Kategorien ahn Kategorie',
 'uncategorizedimages'     => 'Datein ahn Kategorie',
@@ -1656,7 +1663,7 @@ Mehr Informatschonen över enkelte Rechten staht ünner [[{{MediaWiki:Listgroupr
 'mailnologintext' => 'Du musst [[Special:UserLogin|anmellt wesen]] un in diene [[Special:Preferences|Instellungen]] en güllige E-Mail-Adress hebben, dat du annere Brukers E-Mails tostüren kannst.',
 'emailuser'       => 'E-Mail an dissen Bruker',
 'emailpage'       => 'E-Mail an Bruker',
-'emailpagetext'   => 'Wenn disse Bruker en güllige E-Mail-Adress angeven hett, kannst du em mit dit Formular en E-Mail tostüren. As Afsenner warrt de E-Mail-Adress ut dien [[Special:Preferences|Instellen]] indragen, dat de Bruker di antern kann.',
+'emailpagetext'   => 'Du kannst dissen Bruker mit dit Formular en E-Mail tostüren. As Afsenner warrt de E-Mail-Adress ut dien [[Special:Preferences|Instellen]] indragen, dat de Bruker di antern kann.',
 'usermailererror' => 'Dat Mail-Objekt hett en Fehler trüchgeven:',
 'defemailsubject' => '{{SITENAME}} E-Mail',
 'noemailtitle'    => 'Kene E-Mail-Adress',
@@ -1702,16 +1709,6 @@ Mehr Informatschonen över enkelte Rechten staht ünner [[{{MediaWiki:Listgroupr
 'iteminvalidname'      => "Problem mit den Indrag '$1', ungülligen Naam...",
 'wlnote'               => "Ünnen {{PLURAL:$1|steiht de letzte Ännern|staht de letzten $1 Ännern}} vun de {{PLURAL:$2|letzte Stünn|letzten '''$2''' Stünnen}}.",
 'wlshowlast'           => 'Wies de letzten $1 Stünnen $2 Daag $3',
-'watchlist-show-bots'  => 'Ännern vun Bots wiesen',
-'watchlist-hide-bots'  => 'Ännern vun Bots versteken',
-'watchlist-show-own'   => 'Miene Ännern wiesen',
-'watchlist-hide-own'   => 'Miene Ännern versteken',
-'watchlist-show-minor' => 'Lütte Ännern wiesen',
-'watchlist-hide-minor' => 'Lütte Ännern versteken',
-'watchlist-show-anons' => 'Anonyme Brukers wiesen',
-'watchlist-hide-anons' => 'Anonyme Brukers nich wiesen',
-'watchlist-show-liu'   => 'Anmellt Brukers wiesen',
-'watchlist-hide-liu'   => 'Anmellt Brukers nich wiesen',
 'watchlist-options'    => 'Optionen för de Oppasslist',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -1790,7 +1787,7 @@ Segg to, dat du över de Folgen Bescheed weetst un dat du in Övereenstimmen mit
 
 De letzte Ännern is vun [[User:$3|$3]] ([[User talk:$3|Diskuschoon]] | [[Special:Contributions/$3|Bidrääg]]).',
 'editcomment'      => "De Ännerkommentar weer: ''$1''.", # only shown if there is an edit comment
-'revertpage'       => 'Ännern vun [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskuschoon]]) rut un de Version vun [[User:$1]] wedderhaalt', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'Ännern vun [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskuschoon]]) rut un de Version vun [[User:$1]] wedderhaalt', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Ännern vun $1 trüchsett op letzte Version vun $2.',
 'sessionfailure'   => 'Dor weer en Problem mit diene Brukersitzung.
 Disse Akschoon is nu ut Sekerheitsgrünn afbraken, dat de Ännern nich verkehrt en annern Bruker toornt warrt.
@@ -2705,10 +2702,8 @@ Wist du de Siet würklich nee anleggen?",
 'recreate'            => 'wedder nee anleggen',
 
 # action=purge
-'confirm_purge'        => 'Den Cache vun disse Siet leddig maken?
-
-$1',
 'confirm_purge_button' => 'Jo',
+'confirm-purge-top'    => 'Den Cache vun disse Siet leddig maken?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← vörige Siet',
@@ -2842,15 +2837,5 @@ Geev den Dateinaam ahn dat Präfix „{{ns:image}}:“ in.',
 #En positiv Vergliek föhrt dorto, dat dat Bild wiest warrt, ans warrt dat Bild blot as Lenk wiest
 #Regen, de mit en # anfangt, warrt as Kommentar behannelt
 #Delen vun reguläre Utdrück na disse Reeg indragen. Disse Reeg nich ännern</pre>',
-
-# Special:Nuke
-'nuke'               => 'General-Utmesten',
-'nuke-nopages'       => 'Gifft in de Ne’esten Ännern kene ne’en Sieden vun [[Special:Contributions/$1|$1]].',
-'nuke-list'          => 'Disse Sieden hett [[Special:Contributions/$1|$1]] nee maakt; geev en Kommentar in un drück op den Utmest-Knopp.',
-'nuke-defaultreason' => 'General-Utmesten vun Sieden, de $1 anleggt hett',
-'nuke-tools'         => 'Dit Warktüüch verlöövt dat General-Utmesten vun Sieden, de vun ene IP-Adress oder en Bruker anleggt worrn sünd. Geev de IP-Adress oder den Brukernaam in, dat du ene List kriggst:',
-'nuke-submit-user'   => 'List kriegen',
-'nuke-submit-delete' => 'Utmesten',
-'right-nuke'         => 'Groten Hümpel Sieden wegsmieten',
 
 );

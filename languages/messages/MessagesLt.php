@@ -11,6 +11,7 @@
  * @author Pdxx
  * @author Siggis
  * @author Tomasdd
+ * @author Urhixidur
  * @author Vpovilaitis
  * @author לערי ריינהארט
  */
@@ -45,6 +46,87 @@ $skinNames = array(
 	'chick'       => 'Chick',
 	'simple'      => 'Paprasta',
 );
+
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'Dvigubi peradesavimai' ),
+	'BrokenRedirects'           => array( 'Peradresavimai į niekur' ),
+	'Disambiguations'           => array( 'Nukreipiamieji' ),
+	'Userlogin'                 => array( 'Prisijungimas' ),
+	'Userlogout'                => array( 'Atsijungimas' ),
+	'CreateAccount'             => array( 'Sukurti paskyrą' ),
+	'Preferences'               => array( 'Nustatymai' ),
+	'Watchlist'                 => array( 'Stebimieji' ),
+	'Recentchanges'             => array( 'Naujausi keitimai' ),
+	'Upload'                    => array( 'Įkėlimas' ),
+	'Imagelist'                 => array( 'Paveikslėlių sąrašas' ),
+	'Newimages'                 => array( 'Nauji paveikslėliai' ),
+	'Listusers'                 => array( 'Naudotojų sąrašas' ),
+	'Statistics'                => array( 'Statistika' ),
+	'Randompage'                => array( 'Atsitiktinis puslapis' ),
+	'Lonelypages'               => array( 'Vieniši puslapiai' ),
+	'Uncategorizedpages'        => array( 'Puslapiai be kategorijų' ),
+	'Uncategorizedcategories'   => array( 'Kategorijos be subkategorijų' ),
+	'Uncategorizedimages'       => array( 'Paveikslėliai be kategorijų' ),
+	'Uncategorizedtemplates'    => array( 'Šablonai be kategorijų' ),
+	'Unusedcategories'          => array( 'Nenaudojamos kategorijos' ),
+	'Unusedimages'              => array( 'Nenaudojami paveikslėliai' ),
+	'Wantedpages'               => array( 'Trokštamiausi puslapiai', 'Blogos nuorodos' ),
+	'Wantedcategories'          => array( 'Trokštamiausios kategorijos' ),
+	'Mostlinked'                => array( 'Turintys daugiausiai nuorodų' ),
+	'Mostlinkedcategories'      => array( 'Kategorijos turinčios daugiausiai nuorodų' ),
+	'Mostlinkedtemplates'       => array( 'Šablonai', 'turintys daugiausiai nuorodų' ),
+	'Mostcategories'            => array( 'Daugiausiai naudojamos kategorijos' ),
+	'Mostimages'                => array( 'Daugiausiai naudojami paveikslėliai' ),
+	'Mostrevisions'             => array( 'Daugiausiai keičiami' ),
+	'Fewestrevisions'           => array( 'Mažiausiai keičiami' ),
+	'Shortpages'                => array( 'Trumpiausi puslapiai' ),
+	'Longpages'                 => array( 'Ilgiausi puslapiai' ),
+	'Newpages'                  => array( 'Naujausi puslapiai' ),
+	'Ancientpages'              => array( 'Seniausi puslapiai' ),
+	'Deadendpages'              => array( 'Puslapiai-aklavietės' ),
+	'Protectedpages'            => array( 'Užrakinti puslapiai' ),
+	'Protectedtitles'           => array( 'Apsaugoti pavadinimai' ),
+	'Allpages'                  => array( 'Visi puslapiai' ),
+	'Prefixindex'               => array( 'Prasidedantys' ),
+	'Ipblocklist'               => array( 'IP blokavimų sąrašas' ),
+	'Specialpages'              => array( 'Specialieji puslapiai' ),
+	'Contributions'             => array( 'Indėlis' ),
+	'Emailuser'                 => array( 'Rašyti laišką' ),
+	'Confirmemail'              => array( 'Elektroninio pašto patvirtinimas' ),
+	'Whatlinkshere'             => array( 'Kas į čia rodo' ),
+	'Recentchangeslinked'       => array( 'Pakeitimai susijusiuose puslapiuose' ),
+	'Movepage'                  => array( 'Puslapio pervadinimas' ),
+	'Blockme'                   => array( 'Užblokuoti mane' ),
+	'Booksources'               => array( 'Knygų šaltiniai' ),
+	'Categories'                => array( 'Kategorijos' ),
+	'Export'                    => array( 'Eksportas' ),
+	'Version'                   => array( 'Versija' ),
+	'Allmessages'               => array( 'Visi pranešimai' ),
+	'Log'                       => array( 'Sąrašas', 'Sąrašai' ),
+	'Blockip'                   => array( 'Blokuoti IP' ),
+	'Undelete'                  => array( 'Netrinti' ),
+	'Import'                    => array( 'Importas' ),
+	'Lockdb'                    => array( 'Užrakinti duomenų bazę' ),
+	'Unlockdb'                  => array( 'Atrakinti duomenų bazę' ),
+	'Userrights'                => array( 'Naudotojo teisės' ),
+	'MIMEsearch'                => array( 'MIME paieška' ),
+	'Unwatchedpages'            => array( 'Nestebimi puslapiai' ),
+	'Listredirects'             => array( 'Peradresavimų sąrašas' ),
+	'Revisiondelete'            => array( 'Redagavimo ištrynimas' ),
+	'Unusedtemplates'           => array( 'Nenaudojami šablonai' ),
+	'Randomredirect'            => array( 'Atsitiktinis peradresavimas' ),
+	'Mypage'                    => array( 'Mano puslapis' ),
+	'Mytalk'                    => array( 'Mano aptarimas' ),
+	'Mycontributions'           => array( 'Mano indėlis' ),
+	'Listadmins'                => array( 'Administratorių sąrašas' ),
+	'Listbots'                  => array( 'Botų sąrašas' ),
+	'Popularpages'              => array( 'Populiarūs puslapiai' ),
+	'Search'                    => array( 'Paieška' ),
+	'Resetpass'                 => array( 'Slaptažodžio atstatymas' ),
+	'Withoutinterwiki'          => array( 'Be interwiki' ),
+	'MergeHistory'              => array( 'Sujungti istoriją' ),
+);
+
 $fallback8bitEncoding = 'windows-1257';
 $separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
 
@@ -665,7 +747,7 @@ Taip pat jūs pasižadate, kad tai jūsų pačių rašytas tekstas arba kopijuot
 iš viešų ar panašių nemokamų šaltinių (detaliau - $1).
 <strong>NEKOPIJUOKITE AUTORINĖMIS TEISĖMIS APSAUGOTŲ DARBŲ BE LEIDIMO!</strong>',
 'longpagewarning'                  => '<strong>DĖMESIO: Šis puslapis yra $1 kilobaitų ilgio; kai kurios
-naršyklės gali turėti problemų redaguojant puslapius beveik ar virš 32 KB.
+naršyklės gali turėti problemų redaguojant puslapius beveik ar virš 32 kB.
 Prašome pamėginti puslapį padalinti į keletą smulkesnių dalių.</strong>',
 'longpageerror'                    => '<strong>KLAIDA: Tekstas, kurį pateikėte, yra $1 kilobaitų ilgio,
 kuris yra didesnis nei daugiausiai leistini $2 kilobaitai. Jis nebus išsaugotas.</strong>',
@@ -730,7 +812,7 @@ $3 nurodyta priežastis yra ''$2''",
 'currentrev'             => 'Dabartinė versija',
 'currentrev-asof'        => 'Dabartinė $1 versija',
 'revisionasof'           => '$1 versija',
-'revision-info'          => '$1 versija naudotojo $2',
+'revision-info'          => '$1 versija naudotojo $2', # Additionally available: $3: revision id
 'previousrevision'       => '←Ankstesnė versija',
 'nextrevision'           => 'Vėlesnė versija→',
 'currentrevisionlink'    => 'Dabartinė versija',
@@ -772,11 +854,11 @@ Kaip šios svetainės administratorius, jūs galite jį pamatyti;
 'revisiondelete'              => 'Trinti/atkurti versijas',
 'revdelete-nooldid-title'     => 'Neleistina paskirties versija',
 'revdelete-nooldid-text'      => 'Jūs nenurodėte versijos (-ų), kurioms įvykdyti šią funkciją, nurodyta versija neegzistuoja arba jūs bandote paslėpti esamą versiją.',
-'revdelete-selected'          => '{{PLURAL:$2|Pasirinkta [[:$1]] versija|Pasirinktos [[:$1]] versijos}}:',
-'logdelete-selected'          => '{{PLURAL:$1|Pasirinktas istorijos įvykis|Pasirinkti istorijos įvykiai}}:',
-'revdelete-text'              => 'Ištrintos versijos bei įvykiai vistiek dar bus rodomi puslapio istorijoje ir specialiųjų veiksmų istorijoje, bet jų turinio dalys nebus viešai prieinamos.
+'revdelete-selected'          => "'''{{PLURAL:$2|Pasirinkta [[:$1]] versija|Pasirinktos [[:$1]] versijos}}:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Pasirinktas istorijos įvykis|Pasirinkti istorijos įvykiai}}:'''",
+'revdelete-text'              => "'''Ištrintos versijos bei įvykiai vistiek dar bus rodomi puslapio istorijoje ir specialiųjų veiksmų istorijoje, bet jų turinio dalys nebus viešai prieinamos.'''
 
-Kiti administratoriai šiame projekte vis dar galės pasiekti paslėptą turinį ir galės jį atkurti vėl per tą pačią sąsają, nebent yra nustatyti papildomi apribojimai.',
+Kiti administratoriai šiame projekte vis dar galės pasiekti paslėptą turinį ir galės jį atkurti vėl per tą pačią sąsają, nebent yra nustatyti papildomi apribojimai.",
 'revdelete-legend'            => 'Nustatyti matomumo apribojimus:',
 'revdelete-hide-text'         => 'Slėpti versijos tekstą',
 'revdelete-hide-name'         => 'Slėpti veiksmą ir paskirtį',
@@ -1083,6 +1165,7 @@ teisės",
 'recentchangestext'                 => 'Šiame puslapyje yra patys naujausi pakeitimai šiame projekte.',
 'recentchanges-feed-description'    => 'Sekite pačius naujausius projekto keitimus šiame šaltinyje.',
 'rcnote'                            => "Žemiau yra {{PLURAL:$1|'''1''' pakeitimas|paskutiniai '''$1''' pakeitimai|paskutinių '''$1''' pakeitimų}} per {{PLURAL:$2|dieną|paskutiniąsias '''$2''' dienas|paskutiniųjų '''$2''' dienų}} skaičiuojant nuo $5, $4.",
+'rcnotefrom'                        => "Žemiau yra pakeitimai pradedant '''$2''' (rodoma iki '''$1''' pakeitimų).",
 'rclistfrom'                        => 'Rodyti naujus pakeitimus pradedant $1',
 'rcshowhideminor'                   => '$1 smulkius keitimus',
 'rcshowhidebots'                    => '$1 robotus',
@@ -1538,16 +1621,6 @@ taip pat bus '''paryškinti''' [[Special:RecentChanges|naujausių keitimų sąra
 'iteminvalidname'      => 'Problema su elementu „$1“, neteisingas vardas...',
 'wlnote'               => "{{PLURAL:$1|Rodomas '''$1''' paskutinis pakeitimas, atliktas|Rodomi '''$1''' paskutiniai pakeitimai, atlikti|Rodoma '''$1''' paskutinių pakeitimų, atliktų}} per '''$2''' {{PLURAL:$2|paskutinę valandą|paskutines valandas|paskutinių valandų}}.",
 'wlshowlast'           => 'Rodyti paskutinių $1 valandų, $2 dienų ar $3 pakeitimus',
-'watchlist-show-bots'  => 'Rodyti botų keitimus',
-'watchlist-hide-bots'  => 'Slėpti botų keitimus',
-'watchlist-show-own'   => 'Rodyti mano keitimus',
-'watchlist-hide-own'   => 'Slėpti mano keitimus',
-'watchlist-show-minor' => 'Rodyti smulkius keitimus',
-'watchlist-hide-minor' => 'Slėpti smulkius keitimus',
-'watchlist-show-anons' => 'Rodyti anoniminius keitimus',
-'watchlist-hide-anons' => 'Slėpti anoniminius keitimus',
-'watchlist-show-liu'   => 'Rodyti prisiregistravusių naudotojų keitimus',
-'watchlist-hide-liu'   => 'Slėpti prisiregistravusių naudotojų keitimus',
 'watchlist-options'    => 'Stebimųjų sąrašo parinktys',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -1632,7 +1705,7 @@ kažkas jau pakeitė puslapį arba suspėjo pirmas atmesti keitimą.
 
 Paskutimas keitimas darytas naudotojo [[User:$3|$3]] ([[User talk:$3|Aptarimas]] | [[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment'      => 'Redagavimo komentaras: „<i>$1</i>“.', # only shown if there is an edit comment
-'revertpage'       => 'Atmestas [[Special:Contributions/$2|$2]] ([[User talk:$2|Aptarimas]]) pakeitimas; sugrąžinta naudotojo [[User:$1|$1]] versija', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'Atmestas [[Special:Contributions/$2|$2]] ([[User talk:$2|Aptarimas]]) pakeitimas; sugrąžinta naudotojo [[User:$1|$1]] versija', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Atmesti $1 keitimai; grąžinta į paskutinę $2 versiją.',
 'sessionfailure'   => 'Atrodo yra problemų su jūsų prisijungimo sesija; šis veiksmas buvo atšauktas kaip atsargumo priemonė prieš sesijos vogimą.
 Prašome paspausti „atgal“ ir perkraukite puslapį iš kurio atėjote, ir pamėginkite vėl.',
@@ -2541,10 +2614,8 @@ Prašome patvirtinti, kad tikrai norite iš naujo sukurti puslapį.",
 'recreate'            => 'Atkurti',
 
 # action=purge
-'confirm_purge'        => 'Išvalyti šio puslapio podėlį?
-
-$1',
 'confirm_purge_button' => 'Gerai',
+'confirm-purge-top'    => 'Išvalyti šio puslapio podėlį?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← ankstesnis puslapis',
@@ -2669,11 +2740,5 @@ Jūs taip pat galite [[Special:Watchlist/edit|naudoti standartinį redaktorių]]
 # Special:BlankPage
 'blankpage'              => 'Tuščias puslapis',
 'intentionallyblankpage' => 'Šis puslapis specialiai paliktas tuščias',
-
-# Special:Nuke
-'nuke'               => 'Masinis trynimas',
-'nuke-nopages'       => 'Nėra naujų puslapių, sukurtų [[Special:Contributions/$1|$1]] naujausiuose keitimuose.',
-'nuke-submit-user'   => 'Išsiųsti',
-'nuke-submit-delete' => 'Ištrinti pasirinktus(ą)',
 
 );

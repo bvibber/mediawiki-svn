@@ -35,6 +35,7 @@ class CoreParserFunctions {
 		$parser->setFunctionHook( 'numberofadmins',   array( __CLASS__, 'numberofadmins'   ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberingroup',    array( __CLASS__, 'numberingroup'    ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofedits',    array( __CLASS__, 'numberofedits'    ), SFH_NO_HASH );
+		$parser->setFunctionHook( 'numberofviews',    array( __CLASS__, 'numberofviews'    ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'language',         array( __CLASS__, 'language'         ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'padleft',          array( __CLASS__, 'padleft'          ), SFH_NO_HASH );
 		$parser->setFunctionHook( 'padright',         array( __CLASS__, 'padright'         ), SFH_NO_HASH );
@@ -215,6 +216,9 @@ class CoreParserFunctions {
 	static function numberofedits( $parser, $raw = null ) {
 		return self::formatRaw( SiteStats::edits(), $raw );
 	}
+	static function numberofviews( $parser, $raw = null ) {
+		return self::formatRaw( SiteStats::views(), $raw );
+	}
 	static function pagesinnamespace( $parser, $namespace = 0, $raw = null ) {
 		return self::formatRaw( SiteStats::pagesInNs( intval( $namespace ) ), $raw );
 	}
@@ -326,9 +330,18 @@ class CoreParserFunctions {
 
 	public static function defaultsort( $parser, $text ) {
 		$text = trim( $text );
-		if( strlen( $text ) > 0 )
-			$parser->setDefaultSort( $text );
-		return '';
+		if( strlen( $text ) == 0 )
+			return '';
+		$old = $parser->getCustomDefaultSort();
+		$parser->setDefaultSort( $text );
+		if( $old === false || $old == $text )
+			return '';
+		else
+			return( '<span class="error">' .
+				wfMsg( 'duplicate-defaultsort',
+						 htmlspecialchars( $old ),
+						 htmlspecialchars( $text ) ) .
+				'</span>' );
 	}
 
 	public static function filepath( $parser, $name='', $option='' ) {

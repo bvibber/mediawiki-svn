@@ -8,6 +8,7 @@
  * @author Priyankoo
  * @author Psneog
  * @author Rajuonline
+ * @author Urhixidur
  */
 
 $fallback='hi';
@@ -43,6 +44,37 @@ $namespaceAliases = array(
 	'साँचा_वार्ता' => NS_TEMPLATE_TALK,
 	'श्रेणी' => NS_CATEGORY,
 	'श्रेणी_वार्ता' => NS_CATEGORY_TALK,
+);
+
+$specialPageAliases = array(
+	'Userlogin'                 => array( 'সদস্যৰ প্রবেশ' ),
+	'Userlogout'                => array( 'সদস্যৰ প্রস্থান' ),
+	'CreateAccount'             => array( 'সদস্যভুক্তি' ),
+	'Preferences'               => array( 'পচন্দ' ),
+	'Watchlist'                 => array( 'লক্ষ্যতালিকা' ),
+	'Recentchanges'             => array( 'শেহতীয়া কাম' ),
+	'Upload'                    => array( 'বোজাই' ),
+	'Imagelist'                 => array( 'চিত্র-তালিকা' ),
+	'Newimages'                 => array( 'নতুন চিত্র' ),
+	'Listusers'                 => array( 'সদস্য-তালিকা' ),
+	'Listgrouprights'           => array( 'গোটৰ অধিকাৰসমুহ' ),
+	'Statistics'                => array( 'পৰিসংখ্যা' ),
+	'Randompage'                => array( 'আকস্মিক' ),
+	'Lonelypages'               => array( 'অকলশৰীয়া পৃষ্ঠা' ),
+	'Uncategorizedpages'        => array( 'অবিন্যস্ত পৃষ্ঠাসমুহ' ),
+	'Uncategorizedcategories'   => array( 'অবিন্যস্ত শ্ৰেণীসমূহ' ),
+	'Uncategorizedimages'       => array( 'অবিন্যস্ত চিত্ৰবোৰ' ),
+	'Uncategorizedtemplates'    => array( 'অবিন্যস্ত সাঁচবোৰ' ),
+	'Unusedcategories'          => array( 'অব্যৱহৃত শ্ৰেণীসমূহ' ),
+	'Unusedimages'              => array( 'অব্যৱহৃত চিত্ৰবোৰ' ),
+	'Wantedcategories'          => array( 'আকাংক্ষিত শ্ৰেণীসমূহ' ),
+	'Allpages'                  => array( 'সকলোবোৰ পৃষ্ঠা' ),
+	'Specialpages'              => array( 'বিশেষ পৃষ্ঠাবোৰ' ),
+	'Contributions'             => array( 'অৱদানবোৰ' ),
+	'Mypage'                    => array( 'মোৰ পৃষ্ঠা' ),
+	'Mytalk'                    => array( 'মোৰ কথোপকথন' ),
+	'Mycontributions'           => array( 'মোৰ অৱদান' ),
+	'Popularpages'              => array( 'জনপ্ৰিয় পৃষ্ঠাসমূহ' ),
 );
 
 $digitTransformTable = array(
@@ -567,7 +599,7 @@ $1',
 ইয়াত আপোনাৰ লিখনি দিয়াৰ লগে লগে আপুনি আপোনা-আপুনি প্ৰতিশ্ৰুতি দিছে যে এই লিখনিটো আপোনাৰ মৌলিক লিখনি, বা কোনো স্বত্বাধিকাৰ নথকা বা কোনো ৰাজহুৱা ৱেবছাইট বা তেনে কোনো মুকলি উৎসৰ পৰা আহৰণ কৰা| (অধিক জানিবলৈ $1 চাঁওক)
 
 <strong>স্বত্বাধিকাৰযুক্ত কোনো সমল অনুমতি অবিহনে দাখিল নকৰে যেন!</strong>',
-'longpagewarning'        => '<strong>সাবধান: এই পৃষ্ঠাটো $1 কিলোবাইট আকাৰৰ; কিছুমান ব্রাউজাৰে 32kb বা তাতকৈ বেছি আকাৰৰ পৃষ্ঠা দেখুৱাবলৈ বা সম্পাদনা কৰিবলৈ অসুবিধা পাব পাৰে ।
+'longpagewarning'        => '<strong>সাবধান: এই পৃষ্ঠাটো $1 কিলোবাইট আকাৰৰ; কিছুমান ব্রাউজাৰে 32 kb বা তাতকৈ বেছি আকাৰৰ পৃষ্ঠা দেখুৱাবলৈ বা সম্পাদনা কৰিবলৈ অসুবিধা পাব পাৰে ।
 অনুগ্রহ কৰি এই পৃষ্ঠাটোক সৰু সৰু খণ্ডত বিভক্ত কৰাৰ কথা বিবেচনা কৰক ।</strong>',
 'longpageerror'          => '<strong>ভুল: আপুনি দিয়া লিখনী $1 কিলো-বাইট আকাৰৰ, যি $2 কিলো-বাইট সীমাটকৈ বেছি।
 ইয়াক সঞ্চিত কৰিব পৰা নাযাব।</strong>',
@@ -722,6 +754,7 @@ $1',
 'nchanges'                       => '$1 {{PLURAL:$1|সাল-সলনি|সাল-সলনি}}',
 'recentchanges'                  => 'শেহতীয়া কাম',
 'recentchanges-feed-description' => 'ৱিকিত হোৱা শেহতিয়া সাল-সলনি এই ফীডত অনুসৰন কৰক।',
+'rcnotefrom'                     => "তলত '''$2''' ৰ পৰা হোৱা ('''$1''' লৈকে) পৰিৱর্তন দেখুওৱা হৈছে ।",
 'rclistfrom'                     => '$1 ৰ নতুন সাল-সলনি দেখুওৱাওক',
 'rcshowhideminor'                => '$1 -সংখ্যক নগণ্য সম্পাদনা',
 'rcshowhidebots'                 => 'বট $1',
@@ -830,22 +863,19 @@ $1',
 'emailuser' => 'এই সদস্যজনলৈ ই-মেইল পথাওক',
 
 # Watchlist
-'watchlist'            => 'মই অনুসৰণ কৰা পৃষ্ঠাবিলাকৰ তালিকা',
-'mywatchlist'          => 'মোৰ অনুসৰণ-তালিকা',
-'watchlistfor'         => "('''$1''' ৰ কাৰনে)",
-'addedwatch'           => 'লক্ষ্য তালিকাত অন্তর্ভুক্তি কৰা হল',
-'addedwatchtext'       => 'আপোনাৰ [[Special:Watchlist|লক্ষ্য তালিকাত ]]  "<nowiki>$1</nowiki>" অন্তর্ভুক্তি কৰা হল ।
+'watchlist'         => 'মই অনুসৰণ কৰা পৃষ্ঠাবিলাকৰ তালিকা',
+'mywatchlist'       => 'মোৰ অনুসৰণ-তালিকা',
+'watchlistfor'      => "('''$1''' ৰ কাৰনে)",
+'addedwatch'        => 'লক্ষ্য তালিকাত অন্তর্ভুক্তি কৰা হল',
+'addedwatchtext'    => 'আপোনাৰ [[Special:Watchlist|লক্ষ্য তালিকাত ]]  "<nowiki>$1</nowiki>" অন্তর্ভুক্তি কৰা হল ।
 ভৱিশ্যতে ইয়াত হোৱা সাল-সলনি আপুনি আপোনাৰ লক্ষ্য তালিকাত দেখিব, লগতে [[Special:RecentChanges|সম্প্রতিক সাল-সলনিৰ তালিকাত]] এই পৃষ্ঠাটো শকট আখৰত দেখিব যাতে আপুনি সহজে ধৰিব পাৰে ।',
-'removedwatch'         => 'লক্ষ্য-তালিকাৰ পৰা আতৰোৱা হল',
-'removedwatchtext'     => '"[[:$1]]" পৃষ্ঠাটো আপোনাৰ লক্ষ্য-তালিকাৰ পৰা আতৰোৱা হৈছে ।',
-'watch'                => 'অনুসৰণাৰ্থে',
-'watchthispage'        => 'এই পৃষ্ঠাটো লক্ষ্য কৰক',
-'unwatch'              => 'অনুসৰণ কৰিব নালাগে',
-'watchlist-details'    => 'বার্তা পৃষ্ঠা সমুহ নধৰি {{PLURAL:$1|$1 পৃষ্ঠা|$1 পৃষ্ঠা}} লক্ষ্য-তালিকাত আছে।',
-'wlshowlast'           => 'যোৱা $1 ঘণ্টা $2 দিন $3 চাওক',
-'watchlist-hide-bots'  => 'যান্ত্রিক সম্পাদনাবিলাক দেখুৱাব নালাগে',
-'watchlist-hide-own'   => 'মোৰ সম্পাদনাবোৰ দেখুৱাব নালাগে',
-'watchlist-hide-minor' => 'অগুৰুত্ব্পূর্ণ সম্পাদনা লুকুৱাওক',
+'removedwatch'      => 'লক্ষ্য-তালিকাৰ পৰা আতৰোৱা হল',
+'removedwatchtext'  => '"[[:$1]]" পৃষ্ঠাটো আপোনাৰ লক্ষ্য-তালিকাৰ পৰা আতৰোৱা হৈছে ।',
+'watch'             => 'অনুসৰণাৰ্থে',
+'watchthispage'     => 'এই পৃষ্ঠাটো লক্ষ্য কৰক',
+'unwatch'           => 'অনুসৰণ কৰিব নালাগে',
+'watchlist-details' => 'বার্তা পৃষ্ঠা সমুহ নধৰি {{PLURAL:$1|$1 পৃষ্ঠা|$1 পৃষ্ঠা}} লক্ষ্য-তালিকাত আছে।',
+'wlshowlast'        => 'যোৱা $1 ঘণ্টা $2 দিন $3 চাওক',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'অনুসৰণভুক্ত কৰা হৈ আছে.....',

@@ -8,11 +8,17 @@
  * @author J. 'mach' wust
  * @author MichaelFrey
  * @author Spacebirdy
+ * @author Urhixidur
  * @author לערי ריינהארט
  * @author 80686
  */
 
 $fallback = 'de';
+
+$specialPageAliases = array(
+	'Userlogin'                 => array( 'Amälde' ),
+);
+
 $linkTrail = '/^([äöüßa-z]+)(.*)$/sDu';
 
 $messages = array(
@@ -473,7 +479,7 @@ Hiemit gisch du zue, das du dä Tekscht <strong>sälber gschribe</strong> hesch,
 'copyrightwarning2'        => 'Dängge Si dra, dass alli Änderige {{GRAMMAR:dativ {{SITENAME}}}} vo andere Benutzer wiedr gänderet odr glöscht wärde chönne. Wenn Si nit wänn, dass ander Lüt an Ihrem tekscht ummedoktere denn schicke Si ihn jetz nit ab.<br />
 Si verspräche uns usserdäm, dass Si des alles selber gschriebe oder vo nere Quälle kopiert hen, wo Public Domain odr sunscht frei isch (lueg $1 für Details).
 <strong>SETZE SI DO OHNI ERLAUBNIS CHEINI URHEBERRÄCHTLICH GSCHÜTZTI WÄRK INE!</strong>',
-'longpagewarning'          => '<span style="color:#ff0000">WARNIG:</span> Die Syten isch $1KB groß; elteri Browser chönnte Problem ha, Sytene z bearbeite wo gröser sy als 32KB. Überleg bitte, öb du Abschnitte vo dere Syte zu eigete Sytene chönntsch usboue.',
+'longpagewarning'          => '<span style="color:#ff0000">WARNIG:</span> Die Syten isch $1 kB groß; elteri Browser chönnte Problem ha, Sytene z bearbeite wo gröser sy als 32 kB. Überleg bitte, öb du Abschnitte vo dere Syte zu eigete Sytene chönntsch usboue.',
 'protectedpagewarning'     => '<strong>WARNIG: Die Syten isch gsperrt worde, so das se nume Benutzer mit Sysop-Rechten chöi verändere.</strong>',
 'semiprotectedpagewarning' => "'''''Halbsperrung''': Diese Seite kann von angemeldeten Benutzern bearbeitet werden. Für nicht angemeldete oder gerade eben erst angemeldete Benutzer ist der Schreibzugang gesperrt.''",
 'templatesused'            => 'Selli Vorlage wärde in sellem Artikel bruucht:',
@@ -492,7 +498,7 @@ Hie gesehsch ds Lösch-Logbuech vo dere Syte:",
 'viewpagelogs'        => 'Logbüecher für die Syten azeige',
 'currentrev'          => 'Itzigi Version',
 'revisionasof'        => 'Version vo $1',
-'revision-info'       => 'Alti Bearbeitig vom $1 dür $2',
+'revision-info'       => 'Alti Bearbeitig vom $1 dür $2', # Additionally available: $3: revision id
 'previousrevision'    => '← Vorderi Version',
 'nextrevision'        => 'Nächschti Version →',
 'currentrevisionlink' => 'Itzigi Version',
@@ -589,6 +595,7 @@ Du chasch die [[:$1|Syte nöu schrybe]].",
 'recentchangestext'              => 'Uff sellere Syte chönne Si die letschte Änderige in sellem Wiki aaluege.',
 'recentchanges-feed-description' => 'Di letschten Änderige vo {{SITENAME}} i däm Feed abonniere.',
 'rcnote'                         => "Azeigt {{PLURAL:$1|wird '''1''' Änderig|wärde di letschte '''$1''' Änderige}} {{PLURAL:$2|vom letschte Tag|i de letschte '''$2''' Täg}} (Stand: $4, $5)",
+'rcnotefrom'                     => 'Dies sind die Änderungen seit <b>$2</b> (bis zu <b>$1</b> gezeigt).',
 'rclistfrom'                     => '<small>Nöji Änderige ab $1 aazeige (UTC)</small>',
 'rcshowhideminor'                => 'Chlynigkeite $1',
 'rcshowhidebots'                 => 'Bots $1',
@@ -773,27 +780,24 @@ Im Absänder steit dyni eigeti e-Mail-Adrässe us dine [[Special:Preferences|Ist
 'emailsenttext'   => 'Dys e-Mail isch verschickt worde.',
 
 # Watchlist
-'watchlist'            => 'Beobachtigslischte',
-'mywatchlist'          => 'Beobachtigslischte',
-'watchlistfor'         => "(für '''$1''')",
-'nowatchlist'          => 'Du hesch ke Yträg uf dyre Beobachtigslischte.',
-'watchnologintext'     => 'Du musst [[Special:UserLogin|angemeldet]] sein, um deine Beobachtungsliste zu bearbeiten.',
-'addedwatch'           => 'zue de Beobachtigslischte drzue do',
-'addedwatchtext'       => 'D Syte "[[:$1]]" stoht jetz uf Ihre [[Special:Watchlist|Beobachtigslischte]].
+'watchlist'         => 'Beobachtigslischte',
+'mywatchlist'       => 'Beobachtigslischte',
+'watchlistfor'      => "(für '''$1''')",
+'nowatchlist'       => 'Du hesch ke Yträg uf dyre Beobachtigslischte.',
+'watchnologintext'  => 'Du musst [[Special:UserLogin|angemeldet]] sein, um deine Beobachtungsliste zu bearbeiten.',
+'addedwatch'        => 'zue de Beobachtigslischte drzue do',
+'addedwatchtext'    => 'D Syte "[[:$1]]" stoht jetz uf Ihre [[Special:Watchlist|Beobachtigslischte]].
 Neui Änderige an de Syte odr de Diskussionssyte drvo chasch jetz dört seh. Usserdem sin selli Änderige uf de [[Special:RecentChanges|letschte Änderige]] fett gschriibe, dass Si s schneller finde.
 
 Wenn Si d Syte spöter wiedr vo de Lischte striiche wenn, denn drucke Si eifach uf "nümm beobachte".',
-'removedwatch'         => 'Us der Beobachtigsliste glösche',
-'removedwatchtext'     => 'D Syte «[[:$1]]» isch us dyre [[Special:Watchlist|Beobachtigsliste]] glösche worde.',
-'watch'                => 'beobachte',
-'watchthispage'        => 'Die Syte beobachte',
-'unwatch'              => 'nümm beobachte',
-'watchnochange'        => 'Vo den Artikle, wo du beobachtisch, isch im aazeigte Zytruum kene veränderet worde.',
-'watchlist-details'    => '{{PLURAL:$1|1 Syte wird|$1 Sytene wärde}} beobachtet (Diskussionssyte nid zelt, aber ou beobachtet).',
-'wlshowlast'           => 'Zeig di letschte $1 Stunde $2 Tage $3',
-'watchlist-hide-bots'  => 'Bot-Änderige verstecke',
-'watchlist-hide-own'   => 'Eigeti Änderige verstecke',
-'watchlist-hide-minor' => 'Chlyni Änderige verstecke',
+'removedwatch'      => 'Us der Beobachtigsliste glösche',
+'removedwatchtext'  => 'D Syte «[[:$1]]» isch us dyre [[Special:Watchlist|Beobachtigsliste]] glösche worde.',
+'watch'             => 'beobachte',
+'watchthispage'     => 'Die Syte beobachte',
+'unwatch'           => 'nümm beobachte',
+'watchnochange'     => 'Vo den Artikle, wo du beobachtisch, isch im aazeigte Zytruum kene veränderet worde.',
+'watchlist-details' => '{{PLURAL:$1|1 Syte wird|$1 Sytene wärde}} beobachtet (Diskussionssyte nid zelt, aber ou beobachtet).',
+'wlshowlast'        => 'Zeig di letschte $1 Stunde $2 Tage $3',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Am beobachte …',
@@ -844,7 +848,7 @@ Im $2 het’s e Lischte vo de letschte Löschige.',
 'alreadyrolled'  => 'Cha d Änderig uf [[:$1]] wo [[User:$2|$2]] ([[User talk:$2|Talk]]) gmacht het nit zruckneh will des öbber anderscht scho gmacht het.
 
 Di letschti Änderig het [[User:$3|$3]] ([[User talk:$3|Talk]]) gmacht.',
-'revertpage'     => 'Rückgängig gmacht zuer letschte Änderig vo [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskussion]]) mit de letzte version vo [[User:$1|$1]] wiederhergstellt', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'     => 'Rückgängig gmacht zuer letschte Änderig vo [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskussion]]) mit de letzte version vo [[User:$1|$1]] wiederhergstellt', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectlogpage'              => 'Syteschutz-Logbuech',
@@ -1135,19 +1139,7 @@ De Bestätigung Code isch gültug bis $4.
 Fründtlechi Grüess",
 
 # action=purge
-'confirm_purge' => "Die Zwischeschpoicherung vo der Syte „{{FULLPAGENAME}}“ lösche?
-
-\$1
-
-<div style=\"font-size: 95%; margin-top: 2em;\">
-'''''Erklärig:'''''
-
-''Zwüschespycherige (Cache) sy temporäri Kopye vore Websyten uf dym Computer. We ne Syte us em Zwüschespycher abgrüefft wird, de bruucht das weniger Rächeleischtig füre {{SITENAME}}-Server als en Abrueff vor Originalsyte.''
-
-''Falls du e Syte scho nes Wyli am Aaluege bisch, de het dy Computer sone Zwüschespycherig gmacht. Derby chönnt die Syten unter Umständ scho i dere Zyt liecht veraltere.''
-
-''Ds Lösche vor Zwüschespycherig zwingt der Server, dir di aktuellschti Version vor Syte z gä!''
-</div>",
+'confirm-purge-top' => 'Die Zwischeschpoicherung vo der Syte lösche?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← vorderi Syte',

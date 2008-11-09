@@ -7,6 +7,7 @@
  * @author Maartenvdbent
  * @author Pyt
  * @author Snakesteuben
+ * @author Urhixidur
  * @author לערי ריינהארט
  */
 
@@ -60,6 +61,82 @@ $namespaceNames = array(
 $namespaceAliases = array(
 	'Brûker' => NS_USER,
 	'Brûker_oerlis' => NS_USER_TALK,
+);
+
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'Dûbele trochferwizings', 'Dûbeletrochferwizings' ),
+	'BrokenRedirects'           => array( 'Misse trochferwizings', 'Missetrochferwizings' ),
+	'Disambiguations'           => array( 'Betsjuttingssiden', 'Trochferwizings' ),
+	'Userlogin'                 => array( 'Oanmelde', 'Oanmeld' ),
+	'Userlogout'                => array( 'Ofmelde', 'Ofmeld', 'ôfmelde', 'ôfmeld' ),
+	'CreateAccount'             => array( 'Nije ynstellings oanmeitsje', 'Nijeynstellingsoanmeitsje' ),
+	'Preferences'               => array( 'Ynstellings', 'Ynsteld' ),
+	'Watchlist'                 => array( 'Folchlist', 'Jo Folchlist' ),
+	'Recentchanges'             => array( 'Koartlyn feroare', 'Koarts feroare' ),
+	'Upload'                    => array( 'Bied triem oan', 'Oanbied', 'Bied bestân oan' ),
+	'Imagelist'                 => array( 'Ofbyld list', 'Ofbyldlist' ),
+	'Newimages'                 => array( 'Nije ôfbylden', 'Nije ôfbyldings', 'Nije ôfbyldingen', 'List mei nije ôfbylden', 'Nije Ofbylden' ),
+	'Listusers'                 => array( 'Meidoggerlist', 'Brûkerlist' ),
+	'Statistics'                => array( 'Statistyk' ),
+	'Randompage'                => array( 'Samar in side' ),
+	'Lonelypages'               => array( 'Lossteande siden' ),
+	'Uncategorizedpages'        => array( 'Siden sûnder rubryk', 'Siden sûnder kategory', 'Net-kategorisearre siden' ),
+	'Uncategorizedcategories'   => array( 'Kategoryen sûnder kategory', 'Rubriken sûnder rubryk', 'Net-kategorisearre kategoryen' ),
+	'Uncategorizedimages'       => array( 'Net-kategorisearre ôfbyldings', 'Ofbylden sûnder kategory', 'Ofbylden sûnder rubryk' ),
+	'Uncategorizedtemplates'    => array( 'Net-kategorisearre sjabloanen', 'Net-kategorisearre berjochten', 'Berjochten sûnder rubryk', 'Berjochten sûnder kategory' ),
+	'Unusedcategories'          => array( 'Net-brûkte kategoryen', 'Lege kategoryen' ),
+	'Unusedimages'              => array( 'Lossteande ôfbylden' ),
+	'Wantedpages'               => array( 'Nedige siden' ),
+	'Wantedcategories'          => array( 'Nedige kategoryen', 'Net-besteande kategoryen dêr\'t it meast nei ferwiisd wurdt' ),
+	'Mostlinked'                => array( 'Siden wêr it meast mei keppele is', 'Siden dêr\'t it meast nei ferwiisd wurdt' ),
+	'Mostlinkedcategories'      => array( 'Kategoryen dy\'t it meast brûkt wurde', 'Kategoryen dêr\'t it meast nei ferwiisd wurdt' ),
+	'Mostlinkedtemplates'       => array( 'Meast brûkte sjabloanen', 'Meast brûkte berjochten' ),
+	'Mostcategories'            => array( 'Siden mei de measte rubriken', 'Siden mei de measte kategoryen' ),
+	'Mostimages'                => array( 'Ofbylden dy\'t it meast brûkt wurde', 'Meast brûkte ôfbyldings' ),
+	'Mostrevisions'             => array( 'Siden mei de measte wizigings', 'Siden mei de measte bewurkings' ),
+	'Fewestrevisions'           => array( 'Siden mei de minste bewurkings', 'Siden mei de minste ferzjes', 'Siden mei de minste wizigings' ),
+	'Shortpages'                => array( 'Koarte siden' ),
+	'Longpages'                 => array( 'Lange siden' ),
+	'Newpages'                  => array( 'Nije siden' ),
+	'Ancientpages'              => array( 'Alde siden', 'âlde siden', 'Siden dy\'t lang net feroare binne' ),
+	'Deadendpages'              => array( 'Siden sûnder keppelings', 'Siden sûnder ferwizings', 'Siden sûnder links' ),
+	'Protectedpages'            => array( 'Befeilige siden', 'Skoattele siden' ),
+	'Allpages'                  => array( 'Alle titels', 'Alle siden' ),
+	'Prefixindex'               => array( 'Alle siden neffens foarheaksel' ),
+	'Ipblocklist'               => array( 'List fan útsletten Ynternet-adressen en brûkersnammen', 'List fan útsletten ynternet-adressen en meidochnammen', 'útslette brûkers', 'Utslette brûkers', 'útsletten meidoggers', 'Utsletten meidoggers' ),
+	'Specialpages'              => array( 'Bysûndere siden' ),
+	'Contributions'             => array( 'Meidogger-bydragen', 'Meidogger bydragen', 'Bydragen', 'Brûker bydragen' ),
+	'Emailuser'                 => array( 'Skriuw meidogger', 'Skriuw dizze brûker', 'Skriuw dizze meidogger' ),
+	'Confirmemail'              => array( 'Befêstigjen netpostadres' ),
+	'Whatlinkshere'             => array( 'Wat is hjirmei keppele', 'Wat is hjirmei keppele?', 'List fan alle siden dy\'t nei dizze side ferwize' ),
+	'Recentchangeslinked'       => array( 'Folgje keppelings' ),
+	'Movepage'                  => array( 'Werneam side' ),
+	'Booksources'               => array( 'Boekynformaasje' ),
+	'Categories'                => array( 'Kategoryen', 'Rubriken' ),
+	'Export'                    => array( 'Eksportearje' ),
+	'Version'                   => array( 'Ferzje', 'Programmatuerferzje' ),
+	'Allmessages'               => array( 'Alle wikiberjochten' ),
+	'Log'                       => array( 'Loch', 'Logboek', 'Logboeken', 'Lochs' ),
+	'Blockip'                   => array( 'Slút brûker út', 'Slút meidogger út' ),
+	'Undelete'                  => array( 'Side werom set' ),
+	'Import'                    => array( 'Ymport' ),
+	'Lockdb'                    => array( 'Meitsje de database \'Net-skriuwe\'', 'Meitsje de databank \'Net-skriuwe\'' ),
+	'Unlockdb'                  => array( 'Meitsje de databank skriuwber' ),
+	'Userrights'                => array( 'Meidoggerrjochten', 'Behear fan meidoggerrjochten' ),
+	'MIMEsearch'                => array( 'Sykje op MIME-type' ),
+	'Unwatchedpages'            => array( 'Siden dy\'t net op in folchlist steane' ),
+	'Listredirects'             => array( 'List fan trochferwizings' ),
+	'Unusedtemplates'           => array( 'Net brûkte sjabloanen', 'Net brûkte berjochten' ),
+	'Randomredirect'            => array( 'Samar in trochferwizing' ),
+	'Mypage'                    => array( 'Myn side' ),
+	'Mytalk'                    => array( 'Myn oerlis' ),
+	'Mycontributions'           => array( 'Myn bydragen' ),
+	'Listadmins'                => array( 'Meidoggerlist Behearders' ),
+	'Listbots'                  => array( 'Meidoggerlist Bots' ),
+	'Popularpages'              => array( 'Populêre siden', 'Grage siden' ),
+	'Search'                    => array( 'Sykje' ),
+	'Withoutinterwiki'          => array( 'Siden sûnder links nei oare talen', 'Siden sûnder ferwizings nei oare talen', 'Siden sûnder keppelings nei oare talen' ),
+	'Filepath'                  => array( 'Triempad' ),
 );
 
 $separatorTransformTable = array(',' => '.', '.' => ',' );
@@ -643,7 +720,7 @@ As jo net wolle dat jo teksten yngeand oanpast wurde troch oaren, set se hjir da
 Jo sizze ek ta dat jo de oarspronklike auteur binne fan dit materiaal, of dat jo it kopiearre hawwe út in boarne yn it publike domein, of in soartgelikense frije boarne (sjuch $1 foar details).
 <strong>BRUK GJIN MATERIAAL DAT BESKERME WURDT TROCH AUTEURSRJOCHT, OF JO MOATTE DER TASTIMMING FOAR HAWWE!</strong>',
 'longpagewarning'                  => "<strong>Warskôging: Dizze side is $1 kilobyte lang;
-der binne blêders dy't problemen hawwe mei siden fan tsjin de 32kb. of langer.
+der binne blêders dy't problemen hawwe mei siden fan tsjin de 32 kb of langer.
 Besykje de side yn lytsere stikken te brekken.</strong>",
 'longpageerror'                    => "<strong>FOUT: de tekst dy't jo tafoege hawwe is $1 kilobyte grut, wat grutter is as it maksimum fan $2 kilobytes.
 Bewarjen is net mûglik.</strong>",
@@ -713,7 +790,7 @@ De fan $3 opjûne reden is ''$2''",
 'currentrev'             => 'Aktuele ferzje',
 'currentrev-asof'        => 'Hjoeddeiske ferzje sûnt $1',
 'revisionasof'           => 'Ferzje op $1',
-'revision-info'          => 'Ferzje op $1 fan $2',
+'revision-info'          => 'Ferzje op $1 fan $2', # Additionally available: $3: revision id
 'previousrevision'       => '←Eardere ferskillen',
 'nextrevision'           => 'Nijere ferzje→',
 'currentrevisionlink'    => 'Rinnende ferzje',
@@ -754,9 +831,9 @@ der kinne details wêze yn it [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE
 'revisiondelete'              => 'Wiskje/weromsette ferzjes',
 'revdelete-nooldid-title'     => 'Gjin doelferzje',
 'revdelete-nooldid-text'      => 'Jo hawwe gjin doelferzje(s) foar dizze hanneling opjûn, de oanjûne ferzje bestiet net, of jo besykje de lêste ferzje te ferskûljen.',
-'revdelete-selected'          => 'Spesifisearre {{PLURAL:$2|ferzje|ferzjes}} fan [[:$1]]:',
-'logdelete-selected'          => '{{PLURAL:$1|keazen lochboekregel|keazen lochboekregels}}:',
-'revdelete-text'              => "Fuorthelle bewurkings binne sichtber yn 'e skiednis, mar de ynhâld is net langer publyk tagonklik.
+'revdelete-selected'          => "'''Spesifisearre {{PLURAL:$2|ferzje|ferzjes}} fan [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|keazen lochboekregel|keazen lochboekregels}}:'''",
+'revdelete-text'              => "'''Fuorthelle bewurkings binne sichtber yn 'e skiednis, mar de ynhâld is net langer publyk tagonklik.'''
 Oare behearders fan {{SITENAME}} kinne de ferburgen ynhâld benaderje en it fuortheljen ûngedien meitsje mei help fan dit skerm, of der moatte oanfoljende beheinings jilde dy't ynsteld binne troch de systeembehearder.",
 'revdelete-legend'            => 'Sichtberensbeheinings ynstelle.',
 'revdelete-hide-text'         => 'De bewurke tekst ferskûlje',
@@ -1106,6 +1183,7 @@ Gean nei oft latex, dvips, en gs goed ynstallearre binne en set om',
 'recentchangestext'                 => 'De lêste feroarings fan de {{SITENAME}}.',
 'recentchanges-feed-description'    => 'Mei dizze feed kinne jo de nijste feroarings yn dizze wiki besjen.',
 'rcnote'                            => "Dit {{PLURAL:$1|is de lêste feroaring|binne de lêste '''$1''' feroarings}} yn de lêste {{PLURAL:$2|dei|'''$2''' dagen}}, fan $4 $5.",
+'rcnotefrom'                        => 'Dit binne de feroarings sûnt <b>$2</b> (maksimaal <b>$1</b>).',
 'rclistfrom'                        => 'Jou nije feroarings, begjinnende mei $1',
 'rcshowhideminor'                   => '$1 tekstwizigings',
 'rcshowhidebots'                    => 'bots $1',
@@ -1508,34 +1586,31 @@ Jo kinne it oersjoch beheine troch in loch, in meidoggernamme of in side oan te 
 'emailsenttext'   => 'Jo berjocht is stjoerd.',
 
 # Watchlist
-'watchlist'            => 'Folchlist',
-'mywatchlist'          => 'Folchlist',
-'watchlistfor'         => "(foar '''$1''')",
-'nowatchlist'          => 'Jo hawwe gjin siden op jo folchlist.',
-'watchnologin'         => 'Net oanmeld yn',
-'watchnologintext'     => 'Jo moatte [[Special:UserLogin|oanmeld]] wêze om jo folchlist te feroarjen.',
-'addedwatch'           => 'Oan folchlist tafoege',
-'addedwatchtext'       => "De side \"'''[[:\$1]]'''\" is tafoege oan jo [[Special:Watchlist|folchlist]]. Bewurkings fan dizze side en oerlisside wurde yn de takomst op jo folchlist oanjûn. Hja wurde foar jo ek '''fet''' printe op [[Special:RecentChanges|Koartlyn feroare]].
+'watchlist'          => 'Folchlist',
+'mywatchlist'        => 'Folchlist',
+'watchlistfor'       => "(foar '''$1''')",
+'nowatchlist'        => 'Jo hawwe gjin siden op jo folchlist.',
+'watchnologin'       => 'Net oanmeld yn',
+'watchnologintext'   => 'Jo moatte [[Special:UserLogin|oanmeld]] wêze om jo folchlist te feroarjen.',
+'addedwatch'         => 'Oan folchlist tafoege',
+'addedwatchtext'     => "De side \"'''[[:\$1]]'''\" is tafoege oan jo [[Special:Watchlist|folchlist]]. Bewurkings fan dizze side en oerlisside wurde yn de takomst op jo folchlist oanjûn. Hja wurde foar jo ek '''fet''' printe op [[Special:RecentChanges|Koartlyn feroare]].
 
 At jo letter in side net mear folgje wolle, dan brûke jo op dy side de keppeling \"Ferjit dizze side.\" Jo [[Special:Watchlist|folchlist]] hat ek in keppeling \"Jo folchlist bewurkje,\" foar at jo mear as ien side \"ferjitte\" wolle.",
-'removedwatch'         => 'Net mear folgje',
-'removedwatchtext'     => 'De side "<nowiki>$1</nowiki>" stiet net mear op jo folchlist.',
-'watch'                => 'Folgje',
-'watchthispage'        => 'Folgje dizze side',
-'unwatch'              => 'Ferjit',
-'unwatchthispage'      => 'Ferjit dizze side',
-'notanarticle'         => 'Dit kin net folge wurde.',
-'watchnochange'        => "Fan de siden dy't jo folgje is der yn dizze perioade net ien feroare.",
-'watchlist-details'    => 'Jo folchlist hat {{PLURAL:$1|$1 side|$1 siden}}, oerlissiden net meiteld.',
-'watchmethod-recent'   => 'Koartlyn feroare ...',
-'watchmethod-list'     => 'Folge ...',
-'watchlistcontains'    => 'Jo folgje op it stuit $1 {{PLURAL:$1|side|siden}}.',
-'iteminvalidname'      => 'Misse namme: "$1" ...',
-'wlnote'               => "Dit {{PLURAL:$1|is de lêste feroaring|binne de lêste '''$1''' feroarings}} yn de lêste {{PLURAL:$2|oer|'''$2''' oeren}}.",
-'wlshowlast'           => 'Lit feroarings sjen fan de lêste $1 oeren $2 dagen $3',
-'watchlist-hide-bots'  => 'Botbewurkings ferskûlje',
-'watchlist-hide-own'   => 'Myn bewurkings ferskûlje',
-'watchlist-hide-minor' => 'Lytse bewurkings ferskûlje',
+'removedwatch'       => 'Net mear folgje',
+'removedwatchtext'   => 'De side "<nowiki>$1</nowiki>" stiet net mear op jo folchlist.',
+'watch'              => 'Folgje',
+'watchthispage'      => 'Folgje dizze side',
+'unwatch'            => 'Ferjit',
+'unwatchthispage'    => 'Ferjit dizze side',
+'notanarticle'       => 'Dit kin net folge wurde.',
+'watchnochange'      => "Fan de siden dy't jo folgje is der yn dizze perioade net ien feroare.",
+'watchlist-details'  => 'Jo folchlist hat {{PLURAL:$1|$1 side|$1 siden}}, oerlissiden net meiteld.',
+'watchmethod-recent' => 'Koartlyn feroare ...',
+'watchmethod-list'   => 'Folge ...',
+'watchlistcontains'  => 'Jo folgje op it stuit $1 {{PLURAL:$1|side|siden}}.',
+'iteminvalidname'    => 'Misse namme: "$1" ...',
+'wlnote'             => "Dit {{PLURAL:$1|is de lêste feroaring|binne de lêste '''$1''' feroarings}} yn de lêste {{PLURAL:$2|oer|'''$2''' oeren}}.",
+'wlshowlast'         => 'Lit feroarings sjen fan de lêste $1 oeren $2 dagen $3',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => "Dwaande mei op'e folchlist te setten ...",
@@ -1612,7 +1687,7 @@ in oar hat de feroaring werom set, of oars wat oan de side feroare.
 
 De lêste feroaring wie fan [[User:$3|$3]] ([[User talk:$3|Oerlis]]).',
 'editcomment'      => 'De gearfetting wie: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'Bewurkings fan [[Special:Contributions/$2|$2]] ([[User talk:$2|Oerlis]]) werom set ta de ferzje fan [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'Bewurkings fan [[Special:Contributions/$2|$2]] ([[User talk:$2|Oerlis]]) werom set ta de ferzje fan [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Feroarings werom set fan $1; werom set nei de lêste ferzje fan $2.',
 
 # Protect

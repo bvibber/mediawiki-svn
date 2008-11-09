@@ -5,6 +5,7 @@
  * @file
  *
  * @author Katimawan2005
+ * @author Urhixidur
  * @author Val2397
  */
 
@@ -594,7 +595,7 @@ Nung e mu buri ing alilan deng alang patugut at alang lunus ing kekang sinulat, 
 Mangaku ka mu naman a ika mismu ing sinulat kaniti, o akopia me ketang metung a pikuanan a mipaintulutan king malda o aliwa pang libring pikukuanan (lon me ing $1 para kareng detalle).
 <strong>E KA MANAMBAG OBRANG MAKI COPYRIGHT NUNG ALANG PAINTULUT!',
 'longpagewarning'           => '<strong>KAPIADIAN: Maki kaba yang $1 kilobyte ining bulung;
-mágkasákit lang mag-edit bulung a maigit 32kb deng aliwang browser.
+mágkasákit lang mag-edit bulung a maigit 32 kb deng aliwang browser.
 Nung maliari, pakipitnan me kareng adua o maigit pang dake.</strong>',
 'longpageerror'             => '<strong>MALI: Miras yang $1 kilobyte ing kekang sinulat; sobra ya ketang $2 a pekamakabang maliaring iyambag. E ya ma-save iti.</strong>',
 'readonlywarning'           => '<strong>BABALA: Makasara ya ing database uling sasamasan de iti, ania e mo a-save ngeni detang kekang in-edit.
@@ -643,7 +644,7 @@ Ini ing sangkan a binie nang $3: ''$2''",
 'nohistory'           => 'Alang amlat ning pamag-edit (edit history) para king bulung a ini.',
 'currentrev'          => 'Kasalungsungan a pangayalili',
 'revisionasof'        => 'Ing mibayu aniang $1',
-'revision-info'       => 'Deng miyalilan aniang $1 ibat kang $2',
+'revision-info'       => 'Deng miyalilan aniang $1 ibat kang $2', # Additionally available: $3: revision id
 'previousrevision'    => '←Minunang pamagbayu',
 'nextrevision'        => 'Mas tauling pamagbayu→',
 'currentrevisionlink' => 'Kasalungsungan a pamagbayu',
@@ -684,11 +685,11 @@ mapaliaring maki detalle king [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE
 'revisiondelete'              => 'Ilako/e-ilako ing pamanalili',
 'revdelete-nooldid-title'     => 'E ustung pamanaliling target',
 'revdelete-nooldid-text'      => 'Mapaliaring ala kang binieng balak a pamanalili (target revision) ba meng daptan ing gamit (function) a iti, ala yu ing mebanggit a pamanaliling iti, o magtangka kang isalikut ya ing kasalungsungan a pamanalili.',
-'revdelete-selected'          => '{{PLURAL:$2|Mepiling bersion|Mepiling bersion}} ning [[:$1]]:',
-'logdelete-selected'          => '{{PLURAL:$1|Mepiling miliari king tala/listaan|Mepiling miliari king tala/listaan}}:',
-'revdelete-text'              => 'Lunto la pa murin king amlat ning bulung deng meburang pamanalili ampong kapaliarian (events), oneng e ra no abusni deng malda ding mapilang dake ning karelang laman.
+'revdelete-selected'          => "'''{{PLURAL:$2|Mepiling bersion|Mepiling bersion}} ning [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Mepiling miliari king tala/listaan|Mepiling miliari king tala/listaan}}:'''",
+'revdelete-text'              => "'''Lunto la pa murin king amlat ning bulung deng meburang pamanalili ampong kapaliarian (events), oneng e ra no abusni deng malda ding mapilang dake ning karelang laman.'''
 
-Abusni da pa murin deng aliwang talapanibala (admin) king {{SITENAME}} itang laman a makasalikut, at aurung da ing pangabura na niti kapamilatan na mismu niting interface, puera namu nung ating bayung pamag-limita o pamanyabat a miyutus.',
+Abusni da pa murin deng aliwang talapanibala (admin) king {{SITENAME}} itang laman a makasalikut, at aurung da ing pangabura na niti kapamilatan na mismu niting interface, puera namu nung ating bayung pamag-limita o pamanyabat a miyutus.",
 'revdelete-legend'            => 'Mitakdang angganan/limitasiun kareng maliaring akit',
 'revdelete-hide-text'         => 'Isalikut ya ing meyaliling kulitan',
 'revdelete-hide-name'         => 'Isalikut ya ing dapat (action) ampo ing balak (target)',
@@ -969,6 +970,7 @@ pakilawe me ing math/README ba meng i-configure.',
 'recentchangestext'                 => 'Talukyan mo reng tawling diling mengayalilan king bulung a ini.',
 'recentchanges-feed-description'    => 'Talukian mo reng bayung diling mengayalili king wiki king feed a ini.',
 'rcnote'                            => "Atilu king lalam {{PLURAL:$1|ing '''1''' a miyalilan|deng tawling '''$1''' a miyalilan}} anyang tawling {{PLURAL:$2|aldo|'''$2''' aldo}}, ketang $3.",
+'rcnotefrom'                        => 'Atilu king lalam deng miyalilan manibat anyang <b>$2</b> (angga king <b>$1</b> makalto).',
 'rclistfrom'                        => 'Pakit la reng bayung miyalilan manibat anyang $1',
 'rcshowhideminor'                   => '$1 malating edit',
 'rcshowhidebots'                    => '$1 la reng bot',
@@ -1387,12 +1389,6 @@ click me ing \"Tuknangan ing pamagbante\" (Unwatch) king gilid na ning bulung.",
 'iteminvalidname'      => "Maki prublema king '$1', e maliari ing lagyu...",
 'wlnote'               => "{{PLURAL:$1|Ing makatuki ing tauling|Ding makatuki ring tauling '''$1''' miyalilan}} kilub {{PLURAL:$2|ning tauling metung a oras|ding tauling '''$2''' oras}}.",
 'wlshowlast'           => 'Pakit la reng tauling $1 oras $2 aldo $3',
-'watchlist-show-bots'  => 'Pakit la reng in-edit da reng bot',
-'watchlist-hide-bots'  => 'Isalikut la reng in-edit dang bot',
-'watchlist-show-own'   => 'Pakit la reng in-edit ku',
-'watchlist-hide-own'   => 'Isalikut la reng in-edit ku',
-'watchlist-show-minor' => 'Pakit la reng mangalating edit',
-'watchlist-hide-minor' => 'Isalikut la reng mangalating edit',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Babanten...',
@@ -1479,7 +1475,7 @@ a gewa nang [[User:$2|$2]] ([[User talk:$2|Talk]]); atin nang aliwang menalili o
 I [[User:$3|$3]] ([[User talk:$3|Talk]]) ing tawling menalili.',
 'editcomment'      => 'Ini ing komentu king edit: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'       => 'Miurung la reng in-edit nang [[Special:Contributions/$2|$2]] ([[User talk:$2|Pamisabi-sabi]]);
-binalik neng [[User:$1|$1]] king tauling bersion', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+binalik neng [[User:$1|$1]] king tauling bersion', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Deng edit nang $1 a miurung;
 binalik nong $2 king sadiang bersion.',
 'sessionfailure'   => 'Balamu ating prublema king kekang login session;
@@ -2291,10 +2287,8 @@ Mayari/mapasu ya ining confirmation code keng $4.',
 'recreate'            => 'Lalangan yang pasibayu',
 
 # action=purge
-'confirm_purge'        => 'Ilako ya king simpanan (cache) ing bulung a ine?
-
-$1',
 'confirm_purge_button' => 'Sigi',
+'confirm-purge-top'    => 'Ilako ya king simpanan (cache) ing bulung a ine?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← minunang bulung',

@@ -9,6 +9,7 @@
  * @author Rob Church <robchur@gmail.com>
  * @author Steinbach
  * @author Troefkaart
+ * @author Urhixidur
  */
 
 $fallback = 'nl';
@@ -619,7 +620,7 @@ Ierbie beloof je ons ok da je deêze tekst zelf eschreven ei, of overenomen uut 
 A je nie wil dan je teksen rihoreus anepast worn deur aore, plek ze ier dan nie.<br />
 Je beloof ok da je de oôrspronkelijke auteur bin van dit materiaol, of da je 't ei ekopieerd uut een bron in 't publieke domein, of een soôrthelieke vrieë bron (zie $1 voor details).
 <strong>GEBRUUK HIN MATERIAOL DAT A BESCHERMD WOR DEUR AUTEURSRECHT, TENZIE A JE DIVOE TOESTEMMIENG EI!</strong>",
-'longpagewarning'           => "<strong>WAERSCHUWIENG: Deêze pagina is $1 kilobyte hroôt; sommihe browsers èn probleemn mie 't bewerken van      pagina's die an hrotter zien dan 32kb. Misschien kan deêze pagina esplitst worn in kleinere deêln.</strong>",
+'longpagewarning'           => "<strong>WAERSCHUWIENG: Deêze pagina is $1 kilobyte hroôt; sommihe browsers èn probleemn mie 't bewerken van pagina's die an hrotter zien dan 32 kb. Misschien kan deêze pagina esplitst worn in kleinere deêln.</strong>",
 'longpageerror'             => "<strong>FOUT: de tekst die a je ei toe'evoegd is $1 kilobyte hroôt, wat a hrotter is dan 't maximum van $2 kilobyte.
 Opslaene is nie meuhlijk.</strong>",
 'readonlywarning'           => "<strong>WAERSCHUWIENG: de database is eblokkeerd voe onderoud, dus je kan dezen noe nie opslaen.
@@ -666,7 +667,7 @@ De deur $3 opeheven reeën is ''$2''",
 'nohistory'           => 'Deêze pagina is nie bewerkt.',
 'currentrev'          => 'Udihe versie',
 'revisionasof'        => 'Versie op $1',
-'revision-info'       => 'Versie op $1 van $2',
+'revision-info'       => 'Versie op $1 van $2', # Additionally available: $3: revision id
 'previousrevision'    => '←Ouwere versie',
 'nextrevision'        => 'Nieuwere versie→',
 'currentrevisionlink' => 'Udihe versie',
@@ -706,9 +707,9 @@ der kunn\'n details anwezig zien in \'t [{{fullurl:Special:Log/delete|page={{PAG
 'revisiondelete'              => 'Versies verwiederen/trugplekken',
 'revdelete-nooldid-title'     => 'Hin doelversie',
 'revdelete-nooldid-text'      => 'Je ei hin doelversie(s) voe deêze handelienge opeheven, de aneheven versie besti nie, of je probeer de lèste versie te verberhen.',
-'revdelete-selected'          => 'Hesillecteerde {{PLURAL:$2|bewerkieng|bewerkiengen}} van [[:$1]]:',
-'logdelete-selected'          => '{{PLURAL:$1|Hesillecteerde logboekactie|Hesillecteerde logboekacties}}:',
-'revdelete-text'              => "Verwiederde bewerkiengen zien zichbaer in de heschiedenisse, mè den inoud is nie langer publiek toehankelijk.
+'revdelete-selected'          => "'''Hesillecteerde {{PLURAL:$2|bewerkieng|bewerkiengen}} van [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Hesillecteerde logboekactie|Hesillecteerde logboekacties}}:'''",
+'revdelete-text'              => "'''Verwiederde bewerkiengen zien zichbaer in de heschiedenisse, mè den inoud is nie langer publiek toehankelijk.'''
 
 Aore opzichters van {{SITENAME}} kunn'n de verborhen inoud benadern en de verwiederieng onedaene maeken mie de ulpe van dit scherm, tenzie an der anvull'nde beperkiengen heln die an zien inesteld deur de systeembeheêrder.",
 'revdelete-legend'            => "Zichbaereidsbeperkiengen instell'n",
@@ -925,6 +926,7 @@ Een nie anekruusd vienkvakje beteêken da de gebruker hin lid is van de hroep.",
 'recentchangestext'                 => 'Bekiek wat-a juust veranderd is op deêze wiki.',
 'recentchanges-feed-description'    => 'Bekiek wat-a juust veranderd is op deêze wiki.',
 'rcnote'                            => "Ieronder {{PLURAL:$1|sti de lèste bewerkieng|staen de lèste '''$1''' bewerkiengen}} in de lèste {{PLURAL:$2|dag|'''$2''' daegen}}, op $3.",
+'rcnotefrom'                        => "Wiezigiengen sins '''$2''' (mie een maximum van '''$1''' wiezigiengen).",
 'rclistfrom'                        => 'Bekiek de wiezigingen sins $1',
 'rcshowhideminor'                   => '$1 kleine bewerkiengen',
 'rcshowhidebots'                    => 'bots $1',
@@ -1038,24 +1040,21 @@ Je kan 't overzicht bepaelen deu 'n soôrte logboek, 'n gebrukersnaem of eên bl
 'emailpage' => 'E-mail gebruker',
 
 # Watchlist
-'watchlist'            => 'Volglieste',
-'mywatchlist'          => 'Mien volglieste',
-'watchlistfor'         => "(vò '''$1''')",
-'watchnologin'         => 'Je bin nie angemolde.',
-'watchnologintext'     => 'Je moe [[Special:UserLogin|angemolde]] weze om je volglieste an te passen.',
-'addedwatch'           => 'An de volglieste toegevoegd',
-'addedwatchtext'       => "De bladzie \"[[:\$1]]\" is an je [[Special:Watchlist|Volglieste]] toegevoegd.
+'watchlist'         => 'Volglieste',
+'mywatchlist'       => 'Mien volglieste',
+'watchlistfor'      => "(vò '''$1''')",
+'watchnologin'      => 'Je bin nie angemolde.',
+'watchnologintext'  => 'Je moe [[Special:UserLogin|angemolde]] weze om je volglieste an te passen.',
+'addedwatch'        => 'An de volglieste toegevoegd',
+'addedwatchtext'    => "De bladzie \"[[:\$1]]\" is an je [[Special:Watchlist|Volglieste]] toegevoegd.
 Veranderiengen an deêze bladzie en de overlegbladzie die-a d'rbie oort zulle ierop zichtbaer ore
 en de bladzie komt '''vet''' te staen in de [[Special:RecentChanges|lieste van wat-a juust veranderd is]], daermee 't makkeliker te vinden is.
 A je de bladzie laeter weêr van je volglieste afaele wil, klik dan op \"nie meêr volge\" bovenan de bladzie.",
-'watch'                => 'Volg',
-'watchthispage'        => 'Bekiek deêze bladzie',
-'unwatch'              => 'Nie meêr volge',
-'watchnochange'        => "D'r is in d'n opgevrogen tied niks op je volglieste veranderd.",
-'watchlistcontains'    => 'Uw volglieste bevat $1 {{PLURAL:$1|bladzie|bladzies}}.',
-'watchlist-hide-bots'  => 'Verberge bot wiezigingen',
-'watchlist-hide-own'   => 'Verberge mien wiezigingen',
-'watchlist-hide-minor' => 'Verberge kleine wiezigingen',
+'watch'             => 'Volg',
+'watchthispage'     => 'Bekiek deêze bladzie',
+'unwatch'           => 'Nie meêr volge',
+'watchnochange'     => "D'r is in d'n opgevrogen tied niks op je volglieste veranderd.",
+'watchlistcontains' => 'Uw volglieste bevat $1 {{PLURAL:$1|bladzie|bladzies}}.',
 
 # Delete
 'actioncomplete' => 'Actie uutgevoerd',
@@ -1065,7 +1064,7 @@ A je de bladzie laeter weêr van je volglieste afaele wil, klik dan op \"nie me�
 # Rollback
 'alreadyrolled' => 'De lèste bewerkienge op [[$1]] deu [[User:$2|$2]] ([[User talk:$2|Overleggienge]]) kan nie vrommegedraoid ore; iemand aors eit de bladzie al bewerkt of ersteld.
 De lèste bewerkienge wier gedaen deu [[User:$3|$3]] ([[User talk:$3|Overleggienge]]).',
-'revertpage'    => 'Wiezigingen deur [[Special:Contributions/$2|$2]] ([[User talk:$2|Overleg]]) teruggedraoid nae de lèste versie van [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'    => 'Wiezigingen deur [[Special:Contributions/$2|$2]] ([[User talk:$2|Overleg]]) teruggedraoid nae de lèste versie van [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectlogpage' => 'Beschermlogboek',

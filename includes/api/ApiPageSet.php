@@ -368,7 +368,7 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	private function initFromPageIds($pageids) {
-		if(empty($pageids))
+		if(!count($pageids))
 			return;
 
 		$pageids = array_map('intval', $pageids); // paranoia
@@ -440,7 +440,7 @@ class ApiPageSet extends ApiQueryBase {
 			else
 			{
 				// The remaining pageids do not exist
-				if(empty($this->mMissingPageIDs))
+				if(!$this->mMissingPageIDs)
 					$this->mMissingPageIDs = array_keys($remaining);
 				else
 					$this->mMissingPageIDs = array_merge($this->mMissingPageIDs, array_keys($remaining));
@@ -450,16 +450,16 @@ class ApiPageSet extends ApiQueryBase {
 
 	private function initFromRevIDs($revids) {
 
-		if(empty($revids))
+		if(!count($revids))
 			return;
 
 		$db = $this->getDB();
 		$pageids = array();
 		$remaining = array_flip($revids);
 
-		$tables = array('revision');
+		$tables = array('revision','page');
 		$fields = array('rev_id','rev_page');
-		$where = array('rev_deleted' => 0, 'rev_id' => $revids);
+		$where = array('rev_deleted' => 0, 'rev_id' => $revids,'rev_page = page_id');
 
 		// Get pageIDs data from the `page` table
 		$this->profileDBIn();
@@ -488,7 +488,7 @@ class ApiPageSet extends ApiQueryBase {
 
 			// Repeat until all redirects have been resolved
 			// The infinite loop is prevented by keeping all known pages in $this->mAllPages
-			while (!empty ($this->mPendingRedirectIDs)) {
+			while ($this->mPendingRedirectIDs) {
 
 				// Resolve redirects by querying the pagelinks table, and repeat the process
 				// Create a new linkBatch object for the next pass
@@ -537,7 +537,7 @@ class ApiPageSet extends ApiQueryBase {
 			$this->mRedirectTitles[$from] = $to;
 		}
 		$db->freeResult($res);
-		if(!empty($this->mPendingRedirectIDs))
+		if($this->mPendingRedirectIDs)
 		{
 			# We found pages that aren't in the redirect table
 			# Add them
@@ -580,16 +580,16 @@ class ApiPageSet extends ApiQueryBase {
 				continue; // There's nothing else we can do
 			}
 			$iw = $titleObj->getInterwiki();
-			if (!empty($iw)) {
+			if (strval($iw) !== '') {
 				// This title is an interwiki link.
 				$this->mInterwikiTitles[$titleObj->getPrefixedText()] = $iw;
 			} else {
 
 				// Validation
 				if ($titleObj->getNamespace() < 0)
-					$this->dieUsage("No support for special pages has been implemented", 'unsupportednamespace');
-
-				$linkBatch->addObj($titleObj);
+					$this->setWarning("No support for special pages has been implemented");
+				else
+					$linkBatch->addObj($titleObj);
 			}
 
 			// Make sure we remember the original title that was given to us

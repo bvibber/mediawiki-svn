@@ -695,7 +695,7 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 'nohistory'           => 'इस पन्ने का कोई इतिहास नहीं',
 'currentrev'          => 'सद्य अवतरण',
 'revisionasof'        => '$1 का आवर्तन',
-'revision-info'       => '$2ने किया हुवा $1का अवतरण',
+'revision-info'       => '$2ने किया हुवा $1का अवतरण', # Additionally available: $3: revision id
 'previousrevision'    => '← पुराना संशोधन',
 'nextrevision'        => 'नया संशोधन →',
 'currentrevisionlink' => 'वर्तमान संशोधन',
@@ -736,11 +736,11 @@ Don't forget to personalize your {{SITENAME}} preferences.",
 'revisiondelete'              => 'अवतरण हटायें/पुनर्स्थापित करें',
 'revdelete-nooldid-title'     => 'लक्ष्य अवतरण गलत',
 'revdelete-nooldid-text'      => 'इस क्रिया को करने के लिये आपने लक्ष्य अवतरण नहीं दियें हैं, या फिर आपने दिया हुआ अवतरण अस्तित्वमें नहीं हैं या फिर आप सद्य अवतरणको छुपा रहें हैं।',
-'revdelete-selected'          => '[[:$1]] {{PLURAL:$2|का चुना हुआ अवतरण|के चुने हुए अवतरण}}:',
-'logdelete-selected'          => '{{PLURAL:$1|चुना हुआ लॉग इवेंट|चुने हुए लॉग इवेंट्स}}:',
-'revdelete-text'              => 'हटायें गयें अवतरण और घटनायें अभी भी पन्ने के इतिहास और लॉग सूचीमें नजर आयेंगे, पर इसके पाठ सामान्य सदस्य देख नहीं पायेंगे।
+'revdelete-selected'          => "'''[[:$1]] {{PLURAL:$2|का चुना हुआ अवतरण|के चुने हुए अवतरण}}:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|चुना हुआ लॉग इवेंट|चुने हुए लॉग इवेंट्स}}:'''",
+'revdelete-text'              => "'''हटायें गयें अवतरण और घटनायें अभी भी पन्ने के इतिहास और लॉग सूचीमें नजर आयेंगे, पर इसके पाठ सामान्य सदस्य देख नहीं पायेंगे।'''
 
-{{SITENAME}} अन्य प्रबंधक अभी भी इसे देख सकते हैं और पुनर्स्थापित भी कर सकतें हैं, जब तक इससे ज्यादा प्रतिबंध ना लगायें जायें।',
+{{SITENAME}} अन्य प्रबंधक अभी भी इसे देख सकते हैं और पुनर्स्थापित भी कर सकतें हैं, जब तक इससे ज्यादा प्रतिबंध ना लगायें जायें।",
 'revdelete-legend'            => 'दृश्य प्रतिबंध निश्चित करें',
 'revdelete-hide-text'         => 'अवरतणका पाठ छुपायें',
 'revdelete-hide-name'         => 'क्रिया और लक्ष्य को छुपायें',
@@ -1028,6 +1028,7 @@ latex, dvips, gs, और convert के इन्स्टॉलेशन की
 'recentchangestext'                 => 'इस विकिपर हाल में हुए बदलाव इस पन्ने पर देखें जा सकतें हैं।',
 'recentchanges-feed-description'    => 'इस फ़ीडमें होनेवाले विकिपर हाल में हुए बदलाव देखियें ।',
 'rcnote'                            => "नीचे $3 तक पिछले {{PLURAL:$2|'''१''' दिनमें हुआ|'''$2''' दिनोंमें हुए}} आखिरी $1 बदलाव {{PLURAL:$1|दिया है|दिये हैं}}।",
+'rcnotefrom'                        => "नीचे '''$2''' से हुए ('''$1''' या कम) बदलाव दर्शाये गये है ।",
 'rclistfrom'                        => '$1 से नये बदलाव दिखाएँ',
 'rcshowhideminor'                   => 'छोटे बदलाव $1',
 'rcshowhidebots'                    => 'बोटों $1',
@@ -1485,12 +1486,6 @@ PICT # misc.
 'iteminvalidname'      => "'$1' के साथ समस्या, अवैध नाम...",
 'wlnote'               => "नीचे पीछले {{PLURAL:$2|घंटेमें|'''$2''' घंटोंमें}} हुए {{PLURAL:$1|आखिरी बदलाव|आखिरी '''$1''' बदलाव}} दिये हुए हैं।",
 'wlshowlast'           => 'पिछले $1 घंटे $2 दिन $3 देखें',
-'watchlist-show-bots'  => 'बोटों के बदलाव दर्शायें',
-'watchlist-hide-bots'  => 'बोट एडिट छुपायें',
-'watchlist-show-own'   => 'मेरे बदलाव दर्शायें',
-'watchlist-hide-own'   => 'मेरे बदलाव छुपायें',
-'watchlist-show-minor' => 'छोटे बदलाव दर्शायें',
-'watchlist-hide-minor' => 'छोटे बदलाव छुपायें',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'ध्यान दे रहे हैं...',
@@ -1575,7 +1570,7 @@ $NEWPAGE
 इस पन्ने का आखिरी योगदानकर्ता इस लेख का एकमात्र लेखक हैं।',
 'alreadyrolled'    => '[[$1]] का [[User:$2|$2]] ([[User talk:$2|वार्ता]]) द्वारा किया गया पिछला बदलाव रोलबेक नहीं किया जा सकता; किसी और ने पहले ही इसे रोलबेक किया अथवा बदल दिया है । पिछला बदलाव [[User:$3|$3]] ([[User talk:$3|वार्ता]]) द्वारा किया गया है ।',
 'editcomment'      => 'संपादन टिप्पणी: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => '[[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) के संपादनोंको हटाकर [[User:$1|$1]] के आखिरी अवतरण को पूर्ववत किया', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => '[[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) के संपादनोंको हटाकर [[User:$1|$1]] के आखिरी अवतरण को पूर्ववत किया', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => '$1 के संपादन हटायें;
 $2 द्वारा संपादित आखिरी अवतरण को पुनर्स्थापित किया।',
 'sessionfailure'   => 'ऐसा प्रतीत होता है की आपके लोगिन सत्र के साथ कोई समस्या है।
@@ -1886,8 +1881,6 @@ $1 को बाध्य करने का कारण है: "$2"',
 'delete_and_move_reason'  => 'स्थानांतरण करने के लिये जगह बनाई',
 'selfmove'                => 'स्रोत और लक्ष्य शीर्षक समान हैं;
 पन्ना अपने ही जगह पर स्थानांतरित नहीं हो सकता।',
-'immobile_namespace'      => 'स्रोत और लक्ष्य शीर्षक विशेष रुप में हैं;
-इस नामस्थानमें या फिर इस नामस्थानके बाहर स्थानांतरण नहीं हो सकता।',
 'imagenocrossnamespace'   => 'जिन नामस्थानोंमें फ़ाइल रख नहीं सकते, उसमें फ़ाइल का स्थानांतरण नहीं हो सकता',
 'imagetypemismatch'       => 'फ़ाइल का नया एक्स्टेंशन उसके प्रकारसे मेल नहीं खाता',
 
@@ -2473,10 +2466,8 @@ $5
 'recreate'            => 'फिरसे बनायें',
 
 # action=purge
-'confirm_purge'        => 'क्या आप यह पृष्ठ का कैश ख़ाली करने चाहिए?
-
-$1',
 'confirm_purge_button' => 'ओके',
+'confirm-purge-top'    => 'क्या आप यह पृष्ठ का कैश ख़ाली करने चाहिए?',
 
 # Separators for various lists, etc.
 'semicolon-separator' => ';',
@@ -2654,16 +2645,5 @@ $1',
 'specialpages-group-wiki'        => 'विकि डाटा और औज़ार',
 'specialpages-group-redirects'   => 'विशेष पन्ने अनुप्रेषित कर रहें हैं',
 'specialpages-group-spam'        => 'स्पैम औज़ार',
-
-# Special:Nuke
-'nuke'               => 'एकसाथ बहुत सारे पन्ने हटायें',
-'nuke-nopages'       => 'हाल में हुए बदलावोंमें [[Special:Contributions/$1|$1]] द्वारा नये पन्ने नहीं हैं।',
-'nuke-list'          => 'नीचे दिये हुए पन्ने [[Special:Contributions/$1|$1]] ने हाल में बनायें हैं; टिप्पणी दें और हटाने के लिये बटनपर क्लिक करें।',
-'nuke-defaultreason' => '$1 ने बनाये हुए पन्ने एकसाथ हटायें',
-'nuke-tools'         => 'यह उपकरण किसी सदस्य या IP द्वारा हाल ही में जोड़े गए पृष्ठों को सामूहिक रूप से हटाने में सहायक है।
-सदस्यनाम या IP डालकर हटाने वाले पृष्ठों की सूची प्राप्त करें।',
-'nuke-submit-user'   => 'जायें',
-'nuke-submit-delete' => 'चुने हुए हटायें',
-'right-nuke'         => 'बहुतसे पन्ने एकसाथ हटायें',
 
 );

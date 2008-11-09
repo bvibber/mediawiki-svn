@@ -68,6 +68,7 @@ class Title {
 	var $mWatched = null;      	  ///< Is $wgUser watching this page? null if unfilled, accessed through userIsWatching()
 	var $mLength = -1;                ///< The page length, 0 for special pages
 	var $mRedirect = null;            ///< Is the article at this title a redirect?
+	var $mNotificationTimestamp = array(); ///< Associative array of user ID -> timestamp/false
 	//@}
 
 
@@ -637,7 +638,6 @@ class Title {
 	public function getSubpageUrlForm() {
 		$text = $this->getSubpageText();
 		$text = wfUrlencode( str_replace( ' ', '_', $text ) );
-		$text = str_replace( '%28', '(', str_replace( '%29', ')', $text ) ); # Clean up the URL; per below, this might not be safe
 		return( $text );
 	}
 
@@ -647,14 +647,7 @@ class Title {
 	 */
 	public function getPrefixedURL() {
 		$s = $this->prefix( $this->mDbkeyform );
-		$s = str_replace( ' ', '_', $s );
-
-		$s = wfUrlencode ( $s ) ;
-
-		# Cleaning up URL to make it look nice -- is this safe?
-		$s = str_replace( '%28', '(', $s );
-		$s = str_replace( '%29', ')', $s );
-
+		$s = wfUrlencode( str_replace( ' ', '_', $s ) );
 		return $s;
 	}
 
@@ -1623,7 +1616,7 @@ class Title {
 
 		wfProfileIn( __METHOD__ );
 
-		$dbr = wfGetDb( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		if ( $this->getNamespace() == NS_IMAGE ) {
 			$tables = array ('imagelinks', 'page_restrictions');
@@ -2258,7 +2251,12 @@ class Title {
 	 * @return \type{Title} the object for the subject page
 	 */
 	public function getSubjectPage() {
-		return Title::makeTitle( MWNamespace::getSubject( $this->getNamespace() ), $this->getDBkey() );
+		// Is this the same title?
+		$subjectNS = MWNamespace::getSubject( $this->getNamespace() );
+		if( $this->getNamespace() == $subjectNS ) {
+			return $this;
+		}
+		return Title::makeTitle( $subjectNS, $this->getDBkey() );
 	}
 
 	/**
@@ -2456,18 +2454,18 @@ class Title {
 				if( $nt->getText() != wfStripIllegalFilenameChars( $nt->getText() ) ) {
 					$errors[] = array('imageinvalidfilename');
 				}
-				if( !File::checkExtensionCompatibility( $file, $nt->getDbKey() ) ) {
+				if( !File::checkExtensionCompatibility( $file, $nt->getDBKey() ) ) {
 					$errors[] = array('imagetypemismatch');
 				}
 			}
 		}
 
 		if ( $auth ) {
-			$errors = wfArrayMerge($errors, 
-					$this->getUserPermissionsErrors('move', $wgUser),
-					$this->getUserPermissionsErrors('edit', $wgUser),
-					$nt->getUserPermissionsErrors('move-target', $wgUser),
-					$nt->getUserPermissionsErrors('edit', $wgUser));
+			$errors = wfMergeErrorArrays( $errors,
+				$this->getUserPermissionsErrors('move', $wgUser),
+				$this->getUserPermissionsErrors('edit', $wgUser),
+				$nt->getUserPermissionsErrors('move-target', $wgUser),
+				$nt->getUserPermissionsErrors('edit', $wgUser) );
 		}
 
 		$match = EditPage::matchSpamRegex( $reason );
@@ -2835,6 +2833,48 @@ class Title {
 		$this->purgeSquid();
 		
 	}
+	
+	/**
+	 * Checks if this page is just a one-rev redirect.
+	 * Adds lock, so don't use just for light purposes.
+	 *
+	 * @param $curId \type{int} page ID, optional
+	 * @return \type{\bool} TRUE or FALSE
+	 */
+	public function isSingleRevRedirect( $curId = 0 ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$curId = $curId ? $curId : $this->getArticleId();
+		# Nothing here?
+		if( !$curId ) {
+			return true;
+		}
+		# Is it a redirect?
+		$row = $dbw->selectRow( 'page',
+			array( 'page_is_redirect', 'page_latest' ),
+			array( 'page_id' => $curId ),
+			__METHOD__,
+			'FOR UPDATE'
+		);
+		# Cache some fields we may want
+		$this->mRedirect = $row ? (bool)$row->page_is_redirect : false;
+		$this->mLatestID = $row ? intval($row->page_latest) : false;
+		if( !$this->mRedirect ) {
+			return false;
+		}
+		# Does the article have a history?
+		$row = $dbw->selectField( array( 'page', 'revision'),
+			'rev_id',
+			array( 'page_namespace' => $this->getNamespace(),
+				'page_title' => $this->getDBkey(),
+				'page_id=rev_page',
+				'page_latest != rev_id'
+			), 
+			__METHOD__,
+			'FOR UPDATE'
+		);
+		# Return true if there was no history
+		return ($row === false);
+	}
 
 	/**
 	 * Checks if $this can be moved to a given Title
@@ -2844,10 +2884,7 @@ class Title {
 	 * @return \type{\bool} TRUE or FALSE
 	 */
 	public function isValidMoveTarget( $nt ) {
-
-		$fname = 'Title::isValidMoveTarget';
 		$dbw = wfGetDB( DB_MASTER );
-
 		# Is it an existsing file?
 		if( $nt->getNamespace() == NS_IMAGE ) {
 			$file = wfLocalFile( $nt );
@@ -2856,21 +2893,14 @@ class Title {
 				return false;
 			}
 		}
-
-		# Is it a redirect?
-		$id  = $nt->getArticleID();
-		$obj = $dbw->selectRow( array( 'page', 'revision', 'text'),
-			array( 'page_is_redirect','old_text','old_flags' ),
-			array( 'page_id' => $id, 'page_latest=rev_id', 'rev_text_id=old_id' ),
-			$fname, 'FOR UPDATE' );
-
-		if ( !$obj || 0 == $obj->page_is_redirect ) {
-			# Not a redirect
-			wfDebug( __METHOD__ . ": not a redirect\n" );
+		# Is it a redirect with no history?
+		if( !$nt->isSingleRevRedirect() ) {
+			wfDebug( __METHOD__ . ": not a one-rev redirect\n" );
 			return false;
 		}
-		$text = Revision::getRevisionText( $obj );
-
+		# Get the article text
+		$rev = Revision::newFromTitle( $nt );
+		$text = $rev->getText();
 		# Does the redirect point to the source?
 		# Or is it a broken self-redirect, usually caused by namespace collisions?
 		$m = array();
@@ -2887,18 +2917,7 @@ class Title {
 			wfDebug( __METHOD__ . ": failsafe\n" );
 			return false;
 		}
-
-		# Does the article have a history?
-		$row = $dbw->selectRow( array( 'page', 'revision'),
-			array( 'rev_id' ),
-			array( 'page_namespace' => $nt->getNamespace(),
-				'page_title' => $nt->getDBkey(),
-				'page_id=rev_page AND page_latest != rev_id'
-			), $fname, 'FOR UPDATE'
-		);
-
-		# Return true if there was no history
-		return $row === false;
+		return true;
 	}
 
 	/**
@@ -3021,6 +3040,23 @@ class Title {
 	}
 
 	/**
+	 * Get the oldest revision timestamp of this page
+	 *
+	 * @return string, MW timestamp
+	 */
+	public function getEarliestRevTime() {
+		$dbr = wfGetDB( DB_SLAVE );
+		if( $this->exists() ) {
+			$min = $dbr->selectField( 'revision',
+				'MIN(rev_timestamp)',
+				array( 'rev_page' => $this->getArticleId() ),
+				__METHOD__ );
+			return wfTimestampOrNull( TS_MW, $min );
+		}
+		return null;
+	}
+
+	/**
 	 * Get the number of revisions between the given revision IDs.
 	 * Used for diffs and other things that really need it.
 	 *
@@ -3126,6 +3162,39 @@ class Title {
 			), __METHOD__
 		);
 		return $touched;
+	}
+
+	/**
+	 * Get the timestamp when this page was updated since the user last saw it.
+	 * @param User $user
+	 * @return mixed string/NULL
+	 */
+	public function getNotificationTimestamp( $user = NULL ) {
+		global $wgUser, $wgShowUpdatedMarker;
+		// Assume current user if none given
+		if( !$user ) $user = $wgUser;
+		// Check cache first
+		$uid = $user->getId();
+		if( isset($this->mNotificationTimestamp[$uid]) ) {
+			return $this->mNotificationTimestamp[$uid];
+		}
+		if( !$uid || !$wgShowUpdatedMarker ) {
+			return $this->mNotificationTimestamp[$uid] = false;
+		}
+		// Don't cache too much!
+		if( count($this->mNotificationTimestamp) >= self::CACHE_MAX ) {
+			$this->mNotificationTimestamp = array();
+		}
+		$dbr = wfGetDB( DB_SLAVE );
+		$this->mNotificationTimestamp[$uid] = $dbr->selectField( 'watchlist',
+			'wl_notificationtimestamp',
+			array( 'wl_namespace' => $this->getNamespace(),
+				'wl_title' => $this->getDBkey(),
+				'wl_user' => $user->getId()
+			),
+			__METHOD__
+		);
+		return $this->mNotificationTimestamp[$uid];
 	}
 
 	/**

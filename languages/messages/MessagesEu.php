@@ -10,6 +10,7 @@
  * @author Malafaya
  * @author Theklan
  * @author Unai Fdz. de Betoño
+ * @author Urhixidur
  * @author לערי ריינהארט
  */
 
@@ -43,6 +44,21 @@ $namespaceNames = array(
 $namespaceAliases = array(
 	'Aparteko'          => NS_SPECIAL,
 );
+
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'BirzuzenketaBikoitzak' ),
+	'BrokenRedirects'           => array( 'HautsitakoBirzuzenketak' ),
+	'Disambiguations'           => array( 'Argipenak' ),
+	'Preferences'               => array( 'Hobespenak' ),
+	'Watchlist'                 => array( 'JarraipenZerrenda' ),
+	'Recentchanges'             => array( 'AzkenAldaketak' ),
+	'Upload'                    => array( 'Igo' ),
+	'Statistics'                => array( 'Estatistikak' ),
+	'Allpages'                  => array( 'OrrialdeGuztiak' ),
+	'Movepage'                  => array( 'OrrialdeaMugitu' ),
+);
+
+$separatorTransformTable = array( ',' => '.', '.' => ',' ); /* Bug 15717 */
 
 $messages = array(
 # User preference toggles
@@ -88,6 +104,7 @@ $messages = array(
 'tog-ccmeonemails'            => 'Beste erabiltzaileei bidaltzen dizkiedan mezuen kopiak niri ere bidali',
 'tog-diffonly'                => "''Diff''-ak agertzen direnean, orrialdearen edukiera ezkutatu",
 'tog-showhiddencats'          => 'Ikusi kategoria ezkutuak',
+'tog-norollbackdiff'          => 'Rollback bat egin ondoren ezberdintasunak ez hartu aintzat',
 
 'underline-always'  => 'Beti',
 'underline-never'   => 'Inoiz ez',
@@ -620,7 +637,7 @@ Era berean, bidaltzen ari zaren edukia zuk zeuk idatzitakoa dela edo jabetza pub
 'copyrightwarning2'                => 'Mesedez, kontuan izan {{SITENAME}}(e)n egindako ekarpen guztiak besteek aldatu edo ezabatu ditzaketela. Ez baduzu besteek aldaketak egitea nahi, ez ezazu bidali.<br />
 Era berean, bidaltzen ari zaren edukia zuk zeuk idatzitakoa dela edo jabetza publikoko edo baliabide aske batetik kopiatu duzula zin egin ari zara (ikus $1 informazio gehiagorako).
 <strong>EZ BIDALI BAIMENIK GABEKO COPYRIGHTDUN EDUKIRIK!</strong>',
-'longpagewarning'                  => '<strong>OHARRA: Orrialde honek $1 kilobyteko tamaina du; nabigatzaile batzuek arazoak izan litzakete 32kb-tik gorako testuekin. Mesedez, saiatu orrialdea atal txikiagoetan banatzen.</strong>',
+'longpagewarning'                  => '<strong>OHARRA: Orrialde honek $1 kilobyteko tamaina du; nabigatzaile batzuek arazoak izan litzakete 32 kb-tik gorako testuekin. Mesedez, saiatu orrialdea atal txikiagoetan banatzen.</strong>',
 'longpageerror'                    => '<strong>ERROREA: Bidali duzun testuak $1 kilobyteko luzera du, eta $2 kilobyteko maximoa baino luzeagoa da. Ezin da gorde.</strong>',
 'readonlywarning'                  => '<strong>OHARRA: Datu-basea blokeatu egin da mantenu lanak burutzeko, beraz ezingo dituzu orain zure aldaketak gorde. Testua fitxategi baten kopiatu dezakezu, eta beranduago erabiltzeko gorde.
 
@@ -665,6 +682,8 @@ Txantiloi batzuk ez dira erabiliko.',
 'post-expand-template-argument-category'  => 'Kontuan hartu ez diren txantiloiak dituzten orrialdeak',
 
 # "Undo" feature
+'undo-success' => 'Aldaketa desegin daiteke.
+Mesedez beheko alderaketa egiaztatu, egin nahi duzuna hori dela frogatzeko, eta ondoren azpiko aldaketak gorde, aldaketa desegiten amaitzeko.',
 'undo-failure' => 'Ezin izan da aldaketa desegin tarteko aldaketekin gatazkak direla-eta.',
 'undo-norev'   => 'Aldaketa ezin da desegin ez delako existitzen edo ezabatu zutelako.',
 'undo-summary' => '[[Special:Contributions/$2|$2(r)en]] $1 berrikuspena desegin da ([[User talk:$2|Eztabaida]])',
@@ -681,7 +700,7 @@ $3(e)k emandako arrazoia: ''$2''",
 'currentrev'             => 'Oraingo berrikuspena',
 'currentrev-asof'        => '$1(e)an momentuko aldaketa',
 'revisionasof'           => '$1(e)ko berrikuspena',
-'revision-info'          => '$2(r)en berrikusketa, ordua: $1',
+'revision-info'          => '$2(r)en berrikusketa, ordua: $1', # Additionally available: $3: revision id
 'previousrevision'       => '←Berrikuspen zaharragoa',
 'nextrevision'           => 'Berrikuspen berriagoa→',
 'currentrevisionlink'    => 'Oraingo berrikuspena ikusi',
@@ -720,11 +739,11 @@ Orrialdearen berrikuspen hau artxibo publikoetatik kendu da. Guneko administratz
 'revisiondelete'              => 'Berrikuspenak ezabatu/leheneratu',
 'revdelete-nooldid-title'     => 'Helburu berrikuspenik ez',
 'revdelete-nooldid-text'      => 'Ez d(it)uzu eragiketa hau burutzeko helburu berrikuspena(k) zehaztu.',
-'revdelete-selected'          => '{{PLURAL:$2|[[:$1]](r)en hautatutako berrikuspena:|[[:$1]](r)en hautatutako berrikuspenak}}',
-'logdelete-selected'          => '{{PLURAL:$1|Aukeratutako log gertakaria|Aukeratutako log gertakariak}}:',
-'revdelete-text'              => 'Ezabatutako berrikuspenek orrialdearen historian agertzen jarraituko dute, baina bere edukiak ez dira publikoki eskuratu ahal izango.
+'revdelete-selected'          => "'''{{PLURAL:$2|[[:$1]](r)en hautatutako berrikuspena:|[[:$1]](r)en hautatutako berrikuspenak}}'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Aukeratutako log gertakaria|Aukeratutako log gertakariak}}:'''",
+'revdelete-text'              => "'''Ezabatutako berrikuspenek orrialdearen historian agertzen jarraituko dute, baina bere edukiak ez dira publikoki eskuratu ahal izango.'''
 
-Wiki honetako beste administratzaileek ezkutuko eduki hau ikusteko aukera izango dute, eta baita leheneratzeko ere, gunearen arduradunek beste mugapenen bat ezartzen ez badute behintzat.',
+Wiki honetako beste administratzaileek ezkutuko eduki hau ikusteko aukera izango dute, eta baita leheneratzeko ere, gunearen arduradunek beste mugapenen bat ezartzen ez badute behintzat.",
 'revdelete-legend'            => 'Berrikuspen mugapenak ezarri:',
 'revdelete-hide-text'         => 'Berrikuspenaren testua ezkutatu',
 'revdelete-hide-name'         => 'Helburua eta ekintza izkutatu',
@@ -995,6 +1014,7 @@ Wiki honetako beste administratzaileek ezkutuko eduki hau ikusteko aukera izango
 'right-minoredit'            => 'Aldaketa txiki gisa markatu',
 'right-move'                 => 'Oriak mugitu',
 'right-move-subpages'        => 'Mugitu orrialdeak bere azpiorrialdeekin',
+'right-move-rootuserpages'   => 'Erro-lankidearen orriak mugitu',
 'right-suppressredirect'     => 'Ez sortu birzuzenketa bat antzinako izenetik orrialdea mugitzerakoan',
 'right-upload'               => 'Fitxategia igo',
 'right-reupload'             => 'Jada existitzen den artxibo bat gainidatzi',
@@ -1078,6 +1098,7 @@ Wiki honetako beste administratzaileek ezkutuko eduki hau ikusteko aukera izango
 'recentchangestext'                 => 'Orrialde honetan wiki honetan egindako azken aldaketak erakusten dira.',
 'recentchanges-feed-description'    => 'Sindikazio honetan wikian eginiko azkeneko aldaketak jarrai daitezke.',
 'rcnote'                            => 'Jarraian azken <strong>$2</strong> egunetako azken <strong>$1</strong> aldaketak erakusten dira, $3 eguneratuta.',
+'rcnotefrom'                        => 'Jarraian azaltzen diren aldaketak data honetatik aurrerakoak dira: <b>$2</b> (gehienez <b>$1</b> erakusten dira).',
 'rclistfrom'                        => 'Erakutsi $1 ondorengo aldaketa berriak',
 'rcshowhideminor'                   => '$1 aldaketa txikiak',
 'rcshowhidebots'                    => '$1 bot-ak',
@@ -1097,6 +1118,7 @@ Wiki honetako beste administratzaileek ezkutuko eduki hau ikusteko aukera izango
 'rc_categories'                     => 'Kategorietara mugatu ("|" karaktereaz banandu)',
 'rc_categories_any'                 => 'Edozein',
 'newsectionsummary'                 => '/* $1 */ atal berria',
+'rc-enhanced-hide'                  => 'Xehetasunak ezkutatu',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Lotutako orrialdeen aldaketak',
@@ -1291,23 +1313,24 @@ Aukera ezazu, mesedez, fitxategi izen deskriptiboago bat.',
 'randomredirect-nopages' => 'Ez dago birzuzenketarik izen-tarte honetan.',
 
 # Statistics
-'statistics'               => 'Estatistikak',
-'statistics-header-pages'  => 'Orrialdeen estatistikak',
-'statistics-header-edits'  => 'Aldaketen estatistikak',
-'statistics-header-views'  => 'Ikustaldien estatistikak',
-'statistics-header-users'  => 'Erabiltzaile estatistikak',
-'statistics-articles'      => 'Edukiak dituzten orrialdeak',
-'statistics-pages'         => 'Orrialdeak',
-'statistics-pages-tooltip' => 'Wikian dauden orrialde guztiak, eztabaida orrialdeak, birzuzenketa, etab. barne.',
-'statistics-files'         => 'Igotako fitxategiak',
-'statistics-edits'         => '{{SITENAME}} sortu zenetik eginiko aldaketa kopurua',
-'statistics-edits-average' => 'Bataz-besteko aldaketak orrialdeko',
-'statistics-views-total'   => 'Ikusitako orrialdeak guztira',
-'statistics-views-peredit' => 'Ikusitako orrialdeak aldaketa bakoitzeko',
-'statistics-jobqueue'      => '[http://www.mediawiki.org/wiki/Manual:Job_queue Lan zerrendaren] luzera',
-'statistics-users'         => 'Izen-emandako [[Special:ListUsers|lankideak]]',
-'statistics-users-active'  => 'Lankide aktiboak',
-'statistics-mostpopular'   => 'Orrialde bisitatuenak',
+'statistics'                      => 'Estatistikak',
+'statistics-header-pages'         => 'Orrialdeen estatistikak',
+'statistics-header-edits'         => 'Aldaketen estatistikak',
+'statistics-header-views'         => 'Ikustaldien estatistikak',
+'statistics-header-users'         => 'Erabiltzaile estatistikak',
+'statistics-articles'             => 'Edukiak dituzten orrialdeak',
+'statistics-pages'                => 'Orrialdeak',
+'statistics-pages-tooltip'        => 'Wikian dauden orrialde guztiak, eztabaida orrialdeak, birzuzenketa, etab. barne.',
+'statistics-files'                => 'Igotako fitxategiak',
+'statistics-edits'                => '{{SITENAME}} sortu zenetik eginiko aldaketa kopurua',
+'statistics-edits-average'        => 'Bataz-besteko aldaketak orrialdeko',
+'statistics-views-total'          => 'Ikusitako orrialdeak guztira',
+'statistics-views-peredit'        => 'Ikusitako orrialdeak aldaketa bakoitzeko',
+'statistics-jobqueue'             => '[http://www.mediawiki.org/wiki/Manual:Job_queue Lan zerrendaren] luzera',
+'statistics-users'                => 'Izen-emandako [[Special:ListUsers|lankideak]]',
+'statistics-users-active'         => 'Lankide aktiboak',
+'statistics-users-active-tooltip' => 'Aurreko hilabetean jardueraren bat gauzatu duten erabiltzaileak',
+'statistics-mostpopular'          => 'Orrialde bisitatuenak',
 
 'disambiguations'      => 'Argipen orrialdeak',
 'disambiguationspage'  => 'Template:argipen',
@@ -1484,48 +1507,36 @@ Ikus, gainera [[Special:WantedCategories|kategoriarik eskatuenak]].',
 'emailsenttext'   => 'Zure e-posta mezua bidali egin da.',
 
 # Watchlist
-'watchlist'                => 'Nire jarraipen zerrenda',
-'mywatchlist'              => 'Nire jarraipen zerrenda',
-'watchlistfor'             => "('''$1''')",
-'nowatchlist'              => 'Zure jarraipen zerrenda hutsik dago.',
-'watchlistanontext'        => 'Mesedez $1 zure jarraipen zerrendako orrialdeak ikusi eta aldatu ahal izateko.',
-'watchnologin'             => 'Saioa hasi gabe',
-'watchnologintext'         => '[[Special:UserLogin|Saioa hasi]] behar duzu zure jarraipen zerrenda aldatzeko.',
-'addedwatch'               => 'Jarraipen zerrendan gehitu da',
-'addedwatchtext'           => "\"<nowiki>\$1</nowiki>\" orrialdea zure [[Special:Watchlist|jarraipen edo zelatatuen zerrendara]] erantsi da. Orrialde honen hurrengo aldaketak zerrenda horretan ageriko dira aurrerantzean, eta gainera [[Special:RecentChanges|aldaketa berrien zerrendan]] beltzez ageriko da, erraztasunez antzeman ahal izateko.
+'watchlist'            => 'Nire jarraipen zerrenda',
+'mywatchlist'          => 'Nire jarraipen zerrenda',
+'watchlistfor'         => "('''$1''')",
+'nowatchlist'          => 'Zure jarraipen zerrenda hutsik dago.',
+'watchlistanontext'    => 'Mesedez $1 zure jarraipen zerrendako orrialdeak ikusi eta aldatu ahal izateko.',
+'watchnologin'         => 'Saioa hasi gabe',
+'watchnologintext'     => '[[Special:UserLogin|Saioa hasi]] behar duzu zure jarraipen zerrenda aldatzeko.',
+'addedwatch'           => 'Jarraipen zerrendan gehitu da',
+'addedwatchtext'       => "\"<nowiki>\$1</nowiki>\" orrialdea zure [[Special:Watchlist|jarraipen edo zelatatuen zerrendara]] erantsi da. Orrialde honen hurrengo aldaketak zerrenda horretan ageriko dira aurrerantzean, eta gainera [[Special:RecentChanges|aldaketa berrien zerrendan]] beltzez ageriko da, erraztasunez antzeman ahal izateko.
 
 Jarraipen zerrendatik artikulua kentzeko, artikuluan ''ez jarraitu''ri eman.",
-'removedwatch'             => 'Jarraipen zerrendatik ezabatuta',
-'removedwatchtext'         => '"[[:$1]]" orrialdea zure jarraipen zerrendatik kendu da.',
-'watch'                    => 'Jarraitu',
-'watchthispage'            => 'Orrialde hau jarraitu',
-'unwatch'                  => 'Ez jarraitu',
-'unwatchthispage'          => 'Jarraitzeari utzi',
-'notanarticle'             => 'Ez da eduki orrialdea',
-'notvisiblerev'            => 'Berrikusketa desegin da',
-'watchnochange'            => 'Hautatutako denbora tartean ez da aldaketarik izan zure jarraipen zerrendako orrialdeetan.',
-'watchlist-details'        => '{{PLURAL:$1|Orrialde $1|$1 orrialde}} jarraitzen, eztabaida orrialdeak kontuan hartu gabe.',
-'wlheader-enotif'          => '* Posta bidezko ohartarazpena gaituta dago.',
-'wlheader-showupdated'     => "* Bisitatu zenituen azken alditik aldaketak izan dituzten orrialdeak '''beltzez''' nabarmenduta daude",
-'watchmethod-recent'       => 'Aldaketa berriak aztertzen jarraipen zerrendako orrialdeen bila',
-'watchmethod-list'         => 'jarraipen zerrendako orrialdeak aldaketa berrien bila aztertzen',
-'watchlistcontains'        => 'Zure jarraipen zerrendak $1 orrialde ditu.',
-'iteminvalidname'          => "Arazoa '$1' elementuarekin, baliogabeko izena...",
-'wlnote'                   => "Jarraian ikus daitezke azken '''$2''' egunetako azken $1 aldaketak.",
-'wlshowlast'               => 'Erakutsi azken $1 orduak $2 egunak $3',
-'watchlist-show-bots'      => 'Bot-en aldaketak erakutsi',
-'watchlist-hide-bots'      => 'Bot-en aldaketak ezkutatu',
-'watchlist-show-own'       => 'Nire aldaketak erakutsi',
-'watchlist-hide-own'       => 'Nire aldaketak ezkutatu',
-'watchlist-show-minor'     => 'Aldaketa txikiak erakutsi',
-'watchlist-hide-minor'     => 'Aldaketa txikiak ezkutatu',
-'watchlist-show-anons'     => 'Erakutsi edizio anonimoak',
-'watchlist-hide-anons'     => 'Aldaketa anonimoak ezkutatu',
-'watchlist-show-liu'       => 'Izena emana duten lankideen aldaketak ikusi',
-'watchlist-hide-liu'       => 'Izena emana duten lankideen aldaketak ezkutatu',
-'watchlist-show-patrolled' => 'Patruilatutako aldaketak erakutsi',
-'watchlist-hide-patrolled' => 'Patruilatutako aldaketak izkutatu',
-'watchlist-options'        => 'Jarraitze-zerrendaren aukerak',
+'removedwatch'         => 'Jarraipen zerrendatik ezabatuta',
+'removedwatchtext'     => '"[[:$1]]" orrialdea zure jarraipen zerrendatik kendu da.',
+'watch'                => 'Jarraitu',
+'watchthispage'        => 'Orrialde hau jarraitu',
+'unwatch'              => 'Ez jarraitu',
+'unwatchthispage'      => 'Jarraitzeari utzi',
+'notanarticle'         => 'Ez da eduki orrialdea',
+'notvisiblerev'        => 'Berrikusketa desegin da',
+'watchnochange'        => 'Hautatutako denbora tartean ez da aldaketarik izan zure jarraipen zerrendako orrialdeetan.',
+'watchlist-details'    => '{{PLURAL:$1|Orrialde $1|$1 orrialde}} jarraitzen, eztabaida orrialdeak kontuan hartu gabe.',
+'wlheader-enotif'      => '* Posta bidezko ohartarazpena gaituta dago.',
+'wlheader-showupdated' => "* Bisitatu zenituen azken alditik aldaketak izan dituzten orrialdeak '''beltzez''' nabarmenduta daude",
+'watchmethod-recent'   => 'Aldaketa berriak aztertzen jarraipen zerrendako orrialdeen bila',
+'watchmethod-list'     => 'jarraipen zerrendako orrialdeak aldaketa berrien bila aztertzen',
+'watchlistcontains'    => 'Zure jarraipen zerrendak $1 orrialde ditu.',
+'iteminvalidname'      => "Arazoa '$1' elementuarekin, baliogabeko izena...",
+'wlnote'               => "Jarraian ikus daitezke azken '''$2''' egunetako azken $1 aldaketak.",
+'wlshowlast'           => 'Erakutsi azken $1 orduak $2 egunak $3',
+'watchlist-options'    => 'Jarraitze-zerrendaren aukerak',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Zerrendan gehitzen...',
@@ -1602,7 +1613,7 @@ Laguntza:
 'cantrollback'     => 'Ezin da aldaketa desegin; erabiltzaile bakarrak hartu du parte.',
 'alreadyrolled'    => 'Ezin da [[User:$2|$2]](e)k ([[User talk:$2|Eztabaida]]) [[$1]](e)n egindako azken aldaketa desegin; beste norbaitek editatu du edo jada desegin du. Azken aldaketa [[User:$3|$3]](e)k ([[User talk:$3|Eztabaida]]) egin du.',
 'editcomment'      => 'Aldaketaren iruzkina: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => '$2ren aldaketak ezabatu dira, $1ren azken bertsiora itzuliz.', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => '$2ren aldaketak ezabatu dira, $1ren azken bertsiora itzuliz.', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => '$1(r)en aldaketak desegin dira, $2(r)en azken bertsiora itzuliz.',
 'sessionfailure'   => 'Badirudi saioarekin arazoren bat dagoela; bandalismoak saihesteko ekintza hau ezeztatu egin da. Mesedez, nabigatzaileko "atzera" botoian klik egin, hona ekarri zaituen orrialde hori berriz kargatu, eta saiatu berriz.',
 
@@ -1612,6 +1623,7 @@ Laguntza:
 'protectedarticle'            => '"[[$1]]" babestu da"',
 'modifiedarticleprotection'   => '"[[$1]]"(r)en babes maila aldatu da',
 'unprotectedarticle'          => '"[[$1]]"(r)i babesa kendu zaio',
+'movedarticleprotection'      => 'babes hobespenak "[[$2]]"tik "[[$1]]"(e)ra mugitu dira',
 'protect-title'               => '"$1" babesten',
 'prot_1movedto2'              => '$1 izenburua $2(r)engatik aldatu da',
 'protect-legend'              => 'Babesa baieztatu',
@@ -1961,6 +1973,8 @@ Horrez gain, lotura zuzena ere erabil dezakezu; adibidez, [[{{ns:special}}:Expor
 'importhistoryconflict'      => 'Gatazka sortzen ari den berrikuspen historia dago (baliteke orrialdea lehenago inportatu izana)',
 'importnosources'            => 'Ez dago wikien arteko inportazio iturririk eta historialak zuzenean igotzea ezgaituta dago.',
 'importnofile'               => 'Ez da inportazio fitxategirik igo.',
+'importuploaderrorsize'      => 'Inportatutako artxiboaren igoera-porrota.
+Artxiboa onartutako igoera-tamaina baino handiagoa da.',
 'importuploaderrortemp'      => 'Inportatze fitxategiaren igoeran akatsa egon da. Karpeta tenporal bat falta da.',
 'import-parse-failure'       => 'XML inportatze parseak akatsa izan du',
 'import-noarticle'           => 'Ez dago inportatzeko orrialderik!',
@@ -2439,6 +2453,7 @@ Zerrenda elementuak (hasieran * duten lerroak) baino ez dira kontuan hartzen. Le
 'exif-gpslongitude-w' => 'Mendebaldeko longitudea',
 
 'exif-gpsstatus-a' => 'Neurketa burutzen',
+'exif-gpsstatus-v' => 'Neurketen interoperabilitatea',
 
 'exif-gpsmeasuremode-2' => '2 dimentsioko neurketa',
 'exif-gpsmeasuremode-3' => '3 dimentsioko neurketa',
@@ -2511,10 +2526,8 @@ Egiaztapen kode hau $4 iraungiko da.',
 'recreate'            => 'Birsortu',
 
 # action=purge
-'confirm_purge'        => 'Orrialde honen katxea ezabatu?
-
-$1',
 'confirm_purge_button' => 'Ados',
+'confirm-purge-top'    => 'Orrialde honen katxea ezabatu?',
 
 # Multipage image navigation
 'imgmultipageprev' => '&larr; aurreko orrialdea',
@@ -2615,13 +2628,5 @@ Gainera [[special:Watchlist/raw|raw zerrenda editatu]] dezakezu.',
 # Special:BlankPage
 'blankpage'              => 'Orrialde txuria',
 'intentionallyblankpage' => 'Orri hau nahita utzi da hutsik',
-
-# Special:Nuke
-'nuke'               => 'Ezabaketa masiboa',
-'nuke-nopages'       => 'Aldaketa berrietan ez dago [[Special:Contributions/$1|$1]](r)en orri berririk.',
-'nuke-defaultreason' => '$1(e)k sortutako orrien ezabaketa masiboa',
-'nuke-submit-user'   => 'Joan',
-'nuke-submit-delete' => 'Aukeratutakoa ezabatu',
-'right-nuke'         => 'Masiboki ezabatutako orrialdeak',
 
 );

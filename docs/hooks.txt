@@ -238,6 +238,9 @@ to add events to the MediaWiki code.
 $autoblockip: The IP going to be autoblocked.
 $block: The block from which the autoblock is coming.
 
+'AbortDiffCache': Can be used to cancel the caching of a diff
+&$diffEngine: DifferenceEngine object
+
 'AbortLogin': Return false to cancel account login.
 $user: the User object being authenticated against
 $password: the password being submitted, not yet checked for validity
@@ -1392,6 +1395,11 @@ $addergroups : Array of groups that the user is in
 					'add-self'    => array( addablegroups to self ),
 					'remove-self' => array( removable groups from self )
 				)
+
+'UserRights::showEditUserGroupsForm': called right before the form to edit group memberships at Special:UserRights is shown
+&$user: User or UserRightsProxy you're editing
+&$addable: Array of groups you can add the user into
+&$removable: Array of groups that you can remove the user from
 
 'UserRetrieveNewTalks': called when retrieving "You have new messages!" message(s)
 $user: user retrieving new talks messages

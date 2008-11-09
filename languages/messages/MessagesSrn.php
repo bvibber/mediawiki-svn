@@ -8,9 +8,70 @@
  * @author Jordi
  * @author Ooswesthoesbes
  * @author Stretsh
+ * @author Urhixidur
  */
 
 $fallback = 'nl';
+
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'Tustirpeprewoysi' ),
+	'BrokenRedirects'           => array( 'BrokoStirpeprewoysi' ),
+	'Disambiguations'           => array( 'PeprewoysiFuKumakriki' ),
+	'Userlogin'                 => array( 'Kon' ),
+	'Userlogout'                => array( 'Gwe' ),
+	'Watchlist'                 => array( 'Sirey' ),
+	'Recentchanges'             => array( 'BakaseywanKenki' ),
+	'Upload'                    => array( 'Uploti' ),
+	'Imagelist'                 => array( 'Gefrerey' ),
+	'Newimages'                 => array( 'NyunGefre' ),
+	'Listusers'                 => array( 'Masyinrey' ),
+	'Randompage'                => array( 'SomaPapira' ),
+	'Lonelypages'               => array( 'WawanPeprewoysi' ),
+	'Uncategorizedpages'        => array( 'OguruPeprewoysi' ),
+	'Uncategorizedcategories'   => array( 'OguruGuru' ),
+	'Uncategorizedimages'       => array( 'OguruGefre' ),
+	'Uncategorizedtemplates'    => array( 'OguruAnkra' ),
+	'Unusedcategories'          => array( 'OtekiGuru' ),
+	'Unusedimages'              => array( 'OtekiGefre' ),
+	'Wantedpages'               => array( 'WinsiPeprewoysi' ),
+	'Wantedcategories'          => array( 'WinsiGuru' ),
+	'Mostlinked'                => array( 'PasatekiPeprewoysi' ),
+	'Mostlinkedcategories'      => array( 'PasatekiGuru' ),
+	'Mostlinkedtemplates'       => array( 'PasatekiAnkra' ),
+	'Mostcategories'            => array( 'PasaGuru' ),
+	'Mostimages'                => array( 'PasaGefre' ),
+	'Mostrevisions'             => array( 'PasaKenki' ),
+	'Fewestrevisions'           => array( 'MenaKenki' ),
+	'Shortpages'                => array( 'SyartuPeprewoysi' ),
+	'Longpages'                 => array( 'LangaPeprewoysi' ),
+	'Newpages'                  => array( 'NyunPeprewoysi' ),
+	'Ancientpages'              => array( 'PasaOwruPeprewoysi' ),
+	'Deadendpages'              => array( 'NoSkakiPeprewoysi' ),
+	'Protectedpages'            => array( 'TapuPeprewoysi' ),
+	'Allpages'                  => array( 'AlaPeprewoysi' ),
+	'Specialpages'              => array( 'SpesyalPeprewoysi' ),
+	'Contributions'             => array( 'Kenki' ),
+	'Emailuser'                 => array( 'EmailMasyin' ),
+	'Movepage'                  => array( 'PapiraDribi' ),
+	'Blockme'                   => array( 'SpikriMi' ),
+	'Categories'                => array( 'Guru' ),
+	'Version'                   => array( 'Si' ),
+	'Allmessages'               => array( 'Boskopu' ),
+	'Log'                       => array( 'Buku' ),
+	'Undelete'                  => array( 'Otrowe' ),
+	'Userrights'                => array( 'Masyinlesi' ),
+	'MIMEsearch'                => array( 'MIMEsuku' ),
+	'Listredirects'             => array( 'Stirpeprewoysirey' ),
+	'Unusedtemplates'           => array( 'OtekiAnkra' ),
+	'Randomredirect'            => array( 'SomaStirpapira' ),
+	'Mypage'                    => array( 'MiPapira' ),
+	'Mytalk'                    => array( 'MiTaki' ),
+	'Mycontributions'           => array( 'MiKenki' ),
+	'Listadmins'                => array( 'Sesopurey' ),
+	'Listbots'                  => array( 'Botrey' ),
+	'Search'                    => array( 'Suku' ),
+	'Withoutinterwiki'          => array( 'NoInterwiki' ),
+);
 
 $messages = array(
 # User preference toggles
@@ -469,7 +530,7 @@ Efu yu no wani dati trawan e kenki noso panya san yu skrifi, no skrifi noti dyas
 Yu e pramisi unu dati na yu skrifi disi yusrefi, noso yu teki en puru fu wan fri, opo presi.<br />
 <strong>NO KEBROIKI SANI DI KIBRI BAKA SKRIFIMAN-LETI, SONDRO FU ABI PRIMISI FU DU SO!</strong>",
 'longpagewarning'        => '<strong>WARSKOW: A papira disi de $1 kilobyte bigi;
-Son browser abi problema fu kenki papira di bigi moro leki 32kb.
+Son browser abi problema fu kenki papira di bigi moro leki 32 kb.
 Kande yu kan prati a papira disi ini moro pikin pisi.</strong>',
 'templatesused'          => 'Template di ben kebroiki tapu a papira disi:',
 'templatesusedpreview'   => 'Template di ben kebroiki ini a Luku-na-fesi disi:',
@@ -489,7 +550,7 @@ Denki fosi efu na wan bun sani fu meki a papira disi baka. A log buku fu puru so
 'viewpagelogs'        => 'Luku a log buku fu a papira disi',
 'currentrev'          => 'A versi disi',
 'revisionasof'        => 'Versi tapu $1',
-'revision-info'       => 'Versi na $1 fu $2',
+'revision-info'       => 'Versi na $1 fu $2', # Additionally available: $3: revision id
 'previousrevision'    => '←Moro owru versi',
 'nextrevision'        => 'Moro nyun versi→',
 'currentrevisionlink' => 'A versi disi',
@@ -632,6 +693,7 @@ Yu kan [[:\$1|meki a papira disi]].",
 'recentchanges'                  => 'Laste kenki',
 'recentchanges-feed-description' => 'Nanga a feed disi yu kan luku den moro nyun kenki fu a wiki disi.',
 'rcnote'                         => "Dya na ondrosey {{PLURAL:$1|'''1''' kenki|den '''$1''' laste kenki}} ini {{PLURAL:$2|a dei|den '''$2''' dei}} na fesi de fu si, tapu $4 na $5.",
+'rcnotefrom'                     => "Kenki fu '''$2''' (e sori te go miti '''$1''' kenki).",
 'rclistfrom'                     => 'Sori nyun kenki, bigin fu $1',
 'rcshowhideminor'                => '$1 den pikin kenki',
 'rcshowhidebots'                 => '$1 den bot',
@@ -854,23 +916,20 @@ Papira ini [[Special:Watchlist|yu Tan Luku réy]] '''fatu'''.",
 'emailsend'       => 'Stir',
 
 # Watchlist
-'watchlist'            => 'Mi Tan Luku réy',
-'mywatchlist'          => 'Mi Tan luku réy',
-'watchlistfor'         => "(fu '''$1''')",
-'addedwatch'           => 'Presi a yu sirey',
-'addedwatchtext'       => "A papira \"[[:\$1]]\" ben presi a yu [[Special:Watchlist|sirey]]. Folo kenki fu disi papira nanga a taki sey opo [[Special:Watchlist|yu sirey]] nanga sey '''deku''' ini a [[Special:RecentChanges|rey fu bakseywan kenki]].
+'watchlist'         => 'Mi Tan Luku réy',
+'mywatchlist'       => 'Mi Tan luku réy',
+'watchlistfor'      => "(fu '''$1''')",
+'addedwatch'        => 'Presi a yu sirey',
+'addedwatchtext'    => "A papira \"[[:\$1]]\" ben presi a yu [[Special:Watchlist|sirey]]. Folo kenki fu disi papira nanga a taki sey opo [[Special:Watchlist|yu sirey]] nanga sey '''deku''' ini a [[Special:RecentChanges|rey fu bakseywan kenki]].
 
 Iksi yu wan papira no langar wana si, go na a papira nanga du opo \"No si\" ini a menu.",
-'removedwatch'         => 'Trowe fu yu sirey',
-'removedwatchtext'     => 'A papira "[[:$1]]" ben trowe fu yu sirey.',
-'watch'                => 'Tan luku',
-'watchthispage'        => 'Tan luku a papira disi',
-'unwatch'              => 'No tan luku',
-'watchlist-details'    => '{{PLURAL:$1|Wan papira|$1 papira}} de ini yu Tan Luku réy, sondro fu teri den kruderi papira.',
-'wlshowlast'           => 'Sori laste $1 yuru, $2 dey ($3)',
-'watchlist-hide-bots'  => 'Kibri kenki fu den bot',
-'watchlist-hide-own'   => 'Kibri mi kenki',
-'watchlist-hide-minor' => 'Kibri pikin kenki',
+'removedwatch'      => 'Trowe fu yu sirey',
+'removedwatchtext'  => 'A papira "[[:$1]]" ben trowe fu yu sirey.',
+'watch'             => 'Tan luku',
+'watchthispage'     => 'Tan luku a papira disi',
+'unwatch'           => 'No tan luku',
+'watchlist-details' => '{{PLURAL:$1|Wan papira|$1 papira}} de ini yu Tan Luku réy, sondro fu teri den kruderi papira.',
+'wlshowlast'        => 'Sori laste $1 yuru, $2 dey ($3)',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'A wiki e poti a papira disi ini yu Tan Luku...',

@@ -66,6 +66,95 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK  => "Category‐ノート" /* Category_talk */
 );
 
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( '二重リダイレクト' ),
+	'BrokenRedirects'           => array( '迷子のリダイレクト' ),
+	'Disambiguations'           => array( '曖昧さ回避のページ' ),
+	'Userlogin'                 => array( 'ログイン' ),
+	'Userlogout'                => array( 'ログアウト' ),
+	'CreateAccount'             => array( 'アカウント作成' ),
+	'Preferences'               => array( 'オプション' ),
+	'Watchlist'                 => array( 'ウォッチリスト' ),
+	'Recentchanges'             => array( '最近更新したページ' ),
+	'Upload'                    => array( 'アップロード' ),
+	'Imagelist'                 => array( 'ファイルリスト' ),
+	'Newimages'                 => array( '新しいファイルの一覧', '新着画像展示室' ),
+	'Listusers'                 => array( '登録利用者の一覧' ),
+	'Listgrouprights'           => array( '利用者グループの権限一覧' ),
+	'Statistics'                => array( '統計' ),
+	'Randompage'                => array( 'おまかせ表示' ),
+	'Lonelypages'               => array( '孤立しているページ' ),
+	'Uncategorizedpages'        => array( 'カテゴリ未導入のページ' ),
+	'Uncategorizedcategories'   => array( 'カテゴリ未導入のカテゴリ' ),
+	'Uncategorizedimages'       => array( 'カテゴリ未導入のファイル' ),
+	'Uncategorizedtemplates'    => array( 'カテゴリ未導入のテンプレート' ),
+	'Unusedcategories'          => array( '使われていないカテゴリ', '未使用カテゴリ' ),
+	'Unusedimages'              => array( '使われていないファイル', '未使用ファイル', '未使用画像' ),
+	'Wantedpages'               => array( '存在しないページへのリンク', '赤リンク' ),
+	'Wantedcategories'          => array( '存在しないカテゴリへのリンク', '赤リンクカテゴリ' ),
+	'Wantedfiles'               => array( 'ファイルページが存在しないファイル', '赤リンクファイル' ),
+	'Wantedtemplates'           => array( '存在しないテンプレートへのリンク', '赤リンクテンプレート' ),
+	'Mostlinked'                => array( '被リンクの多いページ' ),
+	'Mostlinkedcategories'      => array( '被リンクの多いカテゴリ' ),
+	'Mostlinkedtemplates'       => array( '被リンクの多いテンプレート', '使用箇所の多いテンプレート' ),
+	'Mostcategories'            => array( 'カテゴリの多い項目', 'カテゴリの多いページ' ),
+	'Mostimages'                => array( '被リンクの多いファイル', '使用箇所の多いファイル' ),
+	'Mostrevisions'             => array( '編集履歴の多いページ', '版の多い項目', '版の多いページ' ),
+	'Fewestrevisions'           => array( '編集履歴の少ないページ', '版の少ない項目', '版の少ないページ' ),
+	'Shortpages'                => array( '短いページ' ),
+	'Longpages'                 => array( '長いページ' ),
+	'Newpages'                  => array( '新しいページ', '新規項目' ),
+	'Ancientpages'              => array( '更新されていないページ' ),
+	'Deadendpages'              => array( '有効なページへのリンクがないページ', '行き止まりページ' ),
+	'Protectedpages'            => array( '保護されているページ' ),
+	'Protectedtitles'           => array( '作成保護されているページ名' ),
+	'Allpages'                  => array( '全ページ', 'ページ一覧' ),
+	'Prefixindex'               => array( '始点指定ページ一覧' ),
+	'Ipblocklist'               => array( 'ブロックの一覧' ),
+	'Specialpages'              => array( '特別ページ一覧' ),
+	'Contributions'             => array( '投稿記録' ),
+	'Emailuser'                 => array( 'ウィキメール' ),
+	'Confirmemail'              => array( 'メールアドレスの確認' ),
+	'Whatlinkshere'             => array( 'リンク元' ),
+	'Recentchangeslinked'       => array( 'リンク先の更新状況', '関連ページの更新状況' ),
+	'Movepage'                  => array( '移動' ),
+	'Blockme'                   => array( '自己ブロック' ),
+	'Booksources'               => array( '文献資料' ),
+	'Categories'                => array( 'カテゴリ', 'カテゴリ一覧' ),
+	'Export'                    => array( 'データ書き出し' ),
+	'Version'                   => array( 'バージョン情報' ),
+	'Allmessages'               => array( '表示メッセージの一覧' ),
+	'Log'                       => array( 'ログ' ),
+	'Blockip'                   => array( '投稿ブロック' ),
+	'Undelete'                  => array( '復帰' ),
+	'Import'                    => array( 'インポート' ),
+	'Lockdb'                    => array( 'データベースロック' ),
+	'Unlockdb'                  => array( 'データベース解除' ),
+	'Userrights'                => array( '利用者権限' ),
+	'MIMEsearch'                => array( 'MIME検索' ),
+	'FileDuplicateSearch'       => array( '重複ファイル検索' ),
+	'Unwatchedpages'            => array( 'ウォッチされていないページ' ),
+	'Listredirects'             => array( 'リダイレクトの一覧' ),
+	'Revisiondelete'            => array( '特定版削除' ),
+	'Unusedtemplates'           => array( '使われていないテンプレート', '未使用テンプレート' ),
+	'Randomredirect'            => array( 'おまかせリダイレクト' ),
+	'Mypage'                    => array( 'マイページ', 'マイ・ページ', '利用者ページ' ),
+	'Mytalk'                    => array( 'マイトーク', 'マイ・トーク', '会話ページ' ),
+	'Mycontributions'           => array( '自分の投稿記録' ),
+	'Listadmins'                => array( '管理者一覧' ),
+	'Listbots'                  => array( 'Bot一覧', 'ボット一覧' ),
+	'Popularpages'              => array( '人気ページ' ),
+	'Search'                    => array( '検索' ),
+	'Resetpass'                 => array( 'パスワード再発行' ),
+	'Withoutinterwiki'          => array( '言語間リンクを持たないページ', '言語間リンクのないページ' ),
+	'MergeHistory'              => array( '履歴統合' ),
+	'Filepath'                  => array( 'パスの取得' ),
+	'Invalidateemail'           => array( 'ウィキメール無効' ),
+	'Blankpage'                 => array( '白紙ページ' ),
+	'LinkSearch'                => array( '外部リンク検索' ),
+	'DeletedContributions'      => array( '削除歴', '削除された投稿記録' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'リンクの下線:',
@@ -311,6 +400,7 @@ $messages = array(
 'editold'                 => '編集',
 'viewsourceold'           => 'ソースを表示',
 'editlink'                => '編集',
+'viewsourcelink'          => 'ソースを表示',
 'editsectionhint'         => '節を編集: $1',
 'toc'                     => '目次',
 'showtoc'                 => '表示',
@@ -705,7 +795,7 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'currentrev'             => '最新版',
 'currentrev-asof'        => '$1 時点における最新版',
 'revisionasof'           => '$1の版',
-'revision-info'          => '$1; $2 による版',
+'revision-info'          => '$1; $2 による版', # Additionally available: $3: revision id
 'previousrevision'       => '←前の版',
 'nextrevision'           => '次の版→',
 'currentrevisionlink'    => '最新版を表示',
@@ -741,11 +831,11 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'revisiondelete'              => '版の削除と復帰',
 'revdelete-nooldid-title'     => '対象版がありません',
 'revdelete-nooldid-text'      => '操作の完了に必要な版が指定されていません。',
-'revdelete-selected'          => "'''$1'''の、以下の選択された版に対する操作:",
-'logdelete-selected'          => "'''$1'''の選択されたログに対する操作:",
-'revdelete-text'              => '版の削除ではページの履歴にその版は表示されます。しかしその版に含まれるテキストにはアクセスできなくなります。
+'revdelete-selected'          => "''''''$1'''の、以下の選択された版に対する操作:'''",
+'logdelete-selected'          => "''''''$1'''の選択されたログに対する操作:'''",
+'revdelete-text'              => "'''版の削除ではページの履歴にその版は表示されます。しかしその版に含まれるテキストにはアクセスできなくなります。'''
 
-サーバー管理者にこれ以上の制限をかけられない限り、他の{{int:group-sysop}}は隠れた版を読んだり、元に戻したりできます。',
+サーバー管理者にこれ以上の制限をかけられない限り、他の{{int:group-sysop}}は隠れた版を読んだり、元に戻したりできます。",
 'revdelete-legend'            => '版の削除の適用',
 'revdelete-hide-text'         => '版のテキストを隠す',
 'revdelete-hide-name'         => '操作および対象を隠す',
@@ -1122,6 +1212,7 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'recentchangestext'                 => '最近の更新はこのページから確認できます。',
 'recentchanges-feed-description'    => '最近付け加えられた変更はこのフィードで確認できます。',
 'rcnote'                            => '以下は $3 までの <strong>$2</strong> 日間に編集された <strong>$1</strong> ページです（<strong>{{int:newpageletter}}</strong>=新規項目、<strong>{{int:minoreditletter}}</strong>=細部の編集、<strong>{{int:boteditletter}}</strong>=ボットの編集、日時はオプションで未設定ならUTC）',
+'rcnotefrom'                        => '以下は <b>$2</b> までの更新です。（最大 <b>$1</b> 件）',
 'rclistfrom'                        => '$1以後現在までの更新を表示',
 'rcshowhideminor'                   => '細部の編集を$1',
 'rcshowhidebots'                    => 'ボットの編集を$1',
@@ -1334,7 +1425,8 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 
 # Unused templates
 'unusedtemplates'     => '使われていないテンプレート',
-'unusedtemplatestext' => 'このページでは {{ns:template}} 名前空間にあって他のページから使用されていないものを一覧にしています。削除する前にリンク元を確認してください。',
+'unusedtemplatestext' => 'このページでは{{ns:template}}名前空間にあって他のページに読み込まれていないページを一覧にしています。
+削除する前にリンク元で他のリンクがないか確認してください。',
 'unusedtemplateswlh'  => 'リンク元',
 
 # Random page
@@ -1396,7 +1488,7 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'nviews'                  => '$1 回表示',
 'specialpage-empty'       => '合致するものがありません。',
 'lonelypages'             => '孤立しているページ',
-'lonelypagestext'         => '以下のページは、どこからもリンクされていない孤立したページです。',
+'lonelypagestext'         => '以下のページは、{{SITENAME}}の他のページからリンクされておらず、また読み込まれてもいないページです。',
 'uncategorizedpages'      => 'カテゴリ未導入のページ',
 'uncategorizedcategories' => 'カテゴリ未導入のカテゴリ',
 'uncategorizedimages'     => 'カテゴリ未分類のファイル',
@@ -1407,6 +1499,7 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'wantedcategories'        => 'カテゴリページが存在しないカテゴリ',
 'wantedpages'             => '投稿が望まれているページ',
 'wantedfiles'             => 'ファイル情報ページが存在しないファイル',
+'wantedtemplates'         => '投稿が望まれているテンプレート',
 'mostlinked'              => '被リンクの多いページ',
 'mostlinkedcategories'    => '項目の多いカテゴリ',
 'mostlinkedtemplates'     => '使用箇所の多いテンプレート',
@@ -1526,8 +1619,8 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'mailnologintext' => '他の利用者宛てにメールを送信するためには、[[Special:UserLogin|ログイン]]し、あなたのメールアドレスを[[Special:Preferences|オプション]]に設定する必要があります。',
 'emailuser'       => 'この利用者にメールを送信',
 'emailpage'       => 'メール送信ページ',
-'emailpagetext'   => 'メールを送る先の利用者が有効なメールアドレスを{{int:preferences}}で登録していれば、下のフォームを通じてメールを送ることができます。
-あなたが [[Special:Preferences|{{int:preferences}}]]で登録したご自分のメールアドレスが送るメールのFrom:の欄に自動的に組み込まれ、受け取った相手が直接あなたに返事を出せるようになっています。',
+'emailpagetext'   => '下のフォームを通じて、この利用者にメールを送ることができます。
+あなたが[[Special:Preferences|{{int:preferences}}]]で登録したご自分のメールアドレスが、送信されるメールのFromアドレスに自動的に組み込まれ、受け取った相手が直接あなたに返事を出せるようになっています。',
 'usermailererror' => 'メール送信時に以下のエラーが発生しました:',
 'defemailsubject' => '{{SITENAME}} 電子メール',
 'noemailtitle'    => '送り先のメールアドレスがありません。',
@@ -1576,16 +1669,6 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 'iteminvalidname'      => '"$1" をウォッチリストから削除できません。ページ名が不正です。',
 'wlnote'               => '以下は最近 <strong>$2</strong> 時間に編集された <strong>$1</strong> ページです。',
 'wlshowlast'           => '最近の [$1時間] [$2日間] [$3] のものを表示する',
-'watchlist-show-bots'  => 'ボットの編集を表示',
-'watchlist-hide-bots'  => 'ボットの編集を隠す',
-'watchlist-show-own'   => '自分の編集を表示',
-'watchlist-hide-own'   => '自分の編集を隠す',
-'watchlist-show-minor' => '細部の編集を表示',
-'watchlist-hide-minor' => '細部の編集を隠す',
-'watchlist-show-anons' => 'IP利用者の編集を表示',
-'watchlist-hide-anons' => 'IP利用者の編集を隠す',
-'watchlist-show-liu'   => 'ログイン利用者の編集を表示',
-'watchlist-hide-liu'   => 'ログイン利用者の編集を隠す',
 'watchlist-options'    => 'ウォッチリストのオプション',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -1673,7 +1756,7 @@ $NEWPAGE
 
 このページの最後の編集は [[User:$3|$3]] ([[User talk:$3|会話]] | [[Special:Contributions/$3|{{int:contribslink}}]]) によるものです。',
 'editcomment'      => '編集内容の要約: <i>$1</i>', # only shown if there is an edit comment
-'revertpage'       => '[[Special:Contributions/$2|$2]] ([[User talk:$2|会話]]) による編集を [[User:$1|$1]] による版へ差し戻し', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => '[[Special:Contributions/$2|$2]] ([[User talk:$2|会話]]) による編集を [[User:$1|$1]] による版へ差し戻し', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => '$1 による編集を取り消して $2 による直前の版へ差し戻しました。',
 'sessionfailure'   => 'あなたのログイン・セッションに問題が発生しました。この動作はセッションハイジャックを防ぐために取り消されました。ブラウザの「戻る」を押してからページを再読込し、もう一度送信してください。',
 
@@ -1851,6 +1934,7 @@ $NEWPAGE
 'ipbhidename'                     => '利用者名/IPを{{int:blocklogpage}}、{{int:ipblocklist}}、{{int:listusers}}などに載せない',
 'ipbwatchuser'                    => 'この利用者の利用者ページと利用者‐会話ページをウォッチリストに追加',
 'ipballowusertalk'                => 'ブロックされる利用者に対してブロック中の自身の会話ページ編集を許可',
+'ipb-change-block'                => '上記の設定で利用者を再びブロック',
 'badipaddress'                    => 'IPアドレスが異常です。',
 'blockipsuccesssub'               => 'ブロックに成功しました。',
 'blockipsuccesstext'              => '利用者またはIPアドレス [[Special:Contributions/$1|$1]] の投稿をブロックしました。<br />
@@ -1890,6 +1974,7 @@ $NEWPAGE
 'blocklogpage'                    => '投稿ブロック記録',
 'blocklog-fulllog'                => '投稿ブロック記録全てを見る',
 'blocklogentry'                   => '"$1" を $2 ブロックしました $3',
+'reblock-logentry'                => '"[[$1]]" のブロックの設定を $2 に変更しました $3',
 'blocklogtext'                    => 'このページは投稿ブロックと解除の記録です。自動的に投稿ブロックされたIPアドレスは記録されていません。現時点で有効な投稿ブロックは[[Special:IPBlockList|ブロック中の利用者一覧]]をご覧ください。',
 'unblocklogentry'                 => '"$1" をブロック解除しました',
 'block-log-flags-anononly'        => '匿名のみ',
@@ -1902,6 +1987,8 @@ $NEWPAGE
 'ipb_expiry_invalid'              => '不正な期間です。',
 'ipb_expiry_temp'                 => '利用者名を秘匿したブロックは無期限でなければなりません。',
 'ipb_already_blocked'             => '"$1" は既にブロックされています。',
+'ipb-needreblock'                 => '== すでにブロックされています ==
+$1 は、すでにブロックされています。あなたは設定を変えますか？',
 'ipb_cant_unblock'                => 'エラー: ブロックされた ID $1 が見つかりません。おそらく既にブロック解除されています。',
 'ipb_blocked_as_range'            => 'エラー: IPアドレス $1 は直接的なブロック対象となっていませんが、ブロックを解除できませんでした。これは恐らく、ブロック解除できないIPアドレス空間 $2 の範囲に含まれているためです。',
 'ip_range_invalid'                => '不正なIPアドレス範囲です。',
@@ -1935,9 +2022,9 @@ $NEWPAGE
 'databasenotlocked'   => 'データベースはロックされていません。',
 
 # Move page
-'move-page'               => '$1 の移動',
-'move-page-legend'        => 'ページの移動',
-'movepagetext'            => "下のフォームを利用すると、ページ名が変更され、その履歴も変更先へ移動します。
+'move-page'                 => '$1 の移動',
+'move-page-legend'          => 'ページの移動',
+'movepagetext'              => "下のフォームを利用すると、ページ名が変更され、その履歴も変更先へ移動します。
 古いページは変更先へのリダイレクトページとなります。
 変更前のページへのリダイレクトは自動的に修正することができます。
 自動的な修正を選択しない場合は、[[Special:DoubleRedirects|二重リダイレクト]]や[[Special:BrokenRedirects|迷子のリダイレクト]]を確認する必要があります。リンクを正しく維持するのはあなたの責任です。
@@ -1948,7 +2035,7 @@ $NEWPAGE
 '''注意！'''
 よく閲覧されるページや、他の多くのページからリンクされているページを移動すると予期せぬ結果が起こるかもしれません。
 ページの移動に伴う影響をよく考えてから踏み切るようにしてください。",
-'movepagetalktext'        => '付随するノートのページがある場合には、基本的には、一緒に移動されることになります。
+'movepagetalktext'          => '付随するノートのページがある場合には、基本的には、一緒に移動されることになります。
 
 但し、以下の場合については別です。
 *名前空間をまたがる移動の場合
@@ -1956,43 +2043,49 @@ $NEWPAGE
 *下のチェックボックスのチェックマークを消した場合
 
 これらの場合、ノートページを移動する場合には、別に作業する必要があります。',
-'movearticle'             => '移動するページ',
-'movenologin'             => 'ログインしていません',
-'movenologintext'         => 'ページを移動するためには、アカウント作成の上、[[Special:UserLogin|ログイン]]している必要があります。',
-'movenotallowed'          => 'あなたにはページを移動する権限がありません。',
-'newtitle'                => '新しいページ名',
-'move-watch'              => '移動するページをウォッチ',
-'movepagebtn'             => 'ページを移動',
-'pagemovedsub'            => '無事移動しました。',
-'movepage-moved'          => '<big>\'\'\'"$1"は"$2"へ移動されました。\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'articleexists'           => '指定された移動先には既にページが存在するか、名前が不適切です。',
-'cantmove-titleprotected' => '移動先ページが作成保護対象となっているため、ページを移動できません。',
-'talkexists'              => 'ページ自身は移動されましたが、付随のノートページは移動先のページが存在したため移動できませんでした。手動で内容を統合してください。',
-'movedto'                 => '移動先:',
-'movetalk'                => 'ノートページが付随する場合には、それも一緒に移動する',
-'move-subpages'           => 'サブページもすべて移動する',
-'move-talk-subpages'      => 'ノートページのサブページもすべて移動する',
-'movepage-page-exists'    => '$1 という名前のページは既に存在するため自動的な上書きは行われませんでした。',
-'movepage-page-moved'     => '$1 は $2 へ移動されました。',
-'movepage-page-unmoved'   => '$1 を $2 へ移動できませんでした。',
-'movepage-max-pages'      => '自動的に移動できるのは $1ページ までで、それ以上は移動されません。',
-'1movedto2'               => 'ページ [[$1]] を [[$2]] へ移動',
-'1movedto2_redir'         => 'ページ [[$1]] をこのページあてのリダイレクト [[$2]] へ移動',
-'movelogpage'             => '移動記録',
-'movelogpagetext'         => '以下はページ移動の記録です。',
-'movereason'              => '理由',
-'revertmove'              => '差し戻し',
-'delete_and_move'         => '削除して移動する',
-'delete_and_move_text'    => '== 削除が必要です ==
+'movearticle'               => '移動するページ',
+'movenologin'               => 'ログインしていません',
+'movenologintext'           => 'ページを移動するためには、アカウント作成の上、[[Special:UserLogin|ログイン]]している必要があります。',
+'movenotallowed'            => 'あなたにはページを移動する権限がありません。',
+'cant-move-user-page'       => 'あなたは、（サブページは別にして）利用者ページを移動させる権限を持っていません。',
+'cant-move-to-user-page'    => 'あなたは、（利用者サブページを除く）利用者ページへページを移動させる権限を持っていません。',
+'newtitle'                  => '新しいページ名',
+'move-watch'                => '移動するページをウォッチ',
+'movepagebtn'               => 'ページを移動',
+'pagemovedsub'              => '無事移動しました。',
+'movepage-moved'            => '<big>\'\'\'"$1"は"$2"へ移動されました。\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'articleexists'             => '指定された移動先には既にページが存在するか、名前が不適切です。',
+'cantmove-titleprotected'   => '移動先ページが作成保護対象となっているため、ページを移動できません。',
+'talkexists'                => 'ページ自身は移動されましたが、付随のノートページは移動先のページが存在したため移動できませんでした。手動で内容を統合してください。',
+'movedto'                   => '移動先:',
+'movetalk'                  => 'ノートページが付随する場合には、それも一緒に移動する',
+'move-subpages'             => 'サブページもすべて移動する',
+'move-talk-subpages'        => 'ノートページのサブページもすべて移動する',
+'movepage-page-exists'      => '$1 という名前のページは既に存在するため自動的な上書きは行われませんでした。',
+'movepage-page-moved'       => '$1 は $2 へ移動されました。',
+'movepage-page-unmoved'     => '$1 を $2 へ移動できませんでした。',
+'movepage-max-pages'        => '自動的に移動できるのは $1ページ までで、それ以上は移動されません。',
+'1movedto2'                 => 'ページ [[$1]] を [[$2]] へ移動',
+'1movedto2_redir'           => 'ページ [[$1]] をこのページあてのリダイレクト [[$2]] へ移動',
+'movelogpage'               => '移動記録',
+'movelogpagetext'           => '以下はページ移動の記録です。',
+'movereason'                => '理由',
+'revertmove'                => '差し戻し',
+'delete_and_move'           => '削除して移動する',
+'delete_and_move_text'      => '== 削除が必要です ==
 移動先 "[[:$1]]" は既に存在しています。このページを移動のために削除しますか?',
-'delete_and_move_confirm' => 'ページ削除の確認',
-'delete_and_move_reason'  => '移動のための削除',
-'selfmove'                => '移動元と移動先のページ名が同じです。自分自身へは移動できません。',
-'imagenocrossnamespace'   => 'ファイル用の名前空間以外にはファイルを移動することはできません。',
-'imagetypemismatch'       => '新しいファイルの拡張子がファイルのタイプと一致していません。',
-'imageinvalidfilename'    => '指定したファイル名が無効です',
-'fix-double-redirects'    => 'このページへのリダイレクトがあればそのリダイレクトを修正する',
-'move-leave-redirect'     => '移動元にリダイレクトを作成する',
+'delete_and_move_confirm'   => 'ページ削除の確認',
+'delete_and_move_reason'    => '移動のための削除',
+'selfmove'                  => '移動元と移動先のページ名が同じです。自分自身へは移動できません。',
+'immobile-source-namespace' => '$1名前空間のページを移動させることはできません。',
+'immobile-target-namespace' => '$1名前空間へはページを移動させることはできません。',
+'immobile-source-page'      => 'このページを移動させることはできません。',
+'immobile-target-page'      => '目的のページ名へは移動させることができません。',
+'imagenocrossnamespace'     => 'ファイル用の名前空間以外にはファイルを移動することはできません。',
+'imagetypemismatch'         => '新しいファイルの拡張子がファイルのタイプと一致していません。',
+'imageinvalidfilename'      => '指定したファイル名が無効です',
+'fix-double-redirects'      => 'このページへのリダイレクトがあればそのリダイレクトを修正する',
+'move-leave-redirect'       => '移動元にリダイレクトを作成する',
 
 # Export
 'export'            => 'ページデータの書き出し',
@@ -2135,7 +2228,7 @@ $NEWPAGE
 
 # Scripts
 'common.js'   => '/* ここに書いた JavaScript は全てのページ上で実行されます */',
-'monobook.js' => '/* こちらは廃止されました; [[MediaWiki:Common.js]]をお使いください */',
+'monobook.js' => '/* ここに書かれた JavaScript は MonoBook スキンを使っている全利用者に適用されます */',
 
 # Metadata
 'nodublincore'      => 'このサーバーでは Dublin Core RDF メタデータが許可されていません。',
@@ -2188,11 +2281,12 @@ $NEWPAGE
 'markedaspatrollederror-noautopatrol' => '自分自身による編集をパトロール済みにする権限がありません。',
 
 # Patrol log
-'patrol-log-page'   => 'パトロール記録',
-'patrol-log-header' => '以下はパトロールされた版の記録です。',
-'patrol-log-line'   => '$2 の $1 をパトロール済みにマーク$3',
-'patrol-log-auto'   => '（自動）',
-'patrol-log-diff'   => '第$1版',
+'patrol-log-page'      => 'パトロール記録',
+'patrol-log-header'    => '以下はパトロールされた版の記録です。',
+'patrol-log-line'      => '$2 の $1 をパトロール済みにマーク$3',
+'patrol-log-auto'      => '（自動）',
+'patrol-log-diff'      => '第$1版',
+'log-show-hide-patrol' => 'パトロール・ログを$1',
 
 # Image deletion
 'deletedrevision'                 => '古い版 $1 を削除しました',
@@ -2609,10 +2703,9 @@ $1
 'recreate'            => '新規作成する',
 
 # action=purge
-'confirm_purge'        => 'ページのキャッシュを破棄します。よろしいですか?
-
-$1',
 'confirm_purge_button' => 'はい',
+'confirm-purge-top'    => 'ページのキャッシュを破棄します。よろしいですか?',
+'confirm-purge-bottom' => 'ページをパージすると、キャッシュを破棄し、強制的に最新の版が表示されます。',
 
 # Multipage image navigation
 'imgmultipageprev' => '&larr; 前ページ',
@@ -2766,15 +2859,5 @@ $1',
 #行の冒頭に # をつけるとコメントとして扱われます
 
 #正規表現は全てこの行の上に置いてください。この行を変更しないでください</pre>',
-
-# Special:Nuke
-'nuke'               => 'まとめて削除',
-'nuke-nopages'       => '[[Special:Contributions/$1|$1]] が最近更新したページはありません。',
-'nuke-list'          => '以下は、[[Special:Contributions/$1|$1]] によって最近作成されたページの一覧です。要約欄へ記入しボタンを押すと、一気に消えて無くなります。',
-'nuke-defaultreason' => '$1 によって加えられたページを一括して削除',
-'nuke-tools'         => 'このツールを使うと、指定した利用者またはIPから最近追加されたページを、まとめて削除することができます。削除対象ページ一覧を取得する利用者名またはIPアドレスを入力してください:',
-'nuke-submit-user'   => '一覧取得',
-'nuke-submit-delete' => '選択されたページを削除',
-'right-nuke'         => 'ページの一括削除',
 
 );

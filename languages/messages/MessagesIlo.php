@@ -5,6 +5,7 @@
  * @file
  *
  * @author Saluyot
+ * @author Urhixidur
  * @author לערי ריינהארט
  */
 
@@ -504,7 +505,7 @@ No dimo kayat a ti sinuratmo ket maedit wenno mabalbaliwan nga awanan-asi ken ma
 Kasta met nga ikarim kadakami a bukodmo a sinurat wenno gapuanan daytoy, wenno kinopiam ngem iti maysa a nawaya a pagtagikuaan ti publiko wenno pumadmad a libre a pagtaudan (kitaen ti $1 para iti detalie).
 <strong>SAAN A MANGIPAN ITI ADDAAN COPYRIGHT NGA OBRA NO AWANAN PAMMALUBOS!</strong>',
 'longpagewarning'                  => '<strong>BALLAAG: Agatiddog daytoy a panid iti $1 a kilobytes;
-amangan ta sumagmamano a browsers ket agparikut iti panagedit iti pampanid a dandani 32kb, wenno ad-adu pay, ti kaatiddogna.
+amangan ta sumagmamano a browsers ket agparikut iti panagedit iti pampanid a dandani 32 kb, wenno ad-adu pay, ti kaatiddogna.
 Pangngaasim ta padasem a pasetpasetem ti panid iti babbabassit a benneg.</strong>',
 'longpageerror'                    => "<strong>BIDDUT: Ti texto nga insumitem ket agatiddog iti $1 a kilobytes, nga at-atiddog nga amang ngem ti maximum a $2 a kilobytes.
 Isut' gapuna a saan a maidulin.</strong>",
@@ -549,7 +550,7 @@ Ti inted a rason ni $3 ket ''$2''",
 'nohistory'           => 'Awan ti pakasaritaan ti panangbaliw iti daytoy a panid.',
 'currentrev'          => 'Agdama a revision',
 'revisionasof'        => 'Panangbalbaliw sipud $1',
-'revision-info'       => 'Panangbaliw ni $2 sipud idi $1',
+'revision-info'       => 'Panangbaliw ni $2 sipud idi $1', # Additionally available: $3: revision id
 'previousrevision'    => '←Nadadaan a panangbalbaliw',
 'nextrevision'        => 'Nabarbaro a panangbalbaliw→',
 'currentrevisionlink' => 'kitaen ti agdama a revision',
@@ -577,7 +578,7 @@ Legend: (agdama) = paggidiatan iti agdama a version,
 'rev-deleted-event'       => '(naikkat ti log action)',
 'rev-delundel'            => 'ipakita/ilemmeng',
 'revdelete-nooldid-title' => 'Saan a valido a target revision',
-'revdelete-selected'      => '{{PLURAL:$2|Napili a revision|Napili a revisions}} ti [[:$1]]:',
+'revdelete-selected'      => "'''{{PLURAL:$2|Napili a revision|Napili a revisions}} ti [[:$1]]:'''",
 'revdelete-legend'        => 'Iplastar ti visibility restrictions',
 'revdelete-hide-text'     => 'Ilemmeng ti texto ti revision',
 'revdelete-hide-name'     => 'Ilemmeng ti action ken target',
@@ -775,6 +776,7 @@ itsek ti husto a panangikapet iti latex, dvips, gs, samo i-convert',
 'recentchangestext'                 => 'Bantayan iti daytoy a panid dagiti kauudian a panakabalbaliw ti wiki.',
 'recentchanges-feed-description'    => 'Suroten dagiti kakaudian a panamalbaliw iti wiki iti daytoy a feed.',
 'rcnote'                            => "Adda iti baba {{PLURAL:$1|ti '''1''' baliw|dagiti naudi '''$1''' balbaliw}} iti naudi nga {{PLURAL:$2|aldaw|'''$2''' al-aldaw}}, sipud iti $3.",
+'rcnotefrom'                        => "Makita iti baba dagiti panagbalbaliw manipud idi '''$2''' (agingga iti '''$1''' ti naipakita).",
 'rclistfrom'                        => 'Ipakita dagiti kabarbaro a balbaliw mangrugi iti $1',
 'rcshowhideminor'                   => '$1 a bassit a panangbalbaliw',
 'rcshowhidebots'                    => '$1 a bots',
@@ -1066,34 +1068,28 @@ Dagiti panid iti [[Special:Watchlist|listaan ti bambantayam]] ket '''naipuskol''
 'emailsenttext'   => 'Naipatuloden ti mensahe ti emailmo.',
 
 # Watchlist
-'watchlist'            => 'Dagiti bambantayak',
-'mywatchlist'          => 'Dagiti bambantayak',
-'watchlistfor'         => "(para ken ni '''$1''')",
-'nowatchlist'          => 'Awan ti pampanid iti listaan dagiti bambantayam.',
-'watchnologin'         => 'Saan a nakastrek',
-'watchnologintext'     => 'Nasken a [[Special:UserLogin|naka-loginka]] tapno mabaliwam dagiti bambantayam a panid.',
-'addedwatch'           => 'Nainayon kadagiti bambantayan',
-'addedwatchtext'       => "Nainayonen ti panid a \"[[:\$1]]\" iti [[Special:Watchlist|listaan ti bambantayam]].
+'watchlist'         => 'Dagiti bambantayak',
+'mywatchlist'       => 'Dagiti bambantayak',
+'watchlistfor'      => "(para ken ni '''$1''')",
+'nowatchlist'       => 'Awan ti pampanid iti listaan dagiti bambantayam.',
+'watchnologin'      => 'Saan a nakastrek',
+'watchnologintext'  => 'Nasken a [[Special:UserLogin|naka-loginka]] tapno mabaliwam dagiti bambantayam a panid.',
+'addedwatch'        => 'Nainayon kadagiti bambantayan',
+'addedwatchtext'    => "Nainayonen ti panid a \"[[:\$1]]\" iti [[Special:Watchlist|listaan ti bambantayam]].
 Mailistanto ditoy dagiti pannkabalbaliw daytoy a panid iti masakbayan agraman ti kanaigna a panid-tungtongan, ket agparang ti panid a kas '''napuskol''' iti [[Special:RecentChanges|listaan ti naudi a balbaliw]] tapno nalaklaka a malasin.",
-'removedwatch'         => 'Naikkaten kadagiti bambantayan',
-'removedwatchtext'     => 'Naikkaten ti panid a "[[:$1]]" iti listaan ti bambantayam.',
-'watch'                => 'bantayan',
-'watchthispage'        => 'Bantayan daytoy a panid',
-'unwatch'              => 'saanen a bantayan',
-'unwatchthispage'      => 'Isardeng a bantayan daytoy a panid',
-'notvisiblerev'        => 'Naikkaten ti panangbalbaliw',
-'watchlist-details'    => '{{PLURAL:$1|$1 panid|$1 pampanid}} a bambantayan, saan a mairaman dagiti panid ti tungtongan.',
-'wlheader-enotif'      => '* Napagbalin ti email notification.',
-'watchlistcontains'    => 'Addaan ti listaan ti bambantayam iti $1 {{PLURAL:$1|a panid|a pampanid}}.',
-'iteminvalidname'      => "Parikut iti item '$1', saan a mabalin a nagan...",
-'wlnote'               => "Adda iti baba {{PLURAL:$1|ti kaudian a pannakabaliw|dagiti kaudian '''$1''' a pannakabaliw}} iti naudi a {{PLURAL:$2|oras|'''$2''' oras}}.",
-'wlshowlast'           => 'Ipakita dagiti naudi a $1 nga or-oras $2 nga al-aldaw $3',
-'watchlist-show-bots'  => 'Ipakita dagiti bot edits',
-'watchlist-hide-bots'  => 'Ilemmeng dagiti bot edits',
-'watchlist-show-own'   => 'Ipakita dagiti panangbalbaliwko',
-'watchlist-hide-own'   => 'Ilemmeng dagiti panangbalbaliwko',
-'watchlist-show-minor' => 'Ipakita dagiti babassit a baliw',
-'watchlist-hide-minor' => 'Ilemmeng dagiti babassit a baliw',
+'removedwatch'      => 'Naikkaten kadagiti bambantayan',
+'removedwatchtext'  => 'Naikkaten ti panid a "[[:$1]]" iti listaan ti bambantayam.',
+'watch'             => 'bantayan',
+'watchthispage'     => 'Bantayan daytoy a panid',
+'unwatch'           => 'saanen a bantayan',
+'unwatchthispage'   => 'Isardeng a bantayan daytoy a panid',
+'notvisiblerev'     => 'Naikkaten ti panangbalbaliw',
+'watchlist-details' => '{{PLURAL:$1|$1 panid|$1 pampanid}} a bambantayan, saan a mairaman dagiti panid ti tungtongan.',
+'wlheader-enotif'   => '* Napagbalin ti email notification.',
+'watchlistcontains' => 'Addaan ti listaan ti bambantayam iti $1 {{PLURAL:$1|a panid|a pampanid}}.',
+'iteminvalidname'   => "Parikut iti item '$1', saan a mabalin a nagan...",
+'wlnote'            => "Adda iti baba {{PLURAL:$1|ti kaudian a pannakabaliw|dagiti kaudian '''$1''' a pannakabaliw}} iti naudi a {{PLURAL:$2|oras|'''$2''' oras}}.",
+'wlshowlast'        => 'Ipakita dagiti naudi a $1 nga or-oras $2 nga al-aldaw $3',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Bambantayan...',
@@ -1144,7 +1140,7 @@ Kitaen ti $2 para iti record dagiti naudi a naikkat.',
 'rollbacklink'     => 'isubli',
 'rollbackfailed'   => 'Napaay ti panangisubli',
 'editcomment'      => 'Ti komento ti panangedit ket: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'Naikkat ti panangbaliw ni [[Special:Contributions/$2|$2]] ([[User talk:$2|Pagtutungtongan]]), naisubli iti kaudian a version ni [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'Naikkat ti panangbaliw ni [[Special:Contributions/$2|$2]] ([[User talk:$2|Pagtutungtongan]]), naisubli iti kaudian a version ni [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Naibabawi dagiti panagedit ni $1;
 naisubli manen iti naudi a version ni $2.',
 
@@ -1811,10 +1807,8 @@ $1
 'recreate'            => 'Partuaten manen',
 
 # action=purge
-'confirm_purge'        => 'Dalusan ti cache daytoy a panid?
-
-$1',
 'confirm_purge_button' => 'OK',
+'confirm-purge-top'    => 'Dalusan ti cache daytoy a panid?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← napalabas a panid',

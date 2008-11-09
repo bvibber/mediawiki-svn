@@ -770,6 +770,7 @@ class PPFrame_DOM implements PPFrame {
 
 	/**
 	 * Recursion depth of this frame, top = 0
+	 * Note that this is NOT the same as expansion depth in expand()
 	 */
 	var $depth;
 
@@ -826,7 +827,7 @@ class PPFrame_DOM implements PPFrame {
 	}
 
 	function expand( $root, $flags = 0 ) {
-		static $depth = 0;
+		static $expansionDepth = 0;
 		if ( is_string( $root ) ) {
 			return $root;
 		}
@@ -837,10 +838,10 @@ class PPFrame_DOM implements PPFrame {
 			return '<span class="error">Node-count limit exceeded</span>';
 		}
 
-		if ( $depth > $this->parser->mOptions->mMaxPPExpandDepth ) {
+		if ( $expansionDepth > $this->parser->mOptions->mMaxPPExpandDepth ) {
 			return '<span class="error">Expansion depth limit exceeded</span>';
 		}
-		++$depth;
+		++$expansionDepth;
 
 		if ( $root instanceof PPNode_DOM ) {
 			$root = $root->node;
@@ -1029,7 +1030,7 @@ class PPFrame_DOM implements PPFrame {
 				}
 			}
 		}
-		--$depth;
+		--$expansionDepth;
 		wfProfileOut( __METHOD__ );
 		return $outStack[0];
 	}
@@ -1320,6 +1321,9 @@ class PPCustomFrame_DOM extends PPFrame_DOM {
 	}
 
 	function getArgument( $index ) {
+		if ( !isset( $this->args[$index] ) ) {
+			return false;
+		}
 		return $this->args[$index];
 	}
 }

@@ -5,6 +5,7 @@
  * @file
  *
  * @author Albert Fazlî
+ * @author Urhixidur
  * @author לערי ריינהארט
  */
 
@@ -319,7 +320,7 @@ Anı alğaç monda tağın kerep qara.',
 'editingold'         => '<strong>KİSÄTMÄ: Sin bu bitneñ iskergän yuramasın üzgärtäsen.
 Ägär sin monı saqlísıñ ikän, şul yuramadan soñ yasalğan üzgärmälär yuğalır.</strong>',
 'yourdiff'           => 'Ayırmalar',
-'longpagewarning'    => "KİSÄTMÄ: Bu bit zurlığı $1 KB; qayber browserlarda 32 KB'tan da zurraq bulğan bitlärne kürsätkändä qíınlıqlar bula.
+'longpagewarning'    => "KİSÄTMÄ: Bu bit zurlığı $1 kB; qayber browserlarda 32 kB'tan da zurraq bulğan bitlärne kürsätkändä qíınlıqlar bula.
 Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 'template-protected' => '(yaqlanmış)',
 
@@ -383,6 +384,7 @@ Zínhar, bu bitneñ wağraq kisäklärgä bülü turında uylap qara.",
 # Recent changes
 'recentchanges'     => 'Soñğı üzgärtmälär',
 'recentchangestext' => 'Bu bittä wikidä bulğan iñ soñğı üzgärtmäläre kürsätelä.',
+'rcnotefrom'        => 'Asta <b>$2</b> zamanınnan soñ bulğan üzgärtmälär (<b>$1</b> tikle).',
 'rclistfrom'        => '$1 zamannan soñ bulğan üzgärtmälär.',
 'rcshowhideminor'   => 'kiçi özgeriş $1',
 'rcshowhidebots'    => 'bot $1',

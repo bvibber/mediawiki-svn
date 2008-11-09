@@ -1,5 +1,5 @@
 <?php
-/** Traditional Chinese (‪中文(傳統字)‬)
+/** Traditional Chinese (‪中文(繁體)‬)
  *
  * @ingroup Language
  * @file
@@ -712,7 +712,7 @@ $2',
 'currentrev'             => '當前修訂版本',
 'currentrev-asof'        => '在$1的當前修訂版本',
 'revisionasof'           => '在$1所做的修訂版本',
-'revision-info'          => '在$1由$2所做的修訂版本',
+'revision-info'          => '在$1由$2所做的修訂版本', # Additionally available: $3: revision id
 'previousrevision'       => '←上一修訂',
 'nextrevision'           => '下一修訂→',
 'currentrevisionlink'    => '當前修訂',
@@ -752,11 +752,11 @@ $2',
 'revdelete-nooldid-title'     => '無效的目標修訂',
 'revdelete-nooldid-text'      => '您尚未指定一個目標修訂去進行這個功能、
 所指定的修訂不存在，或者您嘗試去隱藏現時的修訂。',
-'revdelete-selected'          => "選取'''$1'''的$2次修訂:",
-'logdelete-selected'          => "選取'''$1'''的日誌項目:",
-'revdelete-text'              => '刪除的修訂仍將顯示在頁面歷史中, 但它們的文字內容已不能被公眾訪問。
+'revdelete-selected'          => "'''選取'''$1'''的$2次修訂:'''",
+'logdelete-selected'          => "'''選取'''$1'''的日誌項目:'''",
+'revdelete-text'              => "'''刪除的修訂仍將顯示在頁面歷史中, 但它們的文字內容已不能被公眾訪問。'''
 
-在{{SITENAME}}的其他管理員將仍能訪問隱藏的內容並透過與此相同的介面恢復刪除，除非網站工作者進行了一些附加的限制。',
+在{{SITENAME}}的其他管理員將仍能訪問隱藏的內容並透過與此相同的介面恢復刪除，除非網站工作者進行了一些附加的限制。",
 'revdelete-legend'            => '設定可見性之限制',
 'revdelete-hide-text'         => '隱藏修訂文字',
 'revdelete-hide-name'         => '隱藏動作和目標',
@@ -1132,6 +1132,7 @@ $2',
 'recentchangestext'                 => '跟蹤這個wiki上的最新更改。',
 'recentchanges-feed-description'    => '跟蹤此訂閱在 wiki 上的最近更改。',
 'rcnote'                            => "以下是在$4 $5，最近'''$2'''天內的'''$1'''次最近更改記錄:",
+'rcnotefrom'                        => '下面是自<b>$2</b>(最多顯示<b>$1</b>):',
 'rclistfrom'                        => '顯示自$1以來的新更改',
 'rcshowhideminor'                   => '$1小編輯',
 'rcshowhidebots'                    => '$1機器人的編輯',
@@ -1608,18 +1609,6 @@ Template:消除歧義',
 'iteminvalidname'      => "頁面'$1'錯誤，無效命名...",
 'wlnote'               => '以下是最近<b>$2</b>小時內的最後$1次修改。',
 'wlshowlast'           => '顯示最近$1小時；$2天；$3的修改。',
-'watchlist-show-bots'  => '顯示機器人的編輯',
-'watchlist-hide-bots'  => '隱藏機器人的編輯',
-'watchlist-show-own'   => '顯示我的修改',
-'watchlist-hide-own'   => '隱藏我的修改',
-'watchlist-show-minor' => '顯示小修改',
-'watchlist-hide-minor' => '隱藏小修改',
-'watchlist-show-anons' => '顯示匿名用戶的編輯',
-'watchlist-hide-anons' => '隱藏匿名用戶的編輯',
-'watchlist-show-liu'   => '顯示已登入用戶的編輯',
-'watchlist-hide-liu'   => '隱藏已登入用戶的編輯',
-'watchlist-show-patrolled' => '顯示曾經巡查過的編輯',
-'watchlist-hide-patrolled' => '隱藏曾經巡查過的編輯',
 'watchlist-options'    => '監視列表選項',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -1704,7 +1693,7 @@ $NEWPAGE
 
 最後對頁面編輯的編輯者: [[User:$3|$3]] ([[User talk:$3|討論]] | [[Special:Contributions/$3|{{int:contribslink}}]])。',
 'editcomment'      => '編輯說明: "<i>$1</i>"。', # only shown if there is an edit comment
-'revertpage'       => '恢復由[[Special:Contributions/$2|$2]] ([[User talk:$2|對話]])的編輯至[[User:$1|$1]]的最後一個版本', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => '恢復由[[Special:Contributions/$2|$2]] ([[User talk:$2|對話]])的編輯至[[User:$1|$1]]的最後一個版本', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => '恢復由$1的編輯；更改回$2的最後一個版本。',
 'sessionfailure'   => '您的登入資訊似乎有問題，為防止此該訊息被攔截，本次操作已經取消，請按「上一頁」重新載入。',
 
@@ -1969,9 +1958,9 @@ $1',
 'databasenotlocked'   => '資料庫沒有鎖定。',
 
 # Move page
-'move-page'               => '移動$1',
-'move-page-legend'        => '移動頁面',
-'movepagetext'            => "用下面的表單來重新命名一個頁面，並將其修訂歷史同時移動到新頁面。
+'move-page'                 => '移動$1',
+'move-page-legend'          => '移動頁面',
+'movepagetext'              => "用下面的表單來重新命名一個頁面，並將其修訂歷史同時移動到新頁面。
 老的頁面將成為新頁面的重定向頁。
 您可以自動地更新指到原標題的重定向。
 如果您選擇不去做的話，請檢查[[Special:DoubleRedirects|雙重]]或[[Special:BrokenRedirects|損壞重定向]]連結。
@@ -1985,57 +1974,57 @@ $1',
 <b>警告！</b>
 對一個經常被訪問的頁面而言這可能是一個重大與唐突的更改；
 請在行動前先了結其所可能帶來的後果。",
-'movepagetalktext'        => "有關的對話頁（如果有的話）將被自動與該頁面一起移動，'''除非'''：
+'movepagetalktext'          => "有關的對話頁（如果有的話）將被自動與該頁面一起移動，'''除非'''：
 *您將頁面移動到不同的名字空間；
 *新頁面已經有一個包含內容的對話頁，或者
 *您不勾選下面的覆選框。
 
 在這些情況下，您在必要時必須手工移動或合併頁面。",
-'movearticle'             => '移動頁面:',
-'movenologin'             => '未登入',
-'movenologintext'         => '您必須是一名登記用戶並且[[Special:UserLogin|登入]]
+'movearticle'               => '移動頁面:',
+'movenologin'               => '未登入',
+'movenologintext'           => '您必須是一名登記用戶並且[[Special:UserLogin|登入]]
 後才可移動一個頁面。',
-'movenotallowed'          => '您並沒有許可權去移動頁面。',
+'movenotallowed'            => '您並沒有許可權去移動頁面。',
 'cant-move-user-page'       => '您並沒有許可權去移動用戶頁面（它的字頁面除外）。',
 'cant-move-to-user-page'    => '您並沒有許可權去移動到用戶頁面（它的字頁面除外）。',
-'newtitle'                => '新標題:',
-'move-watch'              => '監視此頁',
-'movepagebtn'             => '移動頁面',
-'pagemovedsub'            => '移動成功',
-'movepage-moved'          => "<big>'''「$1」已經移動到「$2」'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
-'articleexists'           => '該名字的頁面已經存在，或者您選擇的名字無效。請再選一個名字。',
-'cantmove-titleprotected' => '您不可以移動這個頁面到這個位置，因為該新標題已經被保護以防止建立。',
-'talkexists'              => '頁面本身移動成功，
+'newtitle'                  => '新標題:',
+'move-watch'                => '監視此頁',
+'movepagebtn'               => '移動頁面',
+'pagemovedsub'              => '移動成功',
+'movepage-moved'            => "<big>'''「$1」已經移動到「$2」'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'articleexists'             => '該名字的頁面已經存在，或者您選擇的名字無效。請再選一個名字。',
+'cantmove-titleprotected'   => '您不可以移動這個頁面到這個位置，因為該新標題已經被保護以防止建立。',
+'talkexists'                => '頁面本身移動成功，
 但是由於新標題下已經有對話頁存在，所以對話頁無法移動。請手工合併兩個頁面。',
-'movedto'                 => '移動到',
-'movetalk'                => '如果可能的話，同時移動對話頁。',
-'move-subpages'           => '如果可能的話，同時移動所有的子頁面',
-'move-talk-subpages'      => '如果可能的話，同時移動所有的子對話頁面',
-'movepage-page-exists'    => '頁面$1已經存在，不可以自動地覆寫。',
-'movepage-page-moved'     => '頁面$1已經移動到$2。',
-'movepage-page-unmoved'   => '頁面$1不可以移動到$2。',
-'movepage-max-pages'      => '最多有$1個頁面已經移動同時不可以自動地再移動更多。',
-'1movedto2'               => '[[$1]]移動到[[$2]]',
-'1movedto2_redir'         => '[[$1]]透過重定向移動到[[$2]]',
-'movelogpage'             => '移動日誌',
-'movelogpagetext'         => '以下是已經移動的頁面清單:',
-'movereason'              => '原因',
-'revertmove'              => '恢復該移動',
-'delete_and_move'         => '刪除並移動',
-'delete_and_move_text'    => '==需要刪除==
+'movedto'                   => '移動到',
+'movetalk'                  => '如果可能的話，同時移動對話頁。',
+'move-subpages'             => '如果可能的話，同時移動所有的子頁面',
+'move-talk-subpages'        => '如果可能的話，同時移動所有的子對話頁面',
+'movepage-page-exists'      => '頁面$1已經存在，不可以自動地覆寫。',
+'movepage-page-moved'       => '頁面$1已經移動到$2。',
+'movepage-page-unmoved'     => '頁面$1不可以移動到$2。',
+'movepage-max-pages'        => '最多有$1個頁面已經移動同時不可以自動地再移動更多。',
+'1movedto2'                 => '[[$1]]移動到[[$2]]',
+'1movedto2_redir'           => '[[$1]]透過重定向移動到[[$2]]',
+'movelogpage'               => '移動日誌',
+'movelogpagetext'           => '以下是已經移動的頁面清單:',
+'movereason'                => '原因',
+'revertmove'                => '恢復該移動',
+'delete_and_move'           => '刪除並移動',
+'delete_and_move_text'      => '==需要刪除==
 
 目標頁面"[[:$1]]"已經存在。你確認需要刪除原頁面並以進行移動嗎？',
-'delete_and_move_confirm' => '是的，刪除此頁面',
-'delete_and_move_reason'  => '刪除以便移動',
-'selfmove'                => '原始標題與目標標題相同，您不能移動一頁覆蓋本身。',
+'delete_and_move_confirm'   => '是的，刪除此頁面',
+'delete_and_move_reason'    => '刪除以便移動',
+'selfmove'                  => '原始標題與目標標題相同，您不能移動一頁覆蓋本身。',
 'immobile-source-namespace' => '不可以在空間名「$1」上移動頁面',
 'immobile-target-namespace' => '不可以將頁面移動到「$1」空間名中',
 'immobile-source-page'      => '這個頁面不能移動。',
 'immobile-target-page'      => '無法移動至目標標題中。',
-'imagenocrossnamespace'   => '不可以移動檔案到非檔案名字空間',
-'imagetypemismatch'       => '該新副檔名不匹配它的類型',
-'imageinvalidfilename'    => '目標檔案名稱是無效的',
-'fix-double-redirects'    => '更新指到原先標題的任何重新定向',
+'imagenocrossnamespace'     => '不可以移動檔案到非檔案名字空間',
+'imagetypemismatch'         => '該新副檔名不匹配它的類型',
+'imageinvalidfilename'      => '目標檔案名稱是無效的',
+'fix-double-redirects'      => '更新指到原先標題的任何重新定向',
 'move-leave-redirect'       => '留下重新定向',
 
 # Export
@@ -2669,8 +2658,8 @@ $1
 'recreate'            => '重建',
 
 # action=purge
-'confirm_purge'        => '要清除此頁面的快取嗎?\\n\\n$1',
 'confirm_purge_button' => '確定',
+'confirm-purge-top'    => '要清除此頁面的快取嗎?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← 上一頁',

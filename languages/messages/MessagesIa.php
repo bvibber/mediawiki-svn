@@ -37,6 +37,94 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK  => 'Discussion_Categoria'
 );
 
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'RedirectionesDuple' ),
+	'BrokenRedirects'           => array( 'RedirectionesRupte' ),
+	'Disambiguations'           => array( 'Disambiguationes' ),
+	'Userlogin'                 => array( 'AperirSession', 'Identificar' ),
+	'Userlogout'                => array( 'ClauderSession', 'Disconnecter' ),
+	'CreateAccount'             => array( 'CrearConto' ),
+	'Preferences'               => array( 'Preferentias' ),
+	'Watchlist'                 => array( 'Observatorio' ),
+	'Recentchanges'             => array( 'ModificationesRecente' ),
+	'Upload'                    => array( 'Cargar' ),
+	'Imagelist'                 => array( 'ListaDeImagines' ),
+	'Newimages'                 => array( 'NoveImagines' ),
+	'Listusers'                 => array( 'ListarUsatores', 'ListaDeUsatores' ),
+	'Listgrouprights'           => array( 'ListarDerectosDeGruppos' ),
+	'Statistics'                => array( 'Statisticas' ),
+	'Randompage'                => array( 'Aleatori', 'PaginaAleatori' ),
+	'Lonelypages'               => array( 'PaginasOrphanate' ),
+	'Uncategorizedpages'        => array( 'PaginasNonCategorisate' ),
+	'Uncategorizedcategories'   => array( 'CategoriasNonCategorisate' ),
+	'Uncategorizedimages'       => array( 'ImaginesNonCategorisate' ),
+	'Uncategorizedtemplates'    => array( 'PatronosNonCategorisate' ),
+	'Unusedcategories'          => array( 'CategoriasNonUsate' ),
+	'Unusedimages'              => array( 'ImaginesNonUsate' ),
+	'Wantedpages'               => array( 'PaginasDesirate', 'LigaminesRupte' ),
+	'Wantedcategories'          => array( 'CategoriasDesirate' ),
+	'Wantedfiles'               => array( 'FilesDesirate' ),
+	'Wantedtemplates'           => array( 'PatronosDesirate' ),
+	'Mostlinked'                => array( 'LePlusLigate' ),
+	'Mostlinkedcategories'      => array( 'CategoriasLePlusLigate', 'CategoriasLePlusUsate' ),
+	'Mostlinkedtemplates'       => array( 'PatronosLePlusLigate', 'PatronosLePlusUsate' ),
+	'Mostcategories'            => array( 'LePlusCategorias' ),
+	'Mostimages'                => array( 'LePlusImagines' ),
+	'Mostrevisions'             => array( 'LePlusVersiones' ),
+	'Fewestrevisions'           => array( 'LeMinusVersiones' ),
+	'Shortpages'                => array( 'PaginasCurte' ),
+	'Longpages'                 => array( 'PaginasLonge' ),
+	'Newpages'                  => array( 'PaginasNove' ),
+	'Ancientpages'              => array( 'PaginasAncian' ),
+	'Deadendpages'              => array( 'PaginasSinExito' ),
+	'Protectedpages'            => array( 'PaginasProtegite' ),
+	'Protectedtitles'           => array( 'TitulosProtegite' ),
+	'Allpages'                  => array( 'ToteLePaginas' ),
+	'Prefixindex'               => array( 'IndiceDePrefixos' ),
+	'Ipblocklist'               => array( 'ListaDeBlocadasIP' ),
+	'Specialpages'              => array( 'PaginasSpecial' ),
+	'Contributions'             => array( 'Contributiones' ),
+	'Emailuser'                 => array( 'InviarEmailAUnUsator' ),
+	'Confirmemail'              => array( 'ConfirmarEmail' ),
+	'Whatlinkshere'             => array( 'ReferentiasAIstePagina' ),
+	'Recentchangeslinked'       => array( 'ModificationesRecenteLigate', 'ModificationesConnexe' ),
+	'Movepage'                  => array( 'RenominarPagina' ),
+	'Blockme'                   => array( 'BlocarMe' ),
+	'Booksources'               => array( 'FontesDeLibros' ),
+	'Categories'                => array( 'Categorias' ),
+	'Export'                    => array( 'Exportar' ),
+	'Allmessages'               => array( 'ToteLeMessages' ),
+	'Log'                       => array( 'Registro', 'Registros' ),
+	'Blockip'                   => array( 'BlocarIP' ),
+	'Undelete'                  => array( 'Restaurar' ),
+	'Import'                    => array( 'Importar' ),
+	'Lockdb'                    => array( 'BlocarBDD' ),
+	'Unlockdb'                  => array( 'DisblocarBDD' ),
+	'Userrights'                => array( 'DerectosDeUsatores' ),
+	'MIMEsearch'                => array( 'RecercaMIME' ),
+	'FileDuplicateSearch'       => array( 'RecercaDeFilesDuplice' ),
+	'Unwatchedpages'            => array( 'PaginasNonObservate' ),
+	'Listredirects'             => array( 'ListarRedirectiones' ),
+	'Revisiondelete'            => array( 'DeletionDeVersiones' ),
+	'Unusedtemplates'           => array( 'PatronosNonUsate' ),
+	'Randomredirect'            => array( 'RedirectionAleatori' ),
+	'Mypage'                    => array( 'MiPagina' ),
+	'Mytalk'                    => array( 'MiDiscussion' ),
+	'Mycontributions'           => array( 'MiContributiones' ),
+	'Listadmins'                => array( 'ListarAdministratores' ),
+	'Listbots'                  => array( 'ListarRobots' ),
+	'Popularpages'              => array( 'PaginasPopular' ),
+	'Search'                    => array( 'Cercar' ),
+	'Resetpass'                 => array( 'RedefinirContrasigno' ),
+	'Withoutinterwiki'          => array( 'SinInterwiki' ),
+	'MergeHistory'              => array( 'FusionarHistoria' ),
+	'Filepath'                  => array( 'CamminoAlFile' ),
+	'Invalidateemail'           => array( 'InvalidarEmail' ),
+	'Blankpage'                 => array( 'PaginaVacue' ),
+	'LinkSearch'                => array( 'RecercaDeLigamines' ),
+	'DeletedContributions'      => array( 'ContributionesDelite' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Sublinear ligamines:',
@@ -82,6 +170,7 @@ $messages = array(
 'tog-diffonly'                => 'Non monstrar le contento del pagina sub le comparation de duo versiones',
 'tog-showhiddencats'          => 'Monstrar categorias celate',
 'tog-noconvertlink'           => 'Disactivar conversion del titulo de ligamine',
+'tog-norollbackdiff'          => 'Omitter le diff post le execution de un revocation',
 
 'underline-always'  => 'Sempre',
 'underline-never'   => 'Nunquam',
@@ -740,7 +829,7 @@ Le motivo que $3 dava es ''$2''",
 'currentrev'             => 'Revision actual',
 'currentrev-asof'        => 'Version actual in data del $1',
 'revisionasof'           => 'Revision del $1',
-'revision-info'          => 'Revision del $1 per $2',
+'revision-info'          => 'Revision del $1 per $2', # Additionally available: $3: revision id
 'previousrevision'       => '←Revision precedente',
 'nextrevision'           => 'Revision sequente→',
 'currentrevisionlink'    => 'Revision actual',
@@ -783,11 +872,11 @@ es possibile que se trova detalios in le [{{fullurl:Special:Log/delete|page={{FU
 'revdelete-nooldid-title'     => 'Le revision de destination es invalide',
 'revdelete-nooldid-text'      => 'O tu non ha specificate alcun revision(es) de destination pro executar iste 
 function, o le revision specificate non existe, o tu essaya celar le revision actual.',
-'revdelete-selected'          => '{{PLURAL:$2|Revision seligite|Revisiones seligite}} de [[:$1]]:',
-'logdelete-selected'          => '{{PLURAL:$1|Evento|Eventos}} de registro seligite:',
-'revdelete-text'              => 'Le revisiones e eventos delite continuara a apparer in le historia e registro del pagina, sed partes de lor contento essera inaccessibile al publico.
+'revdelete-selected'          => "'''{{PLURAL:$2|Revision seligite|Revisiones seligite}} de [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Evento|Eventos}} de registro seligite:'''",
+'revdelete-text'              => "'''Le revisiones e eventos delite continuara a apparer in le historia e registro del pagina, sed partes de lor contento essera inaccessibile al publico.'''
 
-Altere administratores in {{SITENAME}} continuara a poter acceder al contento celate e pote restaurar lo per medio de iste mesme interfacie, si non se ha definite restrictiones additional.',
+Altere administratores in {{SITENAME}} continuara a poter acceder al contento celate e pote restaurar lo per medio de iste mesme interfacie, si non se ha definite restrictiones additional.",
 'revdelete-legend'            => 'Definir restrictiones de visibilitate',
 'revdelete-hide-text'         => 'Celar texto del revision',
 'revdelete-hide-name'         => 'Celar action e objectivo',
@@ -1079,6 +1168,7 @@ per favor vide math/README pro configurar lo.",
 'right-minoredit'            => 'Marcar modificationes como minor',
 'right-move'                 => 'Renominar paginas',
 'right-move-subpages'        => 'Renominar paginas con lor subpaginas',
+'right-move-rootuserpages'   => 'Renominar le paginas radice de usator',
 'right-suppressredirect'     => 'Non rediriger le ancian nomine verso le nove quando se renomina un pagina',
 'right-upload'               => 'Cargar files',
 'right-reupload'             => 'Superscriber un file existente',
@@ -1138,6 +1228,7 @@ per favor vide math/README pro configurar lo.",
 'action-minoredit'            => 'marcar iste modification como minor',
 'action-move'                 => 'renominar iste pagina',
 'action-move-subpages'        => 'renominar iste pagina e su subpaginas',
+'action-move-rootuserpages'   => 'renominar le paginas radice de usator',
 'action-upload'               => 'cargar iste file',
 'action-reupload'             => 'superscriber iste file existente',
 'action-reupload-shared'      => 'supplantar iste file in un repositorio commun',
@@ -1170,6 +1261,7 @@ per favor vide math/README pro configurar lo.",
 'recentchangestext'                 => 'Seque le plus recente modificationes a {{SITENAME}} in iste pagina.',
 'recentchanges-feed-description'    => 'Seque le modificationes le plus recente al wiki in iste syndication.',
 'rcnote'                            => "Infra es {{PLURAL:$1|'''1''' modification|le ultime '''$1''' modificationes}} in le ultime {{PLURAL:$2|die|'''$2''' dies}}, actualisate le $4 a $5.",
+'rcnotefrom'                        => 'infra es le modificationes a partir de <b>$2</b> (usque a <b>$1</b>).',
 'rclistfrom'                        => 'Monstrar nove modificationes a partir de $1',
 'rcshowhideminor'                   => '$1 modificationes minor',
 'rcshowhidebots'                    => '$1 bots',
@@ -1189,6 +1281,8 @@ per favor vide math/README pro configurar lo.",
 'rc_categories'                     => 'Limite a categorias (separar con "|")',
 'rc_categories_any'                 => 'Qualcunque',
 'newsectionsummary'                 => '/* $1 */ nove section',
+'rc-enhanced-expand'                => 'Revelar detalios (require JavaScript)',
+'rc-enhanced-hide'                  => 'Celar detalios',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Modificationes correlate',
@@ -1423,7 +1517,7 @@ Syntaxe: typo/subtypo, p.ex. <tt>image/jpeg</tt>.',
 
 # Unused templates
 'unusedtemplates'     => 'Patronos non usate',
-'unusedtemplatestext' => 'Iste pagina es un lista de tote le paginas in le spatio de nomines "Patrono" que non es includite in un altere pagina.
+'unusedtemplatestext' => 'Iste pagina es un lista de tote le paginas in le spatio de nomines "{{ns:template}}" que non es includite in un altere pagina.
 Memora verificar que non existe altere ligamines al patronos ante que tu los dele.',
 'unusedtemplateswlh'  => 'altere ligamines',
 
@@ -1488,7 +1582,7 @@ Cata linea contine ligamines al prime e al secunde redirection, con le destinati
 'nviews'                  => '$1 {{PLURAL:$1|visita|visitas}}',
 'specialpage-empty'       => 'Il non ha resultatos pro iste reporto.',
 'lonelypages'             => 'Paginas orphanate',
-'lonelypagestext'         => 'Nulle pagina in {{SITENAME}} ha ligamines al paginas sequente.',
+'lonelypagestext'         => 'Le sequente paginas non es ligate ni transcludite in altere paginas in {{SITENAME}}.',
 'uncategorizedpages'      => 'Paginas non classificate',
 'uncategorizedcategories' => 'Categorias non classificate',
 'uncategorizedimages'     => 'Files non categorisate',
@@ -1499,6 +1593,7 @@ Cata linea contine ligamines al prime e al secunde redirection, con le destinati
 'wantedcategories'        => 'Categorias plus demandate',
 'wantedpages'             => 'Paginas plus demandate',
 'wantedfiles'             => 'Files desirate',
+'wantedtemplates'         => 'Patronos desirate',
 'mostlinked'              => 'Paginas le plus ligate',
 'mostlinkedcategories'    => 'Categorias le plus ligate',
 'mostlinkedtemplates'     => 'Patronos le plus utilisate',
@@ -1626,9 +1721,9 @@ e haber un adresse de e-mail valide in tu [[Special:Preferences|preferentias]]
 pro inviar e-mail a altere usatores.',
 'emailuser'       => 'Inviar e-mail a iste usator',
 'emailpage'       => 'Inviar e-mail al usator',
-'emailpagetext'   => 'Si iste usator forniva un adresse de e-mail valide in su preferentias de usator, le formulario infra le/la inviara un singule message.
-Le adresse de e-mail que tu forniva in [[Special:Preferences|tu preferentias de usator]] apparera
-como le adresse del expeditor del e-mail, a fin que le destinatario pote responder directemente a te.',
+'emailpagetext'   => 'Le formulario infra es pro inviar un message de e-mail a iste usator.
+Le adresse de e-mail que tu indicava in [[Special:Preferences|tu preferentias de usator]] apparera
+como le adresse del expeditor del e-mail, de modo que le destinatario pote responder directemente a te.',
 'usermailererror' => 'Le objecto de e-mail retornava le error:',
 'defemailsubject' => 'E-mail de {{SITENAME}}',
 'noemailtitle'    => 'Nulle adresse de e-mail',
@@ -1647,49 +1742,37 @@ o ha optate pro non reciper e-mail de altere usatores.',
 'emailuserfooter' => 'Iste e-mail esseva inviate per $1 a $2 con le function "Inviar e-mail al usator" a {{SITENAME}}.',
 
 # Watchlist
-'watchlist'                => 'Mi observatorio',
-'mywatchlist'              => 'Mi observatorio',
-'watchlistfor'             => "(pro '''$1''')",
-'nowatchlist'              => 'Tu non ha paginas sub observation.',
-'watchlistanontext'        => 'Tu debe $1 pro poter vider o modificar entratas in tu observatorio.',
-'watchnologin'             => 'Tu non ha aperite un session',
-'watchnologintext'         => 'Tu debe [[Special:UserLogin|aperir un session]] pro modificar tu observatorio.',
-'addedwatch'               => 'Addite al observatorio',
-'addedwatchtext'           => "Le pagina \"<nowiki>\$1</nowiki>\" es ora in tu [[Special:Watchlist|observatorio]].
+'watchlist'            => 'Mi observatorio',
+'mywatchlist'          => 'Mi observatorio',
+'watchlistfor'         => "(pro '''$1''')",
+'nowatchlist'          => 'Tu non ha paginas sub observation.',
+'watchlistanontext'    => 'Tu debe $1 pro poter vider o modificar entratas in tu observatorio.',
+'watchnologin'         => 'Tu non ha aperite un session',
+'watchnologintext'     => 'Tu debe [[Special:UserLogin|aperir un session]] pro modificar tu observatorio.',
+'addedwatch'           => 'Addite al observatorio',
+'addedwatchtext'       => "Le pagina \"<nowiki>\$1</nowiki>\" es ora in tu [[Special:Watchlist|observatorio]].
 Omne modificationes futur a iste pagina e su pagina de discussion associate essera listate ibi,
 e le pagina apparera '''in litteras grasse''' in le [[Special:RecentChanges|lista de modificationes recente]] pro
 facilitar su identification.",
-'removedwatch'             => 'Eliminate del observatorio',
-'removedwatchtext'         => 'Le pagina "<nowiki>$1</nowiki>" non es plus sub observation.',
-'watch'                    => 'Observar',
-'watchthispage'            => 'Observar iste pagina',
-'unwatch'                  => 'Disobservar',
-'unwatchthispage'          => 'Cancellar observation',
-'notanarticle'             => 'Non es un articulo',
-'notvisiblerev'            => 'Le revision ha essite delite',
-'watchnochange'            => 'Nulle articulo que tu observa esseva modificate durante le periodo de tempore indicate.',
-'watchlist-details'        => '{{PLURAL:$1|$1 pagina|$1 paginas}} es in tu observatorio, sin contar le paginas de discussion.',
-'wlheader-enotif'          => '* Le notificationes via e-mail es active.',
-'wlheader-showupdated'     => "* Le paginas que ha essite modificate post tu ultime visita se monstra in litteras '''grasse'''",
-'watchmethod-recent'       => 'cerca paginas sub observation in modificationes recente',
-'watchmethod-list'         => 'cerca modificationes recente in paginas sub observation',
-'watchlistcontains'        => 'Tu observatorio contine $1 {{PLURAL:$1|pagina|paginas}}.',
-'iteminvalidname'          => "Problema con entrata '$1', nomine invalide...",
-'wlnote'                   => "Infra es le ultime {{PLURAL:$1|modification|'''$1''' modificationes}} durante le ultime {{PLURAL:$2|hora|'''$2''' horas}}.",
-'wlshowlast'               => 'Revelar ultime $1 horas $2 dies $3',
-'watchlist-show-bots'      => 'Monstrar modificationes per bots',
-'watchlist-hide-bots'      => 'Celar modificationes per bots',
-'watchlist-show-own'       => 'Monstrar mi modificationes',
-'watchlist-hide-own'       => 'Celar mi modificationes',
-'watchlist-show-minor'     => 'Monstrar modificationes minor',
-'watchlist-hide-minor'     => 'Celar modificationes minor',
-'watchlist-show-anons'     => 'Monstrar modificationes anonyme',
-'watchlist-hide-anons'     => 'Celar modificationes anonyme',
-'watchlist-show-liu'       => 'Monstrar modificationes per usatores identificate',
-'watchlist-hide-liu'       => 'Celar modificationes per usatores identificate',
-'watchlist-show-patrolled' => 'Revelar modificationes patruliate',
-'watchlist-hide-patrolled' => 'Celar modificationes patruliate',
-'watchlist-options'        => 'Optiones del observatorio',
+'removedwatch'         => 'Eliminate del observatorio',
+'removedwatchtext'     => 'Le pagina "<nowiki>$1</nowiki>" non es plus sub observation.',
+'watch'                => 'Observar',
+'watchthispage'        => 'Observar iste pagina',
+'unwatch'              => 'Disobservar',
+'unwatchthispage'      => 'Cancellar observation',
+'notanarticle'         => 'Non es un articulo',
+'notvisiblerev'        => 'Le revision ha essite delite',
+'watchnochange'        => 'Nulle articulo que tu observa esseva modificate durante le periodo de tempore indicate.',
+'watchlist-details'    => '{{PLURAL:$1|$1 pagina|$1 paginas}} es in tu observatorio, sin contar le paginas de discussion.',
+'wlheader-enotif'      => '* Le notificationes via e-mail es active.',
+'wlheader-showupdated' => "* Le paginas que ha essite modificate post tu ultime visita se monstra in litteras '''grasse'''",
+'watchmethod-recent'   => 'cerca paginas sub observation in modificationes recente',
+'watchmethod-list'     => 'cerca modificationes recente in paginas sub observation',
+'watchlistcontains'    => 'Tu observatorio contine $1 {{PLURAL:$1|pagina|paginas}}.',
+'iteminvalidname'      => "Problema con entrata '$1', nomine invalide...",
+'wlnote'               => "Infra es le ultime {{PLURAL:$1|modification|'''$1''' modificationes}} durante le ultime {{PLURAL:$2|hora|'''$2''' horas}}.",
+'wlshowlast'           => 'Revelar ultime $1 horas $2 dies $3',
+'watchlist-options'    => 'Optiones del observatorio',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Observation in curso...',
@@ -1778,7 +1861,7 @@ un altere persona ha ja modificate o revocate le pagina.
 
 Le ultime modification esseva facite per [[User:$3|$3]] ([[User talk:$3|discussion]] | [[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment'      => 'Le commento del modification esseva: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'Reverteva modificationes per [[Special:Contributions/$2|$2]] ([[User talk:$2|Discussion]]) al ultime version per [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'Reverteva modificationes per [[Special:Contributions/$2|$2]] ([[User talk:$2|Discussion]]) al ultime version per [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Revocava modificationes per $1;
 retornava al version per $2.',
 'sessionfailure'   => 'Il pare haber un problema con tu session de conto;
@@ -1977,6 +2060,7 @@ specific que ha essite vandalisate).',
 'ipbhidename'                     => 'Celar le nomine del usator del registro de blodadas, del lista de blocadas active e del lista de usatores',
 'ipbwatchuser'                    => 'Observar le paginas de usator e de discussion de iste usator',
 'ipballowusertalk'                => 'Permitter que iste usator modifica su proprie pagina de discussion in despecto de esser blocate',
+'ipb-change-block'                => 'Reblocar le usator con iste configurationes',
 'badipaddress'                    => 'Adresse IP mal formate.',
 'blockipsuccesssub'               => 'Blocada succedite',
 'blockipsuccesstext'              => 'Le adresse IP "$1" ha essite blocate.
@@ -2018,6 +2102,7 @@ Le ration date pro le blocada de $1 es: "$2"',
 'blocklogpage'                    => 'Registro de blocadas',
 'blocklog-fulllog'                => 'Registro complete de blocadas',
 'blocklogentry'                   => 'blocava [[$1]] con un tempore de expiration de $2 $3',
+'reblock-logentry'                => 'cambiava configurationes de blocada pro [[$1]] con un tempore de expiration de $2 $3',
 'blocklogtext'                    => 'Isto es un registro de blocadas e disblocadas de usatores.
 Le adresses IP automaticamente blocate non es includite.
 Vide le [[Special:IPBlockList|lista de blocadas IP]] pro le lista de bannimentos e blocadas actualmente in operation.',
@@ -2032,6 +2117,8 @@ Vide le [[Special:IPBlockList|lista de blocadas IP]] pro le lista de bannimentos
 'ipb_expiry_invalid'              => 'Tempore de expiration invalide.',
 'ipb_expiry_temp'                 => 'Le blocadas de nomines de usator celate debe esser permanente.',
 'ipb_already_blocked'             => '"$1" es ja blocate',
+'ipb-needreblock'                 => '== Ja blocate ==
+$1 es ja blocate. Esque tu vole cambiar le configurationes?',
 'ipb_cant_unblock'                => 'Error: ID de blocada $1 non trovate. Es possibile que illo ha ja essite disblocate.',
 'ipb_blocked_as_range'            => 'Error: Le IP $1 non es blocate directemente e non pote esser disblocate.
 Illo es, nonobstante, blocate como parte del intervallo $2, le qual pote esser disblocate.',
@@ -2356,10 +2443,11 @@ Le causa es probabilemente un ligamine verso un sito externe que es presente in 
 'markedaspatrollederror-noautopatrol' => 'Tu non es permittite a marcar tu proprie modificationes como patruliate.',
 
 # Patrol log
-'patrol-log-page'   => 'Registro de patrulia',
-'patrol-log-header' => 'Isto es un registro de revisiones patruliate.',
-'patrol-log-line'   => 'marcava $1 de $2 como patruliate $3',
-'patrol-log-auto'   => '(automaticamente)',
+'patrol-log-page'      => 'Registro de patrulia',
+'patrol-log-header'    => 'Isto es un registro de revisiones patruliate.',
+'patrol-log-line'      => 'marcava $1 de $2 como patruliate $3',
+'patrol-log-auto'      => '(automaticamente)',
+'log-show-hide-patrol' => '$1 le registro de versiones patruliate',
 
 # Image deletion
 'deletedrevision'                 => 'Deleva le ancian revision $1',
@@ -2762,10 +2850,9 @@ Per favor confirma que tu realmente vole recrear iste pagina.",
 'recreate'            => 'Recrear',
 
 # action=purge
-'confirm_purge'        => 'Rader le cache de iste pagina?
-
-$1',
 'confirm_purge_button' => 'OK',
+'confirm-purge-top'    => 'Rader le cache de iste pagina?',
+'confirm-purge-bottom' => 'Purgar un pagina vacua le cache e fortia que appare le version le plus recente.',
 
 # Multipage image navigation
 'imgmultipageprev' => '← precedente pagina',
@@ -2829,6 +2916,7 @@ Tu pote etiam [[Special:Watchlist/edit|usar le editor standard]].',
 
 # Core parser functions
 'unknown_extension_tag' => 'Etiquetta de extension incognite "$1"',
+'duplicate-defaultsort' => 'Attention: Le clave de ordination predefinite "$2" supplanta le anterior clave de ordination predefinite "$1".',
 
 # Special:Version
 'version'                          => 'Version', # Not used as normal message but as header for the special page itself
@@ -2902,17 +2990,5 @@ Entra le nomine del file sin le prefixo \"{{ns:image}}:\".",
 #Le lineas comenciante con # essera tractate como commentos
 
 #Insere omne fragmentos regex super iste linea. Lassa iste linea exactemente como illo es</pre>',
-
-# Special:Nuke
-'nuke'               => 'Deletion in massa',
-'nuke-nopages'       => 'Nulle nove paginas per [[Special:Contributions/$1|$1]] trovate in le modificationes recente.',
-'nuke-list'          => 'Le sequente paginas esseva recentemente create per [[Special:Contributions/$1|$1]];
-entra un commento e clicca le button pro deler los.',
-'nuke-defaultreason' => 'Deletion in massa de paginas addite per $1',
-'nuke-tools'         => 'Iste instrumento permitte le deletion in massa de paginas recentemente addite per un usator o IP specific.
-Entra le nomine de usator o adresse IP pro obtener un lista de paginas a deler:',
-'nuke-submit-user'   => 'Ir',
-'nuke-submit-delete' => 'Deler seligites',
-'right-nuke'         => 'Deler paginas in massa',
 
 );

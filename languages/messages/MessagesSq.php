@@ -8,6 +8,7 @@
  * @author Dori
  * @author Eagleal
  * @author Ergon
+ * @author Urhixidur
  * @author לערי ריינהארט
  */
 
@@ -40,6 +41,40 @@ $namespaceNames = array(
 $namespaceAliases = array(
 	'Perdoruesi' => NS_USER,
 	'Perdoruesi_diskutim' => NS_USER_TALK,
+);
+
+$specialPageAliases = array(
+	'Upload'                    => array( 'Ngarko' ),
+	'Imagelist'                 => array( 'ListaSkedave' ),
+	'Newimages'                 => array( 'SkedaTëReja' ),
+	'Listusers'                 => array( 'RreshtoPërdoruesit' ),
+	'Statistics'                => array( 'Statistika' ),
+	'Randompage'                => array( 'Rastësishme', 'FaqeRastësishme' ),
+	'Uncategorizedpages'        => array( 'FaqeTëpakategorizuara' ),
+	'Uncategorizedcategories'   => array( 'KategoriTëpakategorizuara' ),
+	'Uncategorizedimages'       => array( 'SkedaTëpakategorizuara' ),
+	'Uncategorizedtemplates'    => array( 'StampaTëpakategorizuara' ),
+	'Unusedcategories'          => array( 'KategoriTëpapërdorura' ),
+	'Unusedimages'              => array( 'SkedaTëpapërdorura' ),
+	'Allpages'                  => array( 'TëgjithaFaqet' ),
+	'Emailuser'                 => array( 'EmailPërdoruesit' ),
+	'Confirmemail'              => array( 'KonfirmoEmail' ),
+	'Whatlinkshere'             => array( 'LidhjetKëtu' ),
+	'Movepage'                  => array( 'LëvizFaqe' ),
+	'Blockme'                   => array( 'BllokomMua' ),
+	'Categories'                => array( 'Kategori' ),
+	'Export'                    => array( 'Eksporto' ),
+	'Allmessages'               => array( 'TëgjithaMesazhet' ),
+	'Blockip'                   => array( 'BllokoIP' ),
+	'Import'                    => array( 'Importo' ),
+	'Mypage'                    => array( 'FaqjaIme' ),
+	'Mytalk'                    => array( 'DiskutimiImë' ),
+	'Mycontributions'           => array( 'KontributetëMiat' ),
+	'Listadmins'                => array( 'RreshtoAdmin' ),
+	'Listbots'                  => array( 'RreshtoBotët' ),
+	'Popularpages'              => array( 'FaqetëFamshme' ),
+	'Search'                    => array( 'Kërkim' ),
+	'Blankpage'                 => array( 'FaqeBosh' ),
 );
 
 $datePreferences = array(
@@ -617,7 +652,7 @@ Ju duhet të përputhni ndryshimet tuaja me tekstin ekzistues.
 Po na premtoni që ç'ka po jepni këtu e keni kontributin tuaj ose e keni kopjuar nga domeni publik apo nga burime të tjera të lira sipas ligjeve përkatëse (shikoni $1 për hollësirat). 
 <strong>NDALOHET DHËNIA E PUNIMEVE PA PASUR LEJE NGA AUTORI NË MOSPËRPUTHJE ME KËTË LICENSË!</strong>",
 'longpagewarning'                  => 'KUJDES: Kjo faqe është $1 kilobytes e gjatë; disa
-shfletues mund të kenë probleme për të redaktuar faqe që afrohen ose janë akoma më shumë se 32kb.
+shfletues mund të kenë probleme për të redaktuar faqe që afrohen ose janë akoma më shumë se 32 kb.
 Konsideroni ta ndani faqen në disa seksione më të vogla.',
 'longpageerror'                    => '<strong>GABIM: Tesksti që ju po e redaktoni është $1 KB i gjatë dhe është më i gjatë se maksimumi i lejuar prej $2 KB. Ndryshimet nuk mund të ruhen.</strong>',
 'readonlywarning'                  => 'KUJDES: Regjistri është bllokuar për mirëmbajtje,
@@ -673,7 +708,7 @@ Arsyeja e dhënë nga $3 është ''$2''.",
 'nohistory'           => 'Nuk ka histori redaktimesh për këtë faqe.',
 'currentrev'          => 'Versioni i tanishëm',
 'revisionasof'        => 'Versioni i $1',
-'revision-info'       => 'Versioni më $1 nga $2',
+'revision-info'       => 'Versioni më $1 nga $2', # Additionally available: $3: revision id
 'previousrevision'    => '← Version më i vjetër',
 'nextrevision'        => 'Version më i ri →',
 'currentrevisionlink' => 'shikoni versionin e tanishëm',
@@ -712,9 +747,9 @@ Shiko tek [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} regjistri i gri
 'revisiondelete'              => 'Shlyj/Reparo versionet',
 'revdelete-nooldid-title'     => 'Version i dëshiruar i pavfleshëm',
 'revdelete-nooldid-text'      => 'Ose nuk keni përcaktuar një version(e) të dëshiruar për veprimin, ose versioni nuk ekziston, ose po mundoheni të fshihni versionin e tanishëm.',
-'revdelete-selected'          => '{{PLURAL:$2|Versioni i zgjedhur i|Versionet e zgjedhura të}} [[:$1]]:',
-'logdelete-selected'          => '{{PLURAL:$1|Veprimi i zgjedhur në regjistër|Veprimet e zgjedhura në regjistër}}:',
-'revdelete-text'              => 'Përmbajtja dhe pjesët e tjera nuk janë të dukshme për të gjithë, por figurojnë në historikun e versioneve. Administratorët munden përmbajtjen e larguar ta shikojnë dhe restaurojnë, përveç në rastet kur një gjë e tillë është ndaluar ekstra.',
+'revdelete-selected'          => "'''{{PLURAL:$2|Versioni i zgjedhur i|Versionet e zgjedhura të}} [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Veprimi i zgjedhur në regjistër|Veprimet e zgjedhura në regjistër}}:'''",
+'revdelete-text'              => "'''Përmbajtja dhe pjesët e tjera nuk janë të dukshme për të gjithë, por figurojnë në historikun e versioneve.''' Administratorët munden përmbajtjen e larguar ta shikojnë dhe restaurojnë, përveç në rastet kur një gjë e tillë është ndaluar ekstra.",
 'revdelete-legend'            => 'Vendosni kufizimet për versionin:',
 'revdelete-hide-text'         => 'Fshihe tekstin e versionit',
 'revdelete-hide-name'         => 'Fshihe veprimin dhe shënjestrën',
@@ -950,6 +985,7 @@ Ju lutem kërkoni {{SITENAME}}-n përpara se të krijoni një artikull të ri se
 'recentchangestext'                 => 'Ndiqni ndryshime së fundmi tek kjo faqe.',
 'recentchanges-feed-description'    => 'Ndjek ndryshimet më të fundit në wiki tek kjo fushë.',
 'rcnote'                            => "Më poshtë {{PLURAL:$1|është '''1''' ndryshim| janë '''$1''' ndryshime}} së fundmi gjatë <strong>$2</strong> ditëve sipas të dhënave nga $4, $5.",
+'rcnotefrom'                        => 'Më poshtë janë ndryshime së fundmi nga <b>$2</b> (treguar deri në <b>$1</b>).',
 'rclistfrom'                        => 'Tregon ndryshime së fundmi duke filluar nga $1',
 'rcshowhideminor'                   => '$1 redaktimet e vogla',
 'rcshowhidebots'                    => '$1 robotët',
@@ -1376,16 +1412,6 @@ Në qoftë se dëshironi të hiqni një faqe nga lista mbikqyrëse më vonë, sh
 'iteminvalidname'      => "Problem me artikullin '$1', titull jo i saktë...",
 'wlnote'               => "Më poshtë {{PLURAL:$1|është $1 ndryshim i|janë $1 ndryshimet e}} {{PLURAL:$2|orës së fundit|'''$2''' orëve të fundit}}.",
 'wlshowlast'           => 'Trego $1 orët $2 ditët $3',
-'watchlist-show-bots'  => 'Trego redaktimet e robotëve',
-'watchlist-hide-bots'  => 'Fshih redaktimet e robotëve',
-'watchlist-show-own'   => 'Trego redaktimet e mia',
-'watchlist-hide-own'   => 'Fshih redaktimet e mia',
-'watchlist-show-minor' => 'Trego redaktimet e vogla',
-'watchlist-hide-minor' => 'Fshih redaktimet e vogla',
-'watchlist-show-anons' => 'Trego redaktimet anonime',
-'watchlist-hide-anons' => 'Fshih redaktimet anonime',
-'watchlist-show-liu'   => 'Trego përdoruesit e regjistruar',
-'watchlist-hide-liu'   => 'Fshih përdoruesit e regjistruar',
 'watchlist-options'    => 'Mundësit e listës mbikqyrëse',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -1460,7 +1486,7 @@ Të gjitha kohët janë sipas orës së shërbyesit.',
 
 Redaktimi i fundit është bërë nga [[User:$3|$3]] ([[User talk:$3|Diskutim]]).',
 'editcomment'      => 'Komenti i redaktimit ishte: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'Ndryshimet e [[Special:Contributions/$2|$2]] ([[User talk:$2|diskutimet]]) u kthyen mbrapsht, artikulli tani ndodhet në versionin e fundit nga [[User:$1|$1]].', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'Ndryshimet e [[Special:Contributions/$2|$2]] ([[User talk:$2|diskutimet]]) u kthyen mbrapsht, artikulli tani ndodhet në versionin e fundit nga [[User:$1|$1]].', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Ndryshimet e $1 u kthyen mbrapsh; artikulli ndodhet tek verzioni i $2.',
 'sessionfailure'   => 'Më duket se ka një problem me seancën tuaj të hyrjes. Veprimi juaj nuk është kryer për tu mbrojtur nga ndonjë veprim dashakeq kundrejt shfletimit tuaj. Ju lutem kthehuni mbrapsh, rifreskoni faqen prej nga erdhët dhe provojeni përsëri veprimin.',
 
@@ -2134,10 +2160,8 @@ Ju lutem konfirmoni nëse dëshironi me të vertetë ta ri-krijoni këtë artiku
 'recreate'            => 'Rikrijo',
 
 # action=purge
-'confirm_purge'        => 'Pastro cache për këtë faqe?
-
-$1',
 'confirm_purge_button' => 'Shko',
+'confirm-purge-top'    => 'Pastro cache për këtë faqe?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← faqja e kaluar',

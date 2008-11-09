@@ -580,7 +580,7 @@ class SpecialRecentChanges extends SpecialPage {
 	function makeOptionsLink( $title, $override, $options, $active = false ) {
 		global $wgUser;
 		$sk = $wgUser->getSkin();
-		$params = wfArrayMerge( $options, $override );
+		$params = $override + $options;
 		return $sk->link( $this->getTitle(), htmlspecialchars( $title ),
 			( $active ? array( 'style'=>'font-weight: bold;' ) : array() ), $params, array( 'known' ) );
 	}
@@ -594,6 +594,16 @@ class SpecialRecentChanges extends SpecialPage {
 		global $wgLang, $wgUser, $wgRCLinkLimits, $wgRCLinkDays;
 
 		$options = $nondefaults + $defaults;
+
+		$note = '';
+		if( $options['from'] ) {
+			$note .= wfMsgExt( 'rcnotefrom', array( 'parseinline' ),
+				$wgLang->formatNum( $options['limit'] ),
+				$wgLang->timeanddate( $options['from'], true ) ) . '<br />';
+		}
+		if( !wfEmptyMsg( 'rclegend', wfMsg('rclegend') ) ) {
+			$note .= wfMsgExt( 'rclegend', array('parseinline') ) . '<br />';
+		}
 
 		# Sort data for display and make sure it's unique after we've added user data.
 		$wgRCLinkLimits[] = $options['limit'];
@@ -649,6 +659,6 @@ class SpecialRecentChanges extends SpecialPage {
 		$rclinks = wfMsgExt( 'rclinks', array( 'parseinline', 'replaceafter' ),
 			$cl, $dl, $hl );
 		$rclistfrom = wfMsgExt( 'rclistfrom', array( 'parseinline', 'replaceafter' ), $tl );
-		return "$rclinks<br />$rclistfrom";
+		return "{$note}$rclinks<br />$rclistfrom";
 	}
 }

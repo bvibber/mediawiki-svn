@@ -451,7 +451,7 @@ Sayfanın silmää jurnalı raatlık için yazılêr burada:",
 'viewpagelogs'        => 'Bu yaprak için jurnalları göster',
 'currentrev'          => 'Şindiki versiya',
 'revisionasof'        => 'Sayfanın $1 datasındaki hali',
-'revision-info'       => '$1; $2 datalı versiya',
+'revision-info'       => '$1; $2 datalı versiya', # Additionally available: $3: revision id
 'previousrevision'    => '← İlerki hali',
 'nextrevision'        => 'Geerki hali →',
 'currentrevisionlink' => 'en bitki halini göster',
@@ -517,6 +517,7 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'recentchanges'                  => 'Bitki diişikmäklär',
 'recentchanges-feed-description' => 'Bu lentalan en bitki diişmäkleri vikiyä yaz.',
 'rcnote'                         => '$3 datasında bitki <strong>$2</strong> gündä yapılan <strong>$1</strong> diişmäk:',
+'rcnotefrom'                     => "'''$2''' datasınnan büüne kadar yapılan diişmäkler aşaada (en çok '''$1''' yazı gösteriler).",
 'rclistfrom'                     => 'Göster diişmäkleri ani $1 datasından beeri yapıldı',
 'rcshowhideminor'                => 'küçük diişilmäkläri $1',
 'rcshowhidebots'                 => 'botları $1',
@@ -649,27 +650,24 @@ Nışannar: (bitki) = şindiki versiyalan aradaki fark,
 'emailuser' => 'Gönder bu kullanıcıya bir e-mail',
 
 # Watchlist
-'watchlist'            => 'Bakmaa listam',
-'mywatchlist'          => 'Bakmaa listam',
-'watchlistfor'         => "('''$1''' için)",
-'addedwatch'           => 'Bakmaa listasına registrat edildi.',
-'addedwatchtext'       => '"<nowiki>$1</nowiki>" adlı sayfa [[Special:Watchlist|bakmaa listanıza]] registrat olundu.
+'watchlist'         => 'Bakmaa listam',
+'mywatchlist'       => 'Bakmaa listam',
+'watchlistfor'      => "('''$1''' için)",
+'addedwatch'        => 'Bakmaa listasına registrat edildi.',
+'addedwatchtext'    => '"<nowiki>$1</nowiki>" adlı sayfa [[Special:Watchlist|bakmaa listanıza]] registrat olundu.
 
 Gelecektä, bu sayfaya hem ilgili konuşmaa sayfasına yapılacêk diişmäkler burada yazılacêk.
 
 [[Special:RecentChanges|Bitki diişmäkler listası]] başlıı altında yazılacêk kalın bukvalarnan neçin ki kolayca seçilsin.
 
 Ne zaman neetlendiniz sayfayı bakmaa listasınnan çıkarmaa tuşlayın "sayfaya bakmaa durgun" baalantısına.',
-'removedwatch'         => 'Bakmaa listanızdan silindi',
-'removedwatchtext'     => '"<nowiki>$1</nowiki>" yapraı siir listanızdan silindi.',
-'watch'                => 'Bak',
-'watchthispage'        => 'Bak bu sayfaya',
-'unwatch'              => 'Durgun sayfa izlemää',
-'watchlist-details'    => 'Diil konuşmaa sayfaları $1 sayfa bakmaa listanızda.',
-'wlshowlast'           => 'Bitki $1 saati $2 günü göster $3',
-'watchlist-hide-bots'  => 'Bot diişmäklerini sakla',
-'watchlist-hide-own'   => 'Benim diişmäklerimi sakla',
-'watchlist-hide-minor' => 'Küçük diişmäkleri sakla',
+'removedwatch'      => 'Bakmaa listanızdan silindi',
+'removedwatchtext'  => '"<nowiki>$1</nowiki>" yapraı siir listanızdan silindi.',
+'watch'             => 'Bak',
+'watchthispage'     => 'Bak bu sayfaya',
+'unwatch'           => 'Durgun sayfa izlemää',
+'watchlist-details' => 'Diil konuşmaa sayfaları $1 sayfa bakmaa listanızda.',
+'wlshowlast'        => 'Bitki $1 saati $2 günü göster $3',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Bakılêr...',

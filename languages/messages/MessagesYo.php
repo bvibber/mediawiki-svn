@@ -6,6 +6,7 @@
  *
  * @author Demmy
  * @author Meno25
+ * @author Urhixidur
  */
 
 $namespaceNames = array(
@@ -428,7 +429,7 @@ Tí ẹ kò bá fẹ́ kí ìkọọ́lẹ̀ yín ó jẹ́ títúnṣe tàbí k
 Bákannà ẹ tún ṣèlérí fún wa wípé ẹ̀yin lẹkọ́ fúnra arayín, tàbí ẹ wòókọ láti agbègbè ìgboro tàbí irú ìtìlẹ́yín ọ̀fẹ́ bíi bẹ́ẹ̀.
 <strong>Ẹ MỌ́ MÚ IṢẸ́ TÓ NÍ Ẹ̀TỌ́ÀWÒKỌ SÍLẸ̀ LÁÌ GBÀṢẸ!</strong>',
 'longpagewarning'        => "<strong>ÌKILỌ̀: Ojúewé yìí jẹ́ $1 kilobytes ní gúngùn;
-àwọn browsers míràn le è ní ṣòro láti ṣ'àtúnṣe àwọn ojúewé tó tó tàbí tògùnju 32kb lọ.
+àwọn browsers míràn le è ní ṣòro láti ṣ'àtúnṣe àwọn ojúewé tó tó tàbí tògùnju 32 kb lọ.
 Ẹ jọ̀wọ́ ẹ rò ó wò bóyá ẹ lè fọ́ ojúewé ọ̀ún sí abala kéékèké.</strong>",
 'templatesused'          => 'Àwọn àdàkọ tí a lò lórí ojúewé yìí:',
 'templatesusedpreview'   => 'Àwọn àdàkọ tí a lò nìnú àgbéyẹ́wò yìí:',
@@ -448,7 +449,7 @@ Bákannà ẹ tún ṣèlérí fún wa wípé ẹ̀yin lẹkọ́ fúnra arayín
 'viewpagelogs'        => 'Ẹ wo àkọsílẹ̀ fún ojúewé yìí',
 'currentrev'          => 'Àtúnyẹ̀wò ìsinsìnyí',
 'revisionasof'        => 'Àtúnyẹ̀wò ní $1',
-'revision-info'       => "Àtúnyẹ̀wò ní $1 l'átọwọ́ $2",
+'revision-info'       => "Àtúnyẹ̀wò ní $1 l'átọwọ́ $2", # Additionally available: $3: revision id
 'previousrevision'    => '← Àtúnyẹ̀wò tópẹ́ju',
 'nextrevision'        => 'Àtúnyẹ̀wò tótuntunju →',
 'currentrevisionlink' => 'Àtúnyẹ̀wò ìsinsìnyí',
@@ -703,23 +704,20 @@ Bákannà ẹ tún ṣèlérí fún wa wípé ẹ̀yin lẹkọ́ fúnra arayín
 'emailsend'    => 'Firánṣẹ́',
 
 # Watchlist
-'watchlist'            => 'Ìmójútó mi',
-'mywatchlist'          => 'Ìmójútó mi',
-'watchlistfor'         => "(fún '''$1''')",
-'addedwatch'           => 'Ti fikún sí ìmójútó',
-'addedwatchtext'       => "A ti ṣ'àfikún \"[[:\$1]]\" sí [[Special:Watchlist|ìmójútó]] yín.
+'watchlist'         => 'Ìmójútó mi',
+'mywatchlist'       => 'Ìmójútó mi',
+'watchlistfor'      => "(fún '''$1''')",
+'addedwatch'        => 'Ti fikún sí ìmójútó',
+'addedwatchtext'    => "A ti ṣ'àfikún \"[[:\$1]]\" sí [[Special:Watchlist|ìmójútó]] yín.
 A óò ṣ'àkójọ àwọn àtúnṣe ọjọ́wajú sí ojúewé yìí àti ojúewé ọ̀rọ̀ rẹ̀ sí bẹ̀. Bákanáà ojúewé náà yíò hàn '''kedere''' nìnú [[Special:RecentChanges|àkójọ àwọn àtúnṣe tuntun]] kó le ba à rọrùn láti rí.",
-'removedwatch'         => 'Ti mú kúrò nínú ìmójútó',
-'removedwatchtext'     => 'A ti yọ ojúewé "[[:$1]]" kúrò nínú [[Special:Watchlist|ìmójútó yín]].',
-'watch'                => "M'ójútó",
-'watchthispage'        => "M'ójútó ojúewé yi",
-'unwatch'              => "Já'wọ́ ìmójútó",
-'unwatchthispage'      => "Já'wọ́ ìmójútó ojúewé yi",
-'watchlist-details'    => '{{PLURAL:$1|Ojúewé $1|Àwọn ojúewé $1}} ló wà nínú ìmójútó yín, tí a kò bá ka àwọn ojúewé ọ̀rọ̀.',
-'wlshowlast'           => 'Áfihàn wákàtí $1 sẹ́yìn ọjọ́ $2 sẹ́yìn $3',
-'watchlist-hide-bots'  => 'Ìbòmọ́lẹ̀ àwọn àtúnṣe bot',
-'watchlist-hide-own'   => 'Ìbòmọ́lẹ̀ àwọn àtúnṣe mi',
-'watchlist-hide-minor' => 'Ìbòmọ́lẹ̀ àwọn àtúnṣe kékéèké',
+'removedwatch'      => 'Ti mú kúrò nínú ìmójútó',
+'removedwatchtext'  => 'A ti yọ ojúewé "[[:$1]]" kúrò nínú [[Special:Watchlist|ìmójútó yín]].',
+'watch'             => "M'ójútó",
+'watchthispage'     => "M'ójútó ojúewé yi",
+'unwatch'           => "Já'wọ́ ìmójútó",
+'unwatchthispage'   => "Já'wọ́ ìmójútó ojúewé yi",
+'watchlist-details' => '{{PLURAL:$1|Ojúewé $1|Àwọn ojúewé $1}} ló wà nínú ìmójútó yín, tí a kò bá ka àwọn ojúewé ọ̀rọ̀.',
+'wlshowlast'        => 'Áfihàn wákàtí $1 sẹ́yìn ọjọ́ $2 sẹ́yìn $3',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Ún mójútó...',

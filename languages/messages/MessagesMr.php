@@ -16,42 +16,6 @@
  * @author शࣿरीहरि
  */
 
-$specialPageAliases = array(
-	'DoubleRedirects'           => array( 'दुहेरी_पुनर्निर्देशने' ),
-	'BrokenRedirects'           => array( 'चुकीची_पुनर्निर्देशने' ),
-	'Disambiguations'           => array( 'नि:संदिग्धीकरण' ),
-	'Preferences'               => array( 'पसंती' ),
-	'Watchlist'                 => array( 'पहार्‍याची_सूची' ),
-	'Recentchanges'             => array( 'अलीकडील_बदल' ),
-	'Upload'                    => array( 'चढवा' ),
-	'Imagelist'                 => array( 'चित्रयादी' ),
-	'Newimages'                 => array( 'नवीन_चित्रे' ),
-	'Listusers'                 => array( 'सदस्यांची_यादी' ),
-	'Statistics'                => array( 'सांख्यिकी' ),
-	'Randompage'                => array( 'अविशिष्ट', 'अविशिष्ट_पृष्ठ' ),
-	'Uncategorizedpages'        => array( 'अवर्गीकृत_पाने' ),
-	'Uncategorizedcategories'   => array( 'अवर्गीकृत_वर्ग' ),
-	'Uncategorizedimages'       => array( 'अवर्गीकृत_चित्रे' ),
-	'Uncategorizedtemplates'    => array( 'अवर्गीकृत_साचे' ),
-	'Unusedcategories'          => array( 'न_वापरलेले_वर्ग' ),
-	'Unusedimages'              => array( 'न_वापरलेली_चित्रे' ),
-	'Wantedpages'               => array( 'हवे_असलेले_लेख' ),
-	'Wantedcategories'          => array( 'हवे_असलेले_वर्ग' ),
-	'Shortpages'                => array( 'छोटी_पाने' ),
-	'Longpages'                 => array( 'मोठी_पाने' ),
-	'Newpages'                  => array( 'नवीन_पाने' ),
-	'Ancientpages'              => array( 'जुनी_पाने' ),
-	'Deadendpages'              => array( 'टोकाची_पाने' ),
-	'Protectedpages'            => array( 'सुरक्षित_पाने' ),
-	'Allpages'                  => array( 'सर्व_पाने' ),
-	'Whatlinkshere'             => array( 'येथे_काय_जोडले_आहे' ),
-	'Categories'                => array( 'वर्ग' ),
-	'Listadmins'                => array( 'प्रबंधकांची_यादी' ),
-	'Listbots'                  => array( 'सांगकाम्यांची_यादी' ),
-	'Search'                    => array( 'शोधा' ),
-	'Filepath'                  => array( 'संचिकेचा_पत्ता_(पाथ)' ),
-);
-
 $skinNames = array(
 	'standard'    => 'अभिजात',
 	'nostalgia'   => 'रम्य',
@@ -82,6 +46,65 @@ $namespaceNames = array(
 	NS_HELP_TALK      => 'साहाय्य_चर्चा',
 	NS_CATEGORY       => 'वर्ग',
 	NS_CATEGORY_TALK  => 'वर्ग_चर्चा',
+);
+
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'दुहेरी पुनर्निर्देशने' ),
+	'BrokenRedirects'           => array( 'चुकीची पुनर्निर्देशने' ),
+	'Disambiguations'           => array( 'नि:संदिग्धीकरण' ),
+	'Userlogin'                 => array( 'सदस्यप्रवेश' ),
+	'CreateAccount'             => array( 'सदस्यनोंद' ),
+	'Preferences'               => array( 'पसंती' ),
+	'Watchlist'                 => array( 'पहार्‍याची सूची' ),
+	'Recentchanges'             => array( 'अलीकडील बदल' ),
+	'Upload'                    => array( 'चढवा' ),
+	'Imagelist'                 => array( 'चित्रयादी' ),
+	'Newimages'                 => array( 'नवीन चित्रे' ),
+	'Listusers'                 => array( 'सदस्यांची यादी' ),
+	'Listgrouprights'           => array( 'गट अधिकार यादी' ),
+	'Statistics'                => array( 'सांख्यिकी' ),
+	'Randompage'                => array( 'अविशिष्ट', 'अविशिष्ट पृष्ठ' ),
+	'Uncategorizedpages'        => array( 'अवर्गीकृत पाने' ),
+	'Uncategorizedcategories'   => array( 'अवर्गीकृत वर्ग' ),
+	'Uncategorizedimages'       => array( 'अवर्गीकृत चित्रे' ),
+	'Uncategorizedtemplates'    => array( 'अवर्गीकृत साचे' ),
+	'Unusedcategories'          => array( 'न वापरलेले वर्ग' ),
+	'Unusedimages'              => array( 'न वापरलेली चित्रे' ),
+	'Wantedpages'               => array( 'हवे असलेले लेख' ),
+	'Wantedcategories'          => array( 'हवे असलेले वर्ग' ),
+	'Mostlinked'                => array( 'सर्वात जास्त जोडलेली' ),
+	'Mostlinkedcategories'      => array( 'सर्वात जास्त जोडलेले वर्ग', 'सर्वात जास्त वापरलेले वर्ग' ),
+	'Mostlinkedtemplates'       => array( 'सर्वात जास्त जोडलेले साचे', 'सर्वात जास्त वापरलेले साचे' ),
+	'Mostcategories'            => array( 'सर्वात जास्त वर्ग' ),
+	'Shortpages'                => array( 'छोटी पाने' ),
+	'Longpages'                 => array( 'मोठी पाने' ),
+	'Newpages'                  => array( 'नवीन पाने' ),
+	'Ancientpages'              => array( 'जुनी पाने' ),
+	'Deadendpages'              => array( 'टोकाची पाने' ),
+	'Protectedpages'            => array( 'सुरक्षित पाने' ),
+	'Protectedtitles'           => array( 'सुरक्षित शीर्षके' ),
+	'Allpages'                  => array( 'सर्व पाने' ),
+	'Specialpages'              => array( 'विशेष पाने' ),
+	'Contributions'             => array( 'योगदान' ),
+	'Whatlinkshere'             => array( 'येथे काय जोडले आहे' ),
+	'Movepage'                  => array( 'पान हलवा' ),
+	'Categories'                => array( 'वर्ग' ),
+	'Export'                    => array( 'निर्यात' ),
+	'Version'                   => array( 'आवृत्ती' ),
+	'Allmessages'               => array( 'सर्व निरोप' ),
+	'Undelete'                  => array( 'काढणे रद्द करा' ),
+	'Import'                    => array( 'आयात' ),
+	'Lockdb'                    => array( 'कुलुपबंद करा (डेटाबेस)' ),
+	'Userrights'                => array( 'खातेदाराचे अधिकार' ),
+	'Mypage'                    => array( 'माझे पान' ),
+	'Mytalk'                    => array( 'माझ्या चर्चा' ),
+	'Mycontributions'           => array( 'माझे योगदान' ),
+	'Listadmins'                => array( 'प्रबंधकांची यादी' ),
+	'Listbots'                  => array( 'सांगकाम्यांची यादी' ),
+	'Popularpages'              => array( 'प्रसिद्ध पाने' ),
+	'Search'                    => array( 'शोधा' ),
+	'MergeHistory'              => array( 'इतिहास एकत्र करा' ),
+	'Filepath'                  => array( 'संचिकेचा पत्ता (पाथ)' ),
 );
 
 $magicWords = array(
@@ -773,7 +796,7 @@ $3ने ''$2'' कारण दिले आहे.",
 'nohistory'           => 'या पृष्ठासाठी आवृत्ती इतिहास अस्तित्वात नाही.',
 'currentrev'          => 'चालू आवृत्ती',
 'revisionasof'        => '$1 नुसारची आवृत्ती',
-'revision-info'       => '$2ने $1चे आवर्तन',
+'revision-info'       => '$2ने $1चे आवर्तन', # Additionally available: $3: revision id
 'previousrevision'    => '←मागील आवृत्ती',
 'nextrevision'        => 'पुढील आवृत्ती→',
 'currentrevisionlink' => 'आताची आवृत्ती',
@@ -818,11 +841,11 @@ $3ने ''$2'' कारण दिले आहे.",
 'revisiondelete'              => 'आवर्तने वगळा/पुनर्स्थापित करा',
 'revdelete-nooldid-title'     => 'अपेक्षीत आवृत्ती दिलेली नाही',
 'revdelete-nooldid-text'      => '!!आपण ही कृती करावयाची आवर्तने सूचीत केलेली नाहीत, दिलेले आवर्तन अस्तित्वात नाही, किंवा तुम्ही सध्याचे आवर्तन लपविण्याचा प्रयत्न करीत आहात.',
-'revdelete-selected'          => '[[:$1]] {{PLURAL:$2|चे निवडलेले आवर्तन|ची निवडलेली आवर्तने}}:',
-'logdelete-selected'          => '{{PLURAL:$1|निवडलेली नोंदीकृत घटना|निवडलेल्या नोंदीकृत घटना}}:',
-'revdelete-text'              => 'वगळलेल्या नोंदी आणि घटना अजूनही पानाच्या इतिहासात आणि नोंदीत आढळेल,परंतु मजकुराचा भाग सार्वजनिक स्वरूपात उपलब्ध राहणार नाही.
+'revdelete-selected'          => "'''[[:$1]] {{PLURAL:$2|चे निवडलेले आवर्तन|ची निवडलेली आवर्तने}}:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|निवडलेली नोंदीकृत घटना|निवडलेल्या नोंदीकृत घटना}}:'''",
+'revdelete-text'              => "'''वगळलेल्या नोंदी आणि घटना अजूनही पानाच्या इतिहासात आणि नोंदीत आढळेल,परंतु मजकुराचा भाग सार्वजनिक स्वरूपात उपलब्ध राहणार नाही.'''
 
-अजून इतर  प्रतिबंध घातल्या शिवाय {{SITENAME}}चे इतर प्रबंधक झाकलेला मजकुर याच दुव्याने परतवू शकतील.',
+अजून इतर  प्रतिबंध घातल्या शिवाय {{SITENAME}}चे इतर प्रबंधक झाकलेला मजकुर याच दुव्याने परतवू शकतील.",
 'revdelete-legend'            => 'दृश्य बंधने निश्चित करा',
 'revdelete-hide-text'         => 'आवर्तीत मजकुर लपवा',
 'revdelete-hide-name'         => 'कृती आणि ध्येय लपवा',
@@ -1105,6 +1128,7 @@ $3ने ''$2'' कारण दिले आहे.",
 'recentchangestext'                 => 'विकितील अलीकडील बदल या पानावर दिसतात.',
 'recentchanges-feed-description'    => 'या रसदीमधील विकीवर झालेले सर्वात अलीकडील बदल पहा.',
 'rcnote'                            => "खाली $4, $5 पर्यंतचे गेल्या {{PLURAL:$2|'''१''' दिवसातील|'''$2''' दिवसांतील}} {{PLURAL:$1|शेवटचा '''1''' बदल|शेवटचे '''$1''' बदल}} दिलेले आहेत.",
+'rcnotefrom'                        => 'खाली <b>$2</b> पासूनचे (<b>$1</b> किंवा कमी) बदल दाखवले आहेत.',
 'rclistfrom'                        => '$1 नंतर केले गेलेले बदल दाखवा.',
 'rcshowhideminor'                   => 'छोटे बदल $1',
 'rcshowhidebots'                    => 'सांगकामे(बॉट्स) $1',
@@ -1526,12 +1550,6 @@ Input:contenttype/subtype, e.g. <tt>image/jpeg</tt>.',
 'iteminvalidname'      => "'$1'बाबीस समस्या, अमान्य नाव...",
 'wlnote'               => "खाली  गेल्या {{PLURAL:$2|तासातील|'''$2''' तासातील}} {{PLURAL:$1|शेवटचा बदल आहे|शेवटाचे '''$1'''बदल आहेत }}.",
 'wlshowlast'           => 'मागील $1 तास $2 दिवस $3 पहा',
-'watchlist-show-bots'  => 'सांगकाम्यांची संपादने पहा',
-'watchlist-hide-bots'  => 'सांगकाम्यांची संपादने लपवा',
-'watchlist-show-own'   => 'माझी संपादने पहा',
-'watchlist-hide-own'   => 'माझी संपादने लपवा',
-'watchlist-show-minor' => 'छोटी संपादने पहा',
-'watchlist-hide-minor' => 'छोटी संपादने लपवा',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'पाहताहे...',
@@ -1613,7 +1631,7 @@ $NEWPAGE
 
 शेवटचे संपादन [[User:$3|$3]] ([[User talk:$3|Talk]])-चे होते.',
 'editcomment'      => 'बदलासोबतची नोंद होती : "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => '[[Special:Contributions/$2|$2]] ([[User talk:$2|चर्चा]]) यांनी केलेले बदल [[User:$1|$1]] यांच्या आवृत्तीकडे पूर्वपदास नेले.', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => '[[Special:Contributions/$2|$2]] ([[User talk:$2|चर्चा]]) यांनी केलेले बदल [[User:$1|$1]] यांच्या आवृत्तीकडे पूर्वपदास नेले.', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => '$1 ने उलटवलेली संपादने;$2 च्या आवृत्तीस परत नेली.',
 'sessionfailure'   => 'तुमच्या दाखल सत्रात काही समस्या दिसते;सत्र अपहारणा पासून काळजी घेण्याच्या दृष्टीने ही कृती रद्द केली गेली आहे.कपया आपल्या विचरकाच्या "back" कळीवर टिचकी मारा आणि तुम्ही ज्या पानावरून आला ते पुन्हा चढवा,आणि प्रत प्रयत्न करा.',
 
@@ -2470,10 +2488,8 @@ $5
 'recreate'            => 'पुनर्निर्माण',
 
 # action=purge
-'confirm_purge'        => 'यापानाची सय रिकामी करावयाची आहे?
-
-$1',
 'confirm_purge_button' => 'ठीक',
+'confirm-purge-top'    => 'यापानाची सय रिकामी करावयाची आहे?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← मागील पान',
@@ -2594,15 +2610,5 @@ $1',
 'specialpages-group-wiki'        => 'विकि डाटा व उपकरणे',
 'specialpages-group-redirects'   => 'पुनर्निर्देशन करणारी विशेष पृष्ठे',
 'specialpages-group-spam'        => 'स्पॅम उपकरणे',
-
-# Special:Nuke
-'nuke'               => 'एकदम खूप पाने वगळा',
-'nuke-nopages'       => '[[Special:Contributions/$1|$1]] कडून अलीकडील बदलांमध्ये नवीन पाने नाहीत.',
-'nuke-list'          => 'खालील पाने ही [[Special:Contributions/$1|$1]] ने अलिकडे वाढविलेली आहेत; शेरा द्या व वगळण्यासाठी कळीवर टिचकी द्या.',
-'nuke-defaultreason' => '$1 ने नवीन वाढविलेली अनेक पाने एकावेळी वगळा',
-'nuke-tools'         => 'हे उपकरण एखाद्या विशिष्ट सदस्य अथवा अंकपत्त्याद्वारे नवीन तयार करण्यात आलेल्या पानांना एकाचवेळी वगळण्याची संधी देते. सदस्य नाव अथवा अंकपत्ता दिल्यास वगळण्यासाठी पानांची यादी मिळेल:',
-'nuke-submit-user'   => 'जा',
-'nuke-submit-delete' => 'निवडलेले वगळा',
-'right-nuke'         => 'खूप पाने एकत्र वगळा',
 
 );

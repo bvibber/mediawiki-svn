@@ -22,6 +22,7 @@
  * @author INkubusse
  * @author Jon Harald Søby
  * @author Kizito
+ * @author Leinad
  * @author Lejonel
  * @author Li-sung
  * @author Lloffiwr
@@ -583,10 +584,11 @@ Parameters:
 * <tt>$7</tt> is the intended target of the block (what the blocking user specified in the blocking form)
 * <tt>$8</tt> is the timestamp when the block started',
 'blockednoreason'                  => '{{Identical|No reason given}}',
+'whitelistedittext'                => '* $1: link to Special:UserLogin with {{msg|loginreqlink}} as link description',
 'nosuchsectiontext'                => 'This message is displayed when a user tries to edit a section that does not exist. 
 
 Parameter $1 is the content of section parameter in the URL (for example 1234 in the URL http://translatewiki.net/w/i.php?title=Sandbox&action=edit&section=1234)',
-'loginreqlink'                     => 'Take a look on inflection. Used as parameter in messages loginreqpagetext and whitelistedittext.
+'loginreqlink'                     => 'Take a look on inflection. Used as parameter in {{msg|loginreqpagetext}} and {{msg|whitelistedittext}}.
 
 {{Identical|Log in}}',
 'newarticle'                       => '{{Identical|New}}',
@@ -633,8 +635,9 @@ Please report at [[Support]] if you are unable to properly translate this messag
 'revisionasof'           => "Used on a difference page when comparing different versions of a page or when viewing an non-current version of a page. \$1 is the date/time at which the revision was created. Example: \"''Revision as of 14:44, 24 January 2008''\".",
 'revision-info'          => 'Appears just below the page title when an old version of the page is being viewed.
 
-$1 indicates the time of that revision and 
-$2 the author of the revision',
+* $1 indicates the time of that revision and 
+* $2 the author of the revision
+* (optional) $3 is the revision ID', # Additionally available: $3: revision id
 'currentrevisionlink'    => '{{Identical|Current revision}}',
 'cur'                    => 'Link in page history',
 'next'                   => 'Link in page history
@@ -745,15 +748,15 @@ Parameter $1 is either {{msg|revdelete-content}} (when unhiding the page content
 'diff-multi'              => "This message appears in the revision history of a page when comparing two versions which aren't consecutive.",
 'diff-src'                => '{{Identical|Source}}',
 'diff-with'               => '* "<code><nowiki>&amp;#32;</nowiki></code>" is a forced space; leave it in if your language uses spaces
-* $1 is <need more info>
-* $2 is <need more info>
+* $1 is a name of a HTML attribute (for example <code>style</code> or <code>class</code>)
+* $2 is the value of the attribute (for example <code>background:red;</code> in <code>style="background:red;"</code>)
 Used in conjunction with {{msg-mw|diff-with-additional}} and {{msg-mw|diff-with-final}} in the head position before a {{msg-mw|comma-separator}} separated list.',
-'diff-with-additional'    => '* $1 is <need more info>
-* $2 is <need more info>
+'diff-with-additional'    => '* $1 is a name of a HTML attribute (for example <code>style</code> or <code>class</code>)
+* $2 is the value of the attribute (for example <code>background:red;</code> in <code>style="background:red;"</code>)
 Used, possibly repeatedly, in a {{msg-mw|comma-separator}} separated list after {{msg-mw|diff-with}} and before {{msg-mw|diff-with-final}}.',
 'diff-with-final'         => '* "<code><nowiki>&amp;#32;</nowiki></code>" is a forced space; leave it in if your language uses spaces
-* $1 is <need more info>
-* $2 is <need more info>
+* $1 is a name of a HTML attribute (for example <code>style</code> or <code>class</code>)
+* $2 is the value of the attribute (for example <code>background:red;</code> in <code>style="background:red;"</code>)
 Used in the final position of a {{msg-mw|comma-separator}} separated list headed by {{msg-mw|diff-with}} followed by zero or more repetitions of {{msg-mw|diff-with-additional}}.',
 'diff-width'              => '{{Identical|Width}}',
 'diff-height'             => '{{Identical|Height}}',
@@ -908,68 +911,69 @@ Shown as legend of the second fieldset of the tab 'Search' in [[Special:Preferen
 'grouppage-suppress'      => 'Link to project page of this group, displayed on [[Special:ListUsers/suppress]].',
 
 # Rights
-'right-read'             => '{{doc-right}}
+'right-read'               => '{{doc-right}}
 Basic right to read any page.',
-'right-edit'             => '{{doc-right}}
+'right-edit'               => '{{doc-right}}
 Basic right to edit pages that are not protected.',
-'right-createpage'       => '{{doc-right}}
+'right-createpage'         => '{{doc-right}}
 Basic right to create pages. The right to edit discussion/talk pages is {{msg|right-createtalk|pl=yes}}.',
-'right-createtalk'       => '{{doc-right}}
+'right-createtalk'         => '{{doc-right}}
 Basic right to create discussion/talk pages. The right to edit other pages is {{msg|right-createpage|pl=yes}}.',
-'right-createaccount'    => '{{doc-right}}
+'right-createaccount'      => '{{doc-right}}
 The right to [[Special:CreateAccount|create a user account]].',
-'right-minoredit'        => '{{doc-right}}
+'right-minoredit'          => '{{doc-right}}
 The right to use the "This is a minor edit" checkbox. See {{msg|minoredit|pl=yes}} for the message used for that checkbox.',
-'right-move'             => '{{doc-right}}
+'right-move'               => '{{doc-right}}
 The right to move any page that is not protected from moving.',
-'right-upload'           => '{{doc-right}}
+'right-move-rootuserpages' => '{{doc-right}}',
+'right-upload'             => '{{doc-right}}
 The right to [[Special:Upload|upload]] a file (this includes images, media, audio, ...).',
-'right-reupload'         => '{{doc-right}}
+'right-reupload'           => '{{doc-right}}
 The right to upload a file under a file name that already exists. Related messages: {{msg|right-upload|pl=yes}}, {{msg|right-reupload-own|pl=yes}} and {{msg|right-reupload-shared|pl=yes}}.',
-'right-reupload-own'     => '{{doc-right}}
+'right-reupload-own'       => '{{doc-right}}
 Right to upload a file under a file name that already exists, and that the same user has uploaded. Related messages: {{msg|right-upload|pl=yes}} and {{msg|right-reupload|pl=yes}}.',
-'right-reupload-shared'  => '{{doc-right}}
+'right-reupload-shared'    => '{{doc-right}}
 The right to upload a file locally under a file name that already exists in a shared database (for example Commons). Related messages: {{msg|right-upload|pl=yes}} and {{msg|right-reupload|pl=yes}}.',
-'right-purge'            => '{{doc-right}}
+'right-purge'              => '{{doc-right}}
 The right to use <tt>&action=purge</tt> in the URL, without needing to confirm it (by default, anonymous users need to confirm it).',
-'right-autoconfirmed'    => "{{doc-right}}
+'right-autoconfirmed'      => "{{doc-right}}
 If your account is older than [[mw:Manual:\$wgAutoConfirmAge|wgAutoConfirmAge]] and if you have at least [[mw:Manual:\$wgAutoConfirmCount|\$wgAutoConfirmCount]] edits, you are in the '''group \"autoconfirmed\"''' (note that you can't see this group at [[Special:ListUsers]]).
 If you are in that group, you have (by default) the '''right \"autoconfirmed\"'''. With this right, you can for example <!-- I think this right includes more things --> edit semi-protected pages.",
-'right-nominornewtalk'   => '{{doc-right}}
+'right-nominornewtalk'     => '{{doc-right}}
 If someone with this right (bots by default) edits a user talk page and marks it as minor (requires {{msg|right-minoredit|pl=yes}}), the user will not get a notification "You have new messages".',
-'right-deleterevision'   => 'This is a user right that is part of the [[mw:RevisionDelete|RevisionDelete]] feature.
+'right-deleterevision'     => 'This is a user right that is part of the [[mw:RevisionDelete|RevisionDelete]] feature.
 It can be given to the group {{msg|group-sysop|pl=yes}}, although this right is disabled by default.
 
 See also
 * {{msg|right-suppressionlog|pl=yes}}
 * {{msg|right-hideuser|pl=yes}}
 * {{msg|right-suppressrevision|pl=yes}}',
-'right-suppressrevision' => 'This is a user right that is part of the [[mw:RevisionDelete|RevisionDelete]] feature.
+'right-suppressrevision'   => 'This is a user right that is part of the [[mw:RevisionDelete|RevisionDelete]] feature.
 It can be given to the group {{msg|group-suppress|pl=yes}}, although that group is disabled by default.
 
 See also
 * {{msg|right-suppressionlog|pl=yes}}
 * {{msg|right-hideuser|pl=yes}}
 * {{msg|right-deleterevision|pl=yes}}',
-'right-suppressionlog'   => 'This is a user right that is part of the [[mw:RevisionDelete|RevisionDelete]] feature.
+'right-suppressionlog'     => 'This is a user right that is part of the [[mw:RevisionDelete|RevisionDelete]] feature.
 It can be given to the group {{msg|group-suppress|pl=yes}}, although that group is disabled by default.
 
 See also
 * {{msg|right-suppressrevision|pl=yes}}
 * {{msg|right-hideuser|pl=yes}}
 * {{msg|right-deleterevision|pl=yes}}',
-'right-hideuser'         => 'This is a user right that is part of the [[mw:RevisionDelete|RevisionDelete]] feature.
+'right-hideuser'           => 'This is a user right that is part of the [[mw:RevisionDelete|RevisionDelete]] feature.
 It can be given to the group {{msg|group-suppress|pl=yes}}, although that group is disabled by default.
 
 See also
 * {{msg|right-suppressionlog|pl=yes}}
 * {{msg|right-suppressrevision|pl=yes}}
 * {{msg|right-deleterevision|pl=yes}}',
-'right-ipblock-exempt'   => 'This user automatically 
+'right-ipblock-exempt'     => 'This user automatically 
 bypasses IP blocks, auto-blocks and range blocks - so I presume - but I am uncertain',
-'right-markbotedits'     => '{{doc-right}}
+'right-markbotedits'       => '{{doc-right}}
 A user with this right can mark a roll-back edit as a bot edit by adding <tt>&bot=1</tt> to the URL (not by default).',
-'right-noratelimit'      => '{{doc-right}}
+'right-noratelimit'        => '{{doc-right}}
 The rate limits have no effect on the groups that have this right. Rate limits is a restriction that you can only do X actions (edits, moves, etc.) in Y number of seconds (set by [[mw:Manual:$wgRateLimits|$wgRateLimits]]).',
 
 # User rights log
@@ -992,6 +996,7 @@ The rate limits have no effect on the groups that have this right. Rate limits i
 'action-minoredit'            => '{{Doc-action}}',
 'action-move'                 => '{{Doc-action}}',
 'action-move-subpages'        => '{{Doc-action}}',
+'action-move-rootuserpages'   => '{{Doc-action}}',
 'action-upload'               => '{{Doc-action}}',
 'action-reupload'             => '{{Doc-action}}',
 'action-reupload-shared'      => '{{Doc-action}}',
@@ -1013,7 +1018,9 @@ The rate limits have no effect on the groups that have this right. Rate limits i
 'action-unwatchedpages'       => '{{Doc-action}}',
 'action-trackback'            => '{{Doc-action}}',
 'action-mergehistory'         => '{{Doc-action}}',
-'action-userrights'           => '{{Doc-action}}',
+'action-userrights'           => '{{Doc-action}}
+
+This action allows editing of all of the "user rights", not just the rights of the group "all users".',
 'action-userrights-interwiki' => '{{Doc-action}}',
 'action-siteadmin'            => '{{Doc-action}}',
 
@@ -1032,6 +1039,10 @@ The rate limits have no effect on the groups that have this right. Rate limits i
 * $5 is a time alone.
 
  Example: "\'\'Below are the last 50 changes in the last 7 days, as of 14:48, 24 January 2008.\'\'"',
+'rcnotefrom'           => 'This message is displayed at [[Special:RecentChanges]] when viewing recentchanges from some specific time.
+
+Parameter $1 is the maximum number of changes that are displayed.
+Parameter $2 is a date and time.',
 'rclistfrom'           => 'Used on [[Special:RecentChanges]]. Parameter $1 is a date.',
 'rcshowhideminor'      => 'Option text in [[Special:RecentChanges]]',
 'rcshowhidebots'       => "Option text in [[Special:RecentChanges]]. $1 is the 'show/hide' command, with the text taken from either [[Mediawiki:Show]] or [[Mediawiki:Hide]].
@@ -1095,6 +1106,7 @@ The rate limits have no effect on the groups that have this right. Rate limits i
 'fileexists-shared-forbidden' => 'Error message at [[Special:Upload]]',
 'savefile'                    => 'When uploading a file',
 'overwroteimage'              => 'Log text when uploading a new version of a file',
+'uploaddisabled'              => 'Title of the Special:Upload page when upload is disabled.',
 'uploaddisabledtext'          => 'This message can have parameter $1, which contains the name of the target file. See r22243 and [https://bugzilla.wikimedia.org/show_bug.cgi?id=8818 bug 8818].',
 'uploadvirus'                 => 'Note displayed when uploaded file contains a virus',
 'sourcefilename'              => 'In [[Special:Upload]]',
@@ -1169,9 +1181,13 @@ Example: [[:Image:Addon-icn.png]]',
 'shareduploadwiki-desc'          => "This message appears after [[MediaWiki:Sharedupload]]. \$1 is a link to the file description page on the shared repository with [[MediaWiki:Shareduploadwiki-linktext]] as display text. Example: \"''The description on its file description page there is shown below.''\"",
 'shareduploadwiki-linktext'      => 'This message is used as variable $1 in [[MediaWiki:Shareduploadwiki]] and in [[MediaWiki:Shareduploadwiki-desc]]',
 'shareduploadduplicate'          => '$1 is contents of message shareduploadduplicate-linktext (i.e. "another file")',
-'shareduploadduplicate-linktext' => '{{Identical|Another file}}',
+'shareduploadduplicate-linktext' => 'This message is the text of $1 in the message [[MediaWiki:Shareduploadduplicate]].
+
+{{Identical|Another file}}',
 'shareduploadconflict'           => '$1 is contents of message shareduploadconflict-linktext (i.e. "another file")',
-'shareduploadconflict-linktext'  => '{{Identical|Another file}}',
+'shareduploadconflict-linktext'  => 'This message is the text of $1 in the message [[MediaWiki:Shareduploadconflict]].
+
+{{Identical|Another file}}',
 'noimage'                        => 'In image description page when there is no file by that name.  The variable $1 comes from {{msg|noimage-linktext}}, which is only substituted in this message.',
 'noimage-linktext'               => 'This message is used as a variable in {{msg|noimage}}, and will not be used anywhere else.',
 'imagepage-searchdupe'           => 'This message is used as text on a link from image pages to [[Special:FileDuplicateSearch]].',
@@ -1329,7 +1345,8 @@ Example: [[:Image:Addon-icn.png]]',
 'protectedpages-cascade'  => 'Option in [[Special:ProtectedPages]]',
 'protectedpagestext'      => 'Shown on top of [[Special:ProtectedPages]]',
 'protectedtitles'         => 'Name of special page displayed in [[Special:SpecialPages]]',
-'protectedtitlestext'     => 'Shown on top of [[Special:Protectedtitles]]',
+'protectedtitlestext'     => 'Shown on top of list of titles on [[Special:ProtectedTitles]]. If the list is empty the message [[MediaWiki:Protectedtitlesempty]] appears instead of this. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] for more information.',
+'protectedtitlesempty'    => 'Used on [[Special:ProtectedTitles]]. This text appears if the list of protected titles is empty. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] for more information.',
 'listusers'               => 'Name of special page displayed in [[Special:SpecialPages]]',
 'listusers-editsonly'     => 'Option in [[Special:ListUsers]].',
 'usereditcount'           => 'Shown behind every username on [[Special:ListUsers]].',
@@ -1423,7 +1440,7 @@ Example: [[:Image:Addon-icn.png]]',
 
 # E-mail user
 'emailuser'       => 'Link in the sidebar',
-'emailpagetext'   => 'This is the text that is displayed above the e-mail form on Special:EmailUser.
+'emailpagetext'   => 'This is the text that is displayed above the e-mail form on [[Special:EmailUser]].
 
 Special:EmailUser appears when you click on the link "E-mail this user" in the sidebar, but only if there is an e-mail address in the recipient\'s user preferences. If there isn\'t then the message [[Mediawiki:Noemailtext]] will appear instead of Special:EmailUser.',
 'noemailtitle'    => 'The title of the message that appears instead of Special:EmailUser after clicking the "E-mail this user" link in the sidebar, if no e-mail can be sent to the user.',
@@ -1466,16 +1483,6 @@ Special:EmailUser appears when you click on the link "E-mail this user" in the s
 'watchlist-details'    => 'Message on Special page: My watchlist. This is paired with the message [[Mediawiki:Nowatchlist]] which appears instead of Watchlist-details when $1 is 0.',
 'wlheader-showupdated' => 'This message shows up near top of users watchlist page.',
 'wlshowlast'           => "Appears on [[Special:Watchlist]]. Variable $1 gives a choice of different numbers of hours, $2 gives a choice of different numbers of days and $3 is 'all' ([[Mediawiki:watchlistall2]]). Clicking on your choice changes the list of changes you see (without changing the default in my preferences).",
-'watchlist-show-bots'  => 'Option in [[Special:Watchlist]].',
-'watchlist-hide-bots'  => 'Option in [[Special:Watchlist]].',
-'watchlist-show-own'   => 'Option in [[Special:Watchlist]].',
-'watchlist-hide-own'   => 'Option in [[Special:Watchlist]].',
-'watchlist-show-minor' => 'Option in [[Special:Watchlist]].',
-'watchlist-hide-minor' => 'Option in [[Special:Watchlist]].',
-'watchlist-show-anons' => 'Option in [[Special:Watchlist]]',
-'watchlist-hide-anons' => 'Option in [[Special:Watchlist]]',
-'watchlist-show-liu'   => 'Option in [[Special:Watchlist]]',
-'watchlist-hide-liu'   => 'Option in [[Special:Watchlist]]',
 'watchlist-options'    => 'Legend of the fieldset of [[Special:Watchlist]]',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -1523,47 +1530,52 @@ $1 = the name of the page',
 'rollback-success' => 'This message shows up on screen after successful revert (generally visible only to admins). $1 describes user whose changes have been reverted, $2 describes user which produced version, which replaces reverted version.',
 
 # Protect
-'protectlogpage'          => 'Title of [[Special:Log/protect]].',
-'protectlogtext'          => 'Text in [[Special:Log/protect]].',
-'protect-title'           => 'Title for the protection form. $1 is the title of the page to be (un)protected.',
-'protect-backlink'        => 'Optional message. Translate it only if you have to change it, i.e. for RTL wikis
+'protectlogpage'            => 'Title of [[Special:Log/protect]].',
+'protectlogtext'            => 'Text in [[Special:Log/protect]].',
+'protectedarticle'          => 'Text describing an action on [[Special:Log]]. $1 is a page title.',
+'modifiedarticleprotection' => 'Text describing an action on [[Special:Log]]. $1 is a page title.',
+'protect-title'             => 'Title for the protection form. $1 is the title of the page to be (un)protected.',
+'protect-backlink'          => 'Optional message. Translate it only if you have to change it, i.e. for RTL wikis
 
 Shown as subtitle of the protection form. $1 is the title of the page to be (un)protected.',
-'protect-legend'          => 'Legend of the fieldset around the input form of the protection form.',
-'protectcomment'          => '{{Identical|Comment}}',
-'protectexpiry'           => '{{Identical|Expires}}',
-'protect-unchain'         => 'Used for a checkbox to be able to change move permissions. See [[meta:Protect]] for more information.',
-'protect-text'            => 'Intro of the protection interface. See [[meta:Protect]] for more information.',
-'protect-default'         => '{{Identical|Default}}',
-'protect-fallback'        => 'This message is used as an option in the protection form on wikis were extra protection levels have been configured.',
-'protect-summary-cascade' => 'Used in edit summary when cascade protecting a page.',
-'protect-expiring'        => 'Used in page history.
+'protect-legend'            => 'Legend of the fieldset around the input form of the protection form.',
+'protectcomment'            => '{{Identical|Comment}}',
+'protectexpiry'             => '{{Identical|Expires}}',
+'protect-unchain'           => 'Used for a checkbox to be able to change move permissions. See [[meta:Protect]] for more information.',
+'protect-text'              => 'Intro of the protection interface. See [[meta:Protect]] for more information.',
+'protect-default'           => '{{Identical|Default}}',
+'protect-fallback'          => 'This message is used as an option in the protection form on wikis were extra protection levels have been configured.',
+'protect-summary-cascade'   => 'Used in edit summary when cascade protecting a page.',
+'protect-expiring'          => 'Used in page history.
 
 {{Identical|Expires $1 (UTC)}}',
-'protect-cascade'         => 'See [[meta:Protect]] for more information.',
-'protect-othertime'       => 'Used on the page protection form as label for the following input field (text)
+'protect-cascade'           => 'See [[meta:Protect]] for more information.',
+'protect-othertime'         => 'Used on the page protection form as label for the following input field (text)
 {{Identical|Other time}}',
-'protect-othertime-op'    => 'Used on the page protection form in the drop down menu
+'protect-othertime-op'      => 'Used on the page protection form in the drop down menu
 {{Identical|Other time}}',
-'protect-existing-expiry' => 'Shows the existing expiry time in the drop down menu of the protection form ([http://translatewiki.net/w/i.php?title=User:Raymond/test&action=unprotect example])
+'protect-existing-expiry'   => 'Shows the existing expiry time in the drop down menu of the protection form ([http://translatewiki.net/w/i.php?title=User:Raymond/test&action=unprotect example])
 
 * $1: date and time of the existing expiry time (kept for backward compatibility purposes)
 * $2: date of the existing expiry time
 * $3: time of the existing expiry time',
-'protect-otherreason'     => 'Shown on the page protection form as label for the following input field (text)
+'protect-otherreason'       => 'Shown on the page protection form as label for the following input field (text)
 {{Identical|Other/additional reason}}',
-'protect-otherreason-op'  => 'Shown on the page protection form in the drop down menu
+'protect-otherreason-op'    => 'Shown on the page protection form in the drop down menu
 {{Identical|Other/additional reason}}',
-'protect-dropdown'        => 'Shown on the page protection form as drop down menu for protection reasons.
+'protect-dropdown'          => 'Shown on the page protection form as drop down menu for protection reasons.
 
 <tt><nowiki>* Groupname</nowiki></tt> - defines a new group<br />
 <tt><nowiki>** Reason</nowiki></tt> - defines a reason in this group',
-'protect-edit-reasonlist' => 'Shown beneath the page protection form on the right side. It is a link to [[MediaWiki:Protect-dropdown]]. See also {{msg|Delete-edit-reasonlist}} and {{msg|Ipb-edit-dropdown}}.',
-'protect-expiry-options'  => "* Description: Options for the duration of the block. 
+'protect-edit-reasonlist'   => 'Shown beneath the page protection form on the right side. It is a link to [[MediaWiki:Protect-dropdown]]. See also {{msg|Delete-edit-reasonlist}} and {{msg|Ipb-edit-dropdown}}.',
+'protect-expiry-options'    => "* Description: Options for the duration of the block. 
 * <font color=\"red\">Be careful:</font> '''1 translation:1 english''', so the first part is the translation and the second part should stay in English. 
 * Example: See e.g. [[MediaWiki:Protect-expiry-options/nl]] if you still don't know how to do it.", # display1:time1,display2:time2,...
-'restriction-type'        => 'Used on [[Special:ProtectedPages]].',
-'restriction-level'       => 'Used on [[Special:ProtectedPages]].',
+'restriction-type'          => 'Used on [[Special:ProtectedPages]]. The text next to a drop-down box. See the help page on [http://meta.wikimedia.org/wiki/Protect Meta] for more information on protection.',
+'restriction-level'         => 'Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. The text next to a drop-down box. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.',
+'minimum-size'              => 'Used in [[Special:Protectedpages]] as a pair of radio buttons, with [[MediaWiki:Maximum-size]]. There is an input box to specify the minimum bites of the projected pages listed.',
+'maximum-size'              => 'Used in [[Special:Protectedpages]] as a pair of radio buttons, with [[MediaWiki:Minimum-size]]. There is an input box to specify the maximum bites of the projected pages listed.',
+'pagesize'                  => 'Used on [[Special:ProtectedPages]]. See the help page on [http://meta.wikimedia.org/wiki/Protect Meta] for more information on protection.',
 
 # Restrictions (nouns)
 'restriction-edit'   => "Used on [[Special:ProtectedPages]]. Option in the 'permission' drop-down box.
@@ -1572,11 +1584,14 @@ Shown as subtitle of the protection form. $1 is the title of the page to be (un)
 'restriction-move'   => "Used on [[Special:ProtectedPages]]. Option in the 'permission' drop-down box.
 
 {{Identical|Move}}",
-'restriction-create' => '{{Identical|Create}}',
+'restriction-create' => 'Used on [[Special:ProtectedPages]]. An option in a drop-down box. See the help pages on [http://www.mediawiki.org/wiki/Project:Protected_titles MediaWiki] and [http://meta.wikimedia.org/wiki/Protect Meta] for more information on protection.
+
+{{Identical|Create}}',
 
 # Restriction levels
-'restriction-level-sysop' => "Used on [[Special:ProtectedPages]]. An option in the drop-down box 'Restriction level'.",
-'restriction-level-all'   => "Used on [[Special:ProtectedPages]]. An option in the drop-down box 'Restriction level'.",
+'restriction-level-sysop'         => "Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. An option in the drop-down box 'Restriction level'. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.",
+'restriction-level-autoconfirmed' => "Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. An option in the drop-down box 'Restriction level'. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.",
+'restriction-level-all'           => "Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. An option in the drop-down box 'Restriction level'. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.",
 
 # Undelete
 'undelete'               => 'Name of special page for admins as displayed in [[Special:SpecialPages]].
@@ -1773,6 +1788,8 @@ Shown as subtitle of [[Special:MovePage/testpage]]. $1 is the title of the page 
 * $1 is the source page as a link with display name
 * $2 is the target page as a link with display name', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'movetalk'                => 'The text of the checkbox to watch the associated talk page to the page you are moving. This only appears when the talk page is not empty.',
+'move-subpages'           => 'The text of an option on the special page [[Special:MovePage|MovePage]]. If this option is ticked, any subpages will be moved with the main page to a new title.',
+'move-talk-subpages'      => 'The text of an option on the special page [[Special:MovePage|MovePage]]. If this option is ticked, any subpages will be moved with the talk page to a new title.',
 '1movedto2'               => "This is ''logentry'' message. $1 is the original page name, $2 is the destination page name.",
 '1movedto2_redir'         => "This is ''logentry'' message. $1 is the original page name, $2 is the destination page name.",
 'movelogpage'             => 'Title of special page',
@@ -1871,7 +1888,9 @@ Related messages: {{msg|right-importupload|pl=yes}} (the user right for this).',
 'tooltip-ca-nstab-category'       => 'Tooltip shown when hovering over the {{msg|nstab-category}} tab.',
 'tooltip-minoredit'               => 'Tooltip shown when hovering over the "[[MediaWiki:Minoredit/{{SUBPAGENAME}}|{{int:minoredit}}]]" link below the edit form.',
 'tooltip-save'                    => "This is the text that appears when you hover the mouse over the 'Save page' button on the edit page",
-'tooltip-preview'                 => 'Tooltip shown when hovering over the "Show preview" button.',
+'tooltip-preview'                 => 'Tooltip shown when hovering over the "Show preview" button.
+
+If the length of the translated message is over 60 characters (including spaces) then the end of the message will be cut off when using Firefox 2.0.0.7 browser, Linux operating system and the Monobook skin.',
 'tooltip-diff'                    => 'This is the text (tooltip) that appears when you hover the mouse over the "Show changes" button ({{msg|showdiff}}) on the edit page.',
 'tooltip-compareselectedversions' => 'Tooltip of {{msg|compareselectedversions}} (which is used as button in history pages).',
 'tooltip-watch'                   => '{{Identical|Add this page to your watchlist}}',
@@ -1907,11 +1926,12 @@ See also [[MediaWiki:Lastmodifiedat/{{SUBPAGENAME}}]].', # $1 date, $2 time, $3 
 'mw_math_mathml' => 'In user preferences.',
 
 # Patrol log
-'patrol-log-page' => 'Name of log.',
-'patrol-log-line' => 'Text of notes on entries in the [[Special:Log|patrol log]]. $1 is the reference number of the revision in [[Mediawiki:patrol-log-diff]]. $2 is the page title. $3 appears to be [[Mediawiki:Patrol-log-auto]] (at least sometimes).',
-'patrol-log-auto' => 'Automated edit summary when patrolling.
+'patrol-log-page'      => 'Name of log.',
+'patrol-log-line'      => 'Text of notes on entries in the [[Special:Log|patrol log]]. $1 is the reference number of the revision in [[Mediawiki:patrol-log-diff]]. $2 is the page title. $3 appears to be [[Mediawiki:Patrol-log-auto]] (at least sometimes).',
+'patrol-log-auto'      => 'Automated edit summary when patrolling.
 
 {{Identical|Automatic}}',
+'log-show-hide-patrol' => '* $1 is one of {{msg|show}} or {{msg|hide}}',
 
 # Browsing diffs
 'previousdiff' => 'Used when viewing the difference between edits. See also {{msg|nextdiff}}.',
@@ -2080,15 +2100,16 @@ Please leave the link http://www.mediawiki.org/wiki/Manual:External_editors exac
 {{Identical|All}}',
 
 # E-mail address confirmation
-'confirmemail_needlogin' => 'Used on [[Special:ConfirmEmail]] when you are logged out. Parameter $1 is a link to the log in form.',
-'confirmemail_body'      => 'This message is sent as an e-mail to users when they add or change their e-mail adress in [[Special:Preferences]].
+'confirmemail_needlogin'   => 'Used on [[Special:ConfirmEmail]] when you are logged out. Parameter $1 is a link to the log in form.',
+'confirmemail_body'        => 'This message is sent as an e-mail to users when they add or change their e-mail adress in [[Special:Preferences]].
 
 *$1 is the IP adress of the user that changed the e-mail adress
 *$2 is the name of the user
 *$3 is a URL to [[Special:ConfirmEmail]]
 *$4 is a time and date 
 *$5 is a URL to [[Special:InvalidateEmail]]',
-'invalidateemail'        => "This is the '''name of the special page''' where user goes if he chooses the cancel e-mail confirmation link from the confirmation e-mail.",
+'confirmemail_invalidated' => 'This is the text of the special page [[Special:InvalidateEmail|InvalidateEmail]] (with the title in [[Mediawiki:Invalidateemail]]) where user goes if he chooses the cancel e-mail confirmation link from the confirmation e-mail.',
+'invalidateemail'          => "This is the '''name of the special page''' where user goes if he chooses the cancel e-mail confirmation link from the confirmation e-mail.",
 
 # action=purge
 'confirm_purge_button' => '{{Identical|OK}}',
@@ -2272,9 +2293,5 @@ $1 is the name of the requested file.',
 
 # Special:BlankPage
 'intentionallyblankpage' => 'Text displayed in [[Special:BlankPage]].',
-
-# Special:Nuke
-'nuke-submit-user' => '{{Identical|Go}}',
-'right-nuke'       => '{{doc-right}}',
 
 );

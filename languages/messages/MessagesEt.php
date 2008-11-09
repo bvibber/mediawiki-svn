@@ -330,6 +330,10 @@ Vaata [[Special:Version|versiooni lehekülge]].',
 'viewdeleted'         => 'Vaata lehekülge $1?',
 'restorelink'         => '{{PLURAL:$1|üks kustutatud versioon|$1 kustutatud versiooni}}',
 'feedlinks'           => 'Sööde:',
+'site-rss-feed'       => '$1 RSS-toide',
+'site-atom-feed'      => '$1 Atom-toide',
+'page-rss-feed'       => '"$1" RSS-toide',
+'page-atom-feed'      => '"$1" Atom-toide',
 'red-link-title'      => '$1 (pole veel kirjutatud)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
@@ -444,7 +448,7 @@ Palun valige uus nimi.',
 'noname'                     => 'Sa ei sisestanud kasutajanime lubataval kujul.',
 'loginsuccesstitle'          => 'Sisselogimine õnnestus',
 'loginsuccess'               => 'Te olete sisse loginud. Teie kasutajanimi on "$1".',
-'nosuchuser'                 => 'Kasutajat nimega "$1" ei ole olemas. Kontrollige kirjapilti või kasutage alljärgnevat vormi uue kasutajakonto loomiseks.',
+'nosuchuser'                 => 'Kasutajat "$1" ei ole olemas. Kontrollige kirjapilti või kasutage alljärgnevat vormi uue kasutajakonto loomiseks.',
 'nosuchusershort'            => 'Kasutajat nimega "<nowiki>$1</nowiki>" ei ole olemas. Kontrollige kirjapilti.',
 'nouserspecified'            => 'Kasutajanimi puudub.',
 'wrongpassword'              => 'Vale parool. Proovige uuesti.',
@@ -494,7 +498,7 @@ Pärast parooli saamist logige palun sisse.',
 
 # Edit pages
 'summary'                  => 'Resümee',
-'subject'                  => 'Kommentaari pealkiri',
+'subject'                  => 'Pealkiri',
 'minoredit'                => 'See on pisiparandus',
 'watchthis'                => 'Jälgi seda artiklit',
 'savearticle'              => 'Salvesta',
@@ -597,15 +601,17 @@ Te kinnitate ka, et kirjutasite selle ise või võtsite selle kopeerimiskitsendu
 Kaaluge, kas lehe uuesti loomine on kohane.
 Lehe eelnevad kustutamised:",
 'deletelog-fulllog'        => 'Vaata täielikku logi',
+'edit-conflict'            => 'Redigeerimiskonflikt.',
 
 # "Undo" feature
 'undo-success' => 'Selle redaktsiooni käigus tehtud muudatusi saab eemaldada. Palun kontrolli allolevat võrdlust veendumaks, et tahad need muudatused tõepoolest eemaldada. Seejärel saad lehekülje salvestada.',
-'undo-summary' => 'Tühistati muudatus $1, mille tegi [[Special:Contributions/$2|$2]] ([[User talk:$2|Arutelu]])',
+'undo-summary' => 'Tühistati muudatus $1, mille tegi [[Special:Contributions/$2|$2]] ([[User talk:$2|arutelu]])',
 
 # History pages
 'viewpagelogs'        => 'Vaata selle lehe logisid',
 'nohistory'           => 'Sellel leheküljel ei ole eelmisi redaktsioone.',
 'currentrev'          => 'Viimane redaktsioon',
+'currentrev-asof'     => 'Viimane redaktsioon ($1)',
 'revisionasof'        => 'Redaktsioon: $1',
 'previousrevision'    => '←Vanem redaktsioon',
 'nextrevision'        => 'Uuem redaktsioon→',
@@ -625,6 +631,7 @@ Legend: (viim) = erinevused võrreldes viimase redaktsiooniga,
 'historyempty'        => '(tühi)',
 
 # Revision deletion
+'rev-delundel'      => 'näita/peida',
 'revdel-restore'    => 'Muuda nähtavust',
 'pagehist'          => 'Lehekülje ajalugu',
 'deletedhist'       => 'Kustutatud ajalugu',
@@ -748,6 +755,7 @@ sisse logida.',
 'recentchanges'                     => 'Viimased muudatused',
 'recentchangestext'                 => 'Jälgige sellel leheküljel viimaseid muudatusi.',
 'rcnote'                            => "Allpool on esitatud {{PLURAL:$1|'''1''' muudatus|viimased '''$1''' muudatust}} viimase {{PLURAL:$2|päeva|'''$2''' päeva}} jooksul, seisuga $4, kell $5.",
+'rcnotefrom'                        => 'Allpool on esitatud muudatused alates <b>$2</b> (näidatakse kuni <b>$1</b> muudatust).',
 'rclistfrom'                        => 'Näita muudatusi alates $1',
 'rcshowhideminor'                   => '$1 pisiparandused',
 'rcshowhidebots'                    => '$1 robotid',
@@ -1009,11 +1017,12 @@ võidakse sinu ligipääs sulgeda.',
 'emailuser'       => 'Saada sellele kasutajale e-kiri',
 'emailpage'       => 'Saada kasutajale e-kiri',
 'emailpagetext'   => 'Kui see kasutaja on oma eelistuste lehel sisestanud e-posti aadressi, siis saate alloleva vormi kaudu talle kirja saata. Et kasutaja saaks vastata, täidetakse kirja saatja väli "kellelt" e-posti aadressiga, mille olete sisestanud oma eelistuste lehel.',
-'emailfrom'       => 'Kellelt',
-'emailto'         => 'Kellele',
-'emailsubject'    => 'Pealkiri',
-'emailmessage'    => 'Sõnum',
+'emailfrom'       => 'Kellelt:',
+'emailto'         => 'Kellele:',
+'emailsubject'    => 'Pealkiri:',
+'emailmessage'    => 'Sõnum:',
 'emailsend'       => 'Saada',
+'emailccme'       => 'Saada mulle koopia.',
 'emailsent'       => 'E-post saadetud',
 'emailsenttext'   => 'Teie sõnum on saadetud.',
 
@@ -1039,22 +1048,12 @@ Kui tahad seda lehte hiljem jälgimisloendist eemaldada, klõpsa päisenupule "L
 'unwatchthispage'      => 'Ära jälgi',
 'notanarticle'         => 'Pole artikkel',
 'watchnochange'        => 'Valitud perioodi jooksul ei ole üheski jälgitavas artiklis muudatusi tehtud.',
-'watchlist-details'    => '{{PLURAL:$1|$1 lehekülg|$1 lehekülge}} jälgimisloendis (ei arvestata arutelulehekülgi).',
+'watchlist-details'    => 'Jälgimisloendis on {{PLURAL:$1|$1 lehekülg|$1 lehekülge}} (ei arvestata arutelulehekülgi).',
 'wlheader-showupdated' => "* Leheküljed, mida on muudetud peale sinu viimast külastust, on '''rasvases kirjas'''",
 'watchmethod-list'     => 'jälgitavate lehekülgede viimased muudatused',
 'watchlistcontains'    => 'Sinu jälgimisloendis on $1 {{PLURAL:$1|artikkel|artiklit}}.',
 'wlnote'               => "Allpool on {{PLURAL:$1|viimane muudatus|viimased '''$1''' muudatust}} viimase {{PLURAL:$2|tunni|'''$2''' tunni}} jooksul.",
 'wlshowlast'           => 'Näita viimast $1 tundi $2 päeva. $3',
-'watchlist-show-bots'  => 'Näita roboteid',
-'watchlist-hide-bots'  => 'Peida robotite parandused',
-'watchlist-show-own'   => 'Näita minu redaktsioone',
-'watchlist-hide-own'   => 'Peida minu parandused',
-'watchlist-show-minor' => 'Näita pisiparandusi',
-'watchlist-hide-minor' => 'Peida pisiparandused',
-'watchlist-show-anons' => 'Näita anonüümseid muudatusi',
-'watchlist-hide-anons' => 'Peida anonüümsed muudatused',
-'watchlist-show-liu'   => 'Näita sisseloginud kasutajate muudatusi',
-'watchlist-hide-liu'   => 'Peida sisseloginud kasutajate muudatused',
 'watchlist-options'    => 'Jälgimisloendi võimalused',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -1099,7 +1098,7 @@ Kõik toodud kellaajad järgivad serveriaega.',
 'rollbackfailed' => 'Muudatuste tühistamine ebaõnnestus',
 'cantrollback'   => 'Ei saa muudatusi tagasi pöörata; viimane kaastööline on artikli ainus autor.',
 'editcomment'    => 'Artikli sisu oli: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'     => 'Tühistati [[Eri:Contributions/$2|$2]] ([[Kasutaja arutelu:$2|arutelu]]) muudatus ning pöörduti tagasi viimasele muudatusele, mille tegi [[Kasutaja:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'     => 'Tühistati [[Eri:Contributions/$2|$2]] ([[Kasutaja arutelu:$2|arutelu]]) muudatus ning pöörduti tagasi viimasele muudatusele, mille tegi [[Kasutaja:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectlogpage'              => 'Kaitsmise logi',
@@ -1110,6 +1109,7 @@ Kõik toodud kellaajad järgivad serveriaega.',
 'prot_1movedto2'              => 'Lehekülg "[[$1]]" teisaldatud pealkirja "[[$2]]" alla',
 'protect-legend'              => 'Kinnita kaitsmine',
 'protectcomment'              => 'Põhjus',
+'protectexpiry'               => 'Aegub:',
 'protect-text'                => 'Siin võite vaadata ja muuta lehekülje <strong><nowiki>$1</nowiki></strong> kaitsesätteid.',
 'protect-default'             => '(tavaline)',
 'protect-level-autoconfirmed' => 'Ainult registreeritud kasutajad',
@@ -1454,6 +1454,10 @@ Kinnituskood aegub $4.',
 
 # Delete conflict
 'deletedwhileediting' => 'Hoiatus: Sel ajal, kui Te artiklit redigeerisite, on keegi selle kustutanud!',
+
+# Multipage image navigation
+'imgmultipageprev' => '← eelmine lehekülg',
+'imgmultipagenext' => 'järgmine lehekülg →',
 
 # Auto-summaries
 'autosumm-blank'   => 'Kustutatud kogu lehekülje sisu',

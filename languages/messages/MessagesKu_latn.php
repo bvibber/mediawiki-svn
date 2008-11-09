@@ -1045,12 +1045,6 @@ Li rûpela [[Special:RecentChanges|Guherandinên dawî]] jî ji bo hasan dîtina
 'watchlistcontains'    => 'Di lîsteya şopandina te de {{PLURAL:$1|rûpelek heye|$1 rûpel hene}}.',
 'wlnote'               => "Niha {{PLURAL:$1|xeyrandinê|'''$1''' xeyrandinên}} dawî yê {{PLURAL:$2|seetê|'''$2''' seetên}} dawî {{PLURAL:$1|tê|tên}} dîtin.",
 'wlshowlast'           => 'Xeyrandînên berî $1 seetan, $2 rojan, ya $3 (di rojên sîyî paşî)',
-'watchlist-show-bots'  => "Guherandinên bot'an nîşan bide",
-'watchlist-hide-bots'  => "Guherandinên Bot'an veşêre",
-'watchlist-show-own'   => 'Guherandinên min pêşke',
-'watchlist-hide-own'   => 'Guherandinên min veşêre',
-'watchlist-show-minor' => 'Guherandinên biçûk pêşke',
-'watchlist-hide-minor' => 'Guherandinên biçûk veşêre',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Bişopîne...',
@@ -1127,7 +1121,7 @@ bi [[User:$2|$2]] ([[User talk:$2|guftûgo]]) venizivre; keseke din wê rûpelê
 
 Guhartoya dawî bi [[User:$3|$3]] ([[User talk:$3|guftûgo]]).',
 'editcomment'      => 'Kurtenivîsê guherandinê ev bû: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'Guherandina $2 hat betal kirin, vegerand guhartoya dawî ya $1', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'Guherandina $2 hat betal kirin, vegerand guhartoya dawî ya $1', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Guherandina $1 şondakir; dîsa guharte verzyona $2.',
 
 # Protect
@@ -1563,10 +1557,8 @@ Xêra xwe zanibe ku tu bi rastî dixwazê vê rûpelê dîsa çêkê",
 'recreate'            => 'Dîsa tomarbike',
 
 # action=purge
-'confirm_purge'        => 'Bîra vê rûpelê jêbîbe ?
-
-$1',
 'confirm_purge_button' => 'Temam',
+'confirm-purge-top'    => 'Bîra vê rûpelê jêbîbe ?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← rûpela berî vê',

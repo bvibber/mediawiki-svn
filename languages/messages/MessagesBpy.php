@@ -444,7 +444,7 @@ $messages = array(
 'viewpagelogs'        => 'পাতাহানর লগ চা',
 'currentrev'          => 'হাদিএহানর পতানি',
 'revisionasof'        => 'রিভিসনহান $1 পেয়া',
-'revision-info'       => '$1 পেয়া  $2-এ পতাসেতা',
+'revision-info'       => '$1 পেয়া  $2-এ পতাসেতা', # Additionally available: $3: revision id
 'previousrevision'    => '←পুরানা পতানিহান',
 'nextrevision'        => 'নুৱা ভার্সনহান→',
 'currentrevisionlink' => 'হাদি এহানর পতানি',
@@ -496,6 +496,7 @@ $messages = array(
 'recentchanges'                  => 'হাদিএহান পতাসিতা',
 'recentchanges-feed-description' => 'ফিড এহানর মা পাতা এহার পতানিহানর গজে মিল্লেং দে।',
 'rcnote'                         => 'গেলগা <strong>$2</strong> দিনে পতাসি <strong>$1</strong> হান পরিবর্তন তলে দেখাদেনা ইলতা $5, $4 পেয়া।',
+'rcnotefrom'                     => "তলে গেলগা '''$2''' ত্ত পতাসিতা দেনা অইল ('''$1''' পেয়া)।",
 'rclistfrom'                     => 'নুৱাতা পতাসিতা $1 পাতাহানাত্ত চিঙকরিয়া',
 'rcshowhideminor'                => '$1 হুরু পতানিহান',
 'rcshowhidebots'                 => '$1 বটগি',
@@ -636,24 +637,21 @@ $messages = array(
 'emailuser' => 'আতাকুরাগরে ইমেইল কর',
 
 # Watchlist
-'watchlist'            => 'মর তালাবি',
-'mywatchlist'          => 'মর তালাবি',
-'watchlistfor'         => "('''$1'''-র কা)",
-'addedwatch'           => 'তালাবির তালিকাহাত থনা ইল',
-'addedwatchtext'       => "\"<nowiki>\$1</nowiki>\" পাতা এহান তর [[Special:Watchlist|আহির-আরুম তালিকা]]-ত তিলকরানি ইল। পিসেদে এরে পাতা এহান বারো পাতা এহানর লগে সাকেই আসে য়্যারী পাতাত অইতই হারি জাতর পতানি এহানাত তিলকরানি অইতই। অতাবাদেউ [[Special:RecentChanges|হাদি এহানর পতানিহানি]]-ত পাতা এহানরে '''গাঢ়করা''' মেয়েকে দেহা দেনা অইতই যাতে তি নুঙিকরে পাতা এহান চিনে পারবেতা।
+'watchlist'         => 'মর তালাবি',
+'mywatchlist'       => 'মর তালাবি',
+'watchlistfor'      => "('''$1'''-র কা)",
+'addedwatch'        => 'তালাবির তালিকাহাত থনা ইল',
+'addedwatchtext'    => "\"<nowiki>\$1</nowiki>\" পাতা এহান তর [[Special:Watchlist|আহির-আরুম তালিকা]]-ত তিলকরানি ইল। পিসেদে এরে পাতা এহান বারো পাতা এহানর লগে সাকেই আসে য়্যারী পাতাত অইতই হারি জাতর পতানি এহানাত তিলকরানি অইতই। অতাবাদেউ [[Special:RecentChanges|হাদি এহানর পতানিহানি]]-ত পাতা এহানরে '''গাঢ়করা''' মেয়েকে দেহা দেনা অইতই যাতে তি নুঙিকরে পাতা এহান চিনে পারবেতা।
 
 পিসেদে তি পাতা এহানরে থেইকরানি মনেইলে \"আহির-আরুমেত্ত থেইকরেদে\" ট্যাবগত ক্লিক করিস৷",
-'removedwatch'         => 'তালাবির পাতাত্ত গুসাদে',
-'removedwatchtext'     => 'এরে পাতা "[[:$1]]" এহান গুসানি ইলতা [[Special:Watchlist|তর তালাবির]] পাতাত্ত।',
-'watch'                => 'তালাবি',
-'watchthispage'        => 'পাতাএহান খিয়ালে থ',
-'unwatch'              => 'তালাবি নেই',
-'unwatchthispage'      => 'তালাবি এরাদেনা',
-'watchlist-details'    => '{{PLURAL:$1|$1 পাতা|$1 পাতাহানি}} চানাঅসিল অতার কোন য়্যারির পাতা নেই।',
-'wlshowlast'           => 'গেলগা $1 ঘন্টা $2 দিনর $3 দেখাদে',
-'watchlist-hide-bots'  => 'বোটর পতানি থেইকর',
-'watchlist-hide-own'   => 'মি পতাসুতা গুর',
-'watchlist-hide-minor' => 'হুরকা পতানি থেইকর',
+'removedwatch'      => 'তালাবির পাতাত্ত গুসাদে',
+'removedwatchtext'  => 'এরে পাতা "[[:$1]]" এহান গুসানি ইলতা [[Special:Watchlist|তর তালাবির]] পাতাত্ত।',
+'watch'             => 'তালাবি',
+'watchthispage'     => 'পাতাএহান খিয়ালে থ',
+'unwatch'           => 'তালাবি নেই',
+'unwatchthispage'   => 'তালাবি এরাদেনা',
+'watchlist-details' => '{{PLURAL:$1|$1 পাতা|$1 পাতাহানি}} চানাঅসিল অতার কোন য়্যারির পাতা নেই।',
+'wlshowlast'        => 'গেলগা $1 ঘন্টা $2 দিনর $3 দেখাদে',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'চা...',
@@ -905,10 +903,8 @@ $messages = array(
 'confirmemail_loggedin'   => 'তর ই-মেইল ঠিকানাহার লেপকরানিহান চুমিল।',
 
 # action=purge
-'confirm_purge'        => 'পাতা এহানর ক্যাশহান ঙক্ষি করানি মনারতা? 
-
-$1',
 'confirm_purge_button' => 'চুমিসে',
+'confirm-purge-top'    => 'পাতা এহানর ক্যাশহান ঙক্ষি করানি মনারতা?',
 
 # Auto-summaries
 'autoredircomment' => '[[$1]]-ত যানার বারো-র্নিদেশ করানি ইল',

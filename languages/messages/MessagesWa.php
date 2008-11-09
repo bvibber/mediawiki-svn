@@ -5,6 +5,7 @@
  * @file
  *
  * @author Srtxg
+ * @author Urhixidur
  * @author לערי ריינהארט
  */
 
@@ -522,7 +523,7 @@ Vos nos acertinez eto ki vos avoz scrît l' tecse vos-minme, oudonbén l' avoz c
 <strong>N' EVOYÎZ NÉN DES TECSES DIZO ABONDROETS SINS PERMISSION!</strong>",
 'longpagewarning'           => "<strong>ASTEME: Cisse pådje fwait $1 kilo-octets; des
 betchteus waibes k' i gn a polèt aveut des rujhes po-z aspougnî
-des pådjes k' aprepièt ou di pus di 32Ko.
+des pådjes k' aprepièt ou di pus di 32 ko.
 Vos dvrîz tuzer a pårti l' pådje e pus ptits bokets.</strong>",
 'longpageerror'             => "<strong>AROKE: Li tecse ki vos avoz evoyî fwait di pus d' $1 kilo-octets, çou k' est pus ki l' macsimom di $2 kilo-octets. C' est nén possible del schaper sol sierveu.</strong>",
 'readonlywarning'           => "<strong>ASTEME: On-z overe sol båze di dnêyes pol moumint, ey elle a stî metowe e mode seulmint-lére.
@@ -575,9 +576,9 @@ Come manaedjeu so ç\' wiki ci, vos avoz l\' droet del vey; i gn a motoit des de
 </div>',
 'rev-delundel'                => 'mostrer/catchî',
 'revisiondelete'              => 'Disfacer/rapexhî des modêyes',
-'revdelete-selected'          => 'Tchoezeye modêye di [[:$1]]:',
-'logdelete-selected'          => "{{PLURAL:$2|Evenmint tchoezi|Evenmints tchoezis}} ezès djournås po '''$1:'''",
-'revdelete-text'              => "Les disfacêyès modêyes vont continouwer d' aparexhe dins l' pådje di l' istwere, mins leu contnou n' serè nén veyåve do publik.
+'revdelete-selected'          => "'''Tchoezeye modêye di [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$2|Evenmint tchoezi|Evenmints tchoezis}} ezès djournås po '''$1:''''''",
+'revdelete-text'              => "'''Les disfacêyès modêyes vont continouwer d' aparexhe dins l' pådje di l' istwere, mins leu contnou n' serè nén veyåve do publik.'''
 
 Les ôtes manaedjeus so ç' wiki ci pôront todi vey li contnou catchî eyet l' rapexhî åd triviè di cisse minme eterface ci, a moens k' ene restriccion di pus ni soeye metowe en alaedje pås mwaisses-manaedjeus del waibe.",
 'revdelete-legend'            => 'Defini des restriccions sol modêye',
@@ -710,6 +711,7 @@ Les ôtes manaedjeus so ç' wiki ci pôront todi vey li contnou catchî eyet l' 
 'recentchanges'                     => 'Dierins candjmints',
 'recentchangestext'                 => "Shuvoz chal les dierins candjmints k' i gn a yeu dsu {{SITENAME}}.",
 'rcnote'                            => 'Chal pa dzo les <strong>$1</strong> dierins candjmints des dierins <strong>$2</strong> djoûs, å $3.',
+'rcnotefrom'                        => "Chal pa dzo les candjmints dispoy li <b>$2</b> (disk' a <b>$1</b> di mostrés).",
 'rclistfrom'                        => "Mostrer les candjmints k' i gn a yeu a pårti do $1",
 'rcshowhideminor'                   => '$1 candjmints mineurs',
 'rcshowhidebots'                    => '$1 robots',
@@ -1047,7 +1049,7 @@ ene sakî d' ôte a ddja candjî l' årtike ou ddja rmetou l' modêye di dvant.
 
 Li dierin candjmint a stî fwait pa [[User:$3|$3]] ([[User talk:$3|Copene]]).",
 'editcomment'   => 'Li comintaire do candjmint esteut: «<i>$1</i>».', # only shown if there is an edit comment
-'revertpage'    => 'Disfwait li candjmint da [[Special:Contributions/$2|$2]] ([[User talk:$2|copene]]); li dierin candjmint est asteure da [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'    => 'Disfwait li candjmint da [[Special:Contributions/$2|$2]] ([[User talk:$2|copene]]); li dierin candjmint est asteure da [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectlogpage'              => 'Djournå des protedjaedjes',
@@ -1545,10 +1547,8 @@ Acertinez s' i vs plait ki vos vloz vormint rifé cisse pådje ci.",
 'recreate'            => 'Rifé',
 
 # action=purge
-'confirm_purge'        => "Netyî l' muchete di cisse pådje ci?
-
-$1",
 'confirm_purge_button' => "'l est bon",
+'confirm-purge-top'    => "Netyî l' muchete di cisse pådje ci?",
 
 # Multipage image navigation
 'imgmultipageprev' => '← pådje di dvant',

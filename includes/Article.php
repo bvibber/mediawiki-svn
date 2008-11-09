@@ -816,7 +816,7 @@ class Article {
 				$count = $pager->getNumRows();
 				if( $count > 0 ) {
 					$pager->mLimit = 10;
-					$wgOut->addHtml( '<div class="mw-warning-with-logexcerpt">' );
+					$wgOut->addHTML( '<div class="mw-warning-with-logexcerpt">' );
 					$wgOut->addWikiMsg( 'deleted-notice' );
 					$wgOut->addHTML(
 						$loglist->beginLogEventsList() .
@@ -824,7 +824,7 @@ class Article {
 						$loglist->endLogEventsList()
 					);
 					if($count > 10){
-						$wgOut->addHtml( $wgUser->getSkin()->link(
+						$wgOut->addHTML( $wgUser->getSkin()->link(
 							SpecialPage::getTitleFor( 'Log' ),
 							wfMsgHtml( 'deletelog-fulllog' ),
 							array(),
@@ -832,7 +832,7 @@ class Article {
 								'type' => 'delete',
 								'page' => $this->mTitle->getPrefixedText() ) ) );
 					}
-					$wgOut->addHtml( '</div>' );
+					$wgOut->addHTML( '</div>' );
 				}
 			}
 			$text = $this->getContent();
@@ -880,15 +880,15 @@ class Article {
 
 			 // Pages containing custom CSS or JavaScript get special treatment
 			if( $this->mTitle->isCssOrJsPage() || $this->mTitle->isCssJsSubpage() ) {
-				$wgOut->addHtml( wfMsgExt( 'clearyourcache', 'parse' ) );
+				$wgOut->addHTML( wfMsgExt( 'clearyourcache', 'parse' ) );
 				// Give hooks a chance to customise the output
 				if( wfRunHooks( 'ShowRawCssJs', array( $this->mContent, $this->mTitle, $wgOut ) ) ) {
 					// Wrap the whole lot in a <pre> and don't parse
 					$m = array();
 					preg_match( '!\.(css|js)$!u', $this->mTitle->getText(), $m );
-					$wgOut->addHtml( "<pre class=\"mw-code mw-{$m[1]}\" dir=\"ltr\">\n" );
-					$wgOut->addHtml( htmlspecialchars( $this->mContent ) );
-					$wgOut->addHtml( "\n</pre>\n" );
+					$wgOut->addHTML( "<pre class=\"mw-code mw-{$m[1]}\" dir=\"ltr\">\n" );
+					$wgOut->addHTML( htmlspecialchars( $this->mContent ) );
+					$wgOut->addHTML( "\n</pre>\n" );
 				}
 			} else if ( $rt = Title::newFromRedirect( $text ) ) {
 				# Don't append the subtitle if this was an old revision
@@ -1075,17 +1075,16 @@ class Article {
 				$this->view();
 			}
 		} else {
-			$msg = $wgOut->parse( wfMsg( 'confirm_purge' ) );
-			$action = htmlspecialchars( $_SERVER['REQUEST_URI'] );
-			$button = htmlspecialchars( wfMsg( 'confirm_purge_button' ) );
-			$msg = str_replace( '$1',
-				"<form method=\"post\" action=\"$action\">\n" .
-				"<input type=\"submit\" name=\"submit\" value=\"$button\" />\n" .
-				"</form>\n", $msg );
-
+			$action = htmlspecialchars( $wgRequest->getRequestURL() );
+			$button = wfMsgExt( 'confirm_purge_button', array('escapenoentities') );
+			$form = "<form method=\"post\" action=\"$action\">\n" .
+					"<input type=\"submit\" name=\"submit\" value=\"$button\" />\n" .
+					"</form>\n";
+			$top = wfMsgExt( 'confirm-purge-top', array('parse') );
+			$bottom = wfMsgExt( 'confirm-purge-bottom', array('parse') );
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 			$wgOut->setRobotPolicy( 'noindex,nofollow' );
-			$wgOut->addHTML( $msg );
+			$wgOut->addHTML( $top . $form . $bottom );
 		}
 	}
 
@@ -2337,7 +2336,7 @@ class Article {
 	 * Show relevant lines from the deletion log
 	 */
 	function showLogExtract( $out ) {
-		$out->addHtml( Xml::element( 'h2', null, LogPage::logName( 'delete' ) ) );
+		$out->addHTML( Xml::element( 'h2', null, LogPage::logName( 'delete' ) ) );
 		LogEventsList::showLogExtract( $out, 'delete', $this->mTitle->getPrefixedText() );
 	}
 
@@ -2366,7 +2365,7 @@ class Article {
 				$wgOut->returnToMain( false );
 				wfRunHooks('ArticleDeleteComplete', array(&$this, &$wgUser, $reason, $id));
 			} else {
-				if ($error = '')
+				if ($error == '')
 					$wgOut->showFatalError( wfMsg( 'cannotdelete' ) );
 				else
 					$wgOut->showFatalError( $error );
@@ -2731,10 +2730,10 @@ class Article {
 			. $wgUser->getSkin()->userToolLinks( $current->getUser(), $current->getUserText() );
 		$new = $wgUser->getSkin()->userLink( $target->getUser(), $target->getUserText() )
 			. $wgUser->getSkin()->userToolLinks( $target->getUser(), $target->getUserText() );
-		$wgOut->addHtml( wfMsgExt( 'rollback-success', array( 'parse', 'replaceafter' ), $old, $new ) );
+		$wgOut->addHTML( wfMsgExt( 'rollback-success', array( 'parse', 'replaceafter' ), $old, $new ) );
 		$wgOut->returnToMain( false, $this->mTitle );
 
-		if( !$wgRequest->getBool( 'hidediff', false ) ) {
+		if( !$wgRequest->getBool( 'hidediff', false ) && !$wgUser->getBoolOption( 'norollbackdiff', false ) ) {
 			$de = new DifferenceEngine( $this->mTitle, $current->getId(), $newId, false, true );
 			$de->showDiff( '', '' );
 		}
@@ -2968,7 +2967,7 @@ class Article {
 			? 'revision-info-current'
 			: 'revision-info';
 
-		$r = "\n\t\t\t\t<div id=\"mw-{$infomsg}\">" . wfMsg( $infomsg, $td, $userlinks ) . "</div>\n" .
+		$r = "\n\t\t\t\t<div id=\"mw-{$infomsg}\">" . wfMsg( $infomsg, $td, $userlinks, $revision->getID() ) . "</div>\n" .
 
 		     "\n\t\t\t\t<div id=\"mw-revision-nav\">" . $cdel . wfMsg( 'revision-nav', $prevdiff, 
 				$prevlink, $lnk, $curdiff, $nextlink, $nextdiff ) . "</div>\n\t\t\t";
@@ -3291,18 +3290,18 @@ class Article {
 		$wgOut->setSubtitle( wfMsg( 'infosubtitle' ) );
 
 		if( !$this->mTitle->exists() ) {
-			$wgOut->addHtml( '<div class="noarticletext">' );
+			$wgOut->addHTML( '<div class="noarticletext">' );
 			if( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
 				// This doesn't quite make sense; the user is asking for
 				// information about the _page_, not the message... -- RC
-				$wgOut->addHtml( htmlspecialchars( wfMsgWeirdKey( $this->mTitle->getText() ) ) );
+				$wgOut->addHTML( htmlspecialchars( wfMsgWeirdKey( $this->mTitle->getText() ) ) );
 			} else {
 				$msg = $wgUser->isLoggedIn()
 					? 'noarticletext'
 					: 'noarticletextanon';
-				$wgOut->addHtml( wfMsgExt( $msg, 'parse' ) );
+				$wgOut->addHTML( wfMsgExt( $msg, 'parse' ) );
 			}
-			$wgOut->addHtml( '</div>' );
+			$wgOut->addHTML( '</div>' );
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
 			$wl_clause = array(
@@ -3433,8 +3432,9 @@ class Article {
 		# Decide what kind of autosummary is needed.
 
 		# Redirect autosummaries
+		$ot = Title::newFromRedirect( $oldtext );
 		$rt = Title::newFromRedirect( $newtext );
-		if( is_object( $rt ) ) {
+		if( is_object( $rt ) && ( !is_object( $ot ) || ( !$rt->equals( $ot ) || $ot->getFragment() != $rt->getFragment() ) ) ) {
 			return wfMsgForContent( 'autoredircomment', $rt->getFullText() );
 		}
 
@@ -3444,14 +3444,14 @@ class Article {
 			global $wgContLang;
 			$truncatedtext = $wgContLang->truncate(
 				str_replace("\n", ' ', $newtext),
-				max( 0, 200 - strlen( wfMsgForContent( 'autosumm-new') ) ),
+				max( 0, 200 - strlen( wfMsgForContent( 'autosumm-new' ) ) ),
 				'...' );
 			return wfMsgForContent( 'autosumm-new', $truncatedtext );
 		}
 
 		# Blanking autosummaries
 		if( $oldtext != '' && $newtext == '' ) {
-			return wfMsgForContent('autosumm-blank');
+			return wfMsgForContent( 'autosumm-blank' );
 		} elseif( strlen( $oldtext ) > 10 * strlen( $newtext ) && strlen( $newtext ) < 500) {
 			# Removing more than 90% of the article
 			global $wgContLang;

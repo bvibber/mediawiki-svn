@@ -16,6 +16,7 @@
  * @author Olve Utne
  * @author Ranveig
  * @author Shauni
+ * @author Urhixidur
  * @author לערי ריינהארט
  */
 
@@ -93,10 +94,6 @@ $bookstoreList = array(
 	'Amazon.com'   => 'http://www.amazon.com/exec/obidos/ISBN=$1'
 );
 
-# Note to translators:
-#   Please include the English words as synonyms.  This allows people
-#   from other wikis to contribute more easily.
-#
 $magicWords = array(
 	#   ID                                 CASE  SYNONYMS
 	'redirect'               => array( 0,    '#redirect', '#omdiriger'                                              ),
@@ -163,83 +160,83 @@ $namespaceNames = array(
 );
 
 $specialPageAliases = array(
-	'DoubleRedirects'           => array( 'Doble_omdirigeringar' ),
+	'DoubleRedirects'           => array( 'Doble omdirigeringar' ),
 	'BrokenRedirects'           => array( 'Blindvegsomdirigeringar' ),
 	'Disambiguations'           => array( 'Fleirtydingssider' ),
-	'Userlogin'                 => array( 'Logg_inn' ),
-	'Userlogout'                => array( 'Logg_ut' ),
-	'CreateAccount'             => array( 'Opprett_konto' ),
+	'Userlogin'                 => array( 'Logg inn' ),
+	'Userlogout'                => array( 'Logg ut' ),
+	'CreateAccount'             => array( 'Opprett konto' ),
 	'Preferences'               => array( 'Innstillingar' ),
 	'Watchlist'                 => array( 'Overvakingsliste' ),
-	'Recentchanges'             => array( 'Siste_endringar' ),
-	'Upload'                    => array( 'Last_opp' ),
+	'Recentchanges'             => array( 'Siste endringar' ),
+	'Upload'                    => array( 'Last opp' ),
 	'Imagelist'                 => array( 'Filliste' ),
-	'Newimages'                 => array( 'Nye_filer' ),
+	'Newimages'                 => array( 'Nye filer' ),
 	'Listusers'                 => array( 'Brukarliste' ),
 	'Statistics'                => array( 'Statistikk' ),
-	'Randompage'                => array( 'Tilfeldig_side' ),
-	'Lonelypages'               => array( 'Foreldrelause_sider' ),
-	'Uncategorizedpages'        => array( 'Ukategoriserte_sider' ),
-	'Uncategorizedcategories'   => array( 'Ukategoriserte_kategoriar' ),
-	'Uncategorizedimages'       => array( 'Ukategoriserte_filer' ),
-	'Uncategorizedtemplates'    => array( 'Ukategoriserte_malar' ),
-	'Unusedcategories'          => array( 'Ubrukte_kategoriar' ),
-	'Unusedimages'              => array( 'Ubrukte_filer' ),
-	'Wantedpages'               => array( 'Etterspurde_sider' ),
-	'Wantedcategories'          => array( 'Etterspurde_kategoriar' ),
-	'Mostlinked'                => array( 'Mest_lenka_sider' ),
-	'Mostlinkedcategories'      => array( 'Mest_brukte_kategoriar' ),
-	'Mostlinkedtemplates'       => array( 'Mest_brukte_malar' ),
-	'Mostcategories'            => array( 'Flest_kategoriar' ),
-	'Mostimages'                => array( 'Mest_brukte_filer' ),
-	'Mostrevisions'             => array( 'Flest_endringar' ),
-	'Fewestrevisions'           => array( 'Færrast_endringar' ),
-	'Shortpages'                => array( 'Korte_sider' ),
-	'Longpages'                 => array( 'Lange_sider' ),
-	'Newpages'                  => array( 'Nye_sider' ),
-	'Ancientpages'              => array( 'Gamle_sider' ),
+	'Randompage'                => array( 'Tilfeldig side' ),
+	'Lonelypages'               => array( 'Foreldrelause sider' ),
+	'Uncategorizedpages'        => array( 'Ukategoriserte sider' ),
+	'Uncategorizedcategories'   => array( 'Ukategoriserte kategoriar' ),
+	'Uncategorizedimages'       => array( 'Ukategoriserte filer' ),
+	'Uncategorizedtemplates'    => array( 'Ukategoriserte malar' ),
+	'Unusedcategories'          => array( 'Ubrukte kategoriar' ),
+	'Unusedimages'              => array( 'Ubrukte filer' ),
+	'Wantedpages'               => array( 'Etterspurde sider' ),
+	'Wantedcategories'          => array( 'Etterspurde kategoriar' ),
+	'Mostlinked'                => array( 'Mest lenka sider' ),
+	'Mostlinkedcategories'      => array( 'Mest brukte kategoriar' ),
+	'Mostlinkedtemplates'       => array( 'Mest brukte malar' ),
+	'Mostcategories'            => array( 'Flest kategoriar' ),
+	'Mostimages'                => array( 'Mest brukte filer' ),
+	'Mostrevisions'             => array( 'Flest endringar' ),
+	'Fewestrevisions'           => array( 'Færrast endringar' ),
+	'Shortpages'                => array( 'Korte sider' ),
+	'Longpages'                 => array( 'Lange sider' ),
+	'Newpages'                  => array( 'Nye sider' ),
+	'Ancientpages'              => array( 'Gamle sider' ),
 	'Deadendpages'              => array( 'Blindvegsider' ),
-	'Protectedpages'            => array( 'Verna_sider' ),
-	'Protectedtitles'           => array( 'Verna_sidenamn' ),
-	'Allpages'                  => array( 'Alle_sider' ),
+	'Protectedpages'            => array( 'Verna sider' ),
+	'Protectedtitles'           => array( 'Verna sidenamn' ),
+	'Allpages'                  => array( 'Alle sider' ),
 	'Prefixindex'               => array( 'Prefiksindeks' ),
 	'Ipblocklist'               => array( 'Blokkeringsliste' ),
 	'Specialpages'              => array( 'Spesialsider' ),
 	'Contributions'             => array( 'Bidrag' ),
 	'Emailuser'                 => array( 'E-post' ),
-	'Confirmemail'              => array( 'Stadfest_e-postadresse' ),
-	'Whatlinkshere'             => array( 'Lenkjer_hit' ),
-	'Recentchangeslinked'       => array( 'Relaterte_endringar' ),
-	'Movepage'                  => array( 'Flytt_side' ),
-	'Blockme'                   => array( 'Blokker_meg' ),
+	'Confirmemail'              => array( 'Stadfest e-postadresse' ),
+	'Whatlinkshere'             => array( 'Lenkjer hit' ),
+	'Recentchangeslinked'       => array( 'Relaterte endringar' ),
+	'Movepage'                  => array( 'Flytt side' ),
+	'Blockme'                   => array( 'Blokker meg' ),
 	'Booksources'               => array( 'Bokkjelder' ),
 	'Categories'                => array( 'Kategoriar' ),
 	'Export'                    => array( 'Eksport' ),
 	'Version'                   => array( 'Versjon' ),
-	'Allmessages'               => array( 'Alle_systemmeldingar' ),
+	'Allmessages'               => array( 'Alle systemmeldingar' ),
 	'Log'                       => array( 'Logg', 'Loggar' ),
 	'Blockip'                   => array( 'Blokker' ),
 	'Undelete'                  => array( 'Attopprett' ),
-	'Import'                    => array( 'Import' ),
-	'Lockdb'                    => array( 'Lås_database' ),
-	'Unlockdb'                  => array( 'Opne_database' ),
+	'Lockdb'                    => array( 'Lås database' ),
+	'Unlockdb'                  => array( 'Opne database' ),
 	'Userrights'                => array( 'Brukarrettar' ),
 	'MIMEsearch'                => array( 'MIME-søk' ),
-	'Unwatchedpages'            => array( 'Uovervaka_sider' ),
+	'Unwatchedpages'            => array( 'Uovervaka sider' ),
 	'Listredirects'             => array( 'Omdirigeringsliste' ),
 	'Revisiondelete'            => array( 'Versjonssletting' ),
-	'Unusedtemplates'           => array( 'Ubrukte_malar' ),
-	'Randomredirect'            => array( 'Tilfeldig_omdirigering' ),
-	'Mypage'                    => array( 'Sida_mi' ),
-	'Mytalk'                    => array( 'Diskusjonssida_mi' ),
-	'Mycontributions'           => array( 'Bidraga_mine' ),
+	'Unusedtemplates'           => array( 'Ubrukte malar' ),
+	'Randomredirect'            => array( 'Tilfeldig omdirigering' ),
+	'Mypage'                    => array( 'Sida mi' ),
+	'Mytalk'                    => array( 'Diskusjonssida mi' ),
+	'Mycontributions'           => array( 'Bidraga mine' ),
 	'Listadmins'                => array( 'Administratorliste', 'Administratorar' ),
 	'Listbots'                  => array( 'Bottliste', 'Bottar' ),
-	'Popularpages'              => array( 'Populære_sider' ),
+	'Popularpages'              => array( 'Populære sider' ),
 	'Search'                    => array( 'Søk' ),
-	'Resetpass'                 => array( 'Nullstill_passord' ),
-	'Withoutinterwiki'          => array( 'Utan_interwiki' ),
+	'Resetpass'                 => array( 'Nullstill passord' ),
+	'Withoutinterwiki'          => array( 'Utan interwiki' ),
 	'MergeHistory'              => array( 'Flettehistorie' ),
+	'Filepath'                  => array( 'Filsti' ),
 );
 
 $separatorTransformTable = array(
@@ -247,11 +244,6 @@ $separatorTransformTable = array(
 	'.' => ','
 );
 $linkTrail = '/^([æøåa-z]+)(.*)$/sDu';
-
-
-#-------------------------------------------------------------------
-# Default messages
-#-------------------------------------------------------------------
 
 $messages = array(
 # User preference toggles
@@ -818,13 +810,13 @@ Teksten må du ha skrive sjølv, eller kopiert frå ein ressurs som er kompatibe
 Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompatibel med vilkåra eller ikkje verna av opphavsrett (sjå $1 for detaljar).
 
 <strong>LEGG ALDRI INN MATERIALE SOM ANDRE HAR OPPHAVSRETT TIL UTAN LØYVE FRÅ DEI!</strong>',
-'longpagewarning'                  => '<strong>ÅTVARING: Denne sida er $1 KB lang; nokre nettlesarar kan ha problem med å handsama endringar av sider som nærmar seg eller er lengre enn 32 KB. Du bør vurdere å dele opp sida i mindre bolkar.</strong><br />',
+'longpagewarning'                  => '<strong>ÅTVARING: Denne sida er $1 kB lang; nokre nettlesarar kan ha problem med å handsama endringar av sider som nærmar seg eller er lengre enn 32 kB. Du bør vurdere å dele opp sida i mindre bolkar.</strong><br />',
 'longpageerror'                    => '<strong>Feil: Teksten du har prøvd å lagre er $1 kilobyte
 lang, altså lenger enn $2 kilobyte som er maksimum. Han kan difor ikkje lagrast.</strong>',
 'readonlywarning'                  => '<strong>ÅTVARING: Databasen er skriveverna på grunn av vedlikehald, så du kan ikkje lagre endringane dine akkurat no. Det kan vera lurt å  kopiere teksten din til ei tekstfil, så du kan lagre han her seinare.</strong>
 
 Systemadministratoren som låste databasen gav følgjande årsak: $1',
-'protectedpagewarning'             => '<strong>ÅTVARING: Denne sida er verna, slik at berre administratorar kan endre ho.</strong><br />',
+'protectedpagewarning'             => '<strong>ÅTVARING: Denne sida er verna, slik at berre administratorar kan endre ho.</strong>',
 'semiprotectedpagewarning'         => "'''NB:''' Denne sida er verna slik at berre registrerte brukarar kan endre henne.",
 'cascadeprotectedwarning'          => "'''Åtvaring:''' Denne sida er verna så berre brukarar med administratortilgang kan endre henne. Dette er fordi ho er inkludert i {{PLURAL:$1|denne djupverna sida|desse djupverna sidene}}:",
 'titleprotectedwarning'            => '<strong>Åtvaring: Denne sida er verna, så berre nokre brukarar kan opprette henne.</strong>',
@@ -878,7 +870,7 @@ Grunnen som vart gjeven av $3 er ''$2''",
 'currentrev'             => 'Noverande versjon',
 'currentrev-asof'        => 'Noverande versjon frå $1',
 'revisionasof'           => 'Versjonen frå $1',
-'revision-info'          => 'Versjonen frå $1 av $2',
+'revision-info'          => 'Versjonen frå $1 av $2', # Additionally available: $3: revision id
 'previousrevision'       => '←Eldre versjon',
 'nextrevision'           => 'Nyare versjon→',
 'currentrevisionlink'    => 'Noverande versjon',
@@ -911,11 +903,11 @@ Grunnen som vart gjeven av $3 er ''$2''",
 'revisiondelete'              => 'Slett/attopprett versjonar',
 'revdelete-nooldid-title'     => 'Ugyldig målversjon',
 'revdelete-nooldid-text'      => 'Du har ikkje oppgjeve kva for versjon(ar) du vil utføre denne handlinga på, versjonen eksisterer ikkje, eller du prøver å gøyme den noverande versjonen.',
-'revdelete-selected'          => '{{PLURAL:$2|Vald versjon|Valde versjonar}} av [[:$1]]:',
-'logdelete-selected'          => '{{PLURAL:$1|Vald loggoppføring|Valde loggoppføringar}} for [[:$1]]:',
-'revdelete-text'              => 'Sletta versjonar og oppføringar vert framleis synlege i sidehistorikken og loggane, men delar av innhaldet deira vert ikkje lenger offentleggjort.
+'revdelete-selected'          => "'''{{PLURAL:$2|Vald versjon|Valde versjonar}} av [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Vald loggoppføring|Valde loggoppføringar}} for [[:$1]]:'''",
+'revdelete-text'              => "'''Sletta versjonar og oppføringar vert framleis synlege i sidehistorikken og loggane, men delar av innhaldet deira vert ikkje lenger offentleggjort.'''
 
-Andre administratorar på {{SITENAME}} kan framleis sjå det gøymde innhaldet og attopprette det, med mindre fleire avgrensingar vert lagde inn av sideoperatørane.',
+Andre administratorar på {{SITENAME}} kan framleis sjå det gøymde innhaldet og attopprette det, med mindre fleire avgrensingar vert lagde inn av sideoperatørane.",
 'revdelete-legend'            => 'Vel avgrensing for synlegdom',
 'revdelete-hide-text'         => 'Gøym endringssamandraga',
 'revdelete-hide-name'         => 'Gøym handling og sidenamn',
@@ -1260,6 +1252,7 @@ Ver merksam på at registra deira kan vera utdaterte.',
 'recentchangestext'                 => 'På denne sida ser du dei sist endra sidene i {{SITENAME}}.',
 'recentchanges-feed-description'    => 'Fylg med på dei siste endringane på denne wikien med dette abonnementet.',
 'rcnote'                            => "Nedanfor er {{PLURAL:$1|den siste endringa|dei siste '''$1''' endringane}} gjort {{PLURAL:$2|den siste dagen|dei siste '''$2''' dagane}}, sidan $4, kl. $5.",
+'rcnotefrom'                        => 'Nedanfor er endringane frå <b>$2</b> inntil <b>$1</b> viste.',
 'rclistfrom'                        => 'Vis nye endringar frå $1',
 'rcshowhideminor'                   => '$1 småplukk',
 'rcshowhidebots'                    => '$1 robotar',
@@ -1710,16 +1703,6 @@ Om du seinere vil fjerne sida frå overvakingslista, klikk på «Fjern overvakin
 'iteminvalidname'      => 'Problem med «$1», ugyldig namn...',
 'wlnote'               => 'Nedanfor er {{PLURAL:$1|den siste endringa|dei siste $1 endringane}} {{PLURAL:$2|den siste timen|dei siste $2 timane}}.',
 'wlshowlast'           => 'Vis siste $1 timar $2 dagar $3',
-'watchlist-show-bots'  => 'Vis robotar',
-'watchlist-hide-bots'  => 'Gøym robotar',
-'watchlist-show-own'   => 'Vis endringane mine',
-'watchlist-hide-own'   => 'Gøym endringane mine',
-'watchlist-show-minor' => 'Vis småplukk',
-'watchlist-hide-minor' => 'Gøym småplukk',
-'watchlist-show-anons' => 'Vis anonyme endringar',
-'watchlist-hide-anons' => 'Gøym anonyme endringar',
-'watchlist-show-liu'   => 'Vis endringar av innlogga brukarar',
-'watchlist-hide-liu'   => 'Gøym endringar av innlogga brukarar',
 'watchlist-options'    => 'Alternativ for overvakingslista',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -1799,7 +1782,7 @@ For hjelp og meir informasjon:
 
 Den siste endringa vart gjort av [[User:$3|$3]] ([[User talk:$3|brukardiskusjon]] | [[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment'      => 'Samandraget for endringa var: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'Attenderulla endring gjort av [[Special:Contributions/$2|$2]] til tidlegare versjon endra av [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'Attenderulla endring gjort av [[Special:Contributions/$2|$2]] til tidlegare versjon endra av [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Rulla attende endringane av $1, tilbake til siste versjon av $2.',
 'sessionfailure'   => 'Det ser ut til å vera eit problem med innloggingsøkta di. Handlinga er vorten avbroten for å vera føre var mot kidnapping av økta. Bruk attendeknappen i nettlesaren din og prøv om att.',
 
@@ -2695,10 +2678,8 @@ Du må stadfeste at du verkeleg vil nyopprette denne sida.",
 'recreate'            => 'Nyopprett',
 
 # action=purge
-'confirm_purge'        => 'Vil du slette tenarane sin mellomlagra versjon av denne sida?
-
-$1',
 'confirm_purge_button' => 'Ja',
+'confirm-purge-top'    => 'Vil du slette tenarane sin mellomlagra versjon av denne sida?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← førre side',

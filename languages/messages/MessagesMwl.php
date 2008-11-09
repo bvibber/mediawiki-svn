@@ -6,6 +6,7 @@
  *
  * @author MCruz
  * @author Malafaya
+ * @author Urhixidur
  */
 
 $fallback = 'pt';
@@ -245,7 +246,7 @@ Se você chegou até aqui por angano, clique ne l boton '''boltar''' (o ''back''
 Você está, al mesmo tempo, a garantir-nos que isto ye algo escrito por si, o algo copiado de unha fonte de testos an domínio público o similarmente de teor libre.
 <strong>NUM ENBIE TRABALHO PROTEGIDO POR DREITOS DE AUTOR SAN A DEBIDA PERMISSON!</strong>',
 'longpagewarning'        => '<strong>AVISO: Esta página possui $1 kilobytes; alguns
-navegadores possuem problemas em editar páginas maiores que 32kb.
+navegadores possuem problemas em editar páginas maiores que 32 kb.
 Por favor, considere seccionar a página em secções de menor dimensão.</strong>',
 'templatesused'          => 'Predefiniçons utilizadas nesta página:',
 'templatesusedpreview'   => 'Templates usados nesta previsão:',
@@ -262,7 +263,7 @@ O registo de eliminação desta página é exibido a seguir, para sua comodidade
 'viewpagelogs'        => 'Ber registos para yesta página',
 'currentrev'          => 'Revison actual',
 'revisionasof'        => 'Revisão de $1',
-'revision-info'       => 'Revison de $1; $2',
+'revision-info'       => 'Revison de $1; $2', # Additionally available: $3: revision id
 'previousrevision'    => '← Versão anterior',
 'nextrevision'        => 'Verson posterior →',
 'currentrevisionlink' => 'Ber berson actual',
@@ -308,6 +309,7 @@ Legenda: (actu) = diferenças da versão actual,
 'recentchanges'                  => 'Alteraçons recentes',
 'recentchanges-feed-description' => 'Acompanhe las alteraçõns recientes de yeste buiqui por yeste feed.',
 'rcnote'                         => "A seguir {{PLURAL:$1|está listada '''uma''' alteração ocorrida|estão listadas '''$1''' alterações ocorridas}} {{PLURAL:$2|no último dia|nos últimos '''$2''' dias}}, a partir de $3.",
+'rcnotefrom'                     => 'Alteraçons efectuadas desde <b>$2</b> (mostradas até <b>$1</b>).',
 'rclistfrom'                     => 'Mostrar as novas alterações a partir de $1',
 'rcshowhideminor'                => '$1 edições mínimas',
 'rcshowhidebots'                 => '$1 robots',
@@ -438,19 +440,16 @@ Legenda: (actu) = diferenças da versão actual,
 'emailuser' => 'Contactar yeste outelizador',
 
 # Watchlist
-'watchlist'            => 'Artigos vigiados',
-'mywatchlist'          => 'Artigos vigiados',
-'watchlistfor'         => "(para '''$1''')",
-'addedwatch'           => 'Adicionado à lhista de artigos bigiados',
-'removedwatch'         => 'Remobida de la lhista de artigos bigiados',
-'watch'                => 'Bigiar',
-'watchthispage'        => 'Bigiar yesta página',
-'unwatch'              => 'Desinteressar-se',
-'watchlist-details'    => '{{PLURAL:$1|$1 página vigiada|$1 páginas vigiadas}}, excluindo páginas de discussão.',
-'wlshowlast'           => 'Ber últimas $1 horas $2 dias $3',
-'watchlist-hide-bots'  => 'Çcuonder ediçons de robôs',
-'watchlist-hide-own'   => 'çconder mies ediçons',
-'watchlist-hide-minor' => 'sconder ediçons menores',
+'watchlist'         => 'Artigos vigiados',
+'mywatchlist'       => 'Artigos vigiados',
+'watchlistfor'      => "(para '''$1''')",
+'addedwatch'        => 'Adicionado à lhista de artigos bigiados',
+'removedwatch'      => 'Remobida de la lhista de artigos bigiados',
+'watch'             => 'Bigiar',
+'watchthispage'     => 'Bigiar yesta página',
+'unwatch'           => 'Desinteressar-se',
+'watchlist-details' => '{{PLURAL:$1|$1 página vigiada|$1 páginas vigiadas}}, excluindo páginas de discussão.',
+'wlshowlast'        => 'Ber últimas $1 horas $2 dias $3',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Vigiando...',

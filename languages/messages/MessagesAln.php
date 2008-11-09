@@ -10,6 +10,11 @@
 
 $fallback = 'sq';
 
+$specialPageAliases = array(
+	'Popularpages'              => array( 'Faqe të famshme' ),
+	'Search'                    => array( 'Kërko' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Nënvizoji lidhjet',
@@ -401,7 +406,7 @@ Llogaria juej asht hap. Mos harroni me ndryshu parapëlqimet e {{SITENAME}}-s.',
 
 # History pages
 'revisionasof'     => 'Versioni i $1',
-'revision-info'    => 'Versioni me $1 nga $2',
+'revision-info'    => 'Versioni me $1 nga $2', # Additionally available: $3: revision id
 'previousrevision' => '← Verzion ma i vjetër',
 'cur'              => 'tash',
 'last'             => 'fund',
@@ -484,14 +489,12 @@ Ju lutem kërkoni {{SITENAME}}-n para se me krijue një artikull të ri se munet
 'categories' => 'Kategori',
 
 # Watchlist
-'mywatchlist'          => 'Lista mbikqyrëse',
-'addedwatch'           => 'U shtu te lista mbikqyrëse',
-'removedwatch'         => 'U hjek nga lista mibkqyrëse',
-'removedwatchtext'     => 'Faqja "<nowiki>$1</nowiki>" asht hjek nga lista mbikqyrëse e juej.',
-'watch'                => 'Mbikqyre',
-'unwatch'              => 'Çmbikqyre',
-'watchlist-hide-own'   => 'Mshehi redaktimet e mija',
-'watchlist-hide-minor' => 'Mshehi redaktimet e vogla',
+'mywatchlist'      => 'Lista mbikqyrëse',
+'addedwatch'       => 'U shtu te lista mbikqyrëse',
+'removedwatch'     => 'U hjek nga lista mibkqyrëse',
+'removedwatchtext' => 'Faqja "<nowiki>$1</nowiki>" asht hjek nga lista mbikqyrëse e juej.',
+'watch'            => 'Mbikqyre',
+'unwatch'          => 'Çmbikqyre',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Tuj mbikqyrë...',

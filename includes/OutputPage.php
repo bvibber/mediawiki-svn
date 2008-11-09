@@ -531,8 +531,13 @@ class OutputPage {
 		$this->mNoGallery = $parserOutput->getNoGallery();
 		$this->mHeadItems = array_merge( $this->mHeadItems, (array)$parserOutput->mHeadItems );
 		// Versioning...
-		$this->mTemplateIds = wfArrayMerge( $this->mTemplateIds, (array)$parserOutput->mTemplateIds );
-
+		foreach ( (array)$parserOutput->mTemplateIds as $ns => $dbks ) {
+			if ( isset( $this->mTemplateIds[$ns] ) ) {
+				$this->mTemplateIds[$ns] = $dbks + $this->mTemplateIds[$ns];
+			} else {
+				$this->mTemplateIds[$ns] = $dbks;
+			}
+		}
 		// Display title
 		if( ( $dt = $parserOutput->getDisplayTitle() ) !== false )
 			$this->setPageTitle( $dt );
@@ -905,9 +910,16 @@ class OutputPage {
 		if( $wgUniversalEditButton ) {
 			if( isset( $wgArticle ) && isset( $wgTitle ) && $wgTitle->quickUserCan( 'edit' )
 				&& ( $wgTitle->exists() || $wgTitle->quickUserCan( 'create' ) ) ) {
+				// Original UniversalEditButton
 				$this->addLink( array(
 					'rel' => 'alternate',
 					'type' => 'application/x-wiki',
+					'title' => wfMsg( 'edit' ),
+					'href' => $wgTitle->getFullURL( 'action=edit' )
+				) );
+				// Alternate edit link
+				$this->addLink( array(
+					'rel' => 'edit',
 					'title' => wfMsg( 'edit' ),
 					'href' => $wgTitle->getFullURL( 'action=edit' )
 				) );
@@ -1063,7 +1075,7 @@ class OutputPage {
 
 		array_unshift( $params, 'parse' );
 		array_unshift( $params, $msg );
-		$this->addHtml( call_user_func_array( 'wfMsgExt', $params ) );
+		$this->addHTML( call_user_func_array( 'wfMsgExt', $params ) );
 
 		$this->returnToMain();
 	}
@@ -1174,8 +1186,8 @@ class OutputPage {
 
 		$loginTitle = SpecialPage::getTitleFor( 'Userlogin' );
 		$loginLink = $skin->makeKnownLinkObj( $loginTitle, wfMsgHtml( 'loginreqlink' ), 'returnto=' . $wgTitle->getPrefixedUrl() );
-		$this->addHtml( wfMsgWikiHtml( 'loginreqpagetext', $loginLink ) );
-		$this->addHtml( "\n<!--" . $wgTitle->getPrefixedUrl() . "-->" );
+		$this->addHTML( wfMsgWikiHtml( 'loginreqpagetext', $loginLink ) );
+		$this->addHTML( "\n<!--" . $wgTitle->getPrefixedUrl() . "-->" );
 
 		# Don't return to the main page if the user can't read it
 		# otherwise we'll end up in a pointless loop
@@ -1370,7 +1382,7 @@ class OutputPage {
 	public function addReturnTo( $title ) {
 		global $wgUser;
 		$link = wfMsg( 'returnto', $wgUser->getSkin()->makeLinkObj( $title ) );
-		$this->addHtml( "<p>{$link}</p>\n" );
+		$this->addHTML( "<p>{$link}</p>\n" );
 	}
 
 	/**
@@ -1478,7 +1490,8 @@ class OutputPage {
 	
 	protected function addDefaultMeta() {
 		global $wgVersion;
-		$this->addMeta( "generator", "MediaWiki $wgVersion" );
+		$this->addMeta( 'http:Content-Style-Type', 'text/css' ); //bug 15835
+		$this->addMeta( 'generator', "MediaWiki $wgVersion" );
 		
 		$p = "{$this->mIndexPolicy},{$this->mFollowPolicy}";
 		if( $p !== 'index,follow' ) {
@@ -1758,7 +1771,7 @@ class OutputPage {
 				? 'lag-warn-normal'
 				: 'lag-warn-high';
 			$warning = wfMsgExt( $message, 'parse', $lag );
-			$this->addHtml( "<div class=\"mw-{$message}\">\n{$warning}\n</div>\n" );
+			$this->addHTML( "<div class=\"mw-{$message}\">\n{$warning}\n</div>\n" );
 		}
 	}
 

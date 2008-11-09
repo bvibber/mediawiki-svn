@@ -665,9 +665,14 @@ class Parser
 	 */
 	function tidy( $text ) {
 		global $wgTidyInternal;
+
 		$wrappedtext = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"'.
 ' "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html>'.
 '<head><title>test</title></head><body>'.$text.'</body></html>';
+
+		# Tidy is known to clobber tabs; convert 'em to entities
+		$wrappedtext = str_replace("\t", '&#9;', $wrappedtext);
+
 		if( $wgTidyInternal ) {
 			$correctedtext = self::internalTidy( $wrappedtext );
 		} else {
@@ -677,6 +682,10 @@ class Parser
 			wfDebug( "Tidy error detected!\n" );
 			return $text . "\n<!-- Tidy found serious XHTML errors -->\n";
 		}
+
+		# Convert the tabs back from entities
+		$correctedtext = str_replace('&#9;', "\t", $correctedtext);
+
 		return $correctedtext;
 	}
 
@@ -2587,6 +2596,8 @@ class Parser
 				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::numberingroup('sysop') );
 			case 'numberofedits':
 				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::edits() );
+			case 'numberofviews':
+				return $this->mVarCache[$index] = $wgContLang->formatNum( SiteStats::views() );
 			case 'currenttimestamp':
 				return $this->mVarCache[$index] = wfTimestamp( TS_MW, $ts );
 			case 'localtimestamp':
@@ -4700,6 +4711,16 @@ class Parser
 		} else {
 			return $this->mTitle->getPrefixedText();
 		}
+	}
+
+	/**
+	 * Accessor for $mDefaultSort
+	 * Unlike getDefaultSort(), will return false if none is set
+	 *
+	 * @return string or false
+	 */
+	public function getCustomDefaultSort() {
+		return $this->mDefaultSort;
 	}
 
 	/**

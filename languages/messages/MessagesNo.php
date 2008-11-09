@@ -209,6 +209,7 @@ $messages = array(
 'tog-ccmeonemails'            => 'Send meg kopier av e-poster jeg sender til andre brukere',
 'tog-diffonly'                => 'Ikke vis sideinnhold under differ',
 'tog-showhiddencats'          => 'Vis skjulte kategorier',
+'tog-norollbackdiff'          => 'Ikke vis diff etter tilbakestilling',
 
 'underline-always'  => 'Alltid',
 'underline-never'   => 'Aldri',
@@ -804,7 +805,7 @@ Grunnen som ble oppgitt av $3 er ''$2''",
 'currentrev'             => 'Nåværende versjon',
 'currentrev-asof'        => 'Nåværende revisjon fra $1',
 'revisionasof'           => 'Versjonen fra $1',
-'revision-info'          => 'Revisjon per $1 av $2',
+'revision-info'          => 'Revisjon per $1 av $2', # Additionally available: $3: revision id
 'previousrevision'       => '← Eldre versjon',
 'nextrevision'           => 'Nyere versjon →',
 'currentrevisionlink'    => 'Nåværende versjon',
@@ -841,11 +842,11 @@ Denne revisjonen har blitt fjernet fra det offentlige arkivet. Som administrator
 'revisiondelete'              => 'Slett/gjenopprett revisjoner',
 'revdelete-nooldid-title'     => 'Ugyldig målversjon',
 'revdelete-nooldid-text'      => 'Du har ikke angitt en målversjon for denne funksjonen, den angitte versjonen finnes ikke, eller du forsøker å skjule den nåværende versjonen.',
-'revdelete-selected'          => '{{PLURAL:$2|Valgt revisjon|Valgte revisjoner}} av [[:$1]]:',
-'logdelete-selected'          => '{{PLURAL:$1|Valgt loggoppføring|Valgte loggoppføringer}}:',
-'revdelete-text'              => 'Slettede revisjoner vil fortsatt vises i sidehistorikken, men innholdet vil ikke være tilgjengelig for offentligheten.
+'revdelete-selected'          => "'''{{PLURAL:$2|Valgt revisjon|Valgte revisjoner}} av [[:$1]]:'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Valgt loggoppføring|Valgte loggoppføringer}}:'''",
+'revdelete-text'              => "'''Slettede revisjoner vil fortsatt vises i sidehistorikken, men innholdet vil ikke være tilgjengelig for offentligheten.'''
 
-Andre administratorer på {{SITENAME}} vil fortsatt kunne se det skjulte innholdet, og kan gjenopprette det, med mindre videre begrensninger blir gitt av sideoperatørene.',
+Andre administratorer på {{SITENAME}} vil fortsatt kunne se det skjulte innholdet, og kan gjenopprette det, med mindre videre begrensninger blir gitt av sideoperatørene.",
 'revdelete-legend'            => 'Fastsett synlighetsbegrensninger',
 'revdelete-hide-text'         => 'Skjul revisjonstekst',
 'revdelete-hide-name'         => 'Skjul handling og mål',
@@ -1132,6 +1133,7 @@ se math/README for oppsett.',
 'right-minoredit'            => 'Marker endringer som mindre',
 'right-move'                 => 'Flytte sider',
 'right-move-subpages'        => 'Flytte sider med undersider',
+'right-move-rootuserpages'   => 'Flytte hovedbrukersider',
 'right-suppressredirect'     => 'Behøver ikke å opprette omdirigeringer ved sideflytting',
 'right-upload'               => 'Laste opp filer',
 'right-reupload'             => 'Skrive over eksisterende filer',
@@ -1191,6 +1193,7 @@ se math/README for oppsett.',
 'action-minoredit'            => 'merke denne redigeringen som mindre',
 'action-move'                 => 'flytte denne siden',
 'action-move-subpages'        => 'flytte denne siden og dens undersider',
+'action-move-rootuserpages'   => 'flytte hovedbrukersider',
 'action-upload'               => 'laste opp denne filen',
 'action-reupload'             => 'overskrive den nåværende filen',
 'action-reupload-shared'      => 'overskrive denne filen på fellesdatabasen',
@@ -1223,6 +1226,7 @@ se math/README for oppsett.',
 'recentchangestext'                 => 'Vis de siste endringene til denne siden',
 'recentchanges-feed-description'    => 'Følg med på siste endringer i denne wikien med denne feed-en.',
 'rcnote'                            => "Nedenfor vises {{PLURAL:$1|én endring|de siste '''$1''' endringene}} fra {{PLURAL:$2|det siste døgnet|de siste '''$2''' døgnene}} per $5 $4.",
+'rcnotefrom'                        => "Nedenfor er endringene fra '''$2''' til '''$1''' vist.",
 'rclistfrom'                        => 'Vis nye endringer med start fra $1',
 'rcshowhideminor'                   => '$1 mindre endringer',
 'rcshowhidebots'                    => '$1 roboter',
@@ -1242,6 +1246,8 @@ se math/README for oppsett.',
 'rc_categories'                     => 'Begrens til kategorier (skilletegn: «|»)',
 'rc_categories_any'                 => 'Alle',
 'newsectionsummary'                 => '/* $1 */ ny seksjon',
+'rc-enhanced-expand'                => 'Vis detaljer (trenger JavaScript)',
+'rc-enhanced-hide'                  => 'Skjul detaljer',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Relaterte endringer',
@@ -1458,7 +1464,7 @@ En [[Special:WhatLinksHere/$2|fullstendig liste]] er tilgjengelig.',
 
 # Unused templates
 'unusedtemplates'     => 'Ubrukte maler',
-'unusedtemplatestext' => 'Denne siden lister opp alle sider i malnavnerommet som ikke er inkludert på en annen side. Husk å sjekke for andre slags lenker til malen før du sletter den.',
+'unusedtemplatestext' => 'Denne siden lister opp alle sider i malnavnerommet ({{ns:template}}:) som ikke er inkludert på en annen side. Husk å sjekke for andre slags lenker til malen før du sletter den.',
 'unusedtemplateswlh'  => 'andre lenker',
 
 # Random page
@@ -1521,7 +1527,7 @@ En side anses om en pekerside om den inneholder en mal som det lenkes til fra [[
 'nviews'                  => '$1 {{PLURAL:$1|visning|visninger}}',
 'specialpage-empty'       => 'Denne siden er tom.',
 'lonelypages'             => 'Foreldreløse sider',
-'lonelypagestext'         => 'Følgende sider blir ikke lenket til fra andre sider på {{SITENAME}}.',
+'lonelypagestext'         => 'Følgende sider blir ikke lenket til eller brukt på andre sider på {{SITENAME}}.',
 'uncategorizedpages'      => 'Ukategoriserte sider',
 'uncategorizedcategories' => 'Ukategoriserte kategorier',
 'uncategorizedimages'     => 'Ukategoriserte filer',
@@ -1532,6 +1538,7 @@ En side anses om en pekerside om den inneholder en mal som det lenkes til fra [[
 'wantedcategories'        => 'Ønskede kategorier',
 'wantedpages'             => 'Etterspurte sider',
 'wantedfiles'             => 'Ønskede filer',
+'wantedtemplates'         => 'Etterspurte maler',
 'mostlinked'              => 'Sider med flest lenker til seg',
 'mostlinkedcategories'    => 'Kategorier med flest sider',
 'mostlinkedtemplates'     => 'Mest brukte maler',
@@ -1654,7 +1661,7 @@ Mer informasjon om de enkelte rettighetstypene kan finnes [[{{MediaWiki:Listgrou
 'mailnologintext' => 'Du må være [[Special:UserLogin|logget inn]] og ha en gyldig e-postadresse satt i [[Special:Preferences|brukerinnstillingene]] for å sende e-post til andre brukere.',
 'emailuser'       => 'E-post til denne brukeren',
 'emailpage'       => 'E-post til bruker',
-'emailpagetext'   => 'Hvis denne brukeren har oppgitt en gyldig e-postadresse i sine innstillinger, vil dette skjemaet sende én beskjed.
+'emailpagetext'   => 'Du kan bruke skjemaet nedenfor for å sende en e-post til denne brukeren.
 Den e-postadressen du har satt i [[Special:Preferences|innstillingene dine]] vil dukke opp i «fra»-feltet på denne e-posten, så mottakeren er i stand til å svare.',
 'usermailererror' => 'E-postobjekt returnerte feilen:',
 'defemailsubject' => 'E-post fra {{SITENAME}}',
@@ -1673,48 +1680,36 @@ Den e-postadressen du har satt i [[Special:Preferences|innstillingene dine]] vil
 'emailuserfooter' => 'E-posten ble sendt av $1 til $2 via «Send e-post»-funksjonen på {{SITENAME}}.',
 
 # Watchlist
-'watchlist'                => 'Overvåkningsliste',
-'mywatchlist'              => 'Overvåkningsliste',
-'watchlistfor'             => "(for '''$1''')",
-'nowatchlist'              => 'Du har ingenting i overvåkningslisten.',
-'watchlistanontext'        => 'Vennligst $1 for å vise eller redigere sider på overvåkningslisten din.',
-'watchnologin'             => 'Ikke logget inn',
-'watchnologintext'         => 'Du må være [[Special:UserLogin|logget inn]] for å kunne endre overvåkningslisten.',
-'addedwatch'               => 'Lagt til overvåkningslisten.',
-'addedwatchtext'           => "Siden «[[:$1]]» er lagt til [[Special:Watchlist|overvåkningslisten]]. Fremtidige endringer til denne siden og den tilhørende diskusjonssiden blir listet opp her, og siden vil fremstå '''uthevet''' i [[Special:RecentChanges|listen over de siste endringene]] for å gjøre det lettere å finne den.
+'watchlist'            => 'Overvåkningsliste',
+'mywatchlist'          => 'Overvåkningsliste',
+'watchlistfor'         => "(for '''$1''')",
+'nowatchlist'          => 'Du har ingenting i overvåkningslisten.',
+'watchlistanontext'    => 'Vennligst $1 for å vise eller redigere sider på overvåkningslisten din.',
+'watchnologin'         => 'Ikke logget inn',
+'watchnologintext'     => 'Du må være [[Special:UserLogin|logget inn]] for å kunne endre overvåkningslisten.',
+'addedwatch'           => 'Lagt til overvåkningslisten.',
+'addedwatchtext'       => "Siden «[[:$1]]» er lagt til [[Special:Watchlist|overvåkningslisten]]. Fremtidige endringer til denne siden og den tilhørende diskusjonssiden blir listet opp her, og siden vil fremstå '''uthevet''' i [[Special:RecentChanges|listen over de siste endringene]] for å gjøre det lettere å finne den.
 
 Hvis du senere vil fjerne siden fra overvåkningslisten, klikk «Avslutt overvåkning» på den aktuelle siden.",
-'removedwatch'             => 'Fjernet fra overvåkningslisten',
-'removedwatchtext'         => 'Siden «[[:$1]]» er fjernet fra [[Special:Watchlist|overvåkningslisten din]].',
-'watch'                    => 'Overvåk',
-'watchthispage'            => 'Overvåk denne siden',
-'unwatch'                  => 'Avslutt overvåkning',
-'unwatchthispage'          => 'Fjerner overvåkning',
-'notanarticle'             => 'Ikke en artikkel',
-'notvisiblerev'            => 'Revisjonen er slettet',
-'watchnochange'            => 'Ingen av sidene i overvåkningslisten er endret i den valgte perioden.',
-'watchlist-details'        => '{{PLURAL:$1|Én side|$1 sider}} overvåket, utenom diskusjonssider.',
-'wlheader-enotif'          => '* E-postnotifikasjon er slått på.',
-'wlheader-showupdated'     => "* Sider som har blitt forandret siden du sist besøkte dem vises i '''fet tekst'''",
-'watchmethod-recent'       => 'sjekker siste endringer for sider i overvåkningslisten',
-'watchmethod-list'         => 'sjekker siste endringer for sider i overvåkningslisten',
-'watchlistcontains'        => 'Overvåkningslisten inneholder $1 {{PLURAL:$1|side|sider}}.',
-'iteminvalidname'          => 'Problem med «$1», ugyldig navn&nbsp;…',
-'wlnote'                   => "Nedenfor er {{PLURAL:$1|den siste endringen|de siste $1 endringene}} {{PLURAL:$2|den siste timen|de siste '''$2''' timene}}.",
-'wlshowlast'               => 'Vis siste $1 timer $2 dager $3',
-'watchlist-show-bots'      => 'Vis robotredigeringer',
-'watchlist-hide-bots'      => 'Skjul robotredigeringer',
-'watchlist-show-own'       => 'Vis mine redigeringer',
-'watchlist-hide-own'       => 'Skjul mine redigeringer',
-'watchlist-show-minor'     => 'Vis mindre redigeringer',
-'watchlist-hide-minor'     => 'Skjul mindre redigeringer',
-'watchlist-show-anons'     => 'Vis anonyme endringer',
-'watchlist-hide-anons'     => 'Skjul anonyme endringer',
-'watchlist-show-liu'       => 'Vis endringer av innloggede brukere',
-'watchlist-hide-liu'       => 'Skjul endringer av innloggede brukere',
-'watchlist-show-patrolled' => 'Vis patruljerte endringer',
-'watchlist-hide-patrolled' => 'Skjul patruljerte endringer',
-'watchlist-options'        => 'Alternativer for overvåkningslisten',
+'removedwatch'         => 'Fjernet fra overvåkningslisten',
+'removedwatchtext'     => 'Siden «[[:$1]]» er fjernet fra [[Special:Watchlist|overvåkningslisten din]].',
+'watch'                => 'Overvåk',
+'watchthispage'        => 'Overvåk denne siden',
+'unwatch'              => 'Avslutt overvåkning',
+'unwatchthispage'      => 'Fjerner overvåkning',
+'notanarticle'         => 'Ikke en artikkel',
+'notvisiblerev'        => 'Revisjonen er slettet',
+'watchnochange'        => 'Ingen av sidene i overvåkningslisten er endret i den valgte perioden.',
+'watchlist-details'    => '{{PLURAL:$1|Én side|$1 sider}} overvåket, utenom diskusjonssider.',
+'wlheader-enotif'      => '* E-postnotifikasjon er slått på.',
+'wlheader-showupdated' => "* Sider som har blitt forandret siden du sist besøkte dem vises i '''fet tekst'''",
+'watchmethod-recent'   => 'sjekker siste endringer for sider i overvåkningslisten',
+'watchmethod-list'     => 'sjekker siste endringer for sider i overvåkningslisten',
+'watchlistcontains'    => 'Overvåkningslisten inneholder $1 {{PLURAL:$1|side|sider}}.',
+'iteminvalidname'      => 'Problem med «$1», ugyldig navn&nbsp;…',
+'wlnote'               => "Nedenfor er {{PLURAL:$1|den siste endringen|de siste $1 endringene}} {{PLURAL:$2|den siste timen|de siste '''$2''' timene}}.",
+'wlshowlast'           => 'Vis siste $1 timer $2 dager $3',
+'watchlist-options'    => 'Alternativer for overvåkningslisten',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Overvåker…',
@@ -1793,7 +1788,7 @@ Tilbakemeldinger og videre assistanse:
 
 Den siste redigeringen ble foretatt av [[User:$3|$3]] ([[User talk:$3|diskusjon]] | [[Special:Contributions/$3|{{int:contribslink}}]]).',
 'editcomment'      => "Redigeringskommentaren var: «''$1''»", # only shown if there is an edit comment
-'revertpage'       => 'Tilbakestilte endring av [[Special:Contributions/$2|$2]] ([[User talk:$2|diskusjon]]) til siste versjon av [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'Tilbakestilte endring av [[Special:Contributions/$2|$2]] ([[User talk:$2|diskusjon]]) til siste versjon av [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'Tilbakestilte endringer av $1; endret til siste versjon av $2.',
 'sessionfailure'   => "Det ser ut til å være et problem med innloggingen din, og den ble avbrutt av sikkerhetshensyn. Trykk ''Tilbake'' i nettleseren din, oppdater siden og prøv igjen.",
 
@@ -1971,6 +1966,7 @@ $1',
 'ipbhidename'                     => 'Skjul brukernavn i blokkeringsloggen, blokkeringslisten og brukerlisten',
 'ipbwatchuser'                    => 'Overvåk brukerens brukerside og diskusjonsside',
 'ipballowusertalk'                => 'La brukeren redigere sin egen diskusjonssiden under blokkeringen',
+'ipb-change-block'                => 'Blokker brukeren på nytt med disse innstillingene',
 'badipaddress'                    => 'Ugyldig IP-adresse.',
 'blockipsuccesssub'               => 'Blokkering utført',
 'blockipsuccesstext'              => 'IP-adressen «$1» er blokkert. Se [[Special:IPBlockList|blokkeringslisten]] for alle blokkeringer.',
@@ -2009,6 +2005,7 @@ $1',
 'blocklogpage'                    => 'Blokkeringslogg',
 'blocklog-fulllog'                => 'Fullstendig blokkeringslogg',
 'blocklogentry'                   => 'blokkerte «[[$1]]» med en varighet på $2 $3',
+'reblock-logentry'                => 'endret blokkeringsinnstillinger for [[$1]] med en varighet på $2 $3',
 'blocklogtext'                    => 'Dette er en logg som viser hvilke brukere som har blitt blokkert og avblokkert. Automatisk blokkerte IP-adresser vises ikke. Se [[Special:IPBlockList|blokkeringslisten]] for en liste over IP-adresser som er blokkert akkurat nå.',
 'unblocklogentry'                 => 'opphevet blokkeringen av $1',
 'block-log-flags-anononly'        => 'kun uregistrerte brukere',
@@ -2021,6 +2018,8 @@ $1',
 'ipb_expiry_invalid'              => 'Ugyldig utløpstid.',
 'ipb_expiry_temp'                 => 'For å skjule brukernavnet må blokkeringen være permanent.',
 'ipb_already_blocked'             => '«$1» er allerede blokkert',
+'ipb-needreblock'                 => '== Allerede blokkert ==
+$1 er blokkert fra før. Vil du endre innstillingene?',
 'ipb_cant_unblock'                => 'Feil: Blokk-ID $1 ikke funnet. Kan ha blitt avblokkert allerede.',
 'ipb_blocked_as_range'            => 'Feil: IP-en $1 er ikke blokkert direkte, og kan ikke avblokkeres. Den er imidlertid blokkert som del av blokkeringa av IP-rangen $2, som kan avblokkeres.',
 'ip_range_invalid'                => 'Ugyldig IP-rad.',
@@ -2332,10 +2331,11 @@ Dette er sannsynligvis forårsaket av en lenke til et svartelistet eksternt nett
 'markedaspatrollederror-noautopatrol' => 'Du kan ikke merke dine egne endringer som godkjente.',
 
 # Patrol log
-'patrol-log-page'   => 'Godkjenningslogg',
-'patrol-log-header' => 'Dette er en logg over patruljerte sideversjoner.',
-'patrol-log-line'   => 'merket $1 av $2 godkjent $3',
-'patrol-log-auto'   => '(automatisk)',
+'patrol-log-page'      => 'Godkjenningslogg',
+'patrol-log-header'    => 'Dette er en logg over patruljerte sideversjoner.',
+'patrol-log-line'      => 'merket $1 av $2 godkjent $3',
+'patrol-log-auto'      => '(automatisk)',
+'log-show-hide-patrol' => '$1 patruljeringslogg',
 
 # Image deletion
 'deletedrevision'                 => 'Slettet gammel revisjon $1.',
@@ -2730,8 +2730,9 @@ $1
 'recreate'            => 'Gjenopprett',
 
 # action=purge
-'confirm_purge'        => "Vil du slette tjenerens mellomlagrede versjon (''cache'') av denne siden? $1",
 'confirm_purge_button' => 'OK',
+'confirm-purge-top'    => "Vil du slette tjenerens mellomlagrede versjon (''cache'') av denne siden?",
+'confirm-purge-bottom' => 'Rensing av en side sletter mellomlageret og tvinger frem den nyeste versjonen.',
 
 # Multipage image navigation
 'imgmultipageprev' => '← forrige side',
@@ -2821,6 +2822,7 @@ Prøv vanlig forhåndsvisning.',
 
 # Core parser functions
 'unknown_extension_tag' => 'Ukjent tilleggsmerking «$1»',
+'duplicate-defaultsort' => 'Advarsel: Standardsorteringen «$2» tar over for den tidligere sorteringen «$1».',
 
 # Special:Version
 'version'                          => 'Versjon', # Not used as normal message but as header for the special page itself
@@ -2892,15 +2894,5 @@ Skriv inn filnavn uten «{{ns:image}}:»-prefikset.',
 #Linjer som begynner med # anses som kommentarer
 
 #Skriv alle fragmenter av regulære uttrykk over denne lina. La denne linja være som den er</pre>',
-
-# Special:Nuke
-'nuke'               => 'Massesletting',
-'nuke-nopages'       => 'Ingen nye sider av [[Special:Contributions/$1|$1]] i siste endringer.',
-'nuke-list'          => 'Følgende sider ble nylig opprettet av [[Special:Contributions/$1|$1]]; skriv inn en slettingsgrunn og trykk på knappen for å slette alle sidene.',
-'nuke-defaultreason' => 'Massesletting av sider lagt inn av $1',
-'nuke-tools'         => 'Dette verktøyet muliggjør massesletting av sider som nylig er lagt inn av en gitt bruker eller IP. Skriv et brukernavn eller en IP for å få en liste over sider som slettes:',
-'nuke-submit-user'   => 'Gå',
-'nuke-submit-delete' => 'Slett valgte',
-'right-nuke'         => 'Slette sider <i>en masse</i>',
 
 );

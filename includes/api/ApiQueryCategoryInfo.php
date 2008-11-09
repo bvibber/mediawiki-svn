@@ -41,9 +41,10 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 
 	public function execute() {			
 		$alltitles = $this->getPageSet()->getAllTitlesByNamespace();
-		$categories = $alltitles[NS_CATEGORY];
-		if(empty($categories))
+		if ( empty( $alltitles[NS_CATEGORY] ) ) {
 			return;
+		}
+		$categories = $alltitles[NS_CATEGORY];
 
 		$titles = $this->getPageSet()->getGoodTitles() +
 					$this->getPageSet()->getMissingTitles();
@@ -51,7 +52,7 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 		foreach($categories as $c)
 		{
 			$t = $titles[$c];
-			$cattitles[$c] = $t->getDbKey();
+			$cattitles[$c] = $t->getDBKey();
 		}
 
 		$this->addTables('category');

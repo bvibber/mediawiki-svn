@@ -26,6 +26,7 @@ class SpecialNewpages extends SpecialPage {
 		$opts->add( 'hideliu', false );
 		$opts->add( 'hidepatrolled', false );
 		$opts->add( 'hidebots', false );
+		$opts->add( 'hideredirs', true );
 		$opts->add( 'limit', (int)$wgUser->getOption( 'rclimit' ) );
 		$opts->add( 'offset', '' );
 		$opts->add( 'namespace', '0' );
@@ -58,6 +59,8 @@ class SpecialNewpages extends SpecialPage {
 				$this->opts->setValue( 'hidepatrolled', true );
 			if ( 'hidebots' == $bit )
 				$this->opts->setValue( 'hidebots', true );
+			if ( 'showredirs' == $bit )
+				$this->opts->setValue( 'hideredirs', false );
 			if ( is_numeric( $bit ) )
 				$this->opts->setValue( 'limit', intval( $bit ) );
 
@@ -125,7 +128,8 @@ class SpecialNewpages extends SpecialPage {
 		$filters = array(
 			'hideliu' => 'rcshowhideliu',
 			'hidepatrolled' => 'rcshowhidepatr',
-			'hidebots' => 'rcshowhidebots'
+			'hidebots' => 'rcshowhidebots',
+			'hideredirs' => 'whatlinkshere-hideredirs'
 		);
 
 		// Disable some if needed
@@ -142,8 +146,8 @@ class SpecialNewpages extends SpecialPage {
 		$self = $this->getTitle();
 		foreach ( $filters as $key => $msg ) {
 			$onoff = 1 - $this->opts->getValue($key);
-			$link = $this->skin->makeKnownLinkObj( $self, $showhide[$onoff],
-				wfArrayToCGI( array( $key => $onoff ), $changed )
+			$link = $this->skin->link( $self, $showhide[$onoff], array(),
+				 array( $key => $onoff ) + $changed
 			);
 			$links[$key] = wfMsgHtml( $msg, $link );
 		}
@@ -261,7 +265,7 @@ class SpecialNewpages extends SpecialPage {
 	 * @param string $type
 	 */
 	protected function feed( $type ) {
-		global $wgFeed, $wgFeedClasses;
+		global $wgFeed, $wgFeedClasses, $wgFeedLimit;
 
 		if ( !$wgFeed ) {
 			global $wgOut;
@@ -282,11 +286,7 @@ class SpecialNewpages extends SpecialPage {
 
 		$pager = new NewPagesPager( $this, $this->opts );
 		$limit = $this->opts->getValue( 'limit' );
-		global $wgFeedLimit;
-		if( $limit > $wgFeedLimit ) {
-			$limit = $wgFeedLimit;
-		}
-		$pager->mLimit = $limit;
+		$pager->mLimit = min( $limit, $wgFeedLimit );
 
 		$feed->outHeader();
 		if( $pager->getNumRows() > 0 ) {
@@ -337,7 +337,7 @@ class SpecialNewpages extends SpecialPage {
 		$revision = Revision::newFromId( $row->rev_id );
 		if( $revision ) {
 			return '<p>' . htmlspecialchars( $revision->getUserText() ) . ': ' .
-				htmlspecialchars( $revision->getComment() ) . 
+				htmlspecialchars( $this->stripComment( $revision->getComment() ) ) . 
 				"</p>\n<hr />\n<div>" .
 				nl2br( htmlspecialchars( $revision->getText() ) ) . "</div>";
 		}
@@ -351,8 +351,6 @@ class SpecialNewpages extends SpecialPage {
 class NewPagesPager extends ReverseChronologicalPager {
 	// Stored opts
 	protected $opts, $mForm;
-
-	private $hideliu, $hidepatrolled, $hidebots, $namespace, $user, $spTitle;
 
 	function __construct( $form, FormOptions $opts ) {
 		parent::__construct();
@@ -385,7 +383,7 @@ class NewPagesPager extends ReverseChronologicalPager {
 			$rcIndexes = array( 'rc_timestamp' );
 		}
 		$conds[] = 'page_id = rc_cur_id';
-		$conds['page_is_redirect'] = 0;
+
 		# $wgEnableNewpagesUserFilter - temp WMF hack
 		if( $wgEnableNewpagesUserFilter && $user ) {
 			$conds['rc_user_text'] = $user->getText();
@@ -400,6 +398,10 @@ class NewPagesPager extends ReverseChronologicalPager {
 		}
 		if( $this->opts->getValue( 'hidebots' ) ) {
 			$conds['rc_bot'] = 0;
+		}
+
+		if ( $this->opts->getValue( 'hideredirs' ) ) {
+			$conds['page_is_redirect'] = 0;
 		}
 
 		return array(

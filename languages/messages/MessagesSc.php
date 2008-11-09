@@ -297,6 +297,7 @@ per poter personalizzare le tue preferenze.',
 # Recent changes
 'recentchanges'   => 'Ultime Modifiche',
 'rcnote'          => 'Qui di seguito sono elencate le ultime <strong>$1</strong> pagine modificate negli ultimi <strong>$2</strong> giorni.',
+'rcnotefrom'      => ' Qui di seguito sono elencate le modifiche da <b>$2</b> (fino a <b>$1</b>).',
 'rclistfrom'      => 'Mostra modifiche a partire da $1',
 'rclinks'         => 'Mostra le ultime $1 modifiche negli ultimi $2 giorni.',
 'hist'            => 'cron',
@@ -442,7 +443,7 @@ Tutti i tempi sono in ora del server.',
 # Rollback
 'rollback'     => 'Usa una revisione precdente',
 'cantrollback' => "Impossibile tornare ad una versione precedente: l'ultima modifica è stata apportata dall'unico utente che abbia lavorato a questo articolo.",
-'revertpage'   => 'Riportata alla revisione precedente da [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'   => 'Riportata alla revisione precedente da [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Undelete
 'undelete'          => 'Recupera una pagina cancellata',

@@ -181,7 +181,7 @@ Wòmageteŋu agbugbɔ aŋlɔe o.',
 
 # History pages
 'revisionasof'        => 'Tataa le $1',
-'revision-info'       => 'Tataa le $1 si $2 wɔ',
+'revision-info'       => 'Tataa le $1 si $2 wɔ', # Additionally available: $3: revision id
 'previousrevision'    => '← Tata xoxoa',
 'nextrevision'        => 'Tata yeyea →',
 'currentrevisionlink' => 'Tata susuea',
@@ -218,6 +218,7 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'recentchanges'        => 'Tɔtrɔ yeyewo',
 'recentchanges-legend' => 'Tatiawo na tɔtrɔ yeyewo',
 'rcnote'               => "Afisia wofia {{PLURAL:$1|tɔtrɔ '''1''' susue|tɔtrɔ '''$1''' susuewo}} le {{PLURAL:$2|ŋkeke si|ŋkeke '''$2''' mamleawo siwo}} vayi la me, le $5, $4.",
+'rcnotefrom'           => 'Tɔtrɔwo siwo wowɔ tso <b>$2</b> (wofia vaseɖe <b>$1</b>) le afii.',
 'rclistfrom'           => 'Fia tɔtrɔ yeyewo tso $1',
 'rcshowhideminor'      => '$1 tɔtrɔ suewo',
 'rcshowhideliu'        => '$1 ezãla siwo ŋlɔ ŋkɔ',
@@ -291,17 +292,10 @@ Wòateŋu [[:\$1|adze axa sia gɔme]].",
 'newuserlog-create2-entry' => 'woŋlɔ ŋkɔ na $1',
 
 # Watchlist
-'watchlistfor'         => "(na '''$1''')",
-'watch'                => 'Le ŋku ɖe eŋu',
-'watchthispage'        => 'Le ŋku ɖe axa sia ŋu',
-'wlshowlast'           => 'Fia gaƒoƒo $1 ŋkeke $2 mamleawo. $3',
-'watchlist-hide-own'   => 'Ɣla nyeƒe tɔtrɔwo',
-'watchlist-show-minor' => 'Fia tɔtrɔ suewo',
-'watchlist-hide-minor' => 'Ɣla tɔtrɔ suewo',
-'watchlist-show-anons' => 'Fia ŋkɔmaŋlɔlawo ƒe tɔtrɔwo',
-'watchlist-hide-anons' => 'Ɣla ŋkɔmaŋlɔlawo ƒe tɔtrɔwo',
-'watchlist-show-liu'   => 'Fia ŋkɔŋlɔlawo ƒe tɔtrɔwo',
-'watchlist-hide-liu'   => 'Ɣla ŋkɔŋlɔlawo ƒe tɔtrɔwo',
+'watchlistfor'  => "(na '''$1''')",
+'watch'         => 'Le ŋku ɖe eŋu',
+'watchthispage' => 'Le ŋku ɖe axa sia ŋu',
+'wlshowlast'    => 'Fia gaƒoƒo $1 ŋkeke $2 mamleawo. $3',
 
 # Delete
 'deletepage'     => 'Tutu axa sia',
@@ -399,8 +393,5 @@ Wòateŋu akpɔ alesi woŋlɔe.',
 
 # Special:SpecialPages
 'specialpages' => 'Axa tɔxewo',
-
-# Special:Nuke
-'nuke-submit-user' => 'Yi',
 
 );

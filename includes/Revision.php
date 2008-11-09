@@ -544,6 +544,13 @@ class Revision {
 	public function isDeleted( $field ) {
 		return ($this->mDeleted & $field) == $field;
 	}
+	
+	/**
+	 * Get the deletion bitfield of the revision
+	 */	
+	public function getVisibility() {
+		return (int)$this->mDeleted;
+	}
 
 	/**
 	 * Fetch revision text if it's available to the specified audience.
@@ -657,7 +664,7 @@ class Revision {
 	  * $row is usually an object from wfFetchRow(), both the flags and the text
 	  * field must be included
 	  *
-	  * @param integer $row Id of a row
+	  * @param object $row The text data
 	  * @param string $prefix table prefix (default 'old_')
 	  * @return string $text|false the text requested
 	  */
@@ -946,15 +953,13 @@ class Revision {
 
 	/**
 	 * Get rev_timestamp from rev_id, without loading the rest of the row
+	 * @param Title $title
 	 * @param integer $id
-	 * @param integer $pageid, optional
 	 */
-	static function getTimestampFromId( $id, $pageId = 0 ) {
+	static function getTimestampFromId( $title, $id ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$conds = array( 'rev_id' => $id );
-		if( $pageId ) {
-			$conds['rev_page'] = $pageId;
-		}
+		$conds['rev_page'] = $title->getArticleId();
 		$timestamp = $dbr->selectField( 'revision', 'rev_timestamp', $conds, __METHOD__ );
 		if ( $timestamp === false && wfGetLB()->getServerCount() > 1 ) {
 			# Not in slave, try master

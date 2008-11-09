@@ -28,6 +28,12 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK  => 'መደብ_ውይይት',
 );
 
+$specialPageAliases = array(
+	'Shortpages'                => array( 'አጫጭር_ገጾች' ),
+	'Longpages'                 => array( 'ረጃጅም_ገጾች' ),
+	'Newpages'                  => array( 'አዳዲስ_ገጾች' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'በመያያዣ ስር አስምር',
@@ -583,7 +589,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'nohistory'              => 'ለዚሁ ገጽ የዕትሞች ታሪክ የለም።',
 'currentrev'             => 'የአሁኑ እትም',
 'revisionasof'           => 'እትም በ$1',
-'revision-info'          => 'የ$1 ዕትም (ከ$2 ተዘጋጅቶ)',
+'revision-info'          => 'የ$1 ዕትም (ከ$2 ተዘጋጅቶ)', # Additionally available: $3: revision id
 'previousrevision'       => '← የፊተኛው እትም',
 'nextrevision'           => 'የሚከተለው እትም →',
 'currentrevisionlink'    => '«የአሁኑን እትም ለመመልከት»',
@@ -613,8 +619,8 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'rev-delundel'            => 'ይታይ/ይደበቅ',
 'revdelete-nooldid-title' => 'የማይሆን ግብ እትም',
 'revdelete-nooldid-text'  => 'ይህ ተግባር የሚፈጸምበት ግብ (አላማ) እትም አልወሰኑም።',
-'revdelete-selected'      => 'ከ [[:$1]] {{PLURAL:$2|የተመረጡ ዝርያዎች|የተመረጡ ዝርያዎች}}:',
-'logdelete-selected'      => '{{PLURAL:$1|የተመረጠ መዝገብ ድርጊት|የተመረጡ መዝገብ ድርጊቶች}}፦',
+'revdelete-selected'      => "'''ከ [[:$1]] {{PLURAL:$2|የተመረጡ ዝርያዎች|የተመረጡ ዝርያዎች}}:'''",
+'logdelete-selected'      => "'''{{PLURAL:$1|የተመረጠ መዝገብ ድርጊት|የተመረጡ መዝገብ ድርጊቶች}}፦'''",
 'revdelete-hide-text'     => 'የእትሙ ጽሕፈት ይደበቅ',
 'revdelete-hide-name'     => 'ድርጊትና ግቡ ይደበቅ',
 'revdelete-hide-comment'  => 'ማጠቃለያ ይደበቅ',
@@ -778,6 +784,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'recentchangestext'                 => "በዚሁ ገጽ ላይ በቅርብ ጊዜ የወጡ አዳዲስ ለውጦች ለመከታተል ይችላሉ። <br /> ('''ጥ'''፦ ጥቃቅን ለውጥ፤ '''አ'''፦ አዲስ ገጽ)",
 'recentchanges-feed-description'    => 'በዚህ ዊኪ ላይ በቅርብ ግዜ የተለወጠውን በዚሁ feed መከታተል ይችላሉ',
 'rcnote'                            => "ከ$5 $4 እ.ኤ.አ. {{PLURAL:$2|ባለፈው 1 ቀን|ባለፉት '''$2''' ቀኖች}} {{PLURAL:$1|የተደረገው '''1''' ለውጥ እታች ይገኛል|የተደረጉት '''$1''' መጨረሻ ለውጦች እታች ይገኛሉ}}።",
+'rcnotefrom'                        => "ከ'''$2''' ጀምሮ የተቀየሩትን ገጾች (እስከ '''$1''' ድረስ) ክዚህ በታች ይታያሉ።",
 'rclistfrom'                        => '(ከ $1 ጀምሮ አዲስ ለውጦቹን ለማየት)',
 'rcshowhideminor'                   => 'ጥቃቅን ለውጦች $1',
 'rcshowhidebots'                    => 'bots $1',
@@ -1142,14 +1149,6 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'watchlistcontains'    => 'አሁን በሙሉ $1 ገጾች እየተከታተሉ ነው።',
 'wlnote'               => 'ባለፉት <b>$2</b> ሰዓቶች የተደረጉት $1 መጨረሻ ለውጦች እታች ይገኛሉ።',
 'wlshowlast'           => 'ያለፉት $1 ሰዓት፤ $2 ቀን፤ $3 ይታዩ።',
-'watchlist-show-bots'  => 'የቦት (BOT) ለውጦች ይታዩ',
-'watchlist-hide-bots'  => 'የቦት (BOT) ለውጦች ይደበቁ',
-'watchlist-show-own'   => 'የራሴ ለውጦች ይታዩ',
-'watchlist-hide-own'   => 'የራሴ ለውጦች ይደበቁ',
-'watchlist-show-minor' => "'ጥ' (ጥቃቅን) ለውጦች ይታዩ",
-'watchlist-hide-minor' => "'ጥ' (ጥቃቅን) ለውጦች ይደበቁ",
-'watchlist-show-anons' => 'የቁ. አድራሻ ለውጦች ይታዩ',
-'watchlist-hide-anons' => 'የቁ. አድራሻ ለውጦች ይደበቁ',
 'watchlist-options'    => 'የዝርዝሩ ምርጫዎች',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -1228,7 +1227,7 @@ $NEWPAGE
 
 መጨረሻው ለውጥ በ[[User:$3|$3]] ([[User talk:$3|ውይይት]]) ነበረ።',
 'editcomment'      => 'ማጠቃለያው፦ «<i>$1</i>» ነበረ።', # only shown if there is an edit comment
-'revertpage'       => 'የ$2ን ለውጦች ወደ $1 እትም መለሰ።', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'የ$2ን ለውጦች ወደ $1 እትም መለሰ።', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'የ$1 ለውጦች ተገለበጡ፣ ወደ $2 ዕትም ተመልሷል።',
 
 # Protect
@@ -1930,10 +1929,8 @@ $3
 'recreate'            => 'እንደገና ይፈጠር',
 
 # action=purge
-'confirm_purge'        => 'የዚሁ ገጽ ካሽ (cache) ይጠረግ?
-
-$1',
 'confirm_purge_button' => 'እሺ',
+'confirm-purge-top'    => 'የዚሁ ገጽ ካሽ (cache) ይጠረግ?',
 
 # Multipage image navigation
 'imgmultipageprev' => '← ፊተኛው ገጽ',

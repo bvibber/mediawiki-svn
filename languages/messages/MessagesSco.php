@@ -6,6 +6,7 @@
  *
  * @author Malafaya
  * @author OchAyeTheNoo
+ * @author Urhixidur
  * @author Ushanka
  * @author sco.wikipedia.org editors
  * @author לערי ריינהארט
@@ -549,7 +550,7 @@ Gin ye dinna want yer writin tae be editit athoot mercy and redistribute at will
 YYe'r promisin us forbye that ye wrat this yersel, or copied it frae a
 public domain or siclike free resoorce (see $1 for details).
 <strong>DINNA SUBMIT COPYRICHTIT WARK ATHOOT PERMEISSION!</strong>",
-'longpagewarning'           => "WARNIN: This page is $1 kilobytes lang; some brousers micht hae trouble editin pages approachin or langer nor 32kb. Please conseider brakkin the page intae smaa'er sections.",
+'longpagewarning'           => "WARNIN: This page is $1 kilobytes lang; some brousers micht hae trouble editin pages approachin or langer nor 32 kb. Please conseider brakkin the page intae smaa'er sections.",
 'longpageerror'             => "<strong>ERROR: The text ye hae submitted is $1 kilobytes 
 lang, an that's langer than the maximum of $2 kilobytes. It canna be hained.</strong>",
 'readonlywarning'           => "WARNIN: The database haes been lockit for maintenance, sae ye'll no can hain yer edits richt nou. Ye micht wish tae cut-n-paste the text intil a text file an hain it for later.",
@@ -588,7 +589,7 @@ The grund for this, given by $3 is ''$2''",
 'nohistory'           => "The'r nae edit history for this page.",
 'currentrev'          => 'Current reveision',
 'revisionasof'        => 'Reveision as o $1',
-'revision-info'       => 'Revision as o $1 by $2',
+'revision-info'       => 'Revision as o $1 by $2', # Additionally available: $3: revision id
 'previousrevision'    => '← Aulder reveision',
 'nextrevision'        => 'Newer reveision →',
 'currentrevisionlink' => 'see current reveision',
@@ -693,6 +694,7 @@ there micht be parteeculars in the [{{fullurl:Special:Log/delete|page={{FULLPAGE
 'recentchanges'                     => 'Recent chynges',
 'recentchangestext'                 => 'Follae the maist recent chynges tae the wiki on this page.',
 'rcnote'                            => "Ablo {{PLURAL:$1|is '''1''' chynge|are the last '''$1''' chynges}} in the last {{PLURAL:$2|day|'''$2''' days}}, as of $3.",
+'rcnotefrom'                        => 'Ablo is the chynges syne <b>$2</b> (up tae <b>$1</b> shawn).',
 'rclistfrom'                        => 'Shaw new chynges stertin frae $1',
 'rclinks'                           => 'Shaw last $1 chynges in last $2 days<br />$3',
 'show'                              => 'shaw',
@@ -837,22 +839,21 @@ Tae pit the eimage intae a page, uise an airtin i the form
 'noemailtext'     => "This uiser haesna specifee'd a valid e-mail address, or haes chuisen no tae receive e-mail frae ither uisers.",
 
 # Watchlist
-'watchlist'            => 'Ma watchleet',
-'mywatchlist'          => 'Ma watchleet',
-'nowatchlist'          => 'Ye hivna onie eitems on yer watchleet.',
-'watchnologin'         => 'Nae loggit in',
-'watchnologintext'     => 'Ye maun be [[Special:UserLogin|loggit in]] tae modify yer watchleet.',
-'addedwatch'           => 'Eikit ti watchleet',
-'addedwatchtext'       => "The page \"<nowiki>\$1</nowiki>\" haes been eikit ti yer [[Special:Watchlist|watchleet]]. Futur chynges ti this page an its associate Collogue page will be leetit thare, an the page will kythe '''bauldit''' in the [[Special:RecentChanges|leet o recent chynges]] ti mak it mair eith tae pick oot. <p>Gin ye want ti remuve the page frae yer watchleet later, dab \"Stop watching\" in the sidebar.",
-'removedwatch'         => 'Remuved frae watchleet',
-'removedwatchtext'     => 'The page "[[:$1]]" haes been remuved frae yer watchleet.',
-'notanarticle'         => 'No a content page',
-'watchnochange'        => 'Nane o yer watched items were edited in the time period displayed.',
-'watchlistcontains'    => 'Yer watchleet contains $1 {{PLURAL:$1|page|pages}}.',
-'iteminvalidname'      => "Trouble wi eitem '$1', invalid name...",
-'wlnote'               => "Ablo is the lest $1 {{PLURAL:$1|chynge|chynges}} in the lest {{PLURAL:$2|hour|'''$2''' hours}}.",
-'wlshowlast'           => 'Shaw lest $1 hours $2 days $3',
-'watchlist-hide-minor' => 'Dinna shaw smaa chynges',
+'watchlist'         => 'Ma watchleet',
+'mywatchlist'       => 'Ma watchleet',
+'nowatchlist'       => 'Ye hivna onie eitems on yer watchleet.',
+'watchnologin'      => 'Nae loggit in',
+'watchnologintext'  => 'Ye maun be [[Special:UserLogin|loggit in]] tae modify yer watchleet.',
+'addedwatch'        => 'Eikit ti watchleet',
+'addedwatchtext'    => "The page \"<nowiki>\$1</nowiki>\" haes been eikit ti yer [[Special:Watchlist|watchleet]]. Futur chynges ti this page an its associate Collogue page will be leetit thare, an the page will kythe '''bauldit''' in the [[Special:RecentChanges|leet o recent chynges]] ti mak it mair eith tae pick oot. <p>Gin ye want ti remuve the page frae yer watchleet later, dab \"Stop watching\" in the sidebar.",
+'removedwatch'      => 'Remuved frae watchleet',
+'removedwatchtext'  => 'The page "[[:$1]]" haes been remuved frae yer watchleet.',
+'notanarticle'      => 'No a content page',
+'watchnochange'     => 'Nane o yer watched items were edited in the time period displayed.',
+'watchlistcontains' => 'Yer watchleet contains $1 {{PLURAL:$1|page|pages}}.',
+'iteminvalidname'   => "Trouble wi eitem '$1', invalid name...",
+'wlnote'            => "Ablo is the lest $1 {{PLURAL:$1|chynge|chynges}} in the lest {{PLURAL:$2|hour|'''$2''' hours}}.",
+'wlshowlast'        => 'Shaw lest $1 hours $2 days $3',
 
 'enotif_reset'       => 'Merk aa pages visitit',
 'changed'            => 'chynged',
@@ -884,7 +885,7 @@ an that ye'r daein this in accord wi [[{{MediaWiki:Policy-url}}]].",
 'cantrollback'   => 'Canna revert edit; last contreibutor is the ae author o this page.',
 'alreadyrolled'  => 'Canna rowback last edit o [[$1]] bi [[User:$2|$2]] ([[User talk:$2|Talk]]); some ither bodie haes editit or rowed back the page aareadies. Last edit wis bi [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'editcomment'    => 'The edit comment wis: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'     => 'Revertit edit o [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]), chynged back tae last version bi [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'     => 'Revertit edit o [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]), chynged back tae last version bi [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectlogtext'         => 'Ablo is a leet o page locks/unlocks. See the [[Special:ProtectedPages|protected pages list]] for the list of currently operational page protections.',
@@ -1167,10 +1168,8 @@ This confirmation code will end at $4.',
 Please confirm that ye really want tae recreate this airticle.",
 
 # action=purge
-'confirm_purge'        => 'Clair the cache o this page?
-
-$1',
 'confirm_purge_button' => 'Aye',
+'confirm-purge-top'    => 'Clair the cache o this page?',
 
 # Multipage image navigation
 'imgmultigo' => 'Gang!',

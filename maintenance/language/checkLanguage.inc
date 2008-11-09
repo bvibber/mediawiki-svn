@@ -13,41 +13,36 @@ class CheckLanguageCLI {
 	protected $checks = array();
 	protected $L = null;
 
-	protected $defaultChecks = array(
-		'untranslated', 'duplicate', 'obsolete', 'variables', 'empty', 'plural',
-		'whitespace', 'xhtml', 'chars', 'links', 'unbalanced',
-	);
-
 	protected $results = array();
 
 	private $includeExif = false;
 
 	/**
-	 * GLOBALS: $wgLanguageCode;
+	 * Constructor.
+	 * @param $options Options for script.
 	 */
 	public function __construct( Array $options ) {
-
 		if ( isset( $options['help'] ) ) {
 			echo $this->help();
 			exit();
 		}
 
-		if ( isset($options['lang']) ) {
+		if ( isset( $options['lang'] ) ) {
 			$this->code = $options['lang'];
 		} else {
 			global $wgLanguageCode;
 			$this->code = $wgLanguageCode;
 		}
 
-		if ( isset($options['level']) ) {
+		if ( isset( $options['level'] ) ) {
 			$this->level = $options['level'];
 		}
 
-		$this->doLinks = isset($options['links']);
-		$this->includeExif = !isset($options['noexif']);
-		$this->checkAll = isset($options['all']);
+		$this->doLinks = isset( $options['links'] );
+		$this->includeExif = !isset( $options['noexif'] );
+		$this->checkAll = isset( $options['all'] );
 
-		if ( isset($options['wikilang']) ) {
+		if ( isset( $options['wikilang'] ) ) {
 			$this->wikiCode = $options['wikilang'];
 		}
 
@@ -55,52 +50,139 @@ class CheckLanguageCLI {
 			$this->checks = explode( ',', $options['whitelist'] );
 		} elseif ( isset( $options['blacklist'] ) ) {
 			$this->checks = array_diff(
-				$this->defaultChecks,
+				isset( $options['easy'] ) ? $this->easyChecks() : $this->defaultChecks(),
 				explode( ',', $options['blacklist'] )
 			);
+		} elseif ( isset( $options['easy'] ) ) {
+			$this->checks = $this->easyChecks();
 		} else {
-			$this->checks = $this->defaultChecks;
+			$this->checks = $this->defaultChecks();
 		}
 
-		if ( isset($options['output']) ) {
+		if ( isset( $options['output'] ) ) {
 			$this->output = $options['output'];
 		}
 
 		$this->L = new languages( $this->includeExif );
 	}
 
+	/**
+	 * Get the default checks.
+	 * @return A list of the default checks.
+	 */
+	protected function defaultChecks() {
+		return array(
+			'untranslated', 'duplicate', 'obsolete', 'variables', 'empty', 'plural',
+			'whitespace', 'xhtml', 'chars', 'links', 'unbalanced', 'namespace',
+			'projecttalk', 'skin', 'magic', 'magic-old', 'magic-over', 'magic-case',
+			'special', 'special-old',
+		);
+	}
+
+	/**
+	 * Get the checks which check other things than messages.
+	 * @return A list of the non-message checks.
+	 */
+	protected function nonMessageChecks() {
+		return array(
+			'namespace', 'projecttalk', 'skin', 'magic', 'magic-old', 'magic-over',
+			'magic-case', 'special', 'special-old',
+		);
+	}
+
+	/**
+	 * Get the checks that can easily be treated by non-speakers of the language.
+	 * @return A list of the easy checks.
+	 */
+	protected function easyChecks() {
+		return array(
+			'duplicate', 'obsolete', 'empty', 'whitespace', 'xhtml', 'chars', 'magic-old',
+			'magic-over', 'magic-case', 'special-old',
+		);
+	}
+
+	/**
+	 * Get all checks.
+	 * @return An array of all check names mapped to their function names.
+	 */
 	protected function getChecks() {
-		$checks = array();
-		$checks['untranslated'] = 'getUntranslatedMessages';
-		$checks['duplicate'] = 'getDuplicateMessages';
-		$checks['obsolete'] = 'getObsoleteMessages';
-		$checks['variables'] = 'getMessagesWithoutVariables';
-		$checks['plural'] = 'getMessagesWithoutPlural';
-		$checks['empty'] = 'getEmptyMessages';
-		$checks['whitespace'] = 'getMessagesWithWhitespace';
-		$checks['xhtml'] = 'getNonXHTMLMessages';
-		$checks['chars'] = 'getMessagesWithWrongChars';
-		$checks['links'] = 'getMessagesWithDubiousLinks';
-		$checks['unbalanced'] = 'getMessagesWithUnbalanced';
-		return $checks;
+		return array(
+			'untranslated' => 'getUntranslatedMessages',
+			'duplicate'    => 'getDuplicateMessages',
+			'obsolete'     => 'getObsoleteMessages',
+			'variables'    => 'getMessagesWithoutVariables',
+			'plural'       => 'getMessagesWithoutPlural',
+			'empty'        => 'getEmptyMessages',
+			'whitespace'   => 'getMessagesWithWhitespace',
+			'xhtml'        => 'getNonXHTMLMessages',
+			'chars'        => 'getMessagesWithWrongChars',
+			'links'        => 'getMessagesWithDubiousLinks',
+			'unbalanced'   => 'getMessagesWithUnbalanced',
+			'namespace'    => 'getUntranslatedNamespaces',
+			'projecttalk'  => 'getProblematicProjectTalks',
+			'skin'         => 'getUntranslatedSkins',
+			'magic'        => 'getUntranslatedMagicWords',
+			'magic-old'    => 'getObsoleteMagicWords',
+			'magic-over'   => 'getOverridingMagicWords',
+			'magic-case'   => 'getCaseMismatchMagicWords',
+			'special'      => 'getUntraslatedSpecialPages',
+			'special-old'  => 'getObsoleteSpecialPages',
+		);
 	}
 
+	/**
+	 * Get total count for each check non-messages check.
+	 * @return An array of all check names mapped to a two-element array:
+	 * function name to get the total count and language code or null
+	 * for checked code.
+	 */
+	protected function getTotalCount() {
+		return array(
+			'namespace'    => array( 'getNamespaceNames', 'en' ),
+			'projecttalk'  => null,
+			'skin'         => array( 'getSkinNames', 'en' ),
+			'magic'        => array( 'getMagicWords', 'en' ),
+			'magic-old'    => array( 'getMagicWords', null ),
+			'magic-over'   => array( 'getMagicWords', null ),
+			'magic-case'   => array( 'getMagicWords', null ),
+			'special'      => array( 'getSpecialPageAliases', 'en' ),
+			'special-old'  => array( 'getSpecialPageAliases', null ),
+		);
+	}
+
+	/**
+	 * Get all check descriptions.
+	 * @return An array of all check names mapped to their descriptions.
+	 */
 	protected function getDescriptions() {
-		$descriptions = array();
-		$descriptions['untranslated'] = '$1 message(s) of $2 are not translated to $3, but exist in en:';
-		$descriptions['duplicate'] = '$1 message(s) of $2 are translated the same in en and $3:';
-		$descriptions['obsolete'] = '$1 message(s) of $2 do not exist in en or are in the ignore list, but are in $3';
-		$descriptions['variables'] = '$1 message(s) of $2 in $3 don\'t use some variables that en uses:';
-		$descriptions['plural'] = '$1 message(s) of $2 in $3 don\'t use {{plural}} while en uses:';
-		$descriptions['empty'] = '$1 message(s) of $2 in $3 are empty or -:';
-		$descriptions['whitespace'] = '$1 message(s) of $2 in $3 have trailing whitespace:';
-		$descriptions['xhtml'] = '$1 message(s) of $2 in $3 contain illegal XHTML:';
-		$descriptions['chars'] = '$1 message(s) of $2 in $3 include hidden chars which should not be used in the messages:';
-		$descriptions['links'] = '$1 message(s) of $2 in $3 have problematic link(s):';
-		$descriptions['unbalanced'] = '$1 message(s) of $2 in $3 have unbalanced {[]}:';
-		return $descriptions;
+		return array(
+			'untranslated' => '$1 message(s) of $2 are not translated to $3, but exist in en:',
+			'duplicate'    => '$1 message(s) of $2 are translated the same in en and $3:',
+			'obsolete'     => '$1 message(s) of $2 do not exist in en or are in the ignore list, but exist in $3:',
+			'variables'    => '$1 message(s) of $2 in $3 don\'t use some variables that en uses:',
+			'plural'       => '$1 message(s) of $2 in $3 don\'t use {{plural}} while en uses:',
+			'empty'        => '$1 message(s) of $2 in $3 are empty or -:',
+			'whitespace'   => '$1 message(s) of $2 in $3 have trailing whitespace:',
+			'xhtml'        => '$1 message(s) of $2 in $3 contain illegal XHTML:',
+			'chars'        => '$1 message(s) of $2 in $3 include hidden chars which should not be used in the messages:',
+			'links'        => '$1 message(s) of $2 in $3 have problematic link(s):',
+			'unbalanced'   => '$1 message(s) of $2 in $3 have unbalanced {[]}:',
+			'namespace'    => '$1 namespace name(s) of $2 are not translated to $3, but exist in en:',
+			'projecttalk'  => '$1 namespace name(s) and alias(es) in $3 are project talk namespaces without the parameter:',
+			'skin'         => '$1 skin name(s) of $2 are not translated to $3, but exist in en:',
+			'magic'        => '$1 magic word(s) of $2 are not translated to $3, but exist in en:',
+			'magic-old'    => '$1 magic word(s) of $2 do not exist in en, but exist in $3:',
+			'magic-over'   => '$1 magic word(s) of $2 in $3 do not contain the original en word(s):',
+			'magic-case'   => '$1 magic word(s) of $2 in $3 change the case-sensitivity of the original en word:',
+			'special'      => '$1 special page alias(es) of $2 are not translated to $3, but exist in en:',
+			'special-old'  => '$1 special page alias(es) of $2 do not exist in en, but exist in $3:',
+		);
 	}
 
+	/**
+	 * Get help.
+	 * @return The help string.
+	 */
 	protected function help() {
 		return <<<ENDS
 Run this script to check a specific language file, or all of them.
@@ -109,23 +191,33 @@ Parameters:
 	* lang: Language code (default: the installation default language).
 	* all: Check all customized languages.
 	* help: Show this help.
-	* level: Show the following level (default: 2).
+	* level: Show the following display level (default: 2).
 	* links: Link the message values (default off).
 	* wikilang: For the links, what is the content language of the wiki to display the output in (default en).
 	* whitelist: Do only the following checks (form: code,code).
 	* blacklist: Don't do the following checks (form: code,code).
+	* easy: Do only the easy checks, which can be treated by non-speakers of the language.
 	* noexif: Don't check for EXIF messages (a bit hard and boring to translate), if you know that they are currently not translated and want to focus on other problems (default off).
-Check codes (ideally, all of them should result 0; all the checks are executed by default (except duplicate and language specific check blacklists in checkLanguage.inc):
+Check codes (ideally, all of them should result 0; all the checks are executed by default (except language-specific check blacklists in checkLanguage.inc):
 	* untranslated: Messages which are required to translate, but are not translated.
 	* duplicate: Messages which translation equal to fallback
-	* obsolete: Messages which are untranslatable, but translated.
+	* obsolete: Messages which are untranslatable or do not exist, but are translated.
 	* variables: Messages without variables which should be used.
-	* empty: Empty messages.
+	* empty: Empty messages and messages that contain only -.
 	* whitespace: Messages which have trailing whitespace.
 	* xhtml: Messages which are not well-formed XHTML (checks only few common errors).
 	* chars: Messages with hidden characters.
 	* links: Messages which contains broken links to pages (does not find all).
 	* unbalanced: Messages which contains unequal numbers of opening {[ and closing ]}.
+	* namespace: Namespace names that were not translated.
+	* projecttalk: Namespace names and aliases where the project talk does not contain $1.
+	* skin: Skin names that were not translated.
+	* magic: Magic words that were not translated.
+	* magic-old: Magic words which do not exist.
+	* magic-over: Magic words that override the original English word.
+	* magic-case: Magic words whose translation changes the case-sensitivity of the original English word.
+	* special: Special page names that were not translated.
+	* special-old: Special page names which do not exist.
 Display levels (default: 2):
 	* 0: Skip the checks (useful for checking syntax).
 	* 1: Show only the stub headers and number of wrong messages, without list of messages.
@@ -135,10 +227,13 @@ Display levels (default: 2):
 ENDS;
 	}
 
+	/**
+	 * Execute the script.
+	 */
 	public function execute() {
 		$this->doChecks();
 		if ( $this->level > 0 ) {
-			switch ($this->output) {
+			switch ( $this->output ) {
 				case 'plain':
 					$this->outputText();
 					break;
@@ -146,11 +241,14 @@ ENDS;
 					$this->outputWiki();
 					break;
 				default:
-					throw new MWException( "Invalid output type $this->output");
+					throw new MWException( "Invalid output type $this->output" );
 			}
 		}
 	}
 
+	/**
+	 * Execute the checks.
+	 */
 	protected function doChecks() {
 		$ignoredCodes = array( 'en', 'enRTL' );
 
@@ -158,24 +256,33 @@ ENDS;
 		# Check the language
 		if ( $this->checkAll ) {
 			foreach ( $this->L->getLanguages() as $language ) {
-				if ( !in_array($language, $ignoredCodes) ) {
+				if ( !in_array( $language, $ignoredCodes ) ) {
 					$this->results[$language] = $this->checkLanguage( $language );
 				}
 			}
 		} else {
-			if ( in_array($this->code, $ignoredCodes) ) {
-				throw new MWException("Cannot check code $this->code.");
+			if ( in_array( $this->code, $ignoredCodes ) ) {
+				throw new MWException( "Cannot check code $this->code." );
 			} else {
 				$this->results[$this->code] = $this->checkLanguage( $this->code );
 			}
 		}
 	}
 
+	/**
+	 * Get the check blacklist.
+	 * @return The list of checks which should not be executed.
+	 */
 	protected function getCheckBlacklist() {
 		global $checkBlacklist;
 		return $checkBlacklist;
 	}
 
+	/**
+	 * Check a language.
+	 * @param $code The language code.
+	 * @return The results.
+	 */
 	protected function checkLanguage( $code ) {
 		# Syntax check only
 		if ( $this->level === 0 ) {
@@ -187,22 +294,28 @@ ENDS;
 		$checkFunctions = $this->getChecks();
 		$checkBlacklist = $this->getCheckBlacklist();
 		foreach ( $this->checks as $check ) {
-			if ( isset($checkBlacklist[$code]) &&
-				in_array($check, $checkBlacklist[$code]) ) {
+			if ( isset( $checkBlacklist[$code] ) &&
+				in_array( $check, $checkBlacklist[$code] ) ) {
 				$result[$check] = array();
 				continue;
 			}
 
 			$callback = array( $this->L, $checkFunctions[$check] );
-			if ( !is_callable($callback ) ) {
+			if ( !is_callable( $callback ) ) {
 				throw new MWException( "Unkown check $check." );
 			}
-			$results[$check] = call_user_func( $callback , $code );
+			$results[$check] = call_user_func( $callback, $code );
 		}
 
 		return $results;
 	}
 
+	/**
+	 * Format a message key.
+	 * @param $key The message key.
+	 * @param $code The language code.
+	 * @return The formatted message key.
+	 */
 	protected function formatKey( $key, $code ) {
 		if ( $this->doLinks ) {
 			$displayKey = ucfirst( $key );
@@ -216,28 +329,44 @@ ENDS;
 		}
 	}
 
+	/**
+	 * Output the checks results as plain text.
+	 * @return The checks results as plain text.
+	 */
 	protected function outputText() {
 		foreach ( $this->results as $code => $results ) {
 			$translated = $this->L->getMessages( $code );
 			$translated = count( $translated['translated'] );
-			$translatable = $this->L->getGeneralMessages();
-			$translatable = count( $translatable['translatable'] );
 			foreach ( $results as $check => $messages ) {
 				$count = count( $messages );
 				if ( $count ) {
+					if ( $check == 'untranslated' ) {
+						$translatable = $this->L->getGeneralMessages();
+						$total = count( $translatable['translatable'] );
+					} elseif ( in_array( $check, $this->nonMessageChecks() ) ) {
+						$totalCount = $this->getTotalCount();
+						$totalCount = $totalCount[$check];
+						$callback = array( $this->L, $totalCount[0] );
+						$callCode = $totalCount[1] ? $totalCount[1] : $code;
+						$total = count( call_user_func( $callback, $callCode ) );
+					} else {
+						$total = $translated;
+					}
 					$search = array( '$1', '$2', '$3' );
-					$replace = array( $count, $check == 'untranslated' ? $translatable: $translated, $code );
+					$replace = array( $count, $total, $code );
 					$descriptions = $this->getDescriptions();
 					echo "\n" . str_replace( $search, $replace, $descriptions[$check] ) . "\n";
 					if ( $this->level == 1 ) {
 						echo "[messages are hidden]\n";
 					} else {
 						foreach ( $messages as $key => $value ) {
-							$displayKey = $this->formatKey( $key, $code );
-							if ( $this->level == 2 ) {
-								echo "* $displayKey\n";
+							if( !in_array( $check, $this->nonMessageChecks() ) ) {
+								$key = $this->formatKey( $key, $code );
+							}
+							if ( $this->level == 2 || empty( $value ) ) {
+								echo "* $key\n";
 							} else {
-								echo "* $displayKey:		'$value'\n";
+								echo "* $key:		'$value'\n";
 							}
 						}
 					}
@@ -247,7 +376,8 @@ ENDS;
 	}
 
 	/**
-	 * Globals: $wgContLang, $IP
+	 * Output the checks results as wiki text.
+	 * @return The checks results as wiki text.
 	 */
 	function outputWiki() {
 		global $wgContLang, $IP;
@@ -259,6 +389,9 @@ ENDS;
 			$problems = 0;
 			$detailTextForLangChecks = array();
 			foreach ( $results as $check => $messages ) {
+				if( in_array( $check, $this->nonMessageChecks() ) ) {
+					continue;
+				}
 				$count = count( $messages );
 				if ( $count ) {
 					$problems += $count;
@@ -267,7 +400,7 @@ ENDS;
 						$displayKey = $this->formatKey( $key, $code );
 						$messageDetails[] = $displayKey;
 					}
-					$detailTextForLangChecks[] = "===$code-$check===\n* " . implode( ', ', $messageDetails );
+					$detailTextForLangChecks[] = "=== $code-$check ===\n* " . implode( ', ', $messageDetails );
 					$numbers[] = "'''[[#$code-$check|$count]]'''";
 				} else {
 					$numbers[] = $count;
@@ -279,7 +412,10 @@ ENDS;
 				$detailText .= $detailTextForLang . implode( "\n", $detailTextForLangChecks ) . "\n";
 			}
 
-			if ( !$problems ) { continue; } // Don't list languages without problems
+			if ( !$problems ) {
+				# Don't list languages without problems
+				continue;
+			}
 			$language = $wgContLang->getLanguageName( $code );
 			$rows[] = "| $language || $code || $problems || " . implode( ' || ', $numbers );
 		}
@@ -291,7 +427,7 @@ ENDS;
 '''Check results are for:''' <code>$version</code>
 
 
-{| class="sortable wikitable" border="2" cellpadding="4" cellspacing="0" style="background-color: #F9F9F9; border: 1px #AAAAAA solid; border-collapse: collapse; clear:both;"
+{| class="sortable wikitable" border="2" cellpadding="4" cellspacing="0" style="background-color: #F9F9F9; border: 1px #AAAAAA solid; border-collapse: collapse; clear: both;"
 $tableRows
 |}
 
@@ -300,46 +436,50 @@ $detailText
 EOL;
 	}
 
+	/**
+	 * Check if there are any results for the checks, in any language.
+	 * @return True if there are any results, false if not.
+	 */
 	protected function isEmpty() {
-		$empty = true;
 		foreach( $this->results as $code => $results ) {
 			foreach( $results as $check => $messages ) {
 				if( !empty( $messages ) ) {
-					$empty = false;
-					break;
+					return false;
 				}
 			}
-			if( !$empty ) {
-				break;
-			}
 		}
-		return $empty;
+		return true;
 	}
 }
 
 class CheckExtensionsCLI extends CheckLanguageCLI {
 	private $extensions;
 
+	/**
+	 * Constructor.
+	 * @param $options Options for script.
+	 * @param $extension The extension name (or names).
+	 */
 	public function __construct( Array $options, $extension ) {
 		if ( isset( $options['help'] ) ) {
 			echo $this->help();
 			exit();
 		}
 
-		if ( isset($options['lang']) ) {
+		if ( isset( $options['lang'] ) ) {
 			$this->code = $options['lang'];
 		} else {
 			global $wgLanguageCode;
 			$this->code = $wgLanguageCode;
 		}
 
-		if ( isset($options['level']) ) {
+		if ( isset( $options['level'] ) ) {
 			$this->level = $options['level'];
 		}
 
-		$this->doLinks = isset($options['links']);
+		$this->doLinks = isset( $options['links'] );
 
-		if ( isset($options['wikilang']) ) {
+		if ( isset( $options['wikilang'] ) ) {
 			$this->wikiCode = $options['wikilang'];
 		}
 
@@ -347,14 +487,16 @@ class CheckExtensionsCLI extends CheckLanguageCLI {
 			$this->checks = explode( ',', $options['whitelist'] );
 		} elseif ( isset( $options['blacklist'] ) ) {
 			$this->checks = array_diff(
-				$this->defaultChecks,
+				isset( $options['easy'] ) ? $this->easyChecks() : $this->defaultChecks(),
 				explode( ',', $options['blacklist'] )
 			);
+		} elseif ( isset( $options['easy'] ) ) {
+			$this->checks = $this->easyChecks();
 		} else {
-			$this->checks = $this->defaultChecks;
+			$this->checks = $this->defaultChecks();
 		}
 
-		if ( isset($options['output']) ) {
+		if ( isset( $options['output'] ) ) {
 			$this->output = $options['output'];
 		}
 
@@ -366,23 +508,23 @@ class CheckExtensionsCLI extends CheckLanguageCLI {
 		$this->extensions = array();
 		$extensions = new PremadeMediawikiExtensionGroups();
 		$extensions->addAll();
-		if( $extension == 'all' ) {
-			foreach( MessageGroups::singleton()->getGroups() as $group ) {
-				if( strpos( $group->getId(), 'ext-' ) === 0 && !$group->isMeta() ) {
+		if ( $extension == 'all' ) {
+			foreach ( MessageGroups::singleton()->getGroups() as $group ) {
+				if ( strpos( $group->getId(), 'ext-' ) === 0 && !$group->isMeta() ) {
 					$this->extensions[] = new extensionLanguages( $group );
 				}
 			}
-		} elseif( $extension == 'wikimedia' ) {
+		} elseif ( $extension == 'wikimedia' ) {
 			$wikimedia = MessageGroups::getGroup( 'ext-0-wikimedia' );
-			foreach( $wikimedia->wmfextensions() as $extension ) {
+			foreach ( $wikimedia->wmfextensions() as $extension ) {
 				$group = MessageGroups::getGroup( $extension );
 				$this->extensions[] = new extensionLanguages( $group );
 			}
 		} else {
 			$extensions = explode( ',', $extension );
-			foreach( $extensions as $extension ) {
+			foreach ( $extensions as $extension ) {
 				$group = MessageGroups::getGroup( 'ext-' . $extension );
-				if( $group ) {
+				if ( $group ) {
 					$extension = new extensionLanguages( $group );
 					$this->extensions[] = $extension;
 				} else {
@@ -392,6 +534,39 @@ class CheckExtensionsCLI extends CheckLanguageCLI {
 		}
 	}
 
+	/**
+	 * Get the default checks.
+	 * @return A list of the default checks.
+	 */
+	protected function defaultChecks() {
+		return array(
+			'untranslated', 'duplicate', 'obsolete', 'variables', 'empty', 'plural',
+			'whitespace', 'xhtml', 'chars', 'links', 'unbalanced',
+		);
+	}
+
+	/**
+	 * Get the checks which check other things than messages.
+	 * @return A list of the non-message checks.
+	 */
+	protected function nonMessageChecks() {
+		return array();
+	}
+
+	/**
+	 * Get the checks that can easily be treated by non-speakers of the language.
+	 * @return A list of the easy checks.
+	 */
+	protected function easyChecks() {
+		return array(
+			'duplicate', 'obsolete', 'empty', 'whitespace', 'xhtml', 'chars',
+		);
+	}
+
+	/**
+	 * Get help.
+	 * @return The help string.
+	 */
 	protected function help() {
 		return <<<ENDS
 Run this script to check the status of a specific language in extensions, or all of them.
@@ -400,13 +575,13 @@ Parameters:
 	* First parameter (mandatory): Extension name, multiple extension names (separated by commas), "all" for all the extensions or "wikimedia" for extensions used by Wikimedia.
 	* lang: Language code (default: the installation default language).
 	* help: Show this help.
-	* level: Show the following level (default: 2).
+	* level: Show the following display level (default: 2).
 	* links: Link the message values (default off).
 	* wikilang: For the links, what is the content language of the wiki to display the output in (default en).
 	* whitelist: Do only the following checks (form: code,code).
 	* blacklist: Do not perform the following checks (form: code,code).
-	* duplicate: Additionally check for messages which are translated the same to English (default off).
-Check codes (ideally, all of them should result 0; all the checks are executed by default (except duplicate and language specific check blacklists in checkLanguage.inc):
+	* easy: Do only the easy checks, which can be treated by non-speakers of the language.
+Check codes (ideally, all of them should result 0; all the checks are executed by default (except language-specific check blacklists in checkLanguage.inc):
 	* untranslated: Messages which are required to translate, but are not translated.
 	* duplicate: Messages which translation equal to fallback
 	* obsolete: Messages which are untranslatable, but translated.
@@ -426,10 +601,17 @@ Display levels (default: 2):
 ENDS;
 	}
 
+	/**
+	 * Execute the script.
+	 */
 	public function execute() {
 		$this->doChecks();
 	}
 
+	/**
+	 * Check a language and show the results.
+	 * @param $code The language code.
+	 */
 	protected function checkLanguage( $code ) {
 		foreach( $this->extensions as $extension ) {
 			$this->L = $extension;

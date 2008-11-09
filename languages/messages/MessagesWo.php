@@ -6,9 +6,38 @@
  *
  * @author Ibou
  * @author SF-Language
+ * @author Urhixidur
  */
 
 $fallback = 'fr';
+
+$specialPageAliases = array(
+	'Userlogin'                 => array( 'Lonku' ),
+	'Userlogout'                => array( 'Lonkiku' ),
+	'CreateAccount'             => array( 'Sos am sàq' ),
+	'Preferences'               => array( 'Tànneef' ),
+	'Watchlist'                 => array( 'Limu toppte' ),
+	'Recentchanges'             => array( 'Coppite yu mujj' ),
+	'Upload'                    => array( 'Yeb' ),
+	'Imagelist'                 => array( 'Limu nataal yi' ),
+	'Newimages'                 => array( 'Nataal bu bees' ),
+	'Listusers'                 => array( 'Limu jëfandikukat yi' ),
+	'Listgrouprights'           => array( 'Limu mboolooy jëfandikukat' ),
+	'Randompage'                => array( 'Xët cig mbetteel' ),
+	'Lonelypages'               => array( 'Xëtu jirim' ),
+	'Uncategorizedpages'        => array( 'Xët yi amul wàll' ),
+	'Uncategorizedcategories'   => array( 'Wàll yi amul wàll' ),
+	'Uncategorizedimages'       => array( 'Nataal yi amul wàll' ),
+	'Uncategorizedtemplates'    => array( 'Royuwaay yi amul wàll' ),
+	'Unusedcategories'          => array( 'Royuwaay yiñ jëfandikuwul' ),
+	'Unusedimages'              => array( 'Nataal yiñ jëfandikuwul' ),
+	'Wantedpages'               => array( 'Xët yiñ laaj' ),
+	'Wantedcategories'          => array( 'Wàll yiñ laaj' ),
+	'Mypage'                    => array( 'Sama xët' ),
+	'Mytalk'                    => array( 'Samay waxtaan' ),
+	'Mycontributions'           => array( 'Samay cëru' ),
+	'Search'                    => array( 'Ceet' ),
+);
 
 $messages = array(
 # User preference toggles
@@ -560,8 +589,8 @@ Te it na wóor ne li nga fiy duggal yaa leen moom, yaa leen bind, walla fa nga l
 Soo bëggul keneen jël say mbind soppi leen, tas leen teg ci, bu leen fi duggal.<br />
 Te it na wóor ne li nga fiy duggal yaa leen moom, yaa leen bind, walla fa nga leen jële gongikuwaay bu ubbeeku la, lu kenn moomul (xoolal $1 ngir yeneeni xamle).
 <strong>BUL FI DUGGAL LIGGÉEYI KENEEN YU AQI KI-SOS AAR TE AMOO CI BENN NDIGËL!</strong>',
-'longpagewarning'                  => "'''Muytul: guddaayu xët wi da fa romb $1 kio ;
-yenn joowukaay yi, man nañoo wone ay tolof-tolof ci bu ñuy soppi xët yi romb dayoob 32 kio. Li doon gën mooy nga séddatle ko ci ay xaaj yu bari.'''",
+'longpagewarning'                  => "'''Muytul: guddaayu xët wi da fa romb $1 Kio ;
+yenn joowukaay yi, man nañoo wone ay tolof-tolof ci bu ñuy soppi xët yi romb dayoob 32 Kio. Li doon gën mooy nga séddatle ko ci ay xaaj yu bari.'''",
 'longpageerror'                    => '<strong>NJUUMTE : mbind mi nga yónne guddee na $1 kio, kon romb na dig bi di $2 kio. Mbind mi maneesu kaa denc.</strong>',
 'readonlywarning'                  => "'''Moytul: dàttub njoxe bi dañu koo caabi ngir ay liggéey,
 kon doo man a denc say coppite fi mu nekk nii. Man ngaa duppi mbind mi taf ko cib tëriin bu ñuy binde te taaxirlu ñu ubbi dàttub njoxe bi.'''
@@ -614,7 +643,7 @@ Ngirtey téye gi $3 joxe, mooy ne: ''$2''.",
 'currentrev'             => 'Sumb mi teew',
 'currentrev-asof'        => 'Sumb mi teew mu $1',
 'revisionasof'           => 'Sumb mu $1',
-'revision-info'          => 'Sumb mu $1, jëfandikukat: $2',
+'revision-info'          => 'Sumb mu $1, jëfandikukat: $2', # Additionally available: $3: revision id
 'previousrevision'       => '← Sumb mi jiitu',
 'nextrevision'           => 'Sumb mi toftal →',
 'currentrevisionlink'    => 'Sumb mi teew',
@@ -648,11 +677,11 @@ Ngirtey téye gi $3 joxe, mooy ne: ''$2''.",
 'revisiondelete'              => 'Far/Lopppanti ay sumb',
 'revdelete-nooldid-title'     => 'Waxoo man sumb',
 'revdelete-nooldid-text'      => 'Waxoo ci man sumb mu xët wii ngay amal solo sii.',
-'revdelete-selected'          => "{{PLURAL:$2|Sumbum '''$1''' mi falu|Sumbi '''$1''' yi falu}} :",
-'logdelete-selected'          => '{{PLURAL:$1|Xew-xewu yéenekaay bi falu|Xew-xewi yéenekaay yi falu}}:',
-'revdelete-text'              => 'Sumb yi nga far dañuy wéy di feeñ ci jaar-jaaru xët wi, waaye mbind yi ñu ëmb ñépp duñ leen man a gis .
+'revdelete-selected'          => "'''{{PLURAL:$2|Sumbum '''$1''' mi falu|Sumbi '''$1''' yi falu}} :'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|Xew-xewu yéenekaay bi falu|Xew-xewi yéenekaay yi falu}}:'''",
+'revdelete-text'              => "'''Sumb yi nga far dañuy wéy di feeñ ci jaar-jaaru xët wi, waaye mbind yi ñu ëmb ñépp duñ leen man a gis.'''
 
-Yeneen yorkati {{SITENAME}} itam di nañ man a gis ëmbit yu laqu yi te loppanti leen, walla xanaa rek kay dañ fee def ay digal yu leen koy tere man a def.',
+Yeneen yorkati {{SITENAME}} itam di nañ man a gis ëmbit yu laqu yi te loppanti leen, walla xanaa rek kay dañ fee def ay digal yu leen koy tere man a def.",
 'revdelete-legend'            => 'Taxawal ay digal ci sumb yi ñu far:',
 'revdelete-hide-text'         => 'Nëbb mbindum sumb mi',
 'revdelete-hide-name'         => 'Nëbb jëf ji ak njeexitam',
@@ -1102,10 +1131,6 @@ Ab [[Special:WhatLinksHere/$2|lim bu mat]] jàppandi na.',
 'watchlistcontains'    => "Sa limu toppte am na '''$1''' {{PLURAL:$1|xët|xët}}.",
 'wlnote'               => 'Fii ci suuf {{PLURAL:$1| ngay gis coppite yu mujj yi|ngay gis $1 coppite yu mujj}} ci {{PLURAL:$2|waxtu gu mujj gi|<b>$2</b> waxtu yu mujj}}.',
 'wlshowlast'           => 'wone $1 waxtu yu mujj, $2 bess yu mujj, walla $3.',
-'watchlist-show-own'   => 'Wone samay coppite',
-'watchlist-hide-own'   => 'Nëbb samay coppite',
-'watchlist-show-minor' => 'Wone coppite yu tuut yi',
-'watchlist-hide-minor' => 'Nëbb coppite yu tuut yi',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching' => 'Topp...',

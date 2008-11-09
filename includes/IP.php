@@ -152,7 +152,7 @@ class IP {
 	}
 	
 	/**
-	 * Given an unsigned integer, returns an IPv6 address in octet notation
+	 * Given a hexadecimal number, returns to an IPv6 address in octet notation
 	 * @param $ip string hex IP
 	 * @return string
 	 */
@@ -167,6 +167,23 @@ class IP {
    		// NO leading zeroes
    		$ip_oct = preg_replace( '/(^|:)0+' . RE_IPV6_WORD . '/', '$1$2', $ip_oct );
        	return $ip_oct;
+	}
+	
+	/**
+	 * Converts a hexadecimal number to an IPv4 address in octet notation
+	 * @param $ip string Hex IP
+	 * @return string
+	 */ 
+	public static function hexToQuad( $ip ) {
+		// Converts a hexadecimal IP to nnn.nnn.nnn.nnn format
+		$dec = wfBaseConvert( $ip, 16, 10 );
+		$parts[3] = $dec % 256;
+		$dec /= 256;
+		$parts[2] = $dec % 256;
+		$dec /= 256;
+		$parts[1] = $dec % 256;
+		$parts[0] = $dec / 256;
+		return implode( '.', array_reverse( $parts ) );
 	}
 
 	/**

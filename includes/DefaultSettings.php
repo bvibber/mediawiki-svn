@@ -838,7 +838,6 @@ $wgTranslateNumerals = true;
 
 /**
  * Translation using MediaWiki: namespace.
- * This will increase load times by 25-60% unless memcached is installed.
  * Interface messages will be loaded from the database.
  */
 $wgUseDatabaseMessages = true;
@@ -952,6 +951,16 @@ $wgCleanSignatures = true;
 $wgExtraSubtitle	= '';
 $wgSiteSupportPage	= ''; # A page where you users can receive donations
 
+/**
+ * Set this to a string to put the wiki into read-only mode. The text will be 
+ * used as an explanation to users. 
+ *
+ * This prevents most write operations via the web interface. Cache updates may 
+ * still be possible. To prevent database writes completely, use the read_only 
+ * option in MySQL.
+ */
+$wgReadOnly             = null;
+
 /***
  * If this lock file exists, the wiki will be forced into read-only mode.
  * Its contents will be shown to users as part of the read-only warning
@@ -960,15 +969,42 @@ $wgSiteSupportPage	= ''; # A page where you users can receive donations
 $wgReadOnlyFile         = false; ///< defaults to "{$wgUploadDirectory}/lock_yBgMBwiR";
 
 /**
+ * Filename for debug logging. 
  * The debug log file should be not be publicly accessible if it is used, as it
- * may contain private data. */
+ * may contain private data. 
+ */
 $wgDebugLogFile         = '';
 
-$wgDebugRedirects		= false;
-$wgDebugRawPage         = false; # Avoid overlapping debug entries by leaving out CSS
+/**
+ * Prefix for debug log lines
+ */
+$wgDebugLogPrefix       = '';
 
+/**
+ * If true, instead of redirecting, show a page with a link to the redirect 
+ * destination. This allows for the inspection of PHP error messages, and easy
+ * resubmission of form data. For developer use only.
+ */
+$wgDebugRedirects		= false;
+
+/**
+ * If true, log debugging data from action=raw. 
+ * This is normally false to avoid overlapping debug entries due to gen=css and
+ * gen=js requests.
+ */
+$wgDebugRawPage         = false;
+
+/**
+ * Send debug data to an HTML comment in the output.
+ *
+ * This may occasionally be useful when supporting a non-technical end-user. It's
+ * more secure than exposing the debug log file to the web, since the output only
+ * contains private data for the current user. But it's not ideal for development 
+ * use since data is lost on fatal errors and redirects.
+ */
 $wgDebugComments        = false;
-$wgReadOnly             = null;
+
+/** Does nothing. Obsolete? */
 $wgLogQueries           = false;
 
 /**
@@ -1027,7 +1063,8 @@ $wgUseCategoryBrowser   = false;
  * same options.
  *
  * This can provide a significant speedup for medium to large pages,
- * so you probably want to keep it on.
+ * so you probably want to keep it on. Extensions that conflict with the 
+ * parser cache should disable the cache on a per-page basis instead.
  */
 $wgEnableParserCache = true;
 
@@ -1217,8 +1254,22 @@ $wgGroupPermissions['bureaucrat']['noratelimit'] = true;
 $wgImplicitGroups = array( '*', 'user', 'autoconfirmed' );
 
 /**
- * These are the groups that users are allowed to add to or remove from
- * their own account via Special:Userrights.
+ * A map of group names that the user is in, to group names that those users
+ * are allowed to add or revoke.
+ *
+ * Setting the list of groups to add or revoke to true is equivalent to "any group".
+ * 
+ * For example, to allow sysops to add themselves to the "bot" group:
+ *
+ *    $wgGroupsAddToSelf = array( 'sysop' => array( 'bot' ) );
+ *
+ * Implicit groups may be used for the source group, for instance:
+ *
+ *    $wgGroupsRemoveFromSelf = array( '*' => true );
+ *
+ * This allows users in the '*' group (i.e. any user) to remove themselves from
+ * any group that they happen to be in.
+ * 
  */
 $wgGroupsAddToSelf = array();
 $wgGroupsRemoveFromSelf = array();
@@ -1385,7 +1436,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '181';
+$wgStyleVersion = '183';
 
 
 # Server-side caching:
@@ -1448,6 +1499,9 @@ $wgEnotifMaxRecips = 500;
 
 # Send mails via the job queue.
 $wgEnotifUseJobQ = false;
+
+# Use real name instead of username in e-mail "from" field
+$wgEnotifUseRealName = false;
 
 /**
  * Array of usernames who will be sent a notification email for every change which occurs on a wiki
@@ -1918,6 +1972,12 @@ $wgSharpenParameter = '0x0.4';
 /** Reduction in linear dimensions below which sharpening will be enabled */
 $wgSharpenReductionThreshold = 0.85;
 
+/** 
+ * Temporary directory used for ImageMagick. The directory must exist. Leave 
+ * this set to false to let ImageMagick decide for itself.
+ */
+$wgImageMagickTempDir = false;
+
 /**
  * Use another resizing converter, e.g. GraphicMagick
  * %s will be replaced with the source path, %d with the destination
@@ -2034,6 +2094,7 @@ $wgRCLinkDays   = array( 1, 3, 7, 14, 30 );
 $wgRC2UDPAddress = false;
 $wgRC2UDPPort = false;
 $wgRC2UDPPrefix = '';
+$wgRC2UDPInterwikiPrefix = false;
 $wgRC2UDPOmitBots = false;
 
 /**
@@ -2206,6 +2267,9 @@ $wgValidateAllHtml = false;
 
 /** See list of skins and their symbolic names in languages/Language.php */
 $wgDefaultSkin = 'monobook';
+
+/** Should we allow the user's to select their own skin that will override the default? */
+$wgAllowUserSkin = true;
 
 /**
  * Optionally, we can specify a stylesheet to use for media="handheld".
@@ -2691,6 +2755,30 @@ $wgLogRestrictions = array(
 );
 
 /**
+ * Show/hide links on Special:Log will be shown for these log types.
+ *
+ * This is associative array of log type => boolean "hide by default"
+ *
+ * See $wgLogTypes for a list of available log types. 
+ *
+ * For example:
+ *   $wgFilterLogTypes => array(
+ *      'move' => true,
+ *      'import' => false,
+ *   );
+ *
+ * Will display show/hide links for the move and import logs. Move logs will be
+ * hidden by default unless the link is clicked. Import logs will be shown by 
+ * default, and hidden when the link is clicked.
+ *
+ * A message of the form log-show-hide-<type> should be added, and will be used
+ * for the link text.
+ */
+$wgFilterLogTypes = array(
+	'patrol' => true
+);
+
+/**
  * Lists the message key string for each log type. The localized messages
  * will be listed in the user interface.
  *
@@ -2739,13 +2827,12 @@ $wgLogHeaders = array(
 $wgLogActions = array(
 	'block/block'       => 'blocklogentry',
 	'block/unblock'     => 'unblocklogentry',
+	'block/reblock'     => 'reblock-logentry',
 	'protect/protect'   => 'protectedarticle',
 	'protect/modify'    => 'modifiedarticleprotection',
 	'protect/unprotect' => 'unprotectedarticle',
 	'protect/move_prot' => 'movedarticleprotection',
 	'rights/rights'     => 'rightslogentry',
-	'rights/rights2'    => 'rightslogentry2',
-	'rights/grprights'  => 'grouprightslog',
 	'delete/delete'     => 'deletedarticle',
 	'delete/restore'    => 'undeletedarticle',
 	'delete/revision'   => 'revdelete-logentry',
@@ -2801,6 +2888,7 @@ $wgSpecialPageGroups = array(
 	'Wantedpages'               => 'maintenance',
 	'Wantedcategories'          => 'maintenance',
 	'Wantedfiles'               => 'maintenance',
+	'Wantedtemplates'           => 'maintenance',
 	'Unwatchedpages'            => 'maintenance',
 	'Fewestrevisions'           => 'maintenance',
 
@@ -2823,7 +2911,6 @@ $wgSpecialPageGroups = array(
 
 	'Listusers'                 => 'users',
 	'Listgrouprights'           => 'users',
-	'GroupRights'		    => 'users',
 	'Ipblocklist'               => 'users',
 	'Contributions'             => 'users',
 	'Emailuser'                 => 'users',
@@ -3321,7 +3408,7 @@ $wgEnableAPI = true;
  * (page edits, rollback, etc.) when an authorised user
  * accesses it
  */
-$wgEnableWriteAPI = false;
+$wgEnableWriteAPI = true;
 
 /**
  * API module extensions
@@ -3471,19 +3558,6 @@ $wgUseAutomaticEditSummaries = true;
  * Requires memcached.
  */
 $wgPasswordAttemptThrottle = array( 'count' => 5, 'seconds' => 300 );
-
-/**
- * Whether or not to allow rights changes made through Special:GroupRights to revoke
- * rights issued in the site configuration
- */
-$wgAllowDBRightSubtraction = true;
-
-/**
- * The rights managers which are allowed to give users groups and permissions.
- * An array of class names. Generally not modified by users, but by extensions
- * and the like.
- */
-$wgRightsManagers = array( 'RightsManagerConfigDB', 'RightsManagerForeignDB' );
 
 /**
  * Display user edit counts in various prominent places.

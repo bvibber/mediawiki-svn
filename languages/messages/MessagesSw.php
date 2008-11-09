@@ -361,7 +361,7 @@ Kumbukumbu ya kufuta ukurasa huu linapatikana hapa kukusaidia:",
 'viewpagelogs'        => 'Tazama kumbukumbu kwa ukurasa huu',
 'currentrev'          => 'Kiungo cha daima',
 'revisionasof'        => 'Sahihisho kutoka $1',
-'revision-info'       => 'Sahihisho kutoka $1 na $2',
+'revision-info'       => 'Sahihisho kutoka $1 na $2', # Additionally available: $3: revision id
 'previousrevision'    => '←Sahihisho lililotangulia',
 'nextrevision'        => 'Sahihisho mpya zaidi?',
 'currentrevisionlink' => 'Sahahisho ya sasa hivi',
@@ -411,6 +411,7 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'recentchanges'                  => 'Mabadiliko ya karibuni',
 'recentchanges-feed-description' => 'Tumia tawanyiko hili kufuatilia mabadiliko yote ya hivi karibuni katika Wiki.',
 'rcnote'                         => "Yanayofuata {{PLURAL:$1|ni badiliko '''1'''|ni mabadiliko '''$1''' ya mwisho}} kutoka katika {{PLURAL:$2|siku iliyopita|siku '''$2''' zilizopita}}, hadi $3.",
+'rcnotefrom'                     => "Hapo chini yaonekana mabadiliko tangu '''$2''' (tunaonyesha hadi '''$1''').",
 'rclistfrom'                     => 'Onyesha mabadiliko mapya kuanzia $1',
 'rcshowhideminor'                => '$1 mabadiliko madogo',
 'rcshowhidebots'                 => '$1 roboti',
@@ -440,6 +441,8 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'filedesc'      => 'Muhtasari',
 'ignorewarning' => 'Hifadhi bila kujali maonyo yoyote.',
 'uploadedimage' => ' "[[$1]]" imepakiwa',
+
+'license' => 'Hatimiliki:',
 
 # Special:ImageList
 'imagelist' => 'Orodha ya mafaili',
@@ -546,26 +549,23 @@ Ufunguo: (sasa) = tofauti na toleo la sasa, (kabla) = tofauti na toleo lililotan
 'emailuser' => 'Mtumie mtumiaji huyu barua pepe',
 
 # Watchlist
-'watchlist'            => 'Maangalizi yangu',
-'mywatchlist'          => 'Maangalizi yangu',
-'watchlistfor'         => "(kwa '''$1''')",
-'addedwatch'           => 'Imeongezwa kwenye maangalizi yako',
-'addedwatchtext'       => "Ukurasa \"[[:\$1]]\" umewekwa kwenye [[Special:Watchlist|maangalizi]] yako.
+'watchlist'         => 'Maangalizi yangu',
+'mywatchlist'       => 'Maangalizi yangu',
+'watchlistfor'      => "(kwa '''$1''')",
+'addedwatch'        => 'Imeongezwa kwenye maangalizi yako',
+'addedwatchtext'    => "Ukurasa \"[[:\$1]]\" umewekwa kwenye [[Special:Watchlist|maangalizi]] yako.
 Mabadiliko katika ukurasa huo na ukurasa wake wa majadiliano utaonekana hapo,
 na ukurasa utaonyeshwa wenye '''koze''' kwenye [[Special:RecentChanges|orodha ya mabadiliko ya karibuni]]
 ili kukusaidia kutambua.
 
 Ukitaka kufuta ukurasa huo kutoka maangalizi yako baadaye, bonyeza \"Acha kufuatilia\" katika mwamba pembeni.",
-'removedwatch'         => 'Imefutwa kutoka maangalizi yako',
-'removedwatchtext'     => 'Ukurasa "[[:$1]]" umefutwa kutoka maangalizi yako.',
-'watch'                => 'Fuatilia',
-'watchthispage'        => 'Fuatilia ukurasa huu',
-'unwatch'              => 'Acha kufuatilia',
-'watchlist-details'    => 'Unafuatilia {{PLURAL:$1|ukurasa $1|kurasa $1}} bila kuzingatia kurasa za majadiliano',
-'wlshowlast'           => 'Onyesha kutoka masaa $1 siku $2 $3',
-'watchlist-hide-bots'  => 'Ficha masahihisho ya roboti',
-'watchlist-hide-own'   => 'Ficha hariri zangu',
-'watchlist-hide-minor' => 'Ficha mabadiliko madogo',
+'removedwatch'      => 'Imefutwa kutoka maangalizi yako',
+'removedwatchtext'  => 'Ukurasa "[[:$1]]" umefutwa kutoka maangalizi yako.',
+'watch'             => 'Fuatilia',
+'watchthispage'     => 'Fuatilia ukurasa huu',
+'unwatch'           => 'Acha kufuatilia',
+'watchlist-details' => 'Unafuatilia {{PLURAL:$1|ukurasa $1|kurasa $1}} bila kuzingatia kurasa za majadiliano',
+'wlshowlast'        => 'Onyesha kutoka masaa $1 siku $2 $3',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Unafuatilia...',

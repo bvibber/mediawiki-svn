@@ -122,12 +122,14 @@ $messages = array(
 'dec'           => 'Dekabr',
 
 # Categories related messages
-'pagecategories'         => 'Kateqoriyalar',
-'category_header'        => '"$1" kategoriyasındaki məqalələr',
-'subcategories'          => 'Alt kategoriyalar',
-'category-media-header'  => '"$1" kateqoriyasında mediya',
-'category-empty'         => "''Bu kateqoriyanın tərkibi hal-hazırda boşdur.''",
-'listingcontinuesabbrev' => '(davam)',
+'pagecategories'           => '$1 Kateqoriya',
+'category_header'          => '"$1" kategoriyasındaki məqalələr',
+'subcategories'            => 'Alt kategoriyalar',
+'category-media-header'    => '"$1" kateqoriyasında mediya',
+'category-empty'           => "''Bu kateqoriyanın tərkibi hal-hazırda boşdur.''",
+'hidden-categories'        => '$1 Gizli kateqoriya',
+'hidden-category-category' => 'Gizli kateqoriyalar', # Name of the category where hidden categories will be listed
+'listingcontinuesabbrev'   => '(davam)',
 
 'about'          => 'İzah',
 'article'        => 'Mündəricat Səhifəsi',
@@ -149,6 +151,7 @@ $messages = array(
 
 'errorpagetitle'    => 'Xəta',
 'returnto'          => '$1 səhifəsinə qayıt.',
+'tagline'           => '{{SITENAME}} saytından',
 'help'              => 'Kömək',
 'search'            => 'Axtar',
 'searchbutton'      => 'Axtar',
@@ -175,6 +178,7 @@ $messages = array(
 'talkpagelinktext'  => 'Müzakirə',
 'specialpage'       => 'Xüsusi səhifə',
 'personaltools'     => 'Alətlər sandığı',
+'postcomment'       => 'Şərh yaz',
 'articlepage'       => 'Məqaləyə get',
 'talk'              => 'Müzakirə',
 'toolbox'           => 'Alətlər Sandıqı',
@@ -182,6 +186,7 @@ $messages = array(
 'projectpage'       => 'Layihə səhifəsini göstər',
 'imagepage'         => 'Şəkil səhifəsini göstər',
 'mediawikipage'     => "Mə'lumat səhifəsini göstər",
+'templatepage'      => 'Şablon səhifəsini göstər',
 'categorypage'      => 'Kateqoriya səhifəsini göstər',
 'viewtalkpage'      => 'Müzakirəni göstər',
 'otherlanguages'    => 'Başqa dillərdə',
@@ -240,17 +245,18 @@ $messages = array(
 'nstab-category'  => 'Kateqoriya',
 
 # General errors
-'error'             => 'Xəta',
-'databaseerror'     => 'Verilənlər bazası xətası',
-'cachederror'       => 'Bu axtardığınız səhifənin keşdə saxlanılmış surətidir və yenilənməmiş ola bilər.',
-'readonly'          => 'Verilənlər bazası kilidli',
-'internalerror'     => 'Daxili xəta',
-'cannotdelete'      => 'İstədiyiniz səhifəni və ya faylı silmək mümkün deyil. (Başqa bir istifadəçi tərəfindən silinmiş ola bilər.)',
-'badtitle'          => 'Yanlış başlıq',
-'viewsource'        => 'Mənbə göstər',
-'viewsourcefor'     => '$1 üçün',
-'protectedpagetext' => 'Bu səhifə redaktə üçün bağlıdır.',
-'viewsourcetext'    => 'Siz bu səhifənin məzmununu görə və köçürə bilərsiniz:',
+'error'              => 'Xəta',
+'databaseerror'      => 'Verilənlər bazası xətası',
+'cachederror'        => 'Bu axtardığınız səhifənin keşdə saxlanılmış surətidir və yenilənməmiş ola bilər.',
+'readonly'           => 'Verilənlər bazası kilidli',
+'internalerror'      => 'Daxili xəta',
+'internalerror_info' => 'Daxili xəta: $1',
+'cannotdelete'       => 'İstədiyiniz səhifəni və ya faylı silmək mümkün deyil. (Başqa bir istifadəçi tərəfindən silinmiş ola bilər.)',
+'badtitle'           => 'Yanlış başlıq',
+'viewsource'         => 'Mənbə göstər',
+'viewsourcefor'      => '$1 üçün',
+'protectedpagetext'  => 'Bu səhifə redaktə üçün bağlıdır.',
+'viewsourcetext'     => 'Siz bu səhifənin məzmununu görə və köçürə bilərsiniz:',
 
 # Login and logout pages
 'logouttitle'                => 'İstifadəçi çıxış',
@@ -558,10 +564,13 @@ Bu səhifə üçün silmə qeydləri aşağıda göstərilmişdir:",
 'imagelist_user' => 'İstifadəçi',
 
 # Image description page
-'imagelinks'                => 'İstifadə edilən səhifələr',
-'shareduploadwiki-linktext' => 'fayl təsvir səhifəsi',
-'noimage-linktext'          => 'faylı yüklə',
-'uploadnewversion-linktext' => 'Bu faylın yeni versiyasını yüklə',
+'imagelinks'                     => 'İstifadə edilən səhifələr',
+'shareduploadwiki-linktext'      => 'fayl təsvir səhifəsi',
+'shareduploadduplicate-linktext' => 'başqa fayl',
+'shareduploadconflict'           => 'Bu fayl ortaq mediya anbarındakı $1 faylı ilə eyni adı daşıyır.',
+'shareduploadconflict-linktext'  => 'başqa fayl',
+'noimage-linktext'               => 'faylı yüklə',
+'uploadnewversion-linktext'      => 'Bu faylın yeni versiyasını yüklə',
 
 # File deletion
 'filedelete'                  => '$1 adlı faylı sil',
@@ -732,12 +741,6 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 'watchlistcontains'    => 'İzləmə siyahınızda $1 səhifə var.',
 'wlnote'               => "Aşağıdakılar son '''$2''' saatdakı son $1 dəyişiklikdir.",
 'wlshowlast'           => 'Bunları göstər: son $1 saatı $2 günü $3',
-'watchlist-show-bots'  => 'Bot redaktələrini göstər',
-'watchlist-hide-bots'  => 'Bot redaktələrini gizlət',
-'watchlist-show-own'   => 'Mənim redaktələrimi göstər',
-'watchlist-hide-own'   => 'Mənim redaktələrimi gizlət',
-'watchlist-show-minor' => 'Kiçik redaktələri göstər',
-'watchlist-hide-minor' => 'Kiçik redaktələri gizlət',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'İzlənilir...',
@@ -777,7 +780,7 @@ Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə
 'rollback'         => 'Əvvəlki versiya',
 'rollbacklink'     => 'əvvəlki halına qaytar',
 'cantrollback'     => 'Redaktə geri qaytarıla bilməz; axırıncı redaktə səhifədə olan yeganə fəaliyyətdir.',
-'revertpage'       => '[[User:$2|$2]] tərəfindən edilmiş redaktələr geri qaytarılaraq [[User:$1|$1]] tərəfindən yaradılan sonuncu versiya bərpa olundu.', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => '[[User:$2|$2]] tərəfindən edilmiş redaktələr geri qaytarılaraq [[User:$1|$1]] tərəfindən yaradılan sonuncu versiya bərpa olundu.', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => '$1 tərəfindən edilmiş redaktələr geri qaytarıldı; $2 tərəfindən yaradılmış son versiya bərpa olundu.',
 
 # Protect
@@ -875,7 +878,7 @@ Məqalələrin bərpa edilməsi və silinməsi haqqında son dəyişiklikləri n
 'badipaddress'                => 'Yanlış IP',
 'blockipsuccesssub'           => 'bloklandi',
 'blockipsuccesstext'          => '[[Special:Contributions/$1| $1]]bloklanıb. <br />See[[Special:IPBlockList|IP blok siyahisi]] bloklanmış IP lər.',
-'ipblocklist'                 => 'Əngəllənmiş istifadəçilər siyahı',
+'ipblocklist'                 => 'Bloklanmış İP ünvanları və istifadəçilər',
 'ipblocklist-submit'          => 'Axtar',
 'blocklistline'               => '$1, $2 bloklandı $3 ($4)',
 'infiniteblock'               => 'qeyri-müəyyən müddətə',
@@ -964,11 +967,11 @@ Bu yerdəyişmə tanınmış səhifələr üçün əsaslı və gözlənilməz ol
 'tooltip-ca-unwatch'            => 'Bu səhifənin izlənmasini bitir',
 'tooltip-search'                => 'Bu vikini axtarin',
 'tooltip-p-logo'                => 'Ana Səhifə',
-'tooltip-n-mainpage'            => 'Ana səhifəni görüş edin',
-'tooltip-n-portal'              => 'Projə həqqində, nələr edəbilərsiz, harda şeyləri tapa bilərsiz',
-'tooltip-n-currentevents'       => 'Gündəki xəbərlər ilə əlaqəli bilgilər',
-'tooltip-n-recentchanges'       => 'Bu Wikidə Son dəyişikliklər siyahəsi.',
-'tooltip-n-randompage'          => 'Bir təsadufi, necə gəldi, məqaləyə baxin',
+'tooltip-n-mainpage'            => 'Ana səhifəni ziyarət edin',
+'tooltip-n-portal'              => 'Layihə haqqında, nələr edəbilərsiniz, axtardıqlarınızı harda tapmaq olar',
+'tooltip-n-currentevents'       => 'Gündəlik xəbərlər ilə əlaqəli bilgilər',
+'tooltip-n-recentchanges'       => 'Vikidəki son dəyişikliklər siyahısı.',
+'tooltip-n-randompage'          => 'Rastgələ məqaləyə bax',
 'tooltip-n-help'                => 'Yardım almaq üçün.',
 'tooltip-t-whatlinkshere'       => 'Wikidə bu məqaləyə bağlantilar',
 'tooltip-t-recentchangeslinked' => 'Bu məqaləyə ayid başqa səhifələrdə yeni dəyişikliklər',
@@ -1058,9 +1061,7 @@ $1',
 'deletedwhileediting' => 'Bu səhifə siz redaktə etməyə başladıqdan sonra silinmişdir!',
 
 # action=purge
-'confirm_purge' => 'Bu səhifə keşdən (cache) silinsin?
-
-$1',
+'confirm-purge-top' => 'Bu səhifə keşdən (cache) silinsin?',
 
 # Multipage image navigation
 'imgmultipageprev' => '&larr; əvvəlki səhifə',

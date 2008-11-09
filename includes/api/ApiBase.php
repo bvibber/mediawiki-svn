@@ -38,15 +38,15 @@
  */
 abstract class ApiBase {
 
-	// These constants allow modules to specify exactly how to treat incomming parameters.
+	// These constants allow modules to specify exactly how to treat incoming parameters.
 
-	const PARAM_DFLT = 0;
-	const PARAM_ISMULTI = 1;
-	const PARAM_TYPE = 2;
-	const PARAM_MAX = 3;
-	const PARAM_MAX2 = 4;
-	const PARAM_MIN = 5;
-	const PARAM_ALLOW_DUPLICATES = 6;
+	const PARAM_DFLT = 0; // Default value of the parameter
+	const PARAM_ISMULTI = 1; // Boolean, do we accept more than one item for this parameter (e.g.: titles)?
+	const PARAM_TYPE = 2; // Can be either a string type (e.g.: 'integer') or an array of allowed values
+	const PARAM_MAX = 3; // Max value allowed for a parameter. Only applies if TYPE='integer'
+	const PARAM_MAX2 = 4; // Max value allowed for a parameter for bots and sysops. Only applies if TYPE='integer'
+	const PARAM_MIN = 5; // Lowest value allowed for a parameter. Only applies if TYPE='integer'
+	const PARAM_ALLOW_DUPLICATES = 6; // Boolean, do we allow the same value to be set more than once when ISMULTI=true
 
 	const LIMIT_BIG1 = 500; // Fast query, std user limit
 	const LIMIT_BIG2 = 5000; // Fast query, bot/sysop limit
@@ -562,9 +562,7 @@ abstract class ApiBase {
 			return array();
 		$sizeLimit = $this->mMainModule->canApiHighLimits() ? self::LIMIT_SML2 : self::LIMIT_SML1;
 		$valuesList = explode('|', $value, $sizeLimit + 1);
-		if( count($valuesList) == $sizeLimit + 1 ) {
-			$junk = array_pop($valuesList); // kill last jumbled param
-			// Set a warning too
+		if( self::truncateArray($valuesList, $sizeLimit) ) {
 			$this->setWarning("Too many values supplied for parameter '$valueName': the limit is $sizeLimit");
 		}
 		if (!$allowMultiple && count($valuesList) != 1) {
@@ -574,7 +572,7 @@ abstract class ApiBase {
 		if (is_array($allowedValues)) {
 			# Check for unknown values
 			$unknown = array_diff($valuesList, $allowedValues);
-			if(!empty($unknown))
+			if(count($unknown))
 			{
 				if($allowMultiple)
 				{
@@ -615,6 +613,23 @@ abstract class ApiBase {
 				$this->dieUsage($this->encodeParamName($paramName) . " may not be over $max (set to $value) for users", $paramName);
 			}
 		}
+	}
+	
+	/**
+	 * Truncate an array to a certain length.
+	 * @param $arr array Array to truncate
+	 * @param $limit int Maximum length
+	 * @return bool True if the array was truncated, false otherwise
+	 */
+	public static function truncateArray(&$arr, $limit)
+	{
+		$modified = false;
+		while(count($arr) > $limit)
+		{
+			$junk = array_pop($arr);
+			$modified = true;
+		}
+		return $modified;
 	}
 
 	/**

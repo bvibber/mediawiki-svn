@@ -401,7 +401,7 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'nohistory'           => 'Ne esas redakto-historio por ica pagino.',
 'currentrev'          => 'Aktuala versiono',
 'revisionasof'        => 'Versiono ye $1',
-'revision-info'       => 'Versiono en $1 per $2',
+'revision-info'       => 'Versiono en $1 per $2', # Additionally available: $3: revision id
 'previousrevision'    => '←Plu anciena versiono',
 'nextrevision'        => 'Plu recenta versiono→',
 'currentrevisionlink' => 'Aktuala versiono',
@@ -529,6 +529,7 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'recentchanges'     => 'Recenta chanji',
 'recentchangestext' => 'Regardez la maxim recenta chanji en Wiki per ica pagino.',
 'rcnote'            => "Infre esas la lasta {{PLURAL:$1|'''1''' chanjo|'''$1''' chanji}} dum la lasta {{PLURAL:$2|dio|'''$2''' dii}} ($3).",
+'rcnotefrom'        => "Infre esas la lasta chanji depos '''$2''' (montrita til '''$1''').",
 'rclistfrom'        => 'Montrar nova chanji startante de $1',
 'rcshowhideminor'   => '$1 mikra redakti',
 'rcshowhidebots'    => '$1 roboti',
@@ -713,31 +714,29 @@ Publikigante vua skribajo hike, vu asertas ke olu skribesis da vu ipsa o kopiesi
 'emailsenttext'   => 'Vua e-posto sendesis',
 
 # Watchlist
-'watchlist'            => 'Mea surveyaji',
-'mywatchlist'          => 'Mea surveyaji',
-'watchlistfor'         => "(por '''$1''')",
-'nowatchlist'          => 'Vu ne havas objekti en vua listo di surveyaji.',
-'watchnologin'         => 'Vu ne startis sesiono',
-'watchnologintext'     => 'Vu mustas [[Special:UserLogin|enirir]] por modifikar vua surveyaji.',
-'addedwatch'           => 'Adjuntita a la listo de surveyaji',
-'addedwatchtext'       => "La pagino \"<nowiki>\$1</nowiki>\" atachesis a vua [[Special:Watchlist|listo de surveyaji]]. Futura chanji di ica pagino ed olua relatata debato-pagini montresos ibe, ed la pagino aparos per '''dika literi''' en la [[Special:RecentChanges|listo de recenta chanji]] por faciligar sua trovebleso.
+'watchlist'          => 'Mea surveyaji',
+'mywatchlist'        => 'Mea surveyaji',
+'watchlistfor'       => "(por '''$1''')",
+'nowatchlist'        => 'Vu ne havas objekti en vua listo di surveyaji.',
+'watchnologin'       => 'Vu ne startis sesiono',
+'watchnologintext'   => 'Vu mustas [[Special:UserLogin|enirir]] por modifikar vua surveyaji.',
+'addedwatch'         => 'Adjuntita a la listo de surveyaji',
+'addedwatchtext'     => "La pagino \"<nowiki>\$1</nowiki>\" atachesis a vua [[Special:Watchlist|listo de surveyaji]]. Futura chanji di ica pagino ed olua relatata debato-pagini montresos ibe, ed la pagino aparos per '''dika literi''' en la [[Special:RecentChanges|listo de recenta chanji]] por faciligar sua trovebleso.
 
 <p> Se vu volas efacar la pagino de vua listo de surveyaji pose, presez \"Ne plus surveyar\" en la selektaro.",
-'removedwatch'         => 'Efacita de surveyo-listo',
-'watch'                => 'Surveyar',
-'watchthispage'        => 'Surveyar ica pagino',
-'unwatch'              => 'Ne plus surveyar',
-'unwatchthispage'      => 'Ne plus surveyar',
-'notanarticle'         => 'Ne esas artiklo',
-'watchnochange'        => 'Nula artikli ek vua listo di surveyaji redaktesis dum la tempo montrata.',
-'watchmethod-recent'   => 'serchante recenta chanji en la listo di surveyaji',
-'watchmethod-list'     => 'serchante recenta redakti en la listo di surveyaji',
-'watchlistcontains'    => 'Vua listo di surveyaji kontenas $1 {{PLURAL:$1|pagino|pagini}}.',
-'iteminvalidname'      => "Problemo en la artiklo '$1', nevalida nomo...",
-'wlnote'               => "Infre esas la lasta {{PLURAL:$1|chanjo|'''$1''' chanji}} dum la lasta {{PLURAL:$2|horo|'''$2''' hori}}.",
-'wlshowlast'           => 'Montrar la lasta $1 hori $2 dii $3',
-'watchlist-hide-own'   => 'Celez chanji da me',
-'watchlist-hide-minor' => 'Celez mikra chanji',
+'removedwatch'       => 'Efacita de surveyo-listo',
+'watch'              => 'Surveyar',
+'watchthispage'      => 'Surveyar ica pagino',
+'unwatch'            => 'Ne plus surveyar',
+'unwatchthispage'    => 'Ne plus surveyar',
+'notanarticle'       => 'Ne esas artiklo',
+'watchnochange'      => 'Nula artikli ek vua listo di surveyaji redaktesis dum la tempo montrata.',
+'watchmethod-recent' => 'serchante recenta chanji en la listo di surveyaji',
+'watchmethod-list'   => 'serchante recenta redakti en la listo di surveyaji',
+'watchlistcontains'  => 'Vua listo di surveyaji kontenas $1 {{PLURAL:$1|pagino|pagini}}.',
+'iteminvalidname'    => "Problemo en la artiklo '$1', nevalida nomo...",
+'wlnote'             => "Infre esas la lasta {{PLURAL:$1|chanjo|'''$1''' chanji}} dum la lasta {{PLURAL:$2|horo|'''$2''' hori}}.",
+'wlshowlast'         => 'Montrar la lasta $1 hori $2 dii $3',
 
 'enotif_newpagetext' => 'Ico esas nula pagino.',
 'enotif_anon_editor' => 'anonima uzanto $1',
@@ -773,7 +772,7 @@ da [[User:$2|$2]] ([[User talk:$2|Talk]]); ulu pluse ja editis o desfacis ica pa
 
 Lasta edito esis da [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'editcomment'    => 'La rezumo di la edito esis: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'     => 'Rekuperita redakti da [[Special:Contributions/$2|$2]] ([[User talk:$2|Debato]]); rekuperita la lasta redakto di [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'     => 'Rekuperita redakti da [[Special:Contributions/$2|$2]] ([[User talk:$2|Debato]]); rekuperita la lasta redakto di [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 
 # Protect
 'protectedarticle'       => 'protektita "[[$1]]"',
@@ -1088,8 +1087,5 @@ Voluntez selektar altra nomo.',
 
 # Special:BlankPage
 'blankpage' => 'Pagino sen-skribura',
-
-# Special:Nuke
-'nuke-submit-user' => 'Irar',
 
 );

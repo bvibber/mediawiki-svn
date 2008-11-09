@@ -100,7 +100,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		 * AND pl_title='Foo' AND pl_namespace=0
 		 * LIMIT 11 ORDER BY pl_from
 		 */
-		$db = $this->getDb();
+		$db = $this->getDB();
 		$this->addTables(array('page', $this->bl_table));
 		$this->addWhere("{$this->bl_from}=page_id");
 		if(is_null($resultPageSet))
@@ -108,12 +108,12 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		else
 			$this->addFields($resultPageSet->getPageTableFields());
 		$this->addFields('page_is_redirect');
-		$this->addWhereFld($this->bl_title, $this->rootTitle->getDbKey());
+		$this->addWhereFld($this->bl_title, $this->rootTitle->getDBKey());
 		if($this->hasNS)
 			$this->addWhereFld($this->bl_ns, $this->rootTitle->getNamespace());
 		$this->addWhereFld('page_namespace', $this->params['namespace']);
 		if(!is_null($this->contID))
-			$this->addWhere("page_id>={$this->contID}");
+			$this->addWhere("{$this->bl_from}>={$this->contID}");
 		if($this->params['filterredir'] == 'redirects')
 			$this->addWhereFld('page_is_redirect', 1);
 		if($this->params['filterredir'] == 'nonredirects')
@@ -128,7 +128,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		 * AND (pl_title='Foo' AND pl_namespace=0) OR (pl_title='Bar' AND pl_namespace=1)
 		 * LIMIT 11 ORDER BY pl_namespace, pl_title, pl_from
 		 */
-		$db = $this->getDb();
+		$db = $this->getDB();
 		$this->addTables(array('page', $this->bl_table));
 		$this->addWhere("{$this->bl_from}=page_id");
 		if(is_null($resultPageSet))
@@ -147,7 +147,23 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		$this->addWhere($titleWhere);
 		$this->addWhereFld('page_namespace', $this->params['namespace']);
 		if(!is_null($this->redirID))
-			$this->addWhere("page_id>={$this->redirID}");
+		{
+			$first = $this->redirTitles[0];
+			$title = $db->strencode($first->getDBKey());
+			$ns = $first->getNamespace();
+			$from = $this->redirID;
+			if($this->hasNS)
+				$this->addWhere("{$this->bl_ns} > $ns OR ".
+						"({$this->bl_ns} = $ns AND ".
+						"({$this->bl_title} > '$title' OR ".
+						"({$this->bl_title} = '$title' AND ".
+						"{$this->bl_from} >= $from)))");
+			else
+				$this->addWhere("{$this->bl_title} > '$title' OR ".
+						"({$this->bl_title} = '$title' AND ".
+						"{$this->bl_from} >= $from)");
+				
+		}
 		if($this->params['filterredir'] == 'redirects')
 			$this->addWhereFld('page_is_redirect', 1);
 		if($this->params['filterredir'] == 'nonredirects')
@@ -195,7 +211,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		}
 		$db->freeResult($res);
 
-		if($this->redirect && !empty($this->redirTitles))
+		if($this->redirect && count($this->redirTitles))
 		{
 			$this->resetQueryParams();
 			$this->prepareSecondQuery($resultPageSet);

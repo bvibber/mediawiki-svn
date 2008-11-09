@@ -44,6 +44,66 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK    => 'คุยเรื่องหมวดหมู่',
 );
 
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'เปลี่ยนทางซ้ำซ้อน' ),
+	'BrokenRedirects'           => array( 'เปลี่ยนทางเสีย' ),
+	'Disambiguations'           => array( 'แก้ความกำกวม' ),
+	'Userlogin'                 => array( 'ล็อกอิน' ),
+	'Userlogout'                => array( 'ล็อกเอาต์' ),
+	'CreateAccount'             => array( 'สร้างบัญชีผู้ใช้ใหม่' ),
+	'Preferences'               => array( 'การตั้งค่า', 'ตั้งค่า' ),
+	'Watchlist'                 => array( 'รายการเฝ้าดู', 'เฝ้าดู' ),
+	'Recentchanges'             => array( 'ปรับปรุงล่าสุด' ),
+	'Upload'                    => array( 'อัปโหลด' ),
+	'Imagelist'                 => array( 'รายชื่อภาพ' ),
+	'Newimages'                 => array( 'ภาพใหม่' ),
+	'Listusers'                 => array( 'รายชื่อผู้ใช้' ),
+	'Listgrouprights'           => array( 'รายชื่อสิทธิกลุ่มผู้ใช้งาน' ),
+	'Statistics'                => array( 'สถิติ' ),
+	'Randompage'                => array( 'สุ่ม', 'สุ่มหน้า' ),
+	'Lonelypages'               => array( 'หน้าสุดทาง', 'หน้าที่โยงไปไม่ถึง' ),
+	'Uncategorizedpages'        => array( 'หน้าที่ไม่ได้จัดหมวดหมู่' ),
+	'Uncategorizedcategories'   => array( 'หมวดหมู่ที่ไม่ได้จัดหมวดหมู่' ),
+	'Uncategorizedimages'       => array( 'ภาพที่ไม่ได้จัดหมวดหมู่' ),
+	'Uncategorizedtemplates'    => array( 'แม่แบบที่ไม่ได้จัดหมวดหมู่' ),
+	'Unusedcategories'          => array( 'หมวดหมู่ที่ไม่ได้ใช้' ),
+	'Unusedimages'              => array( 'ภาพที่ไม่ได้ใช้' ),
+	'Wantedpages'               => array( 'หน้าที่ต้องการ', 'การเชื่อมโยงเสีย' ),
+	'Wantedcategories'          => array( 'หมวดหมู่ที่ต้องการ' ),
+	'Wantedfiles'               => array( 'ไฟล์ที่ต้องการ' ),
+	'Newpages'                  => array( 'หน้าใหม่' ),
+	'Ancientpages'              => array( 'บทความที่ไม่ได้แก้ไขนานที่สุด' ),
+	'Deadendpages'              => array( 'หน้าสุดทาง' ),
+	'Protectedpages'            => array( 'หน้าที่ถูกป้องกัน' ),
+	'Protectedtitles'           => array( 'หัวเรื่องที่ได้รับการป้องกัน' ),
+	'Allpages'                  => array( 'หน้าทั้งหมด' ),
+	'Specialpages'              => array( 'หน้าพิเศษ' ),
+	'Contributions'             => array( 'เรื่องที่เขียน' ),
+	'Emailuser'                 => array( 'อีเมลผู้ใช้' ),
+	'Confirmemail'              => array( 'ยืนยันอีเมล' ),
+	'Whatlinkshere'             => array( 'บทความที่โยงมา' ),
+	'Movepage'                  => array( 'เปลี่ยนทาง' ),
+	'Categories'                => array( 'หมวดหมู่' ),
+	'Export'                    => array( 'ส่งออก' ),
+	'Version'                   => array( 'เวอร์ชั่น' ),
+	'Allmessages'               => array( 'ข้อความทั้งหมด' ),
+	'Log'                       => array( 'ปูม' ),
+	'Blockip'                   => array( 'บล็อกไอพี' ),
+	'Undelete'                  => array( 'เรียกคืน' ),
+	'Import'                    => array( 'นำเข้า' ),
+	'Userrights'                => array( 'สิทธิผู้ใช้' ),
+	'FileDuplicateSearch'       => array( 'ค้นหาไฟล์ซ้ำซ้อน' ),
+	'Unusedtemplates'           => array( 'แม่แบบที่ไม่ได้ใช้' ),
+	'Randomredirect'            => array( 'สุ่มหน้าเปลี่ยนทาง' ),
+	'Mypage'                    => array( 'หน้าของฉัน' ),
+	'Mytalk'                    => array( 'หน้าพูดคุยของฉัน' ),
+	'Mycontributions'           => array( 'เรื่องที่ฉันเขียน' ),
+	'Listadmins'                => array( 'รายชื่อผู้ดูแล' ),
+	'Listbots'                  => array( 'รายชื่อบอต' ),
+	'Search'                    => array( 'ค้นหา' ),
+	'Resetpass'                 => array( 'ตั้งรหัสผ่านใหม่' ),
+);
+
 $datePreferences = array(
 	'default',
 	'thai',
@@ -720,7 +780,7 @@ $1 เป็นผู้ดำเนินการบล็อกในคร�
 'currentrev'             => 'รุ่นปัจจุบัน',
 'currentrev-asof'        => 'รุ่นปัจจุบันของ $1',
 'revisionasof'           => 'การปรับปรุง เมื่อ $1',
-'revision-info'          => 'การปรับปรุง เมื่อ $1 โดย $2',
+'revision-info'          => 'การปรับปรุง เมื่อ $1 โดย $2', # Additionally available: $3: revision id
 'previousrevision'       => '←รุ่นก่อนหน้า',
 'nextrevision'           => 'รุ่นถัดไป→',
 'currentrevisionlink'    => 'รุ่นปัจจุบัน',
@@ -759,11 +819,11 @@ $1 เป็นผู้ดำเนินการบล็อกในคร�
 'revisiondelete'              => 'รุ่นการปรับปรุง การลบ/การย้อนการลบ',
 'revdelete-nooldid-title'     => 'ไม่มีรุ่นการปรับปรุงที่ต้องการ',
 'revdelete-nooldid-text'      => 'รุ่นการปรับปรุงที่ต้องการไม่ได้กำหนด ไม่สามารถใช้คำสั่งนี้ได้',
-'revdelete-selected'          => '{{PLURAL:$2|รุ่นการปรับปรุงที่ถูกเลือก|รุ่นการปรับปรุงที่ถูกเลือก}}ของ [[:$1]] :',
-'logdelete-selected'          => '{{PLURAL:$1|เหตุการณ์บันทึกที่ถูกเลือก|เหตุการณ์บันทึกที่ถูกเลือก}} :',
-'revdelete-text'              => 'รุ่นการปรับปรุงที่ถูกลบและเหตุการณ์ยังคงปรากฏในส่วนประวัติของหน้าและบันทึกของหน้านี้ แต่ส่วนเนื้อหาไม่สามารถแสดงผลต่อผู้ใช้ทั่วไป
+'revdelete-selected'          => "'''{{PLURAL:$2|รุ่นการปรับปรุงที่ถูกเลือก|รุ่นการปรับปรุงที่ถูกเลือก}}ของ [[:$1]] :'''",
+'logdelete-selected'          => "'''{{PLURAL:$1|เหตุการณ์บันทึกที่ถูกเลือก|เหตุการณ์บันทึกที่ถูกเลือก}} :'''",
+'revdelete-text'              => "'''รุ่นการปรับปรุงที่ถูกลบและเหตุการณ์ยังคงปรากฏในส่วนประวัติของหน้าและบันทึกของหน้านี้ แต่ส่วนเนื้อหาไม่สามารถแสดงผลต่อผู้ใช้ทั่วไป'''
 
-ผู้ดูแลระบบคนอื่นในวิกินี้สามารถเข้าดูเนื้อหาได้ และสามารถที่จะย้อนการลบกลับมาเป็นเหมือนเดิม เว้นเสียแต่ว่าจะมีการควบคุมอื่นถูกห้ามไว้',
+ผู้ดูแลระบบคนอื่นในวิกินี้สามารถเข้าดูเนื้อหาได้ และสามารถที่จะย้อนการลบกลับมาเป็นเหมือนเดิม เว้นเสียแต่ว่าจะมีการควบคุมอื่นถูกห้ามไว้",
 'revdelete-legend'            => 'ระบุการควบคุม:',
 'revdelete-hide-text'         => 'ซ่อนข้อความรุ่นที่ปรับปรุง',
 'revdelete-hide-name'         => 'ซ่อนการกระทำและเป้าหมาย',
@@ -1079,6 +1139,7 @@ $1 เป็นผู้ดำเนินการบล็อกในคร�
 'recentchangestext'                 => 'ในหน้านี้เป็นรายการล่าสุดที่มีการปรับปรุง',
 'recentchanges-feed-description'    => 'ฟีดนี้แสดงการเปลี่ยนแปลงล่าสุด',
 'rcnote'                            => "รายการด้านล่างคือการแก้ไข {{PLURAL:$1|'''1''' รายการ|ล่าสุด '''$1''' รายการ}} ในช่วง {{PLURAL:$2|1 วัน|'''$2''' วัน}}ที่ผ่านมา ตั้งแต่วันที่ $5; $4",
+'rcnotefrom'                        => "แสดงการเปลี่ยนแปลงตั้งแต่ '''$2''' (แสดง '''$1''' รายการ)",
 'rclistfrom'                        => 'แสดงการเปลี่ยนแปลงตั้งแต่ $1',
 'rcshowhideminor'                   => '$1การแก้ไขเล็กน้อย',
 'rcshowhidebots'                    => '$1บอต',
@@ -1137,7 +1198,7 @@ $1 เป็นผู้ดำเนินการบล็อกในคร�
 'filesource'                  => 'แหล่งที่มา:',
 'uploadedfiles'               => 'ไฟล์ที่อัปโหลดแล้ว',
 'ignorewarning'               => 'ทำการบันทึกไฟล์โดยไม่สนคำเตือน',
-'ignorewarnings'              => 'ไม่สนคำเตือน',
+'ignorewarnings'              => 'ไม่ยอมรับคำเตือน',
 'minlength1'                  => 'ชื่อไฟล์ต้องมีตัวอักษรอย่างน้อยหนึ่งตัวอักษร',
 'illegalfilename'             => 'ชื่อไฟล์  "$1" มีตัวอักษรที่ไม่สามารถนำมาใช้ได้ กรุณาเปลี่ยนชื่อไฟล์และอัปโหลดอีกครั้งหนึ่ง',
 'badfilename'                 => 'ชื่อไฟล์ถูกเปลี่ยนเป็น "$1"',
@@ -1313,10 +1374,10 @@ $1 เป็นผู้ดำเนินการบล็อกในคร�
 'statistics-header-edits'         => 'สถิติการแก้ไข',
 'statistics-header-views'         => 'สถิติการเข้าชม',
 'statistics-header-users'         => 'สถิติผู้ใช้',
-'statistics-articles'             => 'หน้าบทความ',
+'statistics-articles'             => 'จำนวนเนื้อหา',
 'statistics-pages'                => 'หน้าทั้งหมด',
 'statistics-pages-tooltip'        => 'หน้าทั้งหมดในเว็บไซต์นี้ รวมไปถึงหน้าต่าง ๆ เช่น หน้าสนทนา และหน้าเปลี่ยนทาง เป็นต้น',
-'statistics-files'                => 'ไำฟล์ทั้งหมด',
+'statistics-files'                => 'จำนวนไฟล์ที่ถูกอัปโหลด',
 'statistics-edits'                => 'แก้ไขทั้งหมดตั้งแต่{{SITENAME}}ภาษาไทยถูกก่อตั้งขึ้นมา',
 'statistics-edits-average'        => 'จำนวนแก้ไขต่อหน้าโดยเฉลี่ย',
 'statistics-views-total'          => 'จำนวนการเข้าชมทั้งหมด',
@@ -1458,7 +1519,9 @@ $1 เป็นผู้ดำเนินการบล็อกในคร�
 'listusers-noresult' => 'ไม่พบผู้ใช้ที่ต้องการ',
 
 # Special:Log/newusers
-'newuserlog-create-entry' => 'ผู้ใช้ใหม่',
+'newuserlogpage'           => 'ปูมการสร้างบัญชีผู้ใช้ใหม่',
+'newuserlog-create-entry'  => 'ผู้ใช้ใหม่',
+'newuserlog-create2-entry' => 'สร้างบัญชีผู้ใช้สำหรับ $1',
 
 # Special:ListGroupRights
 'listgrouprights'                 => 'สิทธิกลุ่มผู้ใช้งาน',
@@ -1525,16 +1588,6 @@ $1 เป็นผู้ดำเนินการบล็อกในคร�
 'iteminvalidname'      => "เกิดปัญหาชื่อไม่ถูกต้องกับ '$1'...",
 'wlnote'               => 'ด้านล่างเป็นการแก้ไข $1 รายการ ในช่วง $2 ชั่วโมงที่ผ่านมา',
 'wlshowlast'           => 'แสดงล่าสุดใน $1 ชั่วโมง $2 วัน $3',
-'watchlist-show-bots'  => 'แสดงการแก้ไขของบอต',
-'watchlist-hide-bots'  => 'ซ่อนการแก้ไขของบอต',
-'watchlist-show-own'   => 'แสดงการแก้ไขของฉัน',
-'watchlist-hide-own'   => 'ซ่อนการแก้ไขของฉัน',
-'watchlist-show-minor' => 'แสดงการแก้ไขเล็กน้อย',
-'watchlist-hide-minor' => 'ซ่อนการแก้ไขเล็กน้อย',
-'watchlist-show-anons' => 'แสดงการแก้ไขของผู้ใช้ที่ไม่ล็อกอิน',
-'watchlist-hide-anons' => 'ซ่อนการแก้ไขของผู้ใช้ที่ไม่ล็อกอิน',
-'watchlist-show-liu'   => 'แสดงการแก้ไขของผู้ใช้ที่ล็อกอิน',
-'watchlist-hide-liu'   => 'ซ่อนการแก้ไขของผู้ใช้ที่ล็อกอิน',
 'watchlist-options'    => 'ตัวเลือกรายการเฝ้าดู',
 
 # Displayed when you click the "watch" button and it is in the process of watching
@@ -1619,7 +1672,7 @@ $NEWPAGE
 
 การแก้ไขล่าสุดจัดทำโดย [[User:$3|$3]] ([[User talk:$3|พูดคุย]])',
 'editcomment'      => 'ความเห็นโดย: "<i>$1</i>".', # only shown if there is an edit comment
-'revertpage'       => 'ย้อนการแก้ไขของ [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) ไปยังรุ่นของ [[User:$1|$1]]', # Additional available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
+'revertpage'       => 'ย้อนการแก้ไขของ [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]) ไปยังรุ่นของ [[User:$1|$1]]', # Additionally available: $3: revid of the revision reverted to, $4: timestamp of the revision reverted to, $5: revid of the revision reverted from, $6: timestamp of the revision reverted from
 'rollback-success' => 'ย้อนการแก้ไขของ $1 ไปยังรุ่นของ $2',
 'sessionfailure'   => 'ท่าทางจะมีปัญหาเกี่ยวการล็อกอินในช่วงเวลานี้ เกิดจากทางระบบป้องกันการลักลอบการขโมยล็อกอิน กรุณาย้อนกลับไปหน้าก่อนหน้า และลองโหลดใหม่อีกครั้ง',
 
@@ -1649,6 +1702,7 @@ $NEWPAGE
 'protect-level-sysop'         => 'ผู้ดูแลระบบแก้ไขเท่านั้น',
 'protect-summary-cascade'     => 'สืบทอด',
 'protect-expiring'            => 'หมดอายุ $1 (UTC)',
+'protect-expiry-indefinite'   => 'ตลอดกาล',
 'protect-cascade'             => 'ล็อกหน้าที่เป็นส่วนหนึ่งของหน้านี้ (ล็อกแบบสืบทอด)',
 'protect-cantedit'            => 'คุณไม่สามารถเปลี่ยนระดับการป้องกันของหน้านี้ เนื่องจากคุณไม่ได้รับสิทธิในการแก้ไขสิ่งนั้น',
 'protect-expiry-options'      => '1 ชั่วโมง:1 hour,2 ชั่วโมง:2 hours,6 ชั่วโมง:6 hours,1 วัน:1 day,3 วัน:3 days,1 อาทิตย์:1 week,2 อาทิตย์:2 weeks,1 เดือน:1 month,3 เดือน:3 months,1 ปี:1 year,ตลอดไป:infinite', # display1:time1,display2:time2,...
@@ -1905,6 +1959,7 @@ $1',
 'delete_and_move_reason'    => 'ถูกลบสำหรับการเปลี่ยนชื่อ',
 'selfmove'                  => 'ชื่อหน้าเดิมและหน้าใหม่เป็นชื่อเดียวกัน ไม่สามารถเปลี่ยนชื่อได้',
 'immobile-target-namespace' => 'ไม่สามารถย้ายหน้าไปยังเนมสเปซ "$1" ได้',
+'immobile-source-page'      => 'หน้านี้ถูกล็อกไม่ให้เปลี่ยนชื่อได้',
 'imagenocrossnamespace'     => 'ไม่สามารถย้ายไฟล์ไปยังเนมสเปซที่ไม่รองรับ',
 'imageinvalidfilename'      => 'ชื่อไฟล์เป้าหมายไม่ถูกต้อง',
 'fix-double-redirects'      => 'อัปเดตหน้าเปลี่ยนทางทุกหน้าที่โอนไปยังชื่อเดิม',
@@ -2495,10 +2550,8 @@ $1
 'recreate'            => 'สร้างใหม่',
 
 # action=purge
-'confirm_purge'        => 'ล้างแคชสำหรับหน้านี้หรือไม่
-
-$1',
 'confirm_purge_button' => 'ตกลง',
+'confirm-purge-top'    => 'ล้างแคชสำหรับหน้านี้หรือไม่',
 
 # Multipage image navigation
 'imgmultipageprev' => '← หน้าก่อนหน้า',
