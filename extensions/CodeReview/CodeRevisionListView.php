@@ -76,16 +76,14 @@ class SvnRevTablePager extends TablePager {
 				'fields' => array_keys( $this->getFieldNames() ),
 				'conds' => array( 
 					'cp_repo_id' => $this->mRepo->getId(),
-					'cp_repo_id = cr_repo_id',
-					'cp_rev_id = cr_id',
 					'cp_path LIKE '.$this->mDb->addQuotes($this->mDb->escapeLike( $this->getSVNPath() ).'%'),
 					// performance
 					'cp_rev_id > '.$this->mRepo->getLastStoredRev() - 20000
 				),
-				'options' => array( 'GROUP BY' => 'cp_rev_id',
-					'USE INDEX' => array( 'code_path' => 'cp_repo_id') ),
+				'options' => array( 'GROUP BY' => 'cp_rev_id', 'USE INDEX' => array('code_path' => 'cp_repo_id') ),
 				'join_conds' => array( 
-					'code_comment' => array( 'LEFT JOIN', 'cc_repo_id = cr_repo_id AND cc_rev_id = cr_id' )
+					'code_rev' => array( 'INNER JOIN', 'cr_repo_id = cp_repo_id AND cr_id = cp_rev_id' ),
+					'code_comment' => array( 'LEFT JOIN', 'cc_repo_id = cp_repo_id AND cc_rev_id = cp_rev_id' )
 				)
 			);
 		// No path; entire repo...
