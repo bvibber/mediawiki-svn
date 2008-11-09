@@ -3,16 +3,7 @@
 // Special:Code/MediaWiki
 class CodePathRevListView extends CodeRevisionListView {
 	function __construct( $repoName ) {
-		global $wgRequest;
 		parent::__construct( $repoName );
-		$this->mRepo = CodeRepository::newFromName( $repoName );
-		$this->mPath = htmlspecialchars( trim( $wgRequest->getVal( 'path' ) ) );
-		if( strlen($this->mPath) && $this->mPath[strlen($this->mPath)-1] !== '/' ) {
-			$this->mPath .= '/'; // make sure this is a dir
-		}
-		if( strlen($this->mPath) && $this->mPath[0] !== '/' ) {
-			$this->mPath = "/{$this->mPath}"; // make sure this is a dir
-		}
 	}
 
 	function execute() {
@@ -48,10 +39,6 @@ class CodePathRevListView extends CodeRevisionListView {
 
 // Pager for CodeRevisionListView
 class SvnPathRevTablePager extends SvnRevTablePager {
-	function getSVNPath() {
-		return $this->mView->mPath;
-	}
-
 	function getTitle() {
 		return SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/path' );
 	}

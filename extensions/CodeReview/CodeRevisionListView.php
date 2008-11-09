@@ -4,9 +4,17 @@
 class CodeRevisionListView extends CodeView {
 	public $mRepo, $mPath;
 	function __construct( $repoName ) {
+		global $wgRequest;
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
-		$this->mPath = '';
+		$this->mPath = htmlspecialchars( trim( $wgRequest->getVal( 'path' ) ) );
+		if( strlen($this->mPath) && $this->mPath[strlen($this->mPath)-1] !== '/' ) {
+			$this->mPath .= '/'; // make sure this is a dir
+		}
+		if( strlen($this->mPath) && $this->mPath[0] !== '/' ) {
+			$this->mPath = "/{$this->mPath}"; // make sure this is a dir
+		}
+		$this->mAuthor = null;
 	}
 
 	function execute() {
@@ -28,7 +36,11 @@ class CodeRevisionListView extends CodeView {
 	
 	function showForm( $path = '' ) {
 		global $wgOut, $wgScript;
-		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/path' );
+		if( $this->mAuthor ) {
+			$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/author/'.$this->mAuthor );
+		} else {
+			$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/path' );
+		}
 		$wgOut->addHTML( 
 			Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get' ) ) .
 			"<fieldset><legend>".wfMsgHtml('code-pathsearch-legend')."</legend>" .
@@ -57,7 +69,7 @@ class SvnRevTablePager extends TablePager {
 	}
 	
 	function getSVNPath() {
-		return false;
+		return $this->mView->mPath;
 	}
 
 	function isFieldSortable( $field ) {
