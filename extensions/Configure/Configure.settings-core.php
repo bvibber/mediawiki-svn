@@ -763,7 +763,7 @@ $arrayDefs = array(
 	'wgGroupsAddToSelf' => 'group-array',
 	'wgGroupsRemoveFromSelf' => 'group-array',
 	'wgImplicitGroups' => 'simple',
-	'wgPasswordAttemptThrottle' => 'simple',
+	'wgPasswordAttemptThrottle' => 'assoc',
 	'wgRemoveGroups' => 'group-array',
 	'wgWhitelistRead' => 'simple',
 # Rate limits
