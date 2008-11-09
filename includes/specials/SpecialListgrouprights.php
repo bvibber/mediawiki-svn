@@ -25,8 +25,11 @@ class SpecialListGroupRights extends SpecialPage {
 	 */
 	public function execute( $par ) {
 		global $wgOut, $wgImplicitGroups, $wgMessageCache;
-		global $wgGroupPermissions, $wgAddGroups, $wgRemoveGroups;
+		global $wgAddGroups, $wgRemoveGroups;
 		$wgMessageCache->loadAllMessages();
+		
+		$rm = new RightsManagerMulti;
+		$groupPerms = $rm->getAllGroupPermissions();
 
 		$this->setHeaders();
 		$this->outputHeader();
@@ -39,8 +42,8 @@ class SpecialListGroupRights extends SpecialPage {
 				'</tr>'
 		);
 
-		foreach( $wgGroupPermissions as $group => $permissions ) {
-			$groupname = ( $group == '*' ) ? 'all' : htmlspecialchars( $group ); // Replace * with a more descriptive groupname
+		foreach( $groupPerms as $group => $permissions ) {
+			$groupname = ( $group == '*' ) ? 'all' : htmlspecialchars( $group ); // TODO: Replace * with a more descriptive groupname
 
 			$msg = wfMsg( 'group-' . $groupname );
 			if ( wfEmptyMsg( 'group-' . $groupname, $msg ) || $msg == '' ) {
@@ -70,8 +73,13 @@ class SpecialListGroupRights extends SpecialPage {
 				$grouplink = '';
 			}
 
-			$addgroups = isset( $wgAddGroups[$group] ) ? $wgAddGroups[$group] : array();
-			$removegroups = isset( $wgRemoveGroups[$group] ) ? $wgRemoveGroups[$group] : array();
+			$changeableGroups = array();
+
+			global $wgRightsManagers;
+			foreach( $wgRightsManagers as $rmClass ) {
+				$rm = new $rmClass;
+				$changeableGroups = array_merge_recursive( $rm->getChangeableGroups( array( $group ) ), $changeableGroups );
+			}
 
 			$wgOut->addHTML(
 				'<tr>
@@ -79,7 +87,7 @@ class SpecialListGroupRights extends SpecialPage {
 						$grouppage . $grouplink .
 					'</td>
 					<td>' .
-						self::formatPermissions( $permissions, $addgroups, $removegroups ) .
+						self::formatPermissions( $permissions, $changeableGroups ) .
 					'</td>
 				</tr>'
 			);
@@ -93,9 +101,10 @@ class SpecialListGroupRights extends SpecialPage {
 	 * Create a user-readable list of permissions from the given array.
 	 *
 	 * @param $permissions Array of permission => bool (from $wgGroupPermissions items)
+	 * @param $changeableGroups Array of action => list of groups (from RightsManager::getChangeableGroups)
 	 * @return string List of all granted permissions, separated by comma separator
 	 */
-	 private static function formatPermissions( $permissions, $add, $remove ) {
+	 private static function formatPermissions( $permissions, $changeableGroups ) {
 	 	global $wgLang;
 		$r = array();
 		foreach( $permissions as $permission => $granted ) {
@@ -108,16 +117,21 @@ class SpecialListGroupRights extends SpecialPage {
 			}
 		}
 		sort( $r );
-		if( $add === true ){
-			$r[] = wfMsgExt( 'listgrouprights-addgroup-all', array( 'escape' ) );
-		} else if( is_array( $add ) && count( $add ) ) {
-			$r[] = wfMsgExt( 'listgrouprights-addgroup', array( 'parseinline' ), $wgLang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $add ) ), count( $add ) );
+		
+		// Get addable/removable groups.
+		$groupActions = array( 'add-self' => 'addself', 'remove-self' => 'removeself', 'add' => 'add', 'remove' => 'remove' );
+		
+		foreach( $groupActions as $key => $value ) {
+			if ( !isset($changeableGroups[$key]) || !is_array($changeableGroups[$key]) || !count($changeableGroups[$key]) ) {
+				// Do nothing.
+			} elseif ( !count( array_diff( $changeableGroups[$key], array_diff( User::getAllGroups(), User::getImplicitGroups() ) ) ) ) {
+				// i.e. User can change *all* groups.
+				$r[] = wfMsgExt( "listgrouprights-{$value}group-all", array( 'escape' ) );
+			} elseif ( count( $changeableGroups[$key] ) ) {
+				$r[] = wfMsgExt( "listgrouprights-{$value}group", array( 'parseinline' ), $wgLang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $changeableGroups[$key] ) ), count( $changeableGroups[$key] ) );
+			}
 		}
-		if( $remove === true ){
-			$r[] = wfMsgExt( 'listgrouprights-removegroup-all', array( 'escape' ) );
-		} else if( is_array( $remove ) && count( $remove ) ) {
-			$r[] = wfMsgExt( 'listgrouprights-removegroup', array( 'parseinline' ), $wgLang->listToText( array_map( array( 'User', 'makeGroupLinkWiki' ), $remove ) ), count( $remove ) );
-		}
+	
 		if( empty( $r ) ) {
 			return '';
 		} else {

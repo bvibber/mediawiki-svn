@@ -2833,6 +2833,8 @@ $wgLogActions = array(
 	'protect/unprotect' => 'unprotectedarticle',
 	'protect/move_prot' => 'movedarticleprotection',
 	'rights/rights'     => 'rightslogentry',
+	'rights/rights2'    => 'rightslogentry2',
+	'rights/grprights'  => 'grouprightslog',
 	'delete/delete'     => 'deletedarticle',
 	'delete/restore'    => 'undeletedarticle',
 	'delete/revision'   => 'revdelete-logentry',
@@ -2911,6 +2913,7 @@ $wgSpecialPageGroups = array(
 
 	'Listusers'                 => 'users',
 	'Listgrouprights'           => 'users',
+	'GroupRights'		    => 'users',
 	'Ipblocklist'               => 'users',
 	'Contributions'             => 'users',
 	'Emailuser'                 => 'users',
@@ -3558,6 +3561,19 @@ $wgUseAutomaticEditSummaries = true;
  * Requires memcached.
  */
 $wgPasswordAttemptThrottle = array( 'count' => 5, 'seconds' => 300 );
+
+/**
+ * Whether or not to allow rights changes made through Special:GroupRights to revoke
+ * rights issued in the site configuration
+ */
+$wgAllowDBRightSubtraction = true;
+
+/**
+ * The rights managers which are allowed to give users groups and permissions.
+ * An array of class names. Generally not modified by users, but by extensions
+ * and the like.
+ */
+$wgRightsManagers = array( 'RightsManagerConfigDB', 'RightsManagerForeignDB' );
 
 /**
  * Display user edit counts in various prominent places.
