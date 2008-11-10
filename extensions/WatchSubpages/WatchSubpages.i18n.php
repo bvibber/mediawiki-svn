@@ -140,11 +140,12 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  * @author Silvonen
  */
 $messages['fi'] = array(
 	'watchsubpages' => 'Tarkkaile alasivuja',
-	'watchsubpages-desc' => '[[Special:WatchSubpages|Lisää kaikki sivun alasivut]] nopeasti tarkkailulistalle.',
+	'watchsubpages-desc' => '[[Special:WatchSubpages|Lisää kaikki sivun alasivut]] tarkkailulistalle.',
 );
 
 /** French (Français)

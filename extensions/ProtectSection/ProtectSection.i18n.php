@@ -54,8 +54,10 @@ $messages['avk'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
+	'protectsection_desc' => 'Позволява на оторизирани потребители да защитават части от страници, използвайки етикета <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Опитахте се да добавите или премахнете защитен раздел.',
 	'protectsection_modify' => 'Опитахте се да промените защитен текст.',
+	'protectsection_forbidden' => 'Забранен достъп',
 );
 
 /** Catalan (Català)

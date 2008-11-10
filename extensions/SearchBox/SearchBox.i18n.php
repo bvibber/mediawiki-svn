@@ -66,6 +66,15 @@ $messages['fr'] = array(
 	'searchbox-namespaces' => 'Espaces de nom :',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'searchbox-search' => 'Procurar',
+	'searchbox-go' => 'Ir',
+	'searchbox-namespaces' => 'Espazos de nomes:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

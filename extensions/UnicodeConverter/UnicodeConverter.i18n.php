@@ -106,6 +106,18 @@ $messages['gl'] = array(
 	'unicodeconverter-newtext' => 'Texto transformado:',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'unicodeconverter' => 'ממיר היוניקוד',
+	'unicodeconverter-desc' => 'דוגמה פשוטה של הרחבת דף מיוחד, הממירה [[Special:UnicodeConverter|מחרוזת הנתונה בקידוד UTF-8]] ליישויות HTML המתאימות לעמוד אינטרנט בקידוד ISO 8859-1',
+	'unicodeconverter-ok' => 'אישור',
+	'unicodeconverter-oldtext' => 'טקסט המקור:',
+	'unicodeconverter-newtext' => 'הטקסט המומר:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

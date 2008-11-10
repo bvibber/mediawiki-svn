@@ -36,6 +36,11 @@ $aliases['br'] = array(
 	'Code' => array( 'Kod' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'Code' => array( 'Código' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'Code' => array( 'Kod' ),

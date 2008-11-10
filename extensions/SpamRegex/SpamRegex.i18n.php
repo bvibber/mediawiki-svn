@@ -199,7 +199,7 @@ $messages['de'] = array(
 	'spamregex-intro' => 'Benutze dieses Formular, um effektiv zu verhindern, dass angegebene Phrasen in den Text einer Seite eingefügt werden.
 Wenn der Text die angegebene Phrase enthält, wird die Änderung nicht gespeichert und ein Hinweis an den Benutzer ausgegeben, der versucht hat, die Seite zu speichern.
 Sei aber vorsichtig, Phrasen sollten nicht zu kurz oder zu allgemein sein.',
-	'spamregex-page-title' => 'Spam regex filtert ungewollte Ausdrücke',
+	'spamregex-page-title' => 'Filtern ungewollter Ausdrücke',
 	'spamregex-currently-blocked' => "'''Derzeit gesperrte Phrasen:'''",
 	'spamregex-move' => 'Die Zusammenfassung, die du angabst, enthält eine gesperrte Phrase.',
 	'spamregex-no-currently-blocked' => "'''Es gibt derzeit keine gesperrten Phrasen.'''",
@@ -207,10 +207,10 @@ Sei aber vorsichtig, Phrasen sollten nicht zu kurz oder zu allgemein sein.',
 	'spamregex-log-2' => '  auf $1',
 	'spamregex-page-title-1' => 'Sperre Phrase als regulären Ausdruck',
 	'spamregex-unblock-success' => 'Entsperrung erfolgreich',
-	'spamregex-unblock-message' => "Phrase '''$1''' wurde für Bearbeitungen entsperrt.",
+	'spamregex-unblock-message' => "Phrase „'''$1'''“ wurde für Bearbeitungen entsperrt.",
 	'spamregex-page-title-2' => 'Sperre das Speichern der Phrase als regulären Ausdruck',
 	'spamregex-block-success' => 'Sperrung erfolgreich',
-	'spamregex-block-message' => "Phrase '''$1''' wurde gesperrt.",
+	'spamregex-block-message' => "Phrase „'''$1'''“ wurde gesperrt.",
 	'spamregex-warning-1' => 'Phrase zum Sperren angeben',
 	'spamregex-error-1' => 'Ungültiger regulärer Ausdruck.',
 	'spamregex-warning-2' => 'Bitte wähle mindestens eine Sperrmethode aus.',
@@ -218,9 +218,9 @@ Sei aber vorsichtig, Phrasen sollten nicht zu kurz oder zu allgemein sein.',
 	'spamregex-phrase-block' => 'Zu sperrende Phrase:',
 	'spamregex-phrase-block-text' => 'Phrase im Seitentext sperren',
 	'spamregex-phrase-block-summary' => 'Phrase in der Zusammenfassung sperren',
-	'spamregex-block-submit' => 'Diese&nbsp;Phrase&nbsp;sperren',
+	'spamregex-block-submit' => 'Phrase sperren',
 	'spamregex-text' => '(Text)',
-	'spamregex-summary-log' => '(Beschreibung)',
+	'spamregex-summary-log' => '(Zusammenfassung)',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

@@ -197,6 +197,18 @@ $messages['haw'] = array(
 	'findspam-ok' => 'Hiki nō',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'findspam' => 'חיפוש ספאם',
+	'findspam-desc' => 'הוספת [[Special:FindSpam|דף מיוחד]] המאפשר למצוא ספאם שנוסף לאחרונה',
+	'findspam-ip' => 'כתובת IP:',
+	'findspam-ok' => 'אישור',
+	'findspam-notextfound' => 'לא נמצאו תרומות',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

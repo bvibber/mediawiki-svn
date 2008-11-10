@@ -29,6 +29,11 @@ $aliases['fa'] = array(
 	'Form' => array( 'فرم' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'Form' => array( 'Formulario' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'Form' => array( 'טופס' ),

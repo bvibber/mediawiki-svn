@@ -847,6 +847,7 @@ $messages['lb'] = array(
 	'inplace_access_disabled' => 'Den Zougang zu dësem Service gouf fir all Cliente gespaart.',
 	'inplace_access_denied' => 'Dëse Service ass limitéiert op Grond vun der IP-Adress vum Client.',
 	'inplace_scaler_not_enough_params' => 'Net genuch Parameteren.',
+	'inplace_scaler_zero_size' => 'Bäi der Ëmwandlung gouf en eidele Fichier generéiert.',
 	'webstore_access' => 'Dëse Service ass pro IP-Adress limitéiert.',
 	'webstore_path_invalid' => 'De Numm vum Fichier war ongëlteg.',
 	'webstore_rename' => 'Feeler beim Ëmbennen vum Fichier "$1" op "$2".',
@@ -863,6 +864,9 @@ $messages['lb'] = array(
 
 $1',
 	'webstore_no_response' => 'De Server äntwert net',
+	'webstore_backend_error' => 'Feeler vum Server op dem Date gespäichert ginn:
+
+$1',
 	'webstore_php_error' => 'Dës PHP Feeler sinn opgetratt:',
 );
 

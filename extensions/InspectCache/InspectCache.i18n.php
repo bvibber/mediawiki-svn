@@ -103,6 +103,13 @@ Diverkañ',
 	'inspectcache-list' => 'Roll',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'inspectcache-delete' => 'Obriši',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

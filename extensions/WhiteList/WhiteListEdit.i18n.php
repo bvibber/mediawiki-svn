@@ -316,6 +316,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'whitelisttablemodifyall' => 'Sve',
+	'whitelisttableedit' => 'Uredi',
 	'whitelistrequestmsg' => '$1 zahtijeva pristup slijedećim stranicama:
 
 $2',
@@ -397,7 +398,8 @@ Entweder * oder % als Maskenzeichen benutzen",
 	'whitelistoverviewrm' => '* Zugriff auf [[:$1|$1]] wird entfernt',
 	'whitelistoverviewna' => "* [[:$1|$1]] wird zur Whitelist hinzugefügt. (Zugriff: '''$2''', Ablaufdatum: '''$3''')",
 	'whitelistrequest' => 'Weiteren Zugriff beantragen',
-	'whitelistrequestmsg' => '$1 hat Zugriff auf die folgenden Seiten beantragt:
+	'whitelistrequestmsg' => '$1 hat Zugriff auf die {{PLURAL:$3|folgende Seite|folgenden Seiten}} beantragt:
+
 $2',
 	'whitelistrequestconf' => 'Beantragung an $1 geschickt',
 	'whitelistnonrestricted' => "'''$1''' ist kein beschränkter Benutzer.
@@ -530,6 +532,8 @@ Utiliser soit le caractère * soit %',
 	'whitelistnewtabledate' => 'Date d’expiration :',
 	'whitelistnewtableedit' => 'Activer modification',
 	'whitelistnewtableview' => 'Activer visualisation',
+	'whitelistnowhitelistedusers' => 'Il n’y a aucun utilisateur dans le groupe « {{MediaWiki:Group-restricted}} ».
+Vous devez [[Special:UserRights|ajouter l’utilisateur au groupe]] avant que vous puissiez ajouter des pages à la liste blanche d’un utilisateur.',
 	'whitelistnewtableprocess' => 'Traiter',
 	'whitelistnewtablereview' => 'Réviser',
 	'whitelistselectrestricted' => '== Sélectionner un nom d’utilisateur à accès restreint ==',
@@ -542,7 +546,7 @@ Utiliser soit le caractère * soit %',
 	'whitelistoverviewrm' => '* Retrait de l’accès à [[:$1|$1]]',
 	'whitelistoverviewna' => "* Ajoute [[:$1|$1]] à la liste blanche avec les droits de '''$2''' avec pour date d’expiration le '''$3'''",
 	'whitelistrequest' => 'Demande d’accès à plus de pages',
-	'whitelistrequestmsg' => '$1 a demandé l’accès aux pages suivantes :
+	'whitelistrequestmsg' => '$1 a demandé l’accès {{PLURAL:$3|à la page suivante|aux pages suivantes}} :
 
 $2',
 	'whitelistrequestconf' => 'Une demande d’accès pour de nouvelles pages a été envoyée à $1',
@@ -550,6 +554,14 @@ $2',
 Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.",
 	'whitelistnever' => 'jamais',
 	'whitelistnummatches' => ' - {{PLURAL:$1|une occurence|$1 occurences}}',
+	'right-editwhitelist' => 'Modifier la liste blanche pour les utilisateurs existants',
+	'right-restricttowhitelist' => 'Modifier et visionner les pages figurant uniquement sur la liste blanche',
+	'action-editwhitelist' => 'modifier la liste blanche pour les utilisateurs existants',
+	'action-restricttowhitelist' => 'modifier et visionner les pages figurant uniquement sur la liste blanche',
+	'group-restricted' => 'Utilisateurs restreints',
+	'group-restricted-member' => 'Utilisateur restreint',
+	'group-manager' => 'Gestionnaires',
+	'group-manager-member' => 'Gestionnaire',
 );
 
 /** Western Frisian (Frysk)
@@ -602,7 +614,7 @@ Pode usar * ou %, como tamén o carácter "comodín"',
 	'whitelistoverviewrm' => '* Eliminando o acceso a [[:$1|$1]]',
 	'whitelistoverviewna' => "* Engadindo [[:$1|$1]] á listaxe branca (whitelist) con acceso a '''$2''' e data de remate '''$3'''",
 	'whitelistrequest' => 'Solicitar acceso a máis páxinas',
-	'whitelistrequestmsg' => '$1 solicitou ter acceso ás seguintes páxinas:
+	'whitelistrequestmsg' => '$1 solicitou ter acceso {{PLURAL:$3|á seguinte páxina|ás seguintes páxinas}}:
 
 $2',
 	'whitelistrequestconf' => 'A solicitude para páxinas novas foi enviada a $1',
@@ -610,6 +622,8 @@ $2',
 Esta páxina só é aplicable aos usuarios limitados",
 	'whitelistnever' => 'nunca',
 	'whitelistnummatches' => ' - {{PLURAL:$1|unha coincidencia|$1 coincidencias}}',
+	'group-restricted' => 'Usuarios restrinxidos',
+	'group-restricted-member' => 'Usuario restrinxido',
 );
 
 /** Gothic
@@ -668,6 +682,8 @@ $messages['he'] = array(
 	'whitelistnewtabledate' => 'תאריך הפקיעה:',
 	'whitelistnewtableedit' => 'הגדרה לעריכה',
 	'whitelistnewtableview' => 'הגדרה לתצוגה',
+	'whitelistnowhitelistedusers' => 'אין משתמשים בקבוצה "{{MediaWiki:Group-restricted}}".
+יהיה עליכם [[Special:UserRights|להוסיף משתמשים לקבוצה]] לפני שתוכלו להוסיף דפים לרשימה הלבנה של המשתמש.',
 	'whitelistnewtableprocess' => 'עיבוד',
 	'whitelistnewtablereview' => 'סקירה',
 	'whitelistselectrestricted' => '== בחירת שם המשתמש המוגבל ==',
@@ -680,7 +696,7 @@ $messages['he'] = array(
 	'whitelistoverviewrm' => '* הסרת הגישה אל [[:$1|$1]]',
 	'whitelistoverviewna' => "* הוספת [[:$1|$1]] לרשימה הלבנה עם הגישה '''$2''' ותאריך הפקיעה '''$3'''",
 	'whitelistrequest' => 'בקשת גישה לדפים נוספים',
-	'whitelistrequestmsg' => '$1 ביקש גישה לדפים הבאים:
+	'whitelistrequestmsg' => '$1 ביקש גישה ל{{PLURAL:$3|דף הבא|דפים הבאים}}:
 
 $2',
 	'whitelistrequestconf' => 'הבקשה לדפים חדשים נשלחה אל $1',
@@ -688,6 +704,14 @@ $2',
 ניתן להשתמש בדף זה עבור משתמשים מוגבלים בלבד",
 	'whitelistnever' => 'לעולם לא',
 	'whitelistnummatches' => ' - {{PLURAL:$1|תוצאה אחת|$1 תוצאות}}',
+	'right-editwhitelist' => 'שינוי הרשימה הלבנה למשתמשים קיימים',
+	'right-restricttowhitelist' => 'עריכה והצגה של דפים מהרשימה הלבנה בלבד',
+	'action-editwhitelist' => 'לשנות את הרשימה הלבנה למשתמשים קיימים',
+	'action-restricttowhitelist' => 'לערוך ולהציג דפים מהרשימה הלבנה בלבד',
+	'group-restricted' => 'משתמשים מוגבלים',
+	'group-restricted-member' => 'משתמש מוגבל',
+	'group-manager' => 'מנהלים',
+	'group-manager-member' => 'מנהל',
 );
 
 /** Hindi (हिन्दी)
@@ -960,12 +984,13 @@ $messages['lb'] = array(
 	'whitelistoverviewsa' => "* Autorisatioun vum '''$1''' op [[:$2|$2]] astellen",
 	'whitelistoverviewrm' => '* Autorisatioun fir [[:$1|$1]] gët ewechgeholl',
 	'whitelistrequest' => 'Zougang zu méi Säite froen',
-	'whitelistrequestmsg' => '$1 huet Accès op dës Säite gfrot:
+	'whitelistrequestmsg' => '$1 huet Zougrëff op dës {{PLURAL:$3|Säit|Säite}} gfrot:
 
 $2',
 	'whitelistrequestconf' => "D'Ufro fir nei Säite gouf geschéckt un $1",
 	'whitelistnever' => 'nie',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Resultat|Resultater}}',
+	'group-restricted' => 'Limitéiert Benotzer',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -1271,6 +1296,7 @@ $messages['pa'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
  * @author Sp5uhe
  * @author Wpedzich
  */
@@ -1312,7 +1338,7 @@ Można stosować symbole wieloznaczne * i %',
 	'whitelistoverviewrm' => '* Usuwanie dostępu do [[:$1|$1]]',
 	'whitelistoverviewna' => "* Dodawanie elementu [[:$1|$1]] do listy dostępu – dostęp dla '''$2''', data wygaśnięcia '''$3'''",
 	'whitelistrequest' => 'Zażądaj dostępu do większej liczby stron',
-	'whitelistrequestmsg' => 'Użytkownik $1 zażądał dostępu do następujących stron:
+	'whitelistrequestmsg' => 'Użytkownik $1 zażądał dostępu do {{PLURAL:$3|następującej strony|następujących stron}}:
 
 $2',
 	'whitelistrequestconf' => 'Żądanie utworzenia nowych stron zostało przesłane do $1',
@@ -1433,6 +1459,8 @@ Ako zástupný znak použite buď * alebo %',
 	'whitelistnewtabledate' => 'Dátum vypršania:',
 	'whitelistnewtableedit' => 'Nastaviť na Upraviť',
 	'whitelistnewtableview' => 'Nastaviť na Zobraziť',
+	'whitelistnowhitelistedusers' => 'V skupine „{{MediaWiki:Group-restricted}}“ sa nenachádzajú žiadni používatelia.
+Musíte [[Special:UserRights|pridať používateľov do tejto skupiny]] predtým, než budete môcť pridávať stránky na bielu listinu používateľa.',
 	'whitelistnewtableprocess' => 'Spracovať',
 	'whitelistnewtablereview' => 'Skontrolovať',
 	'whitelistselectrestricted' => '== Vyberte meno používateľa ==',
@@ -1445,7 +1473,7 @@ Ako zástupný znak použite buď * alebo %',
 	'whitelistoverviewrm' => '* Odstránenie prístupu na [[:$1|$1]]',
 	'whitelistoverviewna' => "* Pridanie prístupu [[:$1|$1]] na bielu listinu s prístupom '''$2''' a vypršaním '''$3'''",
 	'whitelistrequest' => 'Požiadať o prístup k viacerým stránkam',
-	'whitelistrequestmsg' => '$1 požiadal o prístup k nasledovným stránkam:
+	'whitelistrequestmsg' => '$1 požiadal o prístup k {{PLURAL:$3|nasledovnej stránke|nasledovným stránkam}}:
 
 $2',
 	'whitelistrequestconf' => 'Žiadosť o nové stránky bola odoslaná $1',
@@ -1453,6 +1481,14 @@ $2',
 Táto stránka sa týka iba obmedzneých používateľov.",
 	'whitelistnever' => 'nikdy',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}',
+	'right-editwhitelist' => 'Zmeniť bielu listinu existujúcich používateľov',
+	'right-restricttowhitelist' => 'Upravovať a prezerať iba stránky z bielej listiny',
+	'action-editwhitelist' => 'zmeniť bielu listinu existujúcich používateľov',
+	'action-restricttowhitelist' => 'upravovať a prezerať iba stránky z bielej listiny',
+	'group-restricted' => 'Obmedzení používatelia',
+	'group-restricted-member' => 'Obmedzený používateľ',
+	'group-manager' => 'Správcovia',
+	'group-manager-member' => 'Správca',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

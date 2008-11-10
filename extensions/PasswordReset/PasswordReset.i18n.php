@@ -205,25 +205,26 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'passwordreset' => 'Salasanan palautus',
-	'passwordreset-desc' => "[[Special:Passwordreset|Palauttaa wikin käyttäjän salasanan]] – vaatii ''passwordreset''-oikeuden.",
-	'passwordreset-invalidusername' => 'Virheellinen käyttäjänimi',
-	'passwordreset-emptyusername' => 'Tyhjä käyttäjänimi',
+	'passwordreset' => 'Salasanan alustus',
+	'passwordreset-desc' => "[[Special:Passwordreset|Alustaa käyttäjän salasanan]] – vaatii ''passwordreset''-oikeuden.",
+	'passwordreset-invalidusername' => 'Virheellinen käyttäjätunnus',
+	'passwordreset-emptyusername' => 'Tyhjä käyttäjätunnus',
 	'passwordreset-nopassmatch' => 'Salasanat eivät vastaa toisiaan',
-	'passwordreset-username' => 'Käyttäjänimi',
+	'passwordreset-username' => 'Käyttäjätunnus',
 	'passwordreset-newpass' => 'Uusi salasana',
 	'passwordreset-confirmpass' => 'Vahvista salasana',
-	'passwordreset-submit' => 'Palauta salasana',
-	'passwordreset-success' => 'Salasana on palautettu käyttäjälle numero $1.',
+	'passwordreset-submit' => 'Alusta salasana',
+	'passwordreset-success' => 'Käyttäjän numero $1 salasana on alustettu.',
 	'passwordreset-disableuser' => 'Poista käyttäjätunnus käytöstä?',
 	'passwordreset-disableuserexplain' => '(asettaa käyttäjälle virheellisen salasanatiivisteen, jolloin käyttäjä ei voi kirjautua sisään)',
-	'passwordreset-disablesuccess' => 'Käyttäjätunnus on otettu pois käytöstä. Käyttäjän numero on $1.',
-	'passwordreset-accountdisabled' => 'Käyttäjätunnus on otettu pois käytöstä',
+	'passwordreset-disablesuccess' => 'Käyttäjätunnus on poistettu käytöstä. Käyttäjän numero on $1.',
+	'passwordreset-accountdisabled' => 'Käyttäjätunnus on poistettu käytöstä',
 	'disabledusers' => 'Käytöstä poistetut tunnukset',
-	'disabledusers-summary' => 'Tämä on luettelo käyttäjistä, joiden tunnus on otettu pois käytöstä PasswordResetin kautta.',
+	'disabledusers-summary' => 'Tämä on luettelo käyttäjistä, joiden tunnus on poistettu käytöstä PasswordResetillä.',
 );
 
 /** French (Français)

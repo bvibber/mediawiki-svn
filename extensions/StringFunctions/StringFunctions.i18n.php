@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'stringfunctions-desc' => 'Enhances the parser with string functions',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'stringfunctions-desc' => 'Short description of the extension. Shown in [[Special:Version]].',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -30,6 +37,13 @@ $messages['arz'] = array(
 	'stringfunctions-desc' => 'يعزز المحلل بدوال سلسلة',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'stringfunctions-desc' => 'הוספת הוראות מחרוזת למפענח',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -42,6 +56,13 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'stringfunctions-desc' => 'Extende le analysator syntactic con functiones de texto',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'stringfunctions-desc' => 'Deit Fungxjone för Tex un Zeichekette en dem Wiki singe Parser dobei.',
 );
 
 /** Dutch (Nederlands)

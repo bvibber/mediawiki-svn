@@ -88,6 +88,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'whoiswatching' => 'কে একটি উইকি পাতার উপর নজর রাখছেন',
+	'whoiswatching-desc' => 'উইকির কোন পাতা প্রত্যক্ষকারী ব্যবহারকারীরের একটি তালিকা প্রদান করে',
 	'specialwhoiswatchingthepage' => 'কে নজর রাখছেন %s-এর উপর',
 	'specialwhoiswatchingusage' => 'এই বিশেষ পাতাটি এককভাবে ব্যবহার করা যাবে না। অনুগ্রহ করে [[MediaWiki:Number_of_watching_users_pageview]] পাতাটি ব্যবহার করে এই পাতাটিতে প্রবেশস্থল সংজ্ঞায়িত করুন।',
 	'specialwhoiswatchingaddusers' => 'নজরতালিকায় ব্যবহারকারীদের যোগ করুন',

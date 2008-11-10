@@ -109,10 +109,34 @@ $messages['ar'] = array(
 
 /** Bulgarian (Български)
  * @author DCLXVI
+ * @author Spiritia
  */
 $messages['bg'] = array(
+	'contributionreporting-desc' => 'Репортаж наживо от дарителската акция на Уикимедия',
+	'contributiontotal' => 'Обща стойност на дарението',
+	'contributionhistory' => 'История на дарението',
+	'contrib-hist-header' => 'Коментари наживо от дарители по целия свят',
 	'contrib-hist-name' => 'Име',
 	'contrib-hist-date' => 'Час и дата',
+	'contrib-hist-amount' => 'Сума',
+	'contrib-hist-next' => 'По-стари дарения',
+	'contrib-hist-previous' => 'По-нови дарения',
+	'contrib-hist-anonymous' => 'Анонимно дарение',
+	'contributionstatistics' => 'Статистики за даренията',
+	'contribstats-desc' => 'Показване на статистиките за даренията, направени за Фондация Уикимедия',
+	'contribstats-contribution-range-breakdown' => 'Разбивка на даренията по стойност (от $1 до $2)',
+	'contribstats-contribution-breakdown' => 'Разбивка на даренията по стойност за фискалната година $1',
+	'contribstats-day' => 'Ден',
+	'contribstats-month' => 'Месец',
+	'contribstats-currency' => 'Валута',
+	'contribstats-amount' => 'Сума (USD)',
+	'contribstats-contributions' => 'Дарения',
+	'contribstats-total' => 'Общо (USD)',
+	'contribstats-avg' => 'Средно (USD)',
+	'contribstats-min' => 'Минимум (USD)',
+	'contribstats-max' => 'Максимум (USD)',
+	'contribstats-percentage-ytd' => 'Процент (от началото на годината)',
+	'contribstats-total-ytd' => 'Общо (от началото на годината)',
 );
 
 /** Czech (Česky)
@@ -278,7 +302,26 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'contributiontotal' => 'Contribucións totais',
+	'contributionhistory' => 'Historial das contribucións',
 	'contrib-hist-name' => 'Nome',
+	'contrib-hist-date' => 'Data e hora',
+	'contrib-hist-amount' => 'Cantidade',
+	'contrib-hist-next' => 'Doazóns máis antigas',
+	'contrib-hist-previous' => 'Doazóns máis novas',
+	'contrib-hist-anonymous' => 'Anónimo',
+	'contributionstatistics' => 'Estatísticas das contribucións',
+	'contribstats-day' => 'Día',
+	'contribstats-month' => 'Mes',
+	'contribstats-currency' => 'Moeda',
+	'contribstats-amount' => 'Cantidade (dólar estadounidense)',
+	'contribstats-contributions' => 'Contribucións',
+	'contribstats-total' => 'Total (dólar estadounidense)',
+	'contribstats-avg' => 'Promedio (dólar estadounidense)',
+	'contribstats-min' => 'Mínimo (dólar estadounidense)',
+	'contribstats-max' => 'Máximo (dólar estadounidense)',
+	'contribstats-percentage-ytd' => 'Porcentaxe (ata hoxe)',
+	'contribstats-total-ytd' => 'Total (ata hoxe)',
 );
 
 /** Hebrew (עברית)
@@ -333,6 +376,24 @@ $messages['ia'] = array(
 	'contrib-hist-anonymous' => 'Anonyme',
 	'contributionstatistics' => 'Statisticas de contributiones',
 	'contribstats-desc' => 'Monstra le statisticas del contributiones donate al Fundation Wikimedia',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Total de hodie|Totales quotidian del passate $1 dies}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Total de iste mense|Totales mensual del passate $1 menses}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Total de $1 mense|Totales mensual de $1 menses}}',
+	'contribstats-currency-range-totals' => 'Totales per valuta (de $1 a $2)',
+	'contribstats-contribution-range-breakdown' => 'Separation del contributiones per valor (de $1 a $2)',
+	'contribstats-currency-totals' => 'Totales de valutas pro le anno fiscal $1',
+	'contribstats-contribution-breakdown' => 'Separation del contributiones per valor pro le anno fiscal $1',
+	'contribstats-day' => 'Die',
+	'contribstats-month' => 'Mense',
+	'contribstats-currency' => 'Valuta',
+	'contribstats-amount' => 'Amonta (USD)',
+	'contribstats-contributions' => 'Contributiones',
+	'contribstats-total' => 'Total (USD)',
+	'contribstats-avg' => 'Media (USD)',
+	'contribstats-min' => 'Minimo (USD)',
+	'contribstats-max' => 'Maximo (USD)',
+	'contribstats-percentage-ytd' => 'Percentage (iste anno)',
+	'contribstats-total-ytd' => 'Total (iste anno)',
 );
 
 /** Italian (Italiano)
@@ -733,5 +794,14 @@ $messages['vi'] = array(
 	'contribstats-max' => 'Tối đa (USD)',
 	'contribstats-percentage-ytd' => 'Phần trăm (YTD)',
 	'contribstats-total-ytd' => 'Tổng cộng (YTD)',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'contribstats-day' => 'Del',
+	'contribstats-month' => 'Mul',
+	'contribstats-currency' => 'Völäd',
 );
 

@@ -271,9 +271,13 @@ A bersión zifrata resultant ye a que sigue. [[Special:Boardvote/dump|S'amostrar
 
 [[Special:Boardvote/entry|Ir entazaga]]",
 	'boardvote_invalidentered' => "<p><strong>Error</strong>: a preferenzia enta un candidato ha d'esprisar-se como un entero positibo (1, 2, 3, ....), u deixar-se en blanco.</p>",
-	'boardvote_nosession' => "No s'ha puesto determinar o suyo identificador d'usuario Wikimedia. Por fabor, dentre ta una wiki an que pueda botar y baiga ta <nowiki>[[Special:Boardvote]]</nowiki>. Ta poder botar ha de tener una cuenta con más de $1 contrebuzions antes d'o $2, y aber feito más de $3 ediziones entre $4 y $5.",
-	'boardvote_notloggedin' => "No ha enzetato garra sesión. Ta poder botar, ha d'aber feito más de $1 contrebuzions antes d'o $2, y más de $3 edizions entre $4 y $5.",
-	'boardvote_notqualified' => "No cumple as condizions ta poder botar en ista elezión. Amenista aber feito $1 edizions antes d'o $2 y más de $3 edizions entre $4 y $5.",
+	'boardvote_nosession' => "No s'ha puesto determinar o suyo identificador d'usuario Wikimedia. 
+Dentre en una wiki an que pueda botar y baiga ta <nowiki>[[Special:Boardvote]]</nowiki>. 
+Ta poder botar ha de tener una cuenta con más de $1 {{PLURAL:$1|edizión|edizions}} antes d'o $2, y aber feito más de $3 {{$3|edizión|edizions}} entre $4 y $5.",
+	'boardvote_notloggedin' => "No ha enzetato garra sesión. 
+Ta poder botar, ha d'aber feito más de $1 {{PLURAL:$1|edizión|edizions}} antes d'o $2, y más de $3 {{PLURAL:$3|edizión|edizions}} entre $4 y $5.",
+	'boardvote_notqualified' => "No cumple as condizions ta poder botar en ista elezión. 
+Amenista aber feito $1 {{PLURAL:$1|edizión|edizions}} antes d'o $2 y más de $3 {{PLURAL:$3|edizión|edizions}} entre $4 y $5.",
 	'boardvote_novotes' => 'Dengún no ha botato encara.',
 	'boardvote_time' => 'Tiempo',
 	'boardvote_user' => 'Usuario',

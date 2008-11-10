@@ -937,6 +937,7 @@ $messages['bn'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'mv_edit' => 'Uredi',
 	'mv_history' => 'Historija',
 	'mv_search_and' => 'i',
 );
@@ -1121,6 +1122,7 @@ $messages['fr'] = array(
 	'ao_file_MPEG2' => 'Archive.org - MPEG2 original',
 	'ao_file_flash_flv' => 'Archive.org - vidéo Flash',
 	'mv_error_stream_missing' => '<span class="error">Erreur : il n\'existe aucun fichier vidéo associé avec ce flux.</span><br /> Vous êtes prié de reporter ceci à l\'administrateur du site.',
+	'mv_stream_added' => 'Vous avez ajouté le flux $1',
 	'mv_stream_meta' => 'Page de flux',
 	'mv_add_stream' => "Ajout d'un flux metavid",
 	'mv_edit_stream' => 'Modifier un flux metavid',
@@ -1548,6 +1550,7 @@ Saltar á vista do fluxo: $2',
 	'mv_editor_options' => 'Opcións do editor',
 	'mv_editor_mode' => 'Modo do editor',
 	'mv_simple_editor_desc' => 'editor sinxelo (estilo iMovie)',
+	'mv_transitions' => 'Transicións',
 	'mv_save_sequence' => 'Gardar a secuencia',
 	'mv_sequence_page_desc' => 'Gardar a secuencia actual',
 	'mv_sequence_add' => 'Engadir clips',
@@ -3918,6 +3921,7 @@ $messages['sk'] = array(
 	'mv_ogg_low_quality' => 'Streamovateľný ogg theora 300 kb/s',
 	'mv_ogg_high_quality' => 'Ogg theora vo vysokej kvalite 900 kb/s',
 	'mv_flash_low_quality' => 'Streamovateľné pre web - Flash video',
+	'mv_archive_org_mp4' => 'h.264 stream zapuzdrený v mp4 z archive.org',
 	'mv_archive_org_link' => 'Odkazy do mpeg2 originálov na Archive.org',
 	'ao_file_64Kb_MPEG4' => 'Archive.org - mpeg4 64kbs',
 	'ao_file_256Kb_MPEG4' => 'Archive.org - mpeg4 256kbs',
@@ -3926,6 +3930,7 @@ $messages['sk'] = array(
 	'ao_file_flash_flv' => 'Archive.org - flash video',
 	'mv_error_stream_missing' => '<span class="error">Chyba: Neexistuje video súbor asociovaný s týmito metadátami.</span><br />
 Prosím, oznámte to správcovi webovej lokality.',
+	'mv_stream_added' => 'Pridali ste stream $1',
 	'mv_stream_meta' => 'Stránka streamu',
 	'mv_add_stream' => 'Metavid Pridať stream',
 	'mv_edit_stream' => 'Metavid Upraviť stream',
@@ -3943,6 +3948,7 @@ prehliadanie/úprava pre bežného používateľa na stránke $1',
 	'mv_path_type_url_anx' => 'plný url multimédia',
 	'mv_path_type_wiki_title' => 'názov wiki média',
 	'mv_path_type_url_file' => 'úplný URL na multimediálny súbor použitím lokálneho hľadania',
+	'mv_path_type_mp4_stream' => 'Mp4 stream server',
 	'mv_path_type_label' => 'typ cesty',
 	'mv_base_offset_label' => 'ofset počiatku',
 	'mv_duration_label' => 'Trvanie',

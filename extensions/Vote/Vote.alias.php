@@ -59,6 +59,11 @@ $aliases['fr'] = array(
 	'Vote' => array( 'Voter' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'Vote' => array( 'Votar' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Vote' => array( 'Beri suara' ),

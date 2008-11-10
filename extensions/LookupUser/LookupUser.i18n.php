@@ -242,6 +242,27 @@ $messages['gv'] = array(
 	'lookupuser_realname' => 'Feer-ennym: $1',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'lookupuser' => 'בדיקת נתוני משתמש',
+	'lookupuser-desc' => '[[Special:LookupUser|בדיקת נתונים]] אודות משתמש כגון כתובת הדוא"ל ומספר המשתמש',
+	'lookupuser_intro' => 'נא כתבו את שם המשתמש כדי לצפות בהעדפות שלו.',
+	'lookupuser_nonexistent' => 'שגיאה: המשתמש אינו קיים',
+	'lookupuser_authenticated' => 'אימות כתובת דוא"ל: $1',
+	'lookupuser_not_authenticated' => 'לא מאומתת',
+	'lookupuser_id' => 'מספר המשתמש: <tt>#$1</tt>',
+	'lookupuser_email' => 'כתובת דוא"ל: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => 'לא סופקה',
+	'lookupuser_realname' => 'שם אמיתי: $1',
+	'lookupuser_registration' => 'תאריך ההרשמה: $1',
+	'lookupuser_no_registration' => 'לא נשמר',
+	'lookupuser_touched' => 'הפעם האחרונה בה ביצעו פעולה במידע המשתמש: $1',
+	'lookupuser_useroptions' => 'אפשרויות המשתמש:',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -45,6 +45,15 @@ $messages['ar'] = array(
 	'contrib-tracking-button' => 'استمر',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'contributiontracking-desc' => 'Проследяване на даренията в дарителската акция на Уикимедия',
+	'contributiontracking' => 'Проследяване на дарението',
+	'contrib-tracking-error' => 'Грешка',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -97,6 +106,14 @@ $messages['fr'] = array(
 	'contrib-tracking-submitting' => 'Envoi au système de paiement...',
 	'contrib-tracking-continue' => 'Cliquez sur le bouton pour terminer votre don avec Paypal.',
 	'contrib-tracking-button' => 'Continuer',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'contrib-tracking-error' => 'Erro',
+	'contrib-tracking-button' => 'Continuar',
 );
 
 /** Hebrew (עברית)

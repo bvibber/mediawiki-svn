@@ -139,6 +139,24 @@ $messages['gl'] = array(
 * Self',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'minipreview-desc' => 'הצגה ליד תמונה של תצוגות מקדימות קטנות של קובצי מדיה אחרים באותן הקטגוריות או באותם הדפים',
+	'minipreview-files_in_category' => "{{PLURAL:$1|קובץ '''אחד'''|'''$1''' קבצים}} בסך הכול בקטגוריה זו.",
+	'minipreview-files_in_gallery' => "{{PLURAL:$1|קובץ '''אחד'''|'''$1''' קבצים}} בסך הכול בגלריה זו.",
+	'minipreview-no_more_files_here' => 'אין עוד קבצים בכיוון זה.',
+	'minipreview-no_category_gallery' => 'אין קטגוריות או גלריות!',
+	'minipreview-ignore_categories' => 'הרשימה הבאה הינה רשימת שמות או תחילת שמות של קטגוריות. קטגוריות אלו לא יוצגו על ידי MiniPreview. לדוגמה, "* PD-" לא תציג את כל הקטגוריות המתחילות ב־"PD-", כגון "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

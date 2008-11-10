@@ -342,6 +342,42 @@ $messages['gsw'] = array(
 	'todo-new-queue' => 'Nöu',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'todo' => 'רשימת מטלות',
+	'todo-desc' => 'הרחבה נסיונית ל[[Special:Todo|רשימת מטלות]] אישית',
+	'todo-tab' => 'מטלה',
+	'todo-new-queue' => 'חדשה',
+	'todo-mail-subject' => 'הושלם הפריט ברשימת המטלות של $1',
+	'todo-mail-body' => 'ביקשתם התראה בדוא"ל אודות השלמת פריט אליו נרשמתם מרשימת המטלות המקוונת של $1.
+
+פריט: $2
+נשלח: $3
+
+פריט זה סומן כהושלם, עם ההערה הבאה:
+$4',
+	'todo-invalid-item' => 'פריט חסר או בלתי תקין',
+	'todo-update-else-item' => 'נסיון לעדכון פריטים של משתמש אחר',
+	'todo-unrecognize-type' => 'סוג לא מוכר',
+	'todo-user-invalide' => 'למטלה ניתן משתמש בלתי תקין, חסר או נטול רשימת מטלות.',
+	'todo-item-list' => 'הפריטים שלכם',
+	'todo-no-item' => 'אין פריטי מטלות לביצוע.',
+	'todo-invalid-owner' => 'בעלים שגויים לפריט זה',
+	'todo-add-queue' => 'הוספת תור...',
+	'todo-move-queue' => 'העברה לתור...',
+	'todo-list-for' => 'רשימת המטלות עבור',
+	'todo-list-change' => 'שינוי',
+	'todo-list-cancel' => 'ביטול',
+	'todo-new-item' => 'פריט חדש',
+	'todo-issue-summary' => 'תקציר הנושא:',
+	'todo-form-details' => 'פרטים:',
+	'todo-form-email' => 'על מנת לקבל התראה בדוא"ל אודות סגירת פריט, הזינו את כתובת הדוא"ל שלכם כאן:',
+	'todo-form-submit' => 'שליחת השאילתה',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -140,6 +140,16 @@ $messages['bg'] = array(
 	'deletebatch-file-missing' => 'Предоставеният файл не може да бъде прочетен',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'deletebatch-button' => 'Obriši',
+	'deletebatch-or' => '<b>ili</b>',
+	'deletebatch-reason' => 'Razlog brisanja',
+	'deletebatch-processing' => 'brisanje stranice',
+);
+
 /** Catalan (Català)
  * @author Aleator
  */

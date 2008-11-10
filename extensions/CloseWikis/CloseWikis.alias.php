@@ -37,6 +37,11 @@ $aliases['de'] = array(
 	'CloseWiki' => array( 'Wiki schließen' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'CloseWiki' => array( 'Pechar wiki' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'CloseWiki' => array( 'Zatvori_wiki' ),

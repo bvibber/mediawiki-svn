@@ -677,6 +677,7 @@ $messages['lb'] = array(
 	'usagestatistics' => 'Benotzungs-Statistiken',
 	'usagestatistics-desc' => 'Weis Statistike vun den indivudelle Benotzer an der allgemenger Benotzung vun der Wiki',
 	'usagestatisticsfor' => '<h2>Benotzungs-Statistik fir [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statistike vun der Benotzung fir all Benotzer</h2>',
 	'usagestatisticsinterval' => 'Intervall',
 	'usagestatisticstype' => 'Typ',
 	'usagestatisticsstart' => 'Ufanksdatum',

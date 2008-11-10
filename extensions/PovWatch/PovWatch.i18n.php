@@ -327,6 +327,27 @@ $messages['gv'] = array(
 	'povwatch_title' => 'Ard-ennym:',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => '[[Special:PovWatch|דחיפת דפים לרשימת המעקב]] של משתמשים אחרים',
+	'povwatch_no_session' => 'שגיאה: לא ניתן לשלוח את הטופס עקב אובדן מידע הכניסה.',
+	'povwatch_not_allowed_push' => 'אינכם מנהלי PovWatch, לא תוכלו לדחוף דפים לרשימות מעקב.',
+	'povwatch_already_subscribed' => 'אתם כבר רשומים ל־PovWatch',
+	'povwatch_subscribed' => 'כעת אתם רשומים ל־PovWatch',
+	'povwatch_not_subscribed' => 'אינכם רשומים ל־PovWatch, לכן לא תוכלו לבטל את ההרשמה.',
+	'povwatch_unsubscribed' => 'הרשמתכם ל־PovWatch בוטלה כעת',
+	'povwatch_invalid_title' => 'הכותרת שצוינה אינה תקינה',
+	'povwatch_pushed' => '[[$1]] נדחף בהצלחה ל{{PLURAL:$2|רשימת המעקב של משתמש אחד|רשימות המעקב של $2 משתמשים}}',
+	'povwatch_intro' => 'PovWatch הינו שירות המאפשר דחיפת דפי תוכן לרשימות המעקב של המנהלים שנרשמו לשירות.
+
+יומן הדחיפות האחרונות לרשימות המעקב זמין בדף [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'ניתן לצפות ב[[Special:PovWatch/subscribers|רשימת הנרשמים]].',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

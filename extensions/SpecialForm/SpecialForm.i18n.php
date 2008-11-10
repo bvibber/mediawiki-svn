@@ -62,13 +62,6 @@ $messages['qqq'] = array(
 	'formsave' => '{{Identical|Save}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'formsave' => 'Аралаш',
-);
-
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */
@@ -485,10 +478,19 @@ $messages['lb'] = array(
 	'formarticleexists' => "D'Säit gëtt et schonn.",
 	'formarticleexiststext' => "D'Säit [[$1]] gëtt et schonn.",
 	'formbadpagename' => 'Falsche Säitennumm',
+	'formrequiredfieldpluralerror' => "D'Felder $1 sinn obligatoresch fir dëse Formulaire.
+Fëllt se w.e.g. aus.",
 	'formrequiredfielderror' => "D'Feld $1 muss an dësem Formulaire ausgefëllt ginn.",
 	'formsavesummary' => 'Nei Säit, déi de [[Special:Form/$1|Formulaire $1]] benotzt',
 	'formsaveerror' => 'Feeler beim Späichere vum Formulaire',
 	'formsaveerrortext' => "Et gouf een onbekannte Feeler beim späichere vun der Säit '$1'.",
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'formsave' => 'Аралаш',
 );
 
 /** Malayalam (മലയാളം)

@@ -702,6 +702,36 @@ $messages['gv'] = array(
 	'openidchoosepassword' => 'fockle yn arrey:',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'openid-desc' => 'כניסה לחשבון בוויקי באמצעות [http://openid.net/ OpenID], והתחברות לאתרים נוספים הפועלים עם OpenID באמצעות חשבון משתמש בוויקי',
+	'openidlogin' => 'כניסה לחשבון עם OpenID',
+	'openidfinish' => 'יציאה מהחשבון עם OpenID',
+	'openidserver' => 'שרת OpenID',
+	'openidxrds' => 'קובץ Yadis',
+	'openidconvert' => 'ממיר OpenID',
+	'openiderror' => 'שגיאת אימות',
+	'openiderrortext' => 'אירעה שגיאה במהלך אימות כתובת ה־OpenID.',
+	'openidconfigerror' => 'שגיאה בתצורת OpenID',
+	'openidconfigerrortext' => 'תצורת איחסון ה־OpenID עבור ויקי זה אינה תקינה.
+אנא התייעצו עם אחד מ[[Special:ListUsers/sysop|מפעילי המערכת]].',
+	'openidpermission' => 'שגיאת הרשאות OpenID',
+	'openidpermissiontext' => 'ה־OpenID שסיפקתם אינו מורשה להתחבר לשרת זה.',
+	'openidcancel' => 'האימות בוטל',
+	'openidcanceltext' => 'אימות כתובת ה־OpenID בוטל.',
+	'openidfailure' => 'האימות נכשל',
+	'openidfailuretext' => 'אימות כתובת ה־OpenID נכשל. הודעת השגיאה: "$1"',
+	'openidsuccess' => 'האימות הושלם בהצלחה',
+	'openidsuccesstext' => 'אימות כתובת ה־OpenID הושלם בהצלחה.',
+	'openidusernameprefix' => 'משתמשOpenID',
+	'openidserverlogininstructions' => 'כתבו את סיסמתכם להלן כדי להיכנס לחשבון באתר $3 בתור המשתמש $2 (דף המשתמש: $1).',
+	'openidtrustinstructions' => 'סמנו אם ברצונכם לשתף מידע עם $1.',
+	'openidallowtrust' => 'מתן האפשרות ל־$1 לבטוח בחשבון משתמש זה.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

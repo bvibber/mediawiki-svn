@@ -563,6 +563,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'configure-desc-ns' => 'Imenski prostori',
+	'configure-js-remove' => 'Obriši',
 	'configure-section-namespaces' => 'Imenski prostori',
 );
 

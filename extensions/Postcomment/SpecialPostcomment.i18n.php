@@ -181,6 +181,25 @@ $messages['gl'] = array(
 	'postcomment_nopostingtoadd' => 'Non pongas a engadir.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'postcomment_desc' => 'אפשרות למשתמשים לשלוח הודעות ישירות לדפי שיחה',
+	'postcomment_discussionprotected' => 'דף שיחה זה מוגן מפני הודעות נוספות.',
+	'postcomment_notloggedin' => 'אינכם מחוברים לחשבון.',
+	'postcomment_youareloggedinas' => 'הינכם מחוברים לחשבון בשם $1',
+	'postcomment_addcommentdiscussionpage' => 'הוסיפו את תגובתם בדף שיחה זה',
+	'postcomment_leavemessagefor' => 'השארת הודעה עבור $1',
+	'postcomment_post' => 'פרסום',
+	'postcomment_on' => 'בתאריך',
+	'postcomment_said' => 'אמר',
+	'postcomment_invalidrequest' => 'בקשה בלתי תקינה.',
+	'postcomment_replyto' => 'תגובה למשתמש $1',
+	'postcomment_nopostingtoadd' => 'אין הודעה להוסיף.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

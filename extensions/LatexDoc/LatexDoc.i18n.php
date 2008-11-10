@@ -86,6 +86,7 @@ $messages['bg'] = array(
 $3',
 	'latexdoc_get_dvi' => 'Генериране на DVI',
 	'latexdoc_get_pdf' => 'Генериране на PDF',
+	'latexdoc-desc' => 'Съвместно редактиране на документи на LaTeX',
 );
 
 /** German (Deutsch)
@@ -294,6 +295,25 @@ $3',
 	'latexdoc_get_dvi' => 'យក DVI',
 	'latexdoc_get_pdf' => 'យក PDF',
 	'latexdoc-desc' => 'សំណុំឯកសារ LaTeX',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Joebertj
+ */
+$messages['krj'] = array(
+	'latexdoc_no_text' => 'Wara ti nakasulat sa pahina, indi maka generate kang DVI',
+	'latexdoc_cant_create_dir' => 'Indi makahimo kang temporaryo nga directory $1',
+	'latexdoc_cant_write' => 'Indi makasulat sa file nga $1',
+	'latexdoc_error' => 'May sala sa LaTeX
+
+Mandar: $1
+
+Guwa: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Bul-on ang DVI',
+	'latexdoc_get_pdf' => 'Bul-on ang PDF',
+	'latexdoc-desc' => 'Buruligay nga pagbahin sa mga dokumento nga LaTeX',
 );
 
 /** Ripoarisch (Ripoarisch)

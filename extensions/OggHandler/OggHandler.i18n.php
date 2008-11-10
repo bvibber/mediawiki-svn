@@ -356,6 +356,7 @@ $messages['bg'] = array(
 	'ogg-short-video' => 'Ogg $1 видео файл, $2',
 	'ogg-long-audio' => '(Ogg $1 звуков файл, продължителност $2, $3)',
 	'ogg-long-video' => '(Ogg $1 видео файл, продължителност $2, $4×$5 пиксела, $3)',
+	'ogg-long-general' => '(Мултимедиен файл в ogg формат с дължина $2, $3)',
 	'ogg-long-error' => '(Невалиден ogg файл: $1)',
 	'ogg-play' => 'Пускане',
 	'ogg-pause' => 'Пауза',

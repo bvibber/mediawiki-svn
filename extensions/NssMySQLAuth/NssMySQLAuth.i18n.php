@@ -129,10 +129,22 @@ $messages['gl'] = array(
 	'am-email' => 'correo electrónico',
 	'am-active' => 'activar',
 	'am-updated' => 'Os seus cambios foron gardados con éxito',
+	'nss-rights' => 'dereitos',
 	'nss-save-changes' => 'Gardar os cambios',
 	'nss-create-account-header' => 'Crear unha conta nova',
 	'nss-create-account' => 'Crear a conta',
 	'nss-welcome-mail-subject' => 'Creación de contas',
+);
+
+/** Kinaray-a (Kinaray-a)
+ * @author Joebertj
+ */
+$messages['krj'] = array(
+	'accountmanager' => 'Gadumala sa Account',
+	'am-username' => 'username',
+	'am-email' => 'e-mail',
+	'am-active' => 'aktibo',
+	'am-updated' => 'Ang imo mga gin-ilis nabaton run',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -254,6 +266,7 @@ $messages['sk'] = array(
 	'nss-save-changes' => 'Uložiť zmeny',
 	'nss-create-account-header' => 'Vytvoriť nový účet',
 	'nss-create-account' => 'Vytvoriť účet',
+	'nss-no-mail' => 'Neposielať email',
 	'nss-welcome-mail' => 'Bol pre vás vytvorený účet s používateľským menom $1 a heslom $2.',
 	'nss-welcome-mail-subject' => 'Vytvorenie účtu',
 	'nss-db-error' => 'Chyba pri čítaní z overovacej databázy',

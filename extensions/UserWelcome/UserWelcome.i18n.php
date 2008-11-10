@@ -71,6 +71,7 @@ $messages['arz'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'userwelcome-desc' => 'Добавя етикет <tt>&lt;welcomeUser&gt;</tt> за показване на специфична социална потребителска информация за влезлите потребители',
 	'mp-userlevels-link' => 'Потребителски рангове',
 	'mp-welcome-upload' => 'Качване',
 	'mp-welcome-edit' => 'Редактиране',

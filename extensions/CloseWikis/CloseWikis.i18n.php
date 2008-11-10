@@ -142,6 +142,7 @@ $messages['bg'] = array(
 	'closewikis-list-header-wiki' => 'Уики',
 	'closewikis-list-header-by' => 'Затворено от',
 	'closewikis-list-header-timestamp' => 'Затворено на',
+	'closewikis-log' => 'Дневник на затварянията на уикита',
 	'right-editclosedwikis' => 'Редактиране на затворени уикита',
 	'right-closewikis' => 'Затваряне на уикита',
 );

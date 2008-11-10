@@ -67,6 +67,13 @@ $messages['gl'] = array(
 	'randomimage-desc' => 'Proporciona un seleccionador multimedia ao chou usando <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'randomimage-desc' => 'בחירת מדיה אקראית באמצעות <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

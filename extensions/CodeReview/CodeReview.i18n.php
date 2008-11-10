@@ -339,9 +339,12 @@ $4',
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'code' => 'Прагляд коду',
 	'code-comments' => 'Камэнтары',
+	'code-notes' => 'камэнтары праглядаў',
 	'code-field-id' => 'Вэрсія',
 	'code-field-author' => 'Аўтар',
 	'code-field-message' => 'Камэнтар',
@@ -381,9 +384,22 @@ $messages['bg'] = array(
 	'code-rev-comment-submit' => 'Публикуване на коментар',
 	'code-rev-comment-preview' => 'Предварителен преглед',
 	'code-pathsearch-path' => 'Път:',
+	'codereview-reply-link' => 'отговаряне',
+	'codereview-email-body' => 'Потребител „$1“ публикува коментар за r$3.
+
+Пълен адрес: $2
+
+Коментар:
+
+$4',
+	'repoadmin' => 'Администриране на хранилището',
+	'repoadmin-new-legend' => 'Създаване на ново хранилище',
+	'repoadmin-new-label' => 'Име на хранилището:',
 	'repoadmin-new-button' => 'Създаване',
+	'repoadmin-edit-path' => 'Път към хранилището:',
 	'repoadmin-edit-bug' => 'Път до Bugzilla:',
 	'repoadmin-edit-view' => 'Път до ViewVC:',
+	'repoadmin-edit-sucess' => 'Хранилището „[[Special:Code/$1|$1]]“ беше променено успешно.',
 	'specialpages-group-developer' => 'Инструменти за разработчици',
 );
 

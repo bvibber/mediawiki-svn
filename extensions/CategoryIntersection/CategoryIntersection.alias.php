@@ -152,6 +152,11 @@ $aliases['pt'] = array(
 	'CategoryIntersection' => array( 'Intersecção de categorias' ),
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'CategoryIntersection' => array( 'Intersecção de categorias' ),
+);
+
 /** Romanian (Română) */
 $aliases['ro'] = array(
 	'CategoryIntersection' => array( 'Intersecţia categoriilor' ),

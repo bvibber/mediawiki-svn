@@ -56,6 +56,19 @@ $messages['arz'] = array(
 	'categorywatch-catsub' => 'ازال $1 من التصنيف $2',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'categorywatch-desc' => 'Увеличава функционалността на списъка за наблюдение и включва оповестяване за промени в наблюдаваните категории',
+	'categorywatch-emailbody' => 'Здравейте, $1, получавате това писмо, тъй като категория „$2“ е включена в списъка ви за наблюдение.
+Целта на това писмо е да ви информира, че на $3 потребител $4 $5.',
+	'categorywatch-catmovein' => 'премести $1 от категория $3 в $2',
+	'categorywatch-catmoveout' => 'премести $1 от категория $2 в $3',
+	'categorywatch-catadd' => 'добави $1 в категория $2',
+	'categorywatch-catsub' => 'премахна $1 от категория $2',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
