@@ -685,6 +685,7 @@ class RightsManagerConfigDB extends RightsManager {
 		$toDelete = array();
 		$toSet = array();
 		foreach( $rights as $right => $status ) {
+			## If they already have the right from config, no point putting it in the DB.
 			if ($this->rightInConfig( $group, $right ) == $status) {
 				$toDelete[] = $right;
 			} else {
