@@ -122,6 +122,16 @@ $messages['ast'] = array(
 	'sitematrix-fishbowl' => 'edición restrinxida',
 );
 
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['bat-smg'] = array(
+	'sitematrix-summary' => 'Tas specēlus poslapis ešdiesta vėsos Vikimedėjės pruojektos',
+	'sitematrix-project' => 'Pruojekta pavadėnėms, terppruojektėnė nūruoda ėr interwiki nūruoda.',
+	'sitematrix-others' => 'Kėtė Vikimedėjės pruojektā',
+	'sitematrix-private' => 'nūsavs',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
@@ -1050,7 +1060,7 @@ $messages['nds-nl'] = array(
 $messages['nl'] = array(
 	'sitematrix' => "Lijst met Wikimedia-wiki's",
 	'sitematrix-summary' => "Deze speciale pagina geeft een overzicht van alle wiki's van Wikimedia.",
-	'sitematrix-desc' => 'Een [[Special:SiteMatrix|lijst van Wikimedia-wikis]]',
+	'sitematrix-desc' => "Een [[Special:SiteMatrix|lijst van Wikimedia-wiki's]]",
 	'sitematrix-language' => 'Taal',
 	'sitematrix-project' => 'Naam van het project, interprojectlink en interwikilink',
 	'sitematrix-others' => 'Andere projecten van Wikimedia',

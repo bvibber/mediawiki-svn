@@ -661,6 +661,7 @@ Du kannst die Löschung [{{fullurl:$1|action=delvote}} befürworten oder ablehne
 	'deletequeue-role-nominator' => 'ursprünglicher Löschantragsteller',
 	'deletequeue-role-vote-endorse' => 'Befürworter der Löschung',
 	'deletequeue-role-vote-object' => 'Gegner der Löschung',
+	'deletequeue-vote-tab' => 'Löschung befürworten/ablehnen',
 	'deletequeue-vote-title' => 'Löschung von „$1“ befürworten oder ablehnen',
 	'deletequeue-vote-text' => "Auf dieser Seite kannst du die Löschung von „'''$1'''“ befürworten oder ablehnen.
 Diese Aktion überschreibt alle Stimmen, die du vorher zur Löschung dieser Seite abgegeben hast.
@@ -1218,6 +1219,7 @@ Tu pote [{{fullurl:$1|action=delvote}} declarar te pro o contra] le deletion, o 
 	'deletequeue-role-nominator' => 'nominator original pro deletion',
 	'deletequeue-role-vote-endorse' => 'appoiator del deletion',
 	'deletequeue-role-vote-object' => 'opponente del deletion',
+	'deletequeue-vote-tab' => 'Pro/contra deletion',
 	'deletequeue-vote-title' => 'Declarar se pro o contra le deletion de "$1"',
 	'deletequeue-vote-text' => "Tu pote usar iste formulario pro declarar te pro o contra le deletion de \"'''\$1'''\".
 Iste action ultrapassara omne previe declarationes pro/contra que tu ha date a proposito del deletion de iste pagina.
@@ -1348,6 +1350,7 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 	'deletequeue-role-nominator' => 'proponente della cancellazione',
 	'deletequeue-role-vote-endorse' => 'supporti alla cancellazione',
 	'deletequeue-role-vote-object' => 'opposizioni alla cancellazione',
+	'deletequeue-vote-tab' => 'Supporta/Opponiti alla cancellazione',
 	'deletequeue-vote-title' => 'Supporto o opposizione alla cancellazione di "$1"',
 	'deletequeue-vote-text' => "È possibile utilizzare questo modulo per sostenere oppure opporsi alla cancellazione di \"'''\$1'''\". Questa azione sostituirà qualsiasi supporto o opposizione precedentemente dati alla cancellazione di questa pagina. È possibile [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} visualizzare] i supporti e le opposizioni già presenti. La motivazione fornita per la segnalazione di cancellazione è ''\$2''.",
 	'deletequeue-vote-legend' => 'Supporta/Opponiti alla cancellazione',
@@ -1595,6 +1598,7 @@ U kunt [{{FULLURL:$1|action=delvote}} steun of bezwaar] bij de verwijdernominati
 	'deletequeue-role-nominator' => 'indiener verwijdervoorstel',
 	'deletequeue-role-vote-endorse' => 'ondersteunt verwijdervoorstel',
 	'deletequeue-role-vote-object' => 'maakt bezwaar tegen verwijdervoorstel',
+	'deletequeue-vote-tab' => 'Bezwaar maken/Steun geven aan de verwijdernominatie',
 	'deletequeue-vote-title' => 'Bezwaar maken tegen of steun geven aan de verwijdernominatie voor "$1"',
 	'deletequeue-vote-text' => "U kunt dit formulier gebruiken om bezwaar te maken tegen de verwijdernominatie voor \"'''\$1'''\" of deze te steunen.
 Deze handeling komt in de plaats van eventuele eerdere uitspraken van steun of bezwaar bij de verwijdernominatie van deze pagina.
@@ -2075,6 +2079,7 @@ Môžete [{{fullurl:$1|action=delvote}} podporiť alebo namietať proti] zmazani
 	'deletequeue-role-nominator' => 'pôvodný navrhovateľ zmazania',
 	'deletequeue-role-vote-endorse' => 'podporujúci zmazanie',
 	'deletequeue-role-vote-object' => 'namietajúci proti zmazaniu',
+	'deletequeue-vote-tab' => 'Podporiť/namietať proti zmazaniu',
 	'deletequeue-vote-title' => 'Podporiť alebo namietať proti zmazaniu stránky „$1”',
 	'deletequeue-vote-text' => "Tento formulár môžete použiť na podporenie alebo namietnutie proti návrhu na zmazanie stránky „'''$1'''”.
 Táto činnosť bude mať prednosť pred všetkými podporeniami/námietkami, ktoré ste už mohli k zmazaniu tejto stránky uviesť.
@@ -2315,6 +2320,7 @@ $messages['vi'] = array(
 	'deletequeue-role-nominator' => 'người đầu tiên đề nghị xóa',
 	'deletequeue-role-vote-endorse' => 'người ủng hộ việc xóa',
 	'deletequeue-role-vote-object' => 'người phản đối việc xóa',
+	'deletequeue-vote-tab' => 'Ủng hộ/phản đối xóa',
 	'deletequeue-vote-title' => 'Ủng hộ hay phản đối việc xóa “$1”',
 	'deletequeue-vote-legend' => 'Ủng hộ/phản đối xóa',
 	'deletequeue-vote-action' => 'Lựa chọn:',

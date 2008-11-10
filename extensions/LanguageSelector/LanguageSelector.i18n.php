@@ -65,6 +65,16 @@ $messages['ast'] = array(
 	'languageselector-setlang' => 'establecer',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'languageselector' => 'Мова',
+	'languageselector-desc' => 'Выбар мовы на кожнай старонцы, таксама і для наведвальнікаў',
+	'languageselector-setlang' => 'усталяваць',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

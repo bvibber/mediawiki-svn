@@ -227,6 +227,13 @@ $messages['pt'] = array(
 	'unicodeconverter-newtext' => 'Texto convertido:',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'unicodeconverter-ok' => 'ОК',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

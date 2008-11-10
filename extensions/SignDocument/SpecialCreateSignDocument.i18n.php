@@ -373,6 +373,13 @@ $messages['hi'] = array(
 	'createsigndoc-hidden' => 'छुपाई हुई',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'createsigndoc-pagename' => 'Stranica:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

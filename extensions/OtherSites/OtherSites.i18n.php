@@ -38,6 +38,13 @@ $messages['arz'] = array(
 	'othersites-desc' => 'ينقل وصلات الإنترويكى غير وصلات اللغة إلى مكانها الخاص',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'othersites' => 'Други сайтове',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -137,6 +144,13 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'othersites' => 'autres sits',
 	'othersites-desc' => "Deplaça los ligams interwiki autres que los ligams ligats a la lenga de lors compausants d'interfàcia pròpris.",
+);
+
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'othersites' => 'Другие сайты',
 );
 
 /** Slovak (Slovenčina)

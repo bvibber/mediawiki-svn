@@ -53,6 +53,9 @@ $messages['arz'] = array(
  */
 $messages['eo'] = array(
 	'rightfunctions-desc' => 'Rajtecaj funkcioj de sintaksaj analiziloj',
+	'rightfunctions-casc' => '(de kaskadaj fontoj)',
+	'rightfunctions-local' => '(de loka paĝo)',
+	'rightfunctions-ns' => '(de nomspaca protektado)',
 );
 
 /** French (Français)

@@ -899,6 +899,44 @@ $messages['li'] = array(
 	'youtubeauthsub_uploadbutton' => 'Upload',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'youtubeauthsub' => 'Подигни YouTube видео запис',
+	'youtubeauthsub-desc' => 'Овозможување корисниците да [[Special:YouTubeAuthSub|подигнуваат видео записи]] директно на YouTube',
+	'youtubeauthsub_info' => 'За подигнување на видео запис на YouTube вгнезден во страница, пополнете ги следните информации:',
+	'youtubeauthsub_title' => 'Наслов',
+	'youtubeauthsub_description' => 'Опис',
+	'youtubeauthsub_password' => 'YouTube лозинка',
+	'youtubeauthsub_username' => 'YouTube корисничко име',
+	'youtubeauthsub_keywords' => 'Клучни зборови',
+	'youtubeauthsub_category' => 'Категорија',
+	'youtubeauthsub_submit' => 'Најавување',
+	'youtubeauthsub_clickhere' => 'Кликни тука за најавување на YouTube',
+	'youtubeauthsub_tokenerror' => 'Грешка при генерирање на авторизациски токен, обидете се повторно.',
+	'youtubeauthsub_success' => "Честитки!
+Вашиот видео запис е подигнат.
+За да го погледнете вашиот видео запис кликнете <a href='http://www.youtube.com/watch?v=$1'>тука</a>.
+Можеби ќе треба некое време YouTube да го подготви ведео записот, па нема да може да го погледнете токму сега.
+
+За да го вгнездите вашиот видео запис на некоја вики страница, внесете го следниов код:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'За подигнување на видео запис, потребно е најпрво да се логирате на YouTube.',
+	'youtubeauthsub_uploadhere' => 'Подигнување на видео записот од овде:',
+	'youtubeauthsub_uploadbutton' => 'Подигнување',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Овој видео запис може да се прегледа [http://www.youtube.com/watch?v=$1 тука]',
+	'youtubeauthsub_summary' => 'Подигнување на YouTube видео запис',
+	'youtubeauthsub_uploading' => 'Вашето видео се подгнува.
+Молиме за трпеливост.',
+	'youtubeauthsub_viewpage' => 'Алтернативно, може да го погледнете вашето видео [[$1|тука]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Внесете еден или повеќе клучни зборови.',
+	'youtubeauthsub_jserror_notitle' => 'Внесете наслов на видеото.',
+	'youtubeauthsub_jserror_nodesc' => 'Внесете опис на видео записот.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

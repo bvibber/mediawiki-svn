@@ -64,9 +64,11 @@ $messages['ast'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author DCLXVI
  * @author Spiritia
  */
 $messages['bg'] = array(
+	'msfunc_desc' => 'Набор от математически и статистически функции',
 	'msfunc_nan' => 'Стойността на резултата не е число',
 	'msfunc_inf' => 'Стойността на резултата е безкрайност',
 	'msfunc_div_zero' => 'Деление на нула',

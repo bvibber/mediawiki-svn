@@ -2118,6 +2118,13 @@ $wdMessages['km'] = array(
 	'ow_copy_help' => 'យើង​អាចជួយអ្នក​នៅ​ថ្ងៃណាមួយ',
 );
 
+/** Krio (Krio)
+ * @author Jose77
+ */
+$wdMessages['kri'] = array(
+	'ow_history' => 'Istri',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

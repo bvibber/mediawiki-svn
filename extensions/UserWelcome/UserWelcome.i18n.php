@@ -363,6 +363,13 @@ $messages['sv'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|ny vän|nya vänner}}',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'mp-requests-title' => 'అభ్యర్థనలు',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

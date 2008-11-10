@@ -94,6 +94,7 @@ $messages['bg'] = array(
 	'onlinestatus-js-anon' => 'Грешка: за използване на тази възможност е необходимо влизане в системата',
 	'onlinestatus-subtitle-offline' => 'Този потребител в момента не е на линия',
 	'onlinestatus-subtitle-online' => 'Този потребител в момента е на линия',
+	'onlinestatus-tab' => 'Статут',
 	'onlinestatus-toggles-desc' => 'Вашият статут:',
 	'onlinestatus-toggles-explain' => 'Това позволява да показвате на другите потребители, които разглеждат потребителската ви страница, дали сте действително на линия или не.',
 	'onlinestatus-toggles-show' => 'Показване на статута ми на потребителската ми страница',
@@ -495,12 +496,14 @@ $messages['pt'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'onlinestatus-desc' => 'Добавляет настройку, определяющую присутствие участника на сайте в данный момент',
 	'onlinestatus-subtitle-offline' => 'Этого участника сейчас нет на сайте',
 	'onlinestatus-subtitle-online' => 'Этот участник сейчас на сайте',
+	'onlinestatus-tab' => 'Статус',
 	'onlinestatus-toggles-desc' => 'Ваш статус:',
 	'onlinestatus-toggles-explain' => 'Позволяет другим участникам, просматривающим вашу страницу, увидеть присутствуете ли вы сейчас на сайте',
 	'onlinestatus-toggles-show' => 'Показывать присутствие на сайте на моей странице учасника',

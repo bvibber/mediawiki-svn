@@ -185,6 +185,13 @@ $messages['de'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Eingabe Fehler!',
 );
 
+/** German (formal address) (Deutsch (Sie-Form)) */
+$messages['de-formal'] = array(
+	'chemFunctions_DataList' => 'Nachfolgend finden Sie Links zu Seiten, die eventuell Informationen über chemische Substanzen anbieten, nach denen Sie suchen:<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbindung $MIXCASNameFormula auf NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS an der Oxford University (UK) (nicht durchsuchbar)</a><br />',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

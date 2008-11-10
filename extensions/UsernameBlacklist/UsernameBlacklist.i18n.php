@@ -977,7 +977,7 @@ Kies alstublieft een andere naam.',
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => 'De volgende {{PLURAL:$1|regel|regels}} in de zwarte lijst met gebruikersnamen {{PLURAL:$1|is|zijn}} onjuist; corrigeer {{PLURAL:$1|hem|ze}} alstublieft voordat u de pagina opslaat:',
-	'right-uboverride' => 'De zwarte lijst voor gebruikersnamen negeren',
+	'right-uboverride' => 'De zwarte lijst voor gebruikersnamen omzeilen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

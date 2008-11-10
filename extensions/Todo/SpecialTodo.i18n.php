@@ -867,6 +867,16 @@ $messages['roa-tara'] = array(
 	'todo-list-cancel' => 'Scangille',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'todo-add-queue' => 'Добавить очередь…',
+	'todo-move-queue' => 'Переместить в очередь…',
+	'todo-list-change' => 'Выбрать',
+	'todo-list-cancel' => 'Отмена',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

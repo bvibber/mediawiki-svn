@@ -1249,6 +1249,13 @@ $1',
 	'webstore_php_error' => 'Foram encontrados erros PHP:',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'inplace_access_disabled' => 'Доступ у сервису был отключён для всех клиентов',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -6554,3 +6554,4 @@ $messages['zh-hant'] = array(
 $messages['zu'] = array(
 	'boardvote_time' => 'Isikhathi',
 );
+

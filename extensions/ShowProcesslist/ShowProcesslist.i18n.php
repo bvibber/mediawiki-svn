@@ -30,13 +30,6 @@ $messages['qqq'] = array(
 	'showprocesslist-time' => '{{Identical|Time}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'showprocesslist-user' => 'Пайдаланыше',
-);
-
 /** Afrikaans (Afrikaans)
  * @author SPQRobin
  */
@@ -340,6 +333,13 @@ $messages['lb'] = array(
 	'showprocesslist-time' => 'Zäit',
 	'showprocesslist-state' => 'Zoustand',
 	'showprocesslist-info' => 'Informatiounen',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'showprocesslist-user' => 'Пайдаланыше',
 );
 
 /** Malayalam (മലയാളം)

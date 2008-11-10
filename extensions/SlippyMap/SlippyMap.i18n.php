@@ -422,6 +422,14 @@ $messages['pl'] = array(
 	'slippymap_maperror' => 'Błąd mapy:',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'slippymap_maperror' => 'Ошибка карты:',
+	'slippymap_button_code' => 'Получить викикод',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -152,7 +152,6 @@ $messages['bg'] = array(
  */
 $messages['cs'] = array(
 	'closewikis-desc' => 'Umožňuje uzavřít jednotlivé wiki na wikifarmách',
-	'closewikis-closed-default' => 'Tato wiki je uzavřena',
 	'closewikis-page' => 'Zavření wiki',
 	'closewikis-page-close' => 'Zavřít wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -180,7 +179,6 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'closewikis-desc' => 'Ermöglicht das Schließen einzelner Wikis in einer Wikifarm',
-	'closewikis-closed-default' => 'Dieses Wiki ist geschlossen.',
 	'closewikis-page' => 'Wiki schließen.',
 	'closewikis-page-close' => 'Wiki schließen',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -241,7 +239,6 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'closewikis-closed-default' => 'Ĉi tiu vikio estas fermita',
 	'closewikis-page' => 'Fermi vikion',
 	'closewikis-page-close' => 'Fermi vikion',
 	'closewikis-page-close-wiki' => 'Vikio:',
@@ -426,7 +423,6 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'closewikis-desc' => 'Permitte clauder sitos wiki in fermas de wikis.',
-	'closewikis-closed-default' => 'Iste wiki es claudite',
 	'closewikis-page' => 'Clauder wiki',
 	'closewikis-page-close' => 'Clauder wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -454,7 +450,6 @@ $messages['ia'] = array(
  */
 $messages['it'] = array(
 	'closewikis-desc' => 'Permette di chiudere i siti wiki nelle famiglie wiki',
-	'closewikis-closed-default' => 'Questa wiki è chiusa',
 	'closewikis-page' => 'Chiudi wiki',
 	'closewikis-page-close' => 'Chiudi wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -508,7 +503,6 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'closewikis-desc' => 'Erlaabt et Wiki-Siten a Wiki-Farmen zouzemaachen',
-	'closewikis-closed-default' => 'Dës Wiki ass zougemaach',
 	'closewikis-page' => 'Wiki zoumaachen',
 	'closewikis-page-close' => 'Wiki zoumaachen',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -524,11 +518,18 @@ $messages['lb'] = array(
 	'closewikis-page-err-nowiki' => 'Ongëlteg Wiki uginn',
 	'closewikis-page-err-closed' => 'Wiki ass schonn zougemaach',
 	'closewikis-page-err-opened' => 'Wiki ass net zougemaach',
+	'closewikis-list' => 'Lëscht vun de Wikien déi zou sinn',
+	'closewikis-list-intro' => 'Op dëser Lëscht stinn déi Wikien déi vun de Stewarden zougemaach goufen.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Zougemaach vum',
+	'closewikis-list-header-timestamp' => 'Zougemaach de[n)',
+	'closewikis-list-header-dispreason' => 'Grond',
 	'closewikis-log' => 'Lëscht vun den zougemaachte Wikien',
 	'closewikis-log-header' => "Hei ass d'Lëscht vun alle Wikien déi vu Stewarden opgemaach oder zougemaach goufen",
 	'closewikis-log-close' => 'huet $2 zougemaach',
 	'closewikis-log-reopen' => 'huet $2 nees opgemaach',
 	'right-editclosedwikis' => 'Zougemaachte Wikien änneren',
+	'right-closewikis' => 'Wikien zoumaachen',
 );
 
 /** Erzya (Эрзянь)
@@ -581,7 +582,6 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'closewikis-desc' => 'Tillater stenging av wikier i wikisamlinger',
-	'closewikis-closed-default' => 'Denne wikien er stengt',
 	'closewikis-page' => 'Steng wiki',
 	'closewikis-page-close' => 'Steng wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -654,7 +654,6 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'closewikis-desc' => 'Permite fechar uma wiki em sites com múltiplos wikis',
-	'closewikis-closed-default' => 'Esta wiki está fechada',
 	'closewikis-page' => 'Fechar wiki',
 	'closewikis-page-close' => 'Fechar wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -729,7 +728,6 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'closewikis-desc' => 'Umožňuje zatvoriť wiki vo wiki farmách',
 	'closewikis-closed' => '$1',
-	'closewikis-closed-default' => 'Táto wiki je zatvorená',
 	'closewikis-page' => 'Zatvoriť wiki',
 	'closewikis-page-close' => 'Zatvoriť wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -745,11 +743,18 @@ $messages['sk'] = array(
 	'closewikis-page-err-nowiki' => 'Bola zadaná neplatná wiki',
 	'closewikis-page-err-closed' => 'Wiki je už zatvorená',
 	'closewikis-page-err-opened' => 'Wiki nie je zatvorená',
+	'closewikis-list' => 'Zoznam zatvorených wiki',
+	'closewikis-list-intro' => 'Tento zoznam obsahuje wiki, ktoré stewardi zatvorili.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Zatvoril',
+	'closewikis-list-header-timestamp' => 'Kedy',
+	'closewikis-list-header-dispreason' => 'Dôvod',
 	'closewikis-log' => 'Záznam zatvorení wiki',
 	'closewikis-log-header' => 'Toto je záznam všetkých zatvorení a znovu otvorení wiki, ktoré vykonali stewardi',
 	'closewikis-log-close' => 'zatvoril $2',
 	'closewikis-log-reopen' => 'znovu otvoril $2',
 	'right-editclosedwikis' => 'Upravovať zatvorené wiki',
+	'right-closewikis' => 'Zatvárať wiki',
 );
 
 /** Seeltersk (Seeltersk)
@@ -758,7 +763,6 @@ $messages['sk'] = array(
 $messages['stq'] = array(
 	'closewikis-desc' => 'Moaket dät Sluuten muugelk fon eenpelde Wikis in ne Wikifarm',
 	'closewikis-closed' => '$1',
-	'closewikis-closed-default' => 'Dit Wiki is sleeten',
 	'closewikis-page' => 'Wiki sluute',
 	'closewikis-page-close' => 'Wiki sluute',
 	'closewikis-page-close-wiki' => 'Wiki:',
@@ -827,7 +831,6 @@ $messages['te'] = array(
  */
 $messages['vi'] = array(
 	'closewikis-desc' => 'Cho phép đóng cửa các wiki trong mạng wiki',
-	'closewikis-closed-default' => 'Wiki này bị đóng cửa',
 	'closewikis-page' => 'Đóng cửa wiki',
 	'closewikis-page-close' => 'Đóng cửa wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',

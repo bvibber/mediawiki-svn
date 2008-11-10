@@ -598,9 +598,9 @@ Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-player-thumbnail' => 'Nur senmova bildo',
 	'ogg-player-soundthumb' => 'Neniu legilo',
 	'ogg-player-selected' => '(elektita)',
-	'ogg-use-player' => 'Uzu legilon :',
+	'ogg-use-player' => 'Uzi legilon:',
 	'ogg-more' => 'Pli...',
-	'ogg-dismiss' => 'Fermu',
+	'ogg-dismiss' => 'Fermi',
 	'ogg-download' => 'Alŝuti dosieron',
 	'ogg-desc-link' => 'Pri ĉi tiu dosiero',
 );

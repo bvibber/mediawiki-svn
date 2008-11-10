@@ -203,6 +203,11 @@ $messages['de'] = array(
 	'countedits-nocontribs' => 'In {{ns:project}} sind keine Bearbeitungen vorhanden.',
 );
 
+/** German (formal address) (Deutsch (Sie-Form)) */
+$messages['de-formal'] = array(
+	'countedits-warning' => 'Hinweis: Sie beurteilen ein Buch nicht nur nach seinem Umschlag, beurteilen Sie einen Autor daher auch nicht nur nach seinem Beitragszähler.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

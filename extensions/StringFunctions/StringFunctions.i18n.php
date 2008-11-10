@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'stringfunctions-desc' => 'يعزز المحلل بدوال سلسلة',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'stringfunctions-desc' => 'Améliore le parseur avec les fonctions sur les chaînes de caractères',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -49,6 +56,13 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'stringfunctions-desc' => 'Rozšěrja parser wo funkcije za znamješkowe slědy',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'stringfunctions-desc' => 'A szövegelemző képességeinek kibővítése szövegfüggvényekkel',
 );
 
 /** Interlingua (Interlingua)

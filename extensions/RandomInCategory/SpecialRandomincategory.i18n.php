@@ -36,13 +36,6 @@ $messages['qqq'] = array(
 {{Identical|Go}}',
 );
 
-/** Eastern Mari (Олык Марий)
- * @author Сай
- */
-$messages['mhr'] = array(
-	'randomincategory-toolbox' => 'Вучыдымо (случайный) статья',
-);
-
 /** Niuean (ko e vagahau Niuē)
  * @author Jose77
  */
@@ -388,6 +381,13 @@ $messages['lb'] = array(
 	'randomincategory-nocategory' => "D'Kategorie $1 gëtt et net oder si ass eidel",
 	'randomincategory-label' => 'Kategorie:',
 	'randomincategory-submit' => 'Lass',
+);
+
+/** Eastern Mari (Олык Марий)
+ * @author Сай
+ */
+$messages['mhr'] = array(
+	'randomincategory-toolbox' => 'Вучыдымо (случайный) статья',
 );
 
 /** Malayalam (മലയാളം)

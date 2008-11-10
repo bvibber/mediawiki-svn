@@ -183,3 +183,4 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'newsextension-desc' => 'Hiển thị các thay đổi gần đây đã tinh chỉnh trên các trang của một wiki hoặc bằng feed RSS hoặc Atom',
 );
+

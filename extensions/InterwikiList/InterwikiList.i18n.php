@@ -15,9 +15,11 @@ $messages['en'] = array (
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'interwikilist-desc' => 'Short description of the Interwikilist extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'interwikilist-filter' => 'Legend for the interwiki search fieldset',
 );
 
 /** Arabic (العربية)
@@ -28,6 +30,8 @@ $messages['ar'] = array(
 	'interwikilist-desc' => 'يضيف [[Special:Interwikilist|صفحة خاصة]] لرؤية وصلات الإنترويكي المتوفرة',
 	'interwikilist-linkname' => 'وصلة الإنترويكي',
 	'interwikilist-target' => 'المسار المستهدف',
+	'interwikilist-filter' => 'فلترة القائمة',
+	'interwikilist-prefix' => 'بادئة الإنترويكي:',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -210,6 +214,8 @@ $messages['it'] = array(
 	'interwikilist-desc' => 'Aggiunge una [[Special:Interwikilist|pagina speciale]] per visualizzare i collegamenti interwiki disponibili',
 	'interwikilist-linkname' => 'Collegamenti interwiki',
 	'interwikilist-target' => 'URL di destinazione',
+	'interwikilist-filter' => 'Elenco filtri',
+	'interwikilist-prefix' => 'Prefisso interwiki:',
 );
 
 /** Japanese (日本語)
@@ -260,6 +266,8 @@ $messages['nl'] = array(
 	'interwikilist-desc' => 'Voegt een [[Special:Interwikilist|speciale pagina]] toe om de beschikbare interwikiverwijzingen te bekijken',
 	'interwikilist-linkname' => 'Interwikiverwijzing',
 	'interwikilist-target' => 'Doel URL',
+	'interwikilist-filter' => 'Lijst filteren',
+	'interwikilist-prefix' => 'Interwikivoorvoegsel:',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -270,6 +278,8 @@ $messages['no'] = array(
 	'interwikilist-desc' => 'Legger til en [[Special:Interwikilist|spesialside]] for å vise tilgjengelige interwikilenker',
 	'interwikilist-linkname' => 'Interwikilenke',
 	'interwikilist-target' => 'Måladresse',
+	'interwikilist-filter' => 'Filtrer liste',
+	'interwikilist-prefix' => 'Interwikiprefiks:',
 );
 
 /** Occitan (Occitan)
@@ -315,6 +325,8 @@ $messages['sk'] = array(
 	'interwikilist-desc' => 'Pridáva [[Special:Interwikilist|špeciálnu stránku]] so zoznamom dostupných interwiki odkazov',
 	'interwikilist-linkname' => 'Interwiki odkaz',
 	'interwikilist-target' => 'Cieľový URL',
+	'interwikilist-filter' => 'Zoznam filtrov',
+	'interwikilist-prefix' => 'Interwiki predpona:',
 );
 
 /** Swedish (Svenska)
@@ -325,6 +337,8 @@ $messages['sv'] = array(
 	'interwikilist-desc' => 'Lägger till en [[Special:Interwikilist|specialsida]] för att visa tillgängliga interwikilänkar',
 	'interwikilist-linkname' => 'Interwikilänk',
 	'interwikilist-target' => 'Måladress',
+	'interwikilist-filter' => 'Filterlista',
+	'interwikilist-prefix' => 'Interwikiprefix:',
 );
 
 /** Ukrainian (Українська)
