@@ -42,8 +42,6 @@ if( $wgArticlePath === false ) {
 if( $wgStylePath === false ) $wgStylePath = "$wgScriptPath/skins";
 if( $wgStyleDirectory === false) $wgStyleDirectory   = "$IP/skins";
 
-if( $wgLogo === false ) $wgLogo = "$wgStylePath/common/images/wiki.png";
-
 if( $wgUploadPath === false ) $wgUploadPath = "$wgScriptPath/images";
 if( $wgUploadDirectory === false ) $wgUploadDirectory = "$IP/images";
 

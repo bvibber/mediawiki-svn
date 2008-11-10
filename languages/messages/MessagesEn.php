@@ -1649,6 +1649,7 @@ please see math/README to configure.',
 'right-userrights-interwiki' => 'Edit user rights of users on other wikis',
 'right-siteadmin'            => 'Lock and unlock the database',
 'right-grouprights'	     => 'Edit permissions assigned to local groups',
+'right-setlogo'	             => 'Change the site logo',
 
 # User rights log
 'rightslog'      => 'User rights log',
@@ -3777,4 +3778,15 @@ Note that a group does not exist unless it has rights assigned to it.',
 
 #Put all regex fragments above this line. Leave this line exactly as it is</pre>',
 
+# Special:SetLogo
+'setlogo' => 'Set the site logo',
+'setlogo-intro' => 'You can use this form to set the site logo.',
+'setlogo-confirm' => 'Please click <tt>confirm logo selection</tt> to confirm that you wish to set the site logo to the image shown below.',
+'setlogo-confirm-caption' => 'The new site logo',
+'setlogo-confirm-button' => 'Confirm logo selection',
+'setlogo-notfound' => "The image you selected doesn't seem to exist.",
+'setlogo-file' => "Image to use as logo:<br/>''(excluding namespace)''",
+'setlogo-preview-button' => 'Preview change',
+'setlogo-fieldset' => 'Set the site logo',
+'setlogo-success' => 'You have successfully set the site logo',
 );

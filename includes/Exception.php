@@ -189,7 +189,9 @@ class MWException extends Exception {
 	 * $wgOut to output the exception.
 	 */
 	function htmlHeader() {
-		global $wgLogo, $wgSitename, $wgOutputEncoding;
+		global $wgSitename, $wgOutputEncoding;
+		
+		$logo = wfGetLogoPath( 'skipdb' );
 
 		if ( !headers_sent() ) {
 			header( 'HTTP/1.0 500 Internal Server Error' );
@@ -204,7 +206,7 @@ class MWException extends Exception {
 		<title>$title</title>
 		</head>
 		<body>
-		<h1><img src='$wgLogo' style='float:left;margin-right:1em' alt=''>$title</h1>
+		<h1><img src='$logo' style='float:left;margin-right:1em' alt=''>$title</h1>
 		";
 	}
 

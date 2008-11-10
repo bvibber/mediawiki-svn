@@ -168,6 +168,8 @@ class User {
 		'upload',
 		'upload_by_url',
 		'userrights',
+		'setlogo',
+		'grouprights'
 	);
 	/**
 	 * \string Cached results of getAllRights()

@@ -541,14 +541,8 @@ class RightsManagerConfigDB extends RightsManager {
 	function loadGroupPermissions( ) {
 		static $groupPerms = null;
 		
-		// In-process caching...
-		if ( is_array($groupPerms) ) {
-			return $groupPerms;
-		}
-		
-		// Memcached caching
-		global $wgMemc;
-		$groupPerms = $wgMemc->get( wfMemcKey( 'grouprights' ) );
+		// Caching...
+		$groupPerms = ConfigurationCache::get( 'grouprights' );
 		if ( is_array( $groupPerms ) ) {
 			return $groupPerms;
 		}
@@ -564,7 +558,8 @@ class RightsManagerConfigDB extends RightsManager {
 			$groupPerms[$row->gr_group][$row->gr_right] = (bool)$row->gr_enabled;
 		}
 		
-		$wgMemc->set( wfMemcKey( 'grouprights' ), $groupPerms );
+		ConfigurationCache::set( 'grouprights', $groupPerms );
+		ConfigurationCache::save();
 		
 		return $groupPerms;
 	}
@@ -595,8 +590,7 @@ class RightsManagerConfigDB extends RightsManager {
 			return $changeableGroups;
 		}
 		
-		global $wgMemc;
-		$changeableGroups = $wgMemc->get( wfMemcKey( 'changeablegroups' ) );
+		$changeableGroups = ConfigurationCache::get( 'changeablegroups' );
 		if ( is_array( $changeableGroups ) ) {
 			return $changeableGroups;
 		}
@@ -627,7 +621,8 @@ class RightsManagerConfigDB extends RightsManager {
 			$changeableGroups[$group] = array_merge_recursive( $groupTemplate, $changeableGroups[$group] );
 		}
 		
-		$wgMemc->set( wfMemcKey('changeablegroups'), $changeableGroups );
+		ConfigurationCache::set( 'changeablegroups', $changeableGroups );
+		ConfigurationCache::save();
 		
 		return $changeableGroups;
 	}
@@ -754,11 +749,10 @@ class RightsManagerConfigDB extends RightsManager {
 		$user->invalidateCache();
 	}
 	
-	function invalidateGroupCache( $group ) {
-		global $wgMemc;
-		
-		$wgMemc->delete( wfMemcKey( 'changeablegroups' ) );
-		$wgMemc->delete( wfMemcKey( 'grouprights' ) );
+	function invalidateGroupCache( $group ) {		
+		ConfigurationCache::delete( 'changeablegroups' );
+		ConfigurationCache::delete( 'grouprights' );
+		ConfigurationCache::save();
 	}
 	
 	function invalidateUserCache( $user ) {
