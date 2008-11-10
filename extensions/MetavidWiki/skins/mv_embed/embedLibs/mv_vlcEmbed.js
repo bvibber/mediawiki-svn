@@ -21,9 +21,12 @@ var vlcEmbed = {
 	currentTime:0,
 	duration:0,	
     userSlide:false,    
+    pejs_count:0, //post embed js count
+     
     getEmbedHTML : function(){
 		//give VLC 150ms to initialize before we start playback 
 		//@@todo should be able to do this as an ready event
+		this.pejs_count=0;
 		setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
 	   	return this.getEmbedObj();
 	},
@@ -70,8 +73,13 @@ var vlcEmbed = {
 			}		
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()',100);						
     	}else{
-    		js_log('vlc not ready');
-    		setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()',100);	
+    		js_log('postEmbedJS:vlc not ready');
+    		this.pejs_count++;
+    		if( this.pejs_count < 10 ){
+    			setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()',100);
+    		}else{
+    			js_log('vlc never ready');
+    		}	
     	}
     },   
 	doSeek : function(value){

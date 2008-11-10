@@ -835,7 +835,8 @@ var mvJsLoader = {
 	 libs:{},
 	 //to keep consistency across threads: 
 	 ptime:0,
-	 ctime:0,
+	 ctime:0,	 
+	 load_error:false,//load error flag (false by default)
 	 
 	 load_time:0,
 	 callbacks:new Array(),
@@ -886,6 +887,7 @@ var mvJsLoader = {
 		 if(loading){
 			 if( this.load_time++ > 2000){ //time out after ~50seconds
 			 	js_error( getMsg('error_load_lib') +  cur_path);
+			 	this.load_error=true;			 	
 			 }else{
 				setTimeout('mvJsLoader.doLoad()',25);
 			 }
@@ -2455,7 +2457,8 @@ embedVideo.prototype = {
 			var time_ntp =  seconds2ntp ( options.time + parseInt(this.start_offset) );
 			my_thumb_src = getUpdateTimeURL( my_thumb_src, time_ntp, options.size );
 		}
-		return '<img class="mv_tl_thumb" src="' + my_thumb_src +'" '+
+		var thumb_class = (typeof options['thumb_class'] !='undefined')? options['thumb_class'] : '';
+		return '<img class="' + thumb_class + '" src="' + my_thumb_src +'" '+
 				'style="height:' + options.height + 'px;' +
 				'width:' + options.width + 'px" >';
 	},

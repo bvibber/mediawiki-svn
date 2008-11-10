@@ -66,14 +66,6 @@
 	font-family:"verdana","helvetica","arial",sans-serif;
 	font-size:12px;
 }
-.mv_time_clip{
-	position:absolute;
-	z-index:0;
-	overflow:hidden;
-	border:solid thin white;
- 	white-space: nowrap;
- 	height:69px;
-}
 .mv_clip_cnt{
 	position:absolute;
 	width:16px;
@@ -103,7 +95,27 @@
 .mv_clip_list_result{
 	padding:10px;
 }
-.mv_tl_thumb{
+.mv_time_clip{
 	position:absolute;
-	top:7px;
+	z-index:0;
+	overflow:hidden;
+	border:solid thin white; 	
+}
+.mv_clip_thumb{
+	position:absolute;
+	top:7px;	
+	border:solid thin #BBB; 
+}
+.mv_tl_clip{
+	position:absolute;
+	z-index:0;
+	overflow:hidden;
+	border:solid thin white;
+	white-space: nowrap; 	
+}
+.mv_tl_thumb{
+	white-space: nowrap; 
+}
+.mv_selected_clip{
+	border:solid thin #9F9; 	
 }

@@ -221,7 +221,8 @@ mvPlayList.prototype = {
 			this.doWhenClipLoadDone();
 		}else{
 			js_log("only "+ _this.clip_ready_count +" clips done, scheduling callback:");
-			setTimeout('document.getElementById(\''+this.id+'\').doWhenParseDone()', 250);
+			if( !mvJsLoader.load_error )	//re-issue request if no load error:
+				setTimeout('document.getElementById(\''+this.id+'\').doWhenParseDone()', 250);
 		}				    	    	
 	},
 	doWhenClipLoadDone:function(){
@@ -787,8 +788,7 @@ mvPlayList.prototype = {
 		if(clipObj.order==0){
 			if(!this.cur_clip)this.cur_clip=clipObj;
 		}		
-		this.default_track.addClip(clipObj, pos);
-		
+		this.default_track.addClip(clipObj, pos);		
 	},
 	swapClipDesc: function(req_clipID, callback){
 		//hide all but the requested
@@ -923,7 +923,7 @@ mvClip.prototype = {
 		
 	},
 	doAdjust:function(side, delta){
-		js_log("f:doAdjust: "+side+ ' , ' +  delta);
+		js_log("f:doAdjust: " + side + ' , ' +  delta);
 		if(this.embed){		
 			if(side=='start'){
 				var start_offset =parseInt(this.embed.start_offset)+parseInt(delta*-1);				
@@ -932,6 +932,8 @@ mvClip.prototype = {
 				var end_offset = parseInt(this.embed.start_offset) + parseInt( this.embed.getDuration() ) + parseInt(delta);
 				this.embed.updateVideoTime( seconds2ntp(this.embed.start_offset), seconds2ntp(end_offset) );
 			}
+			//update everything: 
+			this.pp.refresh
 			/*var base_src = this.src.substr(0,this.src.indexOf('?'));
 			js_log("delta:"+ delta);
 			if(side=='start'){

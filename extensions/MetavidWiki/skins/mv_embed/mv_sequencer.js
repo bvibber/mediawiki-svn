@@ -67,6 +67,9 @@ var sequencerDefaultValues = {
 	
 	track_clipThumb_height:80, // how large are the i-movie type clips
 	
+	base_adj_duration:.5, //default time to subtract or add when adjusting clips. 	
+	
+	
 	//Msg are all the language specific values ... 
 	// (@@todo overwrite by msg values preloaded in the page)	
 	//tack/clips can be pushed via json or inline playlist format
@@ -326,7 +329,7 @@ mvSequencer.prototype = {
 					'<div id="container_track_'+i+'" style="top:'+top_pos+'px;height:'+(track_height+2)+'px;left:0px;right:0px;" class="container_track">' +					
 					'</div>'
 				);		
-				top_pos+=track_height+10;		
+				top_pos+=track_height+20;		
 			}					
 		}
 		if( this.timeline_mode=='clip'){
@@ -339,7 +342,7 @@ mvSequencer.prototype = {
 					'<div id="container_track_'+i+'" style="position:absolute;top:'+top_pos+'px;height:'+(track_height+20)+'px;left:10px;right:0px;" class="container_track">' +					
 					'</div>'
 				);
-				top_pos+=track_height+10;
+				top_pos+=track_height+20;
 			}
 		}
 	},
@@ -510,9 +513,9 @@ mvSequencer.prototype = {
 								'</div>'
 						);
 		rewrite_by_id('chop_clip_' + track_inx + '_' + clip_inx ); 
-		//add in-out setters
+		//@@todo add in-out setters
 		
-		//add start / end hooks
+		//@@todo add start / end hooks
 		
 	},
 	//save new clip segment
@@ -555,6 +558,10 @@ mvSequencer.prototype = {
 		//make the adjustments
 		this.makeAdjustment( editObj );		
 	},
+	/*
+	* takes adjust ment object with options: 
+	* track_inx, clip_inx, start, end delta
+	*/
 	makeAdjustment:function(e){	
 		switch(e.type){
 			case 'resize_start':				
@@ -565,8 +572,8 @@ mvSequencer.prototype = {
 			break;
 		}
 		js_log('re render: '+e.track_inx);
-		//re-render the video track
-		this.render_tracks(e.track_inx);
+		//refresh the playlist after adjustment
+		this.do_refresh_timeline();
 	},
 	//@@todo set up key bindings for undo
 	undoEdit:function(){
@@ -650,9 +657,10 @@ mvSequencer.prototype = {
 										'border:none;'+	
 										'left:'+clip.left_px+'px;'+									
 										'height:' + (this.track_clipThumb_height+20) + 'px;' +																				
-										'width:'+(container_width)+'px;" >';						
+										'width:'+(container_width)+'px;" >';																
 						track_html+=clip.embed.renderTimelineThumbnail({
 										'width':frame_width,
+										'thumb_class':'mv_clip_thumb',
 										'height':this.track_clipThumb_height,
 										'time':0
 									});			
@@ -662,6 +670,12 @@ mvSequencer.prototype = {
 						//render out transition edit box 
 						track_html+='<div style="" id="tb_' + base_id + '" class="clip_trans_box"/>';
 						
+						//render out adjustment text
+						track_html+='<div id="' + base_id + '_adj' + '" style="font-size:small;color:#6F6;display:none;position:absolute;top:'+ (this.track_clipThumb_height+10 )+'px;>'+
+										'<span onClick="'+this.instance_name+'.adjClipDur(' + track_id + ',' + j + ',\'-\')" /> - </span>'+
+										  clip.getDuration() +
+										'<span onClick="'+this.instance_name+'.adjClipDur(' + track_id + ',' + j + ',\'+\')" /> + </span>'+ 
+									'</div>';																	
 						track_html+='</span>';						
 													
 					}														
@@ -669,11 +683,16 @@ mvSequencer.prototype = {
 					if(this.timeline_mode == 'time'){		
 						clip.left_px = Math.round( cur_clip_time/this.timeline_scale);															
 						clip.width_px = Math.round( Math.round( clip.getDuration() )/this.timeline_scale);
-						js_log('at time:' + cur_clip_time + ' left: ' +clip.left_px + ' clip dur: ' +  Math.round( clip.getDuration() ) + ' clip wdith:' + clip.width_px);
+						js_log('at time:' + cur_clip_time + ' left: ' +clip.left_px + ' clip dur: ' +  Math.round( clip.getDuration() ) + ' clip width:' + clip.width_px);
 																
 						//for every clip_width pixle output image 
 						if(track.disp_mode=='timeline_thumb'){
-							track_html+='<span id="track_'+track_id+'_clip_'+j+'" style="left:'+clip.left_px+'px;width:'+clip.width_px+'px;" class="mv_time_clip mv_clip_drag">';	
+							track_html+='<span id="track_'+track_id+'_clip_'+j+'" '+
+											'class="mv_tl_clip mv_clip_drag" '+ 
+											'style="'+
+												'left:' + clip.left_px + 'px;'+
+												'width:'+ clip.width_px + 'px;'+
+												'height:'+ clip.height_px + 'px" >';	
 							track_html+= this.render_clip_frames( clip );																				
 						}else if(track.disp_mode=='text'){
 							//'+left_px+
@@ -704,6 +723,20 @@ mvSequencer.prototype = {
 				},function(){
 					$j(this).removeClass("clip_edit_over").addClass("clip_edit_base");
 				});
+				
+				//apply onClick edit controls: 
+				$j('.mv_clip_thumb').click(function(){
+					if( $j(this).hasClass("mv_selected_clip") ){
+						$j(this).removeClass("mv_selected_clip")
+						$j('#' + $j(this).parent().attr("id") + '_adj').fadeOut("fast");
+					}else{
+						$j(this).addClass('mv_selected_clip');
+						$j('#' + $j(this).parent().attr("id") + '_adj').fadeIn("fast");
+					}					
+				});
+				//set up key binding "escape" and drag to deselect
+
+				
 				
 				//add in control for time based display 											
 				//debugger;			
@@ -853,6 +886,7 @@ mvSequencer.prototype = {
 			js_log('rendering clip frames: p:' +p+' '+ (p*this.timeline_scale)+' ' + clip_time);
 			clip_frames_html+=clip.embed.renderTimelineThumbnail({
 				'width':  frame_width,
+				'thumb_class':'mv_tl_thumb',
 				'height': this.track_thumb_height,
 				'size' : "icon", //set size to "icon" preset
 				'time':   clip_time

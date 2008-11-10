@@ -82,15 +82,16 @@ var htmlEmbed ={
 		var do_refresh = (typeof options['refresh'] != 'undefined')?true:false;
 		
 		var thumb_render_id =   this.id +'_thumb_render_'+ options.height;
-		if( $j('#' + thumb_render_id ).length == 0 ||  do_refresh ){
+		if( $j('#' + thumb_render_id ).length == 0  ||  do_refresh ){
 			//set the font scale down percentage: (kind of arbitrary) 
 			var scale_perc = options.width / this.pc.pp.width;
 			//js_log('scale_perc:'+options.width + ' / '+ $j(this).width()+ ' = '+scale_perc );			
 			//min scale font percent of 70 (overflow is hidden) 
 			var font_perc  = ( Math.round( scale_perc*100 ) < 80 )?80:Math.round( scale_perc*100 ); 		
-						
+			var thumb_class = (typeof options['thumb_class'] !='undefined')? options['thumb_class'] : '';
+			
 			$j('body').append( '<div id="' + thumb_render_id + '" style="display:none">'+
-									'<div class="mv_tl_thumb" style="display:block;border:solid thin black;'+
+									'<div class="' + thumb_class + '" style="display:block;border:solid thin black;'+
 									'width:'+options.width+'px;height:'+options.height+'px;overflow:hidden;" >'+								    	
 											this.getThumbnailHTML() + 
 									'</div>'+
@@ -124,7 +125,7 @@ var htmlEmbed ={
 		js_log('f:html:getEmbedHTML');
 		//set up the css for our parent div: 		
 		$j(this).css({'width':this.pc.pp.width, 'height':this.pc.pp.height, 'overflow':"hidden"});
-		//@@todo support more smil annimation layout stuff: 
+		//@@todo support more smil animation layout stuff: 
 		
 		//wrap output in videoPlayer_ div:
 		$j(this).html('<div id="videoPlayer_'+ this.id+'">'+this.getThumbnailHTML()+'</div>');
@@ -152,12 +153,14 @@ var htmlEmbed ={
 	getDuration:function(){
 		if(this.pc.dur)
 			return this.pc.dur;
-		//set duration (depreciated all .duration calls should get from getDuration)
-		this.duration=pcHtmlEmbedDefaults.dur;
-		//no dur use default: 
+		//return default value:  
 		return pcHtmlEmbedDefaults.dur;		
+	},
+	updateVideoTime:function(start_ntp, end_ntp){
+		//since we don't really have timeline for html elements just take the delta and set it as the duration
+		this.pc.dur = ntp2seconds(end_ntp) - ntp2seconds(start_ntp);			
 	},	
-	//gives a chance to make any neseary external requests
+	//gives a chance to make any nesseary external requests
 	//@@todo we can "start loading images" if we want
 	on_dom_swap:function(){
 		this.loading_external_data=false
