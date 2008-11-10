@@ -1,0 +1,7 @@
+Thanks go to:
+
+- TimStarling for the idea
+- Ariel Glenn for supervision
+- Brion and River for setting up SVN and getting me started :)
+- The SmartIRC dev team, which has helped me pretty much not
+   only with this bot

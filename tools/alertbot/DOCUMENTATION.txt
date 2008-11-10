@@ -1,0 +1,42 @@
+DOCUMENTATION FOR ALERTBOT:
+
+1) Setup
+	Thou have decided to set up AlertBot. This is very good.
+	1) Make sure the system that the bot runs on has the following:
+		- Either apache or lighttpd
+		- The user that runs the bot, and webserver account: Write access to /tmp
+		- PHP5
+		- Unix "nohup", and a shell that supports command forking by & (bash)
+		- PEAR and PEAR classes: Net_SmartIRC, Net_SMTP
+	2) Get an account at bulksms.co.uk
+	3) Copy the "irc" folder somewhere where it can NOT be reached by internet,
+		e.g. /home/myuser/irc
+	4) Copy the "web" folder somewhere where the httpd can access it.
+	5) In "irc" folder: Create "config.inc.php" based on "config.tpl.php"
+	6) Run "nohup alertbot.php &" in the "irc" folder.
+	7) You're done.
+	8) To kill the bot, kill it's PID.
+	
+2) Usage
+	The Web UI is designed to be open, this means with no spam filtering.
+	So, if someone thinks he is coooool gangsta or troll, and the IRC fills up with warnings,
+	simply take one of the spam ID's and type "!ban ID". This will cancel this message, but NOT
+	the other messages. Cancel these by "!kill ID".
+	
+	When dealing with regular alerts, the scheme is as following:
+	1) User enters report in Web UI
+	2) AlertBot highlights all sysop nicks
+	3) If after 5 minutes no one has acknowledged (!ack ID), killed (!kill ID) or banned (!ban ID) the message,
+		the bot notifies ALL cellphone numbers in the $cellphones array.
+	4) If an sysop is awake, then:
+		a) the alert is valid => !ack ID it, then, after you fixed it (the ACK shows on the Web UI!), !kill ID it
+		b) the alert is invalid => !kill ID it
+		c) the alert is spam or trolling or flooding => !ban ID *AND* !kill ID the others!
+	
+	To prevent flood in case of multiple warnings: SMSes get sent out via a queue. This means that after a SMS
+	20 minutes have to pass until another SMS gets sent.
+	If you do not know which alerts still are in the queue: Open the Web UI, everything with PENDING is active.
+
+	If you forget the URL to the management interface: !url will tell it.
+
+Marco "harddisk" Schuster
