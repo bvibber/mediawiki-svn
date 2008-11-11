@@ -1,7 +1,7 @@
 <?php
 /*
 This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
+modify it under the terms of the GNU General Public LicenseWh
 as published by the Free Software Foundation, version 2
 of the License.
 
@@ -27,17 +27,63 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
+# older versions of MW did not have the NewFromId method, let's define our own
+function WhiteListUserFromId($id) {	
+	if (method_exists('User', 'newfromid')) {
+		return User::NewFromId($id);
+	} else {
+		$u = new User;
+		$u->mId = $id;
+		$u->mFrom = 'id';
+		return $u;
+	}
+}
+
+# older versions of MW did not have the standard method for loading messages. So, let's recreate it
+function WhiteListLoadMessages() {
+	static $messagesLoaded = false;
+	global $wgMessageCache;
+	if ($messagesLoaded) return;
+		$messagesLoaded = true;
+
+	require_once(dirname(__FILE__) . '/WhiteListEdit.i18n.php' );
+	foreach ( $messages as $lang => $langMessages ) {
+		$wgMessageCache->addMessages( $langMessages, $lang );
+	}
+}
+
 class WhiteListEdit extends SpecialPage
 {
 	function __construct() {
+		self::loadMessages();
 		SpecialPage::SpecialPage( 'WhiteListEdit', 'editwhitelist' );
+	}
+
+	function loadMessages() {
+		# the new method for loading extension messages is only available in MW versions > 1.12
+		# so let's keep the compatibility with older versions
+		if (function_exists('wfLoadExtensionMessages'))
+		{
+			wfLoadExtensionMessages('WhiteListEdit');
+		}
+		else
+		{
+			WhiteListLoadMessages();
+		}
+		
+		return true;
 	}
 
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser;
 
-		wfLoadExtensionMessages( 'WhiteList' );
-
+		# sanity check
+		if ($wgUser->isAnon()) 
+		{
+			$wgOut->PermissionRequired('editwhitelist');
+			return;
+		}
+	
 		$this->setHeaders();
 		$wgOut->setPagetitle( wfMsg( 'whitelistedit' ) );
 
@@ -78,7 +124,7 @@ class WhiteListEdit extends SpecialPage
 			$wgOut->addHTML( "<input type='hidden' name='NewExpiryDate' value='$NewExpiryDate'>" );
 			$wgOut->addHTML( "<input type='hidden' name='action' value='$action'>" );
 
-			$ContractorUser = User::newFromID( $contractorId );
+			$ContractorUser = WhiteListUserFromID( $contractorId );
 			$wgOut->addWikiText( wfMsg( 'whitelistoverview', $ContractorUser->getRealName() ) );
 		}
 
@@ -294,7 +340,7 @@ END;
 		$wgOut->addHTML( ob_get_contents() );
 		ob_clean();
 
-		$ContractorUser = User::newFromID( $contractorId );
+		$ContractorUser = WhiteListUserFromID( $contractorId );
 		$wgOut->addHTML( wfMsg( 'whitelistfor', $ContractorUser->getRealName() ) );
 		$wgOut->addHTML( '</td></tr><tr><th><center>' .
 			wfMsg( 'whitelisttablemodify' ) . "<br /><a href=\"javascript:SetChecked(1,'cb_modify[]')\">" .
@@ -318,7 +364,7 @@ END;
 				$wgOut->addHTML( wfMsg( 'whitelisttableview' ) );
 			}
 			$wgOut->addHTML( "</center></td><td>&nbsp;$row->wl_expires_on</td><td>" );
-			$u = User::newFromId( $row->wl_updated_by_user_id );
+			$u = WhiteListUserFromId( $row->wl_updated_by_user_id );
 			$wgOut->addHTML( $u->getRealName() );
 			$wgOut->addHTML( "</td><td>$row->wl_updated_on</td></tr>" );
 		}
@@ -406,7 +452,7 @@ END;
 		$dbr->commit();
 
 		for ( $row = $dbr->fetchObject( $res ); $row; $row = $dbr->fetchObject( $res ) ) {
-			$u = User::newFromID( $row->ug_user );
+			$u = WhiteListUserFromID( $row->ug_user );
 			$users[$row->ug_user] = $u->getRealName();
 			if ( $users[$row->ug_user] == "" )
 				$users[$row->ug_user] = $u->getName();
@@ -451,24 +497,37 @@ END;
 
 	function ExpandWildCardWhiteList( $wl_pattern )
 	{
-		global $wgContLanguageCode, $wgWhiteListWildCardInsensitive;
+		global $wgOut, $wgContLanguageCode, $wgWhiteListWildCardInsensitive;
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$dbr->debug( true );
 		$expanded = array();
 		$whitelisted = array();
 		$debug = 0;
+		$dbr->debug($debug);
 
 		# extract the NameSpace (the first part before the optional first colon followed by the article name
 		$pattern = '/^((:?)(.*?):)?(.*)$/';
 		$pattern .= $wgWhiteListWildCardInsensitive ? 'i' : '';
 
-		if ( preg_match( $pattern, $wl_pattern, $matches ) ) {
+		if (preg_match($pattern, $wl_pattern, $matches)) {
+if ($debug)
+{
+	$wgOut->addWikiText("* found something for '$wl_pattern'");
+	ob_start();
+	print_r($matches);
+	$wgOut->addWikiText(ob_get_contents());
+	ob_end_flush();
+}
+			global $wgContLang;
 			$found = array();
 			$found['title'] = $matches[4];
 			$found['ns'] = '%';
 
-			$ns = Language::Factory( $wgContLanguageCode );
+			if (method_exists('Language', 'Factory')) {
+				$ns = Language::Factory( $wgContLanguageCode );
+			} else {
+				$ns = $wgContLang;
+			}
 			if ( $matches[1] == ':' && $matches[2] == '' )
 				$found['ns'] = NS_MAIN;
 			if ( $nsindex = $ns->getNsIndex( $matches[3] ) )
@@ -491,19 +550,25 @@ END;
 		}
 
 		if ( $debug )
+{
+	$wgOut->addWikiText("expanded array is");
+	ob_start();
 			print_r( $expanded );
-
+	$wgOut->addWikiText(ob_get_contents());
+	ob_end_flush();
+}
 		foreach ( $expanded as $entry ) {
-			$sql = "SELECT page_id FROM " . $dbr->tableName( 'page' ) .
-				" WHERE `page_namespace` LIKE '" . $entry['ns'] .
-				"' AND `page_title` LIKE '" . $entry['title'] . "'";
-
-			if ( $wgWhiteListWildCardInsensitive ) {
-				$sql = "SELECT page_id FROM " .
-				$dbr->tableName( 'page' ) .
-					" WHERE UPPER(`page_namespace`) LIKE '" . strtoupper( $entry['ns'] ) . "'" .
-					" AND UPPER(`page_title`) LIKE '" . strtoupper( $entry['title'] ) . "'";
+			$sql = "SELECT `page_id` FROM " . $dbr->tableName( 'page' ) .
+				" WHERE CONVERT(`page_namespace` USING utf8) LIKE CONVERT('" . $entry['ns'] .
+				"' USING utf8) AND CONVERT(`page_title` USING utf8) LIKE CONVERT('" . $entry['title'] . 
+				"' USING utf8)";
+			if ($wgWhiteListWildCardInsensitive) {
+				$sql = "SELECT `page_id` FROM ". $dbr->tableName('page') .
+				" WHERE UPPER(CONVERT(`page_namespace` USING utf8)) LIKE CONVERT('" . strtoupper($entry['ns']) .
+				"' USING utf8) AND UPPER(CONVERT(`page_title` USING utf8)) LIKE CONVERT('" . strtoupper($entry['title']) . 
+				"' USING utf8)";
 			}
+if ($debug) $wgOut->addWikiText("the SQL query is :$sql:\n<br>");
 			$dbr->begin();
 			$res = $dbr->query( $sql, __METHOD__ );
 			$dbr->commit();
@@ -514,8 +579,13 @@ END;
 		}
 
 		if ( $debug )
-			print_r( $whitelisted );
-
+{
+	$wgOut->addWikiText("Whitelisted array is");
+	ob_start();
+	print_r( $whitelisted );
+	$wgOut->addWikiText(ob_get_contents());
+	ob_end_flush();
+}
 		return $whitelisted;
 	}
 
@@ -528,7 +598,9 @@ END;
 		$debug = 0;
 
 		$wildcard_match = self::ExpandWildCardWhiteList( $pagename );
+if ($debug) $wgOut->addWikiText("* tried to find matches for '$pagename'\n");
 		$num_matches = count( $wildcard_match );
+if ($debug) $wgOut->addWikiText("** found $num_matches\n");
 		$need_bullet = 0;
 		if ( substr( $headertext, 0, 1 ) == '*' )
 		{
@@ -540,8 +612,7 @@ END;
 			$headertext = "[[:$pagename|$headertext]]";
 			if ( $need_bullet )
 			$headertext = '* ' . $headertext;
-			if ( $debug )
-			print "Adding '$headertext'\n";
+if ($debug)  $wgOut->addWikiText("* Adding '$headertext'\n");
 			$wgOut->addWikiText( $headertext );
 			return;
 		}
@@ -554,7 +625,7 @@ END;
 		$wgOut->addHTML( '<div class="NavFrame" style="padding:0px;border-style:none;">' );
 		$wgOut->addHTML( '<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">' );
 		# this is a hack to make the [show]/[hide] always appear after the text
-		$wgOut->addWikiText( "$headertext" . wfMsgExt( 'whitelistnummatches', array( 'parsemag' ), array( $num_matches ) ) . "&nbsp;<font color='#ffffff'>[show]</font>&nbsp;</div>" );
+		$wgOut->addHtml("$headertext" . wfMsgExt('whitelistnummatches', array( 'parsemag' ), $num_matches) . "&nbsp;<font color='#ffffff'>[show]</font>&nbsp;</div>");
 		$wgOut->addHTML( '<div class="NavContent" style="display:none; font-size:normal; text-align:left">' );
 
 		foreach ( $wildcard_match as $pageid )
@@ -572,7 +643,23 @@ END;
 class WhiteList extends SpecialPage
 {
 	function __construct() {
+		self::loadMessages();
 		SpecialPage::SpecialPage( 'WhiteList', 'restricttowhitelist' );
+	}
+
+	function loadMessages() {
+		# the new method for loading extension messages is only available in MW versions > 1.12
+		# so let's keep the compatibility with older versions
+		if (function_exists('wfLoadExtensionMessages'))
+		{
+			wfLoadExtensionMessages('WhiteList');
+		}
+		else
+		{
+			WhiteListLoadMessages();
+		}
+		
+		return true;
 	}
 
 	function execute( $para ) {
@@ -583,10 +670,8 @@ class WhiteList extends SpecialPage
 		if ( !isset( $para ) || $para == '' ) {
 			$user = $wgUser;
 		} else {
-			$user = User::newFromId( $user );
+			$user = WhiteListUserFromId( $user );
 		}
-
-		wfLoadExtensionMessages( 'WhiteList' );
 
 		$this->setHeaders();
 		$wgOut->setPagetitle( wfMsg( 'whitelist' ) );
@@ -608,7 +693,7 @@ class WhiteList extends SpecialPage
 				$to = new User();
 				$to->mId = $wgRequest->getint( 'manager', 0 );
 			} else {
-				$to = User::newFromId( $wgRequest->getint( 'manager', 0 ) );
+				$to = WhiteListUserFromId( $wgRequest->getint( 'manager', 0 ) );
 			}
 
 			// FIXME: I think this mail will be sent in the wrong language.
@@ -660,7 +745,7 @@ class WhiteList extends SpecialPage
 		$res = $dbr->select( 'user_groups', 'ug_user', array( 'ug_group' => $wgWhiteListManagerGroup ), __METHOD__ );
 		$dbr->commit();
 		for ( $row = $dbr->fetchObject( $res ); $row; $row = $dbr->fetchObject( $res ) ) {
-			$u = User::newFromID( $row->ug_user );
+			$u = WhiteListUserFromID( $row->ug_user );
 			$users[$u->getRealName()] = $row->ug_user;
 		}
 		$dbr->freeResult( $res );

@@ -30,8 +30,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'WhiteListEdit',
-	'version'        => 'v0.11.0',
-	'author'         => array( 'Paul Grinberg', 'Mike Sullivan' ),
+	'version'        => 'v0.11.2',
+	'author'         => array('Paul Grinberg', 'Mike Sullivan'),
 	'email'          => 'gri6507 at yahoo dot com, ms-mediawiki AT umich DOT edu',
 	'description'    => 'Edit the access permissions of restricted users',
 	'descriptionmsg' => 'whitelist-desc',
@@ -92,17 +92,32 @@ if ( !isset( $wgWhiteListUsePrettyCalendar ) )
 
 $dir = dirname( __FILE__ ) . '/';
 
-$wgExtensionMessagesFiles['WhiteList'] = $dir . 'WhiteListEdit.i18n.php';
-$wgExtensionAliasesFiles['WhiteList']  = $dir . 'WhiteListEdit.alias.php';
-$wgAutoloadClasses['WhiteListEdit']    = $dir . 'WhiteListEdit_body.php';
-$wgAutoloadClasses['WhiteList']        = $dir . 'WhiteListEdit_body.php';
-$wgAutoloadClasses['WhiteListExec']    = $dir . 'WhiteListAuth.php';
-$wgAutoloadClasses['WhiteListHooks']   = $dir . 'WhiteListAuth.php';
-$wgSpecialPages['WhiteListEdit']       = 'WhiteListEdit';
-$wgSpecialPages['WhiteList']           = 'WhiteList';
+$wgExtensionMessagesFiles['WhiteListEdit'] = $dir . 'WhiteListEdit.i18n.php';
+$wgExtensionMessagesFiles['WhiteList']     = $dir . 'WhiteListEdit.i18n.php';
+$wgExtensionAliasesFiles['WhiteList']      = $dir . 'WhiteListEdit.alias.php';
+$wgAutoloadClasses['WhiteListEdit']        = $dir . 'WhiteListEdit_body.php';
+$wgAutoloadClasses['WhiteList']            = $dir . 'WhiteListEdit_body.php';
+$wgAutoloadClasses['WhiteListExec']        = $dir . 'WhiteListAuth.php';
+$wgAutoloadClasses['WhiteListHooks']       = $dir . 'WhiteListAuth.php';
+$wgSpecialPages['WhiteListEdit']           = 'WhiteListEdit';
+$wgSpecialPages['WhiteList']               = 'WhiteList';
 $wgSpecialPageGroups['WhiteListEdit'] = 'users';
 $wgSpecialPageGroups['WhiteList'] = 'users';
 
-$wgHooks['PersonalUrls'][] = 'WhiteListHooks::AddRestrictedPagesTab';
-$wgHooks['userCan'][] = 'WhiteListExec::CheckWhiteList';
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'WhiteListHooks::CheckSchema';
+# this is a compatability workaround for MW versions 1.9.3 and earlier.
+function WL_doCheckWhiteList(&$title, &$uwUser, $action, &$result) {
+	return WhiteListExec::CheckWhiteList($title, $uwUser, $action, $result);
+}
+
+function WL_doAddRestrictedPagesTab(&$personal_urls, $wgTitle) {
+	return WhiteListHooks::AddRestrictedPagesTab($personal_urls, $wgTitle);
+}
+
+// TODO - this is missing from Siebrand's changes
+function WL_doCheckSchema() {
+	return WhiteListHooks::CheckSchema();
+}
+
+$wgHooks['PersonalUrls'][] = 'WL_doAddRestrictedPagesTab';
+$wgHooks['userCan'][] = 'WL_doCheckWhiteList';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'WL_doCheckSchema';
