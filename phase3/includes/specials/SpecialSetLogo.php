@@ -23,10 +23,6 @@ class SpecialSetLogo extends SpecialPage {
 			return;
 		}
 		
-		if (!$this->mLogo) {
-			$this->mLogo = ConfigurationCache::get( 'logo' );
-		}
-		
 		$wgOut->addWikiMsg( 'setlogo-intro' );
 		
 		## Build form
@@ -72,8 +68,11 @@ class SpecialSetLogo extends SpecialPage {
 		
 		if ($action == 'set' && $tokenOK ) {
 			## The file exists, we've confirmed it properly (evidenced by the edit token), etc. Everything seems sweet.
-			ConfigurationCache::set( 'logo', $selection );
-			ConfigurationCache::save();
+			
+			$url = $file->getThumbnail(130, 130)->url;
+			
+			global $wgConf;
+			$wgConf->set( 'wgLogo', $url );
 			
 			## Redirect them -- we don't want to repeatedly purge the cache.
 			$wgOut->redirect( $this->getTitle()->getFullURL( 'action=success' ) );

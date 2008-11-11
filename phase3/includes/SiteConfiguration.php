@@ -50,6 +50,31 @@ class SiteConfiguration {
 	 * self::siteFromDB() and self::$suffixes will be ignored
 	 */
 	public $siteParamsCallback = null;
+	
+	/** Get an array with the names of all settings defined. */
+	public function getAllSettings() {
+		$dbConfigured = ConfigurationCache::get( 'allsettings' );
+		if ( !is_array( $dbConfigured ) ) {
+			$dbConfigured = array();
+			## Select from the database.
+			$dbr = wfGetDB( DB_SLAVE );
+			
+			## Take the opportunity to put ALL settings in the configuration cache.
+			$res = $dbr->select( 'configuration', '*', array(), __METHOD__ );
+			
+			while ( $row = $dbr->fetchObject( $res ) ) {
+				$dbConfigured[] = $row->conf_setting;
+				ConfigurationCache::set( $row->conf_setting, unserialize($row->conf_value) );
+			}
+			
+			ConfigurationCache::set( 'allsettings', $dbConfigured );
+			ConfigurationCache::save();
+		}
+		
+		$allSettings = array_merge( array_keys( $this->settings ), $dbConfigured );
+		
+		return $allSettings;
+	}
 
 	/**
 	 * Retrieves a configuration setting for a given wiki.
@@ -64,6 +89,20 @@ class SiteConfiguration {
 		$params = $this->mergeParams( $wiki, $suffix, $params, $wikiTags );
 		return $this->getSetting( $settingName, $wiki, $params );
 	}
+	
+	/**
+	 * Saves a *LOCAL* configuration setting.
+	 */
+	public function set( $setting, $value ) {
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$dbw->replace( 'configuration', array( 'conf_setting' ), array( 'conf_setting' => $setting, 'conf_value' => serialize( $value ) ), __METHOD__ );
+		ConfigurationCache::set( $setting, $value );
+		
+		ConfigurationCache::delete( 'allsettings' ); ## Purge the cache of all settings.
+		
+		ConfigurationCache::save();
+	}
 
 	/**
 	 * Really retrieves a configuration setting for a given wiki.
@@ -75,9 +114,32 @@ class SiteConfiguration {
 	 */
 	protected function getSetting( $settingName, $wiki, /*array*/ $params ){
 		$retval = null;
-		if( array_key_exists( $settingName, $this->settings ) ) {
+		if( in_array( $settingName, $this->getAllSettings() ) ) {
 			$thisSetting =& $this->settings[$settingName];
 			do {
+				## Check memcached, but only locally, and if it's been set up.
+				if ( $wiki = wfWikiId() && !empty($wgMemc) ) {
+					$mcVal = ConfigurationCache::get( $settingName );
+					if ( !($mcVal instanceof ConfigurationCacheNull) ) {
+						$retval = $mcVal;
+						
+						break;
+					}
+				}
+				
+				## Check the database
+				$dbr = wfGetDB( DB_SLAVE, array(), $wiki );
+				$dbVal = $dbr->selectField( 'configuration', 'conf_value', array( 'conf_setting' => $settingName ), __METHOD__ );
+				if ( $dbVal !== false ) {
+					$retval = unserialize( $dbVal );
+					
+					ConfigurationCache::set( $settingName, $retval );
+					ConfigurationCache::save();
+					break;
+				}
+				
+				## Fall back to the uber-traditional setup.
+			
 				// Do individual wiki settings
 				if( array_key_exists( $wiki, $thisSetting ) ) {
 					$retval = $thisSetting[$wiki];
@@ -166,7 +228,7 @@ class SiteConfiguration {
 	public function getAll( $wiki, $suffix = null, $params = array(), $wikiTags = array() ) {
 		$params = $this->mergeParams( $wiki, $suffix, $params, $wikiTags );
 		$localSettings = array();
-		foreach( $this->settings as $varname => $stuff ) {
+		foreach( $this->getAllSettings() as $varname ) {
 			$append = false;
 			$var = $varname;
 			if ( substr( $varname, 0, 1 ) == '+' ) {
@@ -260,7 +322,7 @@ class SiteConfiguration {
 	 */
 	public function extractAllGlobals( $wiki, $suffix = null, $params = array(), $wikiTags = array() ) {
 		$params = $this->mergeParams( $wiki, $suffix, $params, $wikiTags );
-		foreach ( $this->settings as $varName => $setting ) {
+		foreach ( $this->getAllSettings() as $varName ) {
 			$this->extractGlobalSetting( $varName, $wiki, $params );
 		}
 	}

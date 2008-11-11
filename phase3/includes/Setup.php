@@ -42,6 +42,8 @@ if( $wgArticlePath === false ) {
 if( $wgStylePath === false ) $wgStylePath = "$wgScriptPath/skins";
 if( $wgStyleDirectory === false) $wgStyleDirectory   = "$IP/skins";
 
+if( $wgLogo === false ) $wgLogo = "$wgStylePath/common/images/wiki.png";
+
 if( $wgUploadPath === false ) $wgUploadPath = "$wgScriptPath/images";
 if( $wgUploadDirectory === false ) $wgUploadDirectory = "$IP/images";
 
@@ -200,6 +202,10 @@ wfDebug( 'Main cache: ' . get_class( $wgMemc ) .
 
 wfProfileOut( $fname.'-memcached' );
 wfProfileIn( $fname.'-SetupSession' );
+
+wfProfileIn( $fname.'-db-config' );
+$wgConf->extractAllGlobals( wfWikiId() );
+wfProfileOut( $fname.'-db-config' );
 
 # Set default shared prefix
 if( $wgSharedPrefix === false ) $wgSharedPrefix = $wgDBprefix;

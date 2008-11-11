@@ -1934,8 +1934,12 @@ class User {
 	 */
 	function getRights() {
 		if ( is_null( $this->mRights ) ) {
-			$this->mRights = self::getGroupPermissions( $this->getEffectiveGroups() );
-			#wfRunHooks( 'UserGetRights', array( $this, &$this->mRights ) );
+			$rm = new RightsManagerMulti;
+			
+			$this->mRights = $rm->getPermissionsForUser( $this );
+			
+			wfRunHooks( 'UserGetRights', array( $this, &$this->mRights ) );
+			
 			// Force reindexation of rights when a hook has unset one of them
 			$this->mRights = array_values( $this->mRights );
 		}

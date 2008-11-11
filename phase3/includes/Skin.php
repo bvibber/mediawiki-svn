@@ -676,7 +676,8 @@ END;
 	 * URL to the logo
 	 */
 	function getLogo() {
-		return wfGetLogoPath();
+		global $wgLogo;
+		return $wgLogo;
 	}
 
 	/**

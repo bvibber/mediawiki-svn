@@ -1261,5 +1261,10 @@ CREATE TABLE /*$wgDBprefix*/changeable_groups (
   KEY cg_group (cg_group)
 ) /*$wgDBoptions*/;
 
+CREATE TABLE /*$wgDBprefix*/configuration (
+	conf_setting varbinary(255) NOT NULL,
+	conf_value BLOB NOT NULL,
+	PRIMARY KEY (conf_setting)
+) /*$wgDBoptions*/;
 
 -- vim: sw=2 sts=2 et

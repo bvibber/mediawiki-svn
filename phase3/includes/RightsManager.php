@@ -208,6 +208,9 @@ abstract class RightsManager {
 		$groupPerms = $this->getAllGroupPermissions();
 		$changeableGroups = $this->getAllChangeableGroups();
 		
+		if (!is_array($groupPerms))
+			die( var_dump( $groupPerms ) );
+		
 		return array_unique( array_merge( array_keys( $groupPerms ), array_keys( $changeableGroups ) ) );
 	}
 	
@@ -327,9 +330,11 @@ abstract class RightsManager {
 	
 	## Some static logic for building selectors.
 	static function buildBackendSelector( $availableBackends ) {
-		global $wgUser, $wgTitle;
+		global $wgUser, $wgTitle, $wgMessageCache;
 		
 		$sk = $wgUser->getSkin();
+		
+		$wgMessageCache->loadAllMessages();
 		
 		$list = '';
 		foreach( $availableBackends as $backend ) {

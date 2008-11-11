@@ -2969,27 +2969,3 @@ function wfStripIllegalFilenameChars( $name ) {
 	$name = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $name );
 	return $name;
 }
-
-/**
- * Gets the path to the site logo.
- */
-function wfGetLogoPath( $checkDB = true ) {
-	## In order of precedence:
-	## Configuration cache, database, $wgLogo, default location.
-	
-	if ( $filename = ConfigurationCache::get( 'logo' ) ) {
-		## They specified an image name.
-		$logo_file = wfFindFile( $filename );
-		return $logo_file->getThumbnail(130, 130)->url;
-	}
-	
-	global $wgLogo;
-	
-	if ($wgLogo) {
-		return $wgLogo;
-	}
-	
-	global $wgStylePath;
-	
-	return "$wgStylePath/common/images/wiki.png";
-}

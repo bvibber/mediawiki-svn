@@ -27,7 +27,11 @@ class ConfigurationCache {
 	static function get( $key ) {
 		self::load();
 		
-		return @self::$data[$key];
+		if ( !isset( self::$data[$key] ) ) {
+			return new ConfigurationCacheNull; ## ew ew ew ew ew
+		}
+		
+		return self::$data[$key];
 	}
 	
 	static function set( $key, $value ) {
@@ -54,3 +58,6 @@ class ConfigurationCache {
 		$wgMemc->set( wfMemcKey( 'configuration-cache' ), self::$data, 86400 );
 	}
 }
+
+## No need for autoloader magic: if the ConfigurationCache is loaded, then this will be
+class ConfigurationCacheNull {}
