@@ -90,8 +90,7 @@ var oggplayEmbed = {
 					//finished
 					case 2:
 						this.onStop();
-						//assume reached the end: 
-						this.streamEnd();
+						//assume reached the end: 						
 					break;
 				}
 			}

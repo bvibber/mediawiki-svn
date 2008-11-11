@@ -2162,6 +2162,7 @@ embedVideo.prototype = {
     		return ;
     	}
     	this.onClipDone_disp=true;
+    	this.thumbnail_disp=true;
     	$j('#img_thumb_'+this.id).css('zindex',1);
     	$j('#big_play_link_'+this.id).hide();
     	//add the liks_info_div black back 
@@ -2591,26 +2592,6 @@ embedVideo.prototype = {
 		return '<div onclick="$j(\'#'+id+'\').get(0).play()" id="big_play_link_'+id+'" class="large_play_button" '+
 			'style="left:'+((this.playerPixelWidth()-130)/2)+'px;'+
 			'top:'+((this.playerPixelHeight()-96)/2)+'px;"></div>';
-		/*;
-		//setup button size
-		var play_btn_height =
-		var play_btn_width = 109;
-		if(this.width<320){
-			var play_btn_width= play_btn_height = Math.round(this.width/3);
-		}
-
-	    var top = Math.round(this.height/2)- (play_btn_height/2);
-	    var left = Math.round(this.width/2)- (play_btn_width/2);
-
-	    out='';
-	    out+='<div style="border:none;position:absolute;top:'+top+'px;left:'+left+'px;z-index:1">'+
-				     '<a id="big_play_link_'+id+'" title="Play Media" href="javascript:document.getElementById(\''+id+'\').play();">';
-
-	        //fix for IE<7 and its lack of PNG support:
-		out+=getTransparentPng(new Object ({id:'play_'+id, width:play_btn_width, height:play_btn_height, border:"0",
-						src:mv_embed_path + '/skin/images/player_big_play_button.png' }));
-		out+='</a></div>';
-		return out;*/
 	},
 	//display the code to remotely embed this video:
 	showEmbedCode : function(embed_code){
@@ -2855,13 +2836,6 @@ embedVideo.prototype = {
         }else{            
             this.pause();
         }
-	},
-	//called when we play to the end of a stream (load the thumbnail)
-	streamEnd : function(){
-		//if we are not in playlist mode stop:
-		if(!this.pc){
-			this.stop();
-		}		
 	},
 	/*
 	 * base embed stop (can be overwritten by the plugin)

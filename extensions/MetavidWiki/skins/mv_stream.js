@@ -17,7 +17,7 @@
  * 	loadExternalJs()
  * 	addLoadEvent()
  */
-var org_vid_time_req =null; //store the orginal time req:
+var org_vid_time_req =null; //store the original time req:
 var org_thum_src = null; //stores the original thumbnail src
 var org_vid_title = null; //stores the original title
 //store the original range request:
@@ -31,7 +31,7 @@ var org_top_tool_contain=false;
 //for locking the interface (locked while loading)
 var mv_lock_vid_updates=true;
 //array for storing sliders
-//(depricated) var mv_sliders = new Object();
+//(deprecated) var mv_sliders = new Object();
 //array of original colors for restoring field color.
 var mv_tl_mvd_org_color = new Array();
 //array to manage state transitions of shaky mouses/browsers
@@ -888,20 +888,6 @@ function mv_play_or_pause(){
 	 	mv_do_play();	 	
 	 }
 }
-/*function mv_do_stop(){
-	//re-enable interface:
-	mv_lock_vid_updates=false;
-	if( $j('#embed_vid').get(0).isPlaying() ){
-		//already stoped
-		js_log('already stoped');
-	}else{		
-		js_log('mv_do_stop');
-		//run the original stop:
-		$j('#embed_vid').get(0).org_eb_stop();
-		//re-rewrite the play button:
-		$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
-	}
-}*/
 function mv_do_play(mvd_id){
 	js_log('mv_do_play:'+mvd_id);
 	//stop the current
@@ -911,8 +897,10 @@ function mv_do_play(mvd_id){
 	//foce a given mvd if set
 	if(mvd_id){		
 		mv_lock_vid_updates=false;
-		do_video_mvd_update(mvd_id);
-	}
+		//highlight the current / update url:
+		mv_stream_interface.mvdOver(mvd_id);
+	}	
+	
 	//disable interface actions (mouse in out etc)
 	mv_lock_vid_updates=true;
 	//update the src if nessesary and no mvd provided:
