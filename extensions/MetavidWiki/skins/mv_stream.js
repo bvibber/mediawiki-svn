@@ -239,37 +239,32 @@ var mv_stream_interface = {
 	mvdOver:function(mvd_id){
 		js_log('f:mvdOver' + mvd_id );
 		var vid_elm = $j('#embed_vid').get(0);
-		if( mv_lock_vid_updates ){
-            js_log('f:mvdOver' + mvd_id + ' updates locked');
-			if(!vid_elm.onClipDone_disp){
-				this.delay_cur_mvd_id= mvd_id;
-				setTimeout("mv_stream_interface.delayDoVidMvdUpdate()", 250);
-			}
-		}else{					
-			this.cur_mvd_id=this.delay_cur_mvd_id=mvd_id;
-			do_video_mvd_update(mvd_id);
-		}
+		//never do mvdOver while video is playing: 
+		if( vid_elm.isPlaying() ){
+			return false;
+		}			
+		//stop the video if not already stopped	
+		vid_elm.stop();
+		mv_lock_vid_updates=false;
+		//set the onClipDone_disp to false:	
+		this.cur_mvd_id=this.delay_cur_mvd_id=mvd_id;
+		do_video_mvd_update(mvd_id);
 		highlight_tl_ts(mvd_id);
-		highlight_fd(mvd_id);
+		highlight_fd(mvd_id);	
 	},
-	mvdOut:function(mvd_id){
-		js_log('do out ' + mvd_id );
-		this.cur_mvd_id='base';
-		de_highlight_tl_ts(mvd_id);
-		de_highlight_fd(mvd_id);
-		js_log('calling interface restore: ');
-		setTimeout('mv_stream_interface.doRestore()',500);				
-		//activiate over on time restore
-		/*$j('#mv_stream_time').hoverIntent({
-			interval:200, //polling interval
-			timeout:200, //delay before onMouseOut
-			over:function(){
-				mv_stream_interface.doRestore();
-			},
-			out:function(){
-
-			}
-		});*/
+	mvdOut:function(mvd_id){		
+		var vid_elm = $j('#embed_vid').get(0);
+		//only proccess out if in "stoped" state
+		if( vid_elm.isStoped()  ){
+			js_log('do out ' + mvd_id );
+			this.cur_mvd_id='base';
+			de_highlight_tl_ts(mvd_id);
+			de_highlight_fd(mvd_id);
+			js_log('calling interface restore: ');
+			setTimeout('mv_stream_interface.doRestore()',500);
+		}else{
+			setTimeout('mv_stream_interface.mvdOut(\''+mvd_id+'\')',100);
+		}
 	},
 	//delay video updates until we are not playing the clip and clipEnd is not displayed
 	delayDoVidMvdUpdate:function(){
@@ -1017,7 +1012,7 @@ function do_video_mvd_update(mvd_id){
 		//get the current thumbnail
 		var vid_elm = document.getElementById('embed_vid');
 		if(!vid_elm)return '';
-		//make the play button visable again (if its hidden) : 
+		//make the play button vissable again (if its hidden) : 
 		$j('#big_play_link_embed_vid').show();
 		do_video_time_update(time_ary[1], time_ary[2],mvd_id);
 	}

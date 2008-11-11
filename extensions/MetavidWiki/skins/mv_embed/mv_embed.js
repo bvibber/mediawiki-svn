@@ -15,9 +15,9 @@
  *
  */
 
-//fix multiple instances of mv_embed (ie include twice from two diffrent servers) 
+//fix multiple instances of mv_embed (ie include twice from two different servers) 
 var MV_DO_INIT=true;
-if(MV_EMBED_VERSION){
+if( MV_EMBED_VERSION ){
 	js_log('mv_embed already included do nothing');
 	MV_DO_INIT=false;	
 }
@@ -496,7 +496,7 @@ mediaPlayers.prototype =
     {
         var cookieVal = '';
         for(var i in this.preference)
-            cookieVal = cookieVal + i + '='+ this.preference[i] + '&';
+            cookieVal+= i + '='+ this.preference[i] + '&';
         cookieVal=cookieVal.substr(0, cookieVal.length-1);
         js_log('setting preference cookie to ' + cookieVal);
 		var week = 7*86400*1000;
@@ -506,20 +506,21 @@ mediaPlayers.prototype =
 
 var getCookie = function ( cookieName ) {
 		 var m = document.cookie.match( cookieName + '=(.*?)(;|$)' );
+		 js_log('getCookie:' + (m ? unescape( m[1] ) : false));
 		 return m ? unescape( m[1] ) : false;
-	 }
+}
 
-var setCookie = function ( name, value, expiry, path, domain, secure ) {
-     var expiryDate = false;
-     if ( expiry ) {
-         expiryDate = new Date();
-         expiryDate.setTime( expiryDate.getTime() + expiry );
-     }
-     document.cookie = name + "=" + escape(value) +
-	    (expiryDate ? ("; expires=" + expiryDate.toGMTString()) : "") +
-	    (path ? ("; path=" + path) : "") +
-	    (domain ? ("; domain=" + domain) : "") +
-     	(secure ? "; secure" : "");
+function setCookie(name, value, expiry, path, domain, secure) {
+   	var expiryDate = false;
+	if ( expiry ) {
+		expiryDate = new Date();
+		expiryDate.setTime( expiryDate.getTime() + expiry );
+	}
+	document.cookie = name + "=" + escape(value) + 
+		(expiryDate ? ("; expires=" + expiryDate.toGMTString()) : "") + 
+		(path ? ("; path=" + path) : "") + 
+		(domain ? ("; domain=" + domain) : "") + 
+		(secure ? "; secure" : "");
 }
 
 /* 
@@ -549,13 +550,12 @@ var ctrlBuilder = {
 			$j('body').append( this.components['mv_embedded_options'].o() );		
 		    		
     	var o='';    
-    	for(var i in this.components){
-    		if(this.supports[i]){
-    			if(this.avaliable_width > this.components[i].w ){
+    	for( var i in this.components ){
+    		if( this.supports[i] ){
+    			if( this.avaliable_width > this.components[i].w ){
     				//special case with playhead don't add unless we have 60px
 	    			if( i=='play_head' && ctrlBuilder.avaliable_width < 60 )
-	    				continue;
-	    				
+	    				continue;	    				
     				o+=this.components[i].o();
     				this.avaliable_width -= this.components[i].w;
     			}else{
@@ -591,7 +591,7 @@ var ctrlBuilder = {
         		$j('#big_play_link_'+id).fadeOut('fast');
         		 //if playlist always start at 0
 		        embedObj.start_time_sec = (embedObj.instanceOf == 'mvPlayList')?0:
-        						_this.start_time_sec = ntp2seconds(embedObj.getTimeReq().split('/')[0]);       
+        						ntp2seconds(embedObj.getTimeReq().split('/')[0]);       
         	},
         	drag:function(e, ui){
         		//@@todo get the -14 number from the skin somehow
@@ -689,6 +689,8 @@ var ctrlBuilder = {
                     '		<div id="seeker_bar_'+ctrlBuilder.id+'" class="seeker_bar">'+
                     '			<div class="seeker_bar_outer"></div>'+
                     '			<div id="mv_seeker_slider_'+ctrlBuilder.id+'" class="seeker_slider"></div>'+
+                    '			<div class="mv_progress mv_playback"></div>'+
+                    '			<div class="mv_progress mv_buffer"></div>'+
                     '			<div class="seeker_bar_close"></div>'+
                     '		</div>'+            
                     '	</div><!--seeker-->'
@@ -926,7 +928,7 @@ var mvJsLoader = {
  * $j(document).ready( function(){ */
 function init_mv_embed(force){
 	js_log('f:init_mv_embed');
-	if(!force && mv_init_done){
+	if(!force && ( mv_init_done || !MV_DO_INIT ) ){
 		js_log("mv_init_done do nothing...");
 		return false;
 	}
@@ -1539,14 +1541,14 @@ mediaSource.prototype =
     getURI : function(seek_time_sec)
     {    	
     	if( !seek_time_sec || !this.supports_url_time_encoding )
-       		return this.src;		       		              	
-       	if( this.timeFormat == 'anx' ){ 		
+       		return this.src;
+       	if( this.timeFormat == 'anx' ){
        		var new_url = getUpdateTimeURL(this.src,  seconds2ntp(seek_time_sec)+'/'+ this.end_ntp);
        	}else if(this.timeFormat=='mp4'){
        		var mp4URL =  parseUri( this.src );
 	    	var new_url = mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + '?start='
 	    					 + ( seek_time_sec + parseInt(mp4URL.queryKey['start']) );       		
-       	}          	
+       	}
        	return new_url;
     },
     /** Title accessor function.
@@ -1571,7 +1573,7 @@ mediaSource.prototype =
 	 * supports media_url?t=ntp_start/ntp_end url request format
      */
     parseURLDuration : function(){
-        js_log('f:parseURLDuration() for:' + this.src);       
+        //js_log('f:parseURLDuration() for:' + this.src);       
         //check if we have a timeFormat: 
         if( this.timeFormat ){
 	        if( this.timeFormat == 'anx' ){
@@ -1579,8 +1581,7 @@ mediaSource.prototype =
 	        	if( annoURL.queryKey['t'] ){
 		    		var times = annoURL.queryKey['t'].split('/');
 		    		this.start_ntp = times[0];
-				    this.end_ntp = times[1];			    		   			   
-					
+				    this.end_ntp = times[1];
 				}
 	    	}
 	    	if( this.timeFormat == 'mp4' ){
@@ -1893,8 +1894,9 @@ embedVideo.prototype = {
 	supports:{},
 	//for seek thumb updates:
 	cur_thumb_seek_time:0,
-	thumb_seek_interval:null,	
-		
+	thumb_seek_interval:null,
+	//set the buffered percent:	
+	bufferedPercent:0,	
 	//utility functions for property values:
 	hx : function ( s ) {
 		if ( typeof s != 'String' ) {
@@ -2222,7 +2224,7 @@ embedVideo.prototype = {
     		var annoURL = parseUri(anno_track_url);
     		var times = annoURL.queryKey['t'].split('/');      		
     		var stime_parts = times[0].split(':');   
-    		var etime_parts = times[0].split(':');         				
+    		var etime_parts = times[1].split(':');         				
     		//zero out the hour:
     		var new_start = stime_parts[0]+':'+'0:0';
     		//zero out the end sec
@@ -2388,10 +2390,10 @@ embedVideo.prototype = {
         html_code = '<div id="videoPlayer_'+this.id+'" style="width:'+this.width+'px;" class="videoPlayer">';        
 			html_code += '<div style="width:'+parseInt(this.width)+'px;height:'+parseInt(this.height)+'px;"  id="mv_embedded_player_'+this.id+'">' +
 							this.getThumbnailHTML() + 
-						'</div>';
-					
-			js_log("mvEmbed:controls "+ typeof this.controls);
+						'</div>';					
 						
+			js_log("mvEmbed:controls "+ typeof this.controls);
+									
 	        if(this.controls)
 	        {
 	        	js_log("f:getHTML:AddControls");
@@ -2823,16 +2825,65 @@ embedVideo.prototype = {
 			}else{
                 this.doEmbedHTML();
                 this.onClipDone_disp=false;               
-            	this.paused=false;
+            	this.paused=false;            	
 			}
 		}else{
 			//the plugin is already being displayed
 			js_log("we are already playing..." );
 			this.paused=false; //make sure we are not "paused"
 		}
-		 //update "paused state"      
-		 js_log("SHOULD UPDATE play BUTTON");
-         $j("#mv_play_pause_button_"+this_id).attr('class', 'pause_button');
+        $j("#mv_play_pause_button_"+this_id).attr('class', 'pause_button');         
+	},
+	/*
+	 * base embed pause
+	 * 	there is no general way to pause the video
+	 *  must be overwritten by embed object to support this functionality.
+	 */
+	pause : function(){
+		 js_log('mv_embed:do pause');
+		 var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
+         //(playing) do pause          
+         this.paused=true; 
+         //update "paused state"            	
+         $j("#mv_play_pause_button_"+this_id).attr('class', 'play_button');
+	},	
+	play_or_pause : function(){
+		js_log('embed:f:play_or_pause');
+        //check state and set play or pause
+        if(this.paused){
+            this.play();                        
+        }else{            
+            this.pause();
+        }
+	},
+	//called when we play to the end of a stream (load the thumbnail)
+	streamEnd : function(){
+		//if we are not in playlist mode stop:
+		if(!this.pc){
+			this.stop();
+		}		
+	},
+	/*
+	 * base embed stop (can be overwritten by the plugin)
+	 */
+	stop: function(){
+		js_log('mvEmbed:stop:'+this.id);		
+		//check if thumbnail is being displayed in which case do nothing
+		if(this.thumbnail_disp){
+			//already in stooped state
+			js_log('already in stopped state');
+		}else{
+			//rewrite the html to thumbnail disp
+			this.doThumbnailHTML();
+			this.bufferedPercent=0; //reset buffer state
+			this.setSliderValue(0);
+			this.setStatus( this.getTimeReq() );
+		}
+        if(this.update_interval)
+        {
+            clearInterval(this.update_interval);
+            this.update_interval = null;
+        }
 	},
 	toggleMute:function(){
 		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
@@ -2845,63 +2896,6 @@ embedVideo.prototype = {
 			$j('#volume_icon_'+this_id).removeClass('volume_on').addClass('volume_off');
 		}
 	},
-	play_or_pause : function(){
-		js_log('embed:f:play_or_pause');
-		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
-
-        //check state and set play or pause
-        if(this.paused){
-            js_log('mv_embed:do play');            
-            //(paused) do play
-            this.play();
-            this.paused=false;        
-            //update "paused state" onPlay	        
-	        $j("#mv_play_pause_button_"+this_id).attr('class', 'pause_button');
-        }else{
-            js_log('mv_embed:do pause');
-            //(playing) do pause
-            this.pause();
-            this.paused=true; 
-            //update "paused state"            	
-            $j("#mv_play_pause_button_"+this_id).attr('class', 'play_button');
-        }
-	},
-	//called when we play to the end of a stream (load the thumbnail)
-	streamEnd : function(){
-		//if we are not in playlist mode stop:
-		if(!this.pc){
-			this.stop();
-		}		
-	},
-	/*
-	 * base embed pause
-	 * 	there is no general way to pause the video
-	 *  must be overwritten by embed object to support this functionality.
-	 */
-	pause : function(){
-		return null
-	},
-	/*
-	 * base embed stop (can be overwritten by the plugin)
-	 */
-	stop: function(){
-		js_log('mvEmbed:stop:'+this.id);
-		//check if thumbnail is being displayed in which case do nothing
-		if(this.thumbnail_disp){
-			//already in stooped state
-			js_log('already in stopped state');
-		}else{
-			//rewrite the html to thumbnail disp
-			this.doThumbnailHTML();
-			this.setSliderValue(0);
-			this.setStatus(this.getTimeReq());
-		}
-        if(this.update_interval)
-        {
-            clearInterval(this.update_interval);
-            this.update_interval = null;
-        }
-	},
 	fullscreen:function(){
 		js_log('fullscreen not supported for this plugin type');
 	},
@@ -2911,12 +2905,18 @@ embedVideo.prototype = {
 		if(this.thumbnail_disp){
 			//in stoped state
 			return false;
+		}else if( this.paused ){
+			//paused state
+			return false;
 		}else{
 			return true;
 		}
 	},
 	isPaused : function(){
 		return this.isPlaying() && this.paused;
+	},
+	isStoped : function(){
+		return this.thumbnail_disp;
 	},
 	playlistSupport:function(){
 		//by default not supported (implemented in js)
@@ -2948,6 +2948,20 @@ embedVideo.prototype = {
 		if(val > ($j('#mv_seeker_'+this_id).width() -this.mv_seeker_width) )
 			val = $j('#mv_seeker_'+this_id).width() -this.mv_seeker_width ;
 		$j('#mv_seeker_slider_'+this_id).css('left', (val)+'px' );
+		
+		//update the playback progress bar
+		$j('#mv_seeker_' + this_id + ' .mv_playback').css("width",  Math.round( val + (this.mv_seeker_width*.5) ) + 'px' );
+		
+		//update the buffer progress bar (if available )
+		if( this.bufferedPercent!=0 ){
+			//js_log('bufferedPercent: ' + this.bufferedPercent);			
+			if(this.bufferedPercent > 1)
+				this.bufferedPercent=1;				
+			$j('#mv_seeker_' + this_id + ' .mv_buffer').css("width", (this.bufferedPercent*100) +'%' );
+		}else{
+			$j('#mv_seeker_' + this_id + ' .mv_buffer').css("width", '0px' );
+		}
+		
 		//js_log('set#mv_seeker_slider_'+this_id + ' perc in: ' + perc + ' * ' + $j('#mv_seeker_'+this_id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
 	},
@@ -2957,21 +2971,6 @@ embedVideo.prototype = {
 		$j('#mv_time_'+id).html(value);
 	}	
 }
-
-/* returns html for a transparent png (for ie<7)
- * not currently used: 
-function getTransparentPng(image){
-	if(!image.style)image.style='';
-	if( embedTypes.msie ){
-		return '<span id="'+image.id+'" style="display:inline-block;width:'+image.width+'px;height:'+image.height+'px;' +
-    		'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader' +
-    		'(src=\''+image.src+'\', sizingMethod=\'scale\');"></span>';
-	}else{
-		return '<img id="'+image.id+'" style="'+image.style+'"  width="'+image.width+'" height="'+image.height+'" border="0" src="'+
-			image.src + '">';
-	}
-}
-*/
 
 /*
 * utility functions:
@@ -2997,6 +2996,9 @@ function getUpdateTimeURL(url, new_time, size){
 
 function seconds2ntp(sec){	
 	var sec = parseInt(sec);
+	if( isNaN( sec ) ){
+		return '0:0:0';
+	}		
 	var hours = Math.floor(sec/ 3600);
 	var minutes = Math.floor((sec/60) % 60);
 	var seconds = sec % 60;

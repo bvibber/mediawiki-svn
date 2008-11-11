@@ -43,7 +43,7 @@ $sample_embed[0]['desc'] = 'Sample Similar to metavid usage';
 $sample_embed[1]['tag'] = '<video roe="http://metavid.org/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_06-06-06_1&t=0:07:50/0:09:06">';
 $sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
-$sample_embed[3]['tag'] = '<video roe="http://metavid.org/mvw-exp/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:11:40/0:12:20" ></video>';
+$sample_embed[3]['tag'] = '<video roe="http://metavid.org/w/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:11:40/0:12:20" ></video>';
 $sample_embed[3]['desc'] = 'Demo of ROE only attribute';
 
 

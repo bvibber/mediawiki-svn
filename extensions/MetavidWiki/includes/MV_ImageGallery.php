@@ -67,11 +67,10 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 					# handlers since they may emit block-level elements as opposed to simple <img> tags.
 					# ref http://css-discuss.incutio.com/?page=CenteringBlockElement				
 					. '<div style="margin-left: auto; margin-right: auto; width: ' . htmlspecialchars( $this->mWidths ) . 'px;">'
-					. $mvTitle->getEmbedVideoHtml( array('size'=>$vidRes ) )
-					// . '<img width="'.$this->mWidths.'" src="'.$mvTitle->getStreamImageURL() . '">'
+					.  $sk->makeKnownLinkObj( $nt, '<img title="'. htmlspecialchars($mvTitle->getStreamNameText()) .'"'
+							. ' width="160" height="120" src="'.$mvTitle->getStreamImageURL('160x120') . '">')
 					. '</div>' .
 						'</div>' .
-						'<div style="clear:both;"></div>' .
 						// @@todo clean up link
 						'<span class="gallerytext" style="float:left">' .
 						$sk->makeKnownLinkObj( $nt, $mvTitle->getStreamNameText() . ' ' . $mvTitle->getTimeDesc() ) .

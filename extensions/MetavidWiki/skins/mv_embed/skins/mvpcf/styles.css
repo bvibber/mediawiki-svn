@@ -245,26 +245,40 @@ div.floatleft, table.floatleft {
 	width: 100%;
 	height: 12px;
 	position: relative;
-	z-index: 1;
+	z-index: 4;
 	background: url(images/player_seek_left.png) 0 0 no-repeat;
 }
 .videoPlayer .seeker .seeker_bar_close {
 	width: 5px;
 	height: 12px;
 	position: relative;
-	z-index: 1;
+	z-index: 4;
 	float: right;
 	display: inline;
 	margin: -13px 0 0 0;
 	background: url(images/player_seek_right.png) 0 0 no-repeat;
 }
-
+.videoPlayer .seeker .mv_progress{
+	width: 0%;
+	height: 12px;
+	left:0px;
+	top:0px;
+	position: absolute;
+}
+.videoPlayer .seeker .mv_playback {
+	z-index: 3;
+	background: #CCC;
+}
+.videoPlayer .seeker .mv_buffer {
+	z-index: 2;
+	background: #99C;
+}
 .videoPlayer .seeker .seeker_slider {
 	background: url(images/player_slider.png) 0 0 no-repeat;
 	width: 14px;
 	height: 14px;
 	position: relative;
-	z-index: 2;
+	z-index: 5;
 	margin: -13px 0 0 0px;
 	cursor: pointer;
 }

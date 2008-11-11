@@ -358,7 +358,7 @@
 			}*/
 			$o .= '<' . htmlspecialchars( $tag ) . ' ';
 			$o .= ( $vid_id == '' ) ? '':' id="' . htmlspecialchars( $vid_id ) . '" ';
-			$o .= 'thumbnail="' . $this->getStreamImageURL( $size, null, $force_server ) . '" ' .
+			$o .= 'poster="' . $this->getStreamImageURL( $size, null, $force_server ) . '" ' .
 				'roe="' . $roe_url . '" ';
 			$o .= ($showmeta)?'show_meta_link="true" ':'show_meta_link="false" ' ;
 			

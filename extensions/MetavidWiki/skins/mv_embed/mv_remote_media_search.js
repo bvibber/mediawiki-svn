@@ -12,7 +12,7 @@ mvRemoteSearch.prototype = {
 	num_req:0,
 	
 	result_display_mode:'box', //box or list
-	api_mode:'metavid', //api mode (mediawiki api or metavid enhanced wiki api)
+	api_mode:'mediawiki', //api mode (mediawiki api or metavid enhanced wiki api)
 	resultsObj:{},
 	//init the object: 
 	init:function( initObj ){		

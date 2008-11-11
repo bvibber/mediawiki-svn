@@ -1,8 +1,4 @@
 /**
- * metavid: mv_flashEmbed builds off of flowplayer api (included first in this file) 
- */
- 
- /**
  * flowplayer.js 3.0.0-rc2. The Flowplayer API.
  * 
  * This file is part of Flowplayer, http://flowplayer.org
@@ -618,8 +614,7 @@ function Player(wrapper, params, conf) {
 				if (clip !== undefined) {
 					self._api().fp_play(clip);
 				} else {
-					if(typeof self._api().fp_play == 'function')
-						self._api().fp_play();	
+					self._api().fp_play();	
 				}
 			}
 			
@@ -689,8 +684,8 @@ function Player(wrapper, params, conf) {
 			var name = this;
 			
 			self[name] = function(arg) {
-				if (!api) { return self; }				
- 				var ret = (arg === undefined) ? api["fp_" + name]() : api["fp_" + name](arg);
+				if (!api) { return self; }
+				var ret = (arg === undefined) ? api["fp_" + name]() : api["fp_" + name](arg);
 				return ret == 'undefined' ? self : ret;
 			};			 
 		}
@@ -1523,229 +1518,3 @@ if (jQ) {
 }
 
 })();
-
-/************************************************
-********* mv_embed extension to flowplayer.js ***
-************************************************/ 	
-var flashEmbed = {
-	instanceOf:'flashEmbed',
-	monitorTimerId : 0,
-	old_pid:0,
-	startedTimedPlayback:false,		
-    supports: {
-    	'play_head':true, 
-	    'play_or_pause':true,
-	    'stop':true, 
-	    //'fullscreen':true, 
-	    'time_display':true, 
-	    //'volume_control':true,
-	    'overlay':false,
-	    'fullscreen':false
-    },   
-    getEmbedHTML: function (){
-        setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);
-        return this.wrapEmebedContainer( this.getEmbedObj() );
-    },
-    getEmbedObj:function(){
-    	/*return 	'<a href="' + this.media_element.selected_source.getURI(this.seek_time_sec) +'" '+
-    				'style="display:block;width:' + this.width + 'px;height:' + this.height + 'px" '+  
-			   		'id="' + this.pid + '"> rewrite me'+  
-				'</a>';*/
-		//give the embed element a unique pid (work around for flowplayer persistence)
-		if( this.old_pid!=0 ){
-			this.pid = this.pid +'_'+ this.old_pid;
-		}		
-		return '<a  '+
-					'href="'+this.media_element.selected_source.getURI(this.seek_time_sec)+'" '+  
-				    'style="display:block;width:400px;height:300px" '+  
-				    'id="'+this.pid+'">'+ 
-				'</a>';
-    },
-    postEmbedJS: function()
-    {   
-    	var _this = this;
-    	//js_log('postEmbedJS: ' + mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc2.swf' ) ;
-		$f(this.pid, "/flowplayer/flowplayer-3.0.0-rc2.swf", { 
-		    clip: { 
-		        url: _this.media_element.selected_source.getURI(this.seek_time_sec), 
-		         
-		        // when this is false playback does not start until play button is pressed 
-		        autoPlay: true 
-		    },
-		    plugins: { 
-    			controls: null
-    		}
-		});    	    	  
-		//get the this.fla value: 		
-		this.getFLA();    	
-    	//set up bindings (for when interacting with the swf causes action:  
-    	this.fla.onPause(function(){
-    		js_log('flash:onPause');
-    		if(!_this.paused){
-    			_this.pause();
-    		}
-    	})
-    	this.fla.onResume(function(){
-    		js_log('flash;onResume');
-    		if(_this.paused){
-    			_this.play();
-    		}
-    	});
-    	//start monitor: 
-    	this.monitor();  
-    	this.old_pid++;
-    },   
-    /* js hooks/controls */
-    play: function(){    	
-    	this.getFLA();    	
-    	//update play/pause button etc
-    	this.parent_play();      	  	
-    	if( this.fla ){	    	
-            this.fla.play();			
-			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()', 250);
-    	}
-    },
-    toggleMute: function(){
-    	parent_toggleMute();
-    	this.getFLA();
-    	if(this.fla){
-	    	if(this.muted){
-	    		
-	    	}else{
-	    		
-	    	}
-    	}
-    },
-    fullscreen:function(){
-    	if(this.fla){
-    		this.fla.fullscreen();
-    	}else{
-    		js_log('must be playing before you can go fullscreen');
-    	}
-    },
-    pause : function()
-    {
-    	this.getFLA();
-    	this.parent_pause();
-    	if(this.fla['pause'])
-    		this.fla.pause();    	
-		//stop updates: 
-		if( this.monitorTimerId != 0 )
-	    {
-	        clearInterval(this.monitorTimerId);
-	        this.monitorTimerId = 0;
-	    }
-    },
-    monitor : function()
-    {    
-    	//do monitor update: 
-	    if( ! this.monitorTimerId ){
-	    	if(document.getElementById(this.id)){
-	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
-	    	}
-	    }
-		this.getFLA();    		    
-                        
-        var flash_state = this.fla.getStatus();
-        
-        //simplification of buffer state ... should move to support returning time rages like:
-        //http://www.whatwg.org/specs/web-apps/current-work/#normalized-timeranges-object        	
-        this.bufferedPercent = flash_state.bufferEnd / this.getDuration();
-        
-        //set the current Time (based on timeFormat)
-        if( this.media_element.selected_source.timeFormat =='anx' ){
-        	this.currentTime = flash_state.time;
-        	//js_log('set buffer: ' + flash_state.bufferEnd + ' at time: ' + flash_state.time +' of total dur: ' + this.getDuration()); 
-        }else{
-        	this.currentTime = flash_state.time + this.media_element.selected_source.start_offset;        	        	
-        	//stop buffering if greater than the duration: 
-        	if( flash_state.bufferEnd > this.getDuration() + 5 ){
-        		js_log('should stop buffering (does not seem to work)' + flash_state.bufferEnd + ' > dur: ' + this.getDuration() );
-        		this.fla.stopBuffering();
-        	} 
-        }        
-        
-        var end_ntp = (this.media_element.selected_source.end_ntp)?
-							this.media_element.selected_source.end_ntp : seconds2ntp(0);	
-		var start_ntp =  this.media_element.selected_source.start_ntp;
-		
-        if(this.currentTime > ntp2seconds(start_ntp) && !this.startedTimedPlayback){
-        	this.startedTimedPlayback=true;
-        	js_log("time is "+ this.currentTime + " started playback");
-        }
-        /* to support local seeks */
-		if(this.currentTime > 1 && this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
-		{
-			js_log('flashEmbed: _local_ Seeking to ' + this.seek_time_sec);
-			this.fla.seek( this.seek_time_sec );
-			this.seek_time_sec = 0;
-		}
-        
-        //flash is giving bogus duration get from "this" (if available)
-		if(!this.media_element.selected_source.end_ntp  && this.fla.getDuration()>0)
-				this.media_element.selected_source.setDuration(this.fla.getDuration());       
-		
-        if(!this.userSlide){			   		       		
-	        if((this.currentTime - ntp2seconds(start_ntp))<0){
-	        	this.setStatus('buffering...');
-	        }else{        			   		       		
-		       	this.setStatus( seconds2ntp(this.currentTime) + '/' + end_ntp);      		
-		        this.setSliderValue((this.currentTime - ntp2seconds(start_ntp)) / (ntp2seconds(end_ntp)-ntp2seconds(start_ntp)) );
-	        }
-        }        
-        
-        //checks to see if we reached the end of playback:	    	    
-        if(this.startedTimedPlayback && 
-        	( 	this.currentTime > (ntp2seconds(end_ntp)+1) 
-        		|| 
-        		( this.currentTime > (ntp2seconds(end_ntp)-1) 
-        			&& this.prevTime == this.currentTime) )
-        	){        		        	
-        	js_log('probbaly reached end of stream: '+this.currentTime);
-        	this.onClipDone();         	     
-        }	    
-	    this.prevTime = this.currentTime;    
-	    //js_log('cur perc loaded: ' + this.fla.getPercentLoaded() +' cur time : ' + (this.currentTime - ntp2seconds(start_ntp)) +' / ' +(ntp2seconds(end_ntp)-ntp2seconds(start_ntp)));
-    },
-    // get the embed fla object 
-    getFLA : function (){
-    	this.fla = $f(this.pid);   		
-    },
-    stop : function(){    
-    	js_log('f:flashEmbed:stop');    	
-    	this.startedTimedPlayback=false;	
-    	if (this.monitorTimerId != 0 )
-	    {
-	        clearInterval(this.monitorTimerId);
-	        this.monitorTimerId = 0;
-	    }
-	    if(this.fla)
-	    	this.fla.unload();
-    	this.parent_stop();
-    },
-    onStop: function(){
-    	js_log('f:onStop');
-    	//stop updates: 
-		if( this.monitorTimerId != 0 )
-	    {
-	        clearInterval(this.monitorTimerId);
-	        this.monitorTimerId = 0;
-	    }
-    },
-    onClipDone: function(){    	    
-    	js_log('f:flash:onClipDone');    	
-	    if( ! this.startedTimedPlayback){
-	    	js_log('clip done before timed playback started .. not good. (ignoring) ');
-	    	//setTimeout('$j(\'#'+embed.id+'\').get(0).play()', 250);
-	    	//keep monitoring: 
-	    	this.monitor();
-	    }else{
-	    	js_log('clip done and '+ this.startedTimedPlayback);
-	    	//stop the clip if its not stopped already: 
-    		this.stop();
-		    this.setStatus("Clip Done...");
-			//run the onClip done action: 
-		    this.parent_onClipDone();
-	    }
-    }
-}

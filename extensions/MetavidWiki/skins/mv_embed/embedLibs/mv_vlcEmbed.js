@@ -83,13 +83,13 @@ var vlcEmbed = {
     	}
     },   
 	doSeek : function(value){
-		//if( ! this.inputTrackerIgnoreChange ){
+		if( this.vlc ) {
 			if( (this.vlc.input.state == 3) && (this.vlc.input.position != value) )
 	        {
         	    this.vlc.input.position = value;
-            	document.getElementById("info_" + this.id ).innerHTML = 'seeking'
+            	this.setStatus( 'seeking...' );	       
 	        }				
-		//}
+		}
 	},
 	playMovieAt : function (order){
 		//@@todo add clips to playlist after (order) and then play

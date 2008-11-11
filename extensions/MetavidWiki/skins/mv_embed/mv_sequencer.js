@@ -100,8 +100,6 @@ mvSequencer.prototype = {
 		for(var i in sequencerDefaultValues){
 			this[ i ] = sequencerDefaultValues[i];
 		}
-		//@@todo deal with multi-dimensional object updates 
-		// (ie one word in wfMsg does not replace the whole wfMsg default set)
 		for(var i in initObj){
 			//js_log('on '+ i + ' :' + initObj[i]);
 			if(sequencerDefaultValues[i]){ //make sure its a valid property
@@ -152,7 +150,8 @@ mvSequencer.prototype = {
 		
 		js_log('set: '+this.sequence_container_id + ' html to:'+ "\n"+
 			$j('#'+this.sequence_container_id).html()
-		);										
+		);
+												
 		//add src based pl: 
 		if( this.mv_pl_src != 'null' ) {
 			js_log( ' pl src:: '+ this.mv_pl_src );			
@@ -339,7 +338,7 @@ mvSequencer.prototype = {
 				var track_height=this.track_clipThumb_height;
 				//add in play box and container tracks
 				$j('#'+this.timeline_id).append(''+
-					'<div id="container_track_'+i+'" style="position:absolute;top:'+top_pos+'px;height:'+(track_height+20)+'px;left:10px;right:0px;" class="container_track">' +					
+					'<div id="container_track_'+i+'" style="position:absolute;top:20px;height:'+(track_height+20)+'px;left:10px;right:0px;" class="container_track">' +					
 					'</div>'
 				);
 				top_pos+=track_height+20;

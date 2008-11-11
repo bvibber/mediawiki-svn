@@ -64,7 +64,7 @@ mvPlayList.prototype = {
 		seq_thumb:.25,	 //size for thumbnails (same as seq by default) 
 		seq_nav:0,	//for a nav bar at the base (currently disabled)
 		//some pl_layout info:
-		title_bar_height:20,
+		title_bar_height:17,
 		control_height:29
 	},
 	init : function(element){
