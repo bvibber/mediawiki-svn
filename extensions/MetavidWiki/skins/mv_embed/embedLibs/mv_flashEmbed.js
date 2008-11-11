@@ -1564,8 +1564,8 @@ var flashEmbed = {
     postEmbedJS: function()
     {   
     	var _this = this;
-    	//js_log('postEmbedJS: ' + mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc2.swf' ) ;
-		$f(this.pid, "/flowplayer/flowplayer-3.0.0-rc2.swf", { 
+    	js_log('embedFlow: ' + mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc2.swf' ) ;
+		$f(this.pid,  mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc2.swf', { 
 		    clip: { 
 		        url: _this.media_element.selected_source.getURI(this.seek_time_sec), 
 		         

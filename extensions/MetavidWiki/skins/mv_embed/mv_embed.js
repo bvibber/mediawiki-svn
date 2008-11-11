@@ -202,7 +202,7 @@ var mvEmbed = {
    */
   pc:null, //used to store pointer to parent clip (when in playlist mode)
   load_libs:function( callback , target_id){
-  	js_log('f:load_libs: '+callback);
+  	//js_log('f:load_libs: '+callback);
   	if(callback)this.load_callback = callback;
   	//if libs are already loaded jump directly to the callback
   	if(this.libs_loaded){
