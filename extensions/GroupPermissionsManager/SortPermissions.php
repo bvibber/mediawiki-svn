@@ -35,7 +35,7 @@ class SortPermissions extends SpecialPage {
 			$pos = strpos($dir, $wgScriptPath);
 			$dir = substr($dir, $pos);
 		}
-		addScriptFile("$inc/scripts/permsort.js");
+		addScriptFile("$dir/scripts/permsort.js");
 		//if we posted, try to write the file
 		if($wgRequest->wasPosted()) {
 			$success = $this->writeFile();
