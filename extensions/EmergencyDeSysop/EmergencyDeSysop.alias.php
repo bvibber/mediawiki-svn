@@ -1,7 +1,7 @@
 <?php
-$messages = array();
+$aliases = array();
  
 /** English */
-$messages['en'] = array( 
+$aliases['en'] = array( 
 	'EmergencyDeSysop' => array( 'EmergencyDeSysop', 'EmergencyDesysop' ),
 );
