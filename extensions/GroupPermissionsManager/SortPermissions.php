@@ -31,8 +31,10 @@ class SortPermissions extends SpecialPage {
 		$this->setHeaders();
 		$wgOut->addWikiText( wfMsg( 'grouppermissions-sp-header' ) );
 		$dir = dirname(__FILE__);
-		$pos = strpos($dir, $wgScriptPath);
-		$inc = substr($dir, $pos);
+		if ( !empty( $wgScriptPath ) ) {
+			$pos = strpos($dir, $wgScriptPath);
+			$dir = substr($dir, $pos);
+		}
 		addScriptFile("$inc/scripts/permsort.js");
 		//if we posted, try to write the file
 		if($wgRequest->wasPosted()) {
