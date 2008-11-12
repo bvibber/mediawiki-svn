@@ -254,7 +254,7 @@ var mv_stream_interface = {
 	},
 	mvdOut:function(mvd_id){		
 		var vid_elm = $j('#embed_vid').get(0);
-		//only proccess out if in "stoped" state
+		//only process out if in "stoped" state
 		if( vid_elm.isStoped()  ){
 			js_log('do out ' + mvd_id );
 			this.cur_mvd_id='base';
@@ -301,7 +301,7 @@ var mv_stream_interface = {
 				if(!vid_elm.onClipDone_disp){
 					//only restore if the cur_mvd = 'base' and interface updates are not locked
 					if(this.cur_mvd_id=='base'){
-						vid_elm.updateThumbnail(org_thum_src);
+						vid_elm.updateThumbnail( org_thum_src );
 						vid_elm.updateVideoTimeReq(org_vid_time_req);
 						//vid_elm.updateVideoSrc(org_vid_src);
 						$j('#mv_videoPlayerTime').html(org_vid_title);

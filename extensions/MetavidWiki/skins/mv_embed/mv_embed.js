@@ -2537,13 +2537,13 @@ embedVideo.prototype = {
 	    //if(this.class)class_atr = ' class="'+this.class+'"';
 	    //if(this.style)style_atr = ' style="'+this.style+'"';
 	    //    else style_atr = 'overflow:hidden;height:'+this.height+'px;width:'+this.width+'px;';
-        var thumbnail_src = this.media_element.getThumbnailURL();
+        this.thumbnail = this.media_element.getThumbnailURL();
 
 	    //put it all in the div container dc_id
 	    thumb_html+= '<div id="dc_'+this.id+'" style="position:relative;'+
 	    	' overflow:hidden; top:0px; left:0px; width:'+this.playerPixelWidth()+'px; height:'+this.playerPixelHeight()+'px; z-index:0;">'+
 	        '<img width="'+this.playerPixelWidth()+'" height="'+this.playerPixelHeight()+'" style="position:relative;width:'+this.playerPixelWidth()+';height:'+this.playerPixelHeight()+'"' +
-	        ' id="img_thumb_'+this.id+'" src="' + thumbnail_src + '">';
+	        ' id="img_thumb_'+this.id+'" src="' + this.thumbnail + '">';
 		
 	    if(this.play_button==true)
 		  	thumb_html+=this.getPlayButton();
