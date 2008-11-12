@@ -17,6 +17,11 @@ class CodeRevisionCommitter extends CodeRevisionView {
 	function execute() {
 		global $wgRequest, $wgOut, $wgUser;
 		
+		if( !$wgUser->matchEditToken( $wgRequest->getVal('wpEditToken') ) ) {
+			$wgOut->addHTML( wfMsg('sessionfailure') );
+			return;
+		}
+		
 		$redirTarget = null;
 		$dbw = wfGetDB( DB_MASTER );
 		
