@@ -1573,7 +1573,15 @@ var flashEmbed = {
 		        autoPlay: true 
 		    },
 		    plugins: { 
-    			controls: null
+    			controls: { 
+				   all: false, 
+				   fullscreen: true,
+				   backgroundColor: 'transparent',
+				   backgroundGradient: 'none',
+				   autoHide:'always',
+				   top:'95%',
+				   left:'370'
+				 } 
     		}
 		});    	    	  
 		//get the this.fla value: 		

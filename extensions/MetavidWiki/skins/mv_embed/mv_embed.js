@@ -2275,7 +2275,7 @@ embedVideo.prototype = {
     		}
     	}else{
     		js_log('no annotative track found');
-    		$j('#liks_info_'+this.id).html('no metadata found for next, prev links');
+    		$j('#liks_info_'+this.id).html('no metadata found for next, previous links');
     	}
     	//query current request time +|- 60s to get prev next speech links. 
     },
