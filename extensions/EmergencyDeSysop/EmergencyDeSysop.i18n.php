@@ -3,7 +3,7 @@ $messages = array();
 $messages['en'] = array( 
 	//About the Extension
 	'emergencydesysop' => 'Emergency DeSysop',
-	'emergencydesysop-desc' => 'Allows a Sysop to sacrifice their own bit, in order to desysop another',
+	'emergencydesysop-desc' => 'Allows a Sysop to sacrifice their own privileges, in order to desysop another',
 
 	//Extension Messages
 	'emergencydesysop-title' => 'Remove sysop access from both current user and another sysop',
