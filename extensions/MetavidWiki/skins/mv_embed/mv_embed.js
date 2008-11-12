@@ -928,7 +928,7 @@ var mvJsLoader = {
  * $j(document).ready( function(){ */
 function init_mv_embed(force){
 	js_log('f:init_mv_embed');
-	if(!force && ( mv_init_done || !MV_DO_INIT ) ){
+	if(!force && mv_init_done  ){
 		js_log("mv_init_done do nothing...");
 		return false;
 	}
