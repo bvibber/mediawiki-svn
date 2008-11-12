@@ -8,11 +8,8 @@ class CodeRevisionListView extends CodeView {
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
 		$this->mPath = htmlspecialchars( trim( $wgRequest->getVal( 'path' ) ) );
-		if( strlen($this->mPath) && $this->mPath[strlen($this->mPath)-1] !== '/' ) {
-			$this->mPath .= '/'; // make sure this is a dir
-		}
 		if( strlen($this->mPath) && $this->mPath[0] !== '/' ) {
-			$this->mPath = "/{$this->mPath}"; // make sure this is a dir
+			$this->mPath = "/{$this->mPath}"; // make sure this is a valid path
 		}
 		$this->mAuthor = null;
 	}
