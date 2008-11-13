@@ -324,20 +324,22 @@ class CodeRevision {
 	
 	public function getPropChanges() {
 		$dbr = wfGetDB( DB_SLAVE );
-		$result = $dbr->select( 'code_prop_changes',
+		$result = $dbr->select( array('code_prop_changes','user'),
 			array(
 				'cpc_attrib',
 				'cpc_removed',
 				'cpc_added',
 				'cpc_timestamp',
 				'cpc_user',
-				'cpc_user_text'
+				'cpc_user_text',
+				'user_name'
 			), array(
 				'cpc_repo_id' => $this->mRepoId,
-				'cpc_rev_id' => $this->mId ),
+				'cpc_rev_id' => $this->mId,
+			),
 			__METHOD__,
-			array(
-				'ORDER BY' => 'cpc_timestamp DESC' )
+			array( 'ORDER BY' => 'cpc_timestamp DESC' ),
+			array( 'user' => array('LEFT JOIN','cpc_user = user_id') )
 		);
 		$changes = array();
 		foreach( $result as $row ) {

@@ -58,6 +58,7 @@ $wgAutoloadClasses['CodePathRevListView'] = $dir . 'CodePathRevListView.php';
 $wgAutoloadClasses['CodeTagListView'] = $dir . 'CodeTagListView.php';
 $wgAutoloadClasses['CodeCommentsListView'] = $dir . 'CodeCommentsListView.php';
 $wgAutoloadClasses['CodeComment'] = $dir . 'CodeComment.php';
+$wgAutoloadClasses['CodePropChange'] = $dir . 'CodePropChange.php';
 $wgAutoloadClasses['SpecialCode'] = $dir . 'SpecialCode.php';
 $wgAutoloadClasses['CodeView'] = $dir . 'SpecialCode.php';
 $wgAutoloadClasses['SpecialRepoAdmin'] = $dir . 'SpecialRepoAdmin.php';
