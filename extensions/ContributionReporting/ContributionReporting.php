@@ -32,10 +32,12 @@ $wgExtensionAliasesFiles['ContributionReporting'] = $dir . 'ContributionReportin
 $wgAutoloadClasses['ContributionHistory'] = $dir . 'ContributionHistory_body.php';
 $wgAutoloadClasses['ContributionTotal'] = $dir . 'ContributionTotal_body.php';
 $wgAutoloadClasses['SpecialContributionStatistics'] = $dir . 'ContributionStatistics_body.php';
+$wgAutoloadClasses['SpecialFundraiserStatistics'] = $dir . 'FundraiserStatistics_body.php';
 
 $wgSpecialPages['ContributionHistory'] = 'ContributionHistory';
 $wgSpecialPages['ContributionTotal'] = 'ContributionTotal';
 $wgSpecialPages['ContributionStatistics'] = 'SpecialContributionStatistics';
+$wgSpecialPages['FundraiserStatistics'] = 'SpecialFundraiserStatistics';
 
 // Shortcut to this extension directory
 $dir = dirname( __FILE__ ) . '/';
@@ -45,6 +47,26 @@ $egContributionStatisticsFiscalYearCutOff = 'July 1';
 
 // Days back to show
 $egContributionStatisticsViewDays = 7;
+
+// Fundraiser dates
+$egFundraiserStatisticsFundraisers = array(
+	array(
+		'title' => '2007 Fundraiser',
+		'start' => 'Oct 22 2007',
+		'end' => 'Jan 3 2008',
+		'color' => '#AAAAFF'
+	),
+	array(
+		'title' => '2008 Fundraiser',
+		'start' => 'Nov 4 2008',
+		'end' => 'Jan 9 2009',
+		'color' => '#AAFFAA'
+	)
+);
+
+// Thesholds for fundraiser statistics
+$egFundraiserStatisticsMinimum = 1;
+$egFundraiserStatisticsMaximum = 10000;
 
 // Automatically use a local or special database connection
 function efContributionReportingConnection() {

@@ -49,6 +49,9 @@ $messages['en'] = array(
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Percentage (YTD)',
 	'contribstats-total-ytd' => 'Total (YTD)',
+	
+	// Fundraiser Statistics
+	'fundraiserstatistics' => 'Fundraiser Statistics',
 );
 
 /** Message documentation (Message documentation)
