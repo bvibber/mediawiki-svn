@@ -87,6 +87,12 @@ class CodeRevisionView extends CodeView {
 				"document.getElementById('wpReplyTo$id').focus();" .
 				"});</script>\n";
 		}
+		
+		$changes = $this->formatPropChanges();
+		if( $changes ) {
+			$html .= "<h2 id='code-changes'>". wfMsgHtml( 'code-prop-changes' ) ."</h2>\n" . $changes;
+		}
+		
 		$html .= '<div>' .
 			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
 			' ' .
@@ -99,7 +105,7 @@ class CodeRevisionView extends CodeView {
 		$wgOut->addHTML( $html );
 	}
 	
-	function navigationLinks() {
+	protected function navigationLinks() {
 		$rev = $this->mRev->getId();
 		$prev = $this->mRev->getPrevious();
 		$next = $this->mRev->getNext();
@@ -129,7 +135,7 @@ class CodeRevisionView extends CodeView {
 		return implode( ' | ', $links );
 	}
 
-	function checkPostings() {
+	protected function checkPostings() {
 		global $wgRequest, $wgUser;
 		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal('wpEditToken') ) ) {
 			// Look for a posting...
@@ -145,7 +151,7 @@ class CodeRevisionView extends CodeView {
 		return false;
 	}
 
-	function formatPathLine( $path, $action ) {
+	protected function formatPathLine( $path, $action ) {
 		$desc = wfMsgHtml( 'code-rev-modified-'.strtolower( $action ) );
 		// Find any ' (from x)' from rename comment in the path.
 		preg_match( '/ \([^\)]+\)$/', $path, $matches );
@@ -178,7 +184,7 @@ class CodeRevisionView extends CodeView {
 		return "<li>$link ($desc)$diff</li>\n";
 	}
 	
-	function tagForm() {
+	protected function tagForm() {
 		global $wgUser;
 		$tags = $this->mRev->getTags();
 		$list = '';
@@ -209,7 +215,7 @@ class CodeRevisionView extends CodeView {
 		}
 	}
 	
-	function buildStatusList() {
+	protected function buildStatusList() {
 		$states = CodeRevision::getPossibleStates();
 		$out = '';
 		foreach( $states as $state ) {
@@ -222,7 +228,7 @@ class CodeRevisionView extends CodeView {
 		return $out;
 	}
 	
-	function addTagForm() {
+	protected function addTagForm() {
 		global $wgUser;
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
@@ -233,14 +239,14 @@ class CodeRevisionView extends CodeView {
 			'</td></tr></table></div>';
 	}
 	
-	function formatTag( $tag ) {
+	protected function formatTag( $tag ) {
 		global $wgUser;
 		$repo = $this->mRepo->getName();
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/tag/$tag" );
 		return $this->mSkin->link( $special, htmlspecialchars( $tag ) );
 	}
 
-	function formatDiff() {
+	protected function formatDiff() {
 		global $wgEnableAPI;
 		
 		// Asynchronous diff loads will require the API
@@ -269,7 +275,7 @@ class CodeRevisionView extends CodeView {
 		return $hilite->render( $diff );
 	}
 	
-	function stubDiffLoader() {
+	protected function stubDiffLoader() {
 		global $wgOut, $wgScriptPath;
 		$encRepo = Xml::encodeJsVar( $this->mRepo->getName() );
 		$encRev = Xml::encodeJsVar( $this->mRev->getId() );
@@ -283,19 +289,27 @@ class CodeRevisionView extends CodeView {
 		return "Loading diff...";
 	}
 
-	function formatComments() {
+	protected function formatComments() {
 		$comments = implode( "\n",
-				array_map(
-					array( $this, 'formatCommentInline' ),
-					$this->mRev->getComments() ) ) .
-			$this->postCommentForm();
+			array_map( array( $this, 'formatCommentInline' ), $this->mRev->getComments() )
+		) . $this->postCommentForm();
 		if( !$comments ) {
 			return false;
 		}
 		return "<div class='mw-codereview-comments'>$comments</div>";
 	}
+	
+	protected function formatPropChanges() {
+		$changes = implode( "\n",
+			array_map( array( $this, 'formatChangeInline' ), $this->mRev->getPropChanges() )
+		);
+		if( !$changes ) {
+			return false;
+		}
+		return "<ul class='mw-codereview-changes'>$changes</ul>";
+	}
 
-	function formatCommentInline( $comment ) {
+	protected function formatCommentInline( $comment ) {
 		if( $comment->id === $this->mReplyTarget ) {
 			return $this->formatComment( $comment,
 				$this->postCommentForm( $comment->id ) );
@@ -304,7 +318,27 @@ class CodeRevisionView extends CodeView {
 		}
 	}
 	
-	function commentLink( $commentId ) {
+	protected function formatChangeInline( $change ) {
+		global $wgLang;
+		$line = $wgLang->timeanddate( $change->timestamp, true );
+		$line .= '&nbsp;' . $this->mSkin->userLink( $change->user, $change->userText );
+		$line .= $this->mSkin->userToolLinks( $change->user, $change->userText );
+		$line .= '&nbsp;' . wfMsgExt("code-change-{$change->attrib}",array('parseinline'));
+		$line .= " <i>[";
+		if( $change->removed ) {
+			$line .= '<b>'.wfMsg('code-change-removed').'</b> ';
+			$line .= htmlspecialchars($change->removed);
+			$line .= $change->added ? "&nbsp;" : "";
+		}
+		if( $change->added ) {
+			$line .= '<b>'.wfMsg('code-change-added').'</b> ';
+			$line .=  htmlspecialchars($change->added);
+		}
+		$line .= "]</i>";
+		return "<li>$line</li>";
+	}
+	
+	protected function commentLink( $commentId ) {
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
 		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
@@ -312,19 +346,19 @@ class CodeRevisionView extends CodeView {
 		return $title;
 	}
 	
-	function revLink() {
+	protected function revLink() {
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
 		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
 		return $title;
 	}	
 	
-	function previewComment( $text, $review=0 ) {
+	protected function previewComment( $text, $review=0 ) {
 		$comment = $this->mRev->previewComment( $text, $review );
 		return $this->formatComment( $comment );
 	}
 	
-	function formatComment( $comment, $replyForm='' ) {
+	protected function formatComment( $comment, $replyForm='' ) {
 		global $wgOut, $wgLang;
 		$linker = new CodeCommentLinkerWiki( $this->mRepo );
 		
@@ -358,13 +392,13 @@ class CodeRevisionView extends CodeView {
 			'</div>';
 	}
 
-	function commentStyle( $comment ) {
+	protected function commentStyle( $comment ) {
 		$depth = $comment->threadDepth();
 		$margin = ($depth - 1) * 48;
 		return "margin-left: ${margin}px";
 	}
 	
-	function commentReplyLink( $id ) {
+	protected function commentReplyLink( $id ) {
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
 		$self = SpecialPage::getTitleFor( 'Code', "$repo/$rev/reply/$id" );
@@ -374,7 +408,7 @@ class CodeRevisionView extends CodeView {
 			']';
 	}
 	
-	function postCommentForm( $parent=null ) {
+	protected function postCommentForm( $parent=null ) {
 		global $wgUser;
 		if( $this->mPreviewText != false && $parent === $this->mReplyTarget ) {
 			$preview = $this->previewComment( $this->mPreviewText );

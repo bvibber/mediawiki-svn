@@ -27,6 +27,10 @@ class CodeRevisionCommitter extends CodeRevisionView {
 		$dbw = wfGetDB( DB_MASTER );
 		
 		$dbw->begin();
+		// Change the status if allowed
+		if( $this->validPost('codereview-set-status') && $this->mRev->isValidStatus($this->mStatus) ) {
+			$this->mRev->setStatus( $this->mStatus, $wgUser );
+		}
 		$addTags = $removeTags = array();
 		if( $this->validPost('codereview-add-tag') && count($this->mAddTags) ) {
 			$addTags = $this->mAddTags;
@@ -38,9 +42,7 @@ class CodeRevisionCommitter extends CodeRevisionView {
 		if( count($addTags) || count($removeTags) ) {
 			$this->mRev->changeTags( $addTags, $removeTags, $wgUser );
 		}
-		if( $this->validPost('codereview-set-status') && $this->mRev->isValidStatus($this->mStatus) ) {
-			$this->mRev->setStatus( $this->mStatus, $wgUser );
-		}
+		// Add any comments
 		if( $this->validPost('codereview-post-comment') && strlen($this->text) ) {
 			$parent = $wgRequest->getIntOrNull( 'wpParent' );
 			$review = $wgRequest->getInt( 'wpReview' );
