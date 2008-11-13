@@ -50,8 +50,8 @@ $messages['en'] = array(
 	'contribstats-percentage-ytd' => 'Percentage (YTD)',
 	'contribstats-total-ytd' => 'Total (YTD)',
 	
-	// Fundraiser Statistics
-	'fundraiserstatistics' => 'Fundraiser Statistics',
+	// Fundraiser statistics
+	'fundraiserstatistics' => 'Fundraiser statistics',
 );
 
 /** Message documentation (Message documentation)
