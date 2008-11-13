@@ -83,6 +83,15 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	}
 
 	/**
+	 * Returns a pager for this handler
+	 *
+	 * @return Pager
+	 */
+	public function getPager(){
+		return new ConfigurationPagerFiles( $this );
+	}
+
+	/**
 	 * Save a new configuration
 	 * @param $settings array of settings
 	 * @param $wiki String: wiki name or true for all

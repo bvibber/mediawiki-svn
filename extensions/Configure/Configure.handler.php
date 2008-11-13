@@ -36,6 +36,13 @@ interface ConfigureHandler {
 	public function getWikisInVersion( $ts );
 
 	/**
+	 * Returns a pager for this handler
+	 *
+	 * @return Pager
+	 */
+	public function getPager();
+
+	/**
 	 * Save a new configuration
 	 * @param $settings array of settings
 	 * @param $wiki String: wiki name or false to use the current one

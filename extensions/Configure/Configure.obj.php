@@ -151,6 +151,15 @@ class WebConfiguration extends SiteConfiguration {
 	}
 
 	/**
+	 * Returns a pager for this handler
+	 *
+	 * @return Pager
+	 */
+	public function getPager(){
+		return $this->mHandler->getPager();
+	}
+
+	/**
 	 * Get the defalut values for all settings
 	 * Very, very hacky...
 	 *

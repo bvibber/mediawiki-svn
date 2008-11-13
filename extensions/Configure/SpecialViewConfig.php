@@ -118,100 +118,121 @@ class SpecialViewConfig extends ConfigurationPage {
 		if( !$this->isWebConfig )
 			return '';
 
-		$versions = $wgConf->listArchiveVersions();
-		if( empty( $versions ) ){
-			return wfMsgExt( 'configure-no-old', array( 'parse' ) );
-		}
+		$self = $this->getTitle();
+		$pager = $wgConf->getPager();
+		$pager->setFormatCallback( array( $this, 'formatVersionRow' ) );
+		$showDiff = $pager->getNumRows() > 1;
 
-		$title = $this->getTitle();
-		$skin = $wgUser->getSkin();
-		$showDiff = count( $versions ) > 1;
+		$formatConf = array(
+			'showDiff' => $showDiff,
+			'allowedConfig' => $wgUser->isAllowed( 'configure' ),
+			'allowedExtensions' => $wgUser->isAllowed( 'extensions' ),
+			'allowedAll' => $this->isUserAllowedInterwiki(),
+			'allowedConfigAll' => $wgUser->isAllowed( 'configure-interwiki' ),
+			'allowedExtensionsAll' => $wgUser->isAllowed( 'extensions-interwiki' ),
+			'self' => $self,
+			'skin' => $wgUser->getSkin(),
+			'editMsg' => wfMsg( 'edit' ) . ': ',
+		);
 
-		$allowedConfig = $wgUser->isAllowed( 'configure' );
-		$allowedExtensions = $wgUser->isAllowed( 'extensions' );
+		if( $formatConf['allowedConfig'] )
+			$formatConf['configTitle'] = SpecialPage::getTitleFor( 'Configure' );
 
-		$allowedAll = $this->isUserAllowedInterwiki();
-		$allowedConfigAll = $wgUser->isAllowed( 'configure-interwiki' );
-		$allowedExtensionsAll = $wgUser->isAllowed( 'extensions-interwiki' );
+		if( $formatConf['allowedExtensions'] )
+			$formatConf['extTitle'] = SpecialPage::getTitleFor( 'Extensions' );
 
-		if( $allowedConfig )
-			$configTitle = SpecialPage::getTitleFor( 'Configure' );
-
-		if( $allowedExtensions )
-			$extTitle = SpecialPage::getTitleFor( 'Extensions' );
+		$this->formatConf = $formatConf;
 
 		$text = wfMsgExt( 'configure-old-versions', array( 'parse' ) );
-		if( $showDiff )
+		$text .= $pager->getNavigationBar();
+		if( $showDiff ) {
 			$text .= Xml::openElement( 'form', array( 'action' => $wgScript ) ) . "\n" .
-			Xml::hidden( 'title', $title->getPrefixedDBKey() ) . "\n" .
-			$this->getButton() . "\n";
-		$text .= "<ul>\n";
-		
-		$editMsg = wfMsg( 'edit' ) . ': ';
-		$c = 0;
-		foreach( $versions as $ts ){
-			$c++;
-			$time = $wgLang->timeAndDate( $ts );
-			if( $allowedAll || $allowedConfigAll || $allowedExtensionsAll ){
-				$wikis = $wgConf->getWikisInVersion( $ts );
+			Xml::hidden( 'title', $self->getPrefixedDBKey() ) . "\n" .
+			$this->getButton() . "<br/>\n";
+		}
+		$text .= $pager->getBody();
+		if( $showDiff ) {
+			$text .= $this->getButton() . "</form>";
+		}
+		$text .= $pager->getNavigationBar();
+		return $text;
+	}
+
+	public function formatVersionRow( $arr ){
+		global $wgLang;
+
+		$ts = $arr['timestamp'];
+		$wikis = $arr['wikis']; 
+		$c = $arr['count'];
+		$hasSelf = in_array( $this->mWiki, $wikis );
+
+		extract( $this->formatConf );
+		$time = $wgLang->timeAndDate( $ts );
+
+		$actions = array();
+		if( $hasSelf )
+			$view = $skin->makeKnownLinkObj( $self, wfMsgHtml( 'configure-view' ), "version=$ts" );
+		else
+			$view = wfMsgHtml( 'configure-view' );
+
+		if( $allowedAll ){
+			$viewWikis = array();
+			foreach( $wikis as $wiki ){
+				$viewWikis[] = $skin->makeKnownLinkObj( $self, htmlspecialchars( $wiki ), "version={$ts}&wiki={$wiki}" );
 			}
-			$actions = array();
-			$view = $skin->makeKnownLinkObj( $title, wfMsg( 'configure-view' ), "version=$ts" );
-			if( $allowedAll ){
+			$view .= ' (' . implode( ', ', $viewWikis ) . ')';
+		}
+		$actions[] = $view;
+		$editDone = false;
+		if( $allowedConfig ){
+			if( $hasSelf )
+				$editCore = $editMsg . $skin->makeKnownLinkObj( $configTitle, wfMsgHtml( 'configure-edit-core' ), "version=$ts" );
+			else
+				$editCore = $editMsg . wfMsgHtml( 'configure-edit-core' );
+
+			if( $allowedConfigAll ){
 				$viewWikis = array();
 				foreach( $wikis as $wiki ){
-					$viewWikis[] = $skin->makeKnownLinkObj( $title, $wiki, "version={$ts}&wiki={$wiki}" );
+					$viewWikis[] = $skin->makeKnownLinkObj( $configTitle, htmlspecialchars( $wiki ), "version={$ts}&wiki={$wiki}" );
 				}
-				$view .= ' (' . implode( ', ', $viewWikis ) . ')';
+				$editCore .= ' (' . implode( ', ', $viewWikis ) . ')';
 			}
-			$actions[] = $view;
-			$editDone = false;
-			if( $allowedConfig ){
-				$editCore = $editMsg . $skin->makeKnownLinkObj( $configTitle, wfMsg( 'configure-edit-core' ), "version=$ts" );
-				if( $allowedConfigAll ){
-					$viewWikis = array();
-					foreach( $wikis as $wiki ){
-						$viewWikis[] = $skin->makeKnownLinkObj( $configTitle, $wiki, "version={$ts}&wiki={$wiki}" );
-					}
-					$editCore .= ' (' . implode( ', ', $viewWikis ) . ')';
-				}
-				$actions[] = $editCore;
-			}
-			if( $allowedExtensions ){
-				$editExt = '';
-				if( !$allowedConfig )
-					$editExt .= $editMsg;
-				$editExt .= $skin->makeKnownLinkObj( $extTitle, wfMsg( 'configure-edit-ext' ), "version=$ts" );
-				if( $allowedExtensionsAll ){
-					$viewWikis = array();
-					foreach( $wikis as $wiki ){
-						$viewWikis[] = $skin->makeKnownLinkObj( $extTitle, $wiki, "version={$ts}&wiki={$wiki}" );
-					}
-					$editExt .= ' (' . implode( ', ', $viewWikis ) . ')';
-				}
-				$actions[] = $editExt;
-			}
-			if( $showDiff ){
-				$diffCheck = $c == 2 ? array( 'checked' => 'checked' ) : array();
-				$versionCheck = $c == 1 ? array( 'checked' => 'checked' ) : array();
-				$buttons =
-					Xml::element( 'input', array_merge( 
-						array( 'type' => 'radio', 'name' => 'diff', 'value' => $ts ),
-						$diffCheck ) ) .
-					Xml::element( 'input', array_merge(
-						array( 'type' => 'radio', 'name' => 'version', 'value' => $ts ),
-						$versionCheck ) );
-						
-			} else {
-				$buttons = '';
-			}
-			$action = implode( ', ', $actions );
-			$text .= "<li>{$buttons}{$time}: {$action}</li>\n";
+			$actions[] = $editCore;
 		}
-		$text .= "</ul>";
-		if( $showDiff )
-			$text .= $this->getButton() . "</form>";
-		return $text;
+		if( $allowedExtensions ){
+			$editExt = '';
+			if( !$allowedConfig )
+				$editExt .= $editMsg;
+			if( $hasSelf )
+				$editExt .= $skin->makeKnownLinkObj( $extTitle, wfMsgHtml( 'configure-edit-ext' ), "version=$ts" );
+			else
+				$editExt .= wfMsgHtml( 'configure-edit-ext' );
+
+			if( $allowedExtensionsAll ){
+				$viewWikis = array();
+				foreach( $wikis as $wiki ){
+					$viewWikis[] = $skin->makeKnownLinkObj( $extTitle, htmlspecialchars( $wiki ), "version={$ts}&wiki={$wiki}" );
+				}
+				$editExt .= ' (' . implode( ', ', $viewWikis ) . ')';
+			}
+			$actions[] = $editExt;
+		}
+		if( $showDiff ){
+			$diffCheck = $c == 2 ? array( 'checked' => 'checked' ) : array();
+			$versionCheck = $c == 1 ? array( 'checked' => 'checked' ) : array();
+			$buttons =
+				Xml::element( 'input', array_merge( 
+					array( 'type' => 'radio', 'name' => 'diff', 'value' => $ts ),
+					$diffCheck ) ) .
+				Xml::element( 'input', array_merge(
+					array( 'type' => 'radio', 'name' => 'version', 'value' => $ts ),
+					$versionCheck ) );
+			
+		} else {
+			$buttons = '';
+		}
+		$action = implode( ', ', $actions );
+		return "<li>{$buttons}{$time}: {$action}</li>\n";
 	}
 
 	/**

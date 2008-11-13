@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki by a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.9.5',
+	'version' => '0.9.6',
 );
 
 ## Configuration part
@@ -178,6 +178,10 @@ $wgAutoloadClasses['ConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['CorePreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['ExtPreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['HistoryConfigurationDiff'] = $dir . 'Configure.diff.php';
+
+## Pager stuff
+$wgAutoloadClasses['ConfigurationPagerDb'] = $dir . 'Configure.pager-db.php';
+$wgAutoloadClasses['ConfigurationPagerFiles'] = $dir . 'Configure.pager-files.php';
 
 ## API module
 $wgAutoloadClasses['ApiConfigure'] = $dir . 'Configure.api.php';

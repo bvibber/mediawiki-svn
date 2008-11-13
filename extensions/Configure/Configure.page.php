@@ -318,26 +318,38 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function buildOldVersionSelect(){
 		global $wgConf, $wgLang, $wgUser;
+
+		$showAllLink = false;
+		$count = 0;
+		$links = array();
+
 		$versions = $wgConf->listArchiveVersions();
+		$skin = $wgUser->getSkin();
+		$title = $this->getTitle();
+		foreach( $versions as $ts ){
+			if( $count > 10 ) {
+				$showAllLink = true;
+				break;
+			} elseif( in_array( $this->mWiki, $wgConf->getWikisInVersion( $ts ) ) ){
+				$count++;
+				$links[] = $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" );
+			} else {
+				$showAllLink = true;
+			}
+		}
+
 		$text = '<fieldset><legend>' . wfMsgHtml( 'configure-old' ) . '</legend>';
-		if( empty( $versions ) ){
+		if( !count( $links ) ){
 			$text .= wfMsgExt( 'configure-no-old', array( 'parse' ) );
 		} else {
 			$text .= wfMsgExt( 'configure-old-versions', array( 'parse' ) );
-			$text .= "<ul>\n";
-			$skin = $wgUser->getSkin();
-			$title = $this->getTitle();
-			if( count( $versions ) > 10 ){
-				$versions = array_slice( $versions, 0, 10 );
-				$link = SpecialPage::getTitleFor( 'ViewConfig' );
-				$moreLink = $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) );
-			} else {
-				$moreLink = '';
-			}
-			foreach( $versions as $ts ){
-				$text .= '<li>' . $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" ) . "</li>\n";
-			}
-			$text .= '</ul>' . $moreLink;
+			$text .= "<ul>\n<li>";
+			$text .= implode( "</li>\n<li>", $links );
+			$text .= "</li>\n</ul>\n";
+		}
+		if( $showAllLink ){
+			$link = SpecialPage::getTitleFor( 'ViewConfig' );
+			$text .= $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) );
 		}
 		$text .= '</fieldset>';
 		return $text;

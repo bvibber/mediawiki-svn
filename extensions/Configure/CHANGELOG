@@ -1,7 +1,12 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
-0.9.5 - 10 November 2008
+0.9.6 - 13 November 2008
+  * Version list on Special:ViewConfig now uses a pager.
+  * Listed version at the top Special:Configure and Special:Extension are only
+    shown when they contain the configuration for the wiki being modified.
+
+0.9.5 - 12 November 2008
   Added $wgNamespacesToBeSearchedProject.
 
 0.9.4 - 9 November 2008
