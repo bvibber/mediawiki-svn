@@ -41,11 +41,13 @@ class ContributionHistory extends SpecialPage {
 		$prevOffset = max( $offset - $limit , 0 );
 		$nextOffset = min( $offset + $limit, max( $count - $limit, 0 ) );
 		
+		$title = Title::newFromText( $wgTitle->getPrefixedText() . ( $language == 'en' ? '' : '/' . $language ) );
+		
 		$pagingLinks = array();
 		if( $prevOffset < $offset ) {
 			$pagingLinks[] = Xml::element( 'a',
 				array(
-					'href' => $wgTitle->getFullURL( 'offset=' . $prevOffset ),
+					'href' => $title->getFullURL( 'offset=' . $prevOffset ),
 				),
 				wfMsg( 'contrib-hist-previous' )
 			);
@@ -53,7 +55,7 @@ class ContributionHistory extends SpecialPage {
 		if( $nextOffset > 0 ) {
 			$pagingLinks[] = Xml::element( 'a',
 				array(
-					'href' => $wgTitle->getFullURL( 'offset=' . $nextOffset ),
+					'href' => $title->getFullURL( 'offset=' . $nextOffset ),
 				),
 				wfMsg( 'contrib-hist-next' )
 			);
