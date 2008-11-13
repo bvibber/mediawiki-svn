@@ -52,6 +52,11 @@ $messages['en'] = array(
 	
 	// Fundraiser statistics
 	'fundraiserstatistics' => 'Fundraiser statistics',
+	'fundraiserstats-date' => 'Date',
+	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-avg' => 'Average (USD)',
+	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-max' => 'Maximum (USD)',
 );
 
 /** Message documentation (Message documentation)

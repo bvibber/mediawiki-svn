@@ -26,7 +26,30 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		// Begin output
 		$this->setHeaders();
 		
-		$htmlOut = Xml::openElement( 'div', array( 'style' => 'margin-bottom: 10px;' ) );
+		$style = <<<END
+.fundraiserstats-view-box {
+	width: 100%;
+	height: 200px;
+	margin-top:20px;
+	border: solid 1px silver;
+}
+
+END;
+		$script = <<<END
+var currentLayerID = 'fundraiserstats-view-box-0';
+function replaceView( newLayerID ) {
+	var currentLayer = document.getElementById( currentLayerID );
+	currentLayer.style.display = 'none';
+	var newLayer = document.getElementById( newLayerID );
+	newLayer.style.display = 'block';
+	currentLayerID = newLayerID;
+}
+END;
+		
+		$htmlOut = Xml::element( 'style', array( 'type' => 'text/css' ), $style );
+		$htmlOut .= Xml::element( 'script', array( 'type' => 'text/javascript' ), $script );
+		
+		$htmlOut .= Xml::openElement( 'div', array( 'style' => 'margin-bottom: 20px;' ) );
 		$today = strtotime( date( 'M j Y' ) );
 		
 		$max = 0;
@@ -34,13 +57,15 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			$days = $this->getDailyTotals( $fundraiser['start'], $fundraiser['end'] );
 			// Determine maximimum for fundraiser
 			foreach ( $days as $day ) {
-				if ( $day[0] > $max ) {
-					$max = $day[0];
+				if ( $day[1] > $max ) {
+					$max = $day[1];
 				}
 			}
 		}
 		
 		$columns = array();
+		$views = array();
+		$view = 0;
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
 			$htmlOut .= Xml::element( 'span',
 				array(
@@ -64,7 +89,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			// Build columns
 			$column = 0;
 			foreach( $days as $day ) {
-				$height = ( 200 / $max ) * $day[0];
+				$height = ( 200 / $max ) * $day[1];
 				if ( !isset( $columns[$column] ) ) {
 					$columns[$column] = '';
 				}
@@ -81,12 +106,55 @@ class SpecialFundraiserStatistics extends SpecialPage {
 					);
 				}
 				$columns[$column] .= Xml::tags( 'td', array( 'valign' => 'bottom' ),
-					Xml::element( 'div', array( 'style' => $style ), '', false ) . $extra
+					Xml::element( 'div',
+						array(
+							'style' => $style,
+							'onMouseOver' => "replaceView( 'fundraiserstats-view-box-{$view}' )"
+						),
+						'',
+						false
+					) . $extra
 				);
+				
+				$viewHTML = Xml::openElement( 'table',
+					array(
+						'cellpadding' => 5,
+						'cellspacing' => 0,
+						'border' => 0,
+						'style' => 'margin:10px'
+					)
+				);
+				$viewHTML .= Xml::tags( 'tr', null,
+					Xml::element( 'td', null, wfMsg( 'fundraiserstats-date' ) ) .
+					Xml::element( 'td', null, $day[0] )
+				);
+				$viewHTML .= Xml::tags( 'tr', null,
+					Xml::element( 'td', null, wfMsg( 'fundraiserstats-total' ) ) .
+					Xml::element( 'td', null, $day[1] )
+				);
+				$viewHTML .= Xml::tags( 'tr', null,
+					Xml::element( 'td', null, wfMsg( 'fundraiserstats-avg' ) ) .
+					Xml::element( 'td', null, $day[2] )
+				);
+				$viewHTML .= Xml::tags( 'tr', null,
+					Xml::element( 'td', null, wfMsg( 'fundraiserstats-max' ) ) .
+					Xml::element( 'td', null, $day[3] )
+				);
+				$viewHTML .= Xml::closeElement( 'table' );
+				
+				$views[$day[1]] = Xml::tags( 'div',
+					array(
+						'id' => 'fundraiserstats-view-box-' . $view,
+						'class' => 'fundraiserstats-view-box',
+						'style' => 'display: ' . ( $view == 0 ? 'block' : 'none' )
+					),
+					$viewHTML
+				);
+				
 				$column++;
+				$view++;
 			}
 		}
-		
 		$htmlOut .= Xml::closeElement( 'div' );
 		
 		// Show bar graph
@@ -98,12 +166,33 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			)
 		);
 		$htmlOut .= Xml::openElement( 'tr' );
-		foreach( $columns as $column ) {
+		$htmlOut .= Xml::openElement( 'td' );
+		$htmlOut .= Xml::openElement( 'table',
+			array(
+				'cellpadding' => 0,
+				'cellspacing' => 0,
+				'border' => 0
+			)
+		);
+		$htmlOut .= Xml::openElement( 'tr' );
+		foreach( $columns as $i => $column ) {
 			$htmlOut .= $column;
-			$htmlOut .= Xml::tags( 'td', array( 'valign' => 'bottom' ),
-				Xml::element( 'div', array( 'style' => "width:4px;" ), '', false )
-			);
+			if ( $i < count( $columns ) - 1 ) {
+				$htmlOut .= Xml::tags( 'td', array( 'valign' => 'bottom' ),
+					Xml::element( 'div', array( 'style' => "width:4px;" ), '', false )
+				);
+			}
 		}
+		$htmlOut .= Xml::closeElement( 'tr' );
+		$htmlOut .= Xml::closeElement( 'table' );
+		$htmlOut .= Xml::closeElement( 'td' );
+		$htmlOut .= Xml::closeElement( 'tr' );
+		$htmlOut .= Xml::openElement( 'tr' );
+		$htmlOut .= Xml::openElement( 'td' );
+		foreach( $views as $view ) {
+			$htmlOut .= $view;
+		}
+		$htmlOut .= Xml::closeElement( 'td' );
 		$htmlOut .= Xml::closeElement( 'tr' );
 		$htmlOut .= Xml::closeElement( 'table' );
 		
@@ -122,8 +211,10 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		// Select sums and dates of contributions grouped by day
 		$res = $dbr->select( 'public_reporting',
 			array(
+				"FROM_UNIXTIME(received, '%Y-%m-%d')",
 				'sum(converted_amount)',
-				"FROM_UNIXTIME(received, '%Y-%m-%d')"
+				'avg(converted_amount)',
+				'max(converted_amount)',
 			),
 			array_merge(
 				array(
