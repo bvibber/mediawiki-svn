@@ -7,24 +7,24 @@
 $messages = array();
 
 $messages['en'] = array(
-	'passwordreset' => 'Password reset',
-	'passwordreset-desc'               => "[[Special:Passwordreset|Resets wiki user's passwords]] - requires 'passwordreset' privileges",
+	'passwordreset'                    => 'Password reset',
+	'passwordreset-desc'               => "[[Special:PasswordReset|Resets wiki user's passwords]] - requires 'passwordreset' privileges",
 	'passwordreset-invalidusername'    => 'Invalid username',
 	'passwordreset-emptyusername'      => 'Empty username',
 	'passwordreset-nopassmatch'        => 'Passwords do not match',
 	'passwordreset-badtoken'           => 'Invalid edit token',
-	'passwordreset-username'           => 'Username',
-	'passwordreset-newpass'            => 'New password',
-	'passwordreset-confirmpass'        => 'Confirm password',
+	'passwordreset-username'           => 'Username:',
+	'passwordreset-newpass'            => 'New password:',
+	'passwordreset-confirmpass'        => 'Confirm password:',
 	'passwordreset-submit'             => 'Reset password',
-	'passwordreset-success'            => 'Password has been reset for user_id: $1',
+	'passwordreset-success'            => 'Password has been reset for user ID: $1',
 	'passwordreset-disableuser'        => 'Disable user account?',
 	'passwordreset-disableuserexplain' => '(sets an invalid password hash - user cannot login)',
-	'passwordreset-disablesuccess'     => 'User account has been disabled (user ID: $1)',
+	'passwordreset-disablesuccess'     => 'User account has been disabled for user ID: $1',
 	'passwordreset-accountdisabled'    => 'Account has been disabled',
 	'disabledusers'                    => 'Disabled users',
 	'disabledusers-summary'            => 'This is a list of users that have been disabled via PasswordReset.',
-	'right-passwordreset'              => 'Reset password of a user ([[Special:Passwordreset|special page]])',
+	'right-passwordreset'              => 'Reset password of a user ([[Special:PasswordReset|special page]])',
 );
 
 /** Message documentation (Message documentation)
@@ -69,7 +69,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'passwordreset' => 'تمت إعادة ضبط كلمة السر',
-	'passwordreset-desc' => "[[Special:Passwordreset|يعيد ضبط كلمات سر مستخدم ويكي]] - يحتاج إلى صلاحيات 'passwordreset'",
+	'passwordreset-desc' => "[[Special:PasswordReset|يعيد ضبط كلمات سر مستخدم ويكي]] - يحتاج إلى صلاحيات 'passwordreset'",
 	'passwordreset-invalidusername' => 'اسم مستخدم غير صحيح',
 	'passwordreset-emptyusername' => 'اسم مستخدم فارغ',
 	'passwordreset-nopassmatch' => 'كلمات السر لا تتطابق',
@@ -85,7 +85,7 @@ $messages['ar'] = array(
 	'passwordreset-accountdisabled' => 'الحساب تم تعطيله',
 	'disabledusers' => 'مستخدمون معطلون',
 	'disabledusers-summary' => 'هذه قائمة بالمستخدمين الذين تم تعطيلهم من خلال إعادة ضبط كلمة السر.',
-	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:Passwordreset|صفحة خاصة]])',
+	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:PasswordReset|صفحة خاصة]])',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -93,7 +93,7 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'passwordreset' => 'تمت إعادة ضبط كلمة السر',
-	'passwordreset-desc' => "[[Special:Passwordreset|يعيد ضبط كلمات سر مستخدم ويكي]] - يحتاج إلى صلاحيات 'passwordreset'",
+	'passwordreset-desc' => "[[Special:PasswordReset|يعيد ضبط كلمات سر مستخدم ويكي]] - يحتاج إلى صلاحيات 'passwordreset'",
 	'passwordreset-invalidusername' => 'اسم مستخدم غير صحيح',
 	'passwordreset-emptyusername' => 'اسم مستخدم فارغ',
 	'passwordreset-nopassmatch' => 'كلمات السر لا تتطابق',
@@ -109,7 +109,7 @@ $messages['arz'] = array(
 	'passwordreset-accountdisabled' => 'الحساب تم تعطيله',
 	'disabledusers' => 'مستخدمون معطلون',
 	'disabledusers-summary' => 'هذه قائمة بالمستخدمين الذين تم تعطيلهم من خلال إعادة ضبط كلمة السر.',
-	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:Passwordreset|صفحة خاصة]])',
+	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:PasswordReset|صفحة خاصة]])',
 );
 
 /** Bulgarian (Български)
@@ -150,7 +150,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'passwordreset' => 'Passwort zurücksetzen',
-	'passwordreset-desc' => "[[Special:Passwordreset|Zurücksetzen eines Benutzer-Passwortes]] - ''passwordreset''-Recht notwendig",
+	'passwordreset-desc' => "[[Special:PasswordReset|Zurücksetzen eines Benutzer-Passwortes]] - ''passwordreset''-Recht notwendig",
 	'passwordreset-invalidusername' => 'Ungültiger Benutzername',
 	'passwordreset-emptyusername' => 'Leerer Benutzername',
 	'passwordreset-nopassmatch' => 'Passwörter stimmen nicht überein',
@@ -166,7 +166,7 @@ $messages['de'] = array(
 	'passwordreset-accountdisabled' => 'Benutzerkonto ist deaktiviert',
 	'disabledusers' => 'Deaktivierte Benutzerkonten',
 	'disabledusers-summary' => 'Dies ist die Liste der deaktivierten Benutzerkonten (via PasswordReset).',
-	'right-passwordreset' => 'Passwort eines Benutzers zurücksetzen ([[Special:Passwordreset|Spezialseite]])',
+	'right-passwordreset' => 'Passwort eines Benutzers zurücksetzen ([[Special:PasswordReset|Spezialseite]])',
 );
 
 /** Greek (Ελληνικά)
@@ -210,7 +210,7 @@ $messages['eo'] = array(
  */
 $messages['fi'] = array(
 	'passwordreset' => 'Salasanan alustus',
-	'passwordreset-desc' => "[[Special:Passwordreset|Alustaa käyttäjän salasanan]] – vaatii ''passwordreset''-oikeuden.",
+	'passwordreset-desc' => "[[Special:PasswordReset|Alustaa käyttäjän salasanan]] – vaatii ''passwordreset''-oikeuden.",
 	'passwordreset-invalidusername' => 'Virheellinen käyttäjätunnus',
 	'passwordreset-emptyusername' => 'Tyhjä käyttäjätunnus',
 	'passwordreset-nopassmatch' => 'Salasanat eivät vastaa toisiaan',
@@ -235,7 +235,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'passwordreset' => 'Remise à zéro du mot de passe',
-	'passwordreset-desc' => '[[Special:Passwordreset|Réinitialise le mot de passe wiki d’un utilisateur]] - nécessite les droits de « passwordreset »',
+	'passwordreset-desc' => '[[Special:PasswordReset|Réinitialise le mot de passe wiki d’un utilisateur]] - nécessite les droits de « passwordreset »',
 	'passwordreset-invalidusername' => "Nom d'usager inconnu",
 	'passwordreset-emptyusername' => "Nom d'usager vide",
 	'passwordreset-nopassmatch' => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
@@ -251,7 +251,7 @@ $messages['fr'] = array(
 	'passwordreset-accountdisabled' => 'Ce compte a été désactivé.',
 	'disabledusers' => 'Utilisateurs désactivés',
 	'disabledusers-summary' => 'Ceci est la liste des utilisateurs qui ont été désactivés par PasswordReset.',
-	'right-passwordreset' => 'Réinitialise le mot de passe d’un utilisateur ([[Special:Passwordreset|page spéciale]])',
+	'right-passwordreset' => 'Réinitialise le mot de passe d’un utilisateur ([[Special:PasswordReset|page spéciale]])',
 );
 
 /** Western Frisian (Frysk)
@@ -268,7 +268,7 @@ $messages['fy'] = array(
  */
 $messages['gl'] = array(
 	'passwordreset' => 'Eliminar o contrasinal',
-	'passwordreset-desc' => '[[Special:Passwordreset|Restablecer o contrasinal do usuario dun wiki]] (require privilexios "passwordreset")',
+	'passwordreset-desc' => '[[Special:PasswordReset|Restablecer o contrasinal do usuario dun wiki]] (require privilexios "passwordreset")',
 	'passwordreset-invalidusername' => 'Nome de usuario non válido',
 	'passwordreset-emptyusername' => 'Nome de usuario baleiro',
 	'passwordreset-nopassmatch' => 'Os contrasinais non coinciden',
@@ -284,7 +284,7 @@ $messages['gl'] = array(
 	'passwordreset-accountdisabled' => 'A conta foi desabilitada',
 	'disabledusers' => 'Usuarios desabilitados',
 	'disabledusers-summary' => 'Esta é unha listaxe dos usuarios que foron deshabilitados por medio de PasswordReset.',
-	'right-passwordreset' => 'Cambiar o usuario dun usuario ([[Special:Passwordreset|páxina especial]])',
+	'right-passwordreset' => 'Cambiar o usuario dun usuario ([[Special:PasswordReset|páxina especial]])',
 );
 
 /** Manx (Gaelg)
@@ -336,7 +336,7 @@ $messages['hil'] = array(
  */
 $messages['hr'] = array(
 	'passwordreset' => 'Ponovno postavi lozinku',
-	'passwordreset-desc' => "[[Special:Passwordreset|Ponovo postavljanje lozinke wiki suradnika]] - zahtijeva 'passwordreset' pravo",
+	'passwordreset-desc' => "[[Special:PasswordReset|Ponovo postavljanje lozinke wiki suradnika]] - zahtijeva 'passwordreset' pravo",
 	'passwordreset-invalidusername' => 'Neispravno suradničko ime',
 	'passwordreset-emptyusername' => 'Prazno suradničko ime',
 	'passwordreset-nopassmatch' => 'Lozinke se ne poklapaju',
@@ -352,7 +352,7 @@ $messages['hr'] = array(
 	'passwordreset-accountdisabled' => 'Suradnički račun je onesposobljen',
 	'disabledusers' => 'Onesposobljeni suradnici',
 	'disabledusers-summary' => 'Ovo je popis suradnika koji su onesposobljeni putem Ponovnog postavljanja lozinke.',
-	'right-passwordreset' => 'Ponovno postavljanje lozinke za suradnika ([[Special:Passwordreset|posebna stranica]])',
+	'right-passwordreset' => 'Ponovno postavljanje lozinke za suradnika ([[Special:PasswordReset|posebna stranica]])',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -360,7 +360,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'passwordreset' => 'Hesło wróćo stajić',
-	'passwordreset-desc' => "[[Special:Passwordreset|Staja wužiwarske hesła wróćo]] - wužaduje prawa 'passwordreset'",
+	'passwordreset-desc' => "[[Special:PasswordReset|Staja wužiwarske hesła wróćo]] - wužaduje prawa 'passwordreset'",
 	'passwordreset-invalidusername' => 'Njepłaćiwe wužiwarske mjeno',
 	'passwordreset-emptyusername' => 'Žane wužiwarske mjeno',
 	'passwordreset-nopassmatch' => 'Hesle njerunatej so',
@@ -403,7 +403,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'passwordreset' => 'Reinitiar contrasigno',
-	'passwordreset-desc' => "[[Special:Passwordreset|Reinitia le contrasigno de un usator del wiki]] - require le privilegio 'passwordreset'",
+	'passwordreset-desc' => "[[Special:PasswordReset|Reinitia le contrasigno de un usator del wiki]] - require le privilegio 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nomine de usator invalide',
 	'passwordreset-emptyusername' => 'Nomine de usator vacue',
 	'passwordreset-nopassmatch' => 'Le contrasignos non es identic',
@@ -419,7 +419,7 @@ $messages['ia'] = array(
 	'passwordreset-accountdisabled' => 'Le conto ha essite disactivate',
 	'disabledusers' => 'Usatores disactivate',
 	'disabledusers-summary' => 'Isto es un lista de usatores que ha essite disactivate per medio de PasswordReset.',
-	'right-passwordreset' => 'Reinitiar le contrasigno de un usator ([[Special:Passwordreset|pagina special]])',
+	'right-passwordreset' => 'Reinitiar le contrasigno de un usator ([[Special:PasswordReset|pagina special]])',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -456,7 +456,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'passwordreset' => 'Reimposta password',
-	'passwordreset-desc' => "[[Special:Passwordreset|Reimposta le password di utenti della wiki]] - richiede dei privilegi 'passwordreset'",
+	'passwordreset-desc' => "[[Special:PasswordReset|Reimposta le password di utenti della wiki]] - richiede dei privilegi 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nome utente non valido',
 	'passwordreset-emptyusername' => 'Nome utente vuoto',
 	'passwordreset-nopassmatch' => 'Le password non corrispondono',
@@ -472,7 +472,7 @@ $messages['it'] = array(
 	'passwordreset-accountdisabled' => "L'account è stato disabilitato",
 	'disabledusers' => 'Utenti disabilitati',
 	'disabledusers-summary' => 'Questa è la lista degli utenti che sono stati disabilitati con PasswordReset.',
-	'right-passwordreset' => 'Reimposta la password di un utente ([[Special:Passwordreset|pagina speciale]])',
+	'right-passwordreset' => 'Reimposta la password di un utente ([[Special:PasswordReset|pagina speciale]])',
 );
 
 /** Javanese (Basa Jawa)
@@ -506,7 +506,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'passwordreset' => 'Paßwoot zeröcksetze',
-	'passwordreset-desc' => '[[Special:Passwordreset|Säz enem Metmaache si Paßwoot zeröck]] — bruch et <code>passwordreset</code> Rääsch.',
+	'passwordreset-desc' => '[[Special:PasswordReset|Säz enem Metmaache si Paßwoot zeröck]] — bruch et <code>passwordreset</code> Rääsch.',
 	'passwordreset-invalidusername' => 'Dä Metmaacher-Name es verkeeht',
 	'passwordreset-emptyusername' => 'Dä Metmaacher-Name es leddisch',
 	'passwordreset-nopassmatch' => 'De Paßwööter sin unejaal',
@@ -522,7 +522,7 @@ $messages['ksh'] = array(
 	'passwordreset-accountdisabled' => 'Zojang still jelaat',
 	'disabledusers' => 'Stilljelaate Metmaacher',
 	'disabledusers-summary' => 'Hee es de Leß met (per Paßwoot Zeröcksetze) stilljelaate Metmaacher.',
-	'right-passwordreset' => 'Dat Paßwoot fun enem Metmaacher zeröck setze ([[Special:Passwordreset|Söndersigg]])',
+	'right-passwordreset' => 'Dat Paßwoot fun enem Metmaacher zeröck setze ([[Special:PasswordReset|Söndersigg]])',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -530,7 +530,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'passwordreset' => 'Passwuert zrécksetzen',
-	'passwordreset-desc' => "[[Special:Passwordreset|Zrécksetzen vu Benotzerpasswierder]] - Dir braucht dofir 'Passwordreset'-Rechter",
+	'passwordreset-desc' => "[[Special:PasswordReset|Zrécksetzen vu Benotzerpasswierder]] - Dir braucht dofir 'Passwordreset'-Rechter",
 	'passwordreset-invalidusername' => 'Onbekannte Benotzernumm',
 	'passwordreset-emptyusername' => 'Eidele Benotzernumm',
 	'passwordreset-nopassmatch' => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
@@ -628,7 +628,7 @@ $messages['nah'] = array(
  */
 $messages['nl'] = array(
 	'passwordreset' => 'Wachtwoord opnieuw instellen',
-	'passwordreset-desc' => "Voegt een [[Special:Passwordreset|speciale pagina]] toe om wachtwoorden van gebruikers opnieuw in te stellen - hiervoor is het recht 'passwordreset' nodig",
+	'passwordreset-desc' => "Voegt een [[Special:PasswordReset|speciale pagina]] toe om wachtwoorden van gebruikers opnieuw in te stellen - hiervoor is het recht 'passwordreset' nodig",
 	'passwordreset-invalidusername' => 'Onjuiste gebruiker',
 	'passwordreset-emptyusername' => 'Gebruiker niet ingegeven',
 	'passwordreset-nopassmatch' => 'De wachtwoorden komen niet overeen',
@@ -644,7 +644,7 @@ $messages['nl'] = array(
 	'passwordreset-accountdisabled' => 'Gebruiker is gedeactiveerd',
 	'disabledusers' => 'Gedeactiveerde gebruikers',
 	'disabledusers-summary' => 'Dit is een lijst van gebruikers die zijn gedeactiveerd via PasswordReset',
-	'right-passwordreset' => 'Wachtwoord van een gebruiker opnieuw instellen ([[Special:Passwordreset|speciale pagina]])',
+	'right-passwordreset' => 'Wachtwoord van een gebruiker opnieuw instellen ([[Special:PasswordReset|speciale pagina]])',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -661,7 +661,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'passwordreset' => 'Passordresetting',
-	'passwordreset-desc' => "[[Special:Passwordreset|Nullstill brukeres passord]] &ndash; krever 'passwordreset'-rettigheter",
+	'passwordreset-desc' => "[[Special:PasswordReset|Nullstill brukeres passord]] &ndash; krever 'passwordreset'-rettigheter",
 	'passwordreset-invalidusername' => 'Ugyldig brukernavn',
 	'passwordreset-emptyusername' => 'Tomt brukernavn',
 	'passwordreset-nopassmatch' => 'Passordene er ikke de samme',
@@ -677,7 +677,7 @@ $messages['no'] = array(
 	'passwordreset-accountdisabled' => 'Kontoen er blitt deaktivert',
 	'disabledusers' => 'Deaktiverte kontoer',
 	'disabledusers-summary' => 'Dette er en liste over kontoer som har blitt deaktiverte via passordresetting.',
-	'right-passwordreset' => 'Tilbakestille en brukers passord ([[Special:Passwordreset|spesialside]])',
+	'right-passwordreset' => 'Tilbakestille en brukers passord ([[Special:PasswordReset|spesialside]])',
 );
 
 /** Occitan (Occitan)
@@ -685,7 +685,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'passwordreset' => 'Remesa a zèro del senhal',
-	'passwordreset-desc' => '[[Special:Passwordreset|Torna inicializar lo senhal wiki d’un utilizaire]] - necessita los dreches de « passwordreset »',
+	'passwordreset-desc' => '[[Special:PasswordReset|Torna inicializar lo senhal wiki d’un utilizaire]] - necessita los dreches de « passwordreset »',
 	'passwordreset-invalidusername' => "Nom d'utilizaire desconegut",
 	'passwordreset-emptyusername' => "Nom d'utilizaire void",
 	'passwordreset-nopassmatch' => "Los senhals qu'avètz picats son pas identics.",
@@ -701,7 +701,7 @@ $messages['oc'] = array(
 	'passwordreset-accountdisabled' => 'Aqueste compte es estat desactivat.',
 	'disabledusers' => 'Utilizaires desactivats',
 	'disabledusers-summary' => 'Aquò es la tièra dels utilizaires que son estats desactivats per PasswordReset.',
-	'right-passwordreset' => 'Tòrna inicializar lo senhal d’un utilizaire ([[Special:Passwordreset|pagina especiala]])',
+	'right-passwordreset' => 'Tòrna inicializar lo senhal d’un utilizaire ([[Special:PasswordReset|pagina especiala]])',
 );
 
 /** Plautdietsch (Plautdietsch)
@@ -771,7 +771,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'passwordreset' => 'Repor Palavra-Chave',
-	'passwordreset-desc' => "[[Special:Passwordreset|Repõe palavras-chaves de utilizadores do wiki]] - requer privilégios 'passwordreset'",
+	'passwordreset-desc' => "[[Special:PasswordReset|Repõe palavras-chaves de utilizadores do wiki]] - requer privilégios 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nome de Utilizador Inválido',
 	'passwordreset-emptyusername' => 'Nome de Utilizador Vazio',
 	'passwordreset-nopassmatch' => 'Palavras-Chave não coincidem',
@@ -804,7 +804,7 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'passwordreset' => 'Сброс пароля',
-	'passwordreset-desc' => "[[Special:Passwordreset|Сбрасывает пароли участников вики-проекта]] — требуются права 'passwordreset'",
+	'passwordreset-desc' => "[[Special:PasswordReset|Сбрасывает пароли участников вики-проекта]] — требуются права 'passwordreset'",
 	'passwordreset-invalidusername' => 'Недопустимое имя участника',
 	'passwordreset-emptyusername' => 'Пустое имя участника',
 	'passwordreset-nopassmatch' => 'Пароли не совпадают',
@@ -827,7 +827,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'passwordreset' => 'Reset hesla',
-	'passwordreset-desc' => 'Umožňuje [[Special:Passwordreset|vygenerovanie nového hesla používateľovi]]. Vyžaduje oprávnenie „passwordreset“.',
+	'passwordreset-desc' => 'Umožňuje [[Special:PasswordReset|vygenerovanie nového hesla používateľovi]]. Vyžaduje oprávnenie „passwordreset“.',
 	'passwordreset-invalidusername' => 'Neplatné používateľské meno',
 	'passwordreset-emptyusername' => 'Nevyplnené používateľské meno',
 	'passwordreset-nopassmatch' => 'Heslá sa nezhodujú',
@@ -843,7 +843,7 @@ $messages['sk'] = array(
 	'passwordreset-accountdisabled' => 'Účet bol zablokovaný',
 	'disabledusers' => 'Vypnutí používatelia',
 	'disabledusers-summary' => 'Toto je zoznam používateľov, ktorí boli vypnutí prostredníctvom PasswordReset.',
-	'right-passwordreset' => 'Vygenerovať nové heslo pre používateľa ([[Special:Passwordreset|špeciálna stránka]])',
+	'right-passwordreset' => 'Vygenerovať nové heslo pre používateľa ([[Special:PasswordReset|špeciálna stránka]])',
 );
 
 /** Seeltersk (Seeltersk)
@@ -879,7 +879,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'passwordreset' => 'Lösenordsåterställning',
-	'passwordreset-desc' => "[[Special:Passwordreset|Återställ användarens lösenord]] - kräver 'passwordreset'-rättigheter",
+	'passwordreset-desc' => "[[Special:PasswordReset|Återställ användarens lösenord]] - kräver 'passwordreset'-rättigheter",
 	'passwordreset-invalidusername' => 'Ogiltigt användarnamn',
 	'passwordreset-emptyusername' => 'Tomt användarnamn',
 	'passwordreset-nopassmatch' => 'Lösenordet matchar inte',
@@ -895,7 +895,7 @@ $messages['sv'] = array(
 	'passwordreset-accountdisabled' => 'Kontot har avaktiverats',
 	'disabledusers' => 'Invalidisera konton',
 	'disabledusers-summary' => 'Detta är en lista över konton som har blivit invalidiserade via PasswordReset.',
-	'right-passwordreset' => 'Återställ en användares lösenord ([[Special:Passwordreset|specialsida]])',
+	'right-passwordreset' => 'Återställ en användares lösenord ([[Special:PasswordReset|specialsida]])',
 );
 
 /** Tamil (தமிழ்)
