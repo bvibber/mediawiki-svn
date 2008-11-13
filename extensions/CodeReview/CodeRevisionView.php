@@ -88,11 +88,6 @@ class CodeRevisionView extends CodeView {
 				"});</script>\n";
 		}
 		
-		$changes = $this->formatPropChanges();
-		if( $changes ) {
-			$html .= "<h2 id='code-changes'>". wfMsgHtml( 'code-prop-changes' ) ."</h2>\n" . $changes;
-		}
-		
 		$html .= '<div>' .
 			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
 			' ' .
@@ -101,6 +96,11 @@ class CodeRevisionView extends CodeView {
 			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
 			'</div>' . 
 			'</form>';
+			
+		$changes = $this->formatPropChanges();
+		if( $changes ) {
+			$html .= "<h2 id='code-changes'>". wfMsgHtml( 'code-prop-changes' ) ."</h2>\n" . $changes;
+		}
 
 		$wgOut->addHTML( $html );
 	}
@@ -206,10 +206,8 @@ class CodeRevisionView extends CodeView {
 		if( $wgUser->isAllowed( 'codereview-set-status' ) ) {
 			$repo = $this->mRepo->getName();
 			$rev = $this->mRev->getId();
-			return
-				Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
-				$this->buildStatusList() .
-				'</select>';
+			return Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
+				$this->buildStatusList() . xml::closeElement('select');
 		} else {
 			return htmlspecialchars( $this->statusDesc( $this->mRev->getStatus() ) );
 		}
@@ -219,10 +217,7 @@ class CodeRevisionView extends CodeView {
 		$states = CodeRevision::getPossibleStates();
 		$out = '';
 		foreach( $states as $state ) {
-			$list[$state] = $this->statusDesc( $state );
-			$out .= Xml::option(
-				$this->statusDesc( $state ),
-				$state,
+			$out .= Xml::option( $this->statusDesc( $state ), $state,
 				$this->mRev->getStatus() == $state );
 		}
 		return $out;
