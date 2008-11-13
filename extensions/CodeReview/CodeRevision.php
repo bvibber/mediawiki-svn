@@ -133,7 +133,8 @@ class CodeRevision {
 					'cpc_removed'   => $oldStatus,
 					'cpc_added'     => $status,
 					'cpc_timestamp' => $dbw->timestamp(),
-					'cpc_user'      => $user->getId()
+					'cpc_user'      => $user->getId(),
+					'cpc_user_text' => $user->getName()
 				),
 				__METHOD__
 			);
@@ -311,14 +312,39 @@ class CodeRevision {
 				'cc_rev_id' => $this->mId ),
 			__METHOD__,
 			array(
-				'ORDER BY' => 'cc_sortkey' ) );
-
+				'ORDER BY' => 'cc_sortkey' )
+		);
 		$comments = array();
 		foreach( $result as $row ) {
 			$comments[] = CodeComment::newFromRow( $this, $row );
 		}
 		$result->free();
 		return $comments;
+	}
+	
+	public function getPropChanges() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->select( 'code_prop_changes',
+			array(
+				'cpc_attrib',
+				'cpc_removed',
+				'cpc_added',
+				'cpc_timestamp',
+				'cpc_user',
+				'cpc_user_text'
+			), array(
+				'cpc_repo_id' => $this->mRepoId,
+				'cpc_rev_id' => $this->mId ),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'cpc_timestamp DESC' )
+		);
+		$changes = array();
+		foreach( $result as $row ) {
+			$changes[] = CodePropChange::newFromRow( $this, $row );
+		}
+		$result->free();
+		return $changes;
 	}
 	
 	protected function getCommentingUsers() {
@@ -391,7 +417,8 @@ class CodeRevision {
 					'cpc_removed'   => implode(',',$removeTags),
 					'cpc_added'     => implode(',',$addTags),
 					'cpc_timestamp' => $dbw->timestamp(),
-					'cpc_user'      => $user->getId()
+					'cpc_user'      => $user->getId(),
+					'cpc_user_text' => $user->getName()
 				),
 				__METHOD__
 			);
