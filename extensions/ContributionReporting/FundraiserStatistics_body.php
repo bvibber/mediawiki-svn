@@ -29,6 +29,17 @@ class SpecialFundraiserStatistics extends SpecialPage {
 		$htmlOut = Xml::openElement( 'div', array( 'style' => 'margin-bottom: 10px;' ) );
 		$today = strtotime( date( 'M j Y' ) );
 		
+		$max = 0;
+		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
+			$days = $this->getDailyTotals( $fundraiser['start'], $fundraiser['end'] );
+			// Determine maximimum for fundraiser
+			foreach ( $days as $day ) {
+				if ( $day[0] > $max ) {
+					$max = $day[0];
+				}
+			}
+		}
+		
 		$columns = array();
 		foreach ( $egFundraiserStatisticsFundraisers as $fundraiser ) {
 			$htmlOut .= Xml::element( 'span',
@@ -42,14 +53,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 			
 			// Get data for fundraiser
 			$days = $this->getDailyTotals( $fundraiser['start'], $fundraiser['end'] );
-			
-			// Determine maximimum for fundraiser
-			$max = 0;
-			foreach ( $days as $day ) {
-				if ( $day[0] > $max ) {
-					$max = $day[0];
-				}
-			}
 			
 			$todayStyle = 'position:absolute;' .
 						  'width:6px;' .
