@@ -465,7 +465,7 @@ $messages['co'] = array(
  */
 $messages['cs'] = array(
 	'hiderevision' => 'Natrvalo skrýt revize',
-	'hiderevision-desc' => 'Skrývá jednotlivé určené revize všem uživatelům (z právních důvodů apod.)',
+	'hiderevision-desc' => 'Skrytí jednotlivých revizí před všemi uživateli (z právních důvodů apod.)',
 	'group-oversight' => 'Dozorci',
 	'group-oversight-member' => 'dozorce',
 	'grouppage-oversight' => '{{ns:project}}:Dozorci',
@@ -479,9 +479,7 @@ $messages['cs'] = array(
 
 '''Zneužití tohoto systému povede k odebrání práv.'''
 
-Odstraněné položky nebudou viditelné nikomu prostřednictvím webové stránky,
-ale o mazáních se vede záznam a je možné je obnovit ručně
-administrátorům databáze v případě, že uděláte chybu.",
+Odstraněné položky nebude moci prostřednictvím webové stránky vidět nikdo, ale o mazáních se vede záznam a v případě chyby je může správce databáze ručně vrátit.",
 	'hiderevision-reason' => 'Důvod (bude zaznamenán neveřejně):',
 	'hiderevision-submit' => 'Natrvalo skrýt tyto údaje',
 	'hiderevision-tab' => 'Skrýt revizi',

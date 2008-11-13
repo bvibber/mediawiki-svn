@@ -72,6 +72,13 @@ $messages['bg'] = array(
 	'createbox-create' => 'Създаване',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'createbox-create' => 'Napravi',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'createbox-create' => 'Creà',
@@ -141,6 +148,13 @@ Non pode crear esta páxina, pero pode [{{fullurl:{{FULLPAGENAME}}|action=edit}}
  */
 $messages['grc'] = array(
 	'createbox-create' => 'Ποεῖν',
+);
+
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'createbox-create' => 'Tshóng-kien',
 );
 
 /** Hebrew (עברית)

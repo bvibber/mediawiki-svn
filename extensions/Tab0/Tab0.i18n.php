@@ -159,6 +159,13 @@ $messages['nl'] = array(
 	'tab0-desc' => 'Voegt het tabblad "0" toe dat verwijst naar de bewerkingspagina voor het bovenste deel van die pagina',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'tab0-desc' => 'Legg til ei «0»-arkfane som lenkjer til redigeringssida for den første seksjonen av sida',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

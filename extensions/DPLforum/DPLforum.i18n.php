@@ -333,6 +333,18 @@ $messages['nl'] = array(
 	'dplforum-toomany' => 'DPL Forum: te veel categorieën!',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'dplforum-desc' => 'DPL-basert forumtillegg',
+	'dplforum-by' => 'av',
+	'dplforum-edited' => '  - sist endra',
+	'dplforum-never' => 'Aldri',
+	'dplforum-toofew' => 'DPL-forum: For få kategoriar!',
+	'dplforum-toomany' => 'DPL-forum: For mange kategoriar!',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

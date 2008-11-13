@@ -877,6 +877,25 @@ $messages['nl'] = array(
 	'imagemap_poly_odd' => 'Fout: poly gevonden met een oneven aantal coördinaten op regel $1',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'imagemap_desc' => 'Gjer at ein kan nytte klikkbare bilete ved hjelp av <tt><nowiki><imagemap></nowiki></tt>.',
+	'imagemap_no_image' => 'Feil: må gje eit bilete i første linja',
+	'imagemap_invalid_image' => 'Fil: biletet er ugyldig eller eksisterer ikkje',
+	'imagemap_bad_image' => 'Feil: biletet er svartelista på denne sida',
+	'imagemap_no_link' => 'Feil: fann ingen gyldig lenke i slutten av linje $1',
+	'imagemap_invalid_title' => 'Feil: ugyldig tittel i lenke på linje $1',
+	'imagemap_missing_coord' => 'Feil: ikkje nok koordinatar for form på linje $1',
+	'imagemap_unrecognised_shape' => 'Feil: ukjend form på linje $1; kvar linje må starte med anten: default, rect, circle eller poly',
+	'imagemap_no_areas' => 'Feil: Minst eitt område må spesifiserast',
+	'imagemap_invalid_coord' => 'Feil: ugyldig koordinat i slutten av linje $1, må vere eit tal',
+	'imagemap_invalid_desc' => 'Feil: ugyldig desc-spesifisering, må vere ein av: <tt>$1</tt>',
+	'imagemap_description' => 'Om dette bilete',
+	'imagemap_poly_odd' => 'Feil: fann poly med eit oddetal koordinatar på rad $1',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

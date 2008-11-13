@@ -161,6 +161,15 @@ $messages['nl'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Aanmaken gebruikers beperken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Kontoopretting er slått av automatisk for ei lita stund på grunn av uvanleg mange innloggingsforsøk. Vent nokre minutt og prøv igjen.',
+	'acct_creation_global_hard_throttle_hit' => 'Kontoopretting er slått av automatisk i nokre sekund for å redusere masseregistreringsåtak. Vent ei lita stund og trykk «oppdater» i nettlesaren din for å prøve igjen.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Avgrensar talet på kontoar som kan opprettast i ein tidsperiode',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

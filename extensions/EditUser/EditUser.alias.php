@@ -65,6 +65,11 @@ $aliases['ht'] = array(
 	'EditUser' => array( 'EditeItilizatè' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'EditUser' => array( 'Szerkesztő szerkesztése' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'EditUser' => array( 'កែប្រែអ្នកប្រើប្រាស់' ),

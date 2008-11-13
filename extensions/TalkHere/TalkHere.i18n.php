@@ -478,6 +478,22 @@ De beheerders van deze site dragen geen verantwoordelijkheid voor de inhoud van 
 	'talkhere-collapse' => 'editor verbergen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'talkhere-desc' => 'Legg til diskusjonssida på innhaldssida',
+	'talkhere-foottext' => 'Kommentarane over vart lagt igjen av vitjande.
+
+Operatøren for sida kan ikkje ta ansvar for innhaldet i slike kommentarar.',
+	'talkhere-talkpage' => 'diskusjonsside',
+	'talkhere-notalk' => "''(ingen kommentarar enno)''",
+	'talkhere-addcomment' => 'legg til kommentar',
+	'talkhere-beforeinput' => 'Du kan legge til ein kommentar nedanfor',
+	'talkhere-loading' => 'lastar redigerar...',
+	'talkhere-collapse' => 'skjul redigerar',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

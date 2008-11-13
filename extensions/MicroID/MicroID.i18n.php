@@ -84,6 +84,14 @@ $messages['gl'] = array(
 	'tog-microid' => 'Publicar unha <a href="http://microid.org/">MicroID</a> para confirmar a conta con servizos externos',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'microid-desc' => 'ההרחבה מוסיפה [http://www.microid.org/ MicroID] לדפי המשתמשים לצורך אימות החשבון עם שירותים חיצוניים',
+	'tog-microid' => 'פרסום <a href="http://microid.org/">MicroID</a> לאימות החשבון עם שירותים חיצוניים',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

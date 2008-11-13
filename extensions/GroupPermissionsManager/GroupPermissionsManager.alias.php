@@ -40,6 +40,11 @@ $aliases['bs'] = array(
 	'SortPermissions' => array( 'PoredajDopustenja' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'GroupPermissions' => array( 'Permission des groupes' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'GroupPermissions' => array( 'Prava_suradničkih_skupina' ),

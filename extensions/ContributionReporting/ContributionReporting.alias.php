@@ -21,6 +21,13 @@ $aliases['bs'] = array(
 	'ContributionTotal' => array( 'DoprinosiUkupno' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'ContributionHistory' => array( 'Adományok története' ),
+	'ContributionStatistics' => array( 'Adományok statisztikája' ),
+	'ContributionTotal' => array( 'Adományok összesen' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'ContributionHistory' => array( 'ប្រវត្តិនៃការរួមចំនែក' ),

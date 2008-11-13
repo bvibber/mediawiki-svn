@@ -573,6 +573,26 @@ Zorg dat u niet zomaar volledige domeinen blokkeert waar gebruikers bestaan, zoa
 	'spamdifftool_submit_buttom' => 'OK',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'spamdifftool' => 'Handtering av spamsvartelista',
+	'spamdifftool-desc' => 'Gjev ein enkel måte å legge til nye element i spamsvartelista fra diffsider',
+	'spamdifftool_cantedit' => 'Du har diverre ikkje tilgang til å endre spamsvartelista.',
+	'spamdifftool_notext' => 'Ingen tekst vart lagt til i spamsvartelista. Klikk <a href=\'$1\'">her</a> for å halde fram.',
+	'spamdifftool_confirm' => "Stadfest at du vil legge til følgjande postar i spamsvartelista. (Rapporter eit problem <a href='$1' target='new'>her</a>.)",
+	'spamdifftool_summary' => 'Legg til i spamsvartelista',
+	'spamdifftool_urls_detected' => 'Under er ei liste over URL-ar som vart funne i endringa. 
+Velg dei du vil legge til i spamsvartelista. 
+Desse vala står i rekkefølgja strengast til mildast, blokkering av heile domenet vil blokkere alle lenkjer til alt som kjem frå dette domenet.
+
+Ikkje blokker heile domene til sider som er vert for mange brukarar, som blogpost.com, geocities.com osv.',
+	'spamdifftool_no_urls_detected' => "Fann ingen URL-ar. <a href='$1'>Gå tilbake</a>.",
+	'spamdifftool_spam_link_text' => 'legg til i spamlista',
+	'spamdifftool_option_domain' => 'heile domenet',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -655,6 +675,9 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'spamdifftool_cantedit' => 'As nossas desculpas - você não tem permissão para editar a lista negra de spam.',
+	'spamdifftool_no_urls_detected' => "Nenhuns URL foram detectados.
+Carregue <a href='$1'>aqui</a> para voltar.",
 	'spamdifftool_spam_link_text' => 'adicionar como spam',
 	'spamdifftool_option_domain' => 'todos deste domínio',
 	'spamdifftool_option_subdomain' => 'todos deste subdomínio',

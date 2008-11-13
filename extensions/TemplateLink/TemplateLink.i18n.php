@@ -238,6 +238,16 @@ $messages['nl'] = array(
 	'templatelink_newtitle' => '$1 (getranscludeerd)',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'templatelink' => 'Mal-lenkje',
+	'templatelink_desc' => 'Denne utvidinga kan vise ein mal som ei ny side',
+	'templatelink_empty' => 'Du må gje ein parameter.',
+	'templatelink_newtitle' => '$1 (vert inkludert)',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

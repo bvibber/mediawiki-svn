@@ -705,12 +705,39 @@ $4',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'todo' => 'Oppgåveliste',
+	'todo-desc' => 'Eksperimentell personleg utviding for [[Special:Todo|oppgåvelister]].',
+	'todo-tab' => 'oppgåver',
 	'todo-new-queue' => 'ny',
+	'todo-mail-subject' => 'Fullført oppgåve på oppgåvelista til $1',
+	'todo-mail-body' => 'Du bad om ei e-poststadfesting om fullføringa av ei oppgåve på oppgåvelista til $1.
+
+Oppgåve: $2
+Fullført: $3
+
+Oppgåva er merka som fullført, med denne kommentaren:
+$4',
+	'todo-invalid-item' => 'Manglande eller ugyldig oppgåve',
+	'todo-update-else-item' => 'Prøver å oppdatere ein annan person sine oppgåver',
+	'todo-unrecognize-type' => 'Ukjend type',
+	'todo-user-invalide' => 'Oppgåva er gjeve til ugyldig, mangalande eller upassande brukar.',
+	'todo-item-list' => 'Dine oppgåver',
+	'todo-no-item' => 'Ingen oppgåver.',
+	'todo-invalid-owner' => 'Ugyldig oppgåveeigar.',
+	'todo-add-queue' => 'Legg til kø…',
+	'todo-move-queue' => 'Flytt til kø…',
+	'todo-list-for' => 'Oppgåveliste for',
+	'todo-list-change' => 'Endre',
 	'todo-list-cancel' => 'Avbryt',
+	'todo-new-item' => 'Ny oppgåve',
+	'todo-issue-summary' => 'Samandrag:',
 	'todo-form-details' => 'Detaljar:',
+	'todo-form-email' => 'Skriv inn e-postadressa din her for å motta melding på e-post når oppgava er fullført:',
+	'todo-form-submit' => 'Utfør',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -195,6 +195,17 @@ $messages['nl'] = array(
 	'stalkerlog-log-text' => 'In dit logboek wordt opgeslagen wanneer gebruikers zich aan- en afgemeld hebben.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'stalkerlog-desc' => 'Legg til ein [[Special:Log/stalkerlog|logg]] over kortid brukarar loggar inn eller ut.',
+	'stalkerlog-log-login' => 'logga inn.',
+	'stalkerlog-log-logout' => 'logga ut.',
+	'stalkerlog-log-type' => 'Logg over inn- og utloggingar',
+	'stalkerlog-log-text' => 'Dette er ein logg over inn- og utloggingar.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

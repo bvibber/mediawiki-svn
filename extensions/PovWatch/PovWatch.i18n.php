@@ -346,6 +346,25 @@ $messages['he'] = array(
 
 יומן הדחיפות האחרונות לרשימות המעקב זמין בדף [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'ניתן לצפות ב[[Special:PovWatch/subscribers|רשימת הנרשמים]].',
+	'povwatch_subscriber_list_intro' => '<strong>רשימת המנויים</strong>',
+	'povwatch_not_allowed_subscribers' => 'אינכם מורשים לצפות ברשימת המנויים של PovWatch.',
+	'povwatch_unknown_subpage' => 'דף משנה בלתי ידוע.',
+	'povwatch_push' => 'דחיפה',
+	'povwatch_push_intro' => 'השתמשו בטופס שלהלן כדי לדחוף דפים לרשימות המעקב של המשתמשים המנויים.
+אנא הזהרו בעת הקלדת הכותרת: ניתן להוסיף אפילו כותרות שאינן קיימות, ואין כל דרך להסיר כותרת לאחר שנדחפה.',
+	'povwatch_title' => 'כותרת:',
+	'povwatch_comment' => 'הערה ליומן:',
+	'povwatch_no_log' => 'אין רשומות ביומן.',
+	'povwatch_no_subscribers' => 'אין מנויים.',
+	'povwatch_unsubscribe_intro' => 'אתם מנויים ל־PovWatch.
+לחצו על הכפתור שלהלן כדי לבטל את המינוי.',
+	'povwatch_unsubscribe' => 'ביטול המינוי',
+	'povwatch_subscribe_intro' => 'אינכם מנויים ל־PovWatch.
+לחצו על הכפתור שלהלן כדי להירשם כמנויים.',
+	'povwatch_subscribe' => 'הרשמה',
+	'povwatch_added' => 'נוסף',
+	'right-povwatch_admin' => 'ניהול הרשאות המשתמש להוספת דפים לרשימות המעקב של משתמשים אחרים',
+	'right-povwatch_user' => 'הוספת דפים לרשימות המעקב של משתמשים אחרים',
 );
 
 /** Hindi (हिन्दी)

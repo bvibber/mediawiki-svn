@@ -32,6 +32,11 @@ $aliases['fi'] = array(
 	'ImportFreeImages' => array( 'Tuo vapaita kuvia' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'ImportFreeImages' => array( 'ImporterImagesLibres' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ImportFreeImages' => array( 'Fräi Biller importéieren' ),

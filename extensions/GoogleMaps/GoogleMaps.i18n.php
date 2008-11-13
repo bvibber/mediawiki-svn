@@ -462,6 +462,7 @@ $wgGoogleMapsMessages['br'] = array(
 $wgGoogleMapsMessages['bs'] = array(
 	'gm-width' => 'Širina',
 	'gm-height' => 'Visina',
+	'gm-search' => 'Traži',
 	'gm-line-width' => 'Širina',
 	'gm-make-map' => 'napravi mapu',
 );

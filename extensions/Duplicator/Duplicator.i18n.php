@@ -389,6 +389,13 @@ $messages['gv'] = array(
 	'duplicator-source' => 'Bun:',
 );
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'duplicator-source' => 'Lòi-ngièn:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

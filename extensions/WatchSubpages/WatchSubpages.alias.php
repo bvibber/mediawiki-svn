@@ -49,6 +49,11 @@ $aliases['hsb'] = array(
 	'WatchSubpages' => array( 'Podstrony wobkedźbować' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'WatchSubpages' => array( 'Aloldalak figyelése' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'WatchSubpages' => array( 'Op Ungersigge oppasse', 'Op Ongersigge oppasse' ),

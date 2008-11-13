@@ -294,6 +294,13 @@ $messages['gv'] = array(
 	'passwordreset-username' => "Dt'ennym ymmydeyr",
 );
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'passwordreset-username' => 'Yung-fu-miàng',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

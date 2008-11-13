@@ -37,6 +37,11 @@ $aliases['fi'] = array(
 	'DeleteQueue' => array( 'Poistojono' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'DeleteQueue' => array( 'Törlési várólista' ),
+);
+
 /** Erzya (Эрзянь) */
 $aliases['myv'] = array(
 	'DeleteQueue' => array( 'НардамсПуло' ),

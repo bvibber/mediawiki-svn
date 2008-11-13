@@ -261,6 +261,13 @@ $messages['br'] = array(
 	'changeauthor-comment' => 'Notenn :',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'changeauthor-pagenameform-go' => 'Idi',
+);
+
 /** Catalan (Català)
  * @author Aleator
  * @author Jordi Roqué

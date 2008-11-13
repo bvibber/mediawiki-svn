@@ -336,6 +336,13 @@ $messages['gv'] = array(
 	'countedits-ok' => 'OK',
 );
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'countedits-username' => 'Yung-fu-miàng:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  */

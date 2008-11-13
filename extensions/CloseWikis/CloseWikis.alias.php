@@ -47,6 +47,11 @@ $aliases['hr'] = array(
 	'CloseWiki' => array( 'Zatvori_wiki' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'CloseWiki' => array( 'Wiki bezárása' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'CloseWiki' => array( 'បិទវិគី' ),

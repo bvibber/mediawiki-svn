@@ -40,6 +40,11 @@ $aliases['hsb'] = array(
 	'WhoIsWatching' => array( 'Štó wobkedźbuje' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'WhoIsWatching' => array( 'Ki figyel' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'WhoIsWatching' => array( 'អ្នកកំពុងតាមដាន' ),

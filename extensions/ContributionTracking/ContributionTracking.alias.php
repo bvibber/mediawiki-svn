@@ -18,6 +18,11 @@ $aliases['bs'] = array(
 	'ContributionTracking' => array( 'DoprinosiPracenje' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'ContributionTracking' => array( 'Adományok követése' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ContributionTracking' => array( 'DonatiesVolgen' ),

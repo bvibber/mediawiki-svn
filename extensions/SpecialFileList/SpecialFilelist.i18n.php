@@ -396,6 +396,17 @@ $messages['nl'] = array(
 	'filelist-image-desc' => 'beschrijving',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'filelist' => 'Filliste',
+	'filelist-desc' => '[[Special:Filelist|Spesialside]] som viser ei liste over opplasta filer',
+	'filelist-show-list' => 'Vis liste',
+	'filelist-show-gallery' => 'Vis galleri',
+	'filelist-image-desc' => 'skildring',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

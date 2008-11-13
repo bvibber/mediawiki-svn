@@ -142,6 +142,14 @@ $messages['bg'] = array(
 	'contribstats-total-ytd' => 'Общо (от началото на годината)',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'contribstats-percentage-ytd' => 'Procenat (YTD)',
+	'contribstats-total-ytd' => 'Ukupno (YTD)',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Mormegil
@@ -231,20 +239,45 @@ $messages['eo'] = array(
 	'contribstats-currency' => 'Valuto',
 	'contribstats-contributions' => 'Kontribuoj',
 	'contribstats-total' => 'Tuto (USD)',
+	'contribstats-min' => 'Minimuma (USD)',
+	'contribstats-max' => 'Maksimumo (USD)',
 );
 
 /** Persian (فارسی)
+ * @author Huji
  * @author Komeil 4life
  */
 $messages['fa'] = array(
+	'contributionreporting-desc' => 'گزارش زنده از جذب سرمایهٔ ویکی‌مدیا',
+	'contributiontotal' => 'جمع کمک‌ها',
 	'contributionhistory' => 'تاریخچه مشارکت',
+	'contrib-hist-header' => 'نظرات کمک‌کنندگان سراسر جهان به طور زنده',
 	'contrib-hist-name' => 'نام',
 	'contrib-hist-date' => 'تاریخ و زمان',
 	'contrib-hist-amount' => 'مبلغ',
+	'contrib-hist-next' => 'کمک‌های قدیمی‌تر',
+	'contrib-hist-previous' => 'کمک‌های جدیدتر',
+	'contrib-hist-anonymous' => 'گمنام',
+	'contributionstatistics' => 'آمار کمک‌ها',
+	'contribstats-desc' => 'نمایش آمار کمک‌های اهدا شده به بنیاد ویکی‌مدیا',
+	'contribstats-daily-totals' => '{{PLURAL:$1|جمع برای امروز|جمع روزانه برای $1 روز اخیر}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|جمع برای این ماه|جمع ماهانه برای $1 ماه قبل}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|جمع برای $1 ماه|جمع ماهانه برای $1 ماه}}',
+	'contribstats-currency-range-totals' => 'جمع درآمدها (از $1 تا $2)',
+	'contribstats-contribution-range-breakdown' => 'تفکیک کمک‌ها بر اساس ارزش (از $1 تا $2)',
+	'contribstats-currency-totals' => 'جمع درآمدها برای سال مالی $1',
+	'contribstats-contribution-breakdown' => 'تفکیک کمک‌ها بر اساس ارزش در سال مالی $1',
 	'contribstats-day' => 'روز',
 	'contribstats-month' => 'ماه',
+	'contribstats-currency' => 'واحد پول',
+	'contribstats-amount' => 'مقدار (دلار آمریکا)',
+	'contribstats-contributions' => 'مشارکت‌ها',
+	'contribstats-total' => 'جمع (دلار آمریکا)',
+	'contribstats-avg' => 'میانگین (دلار آمریکا)',
 	'contribstats-min' => 'حداقل (USD)',
 	'contribstats-max' => 'حداکثر (USD)',
+	'contribstats-percentage-ytd' => 'درصد (از ابتدای سال)',
+	'contribstats-total-ytd' => 'جمع (از ابتدای سال)',
 );
 
 /** Finnish (Suomi)
@@ -363,6 +396,64 @@ $messages['he'] = array(
 	'contribstats-total-ytd' => 'סך הכל (מתחילת השנה)',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'contrib-hist-name' => 'Ime',
+	'contrib-hist-date' => 'Vrijeme i datum',
+	'contrib-hist-amount' => 'Iznos',
+	'contrib-hist-next' => 'Ranije donacije',
+	'contrib-hist-previous' => 'Novije donacije',
+	'contrib-hist-anonymous' => 'Anoniman',
+	'contribstats-day' => 'Dan',
+	'contribstats-month' => 'Mjesec',
+	'contribstats-currency' => 'Valuta',
+	'contribstats-amount' => 'Iznos (USD)',
+	'contribstats-total' => 'Ukupno (USD)',
+	'contribstats-avg' => 'Prosječno (USD)',
+	'contribstats-min' => 'Najmanje (USD)',
+	'contribstats-max' => 'Najviše (USD)',
+	'contribstats-percentage-ytd' => 'Postotak (YTD)',
+	'contribstats-total-ytd' => 'Ukupno (YTD)',
+);
+
+/** Hungarian (Magyar)
+ * @author Bdamokos
+ */
+$messages['hu'] = array(
+	'contributionreporting-desc' => 'Élő jelentés a Wikimédia adománygyűjtéséről',
+	'contributiontotal' => 'Adományok összege',
+	'contributionhistory' => 'Adományok története',
+	'contrib-hist-header' => 'Adományozói megjegyzések a világ minden tájáról élőben',
+	'contrib-hist-name' => 'Név',
+	'contrib-hist-date' => 'Időpont',
+	'contrib-hist-amount' => 'Összeg',
+	'contrib-hist-next' => 'Korábbi adományok',
+	'contrib-hist-previous' => 'Frissebb adományok',
+	'contrib-hist-anonymous' => 'Névtelen',
+	'contributionstatistics' => 'Adományok statisztikája',
+	'contribstats-desc' => 'A Wikimédia Alapítvány részére nyújtott adományok statisztikáját mutatja',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Összesített adatok mára|Összesített napi adatok az elmúlt $1 napra}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Összesített adatok erre a hónapra|Összesített havi adatok az elmúlt $1 hónapra}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Összesített adatok $1 hónapra|Havi összesítések $1 hónapra}}',
+	'contribstats-currency-range-totals' => 'Pénznem összesített adatai ($1–$2)',
+	'contribstats-contribution-range-breakdown' => 'Az adományok összesítése érték alapján ($1–$2)',
+	'contribstats-currency-totals' => 'Pénznem összesítések a $1 pénzügyi évre',
+	'contribstats-contribution-breakdown' => 'Az adományok összesítése érték alapján a $1 pénzügyi évben',
+	'contribstats-day' => 'Nap',
+	'contribstats-month' => 'Hónap',
+	'contribstats-currency' => 'Pénznem',
+	'contribstats-amount' => 'Összeg (USD)',
+	'contribstats-contributions' => 'Adományok',
+	'contribstats-total' => 'Összesen (USD)',
+	'contribstats-avg' => 'Átlag (USD)',
+	'contribstats-min' => 'Minimum (USD)',
+	'contribstats-max' => 'Maximum (USD)',
+	'contribstats-percentage-ytd' => 'Százalék (YTD)',
+	'contribstats-total-ytd' => 'Összesen (YTD)',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -428,7 +519,29 @@ $messages['ksh'] = array(
 	'contrib-hist-name' => 'Name',
 	'contrib-hist-date' => 'Uhrzick un Dattum',
 	'contrib-hist-amount' => 'Betraach',
+	'contrib-hist-next' => 'Fröjer Spende',
+	'contrib-hist-previous' => 'Neuer Spende',
 	'contrib-hist-anonymous' => 'Namelos',
+	'contributionstatistics' => 'Spendeshtatistik',
+	'contribstats-desc' => 'Shtatistike över de Spende aan de Wikimedija-Shtefftung',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Jesamp för hück|Däächleshe Jesampzahle för de letzte $1 Dääsch|Kein Jesampzahle ze hann.}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Jesamp för diß Mohnd|Jesampzahle för de letzte $1 Moohnd|Kein Jesampzahle ze hann.}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Jesamp för eine Mohnd|Jesampzahle för $1 Mohnde|Kein Jesampzahle ze hann.}}',
+	'contribstats-currency-range-totals' => 'Jesamp en Jeld-Zoote, fun $1 beß $2',
+	'contribstats-contribution-range-breakdown' => 'Övverseech övver de Spende noh_m Wäät, fun $1 beß $2',
+	'contribstats-currency-totals' => 'Jesamp en Jeld-Zoote. för et Jeschäffsjohr $1',
+	'contribstats-contribution-breakdown' => 'Spendeövverssech noh_m Wäät, för et Jeschäffsjohr $1',
+	'contribstats-day' => 'Daach',
+	'contribstats-month' => 'Moohnd',
+	'contribstats-currency' => 'Jeld-Zoot',
+	'contribstats-amount' => 'Bedraach (en Dollar us de USA)',
+	'contribstats-contributions' => 'Spende-Beidrääch',
+	'contribstats-total' => 'Zosamme (en Dollar us de USA)',
+	'contribstats-avg' => 'Schnett (en Dollar us de USA)',
+	'contribstats-min' => 'Kleinste Spend (en Dollar us de USA)',
+	'contribstats-max' => 'Deckste Spend (en Dollar us de USA)',
+	'contribstats-percentage-ytd' => 'Prozent (zigg_et Johr aanjefange hät)',
+	'contribstats-total-ytd' => 'Jesamp (zigg_et Johr aanjefange hät)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

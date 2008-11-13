@@ -66,6 +66,14 @@ $messages['gl'] = array(
 	'substall-desc' => 'Crea unha etiqueta <nowiki><substall></nowiki> que expande todos os modelos en sintaxe wiki',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'substall-desc' => 'ההרחבה יוצרת תגית <nowiki><substall></nowiki> המרחיבה את כל התבניות לתחביר ויקי',
+	'substall-hook' => 'substall',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -100,6 +108,13 @@ $messages['ksh'] = array(
  */
 $messages['nl'] = array(
 	'substall-desc' => 'Voegt de tag <nowiki><substall></nowiki> toe die van alle sjablonen wikisyntaxis maakt',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'substall-desc' => 'Oppretter ein <nowiki><substall></nowiki>-tagg som utvidar alle malar til wikisyntaks',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

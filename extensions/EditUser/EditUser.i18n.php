@@ -150,6 +150,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'edituser-username' => 'Ime',
+	'edituser-dosearch' => 'Traži',
 );
 
 /** Buginese (ᨅᨔ ᨕᨘᨁᨗ)

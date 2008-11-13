@@ -668,10 +668,28 @@ riddler|Riddler',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'vote' => 'Avstemming',
+	'vote-header' => "Du kan stemme på '''(brukardøme)''' her!",
+	'vote-current' => "Di noverande stemme er på '''$1'''.",
+	'vote-legend' => 'Velg korleis du vil stemme',
+	'vote-caption' => 'Ditt val:',
+	'vote-choices' => 'brukar1|Første brukarnamn
+brukar2|Andre brukernamn
+brukar3|Tredje brukernamn',
+	'vote-submit' => 'Stem',
+	'vote-registered' => 'Stemma di er registrert.',
+	'vote-view-results' => 'Sjå resultat',
+	'vote-results' => 'Avstemmingsresultat',
+	'vote-results-choice' => 'Val',
+	'vote-results-count' => 'Tal',
+	'vote-results-none' => 'Ingen stemmer er gjeve enno.',
+	'vote-login' => 'Du må $1 for å stemme.',
 	'vote-login-link' => 'logg inn',
+	'vote-invalid-choice' => 'Du må velje eit av dei tilgjengelege alternativa.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

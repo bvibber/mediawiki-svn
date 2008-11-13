@@ -101,6 +101,7 @@ $4',
 );
 
 /** Message documentation (Message documentation)
+ * @author Dalibor Bosits
  * @author EugeneZelenko
  * @author Jon Harald Søby
  * @author McDutchie
@@ -110,6 +111,7 @@ $messages['qqq'] = array(
 	'code-field-id' => '{{Identical|Revision}}',
 	'code-field-author' => '{{Identical|Author}}',
 	'code-field-message' => '{{Identical|Comment}}',
+	'code-field-status' => '{{Identical|Status}}',
 	'code-field-timestamp' => '{{Identical|Date}}',
 	'code-field-comments' => '{{Identical|Notes}}',
 	'code-field-path' => '{{Identical|Path}}',
@@ -123,6 +125,10 @@ $messages['qqq'] = array(
 	'code-pathsearch-path' => '{{Identical|Path}}',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
+	'right-codereview-add-tag' => '{{doc-right}}',
+	'right-codereview-remove-tag' => '{{doc-right}}',
+	'right-codereview-post-comment' => '{{doc-right}}',
+	'right-codereview-set-status' => '{{doc-right}}',
 	'right-codereview-link-user' => '{{Doc-right}}',
 );
 
@@ -342,17 +348,33 @@ $4',
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'code' => 'Прагляд коду',
+	'code' => 'Рэцэнзаваньне коду',
 	'code-comments' => 'Камэнтары',
-	'code-notes' => 'камэнтары праглядаў',
+	'code-no-repo' => 'Адсутнічае сканфігураванае сховішча!',
+	'code-notes' => 'рэцэнзіі',
+	'code-authors' => 'аўтары',
+	'code-author-haslink' => 'Гэты аўтар асацыяваны з удзельнікам $1',
 	'code-field-id' => 'Вэрсія',
 	'code-field-author' => 'Аўтар',
-	'code-field-message' => 'Камэнтар',
+	'code-field-message' => 'Кароткае апісаньне зьменаў',
+	'code-field-status' => 'Статус',
+	'code-field-timestamp' => 'Дата',
+	'code-field-path' => 'Шлях',
 	'code-rev-author' => 'Аўтар:',
+	'code-rev-date' => 'Дата:',
 	'code-rev-message' => 'Камэнтар:',
+	'code-rev-rev' => 'Вэрсія:',
+	'code-rev-status' => 'Статус:',
+	'code-rev-status-set' => 'Зьмяніць статус',
+	'code-rev-comment-by' => 'Камэнтар $1',
 	'code-rev-comment-preview' => 'Прагляд',
+	'code-pathsearch-path' => 'Шлях:',
+	'codereview-reply-link' => 'адказаць',
 	'repoadmin-new-button' => 'Стварыць',
 	'repoadmin-edit-button' => 'Добра',
+	'right-codereview-post-comment' => 'Дадаць камэнтары да вэрсіяў',
+	'right-codereview-set-status' => 'Зьмяніць статус вэрсіяў',
+	'specialpages-group-developer' => 'Інструмэнты распрацоўшчыка',
 );
 
 /** Bulgarian (Български)
@@ -419,6 +441,7 @@ $messages['bs'] = array(
 	'code-field-comments' => 'Bilješke',
 	'code-rev-modified-d' => 'obrisano',
 	'code-status-new' => 'novi',
+	'repoadmin-new-button' => 'Kreiraj',
 	'right-codereview-link-user' => 'Poveži autore sa wiki korisnicima',
 );
 
@@ -1058,6 +1081,13 @@ $messages['grc'] = array(
 	'code-authors' => 'δημιουργοί',
 );
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'repoadmin-new-button' => 'Tshóng-kien',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -1198,16 +1228,44 @@ $messages['hr'] = array(
 	'code-rev-tag-remove' => 'Ukloni oznake:',
 	'code-rev-comment-by' => 'Komentirao $1',
 	'code-rev-comment-submit' => 'Postavi komentar',
+	'code-rev-comment-preview' => 'Pregled',
 	'code-rev-diff' => 'Raz',
 	'code-rev-diff-link' => 'raz',
+	'code-rev-purge-link' => 'očisti',
 	'code-status-new' => 'novo',
+	'code-status-fixme' => 'fixme',
 	'code-status-resolved' => 'riješeno',
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'odgođeno',
 	'code-pathsearch-legend' => 'Traži izmjene u ovom repozitoriju preko putanje',
 	'code-pathsearch-path' => 'Putanja:',
 	'code-rev-submit' => 'Predaj izmjene',
+	'code-rev-submit-next' => 'Predaj i slijedeće neriješeno',
 	'codereview-reply-link' => 'odgovori',
+	'codereview-email-subj' => '[$1] [r$2]: Dodan novi komentar',
+	'codereview-email-body' => 'Suradnik "$1" je ostavio komentar za r$3.
+
+Puni URL: $2
+
+Komentar:
+
+$4',
+	'repoadmin' => 'Administracija repozitorija',
+	'repoadmin-new-legend' => 'Napravi novi repozitorij',
+	'repoadmin-new-label' => 'Naziv repozitorija:',
+	'repoadmin-new-button' => 'Napravi',
+	'repoadmin-edit-legend' => 'Preinake repozitorija "$1"',
+	'repoadmin-edit-path' => 'Putanja repozitorija:',
+	'repoadmin-edit-bug' => 'Putanja za Bugzillu:',
+	'repoadmin-edit-view' => 'Putanja za ViewVC:',
+	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'Repozitorij "[[Special:Code/$1|$1]]" je uspješno preinačen.',
+	'right-codereview-add-tag' => 'Dodavanje nove oznake za revizije',
+	'right-codereview-remove-tag' => 'Uklanjanje oznake za revizije',
+	'right-codereview-post-comment' => 'Dodavanje komentara na reviziju',
+	'right-codereview-set-status' => 'Promijeni status revizije',
+	'right-codereview-link-user' => 'Povezivanje autora s wiki suradnikom',
+	'specialpages-group-developer' => 'Alati za razvijatelje',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1485,6 +1543,94 @@ $messages['it'] = array(
 	'specialpages-group-developer' => 'Tool di sviluppo',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'code' => 'Pamriksan kodhe',
+	'code-comments' => 'Komentar',
+	'code-desc' => '[[Special:Code|piranti pamriksan kodhe]] kanthi [[Special:RepoAdmin|dhukungan anak-vèrsi]]',
+	'code-no-repo' => "Ora ana panyimpenan (''repository'') kang dipilih (''configured'')",
+	'code-notes' => 'Cathetan pamriksan',
+	'code-authors' => 'pangarang',
+	'code-tags' => "tandha (''tag'')",
+	'code-authors-text' => "Ing ngisor dhaptar pangarang repo miturut ''commit'' sing anyar iki.",
+	'code-author-haslink' => 'Pangarang iki kahubung menyang panganggo wiki $1',
+	'code-author-orphan' => 'Pangarang iki ora kahubung menyang sawijining akun wiki',
+	'code-author-dolink' => 'Hubungaké pangarang iki menyang sawijining panganggo wiki',
+	'code-author-alterlink' => 'Owahi panganggo wiki sing kahubung menyang pangarang iki',
+	'code-author-orunlink' => "Utawa copot hubungan (''unlink'') panganggo wiki iki",
+	'code-author-name' => 'Lebokaké jeneng panganggo',
+	'code-author-success' => "Pangarang $1 wis kahubungaké (''linked'') menyang panganggo wiki $2",
+	'code-author-link' => 'hubungan?/sambungan?',
+	'code-author-unlink' => "copot hubungan (''unlink'')?",
+	'code-author-unlinksuccess' => "Pangarang $1 wis di copot-hubung (''unlink'')",
+	'code-field-id' => 'Révisi',
+	'code-field-author' => 'Pangarang',
+	'code-field-user' => 'Sing awèh komentar',
+	'code-field-message' => "Ringkesan ''commit''",
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Tanggal',
+	'code-field-comments' => 'Cathetan',
+	'code-field-path' => 'Jalur',
+	'code-field-text' => 'Cathetan',
+	'code-rev-author' => 'Pangarang',
+	'code-rev-date' => 'Tanggal',
+	'code-rev-message' => 'Komentar',
+	'code-rev-repo' => "Panyimpenan (''repository''):",
+	'code-rev-rev' => 'Révisi',
+	'code-rev-rev-viewvc' => "ing ''ViewVC''",
+	'code-rev-paths' => 'Jalur sing wis dimodhifikasi',
+	'code-rev-modified-a' => 'ditambahaké',
+	'code-rev-modified-r' => 'diganti',
+	'code-rev-modified-d' => 'dibusak',
+	'code-rev-modified-m' => 'dimodhifikasi',
+	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Status pangowahan',
+	'code-rev-tags' => "Tandha (''tag''):",
+	'code-rev-tag-add' => "Tambahi tandha (''tag''):",
+	'code-rev-tag-remove' => 'Busak tandha',
+	'code-rev-comment-by' => 'Komentar déning $1',
+	'code-rev-comment-submit' => 'Kirim komentar',
+	'code-rev-comment-preview' => 'Pratayang',
+	'code-rev-diff' => 'Diff',
+	'code-rev-diff-link' => 'diff',
+	'code-rev-purge-link' => 'Resiki',
+	'code-status-new' => 'anyar',
+	'code-status-fixme' => 'dandani',
+	'code-status-resolved' => 'diputusaké',
+	'code-status-ok' => 'ok',
+	'code-status-deferred' => 'ditundha',
+	'code-pathsearch-legend' => 'Golèki révisi ing jalur repo iki',
+	'code-pathsearch-path' => 'Jalur/lintasan',
+	'code-rev-submit' => "Owah-owahan ''commit''",
+	'codereview-reply-link' => 'wales/walesan',
+	'codereview-email-subj' => '[$1] [r$2]: Komentar anyar ditambahaké',
+	'codereview-email-body' => 'Panganggo "$1" awèh komentar ing r$3.
+
+URL jangkep: $2
+
+Komentar:
+
+$4',
+	'repoadmin' => "Administrasi Panyimpenan (''repository'')",
+	'repoadmin-new-legend' => "Gawé panyimpenan (''repository'') anyar",
+	'repoadmin-new-label' => "Jeneng panyimpenan (''repository''):",
+	'repoadmin-new-button' => 'Gawé',
+	'repoadmin-edit-legend' => "Modhifikasi panyimpenan (''repository'') \"\$1\"",
+	'repoadmin-edit-path' => "Jalur/lintasan panyimpenan (''repository''):",
+	'repoadmin-edit-bug' => 'Jalur Bugzilla',
+	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'Panyimpenan (\'\'repository\'\') "[[Special:Code/$1|$1]]" wis kasil dimodhifikasi.',
+	'right-repoadmin' => 'Tata kodhe panyimpenan',
+	'right-codereview-add-tag' => 'Tambahaké tandha anyar ing révisi',
+	'right-codereview-remove-tag' => 'Busak tandha saka révisi',
+	'right-codereview-post-comment' => 'Tambahaké komentar ing révisi',
+	'right-codereview-set-status' => 'Owahi status révisi',
+	'right-codereview-link-user' => 'Hubungaké pangarang menyang panganggo wiki',
+	'specialpages-group-developer' => 'Piranti déveloper',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -1535,15 +1681,29 @@ Kei xxxxx enjeshtallt.',
 	'code-author-unlinksuccess' => 'Dä Schriiver $1 es jäz nit mieh met dämm Wiki verlengk',
 	'code-field-id' => 'Version',
 	'code-field-author' => 'Schriiver',
+	'code-field-user' => 'Kommentaa-Schriever',
 	'code-field-status' => 'Shtattus',
 	'code-field-timestamp' => 'Dattum',
+	'code-field-comments' => 'Aanmerkunge',
+	'code-field-path' => 'Pad',
+	'code-field-text' => 'Notiz',
+	'code-rev-author' => 'Schriiver / Projrammierer:',
 	'code-rev-date' => 'Dattum:',
+	'code-rev-message' => 'Kommentaa:',
+	'code-rev-rev' => 'Version:',
+	'code-rev-rev-viewvc' => 'op <i lang="en">ViewVC</i>',
+	'code-rev-paths' => 'Jeänderte Pade:',
 	'code-rev-modified-a' => 'dobeij jedonn',
 	'code-rev-modified-r' => 'ußjetuusch',
 	'code-rev-modified-d' => 'fottjeschmeße',
 	'code-rev-modified-m' => 'jeändert',
 	'code-rev-status' => 'Shtattus:',
 	'code-rev-status-set' => 'Shtattus ändere',
+	'code-rev-comment-by' => 'Kommentaa vum „$1“',
+	'code-rev-comment-submit' => 'Ene Kommentaa schecke',
+	'code-rev-comment-preview' => 'Vör-Aansich',
+	'code-rev-diff' => 'Ungerscheed',
+	'code-rev-diff-link' => '{{int:code-rev-diff}}',
 	'code-status-new' => 'neu',
 	'code-status-resolved' => 'äleedesch',
 	'code-status-ok' => 'Jot',
@@ -1552,7 +1712,21 @@ Kei xxxxx enjeshtallt.',
 	'code-pathsearch-path' => 'Pahd:',
 	'code-rev-submit' => 'Änderunge övverdraare',
 	'codereview-reply-link' => 'antwoote',
+	'codereview-email-subj' => '[$1] [r$2]: Neue Kommentaa dobei jedonn',
+	'codereview-email-body' => 'Dä Metmaacher „$1“ hät ene Kommentaa för de r$3 loßjeloose.
+
+De janze URL es: $2
+
+Dä Kommentaa es:
+
+$4',
 	'repoadmin-new-button' => 'Aanläje',
+	'repoadmin-edit-bug' => '<i lang="en">Bugzilla</i> Pad:',
+	'repoadmin-edit-view' => '<i lang="en">ViewVC</i> Pad:',
+	'right-codereview-post-comment' => 'Donn enen Kommentaa för Versione loßlooße',
+	'right-codereview-set-status' => 'Dä Stattus vun ene Version ändere',
+	'right-codereview-link-user' => 'Schriiver op Metmaacher em Wiki verlinke',
+	'specialpages-group-developer' => 'Werkzeuch fö Entwecklere',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1631,7 +1805,9 @@ $4',
  * @author Aviator
  */
 $messages['ms'] = array(
+	'code' => 'Semakan Kod',
 	'code-comments' => 'Ulasan',
+	'code-desc' => '[[Special:Code|Alat semakan kod]] dengan [[Special:RepoAdmin|sokongan Subversion]]',
 	'code-authors' => 'pengarang',
 	'code-tags' => 'label',
 	'code-author-name' => 'Masukkan nama pengguna:',
@@ -1806,25 +1982,92 @@ $4',
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  */
 $messages['no'] = array(
+	'code' => 'Kodegjennomgang',
 	'code-comments' => 'Kommentarer',
+	'code-desc' => '[[Special:Code|Kodegjennomgangsverktøy]] med [[Special:RepoAdmin|støtte for Subversion]]',
+	'code-no-repo' => 'Ingen database konfigurert!',
+	'code-notes' => 'Gjennomgå notater',
+	'code-authors' => 'forfattere',
+	'code-tags' => 'tagger',
+	'code-authors-text' => 'Nedenfor er en liste over repo-forfattere sortert etter siste commits.',
+	'code-author-haslink' => 'Denne forfatteren er lenket til wikibruker $1',
+	'code-author-orphan' => 'Denne forfatteren har ingen lenke til en wiki-konto',
+	'code-author-dolink' => 'Lenk denne forfatteren til en wikibruker:',
+	'code-author-alterlink' => 'Endre denne wikibrukeren til denne forfatteren:',
+	'code-author-orunlink' => 'Eller fjern lenke til denne wikibrukeren:',
+	'code-author-name' => 'Skriv inn et brukernavn:',
+	'code-author-success' => 'Forfatteren $1 har blitt lenket med wikibruker $2',
+	'code-author-link' => 'lenke?',
+	'code-author-unlink' => 'fjern lenke?',
+	'code-author-unlinksuccess' => 'Forfatter $1 er ikke lenger lenket',
 	'code-field-id' => 'Revisjon',
+	'code-field-author' => 'Forfatter',
+	'code-field-user' => 'Kommentator',
+	'code-field-message' => 'Endringssammendrag',
+	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Dato',
 	'code-field-comments' => 'Notater',
 	'code-field-path' => 'Sti',
 	'code-field-text' => 'Notat',
+	'code-rev-author' => 'Forfatter:',
 	'code-rev-date' => 'Dato:',
 	'code-rev-message' => 'Kommentar:',
+	'code-rev-repo' => 'Database:',
 	'code-rev-rev' => 'Revisjon:',
+	'code-rev-rev-viewvc' => 'på ViewVC',
+	'code-rev-paths' => 'Endrede stier:',
+	'code-rev-modified-a' => 'lagt til',
+	'code-rev-modified-r' => 'erstattet',
+	'code-rev-modified-d' => 'slettet',
+	'code-rev-modified-m' => 'endret',
 	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Endre status',
+	'code-rev-tags' => 'Tagger:',
+	'code-rev-tag-add' => 'Legg til tagger:',
+	'code-rev-tag-remove' => 'Fjern tagger:',
+	'code-rev-comment-by' => 'Kommentar av $1',
+	'code-rev-comment-submit' => 'Send inn kommentar',
 	'code-rev-comment-preview' => 'Forhåndsvisning',
+	'code-rev-diff' => 'Diff',
+	'code-rev-diff-link' => 'diff',
+	'code-rev-purge-link' => 'Rense',
 	'code-status-new' => 'ny',
+	'code-status-fixme' => 'Fixmeg',
+	'code-status-resolved' => 'løst',
 	'code-status-ok' => 'OK',
+	'code-status-deferred' => 'utsatt',
+	'code-pathsearch-legend' => 'Søk revisjoner i denne repo etter sti',
 	'code-pathsearch-path' => 'Sti:',
+	'code-rev-submit' => 'Legg inn endringer',
+	'code-rev-submit-next' => 'Lagre og neste uløste',
 	'codereview-reply-link' => 'svar',
+	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar lagt inn',
+	'codereview-email-body' => 'Bruker $1 la inn en kommentar på r$3
+
+Fullstendig URL: $2
+
+Kommentar:
+
+$4',
+	'repoadmin' => 'Databaseadministrasjon',
+	'repoadmin-new-legend' => 'Lag en ny database',
+	'repoadmin-new-label' => 'Databasenavn',
 	'repoadmin-new-button' => 'Opprett',
+	'repoadmin-edit-legend' => 'Endring av database "$1"',
+	'repoadmin-edit-path' => 'Database-sti:',
+	'repoadmin-edit-bug' => 'Bugzilla-URL:',
+	'repoadmin-edit-view' => 'ViewVC URL',
 	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'Database [[Special:Code/$1|$1]] har blitt endret.',
+	'right-repoadmin' => 'Håndtere kodedatabaser',
+	'right-codereview-add-tag' => 'Legg til nye tagger til versjoner',
+	'right-codereview-remove-tag' => 'Fjern tagger fra versjon',
+	'right-codereview-post-comment' => 'Legge til kommentarer til revisjoner',
+	'right-codereview-set-status' => 'Endre versjonens status',
+	'right-codereview-link-user' => 'Lenke forfattere til wikibrukere',
 	'specialpages-group-developer' => 'Utviklerverktøy',
 );
 
@@ -2074,6 +2317,14 @@ $4',
 	'specialpages-group-developer' => 'Ferramentas de desenvolvimento',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'code-authors' => 'le autore',
+	'code-tags' => 'le tag',
+);
+
 /** Russian (Русский)
  * @author Kaganer
  * @author Александр Сигачёв
@@ -2163,6 +2414,19 @@ $4',
 	'right-codereview-set-status' => 'Изменение статуса редакций',
 	'right-codereview-link-user' => 'Связь авторов с учётными записями вики-проекта',
 	'specialpages-group-developer' => 'Инструменты разработчика',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'code-comments' => 'Быһаарыылар',
+	'code-field-user' => 'Ырытааччы',
+	'code-field-status' => 'Турук',
+	'code-field-timestamp' => 'Күнэ-дьыла',
+	'code-rev-message' => 'Быһаарыы:',
+	'code-rev-status' => 'Туруга:',
+	'code-status-ok' => 'сөп',
 );
 
 /** Slovak (Slovenčina)

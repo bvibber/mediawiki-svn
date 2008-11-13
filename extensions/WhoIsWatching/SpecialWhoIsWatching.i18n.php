@@ -343,9 +343,11 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Frokor
  */
 $messages['nn'] = array(
 	'whoiswatching' => 'Kven overvakar ei wikiside',
+	'whoiswatching-desc' => 'Viser ei liste over brukarar som overvaker ei side',
 	'specialwhoiswatchingthepage' => 'Kven overvakar %s',
 	'specialwhoiswatchingusage' => 'Denne spesialsida kan ikkje brukast åleine.
 Ver venleg og bruk sida [[MediaWiki:Number_of_watching_users_pageview]] for å legge inn tilgangspunkt til denne spesialsida.',

@@ -149,6 +149,13 @@ $messages['nl'] = array(
 	'trustedxff-desc' => 'Beheert een lijst met adressen van vertrouwde proxyservers ([http://meta.wikimedia.org/wiki/XFF_project XFF-project])',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'trustedxff-desc' => 'Handsaming av ei liste over pålitelege proxyadresser ([http://meta.wikimedia.org/wiki/XFF_project XFF-prosjektet])',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

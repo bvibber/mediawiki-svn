@@ -663,10 +663,25 @@ Zie het [[{{MediaWiki:Multipleupload-page}}|verwijderingsbeleid van bestanden]].
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
 	'multipleupload' => 'Last opp filer',
+	'multipleupload-desc' => 'Gjer det mogeleg å [[Special:MultipleUpload|laste opp fleire filer samstundes]]',
+	'multipleupload-ignoreallwarnings' => "Ignorer '''alle åtvaringar''' og lagre filene likevel.",
+	'multipleupload-saveallfiles' => 'Lagre alle filer',
+	'multipleupload-addresswarnings' => 'Ver vennleg å ta omsyn til alle åtvaringar før du laster opp filene igjen.',
+	'multipleupload-page' => '{{ns:project}}:Retningslinjer for filsletting',
+	'multipleupload-text' => "Last opp fleire filer her.
+
+Velg «Naviger» og velg dei filene du ønsker å laste opp. Du kan laste opp mellom 1 og $1 filer på éin gong.
+
+Du kan skrive inn eit valfritt '''målnamn''' og gje eit '''samandrag''' for å skildre fila.
+
+Upassande filer vil bli sletta med ein gong, sjå [[{{MediaWiki:Multipleupload-page}}|retningslinjene for filsletting]].",
+	'multiupload-fileuploaded' => 'Fil lasta opp.',
+	'multiupload-toolbox' => 'Last opp fleire filer',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

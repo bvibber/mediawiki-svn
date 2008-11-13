@@ -422,6 +422,14 @@ $messages['pl'] = array(
 	'slippymap_maperror' => 'Błąd mapy:',
 );
 
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'slippymap_latmissing' => 'Faltando o valor lat (para a latitude).',
+	'slippymap_lonmissing' => 'Faltando o valor lon (para a longitude).',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

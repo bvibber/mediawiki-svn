@@ -37,6 +37,11 @@ $aliases['bs'] = array(
 	'ChemicalSources' => array( 'HemijskiIzvori' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'ChemicalSources' => array( 'Vegyszer források' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ChemicalSources' => array( 'Chemisch Quellen' ),

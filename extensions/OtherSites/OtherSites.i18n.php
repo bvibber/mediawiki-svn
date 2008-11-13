@@ -166,6 +166,7 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'othersites' => 'Andra sajter',
+	'othersites-desc' => 'Flyttar interwikilänkar som inte är andra språk till sin egen box',
 );
 
 /** Telugu (తెలుగు)

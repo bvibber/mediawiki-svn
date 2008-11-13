@@ -117,6 +117,16 @@ $messages['gl'] = array(
 	'spl3_nosubpages' => '$1 non ten subpáxinas para poñer nunha listaxe.',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'spl3-desc' => 'יצירת רשימת דפי המשנה של דף באמצעות התגית <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'ערך לא ידוע עבור האפשרות $1.',
+	'spl3_nosubpages' => 'ל־$1 אין דפי משנה להצגה.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -187,6 +197,15 @@ $messages['nl'] = array(
 	'spl3-desc' => "Maakt automatisch een lijst met de subpagina's van een pagina met de tag <code><nowiki><splist /></nowiki></code>",
 	'spl3_debug' => 'Onbekende waarde voor optie $1.',
 	'spl3_nosubpages' => "$1 heeft geen weer te geven subpagina's",
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'spl3-desc' => 'Lagar automatisk ei liste over undersidene til ei side ved å bruke taggen <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Ukjend verdi for val $1.',
+	'spl3_nosubpages' => '$1 har ingen undersider å vise.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

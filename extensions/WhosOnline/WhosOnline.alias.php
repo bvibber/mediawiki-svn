@@ -54,6 +54,11 @@ $aliases['hsb'] = array(
 	'WhosOnline' => array( 'Štó je online' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'WhosOnline' => array( 'Ki van online' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'WhosOnline' => array( 'អ្នកកំពុងនៅអនឡាញ' ),

@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ViewXML' => array( 'عرض_إكس_إم_إل' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'ViewXML' => array( 'XML megtekintése' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ViewXML' => array( 'XML weisen' ),

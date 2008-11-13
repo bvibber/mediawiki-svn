@@ -47,6 +47,11 @@ $aliases['fr'] = array(
 	'Call' => array( 'Appeler', 'Appels', 'Appel' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'Call' => array( 'Hívás' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'Call' => array( 'Opruff' ),

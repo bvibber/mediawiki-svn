@@ -137,6 +137,13 @@ $messages['nl'] = array(
 	'randomimage-desc' => 'Voegt de tag <tt>&lt;randomimage /&gt;</tt> toe voor het selecteren van een willekeurig mediabestand',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'randomimage-desc' => 'Gjev ei tilfeldig mediefil ved å nytte <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

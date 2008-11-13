@@ -815,12 +815,15 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Frokor
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
 	'specialuserstats' => 'Statistikk over bruk',
 	'usagestatistics' => 'Statistikk over bruk',
+	'usagestatistics-desc' => 'Vis statistikk for individuelle brukarar og for heile wikien',
 	'usagestatisticsfor' => '<h2>Statistikk over bruk for [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Bruksstatistikk for alle brukarar</h2>',
 	'usagestatisticsinterval' => 'Intervall',
 	'usagestatisticstype' => 'Type',
 	'usagestatisticsstart' => 'Startdato',
@@ -829,7 +832,16 @@ $messages['nn'] = array(
 	'usagestatisticsnostart' => '* <font color=red>Ver venleg og oppgje startdato</font>',
 	'usagestatisticsnoend' => '* <font color=red>Ver venleg og oppgje sluttdato</font>',
 	'usagestatisticsbadstartend' => '<b>Ugyldig <i>start</i>– og/eller <i>slutt</i>dato!</b>',
+	'usagestatisticsintervalday' => 'Dag',
+	'usagestatisticsintervalweek' => 'Veke',
 	'usagestatisticsintervalmonth' => 'Månad',
+	'usagestatisticsincremental' => 'Veksande',
+	'usagestatisticsincremental-text' => 'veksande',
+	'usagestatisticscumulative' => 'Kumulativ',
+	'usagestatisticscumulative-text' => 'kumulativ',
+	'usagestatisticscalselect' => 'Velg',
+	'usagestatistics-editindividual' => 'Redigeringsstatistikk for $1',
+	'usagestatistics-editpages' => 'Sidestatistikk for $1',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

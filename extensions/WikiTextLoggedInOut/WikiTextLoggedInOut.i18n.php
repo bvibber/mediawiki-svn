@@ -91,6 +91,13 @@ $messages['it'] = array(
 	'wikitextloggedinout-desc' => "Due hook del parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt> per mostrare testi differenti a seconda dello stato di login dell'utente",
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'wikitextloggedinout-desc' => 'Loro kait parser, <tt>&lt;loggedin&gt;</tt> lan <tt>&lt;loggedout&gt;</tt> sing nampilaké tèks sing béda gumantung status log mlebu panganggo',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -110,6 +117,13 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'wikitextloggedinout-desc' => 'Twee parserhooks: <tt>&lt;loggedin&gt;</tt> en <tt>&lt;loggedout&gt;</tt> om andere tekst weer te geven afhankelijk van de aanmeldstatus van een gebruiker',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'wikitextloggedinout-desc' => "To ''parser hooks'', <tt>&lt;loggedin&gt;</tt> og <tt>&lt;loggedout&gt;</tt> for å vise forskjellig tekst avhengig av innloggingsstatusen til brukaren",
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

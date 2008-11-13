@@ -533,9 +533,13 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'onlinestatus-desc' => 'Lägger till en inställning för att visa om användaren är ansluten eller ej på wikin',
+	'onlinestatus-js-anon' => 'Fel: du måste vara inloggad för att använda denna funktionen',
+	'onlinestatus-js-changed' => 'Din status har ändrats till "$1"',
+	'onlinestatus-js-error' => 'Kunde inte ändra status, värdet "$1" är ogiltigt',
 	'onlinestatus-subtitle-offline' => 'Denna användare är ej ansluten',
 	'onlinestatus-subtitle-online' => 'Denna användare är ansluten',
 	'onlinestatus-tab' => 'Status',

@@ -64,6 +64,11 @@ $aliases['gl'] = array(
 	'Vote' => array( 'Votar' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'Vote' => array( 'Szavazás' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Vote' => array( 'Beri suara' ),

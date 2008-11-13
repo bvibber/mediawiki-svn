@@ -226,6 +226,13 @@ $messages['nl'] = array(
 	'titlekey-desc' => 'Backend voor zoeksuggesties voor paginanaamvoorvoegsels',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'titlekey-desc' => 'Bakstykke for søk etter tittelprefiks',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

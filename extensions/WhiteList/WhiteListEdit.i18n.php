@@ -289,12 +289,14 @@ $messages['bg'] = array(
 	'whitelistoverviewcd' => "* Промяна на датата за [[:$2|$2]] на '''$1'''",
 	'whitelistoverviewrm' => '* Премахване на достъпа до [[:$1|$1]]',
 	'whitelistrequest' => 'Поискване на достъп до още страници',
-	'whitelistrequestmsg' => '$1 пожела достъп до следните страници:
+	'whitelistrequestmsg' => '$1 пожела достъп до {{PLURAL:$3|следната страница|следните страници}}:
 
 $2',
 	'whitelistrequestconf' => 'Заявка за нови страници беше изпратена на $1',
 	'whitelistnever' => 'никога',
 	'whitelistnummatches' => ' - {{PLURAL:$1|едно съвпадение|$1 съвпадения}}',
+	'group-manager' => 'Управители',
+	'group-manager-member' => 'Управител',
 );
 
 /** Breton (Brezhoneg)
@@ -316,6 +318,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'whitelisttablemodifyall' => 'Sve',
+	'whitelisttableedit' => 'Uredi',
 	'whitelistrequestmsg' => '$1 zahtijeva pristup slijedećim stranicama:
 
 $2',
@@ -802,8 +805,10 @@ $messages['it'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
+	'whitelist-desc' => "Sunting idin aksès saka panganggo kawates (''restricted'')",
 	'whitelistedit' => 'Editor Aksès Daftar Putih',
 	'whitelist' => 'Kaca-kaca Daftar Putih',
 	'mywhitelistpages' => 'Kaca-kacaku',
@@ -823,6 +828,8 @@ $messages['jv'] = array(
 	'whitelisttablesetedit' => 'Sèt kanggo Nyunting',
 	'whitelisttablesetview' => 'Sèt kanggo Ndeleng',
 	'whitelisttableremove' => 'Busak',
+	'whitelistnewpagesfor' => "Tambah kaca anyar menyang <b>$1's</b> white list<br />
+Pigunakaké * apa % minangka karakter ''wildcard''",
 	'whitelistnewtabledate' => 'Tanggal kadaluwarsa:',
 	'whitelistnewtableedit' => 'Set kanggo Nyunting',
 	'whitelistnewtableview' => 'Set kanggo Ndeleng',
@@ -1141,13 +1148,64 @@ Deze pagina is alleen van toepassing op gebruikers met beperkte rechten.",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'whitelist-desc' => 'Endring tilgangsrettar for avgrensa brukarar',
+	'whitelistedit' => 'Endring av rettar for kvitliste',
+	'whitelist' => 'Kvitelista sider',
+	'mywhitelistpages' => 'Mine sider',
+	'whitelistfor' => '<center>Noverande informasjon for <b>$1</b></center>',
+	'whitelisttablemodify' => 'Endre',
+	'whitelisttablemodifyall' => 'Alle',
 	'whitelisttablemodifynone' => 'Ingen',
+	'whitelisttablepage' => 'Wikiside',
+	'whitelisttabletype' => 'Tilgangstype',
+	'whitelisttableexpires' => 'Utgår',
+	'whitelisttablemodby' => 'Sist endra av',
+	'whitelisttablemodon' => 'Sist endra',
 	'whitelisttableedit' => 'Endre',
+	'whitelisttableview' => 'Vis',
+	'whitelisttablenewdate' => 'Ny dato:',
+	'whitelisttablechangedate' => 'Endre utgangsdato',
+	'whitelisttablesetedit' => 'Sett til redigering',
+	'whitelisttablesetview' => 'Sett til vising',
 	'whitelisttableremove' => 'Fjern',
+	'whitelistnewpagesfor' => 'Legg til nye sider på kvitelista til <b>$1</b><br />Bruk anten * eller % som jokerteikn',
+	'whitelistnewtabledate' => 'Utgangsdato:',
+	'whitelistnewtableedit' => 'Sett til redigering',
+	'whitelistnewtableview' => 'Sett til vising',
+	'whitelistnowhitelistedusers' => 'Det finst ingen brukarar i gruppa «{{MediaWiki:Group-restricted}}».
+Du må [[Special:UserRights|legge brukarar til gruppa]] før du kan legge sider til ein brukar si kviteliste.',
+	'whitelistnewtableprocess' => 'Handsam',
+	'whitelistnewtablereview' => 'Gå gjennom',
+	'whitelistselectrestricted' => '== Gje namn på avgrensa brukar ==',
+	'whitelistpagelist' => '{{SITENAME}}-sider for $1',
+	'whitelistnocalendar' => '<font color="red" size="3">Det virkar som om [http://mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], ein føresetnad for denne utvidinga, ikkje har vorte installert skikkeleg.</font>',
+	'whitelistbadtitle' => 'Ugyldig tittel -',
+	'whitelistoverview' => '== Oversikt over endringar for $1 ==',
+	'whitelistoverviewcd' => "* Endrar dato for [[:$2|$2]] til '''$1'''",
+	'whitelistoverviewsa' => "* Set tilgang for [[:$2|$2]] til '''$1'''",
+	'whitelistoverviewrm' => '* Fjernar tilgang til [[:$1|$1]]',
+	'whitelistoverviewna' => "* Legg til [[:$1|$1]] til kviteliste med tilgang '''$2''' og utløpsdato '''$3'''.",
+	'whitelistrequest' => 'Spør etter tilgang til fleire sider',
+	'whitelistrequestmsg' => '$1 har etterspurt tilgang til følgjande sider:
+
+$2',
+	'whitelistrequestconf' => 'Etterspurnad om nye sider vart sendt til $1',
+	'whitelistnonrestricted' => "'''$1''' er ikkje ein avgrensa brukar.
+Denne sida kan berre nyttast på avgrensa brukarar.",
 	'whitelistnever' => 'aldri',
+	'whitelistnummatches' => '  - $1 {{PLURAL:$1|treff}}',
+	'right-editwhitelist' => 'Endre kvitelista for eksisterande brukarar',
+	'right-restricttowhitelist' => 'Endre og sjå sider som berre er på kvitelista',
+	'action-editwhitelist' => 'endre kvitelista for eksisterande brukarar',
+	'action-restricttowhitelist' => 'endre og sjå sider som berre er på kvitelista',
+	'group-restricted' => 'Avgrensa brukarar',
+	'group-restricted-member' => 'Avgrensa brukar',
+	'group-manager' => 'Handsamarar',
+	'group-manager-member' => 'Handsamar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1229,6 +1287,8 @@ Utilizatz siá lo caractèr * siá %',
 	'whitelistnewtabledate' => 'Data d’expiracion :',
 	'whitelistnewtableedit' => "Paramètres d'edicion",
 	'whitelistnewtableview' => 'Paramètres per visionar',
+	'whitelistnowhitelistedusers' => "I a pas cap d'utilizaire dins lo grop « {{MediaWiki:Group-restricted}} ».
+Vos cal [[Special:UserRights|apondre l’utilizaire al grop]] abans que posquèssetz apondre de paginas a la lista blanca d’un utilizaire.",
 	'whitelistnewtableprocess' => 'Tractar',
 	'whitelistnewtablereview' => 'Revisar',
 	'whitelistselectrestricted' => "== Seleccionatz un nom d’utilizaire d'accès restrench ==",
@@ -1241,7 +1301,7 @@ Utilizatz siá lo caractèr * siá %',
 	'whitelistoverviewrm' => '* Retirament de l’accès a [[:$1|$1]]',
 	'whitelistoverviewna' => "* Apond [[:$1|$1]] a la lista blanca amb los dreches de '''$2''' amb per data d’expiracion lo '''$3'''",
 	'whitelistrequest' => 'Demanda d’accès a mai de paginas',
-	'whitelistrequestmsg' => '$1 a demandat l’accès a las paginas seguentas :
+	'whitelistrequestmsg' => '$1 a demandat l’accès a {{PLURAL:$3|la pagina seguenta|a las paginas seguentas}} :
 
 $2',
 	'whitelistrequestconf' => 'Una demanda d’accès per de paginas novèlas es estada mandada a $1',
@@ -1249,6 +1309,14 @@ $2',
 Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenches.",
 	'whitelistnever' => 'jamai',
 	'whitelistnummatches' => ' - {{PLURAL:$1|una ocuréncia|$1 ocuréncias}}',
+	'right-editwhitelist' => 'Modificar la lista blanca pels utilizaires existents',
+	'right-restricttowhitelist' => 'Modificar e visionar las paginas que figura unicament sus la lista blanca',
+	'action-editwhitelist' => 'modificar la lista blanca pels utilizaires existents',
+	'action-restricttowhitelist' => 'modificar e visionar las paginas que figuran unicament sus la lista blanca',
+	'group-restricted' => 'Utilizaires restrenches',
+	'group-restricted-member' => 'Utilizaire restrench',
+	'group-manager' => 'Gestionaris',
+	'group-manager-member' => 'Gestionari',
 );
 
 /** Ossetic (Иронау)
@@ -1341,14 +1409,23 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'mywhitelistpages' => 'Minhas Páginas',
+	'whitelistfor' => '<center>Informação actual para <b>$1</b></center>',
 	'whitelisttablemodify' => 'Modificar',
+	'whitelisttablepage' => 'página wiki',
+	'whitelisttabletype' => 'Tipo de acesso',
+	'whitelisttableexpires' => 'Expira a',
+	'whitelisttablemodby' => 'Última modificação por',
+	'whitelisttablemodon' => 'Última modificação a',
 	'whitelisttableedit' => 'Editar',
 	'whitelisttableview' => 'Ver',
 	'whitelisttablenewdate' => 'Nova Data:',
+	'whitelisttableremove' => 'Remover',
+	'whitelistpagelist' => 'Página de {{SITENAME}} para $1',
 	'whitelistbadtitle' => 'Titulo inválido -',
 	'whitelistrequestmsg' => '$1 requisitou acesso às seguintes páginas:
 
@@ -1502,6 +1579,8 @@ Använd hellre * eller % som jokertecken',
 	'whitelistnewtabledate' => 'Utgångsdatum:',
 	'whitelistnewtableedit' => 'Ange att redigera',
 	'whitelistnewtableview' => 'Ange att visa',
+	'whitelistnowhitelistedusers' => 'Det finns inga användare i gruppen "{{MediaWiki:Group-restricted}}".
+Du måste [[Special:UserRights|lägga till användare till gruppen]] innan du kan lägga till sidor till en användares vitlista.',
 	'whitelistnewtableprocess' => 'Behandla',
 	'whitelistnewtablereview' => 'Granska',
 	'whitelistselectrestricted' => '== Ange begränsad användares namn ==',
@@ -1514,7 +1593,7 @@ Använd hellre * eller % som jokertecken',
 	'whitelistoverviewrm' => '* Raderar åtkomst till [[:$1|$1]]',
 	'whitelistoverviewna' => "* Lägger till [[:$1|$1]] till vitlista med åtkomst '''$2''' och '''$3''' utgångsdatum",
 	'whitelistrequest' => 'Efterfråga åtkomst till mer sidor',
-	'whitelistrequestmsg' => '$1 har efterfrågat åtkomst till följande sidor:
+	'whitelistrequestmsg' => '$1 har efterfrågat åtkomst till följande {{PLURAL:$3|sida|sidor}}:
 
 $2',
 	'whitelistrequestconf' => 'Efterfrågan för nya sidor har sänts till $1',
@@ -1522,6 +1601,14 @@ $2',
 Denna sida är endast tillämpbar på begränsade användare",
 	'whitelistnever' => 'aldrig',
 	'whitelistnummatches' => ' - {{PLURAL:$1|en träff|$1 träffar}}',
+	'right-editwhitelist' => 'Ändra vitlistan för existerande användare',
+	'right-restricttowhitelist' => 'Redigera och visa sidor som endast är på vitlistan',
+	'action-editwhitelist' => 'ändra vitlistan för existerande användare',
+	'action-restricttowhitelist' => 'redigera och visa sidor som endast är på vitlistan',
+	'group-restricted' => 'Begränsade användare',
+	'group-restricted-member' => 'Begränsad användare',
+	'group-manager' => 'Hanterare',
+	'group-manager-member' => 'Hanterare',
 );
 
 /** Silesian (Ślůnski)

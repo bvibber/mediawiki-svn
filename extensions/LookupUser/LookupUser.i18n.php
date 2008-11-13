@@ -578,6 +578,26 @@ $messages['nl'] = array(
 	'lookupuser_useroptions' => 'Gebruikersopties:',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'lookupuser' => 'Finn brukarinformasjon',
+	'lookupuser-desc' => '[[Special:LookupUser|Hent informasjon]] om ein brukar, som t.d. e-postadresse og ID',
+	'lookupuser_intro' => 'Skriv inn eit brukarnamn for å vise innstillingane til brukaren.',
+	'lookupuser_nonexistent' => 'Feil: Brukaren eksisterer ikkje',
+	'lookupuser_authenticated' => 'E-poststadfesting: $1',
+	'lookupuser_not_authenticated' => 'ikkje stadfesta',
+	'lookupuser_id' => 'Brukar-ID: <tt>#$1</tt>',
+	'lookupuser_email' => 'E-post: [[Special:Emailuser/$2|$1]]',
+	'lookupuser_no_email' => 'ikke oppgjeve',
+	'lookupuser_realname' => 'Verkeleg namn: $1',
+	'lookupuser_registration' => 'Registreringsdato: $1',
+	'lookupuser_no_registration' => 'ikkje lagra',
+	'lookupuser_touched' => 'Innstillingar sist endra: $1',
+	'lookupuser_useroptions' => 'Brukarval:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

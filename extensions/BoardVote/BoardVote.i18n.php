@@ -1609,6 +1609,7 @@ Sekureca averto pri nevalida atesto eble estos montrata.',
  * @author Dalton2
  * @author Lin linao
  * @author Remember the dot
+ * @author Sanbec
  * @author Titoxd
  */
 $messages['es'] = array(
@@ -1647,9 +1648,9 @@ La versión cifrada resultante se encuentra a continuación. Se [[Special:Boardv
 Por favor, conéctate en el wiki en el que calificas para votar, y pulsa <nowiki>[[Special:Boardvote]]</nowiki>.
 Debes usar otra cuenta con un mínimo de $1 contribuciones antes del $2, y haber hecho al menos $3 modificaciones entre $4 y $5.',
 	'boardvote_notloggedin' => 'No has iniciado sesión.
-Para votar, necesitas tener $1 ediciones antes del $2, y haber hecho por lo menos $3 ediciones entre el $4 y el $5.',
+Para votar, necesitas tener {PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber hecho por lo menos {PLURAL:$3|una edición|$3 ediciones}} entre el $4 y el $5.',
 	'boardvote_notqualified' => 'No cumples con los requisitos para votar en esta elección.
-Necesitas tener $1 ediciones antes del $2, y haber hecho por lo menos $3 ediciones entre el $4 y el $5.',
+Necesitas tener {PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber hecho por lo menos {PLURAL:$3|una edición|$3 ediciones}} entre el $4 y el $5.',
 	'boardvote_novotes' => 'Nadie ha votado todavía.',
 	'boardvote_time' => 'Tiempo',
 	'boardvote_user' => 'Usuario',
@@ -3163,6 +3164,7 @@ to date. $1 før æ enkriptet data.</p>",
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'boardvote' => 'Pamilihan Anggota Déwan Kapercayan Yayasan Wikimedia',
@@ -3187,26 +3189,28 @@ Kami bakal ngasumsi yèn panjenengan luwih nyenengi kabèh kandidat sing panjene
 	'boardvote_intro_change' => '<p>Panjenengan wis tau nyoblos. Senadyan mengkono, panjenengan bisa
 ngowahi pilihan panjenengan mawa formulir ing ngisor iki. Mangga dipriksa dhisik kothak
 ing sandhingé saben kandidat sing panjenengan pilih.</p>',
-	'boardvote_entered' => 'Matur nuwun, pilihané panjenengan wis dicathet.
+	'boardvote_entered' => 'Matur nuwun, pilihan panjenengan wis dicathet.
 
-Yèn kersa, panjenengan bisa nyathet détail sing kapacak ing ngisor iki. Cathetan swara panjenengan:
+Yèn kersa, panjenengan bisa nyathet detil sing kapacak ing ngisor iki. Cathetan swara panjenengan:
 
 <pre>$1</pre>
 
-Cathetan iku wis diènkripsi mawa kunci publik Pangurus Pamilihan:
+Cathetan wis disandi mawa kunci publik Pangurus Pamilihan:
 
 <pre>$2</pre>
 
-Vèrsi sin diènkripsi kapacak ing ngisor iki. Kasil iku bakal dituduhaké sacara umum ing [[Special:Boardvote/dump]].
+Vèrsi sing disandi kapacak ing ngisor iki. Kasil iku bakal dituduhaké sacara umum ing [[Special:Boardvote/dump|kéné]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Back]]',
+[[Special:Boardvote/entry|Bali menyang]]',
+	'boardvote_invalidentered' => '<p><strong>Kasalahan</strong>: pilihan calon kudu nganggo angka utuh positip (1, 2, 3, ....), utawa ora usah diisi.</p>',
 	'boardvote_nosession' => 'Idèntitas panganggo Wikimedia panjenengan ora bisa ditemtokaké.
-Mangga log mlebu ing wiki ing ngendi panjenengan duwé hak kanggo mèlu coblosan, lan tumujua menyang <nowiki>[[Special:Boardvote]]</nowiki>.
-Panjenengan kudu nganggo sawijining rékening (akun) mawa minimal $1 kontribusi sadurungé $2, lan nggawé minimal $3 suntingan antara $4 lan $5.',
-	'boardvote_notloggedin' => 'Panjenengan ora mlebu log. Supaya bisa mèlu nyoblos, panjenengan kudu nganggo rékening (akun) mawa paling ora $1 suntingan sadurungé $2, lan kudu nglakoni $3 suntingan antara $4 lan $5.',
-	'boardvote_notqualified' => 'Panjenengan ora bisa mèlu mènèhaké swara ing pamilihan iki. Panjenengan kudu wis nglakoni $3 suntingan sadurungé $2, lan suntingan kapisan wis ana sadurungé $5.',
+Mangga mlebu log ing wiki ing ngendi panjenengan duwé hak kanggo mèlu milih, lan tumujua menyang <nowiki>[[Special:Boardvote]]</nowiki>.
+Panjenengan kudu nganggo akun sing paling sithik duwé $1 kontribusi sadurungé $2, lan gawé saora-orané $3 suntingan antara $4 lan $5.',
+	'boardvote_notloggedin' => 'Panjenengan ora mlebu log. Supaya bisa mèlu milih, panjenengan kudu nganggo akun sing nduwèni {{PLURAL:$1|kontribusi|kontribusi}} paling ora $1 suntingan sadurungé $2, lan kudu nglakoni sethithiké $3 {{PLURAL:$3|kontribusi|kontribusi}} antara $4 lan $5.',
+	'boardvote_notqualified' => 'Panjenengan ora bisa mèlu mènèhaké swara jroning pamilihan iki. 
+Panjenengan kudu wis nglakoni paling ora $1 {{PLURAL:$1|kontribusi|kontribusi}} sadurungé $2, lan wis duwé sethithiké $3 {{PLURAL:$3|kontribusi|kontribusi}} antara $4 lan $5.',
 	'boardvote_novotes' => 'Durung ana sing nyoblos.',
 	'boardvote_time' => 'Wektu',
 	'boardvote_user' => 'Panganggo',
@@ -3220,14 +3224,17 @@ Panjenengan kudu nganggo sawijining rékening (akun) mawa minimal $1 kontribusi 
 	'boardvote_strike' => 'Corèt',
 	'boardvote_unstrike' => 'Batalna corètan',
 	'boardvote_needadmin' => 'Namung para pangurus pamilihan waé sing bisa ngalakoni operasi iki.',
-	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Pamilihan Déwan Wikimedia</a>: Pamilihan dibuka nganti 22 Juni',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Pamilihan Dhéwan Wikimedia</a>: 
+Pamilihan dibuka nganti 22 Juni',
 	'boardvote_notstarted' => 'Coblosané durung diwiwiti',
-	'boardvote_closed' => 'Pamilihan wis ditutup, mangga mirsani [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/En kaca pamilihan kanggo nuwèni kasilé] sadélok manèh.',
+	'boardvote_closed' => 'Pamilihan wis ditutup, mangga mirsani [http://meta.wikimedia.org/wiki/Board_elections/2008/Results kasilé] sedhéla manèh.',
 	'boardvote_edits_many' => 'akèh',
 	'group-boardvote' => 'Pangurus pamilihan anggota déwan',
 	'group-boardvote-member' => 'Pangurus pamilihan anggota déwan',
 	'grouppage-boardvote' => '{{ns:project}}:Pangurus pamilihan anggota déwan',
 	'boardvote_blocked' => 'Nuwun sèwu, panjenengan diblokir ing wiki papan panjenengan ndaftar. Panganggo sing diblokir ora pareng mèlu awèh swara.',
+	'boardvote_bot' => 'Panjenengan kadhaptar minangka bot ing wiki papan panjenengan kadhaptar.
+Akun bot ora diidinaké mèlu milih.',
 	'boardvote_welcome' => "Sugeng rawuh '''$1'''!",
 	'go_to_board_vote' => 'Pamilihan Déwan Wikimedia 2008',
 	'boardvote_redirecting' => 'Kanggo kaamanan lan transparansi sing luwih apik, kita nglakoni pamungutan swara iki ing sawijining server èkstèrnal sing dikontrol sacara mardika.
@@ -3691,7 +3698,7 @@ Logged iech w.e.g. an déi Wiki an wou dir d'Bedingunge vun de Walen erfëllt a 
 Dir musst e Benotzerkont benotzen mat mindestens $1 {{PLURAL:$1|Kontributioun|Kontributioune}} virum $2, an Dir musst mindestens $3 {{PLURAL:$1|Kontributioun|Kontributiounen}} tëschent dem $4 an dem $5 gemaach hun.",
 	'boardvote_notloggedin' => 'Dir sidd net agelogged.
 Fir ze wiele musst Dir e Benotzerkont benotze matt mindestens $1 {{PLURAL:$1|Kontributioun|Kontributioune}} virum $2, an Dir musst mindestens $3 {{PLURAL:$1|Kontributioun|Kontributiounen}} tëschent dem $4 an dem $5 gemaach hunn.',
-	'boardvote_notqualified' => 'Dir sidd net berechtegt fir un dëser Wal deelzehuelen.
+	'boardvote_notqualified' => 'Dir sidd net berechtegt fir Bäi dëse Walen ofzestëmmen.
 Dir musst mindestens $1 {{PLURAL:$1|Kontributioun|Kontributioune}} virum $2 gemaacht hunn, a mindestens $3 {{PLURAL:$1|Kontributioun|Kontributiounen}} tëschent dem $4 an dem $5 gemaach hun.',
 	'boardvote_novotes' => 'Et huet nach keen ofgestëmmt.',
 	'boardvote_time' => 'Zäit',
@@ -4970,6 +4977,19 @@ $messages['ro'] = array(
 	'boardvote_notstarted' => 'Votarea încă nu a început',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'boardvote_novotes' => 'Nisciune ha vutate angore.',
+	'boardvote_time' => 'Orarie',
+	'boardvote_user' => 'Utende',
+	'boardvote_edits' => 'Cangiaminde',
+	'boardvote_days' => 'Sciurne',
+	'boardvote_dumplink' => 'Cazze aqquà',
+	'boardvote_submit' => 'OK',
+);
+
 /** Russian (Русский)
  * @author HalanTul
  * @author Kaganer
@@ -5094,7 +5114,7 @@ $messages['sah'] = array(
 
 [[Special:Boardvote/entry|Төнүн]]',
 	'boardvote_invalidentered' => '<p><strong>Алҕас таҕыста</strong>: кандидаат утары сыалай чыыһыланы (1, 2, 3, ....) туруоруохтааххын эбэтэр кураанах хаалларыахтааххын.</p>',
-	'boardvote_nosession' => 'Викимедияҕа кыттар идентификаторгын кыайан систиэмэ булбата.
+	'boardvote_nosession' => 'Викимедияҕа кыттар идентификаторгын систиэмэ кыайан булбата.
 Бука диэн көрдөбүллэргэ эппиэттиир ааккынан (атын Викимедиа бырайыактара да буоллун) киирэн баран маннык сирэйгэ киир <nowiki>[[Special:Boardvote]]</nowiki>.
 Көрдөбүллэр: $1 көннөрүүттэн аҕыйаҕа суоҕу бу күҥҥэ $2 дылы оҥорбут буолуохтааххын, баччаттан $4 баччаҕа $5 дылы $3 {{PLURAL:$3|көннөрүү оҥоһуллубут буолуохтаах|көннөрүүлэр оҥоһуллубут буолуохтаахтар}}.',
 	'boardvote_notloggedin' => 'Эн ааккын билиһиннэрбэтэххин.

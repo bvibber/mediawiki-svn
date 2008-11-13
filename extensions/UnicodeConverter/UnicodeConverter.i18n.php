@@ -187,6 +187,17 @@ $messages['nl'] = array(
 	'unicodeconverter-newtext' => 'Geconverteerde tekst:',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'unicodeconverter' => 'Unicode-konvertering',
+	'unicodeconverter-desc' => 'Eit enkelt døme på ein spesialsidemodul. Når han vert gjeve ein [[Special:UnicodeConverter|streng i UTF-8]] konverterar han den til HTML-einingar til bruk på ISO 8859-1-sider.',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Opphavleg tekst:',
+	'unicodeconverter-newtext' => 'Konvertert tekst:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -247,9 +258,11 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'unicodeconverter' => 'Unicode-konvertering',
+	'unicodeconverter-desc' => 'Ett enkelt exempel på en specialsidemodul. När den ges en [[Special:UnicodeConverter|sträng i UTF-8]] konverterar den den till HTML-entiteter för användning på ISO 8859-1-sidor.',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Orginaltext:',
 	'unicodeconverter-newtext' => 'Konverterad text:',

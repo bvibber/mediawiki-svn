@@ -218,6 +218,15 @@ $messages['nl'] = array(
 	'stalepages-summary' => "Dit is een lijst van pagina's die niet bewerkt zijn in de afgelopen $1 dagen.",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'stalepages' => 'Forelda sider',
+	'stalepages-desc' => 'Oppretter ei [[Special:Stalepages|liste over sider]] som ikkje er endra i det siste',
+	'stalepages-summary' => 'Dette er ei liste over sider som ikkje er endra dei siste $1 dagane.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

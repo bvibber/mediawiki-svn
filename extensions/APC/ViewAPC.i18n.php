@@ -504,6 +504,7 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'viewapc-display-info' => 'Ime',
 	'viewapc-ls-options-legend' => 'Opcije',
+	'viewapc-ls-submit' => 'Idi!',
 	'viewapc-ls-header-name' => 'Ime',
 	'viewapc-ls-sort-name' => 'Ime',
 	'viewapc-ls-limit-none' => 'Sve',

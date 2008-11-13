@@ -29,3 +29,60 @@ $messages['en'] = array(
 	//Rights Messages
 	'right-emergencydesysop' => 'Able to desysop another user, mutually',
 );
+
+/** Message documentation (Message documentation)
+ * @author SPQRobin
+ */
+$messages['qqq'] = array(
+	'emergencydesysop-nogroups' => '{{Identical|None}}',
+);
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'emergencydesysop' => 'Désysopage d’urgence',
+	'emergencydesysop-desc' => 'Permert à un administrateur de renoncer à ses propres limites, en ordre pour désysoper en autre',
+	'emergencydesysop-title' => 'Retire les accès d’administreur, ensemble l’utilisateur actuel puis un autre.',
+	'emergencydesysop-otheradmin' => 'Autre administrateur à dégrouper',
+	'emergencydesysop-reason' => 'Motif du retrait',
+	'emergencydesysop-submit' => 'Soumettre',
+	'emergencydesysop-incomplete' => 'Tous les champs doivent être renseignés, veuillez essayer à nouveau.',
+	'emergencydesysop-notasysop' => 'L’utilisateur visé n’est pas dans le groupe des administrateurs.',
+	'emergencydesysop-nogroups' => 'Néant',
+	'emergencydesysop-done' => 'Action terminée, vous et [[$1]] avez eu ensemble vos droits d’administrateur de retirés.',
+	'emergencydesysop-invalidtarget' => 'L’utilisateur visé n’existe pas.',
+	'emergencydesysop-blocked' => 'Vous ne pouvez pas accéder à cette page tant que vous êtes bloqué',
+	'emergencydesysop-noright' => 'Vous n’avez pas les permissions suffisantes pour accéder à cette page',
+	'right-emergencydesysop' => 'Possible de désysoper mutuellement un autre utilisateur.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'emergencydesysop-submit' => 'Enviar',
+	'emergencydesysop-nogroups' => 'Ningún',
+);
+
+/** Dutch (Nederlands)
+ * @author SPQRobin
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'emergencydesysop' => 'Beheerdersrechten snel intrekken',
+	'emergencydesysop-desc' => 'Stelt een beheerder in staat de eigen beheerdersrechten op te offeren om die van een andere beheerder in te trekken',
+	'emergencydesysop-title' => 'De beheerdersrechten van zowel de huidige gebruiker als een andere beheerder intrekken',
+	'emergencydesysop-otheradmin' => 'Beheerdersschap intrekken van',
+	'emergencydesysop-reason' => 'Reden',
+	'emergencydesysop-submit' => 'OK',
+	'emergencydesysop-incomplete' => 'Alle velden zijn verplicht.',
+	'emergencydesysop-notasysop' => 'De opgegeven gebruiker is geen beheerder.',
+	'emergencydesysop-nogroups' => 'Geen',
+	'emergencydesysop-done' => 'Handeling voltooid, de beheerdersrechten van zowel u als [[$1]] is ingetrokken.',
+	'emergencydesysop-invalidtarget' => 'De opgegeven gebruiker bestaat niet.',
+	'emergencydesysop-blocked' => 'U kunt deze pagina niet gebruiken omdat u geblokkeerd bent',
+	'emergencydesysop-noright' => 'U hebt niet de nodige rechten om deze pagina te kunnen gebruiken',
+	'right-emergencydesysop' => 'Heeft de mogelijkheid om de beheerdersrechten van een andere gebruiker en zichzelf in te trekken',
+);
+

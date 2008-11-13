@@ -937,6 +937,7 @@ $messages['bn'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'mv_tool_search' => 'Traži',
 	'mv_edit' => 'Uredi',
 	'mv_history' => 'Historija',
 	'mv_search_and' => 'i',
@@ -1547,6 +1548,7 @@ Saltar á vista do fluxo: $2',
 	'mv_edit_sequence' => 'Editando a secuencia:$1',
 	'mv_sequence_player_title' => 'reprodutor da secuencia',
 	'mv_resource_not_found' => "O recurso \"'''\$1'''\" non foi atopado",
+	'mv_media_search' => 'Procura multimedia',
 	'mv_editor_options' => 'Opcións do editor',
 	'mv_editor_mode' => 'Modo do editor',
 	'mv_simple_editor_desc' => 'editor sinxelo (estilo iMovie)',
@@ -2297,6 +2299,7 @@ $messages['jbo'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'metavid' => 'Kaca Metavid',
@@ -2320,6 +2323,7 @@ $messages['jv'] = array(
 	'thomas_en' => 'Transkripsi resmi',
 	'mv_data_page_title' => '$1 kanggo $2 saka $3',
 	'mv_time_separator' => '$1 menyang $2',
+	'category-media-count' => '$1 sègmèn media ing kategori',
 	'mv_play' => 'Main',
 	'mv_edit' => 'Sunting',
 	'mv_history' => 'Sajarah',
@@ -3259,6 +3263,7 @@ $messages['oc'] = array(
 	'ao_file_256Kb_MPEG4' => 'Archive.org - mpeg4 256 kb/s',
 	'ao_file_flash_flv' => 'Archive.org - flash vidèo',
 	'mv_error_stream_missing' => '<span class="error">Error : existís pas cap de flus vidèo associat amb aquesta metadonada.</span><br /> Reportatz aquò sul sit d\'aministracion.',
+	'mv_stream_added' => 'Avètz apondut lo flus $1',
 	'mv_stream_meta' => 'Pagina de flus',
 	'mv_add_stream' => "Apondon d'un flus metavid",
 	'mv_edit_stream' => 'Modificar un flus metavid',

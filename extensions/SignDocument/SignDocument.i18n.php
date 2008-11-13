@@ -39,6 +39,16 @@ $messages['arz'] = array(
 	'signaturelogentry' => 'وقع الوثيقة $1',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'signaturelogpage' => 'Дневник на подписите',
+	'signature-desc' => 'Позволява [[Special:SignDocument|подписването на документи]]',
+	'signaturelogpagetext' => 'Тази страница съдържа дневник на [[Special:SignDocument|всички подписи, добавяни към документите]].',
+	'signaturelogentry' => 'подписа документа $1',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Revolus

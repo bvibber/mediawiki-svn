@@ -563,6 +563,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'deletequeue-delnom-otherreason' => 'Ostali razlozi',
+	'deletequeue-list-search' => 'Traži',
 );
 
 /** German (Deutsch)

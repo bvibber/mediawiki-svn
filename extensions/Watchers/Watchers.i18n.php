@@ -231,9 +231,13 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'watchers' => 'עוקבים',
+	'watchers-desc' => 'הצגה [[Special:Watchers|אילו משתמשים עוקבים אחרי דף זה]]',
 	'watchers_link_title' => 'מי עוקב אחרי דף זה?',
 	'watchers_error_article' => "'''שגיאה:''' הדף אינו קיים.",
+	'watchers_header' => '{{PLURAL:$2|משתמש העוקב|משתמשים העוקבים}} אחרי "$1"',
 	'watchers_noone_watches' => 'אף אחד לא עוקב אחר דף זה.',
+	'watchers_x_or_more' => '{{PLURAL:$1|משתמש אחד|$1 משתמשים}} או יותר עוקבים אחרי דף זה.',
+	'watchers_less_than_x' => 'פחות מ{{PLURAL:$1|משתמש אחד עוקב|־$1 משתמשים עוקבים}} אחרי דף זה.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -345,7 +349,7 @@ $messages['mk'] = array(
 	'watchers_header' => '{{PLURAL:$2|Корисник кој ја набљудува|Корисници кои ја набљудуваат}} "$1"',
 	'watchers_noone_watches' => 'Никој не ја набљудува оваа страница.',
 	'watchers_x_or_more' => '$1 или повеќе корисници ја имаат оваа страница во својата листа на набљудувања.',
-	'watchers_less_than_x' => 'Помалку од $1 {{PLURAL:$1|корисници|корисници}} ја имаат оваа страница во својата листа на набљудувања.',
+	'watchers_less_than_x' => '{{PLURAL:$1|Еден корисник|Помалку од $1 корисници}} ја имаат оваа страница во својата листа на набљудувања.',
 );
 
 /** Malayalam (മലയാളം)
@@ -387,6 +391,20 @@ $messages['nl'] = array(
 	'watchers_noone_watches' => 'Niemand volgt deze pagina.',
 	'watchers_x_or_more' => '$1 of meer {{PLURAL:$1|gebruikers|gebruikers}} volgen deze pagina.',
 	'watchers_less_than_x' => '{{PLURAL:$1|Er zijn geen gebruikers met deze pagina op hun volglijst|Minder dan $1 gebruikers hebben deze pagina op hun volglijst}}.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'watchers' => 'Overvakarar',
+	'watchers-desc' => 'Viser [[Special:Watchers|kva brukarar som overvaker ei viss side]]',
+	'watchers_link_title' => 'Kven overvaker denne sida?',
+	'watchers_error_article' => '<b>Feil:</b> Sida finst ikkje.',
+	'watchers_header' => 'Brukarar som overvaker «$1»',
+	'watchers_noone_watches' => 'Ingen overvaker denne sida.',
+	'watchers_x_or_more' => '$1 eller fleire personer overvaker denne sida.',
+	'watchers_less_than_x' => 'Mindre enn $1 {{PLURAL:$1|brukarar|brukar}} overvaker denne sida.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -153,6 +153,15 @@ $messages['nl'] = array(
 	'untidy' => 'Opschonen ongedaan maken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'tidy-desc' => 'Legg til ei fane for systematisering eller avsystematisering (avhengig av $wgUseTidy) som tillet overstyring av den globale innstillinga for HTML-systematisering.',
+	'tidy' => 'Systematiser kode',
+	'untidy' => 'Avsystematiser kode',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

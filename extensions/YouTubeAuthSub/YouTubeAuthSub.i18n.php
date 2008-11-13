@@ -931,9 +931,9 @@ $messages['mk'] = array(
 	'youtubeauthsub_summary' => 'Подигнување на YouTube видео запис',
 	'youtubeauthsub_uploading' => 'Вашето видео се подгнува.
 Молиме за трпеливост.',
-	'youtubeauthsub_viewpage' => 'Алтернативно, може да го погледнете вашето видео [[$1|тука]].',
+	'youtubeauthsub_viewpage' => 'Алтернативно, може да го погледнете вашиото видео запис [[$1|тука]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Внесете еден или повеќе клучни зборови.',
-	'youtubeauthsub_jserror_notitle' => 'Внесете наслов на видеото.',
+	'youtubeauthsub_jserror_notitle' => 'Внесете наслов на видео записот.',
 	'youtubeauthsub_jserror_nodesc' => 'Внесете опис на видео записот.',
 );
 
@@ -1111,12 +1111,41 @@ Even geduld alstublieft.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'youtubeauthsub' => 'Last opp YouTube-video',
+	'youtubeauthsub-desc' => 'Lar brukarar [[Special:YouTubeAuthSub|laste opp videoar]] på YouTube',
+	'youtubeauthsub_info' => 'For å laste opp ein video på YouTube for bruk på ei side, fyll inn følgjande informasjon:',
 	'youtubeauthsub_title' => 'Tittel',
-	'youtubeauthsub_description' => 'Beskriving',
+	'youtubeauthsub_description' => 'Skildring',
+	'youtubeauthsub_password' => 'YouTube-passord',
+	'youtubeauthsub_username' => 'YouTube-brukernamn',
+	'youtubeauthsub_keywords' => 'Nøkkelord',
 	'youtubeauthsub_category' => 'Kategori',
+	'youtubeauthsub_submit' => 'Lagre',
+	'youtubeauthsub_clickhere' => 'Klikk her for å logge inn på YouTube',
+	'youtubeauthsub_tokenerror' => 'Feil i oppretting av godkjenningsteikn; prøv å oppdatere.',
+	'youtubeauthsub_success' => 'Gratulerar!
+Videoen din er lasta opp.
+Gå <a href="http://youtube.com/watch?v=$1">hit</a> for å sjå videoen.
+Det kan ta litt tid før YouTube har handsama videoen din, så det kan hende han ikkje er klar enno.
+
+Sett inn følgjande kode på ei side for å inkludere videoen på ei side på wikien:
+<code>{{&#35;ev:youtube|$1}}</code>',
+	'youtubeauthsub_authsubinstructions' => 'For å laste opp ein video må du første logge inn på YouTube.',
+	'youtubeauthsub_uploadhere' => 'Last opp videoen din herfrå:',
+	'youtubeauthsub_uploadbutton' => 'Last opp',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}
+
+Denne videoen kan du sjå [http://youtube.com/watch?v=$1 her]',
+	'youtubeauthsub_summary' => 'Lastar opp YouTube-video',
+	'youtubeauthsub_uploading' => 'Videoen din lastar opp. Ver snill og vent.',
+	'youtubeauthsub_viewpage' => 'Alternativt kan du sjå videoen din [[$1|her]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Skriv inn eitt eller fleire nøkkelord.',
+	'youtubeauthsub_jserror_notitle' => 'Velg ein tittel for videoen.',
+	'youtubeauthsub_jserror_nodesc' => 'Skriv inn ei skildring av videoen.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1272,9 +1301,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Lijealso
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'youtubeauthsub' => 'Carregar vídeo do YouTube',
+	'youtubeauthsub-desc' => 'Permitir aos usuários [[Special:YouTubeAuthSub|carregar vídeos]] directamente no TouTube',
 	'youtubeauthsub_title' => 'Título',
 	'youtubeauthsub_description' => 'Descrição',
 	'youtubeauthsub_password' => 'Palavra-chave no YouTube',
@@ -1282,6 +1314,14 @@ $messages['pt'] = array(
 	'youtubeauthsub_keywords' => 'Palavras-chave',
 	'youtubeauthsub_category' => 'Categoria',
 	'youtubeauthsub_submit' => 'Submeter',
+	'youtubeauthsub_clickhere' => 'Carregue aqui para se ligar ao YouTube',
+	'youtubeauthsub_success' => "Parabéns!
+O seu vídeo foi carregado.
+Para visualizar o seu vídeo carregue <a href='http://www.youtube.com/watch?v=$1'>aqui</a>.
+O YouTube pode requerer algum tempo para processar o seu vídeo, de modo que poderá não estar já disponível.
+
+Para incluir o seu vídeo numa página da wiki, inserir o seguinte código numa página:
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Para carregar um vídeo, será necessário que se autentique primeiro no YouTube.',
 	'youtubeauthsub_uploadhere' => 'Carregar o seu vídeo a partir de:',
 	'youtubeauthsub_uploadbutton' => 'Carregar',
@@ -1289,6 +1329,8 @@ $messages['pt'] = array(
 
 Este vídeo pode ser visualizado [http://www.youtube.com/watch?v=$1 aqui]',
 	'youtubeauthsub_summary' => 'A carregar vídeo YouTube',
+	'youtubeauthsub_uploading' => 'O seu vídeo está a ser carregado.
+Por favor seja paciente.',
 	'youtubeauthsub_viewpage' => 'Como alternativa, pode visualizar o seu vídeo [[$1|aqui]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Por favor, introduza 1 ou mais palavras-chave.',
 	'youtubeauthsub_jserror_notitle' => 'Por favor, introduza um título para o vídeo.',

@@ -1427,6 +1427,13 @@ $wdMessages['gv'] = array(
 	'ow_LinkAttributeValues' => 'Kianglaghyn',
 );
 
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$wdMessages['hak'] = array(
+	'ow_Source' => 'Lòi-ngièn',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  * @author Singularity
@@ -1876,6 +1883,7 @@ $wdMessages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $wdMessages['jv'] = array(
 	'datasearch' => 'Wikidata: Panggolèkan data',
@@ -1890,26 +1898,43 @@ Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan k
 	'ow_uipref_datasets' => 'Pamandhangan baku',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ora ana sing disèlèksi',
+	'ow_conceptmapping_help' => "<p>tumindak sing bisa diayahi: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  nyisipaké pamétaan (''mapping'')</li>
+<li>&action=get&concept=<concept_id>  waca pamétaan ''mapping'' manèh</li>
+<li>&action=list_sets  mbalêkaké dhaptar awalan kontèks data sing bisa lan apa sing dirujuk.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> kanggo siji makna ing konsèp, balèkaké kabèh liyané</li>
+<li>&action=help  Tuduhaké pitulung.</li>
+</ul></p>",
 	'ow_conceptmapping_no_action_specified' => 'Nuwun sèwu, aku ora ngerti carané "$1".',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'ora dilebokaké',
 	'ow_dm_not_found' => 'ora ditemokaké ing basis data utawa rusak',
+	'ow_mapping_unsuccessful' => 'Kudu duwé saora-orané loro makna sadurungé bisa disambungaké',
 	'ow_will_insert' => 'Bakal nyisipaké:',
+	'ow_contents_of_mapping' => "Isi pamétaan (''mapping'')",
 	'ow_available_contexts' => 'Kontèks sing ana',
 	'ow_add_concept_link' => 'Nambah pranala menyang konsèp liyané',
 	'ow_concept_panel' => 'Panèl Konsèp',
+	'ow_dm_badtitle' => "Kaca iki ora nunjuk sawijining makna (''DefinedMeaning'') (konsèp).
+Mangga priksa alamat wèb-é.",
 	'ow_AlternativeDefinition' => 'Définisi alternatif',
 	'ow_AlternativeDefinitions' => 'Définisi alternatif',
 	'ow_Annotation' => 'Anotasi',
+	'ow_ApproximateMeanings' => 'Makna kira-kira',
+	'ow_ClassAttributeAttribute' => 'Atribut',
+	'ow_ClassAttributes' => 'Atribut klas',
 	'ow_ClassAttributeLevel' => 'Tingkatan',
 	'ow_ClassAttributeType' => 'Jenis',
+	'ow_ClassMembership' => 'Kaanggotaan klas',
 	'ow_Collection' => 'Kolèksi',
 	'ow_CollectionMembership' => 'Kaanggotan kolèksi',
 	'ow_Definition' => 'Définisi',
 	'ow_DefinedMeaningAttributes' => 'Anotasi',
 	'ow_DefinedMeaning' => 'Arti sing didéfinisi',
 	'ow_DefinedMeaningReference' => 'Arti sing didéfinisi',
+	'ow_ExactMeanings' => 'Makna sing persis',
 	'ow_Expression' => 'Èksprèsi',
+	'ow_ExpressionMeanings' => 'Makna èksprèsi',
 	'ow_Expressions' => 'Èksprèsi',
 	'ow_IdenticalMeaning' => 'Tegesé mèmper?',
 	'ow_IncomingRelations' => 'Rélasi sing teka mlebu',
@@ -1920,6 +1945,7 @@ Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan k
 	'ow_OptionAttributeOption' => 'Opsi',
 	'ow_OptionAttributeOptions' => 'Opsi',
 	'ow_OptionAttributeValues' => 'Bijih opsi',
+	'ow_OtherDefinedMeaning' => 'Makna liyané',
 	'ow_PopupAnnotation' => 'Anotasi',
 	'ow_Relations' => 'Relasi',
 	'ow_RelationType' => 'Jenis rélasi',
@@ -1944,6 +1970,12 @@ Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan k
 	'ow_Permission_denied' => '<h2>IDIN DITOLAK</h2>',
 	'ow_copy_no_action_specified' => 'Tulung rincèkna sawijining aksi',
 	'ow_copy_help' => 'Ing sawijining dina ing tembé, kita mbok-menawa bisa nulungi panjenengan.',
+	'ow_please_proved_dmid' => 'Katonané input panjenengan kakurangan "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
+Mangga ngubungi administrator server.',
+	'ow_please_proved_dc1' => 'Katonané input panjenengan kakuranagan "?dc1=<something>" (dc1=dataset context 1, dataset to copy FROM)<br />
+Mangga ngubungi administrator server.',
+	'ow_please_proved_dc2' => 'Katonané input panjenengan kakurangan "?dc2=<something>" (dc2=dataset context 2, dataset to copy TO)<br />
+Mangga ngubungi administrator server.',
 	'ow_copy_successful' => '<h2>Kopi suksès</h2>
 Data panjenengan katoné wis dikopi sacara suksès.
 Aja lali mriksa manèh supaya pasti!',
@@ -2368,6 +2400,14 @@ $wdMessages['mhr'] = array(
 	'ow_save' => 'Аралаш',
 	'ow_history' => 'Историй',
 	'ow_LinkAttributeValues' => 'Ссылке-влак',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$wdMessages['mk'] = array(
+	'ow_save' => 'Зачувај',
+	'ow_history' => 'Историја',
 );
 
 /** Malayalam (മലയാളം)

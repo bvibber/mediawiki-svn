@@ -610,10 +610,37 @@ Zorg dat de uitdrukkingen niet te kort of veelvoorkomend zijn.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'spamregex' => 'SpamRegex',
+	'spamregex-desc' => '[[Special:SpamRegex|Filtrer ut]] uønska fraser i endra sider, basert på regulære uttrykk',
+	'spamregex-error-unblocking' => 'Feil ved avblokkering av «$1». Eit slikt mønster finst nok ikkje.',
+	'spamregex-summary' => 'Teksten vart funne i samandraget til sida.',
+	'spamregex-intro' => 'Bruk dette skjemaet for å effektivt blokkere uttrykk fra å bli lagra på sidene. Om teksten inneheld visse uttrykk, vil endringa ikke bli lagra, og ei forklaring vil visast til brukeren som prøvde å lagre sida. Ver obs på at uttrykk ikkje bør vere for korte eller for vanlege.',
+	'spamregex-page-title' => 'Blokkering av uønska uttrykk med regulære uttrykk',
+	'spamregex-currently-blocked' => "'''Noverande blokkerte uttrykk:'''",
+	'spamregex-move' => 'Årsaka du skreiv inn inneheldt eit blokkert uttrykk.',
+	'spamregex-no-currently-blocked' => "'''Det er ingen blokkerte uttrykk.'''",
+	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 fjern]) lagt til av",
+	'spamregex-log-2' => 'på $1',
+	'spamregex-page-title-1' => 'Blokker uttrykk ved hjelp av regulære uttrykk',
+	'spamregex-unblock-success' => 'Avblokkering utført',
+	'spamregex-unblock-message' => "Uttrykket '''$1''' er ikkje lenger blokkert.",
+	'spamregex-page-title-2' => 'Blokker uttrykk frå å kunne lagrast ved hjelp av regulære uttrykk.',
+	'spamregex-block-success' => 'Blokkering utført',
+	'spamregex-block-message' => "Uttrykket '''$1''' er blokkert.",
+	'spamregex-warning-1' => 'Oppgje eit uttrykk som skal blokkerast.',
+	'spamregex-error-1' => 'Ugyldig regulært uttrykk.',
+	'spamregex-warning-2' => 'Du må velje minst ein blokkeringsmodus.',
+	'spamregex-already-blocked' => '«$1» er alt blokkert',
+	'spamregex-phrase-block' => 'Uttrykk å blokkere:',
+	'spamregex-phrase-block-text' => 'blokker uttrykk i sidetekst',
+	'spamregex-phrase-block-summary' => 'blokker uttrykk i samandrag',
+	'spamregex-block-submit' => 'Blokker&nbsp;dette&nbsp;uttrykket',
 	'spamregex-text' => '(Tekst)',
+	'spamregex-summary-log' => '(Samandrag)',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

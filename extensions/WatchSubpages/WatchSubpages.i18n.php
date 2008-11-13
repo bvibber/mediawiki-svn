@@ -186,9 +186,14 @@ Para marcar ou deixar de marcar diversas páxinas, só ten que premer na tecla "
  */
 $messages['he'] = array(
 	'watchsubpages' => 'מעקב אחרי דפי המשנה',
+	'watchsubpages-addedtowatchlist' => 'הדפים הבאים נוספו לרשימת המעקב שלכם.',
 	'watchsubpages-addtitles' => 'הוספת דפים',
 	'watchsubpages-addtitlestowatchlist' => 'הוספת הדפים לרשימת המעקב',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|הוספה מהירה של כל דפי המשנה]] של דף מסוים לרשימת המעקב',
+	'watchsubpages-form' => 'בחרו להלן את הדפים להוספה לרשימת המעקב שלכם.
+על מנת להוסיף דף, סמנו את התיבה שלידו, ולחצו על "הוספת דפים".
+
+בעת סימון או ביטול סימון של דפים מרובים, החזקת מקש ה־Shift מאפשרת לכם לבחור מספר תיבות סימון עוקבות באמצעות לחיצה על כל התיבות האחרונות של הטווחים לסימון.',
 );
 
 /** Interlingua (Interlingua)
@@ -215,6 +220,21 @@ $messages['it'] = array(
 	'watchsubpages-addtitles' => 'Aggiungi pagine',
 	'watchsubpages-addtitlestowatchlist' => 'Aggiungi pagine agli Osservati Speciali',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Aggiunge rapidamente tutte le sottopagine]] di una pagina agli Osservati Speciali',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'watchsubpages' => "Awasi anak kaca (''sub pages'')",
+	'watchsubpages-addedtowatchlist' => 'Ing ngisor iki wis ditambahaké menyang dhaftar pangawasan panjenengan',
+	'watchsubpages-addtitles' => 'Tambah kaca',
+	'watchsubpages-addtitlestowatchlist' => 'Tambah kaca ing dhaftar pangawasan',
+	'watchsubpages-desc' => 'Kanthi cepet [[Special:WatchSubpages|nambahaké kabèh anak kaca]] menyang dhaftar pangawasan',
+	'watchsubpages-form' => "Pilih kaca sing bakal ditambahaké menyang kaca pangawasan panjenengan ing ngisor.
+Kanggo nambahaké kaca, tandhani kothak ing sisihé, lan klik \"Tambah kaca\".
+
+Nalika nandhani utawa mbatalaké tandha luwih saka siji kaca, nahan tombol ''shift'' marakaké panjenengan bisa nandhani kothak-kothak tandha (''checkboxes'') kanthi ngeklik ing pinggir-pinggir cakupan (''range'')",
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -294,6 +314,21 @@ $messages['nl'] = array(
 Selecteer de vakjes naast de paginanaam en klik op \"Pagina's toevoegen\".
 
 Om meerdere pagina's tegelijk te selecteren of te deselecteren, kunt u na het selecteren van de eerste pagina uit de lijst de laatste pagina selecteren terwijl u de shifttoets ingedrukt houdt.",
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'watchsubpages' => 'Overvak undersider',
+	'watchsubpages-addedtowatchlist' => 'Følgjande er lagt til i overvakingslista di.',
+	'watchsubpages-addtitles' => 'Legg til sider',
+	'watchsubpages-addtitlestowatchlist' => 'Legg til sider til overvakningslista',
+	'watchsubpages-desc' => '[[Special:WatchSubpages|Legg til alle undersider]] av ei side til overvakingslista',
+	'watchsubpages-form' => 'Velg sidene du ønsker å legge til i overvakingslista di.
+For å legge til ei side, merk av i boksen ved sidan av ho og klikk på «Legg til sider».
+
+Når du merkar eller fjernar merking av fleire sider, kan du halde nede «Shift»-knappen for å velge boksar som kjem etter kvarandre ved å trykke på den siste av sidene du vil merke.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

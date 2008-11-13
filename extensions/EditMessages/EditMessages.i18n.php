@@ -149,6 +149,7 @@ $messages['bn'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'editmsg-search' => 'Traži',
 	'editmsg-warning-file' => '* Greške pri čitanju datoteke su se desile kod slijedećih jezika: $1',
 );
 
@@ -643,8 +644,8 @@ $messages['oc'] = array(
 	'editmsg-warning-parse1' => '* Expression correnta del nom de messatge pas detectada : $1',
 	'editmsg-warning-parse2' => '* Caractèr de citacion esperat aprèp la sageta : $1',
 	'editmsg-warning-parse3' => '* Fin de la cadena de caractèrs pas trobada : $1',
-	'editmsg-warning-file' => "* D'errors de lectura del fichièr son estadas trobadas per las lengas seguentas : $1",
-	'editmsg-warning-mismatch' => '* Lo tèxt original a pas pres la valor prevista per las lengas seguentas : $1',
+	'editmsg-warning-file' => "D'errors de lectura del fichièr son estadas trobadas per {{PLURAL:$2|la lenga seguenta|las lengas seguentas}} : $1",
+	'editmsg-warning-mismatch' => '* Lo tèxt original a pas pres la valor prevista per {{PLURAL:$2|la lenga seguenta|las lengas seguentas}} : $1',
 	'editmsg-apply-patch' => 'Aplicar lo patch',
 	'editmsg-no-patch' => "Impossible d'executar la comanda del « patch »",
 	'editmsg-patch-failed' => 'Fracàs del patch amb l’error de sortida $1',

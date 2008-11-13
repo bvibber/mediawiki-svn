@@ -55,6 +55,11 @@ $aliases['ht'] = array(
 	'AdvancedRandom' => array( 'RandonmAvanse' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'AdvancedRandom' => array( 'Fejletlebb véletlen' ),
+);
+
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
 	'AdvancedRandom' => array( 'AleatoriAvantiate' ),

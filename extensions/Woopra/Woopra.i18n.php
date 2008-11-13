@@ -107,6 +107,13 @@ $messages['id'] = array(
 	'woopra-desc' => 'Mengizinkan [http://www.woopra.com/ perangkat lunak Woopra Live Tracking] untuk bekerja dalam instalasi MediaWiki Anda',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'woopra-desc' => 'Ngidinaké [http://www.woopra.com/ piranti alus Woopra Live Tracking] ngayahi instalasi MediaWiki panjenengan',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */
@@ -141,6 +148,13 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'woopra-desc' => 'Maakt het mogelijk om de [http://www.woopra.com/ Woopra Live Tracking-software] te gebruiken voor MediaWiki',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'woopra-desc' => 'Gjør at [http://woopra.com/ Woopra Live Tracking Software] fungerer med MediaWiki',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

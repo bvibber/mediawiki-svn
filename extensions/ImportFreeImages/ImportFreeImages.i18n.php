@@ -596,10 +596,22 @@ U kunt een API-sleutel [http://www.flickr.com/services/api/misc.api_keys.html hi
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'importfreeimages' => 'Importer frie bilete',
+	'importfreeimages-desc' => 'Gjev høve til å [[Special:ImportFreeImages|importere frie bilete]] frå [http://flickr.com flickr]',
+	'importfreeimages_description' => 'Denne sida lar deg søke i bilete med riktig lisens på Flickr og importere dei til wikien din.',
+	'importfreeimages_noapikey' => 'Du har ikkje konfigurert API-nøkkelen din for Flickr. For å gjere det må du skaffe ein API-nøkkel [http://www.flickr.com/services/api/misc.api_keys.html frå her] og sette wgFlickrAPIKey i ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => 'Ingen bilete vart funne for søket «$1». Prøv igjen.',
+	'importfreeimages_invalidurl' => 'URL-en «$1» er ikkje eit gyldig Flickr-bilete',
+	'importfreeimages_owner' => 'Skapar',
+	'importfreeimages_importthis' => 'importer',
 	'importfreeimages_next' => 'Neste $1',
+	'importfreeimages_filefromflickr' => '$1 av brukaren <b>[$2]</b> frå Flickr. Original URL',
+	'importfreeimages_promptuserforfilename' => 'Skriv inn eit målnamn for fila:',
+	'importfreeimages_returntoform' => 'Eller klikk <a href="$1">her</a> for å gå tilbake til søkeresultata',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

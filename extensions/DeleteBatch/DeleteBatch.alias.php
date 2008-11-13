@@ -55,6 +55,11 @@ $aliases['ht'] = array(
 	'DeleteBatch' => array( 'SiprimeLo' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'DeleteBatch' => array( 'Tömeges törlés' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'DeleteBatch' => array( 'Läsch-Batch' ),

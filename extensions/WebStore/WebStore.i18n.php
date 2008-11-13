@@ -999,6 +999,59 @@ $1',
 	'webstore_no_handler' => 'Dit MIME-type kan niet getransformeerd worden',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'inplace_access_disabled' => 'Tilgangen til denne tenesta er slått av for alle klientar.',
+	'inplace_access_denied' => 'Denne tenesta er avgrensa av IP-adressa til klienten.',
+	'inplace_scaler_no_temp' => 'Inga gyldig mellombels mappe, sett $wgLocalTmpDirectory til ei skrivbar mappe.',
+	'inplace_scaler_not_enough_params' => 'For få parametrar.',
+	'inplace_scaler_invalid_image' => 'Ugyldig bilete, kunne ikkje fastslå storleik.',
+	'inplace_scaler_failed' => 'Ein feil oppstod under biletskalering: $1',
+	'inplace_scaler_no_handler' => 'Ingen handsamar for endring av denne MIME-typen',
+	'inplace_scaler_no_output' => 'Inga endringsresultatfil vart produsert.',
+	'inplace_scaler_zero_size' => 'Endringa skapte ei tom resultatfil.',
+	'webstore_access' => 'Tenesta er avgrensa av IP-adressa til klienten.',
+	'webstore_path_invalid' => 'Filnamnet var ugyldig.',
+	'webstore_dest_open' => 'Kunne ikkje opne målfil «$1».',
+	'webstore_dest_lock' => 'Kunne ikkje låsast på målfil «$1».',
+	'webstore_dest_mkdir' => 'Kunne ikkje opprette målmappe «$1».',
+	'webstore_archive_lock' => 'Kunne ikkje låsast på arkivfil «$1».',
+	'webstore_archive_mkdir' => 'Kunne ikkje opprette arkivmappe «$1».',
+	'webstore_src_open' => 'Kunne ikkje opne kjeldefil «$1».',
+	'webstore_src_close' => 'Feil under lukking av kjeldefil «$1».',
+	'webstore_src_delete' => 'Feil under sletting av kjeldefil «$1».',
+	'webstore_rename' => 'Feil under omdøyping av «$1» til «$2».',
+	'webstore_lock_open' => 'Feil under opning av låsfil «$1».',
+	'webstore_lock_close' => 'Feil under lukking av låsfil «$1».',
+	'webstore_dest_exists' => 'Feil, målfila «$1» finst.',
+	'webstore_temp_open' => 'Feil under opning av mellombels fil «$1».',
+	'webstore_temp_copy' => 'Feil under kopiering av mellombels fil «$1» til målfil «$2».',
+	'webstore_temp_close' => 'Feil under lukking av mellombels fil «$1».',
+	'webstore_temp_lock' => 'Feil under låsing av mellombels fil «$1».',
+	'webstore_no_archive' => 'Målfila finst og ikkje noko arkiv vart gjeve.',
+	'webstore_no_file' => 'Inga fil vart lasta opp.',
+	'webstore_move_uploaded' => 'Feil under flytting av opplasta fil «$1» til mellombels stad «$2».',
+	'webstore_invalid_zone' => 'Ugyldig sone «$1».',
+	'webstore_no_deleted' => 'Inga arkivmappe for sletta filer er definert.',
+	'webstore_curl' => 'Feil frå cURL: $1',
+	'webstore_404' => 'Fil ikkje funne.',
+	'webstore_php_warning' => 'PHP-åtvaring: $1',
+	'webstore_metadata_not_found' => 'Fil ikkje funne: $1',
+	'webstore_postfile_not_found' => 'Fil som skal postast er ikkje funne.',
+	'webstore_scaler_empty_response' => 'Biletskaleraren gav eit tomt svar med ein 200-responskode. Dette kan vere på grunn av ein fatal PHP-feil i skaleraren.',
+	'webstore_invalid_response' => 'Ugyldig svar frå tenar:
+
+$1',
+	'webstore_no_response' => 'Ingen respons frå tenar.',
+	'webstore_backend_error' => 'Feil frå lagringstenar:
+
+$1',
+	'webstore_php_error' => 'Fann PHP-feil:',
+	'webstore_no_handler' => 'Ingen handsamar for endring av denne MIME-typen',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

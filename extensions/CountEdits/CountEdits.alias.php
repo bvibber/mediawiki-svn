@@ -47,6 +47,11 @@ $aliases['hsb'] = array(
 	'CountEdits' => array( 'Přinoški ličić' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'CountEdits' => array( 'Szerkesztések számolása' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'CountEdits' => array( 'ការរាប់ចំនួនកំនែប្រែ' ),

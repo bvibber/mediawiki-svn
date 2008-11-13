@@ -130,6 +130,13 @@ $messages['nl'] = array(
 	'tooltip-desc' => 'Voegt de tags <nowiki><tooltip></nowiki> en <nowiki>{{#tooltip:}}</nowiki> toe',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'tooltip-desc' => 'Legg til taggane <tt><nowiki><tooltip></nowiki></tt> og <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

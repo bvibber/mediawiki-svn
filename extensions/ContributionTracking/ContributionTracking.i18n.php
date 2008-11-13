@@ -87,11 +87,16 @@ $messages['eo'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Huji
  * @author Komeil 4life
  */
 $messages['fa'] = array(
+	'contributiontracking-desc' => 'پی‌گیری کمک‌های انجام شده به جذب سرمایهٔ ویکی‌مدیا',
+	'contributiontracking' => 'پی‌گیری کمک‌ها',
 	'contrib-tracking-error' => 'خطا',
-	'contrib-tracking-continue' => 'برای تکمیل کمک خود از PayPal بر روی دکمه کلیک کنید.',
+	'contrib-tracking-error-text' => 'اطلاعات ارسالی فرم غیر مجاز است',
+	'contrib-tracking-submitting' => 'ارسال به پردازش کنندهٔ پرداخت...',
+	'contrib-tracking-continue' => 'اگر به طور خودکار به صفحهٔ مورد نظر هدایت نشدید، برای تکمیل کمک مالی خود در PayPal بر روی دکمه کلیک کنید.',
 	'contrib-tracking-button' => 'ادامه',
 );
 
@@ -112,6 +117,8 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'contributiontracking-desc' => 'Seguimento das contribucións da recadación de fondos da Wikimedia',
+	'contributiontracking' => 'Seguimento das contribucións',
 	'contrib-tracking-error' => 'Erro',
 	'contrib-tracking-button' => 'Continuar',
 );
@@ -127,6 +134,14 @@ $messages['he'] = array(
 	'contrib-tracking-submitting' => 'נשלח למעבד התרומות...',
 	'contrib-tracking-continue' => 'אם ההפניה אינה מתבצעת אוטומטית, לחצו על הכפתור כדי להשלים את תרומתכם באתר PayPal.',
 	'contrib-tracking-button' => 'המשך',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'contrib-tracking-error' => 'Greška',
+	'contrib-tracking-button' => 'Nastavi',
 );
 
 /** Interlingua (Interlingua)
@@ -148,6 +163,19 @@ $messages['ia'] = array(
 $messages['it'] = array(
 	'contrib-tracking-error' => 'Errore',
 	'contrib-tracking-button' => 'Continua',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'contributiontracking-desc' => 'Spende Verfollje för de Wikimedija Shtefftung iere Jeld-Sammel-Kampanje',
+	'contributiontracking' => 'Spende Verfollje',
+	'contrib-tracking-error' => 'Fahler',
+	'contrib-tracking-error-text' => 'Unjöltijje Date övverdraare för dat Fommulaa',
+	'contrib-tracking-submitting' => 'Övverjäve aan dä <i lang="en">Provider</i> för et Bezahle&nbsp;…',
+	'contrib-tracking-continue' => 'Wann De nit automattesch ömjelengk wees, donn op dä Knopp klecke, öm Ding Spend met <i lang="en">PayPal</i> fäädesch ze maache.',
+	'contrib-tracking-button' => 'Wigger',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

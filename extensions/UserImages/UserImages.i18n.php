@@ -288,6 +288,15 @@ $messages['nl'] = array(
 	'userimages-noimages' => '$1 heeft geen afbeeldingen toegevoegd.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'userimages-caption' => 'Bilete lasta opp av $1',
+	'userimages-noname' => 'Ugyldig brukernamn, eller ingen brukarnamn er gjeve.',
+	'userimages-noimages' => '$1 har ikkje lasta opp bilete.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

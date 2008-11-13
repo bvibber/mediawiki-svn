@@ -95,6 +95,13 @@ $messages['bg'] = array(
 	'randomincategory-label' => 'Категория:',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'randomincategory-submit' => 'Idi',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

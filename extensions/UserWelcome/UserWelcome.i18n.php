@@ -265,6 +265,26 @@ $messages['nl'] = array(
 	'mp-request-new-friend' => '{{PLURAL:$1|1 nieuwe vriend|$1 nieuwe vrienden}}',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'userwelcome-desc' => 'Legg til <tt>&lt;welcomeUser&gt;</tt>-taggen for å vise brukarspesifisert sosial informasjon for innlogga brukarar',
+	'mp-userlevels-link' => 'Brukarnivå',
+	'mp-welcome-upload' => 'Last opp',
+	'mp-welcome-edit' => 'Endre',
+	'mp-welcome-points' => '$1 poeng',
+	'mp-welcome-needed-points' => 'For å avansere for <b><a href="$1">$2</a></b> må du oppnå <i>$3</i> fleire poeng!',
+	'mp-welcome-logged-in' => 'Hei $1',
+	'mp-requests-title' => 'Oppmodingar',
+	'mp-requests-message' => 'Du har følgjande oppmodingar.',
+	'mp-request-new-message' => 'ny melding',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|ny utmerking|nye utmerkingar}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|ny gåve|nye gåver}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|ny fiende|nye fiendar}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|ny ven|nye vener}}',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -293,6 +313,16 @@ $messages['pl'] = array(
 	'mp-welcome-upload' => 'Prześlij',
 	'mp-welcome-edit' => 'Edytuj',
 	'mp-request-new-message' => 'nowa wiadomość',
+);
+
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'mp-userlevels-link' => 'Níveis de usuário',
+	'mp-welcome-upload' => 'Carregar',
+	'mp-welcome-edit' => 'Editar',
+	'mp-welcome-points' => '$1 pontos',
 );
 
 /** Romanian (Română)
@@ -351,11 +381,15 @@ $messages['sk'] = array(
  * @author Najami
  */
 $messages['sv'] = array(
+	'userwelcome-desc' => 'Lägger till <tt>&lt;welcomeUser&gt;</tt>-taggen för att visa användarspecifierad social information för inloggade användare',
 	'mp-userlevels-link' => 'Användarnivåer',
 	'mp-welcome-upload' => 'Ladda upp',
 	'mp-welcome-edit' => 'Redigera',
 	'mp-welcome-points' => '$1 poäng',
+	'mp-welcome-needed-points' => 'För att avancera för <b><a href="$1">$2</a></b> måste du uppnå <i>$3</i> fler poäng!',
 	'mp-welcome-logged-in' => 'Hej $1',
+	'mp-requests-title' => 'Efterfrågningar',
+	'mp-requests-message' => 'Du har följande efterfrågningar.',
 	'mp-request-new-message' => 'nytt meddelande',
 	'mp-request-new-award' => '$1 {{PLURAL:$1|ny utmärkelse|nya utmärkelser}}',
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|ny present|nya presenter}}',

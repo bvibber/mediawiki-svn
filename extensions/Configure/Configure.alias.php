@@ -134,7 +134,9 @@ $aliases['ht'] = array(
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
+	'Configure' => array( 'Beállítás' ),
 	'Extensions' => array( 'Kiegészítők' ),
+	'ViewConfig' => array( 'Beállítás nézőke' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

@@ -156,6 +156,28 @@ Permite a maioría das opcións da SmoothGallery',
 	'smoothgallery-javascript-disabled' => 'Requírese o Javascript para ver correctamente esta galería.',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'ההרחבה מאפשרת ליצור גלריות עם תמונות שהעליתם.
+ההרחבה מאפשרת שימוש ברב האפשרויות של SmoothGallery',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-error' => '<b>שגיאת SmoothGallery:</b>',
+	'smoothgallery-gallery-not-found' => 'הגלרייה המבוקשת אינה קיימת.',
+	'smoothgallery-not-found' => 'לא נוספו תמונות לגלרייה.
+אנא הוסיפו לפחות תמונה אחת.',
+	'smoothgallery-no-images' => 'לא נמצאו תמונות בגלרייה זו.
+וודאו כי כל התמונות שהתבקשו אכן נמצאות.
+התמונות הבאות לא נמצאו:',
+	'smoothgallery-invalid-images' => 'התמונות הבאות שנתבקשו הינן מסוג שגוי: $1',
+	'smoothgallery-unexpected-error' => 'ארעה שגיאה בלתי צפויה.
+אנא דווחו על תקלה זו.',
+	'smoothgallery-javascript-disabled' => "על מנת לצפות בדף זה כראוי נדרש ג'אווהסקריפט.",
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -47,6 +47,11 @@ $aliases['hr'] = array(
 	'RepoAdmin' => array( 'Admin_repozitorija' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'Code' => array( 'Kód' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Code' => array( 'កូដ' ),

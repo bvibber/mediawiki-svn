@@ -301,6 +301,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'regexblock-view-all' => 'Sve',
+	'regexblock-view-go' => 'Idi',
 );
 
 /** Catalan (Català)

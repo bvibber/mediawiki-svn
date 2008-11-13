@@ -262,6 +262,24 @@ $2',
 	'userrightsnotif-desc' => 'Envía unha notificación por correo electrónico aos usuarios unha vez que os seus dereitos cambien',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'userrightsnotifysubject' => 'החברות בקבוצה השתנתה באתר $1',
+	'userrightsnotifybody' => 'שלום $1.
+
+מטרת הודעה זו היא ליידע אתכם שחברותכם בקבוצות באתר $2 שונתה על ידי $3 ב־$4.
+
+נוספו: $5
+הוסרו: $6
+
+בברכה,
+
+$2',
+	'userrightsnotif-desc' => 'שליחת התראה בדואר האלקטרוני למשתמשים כאשר משתנות הרשאותיהם',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -453,6 +471,23 @@ Vriendelijke groeten,
 
 $2',
 	'userrightsnotif-desc' => 'Verstuurt e-mails om wijzingen in de gebruikersrechten te melden aan gebruikers',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'userrightsnotifysubject' => 'Endring av gruppemedlemskap på $1',
+	'userrightsnotifybody' => 'Hei, $1.
+
+Du vert hermed informert at gruppemedlemskapa dine på $2 vart endra av $3 $4.
+
+Lagt til: $5
+Fjerna: $6
+
+Helsing
+$2',
+	'userrightsnotif-desc' => 'Sender e-postmelding til brukarar ved endring av rettane deira',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

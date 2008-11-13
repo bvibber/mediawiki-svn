@@ -54,6 +54,11 @@ $aliases['hsb'] = array(
 	'WhatIsMyIP' => array( 'Moja IP-adresa' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'WhatIsMyIP' => array( 'Mi az IP-címem' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'WhatIsMyIP' => array( 'Ming IP Address' ),

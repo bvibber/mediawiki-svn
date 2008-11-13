@@ -83,6 +83,13 @@ $messages['br'] = array(
 	'findspam-ok' => 'Mat eo',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'findspam-ip' => 'IP adresa:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -394,11 +401,15 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'findspam' => 'Finn spam',
+	'findspam-desc' => 'Legg til ei [[Special:FindSpam|spesialside]] som let deg finne spam som nyleg er lagt til',
 	'findspam-ip' => 'IP-adresse:',
 	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Ingen bidrag funne',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

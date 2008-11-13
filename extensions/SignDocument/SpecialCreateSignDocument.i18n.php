@@ -183,6 +183,13 @@ $messages['bg'] = array(
 	'createsigndoc-error-pagenoexist' => 'Грешка: Страницата [[$1]] не съществува.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'createsigndoc-create' => 'Napravi',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -356,6 +363,13 @@ e un texto introdutorio breve que describa o documento e lles dea instrucións a
  */
 $messages['grc'] = array(
 	'createsigndoc-pagename' => 'Δέλτος:',
+);
+
+/** Hakka (Hak-kâ-fa)
+ * @author Hakka
+ */
+$messages['hak'] = array(
+	'createsigndoc-create' => 'Tshóng-kien',
 );
 
 /** Hawaiian (Hawai`i)

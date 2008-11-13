@@ -307,6 +307,13 @@ $messages['gl'] = array(
 	'formsaveerrortext' => "Houbo un erro descoñecido ao gardar a páxina '$1'.",
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'form-desc' => '[[Special:Form|ממשק טופס]] ליצירת דפים חדשים',
+);
+
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
@@ -590,10 +597,31 @@ Probeer het opnieuw.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'form-desc' => 'Eit [[Special:Form|skjema]] for å opprette nye sider',
+	'form' => 'Skjema',
+	'formnoname' => 'Skjemanamn finst ikkje',
+	'formnonametext' => 'Du må gje eit skjemanamn, som «Special:Form/Skjemanamn».',
+	'formbadname' => 'Ugyldig skjemanamn',
+	'formbadnametext' => 'Det finst ingen skjema med det namnet.',
+	'formpattern' => '$1-skjema',
+	'formtitlepattern' => 'Legg til nytt $1',
 	'formsave' => 'Lagre',
+	'formindexmismatch-title' => 'Namnemønster- og malfeil',
+	'formindexmismatch' => 'Dette skjemaet har upassande namnemønster og malar som startar på indeks $1.',
+	'formarticleexists' => 'Sida eksisterer',
+	'formarticleexiststext' => 'Sida [[$1]] eksisterer alt.',
+	'formbadpagename' => 'Ugyldig sidenamn',
+	'formbadrecaptcha' => 'Gale verdiar frå reCaptcha. Prøv igjen.',
+	'formbadpagenametext' => 'Skjemadataa du skreiv inn utgjevr eit ugyldig sidenamn, «$1».',
+	'formrequiredfieldpluralerror' => 'Felta $1 er påkrevde for dette skjemaet. Ver venleg å fyll dei inn.',
+	'formrequiredfielderror' => 'Feltet $1 er påkrevd for dette skjemaet. Ver venleg å fyll det inn.',
+	'formsavesummary' => 'Ny side vha. [[Special:Form/$1|skjemaet $1]]',
+	'formsaveerror' => 'Feil under skjemalagring',
+	'formsaveerrortext' => 'Det var ein ukjend feil under lagring av sida ‘$1’.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

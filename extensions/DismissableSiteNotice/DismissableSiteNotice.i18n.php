@@ -544,6 +544,14 @@ $messages['nl'] = array(
 	'sitenotice-desc' => 'Stelt gebruikers in staat de siteberichten te sluiten',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'sitenotice_close' => 'lukk',
+	'sitenotice-desc' => 'Gjer at brukarar kan fjerne toppmeldinga',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

@@ -410,6 +410,7 @@ $messages['bg'] = array(
 	'sign-viewfield-email' => 'Е-поща',
 	'sign-viewfield-age' => 'Възраст',
 	'sign-viewfield-options' => 'Настройки',
+	'sign-error-closed' => 'В момента подписването на този документ не е позволено.',
 	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
 -->[[User:$1|$1]] ([[User talk:$1|беседа]] • <!--
@@ -422,7 +423,13 @@ $messages['bg'] = array(
 -->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} проверка])<!--
 --></span>',
 	'sign-viewfield-reviewcomment' => 'Коментар',
+	'sign-detail-strike' => 'Задраскване на подписа',
 	'sign-review-comment' => 'Коментар',
+	'sign-uniquequery-similarname' => 'Подобно име',
+	'sign-uniquequery-similaraddress' => 'Подобен адрес',
+	'sign-uniquequery-similarphone' => 'Подобен телефон',
+	'sign-uniquequery-similaremail' => 'Подобна е-поща',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] подписа [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Bosnian (Bosanski)
@@ -431,6 +438,7 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'sign-realname' => 'Ime:',
 	'sign-viewfield-realname' => 'Ime',
+	'sign-viewfield-ip' => 'IP adresa',
 	'sign-viewfield-options' => 'Opcije',
 );
 
@@ -2117,6 +2125,10 @@ $messages['pt'] = array(
 	'sign-sigdetails' => 'Detalhes da assinatura',
 	'sign-viewfield-reviewedby' => 'Revisor',
 	'sign-viewfield-reviewcomment' => 'Comentário',
+	'sign-detail-uniquequery' => 'Entidades similares',
+	'sign-review-comment' => 'Comentar',
+	'sign-uniquequery-similarname' => 'Nome similar',
+	'sign-uniquequery-similaremail' => 'Email similar',
 );
 
 /** Rhaeto-Romance (Rumantsch) */

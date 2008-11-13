@@ -86,6 +86,20 @@ $messages['nl'] = array(
 	'stringfunctions-desc' => 'Breidt de parser uit met tekstfuncties',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'stringfunctions-desc' => 'Utvidar parseren med string-funksjonar',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'stringfunctions-desc' => 'Utvider parseren med string-funksjoner',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

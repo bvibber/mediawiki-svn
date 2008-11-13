@@ -279,6 +279,7 @@ $messages['sv'] = array(
 	'am-username' => 'användarnamn',
 	'am-email' => 'e-post',
 	'am-active' => 'aktiv',
+	'am-updated' => 'Dina ändringar har sparats',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -38,6 +38,15 @@ $messages['arz'] = array(
 	'searchbox-namespaces' => 'النطاقات:',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'searchbox-desc' => 'Позволява включването на формулчри за търсене',
+	'searchbox-search' => 'Търсене',
+	'searchbox-namespaces' => 'Именни пространства:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

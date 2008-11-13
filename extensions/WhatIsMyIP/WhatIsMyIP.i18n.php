@@ -195,6 +195,15 @@ $messages['it'] = array(
 	'whatismyip-out' => 'Il tuo IP è:',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'whatismyip' => 'Apa IP ku',
+	'whatismyip-desc' => 'Nuduhaké alamat IP panganggo ing [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'IP panjenengan:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */
@@ -249,6 +258,15 @@ $messages['nl'] = array(
 	'whatismyip-out' => 'Uw IP-adres:',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'whatismyip' => 'Kva er IP-adressa mi',
+	'whatismyip-desc' => 'Viser noverande brukar si IP-adresse på [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'IP-adressa di:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -284,6 +302,14 @@ $messages['ps'] = array(
 	'whatismyip' => 'زما IP څه دی',
 	'whatismyip-desc' => 'د اوسني کارونکي IP پته په [[Special:WhatIsMyIP]] ښکاره کوي',
 	'whatismyip-out' => 'ستاسو IP:',
+);
+
+/** Portuguese (Português)
+ * @author Lijealso
+ */
+$messages['pt'] = array(
+	'whatismyip' => 'Qual o meu IP',
+	'whatismyip-out' => 'O seu IP:',
 );
 
 /** Romanian (Română)

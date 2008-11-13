@@ -132,6 +132,7 @@ $messages['bg'] = array(
 	'tasklistchooseproj' => 'Избор на проект:',
 	'tasklistprojdisp' => 'Показване',
 	'tasklistbyname' => '== Списък със задачи за %s ==',
+	'tasklistnoprojects' => "Грешка: Изглежда сте включили '''\$wgUseProjects''', но не сте създали [[MediaWiki:TodoTasksValidProjects]]. За повече информация, прегледайте [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 инструкциите за инсталация].",
 );
 
 /** German (Deutsch)
@@ -497,6 +498,35 @@ Op %s kunt u uw complete takenlijst bekijken.
 Het waarschuwingssysteem',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Frokor
+ */
+$messages['nn'] = array(
+	'tasklist' => 'Oppgåveliste',
+	'tasklist-parser-desc' => 'legg til <nowiki>{{#todo:}}</nowiki> for tildeling av oppgåver',
+	'tasklist-special-desc' => 'Legg til ei spesialside for gjennomgang av [[Special:TaskList|oppgåver]]',
+	'tasklistbyproject' => 'Oppgåveliste etter prosjekt',
+	'tasklistunknownproject' => 'Ukjend prosjekt',
+	'tasklistunspecuser' => 'Brukar ikkje gjeve',
+	'tasklistincorrectuser' => 'Ukorrekt brukarnamn',
+	'tasklistemail' => 'Kjære %s',
+	'tasklistemailsubject' => '[%s] Oppgåvelisteendring',
+	'tasklistmytasks' => 'Mine oppgåver',
+	'tasklistbyprojectbad' => "'''%s''' er ikkje eit gyldig prosjekt. For ei liste over gyldige prosjekt, sjå [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Tildelte oppgåver for '''%s'''",
+	'tasklistchooseproj' => 'Velg prosjekt:',
+	'tasklistprojdisp' => 'Vis',
+	'tasklistbyname' => '== Oppgåveliste for %s ==',
+	'tasklistnoprojects' => "FEIL: Det ser ut som om du har slått på '''\$wgUseProjects''' utan å opprette [[MediaWiki:TodoTasksValidProjects]]. Sjå [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 installasjonsintruksjonane] for fleire detaljar.",
+	'tasklistemailbody' => ',
+
+Noko har gjeve deg ei ny oppgåve på %s.
+
+Gå til %s for å sjå den fullstendige oppgåvelista da.
+
+Frå %ss varslingssystem',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -612,6 +642,8 @@ $messages['pt'] = array(
 	'tasklistincorrectuser' => 'Nome de utilizador incorrecto',
 	'tasklistemail' => 'Caro %s',
 	'tasklistmytasks' => 'Minhas tarefas',
+	'tasklistbyprojectbad' => "Projecto '''%s''' não é um projecto válido.
+Para uma lista de projectos válidos, ver [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Tarefas atribuídas a '''%s'''",
 	'tasklistchooseproj' => 'Seleccione Projecto:',
 	'tasklistprojdisp' => 'Mostrar',
