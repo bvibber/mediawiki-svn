@@ -44,7 +44,7 @@ class SlippyMap {
 	}
 
 	# The callback function for converting the input text to HTML output
-	function parse( $input, $argv ) {
+	static function parse( $input, $argv ) {
 		global $wgMapOfServiceUrl, $wgSlippyMapVersion;
 
 		wfLoadExtensionMessages( 'SlippyMap' );
