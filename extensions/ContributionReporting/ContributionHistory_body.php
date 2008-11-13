@@ -178,7 +178,6 @@ class ContributionHistory extends SpecialPage {
 	}
 
 	function formatAmount( $row ) {
-		global $wgLang;
 		$converted = $row['converted_amount'];
 		
 		if ( $row['original_currency'] ) {
