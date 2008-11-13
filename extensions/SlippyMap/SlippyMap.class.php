@@ -1,18 +1,18 @@
 <?php
 # OpenStreetMap SlippyMap - MediaWiki extension
-# 
+#
 # This defines what happens when <slippymap> tag is placed in the wikitext
-# 
+#
 # We show a map based on the lat/lon/zoom data passed in. This extension brings in
-# the OpenLayers javascript, to show a slippy map.  
+# the OpenLayers javascript, to show a slippy map.
 #
 # Usage example:
-# <slippymap lat=51.485 lon=-0.15 z=11 w=300 h=200 layer=osmarender marker=0></slippymap> 
+# <slippymap lat=51.485 lon=-0.15 z=11 w=300 h=200 layer=osmarender marker=0></slippymap>
 #
 # Tile images are not cached local to the wiki.
 # To acheive this (remove the OSM dependency) you might set up a squid proxy,
 # and modify the requests URLs here accordingly.
-# 
+#
 # This file should be placed in the mediawiki 'extensions' directory
 # ...and then it needs to be 'included' within LocalSettings.php
 #
@@ -37,9 +37,7 @@
 # @addtogroup Extensions
 #
 
-
 class SlippyMap {
-
 	function SlippyMap() {
 	}
 
@@ -49,37 +47,37 @@ class SlippyMap {
 
 		wfLoadExtensionMessages( 'SlippyMap' );
 
-		if ( isset( $argv['lat'] ) ) { 
+		if ( isset( $argv['lat'] ) ) {
 			$lat		= $argv['lat'];
 		} else {
 			$lat		= '';
 		}
-		if ( isset( $argv['lon'] ) ) { 
+		if ( isset( $argv['lon'] ) ) {
 			$lon		= $argv['lon'];
 		} else {
 			$lon		= '';
 		}
-		if ( isset( $argv['z'] ) ) { 
+		if ( isset( $argv['z'] ) ) {
 			$zoom		= $argv['z'];
 		} else {
 			$zoom		= '';
 		}
-		if ( isset( $argv['w'] ) ) { 
+		if ( isset( $argv['w'] ) ) {
 			$width		= $argv['w'];
 		} else {
 			$width		= '';
 		}
-		if ( isset( $argv['h'] ) ) { 
+		if ( isset( $argv['h'] ) ) {
 			$height		= $argv['h'];
 		} else {
 			$height		= '';
 		}
-		if ( isset( $argv['layer'] ) ) { 
+		if ( isset( $argv['layer'] ) ) {
 			$layer		= $argv['layer'];
 		} else {
 			$layer		= '';
 		}
-		if ( isset( $argv['marker'] ) ) { 
+		if ( isset( $argv['marker'] ) ) {
 			$marker		= $argv['marker'];
 		} else {
 			$marker		= '';
@@ -88,9 +86,9 @@ class SlippyMap {
 		$error='';
 
 		//default values (meaning these parameters can be missed out)
-		if ($width=='')		$width ='450'; 
-		if ($height=='')	$height='320'; 
-		if ($layer=='')		$layer='mapnik'; 
+		if ($width=='') $width ='450';
+		if ($height=='') $height='320';
+		if ($layer=='') $layer='mapnik';
 
 		if ($zoom=='' && isset( $argv['zoom'] ) ) {
 			$zoom = $argv['zoom']; //see if they used 'zoom' rather than 'z' (and allow it)
@@ -114,7 +112,7 @@ class SlippyMap {
 		if ( $zoom=='' ) $error .= wfMsg( 'slippymap_zoommissing' );
 
 		if ($error=='') {
-			//no errors so far. Now check the values	
+			//no errors so far. Now check the values
 			if (!is_numeric($width)) {
 				$error = wfMsg( 'slippymap_widthnan', $width );
 			} else if (!is_numeric($height)) {
@@ -155,7 +153,7 @@ class SlippyMap {
 
 		$layer = strtolower($layer);
 		$layerObjectDef = '';
-		if ($layer=='osmarender') {        
+		if ($layer=='osmarender') {
 			$layerObjectDef = 'OpenLayers.Layer.OSM.Osmarender("Osmarender"); ';
 		} elseif ($layer=='mapnik') {
 			$layerObjectDef = 'OpenLayers.Layer.OSM.Mapnik("Mapnik"); ';
@@ -182,13 +180,13 @@ class SlippyMap {
 			// defer loading of the javascript. Since the script is quite bit, it would delay
 			// page loading and rendering dramatically
 			$output .= 'addOnloadHook( function() { ' .
-			 	'	var sc = document.createElement("script");' .
+				'	var sc = document.createElement("script");' .
 				'	sc.src = "http://www.openlayers.org/api/OpenLayers.js";' .
-			 	'	document.body.appendChild( sc );' .
-			 	'	var sc = document.createElement("script");' .
-			 	'	sc.src = "http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SlippyMap/OpenStreetMap.js?view=co&' . $wgSlippyMapVersion . '";'.
-			 	'	document.body.appendChild( sc );' .
-			 	'} );';
+				'	document.body.appendChild( sc );' .
+				'	var sc = document.createElement("script");' .
+				'	sc.src = "http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/SlippyMap/OpenStreetMap.js?view=co&' . $wgSlippyMapVersion . '";'.
+				'	document.body.appendChild( sc );' .
+				'} );';
 
 			$output .= "var lon= ${lon}; var lat= ${lat}; var zoom= ${zoom}; var lonLat;";
 
@@ -205,7 +203,7 @@ class SlippyMap {
 
 			if ($height>320) {
 				//Add the zoom bar control, except if the map is only little
-				$output .= '		new OpenLayers.Control.PanZoomBar(),';   
+				$output .= '		new OpenLayers.Control.PanZoomBar(),';
 			} else if ( $height > 140 ) {
 				$output .= '            new OpenLayers.Control.PanZoom(),';
 			}
@@ -223,16 +221,19 @@ class SlippyMap {
 
 			if ( $marker ) {
 				$output .= 'var markers = new OpenLayers.Layer.Markers( "Markers" ); ' .
-			           	'   map.addLayer(markers); ' .
-				   	'   var size = new OpenLayers.Size(20,34); ' .
-				   	'   var offset = new OpenLayers.Pixel(-(size.w/2), -size.h); ' .
-				   	"   var icon = new OpenLayers.Icon('http://boston.openguides.org/markers/YELLOW.png',size,offset);" .
-			           	'   markers.addMarker(new OpenLayers.Marker( lonLat,icon)); ';
+					'   map.addLayer(markers); ' .
+					'   var size = new OpenLayers.Size(20,34); ' .
+					'   var offset = new OpenLayers.Pixel(-(size.w/2), -size.h); ' .
+					"   var icon = new OpenLayers.Icon('http://boston.openguides.org/markers/YELLOW.png',size,offset);" .
+					'   markers.addMarker(new OpenLayers.Marker( lonLat,icon)); ';
 			}
 
 			if ( $showkml ) {
-				$input = str_replace( array( '%',   "\n" , "'"  , '"'  , '<'  , '>'  , ' '   ), 
-						      array( '%25', '%0A', '%27', '%22', '%3C', '%3E', '%20' ), $input );
+				$input = str_replace(
+					array( '%',   "\n" , "'"  , '"'  , '<'  , '>'  , ' '   ),
+					array( '%25', '%0A', '%27', '%22', '%3C', '%3E', '%20' ),
+					$input
+				);
 				$output .= 'var vector = new OpenLayers.Layer.Vector("Vector Layer"); ' .
 					'   map.addLayer(vector); ' .
 					'   kml = new OpenLayers.Format.KML( { "internalProjection": map.baseLayer.projection, ' .
@@ -247,7 +248,7 @@ class SlippyMap {
 			$output .= '} ';
 
 			$output .= 'function slippymap_getWikicode() {';
-			$output .= '	LL = map.getCenter().transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));';
+			$output .= '    LL = map.getCenter().transform(map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));';
 			$output .= '    Z = map.getZoom(); ';
 			$output .= '    size = map.getSize();';
 
