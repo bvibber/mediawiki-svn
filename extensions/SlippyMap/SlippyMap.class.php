@@ -7,7 +7,7 @@
 # the OpenLayers javascript, to show a slippy map.
 #
 # Usage example:
-# <slippymap lat="51.485" lon="-0.15" z="11" w="300" h="200" layer=osmarender marker=0></slippymap>
+# <slippymap lat="51.485" lon="-0.15" z="11" w="300" h="200" layer="osmarender" marker="0" />
 #
 # Tile images are not cached local to the wiki.
 # To acheive this (remove the OSM dependency) you might set up a squid proxy,
@@ -63,39 +63,39 @@ class SlippyMap {
 
 		// Receive new style args: <slippymap aaa=bbb ccc=ddd></slippymap>
 		if ( isset( $argv['lat'] ) ) {
-			$lat		= $argv['lat'];
+			$lat = $argv['lat'];
 		} else {
-			$lat		= '';
+			$lat = $oldStyleParams['lat'];
 		}
 		if ( isset( $argv['lon'] ) ) {
-			$lon		= $argv['lon'];
+			$lon = $argv['lon'];
 		} else {
-			$lon		= '';
+			$lon = $oldStyleParams['lon'];
 		}
 		if ( isset( $argv['z'] ) ) {
-			$zoom		= $argv['z'];
+			$zoom = $argv['z'];
 		} else {
-			$zoom		= '';
+			$zoom = $oldStyleParams['z'];
 		}
 		if ( isset( $argv['w'] ) ) {
-			$width		= $argv['w'];
+			$width = $argv['w'];
 		} else {
-			$width		= '';
+			$width = $oldStyleParams['w'];
 		}
 		if ( isset( $argv['h'] ) ) {
-			$height		= $argv['h'];
+			$height = $argv['h'];
 		} else {
-			$height		= '';
+			$height = $oldStyleParams['h'];
 		}
 		if ( isset( $argv['layer'] ) ) {
-			$layer		= $argv['layer'];
+			$layer = $argv['layer'];
 		} else {
-			$layer		= '';
+			$layer = $oldStyleParams['layer'];
 		}
 		if ( isset( $argv['marker'] ) ) {
-			$marker		= $argv['marker'];
+			$marker = $argv['marker'];
 		} else {
-			$marker		= '';
+			$marker = '';
 		}
 
 		$error = '';
@@ -112,18 +112,19 @@ class SlippyMap {
 		$marker = ( $marker != '' && $marker != '0' );
 
 		// trim off the 'px' on the end of pixel measurement numbers (ignore if present)
-		if ( substr( $width, -2 ) == 'px' )	$width = (int) substr( $width, 0, -2 );
-		if ( substr( $height, -2 ) == 'px' )	$height = (int) substr( $height, 0, -2 );
+		if ( substr( $width, -2 ) == 'px' )
+			$width = (int) substr( $width, 0, -2 );
+
+		if ( substr( $height, - 2 ) == 'px' )
+			$height = (int) substr( $height, 0, -2 );
 
 		if ( trim( $input ) != '' && sizeof( $oldStyleParamStrings ) < 3 ) {
 			$error = 'slippymap tag contents. Were you trying to input KML? KML support ' .
-			         'is disactivated on the OSM wiki pending discussions about wiki syntax';
+				'is disabled pending discussions about wiki syntax';
 			$showkml = false;
 		} else {
 			$showkml = false;
 		}
-
-		if ( $marker ) $error = 'marker support is disactivated on the OSM wiki pending discussions about wiki syntax';
 
 		// Check required parameters values are provided
 		if ( $lat == ''  ) $error .= wfMsg( 'slippymap_latmissing' );
@@ -194,14 +195,12 @@ class SlippyMap {
 			// There are other ways of fixing this, but not for MediaWiki v4
 			// (See http://www.mediawiki.org/wiki/Manual:Tag_extensions#How_can_I_avoid_modification_of_my_extension.27s_HTML_output.3F)
 
-
 			$output  = '<!-- slippy map -->';
 
 			// This inline stylesheet defines how the two extra buttons look, and where they are positioned.
 			$output .= "<style> .buttonsPanel div { float:left; display:block; position:relative; left:50px; margin-left:3px; margin-top:7px; width:36px;  height:19px; }</style>\n";
 			$output .= "<style> .buttonsPanel .getWikiCodeButtonItemInactive { width:36px; height:19px; background-image:url('" . $wgScriptPath . "/extensions/SlippyMap/wikicode-button.png'); }</style>\n";
 			$output .= "<style> .buttonsPanel .resetButtonItemInactive       { width:36px; height:19px; background-image:url('" . $wgScriptPath . "/extensions/SlippyMap/reset-button.png'); }</style>\n";
-
 
 			$output .= "<!-- bring in the OpenLayers javascript library -->";
 			$output .= "<script src=\"http://openlayers.org/api/OpenLayers.js\"></script> ";
@@ -218,7 +217,6 @@ class SlippyMap {
 			$output .= 'var map; ';
 
 			$output .= 'addOnloadHook( slippymap_init ); ';
-
 
 			$output .= 'function slippymap_resetPosition() {';
 			$output .= '	map.setCenter(lonLat, zoom);';
