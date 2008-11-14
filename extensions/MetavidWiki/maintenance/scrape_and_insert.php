@@ -10,7 +10,7 @@ t		<?php
  * @url http://metavid.ucsc.edu
  */
 
- $cur_path = $IP = dirname( __FILE__ );
+$cur_path = $IP = dirname( __FILE__ );
  // include commandLine.inc from the mediaWiki maintenance dir:
 require_once( '../../../maintenance/commandLine.inc' );
 require_once( 'maintenance_util.inc.php' );

@@ -2234,7 +2234,7 @@ embedVideo.prototype = {
     		var etime_parts = times[1].split(':');
     		
     		var new_anno_track_url = annoURL.protocol +'://'+ annoURL.host + annoURL.path +'?';
-    		for(i in annoURL.queryKey){
+    		for(var i in annoURL.queryKey){
     			new_anno_track_url +=(i=='t')?'t='+new_start+'/'+new_end +'&' :
     									 i+'='+ annoURL.queryKey[i]+'&';    					    		
     		}    		
@@ -2461,9 +2461,13 @@ embedVideo.prototype = {
 			my_thumb_src = getUpdateTimeURL( my_thumb_src, time_ntp, options.size );
 		}
 		var thumb_class = (typeof options['thumb_class'] !='undefined')? options['thumb_class'] : '';
-		return '<img class="' + thumb_class + '" src="' + my_thumb_src +'" '+
+		return '<div class="' + thumb_class + '" src="' + my_thumb_src +'" '+
 				'style="height:' + options.height + 'px;' +
-				'width:' + options.width + 'px" >';
+				'width:' + options.width + 'px" >' + 
+				 	'<img src="' + my_thumb_src +'" '+
+						'style="height:' + options.height + 'px;' +
+						'width:' + options.width + 'px">' +
+				'</div>';
 	},
 	updateThumbTime:function( float_sec ){
 		var _this = this;									   				
@@ -2820,7 +2824,7 @@ embedVideo.prototype = {
 	 * 	there is no general way to pause the video
 	 *  must be overwritten by embed object to support this functionality.
 	 */
-	pause : function(){
+	pause: function(){
 		 js_log('mv_embed:do pause');
 		 var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
          //(playing) do pause          
@@ -2828,7 +2832,7 @@ embedVideo.prototype = {
          //update "paused state"            	
          $j("#mv_play_pause_button_"+this_id).attr('class', 'play_button');
 	},	
-	play_or_pause : function(){
+	play_or_pause: function(){
 		js_log('embed:f:play_or_pause');
         //check state and set play or pause
         if(this.paused){

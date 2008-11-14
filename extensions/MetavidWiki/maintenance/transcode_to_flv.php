@@ -8,15 +8,16 @@
 	if running locally just link it ie on mvbox2:
 	ln -s /metavid/video_archive /media/mv_ssh_flvMediaStorage 
 */
-$mvMountedSource = '/media/mv_ssh_oggMediaStorage/';
-//mvbox2.cse.ucsc.edu
-$mvMountedDest	 = '/media/mv_ssh_flvMediaStorage/';
 
 //include commandLine.inc from the mediaWiki maintance dir: 
 require_once ('../../../maintenance/commandLine.inc');
-
 //for generate flv metadata:
 include_once('../skins/mv_embed/flvServer/MvFlv.php');
+
+
+$mvMountedSource = '/media/mv_ssh_oggMediaStorage/';
+//mvbox2.cse.ucsc.edu
+$mvMountedDest	 = '/media/mv_ssh_flvMediaStorage/';
 
 define('MV_BASE_MEDIA_SERVER_PATH', 'http://mvbox2.cse.ucsc.edu/mvFlvServer.php/');
 //ffmpeg based (bad)

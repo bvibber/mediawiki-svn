@@ -458,18 +458,16 @@ function do_proccess_images( $stream, $force = false ) {
 
 // given a stream name it pulls all metavid stream data and builds semantic wiki page
 function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
-	global $start_time, $end_time;
+	global $start_time, $end_time;	
 	/*$sql = "SELECT * FROM `metavid`.`streams` WHERE `name` LIKE '" . $mvTitle->getStreamName() . "'";
 	$dbr = wfGetDB(DB_SLAVE);
 	$res = $dbr->query($sql);
 	//echo "\n" . $sql . "\n";
 	$stream = $dbr->fetchObject($res);*/
 	$stream_id = $stream->id;
-	$out = '';
-	$pout = mv_proccess_attr( 'stream_attr_varchar', $stream_id );
-	$pout .= mv_proccess_attr( 'stream_attr_int', $stream_id );
-	// add links/generic text at the start
-	$out .= '==Official Record==' . "\n";
+	$out = '';	
+	
+	// add links/generic text at the start	
 	$date = date( 'Ymd', $start_time );
 	$cspan_date = date( 'Y-m-d', $start_time );
 	$ch_type = '';
@@ -478,6 +476,7 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 	if ( strpos( $mvTitle->getStreamName(), 'senate' ) !== false )
 		$ch_type = 's';
 	if ( $ch_type != '' ) {
+		$out .= '==Official Record==' . "\n";
 		$out .= '*[http://www.govtrack.us/congress/recordindex.xpd?date=' . $date .
 		'&where=' . $ch_type .
 		' GovTrack Congressional Record]' . "\n\n";
@@ -486,40 +485,65 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 		$out .= '*[http://thomas.loc.gov/cgi-bin/query/B?r110:@FIELD(FLD003+' . $ch_type . ')+@FIELD(DDATE+' . $date . ')' .
 		' THOMAS Extension of Remarks]' . "\n\n";
 	}
+	$dbw = wfGetDB( DB_WRITE );
+	
+	//clear out existing archive.org files for the current stream			
+	$sql = "DELETE FROM  `mv_stream_files` WHERE `stream_id`='{$stream->id}' AND `file_desc_msg` LIKE 'ao_file_%' LIMIT 10";
+	$dbw->query( $sql );
+	print "removed existing archive.org files for $stream->name \n";
+			
 	if ( $stream->archive_org != '' ) {
 		// grab file list from archive.org:
 		require_once( 'scrape_and_insert.inc.php' );
 		$aos = new MV_ArchiveOrgScrape();
+		
 		$file_list = $aos->getFileList( $stream->name );
+		if($file_list===false || count($file_list)==0) {
+			print 'no files on archive.org for'. $stream->name ."\n\n";
+			return '';
+		}
 		$out .= '==More Media Sources==' . "\n";
 		// all streams have congretional cronical:
 		$out .= '*[http://www.c-spanarchives.org/congress/?q=node/69850&date=' . $cspan_date . '&hors=' . $ch_type .
 		' CSPAN\'s Congressional Chronicle]' . "\n";
 		
-		if ( $file_list ) {
+		if ( $file_list ) {					
 			$out .= '*[http://www.archive.org/details/mv_' . $stream->name . 
-			' Archive.org hosted original copy]' . "\n";
+			' Archive.org hosted version]' . "\n";
 			// also output 'direct' semantic links to alternate file qualities:
-			$out .= "\n===Full File Links===\n";
-			$dbw = wfGetDB( DB_WRITE );
+			$out .= "\n===Full File Links===\n";		
+			$found_ogg=false;
 			foreach ( $file_list as $file ) {
 				$name = str_replace( ' ', '_', $file[2] );
-				$url = $file[1];
-				$size = $file[3];
-				$out .= "*[[ao_file_{$name}:={$url}|$name]] {$size}\n";
-
+				$url = 'http://archive.org'.$file[1];
+				$size = $file[3];		
+										
 				// add these files into the mv_files table:
-				// @@todo future we should tie the mv_files table to the semantic properties?
+				// @@todo in the future we should tie the mv_files table to the semantic properties.
 				// check if already present:
+				
 				$quality_msg = 'ao_file_' . $name;
+				
+				if($name=='Ogg_Video'){
+					$found_ogg=true;
+				}
 				$path_type = 'url_file';
+				if($found_ogg && $name=='512Kb_MPEG4'){
+					$quality_msg = 'mv_archive_org_mp4';
+					$path_type = 'mp4_stream';
+				}
+				//print "found ogg $found_ogg name: $name  qm:$quality_msg\n";
+
+				//output stream to wiki text: 
+				$out .= "*[{$url} $name] {$size}\n";	
+				
 				$dbr = wfGetDB( DB_SLAVE );
 				$res = $dbr->query( "SELECT * FROM `mv_stream_files`
 						WHERE `stream_id`={$mvTitle->getStreamId()}
 						AND `file_desc_msg`='{$quality_msg}'" );
 				if ( $dbr->numRows( $res ) == 0 ) {
-					$sql = "INSERT INTO `mv_stream_files` (`stream_id`, `file_desc_msg`, `path_type`, `path`)" .
-					" VALUES ('{$mvTitle->getStreamId()}', '{$quality_msg}', '{$path_type}','{$url}' )";
+					$sql = "INSERT INTO `mv_stream_files` (`stream_id`,`duration`, `file_desc_msg`, `path_type`, `path`)" . 
+					" VALUES ('{$mvTitle->getStreamId()}','{$mvTitle->getDuration()}', '{$quality_msg}', '{$path_type}','{$url}' )";
 				} else {
 					$row = $dbr->fetchObject( $res );
 					// update that msg key *just in case*
@@ -530,27 +554,33 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 			$dbw->commit();
 			// more semantic properties
 			$out .= "\n\n";
-			$out .= $pout;
-			$out .= '[[stream_duration:=' . ( $end_time - $start_time ) . '| ]]' . "\n";
+			$out .= '[[stream_duration::' . ( $end_time - $start_time ) . '| ]]' . "\n";
 			if ( $stream->org_start_time ) {
-				$out .= '[[original_date:=' . $stream->org_start_time . '| ]]';
+				$out .= '[[original_date::' . $stream->org_start_time . '| ]]';
 			}
 		}
 	}
 	// add stream category (based on sync status)
-	switch( $stream->sync_status ) {
-		case 'not_checked':
-			$out .= "\n\n" . '[[Category:Stream Unchecked]]';
-		break;
-		case 'impossible':
-			$out .= "\n\n" . '[[Category:Stream Out of Sync]]';
-		break;
-		case 'in_sync':
-			$out .= "\n\n" . '[[Category:Stream Basic Sync]]';
-			// other options [stream high quality sync ];
-		break;
+	//(only add if the wiki page does not exist)
+	$wStreamTitle = Title::newFromText($stream->name, MV_NS_STREAM);
+	if( !$wStreamTitle->exists() ) {
+		switch( $stream->sync_status ) {
+			case 'not_checked':
+				$out .= "\n\n" . '[[Category:Stream Unchecked]]';
+			break;
+			case 'impossible':
+				$out .= "\n\n" . '[[Category:Stream Out of Sync]]';
+			break;
+			case 'in_sync':
+				$out .= "\n\n" . '[[Category:Stream Basic Sync]]';
+				// other options [stream high quality sync ];
+			break;
+		}
 	}
-
+	// add in semantic stream properties
+	//$out = mv_proccess_attr( 'stream_attr_varchar', $stream_id );
+	//$out .= mv_proccess_attr( 'stream_attr_int', $stream_id );
+	
 	return $out;
 }
 function do_bill_insert( $bill_key ) {

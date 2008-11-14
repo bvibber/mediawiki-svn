@@ -819,8 +819,14 @@ class MV_BillScraper extends MV_BaseScraper {
 
 class MV_ArchiveOrgScrape extends MV_BaseScraper {
 	function getFileList( $stream_name ) {
-		$raw_page = $this->doRequest( 'http://www.archive.org/details/mv_' . $stream_name );
-		preg_match_all( '/href="(http:\/\/www.archive.org\/download\/mv_[^"]*)">([^<]*)<\/a>([^<]*)/', $raw_page, $matches );
+		//get the latest archive.org page: 
+		$raw_page = $this->doRequest( 'http://www.archive.org/details/mv_' . $stream_name, array(), $get_fresh=true );
+		if($raw_page=='')
+			return false;
+		//print "Raw page: $raw_page";
+		
+		preg_match_all( '/href="(\/download\/mv_[^"]*)">([^<]*)<\/a>([^<]*)/', $raw_page, $matches );
+		
 		$files = array();
 		if ( isset( $matches[1] ) ) {
 			foreach ( $matches as $inx => $set ) {
@@ -828,10 +834,16 @@ class MV_ArchiveOrgScrape extends MV_BaseScraper {
 					$files[$k][$inx] = trim( $v );
 				}
 			}
-			// add the flv:
-			$files[] = array( '',
-					 'http://www.archive.org/download/mv_' . $stream_name . '/' . $stream_name . '.flv',
-					 'flash flv', '' );
+			//remove duplicates
+			$orgFiles = $files;
+			$files = array();
+			$dupCheck=array();
+			foreach( $orgFiles as $file ){
+				if( !isset($dupCheck[ $file[1] ] )){
+					$files[] = $file;
+					$dupCheck[ $file[1] ] = true; 
+				}
+			}
 		} else {
 			return false;
 		}
@@ -840,12 +852,13 @@ class MV_ArchiveOrgScrape extends MV_BaseScraper {
 }
 
 class MV_BaseScraper {
+	var $number_of_tries = 1;
 	/*
 	 * simple url cach using the mv_url_cache table
 	 *
 	 * @@todo handle post vars
 	 */
-	function doRequest( $url, $post_vars = array() ) {
+	function doRequest( $url, $post_vars = array(), $get_fresh=false, $try_count=1 ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$dbw = wfGetDB( DB_MASTER );
 		// check the cache
@@ -853,14 +866,19 @@ class MV_BaseScraper {
 		// select( $table, $vars, $conds='', $fname = 'Database::select', $options = array() )
 		$res = $dbr->select( 'mv_url_cache', '*', array( 'url' => $url ), 'MV_BaseScraper::doRequest' );
 		// @@todo check date for experation
-		if ( $res->numRows() == 0 ) {
-			echo "do web request: " . $url . "\n";
+		if ( $res->numRows() == 0 || $get_fresh) {
+			echo "do web request: " . $url . "\n";			
 			// get the content:
 			$page = file_get_contents( $url );
 			if ( $page === false ) {
-				echo( "error retriving $url retrying...\n" );
-				sleep( 5 );
-				return $this->doRequest( $url );
+				echo( "error getting url retrying (".$try_count." of $this->number_of_tries)" );
+				sleep( 2 );
+				if($try_count >= $this->number_of_tries){
+					print "could not get url after $this->number_of_tries \n\n";
+					return '';
+				}				
+				$try_count++;
+				return $this->doRequest( $url, $post_vars, $get_fresh, $try_count );
 			}
 			if ( $page != '' ) {
 				// insert back into the db:

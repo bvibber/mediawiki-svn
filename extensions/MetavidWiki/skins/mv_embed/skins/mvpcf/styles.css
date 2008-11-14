@@ -278,7 +278,7 @@ div.floatleft, table.floatleft {
 	width: 14px;
 	height: 14px;
 	position: relative;
-	z-index: 5;
+	z-index: 6;
 	margin: -13px 0 0 0px;
 	cursor: pointer;
 }
@@ -462,6 +462,12 @@ div.floatleft, table.floatleft {
 	margin: 0 0 6px 0;
 	float: right;
 	display: inline;
+}
+.cl_status{
+	position:absolute; 
+	height:12px;
+	top:0px;
+	z-index:5;
 }
 
 #SEQUENCER CSS:

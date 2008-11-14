@@ -77,8 +77,8 @@ var htmlEmbed ={
 		return true;
 	},
 	renderTimelineThumbnail:function( options ){
-		//generate a scaled down version _that_ we can clone if nessisary 
-		//add a not visiable container to the body:		
+		//generate a scaled down version _that_ we can clone if nessisary  
+		//add a not vissiable container to the body:		
 		var do_refresh = (typeof options['refresh'] != 'undefined')?true:false;
 		
 		var thumb_render_id =   this.id +'_thumb_render_'+ options.height;
@@ -91,8 +91,8 @@ var htmlEmbed ={
 			var thumb_class = (typeof options['thumb_class'] !='undefined')? options['thumb_class'] : '';
 			
 			$j('body').append( '<div id="' + thumb_render_id + '" style="display:none">'+
-									'<div class="' + thumb_class + '" style="display:block;border:solid thin black;'+
-									'width:'+options.width+'px;height:'+options.height+'px;overflow:hidden;" >'+								    	
+									'<div class="' + thumb_class + '" '+ 
+									'style="width:'+options.width+'px;height:'+options.height+'px;" >'+								    	
 											this.getThumbnailHTML() + 
 									'</div>'+
 						  	  '</div>' 

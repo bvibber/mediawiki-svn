@@ -12,7 +12,7 @@
  *
  * Maintenance Utility Functions:
  */
-
+require_once ( '../../../maintenance/commandLine.inc' );
  /*
  * set up the bot user:
  */

@@ -16,6 +16,7 @@ options:
 actions: 
 	strip_speech_by  //strips extra speech by text
 	update_stream_desc //updates stream desc
+	update_archive_org_files //updates pointers to archive.org mp4 streaming
 
 EOT;
 	exit ();
@@ -32,7 +33,42 @@ switch ( $args[0] ) {
 	case 'update_stream_desc':
 		update_stream_desc();
 	break;
+	case 'update_archive_org_files':
+		run_archive_org_update();
+	break;
 }
+function run_archive_org_update(){
+	//first get all the streams: 			
+	include_once( 'metavid2mvWiki.inc.php' );
+	$dbr = wfGetDB( DB_READ );
+	$dbw = wfGetDB( DB_WRITE );
+	
+	$sql = "SELECT * FROM `mv_streams` LIMIT 0, 5000";	
+	$result = $dbr->query( $sql );	
+	while ( $stream = $dbr->fetchObject( $result ) ) {
+		//get the wiki page:
+		$streamTitle = Title::newFromText($stream->name, MV_NS_STREAM);
+		$mArticle = new Article( $streamTitle ); 
+		$mvTitle = new MV_Title($stream->name);	
+		$stream->archive_org = true;
+		$out = mv_semantic_stream_desc($mvTitle, $stream);	
+				
+		if(trim($out)!=''){
+			//get all the existing cats:
+			$wtext = $mArticle->getContent();
+			preg_match_all('/Category\:([^\]]*)/',$wtext, $matches);
+			if( isset($matches[1]) ){
+				foreach($matches[1] as $category){
+					$out.="\n[[Category:{$category}]]";
+				}
+			}
+			//now that we keept categories force update the page:			
+			do_update_wiki_page( $streamTitle, $out, MV_NS_STREAM, $force = true );
+			
+		}
+	}
+}
+
 function update_stream_desc(){
 	/*==Official Record==
 *[[GovTrack]] Congressional Record[http://www.govtrack.us/congress/recordindex.xpd?date=20080609&where=h]
@@ -70,9 +106,7 @@ function update_stream_desc(){
 		$cur_text=preg_replace('/\*\[\[CSPAN\]\]\'s Congressional Chronicle \[([^\[]*)\]/','*[$1 CSPAN Congressional Chronicle]', $cur_text);
 		//do force update
 		do_update_wiki_page( $streamTitle, $cur_text, MV_NS_STREAM, $force = true );
-	}
-	
-	
+	}		
 	//update links
 }
 

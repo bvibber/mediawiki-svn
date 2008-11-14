@@ -1636,13 +1636,7 @@ var flashEmbed = {
     	this.getFLA();
     	this.parent_pause();
     	if(this.fla['pause'])
-    		this.fla.pause();    	
-		//stop updates: 
-		if( this.monitorTimerId != 0 )
-	    {
-	        clearInterval(this.monitorTimerId);
-	        this.monitorTimerId = 0;
-	    }
+    		this.fla.pause();    			
     },
     monitor : function()
     {    

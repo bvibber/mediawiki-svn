@@ -1,14 +1,10 @@
 This will eventually host the tools for capturing brodcasted content
-and insertting it into a wiki
+and inserting it into a wiki/ uploading it to archive.org
 
-presently the script metavid project uses are accesible here:
+presently the script metavid project uses are accessible here:
 http://slugforge.cse.ucsc.edu/gf/project/metavid/
-but I don't recomend using them not genneraly applicable.
+but I don't recommend using them not generally applicable.
 
-
-
-The genneral flow and machine layout should be as follows:
-note: obvisuly your layout may differ and adjustments may be needed.
 
 dependencies:
 	metavidWiki

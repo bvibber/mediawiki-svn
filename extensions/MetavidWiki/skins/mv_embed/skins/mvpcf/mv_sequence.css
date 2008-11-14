@@ -95,16 +95,17 @@
 .mv_clip_list_result{
 	padding:10px;
 }
-.mv_time_clip{
+.mv_storyboard_container{
 	position:absolute;
 	z-index:0;
 	overflow:hidden;
-	border:solid thin white; 	
 }
 .mv_clip_thumb{
 	position:absolute;
 	top:7px;	
-	border:solid thin #BBB; 
+	border:solid #CCC;
+	display:block;
+	overflow:hidden; 	
 }
 .mv_tl_clip{
 	position:absolute;
@@ -117,5 +118,16 @@
 	white-space: nowrap; 
 }
 .mv_selected_clip{
-	border:solid thin #9F9; 	
+	border:solid #9F9; 	
+}
+.mv_adj_text{
+	font-weight: strong;
+	font-size:small;
+	color:#6F6;
+	display:none; /* hide by default */
+	position:absolute;
+	left:20px;
+}
+.mv_adjust_click{
+	cursor:pointer;
 }

@@ -547,6 +547,8 @@ mvPlayList.prototype = {
 		$j('#clipDesc_'+this.cur_clip.id).hide();			
 		this.cur_clip=new_clip;			
 		$j('#clipDesc_'+this.cur_clip.id).show();
+		//update the playhead: 
+		this.setSliderValue( this.cur_clip.dur_offset / this.getDuration() ); 		
 	},
 	prev: function(){
 		//advance the playhead to the previous clip			
@@ -715,19 +717,13 @@ mvPlayList.prototype = {
 			var pwidth = Math.round( perc * _this.track_len);
 			//var pwidth = Math.round( perc  * _this.track_len - (_this.mv_seeker_width*perc) );
 			
-			var barHtml = '<div id="cl_status_'+clip.id+'"  style="' +
-					'position:absolute;' + 
+			var barHtml = '<div id="cl_status_'+clip.id+'" class="cl_status"  style="' +					
 					'left:'+cur_pixle +'px;'+
-					'width:'+pwidth + 'px;'+
-					'height:12px;'+
-					'top:0px;'+
-					'z-index:1;';
+					'width:'+pwidth + 'px;';					
 			//set left or right border based on track pos 
 			barHtml+=( i == _this.default_track.getClipCount()-1 )?
 				 'border-left:solid thin black;':
-				 'border-right:solid thin black;';
-				
-							
+				 'border-right:solid thin black;';											
 			barHtml+= 'filter:alpha(opacity=40);'+
 					'-moz-opacity:.40;">'
 					'</div>';

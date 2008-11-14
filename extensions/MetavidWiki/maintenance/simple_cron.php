@@ -1,4 +1,9 @@
 <?php
+//should only be run from the command line: 
+if ( php_sapi_name() != 'cli' ) {
+    print "This script must be run from the command line\n";
+    exit( 1 );
+}
 $i=0;
 while(true){
 	echo "run update search index:\n";

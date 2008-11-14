@@ -69,7 +69,6 @@ var sequencerDefaultValues = {
 	
 	base_adj_duration:.5, //default time to subtract or add when adjusting clips. 	
 	
-	
 	//Msg are all the language specific values ... 
 	// (@@todo overwrite by msg values preloaded in the page)	
 	//tack/clips can be pushed via json or inline playlist format
@@ -95,6 +94,7 @@ mvSequencer.prototype = {
 		'options':0
 		//menu_resource_overview
 	},	
+	multi_clip_select:false, //controls the multi-clip select state
 	init:function( initObj ){	
 		//set the default values:
 		for(var i in sequencerDefaultValues){
@@ -189,7 +189,7 @@ mvSequencer.prototype = {
 			req_url+='|'+i;
 			$j('#'+i+'_ic').html( getMsg('loading_txt') );//set targets to loading
 		}				
-		var _this = this;
+		var this_seq = this;
 		do_request(req_url, function(data){
 			if(typeof data=='string'){
 				js_log(' eval data: ' + data);					
@@ -199,12 +199,12 @@ mvSequencer.prototype = {
 			for(var i in data){
 				js_log('set '+ i + ' to: '+ data[i] );
 				$j('#'+i+'_ic').html( data[i] );
-				_this.doMenuItemDispJs(i)
+				this_seq.doMenuItemDispJs(i)
 			}
 		});						
 	},
 	doMenuItemDispJs:function(item){		
-		var _this = this;
+		var this_seq = this;
 		var target_id = item + '_ic';
 		//do any menu item post embed js hook processing:
 		switch(item){		
@@ -220,9 +220,9 @@ mvSequencer.prototype = {
 					return js_log( 'Error:missing interface_url, can not load search interface' );
 																										
 				mvJsLoader.doLoad({'mvRemoteSearch':'mv_remote_media_search.js'}, function(){					
-					_this.mySearch = new mvRemoteSearch( {
-						'p_seq':_this,
-						'instance_name': _this.instance_name + '.mySearch',
+					this_seq.mySearch = new mvRemoteSearch( {
+						'p_seq':this_seq,
+						'instance_name': this_seq.instance_name + '.mySearch',
 						'target_input':'mv_ams_search',
 						'target_submit':'mv_ams_submit',
 						'target_results':'mv_ams_results'
@@ -231,15 +231,15 @@ mvSequencer.prototype = {
 			break;			
 			case 'options':							
 				$j('#'+target_id+" input[value='simple_editor']").attr({
-					'checked':(_this.timeline_mode=='clip')?true:false					
+					'checked':(this_seq.timeline_mode=='clip')?true:false					
 				}).click(function(){
-					_this.doSimpleTl();
+					this_seq.doSimpleTl();
 				});
 				$j('#'+target_id+" input[value='advanced_editor']").attr({
-					'checked':(_this.timeline_mode=='time')?true:false					
-				}).click(function(){					
-					_this.doAdvancedTl();
-				});						
+					'checked':( this_seq.timeline_mode=='time' )?true:false					
+				}).click(function(){
+					this_seq.doAdvancedTl();
+				});
 			break;
 		}
 	},
@@ -325,8 +325,7 @@ mvSequencer.prototype = {
 				);
 				//also render the clips in the trackset container: (thumb or text view)
 				$j('#'+this.timeline_id+'_tracks').append(
-					'<div id="container_track_'+i+'" style="top:'+top_pos+'px;height:'+(track_height+2)+'px;left:0px;right:0px;" class="container_track">' +					
-					'</div>'
+					'<div id="container_track_'+i+'" style="top:'+top_pos+'px;height:'+(track_height+2)+'px;left:0px;right:0px;" class="container_track" />'
 				);		
 				top_pos+=track_height+20;		
 			}					
@@ -338,7 +337,7 @@ mvSequencer.prototype = {
 				var track_height=this.track_clipThumb_height;
 				//add in play box and container tracks
 				$j('#'+this.timeline_id).append(''+
-					'<div id="container_track_'+i+'" style="position:absolute;top:20px;height:'+(track_height+20)+'px;left:10px;right:0px;" class="container_track">' +					
+					'<div id="container_track_'+i+'" style="position:absolute;top:25px;height:'+(track_height+30)+'px;left:10px;right:0px;" class="container_track">' +					
 					'</div>'
 				);
 				top_pos+=track_height+20;
@@ -391,6 +390,35 @@ mvSequencer.prototype = {
 		//render the timeline					
 		this.renderTimeLine();			
 		this.do_refresh_timeline();
+		
+		var this_seq = this;
+		//set up key bidnings
+		$j().keyup(function (e) {
+			js_log('pressed: ' + e.which);
+			//delete key (remove selected clips) (in the future we should take app state into consideration) 
+			if( e.which == 8 ){
+				var remove_clip_ary=new Array();
+				//remove selected clips from display
+				$j('.container_track .mv_selected_clip').each(function(){					
+					//grab the track index from the id (assumes track_#_clip_# 					
+					remove_clip_ary.push ( $j(this).parent().attr('id').replace('track_','').replace('clip_','').split('_') );																				
+				});				
+				this_seq.removeClips( remove_clip_ary );	
+			}
+		});		
+		$j().keydown(function(e){
+			js_log('pushed down on:' + e.which);
+			//if user pressed "shift" enable multi-select 
+			if( e.which == 16 ){
+				this_seq.multi_clip_select = true;
+			}
+		});
+		$j().keyup(function(e){
+			js_log('key up on ' + e.which);
+			if( e.which == 16 ){
+				this_seq.multi_clip_select = false;
+			}
+		});
 	},
 	update_tl_hook:function(jh_time_ms){			
 		//put into seconds scale: 
@@ -528,28 +556,27 @@ mvSequencer.prototype = {
 		$j('#modal_window').hide();
 		$j('#modalbox').show();
 	},
-	removeClip:function(track_inx, clip_inx){
-		//fade out fast: 
+	removeClips:function( remove_clip_ary ){		
+		//js_log('remove t:' + track_inx + ' c:'+ clip_inx + ' id:' +' #track_'+track_inx+'_clip_'+clip_inx); 	
 		var this_seq = this;
-		$j('#track_'+track_inx+'_clip_'+clip_inx).fadeOut("fast",function(){
-			this_seq.plObj.tracks[track_inx].clips.splice(clip_inx, 1);
-			//reorder:
-			for( var k in this_seq.plObj.tracks[track_inx].clips){
-				if(typeof this_seq.plObj.tracks[track_inx].clips[i]!= 'undefined'){
-					this_seq.plObj.tracks[track_inx].clips[i].order=k;
-				}
-			}
+		var jselect = coma ='';		
+		$j.each( remove_clip_ary, function(inx, track_clip){
+			//remove the clips from the base library
+			this_seq.plObj.tracks[ track_clip[0] ].clips.splice( track_clip[1], 1);
+			jselect+= coma + '#track_' + track_clip[0] + '_clip_' + track_clip[1];
+			coma=',';
+		});
+		//animate the removal 		
+		$j(jselect).fadeOut("slow", function(){
 			//re-render tracks: 
-			this_seq.render_tracks( track_inx );			
-			
-			if(this_seq.plObj.tracks[track_inx].clips.length==0){
-				this_seq.plObj.getHTML();
-			}else{
-				//update playlist desc:
-				this_seq.plObj.pl_duration=null;
-				this_seq.plObj.updateTitle();	
-			}
-		});	
+			this_seq.do_refresh_timeline();
+		});				
+		//reorder:
+		//for( var k in this_seq.plObj.tracks[track_inx].clips){
+		//	if(typeof this_seq.plObj.tracks[track_inx].clips[i] != 'undefined'){
+		//		this_seq.plObj.tracks[track_inx].clips[i].order=k;
+		//	}
+		//}	
 	},
 	doEdit:function( editObj ){
 		//add the current editObj to the edit stack (should allow for "undo")
@@ -651,11 +678,10 @@ mvSequencer.prototype = {
 						clip.width_px = container_width;
 						var base_id = 'track_'+track_id+'_clip_'+j;
 						track_html+='<span id="'+base_id+'" '+
-										'class="mv_time_clip mv_clip_drag" '+  
-										'style="'+
-										'border:none;'+	
+										'class="mv_storyboard_container mv_clip_drag" '+  
+										'style="'+										
 										'left:'+clip.left_px+'px;'+									
-										'height:' + (this.track_clipThumb_height+20) + 'px;' +																				
+										'height:' + (this.track_clipThumb_height+30) + 'px;' +																				
 										'width:'+(container_width)+'px;" >';																
 						track_html+=clip.embed.renderTimelineThumbnail({
 										'width':frame_width,
@@ -670,10 +696,10 @@ mvSequencer.prototype = {
 						track_html+='<div style="" id="tb_' + base_id + '" class="clip_trans_box"/>';
 						
 						//render out adjustment text
-						track_html+='<div id="' + base_id + '_adj' + '" style="font-size:small;color:#6F6;display:none;position:absolute;top:'+ (this.track_clipThumb_height+10 )+'px;>'+
-										'<span onClick="'+this.instance_name+'.adjClipDur(' + track_id + ',' + j + ',\'-\')" /> - </span>'+
-										  clip.getDuration() +
-										'<span onClick="'+this.instance_name+'.adjClipDur(' + track_id + ',' + j + ',\'+\')" /> + </span>'+ 
+						track_html+='<div id="' + base_id + '_adj' + '" class="mv_adj_text" style="top:'+ (this.track_clipThumb_height+10 )+'px;">'+
+										'<span class="mv_adjust_click" onClick="'+this.instance_name+'.adjClipDur(' + track_id + ',' + j + ',\'-\')" /> - </span>'+
+										  ( (clip.getDuration() > 60 )? seconds2ntp(clip.getDuration()): clip.getDuration() )  +
+										'<span class="mv_adjust_click" onClick="'+this.instance_name+'.adjClipDur(' + track_id + ',' + j + ',\'+\')" /> + </span>'+ 
 									'</div>';																	
 						track_html+='</span>';						
 													
@@ -702,7 +728,7 @@ mvSequencer.prototype = {
 						//add in per clip controls
 						track_html+='<div title="'+getMsg('clip_in')+' '+clip.embed.start_ntp+'" class="ui-resizable-w ui-resizable-handle" style="width: 16px; height: 16px; left: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_contract.png\');" ></div>'+"\n";
 						track_html+='<div title="'+getMsg('clip_out')+' '+clip.embed.end_ntp+'" class="ui-resizable-e ui-resizable-handle" style="width: 16px; height: 16px; right: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_expand.png\');" ></div>'+"\n";
-						track_html+='<div title="'+getMsg('rmclip')+'" onClick="'+this.instance_name+'.removeClip('+track_id+','+j+')" style="position:absolute;cursor:pointer;width: 16px; height: 16px; left: 0px; bottom:2px;background:url(\''+mv_embed_path+'images/delete.png\');"></div>'+"\n";
+						track_html+='<div title="'+getMsg('rmclip')+'" onClick="'+this.instance_name + '.removeClips([' + track_id + ',' + j + '])" style="position:absolute;cursor:pointer;width: 16px; height: 16px; left: 0px; bottom:2px;background:url(\''+mv_embed_path+'images/delete.png\');"></div>'+"\n";
 						track_html+='<span style="display:none;" class="mv_clip_stats"></span>';	
 																													
 						track_html+='</span>';	
@@ -725,11 +751,22 @@ mvSequencer.prototype = {
 				
 				//apply onClick edit controls: 
 				$j('.mv_clip_thumb').click(function(){
-					if( $j(this).hasClass("mv_selected_clip") ){
-						$j(this).removeClass("mv_selected_clip")
+					//if not in mult select mode remove all existing selections 				
+					if( ! this_seq.multi_clip_select ){
+						$j('.mv_clip_thumb').each(function(){
+							$j(this).removeClass("mv_selected_clip");
+							$j('#' + $j(this).parent().attr("id") + '_adj').fadeOut("fast");
+						});
+					}
+					//jump to clip time
+					var track_clip_ids = $j(this).parent().attr('id').replace('track_','').replace('clip_','').split('_');		
+					js_log(' updateCurrentClip: ' + 	track_clip_ids[0] +' ' +  track_clip_ids[1] );
+					this_seq.plObj.updateCurrentClip( this_seq.plObj.tracks[ track_clip_ids[0] ].clips[ track_clip_ids[1] ] );
+					if( $j(this).hasClass("mv_selected_clip") ){								
+						$j(this).removeClass("mv_selected_clip");
 						$j('#' + $j(this).parent().attr("id") + '_adj').fadeOut("fast");
-					}else{
-						$j(this).addClass('mv_selected_clip');
+					}else{															
+						$j(this).addClass('mv_selected_clip');						
 						$j('#' + $j(this).parent().attr("id") + '_adj').fadeIn("fast");
 					}					
 				});
@@ -996,8 +1033,7 @@ mvSequencer.prototype = {
 		this.playline_time = jh_time;
 		js_log('time: ' + seconds2ntp(jh_time) + ' ' + Math.round(jh_time/this.timeline_scale));
 		//render playline at given time
-		$j('#'+this.timeline_id+'_playline').css('left', Math.round(jh_time/this.timeline_scale)+'px' );
-		//@@ in the future this will render the state at that time point (combining tracks etc) 
+		$j('#'+this.timeline_id+'_playline').css('left', Math.round(jh_time/this.timeline_scale)+'px' );		 
 		cur_pl_time=0;
 		//update the thumb with the requested time: 		
 		this.plObj.updateThumbTime( jh_time );		
