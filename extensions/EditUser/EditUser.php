@@ -11,7 +11,7 @@ if(!defined('MEDIAWIKI')) {
 $dir = dirname(__FILE__) . '/';
 
 if(!file_exists($dir . substr($wgVersion, 0, 4) . 'EditUser_body.php')) {
-	wfDebug("Your MediaWiki version \"$wgVersion\" is not supported by the EditUser extension");
+	wfErrorLog("Your MediaWiki version \"$wgVersion\" is not supported by the EditUser extension");
 	return;
 }
 
