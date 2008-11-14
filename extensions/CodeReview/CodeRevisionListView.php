@@ -12,6 +12,7 @@ class CodeRevisionListView extends CodeView {
 			$this->mPath = "/{$this->mPath}"; // make sure this is a valid path
 		}
 		$this->mAuthor = null;
+		$this->mStatus = null;
 	}
 
 	function execute() {
@@ -35,8 +36,10 @@ class CodeRevisionListView extends CodeView {
 		global $wgOut, $wgScript;
 		if( $this->mAuthor ) {
 			$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/author/'.$this->mAuthor );
+		} else if( $this->mStatus ) {
+			$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/status/'.$this->mStatus );
 		} else {
-			$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/path' );
+			$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
 		}
 		$wgOut->addHTML( 
 			Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get' ) ) .
