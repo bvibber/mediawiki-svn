@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'ExpandTemplates' => array( 'فرد_القوالب' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'ExpandTemplates' => array( 'ProsirivanjeSablona' ),
+);
+
 /** Catalan (Català) */
 $aliases['ca'] = array(
 	'ExpandTemplates' => array( 'Expansió de plantilles' ),

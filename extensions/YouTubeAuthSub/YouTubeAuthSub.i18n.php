@@ -257,6 +257,7 @@ Un tamm pasianted mar plij.',
 $messages['bs'] = array(
 	'youtubeauthsub_title' => 'Naslov',
 	'youtubeauthsub_category' => 'Kategorija',
+	'youtubeauthsub_uploadbutton' => 'Postavi',
 );
 
 /** Catalan (Català)

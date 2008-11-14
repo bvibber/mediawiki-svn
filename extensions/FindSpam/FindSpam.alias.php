@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'FindSpam' => array( 'إيجاد_السبام' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'FindSpam' => array( 'TrazenjeSpama' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'FindSpam' => array( 'Spam keresése' ),

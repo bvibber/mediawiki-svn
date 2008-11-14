@@ -317,6 +317,7 @@ $messages['bs'] = array(
 	'grouppermissions-search' => 'Grupa:',
 	'grouppermissions-dologin' => 'Prijava',
 	'grouppermissions-dosearch' => 'Idi',
+	'grouppermissions-sp-remove' => 'ukloni',
 );
 
 /** German (Deutsch)

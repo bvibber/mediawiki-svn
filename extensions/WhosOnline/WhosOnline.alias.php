@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'WhosOnline' => array( 'من_موجود' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'WhosOnline' => array( 'TkoJeNaMrezi' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'WhosOnline' => array( 'Wer ist online' ),

@@ -1905,6 +1905,7 @@ Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan k
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> kanggo siji makna ing konsèp, balèkaké kabèh liyané</li>
 <li>&action=help  Tuduhaké pitulung.</li>
 </ul></p>",
+	'ow_conceptmapping_uitext' => '<p>Pamétaan konsèp agawé panjenengan bisa ngenali makna  endi jroning sèt-data  padha karo makna jroning sèt-data liya.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Nuwun sèwu, aku ora ngerti carané "$1".',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'ora dilebokaké',
@@ -3048,9 +3049,9 @@ als senses definits dins las autras donadas.</p>",
 	'ow_copy_no_action_specified' => "Mercé d'especificar una accion",
 	'ow_copy_help' => 'Ajuda de venir...',
 	'ow_please_proved_dmid' => 'Sembla que manca un "?dmid=<...>" (dmid=SensDefinit ID)<br />Contactatz l’administrator del servidor.',
-	'ow_please_proved_dc1' => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI laquina òm copia)<br />
+	'ow_please_proved_dc1' => 'Sèmbla que manca un "?dc1=<quicòm>" (dc1=contèxt de la banca 1, banca DEMPUÈI la quala òm copia)<br />
 Contactatz l’administrator.',
-	'ow_please_proved_dc2' => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca CAP A laquina òm copia)<br />
+	'ow_please_proved_dc2' => 'Sembla que manca un "?dc2=<quicòm>" (dc2=contèxt de la banca 2, banca CAP A la quala òm copia)<br />
 Contactatz l’administrator.',
 	'ow_copy_successful' => '<h2>Capitada de la còpia</h2>Vòstras donadas son estadas copiadas amb succès (verificatz çaquelà).',
 	'ow_copy_unsuccessful' => "<h3>Còpia infructuosa</h3> Cap d'operacion de còpia a pas pres plaça.",

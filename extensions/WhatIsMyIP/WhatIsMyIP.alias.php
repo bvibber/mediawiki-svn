@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'WhatIsMyIP' => array( 'ما_هو_الأيبى_خاصتى' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'WhatIsMyIP' => array( 'KojiJeMojIP' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'WhatIsMyIP' => array( 'Meine IP-Adresse' ),

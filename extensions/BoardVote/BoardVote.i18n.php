@@ -5157,8 +5157,14 @@ $messages['sah'] = array(
 
 /** Sicilian (Sicilianu)
  * @author Gmelfi
+ * @author Santu
  */
 $messages['scn'] = array(
+	'boardvote' => 'Elizzioni dû cunsigghiu dirittivu di la Wikimedia Foundation',
+	'boardvote-desc' => '[[meta:Board elections/2008|Elizzioni dû Cunsigghiu dirittivu Wikimedia]]',
+	'boardvote_entry' => "* [[Special:Boardvote/vote|Vota]]
+* [[Special:Boardvote/list|Talìa li voti fatti nzinu a stu mumentu]]
+* [[Special:Boardvote/dump|Scàrica li voti 'n furma cifrata]]",
 	'group-boardvote' => 'Cummissioni eletturali',
 	'group-boardvote-member' => 'Cummissariu eletturali',
 	'grouppage-boardvote' => '{{ns:project}}:Cummissariu eletturali',

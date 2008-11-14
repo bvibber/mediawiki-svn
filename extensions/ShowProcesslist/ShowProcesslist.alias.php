@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'ShowProcesslist' => array( 'عرض_قائمة_العمل' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'ShowProcesslist' => array( 'PrikazSpiskaProcesa' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ShowProcesslist' => array( 'Prosessilistaus' ),

@@ -155,9 +155,9 @@ $messages['de'] = array(
 	'passwordreset-emptyusername' => 'Leerer Benutzername',
 	'passwordreset-nopassmatch' => 'Passwörter stimmen nicht überein',
 	'passwordreset-badtoken' => 'Ungültiger „Edit Token“',
-	'passwordreset-username' => 'Benutzername',
-	'passwordreset-newpass' => 'Neues Passwort',
-	'passwordreset-confirmpass' => 'Passwort bestätigen',
+	'passwordreset-username' => 'Benutzername:',
+	'passwordreset-newpass' => 'Neues Passwort:',
+	'passwordreset-confirmpass' => 'Passwort bestätigen:',
 	'passwordreset-submit' => 'Passwort zurücksetzen',
 	'passwordreset-success' => 'Passwort für Benutzer-ID $1 wurde zurückgesetzt.',
 	'passwordreset-disableuser' => 'Benutzerkonto deaktivieren?',
@@ -230,6 +230,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Dereckson
  * @author Grondin
+ * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
  */
@@ -240,9 +241,9 @@ $messages['fr'] = array(
 	'passwordreset-emptyusername' => "Nom d'usager vide",
 	'passwordreset-nopassmatch' => 'Les mots de passe que vous avez saisis ne sont pas identiques.',
 	'passwordreset-badtoken' => 'Jeton de modification inconnu',
-	'passwordreset-username' => "Nom d'usager",
-	'passwordreset-newpass' => 'Nouveau mot de passe',
-	'passwordreset-confirmpass' => 'Confirmez le mot de passe',
+	'passwordreset-username' => "Nom d'utilisateur :",
+	'passwordreset-newpass' => 'Nouveau mot de passe :',
+	'passwordreset-confirmpass' => 'Confirmez le mot de passe :',
 	'passwordreset-submit' => 'Remise à zéro du mot de passe',
 	'passwordreset-success' => 'Le mot de passe a été remis à zéro pour l’usager $1.',
 	'passwordreset-disableuser' => 'Désactiver le compte utilisateur ?',
@@ -365,9 +366,9 @@ $messages['hsb'] = array(
 	'passwordreset-emptyusername' => 'Žane wužiwarske mjeno',
 	'passwordreset-nopassmatch' => 'Hesle njerunatej so',
 	'passwordreset-badtoken' => 'Njepłaćiwe wobdźěłanske znamjo',
-	'passwordreset-username' => 'Wužiwarske mjeno',
-	'passwordreset-newpass' => 'Nowe hesło',
-	'passwordreset-confirmpass' => 'Hesło wobkrućić',
+	'passwordreset-username' => 'Wužiwarske mjeno:',
+	'passwordreset-newpass' => 'Nowe hesło:',
+	'passwordreset-confirmpass' => 'Hesło wobkrućić:',
 	'passwordreset-submit' => 'Hesło wróćo stajić',
 	'passwordreset-success' => 'Hesło bu za wužiwarski ID $1 wróćo stajene.',
 	'passwordreset-disableuser' => 'Wužiwarske konto znjemóžnić?',
@@ -427,7 +428,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'passwordreset-badtoken' => 'Token penyuntingan tidak sah',
-	'passwordreset-username' => 'Nama pengguna',
+	'passwordreset-username' => 'Nama pengguna:',
 );
 
 /** Interlingue (Interlingue) */
@@ -461,9 +462,9 @@ $messages['it'] = array(
 	'passwordreset-emptyusername' => 'Nome utente vuoto',
 	'passwordreset-nopassmatch' => 'Le password non corrispondono',
 	'passwordreset-badtoken' => 'Edit token non valido',
-	'passwordreset-username' => 'Nome utente',
-	'passwordreset-newpass' => 'Nuova password',
-	'passwordreset-confirmpass' => 'Conferma password',
+	'passwordreset-username' => 'Nome utente:',
+	'passwordreset-newpass' => 'Nuova password:',
+	'passwordreset-confirmpass' => 'Conferma password:',
 	'passwordreset-submit' => 'Reimposta password',
 	'passwordreset-success' => 'La password è stata reimpostata per user_id: $1',
 	'passwordreset-disableuser' => 'Disabilitare account?',
@@ -496,9 +497,9 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'passwordreset-invalidusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ គ្មានសុពលភាព',
 	'passwordreset-emptyusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ ទទេ',
-	'passwordreset-username' => 'ឈ្មោះអ្នកប្រើប្រាស់',
-	'passwordreset-newpass' => 'ពាក្យសំងាត់ថ្មី',
-	'passwordreset-confirmpass' => 'បញ្ជាក់ទទួលស្គាល់ ពាក្យសំងាត់',
+	'passwordreset-username' => 'ឈ្មោះអ្នកប្រើប្រាស់៖',
+	'passwordreset-newpass' => 'ពាក្យសំងាត់​ថ្មី៖',
+	'passwordreset-confirmpass' => 'បញ្ជាក់​ទទួល​ស្គាល់​ពាក្យសំងាត់៖',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -534,9 +535,9 @@ $messages['lb'] = array(
 	'passwordreset-invalidusername' => 'Onbekannte Benotzernumm',
 	'passwordreset-emptyusername' => 'Eidele Benotzernumm',
 	'passwordreset-nopassmatch' => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
-	'passwordreset-username' => 'Benotzernumm',
-	'passwordreset-newpass' => 'Neit Passwuert',
-	'passwordreset-confirmpass' => 'Passwuert confirméieren',
+	'passwordreset-username' => 'Benotzernumm:',
+	'passwordreset-newpass' => 'Neit Passwuert:',
+	'passwordreset-confirmpass' => 'Passwuert widderhuelen:',
 	'passwordreset-submit' => 'Passwuert zrécksetzen',
 	'passwordreset-success' => "Passwuert fir d'Benotzernummer (User_id) $1 gouf zréckgesat",
 	'passwordreset-disableuser' => 'Benotzerkont deaktivéieren?',
@@ -633,9 +634,9 @@ $messages['nl'] = array(
 	'passwordreset-emptyusername' => 'Gebruiker niet ingegeven',
 	'passwordreset-nopassmatch' => 'De wachtwoorden komen niet overeen',
 	'passwordreset-badtoken' => 'Ongeldig bewerkingstoken',
-	'passwordreset-username' => 'Gebruiker',
-	'passwordreset-newpass' => 'Nieuw wachtwoord',
-	'passwordreset-confirmpass' => 'Bevestig wachtwoord',
+	'passwordreset-username' => 'Gebruiker:',
+	'passwordreset-newpass' => 'Nieuw wachtwoord:',
+	'passwordreset-confirmpass' => 'Bevestig wachtwoord:',
 	'passwordreset-submit' => 'Wachtwoord opnieuw instellen',
 	'passwordreset-success' => 'Wachtwoord voor gebruikersummer $1 is opnieuw ingesteld',
 	'passwordreset-disableuser' => 'Gebruiker deactiveren?',
@@ -708,7 +709,7 @@ $messages['oc'] = array(
  * @author Slomox
  */
 $messages['pdt'] = array(
-	'passwordreset-username' => 'Bruckernome',
+	'passwordreset-username' => 'Bruckernome:',
 );
 
 /** Polish (Polski)
@@ -876,6 +877,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'passwordreset' => 'Lösenordsåterställning',
@@ -884,9 +886,9 @@ $messages['sv'] = array(
 	'passwordreset-emptyusername' => 'Tomt användarnamn',
 	'passwordreset-nopassmatch' => 'Lösenordet matchar inte',
 	'passwordreset-badtoken' => 'Ogiltigt redigeringstecken',
-	'passwordreset-username' => 'Användarnamn',
-	'passwordreset-newpass' => 'Nytt lösenord',
-	'passwordreset-confirmpass' => 'Konfirmera lösenord',
+	'passwordreset-username' => 'Användarnamn:',
+	'passwordreset-newpass' => 'Nytt lösenord:',
+	'passwordreset-confirmpass' => 'Bekräfta lösenord:',
 	'passwordreset-submit' => 'Återställ lösenord',
 	'passwordreset-success' => 'Lösenordet för användaren "$1" har återställts.',
 	'passwordreset-disableuser' => 'Avaktivera kontot?',
@@ -958,14 +960,14 @@ $messages['th'] = array(
  */
 $messages['vi'] = array(
 	'passwordreset' => 'Tái tạo mật khẩu',
-	'passwordreset-desc' => "Tái tạo mật khẩu của người dùng wiki - cần quyền 'passwordreset'",
+	'passwordreset-desc' => "[[Special:PasswordReset|Tái tạo mật khẩu của người dùng wiki]] - cần quyền 'passwordreset'",
 	'passwordreset-invalidusername' => 'Tên người dùng không hợp lệ',
 	'passwordreset-emptyusername' => 'Tên thành viên trống',
 	'passwordreset-nopassmatch' => 'Mật khẩu không khớp',
 	'passwordreset-badtoken' => 'Khóa sửa đổi không hợp lệ',
-	'passwordreset-username' => 'Tên người dùng',
-	'passwordreset-newpass' => 'Mật khẩu mới',
-	'passwordreset-confirmpass' => 'Xác nhận mật khẩu',
+	'passwordreset-username' => 'Tên người dùng:',
+	'passwordreset-newpass' => 'Mật khẩu mới:',
+	'passwordreset-confirmpass' => 'Xác nhận mật khẩu:',
 	'passwordreset-submit' => 'Tái tạo mật khẩu',
 	'passwordreset-success' => 'Mật khẩu đã được tái tạo cho thành viên có id: $1',
 	'passwordreset-disableuser' => 'Tắt tài khoản thành viên?',
@@ -974,6 +976,7 @@ $messages['vi'] = array(
 	'passwordreset-accountdisabled' => 'Tài khoản đã bị tắt',
 	'disabledusers' => 'Thành viên bị tắt',
 	'disabledusers-summary' => 'Đây là danh sách các thành viên đã bị tắt sử dụng bằng PasswordReset.',
+	'right-passwordreset' => 'Tái tạo mật khẩu của người dùng ([[Special:PasswordReset|trang đặc biệt]])',
 );
 
 /** Volapük (Volapük)

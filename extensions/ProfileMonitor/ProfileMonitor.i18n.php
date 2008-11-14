@@ -287,7 +287,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'profiling-ok' => 'ok',
-	'profiling-data-process' => 'Sichen',
+	'profiling-data-process' => 'Verschaffen',
 	'profiling-data-count' => 'Zielen',
 	'profiling-data-time' => 'Dauer (total)',
 	'profiling-data-average' => 'Dauer (Duerchschnëtt)',

@@ -301,7 +301,10 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'badimages-add-btn' => 'Dodaj',
 	'badimages-name' => 'Naziv:',
+	'badimages-remove' => '(ukloni)',
+	'badimages-remove-btn' => 'Ukloni',
 );
 
 /** Czech (Česky)

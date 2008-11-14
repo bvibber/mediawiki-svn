@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ImportFreeImages' => array( 'استيراد_صور_حرة' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'ImportFreeImages' => array( 'UvozSlobodnihSlika' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ImportFreeImages' => array( 'Tuo vapaita kuvia' ),

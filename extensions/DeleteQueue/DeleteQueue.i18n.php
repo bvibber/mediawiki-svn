@@ -184,6 +184,7 @@ You can register your own endorsement of, or objection to this deletion [{{fullu
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author EugeneZelenko
  * @author Ferrer
  * @author Jon Harald Søby
  * @author Purodha
@@ -207,6 +208,7 @@ $messages['qqq'] = array(
 	'deletequeue-vote-reason' => '{{Identical|Comments}}',
 	'deletequeue-vote-submit' => '{{Identical|Submit}}',
 	'deletequeue-list-queue' => '{{Identical|Queue}}',
+	'deletequeue-list-status' => '{{Identical|Status}}',
 	'deletequeue-list-search' => '{{Identical|Search}}',
 	'deletequeue-list-header-page' => '{{Identical|Page}}',
 	'deletequeue-list-header-queue' => '{{Identical|Queue}}',
@@ -530,6 +532,7 @@ $messages['as'] = array(
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
+	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-list-header-page' => 'Старонка',
 );
 
@@ -564,6 +567,7 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'deletequeue-delnom-otherreason' => 'Ostali razlozi',
 	'deletequeue-list-search' => 'Traži',
+	'deletequeue-list-header-page' => 'Stranica',
 );
 
 /** German (Deutsch)
@@ -1794,7 +1798,7 @@ Se la proposicion rencontra pas cap d'objeccion sus ''$2'', la pagina serà supr
 Podètz contestar aquesta supression en [{{fullurl:{{FULLPAGENAME}}|action=delvote}} vos i opausant].",
 	'deletequeue-page-deletediscuss' => "Aquesta pagina es estada prepausada a la supression, aquesta es estada contestada.
 Lo motiu invocat èra ''« $1 »''
-Una discussion es intervenguda sus [[$3]], laquina serà concluida lo ''$2''.",
+Una discussion es intervenguda sus [[$3]], la quala serà concluida lo ''$2''.",
 	'deletequeue-notqueued' => "La pagina qu'avètz seleccionada es pas dins la coa de las supressions",
 	'deletequeue-review-action' => 'Accion de prene :',
 	'deletequeue-review-delete' => 'Suprimir la pagina.',

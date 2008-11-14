@@ -300,6 +300,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'regexblock-already-blocked' => '$1 je već blokiran.',
 	'regexblock-view-all' => 'Sve',
 	'regexblock-view-go' => 'Idi',
 );

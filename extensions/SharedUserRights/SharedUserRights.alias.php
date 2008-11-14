@@ -22,6 +22,11 @@ $aliases['arz'] = array(
 	'SharedUserRights' => array( 'صلاحيات_المستخدم_المشتركة' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'SharedUserRights' => array( 'DijeljenaKorisnickaPrava' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'SharedUserRights' => array( 'GedeeldeGebruikersrechten' ),

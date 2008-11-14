@@ -187,6 +187,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'createsigndoc-pagename' => 'Stranica:',
 	'createsigndoc-create' => 'Napravi',
 );
 

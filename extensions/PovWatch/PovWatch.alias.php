@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'PovWatch' => array( 'مراقبة_وجهة_النظر' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'PovWatch' => array( 'PovNazdor' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'PovWatch' => array( 'Predbilježeno_praćenje' ),

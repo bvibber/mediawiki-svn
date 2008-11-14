@@ -27,10 +27,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'onlinestatus-desc' => 'Short description of the Onlinestatus extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'onlinestatus-tab' => '{{Identical|Status}}',
 	'onlinestatus-toggles-desc' => 'Short description of the Onlinestatus extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
@@ -84,6 +86,13 @@ $messages['arz'] = array(
 	'onlinestatus-toggle-online' => 'متصل',
 	'tog-onlineOnLogin' => 'غير حالتى إلى موجود عند تسجيل الدخول',
 	'tog-offlineOnLogout' => 'غير حالتى إلى غير موجود عند تسجيل الخروج',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'onlinestatus-tab' => 'Статус',
 );
 
 /** Bulgarian (Български)

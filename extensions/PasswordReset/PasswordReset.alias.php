@@ -30,6 +30,12 @@ $aliases['arz'] = array(
 	'Disabledusers' => array( 'مستخدمون_معطلون' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'PasswordReset' => array( 'PonistavanjeSifre' ),
+	'Disabledusers' => array( 'OnemoguceniKorisnici', 'Onemogucenikorisnici' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'PasswordReset' => array( 'Passwort zurücksetzen' ),

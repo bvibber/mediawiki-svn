@@ -319,6 +319,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'whitelisttablemodifyall' => 'Sve',
 	'whitelisttableedit' => 'Uredi',
+	'whitelisttableremove' => 'Ukloni',
 	'whitelistrequestmsg' => '$1 zahtijeva pristup slijedećim stranicama:
 
 $2',
@@ -833,20 +834,36 @@ Pigunakaké * apa % minangka karakter ''wildcard''",
 	'whitelistnewtabledate' => 'Tanggal kadaluwarsa:',
 	'whitelistnewtableedit' => 'Set kanggo Nyunting',
 	'whitelistnewtableview' => 'Set kanggo Ndeleng',
+	'whitelistnowhitelistedusers' => 'Ora ana panganggo ing klompok "{{MediaWiki:Group-restricted}}".
+Panjenengan kudu [[Special:UserRights|nambahaké panganggo jroning klompok]] sadurungé bisa nambah kaca ing dhaptar-putih panganggo.',
 	'whitelistnewtableprocess' => 'Prosès',
+	'whitelistnewtablereview' => 'Priksa',
 	'whitelistselectrestricted' => '== Sèlèksi Jeneng Panganggo Sing Diwatesi ==',
 	'whitelistpagelist' => 'Kaca-kaca {{SITENAME}} kanggo $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Kaya-kaya [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], prasyarat kanggo èkstènsi iki, ora dipasang kanthi bener!</font>",
 	'whitelistbadtitle' => 'Judhul ala -',
 	'whitelistoverview' => '== Paninjoan amba owah-owahan kanggo $1 ==',
 	'whitelistoverviewcd' => "* Ngowahi tanggal menyang '''$1''' kanggo [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Ngesèt aksès menyang '''$1''' kanggo [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Ngilangi aksès kanggo [[:$1|$1]]',
+	'whitelistoverviewna' => "* Nambah [[:$1|$1]] jroning dhaptar-putih kanthi aksès '''$2''' lan '''$3''' tanggal daluwarsa",
 	'whitelistrequest' => 'Nyuwun aksès ing luwih akèh kaca',
-	'whitelistrequestmsg' => '$1 nyuwun aksès ing kaca-kaca iki:
+	'whitelistrequestmsg' => '$1 nyuwun aksès ing {{PLURAL:$3|kaca|kaca-kaca}} iki:
 
 $2',
 	'whitelistrequestconf' => 'Panyuwunan kaca-kaca anyar dikirimaké menyang $1',
+	'whitelistnonrestricted' => "Panganggo '''$1''' dudu panganggo kawates.
+Kaca iki mung kanggo panganggo kawates",
 	'whitelistnever' => 'ora tau',
-	'whitelistnummatches' => ' - pituwas $1 sing cocog',
+	'whitelistnummatches' => ' - {{PLURAL:$1|siji cocog|$1 cocog}}',
+	'right-editwhitelist' => 'Owahi dhaptar-putih kanggo panganggo sing ana',
+	'right-restricttowhitelist' => 'Sunting lan pirsani kaca mung ing dhaptar-putih waé',
+	'action-editwhitelist' => 'owahi dhaptar-putih kanggo panganggo sing ana',
+	'action-restricttowhitelist' => 'sunting lan pirsani kaca mung ing dhaptar-putih waé',
+	'group-restricted' => 'Panganggo-panganggo kawates',
+	'group-restricted-member' => 'Panganggo kawates',
+	'group-manager' => 'Para manajer',
+	'group-manager-member' => 'Manager',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -959,6 +976,7 @@ $messages['lb'] = array(
 	'whitelisttablesetedit' => 'Ännerungsparameter',
 	'whitelisttableremove' => 'Zréckzéien',
 	'whitelistnewtableedit' => 'Ännerungsparameter',
+	'whitelistnewtableprocess' => 'Verschaffen',
 	'whitelistnewtablereview' => 'Nokucken',
 	'whitelistpagelist' => 'Säite vu(n) {{SITENAME}} fir $1',
 	'whitelistbadtitle' => 'Schlechten Titel -',
@@ -967,12 +985,13 @@ $messages['lb'] = array(
 	'whitelistoverviewsa' => "* Autorisatioun vum '''$1''' op [[:$2|$2]] astellen",
 	'whitelistoverviewrm' => '* Autorisatioun fir [[:$1|$1]] gët ewechgeholl',
 	'whitelistrequest' => 'Zougang zu méi Säite froen',
-	'whitelistrequestmsg' => '$1 huet Accès op dës Säite gfrot:
+	'whitelistrequestmsg' => '$1 huet Zougrëff op dës {{PLURAL:$3|Säit|Säite}} gfrot:
 
 $2',
 	'whitelistrequestconf' => "D'Ufro fir nei Säite gouf geschéckt un $1",
 	'whitelistnever' => 'nie',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Resultat|Resultater}}',
+	'group-restricted' => 'Limitéiert Benotzer',
 );
 
 /** Eastern Mari (Олык Марий)

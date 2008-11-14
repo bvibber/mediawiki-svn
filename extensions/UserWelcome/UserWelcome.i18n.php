@@ -193,6 +193,26 @@ $messages['he'] = array(
 	'mp-request-new-friend' => '{{PLURAL:$1|חבר חדש אחד|$1 חברים חדשים}}',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'userwelcome-desc' => 'Nambahaké tag <tt>&lt;welcomeUser&gt;</tt> kanggo nuduhaké info sosial mligi-panganggo marang panganggo sing mlebu log',
+	'mp-userlevels-link' => 'Tataran panganggo',
+	'mp-welcome-upload' => 'Unggah',
+	'mp-welcome-edit' => 'Sunting',
+	'mp-welcome-points' => '$1 poin',
+	'mp-welcome-needed-points' => 'Kanggo maju menyang <b><a href="$1">$2</a></b> éntuk <i>$3</i> poin luwih akèh!',
+	'mp-welcome-logged-in' => 'Halo $1',
+	'mp-requests-title' => 'Panyuwunan',
+	'mp-requests-message' => 'Ana panyuwunan iki marang panjenengan.',
+	'mp-request-new-message' => 'warta/pesen anyar',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|bebungah|bebungah}} anyar',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|pawèwèh|pawèwèh}} anyar',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|lawan|lawan}} anyar',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|kanca|kanca-kanca}} anyar',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -211,6 +231,7 @@ $messages['km'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'userwelcome-desc' => 'Setzt e <tt>&lt;welcomeUser&gt;</tt> Tag derbäi fir den ageloggte Benotzer  benotzerspezifesch Sozialinformatiounen vun anere Benotzer ze weisen.',
 	'mp-userlevels-link' => 'Benotzerniveauen',
 	'mp-welcome-upload' => 'Eroplueden',
 	'mp-welcome-edit' => 'Änneren',

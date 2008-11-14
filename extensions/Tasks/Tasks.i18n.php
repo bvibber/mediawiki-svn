@@ -89,9 +89,18 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author EugeneZelenko
  */
 $messages['qqq'] = array(
 	'tasks_desc' => 'Short description of the Tasks extension, shown on [[Special:Version]].',
+	'tasks_search_status' => '{{Identical|Status}}',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'tasks_search_status' => 'Статус',
 );
 
 /** Bulgarian (Български)

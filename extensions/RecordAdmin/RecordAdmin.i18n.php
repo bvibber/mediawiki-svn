@@ -91,29 +91,92 @@ $messages['fr'] = array(
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'recordadmin-buttonsearch' => 'ស្វែងរក',
+	'recordadmin-buttoncreate' => 'បង្កើត',
+	'recordadmin-searchresult' => 'លទ្ធផល​ស្វែងរក',
+	'recordadmin-edit' => 'កំពុង​កែប្រែ​ $1',
+	'recordadmin-buttonsave' => 'រក្សាទុក',
+	'recordadmin-viewlink' => 'មើល',
+	'recordadmin-editlink' => 'កែប្រែ',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'recordadmin' => 'Gegevensbeheer',
+	'recordadmin-desc' => "Een [[Special:RecordAdmin|speciale pagina]] voor het zoeken en bewerken van gegevenspagina's die een formulier gebruiken",
+	'recordadmin-category' => 'Gegevens',
+	'recordadmin-select' => 'Geef aan welk type gegeven te zoeken',
+	'recordadmin-newsearch' => 'Nieuwe zoekopdracht voor $1',
+	'recordadmin-newrecord' => 'Een ander gegevenstype selecteren',
 	'recordadmin-submit' => 'OK',
+	'recordadmin-create' => 'Een gegeven van het type "$1" zoeken of aanmaken',
 	'recordadmin-alreadyexist' => '"$1" bestaat al!',
 	'recordadmin-createsuccess' => '$1 aangemaakt',
+	'recordadmin-createerror' => 'Er is een fout opgetreden bij het aanmaken van het $1.',
 	'recordadmin-badtitle' => 'Onjuiste paginanaam!',
+	'recordadmin-recordid' => 'Gegevensnummer:',
 	'recordadmin-invert' => 'Omgekeerde selectie',
 	'recordadmin-buttonsearch' => 'Zoeken',
 	'recordadmin-buttoncreate' => 'Aanmaken',
 	'recordadmin-buttonreset' => 'Fomulier wissen',
 	'recordadmin-searchresult' => 'Zoekresultaten',
+	'recordadmin-nomatch' => 'Er zijn geen gegevens gevonden die aan de voorwaarden voldoen.',
 	'recordadmin-edit' => 'Bezig met bewerken van $1',
 	'recordadmin-typeupdated' => 'De eigenschappen van $1 zijn bijgewerkt',
 	'recordadmin-updatesuccess' => '$1 is bijgewerkt',
 	'recordadmin-updateerror' => 'Er is een fout opgetreden tijdens het bijwerken',
 	'recordadmin-buttonsave' => 'Opslaan',
+	'recordadmin-noform' => 'Er is geen formulier gekoppeld aan gegevens van het type "$1"!',
 	'recordadmin-createlink' => '<a href=$1>aanmaken</a>',
 	'recordadmin-newcreated' => 'Nieuwe $1 aangemaakt van openbaar formulier',
 	'recordadmin-summary-typecreated' => 'Nieuwe $1 aangemaakt',
 	'recordadmin-viewlink' => 'bekijken',
 	'recordadmin-editlink' => 'bewerken',
 	'recordadmin-created' => 'Aangemaakt',
+	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'recordadmin' => 'Gestion dels enregistraments',
+	'recordadmin-desc' => 'Una pagina especiala per trobar e modificar l’enregistrament de las paginas per l’utilizacion d’un formulari',
+	'recordadmin-category' => 'Enregistraments',
+	'recordadmin-select' => 'Seleccionar lo tipe d’enregistrament de recercar per',
+	'recordadmin-newsearch' => 'Recèrca novèla $1',
+	'recordadmin-newrecord' => 'Seleccionar un autre tipe d’enregistrament',
+	'recordadmin-submit' => 'Sometre',
+	'recordadmin-create' => 'Cercar o crear un enregistrament « $1 »',
+	'recordadmin-alreadyexist' => 'O planhèm, « $1 » existís ja !',
+	'recordadmin-createsuccess' => '$1 creat amb succès',
+	'recordadmin-createerror' => 'Una error es intervenguda al moment de la temptativa de creacion de $1 !',
+	'recordadmin-badtitle' => 'Títol marrit!',
+	'recordadmin-recordid' => 'Enregistrament ID :',
+	'recordadmin-invert' => 'Inversar la seleccion',
+	'recordadmin-buttonsearch' => 'Recercar',
+	'recordadmin-buttoncreate' => 'Crear',
+	'recordadmin-buttonreset' => 'Tornar inicializar',
+	'recordadmin-searchresult' => 'Resultats de la recèrca',
+	'recordadmin-nomatch' => "Cap d'enregistrament correspondent pas trobat !",
+	'recordadmin-edit' => 'Modificar $1',
+	'recordadmin-typeupdated' => 'proprietat de $1 mesas a jorn',
+	'recordadmin-updatesuccess' => '$1 mes a jorn amb succès',
+	'recordadmin-updateerror' => 'Una error es estat rencontrada al moment de la mesa a jorn',
+	'recordadmin-buttonsave' => 'Salvar',
+	'recordadmin-noform' => 'I a pas cap de formulari amb l’enregistrament « $1 » !',
+	'recordadmin-createlink' => 'clicatz <a href=$1>aicí</a> per ne crear un',
+	'recordadmin-newcreated' => '$1 novèl creat a partir d’un formulari public',
+	'recordadmin-summary-typecreated' => '$1 novèl de crear',
+	'recordadmin-viewlink' => 'veire',
+	'recordadmin-editlink' => 'modificar',
+	'recordadmin-created' => 'Creat',
+	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 );
 

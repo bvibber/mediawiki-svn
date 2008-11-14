@@ -86,3 +86,23 @@ $messages['nl'] = array(
 	'right-emergencydesysop' => 'Heeft de mogelijkheid om de beheerdersrechten van een andere gebruiker en zichzelf in te trekken',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'emergencydesysop' => 'Desysopatge d’urgéncia',
+	'emergencydesysop-desc' => 'Permet a un administrator de renonciar a sos pròpris limits, en òrdre per desysopar en autre',
+	'emergencydesysop-title' => 'Leva los accèsses d’administrer, ensemble l’utilizaire actual puèi un autre.',
+	'emergencydesysop-otheradmin' => 'Autre administrator de desgropar',
+	'emergencydesysop-reason' => 'Motiu de levament',
+	'emergencydesysop-submit' => 'Sometre',
+	'emergencydesysop-incomplete' => 'Totes los camps devon èsser entresenhats, ensajatz tornamai.',
+	'emergencydesysop-notasysop' => 'L’utilizaire visat es pas dins lo grop dels administrators.',
+	'emergencydesysop-nogroups' => 'Nonrés',
+	'emergencydesysop-done' => "Accion acabada, vos e [[$1]] avètz agut vòstres dreches d’administrator levats a l'encòp.",
+	'emergencydesysop-invalidtarget' => 'L’utilizaire visat existís pas.',
+	'emergencydesysop-blocked' => 'Podètz pas accedir a aquesta page tant que sètz blocat(ada)',
+	'emergencydesysop-noright' => 'Avètz pas las permissions sufisentas per accedir a aquesta pagina',
+	'right-emergencydesysop' => 'Possible de desysopar mutualament un autre utilizaire.',
+);
+

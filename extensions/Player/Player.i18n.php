@@ -138,6 +138,13 @@ $messages['bg'] = array(
 	'player-goto-file' => 'файл',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'player-goto-page' => 'Stranica',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

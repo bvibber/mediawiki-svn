@@ -720,6 +720,7 @@ $messages['it'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'inplace_access_denied' => 'Pangladènan iki diwatesi déning klièn IP.',
@@ -731,7 +732,13 @@ $messages['jv'] = array(
 	'webstore_src_open' => 'Ora bisa buka berkas sumber "$1".',
 	'webstore_src_close' => 'Kaluputan nalika nutup berkas sumber "$1".',
 	'webstore_src_delete' => 'Ana kaluputan nalika mbusak berkas sumber "$1".',
-	'webstore_temp_close' => 'Ana kaluputan nalika nutup berkas sementara "$1".',
+	'webstore_rename' => 'Kasalahan ganti jeneng berkas "$1" dadi "$2".',
+	'webstore_lock_open' => 'Kasalahan mbukak kunci berkas "$1".',
+	'webstore_lock_close' => 'Kasalahan nutup kunci berkas "$1".',
+	'webstore_dest_exists' => 'Kasalahan, berkas sing dituju "$1" wis ana.',
+	'webstore_temp_open' => 'Kasalahan mbukak berkas sauntara "$1".',
+	'webstore_temp_copy' => 'Kasalahan nulad berkas sauntara "$1". menyang berkas tujuan "$2".',
+	'webstore_temp_close' => 'Ana kaluputan nalika nutup berkas sauntara "$1".',
 	'webstore_temp_lock' => 'Kaluputan ngunci berkas sementara "$1".',
 	'webstore_no_file' => 'Ora ana berkas sing diunggahaké.',
 	'webstore_invalid_zone' => 'Zona invalid "$1".',

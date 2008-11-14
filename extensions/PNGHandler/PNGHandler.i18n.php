@@ -63,6 +63,13 @@ $messages['eo'] = array(
 	'pnghandler-desc' => 'Aligrandigi PNG-bildojn kun pngds',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'pnghandler-desc' => 'Escalar PNG usando pngds',
+);
+
 /** French (Français)
  * @author Urhixidur
  */

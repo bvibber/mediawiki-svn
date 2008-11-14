@@ -244,6 +244,13 @@ $messages['bg'] = array(
 	'crosswikiunblock-local' => 'Локалните отблокирания не се поддържат от този интерфейс. Използва се [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'crosswikiblock-alreadyblocked' => 'Korisnik $3 je već blokiran.',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

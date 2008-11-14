@@ -196,6 +196,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'imagetagging-article' => 'Stranica:',
 	'imagetagging-imghistory' => 'Historija',
 );
 

@@ -312,6 +312,18 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'form-desc' => '[[Special:Form|ממשק טופס]] ליצירת דפים חדשים',
+	'form' => 'טופס',
+	'formnoname' => 'אין שם לטופס',
+	'formnonametext' => 'עליכם לספק שם לטופס, כגון "Special:Form/Nameofform".',
+	'formbadname' => 'שם הטופס שגוי',
+	'formbadnametext' => 'אין טופס העונה לשם זה.',
+	'formpattern' => 'טופס־$1',
+	'formtitlepattern' => 'הוספת $1 חדש',
+	'formsave' => 'שמור',
+	'formindexmismatch-title' => 'מבנה השם והתבנית אינם תואמים',
+	'formindexmismatch' => 'טופס זה אינו תואם את מבנה השם ואת התבניות המתחילות באינדקס $1.',
+	'formarticleexists' => 'הדף קיים',
+	'formarticleexiststext' => 'הדף [[$1]] כבר קיים.',
 );
 
 /** Croatian (Hrvatski)
@@ -663,7 +675,7 @@ $messages['oc'] = array(
 	'formbadnametext' => 'Lo nom causit pel formulari es incorrècte. Cap de formulari existís jos aqueste nom.',
 	'formpattern' => 'formulari-$1',
 	'formtitlepattern' => 'Apondre un(a) $1',
-	'formsave' => 'Salvagadar',
+	'formsave' => 'Salvar',
 	'formindexmismatch-title' => 'Paleta de nom e error de modèl',
 	'formindexmismatch' => 'Aqueste formulari a de patrons e de modèls que correspòndon pas a partir de $1.',
 	'formarticleexists' => "L'article existís ja.",

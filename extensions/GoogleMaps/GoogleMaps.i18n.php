@@ -460,6 +460,7 @@ $wgGoogleMapsMessages['br'] = array(
  * @author CERminator
  */
 $wgGoogleMapsMessages['bs'] = array(
+	'gm-remove' => 'ukloni',
 	'gm-width' => 'Širina',
 	'gm-height' => 'Visina',
 	'gm-search' => 'Traži',

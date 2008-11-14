@@ -93,6 +93,13 @@ $messages['km'] = array(
 	'searchbox-namespaces' => 'លំហឈ្មោះ៖',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'searchbox-desc' => 'Abannen vu Sich-Formulairen erlaben',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

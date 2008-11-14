@@ -67,9 +67,15 @@ $messages['cs'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'metakeywords-desc' => 'Permet la configuration des balises <tt><nowiki><meta "keywords"></nowiki></tt> et <tt><nowiki><meta "description"></nowiki></tt> par espace de nom',
+	'metakeywords' => ' # Ajoutez des lignes à cette page sous la forme "espaceDeNoms|liste,de,mots,séparés par des virgules,à,ajouter"
+ # Les identificateurs d’espaces de noms (all) et (main) indiquent respectivement la valeur par défaut pour tous les espaces de noms et pour l’espace principal numéro 0.',
+	'metadescription' => ' # Ajoutez des lignes à cette page sous la forme "espaceDeNoms|Libellé de description à définir"
+ # Les identificateurs d’espaces de noms (all) et (main) indiquent respectivement la valeur par défaut pour tous les espaces de noms et pour l’espace principal numéro 0.
+ # Toutes les occurences de $1 seront remplacées par le titre de la page actuelle.',
 );
 
 /** Galician (Galego)

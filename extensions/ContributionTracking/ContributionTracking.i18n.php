@@ -45,6 +45,13 @@ $messages['ar'] = array(
 	'contrib-tracking-button' => 'استمر',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'contrib-tracking-error' => 'غلط',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */

@@ -341,12 +341,12 @@ $messages['nl'] = array(
 	'slippymap_zoomsmall' => 'De zoom (z) kan niet minder dan nul zijn',
 	'slippymap_zoom18' => 'De zoom (z) kan niet groter zijn dan 17. Merk op dat deze MediaWiki-uitbreiding de "Osmarender"-layer van OpenSteetMap gebruikt die niet dieper dan het niveau 17 gaat. de "Mapnik"-layer, beschikbaar op openstreetmap.org, gaat tot niveau 18.',
 	'slippymap_zoombig' => 'De zoom (z) kan niet groter dan 17 zijn',
-	'slippymap_invalidlayer' => 'Ongeldige \'layer\'-waarde "%1"',
+	'slippymap_invalidlayer' => 'Ongeldige waarde voor \'layer\' "%1"',
 	'slippymap_maperror' => 'Kaartfout:',
 	'slippymap_osmtext' => 'Deze kaart op OpenStreetMap.org bekijken',
 	'slippymap_code' => 'Wikicode voor deze kaart:',
-	'slippymap_button_code' => 'Wikicode weergeven',
-	'slippymap_resetview' => 'Overzicht opnieuw instellen',
+	'slippymap_button_code' => 'Wikicode',
+	'slippymap_resetview' => 'Terug',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

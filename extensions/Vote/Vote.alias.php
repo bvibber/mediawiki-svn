@@ -109,6 +109,11 @@ $aliases['oc'] = array(
 	'Vote' => array( 'Votar' ),
 );
 
+/** Romanian (Română) */
+$aliases['ro'] = array(
+	'Vote' => array( 'Votează' ),
+);
+
 /** Tarandíne (Tarandíne) */
 $aliases['roa-tara'] = array(
 	'Vote' => array( 'Vote' ),

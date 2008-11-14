@@ -114,6 +114,13 @@ $messages['sk'] = array(
 	'stringfunctions-desc' => 'Rozširuje syntaktický analyzátor o funkcie na prácu s reťazcami',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'stringfunctions-desc' => 'Utökar parsern med strängfunktioner',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

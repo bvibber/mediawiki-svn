@@ -938,8 +938,10 @@ $messages['bn'] = array(
  */
 $messages['bs'] = array(
 	'mv_tool_search' => 'Traži',
+	'mv_tool_export' => 'Izvezi',
 	'mv_edit' => 'Uredi',
 	'mv_history' => 'Historija',
+	'mv_remove' => 'ukloni',
 	'mv_search_and' => 'i',
 );
 

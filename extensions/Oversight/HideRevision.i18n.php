@@ -483,12 +483,12 @@ Odstraněné položky nebude moci prostřednictvím webové stránky vidět nikd
 	'hiderevision-reason' => 'Důvod (bude zaznamenán neveřejně):',
 	'hiderevision-submit' => 'Natrvalo skrýt tyto údaje',
 	'hiderevision-tab' => 'Skrýt revizi',
-	'hiderevision-norevisions' => 'Nebyly uvedeny revize, které mají být skryté.',
+	'hiderevision-norevisions' => 'Nebyly uvedeny revize, které se mají skrýt.',
 	'hiderevision-noreason' => 'Musíte uvést důvod odstranění.',
 	'hiderevision-status' => 'Revize $1: $2',
-	'hiderevision-success' => 'Úspěšné archivováno a smazáno.',
+	'hiderevision-success' => 'Úspěšně archivováno a smazáno.',
 	'hiderevision-error-missing' => 'Nenalezeno v databázi.',
-	'hiderevision-error-current' => 'Nebylo možné smazat poslední úpravu stránky. Nejprve tuto změnu vraťte.',
+	'hiderevision-error-current' => 'Nelze smazat poslední úpravu stránky. Nejprve tuto změnu vraťte.',
 	'hiderevision-error-delete' => 'Nebylo možno archivovat; bylo už předtím smazáno.',
 	'hiderevision-archive-status' => 'Smazané revize počínaje od $1: $2',
 	'oversight-nodiff' => 'Není možné porovnat změny, neboť momentálně neexistuje předchozí revize stránky. Buď
@@ -502,6 +502,8 @@ Odstraněné položky nebude moci prostřednictvím webové stránky vidět nikd
 	'oversight-hidden' => 'Skrytá revize',
 	'oversight-header' => 'Níže je seznam revizí, které byly nedávno trvale skryty z veřejné historie. Šíření těchto informací může mít za důsledek trvalou ztrátu práv dozorce (oversight).',
 	'oversight-legend' => 'Hledat v záznamu skrývání revizí',
+	'oversight-oversighter' => 'Dozorce:',
+	'oversight-offender' => 'Provinilec:',
 );
 
 /** Danish (Dansk)
@@ -1689,6 +1691,9 @@ $messages['la'] = array(
 $messages['lb'] = array(
 	'hiderevision' => 'Versioune definitiv verstoppen',
 	'hiderevision-desc' => 'Eenzel Versioune fir all Benotzer aus legalen an aneren Uursaachen definitiv verstoppen',
+	'group-oversight' => 'Artikel-Kontrolleren',
+	'group-oversight-member' => 'Artikel-Kontroller',
+	'grouppage-oversight' => '{{ns:project}}:Artikel-Kontroller',
 	'right-oversight' => 'Eng virdru verstoppte Versioun weisen',
 	'right-hiderevision' => 'Virun den Administrateure verstoppte Versiounen nokucken a restauréieren',
 	'hiderevision-prompt' => 'Versiounsnummer déi geläscht gi soll:',
@@ -1717,6 +1722,7 @@ Annulléiert dës Ännerung d'éischt.",
 	'oversight-header' => "Hei ass eng Lëscht vun de Versiounen déi permanent virun der Ëffentlechkeet verstoppt goufen.
 Verbreedung vun dësen Informatiounen kann zum definitve Verloscht vun den ''Oversight''-Rechter féieren.",
 	'oversight-legend' => 'Lëscht vun de Recherchen vu verstoppte Versiounen',
+	'oversight-oversighter' => 'Artikel-Kontroller:',
 );
 
 /** Limburgish (Limburgs)

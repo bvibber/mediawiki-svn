@@ -115,6 +115,28 @@ $messages['ar'] = array(
 	'contribstats-total-ytd' => 'المجموع  (منذ بداية السنة)',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'contribstats-day' => 'اليوم',
+	'contribstats-month' => 'الشهر',
+	'contribstats-currency' => 'العملة',
+	'contribstats-amount' => 'الكمية (بالدولار الامريكاني)',
+	'contribstats-contributions' => 'المساهمات',
+	'contribstats-total' => 'الاجمالي(بالدولار الامريكاني)',
+	'contribstats-avg' => 'المتوسط(بالدولار الامريكاني)',
+	'contribstats-min' => 'الحد الادنى(بالدولار الامريكاني)',
+	'contribstats-max' => 'الحد الاقصى(بالدولار الامريكاني)',
+	'contribstats-percentage-ytd' => 'النسبه المئويه (من اول السنه)',
+	'contribstats-total-ytd' => 'الاجمالي(من اول السنه)',
+	'fundraiserstatistics' => 'احصائيات جمع التبرعات',
+	'fundraiserstats-date' => 'تاريخ',
+	'fundraiserstats-total' => 'الاجمالي(بالدولار الامريكاني)',
+	'fundraiserstats-avg' => 'المتوسط (بالدولار الامريكاني)',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -151,6 +173,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'contrib-hist-date' => 'Vrijeme i datum',
 	'contribstats-percentage-ytd' => 'Procenat (YTD)',
 	'contribstats-total-ytd' => 'Ukupno (YTD)',
 );
@@ -190,6 +213,12 @@ $messages['cs'] = array(
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Podíl (za letošní rok)',
 	'contribstats-total-ytd' => 'Celkem (od začátku roku)',
+	'fundraiserstatistics' => 'Statistika příspěvkové kampaně',
+	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-total' => 'Celkem (USD)',
+	'fundraiserstats-avg' => 'Průměr (USD)',
+	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-max' => 'Maximum (USD)',
 );
 
 /** German (Deutsch)
@@ -226,6 +255,12 @@ $messages['de'] = array(
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Prozentsatz (YTD)',
 	'contribstats-total-ytd' => 'Gesamt (YTD)',
+	'fundraiserstatistics' => 'Spendenstatistiken',
+	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-total' => 'Gesamt (USD)',
+	'fundraiserstats-avg' => 'Durchschnitt (USD)',
+	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-max' => 'Maximum (USD)',
 );
 
 /** Esperanto (Esperanto)
@@ -283,6 +318,12 @@ $messages['fa'] = array(
 	'contribstats-max' => 'حداکثر (USD)',
 	'contribstats-percentage-ytd' => 'درصد (از ابتدای سال)',
 	'contribstats-total-ytd' => 'جمع (از ابتدای سال)',
+	'fundraiserstatistics' => 'آمار جذب سرمایه',
+	'fundraiserstats-date' => 'تاریخ',
+	'fundraiserstats-total' => 'جمع (دلار آمریکا)',
+	'fundraiserstats-avg' => 'میانگین (دلار آمریکا)',
+	'fundraiserstats-min' => 'حداقل (دلار آمریکا)',
+	'fundraiserstats-max' => 'حداکثر (دلار آمریکا)',
 );
 
 /** Finnish (Suomi)
@@ -337,6 +378,7 @@ $messages['fr'] = array(
 	'contribstats-max' => 'Maximum (dollars US)',
 	'contribstats-percentage-ytd' => 'Pourcentage (cette année)',
 	'contribstats-total-ytd' => 'Total (cette année)',
+	'fundraiserstatistics' => 'Statistiques de la levée de fonds',
 );
 
 /** Galician (Galego)
@@ -652,6 +694,12 @@ $messages['nl'] = array(
 	'contribstats-max' => 'Maximaal (in USD)',
 	'contribstats-percentage-ytd' => 'Percentage (dit jaar)',
 	'contribstats-total-ytd' => 'Totaal (dit jaar)',
+	'fundraiserstatistics' => 'Fondswervingstatistieken',
+	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-total' => 'Totaal (in USD)',
+	'fundraiserstats-avg' => 'Gemiddeld (in USD)',
+	'fundraiserstats-min' => 'Minimum (in USD)',
+	'fundraiserstats-max' => 'Maximum (in USD)',
 );
 
 /** Occitan (Occitan)
@@ -726,6 +774,12 @@ $messages['pl'] = array(
 	'contribstats-max' => 'Maksimum (USD)',
 	'contribstats-percentage-ytd' => 'Procent (od początku roku)',
 	'contribstats-total-ytd' => 'Suma (od początku roku)',
+	'fundraiserstatistics' => 'Statystyka zebranych funduszy',
+	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-total' => 'Suma (USD)',
+	'fundraiserstats-avg' => 'Średnia (USD)',
+	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-max' => 'Maksimum (USD)',
 );
 
 /** Portuguese (Português)
@@ -794,6 +848,7 @@ $messages['ru'] = array(
 	'contribstats-max' => 'Максимальное (USD)',
 	'contribstats-percentage-ytd' => 'Процент (с начала года)',
 	'contribstats-total-ytd' => 'Всего (с начала года)',
+	'fundraiserstatistics' => 'Статистика сбора средств',
 );
 
 /** Slovak (Slovenčina)
@@ -834,6 +889,7 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Najami
  */
 $messages['sv'] = array(
 	'contributionreporting-desc' => 'Liverapportering av Wikimedias insamling',
@@ -866,6 +922,12 @@ $messages['sv'] = array(
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Procentandel (hittills i år)',
 	'contribstats-total-ytd' => 'Totalt (hittills i år)',
+	'fundraiserstatistics' => 'Insamlingsstatistik',
+	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-total' => 'Totalt (USD)',
+	'fundraiserstats-avg' => 'Genomsnitt (USD)',
+	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-max' => 'Maximum (USD)',
 );
 
 /** Vèneto (Vèneto)

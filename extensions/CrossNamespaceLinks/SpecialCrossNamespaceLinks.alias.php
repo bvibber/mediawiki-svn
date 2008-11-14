@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'CrossNamespaceLinks' => array( 'وصلات_عبر_النطاقات' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'CrossNamespaceLinks' => array( 'LinkoviIzmedjuImenskihProstora' ),
+);
+
 /** Catalan (Català) */
 $aliases['ca'] = array(
 	'CrossNamespaceLinks' => array( 'Enllaços entre espais de noms' ),

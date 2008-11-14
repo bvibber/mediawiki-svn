@@ -173,6 +173,13 @@ $messages['bg'] = array(
 	'spamregex-summary-log' => '(Резюме)',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'spamregex-already-blocked' => '"$1" je već blokiran',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

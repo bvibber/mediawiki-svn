@@ -20,6 +20,11 @@ $aliases['arz'] = array(
 	'WhoIsWatching' => array( 'من_يراقب' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'WhoIsWatching' => array( 'TkoPregleda' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'WhoIsWatching' => array( 'Wer beobachtet' ),

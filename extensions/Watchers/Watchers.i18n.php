@@ -285,14 +285,17 @@ $messages['it'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
+	'watchers' => 'Pangawas',
+	'watchers-desc' => 'Tuduhaké [[Special:Watchers|panganggo sing ngawasi kaca]]',
 	'watchers_link_title' => 'Sapa sing ngawasi kaca iki?',
 	'watchers_error_article' => '<b>Kaluputan:</b> Kaca iki ora ana.',
-	'watchers_header' => 'Wong-wong sing ngawasi "$1"',
+	'watchers_header' => '{{PLURAL:$2|Panganggo sing|Panganggo sing}} ngawasi "$1"',
 	'watchers_noone_watches' => 'Ora ana sing ngawasi kaca iki.',
-	'watchers_x_or_more' => '$1 utawa luwih panganggo ngawasi kaca iki.',
-	'watchers_less_than_x' => 'Kurang saka $1 wong ngawasi kaca iki.',
+	'watchers_x_or_more' => '$1 utawa luwih {{PLURAL:$1|panganggo|panganggo}} ngawasi kaca iki.',
+	'watchers_less_than_x' => 'Kurang saka $1 {{PLURAL:$1|panganggo|panganggo}} ngawasi kaca iki.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

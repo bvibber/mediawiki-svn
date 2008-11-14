@@ -218,6 +218,14 @@ $messages['ja'] = array(
 	'newuseredit-summary' => '新規利用者の会話ページに[[{{int:newusermessage-template}}|歓迎のメッセージ]]を記入',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'newusermessage-desc' => 'Nambahaké pesen ing kaca wicara panganggo anyar',
+	'newuseredit-summary' => 'Nambahaké [[{{int:newusermessage-template}}|pesen sugeng rawuh]] ing kaca wicara panganggo anyar',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

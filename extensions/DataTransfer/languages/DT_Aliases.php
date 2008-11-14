@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ViewXML' => array( 'عرض_إكس_إم_إل' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'ViewXML' => array( 'VidiXML' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ViewXML' => array( 'XML megtekintése' ),

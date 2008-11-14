@@ -18,6 +18,7 @@ $aliases['en'] = array(
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
 	'ContributionHistory' => array( 'DoprinosiHistorija' ),
+	'ContributionStatistics' => array( 'StatistikeDoprinosa' ),
 	'ContributionTotal' => array( 'DoprinosiUkupno' ),
 );
 
