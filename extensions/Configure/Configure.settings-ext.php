@@ -769,7 +769,7 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:ImageMap',
 	),
 	array(
-		'name' => 'inputbox',
+		'name' => 'Inputbox',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Inputbox',
 	),
 	array(
@@ -896,6 +896,19 @@ $extensions = array(
 		'url' => 'http://www.mediawiki.org/wiki/Extension:SkinPerPage',
 	),
 	array(
+		'name' => 'SocialProfile',
+		'settings' => array(
+			'wgUserBoard' => 'bool',
+			'wgFriendingEnabled' => 'bool',
+		),
+		'schema' => true,
+		'url' => 'http://www.mediawiki.org/wiki/Extension:SocialProfile',
+	),
+	array(
+		'name' => 'SpamRegex',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:SpamRegex',
+	),
+	array(
 		'name' => 'SyntaxHighlight_GeSHi',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:SyntaxHighlight_GeSHi',
 	),
@@ -978,6 +991,15 @@ $extensions = array(
 	),
 
 	// U
+	array(
+		'name' => 'UserMerge',
+		'settings' => array(
+			'wgUserMergeProtectedGroups' => 'array',
+		),
+		'array' => array(
+			'wgUserMergeProtectedGroups' => 'simple',
+		),
+	),
 	array(
 		'name' => 'UsernameBlacklist',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Username_Blacklist',
