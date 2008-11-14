@@ -10,8 +10,11 @@ if(!defined('MEDIAWIKI')) {
 
 $dir = dirname(__FILE__) . '/';
 
-if(!file_exists($dir . substr($wgVersion, 0, 4) . 'EditUser_body.php')) {
-	wfErrorLog("Your MediaWiki version \"$wgVersion\" is not supported by the EditUser extension");
+#in case we're running a maintenance script and GlobalFunctions.php isn't loaded...
+require_once("$IP/includes/GlobalFunctions.php");
+
+if(!file_exists($dir . substr($wgVersion, 0, 4) . '/EditUser_body.php')) {
+	wfDebug("Your MediaWiki version \"$wgVersion\" is not supported by the EditUser extension");
 	return;
 }
 
@@ -26,7 +29,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $wgExtensionMessagesFiles['EditUser'] = $dir . 'EditUser.i18n.php';
 $wgExtensionAliasesFiles['EditUser'] = $dir . 'EditUser.alias.php';
-$wgAutoloadClasses['EditUser'] = $dir . substr($wgVersion, 0, 4) . 'EditUser_body.php';
+$wgAutoloadClasses['EditUser'] = $dir . substr($wgVersion, 0, 4) . '/EditUser_body.php';
 $wgSpecialPages['EditUser'] = 'EditUser';
 $wgAvailableRights[] = 'edituser';
 $wgAvaliableRights[] = 'edituser-exempt';
