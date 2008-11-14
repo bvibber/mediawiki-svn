@@ -72,9 +72,9 @@ class SlippyMap {
 		if ( isset( $argv['lon'] ) ) {
 			$lon = $argv['lon'];
 		} else if ( isset( $oldStyleParams['lon'] ) ) {
-			$layer = $oldStyleParams['lon'];
+			$lon = $oldStyleParams['lon'];
 		} else {
-			$layer = '';
+			$lon = '';
 		}
 		if ( isset( $argv['z'] ) ) {
 			$zoom = $argv['z'];
