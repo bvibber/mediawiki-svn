@@ -441,6 +441,12 @@ $messages['he'] = array(
 	'contribstats-max' => 'מקסימום (בדולרים)',
 	'contribstats-percentage-ytd' => 'אחוז (מתחילת השנה)',
 	'contribstats-total-ytd' => 'סך הכל (מתחילת השנה)',
+	'fundraiserstatistics' => 'סטטיסטיקות ההתרמה',
+	'fundraiserstats-date' => 'תאריך',
+	'fundraiserstats-total' => 'סך הכל (בדולרים)',
+	'fundraiserstats-avg' => 'ממוצע (בדולרים)',
+	'fundraiserstats-min' => 'מינימום (בדולרים)',
+	'fundraiserstats-max' => 'מקסימום (בדולרים)',
 );
 
 /** Croatian (Hrvatski)
