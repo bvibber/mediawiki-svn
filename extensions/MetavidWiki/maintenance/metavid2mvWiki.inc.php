@@ -457,8 +457,7 @@ function do_proccess_images( $stream, $force = false ) {
 
 
 // given a stream name it pulls all metavid stream data and builds semantic wiki page
-function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
-	global $start_time, $end_time;	
+function mv_semantic_stream_desc( & $mvTitle, & $stream ) {	
 	/*$sql = "SELECT * FROM `metavid`.`streams` WHERE `name` LIKE '" . $mvTitle->getStreamName() . "'";
 	$dbr = wfGetDB(DB_SLAVE);
 	$res = $dbr->query($sql);
@@ -466,6 +465,14 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 	$stream = $dbr->fetchObject($res);*/
 	$stream_id = $stream->id;
 	$out = '';	
+	//(if we have old version of stream copy over is properties) 
+	if( isset( $stream->org_start_time ) )
+		$stream->date_start_time =$stream->org_start_time;
+		
+	
+	$start_time = $stream->date_start_time;
+	
+	
 	
 	// add links/generic text at the start	
 	$date = date( 'Ymd', $start_time );
@@ -554,9 +561,9 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 			$dbw->commit();
 			// more semantic properties
 			$out .= "\n\n";
-			$out .= '[[stream_duration::' . ( $end_time - $start_time ) . '| ]]' . "\n";
+			$out .= '[[stream_duration::' . ( $mvTitle->getDuration() ) . '| ]]' . "\n";
 			if ( $stream->org_start_time ) {
-				$out .= '[[original_date::' . $stream->org_start_time . '| ]]';
+				$out .= '[[original_date::' . $stream->date_start_time . '| ]]';
 			}
 		}
 	}
