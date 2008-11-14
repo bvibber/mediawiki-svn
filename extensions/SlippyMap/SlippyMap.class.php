@@ -91,6 +91,8 @@ class SlippyMap {
 			$layer = $argv['layer'];
 		} else if ( isset( $oldStyleParams['layer'] ) ) {
 			$layer = $oldStyleParams['layer'];
+		} else {
+			$layer = '';
 		}
 		if ( isset( $argv['marker'] ) ) {
 			$marker = $argv['marker'];
