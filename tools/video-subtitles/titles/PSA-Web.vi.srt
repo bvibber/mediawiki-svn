@@ -1,0 +1,187 @@
+1
+00:00:05,750 --> 00:00:10,500
+Xin chào! Tôi là Jimmy Wales, người sáng lập
+Wikipedia, cuốn bách khoa toàn thư mở.
+
+2
+00:00:11,000 --> 00:00:15,000
+Wikipedia phụ thuộc vào sự quyên góp
+hào phóng từ mọi người trên khắp thế giới
+
+3
+00:00:15,250 --> 00:00:17,250
+Những người như bạn.
+
+4
+00:00:17,750 --> 00:00:21,750
+Dự án Wikipedia bắt đầu từ năm 2001 và rất nhanh chóng trở thành
+
+5
+00:00:21,750 --> 00:00:24,000
+một trong mười điểm đến nhiều nhất trên Internet.
+
+6
+00:00:25,000 --> 00:00:27,000
+Tiếng Anh là phiên bản ngôn ngữ
+lớn nhất của Wikipedia, nhưng
+
+7
+00:00:27,000 --> 00:00:29,500
+còn ngôn ngữ của những nước
+đang phát triển?
+
+8
+00:00:30,500 --> 00:00:34,000
+Chúng tôi cần hỗ trợ cho sự phát triển
+của Wikipedia bằng các thứ tiếng như
+
+9
+00:00:34,000 --> 00:00:36,000
+Hindi, Ả Rập và Swahili,
+
+10
+00:00:36,000 --> 00:00:39,000
+những ngôn ngữ mà người nói sẽ thật sự
+hưởng lợi từ việc tiếp cận với nguồn tri thức tự do.
+
+11
+00:00:39,500 --> 00:00:44,000
+Sau đây là vài cảnh từ bộ phim
+tài liệu độc lập, "Sự thật từ những con số"
+
+12
+00:00:46,000 --> 00:00:50,750
+Khi một đứa trẻ có được một máy laptop,
+có hình ảnh của Wikipedia
+
+13
+00:00:50,750 --> 00:00:54,250
+bằng tiếng mẹ đẻ của chúng
+và cũng có một số bằng tiếng Anh nữa.
+
+14
+00:00:54,500 --> 00:00:56,250
+Nhờ đó chúng có thể tham gia
+
+15
+00:00:56,250 --> 00:00:59,250
+bàn luận với những đứa trẻ khác
+về những thứ ở thế giới bên ngoài,
+
+16
+00:00:59,500 --> 00:01:02,500
+nhờ đó chúng không phải tiếp thu mọi thứ
+chỉ ở bề nổi - đó là một ý tưởng mạnh mẽ.
+
+17
+00:01:02,500 --> 00:01:07,750
+Một phần của ý tưởng phía sau chiếc laptop là
+mở mang những ý tưởng mạnh mẽ cho đứa trẻ, và 
+
+18
+00:01:07,750 --> 00:01:10,000
+Wikipedia là một trong những ý tưởng mạnh mẽ đó.
+
+19
+00:01:12,250 --> 00:01:17,000
+À, dĩ nhiên, đóng góp của tôi chỉ rất nhỏ,
+nhưng mọi sự trợ giúp nhỏ đều có ích.
+
+20
+00:01:18,500 --> 00:01:25,000
+Đây là cách tôi viết Wikipedia.
+Phải mất nhiều công sức đấy, nhưng làm được!
+
+21
+00:01:26,000 --> 00:01:33,000
+Một ngày nào đó chúng ta có thể ghi nó vào đĩa
+và phân phát ở các trường học để mọi người có thể tra cứu.
+
+22
+00:01:34,750 --> 00:01:41,000
+Hoàn toàn bất ngờ, Wikipedia xuất hiện và rồi,
+với khối lượng kiến thức của nhân loại - nó làm tôi bất ngờ.
+
+23
+00:01:42,000 --> 00:01:44,000
+Bạn có biết trang web Wikipedia?
+Có, có.
+
+24
+00:01:44,500 --> 00:01:48,750
+Thì đây, tôi là người sáng lập ra Wikipedia
+Ok, chào! Rất vui gặp anh! Trang web thật tuyệt ...
+
+25
+00:01:49,000 --> 00:01:52,250
+Bạn đã bao giờ nhìn vào ... ?
+... và tôi cũng nhặt nhạnh được nhiều thứ từ đó.
+
+26
+00:01:52,500 --> 00:01:56,000
+Nhặt nhạnh à, từ Wikipedia?
+Ô, vâng - có hiệu quả không?
+
+27
+00:02:04,500 --> 00:02:09,500
+Một trong những điều tôi đã làm
+là tôi chép toàn bộ trang web,
+
+28
+00:02:09,750 --> 00:02:18,000
+Wikipedia ấy mà, và đưa nó vào
+phòng máy không có kết nối Internet.
+
+29
+00:02:19,750 --> 00:02:25,000
+Nếu những thứ này có thể đến được với
+nhiều người ở châu Phi hơn, nó sẽ rất hữu ích.
+
+30
+00:02:27,000 --> 00:02:30,750
+Thật ra, nó quan trọng đối với những nước phát triển
+hơn là những nước đã phát triển,
+
+31
+00:02:30,751 --> 00:02:33,750
+vì có một khoảng cách,
+và khoảng cách này chỉ đơn thuần là kiến thức
+
+32
+00:02:33,750 --> 00:02:37,500
+nó không phải là tiền bạc, không phải chính trị
+hay quyền lực hay thứ gì khác, nó là kiến thức.
+
+33
+00:02:37,550 --> 00:02:42,500
+Nếu chúng ta có kiến thức, và chúng ta biết cách
+sử dụng nó, thì khoảng cách đó sẽ được san lấp
+
+34
+00:02:43,000 --> 00:02:45,500
+và chúng ta có thể mong đợi một tương lai xán lạn.
+
+35
+00:02:48,000 --> 00:02:52,500
+Wikipedia đã thay đổi thế giới,
+và với sự hỗ trợ không ngừng của bạn
+
+36
+00:02:52,500 --> 00:02:55,500
+khó mà nói được chúng ta đã làm nhiều đến thế nào
+cho mọi người khắp thế giới.
+
+37
+00:02:56,000 --> 00:02:59,000
+Hãy mường tượng một thế giới
+trong đó mọi người
+
+38
+00:02:59,001 --> 00:03:04,250
+được tự do tiếp cận
+với nguồn trí tuệ của toàn nhân loại.
+
+39
+00:03:06,750 --> 00:03:11,402
+Để quyên góp, xin mời vào trang
+donate.wikimedia.org
