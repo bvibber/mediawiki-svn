@@ -7,7 +7,7 @@
 # the OpenLayers javascript, to show a slippy map.
 #
 # Usage example:
-# <slippymap lat=51.485 lon=-0.15 z=11 w=300 h=200 layer=osmarender marker=0></slippymap>
+# <slippymap lat="51.485" lon="-0.15" z="11" w="300" h="200" layer=osmarender marker=0></slippymap>
 #
 # Tile images are not cached local to the wiki.
 # To acheive this (remove the OSM dependency) you might set up a squid proxy,
@@ -290,7 +290,7 @@ class SlippyMap {
 
 			$output .= "<div style=\"width: {$width}px; height:{$height}px; border-style:solid; border-width:1px; border-color:lightgrey;\" id=\"map\">";
 			$output .= "<noscript><a href=\"http://www.openstreetmap.org/?lat=$lat&lon=$lon&zoom=$zoom\" title=\"See this map on OpenStreetMap.org\" style=\"text-decoration:none\">";
-			$output .= "<img src=\"" . $wgMapOfServiceUrl . "lat=${lat}&long=${lon}&z=${zoom}&w=${width}&h=${height}&format=jpeg\" width=\"${width}\" height=\"${height}\" border=\"0\"><br/>";
+			$output .= "<img src=\"" . $wgMapOfServiceUrl . "lat=${lat}&long=${lon}&z=${zoom}&w=${width}&h=${height}&format=jpeg\" width=\"${width}\" height=\"${height}\" border=\"0\" alt=\"Slippy Map\"><br />";
 			$output .= '</a></noscript>';
 			$output .= '</div>';
 
