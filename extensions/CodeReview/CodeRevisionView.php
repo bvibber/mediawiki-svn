@@ -9,8 +9,15 @@ class CodeRevisionView extends CodeView {
 		$this->mRepo = CodeRepository::newFromName( $repoName );
 		$this->mRev = $this->mRepo ? $this->mRepo->getRevision( intval( $rev ) ) : null;
 		$this->mPreviewText = false;
+		# URL params...
+		$this->mAddTags = $this->splitTags( $wgRequest->getText( 'wpTag' ) );
+		$this->mRemoveTags = $this->splitTags( $wgRequest->getText( 'wpRemoveTag' ) );
+		$this->mStatus = $wgRequest->getText('wpStatus') ? 
+			$wgRequest->getText('wpStatus') : $this->mRev->getStatus();
+		$this->jumpToNext = $wgRequest->getCheck('wpSaveAndNext');
 		$this->mReplyTarget = $replyTarget ? 
 			(int)$replyTarget : $wgRequest->getIntOrNull( 'wpParent' );
+		$this->text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
 		$this->mSkipCache = ($wgRequest->getVal( 'action' ) == 'purge');
 	}
 
@@ -201,7 +208,25 @@ class CodeRevisionView extends CodeView {
 		return $list;
 	}
 	
-	function statusForm() {
+	protected function splitTags( $input ) {
+		$tags = array_map( 'trim', explode( ",", $input ) );
+		foreach( $tags as $key => $tag ) {
+			$normal = $this->mRev->normalizeTag( $tag );
+			if( $normal === false ) {
+				return null;
+			}
+			$tags[$key] = $normal;
+		}
+		return $tags;
+	}
+	
+	protected function listTags( $tags ) {
+		if( empty($tags) )
+			return "";
+		return implode(",",$tags);
+	}
+	
+	protected function statusForm() {
 		global $wgUser;
 		if( $wgUser->isAllowed( 'codereview-set-status' ) ) {
 			$repo = $this->mRepo->getName();
@@ -217,8 +242,7 @@ class CodeRevisionView extends CodeView {
 		$states = CodeRevision::getPossibleStates();
 		$out = '';
 		foreach( $states as $state ) {
-			$out .= Xml::option( $this->statusDesc( $state ), $state,
-				$this->mRev->getStatus() == $state );
+			$out .= Xml::option( $this->statusDesc( $state ), $state, $this->mStatus === $state );
 		}
 		return $out;
 	}
@@ -228,10 +252,10 @@ class CodeRevisionView extends CodeView {
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();
 		return '<div><table><tr><td>' .
-			Xml::inputLabel( wfMsg('code-rev-tag-add'), 'wpTag', 'wpTag', '' ) .
-			'</td><td>&nbsp;</td><td>' .
-			Xml::inputLabel( wfMsg('code-rev-tag-remove'), 'wpRemoveTag', 'wpRemoveTag', '' ) .
-			'</td></tr></table></div>';
+			Xml::inputLabel( wfMsg('code-rev-tag-add'), 'wpTag', 'wpTag', 20,
+				$this->listTags($this->mAddTags) ) . '</td><td>&nbsp;</td><td>' .
+			Xml::inputLabel( wfMsg('code-rev-tag-remove'), 'wpRemoveTag', 'wpRemoveTag', 20,
+				$this->listTags($this->mRemoveTags) ) . '</td></tr></table></div>';
 	}
 	
 	protected function formatTag( $tag ) {
@@ -405,12 +429,12 @@ class CodeRevisionView extends CodeView {
 	
 	protected function postCommentForm( $parent=null ) {
 		global $wgUser;
-		if( $this->mPreviewText != false && $parent === $this->mReplyTarget ) {
+		if( $this->mPreviewText !== false && $parent === $this->mReplyTarget ) {
 			$preview = $this->previewComment( $this->mPreviewText );
 			$text = htmlspecialchars( $this->mPreviewText );
 		} else {
 			$preview = '';
-			$text = '';
+			$text = $this->text;
 		}
 		$repo = $this->mRepo->getName();
 		$rev = $this->mRev->getId();

@@ -5,13 +5,6 @@ class CodeRevisionCommitter extends CodeRevisionView {
 	function __construct( $repoName, $rev ){
 		// Parent should set $this->mRepo, $this->mRev, $this->mReplyTarget
 		parent::__construct( $repoName, $rev );
-		
-		global $wgRequest;
-		$this->mAddTags = $this->splitTags( $wgRequest->getText( 'wpTag' ) );
-		$this->mRemoveTags = $this->splitTags( $wgRequest->getText( 'wpRemoveTag' ) );
-		$this->mStatus = $wgRequest->getText( 'wpStatus' );
-		$this->text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
-		$this->jumpToNext = $wgRequest->getCheck('wpSaveAndNext');
 	}
 
 	function execute() {
@@ -68,18 +61,6 @@ class CodeRevisionCommitter extends CodeRevisionView {
 			}
 		}
 		$wgOut->redirect( $redirTitle->getFullUrl() );
-	}
-	
-	function splitTags( $input ) {
-		$tags = array_map( 'trim', explode( ",", $input ) );
-		foreach( $tags as $key => $tag ) {
-			$normal = $this->mRev->normalizeTag( $tag );
-			if( $normal === false ) {
-				return null;
-			}
-			$tags[$key] = $normal;
-		}
-		return $tags;
 	}
 	
 	public function validPost( $permission ) {
