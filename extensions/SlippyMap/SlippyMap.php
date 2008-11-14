@@ -16,7 +16,7 @@
 # This file should be placed in the mediawiki 'extensions' directory
 # ...and then it needs to be 'included' within LocalSettings.php
 #
-##################################################################################
+# #################################################################################
 #
 # Copyright 2008 Harry Wood, Jens Frank, Grant Slater, Raymond Spekking and others
 #
@@ -38,7 +38,7 @@
 #
 
 
-if (!defined('MEDIAWIKI'))
+if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 $wgExtensionFunctions[] = 'wfslippymap';
@@ -53,7 +53,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'descriptionmsg' => 'slippymap_desc',
 );
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['SlippyMap'] = $dir . 'SlippyMap.class.php';
 $wgExtensionMessagesFiles['SlippyMap'] = $dir . 'SlippyMap.i18n.php';
 
