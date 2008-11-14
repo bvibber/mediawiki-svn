@@ -64,28 +64,38 @@ class SlippyMap {
 		// Receive new style args: <slippymap aaa=bbb ccc=ddd></slippymap>
 		if ( isset( $argv['lat'] ) ) {
 			$lat = $argv['lat'];
-		} else {
+		} else if ( isset( $oldStyleParams['lat'] ) ) {
 			$lat = $oldStyleParams['lat'];
+		} else {
+			$lat = '';
 		}
 		if ( isset( $argv['lon'] ) ) {
 			$lon = $argv['lon'];
+		} else if ( isset( $oldStyleParams['lon'] ) ) {
+			$layer = $oldStyleParams['lon'];
 		} else {
-			$lon = $oldStyleParams['lon'];
+			$layer = '';
 		}
 		if ( isset( $argv['z'] ) ) {
 			$zoom = $argv['z'];
-		} else {
+		} else if ( isset( $oldStyleParams['z'] ) ) {
 			$zoom = $oldStyleParams['z'];
+		} else {
+			$zoom = '';
 		}
 		if ( isset( $argv['w'] ) ) {
 			$width = $argv['w'];
-		} else {
+		} else if ( isset( $oldStyleParams['w'] ) ) {
 			$width = $oldStyleParams['w'];
+		} else {
+			$width = '';
 		}
 		if ( isset( $argv['h'] ) ) {
 			$height = $argv['h'];
-		} else {
+		} else if ( isset( $oldStyleParams['h'] ) ) {
 			$height = $oldStyleParams['h'];
+		} else {
+			$height = '';
 		}
 		if ( isset( $argv['layer'] ) ) {
 			$layer = $argv['layer'];
@@ -129,9 +139,9 @@ class SlippyMap {
 		}
 
 		// Check required parameters values are provided
-		if ( $lat == ''  ) $error .= wfMsg( 'slippymap_latmissing' );
-		if ( $lon == ''  ) $error .= wfMsg( 'slippymap_lonmissing' );
-		if ( $zoom == '' ) $error .= wfMsg( 'slippymap_zoommissing' );
+		if ( $lat == ''  ) $error .= wfMsg( 'slippymap_latmissing' ) . ' ';
+		if ( $lon == ''  ) $error .= wfMsg( 'slippymap_lonmissing' ) . ' ';
+		if ( $zoom == '' ) $error .= wfMsg( 'slippymap_zoommissing' ) . ' ';
 
 		if ( $error == '' ) {
 			// no errors so far. Now check the values
