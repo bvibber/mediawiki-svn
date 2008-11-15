@@ -221,7 +221,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
         statusHeight = getIntParam("statusHeight", 12);
         autoPlay = getBoolParam("autoPlay", true);
         showStatus = getEnumParam("showStatus", showStatusVals, "auto");
-        hideTimeout = getIntParam("hideTimeout", 0);
+        hideTimeout = getIntParam("hideTimeout", 3);
         showSpeaker = getBoolParam("showSpeaker", true);
         keepAspect = getBoolParam("keepAspect", true);
         bufferSize = getIntParam("bufferSize", 200);
@@ -230,6 +230,9 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
         debug = getIntParam("debug", 3);
         userId = getStringParam("userId", null);
         password = getStringParam("password", null);
+        
+        // if audio-only don't hide the status bar
+        if(!video) hideTimeout = Integer.MAX_VALUE;
 
         Debug.level = debug;
         Debug.log(Debug.INFO, "build info: " + configure.buildInfo);
@@ -434,10 +437,13 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
           
         /* don't make invisible when the mouse pointer is inside status area */
         if (inStatus && !b) {
-            return;
+            b = true;
 	}
 
-	Debug.log (Debug.INFO, "Status: "+ (b ? "Show" : "Hide"));
+        if(b != status.isVisible())
+            Debug.log (Debug.INFO, "Status: "+ (b ? "Show" : "Hide"));
+        
+        if(b) hideCounter = hideTimeout;
         status.setVisible(b);
         repaint();
     }
@@ -458,7 +464,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
     }
 
     public void mouseExited(MouseEvent e) {
-        setStatusVisible(false, false);
+        inStatus = false;
     }
 
     public void mousePressed(MouseEvent e) {
@@ -490,9 +496,9 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
             setStatusVisible(true, false);
             e.translatePoint(0, -y);
             ((MouseMotionListener) status).mouseDragged(e);
-        } else {
+        } /*else {
             setStatusVisible(false, false);
-        }
+        }*/
     }
 
     public void mouseMoved(MouseEvent e) {
@@ -501,9 +507,10 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
             setStatusVisible(true, false);
             e.translatePoint(0, -y);
             ((MouseMotionListener) status).mouseMoved(e);
-        } else {
+        } /*else {
             setStatusVisible(false, false);
-        }
+        }*/
+        setStatusVisible(true, false);
     }
 
     public void handleMessage(Message msg) {
