@@ -1024,18 +1024,18 @@ abstract class ConfigurationPage extends SpecialPage {
 		$attribs['valign'] = 'top';
 		$msgVal = wfMsgExt( $msg, array( 'parseinline' ) );
 		$rawVal = Xml::element( 'tt', null, "\$$conf" );
-		if ( wfEmptyMsg( $msg, $msgVal ) )
-			$msgVal = $rawVal;
-		else
-			$msgVal = "$msgVal ($rawVal)";
 		if ( $showLink ) {
 			$url = 'http://www.mediawiki.org/wiki/Manual:$' . $conf;
-			$link = Xml::tags( 'a', array( 'href' => $url, 'class' => 'configure-doc' ), $msgVal );
+			$link = Xml::tags( 'a', array( 'href' => $url, 'class' => 'configure-doc' ), $rawVal );
 		} else {
-			$link = $msgVal;
+			$link = $rawVal;
 		}
+		if ( wfEmptyMsg( $msg, $msgVal ) )
+			$msgVal = $link;
+		else
+			$msgVal = "$msgVal ($link)";
 		$attribs['class'] = 'configure-left-column';
-		$td1 = Xml::openElement( 'td', $attribs ) . $link . '</td>';
+		$td1 = Xml::openElement( 'td', $attribs ) . $msgVal . '</td>';
 		$attribs['class'] = 'configure-right-column';
 		if ( $this->isSettingAvailable( $conf ) )
 			$td2 = Xml::openElement( 'td', $attribs ) . $this->buildInput( $conf, $params ) . '</td>';
