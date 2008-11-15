@@ -38,8 +38,14 @@ class WebConfiguration extends SiteConfiguration {
 	public function initialise( $useCache = true ) {
 		parent::initialise();
 		$this->mConf = $this->mHandler->getCurrent( $useCache );
-		$this->mOldSettings = $this->settings;
 
+		# Restore first version of $this->settings if called a second time so
+		# that it doesn't duplicate arrays
+		if( !count( $this->mOldSettings ) )
+			$this->mOldSettings = $this->settings;
+		else
+			$this->settings = $this->mOldSettings;
+			
 		# We'll need to invert the order of keys as SiteConfiguration uses
 		# $settings[$setting][$wiki] and the extension uses $settings[$wiki][$setting]
 		foreach ( $this->mConf as $site => $settings ) {
