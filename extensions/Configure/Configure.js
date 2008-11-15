@@ -3,6 +3,7 @@
  * create JavaScript buttons to allow to modify the form to have more
  * flexibility
  */
+
 function setupConfigure(){
 
 	// For old versions
@@ -149,6 +150,19 @@ function setupConfigure(){
 		button.value = wgConfigureAdd;
 		button.onclick = createAssocCallback( table );
 		table.parentNode.appendChild( button );
+	}
+	
+	var thumbs = getElementsByClassName( configform, 'input', 'image-selector' );
+	for( var t = 0; t < thumbs.length; t++ ){
+		var textbox = thumbs[t];
+		
+		var button = document.createElement( 'input' );
+		button.type = 'button';
+		button.className = 'mw-button-get-image-url';
+		button.value = wgConfigureGetImageUrl;
+		button.onclick = createImageUrlCallback( textbox );
+		
+		textbox.parentNode.appendChild( button );
 	}
 	
 	// $wgGroupPermissions stuff, only if ajax is enabled
@@ -472,6 +486,20 @@ function configTocToggle(){
 		toc.style.display = "none";
 		this.removeChild( this.firstChild );
 		this.appendChild( getArrowImg( 'r' ) );
+	}
+}
+
+/**
+ * Handle [Get thumbnail URL] button clicks
+ */
+function createImageUrlCallback( textbox ) {
+	return function() {
+		sajax_do_call( 'wfAjaxGetThumbnailUrl',
+			[textbox.value, 130, 130], // FIXME hard-coded.
+			function(response) {
+				textbox.value = response.responseText;
+			}
+		);
 	}
 }
 

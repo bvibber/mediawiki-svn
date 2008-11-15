@@ -511,6 +511,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				break;
 			case 'text':
 			case 'lang':
+			case 'image-url':
 				$settings[$name] = $wgRequest->getVal( 'wp' . $name );
 				break;
 			case 'int':
@@ -679,6 +680,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		$removeRow = Xml::encodeJsVar( wfMsg( 'configure-js-remove-row' ) );
 		$promptGroup = Xml::encodeJsVar( wfMsg( 'configure-js-prompt-group' ) );
 		$groupExists = Xml::encodeJsVar( wfMsg( 'configure-js-group-exists' ) );
+		$getimgurl = Xml::encodeJsVar( wfMsg( 'configure-js-get-image-url' ) );
 		$ajax = isset( $wgUseAjax ) && $wgUseAjax ? 'true' : 'false';
 		$script = array(
 			"<script type=\"$wgJsMimeType\">/*<![CDATA[*/",
@@ -688,6 +690,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			"var wgConfigurePromptGroup = {$promptGroup};",
 			"var wgConfigureGroupExists = {$groupExists};",
 			"var wgConfigureUseAjax = {$ajax};",
+			"var wgConfigureGetImageUrl = {$getimgurl};",
 		 	"/*]]>*/</script>",
 			"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/Configure/Configure.js?{$wgConfigureStyleVersion}\"></script>",
 		);
@@ -726,16 +729,17 @@ abstract class ConfigurationPage extends SpecialPage {
 		if( $type == 'text' || $type == 'int' ){
 			if( !$allowed )
 				return '<code>' . htmlspecialchars( (string)$default ) . '</code>';
-			return Xml::element( 'input', array( 'name' => 'wp' . $conf, 'type' => 'text', 'value' => (string)$default ) );
+			return Xml::input( "wp$conf", 45, (string)$default );
+		}
+		if ( $type == 'image-url' ) {
+			if( !$allowed )
+				return '<code>' . htmlspecialchars( (string)$default ) . '</code>';
+			return Xml::input( "wp$conf", 45, (string)$default, array( 'class' => 'image-selector' ) );
 		}
 		if( $type == 'bool' ){
 			if( !$allowed )
 				return '<code>' . ( $default ? 'true' : 'false' ) . '</code>';
-			if( $default )
-				$checked = array( 'checked' => 'checked' );
-			else
-				$checked = array();
-			return Xml::element( 'input', array( 'name' => 'wp' . $conf, 'type' => 'checkbox', 'value' => '1' ) + $checked );
+			return Xml::check( "wp$conf", $default, array( 'value' => '1' ) );
 		}
 		if( $type == 'array' ){
 			return $this->buildArrayInput( $conf, $default, $allowed );

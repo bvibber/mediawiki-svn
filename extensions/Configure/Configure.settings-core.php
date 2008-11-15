@@ -25,7 +25,7 @@ $settings = array(
 			'wgDiff' => 'text',
 			'wgDiff3' => 'text',
 			'wgFavicon' => 'text',
-			'wgLogo' => 'text',
+			'wgLogo' => 'image-url',
 			'wgMathDirectory' => 'text',
 			'wgMathPath' => 'text',
 			'wgRedirectScript' => 'text',
@@ -1005,7 +1005,7 @@ $viewRestricted = array(
 # Emal
 	'wgSMTP',
 # Proxy
-#	'wgProxyKey', ## Deprecated
+	'wgProxyKey', ## Deprecated
 	'wgSecretKey',
 );
 
