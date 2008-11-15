@@ -825,7 +825,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					if( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-val-{$i}",
-							'type' => 'text', 'value' => $val, 'size' => 15
+							'type' => 'text', 'value' => $val, 'size' => 20
 						) ) . "<br/>\n";
 					else
 						$text .= '<code>' . htmlspecialchars( $val ) . '</code>';
