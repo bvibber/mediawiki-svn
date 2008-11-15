@@ -798,7 +798,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			if( !$allowed ){
 				return "<pre>" . htmlspecialchars( ( is_array( $default ) ? implode( "\n", $default ) : $default ) ) . "\n</pre>";
 			}
-			$text = "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8'>";
+			$text = "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8' style='width: 95%;'>";
 			if( is_array( $default ) )
 				$text .= implode( "\n", $default );
 			$text .= "</textarea>\n";
