@@ -8,7 +8,7 @@
  * @author Alexandre Emsenhuber
  */
 class ConfigurationPagerDb extends ReverseChronologicalPager {
-	protected $mHandler, $mCallback, $mCounter;
+	protected $mHandler, $mCallback, $mCounter = 0;
 
 	function __construct( ConfigureHandlerDb $handler ) {
 		parent::__construct();
@@ -47,7 +47,6 @@ class ConfigurationPagerDb extends ReverseChronologicalPager {
 	}
 
 	function getStartBody() {
-		$this->mCounter = 0;
 		return "<ul>\n";
 	}
 
