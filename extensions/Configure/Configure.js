@@ -137,7 +137,6 @@ function setupConfigure(){
 				td.className = 'button';
 				var button = document.createElement( 'input' );
 				button.type = 'button';
-				button.size = 10;
 				button.value = wgConfigureRemoveRow;
 				button.onclick = removeAssocCallback( table, r );
 				td.appendChild( button );
