@@ -11,9 +11,6 @@ class ConfigureHandlerDb implements ConfigureHandler {
 
 	/**
 	 * Construct a new object.
-	 *
-	 * @param string $path path to the directory that contains the configuration
-	 *                     files
 	 */
 	public function __construct(){
 		global $IP, $wgConfigureDatabase;
@@ -70,7 +67,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			
 		$mtime = filemtime($path);
 		
-		if (time() > $mtime + $expiry) ## Regenerate every five minutes or so
+		if ( time() > ($mtime + $expiry) ) ## Regenerate every five minutes or so
 			return null;
 			
 		## Suppress errors, if there's an error, it'll just be null and we'll do it again.
@@ -81,11 +78,12 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	
 	/**
 	 * Cache the data to the filesystem.
+	 * @returns int bytes
 	 */
 	protected function cacheToFS( $data ) {
 		global $wgConfigureFileSystemCache;
 		
-		file_put_contents( $wgConfigureFileSystemCache, serialize($data) );
+		return @file_put_contents( $wgConfigureFileSystemCache, serialize($data) );
 	}
 
 	/**
@@ -217,7 +215,10 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			__METHOD__
 		);
 		$newId = $dbw->insertId();
-		$dbw->update( 'config_version', array( 'cv_is_latest' => 0 ), array( 'cv_wiki' => $wiki, 'cv_timestamp <> '.$dbw->addQuotes( $ts ) ), __METHOD__ );
+		$dbw->update( 'config_version', 
+			array( 'cv_is_latest' => 0 ), 
+			array( 'cv_wiki' => $wiki, 'cv_timestamp <> '.$dbw->addQuotes( $ts ) ),
+			__METHOD__ );
 		$insert = array();
 		foreach( $settings as $name => $val ){
 			$insert[] = array(
