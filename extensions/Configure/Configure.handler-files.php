@@ -111,7 +111,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 			return array();
 		$files = array();
 		while ( ( $file = readdir( $dir ) ) !== false ) {
-			if ( preg_match( '/conf-(\d{14})\.ser$/', $file, $m ) )
+			if ( preg_match( '/^conf-(\d{14})\.ser$/', $file, $m ) )
 				$files[] = $m[1];
 		}
 		rsort( $files, SORT_NUMERIC );
