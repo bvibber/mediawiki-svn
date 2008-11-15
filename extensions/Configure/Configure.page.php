@@ -696,6 +696,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		$promptGroup = Xml::encodeJsVar( wfMsg( 'configure-js-prompt-group' ) );
 		$groupExists = Xml::encodeJsVar( wfMsg( 'configure-js-group-exists' ) );
 		$getimgurl = Xml::encodeJsVar( wfMsg( 'configure-js-get-image-url' ) );
+		$imageerror = Xml::encodeJsVar( wfMsg( 'configure-js-image-error' ) );
 		$ajax = isset( $wgUseAjax ) && $wgUseAjax ? 'true' : 'false';
 		$script = array(
 			"<script type=\"$wgJsMimeType\">/*<![CDATA[*/",
@@ -706,6 +707,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			"var wgConfigureGroupExists = {$groupExists};",
 			"var wgConfigureUseAjax = {$ajax};",
 			"var wgConfigureGetImageUrl = {$getimgurl};",
+			"var wgConfigureImageError = {$imageerror};",
 		 	"/*]]>*/</script>",
 			"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/Configure/Configure.js?{$wgConfigureStyleVersion}\"></script>",
 		);

@@ -497,7 +497,13 @@ function createImageUrlCallback( textbox ) {
 		sajax_do_call( 'wfAjaxGetThumbnailUrl',
 			[textbox.value, 130, 130], // FIXME hard-coded.
 			function(response) {
-				textbox.value = response.responseText;
+				var text = response.responseText;
+				// basic error handling
+				if( text.substr( 0, 9 ) == "<!DOCTYPE" ) {
+					alert( wgConfigureImageError );
+				} else {
+					textbox.value = response.responseText;
+				}
 			}
 		);
 	}

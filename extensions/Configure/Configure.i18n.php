@@ -40,6 +40,7 @@ Please make it writable by PHP to use this extension.',
 	'configure-js-remove'                 => 'Delete',
 	'configure-js-remove-row'             => 'Delete this entry',
 	'configure-js-get-image-url' 	      => 'Convert file name to URL',
+	'configure-js-image-error'            => 'An error occured while fetching the URL. Please check that the file exists.',
 	'configure-no-diff'                   => 'There is no changes between selected versions.',
 	'configure-no-directory'              => 'The directory used to store the settings, <tt>$1</tt>, does not exist.
 Please create it or change it to use this extension.',
