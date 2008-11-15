@@ -235,7 +235,6 @@ $settings = array(
 			'wgNamespaceProtection' => 'array',
 			'wgNamespaceRobotPolicies' => 'array',
 			'wgNamespacesToBeSearchedDefault' => 'array',
-			'wgNamespacesToBeSearchedProject' => 'array',
 			'wgNamespacesWithSubpages' => 'array',
 			'wgNoFollowNsExceptions' => 'array',
 			'wgNonincludableNamespaces' => 'array',
@@ -744,7 +743,6 @@ $arrayDefs = array(
 	'wgNamespaceProtection' => 'ns-array',
 	'wgNamespaceRobotPolicies' => 'ns-text',
 	'wgNamespacesToBeSearchedDefault' => 'ns-bool',
-	'wgNamespacesToBeSearchedProject' => 'ns-bool',
 	'wgNamespacesWithSubpages' => 'ns-bool',
 	'wgNoFollowNsExceptions' => 'ns-simple',
 	'wgNonincludableNamespaces' => 'ns-simple',
@@ -1090,7 +1088,6 @@ $settingsVersion = array(
 	'wgDebugLogPrefix' => array( array( '1.14alpha', '>=' ) ),
 	'wgEnotifUseRealName' => array( array( '1.14alpha', '>=' ) ),
 	'wgImageMagickTempDir' => array( array( '1.14alpha', '>=' ) ),
-	'wgNamespacesToBeSearchedProject' => array( array( '1.14alpha', '>=' ) ),
 # Obsolete
 	'wgAjaxSearch' => array( array( '1.14alpha', '<' ) ),
 );
