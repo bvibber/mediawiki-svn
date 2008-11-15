@@ -40,9 +40,11 @@ class SpecialCode extends SpecialPage {
 				} elseif( $params[1] === 'comments' ) {
 					$view = new CodeCommentsListView( $params[0] );
 					break;
+				} elseif( $params[1] === 'path' ) {
+					$view = new CodePathRevListView( $params[0] );
+					break;
 				} else {
-					# Nonsense parameters, back out
-					$view = new CodeRevisionListView( $params[0] );
+					$view = new CodeRevisionView( $params[0], $params[1] );
 					break;
 				}
 			case 3:
