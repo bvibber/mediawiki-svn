@@ -732,7 +732,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		if( $type == 'text' || $type == 'int' ){
 			if( !$allowed )
 				return '<code>' . htmlspecialchars( (string)$default ) . '</code>';
-			return Xml::input( "wp$conf", 45, (string)$default );
+			return Xml::input( "wp$conf", $type=='text' ? 30 : 10, (string)$default );
 		}
 		if ( $type == 'image-url' ) {
 			if( !$allowed )
@@ -817,7 +817,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					if( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-key-{$i}",
-							'type' => 'text', 'value' => $key
+							'type' => 'text', 'value' => $key, 'size' => 15
 						) ) . "<br/>\n";
 					else
 						$text .= '<code>' . htmlspecialchars( $key ) . '</code>';
@@ -825,7 +825,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					if( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-val-{$i}",
-							'type' => 'text', 'value' => $val
+							'type' => 'text', 'value' => $val, 'size' => 15
 						) ) . "<br/>\n";
 					else
 						$text .= '<code>' . htmlspecialchars( $val ) . '</code>';
