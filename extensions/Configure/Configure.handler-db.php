@@ -53,19 +53,61 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	protected function getCache() {
 		return wfGetMainCache();
 	}
+	
+	/**
+	 * Checks if it's cached on the filesystem.
+	 */
+	protected function getFSCached() {
+		global $wgConfigureFileSystemCache, $wgConfigureFileSystemCacheExpiry;
+		
+		$expiry = $wgConfigureFileSystemCacheExpiry;
+		
+		if (!($path = $wgConfigureFileSystemCache))
+			return null;
+			
+		if (!file_exists($path))
+			return null;
+			
+		$mtime = filemtime($path);
+		
+		if (time() > $mtime + $expiry) ## Regenerate every five minutes or so
+			return null;
+			
+		## Suppress errors, if there's an error, it'll just be null and we'll do it again.
+		$data = @unserialize( file_get_contents( $path ) );
+		
+		return $data;
+	}
+	
+	/**
+	 * Cache the data to the filesystem.
+	 */
+	protected function cacheToFS( $data ) {
+		global $wgConfigureFileSystemCache;
+		
+		file_put_contents( $wgConfigureFileSystemCache, serialize($data) );
+	}
 
 	/**
 	 * Load the current configuration the database (i.e. cv_is_latest == 1)
 	 * directory
 	 */
-	public function getCurrent(){
+	public function getCurrent( $useCache = true ){
+		static $ipCached = null;
+		
+		if ($ipCached && $useCache) ## In-process caching...
+			return $ipCached;
+	
+		## Check filesystem cache
+		if (($cached = $this->getFSCached()) && $useCache) {
+			$this->cacheToFS($cached);
+			return $ipCached = $cached;
+		}
+	
 		$cacheKey = $this->cacheKey( 'configure', 'current' );
 		$cached = $this->getCache()->get( $cacheKey );
-		if( is_array( $cached ) ){
-			#var_dump( $cached ); die;
-			return $cached;
-		} else {
-			#var_dump( $this->getCache() ); die;
+		if( is_array( $cached ) && $useCache ){
+			return $ipCached = $cached;
 		}
 		
 		try {
@@ -83,7 +125,9 @@ class ConfigureHandlerDb implements ConfigureHandler {
 				$arr[$row->cv_wiki][$row->cs_name] = unserialize( $row->cs_value );
 			}
 			$this->getCache()->set( $cacheKey, $arr, 3600 );
-			return $arr;
+			$this->cacheToFS($arr);
+			
+			return $ipCached = $arr;
 		} catch( MWException $e ) {
 			return array();
 		}

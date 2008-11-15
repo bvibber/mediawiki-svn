@@ -57,6 +57,10 @@ ul.configtoc > li, ul.configtoc > li > ul > li {
 	width: 100%;
 }
 
+td.configure-left-column {
+	width: 20%;
+}
+
 /**
  * tables borders
  */

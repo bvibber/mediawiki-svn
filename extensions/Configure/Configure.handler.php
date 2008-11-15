@@ -16,7 +16,7 @@ interface ConfigureHandler {
 	/**
 	 * Load the current configuration
 	 */
-	public function getCurrent();
+	public function getCurrent( $useCache = true );
 
 	/**
 	 * Return the old configuration from $ts timestamp

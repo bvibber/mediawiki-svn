@@ -30,7 +30,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * Load the configuration from the conf-now.ser file in the $this->mDir
 	 * directory
 	 */
-	public function getCurrent(){
+	public function getCurrent( $useCache = true ){
 		$file = $this->getFileName();
 		if( !file_exists( $file ) )
 			# maybe the first time the user use this extensions, do not override

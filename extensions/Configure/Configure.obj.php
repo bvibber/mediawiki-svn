@@ -35,9 +35,9 @@ class WebConfiguration extends SiteConfiguration {
 	 * Load the configuration from the conf-now.ser file in the $this->mDir
 	 * directory
 	 */
-	public function initialise(){
+	public function initialise( $useCache = true ){
 		parent::initialise();
-		$this->mConf = $this->mHandler->getCurrent();
+		$this->mConf = $this->mHandler->getCurrent( $useCache );
 		$this->mOldSettings = $this->settings;
 
 		# We'll need to invert the order of keys as SiteConfiguration uses

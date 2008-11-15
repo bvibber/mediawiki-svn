@@ -39,6 +39,14 @@ $wgConfigureFilesPath = "$IP/serialized";
 $wgConfigureDatabase = 'config';
 
 /**
+ * Path for file-system cache
+ */
+$wgConfigureFileSystemCache = false;
+
+/** Expiry */
+$wgConfigureFileSystemCacheExpiry = 180;
+
+/**
  * Allow foreign wiki configuration? either:
  * - true: allow any wiki
  * - false: don't allow any wiki
@@ -97,7 +105,7 @@ $wgConfigureUpdateCacheEpoch = false;
 /**
  * Styles versions, you shouldn't change it
  */
-$wgConfigureStyleVersion = '6';
+$wgConfigureStyleVersion = '7';
 
 ## Adding new rights...
 $wgAvailableRights[] = 'configure';

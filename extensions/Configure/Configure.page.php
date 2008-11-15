@@ -19,6 +19,9 @@ abstract class ConfigurationPage extends SpecialPage {
 	public function __construct( $name, $right ) {
 		wfLoadExtensionMessages( 'Configure' );
 		$this->mConfSettings = ConfigurationSettings::singleton( $this->getSettingMask() );
+		## Reload data WITHOUT CACHE
+		global $wgConf;
+		$wgConf->initialise( false /* Skip cache */ );
 		parent::__construct( $name, $right );
 	}
 
@@ -994,9 +997,9 @@ abstract class ConfigurationPage extends SpecialPage {
 		$msg = isset( $params['msg'] ) ? $params['msg'] : 'configure-setting-' . $conf;
 		$showLink = isset( $params['link'] ) ? $params['link'] : true;
 
-		$align = array();
-		$align['align'] = $wgContLang->isRtl() ? 'right' : 'left';
-		$align['valign'] = 'top';
+		$attribs = array();
+		$attribs['align'] = $wgContLang->isRtl() ? 'right' : 'left';
+		$attribs['valign'] = 'top';
 		$msgVal = wfMsgExt( $msg, array( 'parseinline' ) );
 		$rawVal = Xml::element( 'tt', null, "\$$conf" );
 		if( wfEmptyMsg( $msg, $msgVal ) )
@@ -1009,11 +1012,13 @@ abstract class ConfigurationPage extends SpecialPage {
 		} else {
 			$link = $msgVal;
 		}
-		$td1 = Xml::openElement( 'td', $align ) . $link . '</td>';
+		$attribs['class'] = 'configure-left-column';
+		$td1 = Xml::openElement( 'td', $attribs ) . $link . '</td>';
+		$attribs['class'] = 'configure-right-column';
 		if( $this->isSettingAvailable( $conf ) )
-			$td2 = Xml::openElement( 'td', $align ) . $this->buildInput( $conf, $params ) . '</td>';
+			$td2 = Xml::openElement( 'td', $attribs ) . $this->buildInput( $conf, $params ) . '</td>';
 		else
-			$td2 = Xml::openElement( 'td', $align ) . 
+			$td2 = Xml::openElement( 'td', $attribs ) . 
 				wfMsgExt( 'configure-setting-not-available', array( 'parseinline' ) ) . '</td>';
 
 		return '<tr>' . $td1 . $td2 . "</tr>\n";
