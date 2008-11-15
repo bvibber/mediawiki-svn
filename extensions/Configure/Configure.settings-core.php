@@ -54,7 +54,7 @@ $settings = array(
 			'wgAllDBsAreLocalhost' => 'bool',
 			'wgCheckDBSchema' => 'bool',
 			'wgDBAvgStatusPoll' => 'int',
-			'wgDBconnection' => 'text',
+#			'wgDBconnection' => 'text', ## This setting is deprecated and has an uncertain history. Best not to let people change it.
 			'wgDBerrorLog' => 'text',
 			'wgDBname' => 'text',
 			'wgDBpassword' => 'text',
@@ -62,7 +62,7 @@ $settings = array(
 			'wgDBserver' => 'text',
 			'wgDBtype' => array( 'mysql' => 'MySQL', 'postgres' => 'PostreSQL' ),
 			'wgDBuser' => 'text',
-			'wgLegacySchemaConversion' => 'bool',
+#			'wgLegacySchemaConversion' => 'bool', ## Really, really deprecated.
 			'wgLocalDatabases' => 'array',
 			'wgSearchType' => 'text',
 			'wgSharedDB' => 'text',
@@ -305,7 +305,7 @@ $settings = array(
 			'wgMaxMsgCacheEntrySize' => 'int',
 		),
 		'memcached' => array(
-			'wgMemCachedDebug' => 'bool',
+#			'wgMemCachedDebug' => 'bool', ## Doesn't appear to be a setting, just a global
 			'wgMemCachedPersistent' => 'bool',
 			'wgMemCachedServers' => 'array',
 			'wgSessionsInMemcached' => 'bool',
@@ -373,7 +373,7 @@ $settings = array(
 		'proxy' => array(
 			'wgBlockOpenProxies' => 'bool',
 			'wgEnableSorbs' => 'bool',
-			'wgProxyKey' => 'text',
+#			'wgProxyKey' => 'text', ## Deprecated
 			'wgProxyList' => 'array',
 			'wgProxyMemcExpiry' => 'int',
 			'wgProxyPorts' => 'array',
@@ -681,7 +681,7 @@ $settings = array(
 	'misc' => array(
 		'misc' => array(
 			'wgAntiLockFlags' => 'int',
-			'wgCommandLineMode' => 'bool',
+#			'wgCommandLineMode' => 'bool', ## Should never be set manually.
 			'wgCommandLineDarkBg' => 'bool',
 			'wgCompressRevisions' => 'bool',
 			'wgDisableOutputCompression' => 'bool',
@@ -931,7 +931,7 @@ $editRestricted = array(
 	'wgDBuser',
 	'wgDefaultExternalStore',
 	'wgLBFactoryConf',
-	'wgLegacySchemaConversion',
+#	'wgLegacySchemaConversion',
 	'wgLocalDatabases',
 	'wgMasterWaitTimeout',
 	'wgSearchType',
@@ -963,7 +963,7 @@ $editRestricted = array(
 # Rate limits
 	'wgRateLimitLog',
 # Proxies
-	'wgProxyKey',
+#	'wgProxyKey', ## Deprecated
 	'wgProxyScriptPath',
 	'wgSecretKey',
 # Squid
@@ -1005,7 +1005,7 @@ $viewRestricted = array(
 # Emal
 	'wgSMTP',
 # Proxy
-	'wgProxyKey',
+#	'wgProxyKey', ## Deprecated
 	'wgSecretKey',
 );
 

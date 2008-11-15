@@ -994,11 +994,14 @@ abstract class ConfigurationPage extends SpecialPage {
 		$align['align'] = $wgContLang->isRtl() ? 'right' : 'left';
 		$align['valign'] = 'top';
 		$msgVal = wfMsgExt( $msg, array( 'parseinline' ) );
+		$rawVal = Xml::element( 'tt', null, "\$$conf" );
 		if( wfEmptyMsg( $msg, $msgVal ) )
-			$msgVal = "\$$conf";
+			$msgVal = $rawVal;
+		else
+			$msgVal = "$msgVal ($rawVal)";
 		if( $showLink ){
 			$url = 'http://www.mediawiki.org/wiki/Manual:$' . $conf;
-			$link = Xml::element( 'a', array( 'href' => $url, 'class' => 'configure-doc' ), $msgVal );
+			$link = Xml::tags( 'a', array( 'href' => $url, 'class' => 'configure-doc' ), $msgVal );
 		} else {
 			$link = $msgVal;
 		}
@@ -1020,6 +1023,8 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return xhtml
 	 */
 	protected function buildSettings( $settings, $param = array() ){
+		wfLoadExtensionMessages( 'ConfigureSettings' );
+		
 		$ret = '';
 		$perms = array();
 		$notEditableSet = $this->getNotEditableSettings();
