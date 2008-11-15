@@ -505,5 +505,4 @@ $messages['en'] = array(
 	'configure-setting-wgProfileToDatabase' => "Log sums from profiling into profiling table in db",
 	'configure-setting-wgUDPProfilerHost' => "Host for UDP profiler",
 	'configure-setting-wgUDPProfilerPort' => "Port for UDP profiler",
-
 );
