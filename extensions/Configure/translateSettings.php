@@ -45,7 +45,7 @@ foreach ( $settingNames as $name ) {
 	print "Please describe the following setting: \$$name\n";
 	print trim( $defaultNames[$name] ) . "\n";
 
-	$input = readline( '> ' );
+	$input = readconsole( '> ' );
 
 	if ( trim( $input ) == '~' )
 		break;
