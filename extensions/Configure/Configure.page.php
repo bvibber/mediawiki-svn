@@ -883,13 +883,14 @@ abstract class ConfigurationPage extends SpecialPage {
 				} else {
 					$checked = in_array( $ns, (array)$default );
 				}
-				$text .= Xml::checkLabel(
-					$name,
-					"wp{$conf}-ns{$ns}",
-					"wp{$conf}-ns{$ns}",
-					$checked,
-					$attr
-				) . "\n";
+				$text .= "<span style='white-space:nowrap;'>".
+					Xml::checkLabel(
+						$name,
+						"wp{$conf}-ns{$ns}",
+						"wp{$conf}-ns{$ns}",
+						$checked,
+						$attr
+					) . "</span>\n";
 			}
 			return $text;
 		}
