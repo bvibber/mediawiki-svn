@@ -57,7 +57,7 @@ if( isset( $options['help'] ) )
 $coreSettings = ConfigurationSettings::singleton( CONF_SETTINGS_CORE );
 if( isset( $options['ext'] ) ){
 	$exts = ConfigurationSettings::singleton( CONF_SETTINGS_EXT )->getAllExtensionsObjects();
-	$ingnoreList = array(
+	$ignoreList = array(
 		# Core
 		'wgTitle', 'wgArticle', 'wgContLang', 'wgLang', 'wgOut', 'wgParser', 'wgMessageCache',
 		# Extensions
@@ -80,7 +80,7 @@ if( isset( $options['ext'] ) ){
 		$obsolete = array_diff( $allSettings, $definedSettings );
 		$missing = array();
 		foreach( $remain as $setting ){
-			if( !$coreSettings->isSettingAvailable( $setting ) && !in_array( $setting, $ingnoreList ) )
+			if( !$coreSettings->isSettingAvailable( $setting ) && !in_array( $setting, $ignoreList ) )
 				$missing[] = $setting;
 		}
 		if( count( $missing ) == 0 && count( $obsolete ) == 0 ) {
