@@ -207,7 +207,8 @@ abstract class ConfigurationPage extends SpecialPage {
 		static $notEditable;
 		if ( !isset( $notEditable ) ) {
 			global $wgConfigureNotEditableSettings;
-			$notEditable = array_merge( $this->mConfSettings->getNotEditableSettings(), $wgConfigureNotEditableSettings );
+			$notEditable = array_merge( $this->mConfSettings->getNotEditableSettings(),
+				$wgConfigureNotEditableSettings );
 		}
 		return $notEditable;
 	}
@@ -294,7 +295,8 @@ abstract class ConfigurationPage extends SpecialPage {
 				$conf = $wgConf->getOldSettings( $version );
 				$this->conf = $conf[$this->mWiki];
 				if ( !isset( $conf[$this->mWiki] ) ) {
-					$wgOut->addWikiText( '<div class="errorbox">$1</div>', array( 'configure-old-not-available', $version ) );
+					$wgOut->addWikiText( '<div class="errorbox">$1</div>',
+						array( 'configure-old-not-available', $version ) );
 					return false;
 				}
 				$current = null;
@@ -307,7 +309,8 @@ abstract class ConfigurationPage extends SpecialPage {
 				}
 				$wgOut->addWikiMsg( 'configure-edit-old' );
 			} else {
-				$wgOut->addWikiText( '<div class="errorbox">$1</div>', array( 'configure-old-not-available', $version ) );
+				$wgOut->addWikiText( '<div class="errorbox">$1</div>',
+					array( 'configure-old-not-available', $version ) );
 				return false;
 			}
 		} else {
@@ -370,7 +373,8 @@ abstract class ConfigurationPage extends SpecialPage {
 		$form .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
 		$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
 		if ( is_array( $wgConfigureWikis ) ) {
-			$form .= wfMsgExt( 'configure-select-wiki-available', array( 'parse' ), implode( ', ', $wgConfigureWikis ) );
+			$form .= wfMsgExt( 'configure-select-wiki-available',
+				array( 'parse' ), implode( ', ', $wgConfigureWikis ) );
 		}
 		$form .= Xml::input( 'wiki', false, $this->mWiki );
 		$form .= Xml::submitButton( wfMsg( 'configure-select-wiki-submit' ) );
@@ -412,7 +416,9 @@ abstract class ConfigurationPage extends SpecialPage {
 				case 'assoc':
 					$i = 0;
 					$arr = array();
-					while ( isset( $_REQUEST['wp' . $name . '-key-' . $i] ) && isset( $_REQUEST['wp' . $name . '-val-' . $i] ) ) {
+					while ( isset( $_REQUEST['wp' . $name . '-key-' . $i] ) && 
+						isset( $_REQUEST['wp' . $name . '-val-' . $i] ) )
+					{
 						$key = $_REQUEST['wp' . $name . '-key-' . $i];
 						$val = $_REQUEST['wp' . $name . '-val-' . $i];
 						if ( $key !== '' || $val !== '' )
@@ -482,7 +488,8 @@ abstract class ConfigurationPage extends SpecialPage {
 						$iter = explode( "\n", $_REQUEST['wp' . $name . '-vals'] );
 						foreach ( $iter as &$group ) {
 							// Our own Sanitizer::unescapeId() :)
-							$group = urldecode( str_replace( array( '.', "\r" ), array( '%', '' ), substr( $group, strlen( $name ) + 3 ) ) );
+							$group = urldecode( str_replace( array( '.', "\r" ), array( '%', '' ),
+								substr( $group, strlen( $name ) + 3 ) ) );
 						}
 						unset( $group ); // Unset the reference, just in case
 					} else { // No javascript ?
@@ -499,7 +506,8 @@ abstract class ConfigurationPage extends SpecialPage {
 							if ( $arrType == 'group-bool' ) {
 								$encId = Sanitizer::escapeId( $id );
 								if ( $id != $encId ) {
-									$val = $wgRequest->getCheck( str_replace( '.', '_', $encId ) ) || $wgRequest->getCheck( $encId ) || $wgRequest->getCheck( $id );
+									$val = $wgRequest->getCheck( str_replace( '.', '_', $encId ) ) || 
+										$wgRequest->getCheck( $encId ) || $wgRequest->getCheck( $id );
 								} else {
 									$val = $wgRequest->getCheck( $id );
 								}
@@ -636,25 +644,29 @@ abstract class ConfigurationPage extends SpecialPage {
 
 		$wgOut->addHTML(
 			$this->buildOldVersionSelect() . "\n" .
-
 			( $this->mCanEdit ?
 				$this->getWikiSelectForm() .
-				Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 'id' => 'configure-form' ) ) . "\n" :
-				Xml::openElement( 'div', array( 'id' => 'configure-form' ) ) ) .
+				Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 
+					'id' => 'configure-form' ) ) . "\n" :
+				Xml::openElement( 'div', array( 'id' => 'configure-form' ) )
+			) .
 			Xml::openElement( 'div', array( 'id' => 'configure' ) ) . "\n" .
-
 			$this->buildAllSettings() . "\n" .
-
 			( $this->mCanEdit ?
 				Xml::openElement( 'div', array( 'id' => 'prefsubmit' ) ) . "\n" .
 				Xml::openElement( 'div', array() ) . "\n" .
-				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpSave', 'class' => 'btnSavePrefs', 'value' => wfMsgHtml( 'configure-btn-save' ) ) ) . "\n" .
-				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpPreview', 'value' => wfMsgHtml( 'showdiff' ) ) ) . "\n" .
+				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpSave', 
+					'class' => 'btnSavePrefs', 'value' => wfMsgHtml( 'configure-btn-save' ) ) ) . "\n" .
+				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpPreview', 
+					'value' => wfMsgHtml( 'showdiff' ) ) ) . "\n" .
 				Xml::closeElement( 'div' ) . "\n" .
 				Xml::closeElement( 'div' ) . "\n" .
-				Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpEditToken', 'value' => $wgUser->editToken() ) ) . "\n" .
-				( $this->mWiki ? Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpWiki', 'value' => $this->mWiki ) ) . "\n" : '' )
-			: '' ) .
+				Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpEditToken',
+					'value' => $wgUser->editToken() ) ) . "\n" .
+				( $this->mWiki ? Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpWiki',
+					'value' => $this->mWiki ) ) . "\n" : '' )
+			: '' 
+			) .
 			Xml::closeElement( 'div' ) . "\n" .
 			Xml::closeElement( $this->mCanEdit ? 'form' : 'div' )
 		);
@@ -796,7 +808,9 @@ abstract class ConfigurationPage extends SpecialPage {
 			return $allowed ? '<span class="array">(array)</span>' : '<span class="array-disabled">(array)</span>';
 		if ( $type == 'simple' ) {
 			if ( !$allowed ) {
-				return "<pre>" . htmlspecialchars( ( is_array( $default ) ? implode( "\n", $default ) : $default ) ) . "\n</pre>";
+				return "<pre>" .
+					htmlspecialchars( ( is_array( $default ) ? implode( "\n", $default ) : $default ) ) .
+					"\n</pre>";
 			}
 			$text = "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8' style='width: 95%;'>";
 			if ( is_array( $default ) )
@@ -808,7 +822,8 @@ abstract class ConfigurationPage extends SpecialPage {
 			$keydesc = wfMsgHtml( 'configure-desc-key' );
 			$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$class = ( !$allowed ) ? array( 'class' => 'disabled' ) : array();
-			$text = Xml::openElement( 'table', array( 'class' => ( $allowed ? 'assoc' : 'assoc disabled' ), 'id' => $conf ) ) . "\n";
+			$text = Xml::openElement( 'table', array( 'class' => ( $allowed ? 'assoc' : 'assoc disabled' ),
+				'id' => $conf ) ) . "\n";
 			$text .= "<tr><th>{$keydesc}</th><th>{$valdesc}</th></tr>\n";
 			if ( is_array( $default ) && count( $default ) > 0 ) {
 				$i = 0;
@@ -930,7 +945,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					$name = wfMsgExt( 'blanknamespace', array( 'parseinline' ) );
 				}
 				$text .= '<tr><td>' . $name . '</td><td>';
-				if ( $allowed )
+				if ( $allowed ) {
 					$text .= Xml::openElement( 'textarea', array(
 						'name' => "wp{$conf}-ns{$ns}",
 						'id' => "wp{$conf}-ns{$ns}",
@@ -938,8 +953,10 @@ abstract class ConfigurationPage extends SpecialPage {
 						'rows' => 5, ) ) .
 					( isset( $default[$ns] ) ? implode( "\n", (array)$default[$ns] ) : '' ) .
 					Xml::closeElement( 'textarea' ) . "<br/>\n";
-				else
-					$text .= "<pre>" . ( isset( $default[$ns] ) ? htmlspecialchars( implode( "\n", (array)$default[$ns] ) ) : '' ) . "\n</pre>";
+				} else {
+					$text .= "<pre>" . ( isset( $default[$ns] ) ? 
+						htmlspecialchars( implode( "\n", (array)$default[$ns] ) ) : '' ) . "\n</pre>";
+				}
 				$text .= '</td></tr>';
 			}
 			$text .= '</table>';
@@ -954,8 +971,10 @@ abstract class ConfigurationPage extends SpecialPage {
 			} else {
 				$all = array_keys( $this->getSettingValue( 'wgGroupPermissions' ) );
 				$iter = array();
-				foreach ( $all as $group )
-					$iter[$group] = isset( $default[$group] ) && is_array( $default[$group] ) ? $default[$group] : array();
+				foreach ( $all as $group ) {
+					$iter[$group] = isset( $default[$group] ) && is_array( $default[$group] ) ?
+						$default[$group] : array();
+				}
 				$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
 			}
 			$groupdesc = wfMsgHtml( 'configure-desc-group' );
@@ -1068,7 +1087,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					unset( $groups[$name] );
 			}
 			$ret .= Xml::openElement( 'fieldset' ) . "\n" .
-				Xml::element( 'legend', null, wfMsgExt( 'configure-section-' . $title, array( 'parseinline' ) ) ) . "\n";
+				Xml::element( 'legend', null, wfMsgExt( "configure-section-$title", array( 'parseinline' ) ) ) . "\n";
 			if ( $res ) {
 				$ret .= wfMsgExt( 'configure-section-' . $title . '-notallowed', array( 'parseinline' ) );
 			} else {
