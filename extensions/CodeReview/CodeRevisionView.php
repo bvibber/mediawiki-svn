@@ -10,10 +10,9 @@ class CodeRevisionView extends CodeView {
 		$this->mRev = $this->mRepo ? $this->mRepo->getRevision( intval( $rev ) ) : null;
 		$this->mPreviewText = false;
 		# URL params...
-		$this->mAddTags = $this->splitTags( $wgRequest->getText( 'wpTag' ) );
-		$this->mRemoveTags = $this->splitTags( $wgRequest->getText( 'wpRemoveTag' ) );
-		$this->mStatus = $wgRequest->getText('wpStatus') ? 
-			$wgRequest->getText('wpStatus') : $this->mRev->getStatus();
+		$this->mAddTags = $wgRequest->getText( 'wpTag' );
+		$this->mRemoveTags =$wgRequest->getText( 'wpRemoveTag' );
+		$this->mStatus = $wgRequest->getText('wpStatus');
 		$this->jumpToNext = $wgRequest->getCheck('wpSaveAndNext');
 		$this->mReplyTarget = $replyTarget ? 
 			(int)$replyTarget : $wgRequest->getIntOrNull( 'wpParent' );
@@ -33,6 +32,9 @@ class CodeRevisionView extends CodeView {
 			$view->execute();
 			return;
 		}
+		$this->mAddTags = $this->splitTags( $this->mAddTags );
+		$this->mRemoveTags = $this->splitTags( $this->mRemoveTags );
+		$this->mStatus = $this->mStatus ? $this->mStatus : $this->mRev->getStatus();
 
 		$redirectOnPost = $this->checkPostings();
 		if( $redirectOnPost ) {

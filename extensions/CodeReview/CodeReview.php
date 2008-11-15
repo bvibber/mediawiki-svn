@@ -19,7 +19,7 @@ What do I need out of SVN?
 
 1) Find out what revisions exist
 2) Get id/author/timestamp/notice basics
-  3) base path helps if available
+3) base path helps if available
 4) get list of affected files
 5) get diffs
 
@@ -54,7 +54,6 @@ $wgAutoloadClasses['CodeRevisionTagView'] = $dir . 'CodeRevisionTagView.php';
 $wgAutoloadClasses['CodeRevisionView'] = $dir . 'CodeRevisionView.php';
 $wgAutoloadClasses['CodeAuthorListView'] = $dir . 'CodeAuthorListView.php';
 $wgAutoloadClasses['CodeStatusListView'] = $dir . 'CodeStatusListView.php';
-$wgAutoloadClasses['CodePathRevListView'] = $dir . 'CodePathRevListView.php';
 $wgAutoloadClasses['CodeTagListView'] = $dir . 'CodeTagListView.php';
 $wgAutoloadClasses['CodeCommentsListView'] = $dir . 'CodeCommentsListView.php';
 $wgAutoloadClasses['CodeComment'] = $dir . 'CodeComment.php';
