@@ -114,8 +114,8 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 			if ( preg_match( '/conf-(\d{14})\.ser$/', $file, $m ) )
 				$files[] = $m[1];
 		}
-		sort( $files, SORT_NUMERIC );
-		return array_reverse( $files );
+		rsort( $files, SORT_NUMERIC );
+		return $files;
 	}
 
 	/**
