@@ -198,7 +198,8 @@ $wgAutoloadClasses['ConfigurationPagerFiles'] = $dir . 'Configure.pager-files.ph
 
 ## API module
 $wgAutoloadClasses['ApiConfigure'] = $dir . 'Configure.api.php';
-$wgAPIModules['configure'] = 'ApiConfigure';
+$wgExtensionFunctions[] = 'efConfigureSetupAPI';
+$wgConfigureAPI = false;
 
 ## Adding the ajax function
 $wgAjaxExportList[] = 'efConfigureAjax';

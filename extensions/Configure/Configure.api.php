@@ -8,7 +8,7 @@ class ApiConfigure extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgConf, $wgUser;
+		global $wgConf, $wgUser, $wgConfigureWikis;
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
 		
@@ -38,9 +38,8 @@ class ApiConfigure extends ApiBase {
 
 		// Wiki list
 		if( in_array( 'wikilist', $params['prop'] ) ) {
-			if( !$wgUser->isAllowed( 'viewconfig-interwiki' ) && !$wgUser->isAllowed( 'configure-interwiki' ) && !$wgUser->isAllowed( 'extensions-interwiki' ) )
-				$this->dieUsage( 'viewconfig-interwiki, configure-interwiki or extensions-interwiki right required', 'noright' );
-			global $wgConfigureWikis;
+			if( !$wgUser->isAllowed( 'viewconfig-interwiki' ) )
+				$this->dieUsage( 'viewconfig-interwiki right required', 'noright' );
 			if( $wgConfigureWikis === false )
 				$result->addValue( 'configure', 'wikis', array( 'denied' => '' ) );
 			if( $wgConfigureWikis === true )
@@ -120,12 +119,11 @@ class ApiConfigure extends ApiBase {
 	}
 
 	protected function userCanRead( $setting, $conf ){
-		global $wgUser;
+		global $wgUser, $wgConfigureViewRestrictions;
 		if( in_array( $setting, $conf->getNotEditableSettings() )
 			|| ( in_array( $setting, $conf->getViewRestricted() )
 			&& !$wgUser->isAllowed( 'viewconfig-all' ) ) )
 			return false;
-		global $wgConfigureViewRestrictions;
 		if( !isset( $wgConfigureViewRestrictions[$setting] ) )
 			return true;
 		foreach( $wgConfigureViewRestrictions[$setting] as $right ){

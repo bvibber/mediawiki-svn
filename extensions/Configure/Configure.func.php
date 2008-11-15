@@ -72,6 +72,13 @@ function efConfigureSetup( $wiki = 'default' ){
 	$wgConf->extract();
 }
 
+function efConfigureSetupAPI() {
+	global $wgConfigureAPI, $wgAPIModules;
+	if( $wgConfigureAPI === true ) {
+		$wgAPIModules['configure'] = 'ApiConfigure';
+	}
+}
+
 /**
  * Add custom rights defined in $wgRestrictionLevels
  */
