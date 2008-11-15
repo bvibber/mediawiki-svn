@@ -1059,7 +1059,7 @@ $notEditableSettings = array(
  * Array of settings depending of the Core version
  */
 $settingsVersion = array(
-# 1.14	
+# 1.14
 	'wgExemptFromUserRobotsControl' => array( array( '1.14alpha', '>=' ) ),
 	'wgHandheldStyle' => array( array( '1.14alpha', '>=' ) ),
 	'wgHandheldForIPhone' => array( array( '1.14alpha', '>=' ) ),

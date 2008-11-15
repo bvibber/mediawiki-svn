@@ -303,7 +303,7 @@ $extensions = array(
 			'wgNoticeLocalPath' => false,
 			'wgNoticeCentralDirectory' => false,
 			'wgNoticeLocalDirectory' => false,
-		),	
+		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:CentralNotice',
 	),
 	array(
@@ -551,7 +551,7 @@ $extensions = array(
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:CSS',
 	),
-	
+
 	// D
 	array(
 		'name' => 'DeleteBatch',
@@ -829,7 +829,7 @@ $extensions = array(
 		'file' => 'SpecialNuke.php',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Nuke',
 	),
-	
+
 	// O
 	array(
 		'name' => 'OggHandler',
@@ -877,7 +877,7 @@ $extensions = array(
 		'name' => 'Renameuser',
 		'file' => 'SpecialRenameuser.php',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Renameuser',
-	),	
+	),
 
 	// S
 	array(
@@ -912,7 +912,7 @@ $extensions = array(
 		'name' => 'SyntaxHighlight_GeSHi',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:SyntaxHighlight_GeSHi',
 	),
-	
+
 	// T
 	array(
 		'name' => 'Timeline',

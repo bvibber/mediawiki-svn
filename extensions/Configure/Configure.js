@@ -99,7 +99,7 @@ function setupConfigure(){
 	toggleToc.style.align = "right";
 	toggleToc.onmousedown = toggleToc.onclick = configTocToggle;
 	toggleToc.appendChild( getArrowImg( 'l' ) );
-	
+
 	var par = configform.parentNode;
 	var table = document.createElement( 'table' );
 	var tr = document.createElement( 'tr' );
@@ -121,7 +121,7 @@ function setupConfigure(){
 	var tables = getElementsByClassName( configform, 'table', 'assoc' );
 	var reg = new RegExp( '(^| )disabled($| )' );
 	for( var t = 0; t < tables.length ; t++ ){
-		table = tables[t];	
+		table = tables[t];
   		if( reg.test( table.className ) )
   			continue;
 		// Button "remove this row"
@@ -143,7 +143,7 @@ function setupConfigure(){
 				tr.appendChild( td );
 			}
 		}
-		// Button "add a new row" 
+		// Button "add a new row"
 		var button = document.createElement( 'input' );
 		button.type = 'button';
 		button.className = 'button-add';
@@ -151,20 +151,20 @@ function setupConfigure(){
 		button.onclick = createAssocCallback( table );
 		table.parentNode.appendChild( button );
 	}
-	
+
 	var thumbs = getElementsByClassName( configform, 'input', 'image-selector' );
 	for( var t = 0; t < thumbs.length; t++ ){
 		var textbox = thumbs[t];
-		
+
 		var button = document.createElement( 'input' );
 		button.type = 'button';
 		button.className = 'mw-button-get-image-url';
 		button.value = wgConfigureGetImageUrl;
 		button.onclick = createImageUrlCallback( textbox );
-		
+
 		textbox.parentNode.appendChild( button );
 	}
-	
+
 	// $wgGroupPermissions stuff, only if ajax is enabled
 	// --------------------------------------------------
 
@@ -191,7 +191,7 @@ function setupConfigure(){
 					tr.appendChild( td );
 				}
 			}
-			// Button "add a new row" 
+			// Button "add a new row"
 			var button = document.createElement( 'input' );
 			button.type = 'button';
 			button.className = 'button-add';
@@ -199,7 +199,7 @@ function setupConfigure(){
 			button.onclick = createGroupBoolCallback( table );
 			table.parentNode.appendChild( button );
 		}
-	
+
 		document.getElementById( 'configure-form' ).onsubmit = function(){
 			var tables = getElementsByClassName( configform, 'table', 'group-bool' );
 			for( var t = 0; t < tables.length ; t++ ){
@@ -290,7 +290,7 @@ function addAssocRow( table ){
  * Remove a new row in a associative
  *
  * @param Dom object representing a table
- * @param integer 
+ * @param integer
  */
 function removeAssocRow( table, r ){
 	var trs = table.getElementsByTagName( 'tr' );
@@ -393,7 +393,7 @@ function addGroupBoolRow( table ){
  * Remove a new row in a "group-bool" table
  *
  * @param Dom object representing a table
- * @param integer 
+ * @param integer
  */
 function removeGroupBoolRow( table, r ){
 	var trs = table.getElementsByTagName( 'tr' );

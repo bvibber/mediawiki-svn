@@ -16,7 +16,7 @@ class SpecialExtensions extends ConfigurationPage {
 	}
 
 	protected function getSettingMask(){
-		return CONF_SETTINGS_EXT;	
+		return CONF_SETTINGS_EXT;
 	}
 
 	/**
@@ -28,7 +28,7 @@ class SpecialExtensions extends ConfigurationPage {
 		$settings = $this->importFromRequest();
 		$new = $settings + $current;
 		$new = $this->removeDefaults( $new );
-		$new['__includes'] = $this->getRequiredFiles(); 
+		$new['__includes'] = $this->getRequiredFiles();
 		$ok = $wgConf->saveNewSettings( $new, $this->mWiki );
 		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
 		$class = $ok ? 'successbox' : 'errorbox';
@@ -74,7 +74,7 @@ class SpecialExtensions extends ConfigurationPage {
 	 * Same as before
 	 */
 	public function getSettingValue( $setting ){
-		return parent::getSettingValue( $setting );	
+		return parent::getSettingValue( $setting );
 	}
 
 	/**
@@ -97,7 +97,7 @@ class SpecialExtensions extends ConfigurationPage {
 					require_once( $ext->getFile() );
 					if( isset( $$setting ) )
 						$this->conf[$setting] = $$setting;
-				}	
+				}
 			}
 			$ext->setPageObj( $this );
 			$ret .= $ext->getHtml();

@@ -64,7 +64,7 @@ class WebConfiguration extends SiteConfiguration {
 						$this->settings["+$name"][$site] = $val;
 					}
 					else {
-						$this->settings[$name][$site] = $val;	
+						$this->settings[$name][$site] = $val;
 					}
 				}
 			}
@@ -103,7 +103,7 @@ class WebConfiguration extends SiteConfiguration {
 		$includes = $this->getIncludedFiles();
 		if( !count( $includes ) )
 			return;
-		
+
 		// Since the files should be included from the global scope, we'll need
 		// to import that variabled in this function
 		extract( $GLOBALS, EXTR_REFS );
@@ -190,7 +190,7 @@ class WebConfiguration extends SiteConfiguration {
 		$savedSettings = $this->settings;
 		$this->settings = $this->mOldSettings;
 		$globalDefaults = $this->getDefaults();
-		
+
 		$savedGlobals = array();
 		foreach( $this->settings as $name => $val ){
 			if( substr( $name, 0, 1 ) == '+' ){
@@ -281,9 +281,9 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return ConfigurationHandler
 	 */
 	public function getHandler(){
-		return $this->mHandler;	
+		return $this->mHandler;
 	}
-	
+
 	/**
 	 * Merge array settings
 	 *

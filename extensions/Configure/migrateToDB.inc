@@ -22,13 +22,13 @@ class FilesToDB {
 	public function run(){
 		if( isset( $this->mOptions['help'] ) ){
 			$this->doHelp();
-			return;	
+			return;
 		}
 		if( !$this->doChecks() )
 			return;
 		$this->saveLatest();
 		foreach( $this->getVersions() as $version ){
-			$this->migrateVersion( $version );	
+			$this->migrateVersion( $version );
 		}
 		$this->restoreLatest();
 		echo "done\n";
@@ -52,7 +52,7 @@ class FilesToDB {
 			echo "{$row->cv_wiki}: {$row->cv_id}\n";
 		}
 	}
-	
+
 	protected function restoreLatest(){
 		$dbw = $this->mDBHandler->getMasterDB();
 		foreach( $this->mLatest as $wiki => $id ){
@@ -64,7 +64,7 @@ class FilesToDB {
 	protected function getVersions(){
 		return array_reverse( $this->mFilesHandler->listArchiveVersions() );
 	}
-	
+
 	protected function migrateVersion( $version ){
 		$now = $this->mFilesHandler->getOldSettings( $version );
 		echo "doing $version...\n";

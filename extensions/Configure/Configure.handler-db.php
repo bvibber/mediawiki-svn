@@ -24,7 +24,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * @return Database object
 	 */
 	public function getSlaveDB() {
-		return wfGetDB( DB_SLAVE, 'config', $this->mDb );	
+		return wfGetDB( DB_SLAVE, 'config', $this->mDb );
 	}
 
 	/**
@@ -32,7 +32,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * @return Database object
 	 */
 	public function getMasterDB() {
-		return wfGetDB( DB_MASTER, 'config', $this->mDb );	
+		return wfGetDB( DB_MASTER, 'config', $this->mDb );
 	}
 
 	/**
@@ -50,40 +50,40 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	protected function getCache() {
 		return wfGetMainCache();
 	}
-	
+
 	/**
 	 * Checks if it's cached on the filesystem.
 	 */
 	protected function getFSCached() {
 		global $wgConfigureFileSystemCache, $wgConfigureFileSystemCacheExpiry;
-		
+
 		$expiry = $wgConfigureFileSystemCacheExpiry;
-		
-		if (!($path = $wgConfigureFileSystemCache))
+
+		if ( !( $path = $wgConfigureFileSystemCache ) )
 			return null;
-			
-		if (!file_exists($path))
+
+		if ( !file_exists( $path ) )
 			return null;
-			
-		$mtime = filemtime($path);
-		
-		if ( time() > ($mtime + $expiry) ) ## Regenerate every five minutes or so
+
+		$mtime = filemtime( $path );
+
+		if ( time() > ( $mtime + $expiry ) ) ## Regenerate every five minutes or so
 			return null;
-			
+
 		## Suppress errors, if there's an error, it'll just be null and we'll do it again.
 		$data = @unserialize( file_get_contents( $path ) );
-		
+
 		return $data;
 	}
-	
+
 	/**
 	 * Cache the data to the filesystem.
 	 * @returns int bytes
 	 */
 	protected function cacheToFS( $data ) {
 		global $wgConfigureFileSystemCache;
-		
-		return @file_put_contents( $wgConfigureFileSystemCache, serialize($data) );
+
+		return @file_put_contents( $wgConfigureFileSystemCache, serialize( $data ) );
 	}
 
 	/**
@@ -92,22 +92,22 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 */
 	public function getCurrent( $useCache = true ){
 		static $ipCached = null;
-		
+
 		if ($ipCached && $useCache) ## In-process caching...
 			return $ipCached;
-	
+
 		## Check filesystem cache
-		if (($cached = $this->getFSCached()) && $useCache) {
-			$this->cacheToFS($cached);
+		if ( ( $cached = $this->getFSCached()) && $useCache ) {
+			$this->cacheToFS( $cached );
 			return $ipCached = $cached;
 		}
-	
+
 		$cacheKey = $this->cacheKey( 'configure', 'current' );
 		$cached = $this->getCache()->get( $cacheKey );
 		if( is_array( $cached ) && $useCache ){
 			return $ipCached = $cached;
 		}
-		
+
 		try {
 			$dbr = $this->getSlaveDB();
 			$ret = $dbr->select(
@@ -124,7 +124,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			}
 			$this->getCache()->set( $cacheKey, $arr, 3600 );
 			$this->cacheToFS($arr);
-			
+
 			return $ipCached = $arr;
 		} catch( MWException $e ) {
 			return array();
@@ -181,7 +181,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * Save a new configuration
 	 * @param $settings array of settings
 	 * @param $wiki String: wiki name or true for all
-	 * @param $ts 
+	 * @param $ts
 	 * @return bool true on success
 	 */
 	public function saveNewSettings( $settings, $wiki, $ts = false ){
@@ -215,8 +215,8 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			__METHOD__
 		);
 		$newId = $dbw->insertId();
-		$dbw->update( 'config_version', 
-			array( 'cv_is_latest' => 0 ), 
+		$dbw->update( 'config_version',
+			array( 'cv_is_latest' => 0 ),
 			array( 'cv_wiki' => $wiki, 'cv_timestamp <> '.$dbw->addQuotes( $ts ) ),
 			__METHOD__ );
 		$insert = array();
@@ -265,7 +265,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			return array( 'configure-db-table-error' );
 		return array();
 	}
-	
+
 	/**
 	 * Get settings that are not editable with the database handler
 	 */
@@ -302,6 +302,6 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			'wgMemCachedDebug',
 			'wgMemCachedPersistent',
 			'wgMemCachedServers',
-		);	
+		);
 	}
 }

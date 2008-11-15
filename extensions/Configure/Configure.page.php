@@ -54,7 +54,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				return;
 			}
 		}
-		
+
 		$wikiParam = ( $this->mCanEdit && $wgRequest->wasPosted() ) ? 'wpWiki' : 'wiki';
 		if( $wiki = $wgRequest->getVal( $wikiParam, false ) ){
 			if( $wgConf->getWiki() != $wiki ){
@@ -65,7 +65,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				if( is_array( $wgConfigureWikis ) && !in_array( $wiki, $wgConfigureWikis ) ){
 					$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>',
 						array( 'configure-transwiki-not-in-range', $wiki, implode( ', ', $wgConfigureWikis ) ) );
-					return;	
+					return;
 				}
 			}
 			$this->mWiki = $wiki;
@@ -95,7 +95,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		} else {
 			$type = 'initial';
 		}
-		
+
 		switch( $type ){
 		case 'submit':
 			$this->doSubmit();
@@ -211,7 +211,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 		return $notEditable;
 	}
-	
+
 	/**
 	 * Get a list of editable settings
 	 *
@@ -303,7 +303,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						if( is_null( $current ) )
 							$current = $wgConf->getCurrent( $this->mWiki );
 						$this->conf[$name] += $current[$name];
-					}	
+					}
 				}
 				$wgOut->addWikiMsg( 'configure-edit-old' );
 			} else {
@@ -602,7 +602,7 @@ abstract class ConfigurationPage extends SpecialPage {
 								unset( $settings[$name][$group] );
 						}
 						break;
-					}	
+					}
 				}
 			}
 		}
@@ -645,7 +645,7 @@ abstract class ConfigurationPage extends SpecialPage {
 
 			$this->buildAllSettings() . "\n" .
 
-			( $this->mCanEdit ? 
+			( $this->mCanEdit ?
 				Xml::openElement( 'div', array( 'id' => 'prefsubmit' ) ) . "\n" .
 				Xml::openElement( 'div', array() ) . "\n" .
 				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpSave', 'class' => 'btnSavePrefs', 'value' => wfMsgHtml( 'configure-btn-save' ) ) ) . "\n" .
@@ -698,7 +698,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/Configure/Configure.js?{$wgConfigureStyleVersion}\"></script>",
 		);
 		$wgOut->addScript( implode( "\n\t\t", $script ) . "\n" );
-	} 
+	}
 
 	/**
 	 * Like before but only for the header
@@ -937,7 +937,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						'rows' => 5, ) ) .
 					( isset( $default[$ns] ) ? implode( "\n", (array)$default[$ns] ) : '' ) .
 					Xml::closeElement( 'textarea' ) . "<br/>\n";
-				else 
+				else
 					$text .= "<pre>" . ( isset( $default[$ns] ) ? htmlspecialchars( implode( "\n",(array)$default[$ns] ) ) : '' ) . "\n</pre>";
 				$text .= '</td></tr>';
 			}
@@ -1018,12 +1018,12 @@ abstract class ConfigurationPage extends SpecialPage {
 		if( $this->isSettingAvailable( $conf ) )
 			$td2 = Xml::openElement( 'td', $attribs ) . $this->buildInput( $conf, $params ) . '</td>';
 		else
-			$td2 = Xml::openElement( 'td', $attribs ) . 
+			$td2 = Xml::openElement( 'td', $attribs ) .
 				wfMsgExt( 'configure-setting-not-available', array( 'parseinline' ) ) . '</td>';
 
 		return '<tr>' . $td1 . $td2 . "</tr>\n";
 	}
-	
+
 	/**
 	 * Really build the content of the form
 	 *
@@ -1033,7 +1033,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function buildSettings( $settings, $param = array() ){
 		wfLoadExtensionMessages( 'ConfigureSettings' );
-		
+
 		$ret = '';
 		$perms = array();
 		$notEditableSet = $this->getNotEditableSettings();
@@ -1046,7 +1046,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					$res = $param['restrict'][$title];
 				elseif( isset( $param['restrict']['_default'] ) )
 					$res = $param['restrict']['_default'];
-				else 
+				else
 					$res = true;
 			} else {
 				$res = (bool)$param['restrict'];
@@ -1061,7 +1061,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					$edit = $this->userCanEdit( $setting );
 					if( $edit )
 						$res = false;
-					$perms[$setting] = array( 'read' => $read, 'edit' => $edit );	
+					$perms[$setting] = array( 'read' => $read, 'edit' => $edit );
 				}
 				if( !count( $groups[$name] ) )
 					unset( $groups[$name] );
@@ -1079,7 +1079,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						$showlink = $param['showlink'][$title];
 					elseif( isset( $param['showlink']['_default'] ) )
 						$showlink = $param['showlink']['_default'];
-					else 
+					else
 						$showlink = true;
 				} else {
 					$showlink = (bool)$param['showlink'];

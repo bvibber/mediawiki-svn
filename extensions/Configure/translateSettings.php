@@ -44,15 +44,15 @@ foreach( $settingNames as $name ) {
 
 	print "Please describe the following setting: \$$name\n";
 	print trim($defaultNames[$name])."\n";
-	
+
 	$input = readline( '> ' );
-	
+
 	if (trim($input) == '~')
 		break;
-		
+
 	if (trim($input) == '')
 		$input = $defaultNames[$name];
-	
+
 	$translated[$name] = trim($input);
 }
 

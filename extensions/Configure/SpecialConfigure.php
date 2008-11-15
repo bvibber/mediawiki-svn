@@ -24,7 +24,7 @@ class SpecialConfigure extends ConfigurationPage {
 		$settings += $current;
 		$settings = $this->removeDefaults( $settings );
 		if( $wgConfigureUpdateCacheEpoch )
-			$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() ); 
+			$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() );
 		$ok = $wgConf->saveNewSettings( $settings, $this->mWiki );
 		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
 		$class = $ok ? 'successbox' : 'errorbox';
@@ -33,7 +33,7 @@ class SpecialConfigure extends ConfigurationPage {
 	}
 
 	protected function getSettingMask(){
-		return CONF_SETTINGS_CORE;	
+		return CONF_SETTINGS_CORE;
 	}
 
 	/**

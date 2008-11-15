@@ -20,7 +20,7 @@ class SpecialViewConfig extends ConfigurationPage {
 	}
 
 	protected function getSettingMask(){
-		return CONF_SETTINGS_BOTH;	
+		return CONF_SETTINGS_BOTH;
 	}
 
 	protected function getVersion(){
@@ -96,9 +96,9 @@ class SpecialViewConfig extends ConfigurationPage {
 				$wgOut->addHTML(
 					Xml::openElement( 'div', array( 'id' => 'configure-form' ) ) . "\n" .
 					Xml::openElement( 'div', array( 'id' => 'configure' ) ) . "\n" .
-	
+
 					$this->buildAllSettings() . "\n" .
-	
+
 					Xml::closeElement( 'div' ) . "\n" .
 					Xml::closeElement( 'div' ) . "\n"
 				);
@@ -111,7 +111,7 @@ class SpecialViewConfig extends ConfigurationPage {
 
 	/**
 	 * Build links to old version of the configuration
-	 * 
+	 *
 	 */
 	protected function buildOldVersionSelect(){
 		global $wgConf, $wgLang, $wgUser, $wgScript;
@@ -162,7 +162,7 @@ class SpecialViewConfig extends ConfigurationPage {
 		global $wgLang;
 
 		$ts = $arr['timestamp'];
-		$wikis = $arr['wikis']; 
+		$wikis = $arr['wikis'];
 		$c = $arr['count'];
 		$hasSelf = in_array( $this->mWiki, $wikis );
 
@@ -221,13 +221,13 @@ class SpecialViewConfig extends ConfigurationPage {
 			$diffCheck = $c == 2 ? array( 'checked' => 'checked' ) : array();
 			$versionCheck = $c == 1 ? array( 'checked' => 'checked' ) : array();
 			$buttons =
-				Xml::element( 'input', array_merge( 
+				Xml::element( 'input', array_merge(
 					array( 'type' => 'radio', 'name' => 'diff', 'value' => $ts ),
 					$diffCheck ) ) .
 				Xml::element( 'input', array_merge(
 					array( 'type' => 'radio', 'name' => 'version', 'value' => $ts ),
 					$versionCheck ) );
-			
+
 		} else {
 			$buttons = '';
 		}

@@ -18,7 +18,7 @@ class ConfigurationPagerFiles implements Pager {
 		if( empty( $versions ) ){
 			return wfMsgExt( 'configure-no-old', array( 'parse' ) );
 		}
-		
+
 		$text = "<ul>\n";
 		$count = 0;
 		foreach( $versions as $version ){
@@ -36,7 +36,7 @@ class ConfigurationPagerFiles implements Pager {
 	}
 
 	function getNumRows() {
-		return count( $this->mHandler->listArchiveVersions() );	
+		return count( $this->mHandler->listArchiveVersions() );
 	}
 
 	function getNavigationBar() {

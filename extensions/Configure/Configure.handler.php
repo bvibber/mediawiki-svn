@@ -61,7 +61,7 @@ interface ConfigureHandler {
 	 * @return array
 	 */
 	public function doChecks();
-	
+
 	/**
 	 * Get settings that are not editable with this handler
 	 * @return array

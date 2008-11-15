@@ -43,7 +43,7 @@ class WebExtension {
 	 * @return string
 	 */
 	public function getName(){
-		return $this->mName;	
+		return $this->mName;
 	}
 
 	/**
@@ -108,7 +108,7 @@ class WebExtension {
 	public function hasSchemaChange(){
 		return $this->mDbChange;
 	}
-	
+
 	/**
 	 * Get a url for the description of this extension (or null)
 	 *
@@ -168,7 +168,7 @@ class WebExtension {
 		$ret .= "</fieldset>\n";
 		return $ret;
 	}
-	
+
 	/**
 	 * Return the name of the check that's used to select whether the extension
 	 * should be activated
@@ -176,7 +176,7 @@ class WebExtension {
 	public function getCheckName(){
 		return 'wpUse'.$this->mName;
 	}
-	
+
 	/**
 	 * Is this extension activated?
 	 *
@@ -184,9 +184,9 @@ class WebExtension {
 	 */
 	public function isActivated(){
 		global $wgConf;
-		return in_array( $this->getFile(), $wgConf->getIncludedFiles() );	
+		return in_array( $this->getFile(), $wgConf->getIncludedFiles() );
 	}
-	
+
 	/**
 	 * Is this extension installed so that it can be used?
 	 *

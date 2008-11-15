@@ -11,9 +11,9 @@ class ApiConfigure extends ApiBase {
 		global $wgConf, $wgUser, $wgConfigureWikis;
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
-		
+
 		if( !$wgConf instanceof WebConfiguration ){
-			$this->dieUsage( 'You need to call efConfigureSetup() to use this module', 'noconf' );	
+			$this->dieUsage( 'You need to call efConfigureSetup() to use this module', 'noconf' );
 		}
 
 		// Version list
@@ -95,7 +95,7 @@ class ApiConfigure extends ApiBase {
 			}
 			$result->addValue( 'configure', 'settings', $ret );
 		}
-		
+
 		// Extensions
 		if( in_array( 'extensions', $params['prop'] ) ) {
 			if( !$wgUser->isAllowed( 'extensions' ) )
@@ -148,6 +148,7 @@ class ApiConfigure extends ApiBase {
 				break;
 			case 'text':
 			case 'lang':
+			case 'image-url':
 				$settingVal = (string)$settingVal;
 			case 'int':
 				$settingRet['type'] = $type;

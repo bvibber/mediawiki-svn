@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.9.7',
+	'version' => '0.10.0',
 );
 
 ## Configuration part
@@ -39,11 +39,14 @@ $wgConfigureFilesPath = "$IP/serialized";
 $wgConfigureDatabase = 'config';
 
 /**
- * Path for file-system cache
+ * Path for file-system cache, only works when $wgConfigureHandler is 'db'.
  */
 $wgConfigureFileSystemCache = false;
 
-/** Expiry */
+/**
+ * Expiry for the file-system cache, note that it is not purged when saving a
+ * new version of the configuration, so let this to a low value.
+ */
 $wgConfigureFileSystemCacheExpiry = 180;
 
 /**
@@ -98,9 +101,14 @@ $wgConfigureEditRestrictions = array();
 $wgConfigureNotEditableSettings = array();
 
 /**
+ * Whether to use the API module
+ */
+$wgConfigureAPI = false;
+
+/**
  * Whether to update $wgCacheEpoch when saving changes in Special:Configure
  */
-$wgConfigureUpdateCacheEpoch = false; 
+$wgConfigureUpdateCacheEpoch = false;
 
 /**
  * Styles versions, you shouldn't change it
@@ -199,7 +207,6 @@ $wgAutoloadClasses['ConfigurationPagerFiles'] = $dir . 'Configure.pager-files.ph
 ## API module
 $wgAutoloadClasses['ApiConfigure'] = $dir . 'Configure.api.php';
 $wgExtensionFunctions[] = 'efConfigureSetupAPI';
-$wgConfigureAPI = false;
 
 ## Adding the ajax function
 $wgAjaxExportList[] = 'efConfigureAjax';

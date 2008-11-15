@@ -23,7 +23,7 @@ class ConfigurationManager {
 			if( !is_callable( $callback ) )
 				// Ingnore silenty
 				continue;
-			call_user_func_array( $callback, array( $arg ) );	
+			call_user_func_array( $callback, array( $arg ) );
 		}
 	}
 
@@ -37,12 +37,12 @@ class ConfigurationManager {
 		$deleter = $this->getDeleter();
 		$deleter->doDelete( $version );
 	}
-	
+
 	protected function DoList(){
 		global $wgConf;
 		echo implode( "\n", $wgConf->listArchiveVersions() ) . "\n";
 	}
-	
+
 	protected function DoRevert( $version ){
 		global $wgConf;
 		$arr = $wgConf->getOldSettings( $version );
@@ -52,7 +52,7 @@ class ConfigurationManager {
 		}
 		$wgConf->saveNewSettings( $arr, null );
 	}
-	
+
 	protected function DoHelp(){
 		echo "Script that helps to do maintenance with configuration files.\n";
 		echo "\n";
@@ -73,16 +73,16 @@ class ConfigurationManager {
  */
 class ConfigurationDeleterFiles {
 	protected $mConf;
-	
+
 	function __construct( WebConfiguration $conf ){
 		$this->mConf = $conf;
 	}
-	
+
 	function doDelete( $version ){
 		$file = $this->mConf->getHandler()->getArchiveFileName( $version );
 		if( !file_exists( $file ) ){
 			fwrite( STDERR, "delete: The version given ($version) does not exist.\n" );
-			return;	
+			return;
 		}
 		unlink( $file );
 	}
@@ -93,19 +93,19 @@ class ConfigurationDeleterFiles {
  */
 class ConfigurationDeleterDb {
 	protected $mConf;
-	
+
 	function __construct( WebConfiguration $conf ){
 		$this->mConf = $conf;
 	}
-	
+
 	function doDelete( $version ){
 		$dbw = $this->mConf->getHandler()->getMasterDB();
 		$rev = $dbw->selectRow( 'config_version', '*', array( 'cv_timestamp' => $version ), __METHOD__ );
 		if( !isset( $rev->cv_id ) ){
 			fwrite( STDERR, "delete: The version given ($version) does not exist.\n" );
-			return;	
+			return;
 		}
-			
+
 		$id = $rev->cv_id;
 		$dbw->begin();
 		$dbw->delete( 'config_version', array( 'cv_id' => $id ), __METHOD__ );

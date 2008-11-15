@@ -72,6 +72,9 @@ function efConfigureSetup( $wiki = 'default' ){
 	$wgConf->extract();
 }
 
+/**
+ * Declare the API module only if $wgConfigureAPI is true
+ */
 function efConfigureSetupAPI() {
 	global $wgConfigureAPI, $wgAPIModules;
 	if( $wgConfigureAPI === true ) {
@@ -86,5 +89,5 @@ function efConfigureGetAllRights( &$rights ){
 	global $wgRestrictionLevels;
 	$newrights = array_diff( $wgRestrictionLevels, array( '', 'sysop' ) ); // Pseudo rights
 	$rights = array_unique( array_merge( $rights, $newrights ) );
-	return true;	
+	return true;
 }

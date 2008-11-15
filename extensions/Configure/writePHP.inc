@@ -7,7 +7,7 @@
  * @author Alexandre Emsenhuber
  */
 class ConfigurationWriter {
-	public $options, $file;	
+	public $options, $file;
 
 	public function __construct( $options ){
 		$this->options = $options;
@@ -111,7 +111,7 @@ HEADER;
 					} else {
 						$this->write( "# Missing \$$name\n" );
 					}
-				}	
+				}
 			}
 		}
 		$this->write( "\n\n## extensions\n" );
@@ -120,7 +120,7 @@ HEADER;
 		foreach( ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllExtensionsObjects() as $ext ){
 			if( $ext->isActivated() ){
 				$this->write( "\n## " . $ext->getName() . "\n" );
-				$path = str_replace( $IP, '$IP', $ext->getFile() ); 
+				$path = str_replace( $IP, '$IP', $ext->getFile() );
 				$paths[] = ( "require( \"$path\" );" );
 				foreach( $ext->getSettings() as $name => $type ){
 					if( isset( $settingsVal[$name] ) )
@@ -156,7 +156,7 @@ HEADER;
 			}
 			if( !isset( $arr[$wiki] ) ){
 				fwrite( STDERR, "'$wiki' could not be found in this version\n" );
-				return;	
+				return;
 			}
 			$settingsVal = $arr[$wiki];
 		} else {
@@ -172,7 +172,7 @@ HEADER;
 						$this->write( "\$$name = " . $this->writeSetting( $name, $type, $settingsVal[$name] ) . ";\n" );
 					else
 						$this->write( "# Missing \$$name\n" );
-				}	
+				}
 			}
 		}
 		$this->write( "\n\n## extensions\n" );
@@ -180,7 +180,7 @@ HEADER;
 		foreach( ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllExtensionsObjects() as $ext ){
 			if( $ext->isActivated() ){
 				$this->write( "\n## " . $ext->getName() . "\n" );
-				$path = str_replace( $IP, '$IP', $ext->getFile() ); 
+				$path = str_replace( $IP, '$IP', $ext->getFile() );
 				$this->write( "require( \"$path\" );\n" );
 				foreach( $ext->getSettings() as $name => $type ){
 					if( isset( $settingsVal[$name] ) )
@@ -191,7 +191,7 @@ HEADER;
 			}
 		}
 	}
-	
+
 	/**
 	 * Get a 3D array of settings
 	 */
@@ -210,7 +210,7 @@ HEADER;
 	 * Callback for simple arrays
 	 */
 	public static function map_simple( $val ){
-		return var_export( $val, true );	
+		return var_export( $val, true );
 	}
 
 	/**
@@ -219,7 +219,7 @@ HEADER;
 	public static function map_simple_dual( $val ){
 		return 'array( ' . var_export( $val[0], true ) . ', ' .	var_export( $val[1], true ) . ' )';
 	}
-	
+
 	protected static function getNsConst( $ns ){
 		static $map = array(
 			-2 => 'NS_MEDIA',
@@ -246,7 +246,7 @@ HEADER;
 		else
 			return $ns;
 	}
-	
+
 	public static function map_assoc_ns( &$val, $index ){
 		$val = self::getNsConst( $index ) . ' => ' . var_export( $val, true );
 	}
@@ -285,37 +285,37 @@ HEADER;
 		if( $arrType == 'simple' ){
 			$ret = "array(\n  " . implode( ",\n  ", array_map( array( __CLASS__, 'map_simple' ), (array)$val ) ) . "\n)";
 			return $ret;
-				
+
 		}
-		
+
 		if( $arrType == 'simple-dual' ){
 			$ret = "array(\n  " . implode( ",\n  ", array_map( array( __CLASS__, 'map_simple_dual' ), $val ) ) . "\n)";
 			return $ret;
-				
+
 		}
 
 		if( in_array( $arrType, array( 'ns-bool', 'ns-text' ) ) ){
 			array_walk( $val, array( __CLASS__, 'map_assoc_ns' ) );
 			$ret = "array(\n  " . implode( ",\n  ",  $val ) . "\n)";
-			return $ret;	
+			return $ret;
 		}
 
 		if( $arrType == 'ns-simple' ){
 			$ret = "array(\n  " . implode( ",\n  ", array_map( array( __CLASS__, 'getNsConst' ), $val ) ) . "\n)";
 			return $ret;
-				
+
 		}
 
 		if( $arrType == 'ns-array' ){
 			array_walk( $val, array( __CLASS__, 'map_array_ns' ) );
 			$ret = "array(\n  " . implode( ",\n  ",  $val ) . "\n)";
-			return $ret;	
+			return $ret;
 		}
 
 		# Should no happend
 		return var_export( $val, true );
 	}
-	
+
 	protected function help(){
 		echo "Script that writes the configuration.\n";
 		echo "\n";

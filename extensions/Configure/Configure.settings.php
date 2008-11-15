@@ -7,7 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 class ConfigurationSettings {
 	protected $types, $initialized = false;
-	
+
 	// Core settings
 	protected $settings, $arrayDefs, $emptyValues, $editRestricted,
 		$viewRestricted, $notEditableSettings, $settingsVersion;
@@ -77,7 +77,7 @@ class ConfigurationSettings {
 	 * Callback to sort extensions
 	 */
 	public static function compExt( $e1, $e2 ){
-		return strcmp( $e1['name'], $e2['name'] );	
+		return strcmp( $e1['name'], $e2['name'] );
 	}
 
 	/**

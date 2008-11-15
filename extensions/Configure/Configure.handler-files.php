@@ -11,9 +11,6 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 
 	/**
 	 * Construct a new object.
-	 *
-	 * @param string $path path to the directory that contains the configuration
-	 *                     files
 	 */
 	public function __construct(){
 		global $wgConfigureFilesPath;
@@ -129,12 +126,12 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		if( !is_dir( $this->getDir() ) ){
 			return array( 'configure-no-directory', $this->getDir() );
 		}
-		
+
 		// And that it's writable by PHP
 		if( !is_writable( $this->getDir() ) ){
 			return array( 'configure-directory-not-writable', $this->getDir() );
 		}
-		
+
 		return array();
 	}
 
@@ -142,7 +139,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * All settings are editable!
 	 */
 	public function getNotEditableSettings(){
-		return array();	
+		return array();
 	}
 
 	/**

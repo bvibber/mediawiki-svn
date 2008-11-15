@@ -45,7 +45,7 @@ function printHelp(){
  * @param $sort Boolean : wheter to sort the array (Default: true)
  */
 function printArray( $msg, $arr, $sort = true ) {
-	if($sort) asort($arr); 
+	if($sort) asort($arr);
 	foreach($arr as $v) echo "$msg: $v\n";
 }
 
@@ -75,7 +75,7 @@ if( isset( $options['ext'] ) ){
 		preg_match_all( '/\$(wg[A-Za-z0-9]+)\s*\=/', $file, $m );
 		$definedSettings = array_unique( $m[1] );
 		$allSettings = array_keys( $ext->getSettings() );
-		
+
 		$remain = array_diff( $definedSettings, $allSettings );
 		$obsolete = array_diff( $allSettings, $definedSettings );
 		$missing = array();
@@ -106,13 +106,13 @@ if( isset( $options['ext'] ) ){
 	} else {
 		$allSettings = array_keys( $coreSettings->getAllSettings() );
 	}
-	
+
 	// Now we'll need to open DefaultSettings.php
 	$m = array();
 	$defaultSettings = file_get_contents( "$IP/includes/DefaultSettings.php" );
 	preg_match_all( '/\$(wg[A-Za-z0-9]+)\s*\=/', $defaultSettings, $m );
 	$definedSettings = array_unique( $m[1] );
-	
+
 	$missing = array_diff( $definedSettings, $allSettings );
 	$remain = array_diff( $allSettings, $definedSettings );
 	$obsolete = array();
@@ -120,11 +120,11 @@ if( isset( $options['ext'] ) ){
 		if( $coreSettings->isSettingAvailable( $setting ) )
 			$obsolete[] = $setting;
 	}
-	
+
 	// let's show the results:
 	printArray('missing', $missing );
 	printArray('obsolete', $obsolete );
-	 
-	if( count( $missing ) == 0 && count( $obsolete ) == 0 ) 
+
+	if( count( $missing ) == 0 && count( $obsolete ) == 0 )
 		echo "Looks good!\n";
 }

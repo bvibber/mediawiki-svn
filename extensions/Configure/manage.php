@@ -18,7 +18,7 @@ if( $IP === false )
 
 require_once( "$IP/maintenance/commandLine.inc" );
 
-require_once( dirname( __FILE__ ) . "/manage.inc" );
+require_once( dirname( __FILE__ ) . '/manage.inc' );
 
 $obj = new ConfigurationManager( $options );
 $obj->run();
