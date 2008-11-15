@@ -15,13 +15,13 @@ class ConfigurationPagerFiles implements Pager {
 
 	function getBody() {
 		$versions = $this->mHandler->listArchiveVersions();
-		if( empty( $versions ) ){
+		if ( empty( $versions ) ) {
 			return wfMsgExt( 'configure-no-old', array( 'parse' ) );
 		}
 
 		$text = "<ul>\n";
 		$count = 0;
-		foreach( $versions as $version ){
+		foreach ( $versions as $version ) {
 			$count++;
 			$wikis = array_keys( $this->mHandler->getOldSettings( $version ) );
 			$info = array(
@@ -48,7 +48,7 @@ class ConfigurationPagerFiles implements Pager {
 	}
 
 	function formatRow( $info ) {
-		if( !is_callable( $this->mCallback ) )
+		if ( !is_callable( $this->mCallback ) )
 			throw new MWException( 'ConfigurationPagerFiles::$mCallback not callable' );
 		return call_user_func( $this->mCallback, $info );
 	}

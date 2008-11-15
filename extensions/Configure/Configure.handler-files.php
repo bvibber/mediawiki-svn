@@ -12,12 +12,12 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	/**
 	 * Construct a new object.
 	 */
-	public function __construct(){
+	public function __construct() {
 		global $wgConfigureFilesPath;
-		if( $wgConfigureFilesPath === null ){
+		if ( $wgConfigureFilesPath === null ) {
 			global $IP;
 			$wgConfigureFilesPath = "$IP/serialized/";
-		} else if( substr( $wgConfigureFilesPath, -1 ) != '/' && substr( $wgConfigureFilesPath, -1 ) != '\\' ) {
+		} else if ( substr( $wgConfigureFilesPath, -1 ) != '/' && substr( $wgConfigureFilesPath, -1 ) != '\\' ) {
 			$wgConfigureFilesPath .= '/';
 		}
 		$this->mDir = $wgConfigureFilesPath;
@@ -27,18 +27,18 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * Load the configuration from the conf-now.ser file in the $this->mDir
 	 * directory
 	 */
-	public function getCurrent( $useCache = true ){
+	public function getCurrent( $useCache = true ) {
 		$file = $this->getFileName();
-		if( !file_exists( $file ) )
+		if ( !file_exists( $file ) )
 			# maybe the first time the user use this extensions, do not override
 			# anything
 			return array();
 		$cont = file_get_contents( $file );
-		if( empty( $cont ) )
+		if ( empty( $cont ) )
 			# Weird, should not happen
 			return array();
 		$arr = unserialize( $cont );
-		if( !is_array( $arr ) )
+		if ( !is_array( $arr ) )
 			# Weird, should not happen too
 			return;
 		return $arr;
@@ -51,18 +51,18 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * @param $ts timestamp
 	 * @return array
 	 */
-	public function getOldSettings( $ts ){
+	public function getOldSettings( $ts ) {
 		$file = $this->getArchiveFileName( $ts );
-		if( !file_exists( $file ) )
+		if ( !file_exists( $file ) )
 			# maybe the time the user use this extensions, do not override
 			# anything
 			return array();
 		$cont = file_get_contents( $file );
-		if( empty( $cont ) )
+		if ( empty( $cont ) )
 			# Weird, should not happen
 			return array();
 		$arr = unserialize( $cont );
-		if( !is_array( $arr ) )
+		if ( !is_array( $arr ) )
 			# Weird, should not happen too
 			return array();
 		return $arr;
@@ -74,7 +74,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * @param $ts timestamp
 	 * @return array
 	 */
-	public function getWikisInVersion( $ts ){
+	public function getWikisInVersion( $ts ) {
 		$settings = $this->getOldSettings( $ts );
 		return array_keys( $settings );
 	}
@@ -84,7 +84,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 *
 	 * @return Pager
 	 */
-	public function getPager(){
+	public function getPager() {
 		return new ConfigurationPagerFiles( $this );
 	}
 
@@ -94,7 +94,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * @param $wiki String: wiki name or true for all
 	 * @return bool true on success
 	 */
-	public function saveNewSettings( $settings, $wiki ){
+	public function saveNewSettings( $settings, $wiki ) {
 		$arch = $this->getArchiveFileName();
 		$cur = $this->getFileName();
 		$cont = serialize( $settings );
@@ -106,12 +106,12 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * List all archived files that are like conf-{$ts}.ser
 	 * @return array of timestamps
 	 */
-	public function listArchiveVersions(){
-		if( !$dir = opendir( $this->mDir ) )
+	public function listArchiveVersions() {
+		if ( !$dir = opendir( $this->mDir ) )
 			return array();
 		$files = array();
-		while( ( $file = readdir( $dir ) ) !== false ) {
-			if( preg_match( '/conf-(\d{14}).ser$/', $file, $m ) )
+		while ( ( $file = readdir( $dir ) ) !== false ) {
+			if ( preg_match( '/conf-(\d{14}).ser$/', $file, $m ) )
 				$files[] = $m[1];
 		}
 		sort( $files, SORT_NUMERIC );
@@ -121,14 +121,14 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	/**
 	 * Do some checks
 	 */
-	public function doChecks(){
+	public function doChecks() {
 		// Check that the directory exists...
-		if( !is_dir( $this->getDir() ) ){
+		if ( !is_dir( $this->getDir() ) ) {
 			return array( 'configure-no-directory', $this->getDir() );
 		}
 
 		// And that it's writable by PHP
-		if( !is_writable( $this->getDir() ) ){
+		if ( !is_writable( $this->getDir() ) ) {
 			return array( 'configure-directory-not-writable', $this->getDir() );
 		}
 
@@ -138,7 +138,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	/**
 	 * All settings are editable!
 	 */
-	public function getNotEditableSettings(){
+	public function getNotEditableSettings() {
 		return array();
 	}
 
@@ -146,7 +146,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * Get the current file name
 	 * @return String full path to the file
 	 */
-	protected function getFileName(){
+	protected function getFileName() {
 		return "{$this->mDir}conf-now.ser";
 	}
 
@@ -156,10 +156,10 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 *            current timestamp
 	 * @return String full path to the file
 	 */
-	public function getArchiveFileName( $ts = null ){
+	public function getArchiveFileName( $ts = null ) {
 		global $IP;
 
-		if( $ts === null )
+		if ( $ts === null )
 			$ts = wfTimestampNow();
 
 		$file = "{$this->mDir}conf-$ts.ser";
@@ -171,7 +171,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 *
 	 * @return String
 	 */
-	public function getDir(){
+	public function getDir() {
 		return $this->mDir;
 	}
 }

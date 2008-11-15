@@ -3460,4 +3460,3 @@ $messages['zh-hant'] = array(
 	'configure-edit-ext' => '擴充套件',
 	'configure-ext-doc' => '檢視線上文件',
 );
-

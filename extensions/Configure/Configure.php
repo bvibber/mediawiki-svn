@@ -10,7 +10,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @author Alexandre Emsenhuber
  */
 
-## Adding credit :)
+# Adding credit :)
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Configure',
 	'author' => 'Alexandre Emsenhuber',
@@ -20,7 +20,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '0.10.0',
 );
 
-## Configuration part
+# Configuration part
 
 /**
  * Configuration handler, either "files" or "db"
@@ -115,7 +115,7 @@ $wgConfigureUpdateCacheEpoch = false;
  */
 $wgConfigureStyleVersion = '7';
 
-## Adding new rights...
+# Adding new rights...
 $wgAvailableRights[] = 'configure';
 $wgAvailableRights[] = 'configure-all';
 $wgAvailableRights[] = 'configure-interwiki';
@@ -126,55 +126,55 @@ $wgAvailableRights[] = 'extensions';
 $wgAvailableRights[] = 'extensions-all';
 $wgAvailableRights[] = 'extensions-interwiki';
 
-## Rights for Special:Configure
+# Rights for Special:Configure
 $wgGroupPermissions['bureaucrat']['configure'] = true;
-#$wgGroupPermissions['bureaucrat']['configure-interwiki'] = true;
-#$wgGroupPermissions['developer']['configure-all'] = true;
+# $wgGroupPermissions['bureaucrat']['configure-interwiki'] = true;
+# $wgGroupPermissions['developer']['configure-all'] = true;
 
-## Rights for Special:Extensions
+# Rights for Special:Extensions
 $wgGroupPermissions['bureaucrat']['extensions'] = true;
-#$wgGroupPermissions['bureaucrat']['extensions-interwiki'] = true;
-#$wgGroupPermissions['developer']['extensions-all'] = true;
+# $wgGroupPermissions['bureaucrat']['extensions-interwiki'] = true;
+# $wgGroupPermissions['developer']['extensions-all'] = true;
 
-## Rights for Special:ViewConfig
+# Rights for Special:ViewConfig
 $wgGroupPermissions['sysop']['viewconfig'] = true;
-#$wgGroupPermissions['sysop']['viewconfig-interwiki'] = true;
-#$wgGroupPermissions['developer']['viewconfig-all'] = true;
+# $wgGroupPermissions['sysop']['viewconfig-interwiki'] = true;
+# $wgGroupPermissions['developer']['viewconfig-all'] = true;
 
 $dir = dirname( __FILE__ ) . '/';
 
-## Define some functions
+# Define some functions
 require_once( $dir . 'Configure.func.php' );
 
-## Adding internationalisation...
+# Adding internationalisation...
 $wgExtensionMessagesFiles['Configure'] = $dir . 'Configure.i18n.php';
 $wgExtensionMessagesFiles['ConfigureSettings'] = $dir . 'Configure.settings.i18n.php';
 
-## And special pages aliases...
+# And special pages aliases...
 $wgExtensionAliasesFiles['Configure'] = $dir . 'Configure.alias.php';
 
-## Add custom rights defined in $wgRestrictionLevels
+# Add custom rights defined in $wgRestrictionLevels
 $wgHooks['UserGetAllRights'][] = 'efConfigureGetAllRights';
 
-## Handlers
+# Handlers
 $wgAutoloadClasses['ConfigureHandler'] = $dir . 'Configure.handler.php';
 $wgAutoloadClasses['ConfigureHandlerFiles'] = $dir . 'Configure.handler-files.php';
 $wgAutoloadClasses['ConfigureHandlerDb'] = $dir . 'Configure.handler-db.php';
 
-## Adding the new special pages...
-## Common code
+# Adding the new special pages...
+# Common code
 $wgAutoloadClasses['ConfigurationPage'] = $dir . 'Configure.page.php';
-## Special:Configure
+# Special:Configure
 $wgAutoloadClasses['SpecialConfigure'] = $dir . 'SpecialConfigure.php';
 $wgSpecialPages['Configure'] = 'SpecialConfigure';
-## Special:ViewConfig
+# Special:ViewConfig
 $wgAutoloadClasses['SpecialViewConfig'] = $dir . 'SpecialViewConfig.php';
 $wgSpecialPages['ViewConfig'] = 'SpecialViewConfig';
-## Special:Extensions
+# Special:Extensions
 $wgAutoloadClasses['SpecialExtensions'] = $dir . 'SpecialExtensions.php';
 $wgSpecialPages['Extensions'] = 'SpecialExtensions';
 
-## Helper for Special:Extension
+# Helper for Special:Extension
 $wgAutoloadClasses['WebExtension'] = $dir . 'Configure.ext.php';
 
 # Core settings
@@ -186,27 +186,27 @@ define( 'CONF_SETTINGS_EXT', 2 );
 # Both
 define( 'CONF_SETTINGS_BOTH', 3 );
 
-## Helper for configuration settings
+# Helper for configuration settings
 $wgAutoloadClasses['ConfigurationSettings'] = $dir . 'Configure.settings.php';
 
-## Groups
+# Groups
 $wgSpecialPageGroups['Configure'] = 'wiki';
 $wgSpecialPageGroups['Extensions'] = 'wiki';
 $wgSpecialPageGroups['ViewConfig'] = 'wiki';
 
-## Diff stuff
+# Diff stuff
 $wgAutoloadClasses['ConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['CorePreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['ExtPreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['HistoryConfigurationDiff'] = $dir . 'Configure.diff.php';
 
-## Pager stuff
+# Pager stuff
 $wgAutoloadClasses['ConfigurationPagerDb'] = $dir . 'Configure.pager-db.php';
 $wgAutoloadClasses['ConfigurationPagerFiles'] = $dir . 'Configure.pager-files.php';
 
-## API module
+# API module
 $wgAutoloadClasses['ApiConfigure'] = $dir . 'Configure.api.php';
 $wgExtensionFunctions[] = 'efConfigureSetupAPI';
 
-## Adding the ajax function
+# Adding the ajax function
 $wgAjaxExportList[] = 'efConfigureAjax';

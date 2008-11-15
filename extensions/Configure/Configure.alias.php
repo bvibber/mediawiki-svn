@@ -226,4 +226,3 @@ $aliases['sv'] = array(
 	'Extensions' => array( 'Programtillägg' ),
 	'ViewConfig' => array( 'Visa konfiguration' ),
 );
-

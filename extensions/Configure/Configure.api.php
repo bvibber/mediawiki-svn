@@ -12,19 +12,19 @@ class ApiConfigure extends ApiBase {
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
 
-		if( !$wgConf instanceof WebConfiguration ){
+		if ( !$wgConf instanceof WebConfiguration ) {
 			$this->dieUsage( 'You need to call efConfigureSetup() to use this module', 'noconf' );
 		}
 
 		// Version list
-		if( in_array( 'versionlist', $params['prop'] ) ) {
-			if( !$wgUser->isAllowed( 'viewconfig' ) )
+		if ( in_array( 'versionlist', $params['prop'] ) ) {
+			if ( !$wgUser->isAllowed( 'viewconfig' ) )
 				$this->dieUsage( 'viewconfig right required', 'noright' );
 			$versions = $wgConf->listArchiveVersions();
-			if( $wgUser->isAllowed( 'viewconfig-interwiki' ) ) {
+			if ( $wgUser->isAllowed( 'viewconfig-interwiki' ) ) {
 				$oldVersions = $versions;
 				$versions = array();
-				foreach( $oldVersions as $version ){
+				foreach ( $oldVersions as $version ) {
 					$settings = $wgConf->getOldSettings( $version );
 					$wikis = array_keys( $settings );
 					$wikis['id'] = $version;
@@ -37,14 +37,14 @@ class ApiConfigure extends ApiBase {
 		}
 
 		// Wiki list
-		if( in_array( 'wikilist', $params['prop'] ) ) {
-			if( !$wgUser->isAllowed( 'viewconfig-interwiki' ) )
+		if ( in_array( 'wikilist', $params['prop'] ) ) {
+			if ( !$wgUser->isAllowed( 'viewconfig-interwiki' ) )
 				$this->dieUsage( 'viewconfig-interwiki right required', 'noright' );
-			if( $wgConfigureWikis === false )
+			if ( $wgConfigureWikis === false )
 				$result->addValue( 'configure', 'wikis', array( 'denied' => '' ) );
-			if( $wgConfigureWikis === true )
+			if ( $wgConfigureWikis === true )
 				$result->addValue( 'configure', 'wikis', array( 'any' => '' ) );
-			if( is_array( $wgConfigureWikis ) ){
+			if ( is_array( $wgConfigureWikis ) ) {
 				$wikis = $wgConfigureWikis;
 				$result->setIndexedTagName( $wikis, 'wiki' );
 				$result->addValue( 'configure', 'wikis', $wikis );
@@ -52,28 +52,28 @@ class ApiConfigure extends ApiBase {
 		}
 
 		// Settings
-		if( in_array( 'settings', $params['prop'] ) ) {
-			if( !$wgUser->isAllowed( 'viewconfig' ) )
+		if ( in_array( 'settings', $params['prop'] ) ) {
+			if ( !$wgUser->isAllowed( 'viewconfig' ) )
 				$this->dieUsage( 'viewconfig right required', 'noright' );
 			$version = $params['version'];
 			$wiki = $params['wiki'] ? $params['wiki'] : $wgConf->getWiki();
 			$settingsValues = $wgConf->getOldSettings( $version );
-			if( !is_array( $settingsValues ) )
+			if ( !is_array( $settingsValues ) )
 				$this->dieUsage( 'version not found', 'noversion' );
-			if( !isset( $settingsValues[$wiki] ) || !is_array( $settingsValues[$wiki] ) )
+			if ( !isset( $settingsValues[$wiki] ) || !is_array( $settingsValues[$wiki] ) )
 				$this->dieUsage( 'wiki not found in version', 'nowiki' );
 			$settingsValues = $settingsValues[$wiki];
 			$conf = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH );
 			$notEditable = $conf->getNotEditableSettings();
 			$ret = array();
-			if( $params['group'] ){
+			if ( $params['group'] ) {
 				$sections = $conf->getSettings();
-				foreach( $sections as $sectionName => $section ){
+				foreach ( $sections as $sectionName => $section ) {
 					$groupRet = array( 'name' => $sectionName );
-					foreach( $section as $groupName => $group ){
+					foreach ( $section as $groupName => $group ) {
 						$settingsRet = array( 'name' => $groupName );
-						foreach( $group as $setting => $type ){
-							if( !$conf->isSettingAvailable( $setting ) || in_array( $setting, $notEditable ) )
+						foreach ( $group as $setting => $type ) {
+							if ( !$conf->isSettingAvailable( $setting ) || in_array( $setting, $notEditable ) )
 								continue;
 							$settingsRet[] = $this->getSettingResult( $setting, $type, $settingsValues, $conf, $result );
 						}
@@ -86,8 +86,8 @@ class ApiConfigure extends ApiBase {
 				$result->setIndexedTagName( $ret, 'section' );
 			} else {
 				$settings = $conf->getAllSettings();
-				foreach( $settings as $setting => $type ){
-					if( !$conf->isSettingAvailable( $setting ) || in_array( $setting, $notEditable ) )
+				foreach ( $settings as $setting => $type ) {
+					if ( !$conf->isSettingAvailable( $setting ) || in_array( $setting, $notEditable ) )
 						continue;
 					$ret[] = $this->getSettingResult( $setting, $type, $settingsValues, $conf, $result );
 				}
@@ -97,19 +97,19 @@ class ApiConfigure extends ApiBase {
 		}
 
 		// Extensions
-		if( in_array( 'extensions', $params['prop'] ) ) {
-			if( !$wgUser->isAllowed( 'extensions' ) )
+		if ( in_array( 'extensions', $params['prop'] ) ) {
+			if ( !$wgUser->isAllowed( 'extensions' ) )
 				$this->dieUsage( 'extensions right required', 'noright' );
 			$conf = ConfigurationSettings::singleton( CONF_SETTINGS_EXT );
 			$ret = array();
-			foreach( $conf->getAllExtensionsObjects() as $ext ){
+			foreach ( $conf->getAllExtensionsObjects() as $ext ) {
 				$extArr = array();
 				$extArr['name'] = $ext->getName();
-				if( $ext->isActivated() )
+				if ( $ext->isActivated() )
 					$extArr['activated'] = '';
-				if( $ext->hasSchemaChange() )
+				if ( $ext->hasSchemaChange() )
 					$extArr['schema'] = '';
-				if( ( $url = $ext->getUrl() ) !== null )
+				if ( ( $url = $ext->getUrl() ) !== null )
 					$extArr['url'] = $url;
 				$ret[] = $extArr;
 			}
@@ -118,30 +118,30 @@ class ApiConfigure extends ApiBase {
 		}
 	}
 
-	protected function userCanRead( $setting, $conf ){
+	protected function userCanRead( $setting, $conf ) {
 		global $wgUser, $wgConfigureViewRestrictions;
-		if( in_array( $setting, $conf->getNotEditableSettings() )
+		if ( in_array( $setting, $conf->getNotEditableSettings() )
 			|| ( in_array( $setting, $conf->getViewRestricted() )
 			&& !$wgUser->isAllowed( 'viewconfig-all' ) ) )
 			return false;
-		if( !isset( $wgConfigureViewRestrictions[$setting] ) )
+		if ( !isset( $wgConfigureViewRestrictions[$setting] ) )
 			return true;
-		foreach( $wgConfigureViewRestrictions[$setting] as $right ){
-			if( !$wgUser->isAllowed( $right ) )
+		foreach ( $wgConfigureViewRestrictions[$setting] as $right ) {
+			if ( !$wgUser->isAllowed( $right ) )
 				return false;
 		}
 		return true;
 	}
 
-	protected function getSettingResult( $setting, $type, $settingsValues, $conf, $result ){
+	protected function getSettingResult( $setting, $type, $settingsValues, $conf, $result ) {
 		$settingRet = array( 'name' => $setting );
-		if( !$this->userCanRead( $setting, $conf ) ){
+		if ( !$this->userCanRead( $setting, $conf ) ) {
 			$settingRet['restricted'] = '';
 			return $settingRet;
 		}
-		if( isset( $settingsValues[$setting] ) ){
+		if ( isset( $settingsValues[$setting] ) ) {
 			$settingVal = $settingsValues[$setting];
-			switch( $type ){
+			switch( $type ) {
 			case 'bool':
 				$settingRet['type'] = $type;
 				$settingRet['value'] = $settingVal ? 'true' : 'false';
@@ -158,7 +158,7 @@ class ApiConfigure extends ApiBase {
 				$settingRet['type'] = $type;
 				$arrType = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getArrayType( $setting );
 				$settingRet['array'] = $arrType;
-				switch( $arrType ){
+				switch( $arrType ) {
 				case 'simple':
 					$result->setIndexedTagName( $settingVal, 'value' );
 					$settingRet['values'] = $settingVal;
@@ -166,7 +166,7 @@ class ApiConfigure extends ApiBase {
 				case 'assoc':
 					$settingRet['values'] = array();
 					$result->setIndexedTagName( $settingRet['values'], 'value' );
-					foreach( (array)$settingVal as $key => $val ){
+					foreach ( (array)$settingVal as $key => $val ) {
 						$arrRet = array( 'key' => $key, 'value' => $val );
 						$settingRet['values'][] = $arrRet;
 					}
@@ -174,7 +174,7 @@ class ApiConfigure extends ApiBase {
 				case 'simple-dual':
 					$settingRet['values'] = array();
 					$result->setIndexedTagName( $settingRet['values'], 'value' );
-					foreach( (array)$settingVal as $val ){
+					foreach ( (array)$settingVal as $val ) {
 						$settingRet['values'][] = implode( ',', $val );
 					}
 					break;
@@ -182,7 +182,7 @@ class ApiConfigure extends ApiBase {
 					global $wgContLang;
 					$settingRet['values'] = array();
 					$result->setIndexedTagName( $settingRet['values'], 'value' );
-					foreach( $wgContLang->getNamespaces() as $ns => $unused ){
+					foreach ( $wgContLang->getNamespaces() as $ns => $unused ) {
 						$settingRet['values'][] = array( 'index' => $ns, 'value' => ( isset( $settingVal[$ns] ) && $settingVal[$ns] ) ? 'true' : 'false' );
 					}
 					break;
@@ -190,7 +190,7 @@ class ApiConfigure extends ApiBase {
 					global $wgContLang;
 					$settingRet['values'] = array();
 					$result->setIndexedTagName( $settingRet['values'], 'value' );
-					foreach( $wgContLang->getNamespaces() as $ns => $unused ){
+					foreach ( $wgContLang->getNamespaces() as $ns => $unused ) {
 						$settingRet['values'][] = array( 'index' => $ns, 'value' => isset( $settingVal[$ns] ) ? $settingVal[$ns] : '' );
 					}
 					break;
@@ -202,7 +202,7 @@ class ApiConfigure extends ApiBase {
 					global $wgContLang;
 					$settingRet['values'] = array();
 					$result->setIndexedTagName( $settingRet['values'], 'value' );
-					foreach( $wgContLang->getNamespaces() as $ns => $unused ){
+					foreach ( $wgContLang->getNamespaces() as $ns => $unused ) {
 						$nsRet = array( 'index' => $ns );
 						$result->setIndexedTagName( $nsRet, 'item' );
 						$nsRet += isset( $vals[$ns] ) && is_array( $settingVal[$ns] ) ? $settingVal[$ns] : array();
@@ -213,10 +213,10 @@ class ApiConfigure extends ApiBase {
 					$settingRet['values'] = array();
 					$result->setIndexedTagName( $settingRet['values'], 'group' );
 					$all = User::getAllRights();
-					foreach( $settingVal as $group => $rights ){
+					foreach ( $settingVal as $group => $rights ) {
 						$arr = array( 'name' => $group, 'rights' => array() );
 						$result->setIndexedTagName( $arr['rights'], 'permission' );
-						foreach( $all as $name ){
+						foreach ( $all as $name ) {
 							$arr['rights'][] = array(
 								'name' => $name,
 								'allowed' => $rights[$name] ? 'true' : 'false'
@@ -230,10 +230,10 @@ class ApiConfigure extends ApiBase {
 					$result->setIndexedTagName( $settingRet['values'], 'group' );
 					$all = array_keys( $settingsValues['wgGroupPermissions'] );
 					$iter = array();
-					foreach( $all as $group )
+					foreach ( $all as $group )
 						$iter[$group] = isset( $settingVal[$group] ) && is_array( $settingVal[$group] ) ? $settingVal[$group] : array();
 					$all = array_diff( $all, $settingsValues['wgImplicitGroups'] );
-					foreach( $iter as $group => $value ){
+					foreach ( $iter as $group => $value ) {
 						$arr = array( 'name' => $group, 'values' => $value );
 						$result->setIndexedTagName( $arr['values'], 'value' );
 						$settingRet['values'][] = $arr;
@@ -241,10 +241,10 @@ class ApiConfigure extends ApiBase {
 				}
 				break;
 			default:
-				if( is_array( $type ) ){
+				if ( is_array( $type ) ) {
 					$allowed = array();
 					$settingRet['type'] = 'multi';
-					foreach( $type as $val => $desc ){
+					foreach ( $type as $val => $desc ) {
 						$allowed[] = array( 'desc' => $desc, 'value' => $val );
 					}
 					$result->setIndexedTagName( $allowed, 'allowed' );
@@ -261,15 +261,15 @@ class ApiConfigure extends ApiBase {
 	protected function getAllowedParams() {
 		return array(
 			'prop' => array(
-                ApiBase::PARAM_ISMULTI => true,
-                ApiBase::PARAM_TYPE => array(
-                	'versionlist',
-                	'wikilist',
-                	'settings',
-                	'extensions',
-                ),
-                ApiBase::PARAM_DFLT => 'versionlist|wikilist',
-            ),
+			ApiBase::PARAM_ISMULTI => true,
+			ApiBase::PARAM_TYPE => array(
+				'versionlist',
+				'wikilist',
+				'settings',
+				'extensions',
+			),
+			ApiBase::PARAM_DFLT => 'versionlist|wikilist',
+			),
 			'version' => null,
 			'wiki' => null,
 			'group' => false,

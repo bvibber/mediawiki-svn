@@ -15,9 +15,9 @@ class ConfigurationSettings {
 	// Extension settings
 	protected $extensions;
 
-	public static function singleton( $types ){
+	public static function singleton( $types ) {
 		static $instances = array();
-		if( !isset( $instances[$types] ) )
+		if ( !isset( $instances[$types] ) )
 			$instances[$types] = new self( $types );
 		return $instances[$types];
 	}
@@ -26,15 +26,15 @@ class ConfigurationSettings {
 	 * Constructor
 	 * private, use ConfigurationSettings::sigleton() to get an instance
 	 */
-	protected function __construct( $types ){
+	protected function __construct( $types ) {
 		$this->types = $types;
 	}
 
 	/**
 	 * Load messages and initialise static variables
 	 */
-	protected function loadSettingsDefs(){
-		if( $this->initialized )
+	protected function loadSettingsDefs() {
+		if ( $this->initialized )
 			return;
 		$this->initialized = true;
 
@@ -56,17 +56,17 @@ class ConfigurationSettings {
 	 *
 	 * @return array
 	 */
-	public function getAllExtensionsObjects(){
+	public function getAllExtensionsObjects() {
 		static $list = array();
-		if( !empty( $list ) )
+		if ( !empty( $list ) )
 			return $list;
 		$this->loadSettingsDefs();
 		global $wgConfigureAdditionalExtensions;
 		$extensions = array_merge( $this->extensions, $wgConfigureAdditionalExtensions );
 		usort( $extensions, array( __CLASS__, 'compExt' ) );
-		foreach( $extensions as $ext ){
+		foreach ( $extensions as $ext ) {
 			$ext = new WebExtension( $ext );
-			if( $ext->isInstalled() ){
+			if ( $ext->isInstalled() ) {
 				$list[] = $ext;
 			}
 		}
@@ -76,7 +76,7 @@ class ConfigurationSettings {
 	/**
 	 * Callback to sort extensions
 	 */
-	public static function compExt( $e1, $e2 ){
+	public static function compExt( $e1, $e2 ) {
 		return strcmp( $e1['name'], $e2['name'] );
 	}
 
@@ -85,19 +85,19 @@ class ConfigurationSettings {
 	 *
 	 * @return array
 	 */
-	public function getSettings(){
+	public function getSettings() {
 		$this->loadSettingsDefs();
 		$ret = array();
-		if( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ){
+		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
 			$ret += $this->settings;
 		}
-		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
+		if ( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
 			static $extArr;
-			if( !isset( $extArr ) ){
+			if ( !isset( $extArr ) ) {
 				$extArr = array();
-				foreach( $this->getAllExtensionsObjects() as $ext ){
+				foreach ( $this->getAllExtensionsObjects() as $ext ) {
 					$name = $ext->getName();
-					if( count( $ext->getSettings() ) )
+					if ( count( $ext->getSettings() ) )
 						$extArr['mw-extensions'][$name] = $ext->getSettings();
 				}
 			}
@@ -111,14 +111,14 @@ class ConfigurationSettings {
 	 *
 	 * @return array
 	 */
-	public function getAllSettings(){
+	public function getAllSettings() {
 		static $arr;
-		if( isset( $arr ) )
+		if ( isset( $arr ) )
 			return $arr;
 		$this->loadSettingsDefs();
 		$arr = array();
-		foreach( $this->getSettings() as $section ){
-			foreach( $section as $group ){
+		foreach ( $this->getSettings() as $section ) {
+			foreach ( $section as $group ) {
 				$arr = array_merge( $arr, $group );
 			}
 		}
@@ -130,14 +130,14 @@ class ConfigurationSettings {
 	 *
 	 * @return array
 	 */
-	public function getViewRestricted(){
+	public function getViewRestricted() {
 		$this->loadSettingsDefs();
 		$ret = array();
-		if( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ){
+		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
 			$ret += $this->viewRestricted;
 		}
-		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
-			foreach( $this->getAllExtensionsObjects() as $ext ){
+		if ( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
+			foreach ( $this->getAllExtensionsObjects() as $ext ) {
 				$ret = array_merge( $ret, $ext->getViewRestricted() );
 			}
 		}
@@ -149,14 +149,14 @@ class ConfigurationSettings {
 	 *
 	 * @return array
 	 */
-	public function getEditRestricted(){
+	public function getEditRestricted() {
 		$this->loadSettingsDefs();
 		$ret = array();
-		if( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ){
+		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
 			$ret += $this->editRestricted;
 		}
-		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
-			foreach( $this->getAllExtensionsObjects() as $ext ){
+		if ( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
+			foreach ( $this->getAllExtensionsObjects() as $ext ) {
 				$ret = array_merge( $ret, $ext->getEditRestricted() );
 			}
 		}
@@ -168,13 +168,13 @@ class ConfigurationSettings {
 	 *
 	 * @return array
 	 */
-	public function getNotEditableSettings(){
+	public function getNotEditableSettings() {
 		$this->loadSettingsDefs();
 		$ret = array();
-		if( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ){
+		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
 			$ret += $this->notEditableSettings;
 		}
-		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
+		if ( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
 			$ret += array(); // Nothing for extensions
 		}
 		global $wgConf;
@@ -187,17 +187,17 @@ class ConfigurationSettings {
 	 *
 	 * @return array
 	 */
-	public function getArrayDefs(){
+	public function getArrayDefs() {
 		static $list;
-		if( isset( $list ) )
+		if ( isset( $list ) )
 			return $list;
 		$list = array();
 		$this->loadSettingsDefs();
-		if( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ){
+		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
 			$list += $this->arrayDefs;
 		}
-		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
-			foreach( $this->getAllExtensionsObjects() as $ext ){
+		if ( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
+			foreach ( $this->getAllExtensionsObjects() as $ext ) {
 				$list  += $ext->getArrayDefs();
 			}
 		}
@@ -210,16 +210,16 @@ class ConfigurationSettings {
 	 *
 	 * @return array
 	 */
-	public function getEmptyValues(){
+	public function getEmptyValues() {
 		static $list;
-		if( isset( $list ) )
+		if ( isset( $list ) )
 			return $list;
 		$list = array();
-		if( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ){
+		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
 			$list += $this->emptyValues;
 		}
-		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ){
-			foreach( $this->getAllExtensionsObjects() as $ext ){
+		if ( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
+			foreach ( $this->getAllExtensionsObjects() as $ext ) {
 				$list += $ext->getEmptyValues();
 			}
 		}
@@ -231,16 +231,16 @@ class ConfigurationSettings {
 	 *
 	 * @return bool
 	 */
-	public function isSettingAvailable( $setting ){
+	public function isSettingAvailable( $setting ) {
 		$this->loadSettingsDefs();
-		if( !array_key_exists( $setting, $this->getAllSettings() ) )
+		if ( !array_key_exists( $setting, $this->getAllSettings() ) )
 			return false;
-		if( !array_key_exists( $setting, $this->settingsVersion ) )
+		if ( !array_key_exists( $setting, $this->settingsVersion ) )
 			return true;
 		global $wgVersion;
-		foreach( $this->settingsVersion[$setting] as $test ){
+		foreach ( $this->settingsVersion[$setting] as $test ) {
 			list( $ver, $comp ) = $test;
-			if( !version_compare( $wgVersion, $ver, $comp ) )
+			if ( !version_compare( $wgVersion, $ver, $comp ) )
 				return false;
 		}
 		return true;
@@ -252,9 +252,9 @@ class ConfigurationSettings {
 	 * @param $setting String: setting name
 	 * @return mixed
 	 */
-	public function getSettingType( $setting ){
+	public function getSettingType( $setting ) {
 		$settings = $this->getAllSettings();
-		if( isset( $settings[$setting] ) )
+		if ( isset( $settings[$setting] ) )
 			return $settings[$setting];
 		else
 			return false;
@@ -265,7 +265,7 @@ class ConfigurationSettings {
 	 *
 	 * @param $setting String: setting name
 	 */
-	public function getArrayType( $setting ){
+	public function getArrayType( $setting ) {
 		$arr = $this->getArrayDefs();
 		return isset( $arr[$setting] ) ?
 			$arr[$setting] :

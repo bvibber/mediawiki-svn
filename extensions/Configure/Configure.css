@@ -39,7 +39,7 @@ ul.configtoc {
 	max-height: 500px;
 	overflow: auto;
 }
- 
+
 ul.configtoc, ul.configtoc > li > ul {
 	list-style-type: none !important;
 	list-style-image: none !important;

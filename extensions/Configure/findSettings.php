@@ -12,8 +12,8 @@
  */
 
 $IP = getenv( 'MW_INSTALL_PATH' );
-if( $IP === false )
-	$IP = dirname( __FILE__ ). '/../..';
+if ( $IP === false )
+	$IP = dirname( __FILE__ ) . '/../..';
 
 require_once( "$IP/maintenance/commandLine.inc" );
 
@@ -22,7 +22,7 @@ require_once( "$IP/maintenance/commandLine.inc" );
 /**
  * Print a help message and exit
  */
-function printHelp(){
+function printHelp() {
 	echo "Script that find settings that aren't configurable by the extension.\n";
 	echo "\n";
 	echo "Usage:\n";
@@ -45,17 +45,17 @@ function printHelp(){
  * @param $sort Boolean : wheter to sort the array (Default: true)
  */
 function printArray( $msg, $arr, $sort = true ) {
-	if($sort) asort($arr);
-	foreach($arr as $v) echo "$msg: $v\n";
+	if ( $sort ) asort( $arr );
+	foreach ( $arr as $v ) echo "$msg: $v\n";
 }
 
 # Main part
 
-if( isset( $options['help'] ) )
+if ( isset( $options['help'] ) )
 	printHelp();
 
 $coreSettings = ConfigurationSettings::singleton( CONF_SETTINGS_CORE );
-if( isset( $options['ext'] ) ){
+if ( isset( $options['ext'] ) ) {
 	$exts = ConfigurationSettings::singleton( CONF_SETTINGS_EXT )->getAllExtensionsObjects();
 	$ignoreList = array(
 		# Core
@@ -68,7 +68,7 @@ if( isset( $options['ext'] ) ){
 		'wgExtParserFunctions',
 		'wgTitleBlacklist',
 	);
-	foreach( $exts as $ext ){
+	foreach ( $exts as $ext ) {
 		$file = file_get_contents( $ext->getFile() );
 		$name = $ext->getName();
 		$m = array();
@@ -79,12 +79,12 @@ if( isset( $options['ext'] ) ){
 		$remain = array_diff( $definedSettings, $allSettings );
 		$obsolete = array_diff( $allSettings, $definedSettings );
 		$missing = array();
-		foreach( $remain as $setting ){
-			if( !$coreSettings->isSettingAvailable( $setting ) && !in_array( $setting, $ignoreList ) )
+		foreach ( $remain as $setting ) {
+			if ( !$coreSettings->isSettingAvailable( $setting ) && !in_array( $setting, $ignoreList ) )
 				$missing[] = $setting;
 		}
-		if( count( $missing ) == 0 && count( $obsolete ) == 0 ) {
-			#echo "Extension $name ok\n";
+		if ( count( $missing ) == 0 && count( $obsolete ) == 0 ) {
+			# echo "Extension $name ok\n";
 		} else {
 			echo "Extension $name:\n";
 			printArray( '  missing', $missing );
@@ -93,8 +93,8 @@ if( isset( $options['ext'] ) ){
 	}
 } else {
 	// Get our settings defs
-	if( isset( $options['from-doc'] ) ){
-		if( isset( $options['alpha'] ) ){
+	if ( isset( $options['from-doc'] ) ) {
+		if ( isset( $options['alpha'] ) ) {
 			$page = "Manual:Configuration_settings_(alphabetical)";
 		} else {
 			$page = "Manual:Configuration_settings";
@@ -116,15 +116,15 @@ if( isset( $options['ext'] ) ){
 	$missing = array_diff( $definedSettings, $allSettings );
 	$remain = array_diff( $allSettings, $definedSettings );
 	$obsolete = array();
-	foreach( $remain as $setting ){
-		if( $coreSettings->isSettingAvailable( $setting ) )
+	foreach ( $remain as $setting ) {
+		if ( $coreSettings->isSettingAvailable( $setting ) )
 			$obsolete[] = $setting;
 	}
 
 	// let's show the results:
-	printArray('missing', $missing );
-	printArray('obsolete', $obsolete );
+	printArray( 'missing', $missing );
+	printArray( 'obsolete', $obsolete );
 
-	if( count( $missing ) == 0 && count( $obsolete ) == 0 )
+	if ( count( $missing ) == 0 && count( $obsolete ) == 0 )
 		echo "Looks good!\n";
 }

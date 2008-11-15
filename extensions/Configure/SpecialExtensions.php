@@ -15,14 +15,14 @@ class SpecialExtensions extends ConfigurationPage {
 		parent::__construct( 'Extensions', 'extensions' );
 	}
 
-	protected function getSettingMask(){
+	protected function getSettingMask() {
 		return CONF_SETTINGS_EXT;
 	}
 
 	/**
 	 * Submit a posted form
 	 */
-	public function doSubmit(){
+	public function doSubmit() {
 		global $wgConf, $wgOut;
 		$current = $wgConf->getCurrent( $this->mWiki );
 		$settings = $this->importFromRequest();
@@ -39,7 +39,7 @@ class SpecialExtensions extends ConfigurationPage {
 	/**
 	 * Show the diff between the current version and the posted version
 	 */
-	protected function showDiff(){
+	protected function showDiff() {
 		global $wgConf, $wgOut;
 		$wiki = $this->mWiki;
 		$old = array( $wiki => $wgConf->getCurrent( $wiki ) );
@@ -53,11 +53,11 @@ class SpecialExtensions extends ConfigurationPage {
 	 * Get an array of files to include at each request
 	 * @return array
 	 */
-	protected function getRequiredFiles(){
+	protected function getRequiredFiles() {
 		global $wgRequest;
 		$arr = array();
-		foreach( $this->mConfSettings->getAllExtensionsObjects() as $ext ){
-			if( $wgRequest->getCheck( $ext->getCheckName() ) )
+		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
+			if ( $wgRequest->getCheck( $ext->getCheckName() ) )
 				$arr[] = $ext->getFile();
 		}
 		return $arr;
@@ -66,14 +66,14 @@ class SpecialExtensions extends ConfigurationPage {
 	/**
 	 * Simple wrapper to make it public
 	 */
-	public function buildInput( $conf, $param = array() ){
+	public function buildInput( $conf, $param = array() ) {
 		return parent::buildInput( $conf, $param );
 	}
 
 	/**
 	 * Same as before
 	 */
-	public function getSettingValue( $setting ){
+	public function getSettingValue( $setting ) {
 		return parent::getSettingValue( $setting );
 	}
 
@@ -82,27 +82,27 @@ class SpecialExtensions extends ConfigurationPage {
 	 *
 	 * @return xhtml
 	 */
-	protected function buildAllSettings(){
+	protected function buildAllSettings() {
 		$ret = '';
 		$globalDone = false;
-		foreach( $this->mConfSettings->getAllExtensionsObjects() as $ext ){
+		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
 			$settings = $ext->getSettings();
-			foreach( $settings as $setting => $type ){
-				if( !isset( $GLOBALS[$setting] ) && !isset( $this->conf[$setting] ) ){
-					if( !$globalDone ){
+			foreach ( $settings as $setting => $type ) {
+				if ( !isset( $GLOBALS[$setting] ) && !isset( $this->conf[$setting] ) ) {
+					if ( !$globalDone ) {
 						extract( $GLOBALS, EXTR_REFS );
 						$__hooks__ = $wgHooks;
 						$globalDone = true;
 					}
 					require_once( $ext->getFile() );
-					if( isset( $$setting ) )
+					if ( isset( $$setting ) )
 						$this->conf[$setting] = $$setting;
 				}
 			}
 			$ext->setPageObj( $this );
 			$ret .= $ext->getHtml();
 		}
-		if( isset( $__hooks__ ) )
+		if ( isset( $__hooks__ ) )
 			$GLOBALS['wgHooks'] = $__hooks__;
 		return $ret;
 	}

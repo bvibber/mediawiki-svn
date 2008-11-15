@@ -19,20 +19,20 @@ class SpecialViewConfig extends ConfigurationPage {
 		parent::__construct( 'ViewConfig', 'viewconfig' );
 	}
 
-	protected function getSettingMask(){
+	protected function getSettingMask() {
 		return CONF_SETTINGS_BOTH;
 	}
 
-	protected function getVersion(){
+	protected function getVersion() {
 		global $wgOut, $wgRequest, $wgConf;
 
 		$this->isWebConfig = $wgConf instanceof WebConfiguration;
 
-		if( $this->isWebConfig && $version = $wgRequest->getVal( 'version' ) ){
+		if ( $this->isWebConfig && $version = $wgRequest->getVal( 'version' ) ) {
 			$versions = $wgConf->listArchiveVersions();
-			if( in_array( $version, $versions ) ){
+			if ( in_array( $version, $versions ) ) {
 				$conf = $wgConf->getOldSettings( $version );
-				if( $this->isUserAllowedAll() ){
+				if ( $this->isUserAllowedAll() ) {
 					$wiki = $wgRequest->getVal( 'wiki', $wgConf->getWiki() );
 				} else {
 					$wiki = $wgConf->getWiki();
@@ -41,8 +41,8 @@ class SpecialViewConfig extends ConfigurationPage {
 				$this->version = $version;
 				$this->wiki = $wiki;
 
-				if( $diff = $wgRequest->getVal( 'diff' ) ){
-					if( !in_array( $diff, $versions ) ){
+				if ( $diff = $wgRequest->getVal( 'diff' ) ) {
+					if ( !in_array( $diff, $versions ) ) {
 						$msg = wfMsgNoTrans( 'configure-old-not-available', $diff );
 						$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
 						return;
@@ -50,9 +50,9 @@ class SpecialViewConfig extends ConfigurationPage {
 					$this->diff = $diff;
 				}
 
-				if( isset( $conf[$wiki] ) ){
+				if ( isset( $conf[$wiki] ) ) {
 					$this->conf = $conf[$wiki];
-				} else if( !isset( $this->diff ) ){
+				} else if ( !isset( $this->diff ) ) {
 					$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
 					$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
 					return false;
@@ -70,12 +70,12 @@ class SpecialViewConfig extends ConfigurationPage {
 	/**
 	 * Just in case, security
 	 */
-	protected function doSubmit(){}
+	protected function doSubmit() { }
 
 	/**
 	 * Show diff
 	 */
-	protected function showDiff(){
+	protected function showDiff() {
 		global $wgOut;
 		$wikis = $this->isUserAllowedAll() ? true : array( $this->wiki );
 		$diffEngine = new HistoryConfigurationDiff( $this->diff, $this->version, $wikis );
@@ -86,11 +86,11 @@ class SpecialViewConfig extends ConfigurationPage {
 	/**
 	 * Show the main form
 	 */
-	protected function showForm(){
+	protected function showForm() {
 		global $wgOut, $wgRequest;
 
-		if( !$this->isWebConfig || !empty( $this->conf ) || isset( $this->diff ) ){
-			if( isset( $this->diff ) ){
+		if ( !$this->isWebConfig || !empty( $this->conf ) || isset( $this->diff ) ) {
+			if ( isset( $this->diff ) ) {
 				$this->showDiff();
 			} else {
 				$wgOut->addHTML(
@@ -113,9 +113,9 @@ class SpecialViewConfig extends ConfigurationPage {
 	 * Build links to old version of the configuration
 	 *
 	 */
-	protected function buildOldVersionSelect(){
+	protected function buildOldVersionSelect() {
 		global $wgConf, $wgLang, $wgUser, $wgScript;
-		if( !$this->isWebConfig )
+		if ( !$this->isWebConfig )
 			return '';
 
 		$self = $this->getTitle();
@@ -135,30 +135,30 @@ class SpecialViewConfig extends ConfigurationPage {
 			'editMsg' => wfMsg( 'edit' ) . ': ',
 		);
 
-		if( $formatConf['allowedConfig'] )
+		if ( $formatConf['allowedConfig'] )
 			$formatConf['configTitle'] = SpecialPage::getTitleFor( 'Configure' );
 
-		if( $formatConf['allowedExtensions'] )
+		if ( $formatConf['allowedExtensions'] )
 			$formatConf['extTitle'] = SpecialPage::getTitleFor( 'Extensions' );
 
 		$this->formatConf = $formatConf;
 
 		$text = wfMsgExt( 'configure-old-versions', array( 'parse' ) );
 		$text .= $pager->getNavigationBar();
-		if( $showDiff ) {
+		if ( $showDiff ) {
 			$text .= Xml::openElement( 'form', array( 'action' => $wgScript ) ) . "\n" .
 			Xml::hidden( 'title', $self->getPrefixedDBKey() ) . "\n" .
 			$this->getButton() . "<br/>\n";
 		}
 		$text .= $pager->getBody();
-		if( $showDiff ) {
+		if ( $showDiff ) {
 			$text .= $this->getButton() . "</form>";
 		}
 		$text .= $pager->getNavigationBar();
 		return $text;
 	}
 
-	public function formatVersionRow( $arr ){
+	public function formatVersionRow( $arr ) {
 		global $wgLang;
 
 		$ts = $arr['timestamp'];
@@ -170,54 +170,54 @@ class SpecialViewConfig extends ConfigurationPage {
 		$time = $wgLang->timeAndDate( $ts );
 
 		$actions = array();
-		if( $hasSelf )
+		if ( $hasSelf )
 			$view = $skin->makeKnownLinkObj( $self, wfMsgHtml( 'configure-view' ), "version=$ts" );
 		else
 			$view = wfMsgHtml( 'configure-view' );
 
-		if( $allowedAll ){
+		if ( $allowedAll ) {
 			$viewWikis = array();
-			foreach( $wikis as $wiki ){
+			foreach ( $wikis as $wiki ) {
 				$viewWikis[] = $skin->makeKnownLinkObj( $self, htmlspecialchars( $wiki ), "version={$ts}&wiki={$wiki}" );
 			}
 			$view .= ' (' . implode( ', ', $viewWikis ) . ')';
 		}
 		$actions[] = $view;
 		$editDone = false;
-		if( $allowedConfig ){
-			if( $hasSelf )
+		if ( $allowedConfig ) {
+			if ( $hasSelf )
 				$editCore = $editMsg . $skin->makeKnownLinkObj( $configTitle, wfMsgHtml( 'configure-edit-core' ), "version=$ts" );
 			else
 				$editCore = $editMsg . wfMsgHtml( 'configure-edit-core' );
 
-			if( $allowedConfigAll ){
+			if ( $allowedConfigAll ) {
 				$viewWikis = array();
-				foreach( $wikis as $wiki ){
+				foreach ( $wikis as $wiki ) {
 					$viewWikis[] = $skin->makeKnownLinkObj( $configTitle, htmlspecialchars( $wiki ), "version={$ts}&wiki={$wiki}" );
 				}
 				$editCore .= ' (' . implode( ', ', $viewWikis ) . ')';
 			}
 			$actions[] = $editCore;
 		}
-		if( $allowedExtensions ){
+		if ( $allowedExtensions ) {
 			$editExt = '';
-			if( !$allowedConfig )
+			if ( !$allowedConfig )
 				$editExt .= $editMsg;
-			if( $hasSelf )
+			if ( $hasSelf )
 				$editExt .= $skin->makeKnownLinkObj( $extTitle, wfMsgHtml( 'configure-edit-ext' ), "version=$ts" );
 			else
 				$editExt .= wfMsgHtml( 'configure-edit-ext' );
 
-			if( $allowedExtensionsAll ){
+			if ( $allowedExtensionsAll ) {
 				$viewWikis = array();
-				foreach( $wikis as $wiki ){
+				foreach ( $wikis as $wiki ) {
 					$viewWikis[] = $skin->makeKnownLinkObj( $extTitle, htmlspecialchars( $wiki ), "version={$ts}&wiki={$wiki}" );
 				}
 				$editExt .= ' (' . implode( ', ', $viewWikis ) . ')';
 			}
 			$actions[] = $editExt;
 		}
-		if( $showDiff ){
+		if ( $showDiff ) {
 			$diffCheck = $c == 2 ? array( 'checked' => 'checked' ) : array();
 			$versionCheck = $c == 1 ? array( 'checked' => 'checked' ) : array();
 			$buttons =
@@ -238,7 +238,7 @@ class SpecialViewConfig extends ConfigurationPage {
 	/**
 	 * Taken from PageHistory.php
 	 */
-	protected function getButton(){
+	protected function getButton() {
 		return Xml::submitButton( wfMsg( 'compareselectedversions' ),
 				array(
 					'class'     => 'historysubmit',
@@ -253,7 +253,7 @@ class SpecialViewConfig extends ConfigurationPage {
 	 *
 	 * @return xhtml
 	 */
-	protected function buildAllSettings(){
+	protected function buildAllSettings() {
 		$opt = array(
 			'restrict' => false,
 			'showlink' => array( '_default' => true, 'mw-extensions' => false ),

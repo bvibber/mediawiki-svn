@@ -24,7 +24,7 @@ class WebExtension {
 	 *
 	 * @param array $conf
 	 */
-	public function __construct( /*array*/ $conf ){
+	public function __construct( /*array*/ $conf ) {
 		$this->mName = $conf['name'];
 		$this->mSettings = isset( $conf['settings'] ) ? $conf['settings'] : array();
 		$this->mDbChange = isset( $conf['schema'] ) && $conf['schema'];
@@ -42,7 +42,7 @@ class WebExtension {
 	 *
 	 * @return string
 	 */
-	public function getName(){
+	public function getName() {
 		return $this->mName;
 	}
 
@@ -51,7 +51,7 @@ class WebExtension {
 	 *
 	 * @return array
 	 */
-	public function getSettings(){
+	public function getSettings() {
 		return $this->mSettings;
 	}
 
@@ -60,7 +60,7 @@ class WebExtension {
 	 *
 	 * @return array
 	 */
-	public function getArrayDefs(){
+	public function getArrayDefs() {
 		return $this->mArrays;
 	}
 
@@ -69,7 +69,7 @@ class WebExtension {
 	 *
 	 * @return array
 	 */
-	public function getEmptyValues(){
+	public function getEmptyValues() {
 		return $this->mEmptyValues;
 	}
 
@@ -78,7 +78,7 @@ class WebExtension {
 	 *
 	 * @return array
 	 */
-	public function getViewRestricted(){
+	public function getViewRestricted() {
 		return $this->mViewRestricted;
 	}
 
@@ -87,7 +87,7 @@ class WebExtension {
 	 *
 	 * @return array
 	 */
-	public function getEditRestricted(){
+	public function getEditRestricted() {
 		return $this->mEditRestricted;
 	}
 
@@ -96,7 +96,7 @@ class WebExtension {
 	 *
 	 * @param $obj ConfigurationPage object
 	 */
-	public function setPageObj( ConfigurationPage $obj ){
+	public function setPageObj( ConfigurationPage $obj ) {
 		$this->mObj = $obj;
 	}
 
@@ -105,7 +105,7 @@ class WebExtension {
 	 *
 	 * @return bool
 	 */
-	public function hasSchemaChange(){
+	public function hasSchemaChange() {
 		return $this->mDbChange;
 	}
 
@@ -114,7 +114,7 @@ class WebExtension {
 	 *
 	 * @return string or null
 	 */
-	public function getUrl(){
+	public function getUrl() {
 		return $this->mDoc;
 	}
 
@@ -123,7 +123,7 @@ class WebExtension {
 	 *
 	 * @return string
 	 */
-	public function getFile(){
+	public function getFile() {
 		global $IP;
 		return $IP . '/extensions/' . $this->mDir . '/' . $this->mFile;
 	}
@@ -133,11 +133,11 @@ class WebExtension {
 	 *
 	 * @return XHTML
 	 */
-	public function getHtml(){
-		if( !$this->isInstalled() )
+	public function getHtml() {
+		if ( !$this->isInstalled() )
 			return '';
 		$ret = '<fieldset><legend>' . htmlspecialchars( $this->mName ) . '</legend>';
-		if( $this->mDbChange ){
+		if ( $this->mDbChange ) {
 			$warn = wfMsgExt( 'configure-ext-schemachange', array( 'parseinline' ) );
 			$ret .= "<span class=\"errorbox\">{$warn}</span><br clear=\"left\" />\n";
 		}
@@ -147,17 +147,17 @@ class WebExtension {
 		$checkName = $this->getCheckName();
 		$ret .= Xml::checkLabel( wfMsg( 'configure-ext-use-extension' ), $checkName, $checkName, $this->isActivated() );
 		$ret .= "</td></tr>\n";
-		if( !empty( $this->mDoc ) ){
+		if ( !empty( $this->mDoc ) ) {
 			$ret .= "<tr><td>\n";
-			$ret .= '<p>'.Xml::element( 'a', array( 'href' => $this->mDoc ), wfMsg( 'configure-ext-doc' ) ) . "</p>\n";
+			$ret .= '<p>' . Xml::element( 'a', array( 'href' => $this->mDoc ), wfMsg( 'configure-ext-doc' ) ) . "</p>\n";
 			$ret .= "</td></tr>";
 		}
 		$ret .= "</table>\n";
-		if( count( $this->mSettings ) ){
+		if ( count( $this->mSettings ) ) {
 			$settings = wfMsgExt( 'configure-ext-settings', array( 'parseinline' ) );
 			$ret .= "<h2>{$settings}</h2>\n";
 			$ret .= "<table class=\"configure-table\">\n";
-			foreach( $this->mSettings as $name => $type ){
+			foreach ( $this->mSettings as $name => $type ) {
 				$val = $this->mObj->getSettingValue( $name );
 				$ret .= '<tr><td>$' . $name . '</td><td>' .
 					call_user_func_array( array( $this->mObj, 'buildInput' ), array( $name, array( 'value' => $val, 'type' => $type ) ) ) .
@@ -173,8 +173,8 @@ class WebExtension {
 	 * Return the name of the check that's used to select whether the extension
 	 * should be activated
 	 */
-	public function getCheckName(){
-		return 'wpUse'.$this->mName;
+	public function getCheckName() {
+		return 'wpUse' . $this->mName;
 	}
 
 	/**
@@ -182,7 +182,7 @@ class WebExtension {
 	 *
 	 * @return bool
 	 */
-	public function isActivated(){
+	public function isActivated() {
 		global $wgConf;
 		return in_array( $this->getFile(), $wgConf->getIncludedFiles() );
 	}
@@ -192,7 +192,7 @@ class WebExtension {
 	 *
 	 * @return bool
 	 */
-	public function isInstalled(){
+	public function isInstalled() {
 		return file_exists( $this->getFile() );
 	}
 }

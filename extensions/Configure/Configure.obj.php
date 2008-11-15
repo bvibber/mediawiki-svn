@@ -3,7 +3,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 # The autoloader is loaded after LocalSettings.php, so we'll need to load
 # that file manually
-if( !class_exists( 'SiteConfiguration' ) )
+if ( !class_exists( 'SiteConfiguration' ) )
 	require_once( "$IP/includes/SiteConfiguration.php" );
 
 /**
@@ -24,7 +24,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param string $path path to the directory that contains the configuration
 	 *                     files
 	 */
-	public function __construct( $wiki = 'default' ){
+	public function __construct( $wiki = 'default' ) {
 		global $wgConfigureHandler;
 		$class = 'ConfigureHandler' . ucfirst( $wgConfigureHandler );
 		$this->mHandler = new $class();
@@ -35,32 +35,32 @@ class WebConfiguration extends SiteConfiguration {
 	 * Load the configuration from the conf-now.ser file in the $this->mDir
 	 * directory
 	 */
-	public function initialise( $useCache = true ){
+	public function initialise( $useCache = true ) {
 		parent::initialise();
 		$this->mConf = $this->mHandler->getCurrent( $useCache );
 		$this->mOldSettings = $this->settings;
 
 		# We'll need to invert the order of keys as SiteConfiguration uses
 		# $settings[$setting][$wiki] and the extension uses $settings[$wiki][$setting]
-		foreach( $this->mConf as $site => $settings ){
-			if( !is_array( $settings ) )
+		foreach ( $this->mConf as $site => $settings ) {
+			if ( !is_array( $settings ) )
 				continue;
-			foreach( $settings as $name => $val ){
-				if( $name != '__includes' ) {
+			foreach ( $settings as $name => $val ) {
+				if ( $name != '__includes' ) {
 					# Merge if possible
-					if( isset( $this->settings[$name][$site] ) && is_array( $this->settings[$name][$site] ) && is_array( $val ) ){
+					if ( isset( $this->settings[$name][$site] ) && is_array( $this->settings[$name][$site] ) && is_array( $val ) ) {
 						$this->settings[$name][$site] = self::mergeArrays( $val, $this->settings[$name][$site] );
 					}
-					elseif( isset( $this->settings[$name]["+$site"] ) && is_array( $this->settings[$name]["+$site"] ) && is_array( $val ) ) {
+					elseif ( isset( $this->settings[$name]["+$site"] ) && is_array( $this->settings[$name]["+$site"] ) && is_array( $val ) ) {
 						$this->settings[$name]["+$site"] = self::mergeArrays( $val, $this->settings[$name]["+$site"] );
 					}
-					elseif( isset( $this->settings["+$name"][$site] ) && is_array( $this->settings["+$name"][$site] ) && is_array( $val ) ) {
+					elseif ( isset( $this->settings["+$name"][$site] ) && is_array( $this->settings["+$name"][$site] ) && is_array( $val ) ) {
 						$this->settings["+$name"][$site] = self::mergeArrays( $val, $this->settings["+$name"][$site] );
 					}
-					elseif( isset( $this->settings["+$name"]["+$site"] ) && is_array( $this->settings["+$name"]["+$site"] ) && is_array( $val ) ) {
+					elseif ( isset( $this->settings["+$name"]["+$site"] ) && is_array( $this->settings["+$name"]["+$site"] ) && is_array( $val ) ) {
 						$this->settings["+$name"]["+$site"] = self::mergeArrays( $val, $this->settings["+$name"]["+$site"] );
 					}
-					elseif( isset( $this->settings["+$name"] ) && is_array( $val ) ) {
+					elseif ( isset( $this->settings["+$name"] ) && is_array( $val ) ) {
 						$this->settings["+$name"][$site] = $val;
 					}
 					else {
@@ -74,10 +74,10 @@ class WebConfiguration extends SiteConfiguration {
 	/**
 	 * extract settings for this wiki in $GLOBALS
 	 */
-	public function extract(){
+	public function extract() {
 		// Special case for manage.php maintenance script so that it can work
 		// even if the current configuration is broken
-		if( defined( 'EXT_CONFIGURE_NO_EXTRACT' ) )
+		if ( defined( 'EXT_CONFIGURE_NO_EXTRACT' ) )
 			return;
 
 		// Include files before so that customized settings won't be overriden
@@ -89,8 +89,8 @@ class WebConfiguration extends SiteConfiguration {
 		$this->extractAllGlobals( $this->mWiki, $site, $rewrites );
 	}
 
-	public function getIncludedFiles(){
-		if( isset( $this->mConf[$this->mWiki]['__includes'] ) )
+	public function getIncludedFiles() {
+		if ( isset( $this->mConf[$this->mWiki]['__includes'] ) )
 			return $this->mConf[$this->mWiki]['__includes'];
 		else
 			return array();
@@ -99,17 +99,17 @@ class WebConfiguration extends SiteConfiguration {
 	/**
 	 * Include all extensions files of actived extensions
 	 */
-	public function includeFiles(){
+	public function includeFiles() {
 		$includes = $this->getIncludedFiles();
-		if( !count( $includes ) )
+		if ( !count( $includes ) )
 			return;
 
 		// Since the files should be included from the global scope, we'll need
 		// to import that variabled in this function
 		extract( $GLOBALS, EXTR_REFS );
 
-		foreach( $includes as $file ){
-			if( file_exists( $file ) ){
+		foreach ( $includes as $file ) {
+			if ( file_exists( $file ) ) {
 				require_once( $file );
 			} else {
 				trigger_error( __METHOD__ . ": required file $file doesn't exist", E_USER_WARNING );
@@ -123,7 +123,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param $wiki String: wiki name
 	 * @return array
 	 */
-	public function getCurrent( $wiki ){
+	public function getCurrent( $wiki ) {
 		list( $site, $lang ) = $this->siteFromDB( $wiki );
 		$rewrites = array( 'wiki' => $wiki, 'site' => $site, 'lang' => $lang );
 		return $this->getAll( $wiki, $site, $rewrites );
@@ -136,7 +136,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param $ts timestamp
 	 * @return array
 	 */
-	public function getOldSettings( $ts ){
+	public function getOldSettings( $ts ) {
 		return $this->mHandler->getOldSettings( $ts );
 	}
 
@@ -146,7 +146,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param $ts timestamp
 	 * @return array
 	 */
-	public function getWikisInVersion( $ts ){
+	public function getWikisInVersion( $ts ) {
 		return $this->mHandler->getWikisInVersion( $ts );
 	}
 
@@ -155,7 +155,7 @@ class WebConfiguration extends SiteConfiguration {
 	 *
 	 * @return Pager
 	 */
-	public function getPager(){
+	public function getPager() {
 		return $this->mHandler->getPager();
 	}
 
@@ -166,13 +166,13 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array
 	 */
 	public function getDefaults() {
-		if( count( $this->mDefaults ) )
+		if ( count( $this->mDefaults ) )
 			return $this->mDefaults;
 
 		global $IP;
 		require( "$IP/includes/DefaultSettings.php" );
-		foreach( get_defined_vars() as $name => $var ){
-			if( substr( $name, 0, 2 ) == 'wg' && $name != 'wgConf' )
+		foreach ( get_defined_vars() as $name => $var ) {
+			if ( substr( $name, 0, 2 ) == 'wg' && $name != 'wgConf' )
 				$this->mDefaults[$name] = $var;
 		}
 		return $this->mDefaults;
@@ -185,17 +185,17 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param $wiki String
 	 * @return array
 	 */
-	public function getDefaultsForWiki( $wiki ){
+	public function getDefaultsForWiki( $wiki ) {
 		// Hmm, a better solution would be nice!
 		$savedSettings = $this->settings;
 		$this->settings = $this->mOldSettings;
 		$globalDefaults = $this->getDefaults();
 
 		$savedGlobals = array();
-		foreach( $this->settings as $name => $val ){
-			if( substr( $name, 0, 1 ) == '+' ){
+		foreach ( $this->settings as $name => $val ) {
+			if ( substr( $name, 0, 1 ) == '+' ) {
 				$setting = substr( $name, 1 );
-				if( isset( $globalDefaults[$setting] ) ){
+				if ( isset( $globalDefaults[$setting] ) ) {
 					$savedGlobals[$setting] = $GLOBALS[$setting];
 					$GLOBALS[$setting] = $globalDefaults[$setting];
 				}
@@ -206,16 +206,16 @@ class WebConfiguration extends SiteConfiguration {
 
 		$this->settings = $savedSettings;
 		unset( $savedSettings );
-		foreach( $savedGlobals as $name => $val ){
+		foreach ( $savedGlobals as $name => $val ) {
 			$GLOBALS[$setting] = $savedGlobals[$setting];
 		}
 
 		$ret = array();
 		$keys = array_unique( array_merge( array_keys( $wikiDefaults ), array_keys( $globalDefaults ) ) );
-		foreach( $keys as $setting ){
-			if( isset( $wikiDefaults[$setting] ) && !is_null( $wikiDefaults[$setting] ) )
+		foreach ( $keys as $setting ) {
+			if ( isset( $wikiDefaults[$setting] ) && !is_null( $wikiDefaults[$setting] ) )
 				$ret[$setting] = $wikiDefaults[$setting];
-			elseif( isset( $globalDefaults[$setting] ) )
+			elseif ( isset( $globalDefaults[$setting] ) )
 				$ret[$setting] = $globalDefaults[$setting];
 		}
 		return $ret;
@@ -227,16 +227,16 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param $wiki String: wiki name or false to use the current one
 	 * @return bool true on success
 	 */
-	public function saveNewSettings( $settings, $wiki = false ){
-		if( !is_array( $settings ) || $settings === array() )
+	public function saveNewSettings( $settings, $wiki = false ) {
+		if ( !is_array( $settings ) || $settings === array() )
 			# hmmm
 			return false;
 
-		if( $wiki === null ){
+		if ( $wiki === null ) {
 			$this->mConf = $settings;
 			$wiki = true;
 		} else {
-			if( $wiki === false )
+			if ( $wiki === false )
 				$wiki = $this->getWiki();
 			$this->mConf[$wiki] = $settings;
 		}
@@ -248,14 +248,14 @@ class WebConfiguration extends SiteConfiguration {
 	 * List all archived files that are like conf-{$ts}.ser
 	 * @return array of timestamps
 	 */
-	public function listArchiveVersions(){
+	public function listArchiveVersions() {
 		return $this->mHandler->listArchiveVersions();
 	}
 
 	/**
 	 * Do some checks
 	 */
-	public function doChecks(){
+	public function doChecks() {
 		return $this->mHandler->doChecks();
 	}
 
@@ -263,7 +263,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * Get not editable settings with the current handler
 	 * @return array
 	 */
-	public function getNotEditableSettings(){
+	public function getNotEditableSettings() {
 		return $this->mHandler->getNotEditableSettings();
 	}
 
@@ -272,7 +272,7 @@ class WebConfiguration extends SiteConfiguration {
 	 *
 	 * @return String
 	 */
-	public function getWiki(){
+	public function getWiki() {
 		return $this->mWiki;
 	}
 
@@ -280,7 +280,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * Get the configuration handler
 	 * @return ConfigurationHandler
 	 */
-	public function getHandler(){
+	public function getHandler() {
 		return $this->mHandler;
 	}
 
@@ -292,19 +292,19 @@ class WebConfiguration extends SiteConfiguration {
 	public static function mergeArrays( /* $array1, ... */ ) {
 		$args = func_get_args();
 		$canAdd = true;
-		foreach( $args as $arr ){
-			if( $arr !== array_values( $arr ) ){
+		foreach ( $args as $arr ) {
+			if ( $arr !== array_values( $arr ) ) {
 				$canAdd = false;
 				break;
 			}
 		}
 
 		$out = array_shift( $args );
-		foreach( $args as $arr ){
-			foreach( $arr as $key => $value ) {
-				if( isset( $out[$key] ) && is_array( $out[$key] ) && is_array( $value ) ) {
+		foreach ( $args as $arr ) {
+			foreach ( $arr as $key => $value ) {
+				if ( isset( $out[$key] ) && is_array( $out[$key] ) && is_array( $value ) ) {
 					$out[$key] = self::mergeArrays( $out[$key], $value );
-				} elseif( $canAdd ) {
+				} elseif ( $canAdd ) {
 					$out[] = $value;
 				} else {
 					$out[$key] = $value;

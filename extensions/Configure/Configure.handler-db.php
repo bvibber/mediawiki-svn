@@ -12,7 +12,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * Construct a new object.
 	 */
-	public function __construct(){
+	public function __construct() {
 		global $IP, $wgConfigureDatabase;
 		require_once( "$IP/includes/GlobalFunctions.php" );
 		require_once( "$IP/includes/ObjectCache.php" );
@@ -38,7 +38,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * Get cache key
 	 */
-	protected function cacheKey( /* ... */ ){
+	protected function cacheKey( /* ... */ ) {
 		$args = func_get_args();
 		$args = array_merge( wfSplitWikiID( $this->mDb ), $args );
 		return call_user_func_array( 'wfForeignMemcKey', $args );
@@ -67,10 +67,10 @@ class ConfigureHandlerDb implements ConfigureHandler {
 
 		$mtime = filemtime( $path );
 
-		if ( time() > ( $mtime + $expiry ) ) ## Regenerate every five minutes or so
+		if ( time() > ( $mtime + $expiry ) ) # Regenerate every five minutes or so
 			return null;
 
-		## Suppress errors, if there's an error, it'll just be null and we'll do it again.
+		# Suppress errors, if there's an error, it'll just be null and we'll do it again.
 		$data = @unserialize( file_get_contents( $path ) );
 
 		return $data;
@@ -90,21 +90,21 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * Load the current configuration the database (i.e. cv_is_latest == 1)
 	 * directory
 	 */
-	public function getCurrent( $useCache = true ){
+	public function getCurrent( $useCache = true ) {
 		static $ipCached = null;
 
-		if ($ipCached && $useCache) ## In-process caching...
+		if ( $ipCached && $useCache ) # In-process caching...
 			return $ipCached;
 
-		## Check filesystem cache
-		if ( ( $cached = $this->getFSCached()) && $useCache ) {
+		# Check filesystem cache
+		if ( ( $cached = $this->getFSCached() ) && $useCache ) {
 			$this->cacheToFS( $cached );
 			return $ipCached = $cached;
 		}
 
 		$cacheKey = $this->cacheKey( 'configure', 'current' );
 		$cached = $this->getCache()->get( $cacheKey );
-		if( is_array( $cached ) && $useCache ){
+		if ( is_array( $cached ) && $useCache ) {
 			return $ipCached = $cached;
 		}
 
@@ -119,14 +119,14 @@ class ConfigureHandlerDb implements ConfigureHandler {
 				array( 'config_version' => array( 'LEFT JOIN', 'cs_id = cv_id' ) )
 			);
 			$arr = array();
-			foreach( $ret as $row ){
+			foreach ( $ret as $row ) {
 				$arr[$row->cv_wiki][$row->cs_name] = unserialize( $row->cs_value );
 			}
 			$this->getCache()->set( $cacheKey, $arr, 3600 );
-			$this->cacheToFS($arr);
+			$this->cacheToFS( $arr );
 
 			return $ipCached = $arr;
-		} catch( MWException $e ) {
+		} catch ( MWException $e ) {
 			return array();
 		}
 	}
@@ -138,7 +138,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * @param $ts timestamp
 	 * @return array
 	 */
-	public function getOldSettings( $ts ){
+	public function getOldSettings( $ts ) {
 		$db = $this->getSlaveDB();
 		$ret = $db->select(
 			array( 'config_setting', 'config_version' ),
@@ -149,7 +149,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			array( 'config_version' => array( 'LEFT JOIN', 'cs_id = cv_id' ) )
 		);
 		$arr = array();
-		foreach( $ret as $row ){
+		foreach ( $ret as $row ) {
 			$arr[$row->cv_wiki][$row->cs_name] = unserialize( $row->cs_value );
 		}
 		return $arr;
@@ -161,9 +161,9 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * @param $ts timestamp
 	 * @return array
 	 */
-	public function getWikisInVersion( $ts ){
+	public function getWikisInVersion( $ts ) {
 		$wiki = $this->getSlaveDB()->selectField( 'config_version', 'cv_wiki', array( 'cv_timestamp' => $ts ), __METHOD__ );
-		if( $wiki === false )
+		if ( $wiki === false )
 			return array();
 		return array( $wiki );
 	}
@@ -173,7 +173,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 *
 	 * @return Pager
 	 */
-	public function getPager(){
+	public function getPager() {
 		return new ConfigurationPagerDb( $this );
 	}
 
@@ -184,13 +184,13 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * @param $ts
 	 * @return bool true on success
 	 */
-	public function saveNewSettings( $settings, $wiki, $ts = false ){
-		if( $wiki === true ){
-			foreach( $settings as $name => $val ){
+	public function saveNewSettings( $settings, $wiki, $ts = false ) {
+		if ( $wiki === true ) {
+			foreach ( $settings as $name => $val ) {
 				$this->saveSettingsForWiki( $val, $name, $ts );
 			}
 		} else {
-			if( !isset( $settings[$wiki] ) )
+			if ( !isset( $settings[$wiki] ) )
 				return false;
 			$this->saveSettingsForWiki( $settings[$wiki], $wiki, $ts );
 		}
@@ -201,9 +201,9 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * save the configuration for $wiki
 	 */
-	protected function saveSettingsForWiki( $settings, $wiki, $ts ){
+	protected function saveSettingsForWiki( $settings, $wiki, $ts ) {
 		$dbw = $this->getMasterDB();
-		if( !$ts )
+		if ( !$ts )
 			$ts = wfTimestampNow();
 		$dbw->begin();
 		$dbw->insert( 'config_version',
@@ -217,10 +217,10 @@ class ConfigureHandlerDb implements ConfigureHandler {
 		$newId = $dbw->insertId();
 		$dbw->update( 'config_version',
 			array( 'cv_is_latest' => 0 ),
-			array( 'cv_wiki' => $wiki, 'cv_timestamp <> '.$dbw->addQuotes( $ts ) ),
+			array( 'cv_wiki' => $wiki, 'cv_timestamp <> ' . $dbw->addQuotes( $ts ) ),
 			__METHOD__ );
 		$insert = array();
-		foreach( $settings as $name => $val ){
+		foreach ( $settings as $name => $val ) {
 			$insert[] = array(
 				'cs_id' => $newId,
 				'cs_name' => $name,
@@ -236,7 +236,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * List all archived versions
 	 * @return array of timestamps
 	 */
-	public function listArchiveVersions(){
+	public function listArchiveVersions() {
 		$db = $this->getSlaveDB();
 		$ret = $db->select(
 			array( 'config_version' ),
@@ -246,7 +246,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			array( 'ORDER BY' => 'cv_timestamp DESC' )
 		);
 		$arr = array();
-		foreach( $ret as $row ){
+		foreach ( $ret as $row ) {
 			$arr[] = $row->cv_timestamp;
 		}
 		return $arr;
@@ -255,13 +255,13 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * Do some checks
 	 */
-	public function doChecks(){
+	public function doChecks() {
 		try {
 			$dbw = $this->getMasterDB();
-		} catch( MWException $e ) {
+		} catch ( MWException $e ) {
 			return array( 'configure-db-error', $this->mDb );
 		}
-		if( !$dbw->tableExists( 'config_version' ) )
+		if ( !$dbw->tableExists( 'config_version' ) )
 			return array( 'configure-db-table-error' );
 		return array();
 	}
@@ -269,7 +269,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * Get settings that are not editable with the database handler
 	 */
-	public function getNotEditableSettings(){
+	public function getNotEditableSettings() {
 		return array(
 		# Database
 			'wgAllDBsAreLocalhost',

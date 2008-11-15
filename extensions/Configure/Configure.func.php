@@ -16,22 +16,22 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @param $group String: new group name
  * @return either <err#> if group already exist or html fragment
  */
-function efConfigureAjax( $group ){
+function efConfigureAjax( $group ) {
 	global $wgUser, $wgGroupPermissions;
-	if( !$wgUser->isAllowed( 'configure-all' ) ){
+	if ( !$wgUser->isAllowed( 'configure-all' ) ) {
 		return '<err#>';
 	}
-	if( isset( $wgGroupPermissions[$group] ) ){
+	if ( isset( $wgGroupPermissions[$group] ) ) {
 		$html = '<err#>';
 	} else {
 		$all = User::getAllRights();
 		$row = '<div style="-moz-column-count:2"><ul>';
-		foreach( $all as $right ){
-			$id = Sanitizer::escapeId( 'wpwgGroupPermissions-'.$group.'-'.$right );
+		foreach ( $all as $right ) {
+			$id = Sanitizer::escapeId( 'wpwgGroupPermissions-' . $group . '-' . $right );
 			$desc = ( is_callable( array( 'User', 'getRightDescription' ) ) ) ?
 				User::getRightDescription( $right ) :
 				$right;
-			$row .= '<li>'.Xml::checkLabel( $desc, $id, $id ) . "</li>\n";
+			$row .= '<li>' . Xml::checkLabel( $desc, $id, $id ) . "</li>\n";
 		}
 		$row .= '</ul></div>';
 		$groupName = User::getGroupName( $group );
@@ -51,7 +51,7 @@ function efConfigureAjax( $group ){
  *
  * @param $wiki String
  */
-function efConfigureSetup( $wiki = 'default' ){
+function efConfigureSetup( $wiki = 'default' ) {
 	global $wgConf, $wgConfigureFilesPath;
 
 	# Create the new configuration object...
@@ -64,7 +64,7 @@ function efConfigureSetup( $wiki = 'default' ){
 	$wgConf->wikis = $oldConf->wikis;
 	$wgConf->settings = $oldConf->settings;
 	$wgConf->localVHosts = $oldConf->localVHosts;
-	if( isset( $oldConf->siteParamsCallback ) ) # 1.14+
+	if ( isset( $oldConf->siteParamsCallback ) ) # 1.14+
 		$wgConf->siteParamsCallback = $oldConf->siteParamsCallback;
 
 	# Load the new configuration, and fill in the settings
@@ -77,7 +77,7 @@ function efConfigureSetup( $wiki = 'default' ){
  */
 function efConfigureSetupAPI() {
 	global $wgConfigureAPI, $wgAPIModules;
-	if( $wgConfigureAPI === true ) {
+	if ( $wgConfigureAPI === true ) {
 		$wgAPIModules['configure'] = 'ApiConfigure';
 	}
 }
@@ -85,7 +85,7 @@ function efConfigureSetupAPI() {
 /**
  * Add custom rights defined in $wgRestrictionLevels
  */
-function efConfigureGetAllRights( &$rights ){
+function efConfigureGetAllRights( &$rights ) {
 	global $wgRestrictionLevels;
 	$newrights = array_diff( $wgRestrictionLevels, array( '', 'sysop' ) ); // Pseudo rights
 	$rights = array_unique( array_merge( $rights, $newrights ) );
