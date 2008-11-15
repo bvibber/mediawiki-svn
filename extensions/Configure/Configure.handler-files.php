@@ -33,14 +33,14 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 			# maybe the first time the user use this extensions, do not override
 			# anything
 			return array();
-		$cont = file_get_contents( $file );
+		$cont = @file_get_contents( $file );
 		if ( empty( $cont ) )
 			# Weird, should not happen
 			return array();
 		$arr = unserialize( $cont );
 		if ( !is_array( $arr ) )
 			# Weird, should not happen too
-			return;
+			return array();
 		return $arr;
 	}
 
@@ -57,7 +57,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 			# maybe the time the user use this extensions, do not override
 			# anything
 			return array();
-		$cont = file_get_contents( $file );
+		$cont = @file_get_contents( $file );
 		if ( empty( $cont ) )
 			# Weird, should not happen
 			return array();
@@ -98,8 +98,8 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		$arch = $this->getArchiveFileName();
 		$cur = $this->getFileName();
 		$cont = serialize( $settings );
-		file_put_contents( $arch, $cont );
-		return ( file_put_contents( $cur, $cont ) !== false );
+		@file_put_contents( $arch, $cont );
+		return ( @file_put_contents( $cur, $cont ) !== false );
 	}
 
 	/**
@@ -157,8 +157,6 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * @return String full path to the file
 	 */
 	public function getArchiveFileName( $ts = null ) {
-		global $IP;
-
 		if ( $ts === null )
 			$ts = wfTimestampNow();
 
