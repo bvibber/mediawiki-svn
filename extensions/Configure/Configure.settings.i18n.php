@@ -9,6 +9,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'configure-setting-desc' => 'Descriptions for MediaWiki configuration settings', # Do not translate to other languages
 	'configure-setting-wgSitename' => 'Site name',
 	'configure-setting-wgActionPaths' => 'Per-action URLs',
 	'configure-setting-wgAllDBsAreLocalhost' => "Silently rewrite all database connections to the local host",
