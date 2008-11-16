@@ -411,7 +411,7 @@ $messages['en'] = array(
 	'configure-setting-wgAllowUserJs' => "Allow user JavaScript pages",
 	'configure-setting-wgUseSiteCss' => "Use the site's Cascading Style Sheets (CSS)",
 	'configure-setting-wgUseSiteJs' => "Use the site's JavaScript page",
-	'configure-setting-wgHandheldStyle' => "Style for media=\"handled\"",
+	'configure-setting-wgHandheldStyle' => "Style for media=\"handheld\"",
 	'configure-setting-wgHandheldForIPhone' => "Apply 'screen' and 'handheld' media types to iPhone",
 	'configure-setting-wgUseAjax' => "Enable AJAX",
 	'configure-setting-wgAjaxExportList' => "Callable AJAX functions",
