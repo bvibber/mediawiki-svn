@@ -138,7 +138,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	/**
 	 * All settings are editable!
 	 */
-	public function getNotEditableSettings() {
+	public function getUneditableSettings() {
 		return array();
 	}
 

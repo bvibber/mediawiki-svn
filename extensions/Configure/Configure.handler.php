@@ -66,5 +66,5 @@ interface ConfigureHandler {
 	 * Get settings that are not editable with this handler
 	 * @return array
 	 */
-	public function getNotEditableSettings();
+	public function getUneditableSettings();
 }

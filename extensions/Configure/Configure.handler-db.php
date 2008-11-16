@@ -269,7 +269,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * Get settings that are not editable with the database handler
 	 */
-	public function getNotEditableSettings() {
+	public function getUneditableSettings() {
 		return array(
 		# Database
 			'wgAllDBsAreLocalhost',

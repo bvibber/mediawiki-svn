@@ -168,7 +168,7 @@ class ConfigurationSettings {
 	 *
 	 * @return array
 	 */
-	public function getNotEditableSettings() {
+	public function getUneditableSettings() {
 		$this->loadSettingsDefs();
 		$ret = array();
 		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
@@ -178,7 +178,7 @@ class ConfigurationSettings {
 			$ret += array(); // Nothing for extensions
 		}
 		global $wgConf;
-		$ret = array_merge( $ret, $wgConf->getNotEditableSettings() );
+		$ret = array_merge( $ret, $wgConf->getUneditableSettings() );
 		return $ret;
 	}
 
@@ -268,7 +268,6 @@ class ConfigurationSettings {
 	public function getArrayType( $setting ) {
 		$arr = $this->getArrayDefs();
 		return isset( $arr[$setting] ) ?
-			$arr[$setting] :
-			null;
+			$arr[$setting] : null;
 	}
 }

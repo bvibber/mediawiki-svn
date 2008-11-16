@@ -64,7 +64,7 @@ class ApiConfigure extends ApiBase {
 				$this->dieUsage( 'wiki not found in version', 'nowiki' );
 			$settingsValues = $settingsValues[$wiki];
 			$conf = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH );
-			$notEditable = $conf->getNotEditableSettings();
+			$notEditable = $conf->getUneditableSettings();
 			$ret = array();
 			if ( $params['group'] ) {
 				$sections = $conf->getSettings();
@@ -120,7 +120,7 @@ class ApiConfigure extends ApiBase {
 
 	protected function userCanRead( $setting, $conf ) {
 		global $wgUser, $wgConfigureViewRestrictions;
-		if ( in_array( $setting, $conf->getNotEditableSettings() )
+		if ( in_array( $setting, $conf->getUneditableSettings() )
 			|| ( in_array( $setting, $conf->getViewRestricted() )
 			&& !$wgUser->isAllowed( 'viewconfig-all' ) ) )
 			return false;

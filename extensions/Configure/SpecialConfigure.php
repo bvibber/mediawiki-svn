@@ -44,6 +44,7 @@ class SpecialConfigure extends ConfigurationPage {
 		return ( $this->isSettingAvailable( $setting )
 			&& $this->userCanEdit( $setting )
 			&& ( $this->getSettingType( $setting ) != 'array'
+			// Array type is not NULL or 'array'
 				|| !in_array( $this->getArrayType( $setting ), array( 'array', null ) ) ) );
 	}
 

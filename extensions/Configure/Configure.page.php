@@ -98,7 +98,10 @@ abstract class ConfigurationPage extends SpecialPage {
 
 		switch( $type ) {
 		case 'submit':
-			$this->doSubmit();
+			if( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) )
+				$this->doSubmit();
+			else
+				$this->showForm();
 			break;
 		case 'diff':
 			$this->conf = $this->importFromRequest();
@@ -174,7 +177,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return bool
 	 */
 	public function userCanRead( $setting ) {
-		if ( in_array( $setting, $this->mConfSettings->getNotEditableSettings() )
+		if ( in_array( $setting, $this->mConfSettings->getUneditableSettings() )
 			|| ( in_array( $setting, $this->mConfSettings->getViewRestricted() )
 			&& !$this->isUserAllowedAll() ) )
 			return false;
@@ -203,11 +206,11 @@ abstract class ConfigurationPage extends SpecialPage {
 	 *
 	 * @return array
 	 */
-	protected function getNotEditableSettings() {
+	protected function getUneditableSettings() {
 		static $notEditable;
 		if ( !isset( $notEditable ) ) {
 			global $wgConfigureNotEditableSettings;
-			$notEditable = array_merge( $this->mConfSettings->getNotEditableSettings(),
+			$notEditable = array_merge( $this->mConfSettings->getUneditableSettings(),
 				$wgConfigureNotEditableSettings );
 		}
 		return $notEditable;
@@ -219,7 +222,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return array
 	 */
 	protected function getEditableSettings() {
-		$notEdit = $this->getNotEditableSettings();
+		$notEdit = $this->getUneditableSettings();
 		$settings = $this->mConfSettings->getAllSettings();
 		foreach ( $notEdit as $setting )
 			unset( $settings[$setting] );
@@ -655,6 +658,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			( $this->mCanEdit ?
 				Xml::openElement( 'div', array( 'id' => 'prefsubmit' ) ) . "\n" .
 				Xml::openElement( 'div', array() ) . "\n" .
+				Xml::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n" .
 				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpSave', 
 					'class' => 'btnSavePrefs', 'value' => wfMsgHtml( 'configure-btn-save' ) ) ) . "\n" .
 				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpPreview', 
@@ -1058,7 +1062,7 @@ abstract class ConfigurationPage extends SpecialPage {
 
 		$ret = '';
 		$perms = array();
-		$notEditableSet = $this->getNotEditableSettings();
+		$notEditableSet = $this->getUneditableSettings();
 		foreach ( $settings as $title => $groups ) {
 			$res = true;
 			if ( !isset( $param['restrict'] ) ) {

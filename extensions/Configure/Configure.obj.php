@@ -269,8 +269,8 @@ class WebConfiguration extends SiteConfiguration {
 	 * Get not editable settings with the current handler
 	 * @return array
 	 */
-	public function getNotEditableSettings() {
-		return $this->mHandler->getNotEditableSettings();
+	public function getUneditableSettings() {
+		return $this->mHandler->getUneditableSettings();
 	}
 
 	/**
@@ -292,7 +292,7 @@ class WebConfiguration extends SiteConfiguration {
 
 	/**
 	 * Merge array settings
-	 *
+	 * TODO: document!
 	 * @return Array
 	 */
 	public static function mergeArrays( /* $array1, ... */ ) {
