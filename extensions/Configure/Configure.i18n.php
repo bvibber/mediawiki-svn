@@ -1001,6 +1001,8 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-js-prompt-group' => 'Entrez le nom du nouveau groupe :',
 	'configure-js-remove' => 'Supprimer',
 	'configure-js-remove-row' => 'Supprimer cette entrée',
+	'configure-js-get-image-url' => 'Convertir le fichier en URL',
+	'configure-js-image-error' => "Une erreur est survenue pendant la recherche de l'URL. Vérifiez que le fichier existe.",
 	'configure-no-diff' => "Il n'y a pas de modifications entre les deux versions selectionnées.",
 	'configure-no-directory' => 'Le dossier utilisé pour sauvegarder la configuration, <tt>$1</tt>, n’existe pas. Veuillez le créer ou le changer pour que cette extension fonctionne.',
 	'configure-no-old' => "Il n’existe pas d'ancienne version disponible de la configuration.",
@@ -2139,6 +2141,9 @@ Zorg er voor dat PHP in de map kan schrijven om deze extensie te gebruiken.',
 	'configure-js-prompt-group' => 'Voer de naam van de nieuwe groep in:',
 	'configure-js-remove' => 'Verwijderen',
 	'configure-js-remove-row' => 'Deze regel verwijderen',
+	'configure-js-get-image-url' => 'Bestandsnaam naar URL converteren',
+	'configure-js-image-error' => 'Er is een fout opgetreden bij het ophalen van de URL.
+Controleer of het bestand bestaat.',
 	'configure-no-diff' => 'Er is geen verschil tussen de aangegeven versies.',
 	'configure-no-directory' => 'De map waarin de instellingen moeten worden opgeslagen (<tt>$1</tt>) bestaat niet.
 Maak die map aan, of verander de instelling voordat u deze extensie kunt gebruiken.',
@@ -3461,3 +3466,4 @@ $messages['zh-hant'] = array(
 	'configure-edit-ext' => '擴充套件',
 	'configure-ext-doc' => '檢視線上文件',
 );
+

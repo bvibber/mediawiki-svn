@@ -98,6 +98,9 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'searchbox-desc' => 'Abannen vu Sich-Formulairen erlaben',
+	'searchbox-search' => 'Sichen',
+	'searchbox-go' => 'Lass',
+	'searchbox-namespaces' => 'Nummraim:',
 );
 
 /** Dutch (Nederlands)

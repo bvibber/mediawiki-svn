@@ -322,9 +322,12 @@ Le systema de notification de %s',
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'tasklist' => 'Daftar Tugas',
+	'tasklist-parser-desc' => "Nambahaké <nowiki>{{#todo:}}</nowiki> fungsi parser kanggo nemtokaké tugas-tugas (''tasks'')",
+	'tasklist-special-desc' => 'Nambah kaca istiméwa kanggo ninjo [[Special:TaskList|dhpatar tugas]]',
 	'tasklistbyproject' => 'Daftar Tugas Per Proyèk',
 	'tasklistunknownproject' => 'Proyèk ora ditepungi',
 	'tasklistunspecuser' => 'Panganggo ora dispésifikasi',

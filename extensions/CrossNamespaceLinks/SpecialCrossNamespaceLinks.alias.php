@@ -72,6 +72,11 @@ $aliases['hu'] = array(
 	'CrossNamespaceLinks' => array( 'Névtérközi linkek' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'CrossNamespaceLinks' => array( '名前空間をまたぐリンク' ),
+);
+
 /** Latin (Latina) */
 $aliases['la'] = array(
 	'CrossNamespaceLinks' => array( 'Nexus trans praefixa' ),

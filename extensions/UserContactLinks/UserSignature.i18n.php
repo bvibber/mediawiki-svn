@@ -139,9 +139,11 @@ $messages['ia'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'usercontactlink-baduser' => 'jeneng panganggo ora bener',
+	'usercontactlink-desc' => 'Mènèhi kamampuan kanggo sacara gampang lan konsisten nambah jeneng panganggo liya nganggo sintaks ^^^panganggo^^^',
 );
 
 /** Khmer (ភាសាខ្មែរ)

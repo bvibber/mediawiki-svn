@@ -207,6 +207,13 @@ $messages['ja'] = array(
 	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> のタグを画像として挿入',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'fixedimage-desc' => 'Nambahaké tag <tt><nowiki><fundraising></nowiki></tt> minangka gambar',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

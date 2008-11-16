@@ -163,6 +163,13 @@ $messages['ja'] = array(
 	'antibot-desc' => 'スパムボットをチェックする簡単なフレームワークとトリガーのペイロード',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'antibot-desc' => 'Krangka kerja prasaja kanggo mriksa spambot lan lat pamicu',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

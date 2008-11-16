@@ -308,6 +308,7 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -315,15 +316,25 @@ $messages['he'] = array(
 	'form' => 'טופס',
 	'formnoname' => 'אין שם לטופס',
 	'formnonametext' => 'עליכם לספק שם לטופס, כגון "Special:Form/Nameofform".',
-	'formbadname' => 'שם הטופס שגוי',
-	'formbadnametext' => 'אין טופס העונה לשם זה.',
+	'formbadname' => 'שם הטופס אינו תקין',
+	'formbadnametext' => 'אין טופס בשם זה.',
 	'formpattern' => 'טופס־$1',
 	'formtitlepattern' => 'הוספת $1 חדש',
-	'formsave' => 'שמור',
+	'formsave' => 'שמירה',
 	'formindexmismatch-title' => 'מבנה השם והתבנית אינם תואמים',
 	'formindexmismatch' => 'טופס זה אינו תואם את מבנה השם ואת התבניות המתחילות באינדקס $1.',
 	'formarticleexists' => 'הדף קיים',
 	'formarticleexiststext' => 'הדף [[$1]] כבר קיים.',
+	'formbadpagename' => 'שם הדף אינו תקין',
+	'formbadrecaptcha' => 'הערכים שהוזנו ל־reCaptcha שגויים. נסו שוב.',
+	'formbadpagenametext' => 'נתוני הטופס ששלחתם יוצרים דף בעל שם בלתי תקין, "$1".',
+	'formrequiredfieldpluralerror' => 'השדות $1 נדרשים להשלמת טופס זה.
+אנא מלאו אותם.',
+	'formrequiredfielderror' => 'מילוי השדה $1 נדרש להשלמת טופס זה.
+אנא מלאו אותו.',
+	'formsavesummary' => 'דף חדש באמצעות [[Special:Form/$1|טופס $1]]',
+	'formsaveerror' => 'שגיאה בשמירת הטופס',
+	'formsaveerrortext' => "אירעה שגיאה בלתי ידועה בעת שמירת הדף '$1'.",
 );
 
 /** Croatian (Hrvatski)
@@ -410,6 +421,7 @@ $messages['is'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'form' => 'Formulir',
@@ -423,7 +435,7 @@ $messages['jv'] = array(
 	'formbadpagename' => 'Jeneng kaca ala',
 	'formrequiredfielderror' => 'Lapangan $1 diperlokaké kanggo formulir iki.
 Tulung diisi.',
-	'formsavesummary' => 'Kaca anyar nganggo [[Special:Form/$1]]',
+	'formsavesummary' => 'Kaca anyar nganggo [[Special:Form/$1|formulir $1]]',
 	'formsaveerror' => 'Ana kaluputan nalika nyimpen formulir',
 	'formsaveerrortext' => "Ana kaluputan sing ora dimangertèni nalika nyimpen kaca '$1'.",
 );

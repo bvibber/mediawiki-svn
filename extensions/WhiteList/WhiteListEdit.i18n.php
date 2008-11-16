@@ -362,6 +362,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Liam Rosen
+ * @author Pill
  */
 $messages['de'] = array(
 	'whitelist-desc' => 'Zugriffsrechte von beschränkten Benutzern bearbeiten',
@@ -389,6 +390,8 @@ Entweder * oder % als Maskenzeichen benutzen",
 	'whitelistnewtabledate' => 'Ablaufdatum:',
 	'whitelistnewtableedit' => 'Bearbeiten',
 	'whitelistnewtableview' => 'Anschauen',
+	'whitelistnowhitelistedusers' => 'Es gibt keine Benutzer, die der Gruppe „{{MediaWiki:Group-restricted}}“ angehören.
+Du musst [[Special:UserRights|Benutzer zu der Gruppe hinzufügen]] bevor du Seiten auf die Beobachtungsliste eines Benutzers setzen kannst.',
 	'whitelistnewtableprocess' => 'Bearbeiten',
 	'whitelistnewtablereview' => 'Überprüfen',
 	'whitelistselectrestricted' => '== Beschränkten Benutzer auswählen ==',
@@ -401,7 +404,8 @@ Entweder * oder % als Maskenzeichen benutzen",
 	'whitelistoverviewrm' => '* Zugriff auf [[:$1|$1]] wird entfernt',
 	'whitelistoverviewna' => "* [[:$1|$1]] wird zur Whitelist hinzugefügt. (Zugriff: '''$2''', Ablaufdatum: '''$3''')",
 	'whitelistrequest' => 'Weiteren Zugriff beantragen',
-	'whitelistrequestmsg' => '$1 hat Zugriff auf die folgenden Seiten beantragt:
+	'whitelistrequestmsg' => '$1 hat Zugriff auf die {{PLURAL:$3|folgende Seite|folgenden Seiten}} beantragt:
+
 $2',
 	'whitelistrequestconf' => 'Beantragung an $1 geschickt',
 	'whitelistnonrestricted' => "'''$1''' ist kein beschränkter Benutzer.
@@ -459,7 +463,7 @@ $messages['eo'] = array(
 	'whitelistoverview' => '== Resumo de ŝanĝoj por $1 ==',
 	'whitelistoverviewcd' => "* Ŝanĝante daton al '''$1''' por [[:$2|$2]]",
 	'whitelistrequest' => 'Petu atingon por pliaj paĝoj',
-	'whitelistrequestmsg' => '$1 petis atingon al la jenaj paĝoj:
+	'whitelistrequestmsg' => '$1 petis atingon al la {{PLURAL:$3|jena paĝo|jenaj paĝoj}}:
 
 $2',
 	'whitelistrequestconf' => 'Peto por novaj paĝoj estis sendita al $1',

@@ -36,6 +36,11 @@ $aliases['br'] = array(
 	'Code' => array( 'Kod' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'Code' => array( 'Quelltext' ),
+);
+
 /** Galician (Galego) */
 $aliases['gl'] = array(
 	'Code' => array( 'Código' ),

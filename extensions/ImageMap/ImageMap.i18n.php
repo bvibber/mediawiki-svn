@@ -619,12 +619,14 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'imagemap_desc' => 'Nyedyakaké péta gambar sing bisa diklik saka klièn mawa nganggo tag <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'Error: kudu mènèhi sawijining gambar ing baris kapisan',
 	'imagemap_invalid_image' => 'Error: gambar ora absah utawa ora ditemokaké',
-	'imagemap_no_link' => 'Error: ora ditemokaké pranala sing absah ing pungkasan baris kaping $1',
+	'imagemap_bad_image' => 'Kasalahan: berkas ora diidinaké ing kaca iki',
+	'imagemap_no_link' => 'Kasalahan: ora ditemokaké pranala sing absah ing pungkasan baris kaping $1',
 	'imagemap_invalid_title' => 'Error: irah-irahan ora absah ing pranala ing baris kaping $1',
 	'imagemap_missing_coord' => 'Error: ora cukup koordinat kanggo wujud ing baris kaping $1',
 	'imagemap_unrecognised_shape' => 'Error: wujud ora ditepungi ing baris kaping $1, saben baris kudu diwiwiti mawa salah siji saka: default, rect, circle utawa poly',
@@ -632,6 +634,7 @@ $messages['jv'] = array(
 	'imagemap_invalid_coord' => 'Error: koordinat ora absah ing baris kaping $1, kudu awujud angka',
 	'imagemap_invalid_desc' => 'Error: spésifikasi desc ora absah, kudu salah siji saka: $1',
 	'imagemap_description' => 'Prekara gambar iki',
+	'imagemap_poly_odd' => 'Kasalahan: ana poligon kanthi nomer koordinat kliru ing larikan $1',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
@@ -689,6 +692,14 @@ $messages['kk-latn'] = array(
 $messages['km'] = array(
 	'imagemap_invalid_title' => 'កំហុស:ចំនងជើងមិនត្រឹមត្រូវក្នុងតំនភ្ជាប់នៅបន្ទាត់ទី$1',
 	'imagemap_description' => 'អំពីរូបភាពនេះ',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'imagemap_no_image' => '오류: 첫 줄에 그림이 제시되어야 합니다.',
+	'imagemap_invalid_image' => '오류: 그림이 잘못되었거나 존재하지 않습니다.',
 );
 
 /** Ripoarisch (Ripoarisch)

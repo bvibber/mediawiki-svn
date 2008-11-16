@@ -128,6 +128,13 @@ $messages['ja'] = array(
 	'trustedxff-desc' => '信頼できるプロキシアドレス一覧の管理 ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'trustedxff-desc' => 'Pananganan dhaptar alamat proxy kapercaya ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

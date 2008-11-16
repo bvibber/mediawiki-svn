@@ -491,6 +491,13 @@ $messages['km'] = array(
 	'right-closewikis' => 'បិទវិគី',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'closewikis-list' => '닫힌 위키의 목록',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -32,6 +32,11 @@ $aliases['bs'] = array(
 	'FindSpam' => array( 'TrazenjeSpama' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'FindSpam' => array( 'Spam finden' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'FindSpam' => array( 'Spam keresése' ),

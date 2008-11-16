@@ -723,12 +723,23 @@ $messages['it'] = array(
  * @author Pras
  */
 $messages['jv'] = array(
+	'inplace_access_disabled' => 'Aksès menyang layanan iki wis ditutup kanggo kabèh panganggo.',
 	'inplace_access_denied' => 'Pangladènan iki diwatesi déning klièn IP.',
+	'inplace_scaler_no_temp' => "Ora ana dirèktori sauntara sing sah.
+Sèt \$wgLocalTmpDirectory menyang dirèktori sing bisa ditulisi (''writeable directory'').",
 	'inplace_scaler_not_enough_params' => 'Paramèter ora cukup.',
 	'inplace_scaler_invalid_image' => 'Gambar ora absah, ora bisa nemtokaké ukurané.',
+	'inplace_scaler_failed' => "Ana kasalahan jroning nykala gambar (''image scalling''): $1",
+	'inplace_scaler_no_handler' => "Ora ana ''handler'' kanggo ngowahi tipe MIME iki",
+	'inplace_scaler_no_output' => "Ora ana berkas transformasi wetonan (''output'') sing dikasilaké.",
+	'inplace_scaler_zero_size' => "Transformasi ngasilaké wetonan (''output'') berkas kanthi ukuran nul (''zero-sized'').",
 	'webstore_access' => 'Pangladènan iki diwatesi déning client IP.',
 	'webstore_path_invalid' => 'Jeneng berkasé ora absah.',
 	'webstore_dest_open' => 'Ora bisa mbuka berkas tujuan "$1".',
+	'webstore_dest_lock' => 'Gagal ngunci tujuan berkas "$1".',
+	'webstore_dest_mkdir' => 'Ora bisa gawé dirèktori tujuan "$1".',
+	'webstore_archive_lock' => 'Gagal ngunci berkas arsip "$1".',
+	'webstore_archive_mkdir' => 'Ora bisa gawé dirèktori arsip "$1".',
 	'webstore_src_open' => 'Ora bisa buka berkas sumber "$1".',
 	'webstore_src_close' => 'Kaluputan nalika nutup berkas sumber "$1".',
 	'webstore_src_delete' => 'Ana kaluputan nalika mbusak berkas sumber "$1".',
@@ -740,13 +751,18 @@ $messages['jv'] = array(
 	'webstore_temp_copy' => 'Kasalahan nulad berkas sauntara "$1". menyang berkas tujuan "$2".',
 	'webstore_temp_close' => 'Ana kaluputan nalika nutup berkas sauntara "$1".',
 	'webstore_temp_lock' => 'Kaluputan ngunci berkas sementara "$1".',
+	'webstore_no_archive' => 'Berkas tujuan ana lan ora ana arsip sing dituduhaké.',
 	'webstore_no_file' => 'Ora ana berkas sing diunggahaké.',
+	'webstore_move_uploaded' => 'Kasalahan mindhahaké berkas diunggahaké "$1" menyang lokasi sauntara "$2".',
 	'webstore_invalid_zone' => 'Zona invalid "$1".',
+	'webstore_no_deleted' => 'Ora ana dirèktori arsip saka berkas sing dibusak.',
 	'webstore_curl' => 'Kaluputan saka cURL: $1',
 	'webstore_404' => 'Berkas ora ditemokaké.',
 	'webstore_php_warning' => 'Pèngetan PHP: $1',
 	'webstore_metadata_not_found' => 'Berkas ora ditemokaké: $1',
 	'webstore_postfile_not_found' => 'Berkas sing arep didokok ora ditemokaké.',
+	'webstore_scaler_empty_response' => "Panyekala gambar (''image scaler'') mènèhi rèspon kothong (''empty response'') kanthi kodhe rèspon 200.
+Bab iki bisa waé disebabaké kasalahan fatal PHP ing panyekala.",
 	'webstore_invalid_response' => 'Wangsulan ora absah saka server:
 
 $1',
@@ -755,6 +771,7 @@ $1',
 
 $1',
 	'webstore_php_error' => 'Katemu kaluputan PHP:',
+	'webstore_no_handler' => "Ora ana ''handler'' kanggo ngowahi (''transforming'') tipe MIME iki",
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -1406,6 +1406,7 @@ Riiliisenge dette informåsje ken ræsultærn in permanent liis der Åversigt pr
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'hiderevision' => 'Delikna révisi sacara permanèn',
@@ -1447,6 +1448,9 @@ Balèkna suntingan iki dhisik.',
 	'oversight-hidden' => 'Révisi sing didelikaké',
 	'oversight-header' => "Ing ngisor iki kapacak daftar révisi sing wis didelikaké sacara permanèn saka umum.
 Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenengan dijabel.",
+	'oversight-legend' => 'Nggolèki log pandhelikan révisi',
+	'oversight-oversighter' => "Pangawas (''Oversighter'')",
+	'oversight-offender' => 'Panglanggar',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)

@@ -1448,7 +1448,9 @@ $wdMessages['haw'] = array(
  * @author YaronSh
  */
 $wdMessages['he'] = array(
-	'langman_title' => 'מנהל שפות',
+	'datasearch' => 'ויקי־דאטא: חיפוש נתונים',
+	'langman_title' => 'מנהל השפות',
+	'languages' => 'ויקי־דאטא: מנהל השפות',
 	'ow_save' => 'שמירה',
 	'ow_history' => 'היסטוריה',
 	'ow_datasets' => 'בחירת ערכת נתונים',
@@ -1456,6 +1458,7 @@ $wdMessages['he'] = array(
 	'ow_noedit' => 'אינכם מורשים לערוך דפים בערכת הנתונים "$1".
 אנא עיינו ב[[{{MediaWiki:Ow editing policy url}}|מדיניות העריכה שלנו]].',
 	'ow_uipref_datasets' => 'תצוגת ברירת המחדל',
+	'ow_uiprefs' => 'ויקי־דאטא',
 	'ow_none_selected' => 'לא נבחרו',
 	'ow_conceptmapping_help' => '<p>פעולות אפשריות: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  הוספת מיפוי</li>
@@ -1464,10 +1467,43 @@ $wdMessages['he'] = array(
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> עבור משמעות אחת מוגדרת ברעיון, החזרת כל השאר</li>
 <li>&action=help  הצגת עזרה מועילה.</li>
 </ul></p>',
+	'ow_conceptmapping_uitext' => '<p>מיפוי תפיסתי מאפשר לכם לזהות אילו משמעות מוגדרת בערכת נתונים אחת זהה למשמעות מוגדרת בערכות נתונים אחרות.</p>',
 	'ow_conceptmapping_no_action_specified' => 'מצטערים, איננו יודעים כיצד לבצע "$1".',
-	'ow_dm_OK' => 'אישור',
+	'ow_dm_OK' => 'מאושר',
 	'ow_dm_not_present' => 'לא הוכנס',
 	'ow_dm_not_found' => 'לא נמצא במסד הנתונים או שהוא פגום',
+	'ow_mapping_successful' => 'כל השדות שמופו סומנו ב[מאושר]<br />',
+	'ow_mapping_unsuccessful' => 'יש צורך בלפחות שתי משמעויות מוגדרות לפני שאוכל לקשר ביניהן.',
+	'ow_will_insert' => 'יוסיף את הנ"ל:',
+	'ow_contents_of_mapping' => 'תכני המיפוי',
+	'ow_available_contexts' => 'הקשרים זמינים',
+	'ow_add_concept_link' => 'הוספת קישור לתפיסות אחרות',
+	'ow_concept_panel' => 'חלונית התפיסה',
+	'ow_dm_badtitle' => 'דף זה אינו מפנה למשמעות מוגדרת (DefinedMeaning - תפיסה) כלשהי.
+אנא בדקו את כתובת האינטרנט.',
+	'ow_dm_missing' => 'נראה כי דף זה מוביל אל משמעות מוגדרת (DefinedMeaning - תפיסה) שאינה קיימת.
+אנא בדקו את כתובת האינטרנט.',
+	'ow_AlternativeDefinition' => 'משמעות חלופית',
+	'ow_AlternativeDefinitions' => 'משמעויות חלופיות',
+	'ow_Annotation' => 'פירוש',
+	'ow_ApproximateMeanings' => 'משמעויות משוערכות',
+	'ow_ClassAttributeAttribute' => 'מאפיין',
+	'ow_ClassAttributes' => 'מאפייני מחלקות',
+	'ow_ClassAttributeLevel' => 'רמה',
+	'ow_ClassAttributeType' => 'סוג',
+	'ow_ClassMembership' => 'חברות במחלקה',
+	'ow_Collection' => 'אוסף',
+	'ow_CollectionMembership' => 'חברות באוסף',
+	'ow_Definition' => 'הגדרה',
+	'ow_DefinedMeaningAttributes' => 'פירוש',
+	'ow_DefinedMeaning' => 'משמעות מוגדרת',
+	'ow_DefinedMeaningReference' => 'משמעות מוגדרת',
+	'ow_ExactMeanings' => 'משמעות מדוייקת',
+	'ow_Expression' => 'ביטוי',
+	'ow_ExpressionMeanings' => 'משמעויות הביטוי',
+	'ow_Expressions' => 'ביטויים',
+	'ow_IdenticalMeaning' => 'משמעות זהה?',
+	'ow_IncomingRelations' => 'קשרים נכנסים',
 );
 
 /** Hindi (हिन्दी)
@@ -1910,6 +1946,7 @@ Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan k
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'ora dilebokaké',
 	'ow_dm_not_found' => 'ora ditemokaké ing basis data utawa rusak',
+	'ow_mapping_successful' => "Métakaké kabèh kothak (''field'') sing ditndhani [OK]<br />",
 	'ow_mapping_unsuccessful' => 'Kudu duwé saora-orané loro makna sadurungé bisa disambungaké',
 	'ow_will_insert' => 'Bakal nyisipaké:',
 	'ow_contents_of_mapping' => "Isi pamétaan (''mapping'')",
@@ -1918,6 +1955,8 @@ Mangga mirsani [[{{MediaWiki:Ow editing policy url}}|kawicaksanan panyuntingan k
 	'ow_concept_panel' => 'Panèl Konsèp',
 	'ow_dm_badtitle' => "Kaca iki ora nunjuk sawijining makna (''DefinedMeaning'') (konsèp).
 Mangga priksa alamat wèb-é.",
+	'ow_dm_missing' => 'Kaca iki kayané nunjuk marang makna (konsèp) sing ora ana.
+Mangga priksa alamat wèb.',
 	'ow_AlternativeDefinition' => 'Définisi alternatif',
 	'ow_AlternativeDefinitions' => 'Définisi alternatif',
 	'ow_Annotation' => 'Anotasi',
@@ -1984,6 +2023,10 @@ Aja lali mriksa manèh supaya pasti!',
 Ora ana operasi kopi sing wis dumadi.',
 	'ow_no_action_specified' => '<h3>Ora ana aksi sing dispésifikasi</h3>
 Mbok-menawa panjenengan langsung tekan kaca iki? Biasané panjenengan ora perlu ing kéné.',
+	'ow_db_consistency_not_found' => '<h2>Kasalahan</h2>
+Ana masalah bab konsistènsi basis data, wikidata ora bisa nemokaké data valid sing kagandhèng karo makna iki ID.
+Manawa ilang.
+Mangga hubungi operator server utawa pangurus.',
 );
 
 /** Georgian (ქართული)
@@ -2310,11 +2353,13 @@ $wdMessages['lb'] = array(
 	'ow_Expression' => 'Ausdrock',
 	'ow_Expressions' => 'Ausdréck',
 	'ow_IdenticalMeaning' => 'Déi selwescht Bedeitung?',
+	'ow_GotoSource' => "Zréck op d'Quell",
 	'ow_Language' => 'Sprooch',
 	'ow_LevelAnnotation' => 'Notiz',
 	'ow_OptionAttribute' => 'Eegeschaft',
 	'ow_OptionAttributeOption' => 'Optioun',
 	'ow_OptionAttributeOptions' => 'Optiounen',
+	'ow_OptionAttributeValues' => 'Werter vun den Optiounen',
 	'ow_PopupAnnotation' => 'Notiz',
 	'ow_Relations' => 'Relatiounen',
 	'ow_Spelling' => 'Schreifweis',

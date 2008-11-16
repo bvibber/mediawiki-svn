@@ -266,6 +266,16 @@ $messages['ja'] = array(
 	'simpleantispam-desc' => 'フォームに簡単なスパム・ボットチェックを追加',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'simpleantispam' => 'Suntingan panjenengan nggugah mékanisme anti-spam',
+	'simpleantispam-label' => "Pamariksan anti-spam.
+'''Aja''' diisèkaké!",
+	'simpleantispam-desc' => 'Tambahaké pamriksan spam/bot prasaja menyang formulir',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -96,6 +96,13 @@ $messages['qqq'] = array(
 	'tasks_search_status' => '{{Identical|Status}}',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'tasks_noone' => 'مافيش حد',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -518,6 +525,62 @@ $messages['it'] = array(
 	'tasks_logpagetext' => 'Registro delle modifiche alle attività',
 	'tasks_logentry' => 'Per "[[$1]]"',
 	'tog-show_task_comments' => "Inclusione della pagina dei commenti dell'attività",
+);
+
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'tasks' => 'Tugas-tugas',
+	'tasks_desc' => 'Èkstènsi kanggo nata tugas-tugas',
+	'tasks_tab' => 'Tugas-tugas',
+	'tasks_title' => 'Tugas-tugas kanggo "$1"',
+	'tasks_form_new' => 'Gawé tugas anyar',
+	'tasks_form_comment' => 'Komentar',
+	'tasks_error1' => 'Tugas ora kacipta: Wis ana tugas kasebut!',
+	'tasks_ok1' => 'Tugas anyar wis kacipta!',
+	'tasks_create_header' => 'Nyipta sawijining tugas anyar',
+	'tasks_existing_header' => 'Tugas-tugas sing wis ana',
+	'tasks_assign_me' => 'Nugasaké awakku dhéwé',
+	'tasks_assign_to' => 'Nugasaké marang',
+	'tasks_unassign_me' => 'Jabel panugasanku',
+	'tasks_close' => 'Tutup tugas',
+	'tasks_delete' => 'Busak',
+	'tasks_no_task_delete_title' => 'Ora kena',
+	'tasks_no_task_delete_texe' => 'Panjenengan ora bisa mbusak tugas. Mung admin sing bisa.',
+	'tasks_action_delete' => 'Tugas wis dibusak',
+	'tasks_task_was_deleted' => 'Tugas wis kasil dibusak.',
+	'tasks_created_by' => 'Kacipta déning $1',
+	'tasks_discussion_page_link' => 'Kaca dhiskusi tugas',
+	'tasks_closedby' => 'Katutup déning $1',
+	'tasks_discussion_page_for' => 'Tugas iki kanggo kaca "$1". Dhaftar kabèh tugas-tugas kanggo kaca iku yakuwi $2.',
+	'tasks_sidebar_title' => 'Bukak tugas-tugas',
+	'tasks_here' => 'ing kéné',
+	'tasks_returnto' => 'Saiki panjenengan bakal dialihaké. Yèn durung dialihaké jroning sawetara dhetik, kliken $1.',
+	'tasks_see_page_tasks' => '(tugas-tugas kaca iki)',
+	'tasks_help_page' => 'Tugas-tugas',
+	'tasks_event_on_creation' => 'priksa',
+	'tasks_event_on_creation_anon' => 'priksa',
+	'tasks_link_your_assignments' => 'Bukak panugasan',
+	'tasks_table_header_page' => 'Kaca',
+	'tasks_search_form_title' => 'Golèk',
+	'tasks_search_tasks' => 'Tugas-tugas',
+	'tasks_search_status' => 'Status',
+	'tasks_search_results' => 'Kasil panggolèkan',
+	'tasks_previous' => 'Sadurungé',
+	'tasks_next' => 'Sabanjuré',
+	'tasks_sort' => 'Sortir',
+	'tasks_ascending' => 'Sing luwih tuwa ndisik',
+	'tasks_status_open' => 'Bukak',
+	'tasks_status_assigned' => 'Ditemtokaké',
+	'tasks_status_closed' => 'Katutup',
+	'tasks_status_wontfix' => 'Ora bakal (bisa) ndadani',
+	'tasks_action_open' => 'Tugas "$1" kabukak',
+	'tasks_action_assigned' => 'Tugas "$1" ditemtokaké.',
+	'tasks_action_closed' => 'Tugas "$1" katutup.',
+	'tasks_logpage' => 'Log tugas-tugas',
+	'tasks_logpagetext' => 'Iki log owah-owahan marang tugas-tugas',
+	'tasks_logentry' => 'Kanggo "[[$1]]"',
 );
 
 /** Khmer (ភាសាខ្មែរ)

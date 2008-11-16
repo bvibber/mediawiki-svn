@@ -157,25 +157,26 @@ Permite a maioría das opcións da SmoothGallery',
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'smoothgallery' => 'SmoothGallery',
-	'smoothgallery-desc' => 'ההרחבה מאפשרת ליצור גלריות עם תמונות שהעליתם.
-ההרחבה מאפשרת שימוש ברב האפשרויות של SmoothGallery',
+	'smoothgallery-desc' => 'הוספת אפשרות למשתמשים ליצור גלריות עם תמונות שהועלו.
+אפשר להשתמש ברוב האפשרויות של SmoothGallery',
 	'smoothgallery-title' => 'SmoothGallery',
 	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
 	'smoothgallery-error' => '<b>שגיאת SmoothGallery:</b>',
-	'smoothgallery-gallery-not-found' => 'הגלרייה המבוקשת אינה קיימת.',
-	'smoothgallery-not-found' => 'לא נוספו תמונות לגלרייה.
+	'smoothgallery-gallery-not-found' => 'הגלריה המבוקשת אינה קיימת.',
+	'smoothgallery-not-found' => 'לא נוספו תמונות לגלריה.
 אנא הוסיפו לפחות תמונה אחת.',
-	'smoothgallery-no-images' => 'לא נמצאו תמונות בגלרייה זו.
-וודאו כי כל התמונות שהתבקשו אכן נמצאות.
-התמונות הבאות לא נמצאו:',
-	'smoothgallery-invalid-images' => 'התמונות הבאות שנתבקשו הינן מסוג שגוי: $1',
-	'smoothgallery-unexpected-error' => 'ארעה שגיאה בלתי צפויה.
+	'smoothgallery-no-images' => 'לא נמצאו תמונות בגלריה זו.
+ודאו שכל התמונות שבוקשו אכן נמצאות.
+התמונות הבאות לא נמצאו: $1',
+	'smoothgallery-invalid-images' => 'התמונות הבאות שבוקשו הן מסוג בלתי תקין: $1',
+	'smoothgallery-unexpected-error' => 'אירעה שגיאה בלתי צפויה.
 אנא דווחו על תקלה זו.',
-	'smoothgallery-javascript-disabled' => "על מנת לצפות בדף זה כראוי נדרש ג'אווהסקריפט.",
+	'smoothgallery-javascript-disabled' => 'על מנת לצפות בדף זה כראוי נדרש JavaScript.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

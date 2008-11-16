@@ -1347,6 +1347,16 @@ $messages['ro'] = array(
 	'youtubeauthsub_category' => 'Categorie',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'youtubeauthsub' => 'Careche ìnu video de YouTube',
+	'youtubeauthsub_password' => 'Password de YouTube',
+	'youtubeauthsub_username' => 'Nome utende de YouTube',
+	'youtubeauthsub_category' => 'Categorije',
+);
+
 /** Russian (Русский)
  * @author Innv
  * @author Александр Сигачёв

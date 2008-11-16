@@ -157,6 +157,14 @@ $messages['ja'] = array(
 	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] リポジトリ・インターフェースを提供します。',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'oai-desc' => 'Nyadiakaké antarmuka papan panyimpenan [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oairepository' => 'Panyimpenan OAI',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

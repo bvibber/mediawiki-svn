@@ -248,6 +248,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'crosswikiblock-autoblock' => 'Automatski blokiraj zadnju IP adresu koju je koristio ovaj korisnik i sve druge IP adrese s kojih je on pokušao uređivati',
 	'crosswikiblock-alreadyblocked' => 'Korisnik $3 je već blokiran.',
 );
 

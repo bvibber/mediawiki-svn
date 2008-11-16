@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'Eval' => array( 'تقييم' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'Eval' => array( 'Auswerten' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'Eval' => array( 'Évaluer', 'Evaluer' ),

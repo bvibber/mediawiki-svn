@@ -5165,6 +5165,57 @@ $messages['scn'] = array(
 	'boardvote_entry' => "* [[Special:Boardvote/vote|Vota]]
 * [[Special:Boardvote/list|Talìa li voti fatti nzinu a stu mumentu]]
 * [[Special:Boardvote/dump|Scàrica li voti 'n furma cifrata]]",
+	'boardvote_intro' => "<blockquote>
+<p>
+Bimminutu/a a la quarta elizzioni pi lu cunsigghiu dirittivu Wikimedia, l'autoritati 'n capu a la Wikimedia Foundation. Si vota pi li tri pirsuni ca hann'a rapprisintari la cumunitati di l'utenti dê vàrii pruggetti Wikimedia. L'eletti arrèstanu 'n càrica pi dui anni ntô cunsigghiu dirittivu e dùnunu na manu a nnicari l'urientamentu futuru dê pruggetti Wikimedia, ognunu pi cuntu sò e comu gruppu, rapprisintannu li <em>toi</em> ntiressi e li toi idìi. Stabbilìsciunu li vàrii temi, e 'n particulari, li mudalità di raccorta e utilizzu dê sordi.</p>
+
+<p>Pi favuri, prima di vutari, dacci na liggiuta cu attizioni a li prisintazzioni di li canditati e a l'arrispunniti ê spiatini ca ci fìciru. Ognidunu di li canditati è n'utenti arispittatu, ca cuntribbuìu cu tantu dô sò tempu e cu assai assai sforzi pi rènniri sti pruggetti un postu accugghenti e additicatu â lìbbira aricugghiuta, urganizzazioni e spannimentu di la canuscenza di l'omu.</p>
+
+<p>Poi vutari pi chiossai canditati scigghiuti di tia: li tri di chissi cu lu chiossai nùmmuru di voti vèninu addichiarati eliggiuti. Si cci aviss'a èssiri nu paru, veni fatta na vutazzioni di balluttàggiu.</p>
+
+<p>Pi curtisìa, arricòrdati ca poi dari lu tò votu sulu nta un pruggettu. Macari si hai 400 edit supra a cchiù pruggetti, non voli diri ca tu hai lu dirittu di vutari cchiù di na vota. Si appoi voi canciari lu tò votu, arricòrdati di vutari dû stissu pruggettu di unni vutasti apprima.</p>
+
+<p>Pi cchiù nfurmazzioni, talìa:</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/FAQ\" class=\"external\">FAQ supra li elizzioni ('n nglisi)</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates/it\" class=\"external\">Canditati</a></li></ul>
+</blockquote>",
+	'boardvote_intro_change' => '<p>Lu votu ggià fu fattu. Pi canciàrilu, hà usari lu mòdulu ccà sutta. Mèttiri  un signu ntâ casedda ô ciancu di ognidunu di li canditati ca si voli sustèniri.</p>',
+	'boardvote_entered' => "Lu votu vinni riggistratu. Grazzi.
+
+Vulennu, è pussìbbili riggistrari li dittagghi dû votu ca si desi, arripurtati di sècutu:
+
+<pre>$1</pre>
+
+Lu votu vinni cifratu cu la chiavi pûbbrica di la cummissioni elitturali:
+
+<pre>$2</pre>
+
+Lu votu datu 'n furma cifrata è ripurtatu di sècutu. Lu pùbbricu lu pò macari taliari a lu ndirizzu [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Arredi]]",
+	'boardvote_invalidentered' => "<p><strong>Erruru</strong>: la prifirenza pô canditatu hà èssiri fatta sulu c'un nùmmiru nteru pusitivu (1, 2, 3, ....), oppuru lassa vacanti.</p>",
+	'boardvote_nosession' => 'Non pòttimu ditirminari lu tò ID utenti Wikimedia. Pi favuri, fai lu login ntô pruggettu unni hai li riquisiti pi vutari, e vatinni a la pàggina <nowiki>[[Special:Boardvote]]</nowiki>. Hà usari un cuntu (account) cu mìnimu $1 {{PLURAL:$1|cuntribbutu|cuntribbuti}} prima di $2 e cu mìnimu $3 {{PLURAL:$3|cuntribbutu|cuntribbuti}} ntra lu $4 e lu $5.',
+	'boardvote_notloggedin' => "Accessu non effettuatu. Pi vutari è nicissàriu aviri n'utenza ca hà fattu almenu $1 {{PLURAL:$1|cuntribbutu|cuntribbuti}} prima di $2 e cu almenu $3 {{PLURAL:$3|cuntribbutu|cuntribbuti}} ntra lt $4 e lu $5.",
+	'boardvote_notqualified' => "Non pussedi li riquisiti nicissàrii pi vutaru nti st'elizzioni. Hà  aviri nicissariamenti almenu $1 {{PLURAL:$1|cuntribbutu|cuntribbuti}} prima di $2 e almenu $3 {{PLURAL:$3|cuntribbutu|cuntribbuti}} ntra lu $4 e lu $5.",
+	'boardvote_novotes' => 'Ancora nun hà vutatu nuddu.',
+	'boardvote_time' => 'Data e ura',
+	'boardvote_user' => 'Utenti',
+	'boardvote_edits' => 'Mudìfichi',
+	'boardvote_days' => 'Jorna',
+	'boardvote_ua' => 'User agent',
+	'boardvote_listintro' => "<p>Di sècutu veni arripurtatu l'alencu dê voti riggistrati nzinu a ora. $1 pi scaricari li dati 'n furma cifrata.</p>",
+	'boardvote_dumplink' => 'Munci ccà',
+	'boardvote_submit' => 'OK',
+	'boardvote_strike' => 'Scancella stu votu',
+	'boardvote_unstrike' => 'Scancella annullamentu',
+	'boardvote_needadmin' => 'Upirazzioni arrisirvata a li cumpunenti di la cummissioni elitturali.',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Elizzioni di lu Cunsigghiu dirittivu Wikimedia</a>: è pussìbbili vutari nzinu ô 12 lugliu',
+	'boardvote_notstarted' => 'Ancora la vutazzioni nun è accuminciata',
+	'boardvote_closed' => 'La vutazzioni finìu, siti mmitati a taliari
+[http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2008/It la pàggina dî risurtati].',
+	'boardvote_edits_many' => 'assai',
 	'group-boardvote' => 'Cummissioni eletturali',
 	'group-boardvote-member' => 'Cummissariu eletturali',
 	'grouppage-boardvote' => '{{ns:project}}:Cummissariu eletturali',
@@ -5172,6 +5223,8 @@ $messages['scn'] = array(
 	'boardvote_bot' => 'Ntâ tò wiki unni ti riggistrasti hai lu status di bot. Li cunti bot nun sunnu auturizzati a vutari',
 	'boardvote_welcome' => "Binvinutu '''\$'''!",
 	'go_to_board_vote' => 'Elizzioni 2008 ntô Board di Wikimedia',
+	'boardvote_redirecting' => "Pi na cchiù megghiu sicurezza e trasparenza, lu votu veni tinutu nta un server di fora, a cuntrollu nnipinnenti. Intra a 20 secunni, tu veni nnirizzatu a stu server di fora. [$1 Munci ccà] p'arrivàricci drittu drittu. Putissi cumpariri n'avvisu di sicurezza rifiritu a un certificatu di prutizzioni non virificatu.",
+	'right-boardvote' => "Amministrari l'elizzioni",
 );
 
 /** Slovak (Slovenčina)

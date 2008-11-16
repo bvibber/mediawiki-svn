@@ -27,6 +27,12 @@ $aliases['arz'] = array(
 	'WhiteListEdit' => array( 'تعديل_القائمة_البيضاء' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'WhiteList' => array( 'Weiße Liste' ),
+	'WhiteListEdit' => array( 'Weiße Liste bearbeiten' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WhiteList' => array( 'فهرست_سفید' ),

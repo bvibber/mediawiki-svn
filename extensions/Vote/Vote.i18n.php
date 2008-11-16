@@ -502,11 +502,13 @@ $messages['it'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'vote' => 'Coblos',
 	'vote-header' => "Panjenengan bisa milih '''Panguwasa Paling Dhuwur sa-Donya''' ing kéné!",
 	'vote-current' => "Swara panjenengan saiki kanggo '''$1'''.",
+	'vote-legend' => 'Mèlu nyoblos utawa ganti pilihan',
 	'vote-caption' => 'Pilihan panjenengan:',
 	'vote-choices' => 'joker|The Joker
 penguin|The Penguin
@@ -517,8 +519,10 @@ riddler|Riddler',
 	'vote-results' => 'Kasil coblosan',
 	'vote-results-choice' => 'Pilihan',
 	'vote-results-count' => 'Cacah swara',
+	'vote-results-none' => 'Wektu iki durung ana swara/pilihan sing mlebu.',
 	'vote-login' => 'Panjenengan kudu $1 kanggo nyoblos.',
 	'vote-login-link' => 'mlebu log',
+	'vote-invalid-choice' => 'Panjenengan kudu milih salah siji pilihan sing ana.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -289,6 +289,39 @@ $messages['ia'] = array(
 	'slippymap_resetview' => 'Reinitialisar vista',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'slippymap_desc' => "Permette l'utilizzo del tag <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> per visualizzare una mappa OpenLayers. Le mappe sono prese da [http://openstreetmap.org openstreetmap.org]",
+	'slippymap_latmissing' => 'Manca il valore lat (per la latitudine).',
+	'slippymap_lonmissing' => 'Manca il valore lon (per la longitudine).',
+	'slippymap_zoommissing' => 'Manca il valore z (per il livello dello zoom).',
+	'slippymap_longdepreciated' => "Usare 'lon' invece di 'long' (il parametro è stato rinominato).",
+	'slippymap_widthnan' => "il valore '%1' della larghezza (w) non è un intero valido",
+	'slippymap_heightnan' => "il valore '%1' dell'altezza (h) non è un intero valido",
+	'slippymap_zoomnan' => "il valore '%1' dello zoom (z) non è un intero valido",
+	'slippymap_latnan' => "il valore '%1' della latitudine (lat) non è un numero valido",
+	'slippymap_lonnan' => "il valore '%1' della longitudine (long) non è un numero valido",
+	'slippymap_widthbig' => 'il valore della larghezza (w) non può essere maggiore di 1000',
+	'slippymap_widthsmall' => 'il valore della larghezza (w) non può essere minore di 100',
+	'slippymap_heightbig' => "il valore dell'altezza (h) non può essere maggiore di 1000",
+	'slippymap_heightsmall' => "il valore dell'altezza (h) non può essere minore di 100",
+	'slippymap_latbig' => 'il valore della latitudine (lat) non può essere maggiore di 90',
+	'slippymap_latsmall' => 'il valore della latitudine (lat) non può essere minore di -90',
+	'slippymap_lonbig' => 'il valore della longitudine (lon) non può essere maggiore di 180',
+	'slippymap_lonsmall' => 'il valore della longitudine (lon) non può essere minore di -180',
+	'slippymap_zoomsmall' => 'il valore dello zoom (z) non può essere minore di zero',
+	'slippymap_zoom18' => "il valore dello zoom (z) non può essere maggiore di 17. Nota che questa estensione mediawiki utilizza il layer 'osmarender' di OpenStreetMap che non va oltre il livello 17 di zoom. Il layer Mapnik disponibile su openstreetmap.org arriva fino a un livello 18 di zoom",
+	'slippymap_zoombig' => 'il valore dello zoom (z) non può essere maggiore di 17.',
+	'slippymap_invalidlayer' => "Valore '%1' di 'layer' non valido",
+	'slippymap_maperror' => 'Errore mappa:',
+	'slippymap_osmtext' => 'Guarda questa mappa su OpenStreetMap.org',
+	'slippymap_code' => 'Codice wiki per visualizzare questa mappa:',
+	'slippymap_button_code' => 'Ottieni codice wiki',
+	'slippymap_resetview' => 'Reimposta visuale',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

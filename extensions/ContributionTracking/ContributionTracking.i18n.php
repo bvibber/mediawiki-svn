@@ -47,9 +47,16 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
+ * @author Ramsis II
  */
 $messages['arz'] = array(
+	'contributiontracking-desc' => 'تتبع المساهمة لجامع تبرعات ويكيميديا',
+	'contributiontracking' => 'تتبع المساهة',
 	'contrib-tracking-error' => 'غلط',
+	'contrib-tracking-error-text' => 'استمارة التقديم مش صحيحة',
+	'contrib-tracking-submitting' => 'تقديم لمعالج الدفع ...',
+	'contrib-tracking-continue' => 'لو ما اتحولتش اوتوماتيكي، دوس على الزرار علشان تكمل التبرع بتاعك على الباي بال',
+	'contrib-tracking-button' => 'استمر',
 );
 
 /** Bulgarian (Български)
@@ -89,7 +96,9 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'contributiontracking' => 'Kontribua kontrolado',
 	'contrib-tracking-error' => 'Eraro',
+	'contrib-tracking-error-text' => 'Nevalida enigo',
 	'contrib-tracking-button' => 'Daŭrigi',
 );
 
@@ -148,6 +157,7 @@ $messages['he'] = array(
  */
 $messages['hr'] = array(
 	'contrib-tracking-error' => 'Greška',
+	'contrib-tracking-continue' => 'Ako niste automatski preusmjereni, kliknite na tipku kako biste dovršili svoju donaciju s PayPalom.',
 	'contrib-tracking-button' => 'Nastavi',
 );
 
@@ -170,6 +180,19 @@ $messages['ia'] = array(
 $messages['it'] = array(
 	'contrib-tracking-error' => 'Errore',
 	'contrib-tracking-button' => 'Continua',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'contributiontracking-desc' => 'Panjejakan kontribusi kanggo pangumpul dana Wikimedia',
+	'contributiontracking' => 'Panjejakan kontribusi',
+	'contrib-tracking-error' => 'Kasalahan',
+	'contrib-tracking-error-text' => 'Pangajuan formulir ora sah',
+	'contrib-tracking-submitting' => 'Ngirim menyang prosèsor pambayaran...',
+	'contrib-tracking-continue' => 'Yèn panjenengan ora sacara otomatis dialihaké, klik tombol kanggo ngrampungaké sumbangan panjenengan ing Paypal.',
+	'contrib-tracking-button' => 'Terus',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -296,6 +319,14 @@ $messages['sv'] = array(
 	'contrib-tracking-submitting' => 'Skickar till betalningshanterare...',
 	'contrib-tracking-continue' => 'Om du inte kommer vidare automatiskt, klicka på knappen för att slutföra din donation hos PayPal.',
 	'contrib-tracking-button' => 'Fortsätt',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'contrib-tracking-error' => 'Eròr',
+	'contrib-tracking-button' => 'Và vanti',
 );
 
 /** Vietnamese (Tiếng Việt)

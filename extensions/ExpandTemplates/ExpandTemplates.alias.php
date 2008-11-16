@@ -92,6 +92,11 @@ $aliases['it'] = array(
 	'ExpandTemplates' => array( 'EspandiTemplate' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ExpandTemplates' => array( 'テンプレートを展開' ),
+);
+
 /** Korean (한국어) */
 $aliases['ko'] = array(
 	'ExpandTemplates' => array( '틀전개' ),

@@ -99,6 +99,24 @@ $messages['de'] = array(
 	'nss-db-error' => 'Fehler beim Lesen aus der Authentifizierungs-Datenbank',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'accountmanager' => 'Konta administrilo',
+	'am-username' => 'salutnomo',
+	'am-email' => 'retpoŝto',
+	'am-active' => 'aktiva',
+	'am-updated' => 'Viaj ŝanĝoj estis sukcese ŝanĝitaj.',
+	'nss-rights' => 'rajtoj',
+	'nss-save-changes' => 'Konservi ŝanĝojn',
+	'nss-create-account-header' => 'Krei novan konton',
+	'nss-create-account' => 'Krei konton',
+	'nss-no-mail' => 'Ne sendi retpoŝton',
+	'nss-welcome-mail' => 'Konto kun salutnomo $1 kaj pasvorto $2 estis kreita por vi.',
+	'nss-welcome-mail-subject' => 'Konta kreado',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

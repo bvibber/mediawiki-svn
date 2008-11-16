@@ -67,10 +67,11 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'substall-desc' => 'ההרחבה יוצרת תגית <nowiki><substall></nowiki> המרחיבה את כל התבניות לתחביר ויקי',
+	'substall-desc' => 'יצירת תגית <nowiki><substall></nowiki> המרחיבה את כל התבניות לתחביר ויקי',
 	'substall-hook' => 'substall',
 );
 

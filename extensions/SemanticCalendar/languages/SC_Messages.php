@@ -399,8 +399,10 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
+	'sc_desc' => 'En kalender som visar semantisk datumsinformation',
 	'sc_previousmonth' => 'Föregående månad',
 	'sc_nextmonth' => 'Nästa månad',
 	'sc_today' => 'Idag',

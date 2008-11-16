@@ -371,9 +371,21 @@ $2',
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'userrightsnotifysubject' => 'Kaanggotan grup diganti ing $1',
+	'userrightsnotifybody' => 'Halo $1.
+
+Klompok panganggo panjenengan ing $2 wis diowahi déning $3 ing $4.
+
+Panambahan: $5
+Pangurangan: $6
+
+Matur nuwun,
+
+$2',
+	'userrightsnotif-desc' => 'Kirim notifikasi liwat layang-e marang para panganggo wektu ana owah-owahan hak',
 );
 
 /** Khmer (ភាសាខ្មែរ)

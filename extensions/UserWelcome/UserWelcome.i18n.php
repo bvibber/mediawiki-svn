@@ -113,6 +113,21 @@ $messages['de'] = array(
 	'userwelcome-desc' => 'Fügt ein <tt>&lt;welcomeUser&gt;</tt>-Tag hinzu, mit dem man benutzerspezifische soziale Informationen eingeloggten Benutzern zeigen kann',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'mp-welcome-upload' => 'Alŝuti',
+	'mp-welcome-edit' => 'Redakti',
+	'mp-welcome-points' => '$1 poentoj',
+	'mp-welcome-needed-points' => 'Pliniveligi al <b><a href="$1">$2</a></b> gajnu <i>$3</i> pliajn poentojn!',
+	'mp-welcome-logged-in' => 'Saluton $1',
+	'mp-requests-title' => 'Petoj',
+	'mp-requests-message' => 'Vi havas la jenajn petojn.',
+	'mp-request-new-message' => 'nova mesaĝo',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|nova premio|novaj premioj}}',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

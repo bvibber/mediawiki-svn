@@ -1239,6 +1239,7 @@ $messages['jut'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'ogg-desc' => 'Sing ngurusi berkas Ogg Theora lan Vorbis mawa pamain JavaScript',
@@ -1260,8 +1261,8 @@ Mangga <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 	'ogg-no-xiphqt' => 'Katoné panjenengan ora ana komponèn XiphQT kanggo QuickTime.
 QuickTime ora bisa mainaké berkas-berkas Ogg tanpa komponèn iki.
 Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ngundhuh XiphQT</a> utawa milih piranti pamain liya.',
-	'ogg-player-videoElement' => 'élemèn <video>',
-	'ogg-player-oggPlugin' => 'plugin Ogg',
+	'ogg-player-videoElement' => 'Dhukungan browser asli',
+	'ogg-player-oggPlugin' => "''Plugin browser''",
 	'ogg-player-thumbnail' => 'Namung gambar statis waé',
 	'ogg-player-soundthumb' => 'Ora ana piranti pamain',
 	'ogg-player-selected' => '(dipilih)',

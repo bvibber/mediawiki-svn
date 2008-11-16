@@ -32,6 +32,11 @@ $aliases['bs'] = array(
 	'ImportFreeImages' => array( 'UvozSlobodnihSlika' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'ImportFreeImages' => array( 'Freie Bilder importieren' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ImportFreeImages' => array( 'Tuo vapaita kuvia' ),

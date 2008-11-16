@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'stringfunctions-desc' => 'يعزز المحلل بدوال سلسلة',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'stringfunctions-desc' => 'Plibonigas la sintaksan analizilon kun signoĉenaj funkcioj.',
+);
+
 /** French (Français)
  * @author IAlex
  */

@@ -70,6 +70,13 @@ $messages['gl'] = array(
 	'wikitextloggedinout-desc' => 'Dous hooks de análise, <tt>&lt;loggedin&gt;</tt> e mais <tt>&lt;loggedout&gt;</tt> para amosar textos diferentes dependendo do estado do rexistro do usuario',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'wikitextloggedinout-desc' => 'שתי תגיות, <tt>&lt;loggedin&gt;</tt> ו־<tt>&lt;loggedout&gt;</tt>, המציגות טקסט שונה למשתמשים אנונימיים ולמשתמשים רשומים',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

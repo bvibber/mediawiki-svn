@@ -65,6 +65,14 @@ $messages['gl'] = array(
 	'emergencydesysop-nogroups' => 'Ningún',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'emergencydesysop-nogroups' => 'Keen',
+	'emergencydesysop-blocked' => 'Dir kënnt net op dës Säit goen esoulaang wann Dir gespaart sidd',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

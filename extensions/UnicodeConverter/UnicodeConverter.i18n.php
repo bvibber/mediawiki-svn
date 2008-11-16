@@ -140,6 +140,17 @@ $messages['ia'] = array(
 	'unicodeconverter-newtext' => 'Texto convertite:',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'unicodeconverter' => "Konverter ''unicode''",
+	'unicodeconverter-desc' => 'Conto prasaja modul kaca spésial. [[Special:UnicodeConverter|Kanthi string ing UTF-8]], modul iki ngonvèrsi menyang entitas HTML sing cocog karo kaca wèb ISO 8859-1',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Tèks asli:',
+	'unicodeconverter-newtext' => 'Tèks sing wis dikonversi:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន

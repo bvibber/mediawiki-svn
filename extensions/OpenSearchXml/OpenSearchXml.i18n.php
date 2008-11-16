@@ -121,6 +121,13 @@ $messages['ja'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSONインターフェースによるテキスト抽出',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'opensearchxml-desc' => 'Antarmuka [http://www.opensearch.org OpenSearch] JSON sing nyadiakaké èkstraksi tèks.',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

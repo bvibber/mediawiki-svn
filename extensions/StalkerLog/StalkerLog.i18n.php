@@ -153,6 +153,17 @@ $messages['ja'] = array(
 	'stalkerlog-log-text' => 'これは、利用者のログインとログアウトの記録です。',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'stalkerlog-desc' => 'Nambah [[Special:Log/stalkerlog|log]] panganggo sing mlebu lan metu log',
+	'stalkerlog-log-login' => 'wis mlebu log',
+	'stalkerlog-log-logout' => 'wis metu log',
+	'stalkerlog-log-type' => 'Log autentikasi panganggo',
+	'stalkerlog-log-text' => 'Iki log panganggo sing mlebu lan metu log',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

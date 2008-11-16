@@ -600,22 +600,32 @@ $messages['is'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'specialuserstats' => 'Statistik olèhé nganggo',
 	'usagestatistics' => 'Statistik olèhé nganggo',
+	'usagestatistics-desc' => 'Tampilaké statistik panganggo individu lan kabèh panggunaan wiki',
 	'usagestatisticsfor' => '<h2>Statistik panggunan kanggo [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statistik panggunaan kabèh panganggo</h2>',
 	'usagestatisticsinterval' => 'Interval',
 	'usagestatisticstype' => 'Jenis',
 	'usagestatisticsstart' => 'Tanggal wiwitan',
 	'usagestatisticsend' => 'Tanggal entèk',
 	'usagestatisticssubmit' => 'Nggawé statistik',
+	'usagestatisticsnostart' => '* <font color=red>Temtokaké tanggal miwiti</font>',
+	'usagestatisticsnoend' => '* <font color=red>Temtokaké tanggal mungkasi</font>',
+	'usagestatisticsbadstartend' => '<b>Tanggal <i>miwiti</i> lan/utawa <i>mungkasi</i> kliru!</b>',
 	'usagestatisticsintervalday' => 'Dina',
 	'usagestatisticsintervalweek' => 'Minggu (saptawara)',
 	'usagestatisticsintervalmonth' => 'Sasi',
+	'usagestatisticsincremental' => "Undhak-undhakan (''incremental'')",
+	'usagestatisticsincremental-text' => "undhak-undhakan (''incremental'')",
 	'usagestatisticscumulative' => 'Kumulatif',
 	'usagestatisticscumulative-text' => 'kumulatif',
 	'usagestatisticscalselect' => 'Pilih',
+	'usagestatistics-editindividual' => 'Statistik panyuntingan panganggo individual $1',
+	'usagestatistics-editpages' => 'Statistik kaca panganggo individual $1',
 );
 
 /** Khmer (ភាសាខ្មែរ)
