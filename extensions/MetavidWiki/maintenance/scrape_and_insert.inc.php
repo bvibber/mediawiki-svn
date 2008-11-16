@@ -852,7 +852,7 @@ class MV_ArchiveOrgScrape extends MV_BaseScraper {
 }
 
 class MV_BaseScraper {
-	var $number_of_tries = 1;
+	var $number_of_tries = 3;
 	/*
 	 * simple url cach using the mv_url_cache table
 	 *

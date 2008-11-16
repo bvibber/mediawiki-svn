@@ -87,7 +87,7 @@ mvPlayList.prototype = {
 	        }
 	    }
 		//make sure height and width are int:
-		this.width=	parseInt(this.width);
+		this.width =parseInt(this.width);
 		this.height=parseInt(this.height);
 		
 	    //if style is set override width and height
@@ -120,20 +120,19 @@ mvPlayList.prototype = {
 		var _this=this;
 		js_log("calling sequence with url:"+ _this.src);
 		
-		//clone the playlist (deep=true) : 
-		/*
-		this_plObj_Clone = this.clone( true );		
+		//clone the playlist (to make for easy cancel) 
+		/*var this_plObj_Clone = $j('#'+this.id).get(0).cloneNode(true);
 		this_plObj_Clone.sequencer=true;
 		this_plObj_Clone.id= 'seq_plobj';
-		*/
-		
+		debugger;
+		*/		
 		//load sequencer: 
 		mv_do_sequence({
 				"sequence_container_id":'modalbox', 
 				//@@todo we should copy over "this" playlist object 
 				//for cases where the playlist is already in the page 
 				"mv_pl_src":this.src
-				//"mv_pl_obj":this_plObj_Clone 								
+				//"plObj":this_plObj_Clone 								
 			});
 					
 	},
@@ -444,18 +443,18 @@ mvPlayList.prototype = {
 		}		
 		
 		//update start_offset 
-		if(typeof this.cur_clip.embed.start_offset=='undefined')
-			this.cur_clip.embed.start_offset=this.cur_clip.embed.media_element.selected_source.start_offset;	
-		
-		//render effects ontop:
-		
+		if(typeof this.cur_clip.embed.start_offset=='undefined'){
+			if(!typeof this.cur_clip.embed.media_element.selected_source!='undefined')
+				this.cur_clip.embed.start_offset=this.cur_clip.embed.media_element.selected_source.start_offset;
+		}							
 		//issue thumbnail update request: (if plugin supports it will render out frame 
 		// if not then we do a call to the server to get a new thumbnail  
 		this.cur_clip.embed.updateThumbTime( float_sec - pl_sum_time );
 		
 		this.cur_clip.embed.currentTime = (float_sec -pl_sum_time)+this.cur_clip.embed.start_offset ;
 		this.cur_clip.embed.seek_time_sec = (float_sec -pl_sum_time );
-				
+		
+		//render effects ontop: (hannled by doSmilActions)		
 		this.doSmilActions( single_line = true );	
 	},
 	updateBaseStatus:function(){
@@ -877,8 +876,7 @@ mvClip.prototype = {
 	isAnimating:false,			
 	init:function(o){		
 		//init object including pointer to parent
-		for(var i in o){
-			js_log('clip init vars: '+ i + ' ' + o[i]);
+		for(var i in o){			
 			this[i]=o[i];
 		};		
 		js_log('id is: '+ this.id);
@@ -1892,10 +1890,19 @@ trackObj.prototype = {
 		return elmObj;
 	},
 	addClip:function(clipObj, pos){
-		js_log('ignored pos: '+ pos);
-		//for now just add to the end: 
-		this.clips.push(clipObj);
-		//js_log('addClip cur_clip len:'+ clipObj.embed.media_element.sources.length);		
+		if( !pos )
+			pos = this.clips.length;				
+		//get everything after pos	
+		this.clips.splice(pos, 0, clipObj);			
+		//keep the clip order values accurate:
+		this.reOrderClips();				
+	},
+	reOrderClips:function(){
+		for( var k in this.clips){
+			if(typeof this.clips[i] != 'undefined'){
+				this.clips[i].order=k;
+			}
+		}
 	},
 	getClipCount:function(){		
 		return this.clips.length;

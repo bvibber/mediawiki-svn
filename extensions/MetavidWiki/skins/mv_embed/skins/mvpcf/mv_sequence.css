@@ -115,7 +115,7 @@
 	white-space: nowrap; 	
 }
 .mv_tl_thumb{
-	white-space: nowrap; 
+	display:inline; 
 }
 .mv_selected_clip{
 	border:solid #9F9; 	
@@ -130,4 +130,53 @@
 }
 .mv_adjust_click{
 	cursor:pointer;
+}
+
+#seq_menu{
+	list-style-type:none;
+	list-style-position:outside;
+	display:block;
+}
+#seq_menu li{
+	display:inline;
+	padding:5px;
+	margin:0px;
+	border: solid thin gray;
+}
+#seq_menu li a{
+	color:#fff;
+}
+.seq_control_container{
+	position:absolute;
+	top:40px;
+	padding:10px;
+	overflow:auto; 
+	bottom:0px;
+	left:0px;
+	right:0px;
+}
+.seq_sub_control_container{
+	position:absolute;
+	top:0px;
+	left:100px;
+	padding:10px;
+	overflow:auto; 
+	bottom:0px;
+	left:0px;
+	right:0px;
+}
+.mv_submenu{	
+	position:absolute;
+	left:0px;
+	top:20px;
+	width:100px;	
+	padding:10px;
+	list-style-type:none; 
+	bottom:0px;
+}
+.mv_submenu li{
+	border:solid thin gray;
+}
+#seq_menu .mv_selected_item{
+	border-bottom:none;
 }

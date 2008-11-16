@@ -467,7 +467,7 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 	$out = '';	
 	//(if we have old version of stream copy over is properties) 
 	if( isset( $stream->org_start_time ) )
-		$stream->date_start_time =$stream->org_start_time;
+		$stream->date_start_time = $stream->org_start_time;
 		
 	
 	$start_time = $stream->date_start_time;
@@ -562,7 +562,7 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 			// more semantic properties
 			$out .= "\n\n";
 			$out .= '[[stream_duration::' . ( $mvTitle->getDuration() ) . '| ]]' . "\n";
-			if ( $stream->org_start_time ) {
+			if ( $stream->date_start_time ) {
 				$out .= '[[original_date::' . $stream->date_start_time . '| ]]';
 			}
 		}

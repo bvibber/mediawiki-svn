@@ -1,10 +1,10 @@
 /*
 * a library for doing remote semantic wiki searches with a focus on media results.
 */
-var mvRemoteSearch = function(initObj) {		
+var mvBaseRemoteSearch = function(initObj) {		
 	return this.init(initObj);
 };
-mvRemoteSearch.prototype = {
+mvBaseRemoteSearch.prototype = {
 	//default values: 
 	thumb_width:80,
 	
@@ -12,16 +12,15 @@ mvRemoteSearch.prototype = {
 	num_req:0,
 	
 	result_display_mode:'box', //box or list
-	api_mode:'mediawiki', //api mode (mediawiki api or metavid enhanced wiki api)
 	resultsObj:{},
 	//init the object: 
 	init:function( initObj ){		
-		js_log('f:mvRemoteSearch:init');
+		js_log('mvBaseRemoteSearch:init');
 		for(var i in initObj){
 			this[i] = initObj[i];
-		}
-		var _this = this;
-			
+		}	
+		
+		var _this = this;			
 		if(this['target_submit']){
 			$j('#'+this['target_submit']).click(function(){
 				js_log('doSearch REQ');
@@ -38,7 +37,7 @@ mvRemoteSearch.prototype = {
 		//check if we are in metavid Temporal semantic media search mode
 			//add an "advanced search" button
 		
-		//add in controls: (find a better place for these / use css  
+		//add in controls: (find a better place for these / use css)  
 		//this seems highly verbose do do a simple control
 		var box_dark_url 	= mv_embed_path + 'skins/' + mv_skin_name + '/images/box_layout_icon_dark.png';
 		var box_light_url 	= mv_embed_path + 'skins/' + mv_skin_name + '/images/box_layout_icon.png';
@@ -81,53 +80,7 @@ mvRemoteSearch.prototype = {
 		this.result_display_mode=mode;
 		//reformat the results: 
 		this.formatOutputResults();
-	},
-	getSearchResults:function(){
-		js_log('f:getSearchResults for:' + $j('#'+this.target_input).val() );
-		//set results div to "loading"
-		$j('#'+this.target_results).html( getMsg('loading_txt') );
-		//empty out the current results: 
-		this.resultsObj={};
-		//do two queries against the Image / File namespace: 	
-		if( this.api_mode =='mediawiki' ){
-			//construct search request:		
-			var req_url =this.p_seq.plObj.interface_url.replace(/index\.php/, 'api.php');			
-			//build the image request object: 
-			var rObj = {
-				'action':'query', 
-				'generator':'search',
-				'gsrsearch': encodeURIComponent( $j('#'+this.target_input).val() ),  
-				'gsrnamespace':6, //(only search images)
-				'gsrwhat':'text',
-				'prop':'imageinfo|revisions|categories',
-				'iiprop':'url',
-				'iiurlwidth':'80',
-				'rvprop':'content'
-			};		
-			var _this = this;
-			//set up the number of request: 
-			this.completed_req=0;
-			this.num_req=2;
-			//setup the number of requests result flag: 				
-			do_api_req( rObj, req_url, function(data){				
-				//parse the return data
-				_this.addMediaWikiAPIResults( data);				
-				_this.checkRequestDone();			
-			});							
-			//also do a request for page titles (would be nice if api could query both at the same time) 
-			rObj['gsrwhat']='title';
-			do_api_req( rObj, req_url, function(data){
-				//parse the return data
-				_this.addMediaWikiAPIResults( data);
-				_this.checkRequestDone();
-			});	
-		}
-		//do unified media search call to metavid toolset: 
-		if(this.api_mode == 'metavid'){
-			//@@todo we should integrate semantic queries to the api.php 
-			
-		}
-	},
+	},	
 	//check request done used for when we have multiple requests to check before formating results. 
 	checkRequestDone:function(){
 		//display output if done: 
@@ -141,15 +94,15 @@ mvRemoteSearch.prototype = {
 		//debugger;
 		var o='';
 		//output results based on display mode: 
-		for( var i in this.resultsObj ){
-			var pageObj = this.resultsObj[i];
+		for( var rInx in this.resultsObj ){
+			var resultItem = this.resultsObj[rInx];
 			if( this.result_display_mode == 'box' ){
-				o+='<div class="mv_clip_box_result" style="width:' + this.thumb_width + 'px;">';
-					o+='<img style="width:' + this.thumb_width + 'px;" src="' + pageObj.imageinfo[0].thumburl + '">';
+				o+='<div id="mv_result_' + rInx + '" class="mv_clip_box_result" style="width:' + this.thumb_width + 'px;">';
+					o+='<img style="width:' + this.thumb_width + 'px;" src="' + resultItem.poster + '">';
 				o+='</div>';
 			}else if(this.result_display_mode == 'list'){
-				o+='<div class="mv_clip_list_result" style="width:90%">';
-					o+='<img style="float:left;width:' + this.thumb_width + 'px;" src="' + pageObj.imageinfo[0].thumburl + '">';			
+				o+='<div id="mv_result_' + rInx + '" class="mv_clip_list_result" style="width:90%">';
+					o+='<img style="float:left;width:' + this.thumb_width + 'px;" src="' + resultItem.poster + '">';			
 					o+= pageObj.revisions[0]['*'];							
 				o+='</div>';
 				o+='<div style="clear:both" />';
@@ -158,20 +111,101 @@ mvRemoteSearch.prototype = {
 		js_log('set : ' +this.target_results + ' to ' + o);
 		//debugger;
 		$j('#'+this.target_results).html(o);
-	},	
-	addMediaWikiAPIResults:function( data ){	
-		//make sure we have pages to iderate: 
+	}	
+}
+
+/*
+* api modes (implementations should call these objects which inherit the mvBaseRemoteSearch  
+*/
+var metavidRemoteSearch = function(initObj) {		
+	return this.init(initObj);
+};
+metavidRemoteSearch.prototype = {
+	init:function(initObj){
+		var baseSearch = new mvBaseRemoteSearch(initObj);
+		//inherit:
+		for(var i in baseSearch){
+			if(typeof this[i] =='undefined'){
+				this[i] = baseSearch[i];
+			}else{
+				this['parent_'+i] =  baseSearch[i];
+			}
+		}
+	}
+}
+
+var mediaWikiRemoteSearch = function(initObj) {		
+	return this.init(initObj);
+};
+mediaWikiRemoteSearch.prototype = {
+	init:function(initObj){
+		var baseSearch = new mvBaseRemoteSearch(initObj);
+		//inherit:
+		for(var i in baseSearch){
+			if(typeof this[i] =='undefined'){
+				this[i] = baseSearch[i];
+			}else{
+				this['parent_'+i] =  baseSearch[i];
+			}
+		}
+	},
+	getSearchResults:function(){
+		js_log('f:getSearchResults for:' + $j('#'+this.target_input).val() );
+		//set results div to "loading"
+		$j('#'+this.target_results).html( getMsg('loading_txt') );
+		//empty out the current results: 
+		this.resultsObj={};
+		//do two queries against the Image / File / MVD namespace: 			
+		//construct search request:		
+		var req_url =this.p_seq.plObj.interface_url.replace(/index\.php/, 'api.php');			
+		//build the image request object: 
+		var rObj = {
+			'action':'query', 
+			'generator':'search',
+			'gsrsearch': encodeURIComponent( $j('#'+this.target_input).val() ),  
+			'gsrnamespace':6, //(only search images)
+			'gsrwhat':'title',
+			'prop':'imageinfo|revisions|categories',
+			'iiprop':'url',
+			'iiurlwidth':'80',
+			'rvprop':'content'
+		};		
+		var _this = this;
+		//set up the number of request: 
+		this.completed_req=0;
+		this.num_req=2;
+		//setup the number of requests result flag: 				
+		do_api_req( rObj, req_url, function(data){				
+			//parse the return data
+			_this.addMediaWikiAPIResults( data);				
+			_this.checkRequestDone();			
+		});							
+		//also do a request for page titles (would be nice if api could query both at the same time) 
+		rObj['gsrwhat']='text';
+		do_api_req( rObj, req_url, function(data){
+			//parse the return data
+			_this.addResults( data);
+			_this.checkRequestDone();
+		});			
+	},
+	addResults:function( data ){	
+		//make sure we have pages to idoerate: 
 		if(data.query && data.query.pages){
 			for(var page_id in  data.query.pages){
 				var page =  data.query.pages[ page_id ];
-				this.resultsObj[page_id]=page;
+				
+				this.resultsObj['ref'][page_id]={
+					'uri':page.title,
+					'poster':page.imageinfo.thumburl,
+					'src':page.imageinfo.url,
+					'desc':page.revisions['*'],
+					'meta':{
+						'categories':page.categories
+					}
+				}
 			}
 		}else{
 			js_log('no results:' + data);
 		}
 	}
 }
-/*
-
-	
-*/

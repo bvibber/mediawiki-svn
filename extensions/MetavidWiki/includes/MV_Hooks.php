@@ -71,11 +71,20 @@ function LinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options, 
  	return true;
 }
 /* 
- * hack to embed embedStream:StreamName links 
+ * enables the rewriting of links to the Stream and Sequence namespace to support inline embeding.  
+ * see page: sample in-wiki-embed syntax 
 */
  function mvLinkEnd($skin, $title, $options, &$text, &$attribs, &$ret){
- 	global $mvEmbedKey, $mvDefaultAspectRatio,$mvDefaultVideoPlaybackRes; 	 
+ 	global $mvDefaultAspectRatio, $mvDefaultVideoPlaybackRes; 	 
  	//print "linkend: $mvEmbedKey\n";
+ 	return true;
+ 	//only rewrite stream and sequence namespaces
+ 	//if( !$title->getNamespace() == MV_NS_STREAM && !$title->getNamespace()== MV_NS_SEQUENCE  ){
+	//	print "NS not a stream or seq";
+ 	//	return true; 
+ 	//} 	
+ 	//print "LINK TEXT:" . $title->getText();
+ 	 	 	
  	if( substr( $title->getText(), 0, strlen($mvEmbedKey) ) == $mvEmbedKey ){
  		//parse text for extra params: 
  		$params = explode('|', $text);
@@ -90,6 +99,7 @@ function LinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options, 
  				}
  			}
  		}
+ 		
  		$mvTitle =  new MV_Title( substr( $title->getText(), strlen($mvEmbedKey)+1) ); 		
  		$ret = $mvTitle->getEmbedVideoHtml( array( 'size'=>$size, 'showmeta'=>true ) );
  		return false;

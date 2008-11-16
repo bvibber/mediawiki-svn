@@ -17,8 +17,13 @@
  *  exports back out to json or inline format
  */
  
-gMsg['menu_welcome'] = 'Welcome';
-gMsg['menu_cliplib'] = 'Resource Locator';
+gMsg['menu_clipedit'] = 'Edit Selected Resource';
+	gMsg['sm_inoutpoints']	='Set In-Out points';
+	gMsg['sm_panzoom']		='Pan zoom Controls';
+	gMsg['sm_overlays']		='Overlays';
+	gMsg['sm_audio']		='Audio Control';
+
+gMsg['menu_cliplib'] = 'Add Resource';
 gMsg['menu_transition'] = 'Transitions Effects';
 gMsg['menu_resource_overview'] = 'Resource Overview';
 gMsg['menu_options'] = 'Options';
@@ -54,7 +59,7 @@ var sequencerDefaultValues = {
 	sequence_tools_id:'mv_sequence_tools',
 	timeline_id:'mv_timeline',
 	plObj_id:'seq_plobj',
-	plObj_clone:null,	
+	plObj:'null',	
 	
 	timeline_scale:.06, //in pixel to second ratio ie 100pixles for every ~30seconds
 	timeline_duration:500, //default timeline length in seconds
@@ -68,6 +73,9 @@ var sequencerDefaultValues = {
 	track_clipThumb_height:80, // how large are the i-movie type clips
 	
 	base_adj_duration:.5, //default time to subtract or add when adjusting clips. 	
+	
+	//default clipboard is empty:
+	clipboard:new Array(),
 	
 	//Msg are all the language specific values ... 
 	// (@@todo overwrite by msg values preloaded in the page)	
@@ -85,16 +93,33 @@ var mvSequencer = function(initObj) {
 	return this.init(initObj);
 };
 //set up the mvSequencer object
-mvSequencer.prototype = {			
-	plObj:null,
+mvSequencer.prototype = {
 	menu_items : {
-		'welcome':1,
-		'cliplib':0,
-		'transition':0,		
-		'options':0
+		'clipedit':{
+			'd':1,
+			'submenu':{
+				'inoutpoints':1,
+				'panzoom':0,				
+				'overlays':0,
+				'audio':0		
+			}
+		},
+		'cliplib':{
+			'd':0
+		},
+		'transition':{
+			'd':0
+		},		
+		'options':{
+			'd':0
+		},
 		//menu_resource_overview
 	},	
-	multi_clip_select:false, //controls the multi-clip select state
+	
+	//set up initial key states: 
+	key_shift_down:false, 
+	key_ctrl_down:false,
+	
 	init:function( initObj ){	
 		//set the default values:
 		for(var i in sequencerDefaultValues){
@@ -151,11 +176,26 @@ mvSequencer.prototype = {
 		js_log('set: '+this.sequence_container_id + ' html to:'+ "\n"+
 			$j('#'+this.sequence_container_id).html()
 		);
+		
+		//first check if we got a cloned PL object:
+		//(when the editor is invoked with the plalyst already on the page) 
+		if( this.plObj != 'null' ){
+			js_log('found plObj clone');			
+			//extend with mvSeqPlayList object:			
+			this.plObj = new mvSeqPlayList(this.plObj);
+			js_log('mvSeqPlayList added: ' + this.plObj.org_control_height );
+			debugger;
+			$j('#'+this.video_container_id).get(0).attachNode( this.plObj );
+			this.plObj.getHTML();
+			debugger;
+			this.checkReadyPlObj();
+			return ;
+		}
 												
-		//add src based pl: 
+		//else check for source based sequence editor (a clean page load of the editor) 
 		if( this.mv_pl_src != 'null' ) {
 			js_log( ' pl src:: '+ this.mv_pl_src );			
-			var src_attr=' src="'+ this.mv_pl_src+'" ';
+			var src_attr=' src="'+ this.mv_pl_src+'" ';		
 		}else{
 			js_log( ' null playlist src .. (start empty) '); 
 			var src_attr='';
@@ -171,10 +211,11 @@ mvSequencer.prototype = {
 	disp:function( item ){
 		js_log('disp: ' + item);
 		for(var i in this.menu_items){
-			if(i==item)
-				$j('#'+i+'_ic').show("slide", { direction: "up" }, "fast");	
-			else
-				$j('#'+i+'_ic').filter(':visible').hide("slide", { direction: "down" }, "fast");		
+			if(i==item){
+				$j('#'+i+'_ic').fadeIn("fast");						
+			}else{
+				$j('#'+i+'_ic').filter(':visible').fadeOut("fast");
+			}		
 		}
 	},
 	//load the menu items: 	
@@ -187,25 +228,50 @@ mvSequencer.prototype = {
 		//ouput the requested items list: 
 		for(var i in this.menu_items){
 			req_url+='|'+i;
-			$j('#'+i+'_ic').html( getMsg('loading_txt') );//set targets to loading
+			//if single items set to loading:
+			if(typeof this.menu_items[i].submenu == 'undefined')
+				$j('#'+i+'_ic').html( getMsg('loading_txt') );//set targets to loading
+			//else set the default sub menu to loading:
+			for(var j in this.menu_items[i].submenu){
+				if(this.menu_items[i].submenu[j])
+					$j('#'+j+'_sc').html( getMsg('loading_txt') );
+			}
 		}				
 		var this_seq = this;
 		do_request(req_url, function(data){
-			if(typeof data=='string'){
+			if( typeof data=='string' ){
 				js_log(' eval data: ' + data);					
 				eval(data);
 				var data = mv_result['pay_load'];				
 			}
-			for(var i in data){
-				js_log('set '+ i + ' to: '+ data[i] );
-				$j('#'+i+'_ic').html( data[i] );
-				this_seq.doMenuItemDispJs(i)
+			for( var i in data ){
+				var menu_item = this_seq.menu_items[i];
+				js_log('set '+ i + ' to: '+ data[i] );				
+				if( menu_item.submenu ){
+					if(typeof data[i]=='string'){
+						//just set the default item
+						for(var j in menu_item.submenu){
+							if( menu_item.submenu[j] )
+								$j('#'+j+'_sc').html( data[i] );
+						}
+					}else if(typeof data[i] == 'object'){						
+						//see if we have sub data for each sub-menu item
+						for(var j in data[i]){
+							$j('#'+j+'_sc').html( data[i][j] );
+						}
+					}
+				}else{
+					//just set the parent container		
+					$j('#'+i+'_ic').html( data[i] );
+					this_seq.doMenuItemDispJs(i)
+				}
 			}
 		});						
 	},
 	doMenuItemDispJs:function(item){		
 		var this_seq = this;
 		var target_id = item + '_ic';
+		var menu_item = this.menu_items[item];	
 		//do any menu item post embed js hook processing:
 		switch(item){		
 			case 'transition':
@@ -218,9 +284,10 @@ mvSequencer.prototype = {
 				//and have the search interface build the html 				
 				if( !this.plObj.interface_url )
 					return js_log( 'Error:missing interface_url, can not load search interface' );
-																										
-				mvJsLoader.doLoad({'mvRemoteSearch':'mv_remote_media_search.js'}, function(){					
-					this_seq.mySearch = new mvRemoteSearch( {
+				
+				//check default search
+				mvJsLoader.doLoad({'mediaWikiRemoteSearch':'mv_remote_media_search.js'}, function(){					
+					this_seq.mySearch = new mediaWikiRemoteSearch( {
 						'p_seq':this_seq,
 						'instance_name': this_seq.instance_name + '.mySearch',
 						'target_input':'mv_ams_search',
@@ -362,6 +429,7 @@ mvSequencer.prototype = {
 		}		
 	},
 	plReadyInit:function(){
+		var this_seq = this;
 		js_log('plReadyInit');		
 		js_log( this.plObj );					
 		//update playlist (since if its empty right now) 
@@ -370,19 +438,45 @@ mvSequencer.prototype = {
 		}	
 		
 		//render the menu: 
-		var menu_html = '<ul style="list-style-type:none;list-style-position:outside;display:block;">';
+		var menu_html = '<ul id="seq_menu">';
 		var item_containers ='';
 		
-		//@@todo load menu via ajax request (avoid so much hmtl in js) 
-		for(var i in this.menu_items){
-			var disp_style = (this.menu_items[i])?'block':'none'; //@@todo should use classes
-			menu_html+='<li style="display:inline;padding:10px;"><a style="color:#fff" href="javascript:' + this.instance_name + '.disp(\''+ i +'\')">' + getMsg('menu_' + i ) +'</a></li>';			
-			item_containers += '<div id="' + i + '_ic" style="display:' + disp_style +';'+ 				
-				'position:absolute;top:40px;padding:10px;overflow:auto;' + 
-				'bottom:0px;left:0px;right:0px;"></div>';
-		}
-		menu_html+='</ul>';				
+		//@@todo ~maybe~ load menu via ajax request 
+		//(avoid so much hmtl in js? or keep in js to improve protabillity of sequencer? ) 
+	
+		$j.each(this.menu_items, function(inx, menu_item){
+			var disp_style = (menu_item.d)?'block':'none';
+			var sel_class = (menu_item.d)?'class="mv_selected_item"':''; 
+			menu_html+='<li '+sel_class+' id="mv_menu_item_'+inx+'">' + getMsg('menu_' + inx ) +'</li>';						
+			item_containers += '<div class="seq_control_container" id="' + inx + 
+				'_ic" style="display:' + disp_style +';">'
+					//add in subMenus if set
+					//check for submenu and add to item container		
+					var sub_menu_html='';			
+					if( typeof menu_item.submenu != 'undefined'){						
+						sub_menu_html+= '<ul style="position:abolute;left:0px;width:100px;" id="mv_submenu_' + inx +'" class="mv_submenu">'; 
+						$j.each(menu_item.submenu, function(subInx, sub_menu_item){
+							var disp_style = (menu_item.d)?'block':'none';
+							var sub_sel_class = (sub_menu_item.d)?'class="mv_selected_item"':'';
+							 
+							sub_menu_html+= '<li ' + sub_sel_class + ' id="mv_sub_menu_item_' + subInx + '">' + 
+								getMsg('sm_' + subInx ) + '</li>'; 	
+							item_containers+= '<div class="seq_sub_control_container" id="' + subInx+ 
+								'_sc" style="display:' + disp_style +';"></div>';
+						});
+						sub_menu_html+= '</ul>';						
+					}																
+				item_containers+= sub_menu_html + '</div>';
+		});
+		menu_html+='</ul>';		
+			
 		$j('#'+this.sequence_tools_id).html( menu_html + item_containers );
+		//add binding for menu
+		$j('#seq_menu li').click(function(){
+			$j('#seq_menu li').removeClass('mv_selected_item');
+			$j(this).addClass('mv_selected_item');
+			this_seq.disp( $j(this).attr('id').replace('mv_menu_item_','') );
+		});
 		
 		//load init content into containers 
 		this.loadInitMenuItems();	
@@ -396,28 +490,36 @@ mvSequencer.prototype = {
 		$j().keyup(function (e) {
 			js_log('pressed: ' + e.which);
 			//delete key (remove selected clips) (in the future we should take app state into consideration) 
-			if( e.which == 8 ){
-				var remove_clip_ary=new Array();
-				//remove selected clips from display
-				$j('.container_track .mv_selected_clip').each(function(){					
-					//grab the track index from the id (assumes track_#_clip_# 					
-					remove_clip_ary.push ( $j(this).parent().attr('id').replace('track_','').replace('clip_','').split('_') );																				
-				});				
-				this_seq.removeClips( remove_clip_ary );	
-			}
+			if( e.which == 8 ){					
+				this_seq.removeSelectedClips();	
+			}			
 		});		
 		$j().keydown(function(e){
-			js_log('pushed down on:' + e.which);
-			//if user pressed "shift" enable multi-select 
-			if( e.which == 16 ){
-				this_seq.multi_clip_select = true;
-			}
+			js_log('pushed down on:' + e.which); 
+			if( e.which == 16 )
+				this_seq.key_shift_down = true;
+						
+			if( e.which == 17)
+				this_seq.key_ctrl_down = true;
+				
+			if( e.which == 67 && this_seq.key_ctrl_down)
+				this_seq.copySelectedClips();
+				
+			if( e.which == 88 && this_seq.key_ctrl_down)
+				this_seq.cutSelectedClips();
+			
+			if( e.which == 86 && this_seq.key_ctrl_down)
+				this_seq.pasteClipBoardClips();
+				
 		});
 		$j().keyup(function(e){
 			js_log('key up on ' + e.which);
-			if( e.which == 16 ){
-				this_seq.multi_clip_select = false;
-			}
+			//user let go of "shift" turn off multi-select
+			if( e.which == 16 )
+				this_seq.key_shift_down = false;
+				
+			if( e.which == 17)
+				this_seq.key_ctrl_down = true;			
 		});
 	},
 	update_tl_hook:function(jh_time_ms){			
@@ -457,12 +559,13 @@ mvSequencer.prototype = {
 					o+=' '+j+'="' + tAttr[j] + '"\n\t\t\t';
 				}
 			o+=">\n";			
-			for(var k in curTrack.clips){
+			for( var k in curTrack.clips ){
 				var curClip = curTrack.clips[k];
 				o+="\t\t<ref ";
 					var cAttr = curClip.getAttributeObj();
 					for(var j in  cAttr){
-						o+=' '+j+'="' + cAttr[j] + '"\n\t\t\t';
+						var val =  (j=='transIn' || j=='transOut') ? cAttr[j].id : cAttr[j];													
+						o+=' '+j+'="' + val + '"\n\t\t\t';
 					}
 				o+="/>\n" //close the clip
 			}
@@ -475,33 +578,14 @@ mvSequencer.prototype = {
 		alert('f:getSeqOutputHLRDXML'+ o);
 		
 		return false;	
-	},
-	//add clips to the pl object: (by default to the end of the track) 
-	addClip:function( clip_init ){
-		js_log("seq: add clip");
-		this_seq = this;
-		var track_inx = (typeof clip_init.track_id !='undefined')?clip_init.track_id:0;				
-		//set defaults if not present: 	
-		if(!clip_init.order)clip_init.order=this.plObj.tracks[track_inx].clips.length;	
-		if(!clip_init.id)clip_init.id = 'p_'+this.plObj.id+'_c_'+clip_init.order;
-		clip_init.pp = this.plObj;
-		//set up current clip Object: 
-		var cur_clip = new mvClip(clip_init);	
-		//do any special per-type processing before doAddClip
-		switch(cur_clip.type){
-			case 'srcClip':
-				this_seq.doAddClip(cur_clip, track_inx);
-			break;						
-		}
-	},
-	doAddClip:function(cur_clip, track_inx){
+	},	
+	/*doAddClip:function(cur_clip, track_inx){
 		//add clip to track:
 		this.plObj.addCliptoTrack(cur_clip, track_inx);	
 		//set up embed: 
-		cur_clip.setUpEmbedObj();
-		this.do_refresh_timeline();						
-	},
-	//hide everything and bring up edit clip. interface:
+		cur_clip.setUpEmbedObj();								
+	},*/
+	//@@todo integratre into clip view ...
 	editClip:function(track_inx, clip_inx){
 		$j('#modalbox').hide();
 		if($j('#modal_window').length==0){
@@ -556,27 +640,104 @@ mvSequencer.prototype = {
 		$j('#modal_window').hide();
 		$j('#modalbox').show();
 	},
-	removeClips:function( remove_clip_ary ){		
-		//js_log('remove t:' + track_inx + ' c:'+ clip_inx + ' id:' +' #track_'+track_inx+'_clip_'+clip_inx); 	
+	pasteClipBoardClips:function(){
+		//paste before the "current clip" 
+		this.addClips(this.clipboard, this.plObj.cur_clip.order );
+	},
+	copySelectedClips:function(){
 		var this_seq = this;
-		var jselect = coma ='';		
+		//set all the selected clips
+		this.clipboard = new Array();
+		$j('.mv_selected_clip').each(function(){
+			//add each clip to the clip board:
+			var track_clip = $j(this).parent().attr('id').replace('track_','').replace('clip_','').split('_');			
+			var cur_clip = this_seq.plObj.tracks[ track_clip[0] ].clips[ track_clip[1]];	
+			this_seq.clipboard.push( cur_clip.getAttributeObj() );
+		});		 
+	},
+	cutSelectedClips:function(){
+		this.copySelectedClips();		
+		this.removeSelectedClips();
+	},	
+	removeSelectedClips:function(){
+		var remove_clip_ary=new Array();
+		//remove selected clips from display
+		$j('.container_track .mv_selected_clip').each(function(){					
+			//grab the track index from the id (assumes track_#_clip_# 					
+			remove_clip_ary.push ( $j(this).parent().attr('id').replace('track_','').replace('clip_','').split('_') );																				
+		});		
+		this.removeClips(remove_clip_ary);
+	},
+	//add a single or set of clips
+	//to a given position and track_inx 
+	addClips:function( clipSet, before_clip_pos, track_inx){
+		this_seq = this;
+		js_log("seq: add clip: at: "+ before_clip_pos + ' in track: ' + track_inx);
+		//set defaults if missing
+		if(typeof trac_inx == 'undefined')
+			var trackObj = this.plObj.default_track;
+		else
+			var trackObj= this_seq.plObj.tracks[track_inx];
+			
+		var cur_pos = 	before_clip_pos;
+		$j.each(clipSet, function(inx, clipInit){
+			var mediaElement = document.createElement('mediaElement');
+			for(var i in clipInit){
+				$j(mediaElement).attr(i, clipInit[i]);
+			}
+			var clipObj = new mvSMILClip(mediaElement, 
+								{
+									id:'p_' + trackObj.id + '_c_'+cur_pos,
+									pp:this_seq.plObj,
+									order:cur_pos
+								}
+						)	
+			//set up embed:						
+			clipObj.setUpEmbedObj();
+			trackObj.addClip(clipObj, cur_pos);		
+			cur_pos++;
+		}); 		
+		this.do_refresh_timeline();
+	},
+	removeClips:function( remove_clip_ary ){					
+		var this_seq = this;
+		var jselect = coma ='';
+		//js_log('clip count before removal : ' + this_seq.plObj.default_track.clips.length);		
+		var afected_tracks = new Array();
+		//add order to track_clip before we start removing: 
+		$j.each( remove_clip_ary, function(inx, track_clip){		
+			remove_clip_ary[inx]['order']= this_seq.plObj.tracks[ track_clip[0] ].clips[ track_clip[1] ].order;
+		});		
 		$j.each( remove_clip_ary, function(inx, track_clip){
-			//remove the clips from the base library
-			this_seq.plObj.tracks[ track_clip[0] ].clips.splice( track_clip[1], 1);
-			jselect+= coma + '#track_' + track_clip[0] + '_clip_' + track_clip[1];
+			var track_inx = track_clip[0];
+			var clip_inx = track_clip[1];	
+			var clip_rm_order = track_clip['order'];										 			
+			js_log('remove t:' + track_inx + ' c:'+ clip_inx + ' id:' +' #track_'+track_inx+'_clip_'+clip_inx + ' order:' + clip_rm_order);
+			//remove the clips from the base tracks
+			for(var i in this_seq.plObj.tracks[ track_inx ].clips){
+				cur_clip = this_seq.plObj.tracks[ track_inx ].clips[i]
+				if(cur_clip.order == clip_rm_order){
+					this_seq.plObj.tracks[ track_clip[0] ].clips.splice( i, 1);
+				}
+			}
+			//add track to affected track list: 
+			afected_tracks[track_inx]=true;
+			jselect+= coma + '#track_' +track_inx + '_clip_' + clip_inx;
 			coma=',';
 		});
-		//animate the removal 		
+		//update/ reorder:
+		$j.each(afected_tracks, function(track_inx, affected){
+			this_seq.plObj.tracks[track_inx].reOrderClips();				
+		});
+		
+		js_log('clip count after removal : ' + this_seq.plObj.default_track.clips.length);
+		//animate the removal (@@todo should be able to call the resulting fadeOut only once without a flag) 
+		var done_with_refresh=false;
 		$j(jselect).fadeOut("slow", function(){
-			//re-render tracks: 
-			this_seq.do_refresh_timeline();
-		});				
-		//reorder:
-		//for( var k in this_seq.plObj.tracks[track_inx].clips){
-		//	if(typeof this_seq.plObj.tracks[track_inx].clips[i] != 'undefined'){
-		//		this_seq.plObj.tracks[track_inx].clips[i].order=k;
-		//	}
-		//}	
+			if(!done_with_refresh)						
+				this_seq.do_refresh_timeline();
+			done_with_refresh=true;
+		});						
 	},
 	doEdit:function( editObj ){
 		//add the current editObj to the edit stack (should allow for "undo")
@@ -728,7 +889,7 @@ mvSequencer.prototype = {
 						//add in per clip controls
 						track_html+='<div title="'+getMsg('clip_in')+' '+clip.embed.start_ntp+'" class="ui-resizable-w ui-resizable-handle" style="width: 16px; height: 16px; left: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_contract.png\');" ></div>'+"\n";
 						track_html+='<div title="'+getMsg('clip_out')+' '+clip.embed.end_ntp+'" class="ui-resizable-e ui-resizable-handle" style="width: 16px; height: 16px; right: 0px; top: 2px;background:url(\''+mv_embed_path+'images/application_side_expand.png\');" ></div>'+"\n";
-						track_html+='<div title="'+getMsg('rmclip')+'" onClick="'+this.instance_name + '.removeClips([' + track_id + ',' + j + '])" style="position:absolute;cursor:pointer;width: 16px; height: 16px; left: 0px; bottom:2px;background:url(\''+mv_embed_path+'images/delete.png\');"></div>'+"\n";
+						track_html+='<div title="'+getMsg('rmclip')+'" onClick="'+this.instance_name + '.removeClips(new Array([' + track_id + ',' + j + ']))" style="position:absolute;cursor:pointer;width: 16px; height: 16px; left: 0px; bottom:2px;background:url(\''+mv_embed_path+'images/delete.png\');"></div>'+"\n";
 						track_html+='<span style="display:none;" class="mv_clip_stats"></span>';	
 																													
 						track_html+='</span>';	
@@ -751,13 +912,24 @@ mvSequencer.prototype = {
 				
 				//apply onClick edit controls: 
 				$j('.mv_clip_thumb').click(function(){
-					//if not in mult select mode remove all existing selections 				
-					if( ! this_seq.multi_clip_select ){
-						$j('.mv_clip_thumb').each(function(){
-							$j(this).removeClass("mv_selected_clip");
-							$j('#' + $j(this).parent().attr("id") + '_adj').fadeOut("fast");
-						});
-					}
+					var multi_clip_selected = false;
+					//if only a single clip is selected re-add
+					if( $j(".mv_selected_clip").length > 1 )
+						multi_clip_selected=true;
+					
+					var cur_clip_click = this;
+					//if not in multi select mode remove all existing selections 
+					//(except for the current click which is hanndled down below)   				
+					if( ! this_seq.key_shift_down ){											
+						$j('.mv_selected_clip').each(function(){							
+							if( $j(this).parent().attr('id') != $j(cur_clip_click).parent().attr('id') 
+								|| multi_clip_selected ){									
+								$j(this).removeClass("mv_selected_clip");
+								$j('#' + $j(this).parent().attr("id") + '_adj').fadeOut("fast");
+							}
+						});	
+					}													
+					
 					//jump to clip time
 					var track_clip_ids = $j(this).parent().attr('id').replace('track_','').replace('clip_','').split('_');		
 					js_log(' updateCurrentClip: ' + 	track_clip_ids[0] +' ' +  track_clip_ids[1] );
@@ -844,8 +1016,7 @@ mvSequencer.prototype = {
 							var clip_inx = id_parts[3];
 							var clips = this_seq.plObj.tracks[track_inx].clips;	
 							var cur_drag_clip = clips[clip_inx];	
-							
-							//@@todo we could animate transformations later
+														
 							if(insert_key!='na' && insert_key!='end' ){						
 								cur_drag_clip.order=insert_key-.5;							
 							}else if (insert_key=='end'){
@@ -1069,19 +1240,19 @@ mvSeqPlayList.prototype = {
 	init:function(element){
 		var myPlObj = new mvPlayList(element);
 		//inherit mvClip		
-		for(method in myPlObj){			
+		for(var method in myPlObj){			
 			if(typeof this[method] != 'undefined' ){				
 				this['parent_'+method]=myPlObj[method];				
 			}else{		
 				this[method] = myPlObj[method];
 			}		
-		}
+		}		
 		this.org_control_height = this.pl_layout.control_height;		
 		//do specific mods:(controls and title are managed by the sequencer)  
 		this.pl_layout.title_bar_height=0;
 		this.pl_layout.control_height=0;
 	},
-	getControlsHTML:function(){
+	getControlsHTML:function(){				
 		//get controls from current clip add some playlist specific controls:  		
 		this.cur_clip.embed.supports['prev_next'] = true;	
 		this.cur_clip.embed.supports['options']   = false;

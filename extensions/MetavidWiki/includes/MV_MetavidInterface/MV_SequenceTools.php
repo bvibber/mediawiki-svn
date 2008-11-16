@@ -17,7 +17,7 @@
  		'sequence_page',
  		'add_clips_manual',
  		'transition',
-		'welcome',
+		'clipedit',
  		'cliplib',
  		'options' 		 		
  	);
@@ -66,7 +66,8 @@
 			case 'add_clips_manual':
 				$this->add_clips_manual();
 			break;				
-			case 'welcome':
+			case 'clipedit':
+				//the default clip view provides a "welcome / help  page"
 				$wgOut->addHTML( wfMsg('mv_welcome_to_sequencer') );
 			break;
 			case 'cliplib':

@@ -497,7 +497,7 @@ function mvOutputJSON( & $data ) {
 	$callback_index = $wgRequest->getVal( 'cb_inx' );
 	$wrap_function = $wgRequest->getVal( 'cb' );
 	
-	//header( 'Content-Type: text/javascript' );
+	header( 'Content-Type: text/javascript' );
 	if($callback_index!='' && $wrap_function!=''){
 		$output =  htmlspecialchars( $wrap_function ) . '(' . PhpArrayToJsObject_Recurse(
 		array(	'cb_inx' => htmlspecialchars( $callback_index ),
