@@ -55,7 +55,7 @@ $messages['en'] = array(
 	'configure-setting-wgAllowDisplayTitle' => "Allow the use of <nowiki>{{DISPLAYTITLE}}</nowiki>",
 	'configure-setting-wgAllowExternalImages' => "Allow inline file hotlinking",
 	'configure-setting-wgAllowExternalImagesFrom' => "Exceptions to \$wgAllowExternalImages = false",
-	'configure-setting-wgEnableImageWhitelist' => "Enable the use of MediaWiki:External file whitelist",
+	'configure-setting-wgEnableImageWhitelist' => "Enable the use of \"MediaWiki:External file whitelist\"",
 	'configure-setting-wgExpensiveParserFunctionLimit' => "Maximum number of calls per parse to expensive parser functions",
 	'configure-setting-wgExternalLinkTarget' => "Default target attribute for external links",
 	'configure-setting-wgCleanSignatures' => "Substitute templates in signatures",
