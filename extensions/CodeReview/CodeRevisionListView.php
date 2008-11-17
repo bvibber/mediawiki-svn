@@ -157,11 +157,8 @@ class SvnRevTablePager extends TablePager {
 		if( $this->mRepo->mName == $wgWikiSVN ) {
 			$css .= " mw-codereview-" . ( $row->{$this->getDefaultSort()} <= $this->mCurSVN ? 'live' : 'notlive' );
 		}
-		return str_replace(
-			'<tr>',
-			Xml::openElement( 'tr',
-				array( 'class' => $css ) ),
-				parent::formatRow( $row ) );
+		return str_replace( '<tr>', Xml::openElement( 'tr', array( 'class' => $css ) ),
+			parent::formatRow( $row ) );
 	}
 
 	function getTitle() {
