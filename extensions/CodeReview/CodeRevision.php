@@ -93,7 +93,7 @@ class CodeRevision {
 	}
 	
 	public static function getPossibleStates() {
-		return array( 'new', 'fixme', 'resolved', 'ok', 'deferred' );
+		return array( 'new', 'fixme', 'reverted', 'resolved', 'ok', 'deferred' );
 	}
 	
 	public function isValidStatus( $status ) {
@@ -410,7 +410,7 @@ class CodeRevision {
 			);
 		}
 		// Log this change
-		if( $user && $user->getId() ) {
+		if( ($removeTags || $addTags) && $user && $user->getId() ) {
 			$dbw->insert( 'code_prop_changes',
 				array( 
 					'cpc_repo_id'   => $this->getRepoId(),

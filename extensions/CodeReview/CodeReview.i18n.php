@@ -65,6 +65,7 @@ $messages['en'] = array(
 	'code-rev-purge-link' => 'purge',
 	'code-status-new' => 'new',
 	'code-status-fixme' => 'fixme',
+	'code-status-reverted' => 'reverted',
 	'code-status-resolved' => 'resolved',
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'deferred',
