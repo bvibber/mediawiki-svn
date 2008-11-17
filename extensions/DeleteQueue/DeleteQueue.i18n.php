@@ -2351,3 +2351,10 @@ $messages['vi'] = array(
 	'deletequeue-list-header-discusspage' => 'Trang thảo luận',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'deletequeue-list-search' => 'זוכן',
+);
+

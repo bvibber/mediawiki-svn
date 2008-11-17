@@ -361,9 +361,19 @@ e un texto introdutorio breve que describa o documento e lles dea instrucións a
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'createsigndoc-pagename' => 'Δέλτος:',
+	'createsigndoc-allowedgroup' => 'Ἐπιτρεπομένη ὁμάς:',
+	'createsigndoc-email' => 'Ἡλεκτρονικὴ διεύθυνσις:',
+	'createsigndoc-address' => 'Διεύθυνσις οἶκου:',
+	'createsigndoc-extaddress' => 'Πόλις, πολιτεῖα, κρᾶτος:',
+	'createsigndoc-bday' => 'Γεννέθλια ἡμερομηνία:',
+	'createsigndoc-introtext' => 'Είσαγωγή:',
+	'createsigndoc-hidden' => 'Κεκρυμμένη',
+	'createsigndoc-optional' => 'Προαιρετικόν',
+	'createsigndoc-create' => 'Ποεῖν',
 );
 
 /** Hakka (Hak-kâ-fa)

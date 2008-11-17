@@ -177,6 +177,7 @@ $messages['lb'] = array(
 	'nss-save-changes' => 'Ännerunge späicheren',
 	'nss-create-account-header' => 'Een neie Benotzerkont opmaachen',
 	'nss-create-account' => 'Benotzerkont opmaachen',
+	'nss-no-mail' => 'Keng E-Mail schécken',
 	'nss-welcome-mail' => 'E Benotzerkont mat dem Benotzernumm $1 an dem Passwuert $2 gouf fir Iech opgemaach.',
 	'nss-welcome-mail-subject' => 'Benotzerkont opmaachen',
 	'nss-db-error' => 'Feeler beim Liese vun der Datebank mat den Authentifikatiounen',

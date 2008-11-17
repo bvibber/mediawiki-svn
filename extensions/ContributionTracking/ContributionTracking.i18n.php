@@ -156,7 +156,11 @@ $messages['he'] = array(
  * @author Dalibor Bosits
  */
 $messages['hr'] = array(
+	'contributiontracking-desc' => 'Praćenje doprinosa za Wikimedijino prikupljanje sredstava',
+	'contributiontracking' => 'Praćenje doprinosa',
 	'contrib-tracking-error' => 'Greška',
+	'contrib-tracking-error-text' => 'Neispravno podnošenje obrasca',
+	'contrib-tracking-submitting' => 'Podnošenje obrascu za plaćanje...',
 	'contrib-tracking-continue' => 'Ako niste automatski preusmjereni, kliknite na tipku kako biste dovršili svoju donaciju s PayPalom.',
 	'contrib-tracking-button' => 'Nastavi',
 );

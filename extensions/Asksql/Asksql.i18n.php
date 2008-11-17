@@ -386,10 +386,12 @@ $messages['hi'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Dalibor Bosits
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'asksql' => 'SQL upit',
+	'asksql-desc' => 'Omogućava SQL upite preko [[Special:Asksql|posebne stranice]]',
 	'asksqltext' => "Rabite donju formu za direktne upite na bazu podataka.
 Početak i kraj stringa ograničava se jednostrukim navodnicima ('poput ovih').
 Ova funkcija može opteretiti poslužitelj, stoga ju nemojte rabiti prečesto.",
@@ -398,6 +400,7 @@ Ova funkcija može opteretiti poslužitelj, stoga ju nemojte rabiti prečesto.",
 	'querybtn' => 'Izvrši upit',
 	'selectonly' => 'Samo upiti koji čitaju iz baze su dozvoljeni.',
 	'querysuccessful' => 'Upit uspješno izvršen',
+	'right-asksql' => 'Pravo na SQL upite',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

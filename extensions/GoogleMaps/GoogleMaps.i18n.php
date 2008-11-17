@@ -3846,6 +3846,15 @@ $wgGoogleMapsMessages['vo'] = array(
 	'gm-moon' => 'Mun',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$wgGoogleMapsMessages['yi'] = array(
+	'gm-searching' => 'זוכנדיג…',
+	'gm-search' => 'זוכן',
+	'gm-save-path' => 'אויפֿהיטן',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

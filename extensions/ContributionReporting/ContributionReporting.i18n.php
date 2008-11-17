@@ -487,6 +487,7 @@ $messages['he'] = array(
  * @author Dalibor Bosits
  */
 $messages['hr'] = array(
+	'contributionreporting-desc' => 'Uživo izviješće o Wikimedijinom prikupljanju sredstava',
 	'contributiontotal' => 'Doprinosa ukupno',
 	'contributionhistory' => 'Povijest doprinosa',
 	'contrib-hist-header' => 'Komentari donatora diljem svijeta u realnom vremenu',
@@ -501,6 +502,10 @@ $messages['hr'] = array(
 	'contribstats-daily-totals' => '{{PLURAL:$1|Ukupno za danas|Ukupno dnevno za zadnjih $1 dana}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Ukupno za ovaj mjesec|Ukupno mjesečno za zadnjih $1 mjeseca|Ukupno mjesečno za zadnjih $1 mjeseci}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Ukupno za $1 mjesec|Ukupno mjesečno za $1 mjeseca|Ukupno mjesečno za $1 mjeseci}}',
+	'contribstats-currency-range-totals' => 'Ukupno valuta (od $1 do $2)',
+	'contribstats-contribution-range-breakdown' => 'Pregled doprinosa po iznosu (od $1 do $2)',
+	'contribstats-currency-totals' => 'Ukupno valuta za fiskalnu godinu $1',
+	'contribstats-contribution-breakdown' => 'Pregled doprinosa po iznosu za fiskalnu godinu $1',
 	'contribstats-day' => 'Dan',
 	'contribstats-month' => 'Mjesec',
 	'contribstats-currency' => 'Valuta',
@@ -960,6 +965,11 @@ $messages['ru'] = array(
 	'contribstats-percentage-ytd' => 'Процент (с начала года)',
 	'contribstats-total-ytd' => 'Всего (с начала года)',
 	'fundraiserstatistics' => 'Статистика сбора средств',
+	'fundraiserstats-date' => 'Дата',
+	'fundraiserstats-total' => 'Всего (USD)',
+	'fundraiserstats-avg' => 'Среднее (USD)',
+	'fundraiserstats-min' => 'Минимальное (USD)',
+	'fundraiserstats-max' => 'Максимальное (USD)',
 );
 
 /** Slovak (Slovenčina)

@@ -2990,7 +2990,8 @@ Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
 	'mv_resource_not_found' => "Bronbestand '''$1''' niet aangetroffen",
 	'mv_resource_not_supported' => "Resourcetype '''$1''' wordt niet ondersteund",
 	'mv_welcome_to_sequencer' => '<h3>Welkom by de sequencerdemonstratie</h3>
-Op dit moment is de functionaliteit <b>beperkt</b>',
+Op dit moment is de functionaliteit <b>beperkt</b>.
+Klik op een clip om deze te bewerken',
 	'mv_resource_locator' => 'Resource locator',
 	'mv_media_search' => 'Media Zoeken',
 	'mv_editor_options' => 'Bewerkingsopties',

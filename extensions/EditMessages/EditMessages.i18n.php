@@ -884,3 +884,11 @@ $messages['vi'] = array(
 	'editmsg-patch-success' => 'Vá thành công.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'editmsg-search' => 'זוכן',
+	'editmsg-new-search' => 'ניי זוכן',
+);
+

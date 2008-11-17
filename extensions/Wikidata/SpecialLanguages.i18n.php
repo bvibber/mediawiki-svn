@@ -1467,13 +1467,13 @@ $wdMessages['he'] = array(
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> עבור משמעות אחת מוגדרת ברעיון, החזרת כל השאר</li>
 <li>&action=help  הצגת עזרה מועילה.</li>
 </ul></p>',
-	'ow_conceptmapping_uitext' => '<p>מיפוי תפיסתי מאפשר לכם לזהות אילו משמעות מוגדרת בערכת נתונים אחת זהה למשמעות מוגדרת בערכות נתונים אחרות.</p>',
+	'ow_conceptmapping_uitext' => '<p>מיפוי תפיסתי מאפשר לכם לזהות איזו משמעות מוגדרת בערכת נתונים אחת זהה למשמעויות מוגדרות בערכות נתונים אחרות.</p>',
 	'ow_conceptmapping_no_action_specified' => 'מצטערים, איננו יודעים כיצד לבצע "$1".',
 	'ow_dm_OK' => 'מאושר',
 	'ow_dm_not_present' => 'לא הוכנס',
 	'ow_dm_not_found' => 'לא נמצא במסד הנתונים או שהוא פגום',
 	'ow_mapping_successful' => 'כל השדות שמופו סומנו ב[מאושר]<br />',
-	'ow_mapping_unsuccessful' => 'יש צורך בלפחות שתי משמעויות מוגדרות לפני שאוכל לקשר ביניהן.',
+	'ow_mapping_unsuccessful' => 'דרושות לפחות שתי משמעויות מוגדרות לפני שאפשר יהיה לקשר ביניהן.',
 	'ow_will_insert' => 'יוסיף את הנ"ל:',
 	'ow_contents_of_mapping' => 'תכני המיפוי',
 	'ow_available_contexts' => 'הקשרים זמינים',
@@ -1481,7 +1481,7 @@ $wdMessages['he'] = array(
 	'ow_concept_panel' => 'חלונית התפיסה',
 	'ow_dm_badtitle' => 'דף זה אינו מפנה למשמעות מוגדרת (DefinedMeaning - תפיסה) כלשהי.
 אנא בדקו את כתובת האינטרנט.',
-	'ow_dm_missing' => 'נראה כי דף זה מוביל אל משמעות מוגדרת (DefinedMeaning - תפיסה) שאינה קיימת.
+	'ow_dm_missing' => 'נראה כי דף זה מפנה למשמעות מוגדרת (DefinedMeaning - תפיסה) שאינה קיימת.
 אנא בדקו את כתובת האינטרנט.',
 	'ow_AlternativeDefinition' => 'משמעות חלופית',
 	'ow_AlternativeDefinitions' => 'משמעויות חלופיות',
@@ -1498,7 +1498,7 @@ $wdMessages['he'] = array(
 	'ow_DefinedMeaningAttributes' => 'פירוש',
 	'ow_DefinedMeaning' => 'משמעות מוגדרת',
 	'ow_DefinedMeaningReference' => 'משמעות מוגדרת',
-	'ow_ExactMeanings' => 'משמעות מדוייקת',
+	'ow_ExactMeanings' => 'משמעויות מדויקות',
 	'ow_Expression' => 'ביטוי',
 	'ow_ExpressionMeanings' => 'משמעויות הביטוי',
 	'ow_Expressions' => 'ביטויים',
@@ -4201,12 +4201,3 @@ $wdMessages['zh-hant'] = array(
 	'languages' => 'Wikidata: 語言管理員',
 );
 
-$wdMessages['de-formal'] = $wdMessages['de'];
-$wdMessages['kk'] = $wdMessages['kk-kz'];
-$wdMessages['yue'] = $wdMessages['zh-hant'];
-$wdMessages['zh'] = $wdMessages['zh-hans'];
-$wdMessages['zh-cn'] = $wdMessages['zh-hans'];
-$wdMessages['zh-hk'] = $wdMessages['zh-hant'];
-$wdMessages['zh-sg'] = $wdMessages['zh-hans'];
-$wdMessages['zh-tw'] = $wdMessages['zh-hant'];
-$wdMessages['zh-yue'] = $wdMessages['yue'];

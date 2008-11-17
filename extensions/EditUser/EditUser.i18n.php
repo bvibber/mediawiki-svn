@@ -891,3 +891,10 @@ $messages['vo'] = array(
 	'edituser-username' => 'Nem',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'edituser-dosearch' => 'זוכן',
+);
+

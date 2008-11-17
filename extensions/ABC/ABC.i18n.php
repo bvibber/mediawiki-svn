@@ -101,6 +101,14 @@ $messages['he'] = array(
 	'abcvorbis' => 'Ogg Vorbis',
 );
 
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'abcdesc' => 'Dodaje <tt>&lt;abc&gt;</tt> oznaku za formatiranje ABC glazbe',
+	'abcdownload' => 'Preuzimanje:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

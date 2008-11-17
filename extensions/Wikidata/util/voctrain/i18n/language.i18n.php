@@ -590,8 +590,21 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'voctrain_Permission_Denied' => 'Zabranjen pristup',
+	'voctrain_continue' => 'nastavi',
+	'voctrain_Languages' => 'Jezici',
+	'voctrain_Questions' => 'Pitanja',
+	'voctrain_Word' => 'Riječ',
+	'voctrain_submit_answer' => 'pošalji odgovor',
+	'voctrain_Question' => 'Pitanje',
+	'voctrain_one_of' => 'jedan od',
+	'voctrain_Start_a_new_exercise' => 'Započni novu vježbu',
+	'voctrain_User_name' => 'Korisničko ime',
 	'voctrain_Login' => 'Prijava',
+	'voctrain_Switch_language' => 'Promijeni jezik',
 	'voctrain_Language' => 'Jezik',
+	'voctrain_Definitions' => 'Definicije',
+	'voctrain_hiding' => 'Sakrivam',
 );
 
 /** Czech (Česky)

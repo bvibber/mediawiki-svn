@@ -1578,3 +1578,13 @@ $messages['te'] = array(
 	'right-edit-new' => 'పేజీలను మార్చడం',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'grouppermissions-search' => 'גרופע:',
+	'grouppermissions-dosearch' => 'גיין',
+	'grouppermissions-searchlabel' => 'זוכן גרופע',
+	'right-search' => 'זוכן אין וויקי',
+);
+
