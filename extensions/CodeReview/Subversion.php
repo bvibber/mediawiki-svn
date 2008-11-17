@@ -98,7 +98,8 @@ class SubversionShell extends SubversionAdaptor {
 		if( $rev )
 			$path .= "@$rev";
 		$command = sprintf(
-			"svn cat %s",
+			"svn cat %s %s",
+			$this->getExtraArgs(),
 			wfEscapeShellArg( $this->mRepo . $path ) );
 
 		return wfShellExec( $command );
@@ -106,9 +107,10 @@ class SubversionShell extends SubversionAdaptor {
 
 	function getDiff( $path, $rev1, $rev2 ) {
 		$command = sprintf(
-			"svn diff -r%d:%d %s",
+			"svn diff -r%d:%d %s %s",
 			intval( $rev1 ),
 			intval( $rev2 ),
+			$this->getExtraArgs(),
 			wfEscapeShellArg( $this->mRepo . $path ) );
 
 		return wfShellExec( $command );
@@ -116,9 +118,10 @@ class SubversionShell extends SubversionAdaptor {
 
 	function getLog( $path, $startRev=null, $endRev=null ) {
 		$command = sprintf(
-			"svn log -v -r%s:%s --non-interactive %s",
+			"svn log -v -r%s:%s --non-interactive %s %s",
 			wfEscapeShellArg( $this->_rev( $startRev, 'BASE' ) ),
 			wfEscapeShellArg( $this->_rev( $endRev, 'HEAD' ) ),
+			$this->getExtraArgs(),
 			wfEscapeShellArg( $this->mRepo . $path ) );
 
 		$lines = explode( "\n", wfShellExec( $command ) );
@@ -210,8 +213,9 @@ class SubversionShell extends SubversionAdaptor {
 	
 	function getDirList( $path, $rev = null ) {
 		$command = sprintf(
-			"svn list --xml -r%s --non-interactive %s",
+			"svn list --xml -r%s --non-interactive %s %s",
 			wfEscapeShellArg( $this->_rev( $rev, 'HEAD' ) ),
+			$this->getExtraArgs(),
 			wfEscapeShellArg( $this->mRepo . $path ) );
 		$document = new DOMDocument(); 
 		
@@ -251,6 +255,18 @@ class SubversionShell extends SubversionAdaptor {
 			$result[] = $item;
 		}
 		return $result;
+	}
+	
+	/**
+	 * Returns a string of extra arguments to be passed into the shell commands
+	 */
+	private function getExtraArgs() {
+		global $wgSubversionUser, $wgSubversionPassword;
+		if($wgSubversionUser && $wgSubversionPassword) {
+			return '--username ' . wfEscapeShellArg($wgSubversionUser)
+				. ' --password ' . wfEscapeShellArg($wgSubversionPassword);
+		}
+		return '';
 	}
 }
 
