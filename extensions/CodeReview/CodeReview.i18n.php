@@ -1222,6 +1222,7 @@ $messages['he'] = array(
 	'code-rev-purge-link' => 'ניקוי זיכרון מטמון',
 	'code-status-new' => 'חדש',
 	'code-status-fixme' => 'לתיקון',
+	'code-status-reverted' => 'בוטל',
 	'code-status-resolved' => 'תוקן',
 	'code-status-ok' => 'מאושר',
 	'code-status-deferred' => 'נדחה',
