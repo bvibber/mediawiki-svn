@@ -1296,7 +1296,8 @@ $messages['fr'] = array(
 	'mv_sequence_player_title' => 'lecteur de séquence',
 	'mv_resource_not_found' => 'Ressource <b>$1</b> introuvable',
 	'mv_resource_not_supported' => "La type de resource '''$1''' n'est pas supporté",
-	'mv_welcome_to_sequencer' => '<h3>Bienvenu à la démontsration de séquence</h3>fonctionnalité très <b>limitée</b> actuellement',
+	'mv_welcome_to_sequencer' => '<h3>Bienvenu sur la démonstration de séquence</h3>
+fonctionnalité très <b>limitée</b> actuellement. Cliquez sur un clip pour modifier cette ressource.',
 	'mv_resource_locator' => 'Rechercheur de ressource',
 	'mv_media_search' => 'Rechercher des médias',
 	'mv_editor_options' => "Options de l'éditeur",

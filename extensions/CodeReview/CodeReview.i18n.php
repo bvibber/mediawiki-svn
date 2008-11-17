@@ -277,6 +277,7 @@ $4',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  * @author Ramsis II
  */
@@ -337,6 +338,7 @@ $messages['arz'] = array(
 	'code-rev-purge-link' => 'إفراغ الكاش',
 	'code-status-new' => 'جديد',
 	'code-status-fixme' => 'أصلحنى',
+	'code-status-reverted' => 'استرجعت',
 	'code-status-resolved' => 'تم حلها',
 	'code-status-ok' => 'موافق',
 	'code-status-deferred' => 'مؤجل',
@@ -384,6 +386,8 @@ $messages['be-tarask'] = array(
 	'code-change-tags' => "былі зьменены '''тэгі''' для гэтай вэрсіі",
 	'code-change-removed' => 'выдалена:',
 	'code-change-added' => 'дададзена:',
+	'code-prop-changes' => 'Журнал зьмены статусаў і метак',
+	'code-desc' => '[[Special:Code|Інмтрумэнт праверкі кода]] з [[Special:RepoAdmin|падтрымкай пачатковага кода]]',
 	'code-no-repo' => 'Адсутнічае сканфігураванае сховішча!',
 	'code-notes' => 'рэцэнзіі',
 	'code-authors' => 'аўтары',
@@ -489,6 +493,7 @@ $messages['bs'] = array(
 	'code-rev-modified-r' => 'zamijenjeno',
 	'code-rev-modified-d' => 'obrisano',
 	'code-status-new' => 'novi',
+	'code-status-ok' => 'u redu',
 	'repoadmin-new-button' => 'Kreiraj',
 	'right-codereview-link-user' => 'Poveži autore sa wiki korisnicima',
 );
@@ -601,6 +606,7 @@ $messages['de'] = array(
 	'code-change-tags' => "änderte die '''Tags''' dieser Revision",
 	'code-change-removed' => 'entfernt:',
 	'code-change-added' => 'hinzugefügt:',
+	'code-prop-changes' => 'Status- und Tagging-Logbuch',
 	'code-desc' => '[[Special:Code|Codeprüfungs-Werkzeug]] mit [[Special:RepoAdmin|Subversion-Unterstützung]]',
 	'code-no-repo' => 'Kein Repositorium konfiguriert.',
 	'code-notes' => 'Prüfnotizen',
@@ -650,6 +656,7 @@ $messages['de'] = array(
 	'code-rev-purge-link' => 'Cache löschen',
 	'code-status-new' => 'neu',
 	'code-status-fixme' => 'fixme',
+	'code-status-reverted' => 'rückgängig gemacht',
 	'code-status-resolved' => 'erledigt',
 	'code-status-ok' => 'OK',
 	'code-status-deferred' => 'zurückgestellt',
@@ -2045,6 +2052,7 @@ $messages['nl'] = array(
 	'code-rev-purge-link' => 'verversen',
 	'code-status-new' => 'nieuw',
 	'code-status-fixme' => 'fixme',
+	'code-status-reverted' => 'teruggedraaid',
 	'code-status-resolved' => 'opgelost',
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'aangehouden',
@@ -2323,6 +2331,7 @@ $messages['pl'] = array(
 	'code-rev-purge-link' => 'odśwież',
 	'code-status-new' => 'nowy',
 	'code-status-fixme' => 'wymaga naprawy',
+	'code-status-reverted' => 'cofnięty',
 	'code-status-resolved' => 'rozwiązany',
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'odroczony',
@@ -2491,6 +2500,7 @@ $messages['ru'] = array(
 	'code-rev-purge-link' => 'очистить кэш',
 	'code-status-new' => 'новое',
 	'code-status-fixme' => 'проверить',
+	'code-status-reverted' => 'откачено',
 	'code-status-resolved' => 'решено',
 	'code-status-ok' => 'готово',
 	'code-status-deferred' => 'отложено',
@@ -2630,6 +2640,42 @@ $4',
 	'right-codereview-set-status' => 'Zmeniť stav revízií',
 	'right-codereview-link-user' => 'Zviazať autorov s používateľmi wiki',
 	'specialpages-group-developer' => 'Nástroje vývojárov',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Јованвб
+ */
+$messages['sr-ec'] = array(
+	'code-comments' => 'Коментари',
+	'code-change-status' => "промењен '''статус''' ове ревизије",
+	'code-change-removed' => 'уклоњено:',
+	'code-change-added' => 'додато:',
+	'code-authors' => 'аутори',
+	'code-author-name' => 'Унесите корисничко име:',
+	'code-field-id' => 'Ревизија',
+	'code-field-author' => 'Аутор',
+	'code-field-status' => 'Статус',
+	'code-field-timestamp' => 'Датум',
+	'code-field-comments' => 'Напомене',
+	'code-field-text' => 'Напомена',
+	'code-rev-author' => 'Аутор:',
+	'code-rev-date' => 'Датум:',
+	'code-rev-rev' => 'Ревизија:',
+	'code-rev-status' => 'Статус:',
+	'code-rev-status-set' => 'Измени статус',
+	'code-rev-comment-submit' => 'Пошаљи коментар',
+	'code-rev-comment-preview' => 'Прикажи',
+	'code-rev-diff' => 'Разл',
+	'code-rev-diff-link' => 'разл',
+	'code-rev-purge-link' => 'освежи',
+	'code-status-new' => 'нов',
+	'code-status-reverted' => 'враћено',
+	'code-status-ok' => 'ок',
+	'codereview-reply-link' => 'одговори',
+	'repoadmin-new-button' => 'Направи',
+	'repoadmin-edit-button' => 'ОК',
+	'right-codereview-set-status' => 'Промени статус ревизије',
+	'specialpages-group-developer' => 'Девлоперски алати',
 );
 
 /** Seeltersk (Seeltersk)
@@ -2778,6 +2824,7 @@ $messages['sv'] = array(
 	'code-rev-purge-link' => 'rensa',
 	'code-status-new' => 'ny',
 	'code-status-fixme' => 'fixa-mig',
+	'code-status-reverted' => 'återställd',
 	'code-status-resolved' => 'löst',
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'uppskjuten',

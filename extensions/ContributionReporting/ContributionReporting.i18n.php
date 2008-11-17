@@ -133,6 +133,8 @@ $messages['arz'] = array(
 	'contrib-hist-anonymous' => 'مش معروف',
 	'contributionstatistics' => 'احصائيات المساهمه',
 	'contribstats-desc' => 'بيعرض الاحصائيات بتاعة المساهمات اللي اتعملت لمؤسسة ويكيميديا',
+	'contribstats-currency-range-totals' => 'مجموع العملات (من $1 ل $2)',
+	'contribstats-currency-totals' => 'مجموع العملات للسنة المالية ل$1',
 	'contribstats-day' => 'اليوم',
 	'contribstats-month' => 'الشهر',
 	'contribstats-currency' => 'العملة',
@@ -292,7 +294,9 @@ $messages['eo'] = array(
 	'contrib-hist-previous' => 'Pli malfruaj donacoj',
 	'contrib-hist-anonymous' => 'Anonimulo',
 	'contributionstatistics' => 'Statistikoj pri kontribuado',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Tuto por $1 monato|Monataj tutoj por $1 monatoj}}',
 	'contribstats-currency-range-totals' => 'Valutaj tutoj (de $1 al $2)',
+	'contribstats-currency-totals' => 'Valutaj tutoj por la fiska jaro de $1',
 	'contribstats-day' => 'Tago',
 	'contribstats-month' => 'Monato',
 	'contribstats-currency' => 'Valuto',
@@ -1006,6 +1010,23 @@ $messages['sk'] = array(
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Percentá (YTD)',
 	'contribstats-total-ytd' => 'Celkom (YTD)',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Јованвб
+ */
+$messages['sr-ec'] = array(
+	'contrib-hist-name' => 'Име',
+	'contrib-hist-date' => 'Време и датум',
+	'contrib-hist-next' => 'Претходне донације',
+	'contribstats-min' => 'Минимум (USD)',
+	'contribstats-max' => 'Максимум (USD)',
+	'contribstats-total-ytd' => 'Укупно (YTD)',
+	'fundraiserstats-date' => 'Датум',
+	'fundraiserstats-total' => 'Укупно (USD)',
+	'fundraiserstats-avg' => 'Просечно (USD)',
+	'fundraiserstats-min' => 'Минимум (USD)',
+	'fundraiserstats-max' => 'Максимум (USD)',
 );
 
 /** Swedish (Svenska)

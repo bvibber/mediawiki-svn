@@ -143,6 +143,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'player-goto-page' => 'Stranica',
+	'player-goto-file' => 'datoteka',
 );
 
 /** Catalan (Català)

@@ -65,6 +65,15 @@ $messages['de'] = array(
 	'searchbox-namespaces' => 'Namensräume:',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'searchbox-search' => 'Serĉi',
+	'searchbox-go' => 'Ek',
+	'searchbox-namespaces' => 'Nomspacoj:',
+);
+
 /** French (Français)
  * @author Grondin
  */

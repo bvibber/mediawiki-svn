@@ -100,6 +100,15 @@ $messages['qqq'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'tasks' => 'المهمات',
+	'tasks_desc' => 'تمديد لادارة المهمات',
+	'tasks_tab' => 'المهمات',
+	'tasks_title' => 'المهمات بتاعة "$1"',
+	'tasks_form_new' => 'ابتدي مهمة جديدة',
+	'tasks_form_comment' => 'تعليق',
+	'tasks_error1' => 'المهمة دي ما اتخلقتش:المهمة موجودة اصلا!',
+	'tasks_ok1' => 'المهمة الجديدة اتنشأت!',
+	'tasks_create_header' => 'ابتدي مهمة جديدة',
 	'tasks_noone' => 'مافيش حد',
 );
 
@@ -231,6 +240,38 @@ Falls Sie nicht in ein paar Sekunden weitergeleitet wurden, klicken Sie $1.',
 	'tasks_see_your_assignments' => 'Sie haben $1 offene Aufgaben. Siehe Ihre $2.',
 	'tasks_my_assignments' => 'Ihre aktuellen Aufgaben',
 	'tasks_you_have_no_assignments' => 'Sie haben keine offenen Aufgaben',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'tasks_form_new' => 'Krei novan taskon',
+	'tasks_form_comment' => 'Komento',
+	'tasks_ok1' => 'Nova tasko estis kreita!',
+	'tasks_assign_me' => 'Asigni al mi mem',
+	'tasks_assign_to' => 'Asigni al',
+	'tasks_close' => 'Fermi taskon',
+	'tasks_delete' => 'Forigi',
+	'tasks_action_delete' => 'Tasko estis forigita.',
+	'tasks_assignedto' => 'Asignita al $1',
+	'tasks_created_by' => 'Kreita de $1',
+	'tasks_sidebar_title' => 'Malfermaj taskoj',
+	'tasks_here' => 'ĉi tie',
+	'tasks_task_is_assigned' => '(asignita)',
+	'tasks_help_page' => 'Taskoj',
+	'tasks_link_your_assignments' => 'malfermaj asignoj',
+	'tasks_my_assignments' => 'Viaj aktualaj asignoj',
+	'tasks_table_header_page' => 'Paĝo',
+	'tasks_search_form_title' => 'Serĉi',
+	'tasks_search_tasks' => 'Taskoj',
+	'tasks_search_status' => 'Statuso',
+	'tasks_previous' => 'Antaŭa',
+	'tasks_next' => 'Posta',
+	'tasks_sort' => 'Ordigi',
+	'tasks_status_open' => 'Malferma',
+	'tasks_status_assigned' => 'Asignita',
+	'tasks_status_closed' => 'Fermita',
 );
 
 /** Finnish (Suomi)

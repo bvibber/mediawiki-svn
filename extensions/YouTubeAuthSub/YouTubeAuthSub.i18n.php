@@ -256,6 +256,7 @@ Un tamm pasianted mar plij.',
  */
 $messages['bs'] = array(
 	'youtubeauthsub_title' => 'Naslov',
+	'youtubeauthsub_description' => 'Opis',
 	'youtubeauthsub_category' => 'Kategorija',
 	'youtubeauthsub_uploadbutton' => 'Postavi',
 );
@@ -1469,9 +1470,11 @@ Buďte prosím trpezliví.',
 
 /** Serbian Cyrillic ekavian (ћирилица)
  * @author Sasa Stefanovic
+ * @author Јованвб
  */
 $messages['sr-ec'] = array(
 	'youtubeauthsub_title' => 'Наслов:',
+	'youtubeauthsub_category' => 'Категорија',
 	'youtubeauthsub_submit' => 'Прихвати',
 );
 

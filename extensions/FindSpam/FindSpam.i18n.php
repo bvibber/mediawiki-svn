@@ -87,7 +87,11 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'findspam' => 'Potraga za spamom',
+	'findspam-desc' => 'Dodaje [[Special:FindSpam|posebnu stranicu]] koja omogućava pretragu za nedavno dodanim spamom',
 	'findspam-ip' => 'IP adresa:',
+	'findspam-ok' => 'U redu',
+	'findspam-notextfound' => 'Nisu pronađeni doprinosi',
 );
 
 /** Czech (Česky)

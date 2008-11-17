@@ -90,6 +90,7 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'passwordreset' => 'تمت إعادة ضبط كلمة السر',
@@ -98,9 +99,9 @@ $messages['arz'] = array(
 	'passwordreset-emptyusername' => 'اسم مستخدم فارغ',
 	'passwordreset-nopassmatch' => 'كلمات السر لا تتطابق',
 	'passwordreset-badtoken' => 'نص تعديل غير صحيح',
-	'passwordreset-username' => 'اسم مستخدم',
-	'passwordreset-newpass' => 'كلمة سر جديدة',
-	'passwordreset-confirmpass' => 'أكد كلمة السر',
+	'passwordreset-username' => 'اسم اليوزر:',
+	'passwordreset-newpass' => 'باسورد جديدة:',
+	'passwordreset-confirmpass' => 'اكد الباسورد:',
 	'passwordreset-submit' => 'أعد ضبط كلمة السر',
 	'passwordreset-success' => 'كلمة السر تم ضبطها ل user_id: $1',
 	'passwordreset-disableuser' => 'عطل حساب المستخدم؟',
@@ -274,9 +275,9 @@ $messages['gl'] = array(
 	'passwordreset-emptyusername' => 'Nome de usuario baleiro',
 	'passwordreset-nopassmatch' => 'Os contrasinais non coinciden',
 	'passwordreset-badtoken' => 'Sinal de edición non válido',
-	'passwordreset-username' => 'Nome de usuario',
-	'passwordreset-newpass' => 'Contrasinal Novo',
-	'passwordreset-confirmpass' => 'Confirme o Contrasinal',
+	'passwordreset-username' => 'Nome de usuario:',
+	'passwordreset-newpass' => 'Novo contrasinal:',
+	'passwordreset-confirmpass' => 'Confirme o contrasinal:',
 	'passwordreset-submit' => 'Limpar o Contrasinal',
 	'passwordreset-success' => 'Limpouse o contrasinal para o id de usuario: $1',
 	'passwordreset-disableuser' => 'Desactivar a Conta de Usuario?',
@@ -285,7 +286,7 @@ $messages['gl'] = array(
 	'passwordreset-accountdisabled' => 'A conta foi desabilitada',
 	'disabledusers' => 'Usuarios desabilitados',
 	'disabledusers-summary' => 'Esta é unha listaxe dos usuarios que foron deshabilitados por medio de PasswordReset.',
-	'right-passwordreset' => 'Cambiar o usuario dun usuario ([[Special:PasswordReset|páxina especial]])',
+	'right-passwordreset' => 'Restablecer o contrasinal dun usuario ([[Special:PasswordReset|páxina especial]])',
 );
 
 /** Manx (Gaelg)

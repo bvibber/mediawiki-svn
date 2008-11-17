@@ -985,6 +985,7 @@ $messages['bs'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Glasaj]]
 * [[Special:Boardvote/list|Spisak glasanja do danas]]
 * [[Special:Boardvote/dump|Arhiva šifriranih podataka o izborima]]',
+	'boardvote_submit' => 'U redu',
 	'boardvote_welcome' => "Dobrodošao '''$1'''!",
 );
 
@@ -4595,6 +4596,7 @@ $messages['pdt'] = array(
 );
 
 /** Polish (Polski)
+ * @author Beau
  * @author Derbeth
  * @author Herr Kriss
  * @author Leinad
@@ -4668,7 +4670,7 @@ głosowanie trwa do 22 czerwca',
 	'boardvote_closed' => 'Głosowanie zostało zakończone, niedługo [http://meta.wikimedia.org/wiki/Board_elections/2008/Results na stronie wyborów] pojawią się wyniki.',
 	'boardvote_edits_many' => 'dużo',
 	'group-boardvote' => 'Koordynatorzy wyborów',
-	'group-boardvote-member' => 'Koordynator wyborów',
+	'group-boardvote-member' => 'koordynator wyborów',
 	'grouppage-boardvote' => '{{ns:project}}:Administrator wyborów',
 	'boardvote_blocked' => 'Jesteś zablokowany na wiki, na której jesteś zarejestrowany.
 Zablokowani użytkownicy nie mogą głosować.',

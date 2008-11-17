@@ -487,10 +487,12 @@ $messages['it'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'todo' => 'Daftar tugas',
-	'todo-tab' => 'tugas',
+	'todo-desc' => "Èkstènsi [[Special:Todo|dhaptar ayahan]] (''todo list'') pribadi èkspèrimèntal",
+	'todo-tab' => 'ayahan/tugas',
 	'todo-new-queue' => 'anyar',
 	'todo-mail-subject' => 'Perkara sing wis dilaksanakaké ing daftar tugas $1',
 	'todo-unrecognize-type' => 'Jenisé ora ditepungi',

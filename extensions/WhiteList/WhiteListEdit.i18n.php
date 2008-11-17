@@ -200,6 +200,7 @@ $2',
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'whitelist-desc' => 'عدل سماحات الوصول للمستخدمين المحددين',
@@ -227,19 +228,21 @@ $messages['arz'] = array(
 	'whitelistnewtabledate' => 'تاريخ الانتهاء:',
 	'whitelistnewtableedit' => 'ضبط للتعديل',
 	'whitelistnewtableview' => 'ضبط للعرض',
+	'whitelistnowhitelistedusers' => 'مافيش يوزرز في الجروب دي "{{MediaWiki:Group-restricted}}".
+لازم [[Special:UserRights|تضيف يوزرز للجروب]] قبل ما تقدر تضيف صفحات لـ الليستة البيضا بتاعة اي يوزر.',
 	'whitelistnewtableprocess' => 'عملية',
 	'whitelistnewtablereview' => 'مراجعة',
-	'whitelistselectrestricted' => '== اختر اسم المستخدم المحدد ==',
+	'whitelistselectrestricted' => '== اختار اسم اليوزر المتحدد ==',
 	'whitelistpagelist' => 'صفحات {{SITENAME}} ل$1',
-	'whitelistnocalendar' => "<font color='red' size=3>يبدو أن [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics]، متطلب لهذه الامتداد، لم يتم تركيبه بشكل صحيح!</font>",
-	'whitelistbadtitle' => 'عنوان سيء -',
+	'whitelistnocalendar' => "<font color='red' size=3> الظاهر ان[http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics]، المطلوب للامتداد دا،ما اتستبش صح!</font>",
+	'whitelistbadtitle' => 'عنوان بايظ -',
 	'whitelistoverview' => '== مراجعة التغييرات ل$1 ==',
 	'whitelistoverviewcd' => "* تغيير التاريخ إلى '''$1''' ل[[:$2|$2]]",
 	'whitelistoverviewsa' => "* ضبط الدخول إلى '''$1''' ل[[:$2|$2]]",
 	'whitelistoverviewrm' => '* إزالة الوصول إلى [[:$1|$1]]',
 	'whitelistoverviewna' => "* إضافة [[:$1|$1]] إلى القائمة البيضاء بوصول '''$2''' و '''$3''' تاريخ انتهاء",
 	'whitelistrequest' => 'طلب السماح لمزيد من الصفحات',
-	'whitelistrequestmsg' => '$1 طلب الوصول إلى الصفحات التالية:
+	'whitelistrequestmsg' => '$1 قدم طلب للوصول {{PLURAL:$3|للصفحة|للصفحات}} دي:
 
 $2',
 	'whitelistrequestconf' => 'الطلب للصفحات الجديدة تم إرساله إلى $1',
@@ -247,6 +250,14 @@ $2',
 هذه الصفحة مطبقة فقط على المستخدمين المحددين",
 	'whitelistnever' => 'أبدا',
 	'whitelistnummatches' => ' - {{PLURAL:$1|مطابقة واحده|$1 مطابقة}}',
+	'right-editwhitelist' => 'عدل الليستة البيضا بتاعة اليوزرز الموجودين',
+	'right-restricttowhitelist' => 'عدل و شوف الصفحات اللي في الليستة البيضا بس.',
+	'action-editwhitelist' => 'عدل الليستة البيضا بتاعة اليوزرز الموجودين',
+	'action-restricttowhitelist' => 'عدل و شوف الصفحات اللي في الليستة البيضا بس',
+	'group-restricted' => 'اليوزرز المتحددين',
+	'group-restricted-member' => 'يوزر متحدد',
+	'group-manager' => 'مديرين',
+	'group-manager-member' => 'مدير',
 );
 
 /** Aymara (Aymar aru)
@@ -469,6 +480,8 @@ $2',
 	'whitelistrequestconf' => 'Peto por novaj paĝoj estis sendita al $1',
 	'whitelistnever' => 'neniam',
 	'whitelistnummatches' => ' - {{PLURAL:$1|unu trafo|$1 trafoj}}',
+	'group-restricted' => 'Limigitaj uzantoj',
+	'group-restricted-member' => 'Limigita uzanto',
 );
 
 /** Spanish (Español)
@@ -1362,6 +1375,8 @@ $messages['pa'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
+ * @author Maikking
  * @author Sp5uhe
  * @author Wpedzich
  */
@@ -1391,6 +1406,8 @@ Można stosować symbole wieloznaczne * i %',
 	'whitelistnewtabledate' => 'Wygasa:',
 	'whitelistnewtableedit' => 'Przełącz na edycję',
 	'whitelistnewtableview' => 'Przełącz na podgląd',
+	'whitelistnowhitelistedusers' => 'Nie ma żadnych użytkowników w grupie „{{MediaWiki:Group-restricted}}”.
+Musisz [[Special:UserRights|dodać użytkowników do tej grupy]] zanim będziesz mógł dodawać strony do whitelisty użytkownika.',
 	'whitelistnewtableprocess' => 'Przetwórz',
 	'whitelistnewtablereview' => 'Przejrzyj',
 	'whitelistselectrestricted' => '== Wybierz nazwę użytkownika z ograniczeniami ==',
@@ -1403,7 +1420,7 @@ Można stosować symbole wieloznaczne * i %',
 	'whitelistoverviewrm' => '* Usuwanie dostępu do [[:$1|$1]]',
 	'whitelistoverviewna' => "* Dodawanie elementu [[:$1|$1]] do listy dostępu – dostęp dla '''$2''', data wygaśnięcia '''$3'''",
 	'whitelistrequest' => 'Zażądaj dostępu do większej liczby stron',
-	'whitelistrequestmsg' => 'Użytkownik $1 zażądał dostępu do następujących stron:
+	'whitelistrequestmsg' => 'Użytkownik $1 zażądał dostępu do {{PLURAL:$3|następującej strony|następujących stron}}:
 
 $2',
 	'whitelistrequestconf' => 'Żądanie utworzenia nowych stron zostało przesłane do $1',
@@ -1411,6 +1428,9 @@ $2',
 Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone ograniczenia.",
 	'whitelistnever' => 'nigdy',
 	'whitelistnummatches' => ' - {{PLURAL:$1|1 wynik|$1 wyniki|$1 wyników}}',
+	'right-editwhitelist' => 'Zmień whitelistę dla istniejących użytkowników',
+	'group-manager' => 'Zarządzający',
+	'group-manager-member' => 'Zarządzający',
 );
 
 /** Pashto (پښتو)

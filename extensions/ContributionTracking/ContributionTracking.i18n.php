@@ -99,6 +99,7 @@ $messages['eo'] = array(
 	'contributiontracking' => 'Kontribua kontrolado',
 	'contrib-tracking-error' => 'Eraro',
 	'contrib-tracking-error-text' => 'Nevalida enigo',
+	'contrib-tracking-continue' => 'Se vi ne aŭtomate estus alidirektita, klaku la butonon por fini vian donacon ĉe PayPal.',
 	'contrib-tracking-button' => 'Daŭrigi',
 );
 
@@ -310,6 +311,14 @@ $messages['sk'] = array(
 	'contrib-tracking-submitting' => 'Odosiela sa na spracovanie platieb...',
 	'contrib-tracking-continue' => 'Ak nebudete automaticky presmerovaný, kliknite na tlačidlo, čím dokončíte váš príspevok prostredníctvom PayPal.',
 	'contrib-tracking-button' => 'Pokračovať',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Јованвб
+ */
+$messages['sr-ec'] = array(
+	'contrib-tracking-error' => 'Грешка',
+	'contrib-tracking-button' => 'Настави',
 );
 
 /** Swedish (Svenska)

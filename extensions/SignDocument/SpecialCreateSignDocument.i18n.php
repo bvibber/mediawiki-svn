@@ -367,13 +367,16 @@ $messages['grc'] = array(
 	'createsigndoc-pagename' => 'Δέλτος:',
 	'createsigndoc-allowedgroup' => 'Ἐπιτρεπομένη ὁμάς:',
 	'createsigndoc-email' => 'Ἡλεκτρονικὴ διεύθυνσις:',
-	'createsigndoc-address' => 'Διεύθυνσις οἶκου:',
+	'createsigndoc-address' => 'Διεύθυνσις οἴκου:',
 	'createsigndoc-extaddress' => 'Πόλις, πολιτεῖα, κρᾶτος:',
+	'createsigndoc-phone' => 'Ἀριθμὸς τηλεφώνου:',
 	'createsigndoc-bday' => 'Γεννέθλια ἡμερομηνία:',
+	'createsigndoc-minage' => 'Ἐλαχίστη ἡλικία:',
 	'createsigndoc-introtext' => 'Είσαγωγή:',
 	'createsigndoc-hidden' => 'Κεκρυμμένη',
 	'createsigndoc-optional' => 'Προαιρετικόν',
 	'createsigndoc-create' => 'Ποεῖν',
+	'createsigndoc-error-generic' => 'Σφάλμα: $1',
 );
 
 /** Hakka (Hak-kâ-fa)

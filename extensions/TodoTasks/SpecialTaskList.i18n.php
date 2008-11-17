@@ -176,6 +176,7 @@ $messages['eo'] = array(
 	'tasklistmytasks' => 'Miaj taskoj',
 	'tasklistchooseproj' => 'Selektu Projekton:',
 	'tasklistprojdisp' => 'Montri',
+	'tasklistbyname' => '== Farenda listo por $s ==',
 );
 
 /** French (Français)

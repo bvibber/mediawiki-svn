@@ -348,6 +348,7 @@ $messages['pl'] = array(
 	'mp-userlevels-link' => 'Poziomy użytkownika',
 	'mp-welcome-upload' => 'Prześlij',
 	'mp-welcome-edit' => 'Edytuj',
+	'mp-welcome-points' => '$1 punktów',
 	'mp-request-new-message' => 'nowa wiadomość',
 );
 
