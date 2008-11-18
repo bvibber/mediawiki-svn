@@ -708,7 +708,7 @@ function UW_GenericEditPage_combineBeforeSave ( &$editpage_Obj ) {
 
 	/* if we are editing in classic mode,
 	 * then this function does nothing! */
-	if ( isset( $data['edit-mode'] ) && $data['edit-mode'] != "generic" )
+	if ( ( isset( $data['edit-mode'] ) && $data['edit-mode'] != "generic" ) || !isset( $data['edit-mode'] ) )
 		return true;
 
 	/* otherwise, clear the textbox and rebuild it
