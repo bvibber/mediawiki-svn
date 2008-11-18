@@ -3682,6 +3682,169 @@ You can also [[Special:Watchlist/edit|use the standard editor]].',
 'unknown_extension_tag' => 'Unknown extension tag "$1"',
 'duplicate-defaultsort' => 'Warning: Default sort key "$2" overrides earlier default sort key "$1".',
 
+# Installer
+'config-session-error' => 'Error starting session: $1',
+'config-session-expired' => 'Your session data seems to have expired. 
+Sessions are configured for a lifetime of $1, you can increase this by setting session.gc_maxlifetime in php.ini.
+Please restart the installation process.',
+'config-no-session' => 'Your session data was lost!
+Please check your php.ini and make sure session.save_path is set to an appropriate directory.',
+'config-your-language' => 'Your language:',
+'config-your-language-help' => 'Select a language to use during the installation process',
+'config-wiki-language' => 'Wiki language:',
+'config-wiki-language-help' => 'Select the language that the wiki will predominantly be written in',
+'config-back' => '< Back',
+'config-continue' => 'Continue >',
+'config-page-language' => 'Language',
+'config-page-environment' => 'Environment',
+'config-page-dbconnect' => 'Connect to DB',
+'config-page-upgrade' => 'Upgrade existing',
+'config-page-dbsettings' => 'DB settings',
+'config-page-identity' => 'Identity',
+'config-page-license' => 'License',
+'config-page-email' => 'Email',
+'config-page-install' => 'Install',
+'config-page-complete' => 'Complete!',
+'config-page-restart' => 'Restart installation',
+'config-help-restart' => 'Do you want to clear all saved data that you have entered, and restart the installation process?',
+'config-restart' => 'Yes, restart it',
+
+'config-env-good' => '<span class="success-message">Environment checked. You can install MediaWiki.</span>',
+'config-env-bad' => 'Cannot install MediaWiki.',
+'config-env-php' => 'PHP $1 installed',
+'config-no-db' => 'Could not find a suitable database driver!',
+'config-no-db-help' => 'You need to install a database driver for PHP. 
+The following database types are supported: $1.
+If you are on shared hosting, ask your hosting provider to install a suitable database driver.
+If you compiled PHP yourself, reconfigure it with a database client enabled, for example using the ./configure --with-mysql.
+If you installed PHP from a Debian or Ubuntu package, then you also need install the php5-mysql module.',
+'config-have-db' => 'Found database drivers for: $1',
+'config-register-globals' => '<strong class="error">Warning:</strong>
+<strong>PHP\'s <tt>[http://php.net/register_globals register_globals]</tt> option is enabled. Disable it if you can.</strong>
+MediaWiki will work, but your server is more exposed to PHP-based security vulnerabilities.',
+'config-magic-quotes-runtime' => '<strong>Fatal: [http://www.php.net/manual/en/ref.info.php#ini.magic-quotes-runtime magic_quotes_runtime] is active!</strong>
+This option corrupts data input unpredictably; you cannot install or use MediaWiki unless this option is disabled.',
+'config-magic-quotes-sybase' => '<strong>Fatal: [http://www.php.net/manual/en/ref.info.php#ini.magic-quotes-sybase magic_quotes_sybase] is active!</strong>
+This option corrupts data input unpredictably; you cannot install or use MediaWiki unless this option is disabled.',
+'config-mbstring' => '<strong>Fatal: [http://www.php.net/manual/en/ref.mbstring.php#mbstring.overload mbstring.func_overload] is active!</strong>
+This option causes errors and may corrupt data unpredictably; you cannot install or use MediaWiki unless this option is disabled.',
+'config-ze1' => '<strong>Fatal: [http://www.php.net/manual/en/ini.core.php zend.ze1_compatibility_mode] is active!</strong>
+This option causes horrible bugs with MediaWiki; you cannot install or use MediaWiki unless this option is disabled.',
+'config-safe-mode' => '<b class="error">Warning:</b>
+<strong>PHP\'s [http://www.php.net/features.safe-mode safe mode] is active.</strong>
+You may have problems caused by this, particularly if using image uploads.',
+'config-xml-good' => 'Have XML / Latin1-UTF-8 conversion support.',
+'config-xml-bad' => 'PHP\'s XML module is missing; 
+the wiki requires functions in this module and won\'t work in this configuration.
+If you\'re running Mandrake, install the php-xml package.',
+'config-pcre' => 'The PCRE support module appears to be missing.
+MediaWiki requires the Perl-compatible regular expression functions.',
+'config-memory-none' => 'PHP is configured with no <tt>memory_limit</tt>',
+'config-memory-ok' => 'PHP\'s <tt>memory_limit</tt> is $1, ok.',
+'config-memory-raised' => 'PHP\'s <tt>memory_limit</tt> is $1, raised to $2.',
+'config-memory-bad' => '<strong>Warning:</strong> PHP\'s <tt>memory_limit</tt> is $1.
+This is probably too low, the installation may fail!',
+'config-turck' => '[http://turck-mmcache.sourceforge.net/ Turck MMCache] installed</li>',
+'config-xcache' => '[http://trac.lighttpd.net/xcache/ XCache] installed',
+'config-apc' => '[http://www.php.net/apc APC] installed',
+'config-eaccel' => '[http://eaccelerator.sourceforge.net/ eAccelerator] installed',
+'config-no-cache' => '<strong>Warning:</strong> 
+Couldn\'t find [http://turck-mmcache.sourceforge.net Turck MMCache],
+[http://eaccelerator.sourceforge.net eAccelerator],
+[http://www.php.net/apc APC] or [http://trac.lighttpd.net/xcache/ XCache];
+cannot use these for object caching.',
+'config-diff3-good' => 'Found GNU diff3: <tt>$1</tt>.',
+'config-diff3-bad' => 'GNU diff3 not found.',
+'config-imagemagick' => 'Found ImageMagick: <tt>$1</tt>; image thumbnailing will be enabled if you enable uploads.',
+'config-gd' => 'Found GD graphics library built-in, image thumbnailing will be enabled if you enable uploads.',
+'config-no-scaling' => 'Couldn\'t find GD library or ImageMagick; image thumbnailing disabled.',
+'config-dir' => 'Installation directory: <tt>$1</tt>',
+'config-uri' => 'Script URI path: <tt>$1</tt>',
+'config-no-uri' => '<strong>Error:</strong> Could not determine the current URI. Installation aborted.',
+'config-extension' => 'Installing MediaWiki with <tt>$1</tt> file extensions',
+
+'config-db-type' => 'DB type:',
+'config-db-host' => 'DB host:',
+'config-db-host-help' => 'If your database server isn\'t on your web server, enter the name or IP address here.
+If you are using a shared web host, your hosting provider should give you the correct host name in their documentation.',
+'config-db-wiki-settings' => 'Identify this wiki',
+'config-db-name' => 'DB name:',
+'config-db-name-help' => 'Choose a name that identifies your wiki. It should not contain spaces or hyphens.
+If you are using a shared host, your hosting provider will either give you a specific database name to use, or let you create databases via a control panel.',
+'config-db-install-account' => 'User account for installation',
+'config-db-username' => 'DB username:',
+'config-db-password' => 'DB password:',
+'config-db-install-help' => 'Select the username and password that will be used to connect to the database during the installation process.',
+'config-db-account-lock' => 'Use the same username and password during normal operation',
+'config-db-wiki-account' => 'User account for normal operation',
+'config-db-wiki-help' => 'Select the username and password that will be used to connect to the database during normal wiki operation. 
+If the account does not exist, and the installation account has sufficient privileges, this user account will be created with the minimum privileges required to operate the wiki.',
+'config-db-prefix' => 'DB table prefix:',
+'config-db-prefix-help' => 'If you need to share one database between multiple wikis, or between MediaWiki and another web application, you may choose to add a prefix to all the table names to avoid conflicts.
+Do not use spaces or hyphens.
+
+This may normally be left blank.',
+'config-db-charset' => 'DB character set',
+'config-charset-mysql5-binary' => 'MySQL 4.1/5.0 binary',
+'config-charset-mysql5' => 'MySQL 4.1/5.0 UTF-8',
+'config-charset-mysql4' => 'MySQL 4.0 backwards-compatible UTF-8',
+'config-charset-help' => '<b>WARNING:</b> If you use <b>backwards-compatible UTF-8</b> on MySQL 4.1+, and subsequently back up the database with <tt>mysqldump</tt>, it may destroy all non-ASCII characters, irreversibly corrupting your backups!.
+<br/><br/>
+In <b>binary mode</b>, MediaWiki stores UTF-8 text to the database in binary fields. This is more efficient than MySQL\'s UTF-8 mode, and allows you to use the full range of Unicode characters. In <b>UTF-8 mode</b>, MySQL will know what character set your data is in, and can present and convert it appropriately, but it won\'t let you store characters above the [http://en.wikipedia.org/wiki/Mapping_of_Unicode_character_planes Basic Multilingual Plane].
+',
+'config-mysql-old' => 'MySQL $1 or later is required, you have $2.',
+'config-db-port' => 'DB port:',
+'config-db-schema' => 'Schema for MediaWiki',
+'config-db-ts2-schema' => 'Schema for tsearch2',
+'config-db-schema-help' => 'The above schemas are generally correct, only change them if you are sure you need to.',
+'config-sqlite-dir' => 'SQLite data directory:',
+'config-sqlite-dir-help' => 'SQLite stores table data into files in the filesystem.
+This directory must be writable by the webserver.
+It should <strong>not</strong> accessible via the web.',
+'config-type-mysql' => 'MySQL',
+'config-type-postgres' => 'PostgreSQL',
+'config-type-sqlite' => 'SQLite',
+'config-header-mysql' => 'MySQL settings',
+'config-header-postgres' => 'PostgreSQL settings',
+'config-header-sqlite' => 'SQLite settings',
+'config-invalid-db-type' => 'Invalid DB type',
+'config-missing-db-name' => 'You must enter a value for "DB name"',
+'config-invalid-db-name' => 'Invalid DB name "$1". It may only contain numbers, letters and underscores.',
+'config-invalid-db-prefix' => 'Invalid DB prefix "$1". It may only contain numbers, letters and underscores.',
+'config-connection-error' => '$1.
+
+Check the host, username and password below and try again.',
+'config-invalid-schema' => 'Invalid schema for MediaWiki "$1". Please use only letters, numbers and underscores.',
+'config-invalid-ts2schema' => 'Invalid schema for tsearch2 "$1". Please use only letters, numbers and underscores.',
+'config-postgres-old' => 'Postgres $1 or later is required, you have $2.',
+'config-sqlite-name-help' => 'Choose a name that identifies your wiki. Do not use spaces or hyphens. This will be used for the SQLite data file name.',
+'config-sqlite-parent-unwritable' => 'Cannot create the data directory "$1", because the parent directory "$2" is not writable by the webserver. Please create this directory yourself, make it writable, and try again.',
+'config-sqlite-mkdir-error' => 'Error creating the data directory "$1". Please check the location and try again.',
+'config-sqlite-unwritable' => 'Unable to write to the directory specified: $1. Please change its permissions so that the webserver can write to it, and try again.',
+'config-sqlite-connection-error' => '$1.
+
+Check the data directory and DB name below and try again.',
+'config-can-upgrade' => 'There are MediaWiki tables in this database. 
+To upgrade them to MediaWiki $1, click <strong>Continue</strong>.',
+'config-upgrade-done' => 'Upgrade complete. 
+
+You can now [$1 start using your wiki].
+
+If you want to regenerate your LocalSettings.php file, click the button below. 
+This is <strong>not recommended</strong> unless you are having problems with your wiki.
+',
+'config-regenerate' => 'Regenerate LocalSettings.php >',
+'config-show-table-status' => 'SHOW TABLE STATUS query failed!',
+'config-unknown-collation' => '<strong>Warning:</strong> Unrecognised existing collation',
+
+'config-db-web-account' => 'DB account for web access',
+'config-db-web-help' => 'Select the username and password that the web server will use to connect to the database server, during ordinary operation of the wiki.
+
+If the account specified does not exist, the installer will attempt to create it.
+',
+'config-db-web-account-same' => 'Use the same account as for installation',
+
+
 # Special:Version
 'version'                          => 'Version', # Not used as normal message but as header for the special page itself
 'version-extensions'               => 'Installed extensions',
