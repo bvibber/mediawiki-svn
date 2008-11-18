@@ -97,7 +97,7 @@ Uniwiki.CustomToolbar = {
             'close':   "]]",
             'sample':  wfMsg('ct_user_sample'),
             'tip':     wfMsg('ct_user_tip'),
-            'caption': wfMsg('ct_user_caption'),
+            'caption': wfMsg('ct_user_caption')
         },
 		'math': {
 			'key':      "m",
