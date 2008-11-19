@@ -20,7 +20,7 @@ class SpecialFundraiserStatistics extends SpecialPage {
 	}
 	
 	public function execute( $sub ) {
-		global $wgRequest, $wgOut, $wgUser;
+		global $wgRequest, $wgOut, $wgUser, $wgLang;
 		global $egFundraiserStatisticsFundraisers;
 		
 		// Begin output
@@ -88,6 +88,7 @@ END;
 			
 			// Build columns
 			$column = 0;
+			$lastDay = false;
 			foreach( $days as $day ) {
 				$height = ( 200 / $max ) * $day[1];
 				if ( !isset( $columns[$column] ) ) {
@@ -124,25 +125,30 @@ END;
 						'style' => 'margin:10px'
 					)
 				);
+				
 				$viewHTML .= Xml::tags( 'tr', null,
 					Xml::element( 'td', null, wfMsg( 'fundraiserstats-date' ) ) .
 					Xml::element( 'td', null, $day[0] )
 				);
 				$viewHTML .= Xml::tags( 'tr', null,
+					Xml::element( 'td', null, wfMsg( 'fundraiserstats-contributions' ) ) .
+					Xml::element( 'td', null, $wgLang->formatNum( $day[1] ) )
+				);
+				$viewHTML .= Xml::tags( 'tr', null,
 					Xml::element( 'td', null, wfMsg( 'fundraiserstats-total' ) ) .
-					Xml::element( 'td', null, $day[1] )
+					Xml::element( 'td', null, $wgLang->formatNum( $day[2] ) )
 				);
 				$viewHTML .= Xml::tags( 'tr', null,
 					Xml::element( 'td', null, wfMsg( 'fundraiserstats-avg' ) ) .
-					Xml::element( 'td', null, $day[2] )
+					Xml::element( 'td', null, $wgLang->formatNum( $day[3] ) )
 				);
 				$viewHTML .= Xml::tags( 'tr', null,
 					Xml::element( 'td', null, wfMsg( 'fundraiserstats-max' ) ) .
-					Xml::element( 'td', null, $day[3] )
+					Xml::element( 'td', null, $wgLang->formatNum( $day[4] ) )
 				);
 				$viewHTML .= Xml::closeElement( 'table' );
 				
-				$views[$day[1]] = Xml::tags( 'div',
+				$views[$view] = Xml::tags( 'div',
 					array(
 						'id' => 'fundraiserstats-view-box-' . $view,
 						'class' => 'fundraiserstats-view-box',
@@ -212,6 +218,7 @@ END;
 		$res = $dbr->select( 'public_reporting',
 			array(
 				"FROM_UNIXTIME(received, '%Y-%m-%d')",
+				'count(*)',
 				'sum(converted_amount)',
 				'avg(converted_amount)',
 				'max(converted_amount)',

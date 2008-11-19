@@ -95,7 +95,7 @@ class SpecialContributionStatistics extends SpecialPage {
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-contributions' ) );
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-total' ) );
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-avg' ) );
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-min' ) );
+		/*$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-med' ) );*/
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-max' ) );
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-total-ytd' ) );
 		
@@ -106,8 +106,8 @@ class SpecialContributionStatistics extends SpecialPage {
 				Xml::element( 'td', array( 'align' => 'left' ), $wgLang->formatNum( $data[1] ) ) .
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[2], 2 ) ) ) .
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[3], 2 ) ) ) .
+				/*Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[5], 2 ) ) ) .*/
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[4], 2 ) ) ) .
-				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[5], 2 ) ) ) .
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $total, 2 ) ) )
 			);
 			$total -= $data[2];
@@ -144,7 +144,7 @@ class SpecialContributionStatistics extends SpecialPage {
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-contributions' ) );
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-total' ) );
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-avg' ) );
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-min' ) );
+		/*$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-med' ) );*/
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-max' ) );
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-total-ytd' ) );
 		
@@ -155,8 +155,8 @@ class SpecialContributionStatistics extends SpecialPage {
 				Xml::element( 'td', array( 'align' => 'left' ), $wgLang->formatNum( $data[1] ) ) .
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[2], 2 ) ) ) .
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[3], 2 ) ) ) .
+				/*Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[5], 2 ) ) ) .*/
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[4], 2 ) ) ) .
-				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[5], 2 ) ) ) .
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $total, 2 ) ) )
 			);
 			$total -= $data[2];
@@ -193,7 +193,7 @@ class SpecialContributionStatistics extends SpecialPage {
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'left' ), wfMsg( 'contribstats-contributions' ) );
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-total' ) );
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-avg' ) );
-		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-min' ) );
+		/*$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-med' ) );*/
 		$htmlOut .= Xml::element( 'th', array( 'align' => 'right' ), wfMsg( 'contribstats-max' ) );
 		
 		// Days
@@ -203,8 +203,8 @@ class SpecialContributionStatistics extends SpecialPage {
 				Xml::element( 'td', array( 'align' => 'left' ), $wgLang->formatNum( $data[1] ) ) .
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[2], 2 ) ) ) .
 				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[3], 2 ) ) ) .
-				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[4], 2 ) ) ) .
-				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[5], 2 ) ) )
+				/*Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[5], 2 ) ) ) .*/
+				Xml::element( 'td', array( 'align' => 'right' ), $wgLang->formatNum( number_format( $data[4], 2 ) ) )
 			);
 		}
 		
@@ -285,7 +285,6 @@ class SpecialContributionStatistics extends SpecialPage {
 				'count(*)',
 				'sum(converted_amount)',
 				'avg(converted_amount)',
-				'min(converted_amount)',
 				'max(converted_amount)'
 			),
 			$this->dateConds( $dbr ),
@@ -300,6 +299,21 @@ class SpecialContributionStatistics extends SpecialPage {
 		// Build day/value array
 		$totals = array();
 		while ( $row = $dbr->fetchRow( $res ) ) {
+			/*
+			$median = $dbr->selectField( 'public_reporting',
+				array( 'converted_amount' ),
+				array(
+					"FROM_UNIXTIME(received, '%Y-%m-%d')" => $row[0]
+				),
+				__METHOD__,
+				array(
+					'ORDER BY' => 'converted_amount DESC',
+					'OFFSET' => round( $row[1] / 2 ),
+					'LIMIT' => 1
+				)
+			);
+			$row[] = $median;
+			*/
 			$totals[] = $row;
 		}
 		
@@ -318,7 +332,6 @@ class SpecialContributionStatistics extends SpecialPage {
 				'count(*)',
 				'sum(converted_amount)',
 				'avg(converted_amount)',
-				'min(converted_amount)',
 				'max(converted_amount)'
 			),
 			$this->dateConds( $dbr ),
@@ -332,6 +345,19 @@ class SpecialContributionStatistics extends SpecialPage {
 		// Build day/value array
 		$totals = array();
 		while ( $row = $dbr->fetchRow( $res ) ) {
+			$median = $dbr->selectField( 'public_reporting',
+				array( 'converted_amount' ),
+				array(
+					"FROM_UNIXTIME(received, '%Y-%m')" => $row[0]
+				),
+				__METHOD__,
+				array(
+					'ORDER BY' => 'converted_amount DESC',
+					'OFFSET' => round( $row[1] / 2 ),
+					'LIMIT' => 1
+				)
+			);
+			$row[] = $median;
 			$totals[] = $row;
 		}
 		
@@ -350,7 +376,6 @@ class SpecialContributionStatistics extends SpecialPage {
 				'count(*)',
 				'sum(converted_amount)',
 				'avg(converted_amount)',
-				'min(converted_amount)',
 				'max(converted_amount)'
 			),
 			$this->dateConds( $dbr ),
@@ -363,6 +388,22 @@ class SpecialContributionStatistics extends SpecialPage {
 		
 		$totals = array();
 		while ( $row = $dbr->fetchRow( $res ) ) {
+			$median = $dbr->selectField( 'public_reporting',
+				array( 'converted_amount' ),
+				array_merge(
+					$this->dateConds( $dbr ),
+					array(
+						'original_currency' => $row[0]
+					)
+				),
+				__METHOD__,
+				array(
+					'ORDER BY' => 'converted_amount DESC',
+					'OFFSET' => round( $row[1] / 2 ),
+					'LIMIT' => 1,
+				)
+			);
+			$row[] = $median;
 			$totals[$row[0]] = $row;
 		}
 		

@@ -45,7 +45,7 @@ $messages['en'] = array(
 	'contribstats-contributions' => 'Contributions',
 	'contribstats-total' => 'Total (USD)',
 	'contribstats-avg' => 'Average (USD)',
-	'contribstats-min' => 'Minimum (USD)',
+	'contribstats-med' => 'Median (USD)',
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Percentage (YTD)',
 	'contribstats-total-ytd' => 'Total (YTD)',
@@ -53,9 +53,10 @@ $messages['en'] = array(
 	// Fundraiser statistics
 	'fundraiserstatistics' => 'Fundraiser statistics',
 	'fundraiserstats-date' => 'Date',
+	'fundraiserstats-contributions' => 'Contributions',
 	'fundraiserstats-total' => 'Total (USD)',
 	'fundraiserstats-avg' => 'Average (USD)',
-	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-med' => 'Median (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
 );
 
