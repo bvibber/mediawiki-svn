@@ -587,14 +587,14 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'hiderevision' => 'Porĉiame kaŝi reviziojn',
-	'hiderevision-desc' => 'Kaŝi individuajn reviziojn de ĉiuj uzantoj por leĝaj kialoj, ktp.',
+	'hiderevision' => 'Porĉiame kaŝi versiojn',
+	'hiderevision-desc' => 'Kaŝi individuajn versiojn de ĉiuj uzantoj por leĝaj kialoj, ktp.',
 	'group-oversight' => 'Kontrolantoj',
 	'group-oversight-member' => 'Kontrolado',
 	'grouppage-oversight' => '{{ns:project}}:Kontrolado',
-	'right-oversight' => 'Rigardi antaŭe kaŝitan revizion',
-	'right-hiderevision' => 'Kontrolu kaj restarigu reviziojn kaŝitajn de administrantoj',
-	'hiderevision-prompt' => 'Nombro de revizio por forigi:',
+	'right-oversight' => 'Rigardi antaŭe kaŝitan version',
+	'right-hiderevision' => 'Kontroli kaj malforigi versiojn kaŝitajn de administrantoj',
+	'hiderevision-prompt' => 'Nombro de versio por forigi:',
 	'hiderevision-continue' => 'Daŭrigi',
 	'hiderevision-text' => "Ĉi tiu ago '''nur''' estu uzata por la jenaj kazoj:
 * Netaŭga persona informo
@@ -605,26 +605,26 @@ $messages['eo'] = array(
 Forigitaĵoj ne estos videbla al iu ajn per la retejo, sed la forigoj estas skribita en la protokolo kaj povas esti restarigita de datumbaza administranto se eraro estas farita.",
 	'hiderevision-reason' => 'Kialo (estos protokolita private)',
 	'hiderevision-submit' => 'Kaŝi ĉi tiujn datenojn ĉiam',
-	'hiderevision-tab' => 'Kaŝi revizion',
-	'hiderevision-norevisions' => 'Neniuj revizioj specifigita por forigo.',
+	'hiderevision-tab' => 'Kaŝi version',
+	'hiderevision-norevisions' => 'Neniuj versioj specifigita por forigo.',
 	'hiderevision-noreason' => 'Vi nepre priskribu la kialon por ĉi tiu forigo.',
-	'hiderevision-status' => 'Revizio $1: $2',
+	'hiderevision-status' => 'Versio $1: $2',
 	'hiderevision-success' => 'Arkivita kaj forigita sukcese.',
 	'hiderevision-error-missing' => 'Ne trovita en datumbazo.',
 	'hiderevision-error-current' => 'Ne povas forigi la lastan redakton de paĝo.
 Malfaru ĉi tiun ŝanĝon antaŭe.',
 	'hiderevision-error-delete' => 'Ne povas aldoni al arkivo. Ĉu ĝi estis antaŭe forigita?',
-	'hiderevision-archive-status' => 'Forigis revizion de $1: $2',
-	'oversight-nodiff' => 'Ne eblas sekvi ŝanĝojn ĉar estas nun neniu antaŭa revizio por la paĝo. Aŭ:
+	'hiderevision-archive-status' => 'Forigis version de $1: $2',
+	'oversight-nodiff' => 'Ne eblas sekvi ŝanĝojn ĉar estas nun neniu antaŭa versio por la paĝo. Aŭ:
 * La paĝo estis forigita
-* Ĉi tiu kaŝita revizio estis la unua revizio',
+* Ĉi tiu kaŝita versio estis la unua versio',
 	'oversight-log-hiderev' => 'forigis redakton de $1',
 	'oversight' => 'Kontrolado',
 	'oversight-view' => 'detaloj',
-	'oversight-difference' => '(Diferenco de la antaŭa lasta revizio)',
-	'oversight-prev' => 'Lasta antaŭa revizio',
-	'oversight-hidden' => 'Kaŝita revizio',
-	'oversight-header' => 'Jen listo de revizioj laste daŭre kaŝitaj de publika vido.
+	'oversight-difference' => '(Diferenco de la antaŭa lasta versio)',
+	'oversight-prev' => 'Lasta antaŭa versio',
+	'oversight-hidden' => 'Kaŝita versio',
+	'oversight-header' => 'Jen listo de versioj laste daŭre kaŝitaj de publika vido.
 Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-rajtoj.',
 	'oversight-legend' => 'Serĉi protokolon pri revizia kaŝado',
 );
@@ -1922,6 +1922,8 @@ Item-item yang telah dibuang tidak boleh dilihat oleh sesiapa melalui tapak web 
 	'oversight-header' => 'Berikut ialah senarai terkini bagi semakan yang dirahsiakan daripada pandangan orang ramai.
 Pendedahan maklumat ini boleh mengakibatkan jawatan pengawal ditarik balik.',
 	'oversight-legend' => 'Cari dalam log penyembunyian semakan',
+	'oversight-oversighter' => 'Penyembunyi:',
+	'oversight-offender' => 'Pesalah:',
 );
 
 /** Low German (Plattdüütsch)

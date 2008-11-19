@@ -109,7 +109,13 @@ $messages['arz'] = array(
 	'tasks_error1' => 'المهمة دي ما اتخلقتش:المهمة موجودة اصلا!',
 	'tasks_ok1' => 'المهمة الجديدة اتنشأت!',
 	'tasks_create_header' => 'ابتدي مهمة جديدة',
+	'tasks_existing_header' => 'المهام الموجودة',
 	'tasks_noone' => 'مافيش حد',
+	'tasks_close' => 'اقفل المهمة',
+	'tasks_delete' => 'امسح',
+	'tasks_no_task_delete_title' => 'مش مسموح',
+	'tasks_action_delete' => 'في مهمة اتمسحت',
+	'tasks_here' => 'هنا',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -158,8 +164,10 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Revolus
  */
 $messages['de'] = array(
+	'tasks' => 'Aufgaben',
 	'tasks_tab' => 'Aufgaben',
 	'tasks_title' => 'Aufgaben für "$1"',
 	'tasks_form_new' => 'Neue Aufgabe erstellen',
@@ -249,6 +257,8 @@ $messages['eo'] = array(
 	'tasks_form_new' => 'Krei novan taskon',
 	'tasks_form_comment' => 'Komento',
 	'tasks_ok1' => 'Nova tasko estis kreita!',
+	'tasks_create_header' => 'Krei novan taskon',
+	'tasks_existing_header' => 'Ekzistantaj taskoj',
 	'tasks_assign_me' => 'Asigni al mi mem',
 	'tasks_assign_to' => 'Asigni al',
 	'tasks_close' => 'Fermi taskon',
@@ -675,6 +685,7 @@ $messages['lb'] = array(
 	'tasks_table_header_page' => 'Säit',
 	'tasks_search_form_title' => 'Sichen',
 	'tasks_search_tasks' => 'Aufgaben',
+	'tasks_search_status' => 'Statut',
 	'tasks_previous' => 'Vireg',
 	'tasks_sort' => 'Sortéieren',
 	'tasks_status_open' => 'Op',
@@ -683,6 +694,7 @@ $messages['lb'] = array(
 	'tasks_action_closed' => 'Aufgab "$1" ass fäerdeg.',
 	'tasks_sign_delete' => '<b>Et gouf gefrot fir dëse Säit ze läschen</b>',
 	'tasks_logpage' => 'Lëscht vun den Aufgaben',
+	'tasks_logpagetext' => 'Dëst ass eng L!escht vun den Ännerunge vun den Aufgaben',
 	'tasks_logentry' => 'Fir [[$1}}',
 );
 

@@ -164,10 +164,14 @@ Die ID, die du benötigst, sind die Zahlen und Buchstaben zwischen „$2“ und 
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'imstatus_syntax' => 'Sintakso',
 	'imstatus_default' => 'Defaŭlta',
 	'imstatus_example' => 'Ekzemplo',
 	'imstatus_possible_val' => 'Eblaj valutoj',
+	'imstatus_max' => 'maks',
+	'imstatus_min' => 'min',
 	'imstatus_or' => 'aŭ',
+	'imstatus_your_name' => 'via $1 nomo',
 );
 
 /** Persian (فارسی)

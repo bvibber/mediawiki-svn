@@ -985,8 +985,24 @@ $messages['bs'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Glasaj]]
 * [[Special:Boardvote/list|Spisak glasanja do danas]]
 * [[Special:Boardvote/dump|Arhiva šifriranih podataka o izborima]]',
+	'boardvote_novotes' => 'Niko još nije glasao.',
+	'boardvote_time' => 'Vrijeme',
+	'boardvote_user' => 'Korisnik',
+	'boardvote_edits' => 'Izmjene',
+	'boardvote_days' => 'Dana',
+	'boardvote_dumplink' => 'Klikni ovdje',
 	'boardvote_submit' => 'U redu',
+	'boardvote_strike' => 'Prekriži',
+	'boardvote_unstrike' => 'Vrati križanje',
+	'boardvote_needadmin' => 'Samo administratori za izbore mogu izvršiti ovu operaciju.',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Izbori za Wikimedia nadzorni odbor</a>:
+Glasanje otvoreno do 22. juna',
+	'boardvote_edits_many' => 'mnogi',
+	'group-boardvote' => 'Administratori glasanja za odbor',
+	'boardvote_bot' => 'Na Vašem matičnom wikiju ste registrovani kao bot.
+Korisnički računi botova ne mogu glasati.',
 	'boardvote_welcome' => "Dobrodošao '''$1'''!",
+	'go_to_board_vote' => 'Izbori za Wikimedia nadzorni odbor 2008',
 );
 
 /** Catalan (Català)
@@ -4671,7 +4687,7 @@ głosowanie trwa do 22 czerwca',
 	'boardvote_edits_many' => 'dużo',
 	'group-boardvote' => 'Koordynatorzy wyborów',
 	'group-boardvote-member' => 'koordynator wyborów',
-	'grouppage-boardvote' => '{{ns:project}}:Administrator wyborów',
+	'grouppage-boardvote' => '{{ns:project}}:Koordynatorzy wyborów',
 	'boardvote_blocked' => 'Jesteś zablokowany na wiki, na której jesteś zarejestrowany.
 Zablokowani użytkownicy nie mogą głosować.',
 	'boardvote_bot' => 'Na wiki, na której jesteś zarejestrowany masz ustawioną flagę bota.

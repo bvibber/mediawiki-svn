@@ -99,6 +99,13 @@ $messages['bg'] = array(
 	'importfreeimages_returntoform' => "Или щракнете <a href='$1'>тук</a> за да се върнете към резултати от търсенето си",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'importfreeimages_owner' => 'Autor',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

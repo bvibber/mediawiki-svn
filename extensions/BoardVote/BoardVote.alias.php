@@ -77,6 +77,11 @@ $aliases['id'] = array(
 	'BoardVote' => array( 'Pemilihan dewan' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'BoardVote' => array( '財団理事選挙' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'BoardVote' => array( 'Wiel fir de Verwaltungsrot' ),

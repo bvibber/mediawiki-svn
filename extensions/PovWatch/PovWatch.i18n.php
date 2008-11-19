@@ -173,6 +173,13 @@ $messages['bg'] = array(
 	'right-povwatch_user' => 'добавяне на страници в списъка за наблюдение на други потребители',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'povwatch_title' => 'Naslov:',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */

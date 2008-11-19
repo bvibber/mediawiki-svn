@@ -255,9 +255,11 @@ Un tamm pasianted mar plij.',
  * @author CERminator
  */
 $messages['bs'] = array(
+	'youtubeauthsub' => 'Postavi video na YouTube',
 	'youtubeauthsub_title' => 'Naslov',
 	'youtubeauthsub_description' => 'Opis',
 	'youtubeauthsub_category' => 'Kategorija',
+	'youtubeauthsub_submit' => 'Pošalji',
 	'youtubeauthsub_uploadbutton' => 'Postavi',
 );
 
@@ -1345,6 +1347,7 @@ Por favor seja paciente.',
 $messages['ro'] = array(
 	'youtubeauthsub_title' => 'Titlu',
 	'youtubeauthsub_description' => 'Descriere',
+	'youtubeauthsub_keywords' => 'Cuvinte cheie',
 	'youtubeauthsub_category' => 'Categorie',
 );
 
@@ -1353,6 +1356,8 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'youtubeauthsub' => 'Careche ìnu video de YouTube',
+	'youtubeauthsub_title' => 'Titele',
+	'youtubeauthsub_description' => 'Descrizione',
 	'youtubeauthsub_password' => 'Password de YouTube',
 	'youtubeauthsub_username' => 'Nome utende de YouTube',
 	'youtubeauthsub_category' => 'Categorije',

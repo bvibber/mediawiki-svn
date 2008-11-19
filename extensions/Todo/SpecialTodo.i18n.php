@@ -261,6 +261,7 @@ $messages['eo'] = array(
 	'todo-list-cancel' => 'Nuligi',
 	'todo-new-item' => 'Nova aĵo',
 	'todo-form-details' => 'Detaloj:',
+	'todo-form-submit' => 'Enigi serĉomendon',
 );
 
 /** French (Français)

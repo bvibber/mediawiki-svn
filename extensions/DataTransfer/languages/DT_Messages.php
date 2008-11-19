@@ -149,6 +149,7 @@ $messages['bs'] = array(
 	'dt_viewxml_namespaces' => 'Imenski prostori',
 	'dt_xml_page' => 'Stranica',
 	'dt_xml_name' => 'Naziv',
+	'dt_xml_title' => 'Naslov',
 );
 
 /** Catalan (Català)

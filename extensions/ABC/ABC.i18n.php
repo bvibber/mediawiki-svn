@@ -57,6 +57,14 @@ $messages['bg'] = array(
 	'abcdownload' => 'Изтегляне:',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'abcdesc' => 'Dodaje <tt>&lt;abc&gt;</tt> oznaku za formatiranje ABC muzike',
+	'abcdownload' => 'Skidanje:',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'abcdesc' => 'Ergänzt das <tt>&lt;abc&gt;</tt>-Tag zur Notation von Musik in ABC',
@@ -197,9 +205,11 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Najami
  */
 $messages['sv'] = array(
+	'abcdesc' => 'Lägger till <tt>&lt;abc&gt;</tt>-taggen för att formatera ABC-musik',
 	'abcdownload' => 'Ladda ner:',
 );
 

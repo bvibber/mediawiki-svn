@@ -69,6 +69,20 @@ $messages['bg'] = array(
 	'categorywatch-catsub' => 'премахна $1 от категория $2',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'categorywatch-desc' => 'Proširena funkcionalnost spiska praćenja da se uključe obavijesti o promjena u članstvu praćenih kategorija',
+	'categorywatch-emailbody' => 'Zdravo $1, dobili ste ovu poruku jer ste pratili "$2" kategoriju.
+Ova poruka služi da Vas obavijesti da je $3 korisnik $4 $5.',
+	'categorywatch-emailsubject' => 'Aktivnosti koje uključuju praćenje kategorije "$1"',
+	'categorywatch-catmovein' => 'premješteno $1 u kategoriju $2 iz $3',
+	'categorywatch-catmoveout' => 'premješteno $1 iz kategorije $2 u $3',
+	'categorywatch-catadd' => 'dodano $1 u kategoriju $2',
+	'categorywatch-catsub' => 'uklonjeno $1 iz kategorije $2',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

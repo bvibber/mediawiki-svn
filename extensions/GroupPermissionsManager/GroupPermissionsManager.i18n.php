@@ -431,6 +431,7 @@ $messages['eo'] = array(
 	'grouppermissions-sort-edit' => 'Redaktado',
 	'grouppermissions-sort-manage' => 'Administrado',
 	'grouppermissions-sort-admin' => 'Administrado',
+	'grouppermissions-sort-misc' => 'Diversaĵoj',
 	'grouppermissions-log-add' => 'aldonis grupon "$2"',
 	'grouppermissions-log-change' => 'ŝanĝis rajtojn por grupon "$2"',
 	'grouppermissions-log-delete' => 'forigis grupon "$2"',
@@ -446,6 +447,7 @@ $messages['eo'] = array(
 	'right-history' => 'Vidi paĝajn historiojn',
 	'right-search' => 'Serĉi la vikion',
 	'right-contributions' => 'Vidi paĝojn de kontribuoj',
+	'right-recentchanges' => 'Vidi lastajn ŝanĝojn',
 	'right-edittalk' => 'Redakti diskuto-paĝojn',
 	'right-edit-new' => 'Redaktu paĝojn',
 );

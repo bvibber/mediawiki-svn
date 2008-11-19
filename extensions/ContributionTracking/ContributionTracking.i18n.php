@@ -96,9 +96,11 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'contributiontracking-desc' => 'Kontribuada atentilo por la monkampajno Wikimedia',
 	'contributiontracking' => 'Kontribua kontrolado',
 	'contrib-tracking-error' => 'Eraro',
 	'contrib-tracking-error-text' => 'Nevalida enigo',
+	'contrib-tracking-submitting' => 'Sendante al mona traktejo...',
 	'contrib-tracking-continue' => 'Se vi ne aŭtomate estus alidirektita, klaku la butonon por fini vian donacon ĉe PayPal.',
 	'contrib-tracking-button' => 'Daŭrigi',
 );

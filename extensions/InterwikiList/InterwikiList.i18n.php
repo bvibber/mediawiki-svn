@@ -98,6 +98,7 @@ $messages['eo'] = array(
 	'interwikilist' => 'Intervikia listo',
 	'interwikilist-linkname' => 'Intervikia ligilo',
 	'interwikilist-target' => 'Cela URL-o',
+	'interwikilist-filter' => 'Filtrila listo',
 	'interwikilist-prefix' => 'Intervikia prefikso:',
 );
 

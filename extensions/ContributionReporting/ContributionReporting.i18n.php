@@ -122,6 +122,7 @@ $messages['ar'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'contributionreporting-desc' => 'تقرير حي على جامع تبرعات ويكيميديا',
 	'contributiontotal' => 'اجمالي المساهمة',
 	'contributionhistory' => 'تاريخ المساهمة',
 	'contrib-hist-header' => 'التعليقات بتاعة متبرعين الريل-تايم من كل حتة في العالم',
@@ -133,8 +134,13 @@ $messages['arz'] = array(
 	'contrib-hist-anonymous' => 'مش معروف',
 	'contributionstatistics' => 'احصائيات المساهمه',
 	'contribstats-desc' => 'بيعرض الاحصائيات بتاعة المساهمات اللي اتعملت لمؤسسة ويكيميديا',
+	'contribstats-daily-totals' => '{{PLURAL:$1|الاجمالي بتاع انهارده|الاجمالي بتاع الـ$1 يوم اللي فاتو}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|الاجمالي بتاع الشهر دا|الاجمالي بتاع الـ$1 شهر اللي فاتو}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|الاجمالي بتاع$1 شهر|الاجمالي بتاع$1 شهور}}',
 	'contribstats-currency-range-totals' => 'مجموع العملات (من $1 ل $2)',
+	'contribstats-contribution-range-breakdown' => 'تفصيل المساهمات على حسب القيمة(من $1 لـ $2)',
 	'contribstats-currency-totals' => 'مجموع العملات للسنة المالية ل$1',
+	'contribstats-contribution-breakdown' => 'تفصيل المساهمات على حسب القيمة للسنة المالية $1',
 	'contribstats-day' => 'اليوم',
 	'contribstats-month' => 'الشهر',
 	'contribstats-currency' => 'العملة',
@@ -284,6 +290,7 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'contributionreporting-desc' => 'Aktuala raportado pri la monkampajno Wikimedia',
 	'contributiontotal' => 'Kontribua tuto',
 	'contributionhistory' => 'Kontribua historio',
 	'contrib-hist-header' => 'Aktualaj komentoj de donacantoj ĉirkaŭ la mondo',
@@ -294,9 +301,14 @@ $messages['eo'] = array(
 	'contrib-hist-previous' => 'Pli malfruaj donacoj',
 	'contrib-hist-anonymous' => 'Anonimulo',
 	'contributionstatistics' => 'Statistikoj pri kontribuado',
+	'contribstats-desc' => 'Montras statistikojn por kontribuoj donitaj al la Fondaĵo Wikimedia',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Tuto por ĉi tiu tago|Tagaj tutoj por la lastaj $1 tagoj}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Tuto por ĉi tiu monato|Monataj tutoj por la lastaj $1 monatoj}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Tuto por $1 monato|Monataj tutoj por $1 monatoj}}',
 	'contribstats-currency-range-totals' => 'Valutaj tutoj (de $1 al $2)',
+	'contribstats-contribution-range-breakdown' => 'Kategoriigitaj kontribuoj laŭ valuto (de $1 al $2)',
 	'contribstats-currency-totals' => 'Valutaj tutoj por la fiska jaro de $1',
+	'contribstats-contribution-breakdown' => 'Kategoriigitaj kontribuoj laŭ valuto por la fiska jaro de $1',
 	'contribstats-day' => 'Tago',
 	'contribstats-month' => 'Monato',
 	'contribstats-currency' => 'Valuto',
@@ -771,6 +783,11 @@ $messages['ms'] = array(
 	'contribstats-max' => 'Maksimum (USD)',
 	'contribstats-percentage-ytd' => 'Peratusan (YTD)',
 	'contribstats-total-ytd' => 'Jumlah (YTD)',
+	'fundraiserstats-date' => 'Tarikh',
+	'fundraiserstats-total' => 'Jumlah (USD)',
+	'fundraiserstats-avg' => 'Purata (USD)',
+	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-max' => 'Maksimum (USD)',
 );
 
 /** Dutch (Nederlands)
@@ -1010,6 +1027,12 @@ $messages['sk'] = array(
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Percentá (YTD)',
 	'contribstats-total-ytd' => 'Celkom (YTD)',
+	'fundraiserstatistics' => 'Štatistika fundraisingu',
+	'fundraiserstats-date' => 'Dátum',
+	'fundraiserstats-total' => 'Celkom (USD)',
+	'fundraiserstats-avg' => 'Priemer (USD)',
+	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-max' => 'Maximum (USD)',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

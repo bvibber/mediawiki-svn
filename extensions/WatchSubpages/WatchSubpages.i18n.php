@@ -388,6 +388,13 @@ $messages['ps'] = array(
 	'watchsubpages-desc' => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتلي لړليک ته ورګډ شي',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'watchsubpages-addtitles' => 'Adaugă pagini',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

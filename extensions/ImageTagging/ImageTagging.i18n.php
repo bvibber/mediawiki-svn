@@ -265,6 +265,7 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'taggedimages' => 'Bildoj kun etikedoj',
 	'imagetagging-addimagetag' => 'Marki ĉi tiun bildon',
 	'imagetagging-article' => 'Paĝo',
 	'imagetagging-articletotag' => 'Paĝo por marki',

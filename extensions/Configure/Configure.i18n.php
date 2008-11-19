@@ -567,6 +567,7 @@ $messages['bs'] = array(
 	'configure-desc-ns' => 'Imenski prostori',
 	'configure-js-remove' => 'Obriši',
 	'configure-section-namespaces' => 'Imenski prostori',
+	'configure-section-specialpages' => 'Posebne stranice',
 	'configure-section-search' => 'Traži',
 );
 
@@ -1055,7 +1056,7 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-section-specialpages' => 'Pages spéciales',
 	'configure-section-recentchanges' => 'Modifications récentes',
 	'configure-section-users' => 'Utilisateurs',
-	'configure-section-feed' => 'Alimentation',
+	'configure-section-feed' => 'Syndication',
 	'configure-section-job' => 'Travaux',
 	'configure-section-extension' => 'Extensions',
 	'configure-section-search' => 'Recherche',
@@ -1978,6 +1979,13 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'right-viewconfig' => 'Konfiguratioun vun der Wiki weisen',
 	'right-viewconfig-all' => 'Déi ganz Konfiguratioun vun der Wiki weisen',
 	'viewconfig' => 'Konfiguratioun vun der Wiki weisen',
+);
+
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'configure-section-recentchanges' => 'Recènte verangeringe',
 );
 
 /** Lithuanian (Lietuvių)
@@ -2967,6 +2975,8 @@ Prosím, použite na túto databázu configure.sql.',
 	'configure-js-prompt-group' => 'Zadajte názov novej skupiny:',
 	'configure-js-remove' => 'Zmazať',
 	'configure-js-remove-row' => 'Zmazať tento záznam',
+	'configure-js-get-image-url' => 'Konvertovať názov súboru na URL',
+	'configure-js-image-error' => 'Pri pokuse o získanie URL sa vyskytla chyba. Prosím, skontrolujte, či súbor existuje.',
 	'configure-no-diff' => 'Medzi zvolenými revíziami nenastali zmeny.',
 	'configure-no-directory' => 'Adresár na uloženie nastavení, <tt>$1</tt>, neexistuje.
 Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',

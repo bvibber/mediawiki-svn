@@ -149,6 +149,7 @@ $messages['bg'] = array(
 	'formarticleexists' => 'Страницата съществува',
 	'formarticleexiststext' => 'Страницата [[$1]] вече съществува.',
 	'formbadpagename' => 'Грешно име на страница',
+	'formbadrecaptcha' => 'Неправилни стойности за reCaptcha. Опитайте отново.',
 	'formrequiredfieldpluralerror' => 'Този формуляр изисква полетата $1 да бъдат попълнени.',
 	'formrequiredfielderror' => 'Този формуляр изисква полето $1 да бъде попълнено.',
 	'formsaveerror' => 'Грешка при съхранение на формуляра',
@@ -424,12 +425,17 @@ $messages['is'] = array(
  * @author Pras
  */
 $messages['jv'] = array(
+	'form-desc' => 'Sawijining [[Special:Form|antarmuka formulir]] kanggo miwiti kaca-kaca anyar',
 	'form' => 'Formulir',
+	'formnoname' => 'Ora ana jeneng formulir',
+	'formnonametext' => 'Panjenengan kudu maringi jeneng formulir, kaya "Special:Form/Nameofform".',
 	'formbadname' => 'Jeneng formulir ala',
 	'formbadnametext' => 'Ora ana formulir mawa jeneng iku.',
 	'formpattern' => 'Formulir-$1',
 	'formtitlepattern' => 'Tambah $1 anyar',
 	'formsave' => 'Simpen',
+	'formindexmismatch-title' => 'Pola jeneng lan cithakan ora cocog',
+	'formindexmismatch' => 'Ing formulir iki ora cocog antara pola jeneng lan cithakan miwiti ing indèks $1.',
 	'formarticleexists' => 'Kacané ana',
 	'formarticleexiststext' => 'Kaca [[$1]] wis ana.',
 	'formbadpagename' => 'Jeneng kaca ala',

@@ -249,6 +249,13 @@ $messages['pt'] = array(
 	'unicodeconverter-newtext' => 'Texto convertido:',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'unicodeconverter-oldtext' => 'Text original:',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

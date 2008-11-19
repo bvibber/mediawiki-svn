@@ -77,6 +77,11 @@ $aliases['id'] = array(
 	'SiteMatrix' => array( 'Matriks situs' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'SiteMatrix' => array( 'Wikimediaのウィキ一覧' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'SiteMatrix' => array( 'Leß met de Wikimedia Steffung ier Wikis' ),

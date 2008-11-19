@@ -180,3 +180,41 @@ $messages['oc'] = array(
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'recordadmin' => 'Správa záznamov',
+	'recordadmin-desc' => '[[Special:RecordAdmin|Špeciálna stránka]] na hľadanie a úpravu stránok záznamov pomocou fomulára',
+	'recordadmin-category' => 'Záznamy',
+	'recordadmin-select' => 'Vyberte typ záznamu, ktorý sa má hľadať',
+	'recordadmin-newsearch' => 'Nové hľadanie $1',
+	'recordadmin-newrecord' => 'Vyberte iný typ záznamu',
+	'recordadmin-submit' => 'Odoslať',
+	'recordadmin-create' => 'Nájsť alebo vytvoriť záznam „$1“',
+	'recordadmin-alreadyexist' => 'Ľutujeme, „$1“ už existuje.',
+	'recordadmin-createsuccess' => '„$1“ vytvorený',
+	'recordadmin-createerror' => 'Vyskytla sa chyba pri pokuse o vytvorenie „$1“.',
+	'recordadmin-badtitle' => 'Chybný názov!',
+	'recordadmin-recordid' => 'ID záznamu:',
+	'recordadmin-invert' => 'Invertovať výber',
+	'recordadmin-buttonsearch' => 'Hľadať',
+	'recordadmin-buttoncreate' => 'Vytvoriť',
+	'recordadmin-buttonreset' => 'Reset',
+	'recordadmin-searchresult' => 'Výsledky hľadania',
+	'recordadmin-nomatch' => 'Neboli nájdené žiadne zodpovedajúce záznamy!',
+	'recordadmin-edit' => 'Upravuje sa $1',
+	'recordadmin-typeupdated' => 'vlastnosti $1 aktualizované',
+	'recordadmin-updatesuccess' => '$1 aktualizované',
+	'recordadmin-updateerror' => 'Počas aktualizácie sa vyskytla chyba',
+	'recordadmin-buttonsave' => 'Uložiť',
+	'recordadmin-noform' => 'So záznamami „$1“ nie je asociovaný žiadny formulár!',
+	'recordadmin-createlink' => '<a href=$1>vytvoriť ho</a>',
+	'recordadmin-newcreated' => 'Nový $1 vytvorený z verejného fóra',
+	'recordadmin-summary-typecreated' => 'Nový $1 vytvorený',
+	'recordadmin-viewlink' => 'zobraziť',
+	'recordadmin-editlink' => 'upraviť',
+	'recordadmin-created' => 'Vytvorené',
+	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
+);
+

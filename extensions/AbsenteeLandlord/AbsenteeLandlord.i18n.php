@@ -63,6 +63,14 @@ $messages['bg'] = array(
 	'absenteelandlord-desc' => 'Автоматично заключва базата от данни ако всички администратори са неактивни за известен период от време',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'absenteelandlord-reason' => 'Baza podataka je automatski zaključana zbog neaktivnosti administratora.',
+	'absenteelandlord-desc' => 'Automatsko zaključavanje wiki baze podataka ako su svi administratori neaktivni neko vrijeme',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author SMP

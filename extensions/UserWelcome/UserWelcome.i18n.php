@@ -108,9 +108,11 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Revolus
  */
 $messages['de'] = array(
 	'userwelcome-desc' => 'Fügt ein <tt>&lt;welcomeUser&gt;</tt>-Tag hinzu, mit dem man benutzerspezifische soziale Informationen eingeloggten Benutzern zeigen kann',
+	'mp-welcome-logged-in' => 'Hallo $1',
 );
 
 /** Esperanto (Esperanto)
@@ -366,6 +368,7 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'mp-welcome-points' => '$1 puncte',
 	'mp-requests-title' => 'Cereri',
 	'mp-request-new-message' => 'mesaj nou',
 	'mp-request-new-award' => '$1 {{PLURAL:$1|premiu nou|premii noi}}',

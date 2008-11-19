@@ -83,6 +83,11 @@ $aliases['id'] = array(
 	'Oversight' => array( 'Pengawas revisi' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'HideRevision' => array( '版の秘匿' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'HideRevision' => array( 'Versioun verstoppen' ),

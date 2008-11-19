@@ -374,6 +374,7 @@ $messages['da'] = array(
  * @author ChrisiPK
  * @author Liam Rosen
  * @author Pill
+ * @author Revolus
  */
 $messages['de'] = array(
 	'whitelist-desc' => 'Zugriffsrechte von beschränkten Benutzern bearbeiten',
@@ -423,6 +424,7 @@ $2',
 Diese Seite gilt nur für beschränkte Bentzer.",
 	'whitelistnever' => 'niemals',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Übereinstimmung|Übereinstimmungen}}',
+	'right-editwhitelist' => 'Weiße Liste für existierende Benutzer bearbeiten',
 );
 
 /** Zazaki (Zazaki)
@@ -1009,6 +1011,8 @@ $2',
 	'whitelistnever' => 'nie',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Resultat|Resultater}}',
 	'group-restricted' => 'Limitéiert Benotzer',
+	'group-manager' => 'Manager',
+	'group-manager-member' => 'Manager',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -1490,9 +1494,12 @@ $messages['rif'] = array(
  * @author Mihai
  */
 $messages['ro'] = array(
+	'mywhitelistpages' => 'Paginile mele',
 	'whitelisttablemodifynone' => 'Nimic',
+	'whitelisttableexpires' => 'Expiră la',
 	'whitelisttableedit' => 'Modifică',
 	'whitelisttableremove' => 'Elimină',
+	'whitelistbadtitle' => 'Titlu incorect -',
 	'whitelistnever' => 'niciodată',
 );
 

@@ -62,6 +62,16 @@ $messages['bg'] = array(
 	'discussionthreading-replysection' => 'отговаряне',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'discussionthreading-replysection' => 'odgovor',
+	'discussionthreading-replysectionhint' => 'Odgovori na ovaj post',
+	'discussionthreading-threadnewsection' => 'novo',
+	'discussionthreading-threadnewsectionhint' => 'Započni novu temu',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'discussionthreading-replysection' => 'antworten',

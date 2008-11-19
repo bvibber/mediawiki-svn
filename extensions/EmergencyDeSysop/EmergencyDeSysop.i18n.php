@@ -37,6 +37,14 @@ $messages['qqq'] = array(
 	'emergencydesysop-nogroups' => '{{Identical|None}}',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'emergencydesysop-reason' => 'Kialo por forigo',
+	'emergencydesysop-nogroups' => 'Neniu',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -112,5 +120,25 @@ $messages['oc'] = array(
 	'emergencydesysop-blocked' => 'Podètz pas accedir a aquesta page tant que sètz blocat(ada)',
 	'emergencydesysop-noright' => 'Avètz pas las permissions sufisentas per accedir a aquesta pagina',
 	'right-emergencydesysop' => 'Possible de desysopar mutualament un autre utilizaire.',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'emergencydesysop' => 'Núdzové odobratie správcovských práv',
+	'emergencydesysop-desc' => 'Umožňuje správcovi obetovať vlastné práva, aby mohol odobrať práva inému',
+	'emergencydesysop-title' => 'Odobrať práva správcu aktuálneho používateľa a iného správcu zároveň',
+	'emergencydesysop-otheradmin' => 'Druhý správca',
+	'emergencydesysop-reason' => 'Dôvod odstránenia',
+	'emergencydesysop-submit' => 'Odoslať',
+	'emergencydesysop-incomplete' => 'Je potrebné vyplniť všetky polia formulára, skúste to prosím znova.',
+	'emergencydesysop-notasysop' => 'Cieľový používateľ nie je v skupine správcov.',
+	'emergencydesysop-nogroups' => 'Žiadny',
+	'emergencydesysop-done' => 'Operácia dokončená, vy aj [[$1]] ste boli zbavení správcovských práv.',
+	'emergencydesysop-invalidtarget' => 'Cieľový používateľ neexistuje.',
+	'emergencydesysop-blocked' => 'Nemáte prístup k tejto stránke, kým ste zablokovaný',
+	'emergencydesysop-noright' => 'Nemáte dostatočné oprávnenie na prístup k tejto stránke',
+	'right-emergencydesysop' => 'Dokáže odstrániť správcovské práva iného používateľa zároveň so svojimi',
 );
 

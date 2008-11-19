@@ -566,6 +566,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'deletequeue-delnom-otherreason' => 'Ostali razlozi',
+	'deletequeue-vote-submit' => 'Pošalji',
 	'deletequeue-list-search' => 'Traži',
 	'deletequeue-list-header-page' => 'Stranica',
 );
@@ -724,6 +725,7 @@ $messages['eo'] = array(
  ** Spamo
  ** Prizorgado
  ** El la projekta regiono',
+	'deletequeue-nom-alreadyqueued' => 'Ĉi tiu paĝo jam en la foriga listo.',
 	'deletequeue-speedy-title' => 'Marki "$1" por rapida forigo',
 	'deletequeue-prod-title' => 'Proponi forigon de "$1"',
 	'deletequeue-delnom-reason' => 'Kialo por kandidateco:',

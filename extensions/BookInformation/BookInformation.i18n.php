@@ -215,6 +215,14 @@ $messages['br'] = array(
 	'bookinfo-provider' => 'Pourvezer roadennoù : $1',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'bookinfo-result-title' => 'Naslov:',
+	'bookinfo-result-author' => 'Autor:',
+);
+
 /** Catalan (Català)
  * @author Aleator
  * @author SMP

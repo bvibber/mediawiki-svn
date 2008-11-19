@@ -1326,6 +1326,18 @@ $1',
 	'webstore_php_error' => 'Foram encontrados erros PHP:',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'inplace_scaler_not_enough_params' => 'Parametri insuficienţi.',
+	'webstore_path_invalid' => 'Numele fişierului a fost incorect.',
+	'webstore_invalid_response' => 'Răspuns incorect de la server:
+
+$1',
+	'webstore_no_response' => 'Nici un răspuns de la server',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

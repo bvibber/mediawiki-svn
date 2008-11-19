@@ -1360,6 +1360,7 @@ $messages['ro'] = array(
 	'regexblock-form-reason' => 'Motiv:',
 	'regexblock-already-blocked' => '$1 este deja blocat.',
 	'regexblock-stats-username' => 'Pentru $1',
+	'regexblock-view-block-temporary' => 'expiră la',
 );
 
 /** Russian (Русский)

@@ -225,6 +225,16 @@ $messages['km'] = array(
 $2',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'email_footer' => '----------------------------------------------------------------------------
+이 이메일은 {{SITENAME}}의 $1이 보낸 것입니다.
+
+$2',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

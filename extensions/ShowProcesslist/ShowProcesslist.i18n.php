@@ -80,6 +80,14 @@ $messages['bg'] = array(
 	'showprocesslist-info' => 'Информация',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'showprocesslist-user' => 'Korisnik',
+	'showprocesslist-time' => 'Vrijeme',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'showprocesslist-user' => 'Utilizatore',

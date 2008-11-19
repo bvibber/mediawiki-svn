@@ -1504,6 +1504,51 @@ $wdMessages['he'] = array(
 	'ow_Expressions' => 'ביטויים',
 	'ow_IdenticalMeaning' => 'משמעות זהה?',
 	'ow_IncomingRelations' => 'קשרים נכנסים',
+	'ow_GotoSource' => 'עבור למקור',
+	'ow_Language' => 'שפה',
+	'ow_LevelAnnotation' => 'פירוש',
+	'ow_OptionAttribute' => 'מאפיין',
+	'ow_OptionAttributeOption' => 'אפשרות',
+	'ow_OptionAttributeOptions' => 'אפשרויות',
+	'ow_OptionAttributeValues' => 'ערכי האפשרות',
+	'ow_OtherDefinedMeaning' => 'משמעויות מוגדרות אחרות',
+	'ow_PopupAnnotation' => 'פירוש',
+	'ow_Relations' => 'קשרים',
+	'ow_RelationType' => 'סוג הקשר',
+	'ow_Spelling' => 'איות',
+	'ow_Synonyms' => 'מילים נרדפות',
+	'ow_SynonymsAndTranslations' => 'מילים נרדפות ותרגומים',
+	'ow_Source' => 'מקור',
+	'ow_SourceIdentifier' => 'מזהה המקור',
+	'ow_TextAttribute' => 'מאפיין',
+	'ow_Text' => 'טקסט',
+	'ow_TextAttributeValues' => 'טקסטים פשוטים',
+	'ow_TranslatedTextAttribute' => 'מאפיין',
+	'ow_TranslatedText' => 'טקסט מתורגם',
+	'ow_TranslatedTextAttributeValue' => 'טקסט',
+	'ow_TranslatedTextAttributeValues' => 'טקסטים הניתנים לתרגום',
+	'ow_LinkAttribute' => 'מאפיין',
+	'ow_LinkAttributeValues' => 'קישורים',
+	'ow_Property' => 'מאפיין',
+	'ow_Value' => 'ערך',
+	'ow_meaningsoftitle' => 'המשמעות של "$1"',
+	'ow_meaningsofsubtitle' => '<em>קישור ויקי:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>הגישה נדחתה</h2>',
+	'ow_copy_no_action_specified' => 'אנא הגדר פעולה',
+	'ow_copy_help' => 'מתישהו, יתכן ונשיב לכם כגמולכם.',
+	'ow_please_proved_dmid' => 'נראה כאילו לקלט שלכם חסר "?dmid=<ID>" (dmid=מזהה משמעות מוגדרת)<br />
+אנא צרו קשר עם מנהל השרת.',
+	'ow_please_proved_dc1' => 'נראה כאילו לקלט שלכם חסר "?dc1=<something>" (dc1=הקשר ערכת הנתונים 1, ערכת נתונים להעתקה ממנה)<br />
+אנא צרו קשר עם מנהל השרת.',
+	'ow_please_proved_dc2' => 'נדמה כאילו לקלט שלכם חסר "?dc2=<something>" (dc1=הקשר ערכת הנתונים 2, ערכת נתונים להעתקה ממנה)
+אנא צרו קשר עם מנהל השרת.',
+	'ow_copy_successful' => '<h2>ההעתקה הושלמה</h2>
+נראה כאילו הנתונים שלכם הועתקו בהצלחה.
+אל תשכחו לבדוק שנית כדי להיות בטוחים!',
+	'ow_copy_unsuccessful' => '<h3>ההעתקה נכשלה</h3>
+לא בוצעה פעולת העתקה.',
+	'ow_no_action_specified' => '<h3>לא צויינה פעולת העתקה</h3>
+יתכן והגעתם לדף זה ישירות? בדרך כלל אינכם אמורים להגיע לכאן.',
 );
 
 /** Hindi (हिन्दी)
