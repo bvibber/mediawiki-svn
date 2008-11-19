@@ -46,10 +46,7 @@ function UW_CatBoxAtTop_Rejig ( &$out, &$text ) {
 	$catbox .= "<h5>" . wfMsgForContent( 'catboxattop-categories' ) . "</h5><ul>\n";
 	$catlinks = array();
 
-	//
-	// FIXME: outputs "Array" in the box instead of the categories (r43050)
-	//
-	if ( $wgVersion == '1.13.0' ) {
+	if ( array_key_exists( 'normal', $out->mCategoryLinks ) ) {
 		$catlinks = $out->mCategoryLinks['normal'];
 	} else {
 		$catlinks = $out->mCategoryLinks;
