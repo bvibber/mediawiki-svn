@@ -13,8 +13,8 @@ class ContributionHistory extends SpecialPage {
 		$this->lang = Language::factory( $language );
 		
 		// Get request data
-		$offset = intval( $wgRequest->getText( 'offset', 0 ) );
-		$limit = intval( $wgRequest->getText( 'limit', 50 ) );
+		$offset = $wgRequest->getIntOrNull( 'offset' );
+		$show = 50;
 		
 		wfLoadExtensionMessages( 'ContributionReporting' );
 		wfLoadExtensionMessages( 'ContributionReporting', $language );
@@ -31,31 +31,46 @@ class ContributionHistory extends SpecialPage {
 		$output .= '</style>';
 		
 		// Paging controls
-		$count = $db->selectField( 'public_reporting', 'count(*)',
-			array(
-				'received > ' . strtotime( 'July 1st 2008' )
+		$newer = $db->selectField( 'public_reporting', 'received',
+			array_merge(
+				array( 'received > ' . strtotime( 'July 1st 2008' ) ),
+				( $offset !== null ? array( 'received > ' . $offset ) : array() )
 			),
-			__METHOD__
+			__METHOD__,
+			array(
+				'ORDER BY' => 'received ASC',
+				'LIMIT' => 1,
+				'OFFSET' => $show 
+			)
 		);
-		
-		$prevOffset = max( $offset - $limit , 0 );
-		$nextOffset = min( $offset + $limit, max( $count - $limit, 0 ) );
+		$older = $db->selectField( 'public_reporting', 'received',
+			array_merge(
+				array( 'received > ' . strtotime( 'July 1st 2008' ) ),
+				( $offset !== null ? array( 'received <= ' . $offset ) : array() )
+			),
+			__METHOD__,
+			array(
+				'ORDER BY' => 'received DESC',
+				'LIMIT' => 1,
+				'OFFSET' => $show
+			)
+		);
 		
 		$title = Title::newFromText( $wgTitle->getPrefixedText() . ( $language == 'en' ? '' : '/' . $language ) );
 		
 		$pagingLinks = array();
-		if( $prevOffset < $offset ) {
+		if( $offset !== null ) {
 			$pagingLinks[] = Xml::element( 'a',
 				array(
-					'href' => $title->getFullURL( 'offset=' . $prevOffset ),
+					'href' => $title->getFullURL( 'offset=' . $newer ),
 				),
 				$this->msg( 'contrib-hist-previous' )
 			);
 		}
-		if( $nextOffset > 0 ) {
+		if( true ) {
 			$pagingLinks[] = Xml::element( 'a',
 				array(
-					'href' => $title->getFullURL( 'offset=' . $nextOffset ),
+					'href' => $title->getFullURL( 'offset=' . $older ),
 				),
 				$this->msg( 'contrib-hist-next' )
 			);
@@ -68,24 +83,38 @@ class ContributionHistory extends SpecialPage {
 		
 		$output .= '<table style="width: 100%">';
 		$output .= '<tr>';
-		$output .= '<th style="width: 200px;">' . $this->msg( 'contrib-hist-name' ) . '</th>';
-		$output .= '<th>' . $this->msg( 'contrib-hist-date' ) . '</th>';
-		$output .= '<th style="text-align: right;">' . $this->msg( 'contrib-hist-amount' ) . '</th>';
+		$output .= '<th width="60%">' . $this->msg( 'contrib-hist-name' ) . '</th>';
+		$output .= '<th width="25%">' . $this->msg( 'contrib-hist-date' ) . '</th>';
+		$output .= '<th width="15%" align="right">' . $this->msg( 'contrib-hist-amount' ) . '</th>';
 		$output .= '</tr>';
 		
+		if ( $offset == null ) {
+			$offset = $db->selectField( 'public_reporting', 'received',
+				array( 'received > ' . strtotime( 'July 1st 2008' ) ),
+				__METHOD__,
+				array(
+					'ORDER BY' => 'received DESC',
+					'LIMIT' => 1
+				)
+			);
+		}
+		
+		$url = Title::newFromText( 'Special:ContributionHistory' )->getFullURL();
+		
 		$res = $db->select( 'public_reporting', '*',
-			array(
-				'received > ' . strtotime( 'July 1st 2008' )
+			array_merge(
+				array( 'received > ' . strtotime( 'July 1st 2008' ) ),
+				( $offset !== null ? array( 'received <= ' . $offset ) : array() )
 			),
 			__METHOD__,
 			array(
 				'ORDER BY' => 'received DESC',
-				'LIMIT' => $limit,
-				'OFFSET' => $offset
+				'LIMIT' => $show
 			)
 		);
 		$alt = TRUE;
 		while ( $row = $res->fetchRow() ) {
+			$contributionId = $row['contribution_id'];
 			$name = $this->formatName( $row );
 
 			$amount = $this->formatAmount( $row );
@@ -95,9 +124,9 @@ class ContributionHistory extends SpecialPage {
 			if ( $alt ) {
 				$class = ' alt';
 			}
-
+			
 			$output .= "<tr>";
-			$output .= "<td class=\"left $class\">$name</td>";
+			$output .= "<td class=\"left $class\"><a name=\"{$contributionId}\"></a><a href=\"{$url}?offset={$offset}#{$contributionId}\">{$name}</a></td>";
 			$output .= "<td class=\"left $class\" style=\"width: 100px;\">$date</td>";
 			$output .= "<td class=\"right $class\" style=\"width: 75px;\">$amount</td>";
 			$output .= "</tr>";
