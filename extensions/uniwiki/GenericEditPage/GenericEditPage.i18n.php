@@ -10,7 +10,7 @@ $messages = array();
 
 /** English */
 $messages['en'] = array(
-	'gep-desc' => 'Suppliments the edit page to be more user friendly',
+	'gep-desc' => 'Supplements the edit page to be more user friendly',
 	'gep-emailsubject' => '[$1] Category suggestion: $2',
 	'gep-emailbody' => 'User "$1" suggested category "$2" for site "$3".',
 	'gep-emailfailure' => 'Sorry, your suggestion could not be processed.',
@@ -27,7 +27,7 @@ $messages['en'] = array(
 	'gep-classicmode' => 'Classic mode',
 	'gep-genericmode' => 'Generic mode',
 	'gep-nosectioninstructions' => 'There are no sections on this page.
-Add some using the tools on the right.',
+Add some using the tools on the right.', // on the right? How does that work in RTL UIs?
 	'gep-nocategories' => 'Please select at least one category before saving',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );

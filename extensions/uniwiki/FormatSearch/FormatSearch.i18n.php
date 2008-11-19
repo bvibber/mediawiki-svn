@@ -10,5 +10,5 @@ $messages = array();
 
 /** English */
 $messages['en'] = array(
-	'formatsearch-desc' => 'Changes to clean up the search results page',
+	'formatsearch-desc' => 'Cleans up the search results page',
 );

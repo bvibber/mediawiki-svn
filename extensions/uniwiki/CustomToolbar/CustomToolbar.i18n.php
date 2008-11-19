@@ -18,18 +18,18 @@ $wgCustomToolbarMessages['en'] = array(
 	'ct_internal_sample'   => "PageName",
 	'ct_internal_tip_ins'  => "Insert an internal link",
 	'ct_internal_tip_wrap' => "Make this text an internal link",
-	'ct_internal_caption'  => "Internal Link",
+	'ct_internal_caption'  => "Internal link",
 
 	'ct_external_sample'   => "http://example.com",
 	'ct_external_tip_ins'  => "Insert an external link",
 	'ct_external_tip_wrap' => "Make this text an external link",
-	'ct_external_caption'  => "External Link",
+	'ct_external_caption'  => "External link",
 
 	'ct_image_tip'     => "Insert an image",
-	'ct_image_caption' => "Add Image",
+	'ct_image_caption' => "Add image",
 
 	'ct_attachment_tip'     => "Insert an attachment",
-	'ct_attachment_caption' => "Add Attachment",
+	'ct_attachment_caption' => "Add attachment",
 
 	'ct_math_sample'   => "Insert LaTeX formula here",
 	'ct_math_tip_ins'  => "Insert mathematical formula (LaTeX)",
@@ -39,10 +39,10 @@ $wgCustomToolbarMessages['en'] = array(
 	'ct_nowiki_sample'   => "Insert non-formatted text here",
 	'ct_nowiki_tip_ins'  => "Ignore wiki formatting",
 	'ct_nowiki_tip_wrap' => "Ignore wiki formattting for this text",
-	'ct_nowiki_caption'  => "No Wiki",
+	'ct_nowiki_caption'  => "No wiki",
 
 	'ct_horizontal_tip'      => "Insert a horizontal line (use sparingly)",
-	'ct_horizontal_caption'  => "Horizontal Line",
+	'ct_horizontal_caption'  => "Horizontal line",
 
 	'ct_upload'  => "Upload $1",
 	'ct_select'  => "Select $1 to upload",
@@ -51,11 +51,12 @@ $wgCustomToolbarMessages['en'] = array(
 	'ct_submit'  => "Go!",
 	'ct_close'   => "Close window",
 	'ct_success' => "File upload successful!",
-	'ct_popupblocked'   => "The upload popup was prevented from opening. Please check your popup blocker.",
+	'ct_popupblocked'   => "The upload popup was prevented from opening.
+Please check your popup blocker.",
 
 	'ct_user_user' => "User",
 	'ct_user_tip' => "Insert a link to a user page",
-	'ct_user_caption' => "User Link",
+	'ct_user_caption' => "User link",
 	'ct_user_sample' => "Username"
 );
 

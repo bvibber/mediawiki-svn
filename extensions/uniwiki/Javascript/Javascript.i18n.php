@@ -10,5 +10,5 @@ $messages = array();
 
 /** English */
 $messages['en'] = array(
-	'javascript-desc' => 'Adds uniwiki.js to each page containing Javascript code shared between Uniwiki extensions',
+	'javascript-desc' => 'Adds uniwiki.js to each page containing JavaScript code shared between Uniwiki extensions',
 );
