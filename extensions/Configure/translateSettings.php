@@ -5,7 +5,7 @@
  *
  * @file
  * @ingroup Extensions
- * @author Alexandre Emsenhuber
+ * @author Andrew Garrett
  * @license GPLv2 or higher
  */
 
