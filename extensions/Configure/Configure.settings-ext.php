@@ -80,6 +80,7 @@ $extensions = array(
 	array(
 		'name' => 'APC',
 		'file' => 'ViewAPC.php',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:APC',
 	),
 	array(
 		'name' => 'Asksql',
@@ -999,6 +1000,7 @@ $extensions = array(
 		'array' => array(
 			'wgUserMergeProtectedGroups' => 'simple',
 		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:User_Merge_and_Delete',
 	),
 	array(
 		'name' => 'UsernameBlacklist',
