@@ -188,11 +188,22 @@ abstract class ConfigurationDiff {
 	 * @return String: XHTML
 	 */
 	function processDiffSetting( $name, $old, $new, $type ) {
+		wfLoadExtensionMessages( 'ConfigureSettings' );
+
+		$msg =  'configure-setting-' . $name;
+		$msgVal = wfMsgExt( $msg, array( 'parseinline' ) );
+		$rawVal = Xml::element( 'tt', null, "\$$name" );
+		if ( wfEmptyMsg( $msg, $msgVal ) )
+			$msgVal = $rawVal;
+		else
+			$msgVal = "$msgVal ($rawVal)";
+
 		$oldSet = $this->getSettingAsArray( $old, $name, $type );
 		$newSet = $this->getSettingAsArray( $new, $name, $type );
 		$diffs = new Diff( $oldSet, $newSet );
 		$formatter = new TableDiffFormatter();
-		return "<tr><td class=\"diff-lineno configure-setting\" colspan=\"4\">\${$name}</td></tr>\n" .
+
+		return "<tr><td class=\"diff-lineno configure-setting\" colspan=\"4\">{$msgVal}</td></tr>\n" .
 			$formatter->format( $diffs );
 	}
 

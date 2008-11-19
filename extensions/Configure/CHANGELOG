@@ -2,7 +2,8 @@ This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
 0.10.1 - 19 November 2008
-  Added links for APC and User Merge extensions.
+  * Added links for APC and User Merge extensions.
+  * Settings descriptions are now also shown on differences.
 
 0.10.0 - 15 November 2008
   * Added $wgConfigureFileSystemCache to allow file-system cache (only with
