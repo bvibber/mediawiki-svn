@@ -27,6 +27,12 @@ $aliases['arz'] = array(
 	'CreateSignDocument' => array( 'إنشاء_توقيع_الوثيقة' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'SignDocument' => array( 'Dokument signieren' ),
+	'CreateSignDocument' => array( 'Signiertes Dokument erstellen' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'SignDocument' => array( 'Dokument ënnerschreiwen' ),

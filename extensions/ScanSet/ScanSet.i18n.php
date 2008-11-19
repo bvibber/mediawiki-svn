@@ -789,6 +789,14 @@ $messages['pt'] = array(
 	'scanset_prev' => '&lt; Anterior',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'scanset_next' => 'Prossime &gt;',
+	'scanset_prev' => '&lt; Precedende',
+);
+
 /** Russian (Русский)
  * @author HalanTul
  * @author Александр Сигачёв

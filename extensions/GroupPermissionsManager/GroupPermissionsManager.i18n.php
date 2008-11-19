@@ -597,9 +597,12 @@ $messages['gl'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'grouppermissions-dologin' => 'Συνδεῖσθαι',
+	'grouppermissions-dosearch' => 'Ἱέναι',
 	'grouppermissions-comment' => 'Σχόλιον:',
 	'grouppermissions-never' => 'Οὔποτε',
 );

@@ -256,10 +256,16 @@ Un tamm pasianted mar plij.',
  */
 $messages['bs'] = array(
 	'youtubeauthsub' => 'Postavi video na YouTube',
+	'youtubeauthsub-desc' => 'Omogućava korisnicima da [[Special:YouTubeAuthSub|postavljaju video snimke]] direktno na YouTube',
 	'youtubeauthsub_title' => 'Naslov',
 	'youtubeauthsub_description' => 'Opis',
+	'youtubeauthsub_password' => 'Šifra za YouTube',
+	'youtubeauthsub_username' => 'Korisničko ime na YouTube',
+	'youtubeauthsub_keywords' => 'Ključne riječi',
 	'youtubeauthsub_category' => 'Kategorija',
 	'youtubeauthsub_submit' => 'Pošalji',
+	'youtubeauthsub_clickhere' => 'Kliknite ovdje za prijavu na YouTube',
+	'youtubeauthsub_uploadhere' => 'Postavite Vaš video odavde:',
 	'youtubeauthsub_uploadbutton' => 'Postavi',
 );
 
@@ -372,6 +378,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'youtubeauthsub' => 'Alŝuti YouTube Videon',
+	'youtubeauthsub-desc' => 'Permesas al uzantoj [[Special:YouTubeAuthSub|alŝuti videojn]] rekte al YouTube',
 	'youtubeauthsub_info' => 'Por alŝuti videon al YouTube inkluzivi en paĝo, plenumi la jenan informon:',
 	'youtubeauthsub_title' => 'Titolo',
 	'youtubeauthsub_description' => 'Priskribo',
@@ -492,6 +499,13 @@ Por favor, sexa paciente.',
 	'youtubeauthsub_jserror_nokeywords' => 'Por favor, insira 1 ou máis palabras clave.',
 	'youtubeauthsub_jserror_notitle' => 'Por favor, insira un título para o vídeo.',
 	'youtubeauthsub_jserror_nodesc' => 'Por favor, insira unha descrición para o vídeo.',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'youtubeauthsub_category' => 'Κατηγορία',
 );
 
 /** Hawaiian (Hawai`i)
@@ -1364,6 +1378,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ahonc
  * @author Innv
  * @author Александр Сигачёв
  */
@@ -1382,10 +1397,10 @@ $messages['ru'] = array(
 	'youtubeauthsub_tokenerror' => 'ошибка создания токена авторизации, попробуйте обновить страницу.',
 	'youtubeauthsub_success' => "Поздравляем!
 Ваше видео загружено.
-Чтобы просмотреть ваше видео нажмите <a href='http://www.youtube.com/watch?v=$1'>здесь</a>.
+Чтобы просмотреть ваше видео, нажмите <a href='http://www.youtube.com/watch?v=$1'>здесь</a>.
 YouTube, возможно, будет некоторое время обрабатывать ваше видео, поэтому оно может быть недоступно прямо сейчас.
 
-Чтобы добавить ваше видео на вики-стреницу, вставьте на страницу следующий код:
+Чтобы добавить ваше видео на вики-страницу, вставьте на страницу следующий код:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Чтобы загрузить видео, вам необходимо сначала зайти/зарегистрироваться в YouTube.',
 	'youtubeauthsub_uploadhere' => 'Загрузить ваше видео отсюда:',
@@ -1398,7 +1413,7 @@ YouTube, возможно, будет некоторое время обраба
 Пожалуйста, подождите.',
 	'youtubeauthsub_viewpage' => 'Вы также можете просмотреть видео [[$1|здесь]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Пожалуйста, введите одно или несколько ключевых слов.',
-	'youtubeauthsub_jserror_notitle' => 'Пожалуйста, введите заголовок видео.',
+	'youtubeauthsub_jserror_notitle' => 'Пожалуйста, введите название видео.',
 	'youtubeauthsub_jserror_nodesc' => 'Пожалуйста, введите описание видео.',
 );
 
@@ -1636,9 +1651,41 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Ahonc
  */
 $messages['uk'] = array(
+	'youtubeauthsub' => 'Завантаження відео YouTube',
+	'youtubeauthsub-desc' => 'Дозволяє користувачам [[Special:YouTubeAuthSub|завантажувати відео]] напряму до YouTube',
+	'youtubeauthsub_info' => 'Щоб завантажити відео на YouTube і вставити його на сторінку, заповніть такі поля:',
 	'youtubeauthsub_title' => 'Заголовок',
+	'youtubeauthsub_description' => 'Опис',
+	'youtubeauthsub_password' => 'Пароль на YouTube',
+	'youtubeauthsub_username' => "Ім'я користувача на YouTube",
+	'youtubeauthsub_keywords' => 'Ключові слова',
+	'youtubeauthsub_category' => 'Категорія',
+	'youtubeauthsub_submit' => 'Надіслати',
+	'youtubeauthsub_clickhere' => 'Клацніть сюди, щоб увійти до YouTube',
+	'youtubeauthsub_tokenerror' => 'Помилка створення токена авторизації, спробуйте оновити сторінку.',
+	'youtubeauthsub_success' => "Вітаємо!
+Ваше відео завантажене.
+Щоб переглянути ваше відео, натисніть <a href='http://www.youtube.com/watch?v=$1'>тут</a>.
+YouTube може знадобитися деякий час, щоб обробити ваше відео, тому воно може бути недоступним прямо зараз.
+
+Щоб додати відео на вашу вікі-сторінку, вставте такий код на сторінку:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Щоб завантажити відео, вам потрібно спочатку авторизуватися/зареєструватися в YouTube.',
+	'youtubeauthsub_uploadhere' => 'Завантажити ваше відео звідси:',
+	'youtubeauthsub_uploadbutton' => 'Завантажити',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Це відео можна переглянути [http://www.youtube.com/watch?v=$1 тут]',
+	'youtubeauthsub_summary' => 'Завантаження відео YouTube',
+	'youtubeauthsub_uploading' => 'Ваше відео завантажується.
+Будь ласка, зачекайте.',
+	'youtubeauthsub_viewpage' => 'Ви також можете переглянути ваше відео [[$1|тут]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Будь ласка, введіть хоча б одне ключове слово.',
+	'youtubeauthsub_jserror_notitle' => 'Будь ласка, введіть назву відео.',
+	'youtubeauthsub_jserror_nodesc' => 'Будь ласка, введіть опис відео.',
 );
 
 /** Vèneto (Vèneto)

@@ -501,9 +501,11 @@ $messages['gl'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'bookinfo-result-author' => 'Δημιουργός:',
 	'bookinfo-result-publisher' => 'Ἐκδότης:',
 );
 

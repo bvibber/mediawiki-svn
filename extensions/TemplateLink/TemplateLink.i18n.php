@@ -138,6 +138,7 @@ $messages['he'] = array(
 	'templatelink' => 'קישור לתבנית',
 	'templatelink_desc' => 'הרחבה זו יכולה להציג תבנית כדף חדש',
 	'templatelink_empty' => 'עליכם לספק פרמטר',
+	'templatelink_newtitle' => '$1 (מוכלל)',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

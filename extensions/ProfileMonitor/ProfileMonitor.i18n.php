@@ -155,6 +155,13 @@ $messages['gl'] = array(
 	'profiling-no-data' => 'Non coinciden os datos atopados.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'profiling-ok' => 'εἶεν',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

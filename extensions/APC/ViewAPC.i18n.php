@@ -1199,12 +1199,18 @@ A nova versión $2 está dispoñible en http://pecl.php.net/package/APC/$2',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'viewapc-display-value' => 'Τιμή',
 	'viewapc-display-device' => 'Σκεῦος',
+	'viewapc-display-info' => 'Ὄνομα',
+	'viewapc-display-type' => 'Τύπος',
 	'viewapc-display-mtime' => 'Τετροποποιημένη',
+	'viewapc-ls-submit' => 'Ἱέναι!',
+	'viewapc-ls-header-name' => 'Ὄνομα',
+	'viewapc-ls-sort-name' => 'Ὄνομα',
 );
 
 /** Hawaiian (Hawai`i)

@@ -702,8 +702,11 @@ Hai moitos [http://wiki.openid.net/Public_OpenID_providers proveedores públicos
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'openidoptional' => 'Προαιρετικόν',
 	'openidnickname' => 'Ψευδώνυμον',
+	'openidemail' => 'Ἡλεκτρονικὴ διεύθυνσις',
 	'openidlanguage' => 'Γλῶττα',
+	'openidchoosepassword' => 'σύνθημα:',
 );
 
 /** Manx (Gaelg)

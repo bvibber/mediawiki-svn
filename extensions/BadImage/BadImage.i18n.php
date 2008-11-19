@@ -654,10 +654,12 @@ $messages['got'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'badimages-add-btn' => 'Προστιθέναι',
+	'badimages-name' => 'Ὄνομα:',
 	'badimages-reason' => 'Αἰτία:',
 );
 

@@ -29,6 +29,11 @@ $aliases['bs'] = array(
 	'ShowProcesslist' => array( 'PrikazSpiskaProcesa' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'ShowProcesslist' => array( 'Prozessliste anzeigen' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ShowProcesslist' => array( 'Prosessilistaus' ),

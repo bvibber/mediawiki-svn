@@ -73,6 +73,13 @@ $messages['gl'] = array(
 	'emergencydesysop-nogroups' => 'Ningún',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'emergencydesysop-nogroups' => 'Οὐδέν',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

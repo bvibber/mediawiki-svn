@@ -40,6 +40,13 @@ $aliases['bs'] = array(
 	'SortPermissions' => array( 'PoredajDopustenja' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'GroupPermissions' => array( 'Gruppenrechte' ),
+	'RemoveUnusedGroups' => array( 'Unbenutze Gruppen entfernen' ),
+	'SortPermissions' => array( 'Rechte sortieren' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'GroupPermissions' => array( 'Permission des groupes' ),

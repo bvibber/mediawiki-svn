@@ -937,8 +937,12 @@ $messages['bn'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'mv_duration_label' => 'Trajanje',
+	'mv_media_path' => 'putanja medije',
 	'mv_tool_search' => 'Traži',
 	'mv_tool_export' => 'Izvezi',
+	'mv_click_to_edit' => 'kliknite za uređivanje',
+	'category-media-count' => '$1 medijalnih segmenata u kategoriji',
 	'mv_edit' => 'Uredi',
 	'mv_history' => 'Historija',
 	'mv_remove' => 'ukloni',
@@ -1600,16 +1604,19 @@ $messages['got'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'mv_duration_label' => 'Διάρκεια',
+	'mv_upload_file' => 'Ἐπιφορτίζειν ἀρχεῖον',
 	'mv_tool_embed' => 'Ἐμβαπτίζειν',
 	'mv_search_categories' => 'Κατηγορίαι',
 	'mv_search_category' => 'Κατηγορία',
 	'mv_search_and' => 'καὶ',
 	'mv_search_or' => 'ἢ',
 	'mv_search_not' => 'οὐ',
+	'mv_category' => 'κατηγορία',
 );
 
 /** Manx (Gaelg)

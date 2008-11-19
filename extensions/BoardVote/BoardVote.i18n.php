@@ -2240,6 +2240,7 @@ Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen as
 $messages['grc'] = array(
 	'boardvote_time' => 'Χρόνος',
 	'boardvote_user' => 'Χρώμενος',
+	'boardvote_submit' => 'εἶεν',
 );
 
 /** Manx (Gaelg)
@@ -5006,6 +5007,7 @@ $messages['roa-tara'] = array(
 	'boardvote_days' => 'Sciurne',
 	'boardvote_dumplink' => 'Cazze aqquà',
 	'boardvote_submit' => 'OK',
+	'boardvote_edits_many' => 'assaje',
 );
 
 /** Russian (Русский)

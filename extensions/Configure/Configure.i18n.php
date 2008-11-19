@@ -1206,12 +1206,15 @@ Por favor, créeo ou tróqueo para usar esta extensión.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'configure-desc-ns' => 'Ὀνοματεῖα',
 	'configure-desc-val' => 'Τιμή',
 	'configure-js-remove' => 'Διαγράφειν',
+	'configure-section-email' => 'Ἠλεκτρονικαὶ ἐπιστολαί',
+	'configure-section-category' => 'Κατηγορίαι',
 	'configure-section-users' => 'Χρώμενοι',
 	'configure-section-misc' => 'Λοιπά',
 	'configure-section-mw-extensions' => 'Ἐπεκτάσεις MediaWiki',

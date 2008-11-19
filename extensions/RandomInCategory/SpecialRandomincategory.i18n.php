@@ -204,6 +204,14 @@ $messages['gl'] = array(
 	'randomincategory-submit' => 'Adiante',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'randomincategory-label' => 'Κατηγορία:',
+	'randomincategory-submit' => 'Ἱέναι',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

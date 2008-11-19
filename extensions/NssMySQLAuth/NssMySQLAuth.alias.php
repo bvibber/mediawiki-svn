@@ -27,6 +27,11 @@ $aliases['bs'] = array(
 	'AccountManager' => array( 'UpravljanjeRacunima' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'AccountManager' => array( 'Account-Manager' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'AccountManager' => array( 'Gebruikersbeheer' ),

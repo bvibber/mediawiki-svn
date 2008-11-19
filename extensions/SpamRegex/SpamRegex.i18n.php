@@ -155,6 +155,7 @@ $messages['bg'] = array(
 	'spamregex-desc' => '[[Special:SpamRegex|Филтриране]] на нежелани фрази в редактираните страници с помощта на регулярни изрази',
 	'spamregex-summary' => 'Текстът е намерен в резюмето на страницата.',
 	'spamregex-currently-blocked' => "'''Текущо блокирани фрази:'''",
+	'spamregex-move' => 'Въведената причина съдържа блокирана фраза.',
 	'spamregex-no-currently-blocked' => "'''Няма блокирани фрази.'''",
 	'spamregex-log-2' => ' на $1',
 	'spamregex-page-title-1' => 'Блокиране на фрази чрез регулярни изрази',
@@ -339,6 +340,42 @@ Teña en conta que as expresións non deberían ser moi curtas ou moi comúns.',
 	'spamregex-block-submit' => 'Bloquear&nbsp;esta&nbsp;frase',
 	'spamregex-text' => '(Texto)',
 	'spamregex-summary-log' => '(Resumo)',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'spamregex' => 'ביטוי רגולרי לספאם',
+	'spamregex-desc' => '[[Special:SpamRegex|סינון]] מונחים בלתי רצויים בדפים שנערכים, בהתבסס על ביטויים רגולריים',
+	'spamregex-error-unblocking' => 'שגיאה בביטול חסימת "$1". ייתכן שלא קיימת תבנית כזו.',
+	'spamregex-summary' => 'הטקסט נמצא בתקציר הדף.',
+	'spamregex-intro' => 'השתמשו בטופס זה כדי לחסום באופן יעיל את אפשרות השמירה של ביטויים מסוימים לטקסט הדף.
+אם הטקסט מכיל את הביטוי הנתון, השינוי לא יישמר, ובמקום זאת יופיע הסבר למשתמש שניסה לשמור את הדף.
+שימו לב, מומלץ להימנע מביטויים קצרים מדי או נפוצים מדי.',
+	'spamregex-page-title' => 'חסימת ביטויי ספאם בלתי רצויים',
+	'spamregex-currently-blocked' => "'''מונחים הנחסמים נכון לעכשיו:'''",
+	'spamregex-move' => 'הסיבה שכתבתם מכילה מונח שנחסם.',
+	'spamregex-no-currently-blocked' => "'''אין מונחים חסומים.'''",
+	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 הסרה]) נוספה על ידי",
+	'spamregex-log-2' => 'ב־$1',
+	'spamregex-page-title-1' => 'חסימת ביטוי באמצעות ביטויים רגולריים',
+	'spamregex-unblock-success' => 'הסרת החסימה הושלמה בהצלחה',
+	'spamregex-unblock-message' => "הוסרה חסימת המונח '''$1''' מעריכה.",
+	'spamregex-page-title-2' => 'חסימת מונחים משמירה באמצעות שימוש בביטויים רגולריים',
+	'spamregex-block-success' => 'החסימה הושלמה בהצלחה',
+	'spamregex-block-message' => "המונח '''$1''' נחסם.",
+	'spamregex-warning-1' => 'הקלידו מונח לחסימה.',
+	'spamregex-error-1' => 'הביטוי הרגולרי אינו תקין.',
+	'spamregex-warning-2' => 'אנא סמנו לפחות מצב חסימה אחד.',
+	'spamregex-already-blocked' => '"$1" כבר נחסם',
+	'spamregex-phrase-block' => 'מונח לחסימה:',
+	'spamregex-phrase-block-text' => 'חסימת המונח בטקסט שבדף',
+	'spamregex-phrase-block-summary' => 'חסימת המונח בתקציר',
+	'spamregex-block-submit' => 'חסימת&nbsp;מונח&nbsp;זה',
+	'spamregex-text' => '(טקסט)',
+	'spamregex-summary-log' => '(תקציר)',
 );
 
 /** Hindi (हिन्दी)

@@ -27,6 +27,11 @@ $aliases['bs'] = array(
 	'SharedUserRights' => array( 'DijeljenaKorisnickaPrava' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'SharedUserRights' => array( 'Geteilte Benutzerrechte' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'SharedUserRights' => array( 'GedeeldeGebruikersrechten' ),

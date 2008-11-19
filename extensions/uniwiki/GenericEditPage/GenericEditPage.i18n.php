@@ -32,6 +32,40 @@ Add some using the tools on the right.', // on the right? How does that work in 
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'gep-categories' => 'تصانيف',
+	'gep-addcategory' => 'ضيف تصنيف',
+	'gep-addcategorybutton' => 'ضيف',
+	'gep-suggestcategory' => 'اقترح تصنيف',
+	'gep-addsectionbutton' => 'ضيف',
+);
+
+/** German (Deutsch) */
+$messages['de'] = array(
+	'gep-emailsubject' => '[$1] Vorschlag Kategorie: $2',
+	'gep-emailbody' => 'Benutzer „$1“ hat die Kategorie „$2“ für die Seite „$3“ ausgewählt.',
+	'gep-emailfailure' => 'Leider konnte dein Vorschlag nicht verarbeitet werden.',
+	'gep-emailsuccess' => 'Danke für den Vorschlag der Kategorie: $1.',
+	'gep-categories' => 'Kategorien',
+	'gep-addcategory' => 'Eine Kategorie einfügen',
+	'gep-addcategorybutton' => 'Einfügen',
+	'gep-suggestcategory' => 'Eine Kategorie vorschlagen',
+	'gep-suggestcategorybutton' => 'Senden',
+	'gep-sections' => 'Abschnitte',
+	'gep-sectionnotdisabled' => 'Dieser Abschnitt kann nicht aufgehoben werden',
+	'gep-addsection' => 'Einen Abschnitt einfügen',
+	'gep-addsectionbutton' => 'Einfügen',
+	'gep-classicmode' => 'Normaler Modus',
+	'gep-genericmode' => 'Genereller Modus',
+	'gep-nosectioninstructions' => 'Diese Seite hat keine Abschnitte.
+Gib ein paar ein mit den Werkzeugen an der rechten Seite.',
+	'gep-nocategories' => 'Bitte vor dem Abspeichern mindestens eine Kategorie aussuchen',
+);
+
+/** Spanish (Español) */
 $messages['es'] = array(
 	'gep-emailsubject' => 'Sugerencia de categoría de [$1]: $2',
 	'gep-emailbody' => 'El usuario "$1" sugirió la categoría "$2" para el sitio "$3".',
@@ -53,27 +87,90 @@ Agrega algunas secciones utilizando las herramientas a la derecha.',
 	'gep-nocategories' => 'Selecciona por lo menos una categoría antes de guardar',
 );
 
-$messages['de'] = array(
-	'gep-emailsubject' => '[$1] Vorschlag Kategorie: $2',
-	'gep-emailbody' => 'User "$1" hat die Kategorie "$2" für die Seite "$3". ausgewählt',
-	'gep-emailfailure' => 'Leider, konnte Deine Änderung nicht verarbeitet werden.',
-	'gep-emailsuccess' => 'Danke für den Vorschlag der Kategorie: $1.',
-	'gep-categories' => 'Kategorien',
-	'gep-addcategory' => 'Eine Kategorie einfügen',
-	'gep-addcategorybutton' => 'Einfügen',
-	'gep-suggestcategory' => 'Eine Kategorie vorschlagen',
-	'gep-suggestcategorybutton' => 'Senden',
-	'gep-sections' => 'Abschnitte',
-	'gep-sectionnotdisabled' => 'Dieser Abschnitt kann nicht aufgehoben werden',
-	'gep-addsection' => 'Einen Abschnitt einfügen',
-	'gep-addsectionbutton' => 'Einfügen',
-	'gep-classicmode' => 'Normaler Modus',
-	'gep-genericmode' => 'Genereller Modus',
-	'gep-nosectioninstructions' => 'Diese Seite hat keine Abschnitte.
-Gib ein paar ein mit den Werkzeugen an der rechten Seite.',
-	'gep-nocategories' => 'Bitte vor Abspeichern, mindestens eine Kategorie aussuchen',
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'gep-desc' => 'Suppléante le formulaire de modification pour être plus facile à utiliser',
+	'gep-emailsubject' => '[$1] Suggestion de catégorie : $2',
+	'gep-emailbody' => "L'utilisateur « $1 » a suggéré la catégorie « $2 » pour le site « $3 ».",
+	'gep-emailfailure' => "Désolé, votre suggestion n'a pas pu être effectuée.",
+	'gep-emailsuccess' => 'Merci pour avoir suggéré la catégorie : $1.',
+	'gep-categories' => 'Catégories',
+	'gep-addcategory' => 'Ajouter une catégorie',
+	'gep-addcategorybutton' => 'Ajouter',
+	'gep-suggestcategory' => 'Suggérer une catégorie',
+	'gep-suggestcategorybutton' => 'Soumettre',
+	'gep-sections' => 'Sections',
+	'gep-sectionnotdisabled' => 'Cette section ne peut pas être désactivée',
+	'gep-addsection' => 'Ajouter une section',
+	'gep-addsectionbutton' => 'Ajouter',
+	'gep-classicmode' => 'Mode classique',
+	'gep-genericmode' => 'Mode générique',
+	'gep-nosectioninstructions' => "Il n'y a aucune section dans cette page.
+Ajoutez-en en utilisant l'outil sur la droite.",
+	'gep-nocategories' => 'Choisissez au moins une catégorie avant de sauvegarder la page',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'gep-emailsuccess' => 'Grazas por suxerir a categoría: $1.',
+	'gep-categories' => 'Categorías',
+	'gep-addcategory' => 'Engadir unha categoría',
+	'gep-addcategorybutton' => 'Engadir',
+	'gep-suggestcategory' => 'Suxerir unha categoría',
+	'gep-suggestcategorybutton' => 'Enviar',
+	'gep-sections' => 'Seccións',
+	'gep-sectionnotdisabled' => 'Esta sección non pode ser deshabilitada',
+	'gep-addsection' => 'Engadir unha sección',
+	'gep-addsectionbutton' => 'Engadir',
+	'gep-classicmode' => 'Modo clásico',
+	'gep-genericmode' => 'Modo xenérico',
+	'gep-nosectioninstructions' => 'Non hai seccións nesta páxina.
+Engada algunha usando as ferramentas da dereita.',
+	'gep-nocategories' => 'Por favor, seleccione, polo menos, unha categoría antes de gardar',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'gep-addcategory' => 'Nambahaké kategori',
+	'gep-addcategorybutton' => 'Tambahaké',
+	'gep-suggestcategorybutton' => 'Kirim',
+	'gep-addsectionbutton' => 'Tambahaké',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'gep-desc' => 'Maakt de bewerkingspagina gebruikersvriendelijker',
+	'gep-emailsubject' => '[$1] Categoriesuggestie: $2',
+	'gep-emailbody' => 'Gebruiker "$1" heeft de categoriesuggestie "$2" gemaakt voor site "$3".',
+	'gep-emailfailure' => 'Uw suggestie kon niet verwerkt worden.',
+	'gep-emailsuccess' => 'Dank uw wel voor de categoriesuggestie $1.',
+	'gep-categories' => 'Categorieën',
+	'gep-addcategory' => 'Categorie toevoegen',
+	'gep-addcategorybutton' => 'Toevoegen',
+	'gep-suggestcategory' => 'Categoriesuggestie maken',
+	'gep-suggestcategorybutton' => 'OK',
+	'gep-sections' => 'Kopjes',
+	'gep-sectionnotdisabled' => 'Dit kopje kan niet uitgeschakeld worden',
+	'gep-addsection' => 'Kopje toevoegen',
+	'gep-addsectionbutton' => 'Toevoegen',
+	'gep-classicmode' => 'Klassieke modus',
+	'gep-genericmode' => 'Algemene modus',
+	'gep-nosectioninstructions' => 'Er staan geen kopjes op deze pagina.
+Gebruik de hulpmiddelen aan de rechterkant om er een toe te voegen.',
+	'gep-nocategories' => 'Selecteer tenminste één categorie voordat u de pagina opslaat',
+	'gep-categorypage' => 'MediaWiki:Editpagelabels',
+);
+
+/** Brazilian Portuguese (Português do Brasil) */
 $messages['pt-br'] = array(
 	'gep-emailsubject' => 'Sugestão de categoria de [$1] : $2',
 	'gep-emailbody' => 'O usuário "$1" sugeriu a categoria "$2" para o site "$3".',
@@ -94,3 +191,4 @@ $messages['pt-br'] = array(
 Use as ferramentas à direita para incluir algumas seções.',
 	'gep-nocategories' => 'Selecione, no mínimo, uma categoria antes de salvar',
 );
+

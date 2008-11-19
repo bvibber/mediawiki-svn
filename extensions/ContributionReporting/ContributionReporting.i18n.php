@@ -455,6 +455,19 @@ $messages['gl'] = array(
 	'contribstats-max' => 'Máximo (dólar estadounidense)',
 	'contribstats-percentage-ytd' => 'Porcentaxe (ata hoxe)',
 	'contribstats-total-ytd' => 'Total (ata hoxe)',
+	'fundraiserstatistics' => 'Estatísticas da recadación',
+	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-total' => 'Total (dólar estadounidense)',
+	'fundraiserstats-avg' => 'Promedio (dólar estadounidense)',
+	'fundraiserstats-min' => 'Mínimo (dólar estadounidense)',
+	'fundraiserstats-max' => 'Máximo (dólar estadounidense)',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'contrib-hist-name' => 'Ὄνομα',
 );
 
 /** Hebrew (עברית)

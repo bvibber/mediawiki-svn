@@ -561,6 +561,14 @@ $messages['gl'] = array(
 	'changeauthor-rev' => 'r$1',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'changeauthor-pagenameform-go' => 'Ἱέναι',
+	'changeauthor-comment' => 'Σχόλιον:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

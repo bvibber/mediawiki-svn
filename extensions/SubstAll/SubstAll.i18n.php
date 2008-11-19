@@ -38,6 +38,13 @@ $messages['arz'] = array(
 	'substall-hook' => 'نسخ_الكل',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'substall-desc' => 'Създава етикет <nowiki><substall></nowiki> за преобразуване на всички шаблони в уикисинтаксис',
+);
+
 /** German (Deutsch)
  * @author Revolus
  */

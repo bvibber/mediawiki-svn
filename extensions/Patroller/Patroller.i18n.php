@@ -350,6 +350,13 @@ $messages['got'] = array(
 	'patrol-revert-reason' => 'Faírina',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'patrol-revert-reason' => 'Αἰτία:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -437,6 +444,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'patrol' => 'Szerkesztések járőrözése',
@@ -458,8 +466,8 @@ $messages['hu'] = array(
 	'patrol-stopped' => 'Nem jelölted be, hogy szeretnél további szerkesztést járőrözni. $1',
 	'patrol-resume' => 'Kattints ide a folytatáshoz.',
 	'group-patroller' => 'járőrök',
-	'group-patroller-member' => 'Járőr',
-	'grouppage-patroller' => '{{ns:project}}:Járőr',
+	'group-patroller-member' => 'FV-járőr',
+	'grouppage-patroller' => '{{ns:project}}:FV-járőr',
 );
 
 /** Interlingua (Interlingua)

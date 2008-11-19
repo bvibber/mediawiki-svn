@@ -60,157 +60,213 @@ Please check your popup blocker.",
 	'ct_user_sample' => "Username"
 );
 
-$wgCustomToolbarMessages['es'] = array(
-	'ct_bold_sample'   => "Texto en negrita",
-	'ct_bold_tip_ins'  => "Insertar texto en negrita",
-	'ct_bold_tip_wrap' => "Convertir este texto en negrita ",
-	'ct_bold_caption'  => "Negrita",
-
-	'ct_italic_sample'   => "Texto en cursiva",
-	'ct_italic_tip_ins'  => "Insertar texto en cursiva",
-	'ct_italic_tip_wrap' => "Convertir este texto en cursiva ",
-	'ct_italic_caption'  => "Cursiva",
-
-	'ct_internal_sample'   => "Título del enlace",
-	'ct_internal_tip_ins'  => "Insertar un enlace interno",
-	'ct_internal_tip_wrap' => "Convertir este texto en un enlace interno",
-	'ct_internal_caption'  => "Enlace interno",
-
-	'ct_external_sample'   => "http://ejemplo.com",
-	'ct_external_tip_ins'  => "Insertar un enlace externo",
-	'ct_external_tip_wrap' => "Convertir este texto en un enlace externo",
-	'ct_external_caption'  => "Enlace externo",
-
-	'ct_image_tip'     => "Insertar una imagen",
-	'ct_image_caption' => "Agregar imagen",
-
-	'ct_attachment_tip'     => "Insertar un archivo adjunto",
-	'ct_attachment_caption' => "Agregar archivo adjunto",
-
-	'ct_math_sample'   => "Insertar la fórmula LaTeX aquí",
-	'ct_math_tip_ins'  => "Insertar la fórmula matemática (LaTeX)",
-	'ct_math_tip_wrap' => "Convertir este texto en una fórmula matemática (LaTeX)",
-	'ct_math_caption'  => "Fórmula",
-
-	'ct_nowiki_sample'   => "Insertar aquí el texto no formateado",
-	'ct_nowiki_tip_ins'  => "Ignorar el formato wiki",
-	'ct_nowiki_tip_wrap' => "Ignorar el formato wiki para este texto",
-	'ct_nowiki_caption'  => "Sin Wiki",
-
-	'ct_horizontal_tip'      => "Insertar una línea horizontal (utilizar con moderación)",
-	'ct_horizontal_caption'  => "Línea Horizontal",
-
-	'ct_upload'  => "Subir $1",
-	'ct_select'  => "Seleccionar $1 para subirlo",
-	'ct_caption' => "Agregar un subtítulo (opcional)",
-	'ct_link'    => "Agregar el nombre del enlace (opcional)",
-	'ct_submit'  => "¡Ir!",
-	'ct_close'   => "Cerrar la ventana ",
-	'ct_success' => "¡El archivo se subió con éxito!",
-	'ct_popupblocked'   => "No se pudo abrir la ventana para subir el archivo. Revise su bloqueador de ventanas emergentes."
+/** Message documentation (Message documentation)
+ * @author Siebrand
+ */
+$wgCustomToolbarMessages['qqq'] = array(
+	'ct_upload' => '(information may be incorrect)
+* $1 can be "image" or "link"',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$wgCustomToolbarMessages['arz'] = array(
+	'ct_italic_caption' => 'خط مايل',
+	'ct_user_user' => 'يوزر',
+);
+
+/** German (Deutsch) */
 $wgCustomToolbarMessages['de'] = array(
-	'ct_bold_sample'   => "Fetter Text",
-	'ct_bold_tip_ins'  => "Fetten Text einfügen",
-	'ct_bold_tip_wrap' => "Diesen Text fett markieren",
-	'ct_bold_caption'  => "Fett",
-
-	'ct_italic_sample'   => "Kursiver Text",
-	'ct_italic_tip_ins'  => "Kursiven Text einfügen",
-	'ct_italic_tip_wrap' => "Diesen Text kursiv markieren",
-	'ct_italic_caption'  => "Kursiv",
-
-	'ct_internal_sample'   => "Seitenname",
-	'ct_internal_tip_ins'  => "Einen internen Link einfügen",
-	'ct_internal_tip_wrap' => "Diesen Text in einen internen Link umwandeln",
-	'ct_internal_caption'  => "Interner Link",
-
-	'ct_external_sample'   => "http://beispiel.de",
-	'ct_external_tip_ins'  => "Einen externen Link einfügen",
-	'ct_external_tip_wrap' => "Diesen Text in einen externen Link umwandeln",
-	'ct_external_caption'  => "Externer Link",
-
-	'ct_image_tip'     => "Ein Bild einfügen",
-	'ct_image_caption' => "Bild einfügen",
-
-	'ct_attachment_tip'     => "Eine Anlage einfuegen",
-	'ct_attachment_caption' => "Eine Anlage anfuegen",
-
-	'ct_math_sample'   => "Hier LaTeX Formel einfügen",
-	'ct_math_tip_ins'  => "Hier mathematische Formel einfügen (LaTeX)",
-	'ct_math_tip_wrap' => "Diesen Text in eine mathematische Formel umwandeln (LaTeX)",
-	'ct_math_caption'  => "Formel",
-
-	'ct_nowiki_sample'   => "Hier unformatierten Text eingeben",
-	'ct_nowiki_tip_ins'  => "Ignoriere wiki Formatierung",
-	'ct_nowiki_tip_wrap' => "Ignoriere wiki Formatierung für diesen Text",
-	'ct_nowiki_caption'  => "Keine Wiki",
-
-	'ct_horizontal_tip'      => "Eine waagrechte Linie einfügen (nicht alzu oft verwenden)",
-	'ct_horizontal_caption'  => "Waagrechte Linie",
-
-	'ct_upload'         => "Hochladen $1",
-	'ct_select'         => "Wähle $1 zum hochladen.",
-	'ct_caption'        => "Beschriftung einfügen (optional)",
-	'ct_link'           => "Link benennen (optional)",
-	'ct_submit'         => "Go!",
-	'ct_close'          => "Fenster schliessen",
-	'ct_success'        => "Datei erfolgreich hochgeladen!",
-	'ct_popupblocked'   => "Das Hochladen-Popup wurde am Öffnen gehindert. Bitte überprüfe Deinen Popup-Blocker.",
-
-	'ct_user_user' => "Benutzer",
-	'ct_user_tip' => "Einen Link zu der Seite eines Freundes einfügen",
-	'ct_user_caption' => "Einen Link zu einem Freund einfügen",
-	'ct_user_sample' => "Benutzername"
+	'ct_bold_sample' => 'Fetter Text',
+	'ct_bold_tip_ins' => 'Fetten Text einfügen',
+	'ct_bold_tip_wrap' => 'Diesen Text fett markieren',
+	'ct_bold_caption' => 'Fett',
+	'ct_italic_sample' => 'Kursiver Text',
+	'ct_italic_tip_ins' => 'Kursiven Text einfügen',
+	'ct_italic_tip_wrap' => 'Diesen Text kursiv markieren',
+	'ct_italic_caption' => 'Kursiv',
+	'ct_internal_sample' => 'Seitenname',
+	'ct_internal_tip_ins' => 'Einen internen Link einfügen',
+	'ct_internal_tip_wrap' => 'Diesen Text in einen internen Link umwandeln',
+	'ct_internal_caption' => 'Interner Link',
+	'ct_external_sample' => 'http://example.com',
+	'ct_external_tip_ins' => 'Einen externen Link einfügen',
+	'ct_external_tip_wrap' => 'Diesen Text in einen externen Link umwandeln',
+	'ct_external_caption' => 'Externer Link',
+	'ct_image_tip' => 'Ein Bild einfügen',
+	'ct_image_caption' => 'Bild einfügen',
+	'ct_attachment_tip' => 'Eine Anlage einfuegen',
+	'ct_attachment_caption' => 'Eine Anlage anfuegen',
+	'ct_math_sample' => 'Hier LaTeX Formel einfügen',
+	'ct_math_tip_ins' => 'Hier mathematische Formel einfügen (LaTeX)',
+	'ct_math_tip_wrap' => 'Diesen Text in eine mathematische Formel umwandeln (LaTeX)',
+	'ct_math_caption' => 'Formel',
+	'ct_nowiki_sample' => 'Hier unformatierten Text eingeben',
+	'ct_nowiki_tip_ins' => 'Ignoriere Wiki-Formatierung',
+	'ct_nowiki_tip_wrap' => 'Ignoriere Wiki-Formatierung für diesen Text',
+	'ct_nowiki_caption' => 'Kein Wiki',
+	'ct_horizontal_tip' => 'Eine waagrechte Linie einfügen (nicht allzu oft verwenden)',
+	'ct_horizontal_caption' => 'Waagrechte Linie',
+	'ct_upload' => 'Hochladen $1',
+	'ct_select' => 'Wähle $1 zum Hochladen',
+	'ct_caption' => 'Beschriftung einfügen (optional)',
+	'ct_link' => 'Link benennen (optional)',
+	'ct_submit' => 'Go!',
+	'ct_close' => 'Fenster schließen',
+	'ct_success' => 'Datei erfolgreich hochgeladen!',
+	'ct_popupblocked' => 'Das Hochladen-Popup wurde am Öffnen gehindert.
+Bitte überprüfe deinen Popup-Blocker.',
+	'ct_user_user' => 'Benutzer',
+	'ct_user_tip' => 'Einen Link zu der Seite eines Freundes einfügen',
+	'ct_user_caption' => 'Einen Link zu einem Freund einfügen',
+	'ct_user_sample' => 'Benutzername',
 );
 
+/** Spanish (Español) */
+$wgCustomToolbarMessages['es'] = array(
+	'ct_bold_sample' => 'Texto en negrita',
+	'ct_bold_tip_ins' => 'Insertar texto en negrita',
+	'ct_bold_tip_wrap' => 'Convertir este texto en negrita',
+	'ct_bold_caption' => 'Negrita',
+	'ct_italic_sample' => 'Texto en cursiva',
+	'ct_italic_tip_ins' => 'Insertar texto en cursiva',
+	'ct_italic_tip_wrap' => 'Convertir este texto en cursiva',
+	'ct_italic_caption' => 'Cursiva',
+	'ct_internal_sample' => 'Título del enlace',
+	'ct_internal_tip_ins' => 'Insertar un enlace interno',
+	'ct_internal_tip_wrap' => 'Convertir este texto en un enlace interno',
+	'ct_internal_caption' => 'Enlace interno',
+	'ct_external_sample' => 'http://ejemplo.com',
+	'ct_external_tip_ins' => 'Insertar un enlace externo',
+	'ct_external_tip_wrap' => 'Convertir este texto en un enlace externo',
+	'ct_external_caption' => 'Enlace externo',
+	'ct_image_tip' => 'Insertar una imagen',
+	'ct_image_caption' => 'Agregar imagen',
+	'ct_attachment_tip' => 'Insertar un archivo adjunto',
+	'ct_attachment_caption' => 'Agregar archivo adjunto',
+	'ct_math_sample' => 'Insertar la fórmula LaTeX aquí',
+	'ct_math_tip_ins' => 'Insertar la fórmula matemática (LaTeX)',
+	'ct_math_tip_wrap' => 'Convertir este texto en una fórmula matemática (LaTeX)',
+	'ct_math_caption' => 'Fórmula',
+	'ct_nowiki_sample' => 'Insertar aquí el texto no formateado',
+	'ct_nowiki_tip_ins' => 'Ignorar el formato wiki',
+	'ct_nowiki_tip_wrap' => 'Ignorar el formato wiki para este texto',
+	'ct_nowiki_caption' => 'Sin Wiki',
+	'ct_horizontal_tip' => 'Insertar una línea horizontal (utilizar con moderación)',
+	'ct_horizontal_caption' => 'Línea Horizontal',
+	'ct_upload' => 'Subir $1',
+	'ct_select' => 'Seleccionar $1 para subirlo',
+	'ct_caption' => 'Agregar un subtítulo (opcional)',
+	'ct_link' => 'Agregar el nombre del enlace (opcional)',
+	'ct_submit' => '¡Ir!',
+	'ct_close' => 'Cerrar la ventana',
+	'ct_success' => '¡El archivo se subió con éxito!',
+	'ct_popupblocked' => 'No se pudo abrir la ventana para subir el archivo. Revise su bloqueador de ventanas emergentes.',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$wgCustomToolbarMessages['gl'] = array(
+	'ct_bold_sample' => 'Texto en negra',
+	'ct_bold_tip_ins' => 'Inserir texto en negra',
+	'ct_bold_tip_wrap' => 'Converter este texto en negra',
+	'ct_bold_caption' => 'Negra',
+	'ct_italic_sample' => 'Texto en cursiva',
+	'ct_italic_tip_ins' => 'Inserir texto en cursiva',
+	'ct_italic_tip_wrap' => 'Converter este texto en cursiva',
+	'ct_italic_caption' => 'Cursiva',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$wgCustomToolbarMessages['nl'] = array(
+	'ct_bold_sample' => 'Vetgedrukte tekst',
+	'ct_bold_tip_ins' => 'Vetgedrukte tekt invoegen',
+	'ct_bold_tip_wrap' => 'Deze tekst vetgedrukt maken',
+	'ct_bold_caption' => 'Vetgedrukt',
+	'ct_italic_sample' => 'Schuingedrukte tekst',
+	'ct_italic_tip_ins' => 'Schuingedrukte tekst invoegen',
+	'ct_italic_tip_wrap' => 'Deze tekst schuingedrukt maken',
+	'ct_italic_caption' => 'Schuingedrukt',
+	'ct_internal_sample' => 'PaginaNaam',
+	'ct_internal_tip_ins' => 'Interne verwijzing toevoegen',
+	'ct_internal_tip_wrap' => 'Van deze tekst een interne verwijzing maken',
+	'ct_internal_caption' => 'Interne verwijzing',
+	'ct_external_sample' => 'http://example.com',
+	'ct_external_tip_ins' => 'Externe verwijzing toevoegen',
+	'ct_external_tip_wrap' => 'Van deze tekst een externe verwijzing maken',
+	'ct_external_caption' => 'Externe verwijzing',
+	'ct_image_tip' => 'Afbeelding toevoegen',
+	'ct_image_caption' => 'Afbeelding toevoegen',
+	'ct_attachment_tip' => 'Bijlage toevoegen',
+	'ct_attachment_caption' => 'Bijlage toevoegen',
+	'ct_math_sample' => 'LaTex-formule toevoegen',
+	'ct_math_tip_ins' => 'Wiskundige formule toevoegen (LaTeX)',
+	'ct_math_tip_wrap' => 'Van deze tekst een wiskundige formule maken (LaTeX)',
+	'ct_math_caption' => 'Formule',
+	'ct_nowiki_sample' => 'Niet-opgemaakte tekst toevoegen',
+	'ct_nowiki_tip_ins' => 'Wikiopmaak negeren',
+	'ct_nowiki_tip_wrap' => 'Voor deze tekst de wikiopmaak negeren',
+	'ct_nowiki_caption' => 'Geen wikitekst',
+	'ct_horizontal_tip' => 'Horizontale lijn toevoegen (gebruik spaarzaam)',
+	'ct_horizontal_caption' => 'Horizontale lijn',
+	'ct_upload' => '$1 uploaden',
+	'ct_select' => 'Selecteer een $1 om te uploaden',
+	'ct_caption' => 'Afbeeldingsbeschrijving toevoegen (optioneel)',
+	'ct_link' => 'Verwijzingsnaam toevoegen (optioneel)',
+	'ct_submit' => 'OK',
+	'ct_close' => 'Venster sluiten',
+	'ct_success' => 'Het bestand is toegevoegd!',
+	'ct_popupblocked' => 'Er kon geen pop-upvenster geopend worden.
+Controleer uw pop-upblokkeerprogramma.',
+	'ct_user_user' => 'Gebruiker',
+	'ct_user_tip' => 'Verwijzing naar gebruikerspagina toevoegen',
+	'ct_user_caption' => 'Gebruikersverwijzing',
+	'ct_user_sample' => 'Gebruikersnaam',
+);
+
+/** Brazilian Portuguese (Português do Brasil) */
 $wgCustomToolbarMessages['pt-br'] = array(
-	'ct_bold_sample'   => "Texto em negrito",
-	'ct_bold_tip_ins'  => "Digitar texto em negrito",
-	'ct_bold_tip_wrap' => "Colocar este texto em negrito",
-	'ct_bold_caption'  => "Negrito",
-
-	'ct_italic_sample'   => "Texto em itálico",
-	'ct_italic_tip_ins'  => "Digitar texto em itálico",
-	'ct_italic_tip_wrap' => "Colocar este texto em itálico",
-	'ct_italic_caption'  => "Itálico",
-
-	'ct_internal_sample'   => "Título do link",
-	'ct_internal_tip_ins'  => "Inserir um link interno",
-	'ct_internal_tip_wrap' => "Transformar este texto em link interno",
-	'ct_internal_caption'  => "Link Interno",
-
-	'ct_external_sample'   => "http://exemplo.com",
-	'ct_external_tip_ins'  => "Incluir um link externo",
-	'ct_external_tip_wrap' => "Transformar este texto em link externo",
-	'ct_external_caption' => "Link Externo",
-
-	'ct_image_tip'     => "Carregar uma imagem",
-	'ct_image_caption' => "Adicionar uma Imagem",
-
-	'ct_attachment_tip'     => "Incluir um anexo",
-	'ct_attachment_caption' => "Adicionar um Anexo",
-
-	'ct_math_sample'   => "Incluir fórmula LaTeX aqui",
-	'ct_math_tip_ins'  => "Incluir fórmula matemática (LaTeX)",
-	'ct_math_tip_wrap' => "Transformar este texto em fórmula matemática (LaTeX)",
-	'ct_math_caption'  => "Fórmula",
-
-	'ct_nowiki_sample'   => "Inserir aqui o texto não formatado",
-	'ct_nowiki_tip_ins'  => "Ignorar a formatação wiki",
-	'ct_nowiki_tip_wrap' => "Ignorar a formatação wiki neste texto",
-	'ct_nowiki_caption'  => "Sem wiki",
-
-	'ct_horizontal_tip'      => "Incluir uma linha horizontal (use com moderação)",
-	'ct_horizontal_caption'  => "Linha Horizontal",
-
-	'ct_upload'  => "Carregar $1",
-	'ct_select'  => "Selecionar $1 para carregar o arquivo",
-	'ct_caption' => "Incluir uma explicação (opcional)",
-	'ct_link'    => "Incluir um nome para o link (opcional)",
-	'ct_submit'  => "Salvar",
-	'ct_close'   => "Fechar a janela",
-	'ct_success' => "O arquivo foi carregado com sucesso!",
-	'ct_popupblocked'   => "O pop-up para carregar o arquivo foi bloqueado. Verifique o seu bloqueador de pop-ups."
+	'ct_bold_sample' => 'Texto em negrito',
+	'ct_bold_tip_ins' => 'Digitar texto em negrito',
+	'ct_bold_tip_wrap' => 'Colocar este texto em negrito',
+	'ct_bold_caption' => 'Negrito',
+	'ct_italic_sample' => 'Texto em itálico',
+	'ct_italic_tip_ins' => 'Digitar texto em itálico',
+	'ct_italic_tip_wrap' => 'Colocar este texto em itálico',
+	'ct_italic_caption' => 'Itálico',
+	'ct_internal_sample' => 'Título do link',
+	'ct_internal_tip_ins' => 'Inserir um link interno',
+	'ct_internal_tip_wrap' => 'Transformar este texto em link interno',
+	'ct_internal_caption' => 'Link Interno',
+	'ct_external_sample' => 'http://exemplo.com',
+	'ct_external_tip_ins' => 'Incluir um link externo',
+	'ct_external_tip_wrap' => 'Transformar este texto em link externo',
+	'ct_external_caption' => 'Link Externo',
+	'ct_image_tip' => 'Carregar uma imagem',
+	'ct_image_caption' => 'Adicionar uma Imagem',
+	'ct_attachment_tip' => 'Incluir um anexo',
+	'ct_attachment_caption' => 'Adicionar um Anexo',
+	'ct_math_sample' => 'Incluir fórmula LaTeX aqui',
+	'ct_math_tip_ins' => 'Incluir fórmula matemática (LaTeX)',
+	'ct_math_tip_wrap' => 'Transformar este texto em fórmula matemática (LaTeX)',
+	'ct_math_caption' => 'Fórmula',
+	'ct_nowiki_sample' => 'Inserir aqui o texto não formatado',
+	'ct_nowiki_tip_ins' => 'Ignorar a formatação wiki',
+	'ct_nowiki_tip_wrap' => 'Ignorar a formatação wiki neste texto',
+	'ct_nowiki_caption' => 'Sem wiki',
+	'ct_horizontal_tip' => 'Incluir uma linha horizontal (use com moderação)',
+	'ct_horizontal_caption' => 'Linha Horizontal',
+	'ct_upload' => 'Carregar $1',
+	'ct_select' => 'Selecionar $1 para carregar o arquivo',
+	'ct_caption' => 'Incluir uma explicação (opcional)',
+	'ct_link' => 'Incluir um nome para o link (opcional)',
+	'ct_submit' => 'Salvar',
+	'ct_close' => 'Fechar a janela',
+	'ct_success' => 'O arquivo foi carregado com sucesso!',
+	'ct_popupblocked' => 'O pop-up para carregar o arquivo foi bloqueado. Verifique o seu bloqueador de pop-ups.',
 );
+

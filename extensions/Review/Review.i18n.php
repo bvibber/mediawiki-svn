@@ -508,11 +508,13 @@ $messages['gl'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'review_topic' => 'Θέμα',
 	'review_rating' => 'Βάθμισις',
+	'review_comment' => 'Σχόλιον',
 );
 
 /** Manx (Gaelg)

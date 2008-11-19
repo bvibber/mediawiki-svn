@@ -512,6 +512,14 @@ $messages['got'] = array(
 	'regexblock-form-reason' => 'Faírina',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'regexblock-form-reason' => 'Αἰτία:',
+	'regexblock-view-go' => 'Ἱέναι',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

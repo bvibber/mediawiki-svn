@@ -12,3 +12,18 @@ $messages = array();
 $messages['en'] = array(
 	'csshooks-desc' => 'Adds CSS to the HTML output of pages for better styling',
 );
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'csshooks-desc' => 'Setzt en CSS an den HTML-code vun de Säiten derbäi fir datt se besser gestylt sinn',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'csshooks-desc' => "Voegt CSS toe aan de HTML-uitvoer van pagina's voor betere vormgeving",
+);
+

@@ -851,6 +851,7 @@ $messages['eo'] = array(
 	'code-notes' => 'konsulti notojn',
 	'code-authors' => 'aŭtoroj',
 	'code-tags' => 'etikedoj',
+	'code-authors-text' => 'Jen listo de dosierujaj aŭtoroj ordigitaj laŭ lastaj faritaĵoj.',
 	'code-author-haslink' => 'Ĉi tiu aŭtoro estas ligita al la vikiuzanto $1',
 	'code-author-orphan' => 'La aŭtoro ne havas ligilon kun vikia konto',
 	'code-author-dolink' => 'Ligi ĉi tiun autoron al vikiuzanto:',
@@ -987,6 +988,7 @@ $messages['fa'] = array(
 	'code-rev-purge-link' => 'خالی کردن',
 	'code-status-new' => 'تازه',
 	'code-status-fixme' => 'درستم کن',
+	'code-status-reverted' => 'واگردانی شده',
 	'code-status-resolved' => 'حل شده',
 	'code-status-ok' => 'مورد تایید',
 	'code-status-deferred' => 'معوق',
@@ -1128,6 +1130,11 @@ $4",
 $messages['gl'] = array(
 	'code' => 'Revisión do código',
 	'code-comments' => 'Notas da revisión',
+	'code-change-status' => "cambiou o '''status''' desta revisión",
+	'code-change-tags' => "cambiou as '''etiquetas''' desta revisión",
+	'code-change-removed' => 'eliminado:',
+	'code-change-added' => 'engadido:',
+	'code-prop-changes' => 'Status e rexistro de etiquetas',
 	'code-desc' => '[[Special:Code|Ferramenta de revisión do código]] con [[Special:RepoAdmin|apoio da subversión]]',
 	'code-no-repo' => 'Non hai ningún repositorio configurado!',
 	'code-notes' => 'revisar as notas',
@@ -1177,6 +1184,7 @@ $messages['gl'] = array(
 	'code-rev-purge-link' => 'purgar',
 	'code-status-new' => 'novo',
 	'code-status-fixme' => 'arránxame',
+	'code-status-reverted' => 'revertido',
 	'code-status-resolved' => 'resolto',
 	'code-status-ok' => 'de acordo',
 	'code-status-deferred' => 'diferido',
@@ -1213,10 +1221,17 @@ $4',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'code-authors' => 'δημιουργοί',
+	'code-field-author' => 'Δημιουργός',
+	'code-rev-author' => 'Δημιουργός:',
+	'code-rev-message' => 'Σχόλιον:',
+	'code-status-ok' => 'εἶεν',
+	'repoadmin-new-button' => 'Ποιεῖν',
+	'repoadmin-edit-button' => 'εἶεν',
 );
 
 /** Hakka (Hak-kâ-fa)

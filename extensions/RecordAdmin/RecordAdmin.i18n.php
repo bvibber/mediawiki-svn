@@ -91,6 +91,19 @@ $messages['fr'] = array(
 	'right-recordadmin' => 'Trouver et modifier les pages d’enregistrement',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'recordadmin-buttonsearch' => 'Procurar',
+	'recordadmin-buttoncreate' => 'Crear',
+	'recordadmin-searchresult' => 'Resultados da procura',
+	'recordadmin-buttonsave' => 'Gardar',
+	'recordadmin-viewlink' => 'ver',
+	'recordadmin-editlink' => 'editar',
+	'recordadmin-created' => 'Creado',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */
@@ -216,5 +229,20 @@ $messages['sk'] = array(
 	'recordadmin-editlink' => 'upraviť',
 	'recordadmin-created' => 'Vytvorené',
 	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'recordadmin' => 'Quản lý bản ghi',
+	'recordadmin-desc' => 'Một [[Special:RecordAdmin|trang đặc biệt]] để tìm kiếm và sửa đổi các trang bản ghi bằng cách dùng một mẫu có sẵn',
+	'recordadmin-category' => 'Bản ghi',
+	'recordadmin-select' => 'Chọn một loại bản ghi cần tìm',
+	'recordadmin-newsearch' => 'Tìm $1 mới',
+	'recordadmin-newrecord' => 'Chọn một loại bản ghi khác',
+	'recordadmin-submit' => 'Đăng',
+	'recordadmin-create' => 'Tìm hoặc tạo một bản ghi “$1”',
+	'recordadmin-alreadyexist' => 'Xin lỗi,  	 	 	“$1” đã tồn tại!',
 );
 

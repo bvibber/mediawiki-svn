@@ -516,6 +516,14 @@ $messages['qqq'] = array(
 	'configure-setting-wgUseCommaCount' => 'Do not translate "(true)" and "(false)"',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'configure-setting-wgShowEXIF' => 'Показване на EXIF данните на описателната страница на файловете',
+	'configure-setting-wgAccountCreationThrottle' => 'Брой сметки, които могат да бъдат създадени от един IP адрес',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -995,6 +1003,7 @@ $messages['fr'] = array(
 	'configure-setting-wgAllowCategorizedRecentChanges' => 'Autoriser le filtrage des modifications récentes par une catégorie et ses sous-catégories',
 	'configure-setting-wgPutIPinRC' => "Mettre l'adresse IP du contributeur dans la table des modifications récentes",
 	'configure-setting-wgRCChangedSizeThreshold' => 'Mettre en évidence une différence de taille plus grande que cette valeur dans les modifications récentes',
+	'configure-setting-wgRCFilterByAge' => 'Filtrer $wgRCLinkDays pour masquer les valeurs plus grandes que $wgRCMaxAge',
 	'configure-setting-wgRCLinkLimits' => 'Limites du nombre modifications à afficher dans les modifications récentes',
 	'configure-setting-wgRCLinkDays' => 'Limites du nombre de jours à afficher dans les modifications récentes',
 	'configure-setting-wgRCMaxAge' => 'Age minimum des modifications récentes à purger',
@@ -1031,6 +1040,13 @@ $messages['fr'] = array(
 	'configure-setting-wgProfileToDatabase' => 'Sauver les sommes des profilages dans la base de données',
 	'configure-setting-wgUDPProfilerHost' => 'Hôte pour le profileur UDP',
 	'configure-setting-wgUDPProfilerPort' => 'Port pour le profileur UDP',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'configure-setting-wgSitename' => 'Nome do sitio',
 );
 
 /** Croatian (Hrvatski)
@@ -1092,6 +1108,16 @@ $messages['lb'] = array(
 	'configure-setting-wgExtensionFunctions' => 'Erweiderungsfunktiounen',
 	'configure-setting-wgActiveUserDays' => 'Zäit no däer e Benotzer als inaktiv gëlt',
 	'configure-setting-wgUseAjax' => 'AJAX aschalten',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'configure-setting-wgSitename' => 'Име на сајт',
+	'configure-setting-wgEnableUploads' => 'Овозможи подигнувања',
+	'configure-setting-wgVersion' => 'MediaWiki верзија',
+	'configure-setting-wgAllowSpecialInclusion' => 'Допуштено инклузија на специјални страници',
 );
 
 /** Dutch (Nederlands)
@@ -1554,6 +1580,7 @@ $messages['nl'] = array(
 	'configure-setting-wgAllowCategorizedRecentChanges' => 'Toestaan de recente wijzigingen te filteren op categorie of een van de ondercategorieën',
 	'configure-setting-wgPutIPinRC' => "IP-adressen naar de tabel 'recentchanges' schrijven",
 	'configure-setting-wgRCChangedSizeThreshold' => 'Drempelwaarde voor het uitlichten van karakteraantalverschillen lager dan deze waarde in recente wijzigingen',
+	'configure-setting-wgRCFilterByAge' => '$wgRCLinkDays filteren om te voorkomen dat verwijzingen voor waarden hoger dan $wgRCMaxAge worden weergegeven',
 	'configure-setting-wgRCLinkLimits' => 'Regellimiet in recente wijzigingen',
 	'configure-setting-wgRCLinkDays' => 'Dagenlimiet in recente wijzigingen',
 	'configure-setting-wgRCMaxAge' => 'Minimale leeftijd voor op te schonen regels uit recente wijzigingen',
@@ -1672,5 +1699,14 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'configure-setting-wgSitename' => 'సైటు పేరు',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'configure-setting-wgSitename' => 'Назва сайта',
+	'configure-setting-wgLanguageCode' => 'Код мови сайта',
+	'configure-setting-wgSMTP' => 'SMTP-сервер',
 );
 

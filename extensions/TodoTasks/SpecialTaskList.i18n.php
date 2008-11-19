@@ -243,13 +243,18 @@ Para ver a súa lista completa de tarefas vaia a %s.
 O seu sistema agradable de notificacións %s',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
 $messages['he'] = array(
 	'tasklist' => 'רשימת מטלות',
+	'tasklist-parser-desc' => 'הוספת תגית הוויקי <nowiki>{{#todo:}}</nowiki> להקצאת מטלות',
+	'tasklist-special-desc' => 'הוספת דף מיוחד לסקירת [[Special:TaskList|הקצאות המטלות]]',
 	'tasklistbyproject' => 'רשימת מטלות לפי מיזמים',
 	'tasklistunknownproject' => 'מיזם בלתי ידוע',
 	'tasklistunspecuser' => 'משתמש בלתי מוגדר',
-	'tasklistincorrectuser' => 'משתמש שאינו נכון',
+	'tasklistincorrectuser' => 'שם המשתמש שגוי',
 	'tasklistemail' => '%s היקר',
 	'tasklistemailsubject' => '[%s] שינוי ברשימת המטלות',
 	'tasklistmytasks' => 'המטלות שלי',
@@ -259,6 +264,13 @@ $messages['he'] = array(
 	'tasklistprojdisp' => 'תצוגה',
 	'tasklistbyname' => '== רשימת מטלות עבור %s ==',
 	'tasklistnoprojects' => "שגיאה: נראה שהפעלתם את '''\$wgUseProjects''', אבל לא יצרתם את [[MediaWiki:TodoTasksValidProjects]]. ראו את [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 הוראות ההתקנה] לפרטים נוספים.",
+	'tasklistemailbody' => ',
+
+מישהו הקצה מטלה חדשה עבורכם ב־%s.
+
+על מנת לצפות ברשימת המטלות המלאה, אנא עברו לדף %s.
+
+מערכת התראות ה%s הידידותית שלכם',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

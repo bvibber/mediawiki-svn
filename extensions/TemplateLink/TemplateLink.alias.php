@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'TemplateLink' => array( 'وصلة_قالب' ),
 );
 
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'TemplateLink' => array( 'Vorlagenlink' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'TemplateLink' => array( 'پیوند_الگو' ),

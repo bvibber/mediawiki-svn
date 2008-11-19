@@ -289,6 +289,13 @@ $messages['gl'] = array(
 	'right-passwordreset' => 'Restablecer o contrasinal dun usuario ([[Special:PasswordReset|páxina especial]])',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'passwordreset-username' => 'Ὄνομα χρωμένου:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

@@ -21,6 +21,28 @@ $messages['en'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags'
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'layouts_title' => 'ابتدي صفحه',
+	'layouts_continue' => 'استمر',
+	'layouts_choosecategory' => 'اختار تصنيف لـ $1:',
+	'layouts_unknown' => 'مش معروف',
+);
+
+/** German (Deutsch) */
+$messages['de'] = array(
+	'layouts_title' => 'Neue Seite erstellen',
+	'layouts_chooselayout' => 'Suche ein Format für $1 aus:',
+	'layouts_nolayout' => 'Kein Format',
+	'layouts_continue' => 'Weiter',
+	'layouts_choosecategory' => 'Suche eine Kategorie für $1 aus:',
+	'layouts_unknown' => 'Unbekannt',
+	'layouts_tagline' => "Diese Seite wurde mit dem '''$1'''-Layout erstellt.",
+);
+
+/** Spanish (Español) */
 $messages['es'] = array(
 	'layouts_title' => 'Crear una página',
 	'layouts_chooselayout' => 'Selecciona un Diseño para $1:',
@@ -31,16 +53,60 @@ $messages['es'] = array(
 	'layouts_tagline' => 'Esta página se generó con el diseño <strong>$1</strong>.',
 );
 
-$messages['de'] = array(
-	'layouts_title' => 'Neue Seite erstellen',
-	'layouts_chooselayout' => 'Suche ein Format aus für $1:',
-	'layouts_nolayout' => 'Kein Format',
-	'layouts_continue' => 'Weiter',
-	'layouts_choosecategory' => 'Suche ein Club aus für $1:',
-	'layouts_unknown' => 'Unbekannt',
-	'layouts_tagline' => 'Diese Seite wurde mit dem <strong>$1</strong> Layout erstellt.',
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'layouts-desc' => "Peuple les pages nouvellement créées avec des « mises en page » modifiables afin d'encourager une structure commune à toutes les pages",
+	'layouts_title' => 'Créer une page',
+	'layouts_chooselayout' => 'Choisir une mise en page pour $1 :',
+	'layouts_nolayout' => 'Aucune mise en page',
+	'layouts_continue' => 'Continuer',
+	'layouts_choosecategory' => 'Choisir une catégorie pour $1 :',
+	'layouts_unknown' => 'Inconnu',
+	'layouts_tagline' => "Cette page a été générée avec la mise en page '''$1'''.",
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'layouts_title' => 'Crear unha páxina',
+	'layouts_continue' => 'Continuar',
+	'layouts_choosecategory' => 'Escolla unha categoría para "$1":',
+	'layouts_unknown' => 'Descoñecido',
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'layouts_title' => 'Gawé kaca',
+	'layouts_chooselayout' => "Pilih rancangan(''layout'') kanggo $1:",
+	'layouts_nolayout' => "Ora ana rancangan (''layout'')",
+	'layouts_continue' => 'Terusaké',
+	'layouts_choosecategory' => 'Pilih kategori kanggo $1:',
+	'layouts_unknown' => 'Ora diweruhi',
+	'layouts_tagline' => "Kaca iki kacipta nganggo rancangan '''$1'''.",
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'layouts-desc' => "Vult nieuw aangemaakte pagina's met bewerkbare sjablonen om een gelijkvormige structuur voor pagina's aan te moedigen",
+	'layouts_title' => 'Pagina aanmaken',
+	'layouts_chooselayout' => 'Kies een sjabloon voor $1:',
+	'layouts_nolayout' => 'Geen sjabloon',
+	'layouts_continue' => 'Volgende',
+	'layouts_choosecategory' => 'Kies een categorie voor $1:',
+	'layouts_unknown' => 'Onbekend',
+	'layouts_tagline' => "Deze pagina is aangemaakt met het sjabloon '''$1'''.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagelabels',
+);
+
+/** Brazilian Portuguese (Português do Brasil) */
 $messages['pt-br'] = array(
 	'layouts_title' => 'Criar uma página',
 	'layouts_chooselayout' => 'Escolher um Layout para o $1:',
@@ -50,3 +116,4 @@ $messages['pt-br'] = array(
 	'layouts_unknown' => 'Desconhecido',
 	'layouts_tagline' => 'Esta página foi gerada pelo layout <strong>$1</strong>.',
 );
+

@@ -106,6 +106,13 @@ $messages['gl'] = array(
 	'unicodeconverter-newtext' => 'Texto transformado:',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'unicodeconverter-ok' => 'εἶεν',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

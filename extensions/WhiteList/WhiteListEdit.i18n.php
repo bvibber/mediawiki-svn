@@ -642,6 +642,14 @@ $messages['got'] = array(
 	'whitelisttableedit' => 'Máidjan',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'whitelisttablemodifynone' => 'Οὐδέν',
+	'whitelistnever' => 'οὔποτε',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

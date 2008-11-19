@@ -782,6 +782,19 @@ $1',
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] asinado [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'sign-realname' => 'Ὄνομα:',
+	'sign-phone' => 'Ἀριθμὸς τηλεφώνου:',
+	'sign-email' => 'Ἡλεκτρονικὴ διεύθυνσις:',
+	'sign-viewfield-realname' => 'Ὄνομα',
+	'sign-viewfield-email' => 'Ἠλεκτρονικαὶ ἐπιστολαί',
+	'sign-viewfield-reviewcomment' => 'Σχόλιον',
+	'sign-review-comment' => 'Σχόλιον',
+);
+
 /** Gujarati (ગુજરાતી)
  * @author Dsvyas
  */

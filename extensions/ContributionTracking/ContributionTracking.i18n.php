@@ -227,6 +227,14 @@ $messages['lb'] = array(
 	'contrib-tracking-button' => 'Weider',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'contrib-tracking-error' => 'Грешка',
+	'contrib-tracking-button' => 'Продолжи',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

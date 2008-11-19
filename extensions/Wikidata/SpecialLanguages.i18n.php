@@ -1403,9 +1403,12 @@ Por favor, póñase en contacto cun operador ou administrador do servidor.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author LeighvsOptimvsMaximvs
  */
 $wdMessages['grc'] = array(
+	'ow_dm_OK' => 'εἶεν',
+	'ow_ClassAttributeType' => 'Τύπος',
 	'ow_Language' => 'Γλῶττα',
 );
 
@@ -1504,14 +1507,14 @@ $wdMessages['he'] = array(
 	'ow_Expressions' => 'ביטויים',
 	'ow_IdenticalMeaning' => 'משמעות זהה?',
 	'ow_IncomingRelations' => 'קשרים נכנסים',
-	'ow_GotoSource' => 'עבור למקור',
+	'ow_GotoSource' => 'מעבר למקור',
 	'ow_Language' => 'שפה',
 	'ow_LevelAnnotation' => 'פירוש',
 	'ow_OptionAttribute' => 'מאפיין',
 	'ow_OptionAttributeOption' => 'אפשרות',
 	'ow_OptionAttributeOptions' => 'אפשרויות',
 	'ow_OptionAttributeValues' => 'ערכי האפשרות',
-	'ow_OtherDefinedMeaning' => 'משמעויות מוגדרות אחרות',
+	'ow_OtherDefinedMeaning' => 'משמעות מוגדרת אחרת',
 	'ow_PopupAnnotation' => 'פירוש',
 	'ow_Relations' => 'קשרים',
 	'ow_RelationType' => 'סוג הקשר',
@@ -1531,24 +1534,28 @@ $wdMessages['he'] = array(
 	'ow_LinkAttributeValues' => 'קישורים',
 	'ow_Property' => 'מאפיין',
 	'ow_Value' => 'ערך',
-	'ow_meaningsoftitle' => 'המשמעות של "$1"',
+	'ow_meaningsoftitle' => 'המשמעויות של "$1"',
 	'ow_meaningsofsubtitle' => '<em>קישור ויקי:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>הגישה נדחתה</h2>',
-	'ow_copy_no_action_specified' => 'אנא הגדר פעולה',
-	'ow_copy_help' => 'מתישהו, יתכן ונשיב לכם כגמולכם.',
-	'ow_please_proved_dmid' => 'נראה כאילו לקלט שלכם חסר "?dmid=<ID>" (dmid=מזהה משמעות מוגדרת)<br />
+	'ow_copy_no_action_specified' => 'אנא הגדירו פעולה',
+	'ow_copy_help' => 'ייתכן שנעזור לכם יום אחד.',
+	'ow_please_proved_dmid' => 'נראה שלקלט שלכם חסר "<span dir="ltr">?dmid=<ID></span>" (הפירוש של dmid: מספר משמעות מוגדרת)<br />
 אנא צרו קשר עם מנהל השרת.',
-	'ow_please_proved_dc1' => 'נראה כאילו לקלט שלכם חסר "?dc1=<something>" (dc1=הקשר ערכת הנתונים 1, ערכת נתונים להעתקה ממנה)<br />
-אנא צרו קשר עם מנהל השרת.',
-	'ow_please_proved_dc2' => 'נדמה כאילו לקלט שלכם חסר "?dc2=<something>" (dc1=הקשר ערכת הנתונים 2, ערכת נתונים להעתקה ממנה)
-אנא צרו קשר עם מנהל השרת.',
-	'ow_copy_successful' => '<h2>ההעתקה הושלמה</h2>
-נראה כאילו הנתונים שלכם הועתקו בהצלחה.
-אל תשכחו לבדוק שנית כדי להיות בטוחים!',
+	'ow_please_proved_dc1' => "נראה שלקלט שלכם חסר \"<span dir=\"ltr\">?dc1=<something></span>\" (הפירוש של dc1: הקשר ערכת נתונים 1, ערכת נתונים שיש להעתיק '''ממנה''')<br />
+אנא צרו קשר עם מנהל השרת.",
+	'ow_please_proved_dc2' => "נראה שלקלט שלכם חסר \"<span dir=\"ltr\">?dc2=<something></span>\" (הפירוש של dc2: הקשר ערכת נתונים 2, ערכת נתונים שיש להעתיק '''אליה''')<br />
+אנא צרו קשר עם מנהל השרת.",
+	'ow_copy_successful' => '<h2>ההעתקה הושלמה בהצלחה</h2>
+נראה שהנתונים שלכם הועתקו בהצלחה.
+אל תשכחו לבדוק שנית כדי לוודא זאת!',
 	'ow_copy_unsuccessful' => '<h3>ההעתקה נכשלה</h3>
 לא בוצעה פעולת העתקה.',
-	'ow_no_action_specified' => '<h3>לא צויינה פעולת העתקה</h3>
-יתכן והגעתם לדף זה ישירות? בדרך כלל אינכם אמורים להגיע לכאן.',
+	'ow_no_action_specified' => '<h3>לא צוינה פעולת העתקה</h3>
+האם הגעתם לדף זה ישירות? בדרך כלל אינכם אמורים להגיע לכאן.',
+	'ow_db_consistency_not_found' => '<h2>שגיאה</h2>
+ישנה בעיית עקביות בבסיס הנתונים. ויקי־דאטא לא הצליחה למצוא נתונים תקפים המקושרים למספר המשמעות המוגדרת הזה.
+ייתכן שהם אבדו.
+אנא צרו קשר עם המפעיל או המנהל של השרת.',
 );
 
 /** Hindi (हिन्दी)

@@ -297,6 +297,7 @@ $messages['got'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'dt_viewxml_categories' => 'Κατηγορίαι',
 	'dt_xml_page' => 'Δέλτος',
 	'dt_xml_field' => 'Πεδίον',
 	'dt_xml_name' => 'Ὄνομα',

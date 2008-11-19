@@ -336,6 +336,13 @@ $4',
 	'todo-form-submit' => 'Enviar a consulta',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'todo-list-cancel' => 'Ἀκυροῦν',
+);
+
 /** Swiss German (Alemannisch)
  * @author J. 'mach' wust
  */

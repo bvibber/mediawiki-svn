@@ -419,6 +419,19 @@ $messages['br'] = array(
 	'hiderevision-continue' => "Kenderc'hel",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'group-oversight-member' => 'nadzornik',
+	'hiderevision-continue' => 'Nastavi',
+	'hiderevision-tab' => 'Sakrij reviziju',
+	'hiderevision-error-delete' => 'Nije moguće arhivirati, da nije ranije obrisano?',
+	'oversight' => 'Nadzor',
+	'oversight-view' => 'detalji',
+	'oversight-hidden' => 'Skrivena revizija',
+);
+
 /** Catalan (Català)
  * @author Aleator
  * @author Iradigalesc

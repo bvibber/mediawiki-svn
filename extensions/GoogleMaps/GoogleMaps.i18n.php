@@ -1300,9 +1300,11 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $wgGoogleMapsMessages['grc'] = array(
+	'gm-no-zoom-control' => 'Οὐδέν',
 	'gm-moon' => 'Σελήνη',
 );
 

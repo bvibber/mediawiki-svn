@@ -464,6 +464,14 @@ $messages['gl'] = array(
 	'usagestatistics-editpages' => 'Páxinas das estatísticas $1 do usuario',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'usagestatisticstype' => 'Τύπος',
+	'usagestatisticsintervalmonth' => 'Μήν',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
