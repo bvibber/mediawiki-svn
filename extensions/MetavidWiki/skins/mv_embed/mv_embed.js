@@ -3046,7 +3046,7 @@ function do_api_req(req_param, api_url, callback){
 function do_request(req_url, callback){
  	js_log('do request: ' + req_url);
 		if( parseUri(document.URL).host == parseUri(req_url).host){
-			//no proxy at all do a direct request:
+			//do a direct request:
 			$j.ajax({
 				type: "GET",
 				url:req_url,

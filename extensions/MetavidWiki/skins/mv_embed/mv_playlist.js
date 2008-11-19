@@ -773,17 +773,15 @@ mvPlayList.prototype = {
 	 * generic add Clip to ~default~ track
 	 */
 	addCliptoTrack: function(clipObj, pos){
-		js_log('add clip' + clipObj.id +' to track');		
-		//set up default track if missing: 
-		if(typeof(this.default_track)=='undefined'){
-			this.tracks[0]=new trackObj();
-			this.default_track = this.tracks[0]
+		if( typeof clipObj['track_id'] =='undefined'){
+			clipObj.track_id = 0;
 		}
+		js_log('add clip' + clipObj.id +' to track: ');		
 		//set the first clip to current (maybe deprecate) 
 		if(clipObj.order==0){
 			if(!this.cur_clip)this.cur_clip=clipObj;
 		}		
-		this.default_track.addClip(clipObj, pos);		
+		this.tracks[ clipObj.track_id ].addClip(clipObj, pos);		
 	},
 	swapClipDesc: function(req_clipID, callback){
 		//hide all but the requested

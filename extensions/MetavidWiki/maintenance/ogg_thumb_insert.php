@@ -40,7 +40,7 @@ $duration = $args[3];
 $MV_Stream = MV_Stream::newStreamByName( $stream_name );
 $stream_id = $MV_Stream->getStreamId();
 
-$filedir = '../stream_images/' . substr( $stream_id, - 1 ) . '/' . $stream_id;
+$filedir = '../stream_images/' . MV_StreamImage::getRelativeImagePath( $stream_id );
 $dbw = $dbr = wfGetDB( DB_MASTER );
 for ( $i = 0; $i < $duration; $i += $interval ) {
   shell_exec( "ffmpeg -ss $i -i {$filename} -vcodec mjpeg -vframes 1 -an -f rawvideo -y {$filedir}/{$i}.jpg" );

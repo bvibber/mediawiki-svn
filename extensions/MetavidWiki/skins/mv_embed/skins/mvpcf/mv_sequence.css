@@ -136,6 +136,7 @@
 	list-style-type:none;
 	list-style-position:outside;
 	display:block;
+	margin-left:10px;
 }
 #seq_menu li{
 	display:inline;
@@ -148,34 +149,33 @@
 }
 .seq_control_container{
 	position:absolute;
-	top:40px;
-	padding:10px;
+	top:40px;	
 	overflow:auto; 
 	bottom:0px;
-	left:0px;
+	left:10px;
 	right:0px;
 }
-.seq_sub_control_container{
+.submenu_container{
+	left:110px;
+	overflow:auto;
 	position:absolute;
-	top:0px;
-	left:100px;
-	padding:10px;
-	overflow:auto; 
-	bottom:0px;
-	left:0px;
-	right:0px;
+	broder: solid thin gray;
 }
 .mv_submenu{	
 	position:absolute;
 	left:0px;
-	top:20px;
+	top:0px;
+	margin:2px;
 	width:100px;	
-	padding:10px;
 	list-style-type:none; 
-	bottom:0px;
+	bottom:0px;	
+	border:none;
 }
 .mv_submenu li{
 	border:solid thin gray;
+}
+.mv_submenu .mv_sub_selected{
+	border-right: none;
 }
 #seq_menu .mv_selected_item{
 	border-bottom:none;

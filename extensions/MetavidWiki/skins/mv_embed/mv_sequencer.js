@@ -18,10 +18,11 @@
  */
  
 gMsg['menu_clipedit'] = 'Edit Selected Resource';
-	gMsg['sm_inoutpoints']	='Set In-Out points';
-	gMsg['sm_panzoom']		='Pan zoom Controls';
-	gMsg['sm_overlays']		='Overlays';
-	gMsg['sm_audio']		='Audio Control';
+	gMsg['sc_fileopts']		='Clip Detail';
+	gMsg['sc_inoutpoints']	='Set In-Out points';
+	gMsg['sc_panzoom']		='Pan zoom Controls';
+	gMsg['sc_overlays']		='Overlays';
+	gMsg['sc_audio']		='Audio Control';
 
 gMsg['menu_cliplib'] = 'Add Resource';
 gMsg['menu_transition'] = 'Transitions Effects';
@@ -98,7 +99,8 @@ mvSequencer.prototype = {
 		'clipedit':{
 			'd':1,
 			'submenu':{
-				'inoutpoints':1,
+				'fileopts':1,
+				'inoutpoints':0,
 				'panzoom':0,				
 				'overlays':0,
 				'audio':0		
@@ -130,7 +132,7 @@ mvSequencer.prototype = {
 			if(sequencerDefaultValues[i]){ //make sure its a valid property
 				this[i]=initObj[i];
 			}
-		}		
+		}
 		if(this.sequence_container_id==null)
 			return js_log('Error: no sequence_container_id');
 			
@@ -194,15 +196,15 @@ mvSequencer.prototype = {
 												
 		//else check for source based sequence editor (a clean page load of the editor) 
 		if( this.mv_pl_src != 'null' ) {
-			js_log( ' pl src:: '+ this.mv_pl_src );			
-			var src_attr=' src="'+ this.mv_pl_src+'" ';		
+			js_log( ' pl src:: ' + this.mv_pl_src );			
+			var src_attr=' src="' + this.mv_pl_src+'" ';		
 		}else{
 			js_log( ' null playlist src .. (start empty) '); 
 			var src_attr='';
 		}			
 		$j('#'+this.video_container_id).html('<playlist ' + src_attr +
-			' style="width:'+this.video_width+'px;height:'+this.video_height+'px;" '+
-			' sequencer="true" id="'+this.plObj_id+'" />');
+			' style="width:' + this.video_width + 'px;height:' + this.video_height + 'px;" '+
+			' sequencer="true" id="' + this.plObj_id + '" />');
 		 
 		rewrite_by_id( this.plObj_id );	
 		setTimeout(this.instance_name +'.checkReadyPlObj()', 25);		
@@ -234,7 +236,7 @@ mvSequencer.prototype = {
 			//else set the default sub menu to loading:
 			for(var j in this.menu_items[i].submenu){
 				if(this.menu_items[i].submenu[j])
-					$j('#'+j+'_sc').html( getMsg('loading_txt') );
+					$j('#sc_'+j).html( getMsg('loading_txt') );
 			}
 		}				
 		var this_seq = this;
@@ -252,12 +254,12 @@ mvSequencer.prototype = {
 						//just set the default item
 						for(var j in menu_item.submenu){
 							if( menu_item.submenu[j] )
-								$j('#'+j+'_sc').html( data[i] );
+								$j('#sc_'+j).html( data[i] );
 						}
 					}else if(typeof data[i] == 'object'){						
 						//see if we have sub data for each sub-menu item
 						for(var j in data[i]){
-							$j('#'+j+'_sc').html( data[i][j] );
+							$j('#sc_'+j).html( data[i][j] );
 						}
 					}
 				}else{
@@ -445,7 +447,7 @@ mvSequencer.prototype = {
 		//(avoid so much hmtl in js? or keep in js to improve protabillity of sequencer? ) 
 	
 		$j.each(this.menu_items, function(inx, menu_item){
-			var disp_style = (menu_item.d)?'block':'none';
+			var disp_style = (menu_item.d)?'inline':'none';
 			var sel_class = (menu_item.d)?'class="mv_selected_item"':''; 
 			menu_html+='<li '+sel_class+' id="mv_menu_item_'+inx+'">' + getMsg('menu_' + inx ) +'</li>';						
 			item_containers += '<div class="seq_control_container" id="' + inx + 
@@ -454,18 +456,17 @@ mvSequencer.prototype = {
 					//check for submenu and add to item container		
 					var sub_menu_html='';			
 					if( typeof menu_item.submenu != 'undefined'){						
-						sub_menu_html+= '<ul style="position:abolute;left:0px;width:100px;" id="mv_submenu_' + inx +'" class="mv_submenu">'; 
+						sub_menu_html+= '<ul id="mv_submenu_' + inx +'" class="mv_submenu">'; 
 						$j.each(menu_item.submenu, function(subInx, sub_menu_item){
 							var disp_style = (menu_item.d)?'block':'none';
-							var sub_sel_class = (sub_menu_item.d)?'class="mv_selected_item"':'';
-							 
+							var sub_sel_class = (sub_menu_item==1)?'class="mv_sub_selected"':'';							 
 							sub_menu_html+= '<li ' + sub_sel_class + ' id="mv_sub_menu_item_' + subInx + '">' + 
-								getMsg('sm_' + subInx ) + '</li>'; 	
-							item_containers+= '<div class="seq_sub_control_container" id="' + subInx+ 
-								'_sc" style="display:' + disp_style +';"></div>';
+								getMsg('sc_' + subInx ) + '</li>'; 	
+							item_containers+= '<div class="submenu_container" id="sc_' + subInx+'" '+
+								' style="display:' + disp_style +';"></div>';
 						});
 						sub_menu_html+= '</ul>';						
-					}																
+					}
 				item_containers+= sub_menu_html + '</div>';
 		});
 		menu_html+='</ul>';		
@@ -519,7 +520,7 @@ mvSequencer.prototype = {
 				this_seq.key_shift_down = false;
 				
 			if( e.which == 17)
-				this_seq.key_ctrl_down = true;			
+				this_seq.key_ctrl_down = false;			
 		});
 	},
 	update_tl_hook:function(jh_time_ms){			
@@ -641,6 +642,8 @@ mvSequencer.prototype = {
 		$j('#modalbox').show();
 	},
 	pasteClipBoardClips:function(){
+		//query the server for updated clipboard
+		
 		//paste before the "current clip" 
 		this.addClips(this.clipboard, this.plObj.cur_clip.order );
 	},
@@ -649,10 +652,24 @@ mvSequencer.prototype = {
 		//set all the selected clips
 		this.clipboard = new Array();
 		$j('.mv_selected_clip').each(function(){
-			//add each clip to the clip board:
-			var track_clip = $j(this).parent().attr('id').replace('track_','').replace('clip_','').split('_');			
-			var cur_clip = this_seq.plObj.tracks[ track_clip[0] ].clips[ track_clip[1]];	
+			//add each clip to the clip board:						
+			var cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );
 			this_seq.clipboard.push( cur_clip.getAttributeObj() );
+			//upload clipboard to the server
+			if( parseUri(  document.URL ).host != parseUri( this_seq.plObj.interface_url ).host ){
+				js_log('error: presently we can\'t copy clips across domains'); 
+			}else{
+				var req_url = this.plObj.interface_url + '?action=ajax&rs=mv_seqtool_clipboard&rsargs[]=copy';
+				$j.ajax({
+					type: "POST",
+					url:req_url,
+					data: $j.param( { "clipboard_data":this_seq.clipboard } ),
+					success:function(data){		
+						//callback( data );
+						js_log('did clipboard push ' + data);
+					}
+				});
+			}			
 		});		 
 	},
 	cutSelectedClips:function(){
@@ -791,7 +808,7 @@ mvSequencer.prototype = {
 	},
 	//adds tracks 
 	add_track:function(inx, track){
-		
+	
 	},
 	//toggle cut mode (change icon to cut)
 	cut_mode:function(){
@@ -816,7 +833,7 @@ mvSequencer.prototype = {
 		var this_seq = this;
 		//inject the tracks into the timeline (if not already there)
 		for(var track_id in this.plObj.tracks){	
-			if(track_inx==track_id || typeof track_inx=='undefined'){
+			if( track_inx==track_id || typeof track_inx=='undefined' ){
 				//empty out the track container: 
 				//$j('#container_track_'+track_id).empty();
 				var track_html=droppable_html='';		
@@ -911,36 +928,63 @@ mvSequencer.prototype = {
 				});
 				
 				//apply onClick edit controls: 
-				$j('.mv_clip_thumb').click(function(){
-					var multi_clip_selected = false;
-					//if only a single clip is selected re-add
-					if( $j(".mv_selected_clip").length > 1 )
-						multi_clip_selected=true;
-					
+				$j('.mv_clip_thumb').click(function(){								
 					var cur_clip_click = this;
 					//if not in multi select mode remove all existing selections 
-					//(except for the current click which is hanndled down below)   				
-					if( ! this_seq.key_shift_down ){											
-						$j('.mv_selected_clip').each(function(){							
+					//(except for the current click which is handled down below)
+					js_log(' ks: ' + this_seq.key_shift_down + '  ctrl_down:' +this_seq.key_ctrl_down);
+					if( ! this_seq.key_shift_down && ! this_seq.key_ctrl_down){											
+						$j('.mv_selected_clip').each(function(inx, selected_clip){							
 							if( $j(this).parent().attr('id') != $j(cur_clip_click).parent().attr('id') 
-								|| multi_clip_selected ){									
-								$j(this).removeClass("mv_selected_clip");
-								$j('#' + $j(this).parent().attr("id") + '_adj').fadeOut("fast");
+								|| ( $j('.mv_selected_clip').length > 1 ) ){
+									$j(this).removeClass("mv_selected_clip");
+									$j('#' + $j(this).parent().attr("id") + '_adj').fadeOut("fast");
 							}
 						});	
-					}													
-					
-					//jump to clip time
-					var track_clip_ids = $j(this).parent().attr('id').replace('track_','').replace('clip_','').split('_');		
-					js_log(' updateCurrentClip: ' + 	track_clip_ids[0] +' ' +  track_clip_ids[1] );
-					this_seq.plObj.updateCurrentClip( this_seq.plObj.tracks[ track_clip_ids[0] ].clips[ track_clip_ids[1] ] );
-					if( $j(this).hasClass("mv_selected_clip") ){								
+					}						
+																
+					//jump to clip time 
+					var sClipObj = this_seq.getClipFromSeqID( $j(this).parent().attr('id') ); 												
+					this_seq.plObj.updateCurrentClip( sClipObj  );
+					if( $j(this).hasClass("mv_selected_clip") ){
 						$j(this).removeClass("mv_selected_clip");
 						$j('#' + $j(this).parent().attr("id") + '_adj').fadeOut("fast");
 					}else{															
 						$j(this).addClass('mv_selected_clip');						
 						$j('#' + $j(this).parent().attr("id") + '_adj').fadeIn("fast");
-					}					
+					}	
+					//if shift select is down select the inbetween clips 
+					if( this_seq.key_shift_down ){
+						//get the min max of current selection (within the current track)
+						var max_order = 0;
+						var min_order = 999999999999999; 
+						$j('.mv_selected_clip').each(function(){
+							cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );							
+							//get min max
+							if(cur_clip.order < min_order)
+								min_order = cur_clip.order;
+							if(cur_clip.order > max_order)
+								max_order = cur_clip.order;
+						});
+						//select all non-selected between max or min
+						js_log('sOrder: ' + sClipObj.order + ' min:' + min_order + ' max:'+ max_order);
+						// ( only look in the current track )
+						if( sClipObj.order <= min_order ){
+							$j('#container_track_' + sClipObj.track_id +' .mv_clip_thumb').filter(':not(.mv_selected_clip)').each(function(){
+								var cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );
+								if( cur_clip.order > sClipObj.order && cur_clip.order < max_order)	
+									$j(this).addClass('mv_selected_clip');
+							});
+						}
+						if( sClipObj.order >= max_order ){							
+							$j('#container_track_' + sClipObj.track_id +' .mv_clip_thumb').filter(':not(.mv_selected_clip)').each(function(){
+								var cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );
+								if( cur_clip.order > min_order && cur_clip.order < max_order)
+									$j(this).addClass('mv_selected_clip');
+							});
+						}
+					}
+									
 				});
 				//set up key binding "escape" and drag to deselect
 
@@ -1078,6 +1122,11 @@ mvSequencer.prototype = {
 			}
 			//debugger;
 		}
+	},
+	getClipFromSeqID:function( clip_seq_id ){
+		js_log('get id from: ' + clip_seq_id);
+		var ct = clip_seq_id.replace('track_','').replace('clip_','').split('_');		
+		return this.plObj.tracks[ ct[0] ].clips[ ct[1] ];
 	},
 	//renders clip frames
 	render_clip_frames:function(clip, frame_offset_count){
