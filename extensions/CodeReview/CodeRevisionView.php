@@ -66,13 +66,10 @@ class CodeRevisionView extends CodeView {
 		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName().'/'.$this->mRev->getId() );
 
 		$html = Xml::openElement( 'form', array( 'action' => $special->getLocalUrl(), 'method' => 'post' ) );
-		$html .= '<div>' .
-			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
-			' ' .
-			Xml::submitButton( wfMsg( 'code-rev-submit-next' ), array( 'name' => 'wpSaveAndNext' ) ) .
-			' ' .
-			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
-			'</div>';
+
+		if( $wgUser->isAllowed('codereview-post-comment') ) {
+			$html .= $this->addActionButtons();
+		}
 		
 		$html .= $this->formatMetaData( $fields );
 
@@ -97,14 +94,9 @@ class CodeRevisionView extends CodeView {
 				"});</script>\n";
 		}
 		
-		$html .= '<div>' .
-			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
-			' ' .
-			Xml::submitButton( wfMsg( 'code-rev-submit-next' ), array( 'name' => 'wpSaveAndNext' ) ) .
-			' ' .
-			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
-			'</div>' . 
-			'</form>';
+		if( $wgUser->isAllowed('codereview-post-comment') ) {
+			$html .= $this->addActionButtons();
+		}
 			
 		$changes = $this->formatPropChanges();
 		if( $changes ) {
@@ -456,6 +448,16 @@ class CodeRevisionView extends CodeView {
 			$text .
 			'</textarea>' .
 			'</div>' .
+			'</div>';
+	}
+
+	protected function addActionButtons() {
+		return '<div>' .
+			Xml::submitButton( wfMsg( 'code-rev-submit' ), array( 'name' => 'wpSave' ) ) .
+			' ' .
+			Xml::submitButton( wfMsg( 'code-rev-submit-next' ), array( 'name' => 'wpSaveAndNext' ) ) .
+			' ' .
+			Xml::submitButton( wfMsg( 'code-rev-comment-preview' ), array( 'name' => 'wpPreview' ) ) .
 			'</div>';
 	}
 }
