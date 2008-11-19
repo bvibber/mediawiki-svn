@@ -5,6 +5,8 @@
 $wgCustomToolbarMessages = array();
 
 $wgCustomToolbarMessages['en'] = array(
+	'ct-desc' => 'Adds an extensible toolbar',
+
 	'ct_bold_sample'   => "Bold text",
 	'ct_bold_tip_ins'  => "Insert bold text",
 	'ct_bold_tip_wrap' => "Make this text bold",

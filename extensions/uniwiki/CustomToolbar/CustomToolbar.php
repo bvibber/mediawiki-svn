@@ -21,10 +21,11 @@ if (!defined('MEDIAWIKI'))
 	die();
 
 $wgExtensionCredits['other'][] = array(
-	'name'        => 'CustomToolbar',
-	'author'      => 'Mark Johnston, Adam Mckaig, Evan Wheeler',
-	'version'     => '0.1',
-	'description' => 'Extension to build an extensible toolbar for MediaWiki.'
+	'name'           => 'CustomToolbar',
+	'author'         => 'Mark Johnston, Adam Mckaig, Evan Wheeler',
+	'version'        => '0.1',
+	'description'    => 'Extension to build an extensible toolbar for MediaWiki',
+	'descriptionmsg' => 'ct-desc',
 );
 
 /* ---- INTERNATIONALIZATION ---- */
