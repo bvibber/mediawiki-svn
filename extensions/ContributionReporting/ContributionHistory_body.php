@@ -49,7 +49,7 @@ class ContributionHistory extends SpecialPage {
 				array(
 					'href' => $title->getFullURL( 'offset=' . $prevOffset ),
 				),
-				wfMsg( 'contrib-hist-previous' )
+				$this->msg( 'contrib-hist-previous' )
 			);
 		}
 		if( $nextOffset > 0 ) {
@@ -57,7 +57,7 @@ class ContributionHistory extends SpecialPage {
 				array(
 					'href' => $title->getFullURL( 'offset=' . $nextOffset ),
 				),
-				wfMsg( 'contrib-hist-next' )
+				$this->msg( 'contrib-hist-next' )
 			);
 		}
 		$pagingDiv = Xml::openElement( 'div',
