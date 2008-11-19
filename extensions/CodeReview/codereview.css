@@ -68,6 +68,9 @@ table.mw-codereview-meta td {
 .mw-codereview-status-reverted:hover td {
 	background: #66bbff !important;
 }
+.mw-codereview-status-deferred td {
+	color: #666;
+}
 
 /* Diffs */
 .mw-codereview-diff ins {
