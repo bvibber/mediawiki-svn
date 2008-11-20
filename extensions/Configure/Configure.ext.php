@@ -143,7 +143,7 @@ class WebExtension {
 		}
 		$use = wfMsgExt( 'configure-ext-use', array( 'parseinline' ) );
 		$ret .= "<h2>{$use}</h2>\n";
-		$ret .= "<table class=\"configure-table\"><tr><td>\n";
+		$ret .= "<table class=\"configure-table configure-table-ext\"><tr><td>\n";
 		$checkName = $this->getCheckName();
 		$ret .= Xml::checkLabel( wfMsg( 'configure-ext-use-extension' ), $checkName, $checkName, $this->isActivated() );
 		$ret .= "</td></tr>\n";
