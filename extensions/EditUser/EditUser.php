@@ -20,7 +20,7 @@ if(!file_exists($dir . substr($wgVersion, 0, 4) . '/EditUser_body.php')) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'EditUser',
-	'version'        => '1.5.0',
+	'version'        => '1.5.1',
 	'author'         => 'Ryan Schmidt',
 	'description'    => 'Allows privileged users to edit other users\' preferences',
 	'descriptionmsg' => 'edituser-desc',
@@ -38,3 +38,19 @@ $wgSpecialPageGroups['EditUser'] = 'users';
 #Default group permissions
 $wgGroupPermissions['bureaucrat']['edituser'] = true;
 $wgGroupPermissions['sysop']['edituser-exempt'] = true;
+
+#Debug mode, enable only if you are testing this extension or if you are having an issue
+$wgEditUserDebug = false;
+$wgEditUserDebugLog = $dir . 'debug.log';
+
+$wgHooks['SavePreferences'][] = 'efEditUserDebug';
+
+function efEditUserDebug($eu, $user, &$msg, $old) {
+	global $wgEditUserDebug, $wgEditUserDebugLog;
+	if(!$wgEditUserDebug || !$eu instanceOf EditUser)
+		return true;
+	wfErrorLog("\n===== BEGIN EDITUSER REQUEST =====\nTime: "
+		.wfTime()."\nCurrent user state: ".var_export($old, true)
+		."\nNew user state: ".var_export($user->mOptions, true), $wgEditUserDebugLog);
+	return true;
+}

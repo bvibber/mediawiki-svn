@@ -16,7 +16,7 @@ class EditUser extends SpecialPage {
 	 * Load some values
 	 */
 	function loadGlobals( $par ) {
-		global $wgContLang, $wgAllowRealName, $wgRequest;
+		global $wgContLang, $wgAllowRealName, $wgRequest, $wgUser;
 		$request = $wgRequest;
 		$this->user = User::newFromName($par);
 		$this->user->load();
@@ -217,7 +217,7 @@ class EditUser extends SpecialPage {
 		global $wgAuth, $wgEmailConfirmToEdit;
 
 
-		if ( ($this->mNewpass !== '' || $this->mOldpass !== '' ) && $wgAuth->allowPasswordChange() ) {
+		if ( $this->mNewpass !== '' && $wgAuth->allowPasswordChange() ) {
 			if ( $this->mNewpass != $this->mRetypePass ) {
 				wfRunHooks( 'PrefsPasswordAudit', array( $this->user, $this->mNewpass, 'badretype' ) );
 				$this->mainPrefsForm( 'error', wfMsg( 'badretype' ) );
@@ -1111,6 +1111,7 @@ class EditUser extends SpecialPage {
 		$wgOut->addHTML( "
 	<div id='prefsubmit'>
 	<div>
+		<input type='hidden' name='username' value=\"{$this->target}\" />
 		<input type='submit' name='wpSaveprefs' class='btnSavePrefs' value=\"" . wfMsgHtml( 'saveprefs' ) . '"'.$skin->tooltipAndAccesskey('save')." />
 		<input type='submit' name='wpReset' value=\"" . wfMsgHtml( 'resetprefs' ) . "\" />
 	</div>

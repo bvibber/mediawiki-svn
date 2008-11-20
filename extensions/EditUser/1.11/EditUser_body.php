@@ -17,7 +17,7 @@ class EditUser extends SpecialPage {
 	 * Load some values
 	 */
 	function loadGlobals( $par ) {
-		global $wgContLang, $wgAllowRealName, $wgRequest;
+		global $wgContLang, $wgAllowRealName, $wgRequest, $wgUser;
 		$request = $wgRequest;
 		$this->mQuickbar = $request->getVal( 'wpQuickbar' );
 		$this->mNewpass = $request->getVal( 'wpNewpass' );
@@ -994,6 +994,7 @@ class EditUser extends SpecialPage {
 		$wgOut->addHTML( "
 	<div id='prefsubmit'>
 	<div>
+		<input type='hidden' name='username' value=\"{$this->target}\" />
 		<input type='submit' name='wpSaveprefs' class='btnSavePrefs' value=\"" . wfMsgHtml( 'saveprefs' ) . '"'.$skin->tooltipAndAccesskey('save')." />
 		<input type='submit' name='wpReset' value=\"" . wfMsgHtml( 'resetprefs' ) . "\" />
 	</div>

@@ -1008,6 +1008,7 @@ class EditUser extends SpecialPage {
 		$wgOut->addHTML( "
 	<div id='prefsubmit'>
 	<div>
+		<input type='hidden' name='username' value=\"{$this->target}\" />
 		<input type='submit' name='wpSaveprefs' class='btnSavePrefs' value=\"" . wfMsgHtml( 'saveprefs' ) . '"'.$skin->tooltipAndAccesskey('save')." />
 		<input type='submit' name='wpReset' value=\"" . wfMsgHtml( 'resetprefs' ) . "\" />
 	</div>
