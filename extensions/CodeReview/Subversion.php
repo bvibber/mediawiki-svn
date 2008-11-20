@@ -98,7 +98,7 @@ class SubversionShell extends SubversionAdaptor {
 		if( $rev )
 			$path .= "@$rev";
 		$command = sprintf(
-			"svn cat %s %s",
+			"svn cat --non-interactive %s %s",
 			$this->getExtraArgs(),
 			wfEscapeShellArg( $this->mRepo . $path ) );
 
@@ -107,7 +107,7 @@ class SubversionShell extends SubversionAdaptor {
 
 	function getDiff( $path, $rev1, $rev2 ) {
 		$command = sprintf(
-			"svn diff -r%d:%d %s %s",
+			"svn diff -r%d:%d --non-interactive %s %s",
 			intval( $rev1 ),
 			intval( $rev2 ),
 			$this->getExtraArgs(),
@@ -262,7 +262,7 @@ class SubversionShell extends SubversionAdaptor {
 	 */
 	private function getExtraArgs() {
 		global $wgSubversionUser, $wgSubversionPassword;
-		if($wgSubversionUser && $wgSubversionPassword) {
+		if($wgSubversionUser) {
 			return '--username ' . wfEscapeShellArg($wgSubversionUser)
 				. ' --password ' . wfEscapeShellArg($wgSubversionPassword);
 		}
