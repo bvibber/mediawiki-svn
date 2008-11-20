@@ -16,3 +16,8 @@ $aliases['hu'] = array(
 	'EmergencyDeSysop' => array( 'Vészhelyzeti adminisztrátori jog elvonás' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'EmergencyDeSysop' => array( 'Noutprozedur fir Administrateurrechter ewechzehuelen' ),
+);
+

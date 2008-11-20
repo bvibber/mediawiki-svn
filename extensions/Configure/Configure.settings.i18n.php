@@ -516,6 +516,13 @@ $messages['qqq'] = array(
 	'configure-setting-wgUseCommaCount' => 'Do not translate "(true)" and "(false)"',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'configure-setting-wgSitename' => 'اسم السايت',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -1305,6 +1305,7 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
  */
 $wgGoogleMapsMessages['grc'] = array(
 	'gm-no-zoom-control' => 'Οὐδέν',
+	'gm-search' => 'Ζητεῖν',
 	'gm-moon' => 'Σελήνη',
 );
 

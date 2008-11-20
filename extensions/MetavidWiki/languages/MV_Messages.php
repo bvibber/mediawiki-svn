@@ -1610,6 +1610,7 @@ $messages['got'] = array(
 $messages['grc'] = array(
 	'mv_duration_label' => 'Διάρκεια',
 	'mv_upload_file' => 'Ἐπιφορτίζειν ἀρχεῖον',
+	'mv_tool_search' => 'Ζητεῖν',
 	'mv_tool_embed' => 'Ἐμβαπτίζειν',
 	'mv_search_categories' => 'Κατηγορίαι',
 	'mv_search_category' => 'Κατηγορία',

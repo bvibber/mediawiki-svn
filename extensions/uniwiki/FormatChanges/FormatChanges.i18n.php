@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'formatchanges-editedby' => 'edited by',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'formatchanges-anonymous' => 'مش معروف',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -36,6 +43,26 @@ $messages['gl'] = array(
 	'formatchanges-editedby' => 'editado por',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'formatchanges-desc' => 'Format ulang kaca [[Special:RecentChanges|owah-owahan pungkasan]]',
+	'formatchanges-anonymous' => 'Tanpa aran / anonim',
+	'formatchanges-createdby' => 'kacipta déning',
+	'formatchanges-editedby' => 'kasunting déning',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'formatchanges-desc' => 'Reformatéiert déi [[Special:RecentChanges|rezent Ännerungen]]',
+	'formatchanges-anonymous' => 'Anonym',
+	'formatchanges-createdby' => 'ugeluecht vum',
+	'formatchanges-editedby' => 'geännert vum',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -44,5 +71,15 @@ $messages['nl'] = array(
 	'formatchanges-anonymous' => 'Anoniem',
 	'formatchanges-createdby' => 'gemaakt door',
 	'formatchanges-editedby' => 'bewerkt door',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'formatchanges-desc' => 'Zmení formát [[Special:RecentChanges|Posledných úprav]]',
+	'formatchanges-anonymous' => 'Anonym',
+	'formatchanges-createdby' => 'vytvoril',
+	'formatchanges-editedby' => 'upravil',
 );
 

@@ -423,9 +423,20 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'hiderevision' => 'Sakrivanje revizija zauvijek',
+	'hiderevision-desc' => 'Sakrij pojedinačne revizije od svih korisnika iz normalnih razloga i sl.',
+	'group-oversight' => 'Nadzornici',
 	'group-oversight-member' => 'nadzornik',
+	'right-oversight' => 'Pregled ranije sakrivene revizije',
+	'right-hiderevision' => 'Pregledavanje i vraćanje revizija sakrivenih od administratora',
+	'hiderevision-prompt' => 'Broj revizije koja se uklanja:',
 	'hiderevision-continue' => 'Nastavi',
+	'hiderevision-reason' => 'Razlog (biće zapisan u zapisnik):',
+	'hiderevision-submit' => 'Sakrij ove podatke stalno',
 	'hiderevision-tab' => 'Sakrij reviziju',
+	'hiderevision-status' => 'Revizija $1: $2',
+	'hiderevision-success' => 'Uspješno arhivirano i obrisano.',
+	'hiderevision-error-missing' => 'Nije pronađena u bazi podataka.',
 	'hiderevision-error-delete' => 'Nije moguće arhivirati, da nije ranije obrisano?',
 	'oversight' => 'Nadzor',
 	'oversight-view' => 'detalji',
@@ -1649,10 +1660,10 @@ $messages['ko'] = array(
 $messages['ksh'] = array(
 	'hiderevision' => 'Versione op Dor versteche',
 	'hiderevision-desc' => 'Verstich bestemmpte Versione, zem Beispill met verkeehte udder unjenehme päsönlesche Enfomazione.',
-	'group-oversight' => 'Verstechere',
-	'group-oversight-member' => 'Verstecher',
-	'grouppage-oversight' => '{{ns:project}}:Versteche',
-	'right-oversight' => 'Beloor en verstoche Version',
+	'group-oversight' => 'Sigge-Versione-Verstechere',
+	'group-oversight-member' => 'Sigge-Versione-Verstecher',
+	'grouppage-oversight' => '{{ns:project}}:Sigge-Versione-Verstecher',
+	'right-oversight' => 'Sigge ier verstoche Versione beloore',
 	'right-hiderevision' => 'Versione vun Sigge beloore un zeröck holle, di sujaa för de Wiki-Köbesse verstoche sin',
 	'hiderevision-prompt' => 'Nommer fun dä Version zom Versteche:',
 	'hiderevision-continue' => 'Wigger',
@@ -1683,7 +1694,7 @@ fun dä Sigg han. Entweder
 * de Sigg es fottjeschmesse, udder
 * de verstoche Version wohr de eetste Version fun dä Sigg',
 	'oversight-log-hiderev' => 'Han en Version fun „$1“ verstoche',
-	'oversight' => 'Versteche',
+	'oversight' => 'Sigge ier Versione Versteche',
 	'oversight-view' => 'Einzelheite',
 	'oversight-difference' => '(Ongerscheed zwesche dä hee un de letzte Version, di noch ze sinn es)',
 	'oversight-prev' => 'De letzte Version doför',
@@ -1693,6 +1704,7 @@ verstoche wode sin.
 Wä di Enfomazione wigger jitt, weed dat Rääsch se aanzeloore,
 un wat domet zosamme hängk, flöck quitt.',
 	'oversight-legend' => 'Sök em Logboch fum Versione Versteche',
+	'oversight-oversighter' => 'Sigge-Versione-Verstecher:',
 );
 
 /** Latin (Latina)

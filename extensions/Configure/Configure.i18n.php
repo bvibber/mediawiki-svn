@@ -1216,6 +1216,7 @@ $messages['grc'] = array(
 	'configure-section-email' => 'Ἠλεκτρονικαὶ ἐπιστολαί',
 	'configure-section-category' => 'Κατηγορίαι',
 	'configure-section-users' => 'Χρώμενοι',
+	'configure-section-search' => 'Ζητεῖν',
 	'configure-section-misc' => 'Λοιπά',
 	'configure-section-mw-extensions' => 'Ἐπεκτάσεις MediaWiki',
 	'configure-select-wiki' => 'Ϝικι-επιλογή',

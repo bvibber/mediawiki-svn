@@ -91,6 +91,14 @@ $messages['jv'] = array(
 	'layouts_tagline' => "Kaca iki kacipta nganggo rancangan '''$1'''.",
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'layouts_continue' => 'Weider',
+	'layouts_unknown' => 'Onbekannt',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -115,5 +123,20 @@ $messages['pt-br'] = array(
 	'layouts_choosecategory' => 'Escolher uma Categoria para o $1:',
 	'layouts_unknown' => 'Desconhecido',
 	'layouts_tagline' => 'Esta página foi gerada pelo layout <strong>$1</strong>.',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'layouts-desc' => 'Naplní novo vytvorené stránky rozloženiami, ktoré možno upravovať, aby sa posilnila spoločná štruktúra stránok',
+	'layouts_title' => 'Vytvoriť stránku',
+	'layouts_chooselayout' => 'Vyberte rozloženie pre $1:',
+	'layouts_nolayout' => 'Žiadne rozloženie',
+	'layouts_continue' => 'Pokračovať',
+	'layouts_choosecategory' => 'Vyberte kategóriu pre $1:',
+	'layouts_unknown' => 'Neznáme',
+	'layouts_tagline' => "Túto stránku vytvorilo rozloženie '''$1'''.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 

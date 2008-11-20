@@ -41,6 +41,13 @@ $messages['nl'] = array(
 	'mootools12core-desc' => 'Voegt mootools-1.2-core-yc.js toe aan iedere pagina',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'mootools12core-desc' => 'Pridáva mootools-1.2-core-yc.js na každú stránku',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

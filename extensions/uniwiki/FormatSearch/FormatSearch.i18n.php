@@ -41,3 +41,10 @@ $messages['nl'] = array(
 	'formatsearch-desc' => 'Schoont de zoekresultatenpagina op',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'formatsearch-desc' => 'Vyčistí stránku s výsledkami vyhľadávania',
+);
+

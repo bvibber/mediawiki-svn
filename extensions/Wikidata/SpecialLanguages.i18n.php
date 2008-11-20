@@ -1410,6 +1410,7 @@ $wdMessages['grc'] = array(
 	'ow_dm_OK' => 'εἶεν',
 	'ow_ClassAttributeType' => 'Τύπος',
 	'ow_Language' => 'Γλῶττα',
+	'ow_OptionAttributeOptions' => 'Ἐπιλογαί',
 );
 
 /** Manx (Gaelg)

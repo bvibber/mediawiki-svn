@@ -791,6 +791,7 @@ $messages['grc'] = array(
 	'sign-email' => 'Ἡλεκτρονικὴ διεύθυνσις:',
 	'sign-viewfield-realname' => 'Ὄνομα',
 	'sign-viewfield-email' => 'Ἠλεκτρονικαὶ ἐπιστολαί',
+	'sign-viewfield-options' => 'Ἐπιλογαί',
 	'sign-viewfield-reviewcomment' => 'Σχόλιον',
 	'sign-review-comment' => 'Σχόλιον',
 );

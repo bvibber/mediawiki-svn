@@ -51,6 +51,18 @@ $messages['gl'] = array(
 	'createpage_submitbutton' => 'Enviar',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'createpage' => 'Eng Säit uleeën',
+	'createpage-desc' => 'Setzt eng [Special:CreatePage|Spezialsäit]] derbäi fir Säiten unzeleeën',
+	'createpage_submitbutton' => 'Schécken',
+	'createpage_entertitle' => 'Gitt w.e.g. en Titel fir Är Säit un.',
+	'createpage_titleexists' => 'Eng Säit mam Titel [[$1]] gëtt et schonn.
+Wëll Dir déi Säit veränneren?',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

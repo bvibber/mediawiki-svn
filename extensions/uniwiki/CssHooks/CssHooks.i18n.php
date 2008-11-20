@@ -27,3 +27,10 @@ $messages['nl'] = array(
 	'csshooks-desc' => "Voegt CSS toe aan de HTML-uitvoer van pagina's voor betere vormgeving",
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'csshooks-desc' => 'Pridáva CSS do HTML výstupu stránok na zlepšenie štýlu',
+);
+

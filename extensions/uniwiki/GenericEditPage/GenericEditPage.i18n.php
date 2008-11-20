@@ -36,11 +36,23 @@ Add some using the tools on the right.', // on the right? How does that work in 
  * @author Ramsis II
  */
 $messages['arz'] = array(
+	'gep-emailsubject' => '[$1] اقتراح التصنيف: $2',
+	'gep-emailbody' => 'اليوزر "$1" اقترح التصنيف"$2" للموقع"$3".',
+	'gep-emailfailure' => 'متاسفين،الاقتراح بتاعك ماينفعش يتنفذ',
+	'gep-emailsuccess' => 'شكرا لاقتراحك التصنيف : $1.',
 	'gep-categories' => 'تصانيف',
 	'gep-addcategory' => 'ضيف تصنيف',
 	'gep-addcategorybutton' => 'ضيف',
 	'gep-suggestcategory' => 'اقترح تصنيف',
+	'gep-suggestcategorybutton' => 'تقديم',
+	'gep-sections' => 'اقسام',
+	'gep-sectionnotdisabled' => 'القسم دا ماينفعش يتعطل',
+	'gep-addsection' => 'ضيف قسم',
 	'gep-addsectionbutton' => 'ضيف',
+	'gep-classicmode' => 'وضع كلاسيكي',
+	'gep-genericmode' => 'الوضع العام',
+	'gep-nosectioninstructions' => 'ضيف شوية باستعمال الادوات الموجودة على اليمين',
+	'gep-nocategories' => 'لو سمحت تختار تصنيف واحد على الاقل قبل الحفظ',
 );
 
 /** German (Deutsch) */
@@ -138,10 +150,23 @@ Engada algunha usando as ferramentas da dereita.',
  * @author Pras
  */
 $messages['jv'] = array(
+	'gep-emailbody' => 'Panganggo "$1" nyaranaké kategori "$2" kanggo situs "$3".',
+	'gep-emailfailure' => 'Nyuwun pangapura, saran panjenengan ora bisa diprosès.',
 	'gep-addcategory' => 'Nambahaké kategori',
 	'gep-addcategorybutton' => 'Tambahaké',
 	'gep-suggestcategorybutton' => 'Kirim',
 	'gep-addsectionbutton' => 'Tambahaké',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'gep-emailbody' => 'De Benotzer "$1" huet d\'Kategorie "$2" fir de Site "$3" virgeschlo.',
+	'gep-emailfailure' => 'Pardon, Äre Virschlag konnt net verschafft ginn.',
+	'gep-emailsuccess' => "Merci datt Dir d'Kategorie: $1 virgeschlo hutt",
+	'gep-categories' => 'Kategorien',
+	'gep-addcategory' => 'Eng Kategorie derbäisetzen',
 );
 
 /** Dutch (Nederlands)
@@ -190,5 +215,31 @@ $messages['pt-br'] = array(
 	'gep-nosectioninstructions' => 'Não há seções nesta página.
 Use as ferramentas à direita para incluir algumas seções.',
 	'gep-nocategories' => 'Selecione, no mínimo, uma categoria antes de salvar',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'gep-desc' => 'Dopĺňa stránku na úpravy, aby bola používateľsky príjemnejšia',
+	'gep-emailsubject' => '[$1] Návrh kategórie: $2',
+	'gep-emailbody' => 'Používateľ „$1“ navrhol kategóriu „$2“ pre stránku „$3“.',
+	'gep-emailfailure' => 'Prepáčte, váš návrh nebolo možné spracovať.',
+	'gep-emailsuccess' => 'Ďakujeme za váš návrh kategórie: $1.',
+	'gep-categories' => 'Kategórie',
+	'gep-addcategory' => 'Pridať kategóriu',
+	'gep-addcategorybutton' => 'Pridať',
+	'gep-suggestcategory' => 'Navrhnúť kategóriu',
+	'gep-suggestcategorybutton' => 'Odoslať',
+	'gep-sections' => 'Sekcie',
+	'gep-sectionnotdisabled' => 'Túto sekciu nemožno vypnúť',
+	'gep-addsection' => 'Pridať sekciu',
+	'gep-addsectionbutton' => 'Pridať',
+	'gep-classicmode' => 'Klasický režim',
+	'gep-genericmode' => 'Všeobecný režim',
+	'gep-nosectioninstructions' => 'Na tejto stránke nie sú žiadne sekcie.
+Pomocou nástrojov vpravo ich môžete pridať.',
+	'gep-nocategories' => 'Prosím, vyberte pred uložením aspoň jednu kategóriu.',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 

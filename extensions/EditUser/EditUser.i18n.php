@@ -308,10 +308,12 @@ $messages['gl'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'edituser-username' => 'Ὄνομα',
+	'edituser-dosearch' => 'Ζητεῖν',
 );
 
 /** Manx (Gaelg)

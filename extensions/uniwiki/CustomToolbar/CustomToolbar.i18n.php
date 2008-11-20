@@ -74,8 +74,14 @@ $wgCustomToolbarMessages['qqq'] = array(
  * @author Ramsis II
  */
 $wgCustomToolbarMessages['arz'] = array(
+	'ct_bold_caption' => 'خط تخين',
 	'ct_italic_caption' => 'خط مايل',
+	'ct_internal_sample' => 'اسم الصفحة',
+	'ct_image_caption' => 'ضيف صورة',
+	'ct_nowiki_caption' => 'مافيش ويكي',
+	'ct_submit' => 'روح!',
 	'ct_user_user' => 'يوزر',
+	'ct_user_sample' => 'اسم اليوزر',
 );
 
 /** German (Deutsch) */
@@ -185,6 +191,7 @@ $wgCustomToolbarMessages['gl'] = array(
  * @author Siebrand
  */
 $wgCustomToolbarMessages['nl'] = array(
+	'ct-desc' => 'Voegt een uitbreidbare toolbar toe',
 	'ct_bold_sample' => 'Vetgedrukte tekst',
 	'ct_bold_tip_ins' => 'Vetgedrukte tekt invoegen',
 	'ct_bold_tip_wrap' => 'Deze tekst vetgedrukt maken',

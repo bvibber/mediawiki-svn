@@ -999,6 +999,8 @@ $messages['bs'] = array(
 Glasanje otvoreno do 22. juna',
 	'boardvote_edits_many' => 'mnogi',
 	'group-boardvote' => 'Administratori glasanja za odbor',
+	'boardvote_blocked' => 'Vi ste blokirani na Vašoj matičnoj wiki.
+Blokirani korisnici ne mogu glasati.',
 	'boardvote_bot' => 'Na Vašem matičnom wikiju ste registrovani kao bot.
 Korisnički računi botova ne mogu glasati.',
 	'boardvote_welcome' => "Dobrodošao '''$1'''!",

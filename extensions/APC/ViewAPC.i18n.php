@@ -1208,6 +1208,7 @@ $messages['grc'] = array(
 	'viewapc-display-info' => 'Ὄνομα',
 	'viewapc-display-type' => 'Τύπος',
 	'viewapc-display-mtime' => 'Τετροποποιημένη',
+	'viewapc-ls-options-legend' => 'Ἐπιλογαί',
 	'viewapc-ls-submit' => 'Ἱέναι!',
 	'viewapc-ls-header-name' => 'Ὄνομα',
 	'viewapc-ls-sort-name' => 'Ὄνομα',

@@ -374,9 +374,11 @@ de todos os historiais. Resulta útil cando se subdivide unha páxina, etc.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'duplicator-options' => 'Ἐπιλογαί',
 	'duplicator-source' => 'Πηγή:',
 	'duplicator-dest' => 'Προορισμός:',
 );

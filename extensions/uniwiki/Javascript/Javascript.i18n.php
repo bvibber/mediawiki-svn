@@ -31,6 +31,13 @@ $messages['lb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'javascript-desc' => 'Voegt uniwiki.js met JacaScript-code die wordt gedeeld tussen de Uniwiki-uitbreidingen toe aan iedere pagina',
+	'javascript-desc' => 'Voegt uniwiki.js met JavaScript-code die wordt gedeeld tussen de Uniwiki-uitbreidingen toe aan iedere pagina',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'javascript-desc' => 'Pridáva uniwiki.js na každú stránku obsahujúci JavaScriptový kód spoločný pre rozšírenia Uniwiki',
 );
 

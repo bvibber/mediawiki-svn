@@ -15,3 +15,13 @@ $aliases['de'] = array(
 	'CreatePage' => array( 'Seite erstellen' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'CreatePage' => array( 'Säiten uleeën' ),
+);
+
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'CreatePage' => array( 'Skapa sida' ),
+);
+
