@@ -19,6 +19,8 @@ class EditUser extends SpecialPage {
 	function loadGlobals( $par ) {
 		global $wgContLang, $wgAllowRealName, $wgRequest, $wgUser;
 		$request = $wgRequest;
+		$this->user = User::newFromName($par);
+		$this->user->load();
 		$this->mQuickbar = $request->getVal( 'wpQuickbar' );
 		$this->mNewpass = $request->getVal( 'wpNewpass' );
 		$this->mRetypePass =$request->getVal( 'wpRetypePass' );
