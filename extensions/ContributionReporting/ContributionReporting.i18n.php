@@ -502,15 +502,16 @@ $messages['he'] = array(
 	'contribstats-contributions' => 'תורמים',
 	'contribstats-total' => 'סך הכל (בדולרים)',
 	'contribstats-avg' => 'ממוצע (בדולרים)',
-	'contribstats-min' => 'מינימום (בדולרים)',
+	'contribstats-med' => 'חציון (בדולרים)',
 	'contribstats-max' => 'מקסימום (בדולרים)',
 	'contribstats-percentage-ytd' => 'אחוז (מתחילת השנה)',
 	'contribstats-total-ytd' => 'סך הכל (מתחילת השנה)',
 	'fundraiserstatistics' => 'סטטיסטיקות ההתרמה',
 	'fundraiserstats-date' => 'תאריך',
+	'fundraiserstats-contributions' => 'תרומות',
 	'fundraiserstats-total' => 'סך הכל (בדולרים)',
 	'fundraiserstats-avg' => 'ממוצע (בדולרים)',
-	'fundraiserstats-min' => 'מינימום (בדולרים)',
+	'fundraiserstats-med' => 'חציון (בדולרים)',
 	'fundraiserstats-max' => 'מקסימום (בדולרים)',
 );
 
