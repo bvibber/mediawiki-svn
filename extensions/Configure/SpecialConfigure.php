@@ -54,8 +54,8 @@ class SpecialConfigure extends ConfigurationPage {
 	protected function showDiff() {
 		global $wgConf, $wgOut;
 		$wiki = $this->mWiki;
-		$old = array( $wiki => $wgConf->getCurrent( $wiki ) );
-		$new = array( $wiki => $this->conf );
+		$old = array( $wiki => $this->removeDefaults( $wgConf->getCurrent( $wiki ) ) );
+		$new = array( $wiki => $this->removeDefaults( $this->conf ) );
 		$diff = new CorePreviewConfigurationDiff( $old, $new, array( $wiki ) );
 		$diff->setViewCallback( array( $this, 'isSettingEditable' ) );
 		$wgOut->addHTML( $diff->getHtml() );
