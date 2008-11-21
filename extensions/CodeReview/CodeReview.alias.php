@@ -11,7 +11,7 @@ $aliases = array();
  * @author Brion Vibber
  */
 $aliases['en'] = array(
-	'Code' => array( 'Code' ),
+	'Code' => array( 'Code', 'CodeReview' ),
 	'RepoAdmin' => array( 'RepoAdmin' ),
 );
 
