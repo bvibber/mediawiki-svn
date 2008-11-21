@@ -1407,6 +1407,7 @@ Por favor, póñase en contacto cun operador ou administrador do servidor.',
  * @author LeighvsOptimvsMaximvs
  */
 $wdMessages['grc'] = array(
+	'ow_history' => 'Αἱ προτέραι',
 	'ow_dm_OK' => 'εἶεν',
 	'ow_ClassAttributeType' => 'Τύπος',
 	'ow_Language' => 'Γλῶττα',

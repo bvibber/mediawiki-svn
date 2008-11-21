@@ -797,7 +797,7 @@ $messages['fr'] = array(
 	'configure-setting-wgDisableCounters' => 'Désactiver les compteurs de visites',
 	'configure-setting-wgHitcounterUpdateFreq' => 'Intervalle de mise à jour des compteurs de visite',
 	'configure-setting-wgUseCommaCount' => "Utiliser la présence d'une virgule (true) ou d'un lien (false) comme méthode de comptage des pages",
-	'configure-setting-wgWantedPagesThreshold' => "Nombre minimum de liens qu'une page doit avoir avant d'être liste sur [[Special:Wantedpages]]",
+	'configure-setting-wgWantedPagesThreshold' => "Nombre minimum de liens qu'une page doit avoir avant d'être liste sur [[Special:WantedPages]]",
 	'configure-setting-wgDefaultSkin' => "Nom de l'habillage par défaut",
 	'configure-setting-wgSkipSkin' => 'Habillage interdit',
 	'configure-setting-wgSkipSkins' => 'Habillages interdit',
@@ -940,7 +940,9 @@ $messages['fr'] = array(
 	'configure-setting-wgUseTeX' => 'Activer TeX',
 	'configure-setting-wgRawHtml' => "Autoriser l'ajout d'HTML non vérifié dans des balises <nowiki><html>...</html></nowiki>.",
 	'configure-setting-wgXMLMimeTypes' => 'Tableau de types MIME détectables dans XML',
-	'configure-setting-wgMimeType' => 'Type MIME à envoyer',
+	'configure-setting-wgDocType' => 'Type de document à utiliser dans la déclaration DOCTYPE',
+	'configure-setting-wgDTD' => 'DTD de la déclaration DOCTYPE',
+	'configure-setting-wgMimeType' => 'Type MIME des pages',
 	'configure-setting-wgXhtmlDefaultNamespace' => 'Espace de noms XHTML par défaut',
 	'configure-setting-wgXhtmlNamespaces' => 'Autres espaces de noms XHTML',
 	'configure-setting-wgUseZhdaemon' => 'Utiliser ZhDaemon pour le traitement de texte en chinois',
@@ -1517,7 +1519,9 @@ $messages['nl'] = array(
 	'configure-setting-wgUseTeX' => 'TeX inschakelen',
 	'configure-setting-wgRawHtml' => 'Ruwe, ongecontroleerde HTML toestaan tussen de tags <nowiki><html>...</html></nowiki>',
 	'configure-setting-wgXMLMimeTypes' => 'Array met te herkennen XML mime-typen',
-	'configure-setting-wgMimeType' => 'Te verzenden MIME-type',
+	'configure-setting-wgDocType' => 'Documenttype dat gebruikt wordt in de DOCTYPE-declaratie',
+	'configure-setting-wgDTD' => 'DTD in de DOCTYPE-declaratie voor paginauitvoer',
+	'configure-setting-wgMimeType' => "Te verzenden MIME-type voor wikipagina's",
 	'configure-setting-wgXhtmlDefaultNamespace' => 'Standaard XHTML-naamruimte',
 	'configure-setting-wgXhtmlNamespaces' => 'Andere XHTML-naamruimten',
 	'configure-setting-wgUseZhdaemon' => 'ZhDaemon gebruiken voor het verwerken van Chinese tekst',
@@ -1624,6 +1628,13 @@ $messages['nl'] = array(
 	'configure-setting-wgProfileToDatabase' => 'Totals voor profiling wegschrijven naar de tabel profiling in de database',
 	'configure-setting-wgUDPProfilerHost' => 'Host voor UDP-profiler',
 	'configure-setting-wgUDPProfilerPort' => 'Poort voor UDP-profiler',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'configure-setting-wgSitename' => 'د وېبڅي نوم',
 );
 
 /** Slovak (Slovenčina)

@@ -646,7 +646,10 @@ $messages['got'] = array(
  * @author Crazymadlover
  */
 $messages['grc'] = array(
+	'mywhitelistpages' => 'Δέλτοι μου',
 	'whitelisttablemodifynone' => 'Οὐδέν',
+	'whitelisttableedit' => 'Μεταγράφειν',
+	'whitelistbadtitle' => 'Κακὸν τὸ ἐπώνυμον -',
 	'whitelistnever' => 'οὔποτε',
 );
 

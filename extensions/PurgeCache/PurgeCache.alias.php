@@ -34,6 +34,11 @@ $aliases['fr'] = array(
 	'PurgeCache' => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'PurgeCache' => array( 'Purgar a caché' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'PurgeCache' => array( 'Pufrowak wuprózdnić' ),

@@ -1215,6 +1215,7 @@ $messages['grc'] = array(
 	'configure-js-remove' => 'Διαγράφειν',
 	'configure-section-email' => 'Ἠλεκτρονικαὶ ἐπιστολαί',
 	'configure-section-category' => 'Κατηγορίαι',
+	'configure-section-specialpages' => 'Εἰδικαὶ δέλτοι',
 	'configure-section-users' => 'Χρώμενοι',
 	'configure-section-search' => 'Ζητεῖν',
 	'configure-section-misc' => 'Λοιπά',
@@ -1543,6 +1544,17 @@ Molimo stvorite ju ili promijenite za korištenje ekstenzije.',
  */
 $messages['hsb'] = array(
 	'viewconfig' => 'Wikijowu konfiguraciju sej wobhladać',
+);
+
+/** Hungarian (Magyar)
+ * @author Terik
+ */
+$messages['hu'] = array(
+	'configure' => 'Wiki konfigurálása',
+	'configure-desc-group' => 'Csoportok',
+	'configure-desc-key' => 'Kulcs',
+	'configure-desc-ns' => 'Névterek',
+	'configure-desc-val' => 'Érték',
 );
 
 /** Armenian (Հայերեն) */

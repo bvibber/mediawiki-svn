@@ -35,6 +35,11 @@ $aliases['de'] = array(
 	'LogEntry' => array( 'Logbucheintrag' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'LogEntry' => array( 'Entrada no rexistro' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'LogEntry' => array( 'Logboekregel' ),

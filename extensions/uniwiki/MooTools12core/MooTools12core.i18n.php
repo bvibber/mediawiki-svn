@@ -20,6 +20,13 @@ $messages['fr'] = array(
 	'mootools12core-desc' => 'Ajoute mootools-1.2-core-yc.js à chaque page',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'mootools12core-desc' => 'הוספת mootools-1.2-core-yc.js לכל דף',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

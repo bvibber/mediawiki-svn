@@ -14,6 +14,14 @@ $messages['en'] = array(
 	'catboxattop-categories' => 'Categories', // Should probably support plural
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'catboxattop-desc' => 'Ajoute une boîte de catégorie en haut à droit des pages',
+	'catboxattop-categories' => 'Catégories',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -35,5 +43,13 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'catboxattop-desc' => 'Voegt bovenaan rechts een categoriekader toe',
 	'catboxattop-categories' => 'Categorieën',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'catboxattop-desc' => 'Pridáva pole s kategóriami do pravého horného rohu stránok',
+	'catboxattop-categories' => 'Kategórie',
 );
 

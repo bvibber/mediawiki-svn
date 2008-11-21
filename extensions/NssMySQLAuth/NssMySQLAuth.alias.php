@@ -32,6 +32,11 @@ $aliases['de'] = array(
 	'AccountManager' => array( 'Account-Manager' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'AccountManager' => array( 'Xestor de contas' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'AccountManager' => array( 'Gebruikersbeheer' ),

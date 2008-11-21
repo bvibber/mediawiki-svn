@@ -1612,6 +1612,8 @@ $messages['grc'] = array(
 	'mv_upload_file' => 'Ἐπιφορτίζειν ἀρχεῖον',
 	'mv_tool_search' => 'Ζητεῖν',
 	'mv_tool_embed' => 'Ἐμβαπτίζειν',
+	'mv_edit' => 'Μεταγράφειν',
+	'mv_history' => 'Αἱ προτέραι',
 	'mv_search_categories' => 'Κατηγορίαι',
 	'mv_search_category' => 'Κατηγορία',
 	'mv_search_and' => 'καὶ',
@@ -2460,6 +2462,7 @@ $messages['ku-latn'] = array(
  */
 $messages['lb'] = array(
 	'metavid' => 'Metavid-Säit',
+	'specialpages-group-mv_group' => 'MetaVidWiki Spezialsäiten',
 	'mv_duration_label' => 'Dauer',
 	'mv_save_changes' => 'Ännerunge späicheren',
 	'mv_label_stream_name' => "Numm vum ''Stream''",
@@ -2511,6 +2514,7 @@ $messages['lb'] = array(
 	'mv_view_wiki_page' => 'Wiki-Säit gesinn',
 	'mv_save_sequence' => 'Sequenz späicheren',
 	'mv_next_bill' => 'Nächst Rechnung: $1',
+	'mv_prev_cat' => 'Vireg Kategorie: $1',
 	'mv_next_cat' => 'Nächst Kategorie: $1',
 );
 

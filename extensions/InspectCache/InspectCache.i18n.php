@@ -223,10 +223,12 @@ $messages['got'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'inspectcache-ok' => 'εἶεν',
+	'inspectcache-delete' => 'Σβεννύναι',
 	'inspectcache-list' => 'Καταλογή',
 );
 

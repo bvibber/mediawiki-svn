@@ -31,6 +31,17 @@ Aqx se enumeran todas las páginas en la categoría "$1" asx como todas las subc
 	'autocreatecategorypages-createdby' => 'Creado automáticamente por la extensión AutoCreateCategoryPages.',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'autocreatecategorypages-desc' => 'Créer automatiquement les pages de catégories manquantes lors de la sauvegarde',
+	'autocreatecategorypages-stub' => 'Ceci est une page de catégories.
+Elle liste toutes les pages issues de la catégorie « $1 » et, le cas échéant, aussi bien que toutes ses sous-catégories.',
+	'autocreatecategorypages-createdby' => 'Créée automatiquement par l’extension AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Créateur automatique de catégorie.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -58,5 +69,16 @@ $messages['pt-br'] = array(
 	'autocreatecategorypages-stub' => 'Esta Ã© uma página de categoria.
 Ela lista todas as páginas da categoria "$1", bem como todas as subcategorias da categoria "$1", se existirem.',
 	'autocreatecategorypages-createdby' => 'Gerada automaticamente pela extensxo AutoCreateCategoryPages.',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'autocreatecategorypages-desc' => 'Pri uložení automaticky vytvára chýbajúce stránky kategórií',
+	'autocreatecategorypages-stub' => 'Toto je stránka kategórie.
+Obsahuje všetky stránky v kategórii „$1“ ako aj všeky podkategórie kategórie „$1“ ak nejaké existujú,',
+	'autocreatecategorypages-createdby' => 'Automaticky vytvorené rozšírením AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Autoamtická tvorba kategórií',
 );
 

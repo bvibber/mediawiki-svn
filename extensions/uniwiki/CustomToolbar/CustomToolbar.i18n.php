@@ -173,6 +173,55 @@ $wgCustomToolbarMessages['es'] = array(
 	'ct_popupblocked' => 'No se pudo abrir la ventana para subir el archivo. Revise su bloqueador de ventanas emergentes.',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$wgCustomToolbarMessages['fr'] = array(
+	'ct-desc' => 'Ajoute une barre d’outil extensible',
+	'ct_bold_sample' => 'Texte gras',
+	'ct_bold_tip_ins' => 'Insère un texte en gras',
+	'ct_bold_tip_wrap' => 'Mettre ce texte en gras',
+	'ct_bold_caption' => 'Gras',
+	'ct_italic_sample' => 'Texte en italique',
+	'ct_italic_tip_ins' => 'Insérer un texte en italique',
+	'ct_italic_tip_wrap' => 'Mettre ce texte en italique',
+	'ct_italic_caption' => 'Italique',
+	'ct_internal_sample' => 'Nom de la page',
+	'ct_internal_tip_ins' => 'Insère un lien interne',
+	'ct_internal_tip_wrap' => 'Mettre ce texte en lien interne',
+	'ct_internal_caption' => 'Lien interne',
+	'ct_external_tip_ins' => 'Insère un lien externe',
+	'ct_external_tip_wrap' => 'Mettre ce texte en lien externe',
+	'ct_external_caption' => 'Lien externe',
+	'ct_image_tip' => 'Insèrer une image',
+	'ct_image_caption' => 'Ajouter une image',
+	'ct_attachment_tip' => 'Insérer un fichier joint',
+	'ct_attachment_caption' => 'Ajouter un fichier en attachement',
+	'ct_math_sample' => 'Insérer ici une formule LaTeX',
+	'ct_math_tip_ins' => 'Insèrer une formule mathématique (LaTeX)',
+	'ct_math_tip_wrap' => 'Mettre ce texte en formule mathématique (LaTeX)',
+	'ct_math_caption' => 'Formule',
+	'ct_nowiki_sample' => 'Insérer ici un texte non formaté',
+	'ct_nowiki_tip_ins' => 'Ignorer le formatage wiki',
+	'ct_nowiki_tip_wrap' => 'Ignorer le formatage wiki pour ce texte',
+	'ct_nowiki_caption' => 'Non wiki',
+	'ct_horizontal_tip' => 'Insérer une ligne horizontale (à utiliser avec parcimonie)',
+	'ct_horizontal_caption' => 'Ligne horizontale',
+	'ct_upload' => 'Importer $1',
+	'ct_select' => 'Sélectionner $1 pour l’import',
+	'ct_caption' => 'Ajouter un en-tête (facultatif)',
+	'ct_link' => 'Ajouter un nom de lien (facultatif)',
+	'ct_submit' => 'Lancer',
+	'ct_close' => 'Fermer la fenêtre',
+	'ct_success' => 'Import du fichier réussi !',
+	'ct_popupblocked' => 'La fenêtre popup d’import a été empêchée dès l’ouverture.
+Veuiller consulter vos paramètres de blockage des popups.',
+	'ct_user_user' => 'Utilisateur',
+	'ct_user_tip' => 'Insérer un lien vers une page utilisateur',
+	'ct_user_caption' => 'Lien de l’utilisateur',
+	'ct_user_sample' => 'Nom de l’utilisateur',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -185,6 +234,48 @@ $wgCustomToolbarMessages['gl'] = array(
 	'ct_italic_tip_ins' => 'Inserir texto en cursiva',
 	'ct_italic_tip_wrap' => 'Converter este texto en cursiva',
 	'ct_italic_caption' => 'Cursiva',
+	'ct_internal_sample' => 'NomeDaPáxina',
+	'ct_internal_tip_ins' => 'Inserir unha ligazón interna',
+	'ct_internal_tip_wrap' => 'Converter este texto nunha ligazón interna',
+	'ct_internal_caption' => 'Ligazón interna',
+	'ct_external_tip_ins' => 'Inserir unha ligazón externa',
+	'ct_external_tip_wrap' => 'Converter este texto nunha ligazón externa',
+	'ct_external_caption' => 'Ligazón externa',
+	'ct_image_tip' => 'Inserir unha imaxe',
+	'ct_image_caption' => 'Engadir a imaxe',
+	'ct_attachment_tip' => 'Inserir un dato adxunto',
+	'ct_attachment_caption' => 'Engadir o dato adxunto',
+	'ct_math_caption' => 'Fórmula',
+	'ct_nowiki_caption' => 'Non wiki',
+	'ct_horizontal_caption' => 'Liña horizontal',
+	'ct_upload' => 'Cargar unha $1',
+	'ct_submit' => 'Ir!',
+	'ct_close' => 'Pechar a ventá',
+	'ct_success' => 'O ficheiro cargouse con éxito!',
+	'ct_user_user' => 'Usuario',
+	'ct_user_tip' => 'Insira unha ligazón cara a unha páxina de usuario',
+	'ct_user_caption' => 'Ligazón cara a un usuario',
+	'ct_user_sample' => 'Nome de usuario',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$wgCustomToolbarMessages['lb'] = array(
+	'ct_bold_caption' => 'Fett',
+	'ct_internal_sample' => 'Säitennumm',
+	'ct_internal_caption' => 'Interne Link',
+	'ct_external_caption' => 'Externe Link',
+	'ct_image_caption' => 'Bild derbäisetzen',
+	'ct_math_caption' => 'Formel',
+	'ct_nowiki_caption' => 'Keng Wiki',
+	'ct_upload' => '$1 eroplueden',
+	'ct_select' => 'Wielt $1 fir eropzelueden',
+	'ct_submit' => 'Lass!',
+	'ct_close' => 'Fënster zoumaachen',
+	'ct_user_user' => 'Benotzer',
+	'ct_user_caption' => 'Benotzer Link',
+	'ct_user_sample' => 'Benotzernumm',
 );
 
 /** Dutch (Nederlands)
@@ -235,6 +326,18 @@ Controleer uw pop-upblokkeerprogramma.',
 	'ct_user_tip' => 'Verwijzing naar gebruikerspagina toevoegen',
 	'ct_user_caption' => 'Gebruikersverwijzing',
 	'ct_user_sample' => 'Gebruikersnaam',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$wgCustomToolbarMessages['ps'] = array(
+	'ct_image_caption' => 'انځور ورګډول',
+	'ct_math_caption' => 'فورمول',
+	'ct_submit' => 'ورځه!',
+	'ct_close' => 'کړکۍ تړل',
+	'ct_user_user' => 'کارونکی',
+	'ct_user_sample' => 'کارن-نوم',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

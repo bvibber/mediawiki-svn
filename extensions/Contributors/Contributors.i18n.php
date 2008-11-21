@@ -359,9 +359,11 @@ $messages['gl'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'contributors-submit' => 'Δεικνύναι',
 	'contributors-badtitle' => 'Ἄκυρος ἐπιγραφή.',
 );
 

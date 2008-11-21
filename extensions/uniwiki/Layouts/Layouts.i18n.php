@@ -31,6 +31,16 @@ $messages['arz'] = array(
 	'layouts_unknown' => 'مش معروف',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'layouts_title' => 'Napravi stranicu',
+	'layouts_continue' => 'Nastavi',
+	'layouts_choosecategory' => 'Izaberi kategoriju za $1:',
+	'layouts_unknown' => 'Nepoznato',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'layouts_title' => 'Neue Seite erstellen',
@@ -54,6 +64,7 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author Grondin
  * @author IAlex
  */
 $messages['fr'] = array(
@@ -65,6 +76,7 @@ $messages['fr'] = array(
 	'layouts_choosecategory' => 'Choisir une catégorie pour $1 :',
 	'layouts_unknown' => 'Inconnu',
 	'layouts_tagline' => "Cette page a été générée avec la mise en page '''$1'''.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Galician (Galego)
@@ -75,6 +87,22 @@ $messages['gl'] = array(
 	'layouts_continue' => 'Continuar',
 	'layouts_choosecategory' => 'Escolla unha categoría para "$1":',
 	'layouts_unknown' => 'Descoñecido',
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'layouts-desc' => 'הוספת "פריסות" הניתנות לעריכה לדפים חדשים כדי לעודד מבנה נפוץ לדפים',
+	'layouts_title' => 'יצירת דף',
+	'layouts_chooselayout' => 'בחרו בפריסה עבור $1:',
+	'layouts_nolayout' => 'ללא פריסה',
+	'layouts_continue' => 'המשך',
+	'layouts_choosecategory' => 'בחרו קטגוריה עבור $1:',
+	'layouts_unknown' => 'לא ידוע',
+	'layouts_tagline' => "הדף נוצר על ידי הפריסה '''$1'''.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
@@ -95,7 +123,9 @@ $messages['jv'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'layouts_nolayout' => 'Kee Layout',
 	'layouts_continue' => 'Weider',
+	'layouts_choosecategory' => 'Wielt eng Kategorie fir $1:',
 	'layouts_unknown' => 'Onbekannt',
 );
 
@@ -112,6 +142,15 @@ $messages['nl'] = array(
 	'layouts_unknown' => 'Onbekend',
 	'layouts_tagline' => "Deze pagina is aangemaakt met het sjabloon '''$1'''.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagelabels',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'layouts_title' => 'يو مخ جوړول',
+	'layouts_choosecategory' => 'د $1 لپاره يوه وېشنيزه وټاکۍ:',
+	'layouts_unknown' => 'ناجوت',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

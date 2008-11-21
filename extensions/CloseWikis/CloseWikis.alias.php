@@ -39,7 +39,7 @@ $aliases['de'] = array(
 
 /** Galician (Galego) */
 $aliases['gl'] = array(
-	'CloseWiki' => array( 'Pechar wiki' ),
+	'CloseWiki' => array( 'Pechar o wiki' ),
 );
 
 /** Croatian (Hrvatski) */

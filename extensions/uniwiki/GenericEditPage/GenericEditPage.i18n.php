@@ -100,6 +100,7 @@ Agrega algunas secciones utilizando las herramientas a la derecha.',
 );
 
 /** French (Français)
+ * @author Grondin
  * @author IAlex
  */
 $messages['fr'] = array(
@@ -122,6 +123,7 @@ $messages['fr'] = array(
 	'gep-nosectioninstructions' => "Il n'y a aucune section dans cette page.
 Ajoutez-en en utilisant l'outil sur la droite.",
 	'gep-nocategories' => 'Choisissez au moins une catégorie avant de sauvegarder la page',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Galician (Galego)
@@ -162,11 +164,18 @@ $messages['jv'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'gep-emailsubject' => '[$1] Virschlag Kategorie: $2',
 	'gep-emailbody' => 'De Benotzer "$1" huet d\'Kategorie "$2" fir de Site "$3" virgeschlo.',
 	'gep-emailfailure' => 'Pardon, Äre Virschlag konnt net verschafft ginn.',
 	'gep-emailsuccess' => "Merci datt Dir d'Kategorie: $1 virgeschlo hutt",
 	'gep-categories' => 'Kategorien',
 	'gep-addcategory' => 'Eng Kategorie derbäisetzen',
+	'gep-addcategorybutton' => 'Derbäisetzen',
+	'gep-suggestcategory' => 'Eng Kategorie virschloen',
+	'gep-suggestcategorybutton' => 'Schécken',
+	'gep-addsectionbutton' => 'Derbäisetzen',
+	'gep-nocategories' => 'Wielt w.e.g. mindestens eng Kategorie aus ier Dir ofspäichert',
+	'gep-categorypage' => 'MediaWiki:Säitenännerungs-Tagen',
 );
 
 /** Dutch (Nederlands)
@@ -193,6 +202,13 @@ $messages['nl'] = array(
 Gebruik de hulpmiddelen aan de rechterkant om er een toe te voegen.',
 	'gep-nocategories' => 'Selecteer tenminste één categorie voordat u de pagina opslaat',
 	'gep-categorypage' => 'MediaWiki:Editpagelabels',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'gep-categories' => 'وېشنيزې',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

@@ -37,6 +37,11 @@ $aliases['bs'] = array(
 	'Player' => array( 'Igrac' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'Player' => array( 'Xogador' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Player' => array( 'Mediaspeuler' ),

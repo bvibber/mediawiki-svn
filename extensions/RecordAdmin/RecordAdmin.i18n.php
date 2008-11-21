@@ -95,9 +95,15 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'recordadmin-submit' => 'Enviar',
+	'recordadmin-alreadyexist' => 'Sentímolo, "$1" xa existe!',
+	'recordadmin-createsuccess' => '"$1" creado',
+	'recordadmin-createerror' => 'Ocorreu un erro ao intentar crear o $1!',
+	'recordadmin-badtitle' => 'Título incorrecto!',
 	'recordadmin-buttonsearch' => 'Procurar',
 	'recordadmin-buttoncreate' => 'Crear',
 	'recordadmin-searchresult' => 'Resultados da procura',
+	'recordadmin-edit' => 'Editando "$1"',
 	'recordadmin-buttonsave' => 'Gardar',
 	'recordadmin-viewlink' => 'ver',
 	'recordadmin-editlink' => 'editar',

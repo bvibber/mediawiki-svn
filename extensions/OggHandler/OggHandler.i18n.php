@@ -858,6 +858,13 @@ $messages['gl'] = array(
 	'ogg-desc-link' => 'Acerca deste ficheiro',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'ogg-more' => 'πλέον...',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

@@ -517,6 +517,7 @@ $messages['got'] = array(
  */
 $messages['grc'] = array(
 	'regexblock-form-reason' => 'Αἰτία:',
+	'regexblock-stats-username' => 'Διὰ τὸ $1',
 	'regexblock-view-go' => 'Ἱέναι',
 );
 

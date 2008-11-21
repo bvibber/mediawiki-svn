@@ -13,6 +13,13 @@ $messages['en'] = array(
 	'csshooks-desc' => 'Adds CSS to the HTML output of pages for better styling',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'csshooks-desc' => 'Ajoute du CSS à la sortie de la page HTML pour un meilleur style',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

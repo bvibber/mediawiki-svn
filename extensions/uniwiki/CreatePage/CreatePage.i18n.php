@@ -21,6 +21,21 @@ Would you like to edit the existing page?',
 	'createpage_editexisting' => 'Yes. I want to contribute to the existing page.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'createpage' => 'Napravi stranicu',
+	'createpage-desc' => 'Dodaje [[Special:CreatePage|posebnu stranicu]] za pravljenje novih stranica',
+	'createpage_submitbutton' => 'Pošalji',
+	'createpage_instructions' => 'Unesite naslov stranice koju želite napraviti:',
+	'createpage_entertitle' => 'Molimo unesite naslov za Vašu stranicu',
+	'createpage_titleexists' => 'Stranica sa naslovom [[$1]] već postoji.
+Da li želite uređivati postojeću stranicu?',
+	'createpage_tryagain' => 'Ne. Želim napraviti novu stranicu sa različitim naslovom.',
+	'createpage_editexisting' => 'Da. Želim doprinositi na postojećoj stranici.',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'createpage' => 'Neue Seite erstellen',
@@ -44,11 +59,34 @@ $messages['es'] = array(
 	'createpage_editexisting' => 'Sí – quiero contribuir a la página que ya existe.',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'createpage' => 'Créer une page',
+	'createpage-desc' => 'Ajoute une [[Special:CreatePage|page spéciale] pour créer des nouvelles pages',
+	'createpage_submitbutton' => 'Soumettre',
+	'createpage_instructions' => 'Entrer le titre de la page que vous désirez créer :',
+	'createpage_entertitle' => 'Veuillez entrer un titre pour votre page.',
+	'createpage_titleexists' => 'Une page ayant pour titre [[$1]] existe déjà.
+Désirez vous modifier cette dernière ?',
+	'createpage_tryagain' => 'No, je désire créer une nouvelle page avec un titre distinct.',
+	'createpage_editexisting' => 'Oui, je désire contribuer dans cette page existante.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
+	'createpage' => 'Crear unha páxina',
+	'createpage-desc' => 'Engade unha [[Special:CreatePage|páxina especial]] para crear páxinas novas',
 	'createpage_submitbutton' => 'Enviar',
+	'createpage_instructions' => 'Insira o título da páxina que queira crear:',
+	'createpage_entertitle' => 'Por favor, insira un título para a páxina.',
+	'createpage_titleexists' => 'Unha páxina titulada "[[$1]]" xa existe.
+Quere editar esta páxina?',
+	'createpage_tryagain' => 'Non. Quero crear unha páxina nova cun título distinto.',
+	'createpage_editexisting' => 'Si. Quero contribuír á páxina existente.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -87,5 +125,20 @@ $messages['pt-br'] = array(
 	'createpage_titleexists' => 'Uma página com o título, [[$1]], já existe. Você gostaria de editar a página existente?',
 	'createpage_tryagain' => 'Não - Eu quero criar uma nova página com outro título.',
 	'createpage_editexisting' => 'Sim - Eu quero editar a página existente.',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'createpage' => 'Vytvoriť stránku',
+	'createpage-desc' => 'Pridáva [[Special:CreatePage|špeciálnu stránku]] na vytváranie nových stránok',
+	'createpage_submitbutton' => 'Poslať',
+	'createpage_instructions' => 'Zadajte názov stránky, ktorú si želáte vytvoriť:',
+	'createpage_entertitle' => 'Prosím, zadajte názov vašej stránky.',
+	'createpage_titleexists' => 'Stránka s názvom [[$1]] už existuje.
+Želáte si upraviť existujúcu stránku?',
+	'createpage_tryagain' => 'Nie, chcem vytvoriť novú stránku s iným názovm.',
+	'createpage_editexisting' => 'Áno, chcem prispieť k existujúcej stránke.',
 );
 

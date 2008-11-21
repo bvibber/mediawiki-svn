@@ -170,6 +170,13 @@ $messages['gl'] = array(
 	'lua_overflow_time' => 'Alcanzouse o tempo máximo de execución',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'lua_error_internal' => 'Ἐσώτερον σφάλμα',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

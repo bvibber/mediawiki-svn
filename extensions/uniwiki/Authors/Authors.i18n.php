@@ -15,6 +15,15 @@ $messages['en'] = array(
 	'authors_anonymous'  => 'Anonymous',
 );
 
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'authors-desc' => 'Ajoute aux pages une liste des contributeurs',
+	'authors_authors' => 'Auteurs',
+	'authors_anonymous' => 'Anomyne',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -39,5 +48,14 @@ $messages['nl'] = array(
 	'authors-desc' => "Voegt een lijst auteurs to aan pagina's",
 	'authors_authors' => 'Auteurs',
 	'authors_anonymous' => 'Anoniem',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'authors-desc' => 'Pridáva na stránky zoznam autorov',
+	'authors_authors' => 'Autori',
+	'authors_anonymous' => 'Anonym',
 );
 

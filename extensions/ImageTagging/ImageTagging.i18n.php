@@ -413,10 +413,12 @@ Por favor, agarde a que a acción actual remate.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'imagetagging-article' => 'Δέλτος:',
+	'imagetagging-imghistory' => 'Αἱ προτέραι',
 	'imagetagging-images' => 'εἰκόνες',
 	'imagetagging-tagcancel-button' => 'Ἀκυροῦν',
 );

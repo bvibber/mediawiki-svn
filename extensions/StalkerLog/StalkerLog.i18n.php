@@ -164,6 +164,15 @@ $messages['jv'] = array(
 	'stalkerlog-log-text' => 'Iki log panganggo sing mlebu lan metu log',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Lovekhmer
+ */
+$messages['km'] = array(
+	'stalkerlog-log-login' => 'បាន​ឡុកអ៊ីន​ហើយ។',
+	'stalkerlog-log-logout' => 'បាន​ចាកចេញ​ហើយ។',
+	'stalkerlog-log-text' => 'នេះ​ជា​កំនត់ហេតុ​នៃ​ការ​ឡុកអ៊ីន​និង​ការ​ចាកចេញ​របស់​អ្នកប្រើប្រាស់។',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

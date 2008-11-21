@@ -53,6 +53,11 @@ $aliases['fi'] = array(
 	'InterwikiList' => array( 'Interwikilista' ),
 );
 
+/** Galician (Galego) */
+$aliases['gl'] = array(
+	'InterwikiList' => array( 'Lista de interwikis', 'Listaxe de interwikis' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'InterwikiList' => array( 'רשימת_בינוויקי' ),

@@ -290,6 +290,13 @@ $messages['got'] = array(
 	'player-goto-file' => 'feilans',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'player-goto-file' => 'Ἀρχεῖον',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

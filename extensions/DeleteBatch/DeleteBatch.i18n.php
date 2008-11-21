@@ -329,11 +329,13 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'deletebatch-button' => 'Διαγράφειν',
 	'deletebatch-or' => '<b>ἢ</b>',
+	'deletebatch-success-subtitle' => 'διὰ τὸ $1',
 	'deletebatch-select-yourself' => 'σύ',
 );
 
