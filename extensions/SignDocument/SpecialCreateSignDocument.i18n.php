@@ -285,16 +285,17 @@ $messages['ext'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'createsigndocument' => "Activer l'authentification des documents",
-	'createsigndoc-head' => "Utilisez ce formulaire pour créer une « page d'authentification » de documents pour l'article en question, de façon que chaque utilisateur soit capable de [[Special:SignDocument|l’authentifier]].
-Prière d'indiquer l'intitulé de l'article pour lequel vous souhaitez activer la fonction, les membres du groupe d'utilisateurs, quels champs seront accessibles aux utilisateurs et ceux qui seront optionnels, l'âge minimal pour être membre du groupe (pas de minimum par défaut) ;
+	'createsigndoc-head' => "Utilisez ce formulaire pour créer une « page d'authentification » de documents pour la page en question, de façon que chaque utilisateur soit capable de [[Special:SignDocument|l’authentifier]].
+Prière d'indiquer l'intitulé de la page pour lequel vous souhaitez activer la fonction, les membres du groupe d'utilisateurs, quels champs seront accessibles aux utilisateurs et ceux qui seront optionnels, l'âge minimal pour être membre du groupe (pas de minimum par défaut) ;
 et un bref document expliquant le document et donnant des instructions aux utilisateurs.
 
-'''Présentement, il n'y a aucun moyen d'effacer les documents une fois créés''', sauf en éditant la base de données du wiki. De plus, le texte de l'article affiché sur la page authentifiée sera le texte ''courant'', peu importe les modifications faites par la suite.
+'''Présentement, il n'y a aucun moyen d'effacer les documents une fois créés''', sauf en éditant la base de données du wiki. De plus, le texte de la page affiché sur la page authentifiée sera le texte ''courant'', peu importe les modifications faites par la suite.
 Pour cette raison, soyez certain que le document soit suffisamment stable pour être authentifié.
 ''Avant de soumettre le formulaire'', vérifiez que vous avez bien choisi les champs tels que vous souhaitiez qu'ils soient.",
 	'createsigndoc-pagename' => 'Page :',

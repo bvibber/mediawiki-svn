@@ -123,6 +123,22 @@ $messages['km'] = array(
 	'recordadmin-editlink' => 'កែប្រែ',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'recordadmin-newsearch' => 'Nei $1 sichen',
+	'recordadmin-alreadyexist' => 'Pardon, "$1" gëtt et schonn!',
+	'recordadmin-buttonsearch' => 'Sichen',
+	'recordadmin-buttonreset' => 'Zrécksetzen',
+	'recordadmin-edit' => '$1 änneren',
+	'recordadmin-updatesuccess' => '$1 ass aktualiséiert',
+	'recordadmin-updateerror' => 'Beim Aktualiséieren ass e Feeler geschitt',
+	'recordadmin-buttonsave' => 'Späicheren',
+	'recordadmin-viewlink' => 'weisen',
+	'recordadmin-editlink' => 'änneren',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

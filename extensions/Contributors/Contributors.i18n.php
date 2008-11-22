@@ -883,6 +883,7 @@ $messages['oc'] = array(
  * @author Amikeco
  */
 $messages['os'] = array(
+	'contributors-target' => 'Сæргонд:',
 	'contributors-submit' => 'Равдис',
 );
 

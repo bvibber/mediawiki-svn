@@ -890,12 +890,15 @@ $messages['eo'] = array(
 	'code-rev-comment-by' => 'Komento de $1',
 	'code-rev-comment-submit' => 'Enmeti komenton',
 	'code-rev-comment-preview' => 'Antaŭrigardi',
+	'code-rev-diff' => 'Diferenco',
+	'code-rev-diff-link' => 'diferenco',
 	'code-rev-purge-link' => 'forviŝi',
 	'code-status-new' => 'nova',
 	'code-status-fixme' => 'riparu-min',
 	'code-status-reverted' => 'malfarita',
 	'code-status-resolved' => 'farita',
 	'code-status-ok' => 'Ek!',
+	'code-status-deferred' => 'prokrastita',
 	'code-pathsearch-legend' => 'Serĉi versiojn en ĉi tiu kodujo laŭ vojo',
 	'code-pathsearch-path' => 'Vojo:',
 	'code-rev-submit' => 'Konfirmi ŝanĝojn',
@@ -1954,6 +1957,7 @@ $messages['lb'] = array(
 	'code-rev-purge-link' => 'botzen (vum Cache)',
 	'code-status-new' => 'nei',
 	'code-status-fixme' => 'verbesser mech',
+	'code-status-reverted' => 'zréckgesat',
 	'code-status-resolved' => 'geléist',
 	'code-status-ok' => 'ok',
 	'code-pathsearch-path' => 'Pad:',
@@ -2352,6 +2356,18 @@ $4",
 	'specialpages-group-developer' => 'Espleches del desvolopaire',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'code-field-status' => 'Статус',
+	'code-field-timestamp' => 'Датæ',
+	'code-field-comments' => 'Фиппаинæгтæ',
+	'code-field-text' => 'Фиппаинаг',
+	'code-rev-author' => 'Автор:',
+	'code-rev-status' => 'Статус:',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Equadus
@@ -2520,6 +2536,8 @@ $4',
 $messages['roa-tara'] = array(
 	'code-authors' => 'le autore',
 	'code-tags' => 'le tag',
+	'code-author-link' => 'colleghete?',
+	'code-author-unlink' => 'scolleghete?',
 	'code-field-author' => 'Autore',
 	'code-field-user' => 'Commendatore',
 	'code-field-status' => 'State',
@@ -2529,6 +2547,17 @@ $messages['roa-tara'] = array(
 	'code-rev-date' => 'Date:',
 	'code-rev-message' => 'Commende:',
 	'code-rev-paths' => 'Percorse modifichete:',
+	'code-rev-modified-a' => 'aggiunde',
+	'code-rev-modified-r' => 'sostituite',
+	'code-rev-modified-d' => 'scangillete',
+	'code-rev-modified-m' => 'cangete',
+	'code-rev-status' => 'State:',
+	'code-rev-status-set' => "Cange 'u state",
+	'code-rev-tags' => 'Tag:',
+	'code-rev-tag-add' => 'Aggiunge le tag:',
+	'code-rev-tag-remove' => 'Scangille le tag:',
+	'code-rev-comment-by' => 'Commende de $1',
+	'code-rev-comment-submit' => "Reggistre 'u commende",
 	'code-rev-comment-preview' => 'Andeprime',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',

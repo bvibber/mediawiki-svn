@@ -743,7 +743,7 @@ $messages['ts'] = array(
  */
 $messages['uk'] = array(
 	'sitenotice_close' => 'приховати',
-	'sitenotice-desc' => 'Дозволяє користувачам приховувати повідомлення сайта',
+	'sitenotice-desc' => 'Дозволяє користувачам приховувати повідомлення сайту',
 );
 
 /** Urdu (اردو) */

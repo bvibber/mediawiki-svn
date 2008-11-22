@@ -125,10 +125,11 @@ $3',
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'latexdoc_no_text' => 'L’article ne contient pas de texte. Impossible de créer DVI',
+	'latexdoc_no_text' => 'La page ne contient pas de texte. Impossible de créer DVI',
 	'latexdoc_cant_create_dir' => 'Impossible de créer le répertoire temporaire $1',
 	'latexdoc_cant_write' => 'Impossible d’écrire dans le fichier $1',
 	'latexdoc_error' => 'Erreur LaTeX

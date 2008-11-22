@@ -462,6 +462,13 @@ $messages['oc'] = array(
 	'tog-offlineOnLogout' => 'Cambiar mon estatut a fòra linha quand me desconnècti',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'onlinestatus-tab' => 'Статус',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

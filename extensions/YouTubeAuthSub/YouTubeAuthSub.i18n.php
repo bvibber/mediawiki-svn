@@ -1245,6 +1245,7 @@ Siatz pacient.',
  * @author Amikeco
  */
 $messages['os'] = array(
+	'youtubeauthsub_title' => 'Сæргонд',
 	'youtubeauthsub_category' => 'Категори',
 );
 
@@ -1375,6 +1376,7 @@ $messages['roa-tara'] = array(
 	'youtubeauthsub_password' => 'Password de YouTube',
 	'youtubeauthsub_username' => 'Nome utende de YouTube',
 	'youtubeauthsub_category' => 'Categorije',
+	'youtubeauthsub_uploadbutton' => 'Careche',
 );
 
 /** Russian (Русский)

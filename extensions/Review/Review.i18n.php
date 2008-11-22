@@ -403,7 +403,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'review_sidebar_title' => 'Révision',
-	'review-desc' => 'Relance la fonctionnalité de [[Special:Review|validation]] d’un article.',
+	'review-desc' => 'Relance la fonctionnalité de [[Special:Review|validation]] de pages.',
 	'review_topics' => "# Liste de sujets pour l'extension « review » de MediaWiki.
 # ....
 # Chaque sujet est défini par une liste de données séparées par « : » (toute autre liste est ignorée).

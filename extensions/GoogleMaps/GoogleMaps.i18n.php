@@ -464,6 +464,7 @@ $wgGoogleMapsMessages['bs'] = array(
 	'gm-remove' => 'ukloni',
 	'gm-width' => 'Širina',
 	'gm-height' => 'Visina',
+	'gm-zoom-control' => 'Navigacija',
 	'gm-search' => 'Traži',
 	'gm-line-width' => 'Širina',
 	'gm-make-map' => 'napravi mapu',
@@ -2700,6 +2701,8 @@ $wgGoogleMapsMessages['oc'] = array(
  * @author Amikeco
  */
 $wgGoogleMapsMessages['os'] = array(
+	'gm-balloon-title' => 'Сæргонд',
+	'gm-no-zoom-control' => 'Нæй',
 	'gm-yes' => 'О',
 	'gm-no' => 'Нæ',
 );

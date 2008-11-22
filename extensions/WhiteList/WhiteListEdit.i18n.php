@@ -644,9 +644,10 @@ $messages['got'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'mywhitelistpages' => 'Δέλτοι μου',
+	'mywhitelistpages' => 'Αἱ δέλτοι μου',
 	'whitelisttablemodifynone' => 'Οὐδέν',
 	'whitelisttableedit' => 'Μεταγράφειν',
 	'whitelistbadtitle' => 'Κακὸν τὸ ἐπώνυμον -',
@@ -1374,6 +1375,7 @@ Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenc
  * @author Amikeco
  */
 $messages['os'] = array(
+	'whitelisttablemodifynone' => 'Нæй',
 	'whitelisttableedit' => 'Баив æй',
 	'whitelistbadtitle' => 'Æнæмбæлон сæргонд —',
 	'whitelistnever' => 'никуы',

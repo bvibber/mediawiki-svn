@@ -265,6 +265,7 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Meno25
  * @author Urhixidur
  */
@@ -291,7 +292,7 @@ $messages['fr'] = array(
 	'spamregex-warning-2' => 'Choisissez au moins un mode de blocage.',
 	'spamregex-already-blocked' => '« $1 » est déjà bloqué',
 	'spamregex-phrase-block' => 'Phrase à bloquer :',
-	'spamregex-phrase-block-text' => 'bloquer la phrase dans le texte de l’article',
+	'spamregex-phrase-block-text' => 'bloquer la phrase dans le texte de la page',
 	'spamregex-phrase-block-summary' => 'bloquer la phrase dans le commentaire',
 	'spamregex-block-submit' => 'Bloquer&nbsp;cette&nbsp;phrase',
 	'spamregex-text' => '(Texte)',

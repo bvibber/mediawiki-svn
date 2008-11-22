@@ -233,6 +233,32 @@ Use as ferramentas à direita para incluir algumas seções.',
 	'gep-nocategories' => 'Selecione, no mínimo, uma categoria antes de salvar',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'gep-desc' => 'Дополнения режима редактирования страницы, делающие его более удобным',
+	'gep-emailsubject' => '[$1] Рекомендуемая категория: $2',
+	'gep-emailbody' => 'Участник «$1» посоветовал категорию «$2» для сайта «$3».',
+	'gep-emailfailure' => 'Извините, ваш совет не может быть обработан.',
+	'gep-emailsuccess' => 'Спасибо, что посоветовали категорию: $1.',
+	'gep-categories' => 'Категории',
+	'gep-addcategory' => 'Добавить категорию',
+	'gep-addcategorybutton' => 'Добавить',
+	'gep-suggestcategory' => 'Посоветовать категорию',
+	'gep-suggestcategorybutton' => 'Отправить',
+	'gep-sections' => 'Разделы',
+	'gep-sectionnotdisabled' => 'Этот раздел не может быть отключён',
+	'gep-addsection' => 'Добавить раздел',
+	'gep-addsectionbutton' => 'Добавить',
+	'gep-classicmode' => 'Классический режим',
+	'gep-genericmode' => 'Общий режим',
+	'gep-nosectioninstructions' => 'На этой странице нет разделов.
+Вы можете их добавить с помощью инструментов, размещённых справа.',
+	'gep-nocategories' => 'Пожалуйста, выберите перед сохранением хотя бы одну категорию',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

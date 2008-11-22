@@ -71,6 +71,17 @@ Ela lista todas as páginas da categoria "$1", bem como todas as subcategorias d
 	'autocreatecategorypages-createdby' => 'Gerada automaticamente pela extensxo AutoCreateCategoryPages.',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'autocreatecategorypages-desc' => 'Создаёт отсутствующие категории автоматически при созранении',
+	'autocreatecategorypages-stub' => 'Это страница категории.
+На ней перечислены все страницы из категории «$1», а также все подкатегории категории «$1», если они существуют.',
+	'autocreatecategorypages-createdby' => 'Создана автоматически с помощью расширения AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Автоматический создатель категрий',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

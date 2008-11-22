@@ -73,6 +73,16 @@ $messages['nl'] = array(
 	'formatchanges-editedby' => 'bewerkt door',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'formatchanges-desc' => 'Преобразует [[Special:RecentChanges|свежие правки]]',
+	'formatchanges-anonymous' => 'Аноним',
+	'formatchanges-createdby' => 'создано',
+	'formatchanges-editedby' => 'исправлено',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

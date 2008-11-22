@@ -20,6 +20,11 @@ $aliases['lb'] = array(
 	'CreatePage' => array( 'Säiten uleeën' ),
 );
 
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'CreatePage' => array( 'PaginaAanmaken' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'CreatePage' => array( 'Skapa sida' ),

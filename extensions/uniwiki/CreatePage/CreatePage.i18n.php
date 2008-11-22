@@ -127,6 +127,21 @@ $messages['pt-br'] = array(
 	'createpage_editexisting' => 'Sim - Eu quero editar a página existente.',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'createpage' => 'Создать страницу',
+	'createpage-desc' => 'Добавляет [[Special:CreatePage|служебную страницу]] для создания новых страниц',
+	'createpage_submitbutton' => 'Отправить',
+	'createpage_instructions' => 'Введите название страницы, которую вы хотите создать:',
+	'createpage_entertitle' => 'Пожалуйста, введите название вашей страницы.',
+	'createpage_titleexists' => 'Страница с названием [[$1]] уже существует.
+Желаете ли вы править существующую страницу?',
+	'createpage_tryagain' => 'Нет. Я хочу создать новую страницу с другим названием.',
+	'createpage_editexisting' => 'Да. Я хочу внести свой вклад в существующую страницу.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

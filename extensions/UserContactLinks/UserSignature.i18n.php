@@ -255,6 +255,13 @@ $messages['pt'] = array(
 	'usercontactlink-baduser' => 'nome de utilizador incorrecto',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ */
+$messages['ru'] = array(
+	'usercontactlink-baduser' => 'некорректное имя участника',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

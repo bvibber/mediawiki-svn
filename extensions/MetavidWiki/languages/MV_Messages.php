@@ -3500,6 +3500,7 @@ Aqueste tipe de presentacion es pel tèxt qu'es parlat amb lo flus vidèo. De li
  */
 $messages['os'] = array(
 	'mv_upload_file' => 'Ног файл сæвæр',
+	'mv_edit' => 'Баив æй',
 	'mv_search_category' => 'Категори',
 	'mv_category' => 'категори',
 );

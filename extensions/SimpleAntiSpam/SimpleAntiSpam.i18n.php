@@ -104,6 +104,16 @@ $messages['bn'] = array(
 	'simpleantispam-desc' => 'ফরমগুলো যাচাই করার জন্য একটি স্প্যাম/বট যোগ করুন',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'simpleantispam' => 'Vaša izmjena je uključila mehanizam protiv spama',
+	'simpleantispam-label' => "Provjera protiv spama.
+'''NE''' popunjavaj ovo!",
+	'simpleantispam-desc' => 'Dodaje jednostavnu provjeru od spama/botova u obrasce',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author Paucabot

@@ -1650,7 +1650,7 @@ $messages['ko'] = array(
 	'group-oversight-member' => '오버사이트',
 	'grouppage-oversight' => '{{ns:project}}:오버사이트',
 	'right-hiderevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
-	'oversight-log-hiderev' => '$1에서의 편집을 숨김',
+	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',
 	'oversight-hidden' => '숨겨진 판',
 );
 

@@ -63,8 +63,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Darth Kule
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'contributionreporting-desc' => 'Description for the ContributionReporting Extension. Shown in [[Special:Version]]. Do not translate or change tag names.',
 	'contrib-hist-name' => '{{Identical|Name}}',
 	'fundraiserstats-date' => '{{Identical|Date}}',
 );
@@ -149,15 +151,16 @@ $messages['arz'] = array(
 	'contribstats-contributions' => 'المساهمات',
 	'contribstats-total' => 'الاجمالي(بالدولار الامريكاني)',
 	'contribstats-avg' => 'المتوسط(بالدولار الامريكاني)',
-	'contribstats-min' => 'الحد الادنى(بالدولار الامريكاني)',
+	'contribstats-med' => 'المتوسط (بالدولار الامريكاني)',
 	'contribstats-max' => 'الحد الاقصى(بالدولار الامريكاني)',
 	'contribstats-percentage-ytd' => 'النسبه المئويه (من اول السنه)',
 	'contribstats-total-ytd' => 'الاجمالي(من اول السنه)',
 	'fundraiserstatistics' => 'احصائيات جمع التبرعات',
 	'fundraiserstats-date' => 'تاريخ',
+	'fundraiserstats-contributions' => 'المساهمات',
 	'fundraiserstats-total' => 'الاجمالي(بالدولار الامريكاني)',
 	'fundraiserstats-avg' => 'المتوسط (بالدولار الامريكاني)',
-	'fundraiserstats-min' => 'الحد الادنى (بالدولار الامريكاني)',
+	'fundraiserstats-med' => 'المتوسط (بالدولار الامريكاني)',
 	'fundraiserstats-max' => 'الحد الاقصى(بالدولار الامريكاني)',
 );
 
@@ -246,6 +249,7 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Metalhead64
+ * @author Purodha
  */
 $messages['de'] = array(
 	'contributionreporting-desc' => 'Live-Berichterstattung von der Wikimedia-Spendenkampagne',
@@ -274,7 +278,7 @@ $messages['de'] = array(
 	'contribstats-contributions' => 'Spenden',
 	'contribstats-total' => 'Gesamt (USD)',
 	'contribstats-avg' => 'Durchschnitt (USD)',
-	'contribstats-med' => 'Mittelwert (USD)',
+	'contribstats-med' => 'Zentralwert / Median (USD)',
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Prozentsatz (YTD)',
 	'contribstats-total-ytd' => 'Gesamt (YTD)',
@@ -283,7 +287,7 @@ $messages['de'] = array(
 	'fundraiserstats-contributions' => 'Spenden',
 	'fundraiserstats-total' => 'Gesamt (USD)',
 	'fundraiserstats-avg' => 'Durchschnitt (USD)',
-	'fundraiserstats-med' => 'Mittelwert (USD)',
+	'fundraiserstats-med' => 'Zentralwert / Median (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
 );
 
@@ -317,15 +321,16 @@ $messages['eo'] = array(
 	'contribstats-contributions' => 'Kontribuoj',
 	'contribstats-total' => 'Tuto (USD)',
 	'contribstats-avg' => 'Averaĝo (USD)',
-	'contribstats-min' => 'Minimuma (USD)',
+	'contribstats-med' => 'Mediano (USD)',
 	'contribstats-max' => 'Maksimumo (USD)',
 	'contribstats-percentage-ytd' => 'Procento (YTD)',
 	'contribstats-total-ytd' => 'Tuto (ĉi-jara)',
 	'fundraiserstatistics' => 'Statistikoj pri mondonacado',
 	'fundraiserstats-date' => 'Dato',
+	'fundraiserstats-contributions' => 'Kontribuoj',
 	'fundraiserstats-total' => 'Tuto (USD)',
 	'fundraiserstats-avg' => 'Averaĝo (USD)',
-	'fundraiserstats-min' => 'Minimuma (USD)',
+	'fundraiserstats-med' => 'Mediano (USD)',
 	'fundraiserstats-max' => 'Maksimuma (USD)',
 );
 
@@ -682,15 +687,16 @@ $messages['jv'] = array(
 	'contribstats-contributions' => 'Kontribusi',
 	'contribstats-total' => 'Gunggung (USD)',
 	'contribstats-avg' => 'Rata-rata (USD)',
-	'contribstats-min' => 'Paling sethithik (USD)',
+	'contribstats-med' => 'Median (USD)',
 	'contribstats-max' => 'Paling akèh (USD)',
 	'contribstats-percentage-ytd' => 'Persèntase (YTD)',
 	'contribstats-total-ytd' => 'Gunggung (YTD)',
 	'fundraiserstatistics' => 'Statistik pangumpul dana',
 	'fundraiserstats-date' => 'Tanggal',
+	'fundraiserstats-contributions' => 'Kontribusi',
 	'fundraiserstats-total' => 'Gunggung (USD)',
 	'fundraiserstats-avg' => 'Rata-rata (USD)',
-	'fundraiserstats-min' => 'Paling sethithik (USD)',
+	'fundraiserstats-med' => 'Median (USD)',
 	'fundraiserstats-max' => 'Paling akèh (USD)',
 );
 
@@ -724,12 +730,17 @@ $messages['ksh'] = array(
 	'contribstats-contributions' => 'Spende-Beidrääch',
 	'contribstats-total' => 'Zosamme (en Dollar us de USA)',
 	'contribstats-avg' => 'Schnett (en Dollar us de USA)',
-	'contribstats-min' => 'Kleinste Spend (en Dollar us de USA)',
+	'contribstats-med' => 'Zetraalwäät ov Hallef/Hallef-Stell (en Dollar us de USA)',
 	'contribstats-max' => 'Deckste Spend (en Dollar us de USA)',
 	'contribstats-percentage-ytd' => 'Prozent (zigg_et Johr aanjefange hät)',
 	'contribstats-total-ytd' => 'Jesamp (zigg_et Johr aanjefange hät)',
+	'fundraiserstatistics' => 'Statistik övver de Spende',
 	'fundraiserstats-date' => 'Dattum',
+	'fundraiserstats-contributions' => 'Spendebeidrääsch',
 	'fundraiserstats-total' => 'Zosamme (en Dollar us de USA)',
+	'fundraiserstats-avg' => 'Em Schnett (Dollar us de USA)',
+	'fundraiserstats-med' => 'Zentraalwäät ov Hallef/Hallef-Shtell (en Dollar us de USA)',
+	'fundraiserstats-max' => 'Deckste Spend (en Dollar us de USA)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -754,6 +765,7 @@ $messages['lb'] = array(
 	'contribstats-currency-range-totals' => 'Währungen Total (vum $1 bis de(n) $2)',
 	'contribstats-contribution-range-breakdown' => 'Detail vun den Donen nom Betrag (vun $1 bis $2)',
 	'contribstats-currency-totals' => "Gesamtbetraag fir d'Steierjoer $1",
+	'contribstats-contribution-breakdown' => "Iwwersiicht vun den Donen fir d'Steierjoer $1",
 	'contribstats-day' => 'Dag',
 	'contribstats-month' => 'Mount',
 	'contribstats-currency' => 'Währung',
@@ -761,14 +773,16 @@ $messages['lb'] = array(
 	'contribstats-contributions' => 'Donen',
 	'contribstats-total' => 'Total (USD)',
 	'contribstats-avg' => 'Duerchschnëtt (USD)',
-	'contribstats-min' => 'Minimum (USD)',
+	'contribstats-med' => 'Mëttelwert (Median) (USD)',
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Prozentsaatz (YTD)',
 	'contribstats-total-ytd' => 'Total (YTD)',
+	'fundraiserstatistics' => 'Statistike vun den Donen',
 	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-contributions' => 'Donen',
 	'fundraiserstats-total' => 'Total (USD)',
 	'fundraiserstats-avg' => 'Duerchschnëtt (USD)',
-	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-med' => 'Mëttelwert (Median) (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
 );
 
@@ -1107,15 +1121,16 @@ $messages['sv'] = array(
 	'contribstats-contributions' => 'Bidrag',
 	'contribstats-total' => 'Totalt (USD)',
 	'contribstats-avg' => 'Genomsnitt (USD)',
-	'contribstats-min' => 'Minimum (USD)',
+	'contribstats-med' => 'Median (USD)',
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Procentandel (hittills i år)',
 	'contribstats-total-ytd' => 'Totalt (hittills i år)',
 	'fundraiserstatistics' => 'Insamlingsstatistik',
 	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-contributions' => 'Bidrag',
 	'fundraiserstats-total' => 'Totalt (USD)',
 	'fundraiserstats-avg' => 'Genomsnitt (USD)',
-	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-med' => 'Median (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
 );
 

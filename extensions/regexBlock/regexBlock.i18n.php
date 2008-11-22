@@ -1239,6 +1239,13 @@ $messages['oc'] = array(
 	'regexblock-view-time' => 'lo $1',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'regexblock-form-reason' => 'Аххос:',
+);
+
 /** Punjabi (ਪੰਜਾਬੀ)
  * @author Gman124
  */

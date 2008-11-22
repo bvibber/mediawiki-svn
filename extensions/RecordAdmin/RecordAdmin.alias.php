@@ -15,3 +15,8 @@ $aliases['fr'] = array(
 	'RecordAdmin' => array( 'GérerEnregistrement', 'GererEnregistrement', 'Gérer enregistrement' ),
 );
 
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'RecordAdmin' => array( 'Gegevensbeheer' ),
+);
+

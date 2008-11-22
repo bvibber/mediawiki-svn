@@ -704,6 +704,7 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'dt_xml_page' => 'Фарс',
+	'dt_xml_title' => 'Сæргонд',
 );
 
 /** Polish (Polski)

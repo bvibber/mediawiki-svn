@@ -863,6 +863,13 @@ $messages['oc'] = array(
 	'right-patroller' => 'Paginas de patrolha',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'patrol-revert-reason' => 'Аххос',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

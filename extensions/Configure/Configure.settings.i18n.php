@@ -1112,8 +1112,12 @@ $messages['lb'] = array(
 	'configure-setting-wgTranslateNumerals' => 'Zifferen iwwersetzen',
 	'configure-setting-wgCapitalLinks' => 'Beim éischt Buchstaw vun den Titele vun de Säiten musst Dir op Grouss- a Klengschreiwen oppassen',
 	'configure-setting-wgMaxArticleSize' => 'Maximal Gréisst vun enger Säit (kB)',
+	'configure-setting-wgSiteSupportPage' => 'Säit mat Informatiounen iwwert Donatiounen',
 	'configure-setting-wgEnableUploads' => 'Eroplueden aschalten',
+	'configure-setting-wgFileStore' => 'wou déi geläschte Fichiere versuergt ginn',
+	'configure-setting-wgMaxUploadSize' => 'Maximal erlaabte Gréisst beim Eroplueden',
 	'configure-setting-wgVersion' => 'MediaWiki Versioun',
+	'configure-setting-wgAccountCreationThrottle' => 'Zuel vun de Konten déi all IP-Adress opmaache kann',
 	'configure-setting-wgExtensionFunctions' => 'Erweiderungsfunktiounen',
 	'configure-setting-wgActiveUserDays' => 'Zäit no däer e Benotzer als inaktiv gëlt',
 	'configure-setting-wgUseAjax' => 'AJAX aschalten',
@@ -1703,6 +1707,17 @@ $messages['sk'] = array(
 	'configure-setting-wgAmericanDates' => 'Vyžadovať v angličtine „May 12“ namiesto „12 May“',
 	'configure-setting-wgDisableLangConversion' => 'Vypnúť konverziu jazykov',
 	'configure-setting-wgDisableTitleConversion' => 'Vypnúť konverziu variantov jazykov v názvoch stránok',
+	'configure-setting-wgEditEncoding' => 'Znaky, ktoré nie sú výslovne konvertované výstupným kódovaním',
+	'configure-setting-wgForceUIMsgAsContentMsg' => 'Správy používateľského rozhrania, ktoré sa majú považvať za správy s obsahom',
+	'configure-setting-wgInputEncoding' => 'Kódovanie vstupného textu',
+	'configure-setting-wgInterwikiMagic' => 'Zobraziť interwiki odkazy v špeciálnom zozname',
+	'configure-setting-wgLanguageCode' => 'Jazykový kód lokality',
+	'configure-setting-wgLegacyEncoding' => 'Pôvodné kódovanie lokality, z ktorého sa bude konvertovať',
+	'configure-setting-wgLoginLanguageSelector' => 'Zobraziť na prihlasovacej stránke a registračonom formulári výber jazyka',
+	'configure-setting-wgOutputEncoding' => 'Kódovanie výstupného textu',
+	'configure-setting-wgTranslateNumerals' => 'Prekladať čísla',
+	'configure-setting-wgUseDatabaseMessages' => 'Povoliť použitie menného priestoru MediaWiki na úpravu správ',
+	'configure-setting-wgUseDynamicDates' => 'Zmeniť formát dátumov v odkazoch',
 );
 
 /** Swedish (Svenska)
@@ -1723,8 +1738,8 @@ $messages['te'] = array(
  * @author Ahonc
  */
 $messages['uk'] = array(
-	'configure-setting-wgSitename' => 'Назва сайта',
-	'configure-setting-wgLanguageCode' => 'Код мови сайта',
+	'configure-setting-wgSitename' => 'Назва сайту',
+	'configure-setting-wgLanguageCode' => 'Код мови сайту',
 	'configure-setting-wgSMTP' => 'SMTP-сервер',
 );
 

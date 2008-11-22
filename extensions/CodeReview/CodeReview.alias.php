@@ -74,7 +74,7 @@ $aliases['mk'] = array(
 
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'Code' => array( 'Code' ),
+	'Code' => array( 'Codecontrole' ),
 	'RepoAdmin' => array( 'Repobeheer' ),
 );
 

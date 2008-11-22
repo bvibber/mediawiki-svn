@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'stringfunctions-desc' => 'يعزز المحلل بدوال سلسلة',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'stringfunctions-desc' => 'Proširuje parser sa string funkcijama',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

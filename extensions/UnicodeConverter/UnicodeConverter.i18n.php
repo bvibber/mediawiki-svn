@@ -265,9 +265,11 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'unicodeconverter-ok' => 'ОК',
+	'unicodeconverter-oldtext' => 'Исходный текст:',
 );
 
 /** Slovak (Slovenčina)

@@ -15,6 +15,14 @@ $messages['en'] = array(
 	'authors_anonymous'  => 'Anonymous',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'authors_authors' => 'المؤلفين',
+	'authors_anonymous' => 'مش معروف',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -32,6 +40,14 @@ $messages['gl'] = array(
 	'authors_anonymous' => 'Anónimos',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'authors_authors' => 'Pangripta',
+	'authors_anonymous' => 'Tanpa aran (anonim)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -42,12 +58,23 @@ $messages['lb'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'authors-desc' => "Voegt een lijst auteurs to aan pagina's",
+	'authors-desc' => "Voegt een lijst auteurs toe aan pagina's",
 	'authors_authors' => 'Auteurs',
 	'authors_anonymous' => 'Anoniem',
+);
+
+/** Russian (Русский)
+ * @author Ferrer
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'authors-desc' => 'Добавляет на страницу список авторов',
+	'authors_authors' => 'Авторы',
+	'authors_anonymous' => 'Аноним',
 );
 
 /** Slovak (Slovenčina)

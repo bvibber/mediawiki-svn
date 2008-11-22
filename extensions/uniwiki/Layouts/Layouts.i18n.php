@@ -123,6 +123,8 @@ $messages['jv'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'layouts_title' => 'Eng Säit uleeën',
+	'layouts_chooselayout' => 'E Layout fir $1 eraussichen:',
 	'layouts_nolayout' => 'Kee Layout',
 	'layouts_continue' => 'Weider',
 	'layouts_choosecategory' => 'Wielt eng Kategorie fir $1:',
@@ -164,6 +166,21 @@ $messages['pt-br'] = array(
 	'layouts_tagline' => 'Esta página foi gerada pelo layout <strong>$1</strong>.',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'layouts-desc' => 'Заполняет вновь создаваемые страницы редактируемыми «макетами» с целью по поддерживать типовую структуру страниц.',
+	'layouts_title' => 'Создать страницу',
+	'layouts_chooselayout' => 'Выбор макета для $1:',
+	'layouts_nolayout' => 'Нет макета',
+	'layouts_continue' => 'Продолжить',
+	'layouts_choosecategory' => 'Выбор категории для $1:',
+	'layouts_unknown' => 'Неизвестно',
+	'layouts_tagline' => "Эта страница была создана с помощью макета '''$1'''.",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -177,5 +194,17 @@ $messages['sk'] = array(
 	'layouts_unknown' => 'Neznáme',
 	'layouts_tagline' => "Túto stránku vytvorilo rozloženie '''$1'''.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'layouts_title' => 'Skapa en sida',
+	'layouts_chooselayout' => 'Välj en layout för $1:',
+	'layouts_nolayout' => 'Ingen layout',
+	'layouts_continue' => 'Fortsätt',
+	'layouts_choosecategory' => 'Välj en kategori för $1:',
+	'layouts_unknown' => 'Okänd',
 );
 

@@ -377,6 +377,16 @@ $messages['ro'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|prieten nou|prieteni noi}}',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'mp-welcome-edit' => 'Править',
+	'mp-requests-title' => 'Запросы',
+	'mp-request-new-message' => 'новое сообщение',
+);
+
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
  */

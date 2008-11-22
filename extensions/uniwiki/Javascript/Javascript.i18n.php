@@ -34,6 +34,13 @@ $messages['nl'] = array(
 	'javascript-desc' => 'Voegt uniwiki.js met JavaScript-code die wordt gedeeld tussen de Uniwiki-uitbreidingen toe aan iedere pagina',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'javascript-desc' => 'Добавляет uniwiki.js на каждую страницу, содержащую код JavaScript, разделяемый расширениями Uniwiki',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -1310,6 +1310,14 @@ Tornar cap a :
 	'crosswikiunblock-local' => 'Los blocatges en escritura locals son pas suportats via aquesta interfàcia. Utilizatz [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'crosswikiblock-reason' => 'Аххос:',
+	'crosswikiunblock-reason' => 'Аххос:',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Equadus

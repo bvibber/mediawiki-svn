@@ -41,6 +41,13 @@ $messages['nl'] = array(
 	'formatsearch-desc' => 'Schoont de zoekresultatenpagina op',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'formatsearch-desc' => 'Приводит в порядок страницу выдачи результатов поиска',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

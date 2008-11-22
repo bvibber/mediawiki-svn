@@ -79,6 +79,7 @@ $wgCustomToolbarMessages['arz'] = array(
 	'ct_internal_sample' => 'اسم الصفحة',
 	'ct_image_caption' => 'ضيف صورة',
 	'ct_nowiki_caption' => 'مافيش ويكي',
+	'ct_horizontal_caption' => 'خط افقي',
 	'ct_submit' => 'روح!',
 	'ct_user_user' => 'يوزر',
 	'ct_user_sample' => 'اسم اليوزر',
@@ -258,22 +259,54 @@ $wgCustomToolbarMessages['gl'] = array(
 	'ct_user_sample' => 'Nome de usuario',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$wgCustomToolbarMessages['jv'] = array(
+	'ct_external_caption' => 'Pranala jaba',
+	'ct_image_tip' => 'Seselaké gambar',
+	'ct_image_caption' => 'Tambah gambar',
+	'ct_attachment_tip' => 'Seselaké lampiran',
+	'ct_attachment_caption' => 'Tambah lampiran',
+	'ct_math_sample' => 'Seselaké formula (rumus) LaTeX ing kéné',
+	'ct_math_tip_ins' => 'Seselaké formula (rumus) matématika (LaTeX)',
+	'ct_user_user' => 'Panganggo',
+	'ct_user_tip' => 'Seselaké pranala menyang kaca panganggo',
+	'ct_user_caption' => 'Pranala panganggo',
+	'ct_user_sample' => 'Jeneng panganggo',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $wgCustomToolbarMessages['lb'] = array(
 	'ct_bold_caption' => 'Fett',
+	'ct_italic_sample' => 'Kursiven Text',
+	'ct_italic_tip_ins' => 'Kursiven Text asetzen',
+	'ct_italic_tip_wrap' => 'Dësen Text kursiv maachen',
+	'ct_italic_caption' => 'Kursiv',
 	'ct_internal_sample' => 'Säitennumm',
 	'ct_internal_caption' => 'Interne Link',
+	'ct_external_tip_ins' => 'En externe Link drasetzen',
+	'ct_external_tip_wrap' => 'Aus dësem Text en externe Link maachen',
 	'ct_external_caption' => 'Externe Link',
+	'ct_image_tip' => 'E Bild asetzen',
 	'ct_image_caption' => 'Bild derbäisetzen',
+	'ct_math_sample' => 'LaTeX Formel hei drasetzen',
+	'ct_math_tip_wrap' => 'Aus dësem Text eng Mathematesch Formel (LaTeX) maachen',
 	'ct_math_caption' => 'Formel',
+	'ct_nowiki_sample' => 'Net-formatéierten Text hei drasetzen',
 	'ct_nowiki_caption' => 'Keng Wiki',
+	'ct_horizontal_caption' => 'Horizontale Strich',
 	'ct_upload' => '$1 eroplueden',
 	'ct_select' => 'Wielt $1 fir eropzelueden',
+	'ct_caption' => 'Beschreiwung derbäiseten (fakultativ)',
+	'ct_link' => 'Den Numm vum Link derbäisetzen (fakultativ)',
 	'ct_submit' => 'Lass!',
 	'ct_close' => 'Fënster zoumaachen',
+	'ct_success' => 'De Fichier gouf eropgelueden!',
 	'ct_user_user' => 'Benotzer',
+	'ct_user_tip' => 'E Link op eng Benotzersäit drasetzen',
 	'ct_user_caption' => 'Benotzer Link',
 	'ct_user_sample' => 'Benotzernumm',
 );
@@ -380,5 +413,105 @@ $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_close' => 'Fechar a janela',
 	'ct_success' => 'O arquivo foi carregado com sucesso!',
 	'ct_popupblocked' => 'O pop-up para carregar o arquivo foi bloqueado. Verifique o seu bloqueador de pop-ups.',
+);
+
+/** Russian (Русский)
+ * @author Ferrer
+ * @author Александр Сигачёв
+ */
+$wgCustomToolbarMessages['ru'] = array(
+	'ct-desc' => 'Добавляет растяжимую панель',
+	'ct_bold_sample' => 'Жирный текст',
+	'ct_bold_tip_ins' => 'Вставить жирный текст',
+	'ct_bold_tip_wrap' => 'Сделать этот текст жирным',
+	'ct_bold_caption' => 'Жирный',
+	'ct_italic_sample' => 'Курсивный текст',
+	'ct_italic_tip_ins' => 'Вставить курсивный текст',
+	'ct_italic_tip_wrap' => 'Сделать этот текст курсивным',
+	'ct_italic_caption' => 'Курсивный',
+	'ct_internal_sample' => 'ИмяСтраницы',
+	'ct_internal_tip_ins' => 'Вставить внутреннюю ссылку',
+	'ct_internal_tip_wrap' => 'Сделать этот текст внутренней ссылкой',
+	'ct_internal_caption' => 'Внутренняя ссылка',
+	'ct_external_tip_ins' => 'Вставить внешнюю ссылку',
+	'ct_external_tip_wrap' => 'Сделать этот текст внешней ссылкой',
+	'ct_external_caption' => 'Внешняя ссылка',
+	'ct_image_tip' => 'Вставить изображение',
+	'ct_image_caption' => 'Добавить изображение',
+	'ct_attachment_tip' => 'Вставить вложение',
+	'ct_attachment_caption' => 'Добавить вложение',
+	'ct_math_sample' => 'Вставьте суда формулу LaTeX',
+	'ct_math_tip_ins' => 'Вставка математической формулы (LaTeX)',
+	'ct_math_tip_wrap' => 'Сделать этот текст математической формулой (LaTeX)',
+	'ct_math_caption' => 'Формула',
+	'ct_nowiki_sample' => 'Вставьте сюда текст, который не нужно форматировать',
+	'ct_nowiki_tip_ins' => 'Пренебрегать вики-форматированием',
+	'ct_nowiki_tip_wrap' => 'Пренебрегать вики-форматированием этого текста',
+	'ct_nowiki_caption' => 'Без вики',
+	'ct_horizontal_tip' => 'Вставить горизонтальную линию (не используйте часто)',
+	'ct_horizontal_caption' => 'Горизонтальная линия',
+	'ct_upload' => 'Загрузить $1',
+	'ct_select' => 'Выбрать $1 для загрузки',
+	'ct_caption' => 'Добавить заголовок (необязательно)',
+	'ct_link' => 'Добавить название ссылки (необязательно)',
+	'ct_submit' => 'Поехали!',
+	'ct_close' => 'Закрыть окно',
+	'ct_success' => 'Файл успешно загружен!',
+	'ct_popupblocked' => 'Всплывающее окно загрузки не было открыто.
+Пожалуйста, проверьте ваш блокиратор всплывающих окон.',
+	'ct_user_user' => 'Участник',
+	'ct_user_tip' => 'Вставить ссылку на страницу участника',
+	'ct_user_caption' => 'Ссылка на участника',
+	'ct_user_sample' => 'Имя участника',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$wgCustomToolbarMessages['sk'] = array(
+	'ct-desc' => 'Pridáva rozšíriteľný panel nástrojov',
+	'ct_bold_sample' => 'Hrubý text',
+	'ct_bold_tip_ins' => 'Vložiť hrubý text',
+	'ct_bold_tip_wrap' => 'Zmeniť tento text na hrubý',
+	'ct_bold_caption' => 'Hrubý',
+	'ct_italic_sample' => 'Text kurzívou',
+	'ct_italic_tip_ins' => 'Vložiť text kurzívou',
+	'ct_italic_tip_wrap' => 'Zmeniť tento text na kurzívu',
+	'ct_italic_caption' => 'Kurzíva',
+	'ct_internal_sample' => 'NázovStránky',
+	'ct_internal_tip_ins' => 'Vložiť interný odkaz',
+	'ct_internal_tip_wrap' => 'Zmeniť tento text na interný odkaz',
+	'ct_internal_caption' => 'Interný odkaz',
+	'ct_external_sample' => 'http://example.com',
+	'ct_external_tip_ins' => 'Vložiť externý odkaz',
+	'ct_external_tip_wrap' => 'Zmeniť tento text na externý odkaz',
+	'ct_external_caption' => 'Externý odkaz',
+	'ct_image_tip' => 'Vložiť obrázok',
+	'ct_image_caption' => 'Pridať obrázok',
+	'ct_attachment_tip' => 'Vložiť prílohu',
+	'ct_attachment_caption' => 'Pridať prílohu',
+	'ct_math_sample' => 'Vložiť sem LaTeXový vzorec',
+	'ct_math_tip_ins' => 'Vložiť matematický vzorec (LaTeX)',
+	'ct_math_tip_wrap' => 'Zmeniť tento text na matematický vzorec (LaTeX)',
+	'ct_math_caption' => 'Vzorec',
+	'ct_nowiki_sample' => 'Vložiť sem neformátovaný text',
+	'ct_nowiki_tip_ins' => 'Ignorovať wiki formátovanie',
+	'ct_nowiki_tip_wrap' => 'Ignorovať v tomto texte wiki formátovanie',
+	'ct_nowiki_caption' => 'Zrušiť wiki',
+	'ct_horizontal_tip' => 'Vložiť vodorovnú čiaru (používajte s rozmyslom)',
+	'ct_horizontal_caption' => 'Vodorovná čiara',
+	'ct_upload' => 'Nahrať $1',
+	'ct_select' => 'Vyberte $1, ktorý sa má nahrať',
+	'ct_caption' => 'Pridať nadpis (nepovinné)',
+	'ct_link' => 'Pridať názov odkazu (nepovinné)',
+	'ct_submit' => 'Vykonať',
+	'ct_close' => 'Zatvoriť okno',
+	'ct_success' => 'Nahranie súboru prebehlo úspešne!',
+	'ct_popupblocked' => 'Vyskakovacie okno nahrávania sa neotvorilo.
+Prosím, skontrolujte blokovanie vyskakovacích okien vo vašom prehliadači.',
+	'ct_user_user' => 'Používateľ',
+	'ct_user_tip' => 'Vložiť odkaz na používateľskú stránku',
+	'ct_user_caption' => 'Odkaz na používateľa',
+	'ct_user_sample' => 'Používateľské meno',
 );
 

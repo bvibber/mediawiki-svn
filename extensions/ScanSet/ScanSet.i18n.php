@@ -169,6 +169,13 @@ $messages['br'] = array(
 	'scanset_prev' => '&lt; Kent',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'scanset_next' => 'slijedeći &gt;',
+);
+
 /** Catalan (Català)
  * @author Aleator
  * @author Paucabot

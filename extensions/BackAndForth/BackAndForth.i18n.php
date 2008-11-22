@@ -132,6 +132,15 @@ $messages['br'] = array(
 	'backforth-prev' => 'Kent ($1)',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'backforth-next' => 'slijedeći ($1)',
+	'backforth-desc' => 'Dodaje "Slijedeći" i "Prethodni" linkove na vrh stranica kod alfabetskog spiska stranica',
+	'backforth-prev' => 'prethodni ($1)',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */

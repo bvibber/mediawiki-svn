@@ -21,3 +21,8 @@ $aliases['lb'] = array(
 	'EmergencyDeSysop' => array( 'Noutprozedur fir Administrateurrechter ewechzehuelen' ),
 );
 
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'EmergencyDeSysop' => array( 'NoodgreepBeheerdersrechtenVerwijderen' ),
+);
+

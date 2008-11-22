@@ -14,6 +14,14 @@ $messages['en'] = array(
 	'catboxattop-categories' => 'Categories', // Should probably support plural
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'catboxattop-desc' => 'بيضيف صندوء التصنيف في يمين الصفحه من فوق',
+	'catboxattop-categories' => 'تصانيف',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -43,6 +51,14 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'catboxattop-desc' => 'Voegt bovenaan rechts een categoriekader toe',
 	'catboxattop-categories' => 'Categorieën',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'catboxattop-desc' => 'Добавляет блок категорий в верхний правый угол страниц',
+	'catboxattop-categories' => 'Категории',
 );
 
 /** Slovak (Slovenčina)

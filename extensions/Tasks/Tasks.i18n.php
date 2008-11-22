@@ -919,6 +919,13 @@ $messages['oc'] = array(
 	'tog-show_task_comments' => 'Veire la pagina de comentaris a prepaus dels prètzfaches.',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'tasks_search_status' => 'Статус',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Maikking

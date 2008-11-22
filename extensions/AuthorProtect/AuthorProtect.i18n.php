@@ -703,6 +703,14 @@ $messages['oc'] = array(
 	'restriction-level-author' => 'Autor protegit',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'authorprotect-notauthor' => 'Ды ацы фарсы автор нæ дæ',
+	'authorprotect-reason' => 'Аххос',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad

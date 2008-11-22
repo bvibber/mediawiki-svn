@@ -34,6 +34,13 @@ $messages['nl'] = array(
 	'csshooks-desc' => "Voegt CSS toe aan de HTML-uitvoer van pagina's voor betere vormgeving",
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'csshooks-desc' => 'Добавляет CSS в HTML-вывод страниц, чтобы улучшить стили',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

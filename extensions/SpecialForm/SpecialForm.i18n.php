@@ -245,6 +245,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author McDutchie
  * @author Sherbrooke
  */
@@ -260,8 +261,8 @@ $messages['fr'] = array(
 	'formsave' => 'Sauvegarder',
 	'formindexmismatch-title' => 'Palette de nom et erreur de modèle',
 	'formindexmismatch' => 'Ce formulaire a des patrons et des modèles qui ne correspondent pas à partir de $1.',
-	'formarticleexists' => "L'article existe déjà.",
-	'formarticleexiststext' => "L'article nommé [[$1]] existe déjà.",
+	'formarticleexists' => 'La page existe déjà.',
+	'formarticleexiststext' => 'La page nommée [[$1]] existe déjà.',
 	'formbadpagename' => 'Mauvais nom de page',
 	'formbadrecaptcha' => 'Valeur incorrecte pour reCaptcha. Essayez à nouveau',
 	'formbadpagenametext' => 'Les données saisies forment un mauvais nom de page, « $1 ».',

@@ -252,28 +252,30 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'povwatch' => 'Surveillance des guerres d’éditions',
 	'povwatch_desc' => 'Extension permettant d’[[Special:PovWatch|ajouter des pages à la liste de suivi]] d’autres utilisateurs',
 	'povwatch_no_session' => 'Erreur : Impossible de soumettre le formulaire à la suite de la perte des données de la session.',
-	'povwatch_not_allowed_push' => 'Vous n’êtes pas un administrateur pour la surveillance des guerres d’édition. Vous ne pouvez pas ajouter les articles dans la liste correspondante.',
+	'povwatch_not_allowed_push' => 'Vous n’êtes pas un administrateur pour la surveillance des guerres d’édition. Vous ne pouvez pas ajouter les pages dans la liste correspondante.',
 	'povwatch_already_subscribed' => 'Vous êtes déjà inscrit pour la surveillance des guerres d’édition.',
 	'povwatch_subscribed' => 'Vous êtes maintenant inscrit pour la surveillance des guerres d’édition.',
 	'povwatch_not_subscribed' => 'Vous n’êtes pas inscrit pour la surveillance des guerres d’édition. Par conséquent, vous ne pouvez pas résilier d’inscription.',
 	'povwatch_unsubscribed' => 'Votre inscription pour la surveillance des guerres d’édition est maintenant résiliée.',
 	'povwatch_invalid_title' => 'Le titre indiqué est invalide.',
 	'povwatch_pushed' => '[[$1]] a été inscrite avec succès dans {{PLURAL:$2|la liste|les listes}} de surveillance de l’utilisateur $2.',
-	'povwatch_intro' => 'La surveillance des guerres d’édition est un service qui autorise la surveillance discrète des articles conflictuels. Ceux-ci peuvent être inscrits dans la liste de surveillance des administrateurs enregistrés.
+	'povwatch_intro' => 'La surveillance des guerres d’édition est un service qui autorise la surveillance discrète des pages conflictuelles. Ceux-ci peuvent être inscrits dans la liste de surveillance des administrateurs enregistrés.
 
-Un journal de surveillance des articles inscrits est disponible sur [[Special:PovWatch/log]].',
+Un journal de surveillance des pages inscrites est disponible sur [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'Une [[Special:PovWatch/subscribers|liste des abonnés]] est disponible.',
 	'povwatch_subscriber_list_intro' => '<strong>Liste des abonnés</strong>',
 	'povwatch_not_allowed_subscribers' => 'Vous n’avez pas la permission de visionner la liste des personnes inscrites pour la surveillance des guerres d’édition.',
 	'povwatch_unknown_subpage' => 'Sous-page inconnue.',
 	'povwatch_push' => 'Inscrire',
-	'povwatch_push_intro' => 'Utilisez le formulaire ci-dessous pour inscrire les articles dans la liste de suivi affectée aux utilisateurs abonnés. Inscrivez scrupuleusement le titre : un article inexistant peut être spécifié, et il n’existe aucun moyen de retirer un titre une fois inscrit.',
+	'povwatch_push_intro' => 'Utilisez le formulaire ci-dessous pour inscrire les pages dans la liste de suivi affectée aux utilisateurs abonnés.
+Inscrivez scrupuleusement le titre : une page inexistante peut être spécifiée, et il n’existe aucun moyen de la retirer une fois inscrite.',
 	'povwatch_title' => 'Titre :',
 	'povwatch_comment' => 'Commentaire du journal :',
 	'povwatch_no_log' => 'Il n’existe aucune entrée dans le journal.',
@@ -835,6 +837,13 @@ $messages['oc'] = array(
 	'povwatch_added' => 'apondut',
 	'right-povwatch_admin' => "Administrar los dreches d’utilizaire per l'ajust de paginas a la lista de seguit dels autres utilizaires.",
 	'right-povwatch_user' => 'Apond de paginas a la lista de seguit dels autres utilizaires',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'povwatch_title' => 'Сæргонд:',
 );
 
 /** Polish (Polski)

@@ -3275,6 +3275,10 @@ $messages['sv'] = array(
 	'configure-ext-use' => 'Använd',
 	'configure-summary' => 'Den här specialsidan låter dig konfigurera wikin. Se [http://www.mediawiki.org/wiki/Manual:Configuration_settings manualsidan om konfigurationsinställningar] för mer information.',
 	'configure-btn-save' => 'Spara inställningar',
+	'configure-db-error' => 'Databasen du specificerat för att hålla konfigurationen ($1) existerar inte.
+Vänligen skapa den och applicera configure.sql eller korrigera dess namn.',
+	'configure-db-table-error' => 'Databasen du specificerat har inte de tabeller som behövs.
+Vänligen applicera configure.sql i den databasen.',
 	'configure-directory-not-writable' => 'Registret används till att lagra inställningarna, <tt>$1</tt>, är inte skrivbar.
 Var god gör den skrivbar av PHP för att använda det här tillägget.',
 	'configure-edit-old' => 'Varning: du redigerar en <strong>gammal</strong> version av konfigurationen',
@@ -3284,6 +3288,8 @@ Var god gör den skrivbar av PHP för att använda det här tillägget.',
 	'configure-js-prompt-group' => 'Skriv in namnet på den nya gruppen:',
 	'configure-js-remove' => 'Radera',
 	'configure-js-remove-row' => 'Radera detta element',
+	'configure-js-get-image-url' => 'Konvertera filnamn till URL',
+	'configure-js-image-error' => 'Ett fel uppstod när URL:en hämtades. Vänligen kontrollera att filen existerar.',
 	'configure-no-diff' => 'Det finns inga ändringar mellan de valda versionerna.',
 	'configure-no-directory' => 'Katalogen där inställningar lagras, <tt>$1</tt>, finns inte.
 För att använda det här programtillägget måste du skapa den eller byta den.',

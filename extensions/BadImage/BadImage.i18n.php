@@ -1396,6 +1396,13 @@ $messages['oc'] = array(
 	'badimages-page' => '{{ns:help}}:Lista dels imatges indesirables',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'badimages-reason' => 'Аххос:',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe
