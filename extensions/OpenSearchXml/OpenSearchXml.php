@@ -53,7 +53,7 @@ function efOpenSearchXmlUrls( &$urls ) {
 
 function efOpenSearchXmlTemplate() {
 	global $wgServer, $wgScriptPath;
-	$ns = implode( ',', SearchEngine::defaultNamespaces() );
-	if(!$ns) $ns = "0";
+	$ns = implode( '|', SearchEngine::defaultNamespaces() );
+	if( !$ns ) $ns = '0';
 	return $wgServer . $wgScriptPath . '/api.php?action=opensearch&format=xml&search={searchTerms}&namespace='.$ns;
 }
