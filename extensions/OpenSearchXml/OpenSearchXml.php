@@ -24,9 +24,10 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'OpenSearchXml',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
-	'description'    => 'OpenSearch JSON interface provides for text extracts',
+	'description'    => 'OpenSearch XML interface provides for text extracts',
 	'descriptionmsg' => 'opensearchxml-desc',
-	'author'         => 'Brion Vibber'
+	'author'         => 'Brion Vibber',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:OpenSearchXml'
 );
 
 $wgExtensionMessagesFiles['OpenSearchXml'] = dirname(__FILE__) . '/OpenSearchXml.i18n.php';
