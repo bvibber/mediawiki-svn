@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This is an extension for distributing snapshot archives of extensions, 
+ * This is an extension for distributing snapshot archives of extensions,
  * to be run on mediawiki.org
  */
 
@@ -37,10 +37,6 @@ $wgExtDistBranches = array(
 		'tarLabel' => 'MW1.11',
 		'name' => '1.11.x',
 	),
-	'branches/REL1_10' => array(
-		'tarLabel' => 'MW1.12',
-		'name' => '1.10.x',
-	),
 );
 
 /** Remote socket for svn-invoker.php (optional) */
@@ -61,4 +57,3 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description'    => 'This is an extension for distributing snapshot archives of extensions',
 	'descriptionmsg' => 'extdist-desc',
 );
-
