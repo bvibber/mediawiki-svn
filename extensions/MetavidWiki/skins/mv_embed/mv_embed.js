@@ -14,7 +14,6 @@
  * (in cases where media will be hosted in a different place than the embedding page)
  *
  */
-
 //fix multiple instances of mv_embed (ie include twice from two different servers) 
 var MV_DO_INIT=true;
 if( MV_EMBED_VERSION ){
@@ -1222,19 +1221,20 @@ textInterface.prototype = {
 		}
 		//js_log('do request on url:' + url);
 		//$j('#mv_loading_icon').css('display','inline');
-		do_request(url, function(data){
-			//js_log('wtf' + data.xml);
-			//js_log("load track data: "+ data.toString() );
+		do_request(url, function(data){			
+			//js_log("load track clip count:"+ data.getElementsByTagName('clip').length );
+			//debugger;			
 			//hide loading icon:
 			$j('#mv_loading_icon').css('display','none');
-			$j.each(data.getElementsByTagName('clip'), function(inx, n){
+			$j.each(data.getElementsByTagName('clip'), function(inx, clip){
+				js_log(' on clip ' + clip.id);
 				var text_clip = {
-					start:n.getAttribute('start').replace('npt:', ''),
-					end:n.getAttribute('end').replace('npt:', ''),
+					start:$j(clip).attr('start').replace('npt:', ''),
+					end:$j(clip).attr('end').replace('npt:', ''),
 					type_id:track_id,
-					id:n.getAttribute('id')
+					id:$j(clip).attr('id')
 				}
-				$j.each(n.getElementsByTagName('body'), function(binx, bn){
+				$j.each( clip.getElementsByTagName('body'), function(binx, bn ){
 					if(bn.textContent){
 						text_clip.body = bn.textContent;
 					}else if(bn.text){
@@ -1541,8 +1541,9 @@ mediaSource.prototype =
     */
     getURI : function(seek_time_sec)
     {    	
+    	//js_log("f:getURI: tf:" + this.timeFormat);
     	if( !seek_time_sec || !this.supports_url_time_encoding )
-       		return this.src;
+       		return this.src;       	
        	if( this.timeFormat == 'anx' ){
        		var new_url = getUpdateTimeURL(this.src,  seconds2ntp(seek_time_sec)+'/'+ this.end_ntp);
        	}else if(this.timeFormat=='mp4'){
@@ -1574,7 +1575,7 @@ mediaSource.prototype =
 	 * supports media_url?t=ntp_start/ntp_end url request format
      */
     parseURLDuration : function(){
-        //js_log('f:parseURLDuration() for:' + this.src);       
+        js_log('f:parseURLDuration() for:' + this.src);       
         //check if we have a timeFormat: 
         if( this.timeFormat ){
 	        if( this.timeFormat == 'anx' ){
@@ -1699,7 +1700,7 @@ mediaElement.prototype =
     	for(var i in playable_sources){
     		if(i==index){
     			this.selected_source = playable_sources[i];
-    			//update the user prefrence: 
+    			//update the user prefrance: 
     			embedTypes.players.userSelectFormat(playable_sources[i].mime_type);
     			break;
     		}
@@ -1710,26 +1711,28 @@ mediaElement.prototype =
     /** selects the default source via cookie preference, default marked, or by id order
      * */
     autoSelectSource:function(){ 
-    	js_log('f:autoSelectSource:');    
+    	js_log('f:autoSelectSource::');    
     	//@@todo read user preference for source    	
     	// Select the default source
     	var playable_sources = this.getPlayableSources();              		
     	var flash_flag=ogg_flag=false;  	    
         for ( var source in playable_sources ){
         	var mime_type =playable_sources[source].mime_type;
-            if(playable_sources[source].marked_default){
+            if( playable_sources[source].marked_default ){
+            	js_log('set via marked default: ' + playable_sources[source].marked_default);
                 this.selected_source = playable_sources[source];                
                 return true;
             }
             //set via user-preference
             if(embedTypes.players.preference['format_prefrence']==mime_type){
             	 js_log('set via preference: '+playable_sources[source].mime_type);
-            	 this.selected_source = playable_sources[source];        
+            	 this.selected_source = playable_sources[source];
+            	 return true;        
             }                                	                        
         }        
         //set Ogg via player support:
         for(var source in playable_sources){
-        	js_log('f:autoSelectSource' + playable_sources[source].mime_type);
+        	js_log('f:autoSelectSource:' + playable_sources[source].mime_type);
         	var mime_type =playable_sources[source].mime_type;        	
        		//set source via player                 
             if(mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex' || mime_type=='application/ogg'){
@@ -1737,27 +1740,38 @@ mediaElement.prototype =
 	        		var player = embedTypes.players[i];
 	        		//debugger;
 	        		if(player.library=='vlc' || player.library=='native'){
-	        			js_log('setting ogg via order')
+	        			js_log('set via ogg via order')
 	        			this.selected_source = playable_sources[source];    
+	        			return true;
 	        		}
 	        	}
             }
         }
-        //set Flash via player support
-        if (!this.selected_source){
-	        for(var source in playable_sources){    
-	        	var mime_type =playable_sources[source].mime_type;        
-	            if(mime_type=='video/x-flv'){
-	            	js_log('seeting flash by player preference')
-	            	this.selected_source = playable_sources[source];
-	            }            	        
-	        }
-    	}
+        //set h264 flash 
+        for(var source in playable_sources){    
+        	var mime_type =playable_sources[source].mime_type;	        		        	        
+            if( mime_type=='video/h264' ){
+            	js_log('set via by player preference h264 flash')
+            	this.selected_source = playable_sources[source];
+            	return true;
+            }   	        
+        }        
+        //set basic flash
+        for(var source in playable_sources){    
+        	var mime_type =playable_sources[source].mime_type;	        		        	        
+            if( mime_type=='video/x-flv' ){
+            	js_log('set via by player preference normal flash')
+            	this.selected_source = playable_sources[source];
+            	return true;
+            }            	        
+        }
+    	
         //select first source        
         if (!this.selected_source)
         {
-            js_log('autoselecting first source:' + playable_sources[0]);
+            js_log('set via first source:' + playable_sources[0]);
             this.selected_source = playable_sources[0];
+            return true;
         }
     },
     /** Returns the thumbnail URL for the media element.
@@ -2178,7 +2192,8 @@ embedVideo.prototype = {
 	    			'style="z-index:-2;position:absolute;background:#000;' +
 	    			'top:0px;left:0px;width:'+parseInt(this.width)+'px;' +
 	    			'height:'+parseInt(this.height)+'px;">' +
-	    		'</div>');    	
+	    		'</div>'
+	   	);    	
     	
     	//start animation (make thumb small in uper left add in div for "loading"    	    
     	$j('#img_thumb_'+this.id).animate({    			
@@ -2737,17 +2752,24 @@ embedVideo.prototype = {
 	        var source_select_code = '$j(\'#'+this_id+'\').get(0).closeDisplayedHTML(); $j(\'#'+_this.id+'\').get(0).media_element.selectSource(\''+index+'\');';
 	        var player_code = _this.getPlayerSelectList( source.getMIMEType(), index, source_select_code);
 	        var is_not_selected = (source != _this.media_element.selected_source);
-	        var image_src = mv_embed_path+'/images/stream/';
-	        image_src += (source.mime_type == 'video/x-flv')?'flash_icon_':'fish_xiph_org_';
+	        var image_src = mv_embed_path+'images/stream/';
+	        if( source.mime_type == 'video/x-flv' ){
+	        	image_src += 'flash_icon_';
+	        }else if( source.mime_type == 'video/h264'){
+	        	//for now all mp4 content is pulled from archive.org (so use archive.org icon) 
+	        	image_src += 'archive_org_';
+	        }else{
+	        	image_src += 'fish_xiph_org_';
+	        }
 	        image_src += is_not_selected ? 'bw' : 'color';
 	        image_src += '.png';
 	        if (default_player)
 	        {
 	            out += '<img src="'+image_src+'"/>';
-	            if(is_not_selected)
+	            if( is_not_selected )
 	                out+='<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">';
-	            out += source.getTitle()+/*' - ' + default_player.getName() +*/ (is_not_selected?'</a>':'') + ' ';
-	            out += /*'(<a href="#" onClick=\'$j("#player_select_list_'+index+'").fadeIn("slow");return false;\'>choose player</a>)' +*/ player_code;           
+	            out += source.getTitle()+ (is_not_selected?'</a>':'') + ' ';
+	            out += player_code;           
 	        }else
 	            out+= source.getTitle() + ' - no player available';
         });
@@ -2990,7 +3012,8 @@ function seconds2ntp(sec){
  */
 function ntp2seconds(ntp){
 	if(!ntp){		
-		return js_log('ntp2seconds:not valid ntp:'+ntp);
+		//js_log('ntp2seconds:not valid ntp:'+ntp);
+		return false;
 	}
 	times = ntp.split(':');
 	if(times.length!=3){		
@@ -3068,11 +3091,11 @@ function do_request(req_url, callback){
 function mv_jsdata_cb(response){
 	js_log('f:mv_jsdata_cb:'+ response['cb_inx']);
 	//run the callback from the global req cb object:
-	if(!global_req_cb[response['cb_inx']]){
+	if( !global_req_cb[response['cb_inx']] ){
 		js_log('missing req cb index');
 		return false;
 	}
-	if(!response['pay_load']){
+	if( !response['pay_load'] ){
 		js_log("missing pay load");
 		return false;
 	}
@@ -3082,14 +3105,19 @@ function mv_jsdata_cb(response){
 		break;
 		case 'text/xml':
 			if(typeof response['pay_load'] == 'string'){
-				//js_log('load string:'+ response['pay_load']);
+				js_log('load string:'+"\n"+ response['pay_load']);
+				//debugger;
 				//attempt to parse as xml for IE
-				if(embedTypes.msie){
+				if( embedTypes.msie ){
 					var xmldata=new ActiveXObject("Microsoft.XMLDOM");
 					xmldata.async="false";
 					xmldata.loadXML(response['pay_load']);
-				}else{ //for others (firefox, safari etc)
-					var xmldata = (new DOMParser()).parseFromString(response['pay_load'], "text/xml");
+				}else{ //for others (firefox, safari etc)	
+					try {
+    					var xmldata = (new DOMParser()).parseFromString(response['pay_load'], "text/xml");		
+    				}catch(e) {
+  							js_log('XML parse ERROR: ' + e.message);
+  					}  					
 				}
 				//@@todo hanndle xml parser errors
 				if(xmldata)response['pay_load']=xmldata;

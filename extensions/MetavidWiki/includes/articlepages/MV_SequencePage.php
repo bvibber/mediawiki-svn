@@ -22,12 +22,7 @@ class MV_SequencePage extends Article {
 	var $mHLRD = ''; 		//raw text of high level resource description
 	var $aHLRD = array(); 	//array representation of high level resource description
 	function __construct( $title ) {
-		global $wgRequest;
-		/*mvfAddHTMLHeader('sequence');
-		 if($title!=null){
-		 parent::__construct($title);
-		 }
-		 return $this;*/
+		global $wgRequest;		
 		return parent::__construct( $title );
 	}
 	/*
@@ -35,8 +30,7 @@ class MV_SequencePage extends Article {
 	 * also resolves all image and media locations with absolute paths.
 	 */
 	function getSequenceSMIL(){
-		global $wgParser,$wgOut, $wgUser, $wgEnableParserCache;
-		$parserOutput=false;
+		global $wgParser,$wgOut, $wgUser, $wgEnableParserCache;		
 		//temporally stop cache:  
 		$wgEnableParserCache=false;
 		
@@ -47,13 +41,8 @@ class MV_SequencePage extends Article {
 		}
 		if($parserOutput!=false)
 			return $parserOutput->getText();
-		//make sure the article exist: 
-		
 		//get the high level sequence description: 
 		$this->getSequenceHLRD();
-		//print "raw text: " . $this->mHLRD . "\n\n";
-		
-		//print "parse HLDR\n\n";
 		$this->parseHLRD_DOM();			    
 	    //this is the heavy lifting of the getSequenceSMIL function: 	    
 	    $this->resolveHLRD_to_SMIL();
@@ -67,7 +56,6 @@ class MV_SequencePage extends Article {
 		//save to cache if parser cache enabled:
 		if($wgEnableParserCache)
 			$mvParserCache->save( $parserOutput, $this, $wgUser );
-
 
 		return $parserOutput->getText();
 	}
@@ -87,7 +75,14 @@ class MV_SequencePage extends Article {
 		
 		$headNode = $this->smilDoc->createElement('head');				
 		//add meta data:
-		$metaData = array('title'=> $this->mTitle->getText(), 'interface_url'=>$wgServer . $wgScript);
+		$talkTitle = $this->mTitle->getTalkPage();
+		$metaData = array(
+			'title'			=> $this->mTitle->getText(), 
+			'interface_url' => $wgServer . $wgScript,
+			'linkback'		=> $this->mTitle->getFullURL(),
+			'mTitle'		=> $this->mTitle->getPrefixedDBKey(),
+			'mTalk'			=> $talkTitle->getPrefixedDBKey()
+		);
 		foreach($metaData as $name=>$val){
 			$titleNode = $this->smilDoc->createElement('meta');
 			$titleNode->setAttribute("name", htmlentities($name) );

@@ -16,7 +16,7 @@ options:
 actions: 
 	strip_speech_by  //strips extra speech by text
 	update_stream_desc //updates stream desc
-	update_archive_org_files //updates pointers to archive.org mp4 streaming
+	update_archive_org_files [stream_name] //updates pointers to archive.org mp4 streaming
 
 EOT;
 	exit ();
@@ -34,16 +34,21 @@ switch ( $args[0] ) {
 		update_stream_desc();
 	break;
 	case 'update_archive_org_files':
-		run_archive_org_update();
+		$stream_name = (isset( $args[1] ))?$args[1]:''; 		
+		run_archive_org_update( $stream_name );
 	break;
 }
-function run_archive_org_update(){
+function run_archive_org_update($stream_name=''){
 	//first get all the streams: 			
 	include_once( 'metavid2mvWiki.inc.php' );
 	$dbr = wfGetDB( DB_READ );
 	$dbw = wfGetDB( DB_WRITE );
+	if($stream_name!=''){
+		$sql =  "SELECT * FROM `mv_streams` WHERE `name`='$stream_name' LIMIT 1";
+	}else{
+		$sql = "SELECT * FROM `mv_streams` LIMIT 0, 5000";
+	}
 	
-	$sql = "SELECT * FROM `mv_streams` LIMIT 0, 5000";	
 	$result = $dbr->query( $sql );	
 	while ( $stream = $dbr->fetchObject( $result ) ) {
 		//get the wiki page:

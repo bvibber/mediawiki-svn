@@ -30,6 +30,10 @@ gMsg['menu_resource_overview'] = 'Resource Overview';
 gMsg['menu_options'] = 'Options';
 
 gMsg['loading_timeline'] = 'Loading TimeLine <blink>...</blink>';
+gMsg['loading_user_rights'] = 'Loading user rights <blink>...</blink>';
+
+gMsg['no_edit_permissions'] = 'You don\'t have permissions to save changes to this sequence'; 
+
 
 gMsg['edit_clip'] = 'Edit Clip';
 gMsg['edit_save'] = 'Save Changes';
@@ -77,6 +81,10 @@ var sequencerDefaultValues = {
 	
 	//default clipboard is empty:
 	clipboard:new Array(),
+	//stores the clipboard edit token (if user has rights to edit their User page) 
+	clipboardEditToken:null,
+	//stores the sequence edit token (if user has rights to edit the current sequence)	
+	sequenceEditToken:null, 
 	
 	//Msg are all the language specific values ... 
 	// (@@todo overwrite by msg values preloaded in the page)	
@@ -114,8 +122,7 @@ mvSequencer.prototype = {
 		},		
 		'options':{
 			'd':0
-		},
-		//menu_resource_overview
+		}
 	},	
 	
 	//set up initial key states: 
@@ -123,6 +130,8 @@ mvSequencer.prototype = {
 	key_ctrl_down:false,
 	
 	init:function( initObj ){	
+		//set up pointer to this_seq for current scope: 
+		var this_seq = this;
 		//set the default values:
 		for(var i in sequencerDefaultValues){
 			this[ i ] = sequencerDefaultValues[i];
@@ -143,14 +152,7 @@ mvSequencer.prototype = {
 		//$j('#'+this.sequence_container_id).css('position', 'relative');
 		this['base_width']=$j('#'+this.sequence_container_id).width();
 		this['base_height']=$j('#'+this.sequence_container_id).height();
-		
-		/*
-		var vid_width = (Math.round(this['base_width']*.5)>320)?
-					  Math.round(this['base_width']*.5):320;
-		var vid_height =  Math.round(vid_width*.75)+30;
-		*/
-		//var vid_width=320;
-		//var vid_height=240+30;
+				
 		
 		//add the container divs (with basic layout ~universal~ 
 		$j('#'+this.sequence_container_id).html(''+
@@ -161,17 +163,10 @@ mvSequencer.prototype = {
 			'<div id="'+this.timeline_id+'" style="position:absolute;' + 
 				'left:0px;right:0px;top:'+(this.video_height+10)+'px;bottom:25px;overflow:auto;">'+
 					getMsg('loading_timeline')+ '</div>'+
-			'<div id="'+this.id+'_save_cancel" style="position:absolute;'+
+			'<div id="' + this.sequence_container_id + '_status" style="position:absolute;left:0px;width:300px;"></div>'+
+			'<div id="' + this.sequence_container_id + '_save_cancel" style="position:absolute;'+
 				'right:0px;bottom:0px;height:25px;overflow:hidden;">'+					
-					'<a style="border:solid gray;font-size:1.2em;" onClick="window.confirm(\''+getMsg('edit_cancel_confirm')+'\')" '+ 
-					'href="javascript:'+this.instance_name+'.closeModEditor()">'+
-						getMsg('edit_cancel') + '</a> '+
-					'<a style="border:solid gray;font-size:1.2em;" href="#" onClick="'+this.instance_name+'.getSeqOutputJSON()">'+
-						'Preview Json Output'+
-					'</a>' +
-					'<a style="border:solid gray;font-size:1.2em;" href="#" onClick="'+this.instance_name+'.getSeqOutputHLRDXML()">'+
-						'Preview XML Output (will be save shortly) ' + 
-					'</a>' + 
+					getMsg('loading_user_rights') +
 			'</div>'
 		);
 		
@@ -180,20 +175,19 @@ mvSequencer.prototype = {
 		);
 		
 		//first check if we got a cloned PL object:
-		//(when the editor is invoked with the plalyst already on the page) 
-		if( this.plObj != 'null' ){
+		//(when the editor is invoked with the plalylist already on the page) 
+		//@@NOT WORKING... (need a better "clone" function) 
+		/*if( this.plObj != 'null' ){
 			js_log('found plObj clone');			
 			//extend with mvSeqPlayList object:			
 			this.plObj = new mvSeqPlayList(this.plObj);
 			js_log('mvSeqPlayList added: ' + this.plObj.org_control_height );
-			debugger;
 			$j('#'+this.video_container_id).get(0).attachNode( this.plObj );
 			this.plObj.getHTML();
-			debugger;
 			this.checkReadyPlObj();
 			return ;
-		}
-												
+		}*/
+				
 		//else check for source based sequence editor (a clean page load of the editor) 
 		if( this.mv_pl_src != 'null' ) {
 			js_log( ' pl src:: ' + this.mv_pl_src );			
@@ -208,6 +202,23 @@ mvSequencer.prototype = {
 		 
 		rewrite_by_id( this.plObj_id );	
 		setTimeout(this.instance_name +'.checkReadyPlObj()', 25);		
+	},
+	updateSeqSaveButtons:function(){		
+		var cancel_button = '<a style="border:' +
+				'solid gray;font-size:1.2em;" onClick="window.confirm(\''+getMsg('edit_cancel_confirm')+'\')" '+ 
+				'href="javascript:'+this.instance_name+'.closeModEditor()">'+
+					getMsg('edit_cancel') + '</a> ';
+		if( this.sequenceEditToken ){
+			$j('#'+this.sequence_container_id+'_save_cancel').html( cancel_button + 
+				'<a style="border:solid gray;font-size:1.2em;" href="#" onClick="'+this.instance_name+'.getSeqOutputJSON()">'+
+					'Preview Json Output'+
+				'</a>' +
+				'<a style="border:solid gray;font-size:1.2em;" href="#" onClick="'+this.instance_name+'.getSeqOutputHLRDXML()">'+
+					'Preview XML Output (will be save shortly) ' + 
+				'</a>'); 
+		}else{
+			$j('#'+this.sequence_container_id+'_save_cancel').html( cancel_button + getMsg('no_edit_permissions') );
+		}
 	},
 	//display a menu item (hide the rest) 
 	disp:function( item ){
@@ -439,12 +450,45 @@ mvSequencer.prototype = {
 			$j('#'+this.plObj_id).html('empty playlist');
 		}	
 		
+		//propogate the edit tokens 
+		//if on an edit page just grab from the form:		
+		this.sequenceEditToken = $j('input[@wpEditToken]').val();
+		if(typeof this.sequenceEditToken == 'undefined'){
+			//(calling the sequencer inline) try and get edit token via api call:			
+			//(somewhat fragile way to get at the api... should move to config 
+			var token_url =this.plObj.interface_url.replace(/index\.php/, 'api.php');
+			token_url += '?action=query&format=xml&prop=info&intoken=edit&titles=';			
+			$j.ajax({
+				type: "GET",
+				url: token_url + this_seq.plObj.mTitle,				
+				success:function(data){							
+					var pageElm = data.getElementsByTagName('page')[0];
+					if( $j(pageElm).attr('edittoken') ){
+						this_seq.sequenceEditToken = $j(pageElm).attr('edittoken');
+					}
+					this_seq.updateSeqSaveButtons();
+				}
+			});			
+			//also grab permmisions for sending clipboard commands to the server
+			$j.ajax({
+				type:"GET",
+				url: token_url + this_seq.plObj.mTalk,
+				success:function(data){
+					var pageElm = data.getElementsByTagName('page')[0];
+					if( $j(pageElm).attr('edittoken') ){
+						this_seq.clipboardEditToken = $j(pageElm).attr('edittoken');
+					}								
+				} 
+			}); 			
+		}
+		
+		
 		//render the menu: 
 		var menu_html = '<ul id="seq_menu">';
 		var item_containers ='';
 		
 		//@@todo ~maybe~ load menu via ajax request 
-		//(avoid so much hmtl in js? or keep in js to improve protabillity of sequencer? ) 
+		//(avoid so much hmtl in js? or keep in js to keep high protabillity of sequencer? ) 
 	
 		$j.each(this.menu_items, function(inx, menu_item){
 			var disp_style = (menu_item.d)?'inline':'none';
@@ -586,7 +630,7 @@ mvSequencer.prototype = {
 		//set up embed: 
 		cur_clip.setUpEmbedObj();								
 	},*/
-	//@@todo integratre into clip view ...
+	//@@todo integrate into clip view ...
 	editClip:function(track_inx, clip_inx){
 		$j('#modalbox').hide();
 		if($j('#modal_window').length==0){
@@ -642,10 +686,10 @@ mvSequencer.prototype = {
 		$j('#modalbox').show();
 	},
 	pasteClipBoardClips:function(){
-		//query the server for updated clipboard
-		
+		js_log('f:pasteClipBoardClips');
+		//@@todo query the server for updated clipboard		
 		//paste before the "current clip" 
-		this.addClips(this.clipboard, this.plObj.cur_clip.order );
+		this.addClips(this.clipboard, this.plObj.cur_clip.order );		
 	},
 	copySelectedClips:function(){
 		var this_seq = this;
@@ -655,22 +699,25 @@ mvSequencer.prototype = {
 			//add each clip to the clip board:						
 			var cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );
 			this_seq.clipboard.push( cur_clip.getAttributeObj() );
-			//upload clipboard to the server
-			if( parseUri(  document.URL ).host != parseUri( this_seq.plObj.interface_url ).host ){
-				js_log('error: presently we can\'t copy clips across domains'); 
-			}else{
-				var req_url = this.plObj.interface_url + '?action=ajax&rs=mv_seqtool_clipboard&rsargs[]=copy';
-				$j.ajax({
-					type: "POST",
-					url:req_url,
-					data: $j.param( { "clipboard_data":this_seq.clipboard } ),
-					success:function(data){		
-						//callback( data );
-						js_log('did clipboard push ' + data);
-					}
-				});
-			}			
+			var foo = cur_clip.getAttributeObj();
+			//js_log('pushed: ' + foo); 		
+			//debugger;		
 		});		 
+		//upload clipboard to the server (if possible) 
+		if( parseUri(  document.URL ).host != parseUri( this_seq.plObj.interface_url ).host ){
+			js_log('error: presently we can\'t copy clips across domains'); 
+		}else{
+			var req_url = this_seq.plObj.interface_url + '?action=ajax&rs=mv_seqtool_clipboard&rsargs[]=copy';
+			$j.ajax({
+				type: "POST",
+				url:req_url,
+				data: $j.param( { "clipboard_data":this_seq.clipboard } ),
+				success:function(data){		
+					//callback( data );
+					js_log('did clipboard push ' + data);
+				}
+			});
+		}	
 	},
 	cutSelectedClips:function(){
 		this.copySelectedClips();		
@@ -696,24 +743,29 @@ mvSequencer.prototype = {
 		else
 			var trackObj= this_seq.plObj.tracks[track_inx];
 			
-		var cur_pos = 	before_clip_pos;
-		$j.each(clipSet, function(inx, clipInit){
-			var mediaElement = document.createElement('mediaElement');
-			for(var i in clipInit){
-				$j(mediaElement).attr(i, clipInit[i]);
-			}
+		var cur_pos = before_clip_pos;
+		$j.each(clipSet, function(inx, clipInitDom){
+			var mediaElement = document.createElement('ref');
+			for(var i in clipInitDom){
+				if(i!='id')
+					$j(mediaElement).attr(i, clipInitDom[i]);
+			}			
 			var clipObj = new mvSMILClip(mediaElement, 
 								{
-									id:'p_' + trackObj.id + '_c_'+cur_pos,
+									id:'p_' + this_seq.plObj.id + '_c_'+cur_pos+'dsad',
 									pp:this_seq.plObj,
 									order:cur_pos
 								}
-						)	
-			//set up embed:						
-			clipObj.setUpEmbedObj();
-			trackObj.addClip(clipObj, cur_pos);		
-			cur_pos++;
+						)
+			debugger;
+			if( clipObj ){	
+				//set up embed:						
+				clipObj.setUpEmbedObj();
+				trackObj.addClip(clipObj, cur_pos);		
+				cur_pos++;
+			}
 		}); 		
+		debugger; 
 		this.do_refresh_timeline();
 	},
 	removeClips:function( remove_clip_ary ){					

@@ -85,6 +85,19 @@
 		}
 		return $wgOut->getHTML();
 	}	
+	//hanndles copy / paste clipboard data actions
+	function do_clipboard( $action ){
+		//validate the user-edit token (for both copy and paste)
+		 
+		//store the clipboard
+		if( $action == 'copy' ){
+			 	
+		}
+		//retrive the clipboard
+		if( $action == 'paste'){
+			
+		}				
+	}
 	function add_embed_search() {
 		global $wgOut;
 		// grab a de-encapsulated search with prefix		

@@ -74,13 +74,17 @@ function mvSetupExtension() {
 	
 	$wgAjaxExportList[] = 'mv_edit_disp';
 	$wgAjaxExportList[] = 'mv_edit_preview';
-	$wgAjaxExportList[] = 'mv_edit_submit';
-	$wgAjaxExportList[] = 'mv_edit_sequence_submit';
-	$wgAjaxExportList[] = 'mv_seqtool_disp';
+	$wgAjaxExportList[] = 'mv_edit_submit';		
 	
-	$wgAjaxExportList[] = 'mv_history_disp';
+	//$wgAjaxExportList[] = 'mv_history_disp';
 	$wgAjaxExportList[] = 'mv_adjust_disp';
 	$wgAjaxExportList[] = 'mv_adjust_submit';
+	
+	//sequence interface exported functions
+	$wgAjaxExportList[] = 'mv_edit_sequence_submit';
+	$wgAjaxExportList[] = 'mv_seqtool_disp';
+	$wgAjaxExportList[] = 'mv_seqtool_clipboard';
+	
 	
 	// search interface exported functions: 
 	$wgAjaxExportList[] = 'mv_expand_wt';

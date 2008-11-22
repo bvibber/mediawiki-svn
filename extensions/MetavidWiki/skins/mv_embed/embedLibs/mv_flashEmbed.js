@@ -3,7 +3,7 @@
  */
  
  /**
- * flowplayer.js 3.0.0-rc2. The Flowplayer API.
+ * flowplayer.js 3.0.0-rc5. The Flowplayer API.
  * 
  * This file is part of Flowplayer, http://flowplayer.org
  *
@@ -13,7 +13,7 @@
  * Released under the MIT License:
  * http://www.opensource.org/licenses/mit-license.php
  * 
- * Version: 3.0.0-rc2 - Fri Nov 07 2008 16:50:59 GMT-0000 (GMT+00:00)
+ * Version: 3.0.0-rc5 - Thu Nov 20 2008 22:09:49 GMT-0000 (GMT+00:00)
  */
 (function() {
  
@@ -163,7 +163,7 @@
 		extend(this, json, true);	
 		
 		// event handling 
-		each(("Start*,MetaData,Pause*,Resume*,Seek*,Stop*,Finish,LastSecond,Update,BufferFull,BufferEmpty").split(","),
+		each(("Begin*,Start,Pause*,Resume*,Seek*,Stop*,Finish*,LastSecond,Update,BufferFull,BufferEmpty,BufferStop").split(","),
 			function() {
 			
 			var evt = "on" + this;
@@ -228,7 +228,7 @@
 				if (player.isLoaded()) {
 					player._api().fp_updateClip(json, index);	
 				}
-				var conf = player._config(); 
+				var conf = player.getConfig(); 
 				var clip = (index == -1) ? conf.clip : conf.playlist[index];
 				extend(clip, json, true);
 			},
@@ -256,7 +256,7 @@
 					}
 				}  
 	
-				if (evt == 'onMetaData' || evt == 'onUpdate') {
+				if (evt == 'onStart' || evt == 'onUpdate') {
 					
 					extend(target, arg1);					
 					
@@ -471,7 +471,8 @@ function Player(wrapper, params, conf) {
 		playerId,
 		apiId,
 		activeIndex,
-		swfHeight;	
+		swfHeight,
+		wrapperHeight;	
 
   
 // {{{ public methods 
@@ -490,12 +491,14 @@ function Player(wrapper, params, conf) {
 			return wrapper;	
 		},
 		
-		hide: function() {
+		hide: function(all) {
+			if (all) { wrapper.style.height = "0px"; }
 			if (api) { api.style.height = "0px"; } 
 			return self;
 		},
 
 		show: function() {
+			wrapper.style.height = wrapperHeight + "px";
 			if (api) { api.style.height = swfHeight + "px"; }
 			return self;
 		}, 
@@ -618,8 +621,7 @@ function Player(wrapper, params, conf) {
 				if (clip !== undefined) {
 					self._api().fp_play(clip);
 				} else {
-					if(typeof self._api().fp_play == 'function')
-						self._api().fp_play();	
+					self._api().fp_play();	
 				}
 			}
 			
@@ -636,7 +638,7 @@ function Player(wrapper, params, conf) {
 		},
 		
 		getVersion: function() {
-			var js = "flowplayer.js 3.0.0-rc2";
+			var js = "flowplayer.js 3.0.0-rc5";
 			if (api) {
 				var ver = api.fp_getVersion();
 				ver.push(js);
@@ -652,8 +654,8 @@ function Player(wrapper, params, conf) {
 			return api;				
 		},
 		
-		_config: function() {
-			return conf;	
+		_dump: function() {
+			console.log(listeners);
 		}
 		
 	}); 
@@ -689,8 +691,8 @@ function Player(wrapper, params, conf) {
 			var name = this;
 			
 			self[name] = function(arg) {
-				if (!api) { return self; }				
- 				var ret = (arg === undefined) ? api["fp_" + name]() : api["fp_" + name](arg);
+				if (!api) { return self; }
+				var ret = (arg === undefined) ? api["fp_" + name]() : api["fp_" + name](arg);
 				return ret == 'undefined' ? self : ret;
 			};			 
 		}
@@ -761,7 +763,11 @@ function Player(wrapper, params, conf) {
 			activeIndex = arg0;
 			var clip = playlist[arg0];			
 			
-			if (!clip || clip._fireEvent(evt, arg1, arg2) !== false) {
+			if (clip) {
+				ret = clip._fireEvent(evt, arg1, arg2);	
+			} 
+			
+			if (!clip || ret !== false) {
 				
 				// clip argument is given for common clip, because it behaves as the target
 				ret = commonClip._fireEvent(evt, arg1, arg2, clip);	
@@ -797,6 +803,8 @@ function Player(wrapper, params, conf) {
 		if ($f(wrapper)) {
 			return null;	
 		}		
+		
+		wrapperHeight = parseInt(wrapper.style.height) || wrapper.clientHeight;
 		
 		// register this player into global array of instances
 		players.push(self);  
@@ -1106,7 +1114,7 @@ if (typeof jQuery == 'function') {
 
 })();
 /** 
- * flashembed 0.33. Adobe Flash embedding script
+ * flashembed 0.34. Adobe Flash embedding script
  * 
  * http://flowplayer.org/tools/flash-embed.html
  *
@@ -1118,7 +1126,7 @@ if (typeof jQuery == 'function') {
  * >> Basically you can do anything you want but leave this header as is <<
  *
  * first version 0.01 - 03/11/2008 
- * version 0.33 - Mon Nov 03 2008 15:37:15 GMT-0000 (GMT+00:00)
+ * version 0.34 - Tue Nov 11 2008 09:09:52 GMT-0000 (GMT+00:00)
  */
 (function() { 
  
@@ -1129,6 +1137,7 @@ var jQ = typeof jQuery == 'function';
 
 // from "Pro JavaScript techniques" by John Resig
 function isDomReady() {
+	
 	if (domReady.done)  { return false; }
 	
 	var d = document;
@@ -1171,6 +1180,8 @@ function extend(to, from) {
 			}
 		}
 	}
+	
+	return to;
 }	
 
 
@@ -1179,7 +1190,7 @@ function concatVars(vars) {
 	
 	for (var key in vars) { 
 		if (vars[key]) {
-			out += [key] + '=' + toString(vars[key]) + '&';
+			out += [key] + '=' + asString(vars[key]) + '&';
 		}
 	}			
 	return out.substring(0, out.length -1);				
@@ -1187,8 +1198,8 @@ function concatVars(vars) {
 
 
 
-// JSON.toString() function
-function toString(obj) {
+// JSON.asString() function
+function asString(obj) {
 
 	switch (typeOf(obj)){
 		case 'string':
@@ -1200,7 +1211,7 @@ function toString(obj) {
 			
 		case 'array':
 			return '['+ map(obj, function(el) {
-				return toString(el);
+				return asString(el);
 			}).join(',') +']'; 
 			
 		case 'function':
@@ -1210,7 +1221,7 @@ function toString(obj) {
 			var str = [];
 			for (var prop in obj) {
 				if (obj.hasOwnProperty(prop)) {
-					str.push('"'+prop+'":'+ toString(obj[prop]));
+					str.push('"'+prop+'":'+ asString(obj[prop]));
 				}
 			}
 			return '{'+str.join(',')+'}';
@@ -1247,88 +1258,86 @@ function map(arr, func) {
 	return newArr;
 }
 	
+function getEmbedCode(p, c) {
+	var html = '<embed type="application/x-shockwave-flash" ';
+
+	if (p.id) { extend(p, {name:p.id}); }
+	
+	for (var key in p) { 
+		if (p[key] !== null) { 
+			html += key + '="' +p[key]+ '"\n\t';
+		}
+	}
+
+	if (c) {
+		 html += 'flashvars=\'' + concatVars(c) + '\'';
+	}
+	
+	// thanks Tom Price (07/17/2008)
+	html += '/>';
+	
+	return html;
+}
+
+function getObjectCode(p, c, embeddable) {
+	
+	var html = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" ';
+	html += 'width="' + p.width + '" height="' + p.height + '"'; 
+	
+	// force id for IE. otherwise embedded Flash object cannot be returned
+	if (!p.id && document.all) {
+		p.id = "_" + ("" + Math.random()).substring(5);
+	} 
+	
+	if (p.id) {
+		html += ' id="' + p.id + '"';
+	}
+	
+	html += '>';  
+	
+	// sometimes ie fails to load flash if it's on cache
+	if (document.all) {
+		p.src += ((p.src.indexOf("?") != -1 ? "&" : "?") + Math.random());		
+	} 
+	
+	html += '\n\t<param name="movie" value="'+ p.src +'" />';
+
+	var e = extend({}, p);
+	e.id = e.width = e.height = e.src = null;
+	
+	for (var k in e) {
+		if (e[k] !== null) {
+			html += '\n\t<param name="'+ k +'" value="'+ e[k] +'" />';
+		}
+	}
+	
+	if (c) {
+		html += '\n\t<param name="flashvars" value=\'' + concatVars(c) + '\' />';
+	}
+	
+	if (embeddable) {
+		html += getEmbedCode(p, c);	
+	}
+	 
+	html += "</object>";
+	
+	return html;
+}
+
+function getFullHTML(p, c) {
+	return getObjectCode(p, c, true);	
+}
+
+function getHTML(p, c) { 
+	var isNav = navigator.plugins && navigator.mimeTypes && navigator.mimeTypes.length; 
+	return (isNav) ? getEmbedCode(p, c) : getObjectCode(p, c);
+}
+
 //}}}
 
 	
 window.flashembed = function(root, userParams, flashvars) {	
 	
-	
-//{{{ getHTML 
-		
-	function getHTML() {
-		
-		var html = "";
-		if (typeof flashvars == 'function') { flashvars = flashvars(); }
-		
-		
-		// sometimes ie fails to load flash if it's on cache
-		params.src += ((params.src.indexOf("?") != -1 ? "&" : "?") + Math.random());
-		
-		
-		// mozilla
-		if (navigator.plugins && navigator.mimeTypes && navigator.mimeTypes.length) {  
-
-			html = '<embed type="application/x-shockwave-flash" ';
-
-			if (params.id) {
-				extend(params, {name:params.id});
-			}
-			
-			for (var key in params) { 
-				if (params[key] !== null) { 
-					html += [key] + '="' +params[key]+ '"\n\t';
-				}
-			}
-
-			if (flashvars) {
-				 html += 'flashvars=\'' + concatVars(flashvars) + '\'';
-			}
-			
-			// thanks Tom Price (07/17/2008)
-			html += '/>';
-			
-		// ie
-		} else { 
-
-			html = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" ';
-			html += 'width="' + params.width + '" height="' + params.height + '"'; 
-			
-			// force id for IE. otherwise embedded Flash object cannot be returned
-			if (!params.id && document.all) {
-				params.id = "_" + ("" + Math.random()).substring(5);
-			} 
-			
-			if (params.id) {
-				html += ' id="' + params.id + '"';
-			}
-			
-			html += '>';  
-			html += '\n\t<param name="movie" value="'+ params.src +'" />';
-			
-			params.id = params.src = params.width = params.height = null;
-			
-			for (var k in params) {
-				if (params[k] !== null) {
-					html += '\n\t<param name="'+ k +'" value="'+ params[k] +'" />';
-				}
-			}
-			
-			if (flashvars) {
-				html += '\n\t<param name="flashvars" value=\'' + concatVars(flashvars) + '\' />';
-			}
-			 
-			html += "</object>";
-			if (debug) { 
-				alert(html);
-			}
-			
-		}  
-
-		return html;
-	}
-
-	//}}}
-
 	
 //{{{ construction
 		
@@ -1393,7 +1402,7 @@ window.flashembed = function(root, userParams, flashvars) {
 		// tmp.innerHTML = getHTML();
 		// root.appendChild(tmp);
 		
-		root.innerHTML = getHTML();
+		root.innerHTML = getHTML(params, flashvars);
 		
 		// return our API			
 		return root.firstChild;
@@ -1415,7 +1424,7 @@ window.flashembed = function(root, userParams, flashvars) {
 			MMdoctitle: document.title
 		};
 		
-		root.innerHTML = getHTML();	
+		root.innerHTML = getHTML(params, flashvars);	
 		
 	// not supported
 	} else {
@@ -1447,7 +1456,7 @@ window.flashembed = function(root, userParams, flashvars) {
 
 extend(window.flashembed, {
 
-	// arr[major, minor, fix]
+	// returns arr[major, fix]
 	getVersion: function() {
 	
 		var version = [0, 0];
@@ -1504,7 +1513,11 @@ extend(window.flashembed, {
 	domReady: domReady,
 	
 	// returns a String representation from JSON object 
-	toString: toString
+	asString: asString,
+	
+	getHTML: getHTML,
+	
+	getFullHTML: getFullHTML
 	
 });
 
@@ -1556,7 +1569,7 @@ var flashEmbed = {
 			this.pid = this.pid +'_'+ this.old_pid;
 		}		
 		return '<a  '+
-					'href="'+this.media_element.selected_source.getURI(this.seek_time_sec)+'" '+  
+					'href="'+this.media_element.selected_source.getURI( this.seek_time_sec ) + '" '+  
 				    'style="display:block;width:400px;height:300px" '+  
 				    'id="'+this.pid+'">'+ 
 				'</a>';
@@ -1564,13 +1577,12 @@ var flashEmbed = {
     postEmbedJS: function()
     {   
     	var _this = this;
-    	js_log('embedFlow: ' + mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc2.swf' ) ;
-		$f(this.pid,  mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc2.swf', { 
+    	js_log('embedFlow: ' + mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc4.swf' ) ;
+    	var flowConfig = { 
 		    clip: { 
-		        url: _this.media_element.selected_source.getURI(this.seek_time_sec), 
-		         
+		        url: _this.media_element.selected_source.getURI(this.seek_time_sec), 		         
 		        // when this is false playback does not start until play button is pressed 
-		        autoPlay: true 
+		        autoPlay: true
 		    },
 		    plugins: { 
     			controls: { 
@@ -1581,9 +1593,12 @@ var flashEmbed = {
 				   autoHide:'always',
 				   top:'95%',
 				   left:'370'
-				 } 
+				 }      		
     		}
-		});    	    	  
+    	};
+    	//if lightpd    	
+    	
+		$f(this.pid,  mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc4.swf', flowConfig);    	    	  
 		//get the this.fla value: 		
 		this.getFLA();    	
     	//set up bindings (for when interacting with the swf causes action:  
@@ -1646,13 +1661,18 @@ var flashEmbed = {
 	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
 	    	}
 	    }
-		this.getFLA();    		    
-                        
+		                       
         var flash_state = this.fla.getStatus();
-        
-        //simplification of buffer state ... should move to support returning time rages like:
-        //http://www.whatwg.org/specs/web-apps/current-work/#normalized-timeranges-object        	
-        this.bufferedPercent = flash_state.bufferEnd / this.getDuration();
+        if( typeof flash_state == 'undefined' ){
+        	 var flash_state = {
+        	 	"time" : this.fla.getTime()
+        	 };        	 
+        	 js_log('got time: ' + flash_state.time);
+        }else{
+	        //simplification of buffer state ... should move to support returning time rages like:
+	        //http://www.whatwg.org/specs/web-apps/current-work/#normalized-timeranges-object        	
+	        this.bufferedPercent = flash_state.bufferEnd / this.getDuration();
+        }               
         
         //set the current Time (based on timeFormat)
         if( this.media_element.selected_source.timeFormat =='anx' ){
@@ -1662,7 +1682,7 @@ var flashEmbed = {
         	this.currentTime = flash_state.time + this.media_element.selected_source.start_offset;        	        	
         	//stop buffering if greater than the duration: 
         	if( flash_state.bufferEnd > this.getDuration() + 5 ){
-        		js_log('should stop buffering (does not seem to work)' + flash_state.bufferEnd + ' > dur: ' + this.getDuration() );
+        		//js_log('should stop buffering (does not seem to work)' + flash_state.bufferEnd + ' > dur: ' + this.getDuration() );
         		this.fla.stopBuffering();
         	} 
         }        
@@ -1684,8 +1704,9 @@ var flashEmbed = {
 		}
         
         //flash is giving bogus duration get from "this" (if available)
-		if(!this.media_element.selected_source.end_ntp  && this.fla.getDuration()>0)
-				this.media_element.selected_source.setDuration(this.fla.getDuration());       
+		/*if(!this.media_element.selected_source.end_ntp  && this.fla.getDuration()>0)
+				this.media_element.selected_source.setDuration(this.fla.getDuration());
+		*/       
 		
         if(!this.userSlide){			   		       		
 	        if((this.currentTime - ntp2seconds(start_ntp))<0){

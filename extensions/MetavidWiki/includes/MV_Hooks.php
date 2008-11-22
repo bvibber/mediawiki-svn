@@ -372,6 +372,11 @@ function mv_seqtool_disp( $tool_id ) {
 	$MV_SequenceTools = new MV_SequenceTools();
 	return $MV_SequenceTools->get_tool_html( $tool_id );
 }
+function mv_seqtool_clipboard( $clipboard_action ){
+	$MV_SequenceTools = new MV_SequenceTools();
+	return $MV_SequenceTools->do_clipboard( $action );
+}
+
 function mv_tool_disp( $tool_id, $ns = '', $title_str = '' ) {
 	$MV_Tools = new MV_Tools();
 	return $MV_Tools->get_tool_html( $tool_id, $ns, $title_str );

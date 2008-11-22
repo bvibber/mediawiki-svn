@@ -93,6 +93,7 @@ $wgFeedClasses['podcast'] = 'PodcastFeed';
 
 class MV_SpecialExport {
 	var $feed = null;
+	var $output_xml_header = true;
 	function __construct( $export_type, $par = '' ) {
 		$this->export_type = $export_type;
 		$this->par = $par;
@@ -126,7 +127,8 @@ class MV_SpecialExport {
 						// sucks to do big XML page operations ...
 						// @@todo cache it..
 						ob_start();
-						$this->get_stream_cmml();
+						$this->output_xml_header=false;
+						$this->get_stream_cmml( );
 						$xml_page = ob_get_clean();
 						print mvOutputJSON( $xml_page );
 					break;
@@ -136,7 +138,8 @@ class MV_SpecialExport {
 						//@@todo send cache friendly headers 
 						ob_start();
 						$this->get_row_data();
-						$this->get_roe_xml( $header=false );
+						$this->output_xml_header=false;
+						$this->get_roe_xml();
 						$xml_page = ob_get_clean();
 						print mvOutputJSON( $xml_page );
 						break;
@@ -156,7 +159,8 @@ class MV_SpecialExport {
 					case 'json':
 						//@@todo send cache friendly headers kind of resource intensive: 
 						ob_start();
-						$this->get_search_feed( $content_type_header=false );
+						$this->output_xml_header=false;
+						$this->get_search_feed();
 						$xml_page = ob_get_clean();
 						print mvOutputJSON( $xml_page );
 					break;
@@ -200,7 +204,7 @@ class MV_SpecialExport {
 		$this->mvcp = new MV_Component();
 		$this->mvcp->procMVDReqSet( $only_requested = true );
 
-		// get all track types avaliable in current range:
+		// get all track types available  in current range:
 		$this->mvd_type_res = MV_Index::getMVDTypeInRange( $this->mvTitle->getStreamId(),
 		$this->mvTitle->getStartTimeSeconds(),
 		$this->mvTitle->getEndTimeSeconds() );
@@ -210,14 +214,14 @@ class MV_SpecialExport {
 	}
 
 	// start high level:
-	function get_roe_xml( $header = true ) {
+	function get_roe_xml( ) {
 		global $wgServer;
 		global $mvDefaultVideoQualityKey, $mvDefaultFlashQualityKey, $mvDefaultVideoHighQualityKey;
 		$dbr =& wfGetDB( DB_SLAVE );
 
 		$this->get_row_data();
 		// get the stream stream req
-		if ( $header )
+		if ( $this->output_xml_header )
 		header( 'Content-Type: text/xml' );
 		// print the header:
 		print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
@@ -250,7 +254,10 @@ class MV_SpecialExport {
 			if ( $file->supportsURLTimeEncoding() )
 			{
 				$dSrc = $this->mvTitle->getWebStreamURL( $file->getNameKey() );
-				$startendattr = '';
+				//set time format if not standard 'anx' type
+				if( $file->getPathType()== 'mp4_stream'){					
+					$startendattr = ' timeFormat="mp4" ';
+				}
 			} else {
 				$dSrc = $file->getFullURL();
 				$startendattr = 'start="npt:' . htmlentities( $this->mvTitle->getStartTime() ) . '"' .
@@ -324,7 +331,8 @@ class MV_SpecialExport {
 		$streamTitle->getStartTimeSeconds(),
 		$streamTitle->getEndTimeSeconds(), $tracks, $getText = false, 'Speech_by,Bill,category' );
 		// get the stream stream req
-		if ( !$inline )header( 'Content-Type: text/xml' );
+		if ( $this->output_xml_header )
+			header( 'Content-Type: text/xml' );
 		// print the header:
 		if ( !$inline )print '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' . "\n";
 		// if(!$inline)print '<!DOCTYPE cmml SYSTEM "http://svn.annodex.net/standards/cmml_2_0.dtd">'."\n";
@@ -351,9 +359,8 @@ class MV_SpecialExport {
 					}
 					$tracks[$mvd->mvd_type] .= '"/>';
 				}
-
 				$tracks[$mvd->mvd_type] .= '<' . $ns . 'body><![CDATA[
-									' .	$MV_Overlay->getMVDhtml( $mvd, $absolute_links = true ) . '
+									' .	 $MV_Overlay->getMVDhtml( $mvd, $absolute_links = true ). '
 								]]></' . $ns . 'body> 
 						</' . $ns . 'clip>';
 				// clear wgOutput
@@ -370,13 +377,12 @@ class MV_SpecialExport {
 	xmlns="http://svn.annodex.net/standards/cmml_2_0.dtd">
 <<?php echo $ns?>head> <<?php echo $ns?>title>
 			<?php echo wfMsg( $role )?>
-</<?php echo $ns?>title> <<?php echo $ns?>meta name="description"
-content="<?php echo htmlentities( wfMsg( $role . '_desc' ) )?>"></<?php
+</<?php echo $ns?>title> <<?php echo $ns?>meta name="description" content="<?php echo htmlentities( wfMsg( $role . '_desc' ) )?>"></<?php
 echo $ns?>meta> </<?php echo $ns?>head>
 <?php echo $body_string?>
 </cmml>
 <?
-		}
+		}			
 		if ( $encap )print '</cmml_set>';
 	}
 	// this is dependent on semantic wiki ASK functionality
@@ -481,7 +487,7 @@ echo $ns?>meta> </<?php echo $ns?>head>
 		$this->feed->outFooter();
 		// $this->rows =
 	}
-	function get_search_feed( $content_type_header =true) {
+	function get_search_feed() {
 		global $wgSitename, $wgOut;
 		// set up search obj:
 		$sms = new MV_SpecialMediaSearch();
@@ -497,8 +503,8 @@ echo $ns?>meta> </<?php echo $ns?>head>
 		strip_tags( $sms->getFilterDesc() ), // description
 		$msTitle->getFullUrl() . '?' . $sms->get_httpd_filters_query() // link
 		);
-
-		$this->feed->outHeader( $content_type_header );
+		
+		$this->feed->outHeader( $this->output_xml_header );
 		$MV_Overlay = new MV_Overlay();
 		// for each search result:
 		foreach ( $sms->results as $inx => & $mvd ) {
@@ -512,7 +518,7 @@ echo $ns?>meta> </<?php echo $ns?>head>
 }
 class mvRSSFeed extends ChannelFeed {
 	function outHeader( $set_content_type=true ) {		
-		if($set_content_type)
+		if( $set_content_type )
 			$this->httpHeaders();
 		
 		echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";

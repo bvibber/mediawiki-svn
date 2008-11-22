@@ -882,12 +882,15 @@ mvClip.prototype = {
 	//setup the embed object:
 	setUpEmbedObj:function(){
 		//init:
+		//debugger;
+		
 		this.embed=null;		
 		//js_log('setup embed for clip '+ this.id + ':id is a function?'); 
 		//set up the pl_mv_embed object:
 		var init_pl_embed={id:'e_'+this.id,
 			pc:this, //parent clip
-			src:this.src};
+			src:this.src
+		};
 
 		this.setBaseEmbedDim(init_pl_embed);
 		//always display controls for playlists: 
@@ -898,21 +901,16 @@ mvClip.prototype = {
 		//if(this.pp.sequencer=='true'){
 		init_pl_embed.embed_link=null;	
 		init_pl_embed.linkback=null;	
-		//}else{						
-			//set optional values if present
-		//	if(this.linkback)init_pl_embed.linkback=this.linkback;
-		//	if(this.pp.embed_link)init_pl_embed.embed_link=true;
-		//}
-		if(this.img)init_pl_embed['thumbnail']=this.img;
+		
+		if(this.poster)init_pl_embed['thumbnail']=this.poster;
 		
 		if(this.type)init_pl_embed['type'] = this.type;
 		
 		this.embed = new PlMvEmbed(init_pl_embed);
 				
-		js_log('ve src len:'+ this.embed.media_element.sources.length);
+		js_log('ve src len:' + this.embed.media_element.sources.length);
 		//js_log('media element:'+ this.embed.media_element.length);
-		//js_log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);
-		
+		//js_log('type of embed:' + typeof(this.embed) + ' seq:' + this.pp.sequencer+' pb:'+ this.embed.play_button);		
 	},
 	doAdjust:function(side, delta){
 		js_log("f:doAdjust: " + side + ' , ' +  delta);
@@ -925,7 +923,7 @@ mvClip.prototype = {
 				this.embed.updateVideoTime( seconds2ntp(this.embed.start_offset), seconds2ntp(end_offset) );
 			}
 			//update everything: 
-			this.pp.refresh
+			this.pp.refresh();
 			/*var base_src = this.src.substr(0,this.src.indexOf('?'));
 			js_log("delta:"+ delta);
 			if(side=='start'){
@@ -1077,8 +1075,7 @@ PlMvEmbed.prototype = {
 				ve.setAttribute(i,vid_init[i]);
 			}
 		}
-		var videoInterface = new embedVideo(ve);	
-		js_log('created Embed Video src len:'+ videoInterface.media_element.sources.length);
+		var videoInterface = new embedVideo(ve);			
 		//inherit the videoInterface
 		for(method in videoInterface){			
 			if(method!='style'){
@@ -1092,9 +1089,7 @@ PlMvEmbed.prototype = {
 			//string -> boolean:
 			if(this[method]=="false")this[method]=false;
 			if(this[method]=="true")this[method]=true;
-		}
-		//continue init (load sources) 
-		js_log('this Video src len:'+ this.media_element.sources.length);		
+		}				
 	},
 	stop:function(){
 		//set up convenience pointer to parent playlist
@@ -1562,15 +1557,18 @@ var smilPlaylist ={
 	doParse:function(){
 		var _this = this;
 		js_log('f:doParse smilPlaylist');
-		//@@todo get/parse meta: 
+		//@@todo get/parse meta that we are intersted in: 
 		var meta_tags = this.data.getElementsByTagName('meta');
+		var metaNames = new Array('title','interface_url', 'linkback', 'mTitle', 'mTalk'); 
 		$j.each(meta_tags, function(i,meta_elm){
 			js_log("on META tag: "+ $j(meta_elm).attr('name') );
-			if( $j(meta_elm).attr('name') && $j(meta_elm).attr('content') ){
-				if( $j(meta_elm).attr('name')=='title' ){
-					_this.title = $j(meta_elm).attr('content');					
-				}else if(meta_elm.getAttribute('name')=='interface_url' ){
-					_this.interface_url = $j(meta_elm).attr('content');	
+			for(var i in metaNames){
+				var _name = metaNames[i];
+				if( $j(meta_elm).attr('name') && $j(meta_elm).attr('content') ){
+					if( $j(meta_elm).attr('name')== _name ){
+						_this[ _name ] = $j(meta_elm).attr('content');
+						js_log('set :' + _name + ' to ' +  _this[ _name ]);	
+					}
 				}
 			}
 		});	
@@ -1585,7 +1583,7 @@ var smilPlaylist ={
 		});
 		js_log('loaded transitions:' + _this.transitions.length);
 			
-		//add seq (latter we will have support more than one seq tag) 
+		//add seq (latter we will have support more than one seq tag) / more than one "track" 
 		var seq_tags = this.data.getElementsByTagName('seq');
 		$j.each(seq_tags, function(i,seq_elm){
 			var inx = 0;
@@ -1595,18 +1593,19 @@ var smilPlaylist ={
 				//js_log('process: ' + mediaElemnt.tagName); 
 				if(typeof mediaElement.tagName!='undefined'){
 					//set up basic mvSMILClip send it the mediaElemnt & mvClip init: 
-					var cur_clip = new mvSMILClip(mediaElement, 
+					var clipObj = new mvSMILClip(mediaElement, 
 								{
 									id:'p_' + _this.id + '_c_'+inx,
 									pp:_this,
 									order:inx
 								}								
 							);
-					if(cur_clip){
+					debugger;
+					if(clipObj){
 						//set up embed:						
-						cur_clip.setUpEmbedObj();						
+						clipObj.setUpEmbedObj();						
 						//add clip to track: 
-						_this.addCliptoTrack(cur_clip);						
+						_this.addCliptoTrack( clipObj );
 						//valid clip up the order inx: 
 						inx++;
 					}				
@@ -1636,7 +1635,7 @@ mvSMILClip.prototype = {
 			'fill',
 			'dur',
 			
-			'uri',
+			'uri',			
 			'poster'
 	),
 	init:function(smil_clip_element, mvClipInit){
