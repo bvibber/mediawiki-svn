@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.31) hardy; urgency=low
+
+  * Bumped post and upload limits to 100M, we're trying it out...
+
+ -- Brion Vibber <brion@wikimedia.org>  Fri, 21 Nov 2008 16:28:28 -0800
+
 wikimedia-task-appserver (1.30) hardy; urgency=low
 
   * Added -DSCALER support, needed to support wikimedia-task-scaler
