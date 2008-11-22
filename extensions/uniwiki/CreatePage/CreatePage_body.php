@@ -10,6 +10,8 @@ class SpecialCreatePage extends SpecialPage {
 
 		wfLoadExtensionMessages( 'CreatePage' );
 
+		$this->setHeaders();
+
 		$skin = $wgUser->getSkin();
 
 		$thisPage = Title::newFromText ( "CreatePage", NS_SPECIAL );
