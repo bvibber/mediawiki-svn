@@ -370,9 +370,12 @@ $extensions = array(
 			'wgCodeReviewENotif' => 'bool',
 			'wgSubversionProxy' => 'text',
 			'wgSubversionProxyTimeout' => 'int',
+			'wgSubversionUser' => 'text',
+			'wgSubversionPassword' => 'text',
 			'wgWikiSVN' => 'text',
 		),
 		'schema' => true,
+		'url' => 'http://www.mediawiki.org/wiki/Extension:CodeReview',
 	),
 	array(
 		'name' => 'Collection',
@@ -835,6 +838,7 @@ $extensions = array(
 	array(
 		'name' => 'OggHandler',
 		'settings' => array(
+			'wgPlayerStatsCollection' => 'bool',
 			'wgFFmpegLocation' => 'text',
 			'wgCortadoJarFile' => 'text',
 		),
@@ -846,6 +850,13 @@ $extensions = array(
 			'wgAllowAnyUserOnlineStatusFunction' => 'bool',
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:OnlineStatus',
+	),
+	array(
+		'name' => 'OpenSearchXml',
+		'settings' => array(
+			'wgOpenSearchAdvertiseXml' => 'bool',
+		),
+		'url' => 'http://www.mediawiki.org/wiki/Extension:OpenSearchXml',
 	),
 	array(
 		'name' => 'Oversight',
