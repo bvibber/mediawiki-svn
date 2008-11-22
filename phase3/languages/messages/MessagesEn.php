@@ -3735,10 +3735,12 @@ Enter the filename without the "{{ns:image}}:" prefix.',
 'pagestatistics-periodstart' => 'Start of period:',
 'pagestatistics-periodend' => 'End of period:',
 'pagestatistics-search' => 'Search',
+'pagestatistics-datatable-page' => 'Page',
 'pagestatistics-datatable-periodstart' => 'Start of period',
 'pagestatistics-datatable-periodend' => 'End of period',
 'pagestatistics-datatable-count' => 'Count',
 'pagestatistics-datatable-total' => 'Total',
+'pagestatistics-chart-title' => 'Page hits per day',
 
 # Special:SpecialPages
 'specialpages'                   => 'Special pages',
