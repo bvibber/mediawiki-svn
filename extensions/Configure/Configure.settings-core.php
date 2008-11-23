@@ -12,11 +12,37 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * http://www.mediawiki.org/wiki/Manual:Configuration_settings
  */
 $settings = array(
-	'general' => array(
+	'popular' => array(
 		'general' => array(
 			'wgSitename' => 'text',
 			'wgVersion' => 'text',
+			'wgLogo' => 'image-url',
 		),
+		'namespaces' => array(
+			'wgContentNamespaces' => 'array',
+			'wgExtraNamespaces' => 'array',
+			'wgMetaNamespace' => 'text',
+			'wgMetaNamespaceTalk' => 'text',
+			'wgNamespaceAliases' => 'array',
+			'wgNamespaceProtection' => 'array',
+			'wgNamespaceRobotPolicies' => 'array',
+			'wgNamespacesToBeSearchedDefault' => 'array',
+			'wgNamespacesToBeSearchedProject' => 'array',
+			'wgNamespacesWithSubpages' => 'array',
+			'wgNoFollowNsExceptions' => 'array',
+			'wgNonincludableNamespaces' => 'array',
+			'wgSitemapNamespaces' => 'array',
+		),
+		'groups' => array(
+			'wgAutopromote' => 'array',
+			'wgGroupPermissions' => 'array',
+			'wgAddGroups' => 'array',
+			'wgRemoveGroups' => 'array',
+			'wgGroupsAddToSelf' => 'array',
+			'wgGroupsRemoveFromSelf' => 'array',
+		),
+	),
+	'paths' => array(
 		'paths' => array(
 			'wgActionPaths' => 'array',
 			'wgAppleTouchIcon' => 'text',
@@ -25,7 +51,6 @@ $settings = array(
 			'wgDiff' => 'text',
 			'wgDiff3' => 'text',
 			'wgFavicon' => 'text',
-			'wgLogo' => 'image-url',
 			'wgMathDirectory' => 'text',
 			'wgMathPath' => 'text',
 			'wgRedirectScript' => 'text',
@@ -225,23 +250,6 @@ $settings = array(
 			'wgHandheldForIPhone' => 'bool',
 		),
 	),
-	'namespaces' => array(
-		'namespaces' => array(
-			'wgContentNamespaces' => 'array',
-			'wgExtraNamespaces' => 'array',
-			'wgMetaNamespace' => 'text',
-			'wgMetaNamespaceTalk' => 'text',
-			'wgNamespaceAliases' => 'array',
-			'wgNamespaceProtection' => 'array',
-			'wgNamespaceRobotPolicies' => 'array',
-			'wgNamespacesToBeSearchedDefault' => 'array',
-			'wgNamespacesToBeSearchedProject' => 'array',
-			'wgNamespacesWithSubpages' => 'array',
-			'wgNoFollowNsExceptions' => 'array',
-			'wgNonincludableNamespaces' => 'array',
-			'wgSitemapNamespaces' => 'array',
-		),
-	),
 	'stats' => array(
 		'stats' => array(
 			'wgCountCategorizedImagesAsUsed' => 'bool',
@@ -327,7 +335,6 @@ $settings = array(
 	),
 	'access' => array(
 		'access' => array(
-			'wgAutopromote' => 'array',
 			'wgAccountCreationThrottle' => 'int',
 			'wgAllowPageInfo' => 'bool',
 			'wgAutoblockExpiry' => 'int',
@@ -351,15 +358,6 @@ $settings = array(
 			'wgSysopEmailBans' => 'bool',
 			'wgSysopRangeBans' => 'bool',
 			'wgSysopUserBans' => 'bool',
-		),
-	),
-	'groups' => array(
-		'groups' => array(
-			'wgGroupPermissions' => 'array',
-			'wgAddGroups' => 'array',
-			'wgRemoveGroups' => 'array',
-			'wgGroupsAddToSelf' => 'array',
-			'wgGroupsRemoveFromSelf' => 'array',
 		),
 	),
 	'rates' => array(

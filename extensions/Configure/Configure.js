@@ -53,9 +53,13 @@ function setupConfigure(){
 
 			var a = document.createElement('a');
 			a.href = '#' + children[i].id;
+			a.id = 'toc-link-'+children[i].id;
 			a.onmousedown = a.onclick = configToggle;
 			a.confSec = i;
 			a.confSub = -1;
+			if (hid != 1) {
+				a.className = 'selected';
+			}
 			a.appendChild( document.createTextNode( legend ) );
 			li.appendChild(a);
 
@@ -70,6 +74,7 @@ function setupConfigure(){
 				var ul = document.createElement( 'ul' );
 				ul.style.display = "none";
 				ul.id = "config-toc-" + i;
+				
 				for( var subsect = 0; subsect < len; subsect++ ){
 					headers[subsect].id = 'config-head-' + i + '-' + subsect;
 					tables[subsect].id = 'config-table-' + i + '-' + subsect;
@@ -219,6 +224,62 @@ function setupConfigure(){
 				table.parentNode.appendChild( input );
 			}
 		}
+	}
+	
+	/** Collapsible big lists */
+	var biglists = getElementsByClassName( configform, '*', 'configure-biglist' );
+	
+	for(  var l = 0; l < biglists.length; l++ ) {
+		var list = biglists[l];
+		
+		list.id = 'configure-biglist-content-'+l;
+		list.style.display = 'none';
+		
+		var tn = document.createTextNode( wgConfigureBiglistHidden );
+		var div = document.createElement( 'div' );
+		var toggleLink = document.createElement( 'a' );
+		
+		toggleLink.appendChild( document.createTextNode( wgConfigureBiglistShow ) );
+		toggleLink.className = 'configure-biglist-toggle-link';
+		toggleLink.onclick = createToggleCallback( l );
+		toggleLink.id = 'configure-biglist-link-'+l;
+		toggleLink.href = 'javascript:';
+		
+		div.id = 'configure-biglist-placeholder-'+l;
+		div.className = 'configure-biglist-placeholder';
+		div.appendChild( tn );
+		div.appendChild( toggleLink );
+		list.parentNode.insertBefore( div, list );
+	}
+}
+
+// Collapsible stuff
+function createToggleCallback( id ){
+	return function(){
+		var content = document.getElementById( 'configure-biglist-content-'+id );
+		var toggleLink = document.getElementById( 'configure-biglist-link-'+id );
+		var div = document.getElementById( 'configure-biglist-placeholder-'+id );
+		var act;
+		var newLinkText;
+		var newPlaceholderText;
+		
+		if (toggleLink.firstChild.nodeValue == wgConfigureBiglistShow) {
+			act = 'show';
+			newLinkText = wgConfigureBiglistHide;
+			content.style.display = 'block';
+			newPlaceholderText = wgConfigureBiglistShown;
+		} else {
+			act = 'hide';
+			newLinkText = wgConfigureBiglistShow;
+			content.style.display = 'none';
+			newPlaceholderText = wgConfigureBiglistHidden
+		}
+		
+		toggleLink.removeChild( toggleLink.firstChild );
+		toggleLink.appendChild( document.createTextNode( newLinkText ) );
+		
+		div.removeChild( div.firstChild );
+		div.insertBefore( document.createTextNode( newPlaceholderText ), toggleLink );
 	}
 }
 
@@ -435,8 +496,10 @@ function configToggle() {
 	var oldSec = toc.confSec;
 	var oldId = 'config-section-' + oldSec;
 	document.getElementById( oldId ).style.display = "none";
+	document.getElementById( 'toc-link-'+oldId ).className = '';
 	var newId = 'config-section-' + confSec;
 	document.getElementById( newId ).style.display = "block";
+	document.getElementById( 'toc-link-'+newId ).className = 'selected';
 
 	for( var i = 0; i < toc.subLen[confSec]; i++ ){
 		var headId = 'config-head-' + confSec + '-' + i;

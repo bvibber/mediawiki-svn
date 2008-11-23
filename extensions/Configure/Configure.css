@@ -54,6 +54,10 @@ ul.configtoc > li, ul.configtoc > li > ul > li {
 	background-color: #fefefe;
 }
 
+ul.configtoc > li > a.selected {
+	background-color: #ddddff;
+}
+
 .config-toc-delimiter {
 	border-top: 1px solid #bbb;
 	width: 100%;
@@ -132,6 +136,25 @@ td.button {
 
 input.button-add {
 	float: left;
+}
+
+.configure-biglist {
+	-moz-column-count:2;
+}
+
+.configure-biglist-toggle-link {
+	display: block;
+	float: right;
+}
+
+.configure-biglist-placeholder {
+	background-color: #dda;
+	width: 100ex;
+	text-align: center;
+}
+
+table.configure-array-table {
+	min-width: 50%;
 }
 
 /**

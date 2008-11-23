@@ -701,6 +701,10 @@ abstract class ConfigurationPage extends SpecialPage {
 		$groupExists = Xml::encodeJsVar( wfMsg( 'configure-js-group-exists' ) );
 		$getimgurl = Xml::encodeJsVar( wfMsg( 'configure-js-get-image-url' ) );
 		$imageerror = Xml::encodeJsVar( wfMsg( 'configure-js-image-error' ) );
+		$biglist_shown = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-shown' ) );
+		$biglist_hidden = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-hidden' ) );
+		$biglist_show = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-show' ) );
+		$biglist_hide = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-hide' ) );
 		$ajax = isset( $wgUseAjax ) && $wgUseAjax ? 'true' : 'false';
 		$script = array(
 			"<script type=\"$wgJsMimeType\">/*<![CDATA[*/",
@@ -712,6 +716,10 @@ abstract class ConfigurationPage extends SpecialPage {
 			"var wgConfigureUseAjax = {$ajax};",
 			"var wgConfigureGetImageUrl = {$getimgurl};",
 			"var wgConfigureImageError = {$imageerror};",
+			"var wgConfigureBiglistShown = {$biglist_shown};",
+			"var wgConfigureBiglistHidden = {$biglist_hidden};",
+			"var wgConfigureBiglistShow = {$biglist_show};",
+			"var wgConfigureBiglistHide = {$biglist_hide};",
 		 	"/*]]>*/</script>",
 			"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/Configure/Configure.js?{$wgConfigureStyleVersion}\"></script>",
 		);
@@ -750,7 +758,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		if ( $type == 'text' || $type == 'int' ) {
 			if ( !$allowed )
 				return '<code>' . htmlspecialchars( (string)$default ) . '</code>';
-			return Xml::input( "wp$conf", $type == 'text' ? 30 : 10, (string)$default );
+			return Xml::input( "wp$conf", $type == 'text' ? 45 : 10, (string)$default );
 		}
 		if ( $type == 'image-url' ) {
 			if ( !$allowed )
@@ -818,17 +826,34 @@ abstract class ConfigurationPage extends SpecialPage {
 					htmlspecialchars( ( is_array( $default ) ? implode( "\n", $default ) : $default ) ) .
 					"\n</pre>";
 			}
-			$text = "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8' style='width: 95%;'>";
+			$text = wfMsgExt( 'configure-arrayinput-oneperline', 'parseinline' );
+			$text .= "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8' style='width: 95%;'>";
 			if ( is_array( $default ) )
 				$text .= implode( "\n", $default );
 			$text .= "</textarea>\n";
 			return $text;
 		}
 		if ( $type == 'assoc' ) {
-			$keydesc = wfMsgHtml( 'configure-desc-key' );
-			$valdesc = wfMsgHtml( 'configure-desc-val' );
-			$class = ( !$allowed ) ? array( 'class' => 'disabled' ) : array();
-			$text = Xml::openElement( 'table', array( 'class' => ( $allowed ? 'assoc' : 'assoc disabled' ),
+			## See if the key/value has a special description
+			
+			$keydesc = wfMsgExt( "configure-setting-$conf-key", 'parseinline' );
+			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			
+			if (wfEmptyMsg( "configure-setting-$conf-key", $keydesc ))
+				$keydesc = wfMsgHtml( 'configure-desc-key' );
+			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
+				$valdesc = wfMsgHtml( 'configure-desc-val' );
+				
+			$classes = array('configure-array-table');
+			
+			$classes[] = ($allowed ? 'assoc' : 'assoc disabled');
+			if (count($default) > 5)
+				$classes[] = 'configure-biglist';
+				
+			if ( !$allowed )
+				$classes[] = 'disabled';
+				
+			$text = Xml::openElement( 'table', array( 'class' => ( implode( ' ', $classes ) ),
 				'id' => $conf ) ) . "\n";
 			$text .= "<tr><th>{$keydesc}</th><th>{$valdesc}</th></tr>\n";
 			if ( is_array( $default ) && count( $default ) > 0 ) {
@@ -918,8 +943,11 @@ abstract class ConfigurationPage extends SpecialPage {
 		if ( $type == 'ns-text' ) {
 			global $wgContLang;
 			$nsdesc = wfMsgHtml( 'configure-desc-ns' );
-			$valdesc = wfMsgHtml( 'configure-desc-val' );
-			$text = "<table class='ns-text'>\n<tr><th>{$nsdesc}</th><th>{$valdesc}</th></tr>\n";
+			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			
+			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
+				$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$text = "<table class='configure-array-table ns-text configure-biglist'>\n<tr><th>{$nsdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach ( $wgContLang->getNamespaces() as $ns => $name ) {
 				$name = str_replace( '_', ' ', $name );
 				if ( '' == $name ) {
@@ -928,6 +956,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				$text .= '<tr><td>' . $name . '</td><td>';
 				if ( $allowed )
 					$text .= Xml::element( 'input', array(
+						'size' => 45,
 						'name' => "wp{$conf}-ns{$ns}",
 						'type' => 'text', 'value' => isset( $default[$ns] ) ? $default[$ns] : ''
 					) ) . "\n";
@@ -941,8 +970,11 @@ abstract class ConfigurationPage extends SpecialPage {
 		if ( $type == 'ns-array' ) {
 			global $wgContLang;
 			$nsdesc = wfMsgHtml( 'configure-desc-ns' );
-			$valdesc = wfMsgHtml( 'configure-desc-val' );
-			$text = "<table class='ns-array'>\n<tr><th>{$nsdesc}</th><th>{$valdesc}</th></tr>\n";
+			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			
+			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
+				$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$text = "<table class='ns-array configure-biglist configure-array-table'>\n<tr><th>{$nsdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach ( $wgContLang->getNamespaces() as $ns => $name ) {
 				if ( $ns < 0 )
 					continue;
@@ -984,11 +1016,14 @@ abstract class ConfigurationPage extends SpecialPage {
 				$all = array_diff( $all, $this->getSettingValue( 'wgImplicitGroups' ) );
 			}
 			$groupdesc = wfMsgHtml( 'configure-desc-group' );
-			$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			
+			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
+				$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$encConf = htmlspecialchars( $conf );
-			$text = "<table id= '{$encConf}' class='{$type}'>\n<tr><th>{$groupdesc}</th><th>{$valdesc}</th></tr>\n";
+			$text = "<table id= '{$encConf}' class='{$type} configure-array-table'>\n<tr><th>{$groupdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach ( $iter as $group => $levs ) {
-				$row = '<div style="-moz-column-count:2"><ul>';
+				$row = '<div class="configure-biglist"><ul>';
 				foreach ( $all as $right ) {
 					if ( $type == 'group-bool' )
 						$checked = ( isset( $levs[$right] ) && $levs[$right] );
