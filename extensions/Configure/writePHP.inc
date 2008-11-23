@@ -197,7 +197,7 @@ HEADER;
 	 */
 	protected function getSettings( $type ){
 		 $all = ConfigurationSettings::singleton( $type )->getSettings();
-		 $rm = ConfigurationSettings::singleton( $type )->getNotEditableSettings();
+		 $rm = ConfigurationSettings::singleton( $type )->getUneditableSettings();
 		 foreach( $all as &$sect )
 		 	foreach( $sect as &$sub )
 		 		foreach( $sub as $name => $unused )
