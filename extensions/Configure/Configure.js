@@ -248,7 +248,7 @@ function setupConfigure(){
 		div.id = 'configure-biglist-placeholder-'+l;
 		div.className = 'configure-biglist-placeholder';
 		div.appendChild( tn );
-		div.appendChild( toggleLink );
+		div.insertBefore( toggleLink, div.childNodes[0] );
 		list.parentNode.insertBefore( div, list );
 	}
 }
@@ -278,8 +278,8 @@ function createToggleCallback( id ){
 		toggleLink.removeChild( toggleLink.firstChild );
 		toggleLink.appendChild( document.createTextNode( newLinkText ) );
 		
-		div.removeChild( div.firstChild );
-		div.insertBefore( document.createTextNode( newPlaceholderText ), toggleLink );
+		div.removeChild( div.childNodes[1] );
+		div.appendChild( document.createTextNode( newPlaceholderText ) );
 	}
 }
 

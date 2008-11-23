@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.10.4',
+	'version' => '0.10.5',
 );
 
 # Configuration part
@@ -113,7 +113,7 @@ $wgConfigureUpdateCacheEpoch = false;
 /**
  * Styles versions, you shouldn't change it
  */
-$wgConfigureStyleVersion = '8';
+$wgConfigureStyleVersion = '9';
 
 # Adding new rights...
 $wgAvailableRights[] = 'configure';
