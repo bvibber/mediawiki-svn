@@ -60,6 +60,11 @@ $wgConfigureFileSystemCacheExpiry = 180;
 $wgConfigureWikis = false;
 
 /**
+ * Base directory for extensions files, only change it if you need to
+ */
+$wgConfigureExtDir = "$IP/extensions/";
+
+/**
  * Array of custom extensions (keys have no importance, it has the same format
  * as $extensions in Configure.settings-ext.php)
  * Each value of this array should be an array with the following keys:

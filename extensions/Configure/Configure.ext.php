@@ -124,8 +124,11 @@ class WebExtension {
 	 * @return string
 	 */
 	public function getFile() {
-		global $IP;
-		return $IP . '/extensions/' . $this->mDir . '/' . $this->mFile;
+		global $wgConfigureExtDir;
+		if ( substr( $wgConfigureExtDir, -1 ) != '/' && substr( $wgConfigureExtDir, -1 ) != '\\' ) {
+			$wgConfigureExtDir .= '/';
+		}
+		return $wgConfigureExtDir . $this->mDir . '/' . $this->mFile;
 	}
 
 	/**
