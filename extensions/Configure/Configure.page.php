@@ -883,12 +883,12 @@ abstract class ConfigurationPage extends SpecialPage {
 					$text .= '<tr><td>';
 					$text .= Xml::element( 'input', array(
 						'name' => 'wp' . $conf . "-key-0",
-						'type' => 'text', 'value' => '', 'size' => 20,
+						'type' => 'text', 'value' => '', 'size' => 45,
 					) ) . "<br/>\n";
 					$text .= '</td><td>';
 					$text .= Xml::element( 'input', array(
 						'name' => 'wp' . $conf . "-val-0",
-						'type' => 'text', 'value' => '', 'size' => 20,
+						'type' => 'text', 'value' => '', 'size' => 45,
 					) ) . "<br/>\n";
 					$text .= '</td></tr>';
 				} else {
