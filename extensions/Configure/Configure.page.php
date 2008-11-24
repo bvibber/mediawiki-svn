@@ -863,7 +863,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					if ( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-key-{$i}",
-							'type' => 'text', 'value' => $key, 'size' => 45
+							'type' => 'text', 'value' => $key, 'size' => 20
 						) ) . "<br/>\n";
 					else
 						$text .= '<code>' . htmlspecialchars( $key ) . '</code>';
@@ -871,7 +871,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					if ( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-val-{$i}",
-							'type' => 'text', 'value' => $val, 'size' => 45
+							'type' => 'text', 'value' => $val, 'size' => 20
 						) ) . "<br/>\n";
 					else
 						$text .= '<code>' . htmlspecialchars( $val ) . '</code>';
@@ -883,12 +883,12 @@ abstract class ConfigurationPage extends SpecialPage {
 					$text .= '<tr><td>';
 					$text .= Xml::element( 'input', array(
 						'name' => 'wp' . $conf . "-key-0",
-						'type' => 'text', 'value' => '', 'size' => 45,
+						'type' => 'text', 'value' => '', 'size' => 20,
 					) ) . "<br/>\n";
 					$text .= '</td><td>';
 					$text .= Xml::element( 'input', array(
 						'name' => 'wp' . $conf . "-val-0",
-						'type' => 'text', 'value' => '', 'size' => 45,
+						'type' => 'text', 'value' => '', 'size' => 20,
 					) ) . "<br/>\n";
 					$text .= '</td></tr>';
 				} else {
