@@ -7,7 +7,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
-define('SC_VERSION','0.2.8');
+define('SC_VERSION','0.2.9');
 
 $wgExtensionCredits['parserhook'][]= array(
 	'name'           => 'Semantic Calendar',
@@ -107,7 +107,9 @@ function scfGetEvents($date_property, $filter_query) {
 	$format = 'auto';
 	$printlabel = "";
 	$printouts = array();
-	if (version_compare(SMW_VERSION, '1.2', '>=' ) ||
+	if (class_exists('SMWPropertyValue')) { // SMW 1.4
+		$printouts[] = new SMWPrintRequest(SMWPrintRequest::PRINT_PROP, $printlabel, SMWPropertyValue::makeProperty($date_property));
+	} elseif (version_compare(SMW_VERSION, '1.2', '>=' ) ||
 		substr($smw_version, 0, 3) == '1.2') { // temporary hack
 		$printouts[] = new SMWPrintRequest(SMWPrintRequest::PRINT_PROP, $printlabel, Title::newFromText($date_property, SMW_NS_PROPERTY));
 	} else {
@@ -120,7 +122,10 @@ function scfGetEvents($date_property, $filter_query) {
 		$event_dates = $row[1];
 		$event_title = $event_names->getNextObject()->getTitle();
 		while ($event_date = $event_dates->getNextObject()) {
-			$actual_date = date("Y-m-d", $event_date->getNumericValue());
+			if (method_exists('SMWTimeValue', 'getYear')) // SMW 1.4
+				$actual_date = $event_date->getYear() . '-' . $event_date->getMonth() . '-' . $event_date->getDay();
+			else
+				$actual_date = date("Y-m-d", $event_date->getNumericValue());
 			$events[] = array($event_title, $actual_date);
 		}
 	}
