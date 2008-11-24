@@ -54,7 +54,7 @@ dokumentarneho filma "Wěrnosć w ličbach".
 12
 00:00:46,000 --> 00:00:50,750
 Hdyž dźěćo laptop dóstanje,
-stej na nim wudaći Wikipedije,
+stej na nim dwě wudaći Wikipedije,
 
 13
 00:00:50,750 --> 00:00:54,250
@@ -156,7 +156,7 @@ w mocy abo w čimžkuli, we wědźe.
 
 33
 00:02:37,550 --> 00:02:42,500
-Hdyž mamy wědu a móžemy ju prawje 
+Hdyž mamy wědu a móžemy ju 
 nałožić, da so mjezera pjelni 
 
 34
@@ -185,5 +185,5 @@ ke wšej čłowjeskej wědźe.
 
 39
 00:03:06,750 --> 00:03:11,402
-Zo byšće darił, wopytaj prošu 
+Zo byšće darił, wopytajće prošu 
 donate.wikimedia.org
