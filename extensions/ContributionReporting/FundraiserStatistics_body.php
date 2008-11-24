@@ -57,8 +57,8 @@ END;
 			$days = $this->getDailyTotals( $fundraiser['start'], $fundraiser['end'] );
 			// Determine maximimum for fundraiser
 			foreach ( $days as $day ) {
-				if ( $day[1] > $max ) {
-					$max = $day[1];
+				if ( $day[2] > $max ) {
+					$max = $day[2];
 				}
 			}
 		}
@@ -90,7 +90,7 @@ END;
 			$column = 0;
 			$lastDay = false;
 			foreach( $days as $day ) {
-				$height = ( 200 / $max ) * $day[1];
+				$height = ( 200 / $max ) * $day[2];
 				if ( !isset( $columns[$column] ) ) {
 					$columns[$column] = '';
 				}
