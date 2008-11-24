@@ -71,6 +71,10 @@ td.configure-left-column {
  * tables borders
  */
 
+fieldset.configsection {
+	padding: 0 0 0 1em;
+}
+
 table.assoc,
 table.ns-array,
 table.ns-text,
