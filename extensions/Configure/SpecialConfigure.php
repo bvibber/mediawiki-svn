@@ -17,7 +17,7 @@ class SpecialConfigure extends ConfigurationPage {
 	}
 
 	protected function doSubmit() {
-		global $wgConf, $wgOut, $wgConfigureUpdateCacheEpoch;
+		global $wgConf, $wgOut, $wgConfigureUpdateCacheEpoch, $wgUser;
 
 		$current = $wgConf->getCurrent( $this->mWiki );
 		$settings = $this->importFromRequest();
@@ -30,6 +30,10 @@ class SpecialConfigure extends ConfigurationPage {
 		$class = $ok ? 'successbox' : 'errorbox';
 
 		$wgOut->addWikiText( "<div class=\"$class\"><strong>$msg</strong></div>" );
+		
+		$sk = $wgUser->getSkin();
+		$linkText = wfMsgExt( 'configure-saved-backlink', 'parseinline' );
+		$wgOut->addHTML( Xml::tags( 'p', array( 'style' => 'clear: both;' ), $sk->link( $this->getTitle(), $linkText ) ) );
 	}
 
 	protected function getSettingMask() {

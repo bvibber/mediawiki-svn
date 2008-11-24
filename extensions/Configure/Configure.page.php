@@ -863,7 +863,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					if ( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-key-{$i}",
-							'type' => 'text', 'value' => $key, 'size' => 15
+							'type' => 'text', 'value' => $key, 'size' => 45
 						) ) . "<br/>\n";
 					else
 						$text .= '<code>' . htmlspecialchars( $key ) . '</code>';
@@ -871,7 +871,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					if ( $allowed )
 						$text .= Xml::element( 'input', array(
 							'name' => 'wp' . $conf . "-val-{$i}",
-							'type' => 'text', 'value' => $val, 'size' => 20
+							'type' => 'text', 'value' => $val, 'size' => 45
 						) ) . "<br/>\n";
 					else
 						$text .= '<code>' . htmlspecialchars( $val ) . '</code>';
@@ -883,12 +883,12 @@ abstract class ConfigurationPage extends SpecialPage {
 					$text .= '<tr><td>';
 					$text .= Xml::element( 'input', array(
 						'name' => 'wp' . $conf . "-key-0",
-						'type' => 'text', 'value' => ''
+						'type' => 'text', 'value' => '', 'size' => 45,
 					) ) . "<br/>\n";
 					$text .= '</td><td>';
 					$text .= Xml::element( 'input', array(
 						'name' => 'wp' . $conf . "-val-0",
-						'type' => 'text', 'value' => ''
+						'type' => 'text', 'value' => '', 'size' => 45,
 					) ) . "<br/>\n";
 					$text .= '</td></tr>';
 				} else {
@@ -938,6 +938,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						$attr
 					) . "</span>\n";
 			}
+			$text = Xml::tags( 'div', array( 'class' => 'configure-biglist' ), $text );
 			return $text;
 		}
 		if ( $type == 'ns-text' ) {
@@ -1031,14 +1032,14 @@ abstract class ConfigurationPage extends SpecialPage {
 						$checked = in_array( $right, $levs );
 					$id = Sanitizer::escapeId( 'wp' . $conf . '-' . $group . '-' . $right );
 					$desc = ( $type == 'group-bool' && is_callable( array( 'User', 'getRightDescription' ) ) ) ?
-						User::getRightDescription( $right ) :
+						User::getRightDescription( $right ) . " (" .Xml::element( 'tt', null, $right ) . ")" :
 						$right;
-					$row .= '<li>' . Xml::checkLabel( $desc, $id, $id, $checked, $attr ) . "</li>\n";
+					$row .= '<li>' . Xml::check( $id, $checked, $attr + array( 'id' => $id ) ) . '&nbsp;' . Xml::tags( 'label', array( 'for' => $id ), $desc ) . "</li>\n";
 				}
 				$row .= '</ul></div>';
 				$groupName = User::getGroupName( $group );
 				$encId = Sanitizer::escapeId( 'wp' . $conf . '-' . $group );
-				$text .= "<tr id=\"{$encId}\">\n<td>{$groupName}</td>\n<td>{$row}</td>\n</tr>";
+				$text .= "<tr id=\"{$encId}\">\n<td class=\"configure-grouparray-group\">{$groupName}</td>\n<td class=\"configure-grouparray-value\">{$row}</td>\n</tr>";
 			}
 			$text .= '</table>';
 			return $text;

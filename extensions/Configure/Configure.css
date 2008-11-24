@@ -79,18 +79,51 @@ table.group-array {
 	border: 1px solid #777;
 }
 
-table.configure-table > tr > td,
-table.assoc > tr > td,
-table.ns-array > tr > td,
-table.ns-text > tr > td,
-table.group-bool > tr > td,
-table.group-array > tr > td {
-	border: 1px solid #777;
-	padding: 3px;
-	margin: 3px;
+table.configure-table td,
+table.assoc td,
+table.ns-array td,
+table.ns-text td,
+table.group-bool td,
+table.group-array td {
+	padding: 6px;
+	margin: 0;
+	border-bottom: 1px solid #777;
+	border-spacing: 0;
 }
 
-table.configure-table-ext > tr > td {
+table.assoc td.button,
+table.ns-array td.button,
+table.ns-text td.button,
+table.group-bool td.button,
+table.group-array td.button {
+	width: 10em;
+}
+
+table.configure-table th,
+table.assoc th,
+table.ns-array th,
+table.ns-text th,
+table.group-bool th,
+table.group-array th {
+	border-bottom: 1px solid #667;
+	background-color: #dde;
+}
+
+td.configure-grouparray-group {
+	width: 15em;
+}
+
+table.configure-table,
+table.assoc,
+table.ns-array,
+table.ns-text,
+table.group-bool,
+table.group-array {
+	border-spacing: 0;
+	width: 100%;
+}
+
+table.configure-table-ext tr > td {
 	border: none;	
 }
 
@@ -138,23 +171,18 @@ input.button-add {
 	float: left;
 }
 
-.configure-biglist {
-	-moz-column-count:2;
-}
-
 .configure-biglist-toggle-link {
 	display: block;
 	float: right;
 }
 
 .configure-biglist-placeholder {
-	background-color: #dda;
-	width: 100ex;
+	background-color: #ccd;
 	text-align: center;
 }
 
 table.configure-array-table {
-	min-width: 50%;
+	width: 100%;
 }
 
 /**
