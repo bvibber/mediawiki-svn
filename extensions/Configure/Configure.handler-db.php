@@ -209,7 +209,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 		$dbw->insert( 'config_version',
 			array(
 				'cv_wiki' => $wiki,
-				'cv_timestamp' => $ts,
+				'cv_timestamp' => $dbw->timestamp($ts),
 				'cv_is_latest' => 1,
 			),
 			__METHOD__
@@ -217,7 +217,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 		$newId = $dbw->insertId();
 		$dbw->update( 'config_version',
 			array( 'cv_is_latest' => 0 ),
-			array( 'cv_wiki' => $wiki, 'cv_timestamp <> ' . $dbw->addQuotes( $ts ) ),
+			array( 'cv_wiki' => $wiki, 'cv_timestamp <> ' . $dbw->addQuotes( $dbw->timestamp($ts) ) ),
 			__METHOD__ );
 		$insert = array();
 		foreach ( $settings as $name => $val ) {
