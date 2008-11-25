@@ -32,7 +32,7 @@ class SpecialConfigure extends ConfigurationPage {
 		$wgOut->addWikiText( "<div class=\"$class\"><strong>$msg</strong></div>" );
 		
 		$sk = $wgUser->getSkin();
-		$linkText = wfMsgExt( 'configure-saved-backlink', 'parseinline' );
+		$linkText = wfMsgExt( 'configure-backlink', 'parseinline' );
 		$wgOut->addHTML( Xml::tags( 'p', array( 'style' => 'clear: both;' ), $sk->link( $this->getTitle(), $linkText ) ) );
 	}
 

@@ -202,6 +202,8 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * save the configuration for $wiki
 	 */
 	protected function saveSettingsForWiki( $settings, $wiki, $ts ) {
+		global $wgUser;
+		
 		$dbw = $this->getMasterDB();
 		if ( !$ts )
 			$ts = wfTimestampNow();
@@ -211,6 +213,8 @@ class ConfigureHandlerDb implements ConfigureHandler {
 				'cv_wiki' => $wiki,
 				'cv_timestamp' => $dbw->timestamp($ts),
 				'cv_is_latest' => 1,
+				'cv_user_text' => $wgUser->getName(),
+				'cv_user_wiki' => wfWikiId()
 			),
 			__METHOD__
 		);
@@ -236,18 +240,18 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * List all archived versions
 	 * @return array of timestamps
 	 */
-	public function listArchiveVersions() {
+	public function getArchiveVersions() {
 		$db = $this->getSlaveDB();
 		$ret = $db->select(
 			array( 'config_version' ),
-			array( 'cv_timestamp' ),
+			array( 'cv_timestamp', 'cv_user_text', 'cv_user_wiki' ),
 			array(),
 			__METHOD__,
 			array( 'ORDER BY' => 'cv_timestamp DESC' )
 		);
 		$arr = array();
 		foreach ( $ret as $row ) {
-			$arr[] = $row->cv_timestamp;
+			$arr[$row->cv_timestamp] = array( 'username' => $row->cv_user_text, 'userwiki' => $row->cv_user_wiki );
 		}
 		return $arr;
 	}
@@ -303,5 +307,9 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			'wgMemCachedPersistent',
 			'wgMemCachedServers',
 		);
+	}
+	
+	public function listArchiveVersions() {
+		return array_keys( $this->getArchiveVersions() );
 	}
 }

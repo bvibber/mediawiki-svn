@@ -284,7 +284,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected abstract function buildAllSettings();
 
 	/**
-	 * Get the versoon
+	 * Get the version
 	 */
 	protected function getVersion() {
 		if ( !$this->mRequireWebConf )
@@ -332,20 +332,44 @@ abstract class ConfigurationPage extends SpecialPage {
 		$count = 0;
 		$links = array();
 
-		$versions = $wgConf->listArchiveVersions();
+		$versions = $wgConf->getArchiveVersions();
 		$skin = $wgUser->getSkin();
 		$title = $this->getTitle();
-		foreach ( $versions as $ts ) {
+		$prev = null;
+		
+		ksort($versions); ## Put in ascending order for now.
+		
+		foreach ( $versions as $ts => $data ) {
 			if ( $count > 10 ) {
-				$showAllLink = true;
 				break;
 			} elseif ( in_array( $this->mWiki, $wgConf->getWikisInVersion( $ts ) ) ) {
 				$count++;
-				$links[] = $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" );
-			} else {
-				$showAllLink = true;
+				$link = $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" );
+				$diffLink = '';
+				if ($prev)
+					$diffLink =  '(' . $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'ViewConfig' ), wfMsg( 'configure-old-changes' ), "version=$ts&diff=$prev" ) . ')';
+					
+				## Make user link...
+				$userLink = '';
+				if ( $data['userwiki'] == wfWikiId() ) {
+					$userLink = $skin->link( Title::makeTitle( 'User', $data['username'] ), $data['username'] );
+				} elseif ( class_exists( 'WikiMap' ) && ($wiki = WikiMap::getWiki( $data['userwiki'] ) ) ) {
+					$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$data['username'] ), $data['username'].'@'.$data['userwiki'] );
+				} else {
+					## Last-ditch
+					$userLink = $data['username'].'@'.$data['userwiki'];
+				}
+				
+				$text = wfMsgExt( 'configure-old-summary', array( 'replaceafter', 'parseinline'), array( $link, $userLink, $diffLink ) );
+					
+				$prev = $ts;
+				
+				$links[] = $text;
 			}
 		}
+		
+		## Reset into descending order
+		$links = array_reverse( $links );
 
 		$text = '<fieldset><legend>' . wfMsgHtml( 'configure-old' ) . '</legend>';
 		if ( !count( $links ) ) {
@@ -356,10 +380,9 @@ abstract class ConfigurationPage extends SpecialPage {
 			$text .= implode( "</li>\n<li>", $links );
 			$text .= "</li>\n</ul>\n";
 		}
-		if ( $showAllLink ) {
-			$link = SpecialPage::getTitleFor( 'ViewConfig' );
-			$text .= $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) );
-		}
+		$link = SpecialPage::getTitleFor( 'ViewConfig' );
+		$text .= $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) );
+		
 		$text .= '</fieldset>';
 		return $text;
 	}

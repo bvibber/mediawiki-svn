@@ -257,6 +257,10 @@ class WebConfiguration extends SiteConfiguration {
 	public function listArchiveVersions() {
 		return $this->mHandler->listArchiveVersions();
 	}
+	
+	public function getArchiveVersions() {
+		return $this->mHandler->getArchiveVersions();
+	}
 
 	/**
 	 * Do some checks

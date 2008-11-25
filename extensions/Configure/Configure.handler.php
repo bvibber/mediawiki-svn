@@ -51,12 +51,6 @@ interface ConfigureHandler {
 	public function saveNewSettings( $settings, $wiki );
 
 	/**
-	 * List all archived versions
-	 * @return array of timestamps
-	 */
-	public function listArchiveVersions();
-
-	/**
 	 * Do some checks
 	 * @return array
 	 */
@@ -67,4 +61,8 @@ interface ConfigureHandler {
 	 * @return array
 	 */
 	public function getUneditableSettings();
+	
+	public function getArchiveVersions();
+	
+	public function listArchiveVersions();
 }

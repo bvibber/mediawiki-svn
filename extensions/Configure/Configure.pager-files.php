@@ -28,6 +28,8 @@ class ConfigurationPagerFiles implements Pager {
 				'timestamp' => $version,
 				'wikis' => $wikis,
 				'count' => $count,
+				'user_name' => '',
+				'user_wiki' => '',
 			);
 			$text .= $this->formatRow( $info );
 		}

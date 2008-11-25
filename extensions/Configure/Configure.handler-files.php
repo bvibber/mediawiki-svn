@@ -106,13 +106,13 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * List all archived files that are like conf-{$ts}.ser
 	 * @return array of timestamps
 	 */
-	public function listArchiveVersions() {
+	public function getArchiveVersions() {
 		if ( !$dir = opendir( $this->mDir ) )
 			return array();
 		$files = array();
 		while ( ( $file = readdir( $dir ) ) !== false ) {
 			if ( preg_match( '/^conf-(\d{14})\.ser$/', $file, $m ) )
-				$files[] = $m[1];
+				$files[$m[1]] = array( 'username' => false, 'userwiki' => false );
 		}
 		rsort( $files, SORT_NUMERIC );
 		return $files;
@@ -171,5 +171,9 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 */
 	public function getDir() {
 		return $this->mDir;
+	}
+	
+	public function listArchiveVersions() {
+		return array_keys( $this->getArchiveVersions() );
 	}
 }

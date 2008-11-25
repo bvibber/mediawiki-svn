@@ -168,6 +168,19 @@ class SpecialViewConfig extends ConfigurationPage {
 
 		extract( $this->formatConf );
 		$time = $wgLang->timeAndDate( $ts );
+		
+		## Make user link...
+		$userLink = '';
+		if (!$arr['user_wiki'] && !$arr['user_name'] ) {
+			$userLink = ''; # Nothing...
+		} elseif ( $arr['user_wiki'] == wfWikiId() ) {
+			$userLink = $skin->link( Title::makeTitle( 'User', $arr['user_name'] ), $arr['user_name'] );
+		} elseif ( class_exists( 'WikiMap' ) && ($wiki = WikiMap::getWiki( $arr['user_wiki'] ) ) ) {
+			$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$arr['user_name'] ), $arr['user_name'].'@'.$arr['user_wiki'] );
+		} else {
+			## Last-ditch
+			$userLink = $arr['user_name'].'@'.$arr['user_wiki'];
+		}
 
 		$actions = array();
 		if ( $hasSelf )
@@ -232,7 +245,7 @@ class SpecialViewConfig extends ConfigurationPage {
 			$buttons = '';
 		}
 		$action = implode( ', ', $actions );
-		return "<li>{$buttons}{$time}: {$action}</li>\n";
+		return Xml::tags( 'li', null, wfMsgExt( 'configure-viewconfig-line', array( 'parseinline', 'replaceafter' ), array( $time, $userLink, $action ) ) )."\n";
 	}
 
 	/**

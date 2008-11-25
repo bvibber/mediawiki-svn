@@ -3,7 +3,7 @@
 --
 
 -- Information about each configuration version
-CREATE TABLE config_version (
+CREATE TABLE /*$wgDBprefix*/config_version (
 
 	-- Primary key, used for joins with config_setting table
 	cv_id int(11) NOT NULL auto_increment,
@@ -17,6 +17,13 @@ CREATE TABLE config_version (
 	-- Whether this is the latest version for cv_wiki, will be used to get
 	-- all curent version when loading all the configuration at startup
 	cv_is_latest tinyint NOT NULL DEFAULT 0,
+	
+	-- Who made the revision, name and wiki ID
+	cv_user_text varchar(255) NOT NULL,
+	cv_user_wiki varbinary(255) NOT NULL,
+	
+	-- Reason - not used yet but maybe in the future.
+	cv_reason TINYBLOB NOT NULL,
 
 	PRIMARY KEY ( cv_id ),
 	KEY cv_timestamp( cv_timestamp ),
@@ -24,7 +31,7 @@ CREATE TABLE config_version (
 ) /*$wgDBTableOptions*/;
 
 -- Configuration settings
-CREATE TABLE config_setting (
+CREATE TABLE /*$wgDBprefix*/config_setting (
 
 	-- foreign key to config_version.cv_id, used for joins
 	cs_id int(11) NOT NULL,
