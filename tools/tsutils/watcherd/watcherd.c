@@ -28,7 +28,7 @@
 #include	"subst.h"
 #include	"tsutils.h"
 
-#define SLOWSTR "/* SLOW_OK */"
+#define SLOWSTR " SLOW_OK "
 
 static char const *cfgfile = "/etc/watcherd/watcherd.conf";
 static char const *msgfile = "/etc/watcherd/mailmessage";
