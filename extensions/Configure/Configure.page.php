@@ -41,7 +41,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 
 		if ( $this->mRequireWebConf ) {
-			// Since efConfigureSetup() should be explicitely called, don't go
+			// Since efConfigureSetup() should be explicitly called, don't go
 			// further if that function wasn't called
 			if ( !$wgConf instanceof WebConfiguration ) {
 				$wgOut->wrapWikiMsg( '<div class="errorbox"><strong>$1</strong></div>', 'configure-no-setup' );
