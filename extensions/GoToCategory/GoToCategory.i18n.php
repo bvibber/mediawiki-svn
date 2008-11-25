@@ -36,6 +36,13 @@ $messages['arz'] = array(
 	'gotocategory-desc' => "يتحقق من مدخلات البحث فى نطاق Category: لوظيفة اذهب 'اقفز إلى الصفحة'",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'gotocategory-desc' => "Provjerava traženi pojam u kategorijama: imenski prostor za funkcionalnost 'jump to page' (skoči na stranicu)",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

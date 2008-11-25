@@ -427,6 +427,7 @@ $messages['bs'] = array(
 	'hiderevision-desc' => 'Sakrij pojedinačne revizije od svih korisnika iz normalnih razloga i sl.',
 	'group-oversight' => 'Nadzornici',
 	'group-oversight-member' => 'nadzornik',
+	'grouppage-oversight' => '{{ns:project}}:Nadzor',
 	'right-oversight' => 'Pregled ranije sakrivene revizije',
 	'right-hiderevision' => 'Pregledavanje i vraćanje revizija sakrivenih od administratora',
 	'hiderevision-prompt' => 'Broj revizije koja se uklanja:',
@@ -434,12 +435,16 @@ $messages['bs'] = array(
 	'hiderevision-reason' => 'Razlog (biće zapisan u zapisnik):',
 	'hiderevision-submit' => 'Sakrij ove podatke stalno',
 	'hiderevision-tab' => 'Sakrij reviziju',
+	'hiderevision-norevisions' => 'Nijedna revizija nije odabrana za brisanje.',
+	'hiderevision-noreason' => 'Morate opisati razlog za ovo uklanjanje.',
 	'hiderevision-status' => 'Revizija $1: $2',
 	'hiderevision-success' => 'Uspješno arhivirano i obrisano.',
 	'hiderevision-error-missing' => 'Nije pronađena u bazi podataka.',
 	'hiderevision-error-delete' => 'Nije moguće arhivirati, da nije ranije obrisano?',
+	'hiderevision-archive-status' => 'Obrisana revizija od $1: $2',
 	'oversight' => 'Nadzor',
 	'oversight-view' => 'detalji',
+	'oversight-prev' => 'Zadnja prethodna revizija',
 	'oversight-hidden' => 'Skrivena revizija',
 );
 
@@ -651,6 +656,8 @@ Malfaru ĉi tiun ŝanĝon antaŭe.',
 	'oversight-header' => 'Jen listo de versioj laste daŭre kaŝitaj de publika vido.
 Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-rajtoj.',
 	'oversight-legend' => 'Serĉi protokolon pri revizia kaŝado',
+	'oversight-oversighter' => 'Zorganto:',
+	'oversight-offender' => 'Ofendanto:',
 );
 
 /** Spanish (Español)
@@ -955,6 +962,14 @@ administrador das bases de datos no caso de que vostede cometa un erro.",
 	'oversight-legend' => 'Rexistro de procura de revisións agochadas',
 	'oversight-oversighter' => 'Supervisor:',
 	'oversight-offender' => 'Delincuente:',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'group-oversight-member' => 'παρόραμα',
+	'oversight-oversighter' => 'Παρόραμα:',
 );
 
 /** Hebrew (עברית)

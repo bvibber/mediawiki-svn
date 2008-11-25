@@ -192,6 +192,13 @@ $messages['pt'] = array(
 	'woopra-desc' => 'Permite que o [http://www.woopra.com/ Woopra Live Tracking Software] funcione com a sua instalação MediaWiki',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'woopra-desc' => "Segue pe [http://www.woopra.com/ Woopra Live Tracking Software] pe fatià pe l'installazione d'a MediaUicchi toje",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

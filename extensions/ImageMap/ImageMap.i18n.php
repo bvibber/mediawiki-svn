@@ -58,6 +58,7 @@ $messages['an'] = array(
 	'imagemap_invalid_coord' => "Error: coordinada no conforme en a ringlera $1, ha d'estar un numero",
 	'imagemap_invalid_desc' => "Error: A descripzión (desc) espezificata no ye conforme, ha d'estar una de: <tt>$1</tt>",
 	'imagemap_description' => 'Informazión sobre ista imachen',
+	'imagemap_poly_odd' => "Error: s'ha trobato un polinomio con un numero impar de coordinadas en a linia $1",
 );
 
 /** Arabic (العربية)

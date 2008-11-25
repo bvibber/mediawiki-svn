@@ -141,6 +141,13 @@ $messages['bg'] = array(
 	'authorprotect-failure' => 'Защитата беше неуспешна',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'authorprotect-reason' => 'Razlog',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */

@@ -184,6 +184,19 @@ $messages['an'] = array(
 	'code-desc' => '[[Special:Code|Ferramienta de rebisión de codigo]] [[Special:RepoAdmin|compatible con Subversion]]',
 	'code-no-repo' => 'No bi ha garra reposte confegurato!',
 	'code-notes' => 'rebisar notas',
+	'codereview-email-body' => 'L\'usuario "$1" publicó un comentario en r$3
+
+URL completo: $2
+
+Comentario:
+
+$4',
+	'right-repoadmin' => 'Chestionar repositorios de codigo',
+	'right-codereview-add-tag' => 'Adibir nuebas etiquetas a las bersions',
+	'right-codereview-remove-tag' => "Sacar etiquetas d'as bersions",
+	'right-codereview-post-comment' => "Adibir comentarios t'as bersions",
+	'right-codereview-set-status' => "Cambiar o status d'as rebisions",
+	'right-codereview-link-user' => "Bincular os autors con os usuarios d'o wiki",
 );
 
 /** Arabic (العربية)
@@ -393,6 +406,7 @@ $messages['be-tarask'] = array(
 	'code-authors' => 'аўтары',
 	'code-tags' => 'тэгі',
 	'code-author-haslink' => 'Гэты аўтар асацыяваны з удзельнікам $1',
+	'code-author-link' => 'стварыць спасылку?',
 	'code-field-id' => 'Вэрсія',
 	'code-field-author' => 'Аўтар',
 	'code-field-message' => 'Кароткае апісаньне зьменаў',
@@ -1097,7 +1111,7 @@ $messages['fr'] = array(
 	'code-status-deferred' => 'déféré',
 	'code-pathsearch-legend' => 'Recherche les versions dans ce dépôt selon le chemin',
 	'code-pathsearch-path' => 'Chemin :',
-	'code-rev-submit' => 'Publier les modifications :',
+	'code-rev-submit' => 'Publier les modifications',
 	'code-rev-submit-next' => 'Sauver & prochaine non résolue',
 	'codereview-reply-link' => 'répondre',
 	'codereview-email-subj' => '[$1] [r$2] : Nouveau commentaire ajouté',
@@ -1228,12 +1242,33 @@ $4',
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'code' => 'Ἐπιθεωρεῖν τὸν Κώδικα',
+	'code-comments' => 'Σχόλια',
+	'code-notes' => 'ἐπιθεωρεῖν τὰς σημειώσεις',
 	'code-authors' => 'δημιουργοί',
+	'code-tags' => 'προσαρτήματα',
+	'code-author-link' => 'συνδεῖσθαι;',
+	'code-author-unlink' => 'ἀσυνδεῖσθαι;',
+	'code-field-id' => 'Ἀναθεώρησις',
 	'code-field-author' => 'Δημιουργός',
+	'code-field-status' => 'Κατάστασις',
+	'code-field-timestamp' => 'Ἡμερομηνία',
+	'code-field-path' => 'Ἀτραπός',
 	'code-rev-author' => 'Δημιουργός:',
+	'code-rev-date' => 'Ἡμερομηνία:',
 	'code-rev-message' => 'Σχόλιον:',
+	'code-rev-modified-d' => 'διεγραμμένη',
+	'code-rev-status' => 'Κατάστασις:',
+	'code-rev-tags' => 'Προσαρτήματα:',
+	'code-rev-comment-preview' => 'Προθεωρεῖν',
+	'code-rev-diff' => 'Διαφ',
+	'code-rev-diff-link' => 'διαφ',
+	'code-status-new' => 'νέα',
 	'code-status-ok' => 'εἶεν',
+	'code-pathsearch-path' => 'Ἀτραπὀς:',
 	'repoadmin-new-button' => 'Ποιεῖν',
+	'repoadmin-edit-bug' => 'Ἀτραπὸς Bugzilla:',
+	'repoadmin-edit-view' => 'Ἀτραπὸς ViewVC:',
 	'repoadmin-edit-button' => 'εἶεν',
 );
 
@@ -1711,6 +1746,19 @@ $messages['it'] = array(
 	'specialpages-group-developer' => 'Tool di sviluppo',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'code' => 'コードの確認',
+	'code-comments' => 'コメント',
+	'code-change-status' => "この版の'''ステータス'''を変更しました",
+	'code-change-tags' => "この版の'''タグ'''を変更しました",
+	'code-change-removed' => '除去：',
+	'code-change-added' => '追加:',
+	'code-prop-changes' => 'ステータスとタグ付けのログ',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -1840,6 +1888,8 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'code' => 'Projramme beärbeide',
 	'code-comments' => 'Kommäntaare',
+	'code-change-removed' => 'eruß jenomme:',
+	'code-change-added' => 'dobei jedonn:',
 	'code-desc' => 'Werkzeuch för [[Special:Code|Projramme ze beärbeide]] met [[Special:RepoAdmin|Ongershtözung för <i lang="en">Subversion</i>]]',
 	'code-no-repo' => ' Kei
 Kei xxxxx enjeshtallt.',
@@ -1993,9 +2043,12 @@ $messages['ms'] = array(
 	'code-change-added' => 'menambah:',
 	'code-prop-changes' => 'Log status & label',
 	'code-desc' => '[[Special:Code|Alat semakan kod]] dengan [[Special:RepoAdmin|sokongan Subversion]]',
+	'code-no-repo' => 'Tiada gedung yang ditetapkan!',
 	'code-notes' => 'catatan semak',
 	'code-authors' => 'pengarang',
 	'code-tags' => 'label',
+	'code-authors-text' => 'Berikut ialah senarai pengarang gedung mengikut tertib lakuan terkini.',
+	'code-author-haslink' => 'Pengarang ini berpaut pada pengguna wiki $1',
 	'code-author-name' => 'Masukkan nama pengguna:',
 	'code-author-link' => 'pautan?',
 	'code-author-unlink' => 'buang pautan?',
@@ -2677,6 +2730,61 @@ $messages['sah'] = array(
 	'code-rev-message' => 'Быһаарыы:',
 	'code-rev-status' => 'Туруга:',
 	'code-status-ok' => 'сөп',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Gmelfi
+ */
+$messages['scn'] = array(
+	'code-comments' => 'Cummenti',
+	'code-change-status' => "Canciatu lu '''status''' di sta rivisioni",
+	'code-change-tags' => "Canciati li '''tags''' pi sta rivisioni",
+	'code-change-removed' => 'rimuvutu:',
+	'code-change-added' => 'junciutu:',
+	'code-prop-changes' => 'Status & log di tagging',
+	'code-author-alterlink' => "Canciari l'utilizzaturi dâ wiki cullicatu a stu auturi:",
+	'code-author-orunlink' => "O leva lu culligamentu cu st'utilizzaturi dâ wiki:",
+	'code-author-name' => "Mittiti nu nomu d'utilizzaturi:",
+	'code-author-success' => "L'auturi $1 fu culligatu all'utilizzaturi wiki $2",
+	'code-author-link' => 'culligari?',
+	'code-author-unlink' => 'livari lu culligamentu?',
+	'code-author-unlinksuccess' => "Lu culligamentu all'auturi $1 fu livatu",
+	'code-field-id' => 'Rivisioni',
+	'code-field-author' => 'Auturi',
+	'code-field-user' => 'Cummintaturi',
+	'code-field-message' => 'Cummentu',
+	'code-field-status' => 'Statu',
+	'code-field-timestamp' => 'Data',
+	'code-field-comments' => 'Noti',
+	'code-field-path' => 'Jolu',
+	'code-field-text' => 'Nota',
+	'code-rev-author' => 'Auturi:',
+	'code-rev-date' => 'Data:',
+	'code-rev-message' => 'Cummentu:',
+	'code-rev-repo' => 'Cascittuni:',
+	'code-rev-rev' => 'Rivisioni:',
+	'code-rev-rev-viewvc' => 'supra ViewVC',
+	'code-rev-paths' => 'Jolu mudificatu:',
+	'code-rev-modified-a' => 'junciutu:',
+	'code-rev-modified-r' => 'sustituitu',
+	'code-rev-modified-d' => 'scancillatu',
+	'code-rev-modified-m' => 'canciatu',
+	'code-rev-status' => 'Statu:',
+	'code-rev-status-set' => 'Cancia lu statu',
+	'code-rev-tags' => 'Tag:',
+	'code-rev-tag-add' => 'Junci tag:',
+	'code-rev-tag-remove' => 'Leva tag:',
+	'code-rev-comment-by' => 'Cummentu di $1',
+	'code-rev-comment-submit' => 'Manna lu cummentu',
+	'code-rev-comment-preview' => 'Antiprima',
+	'code-rev-diff' => 'Diff',
+	'code-rev-diff-link' => 'diff',
+	'code-rev-purge-link' => 'pulizzìa',
+	'code-status-new' => 'novu',
+	'code-status-fixme' => 'fissami',
+	'code-status-reverted' => 'scanciatu annarreri',
+	'code-status-resolved' => 'risortu',
+	'code-status-ok' => 'ok',
 );
 
 /** Slovak (Slovenčina)

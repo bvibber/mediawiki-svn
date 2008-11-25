@@ -70,6 +70,14 @@ $messages['gl'] = array(
 	'gblrights-rights-entry' => 'cambiou o grupo global ao que pertence "$1" de $2 a $3',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'gblrights-logpage' => '공통 권한 기록',
+	'gblrights-rights-entry' => '$1 사용자의 공통 권한을 $2에서 $3으로 변경',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

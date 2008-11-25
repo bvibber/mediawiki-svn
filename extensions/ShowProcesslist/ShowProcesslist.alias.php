@@ -44,6 +44,11 @@ $aliases['he'] = array(
 	'ShowProcesslist' => array( 'הצגת_רשימת_תהליכים' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'ShowProcesslist' => array( 'Processzlista mutatása', 'Folyamatlista mutatása' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'ShowProcesslist' => array( 'Daftar proses' ),

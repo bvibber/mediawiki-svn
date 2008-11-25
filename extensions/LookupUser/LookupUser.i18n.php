@@ -682,6 +682,13 @@ $messages['pt'] = array(
 	'lookupuser_useroptions' => 'Opções de utilizador:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'lookupuser_realname' => 'Nome vere: $1',
+);
+
 /** Russian (Русский)
  * @author Kaganer
  * @author Александр Сигачёв

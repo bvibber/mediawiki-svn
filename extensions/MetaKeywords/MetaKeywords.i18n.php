@@ -58,6 +58,13 @@ $messages['arz'] = array(
   # أى وجود ل$1 سيستبدل بعنوان الصفحة الحالي.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'metakeywords-desc' => 'Omogućava postavke ključnih riječi (<tt><nowiki><meta "keywords"></nowiki></tt>) i opisa (<tt><nowiki><meta "description"></nowiki></tt>)',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

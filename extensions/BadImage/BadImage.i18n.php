@@ -301,10 +301,13 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'badimages' => 'Spisak pogrešnih slika',
 	'badimages-add-btn' => 'Dodaj',
 	'badimages-name' => 'Naziv:',
+	'badimages-reason' => 'Razlog:',
 	'badimages-remove' => '(ukloni)',
 	'badimages-remove-btn' => 'Ukloni',
+	'badimages-log-name' => 'Spisak pogrešnih slika',
 );
 
 /** Czech (Česky)

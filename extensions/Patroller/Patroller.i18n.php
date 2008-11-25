@@ -176,6 +176,13 @@ $messages['bg'] = array(
 	'grouppage-patroller' => '{{ns:project}}:Патрулиращи',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'patrol-revert-reason' => 'Razlog:',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

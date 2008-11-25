@@ -58,6 +58,13 @@ $messages['dsb'] = array(
 	'tooltip-desc' => 'Pśidawa toflicku <tt><nowiki><tooltip></nowiki></tt> a <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'tooltip-desc' => 'Aldonas etikedojn <tt><nowiki><tooltip></nowiki></tt> kaj <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** French (Français)
  * @author Grondin
  */

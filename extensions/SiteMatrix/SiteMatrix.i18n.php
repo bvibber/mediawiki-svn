@@ -521,10 +521,12 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author LeighvsOptimvsMaximvs
+ * @author Omnipaedista
  * @author SPQRobin
  */
 $messages['grc'] = array(
 	'sitematrix-language' => 'Γλῶττα',
+	'sitematrix-sitetotal' => 'Πλήρης',
 );
 
 /** Gujarati (ગુજરાતી)

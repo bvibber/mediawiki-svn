@@ -22,131 +22,131 @@ $messages['qqq'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'opensearchxml-desc' => 'واجهة JSON [http://www.opensearch.org أوبن سيرش] موفرة لمستخلصات النصوص',
+	'opensearchxml-desc' => 'واجهة XML [http://www.opensearch.org أوبن سيرش] موفرة لمستخلصات النصوص',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
 $messages['arz'] = array(
-	'opensearchxml-desc' => 'واجهة JSON [http://www.opensearch.org أوبن سيرش] موفرة لمستخلصات النصوص',
+	'opensearchxml-desc' => 'واجهة XML [http://www.opensearch.org أوبن سيرش] موفرة لمستخلصات النصوص',
 );
 
 /** Asturian (Asturianu)
  * @author Esbardu
  */
 $messages['ast'] = array(
-	'opensearchxml-desc' => "La interface qu'[http://www.opensearch.org OpenSearch] JSON apurre pa estrayer testu",
+	'opensearchxml-desc' => "La interface qu'[http://www.opensearch.org OpenSearch] XML apurre pa estrayer testu",
 );
 
 /** Czech (Česky)
  * @author Mormegil
  */
 $messages['cs'] = array(
-	'opensearchxml-desc' => 'Rozhraní [http://www.opensearch.org OpenSearch] JSON poskytující ukázky textu',
+	'opensearchxml-desc' => 'Rozhraní [http://www.opensearch.org OpenSearch] XML poskytující ukázky textu',
 );
 
 /** German (Deutsch) */
 $messages['de'] = array(
-	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-JSON-Schnittstelle für Textauszüge',
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-XML-Schnittstelle für Textauszüge',
 );
 
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON-interfaco proviza por tektaj elĉerpaĵoj',
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-interfaco proviza por tektaj elĉerpaĵoj',
 );
 
 /** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
-	'opensearchxml-desc' => 'رابط مبتنی بر JSON [http://www.opensearch.org OpenSearch] چکیده‌های متن را تامین می‌کند',
+	'opensearchxml-desc' => 'رابط مبتنی بر XML [http://www.opensearch.org OpenSearch] چکیده‌های متن را تامین می‌کند',
 );
 
 /** French (Français)
  * @author IAlex
  */
 $messages['fr'] = array(
-	'opensearchxml-desc' => 'Interface JSON pour [http://www.opensearch.org OpenSearch] avec des extraits du texte',
+	'opensearchxml-desc' => 'Interface XML pour [http://www.opensearch.org OpenSearch] avec des extraits du texte',
 );
 
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
-	'opensearchxml-desc' => 'A interface que [http://www.opensearch.org OpenSearch] JSON proporciona para extractar textos',
+	'opensearchxml-desc' => 'A interface que [http://www.opensearch.org OpenSearch] XML proporciona para extractar textos',
 );
 
 /** Hebrew (עברית)
  * @author Rotem Liss
  */
 $messages['he'] = array(
-	'opensearchxml-desc' => 'ממשק JSON ל־[http://www.opensearch.org OpenSearch] המאפשר צפייה בקטעי טקסט',
+	'opensearchxml-desc' => 'ממשק XML ל־[http://www.opensearch.org OpenSearch] המאפשר צפייה בקטעי טקסט',
 );
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  */
 $messages['hr'] = array(
-	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON sučelje za izvatke teksta',
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML sučelje za izvatke teksta',
 );
 
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'opensearchxml-desc' => 'Interfacie JSON pro [http://www.opensearch.org OpenSearch] que forni extractos de textos',
+	'opensearchxml-desc' => 'Interfacie XML pro [http://www.opensearch.org OpenSearch] que forni extractos de textos',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Rex
  */
 $messages['id'] = array(
-	'opensearchxml-desc' => 'Antarmuka [http://www.opensearch.org OpenSearch] JSON yang menyediakan ekstraksi teks.',
+	'opensearchxml-desc' => 'Antarmuka [http://www.opensearch.org OpenSearch] XML yang menyediakan ekstraksi teks.',
 );
 
 /** Italian (Italiano)
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'opensearchxml-desc' => 'Interfaccia JSON per [http://www.opensearch.org OpenSearch] per estratti di testi',
+	'opensearchxml-desc' => 'Interfaccia XML per [http://www.opensearch.org OpenSearch] per estratti di testi',
 );
 
 /** Japanese (日本語)
  * @author Aotake
  */
 $messages['ja'] = array(
-	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSONインターフェースによるテキスト抽出',
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XMLインターフェースによるテキスト抽出',
 );
 
 /** Javanese (Basa Jawa)
  * @author Pras
  */
 $messages['jv'] = array(
-	'opensearchxml-desc' => 'Antarmuka [http://www.opensearch.org OpenSearch] JSON sing nyadiakaké èkstraksi tèks.',
+	'opensearchxml-desc' => 'Antarmuka [http://www.opensearch.org OpenSearch] XML sing nyadiakaké èkstraksi tèks.',
 );
 
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'opensearchxml-desc' => 'De <i lang="en">[http://www.opensearch.org OpenSearch]-JSON</i>-Schnettstell för Ußschnedde uss em Täx.',
+	'opensearchxml-desc' => 'De <i lang="en">[http://www.opensearch.org OpenSearch]-XML</i>-Schnettstell för Ußschnedde uss em Täx.',
 );
 
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */
 $messages['ms'] = array(
-	'opensearchxml-desc' => 'Antara muka JSON [http://www.opensearch.org OpenSearch] untuk pengekstrakan teks',
+	'opensearchxml-desc' => 'Antara muka XML [http://www.opensearch.org OpenSearch] untuk pengekstrakan teks',
 );
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON-interface die tekstextracten levert',
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-interface die tekstextracten levert',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -160,55 +160,55 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'opensearchxml-desc' => "Interfàcia JSON per [http://www.opensearch.org OpenSearch] amb d'extraches del tèxt",
+	'opensearchxml-desc' => "Interfàcia XML per [http://www.opensearch.org OpenSearch] amb d'extraches del tèxt",
 );
 
 /** Polish (Polski)
  * @author Derbeth
  */
 $messages['pl'] = array(
-	'opensearchxml-desc' => 'Interfejs JSON [http://www.opensearch.org OpenSearch] dla wycinków tekstu',
+	'opensearchxml-desc' => 'Interfejs XML [http://www.opensearch.org OpenSearch] dla wycinków tekstu',
 );
 
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'opensearchxml-desc' => 'Интерфейс предоставления текстовых выдержек [http://www.opensearch.org OpenSearch] JSON',
+	'opensearchxml-desc' => 'Интерфейс предоставления текстовых выдержек [http://www.opensearch.org OpenSearch] XML',
 );
 
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
-	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON rozhranie umožňuje úryvky textu',
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML rozhranie umožňuje úryvky textu',
 );
 
 /** Swedish (Svenska)
  * @author Boivie
  */
 $messages['sv'] = array(
-	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] JSON gränssnitt tillhandahålls för textbitar',
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML gränssnitt tillhandahålls för textbitar',
 );
 
 /** Ukrainian (Українська)
  * @author AS
  */
 $messages['uk'] = array(
-	'opensearchxml-desc' => 'Інтерфейс надання текстових витримок [http://www.opensearch.org OpenSearch] JSON',
+	'opensearchxml-desc' => 'Інтерфейс надання текстових витримок [http://www.opensearch.org OpenSearch] XML',
 );
 
 /** Vèneto (Vèneto)
  * @author Candalua
  */
 $messages['vec'] = array(
-	'opensearchxml-desc' => 'Interfàcia JSON par [http://www.opensearch.org OpenSearch] par estrati de testi',
+	'opensearchxml-desc' => 'Interfàcia XML par [http://www.opensearch.org OpenSearch] par estrati de testi',
 );
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'opensearchxml-desc' => 'Giao diện [http://www.opensearch.org/ OpenSearch] cung cấp đoạn trích văn bản dạng JSON',
+	'opensearchxml-desc' => 'Giao diện [http://www.opensearch.org/ OpenSearch] cung cấp đoạn trích văn bản dạng XML',
 );
 

@@ -316,6 +316,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
  */
@@ -323,14 +324,14 @@ $messages['fr'] = array(
 	'contributors' => 'Contributeurs',
 	'contributors-desc' => 'Met en sommaire les principaux contributeurs d’une page',
 	'contributors-toolbox' => 'Principaux contributeurs',
-	'contributors-legend' => 'Lister les principaux contributeurs de l’article',
+	'contributors-legend' => 'Lister les principaux contributeurs de la page',
 	'contributors-target' => 'Titre :',
 	'contributors-submit' => 'Montrer',
 	'contributors-subtitle' => 'Principaux contributeurs de $1',
 	'contributors-others-long' => 'Il y a {{PLURAL:$1|$1 autre contributeur|$1 autres contributeurs}} pour cette page.',
 	'contributors-others' => 'et {{PLURAL:$1|$1 autre|$1 autres}}',
 	'contributors-badtitle' => 'Titre incorrect.',
-	'contributors-nosuchpage' => 'L’article $1 n’existe pas.',
+	'contributors-nosuchpage' => 'La page $1 n’existe pas.',
 );
 
 /** Western Frisian (Frysk)

@@ -15,9 +15,17 @@ $messages['en'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'javascript-desc' => 'Ajoute uniwiki.js à chaque page contenant du code JavaScript partagé entre les extensions Uniwiki',
+	'javascript-desc' => 'Ajouter uniwiki.js à chaque page contenant du code JavaScript partagé entre les extensions Uniwiki',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'javascript-desc' => 'Tambahaké uniwiki.js menyang saben kaca sing ngandhut kodhe JavaScript sing dianggo bebarengan ing antara èkstènsi Uniwiki',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

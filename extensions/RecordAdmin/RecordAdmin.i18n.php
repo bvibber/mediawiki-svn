@@ -53,6 +53,26 @@ $messages['qqq'] = array(
 	'recordadmin-category' => 'Category which contains the templates used as records and having corresponding forms',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'recordadmin-buttonsearch' => 'Търсене',
+	'recordadmin-buttoncreate' => 'Създаване',
+	'recordadmin-buttonsave' => 'Съхраняване',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'recordadmin-badtitle' => 'Fuŝa titolo!',
+	'recordadmin-buttoncreate' => 'Krei',
+	'recordadmin-buttonsave' => 'Konservi',
+	'recordadmin-viewlink' => 'vidi',
+	'recordadmin-editlink' => 'redakti',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -131,6 +151,7 @@ $messages['lb'] = array(
 	'recordadmin-alreadyexist' => 'Pardon, "$1" gëtt et schonn!',
 	'recordadmin-buttonsearch' => 'Sichen',
 	'recordadmin-buttonreset' => 'Zrécksetzen',
+	'recordadmin-searchresult' => 'Resultater vun der Sich',
 	'recordadmin-edit' => '$1 änneren',
 	'recordadmin-updatesuccess' => '$1 ass aktualiséiert',
 	'recordadmin-updateerror' => 'Beim Aktualiséieren ass e Feeler geschitt',

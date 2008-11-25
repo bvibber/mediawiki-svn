@@ -162,11 +162,13 @@ $messages['arz'] = array(
 	'contribstats-total-ytd' => 'الاجمالي(من اول السنه)',
 	'fundraiserstatistics' => 'احصائيات جمع التبرعات',
 	'fundraiserstats-date' => 'تاريخ',
+	'fundraiserstats-day' => 'يوم $1 من $2',
 	'fundraiserstats-contributions' => 'المساهمات',
 	'fundraiserstats-total' => 'الاجمالي(بالدولار الامريكاني)',
 	'fundraiserstats-avg' => 'المتوسط (بالدولار الامريكاني)',
 	'fundraiserstats-med' => 'المتوسط (بالدولار الامريكاني)',
 	'fundraiserstats-max' => 'الحد الاقصى(بالدولار الامريكاني)',
+	'fundraiserstats-tab-averages' => 'متوسطات',
 );
 
 /** Bulgarian (Български)
@@ -195,10 +197,12 @@ $messages['bg'] = array(
 	'contribstats-contributions' => 'Дарения',
 	'contribstats-total' => 'Общо (USD)',
 	'contribstats-avg' => 'Средно (USD)',
-	'contribstats-min' => 'Минимум (USD)',
 	'contribstats-max' => 'Максимум (USD)',
 	'contribstats-percentage-ytd' => 'Процент (от началото на годината)',
 	'contribstats-total-ytd' => 'Общо (от началото на годината)',
+	'fundraiserstats-date' => 'Дата',
+	'fundraiserstats-total' => 'Общо (USD)',
+	'fundraiserstats-max' => 'Максимум (USD)',
 );
 
 /** Bosnian (Bosanski)
@@ -246,10 +250,15 @@ $messages['cs'] = array(
 	'contribstats-total-ytd' => 'Celkem (od začátku roku)',
 	'fundraiserstatistics' => 'Statistika příspěvkové kampaně',
 	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-day' => '$2, $1. den',
 	'fundraiserstats-contributions' => 'Příspěvků',
 	'fundraiserstats-total' => 'Celkem (USD)',
 	'fundraiserstats-avg' => 'Průměr (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
+	'fundraiserstats-tab-totals' => 'Součty (USD)',
+	'fundraiserstats-tab-contributions' => 'Počty příspěvků',
+	'fundraiserstats-tab-averages' => 'Průměry (USD)',
+	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 );
 
 /** German (Deutsch)
@@ -289,11 +298,16 @@ $messages['de'] = array(
 	'contribstats-total-ytd' => 'Gesamt (YTD)',
 	'fundraiserstatistics' => 'Spendenstatistiken',
 	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-day' => 'Tag $1 von $2',
 	'fundraiserstats-contributions' => 'Spenden',
 	'fundraiserstats-total' => 'Gesamt (USD)',
 	'fundraiserstats-avg' => 'Durchschnitt (USD)',
 	'fundraiserstats-med' => 'Zentralwert / Median (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
+	'fundraiserstats-tab-totals' => 'Summen (USD)',
+	'fundraiserstats-tab-contributions' => 'Spendenanzahl',
+	'fundraiserstats-tab-averages' => 'Durchschnitte (USD)',
+	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 );
 
 /** Esperanto (Esperanto)
@@ -370,13 +384,16 @@ $messages['fa'] = array(
 	'contribstats-contributions' => 'مشارکت‌ها',
 	'contribstats-total' => 'جمع (دلار آمریکا)',
 	'contribstats-avg' => 'میانگین (دلار آمریکا)',
+	'contribstats-med' => 'میانه (دلار آمریکا)',
 	'contribstats-max' => 'حداکثر (دلار آمریکا)',
 	'contribstats-percentage-ytd' => 'درصد (از ابتدای سال)',
 	'contribstats-total-ytd' => 'جمع (از ابتدای سال)',
 	'fundraiserstatistics' => 'آمار جذب سرمایه',
 	'fundraiserstats-date' => 'تاریخ',
+	'fundraiserstats-contributions' => 'مشارکت‌ها',
 	'fundraiserstats-total' => 'جمع (دلار آمریکا)',
 	'fundraiserstats-avg' => 'میانگین (دلار آمریکا)',
+	'fundraiserstats-med' => 'میانه (دلار آمریکا)',
 	'fundraiserstats-max' => 'حداکثر (دلار آمریکا)',
 );
 
@@ -482,9 +499,12 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'contrib-hist-name' => 'Ὄνομα',
+	'contribstats-currency' => 'Συνάλλαγμα',
+	'fundraiserstats-date' => 'Ἡμερομηνία',
 );
 
 /** Hebrew (עברית)
@@ -810,6 +830,8 @@ $messages['ms'] = array(
 	'contribstats-daily-totals' => '{{PLURAL:$1|Jumlah pada hari ini|Jumlah harian sejak $1 hari yang lalu}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Jumlah pada bulan ini|Jumlah bulanan sejak $1 bulan yang lalu}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Jumlah bagi $1 bulan|Jumlah bulanan bagi $1 bulan}}',
+	'contribstats-currency-range-totals' => 'Jumlah mata wang (dari $1 hingga $2)',
+	'contribstats-contribution-range-breakdown' => 'Pecahan mengikut nilai (dari $1 hingga $2)',
 	'contribstats-currency-totals' => 'Jumlah mata wang bagi tahun kewangan $1',
 	'contribstats-contribution-breakdown' => 'Pecahan mengikut nilai bagi tahun kewangan $1',
 	'contribstats-day' => 'Hari',
@@ -819,14 +841,16 @@ $messages['ms'] = array(
 	'contribstats-contributions' => 'Sumbangan',
 	'contribstats-total' => 'Jumlah (USD)',
 	'contribstats-avg' => 'Purata (USD)',
-	'contribstats-min' => 'Minimum (USD)',
+	'contribstats-med' => 'Median (USD)',
 	'contribstats-max' => 'Maksimum (USD)',
 	'contribstats-percentage-ytd' => 'Peratusan (YTD)',
 	'contribstats-total-ytd' => 'Jumlah (YTD)',
+	'fundraiserstatistics' => 'Statistik tabung',
 	'fundraiserstats-date' => 'Tarikh',
+	'fundraiserstats-contributions' => 'Sumbangan',
 	'fundraiserstats-total' => 'Jumlah (USD)',
 	'fundraiserstats-avg' => 'Purata (USD)',
-	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-med' => 'Median (USD)',
 	'fundraiserstats-max' => 'Maksimum (USD)',
 );
 
@@ -866,11 +890,16 @@ $messages['nl'] = array(
 	'contribstats-total-ytd' => 'Totaal (dit jaar)',
 	'fundraiserstatistics' => 'Fondswervingstatistieken',
 	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-day' => 'Dag $1 van $2',
 	'fundraiserstats-contributions' => 'Donaties',
 	'fundraiserstats-total' => 'Totaal (in USD)',
 	'fundraiserstats-avg' => 'Gemiddeld (in USD)',
 	'fundraiserstats-med' => 'Mediaan (USD)',
 	'fundraiserstats-max' => 'Maximum (in USD)',
+	'fundraiserstats-tab-totals' => 'Totalen (USD)',
+	'fundraiserstats-tab-contributions' => 'Aantal donaties',
+	'fundraiserstats-tab-averages' => 'Gemiddelden (USD)',
+	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -948,15 +977,16 @@ $messages['pl'] = array(
 	'contribstats-contributions' => 'Darowizny',
 	'contribstats-total' => 'Suma (USD)',
 	'contribstats-avg' => 'Średnia (USD)',
-	'contribstats-min' => 'Minimum (USD)',
+	'contribstats-med' => 'Mediana (USD)',
 	'contribstats-max' => 'Maksimum (USD)',
 	'contribstats-percentage-ytd' => 'Procent (od początku roku)',
 	'contribstats-total-ytd' => 'Suma (od początku roku)',
 	'fundraiserstatistics' => 'Statystyka zebranych funduszy',
 	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-contributions' => 'Darowizny',
 	'fundraiserstats-total' => 'Suma (USD)',
 	'fundraiserstats-avg' => 'Średnia (USD)',
-	'fundraiserstats-min' => 'Minimum (USD)',
+	'fundraiserstats-med' => 'Mediana (USD)',
 	'fundraiserstats-max' => 'Maksimum (USD)',
 );
 

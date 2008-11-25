@@ -37,6 +37,25 @@ $messages['qqq'] = array(
 	'emergencydesysop-nogroups' => '{{Identical|None}}',
 );
 
+/** German (Deutsch)
+ * @author Metalhead64
+ */
+$messages['de'] = array(
+	'emergencydesysop' => 'Not-DeSysop',
+	'emergencydesysop-title' => 'Entfernt den Sysop-Status des aktuellen und eines anderen Benutzers',
+	'emergencydesysop-otheradmin' => 'Anderen Sysop degruppieren',
+	'emergencydesysop-reason' => 'Grund für die Entfernung',
+	'emergencydesysop-submit' => 'Übertragen',
+	'emergencydesysop-incomplete' => 'Es werden Eingaben in allen Feldern benötigt. Bitte erneut versuchen.',
+	'emergencydesysop-notasysop' => "Der gewählte Benutzer ist nicht in der Gruppe ''Sysop''.",
+	'emergencydesysop-nogroups' => 'Keine',
+	'emergencydesysop-done' => 'Aktion erfolgreich. Du und [[$1]] wurden degruppiert.',
+	'emergencydesysop-invalidtarget' => 'Der gewählte Benutzer existiert nicht.',
+	'emergencydesysop-blocked' => 'Du kannst nicht auf diese Seite zugreifen, während du gesperrt bist',
+	'emergencydesysop-noright' => 'Du hast keine ausreichenden Berechtigungen für diese Seite',
+	'right-emergencydesysop' => 'Ermöglicht die gegenseitige Degruppierung von Sysops',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

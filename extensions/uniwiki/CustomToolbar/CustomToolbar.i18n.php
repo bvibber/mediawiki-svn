@@ -85,6 +85,29 @@ $wgCustomToolbarMessages['arz'] = array(
 	'ct_user_sample' => 'اسم اليوزر',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$wgCustomToolbarMessages['bg'] = array(
+	'ct_bold_sample' => 'Получер',
+	'ct_bold_tip_ins' => 'Вмъкване на текст в получер',
+	'ct_bold_caption' => 'Получер',
+	'ct_italic_sample' => 'Курсивен текст',
+	'ct_italic_tip_ins' => 'Вмъкване на курсивен текст',
+	'ct_italic_caption' => 'Курсив',
+	'ct_internal_tip_ins' => 'Вмъкване на вътрешна препратка',
+	'ct_internal_caption' => 'Вътрешна препратка',
+	'ct_external_tip_ins' => 'Вмъкване на външна препратка',
+	'ct_external_caption' => 'Външна препратка',
+	'ct_image_tip' => 'Вмъкване на картинка',
+	'ct_image_caption' => 'Добавяне на картинка',
+	'ct_math_sample' => 'Вмъкване на LaTeX-формула тук',
+	'ct_math_tip_ins' => 'Вмъкване на математическа формула (LaTeX)',
+	'ct_close' => 'Затваряне на прозореца',
+	'ct_user_user' => 'Потребител',
+	'ct_user_sample' => 'Потребителско име',
+);
+
 /** German (Deutsch) */
 $wgCustomToolbarMessages['de'] = array(
 	'ct_bold_sample' => 'Fetter Text',
@@ -132,6 +155,36 @@ Bitte überprüfe deinen Popup-Blocker.',
 	'ct_user_sample' => 'Benutzername',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$wgCustomToolbarMessages['eo'] = array(
+	'ct_bold_sample' => 'Grasa teksto',
+	'ct_bold_tip_ins' => 'Enmeti grasan tekston',
+	'ct_bold_tip_wrap' => 'Grasigi la tekton',
+	'ct_bold_caption' => 'Grasa teksto',
+	'ct_italic_sample' => 'Kursiva teksto',
+	'ct_italic_tip_ins' => 'Enmeti kursivan tekston',
+	'ct_italic_tip_wrap' => 'Kursivigi la tekston',
+	'ct_italic_caption' => 'Kursiva teksto',
+	'ct_internal_sample' => 'PaĝNomo',
+	'ct_internal_tip_ins' => 'Enmeti internan ligilon',
+	'ct_internal_caption' => 'Interna ligilo',
+	'ct_external_caption' => 'Ekstera ligilo',
+	'ct_image_tip' => 'Enmeti bildon',
+	'ct_image_caption' => 'Aldoni bildon',
+	'ct_attachment_tip' => 'Enmeti afiŝaĵon',
+	'ct_attachment_caption' => 'Aldoni afiŝaĵon',
+	'ct_math_caption' => 'Formulon',
+	'ct_nowiki_tip_ins' => 'Ignori vikian formatadon',
+	'ct_upload' => 'Alŝuti $1n',
+	'ct_select' => 'Selekti $1 por alŝuti',
+	'ct_submit' => 'Ek!',
+	'ct_success' => 'Dosiera alŝuto sukcesis!',
+	'ct_user_user' => 'Uzanto',
+	'ct_user_sample' => 'Salutnomo',
+);
+
 /** Spanish (Español) */
 $wgCustomToolbarMessages['es'] = array(
 	'ct_bold_sample' => 'Texto en negrita',
@@ -176,11 +229,12 @@ $wgCustomToolbarMessages['es'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Sherbrooke
  */
 $wgCustomToolbarMessages['fr'] = array(
-	'ct-desc' => 'Ajoute une barre d’outil extensible',
+	'ct-desc' => 'Ajouter une barre d’outils extensible',
 	'ct_bold_sample' => 'Texte gras',
-	'ct_bold_tip_ins' => 'Insère un texte en gras',
+	'ct_bold_tip_ins' => 'Insérer un texte en gras',
 	'ct_bold_tip_wrap' => 'Mettre ce texte en gras',
 	'ct_bold_caption' => 'Gras',
 	'ct_italic_sample' => 'Texte en italique',
@@ -188,18 +242,18 @@ $wgCustomToolbarMessages['fr'] = array(
 	'ct_italic_tip_wrap' => 'Mettre ce texte en italique',
 	'ct_italic_caption' => 'Italique',
 	'ct_internal_sample' => 'Nom de la page',
-	'ct_internal_tip_ins' => 'Insère un lien interne',
+	'ct_internal_tip_ins' => 'Insérer un lien interne',
 	'ct_internal_tip_wrap' => 'Mettre ce texte en lien interne',
 	'ct_internal_caption' => 'Lien interne',
-	'ct_external_tip_ins' => 'Insère un lien externe',
+	'ct_external_tip_ins' => 'Insérer un lien externe',
 	'ct_external_tip_wrap' => 'Mettre ce texte en lien externe',
 	'ct_external_caption' => 'Lien externe',
-	'ct_image_tip' => 'Insèrer une image',
+	'ct_image_tip' => 'Insérer une image',
 	'ct_image_caption' => 'Ajouter une image',
 	'ct_attachment_tip' => 'Insérer un fichier joint',
 	'ct_attachment_caption' => 'Ajouter un fichier en attachement',
 	'ct_math_sample' => 'Insérer ici une formule LaTeX',
-	'ct_math_tip_ins' => 'Insèrer une formule mathématique (LaTeX)',
+	'ct_math_tip_ins' => 'Insérer une formule mathématique (LaTeX)',
 	'ct_math_tip_wrap' => 'Mettre ce texte en formule mathématique (LaTeX)',
 	'ct_math_caption' => 'Formule',
 	'ct_nowiki_sample' => 'Insérer ici un texte non formaté',
@@ -215,8 +269,8 @@ $wgCustomToolbarMessages['fr'] = array(
 	'ct_submit' => 'Lancer',
 	'ct_close' => 'Fermer la fenêtre',
 	'ct_success' => 'Import du fichier réussi !',
-	'ct_popupblocked' => 'La fenêtre popup d’import a été empêchée dès l’ouverture.
-Veuiller consulter vos paramètres de blockage des popups.',
+	'ct_popupblocked' => 'La fenêtre popup d’import a été bloquée dès l’ouverture.
+Veuiller consulter vos paramètres de blocage des popups.',
 	'ct_user_user' => 'Utilisateur',
 	'ct_user_tip' => 'Insérer un lien vers une page utilisateur',
 	'ct_user_caption' => 'Lien de l’utilisateur',
@@ -263,6 +317,21 @@ $wgCustomToolbarMessages['gl'] = array(
  * @author Pras
  */
 $wgCustomToolbarMessages['jv'] = array(
+	'ct_bold_sample' => 'Tèks cithak kandel',
+	'ct_bold_tip_ins' => 'Seselaké tèks cithak kandel',
+	'ct_bold_tip_wrap' => 'Gawénen tèks iki cithak kandel',
+	'ct_bold_caption' => 'Cithak kandel',
+	'ct_italic_sample' => "Tèks cithak miring (''italic'')",
+	'ct_italic_tip_ins' => "Seselaké tèks cithak miring (''italic'')",
+	'ct_italic_tip_wrap' => "Gawénen tèks iki cithak miring (''italic'')",
+	'ct_italic_caption' => "Cithak miring (''italic'')",
+	'ct_internal_sample' => 'JenengKaca',
+	'ct_internal_tip_ins' => 'Seselaké pranala internal',
+	'ct_internal_tip_wrap' => 'Gawénen tèks iki dadi pranala internal',
+	'ct_internal_caption' => 'Pranala internal',
+	'ct_external_sample' => 'http://conto.com',
+	'ct_external_tip_ins' => 'Seselaké pranala jaba',
+	'ct_external_tip_wrap' => 'Gawénen tèks iki dadi pranala jaba',
 	'ct_external_caption' => 'Pranala jaba',
 	'ct_image_tip' => 'Seselaké gambar',
 	'ct_image_caption' => 'Tambah gambar',
@@ -270,6 +339,8 @@ $wgCustomToolbarMessages['jv'] = array(
 	'ct_attachment_caption' => 'Tambah lampiran',
 	'ct_math_sample' => 'Seselaké formula (rumus) LaTeX ing kéné',
 	'ct_math_tip_ins' => 'Seselaké formula (rumus) matématika (LaTeX)',
+	'ct_math_tip_wrap' => 'Gawénen tèks ini minangka rumus matématika (LaTeX)',
+	'ct_math_caption' => 'Rumus',
 	'ct_user_user' => 'Panganggo',
 	'ct_user_tip' => 'Seselaké pranala menyang kaca panganggo',
 	'ct_user_caption' => 'Pranala panganggo',
@@ -280,6 +351,7 @@ $wgCustomToolbarMessages['jv'] = array(
  * @author Robby
  */
 $wgCustomToolbarMessages['lb'] = array(
+	'ct_bold_sample' => 'Fetten Text',
 	'ct_bold_caption' => 'Fett',
 	'ct_italic_sample' => 'Kursiven Text',
 	'ct_italic_tip_ins' => 'Kursiven Text asetzen',
@@ -513,5 +585,41 @@ Prosím, skontrolujte blokovanie vyskakovacích okien vo vašom prehliadači.',
 	'ct_user_tip' => 'Vložiť odkaz na používateľskú stránku',
 	'ct_user_caption' => 'Odkaz na používateľa',
 	'ct_user_sample' => 'Používateľské meno',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$wgCustomToolbarMessages['sv'] = array(
+	'ct-desc' => 'Lägger till en utökad verktygslåda',
+	'ct_bold_sample' => 'Fet text',
+	'ct_bold_tip_ins' => 'Sätt in fet text',
+	'ct_bold_tip_wrap' => 'Gör den här texten fet',
+	'ct_bold_caption' => 'Fet',
+	'ct_italic_sample' => 'Kursiv text',
+	'ct_italic_tip_ins' => 'Sätt in kursiv text',
+	'ct_italic_tip_wrap' => 'Gör den här texten kursiv',
+	'ct_italic_caption' => 'Kursiv',
+	'ct_internal_sample' => 'Sidnamn',
+	'ct_internal_tip_ins' => 'Sätt in en intern länk',
+	'ct_internal_tip_wrap' => 'Gör den här texten till en intern länk',
+	'ct_internal_caption' => 'Intern länk',
+	'ct_external_sample' => 'http://exempel.com',
+	'ct_external_tip_ins' => 'Sätt in en extern länk',
+	'ct_external_tip_wrap' => 'Gör den här texten till en extern länk',
+	'ct_external_caption' => 'Extern länk',
+	'ct_image_tip' => 'Sätt in en bild',
+	'ct_image_caption' => 'Lägg till bild',
+	'ct_math_sample' => 'Sätt in LaTeX-formel här',
+	'ct_math_tip_ins' => 'Sätt in en matematisk formel (LaTeX)',
+	'ct_math_tip_wrap' => 'Gör den här texten till en matematisk formel (LaTeX)',
+	'ct_math_caption' => 'Formel',
+	'ct_nowiki_sample' => 'Sätt in oformaterad text här',
+	'ct_nowiki_tip_ins' => 'Ignorera wikiformatering',
+	'ct_nowiki_tip_wrap' => 'Ignorera wikiformatering för den här texten',
+	'ct_nowiki_caption' => 'Ingen wikitext',
+	'ct_horizontal_tip' => 'Sätt in en horisontell linje (använd sparsamt)',
+	'ct_horizontal_caption' => 'Horisontell linje',
+	'ct_upload' => 'Ladda upp $1',
 );
 

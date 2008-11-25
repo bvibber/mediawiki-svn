@@ -358,6 +358,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'onlinestatus-desc' => 'Setzt eng Astellung derbäi fir ze weisen ob de Benotzer op dëser Wiki zur Zäit online ass',
+	'onlinestatus-js-changed' => 'Äre Statut gouf op "$1" geännert',
 	'onlinestatus-subtitle-offline' => 'Dëse Benotzer ass zur Zäit offline',
 	'onlinestatus-subtitle-online' => 'Dëse Benotzer ass zur Zäit online',
 	'onlinestatus-tab' => 'Status',

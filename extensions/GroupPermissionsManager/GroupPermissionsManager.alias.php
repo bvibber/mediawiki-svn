@@ -59,6 +59,13 @@ $aliases['hr'] = array(
 	'SortPermissions' => array( 'Raspored_prava' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'GroupPermissions' => array( 'Csoportos engedélyek' ),
+	'RemoveUnusedGroups' => array( 'Nem használt csoportok eltávolítása' ),
+	'SortPermissions' => array( 'Engedélyek rendezése' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'GroupPermissions' => array( 'Grupperechter' ),

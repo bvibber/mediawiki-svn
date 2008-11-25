@@ -108,11 +108,15 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author MF-Warburg
  * @author Revolus
  */
 $messages['de'] = array(
 	'userwelcome-desc' => 'Fügt ein <tt>&lt;welcomeUser&gt;</tt>-Tag hinzu, mit dem man benutzerspezifische soziale Informationen eingeloggten Benutzern zeigen kann',
+	'mp-welcome-upload' => 'Hochladen',
+	'mp-welcome-edit' => 'Bearbeiten',
 	'mp-welcome-logged-in' => 'Hallo $1',
+	'mp-request-new-message' => 'neue Nachricht',
 );
 
 /** Esperanto (Esperanto)

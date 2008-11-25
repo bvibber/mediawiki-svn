@@ -170,12 +170,13 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Louperivois
  */
 $messages['fr'] = array(
 	'block_title_error_page_title' => 'Titre invalide',
 	'block_title_error-desc' => 'Fournit une méthode simple pour éviter que des pages avec un certain titre puissent être sauvegardées ou créées',
-	'block_title_error' => 'Désolé, le titre de cet article n’est pas autorisé à être sauvegardé.',
+	'block_title_error' => 'Désolé, le titre de cette page n’est pas autorisé à être sauvegardé.',
 );
 
 /** Franco-Provençal (Arpetan)

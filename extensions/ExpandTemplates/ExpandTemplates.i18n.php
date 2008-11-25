@@ -469,6 +469,7 @@ $messages['fo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Sherbrooke
  * @author Zetud
  */
@@ -478,7 +479,7 @@ $messages['fr'] = array(
 	'expand_templates_intro' => 'Cette page permet de tester l’expansion de modèles,
 qui sont développés récursivement. Les fonctions et les variables prédéfinies,
 telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont aussi développées.',
-	'expand_templates_title' => 'Titre de l’article, utile par exemple si le modèle utilise {{PAGENAME}} :',
+	'expand_templates_title' => 'Titre de la page, utile par exemple si le modèle utilise {{PAGENAME}} :',
 	'expand_templates_input' => 'Entrez votre texte ici :',
 	'expand_templates_output' => 'Résultat',
 	'expand_templates_xml_output' => 'Sortie XML',
@@ -543,6 +544,7 @@ Faino chamando a etapa de análise correspondente do propio MediaWiki.',
  */
 $messages['grc'] = array(
 	'expandtemplates' => 'Ἐπεκτείνειν τὰ πρότυπα',
+	'expand_templates_output' => 'Ἀποτέλεσμα',
 	'expand_templates_ok' => 'εἶεν',
 	'expand_templates_preview' => 'Προθεώρησις',
 );

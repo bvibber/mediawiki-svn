@@ -37,6 +37,11 @@ $aliases['fi'] = array(
 	'NewsChannel' => array( 'Uutiskanava' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'NewsChannel' => array( 'Hírcsatorna' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'NewsChannel' => array( 'Saluran berita' ),

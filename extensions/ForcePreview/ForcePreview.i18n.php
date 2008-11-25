@@ -60,6 +60,15 @@ $messages['ast'] = array(
 	'right-forcepreviewexempt' => 'Poder guardar ensin amosar previsualización',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'forcepreview' => 'Sačuvaj stranicu (koristi prvo pregled)',
+	'forcepreview-desc' => 'Zahtjeva obavezan pregled za nepotvrđene korisnike',
+	'right-forcepreviewexempt' => 'Može sačuvati izmjene bez obaveznog prikaza izgleda',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author sokai

@@ -338,8 +338,10 @@ $4',
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'todo-new-queue' => 'νέα',
 	'todo-list-cancel' => 'Ἀκυροῦν',
 );
 

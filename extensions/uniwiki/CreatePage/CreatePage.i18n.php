@@ -21,6 +21,19 @@ Would you like to edit the existing page?',
 	'createpage_editexisting' => 'Yes. I want to contribute to the existing page.',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'createpage' => 'Създаване на страница',
+	'createpage-desc' => 'Добавя [[Special:CreatePage|специална страница]] за създаване на нови страници',
+	'createpage_submitbutton' => 'Изпращане',
+	'createpage_instructions' => 'Въведете заглавието на страницата, която желаете да създадете:',
+	'createpage_entertitle' => 'Въведете заглавието на страницата:',
+	'createpage_titleexists' => 'Вече съществува страница с името [[$1]].
+Желаете ли да редактирате съществуващата страница?',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -48,6 +61,14 @@ Möchtest Du die existierende Seite bearbeiten?',
 	'createpage_editexisting' => 'Ja - Ich möchte die existierende Seite bearbeiten.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'createpage' => 'Krei paĝon',
+	'createpage_instructions' => 'Enigu la titolon de la paĝo kiun vi volas krei:',
+);
+
 /** Spanish (Español) */
 $messages['es'] = array(
 	'createpage' => 'Crear una página',
@@ -61,16 +82,17 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'createpage' => 'Créer une page',
-	'createpage-desc' => 'Ajoute une [[Special:CreatePage|page spéciale] pour créer des nouvelles pages',
+	'createpage-desc' => 'Ajouter une [[Special:CreatePage|page spéciale]] pour créer des nouvelles pages',
 	'createpage_submitbutton' => 'Soumettre',
 	'createpage_instructions' => 'Entrer le titre de la page que vous désirez créer :',
 	'createpage_entertitle' => 'Veuillez entrer un titre pour votre page.',
 	'createpage_titleexists' => 'Une page ayant pour titre [[$1]] existe déjà.
-Désirez vous modifier cette dernière ?',
-	'createpage_tryagain' => 'No, je désire créer une nouvelle page avec un titre distinct.',
+Désirez-vous modifier cette dernière ?',
+	'createpage_tryagain' => 'Non, je désire créer une nouvelle page avec un titre distinct.',
 	'createpage_editexisting' => 'Oui, je désire contribuer dans cette page existante.',
 );
 
@@ -87,6 +109,21 @@ $messages['gl'] = array(
 Quere editar esta páxina?',
 	'createpage_tryagain' => 'Non. Quero crear unha páxina nova cun título distinto.',
 	'createpage_editexisting' => 'Si. Quero contribuír á páxina existente.',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'createpage' => 'Gawé kaca',
+	'createpage-desc' => 'Tambahaké [[Special:CreatePage|Gawékaca]] kanggo nggawé kaca anyar',
+	'createpage_submitbutton' => 'Kirim',
+	'createpage_instructions' => 'Isi irah-irahan (judhul) kaca sing arep digawé:',
+	'createpage_entertitle' => 'Supaya ngisi irah-irahan (judhul) kaca.',
+	'createpage_titleexists' => 'Kaca kanthi irah-irahan (judhul) [[$1]] wis ana.
+Apa panjenengan arep nyunting kaca iki?',
+	'createpage_tryagain' => 'Ora. Aku arep gawé kaca anyar kanthi judhul liya.',
+	'createpage_editexisting' => 'Iya. Aku arep ngisi kaca sing ana iki.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

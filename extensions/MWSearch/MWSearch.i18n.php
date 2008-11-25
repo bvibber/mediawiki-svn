@@ -74,6 +74,13 @@ $messages['bn'] = array(
 	'mwsearch-desc' => 'MWSearch প্লাগইন',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'mwsearch-desc' => 'Modul pretrage za MediaWiki',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */

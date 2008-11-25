@@ -286,6 +286,7 @@ $messages['eo'] = array(
 	'tasks_here' => 'ĉi tie',
 	'tasks_task_is_assigned' => '(asignita)',
 	'tasks_help_page' => 'Taskoj',
+	'tasks_more_like_it' => 'pluaj',
 	'tasks_link_your_assignments' => 'malfermaj asignoj',
 	'tasks_my_assignments' => 'Viaj aktualaj asignoj',
 	'tasks_table_header_page' => 'Paĝo',
@@ -298,6 +299,7 @@ $messages['eo'] = array(
 	'tasks_status_open' => 'Malferma',
 	'tasks_status_assigned' => 'Asignita',
 	'tasks_status_closed' => 'Fermita',
+	'tasks_logpage' => 'Protokolo de taskoj',
 );
 
 /** Finnish (Suomi)
@@ -313,6 +315,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Korrigan
  */
 $messages['fr'] = array(
@@ -358,7 +361,7 @@ $messages['fr'] = array(
 	'tasks_significance_order' => 'réécrire<supprimer',
 	'tasks_event_on_creation' => 'vérifier',
 	'tasks_event_on_creation_anon' => 'vérifier',
-	'tasks_on_creation_comment' => "Tâche automatique, créée lors de la création de l'article",
+	'tasks_on_creation_comment' => 'Tâche automatique, créée lors de la création de la page',
 	'tasks_link_your_assignments' => 'distributions ouvertes',
 	'tasks_see_your_assignments' => 'Vous avez actuellement $1 tâches assignées. Voyez vos $2.',
 	'tasks_my_assignments' => 'Vos assignements en cours',
@@ -691,6 +694,7 @@ $messages['lb'] = array(
 	'tasks_created_by' => 'Vum $1 gemaach',
 	'tasks_discussion_page_link' => 'Diskussiounssäit vun der Aufgab',
 	'tasks_closedby' => 'Zougemaach vum $1',
+	'tasks_discussion_page_for' => 'Dës Aufgab ass fir d\'Säit "$1". D\'Lëscht vun allen Aufgaben fir déi Säit ass $2.',
 	'tasks_sidebar_title' => 'Augaben déi nach ze maache sinn',
 	'tasks_here' => 'hei',
 	'tasks_returnto' => 'Dir gitt elo virugeleed. Wann Dir net no e puer Sekonnen virugeleed sidd, da clickt $1.',
@@ -708,13 +712,14 @@ $messages['lb'] = array(
 	'tasks_previous' => 'Vireg',
 	'tasks_next' => 'Nächst',
 	'tasks_sort' => 'Sortéieren',
+	'tasks_ascending' => "Déi eelst fir d'éischt",
 	'tasks_status_open' => 'Op',
 	'tasks_status_closed' => 'Zou',
 	'tasks_action_open' => 'Aufgab "$1" opgemaach.',
 	'tasks_action_closed' => 'Aufgab "$1" ass fäerdeg.',
 	'tasks_sign_delete' => '<b>Et gouf gefrot fir dëse Säit ze läschen</b>',
 	'tasks_logpage' => 'Lëscht vun den Aufgaben',
-	'tasks_logpagetext' => 'Dëst ass eng L!escht vun den Ännerunge vun den Aufgaben',
+	'tasks_logpagetext' => 'Dëst ass eng Lëscht vun den Ännerunge vun den Aufgaben',
 	'tasks_logentry' => 'Fir [[$1}}',
 );
 
@@ -1111,7 +1116,7 @@ $messages['sk'] = array(
 	'tasks_significance_order' => 'rewrite<delete',
 	'tasks_event_on_creation' => 'skontrolovať',
 	'tasks_event_on_creation_anon' => 'skontrolovať',
-	'tasks_on_creation_comment' => 'Automatický úloha, vygenerovaná pri vytvorení článku',
+	'tasks_on_creation_comment' => 'Automatická úloha, vygenerovaná pri vytvorení stránky',
 	'tasks_link_your_assignments' => 'otvoriť pridelené úlohy',
 	'tasks_see_your_assignments' => 'Momentálne máte $1 otvorených pridelených úloh. Pozrite si váš $2.',
 	'tasks_my_assignments' => 'Vaše súčasné pridelené úlohy',

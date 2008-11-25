@@ -120,14 +120,21 @@ $messages['bg'] = array(
 	'passwordreset-invalidusername' => 'Невалидно потребителско име',
 	'passwordreset-emptyusername' => 'Празно потребителско име',
 	'passwordreset-nopassmatch' => 'Паролите не съвпадат',
-	'passwordreset-username' => 'Потребителско име',
-	'passwordreset-newpass' => 'Нова парола',
-	'passwordreset-confirmpass' => 'Парола (повторно)',
+	'passwordreset-username' => 'Потребителско име:',
+	'passwordreset-newpass' => 'Нова парола:',
+	'passwordreset-confirmpass' => 'Парола (повторно):',
 	'passwordreset-disableuser' => 'Деактивиране на потребителската сметка?',
 	'passwordreset-disablesuccess' => 'Потребителската сметка беше деактивирана (потребителски номер: $1)',
 	'passwordreset-accountdisabled' => 'Потребителската сметка беше деактивирана',
 	'disabledusers' => 'Деактивирани потребителски сметки',
 	'disabledusers-summary' => 'Това е списък с потребителски сметки, които са били деактивирани чрез PasswordReset.',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'passwordreset-newpass' => 'Nové heslo:',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -193,9 +200,9 @@ $messages['eo'] = array(
 	'passwordreset-invalidusername' => 'Nevalida Salutnomo',
 	'passwordreset-emptyusername' => 'Malplena Salutnomo',
 	'passwordreset-nopassmatch' => 'Pasvortoj ne estas samaj',
-	'passwordreset-username' => 'Salutnomo',
-	'passwordreset-newpass' => 'Nova pasvorto',
-	'passwordreset-confirmpass' => 'Konfirmu Pasvorton',
+	'passwordreset-username' => 'Salutnomo:',
+	'passwordreset-newpass' => 'Nova pasvorto:',
+	'passwordreset-confirmpass' => 'Konfirmi pasvorton:',
 	'passwordreset-submit' => 'Refari pasvorton',
 	'passwordreset-success' => 'Pasvorto estis restarigita por user_id: $1',
 	'passwordreset-disableuser' => 'Ĉu ja malebligu konton de uzanto?',
@@ -532,6 +539,13 @@ $messages['ksh'] = array(
 	'disabledusers' => 'Stilljelaate Metmaacher',
 	'disabledusers-summary' => 'Hee es de Leß met (per Paßwoot Zeröcksetze) stilljelaate Metmaacher.',
 	'right-passwordreset' => 'Dat Paßwoot fun enem Metmaacher zeröck setze ([[Special:PasswordReset|Söndersigg]])',
+);
+
+/** Latin (Latina)
+ * @author UV
+ */
+$messages['la'] = array(
+	'passwordreset-submit' => 'Tesseram mutare',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -42,6 +42,13 @@ Elle liste toutes les pages issues de la catégorie « $1 » et, le cas échéan
 	'autocreatecategorypages-editor' => 'Créateur automatique de catégorie.',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdamokos
+ */
+$messages['hu'] = array(
+	'autocreatecategorypages-desc' => 'Hiányzó kategóriaoldalak automatikus létrehozása a mentés után.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

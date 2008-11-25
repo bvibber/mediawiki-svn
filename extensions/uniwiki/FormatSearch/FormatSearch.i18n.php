@@ -15,9 +15,10 @@ $messages['en'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'formatsearch-desc' => 'Nettoie la page de résultats de recherche',
+	'formatsearch-desc' => 'Nettoyer la page de résultats de recherche',
 );
 
 /** Galician (Galego)
@@ -25,6 +26,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'formatsearch-desc' => 'Limpa a páxina dos resultados da busca',
+);
+
+/** Javanese (Basa Jawa)
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'formatsearch-desc' => 'Ngresiki kaca kasil panggolèkan',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

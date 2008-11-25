@@ -279,6 +279,13 @@ Asegúrese de non bloquear dominios enteiros que bloqueen contas de usuario; com
 	'spamdifftool_submit_buttom' => 'Enviar',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'spamdifftool_submit_buttom' => 'Ὑποβάλλειν',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

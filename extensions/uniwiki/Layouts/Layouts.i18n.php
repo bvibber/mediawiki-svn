@@ -31,6 +31,16 @@ $messages['arz'] = array(
 	'layouts_unknown' => 'مش معروف',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'layouts_title' => 'Създаване на страница',
+	'layouts_continue' => 'Продължаване',
+	'layouts_choosecategory' => 'Избиране на категория за $1:',
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -52,6 +62,16 @@ $messages['de'] = array(
 	'layouts_tagline' => "Diese Seite wurde mit dem '''$1'''-Layout erstellt.",
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'layouts_title' => 'Krei paĝon',
+	'layouts_continue' => 'Daŭrigi',
+	'layouts_choosecategory' => 'Selekti kategorion por $1:',
+	'layouts_unknown' => 'Nekonata',
+);
+
 /** Spanish (Español) */
 $messages['es'] = array(
 	'layouts_title' => 'Crear una página',
@@ -66,9 +86,10 @@ $messages['es'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'layouts-desc' => "Peuple les pages nouvellement créées avec des « mises en page » modifiables afin d'encourager une structure commune à toutes les pages",
+	'layouts-desc' => "Peupler les pages nouvellement créées avec des « mises en page » modifiables afin d'encourager une structure commune à toutes les pages",
 	'layouts_title' => 'Créer une page',
 	'layouts_chooselayout' => 'Choisir une mise en page pour $1 :',
 	'layouts_nolayout' => 'Aucune mise en page',
@@ -117,6 +138,7 @@ $messages['jv'] = array(
 	'layouts_choosecategory' => 'Pilih kategori kanggo $1:',
 	'layouts_unknown' => 'Ora diweruhi',
 	'layouts_tagline' => "Kaca iki kacipta nganggo rancangan '''$1'''.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Tagkacasunting',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

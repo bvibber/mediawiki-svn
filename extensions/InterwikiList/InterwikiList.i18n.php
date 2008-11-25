@@ -69,6 +69,18 @@ $messages['bg'] = array(
 	'interwikilist-target' => 'Целеви адрес',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'interwikilist' => 'Spisak interwiki linkova',
+	'interwikilist-desc' => 'Dodaje [[Special:Interwikilist|posebnu stranicu]] za prikaz dostupnih međuwiki linkova',
+	'interwikilist-linkname' => 'Međuwiki link',
+	'interwikilist-target' => 'Ciljni URL',
+	'interwikilist-filter' => 'Spisak filtera',
+	'interwikilist-prefix' => 'Prefiks međuwikija:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -144,7 +156,7 @@ $messages['gl'] = array(
 	'interwikilist' => 'Lista de interwiki',
 	'interwikilist-desc' => 'Engade unha [[Special:Interwikilist|páxina especial]] para ver as ligazóns interwiki dispoñibles',
 	'interwikilist-linkname' => 'Ligazón interwiki',
-	'interwikilist-target' => 'Dirección URL obxectivo',
+	'interwikilist-target' => 'Enderezo URL obxectivo',
 	'interwikilist-filter' => 'Filtrar a lista',
 	'interwikilist-prefix' => 'Prefixo interwiki:',
 );
@@ -257,6 +269,7 @@ $messages['lb'] = array(
 	'interwikilist-desc' => 'Setzt eng [[Special:Interwikilist|Spezialsäit]] derbäi fir déi disponibel Interwiki-Linken ze gesinn',
 	'interwikilist-linkname' => 'Interwiki Link',
 	'interwikilist-target' => 'Zil-URL',
+	'interwikilist-filter' => 'Lëscht filteren',
 );
 
 /** Dutch (Nederlands)

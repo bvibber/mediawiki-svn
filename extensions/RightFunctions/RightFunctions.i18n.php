@@ -140,7 +140,9 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'rightfunctions-desc' => 'Parser Funktiounen déi vun de Benotzerrechter ofhänken',
+	'rightfunctions-casc' => '(vun de Quellen a Kaskaden)',
 	'rightfunctions-local' => '(vun der lokaler Säit)',
+	'rightfunctions-ns' => '(vun der Spär vum Nummraum)',
 );
 
 /** Marathi (मराठी)

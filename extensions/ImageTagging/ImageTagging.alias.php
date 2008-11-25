@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ImageTagging' => array( 'وسم_الصور' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'ImageTagging' => array( 'Képcímkézés' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ImageTagging' => array( 'Ofbeeldingen_annoteren' ),

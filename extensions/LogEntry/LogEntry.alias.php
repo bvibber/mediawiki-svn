@@ -40,6 +40,11 @@ $aliases['gl'] = array(
 	'LogEntry' => array( 'Entrada no rexistro' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'LogEntry' => array( 'Naplóbejegyzés' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'LogEntry' => array( 'Logboekregel' ),

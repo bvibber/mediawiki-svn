@@ -1329,9 +1329,9 @@ Por favor, vexa [[{{MediaWiki:Ow editing policy url}}|a nosa política de edici�
 	'ow_add_concept_link' => 'Engadir ligazón a outros conceptos',
 	'ow_concept_panel' => 'Panel de conceptos',
 	'ow_dm_badtitle' => 'Esta páxina non sinala cara a ningunha definición (concepto).
-Por favor, comprobe a dirección da páxina web.',
-	'ow_dm_missing' => 'Esta páxina parece que sinala cara a ningunha definición (concepto) que non existe.
-Por favor, comprobe a dirección da páxina web.',
+Por favor, comprobe o enderezo da páxina web.',
+	'ow_dm_missing' => 'Esta páxina parece que sinala cara a unha definición (concepto) que non existe.
+Por favor, comprobe o enderezo da páxina web.',
 	'ow_AlternativeDefinition' => 'Definición alternativa',
 	'ow_AlternativeDefinitions' => 'Definicións alternativas',
 	'ow_Annotation' => 'Anotación',

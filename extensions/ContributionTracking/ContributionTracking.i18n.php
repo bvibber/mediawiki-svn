@@ -60,12 +60,14 @@ $messages['arz'] = array(
 );
 
 /** Bulgarian (Български)
+ * @author DCLXVI
  * @author Spiritia
  */
 $messages['bg'] = array(
 	'contributiontracking-desc' => 'Проследяване на даренията в дарителската акция на Уикимедия',
 	'contributiontracking' => 'Проследяване на дарението',
 	'contrib-tracking-error' => 'Грешка',
+	'contrib-tracking-button' => 'Продължаване',
 );
 
 /** Czech (Česky)

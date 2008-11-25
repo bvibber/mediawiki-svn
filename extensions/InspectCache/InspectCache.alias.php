@@ -39,6 +39,11 @@ $aliases['fr'] = array(
 	'InspectCache' => array( 'InspecterCache' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'InspectCache' => array( 'Gyorsítótár vizsgálat' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'InspectCache' => array( 'Inspeksi tembolok' ),

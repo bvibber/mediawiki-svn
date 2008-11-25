@@ -985,6 +985,40 @@ $messages['bs'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Glasaj]]
 * [[Special:Boardvote/list|Spisak glasanja do danas]]
 * [[Special:Boardvote/dump|Arhiva šifriranih podataka o izborima]]',
+	'boardvote_intro' => '<p>Dobro došli na izbore za Nadzorni odbor Wikimedije 2008.
+Glasamo za jednu osobu koja će predstavljati zajednicu korisnika na različitim
+projektima Wikimedije.
+Oni će pomoći odrediti budući smijer kojim će krenuti projekti Wikimedije, pojedinačno i kao cjelina, i predstavljat će <em>Vaše</em> interese i zahtjeve u Nadzornom odboru.
+Oni će odlučivati o načinima za prikupljanja prihoda i dodjelu prikupljenog novca.</p>
+
+<p>Molimo pažljivo pročitajte izjave kandidata i odgovore na upite prije glasanja.
+Svaki od kandidata je istaknuti korisnik, koji je uložio dosta vremena i truda kako bi od ovih projekata napravio pristupačnu okolinu koja služi potrazi i slobodnom dijeljenju ljudskog znanja.</p>
+
+<p>Molimo Vas da poredate kandidate po svom izboru upisujući broj pored okvira (1 = prvi izabrani, 2 = drugi izabrani, ...)
+Možete dati isti glas za dvoje ili više kandidata i ostaviti kandidate nerangirane.
+Pretpostavlja se da dajete prednost rangiranim kandidatima ispred onih koji nisu rangirani i da ne dajete nikome prednost između nerangiranih kandidata.</p>
+
+<p>Pobjednik izbora će se računati pomoću Schulzove metode. Za više informacija, vidite službenu stranicu za izbore.</p>
+
+<p>Za više informacija, vidi:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Izbori za odbor 2008.</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidati</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulzova metoda</a></li></ul>',
+	'boardvote_entered' => 'Hvala Vam, Vaš glas je zapisan.
+
+Ako želite, možete zabilježiti slijedeće detalje Vašeg glasanja. Ovako ste glasali:
+
+<pre>$1</pre>
+
+Zaštićeno je s javnim ključem administratora izbora:
+
+<pre>$2</pre>
+
+Kao rezultat šifriranja slijedi zaštićena verzija. Ona će biti [[Special:Boardvote/dump|javno prikazana]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Nazad]]',
 	'boardvote_novotes' => 'Niko još nije glasao.',
 	'boardvote_time' => 'Vrijeme',
 	'boardvote_user' => 'Korisnik',
@@ -997,6 +1031,7 @@ $messages['bs'] = array(
 	'boardvote_needadmin' => 'Samo administratori za izbore mogu izvršiti ovu operaciju.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Izbori za Wikimedia nadzorni odbor</a>:
 Glasanje otvoreno do 22. juna',
+	'boardvote_notstarted' => 'Glasanje još nije započelo',
 	'boardvote_edits_many' => 'mnogi',
 	'group-boardvote' => 'Administratori glasanja za odbor',
 	'boardvote_blocked' => 'Vi ste blokirani na Vašoj matičnoj wiki.
@@ -2240,9 +2275,20 @@ Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen as
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'boardvote' => 'Ἐκλογὴ τοῦ Συμβουλίου τῶν Διοικητῶν τῆς Wikimedia',
+	'boardvote-desc' => '[[meta:Board elections/2008|Ἐκλογὴ τοῦ Συμβουλίου τῶν Διοικητῶν τῆς Wikimedia]]',
 	'boardvote_time' => 'Χρόνος',
 	'boardvote_user' => 'Χρώμενος',
+	'boardvote_edits' => 'Μεταγραφαί',
+	'boardvote_days' => 'Ἡμέραι',
+	'boardvote_ua' => 'Χρώμενος πράκτωρ',
+	'boardvote_dumplink' => 'Ἐπιπιέσατε ἐδῶ',
 	'boardvote_submit' => 'εἶεν',
+	'boardvote_strike' => 'Κτυπεῖν',
+	'boardvote_unstrike' => 'Ἀκτυπεῖν',
+	'boardvote_edits_many' => 'πολλά',
+	'group-boardvote' => 'Ἐπίτροποι ἐκλογῆς συμβουλίου',
+	'group-boardvote-member' => 'ἐπίτροποι ἐκλογῆς συμβουλίου',
 );
 
 /** Manx (Gaelg)

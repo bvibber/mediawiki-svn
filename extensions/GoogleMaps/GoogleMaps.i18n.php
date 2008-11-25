@@ -461,13 +461,20 @@ $wgGoogleMapsMessages['br'] = array(
  */
 $wgGoogleMapsMessages['bs'] = array(
 	'gm-balloon-title' => 'Naslov:',
+	'gm-balloon-link-article' => 'Link ka ovoj stranici (opcija):',
 	'gm-remove' => 'ukloni',
+	'gm-no-results' => 'Nažalost, nema rezultata',
 	'gm-width' => 'Širina',
 	'gm-height' => 'Visina',
 	'gm-zoom-control' => 'Navigacija',
+	'gm-no' => 'Ne',
 	'gm-search' => 'Traži',
+	'gm-save-path' => 'Sačuvaj',
+	'gm-edit-path' => 'dodaj bodove',
 	'gm-line-width' => 'Širina',
 	'gm-make-map' => 'napravi mapu',
+	'gm-hide-map' => 'sakrij kartu',
+	'gm-back' => 'nazad',
 );
 
 /** Catalan (Català)
@@ -1131,6 +1138,7 @@ $wgGoogleMapsMessages['fo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Meithal
  * @author Sherbrooke
  * @author Urhixidur
@@ -1150,15 +1158,15 @@ $wgGoogleMapsMessages['fr'] = array(
 	'gm-start-path' => 'Démarrer le trajet',
 	'gm-trace-area' => 'tracer une zone',
 	'gm-save-point' => 'enregistrer et fermer',
-	'gm-load-map-from-article' => "Charger une carte de l'article :",
-	'gm-no-maps' => 'Pas de carte dans cet article à charger.',
+	'gm-load-map-from-article' => 'Charger une carte depuis la page :',
+	'gm-no-maps' => 'Pas de carte dans cette page à charger.',
 	'gm-refresh-list' => 'Mettre à jour la liste',
 	'gm-load-map' => 'Charger la carte',
 	'gm-clip-result' => 'Ajouter à la carte',
 	'gm-no-results' => 'Désolé, pas de résultats',
 	'gm-searching' => 'en recherche...',
 	'gm-map' => 'Carte',
-	'gm-note' => 'Note : Assurez-vous d’avoir bien copié ce que vous voulez enregistrer dans l’article avant de cliquer sur « Charger la carte, Enregistrer » ou « Prévisualiser » !',
+	'gm-note' => 'Note : Assurez-vous d’avoir bien copié ce que vous voulez enregistrer dans la page avant de cliquer sur « Charger la carte », « Enregistrer » ou « Prévisualiser » !',
 	'gm-instructions' => 'Ci-dessous, l’annotation wiki pour créer la carte obtenue ci-dessus.',
 	'gm-are-you-sure' => 'Êtes-vous sûr ?',
 	'gm-clear-all-points' => 'Enlever tous les points',

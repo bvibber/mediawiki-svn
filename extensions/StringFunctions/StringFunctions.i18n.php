@@ -93,6 +93,13 @@ $messages['ksh'] = array(
 	'stringfunctions-desc' => 'Deit Fungxjone för Tex un Zeichekette en dem Wiki singe Parser dobei.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'stringfunctions-desc' => 'Verbessert de parser mat String-Funktiounen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -860,8 +860,10 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'ogg-player-selected' => '(ἐπειλεγμένη)',
 	'ogg-more' => 'πλέον...',
 );
 

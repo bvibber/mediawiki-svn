@@ -72,6 +72,11 @@ $aliases['ht'] = array(
 	'SiteMatrix' => array( 'SitMatrix' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'SiteMatrix' => array( 'Honlaptáblázat' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'SiteMatrix' => array( 'Matriks situs' ),

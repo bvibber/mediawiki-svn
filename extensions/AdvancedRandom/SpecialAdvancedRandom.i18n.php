@@ -115,11 +115,12 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'advancedrandom' => 'Accès aléatoire avancé',
-	'advancedrandom-desc' => 'Obtient une page au hasard à partir d’une discussion ou d’un lien d’un sujet vers une page donnée. Peut être utilisé comme [[Special:AdvancedRandom/Template:Featured/Talk]] pour obtenir un article déterminé au hasard ou comme [[Special:AdvancedRandom/Template:GFDL/Image]] pour obtenir un fichier sous licence GFDL',
+	'advancedrandom-desc' => 'Obtient une page au hasard à partir d’une discussion ou d’un lien d’un sujet vers une page donnée. Peut être utilisé comme [[Special:AdvancedRandom/Template:Featured/Talk]] pour obtenir une page déterminée au hasard ou comme [[Special:AdvancedRandom/Template:GFDL/Image]] pour obtenir un fichier sous licence GFDL',
 );
 
 /** Franco-Provençal (Arpetan)

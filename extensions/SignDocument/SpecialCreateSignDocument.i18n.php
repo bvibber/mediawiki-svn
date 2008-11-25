@@ -848,6 +848,24 @@ $messages['ro'] = array(
 	'createsigndoc-create' => 'Creează',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'createsigndoc-pagename' => 'Pàgene:',
+	'createsigndoc-allowedgroup' => 'Gruppe permesse:',
+	'createsigndoc-email' => 'Indirizze e-mail:',
+	'createsigndoc-address' => 'Indirizze de case:',
+	'createsigndoc-extaddress' => 'Cetate, province, state:',
+	'createsigndoc-phone' => 'Numere de telefone:',
+	'createsigndoc-bday' => 'Date de nascite:',
+	'createsigndoc-minage' => 'Età minime:',
+	'createsigndoc-introtext' => "'Ndroduzione:",
+	'createsigndoc-hidden' => 'Scunnute',
+	'createsigndoc-optional' => 'A scelte',
+	'createsigndoc-create' => 'Ccreje',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

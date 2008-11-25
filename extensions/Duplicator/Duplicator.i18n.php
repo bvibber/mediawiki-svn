@@ -315,10 +315,10 @@ $messages['fi'] = array(
  * @author IAlex
  */
 $messages['fr'] = array(
-	'duplicator' => 'Dupliquer un article',
-	'duplicator-desc' => 'Créer des copies distinctes d’articles avec l’historique complet des modifications.',
-	'duplicator-toolbox' => 'Dupliquer cet article',
-	'duplicator-header' => 'Cette page permet la duplication complète d’un article, en créant deux versions indépendantes de l’historique complet. Il sert par exemple à séparer un article en deux.',
+	'duplicator' => 'Dupliquer une page',
+	'duplicator-desc' => 'Créer des [[Special:Duplicate|copies distinctes de pages]] avec l’historique complet des modifications.',
+	'duplicator-toolbox' => 'Dupliquer cette page',
+	'duplicator-header' => 'Cette page permet la duplication complète d’une page, en créant deux versions indépendantes de l’historique complet. Il sert par exemple à séparer une page en deux.',
 	'duplicator-options' => 'Options',
 	'duplicator-source' => 'Source :',
 	'duplicator-dest' => 'Destination :',
@@ -330,10 +330,10 @@ $messages['fr'] = array(
 	'duplicator-success-talkcopied' => 'La page de discussion a également été copiée.',
 	'duplicator-success-talknotcopied' => 'La page de discussion n’a pas pu être copiée.',
 	'duplicator-failed' => 'La page n’a pas pu être dupliquée. Une erreur inconnue s’est produite.',
-	'duplicator-source-invalid' => 'Veuillez donner un nom valide pour l’article.',
-	'duplicator-source-notexist' => '[[$1]] n’existe pas. Veuillez donner le nom d’un article existant.',
+	'duplicator-source-invalid' => 'Veuillez donner un nom valide pour la page.',
+	'duplicator-source-notexist' => '[[$1]] n’existe pas. Veuillez donner le nom d’une page existante.',
 	'duplicator-dest-invalid' => 'Veuillez donner un nom valide pour la destination.',
-	'duplicator-dest-exists' => '[[$1]] existe déjà. Veuillez donner le nom d’un article qui n’existe pas encore.',
+	'duplicator-dest-exists' => '[[$1]] existe déjà. Veuillez donner le nom d’une page qui n’existe pas encore.',
 	'duplicator-toomanyrevisions' => '[[$1]] a trop ($2) de révisions et ne peut pas être copié. La limite actuelle est de $3.',
 );
 

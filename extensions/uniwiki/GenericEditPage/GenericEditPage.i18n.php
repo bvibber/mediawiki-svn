@@ -55,6 +55,18 @@ $messages['arz'] = array(
 	'gep-nocategories' => 'لو سمحت تختار تصنيف واحد على الاقل قبل الحفظ',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'gep-emailbody' => 'Потребител „$1“ предложи категория „$2“ за сайта „$3“.',
+	'gep-categories' => 'Категории',
+	'gep-addcategory' => 'Добавяне на категория',
+	'gep-addcategorybutton' => 'Добавяне',
+	'gep-suggestcategorybutton' => 'Изпращане',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'gep-emailsubject' => '[$1] Vorschlag Kategorie: $2',
@@ -75,6 +87,24 @@ $messages['de'] = array(
 	'gep-nosectioninstructions' => 'Diese Seite hat keine Abschnitte.
 Gib ein paar ein mit den Werkzeugen an der rechten Seite.',
 	'gep-nocategories' => 'Bitte vor dem Abspeichern mindestens eine Kategorie aussuchen',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'gep-emailsubject' => '[$1] Kategoria sugesto: $2',
+	'gep-emailbody' => 'Uzanto "$1" sugestis kategorion "$2" por vikio "$3".',
+	'gep-emailsuccess' => 'Dankon pro sugesti la kategorion: $1.',
+	'gep-categories' => 'Kategorioj',
+	'gep-addcategory' => 'Aldoni kategorion',
+	'gep-addcategorybutton' => 'Aldoni',
+	'gep-suggestcategory' => 'Sugesti kategorion',
+	'gep-sections' => 'Sekcioj',
+	'gep-addsection' => 'Aldoni sekcion',
+	'gep-addsectionbutton' => 'Aldoni',
+	'gep-classicmode' => 'Klasika regximo',
+	'gep-genericmode' => 'Gxenerala regximo',
 );
 
 /** Spanish (Español) */
@@ -102,9 +132,10 @@ Agrega algunas secciones utilizando las herramientas a la derecha.',
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'gep-desc' => 'Suppléante le formulaire de modification pour être plus facile à utiliser',
+	'gep-desc' => 'Suppléer le formulaire de modification pour être plus facile à utiliser',
 	'gep-emailsubject' => '[$1] Suggestion de catégorie : $2',
 	'gep-emailbody' => "L'utilisateur « $1 » a suggéré la catégorie « $2 » pour le site « $3 ».",
 	'gep-emailfailure' => "Désolé, votre suggestion n'a pas pu être effectuée.",
@@ -122,7 +153,7 @@ $messages['fr'] = array(
 	'gep-genericmode' => 'Mode générique',
 	'gep-nosectioninstructions' => "Il n'y a aucune section dans cette page.
 Ajoutez-en en utilisant l'outil sur la droite.",
-	'gep-nocategories' => 'Choisissez au moins une catégorie avant de sauvegarder la page',
+	'gep-nocategories' => 'Choisir au moins une catégorie avant de sauvegarder la page',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
@@ -152,12 +183,26 @@ Engada algunha usando as ferramentas da dereita.',
  * @author Pras
  */
 $messages['jv'] = array(
+	'gep-desc' => 'Imbuhi kaca suntingan supaya luwih kepénak tumrap panganggo',
+	'gep-emailsubject' => '[$1] Saran kategori: $2',
 	'gep-emailbody' => 'Panganggo "$1" nyaranaké kategori "$2" kanggo situs "$3".',
 	'gep-emailfailure' => 'Nyuwun pangapura, saran panjenengan ora bisa diprosès.',
+	'gep-emailsuccess' => 'Matur nuwun wis nyaranaké kategori: $1.',
+	'gep-categories' => 'Kategori',
 	'gep-addcategory' => 'Nambahaké kategori',
 	'gep-addcategorybutton' => 'Tambahaké',
+	'gep-suggestcategory' => 'Saranaké kategori',
 	'gep-suggestcategorybutton' => 'Kirim',
+	'gep-sections' => 'Bagéan',
+	'gep-sectionnotdisabled' => "Bagéan iki ora bisa dilumpuhaké (''disabled'')",
+	'gep-addsection' => 'Tambahaké bagéan',
 	'gep-addsectionbutton' => 'Tambahaké',
+	'gep-classicmode' => 'Cara klasik',
+	'gep-genericmode' => 'Cara generik',
+	'gep-nosectioninstructions' => "Ora ana bagéan ing kaca iki.
+Tambahaké kanthi migunakaké piranti (''tools'') sing ana ing tengen.",
+	'gep-nocategories' => 'Pilih saora-orané siji kategori sadurungé nyimpen',
+	'gep-categorypage' => 'MediaWiki:Tagkacasunting',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -173,6 +218,7 @@ $messages['lb'] = array(
 	'gep-addcategorybutton' => 'Derbäisetzen',
 	'gep-suggestcategory' => 'Eng Kategorie virschloen',
 	'gep-suggestcategorybutton' => 'Schécken',
+	'gep-sections' => 'Abschnitter',
 	'gep-addsectionbutton' => 'Derbäisetzen',
 	'gep-nocategories' => 'Wielt w.e.g. mindestens eng Kategorie aus ier Dir ofspäichert',
 	'gep-categorypage' => 'MediaWiki:Säitenännerungs-Tagen',
@@ -283,5 +329,16 @@ $messages['sk'] = array(
 Pomocou nástrojov vpravo ich môžete pridať.',
 	'gep-nocategories' => 'Prosím, vyberte pred uložením aspoň jednu kategóriu.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'gep-categories' => 'Kategorier',
+	'gep-addcategory' => 'Lägg till en kategori',
+	'gep-addcategorybutton' => 'Lägg till',
+	'gep-addsection' => 'Lägg till ett avsnitt',
+	'gep-addsectionbutton' => 'Lägg till',
 );
 

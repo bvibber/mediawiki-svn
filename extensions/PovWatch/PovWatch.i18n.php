@@ -909,6 +909,13 @@ $messages['ro'] = array(
 	'povwatch_title' => 'Titlu:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'povwatch_added' => 'aggiunde',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

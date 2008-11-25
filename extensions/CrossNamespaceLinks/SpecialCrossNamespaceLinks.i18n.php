@@ -735,11 +735,13 @@ $messages['sk'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazov}} na $3',
 );
 
-/** Albanian (Shqip) */
+/** Albanian (Shqip)
+ * @author Dori
+ */
 $messages['sq'] = array(
 	'crossnamespacelinks' => 'Lidhje ndër-hapësira',
 	'crossnamespacelinks-summary' => 'Kjo faqe jep një listë lidhjesh nga një faqe e hapësirës kryesore tek një faqe në hapësirat e tjera (përveç hapësirave {{ns:special}}, {{ns:talk}}, {{ns:project}} dhe {{ns:template}}).',
-	'crossnamespacelinkstext' => '$1: $2 lidhje tek hapësira $3',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lidhje|lidhje}} tek hapësira $3',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

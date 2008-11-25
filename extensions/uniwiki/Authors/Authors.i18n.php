@@ -23,11 +23,27 @@ $messages['arz'] = array(
 	'authors_anonymous' => 'مش معروف',
 );
 
+/** German (Deutsch)
+ * @author MF-Warburg
+ */
+$messages['de'] = array(
+	'authors_authors' => 'Autoren',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'authors_authors' => 'Aŭtoroj',
+	'authors_anonymous' => 'Anonima',
+);
+
 /** French (Français)
  * @author Grondin
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'authors-desc' => 'Ajoute aux pages une liste des contributeurs',
+	'authors-desc' => 'Ajouter aux pages une liste des contributeurs',
 	'authors_authors' => 'Auteurs',
 	'authors_anonymous' => 'Anomyne',
 );

@@ -265,8 +265,24 @@ $messages['bs'] = array(
 	'youtubeauthsub_category' => 'Kategorija',
 	'youtubeauthsub_submit' => 'Pošalji',
 	'youtubeauthsub_clickhere' => 'Kliknite ovdje za prijavu na YouTube',
+	'youtubeauthsub_success' => "Čestitamo!
+Vaš video je postavljen.
+Da pogledate Vaš video kliknite <a href='http://www.youtube.com/watch?v=$1'>ovdje</a>.
+Stranica YouTube možda treba malo vremena da procesira Vaš video, tako da možda još nije spreman.
+
+Da bi ste uključili Vaš video na neku wiki stranicu, ubacite slijedeći kod na stanicu:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Da bi ste postavili video, bit će te primorani da se prvo prijavite na YouTube.',
 	'youtubeauthsub_uploadhere' => 'Postavite Vaš video odavde:',
 	'youtubeauthsub_uploadbutton' => 'Postavi',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Ovaj video može se pogledati [http://www.youtube.com/watch?v=$1 ovdje]',
+	'youtubeauthsub_summary' => 'Postavljanje YouTube videa',
+	'youtubeauthsub_uploading' => 'Vaš video se postavlja.
+Molimo budite strpljivi.',
+	'youtubeauthsub_jserror_nokeywords' => 'Molimo Vas unesite 1 ili više ključnih riječi.',
+	'youtubeauthsub_jserror_notitle' => 'Molimo unesite naslov za video.',
 );
 
 /** Catalan (Català)
@@ -503,9 +519,11 @@ Por favor, sexa paciente.',
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'youtubeauthsub_category' => 'Κατηγορία',
+	'youtubeauthsub_submit' => 'Ὑποβάλλειν',
 );
 
 /** Hawaiian (Hawai`i)
@@ -1375,8 +1393,15 @@ $messages['roa-tara'] = array(
 	'youtubeauthsub_description' => 'Descrizione',
 	'youtubeauthsub_password' => 'Password de YouTube',
 	'youtubeauthsub_username' => 'Nome utende de YouTube',
+	'youtubeauthsub_keywords' => 'Parole chiave',
 	'youtubeauthsub_category' => 'Categorije',
+	'youtubeauthsub_submit' => 'Conferme',
+	'youtubeauthsub_clickhere' => 'Cazze aqquà pe collegarte sus a YouTube',
+	'youtubeauthsub_uploadhere' => "Careche 'u video tue d'aqquà:",
 	'youtubeauthsub_uploadbutton' => 'Careche',
+	'youtubeauthsub_summary' => "Stoche a careche 'u video de YouTube",
+	'youtubeauthsub_jserror_nokeywords' => 'Pe piacere mitte 1 o cchiù parole chiave',
+	'youtubeauthsub_jserror_notitle' => "Pe piacere mitte 'nu titele p'u video.",
 );
 
 /** Russian (Русский)

@@ -388,7 +388,7 @@ A maioría das extensións traballan con múltiples versións de MediaWiki, polo
 	'extdist-tar-error' => 'Tar devolveu o código de saída $1:',
 	'extdist-created' => "Unha fotografía da versión <b>$2</b> da extensión <b>$1</b> de MediaWiki <b>$3</b> foi creada. A súa descarga debería comezar automaticamente en 5 segundos.  
 
-A dirección URL desta fotografía é:
+O enderezo URL desta fotografía é:
 :$4
 Poderá ser usada para descargala inmediatamente a un servidor, pero, por favor, non a engada á listaxe dos seus favoritos mentres o contido non é actualizado. Poderá tamén ser eliminada nuns días.
 

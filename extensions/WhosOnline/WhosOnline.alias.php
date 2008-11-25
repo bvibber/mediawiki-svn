@@ -99,6 +99,11 @@ $aliases['oc'] = array(
 	'WhosOnline' => array( 'Qui es en linha', 'QuiEsEnLinha' ),
 );
 
+/** Quechua (Runa Simi) */
+$aliases['qu'] = array(
+	'WhosOnline' => array( 'PitaqYaykusqa' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'WhosOnline' => array( 'ใครออนไลน์อยู่' ),

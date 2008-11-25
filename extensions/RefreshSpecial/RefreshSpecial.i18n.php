@@ -100,11 +100,21 @@ $messages['arz'] = array(
 	'refreshspecial-total-display' => '<br />حدث $1 صفحة بإجمالى $2 صف فى وقت $3 (الزمن الإجمالى لعمل السكريبت هو $4)',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'refreshspecial-select-all-pages' => '  избиране на всички страници',
+	'refreshspecial-here' => '<b>тук</b>',
+	'refreshspecial-no-page' => 'Няма такава специална страница',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'refreshspecial-select-all-pages' => ' selekti ĉiujn paĝojn',
+	'refreshspecial-here' => '<b>ĉi tie</b>',
 );
 
 /** Finnish (Suomi)

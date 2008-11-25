@@ -13,11 +13,19 @@ $messages['en'] = array(
 	'mootools12core-desc' => 'Adds mootools-1.2-core-yc.js to each page',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'mootools12core-desc' => 'Добавя mootools-1.2-core-yc.js към всяка страница',
+);
+
 /** French (Français)
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'mootools12core-desc' => 'Ajoute mootools-1.2-core-yc.js à chaque page',
+	'mootools12core-desc' => 'Ajouter mootools-1.2-core-yc.js à chaque page',
 );
 
 /** Hebrew (עברית)

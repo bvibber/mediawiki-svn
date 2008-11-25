@@ -45,6 +45,13 @@ $messages['bg'] = array(
 	'othersites' => 'Други сайтове',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'othersites' => 'Ostale stranice',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

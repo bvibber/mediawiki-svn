@@ -79,6 +79,13 @@ $messages['ksh'] = array(
 	'regexfunctions-desc' => 'Parser-Fungxjuhne met <i lang="en">regular expressions</i> dren.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'regexfunctions-desc' => 'Parserfunktioune fir regulär Ausdréck',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -343,6 +343,7 @@ $messages['lb'] = array(
 	'slippymap_heightsmall' => 'Héicht (h) de Wert kann net méi kleng wéi 100 sinn',
 	'slippymap_zoomsmall' => 'Zoom (z) de Wert kann net méi kleng si wéi null',
 	'slippymap_zoombig' => 'Zoom (z) de Wert kann net méi grouss si wéi 17.',
+	'slippymap_maperror' => 'Kaartefeeler:',
 	'slippymap_code' => 'Wikicode fir dës Kaart ze kucken:',
 	'slippymap_button_code' => 'Wikicode weisen',
 	'slippymap_resetview' => 'Zrécksetzen',

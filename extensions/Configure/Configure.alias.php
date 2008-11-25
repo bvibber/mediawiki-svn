@@ -136,7 +136,7 @@ $aliases['ht'] = array(
 $aliases['hu'] = array(
 	'Configure' => array( 'Beállítás' ),
 	'Extensions' => array( 'Kiegészítők' ),
-	'ViewConfig' => array( 'Beállítás nézőke' ),
+	'ViewConfig' => array( 'Beállítások megtekintése', 'Beállítás nézőke' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

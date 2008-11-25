@@ -22,11 +22,26 @@ $messages['arz'] = array(
 	'catboxattop-categories' => 'تصانيف',
 );
 
+/** German (Deutsch)
+ * @author MF-Warburg
+ */
+$messages['de'] = array(
+	'catboxattop-categories' => 'Kategorien',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'catboxattop-categories' => 'Kategorioj',
+);
+
 /** French (Français)
  * @author Grondin
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'catboxattop-desc' => 'Ajoute une boîte de catégorie en haut à droit des pages',
+	'catboxattop-desc' => 'Ajouter une boîte de catégorie en haut à droite des pages',
 	'catboxattop-categories' => 'Catégories',
 );
 

@@ -72,6 +72,14 @@ $messages['bn'] = array(
 	'usercontactlink-baduser' => 'বেঠিক ব্যবহারকারী নাম',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'usercontactlink-baduser' => 'pogrešno korisničko ime',
+	'usercontactlink-desc' => 'Daje mogućnost jednostavnog i konzistentnog dodavanja drugih korisničkih imena koristeći ^^^user^^^ sintaksu',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

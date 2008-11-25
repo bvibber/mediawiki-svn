@@ -23,11 +23,28 @@ $messages['arz'] = array(
 	'formatchanges-anonymous' => 'مش معروف',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'formatchanges-desc' => 'Преформатира [[Special:RecentChanges|списъка с последните промени]]',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'formatchanges-anonymous' => 'Anonimulo',
+	'formatchanges-createdby' => 'fare de',
+	'formatchanges-editedby' => 'redaktita de',
+);
+
 /** French (Français)
  * @author IAlex
+ * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'formatchanges-desc' => 'Reformate les [[Special:RecentChanges|modifications récentes]]',
+	'formatchanges-desc' => 'Reformater les [[Special:RecentChanges|modifications récentes]]',
 	'formatchanges-anonymous' => 'Anonyme',
 	'formatchanges-createdby' => 'créé par',
 	'formatchanges-editedby' => 'modifié par',
@@ -91,5 +108,14 @@ $messages['sk'] = array(
 	'formatchanges-anonymous' => 'Anonym',
 	'formatchanges-createdby' => 'vytvoril',
 	'formatchanges-editedby' => 'upravil',
+);
+
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'formatchanges-anonymous' => 'Anonym',
+	'formatchanges-createdby' => 'skapad av',
+	'formatchanges-editedby' => 'redigerad av',
 );
 

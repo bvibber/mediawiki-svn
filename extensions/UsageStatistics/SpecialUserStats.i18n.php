@@ -253,6 +253,24 @@ $messages['br'] = array(
 	'usagestatistics-editpages' => 'Stadegoù $1 ar pajennoù gant an implijer e-unan',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'specialuserstats' => 'Statistike korištenja',
+	'usagestatistics' => 'Statistike korištenja',
+	'usagestatisticsfor' => '<h2>Statistike korištenja za [[User:$1|$1]]</h2>',
+	'usagestatisticsinterval' => 'Period',
+	'usagestatisticstype' => 'Vrsta',
+	'usagestatisticsstart' => 'Početni datum',
+	'usagestatisticsend' => 'Krajnji datum',
+	'usagestatisticssubmit' => 'Generiši statistike',
+	'usagestatisticsintervalday' => 'dan',
+	'usagestatisticsintervalweek' => 'sedmica',
+	'usagestatisticsintervalmonth' => 'mjesec',
+	'usagestatisticscalselect' => 'odaberi',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */

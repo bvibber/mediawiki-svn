@@ -73,6 +73,11 @@ $aliases['hsb'] = array(
 	'InterwikiList' => array( 'Lisćina interwikijow' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'InterwikiList' => array( 'Interwikik listája' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'InterwikiList' => array( 'Daftar interwiki' ),
