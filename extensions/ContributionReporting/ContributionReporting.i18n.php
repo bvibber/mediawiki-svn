@@ -543,11 +543,16 @@ $messages['he'] = array(
 	'contribstats-total-ytd' => 'סך הכל (מתחילת השנה)',
 	'fundraiserstatistics' => 'סטטיסטיקות ההתרמה',
 	'fundraiserstats-date' => 'תאריך',
+	'fundraiserstats-day' => 'יום $1 מתוך $2',
 	'fundraiserstats-contributions' => 'תרומות',
 	'fundraiserstats-total' => 'סך הכל (בדולרים)',
 	'fundraiserstats-avg' => 'ממוצע (בדולרים)',
 	'fundraiserstats-med' => 'חציון (בדולרים)',
 	'fundraiserstats-max' => 'מקסימום (בדולרים)',
+	'fundraiserstats-tab-totals' => 'סך הכל (USD)',
+	'fundraiserstats-tab-contributions' => 'מספר התורמים',
+	'fundraiserstats-tab-averages' => 'ממוצע (USD)',
+	'fundraiserstats-tab-maximums' => 'מקסימום (USD)',
 );
 
 /** Croatian (Hrvatski)
