@@ -125,7 +125,7 @@ function scfGetEvents($date_property, $filter_query) {
 			if (method_exists('SMWTimeValue', 'getYear')) // SMW 1.4
 				$actual_date = $event_date->getYear() . '-' . $event_date->getMonth() . '-' . $event_date->getDay();
 			else
-				$actual_date = date("Y-m-d", $event_date->getNumericValue());
+				$actual_date = date("Y-n-j", $event_date->getNumericValue());
 			$events[] = array($event_title, $actual_date);
 		}
 	}
