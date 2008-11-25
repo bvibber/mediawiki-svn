@@ -245,7 +245,7 @@ class SpecialViewConfig extends ConfigurationPage {
 			$buttons = '';
 		}
 		$action = implode( ', ', $actions );
-		return Xml::tags( 'li', null, wfMsgExt( 'configure-viewconfig-line', array( 'parseinline', 'replaceafter' ), array( $time, $userLink, $action ) ) )."\n";
+		return Xml::tags( 'li', null, wfMsgExt( 'configure-viewconfig-line', array( 'parseinline', 'replaceafter' ), array( $buttons, $time, $userLink, $action ) ) )."\n";
 	}
 
 	/**
