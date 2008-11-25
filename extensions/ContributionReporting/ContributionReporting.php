@@ -51,16 +51,16 @@ $egContributionStatisticsViewDays = 7;
 // Fundraiser dates
 $egFundraiserStatisticsFundraisers = array(
 	array(
+		'id' => '2007',
 		'title' => '2007 Fundraiser',
 		'start' => 'Oct 22 2007',
-		'end' => 'Jan 3 2008',
-		'color' => '#AAAAFF'
+		'end' => 'Jan 3 2008'
 	),
 	array(
+		'id' => '2008',
 		'title' => '2008 Fundraiser',
 		'start' => 'Nov 4 2008',
-		'end' => 'Jan 9 2009',
-		'color' => '#AAFFAA'
+		'end' => 'Jan 9 2009'
 	)
 );
 

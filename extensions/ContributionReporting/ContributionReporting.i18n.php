@@ -53,11 +53,16 @@ $messages['en'] = array(
 	// Fundraiser statistics
 	'fundraiserstatistics' => 'Fundraiser statistics',
 	'fundraiserstats-date' => 'Date',
+	'fundraiserstats-day' => 'Day $1 of $2',
 	'fundraiserstats-contributions' => 'Contributions',
 	'fundraiserstats-total' => 'Total (USD)',
 	'fundraiserstats-avg' => 'Average (USD)',
 	'fundraiserstats-med' => 'Median (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
+	'fundraiserstats-tab-totals' => 'Daily Totals',
+	'fundraiserstats-tab-contributions' => 'Daily Contributions',
+	'fundraiserstats-tab-averages' => 'Daily Averages',
+	'fundraiserstats-tab-maximums' => 'Daily Maximums',
 );
 
 /** Message documentation (Message documentation)
