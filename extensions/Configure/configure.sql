@@ -3,7 +3,7 @@
 --
 
 -- Information about each configuration version
-CREATE TABLE /*$wgDBprefix*/config_version (
+CREATE TABLE config_version (
 
 	-- Primary key, used for joins with config_setting table
 	cv_id int(11) NOT NULL auto_increment,
@@ -31,7 +31,7 @@ CREATE TABLE /*$wgDBprefix*/config_version (
 ) /*$wgDBTableOptions*/;
 
 -- Configuration settings
-CREATE TABLE /*$wgDBprefix*/config_setting (
+CREATE TABLE config_setting (
 
 	-- foreign key to config_version.cv_id, used for joins
 	cs_id int(11) NOT NULL,

@@ -1,6 +1,14 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.10.7 - 25 November 2008
+  * Added diff links for the versions at the top of Special:Configure and
+    Special:Extensions
+  * Added links for the user who made each config change.
+  THIS REQUIRES A DATABASE SCHEMA UPDATE FOR PEOPLE USING DATABASE HANDLER.
+  Please apply configure.patch-1.sql if you used the database schema on an
+  older version than this one.
+
 0.10.6 - 24 November 2008
   * Fixed overflowing bug for small screens in Special:Configure
   * Added $wgConfigureExtDir to allow to change the extensions base directory

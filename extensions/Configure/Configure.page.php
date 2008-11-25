@@ -351,8 +351,10 @@ abstract class ConfigurationPage extends SpecialPage {
 					
 				## Make user link...
 				$userLink = '';
-				if ( $data['userwiki'] == wfWikiId() ) {
-					$userLink = $skin->link( Title::makeTitle( 'User', $data['username'] ), $data['username'] );
+				if( !$data['userwiki'] || !$data['username'] ) {
+					$userLink = '';
+				} else if ( $data['userwiki'] == wfWikiId() ) {
+					$userLink = $skin->link( Title::makeTitle( NS_USER, $data['username'] ), $data['username'] );
 				} elseif ( class_exists( 'WikiMap' ) && ($wiki = WikiMap::getWiki( $data['userwiki'] ) ) ) {
 					$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$data['username'] ), $data['username'].'@'.$data['userwiki'] );
 				} else {
