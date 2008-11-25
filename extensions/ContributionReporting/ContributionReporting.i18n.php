@@ -60,7 +60,7 @@ $messages['en'] = array(
 	'fundraiserstats-med' => 'Median (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
 	'fundraiserstats-tab-totals' => 'Totals (USD)',
-	'fundraiserstats-tab-contributions' => 'Number of Contributions',
+	'fundraiserstats-tab-contributions' => 'Number of contributions',
 	'fundraiserstats-tab-averages' => 'Averages (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
 );
