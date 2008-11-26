@@ -1150,7 +1150,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					}
 					$read = $this->userCanRead( $setting );
 					$edit = $this->userCanEdit( $setting );
-					if ( $edit )
+					if ( $this->mCanEdit ? $edit : $read )
 						$res = false;
 					$perms[$setting] = array( 'read' => $read, 'edit' => $edit );
 				}
@@ -1159,8 +1159,8 @@ abstract class ConfigurationPage extends SpecialPage {
 			}
 				
 			$thisSection = '';
+			#echo "$title => "; var_dump( $res ); echo "<br/>\n"; 
 			if ( !$res ) {
-				$first = true;
 				if ( !isset( $param['showlink'] ) ) {
 					$showlink = true;
 				} elseif ( is_array( $param['showlink'] ) ) {
@@ -1181,8 +1181,10 @@ abstract class ConfigurationPage extends SpecialPage {
 							'value' => $this->getSettingValue( $setting ),
 							'link' => $showlink,
 						);
-						$canEdit = isset( $params['edit'] ) ? $params['edit'] : $this->userCanEdit( $setting );
-						if ($canEdit) {
+						$show = $this->mCanEdit ?
+							( isset( $params['edit'] ) ? $params['edit'] : $this->userCanEdit( $setting ) ) :
+							( isset( $params['read'] ) ? $params['read'] : $this->userCanRead( $setting ) );
+						if ( $show ) {
 							$thisGroup .= $this->buildTableRow( $setting, $params );
 						} else {
 							## Don't even show it.
@@ -1191,7 +1193,6 @@ abstract class ConfigurationPage extends SpecialPage {
 					
 					if ( $thisGroup ) {
 						$thisSection .= $this->buildTableHeading( $group ) . $thisGroup . Xml::closeElement( 'table' );
-						$first = false;
 					}
 				}
 				
@@ -1202,6 +1203,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			}
 
 		}
+		#die;
 		return $ret;
 	}
 }
