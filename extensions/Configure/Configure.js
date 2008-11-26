@@ -48,7 +48,7 @@ function setupConfigure(){
 			a.onmousedown = a.onclick = configTocToggleElement;
 			a.tocId = i;
 			a.collapsed = true;
-			a.appendChild( getArrowImg( 'r' ) );
+			a.appendChild( document.createTextNode( '[+]' ) );
 			li.appendChild(a);
 
 			var a = document.createElement('a');
@@ -524,12 +524,12 @@ function configTocToggleElement(){
 	if( this.collapsed ){
 		toc.style.display = "block";
 		this.removeChild( this.firstChild );
-		this.appendChild( getArrowImg( 'd' ) );
+		this.appendChild( document.createTextNode( '[−]' ) );
 		this.collapsed = false;
 	} else {
 		toc.style.display = "none";
 		this.removeChild( this.firstChild );
-		this.appendChild( getArrowImg( 'r' ) );
+		this.appendChild( document.createTextNode( '[+]' ) );
 		this.collapsed = true;
 	}
 }
