@@ -210,11 +210,11 @@ abstract class ConfigurationPage extends SpecialPage {
 		static $notEditable;
 		if ( !isset( $notEditable ) ) {
 			global $wgConfigureNotEditableSettings, $wgConfigureEditableSettings;
-			
+
 			if ( !count($wgConfigureNotEditableSettings) && count($wgConfigureEditableSettings ) ) {
 				$wgConfigureNotEditableSettings = array_diff( array_keys( $this->mConfSettings->getAllSettings() ), $wgConfigureEditableSettings );
 			}
-			
+
 			$notEditable = array_merge( $this->mConfSettings->getUneditableSettings(),
 				$wgConfigureNotEditableSettings );
 		}
@@ -351,7 +351,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				$diffLink = '';
 				if ($prev)
 					$diffLink =  '(' . $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'ViewConfig' ), wfMsg( 'configure-old-changes' ), "version=$ts&diff=$prev" ) . ')';
-					
+
 				## Make user link...
 				$userLink = '';
 				if( !$data['userwiki'] || !$data['username'] ) {
@@ -364,15 +364,15 @@ abstract class ConfigurationPage extends SpecialPage {
 					## Last-ditch
 					$userLink = $data['username'].'@'.$data['userwiki'];
 				}
-				
+
 				$text = wfMsgExt( 'configure-old-summary', array( 'replaceafter', 'parseinline'), array( $link, $userLink, $diffLink ) );
-					
+
 				$prev = $ts;
-				
+
 				$links[] = $text;
 			}
 		}
-				
+
 		## Reset into descending order
 		$links = array_reverse( $links );
 		## Take out the first ten...
@@ -389,7 +389,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 		$link = SpecialPage::getTitleFor( 'ViewConfig' );
 		$text .= $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) );
-		
+
 		$text .= '</fieldset>';
 		return $text;
 	}
@@ -449,7 +449,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				case 'assoc':
 					$i = 0;
 					$arr = array();
-					while ( isset( $_REQUEST['wp' . $name . '-key-' . $i] ) && 
+					while ( isset( $_REQUEST['wp' . $name . '-key-' . $i] ) &&
 						isset( $_REQUEST['wp' . $name . '-val-' . $i] ) )
 					{
 						$key = $_REQUEST['wp' . $name . '-key-' . $i];
@@ -539,7 +539,7 @@ abstract class ConfigurationPage extends SpecialPage {
 							if ( $arrType == 'group-bool' ) {
 								$encId = Sanitizer::escapeId( $id );
 								if ( $id != $encId ) {
-									$val = $wgRequest->getCheck( str_replace( '.', '_', $encId ) ) || 
+									$val = $wgRequest->getCheck( str_replace( '.', '_', $encId ) ) ||
 										$wgRequest->getCheck( $encId ) || $wgRequest->getCheck( $id );
 								} else {
 									$val = $wgRequest->getCheck( $id );
@@ -679,7 +679,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			$this->buildOldVersionSelect() . "\n" .
 			( $this->mCanEdit ?
 				$this->getWikiSelectForm() .
-				Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 
+				Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action,
 					'id' => 'configure-form' ) ) . "\n" :
 				Xml::openElement( 'div', array( 'id' => 'configure-form' ) )
 			) .
@@ -689,9 +689,9 @@ abstract class ConfigurationPage extends SpecialPage {
 				Xml::openElement( 'div', array( 'id' => 'prefsubmit' ) ) . "\n" .
 				Xml::openElement( 'div', array() ) . "\n" .
 				Xml::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n" .
-				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpSave', 
+				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpSave',
 					'class' => 'btnSavePrefs', 'value' => wfMsgHtml( 'configure-btn-save' ) ) ) . "\n" .
-				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpPreview', 
+				Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpPreview',
 					'value' => wfMsgHtml( 'showdiff' ) ) ) . "\n" .
 				Xml::closeElement( 'div' ) . "\n" .
 				Xml::closeElement( 'div' ) . "\n" .
@@ -699,7 +699,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					'value' => $wgUser->editToken() ) ) . "\n" .
 				( $this->mWiki ? Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpWiki',
 					'value' => $this->mWiki ) ) . "\n" : '' )
-			: '' 
+			: ''
 			) .
 			Xml::closeElement( 'div' ) . "\n" .
 			Xml::closeElement( $this->mCanEdit ? 'form' : 'div' )
@@ -864,24 +864,24 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 		if ( $type == 'assoc' ) {
 			## See if the key/value has a special description
-			
+
 			$keydesc = wfMsgExt( "configure-setting-$conf-key", 'parseinline' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
-			
+
 			if (wfEmptyMsg( "configure-setting-$conf-key", $keydesc ))
 				$keydesc = wfMsgHtml( 'configure-desc-key' );
 			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
-				
+
 			$classes = array('configure-array-table');
-			
+
 			$classes[] = ($allowed ? 'assoc' : 'assoc disabled');
 			if (count($default) > 5)
 				$classes[] = 'configure-biglist';
-				
+
 			if ( !$allowed )
 				$classes[] = 'disabled';
-				
+
 			$text = Xml::openElement( 'table', array( 'class' => ( implode( ' ', $classes ) ),
 				'id' => $conf ) ) . "\n";
 			$text .= "<tr><th>{$keydesc}</th><th>{$valdesc}</th></tr>\n";
@@ -974,7 +974,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			global $wgContLang;
 			$nsdesc = wfMsgHtml( 'configure-desc-ns' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
-			
+
 			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$text = "<table class='configure-array-table ns-text configure-biglist'>\n<tr><th>{$nsdesc}</th><th>{$valdesc}</th></tr>\n";
@@ -1001,7 +1001,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			global $wgContLang;
 			$nsdesc = wfMsgHtml( 'configure-desc-ns' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
-			
+
 			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$text = "<table class='ns-array configure-biglist configure-array-table'>\n<tr><th>{$nsdesc}</th><th>{$valdesc}</th></tr>\n";
@@ -1022,7 +1022,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					( isset( $default[$ns] ) ? implode( "\n", (array)$default[$ns] ) : '' ) .
 					Xml::closeElement( 'textarea' ) . "<br/>\n";
 				} else {
-					$text .= "<pre>" . ( isset( $default[$ns] ) ? 
+					$text .= "<pre>" . ( isset( $default[$ns] ) ?
 						htmlspecialchars( implode( "\n", (array)$default[$ns] ) ) : '' ) . "\n</pre>";
 				}
 				$text .= '</td></tr>';
@@ -1047,7 +1047,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			}
 			$groupdesc = wfMsgHtml( 'configure-desc-group' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
-			
+
 			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$encConf = htmlspecialchars( $conf );
@@ -1157,9 +1157,8 @@ abstract class ConfigurationPage extends SpecialPage {
 				if ( !count( $groups[$name] ) )
 					unset( $groups[$name] );
 			}
-				
+
 			$thisSection = '';
-			#echo "$title => "; var_dump( $res ); echo "<br/>\n"; 
 			if ( !$res ) {
 				if ( !isset( $param['showlink'] ) ) {
 					$showlink = true;
@@ -1190,12 +1189,12 @@ abstract class ConfigurationPage extends SpecialPage {
 							## Don't even show it.
 						}
 					}
-					
+
 					if ( $thisGroup ) {
 						$thisSection .= $this->buildTableHeading( $group ) . $thisGroup . Xml::closeElement( 'table' );
 					}
 				}
-				
+
 				if ( $thisSection ) {
 					$thisSection = Xml::tags( 'legend', null, wfMsgExt( "configure-section-$title", array( 'parseinline' ) ) ) . $thisSection;
 					$ret .= Xml::tags( 'fieldset', null, $thisSection );
@@ -1203,7 +1202,6 @@ abstract class ConfigurationPage extends SpecialPage {
 			}
 
 		}
-		#die;
 		return $ret;
 	}
 }
