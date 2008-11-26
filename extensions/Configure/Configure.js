@@ -356,7 +356,7 @@ function addAssocRow( table ){
 function removeAssocRow( table, r ){
 	var trs = table.getElementsByTagName( 'tr' );
 	var tr = trs[r];
-	table.removeChild( tr );
+	tr.parentNode.removeChild( tr );
 	fixAssocTable( table );
 }
 
