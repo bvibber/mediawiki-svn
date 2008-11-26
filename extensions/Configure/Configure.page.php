@@ -341,9 +341,9 @@ abstract class ConfigurationPage extends SpecialPage {
 		$skin = $wgUser->getSkin();
 		$title = $this->getTitle();
 		$prev = null;
-		
+
 		ksort($versions); ## Put in ascending order for now.
-		
+
 		foreach ( $versions as $ts => $data ) {
 			if ( $count > 10 ) {
 				break;
@@ -374,7 +374,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				$links[] = $text;
 			}
 		}
-		
+				
 		## Reset into descending order
 		$links = array_reverse( $links );
 
@@ -760,15 +760,14 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Like before but only for the header
 	 *
 	 * @param $msg String: name of the message to display
-	 * @param $close Bool: whether to close a table before the header
 	 * @return String xhtml fragment
 	 */
-	protected function buildTableHeading( $msg, $close = true ) {
+	protected function buildTableHeading( $msg ) {
 		$msgName = 'configure-section-' . $msg;
 		$msgVal = wfMsgExt( $msgName, array( 'parseinline' ) );
 		if ( wfEmptyMsg( $msgName, $msgVal ) )
 			$msgVal = $msg;
-		return ( $close ? '</table>' : '' ) . "\n<h2>" . $msgVal . "</h2>\n<table class=\"configure-table\">\n";
+		return "\n<h2>" . $msgVal . "</h2>\n<table class=\"configure-table\">\n";
 	}
 
 	/**
@@ -1190,13 +1189,13 @@ abstract class ConfigurationPage extends SpecialPage {
 						}
 					}
 					
-					if ($thisGroup) {
-						$thisSection .= $this->buildTableHeading( $group, !$first ) . $thisGroup . Xml::closeElement( 'table' );
+					if ( $thisGroup ) {
+						$thisSection .= $this->buildTableHeading( $group ) . $thisGroup . Xml::closeElement( 'table' );
 						$first = false;
 					}
 				}
 				
-				if ($thisSection) {
+				if ( $thisSection ) {
 					$thisSection = Xml::tags( 'legend', null, wfMsgExt( "configure-section-$title", array( 'parseinline' ) ) ) . $thisSection;
 					$ret .= Xml::tags( 'fieldset', null, $thisSection );
 				}
