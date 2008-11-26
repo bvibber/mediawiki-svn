@@ -1,6 +1,12 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.10.8 - 26 November 2008
+ * Stopped displaying settings which can't be edited in Special:Configure.
+   These can be viewed at Special:Configure.
+ * Introduced explicit whitelisting of settings, rather than blacklisting
+   of other settings.
+
 0.10.7 - 25 November 2008
   * Added diff links for the versions at the top of Special:Configure and
     Special:Extensions

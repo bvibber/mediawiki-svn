@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.10.7',
+	'version' => '0.10.8',
 );
 
 # Configuration part
@@ -102,8 +102,22 @@ $wgConfigureEditRestrictions = array();
 /**
  * Array of not editable settings, by anyone.
  * They won't be saved in conf-now.ser.
+ * Superseded, use the explicit whitelist.
  */
 $wgConfigureNotEditableSettings = array();
+
+/**
+ * Editable settings
+ */
+ # Suggested configuration:
+$wgConfigureEditableSettings = array(
+	'wgSitename', 'wgLogo', 'wgContentNamespaces', 'wgMetaNamespace', 'wgMetaNamespaceTalk',
+	'wgNamespaceAliases', 'wgNamespaceProtection', 'wgNamespaceRobotPolicies', 'wgNamespacesToBeSearchedDefault',
+	'wgNamespacesToBeSearchedProject', 'wgNamespacesWithSubpages', 'wgNoFollowNsExceptions', 'wgNonincludableNamespaces',
+	'wgSitemapNamespaces', 'wgAutopromote', 'wgGroupPermissions', 'wgAddGroups', 'wgRemoveGroups', 'wgGroupsAddToSelf',
+	'wgGroupsRemoveFromSelf', 'wgArticleRobotPolicies', 'wgCapitalLinks', 'wgDefaultLanguageVariant', 'wgExtraSubtitle',
+	'wgImportSources', 'wgRateLimits', 'wgAutoConfirmAge', 'wgAutoConfirmCount', 'wgMaxSigChars'
+);
 
 /**
  * Whether to use the API module

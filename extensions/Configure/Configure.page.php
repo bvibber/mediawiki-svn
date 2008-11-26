@@ -209,7 +209,12 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected function getUneditableSettings() {
 		static $notEditable;
 		if ( !isset( $notEditable ) ) {
-			global $wgConfigureNotEditableSettings;
+			global $wgConfigureNotEditableSettings, $wgConfigureEditableSettings;
+			
+			if ( !count($wgConfigureNotEditableSettings) && count($wgConfigureEditableSettings ) ) {
+				$wgConfigureNotEditableSettings = array_diff( array_keys( $this->mConfSettings->getAllSettings() ), $wgConfigureEditableSettings );
+			}
+			
 			$notEditable = array_merge( $this->mConfSettings->getUneditableSettings(),
 				$wgConfigureNotEditableSettings );
 		}
@@ -1153,11 +1158,9 @@ abstract class ConfigurationPage extends SpecialPage {
 				if ( !count( $groups[$name] ) )
 					unset( $groups[$name] );
 			}
-			$ret .= Xml::openElement( 'fieldset' ) . "\n" .
-				Xml::element( 'legend', null, wfMsgExt( "configure-section-$title", array( 'parseinline' ) ) ) . "\n";
-			if ( $res ) {
-				$ret .= wfMsgExt( 'configure-section-' . $title . '-notallowed', array( 'parseinline' ) );
-			} else {
+				
+			$thisSection = '';
+			if ( !$res ) {
 				$first = true;
 				if ( !isset( $param['showlink'] ) ) {
 					$showlink = true;
@@ -1172,20 +1175,33 @@ abstract class ConfigurationPage extends SpecialPage {
 					$showlink = (bool)$param['showlink'];
 				}
 				foreach ( $groups as $group => $settings ) {
-					$ret .= $this->buildTableHeading( $group, !$first );
-					$first = false;
+					$thisGroup = '';
 					foreach ( $settings as $setting => $type ) {
 						$params = $perms[$setting] + array(
 							'type' => $type,
 							'value' => $this->getSettingValue( $setting ),
 							'link' => $showlink,
 						);
-						$ret .= $this->buildTableRow( $setting, $params );
+						$canEdit = isset( $params['edit'] ) ? $params['edit'] : $this->userCanEdit( $setting );
+						if ($canEdit) {
+							$thisGroup .= $this->buildTableRow( $setting, $params );
+						} else {
+							## Don't even show it.
+						}
+					}
+					
+					if ($thisGroup) {
+						$thisSection .= $this->buildTableHeading( $group, !$first ) . $thisGroup . Xml::closeElement( 'table' );
+						$first = false;
 					}
 				}
-				$ret .= Xml::closeElement( 'table' ) . "\n";
+				
+				if ($thisSection) {
+					$thisSection = Xml::tags( 'legend', null, wfMsgExt( "configure-section-$title", array( 'parseinline' ) ) ) . $thisSection;
+					$ret .= Xml::tags( 'fieldset', null, $thisSection );
+				}
 			}
-			$ret .= Xml::closeElement( 'fieldset' );
+
 		}
 		return $ret;
 	}
