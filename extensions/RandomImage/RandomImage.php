@@ -10,8 +10,6 @@
  */
  
 if( defined( 'MEDIAWIKI' ) ) {
-
-	$wgAutoloadClasses['RandomImage'] = dirname( __FILE__ ) . '/RandomImage.class.php';
 	$wgExtensionCredits['parserhook'][] = array(
 		'name'           => 'RandomImage',
 		'author'         => 'Rob Church',
@@ -21,7 +19,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'description'    => 'Provides a random media picker using <tt>&lt;randomimage /&gt;</tt>',
 		'descriptionmsg' => 'randomimage-desc',
 	);
-	$wgExtensionMessagesFiles['RandomImage'] = dirname(__FILE__) . '/RandomImage.i18n.php';
+
+	$dir = dirname(__FILE__) . '/';
+	$wgAutoloadClasses['RandomImage'] = $dir . 'RandomImage.class.php';
+	$wgExtensionMessagesFiles['RandomImage'] = $dir . 'RandomImage.i18n.php';
 	$wgHooks['ParserAfterStrip'][] = 'RandomImage::stripHook';
 	$wgExtensionFunctions[] = 'efRandomImageSetup';
 

@@ -12,7 +12,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-$wgAutoloadClasses['BackAndForth'] = dirname( __FILE__ ) . '/BackAndForth.class.php';
 $wgExtensionFunctions[] = 'efBackAndForth';
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Back and Forth',
@@ -24,7 +23,9 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Back-and-Forth',
 );
 
-$wgExtensionMessagesFiles['BackAndForth'] = dirname(__FILE__) . '/BackAndForth.i18n.php';
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['BackAndForth'] = $dir . 'BackAndForth.class.php';
+$wgExtensionMessagesFiles['BackAndForth'] = $dir . 'BackAndForth.i18n.php';
 
 /**
  * Extension setup function

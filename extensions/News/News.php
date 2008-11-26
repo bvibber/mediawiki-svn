@@ -33,8 +33,8 @@ $wgNewsFeedUserPattern = false; // pattern to use for the author-field in feed i
 
 $wgExtensionFunctions[] = "wfNewsExtension";
 
-$wgAutoloadClasses['NewsRenderer'] = dirname( __FILE__ ) . '/NewsRenderer.php';
-$wgAutoloadClasses['NewsFeedPage'] = dirname( __FILE__ ) . '/NewsRenderer.php';
+$wgAutoloadClasses['NewsRenderer'] = $dir . 'NewsRenderer.php';
+$wgAutoloadClasses['NewsFeedPage'] = $dir . 'NewsRenderer.php';
 $wgHooks['ArticleFromTitle'][] = 'wfNewsArticleFromTitle';
 $wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'wfNewsSkinTemplateOutputPageBeforeExec';
 

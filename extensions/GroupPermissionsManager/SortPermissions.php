@@ -42,7 +42,7 @@ class SortPermissions extends SpecialPage {
 			if($success) {
 				$wgOut->addWikiText(wfMsg('grouppermissions-sp-success'));
 				global $wgGroupPermissions, $wgGPManagerSortTypes, $wgGPManagerSort;
-				require(dirname(__FILE__).'/config/SortPermissions.php');
+				require( $dir . '/config/SortPermissions.php');
 			}
 		}
 		$this->makeForm();
@@ -132,7 +132,9 @@ class SortPermissions extends SpecialPage {
 	*/
 	private function writeFile() {
 	//can we write the file?
-		if(!is_writable( dirname(__FILE__) . "/config" )) {
+		$dir = dirname(__FILE__) . '/';
+
+		if(!is_writable( $dir . "config" )) {
 			echo( "<h2>Cannot write config file, aborting</h2>
 			
 			<p>In order to use this extension, you need to make the /config subdirectory of this extension
@@ -142,8 +144,8 @@ class SortPermissions extends SpecialPage {
 			die( 1 );
 		}
 		$this->oldrev = gmdate('dmYHis');
-		if(file_exists(dirname(__FILE__) . '/config/SortPermissions.php')) {
-			$r = rename(dirname(__FILE__) . '/config/SortPermissions.php', dirname(__FILE__) . '/config/SortPermissions.' . $this->oldrev . '.php');
+		if(file_exists( $dir . 'config/SortPermissions.php')) {
+			$r = rename( $dir . 'config/SortPermissions.php', $dir . 'config/SortPermissions.' . $this->oldrev . '.php');
 			if(!$r) {
 				global $wgOut;
 				$wgOut->addWikiText(wfMsg('grouppermissions-nooldrev'));
@@ -207,7 +209,7 @@ class SortPermissions extends SpecialPage {
 			$sortpermissions .= "\n\$wgGPManagerSort['$key'] = array($st);";
 		}
 		$sortpermissions = str_replace( "\r\n", "\n", $sortpermissions );
-		chdir( dirname(__FILE__) . '/config' );
+		chdir( $dir . 'config' );
 		$f = fopen( 'SortPermissions.php', 'wt' );
 		if(!fwrite( $f, $sortpermissions ) ) {
 			echo('<p class="error">An error occured while writing the config/SortPermissions.php file. Check user rights and disk space then try again.</p>');
@@ -217,9 +219,9 @@ class SortPermissions extends SpecialPage {
 		fclose($f);
 		if($nr !== array()) {
 			$np = '';
-			if(file_exists(dirname(__FILE__) . '/config/GroupPermissions.php')) {
-				$np = file_get_contents(dirname(__FILE__) . '/config/GroupPermissions.php');
-				$r = rename(dirname(__FILE__) . '/config/GroupPermissions.php', dirname(__FILE__) . '/config/GroupPermissions.' . $this->oldrev . '.php');
+			if(file_exists( $dir . 'config/GroupPermissions.php')) {
+				$np = file_get_contents( $dir . 'config/GroupPermissions.php');
+				$r = rename( $dir . 'config/GroupPermissions.php', $dir . 'config/GroupPermissions.' . $this->oldrev . '.php');
 				if(!$r) {
 					global $wgOut;
 					$wgOut->addWikiText(wfMsg('grouppermissions-nooldrev'));

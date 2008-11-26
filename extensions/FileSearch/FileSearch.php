@@ -12,9 +12,10 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efFileSearchSetup';
-	$wgAutoloadClasses['FileSearchIndexer'] = dirname( __FILE__ ) . '/FileSearchIndexer.php';
-	$wgAutoloadClasses['Extractor'] = dirname( __FILE__ ) . '/extract/Extractor.php';
-	$wgFileSearchExtractors['TextExtractor'] = dirname( __FILE__ ) . '/extract/TextExtractor.php';
+	$dir = dirname(__FILE__) . '/';
+	$wgAutoloadClasses['FileSearchIndexer'] = $dir . 'FileSearchIndexer.php';
+	$wgAutoloadClasses['Extractor'] = $dir . 'extract/Extractor.php';
+	$wgFileSearchExtractors['TextExtractor'] = $dir . 'extract/TextExtractor.php';
 
 	function efFileSearchSetup() {
 		global $wgHooks;

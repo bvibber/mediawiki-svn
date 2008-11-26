@@ -32,8 +32,10 @@ $wgExtensionCredits['parserhook'][] = array(
 	'description'    => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
 	'descriptionmsg' => 'poem-desc',
 );
-$wgParserTestFiles[] = dirname( __FILE__ ) . "/poemParserTests.txt";
-$wgExtensionMessagesFiles['Poem'] =  dirname(__FILE__) . '/Poem.i18n.php';
+
+$dir = dirname(__FILE__) . '/';
+$wgParserTestFiles[] = $dir . "poemParserTests.txt";
+$wgExtensionMessagesFiles['Poem'] =  $dir . 'Poem.i18n.php';
 
 function wfPoemExtension() {
 	$GLOBALS['wgParser']->setHook("poem","PoemExtension");

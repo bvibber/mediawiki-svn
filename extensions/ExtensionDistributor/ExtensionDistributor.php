@@ -45,9 +45,10 @@ $wgExtDistRemoteClient = false;
 /********************
  * Registration
  */
+$dir = dirname(__FILE__) . '/';
 $wgSpecialPages['ExtensionDistributor'] = 'ExtensionDistributorPage';
-$wgAutoloadClasses['ExtensionDistributorPage'] = dirname(__FILE__).'/ExtensionDistributor_body.php';
-$wgExtensionMessagesFiles['ExtensionDistributor'] = dirname(__FILE__).'/ExtensionDistributor.i18n.php';
+$wgAutoloadClasses['ExtensionDistributorPage'] = $dir . 'ExtensionDistributor_body.php';
+$wgExtensionMessagesFiles['ExtensionDistributor'] = $dir . 'ExtensionDistributor.i18n.php';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Extension Distributor',

@@ -30,9 +30,10 @@ $wgConfigureAvailableTags = array( 'default' );
 
 $wgConfigureStdlogo = '$stdlogo';
 
-$wgExtensionMessagesFiles['ConfigureWMF'] = dirname( __FILE__ ) . '/ConfigureWMF.i18n.php';
-$wgAutoloadClasses['ConfigureWMF']        = dirname( __FILE__ ) . '/ConfigureWMF.class.php';
-$wgAutoloadClasses['SpecialConfigure']    = dirname( __FILE__ ) . '/ConfigureWMF.page.php';
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['ConfigureWMF'] = $dir . 'ConfigureWMF.i18n.php';
+$wgAutoloadClasses['ConfigureWMF']        = $dir . 'ConfigureWMF.class.php';
+$wgAutoloadClasses['SpecialConfigure']    = $dir . 'ConfigureWMF.page.php';
 
 $wgSpecialPages['Configure'] = 'SpecialConfigure';
 

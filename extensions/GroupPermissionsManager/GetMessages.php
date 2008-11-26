@@ -10,12 +10,13 @@ if(!defined('MEDIAWIKI')) {
 }
 
 global $wgExtensionMessagesFiles;
-require(dirname(__FILE__) . '/GroupPermissionsManager.i18n.php');
+$dir = dirname(__FILE__) . '/';
+require( $dir . 'GroupPermissionsManager.i18n.php');
 
-$files = scandir(dirname(__FILE__) . '/plugins/messages');
+$files = scandir( $dir . 'plugins/messages');
 foreach($files as $file) {
 	if(preg_match('/\.i18n\.php5?$/i', $file)) {
-		$wgExtensionMessagesFiles[$file] = dirname(__FILE__) . '/plugins/messages/' . $file;
+		$wgExtensionMessagesFiles[$file] = $dir . 'plugins/messages/' . $file;
 		wfLoadExtensionMessages($file);
 	}
 }

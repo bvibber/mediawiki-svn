@@ -22,13 +22,14 @@ $wgEmailPageAllowRemoteAddr = array('127.0.0.1'); # Allow anonymous sending from
 $wgEmailPageAllowAllUsers   = false;              # Whether to allow sending to all users (the "user" group)
 $wgEmailPageToolboxLink     = true;               # Add a link to the sidebar toolbox?
 $wgEmailPageActionLink      = true;               # Add a link to the actions links?
-$wgPhpMailerClass           = dirname(__FILE__).'/phpMailer_v2.1.0beta2/class.phpmailer.php'; # From http://phpmailer.sourceforge.net/
+
+$dir = dirname(__FILE__) . '/';
+$wgPhpMailerClass           = $dir . 'phpMailer_v2.1.0beta2/class.phpmailer.php'; # From http://phpmailer.sourceforge.net/
 
 if ($wgEmailPageGroup) $wgGroupPermissions['sysop'][$wgEmailPageGroup] = true;
 
 if (isset($_SERVER['SERVER_ADDR'])) $wgEmailPageAllowRemoteAddr[] = $_SERVER['SERVER_ADDR'];
 
-$dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['SpecialEmailPage'] = $dir . 'EmailPage_body.php';
 $wgExtensionMessagesFiles['EmailPage'] = $dir . 'EmailPage.i18n.php';
 $wgExtensionAliasesFiles['EmailPage']  = $dir . 'EmailPage.alias.php';

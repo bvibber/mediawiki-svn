@@ -21,13 +21,14 @@ $wgExtensionMessagesFiles['MetavidWiki'] = $mvgIP . '/languages/MV_Messages.php'
 require_once( $mvgIP . '/languages/MV_Language.php' );
 
 // Register special page aliases file
+$dir = dirname(__FILE__) . '/';
 $wgExtensionAliasesFiles['MetavidWiki'] = $mvgIP . '/languages/MV_Aliases.php';
 
 $markerList = array();
 
 // override special search page:
 $wgSpecialPages['Search'] = 'MV_SpecialSearch';
-$wgAutoloadClasses['MV_SpecialSearch'] = dirname( __FILE__ ) . '/specials/MV_SpecialMediaSearch.php';
+$wgAutoloadClasses['MV_SpecialSearch'] = $dir . 'specials/MV_SpecialMediaSearch.php';
 
 function enableMetavid() {
 	global $wgExtensionFunctions, $smwgNamespacesWithSemanticLinks;
@@ -99,54 +100,55 @@ function mvSetupExtension() {
 	/**********************************************/
 	/***** register autoLoad Classes:		  *****/
 	/**********************************************/
-	// setup autoload classes: 
-	$wgAutoloadClasses['MV_Overlay'] 			= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_Overlay.php';
-	$wgAutoloadClasses['MV_Component'] 			= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_Component.php';
+	// setup autoload classes:
+	$dir = dirname(__FILE__) . '/';
+	$wgAutoloadClasses['MV_Overlay'] 			= $dir . 'MV_MetavidInterface/MV_Overlay.php';
+	$wgAutoloadClasses['MV_Component'] 			= $dir . 'MV_MetavidInterface/MV_Component.php';
 	
-	$wgAutoloadClasses['MV_MetavidInterface']	= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_MetavidInterface.php';
-	$wgAutoloadClasses['MV_SequencePlayer']		= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_SequencePlayer.php';
-	$wgAutoloadClasses['MV_SequenceTools']		= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_SequenceTools.php';
-	$wgAutoloadClasses['MV_SequenceTimeline']	= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_SequenceTimeline.php';
-	$wgAutoloadClasses['MV_VideoPlayer']		= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_VideoPlayer.php';
-	$wgAutoloadClasses['MV_Tools']				= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_Tools.php';
-	$wgAutoloadClasses['MV_Navigator']			= dirname( __FILE__ )	 . '/MV_MetavidInterface/MV_Navigator.php';
-	$wgAutoloadClasses['MV_EditPageAjax'] 		= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_EditPageAjax.php';
+	$wgAutoloadClasses['MV_MetavidInterface']	= $dir . 'MV_MetavidInterface/MV_MetavidInterface.php';
+	$wgAutoloadClasses['MV_SequencePlayer']		= $dir . 'MV_MetavidInterface/MV_SequencePlayer.php';
+	$wgAutoloadClasses['MV_SequenceTools']		= $dir . 'MV_MetavidInterface/MV_SequenceTools.php';
+	$wgAutoloadClasses['MV_SequenceTimeline']	= $dir . 'MV_MetavidInterface/MV_SequenceTimeline.php';
+	$wgAutoloadClasses['MV_VideoPlayer']		= $dir . 'MV_MetavidInterface/MV_VideoPlayer.php';
+	$wgAutoloadClasses['MV_Tools']				= $dir . 'MV_MetavidInterface/MV_Tools.php';
+	$wgAutoloadClasses['MV_Navigator']			= $dir . 'MV_MetavidInterface/MV_Navigator.php';
+	$wgAutoloadClasses['MV_EditPageAjax'] 		= $dir . 'MV_MetavidInterface/MV_EditPageAjax.php';
 	
-	$wgAutoloadClasses['MV_CategoryPage']		= dirname( __FILE__ )  . '/articlepages/MV_CategoryPage.php';
-	$wgAutoloadClasses['MV_SequencePage'] 		=  dirname( __FILE__ )  . '/articlepages/MV_SequencePage.php';
-	$wgAutoloadClasses['MV_StreamPage'] 		= dirname( __FILE__ )  . '/articlepages/MV_StreamPage.php';
-	$wgAutoloadClasses['MV_EditDataPage']		= $wgAutoloadClasses['MV_DataPage'] =  dirname( __FILE__ ) . '/articlepages/MV_DataPage.php';
-	$wgAutoloadClasses['MV_EditStreamPage']		= dirname( __FILE__ )  . '/MV_EditStreamPage.php';
+	$wgAutoloadClasses['MV_CategoryPage']		= $dir . 'articlepages/MV_CategoryPage.php';
+	$wgAutoloadClasses['MV_SequencePage'] 		=  $dir . 'articlepages/MV_SequencePage.php';
+	$wgAutoloadClasses['MV_StreamPage'] 		= $dir . 'articlepages/MV_StreamPage.php';
+	$wgAutoloadClasses['MV_EditDataPage']		= $wgAutoloadClasses['MV_DataPage'] =  $dir . 'articlepages/MV_DataPage.php';
+	$wgAutoloadClasses['MV_EditStreamPage']		= $dir . 'MV_EditStreamPage.php';
 	
 	
-	$wgAutoloadClasses['MV_Title'] 				= dirname( __FILE__ )  . '/MV_Title.php';
-	$wgAutoloadClasses['MV_Index'] 				= dirname( __FILE__ )  . '/MV_Index.php';
-	$wgAutoloadClasses['MV_ImageGallery']		= dirname( __FILE__ ) . '/MV_ImageGallery.php';
-	$wgAutoloadClasses['MV_Image'] 				= dirname( __FILE__ )  . '/MV_Image.php';
-	$wgAutoloadClasses['MV_Stream'] 			= dirname( __FILE__ )  . '/MV_Stream.php';
-	$wgAutoloadClasses['MV_StreamFile']			= dirname( __FILE__ )  . '/MV_StreamFile.php';		
+	$wgAutoloadClasses['MV_Title'] 				= $dir . 'MV_Title.php';
+	$wgAutoloadClasses['MV_Index'] 				= $dir . 'MV_Index.php';
+	$wgAutoloadClasses['MV_ImageGallery']		= $dir . 'MV_ImageGallery.php';
+	$wgAutoloadClasses['MV_Image'] 				= $dir . 'MV_Image.php';
+	$wgAutoloadClasses['MV_Stream'] 			= $dir . 'MV_Stream.php';
+	$wgAutoloadClasses['MV_StreamFile']			= $dir . 'MV_StreamFile.php';		
 	
-	$wgAutoloadClasses['MV_StreamImage'] 		= dirname( __FILE__ )  . '/MV_StreamImage.php';
-	$wgAutoloadClasses['MV_ParserCache'] 		= dirname( __FILE__ ) . '/MV_ParserCache.php';
-	$wgAutoloadClasses['MV_MagicWords'] 		= dirname( __FILE__ ) . '/MV_MagicWords.php';
+	$wgAutoloadClasses['MV_StreamImage'] 		= $dir . 'MV_StreamImage.php';
+	$wgAutoloadClasses['MV_ParserCache'] 		= $dir . 'MV_ParserCache.php';
+	$wgAutoloadClasses['MV_MagicWords'] 		= $dir . 'MV_MagicWords.php';
 	
 	/**********************************************/
 	/***** register special pages hooks       *****/
 	/**********************************************/
-	$wgAutoloadClasses['MV_SpecialCRUDStream'] 	= dirname( __FILE__ ) . '/specials/MV_SpecialCRUDStream.php';
+	$wgAutoloadClasses['MV_SpecialCRUDStream'] 	= $dir . 'specials/MV_SpecialCRUDStream.php';
 	$wgSpecialPages['Mv_Add_Stream']		   	=  array( 'MV_SpecialCRUDStream' );
 	
-	$wgAutoloadClasses['MV_SpecialListStreams']	= dirname( __FILE__ ) . '/specials/MV_SpecialListStreams.php';
+	$wgAutoloadClasses['MV_SpecialListStreams']	= $dir . 'specials/MV_SpecialListStreams.php';
 	$wgSpecialPages['Mv_List_Streams']		   	= array( 'MV_SpecialListStreams' );
 			
 	/* special export views */
-	$wgAutoloadClasses['MV_SpecialExport']		= dirname( __FILE__ ) . '/specials/MV_SpecialExport.php';
+	$wgAutoloadClasses['MV_SpecialExport']		= $dir . 'specials/MV_SpecialExport.php';
 	
-	$wgAutoloadClasses['MvVideoFeed']			= dirname( __FILE__ ) . '/specials/MV_SpecialExport.php';
-	$wgAutoloadClasses['MvExportStream']		= dirname( __FILE__ ) . '/specials/MV_SpecialExport.php';
-	$wgAutoloadClasses['MvExportSequence']		= dirname( __FILE__ ) . '/specials/MV_SpecialExport.php';
-	$wgAutoloadClasses['MvExportSearch']		= dirname( __FILE__ ) . '/specials/MV_SpecialExport.php';
-	$wgAutoloadClasses['MvExportAsk']			= dirname( __FILE__ ) . '/specials/MV_SpecialExport.php';
+	$wgAutoloadClasses['MvVideoFeed']			= $dir . 'specials/MV_SpecialExport.php';
+	$wgAutoloadClasses['MvExportStream']		= $dir . 'specials/MV_SpecialExport.php';
+	$wgAutoloadClasses['MvExportSequence']		= $dir . 'specials/MV_SpecialExport.php';
+	$wgAutoloadClasses['MvExportSearch']		= $dir . 'specials/MV_SpecialExport.php';
+	$wgAutoloadClasses['MvExportAsk']			= $dir . 'specials/MV_SpecialExport.php';
 	
 	$wgSpecialPages['MvVideoFeed']				= array( 'MvVideoFeed' );
 	$wgSpecialPages['MvExportStream']			= array( 'MvExportStream' );
@@ -154,20 +156,20 @@ function mvSetupExtension() {
 	$wgSpecialPages['MvExportSearch']			= array( 'MvExportSearch' );
 	$wgSpecialPages['MvExportAsk']				= array( 'MvExportAsk' );
 	
-	$wgAutoloadClasses['MV_SpecialMediaSearch']	= dirname( __FILE__ ) . '/specials/MV_SpecialMediaSearch.php';
+	$wgAutoloadClasses['MV_SpecialMediaSearch']	= $dir . 'specials/MV_SpecialMediaSearch.php';
 	$wgSpecialPages['Mv_List_Streams']		   	= array( 'MV_SpecialListStreams' );
 			
-	$wgAutoloadClasses['MediaSearch'] =			 dirname( __FILE__ ) . '/specials/MV_SpecialMediaSearch.php';
+	$wgAutoloadClasses['MediaSearch'] =			 $dir . 'specials/MV_SpecialMediaSearch.php';
 	$wgSpecialPages['MediaSearch']				= array( 'MediaSearch' );
 	$wgSpecialPages['MV_SpecialSearch']			= array( 'MV_SpecialSearch' );
 	
-	$wgAutoloadClasses['MVAdmin']				= dirname( __FILE__ ) . '/specials/MV_SpecialMVAdmin.php';
+	$wgAutoloadClasses['MVAdmin']				= $dir . 'specials/MV_SpecialMVAdmin.php';
 	$wgSpecialPages['MVAdmin']					= array( 'MVAdmin' );
-	// require_once( dirname(__FILE__) . '/specials/MV_SpecialCRUDStream.php');
-	// require_once( dirname(__FILE__) . '/specials/MV_SpecialListStreams.php');
-	// require_once( dirname(__FILE__) . '/specials/MV_SpecialExport.php');
-	// require_once( dirname(__FILE__) . '/specials/MV_SpecialMediaSearch.php');
-	// require_once( dirname(__FILE__) . '/specials/MV_SpecialMVAdmin.php');
+	// require_once( $dir . 'specials/MV_SpecialCRUDStream.php');
+	// require_once( $dir . 'specials/MV_SpecialListStreams.php');
+	// require_once( $dir . 'specials/MV_SpecialExport.php');
+	// require_once( $dir . 'specials/MV_SpecialMediaSearch.php');
+	// require_once( $dir . 'specials/MV_SpecialMVAdmin.php');
 
 	/**********************************************/
 	/***** register hooks                     *****/
@@ -220,7 +222,7 @@ function mvSetupExtension() {
 	* MV_OggHandler.php handles all the re-mapping
 	*/		
 	if($wgMediaHandlers['application/ogg'] == 'OggHandler'){
-		$wgAutoloadClasses['mvOggHandler']			= dirname( __FILE__ )  . '/MV_OggHandler.php';
+		$wgAutoloadClasses['mvOggHandler']			= $dir . 'MV_OggHandler.php';
 		$wgMediaHandlers['application/ogg']='mvOggHandler';		
 		$wgParserOutputHooks['OggHandler'] = array( 'mvOggHandler', 'outputHook' );
 		foreach($wgHooks['LanguageGetMagic'] as & $hook_function){

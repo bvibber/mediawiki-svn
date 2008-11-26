@@ -11,13 +11,14 @@
 
 $optionsWithArgs = array( 'wiki', 'version', 'file' );
 
+$dir = dirname(__FILE__) . '/';
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false )
-	$IP = dirname( __FILE__ ) . '/../..';
+	$IP = $dir . '../..';
 
 require_once( "$IP/maintenance/commandLine.inc" );
 
-require_once( dirname( __FILE__ ) . '/writePHP.inc' );
+require_once( $dir . 'writePHP.inc' );
 
 $obj = new ConfigurationWriter( $options );
 $obj->run();
