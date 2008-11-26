@@ -34,7 +34,6 @@ td.config-col-form fieldset > legend {
 }
 
 ul.configtoc {
-	font-size: 90%;
 	vertical-align: top;
 	max-height: 500px;
 	overflow: auto;
