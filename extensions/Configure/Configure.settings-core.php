@@ -622,7 +622,7 @@ $settings = array(
 			'wgRightsIcon' => 'text',
 			'wgRightsPage' => 'text',
 			'wgRightsText' => 'text',
-			'wgRightsUrl' => 'bool',
+			'wgRightsUrl' => 'text',
 			'wgShowCreditsIfMax' => 'bool',
 			'wgUseCopyrightUpload' => 'bool',
 		),
