@@ -345,9 +345,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		ksort($versions); ## Put in ascending order for now.
 
 		foreach ( $versions as $ts => $data ) {
-			if ( $count > 10 ) {
-				break;
-			} elseif ( in_array( $this->mWiki, $wgConf->getWikisInVersion( $ts ) ) ) {
+			if ( in_array( $this->mWiki, $wgConf->getWikisInVersion( $ts ) ) ) {
 				$count++;
 				$link = $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" );
 				$diffLink = '';
@@ -377,6 +375,8 @@ abstract class ConfigurationPage extends SpecialPage {
 				
 		## Reset into descending order
 		$links = array_reverse( $links );
+		## Take out the first ten...
+		$links = array_slice( $links, 0, 10 );
 
 		$text = '<fieldset><legend>' . wfMsgHtml( 'configure-old' ) . '</legend>';
 		if ( !count( $links ) ) {
