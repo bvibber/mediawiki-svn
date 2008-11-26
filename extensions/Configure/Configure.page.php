@@ -295,7 +295,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		if ( !$this->mRequireWebConf )
 			return true;
 
-		global $wgConf, $wgOut, $wgRequest;
+		global $wgConf, $wgOut, $wgRequest, $wgLang;
 
 		if ( $version = $wgRequest->getVal( 'version' ) ) {
 			$versions = $wgConf->listArchiveVersions();
@@ -315,7 +315,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						$this->conf[$name] += $current[$name];
 					}
 				}
-				$wgOut->addWikiMsg( 'configure-edit-old' );
+				$wgOut->addWikiMsg( 'configure-edit-old', $wgLang->timeAndDate( $version ) );
 			} else {
 				$wgOut->addWikiText( '<div class="errorbox">$1</div>',
 					array( 'configure-old-not-available', $version ) );
@@ -913,12 +913,12 @@ abstract class ConfigurationPage extends SpecialPage {
 					$text .= '<tr><td>';
 					$text .= Xml::element( 'input', array(
 						'name' => 'wp' . $conf . "-key-0",
-						'type' => 'text', 'value' => '', 'size' => 45,
+						'type' => 'text', 'value' => '', 'size' => 20,
 					) ) . "<br/>\n";
 					$text .= '</td><td>';
 					$text .= Xml::element( 'input', array(
 						'name' => 'wp' . $conf . "-val-0",
-						'type' => 'text', 'value' => '', 'size' => 45,
+						'type' => 'text', 'value' => '', 'size' => 20,
 					) ) . "<br/>\n";
 					$text .= '</td></tr>';
 				} else {
@@ -987,7 +987,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				$text .= '<tr><td>' . $name . '</td><td>';
 				if ( $allowed )
 					$text .= Xml::element( 'input', array(
-						'size' => 45,
+						'size' => 20,
 						'name' => "wp{$conf}-ns{$ns}",
 						'type' => 'text', 'value' => isset( $default[$ns] ) ? $default[$ns] : ''
 					) ) . "\n";

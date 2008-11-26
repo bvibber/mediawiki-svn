@@ -167,6 +167,7 @@ function setupConfigure(){
 		button.value = wgConfigureGetImageUrl;
 		button.onclick = createImageUrlCallback( textbox );
 
+		textbox.parentNode.appendChild( document.createTextNode( '\u00A0' ) );
 		textbox.parentNode.appendChild( button );
 	}
 
