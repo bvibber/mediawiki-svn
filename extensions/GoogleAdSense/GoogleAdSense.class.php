@@ -8,16 +8,20 @@ if (!defined('MEDIAWIKI')) die();
  * @license MIT
  */
 class GoogleAdSense {
-
 	static function GoogleAdSenseInSidebar( $skin, &$bar ) {
 		global $wgGoogleAdSenseWidth, $wgGoogleAdSenseID,
 			$wgGoogleAdSenseHeight, $wgGoogleAdSenseClient,
-			$wgGoogleAdSenseSlot, $wgGoogleAdSenseSrc;
+			$wgGoogleAdSenseSlot, $wgGoogleAdSenseSrc,
+			$wgGoogleAdSenseAnonOnly, $wgUser;
 
 		// Return $bar unchanged if not all values have been set.
 		// FIXME: signal incorrect configuration nicely?
 		if( $wgGoogleAdSenseClient == 'none' || $wgGoogleAdSenseSlot == 'none' || $wgGoogleAdSenseID == 'none' )
 			return $bar;
+
+		if( $wgUser->isLoggedIn() && $wgGoogleAdSenseAnonOnly ) {
+			return $bar;
+		}
 
 		wfLoadExtensionMessages( 'GoogleAdSense' );
 
@@ -36,4 +40,24 @@ src=\"$wgGoogleAdSenseSrc\">
 
 		return true;
 	}
+
+/* Not working yet. Need to find out why...
+	static function injectCSS( $out ) {
+
+		global $wgUser, $wgGoogleAdSenseAnonOnly, $wgGoogleAdSenseCssLocation;
+		
+		if( $wgUser->isLoggedIn() && $wgGoogleAdSenseAnonOnly ) {
+			return true;
+		}
+		
+		$out->addLink(
+			array(
+				'rel' => 'stylesheet',
+				'type' => 'text/css',
+				'href' => $wgGoogleAdSenseCssLocation . '/GoogleAdSense.css',
+			)
+		);
+		return true;
+	}
+*/
 }

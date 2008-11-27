@@ -33,6 +33,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgGoogleAdSenseWidth  = 120;    // Width of the AdSense box, specified in your AdSense account
 $wgGoogleAdSenseHeight = 240;    // Width of the AdSense box, specified in your AdSense account
 $wgGoogleAdSenseSrc    = "http://pagead2.googlesyndication.com/pagead/show_ads.js"; // Source URL of the AdSense script
+$wgGoogleAdSenseAnonOnly = false; // Show the AdSense box only for anonymous users
+//$wgGoogleAdSenseCssLocation = $wgScriptPath . '/extensions/GoogleAdSense'; // Path to GoogleAdSense.css if non-default
 
 /**
  * The following variables must be set in your LocalSettings.php.
@@ -58,3 +60,6 @@ $wgExtensionMessagesFiles['GoogleAdSense'] = $dir . 'GoogleAdSense.i18n.php';
 
 // Hook to modify the sidebar
 $wgHooks['SkinBuildSidebar'][] = 'GoogleAdSense::GoogleAdSenseInSidebar';
+
+// Hook to inject CSS - currently disabled, because it does not add the CSS somehow
+//$wgHooks['OutputPageBeforeHTML'][] = 'GoogleAdSense::injectCSS';
