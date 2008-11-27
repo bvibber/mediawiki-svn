@@ -96,6 +96,8 @@ $wgGroupPermissions['steward']['repoadmin'] = true; // temp
 $wgSubversionProxy = false;
 $wgSubversionProxyTimeout = 30; // default 3 secs is too short :)
 
+# Use a literal $wgScriptPath as a placeholder for the runtime value of $wgScriptPath
+$wgCodeReviewStylePath = '$wgScriptPath/extensions/CodeReview';
 
 $wgCodeReviewStyleVersion = 3;
 // The name of a repo which represents the code running on this wiki, used to highlight active revisions
