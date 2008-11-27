@@ -46,7 +46,7 @@ $wgGoogleAdSenseID     = 'none'; // ID for your AdSense script (example: transla
 
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'Google AdSense',
-	'version'        => '1.0',
+	'version'        => '1.1',
 	'author'         => 'Siebrand Mazeland',
 	'description'    => 'Adds GoogleAdSense to the sidebar',
 	'descriptionmsg' => 'googleadsense-desc',
