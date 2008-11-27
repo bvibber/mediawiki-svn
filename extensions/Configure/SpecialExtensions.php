@@ -54,9 +54,13 @@ class SpecialExtensions extends ConfigurationPage {
 	 * @return array
 	 */
 	protected function getRequiredFiles() {
-		global $wgRequest;
+ 		global $wgRequest, $wgConfigureOnlyUseVarForExt;
+ 		if ( $wgConfigureOnlyUseVarForExt )
+ 			return array();
 		$arr = array();
 		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
+			if ( $ext->useVariable() )
+ 				continue;
 			if ( $wgRequest->getCheck( $ext->getCheckName() ) )
 				$arr[] = $ext->getFile();
 		}
@@ -88,7 +92,7 @@ class SpecialExtensions extends ConfigurationPage {
 		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
 			$settings = $ext->getSettings();
 			foreach ( $settings as $setting => $type ) {
-				if ( !isset( $GLOBALS[$setting] ) && !isset( $this->conf[$setting] ) ) {
+				if ( !isset( $GLOBALS[$setting] ) && !isset( $this->conf[$setting] ) && file_exists( $ext->getFile() ) ) {
 					if ( !$globalDone ) {
 						extract( $GLOBALS, EXTR_REFS );
 						$__hooks__ = $wgHooks;

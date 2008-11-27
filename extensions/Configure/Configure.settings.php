@@ -97,9 +97,11 @@ class ConfigurationSettings {
 			if ( !isset( $extArr ) ) {
 				$extArr = array();
 				foreach ( $this->getAllExtensionsObjects() as $ext ) {
-					$name = $ext->getName();
-					if ( count( $ext->getSettings() ) )
-						$extArr['mw-extensions'][$name] = $ext->getSettings();
+ 					$extSettings = $ext->getSettings();
+ 					if ( $ext->useVariable() )
+ 						$extSettings[$ext->getVariable()] = 'bool';
+ 					if ( count( $extSettings ) )
+ 						$extArr['mw-extensions'][$ext->getName()] = $extSettings;
 				}
 			}
 			$ret += $extArr;

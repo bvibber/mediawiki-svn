@@ -18,6 +18,7 @@ class WebExtension {
 	protected $mDir;
 	protected $mFile;
 	protected $mDoc;
+	protected $mExtVar = null;
 
 	/**
 	 * Construct a new object.
@@ -25,6 +26,8 @@ class WebExtension {
 	 * @param array $conf
 	 */
 	public function __construct( /*array*/ $conf ) {
+		global $wgConfigureExtensionsVar;
+
 		$this->mName = $conf['name'];
 		$this->mSettings = isset( $conf['settings'] ) ? $conf['settings'] : array();
 		$this->mDbChange = isset( $conf['schema'] ) && $conf['schema'];
@@ -35,6 +38,9 @@ class WebExtension {
 		$this->mViewRestricted = isset( $conf['view-restricted'] ) ? $conf['view-restricted'] : array();
 		$this->mEditRestricted = isset( $conf['edit-restricted'] ) ? $conf['edit-restricted'] : array();
 		$this->mDoc = isset( $conf['url'] ) ? $conf['url'] : null;
+ 		if ( isset( $wgConfigureExtensionsVar[$this->mName] ) ) {
+ 			$this->mExtVar = $wgConfigureExtensionsVar[$this->mName];
+ 		}
 	}
 
 	/**
@@ -177,8 +183,25 @@ class WebExtension {
 	 * should be activated
 	 */
 	public function getCheckName() {
-		return 'wpUse' . $this->mName;
+ 		if( $this->useVariable() )
+ 			return 'wp'.$this->mExtVar;
+ 		else
+ 			return 'wpUse'.$this->mName;
 	}
+
+  	/**
+ 	 * Whether this extension 
+ 	 */
+ 	public function useVariable(){
+ 		return !is_null( $this->mExtVar );
+ 	}
+ 
+ 	/**
+ 	 * Get the varibale for this extension
+ 	 */
+ 	public function getVariable(){
+ 		return $this->mExtVar;
+ 	}
 
 	/**
 	 * Is this extension activated?
@@ -186,8 +209,12 @@ class WebExtension {
 	 * @return bool
 	 */
 	public function isActivated() {
-		global $wgConf;
-		return in_array( $this->getFile(), $wgConf->getIncludedFiles() );
+		if( $this->useVariable() ) {
+ 			return isset( $GLOBALS[$this->getVariable()] ) && $GLOBALS[$this->getVariable()];
+ 		} else {
+ 			global $wgConf;
+ 			return in_array( $this->getFile(), $wgConf->getIncludedFiles() );
+ 		}
 	}
 
 	/**
@@ -196,6 +223,11 @@ class WebExtension {
 	 * @return bool
 	 */
 	public function isInstalled() {
+ 		if( $this->useVariable() )
+ 			return true;
+ 		global $wgConfigureOnlyUseVarForExt;
+ 		if( $wgConfigureOnlyUseVarForExt )
+ 			return false;
 		return file_exists( $this->getFile() );
 	}
 }

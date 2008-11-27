@@ -2,7 +2,7 @@
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
 /**
- * Special page to allow users to configure the wiki by a web based interface
+ * Special page to allow users to configure the wiki via a web based interface
  * Require MediaWiki version 1.13.0 or greater
  *
  * @file
@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.10.8',
+	'version' => '0.10.9',
 );
 
 # Configuration part
@@ -82,6 +82,21 @@ $wgConfigureExtDir = "$IP/extensions/";
  * - url: url to the documentation page
  */
 $wgConfigureAdditionalExtensions = array();
+
+/**
+ * Allows to enable an extension by setting a variable instead of directly
+ * include the file.
+ * You'll need to handle the variable and include yourself the extension's file.
+ * Format is $wgConfigureExtensionsVar['ExtensionName'] = 'VarName';
+ */
+$wgConfigureExtensionsVar = array();
+
+/**
+ * If this true, extensions will be considered as installed *only* if they are
+ * defined in $wgConfigureExtensionsVar, Configure won't check anymore for
+ * extensions in the file system.
+ */
+$wgConfigureOnlyUseVarForExt = false;
 
 /**
  * Array of supplementary view restrictions. Format is
