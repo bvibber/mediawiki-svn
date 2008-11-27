@@ -1060,9 +1060,10 @@ abstract class ConfigurationPage extends SpecialPage {
 					else
 						$checked = in_array( $right, $levs );
 					$id = Sanitizer::escapeId( 'wp' . $conf . '-' . $group . '-' . $right );
-					$desc = ( $type == 'group-bool' && is_callable( array( 'User', 'getRightDescription' ) ) ) ?
-						User::getRightDescription( $right ) . " (" .Xml::element( 'tt', null, $right ) . ")" :
-						$right;
+					if( $type == 'group-bool' )
+						$desc = User::getRightDescription( $right ) . " (" .Xml::element( 'tt', null, $right ) . ")";
+					else 
+						$desc = User::getGroupName( $right );
 					$row .= '<li>' . Xml::check( $id, $checked, $attr + array( 'id' => $id ) ) . '&nbsp;' . Xml::tags( 'label', array( 'for' => $id ), $desc ) . "</li>\n";
 				}
 				$row .= '</ul></div>';
