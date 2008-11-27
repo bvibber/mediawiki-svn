@@ -104,6 +104,11 @@ $aliases['qu'] = array(
 	'WhosOnline' => array( 'PitaqYaykusqa' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'WhosOnline' => array( 'NaniyukoMkondoni' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'WhosOnline' => array( 'ใครออนไลน์อยู่' ),

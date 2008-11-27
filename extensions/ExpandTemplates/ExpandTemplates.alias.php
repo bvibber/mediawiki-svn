@@ -154,3 +154,8 @@ $aliases['sv'] = array(
 	'ExpandTemplates' => array( 'Utöka mallar' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'ExpandTemplates' => array( 'PanuaVigezo' ),
+);
+

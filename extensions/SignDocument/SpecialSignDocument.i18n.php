@@ -440,6 +440,8 @@ $messages['bs'] = array(
 	'sign-viewfield-realname' => 'Ime',
 	'sign-viewfield-ip' => 'IP adresa',
 	'sign-viewfield-options' => 'Opcije',
+	'sign-viewfield-reviewcomment' => 'Komentar',
+	'sign-review-comment' => 'Komentar',
 );
 
 /** Catalan (Català)

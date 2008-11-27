@@ -47,3 +47,8 @@ $aliases['no'] = array(
 	'AccountManager' => array( 'Kontobehandling' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'AccountManager' => array( 'AkauntiKuu' ),
+);
+

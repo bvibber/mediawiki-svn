@@ -79,3 +79,8 @@ $aliases['no'] = array(
 	'WatchSubpages' => array( 'Overvåk undersider' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'WatchSubpages' => array( 'AngaliaKurasandogo' ),
+);
+

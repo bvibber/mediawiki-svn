@@ -30,3 +30,8 @@ $aliases['sv'] = array(
 	'CreatePage' => array( 'Skapa sida' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'CreatePage' => array( 'AnzishaUkurasa' ),
+);
+

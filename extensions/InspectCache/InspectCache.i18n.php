@@ -615,6 +615,13 @@ $messages['ro'] = array(
 	'inspectcache-delete' => 'Şterge',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'inspectcache-ok' => 'OK',
+);
+
 /** Russian (Русский)
  * @author VasilievVV
  * @author Александр Сигачёв

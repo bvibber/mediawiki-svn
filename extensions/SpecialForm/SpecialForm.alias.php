@@ -99,3 +99,8 @@ $aliases['sv'] = array(
 	'Form' => array( 'Formulär' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'Form' => array( 'Fomu' ),
+);
+

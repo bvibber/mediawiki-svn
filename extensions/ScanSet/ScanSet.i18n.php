@@ -173,7 +173,16 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'scanset_invalid_name' => 'Greška: Pogrešan ili nedostaje set skeniranja',
+	'scanset_unrecognised_index_format' => 'Greška: Nepoznat format indeksa',
+	'scanset_opendir_error' => 'Greška: Ne može se otvoriti folder $1',
+	'scanset_no_files' => 'Greška: Nijedna datoteka se ne nalazi u navedenom folderu.',
+	'scanset_no_volumes' => 'Greška: Nisu pronađeni folderi volumena',
+	'scanset_missing_index_file' => 'Greška: Indeksna datoteka $1 nije nađena',
+	'scanset_index_file_error' => 'Greška: Greška u formatu indeksne datoteke na liniji $1',
+	'scanset_invalid_volume' => 'Greška: Pogrešan volumen',
 	'scanset_next' => 'slijedeći &gt;',
+	'scanset_prev' => '&lt; prethodni',
 );
 
 /** Catalan (Català)

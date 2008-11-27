@@ -539,6 +539,13 @@ $messages['lb'] = array(
 	'player-goto-file' => 'Fichier',
 );
 
+/** Limburgish (Limburgs)
+ * @author Remember the dot
+ */
+$messages['li'] = array(
+	'player-goto-page' => 'Pazjena',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

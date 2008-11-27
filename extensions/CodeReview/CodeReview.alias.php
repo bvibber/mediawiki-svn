@@ -89,3 +89,8 @@ $aliases['pl'] = array(
 	'RepoAdmin' => array( 'Administrowanie repozytorium' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'Code' => array( 'Kodi', 'Onyesha kodi' ),
+);
+

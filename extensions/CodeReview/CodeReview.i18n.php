@@ -308,13 +308,13 @@ $messages['arz'] = array(
 	'code-authors' => 'مؤلفون',
 	'code-tags' => 'وسوم',
 	'code-authors-text' => 'بالأسفل قائمة بمؤلفى المستودع حسب تاريخ عمليات الكوميت.',
-	'code-author-haslink' => 'هذا المؤلف موصول بمستخدم الويكى $1',
+	'code-author-haslink' => 'المؤلف ده موصول بيوزر الويكى $1',
 	'code-author-orphan' => 'هذا المؤلف ليس له وصلة لحساب ويكى',
-	'code-author-dolink' => 'صل هذا المؤلف بمستخدم ويكى :',
-	'code-author-alterlink' => 'غير مستخدم الويكى الموصول لهذا المؤلف:',
-	'code-author-orunlink' => 'أو أزل وصل مستخدم الويكى هذا:',
-	'code-author-name' => 'أدخل اسم مستخدم:',
-	'code-author-success' => 'المؤلف $1 تم وصله بنجاح بمستخدم الويكى $2',
+	'code-author-dolink' => 'وصل المؤلف ده بيوزر ويكى :',
+	'code-author-alterlink' => 'غير يوزر الويكى الموصول للمؤلف ده:',
+	'code-author-orunlink' => 'أو امسح وصل يوزر الويكى  ده:',
+	'code-author-name' => 'أدخل اسم يوزر:',
+	'code-author-success' => 'المؤلف $1 تم وصله بنجاح بيوزر الويكى $2',
 	'code-author-link' => 'وصلة؟',
 	'code-author-unlink' => 'أزل الوصلة؟',
 	'code-author-unlinksuccess' => 'المؤلف $1 تمت إزالة وصله',
@@ -361,7 +361,7 @@ $messages['arz'] = array(
 	'code-rev-submit-next' => 'تنفيذ والقادم غير محلول',
 	'codereview-reply-link' => 'رد',
 	'codereview-email-subj' => '[$1] [r$2]: تعليق جديد تمت إضافته',
-	'codereview-email-body' => 'المستخدم "$1" كتب تعليقا على r$3.
+	'codereview-email-body' => 'اليوزر "$1" كتب تعليق على r$3.
 
 المسار الكامل: $2
 
@@ -383,7 +383,7 @@ $4',
 	'right-codereview-remove-tag' => 'إزالة الوسوم من المراجعات',
 	'right-codereview-post-comment' => 'إضافة تعليقات على المراجعات',
 	'right-codereview-set-status' => 'تغيير حالة المراجعات',
-	'right-codereview-link-user' => 'وصل المؤلفين لمستخدمى الويكى',
+	'right-codereview-link-user' => 'وصل المؤلفين ليوزرز الويكى',
 	'specialpages-group-developer' => 'أدوات المطورين',
 );
 
@@ -396,7 +396,7 @@ $messages['be-tarask'] = array(
 	'code' => 'Рэцэнзаваньне коду',
 	'code-comments' => 'Камэнтары',
 	'code-change-status' => "быў зьменены '''статус''' гэтай вэрсіі",
-	'code-change-tags' => "былі зьменены '''тэгі''' для гэтай вэрсіі",
+	'code-change-tags' => "былі зьмененыя '''тэгі''' для гэтай вэрсіі",
 	'code-change-removed' => 'выдалена:',
 	'code-change-added' => 'дададзена:',
 	'code-prop-changes' => 'Журнал зьменаў статусаў і тэгаў',
@@ -2587,6 +2587,8 @@ $4',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'code-change-removed' => 'luete:',
+	'code-change-added' => 'aggiunde:',
 	'code-authors' => 'le autore',
 	'code-tags' => 'le tag',
 	'code-author-link' => 'colleghete?',
@@ -2616,6 +2618,15 @@ $messages['roa-tara'] = array(
 	'code-rev-diff-link' => 'diff',
 	'code-status-ok' => 'ok',
 	'code-pathsearch-path' => 'Percorse:',
+	'codereview-email-body' => 'Utende "$1" ha postete \'nu commende sus a r$3.
+
+\'A URL comblete je: $2
+
+Commende:
+
+$4',
+	'repoadmin-new-button' => 'Ccreje',
+	'repoadmin-edit-bug' => 'Percorse de Bugzilla:',
 	'repoadmin-edit-button' => 'OK',
 );
 
@@ -2742,6 +2753,8 @@ $messages['scn'] = array(
 	'code-change-removed' => 'rimuvutu:',
 	'code-change-added' => 'junciutu:',
 	'code-prop-changes' => 'Status & log di tagging',
+	'code-author-orphan' => "St'auturi nun è cullicatu a n'account wiki",
+	'code-author-dolink' => "Culligari st'auturi a n'untenti wiki:",
 	'code-author-alterlink' => "Canciari l'utilizzaturi dâ wiki cullicatu a stu auturi:",
 	'code-author-orunlink' => "O leva lu culligamentu cu st'utilizzaturi dâ wiki:",
 	'code-author-name' => "Mittiti nu nomu d'utilizzaturi:",
@@ -2785,6 +2798,7 @@ $messages['scn'] = array(
 	'code-status-reverted' => 'scanciatu annarreri',
 	'code-status-resolved' => 'risortu',
 	'code-status-ok' => 'ok',
+	'repoadmin-edit-button' => 'OK',
 );
 
 /** Slovak (Slovenčina)
@@ -3113,6 +3127,52 @@ $messages['te'] = array(
 	'code-rev-status' => 'స్థితి:',
 	'code-status-ok' => 'సరి',
 	'repoadmin-edit-button' => 'సరే',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'code' => 'Перевірка коду',
+	'code-comments' => 'Коментарі',
+	'code-change-status' => "змінив '''статус''' цієї ревізії",
+	'code-change-removed' => 'вилучено:',
+	'code-desc' => '[[Special:Code|Засіб перевірки коду]] з [[Special:RepoAdmin|підтримкою Subversion]]',
+	'code-notes' => 'примітки перевірки',
+	'code-authors' => 'автори',
+	'code-author-haslink' => "Цей автор пов'язаний з користувачем $1",
+	'code-author-orphan' => "Для цього автора не встановлений зв'язок з обліковим записом у вікі.",
+	'code-author-dolink' => "Встановити для цього автора зв'язок з користувачем:",
+	'code-author-alterlink' => "Змінити обліковий засіб, пов'язаний з цим автором:",
+	'code-author-orunlink' => "Або розірвати зв'язок з вікі-користувачем:",
+	'code-author-name' => "Введіть ім'я користувача:",
+	'code-author-success' => "Автора $1 успішно пов'язано з користувачем $2",
+	'code-author-link' => "встановити зв'язок?",
+	'code-author-unlink' => "розірвати зв'язок?",
+	'code-author-unlinksuccess' => "Для автора $1 розірвано зв'язок з обліковим записом",
+	'code-field-author' => 'Автор',
+	'code-field-user' => 'Коментатор',
+	'code-field-message' => 'Опис змін',
+	'code-field-status' => 'Статус',
+	'code-field-timestamp' => 'Дата',
+	'code-field-path' => 'Шлях',
+	'code-field-text' => 'Примітка',
+	'code-rev-author' => 'Автор:',
+	'code-rev-date' => 'Дата:',
+	'code-rev-message' => 'Опис змін:',
+	'code-rev-repo' => 'Вмістище:',
+	'code-rev-paths' => 'Посилання на зміни:',
+	'code-rev-modified-a' => 'додано',
+	'code-rev-modified-r' => 'замінено',
+	'code-rev-modified-d' => 'вилучено',
+	'code-rev-modified-m' => 'змінено',
+	'code-rev-status' => 'Статус:',
+	'code-rev-status-set' => 'Змінити статус',
+	'code-rev-comment-by' => 'Коментар від $1',
+	'code-rev-comment-submit' => 'Відправити коментар',
+	'code-rev-comment-preview' => 'Попередній перегляд',
+	'code-rev-diff' => 'Зміна',
+	'code-rev-purge-link' => 'очистити кеш',
 );
 
 /** Vèneto (Vèneto)

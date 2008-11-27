@@ -217,9 +217,11 @@ $messages['ja'] = array(
 
 /** Javanese (Basa Jawa)
  * @author Meursault2004
+ * @author Pras
  */
 $messages['jv'] = array(
 	'contributionseditcount' => 'Panganggo iki duwé $1 suntingan.',
+	'contributionseditcount-desc' => 'Nuduhaké cacahing suntingan ing [[Special:Contributions|kaca kontribusi panganggo]]',
 );
 
 /** Khmer (ភាសាខ្មែរ)

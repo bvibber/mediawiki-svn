@@ -723,7 +723,7 @@ $messages['de'] = array(
 	'configure-summary' => 'Diese Spezialseite ermöglicht dir die Konfiguration dieses Wikis, siehe [http://www.mediawiki.org/wiki/Manual:Configuration_settings Konfigurationsoptionen] für weitere Information.',
 	'configure-btn-save' => 'Einstellungen speichern',
 	'configure-directory-not-writable' => 'Das Verzeichnis, in dem die Konfigurationen gespeichert werden, <tt>$1</tt>, ist nicht beschreibbar. Bitte mache es für PHP beschreibbar, damit diese Erweiterung genutzt werden kann.',
-	'configure-edit-old' => 'Achtung: Du bearbeitest eine <strong>alte</strong> Version der Konfiguration.',
+	'configure-edit-old' => "'''Achtung:''' Du bearbeitest eine <strong>alte</strong> Version der Konfiguration (vom $1).",
 	'configure-error' => 'Die Konfiguration konnte nicht gespeichert werden',
 	'configure-js-add' => 'Neuen Eintrag hinzufügen',
 	'configure-js-group-exists' => 'Fehler: die Gruppe ist bereits vorhanden.',
@@ -1019,7 +1019,8 @@ Créez-la et appliquez-y configure.sql or corrigez son nom.",
 	'configure-db-table-error' => 'La base de données que vous avez spécifié ne contient pas les tables requises, appliquez-y configure.sql.',
 	'configure-directory-not-writable' => 'Le dossier utilisé pour sauvegarder la configuration, <tt>$1</tt>, ne peut pas être modifié.
 Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
-	'configure-edit-old' => 'Attention : vous êtes en train de modifier une <strong>ancienne</strong> version de la configuration.',
+	'configure-edit-old' => "'''Attention''' : vous êtes en train de modifier une <strong>ancienne</strong> version de la configuration (en date du $1).",
+	'configure-compare' => 'Les modifications entre les versions $1 et $2 sont affichées ci-dessous',
 	'configure-error' => "La configuration n'a pu être sauvegardée",
 	'configure-js-add' => 'Ajouter une nouvelle entrée',
 	'configure-js-group-exists' => 'Erreur : le group existe déjà.',
@@ -1040,6 +1041,8 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-old' => 'Anciennes versions',
 	'configure-old-versions' => 'Liste des anciennes versions de la configuration :',
 	'configure-old-not-available' => "L'ancienne version de la configuration que vous avez demandée, $1, n'est pas disponible",
+	'configure-old-changes' => 'modifications',
+	'configure-old-summary' => '$1 par $2 $3',
 	'configure-saved' => 'La configuration a été sauvegardée avec succès',
 	'configure-backlink' => 'Revenir au formulaire',
 	'configure-section-popular' => 'Paramètres populaires',
@@ -1103,6 +1106,7 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-view' => 'Voir',
 	'configure-view-all-versions' => 'Liste complète des versions',
 	'configure-view-not-allowed' => "Vous n'êtes pas autorisé à voir ce paramètre",
+	'configure-viewconfig-line' => '$1 $2 par $3 : $4',
 	'extensions' => 'Configurer les extensions',
 	'right-configure' => 'Configurer le wiki',
 	'right-configure-all' => 'Configurer tous les paramètres du wiki',
@@ -1147,7 +1151,7 @@ $messages['gl'] = array(
 	'configure-btn-save' => 'Gardar as configuracións',
 	'configure-directory-not-writable' => 'No directorio usado para almacenar os parámetros, <tt>$1</tt>, non se pode escribir.
 Por favor, faga que se poida escribir nel mediante PHP para usar esta extensión.',
-	'configure-edit-old' => 'Aviso: está editando unha versión <strong>vella</strong> da configuración.',
+	'configure-edit-old' => "'''Aviso:''' está editando unha versión <strong>vella</strong> da configuración.",
 	'configure-error' => 'A configuración non pode ser gardada',
 	'configure-js-add' => 'Engadir unha nova entrada',
 	'configure-js-group-exists' => 'Erro: o grupo xa existe.',
@@ -1577,13 +1581,14 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Terik
  */
 $messages['hu'] = array(
-	'configure' => 'Wiki konfigurálása',
-	'configure-desc-group' => 'Csoportok',
+	'configure' => 'A wiki konfigurálása',
+	'configure-desc-group' => 'Csoport',
 	'configure-desc-key' => 'Kulcs',
-	'configure-desc-ns' => 'Névterek',
+	'configure-desc-ns' => 'Névtér',
 	'configure-desc-val' => 'Érték',
 );
 
@@ -1717,11 +1722,12 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Melos
  */
 $messages['it'] = array(
 	'configure' => 'Configura la wiki',
 	'configure-desc' => "Permette agli utenti autorizzati di [[Special:Configure|configurare]] la wiki con un'interfaccia web-based",
-	'configure-desc-group' => 'Gruppi',
+	'configure-desc-group' => 'Gruppo',
 	'configure-desc-key' => 'Chiave',
 	'configure-desc-ns' => 'Namespace',
 	'configure-desc-val' => 'Valore',
@@ -1866,6 +1872,13 @@ $messages['jv'] = array(
 	'right-configure-all' => 'Konfigurasi kabèh sètting wiki',
 );
 
+/** Kara-Kalpak (Qaraqalpaqsha)
+ * @author Jiemurat
+ */
+$messages['kaa'] = array(
+	'configure-section-users' => 'Paydalanıwshılar',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
@@ -1961,7 +1974,7 @@ $messages['lb'] = array(
 	'configure-ext-use' => 'Notzung',
 	'configure-summary' => "Dës Spezialsäit erlaabt et Iech fir dës Wiki ze configuréieren, kuckt [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuratioun's Astellungen] fir méi Informatiounen.",
 	'configure-btn-save' => 'Confuguratioun späicheren',
-	'configure-edit-old' => 'Passt op: Dir ännert eng <strong>al</strong> Versioun vun der Configuratioun.',
+	'configure-edit-old' => "'''Passt op''': Dir ännert eng <strong>al</strong> Versioun vun der Configuratioun (sou wéi den $1).",
 	'configure-error' => "D'Configuration konnt net gespäichert ginn",
 	'configure-js-group-exists' => 'Feeler: de Grupp gëtt et schonn.',
 	'configure-js-prompt-group' => 'Gitt de Numm vum Grupp an:',
@@ -2295,7 +2308,8 @@ Maak deze aan en voer configure.sql uit, of corrigeer de naam.',
 Voer configure.sql in de database.',
 	'configure-directory-not-writable' => 'In de map waarin de instellingen worden opgeslagen, <tt>$1</tt>, kan niet geschreven worden.
 Zorg er voor dat PHP in de map kan schrijven om deze extensie te gebruiken.',
-	'configure-edit-old' => 'Waarschuwing: u bent een <strong>oude</strong> versie van de instellingen aan het bewerken.',
+	'configure-edit-old' => "'''Waarschuwing''': u bent een <strong>oude</strong> versie van de instellingen aan het bewerken (de versie per $1).",
+	'configure-compare' => 'Hieronder staan de wijzigingen tussen de versies van $1 en $2',
 	'configure-error' => 'De instellingen konden niet worden opgeslagen',
 	'configure-js-add' => 'Nieuwe regel toevoegen',
 	'configure-js-group-exists' => 'Fout: de groep bestaat al.',
@@ -2318,6 +2332,8 @@ Maak die map aan, of verander de instelling voordat u deze extensie kunt gebruik
 	'configure-old' => 'Oude versies',
 	'configure-old-versions' => 'Oude versies van de instellingen:',
 	'configure-old-not-available' => 'De oude versie van de instellingen die u opvroeg ($1) is niet beschikbaar',
+	'configure-old-changes' => 'wijzigingen',
+	'configure-old-summary' => '$1 door $2 $3',
 	'configure-saved' => 'De instellingen zijn opgeslagen',
 	'configure-backlink' => 'Terug naar formulier',
 	'configure-section-popular' => 'Veelgebruikte instellingen',
@@ -2379,6 +2395,7 @@ Maak die map aan, of verander de instelling voordat u deze extensie kunt gebruik
 	'configure-view' => 'Bekijken',
 	'configure-view-all-versions' => 'Volledige lijst van versies',
 	'configure-view-not-allowed' => 'U hebt geen rechten om deze instellingen te wijzigen',
+	'configure-viewconfig-line' => '$1 $2 door $3: $4',
 	'extensions' => 'Uitbreidingen instellen',
 	'right-configure' => 'Wiki-instellingen maken',
 	'right-configure-all' => 'Alle wiki-instellingen maken',
@@ -3326,7 +3343,7 @@ Vänligen skapa den och applicera configure.sql eller korrigera dess namn.',
 Vänligen applicera configure.sql i den databasen.',
 	'configure-directory-not-writable' => 'Registret används till att lagra inställningarna, <tt>$1</tt>, är inte skrivbar.
 Var god gör den skrivbar av PHP för att använda det här tillägget.',
-	'configure-edit-old' => 'Varning: du redigerar en <strong>gammal</strong> version av konfigurationen',
+	'configure-edit-old' => "'''Varning''': du redigerar en <strong>gammal</strong> version av konfigurationen.",
 	'configure-error' => 'Konfigureringen kunde inte sparas',
 	'configure-js-add' => 'Lägg till ett nytt element',
 	'configure-js-group-exists' => 'Fel: gruppen finns redan.',

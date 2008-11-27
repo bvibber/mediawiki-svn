@@ -1519,6 +1519,7 @@ $messages['ro'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv
+ * @author Rubin
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1536,6 +1537,7 @@ $messages['ru'] = array(
 	'whitelisttablenewdate' => 'Новая дата:',
 	'whitelisttablesetedit' => 'Установить для правки',
 	'whitelisttablesetview' => 'Установить для просмотра',
+	'whitelisttableremove' => 'Удалить',
 	'whitelistnewtableprocess' => 'Процесс',
 	'whitelistselectrestricted' => '== Выберите имя участника ==',
 	'whitelistpagelist' => 'Страницы {{SITENAME}} для $1',

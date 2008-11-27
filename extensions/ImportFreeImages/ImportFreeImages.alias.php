@@ -77,3 +77,8 @@ $aliases['sv'] = array(
 	'ImportFreeImages' => array( 'Importera fria bilder' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'ImportFreeImages' => array( 'IngizaPichaHuria' ),
+);
+

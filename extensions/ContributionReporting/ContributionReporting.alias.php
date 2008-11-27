@@ -49,3 +49,10 @@ $aliases['pl'] = array(
 	'ContributionTotal' => array( 'Łączna suma darowizn' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'ContributionHistory' => array( 'HistoriayaWachangiaji' ),
+	'ContributionStatistics' => array( 'TakwimuyaMichango' ),
+	'ContributionTotal' => array( 'JumlayaMichango' ),
+);
+

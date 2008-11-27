@@ -77,3 +77,8 @@ $aliases['sv'] = array(
 	'NewsChannel' => array( 'Nyhetskanal' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'NewsChannel' => array( 'ChaneliMpya' ),
+);
+

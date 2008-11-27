@@ -550,6 +550,13 @@ $messages['lb'] = array(
 	'dt_xml_freetext' => 'Fräien Text',
 );
 
+/** Limburgish (Limburgs)
+ * @author Remember the dot
+ */
+$messages['li'] = array(
+	'dt_xml_page' => 'Pazjena',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Tomasdd
  */

@@ -47,3 +47,8 @@ $aliases['no'] = array(
 	'ImageTagging' => array( 'Bildetagging' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'ImageTagging' => array( 'MabanoyaPicha' ),
+);
+

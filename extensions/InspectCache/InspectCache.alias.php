@@ -69,3 +69,8 @@ $aliases['oc'] = array(
 	'InspectCache' => array( "Inspectar l'amagatal", 'InspectarAmagatal' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'InspectCache' => array( 'ChunguzaMabaki' ),
+);
+

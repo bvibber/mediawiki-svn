@@ -139,6 +139,11 @@ $aliases['sv'] = array(
 	'ImportUsers' => array( 'Importera användare' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'ImportUsers' => array( 'IngizaWatumiaji' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'ImportUsers' => array( 'นำเข้าผู้ใช้' ),

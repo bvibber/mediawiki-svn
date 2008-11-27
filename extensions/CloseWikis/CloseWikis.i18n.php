@@ -694,6 +694,13 @@ $messages['ro'] = array(
 	'closewikis-page-reopen-submit' => 'Redeschide',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'closewikis-page-reopen-wiki' => 'Uicchi:',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

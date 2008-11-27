@@ -129,6 +129,11 @@ $aliases['sv'] = array(
 	'Vote' => array( 'Rösta' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'Vote' => array( 'PigaKura' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'Vote' => array( 'โหวต' ),

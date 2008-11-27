@@ -99,3 +99,8 @@ $aliases['sv'] = array(
 	'UserStats' => array( 'Användarstatistik' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'UserStats' => array( 'TakwimuzaMtumiaji', 'TakwimumaalumzaMtumiaji' ),
+);
+

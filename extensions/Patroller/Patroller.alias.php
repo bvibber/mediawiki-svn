@@ -47,3 +47,8 @@ $aliases['nl'] = array(
 	'Patroller' => array( 'Controleren' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'Patroller' => array( 'Mwanadoria' ),
+);
+

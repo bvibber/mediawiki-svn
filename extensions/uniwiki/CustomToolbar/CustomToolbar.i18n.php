@@ -85,6 +85,26 @@ $wgCustomToolbarMessages['arz'] = array(
 	'ct_user_sample' => 'اسم اليوزر',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$wgCustomToolbarMessages['be-tarask'] = array(
+	'ct_bold_sample' => 'Тлусты тэкст',
+	'ct_bold_caption' => 'Тлусты шрыфт',
+	'ct_italic_sample' => 'Курсіўны тэкст',
+	'ct_italic_caption' => 'Курсіў',
+	'ct_internal_sample' => 'Назва старонкі',
+	'ct_internal_caption' => 'Унутраная спасылка',
+	'ct_external_caption' => 'Вонкавая спасылка',
+	'ct_image_caption' => 'Дадаць выяву',
+	'ct_math_caption' => 'Формула',
+	'ct_nowiki_tip_ins' => 'Ігнараваць вікі-фарматаваньне',
+	'ct_horizontal_caption' => 'Гарызантальная лінія',
+	'ct_upload' => 'Загрузіць $1',
+	'ct_user_user' => 'Удзельнік',
+	'ct_user_sample' => 'Імя ўдзельніка',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -103,8 +123,10 @@ $wgCustomToolbarMessages['bg'] = array(
 	'ct_image_caption' => 'Добавяне на картинка',
 	'ct_math_sample' => 'Вмъкване на LaTeX-формула тук',
 	'ct_math_tip_ins' => 'Вмъкване на математическа формула (LaTeX)',
+	'ct_math_caption' => 'Формула',
 	'ct_close' => 'Затваряне на прозореца',
 	'ct_user_user' => 'Потребител',
+	'ct_user_tip' => 'Вмъкване на препратка към потребителската страница',
 	'ct_user_sample' => 'Потребителско име',
 );
 
@@ -341,6 +363,19 @@ $wgCustomToolbarMessages['jv'] = array(
 	'ct_math_tip_ins' => 'Seselaké formula (rumus) matématika (LaTeX)',
 	'ct_math_tip_wrap' => 'Gawénen tèks ini minangka rumus matématika (LaTeX)',
 	'ct_math_caption' => 'Rumus',
+	'ct_nowiki_tip_ins' => 'Lirwakaké pamformatan wiki',
+	'ct_nowiki_tip_wrap' => 'Lirwakaké pamformatan wiki kanggo tèks iki',
+	'ct_nowiki_caption' => 'Dudu wiki',
+	'ct_horizontal_tip' => 'Seselaké siji garis horisontal (pigunakaké sacara irit)',
+	'ct_horizontal_caption' => 'Garis horisontal',
+	'ct_upload' => 'Unggahaké $1',
+	'ct_select' => 'Pilih $1 kanggo diunggahaké',
+	'ct_caption' => 'Tambah katrangan (ora wajib)',
+	'ct_link' => 'Tambahaké jeneng pranala (ora wajib)',
+	'ct_submit' => 'Terusaké!',
+	'ct_close' => 'Tutup jendhéla',
+	'ct_success' => 'Berkas kasil diunggahaké!',
+	'ct_popupblocked' => "Tulung dicèk ''popup blocker'' panjenengan.",
 	'ct_user_user' => 'Panganggo',
 	'ct_user_tip' => 'Seselaké pranala menyang kaca panganggo',
 	'ct_user_caption' => 'Pranala panganggo',
@@ -351,6 +386,7 @@ $wgCustomToolbarMessages['jv'] = array(
  * @author Robby
  */
 $wgCustomToolbarMessages['lb'] = array(
+	'ct-desc' => 'Eng erweiderbar Toolbar derbäisetzen',
 	'ct_bold_sample' => 'Fetten Text',
 	'ct_bold_caption' => 'Fett',
 	'ct_italic_sample' => 'Kursiven Text',
@@ -358,6 +394,7 @@ $wgCustomToolbarMessages['lb'] = array(
 	'ct_italic_tip_wrap' => 'Dësen Text kursiv maachen',
 	'ct_italic_caption' => 'Kursiv',
 	'ct_internal_sample' => 'Säitennumm',
+	'ct_internal_tip_ins' => 'En interne Link derbäisetzen',
 	'ct_internal_caption' => 'Interne Link',
 	'ct_external_tip_ins' => 'En externe Link drasetzen',
 	'ct_external_tip_wrap' => 'Aus dësem Text en externe Link maachen',
@@ -368,6 +405,8 @@ $wgCustomToolbarMessages['lb'] = array(
 	'ct_math_tip_wrap' => 'Aus dësem Text eng Mathematesch Formel (LaTeX) maachen',
 	'ct_math_caption' => 'Formel',
 	'ct_nowiki_sample' => 'Net-formatéierten Text hei drasetzen',
+	'ct_nowiki_tip_ins' => 'Wiki-Formatéierung ignoréieren',
+	'ct_nowiki_tip_wrap' => 'Wiki-Formatéierung fir dësen Text ignoréieren',
 	'ct_nowiki_caption' => 'Keng Wiki',
 	'ct_horizontal_caption' => 'Horizontale Strich',
 	'ct_upload' => '$1 eroplueden',

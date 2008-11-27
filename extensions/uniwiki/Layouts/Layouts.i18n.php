@@ -31,6 +31,13 @@ $messages['arz'] = array(
 	'layouts_unknown' => 'مش معروف',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'layouts_title' => 'Стварыць старонку',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

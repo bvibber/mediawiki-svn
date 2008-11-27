@@ -77,6 +77,12 @@ $aliases['no'] = array(
 	'Disabledusers' => array( 'Inaktive kontoer' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'PasswordReset' => array( 'SetiupassNywila' ),
+	'Disabledusers' => array( 'LemazaWatumiaji' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'PasswordReset' => array( 'เปลี่ยนรหัสผ่าน' ),

@@ -62,3 +62,8 @@ $aliases['sv'] = array(
 	'ViewXML' => array( 'Visa XML' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'ViewXML' => array( 'OnyeshaXML' ),
+);
+

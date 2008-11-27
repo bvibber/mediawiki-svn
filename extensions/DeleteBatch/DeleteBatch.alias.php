@@ -97,3 +97,8 @@ $aliases['pt-br'] = array(
 	'DeleteBatch' => array( 'Apagar em massa' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'DeleteBatch' => array( 'FutaFungu' ),
+);
+

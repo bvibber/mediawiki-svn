@@ -167,6 +167,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'newschannel' => 'Neiegkeeten',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Limit:',
 	'newschannel_include_category' => 'Zousätzlech Kategorie:',

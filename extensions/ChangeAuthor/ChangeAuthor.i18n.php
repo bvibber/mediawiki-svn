@@ -265,7 +265,9 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'changeauthor-desc' => 'Omogućuje promjenu autora revizije',
 	'changeauthor-pagenameform-go' => 'Idi',
+	'changeauthor-comment' => 'Komentar:',
 );
 
 /** Catalan (Català)

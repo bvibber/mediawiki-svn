@@ -52,3 +52,8 @@ $aliases['no'] = array(
 	'LookupUser' => array( 'Finn bruker' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'LookupUser' => array( 'TafutaMtumiaji' ),
+);
+

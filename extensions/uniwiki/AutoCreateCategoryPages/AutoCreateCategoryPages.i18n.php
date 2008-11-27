@@ -17,11 +17,29 @@ It lists all of the pages in category "$1" as well as all subcategories of categ
 	'autocreatecategorypages-editor' => 'Automatic category creator', // The username used for the edit
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'autocreatecategorypages-desc' => 'Автоматично създава липсващите категории при съхраняване',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'autocreatecategorypages-stub' => 'Dies ist eine Kategorieseite.
 Es listet alle Seiten in der Kategorie „$1“ sowie alle Unterkategorien der Kategorie „$1“, sofern welche vorhanden sind.',
 	'autocreatecategorypages-createdby' => 'Automatisch von der AutoCreateCategoryPages-Erweiterung erstellt.',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'autocreatecategorypages-desc' => 'Krei bezonitajn kategoriajn paĝojn aŭtomate dum konservado',
+	'autocreatecategorypages-stub' => 'Jen kategoria paĝo.
+Ĝi montras kaj ĉiujn paĝojn en kategorio "$1" kaj ĉiuj subkategorioj de kategorio "$1" se ioj ajn ekzistas.',
+	'autocreatecategorypages-createdby' => 'Kreita aŭtomate per la AutoCreateCategoryPages etendaĵo.',
+	'autocreatecategorypages-editor' => 'Aŭtomata kreilo de kategorioj',
 );
 
 /** Spanish (Español) */

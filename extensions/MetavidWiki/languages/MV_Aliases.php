@@ -84,3 +84,8 @@ $aliases['sv'] = array(
 	'MediaSearch' => array( 'Mediasökning' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'MediaSearch' => array( 'TafutaPicha' ),
+);
+

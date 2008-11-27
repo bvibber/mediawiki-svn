@@ -72,6 +72,14 @@ $messages['bg'] = array(
 	'categoryonupload-label' => 'Категория:',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'categoryonupload-desc' => 'Traži od korisnika da odabere kategoriju kada postavlja datoteku',
+	'categoryonupload-label' => 'Kategorija:',
+);
+
 /** Catalan (Català)
  * @author Toniher
  */

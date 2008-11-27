@@ -47,12 +47,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'newusermessage-desc' => 'بيضيف رسالة لصفحات النقاش بتاعة اليوزرز الجداد',
-	'newuseredit-summary' => 'إضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] إلى صفحة نقاش مستخدم جديد',
+	'newuseredit-summary' => 'إضافة [[{{int:newusermessage-template}}|رسالة ترحيب]] لصفحة نقاش يوزر جديد',
 );
 
 /** Asturian (Asturianu)
@@ -70,6 +71,13 @@ $messages['ast'] = array(
 $messages['bg'] = array(
 	'newusermessage-desc' => 'Добавя съобщение на беседата на новорегистрираните потребители',
 	'newuseredit-summary' => 'Добавяне на [[{{int:newusermessage-template}}|приветствие]] на дискусионната страница на нов потребител',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'newusermessage-desc' => 'Dodaje poruku na novonapravljene korisničke stranice za razgovor',
 );
 
 /** Czech (Česky)

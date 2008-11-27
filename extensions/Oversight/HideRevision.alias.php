@@ -127,3 +127,8 @@ $aliases['sv'] = array(
 	'HideRevision' => array( 'Dölj version' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'HideRevision' => array( 'FichaMatoleo' ),
+);
+

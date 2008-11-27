@@ -80,3 +80,8 @@ $aliases['no'] = array(
 	'Watchers' => array( 'Overvåkere' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'Watchers' => array( 'Waangalizi' ),
+);
+

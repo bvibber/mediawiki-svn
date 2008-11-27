@@ -23,6 +23,20 @@ $messages['arz'] = array(
 	'authors_anonymous' => 'مش معروف',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'authors_authors' => 'Аўтары',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'authors-desc' => 'Добавя списък на редакторите към страниците',
+);
+
 /** German (Deutsch)
  * @author MF-Warburg
  */
@@ -34,6 +48,7 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'authors-desc' => 'Aldonas liston de kontribuantoj al paĝoj',
 	'authors_authors' => 'Aŭtoroj',
 	'authors_anonymous' => 'Anonima',
 );

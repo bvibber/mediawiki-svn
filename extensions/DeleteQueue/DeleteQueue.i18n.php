@@ -1488,6 +1488,13 @@ $messages['lb'] = array(
 	'deletequeue-list-header-discusspage' => 'Diskussiounssäit',
 );
 
+/** Limburgish (Limburgs)
+ * @author Remember the dot
+ */
+$messages['li'] = array(
+	'deletequeue-list-header-page' => 'Pazjena',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

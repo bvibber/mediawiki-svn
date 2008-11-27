@@ -588,6 +588,13 @@ $messages['lb'] = array(
 	'imagetagging-taggedimages-displaying' => 'Weis $1 - $2 vu(n) $3 Biller vu(n) "$4"',
 );
 
+/** Limburgish (Limburgs)
+ * @author Remember the dot
+ */
+$messages['li'] = array(
+	'imagetagging-article' => 'Pazjena:',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

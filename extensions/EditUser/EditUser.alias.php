@@ -112,6 +112,11 @@ $aliases['sv'] = array(
 	'EditUser' => array( 'Redigera användare' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'EditUser' => array( 'HaririMtumiaji' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'EditUser' => array( 'แก้ไขผู้ใช้' ),

@@ -177,6 +177,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'todo-new-queue' => 'novi',
+	'todo-form-details' => 'Detalji:',
 );
 
 /** Danish (Dansk)
@@ -309,13 +310,13 @@ $messages['gl'] = array(
 	'todo-desc' => 'Extensión experimental da [[Special:Todo|lista persoal de tarefas pendentes]]',
 	'todo-tab' => 'tarefas pendentes',
 	'todo-new-queue' => 'novo',
-	'todo-mail-subject' => 'Completado o ítem da lista de tarefas pendentes de $1',
-	'todo-mail-body' => 'Solicitou unha confirmación por correo electrónico acerca do remate dun ítem que enviou á lista en liña de tarefas pendentes de $1.
+	'todo-mail-subject' => 'Completado o elemento da lista de tarefas pendentes de $1',
+	'todo-mail-body' => 'Solicitou unha confirmación por correo electrónico acerca do remate dun elemento que enviou á lista en liña de tarefas pendentes de $1.
 
-Ítem: $2
+Elemento: $2
 Enviado: $3
 
-Este ítem foi marcado como completado, con este comentario:
+Este elemento foi marcado como completado, con este comentario:
 $4',
 	'todo-invalid-item' => 'Artigo perdido ou non válido',
 	'todo-update-else-item' => 'Intentando actualizar os ítems de alguén',
@@ -323,7 +324,7 @@ $4',
 	'todo-user-invalide' => 'As tarefas pendentas dadas son inválidas, faltan, ou son dun usuario que non ten dereito para telas.',
 	'todo-item-list' => 'Os seus artigos',
 	'todo-no-item' => 'Non hai tarefas pendentes.',
-	'todo-invalid-owner' => 'Propietario inválido deste ítem',
+	'todo-invalid-owner' => 'Propietario inválido deste elemento',
 	'todo-add-queue' => 'Engadir cola…',
 	'todo-move-queue' => 'Mover á cola…',
 	'todo-list-for' => 'Lista de tarefas pendentes para',

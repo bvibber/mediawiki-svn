@@ -346,6 +346,9 @@ $messages['lb'] = array(
 	'postcomment_youareloggedinas' => 'Dir sidd als $1 ugemelt',
 	'postcomment_addcommentdiscussionpage' => "Schreiwt är Bmierkung op d'Diskussiounssäit",
 	'postcomment_leavemessagefor' => 'E Message fir de(n) $1 hannerloossen',
+	'postcomment_post' => 'Schécken',
+	'postcomment_on' => 'Den',
+	'postcomment_said' => 'huet gesot',
 	'postcomment_invalidrequest' => 'Ongëlteg Ufro.',
 	'postcomment_replyto' => 'Äntwert fir $1',
 );

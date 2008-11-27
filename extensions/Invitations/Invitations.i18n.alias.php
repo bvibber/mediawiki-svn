@@ -125,3 +125,8 @@ $aliases['sv'] = array(
 	'Invitations' => array( 'Inbjudningar' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'Invitations' => array( 'Mihaliko' ),
+);
+

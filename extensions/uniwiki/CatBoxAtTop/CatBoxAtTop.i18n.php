@@ -14,12 +14,41 @@ $messages['en'] = array(
 	'catboxattop-categories' => 'Categories', // Should probably support plural
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'catboxattop-categories' => '{{Identical|Categories}}',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'catboxattop-desc' => 'بيضيف صندوء التصنيف في يمين الصفحه من فوق',
 	'catboxattop-categories' => 'تصانيف',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'catboxattop-categories' => 'Катэгорыі',
+);
+
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'catboxattop-categories' => 'Категории',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'catboxattop-desc' => 'Dodaje okvir kategorije u gornjem desnom uglu stranice',
+	'catboxattop-categories' => 'Kategorije',
 );
 
 /** German (Deutsch)
@@ -33,6 +62,7 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'catboxattop-desc' => 'Aldonas kategorian kadron al la supra-dekstro de paĝoj',
 	'catboxattop-categories' => 'Kategorioj',
 );
 

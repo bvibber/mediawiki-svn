@@ -1024,6 +1024,8 @@ Kao rezultat šifriranja slijedi zaštićena verzija. Ona će biti [[Special:Boa
 	'boardvote_user' => 'Korisnik',
 	'boardvote_edits' => 'Izmjene',
 	'boardvote_days' => 'Dana',
+	'boardvote_listintro' => '<p>Ovo je spisak svih glasova koji su pristigli do danas.
+$1 za zaštićene podatke.</p>',
 	'boardvote_dumplink' => 'Klikni ovdje',
 	'boardvote_submit' => 'U redu',
 	'boardvote_strike' => 'Prekriži',
@@ -1032,6 +1034,7 @@ Kao rezultat šifriranja slijedi zaštićena verzija. Ona će biti [[Special:Boa
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Izbori za Wikimedia nadzorni odbor</a>:
 Glasanje otvoreno do 22. juna',
 	'boardvote_notstarted' => 'Glasanje još nije započelo',
+	'boardvote_closed' => 'Glasanje je završeno, pogledajte uskoro [http://meta.wikimedia.org/wiki/Board_elections/2008/Results stranicu o rezultatima glasanja].',
 	'boardvote_edits_many' => 'mnogi',
 	'group-boardvote' => 'Administratori glasanja za odbor',
 	'boardvote_blocked' => 'Vi ste blokirani na Vašoj matičnoj wiki.
@@ -5048,6 +5051,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'boardvote-desc' => "[[meta:Board elections/2008|'A lavagne de Uicchimedia pe l'eleziune de fiducie]]",
 	'boardvote_novotes' => 'Nisciune ha vutate angore.',
 	'boardvote_time' => 'Orarie',
 	'boardvote_user' => 'Utende',

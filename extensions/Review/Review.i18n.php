@@ -281,6 +281,18 @@ $messages['br'] = array(
 	'review_comment' => 'Notenn',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'review_sidebar_explanation' => "Krajnji lijevi potvrdni okvir uvijek znači 'bez mišljenja'.",
+	'review_total_statistics' => 'Ukupno',
+	'review_statistic_cell' => 'Prosjek: $1 of $2<br />($4 korisnika, $5 anonimnih)',
+	'review_user_details_link' => '(detalji)',
+	'review_blocked' => 'Blokirani ste, nemate pristup.',
+	'review_comment' => 'Komentar',
+);
+
 /** Catalan (Català)
  * @author Aleator
  * @author Jordi Roqué

@@ -273,6 +273,19 @@ $messages['nl'] = array(
 	'contrib-tracking-button' => 'Doorgaan',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'contributiontracking-desc' => 'Bidragssporing for Wikimedias innsamling',
+	'contributiontracking' => 'Bidragssporing',
+	'contrib-tracking-error' => 'Feil',
+	'contrib-tracking-error-text' => 'Ugyldig skjema',
+	'contrib-tracking-submitting' => 'Sender til betalingshåndtering...',
+	'contrib-tracking-continue' => 'Om du ikke omdirigeres automatsik, klikk på knappen for å gjennomføre donasjonen hos PayPal.',
+	'contrib-tracking-button' => 'Fortsett',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -67,3 +67,8 @@ $aliases['no'] = array(
 	'FindSpam' => array( 'Finn spam' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'FindSpam' => array( 'TafutaUharabu' ),
+);
+

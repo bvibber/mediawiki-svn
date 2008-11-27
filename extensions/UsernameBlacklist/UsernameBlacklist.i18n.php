@@ -377,6 +377,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Agony
+ * @author Crt
  * @author Nike
  */
 $messages['fi'] = array(
@@ -385,7 +386,7 @@ $messages['fi'] = array(
 	'blacklistedusernametext' => 'Haluamasi tunnus on [[MediaWiki:Usernameblacklist|kiellettyjen tunnusten listalla]]. Valitse toinen nimi.',
 	'usernameblacklist' => '<pre>
 # Listan rivit ovat säännöllisiä lausekkeita, jotka estävät niihin sopivien tunnusten luomisen.
-# Jokaisen rivin pitää olla järjestelemättömän listan jäseniä. Esimerkikki:
+# Jokaisen rivin pitää olla järjestelemättömän listan jäseniä. Esimerkki:
 #
 # * Foo
 # * [Bb]ar

@@ -21,6 +21,15 @@ Would you like to edit the existing page?',
 	'createpage_editexisting' => 'Yes. I want to contribute to the existing page.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'createpage' => 'Стварыць старонку',
+	'createpage_instructions' => 'Увядзіце назву старонкі, якую Вы жадаеце стварыць:',
+	'createpage_entertitle' => 'Калі ласка, увядзіце назву Вашай старонкі.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -32,6 +41,8 @@ $messages['bg'] = array(
 	'createpage_entertitle' => 'Въведете заглавието на страницата:',
 	'createpage_titleexists' => 'Вече съществува страница с името [[$1]].
 Желаете ли да редактирате съществуващата страница?',
+	'createpage_tryagain' => 'Не. Искам да създам нова страница с различно заглавие.',
+	'createpage_editexisting' => 'Да. Искам да допринеса за съществуващата страница.',
 );
 
 /** Bosnian (Bosanski)
@@ -66,7 +77,14 @@ Möchtest Du die existierende Seite bearbeiten?',
  */
 $messages['eo'] = array(
 	'createpage' => 'Krei paĝon',
+	'createpage-desc' => 'Aldonas [[Special:CreatePage|specialan paĝon]] por krei novajn paĝojn',
+	'createpage_submitbutton' => 'Enmeti',
 	'createpage_instructions' => 'Enigu la titolon de la paĝo kiun vi volas krei:',
+	'createpage_entertitle' => 'Bonvolu enigi titolon por via paĝo.',
+	'createpage_titleexists' => 'Paĝo kun la titolo [[$1]] jam ekzistas.
+Ĉu vi volus redakti la ekzistantan paĝon?',
+	'createpage_tryagain' => 'Ne. Mi volas krei novan paĝon kun distinga titolo.',
+	'createpage_editexisting' => 'Jes. Mi volas kontribui al la ekzistanta paĝo.',
 );
 
 /** Spanish (Español) */

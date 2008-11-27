@@ -128,6 +128,13 @@ $messages['oc'] = array(
 	'stringfunctions-desc' => 'Melhora lo parser amb las foncions sus las cadenas de caractèrs',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'stringfunctions-desc' => 'Расширяет возможности парсера функциями работы со строками',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

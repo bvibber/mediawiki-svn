@@ -550,6 +550,11 @@ $wdMessages['bcl'] = array(
 $wdMessages['be-tarask'] = array(
 	'ow_history' => 'Гісторыя',
 	'ow_ClassAttributeType' => 'Тып',
+	'ow_OptionAttribute' => 'Уласьцівасьць',
+	'ow_TextAttribute' => 'Уласьцівасьць',
+	'ow_TranslatedTextAttribute' => 'Уласьцівасьць',
+	'ow_LinkAttribute' => 'Уласьцівасьць',
+	'ow_Property' => 'Уласьцівасьць',
 );
 
 /** Bulgarian (Български)
@@ -562,6 +567,7 @@ $wdMessages['bg'] = array(
 	'ow_noedit_title' => 'Необходими са права за редактиране',
 	'ow_uiprefs' => 'Уикиданни',
 	'ow_none_selected' => 'Нищо не е избрано',
+	'ow_conceptmapping_no_action_specified' => 'Извинения, но не знаем как да „$1“.',
 	'ow_dm_OK' => 'Добре',
 	'ow_will_insert' => 'Ще бъде вмъкнато следното:',
 	'ow_AlternativeDefinition' => 'Алтернативно определение',

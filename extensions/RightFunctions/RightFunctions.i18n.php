@@ -48,6 +48,16 @@ $messages['arz'] = array(
 	'rightfunctions-ns' => '(من حماية نطاق)',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'rightfunctions-desc' => 'Funkcije parsera bazirane za dopuštenjima',
+	'rightfunctions-casc' => '(iz povezanih izvora)',
+	'rightfunctions-local' => '(sa lokalne stranice)',
+	'rightfunctions-ns' => '(od zaštite imenskog prostora)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

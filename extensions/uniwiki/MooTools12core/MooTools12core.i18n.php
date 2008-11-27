@@ -56,6 +56,13 @@ $messages['nl'] = array(
 	'mootools12core-desc' => 'Voegt mootools-1.2-core-yc.js toe aan iedere pagina',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'mootools12core-desc' => 'Apondre mootools-1.2-core-yc.js a cada pagina',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

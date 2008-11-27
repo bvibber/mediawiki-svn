@@ -20,3 +20,8 @@ $aliases['nl'] = array(
 	'RecordAdmin' => array( 'Gegevensbeheer' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'RecordAdmin' => array( 'RekodizaMkabidhi' ),
+);
+

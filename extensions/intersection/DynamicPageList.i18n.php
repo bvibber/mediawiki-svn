@@ -118,6 +118,16 @@ $messages['br'] = array(
 	'intersection_noresults' => "Error: Disoc'h ebet !",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'intersection_toomanycats' => 'Greška: Previše kategorija!',
+	'intersection_toofewcats' => 'Greška: Premalo kategorija!',
+	'intersection_noresults' => 'Greška: Nema rezultata!',
+	'intersection_noincludecats' => 'Greška: Potrebno je da uključite najmanje jednu kategoriju ili odredite imenski prostor!',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */

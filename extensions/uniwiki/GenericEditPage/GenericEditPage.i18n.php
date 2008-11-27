@@ -32,6 +32,15 @@ Add some using the tools on the right.', // on the right? How does that work in 
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'gep-categories' => '{{Identical|Categories}}',
+	'gep-addcategorybutton' => '{{Identical|Add}}',
+	'gep-addsectionbutton' => '{{Identical|Add}}',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -55,6 +64,22 @@ $messages['arz'] = array(
 	'gep-nocategories' => 'لو سمحت تختار تصنيف واحد على الاقل قبل الحفظ',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'gep-emailsubject' => '[$1] Прапанаваная катэгорыя: $2',
+	'gep-emailsuccess' => 'Дзякуй за прапанову катэгорыі «$1».',
+	'gep-categories' => 'Катэгорыі',
+	'gep-addcategory' => 'Дадаць катэгорыю',
+	'gep-addcategorybutton' => 'Дадаць',
+	'gep-suggestcategory' => 'Прапанаваць катэгорыю',
+	'gep-sections' => 'Сэкцыі',
+	'gep-addsection' => 'Дадаць сэкцыю',
+	'gep-addsectionbutton' => 'Дадаць',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -64,6 +89,7 @@ $messages['bg'] = array(
 	'gep-addcategory' => 'Добавяне на категория',
 	'gep-addcategorybutton' => 'Добавяне',
 	'gep-suggestcategorybutton' => 'Изпращане',
+	'gep-addsectionbutton' => 'Добавяне',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 

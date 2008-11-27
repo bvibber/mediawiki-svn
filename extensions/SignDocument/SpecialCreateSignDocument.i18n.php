@@ -572,6 +572,13 @@ $messages['lb'] = array(
 	'createsigndoc-error-alreadycreated' => 'Dokument ënnerschreiwen "$1" gëtt et schonn',
 );
 
+/** Limburgish (Limburgs)
+ * @author Remember the dot
+ */
+$messages['li'] = array(
+	'createsigndoc-pagename' => 'Pazjena:',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

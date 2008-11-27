@@ -102,3 +102,8 @@ $aliases['oc'] = array(
 	'Contributors' => array( 'Contributors' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'Contributors' => array( 'Wachangiaji' ),
+);
+

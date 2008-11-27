@@ -63,6 +63,12 @@ $aliases['sv'] = array(
 	'CreateSignDocument' => array( 'Skapa signeringsdokument' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'SignDocument' => array( 'HatiKusaini' ),
+	'CreateSignDocument' => array( 'UndaHatizaKusaini' ),
+);
+
 /** Thai (ไทย) */
 $aliases['th'] = array(
 	'SignDocument' => array( 'เซ็นเอกสาร' ),

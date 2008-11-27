@@ -887,6 +887,7 @@ $messages['bcc'] = array(
  */
 $messages['be-tarask'] = array(
 	'mv_history' => 'Гісторыя',
+	'mv_search_categories' => 'Катэгорыі',
 	'mv_search_category' => 'Катэгорыя',
 	'mv_category' => 'катэгорыя',
 );
