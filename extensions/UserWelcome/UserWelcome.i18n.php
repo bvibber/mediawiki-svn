@@ -347,6 +347,13 @@ $messages['oc'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|amic novèl|amics novèls}}',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'mp-welcome-edit' => 'Баив',
+);
+
 /** Polish (Polski)
  * @author Maikking
  */

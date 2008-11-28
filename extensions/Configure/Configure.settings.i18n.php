@@ -1946,6 +1946,13 @@ $messages['sv'] = array(
 	'configure-setting-wgCachePages' => 'Tillåt cachning på klient-sidan',
 	'configure-setting-wgClockSkewFudge' => 'Fudge-tid för att lägga till cache-tidsstämplar för att kompensera för klock-avvikelser',
 	'configure-setting-wgFileCacheDirectory' => 'Katalog för filcache',
+	'configure-setting-wgForcedRawSMaxage' => 'Standardvärde för maximal ålder för rå CSS/JS-tillgång',
+	'configure-setting-wgQueryCacheLimit' => "Antal rader att cacha i 'querycache'-tabell",
+	'configure-setting-wgRevisionCacheExpiry' => 'Utgångstid för cachning av versionstext i memcached (eller 0 för att stänga av cachning)',
+	'configure-setting-wgThumbnailEpoch' => 'Period för omrendering av miniatyrbild',
+	'configure-setting-wgTranscludeCacheExpiry' => 'Utgångstid för interwiki-transkluderings-cache',
+	'configure-setting-wgUseFileCache' => 'Använd fil-cachen',
+	'configure-setting-wgUseGzip' => 'Använd GZIP-kodning',
 );
 
 /** Telugu (తెలుగు)

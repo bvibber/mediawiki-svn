@@ -285,6 +285,13 @@ $messages['oc'] = array(
 	'whatismyip-out' => 'Vòstra IP :',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'whatismyip-out' => 'Дæ IP:',
+);
+
 /** Polish (Polski)
  * @author Airwolf
  * @author Sp5uhe

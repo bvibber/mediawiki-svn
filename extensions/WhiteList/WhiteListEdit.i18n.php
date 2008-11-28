@@ -1375,6 +1375,10 @@ Aquesta pagina s’aplica pas qu’als utilizaires disposant de dreches restrenc
  * @author Amikeco
  */
 $messages['os'] = array(
+	'whitelist' => 'Урс номхыгъды фæрстæ',
+	'mywhitelistpages' => 'Мæ фæрстæ',
+	'whitelisttablemodify' => 'Баив',
+	'whitelisttablemodifyall' => 'Æппæт',
 	'whitelisttablemodifynone' => 'Нæй',
 	'whitelisttableedit' => 'Баив æй',
 	'whitelistbadtitle' => 'Æнæмбæлон сæргонд —',

@@ -57,9 +57,15 @@ $messages['qqq'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'recordadmin-submit' => 'Изпращане',
+	'recordadmin-invert' => 'Обръщане на избора',
 	'recordadmin-buttonsearch' => 'Търсене',
 	'recordadmin-buttoncreate' => 'Създаване',
+	'recordadmin-edit' => 'Редактиране на $1',
+	'recordadmin-updateerror' => 'Възникна грешка по време на обновяването',
 	'recordadmin-buttonsave' => 'Съхраняване',
+	'recordadmin-viewlink' => 'преглеждане',
+	'recordadmin-editlink' => 'редактиране',
 );
 
 /** Esperanto (Esperanto)

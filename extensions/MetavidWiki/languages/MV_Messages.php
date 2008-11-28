@@ -916,6 +916,7 @@ $messages['bg'] = array(
 	'mv_adjust_preview_stop' => 'Спиране на прегледа',
 	'mv_start_desc' => 'Начало',
 	'mv_end_desc' => 'Край',
+	'mv_existing_categories' => '{{PLURAL:$1|категория|категории}}:',
 	'mv_add_filter' => 'Добавяне на филтър',
 	'mv_search_category' => 'Категория',
 	'mv_search_and' => 'и',
@@ -3506,6 +3507,7 @@ Aqueste tipe de presentacion es pel tèxt qu'es parlat amb lo flus vidèo. De li
 $messages['os'] = array(
 	'mv_upload_file' => 'Ног файл сæвæр',
 	'mv_edit' => 'Баив æй',
+	'mv_history' => 'Истори',
 	'mv_search_category' => 'Категори',
 	'mv_category' => 'категори',
 );

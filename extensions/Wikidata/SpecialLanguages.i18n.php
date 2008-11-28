@@ -3168,8 +3168,10 @@ Contactatz l’administrator.',
  * @author Amikeco
  */
 $wdMessages['os'] = array(
+	'ow_history' => 'Истори',
 	'ow_dm_OK' => 'Афтæ уæд!',
 	'ow_Language' => 'Æвзаг',
+	'ow_Text' => 'Текст',
 	'ow_LinkAttributeValues' => 'Æрвитæнтæ',
 );
 

@@ -1264,7 +1264,12 @@ Siatz pacient.',
  */
 $messages['os'] = array(
 	'youtubeauthsub_title' => 'Сæргонд',
+	'youtubeauthsub_password' => 'YouTube-æй пароль',
+	'youtubeauthsub_username' => 'YouTube-æй архайæджы ном',
 	'youtubeauthsub_category' => 'Категори',
+	'youtubeauthsub_uploadhere' => 'Дæ видео ам сæвæр:',
+	'youtubeauthsub_uploadbutton' => 'Сæвæр',
+	'youtubeauthsub_jserror_notitle' => 'Дæ хорзæхæй, дæ видеойæн сæргонд ныффысс.',
 );
 
 /** Polish (Polski)

@@ -802,6 +802,13 @@ Esperatz la fin de l’accion en cors.",
 	'tag-logpagetext' => 'Aquò es lo jornal de totes los ajustons e de totas las supressions de las balisas d’imatge.',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'imagetagging-imghistory' => 'Истори',
+);
+
 /** Polish (Polski)
  * @author Maikking
  * @author Sp5uhe

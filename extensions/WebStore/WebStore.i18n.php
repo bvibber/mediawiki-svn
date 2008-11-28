@@ -1184,6 +1184,15 @@ $1",
 	'webstore_no_handler' => 'Aqueste tipe MIME pòt pas èsser transformat.',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'webstore_404' => 'Файл не ссардæуы.',
+	'webstore_metadata_not_found' => 'Файл не ссардæуы: $1',
+	'webstore_no_response' => 'Серверæй дзуапп нæ уыд',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe
