@@ -100,14 +100,14 @@ function efAmazonPlusRender( $input, $args, $parser ) {
 
 	$am = new AmazonPlus( $title, $args, $input );
 	if ( !$am instanceOf AmazonPlus ) {
-		return wfMsg( $am );
+		return '<span class="error">' . wfMsg( $am ) . '</span>';
 	}
 	wfSuppressWarnings();
 	$s = $am->doRequest();
 	if ( $s === false ) {
 		return '<span class="error">' . wfMsg( 'amazonplus-nores' ) . '</span>';
 	} elseif ( $s !== true ) {
-		return wfMsg( $s );
+		return '<span class="error">' . wfMsg( $s ) . '</span>';
 	}
 
 	$ret = $am->getResult();
@@ -135,7 +135,7 @@ class AmazonPlus {
 		}
 		$id = ( isset( $args['id'] ) ) ? $args['id'] : $this->getId( $title, $args );
 		if ( !$id ) {
-			return '<span class="error">' . 'amazonplus-noidres' . '</span>';
+			return 'amazonplus-noidres';
 		}
 		$this->title = $title;
 		$this->input = $input;
@@ -197,12 +197,12 @@ class AmazonPlus {
 
 		$this->response = file_get_contents( $str );
 		if ( $this->response === false ) {
-			return '<span class="error">' . 'amazonplus-fgcerr' . '</span>';
+			return 'amazonplus-fgcerr';
 		}
 
 		$this->xml = simplexml_load_string( $this->response );
 		if ( $this->xml === false ) {
-			return '<span class="error">' . 'amazonplus-slserr' . '</span>';
+			return 'amazonplus-slserr';
 		}
 
 		if ( $this->xml->Items->TotalResults == '0' ) {
