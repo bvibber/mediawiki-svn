@@ -35,6 +35,8 @@ Removed items will not be visible to anyone through the web site, but the deleti
 
 	// Tab displayed to allowed users on old revision display
 	'hiderevision-tab' => 'Hide revision',
+	// Displayed on Users contributions
+	'hiderevision-link' => 'Hidden user contributions',
 
 	// Status & errors on action
 	'hiderevision-norevisions'    => 'No revisions specified to delete.',
