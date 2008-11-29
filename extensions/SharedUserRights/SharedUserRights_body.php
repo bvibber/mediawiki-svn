@@ -264,7 +264,7 @@ class SharedUserRights extends SpecialPage {
 			return false;
 		}
 
-		if ( $name { 0 } == '#' ) {
+		if ( $name[0] == '#' ) {
 			// Numeric ID can be specified...
 			// We'll do a lookup for the name internally.
 			$id = intval( substr( $name, 1 ) );

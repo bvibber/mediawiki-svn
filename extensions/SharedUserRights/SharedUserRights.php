@@ -54,7 +54,9 @@ function efAddSharedUserRights( $user, $groups ) {
 			'sug_group',
 			array ( 'sug_user' => $user->mId ) );
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			$groups[] = $row->sug_group;
+			if( !in_array( $row->sug_group, $groups ) ) {
+				$groups[] = $row->sug_group;
+			}
 		}
 		$dbr->freeResult( $res );
 		$dbr->selectDB( $wgDBname ); # to prevent Listusers from breaking
