@@ -1,7 +1,7 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
-0.10.10 - 28 November 2008
+0.10.10 - 30 November 2008
   * Editable settings are now restricted by default to some settings, if you
     want to have all of them, set $wgConfigureEditableSettings = array(); in
     LocalSettings.php
