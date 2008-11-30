@@ -125,17 +125,14 @@ $wgConfigureNotEditableSettings = array();
  * Editable settings. If this is a non-empty array, only the settings in this
  * array will be allowed to be modified.
  */
-$wgConfigureEditableSettings = array();
-
-# Suggested configuration:
-#$wgConfigureEditableSettings = array(
-#	'wgSitename', 'wgLogo', 'wgContentNamespaces', 'wgMetaNamespace', 'wgMetaNamespaceTalk',
-#	'wgNamespaceAliases', 'wgNamespaceProtection', 'wgNamespaceRobotPolicies', 'wgNamespacesToBeSearchedDefault',
-#	'wgNamespacesToBeSearchedProject', 'wgNamespacesWithSubpages', 'wgNoFollowNsExceptions', 'wgNonincludableNamespaces',
-#	'wgSitemapNamespaces', 'wgAutopromote', 'wgGroupPermissions', 'wgAddGroups', 'wgRemoveGroups', 'wgGroupsAddToSelf',
-#	'wgGroupsRemoveFromSelf', 'wgArticleRobotPolicies', 'wgCapitalLinks', 'wgDefaultLanguageVariant', 'wgExtraSubtitle',
-#	'wgImportSources', 'wgRateLimits', 'wgAutoConfirmAge', 'wgAutoConfirmCount', 'wgMaxSigChars'
-#);
+$wgConfigureEditableSettings = array(
+	'wgSitename', 'wgLogo', 'wgContentNamespaces', 'wgMetaNamespace', 'wgMetaNamespaceTalk',
+	'wgNamespaceAliases', 'wgNamespaceProtection', 'wgNamespaceRobotPolicies', 'wgNamespacesToBeSearchedDefault',
+	'wgNamespacesToBeSearchedProject', 'wgNamespacesWithSubpages', 'wgNoFollowNsExceptions', 'wgNonincludableNamespaces',
+	'wgSitemapNamespaces', 'wgAutopromote', 'wgGroupPermissions', 'wgAddGroups', 'wgRemoveGroups', 'wgGroupsAddToSelf',
+	'wgGroupsRemoveFromSelf', 'wgArticleRobotPolicies', 'wgCapitalLinks', 'wgDefaultLanguageVariant', 'wgExtraSubtitle',
+	'wgImportSources', 'wgRateLimits', 'wgAutoConfirmAge', 'wgAutoConfirmCount', 'wgMaxSigChars'
+);
 
 /**
  * Whether to use the API module
