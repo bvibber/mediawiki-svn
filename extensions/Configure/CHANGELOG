@@ -6,6 +6,7 @@ Localisation updates are done on betawiki and aren't listed here.
     want to have all of them, set $wgConfigureEditableSettings = array(); in
     LocalSettings.php
   * Inline preview of logo
+  * Removed $wgValidSkinNames
 
 0.10.9 - 27 November 2008
   Added $wgConfigureExtensionsVar and $wgConfigureOnlyUseVarForExt to allow
