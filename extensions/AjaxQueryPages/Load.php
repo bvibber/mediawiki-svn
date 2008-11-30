@@ -19,12 +19,11 @@ if( version_compare( $wgVersion, '1.12alpha', '<' ) ) {
 		'descriptionmsg' => 'ajax-qp-desc',
 	);
 
-	$dir = dirname(__FILE__) . '/';
-	$wgExtensionMessagesFiles['AjaxQueryPages'] = $dir . 'AjaxQueryPages.i18n.php';
+	$wgExtensionMessagesFiles['AjaxQueryPages'] = dirname(__FILE__) . '/AjaxQueryPages.i18n.php';
 
 	// Load hooks
-	require_once( $dir . 'Hooks.php');
+	require_once(dirname(__FILE__) . '/Hooks.php');
 
 	// Set up AJAX entry point:
-	require_once( $dir . 'Response.php');
+	require_once(dirname(__FILE__) . '/Response.php');
 }

@@ -44,7 +44,7 @@ $wgPlayerMimeOverride = array( );
 $wgPlayerTemplates = array();
 $wgPlayerVideoResolutionDetector = NULL;
 
-require_once( $dir . 'PlayerDefaultSettings.php' );
+require_once( dirname( __FILE__ ) . '/PlayerDefaultSettings.php' );
 
 function playerSetup() {
 	global $wgParser;

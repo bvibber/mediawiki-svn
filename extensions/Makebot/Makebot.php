@@ -46,7 +46,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	/**
 	 * Register the special page
 	 */
-	$wgAutoloadClasses['Makebot'] = $dir . 'Makebot.class.php';
+	$wgAutoloadClasses['Makebot'] = dirname( __FILE__ ) . '/Makebot.class.php';
 	$wgSpecialPages['Makebot'] = 'Makebot';
 	$wgSpecialPageGroups['Makebot'] = 'users';
 

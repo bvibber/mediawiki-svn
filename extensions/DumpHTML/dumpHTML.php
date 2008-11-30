@@ -55,13 +55,12 @@ if ( in_array( '--udp-profile', $argv ) ) {
 }
 
 $IP = getenv( 'MW_INSTALL_PATH' );
-$dir = dirname(__FILE__) . '/';
 if ( $IP === false ) {
-	$IP = $dir . '../..';
+	$IP = dirname(__FILE__).'/../..';
 }
 require_once( $IP."/maintenance/commandLine.inc" );
-require_once( $dir . "dumpHTML.inc" );
-require_once( $dir . "SkinOffline.php" );
+require_once( dirname(__FILE__)."/dumpHTML.inc" );
+require_once( dirname(__FILE__)."/SkinOffline.php" );
 
 if ( version_compare( $wgVersion, '1.11.1', '<' ) ) {
 	echo "Error, the DumpHTML extension needs at least MediaWiki version 1.11.1 to work, you have version $wgVersion.\n";

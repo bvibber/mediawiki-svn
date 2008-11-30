@@ -9,14 +9,13 @@
  * @license GPLv2 or higher
  */
 
-$dir = dirname(__FILE__) . '/';
 $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false )
-	$IP = $dir . '../..';
+	$IP = dirname( __FILE__ ) . '/../..';
 
 require_once( "$IP/maintenance/commandLine.inc" );
 
-require_once( $dir . "migrateToDB.inc" );
+require_once( dirname( __FILE__ ) . "/migrateToDB.inc" );
 
 $obj = new FilesToDB( $options );
 $obj->run();

@@ -107,8 +107,7 @@ $wgOpenIDClientOnly = false;
 
 $wgExtensionFunctions[] = 'setupOpenID';
 
-$dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['OpenID'] = $dir . 'OpenID.i18n.php';
+$wgExtensionMessagesFiles['OpenID'] = dirname(__FILE__) . '/OpenID.i18n.php';
 
 $wgExtensionCredits['other'][] = array(
 	'name' => 'OpenID',
@@ -133,17 +132,17 @@ function OpenIDGetServerPath() {
 
 # Gets stored in the session, needs to be reified before our setup
 $wgAutoloadClasses['Auth_OpenID_CheckIDRequest'] = OpenIDGetServerPath();
-$wgExtensionMessagesFiles['OpenID'] = $dir . 'OpenID.i18n.php';
+$wgExtensionMessagesFiles['OpenID'] = dirname(__FILE__) . '/OpenID.i18n.php';
 # Autoload for special pages
 
 foreach (array('Login', 'Finish', 'Convert', 'Server', 'XRDS') as $sub) {
-	$wgAutoloadClasses['SpecialOpenID' . $sub] = $dir . 'SpecialOpenID' . $sub . '.body.php';
+	$wgAutoloadClasses['SpecialOpenID' . $sub] = dirname(__FILE__) . '/SpecialOpenID' . $sub . '.body.php';
 	$wgSpecialPages['OpenID'.$sub] = array('SpecialOpenID'.$sub);
 }
 
 # Autoload common parent with utility methods
 
-$wgAutoloadClasses['SpecialOpenID'] = $dir . 'SpecialOpenID.body.php';
+$wgAutoloadClasses['SpecialOpenID'] = dirname(__FILE__) . '/SpecialOpenID.body.php';
 
 $wgHooks['PersonalUrls'][] = 'OpenIDPersonalUrls';
 $wgHooks['UserToggles'][] = 'OpenIDUserToggles';

@@ -40,9 +40,7 @@ $wgExtensionCredits['other'][] = array(
 	'description' => 'Simple framework for spambot checks and trigger payloads',
 	'descriptionmsg' => 'antibot-desc',
 );
-
-$dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['AntiBot'] =  $dir . 'AntiBot.i18n.php';
+$wgExtensionMessagesFiles['AntiBot'] =  dirname(__FILE__) . '/AntiBot.i18n.php';
 
 /**
  * A map of payload types to callbacks
@@ -55,7 +53,7 @@ $wgAntiBotPayloadTypes = array(
 );
 
 # Load plugins
-foreach ( glob( $dir . 'active/*.php' ) as $file ) {
+foreach ( glob( dirname( __FILE__ ) . '/active/*.php' ) as $file ) {
 	require( $file );
 }
 

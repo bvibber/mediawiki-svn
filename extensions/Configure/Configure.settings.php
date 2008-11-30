@@ -38,8 +38,7 @@ class ConfigurationSettings {
 			return;
 		$this->initialized = true;
 
-		$dir = dirname(__FILE__) . '/';
-		require( $dir . 'Configure.settings-core.php' );
+		require( dirname( __FILE__ ) . '/Configure.settings-core.php' );
 		$this->settings = $settings;
 		$this->arrayDefs = $arrayDefs;
 		$this->emptyValues = $emptyValues;
@@ -48,7 +47,7 @@ class ConfigurationSettings {
 		$this->notEditableSettings = $notEditableSettings;
 		$this->settingsVersion = $settingsVersion;
 
-		require( $dir . 'Configure.settings-ext.php' );
+		require( dirname( __FILE__ ) . '/Configure.settings-ext.php' );
 		$this->extensions = $extensions;
 	}
 

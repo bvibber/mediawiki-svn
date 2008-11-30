@@ -86,9 +86,8 @@ $psEmbedAry = array(
 /*
  * end config
  */
-$dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['PlayerStatsGrabber'] 	= $dir . 'PlayerStatsGrabber.i18n.php';
-$wgAutoloadClasses['SpecialPlayerStatsGrabber'] 	= $dir . 'PlayerStatsGrabber_body.php';
+$wgExtensionMessagesFiles['PlayerStatsGrabber'] 	= dirname( __FILE__ ) . '/PlayerStatsGrabber.i18n.php';
+$wgAutoloadClasses['SpecialPlayerStatsGrabber'] 	= dirname( __FILE__ ) . '/PlayerStatsGrabber_body.php';
 $wgSpecialPages['PlayerStatsGrabber']		   				=  array( 'SpecialPlayerStatsGrabber' );
 											 
 $wgSpecialPageGroups['PlayerStatsGrabber'] = 'wiki'; // like Special:Statistics

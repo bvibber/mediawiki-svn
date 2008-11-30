@@ -39,6 +39,9 @@ $wgSpecialPages['ContributionTotal'] = 'ContributionTotal';
 $wgSpecialPages['ContributionStatistics'] = 'SpecialContributionStatistics';
 $wgSpecialPages['FundraiserStatistics'] = 'SpecialFundraiserStatistics';
 
+// Shortcut to this extension directory
+$dir = dirname( __FILE__ ) . '/';
+
 // CutOff for fiscal year
 $egContributionStatisticsFiscalYearCutOff = 'July 1';
 
@@ -83,3 +86,4 @@ function efContributionReportingConnection() {
 
 	return $db;
 }
+

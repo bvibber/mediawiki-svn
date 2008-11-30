@@ -30,11 +30,11 @@ $wgExtensionCredits['other'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:OpenSearchXml'
 );
 
-$dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['OpenSearchXml'] = $dir . 'OpenSearchXml.i18n.php';
+$wgExtensionMessagesFiles['OpenSearchXml'] = dirname(__FILE__) . '/OpenSearchXml.i18n.php';
 
 $wgAPIModules['opensearch'] = 'ApiOpenSearchXml';
-$wgAutoloadClasses['ApiOpenSearchXml'] = $dir . 'ApiOpenSearchXml.php';
+$wgAutoloadClasses['ApiOpenSearchXml'] =
+	dirname(__FILE__) . '/ApiOpenSearchXml.php';
 
 $wgHooks['OpenSearchUrls'][] = 'efOpenSearchXmlUrls';
 

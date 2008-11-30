@@ -11,9 +11,8 @@
  
 if( defined( 'MEDIAWIKI' ) ) {
 
-	$dir = dirname(__FILE__) . '/';
-	$wgAutoloadClasses['DateParser'] = $dir . 'DateParser.php';
-	$wgAutoloadClasses['FormattableDate'] = $dir . 'FormattableDate.php';
+	$wgAutoloadClasses['DateParser'] = dirname( __FILE__ ) . '/DateParser.php';
+	$wgAutoloadClasses['FormattableDate'] = dirname( __FILE__ ) . '/FormattableDate.php';
 	$wgExtensionFunctions[] = 'efFormatDates';
 	
 	$wgExtensionCredits['parserhook'][] = array(

@@ -283,8 +283,7 @@ class GroupPermissions extends SpecialPage {
 	*/
 	private function writeFile( $type ) {
 		//can we write the file?
-		$dir = dirname(__FILE__) . '/';
-		if(!is_writable( $dir . "config" )) {
+		if(!is_writable( dirname(__FILE__) . "/config" )) {
 			echo( "<h2>Cannot write config file, aborting</h2>
 			
 			<p>In order to use this extension, you need to make the /config subdirectory of this extension
@@ -294,8 +293,8 @@ class GroupPermissions extends SpecialPage {
 			die( 1 );
 		}
 		$this->oldrev = gmdate('dmYHis');
-		if(file_exists( $dir . 'config/GroupPermissions.php')) {
-			$r = rename( $dir . 'config/GroupPermissions.php', $dir . 'config/GroupPermissions.' . $this->oldrev . '.php');
+		if(file_exists(dirname(__FILE__) . '/config/GroupPermissions.php')) {
+			$r = rename(dirname(__FILE__) . '/config/GroupPermissions.php', dirname(__FILE__) . '/config/GroupPermissions.' . $this->oldrev . '.php');
 			if(!$r) {
 				global $wgOut;
 				$wgOut->addWikiText(wfMsg('grouppermissions-nooldrev'));
@@ -398,7 +397,7 @@ $wgGPManagerNeverGrant = array();';
 		}
 		
 		$grouppermissions = str_replace( "\r\n", "\n", $grouppermissions );
-		chdir( $dir . "config" );
+		chdir( dirname(__FILE__) . "/config" );
 		$f = fopen( "GroupPermissions.php", 'wt' );
 		if(fwrite( $f, $grouppermissions ) ) {
 			fclose( $f );

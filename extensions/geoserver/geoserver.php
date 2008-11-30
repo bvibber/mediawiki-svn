@@ -29,7 +29,7 @@ global $wgAutoloadClasses;
 $dir = dirname(__FILE__) . '/';
 $wgAutoloadClasses['WFS'] = $dir . 'WFS.php';
 
-require_once( $dir . 'SpecialWikimaps.php' );
+require_once( dirname(__FILE__) . '/SpecialWikimaps.php' );
 /**
  *  Called whenever a <geo> needs to be parsed
  *

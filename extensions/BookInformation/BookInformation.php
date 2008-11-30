@@ -23,16 +23,15 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:BookInformation',
 );
 
-$dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['BookInformation'] = $dir . 'BookInformation.i18n.php';
+$wgExtensionMessagesFiles['BookInformation'] = dirname(__FILE__) . '/BookInformation.i18n.php';
 
-$wgAutoloadClasses['BookInformation'] = $dir . 'drivers/Worker.php';
-$wgAutoloadClasses['BookInformationCache'] = $dir . 'drivers/Cache.php';
-$wgAutoloadClasses['BookInformationDriver'] = $dir . 'drivers/Driver.php';
-$wgAutoloadClasses['BookInformationResult'] = $dir . 'drivers/Result.php';
+$wgAutoloadClasses['BookInformation'] = dirname( __FILE__ ) . '/drivers/Worker.php';
+$wgAutoloadClasses['BookInformationCache'] = dirname( __FILE__ ) . '/drivers/Cache.php';
+$wgAutoloadClasses['BookInformationDriver'] = dirname( __FILE__ ) . '/drivers/Driver.php';
+$wgAutoloadClasses['BookInformationResult'] = dirname( __FILE__ ) . '/drivers/Result.php';
 
-$wgAutoloadClasses['BookInformationAmazon'] = $dir . 'drivers/Amazon.php';
-$wgAutoloadClasses['BookInformationIsbnDb'] = $dir . 'drivers/IsbnDb.php';
+$wgAutoloadClasses['BookInformationAmazon'] = dirname( __FILE__ ) . '/drivers/Amazon.php';
+$wgAutoloadClasses['BookInformationIsbnDb'] = dirname( __FILE__ ) . '/drivers/IsbnDb.php';
 
 $wgExtensionFunctions[] = 'efBookInformationSetup';
 $wgHooks['BookInformation'][] = 'efBookInformation';
