@@ -105,12 +105,12 @@ public class DurationScanner {
 
             while (oy.pageout(og) == 1) {
 
-                int serialno = og.serialno();
+                Integer serialno = new Integer(og.serialno());
                 StreamState os = (StreamState) streamstates.get(serialno);
                 if (os == null) {
                     os = new StreamState();
                     os.init(og.serialno());
-                    streamstates.put(og.serialno(), os);
+                    streamstates.put(serialno, os);
                     System.out.println("DurationScanner: created StreamState for stream no. " + serialno);
                 }
 
@@ -120,7 +120,7 @@ public class DurationScanner {
 
                     Integer type = (Integer) streamtype.get(serialno);
                     if (type == null) {
-                        type = determineType(op);
+                        type = new Integer(determineType(op));
                         streamtype.put(serialno, type);
                         if (comment != null) {
                             streamcomment.put(serialno, comment);
@@ -128,14 +128,14 @@ public class DurationScanner {
                         if (info != null) {
                             streaminfo.put(serialno, info);
                         }
-                        streamstartgranule.put(serialno, og.granulepos());
+                        streamstartgranule.put(serialno, new Long(og.granulepos()));
                     }
 
-                    switch (type) {
+                    switch (type.intValue()) {
                         case VORBIS:
                              {
                                 com.jcraft.jorbis.Info i = (com.jcraft.jorbis.Info) streaminfo.get(serialno);
-                                long startgranule = (Long) streamstartgranule.get(serialno);
+                                long startgranule = ((Long) streamstartgranule.get(serialno)).longValue();
                                 float t = (float) (og.granulepos() - startgranule) / i.rate;
                                 if (t > time) {
                                     time = t;
