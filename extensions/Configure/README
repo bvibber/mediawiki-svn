@@ -2,17 +2,23 @@
 
 This extension is intented to allow to customize the wiki settings whitout
 needing to edit the LocalSettings.php file. To enable it, simple include the
-Configure.php file in... LocalSettings.php (should be the last time you need
-to edit that file :), but also you will need to call the efConfigureSetup()
-function in LocalSettings.php because you may want to customize some settings
-of the extension and to prevent an attack, the settings have to be always
-defined (this is done by including the Configure.php file), even if they won't
-be changed because they can arbitrary be set if the register_globals feature of
-PHP is turned on.
+Configure.php file in... LocalSettings.php and call the efConfigureSetup()
+function. This is required because you may want to customize some settings and
+to prevent an attack, the settings have to be always defined (this is done by
+including the Configure.php file), even if they won't be changed.
+This security issue is caused by the register_globals feature of PHP which
+allows to set global variables from parameters passed to the script via the URL
+(see http://www.php.net/register_globals).
 The default code you can add to your LocalSettings.php is the following:
 
 require_once( "$IP/extensions/Configure/Configure.php" );
 efConfigureSetup();
+
+By default, only some settings are editable, if you want to be able to edit
+all of them (like in version < 0.10.10), add the following line in
+LocalSettings.php:
+
+$wgConfigureEditableSettings = array();
 
 == Configuration ==
 
