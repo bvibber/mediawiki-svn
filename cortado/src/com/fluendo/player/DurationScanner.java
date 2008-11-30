@@ -40,14 +40,13 @@ import java.util.Locale;
  */
 public class DurationScanner {
 
+    final static int NOTDETECTED = -1;
     final static int UNKNOWN = 0;
     final static int VORBIS = 1;
     final static int THEORA = 2;
-    private static Object comment;
-    private static Object info;
     private static long contentLength = -1;
 
-    private static InputStream openWithConnection(URL url, String userId, String password, long offset) throws IOException {
+    private InputStream openWithConnection(URL url, String userId, String password, long offset) throws IOException {
         // lifted from HTTPSrc.java
         InputStream dis = null;
         String userAgent = "Cortado";
@@ -105,7 +104,7 @@ public class DurationScanner {
         return dis;
     }
 
-    private static int determineType(Packet op) {
+    private void determineType(Packet op, StreamInfo info) {
 
         // try theora
         com.fluendo.jheora.Comment tc = new com.fluendo.jheora.Comment();
@@ -116,9 +115,10 @@ public class DurationScanner {
 
         int ret = ti.decodeHeader(tc, op);
         if (ret == 0) {
-            comment = tc;
-            info = ti;
-            return THEORA;
+            info.decoder = ti;
+            info.type = THEORA;
+            info.decodedHeaders++;
+            return;
         }
 
         // try vorbis
@@ -130,15 +130,16 @@ public class DurationScanner {
 
         ret = vi.synthesis_headerin(vc, op);
         if (ret == 0) {
-            comment = vc;
-            info = vi;
-            return VORBIS;
+            info.decoder = vi;
+            info.type = VORBIS;
+            info.decodedHeaders++;
+            return;
         }
-
-        return UNKNOWN;
+        
+        info.type = UNKNOWN;
     }
 
-    public static float getDurationForInputStream(InputStream is) {
+    public float getDurationForInputStream(InputStream is) {
         try {
             float time = -1;
 
@@ -146,11 +147,7 @@ public class DurationScanner {
             Page og = new Page();
             Packet op = new Packet();
 
-            Hashtable streamstates = new Hashtable();
-            Hashtable streamtype = new Hashtable();
-            Hashtable streamcomment = new Hashtable();
             Hashtable streaminfo = new Hashtable();
-            Hashtable streamstartgranule = new Hashtable();
 
             oy.init();
 
@@ -165,37 +162,30 @@ public class DurationScanner {
                 while (oy.pageout(og) == 1) {
 
                     Integer serialno = new Integer(og.serialno());
-                    StreamState os = (StreamState) streamstates.get(serialno);
-                    if (os == null) {
-                        os = new StreamState();
-                        os.init(og.serialno());
-                        streamstates.put(serialno, os);
+                    StreamInfo info = (StreamInfo) streaminfo.get(serialno);
+                    if (info == null) {
+                        info = new StreamInfo();
+                        info.streamstate = new StreamState();
+                        info.streamstate.init(og.serialno());
+                        streaminfo.put(serialno, info);
                         System.out.println("DurationScanner: created StreamState for stream no. " + serialno);
                     }
 
-                    os.pagein(og);
+                    info.streamstate.pagein(og);
 
-                    while (os.packetout(op) == 1) {
+                    while (info.streamstate.packetout(op) == 1) {
 
-                        Integer type = (Integer) streamtype.get(serialno);
-                        if (type == null) {
-                            type = new Integer(determineType(op));
-                            streamtype.put(serialno, type);
-                            if (comment != null) {
-                                streamcomment.put(serialno, comment);
-                            }
-                            if (info != null) {
-                                streaminfo.put(serialno, info);
-                            }
-                            streamstartgranule.put(serialno, new Long(og.granulepos()));
+                        int type = info.type;
+                        if (type == NOTDETECTED) {
+                            determineType(op, info);
+                            info.startgranule = og.granulepos();
                         }
 
-                        switch (type.intValue()) {
+                        switch (type) {
                             case VORBIS:
                                  {
-                                    com.jcraft.jorbis.Info i = (com.jcraft.jorbis.Info) streaminfo.get(serialno);
-                                    long startgranule = ((Long) streamstartgranule.get(serialno)).longValue();
-                                    float t = (float) (og.granulepos() - startgranule) / i.rate;
+                                    com.jcraft.jorbis.Info i = (com.jcraft.jorbis.Info) info.decoder;
+                                    float t = (float) (og.granulepos() - info.startgranule) / i.rate;
                                     if (t > time) {
                                         time = t;
                                     }
@@ -203,7 +193,7 @@ public class DurationScanner {
                                 break;
                             case THEORA:
                                  {
-                                    com.fluendo.jheora.Info i = (com.fluendo.jheora.Info) streaminfo.get(serialno);
+                                    com.fluendo.jheora.Info i = (com.fluendo.jheora.Info) info.decoder;
                                 }
                                 break;
                         }
@@ -216,7 +206,7 @@ public class DurationScanner {
         }
     }
 
-    public static float getDurationForURL(URL url, String user, String password) {
+    public float getDurationForURL(URL url, String user, String password) {
         try {
             int headbytes = 16 * 1024;
             int tailbytes = 80 * 1024;
@@ -250,6 +240,14 @@ public class DurationScanner {
             return -1;
         }
     }
+    
+    private class StreamInfo {
+        public Object decoder;
+        public int decodedHeaders = 0;
+        public int type = NOTDETECTED;
+        public long startgranule;
+        public StreamState streamstate;
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -257,7 +255,7 @@ public class DurationScanner {
         url = new URL(args[0]);
 
 
-        System.out.println(getDurationForURL(url, null, null));
+        System.out.println(new DurationScanner().getDurationForURL(url, null, null));
 
     }
 }
