@@ -1,11 +1,6 @@
 <?php
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-# The autoloader is loaded after LocalSettings.php, so we'll need to load
-# that file manually
-if ( !class_exists( 'SiteConfiguration' ) )
-	require_once( "$IP/includes/SiteConfiguration.php" );
-
 /**
  * Class that hold the configuration
  *
@@ -95,8 +90,8 @@ class WebConfiguration extends SiteConfiguration {
 		$allSettings = array_keys( ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllSettings() );
 		
 		foreach( $allSettings as $setting ) {
-			if (isset($GLOBALS[$setting]))
-				$this->defaults[$setting] = $GLOBALS[$setting];
+			if ( isset( $GLOBALS[$setting] ) )
+				$this->mDefaults[$setting] = $GLOBALS[$setting];
 		}
 
 		list( $site, $lang ) = $this->siteFromDB( $this->mWiki );
@@ -181,7 +176,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array
 	 */
 	public function getDefaults() {
-		return $this->defaults;
+		return $this->mDefaults;
 	}
 
 	/**
