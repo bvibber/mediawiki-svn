@@ -226,18 +226,21 @@ public class DurationScanner {
             InputStream is = openWithConnection(url, user, password, 0);
 
             int read = 0;
-            long pos = 0;
+            long totalbytes = 0;
             read = is.read(buffer);
-            while (pos < headbytes && read > 0) {
-                pos += read;
+            // read beginning of the stream
+            while (totalbytes < headbytes && read > 0) {
+                totalbytes += read;
                 bos.write(buffer, 0, read);
                 read = is.read(buffer);
             }
 
-            is = openWithConnection(url, null, null, contentLength - tailbytes);
+            is = openWithConnection(url, user, password, contentLength - tailbytes);
 
             read = is.read(buffer);
-            while (read > 0) {
+            // read tail until eos, also abort if way too many bytes have been read
+            while (read > 0 && totalbytes < (headbytes + tailbytes) * 2) {
+                totalbytes += read;
                 bos.write(buffer, 0, read);
                 read = is.read(buffer);
             }
