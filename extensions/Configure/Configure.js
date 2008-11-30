@@ -160,15 +160,17 @@ function setupConfigure(){
 	var thumbs = getElementsByClassName( configform, 'input', 'image-selector' );
 	for( var t = 0; t < thumbs.length; t++ ){
 		var textbox = thumbs[t];
+		var conf = textbox.id.substr( 18 );
+		var img = document.getElementById( 'image-url-preview-'+conf );
 
 		var button = document.createElement( 'input' );
 		button.type = 'button';
 		button.className = 'mw-button-get-image-url';
 		button.value = wgConfigureGetImageUrl;
-		button.onclick = createImageUrlCallback( textbox );
+		button.onclick = createImageUrlCallback( textbox, img );
 
-		textbox.parentNode.appendChild( document.createTextNode( '\u00A0' ) );
-		textbox.parentNode.appendChild( button );
+		textbox.parentNode.insertBefore( button, img );
+		textbox.parentNode.appendChild( document.createTextNode( '\u00A0' ), textbox ); // nbsp
 	}
 
 	// $wgGroupPermissions stuff, only if ajax is enabled
@@ -556,7 +558,7 @@ function configTocToggle(){
 /**
  * Handle [Get thumbnail URL] button clicks
  */
-function createImageUrlCallback( textbox ) {
+function createImageUrlCallback( textbox, img ) {
 	return function() {
 		sajax_do_call( 'wfAjaxGetThumbnailUrl',
 			[textbox.value, 130, 130], // FIXME hard-coded.
@@ -567,6 +569,7 @@ function createImageUrlCallback( textbox ) {
 					alert( wgConfigureImageError );
 				} else {
 					textbox.value = response.responseText;
+					img.src = response.responseText;
 				}
 			}
 		);
