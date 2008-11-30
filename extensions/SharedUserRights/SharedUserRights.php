@@ -4,8 +4,10 @@
 *
 * @ingroup Extensions
 *
+* @author Łukasz 'TOR' Garczewski <tor@wikia-inc.com>
 * @author Charles Melbye <charlie@yourwiki.net>
 * @version 0.10
+* @copyright Copyright © 2008 Łukasz 'TOR' Garczewski, Wikia, Inc.
 * @copyright Copyright (C) 2008 YourWiki, Inc.
 * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
 *
@@ -21,7 +23,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'SharedUserRights',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SharedUserRights',
 	'version' => '0.10',
-	'author' => 'Charles Melbye',
+	'author' => array( "Łukasz 'TOR' Garczewski", 'Charles Melbye' ),
 	'description' => 'Easy global user rights administration',
 	'descriptionmsg' => 'gblrights-desc',
 );
