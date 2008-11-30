@@ -47,114 +47,6 @@ public class DurationScanner {
     private static Object info;
     private static long contentLength = -1;
 
-    private static int determineType(Packet op) {
-
-        // try theora
-        com.fluendo.jheora.Comment tc = new com.fluendo.jheora.Comment();
-        com.fluendo.jheora.Info ti = new com.fluendo.jheora.Info();
-
-        tc.clear();
-        ti.clear();
-
-        int ret = ti.decodeHeader(tc, op);
-        if (ret == 0) {
-            comment = tc;
-            info = ti;
-            return THEORA;
-        }
-
-        // try vorbis
-        com.jcraft.jorbis.Comment vc = new com.jcraft.jorbis.Comment();
-        com.jcraft.jorbis.Info vi = new com.jcraft.jorbis.Info();
-
-        vc.init();
-        vi.init();
-
-        ret = vi.synthesis_headerin(vc, op);
-        if (ret == 0) {
-            comment = vc;
-            info = vi;
-            return VORBIS;
-        }
-
-        return UNKNOWN;
-    }
-
-    public static float getDurationForInputStream(InputStream is) throws IOException {
-        float time = -1;
-
-        SyncState oy = new SyncState();
-        Page og = new Page();
-        Packet op = new Packet();
-
-        Hashtable streamstates = new Hashtable();
-        Hashtable streamtype = new Hashtable();
-        Hashtable streamcomment = new Hashtable();
-        Hashtable streaminfo = new Hashtable();
-        Hashtable streamstartgranule = new Hashtable();
-
-        oy.init();
-
-        boolean eos = false;
-        while (!eos) {
-
-            int offset = oy.buffer(4096);
-            int read = is.read(oy.data, offset, 4096);
-            oy.wrote(read);
-            eos = read <= 0;
-
-            while (oy.pageout(og) == 1) {
-
-                Integer serialno = new Integer(og.serialno());
-                StreamState os = (StreamState) streamstates.get(serialno);
-                if (os == null) {
-                    os = new StreamState();
-                    os.init(og.serialno());
-                    streamstates.put(serialno, os);
-                    System.out.println("DurationScanner: created StreamState for stream no. " + serialno);
-                }
-
-                os.pagein(og);
-
-                while (os.packetout(op) == 1) {
-
-                    Integer type = (Integer) streamtype.get(serialno);
-                    if (type == null) {
-                        type = new Integer(determineType(op));
-                        streamtype.put(serialno, type);
-                        if (comment != null) {
-                            streamcomment.put(serialno, comment);
-                        }
-                        if (info != null) {
-                            streaminfo.put(serialno, info);
-                        }
-                        streamstartgranule.put(serialno, new Long(og.granulepos()));
-                    }
-
-                    switch (type.intValue()) {
-                        case VORBIS:
-                             {
-                                com.jcraft.jorbis.Info i = (com.jcraft.jorbis.Info) streaminfo.get(serialno);
-                                long startgranule = ((Long) streamstartgranule.get(serialno)).longValue();
-                                float t = (float) (og.granulepos() - startgranule) / i.rate;
-                                if (t > time) {
-                                    time = t;
-                                }
-                            }
-                            break;
-                        case THEORA:
-                             {
-                                com.fluendo.jheora.Info i = (com.fluendo.jheora.Info) streaminfo.get(serialno);
-                            }
-                            break;
-                    }
-                }
-            }
-        }
-
-        return time;
-    }
-
     private static InputStream openWithConnection(URL url, String userId, String password, long offset) throws IOException {
         // lifted from HTTPSrc.java
         InputStream dis = null;
@@ -213,33 +105,147 @@ public class DurationScanner {
         return dis;
     }
 
-    public static float getDurationForURL(URL url, String user, String password) throws IOException {
-        int headbytes = 16 * 1024;
-        int tailbytes = 80 * 1024;
+    private static int determineType(Packet op) {
 
-        byte[] buffer = new byte[1024];
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        InputStream is = openWithConnection(url, user, password, 0);
+        // try theora
+        com.fluendo.jheora.Comment tc = new com.fluendo.jheora.Comment();
+        com.fluendo.jheora.Info ti = new com.fluendo.jheora.Info();
 
-        int read = 0;
-        long pos = 0;
-        read = is.read(buffer);
-        while (pos < headbytes && read > 0) {
-            pos += read;
-            bos.write(buffer, 0, read);
-            read = is.read(buffer);
+        tc.clear();
+        ti.clear();
+
+        int ret = ti.decodeHeader(tc, op);
+        if (ret == 0) {
+            comment = tc;
+            info = ti;
+            return THEORA;
         }
 
-        is = openWithConnection(url, null, null, contentLength - tailbytes);
+        // try vorbis
+        com.jcraft.jorbis.Comment vc = new com.jcraft.jorbis.Comment();
+        com.jcraft.jorbis.Info vi = new com.jcraft.jorbis.Info();
 
-        read = is.read(buffer);
-        while (read > 0) {
-            bos.write(buffer, 0, read);
-            read = is.read(buffer);
+        vc.init();
+        vi.init();
+
+        ret = vi.synthesis_headerin(vc, op);
+        if (ret == 0) {
+            comment = vc;
+            info = vi;
+            return VORBIS;
         }
 
-        return getDurationForInputStream(new ByteArrayInputStream(bos.toByteArray()));
+        return UNKNOWN;
+    }
 
+    public static float getDurationForInputStream(InputStream is) {
+        try {
+            float time = -1;
+
+            SyncState oy = new SyncState();
+            Page og = new Page();
+            Packet op = new Packet();
+
+            Hashtable streamstates = new Hashtable();
+            Hashtable streamtype = new Hashtable();
+            Hashtable streamcomment = new Hashtable();
+            Hashtable streaminfo = new Hashtable();
+            Hashtable streamstartgranule = new Hashtable();
+
+            oy.init();
+
+            boolean eos = false;
+            while (!eos) {
+
+                int offset = oy.buffer(4096);
+                int read = is.read(oy.data, offset, 4096);
+                oy.wrote(read);
+                eos = read <= 0;
+
+                while (oy.pageout(og) == 1) {
+
+                    Integer serialno = new Integer(og.serialno());
+                    StreamState os = (StreamState) streamstates.get(serialno);
+                    if (os == null) {
+                        os = new StreamState();
+                        os.init(og.serialno());
+                        streamstates.put(serialno, os);
+                        System.out.println("DurationScanner: created StreamState for stream no. " + serialno);
+                    }
+
+                    os.pagein(og);
+
+                    while (os.packetout(op) == 1) {
+
+                        Integer type = (Integer) streamtype.get(serialno);
+                        if (type == null) {
+                            type = new Integer(determineType(op));
+                            streamtype.put(serialno, type);
+                            if (comment != null) {
+                                streamcomment.put(serialno, comment);
+                            }
+                            if (info != null) {
+                                streaminfo.put(serialno, info);
+                            }
+                            streamstartgranule.put(serialno, new Long(og.granulepos()));
+                        }
+
+                        switch (type.intValue()) {
+                            case VORBIS:
+                                 {
+                                    com.jcraft.jorbis.Info i = (com.jcraft.jorbis.Info) streaminfo.get(serialno);
+                                    long startgranule = ((Long) streamstartgranule.get(serialno)).longValue();
+                                    float t = (float) (og.granulepos() - startgranule) / i.rate;
+                                    if (t > time) {
+                                        time = t;
+                                    }
+                                }
+                                break;
+                            case THEORA:
+                                 {
+                                    com.fluendo.jheora.Info i = (com.fluendo.jheora.Info) streaminfo.get(serialno);
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+            return time;
+        } catch (IOException e) {
+            return -1;
+        }
+    }
+
+    public static float getDurationForURL(URL url, String user, String password) {
+        try {
+            int headbytes = 16 * 1024;
+            int tailbytes = 80 * 1024;
+
+            byte[] buffer = new byte[1024];
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            InputStream is = openWithConnection(url, user, password, 0);
+
+            int read = 0;
+            long pos = 0;
+            read = is.read(buffer);
+            while (pos < headbytes && read > 0) {
+                pos += read;
+                bos.write(buffer, 0, read);
+                read = is.read(buffer);
+            }
+
+            is = openWithConnection(url, null, null, contentLength - tailbytes);
+
+            read = is.read(buffer);
+            while (read > 0) {
+                bos.write(buffer, 0, read);
+                read = is.read(buffer);
+            }
+
+            return getDurationForInputStream(new ByteArrayInputStream(bos.toByteArray()));
+        } catch (IOException e) {
+            return -1;
+        }
     }
 
     public static void main(String[] args) throws IOException {
