@@ -22,6 +22,6 @@ $wgHooks['BeforePageDisplay'][] = 'UW_Javascript_addJS';
 function UW_Javascript_addJS( $out ) {
 	global $wgScriptPath;
 	$src = "$wgScriptPath/extensions/uniwiki/Javascript/uniwiki.js";
-	$out->addScript ( "<script type='text/javascript' src='$src'></script>" );
+	$out->addScript ( "<script type='text/javascript' src='$src'></script>\n" );
 	return true;
 }
