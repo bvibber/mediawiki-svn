@@ -263,7 +263,6 @@ $settings = array(
 			'wgDefaultSkin' => 'text',
 			'wgSkipSkin' => 'text',
 			'wgSkipSkins' => 'array',
-			'wgValidSkinNames' => 'array',
 		),
 	),
 	'category' => array(
@@ -750,7 +749,6 @@ $arrayDefs = array(
 	'wgArticleRobotPolicies' => 'assoc',
 # Skins
 	'wgSkipSkins' => 'simple',
-	'wgValidSkinNames' => 'assoc',
 # Cache
 	'wgMemCachedServers' => 'simple',
 # Interwiki

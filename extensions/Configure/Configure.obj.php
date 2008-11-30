@@ -89,6 +89,15 @@ class WebConfiguration extends SiteConfiguration {
 		// Include files before so that customized settings won't be overriden
 		// by the default ones
 		$this->includeFiles();
+		
+		## Snapshot current settings before overriding.
+		## ialex tells me this weird contraption will work
+		$allSettings = array_keys( ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllSettings() );
+		
+		foreach( $allSettings as $setting ) {
+			if (isset($GLOBALS[$setting]))
+				$this->defaults[$setting] = $GLOBALS[$setting];
+		}
 
 		list( $site, $lang ) = $this->siteFromDB( $this->mWiki );
 		$rewrites = array( 'wiki' => $this->mWiki, 'site' => $site, 'lang' => $lang );
@@ -166,22 +175,13 @@ class WebConfiguration extends SiteConfiguration {
 	}
 
 	/**
-	 * Get the defalut values for all settings
-	 * Very, very hacky...
+	 * Get the default values for all settings
+	 * Works by recording any overridden values when extracting globals.
 	 *
 	 * @return array
 	 */
 	public function getDefaults() {
-		if ( count( $this->mDefaults ) )
-			return $this->mDefaults;
-
-		global $IP;
-		require( "$IP/includes/DefaultSettings.php" );
-		foreach ( get_defined_vars() as $name => $var ) {
-			if ( substr( $name, 0, 2 ) == 'wg' && $name != 'wgConf' )
-				$this->mDefaults[$name] = $var;
-		}
-		return $this->mDefaults;
+		return $this->defaults;
 	}
 
 	/**

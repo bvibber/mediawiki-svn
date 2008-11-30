@@ -119,10 +119,17 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return mixed value of $setting
 	 */
 	protected function getSettingValue( $setting ) {
+		static $defaults;
+		
+		if (!$defaults) {
+			global $wgConf;
+			$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
+		}
+		
 		if ( isset( $this->conf[$setting] ) ) {
 			return $this->conf[$setting];
 		} else {
-			return isset( $GLOBALS[$setting] ) ? $GLOBALS[$setting] : null;
+			return isset( $defaults[$setting] ) ? $defaults[$setting] : null;
 		}
 	}
 
@@ -439,7 +446,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				$arrType = $this->getArrayType( $name );
 				switch( $arrType ) {
 				case 'simple':
-					$text = $wgRequest->getText( 'wp' . $name );
+					$text = trim($wgRequest->getText( 'wp' . $name ));
 					if ( $text == '' )
 						$arr = array();
 					else
@@ -486,7 +493,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					global $wgContLang;
 					$arr = array();
 					foreach ( $wgContLang->getNamespaces() as $ns => $unused ) {
-						$arr[$ns] = $wgRequest->getVal( 'wp' . $name . '-ns' . strval( $ns ) );
+						$arr[$ns] = trim( $wgRequest->getVal( 'wp' . $name . '-ns' . strval( $ns ) ) );
 					}
 					$settings[$name] = $arr;
 					break;
@@ -505,7 +512,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					foreach ( $wgContLang->getNamespaces() as $ns => $unused ) {
 						if ( $ns < 0 )
 							continue;
-						$text = $wgRequest->getText( 'wp' . $name . '-ns' . strval( $ns ) );
+						$text = trim( $wgRequest->getText( 'wp' . $name . '-ns' . strval( $ns ) ) );
 						if ( $text == '' )
 							$nsProtection = array();
 						else
@@ -518,7 +525,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				case 'group-array':
 					$all = array();
 					if ( isset( $_REQUEST['wp' . $name . '-vals'] ) ) {
-						$iter = explode( "\n", $_REQUEST['wp' . $name . '-vals'] );
+						$iter = explode( "\n", trim($wgRequest->getText( 'wp' . $name . '-vals' ) ) );
 						foreach ( $iter as &$group ) {
 							// Our own Sanitizer::unescapeId() :)
 							$group = urldecode( str_replace( array( '.', "\r" ), array( '%', '' ),
@@ -556,7 +563,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			case 'text':
 			case 'lang':
 			case 'image-url':
-				$settings[$name] = $wgRequest->getVal( 'wp' . $name );
+				$settings[$name] = trim( $wgRequest->getVal( 'wp' . $name ) );
 				break;
 			case 'int':
 				$settings[$name] = $wgRequest->getInt( 'wp' . $name );
@@ -602,6 +609,15 @@ abstract class ConfigurationPage extends SpecialPage {
 		else
 			return $val;
 	}
+	
+	/** Recursive doohicky for normalising variables so we can compare them. */
+	protected static function filterVar( $var ) {
+		if (is_array($var)) {
+			return array_filter( array_map( array( __CLASS__, 'filterVar' ), $var ) );
+		}
+		
+		return $var;
+	}
 
 	/**
 	 * Removes the defaults values from settings
@@ -613,8 +629,16 @@ abstract class ConfigurationPage extends SpecialPage {
 		global $wgConf;
 		$defaultValues = $wgConf->getDefaultsForWiki( $this->mWiki );
 		foreach ( $defaultValues as $name => $default ) {
+			## Normalise the two, to avoid false "changes"
+			if (is_array($default))
+				$default = self::filterVar( $default );
+				
 			if ( isset( $settings[$name] ) ) {
-				if ( $settings[$name] === $default ) {
+				$settingCompare = $settings[$name];
+				if (is_array($settingCompare))
+					$settingCompare = self::filterVar($settingCompare);
+			
+				if ( $settingCompare == $default ) {
 					unset( $settings[$name] );
 				} elseif ( $this->canBeMerged( $name, $default ) ) {
 					$value = $settings[$name];
