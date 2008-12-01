@@ -29,8 +29,7 @@ function efConfigureAjax( $group ) {
 		foreach ( $all as $right ) {
 			$id = Sanitizer::escapeId( 'wpwgGroupPermissions-' . $group . '-' . $right );
 			$desc = ( is_callable( array( 'User', 'getRightDescription' ) ) ) ?
-				User::getRightDescription( $right ) :
-				$right;
+				User::getRightDescription( $right ) : $right;
 			$row .= '<li>' . Xml::checkLabel( $desc, $id, $id ) . "</li>\n";
 		}
 		$row .= '</ul></div>';

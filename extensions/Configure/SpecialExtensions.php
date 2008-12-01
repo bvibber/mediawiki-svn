@@ -84,6 +84,7 @@ class SpecialExtensions extends ConfigurationPage {
 
 	/**
 	 * Build the content of the form
+	 * FIXME: register_globals
 	 *
 	 * @return xhtml
 	 */

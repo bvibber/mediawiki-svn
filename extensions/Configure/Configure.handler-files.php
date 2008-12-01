@@ -43,6 +43,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	/**
 	 * Return the configuration from the conf-{$ts}.ser file in the $this->mDir
 	 * Does *not* return site specific settings but *all* settings
+	 * FIXME: timestamp is not unique
 	 *
 	 * @param $ts timestamp
 	 * @return array
@@ -62,6 +63,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 
 	/**
 	 * Returns the wikis in $ts version
+	 * FIXME: timestamp is not unique
 	 *
 	 * @param $ts timestamp
 	 * @return array
@@ -121,7 +123,8 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 				if (isset( $settings['__metadata'] )) {
 					$metadata = $settings['__metadata'];
 					
-					$files[$m[1]] = array( 'username' => $metadata['user_name'], 'userwiki' => $metadata['user_wiki'], 'reason' => $metadata['reason'] );
+					$files[$m[1]] = array( 'username' => $metadata['user_name'], 
+						'userwiki' => $metadata['user_wiki'], 'reason' => $metadata['reason'] );
 				} else {
 					$files[$m[1]] = array( 'username' => false, 'userwiki' => false, 'reason' => false );
 				}

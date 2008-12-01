@@ -81,12 +81,12 @@ class WebConfiguration extends SiteConfiguration {
 		if ( defined( 'EXT_CONFIGURE_NO_EXTRACT' ) )
 			return;
 
-		// Include files before so that customized settings won't be overriden
+		// Include files before so that customized settings won't be overridden
 		// by the default ones
 		$this->includeFiles();
 		
-		## Snapshot current settings before overriding.
-		## ialex tells me this weird contraption will work
+		// Snapshot current settings before overriding.
+		// -ialex tells me this weird contraption will work
 		$allSettings = array_keys( ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllSettings() );
 		
 		foreach( $allSettings as $setting ) {
