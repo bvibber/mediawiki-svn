@@ -89,6 +89,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * Load the current configuration the database (i.e. cv_is_latest == 1)
 	 * directory
+	 * FIXME: serious O(n) overhead
 	 */
 	public function getCurrent( $useCache = true ) {
 		static $ipCached = null;
@@ -97,7 +98,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			return $ipCached;
 
 		# Check filesystem cache
-		if ( ( $cached = $this->getFSCached() ) && $useCache ) {
+		if ( $useCache && ( $cached = $this->getFSCached() ) ) {
 			$this->cacheToFS( $cached );
 			return $ipCached = $cached;
 		}
@@ -134,6 +135,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * Return the old configuration from $ts
 	 * Does *not* return site specific settings but *all* settings
+	 * FIXME: serious O(n) overhead
 	 *
 	 * @param $ts timestamp
 	 * @return array
@@ -157,6 +159,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 
 	/**
 	 * Returns the wikis in $ts version
+	 * FIXME: only returns the first match
 	 *
 	 * @param $ts timestamp
 	 * @return array
@@ -222,7 +225,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 		$newId = $dbw->insertId();
 		$dbw->update( 'config_version',
 			array( 'cv_is_latest' => 0 ),
-			array( 'cv_wiki' => $wiki, 'cv_timestamp <> ' . $dbw->addQuotes( $dbw->timestamp($ts) ) ),
+			array( 'cv_wiki' => $wiki, "cv_id != {$newId}" ),
 			__METHOD__ );
 		$insert = array();
 		foreach ( $settings as $name => $val ) {
@@ -239,6 +242,8 @@ class ConfigureHandlerDb implements ConfigureHandler {
 
 	/**
 	 * List all archived versions
+	 * FIXME: serious O(n) overhead
+	 * FIXME: timestamp not unique
 	 * @return array of timestamps
 	 */
 	public function getArchiveVersions() {
