@@ -33,15 +33,11 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 			# maybe the first time the user use this extensions, do not override
 			# anything
 			return array();
-		$cont = @file_get_contents( $file );
-		if ( empty( $cont ) )
-			# Weird, should not happen
-			return array();
-		$arr = unserialize( $cont );
-		if ( !is_array( $arr ) )
+		require($file);
+		if ( !is_array( $settings ) )
 			# Weird, should not happen too
 			return array();
-		return $arr;
+		return $settings;
 	}
 
 	/**
@@ -57,15 +53,11 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 			# maybe the time the user use this extensions, do not override
 			# anything
 			return array();
-		$cont = @file_get_contents( $file );
-		if ( empty( $cont ) )
-			# Weird, should not happen
-			return array();
-		$arr = unserialize( $cont );
-		if ( !is_array( $arr ) )
+		require($file);
+		if ( !is_array( $settings ) )
 			# Weird, should not happen too
 			return array();
-		return $arr;
+		return $settings;
 	}
 
 	/**
@@ -107,13 +99,13 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 			'reason' => $reason
 		);
 		
-		$cont = serialize( $settings );
+		$cont = '<?php $settings = '.var_export( $settings, true ).";";
 		@file_put_contents( $arch, $cont );
 		return ( @file_put_contents( $cur, $cont ) !== false );
 	}
 
 	/**
-	 * List all archived files that are like conf-{$ts}.ser
+	 * List all archived files that are like conf-{$ts}.php
 	 * @return array of timestamps
 	 */
 	public function getArchiveVersions() {
@@ -122,9 +114,9 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		$files = array();
 		
 		while ( ( $file = readdir( $dir ) ) !== false ) {
-			if ( preg_match( '/^conf-(\d{14})\.ser$/', $file, $m ) ) {
+			if ( preg_match( '/^conf-(\d{14})\.php$/', $file, $m ) ) {
 				## Read the data.
-				$settings = unserialize( file_get_contents( $this->mDir."/$file" ) );
+				require( $this->mDir."/$file" );
 				
 				if (isset( $settings['__metadata'] )) {
 					$metadata = $settings['__metadata'];
@@ -168,7 +160,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * @return String full path to the file
 	 */
 	protected function getFileName() {
-		return "{$this->mDir}conf-now.ser";
+		return "{$this->mDir}conf-now.php";
 	}
 
 	/**
@@ -181,7 +173,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		if ( $ts === null )
 			$ts = wfTimestampNow();
 
-		$file = "{$this->mDir}conf-$ts.ser";
+		$file = "{$this->mDir}conf-$ts.php";
 		return $file;
 	}
 
