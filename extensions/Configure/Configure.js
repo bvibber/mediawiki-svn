@@ -170,7 +170,8 @@ function setupConfigure(){
 		button.onclick = createImageUrlCallback( textbox, img );
 
 		textbox.parentNode.insertBefore( button, img );
-		textbox.parentNode.appendChild( document.createTextNode( '\u00A0' ), textbox ); // nbsp
+		textbox.parentNode.insertBefore( document.createTextNode( '\u00A0' ), button ); // nbsp
+		img.parentNode.insertBefore( document.createTextNode( '\u00A0' ), img ); // nbsp
 	}
 
 	// $wgGroupPermissions stuff, only if ajax is enabled

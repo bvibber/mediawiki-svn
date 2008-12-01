@@ -306,12 +306,16 @@ abstract class ConfigurationPage extends SpecialPage {
 
 		if ( $version = $wgRequest->getVal( 'version' ) ) {
 			$versions = $wgConf->listArchiveVersions();
-			if ( in_array( $version, $versions ) ) {
+			if ( in_array( $version, $versions ) || $version == 'default' ) {
 				$conf = $wgConf->getOldSettings( $version );
+				
+				if ($version == 'default') { ## Hacky special case.
+					$conf[$this->mWiki] = $conf['default'];
+				}
+				
 				$this->conf = $conf[$this->mWiki];
 				if ( !isset( $conf[$this->mWiki] ) ) {
-					$wgOut->addWikiText( '<div class="errorbox">$1</div>',
-						array( 'configure-old-not-available', $version ) );
+					$wgOut->addHtml( Xml::tags( 'div', array( 'class' => 'errorbox' ), wfMsgExt( 'configure-old-not-available', 'parseinline', $version ) ) );
 					return false;
 				}
 				$current = null;
@@ -397,7 +401,8 @@ abstract class ConfigurationPage extends SpecialPage {
 			$text .= "</li>\n</ul>\n";
 		}
 		$link = SpecialPage::getTitleFor( 'ViewConfig' );
-		$text .= $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) );
+		$text .= Xml::tags( 'p', null, $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) ) );
+		$text .= Xml::tags( 'p', null, $skin->link( SpecialPage::getTitleFor( 'ViewConfig' ), wfMsgHtml( 'configure-view-default' ), array(), array( 'version' => 'default' ) ) );
 
 		$text .= '</fieldset>';
 		return $text;
@@ -611,15 +616,6 @@ abstract class ConfigurationPage extends SpecialPage {
 		else
 			return $val;
 	}
-	
-	/** Recursive doohicky for normalising variables so we can compare them. */
-	protected static function filterVar( $var ) {
-		if (is_array($var)) {
-			return array_filter( array_map( array( __CLASS__, 'filterVar' ), $var ) );
-		}
-		
-		return $var;
-	}
 
 	/**
 	 * Removes the defaults values from settings
@@ -633,12 +629,12 @@ abstract class ConfigurationPage extends SpecialPage {
 		foreach ( $defaultValues as $name => $default ) {
 			## Normalise the two, to avoid false "changes"
 			if (is_array($default))
-				$default = self::filterVar( $default );
+				$default = WebConfiguration::filterVar( $default );
 				
 			if ( isset( $settings[$name] ) ) {
 				$settingCompare = $settings[$name];
 				if (is_array($settingCompare))
-					$settingCompare = self::filterVar($settingCompare);
+					$settingCompare = WebConfiguration::filterVar($settingCompare);
 			
 				if ( $settingCompare == $default ) {
 					unset( $settings[$name] );
@@ -1113,10 +1109,16 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function buildTableRow( $conf, $params ) {
 		global $wgContLang;
+		
+		$rowClasses = array();
+		
+		if ($params['customised'])
+			$rowClasses[] = 'configure-customised';
 
 		$msg = isset( $params['msg'] ) ? $params['msg'] : 'configure-setting-' . $conf;
 		$showLink = isset( $params['link'] ) ? $params['link'] : true;
 
+		## First TD
 		$attribs = array();
 		$attribs['align'] = $wgContLang->isRtl() ? 'right' : 'left';
 		$attribs['valign'] = 'top';
@@ -1132,16 +1134,20 @@ abstract class ConfigurationPage extends SpecialPage {
 			$msgVal = $link;
 		else
 			$msgVal = "$msgVal ($link)";
+			
+		if ($params['customised'])
+			$msgVal = Xml::tags( 'p', null, $msgVal ).wfMsgExt( 'configure-customised', 'parse' );
 		$attribs['class'] = 'configure-left-column';
-		$td1 = Xml::openElement( 'td', $attribs ) . $msgVal . '</td>';
+		$td1 = Xml::tags( 'td', $attribs, $msgVal );
+		
+		## Only the class is customised per-cell, so we'll just redefine that.
 		$attribs['class'] = 'configure-right-column';
 		if ( $this->isSettingAvailable( $conf ) )
-			$td2 = Xml::openElement( 'td', $attribs ) . $this->buildInput( $conf, $params ) . '</td>';
+			$td2 = Xml::tags( 'td', $attribs, $this->buildInput( $conf, $params ) );
 		else
-			$td2 = Xml::openElement( 'td', $attribs ) .
-				wfMsgExt( 'configure-setting-not-available', array( 'parseinline' ) ) . '</td>';
+			$td2 = Xml::tags( 'td', $attribs, wfMsgExt( 'configure-setting-not-available', array( 'parseinline' ) ) );
 
-		return '<tr>' . $td1 . $td2 . "</tr>\n";
+		return Xml::tags( 'tr', array( 'class' => implode( ' ', $rowClasses ) ), $td1 . $td2 ) . "\n";
 	}
 
 	/**
@@ -1153,6 +1159,9 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function buildSettings( $settings, $param = array() ) {
 		wfLoadExtensionMessages( 'ConfigureSettings' );
+		
+		global $wgConf;
+		$defaults = $wgConf->getDefaults();
 
 		$ret = '';
 		$perms = array();
@@ -1209,6 +1218,9 @@ abstract class ConfigurationPage extends SpecialPage {
 							'value' => $this->getSettingValue( $setting ),
 							'link' => $showlink,
 						);
+						
+						$params['customised'] = ( WebConfiguration::filterVar($defaults[$setting]) != WebConfiguration::filterVar($params['value']) );
+						
 						$show = $this->mCanEdit ?
 							( isset( $params['edit'] ) ? $params['edit'] : $this->userCanEdit( $setting ) ) :
 							( isset( $params['read'] ) ? $params['read'] : $this->userCanRead( $setting ) );

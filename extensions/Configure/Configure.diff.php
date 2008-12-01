@@ -198,8 +198,8 @@ abstract class ConfigurationDiff {
 		else
 			$msgVal = "$msgVal ($rawVal)";
 
-		$oldSet = $this->getSettingAsArray( $old, $name, $type );
-		$newSet = $this->getSettingAsArray( $new, $name, $type );
+		$oldSet = WebConfiguration::filterVar( $this->getSettingAsArray( $old, $name, $type ) );
+		$newSet = WebConfiguration::filterVar( $this->getSettingAsArray( $new, $name, $type ) );
 		$diffs = new Diff( $oldSet, $newSet );
 		$formatter = new TableDiffFormatter();
 
@@ -327,12 +327,33 @@ class HistoryConfigurationDiff extends ConfigurationDiff {
 
 	protected function getOldVersion() {
 		global $wgConf;
-		return $wgConf->getOldSettings( $this->diff );
+		
+		$settings = $wgConf->getOldSettings( $this->diff );
+	
+		if ($this->diff == 'default') { ## Special case: Replicate settings across all wikis for a fair comparison.
+			$new = $this->getNewVersion();
+			
+			$defaultSettings = array();
+			
+			## This is kinda annoying. We can't copy ALL settings over, because not all settings are stored.
+			foreach( $new as $wiki => $newSettings ) {
+				$defaultSettings[$wiki] = array();
+				
+				foreach( $newSettings as $key => $value ) {
+					$defaultSettings[$wiki][$key] = $settings['default'][$key];
+				}
+			}
+			
+			$settings = $defaultSettings;
+		}
+		
+		return $settings;
 	}
 
 	protected function getNewVersion() {
 		global $wgConf;
-		return $wgConf->getOldSettings( $this->version );
+		$settings = $wgConf->getOldSettings( $this->version );
+		return $settings;
 	}
 
 	protected function getSettings() {

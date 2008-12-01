@@ -18,6 +18,7 @@ $messages['en'] = array(
 
 	'configure-edit-core'                 => 'MediaWiki',
 	'configure-edit-ext'                  => 'Extensions',
+	'configure-viewconfig-default-diff'   => 'Changes from default settings',
 
 	'configure-ext-doc'                   => 'See online documentation',
 	'configure-ext-schemachange'          => "'''Warning:''' this extension requires a database update to work correctly!",
@@ -25,6 +26,7 @@ $messages['en'] = array(
 	'configure-ext-use-extension'         => 'Use this extension',
 	'configure-ext-use'                   => 'Use',
 	'configure-form-reason'		      => 'Reason for change:',
+	'configure-customised'		      => "''This setting has been customised''",
 
 	'configure-arrayinput-oneperline'     => "''(one per line)''",
 	'configure-summary'                   => 'This special page allows you to configure this wiki, see [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] for more information.',
@@ -134,6 +136,7 @@ Please create it or change it to use this extension.',
 	'configure-transwiki-not-in-range'    => 'The requested wiki, $1, is not in allowed values ($2).',
 	'configure-view'                      => 'View',
 	'configure-view-all-versions'         => 'Full list of versions',
+	'configure-view-default'              => 'Default settings',
 	'configure-view-not-allowed'          => 'You are not allowed to see this setting',
 	'configure-viewconfig-line'	      => '$1 $2 by $3 $5: $4',
 	'extensions'                          => 'Configure the extensions',

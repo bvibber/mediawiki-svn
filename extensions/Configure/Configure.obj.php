@@ -147,6 +147,8 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array
 	 */
 	public function getOldSettings( $ts ) {
+		if ($ts == 'default')
+			return array( 'default' => $this->getDefaults() );
 		return $this->mHandler->getOldSettings( $ts );
 	}
 
@@ -158,6 +160,15 @@ class WebConfiguration extends SiteConfiguration {
 	 */
 	public function getWikisInVersion( $ts ) {
 		return $this->mHandler->getWikisInVersion( $ts );
+	}
+	
+	/** Recursive doohicky for normalising variables so we can compare them. */
+	public static function filterVar( $var ) {
+		if (is_array($var)) {
+			return array_filter( array_map( array( __CLASS__, 'filterVar' ), $var ) );
+		}
+		
+		return $var;
 	}
 
 	/**

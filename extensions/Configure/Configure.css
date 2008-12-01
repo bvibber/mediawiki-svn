@@ -142,6 +142,10 @@ a.configure-doc:visited {
 	color: #0318d8;
 }
 
+.configure-customised {
+	background-color: #eef;
+}
+
 /**
  * disabled settings
  */

@@ -30,8 +30,13 @@ class SpecialViewConfig extends ConfigurationPage {
 
 		if ( $this->isWebConfig && $version = $wgRequest->getVal( 'version' ) ) {
 			$versions = $wgConf->listArchiveVersions();
-			if ( in_array( $version, $versions ) ) {
+			if ( in_array( $version, $versions ) || $version == 'default' ) {
 				$conf = $wgConf->getOldSettings( $version );
+				
+				if ($version == 'default') { ## Yucky special case.
+					$conf[$this->mWiki] = $conf['default'];
+				}
+				
 				if ( $this->isUserAllowedAll() ) {
 					$wiki = $wgRequest->getVal( 'wiki', $wgConf->getWiki() );
 				} else {
@@ -42,7 +47,7 @@ class SpecialViewConfig extends ConfigurationPage {
 				$this->wiki = $wiki;
 
 				if ( $diff = $wgRequest->getVal( 'diff' ) ) {
-					if ( !in_array( $diff, $versions ) ) {
+					if ( !in_array( $diff, $versions ) && $diff != 'default' ) {
 						$msg = wfMsgNoTrans( 'configure-old-not-available', $diff );
 						$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
 						return;
@@ -240,7 +245,8 @@ class SpecialViewConfig extends ConfigurationPage {
 				Xml::element( 'input', array_merge(
 					array( 'type' => 'radio', 'name' => 'version', 'value' => $ts ),
 					$versionCheck ) );
-
+			
+			$actions[] = $skin->link( $this->getTitle(), wfMsgHtml( 'configure-viewconfig-default-diff' ), array(), array( 'version' => $ts, 'diff' => 'default' ) );
 		} else {
 			$buttons = '';
 		}
