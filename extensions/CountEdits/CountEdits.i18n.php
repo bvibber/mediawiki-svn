@@ -507,6 +507,7 @@ $messages['it'] = array(
 	'countedits-desc' => '[[Special:CountEdits|Pagina speciale]] che conteggia gli edit di un utente e fornisce una lista dei dieci migliori autori',
 	'countedits-warning' => "'''Attenzione:''' Un libro non si giudica dalla copertina. Un utente non si giudica dal numero delle modifiche.",
 	'countedits-username' => 'Nome utente:',
+	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => '$1 non corrisponde a un nome utente valido.',
 	'countedits-resultheader' => "Risultati per l'utente $1",
 	'countedits-resulttext' => '$1 ha effettuato $2 modifiche',

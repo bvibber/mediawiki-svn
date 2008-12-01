@@ -89,6 +89,9 @@ $messages['bg'] = array(
 	'gep-addcategory' => 'Добавяне на категория',
 	'gep-addcategorybutton' => 'Добавяне',
 	'gep-suggestcategorybutton' => 'Изпращане',
+	'gep-sections' => 'Раздели',
+	'gep-sectionnotdisabled' => 'Този раздел не може да бъде изключен',
+	'gep-addsection' => 'Добавяне на раздел',
 	'gep-addsectionbutton' => 'Добавяне',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
@@ -235,6 +238,7 @@ Tambahaké kanthi migunakaké piranti (''tools'') sing ana ing tengen.",
  * @author Robby
  */
 $messages['lb'] = array(
+	'gep-desc' => "mécht d'ännerungssäit méi benotzerfrëndlech",
 	'gep-emailsubject' => '[$1] Virschlag Kategorie: $2',
 	'gep-emailbody' => 'De Benotzer "$1" huet d\'Kategorie "$2" fir de Site "$3" virgeschlo.',
 	'gep-emailfailure' => 'Pardon, Äre Virschlag konnt net verschafft ginn.',
@@ -245,6 +249,8 @@ $messages['lb'] = array(
 	'gep-suggestcategory' => 'Eng Kategorie virschloen',
 	'gep-suggestcategorybutton' => 'Schécken',
 	'gep-sections' => 'Abschnitter',
+	'gep-sectionnotdisabled' => 'Dësen Abschnitt kann net ausgeschalt ginn',
+	'gep-addsection' => 'En Abschnitt derbäisetzen',
 	'gep-addsectionbutton' => 'Derbäisetzen',
 	'gep-nocategories' => 'Wielt w.e.g. mindestens eng Kategorie aus ier Dir ofspäichert',
 	'gep-categorypage' => 'MediaWiki:Säitenännerungs-Tagen',
@@ -274,6 +280,32 @@ $messages['nl'] = array(
 Gebruik de hulpmiddelen aan de rechterkant om er een toe te voegen.',
 	'gep-nocategories' => 'Selecteer tenminste één categorie voordat u de pagina opslaat',
 	'gep-categorypage' => 'MediaWiki:Editpagelabels',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'gep-desc' => 'Suplear lo formulari de modificacion per èsser de melhor utilizar',
+	'gep-emailsubject' => '[$1] Suggestion de categoria : $2',
+	'gep-emailbody' => "L'utilizaire « $1 » a suggerit la categoria « $2 » pel sit « $3 ».",
+	'gep-emailfailure' => 'O planhèm, vòstra suggestion a pas pogut èsser efectuada.',
+	'gep-emailsuccess' => 'Mercés per aver suggerit la categoria : $1.',
+	'gep-categories' => 'Categorias',
+	'gep-addcategory' => 'Apondre una categoria',
+	'gep-addcategorybutton' => 'Apondre',
+	'gep-suggestcategory' => 'Suggerir una categoria',
+	'gep-suggestcategorybutton' => 'Sometre',
+	'gep-sections' => 'Seccions',
+	'gep-sectionnotdisabled' => 'Aquesta seccion pòt pas èsser desactivada',
+	'gep-addsection' => 'Apondre una seccion',
+	'gep-addsectionbutton' => 'Apondre',
+	'gep-classicmode' => 'Mòde classic',
+	'gep-genericmode' => 'Mòde generic',
+	'gep-nosectioninstructions' => "I a pas cap de seccion dins aquesta pagina.
+Apondètz-ne en utilizant l'esplech a drecha.",
+	'gep-nocategories' => 'Causir al mens una categoria abans de salvar la pagina',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Pashto (پښتو)

@@ -129,6 +129,13 @@ $messages['ksh'] = array(
 	'googleadsense-desc' => 'Deit <i lang="en">[http://www.google.com/adsense Google AdSense]</i> Aanzeije en de <i lang="en">sidebar</i> erin.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'googleadsense-desc' => 'Setzt [http://www.google.com/adsense Google AdSense] an déi säitlech Navigatiounslëscht derbäi',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -148,6 +155,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'googleadsense-desc' => 'Apond [http://www.google.com/adsense Google AdSense] a la barra laterala',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'googleadsense-desc' => "Aggiunge [http://www.google.com/adsense Google AdSense] jndr'à barra laterele",
 );
 
 /** Russian (Русский)

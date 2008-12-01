@@ -853,6 +853,15 @@ $messages['tr'] = array(
 	'importfreeimages_next' => 'Sonraki $1',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'importfreeimages' => 'Імпорт вільних зображень',
+	'importfreeimages-desc' => 'Дозволяє [[Special:ImportFreeImages|імпортувати ліцензовані належним чином фотографії]] з [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Ця сторінка дозволяє вам шукати фотографії з Flickr, ліцензовані належним чином, та імпортувати їх до вікі.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

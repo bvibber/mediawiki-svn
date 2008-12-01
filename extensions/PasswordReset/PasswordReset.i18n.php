@@ -517,6 +517,14 @@ $messages['km'] = array(
 	'passwordreset-confirmpass' => 'បញ្ជាក់​ទទួល​ស្គាល់​ពាក្យសំងាត់៖',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'passwordreset-newpass' => '새 암호:',
+	'passwordreset-confirmpass' => '암호 확인:',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -49,6 +49,20 @@ $messages['nl'] = array(
 	'formatsearch-desc' => 'Schoont de zoekresultatenpagina op',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'formatsearch-desc' => 'Renser søkeresultatsiden',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'formatsearch-desc' => 'Netejar la pagina de resultats de recèrca',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

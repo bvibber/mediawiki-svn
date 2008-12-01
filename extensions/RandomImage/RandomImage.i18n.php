@@ -200,6 +200,13 @@ $messages['tg-cyrl'] = array(
 	'randomimage-desc' => 'Бо истифодаи <tt>&lt;randomimage /&gt;</tt> чинандаи расонаи тасодуфиро пешкаш мекунад',
 );
 
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'randomimage-desc' => 'Дозволяє випадково вибирати медіа за допомогою <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

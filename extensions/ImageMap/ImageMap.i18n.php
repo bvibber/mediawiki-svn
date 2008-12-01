@@ -496,6 +496,7 @@ $messages['hsb'] = array(
 	'imagemap_desc' => 'Zmóžnja klikajomne wobrazowe mapy na klientowej stronje z pomocu taflički <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => '&lt;imagemap&gt; zmylk: Dyrbiš w prěnjej lince wobraz podać',
 	'imagemap_invalid_image' => '&lt;imagemap&gt; zmylk: Wobraz je njepłaćiwy abo njeeksistuje',
+	'imagemap_bad_image' => 'Zmylk: wobraz na tutej stronje je na čornej lisćinje',
 	'imagemap_no_link' => '&lt;imagemap&gt; zmylk: Na kóncu linki $1 njebu płaćiwy wotkaz namakany',
 	'imagemap_invalid_title' => '&lt;imagemap&gt; zmylk: njepłaćiwy titul we wotkazu w lince $1',
 	'imagemap_missing_coord' => '&lt;imagemap&gt; zmylk: Přemało koordinatow w lince $1 za podobu',
@@ -504,6 +505,7 @@ $messages['hsb'] = array(
 	'imagemap_invalid_coord' => '&lt;imagemap&gt; zmylk: njepłaćiwa koordinata w lince $1: su jenož ličby dowolene',
 	'imagemap_invalid_desc' => '&lt;imagemap&gt; zmylk: Njepłaćiwy parameter "desc", móžne su: <tt>$1</tt>',
 	'imagemap_description' => 'Wo tutym wobrazu',
+	'imagemap_poly_odd' => 'Zmylk: polygon z njerunej ličbu koordinatow na lince $1',
 );
 
 /** Hungarian (Magyar)
@@ -1071,6 +1073,26 @@ $messages['sah'] = array(
 	'imagemap_invalid_coord' => 'Error: $1 строкаҕа сыыһа координата суруллубут, чыыһыла буолуохтаах',
 	'imagemap_invalid_desc' => 'Error: desc суолтата сыыһа турбут, мантан талыахха наада: <tt>$1</tt>',
 	'imagemap_description' => 'Ойуу туһунан',
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'imagemap_desc' => '<tt><nowiki><imagemap></nowiki></tt> ටැගය භාවිතයෙන් සේවාලාභි-අන්තයෙහි ක්ලික්කලහැකි රූප සිතියම් වලට ඉඩ සලසයි',
+	'imagemap_no_image' => 'දෝෂය: ඔබ විසින්, පළමු පේලියෙහි රූපයක් හුවාදැක්වියයුතුය',
+	'imagemap_invalid_image' => 'දෝෂය: රූපය අනීතිකයි නැතිනම් නොපවතියි',
+	'imagemap_bad_image' => 'දෝෂය: රූපය මෙම පටුවෙහි අපලේඛණය කොට ඇත',
+	'imagemap_no_link' => 'දෝෂය: $1 පේළිය කෙළවර කිසිදු නීතික සබැඳියක් හමුනොවිණි',
+	'imagemap_invalid_title' => 'දෝෂය: $1 පේළියෙහි සබැඳියෙහි ශීර්ෂය අනීතිකයි',
+	'imagemap_missing_coord' => 'දෝෂය: $1 පේළියෙහි හැඩය සඳහා අවශ්‍ය තරමට ඛණ්ඩාංක සපයා නොමැත',
+	'imagemap_unrecognised_shape' => 'දෝෂය: $1 පේළියෙහි හැඩය හඳුනාගතනොහැකි විය, සෑම පේළියක්ම මෙයින් එකකික් ඇරඹිය යුතුය: default, rect, circle හෝ poly',
+	'imagemap_no_areas' => 'දෝෂය: අවම වශයෙන් සරි පිරිවිතර එකක් හෝ සැපයිය යුතුය',
+	'imagemap_invalid_coord' => 'දෝෂය: $1 පේළියෙහි අනීතික ඛණ්ඩාංකයකි, එය සංඛ්‍යාවක් විය යුතුය',
+	'imagemap_invalid_desc' => 'දෝෂය: desc පිරිවිතරය අනීතිකයි, මෙයින් එකක් විය යුතුය: <tt>$1</tt>',
+	'imagemap_description' => 'මෙම රූපය පිළිබඳ',
+	'imagemap_desc_types' => 'ඉහළ-දකුණ, පහළ-දකුණ, පහළ-වම, ඉහළ-වම, කිසිවක් නැත',
+	'imagemap_poly_odd' => 'දෝෂය: $1 පේළියෙහි ඛණ්ඩාංක ඔත්තේ ගණනක් සමග poly හමුවිය',
 );
 
 /** Slovak (Slovenčina)

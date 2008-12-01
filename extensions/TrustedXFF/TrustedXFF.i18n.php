@@ -142,6 +142,13 @@ $messages['ksh'] = array(
 	'trustedxff-desc' => 'Don en Leß met jode <i lang="en">proxy</i>-Adresse ([http://meta.wikimedia.org/wiki/XFF_project XFF project]) verwallde un noze.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'trustedxff-desc' => 'Gestioun vun enger Lëscht vu vertrauenswerte Proxy-Adressen ([http://meta.wikimedia.org/wiki/XFF_project Projet-XFF])',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

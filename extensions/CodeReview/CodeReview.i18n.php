@@ -107,6 +107,7 @@ $4',
 );
 
 /** Message documentation (Message documentation)
+ * @author Aotake
  * @author Dalibor Bosits
  * @author EugeneZelenko
  * @author Jon Harald Søby
@@ -122,6 +123,7 @@ $messages['qqq'] = array(
 	'code-field-comments' => '{{Identical|Notes}}',
 	'code-field-path' => '{{Identical|Path}}',
 	'code-rev-author' => '{{Identical|Author}}',
+	'code-rev-date' => '{{Identical|Date}}',
 	'code-rev-message' => '{{Identical|Comment}}',
 	'code-rev-rev' => '{{Identical|Revision}}',
 	'code-rev-status' => '{{Identical|Status}}',
@@ -478,6 +480,11 @@ $4',
 	'repoadmin-edit-bug' => 'Път до Bugzilla:',
 	'repoadmin-edit-view' => 'Път до ViewVC:',
 	'repoadmin-edit-sucess' => 'Хранилището „[[Special:Code/$1|$1]]“ беше променено успешно.',
+	'right-repoadmin' => 'Управление на хранилищата с код',
+	'right-codereview-add-tag' => 'Добавяне на нови етикети към версиите',
+	'right-codereview-remove-tag' => 'Премахване на етикети от версиите',
+	'right-codereview-post-comment' => 'Добавяне на коментари към версиите',
+	'right-codereview-set-status' => 'Променяне на статута на версиите',
 	'specialpages-group-developer' => 'Инструменти за разработчици',
 );
 
@@ -765,6 +772,11 @@ $4',
 $messages['dsb'] = array(
 	'code' => 'Kodowa kontrola',
 	'code-comments' => 'Komentary',
+	'code-change-status' => "jo '''status''' wersije změnił",
+	'code-change-tags' => "jo '''toflicki''' za toś tu wersiju změnił",
+	'code-change-removed' => 'wótpórany:',
+	'code-change-added' => 'pśidany:',
+	'code-prop-changes' => 'Protokol statusa & toflickow',
 	'code-desc' => '[[Special:Code|Rěd za kodowu kontrolu]] z [[Special:RepoAdmin|pódpěru za Subversion]]',
 	'code-no-repo' => 'Žeden repozitorium konfigurěrowany!',
 	'code-notes' => 'Kontrolowe pśipiski',
@@ -814,6 +826,7 @@ $messages['dsb'] = array(
 	'code-rev-purge-link' => 'Cache wuprozniś',
 	'code-status-new' => 'nowy',
 	'code-status-fixme' => 'pórěźiś',
+	'code-status-reverted' => 'anulěrowany',
 	'code-status-resolved' => 'wótbyty',
 	'code-status-ok' => 'w pórěźe',
 	'code-status-deferred' => 'wótstarcony',
@@ -916,6 +929,7 @@ $messages['eo'] = array(
 	'code-pathsearch-legend' => 'Serĉi versiojn en ĉi tiu kodujo laŭ vojo',
 	'code-pathsearch-path' => 'Vojo:',
 	'code-rev-submit' => 'Konfirmi ŝanĝojn',
+	'code-rev-submit-next' => 'Sendi kaj aliri sekvan nefaritaĵon',
 	'codereview-reply-link' => 'respondo',
 	'codereview-email-subj' => '[$1] [r$2]: Nova komento estis aldonita',
 	'codereview-email-body' => 'Uzanto "$1" afiŝis komenton de $3.
@@ -1882,6 +1896,17 @@ $messages['km'] = array(
 	'repoadmin-edit-button' => 'យល់ព្រម',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'repoadmin' => '저장소 관리',
+	'repoadmin-new-legend' => '새 저장소 만들기',
+	'repoadmin-new-label' => '저장소 이름:',
+	'repoadmin-new-button' => '생성',
+	'specialpages-group-developer' => '개발자 도구',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -2325,6 +2350,11 @@ $4',
 $messages['oc'] = array(
 	'code' => 'Verificacion del còde',
 	'code-comments' => 'Nòtas de relectura',
+	'code-change-status' => "a modificat l''''estatut''' d'aquesta version",
+	'code-change-tags' => "a modificat las '''balisas''' per aquesta version",
+	'code-change-removed' => 'levat :',
+	'code-change-added' => 'apondut :',
+	'code-prop-changes' => 'Estatut e jornal de balisatge',
 	'code-desc' => '[[Special:Code|Espleches per tornar veire lo còde]] amb [[Special:RepoAdmin|supòrt de Subversion]]',
 	'code-no-repo' => 'Pas de depaus configurat !',
 	'code-notes' => 'revisar las nòtas',
@@ -2374,6 +2404,7 @@ $messages['oc'] = array(
 	'code-rev-purge-link' => 'purgar',
 	'code-status-new' => 'novèl',
 	'code-status-fixme' => 'de reparar',
+	'code-status-reverted' => 'revocat',
 	'code-status-resolved' => 'resolgut',
 	'code-status-ok' => "d'acòrdi",
 	'code-status-deferred' => 'deferit',

@@ -56,6 +56,13 @@ $messages['nl'] = array(
 	'mootools12core-desc' => 'Voegt mootools-1.2-core-yc.js toe aan iedere pagina',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'mootools12core-desc' => 'Legger til mootools-1.2-core-yc.js på hver side',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

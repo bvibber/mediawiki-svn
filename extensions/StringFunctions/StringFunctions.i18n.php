@@ -149,6 +149,13 @@ $messages['sv'] = array(
 	'stringfunctions-desc' => 'Utökar parsern med strängfunktioner',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'stringfunctions-desc' => 'Розширює можливості парсера за рахунок функцій для роботи з рядками',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

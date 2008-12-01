@@ -407,6 +407,7 @@ $messages['it'] = array(
 	'chemFunctions_CAS' => 'Numero CAS',
 	'chemFunctions_ATCCode' => 'Codice ATC',
 	'chemFunctions_ECNumber' => 'Numero EC',
+	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_Name' => 'Nome IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Input non corretto.',
 );

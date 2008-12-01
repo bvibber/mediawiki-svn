@@ -120,7 +120,7 @@ $messages['de'] = array(
 	'lookupuser-nonexistent' => 'Fehler: Benutzer nicht vorhanden',
 	'lookupuser-authenticated' => 'E-Mail-Bestätigung: $1',
 	'lookupuser-not-authenticated' => 'nicht bestätigt',
-	'lookupuser-id' => 'Benutzer-ID: <tt>#$1</tt>',
+	'lookupuser-id' => 'Benutzer-ID: <tt>$1</tt>',
 	'lookupuser-email' => 'E-Mail: [[Special:Emailuser/$2|$1]]',
 	'lookupuser-realname' => 'Wirklicher Name: $1',
 	'lookupuser-registration' => 'Datum der Registrierung: $1',
@@ -198,6 +198,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Sherbrooke
  */
 $messages['fr'] = array(
@@ -214,6 +215,7 @@ $messages['fr'] = array(
 	'lookupuser-registration' => "Date d'enregistrement : $1",
 	'lookupuser-no-registration' => 'non enregistré',
 	'lookupuser-touched' => "Enregistrement de l'utilisateur touché pour la dernière fois : $1",
+	'lookupuser-info-authenticated' => 'Authentification du courriel : $1',
 	'lookupuser-useroptions' => "Options de l'utilisateur :",
 );
 
@@ -400,6 +402,7 @@ $messages['it'] = array(
 	'lookupuser-registration' => 'Data di registrazione: $1',
 	'lookupuser-no-registration' => 'non disponibile',
 	'lookupuser-touched' => "Ultima visita registrata dell'utente: $1",
+	'lookupuser-info-authenticated' => 'Autenticazione e-mail: $1',
 	'lookupuser-useroptions' => 'Opzioni utente:',
 );
 
@@ -499,6 +502,7 @@ $messages['lb'] = array(
 	'lookupuser-registration' => 'Datum vun der Umeldung: $1',
 	'lookupuser-no-registration' => 'net enregistréiert',
 	'lookupuser-touched' => "Benotzerkont de fir d'lescht beréiert gouf: $1",
+	'lookupuser-info-authenticated' => 'E-Mail Authentifikatioun: $1',
 	'lookupuser-useroptions' => 'Astellunge vum Benotzer:',
 );
 
@@ -579,6 +583,7 @@ $messages['nl'] = array(
 	'lookupuser-registration' => 'Registratiedatum: $1',
 	'lookupuser-no-registration' => 'niet opgeslagen',
 	'lookupuser-touched' => 'Gebruikersvoorkeuren laatst gewijzigd: $1',
+	'lookupuser-info-authenticated' => 'E-mailbevestiging: $1',
 	'lookupuser-useroptions' => 'Gebruikersopties:',
 );
 
@@ -619,6 +624,7 @@ $messages['no'] = array(
 	'lookupuser-registration' => 'Registrasjonsdato: $1',
 	'lookupuser-no-registration' => 'ikke lagret',
 	'lookupuser-touched' => 'Innstillinger sist endret: $1',
+	'lookupuser-info-authenticated' => 'E-postverifisering: $1',
 	'lookupuser-useroptions' => 'Brukervalg:',
 );
 
@@ -639,6 +645,7 @@ $messages['oc'] = array(
 	'lookupuser-registration' => "Data d'enregistrament : $1",
 	'lookupuser-no-registration' => 'pas enregistrat',
 	'lookupuser-touched' => "Enregistrament de l'utilizaire tocat pel darrièr còp : $1",
+	'lookupuser-info-authenticated' => 'Autentificacion del corrièr electronic : $1',
 	'lookupuser-useroptions' => "Opcions de l'utilizaire :",
 );
 
@@ -753,6 +760,7 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'lookupuser' => 'Kolla upp användar info',
@@ -768,6 +776,7 @@ $messages['sv'] = array(
 	'lookupuser-registration' => 'Registrerings datum: $1',
 	'lookupuser-no-registration' => 'inte lagrat',
 	'lookupuser-touched' => 'Inställningar sist ändrat: $1',
+	'lookupuser-info-authenticated' => 'E-postverifiering: $1',
 	'lookupuser-useroptions' => 'Användarval:',
 );
 
@@ -803,6 +812,14 @@ $messages['tg-cyrl'] = array(
 $messages['tr'] = array(
 	'lookupuser-email' => 'E-mail: [[Special:Emailuser/$2|$1]]',
 	'lookupuser-realname' => 'Gerçek isim: $1',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'lookupuser' => 'Показати відомості про користувача',
+	'lookupuser-desc' => '[[Special:LookupUser|Отримання відомостей]] про користувача, таких як адреса Е-пошти та ідентифікатор',
 );
 
 /** Vèneto (Vèneto)

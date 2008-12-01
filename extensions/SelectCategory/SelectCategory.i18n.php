@@ -186,10 +186,12 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author Darth Kule
  * @author Marius Engler <marius.engler@coop.ch>
  */
 $messages['it'] = array(
 	'selectcategory-title' => 'Selezionare le categorie',
+	'selectcategory-desc' => "Permette all'utente di selezionare da categorie esistenti quando modifica una pagina",
 	'selectcategory-subtitle' => 'Fare clic con il mouse tenendo premuto MAIUSC per selezionare più voci adiacenti o CTRL per selezionare più voci non adiacenti.',
 );
 

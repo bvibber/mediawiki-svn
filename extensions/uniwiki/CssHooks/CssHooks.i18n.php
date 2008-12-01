@@ -13,6 +13,13 @@ $messages['en'] = array(
 	'csshooks-desc' => 'Adds CSS to the HTML output of pages for better styling',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'csshooks-desc' => 'Добавя CSS към HTML-изходния код на страниците са по-добро оформление',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
@@ -33,6 +40,13 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'csshooks-desc' => "Voegt CSS toe aan de HTML-uitvoer van pagina's voor betere vormgeving",
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'csshooks-desc' => 'Legger til CSS til en sides HTML for bedre stil',
 );
 
 /** Russian (Русский)

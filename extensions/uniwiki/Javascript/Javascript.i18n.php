@@ -42,6 +42,20 @@ $messages['nl'] = array(
 	'javascript-desc' => 'Voegt uniwiki.js met JavaScript-code die wordt gedeeld tussen de Uniwiki-uitbreidingen toe aan iedere pagina',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'javascript-desc' => 'Legger til uniwiki.js på hver side med JavaScript som deles mellom Uniwiki-utvidelser',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'javascript-desc' => 'Apondre uniwiki.js a cada pagina que conten de còde JavaScript partejat entre las extensions Uniwiki',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

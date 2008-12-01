@@ -458,6 +458,8 @@ $messages['it'] = array(
 	'edituser-dosearch' => 'Ricerca',
 	'edituser-nouser' => "L'utente indicato non esiste",
 	'edituser-exempt' => "L'utente specificato non può essere modificato",
+	'right-edituser' => 'Modifica le preferenze degli altri utenti',
+	'right-edituser-exempt' => 'Le sue preferenze non possono essere modificate da altri',
 );
 
 /** Japanese (日本語)

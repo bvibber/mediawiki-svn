@@ -154,10 +154,11 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'ajax-qp-desc' => 'AJAXを用いて[[Special:Shortpages|{{int:shortpages}}]]のようなページ要求を行う',
+	'ajax-qp-desc' => '[[Special:Shortpages|{{int:shortpages}}]]などのページのクエリを送るAJAXを追加する',
 );
 
 /** Javanese (Basa Jawa)

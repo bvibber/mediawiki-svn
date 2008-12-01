@@ -234,7 +234,7 @@ $messages['frp'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'intersection-desc' => 'Devolve unha lista punteada dos ítems máis recentes que están nunha categoría ou nunha unión de varias categorías',
+	'intersection-desc' => 'Devolve unha lista punteada dos elementos máis recentes que están nunha categoría ou nunha unión de varias categorías',
 	'intersection_toomanycats' => 'Erro: demasiadas categorías!',
 	'intersection_toofewcats' => 'Erro: moi poucas categorías!',
 	'intersection_noresults' => 'Erro: ningún resultado!',

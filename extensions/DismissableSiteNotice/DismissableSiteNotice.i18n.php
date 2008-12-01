@@ -644,6 +644,7 @@ $messages['sdc'] = array(
  */
 $messages['si'] = array(
 	'sitenotice_close' => 'නිෂ්ප්‍රභ කරන්න',
+	'sitenotice-desc' => 'sitenotice වසා දැමීමට පරිශීලකයන්ට ඉඩදෙයි',
 );
 
 /** Slovak (Slovenčina)

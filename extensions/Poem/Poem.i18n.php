@@ -213,10 +213,11 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'poem-desc' => '詩的な文章フォーマットで記述できる<tt>&lt;poem&gt;</tt>タグを追加する',
+	'poem-desc' => '詩の書式を整えるための <tt>&lt;poem&gt;</tt> タグを追加する',
 );
 
 /** Jutish (Jysk)

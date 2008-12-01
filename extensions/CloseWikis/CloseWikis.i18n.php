@@ -147,6 +147,15 @@ $messages['bg'] = array(
 	'right-closewikis' => 'Затваряне на уикита',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'closewikis-desc' => 'Omogućava zatvaranje wiki projekata u wiki farmama',
+	'closewikis-page-reopen-reason' => 'Razlog:',
+	'closewikis-list-header-dispreason' => 'Navedeni razlog',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  */
@@ -446,6 +455,7 @@ $messages['ia'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Darth Kule
  * @author Pietrodn
  */
 $messages['it'] = array(
@@ -465,11 +475,18 @@ $messages['it'] = array(
 	'closewikis-page-err-nowiki' => 'Specificata una wiki non valida',
 	'closewikis-page-err-closed' => 'La wiki è già chiusa',
 	'closewikis-page-err-opened' => 'La wiki non è chiusa',
+	'closewikis-list' => 'Elenco di wiki chiuse',
+	'closewikis-list-intro' => 'Questo elenco contiene le wiki che sono state chiuse dagli steward.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Chiusa da',
+	'closewikis-list-header-timestamp' => 'Chiusa il',
+	'closewikis-list-header-dispreason' => 'Motivazione mostrata',
 	'closewikis-log' => 'Registro di chiusura delle wiki',
 	'closewikis-log-header' => 'Ecco un log di tutte le chiusure e riaperture delle wiki eseguite dagli steward',
 	'closewikis-log-close' => 'chiusa $2',
 	'closewikis-log-reopen' => 'riaperta $2',
 	'right-editclosedwikis' => 'Modifica le wiki chiuse',
+	'right-closewikis' => 'Chiude wiki',
 );
 
 /** Khmer (ភាសាខ្មែរ)

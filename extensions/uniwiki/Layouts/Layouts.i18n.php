@@ -74,6 +74,7 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'layouts_title' => 'Krei paĝon',
+	'layouts_chooselayout' => 'Elektu aspekton por $1:',
 	'layouts_continue' => 'Daŭrigi',
 	'layouts_choosecategory' => 'Selekti kategorion por $1:',
 	'layouts_unknown' => 'Nekonata',
@@ -173,6 +174,21 @@ $messages['nl'] = array(
 	'layouts_unknown' => 'Onbekend',
 	'layouts_tagline' => "Deze pagina is aangemaakt met het sjabloon '''$1'''.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagelabels',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'layouts-desc' => 'Poblar las paginas creadas novèlament amb de « mesas en pagina » modificablas per encoratjar una estructura comuna a totas las paginas',
+	'layouts_title' => 'Crear una pagina',
+	'layouts_chooselayout' => 'Causir una mesa en pagina per $1 :',
+	'layouts_nolayout' => 'Pas cap de mesa en pagina',
+	'layouts_continue' => 'Contunhar',
+	'layouts_choosecategory' => 'Causir una categoria per $1 :',
+	'layouts_unknown' => 'Desconegut',
+	'layouts_tagline' => "Aquesta pagina es estada generida amb la mesa en pagina '''$1'''.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Pashto (پښتو)

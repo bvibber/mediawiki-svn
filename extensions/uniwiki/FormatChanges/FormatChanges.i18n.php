@@ -90,6 +90,16 @@ $messages['nl'] = array(
 	'formatchanges-editedby' => 'bewerkt door',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'formatchanges-desc' => 'Tornar formatar los [[Special:RecentChanges|darrièrs cambiaments]]',
+	'formatchanges-anonymous' => 'Anonim',
+	'formatchanges-createdby' => 'creat per',
+	'formatchanges-editedby' => 'modificat per',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

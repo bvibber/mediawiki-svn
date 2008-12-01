@@ -351,6 +351,14 @@ $messages['km'] = array(
 	'languageselector-setlang' => 'ប្តូរ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'languageselector' => '언어',
+	'languageselector-setlang' => '설정',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

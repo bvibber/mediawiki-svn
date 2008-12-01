@@ -174,6 +174,7 @@ $messages['eo'] = array(
 	'tasklistincorrectuser' => 'Malkorekta salutnomo',
 	'tasklistemail' => 'Kara %j',
 	'tasklistmytasks' => 'Miaj taskoj',
+	'tasklistbyprojname' => "Asignitaj taskoj por '''%s'''",
 	'tasklistchooseproj' => 'Selektu Projekton:',
 	'tasklistprojdisp' => 'Montri',
 	'tasklistbyname' => '== Farenda listo por $s ==',

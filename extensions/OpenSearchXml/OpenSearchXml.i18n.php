@@ -135,6 +135,13 @@ $messages['ksh'] = array(
 	'opensearchxml-desc' => 'De <i lang="en">[http://www.opensearch.org OpenSearch]-XML</i>-Schnettstell för Ußschnedde uss em Täx.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'opensearchxml-desc' => 'XML-Interface fir [http://www.opensearch.org OpenSearch] mat Text-Extraiten',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */

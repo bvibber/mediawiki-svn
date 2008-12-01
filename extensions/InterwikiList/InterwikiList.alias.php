@@ -83,6 +83,11 @@ $aliases['id'] = array(
 	'InterwikiList' => array( 'Daftar interwiki' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'InterwikiList' => array( 'インターウィキ一覧', 'インターウィキリスト' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'InterwikiList' => array( 'បញ្ជីអន្តរវិគី' ),

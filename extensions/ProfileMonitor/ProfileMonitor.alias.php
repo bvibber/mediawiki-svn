@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'ProfileMonitor' => array( 'مراقب_الملف' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ProfileMonitor' => array( 'プロフィールモニター' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ProfileMonitor' => array( 'ProfilingMonitor' ),

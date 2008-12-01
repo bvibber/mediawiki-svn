@@ -34,6 +34,11 @@ $aliases['fa'] = array(
 	'TemplateLink' => array( 'پیوند_الگو' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'TemplateLink' => array( 'テンプレートリンク' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'TemplateLink' => array( 'តំនភ្ជាប់ទំព័រគំរូ' ),

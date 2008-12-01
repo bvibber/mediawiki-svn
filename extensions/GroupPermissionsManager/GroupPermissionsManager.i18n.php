@@ -539,7 +539,7 @@ $messages['gl'] = array(
 	'grouppermissions-desc' => 'Xestionar os permisos dun grupo mediante unha [[Special:GroupPermissions|páxina especial]]',
 	'grouppermissions-desc2' => 'Sistema de permisos estendido',
 	'grouppermissions-desc3' => 'Permite que sexan personalizadas as accións de contido (lapelas)',
-	'grouppermissions-desc4' => 'Permite engadir ítems adicionais á caixa de ferramentas',
+	'grouppermissions-desc4' => 'Permite engadir elementos adicionais á caixa de ferramentas',
 	'grouppermissions-desc-nsm' => 'Xestionar os espazos de nomes mediante unha páxina especial',
 	'grouppermissions-header' => 'Pode usar esta páxina para cambiar os permisos subxacentes de varios grupos de usuario.',
 	'grouppermissions-search' => 'Grupo:',
@@ -1494,6 +1494,7 @@ $messages['sk'] = array(
  * @author Boivie
  * @author Jon Harald Søby
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'grouppermissions' => 'Hantera behörigheter för användargrupper',
@@ -1557,6 +1558,7 @@ $messages['sv'] = array(
 	'right-recentchanges' => 'Se senaste ändringar',
 	'right-edittalk' => 'Redigera diskussionssidor',
 	'right-edit-new' => 'Redigera sidor',
+	'right-readold' => 'Visa innehåll från gamla versioner och skillnader',
 );
 
 /** Telugu (తెలుగు)

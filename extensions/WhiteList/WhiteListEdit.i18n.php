@@ -1534,8 +1534,10 @@ $messages['ru'] = array(
 	'whitelistfor' => '<center>Актуальная информация для <b>$1</b></center>',
 	'whitelisttablemodify' => 'Модифицировать',
 	'whitelisttablemodifyall' => 'Все',
+	'whitelisttablemodifynone' => 'Ничего',
 	'whitelisttablepage' => 'Страница вики',
 	'whitelisttabletype' => 'Тип доступа',
+	'whitelisttableexpires' => 'Истекает',
 	'whitelisttableedit' => 'Править',
 	'whitelisttableview' => 'Просмотр',
 	'whitelisttablenewdate' => 'Новая дата:',
@@ -1548,6 +1550,7 @@ $messages['ru'] = array(
 	'whitelistbadtitle' => 'Неправильный заголовок -',
 	'whitelistoverviewsa' => "* Установить доступ '''$1''' для [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Снять права [[:$1|$1]]',
+	'whitelistnever' => 'никогда',
 );
 
 /** Slovak (Slovenčina)

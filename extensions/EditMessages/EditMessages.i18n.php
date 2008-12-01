@@ -771,6 +771,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Micke
+ * @author Najami
  */
 $messages['sv'] = array(
 	'editmessages-desc' => '[[Special:EditMessages|Nätbaserad redigering]] av ett stort antal Messages*.php-filer',
@@ -783,8 +784,8 @@ $messages['sv'] = array(
 	'editmsg-warning-parse1' => '* Regulärt uttryck för meddelandenamn passar inte: $1',
 	'editmsg-warning-parse2' => '* Citattecken förväntat efter pil: $1',
 	'editmsg-warning-parse3' => '* Slutet på värdetext inte hittat: $1',
-	'editmsg-warning-file' => '* Filläsningsfel hittades för följande språk: $1',
-	'editmsg-warning-mismatch' => '* Orginaltexten hade inte det förväntade värdet vad gäller följande språk: $1',
+	'editmsg-warning-file' => '* Filläsningsfel hittades för följande {{PLURAL:$2|språk|språk}}: $1',
+	'editmsg-warning-mismatch' => '* Orginaltexten hade inte det förväntade värdet vad gäller följande {{PLURAL:$2|språk|språk}}: $1',
 	'editmsg-apply-patch' => 'Använd uppdatering',
 	'editmsg-no-patch' => 'Kunde inte utföra "patch"-kommando',
 	'editmsg-patch-failed' => 'Uppdatering misslyckades med avslutningsstatus $1',

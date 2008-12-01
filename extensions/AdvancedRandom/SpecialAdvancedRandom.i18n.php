@@ -201,11 +201,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'advancedrandom' => 'おまかせ表示（ページ指定）',
-	'advancedrandom-desc' => '[[Special:AdvancedRandom/Template:Featured/Talk]]でノート上の利用者ページ、または[[Special:AdvancedRandom/Template:GFDL/Image]]でページにあるGFDLファイルといったように、与えられたページに含まれるリンクからランダムで表示を行う',
+	'advancedrandom-desc' => '指定ページにリンクしているノートページおよび主題ページの中からランダムに表示する。例えば[[Special:AdvancedRandom/Template:Featured/Talk]]とすれば秀逸な記事をおまかせ表示、[[Special:AdvancedRandom/Template:GFDL/Image]]とすればGFDLファイルをおまかせ表示する',
 );
 
 /** Javanese (Basa Jawa)

@@ -223,6 +223,7 @@ $messages['bg'] = array(
 	'changeauthor-revview' => 'Редакция #$1 от $2',
 	'changeauthor-nosuchtitle' => 'Не съществува страница "$1".',
 	'changeauthor-weirderror' => 'Възникна странна грешка. Опитайте отново; ако грешката се повтори, вероятно базата данни е повредена.',
+	'changeauthor-invalidform' => 'Необходимо е използването на формуляра от [[Special:ChangeAuthor|специалната страница]].',
 	'changeauthor-success' => 'Заявката беше изпълнена успешно.',
 	'changeauthor-rev' => 'р$1',
 );

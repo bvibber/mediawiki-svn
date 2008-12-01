@@ -409,7 +409,7 @@ Sono esclusi i collegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:
  */
 $messages['ja'] = array(
 	'crossnamespacelinks' => '名前空間をまたぐリンク',
-	'crossnamespacelinks-desc' => '{{SITENAME}} などを除いた、[[Special:CrossNamespaceLinks|名前空間をまたぐリンク]]',
+	'crossnamespacelinks-desc' => '{{SITENAME}}において望ましくない[[Special:CrossNamespaceLinks|名前空間をまたぐリンクを一覧化する]]',
 	'crossnamespacelinks-summary' => '通常名前空間から他の名前空間（ {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} を除く）のページへとリンクしているページの一覧です。',
 	'crossnamespacelinkstext' => '$1: $2 個 の $3 へのリンク',
 );
@@ -722,6 +722,16 @@ $messages['sah'] = array(
 	'crossnamespacelinks-desc' => '{{SITENAME}} иһигэр суох буолуохтаах [[Special:CrossNamespaceLinks|namespace`тар ыккардыларыгар сигэлэр испииһэктэрин таһаарар]]',
 	'crossnamespacelinks-summary' => 'Манна сүрүн namespace сирэйдэриттэн атын namespace сирэйдэригэр сигэнэр ыйынньыктар испииһэктэрэ көрдөрүлүннэ (балартан ураты: {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}). Маннык ыйынньыктары туруорар оччо биһирэммэт.',
 	'crossnamespacelinkstext' => '$1: $3 билигин $2 {{PLURAL:$2|ыйынньыктаах|ыйынньыктаах}}',
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'crossnamespacelinks' => 'හරස්-නාම අවකාශ සබැඳියන්',
+	'crossnamespacelinks-desc' => '{{SITENAME}} හි නොපැවතිය යුතු [[Special:CrossNamespaceLinks|නාම අවකාශයන් හරහා ඇතිවෙන සබැඳියන් ලැයිස්තුගත කරයි]]',
+	'crossnamespacelinks-summary' => 'ප්‍රධාන නාම අවකාශයෙහි පිටුවක සිට අනෙකුත් නාම අවකාශයන්හි  ({{ns:special}}, {{ns:talk}}, {{ns:project}}, සහ {{ns:template}} නාම අවකාශයන් හැර)  පිටුවකට ඇති විය හැකි එනමුත් භාවිතය සුදුසු නොමැති, සබැඳියන්ගේ ලැයිස්තුවක් මෙම පිටුවේ දැක්වේ.',
+	'crossnamespacelinkstext' => '$1: $3 වෙත {{PLURAL:$2|එක් සබැඳියක්|සබැඳියන් $2 ක්}}',
 );
 
 /** Slovak (Slovenčina)

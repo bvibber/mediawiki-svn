@@ -53,6 +53,11 @@ $aliases['hr'] = array(
 	'Disabledusers' => array( 'Onesposobljeni_suradnici' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'PasswordReset' => array( 'パスワードのリセット', 'パスワードリセット' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PasswordReset' => array( 'Zrécksetzen vum Passwuert' ),

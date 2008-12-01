@@ -267,7 +267,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'absenteelandlord-reason' => '管理者が活動を停止しているため、自動的にデータベースがロックされました。',
-	'absenteelandlord-desc' => '一定期間全ての管理者が活動しない場合、ウィキのデータベースを自動的にロックする。',
+	'absenteelandlord-desc' => '一定期間全ての管理者が活動しない場合、ウィキのデータベースを自動的にロックする',
 );
 
 /** Javanese (Basa Jawa)

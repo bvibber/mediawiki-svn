@@ -160,7 +160,7 @@ $messages['id'] = array(
  * @author Aotake
  */
 $messages['ja'] = array(
-	'antibot-desc' => 'スパムボットをチェックする簡単なフレームワークとトリガーのペイロード',
+	'antibot-desc' => 'スパムボットのチェックとトリガーとなるペイロードの簡単なフレームワーク',
 );
 
 /** Javanese (Basa Jawa)

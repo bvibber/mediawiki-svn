@@ -53,6 +53,7 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 );
 
 /** Message documentation (Message documentation)
+ * @author Aotake
  * @author BrokenArrow
  * @author Jon Harald Søby
  * @author Mormegil
@@ -73,6 +74,7 @@ Parameters are:
 	'ogg-play' => '{{Identical|Play}}',
 	'ogg-player-videoElement' => 'Message used in JavaScript.',
 	'ogg-more' => '{{Identical|More...}}',
+	'ogg-download' => '{{Identical|Download}}',
 );
 
 /** Albaamo innaaɬiilka (Albaamo innaaɬiilka)
@@ -2130,6 +2132,41 @@ $messages['sah'] = array(
 	'ogg-dismiss' => 'Кистээ/сап',
 	'ogg-download' => 'Билэни хачайдаа',
 	'ogg-desc-link' => 'Бу билэ туһунан',
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'ogg-desc' => 'Ogg Theora සහ Vorbis ගොනු සඳහා හසුරුවනය, ජාවාස්ක්‍රිප්ට් ප්ලේයර් සමඟ',
+	'ogg-short-audio' => 'Ogg $1 ශ්‍රව්‍ය ගොනුව, $2',
+	'ogg-short-video' => 'Ogg $1 දෘශ්‍ය ගොනුව, $2',
+	'ogg-short-general' => 'Ogg $1 මාධ්‍ය ගොනුව, $2',
+	'ogg-long-audio' => '(Ogg $1 ශ්‍රව්‍ය ගොනුව, ප්‍රවර්තනය $2, $3)',
+	'ogg-long-video' => '(Ogg $1 දෘශ්‍ය ගොනුව, ප්‍රවර්තනය $2, $4×$5 පික්සල්, $3)',
+	'ogg-long-multiplexed' => '(Ogg බහුපථකාරක ශ්‍රව්‍ය/දෘශ්‍ය ගොනුව, $1, ප්‍රවර්තනය $2, $4×$5 පික්සල්, $3 සමස්ත)',
+	'ogg-long-general' => '(Ogg මාධ්‍ය ගොනුව, ප්‍රවර්තනය $2, $3)',
+	'ogg-long-error' => '(අනීතික ogg ගොනුව: $1)',
+	'ogg-play' => 'වාදනය කරන්න',
+	'ogg-pause' => 'විරාම කරන්න',
+	'ogg-stop' => 'නවතන්න',
+	'ogg-play-video' => 'දෘශ්‍ය වාදනය කරන්න',
+	'ogg-play-sound' => 'ශබ්දය වාදනය කරන්න',
+	'ogg-no-player' => 'කණගාටුයි, කිසිම සහායක ධාවක මෘදුකාංගයක් ඔබ පද්ධතිය සතුව ඇති බවක් නොපෙනේ.
+කරුණාකර <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ධාවකයක් බා ගන්න</a>.',
+	'ogg-no-xiphqt' => 'QuickTime සඳහා XiphQT සංරචකය ඔබ සතුව ඇති බවක් නොපෙනේ.
+මෙම සංරචකය නොමැතිව Ogg ගොනු ධාවනය කිරීම  QuickTime විසින් සිදුකල නොහැක.
+කරුණාකර <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> XiphQT බා ගන්න</a> නැතහොත් වෙනත් ධාවකයක් තෝරාගන්න.',
+	'ogg-player-oggPlugin' => 'බ්‍රවුසර ප්ලගිත',
+	'ogg-player-cortado' => 'Cortado (ජාවා)',
+	'ogg-player-thumbnail' => 'නිශ්චල රූප පමණි',
+	'ogg-player-soundthumb' => 'ධාවකයක් නොමැත',
+	'ogg-player-selected' => '(තෝරාගෙන)',
+	'ogg-use-player' => 'ධාවකය භාවිතා කරන්න:',
+	'ogg-more' => 'ඉතිරිය…',
+	'ogg-dismiss' => 'වසන්න',
+	'ogg-download' => 'ගොනුව බා ගන්න',
+	'ogg-desc-link' => 'මෙම ගොනුව පිළිබඳ',
 );
 
 /** Slovak (Slovenčina)

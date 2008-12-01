@@ -1805,6 +1805,7 @@ $wgGoogleMapsMessages['it'] = array(
 	'gm-remove' => 'rimuovi',
 	'gm-caption' => 'Didascalia',
 	'gm-tab-title' => 'Titolo tab',
+	'gm-tab' => 'Tab',
 	'gm-start-path' => 'inizia un percorso',
 	'gm-trace-area' => "traccia un'area",
 	'gm-save-point' => 'salva &amp; esci',

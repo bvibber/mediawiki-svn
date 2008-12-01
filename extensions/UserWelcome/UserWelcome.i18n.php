@@ -119,6 +119,26 @@ $messages['de'] = array(
 	'mp-request-new-message' => 'neue Nachricht',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'userwelcome-desc' => 'Pśidawa toflicku <tt>&lt;welcomeUser&gt;</tt> za zwobraznjenje wužywarjeju specifiske socialne informacije pśizjawjonych wužywarjow',
+	'mp-userlevels-link' => 'Wužywarske rowniny',
+	'mp-welcome-upload' => 'Nagraś',
+	'mp-welcome-edit' => 'Wobźěłaś',
+	'mp-welcome-points' => '$1 {{PLURAL:$1|dypk|dypka|dypki|dypkow}}',
+	'mp-welcome-needed-points' => 'Aby póstupował k <b><a href="$1">$2</a></b>, zasłuž <i>$3</i> {{PLURAL:$3|dalšny dypk|dalšnej dypka|dalšne dypki|dalšnych dypkow}}!',
+	'mp-welcome-logged-in' => 'Halo $1',
+	'mp-requests-title' => 'Póžedanja',
+	'mp-requests-message' => 'Maš slědujuce póžedanja.',
+	'mp-request-new-message' => 'nowa powěsć',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|nowe myto|nowej myśe|nowe myta|nowych mytow}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|nowy dar|nowej dara|nowe dary|nowych darow}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|nowy pśeśiwnik|nowej pśeśiwnika|nowe pśeśiwniki|nowych pśeśiwnikow}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|nowy pśijaśel|nowej pśijaśela|nowe pśijaśele|nowych pśijaśelow}}',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -214,6 +234,26 @@ $messages['he'] = array(
 	'mp-request-new-friend' => '{{PLURAL:$1|חבר חדש אחד|$1 חברים חדשים}}',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'userwelcome-desc' => 'Přidawa tafličku <tt>&lt;welcomeUser&gt;</tt> za zwobraznjenje wužiwarjej specifiske socialne informacije přizjewjenych wužiwarjow',
+	'mp-userlevels-link' => 'Wužiwarske runiny',
+	'mp-welcome-upload' => 'Nahrać',
+	'mp-welcome-edit' => 'Wobdźěłać',
+	'mp-welcome-points' => '$1 {{PLURAL:$1|dypk|dypkaj|dypki|dypkow}}',
+	'mp-welcome-needed-points' => 'Zo by k <b><a href="$1">$2</a></b> postupował, zasłuž <i>$3</i> {{PLURAL:$3|dalši dypk|dalšej dypkaj|dalše dypki|dalšich dypkow}}!',
+	'mp-welcome-logged-in' => 'Halo $1',
+	'mp-requests-title' => 'Požadanja',
+	'mp-requests-message' => 'Maš slědowace požadanja.',
+	'mp-request-new-message' => 'nowa powěsć',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|nowe myto|nowej myće|nowe myta|nowych mytow}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|nowy dar|nowej daraj|nowe dary|nowych darow}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|nowy přećiwnik|nowaj přećiwnikaj|nowi přećiwnicy|nowych přećiwnikow}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|nowy přećel|nowaj přećelej|nowi přećeljo|nowych přećelow}}',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -284,6 +324,26 @@ $messages['mk'] = array(
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|нов подарок|нови подароци}}',
 	'mp-request-new-foe' => '$1 {{PLURAL:$1|нов непријател|нови непријатели}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|нов пријател|нови пријатели}}',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'userwelcome-desc' => 'Zet de tag <tt>&lt;welcomeUser&gt;</tt> derbie um gebrukerspecefieke sociale infermasie over an-emelde gebrukers te laoten zien',
+	'mp-userlevels-link' => "Gebrukersnivo's",
+	'mp-welcome-upload' => 'Bestand toevoegen',
+	'mp-welcome-edit' => 'Bewark',
+	'mp-welcome-points' => '$1 punten',
+	'mp-welcome-needed-points' => 'Um te promoveren naor <b><a href="$1">$2</a></b> mu-j nog <i>$3</i> punten verdienen!',
+	'mp-welcome-logged-in' => 'Huj $1',
+	'mp-requests-title' => 'Anvragen',
+	'mp-requests-message' => 'Je hemmen de volgende anvragen.',
+	'mp-request-new-message' => 'niej berich',
+	'mp-request-new-award' => '{{PLURAL:$1|1 nieje pries|$1 nieje priezen}}',
+	'mp-request-new-gift' => "{{PLURAL:$1|1 niej kedo|$1 nieje kedo's}}",
+	'mp-request-new-foe' => '{{PLURAL:$1|1 nieje viejanen|$1 nieje viejanen}}',
+	'mp-request-new-friend' => '{{PLURAL:$1|1 nieje vriend|$1 nieje vrienden}}',
 );
 
 /** Dutch (Nederlands)

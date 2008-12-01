@@ -72,11 +72,19 @@ $messages['bg'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'recordadmin-category' => 'Rekordoj',
+	'recordadmin-newsearch' => 'Nova $1 serĉo',
+	'recordadmin-createsuccess' => '$1 kreita',
 	'recordadmin-badtitle' => 'Fuŝa titolo!',
+	'recordadmin-invert' => 'Inversigi selekton',
+	'recordadmin-buttonsearch' => 'Serĉi',
 	'recordadmin-buttoncreate' => 'Krei',
+	'recordadmin-edit' => 'Redaktante $1',
 	'recordadmin-buttonsave' => 'Konservi',
+	'recordadmin-summary-typecreated' => 'Nova $1 kreita',
 	'recordadmin-viewlink' => 'vidi',
 	'recordadmin-editlink' => 'redakti',
+	'recordadmin-created' => 'Kreita',
 );
 
 /** French (Français)

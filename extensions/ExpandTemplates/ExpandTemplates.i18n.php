@@ -319,6 +319,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'expandtemplates' => 'Vorlagen expandieren',
@@ -330,7 +331,7 @@ $messages['de'] = array(
 	'expand_templates_xml_output' => 'XML-Ausgabe',
 	'expand_templates_ok' => 'Ausführen',
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
-	'expand_templates_generate_xml' => 'Zeige XML Parser-Baum',
+	'expand_templates_generate_xml' => 'Zeige XML-Parser-Baum',
 	'expand_templates_preview' => 'Vorschau',
 );
 
@@ -761,11 +762,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'expandtemplates' => 'テンプレートを展開',
-	'expandtemplates-desc' => 'ウィキ構文を展開し、ページプレビューを行う{{ns:special}}ページ [[Special:ExpandTemplates|テンプレート、パーサー関数、変数の展開]]',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|テンプレート・パーサー関数・変数を展開し]]、展開されたウィキテキストと生成されたプレビューページを表示する',
 	'expand_templates_intro' => '指定したウィキ構文に含まれている全てのテンプレートを再帰的に展開します。
 <nowiki>{{</nowiki>#if:...}} のようなパーサー関数や、<nowiki>{{</nowiki>CURRENTDAY}} のような変数など、<nowiki>{{</nowiki> ～ }} で囲まれているものも展開されます。
 これは、MediaWiki 自身の適切な構文解釈段階で呼び出されます。',
@@ -1328,6 +1330,27 @@ $messages['sah'] = array(
 	'expand_templates_remove_comments' => 'Ырытыылары сот',
 	'expand_templates_generate_xml' => 'XML-ы мас курдук көрдөр',
 	'expand_templates_preview' => 'Инники көрүү',
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'expandtemplates' => 'සැකිලි පුළුල් කරන්න',
+	'expandtemplates-desc' => 'පුළුල් කල විකිපෙළ පෙන්වීම හා විදැහුනු පිටුව පෙරදසුන සඳහා [[Special:ExpandTemplates|සැකිලි, ව්‍යාකරණ විග්‍රහ ශ්‍රීතයන් හා විචල්‍යයන් පුළුල් කරයි ]]',
+	'expand_templates_intro' => 'මෙම විශේෂ පිටුව විසින් යම් පෙළක්  ගෙන එහි සියළු සැකිලි ආවර්තනික ලෙස පුළුල් කරයි.
+එය  <nowiki>{{</nowiki>#if:…}} වැනි ව්‍යාකරණ විග්‍රහ ශ්‍රිතයන් හා, 
+<nowiki>{{</nowiki>CURRENTDAY}}වැනි විචල්‍යයන් ද&mdash; ඇත්ත වශයෙන්ම 
+ද්විත්ව-සඟල වරහන් තුල හමුවන සැම දෙයක්ම පාහේ  පුළුල් කරයි.
+එය විසින් මෙය සිදුකරනුයේ මාධයවිකි විසින්ම අදාල ව්‍යාකරණ විග්‍රහ අදියර ඇමතීමෙනි.',
+	'expand_templates_title' => '{{PAGENAME}} වැන්න සඳහා, ප්‍රකරණ ශීර්ෂය.:',
+	'expand_templates_input' => 'ප්‍රදාන පෙළ:',
+	'expand_templates_output' => 'ප්‍රතිඵලය',
+	'expand_templates_xml_output' => 'XML ප්‍රතිදානය',
+	'expand_templates_ok' => 'හරි',
+	'expand_templates_remove_comments' => 'පරිකථනයන්  ඉවත්කරන්න',
+	'expand_templates_generate_xml' => 'XML ව්‍යාකරණ විග්‍රහ රුක පෙන්වන්න',
+	'expand_templates_preview' => 'පෙරදසුන',
 );
 
 /** Slovak (Slovenčina)

@@ -319,7 +319,7 @@ Enviado: $3
 Este elemento foi marcado como completado, con este comentario:
 $4',
 	'todo-invalid-item' => 'Artigo perdido ou non válido',
-	'todo-update-else-item' => 'Intentando actualizar os ítems de alguén',
+	'todo-update-else-item' => 'Intentando actualizar os elementos de alguén',
 	'todo-unrecognize-type' => 'Tipo non recoñecido',
 	'todo-user-invalide' => 'As tarefas pendentas dadas son inválidas, faltan, ou son dun usuario que non ten dereito para telas.',
 	'todo-item-list' => 'Os seus artigos',

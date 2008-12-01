@@ -275,6 +275,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'msfunc_desc' => 'Eng Sammlung vu mathemateschen a statistesche Fonctiounen',
 	'msfunc_nan' => "D'Resultat ass keng Zuel",
 	'msfunc_inf' => "D'Resultat ass onendlech",
 	'msfunc_div_zero' => 'Divisioun duerch null',

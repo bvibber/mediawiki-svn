@@ -29,6 +29,7 @@ $fallback=array(
 	'ia'  => 'en',
 	'id'  => 'en',
 	'it'  => 'en',
+	'ja'  => 'en',
 	'ka'  => 'en',
 	'km'  => 'en',
 	'kri' => 'en',
@@ -139,7 +140,9 @@ $messages['en'] = array(
 	"voctrain_Separate_values_by_commas_to_use_multiple_languages_"=>"Separate values by commas to use multiple languages."
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Aotake
+ */
 $messages['qqq'] = array(
 	'voctrain_Hello_World' => 'Test message',
 	'voctrain_Permission_Denied' => 'login: access is denied',
@@ -160,7 +163,9 @@ $messages['qqq'] = array(
 	'voctrain_Questions' => 'Questions',
 	'voctrain_Answers' => 'Answers',
 	'voctrain_start_exercise' => 'button:start exercise',
-	'voctrain_collection' => 'a wikidata collection',
+	'voctrain_collection' => 'a wikidata collection
+
+{{Identical|Collection}}',
 	'voctrain_ISO_639_3_format' => 'ISO-639-3 format',
 	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => "exercise: status at top of page (don't translate %questions_remaining and %questions_total)",
 	'voctrain_Definition' => 'exercise: subheading',
@@ -1049,6 +1054,13 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'voctrain_User_name' => 'Nome utente',
+);
+
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'voctrain_collection' => 'コレクション',
 );
 
 /** Georgian (ქართული)

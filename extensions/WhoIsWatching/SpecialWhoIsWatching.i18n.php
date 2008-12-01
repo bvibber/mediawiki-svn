@@ -77,6 +77,7 @@ $messages['avk'] = array(
  */
 $messages['bg'] = array(
 	'whoiswatching' => 'Кой наблюдава страница в уикито',
+	'whoiswatching-desc' => 'Предоставя списък с потребителите, които наблюдават страница в уикито',
 	'specialwhoiswatchingthepage' => 'Кой наблюдава %s',
 	'specialwhoiswatchingusage' => 'Тази специална страница не може да се използва сама по себе си. Използвайте страницата [[MediaWiki:Number_of_watching_users_pageview]] за определяне на входната точка към тази специална страница.',
 	'specialwhoiswatchingaddusers' => 'Добавяне на потребители да наблюдават страницата',
@@ -236,6 +237,13 @@ $messages['it'] = array(
 	'specialwhoiswatchingusage' => 'Questa pagina speciale non può essere usata da sola. Per favore usa la pagina [[MediaWiki:Number_of_watching_users_pageview]] per definire un punto di entrata per questa pagina speciale.',
 	'specialwhoiswatchingaddusers' => 'Aggiungi utenti ad osservare la pagina',
 	'specialwhoiswatchingaddbtn' => 'Aggiungi gli utenti selezionati',
+);
+
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'whoiswatching-desc' => 'ページをウォッチしている利用者の一覧を提供する',
 );
 
 /** Javanese (Basa Jawa)

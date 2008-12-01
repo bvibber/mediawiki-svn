@@ -273,7 +273,7 @@ $messages['ja'] = array(
 	'simpleantispam' => 'SPAM防止機能が有効になりました',
 	'simpleantispam-label' => "SPAM防止チェックです。
 決してここに値を入力'''しない'''でください。",
-	'simpleantispam-desc' => 'フォームに簡単なスパム・ボットチェックを追加',
+	'simpleantispam-desc' => 'フォームに簡単なスパム・ボットチェックを追加する',
 );
 
 /** Javanese (Basa Jawa)

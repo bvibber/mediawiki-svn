@@ -151,10 +151,11 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Muttley
  */
 $messages['ja'] = array(
-	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] リポジトリ・インターフェースを提供します。',
+	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] リポジトリ・インターフェースを提供する',
 );
 
 /** Javanese (Basa Jawa)

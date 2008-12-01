@@ -18,6 +18,15 @@ $messages['en'] = array(
 	'searchbox-namespaces' => 'Namespaces:'
 );
 
+/** Message documentation (Message documentation)
+ * @author Jon Harald Søby
+ */
+$messages['qqq'] = array(
+	'searchbox-search' => '{{Identical|Search}}',
+	'searchbox-go' => '{{Identical|Go}}',
+	'searchbox-namespaces' => '{{Identical|Namespaces}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -122,6 +131,16 @@ $messages['nl'] = array(
 	'searchbox-namespaces' => 'Naamruimten:',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'searchbox-desc' => 'Tillatt inkludering av søkeskjemaer',
+	'searchbox-search' => 'Søk',
+	'searchbox-go' => 'Gå',
+	'searchbox-namespaces' => 'Navnerom:',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -146,6 +165,7 @@ $messages['sk'] = array(
  * @author Najami
  */
 $messages['sv'] = array(
+	'searchbox-desc' => 'Tillåter inkludering av sökformulär',
 	'searchbox-search' => 'Sök',
 	'searchbox-go' => 'Gå',
 	'searchbox-namespaces' => 'Namnrymder:',

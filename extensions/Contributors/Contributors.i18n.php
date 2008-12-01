@@ -551,7 +551,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'contributors' => '投稿者',
-	'contributors-desc' => 'あるページにおける主な投稿者を提示する',
+	'contributors-desc' => 'ページの主な投稿者を抽出する',
 	'contributors-toolbox' => '主な投稿者',
 	'contributors-legend' => '投稿者一覧の作成',
 	'contributors-target' => 'タイトル:',

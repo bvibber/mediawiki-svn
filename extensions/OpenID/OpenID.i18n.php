@@ -1265,8 +1265,11 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Ficell
+ * @author Kwj2772
  */
 $messages['ko'] = array(
+	'openidlogin' => 'OpenID로 로그인',
+	'openidemail' => '이메일 주소',
 	'openidchoosepassword' => '비밀번호:',
 );
 
@@ -1377,6 +1380,8 @@ $messages['lb'] = array(
 	'openidconvertothertext' => 'Dëst ass engem anere seng OpenID.',
 	'openidnousername' => 'Kee Benotzernumm uginn.',
 	'openidbadusername' => 'Falsche Benotzernumm uginn.',
+	'openidautosubmit' => 'Op dëser Säit gëtt et e Formulaire deen automatesch soll verschéckt ginn wann Dir JavaScript ageschalt hutt.
+Wann net, da verich et mam Knäppche "Weider"',
 );
 
 /** Eastern Mari (Олык Марий)

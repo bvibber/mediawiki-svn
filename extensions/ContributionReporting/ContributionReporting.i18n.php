@@ -66,6 +66,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Aotake
  * @author Darth Kule
  * @author Jon Harald Søby
  * @author Purodha
@@ -73,6 +74,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'contributionreporting-desc' => 'Description for the ContributionReporting Extension. Shown in [[Special:Version]]. Do not translate or change tag names.',
 	'contrib-hist-name' => '{{Identical|Name}}',
+	'contrib-hist-date' => '{{Identical|Date}}',
 	'fundraiserstats-date' => '{{Identical|Date}}',
 );
 
@@ -311,6 +313,23 @@ $messages['de'] = array(
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'fundraiserstatistics' => 'Pósćiwańska statistika',
+	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-day' => 'Źeń $1 z $2',
+	'fundraiserstats-contributions' => 'Pśinoski',
+	'fundraiserstats-total' => 'Dogromady (USD)',
+	'fundraiserstats-avg' => 'Pśerězk (USD)',
+	'fundraiserstats-max' => 'Maksimum (USD)',
+	'fundraiserstats-tab-totals' => 'Sumy (USD)',
+	'fundraiserstats-tab-contributions' => 'Licba pśinoskow',
+	'fundraiserstats-tab-averages' => 'Pśerězki (USD)',
+	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -491,17 +510,20 @@ $messages['gl'] = array(
 	'contribstats-contributions' => 'Contribucións',
 	'contribstats-total' => 'Total (dólar estadounidense)',
 	'contribstats-avg' => 'Promedio (dólar estadounidense)',
-	'contribstats-med' => 'Media (dólar esdadounidense)',
 	'contribstats-max' => 'Máximo (dólar estadounidense)',
 	'contribstats-percentage-ytd' => 'Porcentaxe (ata hoxe)',
 	'contribstats-total-ytd' => 'Total (ata hoxe)',
 	'fundraiserstatistics' => 'Estatísticas da recadación',
 	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-day' => 'Día $1 de $2',
 	'fundraiserstats-contributions' => 'Contribucións',
 	'fundraiserstats-total' => 'Total (dólar estadounidense)',
 	'fundraiserstats-avg' => 'Promedio (dólar estadounidense)',
-	'fundraiserstats-med' => 'Media (dólar esdadounidense)',
 	'fundraiserstats-max' => 'Máximo (dólar estadounidense)',
+	'fundraiserstats-tab-totals' => 'Totais (dólar estadounidense)',
+	'fundraiserstats-tab-contributions' => 'Número de contribucións',
+	'fundraiserstats-tab-averages' => 'Promedio (dólar estadounidense)',
+	'fundraiserstats-tab-maximums' => 'Máximas (dólar estadounidense)',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -600,6 +622,23 @@ $messages['hr'] = array(
 	'fundraiserstats-avg' => 'Prosječno (USD)',
 	'fundraiserstats-min' => 'Najmanje (USD)',
 	'fundraiserstats-max' => 'Najviše (USD)',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'fundraiserstatistics' => 'Darjenska statistika',
+	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-day' => 'Dźeń $1 z $2',
+	'fundraiserstats-contributions' => 'Přinoški',
+	'fundraiserstats-total' => 'Dohromady (USD)',
+	'fundraiserstats-avg' => 'Přerězk (USD)',
+	'fundraiserstats-max' => 'Maksimum (USD)',
+	'fundraiserstats-tab-totals' => 'Sumy (USD)',
+	'fundraiserstats-tab-contributions' => 'Ličba přinoškow',
+	'fundraiserstats-tab-averages' => 'Přerězki (USD)',
+	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
 );
 
 /** Hungarian (Magyar)
@@ -993,10 +1032,20 @@ $messages['oc'] = array(
 	'contribstats-contributions' => 'Contribucions',
 	'contribstats-total' => 'Total (dolars US)',
 	'contribstats-avg' => 'Mejana (dolars US)',
-	'contribstats-min' => 'Minimum (dolars US)',
 	'contribstats-max' => 'Maximum (dolars US)',
 	'contribstats-percentage-ytd' => 'Percentatge (ongan)',
 	'contribstats-total-ytd' => 'Total (ongan)',
+	'fundraiserstatistics' => 'Estatisticas de la levada de fonses',
+	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-day' => 'Jorn $1 de $2',
+	'fundraiserstats-contributions' => 'Contribucions',
+	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-avg' => 'Mejana (USD)',
+	'fundraiserstats-max' => 'Maximum (USD)',
+	'fundraiserstats-tab-totals' => 'Totals (USD)',
+	'fundraiserstats-tab-contributions' => 'Nombre de contribucions',
+	'fundraiserstats-tab-averages' => 'Mejanas (USD)',
+	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
 );
 
 /** Polish (Polski)
@@ -1260,6 +1309,9 @@ $messages['vec'] = array(
 	'contribstats-contributions' => 'Contributi',
 	'contribstats-total' => 'Totale (Dolari Mericani)',
 	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-day' => 'Zorno $1 de $2',
+	'fundraiserstats-contributions' => 'Contributi',
+	'fundraiserstats-tab-contributions' => 'Nùmaro de contributi',
 );
 
 /** Vietnamese (Tiếng Việt)

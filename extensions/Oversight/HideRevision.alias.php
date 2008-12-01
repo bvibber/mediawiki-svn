@@ -86,6 +86,7 @@ $aliases['id'] = array(
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'HideRevision' => array( '版の秘匿' ),
+	'Oversight' => array( '秘匿版の閲覧' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

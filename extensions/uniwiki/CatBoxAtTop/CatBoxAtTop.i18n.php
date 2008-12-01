@@ -40,6 +40,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'catboxattop-desc' => 'Добавя кутия с категориите в горния десен край на страниците',
 	'catboxattop-categories' => 'Категории',
 );
 

@@ -33,6 +33,11 @@ $aliases['de'] = array(
 	'MultiUpload' => array( 'Mehrere Dateien hochladen' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'MultiUpload' => array( 'Téléchargement multiple', 'TéléchargementMultiple' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'MultiUpload' => array( 'Višestruko_postavljanje' ),
@@ -41,6 +46,11 @@ $aliases['hr'] = array(
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'MultiUpload' => array( 'Multi unggah' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'MultiUpload' => array( 'マルチアップロード' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

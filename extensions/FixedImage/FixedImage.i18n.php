@@ -204,7 +204,7 @@ $messages['it'] = array(
  * @author Aotake
  */
 $messages['ja'] = array(
-	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> のタグを画像として挿入',
+	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> タグを画像として挿入する',
 );
 
 /** Javanese (Basa Jawa)

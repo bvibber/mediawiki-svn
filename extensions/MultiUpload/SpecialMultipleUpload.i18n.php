@@ -943,6 +943,28 @@ $messages['tr'] = array(
 	'multiupload-fileuploaded' => 'Dosya yüklendi.',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'multipleupload' => 'Завантаження файлів',
+	'multipleupload-desc' => 'Дозволяє користувачам [[Special:MultipleUpload|завантажувати декілька файлів за раз]]',
+	'multipleupload-ignoreallwarnings' => "Ігнорувати '''усі попередження''' і зберігати файли у будь-якому випадку.",
+	'multipleupload-saveallfiles' => 'Зберегти всі файли',
+	'multipleupload-addresswarnings' => 'Будь ласка, розгляньте усі попередження перед повторним завантаженням файлів.',
+	'multipleupload-page' => '{{ns:project}}:Правила вилучення файлів',
+	'multipleupload-text' => "З допомогою цієї сторінки можна завантажити декілька файлів за один раз.
+
+Натисніть \"Огляд\" і виберіть усі файли, які ви бажаєте завантажити.
+Ви можете передати від 1 до \$1 файлів за раз.
+
+Ви можете ввести необов'язкові поля '''Цільова назва файлу''' та вказати '''Короткий опис''' для ваших файлів.
+
+Невідповідні файли будуть вилучені негайно, глядіть [[{{MediaWiki:Multipleupload-page}}|правила вилучення файлів]].",
+	'multiupload-fileuploaded' => 'Файл завантажено.',
+	'multiupload-toolbox' => 'Завантаження декількох файлів',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

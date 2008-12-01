@@ -125,6 +125,13 @@ $messages['hsb'] = array(
 	'abcdownload' => 'Sćahnyć',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'abcdesc' => 'ABC譜の書式を整える <tt>&lt;abc&gt;</tt> タグを追加する',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

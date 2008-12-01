@@ -54,6 +54,11 @@ $aliases['id'] = array(
 	'Form' => array( 'Formulir' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Form' => array( 'フォーム' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Form' => array( 'បែបបទ' ),

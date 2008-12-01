@@ -327,9 +327,15 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'sitematrix' => 'Lisćina wikijow Wikimedije',
+	'sitematrix-summary' => 'Toś ten specialny bok nalistujo wše wikije Wikimedije.',
+	'sitematrix-desc' => 'Zwobraznjujo [[Special:SiteMatrix|lisćinu wikijow Wikimedije]]',
 	'sitematrix-language' => 'Rěc',
 	'sitematrix-project' => 'Projektowe mě, interprojektowy wótkaz a interwiki-wótkaz',
 	'sitematrix-others' => 'Dalšne projekty Wikimedije',
+	'sitematrix-total' => "'''Cełkowna licba: $1'''",
+	'sitematrix-sitetotal' => 'Dogromady',
+	'sitematrix-private' => 'priwatny',
+	'sitematrix-fishbowl' => 'wobźěłowanje wobgranicowane',
 );
 
 /** Ewe (Eʋegbe) */
@@ -619,6 +625,8 @@ $messages['hsb'] = array(
 	'sitematrix-others' => 'Dalše projekty we Wikimediji',
 	'sitematrix-total' => "'''Cyłkowna ličba: $1'''",
 	'sitematrix-sitetotal' => 'Dohromady',
+	'sitematrix-private' => 'priwatny',
+	'sitematrix-fishbowl' => 'wobdźěłowanje wobmjezowane',
 );
 
 /** Hungarian (Magyar)
@@ -1250,6 +1258,22 @@ $messages['sah'] = array(
 	'sitematrix-sitetotal' => 'Барыта',
 	'sitematrix-private' => 'приватнай/чааһынай',
 	'sitematrix-fishbowl' => 'көннөрүү хааччахтаммыт',
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'sitematrix' => 'විකිමාධ්‍ය විකි ලැයිස්තුව',
+	'sitematrix-summary' => 'මෙම විශේෂ පිටුව සියළු විකිමාධ්‍ය විකියන් ලැයිස්තුගත කරයි.',
+	'sitematrix-desc' => '[[Special:SiteMatrix|විකිමාධ්‍ය විකියන්ගේ ලැයිස්තුවක්]] ප්‍රදර්ශනය කරන්න',
+	'sitematrix-language' => 'භාෂාව',
+	'sitematrix-project' => 'ව්‍යාපෘතිය, අන්තර්-ව්‍යාපෘති සබැඳිය හා අන්තර්විකි සබැඳිය හි නම',
+	'sitematrix-others' => 'විකිමාධ්‍යහි අනෙකුත් ව්‍යාපෘති',
+	'sitematrix-total' => "'''ම්‍රළු ගණනය: $1'''",
+	'sitematrix-sitetotal' => 'මුළු',
+	'sitematrix-private' => 'පෞද්ගලික',
+	'sitematrix-fishbowl' => 'සංස්කරණය කෙරුම පරිසීමාකෙරිණි',
 );
 
 /** Slovak (Slovenčina)

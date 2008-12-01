@@ -672,11 +672,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  * @author Muttley
  */
 $messages['ja'] = array(
-	'usernameblacklist-desc' => '正規表現の禁止ワードに一つ以上一致する場合は利用者アカウントの作成を制限する[[MediaWiki:Usernameblacklist|利用者名ブラックリスト]]を追加',
+	'usernameblacklist-desc' => '正規表現に1つ以上一致する利用者アカウントの作成を制限する[[MediaWiki:Usernameblacklist|利用者名ブラックリスト]]を追加する',
 	'blacklistedusername' => 'ブラックリストに掲載されている利用者名です',
 	'blacklistedusernametext' => 'あなたが申請した利用者名は、[[MediaWiki:Usernameblacklist|ブラックリストに掲載されているもの]]と一致しました。違う利用者名を選んでください。',
 	'usernameblacklist' => '<pre>
@@ -687,8 +688,8 @@ $messages['ja'] = array(
 # * Foo
 # * [Bb]ar
 </pre>',
-	'usernameblacklist-invalid-lines' => '以下の{{PLURAL:$1|行|行}}に記載された利用者ブラックリスト{{PLURAL:$1|は|は}}正しく記述できていません。保存する前に{{PLURAL:$1|これ|これら}}を修正してください:',
-	'right-uboverride' => 'ユーザ名ブラックリストの掲載を無視してアカウントを作成する',
+	'usernameblacklist-invalid-lines' => '利用者名ブラックリスト中の以下の行は正しく記述できていません。保存する前に修正してください:',
+	'right-uboverride' => '利用者名ブラックリストの記述を無視してアカウントを作成する',
 );
 
 /** Jutish (Jysk)

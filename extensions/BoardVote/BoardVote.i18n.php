@@ -3568,10 +3568,17 @@ $messages['ko'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|투표]]
 * [[Special:Boardvote/list|투표한 날짜의 목록]]
 * [[Special:Boardvote/dump|암호화된 선거 기록의 덤프]]',
+	'boardvote_time' => '시간',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">위키미디어 이사회 선거</a>:
+선거는 6월 22일까지 열립니다.',
+	'boardvote_notstarted' => '선거가 아직 시작되지 않았습니다.',
+	'boardvote_closed' => '선거가 끝났습니다. [http://meta.wikimedia.org/wiki/Board_elections/2008/Results 선거 결과]를 확인하십시오.',
+	'group-boardvote' => '보드보트 관리자',
 	'grouppage-boardvote' => '{{ns:project}}:보드보트',
 	'boardvote_bot' => '당신은 봇으로 등록되었습니다.
 봇 계정은 투표가 허락되지 않습니다.',
 	'boardvote_welcome' => "'''$1'''님 환영합니다!",
+	'go_to_board_vote' => '2008년도 위키미디어 이사회 선거',
 	'boardvote_redirecting' => '보안 및 투명성을 향상시키기 위해, 투표는 독립적으로 관리되는 외부 서버에서 이루어집니다. 20초를 기다리시면 이 외부 서버로 자동으로 연결됩니다. 지금 바로 가시려면 [$1 여기를 누르세요]. 서명되지 않은 인증서에 관한 보안 경고가 나타날 수 있습니다.',
 	'right-boardvote' => '선거 관리',
 );
@@ -5297,6 +5304,48 @@ Lu votu datu 'n furma cifrata è ripurtatu di sècutu. Lu pùbbricu lu pò macar
 	'go_to_board_vote' => 'Elizzioni 2008 ntô Board di Wikimedia',
 	'boardvote_redirecting' => "Pi na cchiù megghiu sicurezza e trasparenza, lu votu veni tinutu nta un server di fora, a cuntrollu nnipinnenti. Intra a 20 secunni, tu veni nnirizzatu a stu server di fora. [$1 Munci ccà] p'arrivàricci drittu drittu. Putissi cumpariri n'avvisu di sicurezza rifiritu a un certificatu di prutizzioni non virificatu.",
 	'right-boardvote' => "Amministrari l'elizzioni",
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'boardvote_notloggedin' => 'ඔබ ප්‍රවිෂ්ට වී නොමැත.
+ඡන්දය ප්‍රකාශ කරනු වස්, $2 ට පෙර අවම වශයෙන්  {{PLURAL:$1|එක් දායකත්වයක්ද |දායකත්වයන් $1 ක්ද}}, $4 හා $5 අතරතුර අවම වශයෙන්  {{PLURAL:$3|එක් දායකත්වයක්ද|දායකත්වයන් $3 ක්ද}} හා සමගින් ඔබ හට ගිණුමක් තිබිය යුතුය.',
+	'boardvote_notqualified' => 'මෙම මැතිවරණයෙහි ඡන්දය භාවිතා කිරීමට ඔබ සුදුසුකම් ලබා නොමැත.
+$2 ට පෙර අවම වශයෙන් {{PLURAL:$1|එක් දායකත්වයක්|දායකත්වයන් $1 ක්}} ද, $4 හා  $5 අතර අවම වශයෙන් {{PLURAL:$3|එක් දායකත්වයක්|දායකත්වයන්  $3 ක්}} සඳහා ඔබ හවුල්ව සිටිය යුතුව තිබුණි.',
+	'boardvote_novotes' => 'කිසිවකු තවමත් ඡන්දය ප්‍රකාශ කොට නොමැත.',
+	'boardvote_time' => 'වේලාව',
+	'boardvote_user' => 'පරිශීලක',
+	'boardvote_edits' => 'සංස්කරණයන්',
+	'boardvote_days' => 'දිනයන්',
+	'boardvote_ip' => 'අන්තර්ජාල ලිපිනය',
+	'boardvote_ua' => 'පරිශීලක නියෝජිත',
+	'boardvote_listintro' => '<p>මෙතෙක් ප්‍රකාශිත වී ඇති මුළු ඡන්ද ලැයිස්තුව මෙහි දැක්වේ.
+සංකේතනය කල දත්ත සඳහා $1.</p>',
+	'boardvote_dumplink' => 'මෙහි ක්ලික් කරන්න',
+	'boardvote_submit' => 'හරි',
+	'boardvote_needadmin' => 'මෙම ක්‍රියාකරණය සිදුකල හැක්කේ මැතිවරණ පරිපාලකවරුනට පමණි.',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">විකිමාධ්‍ය මණ්ඩල මැතිවරණය</a>:
+ජුනි 22 දක්වා ඡන්දය විවෘතය',
+	'boardvote_notstarted' => 'ඡන්දය භාවිතාකිරීම තවමත් ආරම්භක කොට නැත',
+	'boardvote_closed' => 'ඡන්දය භාවිතාකිරීම දැන් අවසන් කොට ඇත, [http://meta.wikimedia.org/wiki/Board_elections/2008/Results ප්‍රතිඵල සඳහා මැතිවරණ පිටුව] විගසින් බලන්න.',
+	'boardvote_edits_many' => 'බොහෝ',
+	'group-boardvote' => 'මණ්ඩල ඡන්ද පරිපාලකයන්',
+	'group-boardvote-member' => 'මණ්ඩල ඡන්ද පරිපාලක',
+	'grouppage-boardvote' => '{{ns:project}}:මණ්ඩල ඡන්ද පරිපාලක',
+	'boardvote_blocked' => 'ඔබ ලේඛනගතවූ විකියෙහි ඔබ වාරණයට ලක්ව ඇත.
+වාරණයට ලක්වූ පරිශීලකයන් හට ඡන්දය දීමට අවසර නොලැබෙයි.',
+	'boardvote_bot' => 'ඔබ ලේඛනගතවූ විකියෙහි ඔබ සලකුණු වී ඇත්තේ රොබෝවරයෙකු ලෙසිනි.
+රොබෝ ගිණුම් වලට ඡන්දය දීමට අවසර නොලැබෙයි.',
+	'boardvote_welcome' => "ආයුබෝවන් '''$1'''!",
+	'go_to_board_vote' => 'විකිමාධ්‍ය මණ්ඩල මැතිවරණය 2008',
+	'boardvote_redirecting' => 'උත්තරීතර ආරක්ෂාව හා පාරදෘශ්‍යභාවය සඳහා, අප විසින් ඡන්දය පවත්වනු ලබන්නේ බාහිර, ස්වෛරීව හසුරුවනු ලබන සේවාදායකයකය.
+
+තත්පර 20 කින් ඔබව මෙම බාහිර සේවාදායකය වෙත යළි-යොමු කෙරෙනු ඇත.දැන් එහි යෑම සඳහා  [$1 මෙහි ක්ලික් කරන්න].
+
+අත්සන් නොතැබුනු සහතිකපතක් පිළිබඳව ආරක්ෂණ අවවාදයක් ප්‍රදර්ශනය වීමට ඉඩ ඇත.',
+	'right-boardvote' => 'මැතිවරණ පරිපාලනය කරනවා',
 );
 
 /** Slovak (Slovenčina)

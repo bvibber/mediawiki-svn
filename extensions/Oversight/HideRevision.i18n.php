@@ -216,6 +216,7 @@ $messages['arz'] = array(
 	'hiderevision-reason' => 'السبب (حيتسجل فى السجل السري):',
 	'hiderevision-submit' => 'خبى البيانات دى على طول.',
 	'hiderevision-tab' => 'إخفاء المراجعة',
+	'hiderevision-link' => 'تعديلات اليوزر المتخبيه',
 	'hiderevision-norevisions' => 'مافيش مراجعات متحددة علشان تتمسح.',
 	'hiderevision-noreason' => 'لازم تقول السبب بتاع المسح دا.',
 	'hiderevision-status' => 'النسخة $1: $2',
@@ -570,6 +571,7 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'hiderevision-reason' => 'Grund (wird unsichtbar protokolliert):',
 	'hiderevision-submit' => 'Entferne diese Version dauerhaft',
 	'hiderevision-tab' => 'Entferne Versionen',
+	'hiderevision-link' => 'Benutzerbeiträge verstecken',
 	'hiderevision-norevisions' => 'Es wurde keine Version zum Entfernen angegeben.',
 	'hiderevision-noreason' => 'Du musst einen Grund für die Entfernung angeben.',
 	'hiderevision-status' => 'Version $1: $2',
@@ -637,6 +639,7 @@ Forigitaĵoj ne estos videbla al iu ajn per la retejo, sed la forigoj estas skri
 	'hiderevision-reason' => 'Kialo (estos protokolita private)',
 	'hiderevision-submit' => 'Kaŝi ĉi tiujn datenojn ĉiam',
 	'hiderevision-tab' => 'Kaŝi version',
+	'hiderevision-link' => 'Kaŝitaj kontribuoj de uzanto',
 	'hiderevision-norevisions' => 'Neniuj versioj specifigita por forigo.',
 	'hiderevision-noreason' => 'Vi nepre priskribu la kialon por ĉi tiu forigo.',
 	'hiderevision-status' => 'Versio $1: $2',
@@ -846,6 +849,7 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 	'hiderevision-reason' => 'Motif (sera enregistré séparément) :',
 	'hiderevision-submit' => 'Cacher cette révision de manière permanente',
 	'hiderevision-tab' => 'Cacher la modification',
+	'hiderevision-link' => "Contributions cachées de l'utilisateur",
 	'hiderevision-norevisions' => 'Aucune modification indiquée à supprimer.',
 	'hiderevision-noreason' => 'Vous devez indiquer la raison précise de cette suppression.',
 	'hiderevision-status' => 'Modification $1 : $2',
@@ -915,6 +919,16 @@ $messages['fur'] = array(
 	'oversight-view' => 'detais',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'hiderevision-continue' => 'Lean',
+	'hiderevision-tab' => 'Folagh leasú',
+	'hiderevision-status' => 'Leasú $1: $2',
+	'hiderevision-archive-status' => 'Leasú scriosta as $1: $2',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño
@@ -942,6 +956,7 @@ administrador das bases de datos no caso de que vostede cometa un erro.",
 	'hiderevision-reason' => 'Motivo (rexistrarase de maneira privada):',
 	'hiderevision-submit' => 'Agochar estes datos permanentemente',
 	'hiderevision-tab' => 'Agochar revisión',
+	'hiderevision-link' => 'Contribucións agochadas do usuario',
 	'hiderevision-norevisions' => 'Non se especificaron revisións para eliminar.',
 	'hiderevision-noreason' => 'Debe describir o motivo para esta eliminación.',
 	'hiderevision-status' => 'Revisión $1: $2',
@@ -1351,6 +1366,7 @@ in caso di errori.",
 	'hiderevision-reason' => 'Motivo (per il registro riservato):',
 	'hiderevision-submit' => 'Oscura i dati in modo permanente',
 	'hiderevision-tab' => 'Oscura revisione',
+	'hiderevision-link' => 'Contributi utente oscurati',
 	'hiderevision-norevisions' => 'Non è stata indicata alcuna revisione da oscurare.',
 	'hiderevision-noreason' => "È necessario indicare il motivo dell'oscuramento.",
 	'hiderevision-status' => 'Revisione $1: $2',
@@ -1668,6 +1684,7 @@ $messages['ko'] = array(
 	'group-oversight-member' => '오버사이트',
 	'grouppage-oversight' => '{{ns:project}}:오버사이트',
 	'right-hiderevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
+	'hiderevision-norevisions' => '삭제할 판이 제시되지 않았습니다.',
 	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',
 	'oversight-hidden' => '숨겨진 판',
 );
@@ -1945,6 +1962,7 @@ Item-item yang telah dibuang tidak boleh dilihat oleh sesiapa melalui tapak web 
 	'hiderevision-reason' => 'Sebab (dimasukkan dalam log rahsia):',
 	'hiderevision-submit' => 'Sembunyikan data ini selama-lamanya',
 	'hiderevision-tab' => 'Sembunyi semakan',
+	'hiderevision-link' => 'Sumbangan pengguna yang dirahsiakan',
 	'hiderevision-norevisions' => 'Tiada semakan dinyatakan.',
 	'hiderevision-noreason' => 'Anda hendaklah menyatakan sebab.',
 	'hiderevision-status' => 'Semakan $1: $2',
@@ -2033,6 +2051,7 @@ teruggezet worden door databasebeheerders als u een fout maakt.",
 	'hiderevision-reason' => 'Reden (wordt discreet opgeslagen):',
 	'hiderevision-submit' => 'Deze gegevens permanent verbergen',
 	'hiderevision-tab' => 'Versie verbergen',
+	'hiderevision-link' => 'Verborgen gebruikersbijdragen',
 	'hiderevision-norevisions' => 'Er zijn geen te verwijderen versies opgegeven.',
 	'hiderevision-noreason' => 'U moet een reden opgeven voor het verwijderen.',
 	'hiderevision-status' => 'Versie $1: $2',
@@ -2156,6 +2175,7 @@ $messages['oc'] = array(
 	'hiderevision-reason' => 'Motiu (serà enregistrat separadament) :',
 	'hiderevision-submit' => "Amagar aquesta donada d'un biais permanent",
 	'hiderevision-tab' => 'Amagar la modificacion',
+	'hiderevision-link' => "Contribucions amagadas de l'utilizaire",
 	'hiderevision-norevisions' => 'Cap de modificacion indicada de suprimir.',
 	'hiderevision-noreason' => "Vos cal indicar la rason precisa d'aquesta supression.",
 	'hiderevision-status' => 'Modificacion $1 : $2',
@@ -2218,6 +2238,7 @@ Usunięte elementy nie będą widoczne dla nikogo na stronach serwisu. Wszystkie
 	'hiderevision-reason' => 'Powód (nie będzie widoczny publicznie):',
 	'hiderevision-submit' => 'Trwale ukryj te dane',
 	'hiderevision-tab' => 'Ukryj tę wersję',
+	'hiderevision-link' => 'Ukryty wkład użytkownika',
 	'hiderevision-norevisions' => 'Nie określono wersji do usunięcia',
 	'hiderevision-noreason' => 'Musisz wpisać powód usunięcia.',
 	'hiderevision-status' => 'Wersja $1: $2',
@@ -2386,6 +2407,7 @@ $messages['ru'] = array(
 	'hiderevision-reason' => 'Причина (будет записана в закрытый журнал):',
 	'hiderevision-submit' => 'Скрыть данные',
 	'hiderevision-tab' => 'Скрыть правку',
+	'hiderevision-link' => 'Скрытый вклад участника',
 	'hiderevision-norevisions' => 'Не были указаны версии, которые следует скрыть.',
 	'hiderevision-noreason' => 'Вы должны написать причину сокрытия.',
 	'hiderevision-status' => 'Версия №$1: $2',
@@ -2458,6 +2480,18 @@ $messages['sah'] = array(
  */
 $messages['scn'] = array(
 	'right-hiderevision' => 'Ritalìa e riprìstina virsioni ammucciati',
+);
+
+/** Sinhala (සිංහල)
+ * @author නන්දිමිතුරු
+ */
+$messages['si'] = array(
+	'hiderevision-prompt' => 'ගෙන යා යුතු සංශෝධන අංකය:',
+	'hiderevision-continue' => 'කරගෙන යන්න',
+	'hiderevision-submit' => 'මෙම දත්ත ස්ථීර වශයෙන් සඟවන්න',
+	'hiderevision-tab' => 'සංශෝධනය සඟවන්න',
+	'oversight' => 'ප්‍රමාද දෝෂය',
+	'oversight-view' => 'විස්තර',
 );
 
 /** Slovak (Slovenčina)
@@ -2681,6 +2715,7 @@ $messages['su'] = array(
  * @author Jon Harald Søby
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'hiderevision' => 'Dölj sidversioner permanent',
@@ -2702,6 +2737,7 @@ Borttagna objekt kommer inte att vara synliga för någon genom webbplatsen, men
 	'hiderevision-reason' => 'Anledning (sparas i en privat logg):',
 	'hiderevision-submit' => 'Dölj informationen permanent',
 	'hiderevision-tab' => 'Dölj version',
+	'hiderevision-link' => 'Dolda användarbidrag',
 	'hiderevision-norevisions' => 'Ingen sidversion har angivits.',
 	'hiderevision-noreason' => 'Du måste ange en anledning för den här raderingen.',
 	'hiderevision-status' => 'Sidversion $1: $2',
