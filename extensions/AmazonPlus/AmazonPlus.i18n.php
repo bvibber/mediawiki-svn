@@ -1,4 +1,10 @@
 <?php
+/**
+ * Internationalisation file for extension AmazonPlus.
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
