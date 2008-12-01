@@ -1013,13 +1013,12 @@ function mv_embed( force_id ){
 		
 	//process selected elements: 
 	$j(j_selector).each(function(){
-		js_log( "LOOP ON: " +this.id + ' tag: '+ this.tagName);
-		
-		elm_id = $j(this).attr("id");
-		if(!elm_id || elm_id==''){
-			elm_id = 'v'+ global_player_list.length;
+		js_log( "SWAP: " + $j(this).attr("id") + ' tag: '+ this.tagName);
+				
+		if( $j(this).attr("id")=='' ){
+			elm_id = 'v'+ global_player_list.length;			
 			$j(this).attr("id", elm_id);
-		}
+		}		
 		//store a global reference to the id    
     	global_player_list.push(elm_id);
 		//add loading: (pre-loading div) 		
@@ -1027,12 +1026,12 @@ function mv_embed( force_id ){
             	getMsg('loading_txt')+'</div>' );
         */ 
         //if video doSwap
-        if(this.tagName=='VIDEO'){
-        	var videoInterface = new embedVideo(this);	  
+        if(this.tagName.toLowerCase()=='video'){
+        	var videoInterface = new embedVideo(this);	 
 			swapEmbedVideoElement( this, videoInterface );
         }
         //if playlist set do load playlist
-        if( this.tagName == 'PLAYLIST' )
+        if( this.tagName.toLowerCase() == 'playlist' )
         	loadPlaylistLib=true; 
 	});
 	if(loadPlaylistLib){
@@ -1071,7 +1070,7 @@ function mv_do_sequence(initObj){
 		mvJsLoader.doLoad({
 				'mvPlayList':'mv_playlist.js',
 				'$j.ui.sortable':'jquery/jquery.ui-1.5.2/ui/minified/ui.sortable.min.js',
-				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
+				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js'
 				//'$j.ui'			:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
 				//'$j.effects':'jquery/jquery.ui-1.5.2/ui/minified/effects.core.min.js',	
 				//'$j.effects.slide':'jquery/jquery.ui-1.5.2/ui/minified/effects.slide.min.js'
@@ -3249,15 +3248,14 @@ function js_log(string){
      /*
       * IE and non-firebug debug:
       */
-    var log_elm = document.getElementById('mv_js_log');
+    /*var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
      	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');
      }
      if(log_elm){
      	log_elm.value+=string+"\n";
-     } 
-     
+     } */ 
          
    }
    //return false
@@ -3267,3 +3265,4 @@ function js_log(string){
 function js_error(string){
 	alert(string);
 }
+
