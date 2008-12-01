@@ -123,7 +123,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		
 		if (!$defaults) {
 			global $wgConf;
-			$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
+			$defaults = $wgConf->getDefaults( );
 		}
 		
 		if ( isset( $this->conf[$setting] ) ) {

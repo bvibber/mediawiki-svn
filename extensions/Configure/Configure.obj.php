@@ -182,6 +182,7 @@ class WebConfiguration extends SiteConfiguration {
 	/**
 	 * Get the default settings (i.e. before apply Configure's overrides)
 	 * Very hacky too...
+	 * FIXME This seems to get the settings *after* overrides, not *before*.
 	 *
 	 * @param $wiki String
 	 * @return array
