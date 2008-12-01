@@ -30,7 +30,7 @@ $messages['en'] = array(
 	'ao_file_MPEG1' => 'Archive.org - mpeg1',
 	'ao_file_MPEG2' => 'Archive.org - mpeg2 original',
 	'ao_file_flash_flv' => 'Archive.org - flash video',
-
+	'ao_file_Ogg_Video'	=> 'Archive.org - ogg video',
 
 	'mv_error_stream_missing' => '<span class="error">Error: There is no video file associated with this stream.</span><br />
 Please report this to the site administrator.',

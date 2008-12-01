@@ -43,12 +43,13 @@ $sample_embed[0]['desc'] = 'Sample Similar to metavid usage';
 $sample_embed[1]['tag'] = '<video roe="http://metavid.org/wiki/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_06-06-06_1&t=0:07:50/0:09:06">';
 $sample_embed[1]['desc'] = 'Demo of json ROE attribute';
 
+$sample_embed[2]['tag'] = '<video id="v2" controls="true" src="sample_fish.ogg?t=0:0:0/0:0:26" poster="sample_fish.jpg"></video>';
+$sample_embed[2]['desc'] = 'simple video with controls and thumbnail';
+
+
 $sample_embed[3]['tag'] = '<video roe="http://metavid.org/w/index.php?title=Special:MvExportStream&feed_format=roe&stream_name=Senate_proceeding_08-01-07&t=0:11:40/0:12:20" ></video>';
 $sample_embed[3]['desc'] = 'Demo of ROE only attribute';
 
-
-$sample_embed[2]['tag'] = '<video id="v2" controls="true" src="sample_fish.ogg?t=0:0:0/0:0:26" poster="sample_fish.jpg"></video>';
-$sample_embed[2]['desc'] = 'simple video with controls and thumbnail';
 
 // playlist tags:
 $sample_embed[4]['tag'] = '<playlist id="playlist1" width="400" height="300"
@@ -85,8 +86,8 @@ $sample_embed[8]['desc'] = ' <br><b>Crossfading Videos</b><br/><a href="http://s
 ?>
   <table border="1" cellpadding="6" width="600">
   	<? foreach ( $sample_embed as $key => $aval ) {
-  		// $key!=8 && $key!=3  $key != 0  && $key != 1 &&
-  		if ( $key!=2 && $key!=3 )continue;
+  		// $key!=8 && $key!=3  $key != 0  && $key != 1 &&  && $key!=3
+  		if ( $key!=3 )continue;
   	 ?>
 	    <tr>
 	      <td valign="top"><?=$aval['tag']?></td>

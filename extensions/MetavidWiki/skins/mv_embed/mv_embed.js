@@ -160,7 +160,7 @@ var default_video_attributes = {
 	"paused":true,
 	"readyState":0,  //http://www.whatwg.org/specs/web-apps/current-work/#readystate
 	"currentTime":0, //current playback position (should be updated by plugin)
-	"duration":NaN,   //media duration (read from file or anx temporal url)
+	"duration":NaN,   //media duration (read from file or the temporal url)
 
     //custom attributes for mv_embed:
     "play_button":true,
@@ -184,7 +184,7 @@ var mvEmbed = {
   loading:false,
   libs_loaded:false,
   //plugin libs var names and paths:
-  lib_jquery:{'window.jQuery':'jquery/jquery-1.2.6.min.js'},
+  lib_jquery:{'window.jQuery':'jquery/jquery-1.2.6.js'},
   lib_plugins:{  	
 	'$j.ui.mouse'	 :'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js'	
   },
@@ -207,10 +207,7 @@ var mvEmbed = {
   	if(this.libs_loaded){
   		mvEmbed.init( target_id );
   		return true;
-  	}
-  	//set up embedTypes		
-	embedTypes.init();
-		
+  	}  
  	//two loading stages, first get jQuery
 	var _this = this;
   	mvJsLoader.doLoad(this.lib_jquery,function(){
@@ -250,7 +247,8 @@ var mvEmbed = {
   check_init_done:function(){  	
   	//check if all videos are "ready to play"
   	var is_ready=true;
-  	for(var i in global_player_list){
+  	
+  	for(var i=0; i < global_player_list.length; i++){
   		if( $j('#'+global_player_list[i]).length !=0){
 	  		var cur_vid =  $j('#'+global_player_list[i]).get(0);  		
 	    	is_ready = (cur_vid.ready_to_play ) ? is_ready : false;
@@ -301,8 +299,8 @@ mediaPlayer.prototype =
 	loaded:false,
 	loading_callbacks:null,	
     supportsMIMEType : function(type)
-    {
-        for (var i in this.supported_types)
+    {    	
+        for (var i=0; i < this.supported_types.length; i++)
             if(this.supported_types[i] == type)
                 return true;
         return false;
@@ -342,8 +340,9 @@ mediaPlayer.prototype =
 				//js_log( 'type of lib: ' + eval( 'typeof ' + this.library + 'Embed' ) );
 				//js_log(_this.id + ' plugin loaded');
 				_this.loaded = true;				
-				for(var i in _this.loading_callbacks)
+				for(var i=0; i < _this.loading_callbacks.length; i++ )
 					_this.loading_callbacks[i]();	
+					
 				_this.loading_callbacks = null;
 								
 			});
@@ -382,60 +381,75 @@ mediaPlayers.prototype =
 {
     players : null,
     preference : null,
-    default_players : null,
+    default_players : {},
     init : function()
     {
         this.players = new Array();
         this.loadPreferences();
-        this.default_players = new Object();
-        this.default_players['video/x-flv']= ['flash','vlc'];
+        //set up default players library mapping        
+        this.default_players['video/x-flv'] = ['flash','vlc'];
         this.default_players['video/h264'] = ['flash', 'vlc'];
         
-        this.default_players['video/ogg']=['native','vlc','java'];
-        this.default_players['application/ogg']=['native','vlc','java'];
-		this.default_players['video/mp4']=['vlc'];
+        this.default_players['video/ogg'] = ['native','vlc','java'];        
+        this.default_players['application/ogg'] = ['native','vlc','java'];
+		this.default_players['video/mp4'] = ['vlc'];
 		
-		this.default_players['text/html']=['html'];
-		this.default_players['image/jpeg']=['html'];
+		this.default_players['text/html'] = ['html'];
+		this.default_players['image/jpeg'] = ['html'];
+		
     },
     addPlayer : function(player, mime_type)
-    {
+    {    	
         //js_log('Adding ' + player.id + ' with mime_type ' + mime_type);
-        for (var i in this.players)
-            if (this.players[i].id==player.id)
+        for (var i =0; i < this.players.length; i++){
+            if (this.players[i].id == player.id)
             {
                 if(mime_type!=null)
                 {
-                    //js_log('adding ' + mime_type + ' support to ' + player.id);
-                    this.players[i].supported_types.push(mime_type);
+                	//make sure the mime_type is not already there:
+                	var add_mime = true; 
+                	for(var j=0; j < this.players[i].supported_types.length; j++ ){
+                		if( this.players[i].supported_types[j]== mime_type)
+                			add_mime=false;
+                	}                    
+                    if(add_mime)
+                    	this.players[i].supported_types.push(mime_type);
                 }
                 return;
             }
+        }
+        //player not found: 
         if(mime_type!=null)
-            player.supported_types.push(mime_type);
+        	player.supported_types.push(mime_type);      
+                 
         this.players.push(player);
     },
     getMIMETypePlayers : function(mime_type)
-    {    	
-        var mime_players = new Array();	
-		if( this.default_players[mime_type] ){
-			for ( var d in this.default_players[mime_type] )
-			{
-				var library = this.default_players[mime_type][d];
-				for ( var i in this.players )
-					if (this.players[i].library==library && this.players[i].supportsMIMEType(mime_type))
-						mime_players.push(this.players[i]);
-			}
-		}
+    {    	    	
+        var mime_players = new Array();
+        var _this = this;
+        var inx = 0;
+		if( this.default_players[mime_type] ){						
+			$j.each( this.default_players[mime_type], function(d, lib){				
+				var library = _this.default_players[mime_type][d];				
+				for ( var i=0; i < _this.players.length; i++ ){					
+					if ( _this.players[i].library == library && _this.players[i].supportsMIMEType(mime_type) ){
+						mime_players[ inx ] = _this.players[i];						
+						inx++;
+					}
+				}
+			});
+		}		
         return mime_players;
     },
     defaultPlayer : function(mime_type)
     {    	    	
-        var mime_players = this.getMIMETypePlayers(mime_type);
-        if(mime_players.length)
+    	js_log("f:defaultPlayer: "+mime_type);
+        var mime_players = this.getMIMETypePlayers(mime_type);        
+        if( mime_players.length > 0)
         {
             // check for prior preference for this mime type
-            for( var i in mime_players ){
+            for( var i=0; i < mime_players.length; i++ ){
                 if( mime_players[i].id==this.preference[mime_type] )
                     return mime_players[i];
             }                    
@@ -443,7 +457,7 @@ mediaPlayers.prototype =
 			// (it will be chosen according to the default_players list
             return mime_players[0];
         }
-        js_log('No default player found for ' + mime_type);
+        js_log( 'No default player found for ' + mime_type );
         return null;
     },
     userSelectFormat : function (mime_format){
@@ -453,7 +467,7 @@ mediaPlayers.prototype =
     userSelectPlayer : function(player_id, mime_type)
     {
         var selected_player=null;
-        for(var i in this.players)
+        for(var i=0; i < this.players.length; i++){
             if(this.players[i].id == player_id)
             {
                 selected_player = this.players[i];
@@ -462,9 +476,10 @@ mediaPlayers.prototype =
                 this.savePreferences();
                 break;
             }
+        }
         if(selected_player)
         {
-            for(var i in global_player_list)
+            for(var i=0; i < global_player_list.length; i++)
             {
                 var embed = $j('#'+global_player_list[i]).get(0);
                 if(embed.media_element.selected_source && (embed.media_element.selected_source.mime_type == mime_type))
@@ -483,7 +498,7 @@ mediaPlayers.prototype =
 		if (cookieVal)
         {
             var pairs = cookieVal.split('&');
-            for(var i in pairs)
+            for(var i=0; i < pairs.length; i++)
             {
                 var name_value = pairs[i].split('=');
                 this.preference[name_value[0]]=name_value[1];
@@ -494,8 +509,9 @@ mediaPlayers.prototype =
     savePreferences : function()
     {
         var cookieVal = '';
-        for(var i in this.preference)
+        for(var i=0; i < this.preference.length;i++)
             cookieVal+= i + '='+ this.preference[i] + '&';
+            
         cookieVal=cookieVal.substr(0, cookieVal.length-1);
         js_log('setting preference cookie to ' + cookieVal);
 		var week = 7*86400*1000;
@@ -537,9 +553,12 @@ var ctrlBuilder = {
     	this.id = (embedObj.pc)?embedObj.pc.pp.id:embedObj.id;
     	this.avaliable_width=embedObj.playerPixelWidth();
     	//make pointer to the embedObj
-    	this.embedObj =embedObj;    	
-    	for( var i in embedObj.supports )
-    		this.supports[i] = embedObj.supports[i];
+    	this.embedObj =embedObj;
+    	var _this = this;    	
+    	$j.each( embedObj.supports, function( i, sup ){
+    		_this.supports[i] = embedObj.supports[i];
+    	});
+    		
     	//special case vars: 
     	if(embedObj.roe && embedObj.show_meta_link)
     		this.supports['closed_captions']=true;   
@@ -716,13 +735,13 @@ var embedTypes = {
  		js_log("running detect");
         this.players = new mediaPlayers();
 		//every browser supports html rendering:
-		this.players.addPlayer(htmlPlayer);
+		this.players.addPlayer( htmlPlayer );
 		 // First some browser detection
 		 this.msie = ( navigator.appName == "Microsoft Internet Explorer" );
 		 this.msie6 = ( navigator.userAgent.indexOf("MSIE 6")===false);
 		 this.opera = ( navigator.appName == 'Opera' );
 		 this.safari = ( navigator.vendor && navigator.vendor.substr( 0, 5 ) == 'Apple' );
-
+		
 		 // In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
 		 // search navigator.mimeTypes to see if it's installed
 		 var javaEnabled = navigator.javaEnabled();
@@ -733,8 +752,8 @@ var embedTypes = {
 		 // Opera will switch off javaEnabled in preferences if java can't be found.
 		 // And it doesn't register an application/x-java-applet mime type like Mozilla does.
 		 if ( invisibleJava && javaEnabled )
-		 	this.players.addPlayer(cortadoPlayer);
-
+		 	this.players.addPlayer( cortadoPlayer );
+		
 		 // ActiveX plugins
 		 if(this.msie){
 		 	 // check for flash		 
@@ -750,15 +769,15 @@ var embedTypes = {
 			 if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) )
 			 	this.players.addPlayer(quicktimeActiveXPlayer);			 
 		 }
-
+		
 		 // <video> element (should not need to be attached to the dom to test)(
 		 var v = document.createElement("video");
-		 if(v.play)
-		 	this.players.addPlayer(videoElementPlayer);
-
+		 if( v.play )
+		 	this.players.addPlayer( videoElementPlayer );
+		
 		 // Mozilla plugins
-		if(navigator.mimeTypes && navigator.mimeTypes.length > 0) {
-			for ( var i = 0; i < navigator.mimeTypes.length; i++) {
+		if( navigator.mimeTypes && navigator.mimeTypes.length > 0) {
+			for ( var i = 0; i < navigator.mimeTypes.length; i++ ) {
 				var type = navigator.mimeTypes[i].type;
 				var semicolonPos = type.indexOf( ';' );
 				if ( semicolonPos > -1 ) {
@@ -769,21 +788,21 @@ var embedTypes = {
 				if ( !pluginName ) {
 					// In case it is null or undefined
 					pluginName = '';
-				}
-                if ( pluginName.toLowerCase() == 'vlc multimedia plugin' || pluginName.toLowerCase() == 'vlc multimedia plug-in' ) {
-                    this.players.addPlayer(vlcMozillaPlayer, type);
-                    continue;
-                }
-
+				}				
+		        if ( pluginName.toLowerCase() == 'vlc multimedia plugin' || pluginName.toLowerCase() == 'vlc multimedia plug-in' ) {
+		            this.players.addPlayer(vlcMozillaPlayer, type);
+		            continue;
+		        }
+		
 				if ( javaEnabled && type == 'application/x-java-applet' ) {
 					this.players.addPlayer(cortadoPlayer);
 					continue;
 				}
-				if(type=='application/liboggplay'){
+				if( type=='application/liboggplay'){
 					this.players.addPlayer(oggPlayPlayer);
 					continue;
 				}
-
+		
 				if ( type == 'application/ogg' ) {
 					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' )
 						this.players.addPlayer(vlcMozillaPlayer, type);
@@ -801,12 +820,12 @@ var embedTypes = {
 						continue;
 					}
 				}
-
-/*				if ( type == 'video/quicktime' ) {
+		
+				/*if ( type == 'video/quicktime' ) {
 					this.players.addPlayer(vlcMozillaPlayer, type);
 					continue;
 				}*/
-   				if(type=='application/x-shockwave-flash'){
+				if(type=='application/x-shockwave-flash'){
 					this.players.addPlayer(flowPlayer);
 					continue;
 				}
@@ -828,6 +847,8 @@ var embedTypes = {
 		 return hasObj;
 	 }	 
 }
+//set up embedTypes		
+embedTypes.init();
 
 //load an external JS (similar to jquery .require plugin)
 //but checks for object availability rather than load state
@@ -851,25 +872,21 @@ var mvJsLoader = {
 	 	 }				 	 		
 		 //merge any new requested libs
 		 if(libs){
-		 	for(var i in libs){
+		 	for(var i in libs){ //for in loop oky on object
 		 		//js_log('add lib: '+i + ' = ' + libs[i]);
 		 		this.libs[i]=libs[i];
 		 	}
 		 }		 		 
 		 var loading=0;
 		 var i=null;
-		 for(var i in this.libs){
+		 for(var i in this.libs){ //for in loop oky on object
 		 	 //if(i=='vlcEmbed')alert('got called with '+i+' ' + typeof(vlcEmbed));
 			 //itor the objPath (to avoid 'has no properties' errors)
 			 var objPath = i.split('.');
 			 var cur_path ='';
 			 var cur_load=0;
-			 for(var p in objPath){
+			 for(var p=0; p < objPath.length; p++){
 				 cur_path = (cur_path=='')?cur_path+objPath[p]:cur_path+'.'+objPath[p];				 
-				 //if(i=='flashEmbed'){				 	
-			 	//js_log("eval:  " + eval('typeof ('+cur_path+');'));
-			 	
-				 //}
 				 if(eval('typeof '+cur_path)=='undefined'){
 					 cur_load = loading=1;
 					 //js_log("cur_load = loading=1");
@@ -895,14 +912,14 @@ var mvJsLoader = {
 		 }else{
 		 	//only do callback if we are in the same range: 		 	
 		 	var cb_count=0;
-		 	for(var i in this.callbacks)
+		 	for(var i=0; i < this.callbacks.length; i++)
 		 		cb_count++;		 		
 		 	//js_log('REST LIBS: loading is: '+ loading + ' run callbacks: '+cb_count +' p:'+ this.ptime +' c:'+ this.ctime);
 		 	//reset the libs
 		 	this.libs={};		 			 			 			
 		 	//js_log('done loading do call: ' + this.callbacks[0] );		 
-		 	while(this.callbacks.length !=0 ){
-		 		if(this.ptime== ( this.ctime-1) ){ //enforce thread consistency
+		 	while( this.callbacks.length !=0 ){
+		 		if( this.ptime== ( this.ctime-1) ){ //enforce thread consistency
 		 			this.callbacks.pop()();
 		 			//func = this.callbacks.pop();
 		 			//js_log(' run: '+this.ctime+ ' p: ' + this.ptime + ' ' +loading+ ' :'+ func);
@@ -960,14 +977,13 @@ function rewrite_by_id( vid_id ){
 
 /*********** INITIALIZATION CODE *************
  * set DOM ready callback to init_mv_embed
- * for Safari, also force load all the libraries.
  *********************************************/
 // for Mozilla browsers
-if (document.addEventListener && !embedTypes.safari) {
+if (document.addEventListener && !embedTypes.safari ) {
     document.addEventListener("DOMContentLoaded", function(){init_mv_embed()}, false);
-}else{
+}else{	
 	//backup "onload" method in case on DOMContentLoaded does not exist
-	window.onload = init_mv_embed;
+	window.onload = function(){init_mv_embed()};
 }
 //for IE (temporarily disabled causing empty document rewrites:
 /*if (document.all && !window.opera){ //Crude test for IE
@@ -1086,7 +1102,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
 		
 	$j(embed_video).css({'width':videoInterface.width,'height':videoInterface.height});
 	//inherit the video interface
-	for(method in videoInterface){	
+	for(var method in videoInterface){ //for in loop oky in Element context	
 		if(method!='readyState'){ //readyState crashes IE
 			if(method=='style'){
 					embed_video.setAttribute('style', videoInterface[method]);
@@ -1199,11 +1215,12 @@ textInterface.prototype = {
 		});
 	},
 	load_track:function(track_id){
+		var _this = this;
 		var track = this.availableTracks[track_id];
-		js_log('cmml available');
+		//js_log('cmml available loading track: '+ track.src);
 		//add transcript to bodyHTML
-		var pcurl =  parseUri(track.src);
-		var req_time =pcurl.queryKey['t'].split('/');
+		var pcurl =  parseUri( track.src );
+		var req_time = pcurl.queryKey['t'].split('/');
 		req_time[0]=ntp2seconds(req_time[0]);
 		req_time[1]=ntp2seconds(req_time[1]);
 		if(req_time[1]-req_time[0]> _this.request_length){
@@ -1212,20 +1229,19 @@ textInterface.prototype = {
 		}
 		//set up request url:
 		url = pcurl.protocol+'://'+pcurl.authority+pcurl.path+'?';
-		for( i in pcurl.queryKey){
-			if(i!='t'){
-				url+=i+'='+pcurl.queryKey[i]+'&';
+		$j.each(pcurl.queryKey, function(key, val){						
+			if( key != 't'){
+				url+=key+'='+val+'&';
 			}else{
-				url+='t='+seconds2ntp(req_time[0])+'/'+seconds2ntp(req_time[1])+'&';
+				url+= 't=' + seconds2ntp(req_time[0]) + '/' + seconds2ntp(req_time[1]) + '&';
 			}
-		}
-		//js_log('do request on url:' + url);
-		//$j('#mv_loading_icon').css('display','inline');
+		});		
+		$j('#mv_txt_load_'+_this.pe.id).show();
 		do_request(url, function(data){			
-			//js_log("load track clip count:"+ data.getElementsByTagName('clip').length );
+			js_log("load track clip count:"+ data.getElementsByTagName('clip').length );
 			//debugger;			
 			//hide loading icon:
-			$j('#mv_loading_icon').css('display','none');
+			$j('#mv_txt_load_'+_this.pe.id).fadeOut('fast');
 			$j.each(data.getElementsByTagName('clip'), function(inx, clip){
 				js_log(' on clip ' + clip.id);
 				var text_clip = {
@@ -1310,7 +1326,13 @@ textInterface.prototype = {
 		$j('#metaButton_'+this.pe.id).fadeIn('fast');
 	},
 	getBody:function(){
-		return '<div id="mmbody_'+this.pe.id+'" style="position:absolute;top:20px;left:0px;right:0px;bottom:0px;height:'+(this.pe.height-20)+'px;overflow:auto;"/>';
+		return '<div id="mmbody_'+this.pe.id+'" ' +
+				'style="position:absolute;top:20px;left:0px;' +
+				'right:0px;bottom:0px;' +
+				'height:'+(this.pe.height-20)+
+				'px;overflow:auto;"><span id="mv_txt_load_' + _this.pe.id + '">'+
+					getMsg('loading_txt')+'</span>' +
+				'</div>';
 	},
 	getTsSelect:function(){
 		js_log('getTsSelect');
@@ -1320,7 +1342,7 @@ textInterface.prototype = {
 		}else{
 			var selHTML = '<div id="mvtsel_'+this.pe.id+'" style="position:absolute;background:#FFF;top:20px;left:0px;right:0px;bottom:0px;overflow:auto;">';
 			selHTML+='<b>'+getMsg('select_transcript_set')+'</b><ul>';
-			for(i in this.availableTracks){
+			for(var i in this.availableTracks){ //for in loop ok on object
 				var checked = (this.availableTracks[i].display)?'checked':'';
 				selHTML+='<li><input name="'+i+'" class="mvTsSelect" type="checkbox" '+checked+'>'+
 					this.availableTracks[i].title + '</li>';
@@ -1461,7 +1483,7 @@ mediaSource.prototype =
         if ( element.tagName.toLowerCase() == 'video')
             this.marked_default = true;
             
-        for(var attr in default_source_attr){
+        for(var attr in default_source_attr){ //for in loop oky on object
         	if( $j(element).attr( attr ) ) {
         		this[ attr ] =  $j(element).attr( attr );
         	}else{
@@ -1541,9 +1563,10 @@ mediaSource.prototype =
     */
     getURI : function(seek_time_sec)
     {    	
-    	//js_log("f:getURI: tf:" + this.timeFormat);
-    	if( !seek_time_sec || !this.supports_url_time_encoding )
-       		return this.src;       	
+    	//js_log("f:getURI: tf:" + this.timeFormat +' uri_enc:'+this.supports_url_time_encoding);
+    	if( !seek_time_sec || !this.supports_url_time_encoding ){    		
+       		return this.src;       		       	
+    	}
        	if( this.timeFormat == 'anx' ){
        		var new_url = getUpdateTimeURL(this.src,  seconds2ntp(seek_time_sec)+'/'+ this.end_ntp);
        	}else if(this.timeFormat=='mp4'){
@@ -1551,6 +1574,7 @@ mediaSource.prototype =
 	    	var new_url = mp4URL.protocol+'://'+mp4URL.authority + mp4URL.path + '?start='
 	    					 + ( seek_time_sec + parseInt(mp4URL.queryKey['start']) );       		
        	}
+       	//js_log('getURI seek url:'+ new_url);
        	return new_url;
     },
     /** Title accessor function.
@@ -1674,7 +1698,7 @@ mediaElement.prototype =
         {
         	//js_log(' on inner source: '+i + ' obj: '+ inner_source);
             _this.tryAddSource(inner_source);
-        });              
+        });                   
     },  
     /** Updates the time request for all sources that have a standard time request argument (ie &t=start_time/end_time)
      */
@@ -1697,11 +1721,11 @@ mediaElement.prototype =
     {
     	js_log('f:selectSource:'+index);
     	var playable_sources = this.getPlayableSources();
-    	for(var i in playable_sources){
-    		if(i==index){
+    	for(var i=0; i < playable_sources.length; i++){
+    		if( i==index ){
     			this.selected_source = playable_sources[i];
     			//update the user prefrance: 
-    			embedTypes.players.userSelectFormat(playable_sources[i].mime_type);
+    			embedTypes.players.userSelectFormat( playable_sources[i].mime_type);
     			break;
     		}
     	}
@@ -1711,12 +1735,13 @@ mediaElement.prototype =
     /** selects the default source via cookie preference, default marked, or by id order
      * */
     autoSelectSource:function(){ 
-    	js_log('f:autoSelectSource::');    
+    	js_log('f:autoSelectSource:');    
     	//@@todo read user preference for source    	
     	// Select the default source
-    	var playable_sources = this.getPlayableSources();              		
+    	var playable_sources = this.getPlayableSources();          	       		
     	var flash_flag=ogg_flag=false;  	    
-        for ( var source in playable_sources ){
+    	
+        for(var source=0; source < playable_sources.length; source++){
         	var mime_type =playable_sources[source].mime_type;
             if( playable_sources[source].marked_default ){
             	js_log('set via marked default: ' + playable_sources[source].marked_default);
@@ -1730,13 +1755,13 @@ mediaElement.prototype =
             	 return true;        
             }                                	                        
         }        
-        //set Ogg via player support:
-        for(var source in playable_sources){
+        //set Ogg via player support
+        for(var source=0; source < playable_sources.length; source++){
         	js_log('f:autoSelectSource:' + playable_sources[source].mime_type);
         	var mime_type =playable_sources[source].mime_type;        	
        		//set source via player                 
             if(mime_type=='video/ogg' || mime_type=='ogg/video' || mime_type=='video/annodex' || mime_type=='application/ogg'){
-            	for(var i in embedTypes.players){
+            	for(var i in embedTypes.players){ //for in loop on object oky
 	        		var player = embedTypes.players[i];
 	        		//debugger;
 	        		if(player.library=='vlc' || player.library=='native'){
@@ -1748,7 +1773,7 @@ mediaElement.prototype =
             }
         }
         //set h264 flash 
-        for(var source in playable_sources){    
+        for(var source=0; source < playable_sources.length; source++){  
         	var mime_type =playable_sources[source].mime_type;	        		        	        
             if( mime_type=='video/h264' ){
             	js_log('set via by player preference h264 flash')
@@ -1757,7 +1782,7 @@ mediaElement.prototype =
             }   	        
         }        
         //set basic flash
-        for(var source in playable_sources){    
+        for(var source=0; source < playable_sources.length; source++){  
         	var mime_type =playable_sources[source].mime_type;	        		        	        
             if( mime_type=='video/x-flv' ){
             	js_log('set via by player preference normal flash')
@@ -1796,7 +1821,7 @@ mediaElement.prototype =
     },
     isPlayableType:function(mime_type)
     {
-    	if(embedTypes.players.defaultPlayer(mime_type)){
+    	if( embedTypes.players.defaultPlayer( mime_type ) ){
     		return true;
     	}else{
     		return false;
@@ -1817,8 +1842,8 @@ mediaElement.prototype =
         }
         var new_src = $j(element).attr('src');
         //make sure an existing element with the same src does not already exist:         
-        for( var i in this.sources ){            	
-        	if(this.sources[i].getURI()==new_src){
+        for( var i=0; i < this.sources.length; i++ ){            	
+        	if(this.sources[i].src == new_src){
         		//js_log('checking existing: '+this.sources[i].getURI() + ' != '+ new_src);     
         		//can't add it all but try to update any additional attr: 
         		this.sources[i].updateSource(element);
@@ -1830,19 +1855,20 @@ mediaElement.prototype =
         //js_log('pushed source to stack'+ source + 'sl:'+this.sources.length);
     },
     getPlayableSources: function(){
+    	 //js_log('f:getPlayableSources');
     	 var playable_sources= new Array();
-    	 for( var i in this.sources ){
-    	 	js_log('getPlayableSources:'+this.sources[i].mime_type);    	 	    	 	
-    	 	if( this.isPlayableType(this.sources[i].mime_type) ){
-    	 		if(mv_restrict_roe_time_source){
-    	 			if(this.sources[i]['start'])
-    	 				continue;	
+    	 for(var i=0; i < this.sources.length; i++){
+    	 	//js_log('getPlayableSources:' + this.sources[i].mime_type);    	 	    	 	
+    	 	if( this.isPlayableType( this.sources[i].mime_type ) ){
+    	 		if( mv_restrict_roe_time_source ){
+    	 			if( this.sources[i]['start'] )
+    	 				return true; //continue 	
     	 		}
-    	 		playable_sources.push(this.sources[i]);
+    	 		playable_sources.push( this.sources[i] );
     	 	}else{
     	 		js_log("type "+ this.sources[i].mime_type + 'is not playable');
     	 	}
-    	 }    	 
+    	 };    	 
     	 return playable_sources;
     },
     /* Imports media sources from ROE data.
@@ -1944,7 +1970,7 @@ embedVideo.prototype = {
 		//this.element_pointer = element;
 
 		//inherit all the default video_attributes
-	    for(var attr in default_video_attributes){
+	    for(var attr in default_video_attributes){ //for in loop oky on user object
 	        if(element.getAttribute(attr)){
 	            this[attr]=element.getAttribute(attr);
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+'elm_val:' + element.getAttribute(attr) + "\n (set by elm)");
@@ -2001,7 +2027,7 @@ embedVideo.prototype = {
 		if( !this.media_element.selected_source )
 		{
 			//check for parent clip: 
-			if(typeof this.pc != 'undefined'){			
+			if( typeof this.pc != 'undefined' ){			
 				js_log('no sources, type:' +this.type + ' check for html');				
 				//do load player if just displaying innerHTML: 
 				if(this.pc.type =='text/html'){
@@ -2012,7 +2038,7 @@ embedVideo.prototype = {
 		}else{		
         	this.selected_player = embedTypes.players.defaultPlayer( this.media_element.selected_source.mime_type );
 		}			      
-        if(this.selected_player){
+        if( this.selected_player ){
             js_log('selected ' + this.selected_player.getName());
             js_log("PLAYBACK TYPE: "+this.selected_player.library);
             this.thumbnail_disp = true;	    
@@ -2021,7 +2047,7 @@ embedVideo.prototype = {
         	//no source's playable
         	var missing_type ='';
         	var or ='';  
-        	for( var i in  this.media_element.sources){
+        	for( var i=0; i < this.media_element.sources.length; i++){
         		missing_type+=or + this.media_element.sources[i].mime_type;
         		or=' or ';
         	}        	
@@ -2038,7 +2064,7 @@ embedVideo.prototype = {
 		//clear out any non-base embedObj stuff:
 		if(this.instanceOf){
 			eval('tmpObj = '+this.instanceOf);
-			for(i in tmpObj){
+			for(var i in tmpObj){ //for in loop oky for object  
 				if(this['parent_'+i]){
 					this[i]=this['parent_'+i];
 				}else{
@@ -2056,7 +2082,7 @@ embedVideo.prototype = {
 			js_log( 'type of ' + _this.selected_player.library +'Embed + ' +
 					eval('typeof '+_this.selected_player.library +'Embed')); 
 			eval('embedObj = ' +_this.selected_player.library +'Embed;');
-			for(method in embedObj){
+			for(var method in embedObj){ //for in loop oky for object  
 				//parent method preservation for local overwritten methods
 				if(_this[method])
 					_this['parent_' + method] = _this[method];
@@ -2250,10 +2276,10 @@ embedVideo.prototype = {
     		var etime_parts = times[1].split(':');
     		
     		var new_anno_track_url = annoURL.protocol +'://'+ annoURL.host + annoURL.path +'?';
-    		for(var i in annoURL.queryKey){
+    		$j.each(annoURL.queryKey, function(i, val){
     			new_anno_track_url +=(i=='t')?'t='+new_start+'/'+new_end +'&' :
-    									 i+'='+ annoURL.queryKey[i]+'&';    					    		
-    		}    		
+    									 i+'='+ val+'&';
+    		});
     		var request_key = new_start+'/'+new_end;
     		//check the anno_data cache: 
     		//@@todo search cache see if current is in range.  
@@ -2310,7 +2336,7 @@ embedVideo.prototype = {
     	js_log('showNextPrevLinks: req time: '+ s_sec + ' to ' + e_sec);
     	//now we have all the data in anno_data_cache
     	var current_done=false;
-    	for(var clip_id in this.anno_data_cache){  
+    	for(var clip_id in this.anno_data_cache){  //for in loop oky for object
 		 	var clip =  this.anno_data_cache[clip_id];
 		 	//js_log('on clip:'+ clip_id);
 		 	//set prev_link (if cur_link is still empty)
@@ -2690,7 +2716,7 @@ embedVideo.prototype = {
 			'<span style="float:right;margin-right:10px">' +			
 		    		'<a href="#" style="color:white;" onClick="$j(\'#'+sel_id+'\').get(0).closeDisplayedHTML();return false;">close</a>' +
 		    '</span>'+
-            '<div id="mv_disp_inner_'+sel_id+'">'+
+            '<div id="mv_disp_inner_'+sel_id+'" style="padding-top:10px;">'+
             	 html_code 
            	+'</div>'+
 //                close_link+'</span>'+
@@ -2712,32 +2738,6 @@ embedVideo.prototype = {
 		 });
  		return false;//onclick action return false
 	},
-    getPlayerSelectList:function(mime_type, index, file_select_code){
-        var supporting_players = embedTypes.players.getMIMETypePlayers(mime_type);
-		
-		var select_html='<div id="player_select_list_' + index + '" class="player_select_list"><ul>';
-		for(var i in supporting_players){
-			//js_log('checking 
-			//put colored (selected) display if selected_player matches current
-			if( this.selected_player.id == supporting_players[i].id  ){
-				select_html+='<li>'+
-									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin.png">'+
-									supporting_players[i].getName() +
-							'</li>';
-			}else{
-				//else gray plugin and the plugin with link to select
-				select_html+='<li>'+
-								'<a href="#" onClick="'+ file_select_code + 'embedTypes.players.userSelectPlayer(\''+supporting_players[i].id+'\',\''+mime_type+'\');return false;">'+
-									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin_disabled.png">'+
-									supporting_players[i].getName() +
-								'</a>'+
-							'</li>';
-			}
-		 }
-		 select_html+='</ul></div>';
-         //js_log(select_html);
-		 return select_html;
-	},
     selectPlaybackMethod:function(){    	
     	//get id (in case where we have a parent container)
         var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
@@ -2750,8 +2750,10 @@ embedVideo.prototype = {
         {     		
 	        var default_player = embedTypes.players.defaultPlayer( source.getMIMEType() );
 	        var source_select_code = '$j(\'#'+this_id+'\').get(0).closeDisplayedHTML(); $j(\'#'+_this.id+'\').get(0).media_element.selectSource(\''+index+'\');';
-	        var player_code = _this.getPlayerSelectList( source.getMIMEType(), index, source_select_code);
-	        var is_not_selected = (source != _this.media_element.selected_source);
+	        
+	        //var player_code = _this.getPlayerSelectList( source.getMIMEType(), index, source_select_code);
+	        
+	        var is_selected = (source == _this.media_element.selected_source);
 	        var image_src = mv_embed_path+'images/stream/';
 	        if( source.mime_type == 'video/x-flv' ){
 	        	image_src += 'flash_icon_';
@@ -2761,15 +2763,34 @@ embedVideo.prototype = {
 	        }else{
 	        	image_src += 'fish_xiph_org_';
 	        }
-	        image_src += is_not_selected ? 'bw' : 'color';
+	        image_src += is_selected ? 'color':'bw';
 	        image_src += '.png';
 	        if (default_player)
 	        {
 	            out += '<img src="'+image_src+'"/>';
-	            if( is_not_selected )
+	            if( ! is_selected )
 	                out+='<a href="#" onClick="' + source_select_code + 'embedTypes.players.userSelectPlayer(\''+default_player.id+'\',\''+source.getMIMEType()+'\'); return false;">';
-	            out += source.getTitle()+ (is_not_selected?'</a>':'') + ' ';
-	            out += player_code;           
+	            out += source.getTitle()+ (is_selected?'</a>':'') + ' ';
+	        	//output the player select code: 
+	        	var supporting_players = embedTypes.players.getMIMETypePlayers( source.getMIMEType() );		
+				out+='<div id="player_select_list_' + index + '" class="player_select_list"><ul>';
+				for(var i=0; i < supporting_players.length ; i++){				
+					if( _this.selected_player.id == supporting_players[i].id && is_selected ){
+						out+='<li style="border-style:dashed;margin-left:20px;">'+
+									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin.png">'+
+									supporting_players[i].getName() +
+							'</li>';
+					}else{
+						//else gray plugin and the plugin with link to select
+						out+='<li style="margin-left:20px;">'+
+								'<a href="#" onClick="'+ source_select_code + 'embedTypes.players.userSelectPlayer(\''+supporting_players[i].id+'\',\''+ source.getMIMEType()+'\');return false;">'+
+									'<img border="0" width="16" height="16" src="'+mv_embed_path+'images/plugin_disabled.png">'+
+									supporting_players[i].getName() +
+								'</a>'+
+							'</li>';
+					}
+				 }
+				 out+='</ul></div>';           
 	        }else
 	            out+= source.getTitle() + ' - no player available';
         });
@@ -2988,10 +3009,10 @@ function getUpdateTimeURL(url, new_time, size){
 	if(size &&  pSrc.queryKey['size'])
 		pSrc.queryKey['size']=size;
 			
-	for(var i in pSrc.queryKey){		
-		new_url+= amp+i+'='+ pSrc.queryKey[i];			
+	$j.each(pSrc.queryKey, function(key, val){		
+		new_url+= amp + key + '=' + val;			
 		amp = '&';    	
-	}		
+	});
 	return new_url;
 }
 
@@ -3223,12 +3244,12 @@ if (typeof DOMParser == "undefined") {
 */
 function js_log(string){
   if( window.console ){
-        console.log(string);        
+       window.console.log(string);        
   }else{
      /*
       * IE and non-firebug debug:
       */
-    /*var log_elm = document.getElementById('mv_js_log');
+    var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
      	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');
@@ -3236,10 +3257,10 @@ function js_log(string){
      if(log_elm){
      	log_elm.value+=string+"\n";
      } 
-     */
+     
          
    }
-   //give the string back (ie in cases of returning an error)
+   //return false
    return false;
 }
 

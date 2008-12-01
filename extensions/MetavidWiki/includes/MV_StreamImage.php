@@ -49,7 +49,7 @@ class MV_StreamImage {
 		if ( !$directLink ) {
 			return $wgScript . '?action=ajax&rs=mv_frame_server&stream_id=' .
 						htmlspecialchars( $stream_id ) .
-						'&t=' . htmlspecialchars( $req_time ) . htmlspecialchars( $req_size_out );
+						'&t=' . htmlspecialchars( $req_time ) .  $req_size_out;
 		}
 		$req_time = MV_StreamImage::procRequestTime( $stream_id, $req_time );
 		if ( $req_time == false ) {
