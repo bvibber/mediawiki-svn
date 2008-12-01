@@ -98,7 +98,7 @@
 
 $wgExtensionCredits['parserhook'][] = array(
 	'name'            => 'StringFunctions',
-	'version'         => '2.0.2', // Oct 27, 2008
+	'version'         => '2.0.3', // Nov 30, 2008
 	'description'     => 'Enhances parser with string functions',
 	'descriptionmsg'  => 'stringfunctions-desc',
 	'author'          => array('Ross McClure', 'Juraj Simlovic'),
@@ -158,9 +158,11 @@ class ExtStringFunctions {
 	 */
 	function mwMarkerRE ( &$parser )
 	{
-		if( isset($parser->mMarkerSuffix) )
+		if ( defined('Parser::MARKER_SUFFIX') )
+			$suffix = preg_quote( Parser::MARKER_SUFFIX, '/' );
+		elseif ( isset($parser->mMarkerSuffix) )
 			$suffix = preg_quote( $parser->mMarkerSuffix, '/' );
-		else if ( strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
+		elseif ( defined('MW_PARSER_VERSION') && strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
 			$suffix = "QINU\x07";
 		else $suffix = 'QINU';
 
@@ -195,9 +197,11 @@ class ExtStringFunctions {
 	function mwSplit ( &$parser, $str, &$chars ) {
 		# Get marker prefix & suffix
 		$prefix = preg_quote( $parser->mUniqPrefix, '/' );
-		if( isset($parser->mMarkerSuffix) )
+		if ( defined('Parser::MARKER_SUFFIX') )
+			$suffix = preg_quote( Parser::MARKER_SUFFIX, '/' );
+		elseif ( isset($parser->mMarkerSuffix) )
 			$suffix = preg_quote( $parser->mMarkerSuffix, '/' );
-		else if ( strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
+		elseif ( defined('MW_PARSER_VERSION') && strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
 			$suffix = "QINU\x07";
 		else $suffix = 'QINU';
 
