@@ -371,8 +371,10 @@ abstract class ConfigurationPage extends SpecialPage {
 					## Last-ditch
 					$userLink = $data['username'].'@'.$data['userwiki'];
 				}
+				
+				$comment = $data['reason'] ? $skin->commentBlock( $data['reason'] ) : '';
 
-				$text = wfMsgExt( 'configure-old-summary', array( 'replaceafter', 'parseinline'), array( $link, $userLink, $diffLink ) );
+				$text = wfMsgExt( 'configure-old-summary', array( 'replaceafter', 'parseinline'), array( $link, $userLink, $diffLink, $comment ) );
 
 				$prev = $ts;
 
@@ -710,6 +712,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			Xml::openElement( 'div', array( 'id' => 'configure' ) ) . "\n" .
 			$this->buildAllSettings() . "\n" .
 			( $this->mCanEdit ?
+				Xml::buildForm( array( 'configure-form-reason' => Xml::input( 'wpReason', 45 ) ) ) . "\n" .
 				Xml::openElement( 'div', array( 'id' => 'prefsubmit' ) ) . "\n" .
 				Xml::openElement( 'div', array() ) . "\n" .
 				Xml::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n" .

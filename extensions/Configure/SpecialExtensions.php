@@ -23,13 +23,14 @@ class SpecialExtensions extends ConfigurationPage {
 	 * Submit a posted form
 	 */
 	public function doSubmit() {
-		global $wgConf, $wgOut;
+		global $wgConf, $wgOut, $wgRequest;
+		$reason = $wgRequest->getText( 'wpReason' );
 		$current = $wgConf->getCurrent( $this->mWiki );
 		$settings = $this->importFromRequest();
 		$new = $settings + $current;
 		$new = $this->removeDefaults( $new );
 		$new['__includes'] = $this->getRequiredFiles();
-		$ok = $wgConf->saveNewSettings( $new, $this->mWiki );
+		$ok = $wgConf->saveNewSettings( $new, $this->mWiki, $reason );
 		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
 		$class = $ok ? 'successbox' : 'errorbox';
 

@@ -94,9 +94,19 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * @param $wiki String: wiki name or true for all
 	 * @return bool true on success
 	 */
-	public function saveNewSettings( $settings, $wiki ) {
+	public function saveNewSettings( $settings, $wiki, $ts = false, $reason = '' ) {
+		global $wgUser;
+		
 		$arch = $this->getArchiveFileName();
 		$cur = $this->getFileName();
+		
+		## Add meta-data
+		$settings['__metadata'] = array(
+			'user_wiki' => wfWikiID(),
+			'user_name' => $wgUser->getName(),
+			'reason' => $reason
+		);
+		
 		$cont = serialize( $settings );
 		@file_put_contents( $arch, $cont );
 		return ( @file_put_contents( $cur, $cont ) !== false );
@@ -110,11 +120,22 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		if ( !$dir = opendir( $this->mDir ) )
 			return array();
 		$files = array();
+		
 		while ( ( $file = readdir( $dir ) ) !== false ) {
-			if ( preg_match( '/^conf-(\d{14})\.ser$/', $file, $m ) )
-				$files[$m[1]] = array( 'username' => false, 'userwiki' => false );
+			if ( preg_match( '/^conf-(\d{14})\.ser$/', $file, $m ) ) {
+				## Read the data.
+				$settings = unserialize( file_get_contents( $this->mDir."/$file" ) );
+				
+				if (isset( $settings['__metadata'] )) {
+					$metadata = $settings['__metadata'];
+					
+					$files[$m[1]] = array( 'username' => $metadata['user_name'], 'userwiki' => $metadata['user_wiki'], 'reason' => $metadata['reason'] );
+				} else {
+					$files[$m[1]] = array( 'username' => false, 'userwiki' => false, 'reason' => false );
+				}
+			}
 		}
-		rsort( $files, SORT_NUMERIC );
+		krsort( $files, SORT_NUMERIC );
 		return $files;
 	}
 

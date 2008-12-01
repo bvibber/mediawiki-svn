@@ -244,8 +244,11 @@ class SpecialViewConfig extends ConfigurationPage {
 		} else {
 			$buttons = '';
 		}
+		
+		$comment = $arr['reason'] ? $skin->commentBlock( $arr['reason'] ) : '';
+		
 		$action = implode( ', ', $actions );
-		return Xml::tags( 'li', null, wfMsgExt( 'configure-viewconfig-line', array( 'parseinline', 'replaceafter' ), array( $buttons, $time, $userLink, $action ) ) )."\n";
+		return Xml::tags( 'li', null, wfMsgExt( 'configure-viewconfig-line', array( 'parseinline', 'replaceafter' ), array( $buttons, $time, $userLink, $action, $comment ) ) )."\n";
 	}
 
 	/**

@@ -229,7 +229,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @param $wiki String: wiki name or false to use the current one
 	 * @return bool true on success
 	 */
-	public function saveNewSettings( $settings, $wiki = false ) {
+	public function saveNewSettings( $settings, $wiki = false, $reason = '' ) {
 		if ( !is_array( $settings ) || $settings === array() )
 			# hmmm
 			return false;
@@ -243,7 +243,7 @@ class WebConfiguration extends SiteConfiguration {
 			$this->mConf[$wiki] = $settings;
 		}
 
-		return $this->mHandler->saveNewSettings( $this->mConf, $wiki );
+		return $this->mHandler->saveNewSettings( $this->mConf, $wiki, false, $reason );
 	}
 
 	/**

@@ -184,15 +184,15 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * @param $ts
 	 * @return bool true on success
 	 */
-	public function saveNewSettings( $settings, $wiki, $ts = false ) {
+	public function saveNewSettings( $settings, $wiki, $ts = false, $reason = '' ) {
 		if ( $wiki === true ) {
 			foreach ( $settings as $name => $val ) {
-				$this->saveSettingsForWiki( $val, $name, $ts );
+				$this->saveSettingsForWiki( $val, $name, $ts, $reason );
 			}
 		} else {
 			if ( !isset( $settings[$wiki] ) )
 				return false;
-			$this->saveSettingsForWiki( $settings[$wiki], $wiki, $ts );
+			$this->saveSettingsForWiki( $settings[$wiki], $wiki, $ts, $reason );
 		}
 		$this->getCache()->delete( $this->cacheKey( 'configure', 'current' ) );
 		return true;
@@ -201,7 +201,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * save the configuration for $wiki
 	 */
-	protected function saveSettingsForWiki( $settings, $wiki, $ts ) {
+	protected function saveSettingsForWiki( $settings, $wiki, $ts, $reason = '' ) {
 		global $wgUser;
 		
 		$dbw = $this->getMasterDB();
@@ -214,7 +214,8 @@ class ConfigureHandlerDb implements ConfigureHandler {
 				'cv_timestamp' => $dbw->timestamp($ts),
 				'cv_is_latest' => 1,
 				'cv_user_text' => $wgUser->getName(),
-				'cv_user_wiki' => wfWikiId()
+				'cv_user_wiki' => wfWikiId(),
+				'cv_reason' => $reason
 			),
 			__METHOD__
 		);
@@ -244,14 +245,14 @@ class ConfigureHandlerDb implements ConfigureHandler {
 		$db = $this->getSlaveDB();
 		$ret = $db->select(
 			array( 'config_version' ),
-			array( 'cv_timestamp', 'cv_user_text', 'cv_user_wiki' ),
+			array( 'cv_timestamp', 'cv_user_text', 'cv_user_wiki', 'cv_reason' ),
 			array(),
 			__METHOD__,
 			array( 'ORDER BY' => 'cv_timestamp DESC' )
 		);
 		$arr = array();
 		foreach ( $ret as $row ) {
-			$arr[$row->cv_timestamp] = array( 'username' => $row->cv_user_text, 'userwiki' => $row->cv_user_wiki );
+			$arr[$row->cv_timestamp] = array( 'username' => $row->cv_user_text, 'userwiki' => $row->cv_user_wiki, 'reason' => $row->cv_reason );
 		}
 		return $arr;
 	}

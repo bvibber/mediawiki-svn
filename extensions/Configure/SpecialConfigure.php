@@ -17,15 +17,16 @@ class SpecialConfigure extends ConfigurationPage {
 	}
 
 	protected function doSubmit() {
-		global $wgConf, $wgOut, $wgConfigureUpdateCacheEpoch, $wgUser;
+		global $wgConf, $wgOut, $wgConfigureUpdateCacheEpoch, $wgUser, $wgRequest;
 
+		$reason = $wgRequest->getText( 'wpReason' );
 		$current = $wgConf->getCurrent( $this->mWiki );
 		$settings = $this->importFromRequest();
 		$settings += $current;
 		$settings = $this->removeDefaults( $settings );
 		if ( $wgConfigureUpdateCacheEpoch )
 			$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() );
-		$ok = $wgConf->saveNewSettings( $settings, $this->mWiki );
+		$ok = $wgConf->saveNewSettings( $settings, $this->mWiki, $reason );
 		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
 		$class = $ok ? 'successbox' : 'errorbox';
 

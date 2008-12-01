@@ -30,6 +30,7 @@ class ConfigurationPagerFiles implements Pager {
 				'count' => $count,
 				'user_name' => '',
 				'user_wiki' => '',
+				'reason' => '',
 			);
 			$text .= $this->formatRow( $info );
 		}

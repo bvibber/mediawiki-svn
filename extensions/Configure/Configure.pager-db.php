@@ -44,6 +44,7 @@ class ConfigurationPagerDb extends ReverseChronologicalPager {
 			'count' => $this->mCounter,
 			'user_name' => isset( $row->cv_user_text ) ? $row->cv_user_text : '',
 			'user_wiki' => isset( $row->cv_user_wiki ) ? $row->cv_user_wiki : '',
+			'reason' => isset( $row->cv_reason ) ? $row->cv_reason : '',
 		);
 		return call_user_func( $this->mCallback, $info );
 	}
