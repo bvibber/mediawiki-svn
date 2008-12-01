@@ -1396,7 +1396,7 @@ textInterface.prototype = {
 		if(this.autoscroll){
 			//start the timer if its not already running
 			if(!this.scrollTimerId){
-				this.scrollTimerId = setInterval('document.getElementById(\''+this.pe.id+'\').textInterface.monitor()', 500);
+				this.scrollTimerId = setInterval('$j(\'#'+this.pe.id+'\').get(0).textInterface.monitor()', 500);
 			}
 			//jump to the current position:
 			var cur_time = parseInt (this.pe.currentTime );
