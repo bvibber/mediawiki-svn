@@ -1013,22 +1013,25 @@ function mv_embed( force_id ){
 		
 	//process selected elements: 
 	$j(j_selector).each(function(){
-		js_log( "SWAP: " + $j(this).attr("id") + ' tag: '+ this.tagName);
+		js_log( "Do SWAP: " + $j(this).attr("id") + ' tag: '+ this.tagName.toLowerCase() );
 				
-		if( $j(this).attr("id")=='' ){
-			elm_id = 'v'+ global_player_list.length;			
-			$j(this).attr("id", elm_id);
-		}		
-		//store a global reference to the id    
-    	global_player_list.push(elm_id);
+		if( $j(this).attr("id") == '' ){
+			$j(this).attr("id", 'v'+ global_player_list.length);
+		}			
+		//stre a global reference to the id    
+    	global_player_list.push( $j(this).attr("id") );
 		//add loading: (pre-loading div) 		
 		/*$j(this).after('<div id="pre_loading_div_'+elm_id + '">'+
             	getMsg('loading_txt')+'</div>' );
         */ 
+        
         //if video doSwap
-        if(this.tagName.toLowerCase()=='video'){
+        if( this.tagName.toLowerCase() == 'video'){
+        	js_log("WTF");
         	var videoInterface = new embedVideo(this);	 
 			swapEmbedVideoElement( this, videoInterface );
+        }else{
+        	js_log( this.tagName.toLowerCase()+ ' != video' );
         }
         //if playlist set do load playlist
         if( this.tagName.toLowerCase() == 'playlist' )
