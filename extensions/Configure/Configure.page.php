@@ -627,7 +627,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function removeDefaults( $settings ) {
 		global $wgConf;
-		$defaultValues = $wgConf->getDefaultsForWiki( $this->mWiki );
+		$defaultValues = $wgConf->getDefaults(  );
 		foreach ( $defaultValues as $name => $default ) {
 			## Normalise the two, to avoid false "changes"
 			if (is_array($default))
