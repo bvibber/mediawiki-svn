@@ -89,7 +89,6 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * Load the current configuration the database (i.e. cv_is_latest == 1)
 	 * directory
-	 * FIXME: serious O(n) overhead
 	 */
 	public function getCurrent( $useCache = true ) {
 		static $ipCached = null;
@@ -99,6 +98,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 
 		# Check filesystem cache
 		if ( $useCache && ( $cached = $this->getFSCached() ) ) {
+			# FIXME: why does this always recache?
 			$this->cacheToFS( $cached );
 			return $ipCached = $cached;
 		}
@@ -135,7 +135,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	/**
 	 * Return the old configuration from $ts
 	 * Does *not* return site specific settings but *all* settings
-	 * FIXME: serious O(n) overhead
+	 * FIXME: timestamp is not unique
 	 *
 	 * @param $ts timestamp
 	 * @return array
