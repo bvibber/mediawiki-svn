@@ -15,6 +15,9 @@ class ConfigurationSettings {
 	// Extension settings
 	protected $extensions;
 
+	// Cache
+	protected $cache = array();
+
 	public static function singleton( $types ) {
 		static $instances = array();
 		if ( !isset( $instances[$types] ) )
@@ -114,9 +117,8 @@ class ConfigurationSettings {
 	 * @return array
 	 */
 	public function getAllSettings() {
-		static $arr;
-		if ( isset( $arr ) )
-			return $arr;
+		if ( isset( $this->cache['all'] ) )
+			return $this->cache['all'];
 		$this->loadSettingsDefs();
 		$arr = array();
 		foreach ( $this->getSettings() as $section ) {
@@ -124,7 +126,7 @@ class ConfigurationSettings {
 				$arr = array_merge( $arr, $group );
 			}
 		}
-		return $arr;
+		return $this->cache['all'] = $arr;
 	}
 
 	/**
@@ -190,9 +192,8 @@ class ConfigurationSettings {
 	 * @return array
 	 */
 	public function getArrayDefs() {
-		static $list;
-		if ( isset( $list ) )
-			return $list;
+		if ( isset( $this->cache['array'] ) )
+			return $this->cache['array'];
 		$list = array();
 		$this->loadSettingsDefs();
 		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
@@ -203,7 +204,7 @@ class ConfigurationSettings {
 				$list  += $ext->getArrayDefs();
 			}
 		}
-		return $list;
+		return $this->cache['array'] = $list;
 	}
 
 	/**
@@ -213,9 +214,8 @@ class ConfigurationSettings {
 	 * @return array
 	 */
 	public function getEmptyValues() {
-		static $list;
-		if ( isset( $list ) )
-			return $list;
+		if ( isset( $this->cache['empty'] ) )
+			return $this->cache['empty'];
 		$list = array();
 		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
 			$list += $this->emptyValues;
@@ -225,7 +225,7 @@ class ConfigurationSettings {
 				$list += $ext->getEmptyValues();
 			}
 		}
-		return $list;
+		return $this->cache['empty'] = $list;
 	}
 
 	/**

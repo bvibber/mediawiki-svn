@@ -1219,7 +1219,8 @@ abstract class ConfigurationPage extends SpecialPage {
 							'link' => $showlink,
 						);
 						
-						$params['customised'] = ( WebConfiguration::filterVar($defaults[$setting]) != WebConfiguration::filterVar($params['value']) );
+						$params['customised'] = ( !isset( $defaults[$setting] ) || 
+							WebConfiguration::filterVar( $defaults[$setting] ) != WebConfiguration::filterVar( $params['value'] ) );
 						
 						$show = $this->mCanEdit ?
 							( isset( $params['edit'] ) ? $params['edit'] : $this->userCanEdit( $setting ) ) :

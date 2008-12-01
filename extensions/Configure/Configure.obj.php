@@ -164,7 +164,7 @@ class WebConfiguration extends SiteConfiguration {
 	
 	/** Recursive doohicky for normalising variables so we can compare them. */
 	public static function filterVar( $var ) {
-		if (is_array($var)) {
+		if ( is_array( $var ) ) {
 			return array_filter( array_map( array( __CLASS__, 'filterVar' ), $var ) );
 		}
 		
