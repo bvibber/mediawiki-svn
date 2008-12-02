@@ -58,6 +58,10 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		if ( !is_array( $settings ) )
 			# Weird, should not happen too
 			return array();
+			
+		if ( !empty($settings['__metadata']) )
+			unset($settings['__metadata']);
+			
 		return $settings;
 	}
 
@@ -123,10 +127,10 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 				if (isset( $settings['__metadata'] )) {
 					$metadata = $settings['__metadata'];
 					
-					$files[] = array( 'username' => $metadata['user_name'], 
+					$files[$m[1]] = array( 'username' => $metadata['user_name'], 
 						'userwiki' => $metadata['user_wiki'], 'reason' => $metadata['reason'], 'timestamp' => $m[1] );
 				} else {
-					$files[] = array( 'username' => false, 'userwiki' => false, 'reason' => false, 'timestamp' => $m[1] );
+					$files[$m[1]] = array( 'username' => false, 'userwiki' => false, 'reason' => false, 'timestamp' => $m[1] );
 				}
 			}
 		}
@@ -173,10 +177,18 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * @return String full path to the file
 	 */
 	public function getArchiveFileName( $ts = null ) {
+		$ts_orig = $ts;
+		
 		if ( $ts === null )
 			$ts = wfTimestampNow();
 
 		$file = "{$this->mDir}conf-$ts.php";
+		
+		## Hack hack hack
+		## Basically, if the file already exists, pretend that the setting change was made in a second's time.
+		if ($ts_orig === null && file_exists($file))
+			return $this->getArchiveFileName( $ts+1 );
+			
 		return $file;
 	}
 

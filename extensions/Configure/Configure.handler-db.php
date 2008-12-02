@@ -256,7 +256,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 		);
 		$arr = array();
 		foreach ( $ret as $row ) {
-			$arr[] = array( 'username' => $row->cv_user_text, 'userwiki' => $row->cv_user_wiki, 'reason' => $row->cv_reason, 'timestamp' => $row->cv_timestamp );
+			$arr[$row->cv_timestamp] = array( 'username' => $row->cv_user_text, 'userwiki' => $row->cv_user_wiki, 'reason' => $row->cv_reason, 'timestamp' => $row->cv_timestamp );
 		}
 		return $arr;
 	}

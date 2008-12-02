@@ -37,7 +37,6 @@ Please create it and apply configure.sql or correct its name.',
 	'configure-directory-not-writable'    => 'The directory used to store the settings, <tt>$1</tt>, is not writable.
 Please make it writable by PHP to use this extension.',
 	'configure-edit-old'                  => "'''Warning''': you are editing an <strong>old</strong> version of the configuration (as at $1).",
-	'configure-compare'		      => "Below are the changes between the revisions as at $1 and $2",
 	'configure-error'                     => 'The configuration could not be saved',
 	'configure-js-add'                    => 'Add a new entry',
 	'configure-js-group-exists'           => 'Error: the group already exists.',
