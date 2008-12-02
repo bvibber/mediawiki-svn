@@ -92,7 +92,7 @@
 		$token = $wgRequest->getVal( 'clipboardEditToken');			 
 		//store the clipboard
 		if( $action == 'copy' ){			
-			return '';			 	
+			return ''; 	
 		}
 		//get the clipboard
 		if( $action == 'paste'){

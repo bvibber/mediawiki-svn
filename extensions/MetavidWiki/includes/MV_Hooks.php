@@ -77,11 +77,12 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
  * and maybe integrated with File / image handle 
 */
  function mvLinkEnd($skin, $title, $options, &$text, &$attribs, &$ret){
- 	global $mvDefaultAspectRatio, $mvDefaultVideoPlaybackRes;
- 	//only do link rewrites for STREAM and SEQUENCE name space  	 	
- 	if( $title->getNamespace() != MV_NS_STREAM &&  $title->getNamespace() != MV_NS_SEQUENCE){
+ 	global $mvDefaultAspectRatio, $mvDefaultVideoPlaybackRes, $mvEmbedKey;
+ 	//only do link rewrites for STREAM and SEQUENCE name space when on an article page  	 	
+ 	if( ( substr( $title->getText(), 0, strlen( $mvEmbedKey ) ) != $mvEmbedKey ) &&  
+ 		$title->getNamespace() != MV_NS_SEQUENCE ){
  		return true;
- 	}
+ 	} 	
  	//parse text for extra parameters 
  	//@@todo integrate with image params / maybe file handle ) 	
  	$params = explode('|', $text);
@@ -90,10 +91,10 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
  	$start_ntp=$end_ntp=null;
  	foreach($params as $param){
  		if(substr( $param, -2) == 'px'){ //size param
- 			if( strpos($param, 'x') === false ){
+ 			if( strpos($param, 'x') === false ){ 				
  				$k = intval( str_replace($param, 'px', '' ));
  				//@@todo should use the actual clips aspect ratio
- 				$size = intval( $v ) . 'x' . ( $mvDefaultAspectRatio * intval( $v ) );
+ 				$size = intval( $v ) . 'x' . (int) ( $mvDefaultAspectRatio *  $v ); 				
  			}else{
  				list($width, $height) = explode('x', str_replace('px', '', $param ) );
  				$size =  intval( $width ) . 'x' . intval( $height );
@@ -117,7 +118,13 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
  			}
  		}
  	}	 	
- 	if( $title->getNamespace() == MV_NS_STREAM ){
+ 	if( substr( $title->getText(), 0, strlen($mvEmbedKey) ) == $mvEmbedKey ){
+ 		$mvTitle =  new MV_Title( substr( $title->getText(), strlen($mvEmbedKey)+1) ); 		
+ 		$ret = $mvTitle->getEmbedVideoHtml( array( 'size'=>$size, 'showmeta'=>true ) );
+ 		return false;
+ 	}
+ 	//strait Stream links are not the best to rewrite right now since there are lots of "stream" links
+ 	/*if( $title->getNamespace() == MV_NS_STREAM ){
  		//parse the stream title: 
  		$mvTitle = new MV_Title($title);
  		if ( !$mvTitle->getStartTime() || !$mvTitle->getEndTime() ) { 			
@@ -128,7 +135,7 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
  		}
  		$ret = $mvTitle->getEmbedVideoHtml( array( 'size'=>$size, 'showmeta'=>true ) );
  		return false;
- 	} 	
+ 	} */	
  	if( $title->getNamespace() == MV_NS_SEQUENCE ){
  		$seqPlayer = new MV_SequencePlayer($title);
  		$ret = $seqPlayer->getEmbedSeqHtml( array( 'size'=>$size ) );

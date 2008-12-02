@@ -1416,11 +1416,13 @@ textInterface.prototype = {
 			var scroll_to_id='';
 			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
 				if(cur_time > ntp2seconds($j(this).attr('start'))  ){
-					_this.prevTimeScroll=cur_time;	
-					scroll_to_id = $j(this).attr('id');	
+					_this.prevTimeScroll=cur_time;
+					if( $j(this).attr('id') )	
+						scroll_to_id = $j(this).attr('id');	
 				}
 			});
-			$j('#mmbody_'+_this.pe.id).animate({scrollTop: $j('#'+scroll_to_id).position().top}, 'slow');
+			if(scroll_to_id != '')
+				$j( '#mmbody_' + _this.pe.id ).animate( { scrollTop: $j('#'+scroll_to_id).position().top } , 'slow' );
 		}else{
 			//stop the timer
 			clearInterval(this.scrollTimerId);
@@ -2679,7 +2681,7 @@ embedVideo.prototype = {
 		  CopiedTxt.execCommand("Copy");
 	  }
 	},
-	showTextInterface:function(){
+	showTextInterface:function(){	
 		//check if textObj present:
 		if(typeof this.textInterface == 'undefined' ){
 			this.textInterface = new textInterface(this);
