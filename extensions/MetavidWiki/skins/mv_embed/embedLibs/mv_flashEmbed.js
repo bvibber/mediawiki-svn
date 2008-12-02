@@ -1765,7 +1765,7 @@ var flashEmbed = {
 	    	this.monitor();
 	    }else{
 	    	js_log('clip done and '+ this.startedTimedPlayback);
-	    	//stop the clip if its not stopped already: 
+	    	//stop the clip if its not stopped already:
     		this.stop();
 		    this.setStatus("Clip Done...");
 			//run the onClip done action: 

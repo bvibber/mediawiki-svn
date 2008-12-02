@@ -30,10 +30,7 @@
 		switch( $contextType ) {
 			case 'special':
 				$this->setupSpecialView();
-			break;
-			case 'edit_sequence':
-				$this->setupEditSequenceView();
-			break;
+			break;		
 			case 'sequence':
 				$this->setupSequenceView();
 			break;
@@ -52,17 +49,7 @@
 				array('mv_interface'=>&$this)
 			);
 		}
-	}*/
-	function setupEditSequenceView() {
-		global $mvgIP, $wgTitle;
-		foreach ( array( 'MV_SequencePlayer', 'MV_SequenceTools', 'MV_SequenceTimeline' ) as $cp_name ) {
-			$this->components[$cp_name] = new $cp_name(
-				array( 'mv_interface' => &$this )
-			);
-		}
-		// set up additonal pieces
-		$this->page_title = wfMsg( 'mv_edit_sequence', $wgTitle->getText() );
-	}
+	}*/	
 	function setupStreamView() {
 		global $mvgIP, $mvDefaultStreamViewLength, $wgOut, $mvgScriptPath, $wgUser, $mvDispROEicon, $mvEnableStreamNotice;
 

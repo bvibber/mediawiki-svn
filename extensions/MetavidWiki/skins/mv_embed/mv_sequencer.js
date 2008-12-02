@@ -532,13 +532,6 @@ mvSequencer.prototype = {
 		
 		var this_seq = this;
 		//set up key bidnings
-		$j().keyup(function (e) {
-			js_log('pressed: ' + e.which);
-			//delete key (remove selected clips) (in the future we should take app state into consideration) 
-			if( e.which == 8 ){					
-				this_seq.removeSelectedClips();	
-			}			
-		});		
 		$j().keydown(function(e){
 			js_log('pushed down on:' + e.which); 
 			if( e.which == 16 )
@@ -564,7 +557,12 @@ mvSequencer.prototype = {
 				this_seq.key_shift_down = false;
 				
 			if( e.which == 17)
-				this_seq.key_ctrl_down = false;			
+				this_seq.key_ctrl_down = false;							
+			
+			//backspace or delete key:   
+			if( e.which == 8 || e.which == 46 ){					
+				this_seq.removeSelectedClips();	
+			}		
 		});
 	},
 	update_tl_hook:function(jh_time_ms){			
@@ -624,12 +622,6 @@ mvSequencer.prototype = {
 		
 		return false;	
 	},	
-	/*doAddClip:function(cur_clip, track_inx){
-		//add clip to track:
-		this.plObj.addCliptoTrack(cur_clip, track_inx);	
-		//set up embed: 
-		cur_clip.setUpEmbedObj();								
-	},*/
 	//@@todo integrate into clip view ...
 	editClip:function(track_inx, clip_inx){
 		$j('#modalbox').hide();
@@ -698,23 +690,23 @@ mvSequencer.prototype = {
 		$j('.mv_selected_clip').each(function(){
 			//add each clip to the clip board:						
 			var cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );
-			this_seq.clipboard.push( cur_clip.getAttributeObj() );
-			var foo = cur_clip.getAttributeObj();
-			//js_log('pushed: ' + foo); 		
-			//debugger;		
-		});		 
+			this_seq.clipboard.push( cur_clip.getAttributeObj() );			 						
+		});
 		//upload clipboard to the server (if possible) 
 		if( parseUri(  document.URL ).host != parseUri( this_seq.plObj.interface_url ).host ){
 			js_log('error: presently we can\'t copy clips across domains'); 
-		}else{
+		}else{								
 			var req_url = this_seq.plObj.interface_url + '?action=ajax&rs=mv_seqtool_clipboard&rsargs[]=copy';
 			$j.ajax({
 				type: "POST",
 				url:req_url,
-				data: $j.param( { "clipboard_data":this_seq.clipboard } ),
+				data: $j.param( { 
+					"clipboard_data": $j.toJSON( this_seq.clipboard ),
+					"clipboardEditToken": this_seq.clipboardEditToken 
+				}),
 				success:function(data){		
 					//callback( data );
-					js_log('did clipboard push ' + data);
+					js_log('did clipboard push ' + $j.toJSON( this_seq.clipboard ) );
 				}
 			});
 		}	
@@ -736,6 +728,7 @@ mvSequencer.prototype = {
 	//to a given position and track_inx 
 	addClips:function( clipSet, before_clip_pos, track_inx){
 		this_seq = this;
+		
 		js_log("seq: add clip: at: "+ before_clip_pos + ' in track: ' + track_inx);
 		//set defaults if missing
 		if(typeof trac_inx == 'undefined')
@@ -744,6 +737,7 @@ mvSequencer.prototype = {
 			var trackObj= this_seq.plObj.tracks[track_inx];
 			
 		var cur_pos = before_clip_pos;
+		js_log('paste clip before_clip_pos: ' + before_clip_pos);
 		$j.each(clipSet, function(inx, clipInitDom){
 			var mediaElement = document.createElement('ref');
 			for(var i in clipInitDom){
@@ -752,12 +746,13 @@ mvSequencer.prototype = {
 			}			
 			var clipObj = new mvSMILClip(mediaElement, 
 								{
-									id:'p_' + this_seq.plObj.id + '_c_'+cur_pos+'dsad',
+									id:'p_' + this_seq.plObj.id + '_c_'+cur_pos,
 									pp:this_seq.plObj,
 									order:cur_pos
 								}
 						)
-			debugger;
+			js_log('paste clip order: ' + clipObj.order);
+			//debugger;
 			if( clipObj ){	
 				//set up embed:						
 				clipObj.setUpEmbedObj();
@@ -765,17 +760,17 @@ mvSequencer.prototype = {
 				cur_pos++;
 			}
 		}); 		
-		debugger; 
+		//debugger; 
 		this.do_refresh_timeline();
 	},
 	removeClips:function( remove_clip_ary ){					
 		var this_seq = this;
 		var jselect = coma ='';
-		//js_log('clip count before removal : ' + this_seq.plObj.default_track.clips.length);		
+		js_log('clip count before removal : ' + this_seq.plObj.default_track.clips.length + ' should remove ' + remove_clip_ary.length );		
 		var afected_tracks = new Array();
-		//add order to track_clip before we start removing: 
+		//add order to track_clip before we start removing:		
 		$j.each( remove_clip_ary, function(inx, track_clip){		
-			remove_clip_ary[inx]['order']= this_seq.plObj.tracks[ track_clip[0] ].clips[ track_clip[1] ].order;
+			remove_clip_ary[inx]['order'] = this_seq.plObj.tracks[ track_clip[0] ].clips[ track_clip[1] ].order;
 		});		
 		$j.each( remove_clip_ary, function(inx, track_clip){
 			var track_inx = track_clip[0];
@@ -790,8 +785,8 @@ mvSequencer.prototype = {
 				}
 			}
 			//add track to affected track list: 
-			afected_tracks[track_inx]=true;
-			jselect+= coma + '#track_' +track_inx + '_clip_' + clip_inx;
+			afected_tracks[ track_inx ]=true;
+			jselect += coma + '#track_' +track_inx + '_clip_' + clip_inx;
 			coma=',';
 		});
 		//update/ reorder:
@@ -802,11 +797,11 @@ mvSequencer.prototype = {
 		js_log('clip count after removal : ' + this_seq.plObj.default_track.clips.length);
 		//animate the removal (@@todo should be able to call the resulting fadeOut only once without a flag) 
 		var done_with_refresh=false;
-		$j(jselect).fadeOut("slow", function(){
-			if(!done_with_refresh)						
+		$j(jselect).fadeOut("slow", function(){			
+			if( !done_with_refresh )						
 				this_seq.do_refresh_timeline();
 			done_with_refresh=true;
-		});						
+		}).empty(); //empty to remove any persistent bindings  						
 	},
 	doEdit:function( editObj ){
 		//add the current editObj to the edit stack (should allow for "undo")
@@ -1037,11 +1032,7 @@ mvSequencer.prototype = {
 						}
 					}
 									
-				});
-				//set up key binding "escape" and drag to deselect
-
-				
-				
+				});												
 				//add in control for time based display 											
 				//debugger;			
 				if(this.timeline_mode == 'time'){			
@@ -1052,7 +1043,8 @@ mvSequencer.prototype = {
 					});
 				}			
 				var insert_key='na';
-				// drag hooks:					
+				// drag hooks:
+				//@@todo support multiple clips					
 				for(var j in track.clips){			
 					$j('#track_'+track_id+'_clip_'+j).draggable({ 		
 						axis:'x', 
@@ -1122,13 +1114,10 @@ mvSequencer.prototype = {
 							clips.sort(sort_func);
 							function sort_func(a, b){								
 								return a.order - b.order;
-							}
+							}							
 							//assign keys back to order:
-							for(var k in clips){
-								clips[k].order=k;
-							}																												
-							//redraw: 														 
-							//@@todo if performace becomes an issue we could move dom items around
+							this_seq.plObj.tracks[track_inx].reOrderClips();																											
+							//redraw: 														 							
 							this_seq.do_refresh_timeline();
 						}
 					});
@@ -1321,7 +1310,7 @@ mvSequencer.prototype = {
 		this.do_refresh_timeline();
 		js_log('zoom out: '+this.timeline_scale);
 	},
-	do_refresh_timeline:function(){
+	do_refresh_timeline:function(){	
 		//regen duration 
 		this.plObj.getDuration( true );
 		//refresh player: 		

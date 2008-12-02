@@ -676,23 +676,18 @@ class MV_SequencePage extends Article {
 		//print_r($this->clips);
 		}*/
 	function doSeqReplace( &$input, &$argv, &$parser ) {
-		global $wgTitle, $wgUser, $wgRequest, $markerList, $mvDefaultVideoPlaybackRes;
+		global $wgTitle, $wgUser, $wgRequest, $markerList;
 		$sk = $wgUser->getSkin();
-		$title = Title::MakeTitle( NS_SPECIAL, 'MvExportSequence/' . $wgTitle->getDBKey() );
-		$title_url = $title->getFullURL();		
 		
-		
-		$oldid = $wgRequest->getVal( 'oldid' );
-		if ( isset( $oldid ) ) {			
-			$ss = ( strpos( $title_url, '?' ) === false ) ? '?':'&';
-			$title_url .= $ss . 'oldid=' . $oldid;
-		}		
-		
-		list($width, $height) = explode('x', $mvDefaultVideoPlaybackRes);
-		
-		$vidtag = '<div id="file" class="fullImageLink"><playlist';
-		$vidtag .= ' width="'.$width.'" height="'.$height.'" src="' . htmlspecialchars( $title_url ) .'">';
-		$vidtag .= '</playlist></div><hr>';
+		$options=array();
+		$oldid = $wgRequest->getVal('oldid');
+		if( $oldid != '')
+			$options['oldid'] = $oldid;
+			
+		$seqPlayer = new MV_SequencePlayer( $wgTitle );		
+		$vidtag = '<div id="file" class="fullImageLink">';	
+			$vidtag.= $seqPlayer->getEmbedSeqHtml( $options );
+		$vidtag .='</div><hr>';
 
 		$marker = "xx-marker" . count( $markerList ) . "-xx";
 		$markerList[] = $vidtag;

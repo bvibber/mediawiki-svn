@@ -179,7 +179,7 @@ function mvSetupExtension() {
 	$wgHooks['ArticleFromTitle'][] 			= 'mvDoMvPage';		
 	$wgHooks['TitleMoveComplete'][]			= 'mvMoveHook';
 	$wgHooks['LinkEnd'][] 					= 'mvLinkEnd';
-	$wgHooks['LinkBegin'][] 				= 'LinkBegin';
+	$wgHooks['LinkBegin'][] 				= 'mvLinkBegin';
 	
 	//our move function hanndles calling SMW hook
 	foreach($wgHooks['TitleMoveComplete'] as $k=>$f){
@@ -566,14 +566,14 @@ if ( ! function_exists( 'javascript_escape' ) ) {
 	}
 }
  /*
-  * Check if time is NTP based: hh:mm:ss.(fraction of a second)
+  * Check if time is NTP based: hh:mm:ss.ms(fraction of a second)
   */
 function mvIsNtpTime( $time ) {
-	// could alternatively do preg match: 
+	// could alternatively do preg match: (too strict) 
 	// preg_match('/[0-9]+:[0-9][0-9]:[0-9][0-9]/', $this->start_time, $matches);
  	// if(count($matches)==0)	
 	$tp = split( ':', $time );
-	if ( count( $tp ) != 3 )return false;
+	if ( count( $tp ) >= 4 || count( $tp ) <= 2 )return false;
 	list( $hours, $min, $sec ) = $tp;
 	// min/sec should be no larger than 60 
 	if ( $min >= 60 || $sec >= 60 )return false;
@@ -613,19 +613,18 @@ function mvIsNtpTime( $time ) {
  * takes ntp time of format hh:mm:ss and converts to seconds 
  */
 function ntp2seconds( $str_time ) {
-	$time_ary = explode( ':', $str_time );
+	$time_ary = explode( ':', $str_time );	
 	$hours = $min = $sec = 0;
 	if ( count( $time_ary ) == 3 ) {
-		$hours = $time_ary[0];
-		$min = $time_ary[1];
-		$sec = $time_ary[2];
+		$hours 	= (int) $time_ary[0];
+		$min 	= (int) $time_ary[1]; 
+		$sec 	= (float) $time_ary[2];
 	} else if ( count( $time_ary ) == 2 ) {
-		$min = $time_ary[0];
-		$sec = $time_ary[1];
+		$min 	= (int) $time_ary[0];
+		$sec 	= (float) $time_ary[1];
 	} else if ( count( $time_ary ) == 1 ) {
-		$sec = $time_ary[0];
+		$sec 	= (float) $time_ary[0];
 	}
-	
 	return ( $hours * 3600 ) + ( $min * 60 ) + $sec;
 }
 /*
@@ -633,6 +632,8 @@ function ntp2seconds( $str_time ) {
  */
 function seconds2ntp( $seconds, $short = false ) {
 	$dur = time_duration_2array( $seconds );
+	if( ! $dur )
+		return null;
 	// be sure to output leading zeros (for min,sec):
 	if ( $dur['hours'] == 0 && $short == true ) {
 		return sprintf( "%2d:%02d", $dur['minutes'], $dur['seconds'] );

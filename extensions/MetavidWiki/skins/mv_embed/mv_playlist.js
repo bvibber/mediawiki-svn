@@ -370,8 +370,8 @@ mvPlayList.prototype = {
 		//setup layout for title and dc_ clip container  
 		$j(this).html('<div id="dc_'+this.id+'" style="width:'+this.width+'px;' +
 				'height:'+(this.height+this.pl_layout.title_bar_height + this.pl_layout.control_height)+'px;position:relative;">' +
-				'	<div style="font-size:13px;width:'+this.width+'px;" id="ptitle_'+this.id+'"></div>' +
-				'</div>');												
+				'	<div style="font-size:13px;border:solid thin;width:'+this.width+'px;" id="ptitle_'+this.id+'"></div>' +
+				'</div>');									
 		
 		//add the playlist controls:						
 		$j('#dc_'+plObj.id).append(
@@ -400,7 +400,7 @@ mvPlayList.prototype = {
 		var plObj = this;
 		$j.each(this.default_track.clips, function(i, clip){
 			$j('#dc_'+plObj.id).append('<div class="clip_container" id="clipDesc_'+clip.id+'" '+
-				'style="display:none;position:absolute;text-align: center;width:'+plObj.width + 'px;'+
+				'style="display:none;position:absolute;text-align: center;border:solid thin;width:'+plObj.width + 'px;'+
 				'height:'+(plObj.height )+'px;'+
 				'top:' + this.title_bar_height + 'px;left:0px"></div>');	
 			//update the embed html: 					
@@ -421,7 +421,7 @@ mvPlayList.prototype = {
 	},	
 	updateThumbPerc:function( perc ){
 		//get float seconds:
-		var float_sec =  (this.getDuration()*perc);
+		var float_sec =  ( this.getDuration() * perc );
 		this.updateThumbTime( float_sec );			
 	},
 	updateThumbTime:function( float_sec ){			
@@ -447,14 +447,15 @@ mvPlayList.prototype = {
 			if(!typeof this.cur_clip.embed.media_element.selected_source!='undefined')
 				this.cur_clip.embed.start_offset=this.cur_clip.embed.media_element.selected_source.start_offset;
 		}							
+		
 		//issue thumbnail update request: (if plugin supports it will render out frame 
-		// if not then we do a call to the server to get a new thumbnail  
+		// if not then we do a call to the server to get a new jpeg thumbnail  
 		this.cur_clip.embed.updateThumbTime( float_sec - pl_sum_time );
 		
 		this.cur_clip.embed.currentTime = (float_sec -pl_sum_time)+this.cur_clip.embed.start_offset ;
 		this.cur_clip.embed.seek_time_sec = (float_sec -pl_sum_time );
 		
-		//render effects ontop: (hannled by doSmilActions)		
+		//render effects ontop: (handled by doSmilActions)		
 		this.doSmilActions( single_line = true );	
 	},
 	updateBaseStatus:function(){
@@ -1600,7 +1601,6 @@ var smilPlaylist ={
 									order:inx
 								}								
 							);
-					debugger;
 					if(clipObj){
 						//set up embed:						
 						clipObj.setUpEmbedObj();						
@@ -1887,7 +1887,8 @@ trackObj.prototype = {
 		return elmObj;
 	},
 	addClip:function(clipObj, pos){
-		if( !pos )
+		js_log('pl_Track: AddClip at:' + pos);  
+		if( typeof pos == 'undefined' )
 			pos = this.clips.length;				
 		//get everything after pos	
 		this.clips.splice(pos, 0, clipObj);			
@@ -1895,10 +1896,8 @@ trackObj.prototype = {
 		this.reOrderClips();				
 	},
 	reOrderClips:function(){
-		for( var k in this.clips){
-			if(typeof this.clips[i] != 'undefined'){
-				this.clips[i].order=k;
-			}
+		for(var k in this.clips){
+			this.clips[k].order=k;
 		}
 	},
 	getClipCount:function(){		

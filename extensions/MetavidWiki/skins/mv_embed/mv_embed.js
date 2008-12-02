@@ -186,7 +186,8 @@ var mvEmbed = {
   //plugin libs var names and paths:
   lib_jquery:{'window.jQuery':'jquery/jquery-1.2.6.js'},
   lib_plugins:{  	
-	'$j.ui.mouse'	 :'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js'	
+	'$j.ui.mouse'	 	:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js', //load the core ui
+	'$j.secureEvalJSON'	:'jquery/plugins/jquery.json-1.3.min.js' //load json lib for *more* trusted JSON evals	
   },
   // not used: 
   //'$j.timer.global':'jquery/plugins/jquery.timers.js',
@@ -339,10 +340,12 @@ mediaPlayer.prototype =
 			mvJsLoader.doLoad(lib,function(){
 				//js_log( 'type of lib: ' + eval( 'typeof ' + this.library + 'Embed' ) );
 				//js_log(_this.id + ' plugin loaded');
-				_this.loaded = true;				
-				for(var i=0; i < _this.loading_callbacks.length; i++ )
-					_this.loading_callbacks[i]();	
-					
+				_this.loaded = true;
+				//make sure we have not already cleared the callbacks: 		
+				if(_this.loading_callbacks != null){ 		
+					for(var i=0; i < _this.loading_callbacks.length; i++ )
+						_this.loading_callbacks[i]();	
+				}
 				_this.loading_callbacks = null;
 								
 			});
@@ -726,9 +729,11 @@ js_log("mv embed path:"+ mv_embed_path);
 var embedTypes = {
 	 // List of players
 	 players: null,
+	 detect_done:false,	 
 	 init: function(){
 		//detect supported types
 		this.detect();
+		this.detect_done=true;
 	},
 	clientSupports: { 'thumbnail' : true },
  	detect: function() {
@@ -1027,7 +1032,6 @@ function mv_embed( force_id ){
         
         //if video doSwap
         if( this.tagName.toLowerCase() == 'video'){
-        	js_log("WTF");
         	var videoInterface = new embedVideo(this);	 
 			swapEmbedVideoElement( this, videoInterface );
         }else{
@@ -1044,10 +1048,14 @@ function mv_embed( force_id ){
 				//check if we are in sequence mode load sequence libs (if not already loaded)				 				
 				if( $j(this).attr('sequencer')=="true" ){
 					var pl_element = this;
-					mvJsLoader.doLoad({'mvSeqPlayList':'mv_sequencer.js'},function(){
-						var seqObj = new mvSeqPlayList( pl_element );
-						swapEmbedVideoElement( pl_element, seqObj );	
-					}); 
+					//load the mv_sequencer and the json util lib:
+					mvJsLoader.doLoad({
+							'mvSeqPlayList':'mv_sequencer.js',							
+						},function(){
+							var seqObj = new mvSeqPlayList( pl_element );
+							swapEmbedVideoElement( pl_element, seqObj );	
+						}
+					); 
 				}else{					
 					//create new playlist interface:
 					var plObj = new mvPlayList( this );		
@@ -1082,7 +1090,7 @@ function mv_do_sequence(initObj){
 			},function(){
 				//load the sequencer
 				mvJsLoader.doLoad({
-						'mvSequencer':'mv_sequencer.js'
+						'mvSequencer':'mv_sequencer.js'						
 					},function(){						
 						//init the sequence object (it will take over from there)
 						mvSeq = new mvSequencer(initObj);
@@ -1263,9 +1271,7 @@ textInterface.prototype = {
 			});
 			//done loading update availableTracks
 			_this.availableTracks[track_id].loaded=true;
-			_this.availableTracks[track_id].display=true;
-			//start the autoscroll timer:
-			_this.setAutoScroll(true);
+			_this.availableTracks[track_id].display=true;			
 		});
 	},
 	add_merge_text_clip:function(text_clip){
@@ -1319,6 +1325,10 @@ textInterface.prototype = {
 			//$j('body').append();
 		}else{
 			$j('#metaBox_'+this.pe.id).fadeIn("fast");
+		}
+		//start the autoscroll timer:
+		if(this.autoscroll){
+			_this.setAutoScroll();
 		}
 	},
 	close:function(){
@@ -1391,8 +1401,8 @@ textInterface.prototype = {
 			});
 		}
 	},
-	setAutoScroll:function(timer){
-		this.autoscroll = timer;
+	setAutoScroll:function( timer ){
+		this.autoscroll = ( typeof timer=='undefined' )?this.autoscroll:timer;		 
 		if(this.autoscroll){
 			//start the timer if its not already running
 			if(!this.scrollTimerId){
@@ -1403,12 +1413,14 @@ textInterface.prototype = {
 			js_log('cur time: '+ cur_time);
 
 			_this = this;
+			var scroll_to_id='';
 			$j('#mmbody_'+this.pe.id +' .mvtt').each(function(){
 				if(cur_time > ntp2seconds($j(this).attr('start'))  ){
-					_this.prevTimeScroll=cur_time;
-					$j('#mmbody_'+_this.pe.id).animate({scrollTop: $j(this).position().top}, 'slow');
+					_this.prevTimeScroll=cur_time;	
+					scroll_to_id = $j(this).attr('id');	
 				}
 			});
+			$j('#mmbody_'+_this.pe.id).animate({scrollTop: $j('#'+scroll_to_id).position().top}, 'slow');
 		}else{
 			//stop the timer
 			clearInterval(this.scrollTimerId);
@@ -1999,7 +2011,7 @@ embedVideo.prototype = {
         this.media_element = new mediaElement(element);                         	
 	},
 	on_dom_swap: function(){
-		js_log('f:on_dom_swap');			
+		js_log('f:on_dom_swap');				
 		// Process the provided ROE file... if we don't yet have sources
         if(this.roe && this.media_element.sources.length==0 ){
 			js_log('loading external data');
@@ -2164,7 +2176,7 @@ embedVideo.prototype = {
 			//this.seek_time_sec = 0; 
 		}
 		//do play in 100ms (give things time to clear) 
-		setTimeout('$j(\'#'+this.id+'\').get(0).play()',100);
+		setTimeout('$j(\'#' + this.id + '\').get(0).play()',100);
 	},
     doEmbedHTML:function()
     {

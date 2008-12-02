@@ -53,7 +53,7 @@ function mvParserAfterTidy( &$parser, &$text ) {
     return true;
 }
 
-function LinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options, &$ret){
+function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options, &$ret){
 	//if a stream title and the base stream exists give a valid link
  	if( $target->getNamespace() == MV_NS_STREAM ){
  		$mvTitle = new MV_Title($target);
@@ -73,37 +73,67 @@ function LinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options, 
 /* 
  * enables the rewriting of links to the Stream and Sequence namespace to support inline embeding.  
  * see page: sample in-wiki-embed syntax 
+ * @@todo should probably be integrated to respective Stream and Sequence class. 
+ * and maybe integrated with File / image handle 
 */
  function mvLinkEnd($skin, $title, $options, &$text, &$attribs, &$ret){
- 	global $mvDefaultAspectRatio, $mvDefaultVideoPlaybackRes; 	 
- 	//print "linkend: $mvEmbedKey\n";
- 	return true;
- 	//only rewrite stream and sequence namespaces
- 	//if( !$title->getNamespace() == MV_NS_STREAM && !$title->getNamespace()== MV_NS_SEQUENCE  ){
-	//	print "NS not a stream or seq";
- 	//	return true; 
- 	//} 	
- 	//print "LINK TEXT:" . $title->getText();
- 	 	 	
- 	if( substr( $title->getText(), 0, strlen($mvEmbedKey) ) == $mvEmbedKey ){
- 		//parse text for extra params: 
- 		$params = explode('|', $text);
- 		//set up defaults:
- 		$size = $mvDefaultVideoPlaybackRes;
- 		
- 		foreach($params as $param_set){
- 			if(strpos($param_set, '=')!==false){
- 				list($k, $v)= explode('=',$param_set);
- 				if($k=='width'){
- 					$size = intval($v) . 'x' . ($mvDefaultAspectRatio * intval($v));
- 				}
+ 	global $mvDefaultAspectRatio, $mvDefaultVideoPlaybackRes;
+ 	//only do link rewrites for STREAM and SEQUENCE name space  	 	
+ 	if( $title->getNamespace() != MV_NS_STREAM &&  $title->getNamespace() != MV_NS_SEQUENCE){
+ 		return true;
+ 	}
+ 	//parse text for extra parameters 
+ 	//@@todo integrate with image params / maybe file handle ) 	
+ 	$params = explode('|', $text);
+ 	//setup defaults: 
+ 	$size = $mvDefaultVideoPlaybackRes;
+ 	$start_ntp=$end_ntp=null;
+ 	foreach($params as $param){
+ 		if(substr( $param, -2) == 'px'){ //size param
+ 			if( strpos($param, 'x') === false ){
+ 				$k = intval( str_replace($param, 'px', '' ));
+ 				//@@todo should use the actual clips aspect ratio
+ 				$size = intval( $v ) . 'x' . ( $mvDefaultAspectRatio * intval( $v ) );
+ 			}else{
+ 				list($width, $height) = explode('x', str_replace('px', '', $param ) );
+ 				$size =  intval( $width ) . 'x' . intval( $height );
+ 			}
+ 		}else{
+ 			//only applicable to Stream:
+ 			if( $title->getNamespace() == MV_NS_STREAM ){
+		 		if( substr( $param, 0, 6 ) == 'start='){
+		 			$start_str =  substr( $param, 6 );
+		 			$timeSec = ntp2seconds($start_str);
+		 			if( (int) $timeSec > 0 )
+		 				$start_ntp = seconds2ntp($timeSec);
+		 		}else if(substr( $param, 0, 4 ) == 'end='){
+		 			$end_str =  substr( $param, 6 );
+		 			$timeSec = ntp2seconds($start_str);
+		 			if( (int) $timeSec > 0 )
+		 				$end_ntp = seconds2ntp($timeSec);
+		 		}else{
+		 			//caption text / desc
+		 		}
  			}
  		}
- 		
- 		$mvTitle =  new MV_Title( substr( $title->getText(), strlen($mvEmbedKey)+1) ); 		
+ 	}	 	
+ 	if( $title->getNamespace() == MV_NS_STREAM ){
+ 		//parse the stream title: 
+ 		$mvTitle = new MV_Title($title);
+ 		if ( !$mvTitle->getStartTime() || !$mvTitle->getEndTime() ) { 			
+ 			if($start_ntp)
+ 				$mvTitle->setStartTimeNtp( $start_ntp );
+ 			if($end_ntp)
+ 				$mvTitle->setEndTimeNtp( $end_ntp );
+ 		}
  		$ret = $mvTitle->getEmbedVideoHtml( array( 'size'=>$size, 'showmeta'=>true ) );
  		return false;
- 	}
+ 	} 	
+ 	if( $title->getNamespace() == MV_NS_SEQUENCE ){
+ 		$seqPlayer = new MV_SequencePlayer($title);
+ 		$ret = $seqPlayer->getEmbedSeqHtml( array( 'size'=>$size ) );
+ 		return false;	
+ 	} 	 	
  	return true;
  }
 function mvAddToolBoxLinks(){
