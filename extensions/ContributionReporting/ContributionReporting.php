@@ -133,7 +133,7 @@ function efContributionReportingTotal_Render() {
 		if ( strpos($arg,'=') === false )
 			continue;
 		
-		list($key,$value) = explode( '=', $arg, 2 );
+		list($key,$value) = explode( '=', trim($arg), 2 );
 		
 		if ($key == 'fudgefactor') {
 			$fudgeFactor = $value;
