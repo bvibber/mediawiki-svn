@@ -343,7 +343,7 @@ class HistoryConfigurationDiff extends ConfigurationDiff {
 				$defaultSettings[$wiki] = array();
 				
 				foreach( $newSettings as $key => $value ) {
-					if (defined($settings['default'][$key]))
+					if (isset($settings['default'][$key]))
 						$defaultSettings[$wiki][$key] = $settings['default'][$key];
 				}
 			}
