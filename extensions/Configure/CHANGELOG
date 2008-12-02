@@ -1,6 +1,11 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.10.12 - 2 December 2008
+  * Fix a problem of duplicate files with the same timestamp if two users save
+    a new version at the same time
+  * Fixed some queries to be more efficient
+
 0.10.11 - 1 December 2008
   * New reason field in Special:Configure and Special:Extension to allow users
     to put a comment for each version
