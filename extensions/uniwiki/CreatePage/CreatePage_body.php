@@ -1,4 +1,7 @@
 <?php
+if ( !defined( 'MEDIAWIKI' ) )
+	die();
+
 class SpecialCreatePage extends SpecialPage {
 
 	function __construct() {
@@ -16,19 +19,28 @@ class SpecialCreatePage extends SpecialPage {
 
 		$thisPage = Title::newFromText ( "CreatePage", NS_SPECIAL );
 
-		$target = $wgRequest->getVal ( "target", null );
+		$target = $wgRequest->getVal ( "target" );
 
 		// check to see if we are trying to create a page
-		if ( $target != null ) {
-			$title = Title::newFromText ( $target );
-
+		$title = Title::newFromText ( $target );
+		// check for no title
+		if ( $wgRequest->wasPosted() && $target === '' ) {
+			$this->error( wfMsg( 'createpage_entertitle' ) );
+		}
+		// check for invalid title
+		elseif ( $wgRequest->wasPosted() && is_null( $title ) ) {
+			$this->error( wfMsg( 'createpage-badtitle', $target ) );
+		}
+		elseif ( $target != null ) {
 			if ( $title->getArticleID() > 0 ) {
 
 				// if the title exists then let the user know and give other options
 				$wgOut->addWikiText ( wfMsg ( "createpage_titleexists", $title->getFullText() ) . "<br />" );
-				$wgOut->addHTML ( "<a href='" . $title->getEditURL() . "'>" . wfMsg ( "createpage_editexisting" ) . "</a><br />"
+				$editlink = $skin->makeLinkObj( $title, wfMsg ( "createpage_editexisting" ), 'action=edit' );
+				$wgOut->addHTML ( $editlink . '<br />'
 					. $skin->makeLinkObj ( $thisPage, wfMsg ( "createpage_tryagain" ) )
 				);
+				return;
 			} else {
 				/* TODO - may want to search for closely named pages and give
 				 * other options here... */
@@ -36,44 +48,38 @@ class SpecialCreatePage extends SpecialPage {
 				// otherwise, redirect them to the edit page for their title
 				$wgOut->redirect ( $title->getEditURL() );
 			}
-
-			return;
 		}
 
 		// if this is just a normal GET, then output the form
 
 		// prefill the input with the title, if it was passed along
-		$newTitle = $wgRequest->getVal( "newtitle", null );
-		if ( $newTitle != null ) $newTitle = str_replace( "_", " ", $newTitle );
-
-		// add some instructions
-		$wgOut->addHTML( wfMsg( 'createpage_instructions' ) );
-
-		// js for checking the form
-		$wgOut->addHTML( "
-			<script type='text/javascript' >
-				function checkForm(){
-						// check the title
-						if (document.createpageform.target && document.createpageform.target.value == \"\") {
-							alert('" . wfMsg( 'createpage_entertitle' ) . "');
-							document.createpageform.target.focus();
-							return false;
-						}
-					// everything is OK, return true
-					return true;
-				}
-			</script>
-		" );
+		$newTitleText = $wgRequest->getVal( "newtitle", null );
+		if ( $newTitleText != null ) {
+			$newTitle = Title::newFromURL( $newTitleText );
+			if ( is_null( $newTitle) )
+				$newTitle = $newTitleText;
+			else
+				$newTitle = $newTitle->getText();
+		}
 
 		// output the form
-		$wgOut->addHTML( "
-			<form method=POST onsubmit='return checkForm()' name='createpageform'>
-				<input type=text name=target size=50 value='$newTitle'><br /><br />
-		" );
-
-		$wgOut->addHTML( "
-				<input type=submit value='" . wfMsg( 'createpage_submitbutton' ) . "'>
-			</form>
-		" );
+		$form = Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', null, wfMsg( 'createpage' ) ) . # This should really use a different message
+			wfMsgWikiHtml( 'createpage_instructions' ) . 
+			Xml::openElement( 'form', array('method'=>'post', 'name'=>'createpageform', 'action'=>'' ) ) .
+			Xml::element( 'input', array('type'=>'text', 'name'=>'target', 'size'=>50, 'value'=> $newTitle ) ) .
+			'<br />' .
+			Xml::element( 'input', array('type'=>'submit', 'value'=> wfMsgHtml( 'createpage_submitbutton' ) ) ) .
+			Xml::closeElement( 'form' ) .
+			Xml::closeElement( 'fieldset' );
+		$wgOut->addHTML( $form );
+	}
+	/*
+	 * Function to output an error message
+	 * @param $msg String: message text or HTML
+	*/	
+	function error( $msg ) {
+		global $wgOut;
+		$wgOut->addHTML( Xml::element('p', array( 'class' => 'error' ), $msg ) );
 	}
 }

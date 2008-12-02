@@ -19,6 +19,7 @@ $messages['en'] = array(
 Would you like to edit the existing page?',
 	'createpage_tryagain' => 'No. I want to create a new page with a distinct title.',
 	'createpage_editexisting' => 'Yes. I want to contribute to the existing page.',
+	'createpage-badtitle' => '"$1" cannot be used as a page title',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
