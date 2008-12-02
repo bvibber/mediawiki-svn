@@ -1050,7 +1050,7 @@ function mv_embed( force_id ){
 					var pl_element = this;
 					//load the mv_sequencer and the json util lib:
 					mvJsLoader.doLoad({
-							'mvSeqPlayList':'mv_sequencer.js',							
+							'mvSeqPlayList':'mv_sequencer.js'							
 						},function(){
 							var seqObj = new mvSeqPlayList( pl_element );
 							swapEmbedVideoElement( pl_element, seqObj );	
