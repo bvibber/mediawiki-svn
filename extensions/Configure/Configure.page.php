@@ -355,7 +355,8 @@ abstract class ConfigurationPage extends SpecialPage {
 
 		ksort($versions); ## Put in ascending order for now.
 
-		foreach ( $versions as $ts => $data ) {
+		foreach ( $versions as $data ) {
+			$ts = $data['timestamp'];
 			if ( in_array( $this->mWiki, $wgConf->getWikisInVersion( $ts ) ) ) {
 				$count++;
 				$link = $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" );

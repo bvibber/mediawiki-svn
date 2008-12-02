@@ -98,14 +98,13 @@ class ConfigureHandlerDb implements ConfigureHandler {
 
 		# Check filesystem cache
 		if ( $useCache && ( $cached = $this->getFSCached() ) ) {
-			# FIXME: why does this always recache?
-			$this->cacheToFS( $cached );
 			return $ipCached = $cached;
 		}
 
 		$cacheKey = $this->cacheKey( 'configure', 'current' );
 		$cached = $this->getCache()->get( $cacheKey );
 		if ( is_array( $cached ) && $useCache ) {
+			$this->cacheToFS( $cached );
 			return $ipCached = $cached;
 		}
 
@@ -257,7 +256,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 		);
 		$arr = array();
 		foreach ( $ret as $row ) {
-			$arr[$row->cv_timestamp] = array( 'username' => $row->cv_user_text, 'userwiki' => $row->cv_user_wiki, 'reason' => $row->cv_reason );
+			$arr[] = array( 'username' => $row->cv_user_text, 'userwiki' => $row->cv_user_wiki, 'reason' => $row->cv_reason, 'timestamp' => $row->cv_timestamp );
 		}
 		return $arr;
 	}

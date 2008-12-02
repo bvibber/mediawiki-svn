@@ -84,7 +84,6 @@ class SpecialExtensions extends ConfigurationPage {
 
 	/**
 	 * Build the content of the form
-	 * FIXME: register_globals
 	 *
 	 * @return xhtml
 	 */
@@ -96,20 +95,21 @@ class SpecialExtensions extends ConfigurationPage {
 			foreach ( $settings as $setting => $type ) {
 				if ( !isset( $GLOBALS[$setting] ) && !isset( $this->conf[$setting] ) && file_exists( $ext->getFile() ) ) {
 					if ( !$globalDone ) {
-						extract( $GLOBALS, EXTR_REFS );
-						$__hooks__ = $wgHooks;
+						global $wgHooks;
+						
+						$oldHooks = $wgHooks;
 						$globalDone = true;
 					}
 					require_once( $ext->getFile() );
-					if ( isset( $$setting ) )
-						$this->conf[$setting] = $$setting;
+					if ( isset( $GLOBALS[$setting] ) )
+						$this->conf[$setting] = $GLOBALS[$setting];
 				}
 			}
 			$ext->setPageObj( $this );
 			$ret .= $ext->getHtml();
 		}
 		if ( isset( $__hooks__ ) )
-			$GLOBALS['wgHooks'] = $__hooks__;
+			$GLOBALS['wgHooks'] = $oldHooks;
 		return $ret;
 	}
 }

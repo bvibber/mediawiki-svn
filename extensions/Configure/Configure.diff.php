@@ -337,6 +337,9 @@ class HistoryConfigurationDiff extends ConfigurationDiff {
 			
 			## This is kinda annoying. We can't copy ALL settings over, because not all settings are stored.
 			foreach( $new as $wiki => $newSettings ) {
+				if ($wiki == '__metadata') ## Ignore metadata.
+					continue;
+				
 				$defaultSettings[$wiki] = array();
 				
 				foreach( $newSettings as $key => $value ) {

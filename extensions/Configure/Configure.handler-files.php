@@ -123,10 +123,10 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 				if (isset( $settings['__metadata'] )) {
 					$metadata = $settings['__metadata'];
 					
-					$files[$m[1]] = array( 'username' => $metadata['user_name'], 
-						'userwiki' => $metadata['user_wiki'], 'reason' => $metadata['reason'] );
+					$files[] = array( 'username' => $metadata['user_name'], 
+						'userwiki' => $metadata['user_wiki'], 'reason' => $metadata['reason'], 'timestamp' => $m[1] );
 				} else {
-					$files[$m[1]] = array( 'username' => false, 'userwiki' => false, 'reason' => false );
+					$files[] = array( 'username' => false, 'userwiki' => false, 'reason' => false, 'timestamp' => $m[1] );
 				}
 			}
 		}
@@ -190,6 +190,13 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	}
 	
 	public function listArchiveVersions() {
-		return array_keys( $this->getArchiveVersions() );
+		$versions = $this->getArchiveVersions();
+		$ret = array();
+		
+		foreach( $versions as $data ) {
+			$ret[] = $data['timestamp'];
+		}
+		
+		return $ret;
 	}
 }
