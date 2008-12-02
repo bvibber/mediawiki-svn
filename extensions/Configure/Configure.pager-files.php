@@ -14,23 +14,23 @@ class ConfigurationPagerFiles implements Pager {
 	}
 
 	function getBody() {
-		$versions = $this->mHandler->listArchiveVersions();
+		$versions = $this->mHandler->getArchiveVersions();
 		if ( empty( $versions ) ) {
 			return wfMsgExt( 'configure-no-old', array( 'parse' ) );
 		}
 
 		$text = "<ul>\n";
 		$count = 0;
-		foreach ( $versions as $version ) {
+		foreach ( $versions as $version => $meta ) {
 			$count++;
 			$wikis = array_keys( $this->mHandler->getOldSettings( $version ) );
 			$info = array(
 				'timestamp' => $version,
 				'wikis' => $wikis,
 				'count' => $count,
-				'user_name' => '',
-				'user_wiki' => '',
-				'reason' => '',
+				'user_name' => isset( $meta['username'] ) ? $meta['username'] : '',
+				'user_wiki' => isset( $meta['userwiki'] ) ? $meta['userwiki'] : '',
+				'reason' => isset( $meta['reason'] ) ? $meta['reason'] : '',
 			);
 			$text .= $this->formatRow( $info );
 		}

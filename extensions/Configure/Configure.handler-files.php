@@ -33,7 +33,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 			# maybe the first time the user use this extensions, do not override
 			# anything
 			return array();
-		require($file);
+		require( $file );
 		if ( !is_array( $settings ) )
 			# Weird, should not happen too
 			return array();
@@ -54,13 +54,13 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 			# maybe the time the user use this extensions, do not override
 			# anything
 			return array();
-		require($file);
+		require( $file );
 		if ( !is_array( $settings ) )
 			# Weird, should not happen too
 			return array();
 			
-		if ( !empty($settings['__metadata']) )
-			unset($settings['__metadata']);
+		if ( isset( $settings['__metadata'] ) )
+			unset( $settings['__metadata'] );
 			
 		return $settings;
 	}
