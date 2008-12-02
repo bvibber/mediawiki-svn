@@ -27,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'categorywatch-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:CategoryWatch',
 	'version'        => CATEGORYWATCH_VERSION,
-	);
+);
 
 $wgExtensionMessagesFiles['CategoryWatch'] =  dirname(__FILE__) . '/CategoryWatch.i18n.php';
 
@@ -159,7 +159,7 @@ class CategoryWatch {
 	/**
 	 * Needed in some versions to prevent Special:Version from breaking
 	 */
-	function __toString() { return 'CategoryWatch'; }
+	function __toString() { return __CLASS__; }
 }
 
 function wfSetupCategoryWatch() {
