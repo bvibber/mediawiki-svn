@@ -198,8 +198,8 @@ abstract class ConfigurationDiff {
 		else
 			$msgVal = "$msgVal ($rawVal)";
 
-		$oldSet = WebConfiguration::filterVar( $this->getSettingAsArray( $old, $name, $type ) );
-		$newSet = WebConfiguration::filterVar( $this->getSettingAsArray( $new, $name, $type ) );
+		$oldSet = $this->getSettingAsArray( WebConfiguration::filterVar( $old ), $name, $type );
+		$newSet = $this->getSettingAsArray( WebConfiguration::filterVar( $new ), $name, $type );
 		$diffs = new Diff( $oldSet, $newSet );
 		$formatter = new TableDiffFormatter();
 
@@ -219,6 +219,8 @@ abstract class ConfigurationDiff {
 		if ( $setting === null ) {
 			$val = array();
 		} else if ( $type == 'array' ) {
+			if( !is_array( $setting ) )
+				return array();
 			$arrType = $this->getArrayType( $name );
 			if ( $arrType == 'simple' || $arrType == 'ns-simple' ) {
 				$val = array_values( $setting );
