@@ -68,13 +68,12 @@ $egFundraiserStatisticsFundraisers = array(
 $egFundraiserStatisticsMinimum = 1;
 $egFundraiserStatisticsMaximum = 10000;
 
-$wgExtensionFunctions[] = 'efContributionReportingSetup';
+$wgHooks['ParserFirstCallInit'][] = 'efContributionReportingSetup';
 $wgHooks['LanguageGetMagic'][] = 'efContributionReportingTotal_Magic';
 
-function efContributionReportingSetup() {
-	global $wgParser;
-	
-	$wgParser->setFunctionHook( 'contributiontotal', 'efContributionReportingTotal_Render' );
+function efContributionReportingSetup( $parser ) {
+	$parser->setFunctionHook( 'contributiontotal', 'efContributionReportingTotal_Render' );
+	return true;
 }
 
 function efContributionReportingTotal_Magic( &$magicWords, $langCode ) {
@@ -107,7 +106,7 @@ function efContributionReportingTotal( $start, $fudgeFactor ) {
 	$sql = 'SELECT SUM(converted_amount) AS ttl FROM public_reporting';
 
 	if ( $start ) {
-		$sql .= ' WHERE received >= ' . $db->addQuotes( $start );
+		$sql .= ' WHERE received >= ' . $db->addQuotes( wfTimestamp( TS_UNIX, $start ) );
 	}
 
 	$res = $db->query( $sql );
