@@ -103,7 +103,7 @@ function efContributionReportingConnection() {
 function efContributionReportingTotal( $start, $fudgeFactor ) {
 	$db = efContributionReportingConnection();
 
-	$sql = 'SELECT SUM(converted_amount) AS ttl FROM public_reporting';
+	$sql = 'SELECT ROUND( SUM(converted_amount) ) AS ttl FROM public_reporting';
 
 	if ( $start ) {
 		$sql .= ' WHERE received >= ' . $db->addQuotes( wfTimestamp( TS_UNIX, $start ) );
