@@ -44,11 +44,39 @@ interface ConfigureHandler {
 
 	/**
 	 * Save a new configuration
+	 *
 	 * @param $settings array of settings
-	 * @param $wiki String: wiki name or false to use the current one
+	 * @param $wiki String: wiki name or true for all
+	 * @param $ts 14 chars timestamps
+	 * @param $reason String: Reason, as given by the user.
 	 * @return bool true on success
 	 */
-	public function saveNewSettings( $settings, $wiki );
+	public function saveNewSettings( $settings, $wiki, $ts = false, $reason = '' );
+
+	/**
+	 * List all archived versions
+	 *
+	 * @param $options Array of options
+	 * @return array of timestamps
+	 */
+	public function getArchiveVersions( $options = array() );
+
+	/**
+	 * Same as listArchiveVersions(), but with more information about each
+	 * version
+	 *
+	 * @param $options Array of options
+	 * @return Array of versions
+	 */
+	public function listArchiveVersions( $options = array() );
+	
+	/**
+	 * Return a bool whether the version exists
+	 *
+	 * @param $ts version
+	 * @return bool
+	 */
+	public function versionExists( $ts );
 
 	/**
 	 * Do some checks
@@ -61,8 +89,4 @@ interface ConfigureHandler {
 	 * @return array
 	 */
 	public function getUneditableSettings();
-	
-	public function getArchiveVersions();
-	
-	public function listArchiveVersions();
 }

@@ -114,7 +114,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 * List all archived files that are like conf-{$ts}.php
 	 * @return array of timestamps
 	 */
-	public function getArchiveVersions() {
+	public function getArchiveVersions( $options = array() ) {
 		if ( !$dir = opendir( $this->mDir ) )
 			return array();
 		$files = array();
@@ -124,7 +124,10 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 				## Read the data.
 				require( $this->mDir."/$file" );
 				
-				if (isset( $settings['__metadata'] )) {
+				if( isset( $options['wiki'] ) && !isset( $settings[$options['wiki']] ) )
+					continue;
+				
+				if ( isset( $settings['__metadata'] ) ) {
 					$metadata = $settings['__metadata'];
 					
 					$files[$m[1]] = array( 'username' => $metadata['user_name'], 
@@ -135,7 +138,31 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 			}
 		}
 		krsort( $files, SORT_NUMERIC );
+		if( isset( $options['limit'] ) && count( $files ) > $options['limit'] )
+			$files = array_slice( $files, 0, $options['limit'] );
+
 		return $files;
+	}
+
+	/**
+	 * Same as listArchiveVersions(), but with more information about each
+	 * version
+	 *
+	 * @param $options Array of options
+	 * @return Array of versions
+	 */
+	public function listArchiveVersions( $options = array() ) {
+		return array_keys( $this->getArchiveVersions( $options ) );
+	}
+
+	/**
+	 * Return a bool whether the version exists
+	 *
+	 * @param $ts version
+	 * @return bool
+	 */
+	public function versionExists( $ts ) {
+		return file_exists( $this->getArchiveFileName( $ts ) );
 	}
 
 	/**
@@ -186,7 +213,7 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 		
 		## Hack hack hack
 		## Basically, if the file already exists, pretend that the setting change was made in a second's time.
-		if ($ts_orig === null && file_exists($file))
+		if ( $ts_orig === null && file_exists( $file ) )
 			return $this->getArchiveFileName( $ts+1 );
 			
 		return $file;
@@ -199,16 +226,5 @@ class ConfigureHandlerFiles implements ConfigureHandler {
 	 */
 	public function getDir() {
 		return $this->mDir;
-	}
-	
-	public function listArchiveVersions() {
-		$versions = $this->getArchiveVersions();
-		$ret = array();
-		
-		foreach( $versions as $data ) {
-			$ret[] = $data['timestamp'];
-		}
-		
-		return $ret;
 	}
 }

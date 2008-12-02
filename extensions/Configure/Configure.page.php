@@ -305,19 +305,19 @@ abstract class ConfigurationPage extends SpecialPage {
 		global $wgConf, $wgOut, $wgRequest, $wgLang;
 
 		if ( $version = $wgRequest->getVal( 'version' ) ) {
-			$versions = $wgConf->listArchiveVersions();
-			if ( in_array( $version, $versions ) || $version == 'default' ) {
+			if ( $version == 'default' || $wgConf->versionExists( $version ) ) {
 				$conf = $wgConf->getOldSettings( $version );
 				
-				if ($version == 'default') { ## Hacky special case.
+				if ( $version == 'default' ) { ## Hacky special case.
 					$conf[$this->mWiki] = $conf['default'];
 				}
-				
-				$this->conf = $conf[$this->mWiki];
+
 				if ( !isset( $conf[$this->mWiki] ) ) {
-					$wgOut->addHtml( Xml::tags( 'div', array( 'class' => 'errorbox' ), wfMsgExt( 'configure-old-not-available', 'parseinline', $version ) ) );
+					$wgOut->wrapWikiMsg( '<div class="errorbox">$1</div>',
+						array( 'configure-old-not-available', $version ) );
 					return false;
 				}
+				$this->conf = $conf[$this->mWiki];
 				$current = null;
 				foreach ( $this->conf as $name => $value ) {
 					if ( $this->canBeMerged( $name, $value ) ) {
@@ -328,7 +328,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				}
 				$wgOut->addWikiMsg( 'configure-edit-old', $wgLang->timeAndDate( $version ) );
 			} else {
-				$wgOut->addWikiText( '<div class="errorbox">$1</div>',
+				$wgOut->wrapWikiMsg( '<div class="errorbox">$1</div>',
 					array( 'configure-old-not-available', $version ) );
 				return false;
 			}
@@ -344,47 +344,44 @@ abstract class ConfigurationPage extends SpecialPage {
 	protected function buildOldVersionSelect() {
 		global $wgConf, $wgLang, $wgUser;
 
-		$showAllLink = false;
 		$count = 0;
 		$links = array();
 
-		$versions = $wgConf->getArchiveVersions();
+		$versions = $wgConf->getArchiveVersions( array( 'wiki' => $this->mWiki, 'limit' => 11 ) );
 		$skin = $wgUser->getSkin();
 		$title = $this->getTitle();
 		$prev = null;
 
-		ksort($versions); ## Put in ascending order for now.
+		ksort( $versions ); ## Put in ascending order for now.
 
 		foreach ( $versions as $data ) {
 			$ts = $data['timestamp'];
-			if ( in_array( $this->mWiki, $wgConf->getWikisInVersion( $ts ) ) ) {
-				$count++;
-				$link = $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" );
-				$diffLink = '';
-				if ($prev)
-					$diffLink =  '(' . $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'ViewConfig' ), wfMsg( 'configure-old-changes' ), "version=$ts&diff=$prev" ) . ')';
+			$count++;
+			$link = $skin->makeKnownLinkObj( $title, $wgLang->timeAndDate( $ts ), "version=$ts" );
+			$diffLink = '';
+			if ( $prev )
+				$diffLink =  '(' . $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'ViewConfig' ), wfMsg( 'configure-old-changes' ), "version=$ts&diff=$prev" ) . ')';
 
-				## Make user link...
+			## Make user link...
+			$userLink = '';
+			if( !$data['userwiki'] || !$data['username'] ) {
 				$userLink = '';
-				if( !$data['userwiki'] || !$data['username'] ) {
-					$userLink = '';
-				} else if ( $data['userwiki'] == wfWikiId() ) {
-					$userLink = $skin->link( Title::makeTitle( NS_USER, $data['username'] ), $data['username'] );
-				} elseif ( class_exists( 'WikiMap' ) && ($wiki = WikiMap::getWiki( $data['userwiki'] ) ) ) {
-					$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$data['username'] ), $data['username'].'@'.$data['userwiki'] );
-				} else {
-					## Last-ditch
-					$userLink = $data['username'].'@'.$data['userwiki'];
-				}
-				
-				$comment = $data['reason'] ? $skin->commentBlock( $data['reason'] ) : '';
-
-				$text = wfMsgExt( 'configure-old-summary', array( 'replaceafter', 'parseinline'), array( $link, $userLink, $diffLink, $comment ) );
-
-				$prev = $ts;
-
-				$links[] = $text;
+			} else if ( $data['userwiki'] == wfWikiId() ) {
+				$userLink = $skin->link( Title::makeTitle( NS_USER, $data['username'] ), $data['username'] );
+			} elseif ( class_exists( 'WikiMap' ) && ($wiki = WikiMap::getWiki( $data['userwiki'] ) ) ) {
+				$userLink = $skin->makeExternalLink( $wiki->getUrl( 'User:'.$data['username'] ), $data['username'].'@'.$data['userwiki'] );
+			} else {
+				## Last-ditch
+				$userLink = $data['username'].'@'.$data['userwiki'];
 			}
+
+			$comment = $data['reason'] ? $skin->commentBlock( $data['reason'] ) : '';
+
+			$text = wfMsgExt( 'configure-old-summary', array( 'replaceafter', 'parseinline' ), array( $link, $userLink, $diffLink, $comment ) );
+
+			$prev = $ts;
+
+			$links[] = $text;
 		}
 
 		## Reset into descending order
@@ -403,7 +400,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 		$link = SpecialPage::getTitleFor( 'ViewConfig' );
 		$text .= Xml::tags( 'p', null, $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-all-versions' ) ) );
-		$text .= Xml::tags( 'p', null, $skin->link( SpecialPage::getTitleFor( 'ViewConfig' ), wfMsgHtml( 'configure-view-default' ), array(), array( 'version' => 'default' ) ) );
+		$text .= Xml::tags( 'p', null, $skin->makeKnownLinkObj( $link, wfMsgHtml( 'configure-view-default' ), 'version=default' ) );
 
 		$text .= '</fieldset>';
 		return $text;

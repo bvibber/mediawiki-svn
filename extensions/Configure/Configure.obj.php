@@ -147,7 +147,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array
 	 */
 	public function getOldSettings( $ts ) {
-		if ($ts == 'default')
+		if ( $ts == 'default' )
 			return array( 'default' => $this->getDefaults() );
 		return $this->mHandler->getOldSettings( $ts );
 	}
@@ -257,15 +257,24 @@ class WebConfiguration extends SiteConfiguration {
 	}
 
 	/**
-	 * List all archived files that are like conf-{$ts}.ser
+	 * List all archived versions
+	 *
+	 * @param $options Array of options
 	 * @return array of timestamps
 	 */
-	public function listArchiveVersions() {
-		return $this->mHandler->listArchiveVersions();
+	public function listArchiveVersions( $options = array() ) {
+		return $this->mHandler->listArchiveVersions( $options );
 	}
-	
-	public function getArchiveVersions() {
-		return $this->mHandler->getArchiveVersions();
+
+	/**
+	 * Same as listArchiveVersions(), but with more information about each
+	 * version
+	 *
+	 * @param $options Array of options
+	 * @return Array of versions
+	 */
+	public function getArchiveVersions( $options = array() ) {
+		return $this->mHandler->getArchiveVersions( $options );
 	}
 
 	/**
@@ -281,6 +290,16 @@ class WebConfiguration extends SiteConfiguration {
 	 */
 	public function getUneditableSettings() {
 		return $this->mHandler->getUneditableSettings();
+	}
+
+	/**
+	 * Return a bool whether the version exists
+	 *
+	 * @param $ts version
+	 * @return bool
+	 */
+	public function versionExists( $ts ) {
+		return $this->mHandler->versionExists( $ts );
 	}
 
 	/**
@@ -327,6 +346,8 @@ class WebConfiguration extends SiteConfiguration {
 				}
 			}
 		}
+		if ( $canAdd )
+			$out = array_unique( $out );
 		return $out;
 	}
 }

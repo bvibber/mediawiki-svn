@@ -181,9 +181,11 @@ class ConfigureHandlerDb implements ConfigureHandler {
 
 	/**
 	 * Save a new configuration
+	 *
 	 * @param $settings array of settings
 	 * @param $wiki String: wiki name or true for all
-	 * @param $ts
+	 * @param $ts 14 chars timestamps
+	 * @param $reason String: Reason, as given by the user.
 	 * @return bool true on success
 	 */
 	public function saveNewSettings( $settings, $wiki, $ts = false, $reason = '' ) {
@@ -245,20 +247,50 @@ class ConfigureHandlerDb implements ConfigureHandler {
 	 * FIXME: timestamp not unique
 	 * @return array of timestamps
 	 */
-	public function getArchiveVersions() {
-		$db = $this->getSlaveDB();
-		$ret = $db->select(
+	public function getArchiveVersions( $options = array() ) {
+		$dbOpts = array( 'ORDER BY' => 'cv_timestamp DESC' );
+		$where = array();
+
+		if ( isset( $options['limit'] ) )
+			$dbOpts['LIMIT'] = $options['limit'];
+		if ( isset( $options['wiki'] ) )
+			$where['cv_wiki'] = $options['wiki'];
+
+		$dbr = $this->getSlaveDB();
+		$ret = $dbr->select(
 			array( 'config_version' ),
 			array( 'cv_timestamp', 'cv_user_text', 'cv_user_wiki', 'cv_reason' ),
-			array(),
+			$where,
 			__METHOD__,
-			array( 'ORDER BY' => 'cv_timestamp DESC' )
+			$dbOpts
 		);
 		$arr = array();
 		foreach ( $ret as $row ) {
 			$arr[$row->cv_timestamp] = array( 'username' => $row->cv_user_text, 'userwiki' => $row->cv_user_wiki, 'reason' => $row->cv_reason, 'timestamp' => $row->cv_timestamp );
 		}
 		return $arr;
+	}
+
+	/**
+	 * Same as listArchiveVersions(), but with more information about each
+	 * version
+	 *
+	 * @param $options Array of options
+	 * @return Array of versions
+	 */
+	public function listArchiveVersions( $options = array() ) {
+		return array_keys( $this->getArchiveVersions( $options ) );
+	}
+
+	/**
+	 * Return a bool whether the version exists
+	 *
+	 * @param $ts version
+	 * @return bool
+	 */
+	public function versionExists( $ts ) {
+		$dbr = $this->getSlaveDB();
+		return (bool)$dbr->selectField( 'config_version', '1', array( 'cv_timestamp' => $ts ), __METHOD__ );
 	}
 
 	/**
@@ -312,9 +344,5 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			'wgMemCachedPersistent',
 			'wgMemCachedServers',
 		);
-	}
-	
-	public function listArchiveVersions() {
-		return array_keys( $this->getArchiveVersions() );
 	}
 }
