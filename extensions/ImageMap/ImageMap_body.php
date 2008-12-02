@@ -281,7 +281,8 @@ class ImageMap {
 		# Add the map HTML to the div
 		# We used to add it before the div, but that made tidy unhappy
 		if ( $mapHTML != '' ) {
-			$mapDoc = DOMDocument::loadXML( $mapHTML );
+			$mapDoc = new DOMDocument();
+			$mapDoc->loadXML( $mapHTML );
 			$mapNode = $domDoc->importNode( $mapDoc->documentElement, true );
 			$div->appendChild( $mapNode );
 		}
