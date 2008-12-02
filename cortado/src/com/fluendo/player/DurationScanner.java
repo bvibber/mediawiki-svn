@@ -24,8 +24,6 @@ import com.jcraft.jogg.Packet;
 import com.jcraft.jogg.Page;
 import com.jcraft.jogg.StreamState;
 import com.jcraft.jogg.SyncState;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -44,7 +42,15 @@ public class DurationScanner {
     final static int UNKNOWN = 0;
     final static int VORBIS = 1;
     final static int THEORA = 2;
-    private static long contentLength = -1;
+    private long contentLength = -1;
+    private Hashtable streaminfo = new Hashtable();
+    private SyncState oy = new SyncState();
+    private Page og = new Page();
+    private Packet op = new Packet();
+
+    public DurationScanner() {
+        oy.init();
+    }
 
     private InputStream openWithConnection(URL url, String userId, String password, long offset) throws IOException {
         // lifted from HTTPSrc.java
@@ -104,7 +110,7 @@ public class DurationScanner {
         return dis;
     }
 
-    private void determineType(Packet op, StreamInfo info) {
+    private void determineType(Packet packet, StreamInfo info) {
 
         // try theora
         com.fluendo.jheora.Comment tc = new com.fluendo.jheora.Comment();
@@ -113,7 +119,7 @@ public class DurationScanner {
         tc.clear();
         ti.clear();
 
-        int ret = ti.decodeHeader(tc, op);
+        int ret = ti.decodeHeader(tc, packet);
         if (ret == 0) {
             info.decoder = ti;
             info.type = THEORA;
@@ -128,82 +134,67 @@ public class DurationScanner {
         vc.init();
         vi.init();
 
-        ret = vi.synthesis_headerin(vc, op);
+        ret = vi.synthesis_headerin(vc, packet);
         if (ret == 0) {
             info.decoder = vi;
             info.type = VORBIS;
             info.decodedHeaders++;
             return;
         }
-        
+
         info.type = UNKNOWN;
     }
 
-    public float getDurationForInputStream(InputStream is) {
-        try {
-            float time = -1;
+    public float getDurationForBuffer(byte[] buffer, int bufbytes) {
+        float time = -1;
 
-            SyncState oy = new SyncState();
-            Page og = new Page();
-            Packet op = new Packet();
+        int offset = oy.buffer(bufbytes);
+        java.lang.System.arraycopy(buffer, 0, oy.data, offset, bufbytes);
+        oy.wrote(bufbytes);
 
-            Hashtable streaminfo = new Hashtable();
+        while (oy.pageout(og) == 1) {
 
-            oy.init();
+            Integer serialno = new Integer(og.serialno());
+            StreamInfo info = (StreamInfo) streaminfo.get(serialno);
+            if (info == null) {
+                info = new StreamInfo();
+                info.streamstate = new StreamState();
+                info.streamstate.init(og.serialno());
+                streaminfo.put(serialno, info);
+                Debug.info("DurationScanner: created StreamState for stream no. " + serialno);
+            }
 
-            boolean eos = false;
-            while (!eos) {
+            info.streamstate.pagein(og);
 
-                int offset = oy.buffer(4096);
-                int read = is.read(oy.data, offset, 4096);
-                oy.wrote(read);
-                eos = read <= 0;
+            while (info.streamstate.packetout(op) == 1) {
 
-                while (oy.pageout(og) == 1) {
+                int type = info.type;
+                if (type == NOTDETECTED) {
+                    determineType(op, info);
+                    info.startgranule = og.granulepos();
+                }
 
-                    Integer serialno = new Integer(og.serialno());
-                    StreamInfo info = (StreamInfo) streaminfo.get(serialno);
-                    if (info == null) {
-                        info = new StreamInfo();
-                        info.streamstate = new StreamState();
-                        info.streamstate.init(og.serialno());
-                        streaminfo.put(serialno, info);
-                        System.out.println("DurationScanner: created StreamState for stream no. " + serialno);
-                    }
-
-                    info.streamstate.pagein(og);
-
-                    while (info.streamstate.packetout(op) == 1) {
-
-                        int type = info.type;
-                        if (type == NOTDETECTED) {
-                            determineType(op, info);
-                            info.startgranule = og.granulepos();
+                switch (type) {
+                    case VORBIS:
+                         {
+                            com.jcraft.jorbis.Info i = (com.jcraft.jorbis.Info) info.decoder;
+                            float t = (float) (og.granulepos() - info.startgranule) / i.rate;
+                            if (t > time) {
+                                time = t;
+                            }
                         }
-
-                        switch (type) {
-                            case VORBIS:
-                                 {
-                                    com.jcraft.jorbis.Info i = (com.jcraft.jorbis.Info) info.decoder;
-                                    float t = (float) (og.granulepos() - info.startgranule) / i.rate;
-                                    if (t > time) {
-                                        time = t;
-                                    }
-                                }
-                                break;
-                            case THEORA:
-                                 {
-                                    com.fluendo.jheora.Info i = (com.fluendo.jheora.Info) info.decoder;
-                                }
-                                break;
+                        break;
+                    case THEORA:
+                         {
+                            com.fluendo.jheora.Info i = (com.fluendo.jheora.Info) info.decoder;
                         }
-                    }
+                        break;
                 }
             }
-            return time;
-        } catch (IOException e) {
-            return -1;
         }
+
+        return time;
+
     }
 
     public float getDurationForURL(URL url, String user, String password) {
@@ -211,8 +202,9 @@ public class DurationScanner {
             int headbytes = 16 * 1024;
             int tailbytes = 80 * 1024;
 
+            float time = 0;
+
             byte[] buffer = new byte[1024];
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
             InputStream is = openWithConnection(url, user, password, 0);
 
             int read = 0;
@@ -221,7 +213,8 @@ public class DurationScanner {
             // read beginning of the stream
             while (totalbytes < headbytes && read > 0) {
                 totalbytes += read;
-                bos.write(buffer, 0, read);
+                float t = getDurationForBuffer(buffer, read);
+                time = t > time ? t : time;
                 read = is.read(buffer);
             }
 
@@ -231,22 +224,25 @@ public class DurationScanner {
             // read tail until eos, also abort if way too many bytes have been read
             while (read > 0 && totalbytes < (headbytes + tailbytes) * 2) {
                 totalbytes += read;
-                bos.write(buffer, 0, read);
+                float t = getDurationForBuffer(buffer, read);
+                time = t > time ? t : time;
                 read = is.read(buffer);
             }
 
-            return getDurationForInputStream(new ByteArrayInputStream(bos.toByteArray()));
+            return time;
         } catch (IOException e) {
             return -1;
         }
     }
-    
+
     private class StreamInfo {
+
         public Object decoder;
         public int decodedHeaders = 0;
         public int type = NOTDETECTED;
         public long startgranule;
         public StreamState streamstate;
+        public boolean ready = false;
     }
 
     public static void main(String[] args) throws IOException {
