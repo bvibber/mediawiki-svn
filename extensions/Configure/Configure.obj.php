@@ -10,7 +10,7 @@ class WebConfiguration extends SiteConfiguration {
 	protected $mHandler;               // Configuration handler
 	protected $mWiki;                  // Wiki name
 	protected $mConf = array();        // Our array of settings
-	protected $mOldSettings = array(); // Old settings (before applying our overrides)
+	protected $mOldSettings = null; // Old settings (before applying our overrides)
 	protected $mDefaults = array();    // Default values
 
 	/**
@@ -36,7 +36,7 @@ class WebConfiguration extends SiteConfiguration {
 
 		# Restore first version of $this->settings if called a second time so
 		# that it doesn't duplicate arrays
-		if( !count( $this->mOldSettings ) )
+		if( is_null( $this->mOldSettings ) )
 			$this->mOldSettings = $this->settings;
 		else
 			$this->settings = $this->mOldSettings;
@@ -193,7 +193,6 @@ class WebConfiguration extends SiteConfiguration {
 	/**
 	 * Get the default settings (i.e. before apply Configure's overrides)
 	 * Very hacky too...
-	 * FIXME This seems to get the settings *after* overrides, not *before*.
 	 *
 	 * @param $wiki String
 	 * @return array

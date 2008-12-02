@@ -123,7 +123,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		
 		if (!$defaults) {
 			global $wgConf;
-			$defaults = $wgConf->getDefaults( );
+			$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
 		}
 		
 		if ( isset( $this->conf[$setting] ) ) {
@@ -626,7 +626,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function removeDefaults( $settings ) {
 		global $wgConf;
-		$defaultValues = $wgConf->getDefaults(  );
+		$defaultValues = $wgConf->getDefaultsForWiki( $this->mWiki  );
 		foreach ( $defaultValues as $name => $default ) {
 			## Normalise the two, to avoid false "changes"
 			if (is_array($default))
@@ -1162,7 +1162,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		wfLoadExtensionMessages( 'ConfigureSettings' );
 		
 		global $wgConf;
-		$defaults = $wgConf->getDefaults();
+		$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
 
 		$ret = '';
 		$perms = array();
