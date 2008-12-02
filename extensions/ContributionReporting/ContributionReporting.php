@@ -68,6 +68,20 @@ $egFundraiserStatisticsFundraisers = array(
 $egFundraiserStatisticsMinimum = 1;
 $egFundraiserStatisticsMaximum = 10000;
 
+$wgExtensionFunctions[] = 'efContributionReportingSetup';
+$wgHooks['LanguageGetMagic'][] = 'efContributionReportingTotal_Magic';
+
+function efContributionReportingSetup() {
+	global $wgParser;
+	
+	$wgParser->setFunctionHook( 'contributiontotal', 'efContributionReportingTotal_Render' );
+}
+
+function efContributionReportingTotal_Magic( &$magicWords, $langCode ) {
+	$magicWords['contributiontotal'] = array( 0, 'contributiontotal' );
+	return true;
+}
+
 // Automatically use a local or special database connection
 function efContributionReportingConnection() {
 	global $wgContributionReportingDBserver, $wgContributionReportingDBname;
@@ -87,3 +101,46 @@ function efContributionReportingConnection() {
 	return $db;
 }
 
+function efContributionReportingTotal( $start, $fudgeFactor ) {
+	$db = efContributionReportingConnection();
+
+	$sql = 'SELECT SUM(converted_amount) AS ttl FROM public_reporting';
+
+	if ( $start ) {
+		$sql .= ' WHERE received >= ' . $db->addQuotes( $start );
+	}
+
+	$res = $db->query( $sql );
+
+	$row = $res->fetchRow();
+
+	# Output
+	$output = $row['ttl'] ? $row['ttl'] : '0';
+	
+	$output += $fudgeFactor;
+	
+	return $output;
+}
+
+function efContributionReportingTotal_Render() {
+	$args = func_get_args();
+	$parser = array_shift( $args );
+	
+	$fudgeFactor = false;
+	$start = false;
+	
+	foreach( $args as $arg ) {
+		if ( strpos($arg,'=') === false )
+			continue;
+		
+		list($key,$value) = explode( '=', $arg, 2 );
+		
+		if ($key == 'fudgefactor') {
+			$fudgeFactor = $value;
+		} elseif ($key == 'start') {
+			$start = $value;
+		}
+	}
+	
+	return efContributionReportingTotal( $start, $fudgeFactor );
+}

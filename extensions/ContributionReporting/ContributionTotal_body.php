@@ -17,29 +17,13 @@ class ContributionTotal extends SpecialPage {
 		$action = $wgRequest->getText( 'action' );
 		$fudgeFactor = $wgRequest->getInt( 'fudgefactor' );
 
-		$db = efContributionReportingConnection();
-
-		$sql = 'SELECT SUM(converted_amount) AS ttl FROM public_reporting';
-
-		if ( $start ) {
-			$sql .= ' WHERE received >= ' . $db->addQuotes( $start );
-		}
-
-		$res = $db->query( $sql );
-
-		$row = $res->fetchRow();
-
-		# Output
-		$output = $row['ttl'] ? $row['ttl'] : '0';
-		
-		$output += $fudgeFactor;
+		$output = efContributionReportingTotal( $start, $fudgeFactor );
 
 		header( 'Cache-Control: max-age=300,s-maxage=300' );
 		if ( $action == 'raw' ) {
 			$wgOut->disable();
 			echo $output;
-		}
-		else {
+		} else {
 			$wgOut->setRobotpolicy( 'noindex,nofollow' );
 			$wgOut->addHTML( $output );
 		}
