@@ -3,6 +3,8 @@
  * create JavaScript buttons to allow to modify the form to have more
  * flexibility
  */
+ 
+ var allSettings = undefined;
 
 function setupConfigure(){
 
@@ -262,7 +264,87 @@ function setupConfigure(){
 		 summariseSetting( list, summary );
 		 list.parentNode.insertBefore( summary, list );
 	}
+	
+	/** Search box initialise */
+	buildSearchIndex();
+	
+	// Insert a little search form just before the configuration form
+	document.getElementById( 'configure-search-form' ).style.display = 'block';
+	addHandler( document.getElementById( 'configure-search-input' ), 'keyup', function() { doSearch( this.value ); } )
 }
+
+function doSearch( query ) {
+	query = query.toLowerCase();
+		
+	var results = document.getElementById( 'configure-search-results' );
+	
+	// Empty the existing results
+	while(results.firstChild) {
+		results.removeChild(results.firstChild);
+	}
+	
+	if (query == '') {
+		return;
+	}
+	
+	var isMatch = function(element) { return element.description.indexOf( query ) !== -1; }
+	for( var i=0;i<allSettings.length;++i ) {
+		var data = allSettings[i];
+		if (isMatch( data )) {
+			var a = document.createElement( 'a' );
+			var li = document.createElement( 'li' );
+			
+			a.href = '#config-head-'+data.fid+'-'+data.sid;
+			addHandler( a, 'click', configToggle );
+			a.confSec = data.fid;
+			a.confSub = data.sid;
+			a.appendChild( document.createTextNode( data.displayDescription ) );
+			li.appendChild( a );
+			
+			results.appendChild( li );
+		}
+	}
+}
+
+function buildSearchIndex() {
+	allSettings = [];
+	
+	// For each section...
+	var rootElement = document.getElementById( 'configure' );
+	var fieldsets = rootElement.getElementsByTagName( 'fieldset' );
+	for( var fid=0;fid<fieldsets.length;++fid ) {
+		// For each subsection...
+		var fieldset = fieldsets[fid];
+		var fieldset_title = getInnerText( fieldset.getElementsByTagName( 'legend' )[0] );
+		var subsections = getElementsByClassName( fieldset, 'table', 'configure-table' );
+		for( var sid=0;sid<subsections.length;++sid ) {
+			var subsection = subsections[sid].getElementsByTagName( 'tbody' )[0];
+			var heading = document.getElementById( subsection.parentNode.id.replace( 'config-table', 'config-head' ) );
+			
+			// For each setting...
+			for( var i=0; i<subsection.childNodes.length;++i ) {
+				var row = subsection.childNodes[i];
+				if ( row.nodeType != row.ELEMENT_NODE || row.tagName != 'TR' ) {
+					continue;
+				}
+					
+				var desc_cell = getElementsByClassName( row, 'td', 'configure-left-column' )[0];
+				
+				
+				var description;
+				
+				if (desc_cell.getElementsByTagName( 'p' ).length) { // Ward off comments like "This setting has been customised"
+					description = getInnerText( desc_cell.getElementsByTagName( 'p' )[0] );
+				} else {
+					description = getInnerText( desc_cell );
+				}
+				
+				allSettings.push( { 'description': description.toLowerCase(), 'fid':fid+1, 'sid':sid, 'displayDescription': description } );
+			}
+		}
+	}
+}
+
 // Summarise the setting contained in 'div' to the summary field 'summary'.
 function summariseSetting( div, summary ) {
 	// Empty the existing summary
@@ -592,11 +674,7 @@ function configToggle() {
 	var oldsecid = this.parentNode.parentNode.selectedid;
 	var confSec = this.confSec;
 	var confSub = this.confSub;
-	if( confSub == -1 ){
-		var toc = this.parentNode.parentNode;
-	} else {
-		var toc = this.parentNode.parentNode.parentNode.parentNode;
-	}
+	var toc = document.getElementById( 'configtoc' );
 	var oldSec = toc.confSec;
 	var oldId = 'config-section-' + oldSec;
 	document.getElementById( oldId ).style.display = "none";
