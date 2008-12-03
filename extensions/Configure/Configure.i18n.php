@@ -49,6 +49,7 @@ Please make it writable by PHP to use this extension.',
 	'configure-js-biglist-hidden'	      => 'Setting details hidden',
 	'configure-js-biglist-show'	      => '[show details]',
 	'configure-js-biglist-hide'	      => '[hide details]',
+	'configure-js-summary-none'	      => 'No settings',
 	'configure-no-diff'                   => 'There are no changes between selected versions.',
 	'configure-no-directory'              => 'The directory used to store the settings, <tt>$1</tt>, does not exist.
 Please create it or change it to use this extension.',

@@ -756,6 +756,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		$biglist_hidden = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-hidden' ) );
 		$biglist_show = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-show' ) );
 		$biglist_hide = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-hide' ) );
+		$summary_none = Xml::encodeJsVar( wfMsg( 'configure-js-summary-none' ) );
 		$ajax = isset( $wgUseAjax ) && $wgUseAjax ? 'true' : 'false';
 		$script = array(
 			"<script type=\"$wgJsMimeType\">/*<![CDATA[*/",
@@ -771,6 +772,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			"var wgConfigureBiglistHidden = {$biglist_hidden};",
 			"var wgConfigureBiglistShow = {$biglist_show};",
 			"var wgConfigureBiglistHide = {$biglist_hide};",
+			"var wgConfigureSummaryNone = {$summary_none};",
 		 	"/*]]>*/</script>",
 			"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/Configure/Configure.js?{$wgConfigureStyleVersion}\"></script>",
 		);
@@ -989,7 +991,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						$attr
 					) . "</span>\n";
 			}
-			$text = Xml::tags( 'div', array( 'class' => 'configure-biglist' ), $text );
+			$text = Xml::tags( 'div', array( 'class' => 'configure-biglist '.$type ), $text );
 			return $text;
 		}
 		if ( $type == 'ns-text' ) {
@@ -1034,7 +1036,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				if ( '' == $name ) {
 					$name = wfMsgExt( 'blanknamespace', array( 'parseinline' ) );
 				}
-				$text .= '<tr><td>' . $name . '</td><td>';
+				$text .= '<tr><td>' . Xml::label( $name, "wp{$conf}-ns{$ns}" ) . '</td><td>';
 				if ( $allowed ) {
 					$text .= Xml::openElement( 'textarea', array(
 						'name' => "wp{$conf}-ns{$ns}",
@@ -1075,7 +1077,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			$encConf = htmlspecialchars( $conf );
 			$text = "<table id= '{$encConf}' class='{$type} configure-array-table'>\n<tr><th>{$groupdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach ( $iter as $group => $levs ) {
-				$row = '<div class="configure-biglist"><ul>';
+				$row = '<div class="configure-biglist '.$type.'-element"><ul>';
 				foreach ( $all as $right ) {
 					if ( $type == 'group-bool' )
 						$checked = ( isset( $levs[$right] ) && $levs[$right] );

@@ -254,6 +254,102 @@ function setupConfigure(){
 		div.appendChild( tn );
 		div.insertBefore( toggleLink, div.childNodes[0] );
 		list.parentNode.insertBefore( div, list );
+
+		 // Summaries
+		 var summary = document.createElement( 'div' );
+		 summary.id = 'configure-biglist-summary-'+l;
+		 summary.className = 'configure-biglist-summary';
+		 summariseSetting( list, summary );
+		 list.parentNode.insertBefore( summary, list );
+	}
+}
+// Summarise the setting contained in 'div' to the summary field 'summary'.
+function summariseSetting( div, summary ) {
+	// Empty the existing summary
+	while(summary.firstChild) {
+		summary.removeChild(summary.firstChild);
+	}
+	
+	// Based on class, do something.
+	var elementType = ' '+div.className+' ';
+	
+	var isType = function(type) { return elementType.indexOf( ' '+type+' ' ) !== -1; }
+	
+	if (isType('assoc') ) {
+		// If it's too big to display as an associative array, it's too big to display as a summary.
+	} else if ( isType( 'ns-bool' ) || isType( 'ns-simple' ) || isType( 'group-bool-element' ) || isType( 'group-array-element' ) ) {
+		var labels = div.getElementsByTagName( 'label' );
+		var matches = [];
+		for( var i=0; i<labels.length; ++i ) {
+			var label = labels[i];
+			var checkbox = document.getElementById( label.htmlFor );
+			
+			if (checkbox.checked) {
+				matches.push( label.innerHTML ); // Yuck
+			}
+		}
+		
+		summary.innerHTML = matches.join( ', ' ); // Be aware of velociraptors.
+	} else if ( isType( 'ns-array' ) || isType( 'ns-text' ) ) {
+		// Get the headers
+		var header_key = undefined;
+		var header_value = undefined;
+		
+		var headers = div.getElementsByTagName( 'th' );
+		header_key = getInnerText( headers[0] );
+		header_value = getInnerText( headers[1] );
+		
+		var table = document.createElement( 'table' );
+		table.className = 'ns-array';
+		table.appendChild( document.createElement( 'tbody' ) );
+		table = table.firstChild;
+		
+		var tr = document.createElement( 'tr' );
+		var key_th = document.createElement( 'th' );
+		var value_th = document.createElement( 'th' );
+		key_th.appendChild( document.createTextNode( header_key ) );
+		value_th.appendChild( document.createTextNode( header_value ) );
+		
+		tr.appendChild( key_th );
+		tr.appendChild( value_th );
+		table.appendChild( tr );
+		
+		var rows = false;
+		
+		var labels = div.getElementsByTagName( 'label' );
+		for( var i=0; i<labels.length; ++i ) {
+			var label = labels[i];
+			var arrayfield = document.getElementById( label.htmlFor );
+			
+			if (arrayfield.value) {
+				rows = true;
+				
+				tr = document.createElement( 'tr' );
+				var key_td = document.createElement( 'td' );
+				var value_td = document.createElement( 'td' );
+				
+				key_td.appendChild( document.createTextNode( getInnerText( label ) ) );
+				value_td.appendChild( document.createTextNode( arrayfield.value ) );
+				
+				tr.appendChild( key_td );
+				tr.appendChild( value_td );
+				
+				table.appendChild( tr );
+			}
+		}
+		
+		if (!rows) {
+			tr = document.createElement( 'tr' );
+			var td = document.createElement( 'td' );
+			td.setAttribute( 'colspan', 2 );
+			td.appendChild( document.createTextNode( wgConfigureSummaryNone ) );
+			tr.appendChild( td );
+			table.appendChild( tr );
+		}
+		
+		summary.appendChild( table );
+	} else {
+		summary.appendChild( document.createTextNode( 'Useless type:'+elementType ) );
 	}
 }
 
@@ -263,6 +359,7 @@ function createToggleCallback( id ){
 		var content = document.getElementById( 'configure-biglist-content-'+id );
 		var toggleLink = document.getElementById( 'configure-biglist-link-'+id );
 		var div = document.getElementById( 'configure-biglist-placeholder-'+id );
+		var summary = document.getElementById( 'configure-biglist-summary-'+id );
 		var act;
 		var newLinkText;
 		var newPlaceholderText;
@@ -271,11 +368,14 @@ function createToggleCallback( id ){
 			act = 'show';
 			newLinkText = wgConfigureBiglistHide;
 			content.style.display = 'block';
+			summary.style.display = 'none';
 			newPlaceholderText = wgConfigureBiglistShown;
 		} else {
 			act = 'hide';
 			newLinkText = wgConfigureBiglistShow;
 			content.style.display = 'none';
+			summary.style.display = 'block';
+			summariseSetting( content, summary );
 			newPlaceholderText = wgConfigureBiglistHidden
 		}
 		
