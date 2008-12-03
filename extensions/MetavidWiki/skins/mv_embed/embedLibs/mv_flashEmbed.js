@@ -1567,10 +1567,10 @@ var flashEmbed = {
 		//give the embed element a unique pid (work around for flowplayer persistence)
 		if( this.old_pid!=0 ){
 			this.pid = this.pid +'_'+ this.old_pid;
-		}		
+		}				
 		return '<a  '+
 					'href="'+this.media_element.selected_source.getURI( this.seek_time_sec ) + '" '+  
-				    'style="display:block;width:400px;height:300px" '+  
+				    'style="display:block;width:' + this.width + ';height:' + this.height + '" '+  
 				    'id="'+this.pid+'">'+ 
 				'</a>';
     },
@@ -1593,11 +1593,11 @@ var flashEmbed = {
 				   backgroundGradient: 'none',
 				   autoHide:'always',
 				   top:'95%',
-				   left:'370'
+				   right:'0px'
 				 }      		
     		}
     	};
-    	//if lightpd    	
+    	//if lightpd  	
     	
 		$f(this.pid,  mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc4.swf', flowConfig);    	    	  
 		//get the this.fla value: 		

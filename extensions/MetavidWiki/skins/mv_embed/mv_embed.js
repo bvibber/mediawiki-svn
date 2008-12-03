@@ -368,7 +368,7 @@ var oggPluginPlayer = new mediaPlayer('oggPlugin',['video/ogg'],'generic');
 var quicktimeMozillaPlayer = new mediaPlayer('quicktime-mozilla',['video/ogg'],'quicktime');
 var quicktimeActiveXPlayer = new mediaPlayer('quicktime-activex',['video/ogg'],'quicktime');
 
-var htmlPlayer = new mediaPlayer('html',['text/html', 'image/jpeg'],'html');
+var htmlPlayer = new mediaPlayer('html',['text/html', 'image/jpeg', 'image/png'],'html');
 
 /**
   * mediaPlayers is a collection of mediaPlayer objects supported by the client.
@@ -1692,7 +1692,7 @@ mediaElement.prototype =
     linkback:null,    
 
     /** @private */
-    init:function(video_element)
+    init:function( video_element )
     {
         var _this = this;
         js_log('Initializing mediaElement...' + video_element);
@@ -1715,7 +1715,7 @@ mediaElement.prototype =
         	//js_log(' on inner source: '+i + ' obj: '+ inner_source);
             _this.tryAddSource(inner_source);
         });                   
-    },  
+    },
     /** Updates the time request for all sources that have a standard time request argument (ie &t=start_time/end_time)
      */
     updateSourceTimes:function(start_ntp, end_ntp){
@@ -2093,10 +2093,10 @@ embedVideo.prototype = {
 		var _this = this;		
 		this.selected_player.load( function()
 		{
-			js_log('inheriting '+_this.selected_player.library +'Embed to ' + _this.id + ' ' + $j('#'+_this.id).length);
+			//js_log('inheriting '+_this.selected_player.library +'Embed to ' + _this.id + ' ' + $j('#'+_this.id).length);
 			//var _this = $j('#'+_this.id).get(0);
-			js_log( 'type of ' + _this.selected_player.library +'Embed + ' +
-					eval('typeof '+_this.selected_player.library +'Embed')); 
+			//js_log( 'type of ' + _this.selected_player.library +'Embed + ' +
+			//		eval('typeof '+_this.selected_player.library +'Embed')); 
 			eval('embedObj = ' +_this.selected_player.library +'Embed;');
 			for(var method in embedObj){ //for in loop oky for object  
 				//parent method preservation for local overwritten methods
@@ -2109,11 +2109,9 @@ embedVideo.prototype = {
 			}
 			//update controls if possible
 			if(!_this.loading_external_data)
-				_this.refreshControlsHTML();
-					
-			js_log('plugin load callback complete');					
+				_this.refreshControlsHTML();												
 			
-			js_log("READY TO PLAY:"+_this.id);			
+			//js_log("READY TO PLAY:"+_this.id);			
 			_this.ready_to_play=true;
 			_this.getDuration();
 			_this.getHTML();
@@ -2443,16 +2441,14 @@ embedVideo.prototype = {
     },	
 	getHTML : function (){		
 		//@@todo check if we have sources avaliable	
-		js_log('f:getHTML : '+this.id);			
+		js_log('f:getHTML : ' + this.id );			
 		var _this = this; 				
 		var html_code = '';		
         html_code = '<div id="videoPlayer_'+this.id+'" style="width:'+this.width+'px;" class="videoPlayer">';        
 			html_code += '<div style="width:'+parseInt(this.width)+'px;height:'+parseInt(this.height)+'px;"  id="mv_embedded_player_'+this.id+'">' +
 							this.getThumbnailHTML() + 
-						'</div>';					
-						
-			js_log("mvEmbed:controls "+ typeof this.controls);
-									
+						'</div>';											
+			//js_log("mvEmbed:controls "+ typeof this.controls);									
 	        if(this.controls)
 	        {
 	        	js_log("f:getHTML:AddControls");
@@ -2464,8 +2460,8 @@ embedVideo.prototype = {
 	            		+(parseInt(this.height)+ctrlBuilder.height)+'px"></div>');    	            
 	        }
         html_code += '</div>'; //videoPlayer div close        
-        js_log('should set: '+this.id);
-        $j(this).html(html_code);                    
+        //js_log('should set: '+this.id);
+        $j(this).html( html_code );                    
 		//add hooks once Controls are in DOM
 		ctrlBuilder.addControlHooks(this);		
 		                  
@@ -2475,7 +2471,7 @@ embedVideo.prototype = {
         if(this.autoplay)
 		{
 			js_log('activating autoplay');
-            this.doEmbedHTML();
+            this.play();
 		}
 	},
 	/*
@@ -2552,21 +2548,22 @@ embedVideo.prototype = {
 		//if we are updating don't re-go to the updating url: 
 		if(this.thumbnail_updating && $j('#new_img_thumb_'+this.id).attr('src')== src )
 			return false;
-		
-		js_log('set to thumb:'+ src);
+				
 		if(quick_switch){
 			$j('#img_thumb_'+this.id).attr('src', src);
 		}else{
 			var _this = this;			
 			//if still animating remove new_img_thumb_
 			if(this.thumbnail_updating==true)
-				$j('#new_img_thumb_'+this.id).stop().remove();			
+				$j('#new_img_thumb_'+this.id).stop().remove();		
+					
 			if(this.thumbnail_disp){
+				js_log('set to thumb:'+ src);
 				this.thumbnail_updating=true;
 				$j('#dc_'+this.id).append('<img src="'+src+'" ' +
 					'style="display:none;position:absolute;zindex:2;top:0px;left:0px;" ' +
 					'width="'+this.width+'" height="'+this.height+'" '+
-					'id = "new_img_thumb_'+this.id+'" />');			
+					'id = "new_img_thumb_'+this.id+'" />');						
 				//js_log('appended: new_img_thumb_');		
 				$j('#new_img_thumb_'+this.id).fadeIn("slow", function(){						
 						//once faded in remove org and rename new:
@@ -2856,7 +2853,7 @@ embedVideo.prototype = {
 	*  base embed controls
 	*	the play button calls
 	*/
-	play: function(){
+	play:function(){
 		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
 		js_log("mv_embed play:"+this.id);		
 		js_log('thum disp:'+this.thumbnail_disp);

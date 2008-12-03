@@ -132,7 +132,7 @@ $mvDefaultVideoIconSize = '80x60';
 $mvDispROEicon=false;
 
 //The text Embed a metavid Stream inline in the wiki 
-$mvEmbedKey = 'EmbedStream';
+$mvEmbedKey = 'Embed';
 
 //wars people of archive inacuracys (given its a wiki and the source is close caption feed)
 $mvEnableStreamNotice=true;

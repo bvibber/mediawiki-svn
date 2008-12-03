@@ -87,17 +87,23 @@
 	}	
 	//handles copy / paste clip board data actions
 	function do_clipboard( $action ){
-		global $wgRequest;
+		global $wgRequest, $wgUser;
 		//validate the user-edit token (for both copy and paste)	
-		$token = $wgRequest->getVal( 'clipboardEditToken');			 
+		$token = $wgRequest->getVal( 'clipboardEditToken');
+					 
 		//store the clipboard
 		if( $action == 'copy' ){			
-			return ''; 	
+			return '1'; 	
 		}
 		//get the clipboard
 		if( $action == 'paste'){
 			return '';
 		}						
+		//error out: 
+		return  php2jsObj( array( 	'status' => 'error',
+									'error_txt' => wfMsg('mv_unknown_clipboard_action') 
+								) 
+						 );
 	}
 	function add_embed_search() {
 		global $wgOut;

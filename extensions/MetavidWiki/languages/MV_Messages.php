@@ -251,6 +251,7 @@ Jump to stream view: $2',
 	'mv_welcome_to_sequencer' => '<h3>Welcome to the sequencer demo</h3>
 very <b>limited</b> functionality right now. Click on a Clip to edit that resource',
 	'mv_resource_locator' => 'Resource Locator',
+	'mv_unknown_clipboard_action' => 'Unknown Clipboard Action', 
 
 	'mv_media_search' => 'Media search',
 

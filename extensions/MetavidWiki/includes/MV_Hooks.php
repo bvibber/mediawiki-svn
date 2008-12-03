@@ -78,15 +78,14 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
 */
  function mvLinkEnd($skin, $title, $options, &$text, &$attribs, &$ret){
  	global $mvDefaultAspectRatio, $mvDefaultVideoPlaybackRes, $mvEmbedKey;
- 	//only do link rewrites for STREAM and SEQUENCE name space when on an article page  	 	
- 	if( ( substr( $title->getText(), 0, strlen( $mvEmbedKey ) ) != $mvEmbedKey ) &&  
- 		$title->getNamespace() != MV_NS_SEQUENCE ){
+ 	//only do link rewrites for $mvEmbedKey 	 	
+ 	if( substr( $title->getText(), 0, strlen( $mvEmbedKey ) ) != $mvEmbedKey ){
  		return true;
- 	} 	
+ 	}
  	//parse text for extra parameters 
- 	//@@todo integrate with image params / maybe file handle ) 	
+ 	//@@todo integrate with image params / maybe file handle )
  	$params = explode('|', $text);
- 	//setup defaults: 
+ 	//setup defaults:
  	$size = $mvDefaultVideoPlaybackRes;
  	$start_ntp=$end_ntp=null;
  	foreach($params as $param){
@@ -235,7 +234,7 @@ function mvCustomEditor( &$article, &$user ) {
 			return false;
 		break;
 		default:
-			// continue proccessing (use default editor)
+			// continue processing (use default editor)
 			return true;
 		break;
 	}
@@ -328,7 +327,7 @@ function mv_edit_disp( $titleKey, $mvd_id ) {
 	$MV_Overlay = new MV_Overlay();
 	return $MV_Overlay->get_edit_disp( $titleKey, $mvd_id );
 }
-/* genneral autocomplete */
+/* general autocomplete */
 function mv_helpers_auto_complete( $val = null ) {
 	global $mvMetaDataHelpers, $wgRequest;
 	$property = $wgRequest->getVal( 'prop_name' );

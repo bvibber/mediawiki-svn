@@ -82,6 +82,7 @@ var vlcEmbed = {
     		}	
     	}
     },   
+	/* //disable local seeking (while we don't know what we have avaliable)
 	doSeek : function(value){
 		if( this.vlc ) {
 			if( (this.vlc.input.state == 3) && (this.vlc.input.position != value) )
@@ -90,7 +91,7 @@ var vlcEmbed = {
             	this.setStatus( 'seeking...' );	       
 	        }				
 		}
-	},
+	},*/
 	playMovieAt : function (order){
 		//@@todo add clips to playlist after (order) and then play
 		this.play();

@@ -287,6 +287,9 @@ mvSequencer.prototype = {
 		var menu_item = this.menu_items[item];	
 		//do any menu item post embed js hook processing:
 		switch(item){		
+			case 'clipedit':
+				//load mv_clip_edit.js
+			break;
 			case 'transition':
 				//render out the transitions library
 				this.renderTransitionsSet(target_id);
@@ -727,40 +730,21 @@ mvSequencer.prototype = {
 	//add a single or set of clips
 	//to a given position and track_inx 
 	addClips:function( clipSet, before_clip_pos, track_inx){
-		this_seq = this;
-		
-		js_log("seq: add clip: at: "+ before_clip_pos + ' in track: ' + track_inx);
-		//set defaults if missing
-		if(typeof trac_inx == 'undefined')
-			var trackObj = this.plObj.default_track;
-		else
-			var trackObj= this_seq.plObj.tracks[track_inx];
-			
+		this_seq = this;		
+		js_log("seq: add clip: at: "+ before_clip_pos + ' in track: ' + track_inx);			
 		var cur_pos = before_clip_pos;
 		js_log('paste clip before_clip_pos: ' + before_clip_pos);
+		//smilXML = 		
 		$j.each(clipSet, function(inx, clipInitDom){
 			var mediaElement = document.createElement('ref');
 			for(var i in clipInitDom){
 				if(i!='id')
 					$j(mediaElement).attr(i, clipInitDom[i]);
-			}			
-			var clipObj = new mvSMILClip(mediaElement, 
-								{
-									id:'p_' + this_seq.plObj.id + '_c_'+cur_pos,
-									pp:this_seq.plObj,
-									order:cur_pos
-								}
-						)
-			js_log('paste clip order: ' + clipObj.order);
-			//debugger;
-			if( clipObj ){	
-				//set up embed:						
-				clipObj.setUpEmbedObj();
-				trackObj.addClip(clipObj, cur_pos);		
+			}						
+			if( this_seq.plObj.tryAddMedia(	mediaElement, cur_pos, track_inx ) )	
 				cur_pos++;
-			}
 		}); 		
-		//debugger; 
+		debugger; 
 		this.do_refresh_timeline();
 	},
 	removeClips:function( remove_clip_ary ){					

@@ -775,14 +775,16 @@ mvPlayList.prototype = {
 	 */
 	addCliptoTrack: function(clipObj, pos){
 		if( typeof clipObj['track_id'] =='undefined'){
-			clipObj.track_id = 0;
+			var track = this.default_track;
+		}else{
+			var track = this.tracks[ clipObj.track_id ]
 		}
-		js_log('add clip' + clipObj.id +' to track: ');		
-		//set the first clip to current (maybe deprecate) 
+		js_log('add clip' + clipObj.id +' to track: at:' + pos);		
+		//set the first clip to current (maybe deprecated ) 
 		if(clipObj.order==0){
 			if(!this.cur_clip)this.cur_clip=clipObj;
 		}		
-		this.tracks[ clipObj.track_id ].addClip(clipObj, pos);		
+		track.addClip(clipObj, pos);		
 	},
 	swapClipDesc: function(req_clipID, callback){
 		//hide all but the requested
@@ -882,6 +884,7 @@ mvClip.prototype = {
 	},
 	//setup the embed object:
 	setUpEmbedObj:function(){
+		js_log('pl:setUpEmbedObj');
 		//init:
 		//debugger;
 		
@@ -1016,7 +1019,7 @@ mvClip.prototype = {
 	},
 	getClipImg:function(start_offset, size){
 		js_log('f:getClipImg ' + start_offset + ' s:'+size);	
-		if( !this.img){
+		if( !this.img){			
 			return mv_default_thumb_url; 
 		}else{
 			if(!size && !start_offset){			
@@ -1068,7 +1071,7 @@ PlMvEmbed.prototype = {
 	init:function(vid_init){				
 		//send embed_video a created video element: 
 		ve = document.createElement('div');
-		for(i in vid_init){		
+		for(var i in vid_init){		
 			//set the parent clip pointer: 	
 			if(i=='pc'){
 				this['pc']=vid_init['pc'];
@@ -1562,7 +1565,7 @@ var smilPlaylist ={
 		var meta_tags = this.data.getElementsByTagName('meta');
 		var metaNames = new Array('title','interface_url', 'linkback', 'mTitle', 'mTalk'); 
 		$j.each(meta_tags, function(i,meta_elm){
-			js_log("on META tag: "+ $j(meta_elm).attr('name') );
+			js_log( "on META tag: "+ $j(meta_elm).attr('name') );
 			for(var i in metaNames){
 				var _name = metaNames[i];
 				if( $j(meta_elm).attr('name') && $j(meta_elm).attr('content') ){
@@ -1582,40 +1585,50 @@ var smilPlaylist ={
 				js_log('skipping transition: (missing id) ' + trans_elm );
 			}
 		});
-		js_log('loaded transitions:' + _this.transitions.length);
-			
+		js_log('loaded transitions:' + _this.transitions.length);			
 		//add seq (latter we will have support more than one seq tag) / more than one "track" 
 		var seq_tags = this.data.getElementsByTagName('seq');
 		$j.each(seq_tags, function(i,seq_elm){
 			var inx = 0;
 			//get all the clips for the given seq:
 			$j.each(seq_elm.childNodes, function(i, mediaElement){ 
-				//~complex~ have to handlde a lot like "switch" "region" etc
+				//~complex~ @@todo to handlde a lot like "switch" "region" etc
 				//js_log('process: ' + mediaElemnt.tagName); 
 				if(typeof mediaElement.tagName!='undefined'){
-					//set up basic mvSMILClip send it the mediaElemnt & mvClip init: 
-					var clipObj = new mvSMILClip(mediaElement, 
-								{
-									id:'p_' + _this.id + '_c_'+inx,
-									pp:_this,
-									order:inx
-								}								
-							);
-					if(clipObj){
-						//set up embed:						
-						clipObj.setUpEmbedObj();						
-						//add clip to track: 
-						_this.addCliptoTrack( clipObj );
-						//valid clip up the order inx: 
+					if( _this.tryAddMedia( mediaElement, inx ) ){
 						inx++;
-					}				
+					}
 				}
 			});
-			//var cur_clip = new mvClip({type:'srcClip',id:'p_'+this.id+'_c_'+i,pp:this,order:i});	
 		});
 		js_log("done proc seq tags");		
 		return true;
-	}
+	},
+	tryAddMedia:function(mediaElement, order, track_id){	
+		js_log('SMIL:tryAddMedia:' + mediaElement);
+		//set up basic mvSMILClip send it the mediaElemnt & mvClip init: 
+		var clipObj = new mvSMILClip(mediaElement, 
+					{
+						"id":'p_' + this.id + '_c_' + order,
+						"pp":this, //set the parent playlist object pointer
+						"order": order									
+					}								
+				);
+		//set optional params track					 					
+		if( typeof track_id != 'undefined')
+			clipObj["track_id"]	= track_id;
+			 
+		//debugger;
+		if (clipObj ){
+			//set up embed:						
+			clipObj.setUpEmbedObj();						
+			//add clip to track: 
+			this.addCliptoTrack( clipObj , order);
+			return true;
+		}	
+		//@@todo we could throw error details here once we integrate try catches everywhere :P
+		return false;
+	} 
 }
 /* extension to mvClip to support smil properties */
 var mvSMILClip=function(smil_clip_element, mvClipInit){
@@ -1652,13 +1665,15 @@ mvSMILClip.prototype = {
 				this[method] = myMvClip[method];
 			}		
 		}				 
+		
 		//get supported media attr init non-set		
 		$j.each(this.supported_attributes, function(i, attr){			
 			if( $j(smil_clip_element).attr(attr)){
 				_this[attr]=$j(smil_clip_element).attr(attr);
 			}
 		})				
-		this['tagName'] =smil_clip_element.tagName;	
+		this['tagName'] = smil_clip_element.tagName;	
+		
 		if( smil_clip_element.firstChild ){
 			this['wholeText'] = smil_clip_element.firstChild.nodeValue;
 			js_log("SET wholeText for: "+this['tagName'] + ' '+ this['wholeText']);
@@ -1674,14 +1689,12 @@ mvSMILClip.prototype = {
 			this.transIn = this.pp.transitions[ this.transIn ].clone();
 			this.transIn.pClip = _this;
 			this.transIn.transAttrType='transIn'; 		
-			//js_log("SET transIn for " + this.id);	
 		}		
 		
 		if(this.transOut && this.pp.transitions[ this.transOut ]){		
 			this.transOut = this.pp.transitions[ this.transOut ].clone();
 			this.transOut.pClip = _this;
-			this.transOut.transAttrType = 'transOut';
-			//js_log("SET transOut for " + this.id);			
+			this.transOut.transAttrType = 'transOut';		
 		}		
 		//parse duration / begin times: 
 		if(this.dur)
@@ -1690,9 +1703,8 @@ mvSMILClip.prototype = {
 		//conform type to video/ogg:
 		if(this['type']=='application/ogg'){
 			this['type']='video/ogg'; //conform to 'video/ogg' type
-		}
-		//@@todo check if valid transition id	
-		//debugger;	
+		}	
+			
 		return this;		
 	},
 	//returns the values of supported_attributes: 
@@ -1856,8 +1868,8 @@ function smilParseTime(time_str){
  }
  var supported_track_attr =
 trackObj.prototype = {
+	//eventualy should be something like "seq" per SMIL spec
 	//http://www.w3.org/TR/SMIL3/smil-timing.html#edef-seq
-	//(We don't closely mirror the smil spec at this point)
 	// but we don't really support anywhere near the full concept of seq containers yet either
 	supported_attributes: new Array(
  		'title',

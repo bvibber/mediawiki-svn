@@ -97,7 +97,7 @@ var htmlEmbed ={
 									'</div>'+
 						  	  '</div>' 
 						  	);
-			//scale down the font:		
+			//scale down the fonts:		
 			$j('#' + thumb_render_id + ' *').filter('span,div,p,h,h1,h2,h3,h4,h5,h6').css('font-size',font_perc+'%')
 			
 			//replace out links:
@@ -122,7 +122,7 @@ var htmlEmbed ={
 		return ;
 	},	
 	getEmbedHTML:function(){
-		js_log('f:html:getEmbedHTML');
+		js_log('f:html:getEmbedHTML: ' + this.id);
 		//set up the css for our parent div: 		
 		$j(this).css({'width':this.pc.pp.width, 'height':this.pc.pp.height, 'overflow':"hidden"});
 		//@@todo support more smil animation layout stuff: 
@@ -138,7 +138,7 @@ var htmlEmbed ={
 		}else{
 			out = this.pc.wholeText;
 		}
-		js_log('f:getThumbnailHTML: got thumb: '+out);
+		//js_log('f:getThumbnailHTML: got thumb: '+out);
 		return out;
 	},
 	doThumbnailHTML:function(){
