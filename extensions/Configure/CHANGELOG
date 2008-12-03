@@ -5,6 +5,8 @@ Localisation updates are done on betawiki and aren't listed here.
   * JavaScript-based setting search in Special:Configure, Special:Extensions
     and Special:ViewConfig
   * Hidden settings now have a summary
+  * Added a search box at the top Special:ViewConfig to display versions for a
+    specific wiki
 
 0.10.12 - 2 December 2008
   * Fix a problem of duplicate files with the same timestamp if two users save

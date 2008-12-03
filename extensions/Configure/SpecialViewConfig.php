@@ -44,7 +44,6 @@ class SpecialViewConfig extends ConfigurationPage {
 				}
 
 				$this->version = $version;
-				$this->wiki = $wiki;
 
 				if ( $diff = $wgRequest->getVal( 'diff' ) ) {
 					if ( !in_array( $diff, $versions ) && $diff != 'default' ) {
@@ -82,7 +81,7 @@ class SpecialViewConfig extends ConfigurationPage {
 	 */
 	protected function showDiff() {
 		global $wgOut;
-		$wikis = $this->isUserAllowedAll() ? true : array( $this->wiki );
+		$wikis = $this->isUserAllowedAll() ? true : array( $this->mWiki );
 		$diffEngine = new HistoryConfigurationDiff( $this->diff, $this->version, $wikis );
 		$diffEngine->setViewCallback( array( $this, 'userCanRead' ) );
 		$wgOut->addHTML( $diffEngine->getHTML() );
@@ -117,16 +116,19 @@ class SpecialViewConfig extends ConfigurationPage {
 
 	/**
 	 * Build links to old version of the configuration
-	 *
 	 */
 	protected function buildOldVersionSelect() {
-		global $wgConf, $wgLang, $wgUser, $wgScript;
+		global $wgConf, $wgLang, $wgUser, $wgRequest, $wgScript;
 		if ( !$this->isWebConfig )
 			return '';
 
 		$self = $this->getTitle();
 		$pager = $wgConf->getPager();
 		$pager->setFormatCallback( array( $this, 'formatVersionRow' ) );
+
+		$wiki = $this->isUserAllowedInterwiki() && $wgRequest->getVal( 'view', 'all' ) == 'all' ? false : $this->mWiki;
+		$pager->setWiki( $wiki );
+
 		$showDiff = $pager->getNumRows() > 1;
 
 		$formatConf = array(
@@ -150,6 +152,8 @@ class SpecialViewConfig extends ConfigurationPage {
 		$this->formatConf = $formatConf;
 
 		$text = wfMsgExt( 'configure-old-versions', array( 'parse' ) );
+		if( $this->isUserAllowedInterwiki() )
+			$text .= $this->getWikiSelectForm();
 		$text .= $pager->getNavigationBar();
 		if ( $showDiff ) {
 			$text .= Xml::openElement( 'form', array( 'action' => $wgScript ) ) . "\n" .
@@ -256,6 +260,31 @@ class SpecialViewConfig extends ConfigurationPage {
 		
 		$action = implode( ', ', $actions );
 		return Xml::tags( 'li', null, wfMsgExt( 'configure-viewconfig-line', array( 'parseinline', 'replaceafter' ), array( $buttons, $time, $userLink, $action, $comment ) ) )."\n";
+	}
+
+	/**
+	 * Get a form to select the wiki to configure
+	 */
+	protected function getWikiSelectForm() {
+		global $wgConfigureWikis, $wgScript, $wgRequest;
+		if ( $wgConfigureWikis === false || !$this->isUserAllowedInterwiki() )
+			return '';
+		$form = '<fieldset><legend>' . wfMsgHtml( 'configure-select-wiki' ) . '</legend>';
+		$form .= wfMsgExt( 'configure-select-wiki-view-desc', array( 'parse' ) );
+		$form .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
+		$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
+		if ( is_array( $wgConfigureWikis ) ) {
+			$form .= wfMsgExt( 'configure-select-wiki-available',
+				array( 'parse' ), implode( ', ', $wgConfigureWikis ) );
+		}
+		$all = ( $wgRequest->getVal( 'view', 'all' ) == 'all' );
+		$form .= Xml::radioLabel( wfMsg( 'configure-select-wiki-view-all' ), 'view', 'all', 'wiki-all', $all );
+		$form .= "<br />\n";
+		$form .= Xml::radioLabel( wfMsg( 'configure-select-wiki-view-specific' ), 'view', 'specific', 'wiki-specific', !$all ) . ' ';
+		$form .= Xml::input( 'wiki', false, $this->mWiki ) . "<br />\n";
+		$form .= Xml::submitButton( wfMsg( 'configure-select-wiki-submit' ) );
+		$form .= '</form></fieldset>';
+		return $form;
 	}
 
 	/**

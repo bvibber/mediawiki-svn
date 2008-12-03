@@ -7,14 +7,25 @@
  * @author Alexandre Emsenhuber
  */
 class ConfigurationPagerFiles implements Pager {
-	protected $mHandler, $mCallback;
+	protected $mHandler, $mCallback, $mWiki = false;
 
 	function __construct( ConfigureHandler $handler ) {
 		$this->mHandler = $handler;
 	}
 
+	function setWiki( $wiki ) {
+		$this->mWiki = $wiki;
+	}
+
+	function getVersionOptions() {
+		$ret = array();
+		if( $this->mWiki )
+			$ret['wiki'] = $this->mWiki;
+		return $ret;	
+	}
+
 	function getBody() {
-		$versions = $this->mHandler->getArchiveVersions();
+		$versions = $this->mHandler->getArchiveVersions( $this->getVersionOptions() );
 		if ( empty( $versions ) ) {
 			return wfMsgExt( 'configure-no-old', array( 'parse' ) );
 		}
@@ -39,10 +50,14 @@ class ConfigurationPagerFiles implements Pager {
 	}
 
 	function getNumRows() {
-		return count( $this->mHandler->listArchiveVersions() );
+		return count( $this->mHandler->listArchiveVersions( $this->getVersionOptions() ) );
 	}
 
 	function getNavigationBar() {
+		return '';
+	}
+
+	function getSearchForm() {
 		return '';
 	}
 

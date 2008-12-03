@@ -8,7 +8,7 @@
  * @author Alexandre Emsenhuber
  */
 class ConfigurationPagerDb extends ReverseChronologicalPager {
-	protected $mHandler, $mCallback, $mCounter = 0;
+	protected $mHandler, $mCallback, $mCounter = 0, $mWiki = false;
 
 	function __construct( ConfigureHandlerDb $handler ) {
 		parent::__construct();
@@ -16,14 +16,22 @@ class ConfigurationPagerDb extends ReverseChronologicalPager {
 		$this->mDb = $handler->getSlaveDB();
 	}
 
+	function setWiki( $wiki ) {
+		$this->mWiki = $wiki;
+	}
+
 	function getQueryInfo() {
-		$queryInfo = array(
+		$conds = array();
+		if( $this->mWiki ) {
+			$conds['cv_wiki'] = $this->mWiki;
+		}
+
+		return array(
 			'tables'  => array( 'config_version' ),
 			'fields'  => array( '*' ),
-			'conds'   => array(),
+			'conds'   => $conds,
 			'options' => array()
 		);
-		return $queryInfo;
 	}
 
 	function getIndexField() {
