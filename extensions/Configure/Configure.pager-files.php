@@ -6,7 +6,7 @@
  * @ingroup Extensions
  * @author Alexandre Emsenhuber
  */
-class ConfigurationPagerFiles implements Pager {
+class ConfigurationPagerFiles implements ConfigurationPager {
 	protected $mHandler, $mCallback, $mWiki = false;
 
 	function __construct( ConfigureHandler $handler ) {
@@ -54,10 +54,6 @@ class ConfigurationPagerFiles implements Pager {
 	}
 
 	function getNavigationBar() {
-		return '';
-	}
-
-	function getSearchForm() {
 		return '';
 	}
 

@@ -7,7 +7,7 @@
  * @ingroup Extensions
  * @author Alexandre Emsenhuber
  */
-class ConfigurationPagerDb extends ReverseChronologicalPager {
+class ConfigurationPagerDb extends ReverseChronologicalPager implements ConfigurationPager {
 	protected $mHandler, $mCallback, $mCounter = 0, $mWiki = false;
 
 	function __construct( ConfigureHandlerDb $handler ) {

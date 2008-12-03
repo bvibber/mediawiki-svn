@@ -235,6 +235,7 @@ $wgAutoloadClasses['ExtPreviewConfigurationDiff'] = $dir . 'Configure.diff.php';
 $wgAutoloadClasses['HistoryConfigurationDiff'] = $dir . 'Configure.diff.php';
 
 # Pager stuff
+$wgAutoloadClasses['ConfigurationPager'] = $dir . 'Configure.pager.php';
 $wgAutoloadClasses['ConfigurationPagerDb'] = $dir . 'Configure.pager-db.php';
 $wgAutoloadClasses['ConfigurationPagerFiles'] = $dir . 'Configure.pager-files.php';
 
