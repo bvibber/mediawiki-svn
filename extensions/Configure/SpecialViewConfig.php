@@ -99,6 +99,7 @@ class SpecialViewConfig extends ConfigurationPage {
 				$this->showDiff();
 			} else {
 				$wgOut->addHTML(
+					$this->buildSearchForm() . "\n" .
 					Xml::openElement( 'div', array( 'id' => 'configure-form' ) ) . "\n" .
 					Xml::openElement( 'div', array( 'id' => 'configure' ) ) . "\n" .
 

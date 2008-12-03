@@ -411,7 +411,7 @@ function summariseSetting( div, summary ) {
 			var label = labels[i];
 			var arrayfield = document.getElementById( label.htmlFor );
 			
-			if (arrayfield.value) {
+			if ( arrayfield && arrayfield.value ) {
 				rows = true;
 				
 				tr = document.createElement( 'tr' );

@@ -2,7 +2,8 @@ This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
 0.10.13 - 3 December 2008
-  * JavaScript-based setting search in Special:Configure and Special:Extensions
+  * JavaScript-based setting search in Special:Configure, Special:Extensions
+    and Special:ViewConfig
   * Hidden settings now have a summary
 
 0.10.12 - 2 December 2008
