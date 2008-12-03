@@ -318,7 +318,12 @@ function buildSearchIndex() {
 		var fieldset_title = getInnerText( fieldset.getElementsByTagName( 'legend' )[0] );
 		var subsections = getElementsByClassName( fieldset, 'table', 'configure-table' );
 		for( var sid=0;sid<subsections.length;++sid ) {
-			var subsection = subsections[sid].getElementsByTagName( 'tbody' )[0];
+			var subsection;
+			if (subsections[sid].getElementsByTagName( 'tbody' ).length > 0) {
+				subsection = subsections[sid].getElementsByTagName( 'tbody' )[0];
+			} else {
+				subsection = subsections[sid];
+			}
 			var heading = document.getElementById( subsection.parentNode.id.replace( 'config-table', 'config-head' ) );
 			
 			// For each setting...
