@@ -30,8 +30,8 @@ class GoogleAdSense {
 google_ad_client = \"$wgGoogleAdSenseClient\";
 /* $wgGoogleAdSenseID */
 google_ad_slot = \"$wgGoogleAdSenseSlot\";
-google_ad_width = $wgGoogleAdSenseWidth;
-google_ad_height = $wgGoogleAdSenseHeight;
+google_ad_width = ".intval($wgGoogleAdSenseWidth).";
+google_ad_height = ".intval($wgGoogleAdSenseHeight).";
 /* ]]> */
 </script>
 <script type=\"text/javascript\"
