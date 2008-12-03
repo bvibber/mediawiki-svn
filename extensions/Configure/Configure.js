@@ -235,7 +235,7 @@ function setupConfigure(){
 	/** Collapsible big lists */
 	var biglists = getElementsByClassName( configform, '*', 'configure-biglist' );
 	
-	for(  var l = 0; l < biglists.length; l++ ) {
+	for( var l = 0; l < biglists.length; l++ ) {
 		var list = biglists[l];
 		
 		list.id = 'configure-biglist-content-'+l;
@@ -279,18 +279,18 @@ function doSearch( query ) {
 	var results = document.getElementById( 'configure-search-results' );
 	
 	// Empty the existing results
-	while(results.firstChild) {
+	while( results.firstChild ) {
 		results.removeChild(results.firstChild);
 	}
 	
-	if (query == '') {
+	if ( query == '' ) {
 		return;
 	}
 	
 	var isMatch = function(element) { return element.description.indexOf( query ) !== -1; }
-	for( var i=0;i<allSettings.length;++i ) {
+	for( var i=0; i<allSettings.length; ++i ) {
 		var data = allSettings[i];
-		if (isMatch( data )) {
+		if ( isMatch( data ) ) {
 			var a = document.createElement( 'a' );
 			var li = document.createElement( 'li' );
 			
@@ -312,12 +312,12 @@ function buildSearchIndex() {
 	// For each section...
 	var rootElement = document.getElementById( 'configure' );
 	var fieldsets = rootElement.getElementsByTagName( 'fieldset' );
-	for( var fid=0;fid<fieldsets.length;++fid ) {
+	for( var fid=0; fid<fieldsets.length; ++fid ) {
 		// For each subsection...
 		var fieldset = fieldsets[fid];
 		var fieldset_title = getInnerText( fieldset.getElementsByTagName( 'legend' )[0] );
 		var subsections = getElementsByClassName( fieldset, 'table', 'configure-table' );
-		for( var sid=0;sid<subsections.length;++sid ) {
+		for( var sid=0; sid<subsections.length; ++sid ) {
 			var subsection;
 			if (subsections[sid].getElementsByTagName( 'tbody' ).length > 0) {
 				subsection = subsections[sid].getElementsByTagName( 'tbody' )[0];
@@ -328,17 +328,20 @@ function buildSearchIndex() {
 			
 			// For each setting...
 			for( var i=0; i<subsection.childNodes.length;++i ) {
+				
 				var row = subsection.childNodes[i];
-				if ( row.nodeType != row.ELEMENT_NODE || row.tagName != 'TR' ) {
+				if ( row.nodeType != row.ELEMENT_NODE || ( row.tagName != 'tr' && row.tagName != 'TR' ) ) {
 					continue;
 				}
 					
 				var desc_cell = getElementsByClassName( row, 'td', 'configure-left-column' )[0];
-				
-				
+				if( typeof desc_cell == "undefined" ){
+					continue;
+				}
+
 				var description;
 				
-				if (desc_cell.getElementsByTagName( 'p' ).length) { // Ward off comments like "This setting has been customised"
+				if ( desc_cell.getElementsByTagName( 'p' ).length ) { // Ward off comments like "This setting has been customised"
 					description = getInnerText( desc_cell.getElementsByTagName( 'p' )[0] );
 				} else {
 					description = getInnerText( desc_cell );
