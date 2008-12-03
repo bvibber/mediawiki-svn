@@ -22,9 +22,11 @@ class GoogleAdSense {
 		if( $wgUser->isLoggedIn() && $wgGoogleAdSenseAnonOnly ) {
 			return $bar;
 		}
+		if( !$wgGoogleAdSenseSrc ) {
+			return $bar;
+		}
 
 		wfLoadExtensionMessages( 'GoogleAdSense' );
-
 		$bar['googleadsense'] = "<script type=\"text/javascript\">
 /* <![CDATA[ */
 google_ad_client = \"$wgGoogleAdSenseClient\";
