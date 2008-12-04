@@ -238,6 +238,19 @@ class ApiConfigure extends ApiBase {
 						$result->setIndexedTagName( $arr['values'], 'value' );
 						$settingRet['values'][] = $arr;
 					}
+				case 'rate-limits':
+					$settingRet['values'] = array();
+					$result->setIndexedTagName( $settingRet['values'], 'action' );
+					foreach ( $settingVal as $action => $limits ) {
+						$arr = array( 'name' => $action );
+						foreach( $limits as $group => $values ){
+							$count = isset( $values[0] ) ? $values[0] : 0;
+							$period = isset( $values[1] ) ? $values[1] : 0;
+							$arr[] = array( 'name' => $group, 'count' => $values[0], 'period' => $values[1] );
+						}
+						$result->setIndexedTagName( $arr, 'group' );
+						$settingRet['values'][] = $arr;
+					}
 				}
 				break;
 			default:

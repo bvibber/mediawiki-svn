@@ -985,18 +985,18 @@ abstract class ConfigurationPage extends SpecialPage {
 			$text .= '</table>';
 			return $text;
 		}
-		if ($type == 'rate-limits') { ## Some of this is stolen from assoc, since it's an assoc with an assoc.
+		if ( $type == 'rate-limits' ) { ## Some of this is stolen from assoc, since it's an assoc with an assoc.
 			$keydesc = wfMsgExt( "configure-setting-$conf-key", 'parseinline' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
 			
-			if (wfEmptyMsg( "configure-setting-$conf-key", $keydesc ))
+			if ( wfEmptyMsg( "configure-setting-$conf-key", $keydesc ) )
 				$keydesc = wfMsgHtml( 'configure-desc-key' );
-			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
+			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
 				
-			$classes = array('configure-array-table', 'configure-rate-limits');
+			$classes = array( 'configure-array-table', 'configure-rate-limits' );
 
-			if (!$allowed)
+			if ( !$allowed )
 				$classes[] = 'disabled';
 			
 			$rows = Xml::tags( 'tr', null, Xml::tags( 'th', null, $keydesc ) . " " . Xml::tags( 'th', null, $valdesc ) )."\n";
@@ -1007,26 +1007,26 @@ abstract class ConfigurationPage extends SpecialPage {
 			
 			foreach( $validActions as $action ) {
 				$val = array();
-				if (@isset($default[$action]))
+				if ( isset( $default[$action] ) )
 					$val = $default[$action];
 				
 				$key = Xml::tags( 'td', null, wfMsgExt( "configure-throttle-action-$action", 'parseinline' ) );
 				
 				## Build YET ANOTHER ASSOC TABLE ARGH!
-				$innerRows = Xml::tags( 'tr', null, Xml::tags( 'th', null, wfMsgExt( 'configure-throttle-group', 'parseinline' ) ) . " " . Xml::tags( 'th', null, wfMsgExt( 'configure-throttle-limit', 'parseinline' ) ) )."\n";
+				$innerRows = Xml::tags( 'tr', null, Xml::tags( 'th', null, wfMsgExt( 'configure-throttle-group', 'parseinline' ) ) . ' ' . Xml::tags( 'th', null, wfMsgExt( 'configure-throttle-limit', 'parseinline' ) ) )."\n";
 				foreach( $validGroups as $type ) {
 					$limits = null;
-					if (@isset($default[$action][$type]))
+					if ( isset( $default[$action][$type] ) )
 						$limits = $default[$action][$type];
-					if (is_array($limits) && count($limits) == 2)
-						list($count, $period) = $limits;
+					if ( is_array( $limits ) && count( $limits ) == 2 )
+						list( $count, $period ) = $limits;
 					else
 						$count = $period = 0;
 					
 					$id = 'wp'.$conf.'-key-'.$action.'-'.$type;
 					$left_col = Xml::tags( 'td', null, wfMsgExt( "configure-throttle-group-$type", 'parseinline' ) );
 					
-					if ($allowed) {
+					if ( $allowed ) {
 						$right_col = Xml::inputLabel( wfMsg( 'configure-throttle-count' ), "$id-count", "$id-count", 15, $count ) . ' <br /> ' .
 							Xml::inputLabel( wfMsg( 'configure-throttle-period' ), "$id-period", "$id-period", 15, $period );
 					} else {
@@ -1036,7 +1036,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					}
 					$right_col = Xml::tags( 'td', null, $right_col );
 					
-					$innerRows .= Xml::tags( 'tr', array( 'id' => $id), $left_col . $right_col ) . "\n";
+					$innerRows .= Xml::tags( 'tr', array( 'id' => $id ), $left_col . $right_col ) . "\n";
 				}
 				
 				$value = Xml::tags( 'td', null, Xml::tags( 'table', array( 'class' => 'configure-biglist configure-rate-limits-action' ), Xml::tags( 'tbody', null, $innerRows ) ) );
