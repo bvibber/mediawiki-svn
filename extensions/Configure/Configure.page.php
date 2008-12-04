@@ -1037,9 +1037,6 @@ abstract class ConfigurationPage extends SpecialPage {
 				$rows .= Xml::tags( 'tr', null, $key.$value )."\n";
 			}
 			
-// 			header( 'Content-Type: text/plain' );
-// 			die( $rows );
-			
 			return Xml::tags( 'table', array( 'class' => implode( ' ', $classes ) ), Xml::tags( 'tbody', null, $rows ) );
 		}
 		if ( $type == 'simple-dual' ) {
