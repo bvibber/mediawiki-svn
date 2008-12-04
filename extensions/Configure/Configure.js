@@ -45,13 +45,18 @@ function setupConfigure(){
 			if (i === 0) {
 				li.className = 'selected';
 			}
+			
+			var headers = children[i].getElementsByTagName( 'h2' );
+			var tables = getElementsByClassName( children[i], 'table', 'configure-table' );
 
-			var a = document.createElement('a');
-			a.onmousedown = a.onclick = configTocToggleElement;
-			a.tocId = i;
-			a.collapsed = true;
-			a.appendChild( document.createTextNode( '[+]' ) );
-			li.appendChild(a);
+			if (headers.length > 1 && headers.length == tables.length) {
+				var a = document.createElement('a');
+				a.onmousedown = a.onclick = configTocToggleElement;
+				a.tocId = i;
+				a.collapsed = true;
+				a.appendChild( document.createTextNode( '[+]' ) );
+				li.appendChild(a);
+			}
 
 			var a = document.createElement('a');
 			a.href = '#' + children[i].id;
@@ -65,9 +70,7 @@ function setupConfigure(){
 			a.appendChild( document.createTextNode( legend ) );
 			li.appendChild(a);
 
-			var headers = children[i].getElementsByTagName( 'h2' );
-			var tables = getElementsByClassName( children[i], 'table', 'configure-table' );
-			if( headers.length == tables.length ){
+			if( headers.length == tables.length && headers.length > 1 ){
 				var len = headers.length;
 				toc.subLen[i] = len;
 				var span = document.createElement( 'span' );
