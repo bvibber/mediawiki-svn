@@ -48,6 +48,7 @@ function wfLinkOpenIDViewHeader($article)
 			if ( $openid != '' ) {
 				$v1url = $user->getOption('wflinkopenid_v1url');
 				$v2url = $user->getOption('wflinkopenid_v2url');
+				$xrdsurl = $user->getOption('wflinkopenid_xrdsurl');
 
 				if ( $v1url != '' ) {
 					$wgOut->addLink( array('rel' => 'openid.server', 'href' => $v1url) );
@@ -58,6 +59,9 @@ function wfLinkOpenIDViewHeader($article)
 					$wgOut->addLink( array('rel' => 'openid2.provider', 'href' => $v2url) );
 					$wgOut->addLink( array('rel' => 'openid2.local_id', 'href' => $openid) );
 				}
+
+				if ( $xrdsurl != '' )
+					$wgOut->addMeta('X-XRDS-Location', $xrdsurl);
 			}
 		}
 	}
@@ -70,6 +74,7 @@ function wfLinkOpenIDInitPrefs($prefs, $request) {
 	$prefs->wfLinkOpenID['openid'] = $request->getVal('wflinkopenid_openid');
 	$prefs->wfLinkOpenID['v1url'] = $request->getVal('wflinkopenid_v1url');
 	$prefs->wfLinkOpenID['v2url'] = $request->getVal('wflinkopenid_v2url');
+	$prefs->wfLinkOpenID['xrdsurl'] = $request->getVal('wflinkopenid_xrdsurl');
 	return TRUE;
 }
 
@@ -96,6 +101,11 @@ function wfLinkOpenIDRenderPrefs($prefs, $out) {
 			"<tr><td>" . wfMsgHtml( 'linkopenid-prefstext-v2url' ) . "</td><td>" .
 			"<input type='text' name='wflinkopenid_v2url' size='60' value='" .
 			htmlentities($prefs->wfLinkOpenID['v2url']) . "'></td></tr>" .
+
+			"<tr><td>" . wfMsgHtml( 'linkopenid-prefstext-xrdsurl' ) . "</td><td>" .
+			"<input type='text' name='wflinkopenid_xrdsurl' size='60' value='" .
+			htmlentities($prefs->wfLinkOpenID['xrdsurl']) . "'></td></tr>" .
+
 		"</table></fieldset>"
 	);
 
@@ -106,6 +116,7 @@ function wfLinkOpenIDSavePrefs($form, $user, &$message) {
 	$user->setOption('wflinkopenid_openid', $form->wfLinkOpenID['openid'] );
 	$user->setOption('wflinkopenid_v1url', $form->wfLinkOpenID['v1url'] );
 	$user->setOption('wflinkopenid_v2url', $form->wfLinkOpenID['v2url'] );
+	$user->setOption('wflinkopenid_xrdsurl', $form->wfLinkOpenID['xrdsurl'] );
 	return TRUE;
 }
 
@@ -114,5 +125,6 @@ function wfLinkOpenIDResetPrefs($prefs, $user) {
 	$prefs->wfLinkOpenID['openid'] = $user->getOption('wflinkopenid_openid');
 	$prefs->wfLinkOpenID['v1url'] = $user->getOption('wflinkopenid_v1url');
 	$prefs->wfLinkOpenID['v2url'] = $user->getOption('wflinkopenid_v2url');
+	$prefs->wfLinkOpenID['xrdsurl'] = $user->getOption('wflinkopenid_xrdsurl');
 	return TRUE;
 }

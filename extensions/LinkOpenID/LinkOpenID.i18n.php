@@ -22,7 +22,8 @@ $messages['en'] = array(
 This allows you to use your userpage as an OpenID as well.',
 	'linkopenid-prefstext-openid' => 'Your OpenID:',
 	'linkopenid-prefstext-v1url' => 'Server-URL for OpenID Version 1.1:',
-	'linkopenid-prefstext-v2url' => 'Server-URL for OpenID Version 2:'
+	'linkopenid-prefstext-v2url' => 'Server-URL for OpenID Version 2:',
+	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:', # Only translate this if needed.
 );
 
 /** German
@@ -38,5 +39,5 @@ $messages['de'] = array(
 Dies ermöglicht Ihnen die alternative Nutzung Ihrer Benutzerseite als OpenID.',
 	'linkopenid-prefstext-openid' => 'Ihre OpenID:',
 	'linkopenid-prefstext-v1url' => 'Server-URL für OpenID Version 1.1:',
-	'linkopenid-prefstext-v2url' => 'Server-URL für OpenID Version 2:'
+	'linkopenid-prefstext-v2url' => 'Server-URL für OpenID Version 2:',
 );
