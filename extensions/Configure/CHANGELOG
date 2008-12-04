@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.10.14 - 4 December 2008
+  * Added support for $wgRateLimits
+  * Don't show [+] for sections in TOC with only one subsection
+
 0.10.13 - 3 December 2008
   * JavaScript-based setting search in Special:Configure, Special:Extensions
     and Special:ViewConfig
