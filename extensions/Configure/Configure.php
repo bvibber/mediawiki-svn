@@ -147,7 +147,7 @@ $wgConfigureUpdateCacheEpoch = false;
 /**
  * Styles versions, you shouldn't change it
  */
-$wgConfigureStyleVersion = '15';
+$wgConfigureStyleVersion = '16';
 
 # Adding new rights...
 $wgAvailableRights[] = 'configure';

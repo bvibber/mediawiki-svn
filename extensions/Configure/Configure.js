@@ -110,8 +110,8 @@ function setupConfigure(){
 	toggleToc.onmousedown = toggleToc.onclick = configTocToggle;
 	toggleToc.appendChild( getArrowImg( 'l' ) );
 
-	var par = configform.parentNode;
 	var table = document.createElement( 'table' );
+	var tbody = document.createElement( 'tbody' );
 	var tr = document.createElement( 'tr' );
 	var tdToc = document.createElement( 'td' );
 	var tdForm = document.createElement( 'td' );
@@ -122,8 +122,9 @@ function setupConfigure(){
 	tdForm.className = 'config-col-form';
 	tr.appendChild( tdToc );
 	tr.appendChild( tdForm );
-	table.appendChild( tr );
-	par.appendChild( table );
+	tbody.appendChild( tr );
+	table.appendChild( tbody );
+	document.getElementById( 'configure-form' ).appendChild( table );
 
 	// Associative tables
 	// ------------------
