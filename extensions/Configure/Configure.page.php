@@ -323,7 +323,8 @@ abstract class ConfigurationPage extends SpecialPage {
 					if ( $this->canBeMerged( $name, $value ) ) {
 						if ( is_null( $current ) )
 							$current = $wgConf->getCurrent( $this->mWiki );
-						$this->conf[$name] += $current[$name];
+						if( isset( $current[$name] ) && is_array( $current[$name] ) )
+							$this->conf[$name] += $current[$name];
 					}
 				}
 				$wgOut->addWikiMsg( 'configure-edit-old', $wgLang->timeAndDate( $version ) );
