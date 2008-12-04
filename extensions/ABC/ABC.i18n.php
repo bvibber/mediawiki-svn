@@ -87,6 +87,14 @@ $messages['fr'] = array(
 	'abcdownload' => 'Télécharger :',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'abcdesc' => 'Cuir clib <tt>&lt;abc&gt;</tt> chun ceoil ABC a formáidigh',
+	'abcdownload' => 'íoslódáil:',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -198,8 +206,10 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'abcdesc' => 'Добавляет тег <tt>&lt;abc&gt;</tt> для форматирования музыки ABC',
 	'abcdownload' => 'Загрузить:',
 );
 

@@ -288,7 +288,7 @@ Amenista aber feito $1 {{PLURAL:$1|edizión|edizions}} antes d'o $2 y más de $3
 	'boardvote_listintro' => "<p>Esta ye una lista de toz os botos que s'han rechistrato
 dica agora. $1 ta beyer os datos zifratos.</p>",
 	'boardvote_dumplink' => 'Faiga click aquí',
-	'boardvote_submit' => 'OK',
+	'boardvote_submit' => 'Conforme',
 	'boardvote_strike' => 'Nular',
 	'boardvote_unstrike' => 'Recuperar',
 	'boardvote_needadmin' => "Sólo os Almenistradors d'a Elezión puede fer ista operazión.",
@@ -1019,6 +1019,8 @@ Kao rezultat šifriranja slijedi zaštićena verzija. Ona će biti [[Special:Boa
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Nazad]]',
+	'boardvote_invalidentered' => '<p><strong>Greška</strong>: preference kandidata se moraju izraziti samo sa pozitivnim cijelim brojevima (1, 2, 3, ....), ili
+ostaviti prazno.</p>',
 	'boardvote_novotes' => 'Niko još nije glasao.',
 	'boardvote_time' => 'Vrijeme',
 	'boardvote_user' => 'Korisnik',
@@ -1037,6 +1039,8 @@ Glasanje otvoreno do 22. juna',
 	'boardvote_closed' => 'Glasanje je završeno, pogledajte uskoro [http://meta.wikimedia.org/wiki/Board_elections/2008/Results stranicu o rezultatima glasanja].',
 	'boardvote_edits_many' => 'mnogi',
 	'group-boardvote' => 'Administratori glasanja za odbor',
+	'group-boardvote-member' => 'administrator glasanja za odbor',
+	'grouppage-boardvote' => '{{ns:project}}:Administratori glasanja za odbor',
 	'boardvote_blocked' => 'Vi ste blokirani na Vašoj matičnoj wiki.
 Blokirani korisnici ne mogu glasati.',
 	'boardvote_bot' => 'Na Vašem matičnom wikiju ste registrovani kao bot.
@@ -4219,7 +4223,7 @@ Rekod tersebut disulitkan menggunakan kunci awam Pentadbir Pilihan Raya:
 
 <pre>$2</pre>
 
-Berikut ialah data yang telah disulitkan. Data ini akan [[Special:Boardvote/dump|ditunjukkan kepada orang ramai]].
+Yang berikut ialah data yang telah disulitkan. Data ini akan [[Special:Boardvote/dump|ditunjukkan kepada orang ramai]].
 
 <pre>$3</pre>
 
@@ -5720,10 +5724,10 @@ Vérsi nu kaénkripsi aya di handap. Éta hasil baris [[Special:Boardvote/dump|d
 Sumangga asup log ka wiki di mana Anjeun nyumponan sarat pikeun milih, saterusna indit ka halaman <nowiki>[[Special:Boardvote]]</nowiki>.
 
 Anjeun kudu ngagunakeun rekening kalawan kontribusi saeutikna $1 saméméh $2, sarta geus ngabogaan saeutikna $3 kontribusi antara $4 sarta $5.',
-	'boardvote_notloggedin' => 'Anjeun can asup log.
-Pikeun nyoara, anjeun kudu maké rekening nu sahanteuna geus boga $1 kontribusi saméméh $2, sahanteuna boga $3 kontibusi antara $4 jeung $5.',
-	'boardvote_notqualified' => 'Anjeun teu nedunan sarat pikeun ngilu milih.
-Anjeun kudu grus boga minimal $1 éditan saméméh $2, jeung boga minimal $3 kontibusi antara $4 jeung $5.',
+	'boardvote_notloggedin' => 'Anjeun can asup log.<br>
+Pikeun nyoara, anjeun kudu maké rekening nu sahanteuna geus boga $1 kontribusi saméméh $2, jeung sahanteuna boga $3 kontibusi antara $4 jeung $5.',
+	'boardvote_notqualified' => 'Anjeun teu nedunan sarat pikeun ngilu milih.<br>
+Sahanteuna Anjeun kudu geus boga $1 éditan saméméh $2, sarta boga $3 kontibusi antara $4 jeung $5.',
 	'boardvote_novotes' => 'Acan aya pamilih.',
 	'boardvote_time' => 'Wanci',
 	'boardvote_user' => 'Pamaké',

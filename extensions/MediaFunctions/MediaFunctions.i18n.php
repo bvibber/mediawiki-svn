@@ -129,8 +129,11 @@ $messages['hr'] = array(
 	'mediafunctions-not-exist' => '"$1" ne postoji',
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
+	'mediafunctions-desc' => 'Analyzowanske funkcije za nabywanje informacijow wo medijowych datajach',
 	'mediafunctions-invalid-title' => '"$1" płaćiwe mjeno njeje.',
 	'mediafunctions-not-exist' => '"$1" njeeksistuje',
 );
@@ -271,8 +274,10 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'mediafunctions-desc' => 'Funções do analisador (parser) para obter informação sobre ficheiros de mídia.',
 	'mediafunctions-invalid-title' => '"$1" não é um título válido',
 	'mediafunctions-not-exist' => '"$1" não existe',
 );

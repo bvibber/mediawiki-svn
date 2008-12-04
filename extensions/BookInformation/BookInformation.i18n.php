@@ -219,8 +219,11 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'bookinfo-header' => 'Informacije o knjizi',
 	'bookinfo-result-title' => 'Naslov:',
 	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-publisher' => 'Izdavač:',
+	'bookinfo-result-year' => 'Godina:',
 );
 
 /** Catalan (Català)

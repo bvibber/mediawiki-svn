@@ -71,6 +71,15 @@ $messages['gl'] = array(
 	'authors_anonymous' => 'Anónimos',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'authors-desc' => 'הוספת רשימת תורמים לדפים',
+	'authors_authors' => 'מחברים',
+	'authors_anonymous' => 'אנונימי',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -96,6 +105,15 @@ $messages['nl'] = array(
 	'authors-desc' => "Voegt een lijst auteurs toe aan pagina's",
 	'authors_authors' => 'Auteurs',
 	'authors_anonymous' => 'Anoniem',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'authors-desc' => 'Apondre a las paginas una lista dels contributors',
+	'authors_authors' => 'Autors',
+	'authors_anonymous' => 'Anomin',
 );
 
 /** Russian (Русский)

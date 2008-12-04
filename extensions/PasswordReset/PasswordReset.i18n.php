@@ -392,6 +392,7 @@ $messages['hsb'] = array(
 	'passwordreset-accountdisabled' => 'Konto bu znjemóžnjene',
 	'disabledusers' => 'Znjemóžnene wužiwarske konta',
 	'disabledusers-summary' => 'To je lisćina wužiwarskich kontow, kotrež buchu přez PasswordReset znjemóžnjene.',
+	'right-passwordreset' => 'Hesło wužiwarskeje ([[Special:PasswordReset|specialneje strony]]) wróćo stajić',
 );
 
 /** Hungarian (Magyar)
@@ -721,9 +722,9 @@ $messages['oc'] = array(
 	'passwordreset-emptyusername' => "Nom d'utilizaire void",
 	'passwordreset-nopassmatch' => "Los senhals qu'avètz picats son pas identics.",
 	'passwordreset-badtoken' => 'Geton de modificacion desconegut',
-	'passwordreset-username' => "Nom d'utilizaire",
-	'passwordreset-newpass' => 'Senhal novèl',
-	'passwordreset-confirmpass' => 'Confirmatz lo senhal',
+	'passwordreset-username' => "Nom d'utilizaire :",
+	'passwordreset-newpass' => 'Senhal novèl :',
+	'passwordreset-confirmpass' => 'Confirmatz lo senhal :',
 	'passwordreset-submit' => 'Remesa a zèro del senhal',
 	'passwordreset-success' => "Lo senhal es estat remés a zèro per lo ''user_id'' $1.",
 	'passwordreset-disableuser' => "Desactivar lo compte d'utilizaire ?",

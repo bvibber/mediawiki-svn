@@ -1380,6 +1380,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'crosswikiblock-desc' => 'Permite bloquear utilizadores noutros wikis usando uma [[Special:Crosswikiblock|página especial]]',
@@ -1412,6 +1413,7 @@ Regressar a:
 	'crosswikiblock-nouser' => 'O utilizador "$3" não foi encontrado.',
 	'crosswikiblock-noexpiry' => 'Expiração inválida: $1.',
 	'crosswikiblock-noreason' => 'Nenhum motivo especificado.',
+	'crosswikiblock-notoken' => 'Identificador de edição inválido.',
 	'crosswikiblock-alreadyblocked' => 'O utilizador $3 já está bloqueado.',
 	'crosswikiblock-noblock' => 'Este utilizador não está bloqueado.',
 	'crosswikiblock-success' => "Utilizador '''$3''' bloqueado com sucesso.

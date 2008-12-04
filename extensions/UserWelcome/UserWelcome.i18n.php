@@ -545,3 +545,21 @@ $messages['vi'] = array(
 	'mp-request-new-friend' => '$1 người bạn mới',
 );
 
+/** Wolof (Wolof)
+ * @author Ibou
+ */
+$messages['wo'] = array(
+	'mp-userlevels-link' => 'Tolluwaayu jëfandikukat bi',
+	'mp-welcome-upload' => 'Yeb',
+	'mp-welcome-edit' => 'Soppi',
+	'mp-welcome-points' => '$1 tomb',
+	'mp-welcome-logged-in' => 'Dalal-jámm $1',
+	'mp-requests-title' => 'Cakkuteef',
+	'mp-requests-message' => 'Yaa moom yii cakkuteef.',
+	'mp-request-new-message' => 'Bataaxal bu bees',
+	'mp-request-new-award' => '$1 neexal {{PLURAL:$1|bu bees|yu yees}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|ndimbal bu bees|ndimbal yu yees}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|noon bu bees|noon yu yees}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|xarit bu bees|xarit yu yees}}',
+);
+

@@ -166,6 +166,13 @@ $messages['pl'] = array(
 	'tooltip-desc' => 'Dodaje znaczniki <tt><nowiki><tooltip></nowiki></tt> i <tt><nowiki>{{#tooltip:}}</nowiki></tt>.',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'tooltip-desc' => 'Acrescenta as tags <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

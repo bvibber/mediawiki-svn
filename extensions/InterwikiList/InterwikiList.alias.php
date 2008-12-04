@@ -125,3 +125,8 @@ $aliases['sv'] = array(
 	'InterwikiList' => array( 'Interwikilista' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'InterwikiList' => array( 'OrodhayaInterwiki' ),
+);
+

@@ -92,6 +92,13 @@ $messages['gl'] = array(
 	'metakeywords-desc' => 'Permite a configuración de <tt><nowiki><meta "keywords"></nowiki></tt> e mais de etiquetas <tt><nowiki><meta "description"></nowiki></tt> por espazo de nomes',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'metakeywords-desc' => 'Dowola konfiguraciju tafličkow <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> na mjenowy rum',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -150,6 +157,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'metakeywords-desc' => 'Permet la configuracion de las balisas <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> per espaci de nom',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'metakeywords-desc' => 'Permite a configuração de tags <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> por domínio',
 );
 
 /** Slovak (Slovenčina)

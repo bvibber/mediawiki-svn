@@ -69,6 +69,7 @@ Releasing this information can result in permanent loss of Oversight privileges.
 );
 
 /** Message documentation (Message documentation)
+ * @author Aotake
  * @author Darth Kule
  * @author Jon Harald Søby
  * @author Meno25
@@ -80,6 +81,8 @@ $messages['qqq'] = array(
 {{Identical|Oversight}}',
 	'right-oversight' => '{{doc-right}}',
 	'right-hiderevision' => '{{doc-right}}',
+	'hiderevision-error-current' => '{{Identical|Delete}}
+{{Identical|Revert}}',
 	'oversight' => 'Oversight extension. The name of the page [[Special:Oversight]], used in the list of special pages and at the top of Special:Oversight.
 
 {{Identical|Oversight}}',
@@ -1143,6 +1146,7 @@ $messages['hsb'] = array(
 	'group-oversight' => 'Dohladowarjo',
 	'group-oversight-member' => 'Dohladowanje',
 	'grouppage-oversight' => '{{ns:project}}:Dohladowanje',
+	'right-oversight' => 'Prjedy schowanu wersiju wobhladać',
 	'right-hiderevision' => 'Wersije, kotrež su před administratorami schowane, přepruwować a wobnowić',
 	'hiderevision-prompt' => 'Wersijowe čisło, kotrež ma so wotstronić:',
 	'hiderevision-continue' => 'Dale',
@@ -1156,6 +1160,7 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 	'hiderevision-reason' => 'Přičina (protokoluje so skradźu)',
 	'hiderevision-submit' => 'Tute daty na stajnje schować',
 	'hiderevision-tab' => 'Wersiju schować',
+	'hiderevision-link' => 'Schowane wužiwarske přinoški',
 	'hiderevision-norevisions' => 'Žane wersije za wušmórnjenje podate.',
 	'hiderevision-noreason' => 'Dyrbiš přičinu za wotstronjenje podać.',
 	'hiderevision-status' => 'Wersija $1: $2',
@@ -1174,6 +1179,9 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 	'oversight-prev' => 'Poslednja předchadna wersija',
 	'oversight-hidden' => 'Schowana wersija',
 	'oversight-header' => 'Slěduje lisćina wersijow na stajnje schowanych za zjawnosć. Wozjewjenje tutych informacijow móže k stajnemu zhubjenju prawow za Oversight wjesć.',
+	'oversight-legend' => 'Protokol za schowanje wersijow přepytać',
+	'oversight-oversighter' => 'Dohladowar:',
+	'oversight-offender' => 'Njedušnik:',
 );
 
 /** Hungarian (Magyar)
@@ -1246,6 +1254,7 @@ Le entratas delite non essera visibile a alcuno via le sito web, ma le deletione
 	'hiderevision-reason' => 'Motivo (essera registrate privatemente):',
 	'hiderevision-submit' => 'Celar iste datos permanentemente',
 	'hiderevision-tab' => 'Celar revision',
+	'hiderevision-link' => 'Contributiones celate de usatores',
 	'hiderevision-norevisions' => 'Nulle revisiones specificate a deler.',
 	'hiderevision-noreason' => 'Tu debe indicar le motivo de iste deletion.',
 	'hiderevision-status' => 'Revision $1: $2',
@@ -1980,7 +1989,7 @@ Item-item yang telah dibuang tidak boleh dilihat oleh sesiapa melalui tapak web 
 	'oversight-difference' => '(Perbezaan dengan semakan sebelumnya)',
 	'oversight-prev' => 'Semakan sebelumnya',
 	'oversight-hidden' => 'Semakan rahsia',
-	'oversight-header' => 'Berikut ialah senarai terkini bagi semakan yang dirahsiakan daripada pandangan orang ramai.
+	'oversight-header' => 'Yang berikut ialah senarai terkini bagi semakan yang dirahsiakan daripada pandangan orang ramai.
 Pendedahan maklumat ini boleh mengakibatkan jawatan pengawal ditarik balik.',
 	'oversight-legend' => 'Cari dalam log penyembunyian semakan',
 	'oversight-oversighter' => 'Penyembunyi:',
@@ -2519,6 +2528,7 @@ administrátorom databázy v prípade, že spravíte chybu.",
 	'hiderevision-reason' => 'Dôvod (bude privátne zaznamenaný):',
 	'hiderevision-submit' => 'Natrvalo skryť tieto údaje',
 	'hiderevision-tab' => 'Skryť revíziu',
+	'hiderevision-link' => 'Skryté príspevky používateľa',
 	'hiderevision-norevisions' => 'Neboli uvedené revízie, ktoré majú byť skryté.',
 	'hiderevision-noreason' => 'Musíte uviesť dôvod odstránenia.',
 	'hiderevision-status' => 'Revízia $1: $2',

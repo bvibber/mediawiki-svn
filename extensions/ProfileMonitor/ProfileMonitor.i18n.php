@@ -49,6 +49,13 @@ $messages['af'] = array(
 	'profiling-data-count' => 'Aantal',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'profiling-ok' => "D'alcuerdo",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -197,6 +204,7 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'profiling' => 'Profilowanske daty',
+	'profiling-desc' => '[[Special:Profiling|Specialna strona]] za pytanje a dohladowanje profilowych datow',
 	'profiling-process' => 'Znamjenjowy slěd předźěłać:',
 	'profiling-wildcard' => 'Zastupowacy symbol wužiwać',
 	'profiling-ok' => 'W porjadku',

@@ -70,6 +70,13 @@ $messages['oc'] = array(
 	'mootools12core-desc' => 'Apondre mootools-1.2-core-yc.js a cada pagina',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'mootools12core-desc' => 'Adiciona mootools-1.2-core-yc.js a todas as páginas',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

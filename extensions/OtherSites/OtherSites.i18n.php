@@ -91,6 +91,14 @@ $messages['gl'] = array(
 	'othersites-desc' => 'Move as ligazóns interwiki diferentes ás ligazóns á lingua no seu propio portal',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'othersites' => 'Druhe sydła',
+	'othersites-desc' => 'Přesunje wotkazy interwiki, kotrež rěčne wotkazy njejsu, do swójskeho wobłuka',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

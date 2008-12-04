@@ -165,6 +165,7 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'forcepreview' => 'Stronu składować (wužij najprjedy přehlad)',
 	'forcepreview-desc' => 'Přehlad za njewoprawnjenych wužiwarjow wunuzować',
+	'right-forcepreviewexempt' => 'Bjez zwobraznjenja přehlada składować',
 );
 
 /** Interlingua (Interlingua)
@@ -291,10 +292,12 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'forcepreview' => 'Gravar página (use a previsão primeiro)',
 	'forcepreview-desc' => 'Força previsão para utilizadores sem privilégios',
+	'right-forcepreviewexempt' => 'Pode salvar páginas sem mostrar a previsão antes',
 );
 
 /** Russian (Русский)

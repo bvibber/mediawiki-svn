@@ -387,6 +387,14 @@ $messages['af'] = array(
 	'mv_category' => 'kategorie',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'mv_search_date_range' => 'Rango de calendatas',
+	'mv_date_range' => 'Rango de calendatas',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -1307,6 +1315,7 @@ $messages['fr'] = array(
 	'mv_welcome_to_sequencer' => '<h3>Bienvenu sur la démonstration de séquence</h3>
 fonctionnalité très <b>limitée</b> actuellement. Cliquez sur un clip pour modifier cette ressource.',
 	'mv_resource_locator' => 'Rechercheur de ressource',
+	'mv_unknown_clipboard_action' => 'Action inconnue des presse-papiers',
 	'mv_media_search' => 'Rechercher des médias',
 	'mv_editor_options' => "Options de l'éditeur",
 	'mv_editor_mode' => "Mode de l'éditeur",
@@ -3013,6 +3022,7 @@ Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
 Op dit moment is de functionaliteit <b>beperkt</b>.
 Klik op een clip om deze te bewerken',
 	'mv_resource_locator' => 'Resource locator',
+	'mv_unknown_clipboard_action' => 'Onbekende clipboardhandeling',
 	'mv_media_search' => 'Media Zoeken',
 	'mv_editor_options' => 'Bewerkingsopties',
 	'mv_editor_mode' => 'Bewerkingsmodus',

@@ -102,6 +102,16 @@ $messages['gl'] = array(
 	'searchbox-namespaces' => 'Espazos de nomes:',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'searchbox-desc' => 'Zapřijimanje pytanskich formulaow zmóžnić',
+	'searchbox-search' => 'Pytać',
+	'searchbox-go' => 'W porjadku',
+	'searchbox-namespaces' => 'Mjenowe rumy:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

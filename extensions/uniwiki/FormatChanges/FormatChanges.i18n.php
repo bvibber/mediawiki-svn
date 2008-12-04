@@ -60,6 +60,17 @@ $messages['gl'] = array(
 	'formatchanges-editedby' => 'editado por',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'formatchanges-desc' => 'עיצוב מחדש של [[Special:RecentChanges|השינויים האחרונים]]',
+	'formatchanges-anonymous' => 'אנונימי',
+	'formatchanges-createdby' => 'נוצר על ידי',
+	'formatchanges-editedby' => 'נערך על ידי',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

@@ -28,6 +28,13 @@ $messages['fr'] = array(
 	'csshooks-desc' => 'Ajouter du CSS à la sortie de la page HTML pour un meilleur style',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'csshooks-desc' => 'הוספת CSS לפלט ה־HTML של הדפים למראה טוב יותר',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -47,6 +54,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'csshooks-desc' => 'Legger til CSS til en sides HTML for bedre stil',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'csshooks-desc' => 'Apondre del CSS a la sortida de la pagina HTML per un estil melhor',
 );
 
 /** Russian (Русский)

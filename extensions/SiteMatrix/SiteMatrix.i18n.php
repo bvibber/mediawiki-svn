@@ -997,7 +997,7 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'sitematrix' => 'Senarai wiki Wikimedia',
-	'sitematrix-summary' => 'Berikut ialah senarai wiki yang dikelolakan oleh Wikimedia.',
+	'sitematrix-summary' => 'Yang berikut ialah senarai wiki yang dikelolakan oleh Wikimedia.',
 	'sitematrix-desc' => 'Memaparkan [[Special:SiteMatrix|senarai wiki Wikimedia]]',
 	'sitematrix-language' => 'Bahasa',
 	'sitematrix-project' => 'Nama projek, pautan antara projek dan pautan antara wiki',

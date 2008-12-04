@@ -128,6 +128,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'protectsection_desc' => 'Dowola awtorizowanym wužiwarjam dźěle strony z pomocu taflički <tt>&lt;protect&gt;</tt> škitać',
 	'protectsection_add_remove' => 'Sy spytał škitany wotrězk přidać abo wotstronić.',
 	'protectsection_modify' => 'Sy spytał škitany tekst změnić.',
 	'protectsection_forbidden' => 'Zakazany',

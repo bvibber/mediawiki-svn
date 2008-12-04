@@ -110,6 +110,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'microid-desc' => 'Přidawa [http://www.microid.org/ MicroID] k wužiwarskim stronam, zo by so konto z eksternymi słužbami potwjerdźiło',
 	'tog-microid' => '<a href="http://microid.org/">MicroID</a> publikować, zo by so konto z wonkownymi słužbami potwjerdźiło',
 );
 

@@ -137,6 +137,19 @@ $messages['gl'] = array(
 	'newschannel_submit_button' => 'Crear a fonte de novas',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'newschannel' => 'Powěsćowy kanal',
+	'newschannel-desc' => 'Implementuje powěsćowy kanal jako dynamisku [[Special:NewsChannel|specialnu stronu]]',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Limit:',
+	'newschannel_include_category' => 'Přidatna kategorija:',
+	'newschannel_exclude_category' => 'Kategoriju wuzamknyć:',
+	'newschannel_submit_button' => 'Kanal wutworić',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

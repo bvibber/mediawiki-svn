@@ -25,6 +25,13 @@ $messages['qqq'] = array(
 	'unicodeconverter-ok' => '{{Identical|OK}}',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'unicodeconverter-ok' => "D'alcuerdo",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

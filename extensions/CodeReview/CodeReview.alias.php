@@ -92,5 +92,6 @@ $aliases['pl'] = array(
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Code' => array( 'Kodi', 'Onyesha kodi' ),
+	'RepoAdmin' => array( 'TaarifuMkabidhi' ),
 );
 

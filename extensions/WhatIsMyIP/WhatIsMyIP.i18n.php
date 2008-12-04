@@ -313,9 +313,11 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'whatismyip' => 'Qual o meu IP',
+	'whatismyip-desc' => 'Mostra o endereço IP do utilizador actual em [[Especial:WhatIsMyIP]]',
 	'whatismyip-out' => 'O seu IP:',
 );
 

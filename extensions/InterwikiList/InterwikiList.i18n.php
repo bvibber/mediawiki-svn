@@ -207,6 +207,8 @@ $messages['hsb'] = array(
 	'interwikilist-desc' => 'Přidawa [[Special:Interwikilist|specialnu stronu]], zo bychu so k dispoziciji stejace interwikijowe wotkazy pokazali.',
 	'interwikilist-linkname' => 'Interwikijowy wotkaz',
 	'interwikilist-target' => 'Cilowy URL',
+	'interwikilist-filter' => 'Lisćinu filtrować',
+	'interwikilist-prefix' => 'Prefiks interwiki:',
 );
 
 /** Interlingua (Interlingua)
@@ -239,6 +241,8 @@ $messages['ja'] = array(
 	'interwikilist-desc' => '利用可能なインターウィキリンクを見ることができる[[Special:Interwikilist|特別ページ]]を追加。',
 	'interwikilist-linkname' => 'インターウィキリンク',
 	'interwikilist-target' => 'リンク先のURL',
+	'interwikilist-filter' => 'フィルターリスト',
+	'interwikilist-prefix' => 'インターウィキプレフィックス:',
 );
 
 /** Khmer (ភាសាខ្មែរ)

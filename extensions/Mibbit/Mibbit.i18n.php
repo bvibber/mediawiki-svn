@@ -363,10 +363,15 @@ Użytkownicy anonimowi otrzymują losowy identyfikator, ale mogą go zmienić.',
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'mibbit' => 'Chat Mibbit',
 	'mibbit-desc' => 'Adiciona uma [[Special:Mibbit|página especial]] usada para falar em tempo real com outros utilizadores do wiki',
+	'mibbit-header' => 'Esta página especial permite a colaboração em tempo real com outros utilizadores da wiki.
+Para ligar-se basta carregar no botão "Connect".
+Se estiver logado, o seu nome de usuário será preenchido automaticamente.
+Utilizadores anónimos recebem um nick gerado aleatoriamente, mas este pode ser alterado.',
 	'right-mibbit' => 'Autorizado a usar o chat Mibbit',
 );
 

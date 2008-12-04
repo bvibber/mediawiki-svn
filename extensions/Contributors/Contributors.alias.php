@@ -102,6 +102,11 @@ $aliases['oc'] = array(
 	'Contributors' => array( 'Contributors' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'Contributors' => array( 'Autorzy' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Contributors' => array( 'Wachangiaji' ),

@@ -43,6 +43,25 @@ $messages['bg'] = array(
 	'amazonplus-cp-none' => 'Няма',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'amazonplus-desc' => 'Dobro podešavajuća ekstenzija koja prikazuje informacije sa Amazona',
+	'amazonplus-nores' => 'Greška: Nisu pronađeni rezultati!',
+	'amazonplus-noidres' => 'Greška: Nije pronađen ID proizvoda!',
+	'amazonplus-fgcerr' => 'Greška: Podaci sa Amazona nisu mogli biti dobavljeni!',
+	'amazonplus-slserr' => 'Greška: Podaci sa Amazona nisu mogli biti obrađeni!',
+	'amazonplus-used' => 'polovno',
+	'amazonplus-german' => 'njemački',
+	'amazonplus-french' => 'francuski',
+	'amazonplus-japanese' => 'japanski',
+	'amazonplus-amazon' => 'cijena na Amazonu',
+	'amazonplus-new' => 'novo',
+	'amazonplus-none' => 'Nijedna kopija ovog predmeta nije trenutno na prodaju.',
+	'amazonplus-cp-none' => 'Ništa',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -79,6 +98,31 @@ $messages['fr'] = array(
 	'amazonplus-new' => 'nouveau',
 	'amazonplus-none' => "Aucune copie de cet article n'est disponible à l'achat",
 	'amazonplus-cp-none' => 'Aucun',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'amazonplus-desc' => 'הרחבה הניתנת להתאמה אישית באופן נרחב להצגת מידע מ־Amazon',
+	'amazonplus-nores' => 'שגיאה: לא נמצאו תוצאות!',
+	'amazonplus-noidres' => 'שגיאה: לא ניתן למצוא את מספר הזיהוי של המוצר!',
+	'amazonplus-fgcerr' => 'שגיאה: לא ניתן לאחזר את המידע מ־Amazon!',
+	'amazonplus-slserr' => 'שגיאה: לא ניתן לנתח את המידע מ־Amazon!',
+	'amazonplus-used' => 'משומש',
+	'amazonplus-german' => 'גרמנית',
+	'amazonplus-french' => 'צרפתית',
+	'amazonplus-japanese' => 'יפנית',
+	'amazonplus-amazon' => 'המחיר ב־Amazon',
+	'amazonplus-new' => 'חדש',
+	'amazonplus-none' => 'לא זמינים עותקים למכירה של פריט זה.',
+	'amazonplus-currency' => '$3$1 $2$4',
+	'amazonplus-cp-none' => 'אין',
+	'amazonplus-cp-usd' => 'USD',
+	'amazonplus-cp-cad' => 'CAD',
+	'amazonplus-cp-gbp' => 'GBP',
+	'amazonplus-cp-eur' => 'EUR',
+	'amazonplus-cp-jpy' => 'JPY',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -151,5 +195,51 @@ $messages['oc'] = array(
 	'amazonplus-new' => 'novèl',
 	'amazonplus-none' => "Cap de còpia d'aqueste article es pas disponible per crompar",
 	'amazonplus-cp-none' => 'Cap',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'amazonplus-desc' => 'Настраиваемое расширение для отображения информации с Amazon',
+	'amazonplus-nores' => 'Ошибка. Ничего не найдено!',
+	'amazonplus-noidres' => 'Ошибка. Невозможно найти ID продукции!',
+	'amazonplus-fgcerr' => 'Ошибка. Невозможно получить данные с Amazon!',
+	'amazonplus-slserr' => 'Ошибка. Невозможно разобрать данные с Amazon!',
+	'amazonplus-used' => 'используется',
+	'amazonplus-german' => 'немецкий',
+	'amazonplus-french' => 'французский',
+	'amazonplus-japanese' => 'японский',
+	'amazonplus-amazon' => 'цена с Amazon',
+	'amazonplus-new' => 'новая',
+	'amazonplus-none' => 'Не осталось экземпляров этого товара для продажи.',
+	'amazonplus-cp-none' => 'Нет',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'amazonplus-desc' => 'Podrobne konfigurovateľné rozšírenie na zobrazovanie informácií z Amazon',
+	'amazonplus-nores' => 'Chyba: Neboli nájdené žiadne výsledky!',
+	'amazonplus-noidres' => 'Chyba: Nebol nájdený ID produktu!',
+	'amazonplus-fgcerr' => 'Chyba: Nepodarilo sa získať údaje z Amazonu!',
+	'amazonplus-slserr' => 'Chyba: Nepodarilo sa analyzovať údaje z Amazon!',
+	'amazonplus-used' => 'použité',
+	'amazonplus-german' => 'nemčina',
+	'amazonplus-french' => 'francúzština',
+	'amazonplus-japanese' => 'japončina',
+	'amazonplus-amazon' => 'cena na Amazon',
+	'amazonplus-new' => 'nové',
+	'amazonplus-status' => '($1)',
+	'amazonplus-status-sep' => ',',
+	'amazonplus-none' => 'Nepredávajú sa žiadne kópie tejto položky.',
+	'amazonplus-currency' => '$3$1 $2$4',
+	'amazonplus-cp-none' => 'Žiadne',
+	'amazonplus-cp-usd' => 'USD',
+	'amazonplus-cp-cad' => 'CAD',
+	'amazonplus-cp-gbp' => 'GBP',
+	'amazonplus-cp-eur' => 'EUR',
+	'amazonplus-cp-jpy' => 'JPY',
 );
 

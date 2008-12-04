@@ -206,6 +206,7 @@ $wdMessages['af'] = array(
  */
 $wdMessages['an'] = array(
 	'datasearch' => 'Wikidata: Mirar datos',
+	'ow_dm_OK' => 'OK',
 );
 
 /** Arabic (العربية)
@@ -710,6 +711,9 @@ $wdMessages['br'] = array(
  * @author CERminator
  */
 $wdMessages['bs'] = array(
+	'ow_history' => 'Historija',
+	'ow_none_selected' => 'Ništa nije odabrano',
+	'ow_ClassAttributeType' => 'Vrsta',
 	'ow_Language' => 'Jezik',
 	'ow_OptionAttributeOptions' => 'Opcije',
 	'ow_Source' => 'Izvor',
@@ -2402,6 +2406,7 @@ $wdMessages['lb'] = array(
 	'ow_conceptmapping_no_action_specified' => 'Ëntschëllegt, ech wees net wéi een "$1".',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'net aginn',
+	'ow_will_insert' => 'Dëst drasetzen:',
 	'ow_AlternativeDefinition' => 'Alternativ Definitioun',
 	'ow_AlternativeDefinitions' => 'Alternativ Definitiounen',
 	'ow_Annotation' => 'Notiz',
@@ -4180,6 +4185,9 @@ $wdMessages['tr'] = array(
  * @author Ahonc
  */
 $wdMessages['uk'] = array(
+	'langman_title' => 'Мовний менеджер',
+	'languages' => 'Вікідані: Мовний менеджер',
+	'ow_save' => 'Зберегти',
 	'ow_dm_OK' => 'Гаразд',
 	'ow_Language' => 'Мова',
 );

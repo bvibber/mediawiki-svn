@@ -516,6 +516,7 @@ Bonvolu konsulti [[Special:ListUsers/sysop|administranton]].',
 	'openidemail' => 'Retadreso',
 	'openidlanguage' => 'Lingvo',
 	'openidnotavailable' => 'Via preferata kromnomo ($1) jam estas uzata de alia uzanto.',
+	'openidnotprovided' => 'Via OpenID-a servilo ne provizis kromnomo (ĉar aŭ ĝi ne eblis, aŭ tial vi malpermesigis ĝin).',
 	'openidchooseinstructions' => 'Ĉiuj uzantoj bezonas kromnomo;
 vi povas selekti el unu la jenaj opcioj.',
 	'openidchoosefull' => 'Via plena nomo ($1)',
@@ -1201,6 +1202,21 @@ Esistono molti [http://wiki.openid.net/Public_OpenID_providers Provider OpenID p
 ; [http://openid.yahoo.com/ Yahoo!] : Se possiedi un account con Yahoo!, puoi effettuare il login a questo sito inserendo il tuo OpenID Yahoo! nel box soprastante. Gli URL OpenID Yahoo! hanno la forma ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
 ; [http://dev.aol.com/aol-and-63-million-openids AOL] : Se possiedi un account con [http://www.aol.com/ AOL], come un account [http://www.aim.com/ AIM], puoi effettuare il login a {{SITENAME}} inserendo il tuo OpenID AOL nel box soprastante. Gli URL OpenID AOL hanno la forma ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Il tuo nome utente dovrebbe essere tutto in carattere minuscolo, senza spazi.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Se possiedi un blog su uno di questi siti, inserisci l'URL del blog nel box soprastante. Per esempio, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', or ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+);
+
+/** Japanese (日本語)
+ * @author Fievarsty
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'openidlogin' => 'OpenIDでログイン',
+	'openidserver' => 'OpenID サーバー',
+	'openidconfigerror' => 'OpenID設定エラー',
+	'openidnickname' => 'ニックネーム',
+	'openidemail' => 'Eメールアドレス',
+	'openidlanguage' => '言語',
+	'openidchoosemanual' => '名前を別に設定する:',
+	'openidchoosepassword' => 'パスワード:',
 );
 
 /** Javanese (Basa Jawa)

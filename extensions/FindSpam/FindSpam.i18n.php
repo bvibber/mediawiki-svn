@@ -32,6 +32,13 @@ $messages['af'] = array(
 	'findspam-ok' => 'OK',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'findspam-ok' => "D'alcuerdo",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -145,6 +145,16 @@ $messages['af'] = array(
 	'whitelistnever' => 'nooit',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'whitelisttablenewdate' => 'Nueba calendata:',
+	'whitelisttablechangedate' => 'Cambiar a calendata de zircunduzión',
+	'whitelistnewtabledate' => 'Data de zircunduzión:',
+	'whitelistoverviewna' => "* Adibindo [[:$1|$1]] t'a lista blanca con azeso '''$2''' y data de zircunduzión '''$3'''",
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -802,7 +812,7 @@ Usa * o % como metacharacter',
 	'whitelistoverviewrm' => '* Retira le accesso a [[:$1|$1]]',
 	'whitelistoverviewna' => "* Adde [[:$1|$1]] al lista blanc con accesso '''$2''' e data de expiration '''$3'''",
 	'whitelistrequest' => 'Requestar accesso a plus paginas',
-	'whitelistrequestmsg' => '$1 ha requestate accesso al sequente paginas:
+	'whitelistrequestmsg' => '$1 ha requestate accesso al sequente {{PLURAL:$3|pagina|paginas}}:
 
 $2',
 	'whitelistrequestconf' => 'Le requesta de nove paginas esseva inviate a $1',

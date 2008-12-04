@@ -85,3 +85,8 @@ $aliases['no'] = array(
 	'WhoIsWatching' => array( 'Hvem overvåker' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'WhoIsWatching' => array( 'Kto obserwuje' ),
+);
+

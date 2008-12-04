@@ -297,6 +297,8 @@ $messages['hsb'] = array(
 	'onlinestatus-toggles-show' => 'Status online na mojej wužiwarskej stronje pokazać',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
+	'tog-onlineOnLogin' => 'Při přizjewjenju status do online změnić',
+	'tog-offlineOnLogout' => 'Při wotzjewjenju status do offline změnić',
 );
 
 /** Interlingua (Interlingua)

@@ -47,6 +47,13 @@ $messages['af'] = array(
 	'inspectcache-delete' => 'Skrap',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'inspectcache-ok' => "D'alcuerdo",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

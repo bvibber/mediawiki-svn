@@ -77,3 +77,8 @@ $aliases['no'] = array(
 	'CloseWiki' => array( 'Steng wiki' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'CloseWiki' => array( 'FungaWiki' ),
+);
+

@@ -28,6 +28,13 @@ $messages['gl'] = array(
 	'formatsearch-desc' => 'Limpa a páxina dos resultados da busca',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'formatsearch-desc' => 'ההרחבה מנקה את דף תוצאות החיפוש',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -61,6 +68,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'formatsearch-desc' => 'Netejar la pagina de resultats de recèrca',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'formatsearch-desc' => 'Limpa a página de resultados de pesquisa',
 );
 
 /** Russian (Русский)

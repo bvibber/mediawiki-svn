@@ -79,6 +79,16 @@ $messages['af'] = array(
 	'usagestatisticsintervalmonth' => 'Maand',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'usagestatisticsstart' => 'Calendata de prenzipio',
+	'usagestatisticsend' => 'Calendata final',
+	'usagestatisticsnoend' => '* <font color=red>Por fabor, escriba una calendata final</font>',
+	'usagestatisticsbadstartend' => '<b>As calendatas de <i>enzete</i> y/u <i>fin</i> no son conformes!</b>',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

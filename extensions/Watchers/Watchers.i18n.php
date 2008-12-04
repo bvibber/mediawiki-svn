@@ -411,16 +411,17 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Boivie
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'watchers' => 'Overvåkende',
 	'watchers_link_title' => 'Hvem overvåker denne siden?',
 	'watchers_error_article' => '<b>Feil:</b> Siden finnes ikke.',
-	'watchers_header' => 'Personer som overvåker «$1»',
+	'watchers_header' => '{{PLURAL:$2|Person|Personer}} som overvåker «$1»',
 	'watchers_noone_watches' => 'Ingen overvåker denne siden.',
-	'watchers_x_or_more' => '$1 eller flere personer overvåker denne siden.',
-	'watchers_less_than_x' => 'Mindre enn $1 personer overvåker denne siden.',
+	'watchers_x_or_more' => '$1 eller flere {{PLURAL:$1|personer|personer}} overvåker denne siden.',
+	'watchers_less_than_x' => 'Mindre enn $1 {{PLURAL:$1|personer|personer}} overvåker denne siden.',
 );
 
 /** Occitan (Occitan)
@@ -516,7 +517,7 @@ $messages['sv'] = array(
 	'watchers_error_article' => '<b>Fel:</b> Sidan finns inte.',
 	'watchers_header' => '{{PLURAL:$2|Användare}} som bevakar "$1"',
 	'watchers_noone_watches' => 'Ingen bevakar denna sida.',
-	'watchers_x_or_more' => '$1 eller fler {{PLURAL:$1|användare|användare}} bevakar den här sidan.',
+	'watchers_x_or_more' => '$1 eller fler {{PLURAL:$1|användare|användare}} har denna sida på sin bevakningslista.',
 	'watchers_less_than_x' => 'Färre än $1 {{PLURAL:$1|användare|användare}} bevakar den här sidan.',
 );
 

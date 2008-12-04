@@ -58,6 +58,13 @@ $messages['af'] = array(
 	'countedits-ok' => 'OK',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'countedits-ok' => "D'alcuerdo",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

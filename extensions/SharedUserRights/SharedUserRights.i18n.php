@@ -51,6 +51,17 @@ $messages['bg'] = array(
 	'gblrights-logpage' => 'Дневник на глобалните права',
 );
 
+/** German (Deutsch)
+ * @author Umherirrender
+ */
+$messages['de'] = array(
+	'shareduserrights' => 'Gemeinsame Benutzerrechteverwaltung',
+	'gblrights-desc' => 'Einfache [[Special:SharedUserRights|globale Benutzerrechteadministration]]',
+	'gblrights-logpage' => 'Globales Rechte-Logbuch',
+	'gblrights-pagetext' => 'Dieses Logbuch enthält alle Änderungen, die an der globalen Rechtetabelle der Wikifamilie vorgenommen wurden.',
+	'gblrights-rights-entry' => 'änderte die globale Gruppenzugehörigkeit für $1 von $2 auf $3',
+);
+
 /** French (Français)
  * @author IAlex
  */

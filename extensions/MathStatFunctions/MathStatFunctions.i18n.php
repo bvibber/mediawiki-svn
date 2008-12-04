@@ -184,8 +184,11 @@ $messages['hr'] = array(
 	'msfunc_div_zero' => 'Dijeljenje nulom',
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
+	'msfunc_desc' => 'Zběrka matematiskich a statistiskich funkcijow',
 	'msfunc_nan' => 'Wuslědk ličba njeje.',
 	'msfunc_inf' => 'Wuslědk je njekónčna hódnota.',
 	'msfunc_div_zero' => 'Diwizija přez nulu',
@@ -366,8 +369,10 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'msfunc_desc' => 'Uma colecção de funções matemáticas e estatísticas',
 	'msfunc_nan' => 'Valor resultante não é um número',
 	'msfunc_inf' => 'Valor resultante é infinito',
 	'msfunc_div_zero' => 'Divisão por zero',

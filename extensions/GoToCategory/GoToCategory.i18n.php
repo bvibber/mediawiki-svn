@@ -71,6 +71,13 @@ $messages['he'] = array(
 	'gotocategory-desc' => 'בדיקת מונחי החיפוש מול מרחב הקטגוריות בעת שימוש באפשרות הישירה "לדף"',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'gotocategory-desc' => 'Pruwuje pytanske zapřijeća přećiwo mjenowemu rumej Kategorija: za funkcionalitu "Dźi k stronje"',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

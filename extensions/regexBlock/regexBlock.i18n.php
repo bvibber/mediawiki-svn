@@ -653,6 +653,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'regexblock' => 'Regularne wurazy blokować',
 	'regexblock-desc' => 'Rozšěrjenje wužiwane za blokowanje wužiwarskich mjenow a IP-adresow z regularnymi wurazami. Wobsahuje blokowanski mechanizm kaž tež [[Special:Regexblock|specialnu stronu]] za přidaće/zrjadowanje blokowanjow',
 	'regexblock-special-desc' => 'alternatiwne wužiwarske blokowanje (přez date mjeno, z pomocu regularnych wurazow)',
 	'regexblock-stat-desc' => 'Zwobraznja [[Special:Regexblockstats|statistiku blokowanjow]] za rozšěrjenje regexblock',

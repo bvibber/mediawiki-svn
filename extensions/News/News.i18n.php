@@ -142,6 +142,13 @@ $messages['oc'] = array(
 	'newsextension-desc' => 'Mòstra los darrièrs cambiaments especifics sus una pagina wiki o coma un flus RSS o Atom.',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'newsextension-desc' => 'Mostra mudanças recentes personalizadas numa página wiki ou como uma fonte RSS ou Atom',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -101,6 +101,7 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Sherbrooke
  */
 $messages['fr'] = array(
@@ -113,6 +114,7 @@ $messages['fr'] = array(
 Désirez-vous modifier cette dernière ?',
 	'createpage_tryagain' => 'Non, je désire créer une nouvelle page avec un titre distinct.',
 	'createpage_editexisting' => 'Oui, je désire contribuer dans cette page existante.',
+	'createpage-badtitle' => '« $1 » ne peut pas être utilisé comme nom de page',
 );
 
 /** Galician (Galego)
@@ -128,6 +130,22 @@ $messages['gl'] = array(
 Quere editar esta páxina?',
 	'createpage_tryagain' => 'Non. Quero crear unha páxina nova cun título distinto.',
 	'createpage_editexisting' => 'Si. Quero contribuír á páxina existente.',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'createpage' => 'יצירת דף',
+	'createpage-desc' => 'הוספת [[Special:CreatePage|דף מיוחד]] ליצירת דפים חדשים',
+	'createpage_submitbutton' => 'שליחה',
+	'createpage_instructions' => 'הזינו את כותרת הדף שברצונכם ליצור:',
+	'createpage_entertitle' => 'נא הזינו כותרת עבור הדף שלכם.',
+	'createpage_titleexists' => 'כבר קיים דף בעל הכותרת [[$1]].
+האם ברצונכם לערוך את הדף הקיים?',
+	'createpage_tryagain' => 'לא. אנו מעוניינים ליצור דף חדש עם כותרת יחודית.',
+	'createpage_editexisting' => 'כן. אנו מעוניינים לתרום לדף הקיים.',
+	'createpage-badtitle' => 'לא ניתן להשתמש ב־"$1" ככותרת לדף',
 );
 
 /** Javanese (Basa Jawa)
@@ -157,6 +175,21 @@ $messages['lb'] = array(
 Wëll Dir déi Säit veränneren?',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'createpage' => 'Ne’e Sied schrieven',
+	'createpage-desc' => 'Föögt en [[Special:CreatePage|Spezialsied]] to, mit de een ne’e Sieden anleggen kann',
+	'createpage_submitbutton' => 'Trech',
+	'createpage_instructions' => 'Schriev hier den Naam vun’e ne’e Sied rin:',
+	'createpage_entertitle' => 'Segg, wo dien ne’e Sied heten schall.',
+	'createpage_titleexists' => 'Dat gifft al en Sied mit’n Naam [[$1]].
+Wullt du de Sied, de dat al gifft, ännern?',
+	'createpage_tryagain' => 'Nee. Ik will en ne’e Sied mit en annern Naam anleggen.',
+	'createpage_editexisting' => 'Jo. Ik will wat to de Sied toschrieven, de dat al gifft.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -170,6 +203,22 @@ $messages['nl'] = array(
 Wilt u de bestaande pagina bewerken?',
 	'createpage_tryagain' => 'Nee. Ik wil een nieuwe pagina aanmaken met een nieuwe naam.',
 	'createpage_editexisting' => 'Ja. Ik wil bijdragen aan de bestaande pagina.',
+	'createpage-badtitle' => '"$1" kan niet gebruikt worden als paginanaam',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'createpage' => 'Crear una pagina',
+	'createpage-desc' => 'Apondre una [[Special:CreatePage|pagina especiala]] per crear de paginas novèlas',
+	'createpage_submitbutton' => 'Sometre',
+	'createpage_instructions' => 'Picar lo títol de la pagina que volètz crear :',
+	'createpage_entertitle' => 'Picatz un títol per vòstra pagina.',
+	'createpage_titleexists' => "Una pagina qu'a per títol [[$1]] existís ja.
+La volètz modificar ?",
+	'createpage_tryagain' => 'Non, vòli crear una pagina novèla amb un títol diferent.',
+	'createpage_editexisting' => 'Òc, vòli contribuir dins aquesta pagina existenta.',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
@@ -211,5 +260,35 @@ $messages['sk'] = array(
 Želáte si upraviť existujúcu stránku?',
 	'createpage_tryagain' => 'Nie, chcem vytvoriť novú stránku s iným názovm.',
 	'createpage_editexisting' => 'Áno, chcem prispieť k existujúcej stránke.',
+);
+
+/** Swahili (Kiswahili)
+ * @author Malangali
+ */
+$messages['sw'] = array(
+	'createpage' => 'Anzisha ukurasa',
+	'createpage-desc' => 'Huongeza [[Special:CreatePage|ukurasa maalum]] kwa ajili ya kuanzisha kurasa mpya',
+	'createpage_submitbutton' => 'Wasilisha',
+	'createpage_instructions' => 'Andika jina la ukurasa unaotaka kuanzisha:',
+	'createpage_entertitle' => 'Andika jina la ukurasa wako.',
+	'createpage_titleexists' => 'Tayari kuna ukurasa kwenye jina [[$1]]. Je, unataka kuhariri ukurasa uliomo?',
+	'createpage_tryagain' => 'Hapana. Ninataka kuanzisha ukurasa mpya mwenye jina tofauti.',
+	'createpage_editexisting' => 'Ndiyo. Ninataka kusaidia kuhariri ukurasa uliomo.',
+);
+
+/** Wolof (Wolof)
+ * @author Ibou
+ */
+$messages['wo'] = array(
+	'createpage' => 'Sos aw xët',
+	'createpage-desc' => 'Yokk aw [[Special:CreatePage|xëtu jagleel]] ngir man a sos xët yu bees',
+	'createpage_submitbutton' => 'Yónne',
+	'createpage_instructions' => 'Dugalal koju xët wi nga bëgg a sos :',
+	'createpage_entertitle' => 'Di-sakku nga duggal ab koj ngir sa xët wi:',
+	'createpage_titleexists' => 'Aw xët wu tudd [[$1]] am na ba noppi.
+Danga bëgg a soppi xët wi fi nekk ?',
+	'createpage_tryagain' => 'Déet, Damaa bëgg a sos weneen xët ak been koj.',
+	'createpage_editexisting' => 'Waaw, damaa bëgg a cëru ak xët wi fi nekk.',
+	'createpage-badtitle' => '« $1 » manoo koo jëfandikoo niki kojuw xët',
 );
 

@@ -58,6 +58,13 @@ $messages['fr'] = array(
 	'stringfunctions-desc' => 'Améliore le parseur avec les fonctions sur les chaînes de caractères',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'stringfunctions-desc' => 'Realza a análise con funcións de cordas',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */
@@ -126,6 +133,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'stringfunctions-desc' => 'Melhora lo parser amb las foncions sus las cadenas de caractèrs',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'stringfunctions-desc' => 'Acrescenta funções de strings ao analisador (parser)',
 );
 
 /** Russian (Русский)

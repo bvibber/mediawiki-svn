@@ -673,6 +673,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'invite-logpage' => 'Registo de Convites',
@@ -682,6 +683,7 @@ $messages['pt'] = array(
 	'invitations-desc' => 'Permite [[Special:Invitations|a gestão de novas funcionalidades]] através da sua restrição a um sistema baseado em convites',
 	'invitations-invitedlist-description' => 'Você tem acesso às seguintes funcionalidades do software atribuídas apenas por convite. Para gerir convites para uma funcionalidade individual, clique no seu nome.',
 	'invitations-invitedlist-none' => 'Você não foi convidado a usar nenhuma funcionalidade do software atribuída apenas por convite.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Um convite disponível|$1 convites disponíveis}})',
 	'invitations-pagetitle' => 'Funcionalidades do software atribuídas apenas por convite',
 	'invitations-uninvitedlist-description' => 'Você não tem acesso a estas outras funcionalidades do software atribuídas apenas por convite.',
 	'invitations-uninvitedlist-none' => 'Neste momento, mais nenhumas funcionalidades do software são atribuídas apenas por convite.',

@@ -220,6 +220,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'postcomment_desc' => 'Dowola wužiwarjam komentary direktnje k diskusijnym stronam pósłać',
 	'postcomment_discussionprotected' => 'Tuta diskusijna strona je přećiwo dalšim zdźělenkam škitana.',
 	'postcomment_notloggedin' => 'Njejsy so přizjewił.',
 	'postcomment_youareloggedinas' => 'Sy nětko jako $1 přizjewjeny.',

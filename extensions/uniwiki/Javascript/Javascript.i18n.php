@@ -21,6 +21,13 @@ $messages['fr'] = array(
 	'javascript-desc' => 'Ajouter uniwiki.js à chaque page contenant du code JavaScript partagé entre les extensions Uniwiki',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'javascript-desc' => 'הוספת הקובץ uniwiki.js לכל דף, שמכיל קוד JavaScript המשותף בין ההרחבות של יוניויקי',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

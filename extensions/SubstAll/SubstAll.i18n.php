@@ -139,6 +139,13 @@ $messages['oc'] = array(
 	'substall-desc' => 'Crea una balisa <nowiki><substall></nowiki> que convertís totes los modèls en sintaxi wiki.',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'substall-desc' => 'Cria uma tag <nowiki><substall></nowiki> que expande todas as predefinições para sintaxe wiki',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

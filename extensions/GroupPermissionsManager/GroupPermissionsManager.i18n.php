@@ -390,6 +390,7 @@ Schwebe mit der Maus über eine Berechtigung, um eine Beschreibung anzuzeigen.',
 	'right-recentchanges' => 'Letzte Änderungen ansehen',
 	'right-edittalk' => 'Diskussionsseiten bearbeiten',
 	'right-edit-new' => 'Seiten bearbeiten (ausgenommen Diskussionsseiten)',
+	'right-readold' => 'Betrachte den Inhalt von alten Versionen und Versionsunterschieden',
 );
 
 /** Ewe (Eʋegbe)
@@ -1032,6 +1033,7 @@ $messages['lb'] = array(
 	'grouppermissions-log-change' => 'huet d\'Rechter fir de Grupp "$2" geännert',
 	'grouppermissions-log-delete' => 'huet de Grupp "$2" geläscht',
 	'grouppermissions-log-name' => 'Lëscht vun de Rechter vu Gruppen',
+	'grouppermissions-log-header' => 'Dës Säit weist Ännerungen bäi de Rechter vun de Benotzergruppen.',
 	'grouppermissions-needjs' => 'Opgepasst: Java Script ass an ärem Browser ausgeschalt. Et ka sënn datt e puer Fonctionalitéite net ginn !',
 	'grouppermissions-sp-sort' => 'Rechter sortéieren',
 	'grouppermissions-sp-save' => 'Späicheren',
@@ -1042,9 +1044,11 @@ $messages['lb'] = array(
 	'right-info' => "D'Informarioune vun der Säit weisen",
 	'right-history' => "D'Versioune vun der Säit weisen",
 	'right-search' => 'Op der Wiki sichen',
+	'right-contributions' => "D'Säite vun de Kontributioune weisen",
 	'right-recentchanges' => 'Weis rezent Ännerungen',
 	'right-edittalk' => 'Diskussiounssäiten änneren',
 	'right-edit-new' => 'Säiten änneren (déi keng Diskussiounssäite sinn)',
+	'right-readold' => 'Den Inhalt vun ale Versiounen a Versiounsënnerscheeder weisen',
 );
 
 /** Maltese (Malti)

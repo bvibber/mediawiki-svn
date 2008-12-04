@@ -865,6 +865,7 @@ $messages['ps'] = array(
  * @author Lijealso
  * @author Malafaya
  * @author Sir Lestaty de Lioncourt
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'povwatch' => 'PovWatch',
@@ -876,7 +877,7 @@ $messages['pt'] = array(
 	'povwatch_not_subscribed' => 'Você não está inscrito no PovWatch, por isso não pode remover sua inscrição.',
 	'povwatch_unsubscribed' => 'Você não está mais inscrito na lista do PovWatch',
 	'povwatch_invalid_title' => 'O título especificado é inválido',
-	'povwatch_pushed' => '[[$1]] foi adicionada com sucesso para $2 artigo(s) vigiado(s) de usuário(s)',
+	'povwatch_pushed' => '[[$1]] foi adicionada com sucesso à lista de páginas vigiadas de {{PLURAL:$2|$2 usuário|$2 usuários}}',
 	'povwatch_intro' => 'PovWatch é um serviço que permite que páginas sejam discretamente adicionadas para a lista de artigos vigiados de administradores subscritos.
 
 Um registro das recentes páginas adicionadas na lista de artigos vigiados está disponível na página [[Special:PovWatch/log]].',

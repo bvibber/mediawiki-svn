@@ -32,6 +32,19 @@ $messages['qqq'] = array(
 	'contrib-tracking-error' => '{{Identical|Error}}',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'contributiontracking-desc' => "Seguimiento de contrebuzions d'a replegad de fondos de Wikimedia",
+	'contributiontracking' => 'Seguimiento de contrebuzions',
+	'contrib-tracking-error' => 'Error',
+	'contrib-tracking-error-text' => 'Error en o formulario',
+	'contrib-tracking-submitting' => 'Nimbiando ta o prozesador de pagos...',
+	'contrib-tracking-continue' => 'Si ye endrezato automaticament, faiga click en o botón ta rematar a suya donazión en PayPal.',
+	'contrib-tracking-button' => 'Continar',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -178,6 +191,19 @@ $messages['hr'] = array(
 	'contrib-tracking-submitting' => 'Podnošenje obrascu za plaćanje...',
 	'contrib-tracking-continue' => 'Ako niste automatski preusmjereni, kliknite na tipku kako biste dovršili svoju donaciju s PayPalom.',
 	'contrib-tracking-button' => 'Nastavi',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'contributiontracking-desc' => 'Sćěhowanje přinoškow za darjensku kampanju Wikimedije',
+	'contributiontracking' => 'Sćěhowanje přinoškow',
+	'contrib-tracking-error' => 'Zmylk',
+	'contrib-tracking-error-text' => 'Njepłaćiwe formularne přenjesenje',
+	'contrib-tracking-submitting' => 'Přenjesenje k płaćenskemu sposrědkowarjej',
+	'contrib-tracking-continue' => 'Jeli njeposrědkuješ so awtomatisce dale, klikń na tłóčatko, zo by swój dar přez PayPal přewjedł.',
+	'contrib-tracking-button' => 'Dale',
 );
 
 /** Interlingua (Interlingua)

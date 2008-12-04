@@ -93,6 +93,9 @@ $messages['bg'] = array(
 	'gep-sectionnotdisabled' => 'Този раздел не може да бъде изключен',
 	'gep-addsection' => 'Добавяне на раздел',
 	'gep-addsectionbutton' => 'Добавяне',
+	'gep-nosectioninstructions' => 'Тази страница не съдържа раздели.
+Раздели могат да бъдат добавяни чрез инструментите в дясно.',
+	'gep-nocategories' => 'Преди да съхраните, изберете поне една категория',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
@@ -208,6 +211,33 @@ Engada algunha usando as ferramentas da dereita.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'gep-desc' => 'פישוט דף העריכה כך שיהיה ידידותי יותר למשתמש',
+	'gep-emailsubject' => '[$1] הצעת קטגוריה: $2',
+	'gep-emailbody' => 'המשתמש "$1" הציע את הקטגוריה "$2" עבור האתר "$3".',
+	'gep-emailfailure' => 'מצטערים, לא ניתן לעבד את בקשתכם.',
+	'gep-emailsuccess' => 'תודה על שהצעתם את הקטגוריה: $1.',
+	'gep-categories' => 'קטגוריות',
+	'gep-addcategory' => 'הוספת קטגוריה',
+	'gep-addcategorybutton' => 'הוספה',
+	'gep-suggestcategory' => 'הצעת קטגוריה',
+	'gep-suggestcategorybutton' => 'שליחה',
+	'gep-sections' => 'פסקאות',
+	'gep-sectionnotdisabled' => 'לא ניתן לבטל את הפסקה',
+	'gep-addsection' => 'הוספת פסקה',
+	'gep-addsectionbutton' => 'הוספה',
+	'gep-classicmode' => 'מצב קלאסי',
+	'gep-genericmode' => 'מצב גנרי',
+	'gep-nosectioninstructions' => 'אין פסקאות בדף זה.
+באפשרותכם להוסיף כמה באמצעות שימוש בכלים שמשמאל.',
+	'gep-nocategories' => 'אנא בחרו לפחות קטגוריה אחת לפני השמירה',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -252,6 +282,10 @@ $messages['lb'] = array(
 	'gep-sectionnotdisabled' => 'Dësen Abschnitt kann net ausgeschalt ginn',
 	'gep-addsection' => 'En Abschnitt derbäisetzen',
 	'gep-addsectionbutton' => 'Derbäisetzen',
+	'gep-classicmode' => 'Klassesch Manéier',
+	'gep-genericmode' => 'Generell Manéier',
+	'gep-nosectioninstructions' => 'Et gëtt keng Abschnitter op dëser Säit.
+Setzt der mat den Toolen op der rietser Säit derbäi.',
 	'gep-nocategories' => 'Wielt w.e.g. mindestens eng Kategorie aus ier Dir ofspäichert',
 	'gep-categorypage' => 'MediaWiki:Säitenännerungs-Tagen',
 );

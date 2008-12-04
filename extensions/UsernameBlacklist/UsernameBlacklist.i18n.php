@@ -209,6 +209,22 @@ $messages['br'] = array(
 	'usernameblacklist-invalid-lines' => 'Fall {{PLURAL:$1|eo|eo}} al {{PLURAL:$1|linenn|linennoù}} da-heul eus listenn zu an anvioù implijerien; reizhit {{PLURAL:$1|anezhañ|anezho}} a-raok enrollañ mar plij :',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'blacklistedusername' => 'Neprihvatljivo korisničko ime',
+	'usernameblacklist' => '<pre>
+# Stavke u ovom spisku će se koristiti kao dio standardnog izraza kada
+# se provjeravaju imena korisnika koja su neprihvatljiva. Svaka stavka bi trebala biti
+# u vidu nenumerisanog spiska, npr.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'right-uboverride' => 'Zaobilaženje spiska nepoželjnih korisničkih imena',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  * @author Paucabot
@@ -809,7 +825,7 @@ $messages['ko'] = array(
 # * Foo
 # * [Bb]ar
 </pre>',
-	'usernameblacklist-invalid-lines' => '계정 이름 블랙리스트 목록에서 다음 줄이 잘못되었습니다. 저장하기 전에 올바르게 고쳐 주세요:',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|}}계정 이름 블랙리스트 목록에서 다음 줄이 잘못되었습니다. 저장하기 전에 올바르게 고쳐 주세요:',
 	'right-uboverride' => '계정 이름 블랙리스트를 무시',
 );
 

@@ -118,6 +118,22 @@ A galon,
 $2",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'userrightsnotifybody' => 'Zdravo $1,
+
+Ovo je poruka koja Vas obavještava da je Vaše članstvo u grupi od $2 promijenjeno od strane korisnika $3 dana $4.
+
+Dodano: $5
+Uklonjeno: $6
+
+S poštovanjem,
+
+$2',
+);
+
 /** Catalan (Català)
  * @author SMP
  */

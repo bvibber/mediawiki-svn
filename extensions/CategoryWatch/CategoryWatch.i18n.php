@@ -231,10 +231,13 @@ Aqueste messatge es destinat a vos far saber que lo $3 l’utilizaire $4 $5.',
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'categorywatch-desc' => 'Расширяет функциональность списка наблюдения возможностью уведомлений об изменениях в страницах, входящих в некоторую категорию',
 	'categorywatch-emailbody' => 'Привет $1, вы получили это сообщение, потому что следите за категорией "$2"
 Это сообщение уведомляет вас о $3 участника $4 $5.',
+	'categorywatch-emailsubject' => 'Изменения, затрагивающие наблюдаемую категорию «$1»',
 	'categorywatch-catmovein' => 'перенесён $1 в категорию $2 из $3',
 	'categorywatch-catmoveout' => 'перенесён $1 из категории $2 в $3',
 	'categorywatch-catadd' => 'добавлено $1 в категорию $2',

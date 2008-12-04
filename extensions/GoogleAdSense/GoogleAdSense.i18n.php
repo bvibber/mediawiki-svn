@@ -94,6 +94,13 @@ $messages['he'] = array(
 	'googleadsense-desc' => 'הוספת [http://www.google.com/adsense Google AdSense] לסרגל הצד',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'googleadsense-desc' => '[http://www.google.com/adsense Google AdSense] k pobóčnej lajsće přidać',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -155,6 +162,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'googleadsense-desc' => 'Apond [http://www.google.com/adsense Google AdSense] a la barra laterala',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'googleadsense-desc' => 'Adiciona o [http://www.google.com/adsense Google AdSense] à barra lateral',
 );
 
 /** Tarandíne (Tarandíne)

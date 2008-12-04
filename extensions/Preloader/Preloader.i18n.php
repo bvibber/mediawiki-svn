@@ -120,6 +120,13 @@ $messages['oc'] = array(
 	'preloader-desc' => 'Provesís, per las paginas novèlas, de fenèstras de tèxt personalizablas per nom d’espaci',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'preloader-desc' => 'Fornece textos-modelo para novas páginas, persnonalizáveis por domínio',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

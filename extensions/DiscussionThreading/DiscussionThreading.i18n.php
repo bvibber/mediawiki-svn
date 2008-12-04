@@ -150,6 +150,17 @@ $messages['he'] = array(
 	'discussionthreading-threadnewsectionhint' => 'התחלת שרשור חדש',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'discussionthreading-desc' => 'Zwobraznjenje nitkow k diskusijnym stronam přidać',
+	'discussionthreading-replysection' => 'wotmołwić',
+	'discussionthreading-replysectionhint' => 'Na tutu powěsć wotmołwić',
+	'discussionthreading-threadnewsection' => 'nowy',
+	'discussionthreading-threadnewsectionhint' => 'Nowu nitku startować',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

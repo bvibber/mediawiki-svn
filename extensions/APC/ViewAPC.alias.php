@@ -67,6 +67,11 @@ $aliases['no'] = array(
 	'ViewAPC' => array( 'Vis APC' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'ViewAPC' => array( 'Podgląd APC' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'ViewAPC' => array( 'Visa APC' ),

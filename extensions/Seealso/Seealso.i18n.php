@@ -294,9 +294,11 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'seealso' => 'Ver também',
+	'seealso-desc' => "Títulos de secção 'Ver também' localizados usando a tag <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Russian (Русский)

@@ -168,3 +168,23 @@ $messages['sk'] = array(
 	'right-emergencydesysop' => 'Dokáže odstrániť správcovské práva iného používateľa zároveň so svojimi',
 );
 
+/** Swedish (Svenska)
+ * @author Micke
+ */
+$messages['sv'] = array(
+	'emergencydesysop' => 'Nödfallsavsättning av administratör',
+	'emergencydesysop-desc' => 'Möjliggör för en administratör att offra sina egna användarrättigheter för att avsätta en annan administratör',
+	'emergencydesysop-title' => 'Ta bort administratörs-rättigheter från såväl den aktuella användaren som från en annan administratör',
+	'emergencydesysop-otheradmin' => 'Annan administratör att avsätta',
+	'emergencydesysop-reason' => 'Anledning till avsättandet',
+	'emergencydesysop-submit' => 'Skicka',
+	'emergencydesysop-incomplete' => 'Alla formulärfält måste fyllas i, försök igen.',
+	'emergencydesysop-notasysop' => 'Målanvändaren är inte medlem i gruppen administratörer.',
+	'emergencydesysop-nogroups' => 'Ingen',
+	'emergencydesysop-done' => 'Handlingen är genomförd, både du och [[$1]] har tagits bort från gruppen "administratörer".',
+	'emergencydesysop-invalidtarget' => 'Målanvändaren finns inte.',
+	'emergencydesysop-blocked' => 'Du har inte tillgång till denna sida så länge du är blockerad',
+	'emergencydesysop-noright' => 'Du har inte tillräckliga rättigheter för att få tillgång till denna sida',
+	'right-emergencydesysop' => 'Möjlighet att ömsesidigt avsätta en annan användare',
+);
+

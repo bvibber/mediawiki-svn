@@ -126,8 +126,11 @@ $messages['hi'] = array(
 	'donationform-submit' => 'पे-पाल (PayPal) द्वारा दान करें',
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
+	'donationform-desc' => 'Přidawa tafličku <tt>&lt;donateform&gt;</tt>, zo by dary přez PayPal podpěrało',
 	'donationform-submit' => 'Přez PayPal darić',
 );
 
@@ -276,8 +279,10 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'donationform-desc' => 'Adiciona uma tag <tt>&lt;donateform&gt;</tt> para suportar doações via PayPal',
 	'donationform-submit' => 'Doe pelo PayPal',
 );
 

@@ -92,3 +92,8 @@ $aliases['oc'] = array(
 	'Badimages' => array( 'Imatges marrits', 'ImatgesMarrits' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'Badimages' => array( 'Nieprawidłowe grafiki' ),
+);
+

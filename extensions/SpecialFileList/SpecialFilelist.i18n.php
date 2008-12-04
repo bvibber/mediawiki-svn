@@ -233,6 +233,7 @@ $messages['hsb'] = array(
 	'filelist-desc' => '[[Special:Filelist|Specialna strona]] za nalistowanje nahratych datajow',
 	'filelist-show-list' => 'Lisćinu pokazać',
 	'filelist-show-gallery' => 'Galeriju pokazać',
+	'filelist-image-desc' => 'spadowacy',
 );
 
 /** Armenian (Հայերեն) */

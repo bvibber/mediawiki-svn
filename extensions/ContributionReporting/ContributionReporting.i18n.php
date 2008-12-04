@@ -98,6 +98,27 @@ $messages['af'] = array(
 	'contribstats-total-ytd' => 'Totaal (die jaar)',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'contributionreporting-desc' => 'Informe en bibo sobre a replega de fondos de Wikimedia',
+	'contributiontotal' => 'Contrebuzión total',
+	'contributionhistory' => 'Istorial de contrebuzions',
+	'contrib-hist-date' => 'Calendata y ora',
+	'fundraiserstatistics' => "Estatisticas d'a replega de fundos",
+	'fundraiserstats-date' => 'Calendata',
+	'fundraiserstats-day' => 'Día $1 de $2',
+	'fundraiserstats-contributions' => 'Contrebuzions',
+	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-avg' => 'Meya (USD)',
+	'fundraiserstats-max' => 'Masimo (USD)',
+	'fundraiserstats-tab-totals' => 'Totals (USD)',
+	'fundraiserstats-tab-contributions' => 'Numero de contrebuzions',
+	'fundraiserstats-tab-averages' => 'Meyas (USD)',
+	'fundraiserstats-tab-maximums' => 'Masimos (USD)',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -503,6 +524,7 @@ $messages['gl'] = array(
 	'contribstats-daily-totals' => '{{PLURAL:$1|Total de hoxe|Total diario dos últimos $1 días}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Total deste mes|Total mensual dos últimos $1 meses}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Total dun mes|Totais mensuais de $1 meses}}',
+	'contribstats-currency-range-totals' => 'Totais (de $1 a $2)',
 	'contribstats-day' => 'Día',
 	'contribstats-month' => 'Mes',
 	'contribstats-currency' => 'Moeda',
@@ -707,10 +729,20 @@ $messages['ia'] = array(
 	'contribstats-contributions' => 'Contributiones',
 	'contribstats-total' => 'Total (USD)',
 	'contribstats-avg' => 'Media (USD)',
-	'contribstats-min' => 'Minimo (USD)',
 	'contribstats-max' => 'Maximo (USD)',
 	'contribstats-percentage-ytd' => 'Percentage (iste anno)',
 	'contribstats-total-ytd' => 'Total (iste anno)',
+	'fundraiserstatistics' => 'Statisticas de collecta de fundos',
+	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-day' => 'Die $1 de $2',
+	'fundraiserstats-contributions' => 'Contributiones',
+	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-avg' => 'Media (USD)',
+	'fundraiserstats-max' => 'Maximo (USD)',
+	'fundraiserstats-tab-totals' => 'Totales (USD)',
+	'fundraiserstats-tab-contributions' => 'Numero de contributiones',
+	'fundraiserstats-tab-averages' => 'Medias (USD)',
+	'fundraiserstats-tab-maximums' => 'Maximos (USD)',
 );
 
 /** Italian (Italiano)

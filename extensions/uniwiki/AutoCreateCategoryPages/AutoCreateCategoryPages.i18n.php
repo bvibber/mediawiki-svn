@@ -22,6 +22,8 @@ It lists all of the pages in category "$1" as well as all subcategories of categ
  */
 $messages['bg'] = array(
 	'autocreatecategorypages-desc' => 'Автоматично създава липсващите категории при съхраняване',
+	'autocreatecategorypages-stub' => 'Тази страница е категория.
+Тя съдържа всички страници в категория „$1“ както и всички подкатегории на категорията „$1“, ако такива са налични.',
 );
 
 /** German (Deutsch) */
@@ -60,6 +62,17 @@ Elle liste toutes les pages issues de la catégorie « $1 » et, le cas échéan
 	'autocreatecategorypages-editor' => 'Créateur automatique de catégorie.',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'autocreatecategorypages-desc' => 'יצירת דפי קטגוריות חסרים אוטומטית עם השמירה',
+	'autocreatecategorypages-stub' => 'זהו דף קטגוריה.
+כאן מופיעים כל הדפים בקטגוריה "$1" כמו גם כל התת־קטגוריות של הקטגוריה "$1" במידה שהן קיימות.',
+	'autocreatecategorypages-createdby' => 'נוצר אוטומטית על ידי ההרחבה AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'יוצר הקטגוריות האוטומטי',
+);
+
 /** Hungarian (Magyar)
  * @author Bdamokos
  */
@@ -87,6 +100,17 @@ $messages['nl'] = array(
 Hier vindt u de pagina\'s in de categorie "$1" als ook alle bestaande ondercategorieën van de categorie "$1".',
 	'autocreatecategorypages-createdby' => 'Automatisch aangemaakt door de uitbreiding AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'Automatische categoriemaker',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'autocreatecategorypages-desc' => 'Crear automaticament las paginas de categorias mancantas al moment del salvament',
+	'autocreatecategorypages-stub' => 'Aquò es una pagina de categorias.
+Lista totas las paginas eissidas de la categoria « $1 » e, se fa mestièr, tanben totas sas soscategorias.',
+	'autocreatecategorypages-createdby' => 'Creada automaticament per l’extension AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Creator automatic de categoria.',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

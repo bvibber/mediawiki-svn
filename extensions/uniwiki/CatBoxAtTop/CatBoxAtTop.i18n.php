@@ -83,6 +83,14 @@ $messages['gl'] = array(
 	'catboxattop-categories' => 'Categorías',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'catboxattop-desc' => 'הוספת תיבת קטגוריות לפינה השמאלית העליונה של הדפים',
+	'catboxattop-categories' => 'קטגוריות',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -97,6 +105,14 @@ $messages['lb'] = array(
 $messages['nl'] = array(
 	'catboxattop-desc' => 'Voegt bovenaan rechts een categoriekader toe',
 	'catboxattop-categories' => 'Categorieën',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'catboxattop-desc' => 'Apondre una boita de categoria en naut a drecha de las paginas',
+	'catboxattop-categories' => 'Categorias',
 );
 
 /** Russian (Русский)

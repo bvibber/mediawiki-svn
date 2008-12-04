@@ -112,3 +112,8 @@ $aliases['oc'] = array(
 	'BoardVote' => array( 'Tablèu de vòte' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'BoardVote' => array( 'Głosowanie' ),
+);
+

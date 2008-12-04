@@ -176,9 +176,11 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author Consta
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'spamdifftool' => 'Spam-Blacklist bearbeiten',
+	'spamdifftool-desc' => 'Ermöglicht das Hinzufügen neuer Einträge zur Spamblacklist aus Versionsunterschieden',
 	'spamdifftool_cantedit' => 'Du hast keine Berechitung zur Bearbeitung der Spam-Blacklist.',
 	'spamdifftool_notext' => "Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicke <a href='$1'>hier</a> zum Forfahren.",
 	'spamdifftool_confirm' => "Bestätige, dass du diese Einträge der Spam-Blacklist hinzufügen möchtest.
@@ -211,6 +213,8 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'spamdifftool' => 'Kontrolu spaman nigraliston',
 	'spamdifftool_cantedit' => 'Bedaŭrinde - vi ne havas permeson por redakti la spaman nigraliston.',
+	'spamdifftool_notext' => "Estas neniom da teksto aldoni al la spama nigralisto.
+Klaku <a href='$1'>ĉi tie</a> por daŭri.",
 	'spamdifftool_confirm' => "Konfirmu ke vi volas aldoni ĉi tiujn aĵojn al la spama nigralisto.
 (Klaku <a href='$1' target='new'>ĉi tie</a> por raporti problemon.)",
 	'spamdifftool_summary' => 'Aldonante al spama nigralisto',

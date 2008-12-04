@@ -58,6 +58,13 @@ $messages['hr'] = array(
 	'regexfunctions-desc' => 'Parserske funkcije s regularnim izrazom',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'regexfunctions-desc' => 'Analyzowanske funkcije za regularne wurazy',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -105,6 +112,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'regexfunctions-desc' => 'Foncions parsers de las expressions regularas',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'regexfunctions-desc' => 'funções do analisador (parser) para expressões regulares',
 );
 
 /** Slovak (Slovenčina)

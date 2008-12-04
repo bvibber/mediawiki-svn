@@ -157,6 +157,16 @@ $messages['gl'] = array(
 	'piwik-browsers' => 'Navegadores',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'piwik-desc' => 'Zasunje Piwikowy skript do stronow MediaWiki za sćěhowanje a přidawa [[Special:Piwik|někotre statistiske podaća]]',
+	'piwik-lastvisits' => 'Poslednje wopyty',
+	'piwik-countries' => 'Kraje',
+	'piwik-browsers' => 'Wobhladowaki',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

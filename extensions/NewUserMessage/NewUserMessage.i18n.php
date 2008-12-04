@@ -190,6 +190,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'newusermessage-desc' => 'Powěsć nowo wutworjenym wužiwarskim diskusijnym stronam přidać',
+	'newuseredit-summary' => 'Přidawa [[{{int:newusermessage-template}}|powitansku powěesć]] k diskusijnej stronje noweho wužiwarja',
 );
 
 /** Interlingua (Interlingua)

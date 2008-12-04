@@ -40,6 +40,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Aotake
  * @author Ferrer
  * @author Jon Harald Søby
  * @author Purodha
@@ -48,6 +49,9 @@ $messages['qqq'] = array(
 	'patrol-desc' => 'Short description of the Patrol extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'patrol-revert' => '{{Identical|Revert}}',
 	'patrol-revert-reason' => '{{Identical|Reason}}',
+	'patrol-reverting' => '{{Identical|Revert}}',
+	'patrol-reverted-ok' => '{{Identical|Revert}}',
+	'patrol-reverted-failed' => '{{Identical|Revert}}',
 	'right-patroller' => '{{doc-right}}',
 );
 
@@ -447,6 +451,7 @@ $messages['hsb'] = array(
 	'group-patroller' => 'Dohladowarjo',
 	'group-patroller-member' => 'Dohladowar',
 	'grouppage-patroller' => '{{ns:project}}:Dohladowar',
+	'right-patroller' => 'Strony dohladować',
 );
 
 /** Hungarian (Magyar)
@@ -943,6 +948,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'patrol' => 'Edições de patrulha',
@@ -967,6 +973,7 @@ $messages['pt'] = array(
 	'group-patroller' => 'Patrulhadores',
 	'group-patroller-member' => 'Patrulhador',
 	'grouppage-patroller' => '{{ns:project}}:Patrulhador',
+	'right-patroller' => 'Patrulhar páginas',
 );
 
 /** Rhaeto-Romance (Rumantsch) */

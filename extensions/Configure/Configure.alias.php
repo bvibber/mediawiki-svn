@@ -227,3 +227,10 @@ $aliases['sv'] = array(
 	'ViewConfig' => array( 'Visa konfiguration' ),
 );
 
+/** Swahili (Kiswahili) */
+$aliases['sw'] = array(
+	'Configure' => array( 'Ingiza' ),
+	'Extensions' => array( 'Panua' ),
+	'ViewConfig' => array( 'OnyeshaIngizo' ),
+);
+

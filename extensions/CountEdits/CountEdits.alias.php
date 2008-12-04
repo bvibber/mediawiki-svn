@@ -77,6 +77,11 @@ $aliases['no'] = array(
 	'CountEdits' => array( 'Tell redigeringer' ),
 );
 
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'CountEdits' => array( 'Licznik educji' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'CountEdits' => array( 'HesabuUhariri' ),

@@ -502,11 +502,31 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'viewapc' => 'APC informacije',
+	'viewapc-clear-confirm' => 'Da li želite očistiti keš?',
+	'viewapc-mode-stats' => 'Vidi statistike domaćina',
+	'viewapc-mode-version-check' => 'Provjera verzije',
+	'viewapc-php-version' => 'PHP verzija',
+	'viewapc-shared-memory' => 'Zajednička memorija',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|datoteka|datoteke|datoteka}} ($2)',
+	'viewapc-hits' => 'Pogotci',
+	'viewapc-misses' => 'Promašaji',
+	'viewapc-memory-usage' => 'Upotreba memorije',
+	'viewapc-display-value' => 'Vrijednost',
 	'viewapc-display-info' => 'Ime',
+	'viewapc-display-type' => 'Vrsta',
+	'viewapc-display-num_hits' => 'Pogotci',
 	'viewapc-ls-options-legend' => 'Opcije',
 	'viewapc-ls-submit' => 'Idi!',
 	'viewapc-ls-header-name' => 'Ime',
+	'viewapc-ls-header-size' => 'Veličina',
+	'viewapc-ls-delete' => '[Obriši odmah]',
+	'viewapc-ls-scope-deleted' => 'Obrisano',
+	'viewapc-ls-scope-both' => 'Oboje',
+	'viewapc-ls-sort-size' => 'Veličina',
 	'viewapc-ls-sort-name' => 'Ime',
+	'viewapc-ls-sort-modified' => 'Zadnje promijenjeno',
+	'viewapc-ls-sort-deleted' => 'Obrisano',
 	'viewapc-ls-limit-none' => 'Sve',
 );
 

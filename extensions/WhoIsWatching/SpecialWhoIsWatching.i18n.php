@@ -107,6 +107,16 @@ $messages['br'] = array(
 	'specialwhoiswatchingaddbtn' => 'Ouzhpennañ an implijerien diuzet',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'whoiswatching' => 'Ko pregleda wiki stranicu',
+	'whoiswatching-desc' => 'Omogućava spisak korisničkih imena koji pregledaju wiki stranicu',
+	'specialwhoiswatchingaddusers' => 'Dodaj korisnike da prate ovu stranicu',
+	'specialwhoiswatchingaddbtn' => 'Dodaj odabrane korisnike',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Purodha
@@ -415,9 +425,11 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'whoiswatching' => 'Quem Está a Vigiar uma página wiki',
+	'whoiswatching-desc' => 'Apresenta uma listagem de utilizadores que vigiam uma dada página',
 	'specialwhoiswatchingthepage' => 'Quem está a vigiar %s',
 	'specialwhoiswatchingusage' => 'Esta página especial não pode ser usada por si só. Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] para definir um ponto de entrada para esta página especial.',
 	'specialwhoiswatchingaddusers' => 'Adicionar utilizadores à vigilância da página',

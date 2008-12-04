@@ -93,6 +93,21 @@ $messages['bg'] = array(
 	'lookupuser-useroptions' => 'Потребителски настройки:',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'lookupuser-intro' => 'Unesite korisničko ime da biste vidjeli postavke tog korisnika.',
+	'lookupuser-nonexistent' => 'Greška: Korisnik ne postoji',
+	'lookupuser-authenticated' => 'potvrđeno $1',
+	'lookupuser-id' => 'Korisnički ID: <tt>#$1</tt>',
+	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'nije naveden',
+	'lookupuser-realname' => 'Pravo ime: $1',
+	'lookupuser-no-registration' => 'nije zabilježen',
+	'lookupuser-useroptions' => 'Korisničke postavke:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -181,6 +196,7 @@ $messages['eo'] = array(
 	'lookupuser-registration' => 'Dato de registrado: $1',
 	'lookupuser-no-registration' => 'ne registrita',
 	'lookupuser-touched' => 'Rikordo de uzanto estis laste ŝanĝita: $1',
+	'lookupuser-info-authenticated' => 'Retpoŝta aŭtentokontrolo: $1',
 	'lookupuser-useroptions' => 'Opcioj de uzanto:',
 );
 
@@ -228,8 +244,8 @@ $messages['gl'] = array(
 	'lookupuser' => 'Consultar a información do usuario',
 	'lookupuser-desc' => '[[Special:LookupUser|Recuperar información]] sobre un usuario como o enderezo de correo electrónico e o ID',
 	'lookupuser-intro' => 'Introduza un nome de usuario para ver as preferencias dese usuario.',
-	'lookupuser-nonexistent' => 'Erro: Non existe ese usuario',
-	'lookupuser-authenticated' => 'Autenticación por correo electrónico: $1',
+	'lookupuser-nonexistent' => 'Erro: ese usuario non existe',
+	'lookupuser-authenticated' => 'autenticado o $1',
 	'lookupuser-not-authenticated' => 'sen autenticar',
 	'lookupuser-id' => 'ID do usuario: <tt>nº$1</tt>',
 	'lookupuser-email' => 'Correo electrónico: [[Special:EmailUser/$2|$1]]',
@@ -238,6 +254,7 @@ $messages['gl'] = array(
 	'lookupuser-registration' => 'Data de rexistro: $1',
 	'lookupuser-no-registration' => 'non rexistrado',
 	'lookupuser-touched' => 'Rexistro do usuario tocado por última vez: $1',
+	'lookupuser-info-authenticated' => 'Autenticación por correo electrónico: $1',
 	'lookupuser-useroptions' => 'Opcións do usuario:',
 );
 
@@ -321,9 +338,12 @@ $messages['hsb'] = array(
 	'lookupuser-not-authenticated' => 'njeawtentizowany',
 	'lookupuser-id' => 'Wužiwarski ID: <tt>#$1</tt>',
 	'lookupuser-email' => 'E-mejl: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'njepodaty',
 	'lookupuser-realname' => 'Woprawdźite mjeno: $1',
 	'lookupuser-registration' => 'Datum registrowanja: $1',
+	'lookupuser-no-registration' => 'njezapřijaty',
 	'lookupuser-touched' => 'Posledni přistup na wužiwarske daty: $1',
+	'lookupuser-info-authenticated' => 'E-mejlowa awtentifikacija: $1',
 	'lookupuser-useroptions' => 'Wužiwarske opcije:',
 );
 
@@ -362,6 +382,7 @@ $messages['ia'] = array(
 	'lookupuser-registration' => 'Data de registration: $1',
 	'lookupuser-no-registration' => 'non disponibile',
 	'lookupuser-touched' => 'Ultime alteration del informationes del usator: $1',
+	'lookupuser-info-authenticated' => 'Authentication de e-mail: $1',
 	'lookupuser-useroptions' => 'Optiones del usator:',
 );
 
@@ -424,6 +445,7 @@ $messages['ja'] = array(
 	'lookupuser-registration' => '登録日: $1',
 	'lookupuser-no-registration' => '記録がありません',
 	'lookupuser-touched' => '利用者の最終記録: $1',
+	'lookupuser-info-authenticated' => 'Eメール認証: $1',
 	'lookupuser-useroptions' => '利用者オプション:',
 );
 
@@ -718,6 +740,7 @@ $messages['ru'] = array(
 	'lookupuser-registration' => 'Дата регистрации: $1',
 	'lookupuser-no-registration' => 'не записана',
 	'lookupuser-touched' => 'Последнее обновление записи участника: $1',
+	'lookupuser-info-authenticated' => 'Аутентификация по почте: $1',
 	'lookupuser-useroptions' => 'Настройки участника:',
 );
 
@@ -738,6 +761,7 @@ $messages['sk'] = array(
 	'lookupuser-registration' => 'Dátum registrácie: $1',
 	'lookupuser-no-registration' => 'nebol zaznamenaný',
 	'lookupuser-touched' => 'Posledný záznam používateľa: $1',
+	'lookupuser-info-authenticated' => 'Overenie emailu: $1',
 	'lookupuser-useroptions' => 'Nastavenia používateľa:',
 );
 

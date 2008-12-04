@@ -129,6 +129,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'stalepages' => 'spadnjene strony',
+	'stalepages-desc' => 'Wutworja [[Special:Stalepages|lisćinu stronow]], kotrež tuchwilu njebuchu wobdźěłane.',
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',
 );
 
@@ -255,9 +256,11 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'stalepages' => 'Páginas estagnadas',
+	'stalepages-desc' => 'Gera uma [[Special:Stalepages|lista de páginas]] que não foram editadas recentemente',
 	'stalepages-summary' => 'Esta é uma lista das páginas que não foram editadas nos últimos $1 dias.',
 );
 
