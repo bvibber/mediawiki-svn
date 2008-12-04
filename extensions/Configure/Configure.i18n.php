@@ -174,6 +174,7 @@ Please create it or change it to use this extension.',
 	'configure-throttle-summary'          => '$1 actions in $2 seconds.',
 	'configure-throttle-group'            => 'Type',
 	'configure-throttle-limit'            => 'Limit',
+	'configure-throttle-none'             => 'No limit',
 );
 
 /** Message documentation (Message documentation)

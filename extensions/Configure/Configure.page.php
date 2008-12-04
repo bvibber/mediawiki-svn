@@ -1026,8 +1026,14 @@ abstract class ConfigurationPage extends SpecialPage {
 					$id = 'wp'.$conf.'-key-'.$action.'-'.$type;
 					$left_col = Xml::tags( 'td', null, wfMsgExt( "configure-throttle-group-$type", 'parseinline' ) );
 					
-					$right_col = Xml::inputLabel( wfMsg( 'configure-throttle-count' ), "$id-count", "$id-count", 15, $count ) . ' <br /> ' .
-						Xml::inputLabel( wfMsg( 'configure-throttle-period' ), "$id-period", "$id-period", 15, $period );
+					if ($allowed) {
+						$right_col = Xml::inputLabel( wfMsg( 'configure-throttle-count' ), "$id-count", "$id-count", 15, $count ) . ' <br /> ' .
+							Xml::inputLabel( wfMsg( 'configure-throttle-period' ), "$id-period", "$id-period", 15, $period );
+					} else {
+						$right_col = ($count && $period) ? wfMsg( 'configure-throttle-summary', $count, $period ) : wfMsg( 'configure-throttle-none' );
+						## Laziness: Make summaries work by putting the data in hidden fields, rather than a special case in JS.
+						$right_col .= "\n" . Xml::hidden( "$id-count", $count, array( 'id' => "$id-count" ) ) . Xml::hidden( "$id-period", $period, array( 'id' => "$id-period" ) );
+					}
 					$right_col = Xml::tags( 'td', null, $right_col );
 					
 					$innerRows .= Xml::tags( 'tr', array( 'id' => $id), $left_col . $right_col ) . "\n";

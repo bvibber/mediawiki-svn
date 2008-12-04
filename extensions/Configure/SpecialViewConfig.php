@@ -195,8 +195,6 @@ class SpecialViewConfig extends ConfigurationPage {
 		$actions = array();
 		if ( $hasSelf )
 			$view = $skin->makeKnownLinkObj( $self, wfMsgHtml( 'configure-view' ), "version=$ts" );
-		else
-			$view = wfMsgHtml( 'configure-view' );
 
 		if ( $allowedAll ) {
 			$viewWikis = array();
@@ -211,7 +209,7 @@ class SpecialViewConfig extends ConfigurationPage {
 			if ( $hasSelf )
 				$editCore = $editMsg . $skin->makeKnownLinkObj( $configTitle, wfMsgHtml( 'configure-edit-core' ), "version=$ts" );
 			else
-				$editCore = $editMsg . wfMsgHtml( 'configure-edit-core' );
+				$editCore = $editMsg;
 
 			if ( $allowedConfigAll ) {
 				$viewWikis = array();
@@ -228,8 +226,6 @@ class SpecialViewConfig extends ConfigurationPage {
 				$editExt .= $editMsg;
 			if ( $hasSelf )
 				$editExt .= $skin->makeKnownLinkObj( $extTitle, wfMsgHtml( 'configure-edit-ext' ), "version=$ts" );
-			else
-				$editExt .= wfMsgHtml( 'configure-edit-ext' );
 
 			if ( $allowedExtensionsAll ) {
 				$viewWikis = array();
