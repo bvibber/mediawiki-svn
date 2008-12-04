@@ -254,12 +254,29 @@ abstract class ConfigurationDiff {
 				$val = $arrVal;
 			} else if ( $arrType == 'group-bool' ) {
 				$arrVal = array();
+				ksort($setting);
 				foreach ( $setting as $key1 => $value1 ) {
+					ksort($value1);
 					foreach ( $value1 as $key2 => $value2 ) {
-						$arrVal[] = "$key1, $key2: " . ( $value2 ? 'true' : 'false' );
+						if ($value2) // Only show 'true's
+							$arrVal[] = "$key1, $key2: " . 'true';
 					}
 				}
 				$val = $arrVal;
+			} else if ( $arrType == 'rate-limits' ) {
+				$val = array();
+				## Just walk the tree and print out the data.
+				foreach( $setting as $action => $limits ) {
+					foreach( $limits as $group => $limit ) {
+						if (is_array($limit) && count($limit) == 2) { // Only show set limits
+							list( $count, $period ) = $limit;
+							if ($count == 0 || $period == 0)
+								continue;
+							
+							$val[] = "$action, $group: " . wfMsg( 'configure-throttle-summary', $count, $period );
+						}
+					}
+				}
 			} else {
 				$val = explode( "\n", var_export( $setting, 1 ) );
 			}

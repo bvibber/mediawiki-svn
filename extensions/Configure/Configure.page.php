@@ -1026,7 +1026,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					$id = 'wp'.$conf.'-key-'.$action.'-'.$type;
 					$left_col = Xml::tags( 'td', null, wfMsgExt( "configure-throttle-group-$type", 'parseinline' ) );
 					
-					$right_col = Xml::inputLabel( wfMsg( 'configure-throttle-count' ), "$id-count", "$id-count", 15, $count ) . ' ' .
+					$right_col = Xml::inputLabel( wfMsg( 'configure-throttle-count' ), "$id-count", "$id-count", 15, $count ) . ' <br /> ' .
 						Xml::inputLabel( wfMsg( 'configure-throttle-period' ), "$id-period", "$id-period", 15, $period );
 					$right_col = Xml::tags( 'td', null, $right_col );
 					
