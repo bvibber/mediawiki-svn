@@ -246,7 +246,7 @@ class ApiConfigure extends ApiBase {
 						foreach( $limits as $group => $values ){
 							$count = isset( $values[0] ) ? $values[0] : 0;
 							$period = isset( $values[1] ) ? $values[1] : 0;
-							$arr[] = array( 'name' => $group, 'count' => $values[0], 'period' => $values[1] );
+							$arr[] = array( 'name' => $group, 'count' => $count, 'period' => $period );
 						}
 						$result->setIndexedTagName( $arr, 'group' );
 						$settingRet['values'][] = $arr;
