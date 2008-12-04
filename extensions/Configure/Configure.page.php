@@ -563,6 +563,27 @@ abstract class ConfigurationPage extends SpecialPage {
 						}
 					}
 					break;
+				case 'rate-limits':
+					$all = array();
+					## TODO put this stuff in a central place.
+					$validActions = array( 'edit', 'move', 'mailpassword', 'emailuser', 'rollback' );
+					$validGroups = array( 'anon', 'user', 'newbie', 'ip', 'subnet' );
+					
+					foreach( $validActions as $action ) {
+						$all[$action] = array();
+						foreach( $validGroups as $group ) {
+							$count = $wgRequest->getIntOrNull( "wp$name-key-$action-$group-count" );
+							$period = $wgRequest->getIntOrNull( "wp$name-key-$action-$group-period" );
+							
+							if ($count && $period) {
+								$all[$action][$group] = array( $count, $period );
+							} else {
+								$all[$action][$group] = null;
+							}
+						}
+					}
+					
+					$settings[$name] = $all;
 				}
 				break;
 			case 'text':
@@ -766,6 +787,8 @@ abstract class ConfigurationPage extends SpecialPage {
 		$biglist_show = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-show' ) );
 		$biglist_hide = Xml::encodeJsVar( wfMsg( 'configure-js-biglist-hide' ) );
 		$summary_none = Xml::encodeJsVar( wfMsg( 'configure-js-summary-none' ) );
+		$throttle_summary = Xml::encodeJsVar( wfMsg( 'configure-throttle-summary' ) );
+		
 		$ajax = isset( $wgUseAjax ) && $wgUseAjax ? 'true' : 'false';
 		$script = array(
 			"<script type=\"$wgJsMimeType\">/*<![CDATA[*/",
@@ -782,6 +805,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			"var wgConfigureBiglistShow = {$biglist_show};",
 			"var wgConfigureBiglistHide = {$biglist_hide};",
 			"var wgConfigureSummaryNone = {$summary_none};",
+			"var wgConfigureThrottleSummary = {$throttle_summary};",
 		 	"/*]]>*/</script>",
 			"<script type=\"{$wgJsMimeType}\" src=\"{$wgScriptPath}/extensions/Configure/Configure.js?{$wgConfigureStyleVersion}\"></script>",
 		);
@@ -873,6 +897,7 @@ abstract class ConfigurationPage extends SpecialPage {
 
 	/**
 	 * Build an input for an array setting
+	 * TODO Consolidate some of the duplicated code here.
 	 *
 	 * @param $conf String: setting name
 	 * @param $default Mixed: current value (but should be array :)
@@ -906,14 +931,12 @@ abstract class ConfigurationPage extends SpecialPage {
 			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
 
-			$classes = array('configure-array-table');
+			$classes = array('configure-array-table', 'assoc');
 
-			$classes[] = ($allowed ? 'assoc' : 'assoc disabled');
+			if (!$allowed)
+				$classes[] = 'disabled';
 			if (count($default) > 5)
 				$classes[] = 'configure-biglist';
-
-			if ( !$allowed )
-				$classes[] = 'disabled';
 
 			$text = Xml::openElement( 'table', array( 'class' => ( implode( ' ', $classes ) ),
 				'id' => $conf ) ) . "\n";
@@ -960,6 +983,63 @@ abstract class ConfigurationPage extends SpecialPage {
 			}
 			$text .= '</table>';
 			return $text;
+		}
+		if ($type == 'rate-limits') { ## Some of this is stolen from assoc, since it's an assoc with an assoc.
+			$keydesc = wfMsgExt( "configure-setting-$conf-key", 'parseinline' );
+			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			
+			if (wfEmptyMsg( "configure-setting-$conf-key", $keydesc ))
+				$keydesc = wfMsgHtml( 'configure-desc-key' );
+			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
+				$valdesc = wfMsgHtml( 'configure-desc-val' );
+				
+			$classes = array('configure-array-table', 'configure-rate-limits');
+
+			if (!$allowed)
+				$classes[] = 'disabled';
+			
+			$rows = Xml::tags( 'tr', null, Xml::tags( 'th', null, $keydesc ) . " " . Xml::tags( 'th', null, $valdesc ) )."\n";
+			
+			# TODO put this stuff in one place.
+			$validActions = array( 'edit', 'move', 'mailpassword', 'emailuser', 'rollback' );
+			$validGroups = array( 'anon', 'user', 'newbie', 'ip', 'subnet' );
+			
+			foreach( $validActions as $action ) {
+				$val = array();
+				if (@isset($default[$action]))
+					$val = $default[$action];
+				
+				$key = Xml::tags( 'td', null, wfMsgExt( "configure-throttle-action-$action", 'parseinline' ) );
+				
+				## Build YET ANOTHER ASSOC TABLE ARGH!
+				$innerRows = Xml::tags( 'tr', null, Xml::tags( 'th', null, wfMsgExt( 'configure-throttle-group', 'parseinline' ) ) . " " . Xml::tags( 'th', null, wfMsgExt( 'configure-throttle-limit', 'parseinline' ) ) )."\n";
+				foreach( $validGroups as $type ) {
+					$limits = null;
+					if (@isset($default[$action][$type]))
+						$limits = $default[$action][$type];
+					if (is_array($limits) && count($limits) == 2)
+						list($count, $period) = $limits;
+					else
+						$count = $period = 0;
+					
+					$id = 'wp'.$conf.'-key-'.$action.'-'.$type;
+					$left_col = Xml::tags( 'td', null, wfMsgExt( "configure-throttle-group-$type", 'parseinline' ) );
+					
+					$right_col = Xml::inputLabel( wfMsg( 'configure-throttle-count' ), "$id-count", "$id-count", 15, $count ) . ' ' .
+						Xml::inputLabel( wfMsg( 'configure-throttle-period' ), "$id-period", "$id-period", 15, $period );
+					$right_col = Xml::tags( 'td', null, $right_col );
+					
+					$innerRows .= Xml::tags( 'tr', array( 'id' => $id), $left_col . $right_col ) . "\n";
+				}
+				
+				$value = Xml::tags( 'td', null, Xml::tags( 'table', array( 'class' => 'configure-biglist configure-rate-limits-action' ), Xml::tags( 'tbody', null, $innerRows ) ) );
+				$rows .= Xml::tags( 'tr', null, $key.$value )."\n";
+			}
+			
+// 			header( 'Content-Type: text/plain' );
+// 			die( $rows );
+			
+			return Xml::tags( 'table', array( 'class' => implode( ' ', $classes ) ), Xml::tags( 'tbody', null, $rows ) );
 		}
 		if ( $type == 'simple-dual' ) {
 			$var = array();

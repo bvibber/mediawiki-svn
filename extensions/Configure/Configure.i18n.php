@@ -156,6 +156,24 @@ Please create it or change it to use this extension.',
 	'right-viewconfig-all'                => 'View all wiki configuration',
 	'right-viewconfig-interwiki'          => 'View foreign wiki configuration',
 	'viewconfig'                          => 'View wiki configuration',
+	
+	'configure-throttle-action-edit'      => 'Edit',
+	'configure-throttle-action-move'      => 'Move',
+	'configure-throttle-action-rollback'  => 'Rollback',
+	'configure-throttle-action-mailpassword' => 'Send password reminder',
+	'configure-throttle-action-emailuser' => 'Send mail',
+	
+	'configure-throttle-group-anon'       => 'All anonymous users',
+	'configure-throttle-group-user'       => 'Per user account',
+	'configure-throttle-group-newbie'     => 'Per new user account',
+	'configure-throttle-group-ip'         => 'Per IP address',
+	'configure-throttle-group-subnet'     => 'Per Class C subnet',
+	
+	'configure-throttle-count'            => 'Allowed actions:',
+	'configure-throttle-period'           => 'Reset period (seconds):',
+	'configure-throttle-summary'          => '$1 actions in $2 seconds.',
+	'configure-throttle-group'            => 'Type',
+	'configure-throttle-limit'            => 'Limit',
 );
 
 /** Message documentation (Message documentation)

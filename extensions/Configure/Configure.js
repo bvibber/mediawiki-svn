@@ -380,8 +380,8 @@ function summariseSetting( div, summary ) {
 		}
 		
 		summary.innerHTML = matches.join( ', ' ); // Be aware of velociraptors.
-	} else if ( isType( 'ns-array' ) || isType( 'ns-text' ) ) {
-		// Get the headers
+	} else if ( isType( 'ns-array' ) || isType( 'ns-text' ) || isType( 'configure-rate-limits-action' ) ) {
+		// Basic strategy: find all labels, and list the values of their corresponding inputs, if those inputs have a value
 		var header_key = undefined;
 		var header_value = undefined;
 		
@@ -390,7 +390,7 @@ function summariseSetting( div, summary ) {
 		header_value = getInnerText( headers[1] );
 		
 		var table = document.createElement( 'table' );
-		table.className = 'ns-array';
+		table.className = 'assoc';
 		table.appendChild( document.createElement( 'tbody' ) );
 		table = table.firstChild;
 		
@@ -406,25 +406,58 @@ function summariseSetting( div, summary ) {
 		
 		var rows = false;
 		
-		var labels = div.getElementsByTagName( 'label' );
-		for( var i=0; i<labels.length; ++i ) {
-			var label = labels[i];
-			var arrayfield = document.getElementById( label.htmlFor );
-			
-			if ( arrayfield && arrayfield.value ) {
-				rows = true;
+		if ( isType( 'configure-rate-limits-action' ) ) {
+			var allRows = div.getElementsByTagName( 'tr' );
+			for( var i=0; i<allRows.length; ++i ) {
+				var row = allRows[i];
+				var idparts = row.id.split( '-' );
+				var action = idparts[2];
+				var type = idparts[3];
+				var typeDesc = getInnerText( row.getElementsByTagName( 'td' )[0] );
+				var periodField = document.getElementById( row.id+'-period' );
+				var countField = document.getElementById( row.id+'-count' );
 				
-				tr = document.createElement( 'tr' );
-				var key_td = document.createElement( 'td' );
-				var value_td = document.createElement( 'td' );
+				if ( periodField && periodField.value>0 ) {
+					rows = true;
+					
+					tr = document.createElement( 'tr' );
+					var key_td = document.createElement( 'td' );
+					var value_td = document.createElement( 'td' );
+					
+					// Create a cute summary.
+					var summ = wgConfigureThrottleSummary;
+					summ = summ.replace( '$1', countField.value );
+					summ = summ.replace( '$2', periodField.value );
+					key_td.appendChild( document.createTextNode( typeDesc ) );
+					value_td.appendChild( document.createTextNode( summ ) );
+					
+					tr.appendChild( key_td );
+					tr.appendChild( value_td );
+					
+					table.appendChild( tr );
+				}
+			}
+		} else {
+			var labels = div.getElementsByTagName( 'label' );
+			for( var i=0; i<labels.length; ++i ) {
+				var label = labels[i];
+				var arrayfield = document.getElementById( label.htmlFor );
 				
-				key_td.appendChild( document.createTextNode( getInnerText( label ) ) );
-				value_td.appendChild( document.createTextNode( arrayfield.value ) );
-				
-				tr.appendChild( key_td );
-				tr.appendChild( value_td );
-				
-				table.appendChild( tr );
+				if ( arrayfield && arrayfield.value ) {
+					rows = true;
+					
+					tr = document.createElement( 'tr' );
+					var key_td = document.createElement( 'td' );
+					var value_td = document.createElement( 'td' );
+					
+					key_td.appendChild( document.createTextNode( getInnerText( label ) ) );
+					value_td.appendChild( document.createTextNode( arrayfield.value ) );
+					
+					tr.appendChild( key_td );
+					tr.appendChild( value_td );
+					
+					table.appendChild( tr );
+				}
 			}
 		}
 		
@@ -438,6 +471,7 @@ function summariseSetting( div, summary ) {
 		}
 		
 		summary.appendChild( table );
+	} else if ( isType( 'configure-rate-limits-action' ) ) {
 	} else {
 		summary.appendChild( document.createTextNode( 'Useless type:'+elementType ) );
 	}

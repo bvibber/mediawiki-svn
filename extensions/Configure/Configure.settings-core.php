@@ -766,7 +766,7 @@ $arrayDefs = array(
 	'wgWhitelistRead' => 'simple',
 	'wgSpamRegex' => 'simple',
 # Rate limits
-	'wgRateLimits' => 'array',
+	'wgRateLimits' => 'rate-limits',
 	'wgRateLimitsExcludedGroups' => 'simple',
 # Proxies
 	'wgProxyList' => 'simple',
