@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.10.15 - 5 December 2008
+  Fixed PHP notices on Special:ViewConfig.
+
 0.10.14 - 4 December 2008
   * Added support for $wgRateLimits
   * Don't show [+] for sections in TOC with only one subsection

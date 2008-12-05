@@ -193,8 +193,11 @@ class SpecialViewConfig extends ConfigurationPage {
 		}
 
 		$actions = array();
+		$view = '';
 		if ( $hasSelf )
-			$view = $skin->makeKnownLinkObj( $self, wfMsgHtml( 'configure-view' ), "version=$ts" );
+			$view .= $skin->makeKnownLinkObj( $self, wfMsgHtml( 'configure-view' ), "version=$ts" );
+		elseif( $allowedAll )
+			$view .= wfMsgHtml( 'configure-view' );
 
 		if ( $allowedAll ) {
 			$viewWikis = array();
@@ -203,11 +206,16 @@ class SpecialViewConfig extends ConfigurationPage {
 			}
 			$view .= ' (' . implode( ', ', $viewWikis ) . ')';
 		}
-		$actions[] = $view;
+
+		if( $view )
+			$actions[] = $view;
+
 		$editDone = false;
 		if ( $allowedConfig ) {
 			if ( $hasSelf )
 				$editCore = $editMsg . $skin->makeKnownLinkObj( $configTitle, wfMsgHtml( 'configure-edit-core' ), "version=$ts" );
+			elseif( $allowedConfigAll )
+				$editCore = $editMsg . wfMsgHtml( 'configure-edit-core' );
 			else
 				$editCore = $editMsg;
 
@@ -226,6 +234,8 @@ class SpecialViewConfig extends ConfigurationPage {
 				$editExt .= $editMsg;
 			if ( $hasSelf )
 				$editExt .= $skin->makeKnownLinkObj( $extTitle, wfMsgHtml( 'configure-edit-ext' ), "version=$ts" );
+			elseif( $allowedExtensionsAll )
+				$editExt .= wfMsgHtml( 'configure-edit-ext' );
 
 			if ( $allowedExtensionsAll ) {
 				$viewWikis = array();
