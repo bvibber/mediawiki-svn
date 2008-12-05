@@ -3,7 +3,7 @@
  * create JavaScript buttons to allow to modify the form to have more
  * flexibility
  */
- 
+
  var allSettings = undefined;
 
 function setupConfigure(){
@@ -45,7 +45,7 @@ function setupConfigure(){
 			if (i === 0) {
 				li.className = 'selected';
 			}
-			
+
 			var headers = children[i].getElementsByTagName( 'h2' );
 			var tables = getElementsByClassName( children[i], 'table', 'configure-table' );
 
@@ -79,7 +79,7 @@ function setupConfigure(){
 				var ul = document.createElement( 'ul' );
 				ul.style.display = "none";
 				ul.id = "config-toc-" + i;
-				
+
 				for( var subsect = 0; subsect < len; subsect++ ){
 					headers[subsect].id = 'config-head-' + i + '-' + subsect;
 					tables[subsect].id = 'config-table-' + i + '-' + subsect;
@@ -235,26 +235,26 @@ function setupConfigure(){
 			}
 		}
 	}
-	
+
 	/** Collapsible big lists */
 	var biglists = getElementsByClassName( configform, '*', 'configure-biglist' );
-	
+
 	for( var l = 0; l < biglists.length; l++ ) {
 		var list = biglists[l];
-		
+
 		list.id = 'configure-biglist-content-'+l;
 		list.style.display = 'none';
-		
+
 		var tn = document.createTextNode( wgConfigureBiglistHidden );
 		var div = document.createElement( 'div' );
 		var toggleLink = document.createElement( 'a' );
-		
+
 		toggleLink.appendChild( document.createTextNode( wgConfigureBiglistShow ) );
 		toggleLink.className = 'configure-biglist-toggle-link';
 		toggleLink.onclick = createToggleCallback( l );
 		toggleLink.id = 'configure-biglist-link-'+l;
 		toggleLink.href = 'javascript:';
-		
+
 		div.id = 'configure-biglist-placeholder-'+l;
 		div.className = 'configure-biglist-placeholder';
 		div.appendChild( tn );
@@ -268,43 +268,43 @@ function setupConfigure(){
 		 summariseSetting( list, summary );
 		 list.parentNode.insertBefore( summary, list );
 	}
-	
+
 	/** Search box initialise */
 	buildSearchIndex();
-	
+
 	// Insert a little search form just before the configuration form
 	document.getElementById( 'configure-search-form' ).style.display = 'block';
 	addHandler( document.getElementById( 'configure-search-input' ), 'keyup', function() { doSearch( this.value ); } )
 }
 
 function doSearch( query ) {
-	query = query.toLowerCase();
-		
+	query = document.getElementById( 'configure-search-input' ).value.toLowerCase();
+
 	var results = document.getElementById( 'configure-search-results' );
-	
+
 	// Empty the existing results
 	while( results.firstChild ) {
 		results.removeChild(results.firstChild);
 	}
-	
+
 	if ( query == '' ) {
 		return;
 	}
-	
+
 	var isMatch = function(element) { return element.description.indexOf( query ) !== -1; }
 	for( var i=0; i<allSettings.length; ++i ) {
 		var data = allSettings[i];
 		if ( isMatch( data ) ) {
 			var a = document.createElement( 'a' );
 			var li = document.createElement( 'li' );
-			
+
 			a.href = '#config-head-'+data.fid+'-'+data.sid;
 			addHandler( a, 'click', configToggle );
 			a.confSec = data.fid;
 			a.confSub = data.sid;
 			a.appendChild( document.createTextNode( data.displayDescription ) );
 			li.appendChild( a );
-			
+
 			results.appendChild( li );
 		}
 	}
@@ -312,7 +312,7 @@ function doSearch( query ) {
 
 function buildSearchIndex() {
 	allSettings = [];
-	
+
 	// For each section...
 	var rootElement = document.getElementById( 'configure' );
 	var fieldsets = rootElement.getElementsByTagName( 'fieldset' );
@@ -329,28 +329,32 @@ function buildSearchIndex() {
 				subsection = subsections[sid];
 			}
 			var heading = document.getElementById( subsection.parentNode.id.replace( 'config-table', 'config-head' ) );
-			
+
 			// For each setting...
 			for( var i=0; i<subsection.childNodes.length;++i ) {
-				
 				var row = subsection.childNodes[i];
-				if ( row.nodeType != row.ELEMENT_NODE || ( row.tagName != 'tr' && row.tagName != 'TR' ) ) {
+				if( typeof row.ELEMENT_NODE == "undefined" ){
+					var wantedType = 1; // ELEMENT_NODE
+				} else {
+					var wantedType = row.ELEMENT_NODE;
+				}
+				if ( row.nodeType != wantedType || ( row.tagName != 'tr' && row.tagName != 'TR' ) ) {
 					continue;
 				}
-					
+
 				var desc_cell = getElementsByClassName( row, 'td', 'configure-left-column' )[0];
 				if( typeof desc_cell == "undefined" ){
 					continue;
 				}
 
 				var description;
-				
+
 				if ( desc_cell.getElementsByTagName( 'p' ).length ) { // Ward off comments like "This setting has been customised"
 					description = getInnerText( desc_cell.getElementsByTagName( 'p' )[0] );
 				} else {
 					description = getInnerText( desc_cell );
 				}
-				
+
 				allSettings.push( { 'description': description.toLowerCase(), 'fid':fid+1, 'sid':sid, 'displayDescription': description } );
 			}
 		}
@@ -363,12 +367,12 @@ function summariseSetting( div, summary ) {
 	while(summary.firstChild) {
 		summary.removeChild(summary.firstChild);
 	}
-	
+
 	// Based on class, do something.
 	var elementType = ' '+div.className+' ';
-	
+
 	var isType = function(type) { return elementType.indexOf( ' '+type+' ' ) !== -1; }
-	
+
 	if (isType('assoc') ) {
 		// If it's too big to display as an associative array, it's too big to display as a summary.
 	} else if ( isType( 'ns-bool' ) || isType( 'ns-simple' ) || isType( 'group-bool-element' ) || isType( 'group-array-element' ) ) {
@@ -377,39 +381,39 @@ function summariseSetting( div, summary ) {
 		for( var i=0; i<labels.length; ++i ) {
 			var label = labels[i];
 			var checkbox = document.getElementById( label.htmlFor );
-			
+
 			if (checkbox.checked) {
 				matches.push( label.innerHTML ); // Yuck
 			}
 		}
-		
+
 		summary.innerHTML = matches.join( ', ' ); // Be aware of velociraptors.
 	} else if ( isType( 'ns-array' ) || isType( 'ns-text' ) || isType( 'configure-rate-limits-action' ) ) {
 		// Basic strategy: find all labels, and list the values of their corresponding inputs, if those inputs have a value
 		var header_key = undefined;
 		var header_value = undefined;
-		
+
 		var headers = div.getElementsByTagName( 'th' );
 		header_key = getInnerText( headers[0] );
 		header_value = getInnerText( headers[1] );
-		
+
 		var table = document.createElement( 'table' );
 		table.className = 'assoc';
 		table.appendChild( document.createElement( 'tbody' ) );
 		table = table.firstChild;
-		
+
 		var tr = document.createElement( 'tr' );
 		var key_th = document.createElement( 'th' );
 		var value_th = document.createElement( 'th' );
 		key_th.appendChild( document.createTextNode( header_key ) );
 		value_th.appendChild( document.createTextNode( header_value ) );
-		
+
 		tr.appendChild( key_th );
 		tr.appendChild( value_th );
 		table.appendChild( tr );
-		
+
 		var rows = false;
-		
+
 		if ( isType( 'configure-rate-limits-action' ) ) {
 			var allRows = div.getElementsByTagName( 'tr' );
 			for( var i=0; i<allRows.length; ++i ) {
@@ -420,24 +424,24 @@ function summariseSetting( div, summary ) {
 				var typeDesc = getInnerText( row.getElementsByTagName( 'td' )[0] );
 				var periodField = document.getElementById( row.id+'-period' );
 				var countField = document.getElementById( row.id+'-count' );
-				
+
 				if ( periodField && periodField.value>0 ) {
 					rows = true;
-					
+
 					tr = document.createElement( 'tr' );
 					var key_td = document.createElement( 'td' );
 					var value_td = document.createElement( 'td' );
-					
+
 					// Create a cute summary.
 					var summ = wgConfigureThrottleSummary;
 					summ = summ.replace( '$1', countField.value );
 					summ = summ.replace( '$2', periodField.value );
 					key_td.appendChild( document.createTextNode( typeDesc ) );
 					value_td.appendChild( document.createTextNode( summ ) );
-					
+
 					tr.appendChild( key_td );
 					tr.appendChild( value_td );
-					
+
 					table.appendChild( tr );
 				}
 			}
@@ -446,25 +450,25 @@ function summariseSetting( div, summary ) {
 			for( var i=0; i<labels.length; ++i ) {
 				var label = labels[i];
 				var arrayfield = document.getElementById( label.htmlFor );
-				
+
 				if ( arrayfield && arrayfield.value ) {
 					rows = true;
-					
+
 					tr = document.createElement( 'tr' );
 					var key_td = document.createElement( 'td' );
 					var value_td = document.createElement( 'td' );
-					
+
 					key_td.appendChild( document.createTextNode( getInnerText( label ) ) );
 					value_td.appendChild( document.createTextNode( arrayfield.value ) );
-					
+
 					tr.appendChild( key_td );
 					tr.appendChild( value_td );
-					
+
 					table.appendChild( tr );
 				}
 			}
 		}
-		
+
 		if (!rows) {
 			tr = document.createElement( 'tr' );
 			var td = document.createElement( 'td' );
@@ -473,7 +477,7 @@ function summariseSetting( div, summary ) {
 			tr.appendChild( td );
 			table.appendChild( tr );
 		}
-		
+
 		summary.appendChild( table );
 	} else if ( isType( 'configure-rate-limits-action' ) ) {
 	} else {
@@ -491,7 +495,7 @@ function createToggleCallback( id ){
 		var act;
 		var newLinkText;
 		var newPlaceholderText;
-		
+
 		if (toggleLink.firstChild.nodeValue == wgConfigureBiglistShow) {
 			act = 'show';
 			newLinkText = wgConfigureBiglistHide;
@@ -506,10 +510,10 @@ function createToggleCallback( id ){
 			summariseSetting( content, summary );
 			newPlaceholderText = wgConfigureBiglistHidden
 		}
-		
+
 		toggleLink.removeChild( toggleLink.firstChild );
 		toggleLink.appendChild( document.createTextNode( newLinkText ) );
-		
+
 		div.removeChild( div.childNodes[1] );
 		div.appendChild( document.createTextNode( newPlaceholderText ) );
 	}
