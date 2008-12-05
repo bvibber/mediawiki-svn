@@ -25,6 +25,29 @@ define('MV_BASE_MEDIA_SERVER_PATH', 'http://mvbox2.cse.ucsc.edu/mvFlvServer.php/
 //mencoder based (good)
 $flvEncodeCommand = 'mencoder $input -noskip -mc 0 -o $output -of lavf -oac mp3lame -lameopts abr:br=32 -ovc lavc -lavcopts vcodec=flv:vbitrate=250:mbd=2:mv0:trell:v4mv:cbp:last_pred=3 -vf scale=400:300 -srate 22050 -lavfopts i_certify_that_my_video_stream_does_not_use_b_frames';
 
+if ( count( $args ) == 0 || isset ( $options['help'] ) ) {
+	print<<<EOT
+Run transcode for HQ oggs 
+from dir: $mvMountedSource *.HQ.ogg 
+to dir: $mvMountedDest *.flv 
+
+default: 
+	only gennerates flvs where the ogg exists and a flv is missing
+	
+arguments:
+	generate_new_flv // used if you do a new set flv encode (will remove old flv in place)
+	 	
+
+EOT;
+	exit ();
+}
+$genNewFlv = false;
+switch ( $args[0] ) {
+	case 'generate_new_flv' :
+		$genNewFlv = true;
+	break;
+}
+
 $doneWithTrascode=false;
 while($doneWithTrascode==false){
 	$doneWithTrascode=true;
@@ -47,7 +70,11 @@ while($doneWithTrascode==false){
 		if(substr($source_file, -7)=='.HQ.ogg'){					
 			//gennerate flash file name: 
 			$stream_name = substr( $source_file,0,(strlen($source_file)-7)); 
-			$local_fl =$mvMountedDest . $stream_name . '.new.flv';
+			if($genNewFlv){
+				$local_fl =$mvMountedDest . $stream_name . '.new.flv';
+			}else{
+				$local_fl =$mvMountedDest . $stream_name . '.flv';
+			}
 			clearstatcache();
 			if(!is_file($local_fl)){
 				$doneWithTrascode=false;
@@ -85,20 +112,20 @@ while($doneWithTrascode==false){
 					//update db: 
 					update_flv_pointer_db($stream_name);	
 					//remove the old local_file: 
-					unlink($mvMountedDest . $stream_name . '.flv');
-					unlink($mvMountedDest . $stream_name . '.flv'.META_DATA_EXT);
-					//move file to "live" location
-					rename($local_fl, $mvMountedDest . $stream_name . '.flv');
-					rename($local_fl.META_DATA_EXT, $mvMountedDest . $stream_name . '.flv'.META_DATA_EXT);
-					//keep an empty file in place of .new (so we don't re-do this same stream) 
-					file_put_contents($local_fl, ' -async 2 done ');
-					file_put_contents($local_fl.META_DATA_EXT, ' -async 2 meta done ');
-					//print "put zeor size file_contents";
-					
+					if($genNewFlv){
+						unlink($mvMountedDest . $stream_name . '.flv');
+						unlink($mvMountedDest . $stream_name . '.flv'.META_DATA_EXT);
+						//move file to "live" location
+						rename($local_fl, $mvMountedDest . $stream_name . '.flv');
+						rename($local_fl.META_DATA_EXT, $mvMountedDest . $stream_name . '.flv'.META_DATA_EXT);
+						//keep an empty file in place of .new (so we don't re-do this same stream) 
+						file_put_contents($local_fl, ' -async 2 done ');
+						file_put_contents($local_fl.META_DATA_EXT, ' -async 2 meta done ');
+					}										//					
 					break; //break out of forloop					
 				}
 			}else{
-				print "skiped HQ_File: {$mvMountedSource}{$source_file} \n";			
+				print "skipped HQ_File: {$source_file} (local .flv file already exists)  \n";			
 			}
 		 }
 	}

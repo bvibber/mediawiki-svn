@@ -17,6 +17,7 @@ actions:
 	strip_speech_by  //strips extra speech by text
 	update_stream_desc //updates stream desc
 	update_archive_org_files [stream_name] //updates pointers to archive.org mp4 streaming
+	update_flv_meta //gennerates meta data for all .flv files in /metavid/video_archive
 
 EOT;
 	exit ();
@@ -32,6 +33,9 @@ switch ( $args[0] ) {
 	break;
 	case 'update_stream_desc':
 		update_stream_desc();
+	break;
+	case 'update_flv_meta':
+		update_flv_meta();
 	break;
 	case 'update_archive_org_files':
 		$stream_name = (isset( $args[1] ))?$args[1]:''; 		
@@ -73,7 +77,29 @@ function run_archive_org_update($stream_name=''){
 		}
 	}
 }
-
+function update_flv_meta(){
+	$path = '/metavid/video_archive/';
+	$flist =  scandir($path);
+	require_once('../skins/mv_embed/flvServer/MvFlv.php');
+	foreach($flist as $local_fl){			
+		print "lf: is_file(" . $path . $local_fl . ")\n";		
+		if( is_file($path.$local_fl) && substr($local_fl, -3)=='flv'){	
+			//check for .meta
+		
+			if(!is_file($path . $local_fl .'.meta')){				
+				echo "generating flv metadata for {$path}{$local_fl} \n";		
+				$flv = new MyFLV();
+				try {
+					$flv->open( $path . $local_fl );
+				} catch (Exception $e) {
+					die("<pre>The following exception was detected while trying to open a FLV file:\n" . $e->getMessage() . "</pre>");
+				}
+				$flv->getMetaData();
+				echo "done with .meta (" . filesize($path.$local_fl.META_DATA_EXT).") \n";
+			}
+		}
+	}
+}
 function update_stream_desc(){
 	/*==Official Record==
 *[[GovTrack]] Congressional Record[http://www.govtrack.us/congress/recordindex.xpd?date=20080609&where=h]
