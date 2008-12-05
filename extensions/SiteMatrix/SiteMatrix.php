@@ -19,7 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'sitematrix-desc',
 );
 
-$wgSiteMatrixFile = '/home/wikipedia/common/langlist';
+$wgSiteMatrixFile = '/apache/common/langlist';
 $wgSiteMatrixSites = array(
 	'wiki' => array(
 		'name' => 'Wikipedia',
