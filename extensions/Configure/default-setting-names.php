@@ -13,6 +13,7 @@ $defaultNames = array(
 	'wgDiff3' => "Path to the GNU diff3 utility",
 	'wgFavicon' => "The URL of the site favicon",
 	'wgLogo' => "The URL of the site logo",
+	'wgNullFile' => "Path to null output",
 	'wgPhpCli' => "Executable name of PHP cli client (php/php5)",
 	'wgRedirectScript' => "The URL of redirect.php, needed for backwards compatibility",
 	'wgScript' => "The URL of index.php",
