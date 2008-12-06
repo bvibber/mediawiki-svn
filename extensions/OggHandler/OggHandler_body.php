@@ -441,8 +441,8 @@ EOT
 
 			$jsUserHash = sha1( $wgUser->getName() . $wgProxyKey );
 			$enUserHash = Xml::encodeJsVar( $jsUserHash );			
-						
-			$out->addHeadItem('playerStatsCollection',  <<<EOT
+
+			$out->addHeadItem( 'playerStatsCollection',  <<<EOT
 <script type="text/javascript">
 wgOggPlayer.userHash = $enUserHash;
 </script>	
