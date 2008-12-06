@@ -14,8 +14,7 @@
  // enables inline editing of media files
  // enables 
 
- // enables "protected" metadata ie strips all 
- // occurrences of semantic property from page (such as stream duration)
+ // enables "protected" metadata ie strips all occurrences of semantic property from page (such as stream duration)
  class MV_EditStreamPage extends EditPage {
  	var $mv_action = '';
  	var $status_error = '';

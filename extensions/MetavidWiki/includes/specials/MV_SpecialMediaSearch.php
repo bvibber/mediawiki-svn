@@ -98,8 +98,6 @@ class MV_SpecialMediaSearch {
 			// @@todo cleaner exit
 			// exit ();
 		} else {
-			// add nessesary js to wgOut:
-			mvfAddHTMLHeader( 'search' );
 			// add the search placeholder
 			// $wgOut->addWikiText( wfMsg( 'searchresulttext' ) );
 			$sk = $wgUser->getSkin();

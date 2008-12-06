@@ -13,29 +13,31 @@
  // make sure the parent class mv_component is included
 
  class MV_SequencePlayer{
+ 	private $oldid='';
  	function __construct( &$seqTitle ){
  		$this->seqTitle = $seqTitle; 		
  	}
  	function getEmbedSeqHtml( $options=array() ){ 	
  		global $mvDefaultVideoPlaybackRes;
- 		if( $options['oldid'] )$oldid = $options['oldid'];	
-		
- 		$exportTitle = Title::MakeTitle( NS_SPECIAL, 'MvExportSequence/' . $this->seqTitle->getDBKey() );
-		$title_url = $exportTitle->getFullURL();						
-		
-		if ( isset( $options['oldid'] ) ) {			
-			$ss = ( strpos( $title_url, '?' ) === false ) ? '?':'&';
-			$title_url .= $ss . 'oldid=' . htmlspecialchars( $options['oldid'] );
-		}
+ 		if( isset( $options['oldid'] ) ) 
+ 			$this->oldid  = $options['oldid'];			 										
 		
 		if ( isset( $options['size'] ) ){			
 			list($width, $height) = explode( 'x', $options['size'] );
 		}else{			
 			list($width, $height) = explode( 'x', $mvDefaultVideoPlaybackRes);
-		}
-		
+		}		
 		return '<playlist width="' . htmlspecialchars($width) . '" height="'. htmlspecialchars($height) .'" '.
-					'src="' . $title_url . '"></playlist>';
+					'src="' . $this->getExportUrl() . '"></playlist>';
+ 	}
+ 	function getExportUrl(){
+ 		$exportTitle = Title::MakeTitle( NS_SPECIAL, 'MvExportSequence/' . $this->seqTitle->getDBKey() );
+ 		$export_url = $exportTitle->getFullURL();
+ 		if($this->oldid!=''){
+ 			$ss = ( strpos( $export_url, '?' ) === false ) ? '?':'&';
+			$export_url .= $ss . 'oldid=' . htmlspecialchars( $this->oldid );
+ 		}
+ 		return $export_url;
  	}
  }
 ?>

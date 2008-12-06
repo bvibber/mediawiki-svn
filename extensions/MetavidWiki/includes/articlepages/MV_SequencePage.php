@@ -23,7 +23,7 @@ class MV_SequencePage extends Article {
 	var $aHLRD = array(); 	//array representation of high level resource description
 	function __construct( $title ) {
 		global $wgRequest;		
-		return parent::__construct( $title );
+		return parent::__construct( $title );		
 	}
 	/*
 	 * returns the xml output of the sequence with all wiki-text templates/magic words swapped out

@@ -58,8 +58,6 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 				}
 				$vidH = round( $this->mWidths * $mvDefaultAspectRatio );
 				$vidRes = $this->mWidths . 'x' . $vidH;
-				// make sure we have the mv_embed header:
-				mvfAddHTMLHeader( 'embed' );
 				// print "img url: " . 	$mvTitle->getStreamImageURL();
 				$thumbhtml = "\n\t\t\t" .
 					'<div class="thumb" style="padding: 4px 0; width: ' . htmlspecialchars( $this->mWidths + 5 ) . 'px;">'

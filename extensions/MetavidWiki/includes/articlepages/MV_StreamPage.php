@@ -49,7 +49,6 @@ class MV_StreamPage extends Article {
 		// @@TODO fix stream view() for old versions ... will likely have to replicate Article::view() 
 
 		// include the metavid headers (for embedding video in the page) 
-		mvfAddHTMLHeader( 'stream_interface' );
 			
 		// copied from CategoryPage ...
 		$diff = $wgRequest->getVal( 'diff' );
@@ -65,7 +64,7 @@ class MV_StreamPage extends Article {
 		wfProfileIn( __METHOD__ );
 		$MV_MetavidInterface = new MV_MetavidInterface( 'stream', $this );
 		// will require the mv_embed script for video playback:		
-		mvfAddHTMLHeader( 'stream_interface' );
+		//mvfAddHTMLHeader( 'stream_interface' );
 		$MV_MetavidInterface->render_full();
 		wfProfileOut( __METHOD__ );
 	}

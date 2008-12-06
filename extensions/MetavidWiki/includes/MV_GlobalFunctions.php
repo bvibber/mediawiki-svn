@@ -24,7 +24,7 @@ require_once( $mvgIP . '/languages/MV_Language.php' );
 $wgExtensionAliasesFiles['MetavidWiki'] = $mvgIP . '/languages/MV_Aliases.php';
 
 $markerList = array();
-
+$mvGlobalJSVariables = array();
 // override special search page:
 $wgSpecialPages['Search'] = 'MV_SpecialSearch';
 $wgAutoloadClasses['MV_SpecialSearch'] = dirname( __FILE__ ) . '/specials/MV_SpecialMediaSearch.php';
@@ -104,9 +104,11 @@ function mvSetupExtension() {
 	$wgAutoloadClasses['MV_Component'] 			= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_Component.php';
 	
 	$wgAutoloadClasses['MV_MetavidInterface']	= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_MetavidInterface.php';
+	
 	$wgAutoloadClasses['MV_SequencePlayer']		= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_SequencePlayer.php';
 	$wgAutoloadClasses['MV_SequenceTools']		= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_SequenceTools.php';
-	$wgAutoloadClasses['MV_SequenceTimeline']	= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_SequenceTimeline.php';
+	$wgAutoloadClasses['MV_EditSequencePage']	= dirname( __FILE__ )  . '/MV_EditSequencePage.php';
+	
 	$wgAutoloadClasses['MV_VideoPlayer']		= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_VideoPlayer.php';
 	$wgAutoloadClasses['MV_Tools']				= dirname( __FILE__ )  . '/MV_MetavidInterface/MV_Tools.php';
 	$wgAutoloadClasses['MV_Navigator']			= dirname( __FILE__ )	 . '/MV_MetavidInterface/MV_Navigator.php';
@@ -137,8 +139,8 @@ function mvSetupExtension() {
 	$wgSpecialPages['Mv_Add_Stream']		   	=  array( 'MV_SpecialCRUDStream' );
 	
 	$wgAutoloadClasses['MV_SpecialListStreams']	= dirname( __FILE__ ) . '/specials/MV_SpecialListStreams.php';
-	$wgSpecialPages['Mv_List_Streams']		   	= array( 'MV_SpecialListStreams' );
-			
+	$wgSpecialPages['Mv_List_Streams']		   	= array( 'MV_SpecialListStreams' );				
+	
 	/* special export views */
 	$wgAutoloadClasses['MV_SpecialExport']		= dirname( __FILE__ ) . '/specials/MV_SpecialExport.php';
 	
@@ -181,6 +183,8 @@ function mvSetupExtension() {
 	$wgHooks['LinkEnd'][] 					= 'mvLinkEnd';
 	$wgHooks['LinkBegin'][] 				= 'mvLinkBegin';
 	
+	$wgHooks['MakeGlobalVariablesScript'][]	= 'mvGlobalJSVariables';
+	
 	//our move function hanndles calling SMW hook
 	foreach($wgHooks['TitleMoveComplete'] as $k=>$f){
  		if($f=='smwfMoveHook'){
@@ -218,22 +222,24 @@ function mvSetupExtension() {
 	* OggHandler extension overrides
 	* if the OggHandler is included remap the object for compatibility with metavid
 	* MV_OggHandler.php handles all the re-mapping
-	*/		
-	if($wgMediaHandlers['application/ogg'] == 'OggHandler'){
-		$wgAutoloadClasses['mvOggHandler']			= dirname( __FILE__ )  . '/MV_OggHandler.php';
-		$wgMediaHandlers['application/ogg']='mvOggHandler';		
-		$wgParserOutputHooks['OggHandler'] = array( 'mvOggHandler', 'outputHook' );
-		foreach($wgHooks['LanguageGetMagic'] as & $hook_function){
-			if($hook_function=='OggHandler::registerMagicWords'){
-				$hook_function='mvOggHandler::registerMagicWords';
+	*/
+	if(isset($wgMediaHandlers['application/ogg'])){		
+		if($wgMediaHandlers['application/ogg'] == 'OggHandler'){
+			$wgAutoloadClasses['mvOggHandler']			= dirname( __FILE__ )  . '/MV_OggHandler.php';
+			$wgMediaHandlers['application/ogg']='mvOggHandler';		
+			$wgParserOutputHooks['OggHandler'] = array( 'mvOggHandler', 'outputHook' );
+			foreach($wgHooks['LanguageGetMagic'] as & $hook_function){
+				if($hook_function=='OggHandler::registerMagicWords'){
+					$hook_function='mvOggHandler::registerMagicWords';
+				}
 			}
-		}
-		foreach($wgExtensionCredits as & $ext){
-			 if(isset($ext['name'])){
-				 if($ext['name']=='OggHandler'){
-				 	$ext['description'].=' Integrated with the <b>MetaVidWiki Extension</b>';
+			foreach($wgExtensionCredits as & $ext){
+				 if(isset($ext['name'])){
+					 if($ext['name']=='OggHandler'){
+					 	$ext['description'].=' Integrated with the <b>MetaVidWiki Extension</b>';
+					 }
 				 }
-			 }
+			}
 		}
 	}
 
@@ -285,7 +291,7 @@ function mvMagicParserFunction_Render( &$parser ) {
 	 * enables linkback and autocomplete for search
 	 */
 function mvfAutoAllPageHeader() {
-	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader;
+	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $wgTitle;
 	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
 	$wgJsMimeType = htmlspecialchars( $wgJsMimeType ) ;
 	/* (moved to on_dom ready)  but here as well*/
@@ -295,7 +301,8 @@ function mvfAutoAllPageHeader() {
 		
 	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>" );
 	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js\"></script>" );
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js\"></script>" );
+	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js\"></script>" );			
+	
 	
 	$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
 	$wgOut->addLink( array(
@@ -307,6 +314,21 @@ function mvfAutoAllPageHeader() {
 	
 	$wgOut->addScript( $mvExtraHeader );
 }
+function mvAddPerNamespaceJS( &$title ){
+	global $mvgScriptPath, $wgJsMimeType, $wgOut;
+	if( $title->getNamespace() == MV_NS_STREAM )
+		$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_stream.js\" ></script>" );	
+}
+function mvAddGlobalJSVariables( $values ){
+	global $mvGlobalJSVariables;
+	$mvGlobalJSVariables = array_merge($mvGlobalJSVariables, $values); ;
+}
+function mvGlobalJSVariables( $vars ){
+	global $mvGlobalJSVariables;
+	$vars = array_merge($vars, $mvGlobalJSVariables); 
+	return true;
+}
+
 	/**
 	*  This method is in charge of inserting additional CSS, JScript, and meta tags
 	*  into the html header of each page.  It is called by pages 
@@ -316,19 +338,26 @@ function mvfAutoAllPageHeader() {
 	*
 	*  $out is the modified OutputPage.
 	*/
-	function mvfAddHTMLHeader( $head_set = '' ) {
+	/*function mvfAddHTMLHeader( $head_set = '' ) {
 		global $mvgHeadersInPlace; // record whether headers were created already (don't call mvfAddHTMLHeader twice)
 		global $mvgArticleHeadersInPlace; // record whether article name specific headers are already there
 		global $mvgScriptPath, $wgJsMimeType, $wgOut , $mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite;
 			
+		print "HEAD SET:$head_set ";
+			die;		
 		if ( !$mvgHeadersInPlace ) {
 			// all sets use mv_common script: *not used much yet*  
 			$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_common.js\"></script>" );
-					
+			//we always want mv_embed (for metavid pages) (should be cached) 	
 			if ( $head_set == 'smw_ext' || $head_set == 'search' || $head_set == 'sequence' || $head_set == 'stream_interface' || $head_set == 'embed' ) {
 				if ( !( $mvEnableAutoComplete || $mvEnableJSLinkBack || $mvEnableJSMVDrewrite ) ) {
 					$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>" );
 				}
+			}
+			
+			if( $head_set == 'sequence' ){
+				//add the sequence page helper
+				$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_sequence_page.js\"></script>" );
 			}
 			
 			if ( $head_set == 'search' )
@@ -369,7 +398,7 @@ if(navigator.userAgent.toLowerCase().indexOf('safari')!=-1){
 			$mvgHeadersInPlace = true;
 		}
 		return true; // always return true, in order not to stop MW's hook processing!
-	}
+	}*/
 /**
  * Init the additional namepsaces used by Metavid MediaWiki. The
  * parameter denotes the least unused even namespace ID that is

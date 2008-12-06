@@ -134,8 +134,8 @@
  
  class MV_EditDataPage extends EditPage {
  	function getPreviewText() {
- 		// enable embed video:
- 		mvfAddHTMLHeader( 'embed' );
+ 		// enable embed video: (disabled) 
+ 		//mvfAddHTMLHeader( 'embed' );
  		$html = '';
  		$html .= '<span style="float:left;margin:10px;">';
 		$html .= $this->mArticle->mvTitle->getEmbedVideoHtml();

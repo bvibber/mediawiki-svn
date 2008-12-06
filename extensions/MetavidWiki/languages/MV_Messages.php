@@ -271,6 +271,13 @@ very <b>limited</b> functionality right now. Click on a Clip to edit that resour
 	'mv_sequence_add_search_desc' => 'Add clips by media search',
 	'mv_seq_add_end' => 'Add to end of sequence',
 
+	'mv_sequence_edit_text' => 'Switch to Text Editor',
+	'mv_sequence_edit_visual_editor' => 'Switch to Visual Editor',
+	
+	'mv_other_options' => 'Other Options',	
+	'mv_contextmenu_opt' => 'Enable Context Menus',
+	
+
 	'mv_sequence_timeline' => 'Sequence timeline:',
 	'mv_edit_sequence_desc_help' => 'Sequence description',
 	'mv_edithelpsequence' => 'Help:Sequence_Editing',

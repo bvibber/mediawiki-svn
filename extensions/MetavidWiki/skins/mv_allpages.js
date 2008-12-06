@@ -16,11 +16,18 @@ if(typeof wgScriptPath=='undefined')
 		
 var gMvd={};
 function mv_setup_allpage(){
-	js_log("mv embed done loading now setup 'all page'");
-	//make sure we have jQuery and any base requried libs:
+	js_log("mv embed done loading now setup 'all page'");	
+	
+	//make sure we have jQuery and any base required libs:
 	mvJsLoader.doLoad(mvEmbed.lib_jquery, function(){
  		_global['$j'] = jQuery.noConflict();
  		js_log('allpage_ did jquery check');
+ 		
+ 		//(@@todo genneralize to a script action taken by the php so its not language specifc) 
+		if(wgCanonicalNamespace=='Sequence' && $j('#ca-edit').hasClass("selected")){
+			mv_do_sequence_edit_swap('seq');
+		}
+ 		
  		var reqLibs = {'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',
  					   '$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'};
  		mvJsLoader.doLoad(
@@ -35,6 +42,26 @@ function mv_setup_allpage(){
 					}
 				});
 	});
+}
+function mv_do_sequence_edit_swap(mode){
+	if(mode=='text'){
+		$j('#seq_edit_container,#swich_seq_text').hide();		
+		$j('#mv_text_edit_container,#switch_seq_wysiwyg').show();			
+	}else if(mode=='seq' || mode=='seq_update'){
+		$j('#mv_text_edit_container,#switch_seq_wysiwyg').hide();
+		$j('#seq_edit_container,#swich_seq_text').show();
+		if( mode == 'seq_update' ){
+			js_log('do server side text parse');
+			//$j('#seq_edit_container').html( gMsg('loading') );
+		}
+		//check if the seq is already ready: 
+		if( typeof _global['mvSeq'] == 'undefined' ){				
+			mv_do_sequence({					
+				"sequence_container_id": 'seq_edit_container',
+				"mv_pl_src":mvSeqExportUrl	
+			});
+		}									
+	}
 }
 function mv_page_specific_rewrites(){
 	var mvAskTitle = 'Special:MvExportAsk';

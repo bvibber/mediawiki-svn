@@ -252,7 +252,7 @@ var mvEmbed = {
   	for(var i=0; i < global_player_list.length; i++){
   		if( $j('#'+global_player_list[i]).length !=0){
 	  		var cur_vid =  $j('#'+global_player_list[i]).get(0);  		
-	    	is_ready = (cur_vid.ready_to_play ) ? is_ready : false;
+	    	is_ready = ( cur_vid.ready_to_play ) ? is_ready : false;
 	    	if( !is_ready && cur_vid.load_error ){ 
 	    		is_ready=true;
 	    		$j(cur_vid).html( cur_vid.load_error );
@@ -1053,7 +1053,7 @@ function mv_embed( force_id ){
 							'mvSeqPlayList':'mv_sequencer.js'							
 						},function(){
 							var seqObj = new mvSeqPlayList( pl_element );
-							swapEmbedVideoElement( pl_element, seqObj );	
+							swapEmbedVideoElement( pl_element, seqObj );								
 						}
 					); 
 				}else{					
@@ -1070,8 +1070,6 @@ function mv_embed( force_id ){
 }
 
 function mv_do_sequence(initObj){
-	if(typeof mvSeq != 'undefined')
-		js_log('mv_do_sequence:' + typeof $j.ui.resizable);
 	//issue a request to get the css file (if not already included):
 	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css'))
 		loadExternalCss(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css');
@@ -1081,7 +1079,8 @@ function mv_do_sequence(initObj){
 		mvJsLoader.doLoad({
 				'mvPlayList':'mv_playlist.js',
 				'$j.ui.sortable':'jquery/jquery.ui-1.5.2/ui/minified/ui.sortable.min.js',
-				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js'
+				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
+				'$j.contextMenu':'jquery/plugins/jquery.contextMenu.js'
 				//'$j.ui'			:'jquery/jquery.ui-1.5.2/ui/minified/ui.core.min.js',
 				//'$j.effects':'jquery/jquery.ui-1.5.2/ui/minified/effects.core.min.js',	
 				//'$j.effects.slide':'jquery/jquery.ui-1.5.2/ui/minified/effects.slide.min.js'
@@ -1093,7 +1092,7 @@ function mv_do_sequence(initObj){
 						'mvSequencer':'mv_sequencer.js'						
 					},function(){						
 						//init the sequence object (it will take over from there)
-						mvSeq = new mvSequencer(initObj);
+						_global['mvSeq'] = new mvSequencer(initObj);
 					});
 		});
 	});
@@ -1159,7 +1158,7 @@ function swapEmbedVideoElement(video_element, videoInterface){
     embed_video.getHTML();
     */    
     //js_log('html set:' + document.getElementById(embed_video.id).innerHTML);   
-    js_log('done with child: ' + embed_video.id + ' len:'+global_player_list.length);
+    js_log('done with child: ' + embed_video.id + ' len:' + global_player_list.length);
  	return true;
 }
 // text interface object (for inline display captions) 
@@ -3012,8 +3011,9 @@ embedVideo.prototype = {
 */
 //simple url re-writer for standard temporal and size request urls: 
 function getUpdateTimeURL(url, new_time, size){	
-	pSrc =parseUri(url);
-	var new_url = pSrc.protocol +'://'+ pSrc.host + pSrc.path +'?';       	
+	var pSrc = parseUri(url);
+	//debugger;
+	var new_url = pSrc.protocol +'://'+ pSrc.authority + pSrc.path +'?';       	
 	var amp = '';
 
 	if(new_time && pSrc.queryKey['t'])

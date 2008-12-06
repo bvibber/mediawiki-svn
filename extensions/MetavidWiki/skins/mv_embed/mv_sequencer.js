@@ -139,7 +139,7 @@ mvSequencer.prototype = {
 		for(var i in initObj){
 			//js_log('on '+ i + ' :' + initObj[i]);
 			if(sequencerDefaultValues[i]){ //make sure its a valid property
-				this[i]=initObj[i];
+				this[i] = initObj[i];
 			}
 		}
 		if(this.sequence_container_id==null)
@@ -150,8 +150,8 @@ mvSequencer.prototype = {
 			return js_log("Error: missing sequence_container_id");
 			
 		//$j('#'+this.sequence_container_id).css('position', 'relative');
-		this['base_width']=$j('#'+this.sequence_container_id).width();
-		this['base_height']=$j('#'+this.sequence_container_id).height();
+		this['base_width']  = $j('#'+this.sequence_container_id).width();
+		this['base_height'] = $j('#'+this.sequence_container_id).height();
 				
 		
 		//add the container divs (with basic layout ~universal~ 
@@ -172,8 +172,7 @@ mvSequencer.prototype = {
 		
 		js_log('set: '+this.sequence_container_id + ' html to:'+ "\n"+
 			$j('#'+this.sequence_container_id).html()
-		);
-		
+		);		
 		//first check if we got a cloned PL object:
 		//(when the editor is invoked with the plalylist already on the page) 
 		//@@NOT WORKING... (need a better "clone" function) 
@@ -199,7 +198,7 @@ mvSequencer.prototype = {
 		$j('#'+this.video_container_id).html('<playlist ' + src_attr +
 			' style="width:' + this.video_width + 'px;height:' + this.video_height + 'px;" '+
 			' sequencer="true" id="' + this.plObj_id + '" />');
-		 
+		
 		rewrite_by_id( this.plObj_id );	
 		setTimeout(this.instance_name +'.checkReadyPlObj()', 25);		
 	},
@@ -323,6 +322,7 @@ mvSequencer.prototype = {
 				}).click(function(){
 					this_seq.doAdvancedTl();
 				});
+				//set up the options for context menus				
 			break;
 		}
 	},
@@ -734,7 +734,7 @@ mvSequencer.prototype = {
 		js_log("seq: add clip: at: "+ before_clip_pos + ' in track: ' + track_inx);			
 		var cur_pos = before_clip_pos;
 		js_log('paste clip before_clip_pos: ' + before_clip_pos);
-		//smilXML = 		
+		var smilXML = 		
 		$j.each(clipSet, function(inx, clipInitDom){
 			var mediaElement = document.createElement('ref');
 			for(var i in clipInitDom){
@@ -744,7 +744,7 @@ mvSequencer.prototype = {
 			if( this_seq.plObj.tryAddMedia(	mediaElement, cur_pos, track_inx ) )	
 				cur_pos++;
 		}); 		
-		debugger; 
+		//debugger; 
 		this.do_refresh_timeline();
 	},
 	removeClips:function( remove_clip_ary ){					
@@ -984,13 +984,13 @@ mvSequencer.prototype = {
 						$j(this).addClass('mv_selected_clip');						
 						$j('#' + $j(this).parent().attr("id") + '_adj').fadeIn("fast");
 					}	
-					//if shift select is down select the inbetween clips 
+					//if shift select is down select the in-between clips 
 					if( this_seq.key_shift_down ){
 						//get the min max of current selection (within the current track)
 						var max_order = 0;
-						var min_order = 999999999999999; 
+						var min_order = 999999999999999;
 						$j('.mv_selected_clip').each(function(){
-							cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );							
+							var cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );							
 							//get min max
 							if(cur_clip.order < min_order)
 								min_order = cur_clip.order;
@@ -998,21 +998,16 @@ mvSequencer.prototype = {
 								max_order = cur_clip.order;
 						});
 						//select all non-selected between max or min
-						js_log('sOrder: ' + sClipObj.order + ' min:' + min_order + ' max:'+ max_order);
-						// ( only look in the current track )
-						if( sClipObj.order <= min_order ){
-							$j('#container_track_' + sClipObj.track_id +' .mv_clip_thumb').filter(':not(.mv_selected_clip)').each(function(){
-								var cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );
-								if( cur_clip.order > sClipObj.order && cur_clip.order < max_order)	
-									$j(this).addClass('mv_selected_clip');
-							});
+						js_log('sOrder: ' + sClipObj.order + ' min:' + min_order + ' max:'+ max_order);			
+						if( sClipObj.order <= min_order ){							
+							for( var i = sClipObj.order; i <= max_order; i++ ){											
+								$j('#track_' + track_id + '_clip_' + i + ' > .mv_clip_thumb' ).addClass('mv_selected_clip');	
+							} 													
 						}
-						if( sClipObj.order >= max_order ){							
-							$j('#container_track_' + sClipObj.track_id +' .mv_clip_thumb').filter(':not(.mv_selected_clip)').each(function(){
-								var cur_clip = this_seq.getClipFromSeqID( $j(this).parent().attr('id') );
-								if( cur_clip.order > min_order && cur_clip.order < max_order)
-									$j(this).addClass('mv_selected_clip');
-							});
+						if( sClipObj.order >= max_order ){
+							for( var i =min_order; i <= max_order; i++ ){											
+								$j('#track_' + track_id + '_clip_' + i + ' > .mv_clip_thumb' ).addClass('mv_selected_clip');	
+							}					
 						}
 					}
 									
@@ -1183,7 +1178,7 @@ mvSequencer.prototype = {
 		track_inx = id_parts[1];
 		clip_inx = id_parts[3];
 		//set clip:
-		var clip = this.plObj.tracks[track_inx].clips[clip_inx];		
+		var clip = this.plObj.tracks[ track_inx ].clips[ clip_inx ];		
 		var clip_desc ='';
 		//would be nice if getting the width did not flicker the border
 		//@@todo do a work around e in resize function has some screen based offset values
@@ -1306,7 +1301,7 @@ mvSequencer.prototype = {
 	}
 		
 }
-/* extension to mvPlayList to support smil properties */
+/* extension to mvPlayList to support sequencer features properties */
 var mvSeqPlayList = function( element ){
 	return this.init( element );
 }
@@ -1325,6 +1320,9 @@ mvSeqPlayList.prototype = {
 		//do specific mods:(controls and title are managed by the sequencer)  
 		this.pl_layout.title_bar_height=0;
 		this.pl_layout.control_height=0;
+	},
+	setSliderValue:function(){
+		
 	},
 	getControlsHTML:function(){				
 		//get controls from current clip add some playlist specific controls:  		

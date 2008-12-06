@@ -25,19 +25,18 @@ define('MV_BASE_MEDIA_SERVER_PATH', 'http://mvbox2.cse.ucsc.edu/mvFlvServer.php/
 //mencoder based (good)
 $flvEncodeCommand = 'mencoder $input -noskip -mc 0 -o $output -of lavf -oac mp3lame -lameopts abr:br=32 -ovc lavc -lavcopts vcodec=flv:vbitrate=250:mbd=2:mv0:trell:v4mv:cbp:last_pred=3 -vf scale=400:300 -srate 22050 -lavfopts i_certify_that_my_video_stream_does_not_use_b_frames';
 
-if ( count( $args ) == 0 || isset ( $options['help'] ) ) {
+if ( isset ( $options['help'] ) ) {
 	print<<<EOT
 Run transcode for HQ oggs 
 from dir: $mvMountedSource *.HQ.ogg 
 to dir: $mvMountedDest *.flv 
 
 default: 
-	only gennerates flvs where the ogg exists and a flv is missing
+	only generates flv where the ogg exists and a flv is missing
 	
 arguments:
 	generate_new_flv // used if you do a new set flv encode (will remove old flv in place)
 	 	
-
 EOT;
 	exit ();
 }
@@ -75,6 +74,7 @@ while($doneWithTrascode==false){
 			}else{
 				$local_fl =$mvMountedDest . $stream_name . '.flv';
 			}
+			print "looking at: {$local_fl} \n";
 			clearstatcache();
 			if(!is_file($local_fl)){
 				$doneWithTrascode=false;

@@ -217,11 +217,9 @@ function mvCustomEditor( &$article, &$user ) {
 	global $wgTitle, $wgRequest;
 	switch( $wgTitle->getNamespace() ) {
 		case MV_NS_SEQUENCE:
-			/*$MvInterface = new MV_MetavidInterface('edit_sequence', $article);
-			$MvInterface->render_full();		
+			$editor = new MV_EditSequencePage( $article );
+			$editor->edit();
 			return false;
-			*/
-			return true;
 		break;
 		case MV_NS_STREAM:
 			$editor = new MV_EditStreamPage( $article );
@@ -257,10 +255,15 @@ function mvCustomEditor( &$article, &$user ) {
   */
 function mvDoMvPage ( &$title, &$article, $doOutput = true ) {
 	global $wgOut, $wgTitle, $wgArticle;
+
+	//add js
+	mvAddPerNamespaceJS( $title );
+	
+	//do page replace: 	
 	if ( $title->getNamespace() == NS_CATEGORY ) {
 		$article = new MV_CategoryPage( $title );
 	} elseif ( $title->getNamespace() == MV_NS_SEQUENCE ) {
-		$article = new MV_SequencePage( $title );
+		$article = new MV_SequencePage( $title );		
  	} elseif ( $title->getNamespace() == MV_NS_STREAM ) {
 		mvDoMetavidStreamPage( $title, $article );
 	} elseif ( $title->getNamespace() == MV_NS_MVD ) {

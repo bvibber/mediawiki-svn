@@ -118,7 +118,7 @@ mvPlayList.prototype = {
 						
 		$j('#modalbox').html('loading editor<blink>...</blink>');
 		var _this=this;
-		js_log("calling sequence with url:"+ _this.src);
+		js_log("calling sequence with url:" + _this.src);
 		
 		//clone the playlist (to make for easy cancel) 
 		/*var this_plObj_Clone = $j('#'+this.id).get(0).cloneNode(true);
@@ -129,10 +129,7 @@ mvPlayList.prototype = {
 		//load sequencer: 
 		mv_do_sequence({
 				"sequence_container_id":'modalbox', 
-				//@@todo we should copy over "this" playlist object 
-				//for cases where the playlist is already in the page 
-				"mv_pl_src":this.src
-				//"plObj":this_plObj_Clone 								
+				"mv_pl_src":this.src						
 			});
 					
 	},
