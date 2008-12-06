@@ -43,6 +43,7 @@ public class DurationScanner {
     final static int VORBIS = 1;
     final static int THEORA = 2;
     private long contentLength = -1;
+    private long responseOffset;
     private Hashtable streaminfo = new Hashtable();
     private SyncState oy = new SyncState();
     private Page og = new Page();
@@ -86,7 +87,6 @@ public class DurationScanner {
         dis = uc.getInputStream();
 
         String responseRange = uc.getHeaderField("Content-Range");
-        long responseOffset;
         if (responseRange == null) {
             Debug.info("Response contained no Content-Range field, assuming offset=0");
             responseOffset = 0;
@@ -199,8 +199,8 @@ public class DurationScanner {
 
     public float getDurationForURL(URL url, String user, String password) {
         try {
-            int headbytes = 16 * 1024;
-            int tailbytes = 80 * 1024;
+            int headbytes = 24 * 1024;
+            int tailbytes = 128 * 1024;
 
             float time = 0;
 
@@ -217,8 +217,12 @@ public class DurationScanner {
                 time = t > time ? t : time;
                 read = is.read(buffer);
             }
-
+            is.close();
             is = openWithConnection(url, user, password, contentLength - tailbytes);
+            if(responseOffset == 0) {
+                Debug.warning("DurationScanner: Couldn't complete duration scan due to failing range requests!");
+                return -1;
+            }
 
             read = is.read(buffer);
             // read tail until eos, also abort if way too many bytes have been read
@@ -231,6 +235,7 @@ public class DurationScanner {
 
             return time;
         } catch (IOException e) {
+            Debug.error(e.toString());
             return -1;
         }
     }
