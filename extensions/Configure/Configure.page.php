@@ -590,7 +590,15 @@ abstract class ConfigurationPage extends SpecialPage {
 			case 'text':
 			case 'lang':
 			case 'image-url':
-				$settings[$name] = trim( $wgRequest->getVal( 'wp' . $name ) );
+				$setting = trim( $wgRequest->getVal( 'wp' . $name ) );
+				
+				if ( $file = wfFindFile( $setting ) ) {
+					## It's actually a local file.
+					$setting = $file->getUrl();
+				}
+				
+				$settings[$name] = $setting;
+				
 				break;
 			case 'int':
 				$settings[$name] = $wgRequest->getInt( 'wp' . $name );

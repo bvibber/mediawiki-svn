@@ -169,15 +169,7 @@ function setupConfigure(){
 		var conf = textbox.id.substr( 18 );
 		var img = document.getElementById( 'image-url-preview-'+conf );
 
-		var button = document.createElement( 'input' );
-		button.type = 'button';
-		button.className = 'mw-button-get-image-url';
-		button.value = wgConfigureGetImageUrl;
-		button.onclick = createImageUrlCallback( textbox, img );
-
-		textbox.parentNode.insertBefore( button, img );
-		textbox.parentNode.insertBefore( document.createTextNode( '\u00A0' ), button ); // nbsp
-		img.parentNode.insertBefore( document.createTextNode( '\u00A0' ), img ); // nbsp
+		addHandler( textbox, 'blur', createImageUrlCallback( textbox, img ) );
 	}
 
 	// $wgGroupPermissions stuff, only if ajax is enabled
@@ -789,15 +781,14 @@ function configTocToggle(){
  */
 function createImageUrlCallback( textbox, img ) {
 	return function() {
-		sajax_do_call( 'wfAjaxGetThumbnailUrl',
-			[textbox.value, 130, 130], // FIXME hard-coded.
+		sajax_do_call( 'wfAjaxGetFileUrl',
+			[textbox.value],
 			function(response) {
 				var text = response.responseText;
 				// basic error handling
 				if( text.substr( 0, 9 ) == "<!DOCTYPE" ) {
-					alert( wgConfigureImageError );
+					img.src = textbox.value;
 				} else {
-					textbox.value = response.responseText;
 					img.src = response.responseText;
 				}
 			}
