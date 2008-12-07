@@ -4,7 +4,7 @@
 
 Name:                TSphp
 Summary:             PHP web scripting language
-Version:             5.2.6
+Version:             5.2.7
 Release:             2
 Source:              http://uk.php.net/distributions/php-%{version}.tar.bz2
 
@@ -96,6 +96,8 @@ rm -rf $RPM_BUILD_ROOT
 /etc/opt/php/pear.conf
 
 %changelog
+* Sun Dec  7 2008 - river@wikimedia.org
+- 5.2.7
 * Sun Oct  5 2008 - river@wikimedia.org
 - add build option: --with-mcrypt
 * Thu Oct  2 2008 - river@wikimedia.org
