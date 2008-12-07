@@ -41,7 +41,11 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
-$wgExtensionFunctions[] = 'wfslippymap';
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'wfslippymap';
+} else {
+	$wgExtensionFunctions[] = 'wfslippymap';
+}
 
 $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'OpenStreetMap Slippy Map',
@@ -69,4 +73,5 @@ function wfslippymap() {
 	# processing the text between the tags
 	$wgParser->setHook( 'slippymap', array( 'SlippyMap', 'parse' ) );
 	$wgMapOfServiceUrl = "http://osm-tah-cache.firefishy.com/~ojw/MapOf/?";
+	return true;
 }

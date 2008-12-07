@@ -38,8 +38,6 @@
 #
 
 class SlippyMap {
-	function SlippyMap() {
-	}
 
 	# The callback function for converting the input text to HTML output
 	static function parse( $input, $argv ) {
