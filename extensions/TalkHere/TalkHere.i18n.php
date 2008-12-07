@@ -569,8 +569,12 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'talkhere-foottext' => 'Os comentários acima podem ter sido deixados por visitantes.
+
+Os responsáveis por este site não podem ser responsabilizados pelo conteúdo desses comentários.',
 	'talkhere-talkpage' => 'discussão',
 	'talkhere-notalk' => "''(sem comentários de momento)''",
 	'talkhere-addcomment' => 'adicionar comentário',

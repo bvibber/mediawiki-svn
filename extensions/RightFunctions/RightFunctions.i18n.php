@@ -105,6 +105,9 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'rightfunctions-desc' => 'Parserowe funkcije na zakładźe prawow',
+	'rightfunctions-casc' => '(z kaskadowacych žórłow)',
+	'rightfunctions-local' => '(z lokalneje strony)',
+	'rightfunctions-ns' => '(ze škita mjenoweho ruma)',
 );
 
 /** Interlingua (Interlingua)

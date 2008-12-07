@@ -59,7 +59,7 @@ $aliases['hu'] = array(
 
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'ChangeAuthor' => array( 'ផ្លាស់ប្ដូអ្នកនិព្វន្ធ' ),
+	'ChangeAuthor' => array( 'ផ្លាស់ប្ដូរអ្នកនិពន្ធ' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

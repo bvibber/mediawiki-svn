@@ -170,6 +170,13 @@ $messages['eo'] = array(
 	'languageselector-setlang' => 'fari',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'languageselector' => 'Idioma',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

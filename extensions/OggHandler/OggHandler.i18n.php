@@ -862,6 +862,7 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Flyax
  * @author Omnipaedista
  */
 $messages['grc'] = array(
@@ -1375,6 +1376,7 @@ $messages['kk-latn'] = array(
  * @author Chhorran
  * @author Lovekhmer
  * @author T-Rithy
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
@@ -1393,7 +1395,7 @@ $messages['km'] = array(
 	'ogg-play-video' => 'លេងវីដេអូ',
 	'ogg-play-sound' => 'បន្លឺសំលេង',
 	'ogg-no-player' => 'សូមអភ័យទោស! ប្រព័ន្ធដំនើរការរបស់អ្នក ហាក់បីដូចជាមិនមានកម្មវិធី ណាមួយសំរាប់លេងទេ។ សូម <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ទាញយកកម្មវិធី សំរាប់លេងនៅទីនេះ</a> ។',
-	'ogg-no-xiphqt' => 'មិនឃើញមាន អង្គផ្សំ XiphQT សំរាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង តំលើង XiphQT</a> ឬ ជ្រើសរើស ឧបករអាន ផ្សេង ។',
+	'ogg-no-xiphqt' => 'មិនឃើញមាន អង្គផ្សំ XiphQT សម្រាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង ដំឡើង XiphQT</a> ឬ ជ្រើសរើស ឧបករណ៍អាន ផ្សេង ។',
 	'ogg-player-videoElement' => 'Native browser support',
 	'ogg-player-oggPlugin' => 'កម្មវិធីជំនួយ Ogg',
 	'ogg-player-thumbnail' => 'នៅតែជារូបភាព',

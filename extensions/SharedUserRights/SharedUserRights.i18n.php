@@ -77,7 +77,10 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'shareduserrights' => 'Xestión compartida dos dereitos de usuario',
+	'gblrights-desc' => '[[Special:SharedUserRights|Administración sinxela dos dereitos de usuario globais]]',
 	'gblrights-logpage' => 'Rexistro de dereitos globais',
+	'gblrights-pagetext' => 'Este é un rexistro de todos os cambios feitos na táboa de dereitos globais da familia wiki',
 	'gblrights-rights-entry' => 'cambiou o grupo global ao que pertence "$1" de $2 a $3',
 );
 

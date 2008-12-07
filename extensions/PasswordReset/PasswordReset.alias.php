@@ -58,6 +58,11 @@ $aliases['ja'] = array(
 	'PasswordReset' => array( 'パスワードのリセット', 'パスワードリセット' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'PasswordReset' => array( 'កំណត់ពាក្យសំងាត់ឡើងវិញ' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PasswordReset' => array( 'Zrécksetzen vum Passwuert' ),

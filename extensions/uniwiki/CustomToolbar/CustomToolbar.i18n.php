@@ -308,6 +308,7 @@ Veuiller consulter vos paramètres de blocage des popups.',
  * @author Toliño
  */
 $wgCustomToolbarMessages['gl'] = array(
+	'ct-desc' => 'Engade unha caixa de ferramentas extensible',
 	'ct_bold_sample' => 'Texto en negra',
 	'ct_bold_tip_ins' => 'Inserir texto en negra',
 	'ct_bold_tip_wrap' => 'Converter este texto en negra',
@@ -327,13 +328,25 @@ $wgCustomToolbarMessages['gl'] = array(
 	'ct_image_caption' => 'Engadir a imaxe',
 	'ct_attachment_tip' => 'Inserir un dato adxunto',
 	'ct_attachment_caption' => 'Engadir o dato adxunto',
+	'ct_math_sample' => 'Inserir aquí unha fórmula LaTeX',
+	'ct_math_tip_ins' => 'Inserir unha fórmula matemática (LaTeX)',
+	'ct_math_tip_wrap' => 'Facer que este texto sexa unha fórmula matemática (LaTeX)',
 	'ct_math_caption' => 'Fórmula',
+	'ct_nowiki_sample' => 'Inserir aquí un texto sen formato',
+	'ct_nowiki_tip_ins' => 'Ignorar o formato wiki',
+	'ct_nowiki_tip_wrap' => 'Ignorar o formato wiki deste texto',
 	'ct_nowiki_caption' => 'Non wiki',
+	'ct_horizontal_tip' => 'Inserir unha liña horizontal (úsea con moderación)',
 	'ct_horizontal_caption' => 'Liña horizontal',
 	'ct_upload' => 'Cargar unha $1',
+	'ct_select' => 'Seleccionar "$1" para cargar',
+	'ct_caption' => 'Engadir un pé de foto (opcional)',
+	'ct_link' => 'Engadir un nome de ligazón (opcional)',
 	'ct_submit' => 'Ir!',
 	'ct_close' => 'Pechar a ventá',
 	'ct_success' => 'O ficheiro cargouse con éxito!',
+	'ct_popupblocked' => 'Previuse a apertura da ventá emerxente de carga.
+Por favor, comprobe o seu bloqueador de ventás emerxentes.',
 	'ct_user_user' => 'Usuario',
 	'ct_user_tip' => 'Insira unha ligazón cara a unha páxina de usuario',
 	'ct_user_caption' => 'Ligazón cara a un usuario',
@@ -341,10 +354,11 @@ $wgCustomToolbarMessages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $wgCustomToolbarMessages['he'] = array(
-	'ct-desc' => 'הוספת סרגל כלים נרחב',
+	'ct-desc' => 'הוספת סרגל כלים הניתן להרחבה',
 	'ct_bold_sample' => 'טקסט מודגש',
 	'ct_bold_tip_ins' => 'הוספת טקסט מודגש',
 	'ct_bold_tip_wrap' => 'הפיכת טקסט זה למודגש',
@@ -376,16 +390,16 @@ $wgCustomToolbarMessages['he'] = array(
 	'ct_horizontal_tip' => 'הוספת קו אופקי (המעיטו להשתמש בזה)',
 	'ct_horizontal_caption' => 'קו אופקי',
 	'ct_upload' => 'העלאת $1',
-	'ct_select' => 'בחרו $1 להעלאה',
-	'ct_caption' => 'הוספת כיתוב (לא מחייב)',
-	'ct_link' => 'הוספת שם לקישור (לא מחייב)',
+	'ct_select' => 'בחירת $1 להעלאה',
+	'ct_caption' => 'הוספת כיתוב (אופציונאלי)',
+	'ct_link' => 'הוספת שם לקישור (אופציונאלי)',
 	'ct_submit' => 'המשך!',
 	'ct_close' => 'סגירת החלון',
 	'ct_success' => 'העלאת הקובץ הצליחה!',
 	'ct_popupblocked' => 'פתיחת חלונית ההעלאה נמנעה.
-אנא בדקו את חוסם החלוניות המוקפצות (פופאפים) שלכם.',
+אנא בדקו את חוסם החלונות הקופצים (Popup blocker) שלכם.',
 	'ct_user_user' => 'משתמש',
-	'ct_user_tip' => 'הוספת קישור לדף המשתמש',
+	'ct_user_tip' => 'הוספת קישור לדף משתמש',
 	'ct_user_caption' => 'קישור המשתמש',
 	'ct_user_sample' => 'שם המשתמש',
 );

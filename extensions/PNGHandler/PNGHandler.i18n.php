@@ -91,6 +91,13 @@ $messages['he'] = array(
 	'pnghandler-desc' => 'שינוי גודל קובצי PNG באמצעות pngds',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'pnghandler-desc' => 'Wulkosć wobrazow PNG z pomocu "pngds" změnić',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

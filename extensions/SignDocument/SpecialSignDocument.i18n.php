@@ -153,6 +153,8 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'sign-realname' => 'Nombre:',
+	'sign-viewfield-realname' => 'Nombre',
 	'sign-viewfield-reviewedby' => 'Rebisador',
 	'sign-viewfield-reviewcomment' => 'Comentario',
 	'sign-review-comment' => 'Comentario',

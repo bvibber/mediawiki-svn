@@ -60,6 +60,13 @@ $messages['af'] = array(
 	'edituser-exempt' => 'Die gebruiker kan nie gewysig word nie',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'edituser-username' => 'Nombre',
+);
+
 /** Old English (Anglo-Saxon)
  * @author Wōdenhelm
  */
@@ -219,6 +226,10 @@ $messages['dsb'] = array(
 	'edituser-logout' => 'Wužywarja wótzjawiś',
 	'edituser-username' => 'Mě',
 	'edituser-dosearch' => 'Pytanje',
+	'edituser-nouser' => 'Pódany wužywaŕ njeeksistujo.',
+	'edituser-exempt' => 'Pódany wužywaŕ njedajo se wobźěłaś.',
+	'right-edituser' => 'Nastajenja drugich wužywarjow wobźěłaś',
+	'right-edituser-exempt' => 'Nastajenja njedaju se wót tśeśich změniś',
 );
 
 /** Ewe (Eʋegbe) */
@@ -708,6 +719,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'edituser-desc' => 'Permite que utilizadores com privilégios editem as preferências de outros utilizadores',
@@ -717,6 +729,8 @@ $messages['pt'] = array(
 	'edituser-dosearch' => 'Pesquisar',
 	'edituser-nouser' => 'O usuário especificado não existe',
 	'edituser-exempt' => 'O usuário especificado não pode ser editado',
+	'right-edituser' => 'Editar as preferências de outros utilizadores',
+	'right-edituser-exempt' => 'Não podem ter as suas preferências editadas por outros',
 );
 
 /** Tarifit (Tarifit)

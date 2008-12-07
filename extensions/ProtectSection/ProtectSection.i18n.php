@@ -261,9 +261,12 @@ $messages['pl'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'protectsection_desc' => 'Permite que utilizadores autorizados protejam partes de uma página usando a tag <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Você tentou adicionar ou remover uma secção protegida',
+	'protectsection_modify' => 'Você tentou modificar texto protegido',
 	'protectsection_forbidden' => 'Proibido',
 );
 

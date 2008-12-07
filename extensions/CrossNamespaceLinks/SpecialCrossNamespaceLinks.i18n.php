@@ -168,6 +168,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'crossnamespacelinks' => 'Wótkaze do drugich mjenjowych rumow',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lisćina wótkazow do drugich mjenjowych rumow]], kótarež njeeksistuju na {{GRAMMAR:lokatiw|{{SITENAME}}}}',
 	'crossnamespacelinks-summary' => 'Toś ten bok bitujo lisćinu wótkazow, kótarež z boka w głownem mjenjowem rumje na bok w drugich mjenjowych rumach pokazuju (mimo mjenjowych rumow {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}).',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|wótkaz|wótkazej|wótkaze|wótkazow}} do $3',
 );

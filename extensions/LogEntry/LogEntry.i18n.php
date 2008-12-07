@@ -70,11 +70,23 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'logentry-append' => 'Adxuntar',
-	'logentry-parserhook-desc' => 'Esta extensión proporciona un formulario para adxuntar ás páxinas de rexistros',
+	'logentry-parserhook-desc' => 'Esta extensión proporciona un formulario para adxuntar/prefixar ás páxinas de rexistros',
 	'logentry-specialpage-desc' => 'Esta extensión proporciona un proceso para adxuntar ás páxinas de rexistros',
 	'logentry' => 'Entrada do rexistro',
 	'logentry-invalidpage' => 'Páxina inválida',
 	'logentry-invalidtoken' => 'Ficha inválida',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'logentry-append' => 'Připójsnyć',
+	'logentry-parserhook-desc' => 'Tute rozšěrjenje skića formular za připójsnjenje teksta resp. započenje z tekstom k protokolwym stronam',
+	'logentry-specialpage-desc' => 'Tute rozšěrjenje skića předźěłanje za připójsnjenje k protokolowym stronam',
+	'logentry' => 'Protokolowy zapisk',
+	'logentry-invalidpage' => 'Njepłaćiwa strona',
+	'logentry-invalidtoken' => 'Njepłaćiwy token',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

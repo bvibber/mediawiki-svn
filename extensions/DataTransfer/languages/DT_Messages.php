@@ -69,6 +69,7 @@ $messages['af'] = array(
 $messages['an'] = array(
 	'dt_viewxml_namespaces' => 'Espazios de nombres',
 	'dt_xml_page' => 'Pachina',
+	'dt_xml_name' => 'Nombre',
 );
 
 /** Arabic (العربية)

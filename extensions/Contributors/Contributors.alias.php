@@ -69,7 +69,7 @@ $aliases['id'] = array(
 
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'Contributors' => array( 'អ្នករួមចំនែក' ),
+	'Contributors' => array( 'អ្នករួមចំណែក' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

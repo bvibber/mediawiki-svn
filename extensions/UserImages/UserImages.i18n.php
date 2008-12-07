@@ -100,6 +100,15 @@ $messages['de'] = array(
 	'userimages-noimages' => '$1 hat keine hochgeladenen Bilder.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'userimages-caption' => 'Wobraze nagrate wót $1',
+	'userimages-noname' => 'Njepłaśiwe wužywarske mě abo žedne mě pódane',
+	'userimages-noimages' => '$1 njama wobrazowe nagraśa.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

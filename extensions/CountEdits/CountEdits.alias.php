@@ -54,7 +54,7 @@ $aliases['hu'] = array(
 
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'CountEdits' => array( 'ការរាប់ចំនួនកំនែប្រែ' ),
+	'CountEdits' => array( 'ការរាប់ចំនួនកំណែប្រែ' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

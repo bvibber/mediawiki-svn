@@ -365,6 +365,7 @@ $messages['dsb'] = array(
 	'usagestatistics' => 'Wužywańska statistika',
 	'usagestatistics-desc' => 'Wužywańsku statistiku jadnotliwego wužywarja a cełego wikija pokazaś',
 	'usagestatisticsfor' => '<h2>Wužywańska statistika za [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Wužywańska statistika za wšych wužywarjow</h2>',
 	'usagestatisticsinterval' => 'Casowy interwal',
 	'usagestatisticstype' => 'Typ',
 	'usagestatisticsstart' => 'Zachopny datum',
@@ -1015,7 +1016,7 @@ $messages['pt'] = array(
 	'specialuserstats' => 'Estatísticas de uso',
 	'usagestatistics' => 'Estatísticas de uso',
 	'usagestatistics-desc' => 'Mostrar estatísticas de utilizadores individuais e de uso geral da wiki',
-	'usagestatisticsfor' => '<h2>Estatísticas de utilização para [[Utilizador:$1|$1]]</h2>',
+	'usagestatisticsfor' => '<h2>Estatísticas de utilização para [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Estatísticas de utilização para todos os utilizadores</h2>',
 	'usagestatisticsinterval' => 'Intervalo',
 	'usagestatisticstype' => 'Tipo',
@@ -1060,10 +1061,16 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Innv
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'specialuserstats' => 'Статистика использования',
+	'usagestatistics' => 'Статистика использования',
+	'usagestatisticsfor' => '<h2>Статистика использования для участника [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Статистика использования для всех участников</h2>',
+	'usagestatisticsinterval' => 'Интервал',
 	'usagestatisticsintervalday' => 'День',
 	'usagestatisticsintervalweek' => 'Неделя',
 	'usagestatisticsintervalmonth' => 'Месяц',

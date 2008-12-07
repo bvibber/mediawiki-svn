@@ -193,6 +193,10 @@ Ajoutez-en en utilisant l'outil sur la droite.",
  * @author Toliño
  */
 $messages['gl'] = array(
+	'gep-desc' => 'Complementa a caixa de edición para que sexa máis fácil de usar',
+	'gep-emailsubject' => '[$1] Categoría suxerida: $2',
+	'gep-emailbody' => 'O usuario "$1" suxeriu a categoría "$2" para o sitio "$3".',
+	'gep-emailfailure' => 'Sentímolo, a súa suxestión non puido ser procesada.',
 	'gep-emailsuccess' => 'Grazas por suxerir a categoría: $1.',
 	'gep-categories' => 'Categorías',
 	'gep-addcategory' => 'Engadir unha categoría',

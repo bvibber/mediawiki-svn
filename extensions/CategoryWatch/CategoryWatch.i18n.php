@@ -229,6 +229,21 @@ Aqueste messatge es destinat a vos far saber que lo $3 l’utilizaire $4 $5.',
 	'categorywatch-catsub' => 'a levat $1 de la categoria $2',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'categorywatch-desc' => 'Rozszerza funkcjonalność listy obserwowanych poprzez powiadamianie o zmianach, jakie zaszły w elementach należących do obserwowanej kategorii.',
+	'categorywatch-emailbody' => 'Witaj $1, otrzymujesz tę wiadomość, ponieważ na liście obserwowanych masz kategorię „$2”.
+Ta wiadomość ma poinformować, że $3 użytkownik $4 $5.',
+	'categorywatch-emailsubject' => 'Powiadomienie związane z obserwowaną kategorią „$1”',
+	'categorywatch-catmovein' => 'przeniósł $1 do kategorii $2 z $3',
+	'categorywatch-catmoveout' => 'przeniósł $1 z kategorii $2 do $3',
+	'categorywatch-catadd' => 'dodał $1 do kategorii $2',
+	'categorywatch-catsub' => 'usunął $1 z kategorii $2',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

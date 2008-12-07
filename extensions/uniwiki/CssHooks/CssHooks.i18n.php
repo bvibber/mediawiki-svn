@@ -28,11 +28,19 @@ $messages['fr'] = array(
 	'csshooks-desc' => 'Ajouter du CSS à la sortie de la page HTML pour un meilleur style',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'csshooks-desc' => 'Engade CSS á saída HTML das páxinas para un mellor estilo de páxinas',
+);
+
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'csshooks-desc' => 'הוספת CSS לפלט ה־HTML של הדפים למראה טוב יותר',
+	'csshooks-desc' => 'הוספת CSS לפלט ה־HTML של הדפים כדי לאפשר מראה טוב יותר',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -99,6 +99,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'abcdesc' => 'Engade a etiqueta <tt>&lt;abc&gt;</tt> para dar formato á música ABC',
 	'abcdownload' => 'Descargar:',
 );
 
@@ -194,6 +195,13 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'abcdesc' => 'Dodaje znacznik <tt>&lt;abc&gt;</tt> do muzyki w formacie ABC',
 	'abcdownload' => 'Pobierz:',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'abcdesc' => 'Adicioana a tag <tt>&lt;abc&gt;</tt> para formatar música em notação ABC',
 );
 
 /** Romanian (Română)

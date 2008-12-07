@@ -201,6 +201,16 @@ $messages['lb'] = array(
 	'unicodeconverter-newtext' => 'Text ëmwandelen:',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'unicodeconverter' => 'Уникодонь полавтомапель',
+	'unicodeconverter-ok' => 'Вадря',
+	'unicodeconverter-oldtext' => 'Васнянь текст:',
+	'unicodeconverter-newtext' => 'Полавтозь текст:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

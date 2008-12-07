@@ -169,6 +169,7 @@ $messages['ar'] = array(
 	'hiderevision-reason' => 'السبب (سيسجل سرا):',
 	'hiderevision-submit' => 'إخفاء هذه البيانات بشكل دائم',
 	'hiderevision-tab' => 'إخفاء المراجعة',
+	'hiderevision-link' => 'مساهمات المستخدم المخفية',
 	'hiderevision-norevisions' => 'لا مراجعات محددة للحذف.',
 	'hiderevision-noreason' => 'يجب أن تصف السبب لهذه الإزالة.',
 	'hiderevision-status' => 'المراجعة $1: $2',
@@ -551,6 +552,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Heuler06
  * @author Metalhead64
+ * @author Purodha
  * @author Raimond Spekking
  */
 $messages['de'] = array(
@@ -574,7 +576,7 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 	'hiderevision-reason' => 'Grund (wird unsichtbar protokolliert):',
 	'hiderevision-submit' => 'Entferne diese Version dauerhaft',
 	'hiderevision-tab' => 'Entferne Versionen',
-	'hiderevision-link' => 'Benutzerbeiträge verstecken',
+	'hiderevision-link' => 'Versteckte Benutzerbeiträge',
 	'hiderevision-norevisions' => 'Es wurde keine Version zum Entfernen angegeben.',
 	'hiderevision-noreason' => 'Du musst einen Grund für die Entfernung angeben.',
 	'hiderevision-status' => 'Version $1: $2',
@@ -1400,6 +1402,7 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fievarsty
  * @author JtFuruhata
  * @author Kahusi
  * @author Marine-Blue
@@ -1424,6 +1427,7 @@ $messages['ja'] = array(
 	'hiderevision-reason' => '理由(内密にログ化されます):',
 	'hiderevision-submit' => '永久にこのデータを秘匿する',
 	'hiderevision-tab' => '版の秘匿',
+	'hiderevision-link' => '利用者の秘匿された投稿履歴',
 	'hiderevision-norevisions' => '削除する版が指定されていません。',
 	'hiderevision-noreason' => '消去する理由を記して下さい。',
 	'hiderevision-status' => '特定版ID $1: $2',
@@ -1443,6 +1447,7 @@ $messages['ja'] = array(
 	'oversight-hidden' => '秘匿された版',
 	'oversight-header' => '下記は、最近非公開となった版の一覧です。ここで得られた情報を漏洩した場合、この閲覧権限を永久に失う事となるでしょう。',
 	'oversight-legend' => '版の秘匿記録の検索',
+	'oversight-oversighter' => '秘匿者:',
 );
 
 /** Jutish (Jysk)
@@ -1724,6 +1729,7 @@ Dat moß ene Datebank-Köbes maache.",
 	'hiderevision-reason' => 'Dä Jrund (weed unseeschba faßjehallde):',
 	'hiderevision-submit' => 'Donn di Version versteche',
 	'hiderevision-tab' => 'Version Versteche',
+	'hiderevision-link' => 'Verstoche Beidrääsch',
 	'hiderevision-norevisions' => 'Kein Version zom Versteche aanjejovve',
 	'hiderevision-noreason' => 'Do moß ene Jrond för et Versteche aanjevve',
 	'hiderevision-status' => 'Version $1: $2',
@@ -1749,6 +1755,7 @@ Wä di Enfomazione wigger jitt, weed dat Rääsch se aanzeloore,
 un wat domet zosamme hängk, flöck quitt.',
 	'oversight-legend' => 'Sök em Logboch fum Versione Versteche',
 	'oversight-oversighter' => 'Sigge-Versione-Verstecher:',
+	'oversight-offender' => 'Metmaacher:',
 );
 
 /** Latin (Latina)
@@ -2403,7 +2410,7 @@ $messages['ru'] = array(
 	'group-oversight-member' => 'ревизор',
 	'grouppage-oversight' => '{{ns:project}}:Ревизоры',
 	'right-oversight' => 'просмотр ранее скрытой правки',
-	'right-hiderevision' => 'Просмотр и восстановление скрытых от администраторов правок',
+	'right-hiderevision' => 'просмотр и восстановление скрытых от администраторов правок',
 	'hiderevision-prompt' => 'Номер правки, которую требуется скрыть:',
 	'hiderevision-continue' => 'Продолжить',
 	'hiderevision-text' => "Данная страница должна использоваться '''только''' в следующих случаях:

@@ -51,6 +51,13 @@ $messages['de'] = array(
 	'crowdauthentication-desc' => 'Authentisierung-Erweiterung für Atlassian Crowd',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'crowdauthentication-desc' => 'Tykac awtentifikacije za Atlassian Crowd',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Meithal

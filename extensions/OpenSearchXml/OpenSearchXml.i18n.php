@@ -93,6 +93,13 @@ $messages['hr'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML sučelje za izvatke teksta',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'opensearchxml-desc' => 'Interfejs XML [http://www.opensearch.org OpenSearch] za tekstowe wućahi',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

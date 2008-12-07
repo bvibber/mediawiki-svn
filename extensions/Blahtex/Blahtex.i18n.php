@@ -1372,6 +1372,7 @@ Coba dokoken karakter sing problematis iki antara "\\text{...}".',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
@@ -1387,7 +1388,7 @@ $messages['km'] = array(
 	'math_IllegalCommandInMathModeWithHint' => 'បញ្ជា "$1" ត្រូវហាម ក្នុងរបបគណិត (អ្នកចង់ប្រើប្រាស់ "$2" ជំនួស ?)',
 	'math_IllegalCommandInTextMode' => 'បញ្ជា "$1" ត្រូវហាម ក្នុងរបបអត្ថបទ',
 	'math_InvalidColour' => 'ពណ៌ "$1" មិនត្រឹមត្រូវ',
-	'math_LatexFontNotSpecified' => 'គ្មាន ក្រមអក្សរ LaTeX ត្រូវបានបញ្ជាក់ សំរាប់ "$1"',
+	'math_LatexFontNotSpecified' => 'គ្មាន ក្រមអក្សរ LaTeX ត្រូវបានបញ្ជាក់ សម្រាប់ "$1"',
 	'math_LatexPackageUnavailable' => 'មិនអាច ទៅជា PNG ព្រោះ គ្មានកញ្ចប់ LaTeX "$1"',
 	'math_MismatchedBeginAndEnd' => 'បញ្ជា "$1" និង "$2" មិនសមគ្នា',
 	'math_UnavailableSymbolFontCombination' => 'និមិត្តសញ្ញា "$1" មិនមាន ក្នុង ក្រមអក្សរ "$2"',

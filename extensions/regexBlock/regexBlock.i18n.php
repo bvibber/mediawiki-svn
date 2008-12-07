@@ -519,6 +519,7 @@ $messages['got'] = array(
 $messages['grc'] = array(
 	'regexblock-form-reason' => 'Αἰτία:',
 	'regexblock-stats-username' => 'Διὰ τὸ $1',
+	'regexblock-view-all' => 'ἅπασαι',
 	'regexblock-view-go' => 'Ἱέναι',
 );
 
@@ -828,6 +829,7 @@ $messages['ka'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
@@ -841,7 +843,7 @@ $messages['km'] = array(
 	'regexblock-block-success' => 'រាំងខ្ទប់ដោយជោគជ័យ',
 	'regexblock-form-submit-empty' => 'ផ្តល់ឈ្មោះអ្នកប្រើប្រាស់ឬអាសយដ្ឋានIPដើម្បីហាមឃាត់។',
 	'regexblock-already-blocked' => '$1ត្រូវបានហាមឃាត់រួចហើយ។',
-	'regexblock-stats-username' => 'សំរាប់ $1',
+	'regexblock-stats-username' => 'សម្រាប់ $1',
 	'regexblock-stats-logging' => 'ពិនិត្យចូល ពី អាស័យដ្ឋាន',
 	'regexblock-currently-blocked' => 'អាសយដ្ឋានដែលត្រូវបានហាមឃាត់បច្ចុប្បន្ន៖',
 	'regexblock-view-all' => 'ទាំងអស់',

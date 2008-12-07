@@ -60,6 +60,13 @@ $messages['de'] = array(
 	'didyoumean-desc' => 'Ergänzt Seiten um Links zu ähnlichen Titeln',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'didyoumean-desc' => 'Pśidawa wótkaze do bokow z "pódobnymi" titelami',
+);
+
 /** Greek (Ελληνικά)
  * @author Dead3y3
  */
@@ -144,6 +151,13 @@ $messages['it'] = array(
  */
 $messages['km'] = array(
 	'didyoumean-desc' => 'បន្ថែម​តំនភ្ជាប់នានា​ទៅកាន់​ទំព័រទាំងឡាយណា​ដែលមានចំនងជើង"ស្រដៀងគ្នា"',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'didyoumean-desc' => '"비슷한" 이름을 가진 문서로 향하는 링크를 추가합니다.',
 );
 
 /** Ripoarisch (Ripoarisch)

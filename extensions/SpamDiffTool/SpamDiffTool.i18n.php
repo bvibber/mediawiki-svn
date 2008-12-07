@@ -269,7 +269,7 @@ $messages['gl'] = array(
 	'spamdifftool_confirm' => "Confirme que quere engadir estas entradas á listaxe negra de <i>spam</i>.
 (Faga clic <a href='$1' target='new'>aquí</a> para informar de calquera problema.)",
 	'spamdifftool_summary' => 'Engadindo a Listaxe Negra de Spam',
-	'spamdifftool_urls_detected' => 'As seguintes direccións URL foron detectadas na(s) edición(s), cales quere engadir á listaxe negra de spam (spam blacklist)?
+	'spamdifftool_urls_detected' => 'Os seguintes enderezos URL foron detectados na(s) edición(s); cales quere engadir á lista negra de spam?
 Estas opcións van das máis restritivas ás menos, bloqueando o dominio enteiro bloquearanse todas as ligazóns que veñan dese dominio.
 
 Asegúrese de non bloquear dominios enteiros que bloqueen contas de usuario; como blogpost.com, geocities.com, etc.',

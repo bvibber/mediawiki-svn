@@ -74,6 +74,13 @@ $messages['hi'] = array(
 	'htmlets-desc' => '<tt><nowiki><htmlet></nowiki></tt> टैग का इस्तेमाल करके फ़ाइलमें इन-लाइन HTML स्निपेट्ट्स डालने की अनुमति देता हैं',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'htmlets-desc' => 'Zmóžnja zasunjenje HTML-kuskow z datajow z pomocu taflički <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -66,7 +66,7 @@ $aliases['hu'] = array(
 
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'WhosOnline' => array( 'អ្នកកំពុងនៅអនឡាញ' ),
+	'WhosOnline' => array( 'អ្នកកំពុងនៅលើបណ្ដាញ' ),
 );
 
 /** Ripoarisch (Ripoarisch) */

@@ -242,13 +242,23 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Holek
  * @author Leinad
  * @author Maikking
  */
 $messages['pl'] = array(
+	'discussionthreading-desc' => 'Dodaje wątkowanie do stron dyskusji',
 	'discussionthreading-replysection' => 'odpowiedz',
 	'discussionthreading-replysectionhint' => 'Odpowiedz na tę wiadomość',
 	'discussionthreading-threadnewsection' => 'nowy',
+	'discussionthreading-threadnewsectionhint' => 'Zacznij nowy wątek',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'discussionthreading-replysection' => 'responder',
 );
 
 /** Russian (Русский)

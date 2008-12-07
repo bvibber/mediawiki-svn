@@ -217,6 +217,15 @@ $messages['af'] = array(
 	'viewapc-ls-limit-none' => 'Alles',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'viewapc-display-info' => 'Nombre',
+	'viewapc-ls-header-name' => 'Nombre',
+	'viewapc-ls-sort-name' => 'Nombre',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -1232,6 +1241,7 @@ $messages['grc'] = array(
 	'viewapc-ls-submit' => 'Ἱέναι!',
 	'viewapc-ls-header-name' => 'Ὄνομα',
 	'viewapc-ls-sort-name' => 'Ὄνομα',
+	'viewapc-ls-limit-none' => 'Ἅπασαι',
 );
 
 /** Hawaiian (Hawai`i)
@@ -1780,10 +1790,11 @@ $messages['ka'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'viewapc' => 'ពត៌មាន APC',
+	'viewapc' => 'ព័ត៌មាន APC',
 	'viewapc-info-general' => 'ពត៌មានទូទៅ',
 	'viewapc-shared-memory' => 'អង្គចងចាំដែលត្រូវបានប្រើរួមគ្នា',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ឯកសារ|ឯកសារ}} ($2)',

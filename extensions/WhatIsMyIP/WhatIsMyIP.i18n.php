@@ -177,6 +177,15 @@ $messages['hsb'] = array(
 	'whatismyip-out' => 'Twoja IP:',
 );
 
+/** Hungarian (Magyar)
+ * @author Terik
+ */
+$messages['hu'] = array(
+	'whatismyip' => 'Mi az IP-m?',
+	'whatismyip-desc' => 'Megmutatja a szerkesztő IP-címét a [[Special:WhatIsMyIP]]-n.',
+	'whatismyip-out' => 'Az IP-d:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -317,7 +326,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'whatismyip' => 'Qual o meu IP',
-	'whatismyip-desc' => 'Mostra o endereço IP do utilizador actual em [[Especial:WhatIsMyIP]]',
+	'whatismyip-desc' => 'Mostra o endereço IP do utilizador actual em [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'O seu IP:',
 );
 

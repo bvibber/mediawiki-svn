@@ -1357,6 +1357,8 @@ $messages['ru'] = array(
 	'inplace_access_disabled' => 'Доступ у сервису был отключён для всех клиентов',
 	'inplace_scaler_not_enough_params' => 'Недостаточно параметров.',
 	'webstore_path_invalid' => 'Неверное имя файла.',
+	'webstore_404' => 'Файл не найден.',
+	'webstore_metadata_not_found' => 'Файл не найден: $1',
 );
 
 /** Slovak (Slovenčina)

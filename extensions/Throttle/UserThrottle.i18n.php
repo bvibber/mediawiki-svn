@@ -98,6 +98,18 @@ Por favor, agarde uns minutos e prema "recargar" no seu navegador para volver in
 	'acct_creation_global_soft_throttle_hit-desc' => 'Acelerador de creación de usuarios',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'אפשרות יצירת החשבונות הושהתה אוטומטית למספר רגעים עקב מספר גבוה מהרגיל של נסיונות כניסה לחשבון.
+אנא המתינו מספר דקות ונסו שנית.',
+	'acct_creation_global_hard_throttle_hit' => 'אפשרות יצירת החשבונות הושהתה אוטומטית למספר שניות כדי להפחית התקפות הצפה בהרשמת חשבונות.
+אנא המתינו רגע ולחצו על "רענן" בדפדפן שלכם כדי לנסות שנית.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'הגבלת יצירת משתמשים',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -197,6 +209,13 @@ Poczekaj kilka minut i spróbuj ponownie.',
 	'acct_creation_global_hard_throttle_hit' => 'Możliwość utworzenia nowego konta została automatycznie zawieszona na kilka sekund by uniemożliwić atak polegający na przeciążeniu serwera próbami rejestracji.
 Poczekaj chwilę i wciśnij „odśwież” w przeglądarce by ponowić operację.',
 	'acct_creation_global_soft_throttle_hit-desc' => 'Ogranicza częstotliwość rejestracji nowych użytkowników',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'acct_creation_global_soft_throttle_hit-desc' => 'Restringir a criação de utilizadores',
 );
 
 /** Slovak (Slovenčina)

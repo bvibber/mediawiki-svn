@@ -40,6 +40,9 @@ $messages['bg'] = array(
 	'amazonplus-nores' => 'Грешка: Не бяха открити резултати!',
 	'amazonplus-noidres' => 'Грешка: Номера на продукта не можа да бъде открит!',
 	'amazonplus-fgcerr' => 'Грешка: Не може да бъде извлечена информация от Amazon!',
+	'amazonplus-german' => 'немски',
+	'amazonplus-french' => 'френски',
+	'amazonplus-japanese' => 'японски',
 	'amazonplus-cp-none' => 'Няма',
 );
 
@@ -100,11 +103,31 @@ $messages['fr'] = array(
 	'amazonplus-cp-none' => 'Aucun',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'amazonplus-desc' => 'Unha extensión altamente personalizable para amosar información do Amazon',
+	'amazonplus-nores' => 'Erro: non se atopou ningún resultado!',
+	'amazonplus-noidres' => 'Erro: non se puido atopar o ID dun produto!',
+	'amazonplus-fgcerr' => 'Erro: non se puideron obter os datos do Amazon!',
+	'amazonplus-slserr' => 'Erro: non se puideron analizar os datos do Amazon!',
+	'amazonplus-used' => 'usado',
+	'amazonplus-german' => 'Alemán',
+	'amazonplus-french' => 'Francés',
+	'amazonplus-japanese' => 'Xaponés',
+	'amazonplus-amazon' => 'prezo do Amazon',
+	'amazonplus-new' => 'novo',
+	'amazonplus-none' => 'Non hai dispoñibles para a venda copias deste produto.',
+	'amazonplus-cp-none' => 'Ningún',
+);
+
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'amazonplus-desc' => 'הרחבה הניתנת להתאמה אישית באופן נרחב להצגת מידע מ־Amazon',
+	'amazonplus-desc' => 'הרחבה להצגת מידע מ־Amazon, הניתנת להתאמה אישית נרחבת',
 	'amazonplus-nores' => 'שגיאה: לא נמצאו תוצאות!',
 	'amazonplus-noidres' => 'שגיאה: לא ניתן למצוא את מספר הזיהוי של המוצר!',
 	'amazonplus-fgcerr' => 'שגיאה: לא ניתן לאחזר את המידע מ־Amazon!',

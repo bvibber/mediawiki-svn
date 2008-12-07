@@ -199,10 +199,12 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'userwelcome-desc' => 'Engade a etiqueta <tt>&lt;welcomeUser&gt;</tt> para amosar información social específica a un usuario rexistrado',
 	'mp-userlevels-link' => 'Niveis de usuario',
 	'mp-welcome-upload' => 'Cargar',
 	'mp-welcome-edit' => 'Editar',
 	'mp-welcome-points' => '$1 puntos',
+	'mp-welcome-needed-points' => 'Para avanzar a <b><a href="$1">$2</a></b> gañe <i>$3</i> puntos máis!',
 	'mp-welcome-logged-in' => 'Ola, $1',
 	'mp-requests-title' => 'Solicitudes',
 	'mp-requests-message' => 'Ten as seguintes solicitudes.',

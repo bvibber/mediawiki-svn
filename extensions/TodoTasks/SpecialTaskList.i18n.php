@@ -650,14 +650,18 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'tasklist' => 'Lista de Tarefas',
+	'tasklist-parser-desc' => 'Adiciona a função do analisador (parser) <nowiki>{{#todo:}}</nowiki> para a atribuição de tarefas',
+	'tasklist-special-desc' => 'Adiciona uma página especial para a revisão de [[Special:TaskList|atribuições de tarefas]]',
 	'tasklistbyproject' => 'Lista de Tarefas por Projecto',
 	'tasklistunknownproject' => 'projecto deconhecido',
 	'tasklistunspecuser' => 'Usuário não especificado',
 	'tasklistincorrectuser' => 'Nome de utilizador incorrecto',
 	'tasklistemail' => 'Caro %s',
+	'tasklistemailsubject' => '[%s] Mudança na lista de tarefas',
 	'tasklistmytasks' => 'Minhas tarefas',
 	'tasklistbyprojectbad' => "Projecto '''%s''' não é um projecto válido.
 Para uma lista de projectos válidos, ver [[MediaWiki:TodoTasksValidProjects]].",

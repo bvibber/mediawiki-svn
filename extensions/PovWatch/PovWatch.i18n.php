@@ -439,6 +439,7 @@ Kliknite na tipku ispod za upisivanje u sustav.',
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'povwatch' => 'PovWatch',
 	'povwatch_desc' => 'Rozšěrjenje za [[Special:PovWatch|zasunjenje stronow do wobkedźbowankow]] druhich wužiwarjow',
 	'povwatch_no_session' => 'Zmylk: Formular njeda so straty datow dla wotesłać.',
 	'povwatch_not_allowed_push' => 'Njejsy administrator za PovWatch, njemóžeš nastawki do wobkedźbowankow sunyć.',
@@ -466,6 +467,8 @@ Protokol aktualnych wobkedźbowankow steji na [[Special:PovWatch/log]] k dispozi
 	'povwatch_subscribe_intro' => 'Njejsy PovWatch abonował. Klikń na tłóčatko deleka, zo by jón abonował.',
 	'povwatch_subscribe' => 'Abonować',
 	'povwatch_added' => 'přidaty',
+	'right-povwatch_admin' => 'Wužiwarske prawa za přidawanje stronow k wobkeďzbowankam druhich wužiwarjow administrować',
+	'right-povwatch_user' => 'Strony k wobkedźbowankam druhich wužiwarjow přidać',
 );
 
 /** Hungarian (Magyar)

@@ -394,6 +394,38 @@ $messages['haw'] = array(
 	'createsigndoc-pagename' => '‘Ao‘ao:',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'createsigndocument' => 'מתן האפשרות לחתימה על מסמכים',
+	'createsigndoc-head' => "השתמש בטופס זה כדי ליצור דף 'מסמך חתימה' עבור הדף הנתון, כזה שמשתמשים יוכלו [[Special:SignDocument|לחתום בו]].
+אנא ציינו את שם הדף בו תרצו לאפשר חתימה אלקטרונית, חברים של אילו קבוצות משתמשים יוכלו לחתום עליו, אילו שדות ברצונכם להפוך לגלויים בפני משתמשים ואילו שדות להפוך ללא מחייבים, הגיל המינימלי לחתימה על המסמך (אין גיל מינימלי אם לא צויין); וטקסט הכרות מקוצר המתאר את המסמך ומספק הנחיות למשתמשים.
+
+<b>נכון לעכשיו אין דרך למחוק או לשנות מסמכי חתימות לאחר שהם נוצרו</b> ללא גישה ישירה למסד הנתונים.
+בנוסף, הטקסט של הדף המוצג בדף החתימה יהיה הטקסט ''הנוכחי'' של הדף, ללא תלות בשינויים שנערכו לאחר היום.
+אנא ודאו כי המסמך עומד בתנאי יציבות מסויימים וכי הוא אכן ראוי לחתימה.
+כמו כן ודאו כי מילאתם את כל השדות בדיוק כפי שהם אמורים להיות, ''לפני שליחת הטופס''.",
+	'createsigndoc-pagename' => 'דף:',
+	'createsigndoc-allowedgroup' => 'קבוצה מורשית:',
+	'createsigndoc-email' => 'כתובת הדוא"ל:',
+	'createsigndoc-address' => 'כתובת הבית:',
+	'createsigndoc-extaddress' => 'עיר, מדינה, ארץ:',
+	'createsigndoc-phone' => 'מספר הטלפון:',
+	'createsigndoc-bday' => 'תאריך הלידה:',
+	'createsigndoc-minage' => 'הגיל המינימלי:',
+	'createsigndoc-introtext' => 'הקדמה:',
+	'createsigndoc-hidden' => 'מוסתר',
+	'createsigndoc-optional' => 'אופציונאלי',
+	'createsigndoc-create' => 'יצירה',
+	'createsigndoc-error-generic' => 'שגיאה: $1',
+	'createsigndoc-error-pagenoexist' => 'שגיאה: הדף [[$1]] אינו קיים.',
+	'createsigndoc-success' => 'חתימת המסמכים עבור [[$1]] הופעלה בהצלחה.
+על מנת לנסות אותה, אנא בקרו ב[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} דף זה].',
+	'createsigndoc-error-alreadycreated' => 'חתימת המסמך "$1" כבר קיימת.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -828,8 +860,10 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'createsigndocument' => 'Ativar a assinatura de documentos',
 	'createsigndoc-pagename' => 'Página:',
 	'createsigndoc-allowedgroup' => 'Grupo autorizado:',
 	'createsigndoc-email' => 'Endereço de e-mail:',
@@ -843,6 +877,9 @@ $messages['pt'] = array(
 	'createsigndoc-create' => 'Criar',
 	'createsigndoc-error-generic' => 'Erro: $1',
 	'createsigndoc-error-pagenoexist' => 'Erro: A página [[$1]] não existe.',
+	'createsigndoc-success' => 'A assinatura de documentos foi ativada com sucesso em [[$1]].
+Para testar a funcionalidade, por favor visite [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} esta página].',
+	'createsigndoc-error-alreadycreated' => 'A assinatura de documentos "$1" já existe.',
 );
 
 /** Romanian (Română)

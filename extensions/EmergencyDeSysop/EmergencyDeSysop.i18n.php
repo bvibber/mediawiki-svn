@@ -37,6 +37,13 @@ $messages['qqq'] = array(
 	'emergencydesysop-nogroups' => '{{Identical|None}}',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'emergencydesysop-nogroups' => 'Ništa',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -88,8 +95,20 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'emergencydesysop' => 'Perda dos dereitos de administrador de emerxencia',
+	'emergencydesysop-desc' => 'Permite a un administrador sacrificar os seus propios privilexios para arrebatarllos a outro',
+	'emergencydesysop-title' => 'Eliminar os dereitos de administrador do usuario actual e mais os doutro',
+	'emergencydesysop-otheradmin' => 'Outro administrador ao que retirar os privilexios',
+	'emergencydesysop-reason' => 'Motivo para a eliminación',
 	'emergencydesysop-submit' => 'Enviar',
+	'emergencydesysop-incomplete' => 'Requírense todos os campos do formulario; por favor, inténteo de novo.',
+	'emergencydesysop-notasysop' => 'O usuario inserido non está no grupo dos administradores.',
 	'emergencydesysop-nogroups' => 'Ningún',
+	'emergencydesysop-done' => 'A acción foi completada, vostede de mais "[[$1]]" perderon os seus dereitos de administrador.',
+	'emergencydesysop-invalidtarget' => 'O usuario inserido non existe.',
+	'emergencydesysop-blocked' => 'Non pode acceder a esta páxina mentres estea bloqueada',
+	'emergencydesysop-noright' => 'Non ten os permisos suficientes para acceder a esta páxina',
+	'right-emergencydesysop' => 'Capacitado para quitar, mutuamente, os permisos de administrador',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

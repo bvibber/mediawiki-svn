@@ -227,7 +227,13 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'sitematrix' => 'Spisak Wikimedia wikija',
+	'sitematrix-summary' => 'Ova posebna stranica prikazuje sve Wikimedia wikije.',
 	'sitematrix-language' => 'Jezik',
+	'sitematrix-others' => 'Ostali projekti Wikimedije',
+	'sitematrix-total' => "'''Ukupni zbir: $1'''",
+	'sitematrix-sitetotal' => 'Ukupno',
+	'sitematrix-private' => 'privatno',
 );
 
 /** Catalan (Català)

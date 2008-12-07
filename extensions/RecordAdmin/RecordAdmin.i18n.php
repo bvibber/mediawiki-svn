@@ -129,19 +129,38 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'recordadmin' => 'Xestión dos rexistros',
+	'recordadmin-desc' => 'Unha [[Special:RecordAdmin|páxina especial]] para atopar e editar páxinas de rexistros usando un formulario',
+	'recordadmin-category' => 'Rexistros',
+	'recordadmin-select' => 'Seleccione o tipo de rexistro para procurar por',
+	'recordadmin-newsearch' => 'Nova procura $1',
+	'recordadmin-newrecord' => 'Seleccione outro tipo de rexistro',
 	'recordadmin-submit' => 'Enviar',
+	'recordadmin-create' => 'Atopar ou crear un rexistro "$1"',
 	'recordadmin-alreadyexist' => 'Sentímolo, "$1" xa existe!',
 	'recordadmin-createsuccess' => '"$1" creado',
 	'recordadmin-createerror' => 'Ocorreu un erro ao intentar crear o $1!',
 	'recordadmin-badtitle' => 'Título incorrecto!',
+	'recordadmin-recordid' => 'ID do rexistro:',
+	'recordadmin-invert' => 'Invertir a selección',
 	'recordadmin-buttonsearch' => 'Procurar',
 	'recordadmin-buttoncreate' => 'Crear',
+	'recordadmin-buttonreset' => 'Restablecer',
 	'recordadmin-searchresult' => 'Resultados da procura',
+	'recordadmin-nomatch' => 'Non se atoparon rexistros que coincidisen!',
 	'recordadmin-edit' => 'Editando "$1"',
+	'recordadmin-typeupdated' => 'Propiedades de "$1" actualizadas',
+	'recordadmin-updatesuccess' => '"$1" actualizado',
+	'recordadmin-updateerror' => 'Ocorreu un erro durante a actualización',
 	'recordadmin-buttonsave' => 'Gardar',
+	'recordadmin-noform' => 'Non hai ningún formulario asociado cos rexistros "$1"!',
+	'recordadmin-createlink' => '<a href=$1>crear un</a>',
+	'recordadmin-newcreated' => 'Novo $1 creado a partir dun formulario público',
+	'recordadmin-summary-typecreated' => 'Novo $1 creado',
 	'recordadmin-viewlink' => 'ver',
 	'recordadmin-editlink' => 'editar',
 	'recordadmin-created' => 'Creado',
+	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 );
 
 /** Khmer (ភាសាខ្មែរ)

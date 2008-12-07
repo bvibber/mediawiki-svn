@@ -1665,6 +1665,7 @@ Sekureca averto pri nevalida atesto eble estos montrata.',
 );
 
 /** Spanish (Español)
+ * @author Alpertron
  * @author Ascánder
  * @author Bengoa
  * @author Dalton2
@@ -1707,7 +1708,7 @@ La versión cifrada resultante se encuentra a continuación. Se [[Special:Boardv
 	'boardvote_invalidentered' => '<p><strong>Error</strong>: la preferencia hacia un candidato debe expresarse como un entero positivo (1, 2, 3, ....), o dejarse en blanco.</p>',
 	'boardvote_nosession' => 'Tu identificador de usuario Wikimedia no pudo ser determinado.
 Por favor, conéctate en el wiki en el que calificas para votar, y pulsa <nowiki>[[Special:Boardvote]]</nowiki>.
-Debes usar otra cuenta con un mínimo de $1 contribuciones antes del $2, y haber hecho al menos $3 modificaciones entre $4 y $5.',
+Debes usar otra cuenta con un mínimo de $1 {{PLURAL:$1|modificación|modificaciones}} antes del $2, y haber hecho al menos $3 {{PLURAL:$3|modificación|modificaciones}} entre $4 y $5.',
 	'boardvote_notloggedin' => 'No has iniciado sesión.
 Para votar, necesitas tener {PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber hecho por lo menos {PLURAL:$3|una edición|$3 ediciones}} entre el $4 y el $5.',
 	'boardvote_notqualified' => 'No cumples con los requisitos para votar en esta elección.
@@ -1723,6 +1724,8 @@ Necesitas tener {PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber hec
 $1 para los datos codificados.</p>',
 	'boardvote_dumplink' => 'Haz click aquí',
 	'boardvote_submit' => 'Aceptar',
+	'boardvote_strike' => 'Tachar',
+	'boardvote_unstrike' => 'Quitar tachado',
 	'boardvote_needadmin' => 'Sólo los administradores de la elección pueden realizar esta operación.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Elecciones del Consejo de Administración de Wikimedia</a>:
 Votación abierta hasta el 22 de junio',
@@ -2296,6 +2299,7 @@ $messages['grc'] = array(
 	'boardvote_edits_many' => 'πολλά',
 	'group-boardvote' => 'Ἐπίτροποι ἐκλογῆς συμβουλίου',
 	'group-boardvote-member' => 'ἐπίτροποι ἐκλογῆς συμβουλίου',
+	'boardvote_welcome' => "Ὡς εὖ παρέστης '''$1'''!",
 );
 
 /** Manx (Gaelg)

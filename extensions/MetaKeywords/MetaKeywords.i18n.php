@@ -72,6 +72,13 @@ $messages['cs'] = array(
 	'metakeywords-desc' => 'Umožňuje konfiguraci značek <tt>&lt;meta "keywords"&gt;</tt> a <tt>&lt;meta "description"&gt;</tt> v závislosti na jmenném prostoru',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'metakeywords-desc' => 'Dowólujo konfiguraćiju toflickowu <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> na mjenjowy rum',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p

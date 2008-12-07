@@ -339,6 +339,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'whitelisttablemodifyall' => 'Sve',
+	'whitelisttablemodifynone' => 'Ništa',
 	'whitelisttableedit' => 'Uredi',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistrequestmsg' => '$1 zahtijeva pristup slijedećim stranicama:
@@ -623,6 +624,8 @@ Pode usar * ou %, como tamén o carácter "comodín"',
 	'whitelistnewtabledate' => 'Data de caducidade:',
 	'whitelistnewtableedit' => 'Preparar para editar',
 	'whitelistnewtableview' => 'Preparar para ver',
+	'whitelistnowhitelistedusers' => 'Non hai usuarios no grupo "{{MediaWiki:Group-restricted}}".
+Ten que [[Special:UserRights|engadir usuarios ao grupo]] antes de poder engadir páxinas á lista branca dun usuario.',
 	'whitelistnewtableprocess' => 'Proceso',
 	'whitelistnewtablereview' => 'Revisar',
 	'whitelistselectrestricted' => '== Seleccionar un nome de usuario restrinxido ==',
@@ -635,7 +638,7 @@ Pode usar * ou %, como tamén o carácter "comodín"',
 	'whitelistoverviewrm' => '* Eliminando o acceso a [[:$1|$1]]',
 	'whitelistoverviewna' => "* Engadindo [[:$1|$1]] á listaxe branca (whitelist) con acceso a '''$2''' e data de remate '''$3'''",
 	'whitelistrequest' => 'Solicitar acceso a máis páxinas',
-	'whitelistrequestmsg' => '$1 solicitou ter acceso ás seguintes páxinas:
+	'whitelistrequestmsg' => '$1 solicitou ter acceso {{PLURAL:$3|á seguinte páxina|ás seguintes páxinas}}:
 
 $2',
 	'whitelistrequestconf' => 'A solicitude para páxinas novas foi enviada a $1',
@@ -643,6 +646,14 @@ $2',
 Esta páxina só é aplicable aos usuarios limitados",
 	'whitelistnever' => 'nunca',
 	'whitelistnummatches' => ' - {{PLURAL:$1|unha coincidencia|$1 coincidencias}}',
+	'right-editwhitelist' => 'Modificar a lista branca dos usuarios existentes',
+	'right-restricttowhitelist' => 'Editar e ver só as páxinas da lista branca',
+	'action-editwhitelist' => 'modificar a lista branca dos usuarios existentes',
+	'action-restricttowhitelist' => 'editar e ver só as páxinas da lista branca',
+	'group-restricted' => 'Usuarios restrinxidos',
+	'group-restricted-member' => 'Usuario restrinxido',
+	'group-manager' => 'Xestores',
+	'group-manager-member' => 'Xestor',
 );
 
 /** Gothic
@@ -658,6 +669,7 @@ $messages['got'] = array(
  */
 $messages['grc'] = array(
 	'mywhitelistpages' => 'Αἱ δέλτοι μου',
+	'whitelisttablemodifyall' => 'Ἅπασαι',
 	'whitelisttablemodifynone' => 'Οὐδέν',
 	'whitelisttableedit' => 'Μεταγράφειν',
 	'whitelistbadtitle' => 'Κακὸν τὸ ἐπώνυμον -',
@@ -909,6 +921,7 @@ Kaca iki mung kanggo panganggo kawates",
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
@@ -926,7 +939,7 @@ $messages['km'] = array(
 	'whitelisttablechangedate' => 'ផ្លាស់ប្តូរកាលបរិច្ឆេទផុតកំណត់',
 	'whitelisttableremove' => 'ដកចេញ',
 	'whitelistnewtabledate' => 'កាលបរិច្ឆេទផុតកំណត់៖',
-	'whitelistpagelist' => 'ទំព័រ{{SITENAME}}សំរាប់ $1',
+	'whitelistpagelist' => 'ទំព័រ{{SITENAME}}សម្រាប់ $1',
 	'whitelistbadtitle' => 'ចំនងជើងមិនត្រឹមត្រូវ -',
 	'whitelistnever' => 'មិនដែល',
 );
@@ -1485,6 +1498,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'mywhitelistpages' => 'Minhas Páginas',
@@ -1501,11 +1515,11 @@ $messages['pt'] = array(
 	'whitelisttableremove' => 'Remover',
 	'whitelistpagelist' => 'Página de {{SITENAME}} para $1',
 	'whitelistbadtitle' => 'Titulo inválido -',
-	'whitelistrequestmsg' => '$1 requisitou acesso às seguintes páginas:
+	'whitelistrequestmsg' => '$1 requisitou acesso {{PLURAL:$3|à seguinte página|às seguintes páginas}}:
 
 $2',
 	'whitelistnever' => 'nunca',
-	'whitelistnummatches' => ' - $1 resultados',
+	'whitelistnummatches' => ' - {{PLURAL:$1|um resultado|$1 resultados}}',
 );
 
 /** Tarifit (Tarifit)
@@ -1561,6 +1575,8 @@ $messages['ru'] = array(
 	'whitelistoverviewsa' => "* Установить доступ '''$1''' для [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Снять права [[:$1|$1]]',
 	'whitelistnever' => 'никогда',
+	'group-manager' => 'Управляющие',
+	'group-manager-member' => 'управляющий',
 );
 
 /** Slovak (Slovenčina)

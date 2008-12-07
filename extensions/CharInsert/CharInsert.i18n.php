@@ -196,9 +196,10 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'charinsert-desc' => 'អនុញ្ញាតអោយមានការបង្កើតប្រអ​ប់ JavaScript សំរាប់[[MediaWiki:Edittools|ការដាក់បញ្ចូលតួរអក្សរមិនមានលក្ខណៈស្តង់ដារ]]',
+	'charinsert-desc' => 'អនុញ្ញាតឱ្យមានការបង្កើតប្រអ​ប់ JavaScript សម្រាប់[[MediaWiki:Edittools|ការដាក់បញ្ចូលតួរអក្សរមិនមានលក្ខណៈស្តង់ដារ]]',
 );
 
 /** Ripoarisch (Ripoarisch)

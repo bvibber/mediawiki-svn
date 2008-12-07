@@ -167,6 +167,7 @@ $messages['dsb'] = array(
 	'lookupuser-registration' => 'Datum registrěrowanja: $1',
 	'lookupuser-no-registration' => 'njenagrany',
 	'lookupuser-touched' => 'Wužywarske daty slědny raz dotyknjone: $1',
+	'lookupuser-info-authenticated' => 'E-mailowa awtentifikacija: $1',
 	'lookupuser-useroptions' => 'Wužywarske nastajenja:',
 );
 

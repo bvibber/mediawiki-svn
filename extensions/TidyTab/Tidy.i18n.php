@@ -90,6 +90,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'tidy-desc' => 'Přidawa rajtark "porjadny" abo "njeporjadny" (we wotwisnosći wot $wgUseTidy) na normalnych stronach, dźiwajo na znjemóžnjenje nastajenja HTML tidy za jednory napohlad',
 	'tidy' => 'Porjadny',
 	'untidy' => 'Njeporjadny',
 );

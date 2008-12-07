@@ -130,22 +130,24 @@ $messages['gl'] = array(
 Quere editar esta páxina?',
 	'createpage_tryagain' => 'Non. Quero crear unha páxina nova cun título distinto.',
 	'createpage_editexisting' => 'Si. Quero contribuír á páxina existente.',
+	'createpage-badtitle' => '"$1" non pode ser usado como o título dunha páxina',
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'createpage' => 'יצירת דף',
 	'createpage-desc' => 'הוספת [[Special:CreatePage|דף מיוחד]] ליצירת דפים חדשים',
 	'createpage_submitbutton' => 'שליחה',
-	'createpage_instructions' => 'הזינו את כותרת הדף שברצונכם ליצור:',
-	'createpage_entertitle' => 'נא הזינו כותרת עבור הדף שלכם.',
+	'createpage_instructions' => 'כתבו את כותרת הדף שברצונכם ליצור:',
+	'createpage_entertitle' => 'אנא כתבו כותרת עבור הדף שלכם.',
 	'createpage_titleexists' => 'כבר קיים דף בעל הכותרת [[$1]].
 האם ברצונכם לערוך את הדף הקיים?',
-	'createpage_tryagain' => 'לא. אנו מעוניינים ליצור דף חדש עם כותרת יחודית.',
-	'createpage_editexisting' => 'כן. אנו מעוניינים לתרום לדף הקיים.',
-	'createpage-badtitle' => 'לא ניתן להשתמש ב־"$1" ככותרת לדף',
+	'createpage_tryagain' => 'לא, אלא ליצור דף חדש בשם נפרד.',
+	'createpage_editexisting' => 'כן, לתרום לדף הקיים.',
+	'createpage-badtitle' => 'לא ניתן להשתמש ב"$1" ככותרת לדף',
 );
 
 /** Javanese (Basa Jawa)
@@ -170,9 +172,13 @@ $messages['lb'] = array(
 	'createpage' => 'Eng Säit uleeën',
 	'createpage-desc' => 'Setzt eng [Special:CreatePage|Spezialsäit]] derbäi fir Säiten unzeleeën',
 	'createpage_submitbutton' => 'Schécken',
+	'createpage_instructions' => 'Gitt den titel vun däer Säit un déi Dir uleeë wëllt:',
 	'createpage_entertitle' => 'Gitt w.e.g. en Titel fir Är Säit un.',
 	'createpage_titleexists' => 'Eng Säit mam Titel [[$1]] gëtt et schonn.
 Wëll Dir déi Säit veränneren?',
+	'createpage_tryagain' => 'Neen. Ech wëll eng nei Säit mat engem aneren Titel uleeën.',
+	'createpage_editexisting' => 'Jo. Ech wëll déi Säit déi et gëtt änneren.',
+	'createpage-badtitle' => '"$1" kann net als Titel fir eng Säit benotzt ginn',
 );
 
 /** Low German (Plattdüütsch)
@@ -219,6 +225,7 @@ $messages['oc'] = array(
 La volètz modificar ?",
 	'createpage_tryagain' => 'Non, vòli crear una pagina novèla amb un títol diferent.',
 	'createpage_editexisting' => 'Òc, vòli contribuir dins aquesta pagina existenta.',
+	'createpage-badtitle' => '« $1 » pòt pas èsser utilizat coma nom de pagina',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
@@ -233,6 +240,7 @@ $messages['pt-br'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -245,6 +253,7 @@ $messages['ru'] = array(
 Желаете ли вы править существующую страницу?',
 	'createpage_tryagain' => 'Нет. Я хочу создать новую страницу с другим названием.',
 	'createpage_editexisting' => 'Да. Я хочу внести свой вклад в существующую страницу.',
+	'createpage-badtitle' => '«$1» нельзя использовать как заголовок страницы',
 );
 
 /** Slovak (Slovenčina)

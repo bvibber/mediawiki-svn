@@ -467,6 +467,7 @@ $wgGoogleMapsMessages['bs'] = array(
 	'gm-width' => 'Širina',
 	'gm-height' => 'Visina',
 	'gm-zoom-control' => 'Navigacija',
+	'gm-no-zoom-control' => 'ništa',
 	'gm-no' => 'Ne',
 	'gm-search' => 'Traži',
 	'gm-save-path' => 'Sačuvaj',

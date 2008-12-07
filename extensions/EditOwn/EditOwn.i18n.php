@@ -49,6 +49,13 @@ $messages['de'] = array(
 	'editown-desc' => 'Benutzer ohne das editall-Recht können nur selbst erstelle Seiten bearbeiten',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'editown-desc' => 'Wužywarje bźez pšawa "editall" móžo jano boki wobźěłaś, kótarež su same napórali',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

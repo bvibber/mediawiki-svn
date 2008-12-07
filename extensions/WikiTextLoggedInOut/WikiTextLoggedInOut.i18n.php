@@ -77,6 +77,13 @@ $messages['he'] = array(
 	'wikitextloggedinout-desc' => 'שתי תגיות, <tt>&lt;loggedin&gt;</tt> ו־<tt>&lt;loggedout&gt;</tt>, המציגות טקסט שונה למשתמשים אנונימיים ולמשתמשים רשומים',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'wikitextloggedinout-desc' => 'Dwě parserowej hóčce, <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt>, zo byštej rozdźělny tekst we wotwisnosći wot přizjewjenskeho statusa wužiwarja pokazałoj',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -31,8 +31,8 @@ $aliases['hu'] = array(
 
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'ContributionHistory' => array( 'ប្រវត្តិនៃការរួមចំនែក' ),
-	'ContributionTotal' => array( 'ការរួមចំនែកសរុប' ),
+	'ContributionHistory' => array( 'ប្រវត្តិនៃការរួមចំណែក' ),
+	'ContributionTotal' => array( 'ការរួមចំណែកសរុប' ),
 );
 
 /** Dutch (Nederlands) */

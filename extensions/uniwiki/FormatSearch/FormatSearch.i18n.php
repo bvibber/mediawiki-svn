@@ -35,6 +35,13 @@ $messages['he'] = array(
 	'formatsearch-desc' => 'ההרחבה מנקה את דף תוצאות החיפוש',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'formatsearch-desc' => 'Wurjedźa stronu pytanskich wuslědkow',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

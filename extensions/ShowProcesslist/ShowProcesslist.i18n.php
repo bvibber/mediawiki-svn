@@ -305,11 +305,12 @@ $messages['ka'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'showprocesslist-user' => 'អ្នកប្រើប្រាស់',
 	'showprocesslist-time' => 'ពេលវេលា',
-	'showprocesslist-info' => 'ពត៌មាន',
+	'showprocesslist-info' => 'ព័ត៌មាន',
 );
 
 /** Ripoarisch (Ripoarisch)

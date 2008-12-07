@@ -238,6 +238,13 @@ $messages['ksh'] = array(
 	'smoothgallery-desc' => 'Määt et müjjelesch, Jallerieje met huhjelade Bellder opzebouwe, met de miehßte Enstellunge fun <i lang="en">SmoothGallery</i>.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'smoothgallery-javascript-disabled' => 'JavaScriot gëtt gebraucht fir dës Gallerie korrekt ze gesinn.',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

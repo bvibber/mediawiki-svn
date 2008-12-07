@@ -540,6 +540,13 @@ Se vi volas utiligi OpenID por ensaluti estontece, vi povas [[Special:OpenIDConv
 	'openidloginlabel' => 'URL-o OpenID',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'openidlanguage' => 'Idioma',
+);
+
 /** Finnish (Suomi)
  * @author Silvonen
  */
@@ -1398,6 +1405,8 @@ $messages['lb'] = array(
 	'openidbadusername' => 'Falsche Benotzernumm uginn.',
 	'openidautosubmit' => 'Op dëser Säit gëtt et e Formulaire deen automatesch soll verschéckt ginn wann Dir JavaScript ageschalt hutt.
 Wann net, da verich et mam Knäppche "Weider"',
+	'openidclientonlytext' => 'Dir kënnt keng Benotzerkonten aus dëser Wiki als OpendIDen op anere Site benotzen.',
+	'openidloginlabel' => 'URL vun der OpenID',
 );
 
 /** Eastern Mari (Олык Марий)

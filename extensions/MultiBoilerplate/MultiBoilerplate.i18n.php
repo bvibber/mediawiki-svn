@@ -235,8 +235,11 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'multiboilerplate-desc' => 'Permite que um texto-modelo seja seleccionado de uma lista drop-down localizada em cima do formulário de edição, quando se edita páginas',
+	'multiboilerplate-legend' => 'Seleccione o texto-modelo',
 	'multiboilerplate-submit' => 'Carregar',
 );
 

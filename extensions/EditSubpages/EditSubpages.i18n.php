@@ -134,6 +134,23 @@ $messages['gl'] = array(
   #</pre><!-- deixe esta liña como está -->',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'editsubpages-desc' => 'Dowola administratoram stronu a wšě jich podstrony za anonymne wobdźěłanje přez [[MediaWiki:Unlockedpages]] wotewrěć',
+	'unlockedpages' => '  #<!-- tutu linku njezměnjenu wostajić --><pre>
+# Strony, kotrež chceš wotewrěć z pomocu
+# * mjena strony
+# nalistować
+# Wotewrjene strony dyrbja so z naličenskim znamješkom započeć,
+# wšo druhe maja za komentar
+# Mjena stronow móža [[links|wotkazy]] być a wulkopisanje wobkedźbować
+# Tež diskusijne strony budu so ze stronu awtomatisce wotewěrać
+# Hlej http://www.mediawiki.org/wiki/Extension:EditSubpages za dalše informacije
+  #</pre><!-- tutu linku njezměnjenu wostajić -->',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

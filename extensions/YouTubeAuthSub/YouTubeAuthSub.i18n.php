@@ -1078,7 +1078,14 @@ Jekk jogħġbok kun pazjenti.",
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'youtubeauthsub' => 'Йовкстамс YouTube видеот',
 	'youtubeauthsub_title' => 'Конякс',
+	'youtubeauthsub_description' => 'Чарькодевтемгакс',
+	'youtubeauthsub_password' => 'YouTube совамо вал',
+	'youtubeauthsub_username' => 'YouTube теицянь лем',
+	'youtubeauthsub_category' => 'Явовкс',
+	'youtubeauthsub_submit' => 'Максомс',
+	'youtubeauthsub_uploadbutton' => 'Йовкстамс',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -1345,10 +1352,12 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Lijealso
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'youtubeauthsub' => 'Carregar vídeo do YouTube',
 	'youtubeauthsub-desc' => 'Permitir aos usuários [[Special:YouTubeAuthSub|carregar vídeos]] directamente no TouTube',
+	'youtubeauthsub_info' => 'Para carregar um vídeo para o YouTube para incluir numa página, preencha a informação seguinte:',
 	'youtubeauthsub_title' => 'Título',
 	'youtubeauthsub_description' => 'Descrição',
 	'youtubeauthsub_password' => 'Palavra-chave no YouTube',
@@ -1357,6 +1366,7 @@ $messages['pt'] = array(
 	'youtubeauthsub_category' => 'Categoria',
 	'youtubeauthsub_submit' => 'Submeter',
 	'youtubeauthsub_clickhere' => 'Carregue aqui para se ligar ao YouTube',
+	'youtubeauthsub_tokenerror' => 'Erro ao gerar o token de autorização. Tente refrescar a página.',
 	'youtubeauthsub_success' => "Parabéns!
 O seu vídeo foi carregado.
 Para visualizar o seu vídeo carregue <a href='http://www.youtube.com/watch?v=$1'>aqui</a>.

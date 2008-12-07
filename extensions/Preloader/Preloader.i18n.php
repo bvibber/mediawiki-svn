@@ -64,6 +64,13 @@ $messages['gl'] = array(
 	'preloader-desc' => 'Proporciona, para as páxinas novas, ventás de texto personalizable para os nomes dos espazos',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'preloader-desc' => 'Dodawa tekstowe elementy za nowe strony přiměrjomne na mjenowy rum',
+);
+
 /** Hungarian (Magyar)
  * @author Tgr
  */

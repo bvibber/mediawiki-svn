@@ -161,6 +161,13 @@ $messages['oc'] = array(
 	'othersites-desc' => "Deplaça los ligams interwiki autres que los ligams ligats a la lenga de lors compausants d'interfàcia pròpris.",
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'othersites' => 'Outros sites',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

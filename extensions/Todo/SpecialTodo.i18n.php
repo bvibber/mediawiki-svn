@@ -653,8 +653,17 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'todo' => 'Мезе теемс ледстемка',
 	'todo-tab' => 'мезе теемс',
+	'todo-new-queue' => 'од',
+	'todo-unrecognize-type' => 'Апак содань тип',
+	'todo-item-list' => 'Эсеть тевпельксэть',
+	'todo-no-item' => 'Тевпелькст арасть',
+	'todo-add-queue' => 'Теемс чиполас аравтома',
+	'todo-move-queue' => 'Ютавтомс пулос…',
 	'todo-list-change' => 'Полавтомс',
+	'todo-list-cancel' => 'А теемс',
+	'todo-new-item' => 'Од тевпелькс',
 );
 
 /** Nahuatl (Nāhuatl)

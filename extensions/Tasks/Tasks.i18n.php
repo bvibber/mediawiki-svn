@@ -405,40 +405,56 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'tasks' => 'Tarefas',
+	'tasks_desc' => 'Unha extensión para xestionar tarefas',
 	'tasks_tab' => 'Tarefas',
 	'tasks_title' => 'Tarefas para "$1"',
 	'tasks_form_new' => 'Crear unha tarefa nova',
 	'tasks_form_comment' => 'Comentario',
+	'tasks_error1' => 'A tarefa non foi creada: xa existe tal tarefa!',
 	'tasks_ok1' => 'A nova tarefa foi creada!',
 	'tasks_create_header' => 'Crear unha tarefa nova',
 	'tasks_existing_header' => 'Tarefas existentes',
+	'tasks_existing_table_header' => 'Tarefa|Datas|Comentario inicial|Traballo/Accións/Páxina',
 	'tasks_noone' => 'ningunha',
+	'tasks_assign_me' => 'Asignarmo a min mesmo',
 	'tasks_assign_to' => 'Asignada a',
 	'tasks_unassign_me' => 'Eliminar o meu traballo',
 	'tasks_close' => 'Pechar a tarefa',
 	'tasks_wontfix' => 'Non será arranxada',
 	'tasks_delete' => 'Borrar',
+	'tasks_no_task_delete_title' => 'Non permitido',
+	'tasks_no_task_delete_texe' => 'Non ten permiso para borrar tarefas. Só os administradores poden facelo.',
+	'tasks_action_delete' => 'Unha tarefa foi borrada.',
+	'tasks_task_was_deleted' => 'A tarefa foi borrada con éxito.',
 	'tasks_reopen' => 'Reabrir a tarefa',
 	'tasks_assignedto' => 'Asignada a $1',
 	'tasks_created_by' => 'Creada por $1',
 	'tasks_discussion_page_link' => 'Páxina de conversa da tarefa',
 	'tasks_closedby' => 'Pechada por $1',
+	'tasks_assigned_myself_log' => 'Asignado propio da tarefa "$1"',
+	'tasks_discussion_page_for' => 'Esta tarefa é para a páxina "$1". A lista con todas as tarefas para esa páxina é $2.',
 	'tasks_sidebar_title' => 'Tarefas abertas',
 	'tasks_here' => 'aquí',
+	'tasks_returnto' => 'Será redirixido en breve. Se non é redirixido nuns segundos, prema $1.',
 	'tasks_see_page_tasks' => '(tarefas desta páxina)',
 	'tasks_task_is_assigned' => '(asignada)',
+	'tasks_plain_text_only' => '(texto sinxelo, só 256 caracteres)',
 	'tasks_help_page' => 'Tarefas',
 	'tasks_more_like_it' => 'máis',
+	'tasks_task_types' => '1:cleanup:Limpeza|2:wikify:Formato|3:rewrite:Reescritura|4:delete:Borrado|5:create:Creado|6:write:Escritura|7:check:Comprobación',
 	'tasks_significance_order' => 'reescribir<borrar',
 	'tasks_event_on_creation' => 'comprobar',
 	'tasks_event_on_creation_anon' => 'comprobar',
+	'tasks_on_creation_comment' => 'Tarefa automática, xerada na páxina de creación',
 	'tasks_link_your_assignments' => 'traballos pendentes',
+	'tasks_see_your_assignments' => 'Actualmente ten $1 traballos sen rematar. Vexa o seu $2.',
 	'tasks_my_assignments' => 'Os seus traballos actuais',
 	'tasks_table_header_page' => 'Páxina',
 	'tasks_you_have_no_assignments' => 'Non ten traballos pendentes',
 	'tasks_search_form_title' => 'Procurar',
 	'tasks_search_tasks' => 'Tarefas',
 	'tasks_search_status' => 'Status',
+	'tasks_search_no_tasks_chosen_note' => '(Ao non seleccionar nada, buscaranse todos os tipos de tarefas.)',
 	'tasks_search_results' => 'Resultados da procura',
 	'tasks_previous' => 'Anterior',
 	'tasks_next' => 'Seguinte',
@@ -451,8 +467,12 @@ $messages['gl'] = array(
 	'tasks_action_open' => 'A tarefa "$1" foi aberta.',
 	'tasks_action_assigned' => 'A tarefa "$1" foi asignada.',
 	'tasks_action_closed' => 'A tarefa "$1" foi pechada.',
+	'tasks_action_wontfix' => 'Non se arranxará a tarefa "$1".',
+	'tasks_sign_delete' => '<b>Fíxose unha petición para o borrado desta páxina!</b>',
 	'tasks_logpage' => 'Rexistro de tarefas',
+	'tasks_logpagetext' => 'Este é un rexistro dos cambios feitos nas tarefas',
 	'tasks_logentry' => 'De "[[$1]]"',
+	'tog-show_task_comments' => 'Páxina de comentarios das tarefas.',
 );
 
 /** Hebrew (עברית)
@@ -665,6 +685,7 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'tasks_form_comment' => 'យោបល់',
@@ -680,7 +701,7 @@ $messages['km'] = array(
 	'tasks_next' => 'បន្ទាប់',
 	'tasks_status_open' => 'បើក',
 	'tasks_status_closed' => 'បានបិទ',
-	'tasks_logentry' => 'សំរាប់"[[$1]]"',
+	'tasks_logentry' => 'សម្រាប់"[[$1]]"',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -67,6 +67,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'authors-desc' => 'Adxunta unha lista dos contribuíntes ás páxinas',
 	'authors_authors' => 'Autores',
 	'authors_anonymous' => 'Anónimos',
 );
@@ -78,6 +79,15 @@ $messages['he'] = array(
 	'authors-desc' => 'הוספת רשימת תורמים לדפים',
 	'authors_authors' => 'מחברים',
 	'authors_anonymous' => 'אנונימי',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'authors-desc' => 'Přidawa lisćinu awtorow stronow',
+	'authors_authors' => 'Awtorojo',
+	'authors_anonymous' => 'Anonymny',
 );
 
 /** Javanese (Basa Jawa)
@@ -114,6 +124,15 @@ $messages['oc'] = array(
 	'authors-desc' => 'Apondre a las paginas una lista dels contributors',
 	'authors_authors' => 'Autors',
 	'authors_anonymous' => 'Anomin',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'authors-desc' => 'Acrescenta uma lista de contribuidores às páginas',
+	'authors_authors' => 'Autores',
+	'authors_anonymous' => 'Anónimo(s)',
 );
 
 /** Russian (Русский)

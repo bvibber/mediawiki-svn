@@ -1154,6 +1154,7 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Equadus
+ * @author Leinad
  * @author McMonster
  * @author Sp5uhe
  * @author Wpedzich
@@ -1179,7 +1180,7 @@ Zmień nazwę użytkownika na poniższej liście, dodaj komentarz (opcjonalny) i
 	'changeauthor-weirderror' => 'Wystąpił nieznany błąd.
 Spróbuj powtórzyć polecenie.
 Jeśli błąd wystąpi ponownie, prawdopodobnie uszkodzona jest baza danych.',
-	'changeauthor-invalidform' => 'Zamiast tej strony co zazwyczaj użyj Special:ChangeAuthor.',
+	'changeauthor-invalidform' => 'Zamiast tej strony co zazwyczaj użyj [[Special:ChangeAuthor|strony specjalnej]].',
 	'changeauthor-success' => 'Twoje polecenie zostało wykonane z powodzeniem.',
 	'changeauthor-logentry' => 'zmienił autora wersji $2 strony $1 z $3 na $4',
 	'changeauthor-logpagename' => 'Rejestr zmiany autora',

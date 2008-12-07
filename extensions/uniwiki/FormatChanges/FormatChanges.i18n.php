@@ -111,6 +111,16 @@ $messages['oc'] = array(
 	'formatchanges-editedby' => 'modificat per',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'formatchanges-desc' => 'Reestrutura as [[Special:RecentChanges|mudanças recentes]]',
+	'formatchanges-anonymous' => 'Anónimo',
+	'formatchanges-createdby' => 'criado por',
+	'formatchanges-editedby' => 'editado por',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

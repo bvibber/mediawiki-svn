@@ -105,7 +105,32 @@ $messages['an'] = array(
 	'contributionreporting-desc' => 'Informe en bibo sobre a replega de fondos de Wikimedia',
 	'contributiontotal' => 'Contrebuzión total',
 	'contributionhistory' => 'Istorial de contrebuzions',
+	'contrib-hist-header' => "Comentarios d'os donadors de tot o mundo en tiempo reyal",
+	'contrib-hist-name' => 'Nombre',
 	'contrib-hist-date' => 'Calendata y ora',
+	'contrib-hist-amount' => 'Cantidat:',
+	'contrib-hist-next' => 'Donazions anteriors',
+	'contrib-hist-previous' => 'Donazions posteriors',
+	'contrib-hist-anonymous' => 'Anonimo',
+	'contributionstatistics' => 'Estatisticas de contrebuzions',
+	'contribstats-desc' => "Amuestra as estatisticas d'as contrebuzions feitas t'a Fundazión Wikimedia",
+	'contribstats-daily-totals' => "{{PLURAL:$1|Total de güé|Totals diarios d'os zaguers $1 días}}",
+	'contribstats-monthly-totals' => "{{PLURAL:$1|Total d'iste mes|Totals mensuals d'os zaguers $1 meses}}",
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Total de $1 mes|Totals mensuals de $1 months}}',
+	'contribstats-currency-range-totals' => 'Total (de $1 á $2)',
+	'contribstats-contribution-range-breakdown' => 'Clasificazión de contrebuzions por cantidat (dende $1 á $2)',
+	'contribstats-currency-totals' => "Totals de l'añada fiscal $1",
+	'contribstats-contribution-breakdown' => "Clasificazión por cantidat d'as contrebuzions de l'año fiscal $1",
+	'contribstats-day' => 'Día',
+	'contribstats-month' => 'Mes',
+	'contribstats-currency' => 'Moneda',
+	'contribstats-amount' => 'Cantidat (USD)',
+	'contribstats-contributions' => 'Contrebuzions',
+	'contribstats-total' => 'Total (USD)',
+	'contribstats-avg' => 'Meya (USD)',
+	'contribstats-max' => 'Masima (USD)',
+	'contribstats-percentage-ytd' => 'Porzentache (YTD)',
+	'contribstats-total-ytd' => 'Total (YTD)',
 	'fundraiserstatistics' => "Estatisticas d'a replega de fundos",
 	'fundraiserstats-date' => 'Calendata',
 	'fundraiserstats-day' => 'Día $1 de $2',
@@ -120,6 +145,7 @@ $messages['an'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
@@ -130,6 +156,8 @@ $messages['ar'] = array(
 	'contrib-hist-name' => 'الاسم',
 	'contrib-hist-date' => 'الوقت والتاريخ',
 	'contrib-hist-amount' => 'الكمية',
+	'contrib-hist-next' => 'تبرعات أقدم',
+	'contrib-hist-previous' => 'تبرعات أحدث',
 	'contrib-hist-anonymous' => 'مجهول',
 	'contributionstatistics' => 'إحصاءات المساهمة',
 	'contribstats-desc' => 'يعرض إحصاءات المساهمات لمؤسسة ويكيميديا',
@@ -142,10 +170,13 @@ $messages['ar'] = array(
 	'contribstats-contributions' => 'المساهمات',
 	'contribstats-total' => 'المجموع (دولار أمريكي)',
 	'contribstats-avg' => 'المعدل (دولار أمريكي)',
-	'contribstats-min' => 'الأدنى (دولار أمريكي)',
 	'contribstats-max' => 'الأقصى (دولار أمريكي)',
 	'contribstats-percentage-ytd' => 'النسبة المئوية (منذ بداية السنة)',
 	'contribstats-total-ytd' => 'المجموع  (منذ بداية السنة)',
+	'fundraiserstatistics' => 'إحصاءات جمع التبرعات',
+	'fundraiserstats-date' => 'تاريخ',
+	'fundraiserstats-contributions' => 'مساهمات',
+	'fundraiserstats-tab-contributions' => 'عدد المساهمات',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -525,6 +556,9 @@ $messages['gl'] = array(
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Total deste mes|Total mensual dos últimos $1 meses}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Total dun mes|Totais mensuais de $1 meses}}',
 	'contribstats-currency-range-totals' => 'Totais (de $1 a $2)',
+	'contribstats-contribution-range-breakdown' => 'Detalles das contribucións por valor (de $1 a $2)',
+	'contribstats-currency-totals' => 'Totais para o ano fiscal $1',
+	'contribstats-contribution-breakdown' => 'Detalles das contribucións por valor para o ano fiscal $1',
 	'contribstats-day' => 'Día',
 	'contribstats-month' => 'Mes',
 	'contribstats-currency' => 'Moeda',
@@ -839,17 +873,20 @@ $messages['ksh'] = array(
 	'contribstats-contributions' => 'Spende-Beidrääch',
 	'contribstats-total' => 'Zosamme (en Dollar us de USA)',
 	'contribstats-avg' => 'Schnett (en Dollar us de USA)',
-	'contribstats-med' => 'Zetraalwäät ov Hallef/Hallef-Stell (en Dollar us de USA)',
 	'contribstats-max' => 'Deckste Spend (en Dollar us de USA)',
 	'contribstats-percentage-ytd' => 'Prozent (zigg_et Johr aanjefange hät)',
 	'contribstats-total-ytd' => 'Jesamp (zigg_et Johr aanjefange hät)',
 	'fundraiserstatistics' => 'Statistik övver de Spende',
 	'fundraiserstats-date' => 'Dattum',
+	'fundraiserstats-day' => 'Dä $1. Daach{{PLURAL:$2||, fun $2 Dääch|}}',
 	'fundraiserstats-contributions' => 'Spendebeidrääsch',
 	'fundraiserstats-total' => 'Zosamme (en Dollar us de USA)',
 	'fundraiserstats-avg' => 'Em Schnett (Dollar us de USA)',
-	'fundraiserstats-med' => 'Zentraalwäät ov Hallef/Hallef-Shtell (en Dollar us de USA)',
 	'fundraiserstats-max' => 'Deckste Spend (en Dollar us de USA)',
+	'fundraiserstats-tab-totals' => 'Zosamme (en Dollar us de USA)',
+	'fundraiserstats-tab-contributions' => 'Aanzahl Beidrääsch',
+	'fundraiserstats-tab-averages' => 'De Schnette (en Dollar us de USA)',
+	'fundraiserstats-tab-maximums' => 'de Deckste Spende (en Dollar us de USA)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

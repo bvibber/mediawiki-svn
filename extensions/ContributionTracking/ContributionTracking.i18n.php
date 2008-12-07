@@ -340,11 +340,15 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'contributiontracking-desc' => 'Seguimento de doações para a coleta de fundos da Wikimedia',
+	'contributiontracking' => 'Seguimento de doações',
 	'contrib-tracking-error' => 'Erro',
 	'contrib-tracking-error-text' => 'Submissão de formulário inválido',
 	'contrib-tracking-submitting' => 'Em submissão ao processador de pagamentos...',
+	'contrib-tracking-continue' => 'Se você não for redireccionado automaticamente, clique no botão para completar a sua doação no PayPal.',
 	'contrib-tracking-button' => 'Continuar',
 );
 

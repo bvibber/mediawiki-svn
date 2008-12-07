@@ -112,10 +112,14 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'layouts-desc' => 'Poboar as páxinas novas creadas con distribucións editables para fomentar unha estrutura común para as páxinas',
 	'layouts_title' => 'Crear unha páxina',
+	'layouts_chooselayout' => 'Escolla unha distribución para "$1":',
+	'layouts_nolayout' => 'Sen distribución',
 	'layouts_continue' => 'Continuar',
 	'layouts_choosecategory' => 'Escolla unha categoría para "$1":',
 	'layouts_unknown' => 'Descoñecido',
+	'layouts_tagline' => "Esta páxina foi xerada coa distribución '''$1'''.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 

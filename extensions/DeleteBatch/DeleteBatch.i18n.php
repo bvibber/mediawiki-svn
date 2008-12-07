@@ -480,13 +480,14 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'deletebatch-button' => 'លុប',
 	'deletebatch-here' => '<b>ទីនេះ</b>',
 	'deletebatch-reason' => 'មូលហេតុនៃការលុប',
 	'deletebatch-processing' => 'ការលុបទំព័រ',
-	'deletebatch-success-subtitle' => 'សំរាប់$1',
+	'deletebatch-success-subtitle' => 'សម្រាប់ $1',
 	'deletebatch-select-yourself' => 'អ្នក',
 );
 

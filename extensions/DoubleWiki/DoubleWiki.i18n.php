@@ -103,6 +103,13 @@ $messages['de'] = array(
 	'doublewiki-desc' => 'Zeigt eine Seite und ihre Übersetzung aus einem anderen Wiki zweispaltig auf derselben Seite an',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'doublewiki-desc' => 'Zwobraznja bok a jogo pśełožk z drugego wikija w dwěma słupikoma samkego boka',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

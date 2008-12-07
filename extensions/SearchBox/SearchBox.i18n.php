@@ -97,6 +97,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'searchbox-desc' => 'Permite a inclusión de formularios de procura',
 	'searchbox-search' => 'Procurar',
 	'searchbox-go' => 'Ir',
 	'searchbox-namespaces' => 'Espazos de nomes:',
@@ -159,6 +160,15 @@ $messages['oc'] = array(
 	'searchbox-search' => 'Recercar',
 	'searchbox-go' => 'Aviar',
 	'searchbox-namespaces' => 'Espacis de nom :',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'searchbox-search' => 'Pesquisar',
+	'searchbox-go' => 'Ir',
+	'searchbox-namespaces' => 'Domínios:',
 );
 
 /** Slovak (Slovenčina)

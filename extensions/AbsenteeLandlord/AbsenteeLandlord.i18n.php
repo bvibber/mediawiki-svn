@@ -116,9 +116,10 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Dead3y3
+ * @author Flyax
  */
 $messages['el'] = array(
-	'absenteelandlord-reason' => 'Η βάση δεδομένων έχει αυτομάτως κλειδωθεί λόγω αδράνειας από μέρους των διαχειριστών.',
+	'absenteelandlord-reason' => 'Η βάση δεδομένων έχει αυτομάτως κλειδωθεί επειδή οι διαχειριστές δεν είναι ενεργοί.',
 	'absenteelandlord-desc' => 'Κλειδώνει αυτόματα την βάση δεδομένων του wiki αν όλοι οι sysops είναι ανενεργοί για κάποιο χρονικό διάστημα',
 );
 

@@ -20,6 +20,7 @@ $fallback=array(
 	'de'  => 'en',
 	'el'  => 'en',
 	'eo'  => 'en',
+	'es'  => 'en',
 	'fi'  => 'en',
 	'fr'  => 'en',
 	'fy'  => 'en',
@@ -772,6 +773,13 @@ $messages['eo'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'Kaŝi difinojn en demanda lingvo',
 	'voctrain_hide_words_in_question_language' => 'Kaŝi vortojn en demanda lingvo',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Apartigi valutojn de komoj por uzi plurajn lingvojn.',
+);
+
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'voctrain_Language' => 'Idioma',
 );
 
 /** Finnish (Suomi)

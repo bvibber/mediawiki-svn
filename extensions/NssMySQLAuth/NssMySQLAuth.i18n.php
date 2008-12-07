@@ -147,11 +147,15 @@ $messages['gl'] = array(
 	'am-email' => 'correo electrónico',
 	'am-active' => 'activar',
 	'am-updated' => 'Os seus cambios foron gardados con éxito',
+	'nss-desc' => 'Un complemento para autenticar contra a base de datos libnss-mysql. Contén un [[Special:AccountManager|xestor de contas]]',
 	'nss-rights' => 'dereitos',
 	'nss-save-changes' => 'Gardar os cambios',
 	'nss-create-account-header' => 'Crear unha conta nova',
 	'nss-create-account' => 'Crear a conta',
+	'nss-no-mail' => 'Non enviar o correo electrónico',
+	'nss-welcome-mail' => 'Unha conta co nome de usuario "$1" e contrasinal "$2" foi creada para vostede.',
 	'nss-welcome-mail-subject' => 'Creación de contas',
+	'nss-db-error' => 'Erro ao ler a base de datos de autenticación',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -225,6 +229,7 @@ $messages['oc'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'accountmanager' => 'Gestor de contas',
@@ -233,9 +238,11 @@ $messages['pt'] = array(
 	'am-active' => 'activo',
 	'am-updated' => 'As suas alterações foram gravadas com sucesso',
 	'nss-desc' => 'Um "plugin" para autenticar numa base de dados libnss-mysql. Contém um [[Special:AccountManager|gestor de contas]]',
+	'nss-rights' => 'permissões',
 	'nss-save-changes' => 'Gravar alterações',
 	'nss-create-account-header' => 'Criar nova conta',
 	'nss-create-account' => 'Criar conta',
+	'nss-no-mail' => 'Não enviar email',
 	'nss-welcome-mail' => 'Uma conta com nome de utilizador $1 e palavra-chave $2 foi criada para si.',
 	'nss-welcome-mail-subject' => 'Criação de conta',
 	'nss-db-error' => 'Erro na leitura da base de dados de autenticação',

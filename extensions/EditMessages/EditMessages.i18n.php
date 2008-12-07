@@ -682,6 +682,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'editmessages-desc' => '[[Special:EditMessages|Edição baseada em web]] de um grande número de ficheiros Messages*.php',
@@ -692,7 +693,7 @@ $messages['pt'] = array(
 	'editmsg-new-search' => 'Nova pesquisa',
 	'editmsg-warning-parse2' => '* Caracter de aspa esperado após seta: $1',
 	'editmsg-warning-parse3' => '* Fim de cadeia de caracteres de valor não encontrado: $1',
-	'editmsg-warning-file' => 'Erros de leitura de ficheiro foram encontrados para as seguintes línguas: $1',
+	'editmsg-warning-file' => 'Erros de leitura de ficheiro foram encontrados para {{PLURAL:$2|a seguinte língua|as seguintes línguas}}: $1',
 );
 
 /** Tarifit (Tarifit)

@@ -28,6 +28,13 @@ $messages['fr'] = array(
 	'mootools12core-desc' => 'Ajouter mootools-1.2-core-yc.js à chaque page',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'mootools12core-desc' => 'Engade mootools-1.2-core-yc.js a cada páxina',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

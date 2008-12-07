@@ -344,12 +344,14 @@ $messages['gl'] = array(
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'importusers-uploadfile' => 'Ἐπιφορτίζειν ἀρχεῖον',
 	'importusers-form-caption' => 'Ἐντιθέναι CSV-ἀρχεῖον (UTF-8)',
 	'importusers-form-button' => 'Εἰσάγειν',
+	'importusers-log-summary-all' => 'Ἅπασαι',
 	'importusers-password' => 'σύνθημα',
 	'importusers-email' => 'ἠλ-ταχυδρομεῖον',
 	'importusers-realname' => 'ἀληθὲς ὄνομα',

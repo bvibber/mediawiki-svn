@@ -41,7 +41,7 @@ $aliases['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'TemplateLink' => array( 'តំនភ្ជាប់ទំព័រគំរូ' ),
+	'TemplateLink' => array( 'តំណភ្ជាប់ទំព័រគំរូ' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

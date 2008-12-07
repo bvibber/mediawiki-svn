@@ -1032,6 +1032,7 @@ $wdMessages['eo'] = array(
 
 /** Spanish (Español)
  * @author Ascánder
+ * @author Sanbec
  */
 $wdMessages['es'] = array(
 	'datasearch' => 'Wikidata: Búsqueda de datos',
@@ -1088,7 +1089,7 @@ $wdMessages['es'] = array(
 	'ow_IdenticalMeaning' => '¿Idéntico sentido?',
 	'ow_IncomingRelations' => 'Relaciones entrantes',
 	'ow_GotoSource' => 'Ir a la fuente',
-	'ow_Language' => 'Lengua',
+	'ow_Language' => 'Idioma',
 	'ow_LevelAnnotation' => 'Nota',
 	'ow_OptionAttribute' => 'Propiedad',
 	'ow_OptionAttributeOption' => 'Opción',
@@ -2416,6 +2417,8 @@ $wdMessages['lb'] = array(
 	'ow_Collection' => 'Sammlung',
 	'ow_Definition' => 'Definitioun',
 	'ow_DefinedMeaningAttributes' => 'Notiz',
+	'ow_DefinedMeaning' => 'Definéierte Sënn',
+	'ow_DefinedMeaningReference' => 'Definéierte Sënn',
 	'ow_ExactMeanings' => 'Genee Bedeitungen',
 	'ow_Expression' => 'Ausdrock',
 	'ow_Expressions' => 'Ausdréck',

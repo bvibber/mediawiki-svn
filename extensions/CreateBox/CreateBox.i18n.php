@@ -98,6 +98,20 @@ Du kannst diese Seite nicht anlegen, aber du kannst sie [{{fullurl:{{FULLPAGENAM
 <createbox>break=no</createbox>",
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'createbox-desc' => 'Specielne zapódawańske pólo za napóranje bokow',
+	'createbox-create' => 'Napóraś',
+	'createbox-exists' => "\"'''{{FULLPAGENAME}}'''\" južo eksistujo.
+
+Njamóžoš tós ten bok napóraś, ale móžoš jen [{{fullurl:{{FULLPAGENAME}}|action=edit}} wobźěłaś],
+[{{fullurl:{{FULLPAGENAME}}}} cytaś] abo wubraś, aby drugi bok z pomocu slědujucego kašćika napórał.
+
+<createbox>break=no</createbox>",
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -354,6 +368,14 @@ Nie możesz utworzyć tej strony, lecz możesz ją [{{fullurl:{{FULLPAGENAME}}|a
  */
 $messages['ps'] = array(
 	'createbox-create' => 'جوړول',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'createbox-desc' => 'Inputbox especializado para a criação de páginas',
+	'createbox-create' => 'Criar',
 );
 
 /** Romanian (Română)

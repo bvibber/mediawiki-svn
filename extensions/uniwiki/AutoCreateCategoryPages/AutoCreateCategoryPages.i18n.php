@@ -62,13 +62,25 @@ Elle liste toutes les pages issues de la catégorie « $1 » et, le cas échéan
 	'autocreatecategorypages-editor' => 'Créateur automatique de catégorie.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'autocreatecategorypages-desc' => 'Crea automaticamente as páxinas de categorías que faltan',
+	'autocreatecategorypages-stub' => 'Esta é unha páxina de categoría.
+Lista todas as páxinas na categoría "$1" así como todas as súas subcategorías, se existisen.',
+	'autocreatecategorypages-createdby' => 'Creada automaticamente pola extensión AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Creador automático de categorías',
+);
+
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'autocreatecategorypages-desc' => 'יצירת דפי קטגוריות חסרים אוטומטית עם השמירה',
 	'autocreatecategorypages-stub' => 'זהו דף קטגוריה.
-כאן מופיעים כל הדפים בקטגוריה "$1" כמו גם כל התת־קטגוריות של הקטגוריה "$1" במידה שהן קיימות.',
+כאן מופיעים כל הדפים בקטגוריה "$1", כמו גם כל קטגוריות המשנה של הקטגוריה "$1", אם קיימות.',
 	'autocreatecategorypages-createdby' => 'נוצר אוטומטית על ידי ההרחבה AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'יוצר הקטגוריות האוטומטי',
 );
@@ -111,6 +123,13 @@ $messages['oc'] = array(
 Lista totas las paginas eissidas de la categoria « $1 » e, se fa mestièr, tanben totas sas soscategorias.',
 	'autocreatecategorypages-createdby' => 'Creada automaticament per l’extension AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'Creator automatic de categoria.',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'autocreatecategorypages-editor' => 'Gerador automático de categorias',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

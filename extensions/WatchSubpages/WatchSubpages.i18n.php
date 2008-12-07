@@ -121,6 +121,21 @@ $messages['de'] = array(
 	'watchsubpages-form' => 'Wähle die Seiten aus, die deiner Beobachtungsliste hinzugefügt werden sollen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'watchsubpages' => 'Pódboki wobglědowaś',
+	'watchsubpages-addedtowatchlist' => 'Slědujucy bok jo se twójim wobglědowańkam pśidał.',
+	'watchsubpages-addtitles' => 'Boki pśidaś',
+	'watchsubpages-addtitlestowatchlist' => 'Boki wobglědowańkam pśidaś',
+	'watchsubpages-desc' => 'Spěšne [[Special:WatchSubpages|pśidaśe wšych pódbokow]] boka wobglědowańkam',
+	'watchsubpages-form' => 'Wubjeŕ boki, kótarež coš swójim wobglědowańkam pśidaś.
+Aby bok pśidał, markěruj kašćik pódla njogo a klikni na "Boki pśidaś".
+
+Gaž coš někotare boki wubraś abo wótwóliś, móžoš wubraś jaden za drugi slědujuce kontrolwe kašćiki z dołoj ześišćaneju pśešaltowańskeju tastu a pśez rownocasne kliknjenje na kuždy kóńc wobcerka, kótaryž ma so wubraś.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -194,6 +209,21 @@ $messages['he'] = array(
 על מנת להוסיף דף, סמנו את התיבה שלידו, ולחצו על "הוספת דפים".
 
 בעת סימון או ביטול סימון של דפים מרובים, החזקת מקש ה־Shift מאפשרת לכם לבחור מספר תיבות סימון עוקבות באמצעות לחיצה על כל התיבות האחרונות של הטווחים לסימון.',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'watchsubpages' => 'Podstrony wobkedźbować',
+	'watchsubpages-addedtowatchlist' => 'Slědowaca strona bu twojim wobkedźbowankam přidata.',
+	'watchsubpages-addtitles' => 'Strony přidać',
+	'watchsubpages-addtitlestowatchlist' => 'Strony wobkedźbowankam přidać',
+	'watchsubpages-desc' => 'Spěšne [[Special:WatchSubpages|přidaće wšěch podstronow]] strony wobkedźbowankam',
+	'watchsubpages-form' => 'Wubjer strony, kotrež maja so wobkedźbowankam přidać.
+Zo by stronu přidał, wubjer kašćik pódla njeje a klikń na "Strony přidać".
+
+Hdyž wjacore strony wubjerješ abo wotwoleš, móžeš z stłóčenej přešaltowanskej tastej ("Umsch", "Shift") na so slědowace kontrolowe kašćiki přez kliknjenje na kóždy kónc toho wobwoda wubrać, kotryž ma so markěrować.',
 );
 
 /** Interlingua (Interlingua)

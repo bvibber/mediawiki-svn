@@ -234,8 +234,12 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
+	'signaturelogpage' => 'Registo de assinaturas',
+	'signature-desc' => 'Permite a [[Special:SignDocument|assinatura]] de documentos',
+	'signaturelogpagetext' => 'Este é um registo de [[Special:SignDocument|todas as assinaturas adicionadas a documentos]].',
 	'signaturelogentry' => 'assinou o documento $1',
 );
 

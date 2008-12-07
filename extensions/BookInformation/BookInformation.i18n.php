@@ -1121,11 +1121,12 @@ $messages['pam'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Holek
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'bookinfo-header' => 'Informacja o książce',
-	'bookinfo-desc' => 'Prezentuje [[Special:Booksources|informacje o źródłach]] korzystając z serwisów internetowych o książkach',
+	'bookinfo-desc' => 'Rozszerza [[Special:Booksources|informacje o źródłach]] korzystając z serwisów internetowych o książkach',
 	'bookinfo-result-title' => 'Tytuł:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Wydawca:',

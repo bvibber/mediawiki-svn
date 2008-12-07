@@ -80,6 +80,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'catboxattop-desc' => 'Engade unha caixa de categorías no canto superior dereito das páxinas',
 	'catboxattop-categories' => 'Categorías',
 );
 
@@ -112,6 +113,14 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'catboxattop-desc' => 'Apondre una boita de categoria en naut a drecha de las paginas',
+	'catboxattop-categories' => 'Categorias',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'catboxattop-desc' => 'Acrescenta uma caixa de categorias na zona superior direita de páginas',
 	'catboxattop-categories' => 'Categorias',
 );
 

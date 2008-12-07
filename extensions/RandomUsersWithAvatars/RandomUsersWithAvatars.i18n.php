@@ -133,6 +133,13 @@ $messages['oc'] = array(
 	'random-users-avatars-desc' => 'Apond la balisa <tt>&lt;randomuserswithavatars&gt;</tt> per afichar los avatars d’utilizaires causits aleatòriament',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'random-users-avatars-title' => 'Conheça a comunidade',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

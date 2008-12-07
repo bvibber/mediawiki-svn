@@ -646,6 +646,19 @@ $messages['mr'] = array(
 	'vote-invalid-choice' => 'तुम्ही उपलब्ध पर्यायांपैकीच एक पर्याय निवडला पाहिजे.',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'vote' => 'Вайгелень каямо',
+	'vote-header' => "Тесэ маштови кочкамс '''Масторлангонь Менельалдонь Ине Азор'''!",
+	'vote-caption' => 'Мезе кочкить:',
+	'vote-submit' => 'Каямс вайгель',
+	'vote-login' => 'Вайгелень каямга эряви $1.',
+	'vote-login-link' => 'совамс',
+	'vote-invalid-choice' => 'Эряви кочкамс максозетнень эйстэ.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author Tvdm

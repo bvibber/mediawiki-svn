@@ -298,6 +298,13 @@ $messages['ps'] = array(
 	'categoryonupload-label' => 'وېشنيزه:',
 );
 
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'categoryonupload-label' => 'Categoria:',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

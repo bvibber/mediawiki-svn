@@ -73,6 +73,7 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'badimages-name' => 'Nombre:',
 	'badimages-reason' => 'Razón:',
 );
 

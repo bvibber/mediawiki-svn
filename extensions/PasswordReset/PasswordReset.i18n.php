@@ -800,6 +800,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'passwordreset' => 'Repor Palavra-Chave',
@@ -807,14 +808,16 @@ $messages['pt'] = array(
 	'passwordreset-invalidusername' => 'Nome de Utilizador Inválido',
 	'passwordreset-emptyusername' => 'Nome de Utilizador Vazio',
 	'passwordreset-nopassmatch' => 'Palavras-Chave não coincidem',
-	'passwordreset-username' => 'Nome de utilizador',
-	'passwordreset-newpass' => 'Nova Palavra-Chave',
-	'passwordreset-confirmpass' => 'Confirme Palavra-Chave',
+	'passwordreset-username' => 'Nome de utilizador:',
+	'passwordreset-newpass' => 'Nova palavra-chave:',
+	'passwordreset-confirmpass' => 'Confirme a palavra-chave:',
 	'passwordreset-submit' => 'Repor Palavra-Chave',
+	'passwordreset-success' => 'A palavra-chave foi reposta para o utilizador com o ID: $1',
 	'passwordreset-disableuser' => 'Desactivar Conta de Utilizador?',
 	'passwordreset-disablesuccess' => 'A conta de utilizador foi desactivada (ID do utilizador: $1)',
 	'passwordreset-accountdisabled' => 'A conta foi desactivada',
 	'disabledusers' => 'Utilizadores desactivados',
+	'right-passwordreset' => 'Repor palavra-chave de um utilizador ([[Special:PasswordReset|página especial]])',
 );
 
 /** Rhaeto-Romance (Rumantsch) */
