@@ -71,10 +71,11 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
 
     // HTML-5 media element attributes
     public double currentTime = 0;
+    private double _currentTime; // last computed time to detect seek request
     public double duration = -1;
     public boolean paused;
     public String src;
-
+    
     private PopupMenu menu;
     private Hashtable params = new Hashtable();
     private Configure configure;
@@ -391,7 +392,12 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
             try {
                 long now;
 
-                currentTime = now = pipeline.getPosition() / Clock.SECOND;
+                if (_currentTime != currentTime && currentTime >= 0 && duration > currentTime) {
+                    doSeek(currentTime / duration);
+                }
+                currentTime = _currentTime = (double) pipeline.getPosition() / Clock.SECOND;
+
+                now = pipeline.getPosition() / Clock.SECOND;
                 status.setTime(now);
 
                 Thread.sleep(1000);
