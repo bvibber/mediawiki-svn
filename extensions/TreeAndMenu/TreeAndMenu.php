@@ -14,7 +14,7 @@
 
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('TREEANDMENU_VERSION','1.0.7, 2008-07-31');
+define('TREEANDMENU_VERSION','1.0.8, 2008-12-08');
 
 # Set any unset images to default titles
 if (!isset($wgTreeViewImages) || !is_array($wgTreeViewImages)) $wgTreeViewImages = array();
@@ -63,6 +63,7 @@ class TreeAndMenu {
 		# Update general tree paths and properties
 		$this->baseDir  = dirname(__FILE__);
 		$this->baseUrl  = preg_replace('|^.+(?=[/\\\\]extensions)|', $wgScriptPath, $this->baseDir);
+		$this->baseUrl  = str_replace('\\', '/', $this->baseDir);
 		$this->useLines = $wgTreeViewShowLines ? 'true' : 'false';
 		$this->uniq     = uniqid($this->uniqname);
 
