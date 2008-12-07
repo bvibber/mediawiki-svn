@@ -34,6 +34,6 @@ $wgSpecialPages['CreatePage'] = 'SpecialCreatePage';
 $wgHooks['BeforePageDisplay'][] = 'UW_CreatePage_CSS';
 function UW_CreatePage_CSS( $out ) {
 	global $wgScriptPath;
-	$out->addScript ( "<link rel='stylesheet' href='$wgScriptPath/extensions/uniwiki/CreatePage/style.css' />" );
+	$out->addStyle( "$wgScriptPath/extensions/uniwiki/CreatePage/style.css" );
 	return true;
 }

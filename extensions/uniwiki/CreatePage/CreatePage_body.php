@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 class SpecialCreatePage extends SpecialPage {
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'CreatePage' );
+		SpecialPage::SpecialPage( 'CreatePage', 'createpage' );
 	}
 
 	public function execute( $params ) {
@@ -14,6 +14,11 @@ class SpecialCreatePage extends SpecialPage {
 		wfLoadExtensionMessages( 'CreatePage' );
 
 		$this->setHeaders();
+		
+		if ( !$this->userCanExecute( $wgUser ) ) {
+			$this->displayRestrictionError();
+			return;
+		}
 
 		$skin = $wgUser->getSkin();
 
@@ -53,6 +58,7 @@ class SpecialCreatePage extends SpecialPage {
 		// if this is just a normal GET, then output the form
 
 		// prefill the input with the title, if it was passed along
+		$newTitle = false;
 		$newTitleText = $wgRequest->getVal( "newtitle", null );
 		if ( $newTitleText != null ) {
 			$newTitle = Title::newFromURL( $newTitleText );
