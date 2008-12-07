@@ -889,7 +889,6 @@ $editRestricted = array(
 	'wgDiff',
 	'wgDiff3',
 	'wgFavicon',
-	'wgLogo',
 	'wgNullFile',
 	'wgMathDirectory',
 	'wgMathPath',

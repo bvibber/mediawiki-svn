@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.10.16 - 7 December 2008
+  $wgLogo doesn't need anymore configure-all right to be modified.
+
 0.10.15 - 5 December 2008
   * Fixed PHP notices on Special:ViewConfig.
   * Added $wgNullFile
