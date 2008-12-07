@@ -1124,6 +1124,7 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author McDutchie
@@ -1337,6 +1338,10 @@ fonctionnalité très <b>limitée</b> actuellement. Cliquez sur un clip pour mod
 	'mv_sequence_add_search' => 'Ajouter par recherche',
 	'mv_sequence_add_search_desc' => 'Ajouter des clips par recherche de médias',
 	'mv_seq_add_end' => 'Ajouter à la fin de la séquence',
+	'mv_sequence_edit_text' => "Basculer vers l'éditeur de texte",
+	'mv_sequence_edit_visual_editor' => "Basculer vers l'éditeur visuel",
+	'mv_other_options' => 'Autres options',
+	'mv_contextmenu_opt' => 'Activer les menus contextuels',
 	'mv_sequence_timeline' => 'Séquence chronologique :',
 	'mv_edit_sequence_desc_help' => 'Description de la séquence',
 	'mv_edithelpsequence' => 'Help:Édition_de_séquence',
@@ -3510,6 +3515,7 @@ foncionalitat fòrça <b>limitada</b> actualament. Clicatz sus un clip per modif
 	'mv_sequence_add_search' => 'Apondre per recèrca',
 	'mv_sequence_add_search_desc' => 'Apondre de clips per recèrca de mèdias',
 	'mv_seq_add_end' => 'Apondre a la fin de la sequéncia',
+	'mv_other_options' => 'Autras opcions',
 	'mv_sequence_timeline' => 'Sequéncia cronologica :',
 	'mv_edit_sequence_desc_help' => 'Descripcion de la sequéncia',
 	'mv_edithelpsequence' => 'Help:Edicion_de_sequéncia',

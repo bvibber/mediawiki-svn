@@ -79,6 +79,15 @@ $messages['de'] = array(
 	'right-forcepreviewexempt' => 'Speichern ohne Erzwingung der Vorschau',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'forcepreview' => 'Bok składowaś (nejpjerwjej pśeglěd wužywaś)',
+	'forcepreview-desc' => 'Pśeglěd za njepriwilegěrowanych wužywarjow wunuźiś',
+	'right-forcepreviewexempt' => 'Bźez wužywanja pśeglěda składowaś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -196,10 +205,11 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'forcepreview' => 'រក្សាទំព័រទុក(សូមប្រើប្រាស់បង្ហាញការមើលជាមុន)',
-	'forcepreview-desc' => 'បង្ខំការបង្ហាញការមើលជាមុបសំរាប់អ្នកប្រើប្រាស់ដែលគ្មានសិទ្ធិ',
+	'forcepreview-desc' => 'បង្ខំការបង្ហាញការមើលជាមុបសម្រាប់អ្នកប្រើប្រាស់ដែលគ្មានសិទ្ធិ',
 	'right-forcepreviewexempt' => 'ប្រហែលជារក្សាទុកដោយមិនប្រើការបង្ហាញការមើលជាមុន',
 );
 

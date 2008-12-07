@@ -102,6 +102,13 @@ $messages['de'] = array(
 	'mwsearch-desc' => 'Hintergrundprozess für die Lucene-Suchmaschine',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'mwsearch-desc' => 'Tykac MWSearch',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

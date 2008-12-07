@@ -1694,9 +1694,11 @@ $messages['km'] = array(
  * @author Pi.C.Noizecehx
  */
 $messages['ko'] = array(
+	'hiderevision' => '영구히 특정 판을 숨기기',
 	'group-oversight' => '오버사이트',
 	'group-oversight-member' => '오버사이트',
 	'grouppage-oversight' => '{{ns:project}}:오버사이트',
+	'right-oversight' => '이전에 숨겨진 판을 보기',
 	'right-hiderevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
 	'hiderevision-norevisions' => '삭제할 판이 제시되지 않았습니다.',
 	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',

@@ -101,6 +101,8 @@ $messages['dsb'] = array(
 	'interwikilist-desc' => 'Pśidawa [[Special:Interwikilist|specialny bok]] za zwobraznjenje k dispoziciji stojecych interwikijowych wótkazow',
 	'interwikilist-linkname' => 'Interwikijowy wótkaz',
 	'interwikilist-target' => 'Celowy URL',
+	'interwikilist-filter' => 'Lisćinu filtrowaś',
+	'interwikilist-prefix' => 'Prefiks interwiki:',
 );
 
 /** Esperanto (Esperanto)

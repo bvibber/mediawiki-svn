@@ -582,6 +582,13 @@ $messages['it'] = array(
 	'grouppage-patroller' => '{{ns:project}}:Patrollatore',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'patrol-revert-reason' => '理由:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

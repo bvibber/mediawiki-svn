@@ -835,11 +835,12 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'bookinfo-header' => 'ពត៌មានអំពីសៀវភៅ',
-	'bookinfo-desc' => 'ពង្រីក [[Special:Booksources]] ជាមួយពត៌មាន​ពីសេវាវិប',
+	'bookinfo-desc' => 'ពង្រីក [[Special:Booksources]] ជាមួយព័ត៌មាន​ពីសេវាវិប',
 	'bookinfo-result-title' => 'ចំណងជើង៖',
 	'bookinfo-result-author' => 'អ្នកនិពន្ធ៖',
 	'bookinfo-result-publisher' => 'ក្រុមហ៊ុនបោះពុម្ភផ្សាយ ៖',

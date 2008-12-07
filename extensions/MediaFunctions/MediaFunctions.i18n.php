@@ -68,6 +68,15 @@ $messages['de'] = array(
 	'mediafunctions-not-exist' => '„$1“ ist nicht vorhanden',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'mediafunctions-desc' => 'Parserowe funkcije za dostaśe informacije wó medijowych datajach',
+	'mediafunctions-invalid-title' => '"$1" njejo płaśiwy titel',
+	'mediafunctions-not-exist' => '"$1" njeeksistujo',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

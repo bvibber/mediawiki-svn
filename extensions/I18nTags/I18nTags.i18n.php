@@ -61,6 +61,13 @@ $messages['de'] = array(
 	'i18ntags-desc' => 'Zugriff auf die i18n-Funktionen zur Zahlenformatierung, Plural- und Grammatikbildung in jeder verfügbaren Sprache',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'i18ntags-desc' => 'Pśistup na funkcije i18n za formatěrowanje licbow, gramatiku a plural w kuždej k dispoziciji stojecej rěcy',
+);
+
 /** French (Français) */
 $messages['fr'] = array(
 	'i18ntags-desc' => 'Permet l’accès des fonctions i18n pour le format des nombres, la grammaire et le pluriel dans chaque langue disponible.',

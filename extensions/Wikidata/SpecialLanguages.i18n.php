@@ -2197,6 +2197,7 @@ $wdMessages['kk-tr'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $wdMessages['km'] = array(
@@ -2205,7 +2206,7 @@ $wdMessages['km'] = array(
 	'languages' => 'Wikidata: អ្នកគ្រប់គ្រង​ភាសា',
 	'ow_save' => 'រក្សាទុក',
 	'ow_history' => 'ប្រវត្តិ',
-	'ow_noedit_title' => 'មិនអនុញ្ញាត​អោយ​កែប្រែទេ',
+	'ow_noedit_title' => 'មិនអនុញ្ញាត​ឱ្យ​កែប្រែទេ',
 	'ow_uipref_datasets' => 'បង្ហាញ​តាមលំនាំដើម',
 	'ow_uiprefs' => 'ទិន្នន័យ​វិគី',
 	'ow_none_selected' => 'គ្មានអ្វីត្រូវបានជ្រើសយកទេ',
@@ -2222,8 +2223,8 @@ $wdMessages['km'] = array(
 	'ow_Collection' => 'ការប្រមូលផ្តុំ',
 	'ow_Definition' => 'និយមន័យ',
 	'ow_DefinedMeaningAttributes' => 'ចំណារពន្យល់',
-	'ow_DefinedMeaning' => 'ន័យដែលបានកំនត់',
-	'ow_DefinedMeaningReference' => 'ន័យដែលបានកំនត់',
+	'ow_DefinedMeaning' => 'ន័យដែលបានកំណត់',
+	'ow_DefinedMeaningReference' => 'ន័យដែលបានកំណត់',
 	'ow_ExactMeanings' => 'ន័យចំ',
 	'ow_Expression' => 'កន្សោមពាក្យ',
 	'ow_ExpressionMeanings' => 'ន័យរបស់កន្សោមពាក្យ',

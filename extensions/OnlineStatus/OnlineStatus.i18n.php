@@ -163,13 +163,19 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'onlinestatus-desc' => 'Preferencu pśidaś, aby se pokazało, jolic wužywaŕ jo tuchylu na wikiju pśibytny abo nic',
+	'onlinestatus-js-anon' => 'Zmólka: musyš byś píszjawjony, aby wužywał toś tu funkciju',
+	'onlinestatus-js-changed' => 'Twój status jo se změnił do "$1"',
+	'onlinestatus-js-error' => 'Změnjenje statusa njejo móžno, gódnota "$1" jo njepłaśiwa',
 	'onlinestatus-subtitle-offline' => 'Toś ten wužywaŕ jo tuchylu offline',
 	'onlinestatus-subtitle-online' => 'Toś ten wužywaŕ jo tuchylu online',
+	'onlinestatus-tab' => 'Status',
 	'onlinestatus-toggles-desc' => 'Twój status:',
 	'onlinestatus-toggles-explain' => 'Toś to nastajenje śi dowólujo, drugim wužywarjam na twójom wužywarskim boku pokazaś, lěc sy tuchylu online abo nic.',
 	'onlinestatus-toggles-show' => 'Status online na mójom wužywarskim boku pokazaś',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
+	'tog-onlineOnLogin' => 'Status pśi pśizjawjenju do online změniś',
+	'tog-offlineOnLogout' => 'Status pśi wótzjawjenju do offline změniś',
 );
 
 /** Esperanto (Esperanto)

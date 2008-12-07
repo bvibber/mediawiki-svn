@@ -451,21 +451,22 @@ Tulung diisi.',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'form' => 'សំនុំបែបបទ',
-	'formnoname' => 'គ្មានឈ្មោះសំនុំបែបបទ',
-	'formbadname' => 'ឈ្មោះសំនុំបែបបទមិនល្អ',
+	'form' => 'សំណុំបែបបទ',
+	'formnoname' => 'គ្មានឈ្មោះសំណុំបែបបទ',
+	'formbadname' => 'ឈ្មោះសំណុំបែបបទមិនល្អ',
 	'formbadnametext' => 'គ្មានឈ្មោះបែបបទ នោះទេ ។',
-	'formpattern' => '$1-សំនុំបែបបទ',
+	'formpattern' => '$1-សំណុំបែបបទ',
 	'formtitlepattern' => 'បន្ថែម $1 ថ្មី',
 	'formsave' => 'រក្សាទុក',
 	'formarticleexists' => 'ទំព័រ​មានរួចហើយ',
 	'formarticleexiststext' => 'ទំព័រ [[$1]] មានរួចហើយ។',
 	'formbadpagename' => 'ឈ្មោះទំព័រមិនល្អ',
 	'formsavesummary' => 'ទំព័រថ្មី ប្រើប្រាស់ [[Special:Form/$1]]',
-	'formsaveerror' => 'កំហុសរក្សាទុកសំនុំបែបបទ',
+	'formsaveerror' => 'កំហុសរក្សាទុកសំណុំបែបបទ',
 	'formsaveerrortext' => "មានកំហុសមិនស្គាល់មួយក្នុងការរក្សាទុកទំព័រ '$1'។",
 );
 

@@ -167,13 +167,14 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'unicodeconverter' => 'ប្រដាប់បំលែងយូនីកូដ',
+	'unicodeconverter' => 'ប្រដាប់បម្លែងយូនីកូដ',
 	'unicodeconverter-ok' => 'យល់ព្រម',
 	'unicodeconverter-oldtext' => 'អត្ថបទដើម៖',
-	'unicodeconverter-newtext' => 'អត្ថបទបំលែងរួច៖',
+	'unicodeconverter-newtext' => 'អត្ថបទបម្លែងរួច៖',
 );
 
 /** Ripoarisch (Ripoarisch)

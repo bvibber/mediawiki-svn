@@ -1949,7 +1949,7 @@ Siitä muodostuu seuraava salattu muoto, joka on [[Special:Boardvote/dump|julkis
 	'boardvote_invalidentered' => '<p><strong>Virhe</strong>: Ehdokassijan voi merkitä ainoastaan positiivisilla kokonaisluvuilla (1, 2, 3, ...), tai jättää tyhjäksi.</p>',
 	'boardvote_nosession' => 'Järjestelmä ei pysty määrittämään käyttäjätunnustasi. Kirjaudu sisään projektissa, jossa sinulla on äänioikeuteen riittävät ehdot täytetty ja mene sivulle <nowiki>[[Special:Boardvote]]</nowiki>. Sinun täytyy käyttää käyttäjätunnusta, jolla on ainakin $1 muokkausta ennen $2, ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
 	'boardvote_notloggedin' => 'Et ole kirjautunut sisään. Äänestääksesi sinulla täytyy olla käyttäjätunnus, vähintään $1 muokkausta ennen $2 ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
-	'boardvote_notqualified' => 'Et ole äänioikeutettu näissä vaaleissa. Sinulla täytyy olla $1 muokkausta ennen $2, ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
+	'boardvote_notqualified' => 'Et ole äänioikeutettu näissä vaaleissa. Sinulla täytyy olla $1 {{PLURAL:$1|muokkaus|muokkausta}} ennen $2, ja vähintään $3 {{PLURAL:$3|muokkaus|muokkausta}} aikavälillä $4 ja $5.',
 	'boardvote_novotes' => 'Kukaan ei ole vielä äänestänyt.',
 	'boardvote_time' => 'Aika',
 	'boardvote_user' => 'Käyttäjä',

@@ -501,6 +501,13 @@ $messages['it'] = array(
 	'protect-level-author' => 'Protetta dai non-autori',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'authorprotect-reason' => '理由',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

@@ -552,7 +552,9 @@ $messages['lb'] = array(
 	'multipleupload-ignoreallwarnings' => "'''All Warnungen''' ignoréieren an d'Ficheren trotzdem späicheren.",
 	'multipleupload-saveallfiles' => "All d'Fichiere späicheren",
 	'multipleupload-addresswarnings' => "W. e. g. all Warnungen uweisen ier d'Fichieren nach emol eropgluede ginn.",
+	'multipleupload-page' => "{{ns:project}}:Richtlinne fir d'Läsche vu Säiten a Fichieren",
 	'multiupload-fileuploaded' => 'Fichier eropgelueden',
+	'multiupload-toolbox' => 'Méi Fichiere mateneen eroplueden',
 );
 
 /** Eastern Mari (Олык Марий)

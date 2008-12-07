@@ -80,6 +80,17 @@ $messages['de'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Neuen Eintrag erstellen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'discussionthreading-desc' => 'Nitkowu funkciju diskusijnym bokam pśidaś',
+	'discussionthreading-replysection' => 'wótegroniś',
+	'discussionthreading-replysectionhint' => 'Na toś tu powěsć wótegroniś',
+	'discussionthreading-threadnewsection' => 'nowy',
+	'discussionthreading-threadnewsectionhint' => 'Nowu nitku startowaś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -50,6 +50,13 @@ $messages['de'] = array(
 	'gotocategory-desc' => 'Prüft Suchbegriffe gegen den Kategorien-Namensraum für die „Gehe direkt zur Seite“-Funktionalität',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'gotocategory-desc' => 'Pśeglědujo pytańske zapśimjeśa pśeśiwo mjenjowemu rumoju Kategorija: za funkcionalnosć "Źi k bokoju"',
+);
+
 /** French (Français)
  * @author Grondin
  */

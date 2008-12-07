@@ -58,6 +58,13 @@ $messages['de'] = array(
 	'googleadsense-desc' => 'Fügt [http://www.google.com/adsense Google AdSense] zur Sidebar hinzu',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'googleadsense-desc' => 'Pśidawa [http://www.google.com/adsense Google AdSense] k nabocnej smuze',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -1386,6 +1386,7 @@ $messages['lb'] = array(
 	'openidserverlogininstructions' => 'Gitt ärt Passwuert hei ënnendrënner an, fir iech als Benotzer $2 op $3 unzemellen (Benotzersäit $1).',
 	'openidtrustinstructions' => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
 	'openidallowtrust' => 'Erlaabt $1 fir dësem Benotzerkont ze vertrauen.',
+	'openidnopolicy' => 'De Site huet keng Richtlinne fir den Dateschutz uginn.',
 	'openidoptional' => 'Facultatif',
 	'openidrequired' => 'Obligatoresch',
 	'openidnickname' => 'Spëtznumm',

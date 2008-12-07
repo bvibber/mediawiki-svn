@@ -171,7 +171,11 @@ $messages['hsb'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'amazonplus-desc' => 'Eng Erweiderung déi individuell agestalt ka ginnfir Informatioune vun Amazon ze weisen',
 	'amazonplus-nores' => 'Feeler: Keng Resultater fonnt!',
+	'amazonplus-noidres' => 'Feeler: et gouf keng Prokukt ID fonnt!',
+	'amazonplus-fgcerr' => 'Feeler: Et si keng Date vun Amazon ukomm!',
+	'amazonplus-slserr' => 'Feeler: Dat vun Amazon konnte net verschafft ginn!',
 	'amazonplus-used' => 'gebraucht',
 	'amazonplus-german' => 'Däitsch',
 	'amazonplus-french' => 'Franséisch',

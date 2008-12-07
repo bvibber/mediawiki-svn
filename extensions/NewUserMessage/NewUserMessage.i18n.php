@@ -102,6 +102,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'newusermessage-desc' => 'Powěsć k nowo napóranym wužywarskim diskusijnym bokam pśidaś',
+	'newuseredit-summary' => 'Pśidawa [[{{int:newusermessage-template}}|pówitańsku powěsć]] diskusijnemu bokoju nowego wužywarja',
 );
 
 /** Esperanto (Esperanto)

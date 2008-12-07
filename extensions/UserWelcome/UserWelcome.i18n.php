@@ -278,15 +278,16 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'mp-welcome-upload' => 'ផ្ទុកឯកសារឡើង',
 	'mp-welcome-edit' => 'កែប្រែ',
 	'mp-welcome-logged-in' => 'សួរស្តី $1',
-	'mp-requests-title' => 'សំនើ',
+	'mp-requests-title' => 'សំណើ',
 	'mp-request-new-message' => 'សារថ្មី',
 	'mp-request-new-award' => 'រង្វាន់ថ្មីចំនួន$1',
-	'mp-request-new-gift' => 'អំអោយថ្មីចំនួន$1',
+	'mp-request-new-gift' => '{{PLURAL:$1|អំណោយ|អំណោយ}}ថ្មីចំនួន$1',
 	'mp-request-new-friend' => 'មិត្តថ្មី$1នាក់',
 );
 

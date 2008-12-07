@@ -211,10 +211,11 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'userimages-caption' => 'រូបភាពត្រូវបានផ្ទុកឡើងដោយ $1',
-	'userimages-noname' => 'ឈ្មោះអ្នកប្រើប្រាស់មិនត្រឹមត្រូវឬមិនត្រូវបានផ្តល់អោយ។',
+	'userimages-noname' => 'ឈ្មោះអ្នកប្រើប្រាស់មិនត្រឹមត្រូវឬមិនត្រូវបានផ្តល់ឱ្យ។',
 	'userimages-noimages' => '$1 មិនបានផ្ទុកឡើងនូវរូបភាពណាមួយទេ។',
 );
 

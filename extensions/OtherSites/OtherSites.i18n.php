@@ -66,6 +66,14 @@ $messages['de'] = array(
 	'othersites' => 'andere Seiten',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'othersites' => 'Druge sedła',
+	'othersites-desc' => 'Pśesuwa wótkaze interwiki, kótarež njejsu rěcne wótkaze, do jich swójskego wobcerka',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

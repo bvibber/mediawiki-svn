@@ -122,8 +122,14 @@ $messages['grc'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'emergencydesysop' => "Noutprozedur fir d'Adminrechter ewechzehuelen",
+	'emergencydesysop-desc' => "Erlaabt et engem Administrateur seng eege REchter z'opferen fir engem Anere seng Adminrechter ewechzehuelen",
+	'emergencydesysop-otheradmin' => "Aneren Administrateur fir d'Adminrechter ewechzehuelen",
+	'emergencydesysop-reason' => "Grond fir d'Ewechhuelen",
+	'emergencydesysop-submit' => 'Späicheren',
 	'emergencydesysop-nogroups' => 'Keen',
 	'emergencydesysop-blocked' => 'Dir kënnt net op dës Säit goen esoulaang wann Dir gespaart sidd',
+	'emergencydesysop-noright' => 'Dir hutt net genuch Rechter fir op dës Säit ze goen',
 );
 
 /** Dutch (Nederlands)

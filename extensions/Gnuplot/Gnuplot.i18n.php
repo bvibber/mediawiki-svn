@@ -44,6 +44,13 @@ $messages['de'] = array(
 	'gnuplot-desc' => 'Fügt den <code><nowiki><gnuplot></nowiki></code>-Tag hinzu, um Gnuplot zu verwenden',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'gnuplot-desc' => 'Pśidawa toflicku <code><nowiki><gnuplot></nowiki></code>, aby se Gnuplot wužywał',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

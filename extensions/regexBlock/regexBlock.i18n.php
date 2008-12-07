@@ -790,6 +790,13 @@ $messages['it'] = array(
 	'regexblock-view-go' => 'Vai',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'regexblock-form-reason' => '理由:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

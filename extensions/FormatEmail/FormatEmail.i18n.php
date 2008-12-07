@@ -82,6 +82,17 @@ Diese E-Mail wurde dir von $1 über das {{SITENAME}}-E-Mail-System zugesandt.
 $2',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'email-desc' => 'Dowólujo pśidaśe swójskich głowowych/spódkowych smužkow k wužywarskim e-mailam',
+	'email_footer' => '----------------------------------------------------------------------------
+Toś ten e-mail jo se śi pśipósłała wót $1 pśez e-mailowy system {{GRAMMAR:genitiw|{{SITENAME}}}}.
+
+$2',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

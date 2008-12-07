@@ -854,6 +854,7 @@ $messages['ko'] = array(
 	'sitematrix-others' => '다른 위키미디어 프로젝트 목록',
 	'sitematrix-total' => "'''총 합계: $1'''",
 	'sitematrix-sitetotal' => '합계',
+	'sitematrix-private' => '비밀',
 	'sitematrix-fishbowl' => '편집이 제한됨',
 );
 

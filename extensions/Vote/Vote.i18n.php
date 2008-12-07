@@ -527,21 +527,22 @@ riddler|Riddler',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'vote' => 'បោះឆ្នោត',
-	'vote-current' => "អ្នកកំពុងបោះឆ្នោតអោយ '''$1'''។",
+	'vote-current' => "អ្នកកំពុងបោះឆ្នោតឱ្យ '''$1'''។",
 	'vote-caption' => 'ការជ្រើសរើសរបស់អ្នក:',
 	'vote-submit' => 'បោះឆ្នោត',
-	'vote-registered' => 'សំលេងឆ្នោតរបស់អ្នកត្រូវបានកត់ចូលបញ្ជី។',
+	'vote-registered' => 'សំឡេងឆ្នោតរបស់អ្នកត្រូវបានកត់ចូលបញ្ជី។',
 	'vote-view-results' => 'បង្ហាញ​លទ្ឋផល',
 	'vote-results' => 'លទ្ឋផលនៃការបោះឆ្នោត',
-	'vote-results-choice' => 'ជំរើស',
+	'vote-results-choice' => 'ជម្រើស',
 	'vote-results-count' => 'រាប់',
 	'vote-login' => 'អ្នកត្រូវតែ$1ដើម្បីបោះឆ្នោត។',
 	'vote-login-link' => 'ឡុកអ៊ីន',
-	'vote-invalid-choice' => 'អ្នកត្រូវតែជ្រើសយកជំរើសមួយក្នុងចំនោមជំរើសទាំងឡាយដែលបានផ្ដល់អោយ។',
+	'vote-invalid-choice' => 'អ្នកត្រូវតែជ្រើសយកជម្រើសមួយក្នុងចំណោមជម្រើសទាំងឡាយដែលបានផ្ដល់ឱ្យ។',
 );
 
 /** Ripoarisch (Ripoarisch)

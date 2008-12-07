@@ -948,6 +948,7 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'removeunusedgroups' => 'ដកហូតក្រុមដែលមិនត្រូវបានប្រើប្រាស់',
@@ -955,7 +956,7 @@ $messages['km'] = array(
 	'grouppermissions-search' => 'ក្រុម:',
 	'grouppermissions-dologin' => 'ឡុកអ៊ីន',
 	'grouppermissions-dosearch' => 'ទៅ',
-	'grouppermissions-searchlabel' => 'ស្វែងរកសំរាប់ក្រុម',
+	'grouppermissions-searchlabel' => 'ស្វែងរកសម្រាប់ក្រុម',
 	'grouppermissions-deletelabel' => 'លុបក្រុម',
 	'grouppermissions-change' => 'ប្តូរក្រុមសមាជិកភាព',
 	'grouppermissions-add' => 'បន្ថែមក្រុម',
@@ -979,6 +980,15 @@ $messages['km'] = array(
 	'right-recentchanges' => 'មើលបំលាស់ប្តូរថ្មីៗ',
 	'right-edittalk' => 'កែប្រែទំព័រពិភាក្សា',
 	'right-edit-new' => 'កែប្រែទំព័រ(ដែលមិនមែនជាទំព័រពិភាក្សា)',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'grouppermissions-sort-misc' => '기타',
+	'grouppermissions-log-add' => '"$2" 그룹을 추가함',
+	'right-viewsource' => '보호된 문서의 내용 보기',
 );
 
 /** Krio (Krio)

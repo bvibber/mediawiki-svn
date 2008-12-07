@@ -115,6 +115,16 @@ $messages['de'] = array(
 	'msfunc_div_zero' => 'Division durch Null',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'msfunc_desc' => 'Zběrka matematiskich a statistiskich funkcijow',
+	'msfunc_nan' => 'Wuslědkowa gódnota njejo cysło',
+	'msfunc_inf' => 'Wuslědkowa gódnota jo njeskóńcna',
+	'msfunc_div_zero' => 'Diwizija pśez nul',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

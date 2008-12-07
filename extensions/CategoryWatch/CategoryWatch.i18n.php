@@ -83,6 +83,19 @@ Ova poruka služi da Vas obavijesti da je $3 korisnik $4 $5.',
 	'categorywatch-catsub' => 'uklonjeno $1 iz kategorije $2',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'categorywatch-desc' => 'Rozšyrja funkcionalnosć woglědowańkow wó zdźělenje wó změnach cłonkojstwa woglědowanych kategorijow',
+	'categorywatch-emailbody' => 'Halo $1, sy dostał toś tu powěsć, dokulaž wobglědujoš kategoriju "$2". Toś ta powěsć ma śi informěrowaś, až pla $3 wužywaŕ $4 $5.',
+	'categorywatch-emailsubject' => 'Aktiwita inkluziwnje wobglědowaneje kategorije "$1"',
+	'categorywatch-catmovein' => 'jo pśesunuł $1 z $3 do kategorije $2',
+	'categorywatch-catmoveout' => 'jo pśesunuł $1 z kategorije $2 do $3',
+	'categorywatch-catadd' => 'jo pśidał $1 ku kategoriji $2',
+	'categorywatch-catsub' => 'jo wupórał $1 z kategorije $2',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

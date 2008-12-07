@@ -406,10 +406,11 @@ $2',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'userrightsnotifysubject' => 'ការផ្លាស់ប្តូរក្រុមសមាជិកភាពនៅលើ $1',
-	'userrightsnotifybody' => 'ជំរាប់សួរ $1 ។
+	'userrightsnotifybody' => 'ជម្រាបសួរ $1 ។
 
 នេះជាសេចក្តីជូនដំណឹងដល់អ្នកដោយក្រុមសមាជិកភាពរបស់អ្នកនៅលើ $2 ត្រូវបានផ្លាស់ប្តូរដោយ $3 នៅ $4 ។
 

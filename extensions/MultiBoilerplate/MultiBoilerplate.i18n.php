@@ -171,6 +171,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'multiboilerplate-desc' => "Erlaabt et eng Säit oder eng Schabloun aus enger Këscht uewen am Formulaire fir d'Ännere vun enger Säit erauszesichen",
 	'multiboilerplate-legend' => 'Säit eraussichen déi soll agebaut ginn',
 	'multiboilerplate-submit' => 'Lueden',
 );
