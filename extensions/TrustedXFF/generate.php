@@ -7,13 +7,9 @@ if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
 }
 require( "$IP/maintenance/commandLine.inc" );
 
-if ( !isset( $args[0] ) ) {
-	echo "Usage: php generate.php <hosts-file>\n";
-	exit( 1 );
-}
-$inFile = fopen( $args[0], 'r' );
+$inFile = fopen( 'trusted-hosts.txt', 'r' );
 if ( !$inFile ) {
-	echo "Unable to open input file \"{$args[0]}\"\n";
+	echo "Unable to open input file \"trusted-xff.txt\"\n";
 	exit( 1 );
 }
 $outFile = dba_open( 'trusted-xff.cdb', 'n', 'cdb' );
