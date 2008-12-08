@@ -549,7 +549,11 @@ class SpecialOversight extends SpecialPage {
 			$prevId = $rev->mTitle->getPreviousRevisionID( $row->rev_id );
 			if ( $prevId ) {
 				$prev = Revision::newFromTitle( $rev->mTitle, $prevId );
-				$otext = strval( $prev->getText());
+				if( $prev ) {
+					$otext = strval( $prev->getText());
+				} else {
+					$otext = '';
+				}
 			} else {
 				$wgOut->addHTML(
 				"<ul>" .
