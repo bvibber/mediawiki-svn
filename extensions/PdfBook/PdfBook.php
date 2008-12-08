@@ -16,7 +16,7 @@
  */
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
-define('PDFBOOK_VERSION', '1.0.2, 2008-11-01');
+define('PDFBOOK_VERSION', '1.0.3, 2008-12-09');
 
 $wgExtensionFunctions[]        = 'wfSetupPdfBook';
 $wgHooks['LanguageGetMagic'][] = 'wfPdfBookLanguageGetMagic';
@@ -64,6 +64,7 @@ class PdfBook {
 			$format  = $wgRequest->getText('format');
 			$notitle = $wgRequest->getText('notitle');
 			$layout  = $format == 'single' ? '--webpage' : '--firstpage toc';
+			$charset = $this->setProperty('Charset',     'iso-8859-1');
 			$left    = $this->setProperty('LeftMargin',  '1cm');
 			$right   = $this->setProperty('RightMargin', '1cm');
 			$top     = $this->setProperty('TopMargin',   '1cm');
@@ -156,7 +157,7 @@ class PdfBook {
 				$cmd .= " --header ... --footer $footer --headfootsize 8 --quiet --jpeg --color";
 				$cmd .= " --bodyfont $font --fontsize $size --linkstyle plain --linkcolor $linkcol";
 				$cmd .= "$toc --format pdf14 --numbered $layout $width";
-				$cmd  = "htmldoc -t pdf --charset iso-8859-1 $cmd $file";
+				$cmd  = "htmldoc -t pdf --charset $charset $cmd $file";
 				putenv("HTMLDOC_NOCGI=1");
 				passthru($cmd);
 				@unlink($file);
