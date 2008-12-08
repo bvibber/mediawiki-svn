@@ -11,8 +11,28 @@
 	top:20px;
 	left:0px;
 	width:2px;
-	bottom:20px;
+	bottom:0px;
 	z-index:10;
+	overflow:visible; 
+}
+.mv_playline_top{
+	position:absolute;
+	top:-5px;
+	left:-7px;
+	width:16px;
+	height:16px;	
+	background:url("images/opened.png");
+}
+.mv_story_playline{
+	position:absolute;
+	background:blue;
+	top:0px;
+	left:0px;
+	width:2px;
+	height:100%;
+	bottom:0px;
+	z-index:10;
+	overflow:visible; 
 }
 .mv_seq_tracks{
 	position:absolute;left:90px;top:0px;right:12px;bottom:0px;overflow:auto;
@@ -136,7 +156,7 @@
 	list-style-type:none;
 	list-style-position:outside;
 	display:block;
-	margin-left:10px;
+	padding-left:10px;
 }
 #seq_menu li{
 	display:inline;
@@ -171,6 +191,7 @@
 	list-style-type:none; 
 	bottom:0px;	
 	border:none;
+	padding:0px;
 }
 .mv_submenu li{
 	border:solid thin gray;

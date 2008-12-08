@@ -20,16 +20,16 @@ $sample_embed = array();
 // playlist tags:
 $sample_embed[4]['tag'] = '<playlist id="playlist1" width="400" height="300"
 src="sample_xspf.xml" controls="true" embed_link="true"/>';
-$sample_embed[4]['desc'] = '<b>xspf</b> static xiph playlist <a href="http://metavid.ucsc.edu/wiki/index.php/Dorganisms">Dorganisms</a> <br /> <iframe width="500" height="200"
+$sample_embed[4]['desc'] = '<b>xspf</b> static xiph playlist <a href="http://metavid.org/wiki/index.php/Dorganisms">Dorganisms</a> <br /> <iframe width="500" height="200"
 		src="sample_xspf.xml">xiph playlist disp here</iframe>';
 
-$plurl = 'http://metavid.ucsc.edu/overlay/archive_browser/rss_filter_view?filters[0][type]=match&filters[0][val]=peace&start=0&rpp=10';
+$plurl = 'http://metavid.org/overlay/archive_browser/rss_filter_view?filters[0][type]=match&filters[0][val]=peace&start=0&rpp=10';
 $sample_embed[5]['tag'] = '<playlist id="playlist2"
 src="' . $plurl . '"/>';
 $sample_embed[5]['desc'] = '<b>RSS</b> a podcast like dynamic feed for "peace"<br />' .
 		'<iframe width="500" height="200" src="' . $plurl . '">rss feed here</iframe>';
 
-$plurl = 'http://metavid.ucsc.edu/m3u/filters/filter_seq?filters[0][type]=match&filters[0][val]=war&start=0&rpp=10';
+$plurl = 'http://metavid.org/m3u/filters/filter_seq?filters[0][type]=match&filters[0][val]=war&start=0&rpp=10';
 $sample_embed[6]['tag'] = '<playlist id="warplaylist" src="' . $plurl . '"/>';
 // $sample_embed[6]['desc'] = '<b>m3u</b> dynamic playlist search for "war"<br /> <textarea cols="70" rows="9">'.file_get_contents($plurl).'</textarea>';
 

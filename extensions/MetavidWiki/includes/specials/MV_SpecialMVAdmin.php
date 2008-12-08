@@ -6,11 +6,11 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * MV_SpecialMVAdmin.php Created on Apr 24, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  * 
  * @author Michael Dale
  * @email dale@ucsc.edu
- * @url http://metavid.ucsc.edu
+ * @url http://metavid.org
  * 
  * This special page for MediaWiki provides an administrative interface 
  * that allows to execute certain functions related to the maintenance 
@@ -91,7 +91,7 @@ class MVAdmin extends SpecialPage {
 	
 		/**** Normal output ****/
 		$html = '<p>This special page helps you during installation and upgrade of 
-					<a href="http://metavid.ucsc.edu/wiki/index.php/MetaVidWiki">MetaVidWiki</a>. Remember to backup valuable data before 
+					<a href="http://metavid.org/wiki/index.php/MetaVidWiki">MetaVidWiki</a>. Remember to backup valuable data before 
 					executing administrative functions.</p>' . "\n";
 		// creating tables and converting contents from older versions
 		$html .= '<form name="buildtables" action="" method="POST">' . "\n" .

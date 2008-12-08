@@ -3,11 +3,11 @@
  * MV_SpecialExport.php Created on Oct 23, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  *
  * @author Michael Dale
  * @email dale@ucsc.edu
- * @url http://metavid.ucsc.edu
+ * @url http://metavid.org
  *
  * exports Video feeds in a few different queries to machine readable formats
  * initially target: rss, miro  (format attribute)

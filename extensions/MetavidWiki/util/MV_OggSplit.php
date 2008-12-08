@@ -4,7 +4,7 @@
  * MV_OggSplit.php
  *
  * All Metavid Wiki code is Released Under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  *
  * a lightweight php ogg spliter
  *

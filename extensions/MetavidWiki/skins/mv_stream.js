@@ -2,16 +2,16 @@
  * metavid.js Created on June 29, 2007
  *
  * All Metavid Wiki code is Released under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  *
  * @author Michael Dale
  * @email dale@ucsc.edu
- * @url http://metavid.ucsc.edu
+ * @url http://metavid.org
  *
  *
  * Metavid.js handles all interface js functions for Metavid: namespace
  * [DEPENDENT ON mv_embed]
- * http://metavid.ucsc.edu/wiki/index.php/Mv_embed
+ * http://metavid.org/wiki/index.php/Mv_embed
  *
  * assumes a few utility functions are available from mv_embed:
  * 	loadExternalJs()
@@ -118,10 +118,10 @@ var mv_stream_interface = {
 				ebvid['org_eb_stop'] = ebvid['stop'];
 				ebvid['stop'] = function(){mv_do_stop();}
 			}*/
-			if(ebvid['play_or_pause'].toString()!='function(){mv_play_or_pause();}'){
-				if(!ebvid['org_eb_play_or_pause'])
-                    ebvid['org_eb_play_or_pause'] = ebvid['play_or_pause'];
-				ebvid['play_or_pause'] = function(){mv_play_or_pause();}
+			if(ebvid['pause'].toString()!='function(){mv_pause();}'){
+				if(!ebvid['org_eb_pause'])
+                    ebvid['org_eb_pause'] = ebvid['pause'];
+				ebvid['pause'] = function(){mv_pause();}
 			}
 			//use mvd images for time updates (avoids lots of arbitrary time hits to server) 
 			if(ebvid['updateThumbPerc'].toString()!='function(){return true;}'){
@@ -872,19 +872,19 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 	//return false to prevent the form being submitted
 	return false;
 }
-function mv_play_or_pause(){
+function mv_pause(){
 	 // unlock updates, but issue a pause - if an update occurs, it should
      // stop.
 	 var ebvid = $j('#embed_vid').get(0);
 	 if( ebvid.isPlaying())
      {
-        js_log('f:mv_play_or_pause:should pause_or_play');
+        js_log('f:mv_pause: should pause');
         // calling original play_or_pause
-	 	ebvid.org_eb_play_or_pause();
+	 	ebvid.pause();
         // lock updates if we're not paused,  and vice versa
-	 	mv_lock_vid_updates=!ebvid.isPaused();
-	 }else{
-	 	js_log('f:mv_play_or_pause:should play');	 		 	
+	 	mv_lock_vid_updates =! ebvid.isPaused();
+	 }else{	 
+	 	js_log('f:mv_pause called WHILE Paused: (should play)');	 		 	
 	 	mv_do_play();	 	
 	 }
 }

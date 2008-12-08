@@ -3,7 +3,7 @@
  * Created on Jul 26, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  *
  * overwrites the existing special search to add in metavid specific features
  */

@@ -2,11 +2,11 @@
  * mv_sequencer.js Created on Oct 17, 2007
  *
  * All Metavid Wiki code is Released under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  * 
  * @author Michael Dale
  * @email dale@ucsc.edu
- * @url http://metavid.ucsc.edu
+ * @url http://metavid.org
  *
  * 
  * mv_sequencer.js 
@@ -350,7 +350,7 @@ mvSequencer.prototype = {
 	renderTimeLine:function(){
 		//empty out the top level html: 
 		$j('#'+this.timeline_id).html('');
-		//add html content for timeline		
+		//add html general for timeline		
 		if( this.timeline_mode=='time'){
 			$j('#'+this.timeline_id).html(''+
 				'<div id="'+this.timeline_id+'_left_cnt" class="mv_tl_left_cnt">'+
@@ -411,16 +411,25 @@ mvSequencer.prototype = {
 					'<div id="container_track_'+i+'" style="top:'+top_pos+'px;height:'+(track_height+2)+'px;left:0px;right:0px;" class="container_track" />'
 				);		
 				top_pos+=track_height+20;		
-			}					
+			}		
 		}
 		if( this.timeline_mode=='clip'){
 			var top_pos=this.plObj.org_control_height;
 			//debugger;
 			for(var i in this.plObj.tracks){
 				var track_height=this.track_clipThumb_height;
+				var timeline_id = this.timeline_id
 				//add in play box and container tracks
-				$j('#'+this.timeline_id).append(''+
-					'<div id="container_track_'+i+'" style="position:absolute;top:25px;height:'+(track_height+30)+'px;left:10px;right:0px;" class="container_track">' +					
+				$j('#'+timeline_id).append(''+
+					'<div id="interface_container_track_' + i + '" ' +
+					'	style="position:absolute;top:25px;height:'+(track_height+30)+'px;left:10px;right:0px;"' +
+					'>'+
+						'<div id="container_track_'+i+'" style="position:relative;top:0px;' +
+							'height:'+(track_height+30)+'px;left:0px;right:0px;" class="container_track">' +											
+						'</div>'+
+						'<div id="' + timeline_id + '_playline" class="mv_story_playline">' +
+							'<div class="mv_playline_top"/>'+
+						'</div>'+
 					'</div>'
 				);
 				top_pos+=track_height+20;
@@ -447,7 +456,10 @@ mvSequencer.prototype = {
 	plReadyInit:function(){
 		var this_seq = this;
 		js_log('plReadyInit');		
-		js_log( this.plObj );					
+		js_log( this.plObj );
+		//give the playlist a pointer to its parent seq: 
+		this.plObj['seqObj'] = this;
+							
 		//update playlist (since if its empty right now) 
 		if(this.plObj.getClipCount()==0){
 			$j('#'+this.plObj_id).html('empty playlist');
@@ -949,7 +961,8 @@ mvSequencer.prototype = {
 				}	
 				
 				//js_log("new htmL for track i: "+track_id + ' html:'+track_html);
-				$j('#container_track_'+track_id).html( track_html );
+				$j('#container_track_'+track_id).html( track_html );								
+				
 				
 				//apply edit button mouse over effect:
 				$j('.clip_edit_button').hover(function(){
@@ -957,6 +970,8 @@ mvSequencer.prototype = {
 				},function(){
 					$j(this).removeClass("clip_edit_over").addClass("clip_edit_base");
 				});
+				
+				
 				
 				//apply onClick edit controls: 
 				$j('.mv_clip_thumb').click(function(){								
@@ -1258,8 +1273,7 @@ mvSequencer.prototype = {
 				'class="videoPlayer"><div class="controls">'+
 					 	this.plObj.getControlsHTML() +
 					 '</div>'+
-				'</div>');
-			
+				'</div>');		
 			//update time and render out clip dividers .. should be used to show load progress
 			this.plObj.updateBaseStatus();
 			
@@ -1321,8 +1335,11 @@ mvSeqPlayList.prototype = {
 		this.pl_layout.title_bar_height=0;
 		this.pl_layout.control_height=0;
 	},
-	setSliderValue:function(){
-		
+	//update the timeline playhead and passalong to parent
+	setSliderValue:function( perc ){
+		js_log("set " + perc + ' of cur_clip: ' + this.cur_clip.order );
+		//$j('#'+ this.seqObj.timeline_id + '_playline').css('left')
+		this.parent_setSliderValue( perc );
 	},
 	getControlsHTML:function(){				
 		//get controls from current clip add some playlist specific controls:  		

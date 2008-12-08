@@ -66,7 +66,7 @@ $mvBillInSearchResult = true;
 # #########################
 
 // define the image location:
-// $mvImageWebLoc ='http://metavid.ucsc.edu/image_media/';
+// $mvImageWebLoc ='http://metavid.org/image_media/';
 
 // if we should load images from an external server:  
 $mvExternalImages = false;
@@ -91,7 +91,7 @@ $mvImageGranularityRate = '600';
 $mvShellOggFrameGrab = '';
  
 # define the video media locations based on path/server names 
-$mvVideoArchivePaths['mvprime'] = 'http://metavid.ucsc.edu/media/';
+$mvVideoArchivePaths['mvprime'] = 'http://metavid.org/media/';
 $mvVideoArchivePaths['cap1'] = 'http://128.114.20.64/media/';
 
 // stream msgKeys that support ?t=start_time/end_time temporal url media serving: 

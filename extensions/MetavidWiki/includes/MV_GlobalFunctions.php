@@ -3,7 +3,7 @@
  * Global functions and constants for Metavid MediaWiki. 
  * 
  * All Metavid Wiki code is Released Under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  * 
  */
 define( 'MV_VERSION', '1.0rc2' );

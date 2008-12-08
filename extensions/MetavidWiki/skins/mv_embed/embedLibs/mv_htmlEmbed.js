@@ -9,7 +9,7 @@ var pcHtmlEmbedDefaults={
 var htmlEmbed ={
 	 supports: {
     	'play_head':true, 
-    	'play_or_pause':true,     	
+    	'pause':true,     	
     	'fullscreen':false, 
     	'time_display':true, 
     	'volume_control':true,

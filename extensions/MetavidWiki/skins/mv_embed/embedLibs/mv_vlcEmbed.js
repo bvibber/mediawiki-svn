@@ -6,7 +6,7 @@
 var vlcEmbed = { 
 	instanceOf:'vlcEmbed',
     supports: {'play_head':true, 
-	    'play_or_pause':true, 
+	    'pause':true, 
 	    'stop':true, 
 	    'fullscreen':true, 
 	    'time_display':true, 
@@ -273,10 +273,9 @@ var vlcEmbed = {
     play : function(){
     	js_log('f:vlcPlay');
  	   	this.getVLC();
-    	if(!this.vlc || this.thumbnail_disp){
-	    	//call the parent
-    		this.parent_play();
-    	}else{    	
+ 	   	//call the parent
+    	this.parent_play();
+    	if( this.vlc ){
     		//plugin is already being present send play call: 
     		// clear the message log and enable error logging
 	        this.vlc.log.verbosity = 1;

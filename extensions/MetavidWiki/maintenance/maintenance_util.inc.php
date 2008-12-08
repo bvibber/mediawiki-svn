@@ -3,11 +3,11 @@
  * maintenance_util.inc.php Created on Jan 19, 2008
  *
  * All Metavid Wiki code is Released under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  *
  * @author Michael Dale
  * @email dale@ucsc.edu
- * @url http://metavid.ucsc.edu
+ * @url http://metavid.org
  *
  *
  * Maintenance Utility Functions:

@@ -3,7 +3,7 @@
  * only included if playlist object found
  * 
  * part of mv_embed: 
- * http://metavid.ucsc.edu/wiki/index.php/Mv_embed 
+ * http://metavid.org/wiki/index.php/Mv_embed 
  */
 var mv_default_playlist_attributes = {
 	//playlist attributes :
@@ -30,7 +30,7 @@ var mv_lock_vid_updates=false;
 var mv_clip_colors = new Array('aqua', 'blue', 'fuchsia', 'green', 'lime', 'maroon', 'navy', 'olive', 'purple', 'red');
 //the base url for requesting stream metadata 
 if(typeof wgServer=='undefined'){
-	var defaultMetaDataProvider = 'http://metavid.ucsc.edu/overlay/archive_browser/export_cmml?stream_name=';
+	var defaultMetaDataProvider = 'http://metavid.org/overlay/archive_browser/export_cmml?stream_name=';
 }else{
 	var defaultMetaDataProvider = wgServer+wgScript+'?title=Special:MvExportStream&feed_format=roe&stream_name=';
 }
@@ -615,19 +615,7 @@ mvPlayList.prototype = {
 	},	
 	toggleMute:function(){
 		this.cur_clip.embed.toggleMute();
-	},
-	//wrappers for call to pl object to current embed obj
-	play_or_pause:function(){
-		js_log('pl:play_or_pause');			
-		this.cur_clip.embed.play_or_pause();
-		//set the playlist monitor state:
-		if(this.cur_clip.embed.paused){
-			this.paused=true;
-		}else{			
-			this.paused=false;
-			this.monitor();
-		}			
-	},
+	},	
 	pause:function(){		
 		js_log('f:pause: playlist');
 		var ct = new Date();

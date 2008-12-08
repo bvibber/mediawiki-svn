@@ -3,11 +3,11 @@
  * metavid2mvWiki.inc.php Created on Jan 19, 2008
  *
  * All Metavid Wiki code is Released under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  *
  * @author Michael Dale
  * @email dale@ucsc.edu
- * @url http://metavid.ucsc.edu
+ * @url http://metavid.org
  */
 
  /*
@@ -413,7 +413,7 @@ function do_proccess_images( $stream, $force = false ) {
 		// get streamImage obj:
 
 		$local_img_dir = MV_StreamImage::getLocalImageDir( $mv_stream_id );
-		$metavid_img_url = 'http://metavid.ucsc.edu/image_media/' . $row->id . '.jpg';
+		$metavid_img_url = 'http://metavid.org/image_media/' . $row->id . '.jpg';
 
 		$local_img_file = $local_img_dir . '/' . $relative_time . '.jpg';
 		// check if the image already exist in the new table

@@ -1,11 +1,11 @@
 /*
  * ~mv_embed version 1.0~
- * for details see: http://metavid.ucsc.edu/wiki/index.php/Mv_embed
+ * for details see: http://metavid.org/wiki/index.php/Mv_embed
  *
  * All Metavid Wiki code is Released under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  *
- * @url http://metavid.ucsc.edu
+ * @url http://metavid.org
  *
  * parseUri:
  * http://stevenlevithan.com/demo/parseuri/js/
@@ -679,10 +679,10 @@ var ctrlBuilder = {
 +'			</div><!--videoOptions-->';
 			}
 		},
-		'play_or_pause':{
+		'pause':{
 			'w':24,
 			'o':function(){
-				return '<div id="mv_play_pause_button_'+ctrlBuilder.id+'" class="play_button"><a href="javascript:document.getElementById(\''+ctrlBuilder.id+'\').play_or_pause();"></a></div>'
+				return '<div id="mv_play_pause_button_'+ctrlBuilder.id+'" class="play_button"><a href="javascript:document.getElementById(\''+ctrlBuilder.id+'\').play();"></a></div>'
 			}
 		},
 		'closed_captions':{
@@ -2854,7 +2854,7 @@ embedVideo.prototype = {
 	*/
 	play:function(){
 		var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
-		js_log("mv_embed play:"+this.id);		
+		js_log( "mv_embed play:" + this.id);		
 		js_log('thum disp:'+this.thumbnail_disp);
 		//check if thumbnail is being displayed and embed html
 		if( this.thumbnail_disp ){			
@@ -2873,7 +2873,9 @@ embedVideo.prototype = {
 			js_log("we are already playing..." );
 			this.paused=false; //make sure we are not "paused"
 		}
+		js_log(' did not run?');
         $j("#mv_play_pause_button_"+this_id).attr('class', 'pause_button');         
+        $j("#mv_play_pause_button_"+this_id).attr('onClick', '$j(\'#'+this_id+'\').get(0).pause()');
 	},
 	/*
 	 * base embed pause
@@ -2885,10 +2887,11 @@ embedVideo.prototype = {
 		 var this_id = (this.pc!=null)?this.pc.pp.id:this.id;
          //(playing) do pause          
          this.paused=true; 
-         //update "paused state"            	
+         //update the ctrl "paused state"            	
          $j("#mv_play_pause_button_"+this_id).attr('class', 'play_button');
+         $j("#mv_play_pause_button_"+this_id).attr('onClick', '$j(\'#'+this_id+'\').get(0).play()');
 	},	
-	play_or_pause: function(){
+	/*play_or_pause: function(){
 		js_log('embed:f:play_or_pause');
         //check state and set play or pause
         if(this.paused){
@@ -2896,7 +2899,7 @@ embedVideo.prototype = {
         }else{            
             this.pause();
         }
-	},
+	},*/
 	/*
 	 * base embed stop (can be overwritten by the plugin)
 	 */

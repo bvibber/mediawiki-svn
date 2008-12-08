@@ -3,7 +3,7 @@
  * Created on Aug 15, 2008
  *
  * All Metavid Wiki code is Released Under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  */
  class MV_Navigator extends MV_Component {
  	function getHTML() {

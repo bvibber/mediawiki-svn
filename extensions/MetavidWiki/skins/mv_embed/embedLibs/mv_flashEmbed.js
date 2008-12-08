@@ -1547,7 +1547,7 @@ var flashEmbed = {
 	startedTimedPlayback:false,		
     supports: {
     	'play_head':true, 
-	    'play_or_pause':true,
+	    'pause':true,
 	    'stop':true, 
 	    //'fullscreen':true, 
 	    'time_display':true, 
@@ -1605,7 +1605,7 @@ var flashEmbed = {
     	//set up bindings (for when interacting with the swf causes action:  
     	this.fla.onPause(function(){
     		js_log('flash:onPause');
-    		if(!_this.paused){
+    		if( !_this.paused ){
     			_this.pause();
     		}
     	})
@@ -1650,9 +1650,10 @@ var flashEmbed = {
     pause : function()
     {
     	this.getFLA();
-    	this.parent_pause();
-    	if(this.fla['pause'])
-    		this.fla.pause();    			
+    	this.parent_pause();    	
+    	if( this.fla['pause'] )
+    		if( !this.fla.isPaused() )
+    			this.fla.pause();    			
     },
     monitor : function()
     {    

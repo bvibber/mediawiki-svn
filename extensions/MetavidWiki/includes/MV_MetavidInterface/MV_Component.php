@@ -4,7 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  * Created on Jun 28, 2007
  *
  * All Metavid Wiki code is Released Under the GPL2
- * for more info visit http:/metavid.ucsc.edu/code
+ * for more info visit http://metavid.org/wiki/Code
  * 
  * the base component class
  */
