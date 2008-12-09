@@ -423,9 +423,9 @@ abstract class ConfigurationPage extends SpecialPage {
 			foreach( $wgConfigureWikis as $wiki ) {
 				$selector->addOption( $wiki );
 			}
-			$form .= $selector->getHTML();
+			$form .= $selector->getHTML() . '&nbsp;';
 		} else {
-			$form .= Xml::input( 'wiki', false, $this->mWiki );
+			$form .= Xml::input( 'wiki', false, $this->mWiki ) . '&nbsp;';
 		}
 		$form .= Xml::submitButton( wfMsg( 'configure-select-wiki-submit' ) );
 		$form .= '</form></fieldset>';
