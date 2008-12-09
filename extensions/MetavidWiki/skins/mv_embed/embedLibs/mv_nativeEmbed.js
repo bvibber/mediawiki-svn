@@ -134,6 +134,7 @@ var nativeEmbed = {
 	},
 	pause : function(){		
 		this.getVID();
+		this.parent_pause(); //update interface
 		if(this.vid){
 			this.vid.pause();
 		}
@@ -142,9 +143,8 @@ var nativeEmbed = {
 	},
 	play:function(){
 		this.getVID();
-		if(!this.vid || this.thumbnail_disp){
-			this.parent_play();
-		}else{			
+		this.parent_play(); //update interface
+		if( this.vid ){
 			this.vid.play();
 			//re-start the monitor: 
 			this.monitor();

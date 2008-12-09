@@ -9,7 +9,7 @@ cortado_iframe();
 
 function cortado_iframe() {
 	if(!function_exists('filter_input')){
-		error_out('your version of php lacks <b>filter_input()</b> function</br>');
+		die('your version of php lacks <b>filter_input()</b> function</br>');
 	}
 	//load the http GETS:
 	// set the parent domain if provided

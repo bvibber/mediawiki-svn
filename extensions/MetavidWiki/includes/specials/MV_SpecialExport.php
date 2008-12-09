@@ -281,8 +281,11 @@ class MV_SpecialExport {
 		$query = 'stream_name=' . $this->stream_name . '&t=' . $this->req_time . '&feed_format=cmml&tracks=' . strtolower( $row->mvd_type );
 		$clink = $sTitle->getFullURL( $query );
 		$inline = ( in_array( strtolower( $row->mvd_type ), $this->mvcp->mvd_tracks ) ) ? 'true':'false';
-		// for now make ht_en the default layer
-		$default_attr = ( strtolower( $row->mvd_type ) == 'ht_en' ) ? 'default="true"':'';
+		// for now make ht_en or anno_en the default layer
+		$default_attr = ( 	strtolower( $row->mvd_type ) == 'ht_en' ||
+							strtolower( $row->mvd_type ) == 'anno_en' ) ?
+							 'default="true"':
+							 '';
 		?>
 <mediaSource id="<?php echo htmlentities( $row->mvd_type )?>"
 	title="<?php echo wfMsg( $row->mvd_type )?>" <?php echo $default_attr?>

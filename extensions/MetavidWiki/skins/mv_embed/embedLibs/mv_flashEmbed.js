@@ -1603,24 +1603,18 @@ var flashEmbed = {
 		//get the this.fla value: 		
 		this.getFLA();    	
     	//set up bindings (for when interacting with the swf causes action:  
-    	this.fla.onPause(function(){
-    		js_log('flash:onPause');
-    		if( !_this.paused ){
-    			_this.pause();
-    		}
+    	this.fla.onPause(function(){    				    		    		        		    
+    		_this.parent_pause();   //update the interface     		
     	})
-    	this.fla.onResume(function(){
-    		js_log('flash;onResume');
-    		if(_this.paused){
-    			_this.play();
-    		}
+    	this.fla.onResume( function(){
+    		_this.parent_play();	//update the interface    
     	});
     	//start monitor: 
     	this.monitor();  
     	this.old_pid++;
     },   
     /* js hooks/controls */
-    play: function(){    	
+    play: function(){        		
     	this.getFLA();    	
     	//update play/pause button etc
     	this.parent_play();      	  	
@@ -1651,9 +1645,13 @@ var flashEmbed = {
     {
     	this.getFLA();
     	this.parent_pause();    	
-    	if( this.fla['pause'] )
-    		if( !this.fla.isPaused() )
-    			this.fla.pause();    			
+    	js_log("Flash:Pause: " + this.fla.isPaused() );
+    	if( this.fla['pause'] ){
+    		if( ! this.fla.isPaused() ){
+    			js_log('calling plugin pause');    			
+    			this.fla.pause();    	
+    		}
+    	}
     },
     monitor : function()
     {    
@@ -1760,8 +1758,7 @@ var flashEmbed = {
     onClipDone: function(){    	    
     	js_log('f:flash:onClipDone');    	
 	    if( ! this.startedTimedPlayback){
-	    	js_log('clip done before timed playback started .. not good. (ignoring) ');
-	    	//setTimeout('$j(\'#'+embed.id+'\').get(0).play()', 250);
+	    	js_log('clip done before timed playback started .. not good. (ignoring) ');	    	
 	    	//keep monitoring: 
 	    	this.monitor();
 	    }else{

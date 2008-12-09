@@ -23,7 +23,7 @@ var vlcEmbed = {
     userSlide:false,    
     pejs_count:0, //post embed js count
      
-    getEmbedHTML : function(){
+    getEmbedHTML: function(){
 		//give VLC 150ms to initialize before we start playback 
 		//@@todo should be able to do this as an ready event
 		this.pejs_count=0;
@@ -48,7 +48,7 @@ var vlcEmbed = {
     /*
     * some java script to start vlc playback after the embed:
     */
-    postEmbedJS : function(){
+    postEmbedJS: function(){
         //load a pointer to the vlc into the object (this.vlc)
     	this.getVLC();
     	if( this.vlc.log ){
@@ -92,14 +92,14 @@ var vlcEmbed = {
 	        }				
 		}
 	},*/
-	playMovieAt : function (order){
+	playMovieAt: function (order){
 		//@@todo add clips to playlist after (order) and then play
 		this.play();
 	},
     /* 
     * updates the status time
     */
-    monitor : function(){
+    monitor: function(){
     	this.getVLC();
     	if(this.vlc.log){
     		//js_log( 'state:' + this.vlc.input.state);
@@ -162,26 +162,26 @@ var vlcEmbed = {
 	    }
     },
 /* events */
-    onOpen : function(){
+    onOpen: function(){
     	this.setStatus("Opening...");
     	//document.getElementById("info_"+this.id).innerHTML = "Opening...";
 		//document.getElementById("PlayOrPause").disabled = true;
     	//document.getElementById("Stop").disabled = false;
     },
-    onBuffer : function(){
+    onBuffer: function(){
 	    this.setStatus("Buffering...");
     	//document.getElementById("info_"+this.id).innerHTML = "Buffering...";
     	//document.getElementById("PlayOrPause").disabled = true;
     	//document.getElementById("Stop").disabled = false;
     },
-    onPlay : function(){
+    onPlay: function(){
     	//document.getElementById("PlayOrPause").value = "Pause";
 		//document.getElementById("PlayOrPause").disabled = false;
 		//document.getElementById("Stop").disabled = false;
 		this.onPlaying();		
     },
-    liveFeedRoll : 0,
-    onPlaying : function(){
+    liveFeedRoll: 0,
+    onPlaying: function(){
 		if(this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
 		{
 			// VLC seems to have a problem seeking into the future this way
@@ -248,10 +248,10 @@ var vlcEmbed = {
             this.setStatus('live');
         }
    },
-   onPause : function(){
-   	//document.getElementById("PlayOrPause").value = " Play ";
+   onPause: function(){   		
+   		this.parent_pause(); //update the inteface if paused via native control
    },
-   onStop : function(){	
+   onStop: function(){	
    		//
 	    // disable logging
 	    this.vlc.log.verbosity = -1;
@@ -302,6 +302,7 @@ var vlcEmbed = {
 	    this.parent_stop();
     },
     pause : function(){
+    	this.parent_pause(); //update the inteface if paused via native control
 		this.vlc.playlist.togglePause();
     },
     fullscreen : function(){
