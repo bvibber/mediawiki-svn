@@ -279,15 +279,21 @@ class SpecialViewConfig extends ConfigurationPage {
 		$form .= wfMsgExt( 'configure-select-wiki-view-desc', array( 'parse' ) );
 		$form .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
 		$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
-		if ( is_array( $wgConfigureWikis ) ) {
-			$form .= wfMsgExt( 'configure-select-wiki-available',
-				array( 'parse' ), implode( ', ', $wgConfigureWikis ) );
-		}
 		$all = ( $wgRequest->getVal( 'view', 'all' ) == 'all' );
 		$form .= Xml::radioLabel( wfMsg( 'configure-select-wiki-view-all' ), 'view', 'all', 'wiki-all', $all );
 		$form .= "<br />\n";
 		$form .= Xml::radioLabel( wfMsg( 'configure-select-wiki-view-specific' ), 'view', 'specific', 'wiki-specific', !$all ) . ' ';
-		$form .= Xml::input( 'wiki', false, $this->mWiki ) . "<br />\n";
+		
+		if ( is_array( $wgConfigureWikis ) ) {
+			$selector = new XmlSelect( 'wiki', 'wiki', $this->mWiki );
+			foreach( $wgConfigureWikis as $wiki ) {
+				$selector->addOption( $wiki );
+			}
+			$form .= $selector->getHTML() . "<br/>";
+		} else {
+			$form .= Xml::input( 'wiki', false, $this->mWiki )."<br/>";
+		}
+		
 		$form .= Xml::submitButton( wfMsg( 'configure-select-wiki-submit' ) );
 		$form .= '</form></fieldset>';
 		return $form;

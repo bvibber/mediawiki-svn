@@ -419,10 +419,14 @@ abstract class ConfigurationPage extends SpecialPage {
 		$form .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );
 		$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBkey() );
 		if ( is_array( $wgConfigureWikis ) ) {
-			$form .= wfMsgExt( 'configure-select-wiki-available',
-				array( 'parse' ), implode( ', ', $wgConfigureWikis ) );
+			$selector = new XmlSelect( 'wiki', 'wiki', $this->mWiki );
+			foreach( $wgConfigureWikis as $wiki ) {
+				$selector->addOption( $wiki );
+			}
+			$form .= $selector->getHTML();
+		} else {
+			$form .= Xml::input( 'wiki', false, $this->mWiki );
 		}
-		$form .= Xml::input( 'wiki', false, $this->mWiki );
 		$form .= Xml::submitButton( wfMsg( 'configure-select-wiki-submit' ) );
 		$form .= '</form></fieldset>';
 		return $form;
