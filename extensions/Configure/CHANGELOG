@@ -1,6 +1,10 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.10.17 - 9 December 2008
+  If $wgConfigureWikis is an array, a selector-box is displayed instead of a
+  text box with a list of allowed values.
+
 0.10.16 - 7 December 2008
   $wgLogo doesn't need anymore configure-all right to be modified.
 
