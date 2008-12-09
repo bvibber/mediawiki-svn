@@ -1578,7 +1578,7 @@ var flashEmbed = {
     {   
     	var _this = this;
     	js_log('embedFlow: uri:'+ _this.media_element.selected_source.getURI(this.seek_time_sec)
-    			 +' '+ mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc4.swf' ) ;
+    			 +' '+ mv_embed_path + 'flowplayer/flowplayer-3.0.1.swf' ) ;
     	var flowConfig = { 
 		    clip: { 
 		        url: _this.media_element.selected_source.getURI(this.seek_time_sec), 		         
@@ -1597,9 +1597,8 @@ var flashEmbed = {
 				 }      		
     		}
     	};
-    	//if lightpd  	
     	
-		$f(this.pid,  mv_embed_path + 'flowplayer/flowplayer-3.0.0-rc4.swf', flowConfig);    	    	  
+		$f(this.pid,  mv_embed_path + 'flowplayer/flowplayer-3.0.1.swf', flowConfig);    	    	  
 		//get the this.fla value: 		
 		this.getFLA();    	
     	//set up bindings (for when interacting with the swf causes action:  
