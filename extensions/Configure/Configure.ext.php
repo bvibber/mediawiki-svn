@@ -197,7 +197,7 @@ class WebExtension {
  	}
  
  	/**
- 	 * Get the varibale for this extension
+ 	 * Get the variable for this extension
  	 */
  	public function getVariable(){
  		return $this->mExtVar;
