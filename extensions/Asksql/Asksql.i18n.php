@@ -539,12 +539,13 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'asksql' => 'សំណួរអង្កេត របស់ SQL',
 	'sqlquery' => 'បញ្ចូលសំណួរអង្កេត',
 	'querybtn' => 'ដាក់ស្នើសំណួរអង្កេត',
-	'selectonly' => 'អនុញ្ញាតិ ចំពោះតែ សំណួរអង្កេត "ត្រឹមតែអាន" ។',
+	'selectonly' => 'អនុញ្ញាត ចំពោះតែ សំណួរអង្កេត "ត្រឹមតែអាន" ។',
 	'querysuccessful' => 'សំណួរអង្កេត បានជោគជ័យ',
 );
 

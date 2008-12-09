@@ -534,9 +534,10 @@ $messages['it'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'imagetagging-addimagetag' => 'ដាក់ប្លាកអោយរូបភាពនេះ',
+	'imagetagging-addimagetag' => 'ដាក់ប្លាកឱ្យរូបភាពនេះ',
 	'imagetagging-article' => 'ទំព័រ៖',
 	'imagetagging-imghistory' => 'ប្រវត្តិ',
 	'imagetagging-images' => 'រូបភាព',

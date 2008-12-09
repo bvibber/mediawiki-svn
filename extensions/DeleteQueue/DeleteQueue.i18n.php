@@ -1398,15 +1398,16 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'deletequeue-action-queued' => 'ការលុប',
 	'deletequeue-delnom-otherreason' => 'មូលហេតុផ្សេងទៀត',
-	'deletequeue-delnom-extra' => 'ពត៌មានបន្ថែម៖',
+	'deletequeue-delnom-extra' => 'ព័ត៌មានបន្ថែម៖',
 	'deletequeue-review-delete' => 'លុបទំព័រ។',
 	'deletequeue-review-reason' => 'យោបល់៖',
 	'deletequeue-review-newreason' => 'មូលហេតុថ្មី៖',
-	'deletequeue-review-newextra' => 'ពត៌មានបន្ថែម៖',
+	'deletequeue-review-newextra' => 'ព័ត៌មានបន្ថែម៖',
 	'deletequeue-vote-submit' => 'ដាក់ស្នើ',
 	'deletequeue-list-search' => 'ស្វែងរក',
 	'deletequeue-list-header-page' => 'ទំព័រ',
@@ -1889,6 +1890,13 @@ Podètz enregistrar [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} aicí] vòstra 
 	'deletequeue-list-header-votes' => 'Acòrdis e refuses',
 	'deletequeue-list-header-expiry' => 'Expiracion',
 	'deletequeue-list-header-discusspage' => 'Pagina de discussion',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'deletequeue-delnom-otherreason' => 'Æндæр аххостæ',
 );
 
 /** Polish (Polski)

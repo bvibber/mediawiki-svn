@@ -86,6 +86,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'templatelink' => 'Pśedłogowy wótkaz',
+	'templatelink_desc' => 'Rozšyrjenje móžo pśedłogu ako nowy bok pokazaś',
 	'templatelink_empty' => 'Musyš parameter pódaś.',
 	'templatelink_newtitle' => '$1 (wuměnjony)',
 );

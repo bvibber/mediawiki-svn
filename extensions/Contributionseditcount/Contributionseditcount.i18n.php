@@ -227,11 +227,12 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'contributionseditcount' => 'អ្នកប្រើប្រាស់នេះ​មាន $1 កំនែប្រែ។',
-	'contributionseditcount-desc' => 'បង្ហាញការរាប់កំនែប្រែនៅ[[Special:Contributions|ការរួមចំនែករបស់អ្នកប្រើប្រាស់]]',
+	'contributionseditcount' => 'អ្នកប្រើប្រាស់នេះ​មាន $1 កំណែប្រែ។',
+	'contributionseditcount-desc' => 'បង្ហាញការរាប់កំណែប្រែនៅ[[Special:Contributions|ការរួមចំណែករបស់អ្នកប្រើប្រាស់]]',
 );
 
 /** Korean (한국어)

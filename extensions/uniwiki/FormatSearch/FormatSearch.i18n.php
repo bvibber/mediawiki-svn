@@ -56,6 +56,13 @@ $messages['lb'] = array(
 	'formatsearch-desc' => "Botzt d'Säit mat de Resultater vun der Sich",
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'formatsearch-desc' => 'Keert de zeukrisseltaotenpagina an',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -257,6 +257,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'contributiontracking-desc' => 'Suivi vun den Donen vun der Wikimedia-Spendenakioun',
 	'contributiontracking' => 'Iwwersiicht vun den Donen',
 	'contrib-tracking-error' => 'Feeler',
 	'contrib-tracking-error-text' => 'Feeler bäi der Iwwermëttlung vum Formulaire',

@@ -224,13 +224,14 @@ $messages['it'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author T-Rithy
+ * @author Thearith
  */
 $messages['km'] = array(
 	'dplforum-by' => 'ដោយ',
 	'dplforum-edited' => 'កែប្រែជាចុងក្រោយ',
 	'dplforum-never' => 'មិនដែល',
-	'dplforum-toofew' => 'ចំនាត់ថ្នាក់ក្រុមតិចតួចណាស់!',
-	'dplforum-toomany' => 'ចំនាត់ថ្នាក់ក្រុមច្រើនណាស់!',
+	'dplforum-toofew' => 'ចំណាត់ថ្នាក់ក្រុមតិចតួចណាស់!',
+	'dplforum-toomany' => 'ចំណាត់ថ្នាក់ក្រុមច្រើនណាស់!',
 );
 
 /** Ripoarisch (Ripoarisch)

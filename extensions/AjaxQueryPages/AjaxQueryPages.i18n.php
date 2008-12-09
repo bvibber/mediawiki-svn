@@ -211,6 +211,13 @@ $messages['ms'] = array(
 	'ajax-qp-desc' => 'Tambahkan sedikit AJAX kepada laman-laman pertanyaan seperti [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'ajax-qp-desc' => "Voeg wat AJAX toe an QueryPages zoas [[Special:Shortpages|korte pagina's]]",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

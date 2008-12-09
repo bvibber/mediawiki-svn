@@ -1063,6 +1063,7 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv
+ * @author Rubin
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1071,9 +1072,11 @@ $messages['ru'] = array(
 	'usagestatisticsfor' => '<h2>Статистика использования для участника [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Статистика использования для всех участников</h2>',
 	'usagestatisticsinterval' => 'Интервал',
+	'usagestatisticstype' => 'Тип',
 	'usagestatisticsintervalday' => 'День',
 	'usagestatisticsintervalweek' => 'Неделя',
 	'usagestatisticsintervalmonth' => 'Месяц',
+	'usagestatisticscalselect' => 'Выбрать',
 );
 
 /** Slovak (Slovenčina)

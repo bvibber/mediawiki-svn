@@ -1963,13 +1963,14 @@ $4',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'code-comments' => 'យោបល់',
 	'code-authors' => 'អ្នកនិពន្ធ',
 	'code-tags' => 'ប្លាក',
 	'code-author-name' => 'បញ្ចូលឈ្មោះអ្នកប្រើប្រាស់៖',
-	'code-author-link' => 'តំនភ្ជាប់?',
+	'code-author-link' => 'តំណភ្ជាប់?',
 	'code-field-author' => 'អ្នកនិពន្ធ',
 	'code-field-timestamp' => 'កាលបរិច្ឆេទ',
 	'code-rev-author' => 'អ្នកនិពន្ធ៖',
@@ -1977,7 +1978,7 @@ $messages['km'] = array(
 	'code-rev-message' => 'យោបល់៖',
 	'code-rev-modified-a' => 'បានបន្ថែម',
 	'code-rev-modified-d' => 'បានលុប',
-	'code-rev-modified-m' => 'បានកែសំរួល',
+	'code-rev-modified-m' => 'បានកែសម្រួល',
 	'code-rev-tags' => 'ប្លាក៖',
 	'code-rev-tag-add' => 'បន្ថែមប្លាក៖',
 	'code-rev-comment-preview' => 'មើលជាមុន',

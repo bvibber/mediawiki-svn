@@ -158,6 +158,20 @@ $messages['de'] = array(
 	'watchers_less_than_x' => 'Weniger als {{PLURAL:$1|$1 Benutzer|$1 Benutzer}} beobachten diese Seite.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'watchers' => 'Wobglědowarje',
+	'watchers-desc' => 'Pokazujo, [[Special:Watchers|kótare wužywarje maju bok na swójich wobglědowańkach]]',
+	'watchers_link_title' => 'Chto wobglědujo toś ten bok?',
+	'watchers_error_article' => "'''Zmólka:''' Bok njeeksistujo.",
+	'watchers_header' => '{{PLURAL:$2|Wužywaŕ, kótaryž "$1" wobglědujo|Wužywarja, kótarejž "$1" wobglědujotej|Wužywarje, kótarež "$1" wobglěduju|Wužywarje, kótarež "$1" wobglěduju}}',
+	'watchers_noone_watches' => 'Nichten njewužywa toś ten bok.',
+	'watchers_x_or_more' => '$1 {{PLURAl:$1|wužywaŕ|wužywarja|wužywarje|wužywarjow}} abo wěcej {{PLURAl:$1|wobglědujo|wobglědujotej|wobglěduju|wobglědujo}} toś ten bok.',
+	'watchers_less_than_x' => 'Mjenjej ako $1 {{PLURAL:$1|wužywaŕ wobglědujo|wužywarja wobglědujotej|wužywarje wobglěduju|wužywarjow wobglědujo}} toś ten bok.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -351,7 +365,7 @@ $messages['mk'] = array(
 	'watchers_error_article' => "'''Грешка:''' Страницата не постои.",
 	'watchers_header' => '{{PLURAL:$2|Корисник кој ја набљудува|Корисници кои ја набљудуваат}} "$1"',
 	'watchers_noone_watches' => 'Никој не ја набљудува оваа страница.',
-	'watchers_x_or_more' => '$1 или повеќе корисници ја имаат оваа страница во својата листа на набљудувања.',
+	'watchers_x_or_more' => '{{PLURAL:$1|$1 корисник ја има|$1 корисници ја имаат}} оваа страница во својата листа на набљудувања.',
 	'watchers_less_than_x' => '{{PLURAL:$1|Еден корисник|Помалку од $1 корисници}} ја имаат оваа страница во својата листа на набљудувања.',
 );
 

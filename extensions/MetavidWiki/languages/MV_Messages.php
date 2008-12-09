@@ -2407,6 +2407,7 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'mv_path_type_url_anx' => 'url មេឌាពេញលេញ',
@@ -2431,16 +2432,16 @@ $messages['km'] = array(
 	'mv_edit_metadata' => 'កែប្រែទិន្នន័យមេតា',
 	'mv_viewnext' => 'មើល($1)',
 	'mediasearch' => 'ការស្វែងរកមេឌា',
-	'mv_add_filter' => 'បន្ថែមតំរង',
+	'mv_add_filter' => 'បន្ថែមតម្រង',
 	'mv_search_match' => 'ស្វែងរកអត្ថបទ',
-	'mv_search_categories' => 'ចំនាត់ថ្នាក់ក្រុម',
+	'mv_search_categories' => 'ចំណាត់ថ្នាក់ក្រុម',
 	'mv_search_category' => 'ចំណាត់ថ្នាក់ក្រុម',
 	'mv_search_and' => 'និង',
 	'mv_search_or' => 'ឬ',
 	'mv_search_not' => 'អត់',
 	'mv_search_date_range' => 'ដែនកំណត់ នៃ ថ្ងៃ ខែ ឆ្នាំ',
-	'mv_category' => 'ចំនាត់ថ្នាក់ក្រុម',
-	'mv_remove_filter' => 'ដកចេញ តំរង',
+	'mv_category' => 'ចំណាត់ថ្នាក់ក្រុម',
+	'mv_remove_filter' => 'ដកចេញ តម្រង',
 	'mv_view_wiki_page' => 'មើលទំព័រវិគី',
 	'mv_mang_layers' => 'គ្រប់គ្រង ស្រទាប់',
 );
@@ -2580,12 +2581,46 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'mv_existing_categories' => 'категории:',
+	'metavid' => 'Metavid страница',
+	'mv_missing_stream' => 'Непостоечки поток:$1',
+	'specialpages-group-mv_group' => 'MetaVidWiki специјални страници',
+	'mv_stream_meta' => 'Поток страница',
+	'mv_add_stream' => 'Metavid додава поток',
+	'mv_edit_stream' => 'Metavid уреди поток',
+	'mvexportsearch' => 'Metavid извоз',
+	'mvexportsequence' => 'Metavid секвенца за извоз',
+	'mvexportstream' => 'Metavid извозен поток',
+	'mv_move_delete_msg' => 'mvd преместено во $1',
+	'mv_save_changes' => 'Зачувај измени',
+	'mv_upload_file' => 'Подигни податотека',
+	'mv_external_file' => 'Надворешна податотека',
+	'mv_tool_search' => 'Барај',
+	'mv_tool_search_title' => 'Барај внатре во овој поток',
+	'mv_time_separator' => '$1 до $2',
+	'mv_list_streams_docu' => 'Постојат следниве потоци:',
+	'mv_list_streams_none' => 'Не постојат потоци',
+	'mv_play' => 'Прикажи',
+	'mv_edit' => 'Уреди',
+	'mv_history' => 'Историја',
+	'mv_edit_title' => 'Уреди текст',
+	'mv_start_desc' => 'Почетно време',
+	'mv_end_desc' => 'Крајно време',
+	'mv_of' => '&#32;од&#32;',
+	'mv_edit_metadata' => 'Уреди метаподатоци',
+	'mv_advanced_edit' => 'Напредно уредување',
+	'mv_basic_edit' => 'Основно уредување',
+	'mv_remove_category' => 'Бриши категорија',
+	'mv_existing_categories' => '{{PLURAL:$1|категорија|категории}}:',
 	'mv_add_category' => 'додади категоризација',
 	'mv_basic_text_desc' => 'Текстуален опис (опционо)',
 	'mv_viewnext' => 'Види ($1)',
 	'mv_viewprevnext' => 'Види ($1) ($2)',
 	'mediasearch' => 'Пребарај медија',
+	'mv_prev_cat' => 'Претходна категорија: $1',
+	'mv_next_cat' => 'Следна категорија: $1',
+	'mv_search_stream_title' => 'Пребарај низ тековен поток',
+	'mv_new_ht_en' => 'Нов транскрипт',
+	'mv_new_anno_en' => 'Нов приврзок или забелешка',
 );
 
 /** Malayalam (മലയാളം)
@@ -3549,6 +3584,7 @@ foncionalitat fòrça <b>limitada</b> actualament. Clicatz sus un clip per modif
  */
 $messages['os'] = array(
 	'mv_upload_file' => 'Ног файл сæвæр',
+	'mv_tool_search' => 'Агур',
 	'mv_edit' => 'Баив æй',
 	'mv_history' => 'Истори',
 	'mv_search_category' => 'Категори',
@@ -3794,6 +3830,7 @@ $messages['ro'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Kaganer
+ * @author Rubin
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -3960,6 +3997,7 @@ $mvMVDTypeDefaultDisp должен быть подмножеством $mvMVDTyp
 	'mv_sequence_add_search' => 'Добавить поиском',
 	'mv_sequence_add_search_desc' => 'Добавить клипы с помощью поиска медиа',
 	'mv_seq_add_end' => 'Добавить в конец последовательности',
+	'mv_other_options' => 'Прочие опции',
 	'mv_sequence_timeline' => 'Шкала времени последовательности:',
 	'mv_edit_sequence_desc_help' => 'Описание последовательности',
 	'mv_edithelpsequence' => 'Help:Правка последовательности',
@@ -4179,6 +4217,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mv_resource_not_supported' => "Typ zdroja '''$1''' nie je podporovaný",
 	'mv_welcome_to_sequencer' => '<h3>Toto je demo sekvencéra</h3> momentálne má veľmi <b>obmedzenú</b> funkcionalitu. Zdroj upravíte po kliknutí na Klip',
 	'mv_resource_locator' => 'Lokalizátor zdrojov',
+	'mv_unknown_clipboard_action' => 'Neznáma operácia so schránkou',
 	'mv_media_search' => 'Vyhľadávanie multimédií',
 	'mv_editor_options' => 'Voľby editora',
 	'mv_editor_mode' => 'Režim editora',
@@ -4193,6 +4232,10 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mv_sequence_add_search' => 'Pridať podľa hľadania',
 	'mv_sequence_add_search_desc' => 'Pridať klipy podľa Vyhľadávania multimédií',
 	'mv_seq_add_end' => 'Pridať na koniec sekvencie',
+	'mv_sequence_edit_text' => 'Prepnúť na textový editor',
+	'mv_sequence_edit_visual_editor' => 'Prepnúť na vizuálny editor',
+	'mv_other_options' => 'Iné voľby',
+	'mv_contextmenu_opt' => 'Zapnúť kontextové ponuky',
 	'mv_sequence_timeline' => 'Časový prehľad sekvencie:',
 	'mv_edit_sequence_desc_help' => 'Popis sekvencie',
 	'mv_edithelpsequence' => 'Help:Upravovanie_sekvencie',

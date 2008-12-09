@@ -804,6 +804,13 @@ $messages['ro'] = array(
 	'spamregex-already-blocked' => '"$1" este deja blocat',
 );
 
+/** Russian (Русский)
+ * @author Rubin
+ */
+$messages['ru'] = array(
+	'spamregex-text' => '(Текст)',
+);
+
 /** Sassaresu (Sassaresu)
  * @author Felis
  */

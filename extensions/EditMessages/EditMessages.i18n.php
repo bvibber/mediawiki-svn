@@ -652,6 +652,13 @@ $messages['oc'] = array(
 	'editmsg-patch-success' => 'Patch aplicat amb succès.',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'editmsg-search' => 'Агур',
+);
+
 /** Polish (Polski)
  * @author McMonster
  * @author Sp5uhe

@@ -1031,8 +1031,11 @@ $messages['pt'] = array(
 	'tasks_logentry' => 'Para "[[$1]]"',
 );
 
-/** Russian (Русский) */
+/** Russian (Русский)
+ * @author Rubin
+ */
 $messages['ru'] = array(
+	'tasks' => 'Задачи',
 	'tasks_tab' => 'Задачи',
 	'tasks_title' => 'Задачи для «$1»',
 	'tasks_form_new' => 'Установить новую задачу',

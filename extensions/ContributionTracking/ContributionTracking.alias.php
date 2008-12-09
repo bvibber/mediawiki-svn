@@ -23,6 +23,11 @@ $aliases['hu'] = array(
 	'ContributionTracking' => array( 'Adományok követése' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'ContributionTracking' => array( 'Donasies_volgen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ContributionTracking' => array( 'DonatiesVolgen' ),

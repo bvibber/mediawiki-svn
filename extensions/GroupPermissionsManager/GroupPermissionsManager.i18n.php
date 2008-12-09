@@ -971,7 +971,7 @@ $messages['km'] = array(
 	'grouppermissions-sort-manage' => 'ការគ្រប់គ្រង',
 	'grouppermissions-sort-admin' => 'អភិបាលកិច្ច',
 	'grouppermissions-log-add' => 'បានបន្ថែមក្រុម"$2"',
-	'grouppermissions-log-change' => 'បានផ្លាស់ប្តូរការអនុញ្ញាតសំរាប់ក្រុម"$2"',
+	'grouppermissions-log-change' => 'បានផ្លាស់ប្តូរការអនុញ្ញាតសម្រាប់ក្រុម"$2"',
 	'grouppermissions-log-delete' => 'បានលុបក្រុម"$2"',
 	'grouppermissions-sp-save' => 'រក្សាទុក',
 	'grouppermissions-sp-remove' => 'ដកហូត',
@@ -1389,6 +1389,7 @@ $messages['ro'] = array(
  * @author Ferrer
  * @author Innv
  * @author Kaganer
+ * @author Rubin
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1409,6 +1410,7 @@ $messages['ru'] = array(
 	'grouppermissions-changesuccess' => 'Права доступа для $1 были успешно изменены',
 	'grouppermissions-true' => 'Истина',
 	'grouppermissions-false' => 'Ложь',
+	'grouppermissions-never' => 'Никогда',
 	'grouppermissions-sort-read' => 'Чтение',
 	'grouppermissions-sort-edit' => 'Правка',
 	'grouppermissions-sort-manage' => 'Управление',

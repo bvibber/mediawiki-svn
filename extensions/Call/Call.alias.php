@@ -64,7 +64,7 @@ $aliases['mk'] = array(
 
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'Call' => array( 'Anreupen' ),
+	'Call' => array( 'Anroepen' ),
 );
 
 /** Dutch (Nederlands) */

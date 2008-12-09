@@ -39,6 +39,19 @@ Dies ermöglicht dir die alternative Nutzung deiner Benutzerseite als OpenID.',
 	'linkopenid-prefstext-v2url' => 'Server-URL für OpenID Version 2:',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'linkopenid-desc' => 'Wužywarjam dowóliś jich konto z eksternym OpenID zwězaś',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Jolic maš OpenID wót eksternego póbitowarja, móžoš jen how pódaś.
+To śi dowólijo swój wužywarski bok teke ako OpenID wužywaś.',
+	'linkopenid-prefstext-openid' => 'Twój OpenID:',
+	'linkopenid-prefstext-v1url' => 'Serwerowy URL za OpenID wersiju 1.1.:',
+	'linkopenid-prefstext-v2url' => 'Serwerowy URL za OpenID wersiju 2;',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -112,5 +125,18 @@ Aquò vos permet tanben d'utilizar vòstra page d'utilizaire coma OpenID.",
 	'linkopenid-prefstext-v1url' => 'URL del servidor per OpenID version 1.1 :',
 	'linkopenid-prefstext-v2url' => 'URL del servidor per OpenID version 2 :',
 	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL :',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'linkopenid-desc' => 'Umožniť používateľom spojiť svoj účet s externým OpenID',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Ak máte OpenID od externého poskytovateľa, môžete ho tu uviesť.
+To vám umožní používať svoju používateľskú stránku tiež ako OpenID.',
+	'linkopenid-prefstext-openid' => 'Váš OpenID:',
+	'linkopenid-prefstext-v1url' => 'URL servera OpenID verzie 1.1:',
+	'linkopenid-prefstext-v2url' => 'URL servera OpenID verzie 2:',
 );
 

@@ -198,6 +198,13 @@ $messages['ms'] = array(
 	'antibot-desc' => 'Sebuah rangka kerja perisian ringkas untuk pemeriksaan bot spam dan beban picu',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'antibot-desc' => 'Simpel framework veur controle op spambots en trigger payload',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

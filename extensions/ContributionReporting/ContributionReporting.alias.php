@@ -35,6 +35,13 @@ $aliases['km'] = array(
 	'ContributionTotal' => array( 'ការរួមចំណែកសរុប' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'ContributionHistory' => array( 'Donasiegeschiedenisse' ),
+	'ContributionStatistics' => array( 'Donasiestaotestieken' ),
+	'ContributionTotal' => array( 'Donasietotaal' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'ContributionHistory' => array( 'Donatiehistorie' ),

@@ -1288,6 +1288,13 @@ $messages['nds'] = array(
 	'badimages-page' => '{{ns:help}}:List mit lege Biller',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'badimages-add-btn' => 'Toevoegen',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

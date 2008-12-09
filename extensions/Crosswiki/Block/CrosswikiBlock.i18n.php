@@ -923,12 +923,13 @@ $messages['ka'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'crosswikiblock-desc' => 'អនុញ្ញាត​អោយរាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​​វិគីផ្សេង​ដែលប្រើប្រាស់ [[Special:Crosswikiblock|ទំព័រពិសេស]]',
+	'crosswikiblock-desc' => 'អនុញ្ញាត​ឱ្យរាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​​វិគីផ្សេង​ដែលប្រើប្រាស់ [[Special:Crosswikiblock|ទំព័រពិសេស]]',
 	'crosswikiblock' => 'រាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​វិគីផ្សេង',
-	'crosswikiblock-target' => 'អាស័យដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ និង វិគីគោលដៅ ៖',
+	'crosswikiblock-target' => 'អាសយដ្ឋាន IP ឬ ឈ្មោះអ្នកប្រើប្រាស់ និង វិគីគោលដៅ ៖',
 	'crosswikiblock-expiry' => 'ផុតកំណត់ ៖',
 	'crosswikiblock-reason' => 'មូលហេតុ៖',
 	'crosswikiblock-submit' => 'រាំងខ្ទប់​អ្នកប្រើប្រាស់​នេះ',
@@ -936,17 +937,17 @@ $messages['km'] = array(
 	'crosswikiblock-nocreate' => 'បង្ការ​ការបង្កើត​គណនី',
 	'crosswikiblock-noemail' => 'បង្ការ​អ្នកប្រើប្រាស់​ពី​ការផ្ញើ​អ៊ីមែល',
 	'crosswikiunblock' => 'លែងរាំងខ្ទប់​អ្នកប្រើប្រាស់​លើ​វិគី​ផ្សេង',
-	'crosswikiunblock-header' => 'ទំព័រនេះអនុញ្ញាតអោយហាមឃាត់អ្នកប្រើប្រាស់នៅលើវិគីដ៏ទៃផ្សេងទៀត។
+	'crosswikiunblock-header' => 'ទំព័រនេះអនុញ្ញាតឱ្យហាមឃាត់អ្នកប្រើប្រាស់នៅលើវិគីដ៏ទៃផ្សេងទៀត។
 
-សូមត្រួតពិនិត្យមើលថាតើអ្នកត្រូវអនុញ្ញាតអោយធ្វើសកម្មភាពនៅលើវិគីនេះ និងសកម្មភាពរបស់អ្នកគោរពតាមរាល់គោលការណ៍។',
-	'crosswikiunblock-user' => 'ឈ្មោះអ្នកប្រើប្រាស់, អាស័យដ្ឋាន IP ឬ រាំងខ្ទប់ ID និង វិគី គោលដៅ ៖',
+សូមត្រួតពិនិត្យមើលថាតើអ្នកត្រូវអនុញ្ញាតឱ្យធ្វើសកម្មភាពនៅលើវិគីនេះ និងសកម្មភាពរបស់អ្នកគោរពតាមរាល់គោលការណ៍។',
+	'crosswikiunblock-user' => 'ឈ្មោះអ្នកប្រើប្រាស់, អាសយដ្ឋាន IP ឬ រាំងខ្ទប់ ID និង វិគី គោលដៅ ៖',
 	'crosswikiunblock-reason' => 'មូលហេតុ៖',
 	'crosswikiunblock-submit' => 'លែងរាំងខ្ទប់ អ្នកប្រើប្រាស់ នេះ',
 	'crosswikiunblock-success' => "អ្នកប្រើប្រាស់ '''$1''' បានឈប់ហាមឃាត់ដោយជោគជ័យហើយ។
 
 
-ត្រលប់ទៅកាន់:
-* [[Special:CrosswikiBlock|ទំរង់បែបបទសំរាប់ការហាមឃាត់]]
+ត្រឡប់ទៅកាន់:
+* [[Special:CrosswikiBlock|ទម្រង់បែបបទសម្រាប់ការហាមឃាត់]]
 * [[$2]]",
 	'crosswikiblock-nousername' => 'គ្មានឈ្មោះអ្នកប្រើប្រាស់ បានត្រូវបញ្ចូល',
 	'crosswikiblock-dbnotfound' => 'មូលដ្ឋានទិន្នន័យ $1 មិនមាន',
@@ -958,8 +959,8 @@ $messages['km'] = array(
 	'crosswikiblock-success' => "អ្នកប្រើប្រាស់ '''$3''' បានហាមឃាត់ដោយជោគជ័យ។
 
 
-ត្រលប់ទៅកាន់:
-* [[Special:CrosswikiBlock|ទំរង់បែបបទសំរាប់ការហាមឃាត់]]
+ត្រឡប់ទៅកាន់:
+* [[Special:CrosswikiBlock|ទម្រង់បែបបទសម្រាប់ការហាមឃាត់]]
 * [[$4]]",
 );
 
@@ -994,6 +995,7 @@ $messages['lb'] = array(
 
 Vergewëssert iech w.e.g. ob dir déi néideg Rechter op däer anerer Wiki dofir hutt an ob är Aktioun de Regegelen vun däer wiki entsprecht.',
 	'crosswikiblock-target' => 'IP-Adress oder Benotzernumm an Zil-Wiki:',
+	'crosswikiblock-expiry' => 'Dauer vun der Spär:',
 	'crosswikiblock-reason' => 'Grond:',
 	'crosswikiblock-submit' => 'Dëse Benotzer spären',
 	'crosswikiblock-anononly' => 'Nëmmen anonym Benotzer spären',
@@ -1016,6 +1018,7 @@ Zréck op:
 	'crosswikiblock-dbnotfound' => "D'Datebank $1 gëtt et net.",
 	'crosswikiblock-noname' => '"$1" ass kee gültege Benotzernumm.',
 	'crosswikiblock-nouser' => 'De Benotzer "$3" gouf net fonnt.',
+	'crosswikiblock-noexpiry' => 'Ongëlteg Dauer vun der Spär: $1',
 	'crosswikiblock-noreason' => 'Kee Grond uginn.',
 	'crosswikiblock-alreadyblocked' => 'De Benotzer $3 ass scho gespaart.',
 	'crosswikiblock-noblock' => 'Dëse Benotzer ass net gespaart.',

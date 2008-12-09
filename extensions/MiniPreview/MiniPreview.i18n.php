@@ -248,9 +248,10 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'minipreview-files_in_category' => 'មានឯកសារសរុបចំនួន$1ក្នុងចំនាត់ថា្នក់ក្រុមនេះ។',
+	'minipreview-files_in_category' => "មានឯកសារសរុបចំនួន '''$1''' {{PLURAL:$1|ឯកសារ|ឯកសារ}} ក្នុងចំណាត់ថា្នក់ក្រុមនេះ។",
 	'minipreview-files_in_gallery' => 'មានឯកសារសរុបចំនួន$1ក្នុងវិចិត្រសាលនេះ។',
 	'minipreview-no_more_files_here' => 'គ្មានឯកសារបន្ថែមក្នុងទិសនេះទេ។',
 	'minipreview-no_category_gallery' => 'គ្មានចំណាត់ថ្នាក់ក្រុមឬវិចិត្រសាលទេ!',

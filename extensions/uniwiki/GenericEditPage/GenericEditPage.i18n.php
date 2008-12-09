@@ -294,6 +294,14 @@ Setzt der mat den Toolen op der rietser Säit derbäi.',
 	'gep-categorypage' => 'MediaWiki:Säitenännerungs-Tagen',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'gep-addcategorybutton' => 'Toevoegen',
+	'gep-addsectionbutton' => 'Toevoegen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

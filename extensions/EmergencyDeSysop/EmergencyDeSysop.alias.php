@@ -21,6 +21,11 @@ $aliases['lb'] = array(
 	'EmergencyDeSysop' => array( 'Noutprozedur fir Administrateurrechter ewechzehuelen' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$aliases['nds-nl'] = array(
+	'EmergencyDeSysop' => array( 'Noodgreep_beheerdersrechen_ontnemen' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'EmergencyDeSysop' => array( 'NoodgreepBeheerdersrechtenVerwijderen' ),

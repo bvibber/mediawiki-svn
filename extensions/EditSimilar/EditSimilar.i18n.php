@@ -277,10 +277,11 @@ Anche questa pagina potrebbe usufruire del tuo aiuto: $1.',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'editsimilar-thankyou' => 'សូម​ថ្លែងអំណរគុណ​ចំពោះ​ការរួមចំនែក​របស់អ្នក $1!',
-	'editsimilar-link-disable' => 'កំនត់ចំនង់ចំនូលចិត្ត',
+	'editsimilar-thankyou' => 'សូម​ថ្លែងអំណរគុណ​ចំពោះ​ការរួមចំណែក​របស់អ្នក $1!',
+	'editsimilar-link-disable' => 'កំណត់ចំណង់ចំណូលចិត្ត',
 );
 
 /** Ripoarisch (Ripoarisch)

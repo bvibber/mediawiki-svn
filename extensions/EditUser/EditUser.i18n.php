@@ -498,9 +498,10 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'edituser-desc' => 'អនុញ្ញាតអោយអ្នកប្រើប្រាស់មានសិទ្ធិកែប្រែចំនូលចិត្តរបស់អ្នកប្រើប្រាស់ដ៏ទៃ',
+	'edituser-desc' => 'អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់មានសិទ្ធិកែប្រែចំណូលចិត្តរបស់អ្នកប្រើប្រាស់ដ៏ទៃ',
 	'edituser' => 'កែប្រែអ្នកប្រើប្រាស់',
 	'edituser-username' => 'ឈ្មោះ',
 	'edituser-dosearch' => 'ស្វែងរក',
@@ -691,6 +692,13 @@ $messages['oc'] = array(
 	'edituser-exempt' => "L'utilizaire especificat pòt pas èsser modificat",
 	'right-edituser' => 'Modifica las preferéncias dels autres utilizaires',
 	'right-edituser-exempt' => 'Pòt pas obténer lors preferéncias modificadas pels autres',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'edituser-dosearch' => 'Агур',
 );
 
 /** Polish (Polski)

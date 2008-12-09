@@ -56,6 +56,13 @@ $messages['lb'] = array(
 	'mootools12core-desc' => 'mootools-1.2-core-yc.js op all Säit derbäisetzen',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'mootools12core-desc' => 'Voeg mootools-1.2-core-yc.js toe an elke pagina',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -463,11 +463,12 @@ $messages['kk-latn'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'crossnamespacelinks' => 'តំនភ្ជាប់តាមរយៈលំហឈ្មោះ',
-	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|បញ្ជីតំនភ្ជាប់តាមរយៈលំហឈ្មោះ]]ដែលមិនគួរមាននៅលើ{{SITENAME}}',
-	'crossnamespacelinkstext' => '$1:$2{{PLURAL:$2|តំនភ្ជាប់|តំនភ្ជាប់}}នៃ$3',
+	'crossnamespacelinks' => 'តំណភ្ជាប់តាមរយៈលំហឈ្មោះ',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|បញ្ជីតំណភ្ជាប់តាមរយៈលំហឈ្មោះ]]ដែលមិនគួរមាននៅលើ{{SITENAME}}',
+	'crossnamespacelinkstext' => '$1:$2{{PLURAL:$2|តំណភ្ជាប់|តំណភ្ជាប់}}នៃ$3',
 );
 
 /** Kannada (ಕನ್ನಡ)

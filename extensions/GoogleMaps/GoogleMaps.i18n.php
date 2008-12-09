@@ -1923,24 +1923,25 @@ $wgGoogleMapsMessages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $wgGoogleMapsMessages['km'] = array(
-	'gm-balloon-title' => 'ចំនងជើង៖',
-	'gm-balloon-link-article' => 'តភ្ជាប់មកទំព័រនេះ (ជាជំរើសរបស់អ្នក)៖',
+	'gm-balloon-title' => 'ចំណងជើង៖',
+	'gm-balloon-link-article' => 'តភ្ជាប់មកទំព័រនេះ (ជាជម្រើសរបស់អ្នក)៖',
 	'gm-remove' => 'ដកចេញ',
-	'gm-tab-title' => 'ចំនងជើងថេប',
+	'gm-tab-title' => 'ចំណងជើងថេប',
 	'gm-tab' => 'ថេប',
 	'gm-save-point' => 'រក្សាទុក&amp;បិទ',
 	'gm-load-map-from-article' => 'ផ្ទុកផែនទី១ពីទំព័រ៖',
-	'gm-no-maps' => 'គ្មានផែនទីណាមួយក្នុងទំព័រនេះសំរាប់ផ្ទុកមកទេ។',
+	'gm-no-maps' => 'គ្មានផែនទីណាមួយក្នុងទំព័រនេះសម្រាប់ផ្ទុកមកទេ។',
 	'gm-load-map' => 'ផ្ទុក​ផែនទី',
 	'gm-clip-result' => 'បន្ថែមទៅលើផែនទី',
 	'gm-no-results' => 'សូមអភ័យទោស! គ្មានលទ្ឋផល',
 	'gm-searching' => 'កំពុង​ស្វែងរក...',
 	'gm-map' => 'ផែនទី',
 	'gm-are-you-sure' => 'អ្នកប្រាកដហើយឬ ?',
-	'gm-clear-all-points' => 'លុបចំនុចទាំងអស់',
+	'gm-clear-all-points' => 'លុបចំណុចទាំងអស់',
 	'gm-width' => 'ទទឹង',
 	'gm-height' => 'កំពស់',
 	'gm-scale-control' => 'មាត្រដ្ឋាន',
@@ -1951,8 +1952,8 @@ $wgGoogleMapsMessages['km'] = array(
 	'gm-no-zoom-control' => 'ទទេ',
 	'gm-yes' => 'បាទ / ចាស',
 	'gm-no' => 'ទេ',
-	'gm-geocode-preface' => 'ចុចលើផែនទីដើម្បីបន្ថែមចំនុចមួយ ឬ ទៅកាន់ទីក្រុងមួយ ប្រទេសមួយឬអាសយដ្ឋានមួយ៖',
-	'gm-no-search-preface' => 'ចុចលើផែនទីដើម្បីបន្ថែមចំនុចមួយ។',
+	'gm-geocode-preface' => 'ចុចលើផែនទីដើម្បីបន្ថែមចំណុចមួយ ឬ ទៅកាន់ទីក្រុងមួយ ប្រទេសមួយឬអាសយដ្ឋានមួយ៖',
+	'gm-no-search-preface' => 'ចុចលើផែនទីដើម្បីបន្ថែមចំណុចមួយ។',
 	'gm-search' => 'ស្វែងរក',
 	'gm-clear-search' => 'សំអាតលទ្ធផលស្វែងរក',
 	'gm-meters' => 'ម៉ែត្រ',
@@ -1969,7 +1970,7 @@ $wgGoogleMapsMessages['km'] = array(
 	'gm-line-width' => 'ទទឹង',
 	'gm-make-map' => 'ធ្វើផែនទី',
 	'gm-hide-map' => 'បិទបាំងផែនទី',
-	'gm-back' => 'ត្រលប់ក្រោយវិញ',
+	'gm-back' => 'ត្រឡប់ក្រោយវិញ',
 	'gm-kml-include-link' => 'បន្ថែមទៅ​លើផែនទី',
 	'gm-kml-loading' => 'កំពុងផ្ទុក...',
 	'gm-kml-export' => 'នាំចេញ ផែនទីនេះ ទៅ KML',
@@ -2717,6 +2718,7 @@ $wgGoogleMapsMessages['os'] = array(
 	'gm-no-zoom-control' => 'Нæй',
 	'gm-yes' => 'О',
 	'gm-no' => 'Нæ',
+	'gm-search' => 'Агур',
 );
 
 /** Pampanga (Kapampangan)

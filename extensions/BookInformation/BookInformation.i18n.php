@@ -839,7 +839,7 @@ $messages['kk-latn'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'bookinfo-header' => 'ពត៌មានអំពីសៀវភៅ',
+	'bookinfo-header' => 'ព័ត៌មានអំពីសៀវភៅ',
 	'bookinfo-desc' => 'ពង្រីក [[Special:Booksources]] ជាមួយព័ត៌មាន​ពីសេវាវិប',
 	'bookinfo-result-title' => 'ចំណងជើង៖',
 	'bookinfo-result-author' => 'អ្នកនិពន្ធ៖',
@@ -847,7 +847,7 @@ $messages['km'] = array(
 	'bookinfo-result-year' => 'ឆ្នាំ៖',
 	'bookinfo-error-invalidisbn' => 'លេខ ISBN មិនត្រឹមត្រូវ​ត្រូវបានបញ្ចូល។',
 	'bookinfo-error-nosuchitem' => 'មុខរបស់ មិនមាន ឬ មិនអាចរកឃើញ ។',
-	'bookinfo-error-noresponse' => 'គ្មានចំលើយ ឬ សំនើបានអស់ពេល។',
+	'bookinfo-error-noresponse' => 'គ្មានចម្លើយ ឬ សំណើបានអស់ពេល។',
 	'bookinfo-purchase' => 'ជាវសៀវភៅនេះ​ពី $1',
 	'bookinfo-provider' => 'អ្នកផ្គត់ផ្គង់ទិន្នន័យ៖ $1',
 );

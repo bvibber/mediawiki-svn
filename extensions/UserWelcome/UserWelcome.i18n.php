@@ -453,9 +453,11 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Rubin
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'mp-welcome-upload' => 'Загрузить',
 	'mp-welcome-edit' => 'Править',
 	'mp-requests-title' => 'Запросы',
 	'mp-request-new-message' => 'новое сообщение',

@@ -94,9 +94,10 @@ $messages['it'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'newsextension-desc' => 'បង្ហាញបំលាស់ប្តូរបានសំដៅថ្មីៗលើទំព័រវិគីឬបំរែបំរួល RSS ឬ Atom ។',
+	'newsextension-desc' => 'បង្ហាញបំលាស់ប្តូរបានសំដៅថ្មីៗលើទំព័រវិគីឬបម្រែបម្រួល RSS ឬ Atom ។',
 );
 
 /** Ripoarisch (Ripoarisch)

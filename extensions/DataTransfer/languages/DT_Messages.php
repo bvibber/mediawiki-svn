@@ -147,8 +147,13 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'viewxml' => 'Pregledaj XML',
+	'dt_viewxml_categories' => 'Kategorije',
 	'dt_viewxml_namespaces' => 'Imenski prostori',
+	'dt_viewxml_simplifiedformat' => 'Pojednostavljeni format',
+	'dt_xml_namespace' => 'Imenski prostor',
 	'dt_xml_page' => 'Stranica',
+	'dt_xml_field' => 'Polje',
 	'dt_xml_name' => 'Naziv',
 	'dt_xml_title' => 'Naslov',
 );
@@ -490,13 +495,14 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'viewxml' => 'មើល XML',
-	'dt_viewxml_docu' => 'ជ្រើសយកក្នុងចំណោមចំនត់ថ្នាក់ក្រុមនិងលំហឈ្មោះដើម្បីមើលជាទំរង់ XML ។',
-	'dt_viewxml_categories' => 'ចំនាត់ថ្នាក់ក្រុម',
-	'dt_viewxml_namespaces' => 'វាលឈ្មោះ',
-	'dt_viewxml_simplifiedformat' => 'ទំរង់សាមញ្ញ',
+	'dt_viewxml_docu' => 'ជ្រើសយកក្នុងចំណោមចំណាត់ថ្នាក់ក្រុមនិងលំហឈ្មោះដើម្បីមើលជាទម្រង់ XML ។',
+	'dt_viewxml_categories' => 'ចំណាត់ថ្នាក់ក្រុម',
+	'dt_viewxml_namespaces' => 'លំហឈ្មោះ',
+	'dt_viewxml_simplifiedformat' => 'ទម្រង់សាមញ្ញ',
 	'dt_xml_namespace' => 'វាលឈ្មោះ',
 	'dt_xml_page' => 'ទំព័រ',
 	'dt_xml_name' => 'ឈ្មោះ',

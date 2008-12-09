@@ -126,6 +126,13 @@ $messages['lb'] = array(
 	'wikitextloggedinout-desc' => 'Zwou Parser_Klameren <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt> fir jeweils en aneren Text ze weisen je nodeem ob de Benotzer ageloggt ass oder net.',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikitextloggedinout-desc' => 'Twee parserhooks: <tt>&lt;loggedin&gt;</tt> en <tt>&lt;loggedout&gt;</tt> um aandere tekse weer te geven ofhankelijk van de anmeldstaotus van een gebruker',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

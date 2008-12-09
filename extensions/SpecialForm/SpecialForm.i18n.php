@@ -788,9 +788,11 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Innv
+ * @author Rubin
  */
 $messages['ru'] = array(
 	'formsave' => 'Сохранить',
+	'formarticleexists' => 'Страница существует',
 );
 
 /** Slovak (Slovenčina)

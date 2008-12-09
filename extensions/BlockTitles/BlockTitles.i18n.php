@@ -362,6 +362,15 @@ $messages['lb'] = array(
 	'block_title_error' => 'Pardon, eng Säit mat dësem Numm däerf net gespäichert ginn.',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'block_title_error_page_title' => 'Блокиран наслов',
+	'block_title_error-desc' => 'Основен начин на заштита на страници, не може да се креираат доколку имаат некој нессодветен наслов',
+	'block_title_error' => 'Извинете, не е допуштено страниците да имаат ваков наслов.',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

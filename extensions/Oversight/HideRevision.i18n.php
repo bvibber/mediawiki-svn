@@ -519,6 +519,7 @@ Odstraněné položky nebude moci prostřednictvím webové stránky vidět nikd
 	'hiderevision-reason' => 'Důvod (bude zaznamenán neveřejně):',
 	'hiderevision-submit' => 'Natrvalo skrýt tyto údaje',
 	'hiderevision-tab' => 'Skrýt revizi',
+	'hiderevision-link' => 'Skryté příspěvky uživatele',
 	'hiderevision-norevisions' => 'Nebyly uvedeny revize, které se mají skrýt.',
 	'hiderevision-noreason' => 'Musíte uvést důvod odstranění.',
 	'hiderevision-status' => 'Revize $1: $2',

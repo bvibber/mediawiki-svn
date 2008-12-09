@@ -673,8 +673,11 @@ Para uma lista de projectos válidos, ver [[MediaWiki:TodoTasksValidProjects]]."
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Rubin
  */
 $messages['ru'] = array(
+	'tasklistunknownproject' => 'Неизвестный проект',
+	'tasklistmytasks' => 'Мои задачи',
 	'tasklistchooseproj' => 'Выберите проект:',
 );
 

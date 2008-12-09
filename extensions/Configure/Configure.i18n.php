@@ -178,6 +178,7 @@ Please create it or change it to use this extension.',
 );
 
 /** Message documentation (Message documentation)
+ * @author Aotake
  * @author Darth Kule
  * @author Jon Harald Søby
  * @author Meno25
@@ -194,7 +195,6 @@ $messages['qqq'] = array(
 	'configure-section-email' => '{{Identical|E-mail}}',
 	'configure-section-namespaces' => '{{Identical|Namespaces}}',
 	'configure-section-category' => '{{Identical|Categories}}',
-	'configure-section-reduction' => "''Reduction'' in the context of making less functionality available compared to the default settings.",
 	'configure-section-specialpages' => '{{Identical|Special pages}}',
 	'configure-section-recentchanges' => '{{Identical|Recent changes}}',
 	'configure-section-search' => '{{Identical|Search}}',
@@ -209,6 +209,7 @@ $messages['qqq'] = array(
 	'right-viewconfig-all' => '{{doc-right}}',
 	'right-viewconfig-interwiki' => '{{doc-right}}',
 	'viewconfig' => 'Name of special page displayed in [[Special:SpecialPages]].',
+	'configure-throttle-action-rollback' => '{{Identical|Rollback}}',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -1971,7 +1972,7 @@ Creala o cambiala per poter usare questa estensione.',
  */
 $messages['ja'] = array(
 	'configure' => 'ウィキの設定',
-	'configure-desc' => '権限のある利用者に、ウィキのウェブベースインターフェースの[[Special:Configure|設定変更]]を許可する。',
+	'configure-desc' => '権限のある利用者に、ウェブベースインターフェースを使用したウィキの[[Special:Configure|設定変更]]を許可する',
 	'configure-desc-group' => 'グループ',
 	'configure-desc-key' => 'キー',
 	'configure-desc-ns' => '名前空間',
@@ -2075,27 +2076,28 @@ $messages['kaa'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'configure-desc-group' => 'ក្រុម',
 	'configure-desc-ns' => 'លំហឈ្មោះ',
-	'configure-desc-val' => 'តំលៃ',
+	'configure-desc-val' => 'តម្លៃ',
 	'configure-edit-core' => 'មេឌាវិគី',
 	'configure-edit-ext' => 'ផ្នែកបន្ថែម',
 	'configure-ext-doc' => 'មើលឯកសារនៅលើបណ្តាញ',
 	'configure-ext-use' => 'ការប្រើប្រាស់',
 	'configure-js-remove' => 'លុប',
-	'configure-section-general' => 'ការកំនត់ទូទៅនានា',
+	'configure-section-general' => 'ការកំណត់ទូទៅនានា',
 	'configure-section-db' => 'មូលដ្ឋានទិន្នន័យ',
-	'configure-section-db-notallowed' => 'អ្នកមិនត្រូវបានអនុញ្ញាតិអោយធ្វើការផ្លាស់ប្ដូរការកំនត់ផ្សេងៗរបស់មូលដ្ឋានទិន្នន័យទេ។',
+	'configure-section-db-notallowed' => 'អ្នកមិនត្រូវបានអនុញ្ញាតឱ្យធ្វើការផ្លាស់ប្ដូរការកំណត់ផ្សេងៗរបស់មូលដ្ឋានទិន្នន័យទេ។',
 	'configure-section-email' => 'អ៊ីមែល',
 	'configure-section-timezone' => 'ល្វែងម៉ោង',
 	'configure-section-css-js' => 'CSS និង JavaScript',
 	'configure-section-namespaces' => 'លំហឈ្មោះ',
 	'configure-section-stats' => 'ស្ថិតិវិបសាយ',
 	'configure-section-skin' => 'សំបក',
-	'configure-section-category' => 'ចំនាត់ថ្នាក់ក្រុម',
+	'configure-section-category' => 'ចំណាត់ថ្នាក់ក្រុម',
 	'configure-section-groups' => 'ក្រុម',
 	'configure-section-upload' => 'ផ្ទុកឯកសារឡើង',
 	'configure-section-images' => 'រូបភាពនានា',
@@ -2276,6 +2278,62 @@ $messages['mhr'] = array(
 	'configure-js-remove' => 'Шӧраш',
 	'configure-section-email' => 'Электрон почто',
 	'configure-section-specialpages' => 'Лӱмын ыштыме лаштык-влак',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'configure' => 'Нагодување на викито',
+	'configure-desc' => 'Авторизирани корисници можат да вршат [[Special:Configure|нагодување]] на викито преку веб интерфејс',
+	'configure-desc-group' => 'Група',
+	'configure-desc-key' => 'Клуч',
+	'configure-desc-ns' => 'Именски простор',
+	'configure-desc-val' => 'Вредност',
+	'configure-edit-core' => 'МедијаВики',
+	'configure-edit-ext' => 'Проширувања',
+	'configure-viewconfig-default-diff' => 'Промени на основните нагодувања',
+	'configure-ext-doc' => 'Види on-line документација',
+	'configure-ext-settings' => 'Нагодувања',
+	'configure-ext-use-extension' => 'Користи го ова проширување',
+	'configure-ext-use' => 'Користи',
+	'configure-form-reason' => 'Причина за промена:',
+	'configure-customised' => "''Ова нагодување било менувано''",
+	'configure-arrayinput-oneperline' => "''(еден во линија)''",
+	'configure-summary' => 'Оваа специјална страница овозможува нагодување на ова вики, види [http://www.mediawiki.org/wiki/Manual:Configuration_settings Конфигурациски нагодувања] за повеќе информации.',
+	'configure-btn-save' => 'Зачувај нагодувања',
+	'configure-db-error' => 'Наведената база на податоци за чување на конфигурацијата ($1) не постои,
+Прво креирајте ја а потоа извршете го configure.sql или корегирајте го нејзиното име.',
+	'configure-db-table-error' => 'Наведената база на податоци не ги содржи потребните табели. Извршете ја configure.sql за таа база на податоци.',
+	'configure-directory-not-writable' => 'Не е дозволено да се запишува во именикот во кој се чуваат нагодувањата, <tt>$1</tt>.
+Прво овозможете запишување во именикот, за да може PHP да го користи ова проширување.',
+	'configure-edit-old' => "'''Предупредување''': вие уредувате <strong>стара</strong> верзија на конфигурацијата (од $1).",
+	'configure-error' => 'Конфигурацијата не може да биде зачувана',
+	'configure-js-add' => 'Додади нов податок',
+	'configure-js-group-exists' => 'Грешка: групата веќе постои.',
+	'configure-js-prompt-group' => 'Внеси го името на новата група:',
+	'configure-js-remove' => 'Бриши',
+	'configure-js-remove-row' => 'Бриши го овој податок',
+	'configure-js-get-image-url' => 'Претвори име на податотека во URL',
+	'configure-js-image-error' => 'Се појави грешка при пристапот до URL. Проверете дали податотеката постои.',
+	'configure-js-biglist-shown' => 'Деталите на нагодувањето може да се сокријат',
+	'configure-js-biglist-hidden' => 'Деталите на нагодувањето се сокриени',
+	'configure-js-biglist-show' => '[прикажи детали]',
+	'configure-js-biglist-hide' => '[сокриј детали]',
+	'configure-js-summary-none' => 'Без нагодувања',
+	'configure-js-search-legend' => 'Барај нагодувања',
+	'configure-js-search-prompt' => 'Упит:',
+	'configure-no-diff' => 'Нема измени помеѓу одбраните верзии.',
+	'configure-no-directory' => 'Не постои именикот каде треба да се зачуваат нагодувањата, <tt>$1</tt>.
+Креирајте го или изменете го за да може да се користи ова проѓирување.',
+	'configure-no-old' => 'Нема стара ревизија на конфигурацијата.',
+	'configure-no-setup' => 'Потребно е експлицитно да го повикате <code>efConfigureSetup()</code> во вашата LocalSettings.php податотека за да може да се користи ова проширување.',
+	'configure-no-transwiki' => 'Немате дозвола за промена на нагодувањата на други викија.',
+	'configure-old' => 'Стари верзии',
+	'configure-old-versions' => 'Листа на стари верзии на конфигурацијата:',
+	'configure-old-not-available' => 'Старата верзија на нагодувањата која ја баравте, $1, не постои',
+	'configure-old-changes' => 'промени',
+	'configure-old-summary' => '$1 од $2 $4 $3',
 );
 
 /** Malayalam (മലയാളം)

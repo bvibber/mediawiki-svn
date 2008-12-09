@@ -180,9 +180,10 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'eval_submit' => 'វាយតំលៃ',
+	'eval_submit' => 'វាយតម្លៃ',
 	'eval_code' => 'កូដ',
 );
 

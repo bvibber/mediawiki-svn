@@ -129,6 +129,13 @@ $messages['lb'] = array(
 	'tooltip-desc' => 'Setzt den <tt><nowiki><tooltip></nowiki></tt> an den <tt><nowiki>{{#tooltip:}}</nowiki></tt> Tag derbäi',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'tooltip-desc' => 'Zet de tags <nowiki><tooltip></nowiki> en <nowiki>{{#tooltip:}}</nowiki> derbie',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Tvdm

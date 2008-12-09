@@ -132,6 +132,19 @@ Bitte definiere über die Seite [[MediaWiki:Number_of_watching_users_pageview]] 
 	'specialwhoiswatchingaddbtn' => 'Füge Benutzer hinzu',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'whoiswatching' => 'Chto wobglědujo wikijowy bok',
+	'whoiswatching-desc' => 'Dodawa lisćinu wužywarskich mjenjow, kótarež wobglěduju wikijowy bok',
+	'specialwhoiswatchingthepage' => 'Chto wobglědujo %s',
+	'specialwhoiswatchingusage' => 'Toś ten specialny bok njedajo se na se wužywaś.
+Pšosym wužyj bok [[MediaWiki:Number_of_watching_users_pageview]], aby zastupny dypk k toś tomu specialnemu bokoju definěrował.',
+	'specialwhoiswatchingaddusers' => 'Wužywarjow k wobglědowanjeju boka pśidaś',
+	'specialwhoiswatchingaddbtn' => 'Wubranych wužywarjow pśidaś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

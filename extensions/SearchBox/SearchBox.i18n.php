@@ -74,6 +74,16 @@ $messages['de'] = array(
 	'searchbox-namespaces' => 'Namensräume:',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'searchbox-desc' => 'Zapśěgnjenje pytańskich formularow dowóliś',
+	'searchbox-search' => 'Pytaś',
+	'searchbox-go' => 'Słaś',
+	'searchbox-namespaces' => 'Mjenjowe rumy:',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -162,6 +172,13 @@ $messages['oc'] = array(
 	'searchbox-namespaces' => 'Espacis de nom :',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'searchbox-search' => 'Агур',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -169,6 +186,14 @@ $messages['pt'] = array(
 	'searchbox-search' => 'Pesquisar',
 	'searchbox-go' => 'Ir',
 	'searchbox-namespaces' => 'Domínios:',
+);
+
+/** Russian (Русский)
+ * @author Rubin
+ */
+$messages['ru'] = array(
+	'searchbox-search' => 'Поиск',
+	'searchbox-go' => 'Перейти',
 );
 
 /** Slovak (Slovenčina)

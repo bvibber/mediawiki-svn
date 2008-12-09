@@ -493,11 +493,12 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'multipleupload' => 'ផ្ទុកឡើងឯកសារ',
-	'multipleupload-desc' => 'អនុញ្ញាត​អោយអ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង​ច្រើនឯកសារ]]',
+	'multipleupload-desc' => 'អនុញ្ញាត​ឱ្យអ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង​ច្រើនឯកសារ]]',
 	'multipleupload-ignoreallwarnings' => "មិនខ្វល់ '''គ្រប់ការព្រមាន''' ហើយ រក្សាទុក ឯកសារ ទាំងអស់ ។",
 	'multipleupload-saveallfiles' => 'រក្សាទុកគ្រប់ឯកសារ',
 	'multipleupload-page' => '{{ns:project}}:គោលការណ៍នៃការលុបឯកសារ',

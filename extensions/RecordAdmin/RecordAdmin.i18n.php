@@ -269,6 +269,15 @@ $messages['oc'] = array(
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 );
 
+/** Russian (Русский)
+ * @author Rubin
+ */
+$messages['ru'] = array(
+	'recordadmin-submit' => 'Отправить',
+	'recordadmin-buttonsearch' => 'Поиск',
+	'recordadmin-buttoncreate' => 'Создать',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

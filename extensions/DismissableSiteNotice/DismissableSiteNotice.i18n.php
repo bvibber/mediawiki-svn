@@ -434,10 +434,11 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'sitenotice_close' => 'លាក់',
-	'sitenotice-desc' => 'អនុញ្ញាតអោយអ្នកប្រើប្រាស់បិទសេចក្តីជូនដំណឹងរបស់វិបសាយ',
+	'sitenotice-desc' => 'អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់បិទសេចក្តីជូនដំណឹងរបស់វិបសាយ',
 );
 
 /** Korean (한국어)

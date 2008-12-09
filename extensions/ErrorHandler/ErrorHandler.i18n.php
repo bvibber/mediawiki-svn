@@ -289,10 +289,11 @@ $messages['ia'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'errorhandler-errors' => 'កំហុស៖',
-	'errorhandler-error-warning' => 'បំរាម',
+	'errorhandler-error-warning' => 'បម្រាម',
 	'errorhandler-trace-line' => '$1 (បន្ទាត់ទី$2): $3',
 );
 
@@ -475,11 +476,13 @@ $messages['ro'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv
+ * @author Rubin
  */
 $messages['ru'] = array(
 	'errorhandler-errors' => 'Ошибки:',
 	'errorhandler-error-fatal' => 'Серьёзная ошибка',
 	'errorhandler-error-warning' => 'Внимание',
+	'errorhandler-error-parse' => 'Ошибка парсера',
 	'errorhandler-error-user-error' => 'Ошибка участника',
 	'errorhandler-error-user-warning' => 'Предупреждение участника',
 	'errorhandler-msg-text' => '$1 : $2 в $3 (линия $4)',

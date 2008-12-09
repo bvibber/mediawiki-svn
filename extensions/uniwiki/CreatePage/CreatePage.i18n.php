@@ -269,6 +269,7 @@ $messages['sk'] = array(
 Želáte si upraviť existujúcu stránku?',
 	'createpage_tryagain' => 'Nie, chcem vytvoriť novú stránku s iným názovm.',
 	'createpage_editexisting' => 'Áno, chcem prispieť k existujúcej stránke.',
+	'createpage-badtitle' => '„$1“ nemožno použiť ako názov stránky',
 );
 
 /** Swahili (Kiswahili)

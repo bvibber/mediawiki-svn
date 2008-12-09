@@ -173,6 +173,13 @@ $messages['oc'] = array(
 	'right-emergencydesysop' => 'Possible de desysopar mutualament un autre utilizaire.',
 );
 
+/** Russian (Русский)
+ * @author Rubin
+ */
+$messages['ru'] = array(
+	'emergencydesysop-reason' => 'Причина удаления',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

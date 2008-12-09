@@ -49,6 +49,13 @@ $messages['lb'] = array(
 	'javascript-desc' => 'Setzt uniwiki.js op all Säit derbäi op däer JavaScript-Code de vu verschiddenen Uniwiki Erweiderunge benotzt gëtt',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'javascript-desc' => 'Voeg uniwiki.js mit JavaScript-code dee edeeld wonnen tussen de Uniwiki-uutbreidingen toe an elke pagina',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

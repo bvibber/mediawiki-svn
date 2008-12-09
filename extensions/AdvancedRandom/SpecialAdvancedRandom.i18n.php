@@ -219,9 +219,10 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'advancedrandom' => 'ភាពចៃដន្យ​កំរិតខ្ពស់',
+	'advancedrandom' => 'ភាពចៃដន្យ​កម្រិតខ្ពស់',
 );
 
 /** Korean (한국어)

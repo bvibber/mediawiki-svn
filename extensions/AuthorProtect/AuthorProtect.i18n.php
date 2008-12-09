@@ -536,18 +536,19 @@ $messages['ka'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'authorprotect' => 'ការពារទំព័រពីអ្នកដែលមិនមែនជាអ្នកនិពន្ឋ។',
-	'authorprotect-desc' => 'អនុញ្ញាតអោយអ្នកនិពន្ឋទំព័រមួយការពារវាពីអ្នកប្រើប្រាស់ដ៏ទៃ',
+	'authorprotect-desc' => 'អនុញ្ញាតឱ្យអ្នកនិពន្ឋទំព័រមួយការពារវាពីអ្នកប្រើប្រាស់ដ៏ទៃ',
 	'authorprotect-notauthor' => 'អ្នកមិនមែនជាអ្នកនិពន្ឋទំព័រនេះទេ',
-	'authorprotect-confirm' => 'ផ្លាស់ប្តូរកំរិតការពារ',
+	'authorprotect-confirm' => 'ផ្លាស់ប្តូរកម្រិតការពារ',
 	'authorprotect-edit' => 'មានតែអ្នកនិពន្ឋទេទើបអាចធ្វើការកែប្រែបាន',
 	'authorprotect-move' => 'មានតែអ្នកនិពន្ឋទេទើបអាចធ្វើការប្ដូរទីតាំងបាន',
-	'authorprotect-expiry' => 'កាលបរិច្ឆេទផុតកំនត់',
+	'authorprotect-expiry' => 'កាលបរិច្ឆេទផុតកំណត់',
 	'authorprotect-reason' => 'មូលហេតុ',
-	'authorprotect-intro' => 'សូមប្រើប្រាស់សំនុំបែបបទនេះដើម្បីចាក់សោទំព័រនេះ',
+	'authorprotect-intro' => 'សូមប្រើប្រាស់សំណុំបែបបទនេះដើម្បីចាក់សោទំព័រនេះ',
 	'authorprotect-success' => 'ការការពារដោយជោគជ័យ!',
 	'authorprotect-failure' => 'ការការពារបានបរាជ័យ',
 	'protect-level-author' => 'ការពារពីអ្នកដែលមិនមែនជាអ្នកនិពន្ឋ',

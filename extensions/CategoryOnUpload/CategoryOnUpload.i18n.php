@@ -219,9 +219,10 @@ $messages['ja'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'categoryonupload-label' => 'ចំនាត់ថ្នាក់ក្រុម:',
+	'categoryonupload-label' => 'ចំណាត់ថ្នាក់ក្រុម:',
 );
 
 /** Ripoarisch (Ripoarisch)

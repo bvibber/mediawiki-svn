@@ -218,10 +218,11 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'categoryintersection-doit' => 'រាយទំព័រក្នុងចំនាត់ថ្នាក់ក្រុមទាំងនេះ',
+	'categoryintersection-doit' => 'រាយទំព័រក្នុងចំណាត់ថ្នាក់ក្រុមទាំងនេះ',
 	'categoryintersection-results' => 'ការស្វែងរកផ្ដល់ $1 {{PLURAL:$1|លទ្ឋផល|លទ្ឋផល}}។',
 );
 

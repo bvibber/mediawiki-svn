@@ -183,6 +183,13 @@ $messages['nds'] = array(
 	'breadcrumbs-desc' => 'Wiest den Padd vun’n Bruker dör dat Wiki.',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'breadcrumbs-desc' => "Geef 't pad weer dat gebruker in de wiki deurlopen.",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

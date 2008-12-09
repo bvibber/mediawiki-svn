@@ -50,6 +50,13 @@ $messages['lb'] = array(
 	'csshooks-desc' => 'Setzt en CSS an den HTML-code vun de Säiten derbäi fir datt se besser gestylt sinn',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'csshooks-desc' => "Voeg CSS toe an de HTML-uutvoer van pagina's veur betere vormgeving",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

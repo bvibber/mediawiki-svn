@@ -630,14 +630,15 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'duplicator-options' => 'ជំរើសនានា',
+	'duplicator-options' => 'ជម្រើសនានា',
 	'duplicator-source' => 'ប្រភព៖',
 	'duplicator-dest' => 'គោលដៅ៖',
-	'duplicator-summary' => 'បានចំលងពី [[$1]]',
-	'duplicator-source-invalid' => 'សូមផ្តល់មកនូវចំនងជើងប្រភពត្រឹមត្រូវ។',
+	'duplicator-summary' => 'បានចម្លងពី [[$1]]',
+	'duplicator-source-invalid' => 'សូមផ្ដល់មកនូវចំណងជើងប្រភពត្រឹមត្រូវ។',
 );
 
 /** Ripoarisch (Ripoarisch)

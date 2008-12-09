@@ -445,12 +445,13 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'importfreeimages' => 'នាំចូល រូបភាព សេរី',
-	'importfreeimages-desc' => 'ផ្ដល់នូវរបៀបមួយក្នុងការ[[Special:ImportFreeImages|នាំចូលរូបភាពដែលមានអាជ្ញាប័ណ្ឌត្រឹមត្រូវ]] ពី [http://www.flickr.com flickr]',
-	'importfreeimages_description' => 'ទំព័រនេះផ្ដល់លទ្ឋភាពអោយអ្នកស្វែងរករូបភាពដែលមានអាជ្ញាប័ណ្ឌត្រឹមត្រូវពី flickr ហើយនាំចូលពូកវាមកក្នុងវិគីរបស់អ្នក។',
+	'importfreeimages-desc' => 'ផ្ដល់នូវរបៀបមួយក្នុងការ[[Special:ImportFreeImages|នាំចូលរូបភាពដែលមានអាជ្ញាប័ណ្ណត្រឹមត្រូវ]] ពី [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'ទំព័រនេះផ្ដល់លទ្ឋភាពឱ្យអ្នកស្វែងរករូបភាពដែលមានអាជ្ញាប័ណ្ណត្រឹមត្រូវពី flickr ហើយនាំចូលពូកវាមកក្នុងវិគីរបស់អ្នក។',
 	'importfreeimages_noapikey' => 'អ្នកមិនបាន ធ្វើទំរង់ សោ Flickr API របស់អ្នក។ ដើម្បីធ្វើវា, ត្រូវយក សោ​ API ពី [http://www.flickr.com/services/api/misc.api_keys.html here] រួច កំណត់​ wgFlickrAPIKey ក្នុង ImportFreeImages.php ។',
 	'importfreeimages_invalidurl' => 'URL "$1" មិនមែនជា រូបភាព ត្រឹមត្រូវ របស់ Flickr ។',
 	'importfreeimages_owner' => 'អ្នកនិពន្ធ',
@@ -458,7 +459,7 @@ $messages['km'] = array(
 	'importfreeimages_next' => 'បន្ទាប់ $1',
 	'importfreeimages_filefromflickr' => '$1 ដោយអ្នកប្រើប្រាស់ <b>[$2]</b> ពី flickr។ URL ដើម',
 	'importfreeimages_promptuserforfilename' => 'សូមបញ្ចូល ឈ្មោះឯកសារ គោលដៅ ៖',
-	'importfreeimages_returntoform' => "ឬក៏ចុច<a href='$1'>ទីនេះ</a>ដើម្បីត្រលប់ទៅកាន់លទ្ឋផលស្វែងរករបស់អ្នក",
+	'importfreeimages_returntoform' => "ឬក៏ចុច<a href='$1'>ទីនេះ</a>ដើម្បីត្រឡប់ទៅកាន់លទ្ឋផលស្វែងរករបស់អ្នក",
 );
 
 /** Ripoarisch (Ripoarisch)

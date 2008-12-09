@@ -304,12 +304,13 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'findspam' => 'ស្វែងរកស្ពែម',
 	'findspam-ip' => 'អាសយដ្ឋាន IP ៖',
 	'findspam-ok' => 'យល់ព្រម',
-	'findspam-notextfound' => 'ការរួមចំនែកមិនត្រូវបានរកមិនឃើញទេ',
+	'findspam-notextfound' => 'ការរួមចំណែកមិនត្រូវបានរកមិនឃើញទេ',
 );
 
 /** Kinaray-a (Kinaray-a)

@@ -142,6 +142,13 @@ $messages['mr'] = array(
 	'woopra-desc' => 'तुमच्या मीडियाविकि प्रणालीवर [http://www.woopra.com/ वूप्रा लाईव्ह ट्रॅकिंग प्रणाली] वापरण्याची अनुमती देते',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'woopra-desc' => "Maak 't meugelijk um de [http://www.woopra.com/ Woopra Live Tracking-pregrammetuur] te gebruken veur MediaWiki",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  * @author Tvdm

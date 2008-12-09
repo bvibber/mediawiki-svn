@@ -1359,6 +1359,7 @@ $messages['ru'] = array(
 	'webstore_path_invalid' => 'Неверное имя файла.',
 	'webstore_404' => 'Файл не найден.',
 	'webstore_metadata_not_found' => 'Файл не найден: $1',
+	'webstore_no_response' => 'Нет ответа от сервера.',
 );
 
 /** Slovak (Slovenčina)

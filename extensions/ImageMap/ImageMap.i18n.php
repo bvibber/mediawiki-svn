@@ -691,9 +691,10 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'imagemap_invalid_title' => 'កំហុស:ចំនងជើងមិនត្រឹមត្រូវក្នុងតំនភ្ជាប់នៅបន្ទាត់ទី$1',
+	'imagemap_invalid_title' => 'កំហុស:ចំណងជើងមិនត្រឹមត្រូវក្នុងតំណភ្ជាប់នៅបន្ទាត់ទី$1',
 	'imagemap_description' => 'អំពីរូបភាពនេះ',
 );
 
