@@ -96,6 +96,11 @@ abstract class ConfigurationPage extends SpecialPage {
 			$type = 'initial';
 		}
 
+		if ( $result = $wgRequest->getVal( 'result' ) ) {
+			$this->showResult( $result );
+			return;
+		}
+
 		switch( $type ) {
 		case 'submit':
 			if( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) )
@@ -287,6 +292,22 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Show the diff between the current version and the posted version
 	 */
 	protected abstract function showDiff();
+
+	/**
+	 * Show a 'success' page.
+	 */
+	protected function showResult( $result ) {
+		global $wgOut, $wgUser;
+		$ok = $result == 'success';
+		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
+		$class = $ok ? 'successbox' : 'errorbox';
+
+		$wgOut->addWikiText( "<div class=\"$class\"><strong>$msg</strong></div>" );
+
+		$sk = $wgUser->getSkin();
+		$linkText = wfMsgExt( 'configure-backlink', 'parseinline' );
+		$wgOut->addHTML( Xml::tags( 'p', array( 'style' => 'clear: both;' ), $sk->link( $this->getTitle(), $linkText ) ) );
+	}
 
 	/**
 	 * Build the content of the form

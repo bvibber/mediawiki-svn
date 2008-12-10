@@ -31,10 +31,9 @@ class SpecialExtensions extends ConfigurationPage {
 		$new = $this->removeDefaults( $new );
 		$new['__includes'] = $this->getRequiredFiles();
 		$ok = $wgConf->saveNewSettings( $new, $this->mWiki, $reason );
-		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
-		$class = $ok ? 'successbox' : 'errorbox';
 
-		$wgOut->addWikiText( "<div class=\"$class\"><strong>$msg</strong></div>" );
+		$url = $this->getTitle()->getLocalURL( 'result=success' );
+		$wgOut->redirect( $url );
 	}
 
 	/**

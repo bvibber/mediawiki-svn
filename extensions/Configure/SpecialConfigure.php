@@ -27,14 +27,9 @@ class SpecialConfigure extends ConfigurationPage {
 		if ( $wgConfigureUpdateCacheEpoch )
 			$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() );
 		$ok = $wgConf->saveNewSettings( $settings, $this->mWiki, $reason );
-		$msg = wfMsgNoTrans( $ok ? 'configure-saved' : 'configure-error' );
-		$class = $ok ? 'successbox' : 'errorbox';
 
-		$wgOut->addWikiText( "<div class=\"$class\"><strong>$msg</strong></div>" );
-		
-		$sk = $wgUser->getSkin();
-		$linkText = wfMsgExt( 'configure-backlink', 'parseinline' );
-		$wgOut->addHTML( Xml::tags( 'p', array( 'style' => 'clear: both;' ), $sk->link( $this->getTitle(), $linkText ) ) );
+		$url = $this->getTitle()->getLocalURL( 'result=success' );
+		$wgOut->redirect( $url );
 	}
 
 	protected function getSettingMask() {
