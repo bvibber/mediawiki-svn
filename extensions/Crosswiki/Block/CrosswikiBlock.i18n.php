@@ -846,7 +846,7 @@ Torna a:
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'crosswikiblock-desc' => '他ウィキでも利用者をブロックすることができる[[Special:Crosswikiblock|{{int:specialpage}}]]。',
+	'crosswikiblock-desc' => '他ウィキの利用者の[[Special:Crosswikiblock|{{int:specialpage}}]]を使用したブロックを可能にする',
 	'crosswikiblock' => '他ウィキの利用者をブロック',
 	'crosswikiblock-header' => 'このページでは他ウィキの利用者をブロックすることができます。
 あなたのその行動は、影響を与えるウィキ全ての方針で適切かどうか、注意深く考えてください。',

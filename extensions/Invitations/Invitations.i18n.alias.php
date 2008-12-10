@@ -58,6 +58,11 @@ $aliases['gl'] = array(
 	'Invitations' => array( 'Invitacións' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Invitations' => array( 'Yyladige' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

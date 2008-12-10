@@ -42,6 +42,11 @@ $aliases['fr'] = array(
 	'ChangeAuthor' => array( 'Changer auteur', 'ChangerAuteur' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'ChangeAuthor' => array( 'Autor ändere' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'ChangeAuthor' => array( 'שינוי_כותב' ),

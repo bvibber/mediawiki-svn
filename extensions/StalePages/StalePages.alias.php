@@ -29,6 +29,11 @@ $aliases['fa'] = array(
 	'StalePages' => array( 'صفحه‌های_کهنه' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'StalePages' => array( 'Abglofeni Syte' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'StalePages' => array( "Verouwerde_pagina's" ),

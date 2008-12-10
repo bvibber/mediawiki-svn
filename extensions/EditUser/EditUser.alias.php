@@ -48,6 +48,11 @@ $aliases['gl'] = array(
 	'EditUser' => array( 'Editar o usuario' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'EditUser' => array( 'Benutzeryystellige bearbeite' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

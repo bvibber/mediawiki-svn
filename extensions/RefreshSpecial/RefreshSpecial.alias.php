@@ -34,6 +34,11 @@ $aliases['fi'] = array(
 	'RefreshSpecial' => array( 'Toimintosivun päivitys' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'RefreshSpecial' => array( 'Spezial erneijere' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'RefreshSpecial' => array( 'Különleges frissítés' ),

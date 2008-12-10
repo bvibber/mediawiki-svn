@@ -578,6 +578,21 @@ $messages['mr'] = array(
 	'formsaveerrortext' => "'$1' पान जतन करण्यामध्ये अनोळखी त्रुटी आलेली आहे.",
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Izzudin
+ */
+$messages['ms'] = array(
+	'form-desc' => 'Sebuah [[Special:Form|antara muka borang]] untuk mulakan halaman baru',
+	'form' => 'Borang',
+	'formnoname' => 'Borang tanpa nama',
+	'formnonametext' => 'Anda perlu meletakkan nama borang, seperti "Special:Form/Namaborang".',
+	'formbadname' => 'Nama borang tidak sesuai',
+	'formbadnametext' => 'Tiada borang dengan nama itu.',
+	'formpattern' => 'borang $1',
+	'formtitlepattern' => 'Tambahkan $1 baru',
+	'formsave' => 'Simpan',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

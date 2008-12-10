@@ -77,6 +77,11 @@ $aliases['gl'] = array(
 	'CategoryIntersection' => array( 'Intersección de categorías' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'CategoryIntersection' => array( 'Kategorie-Schnittmängi' ),
+);
+
 /** Hindi (हिन्दी) */
 $aliases['hi'] = array(
 	'CategoryIntersection' => array( 'श्रेणी इन्टरसेक्शन' ),

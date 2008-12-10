@@ -1665,28 +1665,29 @@ Bul mälimet barşağa aşılwı Anıqtawşı ruqsattarı turaqtı öşirilwine 
  * @author Chhorran
  * @author Lovekhmer
  * @author T-Rithy
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'hiderevision' => 'បិទបាំង​កំនែ​ជា​អចិន្ត្រៃយ៍',
+	'hiderevision' => 'បិទបាំង​កំណែ​ជា​អចិន្ត្រៃយ៍',
 	'hiderevision-desc' => 'បិទបាំង បំលាស់ប្តូរ ជាបុគ្គល ពី​ គ្រប់អ្នកប្រើប្រាស់ ដោយហេតុផល ស្របច្បាប់, ល ។',
-	'hiderevision-prompt' => 'លេខ​កំនែប្រែ​ត្រូវ​ដកចេញ ៖',
+	'hiderevision-prompt' => 'លេខ​កំណែប្រែ​ត្រូវ​ដកចេញ ៖',
 	'hiderevision-continue' => 'បន្ត',
 	'hiderevision-reason' => 'ហេតុផល (នឹងត្រូវបាន ពិនិត្យចូល ជាឯកជន)៖',
 	'hiderevision-submit' => 'បិទបាំង​ទិន្នន័យ​នេះ​ជា​អចិន្ត្រៃយ៍',
 	'hiderevision-tab' => 'លាក់ការពិនិត្យឡើងវិញ',
-	'hiderevision-norevisions' => 'មិនមានកំនែប្រែណាខ្លះទេ បានបញ្ជាក់ថានឹងលុប ។',
+	'hiderevision-norevisions' => 'មិនមានកំណែប្រែណាខ្លះទេ បានបញ្ជាក់ថានឹងលុប ។',
 	'hiderevision-noreason' => 'អ្នកត្រូវពិពណ៌នា ហេតុផល ចំពោះការដកចេញ នេះ ។',
 	'hiderevision-status' => 'បំលាស់ប្តូរ $1​ ៖ $2',
 	'hiderevision-success' => 'បានដាក់ ជាបណ្ណសារ និង បានលុបចេញ​ ដោយជោគជ័យ ។',
 	'hiderevision-error-missing' => 'រកមិនឃើញ ក្នុង មូលដ្ឋានទិន្នន័យ',
-	'hiderevision-error-current' => 'មិនអាចលុបកំនែប្រែចុងក្រោយបំផុតចំពោះទំព័រនេះបានទេ។ ជាដំបូងចូរត្រឡប់ការផ្លាស់ប្តូរនេះឱ្យដូចដើមវិញ។',
+	'hiderevision-error-current' => 'មិនអាចលុបកំណែប្រែចុងក្រោយបំផុតចំពោះទំព័រនេះបានទេ។ ជាដំបូងចូរត្រឡប់ការផ្លាស់ប្តូរនេះឱ្យដូចដើមវិញ។',
 	'hiderevision-error-delete' => 'មិនអាចប្រមូលផ្តុំបានទេ។ តើវាត្រូវបានគេលុបពីមុនដែឬទេ?',
-	'hiderevision-archive-status' => 'បានលុបកំនែប្រែពី$1: $2',
+	'hiderevision-archive-status' => 'បានលុបកំណែប្រែពី$1: $2',
 	'oversight-log-hiderev' => 'បានដកចេញ កំណែប្រែ ពី $1',
 	'oversight' => 'Oversight',
 	'oversight-view' => 'សេចក្តីលំអិត',
-	'oversight-hidden' => 'កំនែប្រែដែលត្រូវបានលាក់',
+	'oversight-hidden' => 'កំណែប្រែដែលត្រូវបានលាក់',
 );
 
 /** Korean (한국어)

@@ -33,6 +33,12 @@ $aliases['de'] = array(
 	'CreateSignDocument' => array( 'Signiertes Dokument erstellen' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'SignDocument' => array( 'Dokumänt signiere' ),
+	'CreateSignDocument' => array( 'Signiert Dokumänt aalege' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'SignDocument' => array( 'Dokument ënnerschreiwen' ),

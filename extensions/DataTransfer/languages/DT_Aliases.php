@@ -32,6 +32,11 @@ $aliases['bs'] = array(
 	'ViewXML' => array( 'VidiXML' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'ViewXML' => array( 'Lueg XML' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ViewXML' => array( 'XML megtekintése' ),

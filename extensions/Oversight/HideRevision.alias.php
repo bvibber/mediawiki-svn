@@ -63,6 +63,12 @@ $aliases['fr'] = array(
 	'Oversight' => array( 'Superviser' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'HideRevision' => array( 'Version verstecke' ),
+	'Oversight' => array( 'Oversight-Logbuech' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

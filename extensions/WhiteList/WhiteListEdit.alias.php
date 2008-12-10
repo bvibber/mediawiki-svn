@@ -45,6 +45,12 @@ $aliases['fr'] = array(
 	'WhiteListEdit' => array( 'ModifierListeBlanche' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'WhiteList' => array( 'Wyssi Lischte' ),
+	'WhiteListEdit' => array( 'Wyssi Lischte bearbeite' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'WhiteList' => array( 'Běła lisćina' ),

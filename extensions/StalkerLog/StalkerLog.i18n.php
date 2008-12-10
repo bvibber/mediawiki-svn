@@ -143,10 +143,11 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fievarsty
  */
 $messages['ja'] = array(
-	'stalkerlog-desc' => '利用者のログインとログアウトの[[Special:Log/stalkerlog|ログ]]を追加',
+	'stalkerlog-desc' => '利用者のログインとログアウトの[[Special:Log/stalkerlog|ログ]]を追加する',
 	'stalkerlog-log-login' => 'ログインしました。',
 	'stalkerlog-log-logout' => 'ログアウトしました。',
 	'stalkerlog-log-type' => '利用者認証記録',
@@ -166,11 +167,12 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'stalkerlog-log-login' => 'បាន​ឡុកអ៊ីន​ហើយ។',
 	'stalkerlog-log-logout' => 'បាន​ចាកចេញ​ហើយ។',
-	'stalkerlog-log-text' => 'នេះ​ជា​កំនត់ហេតុ​នៃ​ការ​ឡុកអ៊ីន​និង​ការ​ចាកចេញ​របស់​អ្នកប្រើប្រាស់។',
+	'stalkerlog-log-text' => 'នេះ​ជា​កំណត់ហេតុ​នៃ​ការ​ឡុកអ៊ីន​និង​ការ​ចាកចេញ​របស់​អ្នកប្រើប្រាស់។',
 );
 
 /** Ripoarisch (Ripoarisch)

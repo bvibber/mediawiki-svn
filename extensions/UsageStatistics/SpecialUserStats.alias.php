@@ -52,6 +52,11 @@ $aliases['fr'] = array(
 	'UserStats' => array( 'StatistiquesUtilisateur' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'UserStats' => array( 'Benutzerstatischtik' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'UserStats' => array( 'Felhasználói statisztikák' ),

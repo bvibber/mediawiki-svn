@@ -43,6 +43,11 @@ $aliases['gl'] = array(
 	'Eval' => array( 'Avaliación' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Eval' => array( 'Uuswerte' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

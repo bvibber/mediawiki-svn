@@ -55,6 +55,11 @@ $aliases['fi'] = array(
 	'SiteMatrix' => array( 'Sivumatriisi' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'SiteMatrix' => array( 'Lischt vu dr Wikimedia-Wiki' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

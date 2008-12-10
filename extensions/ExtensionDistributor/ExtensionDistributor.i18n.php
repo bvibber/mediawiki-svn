@@ -191,6 +191,24 @@ $messages['bg'] = array(
 	'extdist-svn-error' => 'Възникна грешка в Subversion: <pre>$1</pre>',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'extensiondistributor' => 'Učitaj MediaWiki proširenje',
+	'extdist-desc' => 'Proširenja za raspodjelu snapshot arhiva za ekstenzije',
+	'extdist-not-configured' => 'Molimo da podesite $wgExtDistTarDir i $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Podešeni radni direktorijum za kopije ne postoji!',
+	'extdist-no-such-extension' => 'Nema takve ekstenzije "$1"',
+	'extdist-no-such-version' => 'Proširenje "$1" ne postoji u verziji "$2".',
+	'extdist-choose-extension' => 'Odaberite koje proširenje želite da učitate:',
+	'extdist-submit-extension' => 'Nastavi',
+	'extdist-current-version' => 'Trenutna verija (trunk)',
+	'extdist-submit-version' => 'Nastavi',
+	'extdist-tar-error' => "Program ''tar'' je vratio izlazni kod $1:",
+	'extdist-want-more' => 'Nađi slijedeće proširenje',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

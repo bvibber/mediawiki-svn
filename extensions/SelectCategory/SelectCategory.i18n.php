@@ -205,10 +205,11 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'selectcategory-title' => 'ជ្រើសយកចំណាត់ថ្នាក់ក្រុម',
-	'selectcategory-desc' => 'អនុញ្ញាតិ អ្នកប្រើប្រាស់ អោយជ្រើសយក ពីចំណាត់ក្រុមមានស្រាប់ ពេលកែប្រែ មួយទំព័រ',
+	'selectcategory-desc' => 'អនុញ្ញាត អ្នកប្រើប្រាស់ ឱ្យជ្រើសយក ពីចំណាត់ក្រុមមានស្រាប់ ពេលកែប្រែ មួយទំព័រ',
 );
 
 /** Ripoarisch (Ripoarisch)

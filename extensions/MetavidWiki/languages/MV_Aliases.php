@@ -55,6 +55,11 @@ $aliases['arz'] = array(
 	'MvVideoFeed' => array( 'تلقيم_فيديو_مف' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'MediaSearch' => array( 'Medie-Suech' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'MediaSearch' => array( 'Medie sichen' ),

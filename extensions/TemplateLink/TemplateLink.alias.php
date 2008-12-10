@@ -34,6 +34,11 @@ $aliases['fa'] = array(
 	'TemplateLink' => array( 'پیوند_الگو' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'TemplateLink' => array( 'Vorlagegleich' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'TemplateLink' => array( 'テンプレートリンク' ),

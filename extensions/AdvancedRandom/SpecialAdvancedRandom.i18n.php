@@ -206,7 +206,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'advancedrandom' => 'おまかせ表示（ページ指定）',
-	'advancedrandom-desc' => '指定ページにリンクしているノートページおよび主題ページの中からランダムに表示する。例えば[[Special:AdvancedRandom/Template:Featured/Talk]]とすれば秀逸な記事をおまかせ表示、[[Special:AdvancedRandom/Template:GFDL/Image]]とすればGFDLファイルをおまかせ表示する',
+	'advancedrandom-desc' => '指定ページにリンクしているノートページおよび主題ページの中からランダムに表示する。例えば [[Special:AdvancedRandom/Template:Featured/Talk]] とすれば秀逸な記事をおまかせ表示、 [[Special:AdvancedRandom/Template:GFDL/Image]] とすればGFDLファイルをおまかせ表示する',
 );
 
 /** Javanese (Basa Jawa)

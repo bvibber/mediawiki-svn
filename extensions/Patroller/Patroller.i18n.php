@@ -613,15 +613,16 @@ $messages['ka'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'patrol-revert' => 'ត្រលប់',
+	'patrol-revert' => 'ត្រឡប់',
 	'patrol-revert-reason' => 'មូលហេតុ៖',
 	'patrol-skip' => 'រំលង',
-	'patrol-reverting' => 'កំពុងត្រលប់: $1',
-	'patrol-reverted-ok' => 'កំនែប្រែត្រូវត្រលប់រួច។',
-	'patrol-reverted-failed' => 'កំនែប្រែមិនអាចត្រលប់បានទេ។',
+	'patrol-reverting' => 'កំពុងត្រឡប់: $1',
+	'patrol-reverted-ok' => 'កំណែប្រែត្រូវត្រឡប់រួច។',
+	'patrol-reverted-failed' => 'កំណែប្រែមិនអាចត្រឡប់បានទេ។',
 	'group-patroller' => 'អ្នកតាមដាន',
 	'group-patroller-member' => 'អ្នកតាមដាន',
 	'grouppage-patroller' => '{{ns:project}}:អ្នកតាមដាន',

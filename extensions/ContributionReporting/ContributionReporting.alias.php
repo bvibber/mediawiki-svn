@@ -22,6 +22,13 @@ $aliases['bs'] = array(
 	'ContributionTotal' => array( 'DoprinosiUkupno' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'ContributionHistory' => array( 'Byytreeg Gschicht' ),
+	'ContributionStatistics' => array( 'Byytreeg Statitschtik' ),
+	'ContributionTotal' => array( 'Byytreeg Insgsamt' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ContributionHistory' => array( 'Adományok története' ),

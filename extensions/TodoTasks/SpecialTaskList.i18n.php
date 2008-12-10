@@ -368,16 +368,17 @@ Sistém notifikasi panjenengan %s',
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'tasklist' => 'បញ្ជីពិភាក្សា',
-	'tasklistbyproject' => 'បញ្ជី​កិច្ចការ​តាម​គំរោង',
-	'tasklistunknownproject' => 'គំរោង​មិនស្គាល់',
+	'tasklistbyproject' => 'បញ្ជី​កិច្ចការ​តាម​គម្រោង',
+	'tasklistunknownproject' => 'គម្រោង​មិនស្គាល់',
 	'tasklistincorrectuser' => 'ឈ្មោះអ្នកប្រើប្រាស់ មិនត្រឹមត្រូវ',
 	'tasklistemail' => 'ជូនចំពោះ %s',
 	'tasklistmytasks' => 'កិច្ចការ​របស់ខ្ញុំ',
-	'tasklistchooseproj' => 'ជ្រើសយក​គំរោង ៖',
+	'tasklistchooseproj' => 'ជ្រើសយក​គម្រោង ៖',
 	'tasklistprojdisp' => 'បង្ហាញ',
 );
 

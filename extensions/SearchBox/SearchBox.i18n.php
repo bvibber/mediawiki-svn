@@ -142,6 +142,16 @@ $messages['lb'] = array(
 	'searchbox-namespaces' => 'Nummraim:',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Izzudin
+ */
+$messages['ms'] = array(
+	'searchbox-desc' => 'Benarkan pemasukan borang carian',
+	'searchbox-search' => 'Cari',
+	'searchbox-go' => 'Pergi',
+	'searchbox-namespaces' => 'Ruang nama:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

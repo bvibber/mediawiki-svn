@@ -432,6 +432,13 @@ $messages['br'] = array(
 	'ogg-desc-link' => 'Diwar-benn ar restr-mañ',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'ogg-download' => 'Učitaj datoteku',
+);
+
 /** Catalan (Català)
  * @author Aleator
  * @author Paucabot
@@ -1381,20 +1388,20 @@ $messages['kk-latn'] = array(
  */
 $messages['km'] = array(
 	'ogg-desc' => 'គាំទ្រចំពោះ Ogg Theora និង Vorbis files, ជាមួយ ឧបករណ៍អាន JavaScript',
-	'ogg-short-audio' => 'ឯកសារ សំលេង Ogg $1, $2',
+	'ogg-short-audio' => 'ឯកសារ សំឡេង Ogg $1, $2',
 	'ogg-short-video' => 'ឯកសារវីដេអូ Ogg $1, $2',
 	'ogg-short-general' => 'ឯកសារមេឌាOgg $1, $2',
-	'ogg-long-audio' => '(ឯកសារសំលេងប្រភេទOgg $1, រយៈពេល$2 និងទំហំ$3)',
+	'ogg-long-audio' => '(ឯកសារសំឡេងប្រភេទOgg $1, រយៈពេល$2 និងទំហំ$3)',
 	'ogg-long-video' => '(ឯកសារវីដេអូប្រភេទOgg $1, រយៈពេល$2, $4×$5px, $3)',
-	'ogg-long-multiplexed' => '(ឯកសារអូឌីយ៉ូ/វីដេអូចំរុះប្រភេទOgg , $1, រយៈពេល$2, $4×$5px, ប្រហែល$3)',
+	'ogg-long-multiplexed' => '(ឯកសារអូឌីយ៉ូ/វីដេអូចម្រុះប្រភេទOgg , $1, រយៈពេល$2, $4×$5px, ប្រហែល$3)',
 	'ogg-long-general' => '(ឯកសារមេឌាប្រភេទOgg, រយៈពេល$2, $3)',
 	'ogg-long-error' => '(ឯកសារ ogg មិនមាន សុពលភាព ៖ $1)',
 	'ogg-play' => 'លេង',
 	'ogg-pause' => 'ផ្អាក',
 	'ogg-stop' => 'ឈប់',
 	'ogg-play-video' => 'លេងវីដេអូ',
-	'ogg-play-sound' => 'បន្លឺសំលេង',
-	'ogg-no-player' => 'សូមអភ័យទោស! ប្រព័ន្ធដំនើរការរបស់អ្នក ហាក់បីដូចជាមិនមានកម្មវិធី ណាមួយសំរាប់លេងទេ។ សូម <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ទាញយកកម្មវិធី សំរាប់លេងនៅទីនេះ</a> ។',
+	'ogg-play-sound' => 'បន្លឺសំឡេង',
+	'ogg-no-player' => 'សូមអភ័យទោស! ប្រព័ន្ធដំណើរការរបស់អ្នក ហាក់បីដូចជាមិនមានកម្មវិធី ណាមួយសម្រាប់លេងទេ។ សូម <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ទាញយកកម្មវិធី សម្រាប់លេងនៅទីនេះ</a> ។',
 	'ogg-no-xiphqt' => 'មិនឃើញមាន អង្គផ្សំ XiphQT សម្រាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង ដំឡើង XiphQT</a> ឬ ជ្រើសរើស ឧបករណ៍អាន ផ្សេង ។',
 	'ogg-player-videoElement' => 'Native browser support',
 	'ogg-player-oggPlugin' => 'កម្មវិធីជំនួយ Ogg',

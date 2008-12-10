@@ -50,6 +50,11 @@ $aliases['fi'] = array(
 	'CrossNamespaceLinks' => array( 'Nimiavaruuksien väliset linkit' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'CrossNamespaceLinks' => array( 'Syte mit Gleicher in andri Namensryym' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

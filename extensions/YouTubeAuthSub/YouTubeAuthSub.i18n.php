@@ -786,18 +786,19 @@ Tulung sabar dhisik.',
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'youtubeauthsub' => 'ផ្ទុកឡើងវីដេអូយូធ្យូប(YouTube)',
-	'youtubeauthsub-desc' => 'អនុញ្ញាត​អោយ​អ្នកប្រើប្រាស់នានា ​[[Special:YouTubeAuthSub|ផ្ទុកឡើង​វីដេអូ]]ដោយ​ផ្ទាល់ពី​យូធ្យូប(YouTube)',
-	'youtubeauthsub_info' => 'មុននឹង​ផ្ទុក​ឡើង​នូវ​វីដេអូ​យូធ្យូប(YouTube) បញ្ចូលទៅ​ក្នុងទំព័រមួយ សូមបំពេញ​ពត៌មាន​ទាំងឡាយដូចតទៅ៖',
-	'youtubeauthsub_title' => 'ចំនងជើង',
+	'youtubeauthsub-desc' => 'អនុញ្ញាត​ឱ្យ​អ្នកប្រើប្រាស់នានា ​[[Special:YouTubeAuthSub|ផ្ទុកឡើង​វីដេអូ]]ដោយ​ផ្ទាល់ពី​យូធ្យូប(YouTube)',
+	'youtubeauthsub_info' => 'មុននឹង​ផ្ទុក​ឡើង​នូវ​វីដេអូ​យូធ្យូប(YouTube) បញ្ចូលទៅ​ក្នុងទំព័រមួយ សូមបំពេញ​ព័ត៌មាន​ទាំងឡាយដូចតទៅ៖',
+	'youtubeauthsub_title' => 'ចំណងជើង',
 	'youtubeauthsub_description' => 'ពិពណ៌នា',
 	'youtubeauthsub_password' => 'លេខ​សំងាត់យូធ្យូប(YouTube)',
 	'youtubeauthsub_username' => 'ឈ្មោះអ្នកប្រើប្រាស់​យូធ្យូប(YouTube)',
 	'youtubeauthsub_keywords' => 'ពាក្យគន្លឹះ​នានា',
-	'youtubeauthsub_category' => 'ចំនាត់ថ្នាក់ក្រុម',
+	'youtubeauthsub_category' => 'ចំណាត់ថ្នាក់ក្រុម',
 	'youtubeauthsub_submit' => 'ស្នើឡើង',
 	'youtubeauthsub_clickhere' => 'សូម​ចុចត្រង់នេះ​ ដើម្បី​ឡុកអ៊ីកចូលក្នុងយូធ្យូប(YouTube)',
 	'youtubeauthsub_success' => "សូមអបអរសាទរ!
@@ -822,8 +823,8 @@ $messages['km'] = array(
 សូម​មានការអត់ធ្មត់។',
 	'youtubeauthsub_viewpage' => 'ម្យ៉ាងវិញទៀត អ្នកក៏អាចមើលវីដេអូរបស់អ្នក[[$1|ទីនេះ]]។',
 	'youtubeauthsub_jserror_nokeywords' => 'សូមបញ្ជូលពាក្យគន្លឹះមួយឬច្រើន',
-	'youtubeauthsub_jserror_notitle' => 'សូមដាក់ចំនងជើងអោយវីដេអូ។',
-	'youtubeauthsub_jserror_nodesc' => 'សូមសរសេរការពិពណ៌នាអោយវីដេអូ។',
+	'youtubeauthsub_jserror_notitle' => 'សូមដាក់ចំណងជើងឱ្យវីដេអូ។',
+	'youtubeauthsub_jserror_nodesc' => 'សូមសរសេរការពិពណ៌នាឱ្យវីដេអូ។',
 );
 
 /** Kinaray-a (Kinaray-a)

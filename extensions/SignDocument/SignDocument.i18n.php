@@ -143,10 +143,11 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'signaturelogpage' => 'កំនត់ហេតុនៃការចុះហត្ថលេខា',
+	'signaturelogpage' => 'កំណត់ហេតុនៃការចុះហត្ថលេខា',
 	'signaturelogentry' => 'បានចុះហត្ថលេខាលើឯកសារ $1',
 );
 

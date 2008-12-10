@@ -264,9 +264,32 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'contributiontotal' => 'Ukupni doprinos',
+	'contributionhistory' => 'Historija doprinosa',
+	'contrib-hist-name' => 'Ime',
 	'contrib-hist-date' => 'Vrijeme i datum',
+	'contrib-hist-amount' => 'Iznos',
+	'contrib-hist-next' => 'Ranije donacije',
+	'contrib-hist-previous' => 'Novije donacije',
+	'contrib-hist-anonymous' => 'Anonimni',
+	'contributionstatistics' => 'Statistike doprinosa',
+	'contribstats-day' => 'dan',
+	'contribstats-month' => 'mjesec',
+	'contribstats-currency' => 'valuta',
+	'contribstats-amount' => 'Iznos (USD)',
+	'contribstats-contributions' => 'Doprinosi',
+	'contribstats-total' => 'Ukupno (USD)',
+	'contribstats-avg' => 'Prosjek (USD)',
+	'contribstats-max' => 'Najviše (USD)',
 	'contribstats-percentage-ytd' => 'Procenat (YTD)',
 	'contribstats-total-ytd' => 'Ukupno (YTD)',
+	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-day' => 'Dan $1 od $2',
+	'fundraiserstats-contributions' => 'Doprinosi',
+	'fundraiserstats-total' => 'Ukupno (USD)',
+	'fundraiserstats-avg' => 'Prosjek (USD)',
+	'fundraiserstats-tab-totals' => 'Ukupno (USD)',
+	'fundraiserstats-tab-averages' => 'Prosjek (USD)',
 );
 
 /** Czech (Česky)

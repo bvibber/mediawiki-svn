@@ -236,9 +236,10 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'poem-desc' => 'ដាក់ប្លាក <tt>&lt;poem&gt;</tt> សំរាប់ទ្រង់ទ្រាយកំនាព្យ',
+	'poem-desc' => 'ដាក់ប្លាក <tt>&lt;poem&gt;</tt> សម្រាប់ទ្រង់ទ្រាយកំណាព្យ',
 );
 
 /** Korean (한국어)

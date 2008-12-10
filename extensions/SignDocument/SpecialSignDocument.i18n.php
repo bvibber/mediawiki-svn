@@ -1240,20 +1240,21 @@ $messages['ka'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'sign-nodocselected' => 'សូម​ជ្រើសរើស​ឯកសារ​ដែលអ្នក​ចង់​ចុះហត្ថលេខា។',
 	'sign-selectdoc' => 'ឯកសារ៖',
 	'sign-realname' => 'ឈ្មោះ៖',
-	'sign-address' => 'អាស័យដ្ឋាន ផ្លូវ ៖',
+	'sign-address' => 'អាសយដ្ឋាន ផ្លូវ​៖',
 	'sign-city' => 'ក្រុង៖',
 	'sign-state' => 'រដ្ឋ៖',
 	'sign-country' => 'ប្រទេស៖',
 	'sign-phone' => 'លេខទូរស័ព្ទ៖',
 	'sign-bday' => 'អាយុ៖',
 	'sign-email' => 'អាសយដ្ឋានអ៊ីមែល៖',
-	'sign-list-hideaddress' => 'មិនរាយ អាស័យដ្ឋាន',
+	'sign-list-hideaddress' => 'មិនរាយ អាសយដ្ឋាន',
 	'sign-list-hideemail' => 'សូមកុំដាក់ក្នុងបញ្ជីអ៊ីមែល',
 	'sign-viewfield-realname' => 'ឈ្មោះ',
 	'sign-viewfield-address' => 'អាសយដ្ឋាន',
@@ -1264,7 +1265,7 @@ $messages['km'] = array(
 	'sign-viewfield-phone' => 'ទូរស័ព្ទ',
 	'sign-viewfield-email' => 'អ៊ីមែល',
 	'sign-viewfield-age' => 'អាយុ',
-	'sign-viewfield-options' => 'ជំរើសនានា',
+	'sign-viewfield-options' => 'ជម្រើសនានា',
 	'sign-signatures' => 'ហត្ថលេខា',
 	'sign-closed' => 'ត្រូវបានបិទ',
 	'sign-emailto' => '<a href="mailto:$1">$1</a>',

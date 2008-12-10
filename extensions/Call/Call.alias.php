@@ -47,6 +47,11 @@ $aliases['fr'] = array(
 	'Call' => array( 'Appeler', 'Appels', 'Appel' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Call' => array( 'Lyt aa' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'Call' => array( 'Hívás' ),

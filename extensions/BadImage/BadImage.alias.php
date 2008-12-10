@@ -47,6 +47,11 @@ $aliases['fi'] = array(
 	'Badimages' => array( 'Arveluttavat kuvat' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Badimages' => array( 'Bilder', 'wu nit gwinscht sin' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'Badimages' => array( 'תמונות_אסורות' ),

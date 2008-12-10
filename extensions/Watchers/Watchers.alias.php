@@ -43,6 +43,11 @@ $aliases['fa'] = array(
 	'Watchers' => array( 'پی‌گیری‌کنندگان' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Watchers' => array( 'Beobachter' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'Watchers' => array( 'עוקבים' ),

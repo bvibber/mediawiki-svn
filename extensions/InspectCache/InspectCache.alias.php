@@ -39,6 +39,11 @@ $aliases['fr'] = array(
 	'InspectCache' => array( 'InspecterCache' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'InspectCache' => array( 'Cache inschpiziere' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'InspectCache' => array( 'Gyorsítótár vizsgálat' ),

@@ -64,6 +64,11 @@ $aliases['gl'] = array(
 	'Vote' => array( 'Votar' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Vote' => array( 'Abstimme' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'Vote' => array( 'Szavazás' ),

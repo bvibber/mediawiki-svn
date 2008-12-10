@@ -37,6 +37,11 @@ $aliases['bs'] = array(
 	'ChemicalSources' => array( 'HemijskiIzvori' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'ChemicalSources' => array( 'Chemischi Quälle' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ChemicalSources' => array( 'Vegyszer források' ),

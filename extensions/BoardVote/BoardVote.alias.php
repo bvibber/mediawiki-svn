@@ -55,6 +55,11 @@ $aliases['fa'] = array(
 	'BoardVote' => array( 'رای_به_هیئت_امنا' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'BoardVote' => array( 'Kuratoriumswahl' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

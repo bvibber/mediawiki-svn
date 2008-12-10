@@ -106,10 +106,11 @@ Crea versiones pro uso in paginas, specialmente utile pro Wikinews.',
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'catfeed-desc' => '最近の更新をフィードします。ページ内バージョンで作成されているため、特にウィキニュースでは便利です。',
+	'catfeed-desc' => '最近の更新フィードから一部の情報を抽出し、ページ内バージョンを作成する。ウィキニュースで特に有用',
 );
 
 /** Ripoarisch (Ripoarisch)

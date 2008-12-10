@@ -29,6 +29,11 @@ $aliases['bs'] = array(
 	'PovWatch' => array( 'PovNazdor' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'PovWatch' => array( 'Lueg POV' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'PovWatch' => array( 'Predbilježeno_praćenje' ),

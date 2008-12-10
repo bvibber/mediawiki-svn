@@ -40,6 +40,11 @@ $aliases['gl'] = array(
 	'LogEntry' => array( 'Entrada no rexistro' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'LogEntry' => array( 'Logbuechyytrag' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'LogEntry' => array( 'Naplóbejegyzés' ),

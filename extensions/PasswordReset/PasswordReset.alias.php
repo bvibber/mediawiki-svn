@@ -42,6 +42,12 @@ $aliases['de'] = array(
 	'Disabledusers' => array( 'Deaktivierte Benutzer' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'PasswordReset' => array( 'Passwort zrucksetze' ),
+	'Disabledusers' => array( 'Deaktivierti Benutzer' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'PasswordReset' => array( 'איפוס_סיסמה' ),

@@ -32,6 +32,11 @@ $aliases['de'] = array(
 	'Patroller' => array( 'Prüfer' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Patroller' => array( 'Fäldhieter' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'Patroller' => array( 'Dohladowar' ),

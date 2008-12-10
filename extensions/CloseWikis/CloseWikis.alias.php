@@ -42,6 +42,11 @@ $aliases['gl'] = array(
 	'CloseWiki' => array( 'Pechar o wiki' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'CloseWiki' => array( 'Wiki zuemache' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'CloseWiki' => array( 'Zatvori_wiki' ),

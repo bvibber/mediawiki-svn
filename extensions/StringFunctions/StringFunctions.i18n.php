@@ -58,6 +58,13 @@ $messages['fr'] = array(
 	'stringfunctions-desc' => 'Améliore le parseur avec les fonctions sur les chaînes de caractères',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'stringfunctions-desc' => 'Leasaigh an parsálaí le feidhmeanna teaghrán',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

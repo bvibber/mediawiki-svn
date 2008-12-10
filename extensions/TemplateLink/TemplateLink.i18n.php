@@ -183,10 +183,11 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'templatelink' => 'តំនភ្ជាប់ទំព័រគំរូ',
+	'templatelink' => 'តំណភ្ជាប់ទំព័រគំរូ',
 	'templatelink_desc' => 'ផ្នែនបន្ថែមនេះអាចបង្ហាញទំព័រគំរូមួយជាទំព័រថ្មី',
 );
 

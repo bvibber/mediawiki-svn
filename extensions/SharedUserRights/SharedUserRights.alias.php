@@ -32,6 +32,11 @@ $aliases['de'] = array(
 	'SharedUserRights' => array( 'Geteilte Benutzerrechte' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'SharedUserRights' => array( 'Teilti Benutzerrächt' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'SharedUserRights' => array( 'Megosztott felhasználói jogok' ),

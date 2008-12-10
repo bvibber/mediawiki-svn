@@ -102,6 +102,13 @@ $aliases['gl'] = array(
 	'ViewConfig' => array( 'Ver a configuración' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Configure' => array( 'Konfiguriere' ),
+	'Extensions' => array( 'Erwyterige' ),
+	'ViewConfig' => array( 'Konfiguration bschaue' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

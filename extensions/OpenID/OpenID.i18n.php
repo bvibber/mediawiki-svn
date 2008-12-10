@@ -1254,15 +1254,16 @@ panjenengan bisa milih salah siji saka opsi ing ngisor iki.',
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author T-Rithy
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'openidconvert' => 'កម្មវិធីបំលែងOpenID',
+	'openidconvert' => 'កម្មវិធីបម្លែងOpenID',
 	'openiderror' => 'កំហុស​ក្នុងការផ្ទៀងផ្ទាត់',
 	'openidcancel' => 'ការផ្ទៀងផ្ទាត់​ត្រូវបានលុបចោល',
 	'openidfailure' => 'ការផ្ទៀងផ្ទាត់បរាជ័យ',
 	'openidsuccess' => 'ផ្ទៀងផ្ទាត់ដោយជោគជ័យ',
-	'openidoptional' => 'ជាជំរើស',
+	'openidoptional' => 'ជាជម្រើស',
 	'openidrequired' => 'ត្រូវការជាចាំបាច់',
 	'openidnickname' => 'ឈ្មោះហៅក្រៅ',
 	'openidfullname' => 'ឈ្មោះពេញ',
@@ -1271,17 +1272,17 @@ $messages['km'] = array(
 	'openidnotavailable' => 'ឈ្មោះហៅក្រៅ​ដែលអ្នកពេញចិត្ត ($1) ត្រូវបានប្រើដោយ​អ្នកប្រើប្រាស់​ម្នាក់​ផ្សេងទៀតហើយ។',
 	'openidchooseinstructions' => 'អ្នកប្រើប្រាស់ទាំងត្រូវការឈ្មោះហៅក្រៅ
 
-អ្នកអាចជ្រើសរើសពីក្នុងជំរើសខាងក្រោម។',
+អ្នកអាចជ្រើសរើសពីក្នុងជម្រើសខាងក្រោម។',
 	'openidchoosefull' => 'ឈ្មោះពេញ​របស់អ្នក ($1)',
-	'openidchoosemanual' => 'ឈ្មោះនៃជំរើសរបស់អ្នក:',
+	'openidchoosemanual' => 'ឈ្មោះនៃជម្រើសរបស់អ្នក:',
 	'openidchooseexisting' => 'គណនីមាននៅក្នុងវិគីនេះ:',
 	'openidchoosepassword' => 'ពាក្យសំងាត់៖',
-	'openidconvertsuccess' => 'បានបំលែងទៅ OpenIDដោយជោគជ័យ',
+	'openidconvertsuccess' => 'បានបម្លែងទៅ OpenID ដោយជោគជ័យ',
 	'openidconvertyourstext' => 'វាជាOpenIDរបស់អ្នករួចហើយ។',
 	'openidconvertothertext' => 'វាជាOpenIDរបស់អ្នកដទៃ។',
 	'openidalreadyloggedin' => "'''អ្នកបានឡុកអ៊ីនរួចហើយ $1!'''
-ប្រសិនបើអ្នកចង់់ប្រើ OpenID ដម្បីឡុកអ៊ីននាពេលអនាគត់ អ្នកអាច[[Special:OpenIDConvert|បំលែងគណនីរបស់អ្នកដើម្បីប្រើ OpenID]]។",
-	'tog-hideopenid' => 'លាក់<a href="http://openid.net/">OpenID</a>របស់អ្នកនៅលើទំព័រអ្នកប្រើប្រាស់រប់អ្នក ប្រសិនបើអ្នកឡុកអ៊ីនដោយប្រើOpenID។',
+ប្រសិនបើអ្នកចង់់ប្រើ OpenID ដម្បីឡុកអ៊ីននាពេលអនាគត អ្នកអាច[[Special:OpenIDConvert|បម្លែងគណនីរបស់អ្នកដើម្បីប្រើ OpenID]]។",
+	'tog-hideopenid' => 'លាក់<a href="http://openid.net/">OpenID</a>របស់អ្នកនៅលើទំព័រអ្នកប្រើប្រាស់របស់អ្នក ប្រសិនបើអ្នកឡុកអ៊ីនដោយប្រើOpenID។',
 	'openidnousername' => 'មិនមានឈ្មោះអ្នកប្រើប្រាស់បានបញ្ជាក់ទេ។',
 	'openidbadusername' => 'ឈ្មោះមិនត្រឹមត្រូវត្រូវបានបញ្ជាក់',
 );

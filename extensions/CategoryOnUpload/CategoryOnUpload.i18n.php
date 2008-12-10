@@ -210,10 +210,11 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'categoryonupload-desc' => 'ファイルのアップロード時にカテゴリを選択する入力欄',
+	'categoryonupload-desc' => 'ファイルのアップロード時に利用者にカテゴリ選択を促す',
 	'categoryonupload-label' => 'カテゴリ:',
 );
 

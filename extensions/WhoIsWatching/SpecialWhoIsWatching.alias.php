@@ -35,6 +35,11 @@ $aliases['fa'] = array(
 	'WhoIsWatching' => array( 'چه_کسی_پی‌گیری_می‌کند' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'WhoIsWatching' => array( 'Wär beobachtet?' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'WhoIsWatching' => array( 'מי_עוקב' ),

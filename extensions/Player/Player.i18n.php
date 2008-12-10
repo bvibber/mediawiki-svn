@@ -485,13 +485,14 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'player' => 'ឧបករណ៍លេង',
 	'player-file' => 'ឈ្មោះឯកសារ',
 	'player-play' => 'លេង',
 	'player-not-found' => 'ឯកសារមិនត្រូវបានរកឃើញទេ',
-	'player-invalid-title' => 'ចំនងជើងមិនត្រឹមត្រូវ',
+	'player-invalid-title' => 'ចំណងជើងមិនត្រឹមត្រូវ',
 	'player-goto-page' => 'ទំព័រ',
 	'player-goto-file' => 'ឯកសារ',
 );

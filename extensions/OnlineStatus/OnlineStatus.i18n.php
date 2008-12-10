@@ -341,9 +341,10 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'onlinestatus-toggle-online' => 'អនឡាញ',
+	'onlinestatus-toggle-online' => 'លើបណ្ដាញ',
 );
 
 /** Ripoarisch (Ripoarisch)

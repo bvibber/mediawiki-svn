@@ -37,6 +37,11 @@ $aliases['de'] = array(
 	'FindSpam' => array( 'Spam finden' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'FindSpam' => array( 'Spam finde' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'FindSpam' => array( 'Spam keresése' ),

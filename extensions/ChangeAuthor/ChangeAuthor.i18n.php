@@ -837,7 +837,7 @@ Se l'errore dovesse persistere, il database è probabilmente rotto.",
  */
 $messages['ja'] = array(
 	'changeauthor' => '特定版投稿者の変更',
-	'changeauthor-desc' => '特定版の投稿者を変更できるようになります',
+	'changeauthor-desc' => '版の投稿者の変更を可能にする',
 	'changeauthor-title' => '特定版の投稿者を変更',
 	'changeauthor-search-box' => '特定版の検索',
 	'changeauthor-pagename-or-revid' => 'ページ名または特定版ID:',

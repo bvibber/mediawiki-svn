@@ -58,6 +58,11 @@ $aliases['gl'] = array(
 	'InterwikiList' => array( 'Lista de interwikis', 'Listaxe de interwikis' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'InterwikiList' => array( 'Interwiki-Lischt' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'InterwikiList' => array( 'רשימת_בינוויקי' ),

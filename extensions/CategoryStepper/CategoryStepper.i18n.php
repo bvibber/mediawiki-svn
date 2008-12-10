@@ -153,12 +153,13 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Holder
  * @author Hendergassler
  */
 $messages['gsw'] = array(
-	'categorystepper-desc' => 'Zeigt a kategori füasdret lad, wo erlaübt for un rockwartz zo geht em alfabed, eini oder mehr kategoria esch drena',
-	'categorystepper-end' => "(And fo d'r Kategori)",
-	'categorystepper-start' => "(Afang fo d'r Kategori)",
+	'categorystepper-desc' => 'Zeigt e Kategorieleitere a, wo erlaubt alphabetisch firschi un hinderschi dur di ganze Kategorie z goh, wo e Syte din isch.',
+	'categorystepper-end' => '(Änd vo dr Kategori)',
+	'categorystepper-start' => '(Afang vo dr Kategori)',
 );
 
 /** Manx (Gaelg)

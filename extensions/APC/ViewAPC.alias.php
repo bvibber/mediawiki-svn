@@ -47,6 +47,11 @@ $aliases['fr'] = array(
 	'ViewAPC' => array( 'Voir APC', 'VoirAPC' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'ViewAPC' => array( 'APC-Informatione' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ViewAPC' => array( 'APC weisen' ),

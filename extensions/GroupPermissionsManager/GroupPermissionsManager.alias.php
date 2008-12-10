@@ -52,6 +52,13 @@ $aliases['fr'] = array(
 	'GroupPermissions' => array( 'Permission des groupes' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'GroupPermissions' => array( 'Grupperächt' ),
+	'RemoveUnusedGroups' => array( 'Gruppe', 'wu nit brucht wäre', 'ewägneh' ),
+	'SortPermissions' => array( 'Rächt sortiere' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'GroupPermissions' => array( 'Prava_suradničkih_skupina' ),

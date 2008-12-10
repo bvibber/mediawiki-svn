@@ -39,6 +39,12 @@ $aliases['fi'] = array(
 	'TaskListByProject' => array( 'Projektin tehtävälista' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'TaskList' => array( 'Ufgabelischt' ),
+	'TaskListByProject' => array( 'Ufgabelischt pro Projäkt' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'TaskList' => array( 'Lisćina nadawkow' ),

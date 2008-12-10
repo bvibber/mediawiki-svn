@@ -824,6 +824,7 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
@@ -831,12 +832,12 @@ $messages['km'] = array(
 	'sitematrix-summary' => 'ទំព័រពិសេសនេះរាយឈ្មោះរាល់វិគីរបស់វិគីមេឌា។',
 	'sitematrix-desc' => 'បង្ហាញ[[Special:SiteMatrix|បញ្ជីវិគីនៃវិគីមេឌា]]',
 	'sitematrix-language' => 'ភាសា',
-	'sitematrix-project' => 'ឈ្មោះ​គំរោង តំនភ្ជាប់​អន្តរគំរោង និងតំនភ្ជាប់អន្តរវិគី',
-	'sitematrix-others' => 'គំរោងវិគីមេឌាផ្សេងៗទៀត',
+	'sitematrix-project' => 'ឈ្មោះ​គម្រោង តំណភ្ជាប់​អន្តរគម្រោង និងតំណភ្ជាប់អន្តរវិគី',
+	'sitematrix-others' => 'គម្រោងវិគីមេឌាផ្សេងៗទៀត',
 	'sitematrix-total' => "'''សរុប: $1'''",
 	'sitematrix-sitetotal' => 'សរុប',
 	'sitematrix-private' => 'ឯកជន',
-	'sitematrix-fishbowl' => 'កំនែប្រែត្រូវបានដាក់កំហិត',
+	'sitematrix-fishbowl' => 'កំណែប្រែត្រូវបានដាក់កំហិត',
 );
 
 /** Korean (한국어)

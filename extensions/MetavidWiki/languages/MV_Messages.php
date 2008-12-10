@@ -1134,7 +1134,7 @@ $messages['es'] = array(
  * @author Zetud
  */
 $messages['fr'] = array(
-	'metavid' => 'Page metavid',
+	'metavid' => 'Page Metavid',
 	'mv_missing_stream' => 'Flux manquant : $1',
 	'specialpages-group-mv_group' => 'Pages spéciales de MetaVidWiki',
 	'mv_warning_wiki' => '<i>Note : les transcriptions vidéo metavid [[Help:FAQ#How_accurate_is_the_information.3F|peuvent contenir des inexactitudes]], aidez-nous à construire [[Help:Participation#Improving_Archive_Accuracy|des archives de meilleure qualité]].</i>',
@@ -1152,21 +1152,22 @@ $messages['fr'] = array(
 	'mv_error_stream_missing' => '<span class="error">Erreur : il n\'existe aucun fichier vidéo associé avec ce flux.</span><br /> Vous êtes prié de reporter ceci à l\'administrateur du site.',
 	'mv_stream_added' => 'Vous avez ajouté le flux $1',
 	'mv_stream_meta' => 'Page de flux',
-	'mv_add_stream' => "Ajout d'un flux metavid",
-	'mv_edit_stream' => 'Modifier un flux metavid',
+	'mv_add_stream' => 'Ajout d’un flux Metavid',
+	'mv_edit_stream' => 'Modifier un flux Metavid',
 	'mvexportsearch' => 'Exporter Metavid',
 	'mvexportsequence' => 'Exporter une séquence Metavid',
 	'mvexportstream' => 'Exporter un flux de Metavid',
-	'mv_move_delete_msg' => 'mvd déplacé vers $1',
-	'mv_add_stream_page' => "Ajout d'un flux metavid",
-	'mv_edit_strea_docu' => '<p>Éditer des flux</b> <b>(admin)</b><br />Pour la visualisation/modification par des utilisateurs normaux, voyez la page $1',
-	'mv_add_stream_docu' => "<p>Ajouter un nouveau flux avec le champ ci-dessous.</p><p>Plus d'informations sont données sur <a href=\"\$1\">la page d'aide concernant l'ajout d'un flux.",
+	'mv_move_delete_msg' => 'flux Mvd déplacé vers $1',
+	'mv_add_stream_page' => 'Ajout d’un flux Metavid',
+	'mv_edit_strea_docu' => '<p>Éditer des flux <b>(admin)</b><br />Pour la visualisation/modification par des utilisateurs normaux, voyez la page $1',
+	'mv_add_stream_docu' => '<p>Ajouter un nouveau flux avec le champ ci-dessous.</p>
+<p>Plus d’informations sont données sur <a href="$1">la page d’aide concernant l’ajout d’un flux.</a></p>',
 	'mv_add_stream_submit' => 'Ajouter un flux',
 	'mv_no_stream_files' => 'Fichiers de flux inexistants.',
 	'mv_edit_stream_files' => 'Modifier les fichiers de flux',
 	'mv_path_type_url_anx' => 'Adresse Internet complète du média',
-	'mv_path_type_wiki_title' => 'Titre wiki du media',
-	'mv_path_type_url_file' => 'Adresse internet complète du média utilisant une recherche locale',
+	'mv_path_type_wiki_title' => 'Titre Wiki du média',
+	'mv_path_type_url_file' => 'Adresse Internet complète du média utilisant une recherche locale',
 	'mv_path_type_mp4_stream' => 'Serveur de flux Mp4',
 	'mv_path_type_label' => 'type de chemin',
 	'mv_base_offset_label' => 'décalage de base',
@@ -2886,6 +2887,7 @@ $messages['nah'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'category-media-count' => '$1 mediasegmenten in kattegerie',
 	'mv_edit' => 'Bewark',
 );
 
@@ -3063,6 +3065,7 @@ Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
 	'mv_most_viewed' => 'Meest bekeken',
 	'mv_match' => 'resultaat',
 	'mv_spoken_by' => 'gesproken door',
+	'mv_speech_by' => 'redevoering door',
 	'mv_category' => 'categorie',
 	'mv_search_no_results' => 'Geen media gevonden',
 	'mv_media_matches' => 'Gevonden media',
@@ -4200,6 +4203,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mv_most_viewed' => 'Najprezeranejšie',
 	'mv_match' => 'zhoda',
 	'mv_spoken_by' => 'nahovoril',
+	'mv_speech_by' => 'nahovoril',
 	'mv_category' => 'kategória',
 	'mv_search_no_results' => 'Neboli nájdené vyhovujúce multimédiá',
 	'mv_media_matches' => 'Vyhovujúce multimédiá',

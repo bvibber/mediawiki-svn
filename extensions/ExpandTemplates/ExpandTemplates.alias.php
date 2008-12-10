@@ -60,6 +60,11 @@ $aliases['gl'] = array(
 	'ExpandTemplates' => array( 'Expandir os modelos' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'ExpandTemplates' => array( 'Vorlage expandiere' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

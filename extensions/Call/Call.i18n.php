@@ -322,11 +322,12 @@ In caso de problemas, tu pote probar <b>Special:Call/DebuG</b>",
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'call' => 'ページ呼び出し',
-	'call-desc' => 'テンプレート（または普通のウィキページ）にパラメータを渡すハイパーリンクを作成できます。ブラウザのアドレス欄やウィキテキスト内部でも利用可能です。',
+	'call-desc' => 'テンプレート（または普通のウィキページ）にパラメータを渡すハイパーリンクを作成する。ブラウザのアドレス欄やウィキテキスト内部で利用可能',
 	'call-text' => "ページ呼び出しエクステンションは、あるウィキページに、そのページが取る引数であるオプションパラメータが設定されていることを想定しています。<br /><br />
 例1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
 例2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />

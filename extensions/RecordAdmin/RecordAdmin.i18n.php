@@ -271,10 +271,11 @@ $messages['oc'] = array(
 
 /** Russian (Русский)
  * @author Rubin
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'recordadmin-submit' => 'Отправить',
-	'recordadmin-buttonsearch' => 'Поиск',
+	'recordadmin-buttonsearch' => 'Найти',
 	'recordadmin-buttoncreate' => 'Создать',
 );
 

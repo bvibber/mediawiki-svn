@@ -225,10 +225,11 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Thearith
  */
 $messages['km'] = array(
-	'smoothgallery-gallery-not-found' => 'គ្មាន ទីតាំងពិពណ៌ ដែលត្រូវបានស្នើ ។',
-	'smoothgallery-javascript-disabled' => 'តំរូវអោយមាន Javascript ដើម្បី មើលបានល្អ ទីតាំងពិពណ៌ នេះ ។',
+	'smoothgallery-gallery-not-found' => 'មិនមានវិចិត្រសាលដែលត្រូវបានស្នើ​។',
+	'smoothgallery-javascript-disabled' => 'តម្រូវឱ្យមាន Javascript ដើម្បី​មើលបានល្អ​វិចិត្រសាលនេះ​។',
 );
 
 /** Ripoarisch (Ripoarisch)

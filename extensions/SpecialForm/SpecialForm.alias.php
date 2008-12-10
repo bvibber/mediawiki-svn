@@ -39,6 +39,11 @@ $aliases['gl'] = array(
 	'Form' => array( 'Formulario' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Form' => array( 'Form' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'Form' => array( 'טופס' ),

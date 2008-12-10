@@ -308,12 +308,13 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'block_title_error_page_title' => 'ブロックされた項目',
-	'block_title_error-desc' => '重要な項目に対して勝手に保存または作成が行われないように、基本的な方策を提供する',
-	'block_title_error' => '申し訳ありませんが、この項目名でページを保存することは許可できません。',
+	'block_title_error-desc' => '指定したページ名のページの保存・作成を予防する簡単な手段を提供する',
+	'block_title_error' => '申し訳ありませんが、この項目名でページを保存することは許可されていません。',
 );
 
 /** Javanese (Basa Jawa)

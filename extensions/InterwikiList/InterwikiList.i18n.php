@@ -236,11 +236,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fievarsty
  */
 $messages['ja'] = array(
 	'interwikilist' => 'インターウィキリスト',
-	'interwikilist-desc' => '利用可能なインターウィキリンクを見ることができる[[Special:Interwikilist|特別ページ]]を追加。',
+	'interwikilist-desc' => '利用可能なインターウィキリンクを見ることができる[[Special:Interwikilist|特別ページ]]を追加する',
 	'interwikilist-linkname' => 'インターウィキリンク',
 	'interwikilist-target' => 'リンク先のURL',
 	'interwikilist-filter' => 'フィルターリスト',

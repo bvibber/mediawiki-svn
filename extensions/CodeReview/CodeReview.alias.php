@@ -46,6 +46,11 @@ $aliases['gl'] = array(
 	'Code' => array( 'Código' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Code' => array( 'Quälltäxt' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'Code' => array( 'Kod' ),

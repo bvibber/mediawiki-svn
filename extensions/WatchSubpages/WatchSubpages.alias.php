@@ -39,6 +39,11 @@ $aliases['fr'] = array(
 	'WatchSubpages' => array( 'VoirSousPages' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'WatchSubpages' => array( 'Untersyte beobachte' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'WatchSubpages' => array( 'Prati_podstranice' ),

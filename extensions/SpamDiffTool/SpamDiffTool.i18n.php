@@ -447,9 +447,10 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'spamdifftool_no_urls_detected' => "រកមិនឃើញ url ។ ចុច <a href='$1'>ទីនេះ</a> ដើម្បី ត្រលប់ក្រោយ ។",
+	'spamdifftool_no_urls_detected' => "រកមិនឃើញ url ។ ចុច <a href='$1'>ទីនេះ</a> ដើម្បី ត្រឡប់ក្រោយ ។",
 	'spamdifftool_option_domain' => 'ទាំងអស់ ពី កម្មសិទ្ធិ នេះ',
 	'spamdifftool_option_subdomain' => 'ទាំងអស់ ពី កម្មសិទ្ធិរង នេះ',
 	'spamdifftool_option_directory' => 'កម្មសិទ្ធិរង និង ថតឯកសារ នេះ',

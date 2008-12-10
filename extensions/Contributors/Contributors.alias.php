@@ -47,6 +47,11 @@ $aliases['fr'] = array(
 	'Contributors' => array( 'Contributeurs' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'Contributors' => array( 'Autore' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'Contributors' => array( 'תורמים' ),

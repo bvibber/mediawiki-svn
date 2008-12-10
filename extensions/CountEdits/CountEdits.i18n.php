@@ -335,6 +335,22 @@ $messages['grc'] = array(
 	'countedits-ok' => 'εἶεν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'countedits' => 'Byytragszeller',
+	'countedits-desc' => '[[{{ns:special}}:CountEdits|Spezialsyte]], wu Benutzerbytreg zellt un e Top-Ten-Lischt aalegt',
+	'countedits-warning' => "'''Warnig''': E Buech beurteilsch au nit no synem Umschlag. Vu dohär beurteil e Autor au nit no synem Bytragszeller.",
+	'countedits-username' => 'Benutzername',
+	'countedits-ok' => 'OK',
+	'countedits-nosuchuser' => 'S git kei Benutzer mit em Name $1.',
+	'countedits-resultheader' => 'Ergebnis fir $1',
+	'countedits-resulttext' => '$1 het $2 Bearbeitige',
+	'countedits-mostactive' => 'Di aktivschte Benutzer',
+	'countedits-nocontribs' => 'In {{ns:project}} git s keini Bearbeitige.',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

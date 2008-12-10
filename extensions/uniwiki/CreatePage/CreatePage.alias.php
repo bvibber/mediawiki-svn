@@ -15,6 +15,11 @@ $aliases['de'] = array(
 	'CreatePage' => array( 'Seite erstellen' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'CreatePage' => array( 'Syte aalege' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'CreatePage' => array( 'Säiten uleeën' ),

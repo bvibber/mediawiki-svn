@@ -49,6 +49,11 @@ $aliases['fr'] = array(
 	'WhosOnline' => array( 'Qui est en ligne', 'QuiEstEnLigne' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'WhosOnline' => array( 'Wär isch online?' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'WhosOnline' => array( 'מי_מחובר' ),

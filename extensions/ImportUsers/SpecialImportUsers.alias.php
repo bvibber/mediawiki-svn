@@ -53,6 +53,11 @@ $aliases['gl'] = array(
 	'ImportUsers' => array( 'Importar usuarios' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'ImportUsers' => array( 'Benutzer importiere' ),
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

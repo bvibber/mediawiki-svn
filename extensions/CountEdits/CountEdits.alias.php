@@ -42,6 +42,11 @@ $aliases['es'] = array(
 	'CountEdits' => array( 'Contador_de_Ediciones' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'CountEdits' => array( 'Byytreeg zelle' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'CountEdits' => array( 'Přinoški ličić' ),

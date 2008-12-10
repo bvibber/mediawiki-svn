@@ -178,12 +178,13 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Terik
  */
 $messages['hu'] = array(
-	'whatismyip' => 'Mi az IP-m?',
-	'whatismyip-desc' => 'Megmutatja a szerkesztő IP-címét a [[Special:WhatIsMyIP]]-n.',
-	'whatismyip-out' => 'Az IP-d:',
+	'whatismyip' => 'Mi az IP-címem?',
+	'whatismyip-desc' => 'Megmutatja a szerkesztő IP-címét a [[Special:WhatIsMyIP]] lapon.',
+	'whatismyip-out' => 'Az IP-címed:',
 );
 
 /** Interlingua (Interlingua)

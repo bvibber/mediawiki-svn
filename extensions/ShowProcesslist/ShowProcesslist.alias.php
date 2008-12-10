@@ -39,6 +39,11 @@ $aliases['fi'] = array(
 	'ShowProcesslist' => array( 'Prosessilistaus' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'ShowProcesslist' => array( 'Prozässlischt aazeige' ),
+);
+
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'ShowProcesslist' => array( 'הצגת_רשימת_תהליכים' ),

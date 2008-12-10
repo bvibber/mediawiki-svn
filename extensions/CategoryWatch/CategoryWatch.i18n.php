@@ -184,6 +184,19 @@ Questo messaggio ti avverte che alle $3 l\'utente $4 $5.',
  */
 $messages['ksh'] = array(
 	'categorywatch-desc' => 'Deit aan de Oppassleß noch aanhange, dat mer övver Änderunge aan de Leß met Sigge en en Saachjrop Bescheid kritt.',
+	'categorywatch-emailbody' => 'Dach $1,
+
+uns Metmaacher "$4" hät aam $3
+$5.
+
+Dat kriss De jesaat, weil De op di Saachjropp "$2" am oppasse bess.
+
+Ene Jrooss vun der {{SITENAME}}.',
+	'categorywatch-emailsubject' => 'De Saachjrupp "$1"',
+	'categorywatch-catmovein' => '"$1" uss de Saachjropp "$3" jenumme un en de Saachjropp "$2" jedonn.',
+	'categorywatch-catmoveout' => '"$1" uss de Saachjropp "$2" erus jenomme un en de Saachjropp "$3" jedonn.',
+	'categorywatch-catadd' => '"$1" en de Saachjropp "$2" jedonn.',
+	'categorywatch-catsub' => '"$1" uss de Saachjropp "$2" eruss jenumme.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

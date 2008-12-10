@@ -15,6 +15,11 @@ $aliases['fr'] = array(
 	'RecordAdmin' => array( 'GérerEnregistrement', 'GererEnregistrement', 'Gérer enregistrement' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'RecordAdmin' => array( 'Ammamm yytrage' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'RecordAdmin' => array( 'Gegevensbeheer' ),

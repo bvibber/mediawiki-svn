@@ -39,6 +39,11 @@ $aliases['gl'] = array(
 	'PurgeCache' => array( 'Purgar a caché' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'PurgeCache' => array( 'Cache lääre' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'PurgeCache' => array( 'Pufrowak wuprózdnić' ),

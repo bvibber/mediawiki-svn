@@ -181,7 +181,7 @@ $messages['it'] = array(
  * @author Aotake
  */
 $messages['ja'] = array(
-	'skinperpage-desc' => 'ページ毎に異なるスキンを使用するために<tt>&lt;skin&gt;</tt>タグを追加',
+	'skinperpage-desc' => 'ページ毎に異なるスキンを使用するための<tt>&lt;skin&gt;</tt>タグを追加する',
 );
 
 /** Javanese (Basa Jawa)

@@ -38,6 +38,11 @@ $aliases['fr'] = array(
 	'MultiUpload' => array( 'Téléchargement multiple', 'TéléchargementMultiple' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'MultiUpload' => array( 'Mehreri Dateie uffelade' ),
+);
+
 /** Croatian (Hrvatski) */
 $aliases['hr'] = array(
 	'MultiUpload' => array( 'Višestruko_postavljanje' ),

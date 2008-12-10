@@ -47,6 +47,11 @@ $aliases['fr'] = array(
 	'ImportFreeImages' => array( 'ImporterImagesLibres' ),
 );
 
+/** Swiss German (Alemannisch) */
+$aliases['gsw'] = array(
+	'ImportFreeImages' => array( 'Freji Bilder importiere' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ImportFreeImages' => array( 'Szabad képek importálása' ),

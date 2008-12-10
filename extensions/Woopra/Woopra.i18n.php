@@ -115,10 +115,11 @@ $messages['jv'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'woopra-desc' => 'អនុញ្ញាតអោយ [http://www.woopra.com/ Woopra Live Tracking Software] ធ្វើការតំលើងមេឌាវិគី(MediaWiki)របស់អ្នក។',
+	'woopra-desc' => 'អនុញ្ញាតឱ្យ [http://www.woopra.com/ Woopra Live Tracking Software] ធ្វើការដំឡើងមេឌាវិគី(MediaWiki)របស់អ្នក។',
 );
 
 /** Ripoarisch (Ripoarisch)

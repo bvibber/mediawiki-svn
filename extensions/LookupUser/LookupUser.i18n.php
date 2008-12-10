@@ -434,7 +434,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'lookupuser' => '利用者情報を調査',
-	'lookupuser-desc' => 'EメールアドレスまたはIDなどの利用者に関する[[Special:LookupUser|情報を検索]]',
+	'lookupuser-desc' => 'EメールアドレスまたはIDなどの利用者に関する[[Special:LookupUser|情報を取得]]する',
 	'lookupuser-intro' => '利用者名を入力して、その利用者のオプション設定をみることができます。',
 	'lookupuser-nonexistent' => 'エラー: 利用者は存在しません',
 	'lookupuser-authenticated' => 'Eメール確認日: $1',
