@@ -8,17 +8,23 @@
 <body>
 <?PHP
 require("data.inc.php");
-$problem=$_REQUEST["problem"];
-$project=$_REQUEST["project"];
-$language=$_REQUEST["language"];
-$level=$_REQUEST["affected"];
-$problem_other=$_REQUEST["problem-other"];
-$banlist=file("/tmp/ab_bans.txt");
+require("config.php");
+
+$problem=mysqli_real_escape_string($mysql_link,$_REQUEST["problem"]);
+$project=mysqli_real_escape_string($mysql_link,$_REQUEST["project"]);
+$language=mysqli_real_escape_string($mysql_link,$_REQUEST["language"]);
+$level=mysqli_real_escape_string($mysql_link,$_REQUEST["affected"]);
+$problem_other=mysqli_real_escape_string($mysql_link,$_REQUEST["problem-other"]);
 
 //prechecks for sanity
-foreach($banlist as $ban) //check if user is banned
-	if($_SERVER['REMOTE_ADDR']==trim($ban))
-		$msg.="You are banned from using this service.";
+$res=mysqli_query($mysql_link,"SELECT * FROM bans");
+if(mysqli_num_rows($res)>0) {
+	while($ban=mysqli_fetch_assoc($res)) {
+		foreach($banlist as $ban) //check if user is banned
+			if($_SERVER['REMOTE_ADDR']==trim($ban["host"]))
+				$msg.="You were banned from using this service by ".$ban["user"].".";
+	}
+}
 if(array_search($project,array_keys($acceptable_projects))===FALSE)
 	$msg.="Please choose a valid project.<br />\r\n";
 if(array_search($problem,array_keys($acceptable_problems))===FALSE)
@@ -45,13 +51,13 @@ if($msg=="") {//no errors, we can proceed
 	else
 		$project=$language.".".$project;
 
-	$sms=$level_correspond[$level].": ".$project." / ".$problem_correspond[$problem];
+	$problem=$problem_correspond[$problem];
 	if($problem=="other" || $problem=="parts")
-		$sms.=$problem_other;
-	$fp=fopen("/tmp/ab_msg.txt","a");
-	fwrite($fp,$sms.chr(250).$_SERVER['REMOTE_ADDR']."\r\n");
-	fclose($fp);
-	$msg.="Thanks for your submission.<br />\r\nMessage sent: $sms<br />\r\n";
+		$problem.=$problem_other;
+	$res=mysqli_query($mysql_link,"INSERT INTO `alertbot`.`alerts` (`id`, `time`, `reporter`, `project`, `affected`, `problem`, `state`) VALUES (NULL, CURRENT_TIMESTAMP, '".$_SERVER['REMOTE_ADDR']."', '$project', '".$level_correspond[$level]."', '".$problem."', '0');");
+	if(mysqli_affected_rows($mysql_link)!=1)
+		$msg.="Error occurred: ".mysqli_error($mysql_link)." (".mysqli_errno($mysql_link).")";
+	$msg.="Thanks for your submission.<br />\r\n"."INSERT INTO `alertbot`.`alerts` (`id`, `time`, `reporter`, `project`, `affected`, `problem`, `state`) VALUES (NULL, CURRENT_TIMESTAMP, '".$_SERVER['REMOTE_ADDR']."', '$project', '".$level_correspond[$level]."', '".$problem."', '0');";
 }
 $msg.="<a href='warning.php'>Back</a> to main page.";
 ?>

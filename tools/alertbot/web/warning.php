@@ -21,6 +21,7 @@ function chklang() {
 </script>
 <?PHP
 require("data.inc.php");
+require("config.php");
 ?>
 </head>
 
@@ -70,11 +71,13 @@ require("data.inc.php");
 Current problems:
 <table><tr><th>ID</th><th>Time</th><th>Problem</th><th>Status</th></tr>
 <?PHP
-	$warnings=unserialize(file_get_contents("/tmp/ab_dump.txt"));
-	if(sizeof($warnings)>0) {
-		foreach($warnings as $warn) {
-			echo "<tr><td>".$warn["id"]."</td><td>".date("j.m.Y h:i:s",$warn["time"])."</td><td>".$warn["text"]."</td><td>".$warn["action"]."</td></tr>";
-		} 
+	
+	$res=mysqli_query($mysql_link,"SELECT * FROM alerts WHERE state = 0 OR state= 1 OR state= 2 ORDER BY time");
+	
+	if(mysqli_num_rows($res)>0) {
+		while($warn=mysqli_fetch_assoc($res)) {
+			echo "<tr><td>".$warn["id"]."</td><td>".$warn["time"]."</td><td>".$warn["problem"]."</td><td>".$states[$warn["state"]]."</td></tr>";
+		}
 	} else {
 		echo "<tr><td colspan=\"4\">No current problems known to the Emergency tracker.</td></tr>";
 	}

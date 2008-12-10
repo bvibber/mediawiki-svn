@@ -16,5 +16,5 @@ $level_correspond=array(	"justme"=>"low","dontknow"=>"low", "manyother"=>"high",
 $problem_correspond=array(	"sitedown"=>"Site totally down","slow"=>"Site abormally slow",
 							"replag"=>"Excessive replication lag", "parts"=>"Parts of site do not work:",
 							"other"=>"" );
-
+$states=array(				0=>"fresh",1=>"acknowledged",2=>"sms sent",3=>"fixed",4=>"spam" );
 ?>

@@ -30,34 +30,30 @@ if(isset($_SERVER['REMOTE_ADDR']))
 
 //configuration
 	include("config.inc.php");
-		
+	include("../web/config.php");		
+	include("../web/data.inc.php");
 	class alertbot
 	{
 		function check_msgs(&$irc) { //check for new reports
-			global $warnings;global $admins;global $channel;
-			if(!file_exists("/tmp/ab_msg.txt")) return;
-			$file=file("/tmp/ab_msg.txt");
-			unlink("/tmp/ab_msg.txt");
-			if(sizeof($file)>0) {
-				for($i=0;$i<sizeof($file);$i++) {
-					$msg=explode(chr(250),trim($file[$i]));
-					$user=$msg[1];$msg=$msg[0];
-					if(strlen($msg)<=5) break;
-					$wid=sizeof($warnings)+1;
-					$warnings[$wid]["text"]=$msg;
+			global $warnings;global $admins;global $channel;global $mysql_link;
+			$res=mysqli_query($mysql_link,"SELECT * FROM alerts WHERE state = 0 ORDER BY time");
+			
+			if(mysqli_num_rows($res)>0) {
+				while($warn=mysqli_fetch_assoc($res)) {
+					$wid=$warn["id"];
+					$warnings[$wid]["text"]=$warn["problem"];
 					$warnings[$wid]["time"]=time();
 					$warnings[$wid]["id"]=$wid;
-					$warnings[$wid]["action"]="PENDING";
-					$warnings[$wid]["user"]=$user;
-					$irc->message(SMARTIRC_TYPE_CHANNEL, $channel,"$admins: $msg (id $wid)");
-					echo "dumped $msg\n";
+					$warnings[$wid]["action"]=$warn["state"];
+					$warnings[$wid]["user"]=$warn["reporter"];
+					$irc->message(SMARTIRC_TYPE_CHANNEL, $channel,"$admins: ".$warn["project"]." (id $wid, pr ".$warn["affected"].")");
+					echo "dumped warning $wid\n";
 				}
 			}
-			$fp=fopen("/tmp/ab_dump.txt","w");fwrite($fp,serialize($warnings));fclose($fp);
 		}
 		
 		function check_rep(&$irc) { //check for warnings whose warning time expired, and send SMS
-			global $warnings;global $channel;global $ttw;global $lastsms;
+			global $warnings;global $channel;global $ttw;global $lastsms;global $mysql_link;
 			if(sizeof($warnings)<1) return; // less than one warning in the queue? don't even bother to scan it
 			foreach($warnings as $warning) {
 				if(time()-$warning["time"]>=$ttw && $warning["alerted"]!=true && time()-$lastsms>=$smsinterval) { //warning is older than TTL, and didn't get SMSed before, and there was no SMS for 10 minutes
@@ -65,7 +61,7 @@ if(isset($_SERVER['REMOTE_ADDR']))
 //					alert($warning["text"]); //send SMS
 					$warnings[$warning["id"]]["alerted"]=true; //mark as "sms sent"
 					$warnings[$warning["id"]]["action"]="SMS SENT";
-					$fp=fopen("/tmp/ab_dump.txt","w");fwrite($fp,serialize($warnings));fclose($fp);
+					mysqli_query($mysql_link,"UPDATE `alertbot`.`alerts` SET `state` = '2' WHERE `alerts`.`id` =".$warning["id"]." LIMIT 1 ;");
 				}
 			}
 		}
@@ -74,7 +70,7 @@ if(isset($_SERVER['REMOTE_ADDR']))
 			global $warnings;global $channel;
 			if(isset($warnings[$ircdata->messageex[1]])) {
 				unset($warnings[$ircdata->messageex[1]]);
-				$fp=fopen("/tmp/ab_dump.txt","w");fwrite($fp,serialize($warnings));fclose($fp);
+				mysqli_query($mysql_link,"UPDATE `alertbot`.`alerts` SET `state` = '4' WHERE `alerts`.`id` =".$ircdata->messageex[1]." LIMIT 1 ;");
 				$irc->message(SMARTIRC_TYPE_CHANNEL, $channel,"Killed ".$ircdata->messageex[1]);
 			}
 		}
@@ -99,7 +95,7 @@ if(isset($_SERVER['REMOTE_ADDR']))
 			if(isset($warnings[$ircdata->messageex[1]])) {
 				$warnings[$ircdata->messageex[1]]["alerted"]=true; //so that no sms gets sent
 				$warnings[$ircdata->messageex[1]]["action"]="ACKd";
-				$fp=fopen("/tmp/ab_dump.txt","w");fwrite($fp,serialize($warnings));fclose($fp);
+				mysqli_query($mysql_link,"UPDATE `alertbot`.`alerts` SET `state` = '1' WHERE `alerts`.`id` =".$ircdata->messageex[1]." LIMIT 1 ;");
 				$irc->message(SMARTIRC_TYPE_CHANNEL, $channel,"Killed ".$ircdata->messageex[1]);
 			}
 		}
