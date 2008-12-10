@@ -853,12 +853,12 @@ $emptyValues = array(
 	'wgLocalMessageCache' => null,
 	'wgInterwikiCache' => false,
 	'wgReadOnly' => null,
-	'wgRateLimitLog' => false,
+	'wgRateLimitLog' => null,
 	'wgSessionName' => false,
 	'wgHTTPProxy' => false,
 	'wgSharedThumbnailScriptPath' => false,
 	'wgSharedUploadDBname' => false,
-	'wgMimeDetectorCommand' => false,
+	'wgMimeDetectorCommand' => null,
 	'wgCustomConvertCommand' => false,
 	'wgThumbnailScriptPath' => false,
 	'wgDjvuDump' => null,
@@ -875,6 +875,18 @@ $emptyValues = array(
 	'wgSearchForwardUrl' => null,
 	'wgHTCPMulticastAddress' => false,
 	'wgExternalDiffEngine' => false,
+	'wgSearchType' => null,
+	'wgLocaltimezone' => null,
+	'wgLocalTZoffset' => null,
+	'wgReadOnly' => null,
+	'wgDjvuDump' => null,
+	'wgAntivirus' => null,
+	'wgImportTargetNamespace' => null,
+	'wgCopyrightIcon' => null,
+	'wgSearchForwardUrl' => null,
+	'wgExemptFromUserRobotsControl' => null,
+	'wgArticlePath' => false,
+	
 );
 
 /**

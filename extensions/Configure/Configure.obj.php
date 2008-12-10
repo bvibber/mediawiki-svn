@@ -11,7 +11,7 @@ class WebConfiguration extends SiteConfiguration {
 	protected $mWiki;                  // Wiki name
 	protected $mConf = array();        // Our array of settings
 	protected $mOldSettings = null; // Old settings (before applying our overrides)
-	protected $mDefaults = array();    // Default values
+	protected $mDefaults = null;    // Default values
 
 	/**
 	 * Construct a new object.
@@ -84,14 +84,17 @@ class WebConfiguration extends SiteConfiguration {
 		// Include files before so that customized settings won't be overridden
 		// by the default ones
 		$this->includeFiles();
-		
-		// Snapshot current settings before overriding.
-		// -ialex tells me this weird contraption will work
-		$allSettings = array_keys( ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllSettings() );
-		
-		foreach( $allSettings as $setting ) {
-			if ( isset( $GLOBALS[$setting] ) )
-				$this->mDefaults[$setting] = $GLOBALS[$setting];
+
+		if (!is_array($this->mDefaults)) {
+			$this->mDefaults = array();
+			// Snapshot current settings before overriding.
+			// -ialex tells me this weird contraption will work
+			$allSettings = array_keys( ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllSettings() );
+
+			foreach( $allSettings as $setting ) {
+				if ( array_key_exists( $setting, $GLOBALS ) )
+					$this->mDefaults[$setting] = $GLOBALS[$setting];
+			}
 		}
 
 		list( $site, $lang ) = $this->siteFromDB( $this->mWiki );
@@ -164,11 +167,15 @@ class WebConfiguration extends SiteConfiguration {
 	
 	/** Recursive doohicky for normalising variables so we can compare them. */
 	public static function filterVar( $var ) {
+		if (empty($var) && !$var) {
+			return null;
+		}
+		
 		if ( is_array( $var ) ) {
 			return array_filter( array_map( array( __CLASS__, 'filterVar' ), $var ) );
 		}
 		
-		return $var;
+		return trim($var);
 	}
 
 	/**
@@ -227,7 +234,7 @@ class WebConfiguration extends SiteConfiguration {
 		foreach ( $keys as $setting ) {
 			if ( isset( $wikiDefaults[$setting] ) && !is_null( $wikiDefaults[$setting] ) )
 				$ret[$setting] = $wikiDefaults[$setting];
-			elseif ( isset( $globalDefaults[$setting] ) )
+			elseif ( array_key_exists( $setting, $globalDefaults ) )
 				$ret[$setting] = $globalDefaults[$setting];
 		}
 		return $ret;

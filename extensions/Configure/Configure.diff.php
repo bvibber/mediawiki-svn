@@ -145,8 +145,9 @@ abstract class ConfigurationDiff {
 				foreach ( $groupSettings as $setting => $type ) {
 					$oldSetting = isset( $old[$setting] ) ? $old[$setting] : null;
 					$newSetting = isset( $new[$setting] ) ? $new[$setting] : null;
-					if ( $oldSetting === $newSetting || !$this->isSettingViewable( $setting ) )
+					if ( $oldSetting === $newSetting || !$this->isSettingViewable( $setting ) ) {
 						continue;
+					}
 					else
 						$groupDiff .= $this->processDiffSetting( $setting, $oldSetting, $newSetting, $type ) . "\n";
 				}

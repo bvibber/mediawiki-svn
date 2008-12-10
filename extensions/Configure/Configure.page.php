@@ -477,7 +477,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				$arrType = $this->getArrayType( $name );
 				switch( $arrType ) {
 				case 'simple':
-					$text = trim($wgRequest->getText( 'wp' . $name ));
+					$text = rtrim($wgRequest->getText( 'wp' . $name ));
 					if ( $text == '' )
 						$arr = array();
 					else
@@ -524,7 +524,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					global $wgContLang;
 					$arr = array();
 					foreach ( $wgContLang->getNamespaces() as $ns => $unused ) {
-						$arr[$ns] = trim( $wgRequest->getVal( 'wp' . $name . '-ns' . strval( $ns ) ) );
+						$arr[$ns] = $wgRequest->getVal( 'wp' . $name . '-ns' . strval( $ns ) );
 					}
 					$settings[$name] = $arr;
 					break;
@@ -543,7 +543,7 @@ abstract class ConfigurationPage extends SpecialPage {
 					foreach ( $wgContLang->getNamespaces() as $ns => $unused ) {
 						if ( $ns < 0 )
 							continue;
-						$text = trim( $wgRequest->getText( 'wp' . $name . '-ns' . strval( $ns ) ) );
+						$text = rtrim($wgRequest->getText( 'wp' . $name . '-ns' . strval( $ns ) ) );
 						if ( $text == '' )
 							$nsProtection = array();
 						else
@@ -617,7 +617,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			case 'text':
 			case 'lang':
 			case 'image-url':
-				$setting = trim( $wgRequest->getVal( 'wp' . $name ) );
+				$setting = $wgRequest->getVal( 'wp' . $name );
 				
 				if ( $file = wfFindFile( $setting ) ) {
 					## It's actually a local file.
@@ -646,12 +646,13 @@ abstract class ConfigurationPage extends SpecialPage {
 				}
 			}
 
-			if ( isset( $settings[$name] ) ) {
+			if ( array_key_exists( $name, $settings ) ) {
 				$settings[$name] = $this->cleanupSetting( $name, $settings[$name] );
 				if ( $settings[$name] === null )
 					unset( $settings[$name] );
 			}
 		}
+
 		return $settings;
 	}
 
@@ -663,13 +664,27 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return Mixed
 	 */
 	protected function cleanupSetting( $name, $val ) {
+		global $wgConf;
+
+		if (!empty($val) || $val) {
+			return $val;
+		}
+		
 		static $list = null;
 		if ( $list === null )
 			$list = $this->mConfSettings->getEmptyValues();
-		if ( isset( $list[$name] ) && empty( $val ) )
+
+		static $defaults = null;
+		if ($defaults === null)
+			$defaults = $wgConf->getDefaultsForWiki( $this->mWiki );
+		
+		if ( array_key_exists( $name, $list ) ) {
 			return $list[$name];
-		else
-			return $val;
+		} elseif ( !array_key_exists( $name, $defaults ) ) {
+			return null;
+		} elseif ( empty( $defaults[$name] ) ) {
+			return $defaults[$name];
+		}
 	}
 
 	/**
@@ -928,7 +943,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				return '<code>' . htmlspecialchars( $default ) . '</code>';
 			$ret = "\n";
 			foreach ( $type as $val => $name ) {
-				$ret .= Xml::radioLabel( $name, 'wp' . $conf, $val, 'wp' . $conf . $val, $default == $val ) . "\n";
+				$ret .= Xml::radioLabel( $name, 'wp' . $conf, $val, 'wp' . $conf . $val, $default === $val ) . "\n";
 			}
 			return $ret;
 		}
@@ -1347,9 +1362,11 @@ abstract class ConfigurationPage extends SpecialPage {
 							'value' => $this->getSettingValue( $setting ),
 							'link' => $showlink,
 						);
+
+						$customised = !array_key_exists( $setting, $defaults );
+						$customised = $customised || ( WebConfiguration::filterVar( $defaults[$setting] ) != WebConfiguration::filterVar( $params['value'] ) );
 						
-						$params['customised'] = ( !isset( $defaults[$setting] ) || 
-							WebConfiguration::filterVar( $defaults[$setting] ) != WebConfiguration::filterVar( $params['value'] ) );
+						$params['customised'] = $customised;
 						
 						$show = $this->mCanEdit ?
 							( isset( $params['edit'] ) ? $params['edit'] : $this->userCanEdit( $setting ) ) :
