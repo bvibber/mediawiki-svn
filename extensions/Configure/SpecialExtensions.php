@@ -110,7 +110,7 @@ class SpecialExtensions extends ConfigurationPage {
 			$ext->setPageObj( $this );
 			$ret .= $ext->getHtml();
 		}
-		if ( isset( $__hooks__ ) )
+		if ( isset( $oldHooks ) )
 			$GLOBALS['wgHooks'] = $oldHooks;
 		return $ret;
 	}
