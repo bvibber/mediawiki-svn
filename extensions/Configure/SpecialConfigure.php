@@ -23,10 +23,11 @@ class SpecialConfigure extends ConfigurationPage {
 		$settings = $this->importFromRequest();
 
 		## Add extensions settings, so we don't lose them..
-		$extSettings = ConfigurationSettings::singleton( CONF_SETTINGS_EXTENSIONS )->getAllSettings();
-		$current = $wgConf->getCurrent();
+		$extSettings = ConfigurationSettings::singleton( CONF_SETTINGS_EXT )->getAllSettings();
+		$current = $wgConf->getCurrent( $this->mWiki );
 		foreach( $extSettings as $name => $type ) {
-			$settings[$name] = $current[$name];
+			if( isset( $current[$name] ) )
+				$settings[$name] = $current[$name];
 		}
 
 		$settings = $this->removeDefaults( $settings );
