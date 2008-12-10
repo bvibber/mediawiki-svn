@@ -18,7 +18,6 @@ $examples[] = array(  'tag'  => '<video roe="'.$roe_url.'" ></video>',
 					  'desc' => 'Metavid based ROE file using CMML<br> ' .
 					  	'<iframe width="500" height="300" src="'.$roe_url.'" ></iframe>'
 				);
-$examples = Array();
 $srt_tag = ''.
 '<video src="sample_fish.ogg" poster="sample_fish.jpg" duration="26">
  	<text category="SUB" lang="en" type="text/x-srt" default="true"
