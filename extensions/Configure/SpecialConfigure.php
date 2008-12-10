@@ -19,12 +19,16 @@ class SpecialConfigure extends ConfigurationPage {
 	protected function doSubmit() {
 		global $wgConf, $wgOut, $wgConfigureUpdateCacheEpoch, $wgUser, $wgRequest;
 
-		// These two lines left in and commented-out until I figure out what they're for.
-		//  They seem to break stuff :)
 		$reason = $wgRequest->getText( 'wpReason' );
-// 		$current = $wgConf->getCurrent( $this->mWiki );
 		$settings = $this->importFromRequest();
-// 		$settings += $current;
+
+		## Add extensions settings, so we don't lose them..
+		$extSettings = ConfigurationSettings::singleton( CONF_SETTINGS_EXTENSIONS )->getAllSettings();
+		$current = $wgConf->getCurrent();
+		foreach( $extSettings as $name => $type ) {
+			$settings[$name] = $current[$name];
+		}
+
 		$settings = $this->removeDefaults( $settings );
 		if ( $wgConfigureUpdateCacheEpoch )
 			$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() );
