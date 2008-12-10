@@ -474,6 +474,7 @@ mvPlayList.prototype = {
 	setSliderValue:function(value){
 		//js_log('calling original embed slider with val: '+value);
 		this.cur_clip.embed.pe_setSliderValue( value );
+		//call seq playline update here
 	},	
 	getSeqThumb: function(){
 		//for each clip 
@@ -545,7 +546,7 @@ mvPlayList.prototype = {
 		this.cur_clip=new_clip;			
 		$j('#clipDesc_'+this.cur_clip.id).show();
 		//update the playhead: 
-		this.setSliderValue( this.cur_clip.dur_offset / this.getDuration() ); 		
+		this.setSliderValue( this.cur_clip.dur_offset / this.getDuration() ); 			
 	},
 	prev: function(){
 		//advance the playhead to the previous clip			
@@ -1154,7 +1155,7 @@ PlMvEmbed.prototype = {
 		//status updates handled by playlist obj
 	},
 	setSliderValue:function(value){
-		//setSlider value handled by playlist obj
+		//setSlider value handled by playlist obj		
 	}	
 }
 

@@ -160,10 +160,10 @@ var default_video_attributes = {
 	"paused":true,
 	"readyState":0,  //http://www.whatwg.org/specs/web-apps/current-work/#readystate
 	"currentTime":0, //current playback position (should be updated by plugin)
-	"duration":NaN,   //media duration (read from file or the temporal url)
+	"duration":null,   //media duration (read from file or the temporal url)
 
     //custom attributes for mv_embed:
-    "play_button":true,
+    "play_button":true,    
     "thumbnail":null,
     "linkback":null,
     "embed_link":true,
@@ -1649,6 +1649,7 @@ var embedVideo = function(element) {
 embedVideo.prototype = {
     /** The mediaElement object containing all mediaSource objects */
     media_element:null,
+    preview_mode:false,
 	slider:null,		
 	ready_to_play:false, //should use html5 ready state
 	load_error:false, //used to set error in case of error
@@ -1708,8 +1709,12 @@ embedVideo.prototype = {
 	            this[attr]=default_video_attributes[attr];
 	            //js_log('attr:' + attr + ' val: ' + video_attributes[attr] +" "+ 'elm_val:' + element.getAttribute(attr) + "\n (set by attr)");
 	        }
-	    }
-	    //js_log("ROE SET: "+ this.roe);
+	    }		   
+	    if( this.duration!=null && this.duration.split(':').length >= 2)
+	    	this.duration = ntp2seconds( this.duration );
+	    
+	    js_log("DD:Init:Duration set:: "+ this.duration);
+	        	
 	    //if style is set override width and height
 	    var dwh = mv_default_video_size.split('x');
 	    this.width = element.style.width ? element.style.width : dwh[0];
@@ -1722,7 +1727,7 @@ embedVideo.prototype = {
 	    if(element.innerHTML!='' && element.getElementsByTagName('source').length==0){
             js_log('innerHTML: ' + element.innerHTML);
 	        this.user_missing_plugin_html=element.innerHTML;
-	    }	      
+	    }	      	    
 	    // load all of the specified sources
         this.media_element = new mediaElement(element);                         	
 	},
@@ -1841,8 +1846,8 @@ embedVideo.prototype = {
 		}
     },
 	getTimeReq:function(){
-		js_log('f:getTimeReq');
-		var default_time_req = '0:00:00/0:00:00';
+		js_log('f:getTimeReq:'+ this.getDurationNTP());
+		var default_time_req = '0:00:00/' + this.getDurationNTP() ;
 		if(!this.media_element)
 			return default_time_req;
 		if(!this.media_element.selected_source)
@@ -1851,12 +1856,13 @@ embedVideo.prototype = {
 			return default_time_req;		
 		return this.media_element.selected_source.start_ntp+'/'+this.media_element.selected_source.end_ntp;
 	},	
-    getDuration:function(){    	
-    	//update some local pointers for the selected source:     	
-        this.duration = this.media_element.selected_source.duration;
+    getDuration:function(){
+    	//update some local pointers for the selected source:
+    	if( this.media_element.selected_source.duration != 0 )  	
+        	this.duration = this.media_element.selected_source.duration;        	        	
         this.start_offset = this.media_element.selected_source.start_offset;
         this.start_ntp = this.media_element.selected_source.start_ntp;
-        this.end_ntp = this.media_element.selected_source.end_ntp;
+        this.end_ntp = this.media_element.selected_source.end_ntp;         
         //return the duration
         return this.duration;
     },
@@ -1934,6 +1940,10 @@ embedVideo.prototype = {
     	}
     	this.onClipDone_disp=true;
     	this.thumbnail_disp=true;
+    	//make sure we are not in preview mode( no end clip actions in preview mode) 
+    	if( this.preview_mode )
+    		return ;
+    		
     	$j('#img_thumb_'+this.id).css('zindex',1);
     	$j('#big_play_link_'+this.id).hide();
     	//add the liks_info_div black back 
@@ -1966,7 +1976,7 @@ embedVideo.prototype = {
     			}		
     		}
     	)       	 	   
-    	//now load roe if nessesaryand showNextPrevLinks
+    	//now load roe if run the showNextPrevLinks
     	if(this.roe && this.media_element.addedROEData==false){
     		do_request(this.roe, function(data)
             {            	                        	      	         
@@ -2422,9 +2432,14 @@ embedVideo.prototype = {
 			mvJsLoader.doLoad({
 					'textInterface':'timedTextLibs/mv_timed_text.js'
 				}, function(){
-					_this.textInterface = new textInterface( _this );				
+					
+					_this.textInterface = new textInterface( _this );							
 					//show interface
 					_this.textInterface.show();
+					js_log("NEW TEXT INTERFACE");
+					for(var i in _this.textInterface.availableTracks){
+						js_log("tracks in new interface: "+_this.id+ ' tid:' + i);						
+					}
 				}
 			);
 		}else{
@@ -2724,6 +2739,12 @@ embedVideo.prototype = {
 		}
 		return null;
 	},	
+	/*
+	* returns the selected source url for players to play
+	*/
+	getURI : function(seek_time_sec){
+		return this.media_element.selected_source.getURI( this.seek_time_sec );
+	},
 	setSliderValue: function(perc, hide_progress){
 		
 		//js_log('setSliderValue:'+perc+' ct:'+ this.currentTime);
@@ -2740,6 +2761,9 @@ embedVideo.prototype = {
 		//update the playback progress bar
 		if( ! hide_progress ){
 			$j('#mv_seeker_' + this_id + ' .mv_playback').css("width",  Math.round( val + (this.mv_seeker_width*.5) ) + 'px' );
+		}else{
+			//hide the progress bar
+			$j('#mv_seeker_' + this_id + ' .mv_playback').css("width", "0px");
 		}
 		
 		//update the buffer progress bar (if available )
@@ -2756,21 +2780,23 @@ embedVideo.prototype = {
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
 	},
 	highlightPlaySection:function(options){
-		js_log('highlightPlaySection');
-		
+		js_log('highlightPlaySection');		
 		var this_id = (this.pc)?this.pc.pp.id:this.id;
 		var dur = this.getDuration();
 		var hide_progress = true;
 		//set the left percet and update the slider: 
 		rel_start_sec = ( ntp2seconds( options['start']) - this.start_offset );
-		if( rel_start_sec < 0 ){
-			left_perc =0; 
-			
+		
+		if( rel_start_sec <= 0 ){
+			left_perc =0; 			
+			options['start'] = seconds2ntp( this.start_offset );
+			rel_start_sec=0;
 			this.setSliderValue( 0 , hide_progress);
 		}else{
 			left_perc = parseInt( (rel_start_sec / dur)*100 ) ;
 			this.setSliderValue( (left_perc / 100) , hide_progress); 
 		}			
+		
 		width_perc = parseInt( (( ntp2seconds( options['end'] ) - ntp2seconds( options['start'] ) ) / dur)*100 ) ; 							
 		if( (width_perc + left_perc) > 100 ){
 			width_perc = 100 - left_perc; 
@@ -2780,14 +2806,19 @@ embedVideo.prototype = {
 			'left':left_perc+'%',
 			'width':width_perc+'%',			
 		}).show();				
+		
 		this.jump_time =  options['start'];
-		this.seek_time_sec = ntp2seconds( options['start']);		
-		this.setStatus( getMsg('seek_to')+' '+this.jump_time );    
-		this.updateThumbTime( ntp2seconds( this.jump_time ) );	
+		this.seek_time_sec = ntp2seconds( options['start']);
+		//trim output to 
+		this.setStatus( getMsg('seek_to')+' '+ seconds2ntp( this.seek_time_sec ) );
+		js_log('DO update: ' +  this.jump_time);
+		this.updateThumbTime( rel_start_sec );	
 	},
 	hideHighlight:function(){
 		var this_id = (this.pc)?this.pc.pp.id:this.id;
 		$j('#mv_seeker_' + this_id + ' .mv_highlight').hide();
+		this.setStatus( this.getTimeReq() );
+		this.setSliderValue( 0 );
 	},
 	setStatus:function(value){
 		var id = (this.pc)?this.pc.pp.id:this.id;
@@ -2832,7 +2863,7 @@ function seconds2ntp(sec){
 	return hours+":"+minutes+":"+seconds;
 }
 /* 
- * takes hh:mm:ss input returns number of seconds 
+ * takes hh:mm:ss,ms or  hh:mm:ss.ms input returns number of seconds 
  */
 function ntp2seconds(ntp){
 	if(!ntp){		
@@ -2843,6 +2874,8 @@ function ntp2seconds(ntp){
 	if(times.length!=3){		
 		return js_log('ntp2seconds:not valid ntp:'+ntp);
 	}
+	//sometimes the comma is used inplace of pereid for ms
+	times[2] = times[2].replace(/,\s?/,'.');
 	//return seconds float (ie take seconds float value if present):
 	return parseInt(times[0]*3600)+parseInt(times[1]*60)+parseFloat(times[2]);
 }

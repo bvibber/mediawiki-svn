@@ -286,7 +286,13 @@ div.floatleft, table.floatleft {
 	margin: -13px 0 0 0px;
 	cursor: pointer;
 }
-
+.tt_highlight{
+	border: solid thin blue;
+	background: #CCC;
+}
+.mvttseek{
+	cursor:pointer;
+}
 .large_play_button {
 	background: url(images/player_big_play_button.png) 0 0 no-repeat;
     display:block;

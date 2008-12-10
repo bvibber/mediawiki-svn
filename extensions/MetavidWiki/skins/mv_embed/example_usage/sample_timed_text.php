@@ -11,21 +11,21 @@ Click on the little lower right "CC" icon to expose the timed text
 <?php
 run_examples();
 function run_examples(){
-
+$examples = Array();
 //set up tags for easy display:
 $roe_url = 'http://metavid.org/w/index.php?title=Special:MvExportStream&stream_name=House_proceeding_07-18-06_00&t=1:23:16/1:23:44&feed_format=roe';
 $examples[] = array(  'tag'  => '<video roe="'.$roe_url.'" ></video>',
 					  'desc' => 'Metavid based ROE file using CMML<br> ' .
 					  	'<iframe width="500" height="300" src="'.$roe_url.'" ></iframe>'
 				);
-
+$examples = Array();
 $srt_tag = ''.
-'<video src="sample_fish.ogg" poster="sample_fish.jpg">
+'<video src="sample_fish.ogg" poster="sample_fish.jpg" duration="26">
  	<text category="SUB" lang="en" type="text/x-srt" default="true"
- 		src="sample_fish_text_en.srt">
+ 		title="english SRT subtitles" src="sample_fish_text_en.srt">
  	</text>
  	<text category="SUB" lang="es" type="text/x-srt"
- 	 	src="sample_fish_text_es.srt">
+ 	 	title="spanish SRT subtitles" src="sample_fish_text_es.srt">
  	</text>
 </video>';
 $examples[] = array(  'tag'  => $srt_tag,

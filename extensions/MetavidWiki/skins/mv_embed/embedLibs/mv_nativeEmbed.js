@@ -25,6 +25,7 @@ var nativeEmbed = {
     	//we want to let mv_embed handle the controls so notice the absence of control attribute
     	// controls=false results in controls being displayed: 
     	//http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-August/016159.html    	
+    	js_log("play url:" + this.getURI( this.seek_time_sec ));
 		return '<video ' +
 					'id="'+this.pid + '" ' +
 					'style="width:'+this.width+'px;height:'+this.height+'px;" ' +

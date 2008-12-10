@@ -292,7 +292,7 @@ var mv_stream_interface = {
 				//js_log('vid elm is playing delay restore:')			
 				if(!vid_elm.userSlide){ //dont' restore if userSlide is true			
 					if( ! this.monitorTimerId ){				    	
-				        this.monitorTimerId = setInterval('mv_stream_interface.doRestore()', 250);
+				       // this.monitorTimerId = setInterval('mv_stream_interface.doRestore()', 250);
 				    }
 				}
 			}else{
@@ -395,6 +395,8 @@ function mv_disp_add_mvd(mvd_type){
 		return ;
 	}
 	mv_open_edit_mvd=mvd_type;
+	$j('#embed_vid').get(0).preview_mode=true;//turn on clip preivew mode:
+	
 	sajax_request_type='GET';
 	sajax_do_call( "mv_add_disp",[wgTitle, mvd_type, org_vid_time_req], f );
 	//insert before the first mvd:	
@@ -492,7 +494,9 @@ function mv_disp_mvd(titleKey, mvd_id){
 	}
 	//free the editor slot:
 	js_log('mv_disp_mvd: nset mv_open_edit_mvd');
-	mv_open_edit_mvd=null;
+	mv_open_edit_mvd=null;	
+	$j('#embed_vid').get(0).preview_mode=false;//turn off clip preivew mode:
+	
 	function f( request ) {
   		result= request.responseText;
   		if (request.status != 200) result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";
@@ -529,12 +533,11 @@ function mv_history_disp(titleKey, mvd_id){
 }*/
 
 /* non-ajax preview of clip adjustment*/
-function mv_adjust_preview(mvd_id){
-	
-	
+function mv_adjust_preview(mvd_id){		
 	js_log('start val:#mv_start_hr_'+mvd_id+' ' + $j('#mv_start_hr_'+mvd_id).val() + ' end:'+ $j('#mv_end_hr_'+mvd_id).val() );
-	
+	$j('#embed_vid').get(0).hideHighlight();
 	$j('#embed_vid').get(0).stop();
+	$j('#embed_vid').get(0).preview_mode=true;
 	mv_lock_vid_updates=false;
 	do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
 	mv_lock_vid_updates=true;
@@ -764,7 +767,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 	//do edit action specific calls:
 	switch(edit_action){
 		case 'save':
-			var setHtmlId ='#mv_fcontent_'+mvd_id;
+			var setHtmlId ='#mv_fcontent_'+mvd_id;			
 		break;
 		case 'preview':
 			mv_lock_vid_updates=true;
@@ -863,6 +866,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 			mv_lock_vid_updates=false;
 			//free the editor slot:
 			mv_open_edit_mvd=null;
+			$j('#embed_vid').get(0).preview_mode=false;//turn off clip preivew mode:
         }
 	}
 	//return false to prevent the form being submitted

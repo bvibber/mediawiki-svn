@@ -221,10 +221,10 @@ var vlcEmbed = {
         if( this.duration > 0 || this.vlc.input.time > 0){                             				     					
 			this.start_offset=this.media_element.selected_source.start_offset;		
 			
-			//if we have media duration procceed
+			//if we have media duration proceed
 			if(this.duration){
 			//as long as the user is not interacting with the playhead update:
-				if(! this.userSlide){									
+				if(! this.userSlide){
 					//slider pos is not accurate with flash: 
 					if(this.vlc.input.position!=0 && this.media_element.selected_source.mime_type!='video/x-flv'){
 						/*js_log(' set slider via input.position: ' + 
@@ -238,7 +238,7 @@ var vlcEmbed = {
 							' ='+  ((this.vlc.input.time/1000)-this.start_offset)/this.duration );
 						*/
 						this.setSliderValue( ((this.vlc.input.time/1000) -this.start_offset) / this.duration);
-					}  	    
+					}
 					//js_log('set status: '+ seconds2ntp(this.currentTime) + ' e:'+seconds2ntp(this.duration+this.start_offset));    
 					this.setStatus(seconds2ntp(this.currentTime) + '/' + seconds2ntp(this.duration+this.start_offset) );					
 			   }
