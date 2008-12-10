@@ -646,6 +646,7 @@ function addGroupBoolRow( table ){
 	r = table.getElementsByTagName( 'tr' ).length;
 	startName = 'wp' + table.id;
 	var groupname = prompt( wgConfigurePromptGroup );
+	var tbody = table.getElementsByTagName( 'tbody' )[0];
 	if( groupname == null )
 		return;
 
@@ -680,7 +681,7 @@ function addGroupBoolRow( table ){
 	tr.appendChild( td1 );
 	tr.appendChild( td2 );
 	tr.appendChild( td3 );
-	table.appendChild( tr );
+	tbody.appendChild( tr );
 }
 
 /**
@@ -692,7 +693,8 @@ function addGroupBoolRow( table ){
 function removeGroupBoolRow( table, r ){
 	var trs = table.getElementsByTagName( 'tr' );
 	var tr = trs[r];
-	table.removeChild( tr );
+	var tbody = table.getElementsByTagName( 'tbody' )[0];
+	tbody.removeChild( tr );
 }
 
 /**

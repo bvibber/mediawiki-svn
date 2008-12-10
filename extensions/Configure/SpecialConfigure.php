@@ -29,8 +29,9 @@ class SpecialConfigure extends ConfigurationPage {
 		if ( $wgConfigureUpdateCacheEpoch )
 			$settings['wgCacheEpoch'] = max( $settings['wgCacheEpoch'], wfTimestampNow() );
 		$ok = $wgConf->saveNewSettings( $settings, $this->mWiki, $reason );
+		$result = $ok ? 'success' : 'failure';
 
-		$url = $this->getTitle()->getLocalURL( 'result=success' );
+		$url = $this->getTitle()->getLocalURL( "result=$result" );
 		$wgOut->redirect( $url );
 	}
 
