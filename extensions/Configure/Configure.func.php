@@ -50,8 +50,16 @@ function efConfigureAjax( $group ) {
  *
  * @param $wiki String
  */
-function efConfigureSetup( $wiki = 'default' ) {
+function efConfigureSetup( $wiki = 'default', $afterCache = false ) {
 	global $wgConf, $wgConfigureFilesPath;
+	
+	global $wgConfigureHandler;
+	if (!$afterCache && $wgConfigureHandler == 'db') {
+		// Defer to after caches are set up.
+		global $wgHooks;
+		$wgHooks['SetupAfterCache'][] = array( 'efConfigureSetupAfterCache', $wiki );
+		return;
+	}
 
 	# Create the new configuration object...
 	$oldConf = $wgConf;
@@ -69,6 +77,11 @@ function efConfigureSetup( $wiki = 'default' ) {
 	# Load the new configuration, and fill in the settings
 	$wgConf->initialise();
 	$wgConf->extract();
+}
+
+function efConfigureSetupAfterCache( $wiki ) {
+	efConfigureSetup( $wiki, true );
+	return true;
 }
 
 /**
