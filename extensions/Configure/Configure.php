@@ -131,7 +131,8 @@ $wgConfigureEditableSettings = array(
 	'wgNamespacesToBeSearchedProject', 'wgNamespacesWithSubpages', 'wgNoFollowNsExceptions', 'wgNonincludableNamespaces',
 	'wgSitemapNamespaces', 'wgAutopromote', 'wgGroupPermissions', 'wgAddGroups', 'wgRemoveGroups', 'wgGroupsAddToSelf',
 	'wgGroupsRemoveFromSelf', 'wgArticleRobotPolicies', 'wgCapitalLinks', 'wgDefaultLanguageVariant', 'wgExtraSubtitle',
-	'wgImportSources', 'wgRateLimits', 'wgAutoConfirmAge', 'wgAutoConfirmCount', 'wgMaxSigChars'
+	'wgImportSources', 'wgRateLimits', 'wgAutoConfirmAge', 'wgAutoConfirmCount', 'wgMaxSigChars', 'wgExtraNamespaces',
+	'wgLocaltimezone', 'wgExemptFromUserRobotsControl',
 );
 
 /**
@@ -163,7 +164,7 @@ $wgAvailableRights[] = 'extensions-interwiki';
 # Rights for Special:Configure
 $wgGroupPermissions['bureaucrat']['configure'] = true;
 # $wgGroupPermissions['bureaucrat']['configure-interwiki'] = true;
-# $wgGroupPermissions['developer']['configure-all'] = true;
+$wgGroupPermissions['bureaucrat']['configure-all'] = true;
 
 # Rights for Special:Extensions
 $wgGroupPermissions['bureaucrat']['extensions'] = true;
