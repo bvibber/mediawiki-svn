@@ -1008,7 +1008,7 @@ function do_video_mvd_update(mvd_id){
 		//add coloring to stream where we would play: 
 		$j('#embed_vid').get(0).highlightPlaySection({
 			'start': time_ary[1],
-			'end':	 time_ary[2],			
+			'end':	 time_ary[2]			
 		});				
 	}
 }

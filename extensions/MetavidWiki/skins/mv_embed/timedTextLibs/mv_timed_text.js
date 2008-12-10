@@ -1,6 +1,5 @@
 // text interface object (for inline display captions) 
-
-var textInterface = function(parentEmbed){
+var textInterface = function( parentEmbed ){
 	return this.init( parentEmbed );
 }
 textInterface.prototype = {
@@ -27,7 +26,7 @@ textInterface.prototype = {
 			if(!this.pe.media_element.addedROEData){
 				js_log("load roe data!");
 				$j('#mv_txt_load_'+_this.pe.id).show(); //show the loading icon
-				do_request(this.pe.roe, function(data)
+				do_request( _this.pe.roe, function(data)
 	            {         	            
 	            	//continue         	
 	            	_this.pe.media_element.addROE(data);                                      	                                              
@@ -54,18 +53,17 @@ textInterface.prototype = {
 		
 		$j.each( this.pe.media_element.sources, function(inx, source){
 			
-			if( typeof source.id == 'undefined' || source.id == null )
+			if( typeof source.id == 'undefined' || source.id == null ){
 				source.id = 'tt_' + inx;			
+			}
 			var tObj = new timedTextObj( source );			
 			//make sure its a valid timed text format (we have not loaded or parsed yet) : ( 
 			if( tObj.lib != null ){
 				js_log('adding Track: ' + source.id + ' to ' + _this.pe.id); 
-				_this.availableTracks[ source.id ] = tObj;
-				//debugger;
-				js_log( 'is : ' + source.id + ' default: ' + source.default );								
-					
+				_this.availableTracks[ source.id ] = tObj;			
+				//js_log( 'is : ' + source.id + ' default: ' + source.default );													
 				//display if requested:			
-				if( source.default == "true" ){
+				if( source['default'] == "true" ){
 					//we did set at least one track by default tag
 					default_found=true;											
 					js_log('do load timed text: ' + source.id );
@@ -75,20 +73,23 @@ textInterface.prototype = {
 				}
 			}
 		});
+		
 		//no default clip found take the first_id
-		if(!default_found)
+		if(!default_found){
 			$j.each( _this.availableTracks, function(inx, sourceTrack){				
 				_this.loadAndDisplay( sourceTrack.id );				
 				default_found=true;
 				//retun after loading first available
 				return false;
 			});
+		}
 		
 		//if nothing found anywhere update the loading icon to say no tracks found
 		if(!default_found)
 			$j('#mv_txt_load_'+_this.pe.id).html( getMsg('no_text_tracks_found') );
 		
-	},	
+		
+	},
 	loadAndDisplay: function ( track_id){
 		var _this = this;
 		$j('#mv_txt_load_'+_this.pe.id).show();//show the loading icon

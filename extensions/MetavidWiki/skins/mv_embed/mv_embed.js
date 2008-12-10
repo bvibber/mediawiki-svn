@@ -245,7 +245,7 @@ var mvEmbed = {
   /*
    * should be cleaned up ... the embedType loading should be part of load_libs above:
    */
-  check_init_done:function(){  	
+  check_init_done:function(){  	  	
   	//check if all videos are "ready to play"
   	var is_ready=true;
   	
@@ -1017,7 +1017,7 @@ function mv_embed( force_id ){
 	var loadPlaylistLib=false;
 	//set up the jQuery selector: 
 	var j_selector = 'video,playlist';
-	if(force_id!=null)
+	if( force_id!=null )
 		var j_selector = '#'+force_id;
 		
 	//process selected elements: 
@@ -1040,11 +1040,11 @@ function mv_embed( force_id ){
 			swapEmbedVideoElement( this, videoInterface );
         }else{
         	js_log( this.tagName.toLowerCase()+ ' != video' );
-        }
+        }        
         //if playlist set do load playlist
         if( this.tagName.toLowerCase() == 'playlist' )
         	loadPlaylistLib=true; 
-	});
+	});	
 	if(loadPlaylistLib){
 		js_log('f:load Playlist Lib:');
 		mvJsLoader.doLoad({'mvPlayList':'mv_playlist.js'},function(){
@@ -1711,9 +1711,7 @@ embedVideo.prototype = {
 	        }
 	    }		   
 	    if( this.duration!=null && this.duration.split(':').length >= 2)
-	    	this.duration = ntp2seconds( this.duration );
-	    
-	    js_log("DD:Init:Duration set:: "+ this.duration);
+	    	this.duration = ntp2seconds( this.duration );	    
 	        	
 	    //if style is set override width and height
 	    var dwh = mv_default_video_size.split('x');
@@ -2255,11 +2253,11 @@ embedVideo.prototype = {
 	},
 	updateThumbTime:function( float_sec ){
 		var _this = this;									   				
-		if( typeof org_thum_src=='undefined' ){		
-			org_thum_src = this.media_element.getThumbnailURL();
+		if( typeof this.org_thum_src=='undefined' ){		
+			this.org_thum_src = this.media_element.getThumbnailURL();
 		}							
-		if( org_thum_src.indexOf('t=') !== -1){
-			this.last_thumb_url = getUpdateTimeURL(org_thum_src,seconds2ntp( float_sec + parseInt(this.start_offset)));									
+		if( this.org_thum_src.indexOf('t=') !== -1){
+			this.last_thumb_url = getUpdateTimeURL(this.org_thum_src,seconds2ntp( float_sec + parseInt(this.start_offset)));									
 			if(!this.thumbnail_updating){				
 				this.updateThumbnail(this.last_thumb_url ,false);
 				this.last_thumb_url =null;
@@ -2787,15 +2785,19 @@ embedVideo.prototype = {
 		//set the left percet and update the slider: 
 		rel_start_sec = ( ntp2seconds( options['start']) - this.start_offset );
 		
+		var slider_perc=0;
 		if( rel_start_sec <= 0 ){
 			left_perc =0; 			
 			options['start'] = seconds2ntp( this.start_offset );
-			rel_start_sec=0;
+			rel_start_sec=0;			
 			this.setSliderValue( 0 , hide_progress);
 		}else{
-			left_perc = parseInt( (rel_start_sec / dur)*100 ) ;
-			this.setSliderValue( (left_perc / 100) , hide_progress); 
+			left_perc = parseInt( (rel_start_sec / dur)*100 ) ;		
+			slider_perc = (left_perc / 100);
 		}			
+		if( ! this.isPlaying() ){
+			this.setSliderValue( slider_perc , hide_progress);		
+		}
 		
 		width_perc = parseInt( (( ntp2seconds( options['end'] ) - ntp2seconds( options['start'] ) ) / dur)*100 ) ; 							
 		if( (width_perc + left_perc) > 100 ){
@@ -2804,7 +2806,7 @@ embedVideo.prototype = {
 		//js_log('should hl: '+rel_start_sec+ '/' + dur + ' re:' + rel_end_sec+' lp:'  + left_perc + ' width: ' + width_perc);	
 		$j('#mv_seeker_' + this_id + ' .mv_highlight').css({
 			'left':left_perc+'%',
-			'width':width_perc+'%',			
+			'width':width_perc+'%'			
 		}).show();				
 		
 		this.jump_time =  options['start'];
@@ -3094,7 +3096,7 @@ function js_log(string){
      }
      if(log_elm){
      	log_elm.value+=string+"\n";
-     } */ 
+     }*/ 
          
    }
    //return false

@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>sample mv embed</title>
- 	<script type="text/javascript" src="../mv_embed.js"></script> 	
+ 	<script type="text/javascript" src="../mv_embed.js"></script> 	 	 
 </head>
 <body>
 <h3> Mv_Embed Timed Text Examples:</h3>
@@ -15,8 +15,9 @@ $examples = Array();
 //set up tags for easy display:
 $roe_url = 'http://metavid.org/w/index.php?title=Special:MvExportStream&stream_name=House_proceeding_07-18-06_00&t=1:23:16/1:23:44&feed_format=roe';
 $examples[] = array(  'tag'  => '<video roe="'.$roe_url.'" ></video>',
-					  'desc' => 'Metavid based ROE file using CMML<br> ' .
-					  	'<iframe width="500" height="300" src="'.$roe_url.'" ></iframe>'
+					  'desc' => 'Metavid based ROE file using CMML<br> <pre>' .
+						htmlspecialchars('<video roe="'.$roe_url.'" ></video>'). '</pre>'.
+					  	'<iframe width="600" height="250" src="'.$roe_url.'" ></iframe>'
 				);
 $srt_tag = ''.
 '<video src="sample_fish.ogg" poster="sample_fish.jpg" duration="26">
@@ -28,7 +29,7 @@ $srt_tag = ''.
  	</text>
 </video>';
 $examples[] = array(  'tag'  => $srt_tag,
-					  'desc' => '<h4>SRT text tags with languages and categories</h4><br> ' .
+					  'desc' => '<h4>SRT text tags with languages and categories (ogg only)</h4><br> ' .
 					  	'<pre>' . htmlspecialchars( $srt_tag ) . '</pre>'
 				);
 
