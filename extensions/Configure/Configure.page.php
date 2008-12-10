@@ -1249,10 +1249,8 @@ abstract class ConfigurationPage extends SpecialPage {
 		
 		## Only the class is customised per-cell, so we'll just redefine that.
 		$attribs['class'] = 'configure-right-column';
-		if ( $this->isSettingAvailable( $conf ) )
-			$td2 = Xml::tags( 'td', $attribs, $this->buildInput( $conf, $params ) );
-		else
-			$td2 = Xml::tags( 'td', $attribs, wfMsgExt( 'configure-setting-not-available', array( 'parseinline' ) ) );
+	    
+		$td2 = Xml::tags( 'td', $attribs, $this->buildInput( $conf, $params ) );
 
 		return Xml::tags( 'tr', array( 'class' => implode( ' ', $rowClasses ) ), $td1 . $td2 ) . "\n";
 	}
@@ -1332,6 +1330,8 @@ abstract class ConfigurationPage extends SpecialPage {
 						$show = $this->mCanEdit ?
 							( isset( $params['edit'] ) ? $params['edit'] : $this->userCanEdit( $setting ) ) :
 							( isset( $params['read'] ) ? $params['read'] : $this->userCanRead( $setting ) );
+
+						$show = $show && $this->isSettingAvailable( $setting );
 						if ( $show ) {
 							$thisGroup .= $this->buildTableRow( $setting, $params );
 						} else {
