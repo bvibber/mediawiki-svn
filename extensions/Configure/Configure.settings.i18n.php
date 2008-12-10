@@ -480,7 +480,6 @@ $messages['en'] = array(
 	'configure-setting-wgDiff3' => "Path to the GNU diff3 utility",
 	'configure-setting-wgFavicon' => "URL of the site favicon",
 	'configure-setting-wgLogo' => "URL of the site logo",
-	'configure-setting-wgNullFile' => "Path to null output",
 	'configure-setting-wgMathDirectory' => "File system path of the directory containing LaTeX math images",
 	'configure-setting-wgMathPath' => "URL base of the directory containing LaTeX math images",
 	'configure-setting-wgRedirectScript' => "URL of redirect.php, needed for backwards compatibility",

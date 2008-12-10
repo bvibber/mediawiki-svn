@@ -138,7 +138,6 @@ $settings = array(
 		'external-tools' => array(
 			'wgDiff' => 'text',
 			'wgDiff3' => 'text',
-			'wgNullFile' => 'text',
 			'wgPhpCli' => 'text',
 			'wgTexvc' => 'text',
 			'wgExternalDiffEngine' => 'text',
@@ -840,7 +839,6 @@ $arrayDefs = array(
 $emptyValues = array(
 	'wgAppleTouchIcon' => false,
 	'wgVariantArticlePath' => false,
-	'wgNullFile' => false,
 	'wgDBerrorLog' => null,
 	'wgSearchType' => null,
 	'wgSharedDB' => null,
@@ -901,7 +899,6 @@ $editRestricted = array(
 	'wgDiff',
 	'wgDiff3',
 	'wgFavicon',
-	'wgNullFile',
 	'wgMathDirectory',
 	'wgMathPath',
 	'wgProto',
@@ -1103,7 +1100,6 @@ $settingsVersion = array(
 	'wgImageMagickTempDir' => array( array( '1.14alpha', '>=' ) ),
 	'wgNamespacesToBeSearchedProject' => array( array( '1.14alpha', '>=' ) ),
 	'wgUsePrivateIPs' => array( array( '1.14alpha', '>=' ) ),
-	'wgNullFile' => array( array( '1.14alpha', '>=' ) ),
 # Obsolete
 	'wgAjaxSearch' => array( array( '1.14alpha', '<' ) ),
 );
