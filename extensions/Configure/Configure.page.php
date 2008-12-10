@@ -884,7 +884,10 @@ abstract class ConfigurationPage extends SpecialPage {
 		if ( $type == 'image-url' ) {
 			if ( !$allowed )
 				return '<code>' . htmlspecialchars( (string)$default ) . '</code>';
-			return Xml::input( "wp$conf", 45, (string)$default, array( 'class' => 'image-selector', 'id' => 'image-url-textbox-'.$conf ) ) . '&nbsp;' .
+			return wfMsgExt( 'configure-image-url-explanation', 'parseinline' ) . '<br/>' .
+				Xml::input( "wp$conf", 45, (string)$default,
+					array( 'class' => 'image-selector', 'id' => 'image-url-textbox-'.$conf )
+				) . '&nbsp;' .
 				Xml::element( 'img', array( 'id' => 'image-url-preview-'.$conf, 'src' => $default ) );
 		}
 		if ( $type == 'bool' ) {
