@@ -561,12 +561,14 @@ abstract class ConfigurationPage extends SpecialPage {
 								} else {
 									$val = $wgRequest->getCheck( $id );
 								}
-								$settings[$name][$group][$right] = $val;
+								if ($val)
+									$settings[$name][$group][$right] = true;
 							} else if ( $wgRequest->getCheck( $id ) ) {
 								$settings[$name][$group][] = $right;
 							}
 						}
 					}
+					
 					break;
 				case 'rate-limits':
 					$all = array();
@@ -1190,7 +1192,7 @@ abstract class ConfigurationPage extends SpecialPage {
 						$checked = in_array( $right, $levs );
 					$id = Sanitizer::escapeId( 'wp' . $conf . '-' . $group . '-' . $right );
 					if( $type == 'group-bool' )
-						$desc = User::getRightDescription( $right ) . " (" .Xml::element( 'tt', null, $right ) . ")";
+						$desc = User::getRightDescription( $right ) . " (" .Xml::element( 'tt', array( 'class' => 'configure-right-id' ), $right ) . ")";
 					else 
 						$desc = User::getGroupName( $right );
 					$row .= '<li>' . Xml::check( $id, $checked, $attr + array( 'id' => $id ) ) . '&nbsp;' . Xml::tags( 'label', array( 'for' => $id ), $desc ) . "</li>\n";

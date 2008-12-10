@@ -373,9 +373,14 @@ function summariseSetting( div, summary ) {
 		for( var i=0; i<labels.length; ++i ) {
 			var label = labels[i];
 			var checkbox = document.getElementById( label.htmlFor );
+			var idcandidates = label.getElementsByTagName( 'tt' );
+			var displayid = label.innerHTML;
+			if (idcandidates.length) {
+				displayid = '<tt>'+idcandidates[0].innerHTML+'</tt>'; // Ew ew ew ew ew ew
+			}
 
 			if (checkbox.checked) {
-				matches.push( label.innerHTML ); // Yuck
+				matches.push( displayid ); // Yuck
 			}
 		}
 
