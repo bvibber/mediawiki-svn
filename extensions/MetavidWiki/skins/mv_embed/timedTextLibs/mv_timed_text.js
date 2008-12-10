@@ -1,6 +1,7 @@
 // text interface object (for inline display captions) 
+
 var textInterface = function(parentEmbed){
-	return this.init(parentEmbed);
+	return this.init( parentEmbed );
 }
 textInterface.prototype = {
 	text_lookahead_time:0,
@@ -26,7 +27,7 @@ textInterface.prototype = {
 				js_log("load roe data!");
 				var _this = this;
 				do_request(this.pe.roe, function(data)
-	            {            	            
+	            {         	            
 	            	//continue         	
 	            	_this.pe.media_element.addROE(data);                                      	                                              
 	                _this.getParseCMML_rowReady();                       
@@ -35,13 +36,20 @@ textInterface.prototype = {
 				js_log('row data ready (no roe request)');
 				this.getParseTimedText_rowReady();
 			}						
-		}else{
-			js_log('no roe data to get text transcript from');
+		}else{			
+			if( this.pe.media_element.timedTextSources() ){
+				this.getParseTimedText_rowReady();
+			}else{
+				js_log('no roe data or timed text sources');
+			}
 		}		
 	},
 	getParseTimedText_rowReady: function (){
 		_this = this;		
-		//create timedTextObj
+		//create timedTextObj		
+		var default_found=false; 
+		$j('#mv_txt_load_'+_this.pe.id).show(); //show the loading icon
+		
 		$j.each( this.pe.media_element.sources, function(inx, source){
 			if( typeof source.id == 'undefined' )
 				source.id = 'tt_' + inx;			
@@ -50,32 +58,51 @@ textInterface.prototype = {
 			if( tObj.lib != null ){
 				_this.availableTracks[ source.id ] = tObj;
 				//debugger;
-				js_log( 'is : ' + source.id + ' default: ' + source.default );
-				
+				js_log( 'is : ' + source.id + ' default: ' + source.default );								
+					
 				//display if requested:			
 				if( source.default == "true" ){
-					if( _this.availableTracks.length == 1)
-						$j('#mv_txt_load_'+_this.pe.id).show(); //show the loading icon
+					//we did set at least one track by default tag
+					default_found=true;											
 					js_log('do load timed text: ' + source.id );
-					_this.availableTracks[ source.id ].load( _this.default_time_range, function(){
-						//hide the loading icon
-						$j('#mv_txt_load_'+_this.pe.id).fadeOut('fast');
-						_this.displayTrack( source.id );
-					});				
+					_this.loadAndDisplay( source.id );	
 				}else{
 					//don't load the track and don't display														
 				}
 			}
 		});
-	},
-	displayTrack: function( track_id ){
-		js_log('f:displayTrack');
+		//no default clip found take the first_id
+		if(!default_found)
+			$j.each( _this.availableTracks, function(inx, sourceTrack){
+				_this.loadAndDisplay( sourceTrack.id );				
+				default_found=true;
+				//retun after loading first available
+				return false;
+			});
+		
+		//if nothing found anywhere update the loading icon to say no tracks found
+		if(!default_found)
+			$j('#mv_txt_load_'+_this.pe.id).html( getMsg('no_text_tracks_found') );
+		
+	},	
+	loadAndDisplay: function ( track_id){
 		var _this = this;
+		_this.availableTracks[ track_id ].load(_this.default_time_range, function(){
+			//hide the loading icon
+			$j('#mv_txt_load_'+_this.pe.id).hide();
+			_this.addTrack( track_id );
+		});	
+	},
+	addTrack: function( track_id ){
+		js_log('f:displayTrack:'+ track_id);
+		var _this = this;
+		//set the display flag to true:
+		_this.availableTracks[ track_id ].display=true;
 		//setup the layout:
 		this.setup_layout();
 		$j.each(_this.availableTracks[ track_id ].textNodes, function(inx, text_clip){
 			_this.add_merge_text_clip( text_clip );
-		});
+		});		
 	},
 	add_merge_text_clip:function(text_clip){
 		//make sure the clip does not already exist:
@@ -120,9 +147,8 @@ textInterface.prototype = {
 		//display the interface if not already displayed:  
 		$j('#metaBox_'+this.pe.id).fadeIn("fast");		
 		//start the autoscroll timer:
-		if( this.autoscroll ){
-			_this.setAutoScroll();
-		}
+		if( this.autoscroll )
+			this.setAutoScroll();
 	},
 	close:function(){
 		//the meta box:
@@ -135,39 +161,36 @@ textInterface.prototype = {
 				'style="position:absolute;top:20px;left:0px;' +
 				'right:0px;bottom:0px;' +
 				'height:'+(this.pe.height-20)+
-				'px;overflow:auto;"><span id="mv_txt_load_' + _this.pe.id + '">'+
+				'px;overflow:auto;"><span id="mv_txt_load_' + this.pe.id + '">'+
 					getMsg('loading_txt')+'</span>' +
 				'</div>';
 	},
 	getTsSelect:function(){
+		var _this = this;
 		js_log('getTsSelect');
-		//check if menu already present
-		if($j('mvtsel_'+this.pe.id).length!=0){
-			$j('mvtsel_'+this.pe.id).fadeIn('fast');
-		}else{
-			var selHTML = '<div id="mvtsel_'+this.pe.id+'" style="position:absolute;background:#FFF;top:20px;left:0px;right:0px;bottom:0px;overflow:auto;">';
-			selHTML+='<b>'+getMsg('select_transcript_set')+'</b><ul>';
-			for(var i in this.availableTracks){ //for in loop ok on object
-				var checked = (this.availableTracks[i].display)?'checked':'';
-				selHTML+='<li><input name="'+i+'" class="mvTsSelect" type="checkbox" '+checked+'>'+
-					this.availableTracks[i].title + '</li>';
-			}
-			selHTML+='</ul>' +
-						'<a href="#" onClick="document.getElementById(\''+this.pe.id+'\').textInterface.applyTsSelect();return false;">'+getMsg('close')+'</a>'+
-					'</div>';
-			$j('#metaBox_'+this.pe.id).append(selHTML);
-			//js_log('appended: '+ selHTML);
+		//check if menu already present		
+		var selHTML = '<div id="mvtsel_' + this.pe.id + '" style="position:absolute;background:#FFF;top:20px;left:0px;right:0px;bottom:0px;overflow:auto;">';
+		selHTML+='<b>' + getMsg('select_transcript_set') + '</b><ul>';
+		for(var i in _this.availableTracks){ //for in loop ok on object
+			var checked = (_this.availableTracks[i].display)?'checked':'';
+			selHTML+='<li><input name="'+i+'" class="mvTsSelect" type="checkbox" ' + checked + '>'+
+				_this.availableTracks[i].getTitle() + '</li>';
 		}
+		selHTML+='</ul>' +
+					'<a href="#" onClick="document.getElementById(\'' + this.pe.id + '\').textInterface.applyTsSelect();return false;">'+getMsg('close')+'</a>'+
+				'</div>';
+		$j('#metaBox_'+_this.pe.id).append( selHTML );
 	},
 	applyTsSelect:function(){
-		//update availableTracks
 		var _this = this;
+				
+		//update availableTracks		
 		$j('#mvtsel_'+this.pe.id+' .mvTsSelect').each(function(){
 			if(this.checked){
 				var track_id = this.name;
 				//if not yet loaded now would be a good time
 				if(! _this.availableTracks[ track_id ].loaded ){
-					_this.availableTracks[ track_id ].load(  )
+					_this.loadAndDisplay( track_id);
 				}else{
 					_this.availableTracks[this.name].display=true;
 					$j('#mmbody_'+_this.pe.id +' .'+this.name ).fadeIn("fast");
@@ -178,8 +201,8 @@ textInterface.prototype = {
 					$j('#mmbody_'+_this.pe.id +' .'+this.name ).fadeOut("fast");
 				}
 			}
-		});
-		$j('#mvtsel_'+this.pe.id).fadeOut('fast');
+		});		
+		$j('#mvtsel_'+_this.pe.id).fadeOut("fast").remove();
 	},
 	monitor:function(){
 		//grab the time from the video object
@@ -254,6 +277,7 @@ var timedTextObj = function( source ){
 			this.lib = 'CMML';
 		break;
 		case 'text/srt':
+		case 'text/x-srt':
 			this.lib = 'SRT';
 		break;		
 		default:			
@@ -275,11 +299,16 @@ timedTextObj.prototype = {
 	lib:null,
 	display: false,
 	textNodes:new Array(),
-	init: function( source ){		
-		js_log('init: timedTextObj');
-		this.src 	= source.src;
-		this.title 	= source.title;		
-		this.id 	= source.id;
+	init: function( source ){			
+		//copy source properties	
+		this.source = source;
+		this.id = source.id;
+	},
+	getTitle:function(){
+		return this.source.title;
+	},
+	getSRC:function(){		
+		return this.source.src;
 	}
 }
 
@@ -292,7 +321,7 @@ timedTextCMML = {
 		
 		//:: Load transcript range :: (currently disabled) 
 		
-		/*var pcurl =  parseUri( track.src );
+		var pcurl =  parseUri( _this.getSRC() );
 		var req_time = pcurl.queryKey['t'].split('/');
 		req_time[0]=ntp2seconds(req_time[0]);
 		req_time[1]=ntp2seconds(req_time[1]);
@@ -308,9 +337,8 @@ timedTextCMML = {
 			}else{
 				url+= 't=' + seconds2ntp(req_time[0]) + '/' + seconds2ntp(req_time[1]) + '&';
 			}
-		});
-		*/									
-		do_request( _this.src, function(data){			
+		});							
+		do_request( url, function(data){			
 			js_log("load track clip count:" + data.getElementsByTagName('clip').length );						
 			_this.doParse( data );		
 			_this.loaded=true;	
@@ -334,15 +362,44 @@ timedTextCMML = {
 					text_clip.body = bn.text;
 				}
 			});			
-			_this.textNodes.push(	 text_clip );
+			_this.textNodes.push( text_clip );
 		});	
 	}
 }
 timedTextSRT = {
-	init: function(){
-		js_log('init: SRT');
+	load: function( range, callback ){
+		var _this = this;
+		js_log('textSRT: loading : '+ _this.getSRC() );
+		do_request( _this.getSRC() , function(data){
+			js_log("data: " + data);
+			_this.doParse( data );
+			_this.loaded=true;	
+			callback();
+		});
 	},
-	doParse: function(){
-	
-	}
+	doParse:function( data ){
+		//split up the transcript chunks: 			
+	    var tc = data.split('\n\n');	    
+	    for(var s=0; s < tc.length ; s++) {	    	
+			var st = tc[s].split('\n');
+			if(st.length >=2) {
+				var n = st[0];	         
+				var i = st[1].split(' --> ')[0].replace(/^\s+|\s+$/g,"");	        
+				var o = st[1].split(' --> ')[1].replace(/^\s+|\s+$/g,"");
+				var t = st[2];
+				if(st.length > 2) {
+					for(j=3; j<st.length;j++)
+					t += '\n'+st[j];
+				}	          
+				var text_clip = {
+					"start": i,
+					"end": o,
+					"type_id": _this.id,
+					"id": n,
+					"body": t
+				}
+				this.textNodes.push( text_clip );
+		     }
+	    }	
+	}	
 }

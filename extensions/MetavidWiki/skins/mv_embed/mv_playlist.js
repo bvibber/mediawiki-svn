@@ -1122,17 +1122,12 @@ PlMvEmbed.prototype = {
 		var plEmbed = this;
 		var plObj = this.pc.pp;	
 		//check if we are already playing
-		if(!this.thumbnail_disp){
+		if( !this.thumbnail_disp ){
 			plEmbed.pe_play();	
 			return '';
 		}
 		mv_lock_vid_updates=true; 
-		//if we have controls expand dc so we can display them 
-		/*if(plObj.controls){
-			$j('#dc_'+plObj.id).animate({
-				height:(parseInt(plObj.height)+80)
-			},"slow");
-		}*/
+
 		js_log('controls: '+plObj.controls);
 		//fade out interface elements
 		/*$j('#big_play_link_'+this.id+',#seqThumb_'+plObj.id+',#pl_desc_txt_'+this.pc.id).fadeOut("slow");*/				

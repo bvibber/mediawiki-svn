@@ -1569,8 +1569,8 @@ var flashEmbed = {
 			this.pid = this.pid +'_'+ this.old_pid;
 		}				
 		return '<a  '+
-					'href="'+this.media_element.selected_source.getURI( this.seek_time_sec ) + '" '+  
-				    'style="display:block;width:' + this.width + ';height:' + this.height + '" '+  
+					'href="'+ this.media_element.selected_source.getURI( this.seek_time_sec ) + '" '+  
+				    'style="display:block;width:' + parseInt(this.width) + 'px;height:' + parseInt(this.height) + 'px" '+  
 				    'id="'+this.pid+'">'+ 
 				'</a>';
     },

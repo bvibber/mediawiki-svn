@@ -108,7 +108,7 @@ var nativeEmbed = {
 	 */
 	oncanplaythrough : function(){		
 		js_log("f:oncanplaythrough start playback");			
-		this.play();
+		//this.play();
 	},
 	onloadedmetadata: function(){
 		js_log('f:onloadedmetadata get duration: ' +this.vid.duration);

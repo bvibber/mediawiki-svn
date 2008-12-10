@@ -561,10 +561,12 @@ var ctrlBuilder = {
     	$j.each( embedObj.supports, function( i, sup ){
     		_this.supports[i] = embedObj.supports[i];
     	});
-    		
+    		    	
     	//special case vars: 
-    	if(embedObj.roe && embedObj.show_meta_link)
+    	if( ( embedObj.roe || embedObj.media_element.timedTextSources() )  
+    			&& embedObj.show_meta_link  )
     		this.supports['closed_captions']=true;   
+    	
     		
     	//append options to body (if not already there)
 		if($j('#mv_embedded_options_'+ctrlBuilder.id).length==0)
@@ -618,7 +620,7 @@ var ctrlBuilder = {
         		//@@todo get the -14 number from the skin somehow
         		var perc = (($j('#mv_seeker_slider_'+embedObj.id).get(0).offsetLeft-embedObj.base_seeker_slider_offset)
 						/
-					($j('#mv_seeker_'+embedObj.id).width()-14));   							
+					($j('#mv_seeker_'+embedObj.id).width()-14));   															
 									 													
 				embedObj.jump_time = seconds2ntp(parseInt(embedObj.getDuration()*perc)+ embedObj.start_time_sec);	
 				//js_log('perc:' + perc + ' * ' + embedObj.getDuration() + ' jt:'+  this.jump_time);
@@ -713,6 +715,7 @@ var ctrlBuilder = {
                     '			<div id="mv_seeker_slider_'+ctrlBuilder.id+'" class="seeker_slider"></div>'+
                     '			<div class="mv_progress mv_playback"></div>'+
                     '			<div class="mv_progress mv_buffer"></div>'+
+                    '			<div class="mv_progress mv_highlight"></div>'+
                     '			<div class="seeker_bar_close"></div>'+
                     '		</div>'+            
                     '	</div><!--seeker-->'
@@ -1413,11 +1416,10 @@ mediaElement.prototype =
             
         // Process all inner <source> elements    
         //js_log("inner source count: " + video_element.getElementsByTagName('source').length );
-        $j.each(video_element.getElementsByTagName('source'), function(inx, inner_source)
-        {
-        	//js_log(' on inner source: '+i + ' obj: '+ inner_source);
-            _this.tryAddSource(inner_source);
-        });                   
+        
+        $j(video_element).children('source,text').each(function(inx, inner_source){        	
+        	_this.tryAddSource( inner_source );
+        });                          
     },
     /** Updates the time request for all sources that have a standard time request argument (ie &t=start_time/end_time)
      */
@@ -1426,6 +1428,15 @@ mediaElement.prototype =
     	$j.each(this.sources, function(inx, mediaSource){
     		mediaSource.updateSrcTime(start_ntp, end_ntp);
     	});
+    },
+    /*timed Text check*/
+    timedTextSources:function(){
+    	for(var i=0; i < this.sources.length; i++){    		
+    		if(	this.sources[i].mime_type == 'text/cmml' ||
+    			this.sources[i].mime_type == 'text/x-srt')
+    				return true;    			    			
+    	};
+    	return false;
     },
     /** Returns the array of mediaSources of this element.
         \returns {Array} Array of mediaSource elements.
@@ -1569,7 +1580,7 @@ mediaElement.prototype =
         		return false;
         	}
         }
-        var source = new mediaSource(element);        
+        var source = new mediaSource( element );        
         this.sources.push(source);        
         //js_log('pushed source to stack'+ source + 'sl:'+this.sources.length);
     },
@@ -2146,7 +2157,7 @@ embedVideo.prototype = {
     },   
     getControlsHTML:function()
     {        	
-    	return ctrlBuilder.getControls(this);
+    	return ctrlBuilder.getControls( this );
     },	
 	getHTML : function (){		
 		//@@todo check if we have sources avaliable	
@@ -2608,6 +2619,7 @@ embedVideo.prototype = {
 			//the plugin is already being displayed			
 			this.paused=false; //make sure we are not "paused"
 		}		
+		js_log("should update play controL");
        	$j("#mv_play_pause_button_"+this.id).attr({
        		'class':'pause_button',
        		'onClick':'$j(\'#'+this_id+'\').get(0).pause()'
@@ -2712,7 +2724,8 @@ embedVideo.prototype = {
 		}
 		return null;
 	},	
-	setSliderValue: function(perc){
+	setSliderValue: function(perc, hide_progress){
+		
 		//js_log('setSliderValue:'+perc+' ct:'+ this.currentTime);
 		var this_id = (this.pc)?this.pc.pp.id:this.id;
 		//alinment offset: 
@@ -2725,7 +2738,9 @@ embedVideo.prototype = {
 		$j('#mv_seeker_slider_'+this_id).css('left', (val)+'px' );
 		
 		//update the playback progress bar
-		$j('#mv_seeker_' + this_id + ' .mv_playback').css("width",  Math.round( val + (this.mv_seeker_width*.5) ) + 'px' );
+		if( ! hide_progress ){
+			$j('#mv_seeker_' + this_id + ' .mv_playback').css("width",  Math.round( val + (this.mv_seeker_width*.5) ) + 'px' );
+		}
 		
 		//update the buffer progress bar (if available )
 		if( this.bufferedPercent!=0 ){
@@ -2739,6 +2754,40 @@ embedVideo.prototype = {
 		
 		//js_log('set#mv_seeker_slider_'+this_id + ' perc in: ' + perc + ' * ' + $j('#mv_seeker_'+this_id).width() + ' = set to: '+ val + ' - '+ Math.round(this.mv_seeker_width*perc) );
 		//js_log('op:' + offset_perc + ' *('+perc+' * ' + $j('#slider_'+id).width() + ')');
+	},
+	highlightPlaySection:function(options){
+		js_log('highlightPlaySection');
+		
+		var this_id = (this.pc)?this.pc.pp.id:this.id;
+		var dur = this.getDuration();
+		var hide_progress = true;
+		//set the left percet and update the slider: 
+		rel_start_sec = ( ntp2seconds( options['start']) - this.start_offset );
+		if( rel_start_sec < 0 ){
+			left_perc =0; 
+			
+			this.setSliderValue( 0 , hide_progress);
+		}else{
+			left_perc = parseInt( (rel_start_sec / dur)*100 ) ;
+			this.setSliderValue( (left_perc / 100) , hide_progress); 
+		}			
+		width_perc = parseInt( (( ntp2seconds( options['end'] ) - ntp2seconds( options['start'] ) ) / dur)*100 ) ; 							
+		if( (width_perc + left_perc) > 100 ){
+			width_perc = 100 - left_perc; 
+		}		
+		//js_log('should hl: '+rel_start_sec+ '/' + dur + ' re:' + rel_end_sec+' lp:'  + left_perc + ' width: ' + width_perc);	
+		$j('#mv_seeker_' + this_id + ' .mv_highlight').css({
+			'left':left_perc+'%',
+			'width':width_perc+'%',			
+		}).show();				
+		this.jump_time =  options['start'];
+		this.seek_time_sec = ntp2seconds( options['start']);		
+		this.setStatus( getMsg('seek_to')+' '+this.jump_time );    
+		this.updateThumbTime( ntp2seconds( this.jump_time ) );	
+	},
+	hideHighlight:function(){
+		var this_id = (this.pc)?this.pc.pp.id:this.id;
+		$j('#mv_seeker_' + this_id + ' .mv_highlight').hide();
 	},
 	setStatus:function(value){
 		var id = (this.pc)?this.pc.pp.id:this.id;
@@ -2843,7 +2892,9 @@ function do_api_req(req_param, api_url, callback){
 //do a "normal" request (should be deprecated via extending the mediaWiki API) 
 function do_request(req_url, callback){
  	js_log('do request: ' + req_url);
-		if( parseUri(document.URL).host == parseUri(req_url).host){
+ 		//if we are doing a request to the same domain or relative link do a normal GET: 
+		if( parseUri(document.URL).host == parseUri(req_url).host ||
+			req_url == parseUri( req_url).host ){ //relative url
 			//do a direct request:
 			$j.ajax({
 				type: "GET",
@@ -2880,7 +2931,7 @@ function mv_jsdata_cb(response){
 		break;
 		case 'text/xml':
 			if(typeof response['pay_load'] == 'string'){
-				js_log('load string:'+"\n"+ response['pay_load']);
+				//js_log('load string:'+"\n"+ response['pay_load']);
 				//debugger;
 				//attempt to parse as xml for IE
 				if( embedTypes.msie ){

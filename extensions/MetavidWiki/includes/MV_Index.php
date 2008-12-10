@@ -251,43 +251,6 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 		// print "ran sql:" . $dbw->lastQuery() . "\n";
 		return true;
 	}
-	/*function doUnifiedFiltersQuery(&$filters, $metaDataIncludes=null){
-		global $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvMediaSearchResultsLimit;
-		$dbr =& wfGetDB(DB_SLAVE);
-		//init vars
-		$from_tables='';
-		$vars=	$conds= $options=array();
-
-		//set options
-		if( $mvDo_SQL_CALC_FOUND_ROWS)
-			$options['SQL_CALC_FOUND_ROWS']=true;
-		//set limit offset:
-		list( $this->limit, $this->offset ) = $wgRequest->getLimitOffset( 20, 'searchlimit' );
-		if($this->limit > $mvMediaSearchResultsLimit)$this->limit = $mvMediaSearchResultsLimit;
-		$this->order = strtolower($wgRequest->getVal('order'));
-		//force order type:
-		if( !($this->order=='relevant' || $this->order=='recent' || $this->order=='viewed') )$this->order='relevant';
-
-		foreach($filters as $f){
-			$cur_cond=$aon=$asql='';
-			//proocc and or for fulltext:
-			if(!isset($f['a']))$f['a']='and';
-			switch($f['a']){
-				case 'and':$aon='+';$asql='AND';break;
-				case 'or':$aon='';$asql='OR';break;
-				case 'not':$aon='-';$asql='NOT';break;
-			}
-
-		}
-
-
-		$result = $dbr->select( $from_tables,
-			$vars,
-			$conds,
-			__METHOD__,
-			$options);
-	}*/
-
 	function doUnifiedFiltersQuery( &$filters, $metaDataIncludes = null ) {
 		global $mvDefaultClipLength,
 		 $wgRequest, $mvDo_SQL_CALC_FOUND_ROWS, $mvMediaSearchResultsLimit;
@@ -340,16 +303,18 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 			}
 			// add to the fulltext query:
 			switch( $f['t'] ) {
+				case 'speech_by':		
 				case 'spoken_by':
+					$skey = str_replace('_', ' ', $f['t']);					
 					// skip if empty value:
 					if ( trim( $f['v'] ) == '' )continue;
 					// if we have an OR set prev to OR
 					if ( $last_person_aon == '+' && $aon == '' ) {
-						$ftq = str_replace( '+"spoken by', '"spoken by', $ftq );
+						$ftq = str_replace( '+"'.$skey, '"'.$skey, $ftq );
 						$group_spoken = false;
 					}
 					// full text based semantic query:
-					$ftq .= ' ' . $aon . '"spoken by ' . mysql_real_escape_string( $f['v'] ) . '" ';
+					$ftq .= ' ' . $aon . '"'.$skey.' ' . mysql_real_escape_string( $f['v'] ) . '" ';
 					// table based query:
 					$last_person_aon = $aon;
 					$valid_filter_count++;

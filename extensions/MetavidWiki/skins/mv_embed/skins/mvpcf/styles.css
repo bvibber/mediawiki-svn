@@ -273,6 +273,10 @@ div.floatleft, table.floatleft {
 	z-index: 2;
 	background: #99C;
 }
+.videoPlayer .seeker .mv_highlight {
+	z-index: 3;
+	background: #558;
+}
 .videoPlayer .seeker .seeker_slider {
 	background: url(images/player_slider.png) 0 0 no-repeat;
 	width: 14px;

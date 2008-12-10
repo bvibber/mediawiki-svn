@@ -86,7 +86,8 @@ var mv_stream_interface = {
 	monitorTimerId:0,
 	init:function(){
 		//don't call multiple times:
-		if(this.interfaceLoaded)return;
+		if(this.interfaceLoaded)
+			return;
 		//set interfaceLoaded flag:
 		this.interfaceLoaded=true;
 		
@@ -118,11 +119,11 @@ var mv_stream_interface = {
 				ebvid['org_eb_stop'] = ebvid['stop'];
 				ebvid['stop'] = function(){mv_do_stop();}
 			}*/
-			if(ebvid['pause'].toString()!='function(){mv_pause();}'){
+			/*if(ebvid['pause'].toString()!='function(){mv_pause();}'){
 				if(!ebvid['org_eb_pause'])
                     ebvid['org_eb_pause'] = ebvid['pause'];
 				ebvid['pause'] = function(){mv_pause();}
-			}
+			}*/
 			//use mvd images for time updates (avoids lots of arbitrary time hits to server) 
 			if(ebvid['updateThumbPerc'].toString()!='function(){return true;}'){
 				ebvid['updateThumbPerc']=function(){return true;}
@@ -261,6 +262,7 @@ var mv_stream_interface = {
 			de_highlight_tl_ts(mvd_id);
 			de_highlight_fd(mvd_id);
 			js_log('calling interface restore: ');
+			vid_elm.hideHighlight();
 			setTimeout('mv_stream_interface.doRestore()',500);
 		}else{
 			setTimeout('mv_stream_interface.mvdOut(\''+mvd_id+'\')',100);
@@ -284,7 +286,7 @@ var mv_stream_interface = {
 	 */
 	doRestore:function(){		
 		//js_log('f:doRestore');
-		var vid_elm = $j('#embed_vid').get(0);
+		var vid_elm = $j('#embed_vid').get(0);		
 		if(vid_elm){
 			if( vid_elm.isPlaying()){
 				//js_log('vid elm is playing delay restore:')			
@@ -395,14 +397,9 @@ function mv_disp_add_mvd(mvd_type){
 	mv_open_edit_mvd=mvd_type;
 	sajax_request_type='GET';
 	sajax_do_call( "mv_add_disp",[wgTitle, mvd_type, org_vid_time_req], f );
-	//insert before the first mvd:
-	//if($j('#mv_fd_mvd_new').get(0)){
-	//	$j('#mv_fd_mvd_new').html(global_loading_txt);
-	//}else{
-	//	$j('#selectionsBox').prepend('<div id="mv_fd_mvd_new">'+global_loading_txt+'</div>' );
-	//}
+	//insert before the first mvd:	
 	$j('#mv_add_new_mvd').css({display:'inline'});
-	$j('#mv_add_new_mvd').html(global_loading_txt);
+	$j('#mv_add_new_mvd').html( getMsg('loading_txt') );
 	var mvd_id='new';
 	//scroll to the new (loading) (top of mvd_cont)
 	$j('#selectionsBox').animate({scrollTop: 0}, 'slow');
@@ -452,7 +449,7 @@ function mv_edit_disp(titleKey, mvd_id){
 	 sajax_request_type='GET';
 
 	 sajax_do_call( "mv_edit_disp", [titleKey, mvd_id], f );
-	 $j('#mv_fcontent_'+mvd_id).html(global_loading_txt);
+	 $j('#mv_fcontent_'+mvd_id).html( getMsg('loading_txt') );
 	 //handle the response:
 	 function f( request ) {
 		result= request.responseText;
@@ -491,8 +488,7 @@ function mv_disp_mvd(titleKey, mvd_id){
 		//set sajax to do a GET request
 		sajax_request_type='GET';
 		sajax_do_call( "mv_disp_mvd", [titleKey, mvd_id], f );
-		div = document.getElementById('mv_fcontent_'+mvd_id);
-		div.innerHTML=global_loading_txt;
+		$j('#mv_fcontent_'+mvd_id).html( getMsg('loading_txt') );
 	}
 	//free the editor slot:
 	js_log('mv_disp_mvd: nset mv_open_edit_mvd');
@@ -501,7 +497,7 @@ function mv_disp_mvd(titleKey, mvd_id){
   		result= request.responseText;
   		if (request.status != 200) result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";
   		//fill in div
-  		div.innerHTML=result;
+  		$j('#mv_fcontent_'+mvd_id).html( result );
 	    //add_autocomplete(mvd_id);
         //add_adjust_hooks(mvd_id);
   	}
@@ -510,7 +506,7 @@ function mv_disp_mvd(titleKey, mvd_id){
 function mv_history_disp(titleKey, mvd_id){
 	 sajax_request_type='GET';
 	 sajax_do_call( "mv_history_disp", [titleKey, mvd_id], f );
-	 $j('#mv_fcontent_'+mvd_id).html(global_loading_txt);
+	 $j('#mv_fcontent_'+mvd_id).html( getMsg('loading_txt') );
 	 function f( request ) {
 		result= request.responseText;
 		if (request.status != 200) result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";
@@ -678,7 +674,7 @@ function get_titleObject(titleKey){
 function mv_disp_remove_mvd(titleKey, mvd_id){
 	 sajax_request_type='GET';
 	 sajax_do_call( "mv_disp_remove_mvd", [titleKey, mvd_id], f );
-	 $j('#mv_fcontent_'+mvd_id).html(global_loading_txt);
+	 $j('#mv_fcontent_'+mvd_id).html( getMsg('loading_txt') );
 	 function f( request ) {
 		result= request.responseText;
 		if (request.status != 200) result= "<div class='error'> " + request.status + " " + request.statusText + ": " + result + "</div>";
@@ -799,7 +795,7 @@ function mv_do_ajax_form_submit(mvd_id, edit_action){
 		}
 	}
 
-	$j(setHtmlId).html( global_loading_txt);
+	$j(setHtmlId).html( getMsg('loading_txt') );
 	//@@todo switch over to jquery ajax
 	mv_sajax_do_call('mv_edit_submit',args, f, post_vars);
 	//js_log('mv_sajax_do_call ' + fajax +' ' +  args);
@@ -894,16 +890,16 @@ function mv_do_play(mvd_id){
 	$j('#embed_vid').get(0).stop();
 	//stop any defered updates:
 	
-	//foce a given mvd if set
+	//force a given mvd if set
 	if(mvd_id){		
 		mv_lock_vid_updates=false;
 		//highlight the current / update url:
 		mv_stream_interface.mvdOver(mvd_id);
 	}	
-	
+	$j('#embed_vid').get(0).
 	//disable interface actions (mouse in out etc)
 	mv_lock_vid_updates=true;
-	//update the src if nessesary and no mvd provided:
+	//update the src if nesesary and no mvd provided:
 	if(!mvd_id){
 		if(mv_stream_interface.cur_mvd_id!=mv_stream_interface.delay_cur_mvd_id){
 			mv_stream_interface.cur_mvd_id =mv_stream_interface.delay_cur_mvd_id;
@@ -1002,7 +998,14 @@ function do_video_mvd_update(mvd_id){
 		if(!vid_elm)return '';
 		//make the play button vissable again (if its hidden) : 
 		$j('#big_play_link_embed_vid').show();
-		do_video_time_update(time_ary[1], time_ary[2],mvd_id);
+		//do_video_time_update(time_ary[1], time_ary[2],mvd_id);
+		var embedObj = $j('#embed_vid').get(0);
+		
+		//add coloring to stream where we would play: 
+		$j('#embed_vid').get(0).highlightPlaySection({
+			'start': time_ary[1],
+			'end':	 time_ary[2],			
+		});				
 	}
 }
 function do_video_time_update(start_time, end_time, mvd_id)	{
@@ -1048,7 +1051,7 @@ function do_update_thumb(mvd_id, start_time){
 }
 function mv_tool_disp(tool_id){
 	//set content to loading
-	$j('#mv_tool_cont').html( global_loading_txt);
+	$j('#mv_tool_cont').html( getMsg('loading_txt') );
 	//populate post vars with any necessary tool specific items:
 	var post_vars=new Object();
 	if(tool_id=='navigate'||tool_id=='export'){

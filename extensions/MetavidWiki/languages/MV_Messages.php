@@ -17,7 +17,7 @@ $messages['en'] = array(
 
 	'mv_warning_wiki' => '<i>Note: metavid video transcripts [[Help:FAQ#How_accurate_is_the_information.3F|may contain inaccuracies]], help us build [[Help:Participation#Improving_Archive_Accuracy|a more perfect archive]]</i>',
 
-	# stream/files key descriptions:
+# stream/files key descriptions:
 	'mv_ogg_low_quality' => 'Web streamable - Ogg Theora 300kbs',
 	'mv_ogg_high_quality' => 'High quality - Ogg Theora 900kbs',
 	'mv_flash_low_quality' => 'Web streamable - Flash video',
@@ -36,7 +36,7 @@ $messages['en'] = array(
 Please report this to the site administrator.',
 
 	'mv_stream_added' => 'You have added the stream $1',
-	# add/edit stream text:
+# add/edit stream text:
 	'mv_stream_meta' => 'Stream page',
 	'mv_add_stream' => 'Metavid add stream',
 	'mv_edit_stream' => 'Metavid edit stream',
@@ -87,7 +87,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_remove_reason' => 'Reason for deletion:',
 	'mv_stream_delete_warrning' => '<b>Removing this stream will also remove $1 pieces of associative metadata</b><br />',
 
-	# stream type
+# stream type
 	'mv_label_stream_type' => 'Stream type',
 	'mv_metavid_file' => 'Existing file on server',
 	'mv_metavid_live' => 'Set up live stream',
@@ -95,7 +95,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_external_file' => 'External file',
 	'mv_stream_delete_warning' => 'Deleting this stream will additionally remove $1 pages of metadata',
 
-	# tools
+# tools
 	'mv_tool_search' => 'Search',
 	'mv_tool_search_title' => 'Search within this stream',
 	'mv_search_transcripts_for' => 'Search videos for $1 (hide this box)',
@@ -119,7 +119,7 @@ Or you many want to <a href="$3">Add the stream</a>.',
 	'mv_interest_group_matches' => 'Interest group matches',
 	'mv_click_to_edit' => 'click to edit',
 
-	# mvd types:
+# mvd types:
 	'ht_en' => 'Transcript',
 	'ht_en_desc' => 'English transcripts.
 This overlay type is for spoken text',
@@ -130,7 +130,7 @@ This overlay can be used to categorize sections of video or to add annotative in
 	'thomas_en_desc' => 'Official Thomas Transcript from the governments THOMAS record service.
 Source time synced by C-SPAN\'s c-spanarchives.org',
 
-	# mvd errors:
+# mvd errors:
 	'mvd_default_mismatch' => 'Error in settings file',
 	'mvd_default_mismatch_text' => 'There is an error in your setting file.
 $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
@@ -138,13 +138,13 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 for $2 from $3',
 	'mv_time_separator' => '$1 to $2',
 
-	# Messages for  Special List stream
+# Messages for  Special List stream
 	'mv_list_streams' => 'Metavid list streams',
 	'mv_list_streams_page' => 'Mv list streams',
 	'mv_list_streams_docu' => 'The following streams exist:',
 	'mv_list_streams_none' => 'No streams exist',
 
-	# messages for metavid export feed:
+# messages for metavid export feed:
 	'mvvideofeed' => 'Metavid video feed export',
 	'mvexportask' => 'Semantic video feed export',
 	'video_feed_cat' => 'Video feed for category:',
@@ -152,15 +152,15 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 For all metadata in category ranges search for $1',
 	'category-media-count' => '$1 media segments in category',
 
-	# Messages for MV_DataPage
+# Messages for MV_DataPage
 	'mv_mvd_linkback' => 'Part of stream $1 <br />
 Jump to stream view: $2',
 
-	# messages for MVD pages
+# messages for MVD pages
 	'mvBadMVDtitle' => 'missing type, stream missing, or not valid time format',
 	'mvMVDFormat' => 'MVD title should be of format: mvd:type:stream_name/start_time/end_time',
 
-	# messeges for interface mvd pages:
+# messeges for interface mvd pages:
 	'mv_play' => 'Play',
 	'mv_edit' => 'Edit',
 	'mv_history' => 'History',
@@ -190,7 +190,7 @@ Jump to stream view: $2',
 	'mv_add_category' => 'Add a categorization',
 	'mv_basic_text_desc' => 'Text description (optional)',
 
-	# search
+# search
 	'mv_viewnext' => 'View ($1) ',
 	'mv_viewprevnext' => 'View ($1) ($2) ',
 	'mediasearch' => 'Media search',
@@ -229,6 +229,7 @@ Jump to stream view: $2',
 
 	'mv_match' => 'match',
 	'mv_spoken_by' => 'spoken by',
+	'mv_speech_by' => 'speech by',
 	'mv_category' => 'category',
 
 	'mv_search_no_results' => 'No media matches',
@@ -243,7 +244,7 @@ Jump to stream view: $2',
 	'mv_match_text' => '~  $1 matches',
 	'mv_match_text_one' => '~ 1 match',
 
-	# sequence text:
+# sequence text:
 	'mv_edit_sequence' => 'Editing sequence:$1',
 	'mv_sequence_player_title' => 'sequence player',
 	'mv_resource_not_found' => "Resource '''$1''' not found",
@@ -273,10 +274,10 @@ very <b>limited</b> functionality right now. Click on a Clip to edit that resour
 
 	'mv_sequence_edit_text' => 'Switch to Text Editor',
 	'mv_sequence_edit_visual_editor' => 'Switch to Visual Editor',
-	
+
 	'mv_other_options' => 'Other Options',	
 	'mv_contextmenu_opt' => 'Enable Context Menus',
-	
+
 
 	'mv_sequence_timeline' => 'Sequence timeline:',
 	'mv_edit_sequence_desc_help' => 'Sequence description',
@@ -284,7 +285,7 @@ very <b>limited</b> functionality right now. Click on a Clip to edit that resour
 	'mv_seq_summary' => 'Sequence edit summary',
 	'mv_add_clip_by_name' => 'Add clip by name',
 
-	# mv tools
+# mv tools
 	'mv_stream_resource_export' => 'Stream resources export',
 	'mv_export_cmml' => 'Export cmml',
 	'mv_search_stream' => 'Search stream',
@@ -304,7 +305,7 @@ very <b>limited</b> functionality right now. Click on a Clip to edit that resour
 	'mv_next_cat' => 'Next category: $1',
 	'mv_navigate_stream' => 'Navigate stream',
 
-	# msg for overlay interface:
+# msg for overlay interface:
 	'mv_search_stream' => 'Search stream',
 	'mv_search_stream_title' => 'Search the current stream',
 	'mv_new_ht_en' => 'New transcript',
@@ -312,7 +313,7 @@ very <b>limited</b> functionality right now. Click on a Clip to edit that resour
 	'mv_mang_layers' => 'Manage layers',
 	'mv_mang_layers_title' => 'Manage the layer display set for the current stream',
 
-	# msg for bots and maintance
+# msg for bots and maintance
 	'mv_protect_source_material' => 'Original source material protected from edits'
 );
 
@@ -1000,7 +1001,7 @@ $messages['ch'] = array(
 	'mv_edit' => 'Tulaika',
 );
 
-/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ
  * @author ОйЛ
  */
 $messages['cu'] = array(
