@@ -55,9 +55,9 @@ if ($contents =~ /^From: bugzilla-daemon/m)
 	$/ = "";
 	# extract and remove the comment section
 	my ($haschanges, $user);
-	my $comment = $contents =~ s/\-+\s*Comment\s#\d+\sfrom\s.*?\s<(.*?)\@.*//s;
+	my $comment = $contents =~ s/^--- Comment #\d+ from (?-s:.*?<)?(\S+)\@.*//ms;
 	if($comment) {
-	$user = $1;
+		$user = $1;
 	} else {
 		$user = 'N/A' # shouldn't be possible'
 	}
