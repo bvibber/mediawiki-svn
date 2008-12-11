@@ -174,8 +174,7 @@ class WebConfiguration extends SiteConfiguration {
 		if ( is_array( $var ) ) {
 			return array_filter( array_map( array( __CLASS__, 'filterVar' ), $var ) );
 		}
-		if( is_object( $var ) )
-			throw new MWException( 'test' );
+
 		return trim( $var );
 	}
 
