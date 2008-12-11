@@ -299,7 +299,7 @@ abstract class ConfigurationDiff {
 						$boolop = array_shift( $conds );
 						$boolop = $opToName[$boolop];
 
-						$val[] = "$group: ".wfMsg( "configure-boolop-description-$boolop" );
+						$val[] = "$group: " . wfMsg( "configure-boolop-description-$boolop" );
 					} else {
 						$conds = array( $conds );
 					}
@@ -307,7 +307,7 @@ abstract class ConfigurationDiff {
 					// Analyse each individual one...
 					foreach( $conds as $cond ) {
 						if ($cond == array( APCOND_AGE, -1 ) ) {
-							$val[] = "$group: ".wfMsg( 'configure-autopromote-noconds' );
+							$val[] = "$group: " . wfMsg( 'configure-autopromote-noconds' );
 							continue;
 						}
 
@@ -318,8 +318,9 @@ abstract class ConfigurationDiff {
 
 
 						$argSummary = implode( ', ', $cond );
+						$count = count( $cond );
 
-						$val[] = "$group: ".wfMsg( "configure-condition-description-$name", $argSummary );
+						$val[] = "$group: ".wfMsgExt( "configure-condition-description-$name", array( 'parsemag' ), $argSummary, $count );
 					}
 				}
 			} else {

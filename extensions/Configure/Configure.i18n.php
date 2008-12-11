@@ -190,7 +190,7 @@ Please create it or change it to use this extension.',
 	'configure-autopromote-noconds'       => 'No prerequisites',
 	
 	'configure-condition-description-1'   => 'Minimum edit count of $1',
-	'configure-condition-description-2'   => 'Minimum account age of $1 seconds',
+	'configure-condition-description-2'   => 'Minimum account age of $1 {{PLURAL:$1|second|seconds}}',
 	'configure-condition-description-3'   => 'Email confirmed',
 	'configure-condition-description-4'   => 'In all of the groups $1',
 	
