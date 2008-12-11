@@ -71,8 +71,7 @@ function efConfigureSetup( $wiki = 'default' ) {
 	$wgConf->wikis = $oldConf->wikis;
 	$wgConf->settings = $oldConf->settings;
 	$wgConf->localVHosts = $oldConf->localVHosts;
-	if ( isset( $oldConf->siteParamsCallback ) ) # 1.14+
-		$wgConf->siteParamsCallback = $oldConf->siteParamsCallback;
+	$wgConf->siteParamsCallback = $oldConf->siteParamsCallback;
 	
 	$wgConf->snapshotDefaults();
 	

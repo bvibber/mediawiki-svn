@@ -880,18 +880,9 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function injectScriptsAndStyles() {
 		global $wgOut, $wgScriptPath, $wgUseAjax, $wgJsMimeType, $wgConfigureStyleVersion;
-		$href = "{$wgScriptPath}/extensions/Configure/Configure.css?{$wgConfigureStyleVersion}";
-		if ( is_callable( array( $wgOut, 'addExtensionStyle' ) ) ) { # 1.14+
-			$wgOut->addExtensionStyle( $href );
-		} else {
-			$wgOut->addLink(
-				array(
-					'rel' => 'stylesheet',
-					'type' => 'text/css',
-					'href' => $href,
-				)
-			);
-		}
+
+		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/Configure/Configure.css?{$wgConfigureStyleVersion}" );
+
 		$add = Xml::encodeJsVar( wfMsg( 'configure-js-add' ) );
 		$remove = Xml::encodeJsVar( wfMsg( 'configure-js-remove' ) );
 		$removeRow = Xml::encodeJsVar( wfMsg( 'configure-js-remove-row' ) );

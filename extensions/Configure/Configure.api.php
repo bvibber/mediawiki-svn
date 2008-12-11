@@ -251,8 +251,50 @@ class ApiConfigure extends ApiBase {
 						$result->setIndexedTagName( $arr, 'group' );
 						$settingRet['values'][] = $arr;
 					}
-				}
+					break;
+				case 'promotion-conds':
+					$opToName = array_flip( array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' ) );
+					$condsName = array( 1 => 'editcount', 2 => 'age', 3 => 'emailconfirmed', 4 => 'in-groups' );
+					$validOps = array_keys( $opToName );
+
+					$settingRet['values'] = array();
+					$result->setIndexedTagName( $settingRet['values'], 'group' );
+
+					foreach( $settingVal as $group => $conds ) {
+						$retConds = array( 'group' => $group );
+						$result->setIndexedTagName( $retConds, 'condition' );
+						do {
+							if ( !is_array( $conds ) ) {
+								$retConds[] = array( 'name' => $condsName[$conds] );
+								continue;
+							}
+							if ( count( $conds ) == 0 ) {
+								continue;
+							}
+							if ( count( $conds ) > 1 && in_array( $conds[0], $validOps ) ) {
+								$boolop = array_shift( $conds );
+								$boolop = $opToName[$boolop];
+								$retConds['operator'] = $boolop;
+							} else {
+								$conds = array( $conds );
+							}
+							// Analyse each individual one...
+							foreach( $conds as $cond ) {
+								if ( $cond == array( APCOND_AGE, -1 ) ) {
+									continue;
+								}
+								if( !is_array( $cond ) ) {
+									$cond = array( $cond );
+								}
+								$name = array_shift( $cond );
+								$argSummary = implode( ', ', $cond );
+								$retConds[] = array( 'name' => $condsName[$name], 'value' => $argSummary );
+							}
+						} while( false );
+						$settingRet['values'][] = $retConds;
+					}
 				break;
+				}
 			default:
 				if ( is_array( $type ) ) {
 					$allowed = array();

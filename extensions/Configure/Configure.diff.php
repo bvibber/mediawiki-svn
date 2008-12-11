@@ -273,7 +273,7 @@ abstract class ConfigurationDiff {
 							list( $count, $period ) = $limit;
 							if ($count == 0 || $period == 0)
 								continue;
-							
+
 							$val[] = "$action, $group: " . wfMsg( 'configure-throttle-summary', $count, $period );
 						}
 					}
@@ -281,10 +281,10 @@ abstract class ConfigurationDiff {
 			} else if ( $arrType == 'promotion-conds' ) {
 				## For each group, print out the full conditions.
 				$val = array();
-				
+
 				$opToName = array_flip( array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' ) );
 				$validOps = array_keys( $opToName );
-				
+
 				foreach( $setting as $group => $conds ) {
 					if ( !is_array( $conds ) ) {
 						$val[] = "$group: ".wfMsg( "configure-condition-description-$conds" );
@@ -294,31 +294,31 @@ abstract class ConfigurationDiff {
 						$val[] = "$group: ".wfMsg( 'configure-autopromote-noconds' );
 						continue;
 					}
-					
+
 					if ( count( $conds ) > 1 && in_array( $conds[0], $validOps ) ) {
 						$boolop = array_shift( $conds );
 						$boolop = $opToName[$boolop];
-						
+
 						$val[] = "$group: ".wfMsg( "configure-boolop-description-$boolop" );
 					} else {
 						$conds = array( $conds );
 					}
-					
+
 					// Analyse each individual one...
 					foreach( $conds as $cond ) {
 						if ($cond == array( APCOND_AGE, -1 ) ) {
 							$val[] = "$group: ".wfMsg( 'configure-autopromote-noconds' );
 							continue;
 						}
-						
+
 						if( !is_array( $cond ) ) {
 							$cond = array( $cond );
 						}
 						$name = array_shift( $cond );
 
-						
+
 						$argSummary = implode( ', ', $cond );
-						
+
 						$val[] = "$group: ".wfMsg( "configure-condition-description-$name", $argSummary );
 					}
 				}
@@ -391,30 +391,30 @@ class HistoryConfigurationDiff extends ConfigurationDiff {
 
 	protected function getOldVersion() {
 		global $wgConf;
-		
+
 		$settings = $wgConf->getOldSettings( $this->diff );
-	
+
 		if ($this->diff == 'default') { ## Special case: Replicate settings across all wikis for a fair comparison.
 			$new = $this->getNewVersion();
-			
+
 			$defaultSettings = array();
-			
+
 			## This is kinda annoying. We can't copy ALL settings over, because not all settings are stored.
 			foreach( $new as $wiki => $newSettings ) {
 				if ($wiki == '__metadata') ## Ignore metadata.
 					continue;
-				
+
 				$defaultSettings[$wiki] = array();
-				
+
 				foreach( $newSettings as $key => $value ) {
 					if (isset($settings['default'][$key]))
 						$defaultSettings[$wiki][$key] = $settings['default'][$key];
 				}
 			}
-			
+
 			$settings = $defaultSettings;
 		}
-		
+
 		return $settings;
 	}
 
