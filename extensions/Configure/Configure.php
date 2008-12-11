@@ -3,7 +3,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 /**
  * Special page to allow users to configure the wiki via a web based interface
- * Require MediaWiki version 1.13.0 or greater
+ * Require MediaWiki version 1.14.0 or greater
  *
  * @file
  * @ingroup Extensions
@@ -17,7 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Configure',
 	'description' => 'Allow authorised users to configure the wiki via a web-based interface',
 	'descriptionmsg' => 'configure-desc',
-	'version' => '0.10.18',
+	'version' => '0.11.0',
 );
 
 # Configuration part
