@@ -142,13 +142,17 @@ mvSequencer.prototype = {
 				this[i] = initObj[i];
 			}
 		}
-		if(this.sequence_container_id==null)
-			return js_log('Error: no sequence_container_id');
+		if(this.sequence_container_id==null){
+			js_log('Error: no sequence_container_id');
+			return false;
+		}
 			
 		//check for sequence_container
-		if(this.sequence_container_id=='null')
-			return js_log("Error: missing sequence_container_id");
-			
+		if(this.sequence_container_id=='null'){
+			js_log("Error: missing sequence_container_id");
+			return false;
+		}
+		
 		//$j('#'+this.sequence_container_id).css('position', 'relative');
 		this['base_width']  = $j('#'+this.sequence_container_id).width();
 		this['base_height'] = $j('#'+this.sequence_container_id).height();
@@ -233,8 +237,10 @@ mvSequencer.prototype = {
 	//load the menu items: 	
 	loadInitMenuItems:function(){	
 		js_log('loadInitMenuItems');
-		if( !this.plObj.interface_url )
-			return js_log( 'Error:missing interface_url, can not load item' );						
+		if( !this.plObj.interface_url ){
+			js_log( 'Error:missing interface_url, can not load item' );
+			return false;
+		}						
 				
 		var req_url =this.plObj.interface_url+ '?action=ajax&rs=mv_seqtool_disp&rsargs[]=';
 		//ouput the requested items list: 
@@ -297,17 +303,17 @@ mvSequencer.prototype = {
 				//load the search interface with sequence tool targets 
 				//@@todo it maybe cleaner to just pass along msg text in JSON 
 				//and have the search interface build the html 				
-				if( !this.plObj.interface_url )
-					return js_log( 'Error:missing interface_url, can not load search interface' );
+				if( ! this.plObj.interface_url ){
+					js_log( 'Error:missing interface_url, can not load search interface' );
+					return false;
+				}
 				
 				//check default search
-				mvJsLoader.doLoad({'mediaWikiRemoteSearch':'mv_remote_media_search.js'}, function(){					
-					this_seq.mySearch = new mediaWikiRemoteSearch( {
+				mvJsLoader.doLoad({'mediaWikiRemoteSearch':'libRemoteMediaSearch/mv_remote_media_search.js'}, function(){					
+					this_seq.mySearch = new remoteSearchDriver({
+						'profile':'sequence',
 						'p_seq':this_seq,
-						'instance_name': this_seq.instance_name + '.mySearch',
-						'target_input':'mv_ams_search',
-						'target_submit':'mv_ams_submit',
-						'target_results':'mv_ams_results'
+						'instance_name': this_seq.instance_name + '.mySearch'						
 					 });
 				});							
 			break;			
@@ -330,8 +336,10 @@ mvSequencer.prototype = {
 	renderTransitionsSet:function(target_id){
 		js_log('f:renderTransitionsSet:' + target_id);
 		var o = '';
-		if(typeof mvTransLib == 'undefined')
-			return js_log('Error: missing mvTransLib');
+		if(typeof mvTransLib == 'undefined'){
+			js_log('Error: missing mvTransLib');
+			return false;
+		}
 		
 		for(var i in mvTransLib['type']){	
 			js_log('on tran type: ' + i);			

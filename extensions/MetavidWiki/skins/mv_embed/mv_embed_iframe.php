@@ -52,40 +52,6 @@ function mv_embed_iframe() {
 		'height' => $height,
 	));
 }
-
-/**
- * JS escape function copied from MediaWiki's Xml::escapeJsString()
- */
-function wfEscapeJsString( $string ) {
-	// See ECMA 262 section 7.8.4 for string literal format
-	$pairs = array(
-		"\\" => "\\\\",
-		"\"" => "\\\"",
-		'\'' => '\\\'',
-		"\n" => "\\n",
-		"\r" => "\\r",
-
-		# To avoid closing the element or CDATA section
-		"<" => "\\x3c",
-		">" => "\\x3e",
-
-		# To avoid any complaints about bad entity refs
-		"&" => "\\x26",
-
-		# Work around https://bugzilla.mozilla.org/show_bug.cgi?id=274152
-		# Encode certain Unicode formatting chars so affected
-		# versions of Gecko don't misinterpret our strings;
-		# this is a common problem with Farsi text.
-		"\xe2\x80\x8c" => "\\u200c", // ZERO WIDTH NON-JOINER
-		"\xe2\x80\x8d" => "\\u200d", // ZERO WIDTH JOINER
-	);
-	return strtr( $string, $pairs );
-}
-
-function error_out($error=''){
-	output_page(array('error' => $error));
-	exit();
-}
 function output_page($params){
 	extract( $params );
 ?>

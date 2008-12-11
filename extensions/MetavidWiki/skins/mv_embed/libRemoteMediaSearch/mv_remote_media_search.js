@@ -1,7 +1,24 @@
 /*
-* a library for doing remote semantic wiki searches with a focus on media results.
+* a library for doing remote media searches 
 */
-var mvBaseRemoteSearch = function(initObj) {		
+
+var remoteSearchDriver = function(initObj){
+	return this.init( initObj );
+}
+remoteSearchDriver.prototype = {
+	init:function( initObj ){
+		//do profile check: 
+		if( initObj.profile == 'mediawiki_edit'){
+			
+		}
+		if( initObj.profile == 'sequence'){
+			
+		}
+	}
+}
+
+
+var mvBaseRemoteSearch = function(initObj) {
 	return this.init(initObj);
 };
 mvBaseRemoteSearch.prototype = {
@@ -11,7 +28,7 @@ mvBaseRemoteSearch.prototype = {
 	completed_req:0,
 	num_req:0,
 	
-	result_display_mode:'box', //box or list
+	result_display_mode:'box', //box or list or preview
 	resultsObj:{},
 	//init the object: 
 	init:function( initObj ){		
@@ -27,6 +44,7 @@ mvBaseRemoteSearch.prototype = {
 				_this.getSearchResults();
 			});
 		}		
+		
 		//set up bindings for interface components
 		//if(this['target_input'])
 			//@@todo autocomplete for titles

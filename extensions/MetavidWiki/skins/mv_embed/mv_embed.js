@@ -21,7 +21,8 @@ if( MV_EMBED_VERSION ){
 	MV_DO_INIT=false;	
 }
 
-var MV_EMBED_VERSION = '1.0rc1';
+//used to grab unnique copies of scripts. 
+var MV_EMBED_VERSION = '1.0rc2';
 
 //the name of the player skin (default is mvpcf)
 var mv_skin_name = 'mvpcf';
@@ -58,11 +59,13 @@ var MV_ENABLE_DATA_PROXY=false;
 var parseUri=function(d){var o=parseUri.options,value=o.parser[o.strictMode?"strict":"loose"].exec(d);for(var i=0,uri={};i<14;i++){uri[o.key[i]]=value[i]||""}uri[o.q.name]={};uri[o.key[12]].replace(o.q.parser,function(a,b,c){if(b)uri[o.q.name][b]=c});return uri};parseUri.options={strictMode:false,key:["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],q:{name:"queryKey",parser:/(?:^|&)([^&=]*)=?([^&]*)/g},parser:{strict:/^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,loose:/^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/}};
 
 //get mv_embed location if it has not been set
-if(!mv_embed_path){
+if( !mv_embed_path ){
 	var mv_embed_path =getMvEmbedPath();
 }
-//here you can add in delay load reference to test things with delayed load time: 
-//mv_embed_path = mv_embed_path + 'delay_load.php/'; 
+//set the unique request id (for ensuring fresh copies of scripts on udpates) 
+if( !mv_embed_urid ){
+	var mv_embed_urid = getMvUniqueReqId();
+}
 
 //the default thumbnail for missing images:
 var mv_default_thumb_url = mv_embed_path + 'images/vid_default_thumb.jpg';
@@ -222,7 +225,7 @@ var mvEmbed = {
  		js_log('jquery loaded'); 		 		
 		mvJsLoader.doLoad(_this.lib_plugins, function(){
 			//load control ui after ui.core loaded
-			mvJsLoader.doLoad(_this.lib_controlui,function(){
+			mvJsLoader.doLoad(_this.lib_controlui, function(){
 				js_log('plugins loaded');
 				mvEmbed.libs_loaded=true;
 				mvEmbed.init();
@@ -320,13 +323,10 @@ mediaPlayer.prototype =
 		else
 		{
 			var _this = this;
-			var plugin_path = mv_embed_path + 'embedLibs/mv_'+this.library+'Embed.js';	
+			var plugin_path = mv_embed_path + 'libEmbedObj/mv_'+this.library+'Embed.js';	
 			//add the callback: 
-			this.loading_callbacks.push(callback);
-			
-			js_log('plugin not loaded, queing callback');	
-			js_log('requesting plugin: ' + plugin_path + ' should define lib:' + this.library+'Embed');			
-				
+			this.loading_callbacks.push(callback);									
+			//jQuery based get script does not work so well. 
 			/*$j.getScript(plugin_path, function(){				
 				js_log(_this.id + ' plugin loaded');
 				_this.loaded = true;
@@ -335,7 +335,7 @@ mediaPlayer.prototype =
 				_this.loading_callbacks = null;
 			});*/
 			
-			eval('var lib = {"'+this.library+'Embed":\'embedLibs/mv_'+this.library+'Embed.js\'}');
+			eval('var lib = {"'+this.library+'Embed":\'libEmbedObj/mv_'+this.library+'Embed.js\'}');
 			//js_log('DO LOAD: '+this.library); 
 			mvJsLoader.doLoad(lib,function(){
 				//js_log( 'type of lib: ' + eval( 'typeof ' + this.library + 'Embed' ) );
@@ -1047,14 +1047,14 @@ function mv_embed( force_id ){
 	});	
 	if(loadPlaylistLib){
 		js_log('f:load Playlist Lib:');
-		mvJsLoader.doLoad({'mvPlayList':'mv_playlist.js'},function(){
+		mvJsLoader.doLoad({'mvPlayList':'libSequencer/mv_playlist.js'},function(){
 			$j('playlist').each(function(){		
 				//check if we are in sequence mode load sequence libs (if not already loaded)				 				
 				if( $j(this).attr('sequencer')=="true" ){
 					var pl_element = this;
 					//load the mv_sequencer and the json util lib:
 					mvJsLoader.doLoad({
-							'mvSeqPlayList':'mv_sequencer.js'							
+							'mvSeqPlayList':'libSequencer/mv_sequencer.js'							
 						},function(){
 							var seqObj = new mvSeqPlayList( pl_element );
 							swapEmbedVideoElement( pl_element, seqObj );								
@@ -1072,7 +1072,20 @@ function mv_embed( force_id ){
 		});
 	}		
 }
-
+/* init remote search */
+function mv_do_remote_search(initObj){
+	//insure we have the basic libs (jquery etc) : 
+	mvEmbed.load_libs(function(){
+		//load search specifc extra stuff 
+		mvJsLoader.doLoad({
+			'mvBaseRemoteSearch':'libRemoteMediaSearch/mv_remote_media_search.js'
+		}, function(){
+			var mvrs = new remoteSearchDriver(initObj);
+		});
+	});
+}
+ 
+/* init the sequencer */
 function mv_do_sequence(initObj){
 	//issue a request to get the css file (if not already included):
 	if(!styleSheetPresent(mv_embed_path+'skins/'+mv_skin_name+'/mv_sequence.css'))
@@ -1081,7 +1094,7 @@ function mv_do_sequence(initObj){
 	mvEmbed.load_libs(function(){		
 		//load playlist object and drag,drop,resize,hoverintent,libs
 		mvJsLoader.doLoad({
-				'mvPlayList':'mv_playlist.js',
+				'mvPlayList':'libSequencer/mv_playlist.js',
 				'$j.ui.sortable':'jquery/jquery.ui-1.5.2/ui/minified/ui.sortable.min.js',
 				'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
 				'$j.contextMenu':'jquery/plugins/jquery.contextMenu.js'
@@ -1093,7 +1106,7 @@ function mv_do_sequence(initObj){
 			},function(){
 				//load the sequencer
 				mvJsLoader.doLoad({
-						'mvSequencer':'mv_sequencer.js'						
+						'mvSequencer':'libSequencer/mv_sequencer.js'						
 					},function(){						
 						//init the sequence object (it will take over from there)
 						_global['mvSeq'] = new mvSequencer(initObj);
@@ -2421,7 +2434,7 @@ embedVideo.prototype = {
 		if(typeof this.textInterface == 'undefined' ){
 			//load the default text interface:
 			mvJsLoader.doLoad({
-					'textInterface':'timedTextLibs/mv_timed_text.js',
+					'textInterface':'libTimedText/mv_timed_text.js',
 					'$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'
 				}, function(){
 					
@@ -2868,7 +2881,8 @@ function ntp2seconds(ntp){
 	}
 	times = ntp.split(':');
 	if(times.length!=3){		
-		return js_log('ntp2seconds:not valid ntp:'+ntp);
+		js_log('ntp2seconds:not valid ntp:'+ntp);
+		return false;
 	}
 	//sometimes the comma is used inplace of pereid for ms
 	times[2] = times[2].replace(/,\s?/,'.');
@@ -2883,11 +2897,15 @@ function mv_addLoadEvent(func) {
 
 //does a remote or local api request based on request url 
 function do_api_req(req_param, api_url, callback){
-	if(typeof req_param != 'object')
-		return js_log('Error: request paramaters must be an object');
+	if(typeof req_param != 'object'){
+		js_log('Error: request paramaters must be an object');
+		return false;
+	}
 	if( !api_url){
-		if(!wgServer || ! wgScriptPath)
-			return js_log('Error: no api url');
+		if(!wgServer || ! wgScriptPath){
+			js_log('Error: no api url');
+			return false;
+		}
 		
 		api_url =  wgServer +((wgServer == null) ? parseUri(document.URL).host + (wgScriptPath + "/api.php") : parseUri(document.URL).host + wgScript);
 		//update to api.php (if index.php was in the wgScript path): 
@@ -2919,7 +2937,8 @@ function do_api_req(req_param, api_url, callback){
 	}	
 }
 //do a "normal" request (should be deprecated via extending the mediaWiki API) 
-function do_request(req_url, callback){
+function do_request(req_url, callback){	
+	//pass along a unique inentifier if set
  	js_log('do request: ' + req_url);
  		//if we are doing a request to the same domain or relative link do a normal GET: 
 		if( parseUri(document.URL).host == parseUri(req_url).host ||
@@ -2988,9 +3007,12 @@ function mv_jsdata_cb(response){
 //load external js via dom injection
 //@@todo swich over to jQuery injection
 function loadExternalJs(url, callback){
+	//add a unquie request id to ensure fresh copies where appopriate 
+	if( url.indexOf('?')==-1 ){
+		url+='?'+mv_embed_urid;
+	}
    	js_log('load js: '+ url);
     //if(window['$j'])
-   //	$j.getScript(url, callback);
     	//have to use direct ajax call insted of $j.getScript()
     	//since you can't send "cache" option to $j.getScript()
        /*$j.ajax({
@@ -3026,21 +3048,33 @@ function loadExternalCss(url){
    e.rel = 'stylesheet';
    document.getElementsByTagName("head")[0].appendChild(e);
 }
+
+function getMvEmbedURL(){
+	js_elements = document.getElementsByTagName("script");
+	for(var i=0;i<js_elements.length; i++){		
+		if( js_elements[i].src.indexOf('mv_embed.js') !=-1){
+			return  js_elements[i].src;			
+		}
+	}
+	return false;
+}
+//gets a unique id from the mv_embed url else returns the version number
+function getMvUniqueReqId(){
+	var mv_embed_url = getMvEmbedURL();
+	if( mv_embed_url.indexOf('?')!=-1 ){
+		return mv_embed_url.substr( mv_embed_url.indexOf('?')+1 );
+	}
+	return MV_EMBED_VERSION;
+}
 /*
  * sets the global mv_embed path based on the scripts location
  */
 function getMvEmbedPath(){	
-	js_elements = document.getElementsByTagName("script");
-	for(var i=0;i<js_elements.length; i++){
-		var mstr = js_elements[i].src.indexOf('mv_embed.js');
-		if( mstr !=-1){
-			mv_embed_path = js_elements[i].src.substr(0,mstr);
-		}
-	}		
+	var mv_embed_url = getMvEmbedURL();
+	mv_embed_path = mv_embed_url.substr(0, mv_embed_url.indexOf('mv_embed.js'));
 	//absolute the url (if relative) (if we don't have mv_embed path)
-	if(mv_embed_path.indexOf('://')==-1){
-		var doc_url =  document.URL;			
-		var pURL = parseUri(doc_url);		
+	if(mv_embed_path.indexOf('://')==-1){	
+		var pURL = parseUri( document.URL );		
 		if(mv_embed_path.charAt(0)=='/'){
 			mv_embed_path = pURL.protocol + '://' + pURL.authority + mv_embed_path;
 		}else{
@@ -3049,9 +3083,7 @@ function getMvEmbedPath(){
 				mv_embed_path = pURL.protocol + '://' + pURL.authority + pURL.directory + mv_embed_path;
 			}
 		}		
-	}else{
-		js_log('already absolute');
-	}	 
+	}
 	return mv_embed_path;
 }
 if (typeof DOMParser == "undefined") {

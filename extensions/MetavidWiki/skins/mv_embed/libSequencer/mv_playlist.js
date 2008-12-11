@@ -168,14 +168,16 @@ mvPlayList.prototype = {
         } 
             
         if(typeof this.doParse != 'function'){
-        	return js_log('error: method doParse not found in plObj'+ this.srcType);		        	
+        	js_log('error: method doParse not found in plObj'+ this.srcType);
+        	return false;		        	
         }   
                          
         if(typeof this.doParse == 'function'){
 	   	  	if( this.doParse() ){
 	   	  		this.doWhenParseDone();	
 	   	  	}else{
-	   	  		return js_log("error: failed to parse playlist");
+	   	  		js_log("error: failed to parse playlist");
+	   	  		return false;
 	   	  		//error or parse needs to do ajax requests	
 	   	  	}
         }       		
@@ -1410,17 +1412,25 @@ var mvTransLib = {
 	 */
 	doInitTransition:function(tObj){
 		js_log('mvTransLib:f:doInitTransition');		
-		if(!tObj.type)
-			return js_log('transition is missing type attribute');
+		if(!tObj.type){
+			js_log('transition is missing type attribute');
+			return false;
+		}
 		
-		if(!tObj.subtype)
-			return js_log('transition is missing subtype attribute');
+		if(!tObj.subtype){
+			js_log('transition is missing subtype attribute');
+			return false;
+		}
 		
-		if(!this['type'][tObj.type])
-			return js_log('mvTransLib does not support type: '+tObj.type);
+		if(!this['type'][tObj.type]){
+			js_log('mvTransLib does not support type: '+tObj.type);
+			return false;
+		}
 		
-		if(!this['type'][tObj.type][tObj.subtype])
-			return js_log('mvTransLib does not support subType: '+tObj.subtype);				
+		if(!this['type'][tObj.type][tObj.subtype]){
+			js_log('mvTransLib does not support subType: '+tObj.subtype);
+			return false;
+		}				
 				
 		//setup overlay_selector_id			
 		if(tObj.subtype=='crossfade'){
@@ -1496,7 +1506,7 @@ var mvTransLib = {
 				'init':function(tObj){										
 					//js_log('f:fadeFromColor: '+tObj.overlay_selector_id +' to color: '+ tObj.fadeColor);
 					if(!tObj.fadeColor)
-						return js_log('missing fadeColor');							
+						js_log('missing fadeColor');							
 					if($j('#'+tObj.overlay_selector_id).length==0){
 						js_log("ERROR can't find: "+ tObj.overlay_selector_id);
 					}	
