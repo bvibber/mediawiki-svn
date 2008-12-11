@@ -1,4 +1,4 @@
-t		<?php
+<?php
 /*
  * scrape_and_insert.php Created on Oct 1, 2007
  *
