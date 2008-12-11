@@ -67,14 +67,12 @@ class ContributionHistory extends SpecialPage {
 				$this->msg( 'contrib-hist-previous' )
 			);
 		}
-		if( true ) {
-			$pagingLinks[] = Xml::element( 'a',
-				array(
-					'href' => $title->getFullURL( 'offset=' . $older ),
-				),
-				$this->msg( 'contrib-hist-next' )
-			);
-		}
+		$pagingLinks[] = Xml::element( 'a',
+			array(
+				'href' => $title->getFullURL( 'offset=' . $older ),
+			),
+			$this->msg( 'contrib-hist-next' )
+		);
 		$pagingDiv = Xml::openElement( 'div',
 				array( 'align' => 'right', 'style' => 'padding-bottom:20px' ) ) .
 			implode( " | ", $pagingLinks ) .
@@ -99,7 +97,7 @@ class ContributionHistory extends SpecialPage {
 			);
 		}
 		
-		$url = Title::newFromText( 'Special:ContributionHistory' )->getFullURL();
+		$url = SpecialPage::getTitleFor( 'ContributionHistory' )->getFullURL();
 		
 		$res = $db->select( 'public_reporting', '*',
 			array_merge(
