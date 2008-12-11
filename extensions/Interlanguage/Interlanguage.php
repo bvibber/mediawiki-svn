@@ -1,7 +1,7 @@
 <?php
 # MediaWiki Interlanguage extension v1.1
 #
-# Copyright © 2008 Nikola Smolenski <smolensk@eunet.yu>
+# Copyright Â© 2008 Nikola Smolenski <smolensk@eunet.yu>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -42,22 +42,24 @@ function wfInterlanguageExtensionMagic( &$magicWords, $langCode ) {
 }
 
 function InterlanguageExtension( &$parser, $param) {
-	global
-		$wgInterlanguageExtensionApiUrl,
-		$wgInterlanguageExtensionSort,
-		$wgInterlanguageExtensionPrefix,
-		$wgInterlanguageExtensionInterwiki,
-		$wgLanguageCode,
-		$wgTitle;
+	global $wgInterlanguageExtensionApiUrl, $wgInterlanguageExtensionSort,
+	$wgInterlanguageExtensionPrefix, $wgInterlanguageExtensionInterwiki,
+	$wgLanguageCode, $wgTitle, $wgMemc;
 
 	if(isset($wgInterlanguageExtensionPrefix)) {
 		$param = "$wgInterlanguageExtensionPrefix$param";
 	}
 
-	$res = false;
-	if($a = Http::get("$wgInterlanguageExtensionApiUrl?action=query&prop=langlinks&lllimit=500&format=php&redirects&titles=".strtr($param,' ','_'))) {
+	$url = $wgInterlanguageExtensionApiUrl . "?action=query&prop=langlinks&" . 
+			"lllimit=500&format=php&redirects&titles=" . strtr( $param, ' ', '_' );
+	$key = wfMemc( 'Interlanguage', md5( $url ) );
+	$res = $wgMemc->get( $key );
 
-		$a = @unserialize($a);
+	if ( !$res ) {
+		# be sure to set $res back to bool false, we do a strict compare below
+		$res = false;
+		$a = Http::get( $url );
+		$a = @unserialize( $a );
 		if(isset($a['query']['pages']) && is_array($a['query']['pages'])) {
 			$a = array_shift($a['query']['pages']);
 
@@ -114,7 +116,8 @@ function InterlanguageExtension( &$parser, $param) {
 			}
 		}
 	}
-
+	# cache the final result so we can skip all of this
+	$wgMemc->set( $key, $res, time() + 3600 );
 	return $res;
 }
 
