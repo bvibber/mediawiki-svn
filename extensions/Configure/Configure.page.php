@@ -630,6 +630,10 @@ abstract class ConfigurationPage extends SpecialPage {
 
 					foreach( $groups as $group ) {
 						$op = $wgRequest->getText( 'wp' . $name . '-' . $group . '-opt' );
+						if (empty($op)) {
+							$op = 'and';
+						}
+						
 						if( !isset( $options[$op] ) )
 							throw new MWException( "'{$op}' for group '{$group}' is not a valid operator for 'promotion-conds' type" );
 						$op = $options[$op];
@@ -659,6 +663,10 @@ abstract class ConfigurationPage extends SpecialPage {
 	
 								if( count( $reqGroups ) )
 									$condsVal[] = array_merge( array( $condName ), $reqGroups );
+							}
+							
+							if (count($condsVal) == 1) { ## Just the operator
+								$condsVal = array( array(APCOND_AGE, -1) ); // A no-op
 							}
 							$settings[$name][$group] = $condsVal;
 						}
@@ -820,9 +828,11 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * Show the main form
 	 */
 	protected function showForm() {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgRequest;
 
 		$action = $this->getTitle()->escapeLocalURL();
+		
+		$reason = $wgRequest->getText( 'wpReason' );
 
 		$wgOut->addHTML(
 			$this->buildOldVersionSelect() . "\n" .
@@ -836,7 +846,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			Xml::openElement( 'div', array( 'id' => 'configure' ) ) . "\n" .
 			$this->buildAllSettings() . "\n" .
 			( $this->mCanEdit ?
-				Xml::buildForm( array( 'configure-form-reason' => Xml::input( 'wpReason', 45 ) ) ) . "\n" .
+				Xml::buildForm( array( 'configure-form-reason' => Xml::input( 'wpReason', 45, $reason ) ) ) . "\n" .
 				Xml::openElement( 'div', array( 'id' => 'prefsubmit' ) ) . "\n" .
 				Xml::openElement( 'div', array() ) . "\n" .
 				Xml::hidden( 'wpEditToken', $wgUser->editToken() ) . "\n" .
@@ -1000,7 +1010,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				return '<code>' . htmlspecialchars( $default ) . '</code>';
 			$ret = "\n";
 			foreach ( $type as $val => $name ) {
-				$ret .= Xml::radioLabel( $name, 'wp' . $conf, $val, 'wp' . $conf . $val, $default === $val ) . "\n";
+				$ret .= Xml::radioLabel( $name, 'wp' . $conf, $val, 'wp' . $conf . $val, strval($default) === strval($val) ) . "\n";
 			}
 			return $ret;
 		}
@@ -1335,13 +1345,20 @@ abstract class ConfigurationPage extends SpecialPage {
 		$encConf = htmlspecialchars( $conf );
 		$encGroup = htmlspecialchars( $group );
 		$encId = 'wp'.$encConf.'-'.$encGroup;
-		$curOpt = array_shift( $groupConds );
+		$curOpt = is_array( $groupConds ) ? array_shift( $groupConds ) : '&';
+		
+		if ( empty($curOpt) )
+			$curOpt = '&';
+		
 		$extra = $allowed ? array() : array( 'disabled' => 'disabled' );
 		foreach ( $options as $desc => $opt ) {
 			$row .= Xml::radioLabel( wfMsg( 'configure-condition-operator-'.$desc ), $encId.'-opt', $desc,
 				$encId.'-opt-'.$desc, $curOpt == $opt, $extra ) . "\n";
 		}
 		$row .= "<br />\n";
+		
+		if ( !is_array( $groupConds ) )
+			$groupConds = array( $groupConds );
 
 		$condsVal = array();
 		foreach( $groupConds as $cond ){
@@ -1350,9 +1367,9 @@ abstract class ConfigurationPage extends SpecialPage {
 				continue;
 			}
 			$name = array_shift( $cond );
-			if ( count( $cond ) == 0 ) {
+			if ( !is_array( $cond ) || count( $cond ) == 0 ) {
 				$condsVal[$name] = true;
-			} elseif( count( $cond ) == 1 ) {
+			} elseif( $conds[$name] != 'array' && count( $cond ) == 1 ) {
 				$condsVal[$name] = array_shift( $cond );
 			} else {
 				$condsVal[$name] = $cond;

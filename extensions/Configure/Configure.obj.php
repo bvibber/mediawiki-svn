@@ -71,6 +71,23 @@ class WebConfiguration extends SiteConfiguration {
 			}
 		}
 	}
+	
+	public function snapshotDefaults( /* options */ ) {
+		$options = func_get_args();
+		
+		if ( !is_array($this->mDefaults) || in_array( 'allow_empty', $options ) ) {
+			if ( !is_array( $this->mDefaults ) )
+				$this->mDefaults = array();
+			
+			$allSettings = array_keys( ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllSettings() );
+
+			foreach( $allSettings as $setting ) {
+				if ( array_key_exists( $setting, $GLOBALS ) &&  !( in_array( 'no_override', $options ) && array_key_exists( $setting, $this->mDefaults ) ) ) {
+					$this->mDefaults[$setting] = $GLOBALS[$setting];
+				}
+			}
+		}
+	}
 
 	/**
 	 * extract settings for this wiki in $GLOBALS
@@ -84,18 +101,8 @@ class WebConfiguration extends SiteConfiguration {
 		// Include files before so that customized settings won't be overridden
 		// by the default ones
 		$this->includeFiles();
-
-		if (!is_array($this->mDefaults)) {
-			$this->mDefaults = array();
-			// Snapshot current settings before overriding.
-			// -ialex tells me this weird contraption will work
-			$allSettings = array_keys( ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllSettings() );
-
-			foreach( $allSettings as $setting ) {
-				if ( array_key_exists( $setting, $GLOBALS ) )
-					$this->mDefaults[$setting] = $GLOBALS[$setting];
-			}
-		}
+		
+		$this->snapshotDefaults( 'allow_empty', 'no_override' );
 
 		list( $site, $lang ) = $this->siteFromDB( $this->mWiki );
 		$rewrites = array( 'wiki' => $this->mWiki, 'site' => $site, 'lang' => $lang );

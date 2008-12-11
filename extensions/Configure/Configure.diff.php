@@ -278,6 +278,46 @@ abstract class ConfigurationDiff {
 						}
 					}
 				}
+			} else if ( $arrType == 'promotion-conds' ) {
+				## For each group, print out the full conditions.
+				$val = array();
+				
+				$opToName = array_flip( array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' ) );
+				
+				foreach( $setting as $group => $conds ) {
+					if (!is_array($conds)) {
+						$val[] = "$group: ".wfMsg( "configure-condition-description-$conds" );
+						continue;
+					}
+					if ( count($conds) == 0 ) {
+						$val[] = "$group: ".wfMsg( 'configure-autopromote-noconds' );
+						continue;
+					}
+					
+					if ( count($conds) > 1 ) {
+						$boolop = array_shift( $conds );
+						$boolop = $opToName[$boolop];
+						
+						$val[] = "$group: ".wfMsg( "configure-boolop-description-$boolop" );
+					}
+					
+					// Analyse each individual one...
+					foreach( $conds as $cond ) {
+						if ($cond == array( APCOND_AGE, -1 ) ) {
+							$val[] = "$group: ".wfMsg( 'configure-autopromote-noconds' );
+							continue;
+						}
+						
+						if( !is_array( $cond ) ) {
+							$cond = array( $cond );
+						}
+						$name = array_shift( $cond );
+
+						$argSummary = implode( ', ', $cond );
+						
+						$val[] = "$group: ".wfMsg( "configure-condition-description-$name", $argSummary );
+					}
+				}
 			} else {
 				$val = explode( "\n", var_export( $setting, 1 ) );
 			}

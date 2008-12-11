@@ -187,6 +187,17 @@ Please create it or change it to use this extension.',
 	'configure-condition-name-2'          => 'Minimal age',
 	'configure-condition-name-3'          => 'Email confirmed',
 	'configure-condition-name-4'          => 'In groups',
+	'configure-autopromote-noconds'       => 'No prerequisites',
+	
+	'configure-condition-description-1'   => 'Minimum edit count of $1',
+	'configure-condition-description-2'   => 'Minimum account age of $1 seconds',
+	'configure-condition-description-3'   => 'Email confirmed',
+	'configure-condition-description-4'   => 'In all of the groups $1',
+	
+	'configure-boolop-description-and'    => 'All conditions must be true',
+	'configure-boolop-description-or'     => 'At least one condition must be true',
+	'configure-boolop-description-xor'    => 'Exactly one condition must be true',
+	'configure-boolop-description-not'    => 'No conditions must be true',
 );
 
 /** Message documentation (Message documentation)
