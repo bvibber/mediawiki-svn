@@ -283,6 +283,7 @@ abstract class ConfigurationDiff {
 				$val = array();
 				
 				$opToName = array_flip( array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' ) );
+				$validOps = array_keys( $opToName );
 				
 				foreach( $setting as $group => $conds ) {
 					if (!is_array($conds)) {
@@ -294,11 +295,13 @@ abstract class ConfigurationDiff {
 						continue;
 					}
 					
-					if ( count($conds) > 1 ) {
+					if ( count($conds) > 1 && in_array( $conds[0], $validOps ) ) {
 						$boolop = array_shift( $conds );
 						$boolop = $opToName[$boolop];
 						
 						$val[] = "$group: ".wfMsg( "configure-boolop-description-$boolop" );
+					} else {
+						$conds = array( $conds );
 					}
 					
 					// Analyse each individual one...

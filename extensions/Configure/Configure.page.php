@@ -666,7 +666,7 @@ abstract class ConfigurationPage extends SpecialPage {
 							}
 							
 							if (count($condsVal) == 1) { ## Just the operator
-								$condsVal = array( array(APCOND_AGE, -1) ); // A no-op
+								$condsVal = array(APCOND_AGE, -1); // A no-op
 							}
 							$settings[$name][$group] = $condsVal;
 						}
@@ -1035,10 +1035,10 @@ abstract class ConfigurationPage extends SpecialPage {
 					"\n</pre>";
 			}
 			$text = wfMsgExt( 'configure-arrayinput-oneperline', 'parseinline' );
-			$text .= "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8' style='width: 95%;'>";
+			$text .= "<textarea id='wp{$conf}' name='wp{$conf}' cols='30' rows='8' style='width: 95%;'>\n";
 			if ( is_array( $default ) )
 				$text .= implode( "\n", $default );
-			$text .= "</textarea>\n";
+			$text .= "\n</textarea>\n";
 			return $text;
 		}
 		if ( $type == 'assoc' ) {
