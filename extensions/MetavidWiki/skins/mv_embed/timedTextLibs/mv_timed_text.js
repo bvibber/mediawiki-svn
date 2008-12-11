@@ -144,8 +144,10 @@ textInterface.prototype = {
 			$j(".mvttseek").click( function() {
 				_this.pe.play();
 			});
-			$j(".mvttseek").hover(
-			      function () {
+			$j(".mvttseek").hoverIntent({
+				interval:200, //polling interval
+				timeout:200, //delay before onMouseOut
+			    over:function () {
 			      	js_log('mvttseek: over');
 			      	$j(this).parent().addClass('tt_highlight');
 			        //do section highlight
@@ -153,12 +155,14 @@ textInterface.prototype = {
 			        	'start'	: $j(this).parent().attr("start"),
 			        	'end'	: $j(this).parent().attr("end")
 			        	});
-			      }, 
-			      function () {			  
+			    }, 
+			    out:function () {	
+			      	js_log('mvttseek: out');		  
 			      	$j(this).parent().removeClass('tt_highlight');    
 			      	//de highlight section  
 			        _this.pe.hideHighlight();
-			      }
+			    }
+			  }
 			);
 		}
 	},

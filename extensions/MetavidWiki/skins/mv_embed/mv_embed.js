@@ -102,7 +102,7 @@ gMsg['add_to_end_of_sequence'] = 'Add to End of Sequence';
 
 gMsg['missing_video_stream'] = 'The video file for this stream is missing';
 
-gMsg['select_transcript_set'] = 'Select Transcripts';
+gMsg['select_transcript_set'] = 'Select Text Layers';
 gMsg['auto_scroll'] = 'auto scroll';
 gMsg['close'] = 'close';
 gMsg['improve_transcript'] = 'Improve Transcript';
@@ -447,7 +447,7 @@ mediaPlayers.prototype =
     },
     defaultPlayer : function(mime_type)
     {    	    	
-    	js_log("f:defaultPlayer: "+mime_type);
+    	js_log("f:defaultPlayer: " + mime_type);
         var mime_players = this.getMIMETypePlayers(mime_type);        
         if( mime_players.length > 0)
         {
@@ -1200,7 +1200,7 @@ mediaSource.prototype =
         this.src = $j(element).attr('src');               
         this.marked_default = false;
         if ( element.tagName.toLowerCase() == 'video')
-            this.marked_default = true;
+            this.marked_default = true;        
         
         //set default timeFormat: 
         this['timeFormat']='anx';
@@ -1459,8 +1459,7 @@ mediaElement.prototype =
     			break;
     		}
     	}
-    	js_log("selected source " + this.sources[index].getTitle());
-    	
+    	js_log("selected source " + this.sources[index].getTitle());    	
     },
     /** selects the default source via cookie preference, default marked, or by id order
      * */
@@ -1470,7 +1469,7 @@ mediaElement.prototype =
     	// Select the default source
     	var playable_sources = this.getPlayableSources();          	       		
     	var flash_flag=ogg_flag=false;  	    
-    	
+    	//debugger;
         for(var source=0; source < playable_sources.length; source++){
         	var mime_type =playable_sources[source].mime_type;
             if( playable_sources[source].marked_default ){
@@ -1482,9 +1481,9 @@ mediaElement.prototype =
             if(embedTypes.players.preference['format_prefrence']==mime_type){
             	 js_log('set via preference: '+playable_sources[source].mime_type);
             	 this.selected_source = playable_sources[source];
-            	 return true;        
+            	 return true; 
             }                                	                        
-        }        
+        }       
         //set Ogg via player support
         for(var source=0; source < playable_sources.length; source++){
         	js_log('f:autoSelectSource:' + playable_sources[source].mime_type);
@@ -1584,16 +1583,10 @@ mediaElement.prototype =
         this.sources.push(source);        
         //js_log('pushed source to stack'+ source + 'sl:'+this.sources.length);
     },
-    getPlayableSources: function(){
-    	 //js_log('f:getPlayableSources');
+    getPlayableSources: function(){    	 
     	 var playable_sources= new Array();
-    	 for(var i=0; i < this.sources.length; i++){
-    	 	//js_log('getPlayableSources:' + this.sources[i].mime_type);    	 	    	 	
-    	 	if( this.isPlayableType( this.sources[i].mime_type ) ){
-    	 		if( mv_restrict_roe_time_source ){
-    	 			if( this.sources[i]['start'] )
-    	 				return true; //continue 	
-    	 		}
+    	 for(var i=0; i < this.sources.length; i++){    	     	 	    	 	
+    	 	if( this.isPlayableType( this.sources[i].mime_type ) ){    	 		
     	 		playable_sources.push( this.sources[i] );
     	 	}else{
     	 		js_log("type "+ this.sources[i].mime_type + 'is not playable');
@@ -2428,7 +2421,8 @@ embedVideo.prototype = {
 		if(typeof this.textInterface == 'undefined' ){
 			//load the default text interface:
 			mvJsLoader.doLoad({
-					'textInterface':'timedTextLibs/mv_timed_text.js'
+					'textInterface':'timedTextLibs/mv_timed_text.js',
+					'$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'
 				}, function(){
 					
 					_this.textInterface = new textInterface( _this );							
