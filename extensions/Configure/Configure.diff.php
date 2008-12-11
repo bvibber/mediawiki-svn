@@ -286,16 +286,16 @@ abstract class ConfigurationDiff {
 				$validOps = array_keys( $opToName );
 				
 				foreach( $setting as $group => $conds ) {
-					if (!is_array($conds)) {
+					if ( !is_array( $conds ) ) {
 						$val[] = "$group: ".wfMsg( "configure-condition-description-$conds" );
 						continue;
 					}
-					if ( count($conds) == 0 ) {
+					if ( count( $conds ) == 0 ) {
 						$val[] = "$group: ".wfMsg( 'configure-autopromote-noconds' );
 						continue;
 					}
 					
-					if ( count($conds) > 1 && in_array( $conds[0], $validOps ) ) {
+					if ( count( $conds ) > 1 && in_array( $conds[0], $validOps ) ) {
 						$boolop = array_shift( $conds );
 						$boolop = $opToName[$boolop];
 						
@@ -316,6 +316,7 @@ abstract class ConfigurationDiff {
 						}
 						$name = array_shift( $cond );
 
+						
 						$argSummary = implode( ', ', $cond );
 						
 						$val[] = "$group: ".wfMsg( "configure-condition-description-$name", $argSummary );

@@ -630,7 +630,7 @@ abstract class ConfigurationPage extends SpecialPage {
 
 					foreach( $groups as $group ) {
 						$op = $wgRequest->getText( 'wp' . $name . '-' . $group . '-opt' );
-						if (empty($op)) {
+						if ( empty( $op ) ) {
 							$op = 'and';
 						}
 						
@@ -664,12 +664,11 @@ abstract class ConfigurationPage extends SpecialPage {
 								if( count( $reqGroups ) )
 									$condsVal[] = array_merge( array( $condName ), $reqGroups );
 							}
-							
-							if (count($condsVal) == 1) { ## Just the operator
-								$condsVal = array(APCOND_AGE, -1); // A no-op
-							}
-							$settings[$name][$group] = $condsVal;
 						}
+						if ( count( $condsVal ) == 1 ) { ## Just the operator
+							$condsVal = array( APCOND_AGE, -1 ); // A no-op
+						}
+						$settings[$name][$group] = $condsVal;
 					}
 					break;
 				}
