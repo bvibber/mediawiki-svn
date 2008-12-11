@@ -175,6 +175,18 @@ Please create it or change it to use this extension.',
 	'configure-throttle-group'            => 'Type',
 	'configure-throttle-limit'            => 'Limit',
 	'configure-throttle-none'             => 'No limit',
+
+	'configure-condition-operator'        => 'Operator:',
+	'configure-condition-operator-or'     => 'Or',
+	'configure-condition-operator-and'    => 'And',
+	'configure-condition-operator-xor'    => 'Xor',
+	'configure-condition-operator-not'    => 'Not',
+	'configure-condition-name'            => 'Condition',
+	'configure-condition-requirement'     => 'Requirement',
+	'configure-condition-name-1'          => 'Minimal edit count',
+	'configure-condition-name-2'          => 'Minimal age',
+	'configure-condition-name-3'          => 'Email confirmed',
+	'configure-condition-name-4'          => 'In groups',
 );
 
 /** Message documentation (Message documentation)

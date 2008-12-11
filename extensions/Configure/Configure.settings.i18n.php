@@ -152,6 +152,7 @@ $messages['en'] = array(
 	'configure-setting-wgSpecialVersionShowHooks' => "Show the contents of \$wgHooks in Special:Version",
 	'configure-setting-wgUseNPPatrol' => "Use new pages patrolling to check for vandalism",
 	'configure-setting-wgAutopromote' => "Conditions of automatic promotion of user to specific groups",
+	'configure-setting-wgAutopromote-value' => 'Conditions',
 	'configure-setting-wgAccountCreationThrottle' => "Number of accounts each IP address may create",
 	'configure-setting-wgAllowPageInfo' => "Allow the information action",
 	'configure-setting-wgAutoblockExpiry' => "Number of seconds before autoblock entries expire",

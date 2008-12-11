@@ -754,7 +754,7 @@ $arrayDefs = array(
 # Interwiki
 	'wgImportSources' => 'simple',
 # Access
-	'wgAutopromote' => 'array',
+	'wgAutopromote' => 'promotion-conds',
 	'wgAddGroups' => 'group-array',
 	'wgDisabledActions' => 'simple',
 	'wgGroupPermissions' => 'group-bool',

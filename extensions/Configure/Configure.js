@@ -172,15 +172,15 @@ function setupConfigure(){
 		addHandler( textbox, 'blur', createImageUrlCallback( textbox, img ) );
 	}
 
-	// $wgGroupPermissions stuff, only if ajax is enabled
-	// --------------------------------------------------
+	// $wgGroupPermissions and $wgAutopromote stuff, only if ajax is enabled
+	// ---------------------------------------------------------------------
 
 	if( wgConfigureUseAjax ){
-		var tables = getElementsByClassName( configform, 'table', 'group-bool' );
+		var tables = getElementsByClassName( configform, 'table', 'ajax-group' );
 		for( var t = 0; t < tables.length ; t++ ){
 			table = tables[t];
 			// Button "remove this row"
-			var trs = table.getElementsByTagName( 'tr' );
+			var trs = getElementsByClassName( table, 'tr', 'configure-maintable-row' );
 			for( var r = 0; r < trs.length; r++ ){
 				tr = trs[r];
 				if( r == 0 ){ // header
@@ -193,7 +193,7 @@ function setupConfigure(){
 					var button = document.createElement( 'input' );
 					button.type = 'button';
 					button.value = wgConfigureRemoveRow;
-					button.onclick = removeGroupBoolCallback( table, r );
+					button.onclick = removeAjaxGroupCallback( table, r );
 					td.appendChild( button );
 					tr.appendChild( td );
 				}
@@ -203,17 +203,17 @@ function setupConfigure(){
 			button.type = 'button';
 			button.className = 'button-add';
 			button.value = wgConfigureAdd;
-			button.onclick = createGroupBoolCallback( table );
+			button.onclick = createAjaxGroupCallback( table );
 			table.parentNode.appendChild( button );
 		}
 
 		document.getElementById( 'configure-form' ).onsubmit = function(){
-			var tables = getElementsByClassName( configform, 'table', 'group-bool' );
+			var tables = getElementsByClassName( configform, 'table', 'ajax-group' );
 			for( var t = 0; t < tables.length ; t++ ){
 				var table = tables[t];
 				var id = table.id;
 				var cont = '';
-				var trs = table.getElementsByTagName( 'tr' );
+				var trs = getElementsByClassName( table, 'tr', 'configure-maintable-row' );
 				for( var r = 1; r < trs.length; r++ ){
 					var tr = trs[r];
 					if( cont != '' ) cont += "\n";
@@ -365,7 +365,7 @@ function summariseSetting( div, summary ) {
 
 	var isType = function(type) { return elementType.indexOf( ' '+type+' ' ) !== -1; }
 
-	if (isType('assoc') ) {
+	if ( isType('assoc') ) {
 		// If it's too big to display as an associative array, it's too big to display as a summary.
 	} else if ( isType( 'ns-bool' ) || isType( 'ns-simple' ) || isType( 'group-bool-element' ) || isType( 'group-array-element' ) ) {
 		var labels = div.getElementsByTagName( 'label' );
@@ -476,6 +476,7 @@ function summariseSetting( div, summary ) {
 		}
 
 		summary.appendChild( table );
+	} else if ( isType( 'promotion-conds-element' ) ) {
 	} else if ( isType( 'configure-rate-limits-action' ) ) {
 	} else {
 		summary.appendChild( document.createTextNode( 'Useless type:'+elementType ) );
@@ -611,7 +612,7 @@ function fixAssocTable( table ){
 }
 
 // ----------------------
-// Group bool table stuff
+// Ajax group table stuff
 // ----------------------
 
 /**
@@ -620,9 +621,9 @@ function fixAssocTable( table ){
  *
  * @param Dom object representing a table
  */
-function createGroupBoolCallback( table ){
+function createAjaxGroupCallback( table ){
 	return function(){
-		addGroupBoolRow( table );
+		addAjaxGroupRow( table );
 	}
 }
 
@@ -631,9 +632,9 @@ function createGroupBoolCallback( table ){
  *
  * @param Dom object representing a table
  */
-function removeGroupBoolCallback( table, r ){
+function removeAjaxGroupCallback( table, r ){
 	return function(){
-		removeGroupBoolRow( table, r );
+		removeAjaxGroupRow( table, r );
 	}
 }
 
@@ -642,8 +643,8 @@ function removeGroupBoolCallback( table, r ){
  *
  * @param Dom object representing a table
  */
-function addGroupBoolRow( table ){
-	r = table.getElementsByTagName( 'tr' ).length;
+function addAjaxGroupRow( table ){
+	r = getElementsByClassName( table, 'tr', 'configure-maintable-row' ).length;
 	startName = 'wp' + table.id;
 	var groupname = prompt( wgConfigurePromptGroup );
 	var tbody = table.getElementsByTagName( 'tbody' )[0];
@@ -651,6 +652,7 @@ function addGroupBoolRow( table ){
 		return;
 
 	var tr = document.createElement( 'tr' );
+	tr.className = 'configure-maintable-row';
 	tr.id = startName + '-' + groupname;
 
 	var td1 = document.createElement( 'td' );
@@ -658,7 +660,7 @@ function addGroupBoolRow( table ){
 
 	var td2 = document.createElement( 'td' );
     error = false;
-	sajax_do_call( 'efConfigureAjax', [ groupname ], function( x ){
+	sajax_do_call( 'efConfigureAjax', [ table.id, groupname ], function( x ){
 		var resp = x.responseText;
 		if( resp == '<err#>' || x.status != 200 )
 			error = true;
@@ -675,7 +677,7 @@ function addGroupBoolRow( table ){
 	button.type = 'button';
 	button.className = 'button-add';
 	button.value = wgConfigureRemoveRow;
-	button.onclick = removeAssocCallback( table, r );
+	button.onclick = removeAjaxGroupCallback( table, r );
 	td3.appendChild( button );
 
 	tr.appendChild( td1 );
@@ -685,13 +687,13 @@ function addGroupBoolRow( table ){
 }
 
 /**
- * Remove a new row in a "group-bool" table
+ * Remove a new row in a "ajax-group" table
  *
  * @param Dom object representing a table
  * @param integer
  */
-function removeGroupBoolRow( table, r ){
-	var trs = table.getElementsByTagName( 'tr' );
+function removeAjaxGroupRow( table, r ){
+	var trs = getElementsByClassName( table, 'tr', 'configure-maintable-row' );
 	var tr = trs[r];
 	var tbody = table.getElementsByTagName( 'tbody' )[0];
 	tbody.removeChild( tr );
@@ -702,13 +704,13 @@ function removeGroupBoolRow( table, r ){
  *
  * @param Dom object representing a table
  */
-function fixAssocTable( table ){
+function fixAjaxGroupTable( table ){
 	var startName = 'wp' + table.id;
-	var trs = table.getElementsByTagName( 'tr' );
+	var trs = getElementsByClassName( table, 'tr', 'configure-maintable-row' );
 	for( var r = 1; r < trs.length; r++ ){
 		var tr = trs[r];
 		var inputs = tr.getElementsByTagName( 'input' );
-		inputs[inputs.length - 1].onclick = removeGroupBoolCallback( table, r );
+		inputs[inputs.length - 1].onclick = removeAjaxGroupCallback( table, r );
 	}
 }
 

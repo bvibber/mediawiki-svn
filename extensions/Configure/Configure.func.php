@@ -11,33 +11,41 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 
 /**
- * Ajax function to create checkboxes for a new group in $wgGroupPermissions
+ * Ajax function to create row for a new group in $wgGroupPermissions or
+ * $wgAutopromote
  *
+ * @param $setting String: setting name
  * @param $group String: new group name
- * @return either <err#> if group already exist or html fragment
+ * @return either <err#> on error or html fragment
  */
-function efConfigureAjax( $group ) {
-	global $wgUser, $wgGroupPermissions;
-	if ( !$wgUser->isAllowed( 'configure-all' ) ) {
+function efConfigureAjax( $setting, $group ) {
+	global $wgUser;
+
+	$settings = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH );
+	if ( $settings->getSettingType( $setting ) != 'array' )
+		return '<err#>';
+	if ( in_array( $setting, $settings->getEditRestricted() ) && ( !$wgUser->isAllowed( 'configure-all' ) || !$wgUser->isAllowed( 'extensions-all' ) ) )
+		return '<err#>';
+
+	wfLoadExtensionMessages( 'Configure' );
+	$type = $settings->getArrayType( $setting );
+	switch( $type ) {
+	case 'group-bool':
+		if ( isset( $GLOBALS[$setting] ) && isset( $GLOBALS[$setting][$group] ) )
+			return '<err#>';
+
+		$row = ConfigurationPage::buildGroupSettingRow( $setting, $type, User::getAllRights(), true, $group, array() );
+
+		// Firefox seems to not like that :(
+		return str_replace( '&nbsp;', ' ', $row );
+	case 'promotion-conds':
+		if ( isset( $GLOBALS[$setting] ) && isset( $GLOBALS[$setting][$group] ) )
+			return '<err#>';
+
+		return ConfigurationPage::buildPromotionCondsSettingRow( $setting, true, $group, array() );
+	default:
 		return '<err#>';
 	}
-	if ( isset( $wgGroupPermissions[$group] ) ) {
-		$html = '<err#>';
-	} else {
-		$all = User::getAllRights();
-		$row = '<div style="-moz-column-count:2"><ul>';
-		foreach ( $all as $right ) {
-			$id = Sanitizer::escapeId( 'wpwgGroupPermissions-' . $group . '-' . $right );
-			$desc = ( is_callable( array( 'User', 'getRightDescription' ) ) ) ?
-				User::getRightDescription( $right ) : $right;
-			$row .= '<li>' . Xml::checkLabel( $desc, $id, $id ) . "</li>\n";
-		}
-		$row .= '</ul></div>';
-		$groupName = User::getGroupName( $group );
-		// Firefox seems to not like that :(
-		$html = str_replace( '&nbsp;', ' ', $row );
-	}
-	return $html;
 }
 
 /**
@@ -54,7 +62,7 @@ function efConfigureSetup( $wiki = 'default', $afterCache = false ) {
 	global $wgConf, $wgConfigureFilesPath;
 	
 	global $wgConfigureHandler;
-	if (!$afterCache && $wgConfigureHandler == 'db') {
+	if ( !$afterCache && $wgConfigureHandler == 'db' ) {
 		// Defer to after caches are set up.
 		global $wgHooks;
 		$wgHooks['SetupAfterCache'][] = array( 'efConfigureSetupAfterCache', $wiki );

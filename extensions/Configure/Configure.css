@@ -77,7 +77,8 @@ table.assoc,
 table.ns-array,
 table.ns-text,
 table.group-bool,
-table.group-array {
+table.group-array,
+table.promotion-conds {
 	border: 1px solid #777;
 }
 
@@ -86,7 +87,8 @@ table.assoc td,
 table.ns-array td,
 table.ns-text td,
 table.group-bool td,
-table.group-array td {
+table.group-array td,
+table.promotion-conds td {
 	padding: 6px;
 	margin: 0;
 	border-bottom: 1px solid #777;
@@ -97,7 +99,8 @@ table.assoc td.button,
 table.ns-array td.button,
 table.ns-text td.button,
 table.group-bool td.button,
-table.group-array td.button {
+table.group-array td.button,
+table.promotion-conds td.button {
 	width: 10em;
 }
 
@@ -106,7 +109,8 @@ table.assoc th,
 table.ns-array th,
 table.ns-text th,
 table.group-bool th,
-table.group-array th {
+table.group-array th,
+table.promotion-conds th {
 	border-bottom: 1px solid #667;
 	background-color: #dde;
 }
@@ -120,7 +124,8 @@ table.assoc,
 table.ns-array,
 table.ns-text,
 table.group-bool,
-table.group-array {
+table.group-array,
+table.promotion-conds {
 	border-spacing: 0;
 	width: 100%;
 }

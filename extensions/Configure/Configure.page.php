@@ -4,7 +4,6 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * Special page allows authorised users to configure the wiki
  *
- * @file
  * @ingroup Extensions
  */
 abstract class ConfigurationPage extends SpecialPage {
@@ -612,6 +611,59 @@ abstract class ConfigurationPage extends SpecialPage {
 					}
 					
 					$settings[$name] = $all;
+					break;
+				case 'promotion-conds':
+					$options = array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' );
+					$conds = array( APCOND_EDITCOUNT => 'int', APCOND_AGE => 'int', APCOND_EMAILCONFIRMED => 'bool', APCOND_INGROUPS => 'array' );
+
+					if ( isset( $_REQUEST['wp' . $name . '-vals'] ) ) {
+						$groups = explode( "\n", trim( $wgRequest->getText( 'wp' . $name . '-vals' ) ) );
+						foreach ( $groups as &$group ) {
+							// Our own Sanitizer::unescapeId() :)
+							$group = urldecode( str_replace( array( '.', "\r" ), array( '%', '' ),
+								substr( $group, strlen( $name ) + 3 ) ) );
+						}
+						unset( $group ); // Unset the reference, just in case
+					} else { // No javascript ?
+						$groups = array_keys( $this->getSettingValue( $name ) );
+					}
+
+					foreach( $groups as $group ) {
+						$op = $wgRequest->getText( 'wp' . $name . '-' . $group . '-opt' );
+						if( !isset( $options[$op] ) )
+							throw new MWException( "'{$op}' for group '{$group}' is not a valid operator for 'promotion-conds' type" );
+						$op = $options[$op];
+
+						$condsVal = array( $op );
+						foreach ( $conds as $condName => $condType ) {
+							switch( $condType ) {
+							case 'bool':
+								$val = $wgRequest->getCheck( 'wp' . $name . '-' . $group . '-cond-' . $condName );
+								if( $val )
+									$condsVal[] = array( $condName );
+								break;
+							case 'int':
+								$val = $wgRequest->getInt( 'wp' . $name . '-' . $group . '-cond-' . $condName );
+								if( $val )
+									$condsVal[] = array( $condName, $val );
+								break;
+							case 'array':
+								$val = trim( $wgRequest->getText( 'wp' . $name . '-' . $group . '-cond-' . $condName ) );
+								if( !$val )
+									break;
+								$val = array_map( 'trim', explode( "\n", $val ) );
+								$reqGroups = array();
+								foreach( $val as $reqGroup )
+									if( $reqGroup )
+										$reqGroups[] = $reqGroup;
+	
+								if( count( $reqGroups ) )
+									$condsVal[] = array_merge( array( $condName ), $reqGroups );
+							}
+							$settings[$name][$group] = $condsVal;
+						}
+					}
+					break;
 				}
 				break;
 			case 'text':
@@ -698,14 +750,19 @@ abstract class ConfigurationPage extends SpecialPage {
 		$defaultValues = $wgConf->getDefaultsForWiki( $this->mWiki  );
 		foreach ( $defaultValues as $name => $default ) {
 			## Normalise the two, to avoid false "changes"
-			if (is_array($default))
-				$default = WebConfiguration::filterVar( $default );
-				
+			if ( is_array( $default ) ) {
+				try {
+					$default = WebConfiguration::filterVar( $default );
+				} catch( Exception $e ) {
+					throw new MWException( $name );
+				}
+			}
+
 			if ( isset( $settings[$name] ) ) {
 				$settingCompare = $settings[$name];
-				if (is_array($settingCompare))
-					$settingCompare = WebConfiguration::filterVar($settingCompare);
-			
+				if ( is_array( $settingCompare ) )
+					$settingCompare = WebConfiguration::filterVar( $settingCompare );
+
 				if ( $settingCompare == $default ) {
 					unset( $settings[$name] );
 				} elseif ( $this->canBeMerged( $name, $default ) ) {
@@ -731,7 +788,7 @@ abstract class ConfigurationPage extends SpecialPage {
 									unset( $settings[$name][$group][$right] );
 								}
 							}
-							if ( !count( $settings[$name][$group] ) )
+							if ( isset( $settings[$name][$group] ) && !count( $settings[$name][$group] ) )
 								unset( $settings[$name][$group] );
 						}
 						break;
@@ -980,16 +1037,16 @@ abstract class ConfigurationPage extends SpecialPage {
 			$keydesc = wfMsgExt( "configure-setting-$conf-key", 'parseinline' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
 
-			if (wfEmptyMsg( "configure-setting-$conf-key", $keydesc ))
+			if ( wfEmptyMsg( "configure-setting-$conf-key", $keydesc ) )
 				$keydesc = wfMsgHtml( 'configure-desc-key' );
-			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
+			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
 
-			$classes = array('configure-array-table', 'assoc');
+			$classes = array( 'configure-array-table', 'assoc' );
 
-			if (!$allowed)
+			if ( !$allowed )
 				$classes[] = 'disabled';
-			if (count($default) > 5)
+			if ( count( $default ) > 5 )
 				$classes[] = 'configure-biglist';
 
 			$text = Xml::openElement( 'table', array( 'class' => ( implode( ' ', $classes ) ),
@@ -1145,7 +1202,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			$nsdesc = wfMsgHtml( 'configure-desc-ns' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
 
-			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
+			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$text = "<table class='configure-array-table ns-text configure-biglist'>\n<tr><th>{$nsdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach ( $wgContLang->getNamespaces() as $ns => $name ) {
@@ -1172,7 +1229,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			$nsdesc = wfMsgHtml( 'configure-desc-ns' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
 
-			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
+			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$text = "<table class='ns-array configure-biglist configure-array-table'>\n<tr><th>{$nsdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach ( $wgContLang->getNamespaces() as $ns => $name ) {
@@ -1202,10 +1259,15 @@ abstract class ConfigurationPage extends SpecialPage {
 		}
 		if ( $type == 'group-bool' || $type == 'group-array' ) {
 			$all = array();
-			$attr = ( !$allowed ) ? array( 'disabled' => 'disabled' ) : array();
 			if ( $type == 'group-bool' ) {
 				$all = User::getAllRights();
 				$iter = $default;
+				$allGroups = array_keys( $all );
+				$autopromote = array_keys( $this->getSettingValue( 'wgAutopromote' ) );
+				$newGroups = array_diff( $autopromote, $allGroups );
+				foreach( $newGroups as $newGroup ) {
+					$iter[$newGroup] = array();
+				}
 			} else {
 				$all = array_keys( $this->getSettingValue( 'wgGroupPermissions' ) );
 				$iter = array();
@@ -1218,32 +1280,146 @@ abstract class ConfigurationPage extends SpecialPage {
 			$groupdesc = wfMsgHtml( 'configure-desc-group' );
 			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
 
-			if (wfEmptyMsg( "configure-setting-$conf-value", $valdesc ))
+			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
 				$valdesc = wfMsgHtml( 'configure-desc-val' );
 			$encConf = htmlspecialchars( $conf );
-			$text = "<table id= '{$encConf}' class='{$type} configure-array-table'>\n<tr><th>{$groupdesc}</th><th>{$valdesc}</th></tr>\n";
+			$classes = "{$type} configure-array-table" . ( $type == 'group-bool' ? ' ajax-group' : '' );
+			$text = "<table id=\"{$encConf}\" class=\"$classes\">\n";
+			$text .= "<tr class=\"configure-maintable-row\"><th>{$groupdesc}</th><th>{$valdesc}</th></tr>\n";
 			foreach ( $iter as $group => $levs ) {
-				$row = '<div class="configure-biglist '.$type.'-element"><ul>';
-				foreach ( $all as $right ) {
-					if ( $type == 'group-bool' )
-						$checked = ( isset( $levs[$right] ) && $levs[$right] );
-					else
-						$checked = in_array( $right, $levs );
-					$id = Sanitizer::escapeId( 'wp' . $conf . '-' . $group . '-' . $right );
-					if( $type == 'group-bool' )
-						$desc = User::getRightDescription( $right ) . " (" .Xml::element( 'tt', array( 'class' => 'configure-right-id' ), $right ) . ")";
-					else 
-						$desc = User::getGroupName( $right );
-					$row .= '<li>' . Xml::check( $id, $checked, $attr + array( 'id' => $id ) ) . '&nbsp;' . Xml::tags( 'label', array( 'for' => $id ), $desc ) . "</li>\n";
-				}
-				$row .= '</ul></div>';
+				$row = self::buildGroupSettingRow( $conf, $type, $all, $allowed, $group, $levs );
 				$groupName = User::getGroupName( $group );
 				$encId = Sanitizer::escapeId( 'wp' . $conf . '-' . $group );
-				$text .= "<tr id=\"{$encId}\">\n<td class=\"configure-grouparray-group\">{$groupName}</td>\n<td class=\"configure-grouparray-value\">{$row}</td>\n</tr>";
+				$text .= "<tr class=\"configure-maintable-row\" id=\"{$encId}\">\n<td class=\"configure-grouparray-group\">{$groupName}</td>\n<td class=\"configure-grouparray-value\">{$row}</td>\n</tr>";
 			}
 			$text .= '</table>';
 			return $text;
 		}
+		if ( $type == 'promotion-conds' ) {
+
+			$groupdesc = wfMsgHtml( 'configure-desc-group' );
+			$valdesc = wfMsgExt( "configure-setting-$conf-value", 'parseinline' );
+			if ( wfEmptyMsg( "configure-setting-$conf-value", $valdesc ) )
+				$valdesc = wfMsgHtml( 'configure-desc-val' );
+			$encConf = htmlspecialchars( $conf );
+			$text = "<table id= '{$encConf}' class='{$type} configure-array-table ajax-group'>\n";
+			$text .= "<tr class=\"configure-maintable-row\"><th>{$groupdesc}</th><th>{$valdesc}</th></tr>\n";
+
+			foreach ( $default as $group => $groupConds ) {
+				$row = self::buildPromotionCondsSettingRow( $conf, $allowed, $group, $groupConds );
+				$groupName = User::getGroupName( $group );
+				$encId = Sanitizer::escapeId( 'wp' . $conf . '-' . $group );
+				$text .= "<tr class=\"configure-maintable-row\" id=\"{$encId}\">\n<td class=\"configure-promotion-group\">{$groupName}</td>\n<td class=\"configure-promotion-value\">{$row}</td>\n</tr>";
+			}
+
+			$text .= '</table>';
+			return $text;
+		}
+	}
+
+	/**
+	 * Build a row for promotion-conds array type, taken out of buildArrayInput()
+	 * to called with ajax
+	 * @param $conf String: setting name
+	 * @param $allowed Boolean
+	 * @param $group String: group name
+	 * @param $groupConds Array: existing conditions for $group
+	 * @return String: XHTML
+	 */
+	public static function buildPromotionCondsSettingRow( $conf, $allowed, $group, $groupConds ){
+		static $options = array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' );
+		static $conds = array( APCOND_EDITCOUNT => 'int', APCOND_AGE => 'int', APCOND_EMAILCONFIRMED => 'bool', APCOND_INGROUPS => 'array' );
+		
+		$row = '<div class="configure-biglist promotion-conds-element">';
+		$row .= wfMsgHtml( 'configure-condition-operator' ) . ' ';
+		$encConf = htmlspecialchars( $conf );
+		$encGroup = htmlspecialchars( $group );
+		$encId = 'wp'.$encConf.'-'.$encGroup;
+		$curOpt = array_shift( $groupConds );
+		$extra = $allowed ? array() : array( 'disabled' => 'disabled' );
+		foreach ( $options as $desc => $opt ) {
+			$row .= Xml::radioLabel( wfMsg( 'configure-condition-operator-'.$desc ), $encId.'-opt', $desc,
+				$encId.'-opt-'.$desc, $curOpt == $opt, $extra ) . "\n";
+		}
+		$row .= "<br />\n";
+
+		$condsVal = array();
+		foreach( $groupConds as $cond ){
+			if( !is_array( $cond ) ) {
+				$condsVal[$cond] = true;
+				continue;
+			}
+			$name = array_shift( $cond );
+			if ( count( $cond ) == 0 ) {
+				$condsVal[$name] = true;
+			} elseif( count( $cond ) == 1 ) {
+				$condsVal[$name] = array_shift( $cond );
+			} else {
+				$condsVal[$name] = $cond;
+			}
+		}
+
+		$row .= "<table class=\"configure-table-promotion\">\n";
+		$row .= '<tr><th>' . wfMsgHtml( 'configure-condition-name' ) . '</th><th>' . wfMsgHtml( 'configure-condition-requirement' ) . "</th></tr>\n";
+		foreach ( $conds as $condName => $condType ) {
+			$desc = wfMsgHtml( 'configure-condition-name-' . $condName );
+			$row .= "<tr><td><label for=\"{$encId}-cond-{$condName}\">{$desc}</label></td><td>";
+			switch( $condType ) {
+			case 'bool':
+				$row .= Xml::check( $encId.'-cond-'.$condName, isset( $condsVal[$condName] ) && $condsVal[$condName],
+					array( 'id' => $encId.'-cond-'.$condName ) + $extra ) . "<br />\n";
+				break;
+			case 'int':
+				$row .= Xml::input( $encId.'-cond-'.$condName, 20, isset( $condsVal[$condName] ) ? $condsVal[$condName] : 0, $extra ) . "<br />\n";
+				break;
+			case 'array':
+				$id = "{$encId}-cond-{$condName}";
+				if ( $allowed ) {
+					$row .= "<textarea id='{$id}' name='{$id}' cols='30' rows='4' style='width: 95%;'>";
+					if ( isset( $condsVal[$condName] ) && $condsVal[$condName] )
+						$row .= htmlspecialchars( implode( "\n", $condsVal[$condName] ) );
+					$row .= "</textarea>\n";
+				} else {
+					$row .= "<pre>";
+					if ( isset( $condsVal[$condName] ) && $condsVal[$condName] )
+						$row .= htmlspecialchars( implode( "\n", $condsVal[$condName] ) );
+					$row .= "</pre>\n";
+				}
+			}
+			$row .= "</td></tr>";
+		}
+		$row .= "</table></div>";
+		return $row;
+	}
+
+	/**
+	 * Build a row for group-bool or group-array array type, taken out of
+	 * buildArrayInput() to called with ajax
+	 * @param $conf String: setting name
+	 * @param $type String: array type
+	 * @param $all Array: all avialable rights
+	 * @param $allowed Boolean
+	 * @param $group String: group name
+	 * @param $levs Array: rights given to $group
+	 * @return String: XHTML
+	 */
+	public static function buildGroupSettingRow( $conf, $type, $all, $allowed, $group, $levs ){
+		$attr = ( !$allowed ) ? array( 'disabled' => 'disabled' ) : array();
+		$row = '<div class="configure-biglist '.$type.'-element"><ul>';
+		foreach ( $all as $right ) {
+			if ( $type == 'group-bool' )
+				$checked = ( isset( $levs[$right] ) && $levs[$right] );
+			else
+				$checked = in_array( $right, $levs );
+			$id = Sanitizer::escapeId( 'wp' . $conf . '-' . $group . '-' . $right );
+			if( $type == 'group-bool' )
+				$desc = User::getRightDescription( $right ) . " (" .Xml::element( 'tt', array( 'class' => 'configure-right-id' ), $right ) . ")";
+			else 
+				$desc = User::getGroupName( $right );
+			$row .= '<li>' . Xml::check( $id, $checked, $attr + array( 'id' => $id ) ) . '&nbsp;' . Xml::tags( 'label', array( 'for' => $id ), $desc ) . "</li>\n";
+		}
+		$row .= '</ul></div>';
+		return $row;
 	}
 
 	/**
@@ -1258,7 +1434,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		
 		$rowClasses = array();
 		
-		if ($params['customised'])
+		if ( $params['customised'] )
 			$rowClasses[] = 'configure-customised';
 
 		$msg = isset( $params['msg'] ) ? $params['msg'] : 'configure-setting-' . $conf;
@@ -1281,7 +1457,7 @@ abstract class ConfigurationPage extends SpecialPage {
 		else
 			$msgVal = "$msgVal ($link)";
 			
-		if ($params['customised'])
+		if ( $params['customised'] )
 			$msgVal = Xml::tags( 'p', null, $msgVal ).wfMsgExt( 'configure-customised', 'parse' );
 		$attribs['class'] = 'configure-left-column';
 		$td1 = Xml::tags( 'td', $attribs, $msgVal );
