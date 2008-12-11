@@ -296,6 +296,7 @@ class CodeRevisionView extends CodeView {
 		global $wgOut, $wgScriptPath;
 		$encRepo = Xml::encodeJsVar( $this->mRepo->getName() );
 		$encRev = Xml::encodeJsVar( $this->mRev->getId() );
+		$wgOut->addScriptFile( "$wgScriptPath/extensions/CodeReview/codereview.js" );
 		$wgOut->addInlineScript(
 			"addOnloadHook(
 				function() {
