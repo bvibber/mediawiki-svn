@@ -1653,26 +1653,24 @@ var flashEmbed = {
     	}
     },
     monitor : function()
-    {    
+    {        	
+    	var _this = this;
     	//do monitor update: 
 	    if( ! this.monitorTimerId ){
-	    	if(document.getElementById(this.id)){
-	        	this.monitorTimerId = setInterval('$j(\'#'+this.id+'\').get(0).monitor()', 250);
-	    	}
+	    	if( $j('#'+this.id).length != 0 )	    
+	        	this.monitorTimerId = window.setInterval('$j(\'#'+_this.id+'\').get(0).monitor()', 250);	        
 	    }
 		                       
         var flash_state = this.fla.getStatus();
         if( typeof flash_state == 'undefined' ){
         	 var flash_state = {
         	 	"time" : this.fla.getTime()
-        	 };        	 
-        	 js_log('got time: ' + flash_state.time);
+        	 };        	         	
         }else{
 	        //simplification of buffer state ... should move to support returning time rages like:
 	        //http://www.whatwg.org/specs/web-apps/current-work/#normalized-timeranges-object        	
 	        this.bufferedPercent = flash_state.bufferEnd / this.getDuration();
         }               
-        
         //set the current Time (based on timeFormat)
         if( this.media_element.selected_source.timeFormat =='anx' ){
         	this.currentTime = flash_state.time;

@@ -600,6 +600,16 @@ var ctrlBuilder = {
         //js_log('looking for: #mv_seeker_slider_'+embedObj.id + "\n " +
 		//		'start sec: '+embedObj.start_time_sec + ' base offset: '+embedObj.base_seeker_slider_offset);
         
+        //add play hook: 
+        $j('#mv_play_pause_button_' + embedObj.id).unbind( "click" ).click(function(){
+        	$j('#' + embedObj.id).get(0).play();
+        });        
+        
+        //big_play_link_ play binding: 
+		$j('#big_play_link_' + embedObj.id).unbind('click').click(function(){
+			$j('#' + embedObj.id).get(0).play();
+		});
+        
         //build draggable hook here:        
 	    $j('#mv_seeker_slider_'+embedObj.id).draggable({
         	containment:'#seeker_bar_'+embedObj.id,
@@ -684,8 +694,7 @@ var ctrlBuilder = {
 		'pause':{
 			'w':24,
 			'o':function(){
-				return '<div id="mv_play_pause_button_' + ctrlBuilder.id + '" class="play_button"' +
-							'onClick="$j(\'#' + ctrlBuilder.id + '\').get(0).play()"></div>';
+				return '<div id="mv_play_pause_button_' + ctrlBuilder.id + '" class="play_button"></div>';
 			}
 		},
 		'closed_captions':{
@@ -1926,12 +1935,7 @@ embedVideo.prototype = {
 			js_log('performing embed for ' + _this.id);			
 			var embed_code = _this.getEmbedHTML();
 			//js_log(embed_code);
-			$j('#mv_embedded_player_'+_this.id).html(embed_code);
-			js_log('changed embed code');
-			_this.paused = false;
-			_this.thumbnail_disp=false;
-			$j("#mv_play_pause_button_"+ _this.id).attr('class', 'pause_button');
-			$j("#mv_play_pause_button_"+ _this.id).attr('onClick', '$j(\'#'+_this.id+'\').get(0).pause()');
+			$j('#mv_embedded_player_'+_this.id).html(embed_code);	
 		});
     },
     /* todo abstract out onClipDone chain of functions and merge with textInterface */
@@ -2147,18 +2151,13 @@ embedVideo.prototype = {
     },
     doThumbnailHTML:function()
     {  	
+    	var _this = this;
     	js_log('f:doThumbnailHTML'+ this.thumbnail_disp);
         this.closeDisplayedHTML();
         this.thumbnail_disp = true;
 
         $j('#mv_embedded_player_'+this.id).html( this.getThumbnailHTML() );
-		this.paused = true;
-		if(!this.pc) //if not in playlist mode update the play_pause button: 
-        	$j("#mv_play_pause_button_" + this.id).attr({
-        		'class':'play_button',
-        		'onClick':'$j(\'#' + this.id + '\').get(0).play()'
-        	});
-        	
+		this.paused = true;		
     },
     refreshControlsHTML:function(){
     	js_log('refreshing controls HTML');
@@ -2384,7 +2383,7 @@ embedVideo.prototype = {
 	},
 	getPlayButton:function(id){
 		if(!id)id=this.id;
-		return '<div onclick="$j(\'#'+id+'\').get(0).play()" id="big_play_link_'+id+'" class="large_play_button" '+
+		return '<div id="big_play_link_'+id+'" class="large_play_button" '+
 			'style="left:'+((this.playerPixelWidth()-130)/2)+'px;'+
 			'top:'+((this.playerPixelHeight()-96)/2)+'px;"></div>';
 	},
@@ -2635,7 +2634,8 @@ embedVideo.prototype = {
 			}else{
                 this.doEmbedHTML();
                 this.onClipDone_disp=false;               
-            	this.paused=false;            	
+            	this.paused=false;       
+            	this.thumbnail_disp=false;     	
 			}
 		}else{
 			//the plugin is already being displayed			
@@ -2643,8 +2643,9 @@ embedVideo.prototype = {
 		}		
 		js_log("should update play controL");
        	$j("#mv_play_pause_button_"+this.id).attr({
-       		'class':'pause_button',
-       		'onClick':'$j(\'#'+this_id+'\').get(0).pause()'
+       		'class':'pause_button'
+       	}).unbind( "click" ).click(function(){
+       		$j('#' + this_id ).get(0).pause();
        	});
 	},
 	/*
@@ -2659,8 +2660,9 @@ embedVideo.prototype = {
          this.paused=true; 
          //update the ctrl "paused state"            	
         $j("#mv_play_pause_button_"+this.id).attr({
-        		'class':'play_button',
-        		'onClick':'$j(\'#'+this_id+'\').get(0).play()'
+        		'class':'play_button'        		
+        }).unbind( "click" ).click(function(){
+        	$j('#'+this_id).get(0).play();
         });
 	},	
 	/*play_or_pause: function(){
@@ -2676,7 +2678,9 @@ embedVideo.prototype = {
 	 * base embed stop (can be overwritten by the plugin)
 	 */
 	stop: function(){
-		js_log('mvEmbed:stop:'+this.id);		
+		js_log('mvEmbed:stop:'+this.id);
+		//first issue pause to update interface	
+		this.pause();	
 		//check if thumbnail is being displayed in which case do nothing
 		if(this.thumbnail_disp){
 			//already in stooped state
@@ -3117,18 +3121,16 @@ function js_log(string){
      /*
       * IE and non-firebug debug:
       */
-    /*var log_elm = document.getElementById('mv_js_log');
+     /*var log_elm = document.getElementById('mv_js_log');
      if(!log_elm){
      	document.write('<div style="position:absolute;z-index:500;top:0px;left:0px;right:0px;height:150px;"><textarea id="mv_js_log" cols="80" rows="6"></textarea></div>');
      	var log_elm = document.getElementById('mv_js_log');
      }
      if(log_elm){
      	log_elm.value+=string+"\n";
-     }*/ 
-         
-   }
-   //return false
-   return false;
+     }*/         
+  }
+  //return false;
 }
 
 function js_error(string){

@@ -1,6 +1,13 @@
 var javaEmbed = {
 	instanceOf:'javaEmbed',
-    supports: {'play_head':true, 'pause':true, 'stop':true, 'fullscreen':true, 'time_display':true, 'volume_control':true},
+    supports: {
+    	'play_head':true, 
+    	'pause':true, 
+    	'stop':true, 
+    	'fullscreen':true, 
+    	'time_display':true, 
+    	'volume_control':true
+    },
     getEmbedHTML : function (){
 		if(this.controls)
 			setTimeout('document.getElementById(\''+this.id+'\').postEmbedJS()', 150);

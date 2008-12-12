@@ -18,7 +18,6 @@
  * 	addLoadEvent()
  */
 var org_vid_time_req =null; //store the original time req:
-var org_thum_src = null; //stores the original thumbnail src
 var org_vid_title = null; //stores the original title
 //store the original range request:
 // @@todo could replace the above 4 globals as they are all org request derived
@@ -101,7 +100,7 @@ var mv_stream_interface = {
 			return false;
 		}
 		org_vid_time_req = $j('#embed_vid').get(0).getTimeReq();
-		org_thum_src = $j('#embed_vid').get(0).thumbnail;
+		$j('#embed_vid').get(0).org_thum_src = $j('#embed_vid').get(0).thumbnail;
 
 		//@@TODO override stop function in player:
 
@@ -304,7 +303,7 @@ var mv_stream_interface = {
 				if(!vid_elm.onClipDone_disp){
 					//only restore if the cur_mvd = 'base' and interface updates are not locked
 					if(this.cur_mvd_id=='base'){
-						vid_elm.updateThumbnail( org_thum_src );
+						vid_elm.updateThumbnail(  $j('#embed_vid').get(0).org_thum_src );
 						vid_elm.updateVideoTimeReq(org_vid_time_req);
 						//vid_elm.updateVideoSrc(org_vid_src);
 						$j('#mv_videoPlayerTime').html(org_vid_title);
@@ -970,11 +969,11 @@ function scroll_to_pos(mvd_id){
 			});
 	}	
 }
-function highlight_fd(mvd_id){
-	$j('#mv_fd_mvd_'+mvd_id).css('border','1px solid #FF0000');
+function highlight_fd(mvd_id){	
+	$j('#mv_fd_mvd_'+mvd_id).css('border','1px solid #F00');
 }
 function de_highlight_fd(mvd_id){
-	$j('#mv_fd_mvd_'+mvd_id).css('border', '1px solid #FFFFFF');
+	$j('#mv_fd_mvd_'+mvd_id).css('border', '1px solid #FFF');
 }
 
 function highlight_tl_ts(mvd_id){
@@ -1033,8 +1032,8 @@ function do_update_thumb(mvd_id, start_time){
 		}
 	}
 	//else set via org_thum_src
-	if(org_thum_src.indexOf('?')!=-1){
-		var url = org_thum_src.split('?');
+	if( $j('#embed_vid').get(0).org_thum_src.indexOf('?')!=-1){
+		var url =  $j('#embed_vid').get(0).org_thum_src.split('?');
 		var args = Array();
 		var arg_parts = url[1].split('&');
 		for(i in arg_parts){

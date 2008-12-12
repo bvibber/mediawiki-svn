@@ -303,7 +303,9 @@ var vlcEmbed = {
     },
     pause : function(){
     	this.parent_pause(); //update the inteface if paused via native control
-		this.vlc.playlist.togglePause();
+    	if(this.vlc){
+			this.vlc.playlist.togglePause();
+		}
     },
     fullscreen : function(){
 		if(this.vlc){

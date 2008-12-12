@@ -1,7 +1,8 @@
 /*
 * a library for doing remote media searches 
 *  
-* initial targeted archives are: 
+* initial targeted archives are:
+	the local wiki 
 	wikimedia commons 
 	metavid 
 	and archive.org
@@ -32,26 +33,32 @@ remoteSearchDriver.prototype = {
 		}		
 	},
 	content_providers:{
+		//@@todo seed this via the include call (can be exported to seperate library
+		// once we get the script loader integrated) 
 		'this_wiki':{
-			'enabled':0,
+			'enabled':1,
+			'checked':1,
 			'title':'The Current Wiki',
 			'desc': '(should be updated with the proper text)'
 		},
 		'wiki_commons':{
 			'enabled':1,
+			'checked':1,			
 			'title':'Wikipedia Commons',
 			'desc': 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
 			'logo': 'http://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Wiki-commons.png/80px-Wiki-commons.png'
 		},
 		'archive_org':{
-			'enabled':0,
+			'enabled':1,
+			'checked':1,
 			'title' : 'Archive.org',
 			'desc'	: 'The Internet Archive, a digital library of cultural artifacts in digital form',
 			'logo'  : 'http://www.archive.org/images/logo.jpg'
 		},	
 		'metavid':{
-			'enabled':0,
+			'enabled':1,
+			'checked':1,
 			'title':'Metavid.org',
 			'desc': 'Metavid hosts thousands of hours of US house and senate floor proccedings',
 			'logo': 'http://metavid.org/w/skins/mvpcf/images/logo.png'
@@ -83,7 +90,7 @@ remoteSearchDriver.prototype = {
 							'</td>'+
 							'<td style="width:110px">'+
 								'<input type="submit" value="' + getMsg('mv_media_search') + '" tabindex="2" '+
-									' id="search-button"/>'+
+									' id="rms_search_button"/>'+
 							'</td>'+
 							'<td>';
 		for(var i in this.main_search_options){
@@ -101,8 +108,7 @@ remoteSearchDriver.prototype = {
 		for( var i in this.content_providers ){
 			var cp = this.content_providers[i];
 				 
-			var checked_attr = (this.default_provider_id &&  
-					( this.default_provider_id ==  i || this.default_provider_id == 'all' ))?'checked':'';
+			var checked_attr = ( cp.checked ) ? 'checked':'';
 					  
 			cpsdiv+='<td '+
 						' title="' + cp.title + '" '+ 
@@ -117,7 +123,8 @@ remoteSearchDriver.prototype = {
 			}
 			cpsdiv+='</td>';
 		}		 		
-		cpsdiv+='</table><a id="mso_selprovider_close" href="#">close</a></div>';
+		cpsdiv+='<tr><td><a id="mso_selprovider_close" href="#">'+getMsg('close')+'</a></td></tr></table></div>';
+		
 		out+='<div id="rsd_options_bar" style="display:none;width:100%;height:0px;background:#BBB">'+
 				cpsdiv +
 			 '</div>';
@@ -129,21 +136,34 @@ remoteSearchDriver.prototype = {
 		$j('#'+ this.target_id ).html( out );
 	}, 
 	add_interface_bindings:function(){
+		var _this = this;
 		js_log("add_interface_bindings:");
 		//setup for this.main_search_options:
-		$j('#mso_selprovider').(function(){
-			$j('#rsd_options_bar:visible').animate({
-				'height':'100px',
-				'opacity':1
-			}, "normal");
-			$j('#rsd_options_bar:hidden,#mso_selprovider_close').animate({
-				'height':'0px',
-				'opacity':0
-			}, "normal");
+		$j('#mso_selprovider,#mso_selprovider_close').click(function(){
+			if($j('#rsd_options_bar:hidden').length !=0 ){
+				$j('#rsd_options_bar').animate({
+					'height':'110px',
+					'opacity':1
+				}, "normal");
+			}else{
+				$j('#rsd_options_bar').animate({
+					'height':'0px',
+					'opacity':0					
+				}, "normal", function(){
+					$j(this).hide();
+				})
+			}
 		});
 		//setup binding for search provider check box: 
-		
-	}	
+		//search button: 
+		$j('#rms_search_button').click(function(){
+			_this.runSearch();
+		});
+	},
+	runSearch:function(){
+		//get a remote search object for each search provider:
+		for(var i in  
+	}		
 }
 
 var mvBaseRemoteSearch = function(initObj) {
