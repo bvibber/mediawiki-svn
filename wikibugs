@@ -95,7 +95,7 @@ if ($contents =~ /^From: bugzilla-daemon/m)
 		}
 		else
 		{
-			($haschanges, $user) = (1, $1) if $contents =~ /<(\S+)\@\S+> changed:$/m;
+			($haschanges, $user) = (1, $1) if $contents =~ /^(.*<)?(\S+)\@\S+>? changed:$/m;
 
 			if ($haschanges) {
 				my @outputs;
