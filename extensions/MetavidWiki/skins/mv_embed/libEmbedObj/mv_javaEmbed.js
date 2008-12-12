@@ -78,6 +78,7 @@ var javaEmbed = {
     	}
     },
     pause:function(){
+    	this.parent_pause();
         this.stop();
     },
     currentTime:function(){
