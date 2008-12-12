@@ -1072,15 +1072,17 @@ function mv_embed( force_id ){
 		});
 	}		
 }
+
 /* init remote search */
 function mv_do_remote_search(initObj){
+	js_log(':::::mv_do_remote_search::::');
 	//insure we have the basic libs (jquery etc) : 
 	mvEmbed.load_libs(function(){
 		//load search specifc extra stuff 
 		mvJsLoader.doLoad({
 			'mvBaseRemoteSearch':'libRemoteMediaSearch/mv_remote_media_search.js'
 		}, function(){
-			var mvrs = new remoteSearchDriver(initObj);
+			var mvrs = new remoteSearchDriver( initObj );
 		});
 	});
 }

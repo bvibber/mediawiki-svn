@@ -11,6 +11,7 @@ include_once( dirname( __FILE__ )  . '/includes/MV_DefaultSettings.php' );
 $mvExternalImages = true;
 $mvExternalImgServerPath = 'http://metavid.org/wiki/index.php';
 
+$mvgJSDebug=true;
 // for sunlight network annalysis we include google analytics 
 /*$mvExtraHeader = '<script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

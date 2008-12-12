@@ -1,22 +1,150 @@
 /*
 * a library for doing remote media searches 
+*  
+* initial targeted archives are: 
+	wikimedia commons 
+	metavid 
+	and archive.org
 */
 
+gMsg['mv_media_search']= 'Media Search';
+
+var default_remote_search_options = {
+	'profile':'mediawiki_edit',	
+	'target_id':null, //the div that will hold the search interface
+	
+	'default_provider_id':'all', //all or one of the content_providers ids
+	
+	//specific to sequence profile
+	'p_seq':null		
+}
 var remoteSearchDriver = function(initObj){
 	return this.init( initObj );
 }
 remoteSearchDriver.prototype = {
+	//here we define the set of possible media content providers:
+	main_search_options:{
+		'selprovider':{
+			'title': 'Select Provider'			
+		},
+		'advanced_search':{
+			'title': 'Advanced Options'
+		}		
+	},
+	content_providers:{
+		'this_wiki':{
+			'enabled':0,
+			'title':'The Current Wiki',
+			'desc': '(should be updated with the proper text)'
+		},
+		'wiki_commons':{
+			'enabled':1,
+			'title':'Wikipedia Commons',
+			'desc': 'Wikimedia Commons is a media file repository making available public domain '+
+			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
+			'logo': 'http://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Wiki-commons.png/80px-Wiki-commons.png'
+		},
+		'archive_org':{
+			'enabled':0,
+			'title' : 'Archive.org',
+			'desc'	: 'The Internet Archive, a digital library of cultural artifacts in digital form',
+			'logo'  : 'http://www.archive.org/images/logo.jpg'
+		},	
+		'metavid':{
+			'enabled':0,
+			'title':'Metavid.org',
+			'desc': 'Metavid hosts thousands of hours of US house and senate floor proccedings',
+			'logo': 'http://metavid.org/w/skins/mvpcf/images/logo.png'
+		}
+	},	
 	init:function( initObj ){
-		//do profile check: 
-		if( initObj.profile == 'mediawiki_edit'){
-			
+		js_log('remoteSearchDriver:init');
+		for( var i in default_remote_search_options ) {
+			if( initObj[i]){
+				this[ i ] = initObj[i];
+			}else{
+				this[ i ] =default_remote_search_options[i]; 
+			}			
 		}
-		if( initObj.profile == 'sequence'){
-			
+		this.init_interface_html();
+		this.add_interface_bindings();
+	},	
+	//sets up the initial html interface 
+	init_interface_html:function(){
+		var out = '<div class="rsd_control_container" style="width:100%">' + 
+					'<table style="width:100%">' +
+						'<tr>'+
+							'<td style="width:100px">'+
+								'<h3> Media Search </h3>'+
+							'</td>'+
+							'<td style="width:190px">'+
+								'<input type="text" tabindex="1" value="" maxlength="512" id="q" name="q" '+ 
+									'size="20" autocomplete="off"/>'+
+							'</td>'+
+							'<td style="width:110px">'+
+								'<input type="submit" value="' + getMsg('mv_media_search') + '" tabindex="2" '+
+									' id="search-button"/>'+
+							'</td>'+
+							'<td>';
+		for(var i in this.main_search_options){
+			var mso = this.main_search_options[i];	
+			out += '<a src="#" id="mso_'+i+'" >' + mso.title + '</a><br>';
 		}
-	}
+		out+=				'</td>'+
+						'</tr>'+
+					'</table>';			
+		js_log('out: ' + out);							
+		//set up the content provider selection div (do this first to get the default cp)
+		var cpsdiv = '<div id="cps_options">'+
+						'<table style="background:transparent"><tr>';
+						
+		for( var i in this.content_providers ){
+			var cp = this.content_providers[i];
+				 
+			var checked_attr = (this.default_provider_id &&  
+					( this.default_provider_id ==  i || this.default_provider_id == 'all' ))?'checked':'';
+					  
+			cpsdiv+='<td '+
+						' title="' + cp.title + '" '+ 
+						' style="float:left;cursor:pointer;">'+
+					'<input class="mv_cps_input" type="checkbox" name="mv_cps" '+ checked_attr+'>'+
+					'</td>'+
+					'<td>';				
+			if( cp.logo ){
+				cpsdiv+= '<img src="' + cp.logo + '">'; 
+			}else{
+				cpsdiv+= cp.title 
+			}
+			cpsdiv+='</td>';
+		}		 		
+		cpsdiv+='</table><a id="mso_selprovider_close" href="#">close</a></div>';
+		out+='<div id="rsd_options_bar" style="display:none;width:100%;height:0px;background:#BBB">'+
+				cpsdiv +
+			 '</div>';
+		out+='<div class="rsd_result_bar" style="width:100%;border-top:solid thin black;background:#66F"/>';							
+		//close up the control container: 
+		out+='</div>';
+		//outout the results placeholder:		
+		out+='<div class="rmd_results" style="width:100%;height:100%;overflow:auto;" />';
+		$j('#'+ this.target_id ).html( out );
+	}, 
+	add_interface_bindings:function(){
+		js_log("add_interface_bindings:");
+		//setup for this.main_search_options:
+		$j('#mso_selprovider').(function(){
+			$j('#rsd_options_bar:visible').animate({
+				'height':'100px',
+				'opacity':1
+			}, "normal");
+			$j('#rsd_options_bar:hidden,#mso_selprovider_close').animate({
+				'height':'0px',
+				'opacity':0
+			}, "normal");
+		});
+		//setup binding for search provider check box: 
+		
+	}	
 }
-
 
 var mvBaseRemoteSearch = function(initObj) {
 	return this.init(initObj);

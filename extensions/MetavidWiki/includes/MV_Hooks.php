@@ -65,7 +65,7 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
 		 		}
  			}else if( !in_array( 'known', $options ) ){ 
  				$options[]='known';
- 			}
+ 			} 			
  		}
  	} 	
  	return true;
@@ -117,29 +117,19 @@ function mvLinkBegin($skin, $target, &$text, &$customAttribs, &$query, &$options
  			}
  		}
  	}	 	
- 	if( substr( $title->getText(), 0, strlen($mvEmbedKey) ) == $mvEmbedKey ){
- 		$mvTitle =  new MV_Title( substr( $title->getText(), strlen($mvEmbedKey)+1) ); 		
- 		$ret = $mvTitle->getEmbedVideoHtml( array( 'size'=>$size, 'showmeta'=>true ) );
- 		return false;
- 	}
- 	//strait Stream links are not the best to rewrite right now since there are lots of "stream" links
- 	/*if( $title->getNamespace() == MV_NS_STREAM ){
- 		//parse the stream title: 
- 		$mvTitle = new MV_Title($title);
- 		if ( !$mvTitle->getStartTime() || !$mvTitle->getEndTime() ) { 			
- 			if($start_ntp)
- 				$mvTitle->setStartTimeNtp( $start_ntp );
- 			if($end_ntp)
- 				$mvTitle->setEndTimeNtp( $end_ntp );
+ 	
+ 	if( substr( $title->getText(), 0, strlen($mvEmbedKey) ) == $mvEmbedKey){
+ 		$resourceTitle = Title::newFromText( substr( $title->getText(), strlen($mvEmbedKey)+1) );
+ 		if( $resourceTitle->getNamespace() == MV_NS_STREAM){
+ 			$mvTitle =  new MV_Title( $resourceTitle );
+ 			$ret = $mvTitle->getEmbedVideoHtml( array( 'size'=>$size, 'showmeta'=>true ) );
  		}
- 		$ret = $mvTitle->getEmbedVideoHtml( array( 'size'=>$size, 'showmeta'=>true ) );
+ 		if( $resourceTitle->getNamespace() == MV_NS_SEQUENCE){
+ 			$seqPlayer = new MV_SequencePlayer($resourceTitle);
+ 			$ret = $seqPlayer->getEmbedSeqHtml( array( 'size'=>$size ) );
+ 		} 		
  		return false;
- 	} */	
- 	if( $title->getNamespace() == MV_NS_SEQUENCE ){
- 		$seqPlayer = new MV_SequencePlayer($title);
- 		$ret = $seqPlayer->getEmbedSeqHtml( array( 'size'=>$size ) );
- 		return false;	
- 	} 	 	
+ 	} 	 	 
  	return true;
  }
 function mvAddToolBoxLinks(){

@@ -183,7 +183,8 @@
 	broder: solid thin gray;
 }
 .mv_submenu{	
-	position:absolute;
+	/*position:absolute;*/
+	float:left;
 	left:0px;
 	top:0px;
 	margin:2px;

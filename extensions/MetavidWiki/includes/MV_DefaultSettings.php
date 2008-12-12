@@ -24,10 +24,7 @@ include_once( 'MV_GlobalFunctions.php' );
 // (causes the inclution of jquery into every page.. can slow things down a bit)   
 $mvEnableAutoComplete = true;
 
-// if you want every page have the little powered by metavid software link 
-// (note this is done with javascript rewrite client side to avoid complicated skin 
-// (normally you could just add it to your site skin)  
-$mvEnableJSLinkBack = true;
+$mvgJSDebug=false;
 
 // if you want mvd links to be rewritten client side as inline movie clips and link to the stream page
 $mvEnableJSMVDrewrite = true;

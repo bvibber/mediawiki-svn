@@ -110,11 +110,11 @@
 		// grab a de-encapsulated search with prefix		
 		$wgOut->addHTML( '<h3>'. wfMsg('mv_resource_locator') . '</h3>' );
 		//add the input form 
-		$wgOut->addHTML( 			
-			xml::input('mv_ams_search', 255,'', array( 'id' => 'mv_ams_search' , 'class' => 'searchField' )) . 
+		/*$wgOut->addHTML( 			
+			xml::input('mv_ams_search', 50,'', array( 'id' => 'mv_ams_search' , 'class' => 'searchField' )) . 
 			xml::submitButton( wfMsg('mv_media_search'), array('id'=>'mv_ams_submit') ) .
 			xml::element('div',array('id'=>'mv_ams_results'))
-		);
+		);*/
 	}
 	function add_editor_options(){
 		global $wgOut;

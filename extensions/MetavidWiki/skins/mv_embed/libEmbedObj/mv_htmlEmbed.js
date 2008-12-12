@@ -71,6 +71,9 @@ var htmlEmbed ={
 		},
 		selected_source:{
 			supports_url_time_encoding:true
+		},
+		timedTextSources:function(){
+			return false;
 		}
 	},
 	inheritEmbedObj:function(){

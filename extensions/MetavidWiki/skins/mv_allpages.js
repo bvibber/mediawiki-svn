@@ -7,7 +7,7 @@ if( typeof wgServer!='undefined' && typeof  wgScript != 'undefined'){
 }else{
 	var base_roe_url='';
 }
-//foce wgScript path for blog support 
+//force wgScript path for blog support 
 if(typeof wgScript=='undefined')
 	var wgScript = "/w/index.php";
 	

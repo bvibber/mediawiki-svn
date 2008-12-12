@@ -51,6 +51,17 @@ gMsg['rmclip'] = 'Remove Clip';
 gMsg['clip_in'] = 'clip in';
 gMsg['clip_out'] = 'clip out';
 
+//menu items display helper: 
+gMsg['mv_welcome_to_sequencer'] = '<h3>Welcome to the sequencer demo</h3>'+
+'very <b>limited</b> functionality right now. Click on a Clip to edit that resource';
+
+gMsg['mv_editor_options'] = 'Editor options';
+gMsg['mv_editor_mode'] = 'Editor mode';
+gMsg['mv_simple_editor_desc'] = 'simple editor (iMovie style)';
+gMsg['mv_advanced_editor_desc'] = 'advanced editor (Final Cut style)';
+gMsg['mv_other_options'] = 'Other Options';	
+gMsg['mv_contextmenu_opt'] = 'Enable Context Menus';
+
  //used to set default values and validate the passed init object
 var sequencerDefaultValues = {
 	
@@ -72,8 +83,8 @@ var sequencerDefaultValues = {
 	track_thumb_height:60,
 	track_text_height:20,	
 		
-	//default timeline mode: "clip" (i-movie like) or "time" (finalCut like) 
-	timeline_mode:'clip', 
+	//default timeline mode: "story" (i-movie like) or "time" (finalCut like) 
+	timeline_mode:'storyboard', 
 	
 	track_clipThumb_height:80, // how large are the i-movie type clips
 	
@@ -103,27 +114,66 @@ var mvSequencer = function(initObj) {
 };
 //set up the mvSequencer object
 mvSequencer.prototype = {
+	//the menu_items Object contains: default html, js setup/loader functions
 	menu_items : {
 		'clipedit':{
 			'd':1,
 			'submenu':{
-				'fileopts':1,
-				'inoutpoints':0,
-				'panzoom':0,				
-				'overlays':0,
-				'audio':0		
-			}
+				'fileopts':{},
+				'inoutpoints':{},
+				'panzoom':{},				
+				'overlays':{},
+				'audio':{}		
+			},
+			'html': getMsg('mv_welcome_to_sequencer')			
 		},
 		'cliplib':{
-			'd':0
+			'd':0,	
+			'html': getMsg('loading_txt'),			
+			'js':function( this_seq ){				
+				//load the search interface with sequence tool targets 		
+				mvJsLoader.doLoad({'mediaWikiRemoteSearch':'libRemoteMediaSearch/mv_remote_media_search.js'}, function(){					
+					this_seq.mySearch = new remoteSearchDriver({
+						'profile':'sequence',
+						'p_seq':this_seq,
+						'target_id':'cliplib_ic'												
+					 });
+				});
+			}
 		},
 		'transition':{
-			'd':0
+			'd':0,
+			'html' : '<h3>' + getMsg('menu_transition') + '</h3>',
+			'js':function(this_seq){
+				this_seq.renderTransitionsSet('transition_ic');
+			}
 		},		
 		'options':{
-			'd':0
+			'd':0,	
+			'html' : '<h3>' + getMsg('menu_options') + '</h3>' +
+				getMsg('mv_editor_mode') + '<br> ' +
+				'<blockquote><input type="radio" value="simple_editor" name="opt_editor">' + 
+						getMsg('mv_simple_editor_desc') + ' </blockquote>' +
+				'<blockquote><input type="radio" value="advanced_editor" name="opt_editor">' +
+						getMsg('mv_advanced_editor_desc') + ' </blockquote>'+
+				getMsg('mv_other_options') + '<br>' + 
+				'<blockquote><input type="checkbox" value="contextmenu_opt" name="contextmenu_opt">' + 
+						getMsg('mv_contextmenu_opt') + ' </blockquote>',		
+			'js':function(this_seq){
+				$j('#options_ic input[value=\'simple_editor\']').attr({
+					'checked':(this_seq.timeline_mode=='storyboard')?true:false					
+				}).click(function(){
+					this_seq.doSimpleTl();
+				});
+				$j('#options_ic input[value=\'advanced_editor\']').attr({
+					'checked':( this_seq.timeline_mode=='time' )?true:false					
+				}).click(function(){
+					this_seq.doAdvancedTl();
+				});
+				//set up the options for context menus
+			}
 		}
-	},	
+	},
 	
 	//set up initial key states: 
 	key_shift_down:false, 
@@ -225,7 +275,8 @@ mvSequencer.prototype = {
 	},
 	//display a menu item (hide the rest) 
 	disp:function( item ){
-		js_log('disp: ' + item);
+		js_log('menu_item disp: ' + item);
+				
 		for(var i in this.menu_items){
 			if(i==item){
 				$j('#'+i+'_ic').fadeIn("fast");						
@@ -234,103 +285,19 @@ mvSequencer.prototype = {
 			}		
 		}
 	},
-	//load the menu items: 	
-	loadInitMenuItems:function(){	
+	//setup the menu items: 	
+	setupMenuItems:function(){	
 		js_log('loadInitMenuItems');
 		if( !this.plObj.interface_url ){
 			js_log( 'Error:missing interface_url, can not load item' );
 			return false;
-		}						
-				
-		var req_url =this.plObj.interface_url+ '?action=ajax&rs=mv_seqtool_disp&rsargs[]=';
-		//ouput the requested items list: 
-		for(var i in this.menu_items){
-			req_url+='|'+i;
-			//if single items set to loading:
-			if(typeof this.menu_items[i].submenu == 'undefined')
-				$j('#'+i+'_ic').html( getMsg('loading_txt') );//set targets to loading
-			//else set the default sub menu to loading:
-			for(var j in this.menu_items[i].submenu){
-				if(this.menu_items[i].submenu[j])
-					$j('#sc_'+j).html( getMsg('loading_txt') );
-			}
-		}				
+		}			
 		var this_seq = this;
-		do_request(req_url, function(data){
-			if( typeof data=='string' ){
-				js_log(' eval data: ' + data);					
-				eval(data);
-				var data = mv_result['pay_load'];				
-			}
-			for( var i in data ){
-				var menu_item = this_seq.menu_items[i];
-				js_log('set '+ i + ' to: '+ data[i] );				
-				if( menu_item.submenu ){
-					if(typeof data[i]=='string'){
-						//just set the default item
-						for(var j in menu_item.submenu){
-							if( menu_item.submenu[j] )
-								$j('#sc_'+j).html( data[i] );
-						}
-					}else if(typeof data[i] == 'object'){						
-						//see if we have sub data for each sub-menu item
-						for(var j in data[i]){
-							$j('#sc_'+j).html( data[i][j] );
-						}
-					}
-				}else{
-					//just set the parent container		
-					$j('#'+i+'_ic').html( data[i] );
-					this_seq.doMenuItemDispJs(i)
-				}
-			}
-		});						
-	},
-	doMenuItemDispJs:function(item){		
-		var this_seq = this;
-		var target_id = item + '_ic';
-		var menu_item = this.menu_items[item];	
-		//do any menu item post embed js hook processing:
-		switch(item){		
-			case 'clipedit':
-				//load mv_clip_edit.js
-			break;
-			case 'transition':
-				//render out the transitions library
-				this.renderTransitionsSet(target_id);
-			break;		
-			case 'cliplib':
-				//load the search interface with sequence tool targets 
-				//@@todo it maybe cleaner to just pass along msg text in JSON 
-				//and have the search interface build the html 				
-				if( ! this.plObj.interface_url ){
-					js_log( 'Error:missing interface_url, can not load search interface' );
-					return false;
-				}
-				
-				//check default search
-				mvJsLoader.doLoad({'mediaWikiRemoteSearch':'libRemoteMediaSearch/mv_remote_media_search.js'}, function(){					
-					this_seq.mySearch = new remoteSearchDriver({
-						'profile':'sequence',
-						'p_seq':this_seq,
-						'instance_name': this_seq.instance_name + '.mySearch'						
-					 });
-				});							
-			break;			
-			case 'options':							
-				$j('#'+target_id+" input[value='simple_editor']").attr({
-					'checked':(this_seq.timeline_mode=='clip')?true:false					
-				}).click(function(){
-					this_seq.doSimpleTl();
-				});
-				$j('#'+target_id+" input[value='advanced_editor']").attr({
-					'checked':( this_seq.timeline_mode=='time' )?true:false					
-				}).click(function(){
-					this_seq.doAdvancedTl();
-				});
-				//set up the options for context menus				
-			break;
-		}
+		//do all the menu_items setup: 	@@we could defer this to once the menu item is requested
+		for( var i in this.menu_items ){	
+			if(	this.menu_items[i].js )	
+				this.menu_items[i].js( this );
+		}										
 	},
 	//renders out the transitions effects set			
 	renderTransitionsSet:function(target_id){
@@ -359,7 +326,7 @@ mvSequencer.prototype = {
 		//empty out the top level html: 
 		$j('#'+this.timeline_id).html('');
 		//add html general for timeline		
-		if( this.timeline_mode=='time'){
+		if( this.timeline_mode == 'time'){
 			$j('#'+this.timeline_id).html(''+
 				'<div id="'+this.timeline_id+'_left_cnt" class="mv_tl_left_cnt">'+
 					'<div id="'+this.timeline_id+'_head_control" style="position:absolute;top:0px;left:0px;right:0px;height:30px;">' +
@@ -421,7 +388,7 @@ mvSequencer.prototype = {
 				top_pos+=track_height+20;		
 			}		
 		}
-		if( this.timeline_mode=='clip'){
+		if( this.timeline_mode=='storyboard'){
 			var top_pos=this.plObj.org_control_height;
 			//debugger;
 			for(var i in this.plObj.tracks){
@@ -534,7 +501,9 @@ mvSequencer.prototype = {
 						});
 						sub_menu_html+= '</ul>';						
 					}
-				item_containers+= sub_menu_html + '</div>';
+				item_containers += sub_menu_html;				
+				item_containers += (menu_item.html) ? menu_item.html : '<h3>' + getMsg('menu_'+inx) + '</h3>';
+				item_containers +='</div>';
 		});
 		menu_html+='</ul>';		
 			
@@ -547,13 +516,14 @@ mvSequencer.prototype = {
 		});
 		
 		//load init content into containers 
-		this.loadInitMenuItems();	
+		this.setupMenuItems();	
 		
 		//render the timeline					
 		this.renderTimeLine();			
 		this.do_refresh_timeline();
 		
 		var this_seq = this;
+		
 		//set up key bidnings
 		$j().keydown(function(e){
 			js_log('pushed down on:' + e.which); 
@@ -873,7 +843,7 @@ mvSequencer.prototype = {
 		return false;
 	},
 	doSimpleTl:function(){		
-		this.timeline_mode='clip';
+		this.timeline_mode='storyboard';
 		this.renderTimeLine();
 		this.do_refresh_timeline();	
 		return false;
@@ -892,8 +862,8 @@ mvSequencer.prototype = {
 				var track = this.plObj.tracks[track_id];
 				var cur_clip_time=0;
 			
-				//set up some constants for timeline_mode == clip: 	
-				if(this.timeline_mode == 'clip'){			
+				//set up some constants for timeline_mode == storyboard: 	
+				if(this.timeline_mode == 'storyboard'){			
 					var frame_width = Math.round(this.track_clipThumb_height*1.3333333);
 					var container_width = frame_width+60;
 				}
@@ -902,7 +872,7 @@ mvSequencer.prototype = {
 				for(var j in track.clips){
 					clip = track.clips[j];					
 					//var img = clip.getClipImg('icon');
-					if(this.timeline_mode == 'clip'){												
+					if(this.timeline_mode == 'storyboard'){												
 						clip.left_px = j*container_width;
 						clip.width_px = container_width;
 						var base_id = 'track_'+track_id+'_clip_'+j;
@@ -1271,7 +1241,7 @@ mvSequencer.prototype = {
 			}	
 			$j('#'+this.timeline_id+'_head_jump').html(out);
 		}
-		if(this.timeline_mode=='clip'){
+		if(this.timeline_mode=='storyboard'){
 			//remove the old one if its still there		
 			$j('#'+this.timeline_id +'_pl_control').remove();
 			//render out a playlist clip wide and all the way to the right (only playhead and play button) (outside of timeline)

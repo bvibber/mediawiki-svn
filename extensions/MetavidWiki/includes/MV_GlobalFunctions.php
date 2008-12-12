@@ -6,7 +6,7 @@
  * for more info visit http://metavid.org/wiki/Code
  * 
  */
-define( 'MV_VERSION', '1.0rc2' );
+define( 'MV_VERSION', '1.0r44460' );
 
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
@@ -45,16 +45,14 @@ function enableMetavid() {
 function mvSetupExtension() {
 	global $mvVersion, $mvNamespace, $mvgIP, $wgHooks, $wgExtensionCredits, $mvMasterStore,
 	$wgParser, $mvArticlePath, $mvgScriptPath, $wgServer, $wgExtensionFunctions, $markerList,$wgVersion,
-	$wgAjaxExportList, $mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite, 
+	$wgAjaxExportList, $mvEnableAutoComplete, $mvEnableJSMVDrewrite, 
 	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers,
 	$wgAPIModules;
 	
 
 	mvfInitMessages();
-	// add header for autoComplete if enabled: 
-	if ( $mvEnableAutoComplete || $mvEnableJSLinkBack || $mvEnableJSMVDrewrite ) {
-		mvfAutoAllPageHeader();
-	}
+	//add the ALL page header 	
+	mvfAutoAllPageHeader();
 	
 	/********************************
  	* Ajax Hooks 
@@ -291,19 +289,28 @@ function mvMagicParserFunction_Render( &$parser ) {
 	 * enables linkback and autocomplete for search
 	 */
 function mvfAutoAllPageHeader() {
-	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $wgTitle;
+	global $mvgScriptPath, $wgJsMimeType, $wgOut, $mvExtraHeader, $wgTitle, $mvgJSDebug;
 	$mvgScriptPath = htmlspecialchars( $mvgScriptPath );
-	$wgJsMimeType = htmlspecialchars( $wgJsMimeType ) ;
-	/* (moved to on_dom ready)  but here as well*/
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.6.min.js\"></script>" );
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js\"></script>" );
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js\"></script>" );
-		
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>" );
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js\"></script>" );
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js\"></script>" );
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_common.js\"></script>" );			
+	$wgJsMimeType = htmlspecialchars( $wgJsMimeType ) ;	
+	//set the unquie request value 
+	if( $mvgJSDebug ){		
+		$unique_req_param = time();
+	}else{
+		$unique_req_param = MV_VERSION;
+	}
 	
+	/* (moved to on_dom ready)  but here as well*/
+	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/jquery-1.2.6.min.js?{$unique_req_param}\"></script>" );
+	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.autocomplete.js?{$unique_req_param}\"></script>" );
+	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/jquery/plugins/jquery.hoverIntent.js?{$unique_req_param}\"></script>" );
+		
+	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js?{$unique_req_param}\"></script>" );
+	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js?{$unique_req_param}\"></script>" );
+	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js?{$unique_req_param}\"></script>" );
+	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_common.js?{$unique_req_param}\"></script>" );
+	
+	//temp for testing: 
+	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/external_media_wizard.js?{$unique_req_param}\"></script>" );
 	
 	$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
 	$wgOut->addLink( array(
@@ -328,78 +335,7 @@ function mvGlobalJSVariables( $vars ){
 	global $mvGlobalJSVariables;
 	$vars = array_merge($vars, $mvGlobalJSVariables); 
 	return true;
-}
-
-	/**
-	*  This method is in charge of inserting additional CSS, JScript, and meta tags
-	*  into the html header of each page.  It is called by pages 
-	*  that will be embedding video or use metavid interfaces 
-	* 
-	* @@todo split up embed js & interface js include calls
-	*
-	*  $out is the modified OutputPage.
-	*/
-	/*function mvfAddHTMLHeader( $head_set = '' ) {
-		global $mvgHeadersInPlace; // record whether headers were created already (don't call mvfAddHTMLHeader twice)
-		global $mvgArticleHeadersInPlace; // record whether article name specific headers are already there
-		global $mvgScriptPath, $wgJsMimeType, $wgOut , $mvEnableAutoComplete, $mvEnableJSLinkBack, $mvEnableJSMVDrewrite;
-			
-		print "HEAD SET:$head_set ";
-			die;		
-		if ( !$mvgHeadersInPlace ) {
-			// all sets use mv_common script: *not used much yet*  
-			$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_common.js\"></script>" );
-			//we always want mv_embed (for metavid pages) (should be cached) 	
-			if ( $head_set == 'smw_ext' || $head_set == 'search' || $head_set == 'sequence' || $head_set == 'stream_interface' || $head_set == 'embed' ) {
-				if ( !( $mvEnableAutoComplete || $mvEnableJSLinkBack || $mvEnableJSMVDrewrite ) ) {
-					$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js\"></script>" );
-				}
-			}
-			
-			if( $head_set == 'sequence' ){
-				//add the sequence page helper
-				$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_sequence_page.js\"></script>" );
-			}
-			
-			if ( $head_set == 'search' )
-				$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js\"></script>" );
-			if ( $head_set == 'sequence' )
-				$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_sequence.js\"></script>" );
-			if ( $head_set == 'stream_interface' )
-				$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_stream.js\" ></script>" );
-			// if($head_set=='smw_ext')
-			//	$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_smw_ext.js\" ></script>");
-
-			if ( !( $mvEnableAutoComplete || $mvEnableJSLinkBack ) ) {
-				$mvCssUrl = $mvgScriptPath . '/skins/mv_custom.css';
-				$wgOut->addLink( array(
-					'rel'   => 'stylesheet',
-					'type'  => 'text/css',
-					'media' => 'all',
-					'href'  => $mvCssUrl
-				) );
-			}
-			// add extra IE styles fixes 
-			$wgOut->addScript( '<!--[if IE 7]>' .
-								'<style type="text/css">@import "' . $mvgScriptPath . '/skins/mv_customIE6.css";</style>' .
-							  '<![endif]--> ' .
-							  '<!--[if IE 6]>' .
-							  	'<style type="text/css">@import "' . $mvgScriptPath . '/skins/mv_customIE6.css";</style>' .
-							  '<![endif]-->'
-				);
-			// add extra safari sheet
-			$wgOut->addScript( "<script type=\"{$wgJsMimeType}\">
-if(navigator.userAgent.toLowerCase().indexOf('safari')!=-1){
-	document.write('<style type=\"text/css\">@import \"{$mvgScriptPath}/skins/mv_customSafari.css\";</style>');	
-}
-</script>" );
-			// add in the semantic wiki css if in stream interface
-			if ( $head_set == 'stream_interface' )
-				$wgOut->addScript( '<link rel="stylesheet" type="text/css" media="screen, projection" href="/mvWiki/extensions/SemanticMediaWiki/skins/SMW_custom.css" />' );
-			$mvgHeadersInPlace = true;
-		}
-		return true; // always return true, in order not to stop MW's hook processing!
-	}*/
+}	
 /**
  * Init the additional namepsaces used by Metavid MediaWiki. The
  * parameter denotes the least unused even namespace ID that is
@@ -516,7 +452,6 @@ function sffLoadMessagesManually() {
 		$wgMessageCache->addMessages( $messages[$key], $key );
 	}
 }
-
 
 /*
  * Utility functions:
@@ -878,6 +813,4 @@ function mvViewPrevNext( $offset, $limit, $link, $query = '', $atend = false ) {
 		return wfMsg( 'mv_viewprevnext', $plink, $nlink );
 	}
 }
-
-
 ?>

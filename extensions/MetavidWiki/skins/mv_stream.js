@@ -97,7 +97,8 @@ var mv_stream_interface = {
 		org_vid_title = $j('#mv_stream_time').html();
 		if( $j('#embed_vid').length==0 || !$j('#embed_vid').get(0).ready_to_play){
 			//no embed video present stop init
-			return js_log('no clip ready to play');
+			js_log('no clip ready to play');
+			return false;
 		}
 		org_vid_time_req = $j('#embed_vid').get(0).getTimeReq();
 		org_thum_src = $j('#embed_vid').get(0).thumbnail;
