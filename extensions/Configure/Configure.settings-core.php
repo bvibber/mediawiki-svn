@@ -57,7 +57,6 @@ $settings = array(
 		'ajax' => array(
 			'wgUseAjax' => 'bool',
 			'wgAjaxExportList' => 'array',
-			'wgAjaxSearch' => 'bool',
 			'wgAjaxUploadDestCheck' => 'bool',
 			'wgAjaxWatch' => 'bool',
 			'wgLivePreview' => 'bool',
@@ -341,6 +340,7 @@ $settings = array(
 			'wgMessageCacheType' => array( -1 => 'Anything', 0 => 'None',
 			                               1 => 'DB', 2 => 'Memcached',
 			                               3 => 'Accel', 4 => 'DBA' ),
+			'wgEnableSerializedMessages' => 'bool',
 			'wgLocalMessageCache' => 'text',
 			'wgMsgCacheExpiry' => 'int',
 			'wgCheckSerialized' => 'bool',
@@ -1066,40 +1066,4 @@ $notEditableSettings = array(
 /**
  * Array of settings depending of the Core version
  */
-$settingsVersion = array(
-# 1.14
-	'wgExemptFromUserRobotsControl' => array( array( '1.14alpha', '>=' ) ),
-	'wgHandheldStyle' => array( array( '1.14alpha', '>=' ) ),
-	'wgHandheldForIPhone' => array( array( '1.14alpha', '>=' ) ),
-	'wgCleanSignatures' => array( array( '1.14alpha', '>=' ) ),
-	'wgDisableTitleConversion' => array( array( '1.14alpha', '>=' ) ),
-	'wgOverrideSiteFeed' => array( array( '1.14alpha', '>=' ) ),
-	'wgPasswordAttemptThrottle' => array( array( '1.14alpha', '>=' ) ),
-	'wgCategoryPrefixedDefaultSortkey' => array( array( '1.14alpha', '>=' ) ),
-	'wgSQLiteDataDirMode' => array( array( '1.14alpha', '>=' ) ),
-	'wgEnableHtmlDiff' => array( array( '1.14alpha', '>=' ) ),
-	'wgRestrictDisplayTitle' => array( array( '1.14alpha', '>=' ) ),
-	'wgPhpCli' => array( array( '1.14alpha', '>=' ) ),
-	'wgLinkHolderBatchSize' => array( array( '1.14alpha', '>=' ) ),
-	'wgEnableImageWhitelist' => array( array( '1.14alpha', '>=' ) ),
-	'wgSpecialPageCacheUpdates' => array( array( '1.14alpha', '>=' ) ),
-	'wgNewUserLog' => array( array( '1.14alpha', '>=' ) ),
-	'wgRenderHashAppend' => array( array( '1.14alpha', '>=' ) ),
-	'wgExternalLinkTarget' => array( array( '1.14alpha', '>=' ) ),
-	'wgShellLocale' => array( array( '1.14alpha', '>=' ) ),
-	'wgFixDoubleRedirects' => array( array( '1.14alpha', '>=' ) ),
-	'wgUniversalEditButton' => array( array( '1.14alpha', '>=' ) ),
-	'wgEdititis' => array( array( '1.14alpha', '>=' ) ),
-	'wgMaxAnimatedGifArea' => array( array( '1.14alpha', '>=' ) ),
-	'wgMaxShellTime' => array( array( '1.14alpha', '>=' ) ),
-	'wgFilterLogTypes' => array( array( '1.14alpha', '>=' ) ),
-	'wgRC2UDPInterwikiPrefix' => array( array( '1.14alpha', '>=' ) ),
-	'wgAllowUserSkin' => array( array( '1.14alpha', '>=' ) ),
-	'wgDebugLogPrefix' => array( array( '1.14alpha', '>=' ) ),
-	'wgEnotifUseRealName' => array( array( '1.14alpha', '>=' ) ),
-	'wgImageMagickTempDir' => array( array( '1.14alpha', '>=' ) ),
-	'wgNamespacesToBeSearchedProject' => array( array( '1.14alpha', '>=' ) ),
-	'wgUsePrivateIPs' => array( array( '1.14alpha', '>=' ) ),
-# Obsolete
-	'wgAjaxSearch' => array( array( '1.14alpha', '<' ) ),
-);
+$settingsVersion = array();

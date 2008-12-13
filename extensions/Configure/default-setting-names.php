@@ -221,6 +221,7 @@ $defaultNames = array(
 	'wgFileCacheDirectory' => "Directory where the cached page will be saved when using server-side caching",
 	'wgUseFileCache' => "This will cache static pages for non-logged-in users to reduce database traffic on public sites",
 	'wgCachedMessageArrays' => "Directory for compiled constant message array databases",
+	'wgEnableSerializedMessages' => "Whether serialized versions of the messages arrays will be read from the \"serialized\" subdirectory if they are present",
 	'wgLocalMessageCache' => "Directory for local copy of message cache, for use in addition to memcached",
 	'wgLocalMessageCacheSerialized' => "Defines format of local cache",
 	'wgMaxMsgCacheEntrySize' => "Maximum entry size in the message cache, in bytes",

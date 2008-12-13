@@ -406,6 +406,7 @@ $messages['en'] = array(
 	'configure-setting-wgSessionsInMemcached' => "Store sessions in Memcached",
 	'configure-setting-wgUseMemCached' => "Use Memcached",
 	'configure-setting-wgMessageCacheType' => "Message cache type",
+	'configure-setting-wgEnableSerializedMessages' => "Whether serialized versions of the messages arrays will be read from the \"serialized\" subdirectory if they are present",
 	'configure-setting-wgLocalMessageCache' => "Directory for local message cache",
 	'configure-setting-wgMsgCacheExpiry' => "Message Cache Expiry",
 	'configure-setting-wgCheckSerialized' => "Check if serialised files are up to date",
