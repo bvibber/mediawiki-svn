@@ -157,13 +157,13 @@ function efErrorHandler( $errType, $errMsg, $errFile, $errLine, $errVars ){
 				$func .= '()';
 			}
 			$func = htmlspecialchars( $func );
-			$file = htmlspecialchars( $file );
 
-			if( $internal )
+			if( $internal ) {
 				$res = array( 'errorhandler-trace-line-internal', $func );
-			else
+			} else {
+				$file = htmlspecialchars( $file );
 				$res = array( 'errorhandler-trace-line', $file, $line, $func );
-
+			}
 			$trace[] = $res;
 		}
 	}
