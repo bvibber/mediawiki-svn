@@ -24,8 +24,6 @@ function efConfigureAjax( $setting, $group ) {
 	$settings = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH );
 	if ( $settings->getSettingType( $setting ) != 'array' )
 		return '<err#>';
-	if ( in_array( $setting, $settings->getEditRestricted() ) && ( !$wgUser->isAllowed( 'configure-all' ) || !$wgUser->isAllowed( 'extensions-all' ) ) )
-		return '<err#>';
 
 	wfLoadExtensionMessages( 'Configure' );
 	$type = $settings->getArrayType( $setting );
