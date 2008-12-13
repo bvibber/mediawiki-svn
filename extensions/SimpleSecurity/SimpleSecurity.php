@@ -21,7 +21,7 @@
 if (!defined('MEDIAWIKI'))                     die('Not an entry point.');
 if (version_compare($wgVersion, '1.11.0') < 0) die('Sorry, this extension requires at least MediaWiki version 1.11.0');
 
-define('SIMPLESECURITY_VERSION', '4.2.14, 2008-09-12');
+define('SIMPLESECURITY_VERSION', '4.2.15, 2008-12-14');
 
 # Global security settings
 $wgSecurityMagicIf              = "ifusercan";                  # the name for doing a permission-based conditional
@@ -273,7 +273,7 @@ class SimpleSecurity {
 	public function validateRow(&$row) {
 		global $wgUser;
 		$groups = $wgUser->getEffectiveGroups();
-		if (in_array('sysop', $groups)) return;
+		if (in_array('sysop', $groups) || empty($row->old_id)) return;
 
 		# Obtain a title object from the old_id
 		$dbr   =& wfGetDB(DB_SLAVE);
