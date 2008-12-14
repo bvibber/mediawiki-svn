@@ -20,7 +20,8 @@ $wgExtensionCredits['other'][] = array(
 	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Handling of trusted proxy addresses (XFF)',
 	'descriptionmsg' => 'trustedxff-desc',
-	'author'         => 'Tim Starling'
+	'author'         => 'Tim Starling',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:TrustedXFF',
 );
 $wgExtensionMessagesFiles['TrustedXFF'] = dirname(__FILE__) . '/TrustedXFF.i18n.php';
 $wgHooks['IsTrustedProxy'][] = 'TrustedXFF::onIsTrustedProxy';
