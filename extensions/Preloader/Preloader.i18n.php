@@ -42,6 +42,13 @@ $messages['de'] = array(
 	'preloader-desc' => 'Ermöglicht das Hinzufügen pro Namensraum anpassbarer Vorlagen bei der Erstellung neuer Seiten',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'preloader-desc' => 'Zmóžnja pśiměrjujobne tekstowe elementy za nowe boki na mjenjowy rum',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

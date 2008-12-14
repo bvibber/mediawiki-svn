@@ -431,10 +431,12 @@ Se ten algunha dúbida ou pregunta acerca do sistema de distribución das extens
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'extdist-submit-extension' => 'Συνεχίζειν',
+	'extdist-submit-version' => 'Συνεχίζειν',
 );
 
 /** Interlingua (Interlingua)

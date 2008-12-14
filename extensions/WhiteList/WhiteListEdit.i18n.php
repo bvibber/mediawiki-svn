@@ -672,6 +672,7 @@ $messages['grc'] = array(
 	'whitelisttablemodifyall' => 'Ἅπασαι',
 	'whitelisttablemodifynone' => 'Οὐδέν',
 	'whitelisttableedit' => 'Μεταγράφειν',
+	'whitelisttableremove' => 'Άφαιρεῖν',
 	'whitelistbadtitle' => 'Κακὸν τὸ ἐπώνυμον -',
 	'whitelistnever' => 'οὔποτε',
 );

@@ -122,6 +122,13 @@ $messages['it'] = array(
 	'googleadsense-desc' => 'Aggiunge [http://www.google.com/adsense Google AdSense] alla sidebar',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'googleadsense-desc' => '[http://www.google.com/adsense Google AdSense]をサイドバーに追加する',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

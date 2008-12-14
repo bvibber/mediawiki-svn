@@ -111,6 +111,13 @@ $messages['gl'] = array(
 	'multiboilerplate-submit' => 'Cargar',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'multiboilerplate-submit' => 'φορτίζειν',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

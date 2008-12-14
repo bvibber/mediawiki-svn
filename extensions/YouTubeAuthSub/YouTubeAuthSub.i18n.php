@@ -311,6 +311,13 @@ $messages['cs'] = array(
 	'youtubeauthsub_summary' => 'Nahrává se YouTube video',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'youtubeauthsub_category' => 'катигорі́ꙗ',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -522,6 +529,7 @@ Por favor, sexa paciente.',
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'youtubeauthsub_title' => 'Ἐπιγραφή',
 	'youtubeauthsub_category' => 'Κατηγορία',
 	'youtubeauthsub_submit' => 'Ὑποβάλλειν',
 );

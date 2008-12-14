@@ -192,6 +192,24 @@ $messages['de-formal'] = array(
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS an der Oxford University (UK) (nicht durchsuchbar)</a><br />',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'chemicalsources' => 'Chemiske žrědła',
+	'chemicalsource-desc' => 'Pśidawa toflicku <nowiki><chemform></nowiki> za chemiske formule',
+	'chemFunctions_ListPage' => 'Chemiske žrědła',
+	'chemFunctions_DataList' => 'Dołojce jo lisćina wótkazow k sedłam, kótarež mógu dodaś informacije wó chemiskej substancu, za kótarejž pytaš.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Zwězanje $MIXCASNameFormula na NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na uniwersiśe Oxford (UK) (njepśepytujobny)</a><br />',
+	'chemFunctions_CAS' => 'CAS-cysło',
+	'chemFunctions_ATCCode' => 'ATC-kod',
+	'chemFunctions_ECNumber' => 'EC-cysło',
+	'chemFunctions_Formula' => 'Formula',
+	'chemFunctions_Name' => 'IUPAC-mě',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Zapódaśowa zmólka!',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -334,6 +352,8 @@ $messages['hsb'] = array(
 	'chemFunctions_ListPage' => 'Chemiske žórła',
 	'chemFunctions_DataList' => 'Deleka je lisćina websydłow, kotrež poskića dalše informacije wo substancy za kotrejž pytaš: * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS uniwersity Oxford (UK) (njepřepytajomne)</a><br />',
 	'chemFunctions_CAS' => 'Ličba CAS',
+	'chemFunctions_ATCCode' => 'ATC-kod',
+	'chemFunctions_ECNumber' => 'EC-čisło',
 	'chemFunctions_Formula' => 'Formla',
 	'chemFunctions_Name' => 'Mjeno IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Zapodatny zmylk',

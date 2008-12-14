@@ -42,6 +42,11 @@ $aliases['de'] = array(
 	'Contributors' => array( 'Autoren' ),
 );
 
+/** Greek (Ελληνικά) */
+$aliases['el'] = array(
+	'Contributors' => array( 'Συνεισφέροντες' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'Contributors' => array( 'Contributeurs' ),

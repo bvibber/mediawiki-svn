@@ -69,6 +69,14 @@ $messages['de'] = array(
 	'minnamelength-desc' => 'Erzwinge eine Mindestlänge des Benutzernamens',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'minnamelength-error' => 'Twójo wužywarske mě jo pśekrotko. Minimalna dłujkosć jo $1.',
+	'minnamelength-desc' => 'Minimalnu dłujkosć wužywarskego mjenja wunuźiś',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

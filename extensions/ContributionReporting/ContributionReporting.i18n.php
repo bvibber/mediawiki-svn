@@ -175,8 +175,15 @@ $messages['ar'] = array(
 	'contribstats-total-ytd' => 'المجموع  (منذ بداية السنة)',
 	'fundraiserstatistics' => 'إحصاءات جمع التبرعات',
 	'fundraiserstats-date' => 'تاريخ',
+	'fundraiserstats-day' => 'اليوم $1 من $2',
 	'fundraiserstats-contributions' => 'مساهمات',
+	'fundraiserstats-total' => 'الإجمالي (USD)',
+	'fundraiserstats-avg' => 'المتوسط (USD)',
+	'fundraiserstats-max' => 'الأقصى (USD)',
+	'fundraiserstats-tab-totals' => 'الإجماليات (USD)',
 	'fundraiserstats-tab-contributions' => 'عدد المساهمات',
+	'fundraiserstats-tab-averages' => 'المتوسطات (USD)',
+	'fundraiserstats-tab-maximums' => 'القيم القصوى (USD)',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

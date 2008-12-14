@@ -59,7 +59,7 @@ $aliases['gsw'] = array(
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'UserStats' => array( 'Felhasználói statisztikák' ),
+	'UserStats' => array( 'Felhasználói statisztika', 'Felhasználóstatisztika' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

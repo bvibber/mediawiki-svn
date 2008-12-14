@@ -1314,9 +1314,14 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
  * @author Omnipaedista
  */
 $wgGoogleMapsMessages['grc'] = array(
+	'gm-balloon-title' => 'Ἐπιγραφή:',
+	'gm-remove' => 'ἀφαιρεῖν',
 	'gm-zoom-control' => 'Πλοήγησις',
 	'gm-no-zoom-control' => 'Οὐδέν',
+	'gm-yes' => 'Ναί',
+	'gm-no' => 'Οὐ',
 	'gm-search' => 'Ζητεῖν',
+	'gm-kml-loading' => 'φορτίζειν...',
 	'gm-moon' => 'Σελήνη',
 );
 

@@ -225,6 +225,7 @@ $messages['ar'] = array(
 	'code-comments' => 'ملاحظات المراجعة',
 	'code-change-removed' => 'أزال:',
 	'code-change-added' => 'أضاف:',
+	'code-prop-changes' => 'سجل الحالة والوسم',
 	'code-desc' => '[[Special:Code|أداة مراجعة الكود]] مع [[Special:RepoAdmin|دعم ساب فيرجن]]',
 	'code-no-repo' => 'لا مستودع تم ضبطه!',
 	'code-notes' => 'ملاحظات المراجعة',
@@ -464,7 +465,7 @@ $messages['be-tarask'] = array(
 	'code-rev-tag-remove' => 'Выдаліць тэгі:',
 	'code-rev-comment-by' => 'Камэнтар $1',
 	'code-rev-comment-submit' => 'Дадаць камэнтар',
-	'code-rev-comment-preview' => 'Прагляд',
+	'code-rev-comment-preview' => 'Папярэдні прагляд',
 	'code-rev-diff' => 'Зьмена',
 	'code-rev-diff-link' => 'зьмена',
 	'code-rev-purge-link' => 'ачысьціць кэш',
@@ -474,6 +475,7 @@ $messages['be-tarask'] = array(
 	'code-status-resolved' => 'вырашаная',
 	'code-status-ok' => 'добра',
 	'code-status-deferred' => 'адкладзены',
+	'code-pathsearch-legend' => 'Пошук у гэтым сховішчы вэрсіяў па іх адрасу',
 	'code-pathsearch-path' => 'Шлях:',
 	'code-rev-submit' => 'Захаваць зьмены',
 	'code-rev-submit-next' => 'Захаваць і перайсьці да наступнай зьмены',
@@ -1201,7 +1203,7 @@ $messages['fr'] = array(
 	'code-rev-purge-link' => 'purger',
 	'code-status-new' => 'nouveau',
 	'code-status-fixme' => 'a réparer',
-	'code-status-reverted' => 'Révoqué',
+	'code-status-reverted' => 'révoqué',
 	'code-status-resolved' => 'résolu',
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'déféré',
@@ -1353,6 +1355,7 @@ $messages['grc'] = array(
 	'code-rev-author' => 'Δημιουργός:',
 	'code-rev-date' => 'Ἡμερομηνία:',
 	'code-rev-message' => 'Σχόλιον:',
+	'code-rev-rev' => 'Ἀναθεώρησις:',
 	'code-rev-modified-d' => 'διεγραμμένη',
 	'code-rev-status' => 'Κατάστασις:',
 	'code-rev-tags' => 'Προσαρτήματα:',
@@ -1856,6 +1859,8 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'code' => 'コードの確認',
@@ -1865,6 +1870,12 @@ $messages['ja'] = array(
 	'code-change-removed' => '除去：',
 	'code-change-added' => '追加:',
 	'code-prop-changes' => 'ステータスとタグ付けのログ',
+	'code-authors' => '著者',
+	'code-tags' => 'タグ',
+	'code-field-author' => '著者',
+	'code-field-path' => 'パス',
+	'code-rev-author' => '著者:',
+	'code-pathsearch-path' => 'パス:',
 );
 
 /** Javanese (Basa Jawa)
@@ -2169,6 +2180,7 @@ $4',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'De \'\'Repositoire\'\' "[[Special:Code/$1|$1]]" gouf geännert.',
 	'right-codereview-add-tag' => "Nei Tagen bäi d'Versiounen derbäisetzen",
+	'right-codereview-remove-tag' => 'Taggen aus Versiounen eraushuelen',
 	'right-codereview-post-comment' => "Bemierkunge Bài d'Versiounen derbäisetzen",
 	'right-codereview-set-status' => 'Ännere vum Status vun de Versiounen',
 	'right-codereview-link-user' => 'Auteure mat Wiki-Benotzer verbannen (verlinken)',

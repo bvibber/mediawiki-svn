@@ -607,6 +607,7 @@ $messages['grc'] = array(
 	'grouppermissions-dosearch' => 'Ἱέναι',
 	'grouppermissions-comment' => 'Σχόλιον:',
 	'grouppermissions-never' => 'Οὔποτε',
+	'grouppermissions-sp-remove' => 'ἀφαιρεῖν',
 );
 
 /** Hebrew (עברית)

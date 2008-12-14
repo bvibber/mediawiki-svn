@@ -794,8 +794,12 @@ $messages['grc'] = array(
 	'sign-phone' => 'Ἀριθμὸς τηλεφώνου:',
 	'sign-email' => 'Ἡλεκτρονικὴ διεύθυνσις:',
 	'sign-viewfield-realname' => 'Ὄνομα',
+	'sign-viewfield-ip' => 'IP-διεύθυνσις',
+	'sign-viewfield-agent' => 'Χρώμενος πράκτωρ',
 	'sign-viewfield-email' => 'Ἠλεκτρονικαὶ ἐπιστολαί',
 	'sign-viewfield-options' => 'Ἐπιλογαί',
+	'sig-private' => '<ι>Ἰδιωτική</ι>',
+	'sign-viewfield-reviewedby' => 'ἐπιθεωρητής',
 	'sign-viewfield-reviewcomment' => 'Σχόλιον',
 	'sign-review-comment' => 'Σχόλιον',
 );

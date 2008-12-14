@@ -524,6 +524,8 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'review_total_statistics' => 'Συνολικόν',
+	'review_user_details_link' => '(λεπτομέρειαι)',
 	'review_topic' => 'Θέμα',
 	'review_rating' => 'Βάθμισις',
 	'review_comment' => 'Σχόλιον',

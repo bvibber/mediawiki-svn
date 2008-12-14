@@ -475,6 +475,13 @@ $messages['gl'] = array(
 	'tog-show_task_comments' => 'Páxina de comentarios das tarefas.',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'tasks_search_status' => 'Καθεστώς',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

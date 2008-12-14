@@ -298,6 +298,19 @@ $messages['frp'] = array(
 	'ajax-se-idling' => '(cen fât $1 s)',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ * @author Stifle
+ */
+$messages['ga'] = array(
+	'ajax-se-desc' => 'Taispeáineann úsáideoirí atá ag cur leathanach in eagar cé atá ag cur an leathanach céanna in eagar',
+	'ajax-se-title' => 'Ag cur in eagar láithreach:',
+	'ajax-se-idling' => '($1 soic. ó shin)',
+	'ajax-se-pagedoesnotexist' => 'níl an leathanach ann',
+	'ajax-se-userinvalid' => 'Earráid: Úsáideoir neamhbhailí',
+	'ajax-se-usernotfound' => 'Earráid: ní bhfuarthas an úsáideoir',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

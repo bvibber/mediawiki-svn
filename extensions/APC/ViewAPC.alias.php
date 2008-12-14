@@ -52,6 +52,11 @@ $aliases['gsw'] = array(
 	'ViewAPC' => array( 'APC-Informatione' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'ViewAPC' => array( 'APC megtekintése' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ViewAPC' => array( 'APC weisen' ),

@@ -59,7 +59,7 @@ $aliases['he'] = array(
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'Badimages' => array( 'Rossz képek' ),
+	'Badimages' => array( 'Tiltott képek', 'Rossz képek' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

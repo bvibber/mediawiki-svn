@@ -294,6 +294,7 @@ $messages['got'] = array(
  * @author Crazymadlover
  */
 $messages['grc'] = array(
+	'player-invalid-title' => 'Ἄκυρος ἐπιγραφή',
 	'player-goto-file' => 'Ἀρχεῖον',
 );
 

@@ -37,6 +37,13 @@ $messages['de'] = array(
 	'regexfunctions-desc' => 'Parserfunktionen für reguläre Ausdrücke',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'regexfunctions-desc' => 'Parserowe funkcije za regularne wuraze',
+);
+
 /** French (Français)
  * @author Grondin
  */

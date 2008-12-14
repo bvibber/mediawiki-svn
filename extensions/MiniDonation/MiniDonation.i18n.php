@@ -63,6 +63,14 @@ $messages['de'] = array(
 	'donationform-submit' => 'Spenden über PayPal',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'donationform-desc' => 'Pśidawa toflicku <tt>&lt;donateform&gt;</tt> za pódpěru pósćiwanjow pśez PayPal',
+	'donationform-submit' => 'Pśez PayPal pósćiś',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

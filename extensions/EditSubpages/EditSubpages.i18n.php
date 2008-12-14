@@ -84,6 +84,22 @@ $messages['de'] = array(
  #</pre><!-- Diese Zeile nicht verändern -->',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'editsubpages-desc' => 'Dowólujo administratoram bok a wšykne pódboki togo boka za anonymne wobźěłowanje pśez [[MediaWiki:Unlockedpages]] wótwóriś',
+	'unlockedpages' => '  #<!-- toś tu smužku njezměniś --><pre>
+# Pódaj boki, kótarež coš wótwóriś dołojce z pomocu
+# * Bokowym mjenim
+# Wótwórjone boki muse se z naliceńskim znamuškom zachopiś,
+# wšo druge maju za komentar
+# Bokowe mjenja mógu [[links|wótkaze]] byś a źiwaju na wjelikopisanje
+# Teke diskusijne boki budu se awtomatiski z bokom wótwóriś
+# Glědaj http://www.mediawiki.org/wiki/Extension:editSubpages za dalšne informacije
+  #</pre><!-- toś tu smužku njezměniś -->',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix

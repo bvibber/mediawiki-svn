@@ -665,6 +665,8 @@ $messages['grc'] = array(
 	'badimages-add-btn' => 'Προστιθέναι',
 	'badimages-name' => 'Ὄνομα:',
 	'badimages-reason' => 'Αἰτία:',
+	'badimages-remove' => '(ἀφαιρεῖν)',
+	'badimages-remove-btn' => 'Άφαιρεῖν',
 );
 
 /** Manx (Gaelg)

@@ -329,6 +329,13 @@ Faga clic no botón de embaixo para subscribirse.',
 	'right-povwatch_user' => 'Engadir páxinas á listaxe de vixilancia doutros usuarios',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'povwatch_title' => 'Ἐπιγραφή:',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

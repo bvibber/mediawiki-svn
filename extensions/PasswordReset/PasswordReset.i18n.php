@@ -64,6 +64,13 @@ $messages['af'] = array(
 	'passwordreset-newpass' => 'Nuwe wagwoord',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'passwordreset-submit' => 'Restablir a palabra de paso',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -285,7 +292,7 @@ $messages['gl'] = array(
 	'passwordreset-username' => 'Nome de usuario:',
 	'passwordreset-newpass' => 'Novo contrasinal:',
 	'passwordreset-confirmpass' => 'Confirme o contrasinal:',
-	'passwordreset-submit' => 'Limpar o Contrasinal',
+	'passwordreset-submit' => 'Restablecer o contrasinal',
 	'passwordreset-success' => 'Limpouse o contrasinal para o id de usuario: $1',
 	'passwordreset-disableuser' => 'Desactivar a Conta de Usuario?',
 	'passwordreset-disableuserexplain' => '(fixa un contrasinal hash inválido - o usuario non pode acceder ao sistema)',

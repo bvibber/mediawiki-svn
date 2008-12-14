@@ -681,6 +681,7 @@ $messages['bcl'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Cesco
  * @author EugeneZelenko
+ * @author Jim-by
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
@@ -739,6 +740,7 @@ $messages['be-tarask'] = array(
 	'boardvote_ua' => 'Браўзэр',
 	'boardvote_listintro' => '<p>Гэта сьпіс усіх запісаных галасоў на цяперашні момант. $1 дзеля зашыфраваных зьвестак.</p>',
 	'boardvote_dumplink' => 'Націсьніце тут',
+	'boardvote_submit' => 'Добра',
 	'boardvote_strike' => 'Закрэсьліць',
 	'boardvote_unstrike' => 'Адкрэсьліць',
 	'boardvote_needadmin' => 'Толькі адміністратары выбараў могуць выконваць гэтае дзеяньне.',
@@ -3576,13 +3578,17 @@ $messages['ko'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|투표]]
 * [[Special:Boardvote/list|투표한 날짜의 목록]]
 * [[Special:Boardvote/dump|암호화된 선거 기록의 덤프]]',
+	'boardvote_novotes' => '아무도 아직 투표하지 않았습니다.',
 	'boardvote_time' => '시간',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">위키미디어 이사회 선거</a>:
 선거는 6월 22일까지 열립니다.',
 	'boardvote_notstarted' => '선거가 아직 시작되지 않았습니다.',
 	'boardvote_closed' => '선거가 끝났습니다. [http://meta.wikimedia.org/wiki/Board_elections/2008/Results 선거 결과]를 확인하십시오.',
 	'group-boardvote' => '보드보트 관리자',
+	'group-boardvote-member' => '보드보트 관리자',
 	'grouppage-boardvote' => '{{ns:project}}:보드보트',
+	'boardvote_blocked' => '당신은 당신의 주 위키에서 차단되었습니다.
+차단된 사용자에게는 투표가 허락되지 않습니다.',
 	'boardvote_bot' => '당신은 봇으로 등록되었습니다.
 봇 계정은 투표가 허락되지 않습니다.',
 	'boardvote_welcome' => "'''$1'''님 환영합니다!",

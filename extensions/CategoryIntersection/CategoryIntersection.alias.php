@@ -94,7 +94,7 @@ $aliases['hsb'] = array(
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'CategoryIntersection' => array( 'Kategóriák metszete' ),
+	'CategoryIntersection' => array( 'Kategóriák metszete', 'Kategória-metszet' ),
 );
 
 /** Interlingua (Interlingua) */

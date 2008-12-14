@@ -34,8 +34,10 @@ Add some using the tools on the right.', // on the right? How does that work in 
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'gep-desc' => 'Short description of the Gep extension, shown on [[Special:Version]]',
 	'gep-categories' => '{{Identical|Categories}}',
 	'gep-addcategorybutton' => '{{Identical|Add}}',
 	'gep-addsectionbutton' => '{{Identical|Add}}',
@@ -127,6 +129,7 @@ Gib ein paar ein mit den Werkzeugen an der rechten Seite.',
 $messages['eo'] = array(
 	'gep-emailsubject' => '[$1] Kategoria sugesto: $2',
 	'gep-emailbody' => 'Uzanto "$1" sugestis kategorion "$2" por vikio "$3".',
+	'gep-emailfailure' => 'Bedaŭrinde via sugesto ne eblis esti procesita.',
 	'gep-emailsuccess' => 'Dankon pro sugesti la kategorion: $1.',
 	'gep-categories' => 'Kategorioj',
 	'gep-addcategory' => 'Aldoni kategorion',
@@ -215,6 +218,15 @@ Engada algunha usando as ferramentas da dereita.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'gep-categories' => 'Κατηγορίαι',
+	'gep-addcategorybutton' => 'Προστιθέναι',
+	'gep-addsectionbutton' => 'Προστιθέναι',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -266,6 +278,14 @@ $messages['jv'] = array(
 Tambahaké kanthi migunakaké piranti (''tools'') sing ana ing tengen.",
 	'gep-nocategories' => 'Pilih saora-orané siji kategori sadurungé nyimpen',
 	'gep-categorypage' => 'MediaWiki:Tagkacasunting',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'gep-desc' => 'Määt de de Sigg för Sigge ze Ändere bequeemer för de Schriever',
+	'gep-nocategories' => 'Vör em Afspeichere moß winnichstens ein Saachjropp ußjesooht sin.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

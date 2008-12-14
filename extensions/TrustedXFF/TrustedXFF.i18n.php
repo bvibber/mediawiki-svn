@@ -51,6 +51,13 @@ $messages['de'] = array(
 	'trustedxff-desc' => 'Verarbeitung einer Liste vertrauenswürdiger Proxyadressen ([http://meta.wikimedia.org/wiki/XFF_project XFF-ProjeKt])',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'trustedxff-desc' => 'Wobchadanje z lisćinu dowěrliwych proksyowych adresow ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

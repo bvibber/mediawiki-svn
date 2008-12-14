@@ -1237,10 +1237,14 @@ $messages['grc'] = array(
 	'viewapc-display-info' => 'Ὄνομα',
 	'viewapc-display-type' => 'Τύπος',
 	'viewapc-display-mtime' => 'Τετροποποιημένη',
+	'viewapc-display-deletion_time' => 'Διεγραμμένη',
 	'viewapc-ls-options-legend' => 'Ἐπιλογαί',
 	'viewapc-ls-submit' => 'Ἱέναι!',
 	'viewapc-ls-header-name' => 'Ὄνομα',
+	'viewapc-ls-header-deleted' => 'Διεγραμμένη',
+	'viewapc-ls-scope-deleted' => 'Διεγραμμένη',
 	'viewapc-ls-sort-name' => 'Ὄνομα',
+	'viewapc-ls-sort-deleted' => 'Διεγραμμένη',
 	'viewapc-ls-limit-none' => 'Ἅπασαι',
 );
 

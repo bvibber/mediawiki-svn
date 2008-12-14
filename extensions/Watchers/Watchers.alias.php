@@ -58,6 +58,11 @@ $aliases['hsb'] = array(
 	'Watchers' => array( 'Wobkedźbowarjo' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'Watchers' => array( 'Figyelők' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Watchers' => array( 'Oppassere' ),

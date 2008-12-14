@@ -54,6 +54,11 @@ $aliases['hsb'] = array(
 	'Form' => array( 'Formular' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'Form' => array( 'Űrlap' ),
+);
+
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
 	'Form' => array( 'Formulir' ),

@@ -20,6 +20,13 @@ $messages['bg'] = array(
 	'mootools12core-desc' => 'Добавя mootools-1.2-core-yc.js към всяка страница',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'mootools12core-desc' => 'Pśidawa mootools-1.2-core-yc.js kuždemu bokoju',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Sherbrooke
@@ -40,6 +47,13 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'mootools12core-desc' => 'הוספת mootools-1.2-core-yc.js לכל דף',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'mootools12core-desc' => 'Přidawa mootools-1.2-core-yc.js kóždej stronje',
 );
 
 /** Javanese (Basa Jawa)

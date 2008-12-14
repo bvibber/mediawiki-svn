@@ -39,6 +39,13 @@ $messages['de'] = array(
 	'htmlets-desc' => 'Ergänzt das <tt><nowiki><htmlet></nowiki></tt>-Tag zum Einfügen von HTML-Schnippseln hinzu',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'htmlets-desc' => 'Zasuwa HTML-kuski z datajow z pomocu toflicki <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

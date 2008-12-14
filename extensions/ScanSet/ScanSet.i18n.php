@@ -360,6 +360,13 @@ $messages['gl'] = array(
 	'scanset_prev' => '&lt; Anterior',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'scanset_next' => 'Ἑπομέναι &gt;',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

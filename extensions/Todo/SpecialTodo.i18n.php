@@ -344,6 +344,7 @@ $4',
 $messages['grc'] = array(
 	'todo-new-queue' => 'νέα',
 	'todo-list-cancel' => 'Ἀκυροῦν',
+	'todo-form-details' => 'Λεπτομέρειαι:',
 );
 
 /** Swiss German (Alemannisch)

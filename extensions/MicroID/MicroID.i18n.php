@@ -50,6 +50,14 @@ $messages['de'] = array(
 	'tog-microid' => 'Veröffentliche eine <a href="http://microid.org/">MicroID</a>, um das Benutzerkonto durch einen externen Servive zu bestätigen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'microid-desc' => 'Pśidawa [http://www.microid.org/ MicroID] k wužywarskim bokam, aby se konto z eksternymi słužbami wobkšuśiło',
+	'tog-microid' => '<a href="http://microid.org/">MicroID</a> za wobkšuśenje z eksternymi słužbami wózjawiś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

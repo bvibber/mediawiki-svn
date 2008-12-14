@@ -508,6 +508,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'bookinfo-result-title' => 'Ἐπιγραφή:',
 	'bookinfo-result-author' => 'Δημιουργός:',
 	'bookinfo-result-publisher' => 'Ἐκδότης:',
 );

@@ -20,6 +20,11 @@ $aliases['gsw'] = array(
 	'CreatePage' => array( 'Syte aalege' ),
 );
 
+/** Hungarian (Magyar) */
+$aliases['hu'] = array(
+	'CreatePage' => array( 'Oldalkészítés', 'Oldal készítése' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'CreatePage' => array( 'Säiten uleeën' ),

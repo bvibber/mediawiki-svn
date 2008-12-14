@@ -49,6 +49,14 @@ $messages['arz'] = array(
 	'abcdownload' => 'تنزيل:',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'abcdesc' => 'Дадаецца тэг <tt>&lt;abc&gt;</tt> для музыкальнага фармату ABC',
+	'abcdownload' => 'Загрузіць:',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

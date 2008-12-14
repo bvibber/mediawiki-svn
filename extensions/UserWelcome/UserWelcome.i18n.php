@@ -256,6 +256,26 @@ $messages['hsb'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|nowy přećel|nowaj přećelej|nowi přećeljo|nowych přećelow}}',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'userwelcome-desc' => 'Adde le etiquetta <tt>&lt;welcomeUser&gt;</tt> pro monstrar informationes social specific a cata usator al usatores que ha aperite un session',
+	'mp-userlevels-link' => 'Nivellos de usator',
+	'mp-welcome-upload' => 'Cargar',
+	'mp-welcome-edit' => 'Modificar',
+	'mp-welcome-points' => '$1 punctos',
+	'mp-welcome-needed-points' => 'Pro avantiar verso <b><a href="$1">$2</a></b> gania <i>$3</i> plus punctos!',
+	'mp-welcome-logged-in' => 'Salute $1',
+	'mp-requests-title' => 'Requestas',
+	'mp-requests-message' => 'Tu ha le sequente requestas.',
+	'mp-request-new-message' => 'nove message',
+	'mp-request-new-award' => '$1 nove {{PLURAL:$1|premio|premios}}',
+	'mp-request-new-gift' => '$1 nove {{PLURAL:$1|dono|donos}}',
+	'mp-request-new-foe' => '$1 nove {{PLURAL:$1|inimico|inimicos}}',
+	'mp-request-new-friend' => '$1 nove {{PLURAL:$1|amico|amicos}}',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

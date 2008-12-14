@@ -193,11 +193,14 @@ $wgCustomToolbarMessages['eo'] = array(
 	'ct_internal_tip_ins' => 'Enmeti internan ligilon',
 	'ct_internal_tip_wrap' => 'Fari ĉi tiun tekston al interna ligilo',
 	'ct_internal_caption' => 'Interna ligilo',
+	'ct_external_tip_ins' => 'Enmeti eksteran ligilon',
+	'ct_external_tip_wrap' => 'Fari ĉi tiun tekston kiel eksteran ligilon',
 	'ct_external_caption' => 'Ekstera ligilo',
 	'ct_image_tip' => 'Enmeti bildon',
 	'ct_image_caption' => 'Aldoni bildon',
 	'ct_attachment_tip' => 'Enmeti afiŝaĵon',
 	'ct_attachment_caption' => 'Aldoni afiŝaĵon',
+	'ct_math_sample' => 'Enmeti formulon LaTeX ĉi tie',
 	'ct_math_caption' => 'Formulon',
 	'ct_nowiki_tip_ins' => 'Ignori vikian formatadon',
 	'ct_nowiki_caption' => 'Neniu vikio',
@@ -209,6 +212,7 @@ $wgCustomToolbarMessages['eo'] = array(
 	'ct_close' => 'Fermi fenestron',
 	'ct_success' => 'Dosiera alŝuto sukcesis!',
 	'ct_user_user' => 'Uzanto',
+	'ct_user_tip' => 'Enmeti ligilon al uzula paĝo',
 	'ct_user_sample' => 'Salutnomo',
 );
 

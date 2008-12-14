@@ -1102,6 +1102,7 @@ $messages['grc'] = array(
 	'deletequeue-action-title' => 'Πρότασις διαγραφῆς τοῦ "$1"',
 	'deletequeue-delnom-otherreason' => 'Ἑτέρα αἰτία',
 	'deletequeue-review-reason' => 'Σχόλια:',
+	'deletequeue-vote-reason' => 'Σχόλια:',
 	'deletequeue-vote-submit' => 'Ὑποβάλλειν',
 	'deletequeue-list-queue' => 'Οὐρά:',
 	'deletequeue-list-status' => 'Καθεστώς:',

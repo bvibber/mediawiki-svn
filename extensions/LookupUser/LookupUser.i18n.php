@@ -53,6 +53,7 @@ $messages['ar'] = array(
 	'lookupuser-registration' => 'تاريخ التسجيل: $1',
 	'lookupuser-no-registration' => 'غير مسجل',
 	'lookupuser-touched' => 'سجل المستخدم تم تعديله آخر مرة في: $1',
+	'lookupuser-info-authenticated' => 'توكيد البريد الإلكتروني: $1',
 	'lookupuser-useroptions' => 'خيارات المستخدم:',
 );
 

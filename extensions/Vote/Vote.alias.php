@@ -99,6 +99,11 @@ $aliases['mk'] = array(
 	'Vote' => array( 'Гласање' ),
 );
 
+/** Mirandese (Mirandés) */
+$aliases['mwl'] = array(
+	'Vote' => array( 'Botar' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Vote' => array( 'Stemmen' ),

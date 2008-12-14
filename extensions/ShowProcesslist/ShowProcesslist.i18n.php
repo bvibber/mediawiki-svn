@@ -204,6 +204,14 @@ $messages['gl'] = array(
 	'showprocesslist-info' => 'Información',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'showprocesslist-user' => 'Χρώμενος',
+	'showprocesslist-time' => 'Χρόνος',
+);
+
 /** Gujarati (ગુજરાતી)
  * @author Dsvyas
  */

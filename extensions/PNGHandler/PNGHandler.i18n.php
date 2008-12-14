@@ -56,6 +56,13 @@ $messages['de'] = array(
 	'pnghandler-desc' => 'Ändere die Größe von PNGs mit Hilfe von "pngds"',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'pnghandler-desc' => 'Wjelikosć wobrazow PNG z pomocu pngds změniś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

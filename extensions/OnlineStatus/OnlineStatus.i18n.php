@@ -261,6 +261,13 @@ $messages['gl'] = array(
 	'tog-offlineOnLogout' => 'Cambiar o meu status a "desconectado" cando saia do sistema',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'onlinestatus-tab' => 'Καθεστώς',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

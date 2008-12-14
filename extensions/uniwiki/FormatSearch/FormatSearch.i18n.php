@@ -13,6 +13,13 @@ $messages['en'] = array(
 	'formatsearch-desc' => 'Cleans up the search results page',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'formatsearch-desc' => 'Rumujo bok pytańskich wuslědkow',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Sherbrooke

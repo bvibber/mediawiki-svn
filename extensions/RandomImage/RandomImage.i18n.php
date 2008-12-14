@@ -46,6 +46,13 @@ $messages['de'] = array(
 	'randomimage-desc' => 'Fügt das <tt>&lt;randomimage /&gt;</tt>-Tag zur Anzeige eines zufälligen Bildes hinzu',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'randomimage-desc' => 'Póbitujo pśipadny wuběrk multimedialnych datajow z pomocu toflicki <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

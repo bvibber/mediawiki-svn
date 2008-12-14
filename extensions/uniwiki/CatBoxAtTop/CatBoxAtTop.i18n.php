@@ -84,6 +84,13 @@ $messages['gl'] = array(
 	'catboxattop-categories' => 'Categorías',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'catboxattop-categories' => 'Κατηγορίαι',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */

@@ -32,7 +32,7 @@ $aliases['gsw'] = array(
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ContributionHistory' => array( 'Adományok története' ),
-	'ContributionStatistics' => array( 'Adományok statisztikája' ),
+	'ContributionStatistics' => array( 'Adományok statisztikája', 'Adománystatisztika' ),
 	'ContributionTotal' => array( 'Adományok összesen' ),
 );
 

@@ -405,11 +405,14 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'spamregex' => 'SpamRegex',
 	'spamregex-desc' => 'Njewitane frazy na wobdźěłanych stronach z pomocu regularnych wurazow [[Special:SpamRegex|wufiltrować]]',
+	'spamregex-error-unblocking' => 'Zmylk při wotblokowanju "$1". Snano tajki muster njeeksistuje.',
 	'spamregex-summary' => 'Tekst je so w zjeću strony namakał.',
 	'spamregex-intro' => 'Wužij tutón formular, zo by wurazy skutkownje přećiwo składowanju w teksće strony blokował. Jel tekst daty wuraz wobsahuje, změna njeby so składowała a wujasnjenje so wužiwarjej, kiž je spytał stronu składować, pokaza. Jewi so warnowanje, zo wurazy njesmědźa překrótke abo přepowšitkowne być.',
 	'spamregex-page-title' => 'Spam Regex Blokowanje njepožadanych wurazow',
 	'spamregex-currently-blocked' => "'''Tuchwilu zablokowane frazy:'''",
+	'spamregex-move' => 'Přičina, kotruž sy podał, je zablokowanu frazu wobsahowała.',
 	'spamregex-no-currently-blocked' => "'''Zablokowane frazy njejsu.'''",
 	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 wotstronić]) přidaty wot",
 	'spamregex-log-2' => 'na $1',

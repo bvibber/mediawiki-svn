@@ -51,6 +51,13 @@ $messages['de'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-XML-Schnittstelle für Textauszüge',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'opensearchxml-desc' => 'Interfejs [http://www.opensearch.org OpenSearch] XML za tekstowe wupise',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -335,9 +335,49 @@ $messages['bcc'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'hiderevision' => 'Схаваць вэрсіі назаўсёды',
+	'hiderevision-desc' => 'Хавае асобныя вэрсіі ад усіх удзельнікаў па юрыдычных прычынах і г.д.',
+	'group-oversight' => 'Рэвізоры',
+	'group-oversight-member' => 'рэвізор',
+	'grouppage-oversight' => '{{ns:project}}:Рэвізоры',
+	'right-oversight' => 'Прагляд раней схаваных вэрсіяў',
+	'right-hiderevision' => 'Прагляд і аднаўленьне вэрсіяў, схаваных ад адміністратараў',
+	'hiderevision-prompt' => 'Нумар вэрсіі для выдаленьня:',
+	'hiderevision-continue' => 'Працягваць',
+	'hiderevision-text' => "Гэта функцыя можа выкарыстоўвацца '''выключна''' ў наступных выпадках:
+* Абвяшчэньне асабістай інфармацыі
+*: ''дамашнія адрасы і тэлефонныя нумары, нумар сацыяльнага забесьпячэньня і г.д.''
+
+'''Злоўжываньне гэтай функцыяй прывядзе да пазбаўленьня правоў рэвізора.'''
+
+Схаваныя элемэнты ня будуць адлюстроўвацца на старонках сайта, але будуць рэгістравацца і могуць быць адноўлены адміністратарам базы зьвестак, калі Вы выпадкова зробіце памылку.",
+	'hiderevision-reason' => 'Прычына (будзе запісаная ў закрыты журнал):',
+	'hiderevision-submit' => 'Схаваць гэтыя зьвесткі назаўсёды',
+	'hiderevision-tab' => 'Схаваць гэтую вэрсію',
+	'hiderevision-link' => 'Схаваны ўнёсак удзельніка',
+	'hiderevision-norevisions' => 'Вэрсіі для выдаленьня ня вызначаныя',
+	'hiderevision-noreason' => 'Вам неабходна пазначыць прычыну гэтага выдаленьня.',
 	'hiderevision-status' => 'Вэрсія $1: $2',
+	'hiderevision-success' => 'Пасьпяхова заархівавана і выдалена.',
+	'hiderevision-error-missing' => 'Ня знойдзена ў базе зьвестак.',
+	'hiderevision-error-current' => 'Немагчыма выдаліць апошнюю вэрсію старонкі.
+Спачатку адкаціце гэтыя зьмены.',
+	'hiderevision-error-delete' => 'Немагчыма заархіваваць; магчыма ужо адбылася выдаленьне?',
+	'hiderevision-archive-status' => 'Выдалена вэрсія старонкі $1: $2',
+	'oversight-nodiff' => 'Немагчыма вызначыць зьмены з-за адсутнасьці папярэдняй вэрсіі старонкі. Магчыма:
+* Старонка была выдалена
+* Схаваная вэрсія была першай',
+	'oversight-log-hiderev' => 'выдаленая вэрсія старонкі $1',
+	'oversight' => 'Журнал схаваных вэрсій',
+	'oversight-view' => 'падрабязнасьці',
+	'oversight-difference' => '(Адрозьненьні з папярэдняй застаўшайся вэрсіяй)',
+	'oversight-prev' => 'Апошняя папярэдняя вэрсіяў',
+	'oversight-hidden' => 'Схаваная вэрсія',
+	'oversight-header' => 'Ніжэй знаходзяцца рэдагаваньні, якія былі пастаянна схаваныя ад публічнага прагляду.
+Распаўсюд гэтай інфармацыі можа прывесьці да пазбаўленьня правоў адміністратара.',
 );
 
 /** Bulgarian (Български)
@@ -988,10 +1028,13 @@ administrador das bases de datos no caso de que vostede cometa un erro.",
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
  * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'group-oversight-member' => 'παρόραμα',
+	'oversight' => 'παρόραμα',
+	'oversight-view' => 'λεπτομέρειαι',
 	'oversight-oversighter' => 'Παρόραμα:',
 );
 
@@ -1449,6 +1492,7 @@ $messages['ja'] = array(
 	'oversight-header' => '下記は、最近非公開となった版の一覧です。ここで得られた情報を漏洩した場合、この閲覧権限を永久に失う事となるでしょう。',
 	'oversight-legend' => '版の秘匿記録の検索',
 	'oversight-oversighter' => '秘匿者:',
+	'oversight-offender' => '投稿者:',
 );
 
 /** Jutish (Jysk)
@@ -1702,9 +1746,11 @@ $messages['ko'] = array(
 	'grouppage-oversight' => '{{ns:project}}:오버사이트',
 	'right-oversight' => '이전에 숨겨진 판을 보기',
 	'right-hiderevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
+	'hiderevision-prompt' => '제거할 판의 번호:',
 	'hiderevision-norevisions' => '삭제할 판이 제시되지 않았습니다.',
 	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',
 	'oversight-hidden' => '숨겨진 판',
+	'oversight-offender' => '편집자:',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -1785,6 +1831,7 @@ $messages['lb'] = array(
 	'hiderevision-reason' => 'Grond (gëtt verstoppt ofgespäichert)',
 	'hiderevision-submit' => 'Dës Daten definitv verstoppen',
 	'hiderevision-tab' => 'Verstopp Versiounen',
+	'hiderevision-link' => 'Verstoppte Benotzer-Kontributiounen',
 	'hiderevision-norevisions' => 'Keng Versioun uginn déi soll geläscht ginn.',
 	'hiderevision-noreason' => 'Dir musst de Grond fir dës Läschung uginn.',
 	'hiderevision-status' => 'Versioun $1: $2',
@@ -2958,6 +3005,7 @@ in caso de erori.",
 	'hiderevision-reason' => 'Motivo (par el registro riservà):',
 	'hiderevision-submit' => 'Oscura i dati in modo permanente',
 	'hiderevision-tab' => 'Oscura revision',
+	'hiderevision-link' => 'Contributi utente sconti',
 	'hiderevision-norevisions' => 'No xe stà indicà nissuna revision da oscurar.',
 	'hiderevision-noreason' => "Bisogna indicar el motivo de l'oscuramento.",
 	'hiderevision-status' => 'Revision $1: $2',
