@@ -795,7 +795,7 @@ $extensions = array(
 		'url' => 'http://mediawiki.org/wiki/Extension:SpecialInterwiki',
 	),
 	array(
-		'name' => 'InerwikiList',
+		'name' => 'InterwikiList',
 		'url' => 'http://mediawiki.org/wiki/Extension:InterwikiList',
 	),
 
