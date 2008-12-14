@@ -41,10 +41,6 @@ vicce006.net.gov.bc.ca
 vicce007.net.gov.bc.ca
 vicce008.net.gov.bc.ca
 vicce009.net.gov.bc.ca
-vicce666.net.gov.bc.ca
-vicce667.net.gov.bc.ca
-vicce668.net.gov.bc.ca
-vicce669.net.gov.bc.ca
 vance005.net.gov.bc.ca
 vance006.net.gov.bc.ca
 vance007.net.gov.bc.ca
@@ -507,58 +503,73 @@ ndf-cache2-vif0.saix.net
 80-58-54-107.proxycache.rima-tde.net
 80-58-55-107.proxycache.rima-tde.net
 
-
 # TPG Internet
-proxy1.tpgi.com.au
-proxy2.tpgi.com.au
-proxy3.tpgi.com.au
-nme-pow-pr1.tpgi.com.au
-nme-pow-pr2.tpgi.com.au
-nme-pow-pr3.tpgi.com.au
-nme-pow-pr4.tpgi.com.au
-nme-pow-pr5.tpgi.com.au
-nme-nxg-pr1.tpgi.com.au
-nme-nxg-pr2.tpgi.com.au
-nme-nxg-pr3.tpgi.com.au
-nme-nxg-pr4.tpgi.com.au
-nme-nxg-pr5.tpgi.com.au
-nme-nxg-pr6.tpgi.com.au
-syd-pow-pr1.tpgi.com.au
-syd-pow-pr2.tpgi.com.au
-syd-pow-pr3.tpgi.com.au
-syd-pow-pr4.tpgi.com.au
-syd-pow-pr5.tpgi.com.au
-syd-pow-pr6.tpgi.com.au
-syd-pow-pr7.tpgi.com.au
-syd-pow-pr8.tpgi.com.au
-syd-pow-pr9.tpgi.com.au
-syd-pow-pr10.tpgi.com.au
-syd-nxg-pr1.tpgi.com.au
-syd-nxg-pr2.tpgi.com.au
-syd-nxg-pr3.tpgi.com.au
-syd-nxg-pr4.tpgi.com.au
-syd-nxg-pr5.tpgi.com.au
-syd-nxg-pr6.tpgi.com.au
-syd-nxg-pr7.tpgi.com.au
-syd-nxg-pr8.tpgi.com.au
-syd-nxg-pr9.tpgi.com.au
-syd-nxg-pr10.tpgi.com.au
-bri-pow-pr1.tpgi.com.au
-bri-pow-pr2.tpgi.com.au
-bri-pow-pr3.tpgi.com.au
-bri-pow-pr4.tpgi.com.au
-bri-nxg-pr1.tpgi.com.au
-bri-nxg-pr2.tpgi.com.au
-bri-nxg-pr3.tpgi.com.au
-bri-nxg-pr4.tpgi.com.au
-bri-nxg-pr5.tpgi.com.au
-per-pow-pr1.tpgi.com.au
-per-pow-pr2.tpgi.com.au
-per-pow-pr3.tpgi.com.au
-cbr-pow-pr1.tpgi.com.au
-cbr-pow-pr2.tpgi.com.au
-cbr-pow-pr3.tpgi.com.au
-
+# Source: http://forums.whirlpool.net.au/forum-replies-archive.cfm/493725.html
+# Reverse DNS confirms, forward DNS is often broken so we list by IP
+203.26.24.211
+203.26.24.212
+202.7.176.130
+202.7.176.131
+202.7.176.132
+202.7.176.133
+202.7.176.134
+202.7.176.138
+202.7.176.139
+220.245.179.130
+220.245.179.131
+220.245.179.132
+220.245.179.133
+220.245.179.134
+220.245.179.136
+202.7.166.163
+202.7.166.164
+202.7.166.165
+202.7.166.166
+202.7.166.167
+202.7.166.168
+202.7.166.169
+202.7.166.170
+202.7.166.171
+202.7.166.173
+202.7.166.174
+202.7.166.175
+202.7.166.180
+202.7.166.181
+202.7.166.182
+202.7.166.136
+202.7.166.137
+202.7.166.138
+202.7.166.139
+202.7.166.140
+220.245.178.131
+220.245.178.132
+220.245.178.133
+220.245.178.134
+220.245.178.135
+220.245.178.136
+220.245.178.137
+220.245.178.139
+220.245.178.140
+220.245.178.141
+203.213.7.130
+203.213.7.131
+203.213.7.132
+203.213.7.133
+203.213.7.136
+203.213.7.137
+203.213.7.138
+203.213.7.139
+220.245.180.130
+220.245.180.131
+220.245.180.132
+220.245.180.133
+220.245.180.134
+202.7.190.130
+202.7.190.131
+202.7.190.132
+203.26.16.66
+203.26.16.67
+203.26.16.68
 
 # United Online
 # Source: reverse DNS
@@ -1140,13 +1151,22 @@ w3cache.icm.edu.pl
 131.111.8.104
 131.111.8.105 
 
-# IWF censorship proxies at various UK ISPs
+# teliasonera.com
+cache-out-1.inet.fi.
+
+# IWF proxies at demon.net
 193.195.3.40
 193.195.3.41
+
+# IWF proxy at EasyNet/UK Online
 212.134.155.210
+
+# IWF proxies at PlusNet
 212.159.3.233
 212.159.3.234
 212.159.3.235
 212.159.3.236
+
+# IWF proxy at kcom.com
 213.249.193.2
 
