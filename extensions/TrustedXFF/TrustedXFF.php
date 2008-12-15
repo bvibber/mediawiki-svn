@@ -55,7 +55,7 @@ class TrustedXFF {
 			if ( !function_exists( 'dba_open' ) ) {
 				throw new MWException( 'The TrustedXFF extension needs PHP\'s DBA module to work.' );
 			}
-			$this->cdb = dba_open( $wgTrustedXffFile, 'r', 'cdb' );
+			$this->cdb = dba_open( $wgTrustedXffFile, 'r-', 'cdb' );
 		}
 		return $this->cdb;
 	}
