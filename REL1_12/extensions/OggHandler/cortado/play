@@ -1,1 +1,0 @@
-java -cp output/build/debug com.fluendo.examples.Player $1

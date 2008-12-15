@@ -1,3 +1,0 @@
-require_once( "{{path}}/HTMLets.php" );
-
-$wgHTMLetsDirectory = "$IP/htmlets";
