@@ -215,12 +215,12 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 		export(prevBranch, prevDir)
 		makePatch(dir + '/' + package + '.patch.gz', prevDir, package, 'normal')
 		outFiles.append(package + '.patch.gz')
-		i18nPatch = 'mediawiki-i18n-' + version + '.patch.gz'
-		if (makePatch(dir + '/' +  i18nPatch, prevDir, package, 'i18n')):
-			outFiles.append(i18nPatch)
-			haveI18n = True
-		else:
-			haveI18n = False
+		haveI18n = False
+		if os.path.exists(dir+'/languages/messages'):
+			i18nPatch = 'mediawiki-i18n-' + version + '.patch.gz'
+			if (makePatch(dir + '/' +  i18nPatch, prevDir, package, 'i18n')):
+				outFiles.append(i18nPatch)
+				haveI18n = True
 	
 	# Sign
 	uploadFiles = []
@@ -271,17 +271,6 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 	print 'Public keys:'
 	print 'https://secure.wikimedia.org/keys.html'
 	print
-
-	print 'SHA-1 checksums:'
-	for filename in outFiles:
-		print hashfile(dir+'/'+filename, 'SHA1') + '  ' + filename
-	print
-
-	print 'MD5 checksums:'
-	for filename in outFiles:
-		print hashfile(dir+'/'+filename, 'MD5') + '  ' + filename
-	print
-
 
 if __name__ == '__main__':
 	main()
