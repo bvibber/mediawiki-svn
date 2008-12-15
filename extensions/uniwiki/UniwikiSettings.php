@@ -1,5 +1,10 @@
 <?php
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo "This is not a valid entry point.\n";
+	exit( 1 );
+}
+
 # default settings for UNIWIKI extension package
 $wgLogo = "$wgScriptPath/extensions/uniwiki/uniwiki.png"; 
 $uw = "$IP/extensions/uniwiki"; 
