@@ -18,6 +18,9 @@ class CodeRevisionView extends CodeView {
 			(int)$replyTarget : $wgRequest->getIntOrNull( 'wpParent' );
 		$this->text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
 		$this->mSkipCache = ($wgRequest->getVal( 'action' ) == 'purge');
+		# Make tag arrays
+		$this->mAddTags = $this->splitTags( $this->mAddTags );
+		$this->mRemoveTags = $this->splitTags( $this->mRemoveTags );
 	}
 
 	function execute(){
@@ -32,8 +35,6 @@ class CodeRevisionView extends CodeView {
 			$view->execute();
 			return;
 		}
-		$this->mAddTags = $this->splitTags( $this->mAddTags );
-		$this->mRemoveTags = $this->splitTags( $this->mRemoveTags );
 		$this->mStatus = $this->mStatus ? $this->mStatus : $this->mRev->getStatus();
 
 		$redirectOnPost = $this->checkPostings();
