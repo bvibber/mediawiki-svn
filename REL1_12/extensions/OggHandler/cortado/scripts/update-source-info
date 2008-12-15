@@ -1,0 +1,46 @@
+#!/bin/bash
+
+scriptsdir=`dirname $0`
+topsrcdir=`cd $scriptsdir/.. && pwd`
+targetfile=$topsrcdir/src/com/fluendo/jst/SourceInfo.java
+
+# this script updates the SourceInfo class
+
+branch=`$scriptsdir/get-branch`
+revision=`$scriptsdir/get-revision`
+
+# if branch and revision are unknown, and the file already exists, leave it
+# alone
+if test "x$branch" = "x(unknown)" && test "x$revision" = "x(unknown)"
+then
+  if test -e $targetfile
+  then
+    echo "Unknown revision information, leaving existing file"
+    exit
+  fi
+fi
+
+# if the file is not newer than the .svn directory, leave it alone
+if test ! -d $topsrcdir/.svn
+then
+  echo "No top-level .svn directory, leaving file alone."
+  exit
+fi
+
+# don't compare with .svn dir; local modifications should also trigger
+# a revision update
+
+echo "Updating SourceInfo file, branch $branch, revision $revision"
+# write the file
+cat > $targetfile <<END
+package com.fluendo.jst;
+
+public class SourceInfo
+{
+  public String revision = "${revision}";
+  public String branch = "${branch}";
+
+  public SourceInfo() {
+  }
+}
+END

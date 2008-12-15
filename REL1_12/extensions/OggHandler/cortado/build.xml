@@ -1,0 +1,674 @@
+<project name="cortado" default="all">
+
+    <description>
+Cortado ANT build file
+    </description>
+
+  <!-- ==================================== -->
+  <!-- ======== PROPERTY DEFINITION ======= -->
+  <!-- ==================================== -->
+
+  <property file="build.config"/>
+  <property file="build.properties"/>
+
+  <property name="src"                value="${basedir}/src"/>
+  <property name="examples"           value="${basedir}/examples"/>
+  <property name="config"             value="${basedir}/config"/>
+  <property name="archive"            value="${basedir}/archive"/>
+
+  <property name="out"                value="${basedir}/output"/>
+  <property name="out.build"          value="${out}/build"/>
+  <property name="out.dist"           value="${out}/dist"/>
+  <property name="out.dist.examples"  value="${out.dist}/examples"/>
+
+
+  <!-- we are still in autotool withdrawal -->
+  <property name="prefix"      location="/usr/local" />
+  <property name="exec_prefix" location="${prefix}" />
+  <property name="libdir"      location="${exec_prefix}/lib" />
+  <property name="datadir"     location="${prefix}/share" />
+
+  <!-- read a file containing properties for plugins to build -->
+<!--
+  <property file="plugins.properties" />
+-->
+
+<!-- a helper macro -->
+  <macrodef name="propertycopy">
+    <attribute name="name"/>
+    <attribute name="from"/>
+    <sequential>
+      <property name="@{name}" value="${@{from}}"/>
+    </sequential>
+  </macrodef>
+
+  <!-- figure out what build type we are using and set build.${type} stuff -->
+  <target name="type">
+    <echo message="Building ${build.type} version" />
+    <echo message="Using basedir ${basedir}" />
+    <echo message="Using out ${out}" />
+    <propertycopy name="build.flags" from="build.${build.type}.flags" />
+    <!-- we make out.buildtyped depend on the release type -->
+    <property name="out.buildtyped"   value="${out.build}/${build.type}" />
+    <!-- we set build.isdebug if it is a debug build -->
+    <condition property="build.isdebug">
+      <equals arg1="${build.type}" arg2="debug" />
+    </condition>
+  </target>
+
+  <!-- show us some info to make sure we are checking things correctly -->
+  <target name="info" depends="type">
+    <echo message="compiler: ${build.compiler}" />
+    <echo message="compile flags: ${build.flags}" />
+    <echo message="out.buildtyped: ${out.buildtyped}" />
+  </target>
+
+  <target name="init" depends="type">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${out}" />
+    <mkdir dir="${out.buildtyped}" />
+    <mkdir dir="${out.dist}/${build.type}" />
+    <mkdir dir="${out.dist}/applet" />
+    <mkdir dir="${out.dist}/src" />
+  </target>
+
+<!-- generate Configure-time options class as src/com/fluendo/player/Configure.java -->
+  <target name="configure">
+    <tstamp>
+      <format property="DATE" timezone="GMT" pattern="yyyy-MM-dd HH:mm:ss" />
+   </tstamp>
+   <exec executable="sh" outputproperty="REVISION">
+     <arg line="${src}/../scripts/get-revision" />
+   </exec>
+   <exec executable="sh" outputproperty="BRANCH">
+     <arg line="${src}/../scripts/get-branch" />
+   </exec>
+   <echo file="${src}/com/fluendo/player/Configure.java" append="false"
+>
+package com.fluendo.player;
+
+class Configure
+{
+  public String buildInfo = "Built on ${DATE} GMT (version ${product.version}) in ${build.type} mode.";
+
+  public String buildDate = "${DATE} GMT";
+  public String buildVersion = "${product.version}";
+  public String buildType = "${build.type}";
+  public String revision = "${REVISION}";
+  public String branch = "${BRANCH}";
+
+  public Configure() {
+  }
+}
+    </echo>
+    <echo
+>Built on ${DATE} (version ${product.version}) in ${build.type} mode.</echo>
+  </target>
+
+<!-- generate Dist-time options class as src/com/fluendo/player/Dist.java -->
+  <target name="source-info">
+   <exec executable="sh" outputproperty="OUTPUT">
+     <arg line="${src}/../scripts/update-source-info" />
+   </exec>
+   <echo>${OUTPUT}</echo>
+  </target>
+
+<!-- delete distinfo any time .svn directory changes -->
+<dependset>
+  <srcfileset file="${src}/../.svn" />
+  <targetfileset file="${src}/com/fluendo/player/Dist.java" />
+</dependset>
+
+<!-- generate spec file -->
+  <target name="spec">
+   <exec executable="sh" outputproperty="SPECOUTPUT">
+     <arg line="${src}/../scripts/update-spec-file ${product.version}" />
+   </exec>
+   <echo>${SPECOUTPUT}</echo>
+  </target>
+
+
+<!-- prepare plugin.*.true variables by parsing the exclude property-->
+  <target name="plugins">
+    <condition property="plugin.JPEG.false">
+      <contains string="${exclude}" substring="JPEG" casesensitive="false" />
+    </condition>
+    <condition property="plugin.Mulaw.false">
+      <contains string="${exclude}" substring="Mulaw" casesensitive="false" />
+    </condition>
+    <condition property="plugin.Multipart.false">
+      <contains string="${exclude}" substring="Multipart" casesensitive="false" />
+    </condition>
+    <condition property="plugin.Ogg.false">
+      <contains string="${exclude}" substring="Ogg" casesensitive="false" />
+    </condition>
+    <condition property="plugin.Smoke.false">
+      <contains string="${exclude}" substring="Smoke" casesensitive="false" />
+    </condition>
+    <condition property="plugin.Theora.false">
+      <contains string="${exclude}" substring="Theora" casesensitive="false" />
+    </condition>
+    <condition property="plugin.Vorbis.false">
+      <contains string="${exclude}" substring="Vorbis" casesensitive="false" />
+    </condition>
+   </target>
+
+<!-- generate includes and plugins.ini based on contents of exclude -->
+  <target name="includes"
+          depends="plugins,includes-delete,include-JPEG,include-Mulaw,include-Multipart,include-Ogg,include-Smoke,include-Theora,include-Vorbis">
+    <echo>Generating ${out.buildtyped}/includes</echo>
+  </target>
+
+  <target name="includes-delete" depends="init">
+    <touch file="${out.buildtyped}/includes" />
+    <delete file="${out.buildtyped}/includes" />
+    <echo file="${out.buildtyped}/includes" append="true"
+>com/fluendo/player/*
+com/fluendo/utils/*
+com/fluendo/jst/*
+com/fluendo/plugin/AudioSink*
+com/fluendo/plugin/VideoSink**
+com/fluendo/plugin/HTTPSrc*
+com/fluendo/plugin/Queue*
+plugins.ini
+</echo>
+    <echo file="${out.buildtyped}/plugins.ini"
+>com.fluendo.plugin.HTTPSrc
+com.fluendo.plugin.VideoSink
+com.fluendo.plugin.AudioSinkJ2
+com.fluendo.plugin.AudioSinkSA
+com.fluendo.plugin.Queue
+</echo>
+ 
+  </target>
+
+  <target name="include-JPEG" unless="plugin.JPEG.false">
+    <echo>Including JPEG</echo>
+    <echo file="${out.buildtyped}/includes" append="true"
+>com/fluendo/plugin/JPEG*
+</echo>
+    <echo file="${out.buildtyped}/plugins.ini" append="true"
+>com.fluendo.plugin.JPEGDec
+</echo>
+  </target>
+
+  <target name="include-Mulaw" unless="plugin.Mulaw.false">
+    <echo>Including Mulaw</echo>
+    <echo file="${out.buildtyped}/includes" append="true"
+>com/fluendo/plugin/Mulaw*
+</echo>
+    <echo file="${out.buildtyped}/plugins.ini" append="true"
+>com.fluendo.plugin.MulawDec
+</echo>
+  </target>
+
+  <target name="include-Multipart" unless="plugin.Multipart.false">
+    <echo>Including Multipart</echo>
+    <echo file="${out.buildtyped}/includes" append="true"
+>com/fluendo/plugin/Multipart*
+</echo>
+    <echo file="${out.buildtyped}/plugins.ini" append="true"
+>com.fluendo.plugin.MultipartDemux
+</echo>
+  </target>
+
+  <target name="include-Ogg" unless="plugin.Ogg.false">
+    <echo>Including Ogg</echo>
+    <echo file="${out.buildtyped}/includes" append="true"
+>com/jcraft/jogg/*
+com/fluendo/plugin/Ogg*
+</echo>
+    <echo file="${out.buildtyped}/plugins.ini" append="true"
+>com.fluendo.plugin.OggDemux
+</echo>
+  </target>
+
+  <target name="include-Smoke" unless="plugin.Smoke.false">
+    <echo>Including Smoke</echo>
+    <echo file="${out.buildtyped}/includes" append="true"
+>com/fluendo/codecs/Smoke*
+com/fluendo/plugin/Smoke*
+</echo>
+    <echo file="${out.buildtyped}/plugins.ini" append="true"
+>com.fluendo.plugin.SmokeDec
+</echo>
+  </target>
+
+  <target name="include-Theora" unless="plugin.Theora.false">
+    <echo>Including Theora</echo>
+    <echo file="${out.buildtyped}/includes" append="true"
+>com/fluendo/jheora/*
+com/fluendo/plugin/Theora*
+</echo>
+    <echo file="${out.buildtyped}/plugins.ini" append="true"
+>com.fluendo.plugin.TheoraDec
+</echo>
+  </target>
+
+  <target name="include-Vorbis" unless="plugin.Vorbis.false">
+    <echo>Including Vorbis</echo>
+    <echo file="${out.buildtyped}/includes" append="true"
+>com/jcraft/jorbis/*
+com/fluendo/plugin/Vorbis*
+</echo>
+    <echo file="${out.buildtyped}/plugins.ini" append="true"
+>com.fluendo.plugin.VorbisDec
+</echo>
+  </target>
+
+<!-- COMPILATION -->
+
+  <!-- FIXME: not used currently -->
+  <!-- set compiler flags -->
+  <target name="compile-flags">
+
+      <!-- jikes seemed to use to ignore the target settings, so we had
+           additional settings.  This seems to work fine now though -->
+<!--
+      <condition property="compiler.flags.target" value="-target 1.1">
+        <equals arg1="${build.compiler}" arg2="jikes" />
+      </condition>
+-->
+  </target>
+
+  <!-- determine if we need to use stubs -->
+  <!--- FIXME: for now always enable, and see if it causes problems for
+        a Sun build -->
+  <target name="compile-stubs">
+      <condition property="stubs" value="stubs">
+<!--
+        <equals arg1="${build.compiler}" arg2="jikes" />
+-->
+        <equals arg1="true" arg2="true" />
+      </condition>
+  </target>
+
+<!-- FIXME: figure out how to use this in the other compile section -->
+  <target name="compile-jcraft"
+          description="compile the JCraft source"
+          depends="init,type"
+   >
+    <!-- Compile the java code from ${src} into ${out.buildtyped}
+         and ignore warnings on it since it's not our code -->
+    <javac 
+           srcdir="${src}" 
+           destdir="${out.buildtyped}" 
+           target="1.1" source="1.3"
+           nowarn="yes"
+           debug="${build.isdebug}" debuglevel="${build.debuglevel}"
+    >
+      <include name="com/jcraft/jogg/*" />
+      <include name="com/jcraft/jorbis/*" />
+      <compilerarg line="${build.flags}" />
+    </javac>
+  </target>
+
+<!-- FIXME: figure out how to use this in the other compile section -->
+  <target name="compile-utils"
+          description="compile com.fluendo.utils source"
+          depends="init"
+   >
+    <javac 
+           destdir="${out.buildtyped}" 
+           target="1.1" source="1.3"
+           debug="${build.isdebug}" debuglevel="${build.debuglevel}"
+    >
+      <src path="${src}/com/fluendo/utils" />
+      <compilerarg line="${build.flags}" />
+    </javac>
+  </target>
+
+  <target name="compile-jheora"
+          description="compile com.fluendo.jheora source"
+          depends="init,compile-utils,compile-jcraft"
+   >
+    <javac 
+           destdir="${out.buildtyped}" 
+           target="1.1" source="1.3"
+           debug="${build.isdebug}" debuglevel="${build.debuglevel}"
+    >
+      <src path="${src}/com/fluendo/jheora" />
+      <compilerarg line="${build.flags}" />
+    </javac>
+  </target>
+
+  <target name="compile-codecs"
+          description="compile com.fluendo.codecs source"
+          depends="init,compile-utils"
+   >
+    <javac 
+           destdir="${out.buildtyped}" 
+           target="1.1" source="1.3"
+           debug="${build.isdebug}" debuglevel="${build.debuglevel}"
+    >
+      <src path="${src}/com/fluendo/codecs" />
+      <compilerarg line="${build.flags}" />
+    </javac>
+  </target>
+
+   <target name="compile-jst"
+          description="compile com.fluendo.jst source"
+          depends="init,compile-utils"
+   >
+    <javac 
+           destdir="${out.buildtyped}" 
+           target="1.1" source="1.3"
+           debug="${build.isdebug}" debuglevel="${build.debuglevel}"
+    >
+      <src path="${src}/com/fluendo/jst" />
+      <compilerarg line="${build.flags}" />
+    </javac>
+  </target>
+
+<!-- the plugins need the stubs -->
+   <target name="compile-plugin"
+          description="compile com.fluendo.plugin source"
+          depends="init,compile-jst,compile-jheora,compile-codecs,compile-stubs"
+   >
+    <javac 
+           classpath="${stubs}"
+           destdir="${out.buildtyped}" 
+           target="1.1" source="1.3"
+           debug="${build.isdebug}" debuglevel="${build.debuglevel}"
+    >
+      <src path="${src}/com/fluendo/plugin" />
+      <compilerarg line="${build.flags}" />
+    </javac>
+  </target>
+
+  <target name="compile-player"
+          description="compile com.fluendo.player source"
+          depends="init,configure,compile-plugin,includes,source-info"
+   >
+    <javac 
+           destdir="${out.buildtyped}" 
+           target="1.1" source="1.3"
+           debug="${build.isdebug}" debuglevel="${build.debuglevel}"
+    >
+      <src path="${src}/com/fluendo/player" />
+      <compilerarg line="${build.flags}" />
+    </javac>
+  </target>
+
+  <target name="compile-examples"
+          description="compile com.fluendo.examples source"
+          depends="init,compile-player"
+   >
+    <!-- update plugins.ini -->
+    <antcall target="includes" />
+    <javac 
+           destdir="${out.buildtyped}" 
+           target="1.1" source="1.3"
+    >
+      <src path="${src}/com/fluendo/examples" />
+      <compilerarg line="${build.flags}" />
+    </javac>
+  </target>
+
+ 
+  <target name="compile"
+          description="compile the source"
+          depends="init,compile-stubs,compile-jcraft,compile-jst,compile-jheora,compile-codecs,compile-plugin,compile-player,compile-examples" />
+
+<!-- only here for reference -->
+   <target name="oldcompile">
+    <!-- Compile the java code from ${src} into ${out.buildtyped} -->
+    <!-- possibly using our stubs as classpath, and with a 1.1 target -->
+<!--
+          depends="compile-flags"
+           debug="${project.build.debug}"
+           debug="true" debuglevel="lines,vars,source"
+-->
+
+<!-- note: ant 1.6.5 does handle debuglevel for jikes, but 1.6.2 doesn't -->
+    <javac 
+           destdir="${out.buildtyped}" 
+           debug="true"
+           debuglevel="none"
+           target="1.1" source="1.3">
+      <src path="${src}/com/fluendo/player" />
+      <compilerarg line="${build.flags}" />
+
+<!-- FIXME: -g:none should be handleable by debuglevel above
+      <compilerarg line="${compiler.flags.target} -g:none" />
+      <compilerarg line="${compiler.flags.target}" />
+-->
+    </javac>
+  </target>
+
+<!-- clean out unwanted plugins -->
+  <target name="testcheck" if="test">
+    <condition property="testyes">
+      <equals arg1="${test}" arg2="yes" />
+    </condition>
+  </target>
+
+  <target name="test" if="testyes" depends="testcheck">
+    <echo>${test}</echo>
+  </target>
+
+<!-- JAR CREATION -->
+  <target name="jar-jcraft" depends="compile-jcraft">
+    <jar jarfile="${out.dist}/${build.type}/jcraft.jar" basedir="${out.buildtyped}"
+         includes="com/jcraft/*/*" />
+  </target>
+
+  <target name="jar-utils" depends="compile-utils">
+    <jar jarfile="${out.dist}/${build.type}/utils.jar" basedir="${out.buildtyped}"
+         includes="com/fluendo/utils/*" />
+  </target>
+
+  <target name="jar-jheora" depends="compile-jheora">
+    <jar jarfile="${out.dist}/${build.type}/jheora.jar" basedir="${out.buildtyped}"
+         includes="com/fluendo/jheora/*" />
+  </target>
+
+  <target name="jar-jst" depends="compile-jst">
+    <jar jarfile="${out.dist}/${build.type}/jst.jar" basedir="${out.buildtyped}"
+         includes="com/fluendo/jst/*" />
+  </target>
+  <target name="jar-codecs" depends="compile-codecs">
+    <jar jarfile="${out.dist}/${build.type}/codecs.jar" basedir="${out.buildtyped}"
+         includes="com/fluendo/codecs/*" />
+  </target>
+  <target name="jar-plugin" depends="compile-plugin">
+    <jar jarfile="${out.dist}/${build.type}/plugin.jar" basedir="${out.buildtyped}"
+         includes="com/fluendo/plugin/*" />
+  </target>
+  <target name="jar-player" depends="compile-player">
+    <jar jarfile="${out.dist}/${build.type}/player.jar" basedir="${out.buildtyped}"
+         includes="com/fluendo/player/*" />
+  </target>
+
+<!-- applet targets -->
+  <target name="applet-ovt" depends="compile"
+          description="generate the Ogg/Vorbis+Theora applet">
+    <antcall target="includes">
+      <param name="exclude" value="Smoke,Jpeg,Multipart,Mulaw" />
+    </antcall>
+    <jar jarfile="${out.dist}/applet/cortado-ovt-${build.type}-${product.version}.jar"
+         includesfile="${out.buildtyped}/includes"
+         basedir="${out.buildtyped}">
+    </jar>
+  </target>
+
+  <target name="applet-ov" depends="compile"
+          description="generate the Ogg/Vorbis applet">
+    <antcall target="includes">
+      <param name="exclude" value="Smoke,Jpeg,Multipart,Mulaw,Theora" />
+    </antcall>
+    <jar jarfile="${out.dist}/applet/cortado-ov-${build.type}-${product.version}.jar"
+         includesfile="${out.buildtyped}/includes"
+         basedir="${out.buildtyped}">
+    </jar>
+  </target>
+
+  <target name="applet-mmjs" depends="compile"
+          description="generate the Multipart/Mulaw+Smoke+Jpeg applet">
+    <antcall target="includes">
+      <param name="exclude" value="Ogg,Vorbis,Theora" />
+    </antcall>
+    <jar jarfile="${out.dist}/applet/cortado-mmjs-${build.type}-${product.version}.jar"
+         includesfile="${out.buildtyped}/includes"
+         basedir="${out.buildtyped}">
+    </jar>
+  </target>
+
+
+  <target name="applet" depends="applet-ovt,applet-ov,applet-mmjs"
+           description="generate all applets" />
+
+  <target name="jar" depends="jar-jcraft,jar-utils,jar-jheora,jar-jst,jar-codecs,jar-plugin,jar-player"
+        description="generate all jar files" />
+
+  <!-- instead of using depends, which doesn't necessarily preserve order,
+       we use antcall, to make sure compile-examples is done last, and
+       thus has a plugins.ini with *all* plugins -->
+  <target name="all"
+          description="generate jars and applets">
+    <antcall target="applet" />
+    <antcall target="jar" />
+    <antcall target="compile-examples" />
+  </target>
+
+  <target name="debug"
+          description="generate all jars and applets in debug mode">
+    <antcall target="all">
+      <param name="build.type" value="debug" />
+    </antcall>
+  </target>
+
+  <target name="stripped"
+          description="generate all jars and applets in stripped mode">
+    <antcall target="all">
+      <param name="build.type" value="stripped" />
+    </antcall>
+  </target>
+
+  <target name="install_doc"
+          description="install cortado docs">
+    <!-- Install documentation -->
+    <copy todir="${datadir}/cortado-${product.version}">
+      <fileset dir=".">
+        <include name="LICENSE.*"/>
+        <include name="TODO"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- install class files -->
+  <target name="install_class" depends="jar"
+          description="install cortado class files">
+    <!-- Create the installation locations -->
+    <mkdir dir="${libdir}/cortado"/>
+
+    <!-- Put everything in ${out.buildtyped} into $libdir/cortado -->
+    <copy todir="${libdir}/cortado">
+      <fileset dir="${out.buildtyped}">
+        <include name="com/jcraft/*/*.class"/>
+        <include name="com/fluendo/*/*.class"/>
+        <include name="${out.buildtyped}/applet/cortado.jar"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- install applets -->
+  <target name="install_applet" depends="applet"
+          description="install cortado applets">
+    <!-- Create the installation locations -->
+    <mkdir dir="${datadir}/cortado"/>
+    <copy todir="${datadir}/cortado">
+      <fileset dir="${out.dist}/applet">
+        <include name="cortado-*${product.version}*.jar"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="clean" depends="type"
+        description="clean up build dir">
+    <!-- Delete the ${out.build} directory tree and generated source -->
+    <delete dir="${out.build}"/>
+    <delete dir="${out.dist}/${build.type}" />
+    <delete file="${src}/com/fluendo/player/Configure.java" />
+    <delete file="${src}/com/fluendo/jst/SourceInfo.java" />
+    <delete file="${src}/cortado.spec" />
+  </target>
+
+  <target name="distclean" depends="clean"
+        description="clean up dist dir">
+    <delete dir="${out.dist}" />
+    <delete dir="${out}/distcheck" />
+  </target>
+
+  <target name="dist" depends="init,source-info,spec"
+          description="create a source distribution package">
+    <property name="tar"
+              value="${out.dist}/src/cortado-${product.version}.tar" />
+    <tar destfile="${tar}">
+      <tarfileset dir="${basedir}"
+         prefix="cortado-${product.version}">
+        <include name="src/com/jcraft/jogg/*.java" />
+        <include name="src/com/jcraft/jorbis/*.java" />
+        <include name="src/com/fluendo/jheora/*.java" />
+        <include name="src/com/fluendo/player/*.java" />
+        <include name="src/com/fluendo/utils/*.java" />
+        <include name="src/com/fluendo/codecs/*.java" />
+        <include name="src/com/fluendo/plugin/*.java" />
+        <include name="src/com/fluendo/examples/*.java" />
+        <include name="src/com/fluendo/jst/*.java" />
+        <include name="stubs/sun/audio/*.java" />
+        <include name="stubs/javax/sound/sampled/*.java" />
+        <include name="build.properties" />
+        <include name="build.xml" />
+        <include name="LICENSE.*" />
+        <include name="ChangeLog" />
+        <include name="HACKING" />
+        <include name="README" />
+        <include name="RELEASE" />
+        <include name="TODO" />
+        <include name="NEWS" />
+        <include name="cortado.spec" />
+        <include name="cortado.spec.in" />
+        <include name="cortado.doap" />
+      </tarfileset>
+      <tarfileset dir="${basedir}"
+         prefix="cortado-${product.version}" mode="755">
+        <include name="scripts/*" />
+      </tarfileset>
+    </tar>
+    <gzip zipfile="${tar}.gz"
+          src="${tar}" />
+    <delete file="${tar}" />
+  </target>
+
+  <target name="distcheck" depends="dist"
+          description="build the source distribution before releasing">
+    <property name="tar"
+              value="${out.dist}/src/cortado-${product.version}.tar" />
+    <property name="distcheckdir" value="${out}/distcheck" />
+    <delete dir="${distcheckdir}" />
+    <untar src="${tar}.gz" dest="${distcheckdir}" compression="gzip" />
+    <echo message="distcheck: trying build of cortado-${product.version} ..."/>
+      <!-- setting inheritAll="false" makes sure that we don't keep this run's
+           properties, causing basedir to be set correctly, but derived
+           vars set wrong -->
+    <ant dir="${distcheckdir}/cortado-${product.version}"
+         antfile="${distcheckdir}/cortado-${product.version}/build.xml"
+         inheritAll="false" />
+    <delete dir="${distcheckdir}" />
+    <echo message="distcheck: cortado-${product.version} is ready for distribution." />
+  </target>
+
+  <target name="release" depends="distcheck"
+          description="make the release">
+    <ant>
+      <target name="debug" />
+      <target name="stripped" />
+    </ant>
+    <checksum file="${out.dist}/src/cortado-${product.version}.tar.gz"
+              algorithm="MD5" fileext=".md5" />
+  </target>
+
+</project>

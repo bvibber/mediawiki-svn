@@ -1,0 +1,72 @@
+HACKING NOTES for Cortado
+-------------------------
+
+directory layout:
+
+- src:             source code
+  - com/jcraft:    copy of JCraft JOgg and Jorbis source code, plus some changes
+  - com/fluendo:   Source code written by Fluendo
+    - utils:       utitity classes used by jst, jheora, examples
+    - jst:         a java port of the GStreamer 0.10 design
+    - jheora:      a java implementation of the Theora video codec
+    - codecs:      additional codecs; currently contains the Smoke codec
+    - plugin:      plugins implementing/wrapping sources/decoders/sinks
+    - examples:    example programs
+
+- stubs:           stubs that contain minimal definitions for other classes
+                   to allow compilation
+  - sun/audio:     stubs for sun.audio.*
+  - javax/sound:
+    - sampled:     stubs for javax.sound.sampled.*
+
+- output:          files generated as part of the build
+  - build:         built class files
+    - debug:       debug build
+    - release:     release build
+  - dist:          resulting jar files
+    - debug:       debug versions of all cortado .jars
+    - release:     release versions of all cortado .jars
+    - applets:     all applet jars
+    - src:         source distributions
+
+
+NOTES
+-----
+- from the ant build file, we should be able to:
+  - make a tarball with all the source and build stuff:
+    "ant dist" (done)
+  - generate the separate jars
+    "ant jar-jcraft ..."
+  - build the examples
+  - generate stripped and debug versions of the applets, with specific plugins
+    included
+    "ant applets" or "ant applet-ovt applet-mmjs"
+    "ant applets-debug"
+
+- the plan is to:
+  - build com.fluendo.utils in a jar
+  - build com.jcraft in a jar
+  - build com.fluendo.jheora in a jar (relying on jcraft and utils jars)
+  - build com.fluendo.jst in a jar (relying on utils)
+  - build com.fluendo.plugin into a jar (all combined, relying on all above)
+
+- FIXME: what to do with the examples ?
+
+HISTORY
+------
+
+- applet sizes:
+  - cortado ovt debug:
+    - 2006-05-19: 259354 bytes
+
+  - cortado ovt stripped:
+    - 0.1.2.1, 2005-04-29: 179327 bytes
+    - 0.1.2.1, 2006-01-17: 191901 bytes (after JST implementation)
+    - 0.2.0,   2006-05-19: 189596 bytes
+    - 0.2.2,   2006-10-26: 198094 bytes
+
+RELEASING
+---------
+moap doap -v 0.2.2 mail -f thomas@fluendo.com thomas@apestaart.org
+moap doap -v 0.2.2 mail -f thomas@apestaart.org theora@xiph.org
+
