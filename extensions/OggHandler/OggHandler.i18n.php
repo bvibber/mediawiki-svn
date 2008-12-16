@@ -1620,6 +1620,50 @@ $messages['lv'] = array(
 	'ogg-dismiss' => 'Aizvērt',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'ogg-desc' => 'Ракувач со Ogg Theora и Vorbis податотеки, со помош на JavaScript преслушувач/прегледувач',
+	'ogg-short-audio' => 'Ogg $1 звучна податотека, $2',
+	'ogg-short-video' => 'Ogg $1 видео податотека, $2',
+	'ogg-short-general' => 'Ogg $1 медија податотека, $2',
+	'ogg-long-audio' => '(Ogg $1 звучна податотека, должина $2, $3)',
+	'ogg-long-video' => '(Ogg $1 видео податотека, должина $2, $4×$5 пиксели, $3)',
+	'ogg-long-multiplexed' => '(Ogg мултиплексирана аудио/видео податотека, $1, должина $2, $4×$5 пиксели, $3 вкупно)',
+	'ogg-long-general' => '(Ogg медија податотека, должина $2, $3)',
+	'ogg-long-error' => '(Оштетена ogg податотека: $1)',
+	'ogg-play' => 'Почни',
+	'ogg-pause' => 'Паузирај',
+	'ogg-stop' => 'Стопирај',
+	'ogg-play-video' => 'Види видео снимка',
+	'ogg-play-sound' => 'Слушни аудио снимка',
+	'ogg-no-player' => 'Изгледа дека вашиот систем нема инсталирано било каков софтвер за преслушување/прегледување на аудио или видео записи.
+Можете <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">да симнете некој софтвер за оваа намена од тука</a>.',
+	'ogg-no-xiphqt' => 'Изгледа ја немате инсталирано XiphQT компонентата за QuickTime.
+QuickTime не може да преслушува/прегледува Ogg податотеки без оваа компонента.
+Можете да го <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">симнете XiphQT</a> или да изберете некој друг софтвер за преслушување/прегледување.',
+	'ogg-player-videoElement' => 'Подржано од прелистувачот',
+	'ogg-player-oggPlugin' => 'Вградено во прелистувачот',
+	'ogg-player-cortado' => 'Cortado (Java)',
+	'ogg-player-vlc-mozilla' => 'VLC',
+	'ogg-player-vlc-activex' => 'VLC (ActiveX)',
+	'ogg-player-quicktime-mozilla' => 'QuickTime',
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',
+	'ogg-player-totem' => 'Totem',
+	'ogg-player-kmplayer' => 'KMPlayer',
+	'ogg-player-kaffeine' => 'Kaffeine',
+	'ogg-player-mplayerplug-in' => 'mplayerplug-in',
+	'ogg-player-thumbnail' => 'Само неподвижни слики',
+	'ogg-player-soundthumb' => 'Нема инсталирано преслушувач',
+	'ogg-player-selected' => '(избрано)',
+	'ogg-use-player' => 'Користи прегледувач:',
+	'ogg-more' => 'Повеќе...',
+	'ogg-dismiss' => 'Затвори',
+	'ogg-download' => 'Симни податотека',
+	'ogg-desc-link' => 'Информации за оваа податотека',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

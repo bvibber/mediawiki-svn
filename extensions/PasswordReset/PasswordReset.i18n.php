@@ -687,12 +687,28 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
-	'passwordreset-username' => 'Brukarnamn',
-	'passwordreset-newpass' => 'Nytt passord',
+	'passwordreset' => 'Attendestilling av passord',
+	'passwordreset-desc' => '[[Special:PasswordReset|Still attende brukarpassord]] - krev rettar for attendestilling av passord',
+	'passwordreset-invalidusername' => 'Ugyldig brukarnamn',
+	'passwordreset-emptyusername' => 'Tomt brukarnamn',
+	'passwordreset-nopassmatch' => 'Passorda er ikkje dei same',
+	'passwordreset-badtoken' => 'Ugyldig redigeringsteikn',
+	'passwordreset-username' => 'Brukarnamn:',
+	'passwordreset-newpass' => 'Nytt passord:',
+	'passwordreset-confirmpass' => 'Stadfest passord:',
 	'passwordreset-submit' => 'Nullstill passord',
+	'passwordreset-success' => 'Passordet for brukaren «$1» har blitt stilt attende.',
+	'passwordreset-disableuser' => 'Deaktiver kontoen?',
+	'passwordreset-disableuserexplain' => '(set eit ugyldig passord - brukaren kan ikkje logga inn)',
+	'passwordreset-disablesuccess' => 'Brukarkontoen har blitt deaktivert for brukar-ID: $1',
+	'passwordreset-accountdisabled' => 'Brukarkonto har blitt deaktivert',
+	'disabledusers' => 'Deaktiverte kontoar',
+	'disabledusers-summary' => 'Dette er ei lista over brukarkontoar som har blitt deaktiverte gjennom attendestilling av passord.',
+	'right-passwordreset' => 'Stilla attende passordet for ein brukar ([[Special:PasswordReset|spesialsida]])',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

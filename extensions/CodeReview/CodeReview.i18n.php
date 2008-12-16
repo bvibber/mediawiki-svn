@@ -475,7 +475,7 @@ $messages['be-tarask'] = array(
 	'code-status-resolved' => 'вырашаная',
 	'code-status-ok' => 'добра',
 	'code-status-deferred' => 'адкладзены',
-	'code-pathsearch-legend' => 'Пошук у гэтым сховішчы вэрсіяў па іх адрасу',
+	'code-pathsearch-legend' => 'Пошук у гэтым сховішчы вэрсіяў па іх адрасе',
 	'code-pathsearch-path' => 'Шлях:',
 	'code-rev-submit' => 'Захаваць зьмены',
 	'code-rev-submit-next' => 'Захаваць і перайсьці да наступнай зьмены',
@@ -499,7 +499,7 @@ $4',
 	'repoadmin-edit-button' => 'Добра',
 	'repoadmin-edit-sucess' => 'Сховішча «[[Special:Code/$1|$1]]» было пасьпяхова зьменена.',
 	'right-repoadmin' => 'Кіраваньне сховішчамі коду',
-	'right-codereview-add-tag' => 'Даданьне новыя тэгаў да зьменаў',
+	'right-codereview-add-tag' => 'дадаваньне новых тэгаў да зьменаў',
 	'right-codereview-remove-tag' => 'Выдаленьне тэгаў са зьменаў',
 	'right-codereview-post-comment' => 'Дадаць камэнтары да вэрсіяў',
 	'right-codereview-set-status' => 'Зьмяніць статус вэрсіяў',
@@ -1036,9 +1036,31 @@ $4',
 );
 
 /** Spanish (Español)
+ * @author Remember the dot
  * @author Sanbec
  */
 $messages['es'] = array(
+	'code-comments' => 'Comentarios',
+	'code-change-removed' => 'quitados:',
+	'code-authors' => 'autores',
+	'code-field-id' => 'Revisión',
+	'code-field-author' => 'Autor',
+	'code-field-user' => 'Comentarista',
+	'code-field-status' => 'Estatus',
+	'code-field-timestamp' => 'Fecha',
+	'code-field-comments' => 'Apuntes',
+	'code-rev-rev' => 'Revisión:',
+	'code-rev-status' => 'Estatus:',
+	'code-rev-diff' => 'Dif',
+	'code-rev-diff-link' => 'dif',
+	'code-status-new' => 'nuevo',
+	'code-status-resolved' => 'resuelto',
+	'codereview-reply-link' => 'responder',
+	'repoadmin-new-legend' => 'Crear nuevo repositorio',
+	'repoadmin-new-label' => 'Nombre de repositorio:',
+	'repoadmin-new-button' => 'Crear',
+	'repoadmin-edit-legend' => 'Modificación del repositorio «$1»',
+	'repoadmin-edit-button' => 'Aceptar',
 	'specialpages-group-developer' => 'Herramientas para desarrolladores',
 );
 
@@ -1237,6 +1259,22 @@ $4",
 	'right-codereview-set-status' => 'Changer le statut des revisions',
 	'right-codereview-link-user' => 'Lie les auteurs aux utilisateurs wiki',
 	'specialpages-group-developer' => 'Outils du développeur',
+);
+
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'code-field-message' => 'Achoimre tiomnú',
+	'code-rev-message' => 'Nóta tráchta:',
+	'codereview-email-body' => 'Chuir úsáideoir "$1 nóta tráchta ar r$3.
+
+Dearbh-URL: $2
+
+Nóta tráchta:
+
+$4',
+	'repoadmin-new-button' => 'Cruthaigh',
 );
 
 /** Galician (Galego)
@@ -2902,11 +2940,20 @@ $4',
 $messages['sah'] = array(
 	'code' => 'Куоду бэрэбиэркэлээһин',
 	'code-comments' => 'Быһаарыылар',
+	'code-change-status' => "бу торум (ревизия) '''туруга''' уларытылынна",
+	'code-change-removed' => 'сотулунна:',
+	'code-change-added' => 'эбилиннэ:',
+	'code-no-repo' => 'Анаан оҥоһуллубут ыскылаат суох',
+	'code-notes' => 'бэлиэтээһин',
+	'code-authors' => 'ааптардар',
+	'code-tags' => 'бэлиэлэр',
+	'code-authors-text' => 'Аллараа ааптардар тиһиктэрэ киллэрбит уларытыыларын кэминэн наарданан (саҥалар — үөһэ) бэриллэр.',
 	'code-field-user' => 'Ырытааччы',
 	'code-field-status' => 'Турук',
 	'code-field-timestamp' => 'Күнэ-дьыла',
 	'code-field-path' => 'Суола',
 	'code-field-text' => 'Быһаарыы',
+	'code-rev-date' => 'Күнэ-дьыла:',
 	'code-rev-message' => 'Быһаарыы:',
 	'code-rev-status' => 'Туруга:',
 	'code-status-ok' => 'сөп',
@@ -2916,12 +2963,20 @@ $messages['sah'] = array(
  * @author Gmelfi
  */
 $messages['scn'] = array(
+	'code' => 'Rivisioni dû còdici',
 	'code-comments' => 'Cummenti',
 	'code-change-status' => "Canciatu lu '''status''' di sta rivisioni",
 	'code-change-tags' => "Canciati li '''tags''' pi sta rivisioni",
 	'code-change-removed' => 'rimuvutu:',
 	'code-change-added' => 'junciutu:',
 	'code-prop-changes' => 'Status & log di tagging',
+	'code-desc' => '[[Special:Code|Stigghi pâ rivisioni dû codici]] cu [[Special:RepoAdmin|Supportu di suvvirsioni]]',
+	'code-no-repo' => 'Nuddu dipòsitu cunfiguratu!',
+	'code-notes' => 'Noti di rivisioni',
+	'code-authors' => 'autura',
+	'code-tags' => 'etichetti',
+	'code-authors-text' => "Ccassutta c'è na lista di autura di dipòsiti n òrdini di assignazzioni cchiù ricenti",
+	'code-author-haslink' => "St'auturi è culligatu ô utenti wiki $1",
 	'code-author-orphan' => "St'auturi nun è cullicatu a n'account wiki",
 	'code-author-dolink' => "Culligari st'auturi a n'untenti wiki:",
 	'code-author-alterlink' => "Canciari l'utilizzaturi dâ wiki cullicatu a stu auturi:",
@@ -2967,7 +3022,37 @@ $messages['scn'] = array(
 	'code-status-reverted' => 'scanciatu annarreri',
 	'code-status-resolved' => 'risortu',
 	'code-status-ok' => 'ok',
+	'code-status-deferred' => 'rimannatu',
+	'code-pathsearch-legend' => 'Cerca li rivisioni nti stu dipòsitu classificati pî pircursa',
+	'code-pathsearch-path' => 'Pircursu:',
+	'code-rev-submit' => 'Canci di assignazzioni',
+	'code-rev-submit-next' => 'Assignazzioni & prossimi nun risorti',
+	'codereview-reply-link' => 'Arrispunni',
+	'codereview-email-subj' => '[$1] [r$2]: Cummentu novu jiunchiutu',
+	'codereview-email-body' => 'L\'utilizzaturi "$1" misi nu cummentu supra r$3.
+
+URL cumpleta: $2
+
+Cummentu:
+
+$4',
+	'repoadmin' => 'Amministrazzioni dî dipòsiti',
+	'repoadmin-new-legend' => 'Crèa nu dipòsitu novu',
+	'repoadmin-new-label' => 'Nomu dû dipòsitu:',
+	'repoadmin-new-button' => 'Crèa',
+	'repoadmin-edit-legend' => 'Canciamentu dû dipòsitu "$1"',
+	'repoadmin-edit-path' => 'Pircursu dû dipòsitu',
+	'repoadmin-edit-bug' => 'Pircursu dû Bugzilla:',
+	'repoadmin-edit-view' => 'Pircursu dû ViewVC:',
 	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'Lu dipòsitu "[[Special:Code/$1|$1]]" fu canciatu cu successu.',
+	'right-repoadmin' => 'Codici di gistioni dî dipòsiti',
+	'right-codereview-add-tag' => 'Jiunci etichetti novi ê rivisioni',
+	'right-codereview-remove-tag' => "Leva l'etichetti dî rivisioni",
+	'right-codereview-post-comment' => 'Jiunci li cummenti ê rivisioni',
+	'right-codereview-set-status' => 'Cancia lu statu dî rivisioni',
+	'right-codereview-link-user' => 'Lìja li autura ê utilizzatura dâ wiki',
+	'specialpages-group-developer' => 'Stigghi dû sviluppaturi',
 );
 
 /** Slovak (Slovenčina)
@@ -3285,15 +3370,25 @@ $4',
 );
 
 /** Telugu (తెలుగు)
+ * @author C.Chandra Kanth Rao
  * @author Veeven
  */
 $messages['te'] = array(
 	'code-comments' => 'వ్యాఖ్యలు',
+	'code-change-removed' => 'తొలిగించబడినది',
 	'code-field-message' => 'వ్యాఖ్య',
 	'code-field-status' => 'స్థితి',
 	'code-field-timestamp' => 'తేదీ',
+	'code-field-text' => 'గమనిక',
+	'code-rev-date' => 'తేది:',
 	'code-rev-message' => 'వ్యాఖ్య:',
+	'code-rev-modified-r' => 'మార్పు చేయబడినది',
+	'code-rev-modified-d' => 'తొలిగించబడినది',
 	'code-rev-status' => 'స్థితి:',
+	'code-rev-status-set' => 'మార్పు స్థితి',
+	'code-rev-diff' => 'తేడా',
+	'code-status-new' => 'కొత్త',
+	'code-status-reverted' => 'వెనక్కి తీసుకోబడినది',
 	'code-status-ok' => 'సరి',
 	'repoadmin-edit-button' => 'సరే',
 );

@@ -43,6 +43,13 @@ $messages['qqq'] = array(
 	'gep-addsectionbutton' => '{{Identical|Add}}',
 );
 
+/** Arabic (العربية)
+ * @author ترجمان05
+ */
+$messages['ar'] = array(
+	'gep-categories' => 'تصنيفات',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -278,6 +285,25 @@ $messages['jv'] = array(
 Tambahaké kanthi migunakaké piranti (''tools'') sing ana ing tengen.",
 	'gep-nocategories' => 'Pilih saora-orané siji kategori sadurungé nyimpen',
 	'gep-categorypage' => 'MediaWiki:Tagkacasunting',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'gep-emailfailure' => 'សូម​អភ័យទោស, ការផ្ដល់យោបល់​របស់​អ្នក​មិនអាច​ដំណើរការ​បានទេ​។',
+	'gep-emailsuccess' => 'សូមអរគុណ​សម្រាប់​ការស្នើ​ចំណាត់ថ្នាក់ក្រុម​៖ $1 ។',
+	'gep-categories' => 'ចំណាត់ថ្នាក់ក្រុម​នានា',
+	'gep-addcategory' => 'បន្ថែម​ចំណាត់ថ្នាក់ក្រុម​មួយ',
+	'gep-addcategorybutton' => 'បន្ថែម',
+	'gep-suggestcategory' => 'ស្នើ​ចំណាត់ថ្នាក់ក្រុម​មួយ',
+	'gep-suggestcategorybutton' => 'ដាក់ស្នើ',
+	'gep-sections' => 'បំណែក​ផ្សេងៗ',
+	'gep-sectionnotdisabled' => 'បំណែក​នេះ​មិនអាច​ត្រូវ​បាន​បិទ​ឡើយ',
+	'gep-addsection' => 'បន្ថែម​បំណែក​មួយ',
+	'gep-addsectionbutton' => 'បន្ថែម',
+	'gep-classicmode' => 'របៀប​បុរាណ',
+	'gep-nocategories' => 'សូម​ជ្រើសយក​ចំណាត់ថ្នាក់ក្រុម​យ៉ាងហោច​មួយ​មុនពេល​រក្សាទុក',
 );
 
 /** Ripoarisch (Ripoarisch)

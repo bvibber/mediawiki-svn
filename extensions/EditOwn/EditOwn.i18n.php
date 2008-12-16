@@ -63,6 +63,13 @@ $messages['eo'] = array(
 	'editown-desc' => "Uzantoj sen la ''editall'' rajto nur povas redakti paĝojn kiujn ili mem kreis",
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'editown-desc' => "Los usuarios que no tengan el derecho ''editall'' sólo podrán editar las páginas que hayan creado.",
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

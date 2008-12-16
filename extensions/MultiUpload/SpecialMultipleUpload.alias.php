@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'MultiUpload' => array( 'رفع_متعدد' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'MultiUpload' => array( 'VisestrukoPos' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'MultiUpload' => array( 'Mehrere Dateien hochladen' ),
@@ -56,6 +61,11 @@ $aliases['id'] = array(
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'MultiUpload' => array( 'マルチアップロード' ),
+);
+
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'MultiUpload' => array( '다중올리기' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

@@ -280,6 +280,13 @@ $messages['pt'] = array(
 	'charinsert-desc' => 'Permite a criação de uma caixa JavaScript para [[MediaWiki:Edittools|inserção de caracteres não "standard"]]',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'charinsert-desc' => "Permitte 'a ccreazzione de scatele in Javascript pe [[MediaWiki:Edittools|l'inzerimende de carattere non-stàndàrd]]",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

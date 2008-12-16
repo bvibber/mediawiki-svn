@@ -248,6 +248,13 @@ $messages['pt-br'] = array(
 	'antibot-desc' => 'Simples painel de controle para checagem de spambots e trigger payloads',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'antibot-desc' => 'Semblice framework pe le verifiche de le spambot e payload trigger.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

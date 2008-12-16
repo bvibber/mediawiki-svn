@@ -307,7 +307,7 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'postcomment_desc' => 'អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់នានា​ដាក់វិចារ​ដោយផ្ទាល់ទៅក្នុងទំព័រពិភាក្សា។',
-	'postcomment_discussionprotected' => 'ទំព័រពិភាក្សានេះត្រូវបានការពារមិនអោយដាក់វិចារបន្ថែមទៀតទេ។',
+	'postcomment_discussionprotected' => 'ទំព័រពិភាក្សានេះត្រូវបានការពារមិនឱ្យដាក់វិចារបន្ថែមទៀតទេ។',
 	'postcomment_notloggedin' => 'អ្នកមិនទាន់ឡុកអ៊ីនទេ។',
 	'postcomment_youareloggedinas' => 'អ្នកបានឡុកអ៊ីនជា $1',
 	'postcomment_addcommentdiscussionpage' => 'បន្ថែមវិចាររបស់អ្នកលើទំព័រពិភាក្សានេះ',

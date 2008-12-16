@@ -153,6 +153,19 @@ $messages['jv'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Tagkacasunting',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'layouts_title' => 'បង្កើត​ទំព័រ​មួយ',
+	'layouts_chooselayout' => 'ជ្រើសរើស​ប្លង់​មួយ​សម្រាប់ $1​៖',
+	'layouts_nolayout' => 'មិនមាន​ប្លង់​ទេ',
+	'layouts_continue' => 'បន្ត',
+	'layouts_choosecategory' => 'ជ្រើរើស​ចំណាត់ក្រុម​មួយ​សម្រាប់ $1​៖',
+	'layouts_unknown' => 'មិន​ត្រូវ​បាន​ស្គាល់',
+	'layouts_tagline' => "ទំព័រ​នេះ​ត្រូវ​បាន​បង្កើតឡើង​ដោយ​ប្លង់ '''$1''' ។",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -250,8 +263,8 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'layouts_title' => 'Skapa en sida',
-	'layouts_chooselayout' => 'Välj en layout för $1:',
-	'layouts_nolayout' => 'Ingen layout',
+	'layouts_chooselayout' => 'Välj ett utseende för $1:',
+	'layouts_nolayout' => 'Inget utseende',
 	'layouts_continue' => 'Fortsätt',
 	'layouts_choosecategory' => 'Välj en kategori för $1:',
 	'layouts_unknown' => 'Okänd',

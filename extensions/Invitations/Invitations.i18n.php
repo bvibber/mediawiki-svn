@@ -218,17 +218,23 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Dmcdevit
  * @author Jatrobat
+ * @author Sanbec
  */
 $messages['es'] = array(
-	'invitations-desc' => 'Permite [[Especial:Invitaciones|control de funciones nuevas]] por restringirlas a un sistema basado en invitaciones.',
+	'invite-logpage' => 'Registro de invitaciones',
+	'invite-logpagetext' => 'Este es un registro de usuarios que invitan a otros a usar diversas funciones del software.',
+	'invite-logentry' => '$1 ha sido invitado para usar la función <i>$2</i>.',
+	'invitations' => 'Gestiona invitaciones para funciones del software',
+	'invitations-desc' => 'Permite el [[special:Invitations|control de nuevas funciones]] restringiéndolas mediante un sistema basado en invitaciones.',
 	'invitations-invitedlist-description' => 'Tiene acceso a los siguientes funciones sólo por invitación. Para manejar invitaciones a una función específica, haga clic en su nombre.',
 	'invitations-invitedlist-none' => 'No ha sido invitado usar ninguna función sólo por invitación.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Una invitación disponible|$1 invitaciones disponibles}})',
 	'invitations-pagetitle' => 'Funciones sólo por invitación',
-	'invitations-uninvitedlist-description' => 'No tiene acceso a estas otras functiones sólo por invitación.',
+	'invitations-uninvitedlist-description' => 'No tiene acceso a estas otras funciones sólo por invitación.',
 	'invitations-uninvitedlist-none' => 'Ahora mismo, ninguna otra función está designado sólo por invitación.',
 	'invitations-feature-pagetitle' => 'Gestión de invitaciones - $1',
 	'invitations-feature-access' => 'Tiene permiso para usar <i>$1</i>.',
-	'invitations-feature-numleft' => 'Todavía tiene <b>$1</b> de sus $2 invitaciones.',
+	'invitations-feature-numleft' => 'Todavía te queda{{PLURAL:$2| una invitación|n <b>$1</b> invitaciones de las $2 que tenías}}.',
 	'invitations-feature-noneleft' => 'Ha usado todo de sus invitaciones destinado a esta función.',
 	'invitations-feature-noneyet' => 'No ha recibido su cuota de invitaciones para esta función.',
 	'invitations-feature-notallowed' => 'No tiene permiso para usar <i>$1</i>.',
@@ -431,7 +437,7 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'invite-logpage' => 'កំណត់ហេតុនៃការអញ្ជើញ',
 	'invite-logpagetext' => 'នេះជាកំណត់ហេតុនៃអ្នកប្រើប្រាស់ទាំងឡាយដែលបានអញ្ជើញគ្នា​អោយប្រើប្រាស់មុខងារសូហ្វវែរផ្សេងៗ។',
-	'invite-logentry' => 'បានអញ្ជើញ $1 អោយប្រើប្រាស់មុខងារ <i>$2</i>។',
+	'invite-logentry' => 'បានអញ្ជើញ $1 ឱ្យប្រើប្រាស់មុខងារ <i>$2</i>។',
 	'invitations' => 'គ្រប់គ្រងការអញ្ជើញឱ្យប្រើប្រាស់មុខងារសូហ្វវែរ',
 	'invitations-desc' => 'អនុញ្ញាតឱ្យ[[Special:Invitations|គ្រប់គ្រងមុខងារថ្មីៗ]]ដោយដាក់កំហិតឱ្យប្រើប្រាស់សម្រាប់តែអ្នកដែលមានលិខិតអញ្ជើញ',
 	'invitations-invitedlist-none' => 'អ្នកមិនត្រូវបានគេអញ្ជើញឱ្យប្រើប្រាស់មុខងារសូហ្វវែរដែលត្រូវការឱ្យមានការអញ្ជើញទេ។',
@@ -440,14 +446,14 @@ $messages['km'] = array(
 	'invitations-uninvitedlist-description' => 'អ្នកមិនអាចចូលទៅក្នុងមុខងារសូហ្វវែរសម្រាប់តែអ្នកមានលិខិតអញ្ជើញបានទេ។',
 	'invitations-feature-pagetitle' => 'ការគ្រប់គ្រងលិខិតអញ្ជើញ- $1',
 	'invitations-feature-access' => 'បច្ចុប្បន្នអ្នកអាចចូលទៅប្រើ <i>$1</i>បាន។',
-	'invitations-feature-numleft' => 'អ្នកនៅសល់{{PLURAL:$2|១លិខិតអញ្ជើញទៀត|<b>$1</b>លិខិតអញ្ជើញ ក្នុងចំនោម $2 លិខិតអញ្ជើញសរុប}}។',
+	'invitations-feature-numleft' => 'អ្នកនៅសល់{{PLURAL:$2|១លិខិតអញ្ជើញទៀត|<b>$1</b>លិខិតអញ្ជើញ ក្នុងចំណោម $2 លិខិតអញ្ជើញសរុប}}។',
 	'invitations-feature-notallowed' => 'អ្នកមិនអាចចូលទៅប្រើប្រាស់ <i>$1</i> បានទេ។',
-	'invitations-inviteform-title' => 'អញ្ជើញអ្នកប្រើប្រាស់ម្នាក់អោយប្រើ $1',
+	'invitations-inviteform-title' => 'អញ្ជើញអ្នកប្រើប្រាស់ម្នាក់ឱ្យប្រើ $1',
 	'invitations-inviteform-username' => 'អ្នកប្រើប្រាស់​ដែលត្រូវអញ្ជើញ',
 	'invitations-inviteform-submit' => 'អញ្ជើញ',
 	'invitations-error-baduser' => 'អ្នកប្រើប្រាស់ដែលអ្នកបានសំដៅ ហាក់ដូចជាមិនមានទេ។',
 	'invitations-error-alreadyinvited' => 'អ្នកប្រើប្រាស់ដែលអ្នកបានសំដៅ មានសិទ្ឋិចូលទៅប្រើប្រាស់មុខងារនេះរួចហើយ!',
-	'invitations-invite-success' => 'អ្នកបានអញ្ជើញ $1 អោយប្រើប្រាស់មុខងារនេះដោយជោគជ័យ!',
+	'invitations-invite-success' => 'អ្នកបានអញ្ជើញ $1 ឱ្យប្រើប្រាស់មុខងារនេះដោយជោគជ័យ!',
 );
 
 /** Ripoarisch (Ripoarisch)

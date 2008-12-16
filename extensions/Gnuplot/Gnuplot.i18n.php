@@ -58,6 +58,13 @@ $messages['eo'] = array(
 	'gnuplot-desc' => 'Aldonas etikedon <code><nowiki><gnuplot></nowiki></code> por uzi Gnuplot',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'gnuplot-desc' => 'Añade la etiqueta <code><nowiki><gnuplot></nowiki></code> para usar Gnuplot',
+);
+
 /** French (Français)
  * @author Grondin
  */

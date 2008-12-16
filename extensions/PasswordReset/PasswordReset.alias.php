@@ -69,6 +69,11 @@ $aliases['km'] = array(
 	'PasswordReset' => array( 'កំណត់ពាក្យសំងាត់ឡើងវិញ' ),
 );
 
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'PasswordReset' => array( '비밀번호변경', '비밀번호바꾸기', '암호바꾸기' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PasswordReset' => array( 'Zrécksetzen vum Passwuert' ),

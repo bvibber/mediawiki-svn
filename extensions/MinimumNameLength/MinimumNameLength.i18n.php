@@ -218,8 +218,8 @@ $messages['kk-tr'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
-	'minnamelength-error' => 'ឈ្មោះអ្នកប្រើប្រាស់ របស់អ្នក ខ្លី ពេក។ ប្រវែងអប្បបរមា គឺ $1 ។',
-	'minnamelength-desc' => 'បង្ខំឱ្យមាន ប្រវែងឈ្មោះអ្នកប្រើប្រាស់ ជាអប្បបរមា',
+	'minnamelength-error' => 'ឈ្មោះអ្នកប្រើប្រាស់​របស់អ្នក​ខ្លី​ពេក​។ ប្រវែងអប្បបរមា​គឺ $1 ។',
+	'minnamelength-desc' => 'បង្ខំឱ្យមាន​ប្រវែងឈ្មោះអ្នកប្រើប្រាស់​ជាអប្បបរមា',
 );
 
 /** Ripoarisch (Ripoarisch)

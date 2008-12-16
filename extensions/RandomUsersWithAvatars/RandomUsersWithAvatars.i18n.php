@@ -54,6 +54,14 @@ $messages['de'] = array(
 	'random-users-avatars-desc' => 'Ergänzt das <tt>&lt;randomuserswithavatars&gt;</tt>-Tag zur Anzeige des Avatars eines zufällig ausgewählten Benutzers',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'random-users-avatars-title' => 'Zmakaś se ze zgromaźenstwom',
+	'random-users-avatars-desc' => 'Pśidawa toflicku <tt>&lt;randomuserswithavatars&gt;</tt> za zwobraznjenje pśipadnje wuzwólonych wužywarjow',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

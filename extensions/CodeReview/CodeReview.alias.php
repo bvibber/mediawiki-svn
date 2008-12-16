@@ -36,6 +36,12 @@ $aliases['br'] = array(
 	'Code' => array( 'Kod' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'Code' => array( 'Kod', 'PregledKoda' ),
+	'RepoAdmin' => array( 'RepoAdministracija' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'Code' => array( 'Quelltext' ),

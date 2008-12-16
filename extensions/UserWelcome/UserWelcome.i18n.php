@@ -27,6 +27,15 @@ $messages['en'] = array(
 	'mp-request-new-friend' => '$1 new {{PLURAL:$1|friend|friends}}',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'userwelcome-desc' => 'Short description of the extension.
+Shown in [[Special:Version]].
+Do not translate tags names, and links targets.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -184,7 +193,7 @@ $messages['fr'] = array(
 	'mp-welcome-upload' => 'Télécharger',
 	'mp-welcome-edit' => 'Modifier',
 	'mp-welcome-points' => '$1 points',
-	'mp-welcome-needed-points' => 'Avancer vers <b><a href="$1">$2</a></b> gagne <i>$3</i> points en plus !',
+	'mp-welcome-needed-points' => 'Avancer vers <b><a href="$1">$2</a></b> gagne <i>$3</i> {{PLURAL:$3|point|points}} en plus !',
 	'mp-welcome-logged-in' => 'Bienvenue $1',
 	'mp-requests-title' => 'Requêtes',
 	'mp-requests-message' => 'Vous avez les requêtes suivantes.',
@@ -204,7 +213,7 @@ $messages['gl'] = array(
 	'mp-welcome-upload' => 'Cargar',
 	'mp-welcome-edit' => 'Editar',
 	'mp-welcome-points' => '$1 puntos',
-	'mp-welcome-needed-points' => 'Para avanzar a <b><a href="$1">$2</a></b> gañe <i>$3</i> puntos máis!',
+	'mp-welcome-needed-points' => 'Para avanzar a <b><a href="$1">$2</a></b>, gañe <i>$3</i> {{PLURAL:$3|punto|puntos}} máis!',
 	'mp-welcome-logged-in' => 'Ola, $1',
 	'mp-requests-title' => 'Solicitudes',
 	'mp-requests-message' => 'Ten as seguintes solicitudes.',
@@ -311,6 +320,26 @@ $messages['km'] = array(
 	'mp-request-new-friend' => 'មិត្តថ្មី$1នាក់',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'userwelcome-desc' => 'Deit dä Befäähl <tt lang="en">&lt;welcomeUser&gt;</tt> en et Wiki, öm bestemmpte Saache övver de Metmaacher un sing Schmölzjes aanzezeije, wann hä ennjelogg eß.',
+	'mp-userlevels-link' => 'Ebene för MEtmaacher',
+	'mp-welcome-upload' => 'Huhlaade',
+	'mp-welcome-edit' => 'Ändere',
+	'mp-welcome-points' => '$1 Pungkte',
+	'mp-welcome-needed-points' => 'Öm föraanzekumme op <b><a href="$1">$2</a></b>, donn {{PLURAL:$3|<i>eine</i> Pungk mieh|<i>$3</i> zosätzlijje Pungkte|<i>kein</i> Pungkte dobei}} sammele!',
+	'mp-welcome-logged-in' => 'Daach $1,',
+	'mp-requests-title' => 'Wönsch und Aanfroore',
+	'mp-requests-message' => 'Do häß hee di Wönsch und Aanfroore:',
+	'mp-request-new-message' => 'Neu Nohresch',
+	'mp-request-new-award' => '{{PLURAL:$1|Ein neu Beloonung|$1 neu Beloonunge|Kein neu Beloonunge!}}',
+	'mp-request-new-gift' => '{{PLURAL:$1|Ein neu Jeschengk|$1 neu Jeschengke|Kein neu Jeschengke!}}',
+	'mp-request-new-foe' => '{{PLURAL:$1|Eine neue Feind|$1 neu Feinde|Kein neu Feinde!}}',
+	'mp-request-new-friend' => '{{PLURAL:$1|Eine neue Frünnd|$1 neue Frünnde|Keine neue Frünnd}}',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -320,7 +349,7 @@ $messages['lb'] = array(
 	'mp-welcome-upload' => 'Eroplueden',
 	'mp-welcome-edit' => 'Änneren',
 	'mp-welcome-points' => '$1 Punkten',
-	'mp-welcome-needed-points' => 'Fir weiderzekommen <b><a href="$1">$2</a></b> verdéngt <i>$3</i> méi Punkten!',
+	'mp-welcome-needed-points' => 'Fir weiderzekommen <b><a href="$1">$2</a></b> verdéngt <i>$3</i> {{PLURAL:$3|Punkt|Punkte}} méi!',
 	'mp-welcome-logged-in' => 'Salut $1',
 	'mp-requests-title' => 'Ufroen',
 	'mp-requests-message' => 'Dir hutt dës Ufroen',
@@ -379,7 +408,7 @@ $messages['nl'] = array(
 	'mp-welcome-upload' => 'Uploaden',
 	'mp-welcome-edit' => 'Bewerken',
 	'mp-welcome-points' => '$1 punten',
-	'mp-welcome-needed-points' => 'Om te promoveren naar <b><a href="$1">$2</a></b> moet u nog <i>$3</i> punten verdienen!',
+	'mp-welcome-needed-points' => 'Om te promoveren naar <b><a href="$1">$2</a></b> moet u nog <i>$3</i> {{PLURAL:$3|punt|punten}} verdienen!',
 	'mp-welcome-logged-in' => 'Hallo $1',
 	'mp-requests-title' => 'Aanvragen',
 	'mp-requests-message' => 'U hebt de volgende aanvragen.',
@@ -532,7 +561,7 @@ $messages['sv'] = array(
 	'mp-welcome-upload' => 'Ladda upp',
 	'mp-welcome-edit' => 'Redigera',
 	'mp-welcome-points' => '$1 poäng',
-	'mp-welcome-needed-points' => 'För att avancera för <b><a href="$1">$2</a></b> måste du uppnå <i>$3</i> fler poäng!',
+	'mp-welcome-needed-points' => 'För att avancera för <b><a href="$1">$2</a></b> måste du uppnå <i>$3</i> fler {{PLURAL:$3|poäng|poäng}}!',
 	'mp-welcome-logged-in' => 'Hej $1',
 	'mp-requests-title' => 'Efterfrågningar',
 	'mp-requests-message' => 'Du har följande efterfrågningar.',

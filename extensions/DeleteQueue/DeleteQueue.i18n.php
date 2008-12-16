@@ -950,6 +950,14 @@ Vous pouvez enregistrer [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} ici] votre 
 	'deletequeue-list-header-discusspage' => 'Page de discussion',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'deletequeue-review-reason' => 'Nótaí tráchta:',
+	'deletequeue-vote-reason' => 'Nótaí tráchta:',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

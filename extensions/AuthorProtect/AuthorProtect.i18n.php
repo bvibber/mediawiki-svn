@@ -505,7 +505,19 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'authorprotect' => '非作成者からページを保護',
+	'authorprotect-desc' => 'ページの作成者が他の利用者からそのページを保護できるようにします',
+	'authorprotect-notauthor' => 'あなたはこのページの作成者ではありません',
+	'authorprotect-confirm' => '保護レベルを変更',
+	'authorprotect-edit' => '編集を作成者に制限',
+	'authorprotect-move' => '移動を作成者に制限',
+	'authorprotect-expiry' => '期限',
 	'authorprotect-reason' => '理由',
+	'authorprotect-intro' => 'このページを非作成者から保護するのにこのフォームを使ってください',
+	'authorprotect-success' => '保護成功!',
+	'authorprotect-failure' => '保護失敗',
+	'protect-level-author' => '非作成者から保護',
+	'restriction-level-author' => '作成者保護',
 );
 
 /** Javanese (Basa Jawa)

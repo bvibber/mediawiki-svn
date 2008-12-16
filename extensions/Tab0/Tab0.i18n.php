@@ -68,6 +68,13 @@ $messages['eo'] = array(
 	'tab0-desc' => 'Aldonas langeton "0" ligantan al la redaktpaĝo de la unua sekcio de la paĝo',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'tab0-desc' => 'Añade la pestaña «0», un enlace para editar la sección inicial de la página.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p

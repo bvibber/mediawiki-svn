@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'AdvancedRandom' => array( 'عشوائى_متقدم' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'AdvancedRandom' => array( 'NaprednoSlucajno' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'AdvancedRandom' => array( 'AleatorioAvanzado', 'Aleatorio avanzado' ),

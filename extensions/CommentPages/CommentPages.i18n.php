@@ -53,6 +53,14 @@ $messages['bg'] = array(
 	'nstab-comments' => 'Коментари',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'commentpages-desc' => 'Stranice komentara za glavni imenski prostor',
+	'nstab-comments' => 'Komentari',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -87,8 +95,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Academo
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'commentpages-desc' => 'Comentar páginas en el espacio de nombres principal',
 	'nstab-comments' => 'Comentario',
 );
 

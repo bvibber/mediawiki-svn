@@ -55,6 +55,12 @@ $aliases['arz'] = array(
 	'MvVideoFeed' => array( 'تلقيم_فيديو_مف' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'MediaSearch' => array( 'PretragaZaMedijima' ),
+	'Mv_Add_Stream' => array( 'Mv_Dodaj_Stream' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'MediaSearch' => array( 'Medie-Suech' ),

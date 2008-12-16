@@ -106,8 +106,14 @@ $messages['ca'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
-/** Welsh (Cymraeg) */
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
 $messages['cy'] = array(
+	'filelist' => 'Rhestr ffeiliau',
+	'filelist-desc' => "[[Special:Filelist|Tudalen arbennig]] sy'n rhestri ffeiliau sydd wedi eu huwchlwytho",
+	'filelist-show-list' => 'Dangos ar ffurf rhestr',
+	'filelist-show-gallery' => 'Dangos ar ffurf galeri',
 	'filelist-image-desc' => 'disg.',
 );
 
@@ -533,10 +539,11 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
+ * @author Kandar
  */
 $messages['su'] = array(
 	'filelist' => 'Daptar Gambar',
-	'filelist-desc' => 'Kaca husus keur daptar gambar nu dimuat',
+	'filelist-desc' => '[[Special:Filelist|Kaca husus]] keur daptar gambar nu dimuat',
 	'filelist-show-list' => 'Tembongkeun daptar',
 	'filelist-show-gallery' => 'Tembongkeun Galeri',
 	'filelist-image-desc' => 'katarangan',
@@ -588,6 +595,13 @@ $messages['tg-cyrl'] = array(
 	'filelist-show-list' => 'Намоиши феҳрист',
 	'filelist-show-gallery' => 'Намоиши нигористон',
 	'filelist-image-desc' => 'тавсиф',
+);
+
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
+$messages['tr'] = array(
+	'filelist' => 'Dosya listesi',
 );
 
 /** Vèneto (Vèneto)

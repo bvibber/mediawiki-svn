@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'NewsChannel' => array( 'قناة_أخبار' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'NewsChannel' => array( 'KanalVijesti' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'NewsChannel' => array( 'کانال_خبری' ),

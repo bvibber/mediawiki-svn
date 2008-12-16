@@ -151,6 +151,13 @@ $messages['pt'] = array(
 	'contributorsaddon-desc' => 'Adiciona janelas "popup" JS do tipo onMouseOver às ligações de "Principais Contribuidores"',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'contributorsaddon-desc' => "Aggiunge jndr'à le popup JS sus a l'evende onMouseOver 'u collegamende \"Condrebbute Prengepàle\"",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -214,10 +214,24 @@ $messages['sk'] = array(
 	'woopra-desc' => 'Umožňuje fungovanie [http://www.woopra.com/ Woopra Live Tracking Software] v rámci vašej MediaWiki',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'woopra-desc' => 'Jalankeun [http://www.woopra.com/ Woopra Live Tracking Software] dina instalasi MediaWiki anjeun',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
 $messages['sv'] = array(
 	'woopra-desc' => 'Gör att [http://woopra.com/ Woopra Live Tracking Software] fungerar med MediaWiki',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'woopra-desc' => 'Дозволяє [http://www.woopra.com/ Woopra Live Tracking Software] працювати з вашою MediaWiki-інсталяцією',
 );
 

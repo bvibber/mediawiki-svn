@@ -106,6 +106,14 @@ $messages['eo'] = array(
 	'contributionseditcount-desc' => 'Montras nombron de redaktoj en [[Special:Contributions|paĝo pri kontribuoj de uzanto]]',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'contributionseditcount' => 'Este usuario tiene $1 ediciones.',
+	'contributionseditcount-desc' => 'Muestra un contador de ediciones en la [[Special:Contributions|página de contribuciones del usuario]]',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -428,7 +436,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'contributionseditcount' => 'ఈ వాడుకరి $1 మార్పులు చేసారు.',
-	'contributionseditcount-desc' => '[[Special:Contributions]]లో మార్పుల సంఖ్యని చూపిస్తుంది',
+	'contributionseditcount-desc' => '[[Special:Contributions|వాడుకరి చేర్పుల పేజీ]]లో మార్పుల సంఖ్యని చూపిస్తుంది',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

@@ -307,6 +307,7 @@ $messages['es'] = array(
 	'imagemap_no_image' => 'Error: hay que especificar un imagen en la línea primera',
 	'imagemap_invalid_image' => 'Error: la imagen no es válida o no existe',
 	'imagemap_no_link' => 'Error: no se encontró ningún enlace válido al final de la línea $1',
+	'imagemap_invalid_title' => 'Error: título no válido en un enlace de la linea $1',
 	'imagemap_no_areas' => 'Error: se debe dar al menos una especificación de área',
 	'imagemap_invalid_coord' => 'Error: hay una coordenada no válida en la línea $1, debe ser un número',
 	'imagemap_description' => 'Acerca de esta imagen',
@@ -704,6 +705,7 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'imagemap_no_image' => '오류: 첫 줄에 그림이 제시되어야 합니다.',
 	'imagemap_invalid_image' => '오류: 그림이 잘못되었거나 존재하지 않습니다.',
+	'imagemap_description' => '이 그림에 대한 정보',
 );
 
 /** Ripoarisch (Ripoarisch)

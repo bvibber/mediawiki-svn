@@ -549,6 +549,8 @@ $messages['bg'] = array(
 	'configure-ext-doc' => 'Вижте онлайн документацията',
 	'configure-ext-settings' => 'Настройки',
 	'configure-ext-use-extension' => 'Използване на разширението',
+	'configure-form-reason' => 'Причина за промяната:',
+	'configure-arrayinput-oneperline' => "''(по едно на ред)''",
 	'configure-summary' => 'Тази специална страница позволява на потребителите да конфигурират уикито; за повече информация, вижте [http://www.mediawiki.org/wiki/Manual:Configuration_settings настройките за конфигуриране].',
 	'configure-btn-save' => 'Съхраняване на настройките',
 	'configure-db-table-error' => 'Посочената база от данни не съдържа необходимите таблици. Необходимо е на тази база от данни да се приложи configure.sql.',
@@ -576,6 +578,7 @@ $messages['bg'] = array(
 	'configure-old-versions' => 'Списък със стари версии на конфигурацията:',
 	'configure-old-not-available' => 'Поисканата стара версия на настройките, $1, не беше намерена',
 	'configure-saved' => 'Настройките бяха съхранени',
+	'configure-backlink' => 'Връщане към формуляра',
 	'configure-section-general' => 'Основни настройки',
 	'configure-section-paths' => 'Пътища',
 	'configure-section-db' => 'База от данни',
@@ -618,7 +621,7 @@ $messages['bg'] = array(
 	'configure-section-external-tools' => 'Външни инструменти',
 	'configure-select-wiki-view-all' => 'Всички уикита',
 	'configure-select-wiki-view-specific' => 'Специфично уики:',
-	'configure-select-wiki-submit' => 'Потвърждаване',
+	'configure-select-wiki-submit' => 'Избиране',
 	'configure-setting-not-available' => 'Тази настройка не е налична в използваната версия на МедияУики',
 	'configure-view' => 'Преглеждане',
 	'configure-view-all-versions' => 'Пълен списък на версиите',
@@ -644,6 +647,10 @@ $messages['bg'] = array(
 	'configure-throttle-group' => 'Тип',
 	'configure-throttle-limit' => 'Лимит',
 	'configure-throttle-none' => 'Без лимит',
+	'configure-condition-operator' => 'Оператор:',
+	'configure-condition-operator-or' => 'Или',
+	'configure-condition-operator-and' => 'И',
+	'configure-condition-operator-not' => 'Не',
 );
 
 /** Bosnian (Bosanski)
@@ -1073,7 +1080,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'configure' => 'Configurer le wiki',
-	'configure-desc' => 'Permet aux utilisateurs avec les permissions adéquates de configurer le wiki via une page spéciale',
+	'configure-desc' => 'Permet aux utilisateurs avec les permissions adéquates de [[Special:Configure|configurer]] le wiki via une interface web',
 	'configure-desc-group' => 'Groupe',
 	'configure-desc-key' => 'Clé',
 	'configure-desc-ns' => 'Espace de noms',
@@ -1223,6 +1230,26 @@ Veuillez le rendre modifiable par PHP pour que cette extension fonctionne.',
 	'configure-throttle-group' => 'Type',
 	'configure-throttle-limit' => 'Limite',
 	'configure-throttle-none' => 'Aucune limite',
+	'configure-condition-operator' => 'Opérateur :',
+	'configure-condition-operator-or' => 'Ou',
+	'configure-condition-operator-and' => 'Et',
+	'configure-condition-operator-xor' => 'Ou exclusif',
+	'configure-condition-operator-not' => 'Non',
+	'configure-condition-name' => 'Condition',
+	'configure-condition-requirement' => 'Exigence',
+	'configure-condition-name-1' => "Nombre d'éditions minimal",
+	'configure-condition-name-2' => 'Age minimum (en secondes)',
+	'configure-condition-name-3' => 'Adresse de courriel confirmée',
+	'configure-condition-name-4' => 'Dans les groupes',
+	'configure-autopromote-noconds' => 'Aucun prérequis',
+	'configure-condition-description-1' => "Nombre d'édition minimal de $1",
+	'configure-condition-description-2' => 'Age minimum de $1 {{PLURAL:$1|seconde|secondes}}',
+	'configure-condition-description-3' => 'Adresse de courriel confirmée',
+	'configure-condition-description-4' => 'Dans tous les groupes : $1',
+	'configure-boolop-description-and' => 'Toutes les conditions doivent être vérifiées',
+	'configure-boolop-description-or' => 'Au moins une condition doit être vérifiée',
+	'configure-boolop-description-xor' => 'Exactement une condition doit être vérifiée',
+	'configure-boolop-description-not' => 'Aucune condition ne doit être vérifiée',
 );
 
 /** Western Frisian (Frysk)
@@ -3331,8 +3358,12 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'configure' => "Configure 'a Uicchipèdie",
 	'configure-desc-group' => 'Gruppe',
+	'configure-desc-ns' => 'Namespace',
+	'configure-edit-core' => 'MediaUicchi',
 	'configure-ext-use' => 'Ause',
+	'configure-arrayinput-oneperline' => "''(une pe linea)''",
 	'configure-section-db' => 'Databeise',
 	'configure-section-category' => 'Categorije',
 	'configure-section-users' => 'Utinde',

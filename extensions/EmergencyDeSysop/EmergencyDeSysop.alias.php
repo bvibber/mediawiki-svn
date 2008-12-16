@@ -6,6 +6,11 @@ $aliases['en'] = array(
 	'EmergencyDeSysop' => array( 'EmergencyDeSysop', 'EmergencyDesysop' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'EmergencyDeSysop' => array( 'HitnoUklanjanjeSysopa' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'EmergencyDeSysop' => array( 'DesysopageUrgent', 'DésysopageUrgent', 'DéSysopageUrgent', 'DeSysopageUrgent' ),

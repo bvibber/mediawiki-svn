@@ -455,6 +455,50 @@ $wgCustomToolbarMessages['jv'] = array(
 	'ct_user_sample' => 'Jeneng panganggo',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$wgCustomToolbarMessages['km'] = array(
+	'ct_bold_sample' => 'អក្សរ​ដិត',
+	'ct_bold_tip_ins' => 'បញ្ចូល​អក្សរ​ដិត',
+	'ct_bold_tip_wrap' => 'ធ្វើ​ឱ្យ​អក្សរ​នេះ​ដិត',
+	'ct_bold_caption' => 'ដិត',
+	'ct_italic_sample' => 'អក្សរ​ទ្រេត',
+	'ct_italic_tip_ins' => 'បញ្ចូល​អក្សរ​ទ្រេត',
+	'ct_italic_tip_wrap' => 'ធ្វើ​ឱ្យ​អក្សរ​នេះ​ទ្រេត',
+	'ct_italic_caption' => 'ទ្រេត',
+	'ct_internal_sample' => 'ឈ្មោះទំព័រ',
+	'ct_internal_tip_ins' => 'ដាក់​តំណភ្ជាប់​ខាងក្នុង',
+	'ct_internal_tip_wrap' => 'ដាក់​​តំណខាងក្នុង​ជាមួយ​អត្ថបទ​នេះ',
+	'ct_internal_caption' => 'តំណភ្ជាប់​ខាងក្នុង',
+	'ct_external_tip_ins' => 'ដាក់​តំណភ្ជាប់​ខាងក្រៅ',
+	'ct_external_tip_wrap' => 'ដាក់​តំណភ្ជាប់​ខាងក្រៅ',
+	'ct_external_caption' => 'តំណភ្ជាប់​ខាងក្រៅ',
+	'ct_image_tip' => 'បញ្ចូល​រូបភាព',
+	'ct_image_caption' => 'បន្ថែម​រូបភាព',
+	'ct_attachment_tip' => 'បញ្ចូល​ឯកសារភ្ជាប់​មួយ',
+	'ct_attachment_caption' => 'បន្ថែម​ឯកសារភ្ជាប់',
+	'ct_math_sample' => 'បញ្ចូល​រូបមន្ត LaTeX នៅ​ទីនេះ',
+	'ct_math_tip_ins' => 'បញ្ចូលរូបមន្ត​គណិតវិទ្យា (LaTeX)',
+	'ct_math_tip_wrap' => 'ដាក់​រូបមន្ត​គណិតវិទ្យា (LaTeX) ជាមួយ​អត្ថបទ​នេះ',
+	'ct_math_caption' => 'រូបមន្ត',
+	'ct_nowiki_sample' => 'បញ្ចូល​អត្ថបទ​គ្មាន​ទ្រង់ទ្រាយ​នៅ​ទីនេះ',
+	'ct_nowiki_caption' => 'គ្មាន​វិគី',
+	'ct_horizontal_tip' => 'បញ្ចូល​ខ្សែផ្ដេក​មួយ (ប្រើ sparingly)',
+	'ct_horizontal_caption' => 'ខ្សែផ្ដេក',
+	'ct_upload' => 'ផ្ទុកឡើង $1',
+	'ct_select' => 'ជ្រើស $1 ដើម្បី​ផ្ទុកឡើង',
+	'ct_caption' => 'បន្ថែម​ចំណងជើង (ស្រេចចិត្ត)',
+	'ct_link' => 'បន្ថែម​ឈ្មោះ​តំណ (ស្រេចចិត្ត)',
+	'ct_submit' => 'ទៅ​!',
+	'ct_close' => 'បិទ​បង្អួច',
+	'ct_success' => 'ផ្ទុក​ឯកសារ​ដោយ​ជោគជ័យ​!',
+	'ct_user_user' => 'អ្នកប្រើប្រាស់',
+	'ct_user_tip' => 'ដាក់​តំណ​ជាមួយ​ទំព័រ​អ្នកប្រើប្រាស់',
+	'ct_user_caption' => 'តំណ​អ្នកប្រើប្រាស់',
+	'ct_user_sample' => 'ឈ្មោះអ្នកប្រើប្រាស់',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -552,6 +596,25 @@ Controleer uw pop-upblokkeerprogramma.',
 	'ct_user_tip' => 'Verwijzing naar gebruikerspagina toevoegen',
 	'ct_user_caption' => 'Gebruikersverwijzing',
 	'ct_user_sample' => 'Gebruikersnaam',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$wgCustomToolbarMessages['nn'] = array(
+	'ct_bold_sample' => 'Feit tekst',
+	'ct_bold_caption' => 'Feit',
+	'ct_italic_sample' => 'Kursiv tekst',
+	'ct_italic_caption' => 'Kursiv',
+	'ct_internal_caption' => 'Intern lenkja',
+	'ct_external_caption' => 'Ekstern lenkja',
+	'ct_image_caption' => 'Legg til bilete',
+	'ct_math_caption' => 'Formel',
+	'ct_horizontal_caption' => 'Horisontal linja',
+	'ct_upload' => 'Last opp $1',
+	'ct_close' => 'Lukk vindauget',
+	'ct_user_user' => 'Brukar',
+	'ct_user_sample' => 'Brukarnamn',
 );
 
 /** Occitan (Occitan)

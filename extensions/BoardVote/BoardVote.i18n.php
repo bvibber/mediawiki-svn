@@ -99,6 +99,7 @@ A security warning about an unsigned certificate may be displayed.',
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Lloffiwr
  * @author Meno25
  * @author Purodha
  * @author Siebrand
@@ -129,8 +130,8 @@ $messages['qqq'] = array(
 	'boardvote_submit' => 'Button name
 
 {{Identical|OK}}',
-	'boardvote_strike' => 'Used during Wikimedia Board of Trustees elections via [[Special:Boardvote]].',
-	'boardvote_unstrike' => 'Used during Wikimedia Board of Trustees elections via [[Special:Boardvote]].',
+	'boardvote_strike' => 'Used during Wikimedia Board of Trustees elections via [[Special:Boardvote]]. "To strike a vote" means "to mark a vote invalid".',
+	'boardvote_unstrike' => 'Used during Wikimedia Board of Trustees elections via [[Special:Boardvote]]. "To unstrike a vote" means to mark a vote valid again after it has been marked invalid.',
 	'boardvote_needadmin' => 'Used during Wikimedia Board of Trustees elections via [[Special:Boardvote]].',
 	'boardvote_sitenotice' => 'Used during Wikimedia Board of Trustees elections via [[Special:Boardvote]].',
 	'boardvote_notstarted' => 'Used during Wikimedia Board of Trustees elections via [[Special:Boardvote]].',
@@ -1322,6 +1323,8 @@ Er mwyn pleidleisio rhaid eich bod wedi cyfrannu o leiaf {{PLURAL:$1|$1 gwaith|u
 $1 ar gyfer y data wedi ei amgryptio.</p>',
 	'boardvote_dumplink' => 'Cliciwch yma',
 	'boardvote_submit' => 'Iawn',
+	'boardvote_strike' => 'Annilysu',
+	'boardvote_unstrike' => 'Adfer',
 	'boardvote_needadmin' => 'Dim ond gweinyddwyr yr etholiad allant weithredu hwn.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Etholiad Bwrdd Wikimedia</a>:
 Pleidleisio\'n bosib hyd at 22 Mehefin',
@@ -5731,9 +5734,8 @@ Vérsi nu kaénkripsi aya di handap. Éta hasil baris [[Special:Boardvote/dump|d
 [[Special:Boardvote/entry|Balik deui]]',
 	'boardvote_invalidentered' => '<p><strong>Kasalahan</strong>: rengking kandidat kudu dina angka positif (1, 2, 3, ...), atawa dikosongkeun.</p>',
 	'boardvote_nosession' => 'Anjeun kudu asup log kalawan ngaran pamaké Wikimedia anu sah.
-Sumangga asup log ka wiki di mana Anjeun nyumponan sarat pikeun milih, saterusna indit ka halaman <nowiki>[[Special:Boardvote]]</nowiki>.
-
-Anjeun kudu ngagunakeun rekening kalawan kontribusi saeutikna $1 saméméh $2, sarta geus ngabogaan saeutikna $3 kontribusi antara $4 sarta $5.',
+Sumangga asup log ka wiki di mana Anjeun nyumponan sarat pikeun milih, lajeng indit ka <nowiki>[[Special:Boardvote]]</nowiki>.
+Anjeun kudu maké rekening kalawan {{PLURAL:$1|contribution|kontribusi}} saeutikna $1 saméméh $2, sarta geus ngabogaan saeutikna $3 {{PLURAL:$3|contribution|kontribusi}} antara $4 sarta $5.',
 	'boardvote_notloggedin' => 'Anjeun can asup log.<br>
 Pikeun nyoara, anjeun kudu maké rekening nu sahanteuna geus boga $1 kontribusi saméméh $2, jeung sahanteuna boga $3 kontibusi antara $4 jeung $5.',
 	'boardvote_notqualified' => 'Anjeun teu nedunan sarat pikeun ngilu milih.<br>

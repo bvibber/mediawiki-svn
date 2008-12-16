@@ -46,6 +46,14 @@ $messages['bg'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Специална страница]], която извлича случайна начална страница',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'randomrootpage' => 'Pśipadny kórjenjowy bok',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Specialny bok]], kótaryž póra pśipadny kórjenjowy bok',
+);
+
 /** Persian (فارسی)
  * @author Hojjat (aka Huji)
  */

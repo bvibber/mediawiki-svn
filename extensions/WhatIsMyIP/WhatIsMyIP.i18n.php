@@ -69,6 +69,15 @@ $messages['cs'] = array(
 	'whatismyip-out' => 'Vaše IP:',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'whatismyip' => 'Canfod fy nghyfeiriad IP',
+	'whatismyip-desc' => 'Yn dangos cyfeiriad IP y defnyddiwr presennol ar [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Eich IP:',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Revolus

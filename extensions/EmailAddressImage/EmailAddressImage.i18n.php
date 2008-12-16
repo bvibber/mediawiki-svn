@@ -68,6 +68,13 @@ $messages['eo'] = array(
 	'emailaddressimage-desc' => 'Aldonas <tt>&lt;retpoŝton&gr;</tt> montri retpoŝtan adreson kiel bildon',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'emailaddressimage-desc' => 'Añade la etiqueta <tt>&lt;email&gt;</tt> que muestra una dirección de correo electrónico como imagen.',
+);
+
 /** French (Français)
  * @author Grondin
  */

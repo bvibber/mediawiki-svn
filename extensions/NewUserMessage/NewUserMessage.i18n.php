@@ -239,9 +239,10 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
-	'newusermessage-desc' => 'បន្ថែម មួយ សារ ក្នុង ទំព័រពិភាក្សា របស់ អ្នកប្រើប្រាស់ថ្មី',
+	'newusermessage-desc' => 'បន្ថែម​មួយ​សារ​ក្នុង​ទំព័រពិភាក្សា​របស់​អ្នកប្រើប្រាស់ថ្មី',
 	'newuseredit-summary' => 'បញ្ចូល[[{{int:newusermessage-template}}|សារស្វាគមន៍]]ទៅក្នុងទំព័រពិភាក្សារបស់អ្នកប្រើប្រាស់',
 );
 

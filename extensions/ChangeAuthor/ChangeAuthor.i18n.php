@@ -535,6 +535,17 @@ $messages['fy'] = array(
 	'changeauthor-comment' => 'Oanmerking:',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'changeauthor-comment' => 'Nóta tráchta:',
+	'changeauthor-invalid-username' => 'Ainm úsáideoir "$1" neamhbhailí.',
+	'changeauthor-nosuchuser' => 'Níl úsáideoir "$1".',
+	'changeauthor-revview' => 'Leagan #$1 as $2',
+	'changeauthor-nosuchtitle' => 'Níl aon leathanach ab ainm "$1".',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño
@@ -1390,7 +1401,7 @@ $messages['su'] = array(
 	'changeauthor-pagename-or-revid' => 'Ngaran kaca atawa ID révisi:',
 	'changeauthor-pagenameform-go' => 'Jung',
 	'changeauthor-comment' => 'Pamanggih:',
-	'changeauthor-changeauthors-multi' => 'Robah panyusun',
+	'changeauthor-changeauthors-multi' => 'Ganti {{PLURAL:$1|panulis|panulis}}',
 	'changeauthor-explanation-multi' => "Ieu formulir dipaké pikeun ngarobah panyusun révisi.
 Robah baé hiji atawa sababaraha landihan di handap ieu, tuliskeun pamanggih atawa alesan anjeun (teu wajib), lajeng klik tombol 'Robah panyusun'.",
 	'changeauthor-changeauthors-single' => 'Robah panyusun',
@@ -1403,7 +1414,7 @@ Robah baé landihan di handap, béré pamanggih atawa alesan anjeun (teu wajib),
 	'changeauthor-weirderror' => 'Aya éror anu ahéng.
 Coba ulang pamundut anjeun.
 Mun tetep éror, meureun pangkalan datana ruksak.',
-	'changeauthor-invalidform' => 'Pék paké formulir anu disadiakeun ku Special:ChangeAuthor batan maké formulir biasa.',
+	'changeauthor-invalidform' => 'Paké formulir anu disadiakeun dina [[Special:ChangeAuthor|kaca husus]] batan maké formulir biasa.',
 	'changeauthor-success' => 'Pamundut anjeun geus anggeus diolah.',
 	'changeauthor-logentry' => 'Panyusun $2 geus robah dina $1, ti $3 jadi $4',
 	'changeauthor-logpagename' => 'Log robahan panyusun',
@@ -1448,7 +1459,7 @@ $messages['te'] = array(
 	'changeauthor-pagename-or-revid' => 'పేజీ పేరు లేదా కూర్పు ఐడీ:',
 	'changeauthor-pagenameform-go' => 'వెళ్ళు',
 	'changeauthor-comment' => 'వ్యాఖ్య:',
-	'changeauthor-changeauthors-multi' => 'రచయిత(లు) ను మార్చు',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|రచయితని|రచయితలను}} మార్చు',
 	'changeauthor-changeauthors-single' => 'రచయితను మార్చు',
 	'changeauthor-invalid-username' => '"$1" అనేది తప్పుడు వాడుకరి పేరు.',
 	'changeauthor-nosuchuser' => '"$1" అనే పేరుతో సభ్యులెవరూ లేరు.',

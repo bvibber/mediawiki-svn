@@ -250,6 +250,25 @@ $messages['it'] = array(
 	'refreshspecial-total-display' => '<br />$1 pagine aggiornate per un totale di $2 linee in un tempo di $3 (il tempo totale di esecuzione dello script è di $4)',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'refreshspecial' => 'ធ្វើឱ្យ​ទំព័រពិសេស​ស្រស់',
+	'refreshspecial-title' => 'ធ្វើឱ្យ​ទំព័រពិសេស​ស្រស់',
+	'refreshspecial-refreshing' => 'ដែល​ធ្វើឱ្យ​ទំព័រពិសេសស្រស់',
+	'refreshspecial-success-subtitle' => 'ដែល​ធ្វើឱ្យ​ទំព័រពិសេសស្រស់',
+	'refreshspecial-choice' => 'ដែល​ធ្វើឱ្យ​ទំព័រពិសេសស្រស់',
+	'refreshspecial-select-all-pages' => 'ជ្រើស​ទំព័រ​ទាំងអស់',
+	'refreshspecial-link-back' => 'ត្រឡប់ក្រោយ​ទៅ​ផ្នែកបន្ថែម​វិញ',
+	'refreshspecial-here' => '<b>ទីនេះ</b>',
+	'refreshspecial-none-selected' => 'អ្នក​មិន​បាន​ជ្រើស​ទំព័រពិសេសេ​ណាមួយ​ទេ​។ សូម​ត្រឡប់​ទៅរក​ការជ្រើស​តាម​លំនាំដើម​វិញ​។',
+	'refreshspecial-db-error' => 'បរាជ័យ​៖ កំហុស​មូលដ្ឋានទិន្នន័យ',
+	'refreshspecial-no-page' => 'មិនមាន​ទំព័រពិសេសេ',
+	'refreshspecial-reconnected' => 'បាន​តភ្ជាប់ឡើងវិញ​។',
+	'refreshspecial-reconnecting' => 'តភ្ជាប់ឡើងវិញ​បាន​បរាជ័យ, ដែល​ដំណើរការ​តភ្ជាប់ឡើងវិញ​នៅ​ក្នុង​រយៈពេល ១០ វិនាទី...',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

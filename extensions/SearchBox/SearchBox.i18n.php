@@ -162,6 +162,13 @@ $messages['nl'] = array(
 	'searchbox-namespaces' => 'Naamruimten:',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'searchbox-search' => 'Søk',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

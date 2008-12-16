@@ -58,6 +58,16 @@ $messages['bs'] = array(
 	'rightfunctions-ns' => '(od zaštite imenskog prostora)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'rightfunctions-desc' => 'Parserowe funkcije na zakłaźe pšawow',
+	'rightfunctions-casc' => '(z kaskaděrujucych žrědłow)',
+	'rightfunctions-local' => '(z lokalnego boka)',
+	'rightfunctions-ns' => '(ze šćita mjenjowego ruma)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

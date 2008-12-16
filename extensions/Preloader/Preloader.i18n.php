@@ -56,6 +56,13 @@ $messages['eo'] = array(
 	'preloader-desc' => 'Provizas ŝanĝeblan norman tekston laŭ nomspaco por novaj paĝoj',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'preloader-desc' => 'Provee texto por defecto para las páginas nuevas configurable para cada espacio de nombres',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Zetud

@@ -187,6 +187,13 @@ $messages['sk'] = array(
 	'tooltip-desc' => 'Pridáva značky <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'tooltip-desc' => 'Nambahkeun tag <tt><nowiki><tooltip></nowiki></tt> jeung <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

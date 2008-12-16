@@ -264,9 +264,15 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'whoiswatching' => '誰がページをウォッチしているのか',
 	'whoiswatching-desc' => 'ページをウォッチしている利用者の一覧を提供する',
+	'specialwhoiswatchingthepage' => '誰が%sをウォッチしているのか',
+	'specialwhoiswatchingusage' => 'この特別ページは単独では利用できません。この特別ページへのエントリーポイントを定義するためには [[MediaWiki:Number_of_watching_users_pageview]] を使用してください。',
+	'specialwhoiswatchingaddusers' => '利用者のウォッチリストにページを追加',
+	'specialwhoiswatchingaddbtn' => '選択した利用者を追加',
 );
 
 /** Javanese (Basa Jawa)

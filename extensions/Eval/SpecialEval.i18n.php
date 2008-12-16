@@ -62,6 +62,18 @@ $messages['de'] = array(
 	'eval_out' => 'Ausgabe',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'eval' => 'Wugódnośenje',
+	'eval-desc' => 'Pśidawa [[Special:Eval|interfejs]] k funkciji <code>eval()</code>',
+	'eval_submit' => 'Wugódnośiś',
+	'eval_escape' => 'Wudaśe pśetergnuś',
+	'eval_out' => 'Wudaśe',
+	'eval_code' => 'Kod',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

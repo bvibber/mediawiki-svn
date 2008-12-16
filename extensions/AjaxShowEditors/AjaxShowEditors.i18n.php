@@ -134,6 +134,19 @@ $messages['br'] = array(
 	'ajax-se-usernotfound' => "FAZI : n'eo ket bet kavet an implijer",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'ajax-se-desc' => 'Prikazuje korisnike koji uređuju istu stranicu',
+	'ajax-se-title' => 'Trenutno uređuju:',
+	'ajax-se-pending' => 'čekanje na osvježavanje... (kliknite na ovu kutiju ili započnite uređivanje)',
+	'ajax-se-idling' => '(prije $1 s)',
+	'ajax-se-pagedoesnotexist' => 'stranica ne postoji',
+	'ajax-se-userinvalid' => 'Greška: nepoznat korisnik',
+	'ajax-se-usernotfound' => 'Greška: korisnik nije nađen',
+);
+
 /** Catalan (Català)
  * @author Aleator
  */
@@ -230,6 +243,7 @@ $messages['es'] = array(
 	'ajax-se-desc' => 'Muestra a los usuarios que están editando quién más está editando la misma página',
 	'ajax-se-title' => 'Editando actualmente:',
 	'ajax-se-pending' => 'refresco pendiente... (pulsa en esta caja o comienza a editar)',
+	'ajax-se-idling' => '(hace $1)',
 	'ajax-se-pagedoesnotexist' => 'no existe la página',
 	'ajax-se-userinvalid' => 'Error: usuario no válido',
 	'ajax-se-usernotfound' => 'Error: usuario no encontrado',

@@ -530,6 +530,13 @@ $messages['fy'] = array(
 	'grouppermissions-sp-save' => 'Fêstlizze',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'grouppermissions-comment' => 'Nóta tráchta:',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -976,6 +983,7 @@ $messages['km'] = array(
 	'grouppermissions-log-delete' => 'បានលុបក្រុម"$2"',
 	'grouppermissions-sp-save' => 'រក្សាទុក',
 	'grouppermissions-sp-remove' => 'ដកហូត',
+	'right-info' => 'មើល​ព័ត៌មាន​ទំព័រ',
 	'right-history' => 'មើលប្រវត្តិទំព័រ',
 	'right-search' => 'ស្វែងរកវិគី',
 	'right-recentchanges' => 'មើលបំលាស់ប្តូរថ្មីៗ',

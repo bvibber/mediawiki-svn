@@ -63,6 +63,14 @@ $messages['de'] = array(
 	'semanticgooglemaps-desc' => 'Bietet die Möglichkeit auf Basis von strukturierten Daten Google Maps in das Wiki einzubinden',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Za koordinatami póglědaś',
+	'semanticgooglemaps-desc' => 'Dowólujo wužywarjam pśidaś wikijowym bokam Google Maps na zakłaźe strukturěrowanych datow',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

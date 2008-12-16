@@ -595,6 +595,18 @@ $messages['fy'] = array(
 	'whitelisttableedit' => 'Wizigje',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'whitelisttablemodifyall' => 'An t-iomlán',
+	'whitelisttablemodifynone' => 'Tada',
+	'whitelisttablepage' => 'Leathanach vicí',
+	'whitelisttablenewdate' => 'Dáta nua:',
+	'group-manager' => 'Bainisteóir',
+	'group-manager-member' => 'Bainisteór',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -858,6 +870,13 @@ $messages['it'] = array(
 	'whitelisttableedit' => 'Modifica',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'whitelisttablemodifyall' => 'すべて',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  * @author Pras
@@ -927,13 +946,13 @@ Kaca iki mung kanggo panganggo kawates",
  */
 $messages['km'] = array(
 	'mywhitelistpages' => 'ទំព័ររបស់ខ្ញុំ',
-	'whitelisttablemodify' => 'កែសំរួល',
+	'whitelisttablemodify' => 'កែសម្រួល',
 	'whitelisttablemodifyall' => 'ទាំងអស់',
 	'whitelisttablemodifynone' => 'ទទេ',
 	'whitelisttablepage' => 'ទំព័រវិគី',
-	'whitelisttableexpires' => 'ផុតកំនត់នៅថ្ងៃទី',
+	'whitelisttableexpires' => 'ផុតកំណត់នៅថ្ងៃទី',
 	'whitelisttablemodby' => 'កែសំរួលចុងក្រោយដោយ',
-	'whitelisttablemodon' => 'កែសំរួលចុងក្រោយនៅ',
+	'whitelisttablemodon' => 'កែសម្រួលចុងក្រោយនៅ',
 	'whitelisttableedit' => 'កែប្រែ',
 	'whitelisttableview' => 'មើល',
 	'whitelisttablenewdate' => 'កាលបរិច្ឆេទថ្មី៖',
@@ -941,7 +960,7 @@ $messages['km'] = array(
 	'whitelisttableremove' => 'ដកចេញ',
 	'whitelistnewtabledate' => 'កាលបរិច្ឆេទផុតកំណត់៖',
 	'whitelistpagelist' => 'ទំព័រ{{SITENAME}}សម្រាប់ $1',
-	'whitelistbadtitle' => 'ចំនងជើងមិនត្រឹមត្រូវ -',
+	'whitelistbadtitle' => 'ចំណងជើងមិនត្រឹមត្រូវ -',
 	'whitelistnever' => 'មិនដែល',
 );
 
@@ -1803,6 +1822,32 @@ $messages['tr'] = array(
 	'whitelisttableremove' => 'Kaldır',
 	'whitelistbadtitle' => 'Geçersiz başlık -',
 	'whitelistnever' => 'asla',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ */
+$messages['uk'] = array(
+	'whitelist-desc' => 'Редагування прав доступу користувачів',
+	'whitelistedit' => 'Редактор доступу до білого списку',
+	'whitelist' => 'Сторінки білого списку',
+	'mywhitelistpages' => 'Мої сторінки',
+	'whitelistfor' => '<center>Актуальна інформація для <b>$1</b></center>',
+	'whitelisttablemodify' => 'Змінити',
+	'whitelisttablemodifyall' => 'Усі',
+	'whitelisttablemodifynone' => 'Жодного',
+	'whitelisttablepage' => 'Вікі-сторінка',
+	'whitelisttabletype' => 'Тип доступу',
+	'whitelisttableexpires' => 'Закінчується',
+	'whitelisttablemodby' => 'Востаннє змінена користувачем',
+	'whitelisttablemodon' => 'Востаннє змінена о',
+	'whitelisttableedit' => 'Редагувати',
+	'whitelisttableview' => 'Переглянути',
+	'whitelisttablenewdate' => 'Нова дата:',
+	'whitelisttablechangedate' => 'Змінити дату закінчення',
+	'whitelisttablesetedit' => 'Установити для редагування',
+	'whitelisttablesetview' => 'Установити для перегляду',
+	'whitelisttableremove' => 'Вилучити',
 );
 
 /** Vietnamese (Tiếng Việt)

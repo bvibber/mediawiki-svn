@@ -222,6 +222,32 @@ $messages['de'] = array(
 	'importusers-realname' => 'Echter Name',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'importusers' => 'Wužywarjow importěrowaś',
+	'importusers-desc' => '[[SpeciaL:ImportUsers|Importěrujo wužywarjow]] z kopicami z CSV-dataje; koděrowanje: UTF-8',
+	'importusers-uploadfile' => 'Dataju nagraś',
+	'importusers-form-caption' => 'CSV-dataja (UTF-8)',
+	'importusers-form-file' => 'Format wužywarskeje dataje (csv):',
+	'importusers-form-replace-present' => 'Eksistujucych wužywarjow wuměniś',
+	'importusers-form-button' => 'Importěrowaś',
+	'importusers-user-added' => 'Wužywaŕ <b>%s</b> jo se pśidał.',
+	'importusers-user-present-update' => 'Wužywaŕ <b>%s</b> južo eksistujo. Zaktualizěrowany.',
+	'importusers-user-present-not-update' => 'Wužywaŕ <b>%s</b> južo eksistujo. Njezaktualizěrowany.',
+	'importusers-user-invalid-format' => 'Wužywarske daty w smužce #%s maju njepłaśiwy format abo su prozne. Pśeskocone.',
+	'importusers-log' => 'Protokol importěrowanjow',
+	'importusers-log-summary' => 'Zespominanje',
+	'importusers-log-summary-all' => 'Wše',
+	'importusers-log-summary-added' => 'Pśidany',
+	'importusers-log-summary-updated' => 'Zaktualizěrowany',
+	'importusers-login-name' => 'Wužywarske mě',
+	'importusers-password' => 'gronidło',
+	'importusers-email' => 'e-mail',
+	'importusers-realname' => 'napšawdne mě',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -541,6 +567,13 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'importusers-email' => 'indirizzo e-mail',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'importusers-log-summary-all' => 'すべて',
 );
 
 /** Javanese (Basa Jawa)

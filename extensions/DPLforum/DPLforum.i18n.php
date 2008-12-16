@@ -94,6 +94,18 @@ $messages['de'] = array(
 	'dplforum-never' => 'Nie',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'dplforum-desc' => 'Forumowe rozšyrjenje na zakłaźe DPL',
+	'dplforum-by' => 'wót',
+	'dplforum-edited' => '- Slědna změna',
+	'dplforum-never' => 'Žednje',
+	'dplforum-toofew' => 'DPL-forum: Pśemało kategorijow!',
+	'dplforum-toomany' => 'DPL-forum: Pśewjele kategorijow!',
+);
+
 /** Ewe (Eʋegbe)
  * @author Natsubee
  */

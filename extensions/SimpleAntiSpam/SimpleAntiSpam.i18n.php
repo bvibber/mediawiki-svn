@@ -225,6 +225,16 @@ $messages['hr'] = array(
 	'simpleantispam-desc' => 'Dodaje jednostavnu provjeru za spam/bot',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'simpleantispam' => 'Twoja změna je mechanizm přećiwo spamej zahibała',
+	'simpleantispam-label' => "Kontrola přećiwo spamej.
+Tu '''ničo''' njezapisać!",
+	'simpleantispam-desc' => 'Přidawa formularam jednoru spamowu kontrolu přez boćik',
+);
+
 /** Hungarian (Magyar)
  * @author Bdamokos
  * @author Dani

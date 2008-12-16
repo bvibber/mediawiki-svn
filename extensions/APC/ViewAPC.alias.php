@@ -32,6 +32,11 @@ $aliases['bg'] = array(
 	'ViewAPC' => array( 'Информация за APC' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'ViewAPC' => array( 'PregledAPC' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'ViewAPC' => array( 'APC-Informationen' ),

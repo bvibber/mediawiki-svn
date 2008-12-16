@@ -33,6 +33,11 @@ $aliases['bg'] = array(
 	'BoardVote' => array( 'Избори за борда' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'BoardVote' => array( 'GlasanjeOdbora' ),
+);
+
 /** Catalan (Català) */
 $aliases['ca'] = array(
 	'BoardVote' => array( 'Votació' ),
@@ -85,6 +90,11 @@ $aliases['id'] = array(
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'BoardVote' => array( '財団理事選挙' ),
+);
+
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'BoardVote' => array( '이사회선거', '보드보트' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

@@ -272,6 +272,13 @@ $messages['sk'] = array(
 	'createpage-badtitle' => '„$1“ nemožno použiť ako názov stránky',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'createpage' => 'Skapa en sida',
+);
+
 /** Swahili (Kiswahili)
  * @author Malangali
  */

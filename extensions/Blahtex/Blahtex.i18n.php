@@ -1845,10 +1845,12 @@ $messages['pt'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'math_noblahtex' => 'Nu se poate executa blahtex, care ar trebui să fie la $1',
+	'math-desc' => 'Date de ieşire MathML pentru tag-ul &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Amplasare ambiguă pentru "$1" (încercaţi folosirea acoladelor "{ ... }" pentru dezambiguizare)',
 	'math_CannotChangeDirectory' => 'Nu se poate schmba directorul în lucru',
 	'math_CannotCreateTexFile' => 'Nu se poate crea fişierul tex',

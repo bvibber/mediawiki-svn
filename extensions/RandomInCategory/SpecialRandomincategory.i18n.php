@@ -137,6 +137,18 @@ $messages['de'] = array(
 	'randomincategory-submit' => 'OK',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'randomincategory' => 'Pśipadny bok w kategoriji',
+	'randomincategory-desc' => '[[Special:Randomincategory|Specialny bok]], aby se pśipórał pśipadny bok w kategoriji',
+	'randomincategory-toolbox' => 'Pśipadny bok',
+	'randomincategory-nocategory' => 'Kategorija $1 njeeksistěrujo abo jo prozna',
+	'randomincategory-label' => 'Kategorija:',
+	'randomincategory-submit' => 'W pórěźe',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -158,8 +170,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Jatrobat
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'randomincategory-label' => 'Categoría:',
 	'randomincategory-submit' => 'Ir',
 );
 

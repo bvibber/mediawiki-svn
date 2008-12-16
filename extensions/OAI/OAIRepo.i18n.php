@@ -78,6 +78,13 @@ $messages['eo'] = array(
 	'oai-desc' => 'Provizas dosierujan interfacon [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'oai-desc' => 'Provee interfaz con el repositorio [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

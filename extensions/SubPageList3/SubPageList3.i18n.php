@@ -89,6 +89,15 @@ $messages['de'] = array(
 	'spl3_nosubpages' => '$1 hat keine Unterseiten.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'spl3-desc' => 'Napórajo awtomatiski lisćinu pódbokow boka z pomocu toflicki <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Njeznata gódnota za opciju $1.',
+	'spl3_nosubpages' => '$1 njama pódboki za lisćinu.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

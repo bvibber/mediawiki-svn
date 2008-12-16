@@ -77,6 +77,13 @@ $messages['eo'] = array(
 	'breadcrumbs-desc' => 'Montras la vojon de uzanto tra la vikio.',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'breadcrumbs-desc' => 'Muestra el enlace de las últimas páginas que el usuario ha visitado en la wiki',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Nike
@@ -223,6 +230,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'breadcrumbs-desc' => 'Mostra o caminho dos utilizadores através do wiki.',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'breadcrumbs-desc' => 'Fà vedè le percorse de le utinde attraverse le Uicchipèdie.',
 );
 
 /** Russian (Русский)

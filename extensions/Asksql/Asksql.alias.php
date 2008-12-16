@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'Asksql' => array( 'سؤال_إس_كيو_إل' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'Asksql' => array( 'Upitsql' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'Asksql' => array( 'SQL-Abfrage' ),

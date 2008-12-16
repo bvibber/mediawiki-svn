@@ -32,6 +32,11 @@ $aliases['as'] = array(
 	'ChangeAuthor' => array( 'লিখক সলাওঁক' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'ChangeAuthor' => array( 'PromjenaAutora' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'ChangeAuthor' => array( 'Autor ändern' ),

@@ -60,6 +60,13 @@ $messages['br'] = array(
 	'ajax-qp-desc' => "Ouzhpennañ a ra skriptoù AJAX d'ar pajennoù rekediñ evel [[Special:Shortpages|{{int:shortpages}}]]",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'ajax-qp-desc' => 'Dodaje neke AJAX stranice upita poput [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

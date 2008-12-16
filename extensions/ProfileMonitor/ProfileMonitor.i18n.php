@@ -97,6 +97,18 @@ $messages['bg'] = array(
 	'profiling-no-data' => 'Не са открити данни.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'profiling-wildcard' => 'Koristi zamjenski znak',
+	'profiling-ok' => 'U redu',
+	'profiling-data-process' => 'Proces',
+	'profiling-data-count' => 'Brojanje',
+	'profiling-data-time' => 'Vrijeme (sve)',
+	'profiling-data-average' => 'Vrijeme (prosj)',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -278,9 +290,12 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Thearith
  */
 $messages['km'] = array(
 	'profiling-ok' => 'យល់ព្រម',
+	'profiling-data-process' => 'ដំណើរការ',
+	'profiling-data-count' => 'រាប់',
 );
 
 /** Kinaray-a (Kinaray-a)

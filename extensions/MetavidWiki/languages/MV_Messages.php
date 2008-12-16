@@ -1122,6 +1122,8 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'mv_tool_search' => 'Buscar',
 	'mv_edit' => 'Editar',
+	'mv_search_category' => 'Categoría',
+	'mv_category' => 'categoría',
 );
 
 /** French (Français)
@@ -1385,9 +1387,13 @@ $messages['fy'] = array(
 );
 
 /** Irish (Gaeilge)
+ * @author Alison
  * @author Moilleadóir
  */
 $messages['ga'] = array(
+	'mv_path_type_url_anx' => 'dearbh-URL mheáin',
+	'mv_data_page_title' => '$1 le $2 as $3',
+	'mv_time_separator' => '$1 go $2',
 	'mv_search_category' => 'Catagóir',
 	'mv_category' => 'catagóir',
 );

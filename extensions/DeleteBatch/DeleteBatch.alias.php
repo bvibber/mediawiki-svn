@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'DeleteBatch' => array( 'حذف_الباتش' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'DeleteBatch' => array( 'BrisanjeBatch' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'DeleteBatch' => array( 'Supression en série', 'SuppressionEnSérie', 'SuppressionEnSerie' ),

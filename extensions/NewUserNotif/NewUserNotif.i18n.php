@@ -96,6 +96,17 @@ $messages['de'] = array(
 Ein neues Benutzerkonto, $2, wurde am $4 auf $3 angelegt.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'newusernotifsubj' => 'Powěźeńka na nowego wužywarja za $1',
+	'newusernotif-desc' => 'Sćelo e-mailowu powěźeńku, gaž se wužywarske konta napóraju',
+	'newusernotifbody' => 'Halo $1,
+
+Konto nowego wužywarja, $2, jo se załožyło $4 na $3 .',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -127,6 +138,15 @@ $messages['fr'] = array(
 	'newusernotifbody' => 'Bonjour $1,
 
 Un nouveau compte utilisateur, $2, a été créé sur $3 le $4.',
+);
+
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'newusernotifbody' => 'Haigh a $1,
+
+Tá cuntas úsáideora nua, $2, cruthaigh ar $3, $4.',
 );
 
 /** Galician (Galego)

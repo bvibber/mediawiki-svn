@@ -795,6 +795,7 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
 );
 
 /** Telugu (తెలుగు)
+ * @author C.Chandra Kanth Rao
  * @author Veeven
  */
 $messages['te'] = array(
@@ -804,6 +805,8 @@ $messages['te'] = array(
 	'deletebatch-or' => '<b>లేదా</b>',
 	'deletebatch-page' => 'తొలగించాల్సిన పేజీలు',
 	'deletebatch-reason' => 'తొలగింపునకు కారణం',
+	'deletebatch-from-file' => 'ఫైలు నుంచి',
+	'deletebatch-from-form' => 'ఫారం నుంచి',
 );
 
 /** Turkish (Türkçe)

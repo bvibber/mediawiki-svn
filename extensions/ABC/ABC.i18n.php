@@ -51,9 +51,10 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'abcdesc' => 'Дадаецца тэг <tt>&lt;abc&gt;</tt> для музыкальнага фармату ABC',
+	'abcdesc' => 'Дадаецца тэг <tt>&lt;abc&gt;</tt> для музычнага фармату ABC',
 	'abcdownload' => 'Загрузіць:',
 );
 
@@ -85,6 +86,14 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'abcdesc' => 'Pśidawa toflicku <tt>&lt;abc&gt;</tt>, aby se muzika w ABC formatěrowała',
 	'abcdownload' => 'Ześěgnuś:',
+);
+
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'abcdesc' => "Añade la etiqueta <tt>&lt;abc&gt;</tt> para usar la notación musical ''ABC music''",
+	'abcdownload' => 'Descargar:',
 );
 
 /** French (Français)
@@ -144,9 +153,11 @@ $messages['hsb'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'abcdesc' => 'ABC譜の書式を整える <tt>&lt;abc&gt;</tt> タグを追加する',
+	'abcdownload' => 'ダウンロード:',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -176,6 +187,13 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'abcdesc' => "Setzt den <tt>&lt;abc&gt;</tt> Tag fir ''ABC music'' ze formatéieren",
 	'abcdownload' => 'Eroflueden:',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Abhishek Jacob
+ */
+$messages['ml'] = array(
+	'abcdownload' => 'ഡൌൺലോഡ്',
 );
 
 /** Dutch (Nederlands)
@@ -220,6 +238,14 @@ $messages['ro'] = array(
 	'abcdownload' => 'Descarcă:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'abcdesc' => "Aggiunge <tt>&lt;abc&gt;</tt> tag pe formattà 'a musiche de ABC",
+	'abcdownload' => 'Scareche:',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв
@@ -237,6 +263,14 @@ $messages['sk'] = array(
 	'abcdownload' => 'Stiahnuť:',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'abcdesc' => 'Nambah tag <tt>&lt;abc&gt;</tt> pikeun ngaformat musik ABC',
+	'abcdownload' => 'Unduh:',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Najami
@@ -244,6 +278,13 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'abcdesc' => 'Lägger till <tt>&lt;abc&gt;</tt>-taggen för att formatera ABC-musik',
 	'abcdownload' => 'Ladda ner:',
+);
+
+/** Telugu (తెలుగు)
+ * @author C.Chandra Kanth Rao
+ */
+$messages['te'] = array(
+	'abcdownload' => 'డౌన్‌లోడ్',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -475,18 +475,18 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'lookupuser' => 'រកមើល​ព័ត៌មាន​នៃ​អ្នកប្រើប្រាស់',
-	'lookupuser-desc' => '[[Special:LookupUser|ដកស្រង់​ព័ត៌មាន]] អំពី​អ្នកប្រើប្រាស់ ដូចជា អាសយដ្ឋានអ៊ីមែល និង អត្តសញ្ញាណ',
+	'lookupuser-desc' => '[[Special:LookupUser|ដកស្រង់​ព័ត៌មាន]] អំពី​អ្នកប្រើប្រាស់ ដូចជា​អាសយដ្ឋានអ៊ីមែល និង​អត្តសញ្ញាណ',
 	'lookupuser-intro' => 'បញ្ចូល​ឈ្មោះអ្នកប្រើប្រាស់ ដើម្បីមើលចំណូលចិត្តនានា​របស់គាត់ ។',
 	'lookupuser-nonexistent' => 'កំហុស៖ អ្នកប្រើប្រាស់មិនមានទេ',
 	'lookupuser-authenticated' => 'ភាពពិតប្រាកដនៃអ៊ីមែល៖ $1',
 	'lookupuser-not-authenticated' => 'មិនបានស្គាល់ភិនភាគទេ',
 	'lookupuser-id' => 'អត្តសញ្ញាណអ្នកប្រើប្រាស់៖<tt>#$1</tt>',
 	'lookupuser-email' => 'អ៊ីមែល៖[[Special:EmailUser/$2|$1]]',
-	'lookupuser-no-email' => 'មិនត្រូវបានផ្តល់អោយ',
+	'lookupuser-no-email' => 'មិនត្រូវបានផ្តល់ឱ្យ',
 	'lookupuser-realname' => 'ឈ្មោះពិត៖$1',
 	'lookupuser-registration' => 'កាលបរិច្ឆេទចុះឈ្មោះ​៖ $1',
 	'lookupuser-no-registration' => 'មិនបានកត់ត្រាទុកទេ',
-	'lookupuser-touched' => 'រក្សាទុក អ្នកប្រើប្រាស់ ដែលបានប៉ះ ចុងក្រោយ ៖ $1',
+	'lookupuser-touched' => 'រក្សាទុក​អ្នកប្រើប្រាស់ ដែលបានប៉ះ​ចុងក្រោយ​៖ $1',
 	'lookupuser-useroptions' => 'ជម្រើសនៃអ្នកប្រើប្រាស់ ៖',
 );
 

@@ -20,6 +20,13 @@ $messages['dsb'] = array(
 	'formatsearch-desc' => 'Rumujo bok pytańskich wuslědkow',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'formatsearch-desc' => 'Limpia la página de resultados de búsqueda',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Sherbrooke
@@ -110,5 +117,12 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'formatsearch-desc' => 'Vyčistí stránku s výsledkami vyhľadávania',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'formatsearch-desc' => 'Meresihan kaca hasil nyungsi',
 );
 

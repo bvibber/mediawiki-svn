@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'WatchSubpages' => array( 'مراقبة_الصفحات_الفرعية' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'WatchSubpages' => array( 'PratiPodstranice' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'WatchSubpages' => array( 'Unterseiten beobachten' ),

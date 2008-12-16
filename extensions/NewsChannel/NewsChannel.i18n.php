@@ -109,6 +109,19 @@ $messages['de'] = array(
 	'newschannel_submit_button' => 'Feed erstellen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'newschannel' => 'Kanal powěsćow',
+	'newschannel-desc' => 'Implementěrujo kanal powěsćow ako dynamiski [[Special:NewsChannel|specialny bok]]',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Limit:',
+	'newschannel_include_category' => 'Pśidatna kategorija:',
+	'newschannel_exclude_category' => 'Kategorija, kótaraž ma se wuzamknuś:',
+	'newschannel_submit_button' => 'Kanal napóraś',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Mauro Bornet
@@ -122,6 +135,13 @@ $messages['fr'] = array(
 	'newschannel_include_category' => 'Catégorie(s) additionnelle(s):',
 	'newschannel_exclude_category' => 'Catégorie(s) exclue(s):',
 	'newschannel_submit_button' => 'Créer le flux',
+);
+
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'newschannel_format' => 'Formáid:',
 );
 
 /** Galician (Galego)

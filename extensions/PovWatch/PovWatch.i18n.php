@@ -556,8 +556,10 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
+	'povwatch_push' => 'រុញ',
 	'povwatch_title' => 'ចំណងជើង៖',
 	'povwatch_added' => 'បានបន្ថែម',
 );

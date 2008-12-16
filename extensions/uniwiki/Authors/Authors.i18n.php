@@ -98,6 +98,14 @@ $messages['jv'] = array(
 	'authors_anonymous' => 'Tanpa aran (anonim)',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'authors-desc' => 'បន្ថែម​បញ្ជី​អ្នកបរិច្ចាក​​មួយ​ទៅ​ខាងចុង​នៃ​ទំព័រ',
+	'authors_anonymous' => 'អនាមិក',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

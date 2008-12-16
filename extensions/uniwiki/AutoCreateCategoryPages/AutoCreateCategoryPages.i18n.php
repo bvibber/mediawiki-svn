@@ -92,6 +92,15 @@ $messages['hu'] = array(
 	'autocreatecategorypages-desc' => 'Hiányzó kategóriaoldalak automatikus létrehozása a mentés után.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'autocreatecategorypages-stub' => 'នេះ​គឺជា​ទំព័រ​ចំណាត់ថ្នាក់ក្រុម​មួយ​។
+
+វា​មាន​រាយឈ្មោះ​រាល់​ទំព័រ​ទាំងអស់​នៅ​ក្នុង​ចំណាត់ថ្នាក់ក្រុម "$1" ក៏ដូចជា​ចំណាត់ថ្នាក់ក្រុមរង​ទាំងអស់​នៃ​ចំណាត់ថ្នាក់ក្រុម "$1" ប្រសិនបើ​មាន​។',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -707,9 +707,12 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
+	'review_sidebar_title' => 'ពិនិត្យឡើងវិញ',
 	'review_total_statistics' => 'សរុប',
+	'review_statistics_left_corner' => 'ការពិនិត្យឡើងវិញ',
 	'review_user_details_link' => '(លំអិត)',
 	'review_topic' => 'ប្រធានបទ',
 	'review_no_opinion' => 'គ្មានមតិ',

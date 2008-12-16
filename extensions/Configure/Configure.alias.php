@@ -158,6 +158,11 @@ $aliases['km'] = array(
 	'Extensions' => array( 'ផ្នែកបន្ថែម' ),
 );
 
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'ViewConfig' => array( '설정보기' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Configure' => array( 'Wiki Enstellunge', 'Wiki enställe' ),

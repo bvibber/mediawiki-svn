@@ -27,6 +27,13 @@ $messages['dsb'] = array(
 	'mootools12core-desc' => 'Pśidawa mootools-1.2-core-yc.js kuždemu bokoju',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'mootools12core-desc' => 'Añade mootools-1.2-core-yc.js a cada página',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Sherbrooke
@@ -61,6 +68,13 @@ $messages['hsb'] = array(
  */
 $messages['jv'] = array(
 	'mootools12core-desc' => 'Tambahaké mootools-1.2-core-yc.js ing saben kaca',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'mootools12core-desc' => 'បន្ថែម mootools-1.2-core-yc.js ទៅ​ទំព័រ​នីមួយៗ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -123,6 +137,6 @@ $messages['sk'] = array(
  * @author Najami
  */
 $messages['sv'] = array(
-	'mootools12core-desc' => 'Lägger till mootools-1.2-core-yc.js till varje sida',
+	'mootools12core-desc' => 'Lägger till mootools-1.2-core-yc.js på varje sida',
 );
 

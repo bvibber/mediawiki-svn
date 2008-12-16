@@ -119,6 +119,14 @@ $messages['eo'] = array(
 	'categoryonupload-label' => 'Kategorio:',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'categoryonupload-desc' => 'Solicita al usuario que seleccione una categoría cuando sube un archivo',
+	'categoryonupload-label' => 'Categoría:',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
@@ -308,9 +316,11 @@ $messages['pt'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'categoryonupload-desc' => 'Cere utilizatorului să aleagă o categorie atunci când încarcă un fişier',
 	'categoryonupload-label' => 'Categorie:',
 );
 

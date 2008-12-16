@@ -108,6 +108,16 @@ $messages['de'] = array(
 	'piwik-browsers' => 'Browser',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'piwik-desc' => 'Zasajźa skript Piwik do bokow MediaWiki za slědowanje a pśidawa [[Special:Piwik|někotare statistiki]]',
+	'piwik-lastvisits' => 'Slědne woglědy',
+	'piwik-countries' => 'Kraje',
+	'piwik-browsers' => 'Wobglědowaki',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

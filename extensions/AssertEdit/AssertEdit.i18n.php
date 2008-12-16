@@ -104,6 +104,15 @@ $messages['br'] = array(
 	'assert_edit_message' => "C'hwitet eo an enframmadenn ($1) goulennet.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'assert_edit_title' => 'Potvrđivanje nije uspjelo',
+	'assert_edit_desc' => 'Dopunjava zahtjeve za obradu za botove',
+	'assert_edit_message' => 'Određeni zahtjev ($1) nije uspjeo.',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -461,6 +470,15 @@ $messages['ro'] = array(
 	'assert_edit_title' => 'Aserţiune eşuată',
 	'assert_edit_desc' => 'Adaugă aserţiunile de editare pentru uzul roboţilor',
 	'assert_edit_message' => 'Aserţiunea specificată ($1) a eşuat.',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'assert_edit_title' => 'Asserzione fallite',
+	'assert_edit_desc' => 'Aggiunge le cangiaminde de le asserzione pe farle ausà da le bot',
+	'assert_edit_message' => "L'asserzione specifiche ($1) ha fallite.",
 );
 
 /** Russian (Русский)

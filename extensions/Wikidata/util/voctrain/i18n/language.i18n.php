@@ -24,6 +24,7 @@ $fallback=array(
 	'fi'  => 'en',
 	'fr'  => 'en',
 	'fy'  => 'en',
+	'ga'  => 'en',
 	'gl'  => 'en',
 	'hak'  => 'en',
 	'he'  => 'en',
@@ -45,6 +46,7 @@ $fallback=array(
 	'nn'  => 'en',
 	'no'  => 'en',
 	'oc'  => 'en',
+	'os'  => 'en',
 	'pl'  => 'en',
 	'pms' => 'en',
 	'ps'  => 'en',
@@ -865,6 +867,23 @@ $messages['fr'] = array(
  */
 $messages['fy'] = array(
 	'voctrain_User_name' => 'Meidoggernamme',
+);
+
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'voctrain_try_again_' => 'déan iarracht arís?',
+	'voctrain_Languages' => 'Teangacha',
+	'voctrain_Questions' => 'Ceisteanna',
+	'voctrain_Answers' => 'Freagra',
+	'voctrain_ISO_639_3_format' => 'Formáid ISO-639-3',
+	'voctrain_Definition' => 'Sainmhíniú',
+	'voctrain_Word' => 'Focal',
+	'voctrain_Answer' => 'Freagair',
+	'voctrain_one_of' => 'ceann de',
+	'voctrain_Login' => 'Logáil',
+	'voctrain_Log_in' => 'Logáil isteach',
 );
 
 /** Galician (Galego)
@@ -1696,6 +1715,13 @@ $messages['oc'] = array(
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Separar las valors per de virgulas per utilizar mantuna lenga.',
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'voctrain_logout' => 'номсусæг су',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Slomox
  */
@@ -2042,35 +2068,72 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Sannab
  */
 $messages['sv'] = array(
 	'voctrain_Hello_World' => 'HEJ WIKI!',
 	'voctrain_Permission_Denied' => 'Åtkomst nekas',
 	'voctrain_try_again_' => 'pröva igen?',
+	'voctrain_Action_unknown' => 'Okänd handling',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Jag vet inte vad som göras med '%action'.",
 	'voctrain_User_added' => 'Användare tillagd',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Hej %username, välkommen till språktränaren Omega.',
 	'voctrain_continue' => 'fortsätt',
+	'voctrain_hello_place' => 'hejsan %place',
 	'voctrain_bye' => 'hej då',
+	'voctrain_Set_up_your_exercise' => 'Förbered övningen',
 	'voctrain_Number_of_questions' => 'Antal frågor',
 	'voctrain_Languages' => 'Språk',
+	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Ange vilket språk som du vill öva på',
 	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(t.ex., eng för engelska, deu för tyska).',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'Berorende på hur du har specifierat övningsuppsättningen så kommer vissa kombinationer att fungera bättre än andra.',
 	'voctrain_Questions' => 'Frågor',
 	'voctrain_Answers' => 'Svar',
+	'voctrain_start_exercise' => 'börja övningen',
 	'voctrain_collection' => 'samling',
+	'voctrain_ISO_639_3_format' => 'ISO 639-3-format',
+	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => 'Det återstår %questions_remaining av sammanlagt %questions_total frågor.',
+	'voctrain_Definition' => 'Definition',
+	'voctrain_Dictionary_definition_to_help_you' => 'Ordboksdefinition för att hjälpa dig',
 	'voctrain_Word' => 'Ord',
+	'voctrain_Please_type_your_answer_here' => 'Skriv in svaret här',
+	'voctrain_submit_answer' => 'svara',
+	'voctrain_peek' => 'kika',
 	'voctrain_skip' => 'hoppa över',
+	'voctrain_I_know_it_do_not_ask_again' => 'Jag kan det/fråga inte igen',
+	'voctrain_abort_exercise' => 'avbryt övningen',
+	'voctrain_list_answers' => 'visa svar',
 	'voctrain_Question' => 'Fråga',
+	'voctrain_The_word_to_translate' => 'Det ord som skall översättas',
 	'voctrain_Answer' => 'Svar',
 	'voctrain_one_of' => 'en av',
+	'voctrain_list_of_questions_and_answers' => 'lista av frågor och svar',
 	'voctrain_Answer_s_' => 'Svar',
 	'voctrain_logout' => 'logga ut',
+	'voctrain_Omegawiki' => 'Omegawiki',
+	'voctrain_Exercise_complete' => 'Övningen slutförd',
+	'voctrain_Exercise_terminated' => 'Övningen avbruten',
+	'voctrain_Start_a_new_exercise' => 'Börja en ny övning',
 	'voctrain_User_name' => 'Användarnamn',
 	'voctrain_Password' => 'Lösenord',
 	'voctrain_Login' => 'Logga in',
 	'voctrain_Create_new_user' => 'Skapa ny användare',
-	'voctrain_Switch_language' => 'Ändra språk',
+	'voctrain_Switch_language' => 'Byt språk',
 	'voctrain_Language' => 'Språk',
 	'voctrain_Log_in' => 'Logga in',
+	'voctrain_Omegawiki_vocabulary_trainer' => 'Omegawikis glosinlärning',
+	'voctrain_Definitions' => 'Definitioner',
 	'voctrain_Could_not_create_new_user' => 'Kunde inte skapa ny användare',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Skriv in användarnamn och eventuellt lösenord, (eller försök med ett annat användarnamn)',
+	'voctrain_Vocview' => 'Gloslistevisare',
+	'voctrain_Dictionary_definitions' => 'dictionary_definitions',
+	'voctrain_Translation' => 'Översättning',
+	'voctrain_unhide_definition' => 'visa definition',
+	'voctrain_unhide_words' => 'visa ord',
+	'voctrain_hiding' => 'Döljer',
+	'voctrain_hide_definitions_in_question_language' => 'Dölj definitioner i frågespråket',
+	'voctrain_hide_words_in_question_language' => 'Dölj ord i frågespråket',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'För att kunna använda flera språk så sätt ett komma mellan värdena',
 );
 
 /** Telugu (తెలుగు)

@@ -26,6 +26,19 @@ This allows you to use your userpage as an OpenID as well.',
 	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:', # Only translate this if needed.
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'linkopenid-desc' => 'Omogućava korisnicima da povežu svoj račun sa vanjskim OpenID',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Ako imate OpenID od Vašeg vanjskog provajdera možete ga navesti ovdje.
+Ovo Vam omogućava da koristite Vašu korisničku stranicu kao i Vaš OpenID.',
+	'linkopenid-prefstext-openid' => 'Vaš OpenID:',
+	'linkopenid-prefstext-v1url' => 'URL servera za OpenID verziju 1.1:',
+	'linkopenid-prefstext-v2url' => 'URL servera za OpenID verziju 2:',
+);
+
 /** German (Deutsch)
  * @author Michael Holzt <kju@fqdn.org>
  */

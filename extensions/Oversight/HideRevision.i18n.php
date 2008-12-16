@@ -336,6 +336,7 @@ $messages['bcc'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'hiderevision' => 'Схаваць вэрсіі назаўсёды',
@@ -347,13 +348,13 @@ $messages['be-tarask'] = array(
 	'right-hiderevision' => 'Прагляд і аднаўленьне вэрсіяў, схаваных ад адміністратараў',
 	'hiderevision-prompt' => 'Нумар вэрсіі для выдаленьня:',
 	'hiderevision-continue' => 'Працягваць',
-	'hiderevision-text' => "Гэта функцыя можа выкарыстоўвацца '''выключна''' ў наступных выпадках:
+	'hiderevision-text' => "Гэтая функцыя можа выкарыстоўвацца '''выключна''' ў наступных выпадках:
 * Абвяшчэньне асабістай інфармацыі
-*: ''дамашнія адрасы і тэлефонныя нумары, нумар сацыяльнага забесьпячэньня і г.д.''
+*: ''хатнія адрасы і тэлефонныя нумары, нумар сацыяльнага забесьпячэньня і г.д.''
 
 '''Злоўжываньне гэтай функцыяй прывядзе да пазбаўленьня правоў рэвізора.'''
 
-Схаваныя элемэнты ня будуць адлюстроўвацца на старонках сайта, але будуць рэгістравацца і могуць быць адноўлены адміністратарам базы зьвестак, калі Вы выпадкова зробіце памылку.",
+Схаваныя элемэнты ня будуць адлюстроўвацца на старонках сайта, але будуць рэгістравацца і могуць быць адноўленыя адміністратарам базы зьвестак, калі Вы выпадкова зробіце памылку.",
 	'hiderevision-reason' => 'Прычына (будзе запісаная ў закрыты журнал):',
 	'hiderevision-submit' => 'Схаваць гэтыя зьвесткі назаўсёды',
 	'hiderevision-tab' => 'Схаваць гэтую вэрсію',
@@ -365,19 +366,22 @@ $messages['be-tarask'] = array(
 	'hiderevision-error-missing' => 'Ня знойдзена ў базе зьвестак.',
 	'hiderevision-error-current' => 'Немагчыма выдаліць апошнюю вэрсію старонкі.
 Спачатку адкаціце гэтыя зьмены.',
-	'hiderevision-error-delete' => 'Немагчыма заархіваваць; магчыма ужо адбылася выдаленьне?',
+	'hiderevision-error-delete' => 'Немагчыма заархіваваць; магчыма ўжо адбылася выдаленьне?',
 	'hiderevision-archive-status' => 'Выдалена вэрсія старонкі $1: $2',
 	'oversight-nodiff' => 'Немагчыма вызначыць зьмены з-за адсутнасьці папярэдняй вэрсіі старонкі. Магчыма:
 * Старонка была выдалена
 * Схаваная вэрсія была першай',
 	'oversight-log-hiderev' => 'выдаленая вэрсія старонкі $1',
-	'oversight' => 'Журнал схаваных вэрсій',
+	'oversight' => 'Журнал схаваных вэрсіяў',
 	'oversight-view' => 'падрабязнасьці',
-	'oversight-difference' => '(Адрозьненьні з папярэдняй застаўшайся вэрсіяй)',
-	'oversight-prev' => 'Апошняя папярэдняя вэрсіяў',
+	'oversight-difference' => '(Адрозьненьні з папярэдняй пакінутай вэрсіяй)',
+	'oversight-prev' => 'Апошняя папярэдняя вэрсія',
 	'oversight-hidden' => 'Схаваная вэрсія',
-	'oversight-header' => 'Ніжэй знаходзяцца рэдагаваньні, якія былі пастаянна схаваныя ад публічнага прагляду.
-Распаўсюд гэтай інфармацыі можа прывесьці да пазбаўленьня правоў адміністратара.',
+	'oversight-header' => 'Ніжэй пададзены сьпіс вэрсіяў, якія былі нядаўна схаваныя ад публічнага прагляду.
+Распаўсюджаньне гэтай інфармацыі можа прывесьці да пазбаўленьня правоў рэвізора.',
+	'oversight-legend' => 'Пошук вэрсыяў у журнале хаваньняў',
+	'oversight-oversighter' => 'Рэвізор:',
+	'oversight-offender' => 'Парушальнік:',
 );
 
 /** Bulgarian (Български)
@@ -479,20 +483,35 @@ $messages['bs'] = array(
 	'right-hiderevision' => 'Pregledavanje i vraćanje revizija sakrivenih od administratora',
 	'hiderevision-prompt' => 'Broj revizije koja se uklanja:',
 	'hiderevision-continue' => 'Nastavi',
+	'hiderevision-text' => "Ovo bi trebalo koristiti '''samo''' u slijedećim slučajevima:
+* Nepodobni lični podaci
+*: ''kućne adrese, telefonski brojevi, brojevi računa, matični brojevi i sl.''
+
+'''Zloupotreba ovog sistema će uzrokovati gubitak privilegija.'''
+
+Uklonjene stavke neće biti vidljive niko preko web stranice, ali sva brisanja su zapisana i mogu se vratiti ručno od strane administratora baze, ukoliko pogriješite.",
 	'hiderevision-reason' => 'Razlog (biće zapisan u zapisnik):',
 	'hiderevision-submit' => 'Sakrij ove podatke stalno',
 	'hiderevision-tab' => 'Sakrij reviziju',
+	'hiderevision-link' => 'Sakriveni korisnički doprinosi',
 	'hiderevision-norevisions' => 'Nijedna revizija nije odabrana za brisanje.',
 	'hiderevision-noreason' => 'Morate opisati razlog za ovo uklanjanje.',
 	'hiderevision-status' => 'Revizija $1: $2',
 	'hiderevision-success' => 'Uspješno arhivirano i obrisano.',
 	'hiderevision-error-missing' => 'Nije pronađena u bazi podataka.',
+	'hiderevision-error-current' => 'Ne može se obrisati posljednja izmjena stranice.
+Vratite najprije ovu promjenu.',
 	'hiderevision-error-delete' => 'Nije moguće arhivirati, da nije ranije obrisano?',
 	'hiderevision-archive-status' => 'Obrisana revizija od $1: $2',
+	'oversight-log-hiderev' => 'uklonjena izmjena iz $1',
 	'oversight' => 'Nadzor',
 	'oversight-view' => 'detalji',
+	'oversight-difference' => '(Razlika od ranije preostale revizije)',
 	'oversight-prev' => 'Zadnja prethodna revizija',
 	'oversight-hidden' => 'Skrivena revizija',
+	'oversight-legend' => 'Pretraži zapis sakrivanja revizija',
+	'oversight-oversighter' => 'Nadzornik:',
+	'oversight-offender' => 'Napasnik:',
 );
 
 /** Catalan (Català)
@@ -726,6 +745,7 @@ $messages['es'] = array(
 	'hiderevision-continue' => 'Seguir',
 	'hiderevision-submit' => 'Esconder estos datos permanentemente',
 	'hiderevision-tab' => 'Esconder revisión',
+	'hiderevision-link' => 'Contribuciones ocultas de usuario',
 	'hiderevision-norevisions' => 'No se han especificado revisiones para borrar.',
 	'hiderevision-status' => 'Revisión $1: $2',
 	'hiderevision-success' => 'Se archivó y se borró con éxito.',
@@ -1841,7 +1861,7 @@ $messages['lb'] = array(
 Annulléiert dës Ännerung d'éischt.",
 	'hiderevision-error-delete' => "Kann net archivéiert ginn. Gouf d'Säit virdru geläscht?",
 	'hiderevision-archive-status' => 'Geläschte Versioune vun $1: $2',
-	'oversight-nodiff' => "Et as onméiglech d'Ännernungen ze vergläichen well et keng vireg Versioun fir dës Sàit gëtt. Entweder:
+	'oversight-nodiff' => "Et as onméiglech d'Ännernungen ze vergläichen well et keng vireg Versioun fir dës Säit gëtt. Entweder:
 *D'Säit gouf geläscht
 *Dës verstoppte Versioun war déi éischt Versioun",
 	'oversight-log-hiderev' => 'En Ännerung vum $1 geläscht.',
@@ -2183,6 +2203,7 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  */
 $messages['no'] = array(
 	'hiderevision' => 'Fjern revisjoner permanent',
@@ -2204,6 +2225,7 @@ Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men 
 	'hiderevision-reason' => 'Grunn (logges privat):',
 	'hiderevision-submit' => 'Skjul denne informasjonen permanent',
 	'hiderevision-tab' => 'Skjul revisjon',
+	'hiderevision-link' => 'Skjulte brukerbidrag',
 	'hiderevision-norevisions' => 'Ingen revisjoner merket for sletting.',
 	'hiderevision-noreason' => 'Du må angi en grunn for denne slettingen.',
 	'hiderevision-status' => 'Revisjon $1: $2',
@@ -2223,6 +2245,8 @@ Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men 
 	'oversight-hidden' => 'Skjult revisjon',
 	'oversight-header' => 'Nedenfor er en liste over revisjoner som nylig er blitt skjult fra offentligheten. Å frigi denne informasjonen kan føre til permanent tap av revisjonsslettingsrettigheter.',
 	'oversight-legend' => 'Søk i revisjonsferningsloggen',
+	'oversight-oversighter' => 'Revisjonssletter:',
+	'oversight-offender' => 'Synder:',
 );
 
 /** Occitan (Occitan)

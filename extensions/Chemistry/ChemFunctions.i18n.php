@@ -711,6 +711,13 @@ $messages['ro'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: intrare eronată!',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'chemFunctions_Formula' => 'Formule',
+);
+
 /** Russian (Русский)
  * @author Ahonc
  * @author Александр Сигачёв

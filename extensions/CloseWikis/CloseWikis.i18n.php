@@ -314,6 +314,17 @@ $messages['fr'] = array(
 	'right-closewikis' => 'Clôturer les wikis',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'closewikis-page-close-wiki' => 'Vicí:',
+	'closewikis-list-header-wiki' => 'Vicí',
+	'closewikis-list-header-by' => 'Dúnadh le',
+	'closewikis-list-header-timestamp' => 'Dúnadh ar',
+	'closewikis-log-close' => 'dúnta $2',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

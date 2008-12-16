@@ -518,6 +518,13 @@ $messages['fur'] = array(
 	'expand_templates_preview' => 'Anteprime',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'expand_templates_remove_comments' => 'Scrios nótaí tráchta',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

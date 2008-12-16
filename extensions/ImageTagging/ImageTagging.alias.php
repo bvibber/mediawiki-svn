@@ -27,6 +27,11 @@ $aliases['arz'] = array(
 	'ImageTagging' => array( 'وسم_الصور' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'ImageTagging' => array( 'OznacavanjeSlika' ),
+);
+
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
 	'ImageTagging' => array( 'Képcímkézés' ),

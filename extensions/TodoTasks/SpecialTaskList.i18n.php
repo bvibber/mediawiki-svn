@@ -377,7 +377,9 @@ $messages['km'] = array(
 	'tasklistunknownproject' => 'គម្រោង​មិនស្គាល់',
 	'tasklistincorrectuser' => 'ឈ្មោះអ្នកប្រើប្រាស់ មិនត្រឹមត្រូវ',
 	'tasklistemail' => 'ជូនចំពោះ %s',
-	'tasklistmytasks' => 'កិច្ចការ​របស់ខ្ញុំ',
+	'tasklistemailsubject' => '[%s] បំលាស់ប្ដូរ​បញ្ជី​ភារកិច្ច',
+	'tasklistmytasks' => 'ភារកិច្ច​របស់ខ្ញុំ',
+	'tasklistbyprojname' => "បាន​ផ្ដល់តម្លៃ​ភារកិច្ច​នានា​ជា '''%s'''",
 	'tasklistchooseproj' => 'ជ្រើសយក​គម្រោង ៖',
 	'tasklistprojdisp' => 'បង្ហាញ',
 );

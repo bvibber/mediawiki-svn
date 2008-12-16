@@ -148,6 +148,15 @@ $messages['eo'] = array(
 	'block_title_error' => 'Bedaŭrinde, la titolo de ĉi tiu paĝo ne estas permesita esti konservata.',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'block_title_error_page_title' => 'Título bloqueado',
+	'block_title_error-desc' => 'Provee una forma básica de prevenir la creación de páginas con ciertos títulos.',
+	'block_title_error' => 'No se puede guardar esta página porque su título no está permitido.',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Mardetanha

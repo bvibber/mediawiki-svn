@@ -23,6 +23,7 @@ This message is to notify you that at $3 user $4 $5.",
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'categorywatch-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
@@ -34,6 +35,20 @@ $messages['qqq'] = array(
 * $5 is a text describing the change, it is one of {{msg-mw|categorywatch-catmovein}}, {{msg-mw|categorywatch-catmoveout}}, {{msg-mw|categorywatch-catadd}}, or {{msg-mw|categorywatch-catsub}},
 * $6 is the date of the change,
 * $7 is the time of the change.',
+	'categorywatch-catmovein' => 'Substituted as $5 in {{msg-mw|categorywatch-emailbody}}.
+* $1 is a page name
+* $2 is the source category name
+* $3 is the target category name',
+	'categorywatch-catmoveout' => 'Substituted as $5 in {{msg-mw|categorywatch-emailbody}}.
+* $1 is a page name
+* $2 is the source category name
+* $3 is the target category name',
+	'categorywatch-catadd' => 'Substituted as $5 in {{msg-mw|categorywatch-emailbody}}.
+* $1 is a page name
+* $2 is a category name',
+	'categorywatch-catsub' => 'Substituted as $5 in {{msg-mw|categorywatch-emailbody}}.
+* $1 is a page name
+* $2 is a category name',
 );
 
 /** Arabic (العربية)
@@ -96,7 +111,7 @@ Ova poruka služi da Vas obavijesti da je $3 korisnik $4 $5.',
  */
 $messages['dsb'] = array(
 	'categorywatch-desc' => 'Rozšyrja funkcionalnosć woglědowańkow wó zdźělenje wó změnach cłonkojstwa woglědowanych kategorijow',
-	'categorywatch-emailbody' => 'Halo $1, sy dostał toś tu powěsć, dokulaž wobglědujoš kategoriju "$2". Toś ta powěsć ma śi informěrowaś, až pla $3 wužywaŕ $4 $5.',
+	'categorywatch-emailbody' => 'Halo $1, sy dostał toś tu powěsć, dokulaž wobglědujoš kategoriju "$2". Toś ta powěsć ma śi informěrowaś, až $3 wužywaŕ $4 $5.',
 	'categorywatch-emailsubject' => 'Aktiwita inkluziwnje wobglědowaneje kategorije "$1"',
 	'categorywatch-catmovein' => 'jo pśesunuł $1 z $3 do kategorije $2',
 	'categorywatch-catmoveout' => 'jo pśesunuł $1 z kategorije $2 do $3',
@@ -119,11 +134,12 @@ $messages['eo'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Zetud
  */
 $messages['fr'] = array(
 	'categorywatch-desc' => 'Étend la fonctionnalité de la liste de suivi pour inclure la notification des modifications des membres des catégories suivies.',
-	'categorywatch-emailbody' => 'Salut $1, vous avez reçu ce message parce que vous êtes en train de suivre la catégorie « $2 ».
+	'categorywatch-emailbody' => 'Bonjour $1, vous avez reçu ce message parce que vous êtes en train de suivre la catégorie « $2 ».
 Ce message est destiné à vous informer que le $3 l’utilisateur $4 $5.',
 	'categorywatch-emailsubject' => 'Activité comprenant la catégorie suivie « $1 »',
 	'categorywatch-catmovein' => 'a déplacé $1 dans la catégorie $2 depuis $3',
@@ -138,7 +154,7 @@ Ce message est destiné à vous informer que le $3 l’utilisateur $4 $5.',
 $messages['gl'] = array(
 	'categorywatch-desc' => 'Extende unha función da lista de vixilancia para incluír notificación acerca dos cambios no número de membros e as categorías vixiadas',
 	'categorywatch-emailbody' => 'Ola $1, recibiu esta mensaxe porque está a vixiar a categoría chamada "$2".
-Esta mensaxe serve para notificarlle que en $3 o usuario $4 $5.',
+Esta mensaxe serve para notificarlle que o $3 o usuario $4 $5.',
 	'categorywatch-emailsubject' => 'Actividade que envolve a categoría vixiada chamada "$1"',
 	'categorywatch-catmovein' => 'moveu $1 á categoría $2 desde $3',
 	'categorywatch-catmoveout' => 'moveu $1 desde a categoría $2 á $3',
@@ -151,7 +167,7 @@ Esta mensaxe serve para notificarlle que en $3 o usuario $4 $5.',
  */
 $messages['hsb'] = array(
 	'categorywatch-desc' => 'Rozšěrja funkcionalitu wobkedźbowanki wo zdźělenje wo změnach čłonstwa wobkedźbowanych kategorijow',
-	'categorywatch-emailbody' => 'Witaj $1, sy tutu powěsć dóstał, dokelž wobkedźbuješ kategoriju "$2". Tuta powěsć ći zdźěli, zo při $3 wužiwar $4 $5.',
+	'categorywatch-emailbody' => 'Witaj $1, sy tutu powěsć dóstał, dokelž wobkedźbuješ kategoriju "$2". Tuta powěsć ći zdźěli, zo dnja $3 wužiwar $4 $5.',
 	'categorywatch-emailsubject' => 'Aktiwita inkluziwnje wobkedźbowaneje kategorije "$1"',
 	'categorywatch-catmovein' => 'přesuny $1 do kategorije $2 z $3',
 	'categorywatch-catmoveout' => 'přesuny $1 z kategorije $2 do $3',
@@ -194,7 +210,7 @@ $messages['ksh'] = array(
 	'categorywatch-desc' => 'Deit aan de Oppassleß noch aanhange, dat mer övver Änderunge aan de Leß met Sigge en en Saachjrop Bescheid kritt.',
 	'categorywatch-emailbody' => 'Dach $1,
 
-uns Metmaacher "$4" hät aam $3
+aam $6 öm $7 Uhr hät uns Metmaacher "$4"
 $5.
 
 Dat kriss De jesaat, weil De op di Saachjropp "$2" am oppasse bess.
@@ -213,12 +229,12 @@ Ene Jrooss vun der {{SITENAME}}.',
 $messages['lb'] = array(
 	'categorywatch-desc' => "Erweidert d'Fonctionalitéite vun der Iwwerwwaachungslëscht op d'Notifikatioun iwwer déi Säiten déi an der iwwerwaachter Kategorie dr sinn.",
 	'categorywatch-emailbody' => 'Bonjour $1, Dir kritt dëse Message well Dir d\'Kategorie "$2" iwwerwaacht.
-Dëse Message informéiert iech datt ëm $3 de Benotzer $4 $5.',
+Dëse Message informéiert iech datt den $3 Auer de Benotzer $4 $5.',
 	'categorywatch-emailsubject' => 'Aktivitéit an der iwwerwaachter Kategorie "$1"',
-	'categorywatch-catmovein' => "huet $1 an d'Kategorie $2 gesat vun $3",
-	'categorywatch-catmoveout' => "huet $1 aus der Kategorie $2 an d'Kategorie $3 geréckelt",
-	'categorywatch-catadd' => "huet $1 an d'Kategorie $2 derbäigesat",
-	'categorywatch-catsub' => 'huet $1 aus der Kategorie $2 erausgeholl',
+	'categorywatch-catmovein' => "$1 aus der Kategorie $3 an d'Kategorie $2 geréckelt huet",
+	'categorywatch-catmoveout' => "$1 aus der Kategorie $2 an d'Kategorie $3 geréckelt huet",
+	'categorywatch-catadd' => "$1 an d'Kategorie $2 derbäigesat huet",
+	'categorywatch-catsub' => '$1 aus der Kategorie $2 erausgeholl huet',
 );
 
 /** Dutch (Nederlands)
@@ -226,13 +242,16 @@ Dëse Message informéiert iech datt ëm $3 de Benotzer $4 $5.',
  */
 $messages['nl'] = array(
 	'categorywatch-desc' => 'Breidt de functie van de volglijst uit met meldingen over wijzigingen in categorielidmaatschap van categorieën op de volglijst',
-	'categorywatch-emailbody' => 'Hallo $1. U ontvangt dit bericht omdat u categorie "$2" op uw volglijst hebt staan.
-Hierbij ontvangt u de melding dat gebruiker $4 om $3 $5.',
+	'categorywatch-emailbody' => 'Hallo $1.
+
+U ontvangt dit bericht omdat u categorie "$2" op uw volglijst hebt staan.
+
+Hierbij ontvangt u de melding dat gebruiker $4 op $6 om $7 $5.',
 	'categorywatch-emailsubject' => 'Activiteit met betrekking tot categorie "$1" op volglijst',
-	'categorywatch-catmovein' => 'heeft $1 van categorie $3 naar $2 verplaatst',
-	'categorywatch-catmoveout' => 'heeft $1 van categorie $2 naar $3 verplaatst',
-	'categorywatch-catadd' => 'heeft $1 aan categorie $2 toegevoegd',
-	'categorywatch-catsub' => 'heeft $1 uit categorie $2 verwijderd',
+	'categorywatch-catmovein' => '$1 van categorie $3 naar $2 heeft verplaatst',
+	'categorywatch-catmoveout' => '$1 van categorie $2 naar $3 heeft verplaatst',
+	'categorywatch-catadd' => '$1 aan categorie $2 heeft toegevoegd',
+	'categorywatch-catsub' => '$1 uit categorie $2 heeft verwijderd.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -278,13 +297,27 @@ Ta wiadomość ma poinformować, że $3 użytkownik $4 $5.',
 	'categorywatch-catsub' => 'usunął $1 z kategorii $2',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'categorywatch-desc' => "Stinne le funziune d'a liste de le pàggene condrollete pe includere le notifeche sus a le cangiaminde de le membre e sus a le categorije condrollete",
+	'categorywatch-emailbody' => 'Cià $1, tu è ricevute stu mèssagge purcè tu ste condrolle \'a categorije "$2".
+Stu mèssagge avène mannete pe notificà a te ca $3 utende $4 $5.',
+	'categorywatch-emailsubject' => 'L\'attività include \'a categorija condrollete "$1"',
+	'categorywatch-catmovein' => "spustete $1 jndr'à categorije $2 da $3",
+	'categorywatch-catmoveout' => "spueste $1 fore d'a categorije $2 jndr'a $3",
+	'categorywatch-catadd' => "aggiunge $1 jndr'à categorije $2",
+	'categorywatch-catsub' => "live $1 da 'a categorije $2",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'categorywatch-desc' => 'Расширяет функциональность списка наблюдения возможностью уведомлений об изменениях в страницах, входящих в некоторую категорию',
-	'categorywatch-emailbody' => 'Привет $1, вы получили это сообщение, потому что следите за категорией "$2"
+	'categorywatch-emailbody' => 'Привет $1, вы получили это сообщение, потому что следите за категорией «$2»
 Это сообщение уведомляет вас о $3 участника $4 $5.',
 	'categorywatch-emailsubject' => 'Изменения, затрагивающие наблюдаемую категорию «$1»',
 	'categorywatch-catmovein' => 'перенесён $1 в категорию $2 из $3',
@@ -309,6 +342,7 @@ Toto je oznam, že $3 používateľ $4 $5.',
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Najami
  */
 $messages['sv'] = array(
 	'categorywatch-desc' => 'Utökar bevakningslistans funktion för att även meddela om ändringar av innehållet i bevakade kategorier',

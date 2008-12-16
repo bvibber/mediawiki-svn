@@ -697,12 +697,13 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'crossnamespacelinks' => 'Legături între spaţii de nume',
 	'crossnamespacelinks-summary' => 'Această pagină pune la dispoziţie o listă a paginilor din spaţiul de nume principal care se leagă cu pagini din alt spaţiu de nume (excepţie pentru spaţiile de nume {{ns:special}}, {{ns:talk}}, {{ns:project}} şi {{ns:template}}).',
-	'crossnamespacelinkstext' => '$1: $2 se leagă la $3',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|se leagă|se leagă}} la $3',
 );
 
 /** Russian (Русский)

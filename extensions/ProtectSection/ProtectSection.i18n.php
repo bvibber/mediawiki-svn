@@ -77,6 +77,16 @@ $messages['de'] = array(
 	'protectsection_forbidden' => 'Verboten',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'protectsection_desc' => 'Dowólujo awtorizěrowanym wužywarjam šćitaś źěle boka z pomocu toflicki <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'Sy wopytał pśidaś abo wótpóraś šćitany wótrězk',
+	'protectsection_modify' => 'Sy wopytał změniś šćitany tekst.',
+	'protectsection_forbidden' => 'Zakazany',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

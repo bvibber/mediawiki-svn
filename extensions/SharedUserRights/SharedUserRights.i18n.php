@@ -73,6 +73,13 @@ $messages['fr'] = array(
 	'gblrights-rights-entry' => "a modifié l'appartenance globale aux groupes pour $1 de $2 à $3",
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'gblrights-logpage' => 'Log cearta domhanda',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

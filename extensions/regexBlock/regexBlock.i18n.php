@@ -795,6 +795,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'regexblock-form-reason' => '理由:',
+	'regexblock-view-all' => 'すべて',
 );
 
 /** Javanese (Basa Jawa)
@@ -841,7 +842,7 @@ $messages['ka'] = array(
  */
 $messages['km'] = array(
 	'regexblock-unblock-success' => 'បានឈប់ហាមឃាត់ដោយជោគជ័យ',
-	'regexblock-unblock-log' => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាស័យដ្ឋាន IP '''$1''' បានត្រូវ លែងរាំងខ្ទប់។",
+	'regexblock-unblock-log' => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាសយដ្ឋាន IP '''$1''' បានត្រូវ​លែងរាំងខ្ទប់​។",
 	'regexblock-form-username' => 'អាសយដ្ឋានIP ឬឈ្មោះអ្នកប្រើប្រាស់៖',
 	'regexblock-form-reason' => 'មូលហេតុ៖',
 	'regexblock-form-expiry' => 'ផុតកំណត់:',

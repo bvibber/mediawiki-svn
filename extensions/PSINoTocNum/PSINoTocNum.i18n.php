@@ -63,6 +63,13 @@ $messages['eo'] = array(
 	'psinotocnum-desc' => 'Nova magia vorto "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'psinotocnum-desc' => 'Nueva palabra mágica «<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>»',
+);
+
 /** French (Français) */
 $messages['fr'] = array(
 	'psinotocnum-desc' => 'Nouveau mot magique « <nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki> »',

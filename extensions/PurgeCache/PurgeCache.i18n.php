@@ -77,6 +77,17 @@ $messages['de'] = array(
 	'purgecache-button' => 'Löschen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'purgecache' => 'Cache wuprozniś',
+	'purgecache-desc' => '[[Special:PurgeCache|Specialny bok]] wužywany, aby lašował tabelu OBJECTCACHE',
+	'purgecache-warning' => 'To buźo prozniś tabele cacha.',
+	'purgecache-purged' => 'Cache jo se wuproznił.',
+	'purgecache-button' => 'Wuprozniś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -163,10 +174,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Kahusi
  */
 $messages['ja'] = array(
 	'purgecache' => 'キャッシュを削除',
+	'purgecache-desc' => 'OBJECTCACHEテーブルを消去するための[[Special:PurgeCache|特別ページ]]',
 	'purgecache-warning' => 'これはキャッシュテーブルを掃除するものです。',
 	'purgecache-purged' => 'キャッシュは削除されました。',
 	'purgecache-button' => 'キャッシュ削除',

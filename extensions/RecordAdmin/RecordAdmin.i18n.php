@@ -165,15 +165,33 @@ $messages['gl'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
+	'recordadmin' => 'កណត់ត្រា​ការគ្រប់គ្រង',
+	'recordadmin-category' => 'កំណត់ត្រា​នានា',
+	'recordadmin-select' => 'ជ្រើស​ប្រភេទ​នៃ​កំណត់ត្រ​ដើម្បី​ស្វែងរក​សម្រាប់',
+	'recordadmin-newsearch' => 'ថ្មី $1 ស្វែងរក',
+	'recordadmin-newrecord' => 'ជ្រើស​ប្រភេទ​កំណត់ត្រ​មួយ​ផ្សេង​ទៀត',
+	'recordadmin-submit' => 'ដាក់ស្នើ',
+	'recordadmin-create' => 'ស្វែងរក ឬ បង្កើត​កំណត់ត្រា "$1"',
+	'recordadmin-alreadyexist' => 'សូម​អៅ័យទោស, "$1" មាន​រួចហើយ​!',
+	'recordadmin-createsuccess' => '$1 ត្រូវ​បាន​បង្កើត',
+	'recordadmin-createerror' => 'កំហុស​មួយ​បាន​កើតឡើង ខណៈដែល​កំពុង​ព្យាយាម​បង្កើត $1',
+	'recordadmin-badtitle' => 'ចំណងជើង​មិនល្អ',
 	'recordadmin-buttonsearch' => 'ស្វែងរក',
 	'recordadmin-buttoncreate' => 'បង្កើត',
+	'recordadmin-buttonreset' => 'កំណត់ឡើងវិញ',
 	'recordadmin-searchresult' => 'លទ្ធផល​ស្វែងរក',
 	'recordadmin-edit' => 'កំពុង​កែប្រែ​ $1',
+	'recordadmin-updatesuccess' => '$1 ត្រូវ​បាន​ធ្វើឱ្យទាន់សម័យ',
+	'recordadmin-updateerror' => 'កំហុស​មួយ​បាន​កើតឡើង កំលុងពេល​ធ្វើឱ្យទាន់សម័យ',
 	'recordadmin-buttonsave' => 'រក្សាទុក',
+	'recordadmin-summary-typecreated' => 'ថ្មី $1 ត្រូវ​បាន​បង្កើត',
 	'recordadmin-viewlink' => 'មើល',
 	'recordadmin-editlink' => 'កែប្រែ',
+	'recordadmin-created' => 'បាន​បង្កើត',
+	'right-recordadmin' => 'ស្វែងរក និង​កែប្រែ​ទំព័រ​កំណត់ត្រា',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -189,6 +189,13 @@ $messages['pt'] = array(
 	'pnghandler-desc' => 'Redimensiona PNGs usando pngds',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'pnghandler-desc' => 'Redimensionează fişierele PNG folosind pngds',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

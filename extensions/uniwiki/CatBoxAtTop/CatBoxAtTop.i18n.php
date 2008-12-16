@@ -99,6 +99,13 @@ $messages['he'] = array(
 	'catboxattop-categories' => 'קטגוריות',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'catboxattop-categories' => 'ចំណាត់ថ្នាក់ក្រុម​ផ្សេងៗ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

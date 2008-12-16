@@ -28,6 +28,11 @@ $aliases['arz'] = array(
 	'Eval' => array( 'تقييم' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'Eval' => array( 'Ocjenjivanje' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'Eval' => array( 'Auswerten' ),

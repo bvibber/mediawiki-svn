@@ -351,7 +351,18 @@ $messages['jv'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'onlinestatus-js-anon' => 'កំហុស​៖ អ្នក​ត្រូវតែ​ឡុកអ៊ីនចូល ដើម្បី​ប្រើប្រាស់​លក្ខណៈពិសេស​នេះ',
+	'onlinestatus-js-changed' => 'ស្ថានភាព​របស់​អ្នក ត្រូវ​បាន​ប្ដូរទៅ "$1"',
+	'onlinestatus-js-error' => 'មិន​អាច​ផ្លាស់ប្ដូរ​ស្ថានភាព​បាន​ទេ, តម្លៃ "$1" មិនត្រឹមត្រូវ',
+	'onlinestatus-subtitle-offline' => 'អ្នកប្រើប្រាស់​នេះ​កំពុង​ស្ថិតនៅ​ក្រៅបណ្ដាញ',
+	'onlinestatus-subtitle-online' => 'អ្នកប្រើប្រាស់​នេះ​កំពុង​ស្ថិតនៅ​លើបណ្ដាញ',
+	'onlinestatus-tab' => 'ស្ថានភាព',
+	'onlinestatus-toggles-desc' => 'ស្ថានភាព​របស់​អ្នក',
+	'onlinestatus-toggles-show' => 'បង្ហាញ​ស្ថានភាព​លើបណ្ដាញ​នៅ​លើ​ទំព័រ​អ្នកប្រើប្រាស់​របស់​ខ្ញុំ',
+	'onlinestatus-toggle-offline' => 'ក្រៅបណ្ដាញ',
 	'onlinestatus-toggle-online' => 'លើបណ្ដាញ',
+	'tog-onlineOnLogin' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​របស់​ខ្ញុំ​ទៅជា​លើបណ្ដាញ នៅពេល​ឡុកអ៊ីន​(ចូល)',
+	'tog-offlineOnLogout' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​របស់​ខ្ញុំ​ទៅជា​ក្រៅបណ្ដាញ នៅពេល​ចាកចេញ',
 );
 
 /** Ripoarisch (Ripoarisch)

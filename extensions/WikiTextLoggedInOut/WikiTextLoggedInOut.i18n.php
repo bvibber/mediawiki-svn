@@ -67,7 +67,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'wikitextloggedinout-desc' => 'Dous hooks de análise, <tt>&lt;loggedin&gt;</tt> e mais <tt>&lt;loggedout&gt;</tt> para amosar textos diferentes dependendo do estado do rexistro do usuario',
+	'wikitextloggedinout-desc' => 'Dous asociadores de análise, <tt>&lt;loggedin&gt;</tt> e mais <tt>&lt;loggedout&gt;</tt>, para amosar textos diferentes dependendo do estado do rexistro do usuario',
 );
 
 /** Hebrew (עברית)
@@ -103,6 +103,13 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'wikitextloggedinout-desc' => "Due hook del parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt> per mostrare testi differenti a seconda dello stato di login dell'utente",
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'wikitextloggedinout-desc' => '利用者のログイン状態によって異なる文章を表示するための2つのパーサーフック <tt>&lt;loggedin&gt;</tt> と <tt>&lt;loggedout&gt;</tt> を追加します',
 );
 
 /** Javanese (Basa Jawa)
@@ -187,5 +194,12 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'wikitextloggedinout-desc' => 'Två parser hooks, <tt>&lt;loggedin&gt;</tt> och <tt>&lt;loggedout&gt;</tt> för att visa olika text beroende på användarens inloggningsstatus',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'wikitextloggedinout-desc' => 'Дві парсерні „пастки“, <tt>&lt;loggedin&gt;</tt> та <tt>&lt;loggedout&gt;</tt>, які показуються різний текст в залежності від стану авторизації користувача',
 );
 

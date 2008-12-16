@@ -88,8 +88,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Lin linao
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'donationform-desc' => 'Añade la etiqueta <tt>&lt;donateform&gt;</tt> para hacer donaciones a través de PayPal',
 	'donationform-submit' => 'Donar a través de PayPal.',
 );
 

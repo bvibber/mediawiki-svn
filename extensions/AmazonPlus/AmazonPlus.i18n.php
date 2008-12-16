@@ -205,6 +205,19 @@ $messages['nl'] = array(
 	'amazonplus-cp-none' => 'Geen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'amazonplus-used' => 'brukt',
+	'amazonplus-german' => 'Tysk',
+	'amazonplus-french' => 'Fransk',
+	'amazonplus-japanese' => 'Japansk',
+	'amazonplus-new' => 'ny',
+	'amazonplus-none' => 'Ingen kopiar av dette produktet er for sal.',
+	'amazonplus-cp-none' => 'Ingen',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -268,5 +281,20 @@ $messages['sk'] = array(
 	'amazonplus-cp-gbp' => 'GBP',
 	'amazonplus-cp-eur' => 'EUR',
 	'amazonplus-cp-jpy' => 'JPY',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'amazonplus-nores' => 'Salah: Nyamos, teu hasil!',
+	'amazonplus-noidres' => 'Salah: ID produk teu kapanggih!',
+	'amazonplus-fgcerr' => 'Salah: Teu bisa mulut data ti Amazon!',
+	'amazonplus-used' => 'tilas',
+	'amazonplus-german' => 'Basa Jérman',
+	'amazonplus-french' => 'Basa Prancis',
+	'amazonplus-japanese' => 'Basa Jepang',
+	'amazonplus-amazon' => 'harga amazon',
+	'amazonplus-new' => 'anyar',
 );
 

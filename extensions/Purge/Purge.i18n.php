@@ -123,10 +123,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Kahusi
  */
 $messages['ja'] = array(
 	'purge' => 'キャッシュ削除',
+	'purge-desc' => 'すべての通常ページにキャッシュ削除タブを追加し、迅速なキャッシュ削除のために匿名利用者用のキャッシュ削除チェックを回避する',
 );
 
 /** Javanese (Basa Jawa)

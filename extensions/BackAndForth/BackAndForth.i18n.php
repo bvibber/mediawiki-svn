@@ -574,6 +574,15 @@ $messages['pt'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'backforth-next' => 'Prossime ($1)',
+	'backforth-desc' => 'Aggiunge le collegaminde alfabbetece \'u "Prossime" e \'u "Precedende" \'ngape \'a le pàggene',
+	'backforth-prev' => 'Precedende ($1)',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

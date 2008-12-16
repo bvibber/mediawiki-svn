@@ -227,6 +227,7 @@ sfinks|Sfinks',
  * @author CERminator
  */
 $messages['bs'] = array(
+	'vote-results-count' => 'Brojanje',
 	'vote-login-link' => 'prijavi se',
 );
 
@@ -871,9 +872,11 @@ $messages['roa-tara'] = array(
 	'vote' => 'Vote',
 	'vote-header' => "Tu puè vutà pe 'u '''Signore Supreme d'u Munne''' aqquà!",
 	'vote-current' => "'U vote tuje l'è date a '''$1'''.",
+	'vote-caption' => "'A seleziona toje:",
 	'vote-submit' => 'Vote',
 	'vote-view-results' => 'Vide le resultete',
 	'vote-results' => "Resultete d'u vote",
+	'vote-results-choice' => 'Scacchie',
 	'vote-results-count' => 'Cuende',
 	'vote-login-link' => 'tràse',
 );

@@ -220,10 +220,15 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'bookinfo-header' => 'Informacije o knjizi',
+	'bookinfo-desc' => 'Proširuje [[Special:Booksources|posebnu stranicu književnih izvora]] sa podacima sa web servisa',
 	'bookinfo-result-title' => 'Naslov:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Izdavač:',
 	'bookinfo-result-year' => 'Godina:',
+	'bookinfo-error-invalidisbn' => 'Uneseni ISBN broj nije validan.',
+	'bookinfo-error-nosuchitem' => 'Stavka ne postoji ili nije mogla biti pronađena.',
+	'bookinfo-error-noresponse' => 'Nema odgovora ili je istekao rok za odgovor.',
+	'bookinfo-purchase' => 'Kupi ovu knjigu na $1',
 );
 
 /** Catalan (Català)
@@ -914,10 +919,11 @@ $messages['lfn'] = array(
 
 /** Limburgish (Limburgs)
  * @author Ooswesthoesbes
+ * @author Pahles
  */
 $messages['li'] = array(
 	'bookinfo-header' => 'Boke informatie',
-	'bookinfo-desc' => "Oetbreijing veur [[Special:Booksources]] mit informatie van 'ne webservice",
+	'bookinfo-desc' => "Oetbreijing veur [[Special:Booksources|speciaal pazjena Bookinformatie]] mit informatie van 'n webservice",
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Auteur:',
 	'bookinfo-result-publisher' => 'Oetgaever:',
@@ -1369,7 +1375,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'bookinfo-header' => 'పుస్తకపు సమాచారం',
-	'bookinfo-desc' => 'ఏదైనా వెబ్ సేవ నుండి వచ్చిన సమాచారంతో [[Special:Booksources]] ను విస్తరిస్తుంది',
+	'bookinfo-desc' => 'ఏదైనా వెబ్ సేవ నుండి వచ్చిన సమాచారంతో [[Special:Booksources|పుస్తక మూలాల ప్రత్యేక పేజీ]]ని విస్తరిస్తుంది',
 	'bookinfo-result-title' => 'శీర్షిక:',
 	'bookinfo-result-author' => 'రచయిత:',
 	'bookinfo-result-publisher' => 'ప్రచురణకర్త:',
@@ -1429,7 +1435,7 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'bookinfo-header' => 'Інформація про книгу',
-	'bookinfo-desc' => 'Розширює [[Special:Booksources]] відомостями з веб-служб',
+	'bookinfo-desc' => 'Розширює [[Special:Booksources|спеціальну сторінку «Джерела книг»]] відомостями з веб-служб',
 	'bookinfo-result-title' => 'Назва:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Видавництво:',

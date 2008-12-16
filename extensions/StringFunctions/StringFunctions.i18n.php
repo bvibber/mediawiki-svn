@@ -51,6 +51,13 @@ $messages['eo'] = array(
 	'stringfunctions-desc' => 'Plibonigas la sintaksan analizilon kun signoĉenaj funkcioj.',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'stringfunctions-desc' => 'Amplía el analizador sintáctico con funciones de cadena',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -161,6 +168,13 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'stringfunctions-desc' => 'Rozširuje syntaktický analyzátor o funkcie na prácu s reťazcami',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'stringfunctions-desc' => 'Ngaronjatkeun parser ku fungsi string',
 );
 
 /** Swedish (Svenska)

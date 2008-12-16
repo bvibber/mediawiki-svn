@@ -27,6 +27,12 @@ $aliases['arz'] = array(
 	'WhiteListEdit' => array( 'تعديل_القائمة_البيضاء' ),
 );
 
+/** Bosnian (Bosanski) */
+$aliases['bs'] = array(
+	'WhiteList' => array( 'BijeliSpisak' ),
+	'WhiteListEdit' => array( 'UredjivanjeBijelogSpiska' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'WhiteList' => array( 'Weiße Liste' ),

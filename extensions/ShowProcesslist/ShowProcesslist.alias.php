@@ -51,7 +51,7 @@ $aliases['he'] = array(
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'ShowProcesslist' => array( 'Processzlista mutatása', 'Folyamatlista mutatása' ),
+	'ShowProcesslist' => array( 'Folyamatlista mutatása' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

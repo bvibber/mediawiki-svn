@@ -499,7 +499,7 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'multipleupload' => 'ផ្ទុកឡើងឯកសារ',
 	'multipleupload-desc' => 'អនុញ្ញាត​ឱ្យអ្នកប្រើប្រាស់ [[Special:MultipleUpload|ផ្ទុកឡើងម្តង​ច្រើនឯកសារ]]',
-	'multipleupload-ignoreallwarnings' => "មិនខ្វល់ '''គ្រប់ការព្រមាន''' ហើយ រក្សាទុក ឯកសារ ទាំងអស់ ។",
+	'multipleupload-ignoreallwarnings' => "មិនខ្វល់​'''គ្រប់ការព្រមាន''' ហើយ​រក្សាទុក​ឯកសារ​ទាំងអស់​។",
 	'multipleupload-saveallfiles' => 'រក្សាទុកគ្រប់ឯកសារ',
 	'multipleupload-page' => '{{ns:project}}:គោលការណ៍នៃការលុបឯកសារ',
 	'multipleupload-text' => "ផ្ទុកឡើងពហុឯកសារនៅទីនេះ។
@@ -511,7 +511,7 @@ $messages['km'] = array(
 អ្នកអាចបញ្ចូល'''ឈ្មោះឯកសារគោលដៅ''' និងផ្តល់នូវ'''សេចក្តីសង្ខេប'''ដែលពណ៌នាពីឯកសាររបស់អ្នក។
 
 ឯកសារដែលមិនសមគួរនឹងត្រូវលុបចេញភ្លាមៗ សូមមើល[[{{MediaWiki:Multipleupload-page}}|គោលការណ៍នៃការលុបឯកសារ]]។",
-	'multiupload-fileuploaded' => 'ឯកសារ ត្រូវបានផ្ទុកឡើង។',
+	'multiupload-fileuploaded' => 'ឯកសារ​ត្រូវបានផ្ទុកឡើង​។',
 	'multiupload-toolbox' => 'ផ្ទុកឡើងពហុឯកសារ',
 );
 

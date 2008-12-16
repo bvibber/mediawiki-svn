@@ -1216,14 +1216,20 @@ Esistono molti [http://wiki.openid.net/Public_OpenID_providers Provider OpenID p
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'openid-desc' => '[http://openid.net/ OpenID]によるウィキへのログインを可能にし、ウィキユーザーアカウントを他のOpenID対応サイトにログインすることを可能にする。',
 	'openidlogin' => 'OpenIDでログイン',
+	'openidfinish' => 'OpenIDでのログインが完了しました。',
 	'openidserver' => 'OpenID サーバー',
+	'openidconvert' => 'OpenID コンバーター',
 	'openidconfigerror' => 'OpenID設定エラー',
+	'openidpermission' => 'OpenID パーミッション エラー',
+	'openidusernameprefix' => 'OpenIDユーザー',
 	'openidnickname' => 'ニックネーム',
 	'openidemail' => 'Eメールアドレス',
 	'openidlanguage' => '言語',
 	'openidchoosemanual' => '名前を別に設定する:',
 	'openidchoosepassword' => 'パスワード:',
+	'openidloginlabel' => 'OpenID URL',
 );
 
 /** Javanese (Basa Jawa)
@@ -1281,7 +1287,7 @@ $messages['km'] = array(
 	'openidconvertyourstext' => 'វាជាOpenIDរបស់អ្នករួចហើយ។',
 	'openidconvertothertext' => 'វាជាOpenIDរបស់អ្នកដទៃ។',
 	'openidalreadyloggedin' => "'''អ្នកបានឡុកអ៊ីនរួចហើយ $1!'''
-ប្រសិនបើអ្នកចង់់ប្រើ OpenID ដម្បីឡុកអ៊ីននាពេលអនាគត អ្នកអាច[[Special:OpenIDConvert|បម្លែងគណនីរបស់អ្នកដើម្បីប្រើ OpenID]]។",
+ប្រសិនបើអ្នកចង់់ប្រើ OpenID ដើម្បីឡុកអ៊ីននាពេលអនាគត អ្នកអាច[[Special:OpenIDConvert|បម្លែងគណនីរបស់អ្នកដើម្បីប្រើ OpenID]]។",
 	'tog-hideopenid' => 'លាក់<a href="http://openid.net/">OpenID</a>របស់អ្នកនៅលើទំព័រអ្នកប្រើប្រាស់របស់អ្នក ប្រសិនបើអ្នកឡុកអ៊ីនដោយប្រើOpenID។',
 	'openidnousername' => 'មិនមានឈ្មោះអ្នកប្រើប្រាស់បានបញ្ជាក់ទេ។',
 	'openidbadusername' => 'ឈ្មោះមិនត្រឹមត្រូវត្រូវបានបញ្ជាក់',

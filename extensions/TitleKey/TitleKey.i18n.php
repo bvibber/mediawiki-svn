@@ -84,6 +84,13 @@ $messages['eo'] = array(
 	'titlekey-desc' => 'Etendilo por serĉosugestoj laŭ titola prefikso',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'titlekey-desc' => 'Mecanismo para sugerir búsquedas por prefijo de título',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

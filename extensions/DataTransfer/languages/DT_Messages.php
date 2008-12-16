@@ -206,6 +206,25 @@ $messages['de'] = array(
 	'dt_xml_freetext' => 'Freier Text',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'dt-desc' => 'Zmóžnja importěrowanje a eksportěrowanje strukturěrowanych datow w zawołanjach pśedłogow',
+	'viewxml' => 'XML se woglědaś',
+	'dt_viewxml_docu' => 'Pšosym wubjeŕ, kótare slědujucych kategorijow a mjenjowych rumow maju se pokazaś w formaśe XML.',
+	'dt_viewxml_categories' => 'Kategorije',
+	'dt_viewxml_namespaces' => 'Mjenjowe rumy',
+	'dt_viewxml_simplifiedformat' => 'Zjadnorjony format',
+	'dt_xml_namespace' => 'Mjenjowy rum',
+	'dt_xml_page' => 'Bok',
+	'dt_xml_field' => 'Pólo',
+	'dt_xml_name' => 'Mě',
+	'dt_xml_title' => 'Titel',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Lichy tekst',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -269,6 +288,13 @@ $messages['fy'] = array(
 	'dt_viewxml_namespaces' => 'Nammeromten',
 	'dt_xml_page' => 'Side',
 	'dt_xml_name' => 'Namme',
+);
+
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'dt_xml_namespace' => 'Ainmspás',
 );
 
 /** Galician (Galego)

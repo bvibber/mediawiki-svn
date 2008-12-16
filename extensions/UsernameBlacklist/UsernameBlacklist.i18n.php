@@ -269,9 +269,11 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'usernameblacklist-desc' => "Yn ychwanegu [[MediaWiki:Usernameblacklist|rhestr enwau gwaharddedig]] er mwyn cyfyngu ar greu cyfrifon defnyddwyr lle bo'r enw'n cyfateb ag un neu ragor o ymadroddion",
 	'blacklistedusername' => 'Enw gwaharddedig ar gyfer defnyddwyr',
 	'blacklistedusernametext' => "Mae'r enw defnyddiwr y dewisoch ar y [[MediaWiki:Usernameblacklist|rhestr enwau gwaharddedig]].
 Dewiswch enw arall os gwelwch yn dda.",
+	'right-uboverride' => "Anwybyddu'r rhestr enwau gwaharddedig",
 );
 
 /** Danish (Dansk)
@@ -1225,6 +1227,7 @@ $messages['su'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|baris|baris-baris}} dina daptar hideung di handap teu sah; ropéa heula méméh disimpen:',
+	'right-uboverride' => 'Timpah daptar hideung pamaké',
 );
 
 /** Swedish (Svenska)

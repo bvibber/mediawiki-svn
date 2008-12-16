@@ -20,6 +20,13 @@ $messages['bg'] = array(
 	'csshooks-desc' => 'Добавя CSS към HTML-изходния код на страниците са по-добро оформление',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'csshooks-desc' => 'Añade CSS a la salida HTML de las páginas para un mejor estilo',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
@@ -90,5 +97,12 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'csshooks-desc' => 'Pridáva CSS do HTML výstupu stránok na zlepšenie štýlu',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'csshooks-desc' => 'Nambahkeun CSS kana kaluaran HTML ngarah leuwih payus',
 );
 

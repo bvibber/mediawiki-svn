@@ -156,6 +156,13 @@ $messages['fy'] = array(
 	'lua_error_internal' => 'Ynterne fout',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'lua_error' => 'Earráid ar líne $1',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -95,6 +95,11 @@ $aliases['ja'] = array(
 	'Oversight' => array( '秘匿版の閲覧' ),
 );
 
+/** Korean (한국어) */
+$aliases['ko'] = array(
+	'Oversight' => array( '오버사이트' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'HideRevision' => array( 'Versioun verstoppen' ),

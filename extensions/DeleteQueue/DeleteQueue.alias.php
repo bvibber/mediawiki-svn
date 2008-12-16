@@ -29,7 +29,7 @@ $aliases['arz'] = array(
 
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'DeleteQueue' => array( 'ObrisiCekanje' ),
+	'DeleteQueue' => array( 'RedZaBrisanje' ),
 );
 
 /** Finnish (Suomi) */

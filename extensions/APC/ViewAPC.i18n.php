@@ -1697,6 +1697,13 @@ $messages['it'] = array(
 	'viewapc-ls-sort-name' => 'Nome',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'viewapc-ls-limit-none' => 'すべて',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -1799,8 +1806,14 @@ $messages['ka'] = array(
  */
 $messages['km'] = array(
 	'viewapc' => 'ព័ត៌មាន APC',
+	'viewapc-clear-confirm' => 'តើ​អ្នក​ពិតជា​ចង់​សំអាត​ឃ្លាំងសម្ងាត់​មែន​ឬ​?',
+	'viewapc-clear-user-cache' => 'សំអាត​ឃ្លាំងសម្ងាត់​អ្នកប្រើប្រាស់',
+	'viewapc-mode-version-check' => 'ពិនិត្យ​កំណែ',
 	'viewapc-info-general' => 'ព័ត៌មានទូទៅ',
+	'viewapc-apc-version' => 'កំណែ APC',
+	'viewapc-php-version' => 'កំណែ PHP',
 	'viewapc-shared-memory' => 'អង្គចងចាំដែលត្រូវបានប្រើរួមគ្នា',
+	'viewapc-usercache-info' => 'ព័ត៌មាន​ឃ្លាំងសម្ងាត់​អ្នកប្រើប្រាស់',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ឯកសារ|ឯកសារ}} ($2)',
 	'viewapc-rps' => '$1សំណើសុំក្នុងមួយវិនាទី',
 	'viewapc-memory-usage' => 'បម្រើបម្រាស់អង្គចងចាំ',

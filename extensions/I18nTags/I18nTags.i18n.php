@@ -68,6 +68,13 @@ $messages['dsb'] = array(
 	'i18ntags-desc' => 'Pśistup na funkcije i18n za formatěrowanje licbow, gramatiku a plural w kuždej k dispoziciji stojecej rěcy',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'i18ntags-desc' => 'Acceso a las funciones i18n para el formato numérico, gramatical y plurales en cualquier idioma disponible',
+);
+
 /** French (Français) */
 $messages['fr'] = array(
 	'i18ntags-desc' => 'Permet l’accès des fonctions i18n pour le format des nombres, la grammaire et le pluriel dans chaque langue disponible.',

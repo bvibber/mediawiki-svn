@@ -44,6 +44,13 @@ $messages['dsb'] = array(
 	'regexfunctions-desc' => 'Parserowe funkcije za regularne wuraze',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'regexfunctions-desc' => 'Funciones sintácticas de expresiones regulares',
+);
+
 /** French (Français)
  * @author Grondin
  */

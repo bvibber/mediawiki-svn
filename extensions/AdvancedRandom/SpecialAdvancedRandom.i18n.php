@@ -344,6 +344,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'advancedrandom' => 'A uecchie avanzete',
+	'advancedrandom-desc' => "Pigghije 'na pàgene a uecchje da le 'ngazzaminde o 'na pàgena oggette ca colleghe 'a pàgena date, pò essere ausete cumme [[Special:AdvancedRandom/Template:Featured/Talk]] pe pigghjà 'nu dettaglie de 'n'artichele a uecchje o cumme [[Special:AdvancedRandom/Template:GFDL/Image]] pe pigghjà 'nu file GFDL a uecchje",
 );
 
 /** Russian (Русский)

@@ -59,6 +59,13 @@ $messages['eo'] = array(
 	'substall-desc' => 'Kreas etikedon <nowiki><substall></nowiki> kiu etendas ĉiujn ŝablonoj al vikisintakso',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'substall-desc' => 'Crea la etiqueta <nowiki><substall></nowiki> que expande todas las plantillas a sintaxis wiki',
+);
+
 /** French (Français)
  * @author Grondin
  */

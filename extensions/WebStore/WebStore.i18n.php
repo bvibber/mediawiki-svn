@@ -779,12 +779,13 @@ $1',
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'inplace_access_disabled' => 'ការចូលទៅប្រើប្រាស់សេវាកម្មនេះត្រូវបានបិទចំពោះអតិថិជនទាំងអស់។',
 	'inplace_scaler_not_enough_params' => 'ប៉ារ៉ាម៉ែត្រមិនគ្រប់គ្រាន់។',
-	'inplace_scaler_invalid_image' => 'រូបភាពមិនត្រឹមត្រូវ។ មិនអាចកំនត់ទំហំបាន។',
+	'inplace_scaler_invalid_image' => 'រូបភាពមិនត្រឹមត្រូវ។ មិនអាចកំណត់ទំហំបាន។',
 	'inplace_scaler_failed' => 'កំហុស១បានកើតឡើងក្នុងពេលកំពុងវាស់ទំហំរូបភាព៖ $1',
 	'webstore_path_invalid' => 'ឈ្មោះឯកសារមិនត្រឹមត្រូវ។',
 	'webstore_dest_open' => 'មិនអាចបើកឯកសារគោលដៅ "$1"ទេ។',
@@ -795,7 +796,7 @@ $messages['km'] = array(
 	'webstore_rename' => 'កំហុសក្នុងការប្ដូរឈ្មោះឯកសារ "$1" ទៅជា "$2"។',
 	'webstore_dest_exists' => 'កំហុស! ឯកសារគោលដៅ "$1" មានរួចហើយ។',
 	'webstore_temp_open' => 'កំហុសក្នុងការបើកឯកសារបណ្ដោះអាសន្ន "$1"។',
-	'webstore_temp_copy' => 'កំហុសក្នុងការថតចំលងឯកសារបណ្ដោះអាសន្ន "$1" ទៅកាន់ឯកសារគោលដៅ "$2"។',
+	'webstore_temp_copy' => 'កំហុសក្នុងការថតចម្លងឯកសារបណ្ដោះអាសន្ន "$1" ទៅកាន់ឯកសារគោលដៅ "$2"។',
 	'webstore_temp_close' => 'កំហុសក្នុងការបិទឯកសារបណ្ដោះអាសន្ន "$1"។',
 	'webstore_temp_lock' => 'កំហុសក្នុងការចាក់សោឯកសារបណ្ដោះអាសន្ន "$1"។',
 	'webstore_no_file' => 'គ្មានឯកសារ ​បានត្រូវផ្ទុកឡើង ។',
@@ -805,7 +806,7 @@ $messages['km'] = array(
 	'webstore_404' => 'រកមិនឃើញឯកសារទេ។',
 	'webstore_php_warning' => 'ការព្រមាន PHP: $1',
 	'webstore_metadata_not_found' => 'រកមិនឃើញ ឯកសារ ៖ $1',
-	'webstore_no_response' => 'គ្មានចំលើយតប ពី ម៉ាស៊ីនបំរើសេវា',
+	'webstore_no_response' => 'គ្មានចម្លើយតប​ពី​ម៉ាស៊ីនបម្រើសេវា',
 	'webstore_php_error' => 'មានកំហុស PHP:',
 );
 

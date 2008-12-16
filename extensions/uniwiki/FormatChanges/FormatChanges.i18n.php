@@ -101,6 +101,15 @@ $messages['nl'] = array(
 	'formatchanges-editedby' => 'bewerkt door',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'formatchanges-anonymous' => 'Anonym',
+	'formatchanges-createdby' => 'oppretta av',
+	'formatchanges-editedby' => 'endra av',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

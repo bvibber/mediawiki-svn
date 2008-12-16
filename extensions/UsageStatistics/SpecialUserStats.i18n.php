@@ -774,6 +774,17 @@ $messages['mk'] = array(
 	'usagestatisticssubmit' => 'Генерирање на статистики',
 	'usagestatisticsnostart' => '* <font color=red>Специфицирајте почетен датум</font>',
 	'usagestatisticsnoend' => '* <font color=red>Специфицирајте краен датум</font>',
+	'usagestatisticsbadstartend' => '<b>Лош <i>почетен</i> и/или <i>краен</i> датум!</b>',
+	'usagestatisticsintervalday' => 'Ден',
+	'usagestatisticsintervalweek' => 'Седмица',
+	'usagestatisticsintervalmonth' => 'Месец',
+	'usagestatisticsincremental' => 'Инкрементално',
+	'usagestatisticsincremental-text' => 'инкрементално',
+	'usagestatisticscumulative' => 'Кумулативно',
+	'usagestatisticscumulative-text' => 'кумулативно',
+	'usagestatisticscalselect' => 'Избери',
+	'usagestatistics-editindividual' => 'Статистики на уредување за корисник $1',
+	'usagestatistics-editpages' => 'Статистики на страници за корисник $1',
 );
 
 /** Malayalam (മലയാളം)
@@ -1053,9 +1064,14 @@ $messages['roa-tara'] = array(
 	'usagestatistics' => "Statisteche d'use",
 	'usagestatisticsinterval' => 'Intervalle',
 	'usagestatisticstype' => 'Tipe',
+	'usagestatisticssubmit' => 'Ccreje le statisteche',
 	'usagestatisticsintervalday' => 'Sciúrne',
 	'usagestatisticsintervalweek' => 'Sumáne',
 	'usagestatisticsintervalmonth' => 'Mese',
+	'usagestatisticsincremental' => 'Ingremendele',
+	'usagestatisticsincremental-text' => 'ingremendele',
+	'usagestatisticscumulative' => 'Cumulative',
+	'usagestatisticscumulative-text' => 'cumulative',
 	'usagestatistics-editindividual' => "Statisteche sus a le cangiaminde de l'utende $1",
 	'usagestatistics-editpages' => "Statisteche sus a le pàggene de l'utende $1",
 );

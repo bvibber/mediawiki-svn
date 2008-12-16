@@ -138,6 +138,15 @@ $messages['fr'] = array(
 	'nss-db-error' => "Erreur pendant la lecture de la base de données d'authentification",
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'am-username' => 'ainm úsáideoir',
+	'am-email' => 'ríomhphost',
+	'nss-rights' => 'cearta',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -156,6 +165,23 @@ $messages['gl'] = array(
 	'nss-welcome-mail' => 'Unha conta co nome de usuario "$1" e contrasinal "$2" foi creada para vostede.',
 	'nss-welcome-mail-subject' => 'Creación de contas',
 	'nss-db-error' => 'Erro ao ler a base de datos de autenticación',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'accountmanager' => 'អ្នកគ្រប់គ្រង​គណនី',
+	'am-username' => 'ឈ្មោះអ្នកប្រើប្រាស់',
+	'am-email' => 'អ៊ីមែល',
+	'am-active' => 'សកម្ម',
+	'am-updated' => 'បំលាស់ប្ដូរ​របស់​អ្នក ត្រូវ​បាន​រក្សាទុក​ដោយ​ជោគជ័យ​ហើយ',
+	'nss-rights' => 'សិទ្ធិ',
+	'nss-save-changes' => 'រក្សាទុក​បំលាស់ប្ដូរ',
+	'nss-create-account-header' => 'បង្កើត​គណនី​ថ្មី',
+	'nss-create-account' => 'បង្កើត​គណនី',
+	'nss-no-mail' => 'មិន​ផ្ញើ​អ៊ីមែល',
+	'nss-welcome-mail-subject' => 'ការបង្កើត​គណនី',
 );
 
 /** Kinaray-a (Kinaray-a)

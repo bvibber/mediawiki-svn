@@ -72,6 +72,13 @@ $messages['eo'] = array(
 	'googleadsense-desc' => 'Aldonas reklamilon [http://www.google.com/adsense Google AdSense] al la flanka kolumno',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'googleadsense-desc' => 'Añade [http://www.google.com/adsense Google AdSense] a la barra lateral',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
