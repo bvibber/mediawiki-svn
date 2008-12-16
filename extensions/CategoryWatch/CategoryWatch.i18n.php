@@ -26,6 +26,14 @@ This message is to notify you that at $3 user $4 $5.",
  */
 $messages['qqq'] = array(
 	'categorywatch-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'categorywatch-emailbody' => 'This is a tempate for the e-mails sent to the watching user.
+* $1 is the name of the watching user,
+* $2 is the name of the watched category,
+* $3 is combined date and time of the change,
+* $4 is the name of the user having made a change to the category,
+* $5 is a text describing the change, it is one of {{msg-mw|categorywatch-catmovein}}, {{msg-mw|categorywatch-catmoveout}}, {{msg-mw|categorywatch-catadd}}, or {{msg-mw|categorywatch-catsub}},
+* $6 is the date of the change,
+* $7 is the time of the change.',
 );
 
 /** Arabic (العربية)

@@ -124,13 +124,17 @@ class CategoryWatch {
 				$to = new MailAddress($watchingUser);
 				$timecorrection = $watchingUser->getOption('timecorrection');
 				$editdate =	$wgLang->timeanddate(wfTimestampNow(), true, false, $timecorrection);
+				$editdat1 =	$wgLang->date(wfTimestampNow(), true, false, $timecorrection);
+				$edittim2 =	$wgLang->time(wfTimestampNow(), true, false, $timecorrection);
 				$body = wfMsg(
 					'categorywatch-emailbody',
 					$watchingUser->getName(),
 					$page,
 					$editdate,
 					$editor->getName(),
-					$message
+					$message,
+					$editdat1,
+					$edittim2,
 				);
 				if (function_exists('userMailer')) {
 					userMailer(
