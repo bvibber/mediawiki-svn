@@ -16,7 +16,7 @@ $messages['en'] = array(
 	'mp-welcome-upload' => 'Upload',
 	'mp-welcome-edit' => 'Edit',
 	'mp-welcome-points' => '$1 points',
-	'mp-welcome-needed-points' => 'To advance to <b><a href="$1">$2</a></b> earn <i>$3</i> more points!',
+	'mp-welcome-needed-points' => 'To advance to <b><a href="$1">$2</a></b> earn <i>$3</i> more {{PLURAL:$3|point|points}}!',
 	'mp-welcome-logged-in' => 'Hello $1',
 	'mp-requests-title' => 'Requests',
 	'mp-requests-message' => 'You have the following requests.',
