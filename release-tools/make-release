@@ -159,7 +159,7 @@ def export(branch, dir):
 
 def makePatch(patchFileName, dir1, dir2, type):
 	patchFile = open(patchFileName, 'w')
-	args = ['diff', '-ru']
+	args = ['diff', '-Nru']
 	if type == 'i18n':
 		print "Generating i18n patch file..."
 		dir1 += '/languages/messages'
@@ -216,7 +216,7 @@ def makeRelease(version, branch, dir, prevVersion = None, prevBranch = None):
 		makePatch(dir + '/' + package + '.patch.gz', prevDir, package, 'normal')
 		outFiles.append(package + '.patch.gz')
 		haveI18n = False
-		if os.path.exists(dir+'/languages/messages'):
+		if os.path.exists(package+'/languages/messages'):
 			i18nPatch = 'mediawiki-i18n-' + version + '.patch.gz'
 			if (makePatch(dir + '/' +  i18nPatch, prevDir, package, 'i18n')):
 				outFiles.append(i18nPatch)
