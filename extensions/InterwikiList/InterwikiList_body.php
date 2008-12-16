@@ -54,21 +54,16 @@ class InterwikiList extends SpecialPage {
 				Xml::closeElement( 'form' );
 		$text = Xml::fieldSet( wfMsg('interwikilist-filter'), $form );
 
-		$text .= Xml::openElement( 'table', array( 'id' => 'sv-software' ) ) . 
-					Xml::openElement( 'tr' ) .
-						Xml::element( 'th', null, wfMsg( 'interwikilist-linkname' ) ) .
-						Xml::element( 'th', null, wfMsg( 'interwikilist-target' ) ) .
-					Xml::closeElement( 'tr' );;
-
-		while ( $row = $dbr->fetchObject( $results ) ) {                      
-			$text .=	Xml::openElement( 'tr' ) .
-							Xml::element( 'td', null, $row->iw_prefix ) .
-							Xml::element( 'td', null, $row->iw_url ) .
-						Xml::closeElement( 'tr' );
+		$interwikiList = array();
+		while( $row = $dbr->fetchObject( $results ) ) {
+			$interwikiList[ "mw-iwlist-" . $row->iw_prefix ] = array( $row->iw_prefix, $row->iw_url );
 		}
-		$text .= Xml::closeElement( 'table' );
 		$dbr->freeResult( $results );
 
+		$text .= Xml::buildTable( $interwikiList, 
+								 array( 'id' => 'sv-software' ),
+								 array( wfMsg( 'interwikilist-linkname'), 
+										wfMsg( 'interwikilist-target' ) ) );
 		return $text;
 	}
 }
