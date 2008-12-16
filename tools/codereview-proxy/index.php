@@ -5,10 +5,10 @@
 // Subversion server, which is in a separate data center.
 
 ini_set( 'display_errors', false);
-header('Content-type: application/x-json');
+header('Content-type: application/x-php-serialized');
 
 $data = runAction( "http://svn.wikimedia.org/svnroot/mediawiki" );
-echo json_encode( $data );
+echo serialize( $data );
 
 function inputStr( $key, $default=null ) {
 	if( isset( $_GET[$key] ) ) {
