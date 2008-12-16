@@ -81,12 +81,13 @@ function getWelcome(){
 	if( $wgUserLevels ){
 		$output .= "<div class=\"mp-welcome-points\">
 			<div class=\"points-and-level\">
-				<div class=\"total-points\">".wfMsg('mp-welcome-points', $stats_data["points"])."</div>
+				<div class=\"total-points\">".wfMsgExt( 'mp-welcome-points', array( 'parsemag' ), $stats_data["points"] )."</div>
 				<div class=\"honorific-level\"><a href=\"".$level_link->escapeFullURL()."\">({$user_level->getLevelName()})</a></div>
 			</div>
 			<div class=\"cleared\"></div>
 			<div class=\"needed-points\">
-				".wfMsg('mp-welcome-needed-points', $level_link->escapeFullURL(), $user_level->getNextLevelName(), $user_level->getPointsNeededToAdvance())."
+				" . wfMsgExt( 'mp-welcome-needed-points', array( 'parsemag' ), $level_link->escapeFullURL(),
+					$user_level->getNextLevelName(), $user_level->getPointsNeededToAdvance() ) . "
 			</div>
 		</div>";
 	}
