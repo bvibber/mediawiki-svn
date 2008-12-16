@@ -6,6 +6,7 @@
 
 $keywords = Array(
 "Go" => "Artikel", // submit button for article request
+'Image:'	=> 'Bestand:',
 'left'		=> 'left',
 'center'	=> 'center',
 'right'		=> 'right',
