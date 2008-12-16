@@ -315,11 +315,11 @@ class SubversionProxy extends SubversionAdaptor {
 			}
 		}
 		$target = $this->mProxy . '?' . wfArrayToCgi( $params );
-		$json = Http::get( $target, $this->mTimeout );
-		if( $json === false ) {
+		$blob = Http::get( $target, $this->mTimeout );
+		if( $blob === false ) {
 			throw new MWException( "SVN proxy error" );
 		}
-		$data = json_decode( $json, true );
+		$data = unserialize( $blob );
 		return $data;
 	}
 }
