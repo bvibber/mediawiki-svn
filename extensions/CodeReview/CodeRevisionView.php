@@ -205,6 +205,7 @@ class CodeRevisionView extends CodeView {
 	}
 	
 	protected function splitTags( $input ) {
+		if( !$this->mRev ) return array();
 		$tags = array_map( 'trim', explode( ",", $input ) );
 		foreach( $tags as $key => $tag ) {
 			$normal = $this->mRev->normalizeTag( $tag );
