@@ -19,10 +19,6 @@ function semanticGallery_Setup()
 		'descriptionmsg'  => 'semanticgallery-desc',
 	);
 
-	//$wgHooks['LanguageGetMagic'][] = 'semanticGallery_Magic';
-
-	//$wgParser->setFunctionHook('semantic-gallery', 'semanticGallery_Render');
-
 	require_once('SG_ResultPrinter.php');
 
 	// global variable introduced in SMW 1.2.2
@@ -33,19 +29,6 @@ function semanticGallery_Setup()
 		SMWQueryProcessor::$formats['gallery'] = 'SemanticGallery_ResultPrinter';
 }
 
-/*
-function semanticGallery_Magic( &$magicWords, $langCode )
-{
-	$magicWords['semantic-gallery'] = array(0, 'semantic-gallery');
-
-	return true;
-}
-
-function semanticGallery_Render($input, $args, $parser)
-{
-	//return $gallery->toHTML();
-}
-*/
 
 # vim:set tabstop=4 noexpandtab shiftwidth=4:
 ?>
