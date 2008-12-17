@@ -20,12 +20,12 @@ function mv_do_load_wiz(){
 	var body_elm = document.getElementsByTagName("body")[0];
 	body_elm.innerHTML = body_elm.innerHTML + ''+		
 		'<div id="modalbox" style="background:#DDD;border:3px solid #666666;'+
-			'height:90%;left:10%;position:fixed;top:5%;width:80%;z-index:100;">'+
+			'top:30px;left:100px;right:100px;bottom:30px;position:fixed;z-index:100;">'+
 			
 			'loading external media wizard<blink>...</blink>'+
 			
 		'</div>'+		
-		'<div style="background:#000;cursor:wait;height:100%;left:0;position:fixed;'+
+		'<div id="mv_overlay" style="background:#000;cursor:wait;height:100%;left:0;position:fixed;'+
 			'top:0;width:100%;z-index:5;filter:alpha(opacity=60);-moz-opacity: 0.6;'+
 			'opacity: 0.6;"/>';				
 	//inject mv_embed
@@ -45,7 +45,8 @@ function check_for_mv_embed(){
 	}else{
 		mv_do_remote_search({
 			'target_id':'modalbox',
-			'profile':'mediawiki_edit'
+			'profile':'mediawiki_edit',
+			'default_query':wgTitle
 		});
 	}
 }

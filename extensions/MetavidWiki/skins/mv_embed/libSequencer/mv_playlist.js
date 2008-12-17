@@ -113,8 +113,7 @@ mvPlayList.prototype = {
 	//pulls up the video editor inline
 	doEditor:function(){
 		//black out the page: 
-		$j('body').append('<div id="mv_overlay"/> '+
-						'<div id="modalbox" class="modal_editor">');
+		$j('body').append('<div id="modalbox" class="modal_editor">' + '<div id="mv_overlay"/> ');
 						
 		$j('#modalbox').html('loading editor<blink>...</blink>');
 		var _this=this;

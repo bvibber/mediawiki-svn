@@ -120,10 +120,10 @@ gMsg['seek_to'] = 'Seek to';
 //@@todo integrate msg serving into CMS
 function getMsg( key , args ) {
 	 if ( key in gMsg ) {
-	    if(typeof args == 'object'){	 	
+	    if(typeof args == 'object'){	    		 
 		 	for(var v in args){
-		 		gMsg[key] = gMsg[key].replace('/\$'+v+'/', args[v]);
-		 	}
+		 		gMsg[key] = gMsg[key].replace('\$'+v, args[v]);
+		 	}		 	
 	 	}else if(typeof args =='string'){
 	 		gMsg[key] = gMsg[key].replace(/\$1/, args);
 	 	}
@@ -1091,7 +1091,8 @@ function mv_do_remote_search(initObj){
 		mvJsLoader.doLoad({
 			'mvBaseRemoteSearch':'libRemoteMediaSearch/mv_remote_media_search.js'
 		}, function(){
-			var mvrs = new remoteSearchDriver( initObj );
+			initObj['instance_name']= 'rsdMVRS';
+			rsdMVRS = new remoteSearchDriver( initObj );
 		});
 	});
 }
@@ -2961,8 +2962,8 @@ function do_request(req_url, callback){
 		}else{			
 			//get data via DOM injection with callback
 			global_req_cb.push(callback);
-			//prepend json_ to feed_format
-			if(req_url.indexOf("feed_format=")!=-1)
+			//prepend json_ to feed_format if not already requesting json format
+			if( req_url.indexOf("feed_format=")!=-1 &&  req_url.indexOf("feed_format=json")==-1)
 				req_url = req_url.replace(/feed_format=/, 'feed_format=json_');
 													
 			loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));			
@@ -3047,6 +3048,9 @@ function styleSheetPresent(url){
     return false;
 }
 function loadExternalCss(url){
+	if( url.indexOf('?')==-1 ){
+		url+='?'+mv_embed_urid;
+	}
    js_log('load css: ' + url);
    var e = document.createElement("link");
    e.href = url;

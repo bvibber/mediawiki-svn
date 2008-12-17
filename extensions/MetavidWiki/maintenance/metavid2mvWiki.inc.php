@@ -692,7 +692,8 @@ function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force 
 						}
 						$max = 0;
 						$mapk = null;
-						// print_r($point);
+						print_r($matches);
+						die;
 						foreach ( $point as $k => $v ) {
 							if ( $v > $max ) {
 								$mapk = $matches[1][$k];

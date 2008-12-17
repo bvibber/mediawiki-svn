@@ -13,7 +13,7 @@
  * this is the script we will use to migrate the existing metavid db the mv wiki db
  */
 $cur_path = $IP = dirname( __FILE__ );
-// include commandLine.inc from the mediaWiki maintance dir:
+// include commandLine.inc from the mediaWiki maintenance dir:
 require_once ( '../../../maintenance/commandLine.inc' );
 require_once ( 'metavid2mvWiki.inc.php' );
 
