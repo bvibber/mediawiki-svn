@@ -134,7 +134,7 @@ class CategoryWatch {
 					$editor->getName(),
 					$message,
 					$editdat1,
-					$edittim2,
+					$edittim2
 				);
 				if (function_exists('userMailer')) {
 					userMailer(
