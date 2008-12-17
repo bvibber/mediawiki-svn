@@ -801,7 +801,8 @@ class HAW_deck
         
     if (strstr($HTTP_USER_AGENT, "(iPhone") ||
         strstr($HTTP_USER_AGENT, "(iPod") ||
-        strstr($HTTP_USER_AGENT, "(Aspen Simulator"))
+        strstr($HTTP_USER_AGENT, "(Aspen Simulator") ||
+		strstr($HTTP_USER_AGENT, "Android") )
       $this->iPhoneAlike = true;    
     
     if (defined("HAW_TERA_WURFL_PATH") && !$forced_output)
