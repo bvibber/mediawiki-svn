@@ -1911,8 +1911,10 @@ $messages['ja'] = array(
 	'code-authors' => '著者',
 	'code-tags' => 'タグ',
 	'code-field-author' => '著者',
+	'code-field-timestamp' => '日付',
 	'code-field-path' => 'パス',
 	'code-rev-author' => '著者:',
+	'code-rev-date' => '日付:',
 	'code-pathsearch-path' => 'パス:',
 );
 
@@ -2044,10 +2046,19 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'code-rev-date' => '날짜:',
+	'code-rev-repo' => '저장소:',
+	'code-rev-modified-d' => '삭제됨',
+	'code-rev-modified-m' => '수정됨',
+	'code-rev-comment-by' => '$1의 의견',
+	'code-rev-diff' => '차이',
+	'code-pathsearch-path' => '경로:',
+	'codereview-email-subj' => '[$1] [$2판]: 새 의견이 추가되었습니다.',
 	'repoadmin' => '저장소 관리',
 	'repoadmin-new-legend' => '새 저장소 만들기',
 	'repoadmin-new-label' => '저장소 이름:',
 	'repoadmin-new-button' => '생성',
+	'repoadmin-edit-button' => '확인',
 	'specialpages-group-developer' => '개발자 도구',
 );
 
@@ -2794,6 +2805,7 @@ $4',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'code-comments' => 'Commende',
 	'code-change-removed' => 'luete:',
 	'code-change-added' => 'aggiunde:',
 	'code-authors' => 'le autore',
@@ -2823,8 +2835,11 @@ $messages['roa-tara'] = array(
 	'code-rev-comment-preview' => 'Andeprime',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-status-new' => 'nueve',
+	'code-status-fixme' => 'aggiusteme',
 	'code-status-ok' => 'ok',
 	'code-pathsearch-path' => 'Percorse:',
+	'codereview-reply-link' => 'respunne',
 	'codereview-email-body' => 'Utende "$1" ha postete \'nu commende sus a r$3.
 
 \'A URL comblete je: $2
@@ -3625,5 +3640,16 @@ $4',
 $messages['vo'] = array(
 	'code-authors' => 'lautans',
 	'code-rev-author' => 'Lautan:',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'code-comments' => 'הערות',
+	'code-change-removed' => 'אראפגענומען:',
+	'code-change-added' => 'צוגעלייגט:',
+	'code-authors' => 'שרייבערס',
+	'code-field-author' => 'שרייבער',
 );
 

@@ -154,3 +154,10 @@ $messages['sk'] = array(
 	'catboxattop-categories' => 'Kategórie',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'catboxattop-categories' => 'Kategorier',
+);
+

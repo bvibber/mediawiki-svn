@@ -172,6 +172,14 @@ $messages['jv'] = array(
 	'spl3_nosubpages' => '$1 ora nduwé subkaca-subkaca sing bisa dituduhaké.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'spl3_debug' => 'មិន​ត្រូវ​បាន​ស្គាល់​តម្លៃ​សម្រាប់​ជម្រើស $1 ។',
+	'spl3_nosubpages' => '$1 មិនមាន​ទំព័ររង​ក្នុង​បញ្ជី​ទេ​។',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

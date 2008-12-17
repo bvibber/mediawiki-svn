@@ -59,6 +59,14 @@ $messages['dsb'] = array(
 Napóraj wersiju w boku, wósebnje   wužytnu za Wikinowosće.',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'catfeed-desc' => 'Usa partes de sindicaciones de modificaciones recientes.
+Crea versiones para su uso en páginas, especialmente útil para Wikinews.',
+);
+
 /** French (Français)
  * @author McDutchie
  */

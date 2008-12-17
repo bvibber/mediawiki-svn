@@ -506,9 +506,18 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'spamregex-block-success' => 'ហាមឃាត់ដោយជោគជ័យ',
+	'spamregex-block-message' => "ឃ្លា '''$1''' ត្រូវ​បាន​ទប់ស្កាត់​។",
+	'spamregex-warning-1' => 'ផ្ដល់​ឃ្លា​មួយ​ដើម្បី​ទប់ស្កាត់​។',
+	'spamregex-warning-2' => 'សូម​ពិនិត្យ​របៀប​ទប់ស្កាត់​យ៉ាងហោច​មួយ​។',
+	'spamregex-already-blocked' => '"$1" ត្រូវ​បាន​ទប់ស្កាត់​ហើយ',
+	'spamregex-phrase-block' => 'ឃ្លា​​ត្រូវ​ទប់ស្កាត់​៖',
+	'spamregex-phrase-block-text' => 'ទប់ស្កាត់​ឃ្លា​នៅ​ក្នុង​អត្ថបទ​ទំព័រ',
+	'spamregex-phrase-block-summary' => 'ទប់ស្កាត់​ឃ្លា​ជា​សង្ខេប',
+	'spamregex-block-submit' => 'ទប់ស្កាត់&nbsp;ឃ្លា&nbsp;នេះ',
 	'spamregex-text' => '(ឃ្លា)',
 	'spamregex-summary-log' => '(សេចក្តីសង្ខេប)',
 );

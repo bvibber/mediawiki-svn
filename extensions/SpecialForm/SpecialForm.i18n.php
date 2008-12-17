@@ -455,6 +455,7 @@ Tulung diisi.',
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'form-desc' => '[[Special:Form|ទម្រង់​អន្តរមុខ]]មួយ​ដើម្បី​ចាប់ផ្ដើម​ទំព័រ​ថ្មីនានា',
 	'form' => 'សំណុំបែបបទ',
 	'formnoname' => 'គ្មានឈ្មោះសំណុំបែបបទ',
 	'formbadname' => 'ឈ្មោះសំណុំបែបបទមិនល្អ',

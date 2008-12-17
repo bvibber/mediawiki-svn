@@ -297,6 +297,14 @@ $messages['ro'] = array(
 	'nstab-comments' => 'Comentariu',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'commentpages-desc' => "Pàggene de commende p'u namespace prengepàle",
+	'nstab-comments' => 'Commentatore',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

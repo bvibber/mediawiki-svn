@@ -768,6 +768,8 @@ $messages['roa-tara'] = array(
 	'edituser-dosearch' => 'Cirche',
 	'edituser-nouser' => "Stu utende non g'esiste",
 	'edituser-exempt' => 'Stu utende non ge pò essere cangete',
+	'right-edituser' => "Cange le preferenze de l'otre utinde",
+	'right-edituser-exempt' => 'Non ge puè avè le lore preferenze cangiete da otre',
 );
 
 /** Russian (Русский)

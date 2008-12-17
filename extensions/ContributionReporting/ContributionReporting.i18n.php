@@ -827,6 +827,15 @@ $messages['it'] = array(
 	'contribstats-total-ytd' => 'Totale (YTD)',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'contrib-hist-name' => '名前',
+	'contrib-hist-date' => '時刻と日付',
+	'fundraiserstats-date' => '日付',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -871,6 +880,20 @@ $messages['jv'] = array(
 	'fundraiserstats-tab-contributions' => 'Cacahing sumbangan',
 	'fundraiserstats-tab-averages' => 'Rata-rata (USD)',
 	'fundraiserstats-tab-maximums' => 'Paling akèh (USD)',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'contrib-hist-header' => '전세계 기부자들의 실시간 한 마디',
+	'contrib-hist-name' => '이름',
+	'contrib-hist-date' => '날짜와 시각',
+	'contrib-hist-amount' => '금액',
+	'contrib-hist-next' => '이전의 기부',
+	'contrib-hist-previous' => '다음 기부',
+	'contrib-hist-anonymous' => '익명',
+	'contribstats-amount' => '금액 (USD)',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -227,6 +227,13 @@ $messages['it'] = array(
 	'contrib-tracking-button' => 'Continua',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'contrib-tracking-error' => 'エラー',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -238,6 +245,13 @@ $messages['jv'] = array(
 	'contrib-tracking-submitting' => 'Ngirim menyang prosèsor pambayaran...',
 	'contrib-tracking-continue' => 'Yèn panjenengan ora sacara otomatis dialihaké, klik tombol kanggo ngrampungaké sumbangan panjenengan ing Paypal.',
 	'contrib-tracking-button' => 'Terus',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'contrib-tracking-error' => '오류',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -545,10 +545,12 @@ Se hai qualche domanda riguardo al sistema di distribuzione di questa estensione
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Marine-Blue
  */
 $messages['ja'] = array(
 	'extensiondistributor' => 'MediaWiki 拡張機能のダウンロード',
+	'extdist-desc' => '拡張機能のスナップショットのアーカイブを配布するための拡張機能',
 	'extdist-not-configured' => '$wgExtDistTarDirと$wgExtDistWorkingCopyの設定を行ってください',
 	'extdist-wc-missing' => '指定されたコピー用ディレクトリが存在しません!',
 	'extdist-no-such-extension' => '"$1"という拡張機能は存在しません',

@@ -525,12 +525,12 @@ $messages['es'] = array(
 	'whitelistoverview' => '== Resumen de cambios para $1 ==',
 	'whitelistoverviewna' => "* Agregando [[:$1|$1]] a la lista con acceso '''$2''' y fecha de expiración '''$3'''",
 	'whitelistrequest' => 'Solicitar acceso a más páginas',
-	'whitelistrequestmsg' => '$1 solicitó acceso a las páginas siguientes:
+	'whitelistrequestmsg' => '$1 solicitó acceso a {{PLURAL:$3|la siguiente página|las siguientes $3 páginas}}:
 
 $2',
 	'whitelistrequestconf' => 'La solicitud de nuevas páginas fue enviada a $1',
 	'whitelistnever' => 'nunca',
-	'whitelistnummatches' => ' - $1 coincidencias.',
+	'whitelistnummatches' => ' - {{PLURAL:$1|una coincidencia|$1 coincidencias}}.',
 );
 
 /** French (Français)
@@ -959,9 +959,23 @@ $messages['km'] = array(
 	'whitelisttablechangedate' => 'ផ្លាស់ប្តូរកាលបរិច្ឆេទផុតកំណត់',
 	'whitelisttableremove' => 'ដកចេញ',
 	'whitelistnewtabledate' => 'កាលបរិច្ឆេទផុតកំណត់៖',
+	'whitelistnewtableprocess' => 'ដំណើរការ',
+	'whitelistnewtablereview' => 'ពិនិត្យឡើងវិញ',
 	'whitelistpagelist' => 'ទំព័រ{{SITENAME}}សម្រាប់ $1',
 	'whitelistbadtitle' => 'ចំណងជើងមិនត្រឹមត្រូវ -',
+	'whitelistoverviewcd' => "* ប្ដូរ​កាលបរិច្ឆេទ​ទៅ '''$1''' សម្រាប់ [[:$2|$2]]",
+	'whitelistrequestconf' => 'សំណើ​សម្រាប់​ទំព័រ​ថ្មីៗ​ត្រូវ​បាន​ផ្ញើទៅ $1 ហើយ',
+	'whitelistnonrestricted' => "អ្នកប្រើប្រាស់ '''$1'' ពុំមែន​ជា​អ្នកប្រើប្រាស់​ដែលត្រូវបានកម្រិត​ទេ​។
+ទំព័រ​នេះ​អាច​អនុវត្ត​បាន​សម្រាប់​តែ​អ្នកប្រើប្រាស់​ដែលត្រូវបានកម្រិត​ប៉ុណ្ណោះ​។",
 	'whitelistnever' => 'មិនដែល',
+	'right-editwhitelist' => 'កែប្រែ​បញ្ជីស​សម្រាប់​អ្នកប្រើប្រាស់​ដែល​មាន​ស្រាប់',
+	'right-restricttowhitelist' => 'កែប្រែ និង​បង្ហាញ​ទំព័រ​នានា​នៅ​លើ​បញ្ជីស​ប៉ុណ្ណោះ',
+	'action-editwhitelist' => 'កែប្រែ​បញ្ជីស​សម្រាប់​អ្នកប្រើប្រាស់​ដែល​មាន​ស្រាប់',
+	'action-restricttowhitelist' => 'កែប្រែ និង​បង្ហាញ​ទំព័រ​នានា​នៅ​លើ​បញ្ជីស​ប៉ុណ្ណោះ',
+	'group-restricted' => 'អ្នកប្រើប្រាស់​ដែលត្រូវបានកម្រិត​នានា',
+	'group-restricted-member' => 'អ្នកប្រើប្រាស់​ដែលត្រូវបានកម្រិត',
+	'group-manager' => 'អ្នកគ្រប់គ្រង​នានា',
+	'group-manager-member' => 'អ្នកគ្រប់គ្រង',
 );
 
 /** Krio (Krio)

@@ -146,6 +146,13 @@ $messages['it'] = array(
 	'didyoumean-desc' => 'Aggiunge collegamenti a pagine che hanno titoli "simili"',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'didyoumean-desc' => '類似した名前のページへのリンクを追加する',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  * @author គីមស៊្រុន

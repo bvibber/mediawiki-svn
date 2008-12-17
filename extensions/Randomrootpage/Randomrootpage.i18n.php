@@ -54,6 +54,14 @@ $messages['dsb'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Specialny bok]], kótaryž póra pśipadny kórjenjowy bok',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'randomrootpage' => 'Página raíz aleatoria',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Página especial]] que devuelve una página raíz al azar',
+);
+
 /** Persian (فارسی)
  * @author Hojjat (aka Huji)
  */

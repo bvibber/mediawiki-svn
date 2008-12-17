@@ -154,6 +154,7 @@ $messages['sk'] = array(
  * @author Najami
  */
 $messages['sv'] = array(
+	'formatchanges-desc' => 'Omformaterar [[Special:RecentChanges|senaste ändringar]]',
 	'formatchanges-anonymous' => 'Anonym',
 	'formatchanges-createdby' => 'skapad av',
 	'formatchanges-editedby' => 'redigerad av',

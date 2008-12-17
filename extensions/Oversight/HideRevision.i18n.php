@@ -72,6 +72,7 @@ Releasing this information can result in permanent loss of Oversight privileges.
  * @author Aotake
  * @author Darth Kule
  * @author Jon Harald Søby
+ * @author Kwj2772
  * @author Meno25
  */
 $messages['qqq'] = array(
@@ -81,6 +82,7 @@ $messages['qqq'] = array(
 {{Identical|Oversight}}',
 	'right-oversight' => '{{doc-right}}',
 	'right-hiderevision' => '{{doc-right}}',
+	'hiderevision-link' => 'Used in [[Special:Contributions]], only visible to Oversight.',
 	'hiderevision-error-current' => '{{Identical|Delete}}
 {{Identical|Revert}}',
 	'oversight' => 'Oversight extension. The name of the page [[Special:Oversight]], used in the list of special pages and at the top of Special:Oversight.
@@ -1767,8 +1769,13 @@ $messages['ko'] = array(
 	'right-oversight' => '이전에 숨겨진 판을 보기',
 	'right-hiderevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
 	'hiderevision-prompt' => '제거할 판의 번호:',
+	'hiderevision-continue' => '계속',
+	'hiderevision-tab' => '이 판을 숨기기',
+	'hiderevision-link' => '숨겨진 사용자 기여',
 	'hiderevision-norevisions' => '삭제할 판이 제시되지 않았습니다.',
+	'hiderevision-status' => '$1판: $2',
 	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',
+	'oversight' => '오버사이트',
 	'oversight-hidden' => '숨겨진 판',
 	'oversight-offender' => '편집자:',
 );
@@ -3120,6 +3127,13 @@ $messages['vo'] = array(
 	'oversight-log-hiderev' => 'emoükon redakami se $1',
 	'oversight-view' => 'pats',
 	'oversight-hidden' => 'Fomam peklänedöl',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'hiderevision-status' => 'רעוויזיע $1: $2',
 );
 
 /** Yue (粵語)

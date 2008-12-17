@@ -405,6 +405,7 @@ $messages['hak'] = array(
  */
 $messages['haw'] = array(
 	'importusers-log-summary-all' => 'Apau',
+	'importusers-password' => 'ʻōlelo hūnā',
 );
 
 /** Hebrew (עברית)

@@ -228,7 +228,15 @@ $messages['jv'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'smoothgallery' => 'វិចិត្រសាលរាបស្មើ',
+	'smoothgallery-desc' => 'អនុញ្ញាត​ឱ្យ​បង្កើត​វិចិត្រសាល​ជាមួយ​រូបភាព​ដែល​បាន​ផ្ទុកឡើង​។ <br> អនុញ្ញាត​ជម្រើស​ភាគច្រើន​នៃ​វិចិត្រសាលរាបស្មើ​',
+	'smoothgallery-title' => 'វិចិត្រសាលរាបស្មើ',
+	'smoothgallery-smoothgallerytitle' => 'វិចិត្រសាលរាបស្មើ​',
+	'smoothgallery-error' => 'កំហុស​វិចិត្រសាលរាបស្មើ​​៖',
 	'smoothgallery-gallery-not-found' => 'មិនមានវិចិត្រសាលដែលត្រូវបានស្នើ​។',
+	'smoothgallery-not-found' => 'មិនមាន​រូបភាព​ត្រូវ​បាន​បន្ថែម​ទៅ​ក្នុង​វិចិត្រសាល​ទេ​។ 
+
+សូម​បន្ថែម​រូបភាព​យ៉ាងហោច​មួយ​។',
 	'smoothgallery-javascript-disabled' => 'តម្រូវឱ្យមាន Javascript ដើម្បី​មើលបានល្អ​វិចិត្រសាលនេះ​។',
 );
 

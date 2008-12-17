@@ -83,6 +83,23 @@ $messages['bg'] = array(
 	'minipreview-no_category_gallery' => 'Няма категории или галерии!',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'minipreview-desc' => 'MiniPreview zwobraznjujo pódla wobraza małe pśeglědy drugich medijow w samskich kategorijach, abo kótarež zwobraznjuju su na samskich bokach',
+	'minipreview-files_in_category' => "Dogromady '''$1''' {{PLURAL:$1|dataja|dataji|dataje|datajow}} w toś tej kategoriji.",
+	'minipreview-files_in_gallery' => "Dogromady '''$1''' {{PLURAL:$1|dataja|dataji|dataje|datajow}} w toś tej galeriji.",
+	'minipreview-no_more_files_here' => 'Žedne dalšne dataje w toś tom směrje.',
+	'minipreview-no_category_gallery' => 'Žedne kategorije abo galerije!',
+	'minipreview-ignore_categories' => 'Slědujo lisćina kategorijowych mjenjow abo zachopjeńkow mjenjow. Toś te kategorije njezwobrazniju se pśez MiniPreview. Na pśikład "*PD-" njezwobraznijo wše kategorije, kótarež zachopiju se z "PD-", kaž na pś. "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

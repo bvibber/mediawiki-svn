@@ -25,7 +25,7 @@ $aliases['bs'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'ContributionHistory' => array( 'Byytreeg Gschicht' ),
-	'ContributionStatistics' => array( 'Byytreeg Statitschtik' ),
+	'ContributionStatistics' => array( 'Byytreeg Statischtik' ),
 	'ContributionTotal' => array( 'Byytreeg Insgsamt' ),
 );
 

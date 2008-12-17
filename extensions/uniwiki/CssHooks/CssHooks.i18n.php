@@ -106,3 +106,10 @@ $messages['su'] = array(
 	'csshooks-desc' => 'Nambahkeun CSS kana kaluaran HTML ngarah leuwih payus',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'csshooks-desc' => 'Lägger till CSS till en sidas HTML för bättre utseende',
+);
+

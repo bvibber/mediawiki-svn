@@ -70,8 +70,11 @@ $messages['ca'] = array(
 	'protectsection_forbidden' => 'Prohibit',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Metalhead64
+ */
 $messages['de'] = array(
+	'protectsection_desc' => 'Erlaubt berechtigten Benutzern, Teile einer Seite anhand des <tt>&lt;protect&gt;</tt>-Tags zu schützen.',
 	'protectsection_add_remove' => 'Du hast versucht, einen geschützten Abschnitt hinzuzufügen oder zu entfernen.',
 	'protectsection_modify' => 'Du hast versucht, einen geschützten Text zu bearbeiten.',
 	'protectsection_forbidden' => 'Verboten',

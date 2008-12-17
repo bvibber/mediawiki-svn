@@ -119,6 +119,13 @@ $messages['pt'] = array(
 	'mootools12core-desc' => 'Adiciona mootools-1.2-core-yc.js a todas as páginas',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mootools12core-desc' => "Aggiunge 'nu mootools-1.2-core-yc.js a ogne pàgene",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

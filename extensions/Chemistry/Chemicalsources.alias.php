@@ -39,7 +39,7 @@ $aliases['bs'] = array(
 
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'ChemicalSources' => array( 'Chemischi Quälle' ),
+	'ChemicalSources' => array( 'ChemicalSources' ),
 );
 
 /** Hungarian (Magyar) */

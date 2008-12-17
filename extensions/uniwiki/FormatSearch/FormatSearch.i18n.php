@@ -126,3 +126,10 @@ $messages['su'] = array(
 	'formatsearch-desc' => 'Meresihan kaca hasil nyungsi',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'formatsearch-desc' => 'Rensar upp sökresultatssidan',
+);
+

@@ -516,13 +516,16 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
+	'passwordreset' => 'កំណត់​ពាក្យសំងាត់​សាឡើងវិញ',
 	'passwordreset-invalidusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ គ្មានសុពលភាព',
 	'passwordreset-emptyusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ ទទេ',
 	'passwordreset-username' => 'ឈ្មោះអ្នកប្រើប្រាស់៖',
 	'passwordreset-newpass' => 'ពាក្យសំងាត់​ថ្មី៖',
 	'passwordreset-confirmpass' => 'បញ្ជាក់​ទទួល​ស្គាល់​ពាក្យសំងាត់៖',
+	'passwordreset-submit' => 'កំណត់​ពាក្យសំងាត់​សាឡើងវិញ',
 );
 
 /** Korean (한국어)

@@ -324,6 +324,14 @@ $messages['ro'] = array(
 	'categoryonupload-label' => 'Categorie:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'categoryonupload-desc' => "Fà scacchià 'na categorije a l'utende quanne ste careche 'nu file",
+	'categoryonupload-label' => 'Categorije:',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

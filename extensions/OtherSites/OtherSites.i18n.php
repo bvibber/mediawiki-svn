@@ -82,6 +82,14 @@ $messages['eo'] = array(
 	'othersites-desc' => 'Movas intervikiajn ligilojn krom lingvaj ligiloj en propra kadro',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'othersites' => 'Otros sitios',
+	'othersites-desc' => 'Mueve los enlaces interwiki que no sean de idioma a una caja separada',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Zetud

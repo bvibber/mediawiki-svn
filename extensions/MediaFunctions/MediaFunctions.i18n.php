@@ -183,9 +183,10 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Thearith
  */
 $messages['km'] = array(
-	'mediafunctions-invalid-title' => '"$1" មិនជា ចំណងជើង មានសុពលភាព',
+	'mediafunctions-invalid-title' => '"$1" មិនមែន​ជា​ចំណងជើង​មានសុពលភាព',
 	'mediafunctions-not-exist' => '"$1" មិនមាន',
 );
 

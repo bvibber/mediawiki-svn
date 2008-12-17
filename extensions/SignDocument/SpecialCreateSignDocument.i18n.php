@@ -536,16 +536,21 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'createsigndoc-pagename' => 'ទំព័រ៖',
 	'createsigndoc-email' => 'អាសយដ្ឋានអ៊ីមែល៖',
-	'createsigndoc-address' => 'អាស័យដ្ឋាន ផ្ទះ ៖',
+	'createsigndoc-address' => 'អាសយដ្ឋាន​ផ្ទះ​៖',
+	'createsigndoc-extaddress' => 'ទីក្រុង, រដ្ឋ, ប្រទេស​៖',
 	'createsigndoc-phone' => 'លេខទូរស័ព្ទ៖',
-	'createsigndoc-bday' => 'ថ្ងៃខែឆ្នាំកំនើត៖',
+	'createsigndoc-bday' => 'ថ្ងៃ​ខែ​ឆ្នាំកំណើត​៖',
 	'createsigndoc-introtext' => 'សេចក្តីណែនាំ៖',
 	'createsigndoc-hidden' => 'ត្រូវបានបិទបាំង',
+	'createsigndoc-optional' => 'តាម​ចំណង់ចំណូលចិត្ត',
 	'createsigndoc-create' => 'បង្កើត',
+	'createsigndoc-error-generic' => 'កំហុស​៖ $1',
+	'createsigndoc-error-pagenoexist' => 'កំហុស​៖ មិនមាន​ទំព័រ [[$1]] ទេ​។',
 );
 
 /** Korean (한국어)

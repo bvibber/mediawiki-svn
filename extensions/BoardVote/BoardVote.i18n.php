@@ -1712,12 +1712,12 @@ La versión cifrada resultante se encuentra a continuación. Se [[Special:Boardv
 [[Special:Boardvote/entry|Volver]]',
 	'boardvote_invalidentered' => '<p><strong>Error</strong>: la preferencia hacia un candidato debe expresarse como un entero positivo (1, 2, 3, ....), o dejarse en blanco.</p>',
 	'boardvote_nosession' => 'Tu identificador de usuario Wikimedia no pudo ser determinado.
-Por favor, conéctate en el wiki en el que calificas para votar, y pulsa <nowiki>[[Special:Boardvote]]</nowiki>.
-Debes usar otra cuenta con un mínimo de $1 {{PLURAL:$1|modificación|modificaciones}} antes del $2, y haber hecho al menos $3 {{PLURAL:$3|modificación|modificaciones}} entre $4 y $5.',
+Por favor, conéctate en un wiki en el que tengas calificación suficiente para votar, y pulsa <nowiki>[[Special:Boardvote]]</nowiki>.
+Debes usar una cuenta con un mínimo de $1 {{PLURAL:$1|modificación|modificaciones}} antes del $2, y haber hecho al menos $3 {{PLURAL:$3|modificación|modificaciones}} entre el $4 y el $5.',
 	'boardvote_notloggedin' => 'No has iniciado sesión.
-Para votar, necesitas tener {PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber hecho por lo menos {PLURAL:$3|una edición|$3 ediciones}} entre el $4 y el $5.',
+Para votar, necesitas tener {{PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber hecho por lo menos {{PLURAL:$3|una edición|$3 ediciones}} entre el $4 y el $5.',
 	'boardvote_notqualified' => 'No cumples con los requisitos para votar en esta elección.
-Necesitas tener {PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber hecho por lo menos {PLURAL:$3|una edición|$3 ediciones}} entre el $4 y el $5.',
+Necesitas tener {{PLURAL:$1|una edición|$1 ediciones}} antes del $2, y haber hecho por lo menos {{PLURAL:$3|una edición|$3 ediciones}} entre el $4 y el $5.',
 	'boardvote_novotes' => 'Nadie ha votado todavía.',
 	'boardvote_time' => 'Tiempo',
 	'boardvote_user' => 'Usuario',
@@ -3583,6 +3583,12 @@ $messages['ko'] = array(
 * [[Special:Boardvote/dump|암호화된 선거 기록의 덤프]]',
 	'boardvote_novotes' => '아무도 아직 투표하지 않았습니다.',
 	'boardvote_time' => '시간',
+	'boardvote_edits' => '편집',
+	'boardvote_dumplink' => '이곳을 클릭하세요.',
+	'boardvote_submit' => '확인',
+	'boardvote_strike' => '무효 처리',
+	'boardvote_unstrike' => '무효 처리 해제',
+	'boardvote_needadmin' => '선거 관리자만이 이 기능을 사용할 수 있습니다.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">위키미디어 이사회 선거</a>:
 선거는 6월 22일까지 열립니다.',
 	'boardvote_notstarted' => '선거가 아직 시작되지 않았습니다.',

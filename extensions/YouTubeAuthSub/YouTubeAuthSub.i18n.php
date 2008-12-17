@@ -173,6 +173,7 @@ $messages['bcc'] = array(
  */
 $messages['be-tarask'] = array(
 	'youtubeauthsub' => 'Загрузка відэафайла YouTube',
+	'youtubeauthsub-desc' => 'Дазваляе ўдзельнікам [[Special:YouTubeAuthSub|загружаць відэа]] непасрэдна на YouTube',
 	'youtubeauthsub_category' => 'Катэгорыя',
 );
 

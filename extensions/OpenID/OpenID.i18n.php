@@ -726,6 +726,14 @@ $messages['gv'] = array(
 	'openidchoosepassword' => 'fockle yn arrey:',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'openidlanguage' => 'ʻŌlelo',
+	'openidchoosepassword' => 'ʻōlelo hūnā:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -1269,6 +1277,7 @@ $messages['km'] = array(
 	'openidcancel' => 'ការផ្ទៀងផ្ទាត់​ត្រូវបានលុបចោល',
 	'openidfailure' => 'ការផ្ទៀងផ្ទាត់បរាជ័យ',
 	'openidsuccess' => 'ផ្ទៀងផ្ទាត់ដោយជោគជ័យ',
+	'openidtrustinstructions' => 'ចូរ​ពិនិត្យ ប្រសិនបើ​អ្នក​ចង់​ចែករំលែក​ទិន្នន័យ​ជាមួយ $1​។',
 	'openidoptional' => 'ជាជម្រើស',
 	'openidrequired' => 'ត្រូវការជាចាំបាច់',
 	'openidnickname' => 'ឈ្មោះហៅក្រៅ',
@@ -1415,6 +1424,18 @@ $messages['lb'] = array(
 Wann net, da verich et mam Knäppche "Weider"',
 	'openidclientonlytext' => 'Dir kënnt keng Benotzerkonten aus dëser Wiki als OpendIDen op anere Site benotzen.',
 	'openidloginlabel' => 'URL vun der OpenID',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'openiderror' => 'Tikrinimo klaida',
+	'openidnickname' => 'Slapyvardis',
+	'openidfullname' => 'Pilnas vardas',
+	'openidemail' => 'El. pašto adresas',
+	'openidlanguage' => 'Kalba',
+	'openidchoosepassword' => 'slaptažodis:',
 );
 
 /** Eastern Mari (Олык Марий)

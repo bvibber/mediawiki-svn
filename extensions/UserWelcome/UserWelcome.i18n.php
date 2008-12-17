@@ -104,7 +104,7 @@ $messages['bs'] = array(
 	'mp-welcome-upload' => 'Postavljanje',
 	'mp-welcome-edit' => 'Izmjena',
 	'mp-welcome-points' => '$1 bodova',
-	'mp-welcome-needed-points' => 'Da bi ste napredovali do <b><a href="$1">$2</a></b> trebate još <i>$3</i> bodova!',
+	'mp-welcome-needed-points' => 'Da bi ste napredovali do <b><a href="$1">$2</a></b> trebate još {{PLURAL:$3|$3 bod|$3 boda|$3 bodova}}!',
 	'mp-welcome-logged-in' => 'Zdravo $1',
 	'mp-requests-title' => 'Zahtjevi',
 	'mp-requests-message' => 'Imate slijedeće zahtjeve.',
@@ -310,10 +310,13 @@ $messages['jv'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'mp-userlevels-link' => 'កម្រិត​អ្នកប្រើប្រាស់',
 	'mp-welcome-upload' => 'ផ្ទុកឯកសារឡើង',
 	'mp-welcome-edit' => 'កែប្រែ',
+	'mp-welcome-points' => '$1 ពិន្ទុ',
 	'mp-welcome-logged-in' => 'សួរស្តី $1',
 	'mp-requests-title' => 'សំណើ',
+	'mp-requests-message' => 'អ្នក​មាន​សំណើ​ដូចខាងក្រោម​។',
 	'mp-request-new-message' => 'សារថ្មី',
 	'mp-request-new-award' => 'រង្វាន់ថ្មីចំនួន$1',
 	'mp-request-new-gift' => '{{PLURAL:$1|អំណោយ|អំណោយ}}ថ្មីចំនួន$1',

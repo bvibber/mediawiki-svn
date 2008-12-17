@@ -1463,6 +1463,7 @@ $wdMessages['hak'] = array(
 $wdMessages['haw'] = array(
 	'ow_history' => 'Mo‘olelo',
 	'ow_dm_OK' => 'Hiki nō',
+	'ow_Language' => 'ʻŌlelo',
 );
 
 /** Hebrew (עברית)
@@ -2228,6 +2229,7 @@ $wdMessages['km'] = array(
 	'ow_ClassAttributeType' => 'ប្រភេទ',
 	'ow_ClassMembership' => 'ថ្នាក់​សមាជិកភាព',
 	'ow_Collection' => 'ការប្រមូលផ្តុំ',
+	'ow_CollectionMembership' => 'ការប្រមូលផ្តុំសមាជិកភាព',
 	'ow_Definition' => 'និយមន័យ',
 	'ow_DefinedMeaningAttributes' => 'ចំណារពន្យល់',
 	'ow_DefinedMeaning' => 'ន័យដែលបានកំណត់',

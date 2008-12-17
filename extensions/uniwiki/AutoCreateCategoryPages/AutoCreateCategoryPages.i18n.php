@@ -33,6 +33,17 @@ Es listet alle Seiten in der Kategorie „$1“ sowie alle Unterkategorien der K
 	'autocreatecategorypages-createdby' => 'Automatisch von der AutoCreateCategoryPages-Erweiterung erstellt.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'autocreatecategorypages-desc' => 'Felujuce kategorijowe boki pśi składowanju awtomatiski napóraś',
+	'autocreatecategorypages-stub' => 'To jo kategorijowy bok.
+Nalistujo wšykne boki w kategoriji "$1" a wšykne pódkategorije kategorije "$1", joli take eksistěruju.',
+	'autocreatecategorypages-createdby' => 'Pśez rozšyrjenje AutoCreateCategoryPages awtomatiski napórany.',
+	'autocreatecategorypages-editor' => 'Awtomatiske napóranje kategorijow',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

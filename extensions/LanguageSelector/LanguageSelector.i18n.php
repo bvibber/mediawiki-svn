@@ -231,6 +231,13 @@ $messages['gv'] = array(
 	'languageselector-setlang' => 'soiaghey',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'languageselector' => 'ʻŌlelo',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

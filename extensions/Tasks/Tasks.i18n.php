@@ -733,6 +733,7 @@ $messages['km'] = array(
 	'tasks_event_on_creation' => 'ពិនិត្យ',
 	'tasks_event_on_creation_anon' => 'ពិនិត្យ',
 	'tasks_link_your_assignments' => 'បើក​កិច្ចការ​នានា',
+	'tasks_my_assignments' => 'កិច្ចការ​បច្ចុប្បន្ន​របស់​អ្នក',
 	'tasks_table_header_page' => 'ទំព័រ',
 	'tasks_search_form_title' => 'ស្វែងរក',
 	'tasks_search_tasks' => 'ភារកិច្ច​នានា',

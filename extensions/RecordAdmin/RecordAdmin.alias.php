@@ -17,7 +17,7 @@ $aliases['fr'] = array(
 
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'RecordAdmin' => array( 'Ammamm yytrage' ),
+	'RecordAdmin' => array( 'Ammann yytrage' ),
 );
 
 /** Dutch (Nederlands) */

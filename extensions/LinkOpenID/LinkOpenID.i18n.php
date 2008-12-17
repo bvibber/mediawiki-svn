@@ -103,6 +103,19 @@ $messages['hsb'] = array(
 	'linkopenid-prefstext-v2url' => 'Serwerowy URL za OpenID wersiju 2:',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'linkopenid-desc' => '利用者がアカウントを外部のOpenIDと関連付けられるようにする',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'あなたが外部プロバイダからのOpenIDをもっているならば、ここでそれを指定できます。
+その指定によって、あなたの利用者ページを同様にOpenIDとして使えます。',
+	'linkopenid-prefstext-openid' => 'あなたのOpenID:',
+	'linkopenid-prefstext-v1url' => 'OpenID バージョン1.1用の Server-URL:',
+	'linkopenid-prefstext-v2url' => 'OpenID バージョン2用の Server-URL:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

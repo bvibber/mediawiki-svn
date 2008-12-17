@@ -681,6 +681,7 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
@@ -688,7 +689,7 @@ $messages['km'] = array(
 	'usagestatistics' => 'ស្ថិតិ​នៃ​ការប្រើប្រាស់',
 	'usagestatistics-desc' => 'បង្ហាញ​ស្ថិតិ​អ្នកប្រើប្រាស់​ជាឯកត្តៈបុគ្គល និង ការប្រើប្រាស់វិគីទាំងមូល',
 	'usagestatisticsfor' => '<h2>ស្ថិតិ​នៃ​ការប្រើប្រាស់​របស់ [[User:$1|$1]]</h2>',
-	'usagestatisticsforallusers' => '<h2>ស្ថិតិប្រើប្រាស់សំរាប់គ្រប់អ្នកប្រើប្រាស់ទាំងអស់</h2>',
+	'usagestatisticsforallusers' => '<h2>ស្ថិតិប្រើប្រាស់សម្រាប់គ្រប់អ្នកប្រើប្រាស់ទាំងអស់</h2>',
 	'usagestatisticsinterval' => 'ចន្លោះ',
 	'usagestatisticstype' => 'ប្រភេទ',
 	'usagestatisticsstart' => 'កាលបរិច្ឆេទចាប់ផ្តើម',

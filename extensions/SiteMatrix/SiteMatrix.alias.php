@@ -57,7 +57,7 @@ $aliases['fi'] = array(
 
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'SiteMatrix' => array( 'Lischt vu dr Wikimedia-Wiki' ),
+	'SiteMatrix' => array( 'Lischt vu dr Wikimedia-Wikis' ),
 );
 
 /** Hebrew (עברית)

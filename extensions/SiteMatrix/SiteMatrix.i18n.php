@@ -567,6 +567,14 @@ $messages['gv'] = array(
 	'sitematrix-sitetotal' => 'Yn clane',
 );
 
+/** Hawaiian (Hawai`i)
+ * @author Kalani
+ */
+$messages['haw'] = array(
+	'sitematrix' => 'Papa o ko Wikimedia mau wiki',
+	'sitematrix-language' => 'ʻŌlelo',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  */

@@ -353,6 +353,8 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'whatismyip' => "Qual è l'IP mije",
+	'whatismyip-desc' => "Fà vedè l'IP de le utinde de mo sus 'a [[Special:WhatIsMyIP]]",
 	'whatismyip-out' => "L'IP tue:",
 );
 

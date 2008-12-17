@@ -57,6 +57,13 @@ $messages['bcc'] = array(
 	'oai-desc' => 'پیش آریت دست رسی منبع په [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'oai-desc' => 'Omogućuje interfejs [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] repozitorijuma',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

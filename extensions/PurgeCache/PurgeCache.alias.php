@@ -54,6 +54,11 @@ $aliases['id'] = array(
 	'PurgeCache' => array( 'Pembersihan tembolok' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'PurgeCache' => array( 'キャッシュ削除' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'PurgeCache' => array( 'Cache eidel maachen' ),

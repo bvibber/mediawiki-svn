@@ -187,10 +187,11 @@ $messages['eo'] = array(
  * @author Fluence
  * @author Icvav
  * @author Muro de Aguas
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'crossnamespacelinks' => 'Enlaces entre diferentes espacios de nombres',
-	'crossnamespacelinks-desc' => 'Produce una [[Especial:CrossNamespaceLinks|lista de enlaces entre espacios de nombres]] que no deberían existir en {{SITENAME}}.',
+	'crossnamespacelinks-desc' => 'Produce una [[Special:CrossNamespaceLinks|lista de enlaces entre espacios de nombres]] que no deberían existir en {{SITENAME}}.',
 	'crossnamespacelinks-summary' => 'Ésta página proporciona una lista de enlaces desde una página en el espacio de nombres principal hacia una página en otros espacios de nombres (excepto para los espacios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}), los cuales no son aconsejables.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|enlace a página|enlaces a páginas}} de $3',
 );

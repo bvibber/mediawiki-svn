@@ -460,3 +460,10 @@ Bạn không thể tạo trang này, nhưng bạn có thể [{{fullurl:{{FULLPAG
 <createbox>break=no</createbox>",
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'createbox-create' => 'שאַפֿן',
+);
+

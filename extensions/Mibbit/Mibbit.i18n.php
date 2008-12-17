@@ -138,6 +138,19 @@ Wenn Sie angemeldet sind, wird Ihr Nickname automatisch vorbelegt.
 Anonymen Benutzern wird ein Nickname zugewiesen, dieser kann jedoch geändert werden.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'mibbit' => 'Chat Mibbit',
+	'mibbit-desc' => 'Pśidawa [[Special:Mibbit|Specialny bok]] za chattowanje z drugimi wužywarjami w realnem casu',
+	'mibbit-header' => 'Toś ten specialny bok śi zmóžnja z drugimi wužywarjami wikija w realnem casu sobu źěłaś.
+Aby zwězał, klikni jadnorje na tłocašk "Connect".
+Jolic sy se pśizjawił, buźo se twójo pśimě awtomatiski pokazowaś.
+Anonymne wužywarje dostanu awtomatiski pśimě pśipokazane, ale dajo se změniś.',
+	'right-mibbit' => 'Smějo chat Mibbit wužywaś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -206,6 +219,18 @@ Za spajanje jednostavni pritisnite "Connect" tipku.
 Ako ste prijavljeni vaš nadimak će biti automatski upisan.
 Neprijavljeni suradnici dobiju automatski generirano ime, ali ono može biti promijenjeno.',
 	'right-mibbit' => 'Mogućnost korištenja Mibbit chat-a',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'mibbit' => 'Chat Mibbit',
+	'mibbit-desc' => 'Přidawa [[Special:Mibbit|specialnu stronu]] za chattowanje z druhimi wikijowymi wužiwarjemi w realnym času',
+	'mibbit-header' => 'Tuta specialna strona ći zmóžnja w realnym času z druhimi wužiwarjemi wikija sobu dźěłać. Zo by zwjazał, klikń prosće na tłóčatko "Connect".
+Jeli sy so přizjewił, budźe so twoje přimjeno awtomatisce pokazować.
+Anonymni wužiwarjo awtomatisce dóstanu přimjeno připokazane, ale te da so změnić.',
+	'right-mibbit' => 'Smě chat Mibbit wužiwać',
 );
 
 /** Hungarian (Magyar)

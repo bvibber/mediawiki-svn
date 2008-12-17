@@ -73,6 +73,22 @@ Möchtest Du die existierende Seite bearbeiten?',
 	'createpage_editexisting' => 'Ja - Ich möchte die existierende Seite bearbeiten.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'createpage' => 'Bok napóraś',
+	'createpage-desc' => 'Pśidawa [[Special:CreatePage|specialny bok]] za napóranje nowych bokow',
+	'createpage_submitbutton' => 'Pósłaś',
+	'createpage_instructions' => 'Zapódaj titel boka, kótaryž coš napóraś:',
+	'createpage_entertitle' => 'Pšosym zapódaj titel za swój bok.',
+	'createpage_titleexists' => 'Bok z titelom [[$1]] južo eksistěrujo.
+By ty rady eksistěrujucy bok wobźěłaś?',
+	'createpage_tryagain' => 'Ně. Ja by rad nowy bok z drugim titelom napórał.',
+	'createpage_editexisting' => 'Jo. Ja by rad eksistěrujucy bok wobźěłał.',
+	'createpage-badtitle' => '"$1" njedajo se ako titel boka wužywaś.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -148,6 +164,22 @@ $messages['he'] = array(
 	'createpage_tryagain' => 'לא, אלא ליצור דף חדש בשם נפרד.',
 	'createpage_editexisting' => 'כן, לתרום לדף הקיים.',
 	'createpage-badtitle' => 'לא ניתן להשתמש ב"$1" ככותרת לדף',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'createpage' => 'Stronu wutworić',
+	'createpage-desc' => 'Přidawa [[Special:CreatePage|specialnu stronu]] za wutworjenje nowych stronow',
+	'createpage_submitbutton' => 'Pósłać',
+	'createpage_instructions' => 'Zapodaj titul strony, kotruž chceš wutworić:',
+	'createpage_entertitle' => 'Prošu zapodaj titul za swoju stronu.',
+	'createpage_titleexists' => 'Strona z titulom [[$1]] hižo eksistuje.
+By rady eksistowacu stronu wobdźěłał?',
+	'createpage_tryagain' => 'Ně. Bych rady nowu stronu z druhim titulom wutworił.',
+	'createpage_editexisting' => 'Haj. Bych rady eksistowacu stronu wobďzěłał.',
+	'createpage-badtitle' => '"$1" njeda so jako titul strony wužiwać.',
 );
 
 /** Javanese (Basa Jawa)

@@ -498,6 +498,15 @@ $messages['ro'] = array(
 	'block_title_error' => 'Ne pare rău, nu este permisă salvarea titlului acestui articol.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'block_title_error_page_title' => 'Titele blocchete',
+	'block_title_error-desc' => "Provvede a 'nu mode terra-terre de bloccà le pàggene cu certe titele ca onne essere reggistrete o ccrejete",
+	'block_title_error' => "Ne dispiace, 'u titele de sta vosce non ge pò essere reggistrete.",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

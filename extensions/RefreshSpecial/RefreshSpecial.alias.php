@@ -36,7 +36,7 @@ $aliases['fi'] = array(
 
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'RefreshSpecial' => array( 'Spezial erneijere' ),
+	'RefreshSpecial' => array( 'RefreshSpecial' ),
 );
 
 /** Hungarian (Magyar) */

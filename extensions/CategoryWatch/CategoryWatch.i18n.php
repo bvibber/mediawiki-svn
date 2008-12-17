@@ -98,12 +98,12 @@ $messages['bg'] = array(
 $messages['bs'] = array(
 	'categorywatch-desc' => 'Proširena funkcionalnost spiska praćenja da se uključe obavijesti o promjena u članstvu praćenih kategorija',
 	'categorywatch-emailbody' => 'Zdravo $1, dobili ste ovu poruku jer ste pratili "$2" kategoriju.
-Ova poruka služi da Vas obavijesti da je $3 korisnik $4 $5.',
+Ova poruka služi da Vas obavijesti da je dana $3 korisnik $4 $5.',
 	'categorywatch-emailsubject' => 'Aktivnosti koje uključuju praćenje kategorije "$1"',
-	'categorywatch-catmovein' => 'premješteno $1 u kategoriju $2 iz $3',
-	'categorywatch-catmoveout' => 'premješteno $1 iz kategorije $2 u $3',
-	'categorywatch-catadd' => 'dodano $1 u kategoriju $2',
-	'categorywatch-catsub' => 'uklonjeno $1 iz kategorije $2',
+	'categorywatch-catmovein' => 'ubacio $1 u kategoriju $2 iz $3',
+	'categorywatch-catmoveout' => 'premjestio $1 iz kategorije $2 u $3',
+	'categorywatch-catadd' => 'dodao $1 u kategoriju $2',
+	'categorywatch-catsub' => 'uklonio $1 iz kategorije $2',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -303,7 +303,7 @@ Ta wiadomość ma poinformować, że $3 użytkownik $4 $5.',
 $messages['roa-tara'] = array(
 	'categorywatch-desc' => "Stinne le funziune d'a liste de le pàggene condrollete pe includere le notifeche sus a le cangiaminde de le membre e sus a le categorije condrollete",
 	'categorywatch-emailbody' => 'Cià $1, tu è ricevute stu mèssagge purcè tu ste condrolle \'a categorije "$2".
-Stu mèssagge avène mannete pe notificà a te ca $3 utende $4 $5.',
+Stu mèssagge avène mannete pe notificà a te ca \'u $3 l\'utende $4 $5.',
 	'categorywatch-emailsubject' => 'L\'attività include \'a categorija condrollete "$1"',
 	'categorywatch-catmovein' => "spustete $1 jndr'à categorije $2 da $3",
 	'categorywatch-catmoveout' => "spueste $1 fore d'a categorije $2 jndr'a $3",

@@ -1015,7 +1015,7 @@ $messages['es'] = array(
 	'configure-btn-save' => 'Guardar configuraciones',
 	'configure-directory-not-writable' => 'El directorio usado para guardar las configuraciones <tt>$1</tt>, está protegido contra escritura.
 Por favor cambie los permisos para que PHP pueda escribir si quiere usar esta extensión.',
-	'configure-edit-old' => 'Advertencia: estás editando una versión <strong>antigua</strong> de la configuración.',
+	'configure-edit-old' => "'''Advertencia''': estás editando una versión <strong>antigua</strong> de la configuración (del $1).",
 	'configure-error' => 'La configuración no pudo ser guardada',
 	'configure-js-add' => 'Agregar una nueva entrada',
 	'configure-js-group-exists' => 'Error: el grupo ya existe',

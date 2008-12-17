@@ -784,9 +784,11 @@ $1',
  */
 $messages['km'] = array(
 	'inplace_access_disabled' => 'ការចូលទៅប្រើប្រាស់សេវាកម្មនេះត្រូវបានបិទចំពោះអតិថិជនទាំងអស់។',
+	'inplace_access_denied' => 'សេវា​នេះ​មិន​ត្រូវ​បាន​កម្រិត​ដោយ​ម៉ាស៊ីនភ្ញៀវ IP ទេ​។',
 	'inplace_scaler_not_enough_params' => 'ប៉ារ៉ាម៉ែត្រមិនគ្រប់គ្រាន់។',
 	'inplace_scaler_invalid_image' => 'រូបភាពមិនត្រឹមត្រូវ។ មិនអាចកំណត់ទំហំបាន។',
 	'inplace_scaler_failed' => 'កំហុស១បានកើតឡើងក្នុងពេលកំពុងវាស់ទំហំរូបភាព៖ $1',
+	'webstore_access' => 'សេវា​នេះ​មិន​ត្រូវ​បាន​កម្រិត​ដោយ​ម៉ាស៊ីនភ្ញៀវ IP ទេ​។',
 	'webstore_path_invalid' => 'ឈ្មោះឯកសារមិនត្រឹមត្រូវ។',
 	'webstore_dest_open' => 'មិនអាចបើកឯកសារគោលដៅ "$1"ទេ។',
 	'webstore_archive_mkdir' => 'មិនអាច បង្កើត បញ្ជី បណ្ណសារ "$1" ។',
@@ -794,6 +796,8 @@ $messages['km'] = array(
 	'webstore_src_close' => 'កំហុសក្នុងការបិទឯកសារប្រភព "$1" ។',
 	'webstore_src_delete' => 'កំហុសក្នុងការលុបចោលឯកសារប្រភព "$1" ។',
 	'webstore_rename' => 'កំហុសក្នុងការប្ដូរឈ្មោះឯកសារ "$1" ទៅជា "$2"។',
+	'webstore_lock_open' => 'កំហុស​ក្នុង​ការបើកសោ​ឯកសារ "$1" ។',
+	'webstore_lock_close' => 'កំហុស​ក្នុង​ការចាក់សោ​ឯកសារ "$1" ។',
 	'webstore_dest_exists' => 'កំហុស! ឯកសារគោលដៅ "$1" មានរួចហើយ។',
 	'webstore_temp_open' => 'កំហុសក្នុងការបើកឯកសារបណ្ដោះអាសន្ន "$1"។',
 	'webstore_temp_copy' => 'កំហុសក្នុងការថតចម្លងឯកសារបណ្ដោះអាសន្ន "$1" ទៅកាន់ឯកសារគោលដៅ "$2"។',
@@ -806,7 +810,13 @@ $messages['km'] = array(
 	'webstore_404' => 'រកមិនឃើញឯកសារទេ។',
 	'webstore_php_warning' => 'ការព្រមាន PHP: $1',
 	'webstore_metadata_not_found' => 'រកមិនឃើញ ឯកសារ ៖ $1',
+	'webstore_invalid_response' => 'កំហុស​ឆ្លើយតប​ពី​ម៉ាស៊ីនបម្រើសេវា​៖
+
+$1',
 	'webstore_no_response' => 'គ្មានចម្លើយតប​ពី​ម៉ាស៊ីនបម្រើសេវា',
+	'webstore_backend_error' => 'កំហុស​ពី​ឧបករណ៍ផ្ទុក​នៃ​ម៉ាស៊ីនបម្រើសេវា​៖
+
+$1',
 	'webstore_php_error' => 'មានកំហុស PHP:',
 );
 

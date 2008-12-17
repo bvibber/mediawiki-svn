@@ -318,6 +318,7 @@ $messages['ka'] = array(
 $messages['km'] = array(
 	'showprocesslist-user' => 'អ្នកប្រើប្រាស់',
 	'showprocesslist-time' => 'ពេលវេលា',
+	'showprocesslist-state' => 'រដ្ឋ',
 	'showprocesslist-info' => 'ព័ត៌មាន',
 );
 

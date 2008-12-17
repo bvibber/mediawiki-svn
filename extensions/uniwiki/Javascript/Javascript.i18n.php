@@ -91,3 +91,10 @@ $messages['sk'] = array(
 	'javascript-desc' => 'Pridáva uniwiki.js na každú stránku obsahujúci JavaScriptový kód spoločný pre rozšírenia Uniwiki',
 );
 
+/** Swedish (Svenska)
+ * @author Najami
+ */
+$messages['sv'] = array(
+	'javascript-desc' => 'Lägger till uniwiki.js på varje sida som innehåller JavaScript som delas mellan Uniwiki-tilläggen',
+);
+
