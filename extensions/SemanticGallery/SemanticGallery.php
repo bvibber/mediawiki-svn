@@ -7,19 +7,19 @@ $wgExtensionFunctions[] = 'semanticGallery_Setup';
 
 function semanticGallery_Setup()
 {
-	global $wgParser, $wgHooks;
+	global $wgExtensionCredits, $wgAutoloadClasses;
 
 	// credits
 	$wgExtensionCredits['parserhook'][] = array(
 		'name'            => 'Semantic Gallery',
-		'version'         => '0.1.1',
+		'version'         => '0.3.1',
 		'author'          => array( 'Rowan Rodrik van der Molen' ),
 		'url'             => 'http://www.mediawiki.org/wiki/Extension:Semantic_Gallery',
 		'description'     => 'Adds a gallery output format to SMW inline queries',
 		'descriptionmsg'  => 'semanticgallery-desc',
 	);
 
-	require_once('SG_ResultPrinter.php');
+	$wgAutoloadClasses['SemanticGallery_ResultPrinter'] = dirname(__FILE__).'/SG_ResultPrinter.php';
 
 	// global variable introduced in SMW 1.2.2
 	global $smwgResultFormats;
