@@ -3,7 +3,7 @@ if (!defined('MEDIAWIKI')) die();
 /**
  * Print query results in a Google Map. Based on Google Maps API code
  * written by Robert Buzink and query results printing code written by
- * Markus Krötzsch.
+ * Markus KrÃ¶tzsch.
  *
  * @author Yaron Koren
  */

@@ -6,7 +6,7 @@ if (!defined('MEDIAWIKI')) die();
  * @addtogroup Extensions
  *
  * @author Hojjat (aka Huji) <huji.huji@gmail.com>
- * @copyright Copyright © 2008, Hojjat (aka Huji)
+ * @copyright Copyright Â© 2008, Hojjat (aka Huji)
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 

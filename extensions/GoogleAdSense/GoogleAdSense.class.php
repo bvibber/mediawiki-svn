@@ -14,6 +14,7 @@ class GoogleAdSense {
 			$wgGoogleAdSenseSlot, $wgGoogleAdSenseSrc,
 			$wgGoogleAdSenseAnonOnly, $wgUser;
 
+
 		// Return $bar unchanged if not all values have been set.
 		// FIXME: signal incorrect configuration nicely?
 		if( $wgGoogleAdSenseClient == 'none' || $wgGoogleAdSenseSlot == 'none' || $wgGoogleAdSenseID == 'none' )

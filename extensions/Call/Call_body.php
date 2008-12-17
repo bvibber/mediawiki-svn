@@ -15,7 +15,7 @@
  * @version 0.5
  *		changed algorithm to recoignize parameters
  * @version 0.6
- *		added a mechanism to save the called template´s raw text to a new article
+ *		added a mechanism to save the called template's raw text to a new article
  *				when doing this we replace symbols in the raw text which parameter names from our call by the values of these parameters
  *				Call/abc,saveAsPage=xyz,foo=bar
  *				will tale the raw text of "Template:Abc", replace all occurencies of 'foo' by 'bar' and save the result as a normal
