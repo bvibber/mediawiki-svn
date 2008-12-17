@@ -31,6 +31,7 @@ import org.wikimedia.lsearch.index.WikiSimilarity;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.interoperability.RMIServer;
 
+
 public class SearcherCache {
 	protected static Logger log = Logger.getLogger(SearcherCache.class);
 	
@@ -165,6 +166,10 @@ public class SearcherCache {
 			this.ok = ok;
 			this.poolSize = poolSize;
 		}
+		
+		public String toString(){
+			return "ok="+ok+", poolSize="+poolSize;
+		}
 	}
 	
 	public static class RemoteSearcherPool {
@@ -204,9 +209,14 @@ public class SearcherCache {
 	protected Set<SearchHost> deadPools = Collections.synchronizedSet(new HashSet<SearchHost>());
 	
 	protected static SearcherCache instance = null;
+	
+	/** Remote hosts being deployed, never use their searchers, unless necessary! (host->deployment level) */
+	protected Hashtable<String,Integer> hostsDeploying = new Hashtable<String,Integer>();
 
 	/** deployment has been tried at least once for these */
-	protected static Set<String> initialWarmup = Collections.synchronizedSet(new HashSet<String>());  
+	protected static Set<String> initialWarmup = Collections.synchronizedSet(new HashSet<String>());
+	
+	protected boolean initialDeploymentRunning = false;
 	/**
 	 * If there is a cached local searcher of iid
 	 * 
@@ -217,6 +227,36 @@ public class SearcherCache {
 		return localCache.containsKey(iid.toString());		
 	}
 	
+	/** Signalize that host is begining it's index update, and that we shouldn't touch it */
+	public void hostDeploying(String host){
+		synchronized(hostsDeploying){
+			Integer level = hostsDeploying.get(host);
+			if(level == null) // first level of deployment
+				hostsDeploying.put(host,1);
+			else // more concurrent threads doing deployment on remote host
+				hostsDeploying.put(host,level+1);
+		}
+	}
+	
+	/** Remote host has been deployed */
+	public void hostDeployed(String host){
+		synchronized(hostsDeploying){
+			Integer level = hostsDeploying.get(host);
+			if(level == null){				
+				log.warn("Cannot deploy host="+host+" since it hasn't been deploying");
+				return;
+			}
+			if(level == 1)
+				hostsDeploying.remove(host);
+			else
+				hostsDeploying.put(host,level-1);
+		}
+	}
+	
+	public boolean thisHostIsDeploying(){
+		return hostsDeploying.containsKey("localhost");
+	}
+	
 	/**
 	 * Get a random host for iid, if local and being deployed
 	 * always return the localhost
@@ -225,16 +265,22 @@ public class SearcherCache {
 	 * @return
 	 */
 	public String getRandomHost(IndexId iid){
-		if(iid.isMySearch() && !UpdateThread.isBeingDeployed(iid) && hasLocalSearcher(iid))
+		if(iid.isMySearch() && hasLocalSearcher(iid) && !hostsDeploying.containsKey("localhost"))
 			return "localhost";
 		if(!initialized.contains(iid.toString()))
 			initializeRemote(iid);
 		synchronized(iid.getSearcherCacheLock()){
 			Hashtable<String,RemoteSearcherPool> pools = remoteCache.get(iid.toString());
 			if(pools == null)
+				return null;			
+			// generate all suitable remote hosts
+			HashSet<String> hosts = new HashSet<String>();
+			hosts.addAll(pools.keySet());
+			hosts.removeAll(hostsDeploying.keySet());
+			if(hosts.size() == 0)
 				return null;
-			int num = (int)(Math.random()*pools.size());
-			for(String host : pools.keySet()){
+			int num = (int)(Math.random()*hosts.size());
+			for(String host : hosts){
 				if(--num < 0)
 					return host;
 			}
@@ -264,7 +310,7 @@ public class SearcherCache {
 		if(iid == null)
 			throw new RuntimeException("No such index");
 		if(!initialWarmup.contains(iid.toString()))
-			throw new RuntimeException(iid+" is being deployed");
+			throw new RuntimeException(iid+" is being deployed or is not searched by this host");
 		return fromLocalCache(iid.toString());
 	}
 	
@@ -327,8 +373,10 @@ public class SearcherCache {
 						remoteCache.put(iid.toString(), hostpool = new Hashtable<String,RemoteSearcherPool>());
 					hostpool.put(host,new RemoteSearcherPool(iid,host,status.poolSize));
 					deadPools.remove(new SearchHost(iid,host)); // make sure not marked as dead
+					log.info("Reinitialized iid="+iid);
 					return;
 				}
+				log.warn("Cannot reinitialize iid="+iid+", remote pool status="+status);
 			}
 		} catch(RemoteException e){
 			e.printStackTrace();
@@ -349,30 +397,35 @@ public class SearcherCache {
 	 */
 	protected class InitialDeploymentThread extends Thread {
 		public void run(){
-			IndexRegistry registry = IndexRegistry.getInstance();
-			// get local search indexes, deploy sorted by name
-			ArrayList<IndexId> mys = new ArrayList<IndexId>();
-			mys.addAll(GlobalConfiguration.getInstance().getMySearch());
-			Collections.sort(mys,new Comparator<IndexId>(){
-				public int compare(IndexId o1, IndexId o2) {
-					return o1.toString().compareTo(o2.toString());
-				}
-			});
-			for(IndexId iid : mys){
-				try {
-					// when searcher is linked into "search" path it's good, initialize it
-					if(!iid.isLogical() && registry.getCurrentSearch(iid) != null){
-						log.debug("Initializing local for "+iid);
-						SearcherPool pool = initLocalPool(iid);
-						//Warmup.warmupPool(pool.searchers,iid,false,1);
-						//Warmup.waitForAggregate(pool.searchers);
-						localCache.put(iid.toString(),pool);
-						
-						RMIServer.bind(iid,pool.searchers);
+			try{
+				initialDeploymentRunning = true;
+				IndexRegistry registry = IndexRegistry.getInstance();
+				// get local search indexes, deploy sorted by name
+				ArrayList<IndexId> mys = new ArrayList<IndexId>();
+				mys.addAll(GlobalConfiguration.getInstance().getMySearch());
+				Collections.sort(mys,new Comparator<IndexId>(){
+					public int compare(IndexId o1, IndexId o2) {
+						return o1.toString().compareTo(o2.toString());
 					}
-				} catch (IOException e) {
-					log.warn("I/O error warming index for "+iid+" : "+e.getMessage(),e);				
+				});
+				for(IndexId iid : mys){
+					try {
+						// when searcher is linked into "search" path it's good, initialize it
+						if(!iid.isLogical() && registry.getCurrentSearch(iid) != null){
+							log.debug("Initializing local for "+iid);
+							SearcherPool pool = initLocalPool(iid);
+							//Warmup.warmupPool(pool.searchers,iid,false,1);
+							//Warmup.waitForAggregate(pool.searchers);
+							localCache.put(iid.toString(),pool);
+
+							RMIServer.bind(iid,pool.searchers);
+						}
+					} catch (IOException e) {
+						log.warn("I/O error warming index for "+iid+" : "+e.getMessage(),e);				
+					}
 				}
+			} finally {
+				initialDeploymentRunning = false;
 			}
 		}
 	}
@@ -452,8 +505,10 @@ public class SearcherCache {
 	
 	protected SearcherCache(boolean initialize){
 		searchPoolSize = Configuration.open().getInt("SearcherPool","size",1);
-		if(initialize)
+		if(initialize){
+			initialDeploymentRunning = true;
 			new InitialDeploymentThread().start();
+		}
 	}
 	
 	public int getSearchPoolSize() {
@@ -462,5 +517,17 @@ public class SearcherCache {
 
 	public Set<SearchHost> getDeadPools() {
 		return deadPools;
+	}
+	
+	/** Sleep until initial deployment is finished */
+	public void waitForInitialDeployment(){
+		while(initialDeploymentRunning){
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

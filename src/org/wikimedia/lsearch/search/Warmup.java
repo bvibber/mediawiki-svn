@@ -15,7 +15,10 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.search.SearchableMul;
+import org.apache.lucene.search.Searcher;
 import org.apache.lucene.search.TermQuery;
+import org.apache.lucene.search.TopDocs;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
@@ -179,13 +182,35 @@ public class Warmup {
 		FieldBuilder.BuilderSet b = new FieldBuilder(iid).getBuilder();
 		WikiQueryParser parser = new WikiQueryParser(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParser.NamespacePolicy.IGNORE,null);
 		
-		try{	
+		ArrayList<SearchableMul> searchers = new ArrayList<SearchableMul>();
+		SearcherCache cache = SearcherCache.getInstance();
+		for(IndexId piid : iid.getDB().getPhysicalIndexIds()){
+			if(piid == iid)
+				searchers.add(is);
+			else if(piid.isMySearch()){
+				try {
+					searchers.add(cache.getLocalSearcher(piid));
+				} catch (Exception e) {
+					log.warn("Error retrieving local searcher part "+piid+" for warmup", e);
+				}
+			}
+		}
+		
+		try{			
+			Searcher searcher = null;
+			if(searchers.size()<=1)
+				searcher = is;
+			else
+				searcher = new MultiSearcherMul(searchers.toArray(new SearchableMul[]{}));
+			
 			Terms terms = getTermsForLang(lang);
+			log.info("Warming up with "+terms.termCount()+" terms");			
 			for(int i=0; i < count ; i++){
+				String searchterm = terms.next();
+				long start = System.currentTimeMillis();
 				Query q = parser.parse(terms.next());
-				Hits hits = is.search(q);
-				for(int j =0; j<20 && j<hits.length(); j++)
-					hits.doc(j); // retrieve some documents
+				TopDocs hits = searcher.search(q,null,20);
+				new SearchEngine().makeSearchResults((SearchableMul)searcher,hits,0,20,iid,searchterm,q,start,false);				
 				if(useDelay){
 					if(i<1000) 
 						Thread.sleep(100);

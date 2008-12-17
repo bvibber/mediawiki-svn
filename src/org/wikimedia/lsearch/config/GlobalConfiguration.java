@@ -598,7 +598,7 @@ public class GlobalConfiguration {
 				}
 			}
 		}
-		if(searchHosts.isEmpty()){
+		if(searchHosts.isEmpty() && !dbrole.endsWith(".links") && !dbrole.endsWith(".related")){
 			// assign to search orphans host
 			searchHosts.addAll(searchOrphans);
 		}
@@ -1554,6 +1554,15 @@ public class GlobalConfiguration {
 	
 	public IndexId getCommonsWiki(){
 		return IndexId.get(commonsWiki);
+	}
+	
+	/** Get all searchers (NOTE: this is kindof slow...) */
+	public HashSet<String> getAllSearchHosts(){
+		HashSet<String> hosts = new HashSet<String>();
+		for(IndexId iid : indexIdPool.values()){
+			hosts.addAll(iid.getSearchHosts());
+		}
+		return hosts;
 	}
 	
 

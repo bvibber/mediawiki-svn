@@ -321,6 +321,8 @@ public class SearchDaemon extends HttpHandler {
 			if(iid.toString().length()>maxlen)
 				maxlen = iid.toString().length();
 		}
+		if(cache.thisHostIsDeploying())
+			sendOutputLine("This host is being deployed");
 		for(IndexId iid : mysearch){
 			if(iid.isLogical())
 				continue;

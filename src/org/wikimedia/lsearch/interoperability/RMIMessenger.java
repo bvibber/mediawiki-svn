@@ -255,4 +255,15 @@ public interface RMIMessenger extends Remote {
 	 * @throws RemoteException
 	 */
 	public void addLocalizationCustomMapping(Map<Integer,String> namespaceIndexToName, String dbname) throws RemoteException;
+	
+	/** 
+	 * Signalize that the host is deploying and that is shouldn't be bugged with searches
+	 * 
+	 * @param host
+	 * @throws RemoteException
+	 */
+	public void hostDeploying(String host) throws RemoteException;
+	
+	/** Remote host has been deployed */
+	public void hostDeployed(String host) throws RemoteException;
 }

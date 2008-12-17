@@ -58,7 +58,7 @@ public class RMIServer {
 			}
 			return true;
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			log.warn("Remote error unbinding iid="+iid,e);
 		} catch (NotBoundException e) {
 		}
 		return false;		

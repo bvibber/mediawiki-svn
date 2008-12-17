@@ -68,4 +68,10 @@ public class WordTerms implements Terms {
 		return words.get((int)(Math.random()*words.size()));
 	}
 
+	public int termCount() {
+		return words.size();
+	}
+	
+	
+
 }

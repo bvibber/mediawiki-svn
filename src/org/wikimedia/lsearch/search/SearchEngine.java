@@ -113,6 +113,11 @@ public class SearchEngine {
 				searchOnly = true;
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
 			SearchResults res = search(iid, searchterm, offset, limit, iwoffset, iwlimit, namespaces, what.equals("explain"), exactCase, false, searchOnly);
+			if(!res.isSuccess()){
+				// note failed search
+				if(SearchServer.stats != null)
+					SearchServer.stats.add(false, 0, SearchDaemon.getOpenCount());
+			}
 			/*if(res!=null && res.isRetry()){
 				int retries = 1;
 				
@@ -738,6 +743,10 @@ public class SearchEngine {
 				return;
 			if(!nsfw.hasNamespaceFilter())
 				return; // query on many overlapping namespaces, won't try to spellcheck to not mess things up
+			if(isNumber(searchterm))
+				return; // don't suggest numbers...
+			// strip unnecessary spaces
+			searchterm = searchterm.replaceAll(" +"," ");
 			// suggest !
 			res.setSuggest(null);
 			ArrayList<Token> tokens = parser.tokenizeForSpellCheck(parser.extractPrefixFilter(searchterm));
@@ -753,6 +762,14 @@ public class SearchEngine {
 			res.setSuggest(sq);	
 			res.addInfo("suggest",formatHost(host));
 		}
+	}
+	
+	protected boolean isNumber(String s){
+		for(char c : s.toCharArray()){
+			if(!(Character.isDigit(c) || c=='.' || c==','))
+				return false;
+		}
+		return true;
 	}
 		
 	protected Query parseQuery(String searchterm, WikiQueryParser parser, IndexId iid, boolean raw, FilterWrapper nsfw, boolean searchAll, Wildcards wildcards) throws ParseException {

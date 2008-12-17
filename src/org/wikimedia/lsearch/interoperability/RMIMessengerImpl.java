@@ -242,6 +242,19 @@ public class RMIMessengerImpl implements RMIMessenger {
 		
 	}
 
+	public void hostDeployed(String host) throws RemoteException {
+		if(cache == null)
+			cache = SearcherCache.getInstance();
+		cache.hostDeployed(host);
+		
+	}
+
+	public void hostDeploying(String host) throws RemoteException {
+		if(cache == null)
+			cache = SearcherCache.getInstance();
+		cache.hostDeploying(host);
+	}
+
 	protected RMIMessengerImpl(){
 		networkStatus = null;
 		indexRegistry = null;

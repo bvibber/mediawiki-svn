@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.Map.Entry;
@@ -178,6 +179,10 @@ public class Suggest {
 	/** Lower limit to hit rate for joining */
 	public static final int JOIN_FREQ = 1;
 	
+	/** use for testing only */
+	protected Suggest() {		
+	}
+	
 	public Suggest(IndexId iid) throws IOException {
 		this(iid,null,true);
 	}
@@ -280,7 +285,7 @@ public class Suggest {
 		log.debug("tokens: "+tokens+" inContext:"+info.foundInContext+" phrases:"+info.phrases+", inTitles="+info.foundInTitles);
 
 		if(tokens.size() > 15){
-			logRequest(searchterm,"too many words to spellcheck ("+tokens.size()+")",start);
+			logRequest(searchterm,"too many words to spellcheck ("+tokens.size()+")",start,searchterm);
 			return new SuggestQuery(searchterm,new ArrayList<Integer>());
 		}
 		
@@ -310,10 +315,10 @@ public class Suggest {
 			}
 			if(changes.size() > 0){
 				SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,new HashSet<Integer>(),ns);
-				logRequest(sq.getSearchterm(),"words only (wildcard or fuzzy query)",start);
+				logRequest(sq.getSearchterm(),"words only (wildcard or fuzzy query)",start,searchterm);
 				return sq;
 			} else{
-				logRequest(searchterm,"CORRECT (by words, wildcard or fuzzy query)",start);
+				logRequest(searchterm,"CORRECT (by words, wildcard or fuzzy query)",start,searchterm);
 				return new SuggestQuery(searchterm,new ArrayList<Integer>());				
 			}
 		}
@@ -332,7 +337,7 @@ public class Suggest {
 				HashMap<Integer,String> changes = extractTitleChanges(joinTokens,redirectTarget,tokens);
 				if(changes != null){
 					SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,new HashSet<Integer>(),ns);
-					logRequest(sq.getSearchterm(),"titles (via redirect)",start);
+					logRequest(sq.getSearchterm(),"titles (via redirect)",start,searchterm);
 					return sq;
 				}
 			}
@@ -360,14 +365,14 @@ public class Suggest {
 		if(titleRes.size()>0 && (titleRes.get(0).dist<2 || (correctByPhrases && titleRes.get(0).dist<=2))){
 			SuggestResult r = titleRes.get(0);
 			if(r.isExactMatch()){
-				logRequest(searchterm,"CORRECT (exact title match)",start);
+				logRequest(searchterm,"CORRECT (exact title match)",start,searchterm);
 				return new SuggestQuery(searchterm,new ArrayList<Integer>());
 			}
 			if(betterRank(r.frequency,info.firstRank)){
 				HashMap<Integer,String> changes = extractTitleChanges(joinTokens,r.word,tokens);
 				if(changes != null){
 					SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,changes.keySet(),ns);
-					logRequest(sq.getSearchterm(),"titles (misspell)",start);
+					logRequest(sq.getSearchterm(),"titles (misspell)",start,searchterm);
 					return sq;
 				}
 			}
@@ -382,7 +387,7 @@ public class Suggest {
 			if(singleWordSug.size() > 0){
 				SuggestResult r = singleWordSug.get(0);
 				if(r.isExactMatch()){
-					logRequest(searchterm,"CORRECT (by single word index)",start);
+					logRequest(searchterm,"CORRECT (by single word index)",start,searchterm);
 					return new SuggestQuery(searchterm,new ArrayList<Integer>());
 				} else{  //if(r.dist <= 1 && betterRank(r.frequency,info.firstRank)){
 					SuggestResult best = null;
@@ -405,7 +410,7 @@ public class Suggest {
 						HashMap<Integer,String> proposedChanges = new HashMap<Integer,String>();
 						proposedChanges.put(0,best.word);
 						SuggestQuery sq = makeSuggestedQuery(tokens,proposedChanges,searchterm,filters,new HashSet<Integer>(),ns);
-						logRequest(sq.getSearchterm(),"single word misspell",start);
+						logRequest(sq.getSearchterm(),"single word misspell",start,searchterm);
 						return sq;
 					}
 				}
@@ -633,7 +638,7 @@ public class Suggest {
 			// check
 			if( titleExists(proposedTitle.toString(),ns) ){
 				SuggestQuery sq = makeSuggestedQuery(tokens,changes,searchterm,filters,changes.keySet(),ns);
-				logRequest(sq.getSearchterm(),"phrases (title match)",start);
+				logRequest(sq.getSearchterm(),"phrases (title match)",start,searchterm);
 				return sq;
 			}
 		}
@@ -719,13 +724,13 @@ public class Suggest {
 		if(redirectTarget != null){
 			String prop = followRedirect(joinTokens(" ",tokens,proposedChanges),ns);
 			if(prop != null && prop.equals(redirectTarget)){
-				logRequest(searchterm,"CORRECT (spellcheck to redirect to same article)",start);
+				logRequest(searchterm,"CORRECT (spellcheck to redirect to same article)",start,searchterm);
 				return new SuggestQuery(searchterm,new ArrayList<Integer>());
 			}			
 		}
 		
 		SuggestQuery sq = makeSuggestedQuery(tokens,proposedChanges,searchterm,filters,alwaysReplace,ns);
-		logRequest(sq.getSearchterm(),using,start);
+		logRequest(sq.getSearchterm(),using,start,searchterm);
 		return sq;
 	}
 
@@ -936,7 +941,8 @@ public class Suggest {
 		EditDistance ed = new EditDistance(joined);
 		int d[][] = ed.getMatrix(corrected);
 		// map: space -> same space in edited string
-		HashMap<Integer,Integer> spaceMap = new HashMap<Integer,Integer>(); 
+		HashMap<Integer,Integer> spaceMap = new HashMap<Integer,Integer>();
+		spaceMapCalls = 0;
 		extractSpaceMap(d,joined.length(),corrected.length(),spaceMap,joined,corrected);
 		// indexes where spaces are in the edited string
 		ArrayList<Integer> spaces = new ArrayList<Integer>();
@@ -995,8 +1001,16 @@ public class Suggest {
 		return acceptWord(r,metric);
 	}
 	
+	protected int spaceMapCalls = 0;
+	
 	/** Transverse the cost matrix and extract mapping of old vs new spaces */
-	final protected void extractSpaceMap(int[][] d, int i, int j, HashMap<Integer,Integer> spaceMap, String str1, String str2) {
+	final protected void extractSpaceMap(int[][] d, int i, int j, Map<Integer,Integer> spaceMap, String str1, String str2) {
+		spaceMapCalls++;
+		if(spaceMapCalls > 100000){
+			log.warn("Long SpaceMap call: str1="+str1+", str2="+str2);
+			// FIXME !!
+			return;
+		}
 		int cost = d[i][j];
 		if(i == 0 || j == 0)
 			return;				
@@ -1551,9 +1565,9 @@ public class Suggest {
 		return ret;
 	}
 	
-	protected void logRequest(String searchterm, String using, long start){
+	protected void logRequest(String searchterm, String using, long start, String original){
 		if(useLogging)
-			log.info(iid+" suggest: ["+searchterm+"] using=["+using+"] in "+(System.currentTimeMillis()-start)+" ms");
+			log.info(iid+" for original=["+ original +"] suggest: ["+searchterm+"] using=["+using+"] in "+(System.currentTimeMillis()-start)+" ms");
 	}
 	
 }

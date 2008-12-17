@@ -136,7 +136,7 @@ public class RMIMessengerClient {
 			log.debug("Got new RMI messenger for host "+host);
 			return r;
 		} catch (RemoteException e) {
-			log.warn("Cannot contact RMI registry for host "+host+" : "+e.getMessage(),e);
+			log.warn("Cannot contact RMI registry for host "+host+" : "+e.getMessage());
 			throw e;
 		} catch (NotBoundException e) {
 			log.warn("No RMIMessenger instance at host "+host+" : "+e.getMessage(),e);
@@ -407,4 +407,27 @@ public class RMIMessengerClient {
 			log.error("Messenger not bound: "+e.getMessage(),e);
 		}			
 	}
+	
+	public void hostDeployed(String host, String myHost) throws RemoteException {
+		RMIMessenger r;
+		try {
+			r = messengerFromCache(host);
+			r.hostDeployed(myHost);
+		} catch(NotBoundException e){
+			e.printStackTrace();
+			log.error("Messenger not bound: "+e.getMessage(),e);
+		}	
+	}
+	
+	public void hostDeploying(String host, String myHost) throws RemoteException {
+		RMIMessenger r;
+		try {
+			r = messengerFromCache(host);
+			r.hostDeploying(myHost);
+		} catch(NotBoundException e){
+			e.printStackTrace();
+			log.error("Messenger not bound: "+e.getMessage(),e);
+		}	
+	}
+
 }

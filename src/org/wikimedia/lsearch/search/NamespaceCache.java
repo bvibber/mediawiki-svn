@@ -101,16 +101,19 @@ public class NamespaceCache {
 						if(cache.containsKey(nsf))
 							filters.add(cache.get(nsf));
 						else{ // didn't find the apropriate filter, make it
-							log.debug("Making filter for "+nsf);
+							log.info("Making filter for "+nsf);
 							CachedFilter cwf = makeFilter(nsf);
 							cache.put(nsf,cwf);
 							filters.add(cwf);
 						}
 						redirects.add(getRedirectFilter(nsf));
 					}
-					log.debug("Made composite filter for "+key);
-					// never cache composite filters
-					return new NamespaceCompositeFilter(filters,redirects).bits(reader);				
+					log.info("Made composite filter for "+key);
+					NamespaceCompositeFilter ncf = new NamespaceCompositeFilter(filters,redirects);
+					// cache if defined in global settings
+					if(GlobalConfiguration.getInstance().getNamespacePrefixes().values().contains(key))
+						cache.put(key,new CachedFilter(ncf));					
+					return ncf.bits(reader); 				
 				} else if(key.isAll()){
 					CachedFilter cwf = new CachedFilter(new AllFilter());
 					cache.put(key,cwf); // always cache

@@ -416,8 +416,8 @@ public class ExtToken extends Token {
 					t.setOriginalEnd(cur+len);
 					if(!t.isStub())
 						t.unstubOriginal();
-					if(t.type != Type.TEXT || t.getPositionIncrement()==0)
-						raiseException(serialized,cur,t,"Bad serialized data: trying to assign original string to nontext token or alias");
+					//if(t.type != Type.TEXT || t.getPositionIncrement()==0)
+					//	raiseException(serialized,cur,t,"Bad serialized data: trying to assign original string to nontext token or alias");
 					cur += len;
 					break; }
 				case 2: // alias
