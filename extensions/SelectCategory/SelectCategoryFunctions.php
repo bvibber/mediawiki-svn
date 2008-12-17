@@ -107,7 +107,7 @@ function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj ) {
 
     # default sort key is page name with stripped namespace name,
     # otherwise sorting is ugly.
-    if ($wgTitle->getNamespace() == "NS_MAIN") {
+    if ($wgTitle->getNamespace() == NS_MAIN) {
       $default_sortkey = "";
     } else {
       $default_sortkey = "|{{PAGENAME}}";
