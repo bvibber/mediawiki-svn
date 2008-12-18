@@ -54,6 +54,9 @@ $wgEnableLucenePrefixSearch = false;
 # hit rates way below 1% even for very long expiry times
 $wgLuceneSearchCacheExpiry = 0;
 
+# timeout for search backend to respond
+$wgLuceneSearchTimeout = 6;
+
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'MWSearch',
 	'svn-date' => '$LastChangedDate$',

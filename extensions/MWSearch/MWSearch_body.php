@@ -55,11 +55,21 @@ class LuceneSearch extends SearchEngine {
 		global $wgContLang, $wgLuceneUseRelated;
 		$fname = 'LuceneSearch::replacePrefixes';
 		wfProfileIn($fname);
-		$qlen = strlen($query);
 		$start = 0; $len = 0; // token start pos and length
 		$rewritten = ''; // rewritten query
 		$rindex = 0; // point to last rewritten character
 		$inquotes = false;
+		
+		// "search everything" keyword
+		$allkeyword = wfMsgForContent('searchall');		
+		
+		// if all namespaces are set, convert to prefixed all: syntax which is more quickly handled by backend
+		$nsAllSet = array_keys( SearchEngine::searchableNamespaces() );
+		if( $this->namespaces ==  $nsAllSet && strncmp($query, $allkeyword, strlen($allkeyword)) != 0){
+			$query = $allkeyword.':'.$query;
+		}
+		
+		$qlen = strlen($query);
 		
 		// quick check, most of the time we don't need any rewriting
 		if(strpos($query,':')===false){ 
@@ -75,10 +85,6 @@ class LuceneSearch extends SearchEngine {
 			wfProfileOut($fname);
 			return trim($ret);
 		}
-		
-		// "search everything"
-		//  might not be at the beginning for complex queries
-		$allkeyword = wfMsgForContent('searchall');		
 		
 		for($i = 0 ; $i < $qlen ; $i++){
 			$c = $query[$i];
@@ -151,6 +157,10 @@ class LuceneSearch extends SearchEngine {
 		$rewritten .= substr($query,$rindex,$qlen-$rindex);
 		wfProfileOut($fname);
 		return $rewritten;
+	}
+	
+	function acceptListRedirects() {
+		return false;
 	}
 }
 
@@ -437,6 +447,7 @@ class LuceneSearchSet extends SearchResultSet {
 		
 		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
 		global $wgLuceneSearchVersion, $wgLuceneSearchCacheExpiry;
+		global $wgLuceneSearchTimeout;
 		
 		if( is_array( $wgLuceneHost ) ) {
 			$pick = mt_rand( 0, count( $wgLuceneHost ) - 1 );
@@ -469,7 +480,7 @@ class LuceneSearchSet extends SearchResultSet {
 		wfDebug( "Fetching search data from $searchUrl\n" ); 
 		wfSuppressWarnings();
 		wfProfileIn( $fname.'-contact-'.$host );
-		$data = Http::get( $searchUrl );
+		$data = Http::get( $searchUrl, $wgLuceneSearchTimeout );
 		wfProfileOut( $fname.'-contact-'.$host );
 		wfRestoreWarnings();
 		if( $data === false ) {
