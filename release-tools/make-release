@@ -146,16 +146,13 @@ def hashfile(fileName, algorithm):
 	return hash.hexdigest()
 
 def export(branch, dir):
-	if os.path.exists(dir):
-		print "The directory " + dir + " already exists, I'm assuming it is still valid"
-	else:
-		print "Exporting %s..." % (branch)
-		proc = subprocess.Popen(['svn', 'export', '-q',
-			'http://svn.wikimedia.org/svnroot/mediawiki/' + branch + '/phase3', dir])
-		if proc.wait() != 0:
-			print "svn export failed, exiting"
-			sys.exit(1)
-		print "Done"
+	print "Exporting %s..." % (branch)
+	proc = subprocess.Popen(['svn', 'export', '-q', '--force',
+		'svn+ssh://svn.wikimedia.org/svnroot/mediawiki/' + branch + '/phase3', dir])
+	if proc.wait() != 0:
+		print "svn export failed, exiting"
+		sys.exit(1)
+	print "Done"
 
 def makePatch(patchFileName, dir1, dir2, type):
 	patchFile = open(patchFileName, 'w')
