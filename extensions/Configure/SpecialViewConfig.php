@@ -56,10 +56,8 @@ class SpecialViewConfig extends ConfigurationPage {
 
 				if ( isset( $conf[$wiki] ) ) {
 					$this->conf = $conf[$wiki];
-				} else if ( !isset( $this->diff ) ) {
-					$msg = wfMsgNoTrans( 'configure-old-not-available', $version );
-					$wgOut->addWikiText( "<div class='errorbox'>$msg</div>" );
-					return false;
+				} else {
+					$this->conf = array();
 				}
 			} else {
 				$msg = wfMsgNoTrans( 'configure-old-not-available', $version );

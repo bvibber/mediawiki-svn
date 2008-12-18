@@ -215,12 +215,12 @@ class WebConfiguration extends SiteConfiguration {
 		## Hack for Wikimedia
 		static $initialiseSettingsDone = false;
 
-		// This is a damn dirty hack
 		if ( !$initialiseSettingsDone ) {
 			$initialiseSettingsDone = true;
 			global $IP, $wgConf;
 			if( file_exists( "$IP/InitialiseSettings.php" ) ) {
 				require_once "$IP/InitialiseSettings.php";
+				$this->initialise( false );
 			}
 		}
 		
