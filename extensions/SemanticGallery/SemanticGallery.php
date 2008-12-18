@@ -28,7 +28,3 @@ function semanticGallery_Setup()
 	else
 		SMWQueryProcessor::$formats['gallery'] = 'SemanticGallery_ResultPrinter';
 }
-
-
-# vim:set tabstop=4 noexpandtab shiftwidth=4:
-?>

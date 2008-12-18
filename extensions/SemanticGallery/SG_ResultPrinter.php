@@ -59,6 +59,3 @@ class SemanticGallery_ResultPrinter extends SMWResultPrinter
 		return array($result, 'noparse' => 'true', 'isHTML' => 'true');
 	}
 }
-
-# vim:set tabstop=4 noexpandtab shiftwidth=4:
-?>
