@@ -254,7 +254,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return bool true on success
 	 */
 	public function saveNewSettings( $settings, $wiki = false, $reason = '' ) {
-		if ( !is_array( $settings ) || $settings === array() )
+		if ( !is_array( $settings ) )
 			# hmmm
 			return false;
 
