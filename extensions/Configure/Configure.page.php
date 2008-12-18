@@ -834,13 +834,13 @@ abstract class ConfigurationPage extends SpecialPage {
 		$reason = $wgRequest->getText( 'wpReason' );
 
 		$wgOut->addHTML(
-			$this->buildOldVersionSelect() . "\n" .
 			( $this->mCanEdit ?
 				$this->getWikiSelectForm() .
 				Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action,
 					'id' => 'configure-form' ) ) . "\n" :
 				Xml::openElement( 'div', array( 'id' => 'configure-form' ) )
 			) .
+			$this->buildOldVersionSelect() . "\n" .
 			$this->buildSearchForm() . "\n" .
 			Xml::openElement( 'div', array( 'id' => 'configure' ) ) . "\n" .
 			$this->buildAllSettings() . "\n" .
