@@ -196,11 +196,25 @@ $messages['pl'] = array(
 	'emailaddressimage-desc' => 'Dodaje znacznik <tt>&lt;email&gt;</tt> pozwalający wyświetlić adres e-mail jako obrazek.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'emailaddressimage-desc' => 'د انځور په توګه د برېښليک پتې د ښکاره کولو لپاره د <tt>&lt;برېښليک&gt;</tt> وييکه ورګډوي',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'emailaddressimage-desc' => 'Adiciona <tt>&lt;email&gt;</tt> para apresentar um endereço de e-mail como imagem',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'emailaddressimage-desc' => "Aggiunge <tt>&lt;email&gt;</tt> pe fà vedè 'n'indirizze e-mail cumme immaggine.",
 );
 
 /** Russian (Русский)

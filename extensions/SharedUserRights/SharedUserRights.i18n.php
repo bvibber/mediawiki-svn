@@ -62,6 +62,17 @@ $messages['de'] = array(
 	'gblrights-rights-entry' => 'änderte die globale Gruppenzugehörigkeit für $1 von $2 auf $3',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'shareduserrights' => 'Zgromadne zastojanje wužywarskich pšawow',
+	'gblrights-desc' => 'Lažke [[Special:SharedUserRights|zastojanje globalnych wužywarskich pšawow]]',
+	'gblrights-logpage' => 'Protokol globalnych pšawow',
+	'gblrights-pagetext' => 'Toś ten protokol wopśimujo změny, kótarež su se pśewjadli na tabeli globalnych pšawow wikijoweje swójźby',
+	'gblrights-rights-entry' => 'jo globalne kupkowe cłonkojstwo za $1 z $2 do $3 změnił',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -89,6 +100,17 @@ $messages['gl'] = array(
 	'gblrights-logpage' => 'Rexistro de dereitos globais',
 	'gblrights-pagetext' => 'Este é un rexistro de todos os cambios feitos na táboa de dereitos globais da familia wiki',
 	'gblrights-rights-entry' => 'cambiou o grupo global ao que pertence "$1" de $2 a $3',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'shareduserrights' => 'Zhromadne zrjadowanje wužiwarskich prawow',
+	'gblrights-desc' => 'Lochke [[Special:SharedUserRights|zrjadowanje globalnych wužiwarskich prawow]]',
+	'gblrights-logpage' => 'Protokol globalnych prawow',
+	'gblrights-pagetext' => 'Tutón protokol wobsahuje wšě změny, kotrež buchu na tabeli globalnych prawow wikijoweje swójby přewjedźene.',
+	'gblrights-rights-entry' => 'změni globalne skupinski přisłušnosć za $1 z $2 do $3',
 );
 
 /** Korean (한국어)

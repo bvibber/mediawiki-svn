@@ -93,6 +93,13 @@ $messages['it'] = array(
 	'regexfunctions-desc' => 'Funzioni parser di espressioni regolari',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'regexfunctions-desc' => '正規表現パーサー関数',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

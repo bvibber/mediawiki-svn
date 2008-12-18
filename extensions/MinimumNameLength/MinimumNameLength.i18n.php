@@ -181,9 +181,12 @@ $messages['it'] = array(
 	'minnamelength-desc' => 'Imponi una lunghezza minima per il nome utente',
 );
 
-/** Japanese (日本語) */
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
 $messages['ja'] = array(
-	'minnamelength-error' => 'あなたの利用者名は短すぎます。最短の長さは $1 バイトです。',
+	'minnamelength-error' => 'あなたの利用者名は短すぎます。最短の長さは $1 です。',
+	'minnamelength-desc' => '利用者名に最短長を設ける',
 );
 
 /** Javanese (Basa Jawa)

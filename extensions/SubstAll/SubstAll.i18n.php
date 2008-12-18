@@ -110,6 +110,13 @@ $messages['id'] = array(
 	'substall-desc' => 'Membuat sebuah tag <nowiki><substall></nowiki> yang mengembangkan semua templat ke sintaksis wiki',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'substall-desc' => '全てのテンプレートをwiki構文に展開する<nowiki><substall></nowiki>タグを作る',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

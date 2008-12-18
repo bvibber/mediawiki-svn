@@ -247,11 +247,14 @@ $messages['it'] = array(
 	'msfunc_div_zero' => 'Divisione per zero',
 );
 
-/** Japanese (日本語) */
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
 $messages['ja'] = array(
-	'msfunc_nan' => '返り値が数値ではありませんResulting value is not a number',
+	'msfunc_desc' => '数学および統計関数の一群',
+	'msfunc_nan' => '返り値が数値ではありません',
 	'msfunc_inf' => '返り値が無限大です',
-	'msfunc_div_zero' => '0で割り算しました',
+	'msfunc_div_zero' => '0で除算しました',
 );
 
 /** Javanese (Basa Jawa)

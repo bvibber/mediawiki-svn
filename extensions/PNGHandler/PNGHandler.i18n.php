@@ -119,6 +119,13 @@ $messages['it'] = array(
 	'pnghandler-desc' => 'Ridimensiona file PNG usando pngds',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'pnghandler-desc' => 'pngdsを使用してPNGのサイズを変更する',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

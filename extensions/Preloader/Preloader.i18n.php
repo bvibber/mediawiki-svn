@@ -99,6 +99,13 @@ $messages['ia'] = array(
 	'preloader-desc' => 'Permitte predefinir un modello de texto pro nove paginas, un pro cata spatio de nomines',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'preloader-desc' => '新しいページ用に名前空間ごとのカスタマイズ可能な雛形文章を用意する',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

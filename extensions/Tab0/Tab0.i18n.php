@@ -130,6 +130,13 @@ $messages['it'] = array(
 	'tab0-desc' => 'Aggiunge il tab "0" che linka alla modifica della prima sezione della pagina',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'tab0-desc' => 'ページの最初の節の編集ページにリンクされた「0」タブを追加する',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

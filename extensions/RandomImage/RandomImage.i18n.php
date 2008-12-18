@@ -109,6 +109,13 @@ $messages['it'] = array(
 	'randomimage-desc' => 'Fornisce un raccoglitore di file casuali utilizzando il tag <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'randomimage-desc' => '<tt>&lt;randomimage /&gt;</tt>を使って、ランダムにメディアをピックアップする機能を提供する',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

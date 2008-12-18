@@ -108,6 +108,13 @@ $messages['it'] = array(
 	'tooltip-desc' => 'Aggiunge i tag <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'tooltip-desc' => '<tt><nowiki><tooltip></nowiki></tt> および <tt><nowiki>{{#tooltip:}}</nowiki></tt> タグを追加する',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

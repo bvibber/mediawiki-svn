@@ -73,6 +73,13 @@ Elle liste toutes les pages issues de la catégorie « $1 » et, le cas échéan
 	'autocreatecategorypages-editor' => 'Créateur automatique de catégorie.',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'autocreatecategorypages-editor' => 'Cuntas cruthóir uathoibríoch',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

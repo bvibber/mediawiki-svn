@@ -171,6 +171,13 @@ $messages['ia'] = array(
 	'templatelink_newtitle' => '$1 (transcludite)',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'templatelink' => 'テンプレートリンク',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

@@ -50,6 +50,13 @@ $messages['he'] = array(
 	'csshooks-desc' => 'הוספת CSS לפלט ה־HTML של הדפים כדי לאפשר מראה טוב יותר',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'csshooks-desc' => 'より良いスタイルのためにページのHTML出力にCSSを加える',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

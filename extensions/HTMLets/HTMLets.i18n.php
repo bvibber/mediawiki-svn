@@ -95,6 +95,13 @@ $messages['ia'] = array(
 	'htmlets-desc' => 'Permitte incorporar fragmentos HTML ab files per medio del etiquetta <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'htmlets-desc' => '<tt><nowiki><htmlet></nowiki></tt> タグを使うことでファイルからHTMLの断片をインラインに埋め込むことができる',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

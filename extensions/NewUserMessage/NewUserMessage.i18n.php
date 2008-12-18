@@ -339,6 +339,14 @@ $messages['pl'] = array(
 	'newuseredit-summary' => 'Dodanie [[{{int:newusermessage-template}}|wiadomości powitalnej]] do strony dyskusji nowego użytkownika',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'newusermessage-desc' => 'د يوه نوي جوړ شوي کارن-نوم د خبرواترو مخونو کې يو پيغام ورګډوي',
+	'newuseredit-summary' => 'د يوه نوي کارونکي د خبرواترو مخ کې د [[{{int:newusermessage-template}}|ښه راغلاست پيغام]] ورګډوي',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

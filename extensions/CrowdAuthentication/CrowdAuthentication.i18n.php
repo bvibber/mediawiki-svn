@@ -180,6 +180,13 @@ $messages['pt'] = array(
 	'crowdauthentication-desc' => 'Plugin de autenticação para Atlassian Crowd',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'crowdauthentication-desc' => "plugin pe l'autendicazione pe Atlassian Crowd",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

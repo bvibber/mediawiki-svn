@@ -210,6 +210,13 @@ $messages['pt'] = array(
 	'editown-desc' => "Utilizadores sem o privilégio 'editall' só podem editar as páginas que os próprios criaram",
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'editown-desc' => 'Utinde senza le deritte de cangià tutte cose ca ponne sulamende cangià le pàggene ca lore onne ccrejete',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -468,9 +468,12 @@ $messages['io'] = array(
 	'passwordreset-newpass' => 'Nova Kontrolajo',
 );
 
-/** Icelandic (Íslenska) */
+/** Icelandic (Íslenska)
+ * @author S.Örvarr.S
+ */
 $messages['is'] = array(
 	'passwordreset-username' => 'Notandanafn',
+	'passwordreset-submit' => 'Endurstilla lykilorð',
 );
 
 /** Italian (Italiano)

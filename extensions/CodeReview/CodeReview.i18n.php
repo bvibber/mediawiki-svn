@@ -1911,10 +1911,12 @@ $messages['ja'] = array(
 	'code-authors' => '著者',
 	'code-tags' => 'タグ',
 	'code-field-author' => '著者',
+	'code-field-status' => '状況',
 	'code-field-timestamp' => '日付',
 	'code-field-path' => 'パス',
 	'code-rev-author' => '著者:',
 	'code-rev-date' => '日付:',
+	'code-rev-status' => '状況:',
 	'code-pathsearch-path' => 'パス:',
 );
 
@@ -2735,6 +2737,24 @@ $4',
 	'right-codereview-set-status' => 'Zmieniać status rewizji',
 	'right-codereview-link-user' => 'Linkować autorów do ich kont na wiki',
 	'specialpages-group-developer' => 'Narzędzia dewelopera',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'code-authors' => 'ليکوالان',
+	'code-field-author' => 'ليکوال',
+	'code-field-status' => 'دريځ',
+	'code-field-timestamp' => 'نېټه',
+	'code-rev-author' => 'ليکوال:',
+	'code-rev-date' => 'نېټه:',
+	'code-rev-status' => 'دريځ:',
+	'code-rev-diff' => 'توپير',
+	'code-rev-diff-link' => 'توپير',
+	'code-status-new' => 'نوی',
+	'codereview-reply-link' => 'ځوابول',
+	'repoadmin-new-button' => 'جوړول',
 );
 
 /** Portuguese (Português)

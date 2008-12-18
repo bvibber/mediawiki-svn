@@ -1953,6 +1953,7 @@ $wdMessages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $wdMessages['ja'] = array(
@@ -1989,6 +1990,7 @@ $wdMessages['ja'] = array(
 	'ow_dm_badtitle' => 'このページが指し示す意味定義（概念）は何もありません。URLの指定が正しいか確認してください。',
 	'ow_dm_missing' => 'このページは存在しない意味定義（概念）を指し示しているように見えます。URLの指定が正しいか確認してください。',
 	'ow_Collection' => 'コレクション',
+	'ow_Value' => '値',
 );
 
 /** Javanese (Basa Jawa)

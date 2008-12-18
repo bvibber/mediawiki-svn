@@ -334,6 +334,13 @@ $messages['ia'] = array(
 	'tog-offlineOnLogout' => 'Cambiar mi stato a foras de linea quando io claude mi session',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'onlinestatus-tab' => '状況',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -517,6 +524,7 @@ $messages['pl'] = array(
 $messages['ps'] = array(
 	'onlinestatus-subtitle-offline' => 'دم مهال همدا کارونکی بې ليکه دی',
 	'onlinestatus-subtitle-online' => 'دم مهال همدا کارونکی پر ليکه دی',
+	'onlinestatus-tab' => 'دريځ',
 	'onlinestatus-toggles-desc' => 'ستاسو دريځ:',
 	'onlinestatus-toggles-show' => 'زما په کارن-مخ زما دريځ پرليکه ښکاره کول',
 	'onlinestatus-toggle-offline' => 'بې ليکه',
@@ -592,6 +600,8 @@ $messages['sv'] = array(
 	'onlinestatus-toggles-show' => 'Visa anslutningsstatus på min användarsida',
 	'onlinestatus-toggle-offline' => 'Ej ansluten',
 	'onlinestatus-toggle-online' => 'Ansluten',
+	'tog-onlineOnLogin' => 'Ändra min status till online när jag loggar in',
+	'tog-offlineOnLogout' => 'Ändra min status till offline när jag loggar ut',
 );
 
 /** Tamil (தமிழ்)

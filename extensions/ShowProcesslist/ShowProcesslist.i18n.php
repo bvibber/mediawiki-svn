@@ -290,6 +290,13 @@ $messages['it'] = array(
 	'showprocesslist-user' => 'Utente',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'showprocesslist-user' => '利用者',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

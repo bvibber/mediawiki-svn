@@ -13,3 +13,39 @@ $messages = array();
 $messages['en'] = array(
 	'semanticgallery-desc' => 'Adds a gallery output format to SMW inline queries',
 );
+
+/** French (Français)
+ * @author Grondin
+ */
+$messages['fr'] = array(
+	'semanticgallery-desc' => 'Ajoute un format de sortie de la gallerie dans les requêtes en ligne de SMW',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'semanticgallery-desc' => 'Engade unha galería de formato de saída ás dúbidas SMW en liña',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'semanticgallery-desc' => 'Přidawa galerijowy wudawanski format k wotprašanjam Semantic MediaWiki',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'semanticgallery-desc' => 'Voegt een galerijuitvoerformaat toe aan zoekopdrachten via Semantic MediaWiki',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'semanticgallery-desc' => 'Pridáva výstupný formát galérie medzi inline požiadavky SMW',
+);
+

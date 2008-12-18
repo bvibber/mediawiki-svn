@@ -875,6 +875,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'whitelisttablemodifyall' => 'すべて',
+	'whitelisttablemodifynone' => 'なし',
 );
 
 /** Javanese (Basa Jawa)

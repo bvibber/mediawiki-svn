@@ -1701,6 +1701,11 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'viewapc-display-value' => '値',
+	'viewapc-display-deletion_time' => '削除',
+	'viewapc-ls-header-deleted' => '削除',
+	'viewapc-ls-scope-deleted' => '削除',
+	'viewapc-ls-sort-deleted' => '削除',
 	'viewapc-ls-limit-none' => 'すべて',
 );
 

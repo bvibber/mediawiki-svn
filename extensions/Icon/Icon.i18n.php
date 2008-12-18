@@ -166,6 +166,15 @@ $messages['ia'] = array(
 	'icon-desc' => 'Permitte usar imagines como icones e ligamines in forma de icone',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'icon-badimage' => '不適切な画像',
+	'icon-badwidth' => '不適切な幅',
+	'icon-desc' => '画像をアイコンおよびリンク付アイコンとして利用できる',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

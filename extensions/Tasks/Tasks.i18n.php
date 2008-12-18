@@ -634,6 +634,13 @@ $messages['it'] = array(
 	'tog-show_task_comments' => "Inclusione della pagina dei commenti dell'attività",
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'tasks_search_status' => '状況',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -1051,6 +1058,13 @@ $messages['pl'] = array(
 	'tasks_sort' => 'Sortuj',
 	'tasks_ascending' => 'Od najstarszych',
 	'tasks_status_open' => 'Otwórz',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'tasks_search_status' => 'دريځ',
 );
 
 /** Portuguese (Português)

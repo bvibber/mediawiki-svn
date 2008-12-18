@@ -688,6 +688,13 @@ $messages['it'] = array(
 	'review_comment' => 'Commento',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'review_user_details_link' => '(詳細)',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

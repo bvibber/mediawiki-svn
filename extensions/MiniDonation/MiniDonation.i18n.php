@@ -172,8 +172,11 @@ $messages['it'] = array(
 	'donationform-submit' => 'Donazione mediante PayPal',
 );
 
-/** Japanese (日本語) */
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
 $messages['ja'] = array(
+	'donationform-desc' => 'PayPalを通じた寄付を支援するために<tt>&lt;donateform&gt;</tt>タグを加える',
 	'donationform-submit' => 'PayPal を通じて寄付する',
 );
 

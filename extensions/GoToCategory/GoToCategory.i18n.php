@@ -92,6 +92,13 @@ $messages['ia'] = array(
 	'gotocategory-desc' => "Cerca parolas etiam in le spatio de nomines Categoria: a fin de possibilisar le function 'ir al pagina'",
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'gotocategory-desc' => '「ページへ移動」機能の検索語照合を Category: 名前空間に対して行う',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

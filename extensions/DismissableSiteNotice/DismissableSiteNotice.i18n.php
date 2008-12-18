@@ -280,9 +280,12 @@ $messages['fy'] = array(
 	'sitenotice_close' => 'net mear sjen litte',
 );
 
-/** Irish (Gaeilge) */
+/** Irish (Gaeilge)
+ * @author Alison
+ */
 $messages['ga'] = array(
 	'sitenotice_close' => 'díbh',
+	'sitenotice-desc' => 'Ceadaionn úsáideoirí an fógra suíomh a dhíbh',
 );
 
 /** Galician (Galego)

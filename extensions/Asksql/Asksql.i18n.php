@@ -508,6 +508,7 @@ prega quindi di usarla con molta parsimonia.",
 /** Japanese (日本語)
  * @author JtFuruhata
  * @author Kkkdc
+ * @author Mizusumashi
  */
 $messages['ja'] = array(
 	'asksql' => 'SQLクエリの実行',
@@ -520,6 +521,7 @@ $messages['ja'] = array(
 	'querybtn' => '送信',
 	'selectonly' => '読み込み用のクエリのみが許可されています。',
 	'querysuccessful' => 'クエリは成功しました',
+	'right-asksql' => 'SQLクエリの作成',
 );
 
 /** Javanese (Basa Jawa)

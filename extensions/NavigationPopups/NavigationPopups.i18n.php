@@ -86,6 +86,13 @@ $messages['it'] = array(
 	'navigationpopups-desc' => 'Carica gli script dei popup di navigazione di Lupin in MediaWiki',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'navigationpopups-desc' => 'Lupinのナピゲージョン・スクリプト、popupsをMediaWikiにロードする',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

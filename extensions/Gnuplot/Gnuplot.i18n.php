@@ -114,6 +114,13 @@ $messages['it'] = array(
 	'gnuplot-desc' => 'Aggiunge il tag <code><nowiki><gnuplot></nowiki></code> per usare Gnuplot',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'gnuplot-desc' => 'Gnuplot を利用するために<code><nowiki><gnuplot></nowiki></code>タグを追加する',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -183,6 +190,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'gnuplot-desc' => 'Adiciona a marca <code><nowiki><gnuplot></nowiki></code> para utilizar o Gnuplot',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'gnuplot-desc' => "Aggiunge 'u tag <code><nowiki><gnuplot></nowiki></code> pe ausà Gnuplot",
 );
 
 /** Russian (Русский)

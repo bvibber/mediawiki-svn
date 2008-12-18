@@ -384,22 +384,26 @@ $messages['de'] = array(
 	'contribstats-contributions' => 'Spenden',
 	'contribstats-total' => 'Gesamt (USD)',
 	'contribstats-avg' => 'Durchschnitt (USD)',
-	'contribstats-med' => 'Zentralwert / Median (USD)',
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Prozentsatz (YTD)',
 	'contribstats-total-ytd' => 'Gesamt (YTD)',
+	'contribstats-value-exactly' => 'Genau $1',
+	'contribstats-value-under' => 'Weniger als $1',
+	'contribstats-value-from' => 'Zwischen $1 und $2',
+	'contribstats-value-over' => 'Mehr als $1',
+	'contribstats-percentage' => '$1 %',
 	'fundraiserstatistics' => 'Spendenstatistiken',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Tag $1 von $2',
 	'fundraiserstats-contributions' => 'Spenden',
 	'fundraiserstats-total' => 'Gesamt (USD)',
 	'fundraiserstats-avg' => 'Durchschnitt (USD)',
-	'fundraiserstats-med' => 'Zentralwert / Median (USD)',
 	'fundraiserstats-max' => 'Maximum (USD)',
 	'fundraiserstats-tab-totals' => 'Summen (USD)',
 	'fundraiserstats-tab-contributions' => 'Spendenanzahl',
-	'fundraiserstats-tab-averages' => 'Durchschnitte (USD)',
+	'fundraiserstats-tab-averages' => 'Durchschnittswerte (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
+	'specialpages-group-contribution' => 'Spenden/Fundraiser',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -560,6 +564,10 @@ $messages['fr'] = array(
 	'contribstats-max' => 'Maximum (dollars US)',
 	'contribstats-percentage-ytd' => 'Pourcentage (cette année)',
 	'contribstats-total-ytd' => 'Total (cette année)',
+	'contribstats-value-exactly' => 'Exactement $1',
+	'contribstats-value-under' => 'En dessous de $1',
+	'contribstats-value-from' => 'De $1 - $2',
+	'contribstats-value-over' => 'Plus de $1',
 	'fundraiserstatistics' => 'Statistiques de la levée de fonds',
 	'fundraiserstats-date' => 'Date',
 	'fundraiserstats-day' => 'Jour $1 de $2',
@@ -571,6 +579,7 @@ $messages['fr'] = array(
 	'fundraiserstats-tab-contributions' => 'Nombre de contributions',
 	'fundraiserstats-tab-averages' => 'Moyennes (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
+	'specialpages-group-contribution' => 'Contributions / Levée de fonds',
 );
 
 /** Galician (Galego)
@@ -606,6 +615,10 @@ $messages['gl'] = array(
 	'contribstats-max' => 'Máximo (dólar estadounidense)',
 	'contribstats-percentage-ytd' => 'Porcentaxe (ata hoxe)',
 	'contribstats-total-ytd' => 'Total (ata hoxe)',
+	'contribstats-value-exactly' => 'Exactamente $1',
+	'contribstats-value-under' => 'Por baixo de $1',
+	'contribstats-value-from' => 'De $1 a $2',
+	'contribstats-value-over' => 'Por riba de $1',
 	'fundraiserstatistics' => 'Estatísticas da recadación',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Día $1 de $2',
@@ -617,6 +630,7 @@ $messages['gl'] = array(
 	'fundraiserstats-tab-contributions' => 'Número de contribucións',
 	'fundraiserstats-tab-averages' => 'Promedio (dólar estadounidense)',
 	'fundraiserstats-tab-maximums' => 'Máximas (dólar estadounidense)',
+	'specialpages-group-contribution' => 'Contribucións/Recadación',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1074,6 +1088,10 @@ $messages['nl'] = array(
 	'contribstats-max' => 'Maximaal (in USD)',
 	'contribstats-percentage-ytd' => 'Percentage (dit jaar)',
 	'contribstats-total-ytd' => 'Totaal (dit jaar)',
+	'contribstats-value-exactly' => 'Precies $1',
+	'contribstats-value-under' => 'Minder dan $1',
+	'contribstats-value-from' => 'Tussen $1 en $2',
+	'contribstats-value-over' => 'Meer dan $1',
 	'fundraiserstatistics' => 'Fondswervingstatistieken',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 van $2',
@@ -1085,6 +1103,7 @@ $messages['nl'] = array(
 	'fundraiserstats-tab-contributions' => 'Aantal donaties',
 	'fundraiserstats-tab-averages' => 'Gemiddelden (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
+	'specialpages-group-contribution' => 'Giften/Fondsenwervingsactie',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1336,6 +1355,10 @@ $messages['sk'] = array(
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Percentá (YTD)',
 	'contribstats-total-ytd' => 'Celkom (YTD)',
+	'contribstats-value-exactly' => 'Presne $1',
+	'contribstats-value-under' => 'Menej ako $1',
+	'contribstats-value-from' => 'Medzi $1 - $2',
+	'contribstats-value-over' => 'Viac ako $1',
 	'fundraiserstatistics' => 'Štatistika fundraisingu',
 	'fundraiserstats-date' => 'Dátum',
 	'fundraiserstats-day' => 'Deň $1 z $2',
@@ -1347,6 +1370,7 @@ $messages['sk'] = array(
 	'fundraiserstats-tab-contributions' => 'Počet príspevkov',
 	'fundraiserstats-tab-averages' => 'Priemer (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
+	'specialpages-group-contribution' => 'Prispievateľov/fundraising',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)
@@ -1400,6 +1424,10 @@ $messages['sv'] = array(
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Procentandel (hittills i år)',
 	'contribstats-total-ytd' => 'Totalt (hittills i år)',
+	'contribstats-value-exactly' => 'Exakt $1',
+	'contribstats-value-under' => 'Under $1',
+	'contribstats-value-from' => 'Från $1 - $2',
+	'contribstats-value-over' => 'Över $1',
 	'fundraiserstatistics' => 'Insamlingsstatistik',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dag $1 av $2',
@@ -1411,6 +1439,7 @@ $messages['sv'] = array(
 	'fundraiserstats-tab-contributions' => 'Antal bidrag',
 	'fundraiserstats-tab-averages' => 'Genomsnitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
+	'specialpages-group-contribution' => 'Bidrag/Insamling',
 );
 
 /** Vèneto (Vèneto)

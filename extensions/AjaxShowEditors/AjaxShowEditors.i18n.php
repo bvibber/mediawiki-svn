@@ -319,6 +319,7 @@ $messages['frp'] = array(
 $messages['ga'] = array(
 	'ajax-se-desc' => 'Taispeáineann úsáideoirí atá ag cur leathanach in eagar cé atá ag cur an leathanach céanna in eagar',
 	'ajax-se-title' => 'Ag cur in eagar láithreach:',
+	'ajax-se-pending' => 'Athnuachan ar feitheamh… (clic an bosca seo nó lean ag cur in eagar)',
 	'ajax-se-idling' => '($1 soic. ó shin)',
 	'ajax-se-pagedoesnotexist' => 'níl an leathanach ann',
 	'ajax-se-userinvalid' => 'Earráid: Úsáideoir neamhbhailí',

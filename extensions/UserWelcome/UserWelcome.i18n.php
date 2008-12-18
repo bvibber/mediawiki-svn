@@ -390,7 +390,7 @@ $messages['nds-nl'] = array(
 	'mp-welcome-upload' => 'Bestand toevoegen',
 	'mp-welcome-edit' => 'Bewark',
 	'mp-welcome-points' => '$1 punten',
-	'mp-welcome-needed-points' => 'Um te promoveren naor <b><a href="$1">$2</a></b> mu-j nog <i>$3</i> punten verdienen!',
+	'mp-welcome-needed-points' => 'Um te promoveren naor <b><a href="$1">$2</a></b> mu-j nog <i>$3</i> {{PLURAL:$3|punte|punten}} verdienen!',
 	'mp-welcome-logged-in' => 'Huj $1',
 	'mp-requests-title' => 'Anvragen',
 	'mp-requests-message' => 'Je hemmen de volgende anvragen.',
@@ -424,6 +424,7 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'userwelcome-desc' => 'Legg til <tt>&lt;welcomeUser&gt;</tt>-taggen for å vise brukarspesifisert sosial informasjon for innlogga brukarar',
@@ -431,7 +432,7 @@ $messages['nn'] = array(
 	'mp-welcome-upload' => 'Last opp',
 	'mp-welcome-edit' => 'Endre',
 	'mp-welcome-points' => '$1 poeng',
-	'mp-welcome-needed-points' => 'For å avansere for <b><a href="$1">$2</a></b> må du oppnå <i>$3</i> fleire poeng!',
+	'mp-welcome-needed-points' => 'For å avansere for <b><a href="$1">$2</a></b> må du oppnå <i>$3</i> {{PLURAL:$3|poeng|poeng}} til!',
 	'mp-welcome-logged-in' => 'Hei $1',
 	'mp-requests-title' => 'Oppmodingar',
 	'mp-requests-message' => 'Du har følgjande oppmodingar.',
@@ -478,6 +479,18 @@ $messages['pl'] = array(
 	'mp-welcome-edit' => 'Edytuj',
 	'mp-welcome-points' => '$1 punktów',
 	'mp-request-new-message' => 'nowa wiadomość',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'mp-welcome-logged-in' => '$1 سلامونه',
+	'mp-requests-title' => 'غوښتنې',
+	'mp-requests-message' => 'تاسو دغه لاندينۍ غوښتنې لری.',
+	'mp-request-new-message' => 'نوی پيغام',
+	'mp-request-new-gift' => 'د $1 {{PLURAL:$1|نوې ډالۍ|نوي ډالۍ}}',
+	'mp-request-new-friend' => 'د $1 {{PLURAL:$1|نوی ملګری|نوي ملګري}}',
 );
 
 /** Portuguese (Português)
@@ -544,7 +557,7 @@ $messages['sk'] = array(
 	'mp-welcome-upload' => 'Nahrať súbor',
 	'mp-welcome-edit' => 'Upraviť',
 	'mp-welcome-points' => '$1 bodov',
-	'mp-welcome-needed-points' => 'Aby ste postúpili na <b><a href="$1">$2</a></b>, zarobte ešte <i>$3</i> bodov!',
+	'mp-welcome-needed-points' => 'Aby ste postúpili na <b><a href="$1">$2</a></b>, zarobte ešte <i>$3</i> {{PLURAL:$3|bod|body|bodov}}!',
 	'mp-welcome-logged-in' => 'Ahoj $1',
 	'mp-requests-title' => 'Požiadavky',
 	'mp-requests-message' => 'Máte nasledovné požiadavky.',

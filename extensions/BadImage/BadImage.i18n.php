@@ -957,11 +957,12 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'badimages' => '好ましくない画像の一覧',
-	'badimages-desc' => 'MediaWiki　に「好ましくない画像リスト」機能を追加する',
+	'badimages-desc' => 'MediaWiki に「好ましくない画像一覧」機能を追加する',
 	'badimages-add-btn' => '追加',
 	'badimages-added' => '$1 を一覧に追加しました。',
 	'badimages-count' => "この問題のある画像一覧には '''$1''' 個の画像が登録されています。",
@@ -969,12 +970,12 @@ $messages['ja'] = array(
 	'badimages-not-added' => '一覧への追加に失敗しました。',
 	'badimages-not-removed' => '一覧からの削除に失敗しました。',
 	'badimages-reason' => '理由:',
-	'badimages-remove' => '（削除）',
+	'badimages-remove' => '(削除)',
 	'badimages-remove-btn' => '削除',
 	'badimages-remove-confirm' => '一覧から $1 を削除してよろしいですか？:',
 	'badimages-removed' => '$1 を一覧から削除しました。',
 	'badimages-subheading' => '現在の一覧',
-	'badimages-unprivileged' => '一覧を編集する権限がありません。',
+	'badimages-unprivileged' => '(一覧を変更する権限がありません)',
 	'badimages-log-name' => '{{int:badimages}}編集記録',
 	'badimages-log-header' => 'これは [[{{MediaWiki:Badimages-page}}|{{int:badimages}}]]への変更の記録です。',
 	'badimages-log-add' => '[[$1]] を一覧に追加しました。',

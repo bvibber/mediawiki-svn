@@ -497,6 +497,13 @@ $messages['it'] = array(
 	'todo-form-details' => 'Dettagli:',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'todo-form-details' => '詳細:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  * @author Pras

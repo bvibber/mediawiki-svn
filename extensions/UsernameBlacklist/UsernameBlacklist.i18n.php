@@ -458,6 +458,7 @@ $messages['frp'] = array(
  * @author Alison
  */
 $messages['ga'] = array(
+	'usernameblacklist-desc' => 'Breisiú forlíontach [[MediaWiki:Usernameblacklist|dúliosta ainm úsáideora]] chun coisc a chur ar cuntais nua a chruthú ina meaitsaigh le ceann nó níos mó sloinn rialta',
 	'blacklistedusername' => 'Ainm úsáideoir sa liosta dubh',
 	'blacklistedusernametext' => "Tá an ainm úsáideoira roghnaítear agat sa [[MediaWiki:Usernameblacklist|liosta na ainm úsáideora toirmiscthe]]. Togh ceann eile, le d'thoil.",
 	'usernameblacklist' => '<pre>
@@ -469,6 +470,7 @@ $messages['ga'] = array(
 # * [Bb]ar
 </pre>',
 	'usernameblacklist-invalid-lines' => "Tá {{PLURAL:$1|líne|na líonta}} seo a leanas neamhbhailí sa liosta na ainm úsáideoira; ceartaigh {{PLURAL:$1|é|iad}}  le d'thoil roimh a shábháil:",
+	'right-uboverride' => 'Sáraíocht an dúliosta ainm úsáideora',
 );
 
 /** Galician (Galego)

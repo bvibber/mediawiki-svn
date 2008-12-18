@@ -174,6 +174,7 @@ $messages['bcc'] = array(
 $messages['be-tarask'] = array(
 	'youtubeauthsub' => 'Загрузка відэафайла YouTube',
 	'youtubeauthsub-desc' => 'Дазваляе ўдзельнікам [[Special:YouTubeAuthSub|загружаць відэа]] непасрэдна на YouTube',
+	'youtubeauthsub_info' => 'Каб загрузіць відэа на YouTube і дадаць яго на старонку, падайце наступную інфармацыю:',
 	'youtubeauthsub_category' => 'Катэгорыя',
 );
 
@@ -494,6 +495,7 @@ $messages['fy'] = array(
 $messages['ga'] = array(
 	'youtubeauthsub_title' => 'Teideal',
 	'youtubeauthsub_category' => 'Catagóir',
+	'youtubeauthsub_uploadbutton' => 'Uaslódaigh',
 );
 
 /** Galician (Galego)
@@ -763,6 +765,13 @@ Sii paziente.',
 	'youtubeauthsub_jserror_nokeywords' => "Inserisci un'altra parola chiave.",
 	'youtubeauthsub_jserror_notitle' => 'Inserisci un titolo per il video.',
 	'youtubeauthsub_jserror_nodesc' => 'Inserisci una descrizione per il video.',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'youtubeauthsub_title' => 'タイトル',
 );
 
 /** Javanese (Basa Jawa)

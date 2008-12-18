@@ -118,6 +118,13 @@ $messages['grc'] = array(
 	'emergencydesysop-nogroups' => 'Οὐδέν',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'emergencydesysop-nogroups' => 'なし',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

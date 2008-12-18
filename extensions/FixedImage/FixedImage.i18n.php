@@ -291,6 +291,13 @@ $messages['pl'] = array(
 	'fixedimage-desc' => 'Dodaje znacznik zbiórki funduszy <tt><nowiki><fundraising></nowiki></tt> jako obrazek',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'fixedimage-desc' => 'د <tt><nowiki><پانګونه></nowiki></tt> پټۍ د يوه انځور په توګه ورګډوي',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -303,6 +310,13 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'fixedimage-desc' => 'Adaugă eticheta <tt><nowiki><fundraising></nowiki></tt> ca imagine',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'fixedimage-desc' => "Aggiunge 'u tag <tt><nowiki><fundraising></nowiki></tt> cumme a 'n'immaggine",
 );
 
 /** Russian (Русский)

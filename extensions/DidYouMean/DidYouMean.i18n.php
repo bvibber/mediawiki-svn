@@ -231,6 +231,13 @@ $messages['pt'] = array(
 	'didyoumean-desc' => 'Adiciona ligações a páginas com títulos "semelhantes"',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'didyoumean-desc' => "Aggiunge le collegaminde a le pàggene cu titele ca s'assomigghiene",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -538,6 +538,13 @@ $messages['it'] = array(
 	'povwatch_title' => 'Titolo:',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'povwatch_title' => 'タイトル:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

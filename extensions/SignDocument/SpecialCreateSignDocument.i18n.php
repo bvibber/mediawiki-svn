@@ -365,6 +365,7 @@ e un texto introdutorio breve que describa o documento e lles dea instrucións a
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'createsigndocument' => 'Ἐνεργοποιεῖν τὸ ὑπογράφειν τῶν ἐγγράφων',
 	'createsigndoc-pagename' => 'Δέλτος:',
 	'createsigndoc-allowedgroup' => 'Ἐπιτρεπομένη ὁμάς:',
 	'createsigndoc-email' => 'Ἡλεκτρονικὴ διεύθυνσις:',
@@ -378,6 +379,8 @@ $messages['grc'] = array(
 	'createsigndoc-optional' => 'Προαιρετικόν',
 	'createsigndoc-create' => 'Ποεῖν',
 	'createsigndoc-error-generic' => 'Σφάλμα: $1',
+	'createsigndoc-error-pagenoexist' => 'Σφάλμα: Ἡ δέλτος [[$1]]  οῦχ ὑπάρχει',
+	'createsigndoc-error-alreadycreated' => 'Τὸ ἐγγράφον τὸ ὑπογράφον τὸ "$1" ἤδη ὑπάρχει.',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -913,6 +916,8 @@ $messages['roa-tara'] = array(
 	'createsigndoc-hidden' => 'Scunnute',
 	'createsigndoc-optional' => 'A scelte',
 	'createsigndoc-create' => 'Ccreje',
+	'createsigndoc-error-generic' => 'Errore: $1',
+	'createsigndoc-error-pagenoexist' => "Errore: 'A pàgene [[$1]] non g'esiste.",
 );
 
 /** Russian (Русский)

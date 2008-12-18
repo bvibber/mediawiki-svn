@@ -180,6 +180,14 @@ $messages['pt'] = array(
 	'catfeed-desc' => 'Usa pedaços de "feeds" de alterações recentes. Cria uma versão dentro de uma página, especialmente útil para Wikinotícias.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'catfeed-desc' => "Ause le stuezze da le feed de le cangiaminde recende.
+Ccreje 'na versione jndr'à pàgene, specialmende utile pe le Uicchinews.",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

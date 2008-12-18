@@ -105,6 +105,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'userimages-desc' => 'Galerije wót wužywarjow nagratych wobrazow pśez <code><nowiki><userimage /></nowiki></code> napóraś',
 	'userimages-caption' => 'Wobraze nagrate wót $1',
 	'userimages-noname' => 'Njepłaśiwe wužywarske mě abo žedne mě pódane',
 	'userimages-noimages' => '$1 njama wobrazowe nagraśa.',
@@ -134,8 +135,11 @@ $messages['ext'] = array(
 	'userimages-noimages' => '$1 nu á empuntau denguna imahin.',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author Grondin
+ */
 $messages['fr'] = array(
+	'userimages-desc' => 'Crée des galleries des images téléchargées par l’utilisateur avec <code><nowiki><userimage /></nowiki></code>.',
 	'userimages-caption' => 'Images importées par $1',
 	'userimages-noname' => 'Nom d’utilisateur invalide ou manquant.',
 	'userimages-noimages' => '$1 n’a importé aucune image.',
@@ -143,9 +147,11 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Toliño
  * @author Xosé
  */
 $messages['gl'] = array(
+	'userimages-desc' => 'Xera galerías de imaxes cargadas polo usuario con <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Imaxes enviadas por $1',
 	'userimages-noname' => 'O nome de usuario non é válido ou non se deu.',
 	'userimages-noimages' => '$1 non enviou ningunha imaxe.',
@@ -165,6 +171,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'userimages-desc' => 'Galerije wot wužiwarjow nahratych wobrazow přez <code><nowiki><userimage /></nowiki></code> wutworić',
 	'userimages-caption' => 'Wobrazy wot $1 nahrate',
 	'userimages-noname' => 'Njepłaćiwe wužiwarske mjeno abo njepodate.',
 	'userimages-noimages' => '$1 nahraća wobrazow nima.',
@@ -193,8 +200,11 @@ $messages['it'] = array(
 	'userimages-noimages' => "L'utente $1 non ha caricato immagini.",
 );
 
-/** Japanese (日本語) */
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
 $messages['ja'] = array(
+	'userimages-desc' => '<code><nowiki><userimage /></nowiki></code>で利用者がアップロードした画像のギャラリーを生成する',
 	'userimages-caption' => '$1 によってアップロードされた画像',
 	'userimages-noname' => '利用者名が存在しないか不正な入力です。',
 	'userimages-noimages' => '$1 は画像をアップロードしていません。',
@@ -292,8 +302,11 @@ $messages['mt'] = array(
 	'userimages-noimages' => "L-utent $1 ma tella' l-ebda immaġini.",
 );
 
-/** Dutch (Nederlands) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
+	'userimages-desc' => 'Maakt galerijen aan met door gebruikers toegevoegde afbeeldingen met <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Afbeeldingen toegevoegd door $1',
 	'userimages-noname' => 'Onjuiste gebruikersnaam of geen naam opgegeven.',
 	'userimages-noimages' => '$1 heeft geen afbeeldingen toegevoegd.',
@@ -301,10 +314,12 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  */
 $messages['nn'] = array(
+	'userimages-desc' => 'Lagar galleri av brukaropplasta bilete med <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Bilete lasta opp av $1',
-	'userimages-noname' => 'Ugyldig brukernamn, eller ingen brukarnamn er gjeve.',
+	'userimages-noname' => 'Ugyldig brukarnamn, eller ingen brukarnamn er gjeve.',
 	'userimages-noimages' => '$1 har ikkje lasta opp bilete.',
 );
 
@@ -384,6 +399,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'userimages-desc' => 'Tvorba galérií použíateľských obrázkov pomocou <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Obrázky nahrané používateľom $1',
 	'userimages-noname' => 'Neplatné alebo neposkytnuté používateľské meno.',
 	'userimages-noimages' => '$1 nenahral žiadne obrázky.',
@@ -421,8 +437,10 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Lejonel
+ * @author Najami
  */
 $messages['sv'] = array(
+	'userimages-desc' => 'Genererar gallerier av användaruppladdade bilder med <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Bilder som laddats upp av $1',
 	'userimages-noname' => 'Användarnamnet är ogiltigt eller angavs ej.',
 	'userimages-noimages' => '$1 har inte laddat upp några bilder.',

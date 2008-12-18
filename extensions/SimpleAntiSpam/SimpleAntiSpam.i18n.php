@@ -368,6 +368,16 @@ Vul dit veld '''NIET''' in!",
 	'simpleantispam-desc' => 'Voegt een eenvoudige spam/botcontrole toe aan formuleren',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'simpleantispam' => 'Endringa di utløyste antispam-mekanismen.',
+	'simpleantispam-label' => "Antispam-kontroll.
+'''IKKJE''' fyll ut dette feltet!",
+	'simpleantispam-desc' => 'Legg til ein enkel spam-/robotsjekk på skjema',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

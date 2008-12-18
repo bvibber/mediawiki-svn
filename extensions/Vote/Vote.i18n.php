@@ -335,6 +335,7 @@ $messages['fa'] = array(
  */
 $messages['fr'] = array(
 	'vote' => 'Vote',
+	'vote-desc' => 'Fournit les possibilités d’élection simple.',
 	'vote-header' => "Vous pouvez voter pour le '''maître de l'Univers''' ici !",
 	'vote-current' => "Votre vote actuel est pour '''$1'''.",
 	'vote-legend' => 'Placer ou modifier un vote',
@@ -360,6 +361,7 @@ sphinx|Sphinx',
  */
 $messages['gl'] = array(
 	'vote' => 'Votación',
+	'vote-desc' => 'Proporciona a capacidade de obter enquisas sinxelas',
 	'vote-header' => "Pode votar aquí polo '''Mellor Candidato do Mundo'''!",
 	'vote-current' => "O seu voto actual é para '''$1'''.",
 	'vote-legend' => 'Votar ou modificar o voto',
@@ -431,6 +433,7 @@ $messages['hil'] = array(
  */
 $messages['hsb'] = array(
 	'vote' => 'Hłosować',
+	'vote-desc' => 'Skića jednore naprašowanske móžnosće',
 	'vote-header' => "Móžeš tu za '''Supreme Overlord of the World''' hłosować!",
 	'vote-current' => "Twój aktualny hłós je za '''$1'''.",
 	'vote-legend' => 'Hłosować abo hłós změnić',
@@ -668,6 +671,7 @@ $messages['myv'] = array(
  */
 $messages['nl'] = array(
 	'vote' => 'Stemmen',
+	'vote-desc' => 'Maakt eenvoudige opiniepeilingen mogelijk',
 	'vote-header' => "U kunt hier stemmen voor '''Alleenheerser over de Wereld'''!",
 	'vote-current' => "Uw huidige stem is voor '''$1'''.",
 	'vote-legend' => 'Stem plaatsen of wijzigen',
@@ -689,10 +693,12 @@ riddler|Riddler',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
 	'vote' => 'Avstemming',
+	'vote-desc' => 'Gjev enkle avrøystingsmoglegheiter.',
 	'vote-header' => "Du kan stemme på '''(brukardøme)''' her!",
 	'vote-current' => "Di noverande stemme er på '''$1'''.",
 	'vote-legend' => 'Velg korleis du vil stemme',
@@ -913,6 +919,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'vote' => 'Hlasovať',
+	'vote-desc' => 'Poskytuje jednoduchú možnosť zisťovania',
 	'vote-header' => "Tu môžete hlasovať o '''Hlavnom diktátorovi sveta'''!",
 	'vote-current' => "Aktuálne hlasujete za '''$1'''.",
 	'vote-legend' => 'Hlasovať alebo zmeniť hlas',

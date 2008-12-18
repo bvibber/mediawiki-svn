@@ -324,9 +324,12 @@ Le ID a fornir hic es le numeros e litteras inter "$2" e "$3".',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'imstatus_example' => 'ឧទាហរណ៍',
+	'imstatus_max' => 'អតិបរមា',
+	'imstatus_min' => 'អប្បបរមា',
 	'imstatus_or' => 'ឬ',
 );
 

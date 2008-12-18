@@ -291,7 +291,13 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Ἱστοβεβασισμένον μεταγράφειν]] μεγάλου ἀριθμοῦ ἀρχείων Messages*.php',
+	'editmessages' => 'Μεταγράφειν μηνύματα',
+	'editmsg-target' => 'Μήνυμα στόχος:',
 	'editmsg-search' => 'Ζητεῖν',
+	'editmsg-show-list' => 'Δεικνύναι τιμὰς διὰ τὸ ὄνομα μηνύματος "$1"',
+	'editmsg-get-patch' => 'Γεννᾶν κάλυμμα',
+	'editmsg-new-search' => 'Νέα ζήτησις',
 );
 
 /** Manx (Gaelg)
@@ -420,6 +426,13 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'editmsg-search' => 'Ricerca',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'editmsg-search' => '検索',
 );
 
 /** Javanese (Basa Jawa)

@@ -91,6 +91,13 @@ $messages['it'] = array(
 	'newsextension-desc' => 'Mostra ultime modifiche personalizzate su una pagina wiki o come feed RSS o Atom',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'newsextension-desc' => 'wiki上のページ、あるいはRSSまたはAtomフィードとして、カスタマイズされた最近の更新を表示する',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -141,6 +148,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'newsextension-desc' => 'Mòstra los darrièrs cambiaments especifics sus una pagina wiki o coma un flus RSS o Atom.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'newsextension-desc' => 'د يوې ويکي په مخونو او يا هم لکه آر اس اس يا اټوم کتنو کې دوديز وروستي بدلونونه ښکاره کوي',
 );
 
 /** Portuguese (Português)

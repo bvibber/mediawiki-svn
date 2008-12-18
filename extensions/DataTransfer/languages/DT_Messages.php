@@ -330,6 +330,7 @@ $messages['got'] = array(
  */
 $messages['grc'] = array(
 	'dt_viewxml_categories' => 'Κατηγορίαι',
+	'dt_viewxml_namespaces' => 'Ὀνοματεῖα',
 	'dt_xml_namespace' => 'Ὀνοματεῖον',
 	'dt_xml_page' => 'Δέλτος',
 	'dt_xml_field' => 'Πεδίον',

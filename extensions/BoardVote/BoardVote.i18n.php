@@ -4450,6 +4450,7 @@ Het is mogelijk dat u een waarschuwing krijgt vanwege een niet ondertekend certi
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
@@ -4458,6 +4459,30 @@ $messages['nn'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Røyst]]
 * [[Special:Boardvote/list|Liste over røyster]]
 * [[Special:Boardvote/dump|Dump med kryptert stemmehistorikk]]',
+	'boardvote_intro_change' => '<p>Du har allereie gjeve di røyst. Likevel kan du endra røysta di ved å bruka skjemaet under. Ver venleg ranger kandidatane etter dine ønskje, der eit lågare tal indikerer at du set denne kandidaten høgare. Du kan gje den same rangeringa til meir enn ein kandidat, og treng ikkje å rangera alle kandidatane.</p>',
+	'boardvote_entered' => 'Takk, di røyst har blitt registrert.
+
+Om du vil, kan du ta vare på følgjande resultat. Din røystehistorikk er:
+
+<pre>$1</pre>
+
+Han har blitt kryptert med den offentlege nykelen frå valadministratorane:
+
+<pre>$2</pre>
+
+Den resulterande krypterte versjonen følgjer. Han vil bli vist [[Special:Boardvote/dump|offentleg]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Attende]]',
+	'boardvote_invalidentered' => '<p><strong>Feil</strong>: ein kan berre oppgje føretrekte kandidatar med positive heiltal (1, 2, 3, …), eller la feltet stå tomt.',
+	'boardvote_nosession' => 'Wikimedia-kontoen din kunne ikkje verta verifisert.
+Ver venleg og logg inn wikien der du er kvalifisert til å røysta, og gå til <nowiki>[[Special:Boardvote]]</nowiki>.
+Du må bruka ein konto med minst $1 {{PLURAL:$1|endring|endringar}} før $2, og ha gjort minst $3 {{PLURAL:$3|endring|endringar}} mellom $4 og $5.',
+	'boardvote_notloggedin' => 'Du er ikkje innlogga.
+For å røysta må du ha ein konto med minst $1 {{PLURAL:$1|endring|endringar}} før $2, og ha gjort minst $3 {{PLURAL:$3|endring|endringar}} mellom $4 og $5.',
+	'boardvote_notqualified' => 'Du er ikkje kvalifisert til å røysta i denne avrøystinga.
+For å kunna avgje ei røyst må du ha gjort minst $1 {{PLURAL:$1|endring|endringar}} før $2, og ha gjort minst $3 {{PLURAL:$3|endring|endringar}} mellom $4 og $5.',
 	'boardvote_novotes' => 'Ingen har røysta endå.',
 	'boardvote_time' => 'Tid',
 	'boardvote_user' => 'Brukar',
@@ -4479,8 +4504,17 @@ Røystinga er open til 22. juni kl. 00.00 (UTC)',
 	'group-boardvote' => 'Styrevaladministratorar',
 	'group-boardvote-member' => 'Styrevaladministrator',
 	'grouppage-boardvote' => '{{ns:project}}:Styrevaladministrator',
+	'boardvote_blocked' => 'Du har blitt blokkert på din registrerte wiki.
+Blokkerte brukarar har ikkje løyve til å røysta.',
+	'boardvote_bot' => 'Brukarkontoen din har robotflagg på på din registrerte wiki.
+Robotkontoar har ikkje høve til å røysta.',
 	'boardvote_welcome' => "Velkomen, '''$1'''!",
 	'go_to_board_vote' => 'Styreval i Wikimedia 2008',
+	'boardvote_redirecting' => 'For auka tryggleik og innsyn held me avrøystinga på ein ekstern og uavhengig nettenar.
+
+Du blir omdirigert til denne tenaren om 20 sekund. [$1 Klikk her] for å gå direkte til tenaren.
+
+Du vil kanskje få ei tryggleiksåtvaring om eit usignert sertifikat.',
 	'right-boardvote' => 'Administrere styreval',
 );
 

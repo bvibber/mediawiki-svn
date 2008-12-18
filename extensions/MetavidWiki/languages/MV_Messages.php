@@ -2351,6 +2351,13 @@ $messages['it'] = array(
 	'mv_category' => 'categoria',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'mv_tool_search' => '検索',
+);
+
 /** Lojban (Lojban)
  * @author Malafaya
  */

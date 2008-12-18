@@ -185,6 +185,13 @@ $messages['oc'] = array(
 	'googleadsense-desc' => 'Apond [http://www.google.com/adsense Google AdSense] a la barra laterala',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'googleadsense-desc' => 'څنګپټې کې [http://www.google.com/adsense ګووګل اډسېنس] ورګډوي',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

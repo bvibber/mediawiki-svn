@@ -1405,6 +1405,14 @@ Se, dopo cinque giorni, non ci sono state opposizioni alla cancellazione della p
 	'deletequeue-list-header-discusspage' => 'Pagina di discussione',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'deletequeue-list-status' => '状況:',
+	'deletequeue-list-search' => '検索',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
@@ -1928,6 +1936,13 @@ $messages['pl'] = array(
 	'deletequeue-list-header-queue' => 'Kolejka',
 	'deletequeue-list-header-expiry' => 'Upływa',
 	'deletequeue-list-header-discusspage' => 'Strona dyskusji',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'deletequeue-list-status' => 'دريځ:',
 );
 
 /** Portuguese (Português)

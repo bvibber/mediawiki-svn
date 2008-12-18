@@ -118,6 +118,13 @@ $messages['ia'] = array(
   # Omne occurrentias de $1 essera reimplaciate per le titulo del pagina actual.',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'metakeywords-desc' => '名前空間ごとに <tt><nowiki><meta "keywords"></nowiki></tt> および <tt><nowiki><meta "description"></nowiki></tt> タグの設定を可能にする',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

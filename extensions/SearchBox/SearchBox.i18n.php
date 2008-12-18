@@ -113,6 +113,13 @@ $messages['gl'] = array(
 	'searchbox-namespaces' => 'Espazos de nomes:',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ */
+$messages['grc'] = array(
+	'searchbox-namespaces' => 'Ὀνοματεῖα:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -121,6 +128,13 @@ $messages['hsb'] = array(
 	'searchbox-search' => 'Pytać',
 	'searchbox-go' => 'W porjadku',
 	'searchbox-namespaces' => 'Mjenowe rumy:',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'searchbox-search' => '検索',
 );
 
 /** Khmer (ភាសាខ្មែរ)

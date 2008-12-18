@@ -1870,6 +1870,15 @@ $wgGoogleMapsMessages['it'] = array(
 	'gm-mars' => 'Marte',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$wgGoogleMapsMessages['ja'] = array(
+	'gm-balloon-title' => 'タイトル:',
+	'gm-no-zoom-control' => 'なし',
+	'gm-search' => '検索',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -2095,6 +2104,7 @@ $wgGoogleMapsMessages['ku-latn'] = array(
  * @author Robby
  */
 $wgGoogleMapsMessages['lb'] = array(
+	'gm-incompatible-browser' => 'fir déi Kaart ze gesinn déi hei misst ugewise ginn, musst Dir e kompatibele Browser benotzen.',
 	'gm-incompatible-browser-link' => 'Klickt heihinner fir eng Lëscht vu kompatibele Browser ze gesinn.',
 	'gm-balloon-title' => 'Titel:',
 	'gm-balloon-link-article' => 'Link op dës Säit (fakultativ):',

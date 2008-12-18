@@ -88,7 +88,9 @@ $messages['qqq'] = array(
 	'oversight' => 'Oversight extension. The name of the page [[Special:Oversight]], used in the list of special pages and at the top of Special:Oversight.
 
 {{Identical|Oversight}}',
-	'oversight-view' => '{{Identical|Details}}',
+	'oversight-view' => 'It means "view source"
+----
+{{Identical|Details}}',
 	'oversight-oversighter' => "Option of fieldset in Special:Oversight. ''Overisight'' is the user who has hidden revision",
 	'oversight-offender' => "Option of fieldset in Special:Oversight. ''Offender'' is the author of the hidden revision",
 );
@@ -1770,12 +1772,20 @@ $messages['ko'] = array(
 	'right-hiderevision' => '관리자도 보지 못하도록 숨겨진 판의 확인 및 복구',
 	'hiderevision-prompt' => '제거할 판의 번호:',
 	'hiderevision-continue' => '계속',
+	'hiderevision-text' => "이 기능은 '''다음 경우에만''' 사용되어야 합니다.
+* 개인 정보를 제거할 때
+*: 집 주소, 전화번호, 주민등록번호 등
+
+'''이 기능을 남용할 경우 권한이 해제될 수 있습니다.'''
+
+삭제된 편집은 웹 사이트를 통해 아무에게도 보여지지 않을 것입니다. 하지만 삭제된 편집은 실수를 했을 때 데이터베이스 관리자에 의해 수동으로 복구될 수 있습니다.",
 	'hiderevision-tab' => '이 판을 숨기기',
 	'hiderevision-link' => '숨겨진 사용자 기여',
 	'hiderevision-norevisions' => '삭제할 판이 제시되지 않았습니다.',
 	'hiderevision-status' => '$1판: $2',
 	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',
 	'oversight' => '오버사이트',
+	'oversight-view' => '내용 보기',
 	'oversight-hidden' => '숨겨진 판',
 	'oversight-offender' => '편집자:',
 );

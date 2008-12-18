@@ -321,6 +321,13 @@ $messages['pt'] = array(
 	'doublewiki-desc' => 'Apresenta uma página e a sua tradução de outro wiki em duas colunas da mesma página',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'doublewiki-desc' => "Fà vedè 'na pàgene e le traduziune sue da n'otra Uicchi sus a doje culonne d'a stessa pàgene",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

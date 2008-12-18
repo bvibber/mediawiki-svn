@@ -110,6 +110,13 @@ $messages['it'] = array(
 	'psinotocnum-desc' => 'Nuova parola magica "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'psinotocnum-desc' => '新しいマジックワード“<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>”',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

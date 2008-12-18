@@ -533,6 +533,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'spamregex-error-unblocking' => 'Feeler bäim ophiewe vun der Spär: "$1". Et gëtt wahrscheinlech keen esou e Muster.',
 	'spamregex-summary' => 'Dësen Text gouf am Resumé vun der Säit fonnt',
 	'spamregex-currently-blocked' => "'''Sätz déi elo gespaart sinn:'''",
 	'spamregex-no-currently-blocked' => "'''Et gëtt keng gespaarte Sätz.'''",

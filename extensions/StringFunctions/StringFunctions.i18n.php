@@ -107,6 +107,13 @@ $messages['ia'] = array(
 	'stringfunctions-desc' => 'Extende le analysator syntactic con functiones de texto',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'stringfunctions-desc' => 'パーサーに文字列処理関数を追加する',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
