@@ -1,164 +1,96 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html dir="ltr" xml:lang="ltr">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-### Fancy Planet HTML template.
-### 
-### When combined with the stylesheet and images in the output/ directory
-### of the Planet source, this gives you a much prettier result than the
-### default examples template and demonstrates how to use the config file
-### to support things like faces
-### 
-### For documentation on the more boring template elements, see
-### examples/config.ini and examples/index.html.tmpl in the Planet source.
-
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="gmq" xml:lang="gmq">
 <head>
-<title><TMPL_VAR name></title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="generator" content="<TMPL_VAR generator ESCAPE="HTML">">
-<link rel="stylesheet" href="planet.css" type="text/css">
-<TMPL_IF feedtype>
-<link rel="alternate" href="<TMPL_VAR feed ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">" type="application/<TMPL_VAR feedtype>+xml">
-</TMPL_IF>
+<title>Planet Wikimedia</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style type="text/css" media="screen, projection">/*<![CDATA[*/ @import "http://en.wikinews.org/skins-1.5/monobook/main.css"; /*]]>*/</style>
+<link rel="stylesheet" type="text/css" media="print" href="http://en.wikinews.org/skins-1.5/common/commonPrint.css" />
+<!--[if lt IE 5.5000]><style type="text/css">@import "http://en.wikinews.org/skins-1.5/monobook/IE50Fixes.css";</style><![endif]-->
+
+<!--[if IE 5.5000]><style type="text/css">@import "http://en.wikinews.org/skins-1.5/monobook/IE55Fixes.css";</style><![endif]-->
+<!--[if IE 6]><style type="text/css">@import "http://en.wikinews.org/skins-1.5/monobook/IE60Fixes.css";</style><![endif]-->
+<!--[if IE 7]><style type="text/css">@import "http://en.wikinews.org/skins-1.5/monobook/IE70Fixes.css";</style><![endif]-->
+<!--[if lt IE 7]><meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+<script type="text/javascript">
+    function focusSearchBox() {
+        document.getElementById("searchInput").focus();
+    }
+    function addLoadEvent(fn) {
+        if (window.addEventListener) window.addEventListener("load", fn, false);
+        else if (window.attachEvent) window.attachEvent("onload", fn);
+    }
+    addLoadEvent(focusSearchBox);
+</script>
+
 </head>
+<body style="background: #ffffff; margin-top:5em;">
+<div id="globalWrapper">
+<div id="column-content">
+<div id="bodyContent">
+<div class="plainlinks">
 
-<body>
-
-<div class="gmq-langlinks" style="float:none;text-align:center;margin:5em;font-size:200%;"><a href="index.da.html">Dansk</a> · <a href="index.fo.html">Føroyskt</a> · <a href="index.is.html">Íslenska</a> · Norsk (<a href="index.nb.html">bokmål</a> · <a href="index.nn.html">nynorsk</a>) · <a href="index.sv.html">Svenska</a></div>
-
-<h1><TMPL_VAR name></h1>
-
-<TMPL_LOOP Items>
-<TMPL_IF new_date>
-<TMPL_UNLESS __FIRST__>
-### End <div class="channelgroup">
-</div>
-### End <div class="daygroup">
-</div>
-</TMPL_UNLESS>
-<div class="daygroup">
-<h2><TMPL_VAR new_date></h2>
-</TMPL_IF>
-
-<TMPL_IF new_channel>
-<TMPL_UNLESS new_date>
-### End <div class="channelgroup">
-</div>
-</TMPL_UNLESS>
-<div class="channelgroup">
-
-### Planet provides template variables for *all* configuration options for
-### the channel (and defaults), even if it doesn't know about them.  We
-### exploit this here to add hackergotchi faces to our channels.  Planet
-### doesn't know about the "face", "facewidth" and "faceheight" configuration
-### variables, but makes them available to us anyway.
-
-<h3><a href="<TMPL_VAR channel_link ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">"><TMPL_VAR channel_name></a></h3>
-<TMPL_IF channel_face>
-<img class="face" src="images/<TMPL_VAR channel_face ESCAPE="HTML">" width="<TMPL_VAR channel_facewidth ESCAPE="HTML">" height="<TMPL_VAR channel_faceheight ESCAPE="HTML">" alt="">
-</TMPL_IF>
-</TMPL_IF>
-
-
-<div class="entrygroup" id="<TMPL_VAR id>"<TMPL_IF channel_language> lang="<TMPL_VAR channel_language>"</TMPL_IF>>
-<TMPL_IF title>
-<h4<TMPL_IF title_language> lang="<TMPL_VAR title_language>"</TMPL_IF>><a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_VAR title></a></h4>
-</TMPL_IF>
-<div class="entry">
-<div class="content"<TMPL_IF content_language> lang="<TMPL_VAR content_language>"</TMPL_IF>>
-<TMPL_VAR content>
+<!-- the text at the top -->
+<div style="margin: 1em 0 0.3em 0; text-align: center; font-size: 30px; line-height: 110%; font-family: 'Arial', sans-serif;" class="plainlinks">
+<img src="images/planetlogo.png"  width="238" height="16" alt="Planet Wikimedia" />
 </div>
 
-### Planet also makes available all of the information from the feed
-### that it can.  Use the 'planet-cache' tool on the cache file for
-### a particular feed to find out what additional keys it supports.
-### Comment extra fields are 'author' and 'category' which we
-### demonstrate below.
+<!-- container div for the central logo and the links to the largest language editions -->
+<div style="text-align: center; vertical-align: middle; max-width: 100%; width: 42em; margin: 0 auto 0 auto; height: 26em; position: relative;">
 
-<p class="date">
-<a href="<TMPL_VAR link ESCAPE="HTML">"><TMPL_IF author>by <TMPL_VAR author> at </TMPL_IF><TMPL_VAR date><TMPL_IF category> under <TMPL_VAR category></TMPL_IF></a>
-</p>
+<!-- the central logo -->
+<div style="position: absolute; left: 50%; top: 50%; width: 0; height: 0;">
+<div style="position: relative; left: -80px; top: -110px; width: 160px; height: 160px;">
+<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Wikimedia_Community_Logo.svg/160px-Wikimedia_Community_Logo.svg.png" width="160" height="160" alt="" />
 </div>
 </div>
 
-<TMPL_IF __LAST__>
-### End <div class="channelgroup">
+<!-- #3 -->
+
+<div style="position: absolute; top: 10%; left: 14%; background: #fff; text-align:right;" lang="sv" xml:lang="sv">
+<big><strong><a href="index.sv.html">Svenska</a></strong></big>
 </div>
-### End <div class="daygroup">
+
+<!-- #4 -->
+<div style="position: absolute; top: 10%; right: 6%; background: #fff; text-align:left;" lang="nb" xml:lang="nb">
+<big><strong><a href="index.nb.html">Norsk (bokmål)</a></strong></big>
 </div>
-</TMPL_IF>
-</TMPL_LOOP>
 
+<!-- #5 -->
+<div style="position: absolute; top: 40%; left: 8%; background: #fff; text-align:right;" lang="da" xml:lang="da">
+<big><strong><a href="index.da.html">Dansk</a></strong></big>
+</div>
 
-<div class="sidebar">
-<img src="images/logo.png" width="135" height="135" alt="">
-<h2>Subscribe</h2>
-<ul><li>
-<a href="/atom.xml">atom feed</A></li>
-<li><a href="/rss10.xml">rss 1.0</A></li>
-<li><a href="/rss20.xml">rss 2.0</a></li>
-</ul>
+<!-- #6 -->
+<div style="position: absolute; top: 40%; right: 0%; background: #fff; text-align:left;" lang="nn" xml:lang="nn">
+<big><strong><a href="index.nn.html">Norsk (nynorsk)</a></strong></big>
+</div>
 
-<h2>About</h2>
+<!-- #7 -->
+<div style="position: absolute; top: 70%; left: 14%; background: #fff; text-align:right;" lang="is" xml:lang="is">
+<big><strong><a href="index.is.html">Íslenska</a></strong></big>
+</div>
 
-<I>Planet Wikimedia is a combined view on what Wikimedia project participants have to say in their blogs about wikis. <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia">More information ..</A>
-</I>
+<!-- #8 -->
 
-<h2>Subscriptions</h2>
-<ul>
-<TMPL_LOOP Channels>
-<li>
-<a href="<TMPL_VAR url ESCAPE="HTML">" title="subscribe"><img src="images/feed-icon-10x10.png" alt="(feed)"></a> <a <TMPL_IF link>href="<TMPL_VAR link ESCAPE="HTML">" </TMPL_IF><TMPL_IF message>class="message" title="<TMPL_VAR message ESCAPE="HTML">"</TMPL_IF><TMPL_UNLESS message>title="<TMPL_VAR title_plain ESCAPE="HTML">"</TMPL_UNLESS>><TMPL_VAR name></a>
-</li>
-</TMPL_LOOP>
-</ul>
-<P>
-<strong><a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia">Add your blog</A> &ndash; <a href="http://meta.wikimedia.org/wiki/Planet_Wikimedia/New_language">Request new language</A></strong>
-</P>
-<p>
-<strong>Last updated:</strong><br>
-<TMPL_VAR date><br>
-<em>All times are UTC.</em><br>
-<br>
-Powered by:<br>
-<a href="http://www.planetplanet.org/"><img src="images/planet.png" width="80" height="15" alt="Planet" border="0"></a>
-</p>
-<P>
-<H2>Disclaimer</H2>
-Planet Wikimedia is operated by the non-profit <a href="http://wikimediafoundation.org/">Wikimedia Foundation</A> for the purpose of facilitating the sharing of
-information and opinions among members of the Wikimedia community. The aggregation of posts from weblogs is a computer-controlled process, and the Wikimedia Foundation is not liable for any material 
-submitted by participants in this online community.
-</P>
-<p>
-<h2>Planetarium:</h2>
-<ul>
-<li><a href="http://wikiblogplanet.com/">Wiki Blog Planet</a></li>
-<li><a href="http://planet.creativecommons.org/">Planet CC</A></li>
-<li><a href="http://planet.laptop.org/">Planet OLPC</A></li>
-<li><a href="http://planet.freedesktop.org/">Planet freedesktop.org</a></li>
-<li><a href="http://planet.mozilla.org/">Planet Mozilla</A></li>
-<li><a href="http://planet.inkscape.org/">Planet Inkscape</A></li>
-<li><a href="http://planet.ubuntu.com/">Planet Ubuntu</A></li>
-<li><a href="http://planet.debian.net/">Planet Debian</a></li>
-<li><a href="http://planet.fedoraproject.org/">Planet Fedora</a></li>
-<li><a href="http://intelligentdesigns.net/Planet_tracker">more...</a></li>
-</ul>
-</p>
-<p>
-<h2>In other languages:</h2>
-<ul>
-<li><a href="http://ar.planet.wikimedia.org">العربية</a></li>
-<li><a href="http://cs.planet.wikimedia.org">Česky</a></li>
-<li><a href="http://de.planet.wikimedia.org">Deutsch</a></li>
-<li><a href="http://en.planet.wikimedia.org">English</a></li>
-<li><a href="http://fr.planet.wikimedia.org">Français</a></li>
-<li><a href="http://pl.planet.wikimedia.org">Polski</a></li>
-<li><a href="http://pt.planet.wikimedia.org">Português</a></li>
-<li><a href="http://ru.planet.wikimedia.org">Русский</a></li>
-<li><a href="http://sr.planet.wikimedia.org">Српски / Srpski</a></li>
-<li><a href="http://zh.planet.wikimedia.org">中文</a></li>
-</ul>
-</p>
+<div style="position: absolute; top: 70%; right: 16%; background: #fff; text-align:left;" lang="fo" xml:lang="fo">
+<big><strong><a href="index.fo.html">Føroyskt</a></strong></big>
+</div>
+
+<div style="position: absolute; top: 85%; right:35%; background: #fff; text-align:center;" lang="mul" xml:lang="mul">
+<a href="atom.xml">atom</a> • <a href="rss10.xml">rss 1.0</a> • <a href="rss20.xml">rss 2.0</a>
+</div>
+
+<div style="position: fixed; bottom: 1em; left: 50%; text-align: center;">
+<a href="http://wikimediafoundation.org/" style="margin-left:-44px;"><img src="http://upload.wikimedia.org/wikipedia/commons/8/8b/Wikimedia-button-for-homepage.png" width="88" height="31" alt="Wikimedia" /></a>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
 </div>
 </body>
-
 </html>
