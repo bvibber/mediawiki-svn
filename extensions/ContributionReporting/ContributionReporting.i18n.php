@@ -49,7 +49,12 @@ $messages['en'] = array(
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Percentage (YTD)',
 	'contribstats-total-ytd' => 'Total (YTD)',
-	
+	'contribstats-value-exactly' => 'Exactly $1',
+	'contribstats-value-under' => 'Under $1',
+	'contribstats-value-from' => 'From $1 - $2',
+	'contribstats-value-over' => 'Over $1',
+	'contribstats-percentage' => '$1%',
+
 	// Fundraiser statistics
 	'fundraiserstatistics' => 'Fundraiser statistics',
 	'fundraiserstats-date' => 'Date',
@@ -63,6 +68,8 @@ $messages['en'] = array(
 	'fundraiserstats-tab-contributions' => 'Number of contributions',
 	'fundraiserstats-tab-averages' => 'Averages (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
+
+	'specialpages-group-contribution' => 'Contributions/Fundraiser',
 );
 
 /** Message documentation (Message documentation)

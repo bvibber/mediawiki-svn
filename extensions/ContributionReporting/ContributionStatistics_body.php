@@ -244,12 +244,12 @@ class SpecialContributionStatistics extends SpecialPage {
 		$factor = $numContributions > 0 ? 100.0 / $numContributions : 0;
 		
 		$list = array(
-			'Exactly 30.00' => array( 30 ),
-			'Exactly 75.00' => array( 75 ),
-			'Exactly 100.00' => array( 100 ),
-			'Under 99.00' => array( 0, 99.99 ),
-			'From 100.00 - 999.99' => array( 100, 999.99 ),
-			'Over 1000.00' => array( 1000, 999999999999.99 ),
+			 wfMsg( 'contribstats-value-exactly', $wgLang->formatNum( 30 ) ) => array( 30 ),
+			 wfMsg( 'contribstats-value-exactly', $wgLang->formatNum( 75 ) ) => array( 75 ),
+			 wfMsg( 'contribstats-value-exactly', $wgLang->formatNum( 100 ) ) => array( 100 ),
+			 wfMsg( 'contribstats-value-under', $wgLang->formatNum( 99.99 ) ) => array( 0, 99.99 ),
+			 wfMsg( 'contribstats-value-from', $wgLang->formatNum( 100 ), $wgLang->formatNum( 999.99 ) ) => array( 100, 999.99 ),
+			 wfMsg( 'contribstats-value-over', $wgLang->formatNum( 1000 ) ) => array( 1000, 999999999999.99 ),
 		);
 		foreach( $list as $label => $range ) {
 			$data = array();
@@ -260,9 +260,12 @@ class SpecialContributionStatistics extends SpecialPage {
 			}
 			$htmlOut .= Xml::tags( 'tr', null,
 				Xml::element( 'td', array( 'align' => 'left' ), $label ) .
-				Xml::element( 'td', array( 'align' => 'right' ), $data[0] ) .
-				Xml::element( 'td', array( 'align' => 'right' ), round( $data[0] * $factor, 2 ) . '%' ) .
-				Xml::element( 'td', array( 'align' => 'right' ), isset( $range[1] ) ? round( $data[1], 2 ) : '-' )
+				Xml::element( 'td', array( 'align' => 'right' ),
+					$wgLang->formatNum( $data[0] ) ) .
+				Xml::element( 'td', array( 'align' => 'right' ), 
+					wfMsg( 'contribstats-percentage', $wgLang->formatNum( round( $data[0] * $factor, 2 ) ) ) ) .
+				Xml::element( 'td', array( 'align' => 'right' ),
+					isset( $range[1] ) ? $wgLang->formatNum( round( $data[1], 2 ) ) : '-' )
 			);
 		}
 		

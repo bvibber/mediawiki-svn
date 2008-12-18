@@ -38,6 +38,10 @@ $wgSpecialPages['ContributionHistory'] = 'ContributionHistory';
 $wgSpecialPages['ContributionTotal'] = 'ContributionTotal';
 $wgSpecialPages['ContributionStatistics'] = 'SpecialContributionStatistics';
 $wgSpecialPages['FundraiserStatistics'] = 'SpecialFundraiserStatistics';
+$wgSpecialPageGroups['ContributionHistory'] = 'contribution';
+$wgSpecialPageGroups['ContributionTotal'] = 'contribution';
+$wgSpecialPageGroups['ContributionStatistics'] = 'contribution';
+$wgSpecialPageGroups['FundraiserStatistics'] = 'contribution';
 
 // Shortcut to this extension directory
 $dir = dirname( __FILE__ ) . '/';
