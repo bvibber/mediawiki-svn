@@ -218,6 +218,7 @@ class WebConfiguration extends SiteConfiguration {
 		// This is a damn dirty hack
 		if ( !$initialiseSettingsDone ) {
 			$initialiseSettingsDone = true;
+			global $IP, $wgConf;
 			if( file_exists( "$IP/InitialiseSettings.php" ) ) {
 				require_once "$IP/InitialiseSettings.php";
 			}
