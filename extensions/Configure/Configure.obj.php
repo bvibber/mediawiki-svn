@@ -212,6 +212,17 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array
 	 */
 	public function getDefaultsForWiki( $wiki ) {
+		## Hack for Wikimedia
+		static $initialiseSettingsDone = false;
+
+		// This is a damn dirty hack
+		if ( !$initialiseSettingsDone ) {
+			$initialiseSettingsDone = true;
+			if( file_exists( "$IP/InitialiseSettings.php" ) ) {
+				require_once "$IP/InitialiseSettings.php";
+			}
+		}
+		
 		// Hmm, a better solution would be nice!
 		$savedSettings = $this->settings;
 		$this->settings = $this->mOldSettings;
