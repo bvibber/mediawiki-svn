@@ -188,7 +188,7 @@ Please create it or change it to use this extension.',
 	'configure-condition-name-3'          => 'E-mail confirmed',
 	'configure-condition-name-4'          => 'In groups',
 	'configure-condition-name-5'          => 'User\'s IP address',
-	'configure-condition-name-6'          => 'User\'s IP address in CDIR range',
+	'configure-condition-name-6'          => 'User\'s IP address in CIDR range',
 	'configure-autopromote-noconds'       => 'No prerequisites',
 	
 	'configure-condition-description-1'   => 'Minimum edit count of $1',
