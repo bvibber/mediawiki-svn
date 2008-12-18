@@ -8,10 +8,11 @@
 
 $messages = array();
 
-/* English
+/** English
  * @author Rob Church
  */
 $messages['en'] = array(
+	'userimages-desc'     => 'Generate galleries of user-uploaded images with <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption'  => 'Images uploaded by $1',
 	'userimages-noname'   => 'Invalid username or none provided.',
 	'userimages-noimages' => '$1 has no image uploads.',

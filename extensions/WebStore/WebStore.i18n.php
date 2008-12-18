@@ -19,6 +19,7 @@ Set $wgLocalTmpDirectory to a writeable directory.',
 	'inplace_scaler_no_output'         => 'No transformation output file was produced.',
 	'inplace_scaler_zero_size'         => 'Transformation produced a zero-sized output file.',
 
+	'webstore-desc'          => 'Web-only (non-NFS) file storage middleware',
 	'webstore_access'        => 'This service is restricted by client IP.',
 	'webstore_path_invalid'  => 'The filename was invalid.',
 	'webstore_dest_open'     => 'Unable to open destination file "$1".',

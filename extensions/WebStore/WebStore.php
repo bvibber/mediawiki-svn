@@ -73,6 +73,7 @@ $wgExtensionCredits['other'][] = array(
 	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Tim Starling',
 	'description' => 'Web-only (non-NFS) file storage middleware',
+	'descriptionmsg' => 'webstore-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:WebStore',
 );
 

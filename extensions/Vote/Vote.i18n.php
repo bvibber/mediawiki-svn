@@ -9,11 +9,12 @@
 
 $messages = array();
 
-/* English
+/** English
  * @author Rob Church
  */
 $messages['en'] = array(
 	'vote'                => 'Vote',
+	'vote-desc'           => 'Provides simple polling capabilities',
 	'vote-header'         => "You can vote for '''Supreme Overlord of the World''' here!",
 	'vote-current'        => "Your current vote is for '''$1'''.",
 	'vote-legend'         => 'Place or amend vote',

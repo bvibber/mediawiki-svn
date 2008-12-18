@@ -19,6 +19,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'svn-revision' => '$LastChangedRevision$',
 	'author' => 'Rob Church',
 	'description' => 'Provides simple polling capabilities',
+	'descriptionmsg' => 'vote-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Vote',
 );
 
