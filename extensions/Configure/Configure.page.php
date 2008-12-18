@@ -614,7 +614,8 @@ abstract class ConfigurationPage extends SpecialPage {
 					break;
 				case 'promotion-conds':
 					$options = array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' );
-					$conds = array( APCOND_EDITCOUNT => 'int', APCOND_AGE => 'int', APCOND_EMAILCONFIRMED => 'bool', APCOND_INGROUPS => 'array' );
+					$conds = array( APCOND_EDITCOUNT => 'int', APCOND_AGE => 'int', APCOND_EMAILCONFIRMED => 'bool',
+						APCOND_INGROUPS => 'array', APCOND_ISIP => 'text', APCOND_IPINRANGE => 'text' );
 
 					if ( isset( $_REQUEST['wp' . $name . '-vals'] ) ) {
 						$groups = explode( "\n", trim( $wgRequest->getText( 'wp' . $name . '-vals' ) ) );
@@ -648,6 +649,11 @@ abstract class ConfigurationPage extends SpecialPage {
 								break;
 							case 'int':
 								$val = $wgRequest->getInt( 'wp' . $name . '-' . $group . '-cond-' . $condName );
+								if( $val )
+									$condsVal[] = array( $condName, $val );
+								break;
+							case 'text':
+								$val = $wgRequest->getVal( 'wp' . $name . '-' . $group . '-cond-' . $condName );
 								if( $val )
 									$condsVal[] = array( $condName, $val );
 								break;
@@ -1328,7 +1334,8 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	public static function buildPromotionCondsSettingRow( $conf, $allowed, $group, $groupConds ){
 		static $options = array( 'or' => '|', 'and' => '&', 'xor' => '^', 'not' => '!' );
-		static $conds = array( APCOND_EDITCOUNT => 'int', APCOND_AGE => 'int', APCOND_EMAILCONFIRMED => 'bool', APCOND_INGROUPS => 'array' );
+		static $conds = array( APCOND_EDITCOUNT => 'int', APCOND_AGE => 'int', APCOND_EMAILCONFIRMED => 'bool',
+			APCOND_INGROUPS => 'array', APCOND_ISIP => 'text', APCOND_IPINRANGE => 'text' );
 		
 		$row = '<div class="configure-biglist promotion-conds-element">';
 		$row .= wfMsgHtml( 'configure-condition-operator' ) . ' ';
@@ -1376,8 +1383,10 @@ abstract class ConfigurationPage extends SpecialPage {
 				$row .= Xml::check( $encId.'-cond-'.$condName, isset( $condsVal[$condName] ) && $condsVal[$condName],
 					array( 'id' => $encId.'-cond-'.$condName ) + $extra ) . "<br />\n";
 				break;
+			case 'text':
 			case 'int':
-				$row .= Xml::input( $encId.'-cond-'.$condName, 20, isset( $condsVal[$condName] ) ? $condsVal[$condName] : 0, $extra ) . "<br />\n";
+				$row .= Xml::input( $encId.'-cond-'.$condName, ( $condType == 'int' ? 20 : 40 ),
+					isset( $condsVal[$condName] ) ? $condsVal[$condName] : ( $condType == 'int' ? 0 : '' ), $extra ) . "<br />\n";
 				break;
 			case 'array':
 				$id = "{$encId}-cond-{$condName}";
