@@ -150,7 +150,7 @@ $mvMVDTypeDefaultDisp should be a subset of $mvMVDTypeAllAvailable',
 	'video_feed_cat' => 'Video feed for category:',
 	'mv_cat_search_note' => 'Note: Categories only lists top level categories.
 For all metadata in category ranges search for $1',
-	'category-media-count' => '$1 media segments in category',
+	'mv-category-media-count' => '$1 media segments in category',
 
 # Messages for MV_DataPage
 	'mv_mvd_linkback' => 'Part of stream $1 <br />
@@ -385,7 +385,7 @@ $messages['niu'] = array(
 $messages['af'] = array(
 	'mv_tool_search' => 'Soek',
 	'mv_tool_export' => 'Eksporteer',
-	'category-media-count' => 'Daar is {{PLURAL:$1|een lêer|$1 lêers}} in die kategorie.',
+	'mv-category-media-count' => 'Daar is {{PLURAL:$1|een lêer|$1 lêers}} in die kategorie.',
 	'mv_play' => 'Speel',
 	'mv_edit' => 'Wysig',
 	'mv_history' => 'Geskiedenis',
@@ -519,7 +519,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'video_feed_cat' => 'تلقيم فيديو للتصنيف:',
 	'mv_cat_search_note' => 'ملاحظة: التصنيفات تعرض فقط التصنيفات العليا.
 لكل بيانات الميتا في بحث نطاقات التصنيف عن $1',
-	'category-media-count' => '$1 عمود ميديا في التصنيف',
+	'mv-category-media-count' => '$1 عمود ميديا في التصنيف',
 	'mv_mvd_linkback' => 'جزء من الستريم $1 <br />
 القفز إلى عرض الستريم: $2',
 	'mvBadMVDtitle' => 'نوع مفقود، ستريم مفقود، أو صيغة وقت غير صحيحة',
@@ -759,7 +759,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'video_feed_cat' => 'تلقيم فيديو للتصنيف:',
 	'mv_cat_search_note' => 'ملاحظة: التصنيفات تعرض فقط التصنيفات العليا.
 لكل بيانات الميتا فى بحث نطاقات التصنيف عن $1',
-	'category-media-count' => '$1 عمود ميديا فى التصنيف',
+	'mv-category-media-count' => '$1 عمود ميديا فى التصنيف',
 	'mv_mvd_linkback' => 'جزء من الستريم $1 <br />
 القفز إلى عرض الستريم: $2',
 	'mvBadMVDtitle' => 'نوع مفقود، ستريم مفقود، أو صيغة وقت غير صحيحة',
@@ -896,7 +896,7 @@ $messages['as'] = array(
  * @author Mostafadaneshvar
  */
 $messages['bcc'] = array(
-	'category-media-count' => '{{PLURAL:$1|یک فایل هست|هستن $1 فایلانی}} ته ای دسته.',
+	'mv-category-media-count' => '{{PLURAL:$1|یک فایل هست|هستن $1 فایلانی}} ته ای دسته.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -961,7 +961,7 @@ $messages['bs'] = array(
 	'mv_tool_search' => 'Traži',
 	'mv_tool_export' => 'Izvezi',
 	'mv_click_to_edit' => 'kliknite za uređivanje',
-	'category-media-count' => '$1 medijalnih segmenata u kategoriji',
+	'mv-category-media-count' => '$1 medijalnih segmenata u kategoriji',
 	'mv_edit' => 'Uredi',
 	'mv_history' => 'Historija',
 	'mv_remove' => 'ukloni',
@@ -1243,7 +1243,7 @@ $messages['fr'] = array(
 	'mvexportask' => 'Exportation d’un fil vidéo sémantique',
 	'video_feed_cat' => 'Alimentation de la vidéo pour la catégorie :',
 	'mv_cat_search_note' => 'Note : « Catégories » ne liste que les catégories de premier niveau. Pour toutes les métadonnées dans les groupes de catégories, recherchez $1',
-	'category-media-count' => '$1 segments de media dans la catégorie',
+	'mv-category-media-count' => '$1 segments de media dans la catégorie',
 	'mv_mvd_linkback' => 'Partie du flux $1 <br />Saut vers le visionnement du flux : $2<br />',
 	'mvBadMVDtitle' => 'type manquant, flux manquant, ou format de durée non conforme.',
 	'mvMVDFormat' => 'Le titre de metavid devrait être au format : mvd:type:nom_du_flux/durée_commencement/durée_fin',
@@ -1510,7 +1510,7 @@ $mvMVDTypeDefaultDisp deber ser un subgrupo de $mvMVDTypeAllAvailable',
 	'video_feed_cat' => 'Alimentación do vídeo para a catagoría:',
 	'mv_cat_search_note' => 'Nota: as categorías só listan as categorías dos niveis superiores.
 Para todos os datos meta nos rexistros de categoría busque por $1',
-	'category-media-count' => '$1 segmentos multimedia na categoría',
+	'mv-category-media-count' => '$1 segmentos multimedia na categoría',
 	'mv_mvd_linkback' => 'Parte do fluxo $1 <br />
 Saltar á vista do fluxo: $2',
 	'mvBadMVDtitle' => 'falta o tipo, o fluxo ou o formato de tempo é inválido',
@@ -2201,7 +2201,7 @@ $mvMVDTypeDefaultDisp debe esser un subconjuncto de $mvMVDTypeAllAvailable',
 	'video_feed_cat' => 'Syndication de videos pro categoria:',
 	'mv_cat_search_note' => 'Nota: Le categorias lista solmente le categorias de nivello superior.
 Pro tote le metadatos in intervallos de categorias, cerca $1',
-	'category-media-count' => 'Il ha {{PLURAL:$1|un file|$1 files}} in iste categoria.',
+	'mv-category-media-count' => 'Il ha {{PLURAL:$1|un file|$1 files}} in iste categoria.',
 	'mv_mvd_linkback' => 'Parte del fluxo $1 <br />
 Saltar verso le vista del fluxo: $2',
 	'mvBadMVDtitle' => 'typo mancante, fluxo mancante, o formato de tempore invalide',
@@ -2384,7 +2384,7 @@ $messages['jv'] = array(
 	'thomas_en' => 'Transkripsi resmi',
 	'mv_data_page_title' => '$1 kanggo $2 saka $3',
 	'mv_time_separator' => '$1 menyang $2',
-	'category-media-count' => '$1 sègmèn media ing kategori',
+	'mv-category-media-count' => '$1 sègmèn media ing kategori',
 	'mv_play' => 'Main',
 	'mv_edit' => 'Sunting',
 	'mv_history' => 'Sajarah',
@@ -2905,7 +2905,7 @@ $messages['nah'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'category-media-count' => '$1 mediasegmenten in kattegerie',
+	'mv-category-media-count' => '$1 mediasegmenten in kattegerie',
 	'mv_edit' => 'Bewark',
 );
 
@@ -3018,7 +3018,7 @@ U kunt links toevoegen, maar alle tekst moet gesproken worden in de videostream.
 	'video_feed_cat' => 'Videofeed voor categorie:',
 	'mv_cat_search_note' => 'Let op: alleen ondercategorieën van het eerste niveau worden weergegeven.
 Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
-	'category-media-count' => '$1 mediasegmenten in categorie',
+	'mv-category-media-count' => '$1 mediasegmenten in categorie',
 	'mv_mvd_linkback' => 'Onderdeel van stream $1<br />Stream bekijken: $2<br />',
 	'mvBadMVDtitle' => 'type of stream niet aanwezig, of onjuiste tijdsnotatie',
 	'mvMVDFormat' => 'De titel voor MVD hoort de volgende opmaak te hebben: mvd:type:streamnaam/begintijd/eindtijd',
@@ -3473,7 +3473,7 @@ Aqueste tipe de presentacion es pel tèxt qu'es parlat amb lo flus vidèo. De li
 	'mvexportask' => 'Exportacion d’un fial vidèo semantic',
 	'video_feed_cat' => 'Alimentacion de la vidèo per la categoria :',
 	'mv_cat_search_note' => 'Nòta : las categorias listan pas que las del nivèl mai naut, per tota recèrca de metadonadas dins los gropes de categorias per $1',
-	'category-media-count' => '$1 segments de mèdia dins la categoria',
+	'mv-category-media-count' => '$1 segments de mèdia dins la categoria',
 	'mv_mvd_linkback' => 'Partida del flus $1 <br />Saut cap al visionament del flus : $2<br />',
 	'mvBadMVDtitle' => 'tipe mancant, flus mancant, o format de durada pas confòrme.',
 	'mvMVDFormat' => 'Lo títol de metavid deuriá èsser al format : mvd:type:nom_del_flus/durada_començament/durada_fin',
@@ -4156,7 +4156,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'mvexportask' => 'Export kanála Semantic Video',
 	'video_feed_cat' => 'Videokanál kategórie:',
 	'mv_cat_search_note' => 'Pozn.: Medzi kategóriami sú iba kategórie najvyššej úrovne, všetky metadáta v kategórii nájdete vyhľadávaním $1',
-	'category-media-count' => 'V kategórii sa {{PLURAL:$1|nachádza $1 multimediálny úsek|nachádzajú $1 multimediálne úseky|nachádza $1 multimediálnych úsekov}}',
+	'mv-category-media-count' => 'V kategórii sa {{PLURAL:$1|nachádza $1 multimediálny úsek|nachádzajú $1 multimediálne úseky|nachádza $1 multimediálnych úsekov}}',
 	'mv_mvd_linkback' => 'Časť streamu $1 <br />Prejsť na zobrazenie streamu: $2<br />',
 	'mvBadMVDtitle' => 'chýbajúci typ, chýbajúci stream alebo neplatný formát času',
 	'mvMVDFormat' => 'Názov MVD by mal byť vo formáte: mvd:typ:názov_streamu/čas_začiatku/čas_konca',
@@ -4676,7 +4676,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'mv_tool_search' => 'ค้นหา',
-	'category-media-count' => 'สื่อ $1 อันอยู่ในหมวดหมู่นี้',
+	'mv-category-media-count' => 'สื่อ $1 อันอยู่ในหมวดหมู่นี้',
 	'mv_search_categories' => 'หมวดหมู่',
 );
 
