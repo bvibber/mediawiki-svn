@@ -257,7 +257,9 @@ class ImageMap {
 
 		if ( $realmap ) {
 			# Construct the map
-			$mapName = "ImageMap_" . ++self::$id;
+			# Add random number to avoid breaking cached HTML fragments that are 
+			# later joined together on the one page (bug 16471)
+			$mapName = "ImageMap_" . ++self::$id . '_' . mt_rand( 0, 0x7fffffff );
 			$mapHTML = "<map name=\"$mapName\">\n$mapHTML</map>\n";
 
 			# Alter the image tag
