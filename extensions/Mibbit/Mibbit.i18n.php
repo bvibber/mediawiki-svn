@@ -280,6 +280,14 @@ Agli utenti anonimi ne è dato uno generato automaticamente, ma si può cambiare
 	'right-mibbit' => 'Autorizzato a usare la chat di Mibbit',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'mibbit' => 'Mibbitチャット',
+	'mibbit-desc' => '他のウィキユーザーとリアルタイムにチャットをするのための[[Special:Mibbit|特別ページ]]を追加します',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

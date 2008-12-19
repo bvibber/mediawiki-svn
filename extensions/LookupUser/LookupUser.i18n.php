@@ -202,6 +202,27 @@ $messages['eo'] = array(
 	'lookupuser-useroptions' => 'Opcioj de uzanto:',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'lookupuser' => 'نگاه کردن به اطلاعات کاربر',
+	'lookupuser-desc' => '[[Special:LookupUser|به دست آوردن اطلاعات]] در مورد یک کاربر نظیر نشانی پست الکترونیکی و ID',
+	'lookupuser-intro' => 'یک نام کاربری وارد کنید تا تنظیمات آن کاربر را ببینید.',
+	'lookupuser-nonexistent' => 'خطا: کاربر وجود ندارد',
+	'lookupuser-authenticated' => 'اعتبارداده‌شده روی $1',
+	'lookupuser-not-authenticated' => 'فاقد اعتبار',
+	'lookupuser-id' => 'نام کاربری: <tt>#$1</tt>',
+	'lookupuser-email' => 'پست الکترونیکی: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'تامین نشده',
+	'lookupuser-realname' => 'نام حقیقی: $1',
+	'lookupuser-registration' => 'تاریخ ثبت‌نام: $1',
+	'lookupuser-no-registration' => 'ثبت نشده',
+	'lookupuser-touched' => 'آخرین دستکاری در اطلاعات کاربر: $1',
+	'lookupuser-info-authenticated' => 'فعال‌سازی پست الکترونیکی: $1',
+	'lookupuser-useroptions' => 'گزینه‌های کاربر:',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  */
@@ -870,6 +891,7 @@ $messages['vec'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -886,6 +908,7 @@ $messages['vi'] = array(
 	'lookupuser-registration' => 'Ngày đăng ký: $1',
 	'lookupuser-no-registration' => 'không lưu trữ',
 	'lookupuser-touched' => 'Bản ghi lại lần cuối truy cập: $1',
+	'lookupuser-info-authenticated' => 'Xác nhận thư điện tử: $1',
 	'lookupuser-useroptions' => 'Lựa chọn của thành viên:',
 );
 

@@ -120,6 +120,14 @@ $messages['gl'] = array(
 	'abcdownload' => 'Descargar:',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'abcdesc' => 'Προσθέτει τὸ προσάρτημα <tt>&lt;abc&gt;</tt> ἵνα μορφώσῃ τὴν μουσικὴν ABC',
+	'abcdownload' => 'Καταφόρτισις:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -194,6 +202,14 @@ $messages['lb'] = array(
  */
 $messages['ml'] = array(
 	'abcdownload' => 'ഡൌൺലോഡ്',
+);
+
+/** Mongolian (Монгол)
+ * @author E.shijir
+ */
+$messages['mn'] = array(
+	'abcdesc' => 'ABC хөгжимиын горимд <tt>&lt;abc&gt;</tt> шошгыг нэмэх',
+	'abcdownload' => 'Өөртөө хуулах:',
 );
 
 /** Dutch (Nederlands)

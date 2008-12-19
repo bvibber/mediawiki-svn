@@ -732,6 +732,14 @@ $messages['ml'] = array(
 	'countedits-nocontribs' => 'ഈ വിക്കിയില്‍ സജീവമായി സംഭാവന ചെയ്യുന്നവരില്ല',
 );
 
+/** Mongolian (Монгол)
+ * @author E.shijir
+ */
+$messages['mn'] = array(
+	'countedits' => 'Засваруудыг тоолох',
+	'countedits-desc' => '[[Special:CountEdits|Тусгай хуудас]] нь хэрэглэгчийн засваруудыг тоолж топ арван хувь оруулагчдын жагсаалт гаргадаг',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

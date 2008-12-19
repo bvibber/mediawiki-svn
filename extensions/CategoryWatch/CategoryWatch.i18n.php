@@ -203,6 +203,19 @@ Questo messaggio ti avverte che alle $3 l\'utente $4 $5.',
 	'categorywatch-catsub' => 'ha rimosso $1 dalla categoria $2',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'categorywatch-desc' => 'ウォッチリスト機能を拡張し、ウォッチしているカテゴリにおける所属構成の変更を通知するようにする',
+	'categorywatch-emailbody' => 'こんにちは $1、あなたが「$2」カテゴリをウォッチしているため、このメッセージを受け取りました。$3に利用者 $4 が$5ことをお知らせします。',
+	'categorywatch-emailsubject' => 'ウォッチしているカテゴリ「$1」に関する変更',
+	'categorywatch-catmovein' => '$1をカテゴリ$2へ$3から移しました',
+	'categorywatch-catmoveout' => '$1をカテゴリ$2から$3へ移しました',
+	'categorywatch-catadd' => '$1をカテゴリ$2に加えました',
+	'categorywatch-catsub' => '$1をカテゴリ$2から外しました',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

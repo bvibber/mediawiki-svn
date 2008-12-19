@@ -1873,8 +1873,12 @@ $messages['vi'] = array(
 	'whitelisttablemodifyall' => 'Tất cả',
 	'whitelisttablemodifynone' => 'Không có',
 	'whitelisttableedit' => 'Sửa',
+	'whitelisttablenewdate' => 'Ngày tháng mới:',
+	'whitelisttablechangedate' => 'Thay đổi ngày hạn',
 	'whitelisttableremove' => 'Dời',
+	'whitelistnewtabledate' => 'Ngày hạn:',
 	'whitelistbadtitle' => 'Tựa trang sai –',
+	'whitelistoverviewna' => "* Thêm [[:$1|$1]] vào danh sách trắng với quyền truy cập '''$2''' và ngày hạn '''$3'''",
 	'whitelistnever' => 'không bao giờ',
 );
 

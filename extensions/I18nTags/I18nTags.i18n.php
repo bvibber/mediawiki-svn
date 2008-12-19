@@ -192,6 +192,13 @@ $messages['pt'] = array(
 	'i18ntags-desc' => 'Acede às funções de i18n para formatação de números, gramática e plural em qualquer língua disponível',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'i18ntags-desc' => "Trase jndr'à funzione i18n p'a formattazione de le numere, grammateche e plurele jndr'à tutte le lenghe",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

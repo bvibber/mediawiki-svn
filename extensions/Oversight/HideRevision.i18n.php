@@ -507,12 +507,17 @@ Uklonjene stavke neće biti vidljive niko preko web stranice, ali sva brisanja s
 Vratite najprije ovu promjenu.',
 	'hiderevision-error-delete' => 'Nije moguće arhivirati, da nije ranije obrisano?',
 	'hiderevision-archive-status' => 'Obrisana revizija od $1: $2',
+	'oversight-nodiff' => 'Nije moguće pratiti promjene pošto trenutno nema ranije revizije stranice. Ili je:
+*stranica obrisana ili je
+*ova sakrivena revizija ujedno bila i prva revizija',
 	'oversight-log-hiderev' => 'uklonjena izmjena iz $1',
 	'oversight' => 'Nadzor',
 	'oversight-view' => 'detalji',
 	'oversight-difference' => '(Razlika od ranije preostale revizije)',
 	'oversight-prev' => 'Zadnja prethodna revizija',
 	'oversight-hidden' => 'Skrivena revizija',
+	'oversight-header' => 'Ispod je spisak revizija koje su nedavno zauvijek sakrivene od javnog pregleda.
+Otkrivanje ovih informacija može rezultirati stalnim gubitkom privilegija nazdornika.',
 	'oversight-legend' => 'Pretraži zapis sakrivanja revizija',
 	'oversight-oversighter' => 'Nadzornik:',
 	'oversight-offender' => 'Napasnik:',
@@ -1160,6 +1165,7 @@ $messages['hi'] = array(
  * @author Dalibor Bosits
  * @author Dnik
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'hiderevision' => 'Trajno sakrij uređivanja',
@@ -1183,6 +1189,7 @@ učinite pogrešku.",
 	'hiderevision-reason' => 'Razlog (bit će pohranjen u evidenciji nedostupnoj suradnicima):',
 	'hiderevision-submit' => 'Trajno sakrij',
 	'hiderevision-tab' => 'Sakrij uređivanje',
+	'hiderevision-link' => 'Skriveni suradnikovi doprinosi',
 	'hiderevision-norevisions' => 'Niste naveli uređivanja koje želite ukloniti.',
 	'hiderevision-noreason' => 'Morate navesti razlog uklanjanja/skrivanja uređivanja.',
 	'hiderevision-status' => 'Uređivanje $1: $2',
@@ -3094,6 +3101,7 @@ Không ai có thể dùng website để xem phiên bản sau khi nó được gi
 	'hiderevision-reason' => 'Lý do (cho nhật ký giữ kín):',
 	'hiderevision-submit' => 'Giấu dữ liệu để khó khôi phục',
 	'hiderevision-tab' => 'Giấu phiên bản',
+	'hiderevision-link' => 'Đóng góp ẩn của người dùng',
 	'hiderevision-norevisions' => 'Bạn chưa chọn phiên bản để giấu.',
 	'hiderevision-noreason' => 'Bạn cần phải đưa vào lý do giấu phiên bản.',
 	'hiderevision-status' => 'Phiên bản $1: $2',

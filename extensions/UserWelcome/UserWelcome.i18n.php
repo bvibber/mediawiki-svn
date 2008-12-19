@@ -234,7 +234,7 @@ $messages['he'] = array(
 	'mp-welcome-upload' => 'העלאה',
 	'mp-welcome-edit' => 'עריכה',
 	'mp-welcome-points' => '$1 נקודות',
-	'mp-welcome-needed-points' => 'כדי להתקדם ל<b><a href="$1">$2</a></b> הרוויחו <i>$3</i> נקודות נוספות!',
+	'mp-welcome-needed-points' => 'כדי להתקדם ל<b><a href="$1">$2</a></b> הרוויחו {{PLURAL:$3|נקודה <i>אחת</i> נוספת|<i>$3</i> נקודות נוספות}}!',
 	'mp-welcome-logged-in' => 'שלום $1',
 	'mp-requests-title' => 'בקשות',
 	'mp-requests-message' => 'הגיעו אליכם הבקשות הבאות.',

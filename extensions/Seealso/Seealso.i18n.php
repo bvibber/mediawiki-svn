@@ -178,6 +178,14 @@ $messages['it'] = array(
 	'seealso-desc' => "Intestazioni 'Vedi anche' localizzate usando il tag <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'seealso' => '関連項目',
+	'seealso-desc' => '<code><nowiki><seealso></nowiki></code> タグによる見出し「関連項目」をローカライズする',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

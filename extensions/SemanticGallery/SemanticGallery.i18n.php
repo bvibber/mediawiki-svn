@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'semanticgallery-desc' => 'Adds a gallery output format to SMW inline queries',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'semanticgallery-desc' => 'Pśidawa galerijowy wudawański format za wotpšašanja SMW',
+);
+
 /** French (Français)
  * @author Grondin
  */

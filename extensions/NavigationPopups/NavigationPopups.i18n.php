@@ -142,6 +142,13 @@ $messages['oc'] = array(
 	'navigationpopups-desc' => 'Carga, dins mèdiawiki, los escripts de las fenèstras de navigacion de Lupin',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'navigationpopups-desc' => 'Careche le script de navigazione pe le popup de Lupin in mediauicchi',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

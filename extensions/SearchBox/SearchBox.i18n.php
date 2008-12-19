@@ -120,6 +120,15 @@ $messages['grc'] = array(
 	'searchbox-namespaces' => 'Ὀνοματεῖα:',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'searchbox-search' => 'Traži',
+	'searchbox-go' => 'Idi',
+	'searchbox-namespaces' => 'Imenski prostor:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

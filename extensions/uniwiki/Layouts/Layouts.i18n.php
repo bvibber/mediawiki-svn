@@ -139,6 +139,21 @@ $messages['he'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'layouts-desc' => 'Wuhotuj nowowutworjene strony z wobdźěłujomne  "wuhotowanja", zo by jednotnu strukturu za strony spěchował',
+	'layouts_title' => 'Stronu wutworić',
+	'layouts_chooselayout' => 'Wubjer wuhotowanje za $1:',
+	'layouts_nolayout' => 'Žane wuhotowanje',
+	'layouts_continue' => 'Dale',
+	'layouts_choosecategory' => 'Wubjer kategoriju za $1:',
+	'layouts_unknown' => 'Njeznaty',
+	'layouts_tagline' => "Tuta strona bu z wuhotowanjom '''$1''' wutworjena.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

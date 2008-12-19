@@ -1327,6 +1327,7 @@ Prawdopodobnie brak takiego użytkownika.',
  */
 $messages['ps'] = array(
 	'regexblock-form-reason' => 'سبب:',
+	'regexblock-form-expiry' => 'د پای نېټه:',
 	'regexblock-view-all' => 'ټول',
 	'regexblock-view-go' => 'ورځه',
 	'regexblock-view-reason' => 'سبب: $1',

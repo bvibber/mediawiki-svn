@@ -164,6 +164,13 @@ $messages['pt'] = array(
 	'newsextension-desc' => 'Mostra mudanças recentes personalizadas numa página wiki ou como uma fonte RSS ou Atom',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'newsextension-desc' => "Fa vedè le cangiaminde recende personalizzete sus a 'na pàgena de uicchi o cumme RSS o Atom feed",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

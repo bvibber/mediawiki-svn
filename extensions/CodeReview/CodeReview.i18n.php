@@ -1515,6 +1515,7 @@ $4',
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'code' => 'Pregled koda',
@@ -1573,6 +1574,7 @@ $messages['hr'] = array(
 	'code-rev-purge-link' => 'očisti',
 	'code-status-new' => 'novo',
 	'code-status-fixme' => 'fixme',
+	'code-status-reverted' => 'uklonjen',
 	'code-status-resolved' => 'riješeno',
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'odgođeno',
@@ -1911,11 +1913,13 @@ $messages['ja'] = array(
 	'code-authors' => '著者',
 	'code-tags' => 'タグ',
 	'code-field-author' => '著者',
+	'code-field-message' => 'コミット要約',
 	'code-field-status' => '状況',
 	'code-field-timestamp' => '日付',
 	'code-field-path' => 'パス',
 	'code-rev-author' => '著者:',
 	'code-rev-date' => '日付:',
+	'code-rev-message' => 'コメント:',
 	'code-rev-status' => '状況:',
 	'code-pathsearch-path' => 'パス:',
 );
@@ -3570,6 +3574,11 @@ $4',
 $messages['vi'] = array(
 	'code' => 'Duyệt mã',
 	'code-comments' => 'Ghi chú',
+	'code-change-status' => "đã đổi '''trạng thái''' của phiên bản này",
+	'code-change-tags' => "đã đổi các '''thẻ''' của phiên bản này",
+	'code-change-removed' => 'đã dời:',
+	'code-change-added' => 'đã thêm:',
+	'code-prop-changes' => 'Nhật trình trạng thái và thẻ',
 	'code-desc' => '[[Special:Code|Công cụ duyệt mã]] [[Special:RepoAdmin|hỗ trợ Subversion]]',
 	'code-no-repo' => 'Chưa thiết lập kho dữ liệu!',
 	'code-notes' => 'xem ghi chú',
@@ -3619,6 +3628,7 @@ $messages['vi'] = array(
 	'code-rev-purge-link' => 'làm mới',
 	'code-status-new' => 'mới',
 	'code-status-fixme' => 'cần sửa',
+	'code-status-reverted' => 'khôi phục',
 	'code-status-resolved' => 'giải quyết',
 	'code-status-ok' => 'được',
 	'code-status-deferred' => 'hoãn',

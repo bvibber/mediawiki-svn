@@ -693,6 +693,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'review_user_details_link' => '(詳細)',
+	'review_comment' => 'コメント',
 );
 
 /** Javanese (Basa Jawa)

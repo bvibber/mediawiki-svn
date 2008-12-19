@@ -1177,6 +1177,14 @@ $messages['it'] = array(
 	'sign-viewfield-options' => 'Opzioni',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'sign-viewfield-reviewcomment' => 'コメント',
+	'sign-review-comment' => 'コメント',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -1276,7 +1284,7 @@ $messages['km'] = array(
 	'sign-viewfield-reviewcomment' => 'យោបល់',
 	'sign-uniquequery-similarname' => 'ឈ្មោះស្រដៀងគ្នា',
 	'sign-uniquequery-similaraddress' => 'អាសយដ្ឋានស្រដៀងគ្នា',
-	'sign-uniquequery-similarphone' => 'ទូរស័ព្ទ ស្រដៀង',
+	'sign-uniquequery-similarphone' => 'ទូរស័ព្ទ​ស្រដៀងគ្នា',
 	'sign-uniquequery-similaremail' => 'អ៊ីមែលស្រដៀងគ្នា',
 );
 

@@ -144,6 +144,13 @@ $messages['pt'] = array(
 	'htmlets-desc' => 'Permite-lhe incluir "inline" blocos de HTML a partir de ficheiros usando a marca <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'htmlets-desc' => "Fa ausà le snippets inline de l'HTML da le file usanne 'u tag <tt><nowiki><htmlet></nowiki></tt>",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

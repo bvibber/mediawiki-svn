@@ -768,9 +768,12 @@ Sii paziente.',
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'youtubeauthsub' => 'YouTube動画をアップロード',
+	'youtubeauthsub-desc' => '利用者に直接 YouTube へ[[Special:YouTubeAuthSub|動画をアップロード]]できるようにする',
 	'youtubeauthsub_title' => 'タイトル',
 );
 

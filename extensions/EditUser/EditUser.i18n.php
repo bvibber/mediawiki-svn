@@ -474,6 +474,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Hosiryuhosi
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -484,6 +485,8 @@ $messages['ja'] = array(
 	'edituser-dosearch' => '検索',
 	'edituser-nouser' => '指定された利用者は存在しません',
 	'edituser-exempt' => '指定された利用者は編集できません',
+	'right-edituser' => '他のユーザーのオプションを編集してください',
+	'right-edituser-exempt' => '他者に彼らのオプションを編集することはできません。',
 );
 
 /** Javanese (Basa Jawa)
@@ -507,6 +510,7 @@ $messages['km'] = array(
 	'edituser-dosearch' => 'ស្វែងរក',
 	'edituser-nouser' => 'មិនមានអ្នកប្រើប្រាស់ដូចដែលបានបញ្ជាក់ទេ',
 	'edituser-exempt' => 'អ្នកប្រើប្រាស់ដែលបានបញ្ជាក់មិនអាចកែបានទេ',
+	'right-edituser' => 'កែប្រែ​ចំណង់ចំណូលចិត្ត​របស់​អ្នកប្រើប្រាស់​ដទៃ',
 );
 
 /** Korean (한국어)

@@ -180,6 +180,13 @@ $messages['pt'] = array(
 	'metakeywords-desc' => 'Permite a configuração de tags <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> por domínio',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'metakeywords-desc' => 'Permette \'a configurazione de le tag <tt><nowiki><meta "keywords"></nowiki></tt> e <tt><nowiki><meta "description"></nowiki></tt> pe namespace',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

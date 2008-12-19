@@ -383,10 +383,11 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'authorprotect' => 'Zaštiti stranicu od ne-autora',
-	'authorprotect-desc' => 'Omogućava autoru stranice zaštiti istu stranicu od drugih suradnika',
+	'authorprotect-desc' => 'Omogućava autoru stranice da zaštiti istu stranicu od drugih suradnika',
 	'authorprotect-notauthor' => 'Vi niste autor ove stranice',
 	'authorprotect-confirm' => 'Promijeni razinu zaštite',
 	'authorprotect-edit' => 'Samo za autore',

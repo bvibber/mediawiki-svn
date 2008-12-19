@@ -168,9 +168,12 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'dplforum-desc' => 'Ἐπέκτασις τῆς ἀγορὰς βεβασισμένη εἰς τὴν DPL',
 	'dplforum-by' => 'ὑπὸ',
 	'dplforum-edited' => '  - Ἐσχάτως μεταγεγραμμένη',
 	'dplforum-never' => 'Οὔποτε',
+	'dplforum-toofew' => 'Ἀγορὰ DPL: Τὰ μάλα ὀλίγαι κατηγορίαι!',
+	'dplforum-toomany' => 'Ἀγορὰ DPL: Τὰ μάλα πολλαὶ κατηγορίαι!',
 );
 
 /** Hebrew (עברית)

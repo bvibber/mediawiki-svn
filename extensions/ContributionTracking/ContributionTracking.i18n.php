@@ -247,6 +247,14 @@ $messages['jv'] = array(
 	'contrib-tracking-button' => 'Terus',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'contrib-tracking-error' => 'កំហុស',
+	'contrib-tracking-button' => 'បន្ត',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

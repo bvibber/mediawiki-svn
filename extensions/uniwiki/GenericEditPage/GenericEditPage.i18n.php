@@ -261,6 +261,32 @@ $messages['he'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'gep-desc' => 'Čini wobdźěłowansku stronu za wužiwarja přijomnišu',
+	'gep-emailsubject' => '[$1] Namjet kategorije: $2',
+	'gep-emailbody' => 'Wužiwar "$1" je kategoriju "$2" za sydło "$3" namjetował.',
+	'gep-emailfailure' => 'Bohužel njeje so dał twój namjet předźěłać.',
+	'gep-emailsuccess' => 'Dźakujemy so za namjetowanje kategorije: $1.',
+	'gep-categories' => 'Kategorije',
+	'gep-addcategory' => 'Kategoriju přidać',
+	'gep-addcategorybutton' => 'Přidać',
+	'gep-suggestcategory' => 'Kategoriju namjetować',
+	'gep-suggestcategorybutton' => 'Pósłać',
+	'gep-sections' => 'Wotrězki',
+	'gep-sectionnotdisabled' => 'Tutón wotrězk njeda so znjemóžnić',
+	'gep-addsection' => 'Wotrězk přidać',
+	'gep-addsectionbutton' => 'Přidać',
+	'gep-classicmode' => 'Klasiski modus',
+	'gep-genericmode' => 'Powšitkowny modus',
+	'gep-nosectioninstructions' => 'Na tutej stronje wotrězki njejsu.
+Přidaj někotre z pomocu nastrojow naprawo.',
+	'gep-nocategories' => 'Prošu wubjer znajmjeńša jednu kategoriju do składowanja.',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

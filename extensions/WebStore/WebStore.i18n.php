@@ -560,6 +560,7 @@ $messages['he'] = array(
 	'inplace_scaler_no_handler' => 'אין הגדרה להצגת קבצים מסוג MIME זה',
 	'inplace_scaler_no_output' => 'לא נוצר קובץ הכולל את פלט המרה.',
 	'inplace_scaler_zero_size' => 'ההמרה יצרה קובץ פלט בן 0 בתים.',
+	'webstore-desc' => 'תוכנת תיווך ברשת בלבד (ללא־NFS)',
 	'webstore_access' => 'שירות זה מוגבל לפי כתובת ה־IP של הלקוח.',
 	'webstore_path_invalid' => 'שם הקובץ שגוי.',
 	'webstore_dest_open' => 'לא ניתן לפתוח את קובץ היעד "$1".',

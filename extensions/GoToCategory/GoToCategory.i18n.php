@@ -141,6 +141,13 @@ $messages['oc'] = array(
 	'gotocategory-desc' => "Marcar los tèrmes de las recèrcas a l’endrech de la categoria : nom d'espaci per « Anar » a partir de la foncionalitat « anar a la pagina »",
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'gotocategory-desc' => "Verifiche le termene de recerche condre 'a Categorije: 'u namespace pe sce jndr'à funzione 'zumbe sus 'a pàgene'",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

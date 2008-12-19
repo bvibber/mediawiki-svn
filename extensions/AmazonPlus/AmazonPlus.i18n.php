@@ -167,6 +167,45 @@ $messages['hsb'] = array(
 	'amazonplus-cp-none' => 'Žadyn',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ * @author Fryed-peach
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'amazonplus-desc' => 'Amazon からの情報を表示する高度にカスタマイズ可能な拡張機能',
+	'amazonplus-nores' => 'エラー: 結果は見つかりませんでした!',
+	'amazonplus-noidres' => 'エラー: プロダクトIDが見つかりませんでした！',
+	'amazonplus-fgcerr' => 'エラー: Amazon からデータを取得できませんでした！',
+	'amazonplus-slserr' => 'エラー:アマゾンからのデータを解析することができませんでした!',
+	'amazonplus-used' => '中古',
+	'amazonplus-german' => 'ドイツ語',
+	'amazonplus-french' => 'フランス語',
+	'amazonplus-japanese' => '日本語',
+	'amazonplus-amazon' => 'アマゾン価格',
+	'amazonplus-new' => '新品',
+	'amazonplus-none' => 'この商品は在庫・出品がありません。',
+	'amazonplus-cp-none' => '無し',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'amazonplus-nores' => 'កំហុស​៖ គ្មាន​លទ្ធផល​!',
+	'amazonplus-noidres' => 'កំហុស​៖ មិន​អាច​រកឃើញ​ផលិតផល​ដែល​មាន ID!',
+	'amazonplus-fgcerr' => 'កំហុស​៖ មិន​អាច​ទាញយក​ទិន្នន័យ​ពី​អាម៉ាហ្សូន​ទេ​!',
+	'amazonplus-slserr' => 'កំហុស​៖ មិន​អាច​ញែក​ទិន្នន័យ​ពី​អាម៉ាហ្សូន​ទេ​!',
+	'amazonplus-used' => 'បាន​ប្រើ',
+	'amazonplus-german' => 'ភាសាអាល្លឺម៉ង់',
+	'amazonplus-french' => 'ភាសាបារាំង',
+	'amazonplus-japanese' => 'ភាសាជប៉ុន',
+	'amazonplus-amazon' => 'តម្លៃ​នៅលើ​អាម៉ាហ្សូន',
+	'amazonplus-new' => 'ថ្មី',
+	'amazonplus-none' => 'គ្មាន​ផលិតផល​ថតចម្លង​ណាមួយ​ត្រូវ​បាន​ដាក់​លក់​ឡើយ​។',
+	'amazonplus-cp-none' => 'គ្មាន',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

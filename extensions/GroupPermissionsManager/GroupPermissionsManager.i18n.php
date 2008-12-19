@@ -972,9 +972,11 @@ $messages['km'] = array(
 	'grouppermissions-comment' => 'យោបល់៖',
 	'grouppermissions-addsuccess' => '$1ត្រូវបានបន្ថែមដោយជោគជ័យ',
 	'grouppermissions-deletesuccess' => '$1ត្រូវបានលុបដោយជោគជ័យ',
+	'grouppermissions-changesuccess' => 'សេចក្ដីអនុញ្ញាត​សម្រាប់ $1 ត្រូវ​បាន​ប្ដូរ​ដោយ​ជោគជ័យ​ហើយ',
 	'grouppermissions-true' => 'ពិត',
 	'grouppermissions-false' => 'មិនពិត',
 	'grouppermissions-never' => 'មិនដែល',
+	'grouppermissions-sort-read' => 'ការអាន',
 	'grouppermissions-sort-edit' => 'ការកែប្រែ',
 	'grouppermissions-sort-manage' => 'ការគ្រប់គ្រង',
 	'grouppermissions-sort-admin' => 'អភិបាលកិច្ច',
@@ -988,7 +990,7 @@ $messages['km'] = array(
 	'right-search' => 'ស្វែងរកវិគី',
 	'right-recentchanges' => 'មើលបំលាស់ប្តូរថ្មីៗ',
 	'right-edittalk' => 'កែប្រែទំព័រពិភាក្សា',
-	'right-edit-new' => 'កែប្រែទំព័រ(ដែលមិនមែនជាទំព័រពិភាក្សា)',
+	'right-edit-new' => 'កែប្រែទំព័រ (ដែលមិនមែនជាទំព័រពិភាក្សា)',
 );
 
 /** Korean (한국어)

@@ -1376,6 +1376,7 @@ Powrót do:
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'crosswikiblock-expiry' => 'د پای نېټه:',
 	'crosswikiblock-reason' => 'سبب:',
 	'crosswikiunblock-reason' => 'سبب:',
 );

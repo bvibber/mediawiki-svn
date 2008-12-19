@@ -766,12 +766,13 @@ $messages['hil'] = array(
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author SpeedyGonsales
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'badimages' => 'Popis loših slika',
 	'badimages-add-btn' => 'Dodaj',
 	'badimages-added' => '$1 je dodana na popis.',
-	'badimages-count' => 'Na popisu loših slika se nalazi {{PLURAL:$1|$1 slika|$1 slike|$1 slika}}.',
+	'badimages-count' => "Na popisu loših slika {{PLURAL:$1|je|su}} '''$1''' {{PLURAL:$1|slika|slike}}.",
 	'badimages-name' => 'Ime:',
 	'badimages-not-added' => 'Slika se nije mogla dodati.',
 	'badimages-not-removed' => 'Slika se nije mogla izbaciti.',

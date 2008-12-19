@@ -208,9 +208,11 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'whoiswatching' => 'Tko prati wiki stranicu',
+	'whoiswatching-desc' => 'Pruža popis suradničkih imena koji prate wiki stranicu',
 	'specialwhoiswatchingthepage' => 'Tko prati %s',
 	'specialwhoiswatchingusage' => 'Ova posebna stranica ne može biti korištena samostalno. Koristite [[MediaWiki:Number_of_watching_users_pageview]] za definiranje unosa za ovu posebnu stranicu.',
 	'specialwhoiswatchingaddusers' => 'Dodaj suradnike za praćenje stranice',

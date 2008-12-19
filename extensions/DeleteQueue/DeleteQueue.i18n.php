@@ -1943,6 +1943,7 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'deletequeue-list-status' => 'دريځ:',
+	'deletequeue-list-header-expiry' => 'د پای نېټه',
 );
 
 /** Portuguese (Português)

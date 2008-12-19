@@ -478,6 +478,15 @@ File inappropriati verranno cancellati immediatamente, leggi le [[{{MediaWiki:Mu
 	'multiupload-toolbox' => 'Carica file multipli',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'multipleupload' => 'ファイルをアップロード',
+	'multipleupload-desc' => '利用者が[[Special:MultipleUpload|複数のファイルを一度にアップロード]]できるようにする',
+	'multiupload-fileuploaded' => 'ファイルをアップロードしました。',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

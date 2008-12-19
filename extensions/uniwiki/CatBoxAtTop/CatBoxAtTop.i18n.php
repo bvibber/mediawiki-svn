@@ -86,8 +86,10 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'catboxattop-desc' => 'Προσθέτει κυτίον κατηγοριῶν τινὰ εἰς τὸ ἄνω δεξιὸν μέρος τῆς δέλτου',
 	'catboxattop-categories' => 'Κατηγορίαι',
 );
 

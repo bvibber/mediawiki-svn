@@ -131,6 +131,7 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'forcepreview' => 'Γράφειν δέλτον (προθεώρησις προηγουμένως)',
 	'forcepreview-desc' => 'Ἀναγκαστικὴ προθεώρησις διὰ τοὺς μὴ προνομιούχους χρωμένους',
+	'right-forcepreviewexempt' => 'Γράψειν δέλτον ἐνδεχομένως ἄνευ χρήσεως τοῦ Δεικνύναι τῆς προθεώρήσεως',
 );
 
 /** Hawaiian (Hawai`i)

@@ -532,6 +532,13 @@ $messages['it'] = array(
 	'imagetagging-imghistory' => 'Cronologia',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'imagetagging-imghistory' => '履歴',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith

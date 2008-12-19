@@ -1467,6 +1467,15 @@ $messages['ja'] = array(
 	'configure-setting-wgEnableUploads' => 'アップロードを可能にする',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'configure-setting-wgSitename' => 'ឈ្មោះ​តំបន់បណ្ដាញ',
+	'configure-setting-wgArticleRobotPolicies-key' => 'ចំណងជើង​ទំព័រ',
+	'configure-setting-wgExtraLanguageNames-value' => 'ឈ្មោះ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -3005,6 +3014,10 @@ $messages['sv'] = array(
 	'configure-setting-wgRateLimitLog' => 'Logg för aktivitetsbegränsare',
 	'configure-setting-wgRateLimits' => 'Aktivitetsbegränsningar',
 	'configure-setting-wgRateLimitsExcludedGroups' => 'Grupper som är undantagna från aktivitetsbegränsningar',
+	'configure-setting-wgFeed' => 'Aktivera syndication',
+	'configure-setting-wgFeedCacheTimeout' => "'Minimum' timout i sekunder för cachad feed av senaste ändringar",
+	'configure-setting-wgFeedDiffCutoff' => 'Brytpunkt för diff-storlek i feed',
+	'configure-setting-wgFeedLimit' => 'Max antal feed-resultat',
 );
 
 /** Telugu (తెలుగు)
@@ -3021,5 +3034,13 @@ $messages['uk'] = array(
 	'configure-setting-wgSitename' => 'Назва сайту',
 	'configure-setting-wgLanguageCode' => 'Код мови сайту',
 	'configure-setting-wgSMTP' => 'SMTP-сервер',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'configure-setting-wgUseDynamicDates' => 'Định dạng lại các ngày tháng được liên kết',
+	'configure-setting-wgDisableSearchContext' => 'Không hiển thị thông tin phụ về những ngày tháng và phiên bản trang nào đó trong kết quả tìm kiếm',
 );
 

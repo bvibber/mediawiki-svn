@@ -184,6 +184,13 @@ $messages['pt'] = array(
 	'othersites' => 'Outros sites',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'othersites' => 'Otre site',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

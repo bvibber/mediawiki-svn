@@ -60,6 +60,13 @@ $messages['eo'] = array(
 	'randomimage-desc' => 'Donas selektilo de hazarda bildo uzante <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'randomimage-desc' => 'با استفاده از <tt>&lt;randomimage /&gt;</tt> یک برگزینندهٔ رسانه به طور تصادفی ارائه می‌کند',
+);
+
 /** French (Français)
  * @author Grondin
  */

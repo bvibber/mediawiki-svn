@@ -2356,6 +2356,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'mv_tool_search' => '検索',
+	'mv_history' => '履歴',
 );
 
 /** Lojban (Lojban)

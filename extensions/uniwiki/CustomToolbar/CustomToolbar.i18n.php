@@ -408,6 +408,55 @@ $wgCustomToolbarMessages['he'] = array(
 	'ct_user_sample' => 'שם המשתמש',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$wgCustomToolbarMessages['hsb'] = array(
+	'ct-desc' => 'Přidawa rozšerjomnu gratowu lajstu',
+	'ct_bold_sample' => 'Tučny tekst',
+	'ct_bold_tip_ins' => 'Tučny tekst zasunyć',
+	'ct_bold_tip_wrap' => 'Tutón tekst tučnje zwobraznić',
+	'ct_bold_caption' => 'Tučny',
+	'ct_italic_sample' => 'Kursiwny tekst',
+	'ct_italic_tip_ins' => 'Kursiwny tekst zasunyć',
+	'ct_italic_tip_wrap' => 'Tutón tekst kursiwnje woznamjenić',
+	'ct_italic_caption' => 'Kursiwny',
+	'ct_internal_sample' => 'Mjeno strony',
+	'ct_internal_tip_ins' => 'Interny wotkaz zasunyć',
+	'ct_internal_tip_wrap' => 'Tutón tekst do interneho wotkaza přetworić',
+	'ct_internal_caption' => 'Interny wotkaz',
+	'ct_external_tip_ins' => 'Eksterny wotkaz zasunyć',
+	'ct_external_tip_wrap' => 'Tutón tekst do eksterneho wotkaza přetworić',
+	'ct_external_caption' => 'Eksterny wotkaz',
+	'ct_image_tip' => 'Wobraz zasunyć',
+	'ct_image_caption' => 'Wobraz přidać',
+	'ct_attachment_tip' => 'Přiwěšk zasunyć',
+	'ct_attachment_caption' => 'Přiwěšk přidać',
+	'ct_math_sample' => 'Formlu LaTeX tu zasunyć',
+	'ct_math_tip_ins' => 'Matematisku formlu (LaTeX) zasunyć',
+	'ct_math_tip_wrap' => 'Tutón tekst do matematiskeje formle (LaTeX) přetworić',
+	'ct_math_caption' => 'Formla',
+	'ct_nowiki_sample' => 'Tu njeformatowany tekst zasunyć',
+	'ct_nowiki_tip_ins' => 'Wikijowe formatowanje ignorować',
+	'ct_nowiki_tip_wrap' => 'Wikijowe formatowanje za tutón tekst ignorować',
+	'ct_nowiki_caption' => 'Žadyn wiki',
+	'ct_horizontal_tip' => 'Horicontalnu liniju zasunyć (zrědka wužiwać)',
+	'ct_horizontal_caption' => 'Horicontalna linija',
+	'ct_upload' => '$1 nahrać',
+	'ct_select' => '$1 za nahraće wubrać',
+	'ct_caption' => 'Popis přidać (po dobrozdaću)',
+	'ct_link' => 'Wotkazowe mjeno přidać (po dobrozdaću)',
+	'ct_submit' => 'Pósćel!',
+	'ct_close' => 'Wokno začinić',
+	'ct_success' => 'Dataja wuspěšnje nahrata!',
+	'ct_popupblocked' => 'Wuskakowacemu woknu nahraća je so wočinjenje wobarało.
+Prošu skontroluj swój blokowak wuskakowacych woknow.',
+	'ct_user_user' => 'Wužiwar',
+	'ct_user_tip' => 'Wotkaz do wužiwarskeje strony zasunyć',
+	'ct_user_caption' => 'Wužiwarski wotkaz',
+	'ct_user_sample' => 'Wužiwarske mjeno',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

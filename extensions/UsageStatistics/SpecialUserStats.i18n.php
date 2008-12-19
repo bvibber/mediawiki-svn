@@ -1222,6 +1222,8 @@ $messages['vi'] = array(
 	'usagestatisticsstart' => 'Ngày đầu',
 	'usagestatisticsend' => 'Ngày cuối',
 	'usagestatisticssubmit' => 'Tính ra thống kê',
+	'usagestatisticsnoend' => '* <font color="red">Xin hãy định rõ ngày kết thúc</font>',
+	'usagestatisticsbadstartend' => '<b>Ngày <i>bắt đầu</i> và/hoặc <i>kết thúc</i> không hợp lệ!</b>',
 	'usagestatisticsintervalday' => 'Ngày',
 	'usagestatisticsintervalweek' => 'Tuần',
 	'usagestatisticsintervalmonth' => 'Tháng',

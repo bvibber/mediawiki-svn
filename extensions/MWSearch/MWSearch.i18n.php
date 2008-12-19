@@ -327,6 +327,13 @@ $messages['pt-br'] = array(
 	'mwsearch-desc' => 'Plugin MWSearch',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mwsearch-desc' => 'Plugin MWSearch',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

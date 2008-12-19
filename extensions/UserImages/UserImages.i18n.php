@@ -160,8 +160,10 @@ $messages['gl'] = array(
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
+	'userimages-desc' => 'יצירת גלריות של תמונות שהועלו על ידי המשתמשים באמצעות התגית <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'תמונות שהועלו על ידי $1',
 	'userimages-noname' => 'לא ציינתם את שם המשתמש או שהוא אינו תקין.',
 	'userimages-noimages' => 'לא הועלו תמונות על ידי $1.',
@@ -384,6 +386,16 @@ $messages['ro'] = array(
 	'userimages-caption' => 'Imagini încărcate de $1',
 	'userimages-noname' => 'Nume de utilizator nevalid sau nespecificat.',
 	'userimages-noimages' => '$1 nu a încărcat imagini.',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'userimages-desc' => "Ccreje gallerie de immaggene carechete da l'utinde cu <code><nowiki><userimage /></nowiki></code>",
+	'userimages-caption' => 'Immaggini carechete da $1',
+	'userimages-noname' => "Nome utende sbagliete o pure non ge l'è mise proprie.",
+	'userimages-noimages' => "$1 non g'à carechete manghe 'n'immaggine.",
 );
 
 /** Russian (Русский)

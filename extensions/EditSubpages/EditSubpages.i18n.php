@@ -199,6 +199,22 @@ $messages['it'] = array(
   #</pre><!-- lascia questa linea così com'è -->",
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'editsubpages-desc' => '管理者が [[MediaWiki:Unlockedpages]] を使い、ページとそのすべてのサブページを匿名の編集からロック解除できるようにする',
+	'unlockedpages' => '  #<!-- leave this line alone --><pre>
+# ロック解除したいページを以下に次の形式で列挙してください
+# * ページ名
+# ロック解除されたページは集計のために必ず * ではじめてください
+# その他はすべてコメントとみなされます
+# ページ名は[[リンク]]の形式も可能で大文字・小文字を区別します
+# また、ノートページは付随して自動的にロック解除されます
+# より詳しくは http://www.mediawiki.org/wiki/Extension:EditSubpages を参照してください
+  #</pre><!-- leave this line alone -->',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

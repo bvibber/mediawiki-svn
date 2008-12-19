@@ -385,6 +385,24 @@ $2',
 	'userrightsnotif-desc' => 'Invia una e-mail di notifica quando vengono cambiati i diritti del gruppo utente di un utente',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'userrightsnotifysubject' => '$1における所属グループ変更のお知らせ',
+	'userrightsnotifybody' => '$1さん、こんにちは。
+
+この通知は、$2におけるあなたの所属グループが$4に$3によって変更されたことをお知らせするものです。
+
+加入: $5
+脱退: $6
+
+今後ともよろしくお願いいたします。
+
+$2',
+	'userrightsnotif-desc' => '利用者権限が変更された時に利用者に電子メールによる通知を送付する',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  * @author Pras

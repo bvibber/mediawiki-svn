@@ -225,6 +225,7 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'assert_edit_title' => 'Ἀποτευκτὴ ἐπιβεβαιωμένως',
+	'assert_edit_desc' => 'Προσθέτει δηλώσεις μεταγραφῶν διὰ χρῆσιν ὑπὸ αὐτομάτων',
 	'assert_edit_message' => 'Ἡ καθωρισμένη δήλωσις ($1) ἀπετεύχθη.',
 );
 

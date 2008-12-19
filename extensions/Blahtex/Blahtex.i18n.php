@@ -413,6 +413,13 @@ $messages['br'] = array(
 	'math_WrongFontEncodingWithHint' => 'Marteze ne zeuio ket war wel an arouezenn "$1" ma vez enkodet ar font "$2" (klaskit kentoc\'h gant an urzhiad "$3{...}")',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'math_MissingOpenBraceBefore' => 'Nedostaje otvorena zagrada "(" ispred "$1"',
+);
+
 /** Catalan (Català)
  * @author Aleator
  */

@@ -144,6 +144,7 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'advancedrandom' => 'Προοδευμένη τυχοῦσα',
+	'advancedrandom-desc' => 'Get a random page from whos talk or subjectpage links to a given page, can be used like [[Special:AdvancedRandom/Template:Featured/Talk]] to get a random featured article or like [[Special:AdvancedRandom/Template:GFDL/Image]] to get a random ἀρχεῖον GFDL',
 );
 
 /** Hebrew (עברית)

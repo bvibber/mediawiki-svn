@@ -301,6 +301,7 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'sitenotice_close' => 'ἀποπέμπειν',
+	'sitenotice-desc' => 'Ἐπιτρέπει τοῖς χρωμένοις τὸ κλῄειν τὴν άναγγελίαν τοῦ ἱστοτόπου',
 );
 
 /** Hebrew (עברית)

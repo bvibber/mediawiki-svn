@@ -876,20 +876,24 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'openid-desc' => 'Přizjewjenje pola wikija z [http://openid.net/ OpenID], a přizjewjenje pola druhich websydłow, kotrež OpenID podpěruja, z wikijowym wužiwarskim kontom',
 	'openidlogin' => 'Přizjewjenje z OpenID',
 	'openidfinish' => 'Přizjewjenje OpenID skónčić',
 	'openidserver' => 'Serwer OpenID',
+	'openidxrds' => 'Yadis-dataja',
 	'openidconvert' => 'Konwerter OpenID',
 	'openiderror' => 'Pruwowanski zmylk',
 	'openiderrortext' => 'Zmylk je při pruwowanju URL OpenID wustupił.',
 	'openidconfigerror' => 'OpenID konfiguraciski zmylk',
 	'openidconfigerrortext' => 'Składowanska konfiguracija OpenID zu tutón wiki je njepłaćiwy. Prošu skonsultuj administratora tutoho sydła.',
+	'openidpermission' => 'Zmylk w prawach OpenID',
 	'openidpermissiontext' => 'OpenID, kotryž sy podał, njesmě so za přizjewjenje pola tutoho serwera wužiwać.',
 	'openidusernameprefix' => 'Wužiwar OpenID',
 	'openidserverlogininstructions' => 'Zapodaj deleka swoje hesło, zo by so pola $3 jako wužiwar $2 přizjewił (wužiwarska strona $1).',
 	'openidtrustinstructions' => 'Pruwuj, hač chceš z $1 daty dźělić.',
 	'openidallowtrust' => '$1 dowolić, zo by so tutomu wužiwarskemu konće dowěriło.',
 	'openidnopolicy' => 'Sydło njeje zasady za priwatnosć podało.',
+	'openidpolicy' => 'Pohladaj do <a target="_new" href="$1">zasadow priwatnosće</a> za dalše informacije.',
 	'openidoptional' => 'Opcionalny',
 	'openidrequired' => 'Trěbny',
 	'openidnickname' => 'Přimjeno',
@@ -903,6 +907,8 @@ $messages['hsb'] = array(
 	'openidchooseurl' => 'Mjeno wzate z twojeho OpenID ($1)',
 	'openidchooseauto' => 'Awtomatisce wutworjene mjeno ($1)',
 	'openidchoosemanual' => 'Mjeno twojeje wólby:',
+	'openidchooseexisting' => 'Eksistowace konto na tutym wikiju:',
+	'openidchoosepassword' => 'hesło:',
 	'openidconvertinstructions' => 'Tutón formular ći dowola swoje wužiwarske konto zmňić, zo by URL OpenID wužiwał.',
 	'openidconvertsuccess' => 'Wuspěšnje do OpenID konwertowany.',
 	'openidconvertsuccesstext' => 'Sy swój OpenID wuspěšnje do $1 konwertował.',
@@ -912,6 +918,10 @@ $messages['hsb'] = array(
 
 Jeli chceš OpenID wužiwać, hdyž přichodnje přizjewiš, móžeš [[Special:OpenIDConvert|swoje konto za wužiwanje OpenID konwertować]].",
 	'tog-hideopenid' => 'Twój <a href="http://openid.net/">OpenID</a> na twojej wužiwarskej stronje schować, jeli so z OpenID přizjewješ.',
+	'openidnousername' => 'Žane wužiwarske mjeno podate.',
+	'openidbadusername' => 'Wopačne wužiwarske mjeno podate.',
+	'openidclientonlytext' => 'Njemóžeš konta z tutoho wikija jako OpenID na druhim sydle wužiwać.',
+	'openidloginlabel' => 'URL OpenID',
 	'openidlogininstructions' => 'Zapodaj swój identifikator OpenID, zo by so přizjewił:',
 );
 

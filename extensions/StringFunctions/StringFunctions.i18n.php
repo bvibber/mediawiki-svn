@@ -58,6 +58,13 @@ $messages['es'] = array(
 	'stringfunctions-desc' => 'Amplía el analizador sintáctico con funciones de cadena',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'stringfunctions-desc' => 'تحلیل‌گر را با عملگرهای رشته‌ای تقویت می‌کند',
+);
+
 /** French (Français)
  * @author IAlex
  */

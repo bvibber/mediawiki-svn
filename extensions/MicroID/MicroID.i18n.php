@@ -146,6 +146,14 @@ $messages['it'] = array(
 	'tog-microid' => 'Pubblica un <a href="http://microid.org/">MicroID</a> per confermare l\'account con servizi esterni',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'microid-desc' => '外部サービスでアカウントを確認するために利用者ページに [http://www.microid.org/ MicroID] を追加する',
+	'tog-microid' => '外部サービスでアカウントを確認するために <a href="http://microid.org/">MicroID</a> を発行する',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  */

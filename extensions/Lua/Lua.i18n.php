@@ -262,6 +262,14 @@ $messages['oc'] = array(
 	'lua_overflow_time' => 'Durada maximala d’execucion atencha',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'lua_error' => "Errore sus 'a linee $1",
+	'lua_error_internal' => 'Errore inderne',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

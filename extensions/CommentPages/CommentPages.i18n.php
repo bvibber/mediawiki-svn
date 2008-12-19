@@ -122,6 +122,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
+	'commentpages-desc' => 'Δέλτοι σχολίων διὰ τὸ κύριον ὀνοματεῖον',
 	'nstab-comments' => 'Σχολιασμός',
 );
 

@@ -1699,14 +1699,36 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'viewapc' => 'APC 情報',
+	'viewapc-clear-user-cache' => '明確なユーザーキャッシュ',
+	'viewapc-mode-stats' => '表示ホスト統計',
+	'viewapc-mode-system-cache' => 'システムキャッシュエントリー',
+	'viewapc-mode-user-cache' => 'ユーザキャッシュエントリー',
+	'viewapc-mode-version-check' => 'バージョンチェック',
+	'viewapc-info-general' => '一般的な情報',
+	'viewapc-apc-version' => 'APC バージョン',
+	'viewapc-php-version' => 'PHP バージョン',
+	'viewapc-shared-memory' => '共有メモリ',
+	'viewapc-start-time' => '開始時間',
+	'viewapc-uptime' => '使用可能時間',
+	'viewapc-upload-support' => 'ファイルアップロードサポート',
+	'viewapc-filecache-info' => 'ファイルキャッシュ情報',
+	'viewapc-usercache-info' => 'ユーザーキャッシュ情報',
+	'viewapc-cached-files' => 'キャッシュされたファイル',
 	'viewapc-display-value' => '値',
+	'viewapc-display-device' => 'デバイス',
+	'viewapc-display-info' => '名前',
 	'viewapc-display-deletion_time' => '削除',
+	'viewapc-ls-options-legend' => 'オプション',
 	'viewapc-ls-header-deleted' => '削除',
 	'viewapc-ls-scope-deleted' => '削除',
 	'viewapc-ls-sort-deleted' => '削除',
+	'viewapc-ls-sort-timeout' => 'タイムアウト',
 	'viewapc-ls-limit-none' => 'すべて',
+	'viewapc-version-changelog' => '変更記録',
 );
 
 /** Javanese (Basa Jawa)
