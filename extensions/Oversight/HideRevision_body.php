@@ -72,7 +72,7 @@ class HideRevisionForm extends SpecialPage {
 			"<br />" .
 			Xml::inputLabel( wfMsgHTML( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60 ) .
 			"<br />" .
-			Xml::submitButton( wfMsgHTML( 'hiderevision-continue' ) ) .
+			Xml::submitButton( wfMsgHTML( 'hiderevision-continue' ), array( 'id' => 'mw-hiderevision-continue' ) ) .
 
 			Xml::closeElement( 'form' ) );
 	}
@@ -99,7 +99,7 @@ class HideRevisionForm extends SpecialPage {
 			"<br />" .
 			Xml::inputLabel( wfMsgHTML( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60, $this->mReason ) .
 			"<br />" .
-			Xml::submitButton( wfMsgHTML( 'hiderevision-submit' ) ) .
+			Xml::submitButton( wfMsgHTML( 'hiderevision-submit' ), array( 'id' => 'mw-hiderevision-submit' ) ) .
 
 			// Hidden fields
 			$this->revisionFields() .
@@ -396,12 +396,12 @@ class SpecialOversight extends SpecialPage {
 		$wgOut->addHTML( "<form action=\"$action\" method=\"get\"><fieldset>" );
 		$wgOut->addHTML( '<legend>' . wfMsgHtml('oversight-legend') . '</legend>' );
 		$wgOut->addHTML( Xml::hidden( 'title', $wgTitle->getPrefixedDbKey() ) );
-		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'oversight-oversighter' ), 'user', 'user', 20, $user ) );
+		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'oversight-oversighter' ), 'user', 'mw-oversight-user', 20, $user ) );
 		$wgOut->addHTML( '&nbsp;' );
-		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'page', 25, $page ) );
+		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'mw-oversight-page', 25, $page ) );
 		$wgOut->addHTML( '&nbsp;' );
-		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'oversight-offender' ), 'author', 'author', 20, $offender ) );
-		$wgOut->addHTML( '&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) );
+		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'oversight-offender' ), 'author', 'mw-oversight-author', 20, $offender ) );
+		$wgOut->addHTML( '&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ), array( 'id' => 'mw-oversight-submit' ) ) );
 		$wgOut->addHTML( '</fieldset></form>' );
 		
 		$pager = new HiddenRevisionsPager( $this, array(), $title, $u, $offender );
