@@ -676,6 +676,10 @@ $messages['he'] = array(
 	'contribstats-max' => 'מקסימום (בדולרים)',
 	'contribstats-percentage-ytd' => 'אחוז (מתחילת השנה)',
 	'contribstats-total-ytd' => 'סך הכל (מתחילת השנה)',
+	'contribstats-value-exactly' => 'בדיוק $1',
+	'contribstats-value-under' => 'פחות מ־$1',
+	'contribstats-value-from' => 'בין $1 ל־$2',
+	'contribstats-value-over' => 'יותר מ־$1',
 	'fundraiserstatistics' => 'סטטיסטיקות ההתרמה',
 	'fundraiserstats-date' => 'תאריך',
 	'fundraiserstats-day' => 'יום $1 מתוך $2',
@@ -687,6 +691,7 @@ $messages['he'] = array(
 	'fundraiserstats-tab-contributions' => 'מספר התורמים',
 	'fundraiserstats-tab-averages' => 'ממוצע (USD)',
 	'fundraiserstats-tab-maximums' => 'מקסימום (USD)',
+	'specialpages-group-contribution' => 'תרומות/התרמה',
 );
 
 /** Croatian (Hrvatski)
