@@ -18,10 +18,9 @@ $messages['en'] = array(
 	'gur-rightslog-header' => 'This is a log of changes to global rights.',
 	'gur-rightslog-entry' => 'changed global group membership for $1 from $2 to $3',
 	'rights-userrights-global' => 'Manage global user rights',
-
-	);
+);
 
 /** German (Deutsch) */
 $messages['de'] = array(
-	'globaluserrights' => 'Globale Benutzerrechteverwaltung'
+	'globaluserrights' => 'Globale Benutzerrechteverwaltung',
 );
