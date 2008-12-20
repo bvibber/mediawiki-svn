@@ -10,8 +10,8 @@ class WebConfiguration extends SiteConfiguration {
 	protected $mHandler;               // Configuration handler
 	protected $mWiki;                  // Wiki name
 	protected $mConf = array();        // Our array of settings
-	protected $mOldSettings = null; // Old settings (before applying our overrides)
-	protected $mDefaults = null;    // Default values
+	protected $mOldSettings = null;    // Old settings (before applying our overrides)
+	protected $mDefaults = null;       // Default values
 
 	/**
 	 * Construct a new object.
@@ -32,6 +32,12 @@ class WebConfiguration extends SiteConfiguration {
 	 */
 	public function initialise( $useCache = true ) {
 		parent::initialise();
+
+		// Special case for manage.php maintenance script so that it can work
+		// even if the current configuration is broken
+		if ( defined( 'EXT_CONFIGURE_NO_EXTRACT' ) )
+			return;
+
 		$this->mConf = $this->mHandler->getCurrent( $useCache );
 
 		# Restore first version of $this->settings if called a second time so
@@ -93,11 +99,6 @@ class WebConfiguration extends SiteConfiguration {
 	 * extract settings for this wiki in $GLOBALS
 	 */
 	public function extract() {
-		// Special case for manage.php maintenance script so that it can work
-		// even if the current configuration is broken
-		if ( defined( 'EXT_CONFIGURE_NO_EXTRACT' ) )
-			return;
-
 		// Include files before so that customized settings won't be overridden
 		// by the default ones
 		$this->includeFiles();
