@@ -1,20 +1,24 @@
 <?php
 /**
- * Internationalisation file for extension MultiUpload.
+ * Internationalisation file for MultiUpload extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
 */
 
 $messages = array();
 
+/** English
+ * @author Travis Derouin
+ */
 $messages['en'] = array(
-	'multipleupload'                   => "Upload files",
-	'multipleupload-desc'              => 'Allows users to [[Special:MultipleUpload|upload several files at once]]',
+	'multipleupload' => 'Upload files',
+	'multipleupload-desc' => 'Allows users to [[Special:MultipleUpload|upload several files at once]]',
 	'multipleupload-ignoreallwarnings' => "Ignore '''all warnings''' and save the files anyway.",
-	'multipleupload-saveallfiles'      => "Save all files",
-	'multipleupload-addresswarnings'   => "Please address any warnings before reuploading files.",
-	'multipleupload-page'              => "{{ns:project}}:File deletion policy",
-	'multipleupload-text'              => "Upload multiple files here.
+	'multipleupload-saveallfiles' => 'Save all files',
+	'multipleupload-addresswarnings' => 'Please address any warnings before reuploading files.',
+	'multipleupload-page' => "{{ns:project}}:File deletion policy",
+	'multipleupload-text' => "Upload multiple files here.
 
 Choose 'Browse' and select each file you wish to upload.
 You can upload from 1 to $1 files at a time.
@@ -22,8 +26,8 @@ You can upload from 1 to $1 files at a time.
 You can enter an optional '''Destination filename''' and provide a '''Summary''' describing your file.
 
 Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleupload-page}}|file deletion policy]].",
-	'multiupload-fileuploaded'         => "File uploaded.",
-	'multiupload-toolbox'              => "Upload multiple files",
+	'multiupload-fileuploaded' => 'File uploaded.',
+	'multiupload-toolbox' => 'Upload multiple files',
 );
 
 /** Message documentation (Message documentation)
