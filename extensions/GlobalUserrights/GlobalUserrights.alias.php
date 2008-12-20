@@ -15,5 +15,5 @@ $aliases['en'] = array(
 
 /** German (Deutsch) */
 $aliases['de'] = array(
-	'GlobalUserrights' => array( 'Globalebenutzerrechte' )
+	'GlobalUserrights' => array( 'Globale Benutzerrechte' )
 );

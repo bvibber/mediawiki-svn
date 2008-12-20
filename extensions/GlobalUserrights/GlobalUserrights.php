@@ -14,11 +14,14 @@ if( !defined( 'MEDIAWIKI' ) ) die();
 
 // Extension credits
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'GlobalUserrights',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:GlobalUserrights',
-	'version' => '1.0',
-	'author' => 'Nathaniel Herman',
-	'description' => 'Easy [[Special:GlobalUserRights|global user rights]] administration'
+	'name'           => 'GlobalUserrights',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:GlobalUserrights',
+	'version'        => '1.0',
+	'author'         => 'Nathaniel Herman',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'description'    => 'Easy [[Special:GlobalUserRights|global user rights]] administration',
+	'descriptionmsg' => 'gur-desc',
 );
 
 // Set up the new special page
@@ -27,6 +30,7 @@ $wgExtensionMessagesFiles['GlobalUserrights'] = $dir . 'GlobalUserrights.i18n.ph
 $wgExtensionAliasesFiles['GlobalUserrights'] = $dir . 'GlobalUserrights.alias.php';
 $wgAutoloadClasses['GlobalUserrights'] = $dir . 'GlobalUserrights_body.php';
 $wgSpecialPages['GlobalUserrights'] = 'GlobalUserrights';
+$wgSpecialPageGroups['GlobalUserrights'] = 'users';
 
 // New user right, required to use Special:GlobalUserrights
 $wgAvailableRights[] = 'userrights-global';
