@@ -18,8 +18,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GlobalUserrights',
 	'version'        => '1.0',
 	'author'         => 'Nathaniel Herman',
-	'svn-date'       => '$LastChangedDate$',
-	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Easy [[Special:GlobalUserRights|global user rights]] administration',
 	'descriptionmsg' => 'gur-desc',
 );
