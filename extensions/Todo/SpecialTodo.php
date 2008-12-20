@@ -209,7 +209,7 @@ class TodoList {
 
 		$wgOut->addHTML( "<table>\n<tr>" );
 		foreach( $queues as $queue ) {
-			$wgOut->addHTML( wfElement( 'th', null, $queue ) );
+			$wgOut->addHTML( Xml::element( 'th', null, $queue ) );
 		}
 		$wgOut->addHTML( "</tr>\n<tr>\n" );
 
@@ -308,7 +308,7 @@ class TodoItem {
 		global $wgOut, $wgUser, $wgLang;
 		$id = $this->id;
 
-		$wgOut->addHTML( wfElement( 'div', array(
+		$wgOut->addHTML( Xml::element( 'div', array(
 			'class' => 'mwTodoTitle',
 			'id' => "mwTodoTitle$id",
 			'ondblclick' => "todoEditTitle($id,true)" ) ) .
@@ -319,7 +319,7 @@ class TodoItem {
 
 		$wgOut->addHTML( "<div class='mwTodoTimestamp'>" . $wgLang->timeanddate( $this->timestamp ) . "</div>\n" );
 
-		$wgOut->addHTML( wfOpenElement( 'div', array(
+		$wgOut->addHTML( Xml::openElement( 'div', array(
 			'class' => 'mwTodoComment',
 			'id' => "mwTodoComment$id",
 			'ondblclick' => "todoEditComment($id,true)" ) ) );
@@ -337,30 +337,30 @@ class TodoItem {
 		$id = $this->id;
 		$todo = Title::makeTitle( NS_SPECIAL, 'Todo' );
 
-		return wfOpenElement( 'div', array(
+		return Xml::openElement( 'div', array(
 				'id' => "mwTodo{$capField}Update$id",
 				'style' => 'display:none' ) ) .
-			wfOpenElement( 'form', array(
+			Xml::openElement( 'form', array(
 				'action' => $todo->getLocalUrl(),
 				'method' => 'post' ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'name' => 'wpItem', 'type' => 'hidden', 'value' => $this->id ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'name' => 'wpEditToken', 'type' => 'hidden', 'value' => $wgUser->editToken() ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'name' => 'wpUpdateField', 'type' => 'hidden', 'value' => $field ) ) .
 			( ( $rows == 1 )
-				? wfElement( 'input', array(
+				? Xml::element( 'input', array(
 					'name' => "wp{$capField}", 'size' => '20', 'value' => $val ) )
-				: wfElement( 'textarea', array(
+				: Xml::element( 'textarea', array(
 					'name' => "wp{$capField}", 'cols' => '20', 'rows' => '10' ),
 					$val . "\n" ) ) .
 			"<br />\n" .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'type' => 'submit',
 				'value' => wfMsg('todo-list-change') ) ) .
 			" " .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'type' => 'button',
 				'value' => wfMsg('todo-list-cancel'),
 				'onclick' => "todoEdit{$capField}($id,false)" ) ) .
@@ -371,15 +371,15 @@ class TodoItem {
 		global $wgUser;
 		$id = $this->id;
 		$todo = Title::makeTitle( NS_SPECIAL, 'Todo' );
-		return wfOpenElement( 'form', array(
+		return Xml::openElement( 'form', array(
 				'action' => $todo->getLocalUrl(),
 				'method' => 'post',
 				'id' => 'mwTodoQueueUpdate' . $this->id ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'name' => 'wpItem', 'type' => 'hidden', 'value' => $this->id ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'name' => 'wpEditToken', 'type' => 'hidden', 'value' => $wgUser->editToken() ) ) .
-			wfElement( 'input', array(
+			Xml::element( 'input', array(
 				'name' => 'wpUpdateField', 'type' => 'hidden', 'value' => 'queue' ) ) .
 			$this->buildMoveSelector( $queues ) .
 			"</form>\n";
@@ -389,11 +389,11 @@ class TodoItem {
 		$out = "<select name='wpQueue' id='mwTodoQueue" . $this->id . "' onchange='todoMoveQueue(" . $this->id . ")'>";
 		foreach( $queues as $queue ) {
 			if( $queue == $this->queue ) {
-				$out .= wfElement( 'option',
+				$out .= Xml::element( 'option',
 					array( 'value' => '', 'selected' => 'selected' ),
 					wfMsgHtml('todo-move-queue') );
 			} else {
-				$out .= wfElement( 'option',
+				$out .= Xml::element( 'option',
 					array( 'value' => $queue ),
 					$queue );
 			}

@@ -955,7 +955,7 @@ class OAILSearchWriter extends OAIDumpWriter {
 	function openStream() {
 		global $wgContLanguageCode;
 		$ver = "0.1";
-		return wfElement( 'mediawiki', array(
+		return Xml::element( 'mediawiki', array(
 			'xmlns'              => "http://www.mediawiki.org/xml/lsearch-$ver/",
 			'xmlns:xsi'          => "http://www.w3.org/2001/XMLSchema-instance",
 			'xsi:schemaLocation' => "http://www.mediawiki.org/xml/lsearch-$ver/ " .
@@ -970,7 +970,7 @@ class OAILSearchWriter extends OAIDumpWriter {
 	function openPage( $row ) {
 		$out = parent::openPage( $row );
 		if(isset($row->num_page_ref))
-			$out .= '    ' . wfElement( 'references', array(), strval( $row->num_page_ref ) ) . "\n";
+			$out .= '    ' . Xml::element( 'references', array(), strval( $row->num_page_ref ) ) . "\n";
 		return $out;
 	}
 
@@ -980,9 +980,9 @@ class OAILSearchWriter extends OAIDumpWriter {
 			foreach($this->_redirects[$row->up_page] as $row){
 				$title = Title::makeTitle( $row->page_namespace, $row->page_title );
 				$out .= "    <redirect>\n";
-				$out .= '    ' . wfElementClean( 'title', array(), $title->getPrefixedText() ) . "\n";
+				$out .= '    ' . Xml::elementClean( 'title', array(), $title->getPrefixedText() ) . "\n";
 				if(isset($row->num_page_ref))
-					$out .= '    ' . wfElement( 'references', array(), strval( $row->num_page_ref ) ) . "\n";
+					$out .= '    ' . Xml::element( 'references', array(), strval( $row->num_page_ref ) ) . "\n";
 				$out .= "    </redirect>\n";
 			}
 		}

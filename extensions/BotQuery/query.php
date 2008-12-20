@@ -2682,7 +2682,7 @@ function slowWddxPrinter( &$elemValue )
 		case 'array':
 			echo '<struct>';
 			foreach( $elemValue as $subElemName => &$subElemValue ) {
-				echo wfOpenElement( 'var', array('name' => $subElemName) );
+				echo Xml::openElement( 'var', array('name' => $subElemName) );
 				slowWddxPrinter( $subElemValue );
 				echo '</var>';
 			}
@@ -2690,10 +2690,10 @@ function slowWddxPrinter( &$elemValue )
 			break;
 		case 'integer':
 		case 'double':
-			echo wfElement( 'number', null, $elemValue );
+			echo Xml::element( 'number', null, $elemValue );
 			break;
 		case 'string':
-			echo wfElement( 'string', null, $elemValue );
+			echo Xml::element( 'string', null, $elemValue );
 			break;
 		default:
 			wfDebugDieBacktrace( 'Unknown type ' . gettype($elemValue) );
@@ -2745,14 +2745,14 @@ function recXmlPrint( $printer, $elemName, &$elemValue, $indent )
 				$subElemContent = $elemValue['*'];
 				unset( $elemValue['*'] );
 				if( gettype( $subElemContent ) === 'array' ) {
-					$printer( $indstr . wfOpenElement( $elemName, $elemValue ));
+					$printer( $indstr . Xml::openElement( $elemName, $elemValue ));
 					recXmlPrint( $printer, $elemName, $subElemContent, $indent );
 					$printer( $indstr . "</$elemName>" );
 				} else {
-					$printer( $indstr . wfElement( $elemName, $elemValue, $subElemContent ));
+					$printer( $indstr . Xml::element( $elemName, $elemValue, $subElemContent ));
 				}
 			} else {
-				$printer( $indstr . wfOpenElement( $elemName, null ));
+				$printer( $indstr . Xml::openElement( $elemName, null ));
 				if( array_key_exists('_element', $elemValue) ) {
 					$subElemName = $elemValue['_element'];
 					foreach( $elemValue as $subElemId => &$subElemValue ) {
@@ -2772,7 +2772,7 @@ function recXmlPrint( $printer, $elemName, &$elemValue, $indent )
 			// ignore
 			break;
 		default:
-			$printer( $indstr . wfElement( $elemName, null, $elemValue ));
+			$printer( $indstr . Xml::element( $elemName, null, $elemValue ));
 			break;
 	}
 }

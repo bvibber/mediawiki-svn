@@ -92,7 +92,7 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 		$attribs['class'] = 'poem';
 	}
 
-	return wfOpenElement( 'div', $attribs ) .
+	return Xml::openElement( 'div', $attribs ) .
 		$nl .
 		trim( $text ) .
 		"$nl</div>";

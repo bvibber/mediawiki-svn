@@ -119,7 +119,7 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
 
 	# Output
 	$mainwidth = ( $wgMiniPreviewThumbnailSize + 2 ) * 3 ;
-	$html = wfOpenElement( 'div', array (
+	$html = Xml::openElement( 'div', array (
 		'id' => 'MiniPreview',
 		'class' => 'MiniPreview_main',
 		'style' => "float:right;clear:right",
@@ -137,15 +137,15 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
 			$t = Title::newFromDBkey( $ns . $p->source_title );
 			$mode = ( $p->from_category ? "category" : "gallery" ) ;
 
-			$html .= wfOpenElement( 'div', array( 'class' => 'MiniPreview_'.$mode , 'width' => '100%' ) );
-			$html .= wfElement( 'a' , array ( 'href' => $t->getLocalURL() ) , $t->getText() );
-			$html .= wfOpenElement( 'table' , array( 'border' => '0' , 'cellpadding' => '0' , 'cellspacing' => '0' )); # CSS is just not up to this yet...
-			$html .= wfOpenElement( 'tr' );
+			$html .= Xml::openElement( 'div', array( 'class' => 'MiniPreview_'.$mode , 'width' => '100%' ) );
+			$html .= Xml::element( 'a' , array ( 'href' => $t->getLocalURL() ) , $t->getText() );
+			$html .= Xml::openElement( 'table' , array( 'border' => '0' , 'cellpadding' => '0' , 'cellspacing' => '0' )); # CSS is just not up to this yet...
+			$html .= Xml::openElement( 'tr' );
 			$html .= wfMiniPreviewGetThumbnail ( $p->entry[0] , $image_data ) ;
 			$html .= wfMiniPreviewGetThumbnail ( $p->entry[1] , $image_data ) ;
 
-			$html .= wfOpenElement( 'td' );
-			$html .= wfOpenElement( 'div', array(
+			$html .= Xml::openElement( 'td' );
+			$html .= Xml::openElement( 'div', array(
 				'style' => "width:{$wgMiniPreviewThumbnailSize}px;height:{$wgMiniPreviewThumbnailSize}px;",
 				'class' => 'MiniPreview_count' ));
 			$html .= wfMsgExt( 'minipreview-files_in_'.$mode , array( 'parsemag' ), $p->image_count );
@@ -168,8 +168,8 @@ function wfMiniPreviewGetThumbnail ( $entry , &$image_data ) {
 	$divclass = ( $entry->id == 0 ) ? 'MiniPreview_no_thumb' : 'MiniPreview_thumb' ;
 
 	$ret = '';
-	$ret .= wfOpenElement( 'td' );
-	$ret .= wfOpenElement( 'div', array(
+	$ret .= Xml::openElement( 'td' );
+	$ret .= Xml::openElement( 'div', array(
 		'style' => "width:{$wgMiniPreviewThumbnailSize}px;height:{$wgMiniPreviewThumbnailSize}px;overflow:hidden",
 		'class' => $divclass )
 	);

@@ -122,7 +122,7 @@ function makeProtectForm() {
 	global $wgRestrictionTypes, $wgTitle, $wgUser;
 	$token = $wgUser->editToken();
 	$form = '<p>' . wfMsg('authorprotect-intro') . '</p>';
-	$form .= wfOpenElement( 'form', array( 'method' => 'post', 'action' => $wgTitle->getLocalUrl('action=authorprotect') ) );
+	$form .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgTitle->getLocalUrl('action=authorprotect') ) );
 	foreach( $wgRestrictionTypes as $type ) {
 		$rest = $wgTitle->getRestrictions($type);
 		if( $rest !== array() ) {
@@ -133,16 +133,16 @@ function makeProtectForm() {
 		$array = array( 'type' => 'checkbox', 'name' => 'check-' . $type, 'value' => $type );
 		if($checked)
 			$array = array_merge( $array, array( 'checked' => 'checked' ) );
-		$form .= wfElement( 'input', $array );
-		$form .= ' ' . wfMsg('authorprotect-' . $type) . wfElement( 'br' );
+		$form .= Xml::element( 'input', $array );
+		$form .= ' ' . wfMsg('authorprotect-' . $type) . Xml::element( 'br' );
 	}
-	$form .= wfElement( 'br' ) . wfElement( 'label', array( 'for' => 'wpExpiryTime' ), wfMsg('authorprotect-expiry') ) . ' ';
-	$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'wpExpiryTime' ) ) . wfElement( 'br' );
-	$form .= wfElement( 'br' ) . wfElement( 'label', array( 'for' => 'wpReason' ), wfMsg('authorprotect-reason') ) . ' ';
-	$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'wpReason' ) );
-	$form .= wfElement( 'br' ) . wfElement( 'input', array( 'type' => 'hidden', 'name' => 'wpToken', 'value' => $token ) );
-	$form .= wfElement( 'br' ) . wfElement( 'input', array( 'type' => 'submit', 'name' => 'wpConfirm', 'value' => wfMsg( 'authorprotect-confirm' ) ) );
-	$form .= wfCloseElement( 'form' );
+	$form .= Xml::element( 'br' ) . Xml::element( 'label', array( 'for' => 'wpExpiryTime' ), wfMsg('authorprotect-expiry') ) . ' ';
+	$form .= Xml::element( 'input', array( 'type' => 'text', 'name' => 'wpExpiryTime' ) ) . Xml::element( 'br' );
+	$form .= Xml::element( 'br' ) . Xml::element( 'label', array( 'for' => 'wpReason' ), wfMsg('authorprotect-reason') ) . ' ';
+	$form .= Xml::element( 'input', array( 'type' => 'text', 'name' => 'wpReason' ) );
+	$form .= Xml::element( 'br' ) . Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpToken', 'value' => $token ) );
+	$form .= Xml::element( 'br' ) . Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpConfirm', 'value' => wfMsg( 'authorprotect-confirm' ) ) );
+	$form .= Xml::closeElement( 'form' );
 	return $form;
 }
 

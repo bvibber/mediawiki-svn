@@ -789,7 +789,7 @@ class EditUser extends SpecialPage {
 		} else {
 			# Need to output a hidden option even if the relevant skin is not in use,
 			# otherwise the preference will get reset to 0 on submit
-			$wgOut->addHtml( wfHidden( 'wpQuickbar', $this->mQuickbar ) );
+			$wgOut->addHtml( Xml::hidden( 'wpQuickbar', $this->mQuickbar ) );
 		}
 
 		# Skin
@@ -1107,12 +1107,12 @@ class EditUser extends SpecialPage {
 	
 	function makeSearchForm() {
 		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
-		$form = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) );
-		$form .= wfElement( 'label', array( 'for' => 'username' ), wfMsg( 'edituser-username' ) ) . ' ';
-		$form .= wfElement( 'input', array( 'type' => 'text', 'name' => 'username', 'id' => 'username', 'value' => $this->target ) ) . ' ';
-		$form .= wfElement( 'input', array( 'type' => 'submit', 'name' => 'dosearch', 'value' => wfMsg( 'edituser-dosearch' ) ) );
-		$form .= wfElement( 'input', array( 'type' => 'hidden', 'name' => 'issearch', 'value' => '1' ) );
-		$form .= wfCloseElement( 'form' );
+		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) );
+		$form .= Xml::element( 'label', array( 'for' => 'username' ), wfMsg( 'edituser-username' ) ) . ' ';
+		$form .= Xml::element( 'input', array( 'type' => 'text', 'name' => 'username', 'id' => 'username', 'value' => $this->target ) ) . ' ';
+		$form .= Xml::element( 'input', array( 'type' => 'submit', 'name' => 'dosearch', 'value' => wfMsg( 'edituser-dosearch' ) ) );
+		$form .= Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'issearch', 'value' => '1' ) );
+		$form .= Xml::closeElement( 'form' );
 		return $form;
 	}
 }

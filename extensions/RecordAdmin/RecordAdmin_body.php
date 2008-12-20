@@ -65,9 +65,9 @@ class SpecialRecordAdmin extends SpecialPage {
 			while ( $row = $dbr->fetchRow( $res ) ) $options .= '<option>' . Title::newFromID( $row[0] )->getText() . '</option>';
 
 			# Render type-selecting form
-			$wgOut->addHTML( wfElement( 'form', array( 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
+			$wgOut->addHTML( Xml::element( 'form', array( 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
 				. "<select name='wpType'>$options</select> "
-				. wfElement( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-submit' ) ) )
+				. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-submit' ) ) )
 				. '</form>'
 			);
 		}
@@ -111,15 +111,15 @@ class SpecialRecordAdmin extends SpecialPage {
 
 			# Render the form
 			$wgOut->addHTML(
-				wfElement( 'form', array( 'class' => strtolower($type).'-record', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
-				. '<b>' . wfMsg( 'recordadmin-recordid' ) . '</b> ' . wfElement( 'input', array( 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
-				. '&nbsp;&nbsp;&nbsp;' . wfElement( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
+				Xml::element( 'form', array( 'class' => strtolower($type).'-record', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null )
+				. '<b>' . wfMsg( 'recordadmin-recordid' ) . '</b> ' . Xml::element( 'input', array( 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
+				. '&nbsp;&nbsp;&nbsp;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
 				. "\n<br><br><hr><br>\n{$this->form}"
-				. wfElement( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) )
+				. Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) )
 				. '<br><hr><br><table width="100%"><tr>'
-				. '<td>' . wfElement( 'input', array( 'type' => 'submit', 'name' => 'wpFind', 'value' => wfMsg( 'recordadmin-buttonsearch' ) ) ) . '</td>'
-				. '<td>' . wfElement( 'input', array( 'type' => 'submit', 'name' => 'wpCreate', 'value' => wfMsg( 'recordadmin-buttoncreate' ) ) ) . '</td>'
-				. '<td width="100%" align="left">' . wfElement( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
+				. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpFind', 'value' => wfMsg( 'recordadmin-buttonsearch' ) ) ) . '</td>'
+				. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpCreate', 'value' => wfMsg( 'recordadmin-buttoncreate' ) ) ) . '</td>'
+				. '<td width="100%" align="left">' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
 				. '</tr></table></form>'
 			);
 
@@ -233,13 +233,13 @@ class SpecialRecordAdmin extends SpecialPage {
 			$this->populateForm( substr( $text, $braces['OFFSET'], $braces['LENGTH'] ) );
 
 			# Render the form
-			$wgOut->addHTML( wfElement( 'form', array( 'class' => 'recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null ) );
+			$wgOut->addHTML( Xml::element( 'form', array( 'class' => 'recordadmin', 'action' => $title->getLocalURL( 'action=submit' ), 'method' => 'post' ), null ) );
 			$wgOut->addHTML( $this->form );
-			$wgOut->addHTML( wfElement( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
-			$wgOut->addHTML( wfElement( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
+			$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'value' => $type ) ) );
+			$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'value' => $record ) ) );
 			$wgOut->addHTML( '<br><hr><br><table width="100%"><tr>'
-				. '<td>' . wfElement( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '</td>'
-				. '<td width="100%" align="left">' . wfElement( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
+				. '<td>' . Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '</td>'
+				. '<td width="100%" align="left">' . Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</td>'
 				. '</tr></table></form>'
 			);
 		}

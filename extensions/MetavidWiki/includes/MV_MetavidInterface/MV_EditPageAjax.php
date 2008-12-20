@@ -777,7 +777,7 @@ END
 		# For a bit more sophisticated detection of blank summaries, hash the
 		# automatic one and pass that in a hidden field.
 		$autosumm = $this->autoSumm ? $this->autoSumm : md5( $this->summary );
-		$wgOut->addHTML( wfHidden( 'wpAutoSummary', $autosumm ) );
+		$wgOut->addHTML( Xml::hidden( 'wpAutoSummary', $autosumm ) );
 
 		if ( $this->isConflict ) {
 			$wgOut->addWikiText( '==' . wfMsg( "yourdiff" ) . '==' );
@@ -839,7 +839,7 @@ END
 		if ( $button_action != '' )
 			$temp['onMouseUp'] = sprintf( $button_action, 'save' );
 			
-		$buttons['save'] = wfElement( 'input', $temp, '' );
+		$buttons['save'] = Xml::element( 'input', $temp, '' );
 
 		++$tabindex; // use the same for preview and live preview
 		if ( $wgLivePreview && $wgUser->getOption( 'uselivepreview' ) ) {
@@ -855,7 +855,7 @@ END
 			);
 			if ( $button_action != '' )
 				$temp['onMouseUp'] = sprintf( $button_action, 'preview' );
-			$buttons['preview'] = wfElement( 'input', $temp, '' );
+			$buttons['preview'] = Xml::element( 'input', $temp, '' );
 
 			$temp = array(
 				'id'        => 'wpLivePreview',
@@ -869,7 +869,7 @@ END
 			);
 			if ( $button_action != '' )
 				$temp['onMouseUp'] = sprintf( $button_action, 'live' );
-			$buttons['live'] = wfElement( 'input', $temp, '' );
+			$buttons['live'] = Xml::element( 'input', $temp, '' );
 		} else {
 			$temp = array(
 				'id'        => 'wpPreview_' . $this->mvd_id,
@@ -883,7 +883,7 @@ END
 			if ( $button_action != '' )
 				$temp['onMouseUp'] = sprintf( $button_action, 'preview' );
 				
-			$buttons['preview'] = wfElement( 'input', $temp, '' );
+			$buttons['preview'] = Xml::element( 'input', $temp, '' );
 			$buttons['live'] = '';
 		}
 
@@ -898,7 +898,7 @@ END
 		);
 		if ( $button_action != '' )
 				$temp['onMouseUp'] = sprintf( $button_action, 'diff' );
-		$buttons['diff'] = wfElement( 'input', $temp, '' );
+		$buttons['diff'] = Xml::element( 'input', $temp, '' );
 
 		return $buttons;
 	}

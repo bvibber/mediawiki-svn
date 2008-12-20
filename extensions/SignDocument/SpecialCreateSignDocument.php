@@ -92,7 +92,7 @@ class SpecialCreateSignDocument extends SpecialPage {
 		$ret = '';
 		$selectedAttr = array( 'selected' => 'selected' );
 		foreach ( $arr as $a ) {
-			$ret .= wfElement( 'option', array(
+			$ret .= Xml::element( 'option', array(
 				'value' => $a) + $selectedAttr, $a );
 			$selectedAttr = array();
 		}

@@ -60,7 +60,7 @@ class SpecialSignDocument extends SpecialPage {
 		$wgOut->addWikiText( wfMsg( 'sign-nodocselected' ) );
 
 		$out = '';
-		$out .= wfOpenElement( 'form', array(
+		$out .= Xml::openElement( 'form', array(
 			'id' => 'mw-SignDocument-SelectDoc-form',
 			'action' => $wgTitle->escapeLocalUrl(),
 			'method' => 'get') );
@@ -69,7 +69,7 @@ class SpecialSignDocument extends SpecialPage {
 
 		$out .= $this->buildDocSelector();
 
-		$out .= wfElement( 'input', array(
+		$out .= Xml::element( 'input', array(
 			'id' => 'mw-SelectDoc-submit',
 			'type' => 'submit',
 			'value' => wfMsg( 'go' ) ) );
@@ -88,7 +88,7 @@ class SpecialSignDocument extends SpecialPage {
 			'size' => '1',
 		);
 
-		$out = wfOpenElement( 'select', $attribs );
+		$out = Xml::openElement( 'select', $attribs );
 
 		$itms = SignDocumentForm::getNamesFromDB();
 		$firstItem = null;
@@ -107,7 +107,7 @@ class SpecialSignDocument extends SpecialPage {
 			? array( 'selected' => 'selected' )
 			: array();
 
-			return wfElement( 'option',
+			return Xml::element( 'option',
 					array( 'value' => $value ) + $selectedAttrib,
 							$text );
 	}
@@ -166,7 +166,7 @@ class SpecialSignDocument extends SpecialPage {
 
 		$out = '';
 
-		$out .= wfOpenElement( 'form', array(
+		$out .= Xml::openElement( 'form', array(
 			'id' => 'mw-SignDocument-sign-form',
 			'action' => $wgTitle->escapeLocalUrl(),
 			'method' => 'post') );
@@ -211,13 +211,13 @@ class SpecialSignDocument extends SpecialPage {
 		$out .= '<tr><td></td><td>' . wfMsg( 'sign-indicates-req' ) . '</td></tr>';
 		$out .= '<tr><td></td><td>' . wfMsg( 'sign-hide-note' ) . '</td></tr>';
 
-		$out .= wfElement( 'input', array(
+		$out .= Xml::element( 'input', array(
 
 				'type' => 'hidden',
 				'name' => 'doc',
 				'value' => $wgRequest->getVal('doc') ) );
 
-		$out .= '<tr><td>' . wfElement( 'input', array(
+		$out .= '<tr><td>' . Xml::element( 'input', array(
 				'id' => 'mwSignDocument-submit',
 				'type' => 'submit',
 				'value' => wfMsg( 'sign-submit') ) );
@@ -235,7 +235,7 @@ class SpecialSignDocument extends SpecialPage {
 		if (!$optional) $caption .= '<font color="red">*</font>';
 		$out .= "<strong>$caption&nbsp;";
 		$out .= '</td><td>';
-		$out .= wfElement( 'input', array(
+		$out .= Xml::element( 'input', array(
 			'id' => "wmSignDocument-$name",
 			'name' => $name,
 			'value' => $value,
@@ -376,27 +376,27 @@ class SignatureViewer {
 		$url = $wgTitle->escapeLocalUrl() . '?doc=' . $this->mForm->getId()
 				. '&viewsigs';
 
-		$out = wfOpenElement( 'form', array(
+		$out = Xml::openElement( 'form', array(
 			'id'     => 'wm-sign-viewsigs-closeopen-form',
 			'action' => $url,
 			'method' => 'post' ) );
 
 		if ( $this->mForm->mOpen ) {
 			$out .= wfMsg('sign-sigadmin-currentlyopen') . '&nbsp;';
-			$out .= wfElement( 'input', array(
+			$out .= Xml::element( 'input', array(
 					'type'  => 'submit',
 					'name'  => 'closesigning-submit',
 					'value' => wfMsg( 'sign-sigadmin-close' ) ) );
-			$out .= wfElement( 'input', array(
+			$out .= Xml::element( 'input', array(
 					'type'  => 'hidden',
 					'name'  => 'closesigning') );
 		} else {
 			$out .= wfMsg('sign-sigadmin-currentlyclosed') . '&nbsp;';
-			$out .= wfElement( 'input', array(
+			$out .= Xml::element( 'input', array(
 					'type'  => 'submit',
 					'name'  => 'opensigning-submit',
 					'value' => wfMsg( 'sign-sigadmin-open' ) ) );
-			$out .= wfElement( 'input', array(
+			$out .= Xml::element( 'input', array(
 					'type'  => 'hidden',
 					'name'  => 'opensigning') );
 		}
@@ -408,24 +408,24 @@ class SignatureViewer {
 	private function getFieldSelector() {
 		global $wgTitle;
 		$out = '';
-		$out .= wfOpenElement( 'form', array(
+		$out .= Xml::openElement( 'form', array(
 			'id' => 'mw-sdoc-viewsigs-fieldselector-form',
 			'action' => $wgTitle->escapeLocalUrl(),
 			'method' => 'get') );
 
 		$out .= wfMsg( 'sign-view-selectfields' );
 
-		$out .= wfElement( 'input', array(
+		$out .= Xml::element( 'input', array(
 			'type' => 'hidden', 'name' => 'doc',
 			'value' => $this->mForm->getId()));
 
-		$out .= wfElement( 'input', array(
+		$out .= Xml::element( 'input', array(
 			'type' => 'hidden', 'name' => 'viewsigs'));
 
 		foreach (array_keys($this->mFields) as $field)
 			$out .= $this->fieldCheck($field);
 
-		$out .= '&nbsp;' . wfElement( 'input', array(
+		$out .= '&nbsp;' . Xml::element( 'input', array(
 			'type' => 'submit', 'value' => wfMsg('go') ) );
 
 		$out .= '</form>';
@@ -536,7 +536,7 @@ class SignatureViewer {
 		$url = $wgTitle->escapeLocalUrl() . '?doc=' . $wgRequest->getVal('doc')
 				. '&viewsigs&detail=' . $wgRequest->getVal('detail');
 
-		$out .= wfOpenElement( 'form', array(
+		$out .= Xml::openElement( 'form', array(
 			'id'     => 'doreview-form',
 			'action' => $url,
 			'method' => 'post' ) );
@@ -550,13 +550,13 @@ class SignatureViewer {
 			$sig->mStricken);
 
 		$out .= '&nbsp;&nbsp;' . wfMsg( 'sign-review-comment' ) . ':&nbsp;';
-		$out .= wfElement( 'input', array(
+		$out .= Xml::element( 'input', array(
 			'type'  => 'text',
 			'name'  => 'reviewcomment',
 			'value' => $sig->mStrickenComment,
 	   		'style' => 'width: 450px;'	) );
 
-		$out .= '&nbsp;&nbsp;' . wfElement( 'input', array(
+		$out .= '&nbsp;&nbsp;' . Xml::element( 'input', array(
 			'type'  => 'submit',
 			'name'  => 'doreview',
 			'value' => wfMsg( 'sign-submitreview' ) ) );
@@ -632,12 +632,12 @@ class SignatureViewer {
 		if ( !$wgRequest->wasPosted() || !$wgRequest->getVal( 'rununiquequery' ) ) {
 			$url = $wgTitle->escapeLocalUrl() . '?doc=' . $wgRequest->getVal('doc')
 				. '&viewsigs&detail=' . $wgRequest->getVal('detail');
-			$out .= wfOpenElement( 'form', array(
+			$out .= Xml::openElement( 'form', array(
 				'id' => 'rununiquequery-form',
 				'action' => $url,
 				'method' => 'post' ) );
 
-			$out .= wfElement( 'input', array(
+			$out .= Xml::element( 'input', array(
 				'type' => 'submit',
 				'name' => 'rununiquequery',
 				'value'=> wfMsg( 'sign-detail-uniquequery-run' ) ) );

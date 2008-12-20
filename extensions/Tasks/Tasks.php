@@ -1560,7 +1560,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			if( $checked ) {
 				$attribs['checked'] = 'checked';
 			}
-			return wfElement( 'input', $attribs );
+			return Xml::element( 'input', $attribs );
 		}
 	} # end of class
 

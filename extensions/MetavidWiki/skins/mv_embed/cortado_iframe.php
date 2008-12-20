@@ -68,7 +68,7 @@ function cortado_iframe() {
 /**
  * JS escape function copied from MediaWiki's Xml::escapeJsString()
  */
-function wfEscapeJsString( $string ) {
+function Xml::escapeJsString( $string ) {
 	// See ECMA 262 section 7.8.4 for string literal format
 	$pairs = array(
 		"\\" => "\\\\",
@@ -108,7 +108,7 @@ function output_page($params){
 	<title>cortado_embed</title>
 	<?if( !empty( $parent_domain ) ){?>
 	<script type="text/javascript">
-		window.DOMAIN = '<?= wfEscapeJsString( $parent_domain ); ?>';
+		window.DOMAIN = '<?= Xml::escapeJsString( $parent_domain ); ?>';
 	</script>
 	<?}?>
 	<style type="text/css">

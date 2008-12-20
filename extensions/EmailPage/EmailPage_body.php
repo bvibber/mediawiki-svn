@@ -56,7 +56,7 @@ class SpecialEmailPage extends SpecialPage {
 
 		# Render form
 		$special = Title::makeTitle(NS_SPECIAL, 'EmailPage');
-		$wgOut->addHTML(wfElement('form',array(
+		$wgOut->addHTML(Xml::element('form',array(
 			'class'  => 'EmailPage',
 			'action' => $special->getLocalURL('action=submit'),
 			'method' => 'POST'
@@ -104,7 +104,7 @@ class SpecialEmailPage extends SpecialPage {
 
 		# Subject
 		$wgOut->addWikiText(wfMsg('ea-subject'));
-		$wgOut->addHTML(wfElement('input',array('type' => 'text', 'name' => 'ea-subject', 'value' => $this->subject, 'style' => "width:100%")));
+		$wgOut->addHTML(Xml::element('input',array('type' => 'text', 'name' => 'ea-subject', 'value' => $this->subject, 'style' => "width:100%")));
 
 		# Header
 		$wgOut->addWikiText(wfMsg('ea-header'));
@@ -143,9 +143,9 @@ class SpecialEmailPage extends SpecialPage {
 		$wgOut->addHTML("</fieldset>");
 
 		# Submit buttons & hidden values
-		$wgOut->addHTML(wfElement('input', array('type' => 'submit', 'name' => 'ea-send', 'value' => wfMsg('ea-send'))));
-		$wgOut->addHTML(wfElement('input', array('type' => 'submit', 'name' => 'ea-show', 'value' => wfMsg('ea-show'))));
-		$wgOut->addHTML(wfElement('input', array('type' => 'hidden', 'name' => 'ea-title', 'value' => $this->title)));
+		$wgOut->addHTML(Xml::element('input', array('type' => 'submit', 'name' => 'ea-send', 'value' => wfMsg('ea-send'))));
+		$wgOut->addHTML(Xml::element('input', array('type' => 'submit', 'name' => 'ea-show', 'value' => wfMsg('ea-show'))));
+		$wgOut->addHTML(Xml::element('input', array('type' => 'hidden', 'name' => 'ea-title', 'value' => $this->title)));
 
 		$wgOut->addHTML('</form>');
 

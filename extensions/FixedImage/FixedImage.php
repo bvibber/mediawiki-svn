@@ -71,5 +71,5 @@ function fixedImageSetup() {
  */
 function fixedImageHandler( $key, $text, $params=null ) {
 	global $wgFixedImageHooks;
-	return wfElement( 'img', $wgFixedImageHooks[$key] );
+	return Xml::element( 'img', $wgFixedImageHooks[$key] );
 }

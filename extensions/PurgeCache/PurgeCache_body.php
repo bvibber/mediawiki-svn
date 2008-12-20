@@ -32,9 +32,9 @@ class SpecialPurgeCache extends SpecialPage {
 
 	function makeForm() {
 		$self = $this->getTitle();
-		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
-		$form .= wfElement( 'input', array( 'type' => 'submit', 'name' => 'purge', 'value' => wfMsg('purgecache-button') ) );
-		$form .= wfCloseElement( 'form' );
+		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		$form .= Xml::element( 'input', array( 'type' => 'submit', 'name' => 'purge', 'value' => wfMsg('purgecache-button') ) );
+		$form .= Xml::closeElement( 'form' );
 		return $form;
 	}
 }

@@ -94,25 +94,25 @@ class SpecialForm extends SpecialPage {
 
 		if (!is_null($form->instructions)) {
 
-			$wgOut->addHTML(wfOpenElement('div', array('class' => 'instructions')) .
+			$wgOut->addHTML(Xml::openElement('div', array('class' => 'instructions')) .
 							$wgOut->parse($form->instructions) .
-							wfCloseElement('div') .
-							wfElement('br'));
+							Xml::closeElement('div') .
+							Xml::element('br'));
 		}
 
 		if (!is_null($errmsg)) {
-			$wgOut->addHTML(wfOpenElement('div', array('class' => 'error')) .
+			$wgOut->addHTML(Xml::openElement('div', array('class' => 'error')) .
 							$wgOut->parse($errmsg) .
-							wfCloseElement('div') .
-							wfElement('br'));
+							Xml::closeElement('div') .
+							Xml::element('br'));
 		}
 
-		$wgOut->addHTML(wfOpenElement('form',
+		$wgOut->addHTML(Xml::openElement('form',
 									  array('method' => 'POST',
 											'action' => $self->getLocalURL())));
 
 		foreach ($form->fields as $field) {
-			$wgOut->addHTML($field->render($wgRequest->getText($field->name)) . wfElement('br') . "\n");
+			$wgOut->addHTML($field->render($wgRequest->getText($field->name)) . Xml::element('br') . "\n");
 		}
 
 		if ($wgUser->getId() == 0 && $wgSpecialFormRecaptcha) { # Anonymous user, use recaptcha
@@ -121,10 +121,10 @@ class SpecialForm extends SpecialPage {
 			$wgOut->addHTML(recaptcha_get_html($recaptcha_public_key));
 		}
 
-		$wgOut->addHTML(wfElement('input', array('type' => 'submit',
+		$wgOut->addHTML(Xml::element('input', array('type' => 'submit',
 												 'value' => wfMsg('formsave'))));
 
-		$wgOut->addHTML(wfCloseElement('form'));
+		$wgOut->addHTML(Xml::closeElement('form'));
 	}
 
 	function createArticle($form) {
@@ -436,21 +436,21 @@ class FormField {
 
 		switch ($this->type) {
 		 case 'textarea':
-			return wfOpenElement('h2') .
-			  wfElement('label', array('for' => $this->name), $this->label) .
-		      wfCloseElement('h2') .
+			return Xml::openElement('h2') .
+			  Xml::element('label', array('for' => $this->name), $this->label) .
+		      Xml::closeElement('h2') .
 			  (($this->description) ?
-			   (wfOpenElement('div') . $wgOut->parse($this->description) . wfCloseElement('div')) : '') .
-			  wfOpenElement('textarea', array('name' => $this->name,
+			   (Xml::openElement('div') . $wgOut->parse($this->description) . Xml::closeElement('div')) : '') .
+			  Xml::openElement('textarea', array('name' => $this->name,
 											  'id' => $this->name,
 											  'rows' => $this->getOption('rows', 6),
 											  'cols' => $this->getOption('cols', 80))) .
 			  ((is_null($def)) ? '' : $def) .
-			  wfCloseElement('textarea');
+			  Xml::closeElement('textarea');
 			break;
 		 case 'text':
-			return wfElement('label', array('for' => $this->name), $this->label) . ": " .
-			  wfElement('input', array('type' => 'text',
+			return Xml::element('label', array('for' => $this->name), $this->label) . ": " .
+			  Xml::element('input', array('type' => 'text',
 									   'name' => $this->name,
 									   'id' => $this->name,
 									   'value' => ((is_null($def)) ? '' : $def),
@@ -463,8 +463,8 @@ class FormField {
 			if ($def == 'checked') {
 				$attrs['checked'] = 'checked';
 			}
-			return wfElement('label', array('for' => $this->name), $this->label) . ": " .
-			  wfElement('input', $attrs);
+			return Xml::element('label', array('for' => $this->name), $this->label) . ": " .
+			  Xml::element('input', $attrs);
 			break;
 		 case 'radio':
 			$items = array();
@@ -476,25 +476,25 @@ class FormField {
 				if ($item == $def) {
 					$attrs['checked'] = 'checked';
 				}
-				$items[] = wfOpenElement('input', $attrs) .
-				  wfElement('label', null, $item) .
-				  wfCloseElement('input');
+				$items[] = Xml::openElement('input', $attrs) .
+				  Xml::element('label', null, $item) .
+				  Xml::closeElement('input');
 			}
-			return wfElement('span', null, $this->label) . wfElement('br') . implode("", $items);
+			return Xml::element('span', null, $this->label) . Xml::element('br') . implode("", $items);
 			break;
 		 case 'select':
 			$items = array();
 			$rawitems = explode(';', $this->getOption('items'));
 			foreach ($rawitems as $item) {
-				$items[] = wfElement('option',
+				$items[] = Xml::element('option',
 									 ($item == $def) ? array('selected' => 'selected') : null,
 									 $item);
 			}
 
-			return wfElement('label', array('for' => $this->name), $this->label) . ": " .
-			  wfOpenElement('select', array('name' => $this->name, 'id' => $this->name)) .
+			return Xml::element('label', array('for' => $this->name), $this->label) . ": " .
+			  Xml::openElement('select', array('name' => $this->name, 'id' => $this->name)) .
 			  implode("", $items) .
-		      wfCloseElement('select');
+		      Xml::closeElement('select');
 
 			break;
 		 default:
