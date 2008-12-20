@@ -58,7 +58,7 @@ function efConfigureAjax( $setting, $group ) {
  */
 function efConfigureSetup( $wiki = 'default' ) {
 	global $wgConf, $wgConfigureFilesPath;
-
+	wfProfileIn( __FUNCTION__ );
 	# Create the new configuration object...
 	$oldConf = $wgConf;
 	require_once( dirname( __FILE__ ) . '/Configure.obj.php' );
@@ -81,6 +81,7 @@ function efConfigureSetup( $wiki = 'default' ) {
 	} else {
 		efConfigureInitialise();
 	}
+	wfProfileOut( __FUNCTION__ );
 }
 
 function efConfigureInitialise() {
