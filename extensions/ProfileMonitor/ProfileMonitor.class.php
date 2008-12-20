@@ -41,11 +41,11 @@ class ProfileMonitor extends SpecialPage {
 
 	private function makeSearchForm( $process, $wild = false ) {
 		$self = Title::makeTitle( NS_SPECIAL, 'Profiling' );
-		$html  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		$html  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 		$html .= '<table><tr><td>' . wfMsgHtml( 'profiling-process' ) . '</td><td>';
-		$html .= wfInput( 'process', 50, $process ) . '</td></tr><td align="right">' . wfCheck( 'wildcard', $wild ) . '</td>';
+		$html .= Xml::input( 'process', 50, $process ) . '</td></tr><td align="right">' . Xml::check( 'wildcard', $wild ) . '</td>';
 		$html .= '<td>' . wfMsgHtml( 'profiling-wildcard' ) . '</td></tr>';
-		$html .= '<tr><td>&nbsp;</td><td>' . wfSubmitButton( wfMsg( 'profiling-ok' ), array( 'name' => 'submit' ) ) . '</td></table></form>';
+		$html .= '<tr><td>&nbsp;</td><td>' . Xml::submitButton( wfMsg( 'profiling-ok' ), array( 'name' => 'submit' ) ) . '</td></table></form>';
 		return $html;
 	}
 
