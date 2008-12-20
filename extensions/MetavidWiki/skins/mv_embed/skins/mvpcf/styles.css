@@ -541,6 +541,10 @@ ul.rsd_cp_tabs li {
 	padding:10px;
 	float:left;
 	border: thin solid #BBB;
+	overflow:hidden;
+}
+.mv_clip_box_result_over{
+	border: thin solid #F99;
 }
 .mv_clip_list_result{
 	padding:10px;
@@ -549,4 +553,23 @@ ul.rsd_cp_tabs li {
 	margin:4px;
 	background:#DEF;
 	height:22px;
+}
+
+/* edit buttons: */
+.mv_edit_button{	
+	width:22px;
+	height:22px;
+	float:left;
+}
+.mv_crop_button_base{
+	background-image: url('images/stock-tool-button-crop.png');
+}
+.mv_crop_button_selected{
+	background-image: url('images/stock-tool-button-crop_over.png');	
+}
+.mv_scale_button_base{
+	background-image: url('images/stock-tool-button-scale.png');
+}
+.mv_scale_button_selected{
+	background-image: url('images/stock-tool-button-scale_over.png');
 }

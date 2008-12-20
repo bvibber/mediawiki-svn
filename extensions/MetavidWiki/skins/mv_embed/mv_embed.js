@@ -130,7 +130,12 @@ function getMsg( key , args ) {
 	 	return gMsg[key];
 	 } else{
 	 	return '[' + key + ']';
-	 }
+	 }	 
+}
+function mv_get_loading_img( style, class){
+	var class_attr = (class)?'class="'+class+'"':'class="mv_loading_img"';
+	return '<img '+class_attr+' style="' + style +'" src="'+ 
+		mv_embed_path + 'skins/' + mv_skin_name + '/images/loading_ani.gif">';
 }
 
 /*  the base video control JSON object with default attributes
@@ -2920,7 +2925,7 @@ function do_api_req(req_param, api_url, callback){
 	}
 				
 	//build request string: (force the format to json): 
-	var req_url = api_url +'?format=json';	
+	var req_url = api_url + '?format=json';	
 	for(var i in req_param){
 		req_url += '&' + encodeURIComponent( i ) + '=' + encodeURIComponent( req_param[i] );		
 	}
@@ -2937,10 +2942,10 @@ function do_api_req(req_param, api_url, callback){
 			}
 		});
 	}else{		
-		//remote request append callback			
-		eval('_global.mycpfn' + ( global_cb_count++ ) + ' = ' + callback );			
-		req_url += '&callback=mycpfn' + global_cb_count;
-		loadExternalJs( req_url );		
+		var fname = 'mycpfn_' + ( global_cb_count++ );
+		_global[ fname ]  =  callback ;				
+		req_url += '&callback=' + fname;								
+		loadExternalJs( req_url );				
 	}	
 }
 //do a "normal" request (should be deprecated via extending the mediaWiki API) 
@@ -2964,8 +2969,7 @@ function do_request(req_url, callback){
 			global_req_cb.push(callback);
 			//prepend json_ to feed_format if not already requesting json format
 			if( req_url.indexOf("feed_format=")!=-1 &&  req_url.indexOf("feed_format=json")==-1)
-				req_url = req_url.replace(/feed_format=/, 'feed_format=json_');
-													
+				req_url = req_url.replace(/feed_format=/, 'feed_format=json_');													
 			loadExternalJs(req_url+'&cb=mv_jsdata_cb&cb_inx='+(global_req_cb.length-1));			
 		}
 }

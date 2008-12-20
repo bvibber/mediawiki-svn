@@ -444,10 +444,24 @@ mvSequencer.prototype = {
 		//propogate the edit tokens 
 		//if on an edit page just grab from the form:		
 		this.sequenceEditToken = $j('input[@wpEditToken]').val();
-		if(typeof this.sequenceEditToken == 'undefined'){
+		if(typeof this.sequenceEditToken == 'undefined'){			
+			var reqObj = {'action':'query','prop':'info','intoken':'edit','titles': this_seq.plObj.mTitle};
+			var api_url = this.plObj.interface_url.replace(/index\.php/, 'api.php'); 
+			do_api_req( reqObj, api_url,function(data){
+				if(data.page[0]['edittoken'])
+					this_seq.sequenceEditToken = data.page[0]['edittoken'];
+				this_seq.updateSeqSaveButtons();
+			});
+			reqObj['titles']=this_seq.plObj.mTalk;
+			do_api_req(reqObj, api_url, function(){
+				if(data.page[0]['edittoken'])
+					this_seq.clipboardEditToken = data.page[0]['edittoken'];
+			});
+			//also grab permmisions for sending clipboard commands to the server
+			
 			//(calling the sequencer inline) try and get edit token via api call:			
 			//(somewhat fragile way to get at the api... should move to config 
-			var token_url =this.plObj.interface_url.replace(/index\.php/, 'api.php');
+			/*var token_url = this.plObj.interface_url.replace(/index\.php/, 'api.php');
 			token_url += '?action=query&format=xml&prop=info&intoken=edit&titles=';			
 			$j.ajax({
 				type: "GET",
@@ -457,11 +471,11 @@ mvSequencer.prototype = {
 					if( $j(pageElm).attr('edittoken') ){
 						this_seq.sequenceEditToken = $j(pageElm).attr('edittoken');
 					}
-					this_seq.updateSeqSaveButtons();
+					
 				}
-			});			
+			});*/			
 			//also grab permmisions for sending clipboard commands to the server
-			$j.ajax({
+			/*$j.ajax({
 				type:"GET",
 				url: token_url + this_seq.plObj.mTalk,
 				success:function(data){
@@ -470,7 +484,7 @@ mvSequencer.prototype = {
 						this_seq.clipboardEditToken = $j(pageElm).attr('edittoken');
 					}								
 				} 
-			}); 			
+			});*/			
 		}
 		
 		
