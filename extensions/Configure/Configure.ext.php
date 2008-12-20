@@ -131,9 +131,6 @@ class WebExtension {
 	 */
 	public function getFile() {
 		global $wgConfigureExtDir;
-		if ( substr( $wgConfigureExtDir, -1 ) != '/' && substr( $wgConfigureExtDir, -1 ) != '\\' ) {
-			$wgConfigureExtDir .= '/';
-		}
 		return $wgConfigureExtDir . $this->mDir . '/' . $this->mFile;
 	}
 
@@ -223,11 +220,13 @@ class WebExtension {
 	 * @return bool
 	 */
 	public function isInstalled() {
- 		if( $this->useVariable() )
+ 		if( $this->useVariable() ) {
  			return true;
+		}
  		global $wgConfigureOnlyUseVarForExt;
- 		if( $wgConfigureOnlyUseVarForExt )
+ 		if( $wgConfigureOnlyUseVarForExt ) {
  			return false;
+		}
 		return file_exists( $this->getFile() );
 	}
 }

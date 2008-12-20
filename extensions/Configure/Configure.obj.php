@@ -79,20 +79,23 @@ class WebConfiguration extends SiteConfiguration {
 	}
 	
 	public function snapshotDefaults( /* options */ ) {
+		wfProfileIn( __METHOD__ );
 		$options = func_get_args();
-		
-		if ( !is_array($this->mDefaults) || in_array( 'allow_empty', $options ) ) {
-			if ( !is_array( $this->mDefaults ) )
+		$noOverride = in_array( 'no_override', $options );
+		if( !is_array($this->mDefaults) || in_array('allow_empty',$options) ) {
+			if( !is_array( $this->mDefaults ) ) {
 				$this->mDefaults = array();
-			
-			$allSettings = array_keys( ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllSettings() );
-
-			foreach( $allSettings as $setting ) {
-				if ( array_key_exists( $setting, $GLOBALS ) &&  !( in_array( 'no_override', $options ) && array_key_exists( $setting, $this->mDefaults ) ) ) {
+			}
+			$allSettings = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllSettings();
+			foreach( $allSettings as $setting => $type ) {
+				if( array_key_exists($setting,$GLOBALS) && 
+					!( $noOverride && array_key_exists($setting,$this->mDefaults) ) )
+				{
 					$this->mDefaults[$setting] = $GLOBALS[$setting];
 				}
 			}
 		}
+		wfProfileOut( __METHOD__ );
 	}
 
 	/**

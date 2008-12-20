@@ -37,8 +37,7 @@ class ConfigurationSettings {
 	 * Load messages and initialise static variables
 	 */
 	protected function loadSettingsDefs() {
-		if ( $this->initialized )
-			return;
+		if ( $this->initialized ) return;
 		$this->initialized = true;
 
 		require( dirname( __FILE__ ) . '/Configure.settings-core.php' );
@@ -60,19 +59,20 @@ class ConfigurationSettings {
 	 * @return array
 	 */
 	public function getAllExtensionsObjects() {
-		static $list = array();
-		if ( !empty( $list ) )
-			return $list;
+		static $list;
+		if( isset($list) ) return $list;
+		wfProfileIn( __METHOD__ );
 		$this->loadSettingsDefs();
 		global $wgConfigureAdditionalExtensions;
 		$extensions = array_merge( $this->extensions, $wgConfigureAdditionalExtensions );
 		usort( $extensions, array( __CLASS__, 'compExt' ) );
-		foreach ( $extensions as $ext ) {
+		foreach( $extensions as $ext ) {
 			$ext = new WebExtension( $ext );
-			if ( $ext->isInstalled() ) {
+			if( $ext->isInstalled() ) {
 				$list[] = $ext;
 			}
 		}
+		wfProfileOut( __METHOD__ );
 		return $list;
 	}
 
@@ -91,18 +91,18 @@ class ConfigurationSettings {
 	public function getSettings() {
 		$this->loadSettingsDefs();
 		$ret = array();
-		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
-			$ret += $this->settings;
+		if( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
+			$ret = $this->settings;
 		}
-		if ( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
+		if( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
 			static $extArr;
-			if ( !isset( $extArr ) ) {
+			if( !isset($extArr) ) {
 				$extArr = array();
-				foreach ( $this->getAllExtensionsObjects() as $ext ) {
+				foreach( $this->getAllExtensionsObjects() as $ext ) {
  					$extSettings = $ext->getSettings();
- 					if ( $ext->useVariable() )
+ 					if( $ext->useVariable() )
  						$extSettings[$ext->getVariable()] = 'bool';
- 					if ( count( $extSettings ) )
+ 					if( count( $extSettings ) )
  						$extArr['mw-extensions'][$ext->getName()] = $extSettings;
 				}
 			}
@@ -117,16 +117,20 @@ class ConfigurationSettings {
 	 * @return array
 	 */
 	public function getAllSettings() {
-		if ( isset( $this->cache['all'] ) )
+		if( isset( $this->cache['all'] ) ) {
 			return $this->cache['all'];
+		}
 		$this->loadSettingsDefs();
 		$arr = array();
-		foreach ( $this->getSettings() as $section ) {
-			foreach ( $section as $group ) {
-				$arr = array_merge( $arr, $group );
+		foreach( $this->getSettings() as $section ) {
+			foreach( $section as $group ) {
+				foreach( $group as $var => $type ) {
+					$arr[$var] = $type;
+				}
 			}
 		}
-		return $this->cache['all'] = $arr;
+		$this->cache['all'] = $arr;
+		return $this->cache['all'];
 	}
 
 	/**

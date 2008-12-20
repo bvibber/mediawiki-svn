@@ -57,7 +57,7 @@ function efConfigureAjax( $setting, $group ) {
  * @param $wiki String
  */
 function efConfigureSetup( $wiki = 'default' ) {
-	global $wgConf, $wgConfigureFilesPath;
+	global $wgConf, $wgConfigureFilesPath, $wgConfigureExtDir;
 	wfProfileIn( __FUNCTION__ );
 	# Create the new configuration object...
 	$oldConf = $wgConf;
@@ -80,6 +80,10 @@ function efConfigureSetup( $wiki = 'default' ) {
 		$wgHooks['SetupAfterCache'][] = array( 'efConfigureInitialise' );
 	} else {
 		efConfigureInitialise();
+	}
+	# Cleanup $wgConfigureExtDir as needed
+	if( substr( $wgConfigureExtDir, -1 ) != '/' && substr( $wgConfigureExtDir, -1 ) != '\\' ) {
+		$wgConfigureExtDir .= '/';
 	}
 	wfProfileOut( __FUNCTION__ );
 }
