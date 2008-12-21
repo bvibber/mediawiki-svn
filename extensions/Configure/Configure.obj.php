@@ -7,7 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @ingroup Extensions
  */
 class WebConfiguration extends SiteConfiguration {
-	protected $mHandler;               // Configuration handler
+	protected $mHandler = null;        // Configuration handler
 	protected $mWiki;                  // Wiki name
 	protected $mConf = array();        // Our array of settings
 	protected $mOldSettings = null;    // Old settings (before applying our overrides)
@@ -20,9 +20,6 @@ class WebConfiguration extends SiteConfiguration {
 	 *                     files
 	 */
 	public function __construct( $wiki = 'default' ) {
-		global $wgConfigureHandler;
-		$class = 'ConfigureHandler' . ucfirst( $wgConfigureHandler );
-		$this->mHandler = new $class();
 		$this->mWiki = $wiki;
 	}
 
@@ -38,7 +35,7 @@ class WebConfiguration extends SiteConfiguration {
 		if ( defined( 'EXT_CONFIGURE_NO_EXTRACT' ) )
 			return;
 
-		$this->mConf = $this->mHandler->getCurrent( $useCache );
+		$this->mConf = $this->getHandler()->getCurrent( $useCache );
 
 		# Restore first version of $this->settings if called a second time so
 		# that it doesn't duplicate arrays
@@ -155,6 +152,21 @@ class WebConfiguration extends SiteConfiguration {
 	}
 
 	/**
+	 * Get the configuration handler
+	 * Used for lasy-loading
+	 *
+	 * @return ConfigureHandler object
+	 */
+	public function getHandler() {
+		if ( !is_object( $this->mHandler ) ) {
+			global $wgConfigureHandler;
+			$class = 'ConfigureHandler' . ucfirst( $wgConfigureHandler );
+			$this->mHandler = new $class();
+		}
+		return $this->mHandler;
+	}
+
+	/**
 	 * Return the old configuration from $ts timestamp
 	 * Does *not* return site specific settings but *all* settings
 	 *
@@ -164,7 +176,7 @@ class WebConfiguration extends SiteConfiguration {
 	public function getOldSettings( $ts ) {
 		if ( $ts == 'default' )
 			return array( 'default' => $this->getDefaults() );
-		return $this->mHandler->getOldSettings( $ts );
+		return $this->getHandler()->getOldSettings( $ts );
 	}
 
 	/**
@@ -174,7 +186,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array
 	 */
 	public function getWikisInVersion( $ts ) {
-		return $this->mHandler->getWikisInVersion( $ts );
+		return $this->getHandler()->getWikisInVersion( $ts );
 	}
 	
 	/** Recursive doohicky for normalising variables so we can compare them. */
@@ -196,7 +208,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return Pager
 	 */
 	public function getPager() {
-		return $this->mHandler->getPager();
+		return $this->getHandler()->getPager();
 	}
 
 	/**
@@ -284,7 +296,7 @@ class WebConfiguration extends SiteConfiguration {
 			$this->mConf[$wiki] = $settings;
 		}
 
-		return $this->mHandler->saveNewSettings( $this->mConf, $wiki, false, $reason );
+		return $this->getHandler()->saveNewSettings( $this->mConf, $wiki, false, $reason );
 	}
 
 	/**
@@ -294,7 +306,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array of timestamps
 	 */
 	public function listArchiveVersions( $options = array() ) {
-		return $this->mHandler->listArchiveVersions( $options );
+		return $this->getHandler()->listArchiveVersions( $options );
 	}
 
 	/**
@@ -305,14 +317,14 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return Array of versions
 	 */
 	public function getArchiveVersions( $options = array() ) {
-		return $this->mHandler->getArchiveVersions( $options );
+		return $this->getHandler()->getArchiveVersions( $options );
 	}
 
 	/**
 	 * Do some checks
 	 */
 	public function doChecks() {
-		return $this->mHandler->doChecks();
+		return $this->getHandler()->doChecks();
 	}
 
 	/**
@@ -320,7 +332,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return array
 	 */
 	public function getUneditableSettings() {
-		return $this->mHandler->getUneditableSettings();
+		return $this->getHandler()->getUneditableSettings();
 	}
 
 	/**
@@ -330,7 +342,7 @@ class WebConfiguration extends SiteConfiguration {
 	 * @return bool
 	 */
 	public function versionExists( $ts ) {
-		return $this->mHandler->versionExists( $ts );
+		return $this->getHandler()->versionExists( $ts );
 	}
 
 	/**
@@ -340,14 +352,6 @@ class WebConfiguration extends SiteConfiguration {
 	 */
 	public function getWiki() {
 		return $this->mWiki;
-	}
-
-	/**
-	 * Get the configuration handler
-	 * @return ConfigurationHandler
-	 */
-	public function getHandler() {
-		return $this->mHandler;
 	}
 
 	/**
