@@ -188,7 +188,7 @@ $messages['hu'] = array(
 	'categoryintersection' => 'Kategóriák metszete',
 	'categoryintersection-doit' => 'Lapok megjelenítése, melyek a következő összes kategóriában benne vannak',
 	'categoryintersection-maxcategories' => 'Egyszerre maximum $1 kategóriának lehet lekérni a metszetét.',
-	'categoryintersection-results' => 'A keresésnek $1 eredménye van.',
+	'categoryintersection-results' => 'A keresésnek {{PLURAL:$1|egy|$1}} eredménye van.',
 );
 
 /** Interlingua (Interlingua)
@@ -208,6 +208,13 @@ $messages['ia'] = array(
 $messages['is'] = array(
 	'categoryintersection-doit' => 'Listi yfir síður í öllum þessum flokkum',
 	'categoryintersection-results' => 'Leitin skilaði $1 {{PLURAL:$1|útkomu|útkomum}}.',
+);
+
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'categoryintersection' => 'カテゴリの交差検索',
 );
 
 /** Javanese (Basa Jawa)

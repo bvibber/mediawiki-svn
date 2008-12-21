@@ -177,6 +177,16 @@ $messages['hsb'] = array(
 	'piwik-browsers' => 'Wobhladowaki',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'piwik-desc' => 'Beilleszt egy Piwik szkriptet a MediaWiki-oldalakra [[Special:Piwik|statisztika]] készítéséhez',
+	'piwik-lastvisits' => 'Előző látogatók',
+	'piwik-countries' => 'Országok',
+	'piwik-browsers' => 'Böngészők',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

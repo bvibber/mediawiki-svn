@@ -105,6 +105,13 @@ $messages['hsb'] = array(
 	'pnghandler-desc' => 'Wulkosć wobrazow PNG z pomocu "pngds" změnić',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'pnghandler-desc' => 'PNG-k átméretezése pngdssel',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

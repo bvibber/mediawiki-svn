@@ -230,6 +230,13 @@ $messages['nl'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagelabels',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'layouts_title' => 'Opprett ei sida',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

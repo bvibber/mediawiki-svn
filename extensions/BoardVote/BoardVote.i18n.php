@@ -1007,6 +1007,7 @@ Pretpostavlja se da dajete prednost rangiranim kandidatima ispred onih koji nisu
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Izbori za odbor 2008.</a></li>
 <li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidati</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">Schulzova metoda</a></li></ul>',
+	'boardvote_intro_change' => '<p>Već ste ranije glasali. Usprkos tome, možete promijeniti Vaš glas koristeći formu prikazanu ispod. Molimo Vas da poredate kandidate po Vašim preferencijama, gdje manji broj označava veću preferenciju za određenog kandidata. Može dati istu preferenciju za jednog ili više kandidata a možete i ostaviti kandidate bez preferencije.</p>',
 	'boardvote_entered' => 'Hvala Vam, Vaš glas je zapisan.
 
 Ako želite, možete zabilježiti slijedeće detalje Vašeg glasanja. Ovako ste glasali:
@@ -1024,11 +1025,19 @@ Kao rezultat šifriranja slijedi zaštićena verzija. Ona će biti [[Special:Boa
 [[Special:Boardvote/entry|Nazad]]',
 	'boardvote_invalidentered' => '<p><strong>Greška</strong>: preference kandidata se moraju izraziti samo sa pozitivnim cijelim brojevima (1, 2, 3, ....), ili
 ostaviti prazno.</p>',
+	'boardvote_nosession' => 'Vaš Wikimedia korisnički ID nije pronađen.
+Molimo Vas da se prijavite na wiki gdje ste kvalifikovani za glasanje, te tamo kliknite na <nowiki>[[Special:Boardvote]]</nowiki>.
+Morate koristiti račun sa najmanje $1 {{PLURAL:$1|izmjenom|izmjena}} prije $2, i da imate najmanje $3 {{PLURAL:$3|izmjenu|izmjena}} između $4 i $5.',
+	'boardvote_notloggedin' => 'Niste prijavljeni.
+Da bi ste glasali, morate koristiti račun sa najmanje $1 {{PLURAL:$1|izmjenu|izmjena|izmjena}} prije $2, i imate najmanje $3 {{PLURAL:$3|izmjenu|izmjena|izmjena}} između $4 i $5.',
+	'boardvote_notqualified' => 'Niste kvalificirani za glasanje na ovim izborima.
+Potrebno Vam je najmanje $1 {{PLURAL:$1|izmjena|izmjene|izmjena}} prije $2, i najmanje $3 {{PLURAL:$3|izmjena|izmjene|izmjena}} između $4 i $5.',
 	'boardvote_novotes' => 'Niko još nije glasao.',
 	'boardvote_time' => 'Vrijeme',
 	'boardvote_user' => 'Korisnik',
 	'boardvote_edits' => 'Izmjene',
 	'boardvote_days' => 'Dana',
+	'boardvote_ua' => 'Predstavnik korisnika',
 	'boardvote_listintro' => '<p>Ovo je spisak svih glasova koji su pristigli do danas.
 $1 za zaštićene podatke.</p>',
 	'boardvote_dumplink' => 'Klikni ovdje',
@@ -1050,6 +1059,12 @@ Blokirani korisnici ne mogu glasati.',
 Korisnički računi botova ne mogu glasati.',
 	'boardvote_welcome' => "Dobrodošao '''$1'''!",
 	'go_to_board_vote' => 'Izbori za Wikimedia nadzorni odbor 2008',
+	'boardvote_redirecting' => 'Za poboljšanu sigurnost i transparentnost, glasanje se vrši na vanjskom, nezavisno kontrolisanom serveru.
+
+Bit ćete preusmjereni na ovaj vanjski server za 20 sekundi. [$1 Kliknite ovdje] da biste odmah otvorili.
+
+Sigurnosno upozorenje o nepotpisanom certifikatu se može prikazati.',
+	'right-boardvote' => 'Administriranje izbora',
 );
 
 /** Catalan (Català)
@@ -1592,6 +1607,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author ArnoLagrange
+ * @author Marcos
  * @author Marcoscramer
  * @author Yekrats
  */
@@ -5099,10 +5115,12 @@ $messages['rm'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  */
 $messages['ro'] = array(
+	'boardvote' => 'Alegerea Comitetului de încredere al Wikimedia',
 	'boardvote_novotes' => 'Nimeni nu a votat încă.',
 	'boardvote_time' => 'Timp',
 	'boardvote_user' => 'Utilizator',
@@ -6086,12 +6104,19 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Manop
  * @author Octahedron80
  * @author Passawuth
  */
 $messages['th'] = array(
+	'boardvote_time' => 'เวลา',
 	'boardvote_user' => 'ผู้ใช้',
+	'boardvote_edits' => 'การแก้ไข',
+	'boardvote_days' => 'วัน',
+	'boardvote_dumplink' => 'กดที่นี่',
 	'boardvote_submit' => 'ตกลง',
+	'boardvote_strike' => 'ขีดฆ่า',
+	'boardvote_unstrike' => 'ไม่ขีดฆ่า',
 );
 
 /** Tonga (faka-Tonga) */

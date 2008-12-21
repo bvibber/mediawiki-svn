@@ -103,6 +103,17 @@ $messages['he'] = array(
 	'autocreatecategorypages-editor' => 'יוצר הקטגוריות האוטומטי',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'autocreatecategorypages-desc' => 'Falowace kategorije awtomatisce při składowanju wutworić',
+	'autocreatecategorypages-stub' => 'To je kategorijowa strona.
+Nalistuje wšě strony w kategoriji "$1" a tež wšě podkategorije kategorije "$1", jeli tajke eksistuja.',
+	'autocreatecategorypages-createdby' => 'Awtomatisce přez rozšěrjenje AutoCreateCategoryPages wutworjeny.',
+	'autocreatecategorypages-editor' => 'Automatiski tworićel kategorijow',
+);
+
 /** Hungarian (Magyar)
  * @author Bdamokos
  */

@@ -78,6 +78,13 @@ $messages['de'] = array(
 	'oai-desc' => 'Stellt eine [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-Repositorium-Schnittstelle bereit',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'oai-desc' => 'Stajijo skłaźišćowy interfejs [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] k dispoziciji',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

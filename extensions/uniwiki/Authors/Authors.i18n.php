@@ -44,6 +44,15 @@ $messages['de'] = array(
 	'authors_authors' => 'Autoren',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'authors-desc' => 'Pśidawa bokam lisćinu sobuźěłaśerjow',
+	'authors_authors' => 'Awtory',
+	'authors_anonymous' => 'Anonymny',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

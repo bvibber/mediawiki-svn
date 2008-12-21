@@ -52,6 +52,13 @@ Dies ermöglicht dir die alternative Nutzung deiner Benutzerseite als OpenID.',
 	'linkopenid-prefstext-v2url' => 'Server-URL für OpenID Version 2:',
 );
 
+/** German (formal address) (Deutsch (Sie-Form)) */
+$messages['de-formal'] = array(
+	'linkopenid-prefstext-pre' => 'Wenn Sie eine OpenID bei einem externen Anbieter besitzen, können Sie diese hier angeben.
+Dies ermöglicht Ihnen die alternative Nutzung Ihrer Benutzerseite als OpenID.',
+	'linkopenid-prefstext-openid' => 'Ihre OpenID:',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -76,6 +83,7 @@ Ceci vous permet aussi d'utiliser votre page utilisateur comme OpenID.",
 	'linkopenid-prefstext-openid' => 'Votre OpenID :',
 	'linkopenid-prefstext-v1url' => 'URL du serveur pour OpenID version 1.1 :',
 	'linkopenid-prefstext-v2url' => 'URL du serveur pour OpenID version 2 :',
+	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL :',
 );
 
 /** Galician (Galego)

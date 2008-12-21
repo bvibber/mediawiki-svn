@@ -392,6 +392,17 @@ Setzt der mat den Toolen op der rietser Säit derbäi.',
 	'gep-categorypage' => 'MediaWiki:Säitenännerungs-Tagen',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'gep-categories' => 'Категории',
+	'gep-addcategory' => 'Додади категорија',
+	'gep-addcategorybutton' => 'Додади',
+	'gep-suggestcategory' => 'Предложи категорија',
+	'gep-sections' => 'Секции',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -424,6 +435,14 @@ $messages['nl'] = array(
 Gebruik de hulpmiddelen aan de rechterkant om er een toe te voegen.',
 	'gep-nocategories' => 'Selecteer tenminste één categorie voordat u de pagina opslaat',
 	'gep-categorypage' => 'MediaWiki:Editpagelabels',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'gep-addcategorybutton' => 'Legg til',
+	'gep-addsectionbutton' => 'Legg til',
 );
 
 /** Occitan (Occitan)

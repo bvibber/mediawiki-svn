@@ -1171,6 +1171,7 @@ $messages['oc'] = array(
 	'inplace_scaler_no_handler' => 'Cap de foncion (« handler ») per transformar aqueste format MIME.',
 	'inplace_scaler_no_output' => 'Cap de fichièr de transformacion generit',
 	'inplace_scaler_zero_size' => 'La transformacion a creat un fichièr de talha zèro.',
+	'webstore-desc' => "Intergicial d'estocatge de fichièrs per Internet unicament (pas NFS)",
 	'webstore_access' => 'Aqueste servici es restrench per adreça IP.',
 	'webstore_path_invalid' => 'Lo nom de fichièr es pas corrècte.',
 	'webstore_dest_open' => 'Impossible de dobrir lo fichièr de destinacion "$1".',

@@ -1189,6 +1189,7 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'expand_templates_ok' => 'Афтæ уæд!',
+	'expand_templates_preview' => 'Разæркаст',
 );
 
 /** Punjabi (ਪੰਜਾਬੀ)

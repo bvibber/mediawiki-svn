@@ -203,6 +203,7 @@ $wgCustomToolbarMessages['eo'] = array(
 	'ct_math_sample' => 'Enmeti formulon LaTeX ĉi tie',
 	'ct_math_caption' => 'Formulon',
 	'ct_nowiki_tip_ins' => 'Ignori vikian formatadon',
+	'ct_nowiki_tip_wrap' => 'Ignori vikian formatadon por ĉi tiu teksto',
 	'ct_nowiki_caption' => 'Neniu vikio',
 	'ct_horizontal_tip' => 'Enmeti horizontan linion (uzu ŝpareme)',
 	'ct_horizontal_caption' => 'Horizonta linio',

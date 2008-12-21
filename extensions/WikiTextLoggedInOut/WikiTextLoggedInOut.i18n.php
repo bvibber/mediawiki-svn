@@ -84,6 +84,13 @@ $messages['hsb'] = array(
 	'wikitextloggedinout-desc' => 'Dwě parserowej hóčce, <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt>, zo byštej rozdźělny tekst we wotwisnosći wot přizjewjenskeho statusa wužiwarja pokazałoj',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'wikitextloggedinout-desc' => 'Két hook, <tt>&lt;loggedin&gt;</tt> és <tt>&lt;loggedout&gt;</tt> más szöveg megjelenítésére attól függően, hogy a szerkesztő be van-e jelentkezve, vagy sem',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

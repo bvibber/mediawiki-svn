@@ -721,8 +721,14 @@ $wdMessages['bs'] = array(
 
 /** Catalan (Català)
  * @author Jordi Roqué
+ * @author Toniher
  */
 $wdMessages['ca'] = array(
+	'ow_save' => 'Desa',
+	'ow_history' => 'Historial',
+	'ow_dm_OK' => "D'acord",
+	'ow_ClassAttributeLevel' => 'Nivell',
+	'ow_ClassAttributeType' => 'Tipus',
 	'ow_Language' => 'Idioma',
 	'ow_OptionAttributeOptions' => 'Opcions',
 );
@@ -2546,6 +2552,9 @@ $wdMessages['mk'] = array(
 	'ow_uipref_datasets' => 'Основен поглед',
 	'ow_uiprefs' => 'Викидата',
 	'ow_none_selected' => 'Ништо не е селектирано',
+	'ow_AlternativeDefinition' => 'Алтернативна дефиниција',
+	'ow_AlternativeDefinitions' => 'Алтернативни дефиниции',
+	'ow_Annotation' => 'Забелешка',
 	'ow_ClassAttributeAttribute' => 'Атрибут',
 	'ow_ClassAttributes' => 'Класа атрибути',
 	'ow_ClassAttributeLevel' => 'Ниво',
@@ -2581,6 +2590,15 @@ $wdMessages['mk'] = array(
 	'ow_SourceIdentifier' => 'Идентификатор на извор',
 	'ow_TextAttribute' => 'Својство',
 	'ow_Text' => 'Текст',
+	'ow_TranslatedTextAttribute' => 'Својство',
+	'ow_TranslatedText' => 'Преведен текст',
+	'ow_TranslatedTextAttributeValue' => 'Текст',
+	'ow_LinkAttribute' => 'Својство',
+	'ow_LinkAttributeValues' => 'Врски',
+	'ow_Property' => 'Својство',
+	'ow_Value' => 'Вредност',
+	'ow_meaningsoftitle' => 'Значења на "$1"',
+	'ow_meaningsofsubtitle' => '<em>Вики врска:</em> [[$1]]',
 );
 
 /** Malayalam (മലയാളം)

@@ -779,10 +779,21 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author David0811
  * @author Sanbec
  */
 $messages['es'] = array(
+	'voctrain_Hello_World' => 'HOLA WIKI!',
+	'voctrain_Permission_Denied' => 'Permiso denegado',
+	'voctrain_Action_unknown' => 'Acción desconocida',
+	'voctrain_bye' => 'Adiós',
+	'voctrain_Languages' => 'Idiomas',
+	'voctrain_Questions' => 'Preguntas',
+	'voctrain_Answers' => 'Respuestas',
+	'voctrain_Password' => 'Contraseña',
 	'voctrain_Language' => 'Idioma',
+	'voctrain_Log_in' => 'Iniciar sesión',
+	'voctrain_Translation' => 'Traducción',
 );
 
 /** Finnish (Suomi)

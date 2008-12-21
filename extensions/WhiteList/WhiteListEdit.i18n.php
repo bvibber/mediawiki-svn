@@ -564,6 +564,8 @@ Utiliser soit le caractère * soit %',
 	'whitelistnewtabledate' => 'Date d’expiration :',
 	'whitelistnewtableedit' => 'Activer modification',
 	'whitelistnewtableview' => 'Activer visualisation',
+	'whitelistnowhitelistedusers' => 'Il n’y a aucun utilisateur dans le groupe « {{MediaWiki:Group-restricted}} ».
+Vous devez [[Special:UserRights|ajouter l’utilisateur au groupe]] avant que vous puissiez ajouter des pages à la liste blanche d’un utilisateur.',
 	'whitelistnewtableprocess' => 'Traiter',
 	'whitelistnewtablereview' => 'Réviser',
 	'whitelistselectrestricted' => '== Sélectionner un nom d’utilisateur à accès restreint ==',
@@ -576,7 +578,7 @@ Utiliser soit le caractère * soit %',
 	'whitelistoverviewrm' => '* Retrait de l’accès à [[:$1|$1]]',
 	'whitelistoverviewna' => "* Ajoute [[:$1|$1]] à la liste blanche avec les droits de '''$2''' avec pour date d’expiration le '''$3'''",
 	'whitelistrequest' => 'Demande d’accès à plus de pages',
-	'whitelistrequestmsg' => '$1 a demandé l’accès aux pages suivantes :
+	'whitelistrequestmsg' => '$1 a demandé l’accès {{PLURAL:$3|à la page suivante|aux pages suivantes}} :
 
 $2',
 	'whitelistrequestconf' => 'Une demande d’accès pour de nouvelles pages a été envoyée à $1',
@@ -584,6 +586,14 @@ $2',
 Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.",
 	'whitelistnever' => 'jamais',
 	'whitelistnummatches' => ' - {{PLURAL:$1|une occurence|$1 occurences}}',
+	'right-editwhitelist' => 'Modifier la liste blanche pour les utilisateurs existants',
+	'right-restricttowhitelist' => 'Modifier et visionner les pages figurant uniquement sur la liste blanche',
+	'action-editwhitelist' => 'modifier la liste blanche pour les utilisateurs existants',
+	'action-restricttowhitelist' => 'modifier et visionner les pages figurant uniquement sur la liste blanche',
+	'group-restricted' => 'Utilisateurs restreints',
+	'group-restricted-member' => 'Utilisateur restreint',
+	'group-manager' => 'Gestionnaires',
+	'group-manager-member' => 'Gestionnaire',
 );
 
 /** Western Frisian (Frysk)
@@ -740,6 +750,8 @@ $messages['he'] = array(
 	'whitelistnewtabledate' => 'תאריך הפקיעה:',
 	'whitelistnewtableedit' => 'הגדרה לעריכה',
 	'whitelistnewtableview' => 'הגדרה לתצוגה',
+	'whitelistnowhitelistedusers' => 'אין משתמשים בקבוצה "{{MediaWiki:Group-restricted}}".
+יהיה עליכם [[Special:UserRights|להוסיף משתמשים לקבוצה]] לפני שתוכלו להוסיף דפים לרשימה הלבנה של המשתמש.',
 	'whitelistnewtableprocess' => 'עיבוד',
 	'whitelistnewtablereview' => 'סקירה',
 	'whitelistselectrestricted' => '== בחירת שם המשתמש המוגבל ==',
@@ -752,7 +764,7 @@ $messages['he'] = array(
 	'whitelistoverviewrm' => '* הסרת הגישה אל [[:$1|$1]]',
 	'whitelistoverviewna' => "* הוספת [[:$1|$1]] לרשימה הלבנה עם הגישה '''$2''' ותאריך הפקיעה '''$3'''",
 	'whitelistrequest' => 'בקשת גישה לדפים נוספים',
-	'whitelistrequestmsg' => '$1 ביקש גישה לדפים הבאים:
+	'whitelistrequestmsg' => '$1 ביקש גישה ל{{PLURAL:$3|דף הבא|דפים הבאים}}:
 
 $2',
 	'whitelistrequestconf' => 'הבקשה לדפים חדשים נשלחה אל $1',
@@ -760,6 +772,14 @@ $2',
 ניתן להשתמש בדף זה עבור משתמשים מוגבלים בלבד",
 	'whitelistnever' => 'לעולם לא',
 	'whitelistnummatches' => ' - {{PLURAL:$1|תוצאה אחת|$1 תוצאות}}',
+	'right-editwhitelist' => 'שינוי הרשימה הלבנה למשתמשים קיימים',
+	'right-restricttowhitelist' => 'עריכה והצגה של דפים מהרשימה הלבנה בלבד',
+	'action-editwhitelist' => 'לשנות את הרשימה הלבנה למשתמשים קיימים',
+	'action-restricttowhitelist' => 'לערוך ולהציג דפים מהרשימה הלבנה בלבד',
+	'group-restricted' => 'משתמשים מוגבלים',
+	'group-restricted-member' => 'משתמש מוגבל',
+	'group-manager' => 'מנהלים',
+	'group-manager-member' => 'מנהל',
 );
 
 /** Hindi (हिन्दी)
@@ -827,6 +847,8 @@ Usa * o % como metacharacter',
 	'whitelistnewtabledate' => 'Data de expiration:',
 	'whitelistnewtableedit' => 'Activar modification',
 	'whitelistnewtableview' => 'Activar visualisation',
+	'whitelistnowhitelistedusers' => 'Il non ha alcun usator in le gruppo "{{MediaWiki:Group-restricted}}".
+Tu debe [[Special:UserRights|adder usatores al gruppo]] ante que tu pote adder paginas al lista blanc de un usator.',
 	'whitelistnewtableprocess' => 'Processar',
 	'whitelistnewtablereview' => 'Revider',
 	'whitelistselectrestricted' => '== Seliger nomine de usator restringite ==',
@@ -847,6 +869,14 @@ $2',
 Iste pagina es solmente applicabile al usatores restringite",
 	'whitelistnever' => 'nunquam',
 	'whitelistnummatches' => ' - {{PLURAL:$1|un occurrentia|$1 occurrentias}}',
+	'right-editwhitelist' => 'Modificar le lista blanc pro usatores existente',
+	'right-restricttowhitelist' => 'Modificar e vider paginas figurante solmente in le lista blanc',
+	'action-editwhitelist' => 'modificar le lista blanc pro usatores existente',
+	'action-restricttowhitelist' => 'modificar e vider paginas figurante solmente in le lista blanc',
+	'group-restricted' => 'Usatores restringite',
+	'group-restricted-member' => 'Usator restringite',
+	'group-manager' => 'Gerentes',
+	'group-manager-member' => 'Gerente',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1093,6 +1123,26 @@ $2',
 $messages['mhr'] = array(
 	'mywhitelistpages' => 'Мыйын лаштык-влак',
 	'whitelistnever' => 'нигунам',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'mywhitelistpages' => 'Мои страници',
+	'whitelistfor' => '<center>Моментални информации за <b>$1</b></center>',
+	'whitelisttablemodify' => 'Измени',
+	'whitelisttablemodifyall' => 'Сите',
+	'whitelisttablemodifynone' => 'Никој',
+	'whitelisttablepage' => 'Вики страница',
+	'whitelisttabletype' => 'Тип на пристап',
+	'whitelisttableexpires' => 'Истекува на',
+	'whitelisttablemodby' => 'Последен пат изменето од',
+	'whitelisttablemodon' => 'Последен пат изменето на',
+	'whitelisttableedit' => 'Уреди',
+	'whitelisttableview' => 'Преглед',
+	'whitelisttablenewdate' => 'Нов датум:',
+	'whitelisttablechangedate' => 'Промени датум на истекување',
 );
 
 /** Malayalam (മലയാളം)
@@ -1650,6 +1700,8 @@ Ako zástupný znak použite buď * alebo %',
 	'whitelistnewtabledate' => 'Dátum vypršania:',
 	'whitelistnewtableedit' => 'Nastaviť na Upraviť',
 	'whitelistnewtableview' => 'Nastaviť na Zobraziť',
+	'whitelistnowhitelistedusers' => 'V skupine „{{MediaWiki:Group-restricted}}“ sa nenachádzajú žiadni používatelia.
+Musíte [[Special:UserRights|pridať používateľov do tejto skupiny]] predtým, než budete môcť pridávať stránky na bielu listinu používateľa.',
 	'whitelistnewtableprocess' => 'Spracovať',
 	'whitelistnewtablereview' => 'Skontrolovať',
 	'whitelistselectrestricted' => '== Vyberte meno používateľa ==',
@@ -1662,7 +1714,7 @@ Ako zástupný znak použite buď * alebo %',
 	'whitelistoverviewrm' => '* Odstránenie prístupu na [[:$1|$1]]',
 	'whitelistoverviewna' => "* Pridanie prístupu [[:$1|$1]] na bielu listinu s prístupom '''$2''' a vypršaním '''$3'''",
 	'whitelistrequest' => 'Požiadať o prístup k viacerým stránkam',
-	'whitelistrequestmsg' => '$1 požiadal o prístup k nasledovným stránkam:
+	'whitelistrequestmsg' => '$1 požiadal o prístup k {{PLURAL:$3|nasledovnej stránke|nasledovným stránkam}}:
 
 $2',
 	'whitelistrequestconf' => 'Žiadosť o nové stránky bola odoslaná $1',
@@ -1670,6 +1722,14 @@ $2',
 Táto stránka sa týka iba obmedzneých používateľov.",
 	'whitelistnever' => 'nikdy',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|výsledok|výsledky|výsledkov}}',
+	'right-editwhitelist' => 'Zmeniť bielu listinu existujúcich používateľov',
+	'right-restricttowhitelist' => 'Upravovať a prezerať iba stránky z bielej listiny',
+	'action-editwhitelist' => 'zmeniť bielu listinu existujúcich používateľov',
+	'action-restricttowhitelist' => 'upravovať a prezerať iba stránky z bielej listiny',
+	'group-restricted' => 'Obmedzení používatelia',
+	'group-restricted-member' => 'Obmedzený používateľ',
+	'group-manager' => 'Správcovia',
+	'group-manager-member' => 'Správca',
 );
 
 /** Serbian Cyrillic ekavian (ћирилица)

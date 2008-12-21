@@ -183,6 +183,13 @@ $messages['ia'] = array(
 	'newschannel_submit_button' => 'Crear syndication',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'newschannel_format' => 'ទ្រង់ទ្រាយ​៖',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

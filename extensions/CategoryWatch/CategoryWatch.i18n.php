@@ -300,7 +300,7 @@ Du mottar denne beskjeden fordi $4 $5 $3.',
  */
 $messages['oc'] = array(
 	'categorywatch-desc' => 'Espandís la foncionalitat de la lista de seguit per enclure la notificacion de las modificacions dels membres de las categorias seguidas.',
-	'categorywatch-emailbody' => 'Adiu $1, avètz recebut aqueste messatge perque sètz a seguir la categoria « $2 ».
+	'categorywatch-emailbody' => 'Adissiatz $1, avètz recebut aqueste messatge perque sètz a seguir la categoria « $2 ».
 Aqueste messatge es destinat a vos far saber que lo $3 l’utilizaire $4 $5.',
 	'categorywatch-emailsubject' => 'Activitat comprenent la categoria seguida « $1 »',
 	'categorywatch-catmovein' => 'a desplaçat $1 dins la categoria $2 dempuèi $3',

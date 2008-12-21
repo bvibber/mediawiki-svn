@@ -897,9 +897,12 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Manop
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'edituser' => 'แก้ไขผู้ใช้',
+	'edituser-username' => 'ชื่อ',
 	'edituser-dosearch' => 'ค้นหา',
 );
 

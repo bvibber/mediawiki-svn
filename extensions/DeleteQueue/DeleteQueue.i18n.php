@@ -790,6 +790,7 @@ Pro via malkonsento, la paĝo estis movita al la laborlisto $1.',
 
 /** Spanish (Español)
  * @author Antur
+ * @author Remember the dot
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -804,6 +805,8 @@ $messages['es'] = array(
 	'deletequeue-action-text-queued' => 'Ud. debe leer las siguientes páginas para este caso de borrado:
 * [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Opiniones a favor y en contra].
 * [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Opine sobre el borrado de esta página].',
+	'deletequeue-review-reason' => 'Comentarios:',
+	'deletequeue-vote-reason' => 'Comentarios:',
 );
 
 /** French (Français)
@@ -1136,6 +1139,14 @@ $messages['he'] = array(
  */
 $messages['hr'] = array(
 	'deletequeue-list-header-page' => 'Stranica',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'deletequeue-review-reason' => 'Megjegyzések:',
+	'deletequeue-vote-reason' => 'Megjegyzések:',
 );
 
 /** Interlingua (Interlingua)

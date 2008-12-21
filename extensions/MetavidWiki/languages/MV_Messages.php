@@ -1001,7 +1001,7 @@ $messages['ch'] = array(
 	'mv_edit' => 'Tulaika',
 );
 
-/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(
@@ -1308,6 +1308,7 @@ $messages['fr'] = array(
 	'mv_most_viewed' => 'Le plus lu',
 	'mv_match' => 'assortir',
 	'mv_spoken_by' => 'parlé par',
+	'mv_speech_by' => 'discours prononcé par',
 	'mv_category' => 'catégorie',
 	'mv_search_no_results' => 'Aucun média assorti',
 	'mv_media_matches' => 'Médias assortis',
@@ -1576,6 +1577,7 @@ Saltar á vista do fluxo: $2',
 	'mv_most_viewed' => 'Máis vistos',
 	'mv_match' => 'coincidir',
 	'mv_spoken_by' => 'falado por',
+	'mv_speech_by' => 'lido por',
 	'mv_category' => 'categoría',
 	'mv_search_no_results' => 'Ningunha coincidencia multimedia',
 	'mv_media_matches' => 'Coincidencias multimedia',
@@ -2556,6 +2558,7 @@ $messages['lb'] = array(
 	'mv_adjust' => 'upassen',
 	'mv_start_desc' => 'Ufankszäit',
 	'mv_edit_metadata' => 'Meta-Donnéeën änneren',
+	'mv_advanced_edit' => 'Erweidert Ännerung',
 	'mv_basic_edit' => 'Elementar Ännerung',
 	'mv_remove_category' => 'Kategorie ewechhuelen',
 	'mv_existing_categories' => '{{PLURAL:$1|Kategorie|Kategorien}}:',
@@ -3546,6 +3549,7 @@ Aqueste tipe de presentacion es pel tèxt qu'es parlat amb lo flus vidèo. De li
 	'mv_most_viewed' => 'Lo mai legit',
 	'mv_match' => 'assortir',
 	'mv_spoken_by' => 'parlat per',
+	'mv_speech_by' => 'discors prononciat per',
 	'mv_category' => 'categoria',
 	'mv_search_no_results' => 'Cap de mèdia pas assortit',
 	'mv_media_matches' => 'Mèdias assortits',
@@ -3580,7 +3584,10 @@ foncionalitat fòrça <b>limitada</b> actualament. Clicatz sus un clip per modif
 	'mv_sequence_add_search' => 'Apondre per recèrca',
 	'mv_sequence_add_search_desc' => 'Apondre de clips per recèrca de mèdias',
 	'mv_seq_add_end' => 'Apondre a la fin de la sequéncia',
+	'mv_sequence_edit_text' => "Bascuolar cap a l'editor de tèxt",
+	'mv_sequence_edit_visual_editor' => "Bascuolar cap a l'editor visual",
 	'mv_other_options' => 'Autras opcions',
+	'mv_contextmenu_opt' => 'Activar los menuts contextuals',
 	'mv_sequence_timeline' => 'Sequéncia cronologica :',
 	'mv_edit_sequence_desc_help' => 'Descripcion de la sequéncia',
 	'mv_edithelpsequence' => 'Help:Edicion_de_sequéncia',
@@ -3617,6 +3624,7 @@ $messages['os'] = array(
 	'mv_tool_search' => 'Агур',
 	'mv_edit' => 'Баив æй',
 	'mv_history' => 'Истори',
+	'mv_adjust_preview_stop' => 'Разæркаст бауром',
 	'mv_search_category' => 'Категори',
 	'mv_category' => 'категори',
 );

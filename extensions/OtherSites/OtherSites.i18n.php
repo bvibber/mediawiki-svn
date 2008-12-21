@@ -115,6 +115,14 @@ $messages['hsb'] = array(
 	'othersites-desc' => 'Přesunje wotkazy interwiki, kotrež rěčne wotkazy njejsu, do swójskeho wobłuka',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'othersites' => 'Más oldalak',
+	'othersites-desc' => 'Az nyelvlinkeken kívüli interwikilinkeket saját dobozba rakja',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

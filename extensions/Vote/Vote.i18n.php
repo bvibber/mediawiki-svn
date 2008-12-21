@@ -757,6 +757,7 @@ bruker3|Tredje brukernavn',
  */
 $messages['oc'] = array(
 	'vote' => 'Vòte',
+	'vote-desc' => 'Provesís las possibilitats d’eleccion simpla.',
 	'vote-header' => "Podètz votar pel '''mèstre de l'Univèrs''' aicí !",
 	'vote-current' => "Vòstre vòte actual es per '''$1'''.",
 	'vote-legend' => 'Plaçar o modificar un vòte',
@@ -873,6 +874,14 @@ riddler|Enigmático',
 	'vote-login' => 'Terá de $1 para votar.',
 	'vote-login-link' => 'autenticar-se',
 	'vote-invalid-choice' => 'Deverá seleccionar uma das opções disponíveis.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author GKnedo
+ */
+$messages['pt-br'] = array(
+	'vote' => 'Votar',
+	'vote-view-results' => 'Ver resultados',
 );
 
 /** Romanian (Română)
@@ -1028,6 +1037,17 @@ $messages['tg-cyrl'] = array(
 	'vote-login' => 'Барои раъй додан бояд $1.',
 	'vote-login-link' => 'ба систем вуруд шавед',
 	'vote-invalid-choice' => 'Шумо бояд яке аз ихтиёрҳои мавҷудро интихоб кунед.',
+);
+
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'vote' => 'โหวต',
+	'vote-view-results' => 'ดูผล',
+	'vote-results' => 'ผลโหวต',
+	'vote-login' => 'คุณจำเป็นต้อง $1 สำหรับโหวต',
+	'vote-login-link' => 'ล็อกอิน',
 );
 
 /** Turkish (Türkçe)

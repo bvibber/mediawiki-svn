@@ -44,6 +44,13 @@ $messages['bs'] = array(
 	'stringfunctions-desc' => 'Proširuje parser sa string funkcijama',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'stringfunctions-desc' => 'Rozšyrja parser wó funkcije za znamuškowe rědy',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -97,7 +104,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'stringfunctions-desc' => 'Rozšěrja parser wo funkcije za znamješkowe slědy',
+	'stringfunctions-desc' => 'Rozšěrja parser wo funkcije za znamješkowe rjady',
 );
 
 /** Hungarian (Magyar)

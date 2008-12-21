@@ -59,6 +59,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'stalepages' => 'Stare boki',
+	'stalepages-desc' => 'Napórajo [[Special:Stalepages|lisćinu bokow]], kótarež njejsu se w slědnem casu wobźěłali',
 	'stalepages-summary' => 'Toś to jo lisćina bokow, kótarež njebuchu za slědnych $1 dnjow wobźěłane.',
 );
 

@@ -824,7 +824,7 @@ $messages['hu'] = array(
 	'badimages-desc' => 'Kibővíti a MediaWiki hibás kép listájának képességeit',
 	'badimages-add-btn' => 'Hozzáadás',
 	'badimages-added' => '$1 hozzá lett adva a listához',
-	'badimages-count' => "'''$1''' kép található a hibás képek listáján.",
+	'badimages-count' => "'''{{PLURAL:$1|egy|$1}}''' kép található a hibás képek listáján.",
 	'badimages-name' => 'Név:',
 	'badimages-not-added' => 'A képet nem lehet hozzáadni.',
 	'badimages-not-removed' => 'A képet nem lehet eltávolítani.',
@@ -1167,6 +1167,32 @@ $messages['lt'] = array(
  */
 $messages['mhr'] = array(
 	'badimages-reason' => 'Амал:',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'badimages' => 'Листа на лоши слики',
+	'badimages-desc' => 'Проширување на можностите на МедијаВики во работата со листата на лоши слики',
+	'badimages-add-btn' => 'Додади',
+	'badimages-added' => '$1 беше додадена во листата',
+	'badimages-count' => "Има {{PLURAL:$1| | }} '''$1''' {{PLURAL:$1|слика|слики}} во листата на лоши слики.",
+	'badimages-name' => 'Име:',
+	'badimages-not-added' => 'Сликата не може да се додаде.',
+	'badimages-not-removed' => 'Сликате не може да се избрише.',
+	'badimages-reason' => 'Причина:',
+	'badimages-remove' => '(бриши)',
+	'badimages-remove-btn' => 'Бриши',
+	'badimages-remove-confirm' => 'Потврдете ја намерата за бришење на $1 од листата:',
+	'badimages-removed' => '$1 беше избришана од листата.',
+	'badimages-subheading' => 'Моментални ставки',
+	'badimages-unprivileged' => '(Немате доволно привилегии за промена на листата)',
+	'badimages-log-name' => 'Лоша листа на слики',
+	'badimages-log-header' => 'Ова е дневник на промени во [[{{MediaWiki:Badimages-page}}|листата на лоши слики]].',
+	'badimages-log-add' => 'додадено [[$1]] во листата на лоши слики',
+	'badimages-log-remove' => 'избришано [[$1]] од листата на лоши слики',
+	'badimages-page' => '{{ns:help}}:Листа на лоши слики',
 );
 
 /** Malayalam (മലയാളം)
@@ -1894,15 +1920,19 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Manop
  * @author Passawuth
  */
 $messages['th'] = array(
+	'badimages' => 'รายการภาพที่เสีย',
 	'badimages-add-btn' => 'เพิ่ม',
 	'badimages-added' => '$1 ถูกเพิ่มไปยังรายชื่อเรียบร้อยแล้ว',
-	'badimages-count' => "มีภาพทั้งหมด '''$1''' ภาพในรายชื่อภาพ",
+	'badimages-count' => "มีภาพทั้งหมด '''$1''' ภาพในรายการภาพที่เสีย",
 	'badimages-name' => 'ชื่อ :',
 	'badimages-reason' => 'เหตุผล :',
 	'badimages-remove-btn' => 'เอาออก',
+	'badimages-log-name' => 'รายการภาพที่เสีย',
+	'badimages-page' => '{{ns:help}}:รายการภาพที่เสีย',
 );
 
 /** Turkish (Türkçe)

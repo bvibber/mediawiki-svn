@@ -95,6 +95,14 @@ $messages['gl'] = array(
 	'semanticgooglemaps-desc' => 'Permite aos usuarios engadir Mapas do Google a páxinas do wiki baseándose en datos estruturados',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Za koordinatami hladać',
+	'semanticgooglemaps-desc' => 'Dowola wužiwarjam na zakładźe strukturowanych datow Google Maps wikijowym stronam přidać',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

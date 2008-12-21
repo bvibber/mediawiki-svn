@@ -295,6 +295,19 @@ $messages['oc'] = array(
 	'amazonplus-cp-none' => 'Cap',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'amazonplus-used' => 'کارېدلی',
+	'amazonplus-german' => 'آلماني',
+	'amazonplus-french' => 'فرانسوي',
+	'amazonplus-japanese' => 'جاپاني',
+	'amazonplus-amazon' => 'د آمېزون بيه',
+	'amazonplus-new' => 'نوی',
+	'amazonplus-cp-none' => 'هېڅ',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */

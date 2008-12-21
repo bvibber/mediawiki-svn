@@ -220,6 +220,13 @@ $messages['nl'] = array(
 	'abcdownload' => 'Downloaden:',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'abcdownload' => 'Last ned:',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -237,6 +244,13 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'abcdesc' => 'Dodaje znacznik <tt>&lt;abc&gt;</tt> do muzyki w formacie ABC',
 	'abcdownload' => 'Pobierz:',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'abcdownload' => 'ښکته کول:',
 );
 
 /** Portuguese (Português)
@@ -301,6 +315,14 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'abcdownload' => 'డౌన్‌లోడ్',
+);
+
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'abcdesc' => 'เพิ่มแท็ก <tt>&lt;abc&gt;</tt> สำหรับใส่รูปแบบดนตรี ABC',
+	'abcdownload' => 'ดาวน์โหลด:',
 );
 
 /** Vietnamese (Tiếng Việt)

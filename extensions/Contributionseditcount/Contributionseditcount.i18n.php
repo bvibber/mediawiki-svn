@@ -316,9 +316,11 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'contributionseditcount' => 'Denne brukaren har gjort $1 endringar.',
+	'contributionseditcount-desc' => 'Viser ein endringsteljar på [[Special:Contributions|bidragsoversikta]]',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -85,6 +85,14 @@ $messages['gl'] = array(
 	'random-users-avatars-desc' => 'Engade a etiqueta <tt>&lt;randomuserswithavatars&gt;</tt> para amosar os avatares dos usuarios elixidos ao chou',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'random-users-avatars-title' => 'Zhromadźenstwo zetkać',
+	'random-users-avatars-desc' => 'Přidawa tafličku <tt>&lt;randomuserswithavatars&gt;</tt> za zwobraznjenje awatarow připadnje wuzwolenych wužiwarjow',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

@@ -30,6 +30,16 @@ $messages['bg'] = array(
 	'formatchanges-desc' => 'Преформатира [[Special:RecentChanges|списъка с последните промени]]',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'formatchanges-desc' => 'Formatěrujo [[Special:RecentChanges|aktualne změny]] zasej',
+	'formatchanges-anonymous' => 'Anonymny',
+	'formatchanges-createdby' => 'wutwórjony wót',
+	'formatchanges-editedby' => 'wobźěłany wót',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -71,6 +81,16 @@ $messages['he'] = array(
 	'formatchanges-editedby' => 'נערך על ידי',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'formatchanges-desc' => 'Formatuje [[Special:RecentChanges|aktualne změny]] znowa',
+	'formatchanges-anonymous' => 'Anonymny',
+	'formatchanges-createdby' => 'Wutworjeny wot',
+	'formatchanges-editedby' => 'wobdźěłany wot',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -89,6 +109,16 @@ $messages['jv'] = array(
 	'formatchanges-anonymous' => 'Tanpa aran / anonim',
 	'formatchanges-createdby' => 'kacipta déning',
 	'formatchanges-editedby' => 'kasunting déning',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'formatchanges-desc' => 'រៀចចំ​ឡើងវិញ [[ពិសេស:បំលាស់ប្ដូរ​ថ្មីៗ|បំលាស់ប្ដូរ​ថ្មីៗ]]',
+	'formatchanges-anonymous' => 'អនាមិក',
+	'formatchanges-createdby' => 'បង្កើតឡើង​ដោយ',
+	'formatchanges-editedby' => 'កែប្រែ​ដោយ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

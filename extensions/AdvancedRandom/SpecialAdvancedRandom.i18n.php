@@ -75,6 +75,14 @@ $messages['cs'] = array(
 	'advancedrandom-desc' => 'Vrátí náhodnou stránku, která sama nebo jí příslušná diskuse odkazuje na zadanou stránku. Je možné ho použít na získání náhodného nejlepšího článku ve tvaru [[{{ns:Special}}:AdvancedRandom/Šablona:Nejlepší článek/Diskuse]] nebo na získání náhodného GFDL souboru ve tvaru [[{{ns:Special}}:AdvancedRandom/Šablona:GFDL/Soubor]]',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'advancedrandom' => 'Ar hap o fewn ystod',
+	'advancedrandom-desc' => "Cael gafael ar dudalen ar hap, lle bo'r dudalen neu ei thudalen sgwrs yn cysylltu a rhyw dudalen arbennig. Gellir defnyddio hwn yn yr un modd â [[Special:AdvancedRandom/Template:Featured/Talk]] sy'n cael gafael ar erthygl ddethol ar hap, neu [[Special:AdvancedRandom/Template:GFDL/Image]] sy'n cael gafael ar ffeil GFDL ar hap.",
+);
+
 /** Danish (Dansk)
  * @author Jan Friberg
  */

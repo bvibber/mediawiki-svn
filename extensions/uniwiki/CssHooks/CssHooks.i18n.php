@@ -20,6 +20,20 @@ $messages['bg'] = array(
 	'csshooks-desc' => 'Добавя CSS към HTML-изходния код на страниците са по-добро оформление',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'csshooks-desc' => 'Pśidawa CSS k HTML-wudaśeju bokow za lěpše wugótowanje',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'csshooks-desc' => 'Aldonas CSS al la HTML eligo de paĝoj por pli bona stilo',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */
@@ -48,6 +62,13 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'csshooks-desc' => 'הוספת CSS לפלט ה־HTML של הדפים כדי לאפשר מראה טוב יותר',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'csshooks-desc' => 'Přidawa CSS k wudaću HTML stronow za lěpši stil',
 );
 
 /** Interlingua (Interlingua)

@@ -102,6 +102,7 @@ $messages['eo'] = array(
 Ĉu vi volus redakti la ekzistantan paĝon?',
 	'createpage_tryagain' => 'Ne. Mi volas krei novan paĝon kun distinga titolo.',
 	'createpage_editexisting' => 'Jes. Mi volas kontribui al la ekzistanta paĝo.',
+	'createpage-badtitle' => '"$1" ne povas esti uzata kiel paĝa titolo',
 );
 
 /** Spanish (Español) */
@@ -203,6 +204,22 @@ $messages['jv'] = array(
 Apa panjenengan arep nyunting kaca iki?',
 	'createpage_tryagain' => 'Ora. Aku arep gawé kaca anyar kanthi judhul liya.',
 	'createpage_editexisting' => 'Iya. Aku arep ngisi kaca sing ana iki.',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'createpage' => 'បង្កើត​ទំព័រ​មួយ',
+	'createpage-desc' => 'បន្ថែម [[ពិសេស:បង្កើត​ទំព័រ|ទំព័រ​ពិសេស]]​មួយ ដើម្បី​បង្កើត​ទំព័រ​ថ្មីៗ',
+	'createpage_submitbutton' => 'ដាក់ស្នើ',
+	'createpage_instructions' => 'សូម​វាយ​បញ្ចូល​ចំណងជើង​ទំព័រ​ដែល​អ្នក​ចង់​បង្កើត​៖',
+	'createpage_entertitle' => 'សូម​ដាក់​ចំណងជើង​ទំព័រ​ឱ្យ​ទំព័រ​របស់​អ្នក​។',
+	'createpage_titleexists' => 'ទំព័រ​ដែល​មាន​ចំណងជើង [[$1]] មាន​រួចឮហើយ​។ 
+<br>តើ​អ្នក​មានបំណង​កែប្រែ​ទំព័រ​ដែល​មាន​ស្រាប់​ឬ​?',
+	'createpage_tryagain' => 'ទេ, ខ្ញុំ​ចង់​បង្កើត​ទំព័រ​ថ្មី​មួយ​ដែល​មាន​ចំណងជើង​ផ្សេង​។',
+	'createpage_editexisting' => 'បាទ/ចាស, ខ្ញុំ​ចង់​ចូលរួម​កែប្រែ​ជាមួយ​ទំព័រ​ដែល​មាន​ស្រាប់​។',
+	'createpage-badtitle' => '"$1" មិន​អាច​ប្រើ​ជា​ចំណងជើង​ទំព័រ​បាន​ទេ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

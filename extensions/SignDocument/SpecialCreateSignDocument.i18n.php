@@ -607,6 +607,7 @@ $messages['lb'] = array(
 	'createsigndoc-introtext' => 'Aféierung:',
 	'createsigndoc-hidden' => 'Verstoppt',
 	'createsigndoc-optional' => 'Fakultativ',
+	'createsigndoc-create' => 'Uleeën',
 	'createsigndoc-error-generic' => 'Feeler: $1',
 	'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
 	'createsigndoc-error-alreadycreated' => 'Dokument ënnerschreiwen "$1" gëtt et schonn',

@@ -379,7 +379,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'block_title_error_page_title' => 'Блокиран наслов',
-	'block_title_error-desc' => 'Основен начин на заштита на страници, не може да се креираат доколку имаат некој нессодветен наслов',
+	'block_title_error-desc' => 'Основен начин на заштита на страници, не може да се креираат доколку имаат некој несоодветен наслов',
 	'block_title_error' => 'Извинете, не е допуштено страниците да имаат ваков наслов.',
 );
 
@@ -424,6 +424,15 @@ $messages['nl'] = array(
 	'block_title_error_page_title' => 'Geblokkeerde paginanaam',
 	'block_title_error-desc' => "Biedt een basisfunctionaliteit om pagina's met bepaalde paginanamen niet te kunnen opslaan of aanmaken",
 	'block_title_error' => 'Het is niet toegestaan een pagina met deze naam op te slaan.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'block_title_error_page_title' => 'Sperra tittel',
+	'block_title_error-desc' => 'Gjev ein enkel måte å unngå at sider med visse titlar blir lagra eller oppretta.',
+	'block_title_error' => 'Orsak, det er ikkje lov å lagra ei sida med denne tittelen.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

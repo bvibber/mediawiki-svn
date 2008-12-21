@@ -291,6 +291,17 @@ $messages['it'] = array(
 	'findspam-notextfound' => 'Nessun contributo trovato',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'findspam' => 'スパムを探す',
+	'findspam-desc' => '最近追加されたスパムを探す[[Special:FindSpam|特別ページ]]を追加',
+	'findspam-ip' => 'IPアドレス:',
+	'findspam-ok' => 'OK',
+	'findspam-notextfound' => '投稿記録はありません',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

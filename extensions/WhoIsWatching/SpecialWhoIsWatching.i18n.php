@@ -150,6 +150,7 @@ Pšosym wužyj bok [[MediaWiki:Number_of_watching_users_pageview]], aby zastupny
  */
 $messages['eo'] = array(
 	'whoiswatching' => 'Kiu spektas vikian paĝon',
+	'whoiswatching-desc' => 'Montras liston de nomoj de uzantoj kiu atentas vikian paĝon',
 	'specialwhoiswatchingthepage' => 'Kiu spektas paĝon $s',
 	'specialwhoiswatchingusage' => 'Ĉi tiu speciala paĝo ne povas esti utiligita sole. Bonvolu uzi [[MediaWiki:Number_of_watching_users_pageview|ĉi tiun paĝon]] por difini enirpaĝon al ĉi tiu speciala paĝo.',
 	'specialwhoiswatchingaddusers' => 'Aldonas uzantojn por spekti la paĝon',
@@ -236,7 +237,11 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'whoiswatching' => 'Ki figyel egy adott oldalt',
+	'whoiswatching-desc' => 'Megmutatja az adott lapot néző szerkesztők neveit',
 	'specialwhoiswatchingthepage' => 'Ki figyeli a(z) %s oldalt',
+	'specialwhoiswatchingusage' => 'Ez a speciális lap nem használható önmagában.
+Használd a [[MediaWiki:Number_of_watching_users_pageview]] lapot a belépési pont megadásához erre a speciális lapra.',
+	'specialwhoiswatchingaddusers' => 'Szerkesztők hozzáadása a lap figyeléséhez',
 	'specialwhoiswatchingaddbtn' => 'Összes kiválasztott felhasználó hozzáadása',
 );
 

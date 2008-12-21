@@ -226,6 +226,13 @@ Zo by stronu přidał, wubjer kašćik pódla njeje a klikń na "Strony přidać
 Hdyž wjacore strony wubjerješ abo wotwoleš, móžeš z stłóčenej přešaltowanskej tastej ("Umsch", "Shift") na so slědowace kontrolowe kašćiki přez kliknjenje na kóždy kónc toho wobwoda wubrać, kotryž ma so markěrować.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'watchsubpages' => 'Allapok figyelése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

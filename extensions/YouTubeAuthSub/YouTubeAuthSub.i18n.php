@@ -1066,6 +1066,18 @@ $messages['ml'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'വീഡിയോയെപ്പറ്റി ഒരു ലഘുവിവരണം ചേര്‍ക്കുക.',
 );
 
+/** Mongolian (Монгол)
+ * @author E.shijir
+ */
+$messages['mn'] = array(
+	'youtubeauthsub' => 'Youtube видео гадагш хуулах',
+	'youtubeauthsub_title' => 'Гарчиг',
+	'youtubeauthsub_password' => 'YouTube нууц үг',
+	'youtubeauthsub_username' => 'YouTube хэрэглэгчийн нэр',
+	'youtubeauthsub_keywords' => 'Түлхүүр үгнүүд',
+	'youtubeauthsub_uploadbutton' => 'Гадагш хуулах',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

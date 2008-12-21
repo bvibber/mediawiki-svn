@@ -51,6 +51,13 @@ $messages['de'] = array(
 	'woopra-desc' => 'Ermöglicht der [http://www.woopra.com/ „Woopra Live Tracking Software“] die Zusammenarbeit mit MediaWiki',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'woopra-desc' => 'Dowólujo za [http://www.woopra.com/ Woopra Live Tracking Software] gromaduźěłanje z twójeju instalaciju MediaWiki',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

@@ -35,6 +35,7 @@ $messages['af'] = array(
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
+	'newusermessage-desc' => 'Ēacaþ ȝeƿrit tō þǣm mōtungtramete þæs nīƿes brūcendes',
 	'newuseredit-summary' => 'Ēacende [[{{int:newusermessage-template}}|ƿilcumenǣrende]] tō þǣm mōtungtramete þæs nīƿes brūcendes',
 );
 

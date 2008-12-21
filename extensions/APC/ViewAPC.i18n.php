@@ -1879,6 +1879,13 @@ $messages['km'] = array(
 	'viewapc-ls-limit-none' => 'ទាំងអស់',
 );
 
+/** Korean (한국어)
+ * @author Albamhandae
+ */
+$messages['ko'] = array(
+	'viewapc-display-filename' => '파일 이름',
+);
+
 /** Krio (Krio)
  * @author Jose77
  */

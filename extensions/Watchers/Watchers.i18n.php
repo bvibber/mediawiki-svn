@@ -49,6 +49,16 @@ $messages['af'] = array(
 	'watchers_less_than_x' => 'Minder as $1 gebruikers hou die bladsy dop.',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'watchers' => 'Ƿaċiendas',
+	'watchers_link_title' => 'Hƿā ƿacaþ þisne tramet?',
+	'watchers_noone_watches' => 'Nǣniȝ ƿacaþ þisne tramet.',
+	'watchers_x_or_more' => '$1 oþþe mā {{PLURAL:$1|users|brūcendas}} habbaþ þisne tramet on hiere behealdnestalu.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -189,6 +199,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'watchers' => 'Rigardantoj',
+	'watchers-desc' => 'Montras [[Special:Watchers|kiujn uzantojn tiuj havas paĝon en ties atentaro]]',
 	'watchers_link_title' => 'Kiu atentas ĉi tiun paĝon?',
 	'watchers_error_article' => '<b>Eraro:</b> Paĝo ne ekzistas.',
 	'watchers_header' => '{{PLURAL:$2|Uzanto kiu|Uzantoj kiuj}} atentas "$1"',

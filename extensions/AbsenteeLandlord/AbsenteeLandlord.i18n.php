@@ -367,6 +367,14 @@ $messages['nl'] = array(
 	'absenteelandlord-desc' => 'Sluit de database automatisch als de beheerders allemaal gedurende een bepaalde tijd inactief zijn',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'absenteelandlord-reason' => 'Databasen har blitt låst automatisk grunna inaktivitet frå administratorane.',
+	'absenteelandlord-desc' => 'Låser databasen til wikien om alle administratorane er inaktive over eit visst tidsrom',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author H92
  * @author Jon Harald Søby

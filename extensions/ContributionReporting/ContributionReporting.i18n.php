@@ -99,7 +99,6 @@ $messages['af'] = array(
 	'contribstats-contributions' => 'Skenkings',
 	'contribstats-total' => 'Totaal (in USD)',
 	'contribstats-avg' => 'Gemiddeld (in USD)',
-	'contribstats-min' => 'Minimum (in USD)',
 	'contribstats-max' => 'Maksimum (in USD)',
 	'contribstats-percentage-ytd' => 'Persentasie (die jaar)',
 	'contribstats-total-ytd' => 'Totaal (die jaar)',
@@ -283,6 +282,7 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'contributionreporting-desc' => 'Izvještaj uživo donacija za Wikimediju',
 	'contributiontotal' => 'Ukupni doprinos',
 	'contributionhistory' => 'Historija doprinosa',
 	'contrib-hist-name' => 'Ime',
@@ -292,6 +292,8 @@ $messages['bs'] = array(
 	'contrib-hist-previous' => 'Novije donacije',
 	'contrib-hist-anonymous' => 'Anonimni',
 	'contributionstatistics' => 'Statistike doprinosa',
+	'contribstats-currency-range-totals' => 'Ukupno za valutu (od $1 do $2)',
+	'contribstats-currency-totals' => 'Ukupno valuta za fiskalnu godinu $1',
 	'contribstats-day' => 'dan',
 	'contribstats-month' => 'mjesec',
 	'contribstats-currency' => 'valuta',
@@ -302,13 +304,17 @@ $messages['bs'] = array(
 	'contribstats-max' => 'Najviše (USD)',
 	'contribstats-percentage-ytd' => 'Procenat (YTD)',
 	'contribstats-total-ytd' => 'Ukupno (YTD)',
+	'fundraiserstatistics' => 'Statistike donatora',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dan $1 od $2',
 	'fundraiserstats-contributions' => 'Doprinosi',
 	'fundraiserstats-total' => 'Ukupno (USD)',
 	'fundraiserstats-avg' => 'Prosjek (USD)',
+	'fundraiserstats-max' => 'Najviše (USD)',
 	'fundraiserstats-tab-totals' => 'Ukupno (USD)',
+	'fundraiserstats-tab-contributions' => 'Broj doprinosa',
 	'fundraiserstats-tab-averages' => 'Prosjek (USD)',
+	'fundraiserstats-tab-maximums' => 'Najviše (USD)',
 );
 
 /** Czech (Česky)
@@ -476,6 +482,21 @@ $messages['eo'] = array(
 	'fundraiserstats-tab-contributions' => 'Nombro de kontribuoj',
 	'fundraiserstats-tab-averages' => 'Averaĝoj (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumoj (USD)',
+);
+
+/** Spanish (Español)
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'contrib-hist-name' => 'Nombre',
+	'contrib-hist-anonymous' => 'Anónimo',
+	'contributionstatistics' => 'Estadísticas de contribución',
+	'contribstats-desc' => 'Muestra estadísticas de contribuciones hechas a la Fundación Wikimedia',
+	'contribstats-day' => 'Día',
+	'contribstats-month' => 'Mes',
+	'contribstats-contributions' => 'Contribuciones',
+	'fundraiserstats-date' => 'Fecha',
+	'fundraiserstats-contributions' => 'Contribuciones',
 );
 
 /** Persian (فارسی)
@@ -845,7 +866,6 @@ $messages['hu'] = array(
 	'contribstats-contributions' => 'Adományok',
 	'contribstats-total' => 'Összesen (USD)',
 	'contribstats-avg' => 'Átlag (USD)',
-	'contribstats-min' => 'Minimum (USD)',
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Százalék (YTD)',
 	'contribstats-total-ytd' => 'Összesen (YTD)',
@@ -914,7 +934,6 @@ $messages['it'] = array(
 	'contribstats-contributions' => 'Contributi',
 	'contribstats-total' => 'Totale (USD)',
 	'contribstats-avg' => 'Media (USD)',
-	'contribstats-min' => 'Minimo (USD)',
 	'contribstats-max' => 'Massimo (USD)',
 	'contribstats-percentage-ytd' => 'Percentuale (YTD)',
 	'contribstats-total-ytd' => 'Totale (YTD)',
@@ -1232,7 +1251,9 @@ $messages['no'] = array(
 	'contributiontotal' => 'Bidrag totalt',
 	'contributionhistory' => 'Bidragshistorikk',
 	'contrib-hist-header' => 'Forløpende giverkommentarer fra verden rundt',
+	'contrib-hist-name' => 'Navn',
 	'contrib-hist-date' => 'Tid og dato',
+	'contrib-hist-amount' => 'Beløp',
 	'contrib-hist-next' => 'Tidligere donasjoner',
 	'contrib-hist-previous' => 'Nyere donasjoner',
 	'contrib-hist-anonymous' => 'Anonym',
@@ -1301,6 +1322,10 @@ $messages['oc'] = array(
 	'contribstats-max' => 'Maximum (dolars US)',
 	'contribstats-percentage-ytd' => 'Percentatge (ongan)',
 	'contribstats-total-ytd' => 'Total (ongan)',
+	'contribstats-value-exactly' => 'Exactament $1',
+	'contribstats-value-under' => 'En dejós de $1',
+	'contribstats-value-from' => 'De $1 - $2',
+	'contribstats-value-over' => 'Mai de $1',
 	'fundraiserstatistics' => 'Estatisticas de la levada de fonses',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Jorn $1 de $2',
@@ -1312,6 +1337,7 @@ $messages['oc'] = array(
 	'fundraiserstats-tab-contributions' => 'Nombre de contribucions',
 	'fundraiserstats-tab-averages' => 'Mejanas (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
+	'specialpages-group-contribution' => 'Contribucions / Levada de fonses',
 );
 
 /** Polish (Polski)
@@ -1362,6 +1388,14 @@ $messages['pl'] = array(
 	'fundraiserstats-tab-maximums' => 'Maksima (USD)',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'contrib-hist-date' => 'وخت او نېټه',
+	'fundraiserstats-date' => 'نېټه',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Malafaya
@@ -1388,7 +1422,6 @@ $messages['pt'] = array(
 	'contribstats-contributions' => 'Contribuições',
 	'contribstats-total' => 'Total (USD)',
 	'contribstats-avg' => 'Média (USD)',
-	'contribstats-min' => 'Mínimo (USD)',
 	'contribstats-max' => 'Máximo (USD)',
 	'contribstats-percentage-ytd' => 'Percentagem (do início do ano até hoje)',
 	'contribstats-total-ytd' => 'Total (do início do ano até hoje)',
@@ -1503,13 +1536,11 @@ $messages['sr-ec'] = array(
 	'contrib-hist-name' => 'Име',
 	'contrib-hist-date' => 'Време и датум',
 	'contrib-hist-next' => 'Претходне донације',
-	'contribstats-min' => 'Минимум (USD)',
 	'contribstats-max' => 'Максимум (USD)',
 	'contribstats-total-ytd' => 'Укупно (YTD)',
 	'fundraiserstats-date' => 'Датум',
 	'fundraiserstats-total' => 'Укупно (USD)',
 	'fundraiserstats-avg' => 'Просечно (USD)',
-	'fundraiserstats-min' => 'Минимум (USD)',
 	'fundraiserstats-max' => 'Максимум (USD)',
 );
 

@@ -13,6 +13,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Raimond Spekking
+ * @author Raymond
  */
 $messages['qqq'] = array(
 	'mwsearch-desc' => 'Extension description displayed on [[Special:Version]].',
@@ -226,6 +227,13 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'mwsearch-desc' => 'plugin MWSearch',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'mwsearch-desc' => 'MWSearch 플러그인',
 );
 
 /** Ripoarisch (Ripoarisch)

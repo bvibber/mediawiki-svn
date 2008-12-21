@@ -326,6 +326,22 @@ $messages['eo'] = array(
 	'extdist-submit-version' => 'Daŭri',
 );
 
+/** Spanish (Español)
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'extensiondistributor' => 'Descargar extensión MediaWiki',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'extensiondistributor' => 'Lataa MediaWikin laajennus',
+	'extdist-submit-extension' => 'Jatka',
+	'extdist-submit-version' => 'Jatka',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

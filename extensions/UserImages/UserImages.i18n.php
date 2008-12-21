@@ -339,6 +339,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'userimages-desc' => "Crèa de galariás d'imatges telecargats per l’utilizaire amb <code><nowiki><userimage /></nowiki></code>.",
 	'userimages-caption' => 'Imatges importats per $1',
 	'userimages-noname' => 'Nom d’utilizaire invalid o mancant.',
 	'userimages-noimages' => "$1 a pas importat cap d'imatge.",

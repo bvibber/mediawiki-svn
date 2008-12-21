@@ -221,6 +221,20 @@ $2',
 	'userrightsnotif-desc' => 'Στέλνει ηλεκτρονική ειδοποίηση σε χρήστες μετά από αλλαγή δικαιωμάτων',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'userrightsnotifybody' => 'Saluton, $1.
+
+Bonvolu noti ke via grupa membreco en $2 estis ŝanĝita de $3 je $4.
+
+Aldonis: $5
+Forigis: $6
+
+Kore salutas $2',
+);
+
 /** Spanish (Español)
  * @author Antur
  */

@@ -873,9 +873,9 @@ $messages['ru'] = array(
 	'passwordreset-emptyusername' => 'Пустое имя участника',
 	'passwordreset-nopassmatch' => 'Пароли не совпадают',
 	'passwordreset-badtoken' => 'Ошибочный признак правки',
-	'passwordreset-username' => 'Имя участника',
-	'passwordreset-newpass' => 'Новый пароль',
-	'passwordreset-confirmpass' => 'Подтверждение пароля',
+	'passwordreset-username' => 'Имя участника:',
+	'passwordreset-newpass' => 'Новый пароль:',
+	'passwordreset-confirmpass' => 'Подтверждение пароля:',
 	'passwordreset-submit' => 'Сбросить пароль',
 	'passwordreset-success' => 'Пароль сброшен для user_id: $1',
 	'passwordreset-disableuser' => 'Отключить учётную запись?',
@@ -884,6 +884,7 @@ $messages['ru'] = array(
 	'passwordreset-accountdisabled' => 'Учётная запись отключена',
 	'disabledusers' => 'Выключенные участники',
 	'disabledusers-summary' => 'Это список участников, которые были «выключены» с помощью PasswordReset.',
+	'right-passwordreset' => 'сбрасывать пароль участника ([[Special:PasswordReset|служебная страница]])',
 );
 
 /** Slovak (Slovenčina)

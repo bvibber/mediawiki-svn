@@ -159,7 +159,7 @@ $messages['nl'] = array(
 	'emergencydesysop-invalidtarget' => 'De opgegeven gebruiker bestaat niet.',
 	'emergencydesysop-blocked' => 'U kunt deze pagina niet gebruiken omdat u geblokkeerd bent',
 	'emergencydesysop-noright' => 'U hebt niet de nodige rechten om deze pagina te kunnen gebruiken',
-	'right-emergencydesysop' => 'Heeft de mogelijkheid om de beheerdersrechten van een andere gebruiker en zichzelf in te trekken',
+	'right-emergencydesysop' => 'In staat om de beheerdersrechten van een andere gebruiker en zichzelf in te trekken',
 );
 
 /** Occitan (Occitan)

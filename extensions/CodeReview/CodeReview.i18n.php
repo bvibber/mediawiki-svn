@@ -189,7 +189,28 @@ $messages['an'] = array(
 	'code-desc' => '[[Special:Code|Ferramienta de rebisión de codigo]] [[Special:RepoAdmin|compatible con Subversion]]',
 	'code-no-repo' => 'No bi ha garra reposte confegurato!',
 	'code-notes' => 'rebisar notas',
+	'code-authors' => 'autors',
+	'code-tags' => 'etiquetas',
+	'code-authors-text' => "Más entabaixo bi ha una lista d'autors d'o reposte ordenaus por orden de publicazions rezients.",
+	'code-author-haslink' => "Iste autor ye binculau con l'usuario d'o wiki $1",
+	'code-author-orphan' => "Iste autor no tien binclos con garra cuenta d'o wiki",
+	'code-author-dolink' => "Enlaze iste autor con usuario d'o wiki:",
+	'code-author-alterlink' => "Cambiar o usuario d'o wiki binculato con iste autor:",
+	'code-author-orunlink' => "O desbincule iste usuario d'o wiki:",
+	'code-author-name' => "Escriba un nombre d'usuario:",
+	'code-author-success' => "S'ha binculau l'autor $1 con l'usuario d'o wiki $2",
+	'code-author-link' => 'bincular?',
+	'code-author-unlink' => 'esbincular?',
+	'code-author-unlinksuccess' => "L'autor $1 s'ha esbinculato",
+	'code-field-id' => 'Bersión',
+	'code-field-author' => 'Autor',
+	'code-field-user' => 'Comentador',
+	'code-field-message' => 'Resumen de publicazión:',
+	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Calendata',
+	'code-field-comments' => 'Notas',
+	'code-field-path' => 'Camín',
+	'code-field-text' => 'Nota',
 	'code-rev-date' => 'Calendata:',
 	'code-status-ok' => "D'alcuerdo",
 	'codereview-email-body' => 'L\'usuario "$1" publicó un comentario en r$3
@@ -2142,16 +2163,26 @@ $4',
  */
 $messages['km'] = array(
 	'code-comments' => 'យោបល់',
+	'code-change-removed' => 'លុបចេញ​៖',
+	'code-change-added' => 'បន្ថែម​៖',
 	'code-authors' => 'អ្នកនិពន្ធ',
 	'code-tags' => 'ប្លាក',
 	'code-author-name' => 'បញ្ចូលឈ្មោះអ្នកប្រើប្រាស់៖',
 	'code-author-link' => 'តំណភ្ជាប់?',
+	'code-author-unlink' => 'មិន​ដាក់​តំណភ្ជាប់​?',
+	'code-field-id' => 'ពិនិត្យឡើងវិញ',
 	'code-field-author' => 'អ្នកនិពន្ធ',
 	'code-field-timestamp' => 'កាលបរិច្ឆេទ',
+	'code-field-comments' => 'កំណត់សម្គាល់​ផ្សេងៗ',
+	'code-field-path' => 'ផ្លូវ',
+	'code-field-text' => 'កំណត់សម្គាល់',
 	'code-rev-author' => 'អ្នកនិពន្ធ៖',
 	'code-rev-date' => 'កាលបរិច្ឆេទ៖',
 	'code-rev-message' => 'យោបល់៖',
+	'code-rev-repo' => 'ឃ្លាំង​៖',
+	'code-rev-rev' => 'ពិនិត្យឡើងវិញ​៖',
 	'code-rev-modified-a' => 'បានបន្ថែម',
+	'code-rev-modified-r' => 'បាន​ជំនួស',
 	'code-rev-modified-d' => 'បានលុប',
 	'code-rev-modified-m' => 'បានកែសម្រួល',
 	'code-rev-tags' => 'ប្លាក៖',
@@ -2578,6 +2609,44 @@ $4',
 	'specialpages-group-developer' => 'Hulpmiddelen voor ontwikkelaars',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'code' => 'Kodegjennomgang',
+	'code-comments' => 'Kommentarar',
+	'code-change-status' => "endra '''status''' for denne versjonen",
+	'code-change-tags' => "endra '''merkelappane''' for denne versjonen",
+	'code-change-removed' => 'tok vekk:',
+	'code-change-added' => 'la til:',
+	'code-field-id' => 'Versjon',
+	'code-field-author' => 'Forfattar',
+	'code-field-path' => 'Stig',
+	'code-rev-message' => 'Kommentar:',
+	'code-rev-modified-a' => 'lagt til',
+	'code-rev-status' => 'Status:',
+	'code-rev-comment-submit' => 'Legg til kommentar',
+	'code-rev-diff' => 'Diff',
+	'code-rev-diff-link' => 'diff',
+	'code-status-new' => 'ny',
+	'code-status-fixme' => 'fiksmeg',
+	'code-status-reverted' => 'attenderulla',
+	'code-status-ok' => 'OK',
+	'code-pathsearch-path' => 'Stig:',
+	'codereview-reply-link' => 'svar',
+	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar lagt til',
+	'codereview-email-body' => 'Brukar $1 la inn ein kommentar på r$3
+
+Fullstendig URL: $2
+
+Kommentar:
+
+$4',
+	'repoadmin-new-button' => 'Opprett',
+	'repoadmin-edit-button' => 'OK',
+	'specialpages-group-developer' => 'Utviklarverkty',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Laaknor
@@ -2741,7 +2810,7 @@ $messages['oc'] = array(
 	'code-status-deferred' => 'deferit',
 	'code-pathsearch-legend' => 'Recèrca las versions dins aqueste depaus segon lo camin',
 	'code-pathsearch-path' => 'Camin :',
-	'code-rev-submit' => 'Publicar las modificacions :',
+	'code-rev-submit' => 'Salvar las modificacions :',
 	'code-rev-submit-next' => 'Salvar & venenta pas resolguda',
 	'codereview-reply-link' => 'respondre',
 	'codereview-email-subj' => '[$1] [r$2] : Comentari novèl apondut',
@@ -2781,6 +2850,7 @@ $messages['os'] = array(
 	'code-field-text' => 'Фиппаинаг',
 	'code-rev-author' => 'Автор:',
 	'code-rev-status' => 'Статус:',
+	'code-rev-comment-preview' => 'Разæркаст',
 );
 
 /** Polish (Polski)
@@ -3575,6 +3645,22 @@ $messages['te'] = array(
 	'code-status-reverted' => 'వెనక్కి తీసుకోబడినది',
 	'code-status-ok' => 'సరి',
 	'repoadmin-edit-button' => 'సరే',
+);
+
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'code-comments' => 'ความเห็น',
+	'code-field-author' => 'ผู้แต่ง',
+	'code-field-status' => 'สถานะ',
+	'code-field-timestamp' => 'วันที่',
+	'code-rev-date' => 'วันที่:',
+	'code-rev-modified-a' => 'ถูกเพิ่ม',
+	'code-rev-modified-r' => 'ถูกแทนที่',
+	'code-rev-modified-d' => 'ถูกลบ',
+	'code-rev-comment-preview' => 'ดูตัวอย่าง',
+	'code-status-new' => 'ใหม่',
 );
 
 /** Ukrainian (Українська)

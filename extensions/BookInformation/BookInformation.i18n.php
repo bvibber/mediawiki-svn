@@ -631,7 +631,7 @@ $messages['ht'] = array(
  */
 $messages['hu'] = array(
 	'bookinfo-header' => 'Könyv információ',
-	'bookinfo-desc' => 'A [[Special:Booksources|Könyvforrások]] kiegészítése információkkal egy webszolgáltatásról',
+	'bookinfo-desc' => 'Kiegészíti a [[Special:Booksources|könyvforrások speciális lapot]] információkkal egy webkiszolgálóról',
 	'bookinfo-result-title' => 'Cím:',
 	'bookinfo-result-author' => 'Szerző:',
 	'bookinfo-result-publisher' => 'Kiadó:',

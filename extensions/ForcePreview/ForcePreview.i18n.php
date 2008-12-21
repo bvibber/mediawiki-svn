@@ -302,6 +302,13 @@ $messages['oc'] = array(
 	'right-forcepreviewexempt' => "Pòt èsser salvat sens l'utilizacion de la previsualizacion",
 );
 
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'forcepreview' => 'Фарс равæр (разæркасты фæстæ)',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

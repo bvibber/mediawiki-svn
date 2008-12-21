@@ -120,6 +120,13 @@ $messages['eo'] = array(
 	'contrib-tracking-button' => 'Daŭrigi',
 );
 
+/** Spanish (Español)
+ * @author Remember the dot
+ */
+$messages['es'] = array(
+	'contrib-tracking-button' => 'Continuar',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Komeil 4life

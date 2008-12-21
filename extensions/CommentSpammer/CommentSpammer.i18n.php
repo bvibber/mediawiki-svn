@@ -78,7 +78,9 @@ Vyhněte se tomu tím, že [[Special:UserLogin|se přihlásíte nebo si vytvoř�
  * @author ChrisiPK
  */
 $messages['de'] = array(
-	'commentspammer-save-blocked' => 'Deine IP-Adresse stammt mutmaßlich von einem Kommentar-Spammer. Die Seite wurde nicht gespeichert. [[Special:Userlogin|Melde dich an oder erstelle ein Benutzerkonto]], um diese Warnung zu unterbinden.',
+	'commentspammer-save-blocked' => 'Deine IP-Adresse stammt mutmaßlich von einem Kommentar-Spammer.
+Die Seite wurde nicht gespeichert.
+[[Special:UserLogin|Melde dich an oder erstelle ein Benutzerkonto]], um diese Warnung zu unterbinden.',
 	'commentspammer-desc' => 'Unterbindet Bearbeitungen durch vermutliche Kommentarspammer auf einer DNS-Blacklist',
 	'commentspammer-log-msg' => 'Bearbeitung von [[Special:Contributions/$1|$1]] für [[:$2]].',
 	'commentspammer-log-msg-info' => 'Letztes Spamming vor $1 {{PLURAL:$1|Tag|Tagen}}, der "threat level" ist $2 und der and "offence code" is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details ansehen] oder [[Special:Blockip/$4|sperren]].',
@@ -91,7 +93,7 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'commentspammer-save-blocked' => 'Via IP-adreso estas suspekta koment-spamisto, do la paĝo ne estis konservita.
-[[Special:Userlogin|Ensaluti aŭ krei konton]] por eviti ĉi tiel.',
+[[Special:UserLogin|Ensaluti aŭ krei konton]] por eviti ĉi tiel.',
 	'commentspammer-desc' => 'Malpermesas redaktojn de suspektaj koment-spamistoj en DNS-nigralisto',
 	'commentspammer-log-msg' => 'redakto de [[Special:Contributions/$1|$1]] al [[:$2]].',
 	'commentspammer-log-msg-info' => 'Laste spamis $1 antaŭ {{PLURAL:$1|tago|tagoj}}, minaca nivelo estas $2, kaj kulpa kodo estas $3.
@@ -243,7 +245,7 @@ Kanggo menggak iki, [[Special:UserLogin|mangga log mlebu utawa nggawé rékening
 $messages['ksh'] = array(
 	'commentspammer-save-blocked' => 'Ding IP-Address es schwer verdäschtesch, dat se enem Kommenta-SPAMmer jehööt.
 Dröm ham mer Ding Änderung nit faßjehallde.
-Don [[Special:Userlogin|enlogge udder Desch aanmellde]] domet dat nit widder passeet.',
+Don [[Special:UserLogin|enlogge udder Desch aanmellde]] domet dat nit widder passeet.',
 	'commentspammer-desc' => 'Hält Änderunge fun bekannte Kommenta-SPAMmere op, opjrond fun ene „schwaze Leß“ met DNS-Date.',
 	'commentspammer-log-msg' => 'Änderunge fun [[Special:Contributions/$1|$1]] aan dä Sigg „[[:$2]]“.',
 	'commentspammer-log-msg-info' => 'Zoletz jeSPAMt för {{PLURAL:$1|einem Dach|$1 Dare|nit ens einem Daach}}, de Drohstuuf es „$2“, un dä Stüürungs-Kood es „$3“. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Einzeheite aanloore] udder [[Special:Blockip/$4|Metmaacher sperre]].',
@@ -343,7 +345,7 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'commentspammer-save-blocked' => 'O seu endereço IP é um suspeito "spammer" de comentários, consequentemente a página não foi guardada.
-[[Special:Userlogin|Autentique-se ou crie uma conta]] para evitar isto.',
+[[Special:UserLogin|Autentique-se ou crie uma conta]] para evitar isto.',
 	'commentspammer-desc' => 'Rejeita edições de suspeitos "spammers" de comentários numa lista negra de DNS',
 	'commentspammer-log-msg' => 'edição de [[Special:Contributions/$1|$1]] a [[:$2]].',
 	'commentspammer-log-msg-info' => 'Último "spam" $1 {{PLURAL:$1|dia|dias}} atrás, nível de ameaça é $2, e código de ofensa é $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Ver detalhes], ou [[Special:Blockip/$4|bloquear]].',

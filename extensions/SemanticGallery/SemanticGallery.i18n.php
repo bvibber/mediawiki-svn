@@ -49,6 +49,13 @@ $messages['nl'] = array(
 	'semanticgallery-desc' => 'Voegt een galerijuitvoerformaat toe aan zoekopdrachten via Semantic MediaWiki',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'semanticgallery-desc' => 'Apond un format de sortida de la galariá dins las requèstas en linha de SMW',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

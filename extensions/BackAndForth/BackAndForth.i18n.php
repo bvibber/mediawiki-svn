@@ -434,6 +434,15 @@ $messages['lt'] = array(
 	'backforth-prev' => 'Ankstesnis ($1)',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'backforth-next' => 'Следно ($1)',
+	'backforth-desc' => 'Додава "Следна" и "Претходна" врски на врвот од азбучниот индекс',
+	'backforth-prev' => 'Претходна ($1)',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
  * @author Shijualex

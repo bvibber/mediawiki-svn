@@ -222,7 +222,7 @@ $messages['eo'] = array(
 	'editmsg-new-search' => 'Nova serĉo',
 	'editmsg-warning-parse2' => '*Citmarka signo deviĝas post sago: $1',
 	'editmsg-warning-parse3' => '* Fino de valuta ĉeno ne trovita: $1',
-	'editmsg-warning-file' => '* Dosieraj leg-eraroj estis renkontitaj por la {{PLURAL:$1|jena lingvo|jenaj lingvoj}}: $1',
+	'editmsg-warning-file' => '* Dosieraj leg-eraroj estis renkontitaj por la {{PLURAL:$2|jena lingvo|jenaj lingvoj}}: $1',
 	'editmsg-apply-patch' => 'Apliki flikaĵon',
 	'editmsg-no-patch' => 'Ne eblas starti "flikan" komandon',
 	'editmsg-patch-failed' => 'Flikaĵo malsukcesis kun statuso $1',
@@ -230,9 +230,11 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author David0811
  * @author Jatrobat
  */
 $messages['es'] = array(
+	'editmessages' => 'Editando mensajes',
 	'editmsg-search' => 'Buscar',
 );
 
@@ -754,8 +756,8 @@ $messages['ru'] = array(
 	'editmsg-warning-parse1' => '* Не подходит регулярное выражение имени сообщения: $1',
 	'editmsg-warning-parse2' => '* Ожидается символ кавычки после стрелки: $1',
 	'editmsg-warning-parse3' => '* Не найдено окончание строки: $1',
-	'editmsg-warning-file' => '* Ошибки чтения файлов для следующих языков: $1',
-	'editmsg-warning-mismatch' => '* Оригинальный текст не имеет ожидаемого значения для следующих языков: $1',
+	'editmsg-warning-file' => '* Ошибки чтения {{PLURAL:$2|файла для следующего языка|файлов для следующих языков}}: $1',
+	'editmsg-warning-mismatch' => '* Оригинальный текст не имеет ожидаемого значения для {{PLURAL:$2|следующего языка|следующих языков}}: $1',
 	'editmsg-apply-patch' => 'Применить патч',
 	'editmsg-no-patch' => 'Невозможно выполнить команду «patch»',
 	'editmsg-patch-failed' => 'Применение патча завершено с ошибой, код возврата $1',
@@ -868,11 +870,19 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Manop
  * @author Passawuth
  */
 $messages['th'] = array(
+	'editmessages' => 'แก้ไขข้อความ',
+	'editmsg-target' => 'ข้อความปลายทาง:',
 	'editmsg-search' => 'ค้นหา',
-	'editmsg-warning-file' => '* มีการอ่านไฟล์ผิดพลาดในภาษาดังกล่าว : $1',
+	'editmsg-show-list' => 'แสดงค่าสำหรับข้อมูลชื่อ "$1"',
+	'editmsg-new-search' => 'การค้นหาใหม่',
+	'editmsg-warning-file' => '* มีการอ่านไฟล์ผิดพลาดสำหรับ {{PLURAL:$2|ภาษา}}ต่อไปนี้: $1',
+	'editmsg-apply-patch' => 'เพิ่มเติมแพตช์',
+	'editmsg-no-patch' => 'ไม่สามารถดำเนินคำสั่ง "patch"',
+	'editmsg-patch-success' => 'ติดตั้งแพตช์สมบูรณ์',
 );
 
 /** Turkish (Türkçe)

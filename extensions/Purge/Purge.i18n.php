@@ -60,6 +60,14 @@ $messages['de'] = array(
 	'purge-desc' => 'Ergänzt einen „Purge“-Reiter für alle normalen Seiten zur schnellen Cache-Löschung und umgeht die Purge-Prüfung für anonyme Benutzer',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'purge' => 'wuprozniś',
+	'purge-desc' => 'Pśidawa rejtark "wuprozniś" wšym normalnym bokam a wobija se kontrolu za proznjenje cacha za anonymnych wužywarjow, aby zmóžnił spěšnje proznjenje cacha',
+);
+
 /** French (Français)
  * @author Grondin
  */

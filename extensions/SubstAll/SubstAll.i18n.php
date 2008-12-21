@@ -52,6 +52,13 @@ $messages['de'] = array(
 	'substall-desc' => 'Erstellt einen &lt;substall&gt;-Tag, der alle Vorlagen auf dieser Seite expandiert',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'substall-desc' => 'Napórajo toflicku <nowiki><substall></nowiki>, kótaraž pśetwórjujo wše pśedłogi do wikisyntaksy',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

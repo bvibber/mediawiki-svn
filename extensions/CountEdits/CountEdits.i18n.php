@@ -199,7 +199,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'countedits' => 'Beitragszähler',
-	'countedits-desc' => '[[{{ns:special}}:CountEdits|Spezialseite]], die Benutzerbeiträge zählt und eine Top-10-Liste erstellt',
+	'countedits-desc' => '[[Special:CountEdits|Spezialseite]], die Benutzerbeiträge zählt und eine Top-10-Liste erstellt',
 	'countedits-warning' => 'Hinweis: Du beurteilst ein Buch nicht nur nach seinem Umschlag, beurteile einen Autor daher auch nicht nur nach seinem Beitragszähler.',
 	'countedits-username' => 'Benutzername:',
 	'countedits-ok' => 'OK',

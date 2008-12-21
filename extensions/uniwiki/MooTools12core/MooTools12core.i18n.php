@@ -27,6 +27,13 @@ $messages['dsb'] = array(
 	'mootools12core-desc' => 'Pśidawa mootools-1.2-core-yc.js kuždemu bokoju',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'mootools12core-desc' => 'Aldonas ilojn mootools-1.2-core-yc.js al ĉiu paĝo',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

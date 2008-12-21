@@ -591,6 +591,13 @@ $messages['ml'] = array(
 	'multiupload-toolbox' => 'ഒന്നിലധികം പ്രമാണങ്ങള്‍ അപ്‌ലോഡ് ചെയ്യുക',
 );
 
+/** Mongolian (Монгол)
+ * @author E.shijir
+ */
+$messages['mn'] = array(
+	'multipleupload' => 'Файл гадагш хуулах',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

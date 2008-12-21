@@ -148,6 +148,17 @@ $messages['dsb'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|nowy pśijaśel|nowej pśijaśela|nowe pśijaśele|nowych pśijaśelow}}',
 );
 
+/** Greek (Ελληνικά)
+ * @author Consta
+ */
+$messages['el'] = array(
+	'mp-userlevels-link' => 'Επίπεδα χρήστη',
+	'mp-welcome-logged-in' => 'Γεια σου $1',
+	'mp-requests-title' => 'Αιτήματα',
+	'mp-requests-message' => 'Έχετε τα ακόλουθα αιτήματα.',
+	'mp-request-new-message' => 'νέα μηνύματα',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -461,7 +472,7 @@ $messages['oc'] = array(
 	'mp-welcome-upload' => 'Telecargar',
 	'mp-welcome-edit' => 'Modificar',
 	'mp-welcome-points' => '$1 punts',
-	'mp-welcome-needed-points' => 'Avançar cap a <b><a href="$1">$2</a></b> ganha <i>$3</i> punts de mai !',
+	'mp-welcome-needed-points' => 'Avançar cap a <b><a href="$1">$2</a></b> ganha <i>$3</i> {{PLURAL:$3|punt|punts}} en mai !',
 	'mp-welcome-logged-in' => 'Benvenguda $1',
 	'mp-requests-title' => 'Requèstas',
 	'mp-requests-message' => 'Avètz las requèstas seguentas.',

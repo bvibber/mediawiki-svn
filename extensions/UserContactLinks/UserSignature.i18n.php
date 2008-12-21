@@ -186,6 +186,13 @@ $messages['lb'] = array(
 	'usercontactlink-desc' => 'Erméiglecht et fir einfach an dauernd aner Benotzernimm mat Hellëf vun der Syntax ^^^user^^^ derbäizesetzen',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'usercontactlink-baduser' => 'погрешно корисничко име',
+);
+
 /** Malayalam (മലയാളം)
  * @author Shijualex
  */

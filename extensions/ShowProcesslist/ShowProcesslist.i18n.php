@@ -236,6 +236,23 @@ $messages['haw'] = array(
 	'showprocesslist-time' => 'Manawa',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'showprocesslist' => 'הצגת רשימת התהליכים',
+	'showprocesslist-desc' => 'הצגת הפלט של [[Special:ShowProcesslist|הצגת רשימת התהליכים המלאה]]',
+	'showprocesslist-id' => 'מספר',
+	'showprocesslist-user' => 'משתמש',
+	'showprocesslist-host' => 'מארח',
+	'showprocesslist-db' => 'מסד נתונים',
+	'showprocesslist-command' => 'פקודה',
+	'showprocesslist-time' => 'זמן',
+	'showprocesslist-state' => 'מצב',
+	'showprocesslist-info' => 'מידע',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

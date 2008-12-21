@@ -270,6 +270,13 @@ $messages['nl'] = array(
 	'fixedimage-desc' => 'Voegt de tag <tt><nowiki><fundraising></nowiki></tt> toe als afbeelding',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'fixedimage-desc' => 'Legg til merkelappen <tt><nowiki><fundraising></nowiki></tt> som eit bilete.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

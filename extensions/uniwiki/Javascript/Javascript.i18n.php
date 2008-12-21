@@ -13,6 +13,13 @@ $messages['en'] = array(
 	'javascript-desc' => 'Adds uniwiki.js to each page containing JavaScript code shared between Uniwiki extensions',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'javascript-desc' => 'Pśidawa dataju uniwiki.js ku kuždemu bokoju, kótaraž wopśimujo JavaScriptowy kod, kótaryž jo zgromadny za rozšyrjenja Uniwiki',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Sherbrooke
@@ -33,6 +40,13 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'javascript-desc' => 'הוספת הקובץ uniwiki.js לכל דף, שמכיל קוד JavaScript המשותף בין ההרחבות של יוניויקי',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'javascript-desc' => 'Přidawa dataju uniwiki.js ke kóždej stronje, kotraž JavaScriptowy kod wobsahuje, kotryž so přez rozšěrjenja Uniwiki zhromadnje wužiwa',
 );
 
 /** Interlingua (Interlingua)

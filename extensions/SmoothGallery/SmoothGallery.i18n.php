@@ -251,6 +251,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'smoothgallery-gallery-not-found' => 'Déi ugefrote Gallerie gëtt et net.',
 	'smoothgallery-javascript-disabled' => 'JavaScriot gëtt gebraucht fir dës Gallerie korrekt ze gesinn.',
 );
 

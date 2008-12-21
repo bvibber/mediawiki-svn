@@ -59,6 +59,14 @@ $messages['de'] = array(
 	'catboxattop-categories' => 'Kategorien',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'catboxattop-desc' => 'Pśidawa kategorijowy kašćik do pšawego górjejcnego rožka bokow',
+	'catboxattop-categories' => 'Kategorije',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -106,6 +114,14 @@ $messages['grc'] = array(
 $messages['he'] = array(
 	'catboxattop-desc' => 'הוספת תיבת קטגוריות לפינה השמאלית העליונה של הדפים',
 	'catboxattop-categories' => 'קטגוריות',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'catboxattop-desc' => 'Přidawa kategorijowy kašćik do praweho hornjeho róžka stronow',
+	'catboxattop-categories' => 'Kategorije',
 );
 
 /** Japanese (日本語)

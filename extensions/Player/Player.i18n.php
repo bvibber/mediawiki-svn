@@ -498,6 +498,14 @@ $messages['km'] = array(
 	'player-goto-file' => 'ឯកសារ',
 );
 
+/** Korean (한국어)
+ * @author Albamhandae
+ */
+$messages['ko'] = array(
+	'player-file' => '파일 이름',
+	'player-goto-file' => '파일',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

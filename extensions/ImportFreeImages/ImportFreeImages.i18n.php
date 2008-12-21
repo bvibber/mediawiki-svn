@@ -432,6 +432,13 @@ Per farlo richiedi una chiave API [http://www.flickr.com/services/api/misc.api_k
 	'importfreeimages_returntoform' => "Oppure fai clic <a href='$1'>qui</a> per tornare ai risultati della tua ricerca",
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'importfreeimages_owner' => '著者',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

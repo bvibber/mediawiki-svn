@@ -27,6 +27,15 @@ $messages['qqq'] = array(
 	'searchbox-namespaces' => '{{Identical|Namespaces}}',
 );
 
+/** Old English (Anglo-Saxon)
+ * @author Wōdenhelm
+ */
+$messages['ang'] = array(
+	'searchbox-search' => 'Secan',
+	'searchbox-go' => 'Gān',
+	'searchbox-namespaces' => 'Namastedas:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

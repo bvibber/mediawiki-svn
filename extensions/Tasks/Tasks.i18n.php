@@ -896,6 +896,7 @@ Zie uw $2.',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'tasks' => 'Oppgåver',
@@ -937,6 +938,36 @@ $messages['nn'] = array(
 	'tasks_help_page_link' => '?',
 	'tasks_help_separator' => '$2 | $1',
 	'tasks_more_like_it' => 'meir',
+	'tasks_significance_order' => 'skriv om<slett',
+	'tasks_event_on_creation' => 'sjekk',
+	'tasks_event_on_creation_anon' => 'sjekk',
+	'tasks_on_creation_comment' => 'Automatisk oppgåva, laga ved opprettinga av sida',
+	'tasks_link_your_assignments' => 'opne tildelte oppgåver',
+	'tasks_see_your_assignments' => 'Du har for tida $1 opne tildelte oppgåver. Sjå dine $2.',
+	'tasks_my_assignments' => 'Dine noverande tildelte oppgåver',
+	'tasks_table_header_page' => 'Side',
+	'tasks_you_have_no_assignments' => 'Du har ingen opne tildelte oppgåver',
+	'tasks_search_form_title' => 'Søk',
+	'tasks_search_tasks' => 'Oppgåver',
+	'tasks_search_status' => 'Status',
+	'tasks_search_no_tasks_chosen_note' => '(Ingen val her vil søkja etter alle oppgåvetypane.)',
+	'tasks_search_results' => 'Søkeresultat',
+	'tasks_previous' => 'Førre',
+	'tasks_next' => 'Neste',
+	'tasks_sort' => 'Sorter',
+	'tasks_ascending' => 'Eldste først',
+	'tasks_status_open' => 'Open',
+	'tasks_status_assigned' => 'Tildelt',
+	'tasks_status_closed' => 'Lukka',
+	'tasks_status_wontfix' => 'Vil ikkje la seg fiksa',
+	'tasks_action_open' => 'Oppgåve "$1" opna.',
+	'tasks_action_assigned' => 'Opggåva "$1" er tildelt.',
+	'tasks_action_closed' => 'Oppgåve "$1" lukka.',
+	'tasks_action_wontfix' => 'Vil ikkje retta oppgåva "$1".',
+	'tasks_sign_delete' => '<b>Det har komme ein førespurnad om at denne sida blir sletta.</b>',
+	'tasks_logpage' => 'Oppgåvelogg',
+	'tasks_logpagetext' => 'Dette er ein logg over endringar i oppgåver.',
+	'tasks_logentry' => 'For "[[$1]]"',
 );
 
 /** Occitan (Occitan)

@@ -47,6 +47,13 @@ $messages['nl'] = array(
 	'securepasswords-desc' => 'Gebruikt veiliger wachtwoordhashes en voegt een wachtwoordsterktecontrole toe',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'securepasswords-desc' => "Crèa d'hachages de senhals mai segurs e apond un verificator de complexitat de senhal",
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

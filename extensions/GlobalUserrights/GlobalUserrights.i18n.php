@@ -87,3 +87,15 @@ $messages['nl'] = array(
 	'rights-userrights-global' => 'Globale gebruikersrechten beheren',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'globaluserrights' => "Gestion dels dreches d'utilizaires globals",
+	'gur-desc' => "Administracion simpla dels [[Special:GlobalUserRights|dreches d'utilizaires globals]]",
+	'gur-rightslog-name' => 'Istoric dels dreches globals',
+	'gur-rightslog-header' => "Aquò es lo jornal de las modificacions d'estatuts globals",
+	'gur-rightslog-entry' => 'a modificat los dreches globals per $1 de $2 a $3',
+	'rights-userrights-global' => "Gerir los dreches d'utilizaires globals",
+);
+

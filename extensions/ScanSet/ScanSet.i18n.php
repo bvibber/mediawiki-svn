@@ -575,6 +575,14 @@ $messages['km'] = array(
 	'scanset_prev' => '&lt; មុន',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'scanset_next' => '다음 &gt;',
+	'scanset_prev' => '&lt; 이전',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

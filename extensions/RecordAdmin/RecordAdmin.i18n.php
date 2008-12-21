@@ -209,6 +209,7 @@ $messages['lb'] = array(
 	'recordadmin-buttonsave' => 'Späicheren',
 	'recordadmin-viewlink' => 'weisen',
 	'recordadmin-editlink' => 'änneren',
+	'recordadmin-created' => 'Ugeluecht',
 );
 
 /** Dutch (Nederlands)

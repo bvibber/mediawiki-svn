@@ -77,6 +77,13 @@ $messages['jv'] = array(
 	'formatsearch-desc' => 'Ngresiki kaca kasil panggolèkan',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'formatsearch-desc' => 'សំអាត​ទំព័រ​លទ្ធផល​ស្វែងរក',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
