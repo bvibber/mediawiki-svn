@@ -114,7 +114,7 @@ class SvnRevTablePager extends TablePager {
 		return array(
 			$this->getDefaultSort() => wfMsg( 'code-field-id' ),
 			'cr_status' => wfMsg( 'code-field-status' ),
-			'COUNT(cc_rev_id)' => wfMsg( 'code-field-comments' ),
+			'COUNT( DISTINCT cc_id)' => wfMsg( 'code-field-comments' ),
 			'cr_path' => wfMsg( 'code-field-path' ),
 			'cr_message' => wfMsg( 'code-field-message' ),
 			'cr_author' => wfMsg( 'code-field-author' ),
@@ -142,7 +142,7 @@ class SvnRevTablePager extends TablePager {
 		case 'cr_timestamp':
 			global $wgLang;
 			return $wgLang->timeanddate( $value, true );
-		case 'COUNT(cc_rev_id)':
+		case 'COUNT( DISTINCT cc_id)':
 			return intval( $value );
 		case 'cr_path':
 			return Xml::element('div', array( 'title' => (string)$value ),
