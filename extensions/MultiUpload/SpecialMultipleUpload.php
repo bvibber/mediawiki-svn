@@ -17,12 +17,14 @@ $wgMaxUploadFiles = isset( $wgMaxUploadFiles ) ? intval( $wgMaxUploadFiles ) : 5
 
 // Extension credits that will show up on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
-	'name' => 'MultipleUpload',
-	'author' => 'Travis Derouin',
-	'version' => '1.0',
-	'description' => 'Allows users to upload several files at once.',
+	'name'           => 'MultipleUpload',
+	'author'         => 'Travis Derouin',
+	'version'        => '1.0',
+	'svn-date'       => '$LastChangedDate$',
+	'svn-revision'   => '$LastChangedRevision$',
+	'description'    => 'Allows users to upload several files at once.',
 	'descriptionmsg' => 'multipleupload-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:MultiUpload',
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:MultiUpload',
 );
 
 // Set up the new special page
@@ -32,6 +34,7 @@ $wgAutoloadClasses['MultipleUploadForm'] = $dir . 'SpecialMultipleUpload.body.ph
 $wgExtensionMessagesFiles['MultiUpload'] = $dir . 'SpecialMultipleUpload.i18n.php';
 $wgExtensionAliasesFiles['MultiUpload'] = $dir . 'SpecialMultipleUpload.alias.php';
 $wgSpecialPages['MultipleUpload'] = 'MultipleUpload';
+$wgSpecialPageGroups['MultipleUpload'] = 'media';
 
 // Hooked functions
 $wgHooks['MonoBookTemplateToolboxEnd'][]  = 'wfMultiUploadToolbox';
