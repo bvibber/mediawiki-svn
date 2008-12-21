@@ -97,6 +97,7 @@ function efAddGlobalUserrights( $user, &$groups ) {
 /** 
  * Hook function for SpecialListusersQueryInfo
  * Updates UsersPager::getQueryInfo() to account for the global_user_groups table
+ * This ensures that global rights show up on Special:Listusers
  *
  * @param $that instance of UsersPager
  * @param &$query the query array to be returned
