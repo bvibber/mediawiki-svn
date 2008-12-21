@@ -674,6 +674,15 @@ Para uma lista de projectos válidos, ver [[MediaWiki:TodoTasksValidProjects]]."
 	'tasklistbyname' => '== Lista de tarefas de %s ==',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'tasklistunknownproject' => 'Proiect necunoscut',
+	'tasklistunspecuser' => 'Utilizator nespecificat',
+	'tasklistincorrectuser' => 'Nume de utilizator incorect',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Rubin

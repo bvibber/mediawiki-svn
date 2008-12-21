@@ -50,6 +50,13 @@ $messages['he'] = array(
 	'csshooks-desc' => 'הוספת CSS לפלט ה־HTML של הדפים כדי לאפשר מראה טוב יותר',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'csshooks-desc' => 'Adde CSS al output HTML de paginas pro meliorar le disposition typographic',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

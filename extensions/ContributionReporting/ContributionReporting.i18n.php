@@ -461,6 +461,10 @@ $messages['eo'] = array(
 	'contribstats-max' => 'Maksimumo (USD)',
 	'contribstats-percentage-ytd' => 'Procento (YTD)',
 	'contribstats-total-ytd' => 'Tuto (ĉi-jara)',
+	'contribstats-value-exactly' => 'Precize $1',
+	'contribstats-value-under' => 'Malpli ol $1',
+	'contribstats-value-from' => 'De $1 - $2',
+	'contribstats-value-over' => 'Pli ol $1',
 	'fundraiserstatistics' => 'Statistikoj pri mondonacado',
 	'fundraiserstats-date' => 'Dato',
 	'fundraiserstats-day' => 'Tago $1 el $2',
@@ -1639,6 +1643,7 @@ $messages['vi'] = array(
 	'fundraiserstats-tab-contributions' => 'Số khoản quyên góp',
 	'fundraiserstats-tab-averages' => 'Trung bình (USD)',
 	'fundraiserstats-tab-maximums' => 'Tối đa (USD)',
+	'specialpages-group-contribution' => 'Quyên góp/Vận động gây quỹ',
 );
 
 /** Volapük (Volapük)

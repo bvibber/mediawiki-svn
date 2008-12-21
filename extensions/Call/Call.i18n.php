@@ -160,8 +160,25 @@ V případě problémů můžete zkusit <b>Special:Call/DebuG</b>",
  * @author ChrisiPK
  */
 $messages['de'] = array(
+	'call' => 'Parameteraufruf',
 	'call-desc' => 'Erstellt einen Hyperlink zu einer Vorlage (oder zu einer normalen Seite) mit Parameterübergabe.
 Kann in der Eingabeaufforderung des Browser oder im Wiki-Text verwendet werden.',
+	'call-text' => "Die Parameteraufruf-Erweiterung erwartet eine Wiki-Seite und optionale Parameter für diese Seite als Argument.
+
+Beispiel 1: &nbsp; <tt>[[{{ns:special}}:Call/Meine Vorlage,parm1=wert1]]</tt><br />
+Beispiel 2: &nbsp; <tt>[[{{ns:special}}:Call/Diskussion:Meine Diskussion,parm1=wert1]]</tt><br />
+Beispiel 3: &nbsp; <tt>[[{{ns:special}}:Call/:My Page,parm1=wert1,parm2=wert2]]</tt><br />
+Beispiel 4 (URL im Browser): &nbsp; <tt>http://meinedomain/meinwiki/index.php?Special:Call/:My Page,parm1=wert1</tt>
+
+Die <i>Parameteraufruf-Erweiterung</i> wird die angegebene Seite aufrufen und die Parameter übergeben.<br />
+Es werden der Inhalt und der Titel der aufgerufenen Seite angezeigt, aber der Seitentyp wird der einer Spezialseite sein, daher kann so eine Seite z.B. nicht bearbeitet werden.<br />Der angezeigte Inhalt kann unterschiedlich sein, abhängig von den übergebenen Parameterwerten.
+
+Die <i>Parameteraufruf-Erweiterung</i> ist praktisch, um interaktive Anwendungen mit MediaWiki zu erstellen.<br />
+Ein Beispiel hierfür ist die <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br />
+Für Probleme gibt es <b>{{ns:special}}:Call/DebuG</b>",
+	'call-save' => "Die Ausgabe dieses Aufrufs würde als Seite ''$1'' gespeichert werden.",
+	'call-save-success' => 'Der folgende Text wurde auf Seite <big>[[$1]]</big> gespeichert.',
+	'call-save-failed' => 'Der folgende Text wurde NICHT auf Seite <big>[[$1]]</big> gespeichert, weil diese Seite bereits existiert.',
 );
 
 /** Esperanto (Esperanto)

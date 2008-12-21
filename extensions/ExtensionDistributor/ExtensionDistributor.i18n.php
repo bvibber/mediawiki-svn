@@ -605,6 +605,15 @@ $messages['km'] = array(
 	'extdist-submit-version' => 'បន្ត',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'extensiondistributor' => '미디어위키 확장 기능 내려받기',
+	'extdist-submit-extension' => '계속',
+	'extdist-want-more' => '다른 확장 기능 내려받기',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -838,6 +847,15 @@ Un còp l’extraccion facha, aurètz besonh d’enregistrar l’extension dins 
 
 S'avètz de questions a prepaus d'aqueste sistèma de distribucion de las extensions, anatz sus [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Obténer una autra extension',
+);
+
+/** Ossetic (Иронау)
+ * @author Amikeco
+ */
+$messages['os'] = array(
+	'extensiondistributor' => 'Æрбавгæн MediaWiki-йы æххæстгæнæн',
+	'extdist-choose-extension' => 'Æрбавгæнынмæ æххæстгæнæнтæ равзæр:',
+	'extdist-want-more' => 'Æндæр æххæстгæнæн æрбавгæн',
 );
 
 /** Polish (Polski)

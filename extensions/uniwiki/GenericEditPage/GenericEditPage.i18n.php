@@ -287,6 +287,32 @@ Přidaj někotre z pomocu nastrojow naprawo.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'gep-desc' => 'Supplementa le pagina de modification pro render lo plus facile a usar',
+	'gep-emailsubject' => 'Suggestion de categoria pro [$1]: $2',
+	'gep-emailbody' => 'Le usator "$1" suggereva le categoria "$2" pro le sito "$3".',
+	'gep-emailfailure' => 'Pardono, tu suggestion non poteva esser processate.',
+	'gep-emailsuccess' => 'Gratias pro suggerer le categoria: $1.',
+	'gep-categories' => 'Categorias',
+	'gep-addcategory' => 'Adder un categoria',
+	'gep-addcategorybutton' => 'Adder',
+	'gep-suggestcategory' => 'Suggerer un categoria',
+	'gep-suggestcategorybutton' => 'Submitter',
+	'gep-sections' => 'Sectiones',
+	'gep-sectionnotdisabled' => 'Iste section non pote esser disactivate',
+	'gep-addsection' => 'Adder un section',
+	'gep-addsectionbutton' => 'Adder',
+	'gep-classicmode' => 'Modo classic',
+	'gep-genericmode' => 'Modo generic',
+	'gep-nosectioninstructions' => 'Il non ha sectiones in iste pagina.
+Adde alcunes con le instrumentos al derecta.',
+	'gep-nocategories' => 'Per favor selige al minus un categoria ante de publicar',
+	'gep-categorypage' => 'MediaWiki:Modificaretiquettasdepaginas',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -516,5 +542,18 @@ $messages['sv'] = array(
 	'gep-addcategorybutton' => 'Lägg till',
 	'gep-addsection' => 'Lägg till ett avsnitt',
 	'gep-addsectionbutton' => 'Lägg till',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'gep-categories' => 'Thể loại',
+	'gep-addcategory' => 'Thêm thể loại',
+	'gep-addcategorybutton' => 'Thêm',
+	'gep-suggestcategory' => 'Đề nghị thể loại',
+	'gep-sections' => 'Đoạn',
+	'gep-addsection' => 'Thêm đoạn',
+	'gep-addsectionbutton' => 'Thêm',
 );
 

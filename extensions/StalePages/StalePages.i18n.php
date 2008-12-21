@@ -151,6 +151,15 @@ $messages['it'] = array(
 	'stalepages-summary' => 'Di seguito sono elencate le pagine che non sono state modificate negli ultimi $1 giorni.',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'stalepages' => '古くなったページ',
+	'stalepages-desc' => '最近編集されていない[[Special:Stalepages|ページのリスト]]を生成する',
+	'stalepages-summary' => 'これは、直近$1日間に編集されていないページのリストです。',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

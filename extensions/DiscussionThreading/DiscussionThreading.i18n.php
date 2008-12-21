@@ -72,8 +72,11 @@ $messages['bs'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Započni novu temu',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
 $messages['de'] = array(
+	'discussionthreading-desc' => 'Thread-Verwaltung für Diskussionsseiten',
 	'discussionthreading-replysection' => 'antworten',
 	'discussionthreading-replysectionhint' => 'Auf diesen Eintrag antworten',
 	'discussionthreading-threadnewsection' => 'neu',

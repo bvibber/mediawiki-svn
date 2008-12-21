@@ -103,6 +103,14 @@ $messages['ia'] = array(
 	'semanticgooglemaps-desc' => 'Permitte que usatores adde Google Maps al paginas wiki a base de datos structurate',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'semanticgooglemaps_lookupcoordinates' => '座標を調べる',
+	'semanticgooglemaps-desc' => '利用者が、構造化されたデータに基づいて、Google Mapsをwikiページに加えることができるようにする',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

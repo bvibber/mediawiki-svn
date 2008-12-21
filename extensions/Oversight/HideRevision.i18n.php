@@ -1786,10 +1786,12 @@ $messages['ko'] = array(
 '''이 기능을 남용할 경우 권한이 해제될 수 있습니다.'''
 
 삭제된 편집은 웹 사이트를 통해 아무에게도 보여지지 않을 것입니다. 하지만 삭제된 편집은 실수를 했을 때 데이터베이스 관리자에 의해 수동으로 복구될 수 있습니다.",
+	'hiderevision-submit' => '이 데이터를 영구히 숨기기',
 	'hiderevision-tab' => '이 판을 숨기기',
 	'hiderevision-link' => '숨겨진 사용자 기여',
 	'hiderevision-norevisions' => '삭제할 판이 제시되지 않았습니다.',
 	'hiderevision-status' => '$1판: $2',
+	'hiderevision-success' => '문서가 성공적으로 삭제되어 보존되었습니다.',
 	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',
 	'oversight' => '오버사이트',
 	'oversight-view' => '내용 보기',
@@ -1967,6 +1969,15 @@ $messages['lv'] = array(
  */
 $messages['mdf'] = array(
 	'right-hiderevision' => 'Ваномс ди мърдафтомс верзиетне кяшфт системонь вятикснень эзда',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'oversight-view' => 'детали',
+	'oversight-difference' => '(Разлика од претходно останатата ревизија)',
+	'oversight-hidden' => 'Скриена ревизија',
 );
 
 /** Malayalam (മലയാളം)

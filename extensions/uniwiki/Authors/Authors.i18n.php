@@ -63,6 +63,13 @@ $messages['fr'] = array(
 	'authors_anonymous' => 'Anomyne',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'authors_authors' => 'Údair',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -88,6 +95,15 @@ $messages['hsb'] = array(
 	'authors-desc' => 'Přidawa lisćinu awtorow stronow',
 	'authors_authors' => 'Awtorojo',
 	'authors_anonymous' => 'Anonymny',
+);
+
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'authors-desc' => 'ページへの投稿者のリストを追加',
+	'authors_authors' => '著作者',
+	'authors_anonymous' => '匿名',
 );
 
 /** Javanese (Basa Jawa)
@@ -160,5 +176,13 @@ $messages['sk'] = array(
 	'authors-desc' => 'Pridáva na stránky zoznam autorov',
 	'authors_authors' => 'Autori',
 	'authors_anonymous' => 'Anonym',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'authors_authors' => 'Tác giả',
+	'authors_anonymous' => 'Vô danh',
 );
 

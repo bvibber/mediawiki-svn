@@ -63,6 +63,20 @@ $messages['hsb'] = array(
 	'mootools12core-desc' => 'Přidawa mootools-1.2-core-yc.js kóždej stronje',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'mootools12core-desc' => 'Adde mootools-1.2-core-yc.js a cata pagina',
+);
+
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'mootools12core-desc' => 'mootools-1.2-core-yc.jsをそれぞれのページに加える',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

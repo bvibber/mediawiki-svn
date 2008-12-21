@@ -1064,7 +1064,15 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'tasks_here' => 'دلته',
+	'tasks_help_page' => 'دندې',
+	'tasks_table_header_page' => 'مخ',
+	'tasks_search_form_title' => 'پلټل',
 	'tasks_search_status' => 'دريځ',
+	'tasks_search_results' => 'د پلټنې پايلې',
+	'tasks_previous' => 'پخوانی',
+	'tasks_next' => 'راتلونکی',
+	'tasks_status_open' => 'پرانيستل',
 );
 
 /** Portuguese (Português)
@@ -1096,6 +1104,13 @@ $messages['pt'] = array(
 	'tasks_action_open' => 'Tarefa "$1" aberta.',
 	'tasks_action_closed' => 'Tarefa "$1" fechada.',
 	'tasks_logentry' => 'Para "[[$1]]"',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'tasks_form_comment' => 'Comentariu',
 );
 
 /** Russian (Русский)

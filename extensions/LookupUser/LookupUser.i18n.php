@@ -158,7 +158,7 @@ $messages['dsb'] = array(
 	'lookupuser' => 'Wužywarske informacije póglědaś',
 	'lookupuser-desc' => '[[Special:LookupUser|Informacije wó wužywarju]] kaž e-mailowu adresu a ID wótwołaś',
 	'lookupuser-intro' => 'Zapódaj wužywarske mě, aby se nastajenja togo wužywarja woglědał.',
-	'lookupuser-nonexistent' => 'Zmólka: Wužywaŕ njeeksistujo.',
+	'lookupuser-nonexistent' => 'Zmólka: Wužywaŕ njeeksistěrujo.',
 	'lookupuser-authenticated' => 'E-mailowa awtentifikacija: $1',
 	'lookupuser-not-authenticated' => 'njeawtentificěrowany',
 	'lookupuser-id' => 'ID wužywarja: <tt>#$1</tt>',
@@ -331,6 +331,7 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Suradnik13
  */
 $messages['hr'] = array(
 	'lookupuser' => 'Pogledaj info suradnika',
@@ -346,6 +347,7 @@ $messages['hr'] = array(
 	'lookupuser-registration' => 'Datum registracije: $1',
 	'lookupuser-no-registration' => 'nije zabilježeno',
 	'lookupuser-touched' => 'Suradnički račun zadnji put korišten: $1',
+	'lookupuser-info-authenticated' => 'E-mail potvrda: $1',
 	'lookupuser-useroptions' => 'Suradničke postavke:',
 );
 
@@ -457,7 +459,7 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'lookupuser' => '利用者情報を調査',
 	'lookupuser-desc' => 'EメールアドレスまたはIDなどの利用者に関する[[Special:LookupUser|情報を取得]]する',
-	'lookupuser-intro' => '利用者名を入力して、その利用者のオプション設定をみることができます。',
+	'lookupuser-intro' => '利用者名を入力して、その利用者の個人設定をみることができます。',
 	'lookupuser-nonexistent' => 'エラー: 利用者は存在しません',
 	'lookupuser-authenticated' => 'Eメール確認日: $1',
 	'lookupuser-not-authenticated' => '確認されてません',
@@ -607,6 +609,7 @@ $messages['ms'] = array(
 	'lookupuser-realname' => 'Nama sebenar: $1',
 	'lookupuser-registration' => 'Tarikh pendaftaran: $1',
 	'lookupuser-no-registration' => 'tidak direkodkan',
+	'lookupuser-info-authenticated' => 'Pengesahan e-mel: $1',
 	'lookupuser-useroptions' => 'Pilihan pengguna:',
 );
 

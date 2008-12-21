@@ -117,6 +117,7 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Leithian
  * @author Revolus
  */
@@ -128,11 +129,21 @@ $messages['de'] = array(
 	'errorhandler-error-parse' => 'Verarbeitungsfehler',
 	'errorhandler-error-notice' => 'Anmerkung',
 	'errorhandler-error-deprecated' => 'Missbilligt',
-	'errorhandler-error-core-error' => 'Tiefsitzender Fehler',
+	'errorhandler-error-core-error' => 'Kernfehler',
+	'errorhandler-error-core-warning' => 'Kernwarnung',
+	'errorhandler-error-compile-error' => 'Compilerfehler',
+	'errorhandler-error-compile-warning' => 'Compilerwarnung',
 	'errorhandler-error-user-error' => 'Benutzerfehler',
 	'errorhandler-error-user-warning' => 'Benutzerwarnung',
+	'errorhandler-error-user-notice' => 'Benutzerhinweis',
+	'errorhandler-error-user-deprecated' => 'Benutzer abgelehnt',
+	'errorhandler-error-strict' => 'Strenge Standards',
+	'errorhandler-error-recoverable' => 'Auslesbarer fataler Fehler',
 	'errorhandler-msg-text' => '$1: $2 in $3 (Zeile $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> in <b>$3</b> (Zeile <b>$4</b>)',
+	'errorhandler-trace' => 'Ablaufverfolgung:',
 	'errorhandler-trace-line' => '$1 (Zeile $2): $3',
+	'errorhandler-trace-line-internal' => '[interne Funktion]: $1',
 );
 
 /** Greek (Ελληνικά)
@@ -475,6 +486,14 @@ $messages['pl'] = array(
 	'errorhandler-error-user-error' => 'Błąd użytkownika',
 	'errorhandler-msg-text' => '$1 : $2 w $3 (linia $4)',
 	'errorhandler-trace-line' => '$1 (linia $2): $3',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'errorhandler-error-warning' => 'ګواښنه',
+	'errorhandler-error-user-warning' => 'د کارونکي ګواښنه',
 );
 
 /** Portuguese (Português)

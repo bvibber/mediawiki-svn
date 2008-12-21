@@ -93,6 +93,14 @@ $messages['ia'] = array(
 	'random-users-avatars-desc' => 'Adde le etiquetta <tt>&lt;randomuserswithavatars&gt;</tt> pro monstrar le avatares de usatores seligite aleatorimente',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'random-users-avatars-title' => 'コミュニティに出会う',
+	'random-users-avatars-desc' => 'ランダムに選ばれた利用者のアバターを表示する<tt>&lt;randomuserswithavatars&gt;</tt>タグを加える',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  */

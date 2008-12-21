@@ -182,6 +182,14 @@ By rady eksistowacu stronu wobdźěłał?',
 	'createpage-badtitle' => '"$1" njeda so jako titul strony wužiwać.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'createpage' => 'Crear un pagina',
+	'createpage-desc' => 'Adde un [[Special:CreatePage|pagina special]] pro crear nove paginas',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -323,6 +331,13 @@ $messages['sw'] = array(
 	'createpage_titleexists' => 'Tayari kuna ukurasa kwenye jina [[$1]]. Je, unataka kuhariri ukurasa uliomo?',
 	'createpage_tryagain' => 'Hapana. Ninataka kuanzisha ukurasa mpya mwenye jina tofauti.',
 	'createpage_editexisting' => 'Ndiyo. Ninataka kusaidia kuhariri ukurasa uliomo.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'createpage' => 'Tạo trang',
 );
 
 /** Wolof (Wolof)

@@ -56,6 +56,20 @@ $messages['hsb'] = array(
 	'formatsearch-desc' => 'Wurjedźa stronu pytanskich wuslědkow',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'formatsearch-desc' => 'Netta le pagina de resultatos de recerca',
+);
+
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'formatsearch-desc' => '検索結果ページをクリーンアップする',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

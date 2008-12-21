@@ -422,7 +422,9 @@ $messages['ps'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'watchsubpages' => 'Urmăreşte subpaginile',
 	'watchsubpages-addtitles' => 'Adaugă pagini',
+	'watchsubpages-addtitlestowatchlist' => 'Adaugă paginile la lista de urmărire',
 );
 
 /** Russian (Русский)

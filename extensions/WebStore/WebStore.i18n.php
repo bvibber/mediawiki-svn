@@ -490,6 +490,15 @@ $1',
 	'webstore_no_handler' => 'Ce type MIME ne peut être transformé.',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'webstore_src_open' => 'Ní féidir comhad foinsí "$1" a oscailt.',
+	'webstore_src_close' => 'Earráid dunadh comhad foinsí "$1".',
+	'webstore_src_delete' => 'Earráid scriosadh comhad foinsí "$1".',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Xosé
@@ -677,6 +686,7 @@ Defini $wgLocalTmpDirectory a un directorio scribibile.',
 	'inplace_scaler_no_handler' => 'Nulle gestor pro transformar iste typo MIME',
 	'inplace_scaler_no_output' => 'Nulle file de resultato del transformation esseva producite.',
 	'inplace_scaler_zero_size' => 'Le transformation produceva un file de resultato a grandor zero.',
+	'webstore-desc' => 'Middleware pro le immagazinage de files per Web (non NFS)',
 	'webstore_access' => 'Iste servicio es restringite per adresse IP de cliente.',
 	'webstore_path_invalid' => 'Le nomine del file esseva invalide.',
 	'webstore_dest_open' => 'Impossibile aperir le file de destination "$1".',
@@ -1360,10 +1370,16 @@ $1',
 $messages['ro'] = array(
 	'inplace_scaler_not_enough_params' => 'Parametri insuficienţi.',
 	'webstore_path_invalid' => 'Numele fişierului a fost incorect.',
+	'webstore_curl' => 'Eroare de la cURL: $1',
+	'webstore_php_warning' => 'Avertizare PHP: $1',
 	'webstore_invalid_response' => 'Răspuns incorect de la server:
 
 $1',
 	'webstore_no_response' => 'Nici un răspuns de la server',
+	'webstore_backend_error' => 'Eroare de la serverul de stocare:
+
+$1',
+	'webstore_php_error' => 'Au fost întâlnite erori PHP:',
 );
 
 /** Russian (Русский)

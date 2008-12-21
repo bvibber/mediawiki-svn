@@ -147,6 +147,13 @@ $messages['lb'] = array(
 	'pnghandler-desc' => 'PNGen redimensionéiere mat Hellëf vu pngds',
 );
 
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'pnghandler-desc' => 'Промени големина на PNG со помош на pngds',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

@@ -166,10 +166,11 @@ $messages['lb'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aviator
  * @author Izzudin
  */
 $messages['ms'] = array(
-	'searchbox-desc' => 'Benarkan pemasukan borang carian',
+	'searchbox-desc' => 'Benarkan penyertaan borang carian',
 	'searchbox-search' => 'Cari',
 	'searchbox-go' => 'Pergi',
 	'searchbox-namespaces' => 'Ruang nama:',

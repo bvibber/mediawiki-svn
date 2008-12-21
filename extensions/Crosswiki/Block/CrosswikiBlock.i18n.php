@@ -362,7 +362,7 @@ Slědk k:
 * [[$2]]",
 	'crosswikiblock-nousername' => 'Žedne wužywarske mě zapódane',
 	'crosswikiblock-local' => 'Lokalne blokěrowanja njepódpěraju se pśez toś ten interfejs. Wužyj [[Special:BlockIP|{{int:blockip}}]]',
-	'crosswikiblock-dbnotfound' => 'Datowa banka $1 njeeksistujo',
+	'crosswikiblock-dbnotfound' => 'Datowa banka $1 njeeksistěrujo',
 	'crosswikiblock-noname' => '"$1" njejo płaśiwe wužywarske mě.',
 	'crosswikiblock-nouser' => 'Wužywaŕ "$3" njejo se namakał.',
 	'crosswikiblock-noexpiry' => 'Njepłaśiwe pśepadnjenje: $1.',

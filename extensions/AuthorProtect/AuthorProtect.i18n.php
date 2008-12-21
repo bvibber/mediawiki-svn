@@ -807,6 +807,7 @@ $messages['ro'] = array(
 	'authorprotect-notauthor' => 'Nu eşti autorul acestei pagini',
 	'authorprotect-confirm' => 'Schimbă niveluri de protecţie',
 	'authorprotect-edit' => 'Restricţionează modificările autorilor',
+	'authorprotect-expiry' => 'Timpul expirării',
 	'authorprotect-reason' => 'Motiv',
 	'authorprotect-success' => 'Protejare cu succes!',
 	'authorprotect-failure' => 'Protejare fără succes',

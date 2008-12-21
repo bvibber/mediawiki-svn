@@ -25,6 +25,11 @@ $aliases['hu'] = array(
 	'CreatePage' => array( 'Oldalkészítés', 'Oldal készítése' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'CreatePage' => array( 'បង្កើត​ទំព័រ' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'CreatePage' => array( 'Säiten uleeën' ),

@@ -1370,6 +1370,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'boardvote' => 'Wahlen zum Wikimedia-Kuratorium',
@@ -1378,23 +1379,25 @@ $messages['de'] = array(
 * [[Special:Boardvote/list|Bislang abgegebene Stimmen]]
 * [[Special:Boardvote/dump|Verschlüsselte Wahleinträge]]',
 	'boardvote_intro' => '<p>Willkommen zur Wahl 2008 des Wikimedia-Kuratoriums, dem Verwaltungsorgan der Wikimedia-Foundation.
-	Es wird 1 Benutzer gewählt, um die Community der Wikimedianer in den verschiedenen Wikimedia-Projekten zu repräsentieren.
-	Er wird dabei helfen, die künftige Richtung der Wikimedia-Projekte festzulegen, einzeln und als Gruppe und er repräsentiert <em>deine</em> Interessen und Belange gegenüber dem Wikimedia-Kuratoriums.
-	Er wird neben vielen anderen Dingen über die Einnahmen und Ausgaben entscheiden.</p>
+Es wird 1 Benutzer gewählt, um die Community der Wikimedianer in den verschiedenen Wikimedia-Projekten zu repräsentieren.
+Er wird dabei helfen, die künftige Richtung der Wikimedia-Projekte festzulegen, einzeln und als Gruppe und er repräsentiert <em>deine</em> Interessen und Belange gegenüber dem Wikimedia-Kuratoriums.
+Er wird neben vielen anderen Dingen über die Einnahmen und Ausgaben entscheiden.</p>
 
-	<p>Bitte lies die Kandidatenvorstellungen und ihre Antworten auf Fragen.
-	Jeder Kandidat ist ein respektierter Benutzer, der bereits beträchtliche Zeit aufgewendet hat, um den Projekten ein positives Umfeld für die freie Verbreitung menschlichen Wissens zu verschaffen.</p>
+<p>Bitte lies die Kandidatenvorstellungen und ihre Antworten auf Fragen.
+Jeder Kandidat ist ein respektierter Benutzer, der bereits beträchtliche Zeit aufgewendet hat, um den Projekten ein positives Umfeld für die freie Verbreitung menschlichen Wissens zu verschaffen.</p>
 
-	<p>Bitte reihe die Kandidaten nach deinen Vorstellungen auf, indem du eine Nummer in die Kästchen eingibst (1 = Favorit, 2 = zweiter Favorit, ...)
-	Du darfst dieselbe Rangnummer für mehrere Kandidaten verwenden und du darfst Kandidaten auslassen.
-	Es wird davon ausgegangen, dass du Kandidaten mit Rangnummer denen ohne Rangnummer vorziehst, und dass du unentschlossen bist bei den Kandidaten ohne Rangnummer.</p>
+<p>Bitte reihe die Kandidaten nach deinen Vorstellungen auf, indem du eine Nummer in die Kästchen eingibst (1 = Favorit, 2 = zweiter Favorit, …)
+Du darfst dieselbe Rangnummer für mehrere Kandidaten verwenden und du darfst Kandidaten auslassen.
+Es wird davon ausgegangen, dass du Kandidaten mit Rangnummer denen ohne Rangnummer vorziehst, und dass du unentschlossen bist bei den Kandidaten ohne Rangnummer.</p>
 
-	<p>Der Gewinner der Wahl wird nach der Schulze-Methode berechnet. Für weitere Informationen hierzu siehe die offiziellen Wahlseiten.</p>
+<p>Der Gewinner der Wahl wird nach der Schulze-Methode berechnet. Für weitere Informationen hierzu siehe die offiziellen Wahlseiten.</p>
 
-	<p>Weitere Informationen:</p>
-	<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Kuratoriumwahl 2008</a></li>
-	<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidaten</a></li>
-	<li><a href="http://de.wikipedia.org/wiki/Schulze-Methode" class="external">Schulze-Methode</a></li></ul>',
+<p>Weitere Informationen:</p>
+<ul>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Kuratoriumwahl 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidaten</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Schulze-Methode" class="external">Schulze-Methode</a></li>
+</ul>',
 	'boardvote_intro_change' => '<p>Du hast bereits abgestimmt.
 	Jedoch kannst du deine Stimme(n) mit dem folgenden Formular ändern.
 	Bitte ordne die Kandidaten in deiner Wunschreihenfolge an, wobei eine kleinere Zahl den Vorrang für diesen Kandidaten bedeutet.
@@ -1414,7 +1417,7 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird [[Special:Boa
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Zurück]]',
-	'boardvote_invalidentered' => '<p><strong>Fehler:</strong> Die Reihenfolge der Kandidaten muss in ganzen, positiven Zahlen ausgedrückt werden (1, 2, 3, ...) oder lasse das/die Kästchen leer.</p>',
+	'boardvote_invalidentered' => '<p><strong>Fehler:</strong> Die Reihenfolge der Kandidaten muss in ganzen, positiven Zahlen ausgedrückt werden (1, 2, 3, …) oder lasse das/die Kästchen leer.</p>',
 	'boardvote_nosession' => 'Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden.
 Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>.
 Wählen dürfen Benutzer, deren Benutzerkonto mindestens $1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}} vor dem $2 aufweist, und die mindestens $3 {{PLURAL:$3|Bearbeitung|Bearbeitungen}} zwischen $4 und $5 getätigt haben.',
@@ -1913,6 +1916,7 @@ $messages['fa'] = array(
  * @author Crt
  * @author Nike
  * @author Str4nd
+ * @author Tarmo
  */
 $messages['fi'] = array(
 	'boardvote' => 'Wikimedian johtokunnan valtuutettujen vaalit',
@@ -1952,8 +1956,10 @@ Siitä muodostuu seuraava salattu muoto, joka on [[Special:Boardvote/dump|julkis
 
 [[Special:Boardvote/entry|Takaisin]]',
 	'boardvote_invalidentered' => '<p><strong>Virhe</strong>: Ehdokassijan voi merkitä ainoastaan positiivisilla kokonaisluvuilla (1, 2, 3, ...), tai jättää tyhjäksi.</p>',
-	'boardvote_nosession' => 'Järjestelmä ei pysty määrittämään käyttäjätunnustasi. Kirjaudu sisään projektissa, jossa sinulla on äänioikeuteen riittävät ehdot täytetty ja mene sivulle <nowiki>[[Special:Boardvote]]</nowiki>. Sinun täytyy käyttää käyttäjätunnusta, jolla on ainakin $1 muokkausta ennen $2, ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
-	'boardvote_notloggedin' => 'Et ole kirjautunut sisään. Äänestääksesi sinulla täytyy olla käyttäjätunnus, vähintään $1 muokkausta ennen $2 ja vähintään $3 muokkausta aikavälillä $4 ja $5.',
+	'boardvote_nosession' => 'Järjestelmä ei pysty määrittämään Wikimedia-käyttäjätunnustasi.
+Kirjaudu sisään projektissa, jossa sinulla on äänioikeuteen riittävät ehdot täytetty ja mene sivulle <nowiki>[[Special:Boardvote]]</nowiki>. Sinun täytyy käyttää käyttäjätunnusta, jolla on ainakin $1 {{PLURAL:$1|muokkaus|muokkausta}} ennen päiväystä $2, ja vähintään $3 {{PLURAL:$3|muokkaus|muokkausta}} aikavälillä $4-$5.',
+	'boardvote_notloggedin' => 'Et ole kirjautunut sisään.
+Äänestääksesi sinulla täytyy olla käyttäjätunnus, jolla on vähintään $1 {{PLURAL:$1|muokkaus|muokkausta}} ennen päiväystä $2 ja vähintään $3 {{PLURAL:$3|muokkaus|muokkausta}} aikavälillä $4-$5.',
 	'boardvote_notqualified' => 'Et ole äänioikeutettu näissä vaaleissa. Sinulla täytyy olla $1 {{PLURAL:$1|muokkaus|muokkausta}} ennen $2, ja vähintään $3 {{PLURAL:$3|muokkaus|muokkausta}} aikavälillä $4 ja $5.',
 	'boardvote_novotes' => 'Kukaan ei ole vielä äänestänyt.',
 	'boardvote_time' => 'Aika',

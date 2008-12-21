@@ -65,6 +65,25 @@ $messages['bs'] = array(
 	'amazonplus-cp-none' => 'Ništa',
 );
 
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
+$messages['de'] = array(
+	'amazonplus-desc' => 'Eine gut anpassbare Erweiterung, um Informationen von Amazon anzuzeigen',
+	'amazonplus-nores' => 'Fehler: Keine Ergebnisse gefunden!',
+	'amazonplus-noidres' => 'Fehler: Produkt-ID konnte nicht gefunden werden!',
+	'amazonplus-fgcerr' => 'Fehler: Es konnten keine Daten von Amazon geholt werden.',
+	'amazonplus-slserr' => 'Fehler: Von Amazon empfangene Daten konnten nicht verarbeitet werden!',
+	'amazonplus-used' => 'gebraucht',
+	'amazonplus-german' => 'Deutsch',
+	'amazonplus-french' => 'Französisch',
+	'amazonplus-japanese' => 'Japanisch',
+	'amazonplus-amazon' => 'Preis bei Amazon',
+	'amazonplus-new' => 'neu',
+	'amazonplus-none' => 'Von dieser Publikation werden momentan keine Kopien verkauft.',
+	'amazonplus-cp-none' => 'Keine',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -274,6 +293,16 @@ $messages['oc'] = array(
 	'amazonplus-new' => 'novèl',
 	'amazonplus-none' => "Cap de còpia d'aqueste article es pas disponible per crompar",
 	'amazonplus-cp-none' => 'Cap',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'amazonplus-nores' => 'Eroare: Nici un rezultat găsit!',
+	'amazonplus-german' => 'germană',
+	'amazonplus-french' => 'franceză',
+	'amazonplus-japanese' => 'japoneză',
 );
 
 /** Russian (Русский)

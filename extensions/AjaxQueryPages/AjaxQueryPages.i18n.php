@@ -274,6 +274,13 @@ $messages['pt'] = array(
 	'ajax-qp-desc' => 'Adiciona algum AJAX a QueryPages tal como [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'ajax-qp-desc' => 'Adaugă AJAX pentru a interoga pagini precum [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

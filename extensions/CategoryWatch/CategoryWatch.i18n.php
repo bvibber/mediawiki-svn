@@ -106,6 +106,20 @@ Ova poruka služi da Vas obavijesti da je dana $3 korisnik $4 $5.',
 	'categorywatch-catsub' => 'uklonio $1 iz kategorije $2',
 );
 
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
+$messages['de'] = array(
+	'categorywatch-desc' => 'Erweitert die Beobachtungsliste, sodass man Hinweise bekommt, wenn Seiten in beobachtete Kategorien eingetragen oder aus ihnen entfernt werden.',
+	'categorywatch-emailbody' => 'Hallo $1, du erhältst diese Nachricht, weil du die Kategorie „$2“ beobachtest.
+Diese Nachricht meldet dir, dass Benutzer $4 um $3 $5.',
+	'categorywatch-emailsubject' => 'Bearbeitung betreffend beobachtete Kategorie „$1“',
+	'categorywatch-catmovein' => '$1 in Kategorie $2 von $3 verschoben hat',
+	'categorywatch-catmoveout' => '$1 von Kategorie $2 in $3 verschoben hat',
+	'categorywatch-catadd' => '$1 zu Kategorie $2 hinzugefügt hat',
+	'categorywatch-catsub' => '$1 aus Kategorie $2 entfernt hat',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

@@ -102,6 +102,17 @@ $messages['gl'] = array(
 	'gblrights-rights-entry' => 'cambiou o grupo global ao que pertence "$1" de $2 a $3',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'shareduserrights' => 'ניהול הרשאות משתמשים שיתופיות',
+	'gblrights-desc' => '[[Special:SharedUserRights|ניהול הרשאות משתמשים כלליות]] בקלות',
+	'gblrights-logpage' => 'יומן ההרשאות הכלליות',
+	'gblrights-pagetext' => 'זהו יומן המציג את כל השינויים שבוצעו לטבלת ההרשאות הכלליות של משפחת הוויקי',
+	'gblrights-rights-entry' => 'החברות הכללית של הקבוצה עבור $1 שונו מ־$2 ל־$3',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

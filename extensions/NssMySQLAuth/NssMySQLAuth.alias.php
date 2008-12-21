@@ -37,6 +37,11 @@ $aliases['gl'] = array(
 	'AccountManager' => array( 'Xestor de contas' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'AccountManager' => array( 'គ្រប់គ្រង​គណនី' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'AccountManager' => array( 'Gebrukersbeheer' ),

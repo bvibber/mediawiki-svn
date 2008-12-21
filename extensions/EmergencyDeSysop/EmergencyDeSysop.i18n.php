@@ -45,10 +45,12 @@ $messages['bs'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Metalhead64
  */
 $messages['de'] = array(
 	'emergencydesysop' => 'Not-DeSysop',
+	'emergencydesysop-desc' => 'Ermöglicht einem Administrator, seine Privilegien aufzugeben, um den Adminstatus eines anderen Administrators zu entfernen',
 	'emergencydesysop-title' => 'Entfernt den Sysop-Status des aktuellen und eines anderen Benutzers',
 	'emergencydesysop-otheradmin' => 'Anderen Sysop degruppieren',
 	'emergencydesysop-reason' => 'Grund für die Entfernung',
@@ -178,6 +180,13 @@ $messages['oc'] = array(
 	'emergencydesysop-blocked' => 'Podètz pas accedir a aquesta page tant que sètz blocat(ada)',
 	'emergencydesysop-noright' => 'Avètz pas las permissions sufisentas per accedir a aquesta pagina',
 	'right-emergencydesysop' => 'Possible de desysopar mutualament un autre utilizaire.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'emergencydesysop-nogroups' => 'هېڅ',
 );
 
 /** Russian (Русский)

@@ -246,6 +246,13 @@ $messages['km'] = array(
 	'newuseredit-summary' => 'បញ្ចូល[[{{int:newusermessage-template}}|សារស្វាគមន៍]]ទៅក្នុងទំព័រពិភាក្សារបស់អ្នកប្រើប្រាស់',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'newuseredit-summary' => '새 사용자의 토론 문서에 [[{{int:newusermessage-template}}|환영 메시지]]를 추가',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

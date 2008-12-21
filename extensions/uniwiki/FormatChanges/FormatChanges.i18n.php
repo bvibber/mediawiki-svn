@@ -71,6 +71,16 @@ $messages['he'] = array(
 	'formatchanges-editedby' => 'נערך על ידי',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'formatchanges-desc' => 'Reformata le [[Special:RecentChanges|modificationes recente]]',
+	'formatchanges-anonymous' => 'Anonyme',
+	'formatchanges-createdby' => 'create per',
+	'formatchanges-editedby' => 'modificate per',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -158,5 +168,12 @@ $messages['sv'] = array(
 	'formatchanges-anonymous' => 'Anonym',
 	'formatchanges-createdby' => 'skapad av',
 	'formatchanges-editedby' => 'redigerad av',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'formatchanges-anonymous' => 'Vô danh',
 );
 

@@ -203,7 +203,7 @@ $messages['dsb'] = array(
 	'ajax-se-title' => 'Wobźěła se tuchylu wót:',
 	'ajax-se-pending' => 'caka se na aktualizaciju... (klikni na toś ten kašćik abo chop z wobźěłanim)',
 	'ajax-se-idling' => '(pśed $1 s)',
-	'ajax-se-pagedoesnotexist' => 'bok njeeksistujo',
+	'ajax-se-pagedoesnotexist' => 'bok njeeksistěrujo',
 	'ajax-se-userinvalid' => 'Zmólka: wužywaŕ njepłaśiwy',
 	'ajax-se-usernotfound' => 'Zmólka: wužywaŕ njenamakany',
 );
@@ -796,6 +796,7 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'ajax-se-desc' => 'Arată utilizatorii care modifică aceeaşi pagină',
 	'ajax-se-title' => 'Modificare curentă:',
 	'ajax-se-idling' => '(acum $1s)',
 	'ajax-se-pagedoesnotexist' => 'pagina nu există',

@@ -103,6 +103,20 @@ $messages['gl'] = array(
 	'rightfunctions-ns' => '(desde a protección do espazo de nomes)',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'rightfunctions-desc' => 'פונקציות תגיות מבוססות הרשאות',
+	'rightfunctions-rest1' => '$1 $2',
+	'rightfunctions-rest2' => '$1 $2$5 $3 $4',
+	'rightfunctions-rest3' => '$1 $2$7 $3 $4$7 $5 $6',
+	'rightfunctions-sep' => ',',
+	'rightfunctions-casc' => '(ממקורות מדורגים)',
+	'rightfunctions-local' => '(מדף מקומי)',
+	'rightfunctions-ns' => '(מהגנת מרחב השם)',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

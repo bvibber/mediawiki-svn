@@ -76,6 +76,13 @@ $messages['fr'] = array(
 	'catboxattop-categories' => 'Catégories',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'catboxattop-categories' => 'Catagóirí',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -99,6 +106,14 @@ $messages['grc'] = array(
 $messages['he'] = array(
 	'catboxattop-desc' => 'הוספת תיבת קטגוריות לפינה השמאלית העליונה של הדפים',
 	'catboxattop-categories' => 'קטגוריות',
+);
+
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'catboxattop-desc' => 'カテゴリ・ボックスをページの右上に加える',
+	'catboxattop-categories' => 'カテゴリ',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -161,5 +176,12 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'catboxattop-categories' => 'Kategorier',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'catboxattop-categories' => 'Thể loại',
 );
 

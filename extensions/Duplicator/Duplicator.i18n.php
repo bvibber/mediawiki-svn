@@ -650,7 +650,7 @@ $messages['ksh'] = array(
 	'duplicator-toolbox' => 'Die Sigg hee verdubbelle',
 	'duplicator-header' => 'Hee di Söndersigg määd et müjjelesch, en Sigg ze verdubbelle,
 un dobei fun all ier Versione bes jätz en eijen Kopie aanzelääje.
-Dat es nötzlesch, wam_mer die zwei en ungerscheedlische Reschtunge
+Dat es nötzlesch, wam_mer die zwei en ungerscheidlische Reschtunge
 wigger beärbeide, allsu opdeile, well.',
 	'duplicator-options' => 'Enstellunge',
 	'duplicator-source' => 'Tittel fun de Quell-Sigg:',

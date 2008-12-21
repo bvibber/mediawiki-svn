@@ -166,6 +166,14 @@ $messages['hi'] = array(
 	'contributionseditcount-desc' => '[[Special:Contributions]] पर संपादन संख्या दर्शाता हैं',
 );
 
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'contributionseditcount' => 'Ovaj suradnik ima $1 izmjena.',
+	'contributionseditcount-desc' => 'Prikazuje brojač izmjena na [[Special:Contributions|stranici suradničkih doprinosa]]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

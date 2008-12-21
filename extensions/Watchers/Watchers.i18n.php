@@ -165,7 +165,7 @@ $messages['dsb'] = array(
 	'watchers' => 'Wobglědowarje',
 	'watchers-desc' => 'Pokazujo, [[Special:Watchers|kótare wužywarje maju bok na swójich wobglědowańkach]]',
 	'watchers_link_title' => 'Chto wobglědujo toś ten bok?',
-	'watchers_error_article' => "'''Zmólka:''' Bok njeeksistujo.",
+	'watchers_error_article' => "'''Zmólka:''' Bok njeeksistěrujo.",
 	'watchers_header' => '{{PLURAL:$2|Wužywaŕ, kótaryž "$1" wobglědujo|Wužywarja, kótarejž "$1" wobglědujotej|Wužywarje, kótarež "$1" wobglěduju|Wužywarje, kótarež "$1" wobglěduju}}',
 	'watchers_noone_watches' => 'Nichten njewužywa toś ten bok.',
 	'watchers_x_or_more' => '$1 {{PLURAl:$1|wužywaŕ|wužywarja|wužywarje|wužywarjow}} abo wěcej {{PLURAl:$1|wobglědujo|wobglědujotej|wobglěduju|wobglědujo}} toś ten bok.',
@@ -493,6 +493,15 @@ $messages['pt'] = array(
 	'watchers_noone_watches' => 'Ninguém está vigiando esta página.',
 	'watchers_x_or_more' => '$1 ou mais {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
 	'watchers_less_than_x' => 'Menos de $1 {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'watchers_link_title' => 'Cine urmăreşte această pagină?',
+	'watchers_error_article' => "'''Eroare:''' Pagina nu există.",
+	'watchers_noone_watches' => 'Nimeni nu urmăreşte această pagină.',
 );
 
 /** Russian (Русский)

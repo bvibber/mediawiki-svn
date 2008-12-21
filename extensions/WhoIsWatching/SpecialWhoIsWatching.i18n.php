@@ -470,6 +470,13 @@ Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] par
 	'specialwhoiswatchingaddbtn' => 'Adicionar os usuários selecionados',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'specialwhoiswatchingaddbtn' => 'Adaugă utilizatorii selectaţi',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

@@ -63,6 +63,11 @@ $aliases['hu'] = array(
 	'Watchers' => array( 'Figyelők' ),
 );
 
+/** Khmer (ភាសាខ្មែរ) */
+$aliases['km'] = array(
+	'Watchers' => array( 'អ្នកតាមដាន' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'Watchers' => array( 'Oppassere' ),

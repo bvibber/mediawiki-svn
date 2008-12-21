@@ -59,11 +59,13 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'icon-badimage' => 'Defektes Bild',
 	'icon-badwidth' => 'Falsche Breite',
+	'icon-desc' => 'Ermöglicht die Verwendung von Bildern als Icons und Icon-Links',
 );
 
 /** Lower Sorbian (Dolnoserbski)

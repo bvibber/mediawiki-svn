@@ -220,6 +220,13 @@ $messages['it'] = array(
 	'pageby-anon' => '<i>anonimo</i>',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'pageby-contributors' => '投稿者:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

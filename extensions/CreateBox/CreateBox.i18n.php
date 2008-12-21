@@ -104,7 +104,7 @@ Du kannst diese Seite nicht anlegen, aber du kannst sie [{{fullurl:{{FULLPAGENAM
 $messages['dsb'] = array(
 	'createbox-desc' => 'Specielne zapódawańske pólo za napóranje bokow',
 	'createbox-create' => 'Napóraś',
-	'createbox-exists' => "\"'''{{FULLPAGENAME}}'''\" južo eksistujo.
+	'createbox-exists' => "\"'''{{FULLPAGENAME}}'''\" južo eksistěrujo.
 
 Njamóžoš tós ten bok napóraś, ale móžoš jen [{{fullurl:{{FULLPAGENAME}}|action=edit}} wobźěłaś],
 [{{fullurl:{{FULLPAGENAME}}}} cytaś] abo wubraś, aby drugi bok z pomocu slědujucego kašćika napórał.

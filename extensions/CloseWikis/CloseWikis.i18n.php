@@ -531,6 +531,29 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'closewikis-desc' => 'Määt et müjjelesch, enkel Wikis en ene Wiki-Farm zohzemaache.',
+	'closewikis-page' => 'Wiki zomaache',
+	'closewikis-page-close' => 'Wiki zomaache',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Der Jrond (för Aanzezeije):',
+	'closewikis-page-close-reason' => 'Der Jrond (för en et Logbooch ze schrieve):',
+	'closewikis-page-close-submit' => 'Zomache!',
+	'closewikis-page-close-success' => 'Dat Wiki es jetz zojemaat.',
+	'closewikis-page-reopen' => 'Wiki wider opmaache',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Jrond:',
+	'closewikis-page-reopen-submit' => 'Wider Opmaache!',
+	'closewikis-page-reopen-success' => 'Dat Wiki es jetz wider opjemaat.',
+	'closewikis-page-err-nowiki' => 'Do Blötschkopp häs e onsennesch Wiki jenannt',
+	'closewikis-page-err-closed' => 'Dat Wiki es ald zo.',
+	'closewikis-page-err-opened' => 'Dat Wiki es nit zo.',
+	'closewikis-list' => 'Leß met de zojemaate Wikis',
+	'closewikis-list-intro' => 'De Leß ömfaß de Wikis, di ene <i lang="en">Steward</i> zojemaat hät.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Zojemaat vum',
+	'closewikis-list-header-timestamp' => 'Zojemaat om un öm',
+	'closewikis-list-header-dispreason' => 'Dä aanjzeichte Jrond',
+	'closewikis-log' => 'Logbooch met de zojemaate un widder opjemaate Wikis',
+	'closewikis-log-header' => 'He es jedes Zomaache un Widderopmaache opjeliß, wat de <i lang="en">Stewards</i> met Wikis jemaat han.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

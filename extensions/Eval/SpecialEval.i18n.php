@@ -56,10 +56,16 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Leithian
  */
 $messages['de'] = array(
+	'eval' => 'Rechnen',
+	'eval-desc' => 'Fügt eine [[Special:Eval|Benutzerschnittstelle]] für die <code>eval()</code>-Funktion hinzu',
+	'eval_submit' => 'Berechnen',
+	'eval_escape' => 'Ausgabe maskieren',
 	'eval_out' => 'Ausgabe',
+	'eval_code' => 'Code',
 );
 
 /** Lower Sorbian (Dolnoserbski)

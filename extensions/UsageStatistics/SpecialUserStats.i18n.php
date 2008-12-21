@@ -475,6 +475,16 @@ $messages['fr'] = array(
 	'usagestatistics-editpages' => 'Statistiques $1 des pages par seul utilisateur',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'usagestatisticstype' => 'Saghas',
+	'usagestatisticsintervalday' => 'Lá',
+	'usagestatisticsintervalweek' => 'Seachtain',
+	'usagestatisticsintervalmonth' => 'Mí',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

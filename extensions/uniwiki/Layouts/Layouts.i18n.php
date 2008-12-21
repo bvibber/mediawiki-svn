@@ -108,6 +108,13 @@ $messages['fr'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'layouts_continue' => 'Lean',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -152,6 +159,21 @@ $messages['hsb'] = array(
 	'layouts_unknown' => 'Njeznaty',
 	'layouts_tagline' => "Tuta strona bu z wuhotowanjom '''$1''' wutworjena.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'layouts-desc' => 'Insere in cata pagina novemente create un "disposition" modificabile pro incoragiar un structura commun a tote le paginas',
+	'layouts_title' => 'Crear un pagina',
+	'layouts_chooselayout' => 'Selige un disposition pro $1:',
+	'layouts_nolayout' => 'Nulle disposition',
+	'layouts_continue' => 'Continuar',
+	'layouts_choosecategory' => 'Selige un categoria pro $1:',
+	'layouts_unknown' => 'Incognite',
+	'layouts_tagline' => "Iste pagina ha essite generate con le disposition '''$1'''.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Modificaretiquettasdepaginas',
 );
 
 /** Javanese (Basa Jawa)
@@ -283,5 +305,14 @@ $messages['sv'] = array(
 	'layouts_continue' => 'Fortsätt',
 	'layouts_choosecategory' => 'Välj en kategori för $1:',
 	'layouts_unknown' => 'Okänd',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'layouts_title' => 'Tạo trang',
+	'layouts_continue' => 'Tiếp tục',
+	'layouts_unknown' => 'Không biết',
 );
 

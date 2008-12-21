@@ -92,9 +92,11 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Revolus
  */
 $messages['de'] = array(
+	'categorystepper-desc' => 'Zeigt eine Box an, mit der man nach dem Alphabet vorwärts und rückwärts durch die Kategorien, in denen eine Seite ist, blättern kann.',
 	'categorystepper-end' => '(Ende der Kategorie)',
 	'categorystepper-start' => '(Anfang der Kategorie)',
 );

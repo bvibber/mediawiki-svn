@@ -204,6 +204,15 @@ $messages['fr'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|nouvel ami|nouveaux amis}}',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'mp-welcome-points' => '$1 pointí',
+	'mp-requests-title' => 'Iarratais',
+	'mp-request-new-message' => 'teachtaireacht nua',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -274,7 +283,7 @@ $messages['ia'] = array(
 	'mp-welcome-upload' => 'Cargar',
 	'mp-welcome-edit' => 'Modificar',
 	'mp-welcome-points' => '$1 punctos',
-	'mp-welcome-needed-points' => 'Pro avantiar verso <b><a href="$1">$2</a></b> gania <i>$3</i> plus punctos!',
+	'mp-welcome-needed-points' => 'Pro avantiar verso <b><a href="$1">$2</a></b> gania <i>$3</i> plus {{PLURAL:$3|puncto|punctos}}!',
 	'mp-welcome-logged-in' => 'Salute $1',
 	'mp-requests-title' => 'Requestas',
 	'mp-requests-message' => 'Tu ha le sequente requestas.',
@@ -507,6 +516,7 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'mp-userlevels-link' => 'Niveluri de utilizatori',
 	'mp-welcome-points' => '$1 puncte',
 	'mp-requests-title' => 'Cereri',
 	'mp-request-new-message' => 'mesaj nou',

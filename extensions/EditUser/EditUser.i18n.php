@@ -226,7 +226,7 @@ $messages['dsb'] = array(
 	'edituser-logout' => 'Wužywarja wótzjawiś',
 	'edituser-username' => 'Mě',
 	'edituser-dosearch' => 'Pytanje',
-	'edituser-nouser' => 'Pódany wužywaŕ njeeksistujo.',
+	'edituser-nouser' => 'Pódany wužywaŕ njeeksistěrujo.',
 	'edituser-exempt' => 'Pódany wužywaŕ njedajo se wobźěłaś.',
 	'right-edituser' => 'Nastajenja drugich wužywarjow wobźěłaś',
 	'right-edituser-exempt' => 'Nastajenja njedaju se wót tśeśich změniś',
@@ -474,19 +474,20 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Hosiryuhosi
  * @author JtFuruhata
  */
 $messages['ja'] = array(
-	'edituser-desc' => '権限を持つ利用者が、他利用者のオプションを変更できるようにする',
+	'edituser-desc' => '権限を持つ利用者が、他利用者の個人設定を変更できるようにする',
 	'edituser' => '利用者情報の編集',
-	'edituser-logout' => 'ログアウト',
+	'edituser-logout' => '利用者をログアウトする',
 	'edituser-username' => '利用者名',
 	'edituser-dosearch' => '検索',
 	'edituser-nouser' => '指定された利用者は存在しません',
 	'edituser-exempt' => '指定された利用者は編集できません',
-	'right-edituser' => '他のユーザーのオプションを編集してください',
-	'right-edituser-exempt' => '他者に彼らのオプションを編集することはできません。',
+	'right-edituser' => '他の利用者の個人設定を編集する',
+	'right-edituser-exempt' => '他人が利用者の個人設定を編集することはできません。',
 );
 
 /** Javanese (Basa Jawa)

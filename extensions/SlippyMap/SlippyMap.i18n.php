@@ -256,6 +256,27 @@ $messages['gl'] = array(
 	'slippymap_resetview' => 'Axustar a vista',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'slippymap_desc' => 'מתן האפשרות לשימוש בתגית <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> להצגת מפת OpenLayers רדומה. המפות הן מהאתר [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'ערך ה־lat חסר (עבור קו־הרוחב).',
+	'slippymap_lonmissing' => 'ערך ה־lon חסר(עבור קו־האורך).',
+	'slippymap_zoommissing' => 'ערך ה־z חסר (לרמת התקריב).',
+	'slippymap_longdepreciated' => "אנא השתמש ב־'lon' במקום ב־'long' (שם הפרמטר שונה).",
+	'slippymap_widthnan' => "ערך הרוחב (w) '%1' אינו מספר שלם חיובי ותקני",
+	'slippymap_heightnan' => "ערך הגובה (h) '%1' אינו מספר שלם חיובי ותקני",
+	'slippymap_zoomnan' => "ערך התקריב (z) '%1' אינו מספר שלם חיובי ותקני",
+	'slippymap_latnan' => "ערך קו־הרוחב (lat) '%1' אינו מספר תקני",
+	'slippymap_lonnan' => "ערך קו־האורך (lon) '%1' אינו מספר תקני",
+	'slippymap_widthbig' => 'ערך הרוחב (w) לא יכול לחרוג מעבר ל־1000.',
+	'slippymap_widthsmall' => 'ערך הרוחב (w) לא יכול לחרוג אל מתחת ל־100',
+	'slippymap_heightbig' => 'ערך הגובה (h) לא יכול לחרוג אל מעבר ל־1000',
+	'slippymap_heightsmall' => 'ערך הגובה (h) לא יכול לחרוג אל מתחת ל־100',
+	'slippymap_latbig' => 'ערך קו־הרוחב (lat) לא יכול לחרוג מעבר ל־90',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

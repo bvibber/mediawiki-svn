@@ -85,13 +85,17 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Leithian
  * @author Revolus
  */
 $messages['de'] = array(
+	'dplforum-desc' => 'DPL-basierte Forumserweiterung',
 	'dplforum-by' => 'durch',
 	'dplforum-edited' => '  - Zuletzt bearbeitet',
 	'dplforum-never' => 'Nie',
+	'dplforum-toofew' => 'DPL Forum: Zu wenig Kategorien!',
+	'dplforum-toomany' => 'DPL Forum: Zu viele Kategorien!',
 );
 
 /** Lower Sorbian (Dolnoserbski)

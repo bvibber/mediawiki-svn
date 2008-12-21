@@ -91,10 +91,12 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Leithian
  * @author Revolus
  */
 $messages['de'] = array(
+	'editsimilar-desc' => 'Schlägt Benutzern nach dem Speichern einer Seite vor, eine ähnliche Seite zu bearbeiten',
 	'editsimilar-thanks' => 'Dank dir für deinen Beitrag.
 Schau dir auch diese ähnlichen Seiten an: $1.',
 	'editsimilar-thanks-singleresult' => 'Dank dir für deinen Beitrag.
@@ -105,6 +107,7 @@ Diese Seiten könnten dir auch hilfreich sein: $1.',
 Diese Seite könnte dir auch hilfreich sein: $1.',
 	'editsimilar-thankyou' => 'Danke für deinen Beitrag, $1!',
 	'editsimilar-link-disable' => 'Einstellungen setzen',
+	'tog-edit-similar' => 'Vorschläge für ähnliche Seiten anzeigen',
 );
 
 /** Lower Sorbian (Dolnoserbski)

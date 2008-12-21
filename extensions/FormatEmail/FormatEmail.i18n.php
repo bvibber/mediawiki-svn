@@ -227,6 +227,17 @@ Questa e-mail ti è stata inviata attraverso il sistema e-mail di {{SITENAME}} d
 $2',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'email-desc' => 'カスタマイズされたヘッダーやフッターを利用者のEメールに加えることができるようにする',
+	'email_footer' => '----------------------------------------------------------------------------
+このEメールは、{{SITENAME}}のEメール・システムを使って、$1から送信されました。
+
+$2',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

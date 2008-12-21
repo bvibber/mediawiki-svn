@@ -149,6 +149,13 @@ $messages['fr'] = array(
 	'whatismyip-out' => 'Votre IP :',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'whatismyip-out' => 'Do sheoladh IP:',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

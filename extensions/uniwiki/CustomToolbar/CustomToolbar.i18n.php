@@ -308,6 +308,14 @@ Veuiller consulter vos paramètres de blocage des popups.',
 	'ct_user_sample' => 'Nom de l’utilisateur',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$wgCustomToolbarMessages['ga'] = array(
+	'ct_bold_sample' => 'Cló trom',
+	'ct_bold_caption' => 'Trom',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -455,6 +463,55 @@ Prošu skontroluj swój blokowak wuskakowacych woknow.',
 	'ct_user_tip' => 'Wotkaz do wužiwarskeje strony zasunyć',
 	'ct_user_caption' => 'Wužiwarski wotkaz',
 	'ct_user_sample' => 'Wužiwarske mjeno',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$wgCustomToolbarMessages['ia'] = array(
+	'ct-desc' => 'Adde un barra extensibile de instrumentos',
+	'ct_bold_sample' => 'Texto grasse',
+	'ct_bold_tip_ins' => 'Inserer texto grasse',
+	'ct_bold_tip_wrap' => 'Render iste texto grasse',
+	'ct_bold_caption' => 'Grasse',
+	'ct_italic_sample' => 'Texto cursive',
+	'ct_italic_tip_ins' => 'Inserer texto cursive',
+	'ct_italic_tip_wrap' => 'Render iste texto cursive',
+	'ct_italic_caption' => 'Cursive',
+	'ct_internal_sample' => 'NomineDePagina',
+	'ct_internal_tip_ins' => 'Inserer un ligamine interne',
+	'ct_internal_tip_wrap' => 'Facer de iste texto un ligamine interne',
+	'ct_internal_caption' => 'Ligamine interne',
+	'ct_external_tip_ins' => 'Inserer un ligamine externe',
+	'ct_external_tip_wrap' => 'Facer de iste texto un ligamine externe',
+	'ct_external_caption' => 'Ligamine externe',
+	'ct_image_tip' => 'Inserer un imagine',
+	'ct_image_caption' => 'Adder un imagine',
+	'ct_attachment_tip' => 'Inserer un attachamento',
+	'ct_attachment_caption' => 'Adder attachamento',
+	'ct_math_sample' => 'Inserer hic un formula LaTeX',
+	'ct_math_tip_ins' => 'Inserer un formula mathematic (LaTeX)',
+	'ct_math_tip_wrap' => 'Facer de iste texto un formula mathematic (LaTeX)',
+	'ct_math_caption' => 'Formula',
+	'ct_nowiki_sample' => 'Inserer hic texto non formatate',
+	'ct_nowiki_tip_ins' => 'Ignorar formato wiki',
+	'ct_nowiki_tip_wrap' => 'Ignorar formato wiki pro iste texto',
+	'ct_nowiki_caption' => 'Nulle wiki',
+	'ct_horizontal_tip' => 'Inserer un linea horizontal (usa con moderation)',
+	'ct_horizontal_caption' => 'Linea horizontal',
+	'ct_upload' => 'Cargar $1',
+	'ct_select' => 'Seliger $1 pro cargar',
+	'ct_caption' => 'Adde subtitulo (optional)',
+	'ct_link' => 'Adde nomine de ligamine (optional)',
+	'ct_submit' => 'Ir!',
+	'ct_close' => 'Clauder fenestra',
+	'ct_success' => 'File cargate con successo!',
+	'ct_popupblocked' => 'Le fenestra pop-up non poteva esser aperite.
+Per favor verifica que tu blocator de pop-up lo permitte.',
+	'ct_user_user' => 'Usator',
+	'ct_user_tip' => 'Inserer un ligamine verso un pagina de usator',
+	'ct_user_caption' => 'Ligamine de usator',
+	'ct_user_sample' => 'Nomine de usator',
 );
 
 /** Javanese (Basa Jawa)
@@ -904,5 +961,25 @@ $wgCustomToolbarMessages['sv'] = array(
 	'ct_horizontal_tip' => 'Sätt in en horisontell linje (använd sparsamt)',
 	'ct_horizontal_caption' => 'Horisontell linje',
 	'ct_upload' => 'Ladda upp $1',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$wgCustomToolbarMessages['vi'] = array(
+	'ct_bold_sample' => 'Văn bản in đậm',
+	'ct_bold_caption' => 'Đậm',
+	'ct_italic_sample' => 'Văn bản in xiên',
+	'ct_italic_caption' => 'Xiên',
+	'ct_internal_sample' => 'TênTrang',
+	'ct_internal_caption' => 'Liên kết nội bộ',
+	'ct_external_caption' => 'Liên kết ngoài',
+	'ct_image_caption' => 'Thêm hình',
+	'ct_math_caption' => 'Biểu thức',
+	'ct_nowiki_caption' => 'Không wiki',
+	'ct_horizontal_caption' => 'Đường gạch ngang',
+	'ct_upload' => 'Tải liên $1',
+	'ct_close' => 'Đóng cửa sổ',
+	'ct_user_user' => 'Người dùng',
 );
 

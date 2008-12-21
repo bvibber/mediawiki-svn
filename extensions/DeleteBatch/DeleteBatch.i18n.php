@@ -159,6 +159,7 @@ $messages['ca'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Leithian
  * @author Revolus
  */
@@ -171,6 +172,8 @@ $messages['de'] = array(
 Wähle einen Benutzer, der im Löschlogbuch angezeigt werden soll.
 Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional einen mit einem senkrechten Stich („|“) abgetrennten Löschgrund enthalten.',
 	'deletebatch-caption' => 'Dateiliste',
+	'deletebatch-title' => 'Mehrere Seiten löschen',
+	'deletebatch-link-back' => 'Du kannst zur Erweiterung zurückgehen',
 	'deletebatch-as' => 'Das Skript ausführen als',
 	'deletebatch-both-modes' => 'Bitte wähle entweder eine spezifische Seite oder eine gegebene Liste von Seiten.',
 	'deletebatch-or' => '<b>oder</b>',
@@ -184,8 +187,16 @@ Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional ein
 	'deletebatch-omitting-invalid' => 'Überspringe ungültige Seite $1.',
 	'deletebatch-file-bad-format' => 'Die Datei sollte Klartext enthalten.',
 	'deletebatch-file-missing' => 'Übergebene Datei konnte nicht gelesen werden',
+	'deletebatch-select-script' => 'Seitenlöschskript',
 	'deletebatch-select-yourself' => 'du',
-	'deletebatch-no-page' => 'Bitte gebe entweder zumindest eine zu löschende Seite oder wähle eine Datei, die eine Liste von zu löschenden Seiten enthält.',
+	'deletebatch-no-page' => 'Bitte gib entweder zumindest eine zu löschende Seite an oder wähle eine Datei, die eine Liste von zu löschenden Seiten enthält.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author ChrisiPK
+ */
+$messages['de-formal'] = array(
+	'deletebatch-link-back' => 'Sie können zur Erweiterung zurückgehen',
 );
 
 /** Esperanto (Esperanto)

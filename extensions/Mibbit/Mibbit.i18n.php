@@ -282,10 +282,12 @@ Agli utenti anonimi ne è dato uno generato automaticamente, ma si può cambiare
 
 /** Japanese (日本語)
  * @author Hosiryuhosi
+ * @author Mizusumashi
  */
 $messages['ja'] = array(
 	'mibbit' => 'Mibbitチャット',
 	'mibbit-desc' => '他のウィキユーザーとリアルタイムにチャットをするのための[[Special:Mibbit|特別ページ]]を追加します',
+	'right-mibbit' => 'Mibbitチャットを使用できる',
 );
 
 /** Javanese (Basa Jawa)

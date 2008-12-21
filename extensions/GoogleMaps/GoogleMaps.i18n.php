@@ -2904,6 +2904,7 @@ $wgGoogleMapsMessages['ps'] = array(
 	'gm-save-path' => 'خوندي کول',
 	'gm-color-path' => 'رنګ بدلول',
 	'gm-make-map' => 'يوه نخشه جوړول',
+	'gm-hide-map' => 'نخشه پټول',
 	'gm-kml-loading' => 'د برسېرېدلو په حال کې...',
 	'gm-earth' => 'زمکه',
 	'gm-moon' => 'سپوږمۍ',

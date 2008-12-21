@@ -86,7 +86,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'selectcategory-title' => 'Kategorije wubraś',
-	'selectcategory-desc' => 'Dowólujo wužywarjeju pśi wobźěłowanju z eksistujucych kategorijow wubraś',
+	'selectcategory-desc' => 'Dowólujo wužywarjeju pśi wobźěłowanju z eksistěrujucych kategorijow wubraś',
 	'selectcategory-subtitle' => 'Umsch-myš, aby někotare naslědujuce zapiski wubrał, Strg-myš, aby jadnotliwe zapiski wubrał.',
 );
 
@@ -151,6 +151,15 @@ $messages['gsw'] = array(
 	'selectcategory-subtitle' => 'Gross-Muus go verschiedeni Iiträg hintrenander go uswähle, Strg-Muus go einzelni Iiträg go uswähle',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'selectcategory-title' => 'בחירת קטגוריות',
+	'selectcategory-desc' => 'מתן האפשרות למשתמש לבחור מקטגוריות קיימות בעת עריכת דף.',
+	'selectcategory-subtitle' => 'Shift-לחיצת עכבר לבחירת מספר רשומות עוקבות, Ctrl-לחיצת עכבר לבחירת מספר רשומות לא עוקבות.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -193,6 +202,15 @@ $messages['it'] = array(
 	'selectcategory-title' => 'Selezionare le categorie',
 	'selectcategory-desc' => "Permette all'utente di selezionare da categorie esistenti quando modifica una pagina",
 	'selectcategory-subtitle' => 'Fare clic con il mouse tenendo premuto MAIUSC per selezionare più voci adiacenti o CTRL per selezionare più voci non adiacenti.',
+);
+
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'selectcategory-title' => 'カテゴリ選択',
+	'selectcategory-desc' => '利用者が、ページの編集時に、既存のカテゴリから選択できるようにする',
+	'selectcategory-subtitle' => 'Shift+マウスクリックで隣接する複数のエントリを選択でき、Ctrl+マウスクリックで隣接していないエントリを選択できます。',
 );
 
 /** Javanese (Basa Jawa)

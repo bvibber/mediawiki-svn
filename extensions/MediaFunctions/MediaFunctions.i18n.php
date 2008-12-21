@@ -74,7 +74,7 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'mediafunctions-desc' => 'Parserowe funkcije za dostaśe informacije wó medijowych datajach',
 	'mediafunctions-invalid-title' => '"$1" njejo płaśiwy titel',
-	'mediafunctions-not-exist' => '"$1" njeeksistujo',
+	'mediafunctions-not-exist' => '"$1" njeeksistěrujo',
 );
 
 /** Greek (Ελληνικά)
@@ -171,6 +171,16 @@ $messages['it'] = array(
 	'mediafunctions-desc' => 'Funzioni parser per ottenere informazioni sui file multimediali',
 	'mediafunctions-invalid-title' => '"$1" non è un titolo valido',
 	'mediafunctions-not-exist' => '"$1" non esiste',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'mediafunctions-desc' => 'メディア・ファイルに関する情報を取得するパーサー関数',
+	'mediafunctions-invalid-title' => '"$1"は有効なタイトルではありません',
+	'mediafunctions-not-exist' => '"$1"は存在しません',
 );
 
 /** Javanese (Basa Jawa)

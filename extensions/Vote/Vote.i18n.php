@@ -355,6 +355,14 @@ sphinx|Sphinx',
 	'vote-invalid-choice' => 'Vous devez choisir une des options disponibles.',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'vote-submit' => 'Vótáil',
+	'vote-login-link' => 'log isteach',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Xosé
@@ -457,6 +465,7 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'vote' => 'Votar',
+	'vote-desc' => 'Forni le capabilitate de un votation simple.',
 	'vote-header' => "Tu pote votar pro le '''Domino Supreme del Mundo''' hic!",
 	'vote-current' => "Tu voto actual es pro '''$1.'''",
 	'vote-legend' => 'Placiar o modificar voto',
@@ -870,6 +879,9 @@ riddler|Enigmático',
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'vote-submit' => 'Votează',
+	'vote-view-results' => 'Vizualizează rezultatele',
+	'vote-results' => 'Rezultatele votului',
 	'vote-login-link' => 'autentificare',
 );
 

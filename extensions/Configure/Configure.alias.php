@@ -155,6 +155,7 @@ $aliases['id'] = array(
 
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
+	'Configure' => array( 'កំណត់រចនាសម្ព័ន្ធ' ),
 	'Extensions' => array( 'ផ្នែកបន្ថែម' ),
 );
 

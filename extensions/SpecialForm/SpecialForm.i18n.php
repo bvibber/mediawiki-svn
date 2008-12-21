@@ -800,6 +800,8 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'formsave' => 'Salvează',
+	'formarticleexists' => 'Pagina există',
+	'formarticleexiststext' => 'Pagina [[$1]] deja există.',
 );
 
 /** Russian (Русский)

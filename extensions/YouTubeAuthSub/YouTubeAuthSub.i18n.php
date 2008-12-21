@@ -602,6 +602,44 @@ $messages['hi'] = array(
 	'youtubeauthsub_submit' => 'भेजें',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'youtubeauthsub' => 'Widejo YouTube nahrać',
+	'youtubeauthsub-desc' => 'Zmóžnja wužiwarjam wideja direktnje k YouTube [[Special:YouTubeAuthSub|nahrać]]',
+	'youtubeauthsub_info' => 'Zo by widejo k YouTube nahrał, zo by je do strony zapřijał, wupjelń prošu slědowace pola:',
+	'youtubeauthsub_title' => 'Titul',
+	'youtubeauthsub_description' => 'Wopisanje',
+	'youtubeauthsub_password' => 'Hesło YouTube',
+	'youtubeauthsub_username' => 'Wužiwarske mjeno YouTube',
+	'youtubeauthsub_keywords' => 'Klučowe słowa',
+	'youtubeauthsub_category' => 'Kategorija',
+	'youtubeauthsub_submit' => 'Pósłać',
+	'youtubeauthsub_clickhere' => 'Za přizjewjenje do YouTube sem kliknyć',
+	'youtubeauthsub_tokenerror' => 'Zmylk při wutworjenju awtorizowanskeho wuraza. Spytaj stronu aktualizować.',
+	'youtubeauthsub_success' => "Gratulacija!
+Waše widejo je nahrate.
+Zo by sej swoje widejo wobhladał, klikń <a href='http://www.youtube.com/watch?v=$1'>sem</a>.
+YouTube móhł trochu časa trjebał, zo by twoje widejo předźěłał, tak zo snano hišće hotowe njeje.
+
+Zo by swoje widejo do strony we wikiju zapřijał, zasuń slědowacy kod do strony:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Zo by widejo nahrał, dyrbiš so najprjedy pola YouTube přizjewić.',
+	'youtubeauthsub_uploadhere' => 'Twoje widejo wottud nahrać:',
+	'youtubeauthsub_uploadbutton' => 'Nahrać',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Tute widejo hodźi so [http://www.youtube.com/watch?v=$1 tu] wobhladać',
+	'youtubeauthsub_summary' => 'Widejo YouTube nahrawa so',
+	'youtubeauthsub_uploading' => 'Twoje widejo so runje nahrawa.
+Prošu budź sćerpliwy.',
+	'youtubeauthsub_viewpage' => 'Alternatiwnje móžeš sej swoje widejo [[$1|tu]] wobhladać.',
+	'youtubeauthsub_jserror_nokeywords' => 'Prošu podaj 1 klučowe słowo abo wjacore klučowe słowa.',
+	'youtubeauthsub_jserror_notitle' => 'Prošu zapodaj titul za widejo.',
+	'youtubeauthsub_jserror_nodesc' => 'Prošu zapodaj wopisanje za widejo.',
+);
+
 /** Hungarian (Magyar)
  * @author Dani
  */
@@ -1424,10 +1462,14 @@ Por favor seja paciente.',
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'youtubeauthsub' => 'Încarcă video YouTube',
 	'youtubeauthsub_title' => 'Titlu',
 	'youtubeauthsub_description' => 'Descriere',
+	'youtubeauthsub_password' => 'Parolă YouTube',
+	'youtubeauthsub_username' => 'Nume de utilizator YouTube',
 	'youtubeauthsub_keywords' => 'Cuvinte cheie',
 	'youtubeauthsub_category' => 'Categorie',
+	'youtubeauthsub_summary' => 'Încărcare video YouTube',
 );
 
 /** Tarandíne (Tarandíne)

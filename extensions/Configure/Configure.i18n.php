@@ -2360,7 +2360,7 @@ Donn ens pröfe, ov di Datei övverhoup do es.',
 	'configure-js-summary-none' => 'Kein Einstellunge',
 	'configure-js-search-legend' => 'Einstellunge söke',
 	'configure-js-search-prompt' => 'Frooch:',
-	'configure-no-diff' => 'Zwesche dä zwei Version es nix ungerscheedlich',
+	'configure-no-diff' => 'Zwesche dä zwei Version es nix ungerscheidlich',
 	'configure-section-namespaces' => 'Appachtemangs',
 	'configure-section-specialpages' => 'Sondersigge',
 	'viewconfig' => 'Dem Wiki sing Enstellunge beloore',
@@ -2378,12 +2378,14 @@ $messages['lb'] = array(
 	'configure-desc-val' => 'Wert',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Erweiderungen',
+	'configure-viewconfig-default-diff' => 'Ännerungen par rapport zu den Standard-Astellungen',
 	'configure-ext-doc' => "Kuckt d'online-Dokumentatioun",
 	'configure-ext-schemachange' => "'''Opgepasst:''' dës Erweiderung brauch en Update vun der Datebank fir korrekt ze fonctionnéieren!",
 	'configure-ext-settings' => 'Astellungen',
 	'configure-ext-use-extension' => 'Dës Erweiderung benotzen',
 	'configure-ext-use' => 'Notzung',
 	'configure-form-reason' => "Grond fir d'Ännerung:",
+	'configure-customised' => "''Dëse Parameter gouf individualiséiert''",
 	'configure-arrayinput-oneperline' => "''(e pro Linn)''",
 	'configure-summary' => "Dës Spezialsäit erlaabt et Iech fir dës Wiki ze configuréieren, kuckt [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuratioun's Astellungen] fir méi Informatiounen.",
 	'configure-btn-save' => 'Confuguratioun späicheren',
@@ -2396,6 +2398,8 @@ $messages['lb'] = array(
 	'configure-js-biglist-show' => '[Detailer weisen]',
 	'configure-js-biglist-hide' => '[Detailer verstoppen]',
 	'configure-js-summary-none' => 'Keng Astellungen',
+	'configure-js-search-legend' => 'Astellunge vun der Sich',
+	'configure-js-search-prompt' => 'Ufro:',
 	'configure-no-diff' => 'Et gëtt keen Ënnerscheed tëschent denen ausgewielte Versiounen.',
 	'configure-no-directory' => "De Repertoire dee benotzt gëtt fir d'Configuratioun ze späicheren, <tt>$1</tt>, gëtt et net.
 
@@ -2442,10 +2446,12 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-copyright' => 'Copyright',
 	'configure-section-misc' => 'Verschiddenes',
 	'configure-section-mw-extensions' => 'MediaWiki-Erweiderungen',
+	'configure-select-wiki-view-all' => 'All Wikiën',
 	'configure-select-wiki-submit' => 'Wielen',
 	'configure-setting-not-available' => 'Dës Astellung kann an dëser Versioun vu MediaWiki net geännert ginn',
 	'configure-view' => 'Weisen',
 	'configure-view-all-versions' => 'Komplett Lëscht vun de Versiounen',
+	'configure-view-default' => 'Standard-Astellungen',
 	'configure-view-not-allowed' => 'Dir sidd net autoriséiert fir dës Astellung ze gesinn',
 	'extensions' => "D'Erweiderunge configuréieren",
 	'right-configure' => "D'Wiki configuréieren",
@@ -2459,12 +2465,24 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-throttle-action-move' => 'Réckelen',
 	'configure-throttle-action-emailuser' => 'E-Mail schécken',
 	'configure-throttle-group-anon' => 'All anonym Benotzer',
+	'configure-throttle-group-user' => 'Pro Benotzerkont',
+	'configure-throttle-group-ip' => 'Pro IP-Adress',
+	'configure-throttle-count' => 'Erlaabten Akiounen:',
+	'configure-throttle-summary' => '$1 Aktiounen a(n) $2 Sekonnen.',
 	'configure-throttle-limit' => 'Limit',
 	'configure-throttle-none' => 'Keng Limit',
 	'configure-condition-operator-or' => 'Oder',
 	'configure-condition-operator-and' => 'Ann',
 	'configure-condition-operator-not' => 'Net',
+	'configure-condition-name' => 'Konditioun',
+	'configure-condition-name-1' => 'Mindestzuel vun Ännerungen',
 	'configure-condition-name-2' => 'Mindest-Alter',
+	'configure-condition-name-4' => 'An de Gruppe(n)',
+	'configure-condition-name-5' => 'Dem Benotzer seng IP-Adress',
+	'configure-condition-description-3' => "D'E-Mailadress ass confirméiert",
+	'configure-condition-description-4' => 'An alle Gruppen $1',
+	'configure-condition-description-5' => 'Dem Benotzer seng IP-Adress ass $1',
+	'configure-condition-description-6' => 'Deb Bentzer seng IP-Adress ass am Beräich $1',
 );
 
 /** Limburgish (Limburgs)
@@ -3350,9 +3368,9 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author 555
  * @author Lijealso
  * @author Malafaya
- * @author 555
  */
 $messages['pt'] = array(
 	'configure' => 'Configurar o wiki',
@@ -3369,10 +3387,13 @@ $messages['pt'] = array(
 	'configure-form-reason' => 'Motivo da alteração:',
 	'configure-summary' => 'Esta página especial permite-lhe configurar este wiki, veja [http://www.mediawiki.org/wiki/Manual:Configuration_settings Parâmetros de configuração] para mais informação.',
 	'configure-btn-save' => 'Gravar configuração',
+	'configure-db-table-error' => 'A base de dados seleccionada não possui as tabelas requeridas. Aplique o configure.sql em tal base de dados',
 	'configure-directory-not-writable' => 'A directoria usada para armazenar a configuração, <tt>$1</tt>, não permite escrita.
 Por favor, torne possível a sua escrita por PHP para usar esta extensão.',
 	'configure-edit-old' => "'''Atenção''': você está a editar uma versão <strong>antiga</strong> da configuração (tal como se encontrava em $1).",
 	'configure-error' => 'A configuração não pôde ser gravada',
+	'configure-js-remove' => 'Eliminar',
+	'configure-js-remove-row' => 'Eliminar esta entrada',
 	'configure-js-biglist-show' => '[exibir detalhes]',
 	'configure-js-biglist-hide' => '[ocultar detalhes]',
 	'configure-no-directory' => 'A directoria usada para guardar a parametrização, <tt>$1</tt>, não existe.

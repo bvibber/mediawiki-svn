@@ -815,6 +815,7 @@ $messages['rif'] = array(
  */
 $messages['ro'] = array(
 	'spamregex-already-blocked' => '"$1" este deja blocat',
+	'spamregex-text' => '(Text)',
 );
 
 /** Russian (Русский)

@@ -145,6 +145,14 @@ $messages['ia'] = array(
 	'usercontactlink-desc' => 'Permitte adder simple- e consistentemente altere nomines de usator con le syntaxe ^^^user^^^',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'usercontactlink-baduser' => '不正確な利用者名',
+	'usercontactlink-desc' => '^^^user^^^という文法を利用して、簡単かつ一貫して他の利用者名を加えることができるようにする。',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  * @author Pras
@@ -263,6 +271,13 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'usercontactlink-baduser' => 'nome de utilizador incorrecto',
 	'usercontactlink-desc' => 'Fornece a possibilidade de addicionar de forma simples e consistente outros nomes de utilizador, usando a sintaxe ^^^user^^^',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'usercontactlink-baduser' => 'nume de utilizator incorect',
 );
 
 /** Russian (Русский)
