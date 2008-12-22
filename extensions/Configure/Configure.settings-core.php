@@ -367,7 +367,7 @@ $settings = array(
 			'wgInterwikiFallbackSite' => 'text',
 			'wgInterwikiScopes' => 'int',
 			'wgLocalInterwiki' => 'text',
-			'wgRedirectSources' => 'array',
+			'wgRedirectSources' => 'text',
 		),
 	),
 	'access' => array(
@@ -829,7 +829,6 @@ $arrayDefs = array(
 	'wgSpecialPages' => 'assoc',
 # Misc
 	'wgGrammarForms' => 'array',
-	'wgRedirectSources' => 'simple',
 	'wgRestrictionTypes' => 'simple',
 );
 
