@@ -180,6 +180,13 @@ class db :
 	recent revision of page [page_id]. *)
     method get_latest_rev_id : int -> int
 
+    (** [get_latest_colored_rev_id page_id] returns the timestamp of the most 
+     recent revision of page [page_id]. *)
+    method get_latest_colored_rev_timestamp : int -> string
+
+    (** [get_latest_colored_rev_id page title] returns the timestamp of 
+	the most recent revision of page [page-title]. *)
+    method get_latest_colored_rev_timestamp_by_title : string -> string
 
     (* ================================================================ *)
     (* Revision methods.  We assume we have a lock on the page to which 
@@ -229,6 +236,9 @@ class db :
 	and origin information. *)
     method read_colored_markup : int -> string
 
+    (** Same as above but returns the median info as well. *)
+    method read_colored_markup_with_median : int -> string * float
+
     (** [write_trust_origin_sigs rev_id words trust origin sigs] writes that the 
 	revision [rev_id] is associated with [words], [trust], [origin], and [sigs]. *)
     method write_words_trust_origin_sigs : 
@@ -259,6 +269,9 @@ class db :
 	relating user ids to their reputation *)
     method get_rep : int -> float
 
+    (** [get_user_id name] gets the user id for the user with the given user name *)
+    method get_user_id : string -> int
+
     (* ================================================================ *)
     (* Debugging. *)
 
@@ -268,5 +281,20 @@ class db :
 
     (** Add the vote to the db *)
     method vote : vote_t -> unit
+
+    (* ================================================================ *)
+    (* Server System. *)
+
+    (** Note that the requested rev was needs to be colored *)
+    method mark_to_color : int -> int -> string -> string -> int -> unit
+
+    (** Get the next revs to color *)
+    method fetch_next_to_color : int -> (int * int * string * string * int) list
+
+    (** Add the page to the db *)
+    method write_page : wiki_page -> unit
+
+    (** Add the rev to the db *)
+    method write_revision : wiki_revision -> unit
 
   end

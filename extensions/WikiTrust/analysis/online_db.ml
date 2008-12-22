@@ -111,6 +111,13 @@ let vote_row2vote_t row =
     vote_revision_id = (not_null int2ml row.(2));
     vote_voter_id = (not_null int2ml row.(3));
   }
+
+let next2color_row row =
+  ((not_null int2ml row.(0)), 
+   (not_null int2ml row.(1)), 
+   (not_null str2ml row.(2)),
+   (not_null str2ml row.(3)),
+   (not_null int2ml row.(4)))
     
 (** This class provides a handle for accessing the database in the on-line 
     implementation. *)
@@ -152,7 +159,9 @@ class db
       end;
       try 
 	Mysql.exec dbh s
-      with _ -> raise DB_TXN_Bad
+      with Mysql.Error e -> if debug_mode then 
+	begin print_endline e; flush stdout end; 
+	raise DB_TXN_Bad
 
     (* ================================================================ *)
     (* Disconnect *)
@@ -360,6 +369,21 @@ class db
 	None -> raise DB_Not_Found
       | Some x -> not_null int2ml x.(0)
 
+    (** [get_latest_colored_rev_id page_id] returns the timestamp of the most 
+	recent revision of page [page_id]. *)
+    method get_latest_colored_rev_timestamp (page_id : int) : string =
+      let s = Printf.sprintf "SELECT time_string FROM %swikitrust_revision WHERE page_id = %s ORDER BY time_string DESC, revision_id DESC LIMIT 1" db_prefix (ml2int page_id) in 
+	match fetch (self#db_exec mediawiki_dbh s) with 
+	    None -> raise DB_Not_Found
+	  | Some x -> not_null str2ml x.(0)      
+
+    (** [get_latest_colored_rev_id page title] returns the timestamp of 
+	the most recent revision of page [page-title]. *)
+    method get_latest_colored_rev_timestamp_by_title (page_title : string) : string =
+      let s = Printf.sprintf "SELECT time_string FROM %swikitrust_revision AS A join page AS B on (A.page_id = B.page_id) WHERE B.page_title = %s ORDER BY time_string DESC, revision_id DESC LIMIT 1" db_prefix (ml2str page_title) in 
+	match fetch (self#db_exec mediawiki_dbh s) with 
+	    None -> raise DB_Not_Found
+	  | Some x -> not_null str2ml x.(0)  
 
     (* ================================================================ *)
     (* Revision methods. *)
@@ -473,6 +497,17 @@ class db
         None -> raise DB_Not_Found
       | Some x -> not_null str2ml x.(0)
 
+    (** [read_colored_markup_and_median rev_id] reads the text markup of a revision with id
+	[rev_id].  The markup is the text of the revision, annontated with trust
+	and origin information. This method also returns the median value *)
+    method read_colored_markup_with_median (rev_id : int) : string * float =
+      let s = Printf.sprintf  "SELECT revision_text,median FROM %swikitrust_colored_markup JOIN %swikitrust_global WHERE revision_id = %s" db_prefix db_prefix 
+	(ml2int rev_id) in 
+      let result = self#db_exec wikitrust_dbh s in
+	match Mysql.fetch result with
+            None -> raise DB_Not_Found
+	  | Some x -> (not_null str2ml x.(0), not_null float2ml x.(1))
+
     (** [write_trust_origin_sigs rev_id words trust origin sigs] writes that the 
 	revision [rev_id] is associated with [words], [trust], [origin], and [sigs]. *)
     method write_words_trust_origin_sigs (rev_id: int) 
@@ -532,12 +567,55 @@ class db
         None -> raise DB_Not_Found
       | Some x -> not_null float2ml x.(0)
       
-
+	  
+    (** [get_user_id name] gets the user id for the user with the given user name *)
+    method get_user_id (user_name : string) : int =
+      let s = Printf.sprintf "SELECT user_id FROM %swikitrust_revision WHERE username = %s" db_prefix (ml2str user_name) in
+      let result = self#db_exec wikitrust_dbh s in
+	match Mysql.fetch result with 
+            None -> raise DB_Not_Found
+	  | Some x -> not_null int2ml x.(0)      
+	      
     (* ================================================================ *)
 
     (** Add the vote to the db *)
     method vote (vote : vote_t) =
-      let s = Printf.sprintf "INSERT INTO %swikitrust_vote (rev_id, page_id, voter_id, voted_on) VALUES (%s, %s, %s, %s)" db_prefix (ml2int vote.vote_revision_id) (ml2int vote.vote_page_id) (ml2int vote.vote_voter_id) (ml2str vote.vote_time) in
+      let s = Printf.sprintf "INSERT INTO %swikitrust_vote (revision_id, page_id, voter_id, voted_on) VALUES (%s, %s, %s, %s)" db_prefix (ml2int vote.vote_revision_id) (ml2int vote.vote_page_id) (ml2int vote.vote_voter_id) (ml2str vote.vote_time) in
+	ignore (self#db_exec wikitrust_dbh s)
+
+    (* ================================================================ *)
+
+    (** Note that the requested rev was needs to be colored *)
+    method mark_to_color (rev_id : int) (page_id : int) (page_title : string) 
+      (rev_time : string) (user_id : int) =
+      let s = Printf.sprintf "INSERT INTO %swikitrust_missing_revs (revision_id, page_id, page_title, rev_time, user_id) VALUES (%s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE requested_on = now(), processed = false" db_prefix (ml2int rev_id) (ml2int page_id) (ml2str page_title) (ml2str rev_time) (ml2int user_id) in
+	ignore (self#db_exec wikitrust_dbh s)
+
+    (** Get the next revs to color *)
+    method fetch_next_to_color (max_to_get : int) : 
+      (int * int * string * string * int) list =
+      let s = Printf.sprintf "SELECT revision_id, page_id, page_title, rev_time, user_id FROM %swikitrust_missing_revs WHERE NOT processed ORDER BY requested_on ASC LIMIT %s" db_prefix (ml2int max_to_get) in
+      let results = Mysql.map (self#db_exec wikitrust_dbh s) next2color_row in
+      let mark_as_done (rev,_,_,_,_) = 
+	let s = Printf.sprintf "UPDATE %swikitrust_missing_revs SET processed = true WHERE revision_id = %s" db_prefix (ml2int rev) in
+	  ignore (self#db_exec wikitrust_dbh s)
+      in
+	List.iter mark_as_done results;
+	results
+
+    (** Add the page to the db *)
+    method write_page (page : wiki_page) =
+      let s = Printf.sprintf "INSERT INTO %spage (page_id, page_namespace, page_title, page_restrictions, page_counter, page_is_redirect, page_is_new, page_random, page_touched, page_latest, page_len) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE page_latest = %s" db_prefix (ml2int page.page_id) (ml2int page.page_namespace) (ml2str page.page_title) (ml2str page.page_restrictions) (ml2int page.page_counter) (if page.page_is_redirect then "true" else "false") (if page.page_is_new then "true" else "false") (ml2float page.page_random) (ml2str page.page_touched) (ml2int page.page_latest) (ml2int page.page_len) (ml2int page.page_latest)
+      in
+	ignore (self#db_exec wikitrust_dbh s)
+
+    (** Add the rev to the db *)
+    method write_revision (rev : wiki_revision) = 
+      (* Add the content. *)
+      let s = Printf.sprintf "INSERT INTO %stext (old_id, old_text, old_flags) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE old_flags = %s" db_prefix (ml2int rev.revision_id) (ml2str rev.revision_content) (ml2str "utf8") (ml2str "utf8") in
+	ignore (self#db_exec wikitrust_dbh s);
+	  (* And then the revision metadata. *)
+	let s = Printf.sprintf "INSERT INTO %srevision (rev_id, rev_page, rev_text_id, rev_comment, rev_user, rev_user_text, rev_timestamp, rev_minor_edit, rev_deleted, rev_len, rev_parent_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE rev_len = %s" db_prefix (ml2int rev.revision_id) (ml2int rev.revision_page) (ml2int rev.revision_id) (ml2str rev.revision_comment) (ml2int rev.revision_user) (ml2str rev.revision_user_text) (ml2str rev.revision_timestamp) (if rev.revision_minor_edit then "true" else "false") (if rev.revision_deleted then "true" else "false") (ml2int rev.revision_len) (ml2int rev.revision_parent_id) (ml2int rev.revision_len) in
 	ignore (self#db_exec wikitrust_dbh s)
 
     (** Clear everything out (except for the votes) *)
