@@ -76,9 +76,6 @@ class WebConfiguration extends SiteConfiguration {
 	}
 	
 	public function snapshotDefaults( /* options */ ) {
-		static $loaded = false;
-		if( $loaded ) return;
-		$loaded = true;
 		$options = func_get_args();
 		$noOverride = in_array( 'no_override', $options );
 		if( !is_array($this->mDefaults) || in_array('allow_empty',$options) ) {
