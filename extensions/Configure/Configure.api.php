@@ -16,8 +16,9 @@ class ApiConfigure extends ApiBase {
 			$this->dieUsage( 'You need to call efConfigureSetup() to use this module', 'noconf' );
 		}
 
+		$prop = array_flip( $params['prop'] );
 		// Version list
-		if ( in_array( 'versionlist', $params['prop'] ) ) {
+		if ( isset( $prop['versionlist'] ) ) {
 			if ( !$wgUser->isAllowed( 'viewconfig' ) )
 				$this->dieUsage( 'viewconfig right required', 'noright' );
 			$versions = $wgConf->listArchiveVersions();
@@ -33,11 +34,11 @@ class ApiConfigure extends ApiBase {
 				}
 			}
 			$result->setIndexedTagName( $versions, 'version' );
-			$result->addValue( 'configure', 'versions', $versions );
+			$result->addValue( $this->getModuleName(), 'versions', $versions );
 		}
 
 		// Wiki list
-		if ( in_array( 'wikilist', $params['prop'] ) ) {
+		if ( isset( $prop['wikilist'] ) ) {
 			if ( !$wgUser->isAllowed( 'viewconfig-interwiki' ) )
 				$this->dieUsage( 'viewconfig-interwiki right required', 'noright' );
 			if ( $wgConfigureWikis === false )
@@ -47,12 +48,12 @@ class ApiConfigure extends ApiBase {
 			if ( is_array( $wgConfigureWikis ) ) {
 				$wikis = $wgConfigureWikis;
 				$result->setIndexedTagName( $wikis, 'wiki' );
-				$result->addValue( 'configure', 'wikis', $wikis );
+				$result->addValue( $this->getModuleName(), 'wikis', $wikis );
 			}
 		}
 
 		// Settings
-		if ( in_array( 'settings', $params['prop'] ) ) {
+		if ( isset( $prop['settings'] ) ) {
 			if ( !$wgUser->isAllowed( 'viewconfig' ) )
 				$this->dieUsage( 'viewconfig right required', 'noright' );
 			$version = $params['version'];
@@ -93,11 +94,11 @@ class ApiConfigure extends ApiBase {
 				}
 				$result->setIndexedTagName( $ret, 'setting' );
 			}
-			$result->addValue( 'configure', 'settings', $ret );
+			$result->addValue( $this->getModuleName(), 'settings', $ret );
 		}
 
 		// Extensions
-		if ( in_array( 'extensions', $params['prop'] ) ) {
+		if ( isset( $prop['extensions'] ) ) {
 			if ( !$wgUser->isAllowed( 'extensions' ) )
 				$this->dieUsage( 'extensions right required', 'noright' );
 			$conf = ConfigurationSettings::singleton( CONF_SETTINGS_EXT );
@@ -115,7 +116,7 @@ class ApiConfigure extends ApiBase {
 				$ret[] = $extArr;
 			}
 			$result->setIndexedTagName( $ret, 'extension' );
-			$result->addValue( 'configure', 'extension', $ret );
+			$result->addValue( $this->getModuleName(), 'extension', $ret );
 		}
 	}
 
@@ -318,14 +319,14 @@ class ApiConfigure extends ApiBase {
 	protected function getAllowedParams() {
 		return array(
 			'prop' => array(
-			ApiBase::PARAM_ISMULTI => true,
-			ApiBase::PARAM_TYPE => array(
-				'versionlist',
-				'wikilist',
-				'settings',
-				'extensions',
-			),
-			ApiBase::PARAM_DFLT => 'versionlist|wikilist',
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => array(
+					'versionlist',
+					'wikilist',
+					'settings',
+					'extensions',
+				),
+				ApiBase::PARAM_DFLT => 'versionlist|wikilist',
 			),
 			'version' => null,
 			'wiki' => null,
