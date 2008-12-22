@@ -73,12 +73,12 @@ remoteSearchDriver.prototype = {
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
-			'hompage': 'http://commons.wikimedia.org/wiki/Main_Page',		
+			'homepage': 'http://commons.wikimedia.org/wiki/Main_Page',		
 			'api_url':'http://commons.wikimedia.org/w/api.php',
 			'lib'	:'mediaWiki',
 			'search_title':false, //disable title search
 			'local'	:false,
-			'resource_prefix': '' //what prefix to use on imported resources 
+			'resource_prefix': 'WC_' //prefix on imported resources (not applicable if the repository is local) 
 		},
 		'metavid':{
 			'enabled':1,
@@ -138,10 +138,10 @@ remoteSearchDriver.prototype = {
 		this.add_interface_bindings();
 	},
 	//gets the in and out points for insert position or grabs the selected text for search	
-	getTexboxSelection:function(){			
+	getTexboxSelection:function(){				
 		if(this.caret_pos.s && this.caret_pos.e &&
 			(this.caret_pos.s != this.caret_pos.e))
-			this.default_query = $j('#'+this.target_textbox).val().substring(this.caret_pos.s, this.caret_pos.e).replace(/ /g, '\xa0') || '\xa0'		
+			this.default_query = caret_pos.text.substring(this.caret_pos.s, this.caret_pos.e).replace(/ /g, '\xa0') || '\xa0'		
 	},
 	//sets up the initial html interface 
 	init_interface_html:function(){
@@ -272,7 +272,7 @@ remoteSearchDriver.prototype = {
 	drawTabs: function(){
 		var _this = this;
 		//add the tabs to the rsd_results container: 
-		var o= '<ul class="rsd_cp_tabs" >';
+		var o= '<ul class="rsd_cp_tabs" style="margin-bottom:2px;">'; //no idea why margin-bottom does not work in the css file
 			o+='<li id="rsd_tab_combined" ><img src="' + mv_embed_path + 'skins/'+mv_skin_name+ '/remote_search/combined_tab.png"></li>';		 			 	
 			for(var cp_id in  this.content_providers){
 				var cp = this.content_providers[cp_id];
@@ -475,83 +475,168 @@ remoteSearchDriver.prototype = {
 				_this.cEdit = new mvClipEdit( mvClipInit );
 		});
 	},
-	checkImportResource:function( rObj, callback){
+	checkImportResource:function( rObj, cir_callback){
 		//check if the resource is "locally accesible" 
 		if( rObj.pSobj.local ){
-		 	callback( rObj );
+			js_log("checkImportResource:local");
+		 	cir_callback( rObj );
 		}else{
 			var _this = this;
 			var cp = rObj.pSobj.cp;
 			
 			//first check if the resource is not already on this wiki: 
-			var target_resource_title = cp.resource_prefix +  rObj.titleKey;
-			reqObj={'action':'query', titles:target_resource_title};
-			do_api_req( reqObj, this.local_wiki_api_url, function(data){				
-				if( ! data.query.pages['-1'] ){
-					//resource is already present: 
-					callback( rObj );
+			//@@todo get the File Msg			
+			var cFileNS= 'Image'
+			var target_resource_title = cp.resource_prefix + rObj.titleKey.substr( cFileNS.length + 1 );
+			reqObj={'action':'query', titles: cFileNS + ':' + target_resource_title + '|' + rObj.titleKey};
+			do_api_req( reqObj, this.local_wiki_api_url, function(data){	
+				var found_title = false;
+				for(var i in data.query.pages){
+					if(i>0)
+						found_title=true;
+				}			
+				if( found_title ){
+					//resource is already present (or resource with same name is already present)
+					js_log("checkImportResource:resource is already present: {"+
+						cp.resource_prefix + '}' + rObj.titleKey);  
+					cir_callback( rObj );
 				}else{
-					var base_resource_desc = '{Information '+
+					js_log("resource not present: update:"+ cFileNS + ':' + target_resource_title);
+					
+					//setup the resource description from resource description: 					
+					var base_resource_desc = '{{Information '+"\n"+
 					'|Description= ' + rObj.title + ' imported from ' + '[' + cp.homepage + 
 								 ' ' + cp.title+']' + "\n" +
-					'|Source=' + '[' + rObj.link +' Original Source]'+ "\n" +
-					'|Author= US government' +"\n"+
-					'|Date= October 1st 2008' +"\n"+
-					'|Permission=' +"\n"+
-					'|other_versions=' +"\n"+
-					'}}';
+					'|Source=' + '[' + rObj.link +' Original Source]'+ "\n";
+					
+					if( rObj.author )
+						base_resource_desc+='|Author= US government' +"\n";
+						
+					if( rObj.date )
+						base_resource_desc+='|Date= October 1st 2008' +"\n";
+											
+					if( rObj.permission )
+						base_resource_desc+='|Permission=' +"\n";
+						
+					if( rObj.other_versions )
+						base_resource_desc+='|other_versions=' +"\n";
+											
+					base_resource_desc+='}}';
+					$j('#rsd_resource_import').remove();//remove any old resource imports
 					//@@ show user dialog to import the resource
 					$j( '#'+ _this.target_id ).append('<div id="rsd_resource_import" '+ 
-					'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
-						'<h3>Resource: ' + rObj.title + ' needs to be imported to this wiki</h3>'+										
-							rObj.pSobj.getEmbedHTML( rObj, {'max_height':'300'} )+ //get embedHTML:
-							'<br>'+
-							//output the rendered and non-renderd version of description for easy swiching:
-							'<strong>Resource Description:</strong>'+
-							'<a id="rsd_import_aedit" href="#">Edit</a>'+			
-							'<a style="display:none;" id="rsd_import_apreview" href="#">Preview</a>'+		
-							'<div id="rsd_impoart_desc" syle="width:60%;border:solid thin black;height:300px;overflow:auto;">'+
-								mv_get_loading_img('position:absolute;top:5px;left:5px', 'mv_img_loader') +
-							'</div>'+ 
-							'<textarea id="rsd_import_ta" style="display:none" id="mv_img_desc" rows="4" cols="30">'+
-								base_resource_desc + 
-							'</textarea><br>'+									
-						'<input id="rsd_import_doimport" type="button" value="Do Import Resource">'+
-						'<a href="#">Cancel Import</a>'+				 
+					'style="position:absolute;top:50px;left:50px;right:50px;bottom:50px;background-color:#FFF;border:solid thick red;z-index:3">' +
+						'<h3 style="color:red">Resource: <span style="color:black">' + rObj.title + '</span> needs to be imported</h3>'+
+							'<div id="rsd_preview_import_container" style="position:absolute;width:50%;bottom:0px;left:0px;overflow:auto;top:30px;">' +
+								rObj.pSobj.getEmbedHTML( rObj, {'max_height':'200'} )+ //get embedHTML with small thumb: 
+								'<br style="clear both">'+
+								'<strong>Resource Page Description:</strong>'+
+								'<div id="rsd_import_desc" syle="display:inline;">'+
+									mv_get_loading_img('position:absolute;top:5px;left:5px', 'mv_img_loader') +
+								'</div>'+							
+							'</div>'+
+							'<div id="rds_edit_import_container" style="position:absolute;left:50%;' +
+								'bottom:0px;top:30px;right:0px;overflow:auto;">'+
+								'<strong>Local Resource Title:</strong><br>'+
+								'<input type="text" size="30" value="' + target_resource_title + '" readonly="true"><br>'+
+								'<strong>Edit WikiText Resource Description:</strong>(will be replaced by forms soon)'+																									
+								'<textarea id="rsd_import_ta" id="mv_img_desc" rows="8" cols="50">'+
+									base_resource_desc + 
+								'</textarea><br>'+
+								'<input type="checkbox" value="true" id="wpWatchthis" name="wpWatchthis" tabindex="7"/>'+
+								'<label for="wpWatchthis">Watch this page</label><br>'+
+								'<input id="rsd_import_apreview" type="button" value="Update Preview"> ' +
+								'<input style="font-weight: bold" id="rsd_import_doimport" type="button" value="Do Import Resource"> '+
+								'<a id="rsd_import_acancel" href="#">Cancel Import</a>'+				 
+							'</div>'+
+							//output the rendered and non-renderd version of description for easy swiching:	
 					'</div>');			
-					//load the preview text: 
-					_this.getParsedWikiText( base_resource_desc, function( o ){
-						$j('#rsd_impoart_desc').html(o);
+					//load the preview text: 					
+					_this.getParsedWikiText( base_resource_desc, cFileNS +':'+ target_resource_title, function( o ){						
+						$j('#rsd_import_desc').html(o);
 					});
-					//add bidings: 
-					$j('#rsd_import_aedit').click(function(){
-						$j(this).hide();
-						$j('#rsd_impoart_desc').hide();
-						$j('#rsd_import_apreview,#rsd_import_ta').show();				
-					});
+					//add bidings: 				
 					$j('#rsd_import_apreview').click(function(){
-						$j(this).hide();
-						$j('#rsd_impoart_desc').show().html(
-							mv_get_loading_img('position:absolute;top:5px;left:5px', 'mv_img_loader') 
+						$j('#rsd_import_desc').show().html(
+							mv_get_loading_img()
 						);
 						//load the preview text: 
-						_this.getParsedWikiText( $j('#rsd_import_ta').val() , function( o ){
-							$j('#rsd_impoart_desc').html(o);
+						_this.getParsedWikiText( $j('#rsd_import_ta').val(), cFileNS +':'+ target_resource_title, function( o ){
+							js_log('got updated preivew: '+ o);
+							$j('#rsd_import_desc').html(o);
 						});
 					});
 					$j('#rsd_import_doimport').click(function(){
 						//replace the parent with progress bar: 
 						$j('rsd_resource_import').html(
 							'<h3>Importing asset</h3>'+
-							mv_get_loading_img('position:absolute;top:5px;left:5px', 'mv_img_loader') 
+							mv_get_loading_img() 
 						);			
 						//get an edittoken: 
 						var reqObj = {'action':'query','prop':'info','intoken':'edit','titles': rObj.titleKey };
-						do_api_req( reqObj, cp.api_url,function(data){
-							js_log('edit token: ' + data.page[0]['edittoken']);
+						do_api_req( reqObj, _this.local_wiki_api_url, function(data){
+							//could recheck if it has been created in the mean time
+							if( data.query.pages[-1] ){ 								
+								var editToken = data.query.pages[-1]['edittoken'];
+								if(!editToken){
+									//@@todo give an ajax login or be more friendly in some way:  
+									js_error("You don't have permision to upload (are you logged in?)");
+									//remove top level: 
+									$j('#modalbox').fadeOut("normal",function(){
+										$j(this).remove();
+										$j('#mv_overlay').remove();
+									});
+								}else{								
+									//not sure if we can do remote url uploads (so just do a local post) 
+									js_log('got token for new page:' +editToken);
+									var postVars = {
+										'wpSourceType'		:'web',
+										'wpUploadFileURL'	: rObj.url,
+										'wpDestFile'		: target_resource_title,
+										'wpUploadDescription':$j('#rsd_import_ta').val(),
+										'wpWatchthis'		: $j('#wpWatchthis').val(),		
+										'wpUpload'			: 'Upload file'																																									
+									}
+									//set to uploading: 
+									$j('#rsd_resource_import').append('<div id="rsd_import_progress"'+										
+										'style="position:abolute;top:0px;"'+
+											'left:0px;width:100%;height:100%;'+											
+											'z-index:4;background:#555;">'+
+												'<div style="left:30%;right:30%">Importing Asset' + 
+												mv_get_loading_img() + 
+												'</dvi>'+					
+										'</div>'																				
+									);
+											
+									$j.ajax({
+										type:"POST",
+										url: wgArticlePath.replace(/\$1/,'Special:Upload'),
+										data: postVars,
+										sucess:function(data, textStatus){											
+											js_log('success in uploading: '+target_resource_title +' textStatus:'+ textStatus);
+											//cir_callback with pointer to local resource:
+											cObj.target_resource_title = target_resource_title;  
+											cir_callback( rObj )
+										},
+										error:function(XMLHttpRequest, textStatus, errorThrown){
+											js_log('error httpReq:' + ' status:' + XMLHttpRequest.status)										
+										},
+										complete:function(XMLHttpRequest, textStatus){
+											js_log('completed request:' + textStatus + ' status:'+ XMLHttpRequest.status);
+											rObj.target_resource_title = target_resource_title;  
+											cir_callback( rObj )
+										}
+									});
+								}								
+							}
 						});
 						
-					});		
+					});
+					$j('#rsd_import_acancel').click(function(){
+						$j('#rsd_resource_import').fadeOut("fast",function(){
+							$j(this).remove();
+						})
+					})		
 				}				
 			});													
 		}
@@ -585,8 +670,8 @@ remoteSearchDriver.prototype = {
 			'action':'parse', 
 			'text':wikitext
 		};
-		do_api_req( reqObj,  this.local_wiki_api_url, function(data){			
-			callback( data.parse['*'] );
+		do_api_req( reqObj,  this.local_wiki_api_url, function(data){				
+			callback( data.parse.text['*'] );
 		});	
 	},	
 	insertResource:function( rObj){
@@ -863,7 +948,7 @@ mediaWikiSearch.prototype = {
 				var page =  data.query.pages[ page_id ];				
 				this.resultsObj[page_id]={
 					'titleKey':page.title,
-					'link':'null',					
+					'link':page.imageinfo[0].descriptionurl,				
 					'title':page.title.replace(/File:|.jpg|.png|.svg|.ogg|.ogv/ig, ''),
 					'poster':page.imageinfo[0].thumburl,
 					'thumbwidth':page.imageinfo[0].thumbwidth,
@@ -897,7 +982,6 @@ mediaWikiSearch.prototype = {
 		//build the query to get the req size image: 
 		var reqObj = {
 			'action':'query',
-			'format':'json',
 			'titles':rObj.titleKey,
 			'prop':'imageinfo',
 			'iiprop':'url|size|mime' 

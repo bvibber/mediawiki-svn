@@ -68,7 +68,7 @@ mvClipEdit.prototype = {
 				'<textarea id="mv_img_desc" rows="4" cols="30"></textarea><br>'+
 			'<h3>Actions</h3>'+
 			'<input type="button" class="mv_insert_image_page" value="' + getMsg('mv_insert_image_page') + '"> '+				
-			'<input type="button" class="mv_preview_insert" value="' + getMsg('mv_preview_insert')+ '"> '+		
+			'<input type="button" style="font-weight:bold" class="mv_preview_insert" value="' + getMsg('mv_preview_insert')+ '"> '+		
 			'<a href="#" class="mv_cancel_img_edit" title="' + getMsg('mv_cancel_image_insert')+'">' + getMsg('mv_cancel_image_insert') + '</a> '			
 		);
 		//add bidings: 

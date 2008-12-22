@@ -494,15 +494,15 @@ ul.rsd_cp_tabs {
 	display:inline;
 	list-style-image:none;
 	list-style-position:outside;
-	list-style-type:none;
-	margin:0;
-	padding:0;
+	list-style-type:none;	
+	z-index:2;
 }
 ul.rsd_cp_tabs li.rsd_selected {
 	background:#FFFFFF none repeat scroll 0 0;
 	border-bottom:0;
 	padding-bottom:1px;
 	padding-top:12px;
+	top:40px;
 }
 ul.rsd_cp_tabs li {
 	display:inline;
@@ -527,15 +527,17 @@ ul.rsd_cp_tabs li {
 	border-top:0;
 	border:1px solid #777;
 	position:relative;	
-	background:#FFF;
-
-	position:absolute;
+	background:#FFF;	
 	left:2px;
 	right:2px;
-	top:66px;
 	bottom:2px;
 	z-index:-1;
 	overflow:auto;
+	position:absolute;
+	top:75px;
+}
+#rsd_resource_edit{
+	z-index:2;
 }
 .mv_clip_box_result{
 	padding:10px;

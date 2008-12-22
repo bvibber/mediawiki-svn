@@ -11,7 +11,7 @@ var wg_content_proivers_config = {
 		'local':true //this will change the output from [[embed:StreamName]] to [[remoteEmbed:roe_url]]
 	}	
 }
-var wg_local_wiki_api_url = 'http://localhost/wiki/api.php';
+var wg_local_wiki_api_url = wgServer + wgScriptPath + '/api.php';
 
 
 //*code should not have to modify anything below*/
@@ -28,11 +28,12 @@ if(wgAction=='edit'){
 }
 var caret_pos={};
 function mv_do_load_wiz(){
-	caret_pos={};
-	tb = document.getElementById('wpTextbox1');
-	caret_pos.s = getTextCusorStartPos( tb );
-	caret_pos.e = getTextCusorEndPos( tb );		
-	
+	caret_pos={};	
+	var txtarea = document.editform.wpTextbox1;
+	caret_pos.s = getTextCusorStartPos( txtarea );
+	caret_pos.e = getTextCusorEndPos( txtarea );		
+	caret_pos.text = txtarea.value;
+
 	//show the loading screen:
 	var body_elm = document.getElementsByTagName("body")[0];
 	body_elm.innerHTML = body_elm.innerHTML + ''+		
@@ -62,6 +63,10 @@ function check_for_mv_embed(){
 	if( typeof MV_EMBED_VERSION == 'undefined'){
 		setTimeout('check_for_mv_embed();', 25);
 	}else{
+		//restore text value: 
+		var txtarea = document.editform.wpTextbox1;		
+		txtarea.value = caret_pos.text;
+		//do the remote search interface:		
 		mv_do_remote_search({
 			'target_id':'modalbox',
 			'profile':'mediawiki_edit',

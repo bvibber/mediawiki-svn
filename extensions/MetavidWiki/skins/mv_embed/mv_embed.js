@@ -132,7 +132,9 @@ function getMsg( key , args ) {
 	 	return '[' + key + ']';
 	 }	 
 }
-function mv_get_loading_img( style, class){
+
+function mv_get_loading_img( style , class ){
+	var style_txt = (style)?style:'';
 	var class_attr = (class)?'class="'+class+'"':'class="mv_loading_img"';
 	return '<img '+class_attr+' style="' + style +'" src="'+ 
 		mv_embed_path + 'skins/' + mv_skin_name + '/images/loading_ani.gif">';
@@ -2922,26 +2924,26 @@ function do_api_req(req_param, api_url, callback){
 		api_url =  wgServer +((wgServer == null) ? parseUri(document.URL).host + (wgScriptPath + "/api.php") : parseUri(document.URL).host + wgScript);
 		//update to api.php (if index.php was in the wgScript path): 
 		api_url = api_url.replace('index.php', 'api.php');		
-	}
-				
-	//build request string: (force the format to json): 
-	var req_url = api_url + '?format=json';	
-	for(var i in req_param){
-		req_url += '&' + encodeURIComponent( i ) + '=' + encodeURIComponent( req_param[i] );		
-	}
-		
+	}					
+	//build request string: (force the format to json):	
+	var req_url = api_url + '?format=json';		
 	if( parseUri(document.URL).host == parseUri(api_url).host ){
 		//local request do api request directly		
 		$j.ajax({
-			type: "GET",
+			type: "POST",
 			url:req_url,
+			data: req_param,
             async: false,
 			success:function(data){
 				eval('var result_data=' + data );		
 				callback(  result_data );
 			}
 		});
-	}else{		
+	}else{	
+		//put all the values into the GET req: 	
+		for(var i in req_param){
+			req_url += '&' + encodeURIComponent( i ) + '=' + encodeURIComponent( req_param[i] );		
+		}
 		var fname = 'mycpfn_' + ( global_cb_count++ );
 		_global[ fname ]  =  callback ;				
 		req_url += '&callback=' + fname;								
