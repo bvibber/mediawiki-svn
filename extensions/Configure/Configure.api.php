@@ -19,104 +19,112 @@ class ApiConfigure extends ApiBase {
 		$prop = array_flip( $params['prop'] );
 		// Version list
 		if ( isset( $prop['versionlist'] ) ) {
-			if ( !$wgUser->isAllowed( 'viewconfig' ) )
-				$this->dieUsage( 'viewconfig right required', 'noright' );
-			$versions = $wgConf->listArchiveVersions();
-			if ( $wgUser->isAllowed( 'viewconfig-interwiki' ) ) {
-				$oldVersions = $versions;
-				$versions = array();
-				foreach ( $oldVersions as $version ) {
-					$settings = $wgConf->getOldSettings( $version );
-					$wikis = array_keys( $settings );
-					$wikis['id'] = $version;
-					$result->setIndexedTagName( $wikis, 'wiki' );
-					$versions[] = $wikis;
+			if ( $wgUser->isAllowed( 'viewconfig' ) ) {
+				$versions = $wgConf->listArchiveVersions();
+				if ( $wgUser->isAllowed( 'viewconfig-interwiki' ) ) {
+					$oldVersions = $versions;
+					$versions = array();
+					foreach ( $oldVersions as $version ) {
+						$settings = $wgConf->getOldSettings( $version );
+						$wikis = array_keys( $settings );
+						$wikis['id'] = $version;
+						$result->setIndexedTagName( $wikis, 'wiki' );
+						$versions[] = $wikis;
+					}
 				}
+				$result->setIndexedTagName( $versions, 'version' );
+				$result->addValue( $this->getModuleName(), 'versions', $versions );
+			} else {
+				$this->setWarning( '`viewconfig\' right is required to use `versionlist\'' );
 			}
-			$result->setIndexedTagName( $versions, 'version' );
-			$result->addValue( $this->getModuleName(), 'versions', $versions );
 		}
 
 		// Wiki list
 		if ( isset( $prop['wikilist'] ) ) {
-			if ( !$wgUser->isAllowed( 'viewconfig-interwiki' ) )
-				$this->dieUsage( 'viewconfig-interwiki right required', 'noright' );
-			if ( $wgConfigureWikis === false )
-				$result->addValue( 'configure', 'wikis', array( 'denied' => '' ) );
-			if ( $wgConfigureWikis === true )
-				$result->addValue( 'configure', 'wikis', array( 'any' => '' ) );
-			if ( is_array( $wgConfigureWikis ) ) {
-				$wikis = $wgConfigureWikis;
-				$result->setIndexedTagName( $wikis, 'wiki' );
-				$result->addValue( $this->getModuleName(), 'wikis', $wikis );
+			if ( $wgUser->isAllowed( 'viewconfig-interwiki' ) ) {
+				if ( $wgConfigureWikis === false )
+					$result->addValue( 'configure', 'wikis', array( 'denied' => '' ) );
+				if ( $wgConfigureWikis === true )
+					$result->addValue( 'configure', 'wikis', array( 'any' => '' ) );
+				if ( is_array( $wgConfigureWikis ) ) {
+					$wikis = $wgConfigureWikis;
+					$result->setIndexedTagName( $wikis, 'wiki' );
+					$result->addValue( $this->getModuleName(), 'wikis', $wikis );
+				}
+			} else {
+				$this->setWarning( '`viewconfig-interwiki\' right is required to use `wikilist\'' );
 			}
 		}
 
 		// Settings
 		if ( isset( $prop['settings'] ) ) {
-			if ( !$wgUser->isAllowed( 'viewconfig' ) )
-				$this->dieUsage( 'viewconfig right required', 'noright' );
-			$version = $params['version'];
-			$wiki = $params['wiki'] ? $params['wiki'] : $wgConf->getWiki();
-			$settingsValues = $wgConf->getOldSettings( $version );
-			if ( !is_array( $settingsValues ) )
-				$this->dieUsage( 'version not found', 'noversion' );
-			if ( !isset( $settingsValues[$wiki] ) || !is_array( $settingsValues[$wiki] ) )
-				$this->dieUsage( 'wiki not found in version', 'nowiki' );
-			$settingsValues = $settingsValues[$wiki];
-			$conf = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH );
-			$notEditable = $conf->getUneditableSettings();
-			$ret = array();
-			if ( $params['group'] ) {
-				$sections = $conf->getSettings();
-				foreach ( $sections as $sectionName => $section ) {
-					$groupRet = array( 'name' => $sectionName );
-					foreach ( $section as $groupName => $group ) {
-						$settingsRet = array( 'name' => $groupName );
-						foreach ( $group as $setting => $type ) {
-							if ( !$conf->isSettingAvailable( $setting ) || in_array( $setting, $notEditable ) )
-								continue;
-							$settingsRet[] = $this->getSettingResult( $setting, $type, $settingsValues, $conf, $result );
+			if ( $wgUser->isAllowed( 'viewconfig' ) ) {
+				$version = $params['version'];
+				$wiki = $params['wiki'] ? $params['wiki'] : $wgConf->getWiki();
+				$settingsValues = $wgConf->getOldSettings( $version );
+				if ( !is_array( $settingsValues ) )
+					$this->dieUsage( 'version not found', 'noversion' );
+				if ( !isset( $settingsValues[$wiki] ) || !is_array( $settingsValues[$wiki] ) )
+					$this->dieUsage( 'wiki not found in version', 'nowiki' );
+				$settingsValues = $settingsValues[$wiki];
+				$conf = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH );
+				$notEditable = $conf->getUneditableSettings();
+				$ret = array();
+				if ( $params['group'] ) {
+					$sections = $conf->getSettings();
+					foreach ( $sections as $sectionName => $section ) {
+						$groupRet = array( 'name' => $sectionName );
+						foreach ( $section as $groupName => $group ) {
+							$settingsRet = array( 'name' => $groupName );
+							foreach ( $group as $setting => $type ) {
+								if ( !$conf->isSettingAvailable( $setting ) || in_array( $setting, $notEditable ) )
+									continue;
+								$settingsRet[] = $this->getSettingResult( $setting, $type, $settingsValues, $conf, $result );
+							}
+							$result->setIndexedTagName( $settingsRet, 'setting' );
+							$groupRet[] = $settingsRet;
 						}
-						$result->setIndexedTagName( $settingsRet, 'setting' );
-						$groupRet[] = $settingsRet;
+						$result->setIndexedTagName( $groupRet, 'group' );
+						$ret[] = $groupRet;
 					}
-					$result->setIndexedTagName( $groupRet, 'group' );
-					$ret[] = $groupRet;
+					$result->setIndexedTagName( $ret, 'section' );
+				} else {
+					$settings = $conf->getAllSettings();
+					foreach ( $settings as $setting => $type ) {
+						if ( !$conf->isSettingAvailable( $setting ) || in_array( $setting, $notEditable ) )
+							continue;
+						$ret[] = $this->getSettingResult( $setting, $type, $settingsValues, $conf, $result );
+					}
+					$result->setIndexedTagName( $ret, 'setting' );
 				}
-				$result->setIndexedTagName( $ret, 'section' );
+				$result->addValue( $this->getModuleName(), 'settings', $ret );
 			} else {
-				$settings = $conf->getAllSettings();
-				foreach ( $settings as $setting => $type ) {
-					if ( !$conf->isSettingAvailable( $setting ) || in_array( $setting, $notEditable ) )
-						continue;
-					$ret[] = $this->getSettingResult( $setting, $type, $settingsValues, $conf, $result );
-				}
-				$result->setIndexedTagName( $ret, 'setting' );
+				$this->setWarning( '`viewconfig\' right is required to use `settings\'' );
 			}
-			$result->addValue( $this->getModuleName(), 'settings', $ret );
 		}
 
 		// Extensions
 		if ( isset( $prop['extensions'] ) ) {
-			if ( !$wgUser->isAllowed( 'extensions' ) )
-				$this->dieUsage( 'extensions right required', 'noright' );
-			$conf = ConfigurationSettings::singleton( CONF_SETTINGS_EXT );
-			$ret = array();
-			foreach ( $conf->getAllExtensionsObjects() as $ext ) {
-				if( !$ext->isInstalled() ) continue; // must exist
-				$extArr = array();
-				$extArr['name'] = $ext->getName();
-				if ( $ext->isActivated() )
-					$extArr['activated'] = '';
-				if ( $ext->hasSchemaChange() )
-					$extArr['schema'] = '';
-				if ( ( $url = $ext->getUrl() ) !== null )
-					$extArr['url'] = $url;
-				$ret[] = $extArr;
+			if ( $wgUser->isAllowed( 'extensions' ) ) {
+				$conf = ConfigurationSettings::singleton( CONF_SETTINGS_EXT );
+				$ret = array();
+				foreach ( $conf->getAllExtensionsObjects() as $ext ) {
+					if( !$ext->isInstalled() ) continue; // must exist
+					$extArr = array();
+					$extArr['name'] = $ext->getName();
+					if ( $ext->isActivated() )
+						$extArr['activated'] = '';
+					if ( $ext->hasSchemaChange() )
+						$extArr['schema'] = '';
+					if ( ( $url = $ext->getUrl() ) !== null )
+						$extArr['url'] = $url;
+					$ret[] = $extArr;
+				}
+				$result->setIndexedTagName( $ret, 'extension' );
+				$result->addValue( $this->getModuleName(), 'extension', $ret );
+			} else {
+				$this->setWarning( '`extensions\' right is required to use `extensions\'' );
 			}
-			$result->setIndexedTagName( $ret, 'extension' );
-			$result->addValue( $this->getModuleName(), 'extension', $ret );
 		}
 	}
 
