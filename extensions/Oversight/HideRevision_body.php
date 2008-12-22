@@ -68,11 +68,11 @@ class HideRevisionForm extends SpecialPage {
 				'method' => 'post' ) ) .
 
 			// Visible fields
-			Xml::inputLabel( wfMsgHTML( 'hiderevision-prompt' ), 'revision[]', 'wpRevision', 10 ) .
+			Xml::inputLabel( wfMsg( 'hiderevision-prompt' ), 'revision[]', 'wpRevision', 10 ) .
 			"<br />" .
-			Xml::inputLabel( wfMsgHTML( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60 ) .
+			Xml::inputLabel( wfMsg( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60 ) .
 			"<br />" .
-			Xml::submitButton( wfMsgHTML( 'hiderevision-continue' ), array( 'id' => 'mw-hiderevision-continue' ) ) .
+			Xml::submitButton( wfMsg( 'hiderevision-continue' ), array( 'id' => 'mw-hiderevision-continue' ) ) .
 
 			Xml::closeElement( 'form' ) );
 	}
@@ -97,9 +97,9 @@ class HideRevisionForm extends SpecialPage {
 
 			// Visible fields
 			"<br />" .
-			Xml::inputLabel( wfMsgHTML( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60, $this->mReason ) .
+			Xml::inputLabel( wfMsg( 'hiderevision-reason' ), 'wpReason', 'wpReason', 60, $this->mReason ) .
 			"<br />" .
-			Xml::submitButton( wfMsgHTML( 'hiderevision-submit' ), array( 'id' => 'mw-hiderevision-submit' ) ) .
+			Xml::submitButton( wfMsg( 'hiderevision-submit' ), array( 'id' => 'mw-hiderevision-submit' ) ) .
 
 			// Hidden fields
 			$this->revisionFields() .
@@ -391,19 +391,19 @@ class SpecialOversight extends SpecialPage {
 		$title = Title::newFromUrl( $page );
 		$u = User::newFromName( $user );
 		$page = $title ? $page : ''; // blank invalid titles
-		
-		$action = htmlspecialchars( $wgScript );
-		$wgOut->addHTML( "<form action=\"$action\" method=\"get\"><fieldset>" );
-		$wgOut->addHTML( '<legend>' . wfMsgHtml('oversight-legend') . '</legend>' );
-		$wgOut->addHTML( Xml::hidden( 'title', $wgTitle->getPrefixedDbKey() ) );
-		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'oversight-oversighter' ), 'user', 'mw-oversight-user', 20, $user ) );
-		$wgOut->addHTML( '&nbsp;' );
-		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'mw-oversight-page', 25, $page ) );
-		$wgOut->addHTML( '&nbsp;' );
-		$wgOut->addHTML( Xml::inputLabel( wfMsg( 'oversight-offender' ), 'author', 'mw-oversight-author', 20, $offender ) );
-		$wgOut->addHTML( '&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ), array( 'id' => 'mw-oversight-submit' ) ) );
-		$wgOut->addHTML( '</fieldset></form>' );
-		
+
+		$wgOut->addHTML(
+			Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get', 'id' => 'mw-hiderevision-form' ) ) .
+			Xml::fieldset( wfMsg( 'oversight-legend' ) ) .
+			Xml::hidden( 'title', $wgTitle->getPrefixedDbKey() ) .
+			Xml::inputLabel( wfMsg( 'oversight-oversighter' ), 'user', 'mw-oversight-user', 20, $user ) . ' ' .
+			Xml::inputLabel( wfMsg( 'speciallogtitlelabel' ), 'page', 'mw-oversight-page', 25, $page ) . ' ' .
+			Xml::inputLabel( wfMsg( 'oversight-offender' ), 'author', 'mw-oversight-author', 20, $offender ) . ' ' .
+			Xml::submitButton( wfMsg( 'allpagessubmit' ), array( 'id' => 'mw-oversight-submit' ) ) .
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' )
+		);
+
 		$pager = new HiddenRevisionsPager( $this, array(), $title, $u, $offender );
 		if( $pager->getNumRows() ) {
 			$wgOut->addHTML( wfMsgExt('oversight-header', array('parse') ) );
