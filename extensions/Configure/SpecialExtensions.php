@@ -61,6 +61,7 @@ class SpecialExtensions extends ConfigurationPage {
  			return array();
 		$arr = array();
 		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
+			if( !$ext->isInstalled() ) continue; // must exist
 			if ( $ext->useVariable() )
  				continue;
 			if ( $wgRequest->getCheck( $ext->getCheckName() ) )
@@ -92,6 +93,7 @@ class SpecialExtensions extends ConfigurationPage {
 		$ret = '';
 		$globalDone = false;
 		foreach ( $this->mConfSettings->getAllExtensionsObjects() as $ext ) {
+			if( !$ext->isInstalled() ) continue; // must exist
 			$settings = $ext->getSettings();
 			foreach ( $settings as $setting => $type ) {
 				if ( !isset( $GLOBALS[$setting] ) && !isset( $this->conf[$setting] ) && file_exists( $ext->getFile() ) ) {

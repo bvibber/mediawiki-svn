@@ -68,9 +68,9 @@ class ConfigurationSettings {
 		usort( $extensions, array( __CLASS__, 'compExt' ) );
 		foreach( $extensions as $ext ) {
 			$ext = new WebExtension( $ext );
-			if( $ext->isInstalled() ) {
+			#if( $ext->isInstalled() ) {
 				$list[] = $ext;
-			}
+			#}
 		}
 		wfProfileOut( __METHOD__ );
 		return $list;

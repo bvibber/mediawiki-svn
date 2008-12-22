@@ -69,6 +69,7 @@ if ( isset( $options['ext'] ) ) {
 		'wgTitleBlacklist',
 	);
 	foreach ( $exts as $ext ) {
+		if( !$ext->isInstalled() ) continue; // must exist
 		$file = file_get_contents( $ext->getFile() );
 		$name = $ext->getName();
 		$m = array();
