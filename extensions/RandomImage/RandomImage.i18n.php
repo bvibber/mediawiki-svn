@@ -67,6 +67,13 @@ $messages['fa'] = array(
 	'randomimage-desc' => 'با استفاده از <tt>&lt;randomimage /&gt;</tt> یک برگزینندهٔ رسانه به طور تصادفی ارائه می‌کند',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'randomimage-desc' => 'Antaa satunnaisen mediatiedoston <tt>&lt;randomimage /&gt;</tt>-tagilla.',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -191,6 +198,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'randomimage-desc' => 'Providencia um selector de media aleatória usando <tt>&lt;randomimage /&gt;</tt>',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'randomimage-desc' => "S'ause pe fa assè 'nu pigghiatore de immaggine a uecchje <tt>&lt;randomimage /&gt;</tt>",
 );
 
 /** Russian (Русский)

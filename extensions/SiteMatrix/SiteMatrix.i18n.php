@@ -863,7 +863,7 @@ $messages['ko'] = array(
 	'sitematrix-others' => '다른 위키미디어 프로젝트 목록',
 	'sitematrix-total' => "'''총 합계: $1'''",
 	'sitematrix-sitetotal' => '합계',
-	'sitematrix-private' => '비밀',
+	'sitematrix-private' => '비공개',
 	'sitematrix-fishbowl' => '편집이 제한됨',
 );
 
@@ -1098,12 +1098,19 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'sitematrix' => 'Liste over wikiar frå Wikimedia',
+	'sitematrix-summary' => 'Denne spesialsida listar opp alle Wikimedia sine wikiar.',
+	'sitematrix-desc' => 'Viser ei [[Special:SiteMatrix|lista over Wikimedia-wikiar]]',
 	'sitematrix-language' => 'Språk',
 	'sitematrix-project' => 'Namnet på prosjektet, interprosjektlenkje og interwikilenkje',
 	'sitematrix-others' => 'Andre prosjekt frå Wikimedia',
+	'sitematrix-total' => "'''Totalt tal: $1'''",
+	'sitematrix-sitetotal' => 'Totalt',
+	'sitematrix-private' => 'privat',
+	'sitematrix-fishbowl' => 'endring avgrensa',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -420,6 +420,24 @@ $messages['nl'] = array(
 	'postcomment_nopostingtoadd' => 'Niets toe te voegen.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'postcomment_desc' => 'Lèt brukarar leggja inn kommentarar direkte til diskusjonssider.',
+	'postcomment_discussionprotected' => 'Denne diskusjonssida har blitt verna for vidare kommentering.',
+	'postcomment_notloggedin' => 'Du er ikkje innlogga.',
+	'postcomment_youareloggedinas' => 'Du er innlogga som $1',
+	'postcomment_addcommentdiscussionpage' => 'Legg til kommentaren din på denne diskusjonssida',
+	'postcomment_leavemessagefor' => 'Legg att ei melding til $1',
+	'postcomment_post' => 'Legg inn',
+	'postcomment_on' => 'På',
+	'postcomment_said' => 'sa',
+	'postcomment_invalidrequest' => 'Ugyldig førespurnad.',
+	'postcomment_replyto' => 'Svar på $1',
+	'postcomment_nopostingtoadd' => 'Ingen innlegg å leggja til.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

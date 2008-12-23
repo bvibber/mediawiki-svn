@@ -73,6 +73,17 @@ $messages['de'] = array(
 	'unicodeconverter-newtext' => 'Konvertierter Text:',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'unicodeconverter' => 'Unikodowy konwerter',
+	'unicodeconverter-desc' => 'Jadnory pśikład modula specialnego boka. [[Special:UnicodeConverter|Zapodaśe znamuška w UTF-8]], konwertěrujo do entity HTML za wužiwanje na webowem boku w ISO 8859-1',
+	'unicodeconverter-ok' => 'W pórěźe',
+	'unicodeconverter-oldtext' => 'Originalny tekst:',
+	'unicodeconverter-newtext' => 'Konwertěrowany tekst:',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -278,7 +289,9 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'unicodeconverter' => 'Convertor Unicode',
 	'unicodeconverter-oldtext' => 'Text original:',
+	'unicodeconverter-newtext' => 'Text convertit:',
 );
 
 /** Russian (Русский)

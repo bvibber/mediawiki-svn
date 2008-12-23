@@ -86,7 +86,7 @@ $aliases['lb'] = array(
 
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'Form' => array( 'Формулар' ),
+	'Form' => array( 'Формулар', 'Форма' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

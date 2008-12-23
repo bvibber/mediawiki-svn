@@ -302,6 +302,15 @@ $messages['nl'] = array(
 	'categorystepper-start' => '(Begin van categorie)',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'categorystepper-desc' => 'Viser ei ruta for blaing i kategoriar (lenkjer til neste og føregåande sida) på sider i ei gruppa av kategoriar.',
+	'categorystepper-end' => '(Kategorislutt)',
+	'categorystepper-start' => '(Kategoristart)',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Lejonel

@@ -107,6 +107,25 @@ $3',
 	'latexdoc_get_pdf' => 'PDF herunterladen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'latexdoc_no_text' => 'Bok njewopśimujo žeden tekst, DVI njedajo se napóraś',
+	'latexdoc_cant_create_dir' => 'Temporarny zapis $1 njedajo se napóraś',
+	'latexdoc_cant_write' => 'Njejo móžno do dataje $1 pisaś',
+	'latexdoc_error' => 'LaTeX zmólka
+
+Pśikaz: $1
+
+Wudaśe: $2
+
+$3',
+	'latexdoc_get_dvi' => 'DVI wobstaraś',
+	'latexdoc_get_pdf' => 'PDF wobstaraś',
+	'latexdoc-desc' => 'Zgromadne wobźěłowanje dokumentow LaTeX',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

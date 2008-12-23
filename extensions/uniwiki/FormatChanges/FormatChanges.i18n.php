@@ -16,6 +16,13 @@ $messages['en'] = array(
 	'formatchanges-editedby' => 'edited by',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'formatchanges-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -121,6 +128,16 @@ $messages['km'] = array(
 	'formatchanges-editedby' => 'កែប្រែ​ដោយ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'formatchanges-desc' => 'Jif dä Sigg „[[Special:RecentChanges|{{int:recentchanges}}]]“ en ander Ußsin.',
+	'formatchanges-anonymous' => 'Namelos',
+	'formatchanges-createdby' => 'aanjelaat vum',
+	'formatchanges-editedby' => 'verändert vum',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -168,6 +185,15 @@ $messages['pt'] = array(
 	'formatchanges-anonymous' => 'Anónimo',
 	'formatchanges-createdby' => 'criado por',
 	'formatchanges-editedby' => 'editado por',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'formatchanges-anonymous' => 'Anonim',
+	'formatchanges-createdby' => 'creat de',
+	'formatchanges-editedby' => 'modificat de',
 );
 
 /** Russian (Русский)

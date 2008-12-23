@@ -207,6 +207,7 @@ Please create it or change it to use this extension.',
 /** Message documentation (Message documentation)
  * @author Aotake
  * @author Darth Kule
+ * @author Fryed-peach
  * @author IAlex
  * @author Jon Harald Søby
  * @author Meno25
@@ -215,7 +216,9 @@ Please create it or change it to use this extension.',
  */
 $messages['qqq'] = array(
 	'configure' => 'Name of special page displayed in [[Special:SpecialPages]].',
-	'configure-desc' => 'Extension description displayed on [[Special:Version]].',
+	'configure-desc' => 'Extension description displayed on [[Special:Version]].
+
+{{Identical|Authorised user}}',
 	'configure-desc-ns' => '{{Identical|Namespaces}}',
 	'configure-desc-val' => '{{Identical|Value}}',
 	'configure-ext-settings' => '{{Identical|Settings}}',
@@ -1092,21 +1095,35 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Silvonen
  */
 $messages['fi'] = array(
 	'configure' => 'Wikin asetukset',
 	'configure-desc' => 'Mahdollistaa oikeutettujen käyttäjien [[Special:Configure|muuttaa wikin asetuksia]].',
+	'configure-desc-group' => 'Ryhmä',
+	'configure-desc-key' => 'Avain',
+	'configure-desc-ns' => 'Nimiavaruus',
+	'configure-desc-val' => 'Arvo',
+	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Laajennukset',
 	'configure-viewconfig-default-diff' => 'Muutokset oletusasetuksiin verrattuna',
+	'configure-ext-settings' => 'Asetukset',
 	'configure-ext-use-extension' => 'Käytä tätä laajennosta',
 	'configure-ext-use' => 'Käytä',
 	'configure-btn-save' => 'Tallenna',
+	'configure-js-remove' => 'Poista',
+	'configure-js-summary-none' => 'Ei asetuksia',
 	'configure-old' => 'Vanhat versiot',
 	'configure-section-db' => 'Tietokanta',
 	'configure-section-timezone' => 'Aikavyöhyke',
 	'configure-section-css-js' => 'CSS ja JavaScript',
+	'configure-section-cookie' => 'Evästeet',
+	'configure-section-mime' => 'MIME-tyypit',
+	'configure-view' => 'Näytä',
+	'configure-throttle-action-edit' => 'Muokkaa',
+	'configure-throttle-action-move' => 'Siirrä',
 );
 
 /** French (Français)
@@ -2341,6 +2358,16 @@ $messages['km'] = array(
 	'configure-condition-description-6' => 'អាសយដ្ឋាន IP អ្នកប្រើប្រាស់​ស្ថិត​ក្នុង​ជួរ $1',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'configure-desc-ns' => '이름공간',
+	'configure-edit-core' => '미디어위키',
+	'configure-section-recentchanges' => '최근 바뀜',
+	'configure-section-copyright' => '저작권',
+);
+
 /** Krio (Krio)
  * @author Jose77
  */
@@ -2994,6 +3021,56 @@ Er wordt een voorvertoning weergegeven als u het veld verlaat.',
 	'configure-boolop-description-or' => 'Aan tenminste een voorwaarde moet voldaan zijn',
 	'configure-boolop-description-xor' => 'Precies een voorwaarde moet waar zijn',
 	'configure-boolop-description-not' => 'Aan geen enkele voorwaarde moet voldaan zijn',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'configure' => 'Konfigurer wikien',
+	'configure-desc' => 'Gjer det mogleg for autoriserte brukarar å [[Special:Configure|konfigurera]] wikien gjennom eit nettbasert grensesnitt.',
+	'configure-desc-group' => 'Grupper',
+	'configure-desc-key' => 'Nykel',
+	'configure-desc-ns' => 'Namnerom',
+	'configure-desc-val' => 'Verdi',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Utvidingar',
+	'configure-ext-doc' => 'Sjå dokumentasjon på nett',
+	'configure-ext-schemachange' => "'''Åtvaring:''' denne utvidinga krev ei oppdatering av databasen for å fungera som ho skal!",
+	'configure-ext-settings' => 'Innstillingar',
+	'configure-ext-use-extension' => 'Nytt denne utvidinga',
+	'configure-ext-use' => 'Nytt',
+	'configure-form-reason' => 'Årsak for endringa:',
+	'configure-customised' => "''Denne innstillinga har blitt eigendefinert''",
+	'configure-arrayinput-oneperline' => "''(ein per rad)''",
+	'configure-summary' => 'Denne spesialsida lèt deg konfigurera denne wikien, sjå [http://mediawiki.org/wiki/Manual:Configuration_settings konfigurasjonsinnstillingar] for meir informasjon.',
+	'configure-btn-save' => 'Lagra innstillingar',
+	'configure-no-transwiki' => 'Du har ikkje løyve til å endra innstillingar på andre wikiar.',
+	'configure-section-db' => 'Database',
+	'configure-section-db-notallowed' => 'Du har ikkje løyve til å endra databaseinnstillingane.',
+	'configure-section-load-balancing' => 'Last balansering',
+	'configure-section-mysql' => 'MySQL-spesifikk',
+	'configure-section-postgres' => 'PostreSQL-spesifikk',
+	'configure-section-sqlite' => 'SQLite-spesifikk',
+	'configure-section-email' => 'E-post',
+	'configure-section-enotif' => 'E-postvarsling',
+	'configure-section-localization' => 'Omsetting',
+	'configure-section-timezone' => 'Tidssona',
+	'configure-section-zh-conversion' => 'Kinesisk konvertering',
+	'configure-section-html' => 'HTML',
+	'configure-section-debug' => 'Feilsøking',
+	'configure-section-profiling' => 'Profilering',
+	'configure-section-site' => 'Tilpassing av sida',
+	'configure-section-images' => 'Filer',
+	'configure-section-antivirus' => 'Antivirus',
+	'configure-select-wiki-submit' => 'Vel',
+	'configure-setting-not-available' => 'Denne innstillinga er ikkje tilgjengeleg i denne versjonen av MediaWiki',
+	'configure-view' => 'Sjå',
+	'configure-view-all-versions' => 'Fullstendig lista over versjonar',
+	'configure-view-default' => 'Standardinnstillingar',
+	'configure-view-not-allowed' => 'Du har ikkje høve til å sjå denne innstillinga.',
+	'configure-throttle-action-edit' => 'Endra',
+	'configure-throttle-action-move' => 'Flytt',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -3866,7 +3943,7 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 	'configure-condition-description-1' => 'Minimálny počet úprav je $1',
 	'configure-condition-description-2' => 'Minimálny vek účtu je $1 {{PLURAL:$1|sekunda|sekundy|sekúnd}}',
 	'configure-condition-description-3' => 'Email je potvrdený',
-	'configure-condition-description-4' => 'Nachádza sa {{PLURAL:$2|v skupine $1|vo všetkých skupinách $1}}',
+	'configure-condition-description-4' => 'Nachádza sa {{PLURAL:$1|v skupine $1|vo všetkých skupinách $1}}',
 	'configure-condition-description-5' => 'IP adresa používateľa je $1',
 	'configure-condition-description-6' => 'IP adresa používateľa v rozsahu $1',
 	'configure-boolop-description-and' => 'Všetky podmienky musia byť splnené',

@@ -75,6 +75,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Aotake
  * @author Darth Kule
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  */
@@ -83,6 +84,8 @@ $messages['qqq'] = array(
 	'contrib-hist-name' => '{{Identical|Name}}',
 	'contrib-hist-date' => '{{Identical|Date}}',
 	'fundraiserstats-date' => '{{Identical|Date}}',
+	'fundraiserstats-day' => '* $1 is the nth day of an annual fundraiser
+* $2 is the year of a fundraiser',
 );
 
 /** Afrikaans (Afrikaans)
@@ -421,6 +424,39 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'contributionreporting-desc' => 'Live-rozpšawjanje wó pósćiwańskej akciji Wikimedije',
+	'contributiontotal' => 'Dary dogromady',
+	'contributionhistory' => 'Pśeběg pósćiwanja',
+	'contrib-hist-header' => 'Komentary pósćiwarjow w realnem casu z cełego swěta',
+	'contrib-hist-name' => 'Mě',
+	'contrib-hist-date' => 'Cas a datum',
+	'contrib-hist-amount' => 'Suma',
+	'contrib-hist-next' => 'Starše dary',
+	'contrib-hist-previous' => 'Nowše dary',
+	'contrib-hist-anonymous' => 'Anonymne',
+	'contributionstatistics' => 'Pósćiwańska statistika',
+	'contribstats-desc' => 'Zwobraznja statistiku za dary na załožbu Wikimedia Foundation',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Cełkowna suma za źinsa|Dnjowne cełkowne sumy za {{PLURAL:$1|slědny źeń|slědnej $1 dnja|slědne $1 dny|slědnych $1 dnjow}}}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Cełkowna suma za toś ten mjasec|Mjasecne cełkowne sumy za {{PLURAL:$1|slědny mjasec|slědnej $1 mjaseca|slědne $1 mjasece|slědnych $1 mjasecow}}}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Cełkowna suma za jaden mjasec|Mjasecne sumy za {{PLURAL:$1|$1 mjasec|$1 mjaseca|$1 mjasece|$1 mjasecow}}}}',
+	'contribstats-currency-range-totals' => 'Pjenjeze dogromady (wót $1 do $2)',
+	'contribstats-contribution-range-breakdown' => 'Rozklucenje darow pó gódnośe (wót $1 do $2)',
+	'contribstats-currency-totals' => 'Pjenjeze dogromady za etatowe lěto $1',
+	'contribstats-contribution-breakdown' => 'Rozklucenje darow pó gódnośe za etatowe lěto $1',
+	'contribstats-day' => 'Źeń',
+	'contribstats-month' => 'Mjasec',
+	'contribstats-currency' => 'Pjenjeze',
+	'contribstats-amount' => 'Suma (USD)',
+	'contribstats-contributions' => 'Dary',
+	'contribstats-total' => 'Dogromady (USD)',
+	'contribstats-avg' => 'Pśerězk (USD)',
+	'contribstats-max' => 'Maksimum (USD)',
+	'contribstats-percentage-ytd' => 'Procentowa sajźba (YTD)',
+	'contribstats-total-ytd' => 'Dogromady (YTD)',
+	'contribstats-value-exactly' => 'Eksaktnje $1',
+	'contribstats-value-under' => 'Mjenjej ako $1',
+	'contribstats-value-from' => 'Wót $1 - $2',
+	'contribstats-value-over' => 'Wěcej ako $1',
 	'fundraiserstatistics' => 'Pósćiwańska statistika',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Źeń $1 z $2',
@@ -432,6 +468,7 @@ $messages['dsb'] = array(
 	'fundraiserstats-tab-contributions' => 'Licba pśinoskow',
 	'fundraiserstats-tab-averages' => 'Pśerězki (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
+	'specialpages-group-contribution' => 'Dary/Pósćiwańska akcija',
 );
 
 /** Esperanto (Esperanto)
@@ -482,6 +519,7 @@ $messages['eo'] = array(
 	'fundraiserstats-tab-contributions' => 'Nombro de kontribuoj',
 	'fundraiserstats-tab-averages' => 'Averaĝoj (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumoj (USD)',
+	'specialpages-group-contribution' => 'Kontribuoj/Monkolekto',
 );
 
 /** Spanish (Español)
@@ -554,6 +592,7 @@ $messages['fa'] = array(
  * @author Crt
  * @author Silvonen
  * @author Str4nd
+ * @author Tarmo
  */
 $messages['fi'] = array(
 	'contributionreporting-desc' => 'Reaaliaikainen raportti Wikimedian varainkeruusta.',
@@ -563,7 +602,45 @@ $messages['fi'] = array(
 	'contrib-hist-name' => 'Nimi',
 	'contrib-hist-date' => 'Aika ja päiväys',
 	'contrib-hist-amount' => 'Summa',
+	'contrib-hist-next' => 'Aiemmat lahjoitukset',
+	'contrib-hist-previous' => 'Uudemmat lahjoitukset',
 	'contrib-hist-anonymous' => 'Nimetön',
+	'contributionstatistics' => 'Lahjoitustilastot',
+	'contribstats-desc' => 'Näyttää tilastoja Wikimedia-säätiölle tehdyistä lahjoituksista',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Summa tältä päivältä|Päivittäiset summat edellisen $1 päivän ajalta}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Summa tältä kuukaudelta|Kuukausittaiset summat edelliseltä $1 kuukaudelta}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Summa $1 kuukauden ajalta|Kuukausittaiset summat $1 kuukauden ajalta}}',
+	'contribstats-currency-range-totals' => 'Valuuttasummat ($1-$2)',
+	'contribstats-contribution-range-breakdown' => 'Lahjoitusten jakauma arvon mukaan ($1-$2)',
+	'contribstats-currency-totals' => 'Valuuttasummat tilikaudelta $1',
+	'contribstats-contribution-breakdown' => 'Lahjoitusten jakauma arvon mukaan tilikaudelta $1',
+	'contribstats-day' => 'Päivä',
+	'contribstats-month' => 'Kuukausi',
+	'contribstats-currency' => 'Valuutta',
+	'contribstats-amount' => 'Määrä (USD)',
+	'contribstats-contributions' => 'Lahjoitukset',
+	'contribstats-total' => 'Summa (USD)',
+	'contribstats-avg' => 'Keskiarvo (USD)',
+	'contribstats-max' => 'Maksimi (USD)',
+	'contribstats-percentage-ytd' => 'Prosenttiosuus (kuluva vuosi)',
+	'contribstats-total-ytd' => 'Summa (kuluva vuosi)',
+	'contribstats-value-exactly' => 'Tasan $1',
+	'contribstats-value-under' => 'Alle $1',
+	'contribstats-value-from' => '$1 - $2',
+	'contribstats-value-over' => 'Yli $1',
+	'contribstats-percentage' => '$1&nbsp;%',
+	'fundraiserstatistics' => 'Rahankeräyksen tilastoja',
+	'fundraiserstats-date' => 'Päiväys',
+	'fundraiserstats-day' => 'Päivä $1 / $2',
+	'fundraiserstats-contributions' => 'Lahjoitukset',
+	'fundraiserstats-total' => 'Summa (USD)',
+	'fundraiserstats-avg' => 'Keskiarvo (USD)',
+	'fundraiserstats-max' => 'Maksimi (USD)',
+	'fundraiserstats-tab-totals' => 'Summat (USD)',
+	'fundraiserstats-tab-contributions' => 'Lahjoitusten määrä',
+	'fundraiserstats-tab-averages' => 'Keskiarvot (USD)',
+	'fundraiserstats-tab-maximums' => 'Maksimit (USD)',
+	'specialpages-group-contribution' => 'Lahjoituksia/Rahankeräys',
 );
 
 /** French (Français)
@@ -802,8 +879,8 @@ $messages['hsb'] = array(
 
 ----',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Cyłkowna suma za dźensa|Dnjowe cyłkowne sumy za {{PLURAL:$1|posledni dźeń|poslednjej $1 dnjej|poslednje $1 dny|poslednich $1 dnjow}}}}',
-	'contribstats-monthly-totals' => '{{PLURAL:$1|Cyłkowna suma za tutón měsać|Cyłkowne sumy za {{PLURAL:$1|posledni měsac|poslednjej $1 měsacaj|poslednje $1 měsacy|poslednich $1 měsacow}}}}',
-	'contribstats-month-range-totals' => '{{PLURAL:$1|Cyłkowna suma za jeden měsać|Cyłkowna suma za {{PLURAL:$1|$1 měsac|$1 měsacaj|$1 měsacy|$1 měsacow}}}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Cyłkowna suma za tutón měsac|Cyłkowne sumy za {{PLURAL:$1|posledni měsac|poslednjej $1 měsacaj|poslednje $1 měsacy|poslednich $1 měsacow}}}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Cyłkowna suma za jedyn měsac|Měsačne sumy za {{PLURAL:$1|$1 měsac|$1 měsacaj|$1 měsacy|$1 měsacow}}}}',
 	'contribstats-currency-range-totals' => 'Měny dohromady (wot $1 do $2)',
 	'contribstats-contribution-range-breakdown' => 'Rozklučenje darow po hódnoće (wot $1 do $2)',
 	'contribstats-currency-totals' => 'Měny dohromady za etatowe lěto $1',
@@ -943,9 +1020,51 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'contributionreporting-desc' => 'ウィキメディア財団の資金調達についてのライブ報告',
+	'contributiontotal' => '寄付総額',
+	'contributionhistory' => '寄付履歴',
+	'contrib-hist-header' => '世界中からのリアルタイムの寄付者コメント',
 	'contrib-hist-name' => '名前',
 	'contrib-hist-date' => '時刻と日付',
+	'contrib-hist-amount' => '額',
+	'contrib-hist-next' => '古い寄付',
+	'contrib-hist-previous' => '新しい寄付',
+	'contrib-hist-anonymous' => '匿名',
+	'contributionstatistics' => '寄付統計',
+	'contribstats-desc' => 'ウィキメディア財団への寄付の統計を表示する',
+	'contribstats-daily-totals' => '{{PLURAL:$1|今日の合計|過去$1日間の1日あたりの合計}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|今月の合計|過去$1月間の1月あたりの合計}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|$1月の合計|$1月間の1月あたりの合計}}',
+	'contribstats-currency-range-totals' => '通貨合計 ($1から$2)',
+	'contribstats-contribution-range-breakdown' => '寄付の金額別細分 ($1から$2)',
+	'contribstats-currency-totals' => '$1会計年度中の通貨合計',
+	'contribstats-contribution-breakdown' => '$1会計年度中の寄付の金額別細分',
+	'contribstats-day' => '日',
+	'contribstats-month' => '月',
+	'contribstats-currency' => '通貨',
+	'contribstats-amount' => '額 (米ドル)',
+	'contribstats-contributions' => '寄付',
+	'contribstats-total' => '総額 (米ドル)',
+	'contribstats-avg' => '平均 (米ドル)',
+	'contribstats-max' => '最大 (米ドル)',
+	'contribstats-percentage-ytd' => '百分率 (年度累計)',
+	'contribstats-total-ytd' => '合計 (年度累計)',
+	'contribstats-value-exactly' => '$1 ちょうど',
+	'contribstats-value-under' => '$1 以下',
+	'contribstats-value-from' => '$1 以上 $2 以下',
+	'contribstats-value-over' => '$1 以上',
+	'fundraiserstatistics' => '資金調達統計',
 	'fundraiserstats-date' => '日付',
+	'fundraiserstats-day' => '$2年の$1日目',
+	'fundraiserstats-contributions' => '寄付',
+	'fundraiserstats-total' => '総額 (米ドル)',
+	'fundraiserstats-avg' => '平均 (米ドル)',
+	'fundraiserstats-max' => '最大 (米ドル)',
+	'fundraiserstats-tab-totals' => '総額 (米ドル)',
+	'fundraiserstats-tab-contributions' => '寄付件数',
+	'fundraiserstats-tab-averages' => '平均 (米ドル)',
+	'fundraiserstats-tab-maximums' => '最大 (米ドル)',
+	'specialpages-group-contribution' => '寄付/資金調達',
 );
 
 /** Javanese (Basa Jawa)
@@ -998,14 +1117,21 @@ $messages['jv'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'contributiontotal' => 'ការរួមចំណែក​សរុប',
+	'contributionhistory' => 'ប្រវត្តិ​នៃ​ការរួមចំណែក',
 	'contrib-hist-name' => 'ឈ្មោះ',
 	'contrib-hist-date' => 'ម៉ោង និង​កាលបរច្ឆេទ',
 	'contrib-hist-amount' => 'តម្លៃ',
+	'contrib-hist-next' => 'ការ​បរិច្ចាគ​ចាស់ៗ',
+	'contrib-hist-previous' => 'ការ​បរិច្ចាគ​ថ្មីៗ',
 	'contrib-hist-anonymous' => 'អនាមិក',
+	'contributionstatistics' => 'ស្ថិតិ​នៃ​ការរួមចំណែក',
+	'contribstats-desc' => 'បង្ហាញ​ស្ថិតិ​សម្រាប់​ការរួមចំណែក​បង្កើត​មូលនិធិ​វិគីមេឌា',
 	'contribstats-day' => 'ថ្ងៃ',
 	'contribstats-month' => 'ខែ',
 	'contribstats-currency' => 'រូបិយប័ណ្ណ',
 	'contribstats-amount' => 'តម្លៃ (USD)',
+	'contribstats-contributions' => 'ការរួមចំណែក',
 	'contribstats-total' => 'សរុប (USD)',
 	'contribstats-avg' => 'មធ្យម (USD)',
 	'contribstats-max' => 'អតិបរមា (USD)',
@@ -1018,10 +1144,12 @@ $messages['km'] = array(
 	'fundraiserstatistics' => 'ស្ថិតិ​គោល',
 	'fundraiserstats-date' => 'កាលបរិច្ឆេទ',
 	'fundraiserstats-day' => 'កាលបរិច្ឆេទ $1 នៃ $2',
+	'fundraiserstats-contributions' => 'ការ​រួមចំណែក',
 	'fundraiserstats-total' => 'សរុប (USD)',
 	'fundraiserstats-avg' => 'មធ្យម (USD)',
 	'fundraiserstats-max' => 'អតិបរមា (USD)',
 	'fundraiserstats-tab-totals' => 'សរុប (USD)',
+	'fundraiserstats-tab-contributions' => 'ចំនួន​នៃ​ការ​រួមចំណែក',
 	'fundraiserstats-tab-averages' => 'មធ្យម (USD)',
 	'fundraiserstats-tab-maximums' => 'អតិបរមា (USD)',
 );
@@ -1037,7 +1165,19 @@ $messages['ko'] = array(
 	'contrib-hist-next' => '이전의 기부',
 	'contrib-hist-previous' => '다음 기부',
 	'contrib-hist-anonymous' => '익명',
+	'contributionstatistics' => '기부 통계',
+	'contribstats-desc' => '위키미디어 재단으로의 기부의 통계를 보여 줌',
+	'contribstats-currency' => '화폐',
 	'contribstats-amount' => '금액 (USD)',
+	'contribstats-total' => '합계 (USD)',
+	'contribstats-avg' => '평균 (USD)',
+	'contribstats-value-exactly' => '정확히 $1',
+	'contribstats-value-under' => '$1 미만',
+	'contribstats-value-from' => '$1 - $2 사이',
+	'contribstats-value-over' => '$1 초과',
+	'fundraiserstats-date' => '날짜',
+	'fundraiserstats-avg' => '평균 (USD)',
+	'fundraiserstats-tab-averages' => '평균 (USD)',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -1138,7 +1278,7 @@ $messages['lb'] = array(
 	'fundraiserstats-tab-totals' => 'Total (USD)',
 	'fundraiserstats-tab-contributions' => 'Zuel vun den Donen',
 	'fundraiserstats-tab-averages' => 'Duerchschnëtt (USD)',
-	'fundraiserstats-tab-maximums' => 'Maximumen (USD',
+	'fundraiserstats-tab-maximums' => 'Maximumen (USD)',
 	'specialpages-group-contribution' => 'Donen/Quêteur',
 );
 
@@ -1276,6 +1416,10 @@ $messages['no'] = array(
 	'contribstats-max' => 'Maksimum (USD)',
 	'contribstats-percentage-ytd' => 'Prosentandel (hittil i år)',
 	'contribstats-total-ytd' => 'Totalt (hittil i år)',
+	'contribstats-value-exactly' => 'Nøyaktig $1',
+	'contribstats-value-under' => 'Under $1',
+	'contribstats-value-from' => 'Fra $1–$2',
+	'contribstats-value-over' => 'Over $1',
 	'fundraiserstatistics' => 'Innsamlingsstatistikk',
 	'fundraiserstats-date' => 'Dato',
 	'fundraiserstats-day' => 'Dag $1 av $2',
@@ -1287,6 +1431,7 @@ $messages['no'] = array(
 	'fundraiserstats-tab-contributions' => 'Antall bidrag',
 	'fundraiserstats-tab-averages' => 'Gjennomsnitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
+	'specialpages-group-contribution' => 'Bidrag/Innsamling',
 );
 
 /** Occitan (Occitan)

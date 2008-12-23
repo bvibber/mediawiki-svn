@@ -234,6 +234,16 @@ $messages['nl'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Nieuwe thread starten',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'discussionthreading-replysection' => 'svar',
+	'discussionthreading-replysectionhint' => 'Svar på dette innlegget',
+	'discussionthreading-threadnewsection' => 'ny',
+	'discussionthreading-threadnewsectionhint' => 'Start ein ny tråd',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

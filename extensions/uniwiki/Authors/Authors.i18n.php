@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'authors_anonymous'  => 'Anonymous',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'authors-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -131,6 +138,15 @@ $messages['km'] = array(
 	'authors_anonymous' => 'អនាមិក',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'authors-desc' => 'Deiht en Leß met de Schriiver op jede Sigg em Wiki.',
+	'authors_authors' => 'Schriiver',
+	'authors_anonymous' => 'Namelos',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -166,6 +182,14 @@ $messages['pt'] = array(
 	'authors-desc' => 'Acrescenta uma lista de contribuidores às páginas',
 	'authors_authors' => 'Autores',
 	'authors_anonymous' => 'Anónimo(s)',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'authors_authors' => 'Autori',
+	'authors_anonymous' => 'Anonim',
 );
 
 /** Russian (Русский)

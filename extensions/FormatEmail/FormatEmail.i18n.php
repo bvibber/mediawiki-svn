@@ -323,6 +323,16 @@ Deze email is naar u verzonden via het {{SITENAME}}-emailsysteem door $1.
 $2',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'email-desc' => 'Gjer at eigendefinerte meldingar kan bli lagte til toppen eller botnen av brukarar sine e-postar.',
+	'email_footer' => 'Denne e-posten har blitt sendt til deg frå $1 via {{SITENAME}} sitt e-postsystem.
+
+$2',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

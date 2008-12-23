@@ -162,10 +162,23 @@ $messages['be'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
+	'usernameblacklist-desc' => 'Дадае [[MediaWiki:Usernameblacklist|чорны сьпіс назваў рахункаў]] для забароны стварэньня рахункаў удзельнікаў, якія адпавядаюць рэгулярным выразам',
 	'blacklistedusername' => 'Забароненае імя ўдзельніка',
 	'blacklistedusernametext' => 'Імя ўдзельніка, якое Вы абралі, знаходзіцца ў [[MediaWiki:Usernameblacklist|сьпісе забароненых]]. Калі ласка, абярыце іншае імя ўдзельніка.',
+	'usernameblacklist' => '<pre>
+# Запісы з гэтага сьпісу будуць выкарыстоўвацца як часткі рэгулярнага выразу для
+# забароны стварэньня рахунку.
+# Кожная частка павінна быць часткай пунктаванага сьпісу, і г.д.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Наступны радок чорнага сьпісу памылковы|Наступныя радкі чорнага сьпісу памылковыя}}; калі ласка, выпраўце {{PLURAL:$1|яго|іх}} перад захаваньнем:',
+	'right-uboverride' => 'Ігнараваць чорны сьпіс назваў рахункаў удзельнікаў',
 );
 
 /** Bulgarian (Български)
@@ -213,7 +226,10 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'usernameblacklist-desc' => 'Dodaje [[MediaWiki:Usernameblacklist|spisak nepoželjnih korisničkih imena]] da bi spriječio pravljenje korisničkih računa koji odgovaraju jednoj ili više stavki na spisku',
 	'blacklistedusername' => 'Neprihvatljivo korisničko ime',
+	'blacklistedusernametext' => 'Korisničko ime koje ste izabrali se nalazi na [[MediaWiki:Usernameblacklist|spisku nepoželjnih korisničkih imena]].
+Molimo Vas da odaberete drugo ime.',
 	'usernameblacklist' => '<pre>
 # Stavke u ovom spisku će se koristiti kao dio standardnog izraza kada
 # se provjeravaju imena korisnika koja su neprihvatljiva. Svaka stavka bi trebala biti
@@ -222,6 +238,7 @@ $messages['bs'] = array(
 # * Foo
 # * [Bb]ar
 </pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Slijedeći $1 red|Slijedeća $1 reda|Slijedećih $1 redova}} u spisku nepoželjnih imena {{PLURAL:$1|nije validan|nisu validna|nisu validni}}; molimo da {{PLURAL:$1|ga|ih}} ispravite prije spremanja:',
 	'right-uboverride' => 'Zaobilaženje spiska nepoželjnih korisničkih imena',
 );
 

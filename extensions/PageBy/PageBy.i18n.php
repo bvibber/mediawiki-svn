@@ -222,9 +222,13 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Mizusumashi
  */
 $messages['ja'] = array(
+	'pageby-desc' => '<code><nowiki><pageby></nowiki></code>タグを使って、wikiページに投稿者をインラインで表示する',
+	'pageby-first' => '[[Support#Pageby-first　and Pageby-last]]で、変数の意味を確認中。--[[User:Mizusumashi|Mizusumashi]] 15:01, 23 December 2008 (UTC)',
 	'pageby-contributors' => '投稿者:',
+	'pageby-anon' => '<i>匿名</i>',
 );
 
 /** Javanese (Basa Jawa)
@@ -304,6 +308,17 @@ $messages['nl'] = array(
 	'pageby-last' => 'Laatste <a href="$3">wijziging</a> door $1, $2',
 	'pageby-contributors' => 'Redacteuren:',
 	'pageby-anon' => '<i>anoniem</i>',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'pageby-desc' => 'Viser forfattarar på innhaldssider med merket <code><nowiki><pageby></nowiki></code>',
+	'pageby-first' => 'Sida oppretta av $1 $2',
+	'pageby-last' => 'Sist <a href="$3">endra</a> av $1 $2',
+	'pageby-contributors' => 'Forfattarar:',
+	'pageby-anon' => '<i>anonym</i>',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

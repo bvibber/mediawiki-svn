@@ -100,6 +100,11 @@ $aliases['lb'] = array(
 	'Invitations' => array( 'Invitatiounen' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'Invitations' => array( 'Покани' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'Invitations' => array( 'Jemputan' ),

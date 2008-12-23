@@ -13,6 +13,13 @@ $messages['en'] = array(
 	'formatsearch-desc' => 'Cleans up the search results page',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'formatsearch-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -82,6 +89,13 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'formatsearch-desc' => 'សំអាត​ទំព័រ​លទ្ធផល​ស្វែងរក',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'formatsearch-desc' => 'Deiht de Resultat-Sigg vum Söke oprühme.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

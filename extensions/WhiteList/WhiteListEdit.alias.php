@@ -83,6 +83,7 @@ $aliases['lb'] = array(
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'WhiteList' => array( 'БелаЛиста' ),
+	'WhiteListEdit' => array( 'УредиБелаЛиста' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

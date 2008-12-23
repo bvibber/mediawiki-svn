@@ -108,6 +108,11 @@ $aliases['lb'] = array(
 	'InterwikiList' => array( 'Interwiki-Lëscht' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'InterwikiList' => array( 'ИнтервикиЛиста' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'InterwikiList' => array( 'Interwikilieste' ),

@@ -141,6 +141,18 @@ $messages['fa'] = array(
 	'dplforum-toomany' => 'تالار گفتگوی DPL: تعداد بیش از حد رده‌ها!',
 );
 
+/** Finnish (Suomi)
+ * @author Tarmo
+ */
+$messages['fi'] = array(
+	'dplforum-desc' => 'DPL-pohjainen foorumilaajennus',
+	'dplforum-by' => 'tehnyt',
+	'dplforum-edited' => ' - Viimeksi muokattu',
+	'dplforum-never' => 'Ei koskaan',
+	'dplforum-toofew' => 'DPL-forum: Liian vähän kategorioita!',
+	'dplforum-toomany' => 'DPL-forum: Liian paljon kategorioita!',
+);
+
 /** French (Français)
  * @author Cedric31
  * @author Grondin

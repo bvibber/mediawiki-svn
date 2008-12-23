@@ -56,6 +56,20 @@ $messages['bcc'] = array(
 	'titlekey-desc' => 'عنوان پیشوند گردگ پیشنهاد ترینگ',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'titlekey-desc' => 'Дапамога ў пошуку па першых літарах назвы',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'titlekey-desc' => 'Pozadinski proces pri traženju po naslovima',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

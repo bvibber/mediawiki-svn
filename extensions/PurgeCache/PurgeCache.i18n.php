@@ -246,9 +246,11 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'purgecache' => 'Slett mellomlagringa',
+	'purgecache-desc' => '[[Special:PurgeCache|Spesialsida]] brukt for å sletta OBJETCACHE-tabellen',
 	'purgecache-warning' => 'Dette slettar mellomlagringa.',
 	'purgecache-purged' => 'Mellomlagringa er sletta.',
 	'purgecache-button' => 'Slett mellomlagring',

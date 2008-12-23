@@ -63,9 +63,11 @@ Please check your popup blocker.",
 );
 
 /** Message documentation (Message documentation)
+ * @author Purodha
  * @author Siebrand
  */
 $wgCustomToolbarMessages['qqq'] = array(
+	'ct-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'ct_upload' => '(information may be incorrect)
 * $1 can be "image" or "link"',
 );
@@ -606,6 +608,13 @@ $wgCustomToolbarMessages['km'] = array(
 	'ct_user_sample' => 'ឈ្មោះអ្នកប្រើប្រាស់',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$wgCustomToolbarMessages['ksh'] = array(
+	'ct-desc' => 'Deiht en ußboubare Werkzeuch-Reih dobei.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -826,6 +835,45 @@ $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_close' => 'Fechar a janela',
 	'ct_success' => 'O arquivo foi carregado com sucesso!',
 	'ct_popupblocked' => 'O pop-up para carregar o arquivo foi bloqueado. Verifique o seu bloqueador de pop-ups.',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$wgCustomToolbarMessages['ro'] = array(
+	'ct-desc' => 'Adaugă o bară de unelte extensibilă',
+	'ct_bold_sample' => 'Text aldin',
+	'ct_bold_tip_ins' => 'Inserează text aldin',
+	'ct_bold_tip_wrap' => 'Fă acest text aldin',
+	'ct_bold_caption' => 'Aldin',
+	'ct_italic_sample' => 'Text cursiv',
+	'ct_italic_tip_ins' => 'Inserează text cursiv',
+	'ct_italic_caption' => 'Cursiv',
+	'ct_internal_tip_ins' => 'Inserează o legătură internă',
+	'ct_internal_tip_wrap' => 'Fă acest text o legătură internă',
+	'ct_internal_caption' => 'Legătură internă',
+	'ct_external_tip_ins' => 'Inserează o legătură externă',
+	'ct_external_tip_wrap' => 'Fă acest text o legătură externă',
+	'ct_external_caption' => 'Legătură externă',
+	'ct_image_tip' => 'Inserează o imagine',
+	'ct_image_caption' => 'Adaugă o imagine',
+	'ct_attachment_tip' => 'Inserează un ataşament',
+	'ct_attachment_caption' => 'Adaugă ataşament',
+	'ct_math_sample' => 'Inserează o formulă LaTeX aici',
+	'ct_math_tip_ins' => 'Inserează o formulă matematică (LaTeX)',
+	'ct_math_tip_wrap' => 'Fă acest text o formulă matematică (LaTeX)',
+	'ct_math_caption' => 'Formulă',
+	'ct_nowiki_sample' => 'Inserează text neformatat aici',
+	'ct_nowiki_tip_ins' => 'Ignoră formatarea wiki',
+	'ct_nowiki_tip_wrap' => 'Ignoră formatarea wiki pentru acest text',
+	'ct_horizontal_tip' => 'Inserează o linie orizontală (folosiţi-o cumpătat)',
+	'ct_horizontal_caption' => 'Linie orizontală',
+	'ct_upload' => 'Încarcă $1',
+	'ct_select' => 'Selectează $1 pentru încărcare',
+	'ct_close' => 'Închide fereastra',
+	'ct_success' => 'Încărcare a fişierului cu succes!',
+	'ct_user_user' => 'Utilizator',
+	'ct_user_sample' => 'Nume de utilizator',
 );
 
 /** Russian (Русский)

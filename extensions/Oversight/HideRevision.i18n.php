@@ -870,6 +870,7 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'hiderevision-reason' => 'Syy (kirjataan yksityisesti)',
 	'hiderevision-submit' => 'Piilota pysyvästi nämä tiedot',
 	'hiderevision-tab' => 'Piilota versio',
+	'hiderevision-link' => 'Piilotetut muokkaukset',
 	'hiderevision-norevisions' => 'Poistettavaa versiota ei ole määritetty.',
 	'hiderevision-noreason' => 'Poistosyy on määritettävä.',
 	'hiderevision-status' => 'Versio $1: $2',
@@ -889,6 +890,8 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 	'oversight-hidden' => 'Piilotettu versio',
 	'oversight-header' => 'Alla on lista pysyvästi piilotetuista versioista, jotka eivät näy julkisesti. Näiden tietojen julkaiseminen voi johtaa tämän työkalun käyttöoikeuksien menetykseen.',
 	'oversight-legend' => 'Etsi häivytyslokista',
+	'oversight-oversighter' => 'Häivyttäjä:',
+	'oversight-offender' => 'Käyttäjä:',
 );
 
 /** Faroese (Føroyskt)
@@ -1773,6 +1776,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'hiderevision' => '영구히 특정 판을 숨기기',
+	'hiderevision-desc' => '법적인 이유 등으로 인하여 특정 판을 숨김',
 	'group-oversight' => '오버사이트',
 	'group-oversight-member' => '오버사이트',
 	'grouppage-oversight' => '{{ns:project}}:오버사이트',
@@ -1787,6 +1791,7 @@ $messages['ko'] = array(
 '''이 기능을 남용할 경우 권한이 해제될 수 있습니다.'''
 
 삭제된 편집은 웹 사이트를 통해 아무에게도 보여지지 않을 것입니다. 하지만 삭제된 편집은 실수를 했을 때 데이터베이스 관리자에 의해 수동으로 복구될 수 있습니다.",
+	'hiderevision-reason' => '이유 (비공개적으로 기록될 것입니다):',
 	'hiderevision-submit' => '이 데이터를 영구히 숨기기',
 	'hiderevision-tab' => '이 판을 숨기기',
 	'hiderevision-link' => '숨겨진 사용자 기여',

@@ -902,7 +902,7 @@ Yèn kaluputan iki tetep dumadi manèh, tegesé basis data iki mbok-menawa rusak
 $messages['km'] = array(
 	'changeauthor-pagenameform-go' => 'ទៅ',
 	'changeauthor-comment' => 'យោបល់៖',
-	'changeauthor-changeauthors-multi' => 'ផ្លាស់ប្តូរ$1អ្នកនិពន្ធ',
+	'changeauthor-changeauthors-multi' => 'ផ្លាស់ប្តូរ{{PLURAL:$1|author|អ្នកនិពន្ធ}}',
 	'changeauthor-changeauthors-single' => 'ផ្លាស់ប្តូរ អ្នកនិពន្ធ',
 	'changeauthor-invalid-username' => 'ឈ្មោះ​អ្នកប្រើប្រាស់ "$1" គ្មានសុពលភាព។',
 	'changeauthor-nosuchuser' => 'មិនមានអ្នកប្រើប្រាស់ឈ្មោះ "$1" ទេ។',

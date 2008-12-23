@@ -325,11 +325,31 @@ $messages['th'] = array(
 	'abcdownload' => 'ดาวน์โหลด:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'abcdesc' => 'Nagdaragdag ng tatak na <tt>&lt;abc&gt;</tt> para maipormat ang tugtuging ABC',
+	'abcdownload' => 'Ikargang-pakuha:',
+	'abcabc' => 'ABC',
+	'abcpdf' => 'PDF',
+	'abcps' => 'PostScript',
+	'abcmidi' => 'MIDI',
+	'abcvorbis' => 'Ogg Vorbis',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'abcdesc' => 'Thêm thẻ <tt>&lt;abc&gt;</tt> để định dạng nhạc ABC',
 	'abcdownload' => 'Tải xuống:',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'abcdownload' => 'Ìrùsílẹ̀:',
 );
 

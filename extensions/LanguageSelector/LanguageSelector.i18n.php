@@ -472,10 +472,13 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
 	'languageselector' => 'Språk',
+	'languageselector-desc' => 'Spåkveljar på kvar sida, òg for gjester',
+	'languageselector-setlang' => 'set',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

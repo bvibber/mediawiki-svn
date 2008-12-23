@@ -248,6 +248,16 @@ $messages['nl'] = array(
 	'piwik-browsers' => 'Browsers',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'piwik-desc' => 'Legg til eit Piwik-skript for sporing i MediaWiki og viser [[Special:Piwik|litt statistikk]]',
+	'piwik-lastvisits' => 'Siste vitjingar',
+	'piwik-countries' => 'Land',
+	'piwik-browsers' => 'Nettlesarar',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

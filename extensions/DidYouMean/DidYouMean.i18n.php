@@ -203,6 +203,13 @@ $messages['nl'] = array(
 	'didyoumean-desc' => 'Links toevoegen naar pagina\'s met "gelijksoortige" namen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'didyoumean-desc' => 'Legg til lenkjer til sider med liknande titlar',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

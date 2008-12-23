@@ -13,6 +13,13 @@ $messages['en'] = array(
 	'csshooks-desc' => 'Adds CSS to the HTML output of pages for better styling',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'csshooks-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -83,6 +90,13 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'csshooks-desc' => 'より良いスタイルのためにページのHTML出力にCSSを加える',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'csshooks-desc' => 'Deiht CSS bei de Sigge ier HTML, domet et Wiki besser ußsüht.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

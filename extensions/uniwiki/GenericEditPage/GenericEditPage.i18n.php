@@ -37,7 +37,8 @@ Add some using the tools on the right.', // on the right? How does that work in 
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'gep-desc' => 'Short description of the Gep extension, shown on [[Special:Version]]',
+	'gep-desc' => 'Short description of the Gep extension, shown on [[Special:Version]].
+Do not translate or change links.',
 	'gep-categories' => '{{Identical|Categories}}',
 	'gep-addcategorybutton' => '{{Identical|Add}}',
 	'gep-addsectionbutton' => '{{Identical|Add}}',
@@ -362,7 +363,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'gep-desc' => 'Määt de de Sigg för Sigge ze Ändere bequeemer för de Schriever',
+	'gep-desc' => 'Määt de de Sigg för Sigge ze Ändere bequeemer för de Schriever.',
 	'gep-nocategories' => 'Vör em Afspeichere moß winnichstens ein Saachjropp ußjesooht sin.',
 );
 
@@ -498,6 +499,20 @@ $messages['pt-br'] = array(
 	'gep-nosectioninstructions' => 'Não há seções nesta página.
 Use as ferramentas à direita para incluir algumas seções.',
 	'gep-nocategories' => 'Selecione, no mínimo, uma categoria antes de salvar',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'gep-emailfailure' => 'Ne pare rău, sugestia dumneavoastră nu a putut fi procesată.',
+	'gep-categories' => 'Categorii',
+	'gep-addcategory' => 'Adaugă o categorie',
+	'gep-suggestcategory' => 'Sugerează o categorie',
+	'gep-sections' => 'Secţiuni',
+	'gep-addsection' => 'Adaugă o secţiune',
+	'gep-classicmode' => 'Mod clasic',
+	'gep-genericmode' => 'Mod generic',
 );
 
 /** Russian (Русский)

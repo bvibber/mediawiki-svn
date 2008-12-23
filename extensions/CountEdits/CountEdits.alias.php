@@ -67,6 +67,11 @@ $aliases['lb'] = array(
 	'CountEdits' => array( 'Ännerungen zielen' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'CountEdits' => array( 'БројНаУредувања' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'CountEdits' => array( 'Bewarkingen_tellen' ),

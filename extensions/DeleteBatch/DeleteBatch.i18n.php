@@ -494,11 +494,25 @@ $messages['ja'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'deletebatch' => 'លុប​បាច់​នៃ​ទំព័រ',
+	'deletebatch-desc' => '[[Special:DeleteBatch|លុប​បាច់​ទំព័រ]]',
 	'deletebatch-button' => 'លុប',
 	'deletebatch-here' => '<b>ទីនេះ</b>',
+	'deletebatch-caption' => 'បញ្ជី​ទំព័រ',
+	'deletebatch-title' => 'លុប​បាច់',
+	'deletebatch-link-back' => 'អ្នក​អាច​ត្រឡប់​ទៅកាន់​ផ្នែកបន្ថែម',
+	'deletebatch-as' => 'រត់​ស្គ្រីប​ជា',
+	'deletebatch-or' => '<b>ឬ</b>',
+	'deletebatch-page' => 'ទំព័រ​ដែល​ត្រូវ​លុប',
 	'deletebatch-reason' => 'មូលហេតុនៃការលុប',
 	'deletebatch-processing' => 'ការលុបទំព័រ',
+	'deletebatch-from-file' => 'ពី​បញ្ជី​ឯកសារ',
+	'deletebatch-from-form' => 'ពី​ទម្រង់',
 	'deletebatch-success-subtitle' => 'សម្រាប់ $1',
+	'deletebatch-omitting-invalid' => 'លុប​ទំព័រ​មិនត្រឹមត្រូវ $1 ។',
+	'deletebatch-file-bad-format' => 'ឯកសារ​គួរតែ​ជា​អត្ថបទធម្មតា',
+	'deletebatch-file-missing' => 'មិន​អាច​អាន​ឯកសារ​ដែល​បាន​ផ្ដល់​ឱ្យ',
+	'deletebatch-select-script' => 'លុប​ស្គ្រីប​ទំព័រ',
 	'deletebatch-select-yourself' => 'អ្នក',
 );
 

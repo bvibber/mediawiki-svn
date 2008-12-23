@@ -1391,9 +1391,13 @@ $messages['km'] = array(
 	'math_CannotRunLatex' => 'មិនអាចដំណើរការ latex',
 	'math_CannotWritePngDirectory' => 'មិនអាច​សរសេរ​ទៅ​ថតឯកសារ PNG',
 	'math_CannotWriteTexFile' => 'មិនអាចសរសេរ​ទៅ​ឯកសារ​អក្សរសុទ្ធ',
+	'math_IllegalCharacter' => 'តួអក្សរ​ដែល​ត្រូវ​ហាម​ក្នុង​ការ​បញ្ចូល',
 	'math_IllegalCommandInMathMode' => 'បញ្ជា "$1" ត្រូវហាម ក្នុងរបបគណិត',
 	'math_IllegalCommandInMathModeWithHint' => 'បញ្ជា "$1" ត្រូវហាម ក្នុងរបបគណិត (អ្នកចង់ប្រើប្រាស់ "$2" ជំនួស ?)',
 	'math_IllegalCommandInTextMode' => 'បញ្ជា "$1" ត្រូវហាម ក្នុងរបបអត្ថបទ',
+	'math_IllegalCommandInTextModeWithHint' => 'បញ្ជា "$1" ត្រូវហាម ក្នុងរបបអត្ថបទ
+
+ប្រហែលជា អ្នក​មានបំណង​​ប្រើប្រាស់ "$2" ជំនួស​ហើយ​?',
 	'math_InvalidColour' => 'ពណ៌ "$1" មិនត្រឹមត្រូវ',
 	'math_LatexFontNotSpecified' => 'គ្មាន ក្រមអក្សរ LaTeX ត្រូវបានបញ្ជាក់ សម្រាប់ "$1"',
 	'math_LatexPackageUnavailable' => 'មិនអាច ទៅជា PNG ព្រោះ គ្មានកញ្ចប់ LaTeX "$1"',

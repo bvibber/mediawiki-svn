@@ -1503,8 +1503,20 @@ $messages['ja'] = array(
  */
 $messages['km'] = array(
 	'configure-setting-wgSitename' => 'ឈ្មោះ​តំបន់បណ្ដាញ',
+	'configure-setting-wgDBname' => 'ឈ្មោះ​​មូលដ្ឋានទិន្នន័យ​ដែល​ត្រូវ​ប្រើ',
+	'configure-setting-wgDBpassword' => 'ពាក្យសំងាត់​សម្រាប់ $wgDBuser',
+	'configure-setting-wgDBport' => 'ទ្វារ​សម្រាប់​ម៉ាស៊ីនបម្រើ​មូលដ្ឋានទិន្នន័យ',
+	'configure-setting-wgDBtype' => 'ប្រភេទ​មូលដ្ឋានទិន្នន័យ​ដែល​ត្រូវ​ប្រើ',
+	'configure-setting-wgMediaHandlers-key' => 'ប្រភេទ MIME',
 	'configure-setting-wgArticleRobotPolicies-key' => 'ចំណងជើង​ទំព័រ',
 	'configure-setting-wgExtraLanguageNames-value' => 'ឈ្មោះ',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'configure-setting-wgSitename' => '사이트 이름',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -2598,6 +2610,56 @@ $messages['oc'] = array(
 	'configure-setting-wgServer' => "L'URL de basa del servidor",
 	'configure-setting-wgServerName' => 'Lo nom del servidor sens lo protocòl. (per exemple oc.wikipedia.org)',
 	'configure-setting-wgSQLiteDataDirMode' => 'Mòde per defaut pel dorsièr de las donadas SQLite a sa creacion',
+	'configure-setting-wgStyleDirectory' => 'Lo camin, sul sistèma de fichièrs, del dorsièr que conten los abilhatges',
+	'configure-setting-wgStylePath' => "L'URL del dorsièr que conten los abilhagtes",
+	'configure-setting-wgStyleSheetPath' => "L'URL del dorsièr que conten los fuèlhs d'estil",
+	'configure-setting-wgTmpDirectory' => "L'URL del dorsièr temporari",
+	'configure-setting-wgUploadBaseUrl' => "L'URL de basa pels fichièrs telecargats se lo depaus partejat es pas utilizat",
+	'configure-setting-wgUsePathInfo' => "Utilizar d'URL « polidas »",
+	'configure-setting-wgUploadDirectory' => 'Lo camin, sul sistèma fichièrs, del dorsièr del depaus local',
+	'configure-setting-wgUploadNavigationUrl' => 'URL del ligam cap al telecargament de fichièrs',
+	'configure-setting-wgUploadPath' => "L'URL del dorsièr del depaus local",
+	'configure-setting-wgVariantArticlePath' => 'Camin de las paginas per las variantas de lenga',
+	'configure-setting-wgAllowCategorizedRecentChanges' => 'Autorizar lo filtratge dels darrièrs cambiaments per una categoria e sas soscategorias',
+	'configure-setting-wgPutIPinRC' => "Metre l'adreça IP del contributor dins la taula dels darrièrs cambiaments",
+	'configure-setting-wgRCChangedSizeThreshold' => "Metre en evidéncia una diferéncia de talha mai granda qu'aquesta valor dins los darrièrs cambiaments",
+	'configure-setting-wgRCFilterByAge' => 'Filtrar $wgRCLinkDays per amagar las valors mai grandas que $wgRCMaxAge',
+	'configure-setting-wgRCLinkLimits' => "Limits del nombre de cambiaments d'afichar dins los darrièrs cambiaments",
+	'configure-setting-wgRCLinkDays' => "Limits del nombre de jorns d'afichar dins los darrièrs cambiaments",
+	'configure-setting-wgRCMaxAge' => 'Edat minimum dels darrièrs cambiaments de purgar',
+	'configure-setting-wgRCShowChangedSize' => 'Mostrar la diferéncia del nombre de caractèrs dins los darrièrs cambiaments',
+	'configure-setting-wgRCShowWatchingUsers' => "Afichar lo nombre d'utilizaires que seguisson la pagina dins los darrièrs cambiaments",
+	'configure-setting-wgShowUpdatedMarker' => 'Afichar lo ligam « modificat dempuèi ma darrièra visita » dins los darrièrs cambiaments, la lista de seguit e los istorics',
+	'configure-setting-wgUseRCPatrol' => 'Utilizar la patrolha dels darrièrs cambiaments per verificar lo vandalisme',
+	'configure-setting-wgRC2UDPAddress' => 'Adreça per las notificacions dels darrièrs cambiaments via UDP',
+	'configure-setting-wgRC2UDPInterwikiPrefix' => 'Prefix interwiki per las notificacions dels darrièrs cambiaments via UDP',
+	'configure-setting-wgRC2UDPOmitBots' => 'Ometre los robòts dins las notificacions dels darrièrs cambiaments via UDP',
+	'configure-setting-wgRC2UDPPort' => 'Pòrt per las notificacions de las modificacions recentas via UDP',
+	'configure-setting-wgRC2UDPPrefix' => 'Prefix de las linhas de las notificacions dels darrièrs cambiaments via UDP',
+	'configure-setting-wgBlockAllowsUTEdit' => 'Autorizar los utilizaires blocats a modificar lor pagina de discussion',
+	'configure-setting-wgSysopEmailBans' => "Autorizar los administrators a interdire l'accès a [[Special:EmailUser]] pels utilizaires blocats",
+	'configure-setting-wgSysopRangeBans' => "Autorizar los administrators a blocar de rengadas d'adreças IP",
+	'configure-setting-wgSysopUserBans' => "Autorizar los administrators a forabandir d'utilizaires enregistrats",
+	'configure-setting-wgEnotifFromEditor' => "Mandar lo corrièr electronic de notificacion amb l'adreça de l'utilizaire qu'a fach la modificacion e non pas l'adreça del sit",
+	'configure-setting-wgEnotifImpersonal' => "Mandar un corrièr electronic generic al luòc d'un corrièr personalizat per cada utilizaire",
+	'configure-setting-wgEnotifMaxRecips' => "Nombre maximum d'utilizaires de notificar per corrièr generic",
+	'configure-setting-wgEnotifMinorEdits' => 'Mandar tanben un corrièr electronic pels cambiaments menors',
+	'configure-setting-wgEnotifRevealEditorAddress' => "Inserir l'adreça de corrièr electronic de l'utilizaire dins lo camp « respondre a » del corrièr de notificacion",
+	'configure-setting-wgEnotifUseJobQ' => 'Mandar los e-mail via la fila dels prètzfaches',
+	'configure-setting-wgEnotifUseRealName' => "Utilizar lo nom vertadièr al luòc del nom d'utilizaire dins lo camp « De » del corrièr electronic",
+	'configure-setting-wgEnotifUserTalk' => "Mandar un corrièr a la primièra modificacion dempuèi la darrièra visita de la pagina de discussion de l'utilizaire (una preferéncia d'utilizaire es afichada e l'utilizaire la deu activar)",
+	'configure-setting-wgEnotifWatchlist' => "Mandar un corrièr a la primièra modificacion dempuèi sa darrièra visita sus una pagina de sa lista de seguit (una preferéncia d'utilizaire es afichada e l'utilizaire la deu activar)",
+	'configure-setting-wgUsersNotifiedOnAllChanges' => 'Lista dels utilizaires que recebràn una notificacion per corrièr electronic a cada modificacion del wiki',
+	'configure-setting-wgDebugFunctionEntry' => 'Afichar un messatge de debogatge a cada ampèl a wfProfileIn / wfProfileOut',
+	'configure-setting-wgDebugProfiling' => 'Detectar los ampèls incorrèctes a wfProfileIn / wfProfileOut',
+	'configure-setting-wgDebugSquid' => 'Fòrça debogatge dempuèi SquidUpdate.php',
+	'configure-setting-wgProfileCallTree' => "Afichar un arbre dels ampèls al luòc d'una lista de foncions",
+	'configure-setting-wgProfileLimit' => "Enregistrar solament se la durada es mai granda qu'aquesta valor",
+	'configure-setting-wgProfileOnly' => 'Enregistrar pas que las informacions de perfilatge',
+	'configure-setting-wgProfilePerHost' => 'Inserir lo nom del servidor dins la taula de perfilatge',
+	'configure-setting-wgProfileToDatabase' => 'Salvar las somas dels perfilatges dins la banca de donadas',
+	'configure-setting-wgUDPProfilerHost' => 'Òste pel perfilaire UDP',
+	'configure-setting-wgUDPProfilerPort' => 'Pòrt pel perfilaire UDP',
 );
 
 /** Pashto (پښتو)
@@ -3398,6 +3460,14 @@ $messages['sv'] = array(
 	'configure-setting-wgFeedCacheTimeout' => "'Minimum' timout i sekunder för cachad feed av senaste ändringar",
 	'configure-setting-wgFeedDiffCutoff' => 'Brytpunkt för diff-storlek i feed',
 	'configure-setting-wgFeedLimit' => 'Max antal feed-resultat',
+	'configure-setting-wgOverrideSiteFeed' => 'Anpassade feed-inställningar',
+	'configure-setting-wgAdvancedSearchHighlighting' => 'Aktivera markering av sökresultat',
+	'configure-setting-wgEnableMWSuggest' => 'Aktivera förslag vid sökning',
+	'configure-setting-wgGoToEdit' => 'Gå-till-knappen leder rakt till redigeringsläge om sidan inte existerar',
+	'configure-setting-wgMWSuggestTemplate' => 'Mall för intern förslags-motor från MediaWiki',
+	'configure-setting-wgOpenSearchTemplate' => 'Mall för OpenSearch-förslag',
+	'configure-setting-wgSearchForwardUrl' => 'Vidarebefordra sökfrågor',
+	'configure-setting-wgSearchHighlightBoundaries' => 'Regexp för att matcha ordgränser',
 );
 
 /** Telugu (తెలుగు)

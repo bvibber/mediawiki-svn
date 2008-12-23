@@ -173,6 +173,8 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'scanset-desc' => 'Pregled slika skeniranih stranica iz CD/DVD setova Andreasa Grosza',
+	'scanset_no_name' => 'Greška: morate odrediti ime seta skeniranja, npr. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Greška: Pogrešan ili nedostaje set skeniranja',
 	'scanset_unrecognised_index_format' => 'Greška: Nepoznat format indeksa',
 	'scanset_opendir_error' => 'Greška: Ne može se otvoriti folder $1',
@@ -293,13 +295,19 @@ $messages['fa'] = array(
  * @author Jaakonam
  * @author Nike
  * @author Str4nd
+ * @author Tarmo
  */
 $messages['fi'] = array(
 	'scanset-desc' => 'Mahdollistaa Andreas Groszin CD- ja DVD-kokoelmien skannattujen kuvien katselun.',
+	'scanset_no_name' => 'Virhe: Sinun on määritettävä skannaussarjan nimi, esim. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Virhe: Viallinen tai puuttuva skannaussarja',
+	'scanset_unrecognised_index_format' => 'Virhe: Tuntematon hakemistomuoto',
 	'scanset_opendir_error' => 'Virhe: Hakemistoa $1 ei voitu avata',
 	'scanset_no_files' => 'Virhe: Valitussa hakemistossa ei ole tiedostoja.',
+	'scanset_no_volumes' => 'Virhe: Levyhakemistoja ei löydy',
 	'scanset_missing_index_file' => 'Virhe: Hakemistotiedostoa $1 ei löytynyt',
-	'scanset_invalid_volume' => 'Scanset: Väärä kirja',
+	'scanset_index_file_error' => 'Virhe: Virhe hakemistotiedoston muodossa rivillä $1',
+	'scanset_invalid_volume' => 'Virhe: Väärä levy',
 	'scanset_next' => 'Seuraava →',
 	'scanset_prev' => '← Edellinen',
 );

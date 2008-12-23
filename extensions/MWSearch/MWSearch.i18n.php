@@ -300,6 +300,13 @@ $messages['nl'] = array(
 	'mwsearch-desc' => 'MWSearch-plugin',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'mwsearch-desc' => 'MWSearch-programtillegg',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

@@ -80,6 +80,12 @@ $aliases['lb'] = array(
 	'SortPermissions' => array( 'Rechter sortéieren' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'GroupPermissions' => array( 'ГрупниПермисии' ),
+	'SortPermissions' => array( 'ВидовиПермисии' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'GroupPermissions' => array( 'Groepsrechen' ),

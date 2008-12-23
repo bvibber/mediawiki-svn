@@ -290,12 +290,13 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'crosswikiblock-desc' => 'Erlaubt die Sperre von Benutzern in anderen Wikis über eine [[Special:Crosswikiblock|Spezialseite]]',
 	'crosswikiblock' => 'Sperre Benutzer in einem anderen Wiki',
 	'crosswikiblock-header' => 'Diese Spezialseite erlaubt die Sperre eines Benutzers in einem anderen Wiki.
-	Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
+Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
 	'crosswikiblock-target' => 'IP-Adresse oder Benutzername und Zielwiki:',
 	'crosswikiblock-expiry' => 'Sperrdauer:',
 	'crosswikiblock-reason' => 'Begründung:',
@@ -306,7 +307,7 @@ $messages['de'] = array(
 	'crosswikiblock-noemail' => 'E-Mail-Versand sperren',
 	'crosswikiunblock' => 'Entsperre Benutzer in einem anderen Wiki',
 	'crosswikiunblock-header' => 'Diese Spezialseite erlaubt die Aufhebung einer Benutzersperre in einem anderen Wiki.
-	Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
+Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
 	'crosswikiunblock-user' => 'IP-Adresse oder Benutzername und Zielwiki:',
 	'crosswikiunblock-reason' => 'Begründung:',
 	'crosswikiunblock-submit' => 'Sperre für IP-Adresse/Benutzer aufheben',
@@ -1215,15 +1216,49 @@ Teruggaan naar:
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'crosswikiblock-desc' => 'Gjer det mogleg å blokkera brukarar på andre wikiar ved å nytta ei [[Special:Crosswikiblock|spesialsida]]',
+	'crosswikiblock' => 'Blokker brukar på annan wiki',
+	'crosswikiblock-header' => 'Denne sida gjer at ein kan blokkera brukarar på andre wikiar. 
+Sjekk at du har løyve til gjera det på denne wikien, og at du følgjer alle retningslinene.',
+	'crosswikiblock-target' => 'IP-adressa eller brukarnamn og målwiki:',
+	'crosswikiblock-expiry' => 'Opphøyrstid:',
 	'crosswikiblock-reason' => 'Årsak:',
 	'crosswikiblock-submit' => 'Blokker denne brukaren',
+	'crosswikiblock-anononly' => 'Blokker berre anonyme brukarar',
 	'crosswikiblock-nocreate' => 'Hindre kontooppretting',
 	'crosswikiblock-autoblock' => 'Blokker den førre IP-adressa som vart brukt av denne brukaren automatisk, og alle andre IP-adresser brukaren prøvar å endre sider med i framtida',
 	'crosswikiblock-noemail' => 'Hindre sending av e-post til andre brukarar',
+	'crosswikiunblock' => 'Avblokker brukaren på andre wikiar',
+	'crosswikiunblock-header' => 'Denne sida lèt deg avblokkera brukarar på andre wikiar.
+Sjekk at du har løyve til gjera det på denne wikien, og at du følgjer alle retningslinene.',
+	'crosswikiunblock-user' => 'Brukarnamn, IP-adressa eller blokkerings-ID og målwiki:',
 	'crosswikiunblock-reason' => 'Årsak:',
+	'crosswikiunblock-submit' => 'Avblokker brukaren',
+	'crosswikiunblock-success' => "Brukaren '''$1''' vart avblokkert.
+
+Attende til:
+* [[Special:CrosswikiBlock|Blokkeringsskjema]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Ikkje noko brukarnamn vart oppgjeve',
+	'crosswikiblock-local' => 'Lokale blokkeringar er ikkje støtta av dette grensesnittet. Nytt [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'Databasen $1 finst ikkje',
+	'crosswikiblock-noname' => '«$1» er ikkje eit gyldig brukarnamn.',
+	'crosswikiblock-nouser' => 'Brukaren «$3» vart ikkje funnen.',
+	'crosswikiblock-noexpiry' => 'Ugydlig opphøyrstid: $1.',
+	'crosswikiblock-noreason' => 'Ingen årsak vart oppgjeve.',
+	'crosswikiblock-notoken' => 'Ugyldig redigeringsteikn.',
+	'crosswikiblock-alreadyblocked' => '«$3» er allereie blokkert.',
+	'crosswikiblock-noblock' => 'Denne brukaren er ikkje blokkert.',
+	'crosswikiblock-success' => "'''$3''' er blokkert.
+
+Attende til:
+* [[Special:CrosswikiBlock|Blokkeringsskjemaet]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Lokale avblokkeringar er ikkje støtta av dette grensesnittet. Nytt [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

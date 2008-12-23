@@ -187,9 +187,9 @@ $messages['de'] = array(
 (Klicke <a href='$1' target='new'>hier</a>, um ein Problem zu melden.)",
 	'spamdifftool_summary' => 'Zur Spam-Blacklist hinzufügen',
 	'spamdifftool_urls_detected' => 'Die folgenden URLs wurden in der Bearbeitung gefunden, welche davon möchtest du der Spam-Blacklist hinzufügen?
-	Die Reihenfolge geht von sehr einschränkend bis weniger einschränkend, das Eintragen einer ganzen Domain blockiert alle Links, die von dieser Domain kommen.
+Die Reihenfolge geht von sehr einschränkend bis weniger einschränkend, das Eintragen einer ganzen Domain blockiert alle Links, die von dieser Domain kommen.
 
-Stelle sicher, dass du nicht komplette Domains blockirst, die separate Benutzerinhalte bereitstellen, wie z. B. blogpost.com, geocities.com usw.',
+Stelle sicher, dass du nicht komplette Domains blockierst, die separate Benutzerinhalte bereitstellen, wie z. B. blogpost.com, geocities.com usw.',
 	'spamdifftool_no_urls_detected' => "Es wurden keine URLs gefunden. Klicke <a href='$1'>hier</a>, um zurückzugehen.",
 	'spamdifftool_spam_link_text' => 'zu Spam hinzufügen',
 	'spamdifftool_option_domain' => 'alle von dieser Domain',
@@ -595,6 +595,7 @@ Zorg dat u niet zomaar volledige domeinen blokkeert waar gebruikers bestaan, zoa
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'spamdifftool' => 'Handtering av spamsvartelista',
@@ -611,6 +612,11 @@ Ikkje blokker heile domene til sider som er vert for mange brukarar, som blogpos
 	'spamdifftool_no_urls_detected' => "Fann ingen URL-ar. <a href='$1'>Gå tilbake</a>.",
 	'spamdifftool_spam_link_text' => 'legg til i spamlista',
 	'spamdifftool_option_domain' => 'heile domenet',
+	'spamdifftool_option_subdomain' => 'heile underomenet',
+	'spamdifftool_option_directory' => 'detter underdomenet og mappa',
+	'spamdifftool_option_none' => 'ingenting',
+	'spamdifftool_block' => 'Blokker:',
+	'spamdifftool_submit_buttom' => 'Legg til',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -732,6 +738,33 @@ $messages['ru'] = array(
 	'spamdifftool_option_none' => 'ничего',
 	'spamdifftool_block' => 'Блокировка:',
 	'spamdifftool_submit_buttom' => 'Отправить',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'spamdifftool' => 'Guverna la spam blacklist',
+	'spamdifftool-desc' => 'Prucura nu sèmprici modu pi mintìri valuri novi a la  spam blacklist dê pàggini dû parauni ntra li virsioni',
+	'spamdifftool_cantedit' => 'Hà scusari, ma nun pussedi li pirmessi pi canciari la spam blacklist.',
+	'spamdifftool_notext' => "Non cìè nuddu testu di jùnciri a la spam blacklist.
+Fà clic <a href='$1'>ccà</a> pi jiri avanti.",
+	'spamdifftool_confirm' => "Cunferma la tà ntinzioni di juncìricci chisti valuri a la spam blacklist.
+(Fà clic <a href='$1' target='new'>ccà</a> pi signaliari nu prubbrema.)",
+	'spamdifftool_summary' => 'Junciuta di spam blacklist',
+	'spamdifftool_urls_detected' => "Li URL ccà di sèculu foru scupruti ntê mudifichi, quali d'iddi vulissi juncìricci a la spam blacklist?
+L'òrdini di sti opzioni sunnu misi di la cchiossai a la cchiù picca ristrittiva, abbluccari tuttu lu dumìniu voli diri abbluccari tutti li culligamenti a quarcosa ca veni di ddù dumìniu.
+
+Accura a non bluccari ssi dumìnii ca hostanu àutri account utenti comu putìssiru èssiri  blogpost.com, geocities.com, ecc.",
+	'spamdifftool_no_urls_detected' => "Nuddu URL vinni rilivatu.
+Fà click <a href='$1'>ccà</a> pi turnari arredi.",
+	'spamdifftool_spam_link_text' => 'Jùnciri a li spam',
+	'spamdifftool_option_domain' => 'tutti di chistu dumìniu',
+	'spamdifftool_option_subdomain' => 'tutti di chistu suttadumìniu',
+	'spamdifftool_option_directory' => 'Stu suttadumìniu e directory',
+	'spamdifftool_option_none' => 'nenti',
+	'spamdifftool_block' => 'Abblocca:',
+	'spamdifftool_submit_buttom' => 'Manna',
 );
 
 /** Slovak (Slovenčina)

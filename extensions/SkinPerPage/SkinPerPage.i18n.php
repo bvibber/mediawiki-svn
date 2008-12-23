@@ -60,6 +60,13 @@ $messages['bg'] = array(
 	'skinperpage-desc' => 'Добавя етикета <tt>&lt;skin&gt;</tt> за използване на различни облици на страниците',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'skinperpage-desc' => 'Dodaje oznaku <tt>&lt;skin&gt;</tt> za upotrebu različitih koža na stranici',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
@@ -198,6 +205,13 @@ $messages['km'] = array(
 	'skinperpage-desc' => 'ដាក់បន្ថែមប្លាក<tt>&lt;skin&gt;</tt>ដើម្បីប្រើប្រាស់សំបកផ្សេងៗក្នុងទំព័រ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'skinperpage-desc' => '문서마다 다른 스킨을 사용할 수 있게 <tt>&lt;skin&gt;</tt> 태그를 추가',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -238,6 +252,13 @@ $messages['ms'] = array(
  */
 $messages['nl'] = array(
 	'skinperpage-desc' => 'Voegt de tag <tt>&lt;skin&gt;</tt> toe voor de instelling van vormgeving op paginaniveau',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'skinperpage-desc' => 'Legg til eit <tt>&lt;skin&gt;</tt>-merke for å kunna bruka ulike utsjånader per sida',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

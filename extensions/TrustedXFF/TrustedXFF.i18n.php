@@ -39,6 +39,13 @@ $messages['ast'] = array(
 	'trustedxff-desc' => "Xestión d'una llista de direiciones proxy d'enfotu ([http://meta.wikimedia.org/wiki/XFF_project proyeutu XFF])",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'trustedxff-desc' => 'Preuređivanje spiska pouzdanih proxy adresa ([http://meta.wikimedia.org/wiki/XFF_project XFF projekat])',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -70,6 +77,13 @@ $messages['eo'] = array(
  */
 $messages['fa'] = array(
 	'trustedxff-desc' => 'به دست گیری فهرستی از نشانی‌های پروکسی مورد اعتماد ([http://meta.wikimedia.org/wiki/XFF_project پروژه XFF])',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'trustedxff-desc' => 'Käsittelee [http://meta.wikimedia.org/wiki/XFF_project XFF-projektin] luettelon luotetuista välityspalvelimista.',
 );
 
 /** French (Français)
@@ -140,6 +154,13 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'trustedxff-desc' => 'Pananganan dhaptar alamat proxy kapercaya ([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'trustedxff-desc' => '믿을 수 있는 프록시 주소 목록을 관리 ([http://meta.wikimedia.org/wiki/XFF_project XFF 프로젝트])',
 );
 
 /** Ripoarisch (Ripoarisch)

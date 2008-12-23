@@ -229,9 +229,11 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'smoothgallery' => 'វិចិត្រសាលរាបស្មើ',
-	'smoothgallery-desc' => 'អនុញ្ញាត​ឱ្យ​បង្កើត​វិចិត្រសាល​ជាមួយ​រូបភាព​ដែល​បាន​ផ្ទុកឡើង​។ <br> អនុញ្ញាត​ជម្រើស​ភាគច្រើន​នៃ​វិចិត្រសាលរាបស្មើ​',
+	'smoothgallery-desc' => 'អនុញ្ញាត​ឱ្យ​បង្កើត​វិចិត្រសាល​ជាមួយ​រូបភាព​ដែល​បាន​ផ្ទុកឡើង​។ 
+
+អនុញ្ញាត​ជម្រើស​ភាគច្រើន​នៃ​វិចិត្រសាលរាបស្មើ​',
 	'smoothgallery-title' => 'វិចិត្រសាលរាបស្មើ',
-	'smoothgallery-smoothgallerytitle' => 'វិចិត្រសាលរាបស្មើ​',
+	'smoothgallery-smoothgallerytitle' => 'វិចិត្រសាលរាបស្មើ​៖ $1',
 	'smoothgallery-error' => 'កំហុស​វិចិត្រសាលរាបស្មើ​​៖',
 	'smoothgallery-gallery-not-found' => 'មិនមានវិចិត្រសាលដែលត្រូវបានស្នើ​។',
 	'smoothgallery-not-found' => 'មិនមាន​រូបភាព​ត្រូវ​បាន​បន្ថែម​ទៅ​ក្នុង​វិចិត្រសាល​ទេ​។ 
@@ -298,6 +300,28 @@ De volgende afbeeldingen zijn niet aangetroffen: $1',
 	'smoothgallery-invalid-images' => 'De volgende aangevraagde afbeeldingen hadden een ongeldig type: $1',
 	'smoothgallery-unexpected-error' => 'Er is een onverwachte fout opgetreden. Dien alstublieft een foutrapport in.',
 	'smoothgallery-javascript-disabled' => 'JavaScript dient ingeschakeld te zijn om deze galerij goed te kunnen bekijken.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'smoothgallery' => 'Jamnt galleri',
+	'smoothgallery-desc' => 'Lèt brukarar oppretta galleri med bilete som er blitt lasta opp. 
+Inneheld dei fleste av SmoothGallery sine valalternativ.',
+	'smoothgallery-title' => 'Jamnt galleri',
+	'smoothgallery-smoothgallerytitle' => 'Jamnt galleri: $1',
+	'smoothgallery-error' => '<b>Feil med jamnt galleri:</b>',
+	'smoothgallery-gallery-not-found' => 'Det etterspurde galleriet finst ikkje.',
+	'smoothgallery-not-found' => 'Ingen bilete blei lagt til i galleriet. 
+Legg til minst eitt bilete.',
+	'smoothgallery-no-images' => 'Ingen bilete blei funne i dette galleriet.
+Forsikra deg om at alle bileta finst.
+Følgjande bilete blei ikkje funne: $1',
+	'smoothgallery-invalid-images' => 'Følgjande etterspurde bilete var av ein ugyldig type: $1',
+	'smoothgallery-unexpected-error' => 'Ein uventa feil oppstod.
+Lever ein feilrapport.',
+	'smoothgallery-javascript-disabled' => 'Javascript er nødvendig for å visa dette galleriet på rett måte.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -64,6 +64,11 @@ $aliases['lb'] = array(
 	'PurgeCache' => array( 'Cache eidel maachen' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'PurgeCache' => array( 'ИсчистиКеш' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'PurgeCache' => array( 'Kas_leegmaken' ),

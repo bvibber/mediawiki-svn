@@ -711,12 +711,22 @@ $wdMessages['br'] = array(
  * @author CERminator
  */
 $wdMessages['bs'] = array(
+	'ow_save' => 'Spremi',
 	'ow_history' => 'Historija',
+	'ow_uipref_datasets' => 'Pretpostavljeni pogled',
 	'ow_none_selected' => 'Ništa nije odabrano',
+	'ow_dm_OK' => 'U redu',
+	'ow_available_contexts' => 'Dostupni konteksti',
 	'ow_ClassAttributeType' => 'Vrsta',
 	'ow_Language' => 'Jezik',
 	'ow_OptionAttributeOptions' => 'Opcije',
+	'ow_Synonyms' => 'Sinonomi',
 	'ow_Source' => 'Izvor',
+	'ow_LinkAttributeValues' => 'Linkovi',
+	'ow_Property' => 'Svojstvo',
+	'ow_Value' => 'Vrijednost',
+	'ow_Permission_denied' => '<h2>Pristup onemogućen</h2>',
+	'ow_copy_no_action_specified' => 'Molimo Vas da odredite akciju',
 );
 
 /** Catalan (Català)
@@ -3564,6 +3574,7 @@ $wdMessages['ro'] = array(
 	'ow_noedit_title' => 'Fără permisiune de modificare',
 	'ow_conceptmapping_no_action_specified' => 'Scuze, nu ştiu cum să "$1".',
 	'ow_dm_OK' => 'OK',
+	'ow_available_contexts' => 'Contexte disponibile',
 	'ow_AlternativeDefinition' => 'Definiţie alternativă',
 	'ow_AlternativeDefinitions' => 'Definiţii alternative',
 	'ow_Annotation' => 'Adnotare',
@@ -3575,6 +3586,7 @@ $wdMessages['ro'] = array(
 	'ow_Definition' => 'Definiţie',
 	'ow_DefinedMeaningAttributes' => 'Adnotare',
 	'ow_Expression' => 'Expresie',
+	'ow_Expressions' => 'Expresii',
 	'ow_IdenticalMeaning' => 'Sens identic?',
 	'ow_Language' => 'Limbă',
 	'ow_LevelAnnotation' => 'Adnotare',
@@ -3582,6 +3594,7 @@ $wdMessages['ro'] = array(
 	'ow_OptionAttributeOption' => 'Opţiune',
 	'ow_OptionAttributeOptions' => 'Opţiuni',
 	'ow_PopupAnnotation' => 'Adnotare',
+	'ow_Relations' => 'Relaţii',
 	'ow_Synonyms' => 'Sinonime',
 	'ow_Source' => 'Sursă',
 	'ow_TextAttribute' => 'Proprietate',
@@ -3590,8 +3603,17 @@ $wdMessages['ro'] = array(
 	'ow_TranslatedText' => 'Text tradus',
 	'ow_TranslatedTextAttributeValue' => 'Text',
 	'ow_LinkAttribute' => 'Proprietate',
+	'ow_LinkAttributeValues' => 'Legături',
 	'ow_Property' => 'Proprietate',
 	'ow_Value' => 'Valoare',
+	'ow_Permission_denied' => '<h2>Permisiune refuzată</h2>',
+	'ow_copy_successful' => '<h2>Copiere cu succes</h2>
+Datele par a fi fost copiate cu succes.
+Nu uitaţi să verificaţi pentru a fi siguri!',
+	'ow_copy_unsuccessful' => '<h3>Copiere fără succes</h3>
+Nici o operaţie de copiere nu a avut loc.',
+	'ow_no_action_specified' => '<h3>Nici o acţiune nu a fost specificată</h3>
+Poate aţi ajuns la această pagină direct? În mod normal nu ar trebui să fiţi aici.',
 );
 
 /** Russian (Русский)
@@ -4262,6 +4284,117 @@ $wdMessages['th'] = array(
 	'ow_history' => 'ประวัติ',
 	'ow_dm_OK' => 'ตกลง',
 	'ow_Source' => 'แหล่งที่มา',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$wdMessages['tl'] = array(
+	'datasearch' => 'Wikidata: Paghahanap ng dato',
+	'langman_title' => 'Tagapamahala ng wika',
+	'languages' => 'Wikidata: Tagapamahala ng wika',
+	'ow_save' => 'Sagipin',
+	'ow_history' => 'Kasaysayan',
+	'ow_datasets' => 'Pampili ng pangkat ng dato',
+	'ow_noedit_title' => 'Wala kang pahintulot upang makagawa ng pagbabago',
+	'ow_noedit' => 'Wala kang pahintulot para makapagbago ng mga pahina sa loob ng pangkat ng datong "$1". 
+Pakitingnan ang [[{{MediaWiki:Ow editing policy url}}|aming patakaran sa pamamatnugot]].',
+	'ow_uipref_datasets' => 'Nakatakdang tanawin',
+	'ow_uiprefs' => 'Wikidata',
+	'ow_none_selected' => 'Walang pinili',
+	'ow_conceptmapping_help' => '<p>mga maaaring gawin: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  magsingit ng isang pagmamapa</li>
+<li>&action=get&concept=<concept_id>  magbasa ng isang pagmamapang pabalik</li>
+<li>&action=list_sets  magbalik ng isang talaan ng mga maaaring maging unlaping kontekstong pangdato at kung ano ang tinutukoy nila.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> para sa isang tinukoy/nilarawang kahulugan sa loob ng isang diwa o konsepto, ibalik ang lahat ng iba pa</li>
+<li>&action=help  Ipakita ang mga nakakatulong na pantulong.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => "<p>Nagpapahintulot ang Pagmamapa ng Konsepto o ng Diwa (''Concept Mapping'') na matukoy mo kung anong nilarawang kahulugang nagmula sa isang pangkat ng dato ang katulad sa nilarawang mga kahulugang nasa iba pang mga kapangkatan ng dato.</p>",
+	'ow_conceptmapping_no_action_specified' => 'Paumanhin, hindi ko alam kung paano gawin ang "$1".',
+	'ow_dm_OK' => "Sige/Ayos 'yan",
+	'ow_dm_not_present' => 'hindi nakapasok',
+	'ow_dm_not_found' => 'hindi natagpuan sa kalipunan ng dato o mali/masama ang anyo',
+	'ow_mapping_successful' => "Naisamapa/napagugnay-ugnay na ang lahat ng mga hanay na may tatak na [Sige/Ayos 'yan]",
+	'ow_mapping_unsuccessful' => 'Kinakailangang magkaroon ng dalawa man lamang na tinukoy/nilarawang mga kahulugan bago ko sila makawing o mapagugnay',
+	'ow_will_insert' => 'Isisingit ang mga sumusunod:',
+	'ow_contents_of_mapping' => 'Mga nilalaman ng pagmamapa',
+	'ow_available_contexts' => 'Makukuhang mga konteksto',
+	'ow_add_concept_link' => 'Magdagdag ng kawing sa iba pang mga konsepto/diwa',
+	'ow_concept_panel' => 'Kalipunan/Lupon ng Konsepto',
+	'ow_dm_badtitle' => 'Hindi tumuturo ang pahinang ito sa anumang NilarawangKahulugan (konsepto/diwa)
+Pakisuri ang adres na pangweb.',
+	'ow_dm_missing' => 'Tila tumuturo patungo sa isang hindi umiiral na NilarawangKahulugan (konsepto/diwa) ang pahinang ito.
+Pakisuri ang adres na pangweb.',
+	'ow_AlternativeDefinition' => 'Pamalit na kahulugan',
+	'ow_AlternativeDefinitions' => 'Pamalit na mga kahulugan',
+	'ow_Annotation' => 'Anotasyon (paliwanag)',
+	'ow_ApproximateMeanings' => 'Tinatayang mga kahulugan',
+	'ow_ClassAttributeAttribute' => 'Katangian',
+	'ow_ClassAttributes' => 'Mga katangian ng klase (uri)',
+	'ow_ClassAttributeLevel' => 'Antas',
+	'ow_ClassAttributeType' => 'Uri/Tipo',
+	'ow_ClassMembership' => 'Klase ng Kasapian/Pagkakasapi',
+	'ow_Collection' => 'Kalipunan',
+	'ow_CollectionMembership' => 'Pagkakasaping Pangkalipunan',
+	'ow_Definition' => 'Kahulugan',
+	'ow_DefinedMeaningAttributes' => 'Anotasyon (paliwanag)',
+	'ow_DefinedMeaning' => 'Nilarawang kahulugan',
+	'ow_DefinedMeaningReference' => 'Nilarawang kahulugan',
+	'ow_ExactMeanings' => 'Tumpak/Eksaktong mga kahulugan',
+	'ow_Expression' => 'Pagsasaad (ekspresyon)',
+	'ow_ExpressionMeanings' => 'Mga kahulugan ng mga pagsasaad',
+	'ow_Expressions' => 'Mga pagsasaad (ekspresyon)',
+	'ow_IdenticalMeaning' => 'Katulad na kahulugan?',
+	'ow_IncomingRelations' => 'Padating/papasok na mga ugnayan',
+	'ow_GotoSource' => 'Puntahan ang pinagmulan',
+	'ow_Language' => 'Wika',
+	'ow_LevelAnnotation' => 'Anotasyon (paliwanag)',
+	'ow_OptionAttribute' => 'Pag-aari',
+	'ow_OptionAttributeOption' => 'Pagpipilian',
+	'ow_OptionAttributeOptions' => 'Mga pagpipilian',
+	'ow_OptionAttributeValues' => 'Mga halaga ng pagpipilian',
+	'ow_OtherDefinedMeaning' => 'Iba pang nilarawang kahulugan',
+	'ow_PopupAnnotation' => 'Anotasyon (paliwanag)',
+	'ow_Relations' => 'Mga kaugnayan',
+	'ow_RelationType' => 'Uri ng kaugnayan',
+	'ow_Spelling' => 'Pagbabaybay',
+	'ow_Synonyms' => 'Mga kasingkahulugan',
+	'ow_SynonymsAndTranslations' => 'Mga kasingkahulugan at mga salinwika',
+	'ow_Source' => 'Pinagmulan',
+	'ow_SourceIdentifier' => 'Pangkilala ng pinagmulan',
+	'ow_TextAttribute' => 'Pag-aari',
+	'ow_Text' => 'Teksto',
+	'ow_TextAttributeValues' => 'Payak na mga teksto',
+	'ow_TranslatedTextAttribute' => 'Pag-aari',
+	'ow_TranslatedText' => 'Tekstong naisalinwika',
+	'ow_TranslatedTextAttributeValue' => 'Teksto',
+	'ow_TranslatedTextAttributeValues' => 'Mga tekstong maisasalinwika',
+	'ow_LinkAttribute' => 'Pag-aari',
+	'ow_LinkAttributeValues' => 'Mga kawing',
+	'ow_Property' => 'Pag-aari',
+	'ow_Value' => 'Halaga',
+	'ow_meaningsoftitle' => 'Mga kahulugan ng "$1"',
+	'ow_meaningsofsubtitle' => '<em>Wiki-kawing:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>Tinanggihan ang pagpapahintulot</h2>',
+	'ow_copy_no_action_specified' => 'Pakitukoy ang isang galaw',
+	'ow_copy_help' => 'Maaaring matulungan ka namin, balang araw.',
+	'ow_please_proved_dmid' => 'Tila may kulang na "?dmid=<ID>" (dmid=ID ng Nilarawang Kahulugan) ang ipinasok mong puhunan (impormasyon)<br />
+Makipagugnayan sa isang tagapangasiwa ng serbidor',
+	'ow_please_proved_dc1' => 'Tila may kulang na isang "?dc1=<isang bagay>" (dc1=konteksto bilang 1 ng pangkat ng dato, PAGMUMULANG pangkat ng dato) ang ipinasok mong puhunan (impormasyon)<br />
+Makipagugnayan sa isang tagapangasiwa ng serbidor',
+	'ow_please_proved_dc2' => 'Tila may kulang na "?dc2=<isang bagay>" (dc2=konteksto bilang 2 ng pangkat ng dato, PATUTUNGUHANG pangkat ng dato)<br />
+Makipagugnayan sa isang tagapangasiwa ng serbidor.',
+	'ow_copy_successful' => '<h2>Matagumpay ang pagkopya</h2>
+Tila matagumpay ang pagkopya ng iyong dato.
+Huwag kalimutang suriin uli para makatiyak!',
+	'ow_copy_unsuccessful' => '<h3>Hindi matagumpay ang pagkopya</h3>
+Walang naganap na pagsasakatuparan ng pagkopya',
+	'ow_no_action_specified' => '<h3>Walang tinukoy na galaw</h3>
+Maaaring tuwiran kang nakarating sa pahinang ito?  Sa karaniwan, hindi mo kailangang magparito.',
+	'ow_db_consistency_not_found' => "<h2>Kamalian</h2>
+Mayroong suliranin hinggil sa pagkakasundu-sundo ng kalipunan ng dato, hindi matagpuan ng ''wikidata'' (dato ng wiki/wikidato) ang tanggap na datong may kaugnayan sa ID (pagkakakilanlan) ng nilarawang kahulugang ito.
+Maaaring nawala ito.
+Makipagugnayan sa isang tagapamalakad/tagapagpatakbo ng serbidor o tagapangasiwa.",
 );
 
 /** Turkish (Türkçe)

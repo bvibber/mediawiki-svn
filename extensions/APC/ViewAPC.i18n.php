@@ -1703,7 +1703,12 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'viewapc' => 'APC 情報',
+	'viewapc-desc' => 'MediaWiki で[[Special:ViewAPC|APCキャッシュを表示および管理する]]',
+	'right-apc' => '[[Special:ViewAPC]]の全機能の使用',
+	'viewapc-apc-not-available' => 'キャッシュ情報は利用できません。APCが動作していないようです。',
+	'viewapc-clear-confirm' => 'キャッシュをクリアしたいのですか?',
 	'viewapc-clear-user-cache' => '明確なユーザーキャッシュ',
+	'viewapc-clear-code-cache' => '実行コードのキャッシュをクリアする',
 	'viewapc-mode-stats' => '表示ホスト統計',
 	'viewapc-mode-system-cache' => 'システムキャッシュエントリー',
 	'viewapc-mode-user-cache' => 'ユーザキャッシュエントリー',
@@ -1728,6 +1733,7 @@ $messages['ja'] = array(
 	'viewapc-ls-sort-deleted' => '削除',
 	'viewapc-ls-sort-timeout' => 'タイムアウト',
 	'viewapc-ls-limit-none' => 'すべて',
+	'viewapc-version-info' => 'バージョン情報',
 	'viewapc-version-changelog' => '変更記録',
 );
 
@@ -1833,6 +1839,8 @@ $messages['ka'] = array(
  */
 $messages['km'] = array(
 	'viewapc' => 'ព័ត៌មាន APC',
+	'viewapc-desc' => '[[Special:ViewAPC|មើល និង​គ្រប់គ្រង​ឃ្លាំងសម្ងាត់ APC]] ជាមួយ​មេឌាវិគី',
+	'right-apc' => 'ប្រើប្រាស់​លក្ខណៈពិសេស​ទាំងអស់​នៅក្នុង [[Special:ViewAPC]]',
 	'viewapc-clear-confirm' => 'តើ​អ្នក​ពិតជា​ចង់​សំអាត​ឃ្លាំងសម្ងាត់​មែន​ឬ​?',
 	'viewapc-clear-user-cache' => 'សំអាត​ឃ្លាំងសម្ងាត់​អ្នកប្រើប្រាស់',
 	'viewapc-mode-version-check' => 'ពិនិត្យ​កំណែ',
@@ -1877,6 +1885,13 @@ $messages['km'] = array(
 	'viewapc-ls-sort-created' => 'ត្រូវបានបង្កើត',
 	'viewapc-ls-sort-deleted' => 'ត្រូវបានលុបចោល',
 	'viewapc-ls-limit-none' => 'ទាំងអស់',
+	'viewapc-version-info' => 'ព័ត៌មាន​អំពី​កំណែ',
+	'viewapc-version-changelog' => 'កំណត់ហេតុ​នៃ​បំលាស់ប្ដូរ',
+	'viewapc-version-failed' => 'មិន​អាច​ចាប់យក​ព័ត៌មាន​អំពី​កំណែ​បាន​ទេ​។',
+	'viewapc-version-ok' => 'អ្នក​កំពុងតែ​ដំណើរការ​កំណែ​ចុងក្រោយ​នៃ APC ($1)',
+	'viewapc-version-old' => 'អ្នក​កំពុងតែ​ដំណើរការ​កំណែ​ចាស់​នៃ APC ($1)។
+
+កំណែ​ថ្មី $2 អាចរកបាន​នៅ http://pecl.php.net/package/APC/$2',
 );
 
 /** Korean (한국어)

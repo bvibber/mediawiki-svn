@@ -134,6 +134,14 @@ $messages['nl'] = array(
 	'semanticgooglemaps-desc' => "Staat gebruikers toe Google Maps toe te voegen aan wikipagina's gebaseerd op basis van gestructureerde gegevens",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Sjekk koordinatar',
+	'semanticgooglemaps-desc' => 'Lèt brukarar leggja til Google Maps på wikisider baserte på strukturerte data',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

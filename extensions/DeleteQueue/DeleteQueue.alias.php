@@ -42,6 +42,11 @@ $aliases['hu'] = array(
 	'DeleteQueue' => array( 'Törlési várólista' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'DeleteQueue' => array( 'БришиРедица' ),
+);
+
 /** Erzya (Эрзянь) */
 $aliases['myv'] = array(
 	'DeleteQueue' => array( 'НардамсПуло' ),

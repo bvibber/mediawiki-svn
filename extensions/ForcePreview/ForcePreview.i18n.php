@@ -284,6 +284,15 @@ $messages['nl'] = array(
 	'right-forcepreviewexempt' => 'Kan een pagina opslaan zonder bewerking ter controle te bekijken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'forcepreview' => 'Lagra sida (førehandsvis først)',
+	'forcepreview-desc' => 'Tvingar brukarar til å førehandsvisa sida dersom dei ikkje har dei rette rettane.',
+	'right-forcepreviewexempt' => 'Kan lagra utan å måtta førehandsvisa',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

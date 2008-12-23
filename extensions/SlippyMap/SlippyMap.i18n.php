@@ -343,6 +343,15 @@ $messages['it'] = array(
 	'slippymap_resetview' => 'Reimposta visuale',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'slippymap_maperror' => 'កំហុស​ផែនទី​៖',
+	'slippymap_code' => 'កូដឹវិគី​សម្រាប់​មើល​ផែនទី​នេះ​៖',
+	'slippymap_button_code' => 'យក​កូដវិគី',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

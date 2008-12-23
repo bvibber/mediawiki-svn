@@ -22,6 +22,13 @@ Would you like to edit the existing page?',
 	'createpage-badtitle' => '"$1" cannot be used as a page title',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'createpage-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -216,10 +223,19 @@ $messages['km'] = array(
 	'createpage_instructions' => 'សូម​វាយ​បញ្ចូល​ចំណងជើង​ទំព័រ​ដែល​អ្នក​ចង់​បង្កើត​៖',
 	'createpage_entertitle' => 'សូម​ដាក់​ចំណងជើង​ទំព័រ​ឱ្យ​ទំព័រ​របស់​អ្នក​។',
 	'createpage_titleexists' => 'ទំព័រ​ដែល​មាន​ចំណងជើង [[$1]] មាន​រួចឮហើយ​។ 
-<br>តើ​អ្នក​មានបំណង​កែប្រែ​ទំព័រ​ដែល​មាន​ស្រាប់​ឬ​?',
+
+តើ​អ្នក​មានបំណង​កែប្រែ​ទំព័រ​ដែល​មាន​ស្រាប់​ឬ​?',
 	'createpage_tryagain' => 'ទេ, ខ្ញុំ​ចង់​បង្កើត​ទំព័រ​ថ្មី​មួយ​ដែល​មាន​ចំណងជើង​ផ្សេង​។',
 	'createpage_editexisting' => 'បាទ/ចាស, ខ្ញុំ​ចង់​ចូលរួម​កែប្រែ​ជាមួយ​ទំព័រ​ដែល​មាន​ស្រាប់​។',
 	'createpage-badtitle' => '"$1" មិន​អាច​ប្រើ​ជា​ចំណងជើង​ទំព័រ​បាន​ទេ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'createpage-desc' => 'Brengk en [[Special:CreatePage|Söndersigg]] för Sigge aanzelääje en et Wiki.',
+	'createpage_submitbutton' => 'Loß Jonn!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -227,7 +243,7 @@ $messages['km'] = array(
  */
 $messages['lb'] = array(
 	'createpage' => 'Eng Säit uleeën',
-	'createpage-desc' => 'Setzt eng [Special:CreatePage|Spezialsäit]] derbäi fir Säiten unzeleeën',
+	'createpage-desc' => 'Setzt eng [[Special:CreatePage|Spezialsäit]] derbäi fir Säiten unzeleeën',
 	'createpage_submitbutton' => 'Schécken',
 	'createpage_instructions' => 'Gitt den titel vun däer Säit un déi Dir uleeë wëllt:',
 	'createpage_entertitle' => 'Gitt w.e.g. en Titel fir Är Säit un.',
@@ -294,6 +310,20 @@ $messages['pt-br'] = array(
 	'createpage_titleexists' => 'Uma página com o título, [[$1]], já existe. Você gostaria de editar a página existente?',
 	'createpage_tryagain' => 'Não - Eu quero criar uma nova página com outro título.',
 	'createpage_editexisting' => 'Sim - Eu quero editar a página existente.',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'createpage' => 'Creează o pagină',
+	'createpage_instructions' => 'Introduceţi titlul paginii pe care doriţi să o creaţi:',
+	'createpage_entertitle' => 'Vă rugăm să introduceţi un titlu pentru pagina dumneavoastră.',
+	'createpage_titleexists' => 'O pagină cu titlul [[$1]] deja există.
+Doriţi să modificaţi pagina existentă?',
+	'createpage_tryagain' => 'Nu. Doresc să creez o pagină nouă cu un titlu diferit.',
+	'createpage_editexisting' => 'Da. Doresc să contribui la pagina existentă.',
+	'createpage-badtitle' => '"$1" nu poate fi folosit drept titlu',
 );
 
 /** Russian (Русский)

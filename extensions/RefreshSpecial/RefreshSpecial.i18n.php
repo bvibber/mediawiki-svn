@@ -341,6 +341,31 @@ Over 10 seconden wordt weer geprobeerd verbinding te maken...',
 	'refreshspecial-total-display' => "<br />Er zijn $1 pagina's ververst met $2 regels in $3 tijd (totale duur van de verwerking was $4)",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'refreshspecial' => 'Oppdater spesialsider',
+	'refreshspecial-desc' => 'Mogleggjer [[Special:RefreshSpecial|manuell oppdatering]] av spesialsider',
+	'refreshspecial-title' => 'Oppdater spesialsider',
+	'refreshspecial-help' => "Denne spesialsida gjer at ein manuelt kan oppdatera spesialsider. Når du har valt kva sider du ønskjer å oppdatera, klikk på 'Oppdater' for å gjennomføra oppdateringa. Åtvaring: Oppdatering kan ta ei stund på større wikiar.",
+	'refreshspecial-button' => 'Oppdater valte',
+	'refreshspecial-fail' => 'Merk av minst éi spesialsida som skal oppdaterast',
+	'refreshspecial-refreshing' => 'oppdaterer spesialsider',
+	'refreshspecial-success-subtitle' => 'oppdaterer spesialsider',
+	'refreshspecial-choice' => 'oppdaterer spesialsider',
+	'refreshspecial-js-disabled' => '(<i>Du kan ikkje merkja alle sider om JavaScript er slege av</i>)',
+	'refreshspecial-select-all-pages' => '  merk alle sider',
+	'refreshspecial-link-back' => 'Gå attende til utvidinga',
+	'refreshspecial-here' => '<b>her</b>',
+	'refreshspecial-none-selected' => 'Du har ikkje merkt noka spesialsida. Stiller attende til standardval.',
+	'refreshspecial-db-error' => 'Mislukkast: databasefeil',
+	'refreshspecial-no-page' => 'Spesialsida finst ikkje',
+	'refreshspecial-slave-lagged' => 'Forseinking i slavetenaren, ventar…',
+	'refreshspecial-reconnected' => 'Kopla til på nytt.',
+	'refreshspecial-reconnecting' => 'Tilkopling mislukkast, prøver om att om ti sekund…',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

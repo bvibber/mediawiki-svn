@@ -634,7 +634,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'patrol' => 'Patrulleere',
-	'patrol-desc' => 'E besser Ingerface för et [[Special:Patrol|Änderunge Nohlore (Patrullje)]] met Verdeile fun dä Ärbeit.',
+	'patrol-desc' => 'E besser Ingerface för et Änderunge Nohlore (Patrullje) met Verdeile fun dä Ärbeit.',
 	'patrol-endorse' => 'Jootheiße',
 	'patrol-revert' => 'Zeröck nemme',
 	'patrol-revert-reason' => 'Aanlass:',

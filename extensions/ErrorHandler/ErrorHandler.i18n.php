@@ -419,6 +419,32 @@ $messages['nl'] = array(
 	'errorhandler-trace-line-internal' => '[interne functie]: $1',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'errorhandler-desc' => 'Feilhandtering for MediaWiki',
+	'errorhandler-errors' => 'Feil:',
+	'errorhandler-error-fatal' => 'Alvorleg feil',
+	'errorhandler-error-warning' => 'Åtvaring',
+	'errorhandler-error-parse' => 'Parserfeil',
+	'errorhandler-error-notice' => 'Melding',
+	'errorhandler-error-core-error' => 'Kjernefeil',
+	'errorhandler-error-core-warning' => 'Kjerneåtvaring',
+	'errorhandler-error-compile-error' => 'Kompileringsfeil',
+	'errorhandler-error-compile-warning' => 'Kompileringsåtvaring',
+	'errorhandler-error-user-error' => 'Brukarfeil',
+	'errorhandler-error-user-warning' => 'Brukaråtvaring',
+	'errorhandler-error-user-notice' => 'Brukarmelding',
+	'errorhandler-error-strict' => 'Strenge standardar',
+	'errorhandler-error-recoverable' => 'Handterbar alvorleg feil',
+	'errorhandler-msg-text' => '$1: $2 i $3 (rad $4)',
+	'errorhandler-msg-html' => '<b>$1</b>: <i>$2</i> i <b>$3</b> (rad <b>$4</b>)',
+	'errorhandler-trace' => 'spor:',
+	'errorhandler-trace-line' => '$1 (rad $2): $3',
+	'errorhandler-trace-line-internal' => '[intern funksjon]: $1',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

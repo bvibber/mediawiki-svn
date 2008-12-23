@@ -88,6 +88,19 @@ Die Seite wurde nicht gespeichert.
 	'cspammer-log-page' => 'Kommentar-Spammer Logbuch',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'commentspammer-save-blocked' => 'Twója IP-adresa jo pódglědny spamowaŕ komentarow, togodla bok njejo se składował.
+[[Special:UserLogin|Pśizjaw se abo załož konto]], aby se to wobinuł.',
+	'commentspammer-desc' => 'Zajźujo změnam wót nejskerjejšych spamowarjow komentarow na cornej lisćinje DNS',
+	'commentspammer-log-msg' => 'Změna wót [[Special:Contributions/$1|$1]] na [[:$2]].',
+	'commentspammer-log-msg-info' => 'Slědne spamowanje pśed $1 {{PLURAL:$1|dnjom|dnjoma|dnjami|dnjami}}, wobgrozeński stopjeń jo $2 a napadowy kod jo $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Drobnostki se woglědaś] abo [[Special:Blockip/$4|blokěrowaś]].',
+	'cspammerlogpagetext' => 'Lisćina změnow, kótarež su se dowólili abo wótpokazali, za tym lěc žrědło jo znaty spamowaŕ komentarow było.',
+	'cspammer-log-page' => 'Protokol wó spamowarjach komentarow',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -173,7 +186,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'commentspammer-save-blocked' => 'Twoja IP-adresa je podhladny komentarne spamowar - składowanje zablokowane. Wutwor konto, zo by to wobešoł.',
+	'commentspammer-save-blocked' => 'Twoja IP-adresa je podhladny komentarny spamowar, tohodla strona njebu składowana. [[Special:UserLogin|Přizjew so abo wutwor konto]], zo by to wobešoł.',
 	'commentspammer-desc' => 'Wotpokazuje změny wot podhladnych spamowarjow komentarow na čornej lisćinje DNS.',
 	'commentspammer-log-msg' => 'změna wot [[Special:Contributions/$1|$1]] k [[:$2]]',
 	'commentspammer-log-msg-info' => 'Posledni spam před $1 {{PLURAL:$1|dnjom|dnjomaj|dnjemi|dnjemi}}, stopjeń hroženja je $2 a nadpadowy kod je $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Hlej podrobnosće] abo [[Special:Blockip/$4|blokowanje]].',
@@ -300,6 +313,19 @@ $messages['nl'] = array(
 	'commentspammer-log-msg-info' => 'Spamde voor het laatst $1 {{PLURAL:$1|dag|dagen}} geleden. Dreigingsniveau is $2 en de overtredingscode is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details bekijken] of [[Special:Blockip/$4|blokkeren]].',
 	'cspammerlogpagetext' => 'Logboek met bewerkingen die toegestaan of geweigerd zijn omdat de bron een bekende spammer was.',
 	'cspammer-log-page' => 'Spamlogboek',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'commentspammer-save-blocked' => 'Di IP-adressa er mistenkt for å vera ein kommentarspammar, so sida kan ikkje verta lagra.
+[[Special:UserLogin|Logg inn eller opprett ein konto]] for å unngå dette.',
+	'commentspammer-desc' => 'Avviser endringar frå mistenkte spammarar på ei DNS-svartelista.',
+	'commentspammer-log-msg' => 'endring på [[:$2]] av [[Special:Contributions/$1|$1]].',
+	'commentspammer-log-msg-info' => 'Sist spamma for {{PLURAL:$1|éin dag|$1 dagar}} sia, trusselnivået er $2, og krenkjekoden $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Sjå detaljar] eller [[Special:Blockip/$4|blokker]].',
+	'cspammerlogpagetext' => 'Register over endringar som har blitt godtekne eller nekta bastert på kor vidt kjelda var ein kjent kommentarspammar.',
+	'cspammer-log-page' => 'Kommentarspammarlogg',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

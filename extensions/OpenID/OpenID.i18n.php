@@ -1967,6 +1967,7 @@ Caso contrário, utilize o botão \\"Continuar\\".',
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'openidoptional' => 'Opţional',
 	'openidemail' => 'Adresă e-mail',
 	'openidlanguage' => 'Limbă',
 );

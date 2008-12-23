@@ -650,10 +650,21 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'player' => 'Avspelar',
+	'player-desc' => 'Inkludert multimedieavspelar med vanlege programtillegg for nettlesarar og ei [[Special:Player|spesialsida]]',
+	'player-title' => 'Avspelar',
+	'player-playertitle' => 'Avspelar: $1',
 	'player-file' => 'Filnamn',
+	'player-play' => 'Spel av',
+	'player-not-allowed' => 'utillate format',
+	'player-not-found' => 'fann ikkje fila',
+	'player-invalid-title' => 'ugyldig tittel',
+	'player-clicktoplay' => 'Spel av $1',
+	'player-goto-player' => 'avspelar',
 	'player-goto-page' => 'Side',
 	'player-goto-file' => 'fil',
 );

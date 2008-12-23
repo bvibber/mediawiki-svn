@@ -197,6 +197,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Purodha
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'povwatch' => 'PovWatch',
@@ -218,7 +219,7 @@ Ein Logbuch der über mittels PovWatch hinzugefügten Seiten ist verfügbar unte
 	'povwatch_unknown_subpage' => 'Unbekannte Unterseite',
 	'povwatch_push' => 'Hinzufügen',
 	'povwatch_push_intro' => 'Benutze das Formular, um Seiten den Beobachtungslisten der registrierten Benutzer hinzuzufügen.
-	Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werde und es gibt keinen Weg, dies rückgängig zu machen.',
+Bitte beachte: auch nicht vorhandene Seiten können hinzugefügt werde und es gibt keinen Weg, dies rückgängig zu machen.',
 	'povwatch_title' => 'Seitenname:',
 	'povwatch_comment' => 'Logbuch-Kommentar:',
 	'povwatch_no_log' => 'Das Logbuch enthält keine Einträge.',

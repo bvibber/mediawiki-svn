@@ -233,6 +233,7 @@ $messages['jv'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'categoryintersection' => 'ការ​បែងចែក​ចំណាត់ថ្នាក់ក្រុម',
 	'categoryintersection-doit' => 'រាយទំព័រក្នុងចំណាត់ថ្នាក់ក្រុមទាំងនេះ',
 	'categoryintersection-results' => 'ការស្វែងរកផ្ដល់ $1 {{PLURAL:$1|លទ្ឋផល|លទ្ឋផល}}។',
 );
@@ -294,6 +295,17 @@ $messages['nl'] = array(
 	'categoryintersection-doit' => "Pagina's in al deze categorieën bekijken",
 	'categoryintersection-maxcategories' => 'Het maximale aantal categoriedoorsneden is $1.',
 	'categoryintersection-results' => 'De zoekopdracht heeft $1 {{PLURAL:$1|resultaat|resultaten}} opgeleverd.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'categoryintersection' => 'Kategorisnitt',
+	'categoryintersection-desc' => 'Handtering av ein tabell med nøkkelverdien til dei [[Special:CategoryIntersection|kategorisnitta]] som ei sida er medlem i.',
+	'categoryintersection-doit' => 'Vis sider som høyrer til i alle desse kategoriane',
+	'categoryintersection-maxcategories' => 'Det høgste talet på kategoriar som ein kan søkja i er $1.',
+	'categoryintersection-results' => 'Søket ga {{PLURAL:$1|eitt resultat|$1 resultat}}.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

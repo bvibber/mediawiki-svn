@@ -102,6 +102,11 @@ $aliases['lb'] = array(
 	'SiteMatrix' => array( 'Lëscht vun de Wikimedia-Wikien' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'SiteMatrix' => array( 'ВикимедијаВикија', 'МатрицаНаВикија' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'SiteMatrix' => array( 'Wiki Wikimedia' ),

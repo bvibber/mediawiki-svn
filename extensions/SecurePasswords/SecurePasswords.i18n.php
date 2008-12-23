@@ -40,6 +40,13 @@ $messages['hsb'] = array(
 	'securepasswords-desc' => 'iše hesłowe haše a přidawa funkciju za kontrolowanje hesłoweje mocy',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'securepasswords-desc' => 'より安全なパスワードのハッシュを生成し、パスワード文字列チェッカーを追加する',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -47,11 +54,25 @@ $messages['nl'] = array(
 	'securepasswords-desc' => 'Gebruikt veiliger wachtwoordhashes en voegt een wachtwoordsterktecontrole toe',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'securepasswords-desc' => 'Opprettar meir sikre passordhashar og legg til ein funksjon for sjekking av passordstyrke',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
 	'securepasswords-desc' => "Crèa d'hachages de senhals mai segurs e apond un verificator de complexitat de senhal",
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'securepasswords-desc' => 'Vytvára bezpečnejšie haše hesiel a pridáva kontrolu sily hesla',
 );
 
 /** Swedish (Svenska)

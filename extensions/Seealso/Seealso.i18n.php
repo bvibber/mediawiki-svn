@@ -269,6 +269,14 @@ $messages['nl'] = array(
 	'seealso-desc' => "Gelokaliseerde kopjes 'Zie ook' met de tag <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'seealso' => 'Sjå òg',
+	'seealso-desc' => "Omsatte 'sjå òg'-overskrifter ved bruk av merket <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

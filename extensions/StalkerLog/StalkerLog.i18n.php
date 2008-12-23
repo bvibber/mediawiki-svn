@@ -62,6 +62,17 @@ $messages['de'] = array(
 	'stalkerlog-log-text' => 'Dies ist das Logbuch der An- und Abmeldungen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'stalkerlog-desc' => 'Pśidawa [[Special:Log/stalkerlog|protokol]] wó pśizjawjenjach a wótzjawjenjach wužywarjow',
+	'stalkerlog-log-login' => 'pśizjawjony.',
+	'stalkerlog-log-logout' => 'wótzjawjony.',
+	'stalkerlog-log-type' => 'Protokol za awtentifikaciju wužywarjow',
+	'stalkerlog-log-text' => 'To jo protokol wužywarskich pśizjawjenjow a wótzjawjenjow.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

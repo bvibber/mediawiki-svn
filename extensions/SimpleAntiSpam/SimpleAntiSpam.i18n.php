@@ -144,6 +144,16 @@ $messages['de'] = array(
 	'simpleantispam-desc' => 'Ergänzt Formulare um einen einfachen Bot-Spamschutz',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'simpleantispam' => 'Twója změna jo zapušćiła antispamowy mechanizm.',
+	'simpleantispam-label' => "Antispamowa kontrola.
+How '''NIC''' zapisaś!",
+	'simpleantispam-desc' => 'Pśidawa formularam jadnoru antispamowu kontrolu pśez bośik',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -294,6 +304,14 @@ $messages['jv'] = array(
 	'simpleantispam-label' => "Pamariksan anti-spam.
 '''Aja''' diisèkaké!",
 	'simpleantispam-desc' => 'Tambahaké pamriksan spam/bot prasaja menyang formulir',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'simpleantispam-label' => "스팸 방지 검사입니다.
+이것을 입력하지 '''마세요'''!",
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -326,16 +326,17 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'watchers' => 'អ្នកតាមដាន',
 	'watchers_link_title' => 'អ្នកណាកំពុងតាមដាន​ទំព័រនេះ?',
 	'watchers_error_article' => '<b>កំហុស៖</b> ទំព័រមិនមាន ។',
-	'watchers_header' => 'មានអ្នកប្រើប្រាស់$2នាក់កំពុងតាមដាន "$1"',
+	'watchers_header' => 'មាន​{{PLURAL:$2|User who is|អ្នកប្រើប្រាស់}} កំពុងតាមដាន "$1"',
 	'watchers_noone_watches' => 'គ្មាននរណាម្នាក់​កំពុងតាមដាន​ទំព័រនេះទេ។',
-	'watchers_x_or_more' => 'មានអ្នកប្រើប្រាស់$1នាក់ឬ​ច្រើនជាងនេះ​កំពុងតាមដាន​ទំព័រនេះ​។',
-	'watchers_less_than_x' => 'មនុស្ស​តិចជាង$1នាក់​កំពុងតាមដានទំព័រនេះ។',
+	'watchers_x_or_more' => 'មាន{{PLURAL:$1|users|អ្នកប្រើប្រាស់}} $1 ឬ​ច្រើនជាងនេះ​​កំពុងតាមដាន​ទំព័រនេះ​​។',
+	'watchers_less_than_x' => '{{PLURAL:$1|users|អ្នកប្រើប្រាស់}} ​តិចជាង $1 ​កំពុងតាមដានទំព័រនេះ​។',
 );
 
 /** Ripoarisch (Ripoarisch)

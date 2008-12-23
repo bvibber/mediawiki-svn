@@ -169,6 +169,14 @@ $messages['nl'] = array(
 	'othersites-desc' => 'Verplaatst interwikiverwijzingen anders dan taalverwijzingen naar een eigen portlet',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'othersites' => 'Andre sider',
+	'othersites-desc' => 'Flyttar interwikilenkjer som ikkje er andre språk til sin eigen boks',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -197,6 +205,7 @@ $messages['pt'] = array(
  */
 $messages['roa-tara'] = array(
 	'othersites' => 'Otre site',
+	'othersites-desc' => "Spueste le collegaminde de le otre interuicchi jndr'à 'u portlet tue",
 );
 
 /** Russian (Русский)

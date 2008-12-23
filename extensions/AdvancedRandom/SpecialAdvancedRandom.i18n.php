@@ -152,7 +152,7 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'advancedrandom' => 'Προοδευμένη τυχοῦσα',
-	'advancedrandom-desc' => 'Get a random page from whos talk or subjectpage links to a given page, can be used like [[Special:AdvancedRandom/Template:Featured/Talk]] to get a random featured article or like [[Special:AdvancedRandom/Template:GFDL/Image]] to get a random ἀρχεῖον GFDL',
+	'advancedrandom-desc' => 'Ἐπικτῆσαι τυχαίαν δέλτον τινὰ ἐκκινούμενος ἐκ μίας διαλέξεως ἢ συνδέσμῶν τινῶν δέλτου ἐγχειρήματός τινος πρὸς μίαν δεδομένην δέλτον. Ἔξεστί σοι χρῆσαι ταύτην ὡς [[Special:AdvancedRandom/Template:Featured/Talk]] ἵνα λάβῃς ἐξαἰρετον δέλτον τινὰ ἢ ὡς [[Special:AdvancedRandom/Template:GFDL/Image]] ἵνα λάβῃς τυχαῖον ἀρχεῖον GFDL (ἔχον Ἄδειαν Ἐλευθέρας Τεκμηριώσεως GNU) τί.',
 );
 
 /** Hebrew (עברית)
@@ -246,7 +246,7 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'advancedrandom' => 'Zofällijje Sigg (Met Extra Müjjeleschkeite )',
-	'advancedrandom-desc' => 'Deit en zosäzlijje Müjjelischkeit för zofällije Sigge en et Wikki, esu dat [[{{#special:AdvancedRandom}}/{{ns:Template}}:Dach/Atikkel]] ene zofällije DaresAtikkel brenge kann, udder [[{{#special:AdvancedRandom}}/{{ns:Template}}:GFDL/Beld]] e zofällesch Beld unger de GFDL.',
+	'advancedrandom-desc' => 'Deit en zosäzlijje Müjjelischkeit för zofällije Sigge en et Wikki, esu dat [[Special:AdvancedRandom/Template:Dach/Atikkel]] ene zofällije DaresAtikkel brenge kann, udder [[Special:AdvancedRandom/Template:GFDL/Beld]] e zofällesch Beld unger de GFDL.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

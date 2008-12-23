@@ -263,6 +263,7 @@ Případné dotazy k tomuto systému distribuce rozšíření můžete klást na
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'extensiondistributor' => 'MediaWiki-Erweiterungen herunterladen',
@@ -305,7 +306,7 @@ Unter Windows kannst du das Programm [http://www.7-zip.org/ 7-zip] zum Entpacken
 
 Wenn dein Wiki auf einem entfernten Server läuft, entpacke die Dateien in ein temporäres Verzeichnis auf deinem lokalen Computer und lade dann '''alle''' entpackten Dateien auf den entfernten Server hoch.
 
-Bitte beachte, dass einige Erweiterungen die Datei <tt>ExtensionFunctions.php</tt> benötigen. Sie liegt unter  <tt>extensions/ExtensionFunctions.php</tt>, dem Heimatverzeichnis der Erweiterungen. Der Schnappschuss dieser Erweiterung enthält diese Datei als tarbomb, entpackt nach <tt>./ExtensionFunctions.php</tt>. Vergiss nicht, auch diese Datei auf deinen entfernten Server hochzuladen.
+Bitte beachte, dass einige Erweiterungen die Datei <tt>ExtensionFunctions.php</tt> benötigen. Sie liegt unter <tt>extensions/ExtensionFunctions.php</tt>, dem Heimatverzeichnis der Erweiterungen. Der Schnappschuss dieser Erweiterung enthält diese Datei als tarbomb, entpackt nach <tt>./ExtensionFunctions.php</tt>. Vergiss nicht, auch diese Datei auf deinen entfernten Server hochzuladen.
 
 Nachdem du die Dateien entpackt hast, musst du die Erweiterung in der <tt>LocalSettings.php</tt> registrieren. Die Dokumenation zur Erweiterung sollte eine Anleitung dazu enthalten.
 
@@ -760,6 +761,57 @@ Nadat u de bestanden hebt uitgepakt en op de juiste plaatst hebt neergezet, moet
 
 Als u vragen hebt over dit distributiesysteem voor uitbreidingen, ga dan naar [[Extension talk:ExtensionDistributor]].',
 	'extdist-want-more' => 'Nog een uitbreiding downloaden',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'extensiondistributor' => 'Last ned utvidingar til MediaWiki',
+	'extdist-desc' => 'Utviding for distribuering av andre utvidingar',
+	'extdist-not-configured' => 'Still inn $wgExtDistTarDir og $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Mappa med arbeidskopien finst ikkje!',
+	'extdist-no-such-extension' => 'Inga utviding med namnet "$1"',
+	'extdist-no-such-version' => 'Versjon «$2» av «$1» finst ikkje',
+	'extdist-choose-extension' => 'Vel kva utviding du ønskjer å lasta ned:',
+	'extdist-wc-empty' => 'Mappa med arbeidskopien har ingen utvidingar som kan bli distribuerte.',
+	'extdist-submit-extension' => 'Hald fram',
+	'extdist-current-version' => 'Noverande versjon (trunk)',
+	'extdist-choose-version' => '<big>Du lastar ned utvidinga <b>$1</b>.</big>
+
+Oppgje kva MediaWiki-versjon du nyttar.
+
+Dei fleste utvidingane fungerer på fleire versjonar av MediaWiki, so om versjonen du nyttar ikkje er lista opp her, eller om du har bruk for dei sist utvidingseigenskapa, kan du prøva å velja den nyaste versjonen.',
+	'extdist-no-versions' => 'Den valte utvidinga ($1) er ikkje tilgjengeleg i nokon versjon!',
+	'extdist-submit-version' => 'Hald fram',
+	'extdist-no-remote' => 'Kunne ikkje kontakta ekstern SVN-klient.',
+	'extdist-remote-error' => 'Feil frå ekstern SVN-klient: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => 'Ugyldig svar frå ekstern SVN-klient.',
+	'extdist-svn-error' => 'SVN fann ein feil: <pre>$1</pre>',
+	'extdist-svn-parse-error' => 'Kunne ikkje handsama XML frå "svn info": <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar returnerte utgangskoden $1:',
+	'extdist-created' => "Eit snøggskot av versjon <b>$2</b> av utvidinga <b>$1</b> for MediaWiki <b>$3</b> har blitt oppretta. Nedlastinga vil starta automatisk om fem&nbsp;sekund.
+
+Adressa til snøggskotet er:
+:$4
+Adressa kan bli brukt for nedlasting til tenaren, men ikkje legg ho til som bokmerke, for innhaldet vil ikkje bli oppdatert, og ho kan bli sletta seinare.
+
+Tar-arkivet burde bli pakka ut i utvidingsmappa di; til dømes på eit Unix-liknande operativsystem:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+På Windows kan du nytta [http://www.7-zip.org/ 7-zip] for å pakka ut filene.
+
+Om wikien din er på ein ekstern tenar, pakk ut filene i ei midlertidig mappa på datamaskinen din, og last opp '''alle''' utpakka filer i utvidingsmappa på tenaren.
+
+Merk at nokre utvidingar treng ei fil med namnet ExtensionFunctions.php, i mappa <tt>extensions/ExtensionFunctions.php</tt>, altso i ''foreldremappa'' til den enkelte utvidinga si mappa. Snøggskotet for desse utvidingane inneheld denne fila som ein ''tarbomb'' som blir pakka ut til ./ExtensionFunctions.php. Ikkje gløym å lasta opp denne fila til den eksterne tenaren.
+
+Etter å ha pakka ut filene må du registrera utvidinga i LocalSettings.php. Dokumentasjonen til utvidinga burde ha instruksjonar på korleis ein gjer dette.
+
+Om du har spørsmål om dette distribusjonssytemet for utvidingar, gå til [http://www.mediawiki.org/wiki/Extension_talk:ExtensionDistributor Extension talk:ExtensionDistributor].",
+	'extdist-want-more' => 'Hent fleire utvidingar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

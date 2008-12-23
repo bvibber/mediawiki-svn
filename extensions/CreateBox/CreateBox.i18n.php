@@ -324,6 +324,19 @@ U kunt deze pagina niet aanmaken, maar u kunt deze [{{fullurl:{{FULLPAGENAME}}|a
 <createbox>break=no</createbox>",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'createbox-desc' => 'Spesialisert tekstboks for oppretting av sider',
+	'createbox-create' => 'Opprett',
+	'createbox-exists' => "Orsak, «'''{{FULLPAGENAME}}'''» finst frå før.
+
+Du kan ikkje oppretta denne sida, men du kan [{{fullurl:{{FULLPAGENAME}}|action=edit}} endra ho], [{{fullurl:{{FULLPAGENAME}}}} lesa ho] eller oppretta ei anna sida ved hjelp av boksen nedanfor.
+
+<createbox>break=no</createbox>",
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

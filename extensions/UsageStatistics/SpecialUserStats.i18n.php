@@ -1065,6 +1065,9 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'usagestatisticstype' => 'Tip',
+	'usagestatisticsintervalday' => 'Zi',
+	'usagestatisticsintervalweek' => 'Săptămână',
+	'usagestatisticsintervalmonth' => 'Lună',
 );
 
 /** Tarandíne (Tarandíne)

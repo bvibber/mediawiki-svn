@@ -227,7 +227,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'importusers' => 'Wužywarjow importěrowaś',
-	'importusers-desc' => '[[SpeciaL:ImportUsers|Importěrujo wužywarjow]] z kopicami z CSV-dataje; koděrowanje: UTF-8',
+	'importusers-desc' => '[[Special:ImportUsers|Importěrujo wužywarjow]] z kopicami z CSV-dataje; koděrowanje: UTF-8',
 	'importusers-uploadfile' => 'Dataju nagraś',
 	'importusers-form-caption' => 'CSV-dataja (UTF-8)',
 	'importusers-form-file' => 'Format wužywarskeje dataje (csv):',

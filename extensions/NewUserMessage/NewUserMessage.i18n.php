@@ -79,6 +79,7 @@ $messages['bg'] = array(
  */
 $messages['bs'] = array(
 	'newusermessage-desc' => 'Dodaje poruku na novonapravljene korisničke stranice za razgovor',
+	'newuseredit-summary' => 'Dodaje [[{{int:newusermessage-template}}|poruku dobrodošlice]] na nove korisničke stranice za razgovor',
 );
 
 /** Czech (Česky)

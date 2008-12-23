@@ -664,11 +664,19 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'edituser-desc' => 'Lar priviligerte brukarar endra andre brukarar sine instillingar',
+	'edituser' => 'Endra brukar',
+	'edituser-logout' => 'Logg ut brukaren',
 	'edituser-username' => 'Namn',
 	'edituser-dosearch' => 'Søk',
+	'edituser-nouser' => 'Den oppgjevne brukaren finst ikkje',
+	'edituser-exempt' => 'Den oppgjevne brukaren kan ikkje bli endra',
+	'right-edituser' => 'Redigera innstillingane til andre brukarar',
+	'right-edituser-exempt' => 'Innstilingane deira kan ikkje bli endra av andre',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

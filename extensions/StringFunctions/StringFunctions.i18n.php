@@ -72,6 +72,13 @@ $messages['fa'] = array(
 	'stringfunctions-desc' => 'تحلیل‌گر را با عملگرهای رشته‌ای تقویت می‌کند',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'stringfunctions-desc' => 'Parantaa parseria merkkijonojen käsittelytoiminnoilla.',
+);
+
 /** French (Français)
  * @author IAlex
  */

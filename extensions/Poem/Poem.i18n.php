@@ -319,6 +319,13 @@ $messages['nl'] = array(
 	'poem-desc' => 'Voegt de tag <tt>&lt;poem&gt;</tt> toe voor de opmaak van poëzie',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'poem-desc' => 'Legg til merket <tt>&lt;poem&gt;</tt> for å kunna formatera dikt',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -359,6 +366,13 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'poem-desc' => 'Adaugă eticheta <tt>&lt;poem&gt;</tt> pentru formatarea poem',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'poem-desc' => "Aggiunge 'u tag <tt>&lt;poem&gt;</tt> p'a formattazione de le poesie",
 );
 
 /** Russian (Русский)

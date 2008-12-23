@@ -178,6 +178,13 @@ $aliases['lb'] = array(
 	'ViewConfig' => array( 'Astellunge weisen' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'Configure' => array( 'Конфигурирај' ),
+	'Extensions' => array( 'Проширувања' ),
+	'ViewConfig' => array( 'ВидиКонфигурација' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'Configure' => array( 'Konfigurazzjoni' ),

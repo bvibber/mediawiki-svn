@@ -150,9 +150,13 @@ $messages['hsb'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Mizusumashi
  */
 $messages['ja'] = array(
+	'searchbox-desc' => '検索フォームの呼び出しをできるようにする',
 	'searchbox-search' => '検索',
+	'searchbox-go' => '検索',
+	'searchbox-namespaces' => '名前空間:',
 );
 
 /** Khmer (ភាសាខ្មែរ)

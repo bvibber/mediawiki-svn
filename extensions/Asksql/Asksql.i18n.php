@@ -230,6 +230,23 @@ Die Abfragen können die Server sehr stark belasten, deshalb nutzen Sie die Funk
 	'sqlislogged' => 'Bitte beachten Sie, dass alle Abfragen dokumentiert werden.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'asksql' => 'SQL wótpšašanje',
+	'asksql-desc' => 'Wótpšašanja SQL pśez [[Special:Asksql|specialny bok]] pśewjasć',
+	'asksqltext' => "Wuž slědujucy formular, aby direktne wótpšašanje wót datoweje banki pśewjadł.
+Wuž jadnore pazorki ('kaž toś te'), aby znamuškowe rědy wótźělił.
+To móžo k wjelikemu wobśěźenjeju serwera wjasć, wuž togodla toś tu funkciju rědko.",
+	'sqlislogged' => 'Pšosym źiwaj na to, až se wšykne wótpšašanja protokolěruju.',
+	'sqlquery' => 'Wótpšašanje zapódaś',
+	'querybtn' => 'Wótpšašanje pśewjasć',
+	'selectonly' => 'Jano cytańske wótpšašanja su dowólone.',
+	'querysuccessful' => 'Wótpšašanje wuspěšne',
+	'right-asksql' => 'Wótpšašanja SQL wuwjasć',
+);
+
 /** Greek (Ελληνικά)
  * @author Dead3y3
  */
@@ -646,6 +663,23 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
 	'selectonly' => 'U kunt slechts alleen-lezen zoekopdrachten uitvoeren.',
 	'querysuccessful' => 'Zoekopdracht uitgevoerd',
 	'right-asksql' => 'SQL-zoekopdrachten uitvoeren',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'asksql' => 'SQL-førespurnad',
+	'asksql-desc' => 'Gjer SQL-førespurnader gjennom ei [[Special:Asksql|spesialsida]]',
+	'asksqltext' => "Nytt skjemaet under for å føreta ein direkteførspurnad til databasen.
+Bruk enkle siteringsteikn ('som dette') for å merkja strenger.
+Dette kan ofte leggja press på tenarytinga, so nytt funksjonen med varsemd.",
+	'sqlislogged' => 'Merk at alle førespurnader blir logga.',
+	'sqlquery' => 'Skriv inn førespurnad',
+	'querybtn' => 'Utfør',
+	'selectonly' => 'Berre leseførespurnader går gjennom.',
+	'querysuccessful' => 'Førespurnad vellykka',
+	'right-asksql' => 'Gjennomføra SQL-førespurnader',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

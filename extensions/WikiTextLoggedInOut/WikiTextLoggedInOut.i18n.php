@@ -203,6 +203,13 @@ $messages['sv'] = array(
 	'wikitextloggedinout-desc' => 'Två parser hooks, <tt>&lt;loggedin&gt;</tt> och <tt>&lt;loggedout&gt;</tt> för att visa olika text beroende på användarens inloggningsstatus',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikitextloggedinout-desc' => "Mga pangawit na may dalawang banghay (''parser''), <tt>&lt;nakalagda&gt;</tt> at <tt>&lt;hindinakalagda&gt;</tt> para makapagpakita ng ibang teksto na nakasalalay sa kalagayan ng paglagda ng mga tagagamit",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

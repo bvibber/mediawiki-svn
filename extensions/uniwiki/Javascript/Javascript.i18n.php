@@ -13,6 +13,14 @@ $messages['en'] = array(
 	'javascript-desc' => 'Adds uniwiki.js to each page containing JavaScript code shared between Uniwiki extensions',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'javascript-desc' => 'Short description of this extension, shown on [[Special:Version]].
+Do not translate or change links.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -70,6 +78,13 @@ $messages['jv'] = array(
 	'javascript-desc' => 'Tambahaké uniwiki.js menyang saben kaca sing ngandhut kodhe JavaScript sing dianggo bebarengan ing antara èkstènsi Uniwiki',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'javascript-desc' => 'Deit op jede Sigg dat <code>uniwiki.js</code>dobei, di ald Javaßkripp Projramme uß däm Zosatz <code>Uniwiki</code> dren han.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -103,6 +118,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'javascript-desc' => 'Apondre uniwiki.js a cada pagina que conten de còde JavaScript partejat entre las extensions Uniwiki',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'javascript-desc' => 'Aggiunge uniwiki.js  pe ogne pàgene ca condiene codece JavaScript ca jè condivise cu le estenziune de Uniuicchi',
 );
 
 /** Russian (Русский)

@@ -1539,6 +1539,30 @@ $messages['tg-cyrl'] = array(
 	'webstore_php_error' => 'Хатоҳои PHP рух доданд:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'inplace_access_disabled' => 'Hindi pinaandar para sa lahat ng mga kliyente ang akseso o daan para sa ganitong paglilingkod/serbisyo .',
+	'inplace_access_denied' => 'Ipinagbawal ng IP ng kliyente ang ganitong paglilingkod/serbisyo.',
+	'inplace_scaler_no_temp' => 'Walang tanggap na pansamantalang direktoryo.
+Itakda sa isang nasusulatan/masusulatang direktoryo ang $wgLocalTmpDirectory',
+	'inplace_scaler_not_enough_params' => 'Hindi sapat na mga parametro (sukat).',
+	'inplace_scaler_invalid_image' => 'Hindi tanggap na larawan, hindi matukoy ang sukat.',
+	'inplace_scaler_failed' => 'May dinanas/nasalubong na kamalian habang sinusukat ang larawan: $1',
+	'inplace_scaler_no_handler' => 'Walang tagapamahalang magsasagawa ng pagbago sa anyo ng ganitong uri ng MIME',
+	'webstore_404' => 'Hindi natagpuan ang talaksan.',
+	'webstore_invalid_response' => 'Hindi tanggap na tugon mula sa serbidor:
+
+$1',
+	'webstore_no_response' => 'Walang tugon mula sa serbidor',
+	'webstore_backend_error' => 'Kamalian mula sa taguang serbidor:
+
+$1',
+	'webstore_php_error' => 'May nasalubong na (nakaranas ng) mga kamaliang pang-PHP:',
+	'webstore_no_handler' => 'Walang tagapamahala para sa pagbabago ng anyo ng ganitong uri ng MIME',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

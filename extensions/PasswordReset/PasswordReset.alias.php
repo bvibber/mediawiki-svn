@@ -80,6 +80,12 @@ $aliases['lb'] = array(
 	'Disabledusers' => array( 'Desaktivéiert Benotzer' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'PasswordReset' => array( 'ПроменаНаЛозинка' ),
+	'Disabledusers' => array( 'ОневозможениКорисници' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'PasswordReset' => array( 'Niej wachwoord instellen' ),

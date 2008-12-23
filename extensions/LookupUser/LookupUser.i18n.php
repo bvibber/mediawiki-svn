@@ -224,15 +224,26 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jaakonam
+ * @author Tarmo
  */
 $messages['fi'] = array(
 	'lookupuser' => 'Katso käyttäjän tiedot',
+	'lookupuser-desc' => '[[Special:LookupUser|Hakee tietoja]] käyttäjästä, kuten sähköpostiosoitteen ja tunnuksen.',
+	'lookupuser-intro' => 'Syötä käyttäjätunnus nähdäksesi tämän asetukset',
 	'lookupuser-nonexistent' => 'Virhe: Tunnusta ei ole olemassa',
+	'lookupuser-authenticated' => 'tunnistettu osoite $1',
+	'lookupuser-not-authenticated' => 'ei tunnistettu',
 	'lookupuser-id' => 'Käyttäjätunnus: <tt>#$1</tt>',
 	'lookupuser-email' => 'Sähköposti: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'ei annettu',
 	'lookupuser-realname' => 'Oikea nimi: $1',
 	'lookupuser-registration' => 'Rekisteröitymispäivämäärä: $1',
+	'lookupuser-no-registration' => 'ei tallennettu',
+	'lookupuser-touched' => 'Käyttäjätietoja viimeksi muutettu: $1',
+	'lookupuser-info-authenticated' => 'Sähköpostitunnistus: $1',
+	'lookupuser-useroptions' => 'Käyttäjävalinnat:',
 );
 
 /** French (Français)
@@ -638,6 +649,7 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'lookupuser' => 'Finn brukarinformasjon',
@@ -653,6 +665,7 @@ $messages['nn'] = array(
 	'lookupuser-registration' => 'Registreringsdato: $1',
 	'lookupuser-no-registration' => 'ikkje lagra',
 	'lookupuser-touched' => 'Innstillingar sist endra: $1',
+	'lookupuser-info-authenticated' => 'E-postverifisering: $1',
 	'lookupuser-useroptions' => 'Brukarval:',
 );
 

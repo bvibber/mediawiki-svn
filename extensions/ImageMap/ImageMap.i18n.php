@@ -348,6 +348,7 @@ $messages['fa'] = array(
  * @author Agony
  * @author Nike
  * @author Str4nd
+ * @author Tarmo
  */
 $messages['fi'] = array(
 	'imagemap_desc' => 'Mahdollistaa napsautettavien kuvakarttojen tekemisen <tt><nowiki><imagemap></nowiki></tt>-elementillä.',
@@ -362,6 +363,7 @@ $messages['fi'] = array(
 	'imagemap_invalid_coord' => 'Error: kelpaamaton koordinaatti rivillä $1. Koordinaatin täytyy olla numero.',
 	'imagemap_invalid_desc' => 'Virhe: virheellinen kohdemäärittely, kohdemäärittelyn tulee olla yksi seuraavista: <tt>$1</tt>',
 	'imagemap_description' => 'Kuvan tiedot',
+	'imagemap_poly_odd' => 'Virhe: löytyi polygoni, jossa pariton määrä koordinaatteja rivillä $1',
 );
 
 /** French (Français)
@@ -725,7 +727,8 @@ $messages['ksh'] = array(
 	'imagemap_invalid_desc' => 'Do es ene Fääler met <tt><nowiki><imagemap></nowiki></tt> opjefalle: Dä Parammeeter „<tt><nowiki>desc</nowiki></tt>“ eß verkeeht aanjejovve. Bruche kanns De nor ein fun dänne hee: <tt>$1</tt>',
 	'imagemap_description' => 'Övver dat Beld hee',
 	'imagemap_desc_types' => 'bovve räähß, unge räähß, unge lengkß, bovve lengkß, nix',
-	'imagemap_poly_odd' => 'Do es ene Fääler met <imagemap> opjefalle: De Parammeeter för „poly“ möße Zahle-Päärche sin, ävver hee es ei Zahl zovill udder zowinnisch.',
+	'imagemap_poly_odd' => 'Do es ene Fääler met <imagemap> opjefalle: De Parammeeter för „poly“ möße Zahle-Päärche sin, ävver hee es ei Zahl zovill udder zowinnisch
+en dä Reih: $1.',
 );
 
 /** Latin (Latina)

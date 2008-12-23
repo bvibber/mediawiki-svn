@@ -230,6 +230,19 @@ $messages['ja'] = array(
 	'categorywatch-catsub' => '$1をカテゴリ$2から外しました',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'categorywatch-emailbody' => '$1님 안녕하세요. 당신은 "$2" 분류를 주시하고 있기 때문에 이 메시지를 수신하였습니다.
+이 메시지는 $3에 $4가 $5하였다는 것을 알리고자 전달되었습니다.',
+	'categorywatch-emailsubject' => '주시된 분류 "$1"에 대한 바뀜',
+	'categorywatch-catmovein' => '$1 문서를 $3에서 $2로 이동',
+	'categorywatch-catmoveout' => '$1 문서를 분류 $2에서 $3으로 이동',
+	'categorywatch-catadd' => '$1 문서를 $2 분류에 추가',
+	'categorywatch-catsub' => '$1 문서를 $2 분류에서 제거',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -279,6 +292,20 @@ Hierbij ontvangt u de melding dat gebruiker $4 op $6 om $7 $5.',
 	'categorywatch-catmoveout' => '$1 van categorie $2 naar $3 heeft verplaatst',
 	'categorywatch-catadd' => '$1 aan categorie $2 heeft toegevoegd',
 	'categorywatch-catsub' => '$1 uit categorie $2 heeft verwijderd.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'categorywatch-desc' => 'Utvider overvakingslista sin funksjonalitet til òg å gjelda innhaldet i kategoriar',
+	'categorywatch-emailbody' => 'Hei, $1. Du mottek denne meldinga av di du overvaker kategorien «$2».
+Denne meldinga kjem for å gjera deg merksam på at $3 brukar $4 $5.',
+	'categorywatch-emailsubject' => 'Aktivitet i den overvaka kategorien «$1»',
+	'categorywatch-catmovein' => 'flytta $1 til kategorien $2 frå $3',
+	'categorywatch-catmoveout' => 'flytta $1 frå kategorien $2 til $3',
+	'categorywatch-catadd' => 'la til $1 i kategori $2',
+	'categorywatch-catsub' => 'fjerna $1 frå kategori $2',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

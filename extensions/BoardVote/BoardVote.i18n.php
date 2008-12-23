@@ -1414,9 +1414,9 @@ Es wird davon ausgegangen, dass du Kandidaten mit Rangnummer denen ohne Rangnumm
 <li><a href="http://de.wikipedia.org/wiki/Schulze-Methode" class="external">Schulze-Methode</a></li>
 </ul>',
 	'boardvote_intro_change' => '<p>Du hast bereits abgestimmt.
-	Jedoch kannst du deine Stimme(n) mit dem folgenden Formular ändern.
-	Bitte ordne die Kandidaten in deiner Wunschreihenfolge an, wobei eine kleinere Zahl den Vorrang für diesen Kandidaten bedeutet.
-	Du kannst dieselbe Zahl mehr als einem Kandidaten geben und du kannst Kandidaten auslassen.</p>',
+Jedoch kannst du deine Stimme(n) mit dem folgenden Formular ändern.
+Bitte ordne die Kandidaten in deiner Wunschreihenfolge an, wobei eine kleinere Zahl den Vorrang für diesen Kandidaten bedeutet.
+Du kannst dieselbe Zahl mehr als einem Kandidaten geben und du kannst Kandidaten auslassen.</p>',
 	'boardvote_entered' => 'Danke, deine Stimme wurde gespeichert.
 
 Wenn du möchtest, kannst du folgende Details festhalten. Deine Abstimmungsaufzeichnung ist:
@@ -1465,9 +1465,9 @@ Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwende
 	'go_to_board_vote' => 'Wahlen zum Wikimedia-Kuratorium 2008',
 	'boardvote_redirecting' => 'Um eine erhöhte Sicherung und Transparenz zu gewährleisten, findet die Wahl auf einem externen, unabhängig kontrollierten Server statt.
 
-	Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 Klicke hier], um sofort dorthin zu gelangen.
+Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 Klicke hier], um sofort dorthin zu gelangen.
 
-	Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
+Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
 	'right-boardvote' => 'Wahlen administrieren',
 );
 
@@ -3537,41 +3537,42 @@ Qol qoýılmağan kwälik twralı qawipsizdik añğartw körsetilwge mümkin.',
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'boardvote' => 'ការបោះឆ្នោត​ក្រុមប្រឹក្សាអភិបាល​មូលនិធី​វិគីមេឌា',
 	'boardvote-desc' => '[[meta:Board elections/2008|ការបោះឆ្នោត​ក្រុមប្រឹក្សាអភិបាល​មូលនិធី​វិគីមេឌា]]',
-	'boardvote_intro_change' => '<p>អ្នក​បានបោះឆ្នោត​ម្តងហើយ។ តែអ្នកអាច​ផ្លាស់ប្ដូរ​ការបោះឆ្នោត​របស់អ្នក​ដោយប្រើប្រាស់​សំនុំបែបបទ​ខាងក្រោម។ សូមគូស​នៅក្នុង​ប្រអបពីមុខ​ឈ្មោះបេក្ខជន​ដែលអ្នក​សំរេច​បោះឆ្នោត​អោយ។​</p>',
+	'boardvote_intro_change' => '<p>អ្នក​​បាន​បោះឆ្នោត​ម្តងហើយ។ តែ​អ្នក​អាច​ផ្លាស់ប្ដូរ​ការបោះឆ្នោត​របស់អ្នក​ដោយប្រើប្រាស់​សំណុំបែបបទ​ខាងក្រោម​។ សូម​គូស​នៅក្នុង​ប្រអប​ពីមុខ​​ឈ្មោះបេក្ខជន ដែល​អ្នក​សម្រេច​បោះឆ្នោត​ឱ្យ​។​</p>',
 	'boardvote_entered' => 'សូមអរគុណ! ការបោះឆ្នោតរបស់អ្នកត្រូវបានរក្សាទុកហើយ។
 
 
-If you wish, you may record the following details. Your voting record is:
+ប្រសិនបើ​អ្នក​ចង់ អ្នក​អាច​កត់ត្រា​ព័ត៌មាន​លំអិត​ដូចតទៅ​។ កំណត់ត្រា​នៃ​ការបោះឆ្នោត​របស់​អ្នក​គឺ​៖
 
 <pre>$1</pre>
 
-It has been encrypted with the public key of the Election Administrators:
-
+វា​ត្រូវ​បាន​អ៊ិនគ្រីប​ជាមួយនឹង​កូនសោសាធារណៈ សម្រាប់​ការបោះឆ្នោត​ជ្រើសរើស​អ្នកគ្រប់គ្រង​៖
 <pre>$2</pre>
 
-The resulting encrypted version follows. It will be displayed publicly on [[Special:Boardvote/dump]].
+ជា​លទ្ធផល កំណែ​អ៊ីនគ្រីប​មាន​ដូចតទៅ​។ វា​នឹង​ត្រូវ​បាន​បង្ហាញ​ជា​សាធារណៈ​នៅ​លើ [[Special:Boardvote/dump]]​។
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Back]]',
+[[Special:Boardvote/entry|ត្រឡប់]]',
 	'boardvote_notloggedin' => 'អ្នក​មិន​ទាន់​ឡុកអ៊ីន​ទេ។
 
-ដើម្បី​មានសិទ្ឋិ​បោះឆ្នោតបាន អ្នកត្រូវមាន​គណនី​ដែលមាន​ការរូមចំនែក​យ៉ាងហោចណាស់ $1ដងមុន$2 និង បានធ្វើការរួមចំនែកយ៉ាងហោចណាស់ $3 រវាង $4 និង $5។',
+ដើម្បី​មានសិទ្ឋិ​បោះឆ្នោតបាន អ្នកត្រូវមាន​គណនី​ដែលមាន {{PLURAL:$1|contribution|ការរូមចំណែក}} ​​យ៉ាងហោចណាស់ $1 ដងមុន $2 និង​បាន​ធ្វើ {{PLURAL:$3|contribution|ការរួមចំណែក}} យ៉ាងហោចណាស់ $3 រវាង $4 និង $5 ។',
 	'boardvote_notqualified' => 'អ្នក​មិនមាន​សិទ្ឋិ​ក្នុងការបោះឆ្នោតទេ។
 
-អ្នកត្រូវមានការរួមចំនែកយ៉ាងហោចណាស់ $1មុន $2 និងបានធ្វើការរួមចំនែកយ៉ាងហោចណាស់ $3 រវាង $4 និង $5។',
+អ្នកត្រូវមាន {{PLURAL:$1|contribution|ការរួមចំណែក}} យ៉ាងហោចណាស់ $1 មុន $2 និងបានធ្វើ {{PLURAL:$3|contribution|ការរួមចំណែក}} យ៉ាងហោចណាស់ $3 រវាង $4 និង $5 ។',
 	'boardvote_novotes' => 'មិនទាន់មានអ្នកបានបោះឆ្នោតទេ។',
 	'boardvote_time' => 'ពេល',
 	'boardvote_user' => 'អ្នកប្រើប្រាស់',
 	'boardvote_edits' => 'ចំនួនកំនែប្រែ',
 	'boardvote_days' => 'ចំនួនថ្ងៃ',
 	'boardvote_ip' => 'IP',
-	'boardvote_listintro' => '<p>នេះជា​បញ្ជី​នៃគ្រប់សន្លឹកឆ្នោត​បានដែលត្រូវកត់ត្រាទុក​មកទល់ពេលនេះ ។ $1 សំរាប់​ទិន្នន័យ​បំលែង​ជា​អក្សរកូដ ។</p>',
+	'boardvote_ua' => 'ភ្នាក់ងារ​អ្នកប្រើប្រាស់',
+	'boardvote_listintro' => '<p>នេះ​ជា​បញ្ជី​នៃគ្រប់សន្លឹកឆ្នោត​បានដែលត្រូវកត់ត្រាទុក​មកទល់ពេលនេះ​។ $1 សម្រាប់​ទិន្នន័យ​បម្លែង​ជា​អក្សរកូដ (អ៊ីនគ្រីប)​។</p>',
 	'boardvote_dumplink' => 'សូមចុចទីនេះ',
 	'boardvote_submit' => 'យល់ព្រម',
 	'boardvote_strike' => 'គូសចេញ',
@@ -3586,7 +3587,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'group-boardvote-member' => 'ក្រុមប្រឹក្សា​បោះឆ្នោត​អភិបាល',
 	'grouppage-boardvote' => '{{ns:project}}:ក្រុមប្រឹក្សា​បោះឆ្នោត​អភិបាល',
 	'boardvote_blocked' => 'សូមអភ័យទោស! អ្នកត្រូវបានហាមឃាត់នៅលើវិគីដែលអ្នកបានចុះឈ្មោះ។ អ្នកប្រើប្រាស់ដែលត្រូវបានហាមឃាត់ មិនត្រូវបានអនុញ្ញាតឱ្យបោះឆ្នោតទេ។',
-	'boardvote_bot' => 'អ្នកត្រូវបានផ្តល់សិទ្ធិជារូបយន្តនៅលើវិគីដែលអ្នកបានចុះឈ្មោះ។ គណនីជារូបយន្តមិនត្រូវបានអនុញ្ញាតអោយបោះឆ្នោតទេ។',
+	'boardvote_bot' => 'អ្នក​ត្រូវ​បាន​ផ្តល់សិទ្ធិ​ជា​រូបយន្ត​នៅលើ​វិគី ដែល​អ្នក​បាន​ចុះឈ្មោះ​។ គណនី​ជា​រូបយន្ត​មិន​ត្រូវ​បាន​អនុញ្ញាត​ឱ្យ​បោះឆ្នោត​ទេ​។',
 	'boardvote_welcome' => "សូមស្វាគមន៍'''$1'''!",
 	'go_to_board_vote' => 'ការបោះឆ្នោតក្រុមប្រឹក្សាវិគីមេឌាឆ្នាំ២០០៨',
 	'right-boardvote' => 'ការបោះឆ្នោតអ្នកអភិបាល',
@@ -3603,6 +3604,11 @@ $messages['ko'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|투표]]
 * [[Special:Boardvote/list|투표한 날짜의 목록]]
 * [[Special:Boardvote/dump|암호화된 선거 기록의 덤프]]',
+	'boardvote_nosession' => '당신의 위키미디어 계정 이름을 알 수 없습니다.
+투표 조건을 만족하는 위키에서 로그인한 후 <nowiki>[[Special:Boardvote]]를 이용해주세요.
+당신은 $2 이전에 적어도 $1개의 편집을 하고, $4와 $5 사이에 $3개의 편집을 한 계정을 이용해야 합니다.',
+	'boardvote_notloggedin' => '당신은 로그인하지 않으셨습니다.
+투표하시려면, 당신은 $2 이전에 적어도 $1개의 편집을 하고, $4와 $5 사이에 $3개의 편집을 한 계정을 이용해야 합니다.',
 	'boardvote_novotes' => '아무도 아직 투표하지 않았습니다.',
 	'boardvote_time' => '시간',
 	'boardvote_edits' => '편집',
@@ -6117,6 +6123,17 @@ $messages['th'] = array(
 	'boardvote_submit' => 'ตกลง',
 	'boardvote_strike' => 'ขีดฆ่า',
 	'boardvote_unstrike' => 'ไม่ขีดฆ่า',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'boardvote' => 'Halalan ng Pabahalaan<!--Board of Trustees is Pabahalaan--> (Lupon ng mga Kabahala) ng Wikimedia',
+	'boardvote-desc' => '[[meta:Board elections/2008|Halalan ng Pabahalaan ng Wikimedia]]',
+	'boardvote_entry' => '* [[Special:Boardvote/vote|Maghalal/Bumoto]]
+* [[Special:Boardvote/list|Talaan ng mga paghalal/pagboto sa ngayon]]
+* [[Special:Boardvote/dump|Ibasura ang de-kodigong rekord ng halalan]]',
 );
 
 /** Tonga (faka-Tonga) */

@@ -200,6 +200,13 @@ $messages['nl'] = array(
 	'rightfunctions-ns' => '(van naamruimtebeveiliging)',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'rightfunctions-local' => '(frå lokal sida)',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

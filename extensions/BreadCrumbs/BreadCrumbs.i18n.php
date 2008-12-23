@@ -162,6 +162,13 @@ $messages['jv'] = array(
 	'breadcrumbs-desc' => 'Nuduhaké para panganggo dalan ngliwati wiki.',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'breadcrumbs-desc' => 'បង្ហាញ​ផ្លូវ​របស់​អ្នកប្រើប្រាស់​នានា​តាមរយៈ​វិគី​។',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -202,6 +209,13 @@ $messages['nds-nl'] = array(
  */
 $messages['nl'] = array(
 	'breadcrumbs-desc' => 'Geeft het pad weer dat gebruikers in de wiki doorlopen',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'breadcrumbs-desc' => 'Viser stigen til brukaren gjennom wikien.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

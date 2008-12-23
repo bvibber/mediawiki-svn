@@ -77,6 +77,11 @@ $aliases['lb'] = array(
 	'ChangeAuthor' => array( 'Auteur änneren' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'ChangeAuthor' => array( 'ПроменаНаАвтор' ),
+);
+
 /** Erzya (Эрзянь) */
 $aliases['myv'] = array(
 	'ChangeAuthor' => array( 'ПолавтомсСёрмадыцянть' ),

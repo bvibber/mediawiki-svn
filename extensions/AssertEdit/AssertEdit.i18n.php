@@ -420,6 +420,15 @@ $messages['nl'] = array(
 	'assert_edit_message' => 'De gevraagde bevestiging ($1) faalde.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'assert_edit_title' => 'Redigeringsforsikring mislukkast',
+	'assert_edit_desc' => 'Legg til redigeringsforsikring til bruk for robotar',
+	'assert_edit_message' => 'Den spesifiserte redigeringsforsikringa ($1) mislukkast.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

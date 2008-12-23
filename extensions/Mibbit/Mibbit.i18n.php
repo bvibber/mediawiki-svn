@@ -281,12 +281,14 @@ Agli utenti anonimi ne è dato uno generato automaticamente, ma si può cambiare
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  * @author Mizusumashi
  */
 $messages['ja'] = array(
 	'mibbit' => 'Mibbitチャット',
 	'mibbit-desc' => '他のウィキユーザーとリアルタイムにチャットをするのための[[Special:Mibbit|特別ページ]]を追加します',
+	'mibbit-header' => 'この特別ページによって、あなたはこのウィキの他の利用者とリアルタイムで共同作業ができるようになります。接続するには接続ボタンを押すだけです。ニックネームでログインしている場合はその名前があらかじめ入力されています。匿名の利用者は自動的に名前がつけられますが、変えることもできます。',
 	'right-mibbit' => 'Mibbitチャットを使用できる',
 );
 

@@ -42,6 +42,11 @@ $aliases['hu'] = array(
 	'SharedUserRights' => array( 'Megosztott felhasználói jogok' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'SharedUserRights' => array( 'Gedeelte Benotzerrechter' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'SharedUserRights' => array( 'Edelen_gebrukersrechen' ),

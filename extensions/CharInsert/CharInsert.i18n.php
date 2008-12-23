@@ -107,6 +107,13 @@ $messages['fa'] = array(
 	'charinsert-desc' => 'ایجاد یک جعبه مبتنی بر جاوااسکریپت را برای [[MediaWiki:Edittools|وارد کردن نویسه‌های غیر-استاندارد]] ممکن می‌سازد',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'charinsert-desc' => 'Mahdollistaa JavaScript-laatikon luomisen [[MediaWiki:Edittools|erikoismerkkien syöttämiseksi]].',
+);
+
 /** French (Français)
  * @author Meithal
  * @author Urhixidur
@@ -249,6 +256,13 @@ $messages['myv'] = array(
  */
 $messages['nl'] = array(
 	'charinsert-desc' => 'Maakt het mogelijk [[MediaWiki:Edittools|niet-standaard karakters]] in te voeren vanuit een deelvenster via JavaScript',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'charinsert-desc' => 'Gjer det mogleg å setja inn [[MediaWiki:Edittools|spesialteikn]] i endringsruta ved hjelp av JavaScript',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

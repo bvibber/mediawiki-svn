@@ -92,6 +92,11 @@ $aliases['lb'] = array(
 	'CrossNamespaceLinks' => array( 'Säite mat Linken an aner Nimmraim' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'CrossNamespaceLinks' => array( 'МеѓуИменскиВрски' ),
+);
+
 /** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
 	'CrossNamespaceLinks' => array( 'Pautan silang ruang nama' ),

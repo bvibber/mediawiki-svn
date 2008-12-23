@@ -52,6 +52,11 @@ $aliases['lb'] = array(
 	'ChemicalSources' => array( 'Chemisch Quellen' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'ChemicalSources' => array( 'ХемискиИзвори' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ChemicalSources' => array( 'Scheikundige_bronnen' ),

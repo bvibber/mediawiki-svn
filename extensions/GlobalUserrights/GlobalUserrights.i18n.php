@@ -32,6 +32,30 @@ $messages['de'] = array(
 	'rights-userrights-global' => 'Globale Benutzerrechte verwalten',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'globaluserrights' => 'Zastojanje globalnych wužywarskich pšawow',
+	'gur-desc' => 'Lažke zastojanje [[Special:GlobalUserRights|globalnych wužywarskich pšawow]]',
+	'gur-rightslog-name' => 'Protokol globalnych pšawow',
+	'gur-rightslog-header' => 'To jo protokol změnow globalnych pšawow',
+	'gur-rightslog-entry' => 'jo globalne kupkowe cłonkojstwo za $1 z $2 do $3 změnił',
+	'rights-userrights-global' => 'Globalne wužywarske pšawy zastojaś',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'globaluserrights' => 'Administrado de Ĝeneralaj Uzulaj Rajtoj',
+	'gur-desc' => 'Facila [[Special:GlobalUserRights|administrado de uzulaj rajtoj]]',
+	'gur-rightslog-name' => 'Protokolo pri ĝeneralaj rajtoj',
+	'gur-rightslog-header' => 'Jen protokolo pri ŝanĝoj al ĝeneralaj rajtoj.',
+	'gur-rightslog-entry' => 'ŝanĝis membrecon de ĝenerala grupo por $1 de $2 al $3',
+	'rights-userrights-global' => 'Administri ĝeneralajn uzulajn rajtojn',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -64,8 +88,15 @@ $messages['hsb'] = array(
 	'gur-desc' => 'Lochke zrjadowanje [[Special:GlobalUserRights|globalnych wužiwarskich prawow]]',
 	'gur-rightslog-name' => 'Protokol globalnych prawow',
 	'gur-rightslog-header' => 'To je protokol wo změnach globalnych prawow.',
-	'gur-rightslog-entry' => 'změni globalne skupniske čłonstwo za $1 z $1 do $3',
+	'gur-rightslog-entry' => 'změni globalne skupniske čłonstwo za $1 z $2 do $3',
 	'rights-userrights-global' => 'Globalne wužiwarske prawa zrjadować',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'globaluserrights' => 'គ្រប់គ្រង​សិទ្ធិ​អ្នកប្រើប្រាស់​សកល',
 );
 
 /** Korean (한국어)
@@ -87,6 +118,18 @@ $messages['nl'] = array(
 	'rights-userrights-global' => 'Globale gebruikersrechten beheren',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'globaluserrights' => 'Handsaming av globale brukarrettar',
+	'gur-desc' => 'Enkel handsaming av [[Special:GlobalUserRights|globale brukarrettar]]',
+	'gur-rightslog-name' => 'Logg for globale rettar',
+	'gur-rightslog-header' => 'Dette er ein logg over endringar i globale brukarrettar.',
+	'gur-rightslog-entry' => 'endra globalt gruppemedlemskap for $1 frå $2 til $3',
+	'rights-userrights-global' => 'Handsama globale brukarrettar',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -97,5 +140,17 @@ $messages['oc'] = array(
 	'gur-rightslog-header' => "Aquò es lo jornal de las modificacions d'estatuts globals",
 	'gur-rightslog-entry' => 'a modificat los dreches globals per $1 de $2 a $3',
 	'rights-userrights-global' => "Gerir los dreches d'utilizaires globals",
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'globaluserrights' => 'Správa oprávnení globálnych používateľov',
+	'gur-desc' => 'Jednoduchá správa [[Special:GlobalUserRights|oprávnení globálnych používateľov]]',
+	'gur-rightslog-name' => 'Záznam globálnych oprávnení',
+	'gur-rightslog-header' => 'Toto je záznam zmien globálnych oprávnení.',
+	'gur-rightslog-entry' => 'zmenené členstvo $1 v globálnej skupine z $2 na $3',
+	'rights-userrights-global' => 'Spravovať oprávnenia globálnych používateľov',
 );
 

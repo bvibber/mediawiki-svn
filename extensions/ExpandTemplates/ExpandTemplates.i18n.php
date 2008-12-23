@@ -1136,10 +1136,24 @@ Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'expandtemplates' => 'Utvid malar',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Utvid malar, parserfunksjonar og variablar]] for å visa resulterande råtekst og førehandsvisa sida slik ho vert',
+	'expand_templates_intro' => 'Denne sida tek ein tekst og utvider alle malar som er bruka i teksten. 
+Ho utvider òg alle funksjonar som 
+<nowiki>{{</nowiki>#if:…}}, og variablar som
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash; bortimot alt som står i dobbelte klammeparentesar.
+Dette gjer han ved å kalla dei relevante parsersetega frå MediaWiki sjølv.',
+	'expand_templates_title' => 'Konteksttittel, for {{PAGENAME}} etc.:',
+	'expand_templates_input' => 'Inntekst:',
+	'expand_templates_output' => 'Resultat',
+	'expand_templates_xml_output' => 'XML-resultat',
 	'expand_templates_ok' => 'OK',
+	'expand_templates_remove_comments' => 'Fjern kommentarar',
+	'expand_templates_generate_xml' => 'Vis parsertre som XML',
 	'expand_templates_preview' => 'Førehandsvising',
 );
 

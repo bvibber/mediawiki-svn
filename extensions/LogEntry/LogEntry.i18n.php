@@ -52,6 +52,18 @@ $messages['de'] = array(
 	'logentry-invalidtoken' => 'Ungültiges Token',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'logentry-append' => 'Pśipowjesyś',
+	'logentry-parserhook-desc' => 'Toś to rozšyrjenje staja formular za pśipowjesenje a zachopjenje k protokolowym bokam k dispoziciji',
+	'logentry-specialpage-desc' => 'Toś to rozšyrjenje staja pśeźěłanje za pśipowjesenje k protokolowym bokam k dispoziciji',
+	'logentry' => 'Protokolowy zapisk',
+	'logentry-invalidpage' => 'Njepłaśiwy bok',
+	'logentry-invalidtoken' => 'Njepłaśiwy token',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex
@@ -82,7 +94,7 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'logentry-append' => 'Připójsnyć',
-	'logentry-parserhook-desc' => 'Tute rozšěrjenje skića formular za připójsnjenje teksta resp. započenje z tekstom k protokolwym stronam',
+	'logentry-parserhook-desc' => 'Tute rozšěrjenje staja formular za připójsnjenje teksta resp. započenje z tekstom k protokolowym stronam',
 	'logentry-specialpage-desc' => 'Tute rozšěrjenje skića předźěłanje za připójsnjenje k protokolowym stronam',
 	'logentry' => 'Protokolowy zapisk',
 	'logentry-invalidpage' => 'Njepłaćiwa strona',

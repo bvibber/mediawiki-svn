@@ -32,6 +32,11 @@ $aliases['bs'] = array(
 	'ViewXML' => array( 'VidiXML' ),
 );
 
+/** French (Français) */
+$aliases['fr'] = array(
+	'ViewXML' => array( 'Voir XML', 'VoirXML' ),
+);
+
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'ViewXML' => array( 'Lueg XML' ),
@@ -45,6 +50,11 @@ $aliases['hu'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ViewXML' => array( 'XML weisen' ),
+);
+
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'ViewXML' => array( 'ВидиXML' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

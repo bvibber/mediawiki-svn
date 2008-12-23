@@ -135,6 +135,13 @@ $messages['nl'] = array(
 	'navigationpopups-desc' => "Laadt Lupin's navigatiescriptspopups in MediaWiki",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'navigationpopups-desc' => 'Lastar Lupin sitt ballongnavigasjonsskript i MediaWiki',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

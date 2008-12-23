@@ -81,7 +81,7 @@ $aliases['lb'] = array(
 
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'WhatIsMyIP' => array( 'МојатаIP' ),
+	'WhatIsMyIP' => array( 'КојаЕМојатаIP' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

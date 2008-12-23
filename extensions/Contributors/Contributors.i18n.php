@@ -649,8 +649,8 @@ $messages['km'] = array(
 	'contributors-target' => 'ចំណងជើង៖',
 	'contributors-submit' => 'បង្ហាញ',
 	'contributors-subtitle' => 'អ្នករួមចំណែកចម្បងរបស់ $1',
-	'contributors-others-long' => 'មានអ្នករួមចំណែក​ដទៃ $1 នាក់ទៀត​ចំពោះ​ទំព័រនេះ។',
-	'contributors-others' => 'និង $1 នាក់ផ្សេងទៀត',
+	'contributors-others-long' => 'មាន {{PLURAL:$1|is one other contributor|$1 អ្នករួមចំណែក​ដទៃ}} $1 ទៀត​ចំពោះ​ទំព័រនេះ​។',
+	'contributors-others' => 'និង {{PLURAL:$1|one other|$1 នាក់ផ្សេងទៀត}}',
 	'contributors-badtitle' => 'ចំណងជើង​គ្មានសុពលភាព',
 	'contributors-nosuchpage' => 'មិនមានទំព័រ$1ទេ។',
 );
@@ -1100,6 +1100,7 @@ $messages['su'] = array(
  * @author Jon Harald Søby
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'contributors' => 'Bidragsgivare',
@@ -1109,8 +1110,8 @@ $messages['sv'] = array(
 	'contributors-target' => 'Titel:',
 	'contributors-submit' => 'Visa',
 	'contributors-subtitle' => 'Huvudsakliga bidragsgivare till $1',
-	'contributors-others-long' => '$1 andra användare har bidragit till denna sida.',
-	'contributors-others' => 'och $1 andra',
+	'contributors-others-long' => '{{PLURAL:$1|en annan användare|$1 andra användare}} har bidragit till denna sida.',
+	'contributors-others' => 'och {{PLURAL:$1|en annan|$1 andra}}',
 	'contributors-badtitle' => 'Ogiltig titel.',
 	'contributors-nosuchpage' => 'Sidan $1 existerar inte.',
 );

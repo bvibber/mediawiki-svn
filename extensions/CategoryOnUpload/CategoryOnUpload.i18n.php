@@ -275,6 +275,14 @@ $messages['nl'] = array(
 	'categoryonupload-label' => 'Categorie:',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'categoryonupload-desc' => 'Ber brukarar om å velja ein kategori når dei lastar opp filer',
+	'categoryonupload-label' => 'Kategori:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

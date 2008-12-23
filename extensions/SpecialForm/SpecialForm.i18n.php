@@ -466,7 +466,7 @@ $messages['km'] = array(
 	'formarticleexists' => 'ទំព័រ​មានរួចហើយ',
 	'formarticleexiststext' => 'ទំព័រ [[$1]] មានរួចហើយ។',
 	'formbadpagename' => 'ឈ្មោះទំព័រមិនល្អ',
-	'formsavesummary' => 'ទំព័រថ្មី ប្រើប្រាស់ [[Special:Form/$1]]',
+	'formsavesummary' => 'ទំព័រ​ប្រើប្រាស់​ថ្មី [[Special:Form/$1|ទម្រង់ $1]]',
 	'formsaveerror' => 'កំហុសរក្សាទុកសំណុំបែបបទ',
 	'formsaveerrortext' => "មានកំហុសមិនស្គាល់មួយក្នុងការរក្សាទុកទំព័រ '$1'។",
 );

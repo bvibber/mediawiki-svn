@@ -206,10 +206,12 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jack Phoenix
  */
 $messages['fi'] = array(
 	'importfreeimages' => 'Tuo vapaita kuvia',
+	'importfreeimages-desc' => 'Mahdollistaa [[Special:ImportFreeImages|sopivasti lisensoitujen valokuvien tuonnin]] [http://www.flickr.com Flickristä].',
 	'importfreeimages_description' => 'Tämän sivun kautta pystyt etsimään asianomaisesti lisensoituja kuvia flickr:sta ja tuomaan niitä wikiisi.',
 	'importfreeimages_noapikey' => 'Et ole asettanut Flickr API-avaintasi.
 Tehdäksesi niin, hanki API-avain [http://www.flickr.com/services/api/misc.api_keys.html täältä] ja aseta wgFlickrAPIKey ImportFreeImages.php-tiedostossa.',
@@ -459,8 +461,8 @@ $messages['km'] = array(
 	'importfreeimages' => 'នាំចូល រូបភាព សេរី',
 	'importfreeimages-desc' => 'ផ្ដល់នូវរបៀបមួយក្នុងការ[[Special:ImportFreeImages|នាំចូលរូបភាពដែលមានអាជ្ញាប័ណ្ណត្រឹមត្រូវ]] ពី [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'ទំព័រនេះផ្ដល់លទ្ឋភាពឱ្យអ្នកស្វែងរករូបភាពដែលមានអាជ្ញាប័ណ្ណត្រឹមត្រូវពី flickr ហើយនាំចូលពូកវាមកក្នុងវិគីរបស់អ្នក។',
-	'importfreeimages_noapikey' => 'អ្នកមិនបាន ធ្វើទំរង់ សោ Flickr API របស់អ្នក។ ដើម្បីធ្វើវា, ត្រូវយក សោ​ API ពី [http://www.flickr.com/services/api/misc.api_keys.html here] រួច កំណត់​ wgFlickrAPIKey ក្នុង ImportFreeImages.php ។',
-	'importfreeimages_invalidurl' => 'URL "$1" មិនមែនជា រូបភាព ត្រឹមត្រូវ របស់ Flickr ។',
+	'importfreeimages_noapikey' => 'អ្នកមិនបាន​ធ្វើទម្រង់​សោ Flickr API របស់អ្នក​។ ដើម្បីធ្វើវា, ត្រូវយក​សោ​ API ពី [http://www.flickr.com/services/api/misc.api_keys.html here] រួច​កំណត់​ wgFlickrAPIKey ក្នុង ImportFreeImages.php ។',
+	'importfreeimages_invalidurl' => 'URL "$1" មិនមែនជា​រូបភាព​ត្រឹមត្រូវ​របស់ Flickr ។',
 	'importfreeimages_owner' => 'អ្នកនិពន្ធ',
 	'importfreeimages_importthis' => 'នាំចូល នេះ',
 	'importfreeimages_next' => 'បន្ទាប់ $1',

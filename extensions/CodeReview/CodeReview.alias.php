@@ -80,7 +80,7 @@ $aliases['lb'] = array(
 
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'Code' => array( 'ПрограмскиКод' ),
+	'Code' => array( 'ПрограмскиКод', 'Код', 'ПрегледНаКод' ),
 );
 
 /** Dutch (Nederlands) */

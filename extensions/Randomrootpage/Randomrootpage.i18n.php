@@ -156,6 +156,14 @@ $messages['nl'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Speciale pagina]] die een willekeurige hoofdpagina weergeeft',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'randomrootpage' => 'Tilfeldig rotsida',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Spesialsida]] som hentar ei tilfeldig rotsida',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

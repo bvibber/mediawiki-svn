@@ -162,6 +162,17 @@ $messages['de'] = array(
 	'intersection_noincludecats' => 'DynamicPageList: Es muss mindestens eine Kategorie eingebunden werden oder gebe einen Namensraum an!',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'intersection-desc' => 'Wudawa lisćina nejaktualnjejšych zapiskow w kategoriji abo zgromadneje młogosći někotarych kategorijow',
+	'intersection_toomanycats' => 'Zmólka: Pśewjele kategorijow!',
+	'intersection_toofewcats' => 'Zmólka: Pśemało kategorijow!',
+	'intersection_noresults' => 'Zmólka: Žedne wuslědki!',
+	'intersection_noincludecats' => 'Zmólka: Musyš nanejmjenjej jadnu kategoriju zapśěgnuś abo mjenjowy rum pódaś!',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -376,12 +387,13 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Thearith
  */
 $messages['km'] = array(
-	'intersection_toomanycats' => 'Error: ចំណាត់ក្រុម ច្រើនពេក!',
-	'intersection_toofewcats' => 'Error: ចំណាត់ក្រុម តិចពេក!',
-	'intersection_noresults' => 'Error: គ្មានលទ្ធផល!',
-	'intersection_noincludecats' => 'Error: អ្នកត្រូវតែមាន យ៉ាងតិច មួយចំណាត់ក្រុម, ឬ សំដៅ មួយ វាលឈ្មោះ​!',
+	'intersection_toomanycats' => 'កំហុស​៖ ចំណាត់ថ្នាក់ក្រុម​ច្រើនពេក​!',
+	'intersection_toofewcats' => 'កំហុស​៖ ចំណាត់ថ្នាក់ក្រុម​តិចពេក​!',
+	'intersection_noresults' => 'កំហុស​៖ គ្មាន​លទ្ធផល​!',
+	'intersection_noincludecats' => 'កំហុស​៖ អ្នក​ត្រូវតែ​មាន​ចំណាត់ថ្នាក់ក្រុម​មួយយ៉ាងតិច ឬ សំដៅ​មួយ​លំហឈ្មោះ​!',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -486,6 +498,17 @@ $messages['nl'] = array(
 	'intersection_toofewcats' => 'Error: Te weinig categorieën!',
 	'intersection_noresults' => 'Error: Geen resultaten!',
 	'intersection_noincludecats' => 'Error: U moet tenminste een categorie of een naamruimte opgeven!',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'intersection-desc' => 'Gjev ei punktlista over dei nyaste elementa i ein kategori, eller element som er felles i fleire kategoriar',
+	'intersection_toomanycats' => 'Feil: For mange kategoriar!',
+	'intersection_toofewcats' => 'Feil: For få kategoriar!',
+	'intersection_noresults' => 'Feil: Ingen resultat!',
+	'intersection_noincludecats' => 'Feil: Du må inkludera minst éin kategori, eller oppgje eit namnerom!',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

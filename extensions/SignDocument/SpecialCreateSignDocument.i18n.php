@@ -898,6 +898,7 @@ $messages['ro'] = array(
 	'createsigndoc-pagename' => 'Pagină:',
 	'createsigndoc-email' => 'Adresă e-mail:',
 	'createsigndoc-hidden' => 'Ascunse',
+	'createsigndoc-optional' => 'Opţional',
 	'createsigndoc-create' => 'Creează',
 );
 

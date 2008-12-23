@@ -56,6 +56,13 @@ $messages['be-tarask'] = array(
 	'antibot-desc' => 'Просты сродак абароны ад спам-робатаў і робатаў, якія выклікаюць перагрузку сэрвэра',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'antibot-desc' => 'Jednostavni radni okvir za provjeru spam botova',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -96,6 +103,13 @@ $messages['eo'] = array(
  */
 $messages['fa'] = array(
 	'antibot-desc' => 'چارچوب ساده برای بررسی ربات‌های هرزنگار و بار راه‌انداز',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'antibot-desc' => 'Yksinkertainen roskabotti- ja haittaohjelmatunnistusjärjestelmä.',
 );
 
 /** French (Français)
@@ -210,6 +224,13 @@ $messages['nds-nl'] = array(
  */
 $messages['nl'] = array(
 	'antibot-desc' => 'Simpel framework voor controle op spambots en trigger payloads',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'antibot-desc' => 'Enkel struktur for spamrobotkontroll',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

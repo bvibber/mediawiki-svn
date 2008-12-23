@@ -50,6 +50,11 @@ $aliases['hu'] = array(
 	'LogEntry' => array( 'Naplóbejegyzés' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'LogEntry' => array( 'ЗаписВоДневник' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'LogEntry' => array( 'Logboekregel' ),

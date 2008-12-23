@@ -592,6 +592,22 @@ $messages['nl'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Invoerfout!',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'chemicalsources' => 'Kjemiske kjelder',
+	'chemicalsource-desc' => 'Legg til merket <nowiki><chemform></nowiki> for kjemiformlar',
+	'chemFunctions_ListPage' => 'Kjemiske kjelder',
+	'chemFunctions_DataList' => 'Under er ei lista over lenkjer til sider som kan gje informasjon om kjemikaliet du leitar etter.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula ved NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS ved Oxford University (UK) (kan ikkje søkja)</a><br />',
+	'chemFunctions_CAS' => 'CAS-nummer',
+	'chemFunctions_Formula' => 'Formel',
+	'chemFunctions_Name' => 'IUPAC-namn',
+	'chemFunctions_ChemFormInputError' => 'Chemform: inntekst-feil!',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

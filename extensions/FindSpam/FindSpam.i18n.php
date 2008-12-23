@@ -129,6 +129,17 @@ $messages['de'] = array(
 	'findspam-notextfound' => 'Keine Beiträge gefunden',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'findspam' => 'Spam pytaś',
+	'findspam-desc' => 'Pśidawa [[Special:FindSpam|specialny bok]], kótaryž zmóžnja nowo pśidany spam namakaś',
+	'findspam-ip' => 'IP-adresa',
+	'findspam-ok' => 'W pórěźe',
+	'findspam-notextfound' => 'Žedne pśinoski namakane',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -161,11 +172,13 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Nike
+ * @author Tarmo
  */
 $messages['fi'] = array(
 	'findspam' => 'Etsi spämmiä',
 	'findspam-desc' => 'Lisää [[Special:FindSpam|toimintosivun]] tuoreen spämmin löytämiseksi',
 	'findspam-ip' => 'IP-osoite',
+	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Muokkauksia ei löytynyt',
 );
 

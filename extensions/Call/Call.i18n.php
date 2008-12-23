@@ -181,6 +181,31 @@ Für Probleme gibt es <b>{{ns:special}}:Call/DebuG</b>",
 	'call-save-failed' => 'Der folgende Text wurde NICHT auf Seite <big>[[$1]]</big> gespeichert, weil diese Seite bereits existiert.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'call' => 'Zawołanje',
+	'call-desc' => 'Wótkaz k pśedloze (abo k normalnemu wikjowemu bokoju) z pśepódaśim parametra napóraś.
+Dajo se na pśikazowej smužce wobglědowaka abo we wikijowem teksće wužywaś.',
+	'call-text' => "Rozšyrjenje Call wótcakujo wikijowy bok a opcionalne parametry za toś ten bok ako argument.
+
+Pśikład 1: &nbsp; <tt>[[Special:Call/My Template,parm1=value1]]</tt><br />
+Pśikład 2: &nbsp; <tt>[[Special:Call/Talk:My Discussion,parm1=value1]]</tt><br />
+Pśikład 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Pśikład 4: (URL we wobglědowaku): &nbsp; <tt>http://mydomain/mywiki/index.php?Special:Call/:My_Page,parm1=value1</tt>
+
+<i>Rozšyrjenje Call</i> wuwołajo dany bok a pśepódajo parametry.<br />
+Buźoš wiźeś wopśimjeśe wuwołanego boka a jogo titel, ale jogo 'typ' buźo ten wot specialnego boka, to groni, až taki bok njedajo se wobźěłaś.<br />Wopśimjeśe, kótarež wiźiš, móžo wariěrowaś, we wótwisnosći wót gódnoty parametrow, kótarež sy pśepódał.
+
+<i>Rozšyrjenje Call</i> jo wužytne, aby twóriło interaktiwne aplikacije z MediaWiki.<br />
+Glědaj na pśikład <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL GUI</a> ..<br />
+W paźe problemow, móžoš wopytaś <b>Special:Call/DebuG</b>",
+	'call-save' => "Wudaśe toś togo zawołanja by se do boka z mjenim ''$1'' składowało.",
+	'call-save-success' => 'Slědujucy tekst jo se do boka <big>[[$1]]</big> składował.',
+	'call-save-failed' => 'Slědujucy tekst NJEjo se do boka <big>[[$1]]</big> składł, dokulaž ten bok južo eksistěrujo.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -499,6 +524,28 @@ Bij problemen kunt u gebruik maken van <b>Special:Call/DebuG</b>",
 	'call-save' => "De uitvoer van deze aanroep zou opgeslagen zijn in de pagina ''$1''.",
 	'call-save-success' => 'De volgende tekst is opgeslagen in pagina <big>[[$1]]</big>.',
 	'call-save-failed' => 'De volgende tekst is NIET opgeslagen in pagina <big>[[$1]]</big> omdat die pagina al bestaat.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'call' => 'Kall opp',
+	'call-desc' => 'Gjer det mogleg å oppretta lenkjer til malar (eller vanlige wikisider) med oppgjevne parametrar. Lenkjene kan bli brukte i adressefeltet til nettlesaren eller i wikitekst.',
+	'call-text' => 'Utvidinga Kall opp (Call) forventar at ei wikisida og valfrie parametrar for sida blir oppgjevne som eit argument.<br /><br />
+Døme 1: &nbsp; <tt>[[Special:Call/Malen min,parm1=verdi1]]</tt><br />
+Døme 2: &nbsp; <tt>[[Special:Call/Talk:Diskusjonssida mi,parm1=verdi1]]</tt><br /><br />
+Døme 3: &nbsp; <tt>[[Special:Call/:Sida mi,parm1=verdi1,parm2=verdi2]]</tt><br /><br />
+Døme 4 (URL for adressefeltet): &nbsp; <tt>http://mittdomene/minwiki/index.php?Special:Call/:Mi_sida,parm1=verdi1</tt><br /><br />
+
+<i>Kall opp</i>-tillegget kallar opp den oppgjevne sida og sender med parametrane.<br />Du kjem til å sjå sida som er kalla opp sitt innhald og tittel, men sida som blir vist er ei spesialsida og kan difor ikkje bli redigert.<br />
+Innhaldet som blir vist kan variera avhengig av verdiane til dei parametrane som som blir sendte med.<br /><br />
+Tillegget <i>Kall opp</i> kan bli brukt for å skapa interaktive applikasjonar med MediaWiki.<br />
+Sjå til dømes <a href="http://semeb.com/dpldemo/Template:Catlist">grensesnittet for DPL</a><br />
+Om du har problem, kan du prøva <b>Special:Call/DebuG</b>.',
+	'call-save' => "Resultatet av denne oppkallinga ville blitt lagra på ei sida med namnet ''$1''.",
+	'call-save-success' => 'Følgjande tekst har blitt lagra på sida <big>[[$1]]</big>.',
+	'call-save-failed' => 'Følgjande tekst har IKKJE blitt lagra på sida <big>[[$1]]</big> av di sida allereie finst.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

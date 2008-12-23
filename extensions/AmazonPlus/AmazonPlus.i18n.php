@@ -267,10 +267,16 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'amazonplus-desc' => 'Ei utviding med store tilpassingsmoglegheiter for å visa Amazon-informasjon',
+	'amazonplus-nores' => 'Feil: fann ingen resultat!',
+	'amazonplus-noidres' => 'Feil: kunne ikkje finna ein produkt-ID!',
+	'amazonplus-fgcerr' => 'Feil: kunne ikkje henta data frå Amazon!',
+	'amazonplus-slserr' => 'Feil: kunne ikkje parsa data frå Amazon!',
 	'amazonplus-used' => 'brukt',
 	'amazonplus-german' => 'Tysk',
 	'amazonplus-french' => 'Fransk',
 	'amazonplus-japanese' => 'Japansk',
+	'amazonplus-amazon' => 'amazonpris',
 	'amazonplus-new' => 'ny',
 	'amazonplus-none' => 'Ingen kopiar av dette produktet er for sal.',
 	'amazonplus-cp-none' => 'Ingen',

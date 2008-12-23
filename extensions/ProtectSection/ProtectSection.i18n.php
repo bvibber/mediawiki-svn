@@ -15,10 +15,13 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'protectsection_desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'protectsection_desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.
+
+{{Identical|Authorised user}}',
 );
 
 /** Arabic (العربية)
@@ -174,6 +177,16 @@ $messages['it'] = array(
 	'protectsection_add_remove' => 'Hai provato ad aggiungere o rimuovere una sezione protetta',
 	'protectsection_modify' => 'Hai provato a modificare del testo protetto',
 	'protectsection_forbidden' => 'Vietato',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'protectsection_desc' => '権限のある利用者が <tt>&lt;protect&gt;</tt> タグを使ってページの一部を保護できるようにする',
+	'protectsection_add_remove' => 'あなたは保護されたセクションを追加または除去しようとしました',
+	'protectsection_modify' => 'あなたは保護された文章を変更しようとしました',
+	'protectsection_forbidden' => '禁止されています',
 );
 
 /** Javanese (Basa Jawa)

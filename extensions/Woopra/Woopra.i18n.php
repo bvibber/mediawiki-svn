@@ -235,6 +235,13 @@ $messages['sv'] = array(
 	'woopra-desc' => 'Gör att [http://woopra.com/ Woopra Live Tracking Software] fungerar med MediaWiki',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'woopra-desc' => "Nagpapahintulot na mapatakbo ang ''[http://www.woopra.com/ Woopra Live Tracking Software]'' sa iyong instalasyong MediaWiki",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

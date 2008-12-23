@@ -517,11 +517,20 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'inspectcache' => 'Inspiser mellomlager',
+	'inspectcache-desc' => 'Eit enkelt feilsøkingsverktøy for å inspisera innhaldet i det delte mellomlageret',
 	'inspectcache-ok' => 'OK',
+	'inspectcache-general' => 'Generelt mellomlager',
+	'inspectcache-parser' => 'Parsermellomlager',
+	'inspectcache-message' => 'Meldingsmellomlager',
+	'inspectcache-get' => 'Hent',
 	'inspectcache-delete' => 'Slett',
+	'inspectcache-deleted' => 'Sletta mellomlageret',
+	'inspectcache-list' => 'Lista',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

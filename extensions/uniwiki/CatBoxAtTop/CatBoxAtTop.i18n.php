@@ -16,8 +16,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'catboxattop-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'catboxattop-categories' => '{{Identical|Categories}}',
 );
 
@@ -139,6 +141,14 @@ $messages['km'] = array(
 	'catboxattop-categories' => 'ចំណាត់ថ្នាក់ក្រុម​ផ្សេងៗ',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'catboxattop-desc' => 'Deiht ene Kaßte met {{int:categories}} bovve räähß op de Sigge.',
+	'catboxattop-categories' => '{{int:categories}}',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -169,6 +179,13 @@ $messages['oc'] = array(
 $messages['pt'] = array(
 	'catboxattop-desc' => 'Acrescenta uma caixa de categorias na zona superior direita de páginas',
 	'catboxattop-categories' => 'Categorias',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'catboxattop-categories' => 'Categorii',
 );
 
 /** Russian (Русский)

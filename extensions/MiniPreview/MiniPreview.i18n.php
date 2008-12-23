@@ -286,7 +286,7 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'minipreview-files_in_category' => "មានឯកសារសរុបចំនួន '''$1''' {{PLURAL:$1|ឯកសារ|ឯកសារ}} ក្នុងចំណាត់ថា្នក់ក្រុមនេះ។",
-	'minipreview-files_in_gallery' => 'មានឯកសារសរុបចំនួន$1ក្នុងវិចិត្រសាលនេះ។',
+	'minipreview-files_in_gallery' => "មាន{{PLURAL:$1|file|ឯកសារ}}សរុប '''$1''' ក្នុង​វិចិត្រសាលនេះ​។",
 	'minipreview-no_more_files_here' => 'គ្មានឯកសារបន្ថែមក្នុងទិសនេះទេ។',
 	'minipreview-no_category_gallery' => 'គ្មានចំណាត់ថ្នាក់ក្រុមឬវិចិត្រសាលទេ!',
 );
@@ -295,7 +295,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'minipreview-desc' => 'De [[Special:MiniPreview|MiniVöransich]] zeisch bei enem Beld en Püngel klein Belscher als Vöransich fun de Belder in derselve Saachjrupp udder us derselve Sigg.',
+	'minipreview-desc' => 'De MiniVöransich zeisch bei enem Beld en Püngel klein Belscher als Vöransich fun de Belder in derselve Saachjrupp udder us derselve Sigg.',
 	'minipreview-files_in_category' => '{{PLURAL:$1|Ei Datei es|$1 Dateie sin insejesamp|Mer han kei Datei}} en dä Saachjrupp.',
 	'minipreview-files_in_gallery' => '{{PLURAL:$1|Ei Beld es|$1 Bellder sin insejesamp|Mer han kei Beld}} en dä Jallerih.',
 	'minipreview-no_more_files_here' => 'Kein Dateie mieh en dämm Verzeichnis.',

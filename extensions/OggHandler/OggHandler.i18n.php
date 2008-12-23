@@ -444,17 +444,18 @@ $messages['bs'] = array(
  * @author Paucabot
  * @author SMP
  * @author Toniher
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'ogg-desc' => 'Gestor de fitxers Ogg Theora i Vorbis, amb reproductor de Javascript',
-	'ogg-short-audio' => "Arxiu OGG d'àudio $1, $2",
-	'ogg-short-video' => 'Arxiu OGG de vídeo $1, $2',
-	'ogg-short-general' => 'Arxiu multimèdia OGG $1, $2',
-	'ogg-long-audio' => '(Ogg $1 arxiu de so, llargada $2, $3)',
-	'ogg-long-video' => '(Arxiu OGG de vídeo $1, llargada $2, $4×$5 píxels, $3)',
+	'ogg-short-audio' => "Fitxer OGG d'àudio $1, $2",
+	'ogg-short-video' => 'Fitxer OGG de vídeo $1, $2',
+	'ogg-short-general' => 'Fitxer multimèdia OGG $1, $2',
+	'ogg-long-audio' => '(Ogg $1 fitxer de so, llargada $2, $3)',
+	'ogg-long-video' => '(Fitxer OGG de vídeo $1, llargada $2, $4×$5 píxels, $3)',
 	'ogg-long-multiplexed' => '(Arxiu àudio/vídeo multiplex, $1, llargada $2, $4×$5 píxels, $3 de mitjana)',
-	'ogg-long-general' => '(Arxiu multimèdia OGG, llargada $2, $3)',
-	'ogg-long-error' => '(Arxiu OGG invàlid: $1)',
+	'ogg-long-general' => '(Fitxer multimèdia OGG, llargada $2, $3)',
+	'ogg-long-error' => '(Fitxer OGG invàlid: $1)',
 	'ogg-play' => 'Reprodueix',
 	'ogg-pause' => 'Pausa',
 	'ogg-stop' => 'Atura',
@@ -470,8 +471,8 @@ $messages['ca'] = array(
 	'ogg-use-player' => 'Usa el reproductor:',
 	'ogg-more' => 'Més...',
 	'ogg-dismiss' => 'Tanca',
-	'ogg-download' => "Descarrega l'arxiu",
-	'ogg-desc-link' => "Informació de l'arxiu",
+	'ogg-download' => 'Descarrega el fitxer',
+	'ogg-desc-link' => 'Informació del fitxer',
 );
 
 /** Czech (Česky)
@@ -1840,8 +1841,10 @@ Download <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_down
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Harald Khan
  */
 $messages['nn'] = array(
+	'ogg-desc' => 'Gjer at Ogg Theora- og Ogg Vorbis-filer kan verta køyrte ved hjelp av JavaScript-avspelar.',
 	'ogg-short-audio' => 'Ogg $1-lydfil, $2',
 	'ogg-short-video' => 'Ogg $1-videofil, $2',
 	'ogg-short-general' => 'Ogg $1-mediafil, $2',
@@ -1857,8 +1860,8 @@ $messages['nn'] = array(
 	'ogg-play-sound' => 'Spel av lydfila',
 	'ogg-no-player' => 'Beklagar, systemet ditt har ikkje støtta programvare til avspeling. Ver venleg og <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned ein avspelar</a>.',
 	'ogg-no-xiphqt' => 'Du ser ikkje ut til å ha XiphQT-komponenten til QuickTime. QuickTime kan ikkje spele av ogg-filer utan denne. Ver venleg og <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">last ned XiphQT</a> eller vel ein annan avspelar.',
-	'ogg-player-videoElement' => '<video>-element',
-	'ogg-player-oggPlugin' => 'Ogg-tillegg',
+	'ogg-player-videoElement' => 'Innebygd nettlesarstøtte',
+	'ogg-player-oggPlugin' => 'Programtillegg for nettlesar',
 	'ogg-player-thumbnail' => 'Berre stillbilete',
 	'ogg-player-soundthumb' => 'Ingen avspelar',
 	'ogg-player-selected' => '(valt)',

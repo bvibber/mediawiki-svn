@@ -173,9 +173,13 @@ $messages['ia'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Mizusumashi
  */
 $messages['ja'] = array(
 	'templatelink' => 'テンプレートリンク',
+	'templatelink_desc' => 'この拡張機能は、テンプレートを新しいページとして表示することができる',
+	'templatelink_empty' => 'パラメーターを設定する必要があります。',
+	'templatelink_newtitle' => '$1 (テンプレート呼出)',
 );
 
 /** Javanese (Basa Jawa)

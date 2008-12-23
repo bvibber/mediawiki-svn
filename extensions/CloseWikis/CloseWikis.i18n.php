@@ -502,20 +502,29 @@ $messages['it'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'closewikis-page' => 'បិទវិគី',
 	'closewikis-page-close' => 'បិទវិគី',
 	'closewikis-page-close-wiki' => 'វិគី៖',
+	'closewikis-page-close-dreason' => 'ហេតុផល (បង្ហាញ)​៖',
+	'closewikis-page-close-reason' => 'ហេតុផល (ចូល)​៖',
 	'closewikis-page-close-submit' => 'បិទ',
+	'closewikis-page-close-success' => 'វិគី​បាន​បិទ​ដោយជោគជ័យ',
 	'closewikis-page-reopen' => 'បើកវិគីឡើងវិញ',
 	'closewikis-page-reopen-wiki' => 'វិគី៖',
 	'closewikis-page-reopen-reason' => 'មូលហេតុ៖',
 	'closewikis-page-reopen-submit' => 'បើកឡើងវិញ',
+	'closewikis-page-reopen-success' => 'វិគី​បាន​បើកឡើងវិញ​ដោយជោគជ័យ',
+	'closewikis-page-err-closed' => 'វិគី​ត្រូវ​បាន​បិទ​រួចរាល់ហើយ',
+	'closewikis-page-err-opened' => 'វិគី​មិនត្រូវ​បាន​បិទ​ទេ',
+	'closewikis-list' => 'បាន​បិទ​បញ្ជី​វិគី',
 	'closewikis-list-header-wiki' => 'វិគី',
 	'closewikis-list-header-by' => 'បានបិទដោយ',
 	'closewikis-list-header-timestamp' => 'បានបិទនៅ',
 	'closewikis-log-close' => 'បានបិទ$2',
+	'closewikis-log-reopen' => 'បាន​បើកឡើងវិញ $2',
 	'right-closewikis' => 'បិទវិគី',
 );
 
@@ -580,7 +589,7 @@ $messages['lb'] = array(
 	'closewikis-list-intro' => 'Op dëser Lëscht stinn déi Wikien déi vun de Stewarden zougemaach goufen.',
 	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-list-header-by' => 'Zougemaach vum',
-	'closewikis-list-header-timestamp' => 'Zougemaach de[n)',
+	'closewikis-list-header-timestamp' => 'Zougemaach de(n)',
 	'closewikis-list-header-dispreason' => 'Grond',
 	'closewikis-log' => 'Lëscht vun den zougemaachte Wikien',
 	'closewikis-log-header' => "Hei ass d'Lëscht vun alle Wikien déi vu Stewarden opgemaach oder zougemaach goufen",

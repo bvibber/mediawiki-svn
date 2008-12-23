@@ -152,6 +152,14 @@ Maakt een versie binnen een pagina.
 In het bijzonder handig voor Wikinews',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'catfeed-desc' => 'Nyttar informasjon frå siste endringar.
+Ein kan laga versjonar til bruk på innhaldssider, noko som er spesielt nyttig for Wikinyhende.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

@@ -107,6 +107,19 @@ $messages['de'] = array(
 	'contrib-tracking-button' => 'Weiter',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'contributiontracking-desc' => 'Slědowanje darow za pósćiwańsku kampanju Wikimedije',
+	'contributiontracking' => 'Slědowanje darow',
+	'contrib-tracking-error' => 'Zmólka',
+	'contrib-tracking-error-text' => 'Njepłaśiwe słanje formulara',
+	'contrib-tracking-submitting' => 'Płaśenje wótpósćeła se k wobźěłowanjeju...',
+	'contrib-tracking-continue' => 'Joli njepósrědnjaš se awtomatiski dalej, klikni na tłocašk, aby dokóńcył swój dar pśez PayPal.',
+	'contrib-tracking-button' => 'Dalej',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -139,6 +152,20 @@ $messages['fa'] = array(
 	'contrib-tracking-submitting' => 'ارسال به پردازش کنندهٔ پرداخت...',
 	'contrib-tracking-continue' => 'اگر به طور خودکار به صفحهٔ مورد نظر هدایت نشدید، برای تکمیل کمک مالی خود در PayPal بر روی دکمه کلیک کنید.',
 	'contrib-tracking-button' => 'ادامه',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Tarmo
+ */
+$messages['fi'] = array(
+	'contributiontracking-desc' => 'Lahjoitusseuranta Wikimedian rahankeräykseen.',
+	'contributiontracking' => 'Lahjoitusseuranta',
+	'contrib-tracking-error' => 'Virhe',
+	'contrib-tracking-error-text' => 'Viallinen lomakkeen lähetys',
+	'contrib-tracking-submitting' => 'Lähetetään maksujen käsittelyyn...',
+	'contrib-tracking-continue' => 'Jos sinua ei ohjata eteenpäin automaattisesti, paina nappia viimeistelläksesi lahjoituksesi PayPalissa.',
+	'contrib-tracking-button' => 'Jatka',
 );
 
 /** French (Français)
@@ -236,9 +263,16 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Mizusumashi
  */
 $messages['ja'] = array(
+	'contributiontracking-desc' => 'ウィキメディア資金調達者向け投稿追跡',
+	'contributiontracking' => '投稿追跡',
 	'contrib-tracking-error' => 'エラー',
+	'contrib-tracking-error-text' => '無効なフォームの提出',
+	'contrib-tracking-submitting' => '納付処理係に提出中…',
+	'contrib-tracking-continue' => '自動的に転送されない場合は、ボタンを押して PayPal での寄付を終えてください。',
+	'contrib-tracking-button' => '継続する',
 );
 
 /** Javanese (Basa Jawa)

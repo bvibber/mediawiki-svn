@@ -1430,6 +1430,8 @@ $messages['ja'] = array(
  */
 $messages['km'] = array(
 	'deletequeue-action-queued' => 'ការលុប',
+	'deletequeue-action' => 'ស្នើឱ្យ​លុប',
+	'deletequeue-action-title' => 'ស្នើឱ្យ​លុប​ចំពោះ "$1"',
 	'deletequeue-delnom-otherreason' => 'មូលហេតុផ្សេងទៀត',
 	'deletequeue-delnom-extra' => 'ព័ត៌មានបន្ថែម៖',
 	'deletequeue-review-delete' => 'លុបទំព័រ។',
@@ -1437,7 +1439,23 @@ $messages['km'] = array(
 	'deletequeue-review-newreason' => 'មូលហេតុថ្មី៖',
 	'deletequeue-review-newextra' => 'ព័ត៌មានបន្ថែម៖',
 	'deletequeue-vote-submit' => 'ដាក់ស្នើ',
+	'deletequeue-showvotes-restrict-endorse' => 'បង្ហាញ​ការ​យល់ស្រប​តែ​ប៉ុណ្ណោះ',
+	'deletequeue-showvotes-restrict-object' => 'បង្ហាញ​ការ​ជំទាស់​តែ​ប៉ុណ្ណោះ',
+	'deletequeue-showvotes-vote-endorse' => "'''យល់ស្រប''' ចំពោះ​ការលុប $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''ជំទាស់''' ចំពោះ​ការលុប $1 $2",
+	'deletequeue-showvotes-showingonly-endorse' => 'បង្ហាញ​តែ​ការ​យល់ស្រប',
+	'deletequeue-showvotes-showingonly-object' => 'បង្ហាញ​តែ​ការ​ជំទាស់',
+	'deletequeue-showvotes-none' => 'គ្មាន​ការ​យល់ស្រប ឬ​ជំទាស់​ក្នុង​ការ​លុប​ទំព័រ​នេះ​ទេ​។',
+	'deletequeue-showvotes-none-endorse' => 'គ្មាន​ការ​យល់ស្រប​ក្នុង​ការ​លុប​ទំព័រ​នេះ​ទេ​។',
+	'deletequeue-showvotes-none-object' => 'គ្មាន​ការ​ជំទាស់​ក្នុង​ការ​លុប​ទំព័រ​នេះ​ទេ​។',
+	'deletequeue' => 'លុប​ជួរ',
+	'deletequeue-list-text' => 'ទំព័រ​នេះ​បង្ហាញ​រាល់​ទំព័រ​ទាំងអស់ ដែល​ស្ថិតនៅក្នុង​ប្រព័ន្ធ​ដែល​ត្រូវ​លុបចេញ​។',
+	'deletequeue-list-search-legend' => 'ស្វែងរក​ទំព័រ',
+	'deletequeue-list-queue' => 'ជួរ​៖',
+	'deletequeue-list-status' => 'ស្ថានភាព​៖',
 	'deletequeue-list-search' => 'ស្វែងរក',
+	'deletequeue-list-anyqueue' => '(ណាមួយ)',
+	'deletequeue-list-votes' => 'បញ្ជី​នៃ​ការបោះឆ្នោត',
 	'deletequeue-list-header-page' => 'ទំព័រ',
 );
 
@@ -1691,7 +1709,7 @@ U kunt ook [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} steun of bezwaar] aangeg
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'deletequeue-desc' => 'Skaper et [[Spcial:DeleteQueue|købasert system for å håndtere sletting]]',
+	'deletequeue-desc' => 'Skaper et [[Special:DeleteQueue|købasert system for å håndtere sletting]]',
 	'deletequeue-action' => 'Foreslå sletting',
 	'deletequeue-action-title' => 'Foreslå sletting av «$1»',
 	'deletequeue-action-text' => "{{SITENAME}} har flere prosesser for sletting av sider:
@@ -2287,7 +2305,7 @@ Anledningen som givits för denna radering är ''$1''.",
 	'deletequeue-review-reason' => 'Kommentarer:',
 	'deletequeue-review-newreason' => 'Ny anledning:',
 	'deletequeue-review-newextra' => 'Extrainformation:',
-	'deletequeue-discusscreate-text' => 'Radering föreslagen på grund av följande anledning: $2 \'\'\'[[User:M.M.S.|<span style="color:red;">M.</span>]][[User_talk:M.M.S.|<span style="color:green;">M.</span>]][[Special:Contributions/M.M.S.|<span style="color:blue;">S.</span>]]\'\'\' 19:22, 16 August 2008 (UTC)',
+	'deletequeue-discusscreate-text' => 'Radering föreslagen på grund av följande anledning: $2',
 	'deletequeue-vote-reason' => 'Kommentarer:',
 	'deletequeue-vote-submit' => 'Skicka',
 	'deletequeue' => 'Raderingskö',

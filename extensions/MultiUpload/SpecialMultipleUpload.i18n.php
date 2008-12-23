@@ -181,6 +181,28 @@ Sie können wahlweise auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Besc
 Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupload-page}}|Löschrichtlinien]].",
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'multipleupload' => 'Dataje nagraś',
+	'multipleupload-desc' => 'Dowólujo wužywarjam [[Special:MultipleUpload|někotare dataje naraz nagraś]]',
+	'multipleupload-ignoreallwarnings' => "'''Wšykne warnowanja''' ignorěrowaś a weto składowaś",
+	'multipleupload-saveallfiles' => 'Wšykne dataje składowaś',
+	'multipleupload-addresswarnings' => 'Pšosym warnowanja pśed wóspjetowanym nagraśim datajow wobźěłaś',
+	'multipleupload-page' => '{{ns:project}}:Zasady lašowanja datajow',
+	'multipleupload-text' => "Nagraśe někotarych datajow.
+
+Wubjeŕ 'Pśeglědaś' a wubjeŕ kuždy dataju, kótaruž coš nagraś.
+Móžos nagraś mjazy 1 a $1 {{PLURAL:$1|dataju|datajoma|datajami|datajami}} naraz.
+
+Móžoš zapódaś opcionalne '''datajowe mě''' a '''Zespominanje''', kótarež wópisujo twóju dataju.
+
+Njegóźece se dataje budu se ned lašowaś, glědaj [[{{MediaWiki:Multipleupload-page}}|zasady lašowanja datajow]].",
+	'multiupload-fileuploaded' => 'Dataja nagrata.',
+	'multiupload-toolbox' => 'Někotare dataje nagraś',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -484,11 +506,24 @@ File inappropriati verranno cancellati immediatamente, leggi le [[{{MediaWiki:Mu
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Mizusumashi
  */
 $messages['ja'] = array(
 	'multipleupload' => 'ファイルをアップロード',
 	'multipleupload-desc' => '利用者が[[Special:MultipleUpload|複数のファイルを一度にアップロード]]できるようにする',
+	'multipleupload-ignoreallwarnings' => "'''すべての警告'''を無視し、ファイルを保存する。",
+	'multipleupload-saveallfiles' => 'すべてのファイルを保存する',
+	'multipleupload-addresswarnings' => 'ファイルを再アップロードする前に、すべての警告に対処してください。',
+	'multipleupload-page' => '{{ns:project}}:ファイル削除の方針',
+	'multipleupload-text' => "ここで複数のファイルをアップロードしてください。
+
+「参照」からあなたがアップロードしたいファイルを選んでいってください。1から$1個までのファイルを同時にアップロードできます。
+
+任意で'''掲載するファイル名'''や、ファイルの概要を述べた'''要約'''を入力することができます。
+
+不適切なファイルはすぐに削除されます。[[{{MediaWiki:Multipleupload-page}}|ファイル削除の方針]]をご覧ください。",
 	'multiupload-fileuploaded' => 'ファイルをアップロードしました。',
+	'multiupload-toolbox' => '複数のファイルをアップロード',
 );
 
 /** Javanese (Basa Jawa)

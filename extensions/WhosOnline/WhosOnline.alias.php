@@ -84,6 +84,11 @@ $aliases['lb'] = array(
 	'WhosOnline' => array( 'Wien ass online' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'WhosOnline' => array( 'КојЕОнлајн' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'WhosOnline' => array( 'Wee_is_anwezig' ),

@@ -18,3 +18,8 @@ $aliases['de'] = array(
 	'GlobalUserrights' => array( 'Globale Benutzerrechte' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'GlobalUserrights' => array( 'Global Benotzerrechter' ),
+);
+

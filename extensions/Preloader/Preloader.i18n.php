@@ -155,6 +155,13 @@ $messages['pt'] = array(
 	'preloader-desc' => 'Fornece textos-modelo para novas páginas, persnonalizáveis por domínio',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'preloader-desc' => 'Avène ausete pe de le pre-namespace ca sonde personalizzabbele pe le pàggene nueve',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

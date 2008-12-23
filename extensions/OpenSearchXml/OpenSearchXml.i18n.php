@@ -39,6 +39,13 @@ $messages['ast'] = array(
 	'opensearchxml-desc' => "La interface qu'[http://www.opensearch.org OpenSearch] XML apurre pa estrayer testu",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML interfejs omogućuje izvoz teksta',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -70,6 +77,13 @@ $messages['eo'] = array(
  */
 $messages['fa'] = array(
 	'opensearchxml-desc' => 'رابط مبتنی بر XML [http://www.opensearch.org OpenSearch] چکیده‌های متن را تامین می‌کند',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML -rajapinta tekstiotteita varten.',
 );
 
 /** French (Français)
@@ -189,6 +203,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'opensearchxml-desc' => 'Interfejs XML [http://www.opensearch.org OpenSearch] dla wycinków tekstu',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'opensearchxml-desc' => "[http://www.opensearch.org OpenSearch] interfacce de XML ca avène ausete pe le estraziune d'u teste",
 );
 
 /** Russian (Русский)

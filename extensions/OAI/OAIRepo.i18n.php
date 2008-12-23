@@ -106,6 +106,13 @@ $messages['fa'] = array(
 	'oai-desc' => 'رابط مخزن [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] را فراهم می‌کند',
 );
 
+/** Finnish (Suomi)
+ * @author Tarmo
+ */
+$messages['fi'] = array(
+	'oai-desc' => 'Tarjoaa [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-varantorajapinnan',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p
@@ -262,6 +269,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'oai-desc' => 'Providencia interface de repositório [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'oai-desc' => "Veje su [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] pe le interfacce d'u repository",
 );
 
 /** Russian (Русский)

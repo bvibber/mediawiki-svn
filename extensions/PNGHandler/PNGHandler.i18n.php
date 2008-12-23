@@ -217,6 +217,13 @@ $messages['ro'] = array(
 	'pnghandler-desc' => 'Redimensionează fişierele PNG folosind pngds',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'pnghandler-desc' => 'Ridimenzione le PNG ausanne le pngds',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

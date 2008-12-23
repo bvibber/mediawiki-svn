@@ -35,6 +35,11 @@ $aliases['lb'] = array(
 	'CreatePage' => array( 'Säiten uleeën' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'CreatePage' => array( 'КреирајСтраница' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'CreatePage' => array( 'Pagina_anmaken' ),

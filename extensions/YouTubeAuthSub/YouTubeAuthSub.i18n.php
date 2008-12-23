@@ -259,6 +259,7 @@ Un tamm pasianted mar plij.',
 $messages['bs'] = array(
 	'youtubeauthsub' => 'Postavi video na YouTube',
 	'youtubeauthsub-desc' => 'Omogućava korisnicima da [[Special:YouTubeAuthSub|postavljaju video snimke]] direktno na YouTube',
+	'youtubeauthsub_info' => 'Da bi ste postavili video na YouTube i uključili ga na stranicu, popunite slijedeće informacije:',
 	'youtubeauthsub_title' => 'Naslov',
 	'youtubeauthsub_description' => 'Opis',
 	'youtubeauthsub_password' => 'Šifra za YouTube',
@@ -267,6 +268,7 @@ $messages['bs'] = array(
 	'youtubeauthsub_category' => 'Kategorija',
 	'youtubeauthsub_submit' => 'Pošalji',
 	'youtubeauthsub_clickhere' => 'Kliknite ovdje za prijavu na YouTube',
+	'youtubeauthsub_tokenerror' => 'Greška pri generisanju tokena autorizacije, pokušajte osvježiti.',
 	'youtubeauthsub_success' => "Čestitamo!
 Vaš video je postavljen.
 Da pogledate Vaš video kliknite <a href='http://www.youtube.com/watch?v=$1'>ovdje</a>.
@@ -283,8 +285,10 @@ Ovaj video može se pogledati [http://www.youtube.com/watch?v=$1 ovdje]',
 	'youtubeauthsub_summary' => 'Postavljanje YouTube videa',
 	'youtubeauthsub_uploading' => 'Vaš video se postavlja.
 Molimo budite strpljivi.',
+	'youtubeauthsub_viewpage' => 'Također, možete pogledati Vaš video [[$1|ovdje]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Molimo Vas unesite 1 ili više ključnih riječi.',
 	'youtubeauthsub_jserror_notitle' => 'Molimo unesite naslov za video.',
+	'youtubeauthsub_jserror_nodesc' => 'Molimo Vas unesite opis za video.',
 );
 
 /** Catalan (Català)
@@ -858,17 +862,17 @@ Tulung sabar dhisik.',
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'youtubeauthsub' => 'ផ្ទុកឡើងវីដេអូយូធ្យូប(YouTube)',
-	'youtubeauthsub-desc' => 'អនុញ្ញាត​ឱ្យ​អ្នកប្រើប្រាស់នានា ​[[Special:YouTubeAuthSub|ផ្ទុកឡើង​វីដេអូ]]ដោយ​ផ្ទាល់ពី​យូធ្យូប(YouTube)',
+	'youtubeauthsub' => 'ផ្ទុកឡើងវីដេអូយូធ្យូប (YouTube)',
+	'youtubeauthsub-desc' => 'អនុញ្ញាត​ឱ្យ​អ្នកប្រើប្រាស់នានា ​[[Special:YouTubeAuthSub|ផ្ទុកឡើង​វីដេអូ]]ដោយ​ផ្ទាល់ពី​យូធ្យូប (YouTube)',
 	'youtubeauthsub_info' => 'មុននឹង​ផ្ទុក​ឡើង​នូវ​វីដេអូ​យូធ្យូប(YouTube) បញ្ចូលទៅ​ក្នុងទំព័រមួយ សូមបំពេញ​ព័ត៌មាន​ទាំងឡាយដូចតទៅ៖',
 	'youtubeauthsub_title' => 'ចំណងជើង',
 	'youtubeauthsub_description' => 'ពិពណ៌នា',
-	'youtubeauthsub_password' => 'លេខ​សំងាត់យូធ្យូប(YouTube)',
-	'youtubeauthsub_username' => 'ឈ្មោះអ្នកប្រើប្រាស់​យូធ្យូប(YouTube)',
+	'youtubeauthsub_password' => 'លេខ​សំងាត់យូធ្យូប (YouTube)',
+	'youtubeauthsub_username' => 'ឈ្មោះអ្នកប្រើប្រាស់​យូធ្យូប (YouTube)',
 	'youtubeauthsub_keywords' => 'ពាក្យគន្លឹះ​នានា',
 	'youtubeauthsub_category' => 'ចំណាត់ថ្នាក់ក្រុម',
 	'youtubeauthsub_submit' => 'ស្នើឡើង',
-	'youtubeauthsub_clickhere' => 'សូម​ចុចត្រង់នេះ​ ដើម្បី​ឡុកអ៊ីកចូលក្នុងយូធ្យូប(YouTube)',
+	'youtubeauthsub_clickhere' => 'សូម​ចុចត្រង់នេះ​ ដើម្បី​ឡុកអ៊ីកចូលក្នុងយូធ្យូប (YouTube)',
 	'youtubeauthsub_success' => "សូមអបអរសាទរ!
 
 វីដេអូរបស់អ្នកបានផ្ទុកឡើងហើយ។
@@ -1475,6 +1479,7 @@ Por favor seja paciente.',
  */
 $messages['ro'] = array(
 	'youtubeauthsub' => 'Încarcă video YouTube',
+	'youtubeauthsub-desc' => 'Permite utilizatorilor să [[Special:YouTubeAuthSub|încarce videoclipuri]] direct la YouTube',
 	'youtubeauthsub_title' => 'Titlu',
 	'youtubeauthsub_description' => 'Descriere',
 	'youtubeauthsub_password' => 'Parolă YouTube',
@@ -1542,6 +1547,43 @@ YouTube, возможно, будет некоторое время обраба
 	'youtubeauthsub_jserror_nokeywords' => 'Пожалуйста, введите одно или несколько ключевых слов.',
 	'youtubeauthsub_jserror_notitle' => 'Пожалуйста, введите название видео.',
 	'youtubeauthsub_jserror_nodesc' => 'Пожалуйста, введите описание видео.',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'youtubeauthsub' => "Càrica vìdiu supr'a YouTube",
+	'youtubeauthsub-desc' => "Pirmetti a l'utenti di [[Special:YouTubeAuthSub|caricari vìdiu]] direttamenti supr'a YouTube",
+	'youtubeauthsub_info' => "Pi caricari nu vìdiu supr'a YouTube pi mittìrilu nti na pàggina, nzirisci li nfurmazzioni ccà di sècutu:",
+	'youtubeauthsub_title' => 'Tìtulu',
+	'youtubeauthsub_description' => 'Discrizzioni',
+	'youtubeauthsub_password' => 'Password di YouTube',
+	'youtubeauthsub_username' => 'Nomu utenti di YouTube',
+	'youtubeauthsub_keywords' => 'Palori chiavi',
+	'youtubeauthsub_category' => 'Catigurìa',
+	'youtubeauthsub_submit' => 'Manna',
+	'youtubeauthsub_clickhere' => 'Fà clic ccà pi fari lu log in supra a YouTube',
+	'youtubeauthsub_tokenerror' => 'Sbagghiu ntô ginirari lu token di pirmessu, prova a aggiurnari.',
+	'youtubeauthsub_success' => "Bravu, cumprimenti! 
+Lu tò vìdiu vinni caricatu. 
+Pi taliari lu tò vìdiu hà fari clic <a href='http://www.youtube.com/watch?v=$1'>ccà</a>.
+YouTube putissi addumannari anticchia di tempu pi elabburari lu tò vìdiu, pi chissu  putissi èssiri ca ancora non è prontu.
+
+Pi mèttiri lu tò vìdiu nti na pàggina dâ wiki, nzirisci nti na pàggina lu còdici ccà di sècutu: <code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Pi caricari nu vìdiu ti veni addumannatu di fari prima lu log in a YouTube.',
+	'youtubeauthsub_uploadhere' => 'Càrica lu tò vìdiu di ccà:',
+	'youtubeauthsub_uploadbutton' => 'Càrica',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Stu vìdiu pò èssiri taliatu [http://www.youtube.com/watch?v=$1 ccà]',
+	'youtubeauthsub_summary' => 'Caricamentu vìdiu YouTube',
+	'youtubeauthsub_uploading' => 'Lu tò vìdiu si sta caricannu.
+Hà aviri pacenzia.',
+	'youtubeauthsub_viewpage' => 'Poi taliari lu tò vìdiu macari [[$1|ccà]].',
+	'youtubeauthsub_jserror_nokeywords' => "Nzirisci n'àutra palora chiavi.",
+	'youtubeauthsub_jserror_notitle' => 'Nzirisci nu tìtulu pô vìdiu.',
+	'youtubeauthsub_jserror_nodesc' => 'Nzirisci na spiecazzioni pô vìdiu.',
 );
 
 /** Sinhala (සිංහල)
@@ -1767,6 +1809,44 @@ $messages['th'] = array(
 	'youtubeauthsub_jserror_nokeywords' => 'กรุณาใส่คำสำคัญอย่างน้อย 1 คำ หรือ มากกว่า',
 	'youtubeauthsub_jserror_notitle' => 'กรุณาใส่ชื่อสำหรับคลิปวิดีโอด้วย',
 	'youtubeauthsub_jserror_nodesc' => 'กรุณาใส่คำอธิบายสำหรับคลิปวิดีโอนี้ด้วย',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'youtubeauthsub' => 'Ikarga ang panooring (bidyo) nagmula sa YouTube',
+	'youtubeauthsub-desc' => 'Pinapahintulutan ang mga tagagamit na tuwirang [[Special:YouTubeAuthSub|makapagkarga ng mga panoorin (bidyo)]] patungo sa YouTube',
+	'youtubeauthsub_info' => 'Para makapagkarga ng isang panoorin/bidyo sa YouTube na maibibilang sa ibabaw ng isang pahina, punuin ng laman ang sumusunod na mga hinihinging kabatiran:',
+	'youtubeauthsub_title' => 'Pamagat',
+	'youtubeauthsub_description' => 'Paglalarawan',
+	'youtubeauthsub_password' => 'Hudyat para sa YouTube',
+	'youtubeauthsub_username' => 'Pangalan ng tagagamit sa YouTube',
+	'youtubeauthsub_keywords' => "Mga susing-salita o salitang-naglalarawan (''keyword'')",
+	'youtubeauthsub_category' => 'Kaurian',
+	'youtubeauthsub_submit' => 'Ipasa/ipadala',
+	'youtubeauthsub_clickhere' => 'Pindutin rito para makalagda sa YouTube',
+	'youtubeauthsub_tokenerror' => 'May kamalian sa paglikha ng sagisag ng pagbibigay ng pahintulot, subuking sariwain.',
+	'youtubeauthsub_success' => "Maligayang bati!
+Naikarga na ang iyong panoorin/bidyo.
+Para panoorin ang iyong bidyo pindutin <a href='http://www.youtube.com/watch?v=$1'>ito</a>.
+Maaaring mangailangan ang YouTube ng ilang panahon para maisagawa ang iyong panoorin, kaya maaaring hindi pa lang ito nakahanda.
+
+Para maisama ang iyong panoorin sa isang pahina ng wiki, isingit ang sumusunod na kodigo sa loob ng isang pahina:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Para makapagkarga ng panoorin (bidyo), kakailanganin mong lumagda muna sa YouTube.',
+	'youtubeauthsub_uploadhere' => 'Ikarga ang iyong panoorin/bidyo mula rito:',
+	'youtubeauthsub_uploadbutton' => 'Ikarga',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Mapapanood ang panoorin (bidyo) magmula [http://www.youtube.com/watch?v=$1 rito]',
+	'youtubeauthsub_summary' => 'Ikinakarga ang bidyo/panooring pang-YouTube',
+	'youtubeauthsub_uploading' => 'Ikinakarga na ang iyong panoorin (bidyo).
+Magtiyaga po lamang.',
+	'youtubeauthsub_viewpage' => 'Bilang kapalit, maaaring mong panoorin ang bidyo mo mula [[$1|rito]].',
+	'youtubeauthsub_jserror_nokeywords' => "Magpasok po ng 1 o higit pang mga \"susing-salita\" (''keyword'').",
+	'youtubeauthsub_jserror_notitle' => 'Magpasok ng isang pamagat para sa panoorin.',
+	'youtubeauthsub_jserror_nodesc' => 'Magpasok ng isang paglalarawan para sa panoorin.',
 );
 
 /** Turkish (Türkçe)

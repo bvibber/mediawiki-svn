@@ -62,6 +62,11 @@ $aliases['lb'] = array(
 	'ImportFreeImages' => array( 'Fräi Biller importéieren' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'ImportFreeImages' => array( 'УвозНаСлободниСлики' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ImportFreeImages' => array( 'Vrieje_ofbeeldingen_invoeren' ),

@@ -42,6 +42,13 @@ $aliases['km'] = array(
 	'ContributionTotal' => array( 'ការរួមចំណែកសរុប' ),
 );
 
+/** Macedonian (Македонски) */
+$aliases['mk'] = array(
+	'ContributionHistory' => array( 'ИсторијаНаПридонеси' ),
+	'ContributionStatistics' => array( 'СтатистикиНаПридонеси' ),
+	'ContributionTotal' => array( 'ВкупноПридонеси' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ContributionHistory' => array( 'Donasiegeschiedenisse' ),

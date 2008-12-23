@@ -17,6 +17,13 @@ It lists all of the pages in category "$1" as well as all subcategories of categ
 	'autocreatecategorypages-editor' => 'Automatic category creator', // The username used for the edit
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'autocreatecategorypages-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -128,6 +135,13 @@ $messages['km'] = array(
 	'autocreatecategorypages-stub' => 'នេះ​គឺជា​ទំព័រ​ចំណាត់ថ្នាក់ក្រុម​មួយ​។
 
 វា​មាន​រាយឈ្មោះ​រាល់​ទំព័រ​ទាំងអស់​នៅ​ក្នុង​ចំណាត់ថ្នាក់ក្រុម "$1" ក៏ដូចជា​ចំណាត់ថ្នាក់ក្រុមរង​ទាំងអស់​នៃ​ចំណាត់ថ្នាក់ក្រុម "$1" ប្រសិនបើ​មាន​។',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'autocreatecategorypages-desc' => 'Deiht fäälende {{int:categories}} automattesch aanlääje, wam_mer en Sigg avspeichere deiht.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

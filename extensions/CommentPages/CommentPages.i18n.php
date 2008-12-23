@@ -188,6 +188,14 @@ $messages['jv'] = array(
 	'nstab-comments' => 'Komentar',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'commentpages-desc' => 'ទំព័រ​អធិប្បាយ​សម្រាប់​លំហឈ្មោះ​មេ',
+	'nstab-comments' => 'វចនាធិប្បាយ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -247,6 +255,14 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'commentpages-desc' => "Opmerkingenpagina's voor de hoofdnaamruimte",
 	'nstab-comments' => 'Opmerkingen',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'commentpages-desc' => 'Legg til kommentarsider for sider i hovudnamnerommet',
+	'nstab-comments' => 'Kommentarar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

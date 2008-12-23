@@ -693,6 +693,25 @@ $messages['nl'] = array(
 	'restriction-level-author' => 'Alleen te bewerken door auteurs',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'authorprotect' => 'Vern sida for andre enn forfattarar av ho',
+	'authorprotect-desc' => 'Lèt forfattaren av ei sida verna ho mot endringar frå andre brukarar',
+	'authorprotect-notauthor' => 'Du er ikkje forfattaren av denne sida',
+	'authorprotect-confirm' => 'Endra vernenivå',
+	'authorprotect-edit' => 'Avgrens endring til forfattarar',
+	'authorprotect-move' => 'Avgrens flytting til forfattarar',
+	'authorprotect-expiry' => 'Opphøyrstid',
+	'authorprotect-reason' => 'Årsak',
+	'authorprotect-intro' => 'Nytt dette skjemaet for å låsa sida for andre enn forfattarar',
+	'authorprotect-success' => 'Verna.',
+	'authorprotect-failure' => 'Kunne ikkje verna sida',
+	'protect-level-author' => 'Vern for andre enn forfattarar',
+	'restriction-level-author' => 'Forfattarverna',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

@@ -13,6 +13,14 @@ $messages['en'] = array(
 	'mootools12core-desc' => 'Adds mootools-1.2-core-yc.js to each page',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'mootools12core-desc' => 'Short description of this extension, shown on [[Special:Version]].
+Do not translate or change links.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -96,6 +104,13 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'mootools12core-desc' => 'បន្ថែម mootools-1.2-core-yc.js ទៅ​ទំព័រ​នីមួយៗ',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'mootools12core-desc' => 'Deit <i lang="en">mootools-1.2-core-yc.js</i> op jede Sigg.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

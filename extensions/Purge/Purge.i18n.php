@@ -214,6 +214,14 @@ $messages['nl'] = array(
 	'purge-desc' => 'Voegt een tabblad "purge" toe op alle normale pagina\'s en laat de purgecontrole weg voor anonieme gebruikers zodat de cache snel gepurged kan worden',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'purge' => 'oppfrisk',
+	'purge-desc' => 'Legg til ei fana for oppfrisking på alle vanlege sider, og slår av oppfriskingssjekken for anonyme brukarar, noko som gjer at mellomlageret kan verta oppdartert raskare',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

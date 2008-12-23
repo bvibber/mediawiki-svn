@@ -173,6 +173,13 @@ $messages['pt'] = array(
 	'psinotocnum-desc' => 'Nova palavra mágica "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'psinotocnum-desc' => '\'Na parola maggica nove "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

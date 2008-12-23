@@ -338,9 +338,9 @@ $messages['km'] = array(
 	'mp-requests-title' => 'សំណើ',
 	'mp-requests-message' => 'អ្នក​មាន​សំណើ​ដូចខាងក្រោម​។',
 	'mp-request-new-message' => 'សារថ្មី',
-	'mp-request-new-award' => 'រង្វាន់ថ្មីចំនួន$1',
+	'mp-request-new-award' => '{{PLURAL:$1|award|រង្វាន់}}ថ្មី $1',
 	'mp-request-new-gift' => '{{PLURAL:$1|អំណោយ|អំណោយ}}ថ្មីចំនួន$1',
-	'mp-request-new-friend' => 'មិត្តថ្មី$1នាក់',
+	'mp-request-new-friend' => '{{PLURAL:$1|friend|មិត្តភ័ក្ដិ}}ថ្មី $1',
 );
 
 /** Ripoarisch (Ripoarisch)

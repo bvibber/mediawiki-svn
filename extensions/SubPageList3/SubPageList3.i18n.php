@@ -163,6 +163,15 @@ $messages['it'] = array(
 	'spl3_nosubpages' => '$1 non ha sottopagine da elencare.',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'spl3-desc' => '<code><nowiki><splist /></nowiki></code>タグを使って、あるページのサブページのリストを自動生成',
+	'spl3_debug' => '$1オプションの値が不明。',
+	'spl3_nosubpages' => '$1にはリストすべきサブページがありません。',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

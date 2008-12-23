@@ -221,6 +221,15 @@ $messages['it'] = array(
 	'whatismyip-out' => 'Il tuo IP è:',
 );
 
+/** Japanese (日本語)
+ * @author Mizusumashi
+ */
+$messages['ja'] = array(
+	'whatismyip' => '自分のIP',
+	'whatismyip-desc' => '現在の利用者のIPアドレスを[[Special:WhatIsMyIP]]で表示する',
+	'whatismyip-out' => 'あなたのIP:',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */

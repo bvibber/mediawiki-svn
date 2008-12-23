@@ -440,10 +440,26 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'editmessages-desc' => '多数の Messages*.php ファイルの[[Special:EditMessages|ウェブベース編集]]',
+	'editmessages' => 'メッセージ編集',
+	'editmsg-target' => '対象メッセージ:',
 	'editmsg-search' => '検索',
+	'editmsg-show-list' => 'メッセージ名"$1"の値を表示',
+	'editmsg-get-patch' => 'パッチを生成',
+	'editmsg-new-search' => '新規検索',
+	'editmsg-warning-parse1' => '* メッセージ名に正規表現がマッチしませんでした: $1',
+	'editmsg-warning-parse2' => '* 矢印の後に引用符があるべきです: $1',
+	'editmsg-warning-parse3' => '* 文字列終端が見つかりませんでした: $1',
+	'editmsg-warning-file' => '* 以下の言語でファイル読み出しエラーがありました: $1',
+	'editmsg-warning-mismatch' => '* 原文には以下の言語で期待されている値をもっていませんでした: $1',
+	'editmsg-apply-patch' => 'パッチを適用',
+	'editmsg-no-patch' => 'パッチコマンドを実行できません',
+	'editmsg-patch-failed' => 'パッチが終了ステータス $1 で失敗しました',
+	'editmsg-patch-success' => 'パッチあてに成功しました。',
 );
 
 /** Javanese (Basa Jawa)

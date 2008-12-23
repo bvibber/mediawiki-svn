@@ -119,6 +119,20 @@ $messages['de'] = array(
 	'lua_overflow_recursion' => 'Maximale Anzahl von Rekursionen erreicht',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'lua_desc' => 'Rozšyrja parser wó pódpěru za zapśěgnjone kodowe bloki [http://www.lua.org/ Lua]',
+	'lua_error' => 'Zmólka w smužce $1',
+	'lua_extension_notfound' => 'Rozšyrjenje LUa njekonfiguěrowane',
+	'lua_interp_notfound' => 'Interpreter Lua njenamakany',
+	'lua_error_internal' => 'Interna zmólka',
+	'lua_overflow_recursion' => 'Limit rekursijow dostany',
+	'lua_overflow_loc' => 'Limit smužkow koda dostany',
+	'lua_overflow_time' => 'Maksimalny cas wuwjeźenja dostany',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -184,6 +198,20 @@ $messages['grc'] = array(
 	'lua_error_internal' => 'Ἐσώτερον σφάλμα',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'lua_desc' => 'Rozšěrja parser wo podpěru za zapřijate bloki koda [http://www.lua.org/ Lua]',
+	'lua_error' => 'Zmylk w lince $1',
+	'lua_extension_notfound' => 'Rozšěrjenje Lux njekonfigurowane',
+	'lua_interp_notfound' => 'Interpreter Lua njenamakany',
+	'lua_error_internal' => 'Interny zmylk',
+	'lua_overflow_recursion' => 'Limit rekursije docpěty',
+	'lua_overflow_loc' => 'Maksimalne linki kodoweho limita docpěte',
+	'lua_overflow_time' => 'Maksimalny čas wuwjedźenja docpěty',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -234,6 +262,20 @@ $messages['nl'] = array(
 	'lua_overflow_time' => 'Maximale verwerkingstijd bereikt',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'lua_desc' => 'Utvider tolkaren med støtte for innvovne blokkar av [http://lua.org/ Lua]-kode',
+	'lua_error' => 'Feil på linje $1',
+	'lua_extension_notfound' => 'Lua-utvidinga er ikkje stillt inn',
+	'lua_interp_notfound' => 'Lua-tolkaren ikkje funnen',
+	'lua_error_internal' => 'Intern feil',
+	'lua_overflow_recursion' => 'Rekursjonsgrensa nådd',
+	'lua_overflow_loc' => 'Høgste tal på kodelinjer nådd',
+	'lua_overflow_time' => 'Høgste utføringstid nådd',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -267,6 +309,8 @@ $messages['oc'] = array(
  */
 $messages['roa-tara'] = array(
 	'lua_error' => "Errore sus 'a linee $1",
+	'lua_extension_notfound' => 'Le estenziune de Lua non ge sonde configurete',
+	'lua_interp_notfound' => "L'interprete Lua non g'a state acchiete",
 	'lua_error_internal' => 'Errore inderne',
 );
 

@@ -21,6 +21,14 @@ $messages['en'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags'
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'layouts-desc' => 'Short description of this extension, shown on [[Special:Version]].
+Do not translate or change links.',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -203,6 +211,14 @@ $messages['km'] = array(
 	'layouts_tagline' => "ទំព័រ​នេះ​ត្រូវ​បាន​បង្កើតឡើង​ដោយ​ប្លង់ '''$1''' ។",
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'layouts-desc' => 'Deit op jede neu aanjelaate Sigg en änderbaa „Läj_aut“ drop, ön ene einheitlijje Opbou för de Sigge ze fördere.',
+	'layouts_title' => 'En neu Sigg aanlääje',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -270,6 +286,15 @@ $messages['pt-br'] = array(
 	'layouts_choosecategory' => 'Escolher uma Categoria para o $1:',
 	'layouts_unknown' => 'Desconhecido',
 	'layouts_tagline' => 'Esta página foi gerada pelo layout <strong>$1</strong>.',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'layouts_title' => 'Creează o pagină',
+	'layouts_continue' => 'Continuă',
+	'layouts_choosecategory' => 'Alegeţi o categorie pentru $1:',
 );
 
 /** Russian (Русский)

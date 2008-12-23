@@ -846,7 +846,7 @@ $messages['kk-latn'] = array(
  */
 $messages['km'] = array(
 	'bookinfo-header' => 'ព័ត៌មានអំពីសៀវភៅ',
-	'bookinfo-desc' => 'ពង្រីក [[Special:Booksources]] ជាមួយព័ត៌មាន​ពីសេវាវិប',
+	'bookinfo-desc' => 'ពង្រីក [[Special:Booksources|ទំព័រ​ពិសេស​អំពី​ប្រភព​សៀវភៅ]] ជាមួយព័ត៌មាន​ពីសេវាវិប',
 	'bookinfo-result-title' => 'ចំណងជើង៖',
 	'bookinfo-result-author' => 'អ្នកនិពន្ធ៖',
 	'bookinfo-result-publisher' => 'ក្រុមហ៊ុនបោះពុម្ភផ្សាយ ៖',
@@ -1050,11 +1050,22 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'bookinfo-header' => 'Bokinformasjon',
+	'bookinfo-desc' => 'Utvider [[Special:Booksources|sida med bokkjelder]] med informasjon frå ei nettenesta',
 	'bookinfo-result-title' => 'Tittel:',
+	'bookinfo-result-author' => 'Forfattar:',
+	'bookinfo-result-publisher' => 'Utgjevar:',
 	'bookinfo-result-year' => 'År:',
+	'bookinfo-error-invalidisbn' => 'Ikkje ein gyldig ISBN.',
+	'bookinfo-error-nosuchitem' => 'Boka eksisterer ikkje, eller kunne ikkje verta funne.',
+	'bookinfo-error-nodriver' => 'Kunne ikkje setja i gang ein passande bokinformasjonsdrivar.',
+	'bookinfo-error-noresponse' => 'Ingen respons eller tidsavbrot.',
+	'bookinfo-purchase' => 'Kjøp boka frå $1',
+	'bookinfo-provider' => 'Dataleverandør: $1',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

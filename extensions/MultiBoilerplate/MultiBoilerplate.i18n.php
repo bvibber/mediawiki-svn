@@ -71,6 +71,15 @@ $messages['de'] = array(
 	'multiboilerplate-submit' => 'Laden',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'multiboilerplate-desc' => 'Zmóžnja wubraśe tekstowego elementa z wuběrańskego kašćika nad wobźěłowańskim pólom, mjaztym až boki se wobźěłuju',
+	'multiboilerplate-legend' => 'Tekstowy element wubraś',
+	'multiboilerplate-submit' => 'Zacytaś',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

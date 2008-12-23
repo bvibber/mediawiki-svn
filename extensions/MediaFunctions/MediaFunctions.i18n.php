@@ -250,6 +250,15 @@ $messages['nl'] = array(
 	'mediafunctions-not-exist' => '"$1" bestaat niet',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'mediafunctions-desc' => 'Parserfunksjonar for å henta informasjon om mediefiler.',
+	'mediafunctions-invalid-title' => '«$1» er ikkje ein gyldig tittel',
+	'mediafunctions-not-exist' => '«$1» finst ikkje',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
