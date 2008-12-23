@@ -10,16 +10,21 @@ class Piwik extends SpecialPage {
 
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgPiwikURL, $wgScriptPath, $wgPiwikIDSite;
-		$this->setHeaders();
-		$wgOut->setPagetitle('Piwik');
-		$selfTitle = $this->getTitle();
-		$badCharsInURL = array(":", "/");
-		$goodCharsInURL   = array("%3A", "%2F");
-		$specialcharsURL = str_replace($badCharsInURL, $goodCharsInURL, $wgPiwikURL);
 
-		$lastvisits = wfMsg('piwik-lastvisits');
-		$countries = wfMsg('piwik-countries');
-		$browsers = wfMsg('piwik-browsers');
+		wfLoadExtensionMessages( 'Piwik' );
+
+		$this->setHeaders();
+
+		$wgOut->setPagetitle( 'Piwik' );
+
+		$selfTitle = $this->getTitle();
+		$badCharsInURL = array( ":", "/" );
+		$goodCharsInURL   = array( "%3A", "%2F" );
+		$specialcharsURL = str_replace( $badCharsInURL, $goodCharsInURL, $wgPiwikURL );
+
+		$lastvisits = wfMsg( 'piwik-lastvisits' );
+		$countries = wfMsg( 'piwik-countries' );
+		$browsers = wfMsg( 'piwik-browsers' );
 
 		// checking
 		$piwikpage = <<<PIWIK
@@ -32,6 +37,6 @@ class Piwik extends SpecialPage {
 
 PIWIK;
 
-		$wgOut->addHTML($piwikpage);
+		$wgOut->addHTML( $piwikpage );
 	}
 }

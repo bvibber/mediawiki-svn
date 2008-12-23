@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Piwik Integration',
-	'version'        => '0.2.5rev0.7.5 (1.0-RC1)',
+	'version'        => '0.2.5rev0.7.5 (1.0-RC2)',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'author'         => 'Isb1009',
@@ -33,17 +33,17 @@ $wgPiwikCustomJS = "";
 $wgPiwikUsePageTitle = false;
 $wgPiwikActionName = "";
 
-function efPiwikHookText(&$skin, &$text='') {
+function efPiwikHookText( &$skin, &$text = '' ) {
 	$text .= efAddPiwik();
 	return true;
 }
 
 function efAddPiwik() {
 	global $wgPiwikIDSite, $wgPiwikURL, $wgPiwikIgnoreSysops, $wgPiwikIgnoreBots, $wgUser, $wgScriptPath, $wgPiwikCustomJS, $wgPiwikActionName, $wgTitle, $wgPiwikUsePageTitle;
-	if (!$wgUser->isAllowed('bot') || !$wgPiwikIgnoreBots) {
-		if (!$wgUser->isAllowed('protect') || !$wgPiwikIgnoreSysops) {
-			if ( !empty($wgPiwikIDSite) AND !empty($wgPiwikURL)) {
-if ($wgPiwikUsePageTitle == true ) {
+	if ( !$wgUser->isAllowed( 'bot' ) || !$wgPiwikIgnoreBots ) {
+		if ( !$wgUser->isAllowed( 'protect' ) || !$wgPiwikIgnoreSysops ) {
+			if ( !empty( $wgPiwikIDSite ) AND !empty( $wgPiwikURL ) ) {
+if ( $wgPiwikUsePageTitle == true ) {
 $wgPiwikPageTitle = $wgTitle->getPrefixedText();
 
 $wgPiwikFinalActionName = $wgPiwikActionName;
@@ -80,11 +80,11 @@ PIWIK;
 
 	return $funcOutput;
 }
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['Piwik'] = $dir . 'Piwik_specialpage.php'; # Tell MediaWiki to load the extension body.
 $wgExtensionMessagesFiles['Piwik'] = $dir . 'Piwik.i18n.php';
 $wgExtensionAliasesFiles['Piwik'] = $dir . 'Piwik.alias.php';
 $wgSpecialPages['Piwik'] = 'Piwik'; # Let MediaWiki know about your new special page.
 
-///Alias for efAddPiwik - backwards compatibility.
+// /Alias for efAddPiwik - backwards compatibility.
 function addPiwik() { return efAddPiwik(); }
