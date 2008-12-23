@@ -132,10 +132,10 @@ function getMsg( key , args ) {
 	 	return '[' + key + ']';
 	 }	 
 }
-
-function mv_get_loading_img( style , class ){
+//gets the loading image:
+function mv_get_loading_img( style , class_attr ){
 	var style_txt = (style)?style:'';
-	var class_attr = (class)?'class="'+class+'"':'class="mv_loading_img"';
+	var class_attr = (class_attr)?'class="'+class_attr+'"':'class="mv_loading_img"';
 	return '<div '+class_attr+' style="' + style +'"></div>';
 }
 
@@ -2653,8 +2653,7 @@ embedVideo.prototype = {
 		}else{
 			//the plugin is already being displayed			
 			this.paused=false; //make sure we are not "paused"
-		}		
-		js_log("should update play controL");
+		}				
        	$j("#mv_play_pause_button_"+this.id).attr({
        		'class':'pause_button'
        	}).unbind( "click" ).click(function(){
@@ -2682,9 +2681,14 @@ embedVideo.prototype = {
 	 * base embed stop (can be overwritten by the plugin)
 	 */
 	stop: function(){
+		var _this = this;
 		js_log('mvEmbed:stop:'+this.id);
-		//first issue pause to update interface	
-		this.pause();	
+		//first issue pause to update interface	(only call the parent) 
+		if(this['parent_pause']){
+			this.parent_pause();
+		}else{
+			this.pause();
+		}	
 		//check if thumbnail is being displayed in which case do nothing
 		if(this.thumbnail_disp){
 			//already in stooped state
@@ -2696,6 +2700,11 @@ embedVideo.prototype = {
 			this.setSliderValue(0);
 			this.setStatus( this.getTimeReq() );
 		}
+		//make sure the big playbutton is has click action: 
+		$j('#big_play_link_' + _this.id).unbind('click').click(function(){
+			$j('#' +_this.id).get(0).play();
+		});
+		
         if(this.update_interval)
         {
             clearInterval(this.update_interval);
@@ -2845,17 +2854,18 @@ embedVideo.prototype = {
 		$j('#mv_time_'+id).html(value);
 	}	
 }
-
 /*
 * utility functions:
 */
 //simple url re-writer for standard temporal and size request urls: 
 function getUpdateTimeURL(url, new_time, size){	
-	var pSrc = parseUri(url);
-	//debugger;
-	var new_url = pSrc.protocol +'://'+ pSrc.authority + pSrc.path +'?';       	
+	var pSrc = parseUri(url);	
+	if(pSrc.protocol != '' ){
+		var new_url = pSrc.protocol +'://'+ pSrc.authority + pSrc.path +'?';       			
+	}else{
+		var new_url = pSrc.path +'?';      
+	}	
 	var amp = '';
-
 	if(new_time && pSrc.queryKey['t'])
 		pSrc.queryKey['t'] = new_time;
 	

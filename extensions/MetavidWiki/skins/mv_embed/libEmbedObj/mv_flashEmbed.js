@@ -621,7 +621,8 @@ function Player(wrapper, params, conf) {
 				if (clip !== undefined) {
 					self._api().fp_play(clip);
 				} else {
-					self._api().fp_play();	
+					if(typeof self._api().fp_play == 'function')
+						self._api().fp_play();	
 				}
 			}
 			

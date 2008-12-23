@@ -278,9 +278,12 @@ var vlcEmbed = {
     	if( this.vlc ){
     		//plugin is already being present send play call: 
     		// clear the message log and enable error logging
-	        this.vlc.log.verbosity = 1;
-    	    this.vlc.log.messages.clear();
-			this.vlc.playlist.play();
+    		if( this.vlc.log ){
+	        	this.vlc.log.verbosity = 1;
+    	    	this.vlc.log.messages.clear();
+    		}
+    		if(this.vlc.playlist)
+				this.vlc.playlist.play();
 			this.monitor();
 			this.paused=false;
     	}    	

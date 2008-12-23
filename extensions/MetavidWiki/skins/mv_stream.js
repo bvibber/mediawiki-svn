@@ -108,40 +108,10 @@ var mv_stream_interface = {
 		//current range or search parameter
 		stream_current_context =$j('#mv_stream_time').html();
 		js_log('set org_vid_time_req: ' + org_vid_time_req );
-
-		ebvid = $j('#embed_vid').get(0);
-		ebvid['inheritEmbedOverride']=function(){
-			js_log('inheritEmbedOverride');
-			//overide play button action to interface control:
-			$j('#big_play_link_embed_vid').attr('href', 'javascript:mv_do_play();');
-			//extend stop button on mv_embed:
-			//js_log("pre stop: " +ebvid['stop'].toString() );
-			/*if(ebvid['stop'].toString()!='function(){mv_do_stop();}'){				
-				ebvid['org_eb_stop'] = ebvid['stop'];
-				ebvid['stop'] = function(){mv_do_stop();}
-			}*/
-			/*if(ebvid['pause'].toString()!='function(){mv_pause();}'){
-				if(!ebvid['org_eb_pause'])
-                    ebvid['org_eb_pause'] = ebvid['pause'];
-				ebvid['pause'] = function(){mv_pause();}
-			}*/
-			//use mvd images for time updates (avoids lots of arbitrary time hits to server) 
-			if(ebvid['updateThumbPerc'].toString()!='function(){return true;}'){
-				ebvid['updateThumbPerc']=function(){return true;}
-			}
-			
-			/*if(ebvid['showVideoDownload'].toString!='function(){mv_doShowVideoDownload();}'){
-				ebvid['org_showVideoDownload'] = ebvid['showVideoDownload'];
-				ebvid['showVideoDownload'] = function(){mv_doShowVideoDownload();}
-			}*/			
-			//setup text scroll monitor: 
-			mv_doTextScrollMonitor();						
-			//js_log("post stop: " +ebvid['stop'].toString());
-		}
-		//call stop override
-		ebvid.inheritEmbedOverride();
-		//js_log('stop: '+ ebvid['stop'].toString() );
-		//js_log('org_eb_stop: '+ ebvid['org_eb_stop'].toString() );
+		ebvid = $j('#embed_vid').get(0);		
+		//setup text scroll monitor: 
+		mv_doTextScrollMonitor();
+				
 		//add all the hover hooks:
 		this.addHoverHooks();
 
