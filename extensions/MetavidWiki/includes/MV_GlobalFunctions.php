@@ -6,7 +6,7 @@
  * for more info visit http://metavid.org/wiki/Code
  * 
  */
-define( 'MV_VERSION', '1.0r44460' );
+define( 'MV_VERSION', '1.0r44924' );
 
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 

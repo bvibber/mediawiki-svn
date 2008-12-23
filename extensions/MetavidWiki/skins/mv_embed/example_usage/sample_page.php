@@ -47,7 +47,7 @@ $sample_embed[2]['tag'] = '<video id="v2" controls="true" src="sample_fish.ogg?t
 $sample_embed[2]['desc'] = 'simple video with controls and thumbnail';
 
 
-$sample_embed[3]['tag'] = '<video style="width:320px;height:240px" roe="http://metavid.org/w/index.php?title=Special:MvExportStream&stream_name=Senate_proceeding_08-01-07&t=0:00:00/0:20:00&feed_format=roe" ></video>';
+$sample_embed[3]['tag'] = '<video style="width:400px;height:300px" roe="http://metavid.org/w/index.php?title=Special:MvExportStream&stream_name=Senate_proceeding_08-01-07&t=0:05:38/0:05:58&feed_format=roe" ></video>';
 $sample_embed[3]['desc'] = 'Demo of ROE only attribute';
 
 

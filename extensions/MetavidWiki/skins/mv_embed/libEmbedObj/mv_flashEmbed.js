@@ -1545,6 +1545,7 @@ var flashEmbed = {
 	instanceOf:'flashEmbed',
 	monitorTimerId : 0,
 	old_pid:0,
+	didSeekJump:false,
 	startedTimedPlayback:false,		
     supports: {
     	'play_head':true, 
@@ -1595,8 +1596,11 @@ var flashEmbed = {
 				   autoHide:'always',
 				   top:'95%',
 				   right:'0px'
-				 }      		
-    		}
+				}	     		
+    		},
+			screen: {
+				opacity: 0.2
+			}    	
     	};
     	
 		$f(this.pid,  mv_embed_path + 'flowplayer/flowplayer-3.0.1.swf', flowConfig);    	    	  
@@ -1609,6 +1613,9 @@ var flashEmbed = {
     	this.fla.onResume( function(){
     		_this.parent_play();	//update the interface    
     	});
+    	//hide by default (untill its ready) 
+    	this.fla.setVolume(0);
+    	
     	//start monitor: 
     	this.monitor();  
     	this.old_pid++;
@@ -1665,7 +1672,11 @@ var flashEmbed = {
 	    	if( $j('#'+this.id).length != 0 )	    
 	        	this.monitorTimerId = window.setInterval('$j(\'#'+_this.id+'\').get(0).monitor()', 250);	        
 	    }
-		                       
+	    //set the start & end ntp
+		var end_ntp = (this.media_element.selected_source.end_ntp)?
+							this.media_element.selected_source.end_ntp : seconds2ntp(0);	
+		var start_ntp =  this.media_element.selected_source.start_ntp;
+		              
         var flash_state = this.fla.getStatus();
         if( typeof flash_state == 'undefined' ){
         	 var flash_state = {
@@ -1674,7 +1685,7 @@ var flashEmbed = {
         }else{
 	        //simplification of buffer state ... should move to support returning time rages like:
 	        //http://www.whatwg.org/specs/web-apps/current-work/#normalized-timeranges-object        	
-	        this.bufferedPercent = flash_state.bufferEnd / this.getDuration();
+	        this.bufferedPercent = flash_state.bufferEnd / this.getDuration();	        	        	        
         }               
         //set the current Time (based on timeFormat)
         if( this.media_element.selected_source.timeFormat =='anx' ){
@@ -1687,15 +1698,13 @@ var flashEmbed = {
         		//js_log('should stop buffering (does not seem to work)' + flash_state.bufferEnd + ' > dur: ' + this.getDuration() );
         		this.fla.stopBuffering();
         	} 
-        }        
-        
-        var end_ntp = (this.media_element.selected_source.end_ntp)?
-							this.media_element.selected_source.end_ntp : seconds2ntp(0);	
-		var start_ntp =  this.media_element.selected_source.start_ntp;
+        }                  
 		
         if(this.currentTime > ntp2seconds(start_ntp) && !this.startedTimedPlayback){
-        	this.startedTimedPlayback=true;
-        	js_log("time is "+ this.currentTime + " started playback");
+        	this.startedTimedPlayback=true;        	
+        	js_log("time is "+ this.currentTime + " started playback");    
+        	this.fla.setVolume(90);
+        	$f().getPlugin('screen').css({'opacity':'1.0'});    	
         }
         /* to support local seeks */
 		if(this.currentTime > 1 && this.seek_time_sec != 0 && !this.media_element.selected_source.supports_url_time_encoding)
@@ -1713,6 +1722,7 @@ var flashEmbed = {
         if(!this.userSlide){			   		       		
 	        if((this.currentTime - ntp2seconds(start_ntp))<0){
 	        	this.setStatus('buffering...');
+	        	this.fla.setVolume(0);
 	        }else{        			   		       		
 		       	this.setStatus( seconds2ntp(this.currentTime) + '/' + end_ntp);      		
 		        this.setSliderValue((this.currentTime - ntp2seconds(start_ntp)) / (ntp2seconds(end_ntp)-ntp2seconds(start_ntp)) );
