@@ -12,8 +12,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgValidPasswords = array(
-	'minlength' => $wgMinimalPasswordLength, #Minimum password length, should be at least 8
-	'maxlength' => 30, #Maximum password length, set to something lower if the hashes are being truncated in the database
+	'minlength' => $wgMinimalPasswordLength, #Minimum password length, should be at least 8 for decent security
 	'lowercase' => true, #Should we require at least one lowercase letter?
 	'uppercase' => true, #Should we require at least one uppercase letter?
 	'digit'     => true, #Should we require at least one digit?
@@ -22,20 +21,25 @@ $wgValidPasswords = array(
 	'wordcheck' => function_exists( 'pspell_check' ), #Should we check the password against a dictionary to make sure that it is not a word?
 );
 
+$wgSecurePasswordSpecialChars = '.|\/!@#$%^&*\(\)-_=+\[\]{}`~,<>?\'";: '; # Character class of special characters for a regex
+
 $wgExtensionCredits['other'][] = array(
 	'name'           => 'SecurePasswords',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SecurePasswords',
-	'version'        => '1.0',
+	'version'        => '1.1',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Creates more secure password hashes and adds a password strength checker',
 	'descriptionmsg' => 'securepasswords-desc',
 );
 
+$wgExtensionMessagesFiles['SecurePasswords'] = dirname( __FILE__ ) . '/SecurePasswords.i18n.php';
+
 $wgHooks['UserCryptPassword'][] = 'efSecurePasswordsCrypt'; //used to encrypt passwords
 $wgHooks['UserComparePasswords'][] = 'efSecurePasswordsCompare'; //used to compare a password with an encrypted password
 $wgHooks['isValidPassword'][] = 'efSecurePasswordsValidate'; //used to enforce password strength
+$wgHooks['NormalizeMessageKey'][] = 'efSecurePasswordsMessage'; //used to override the message to show what the password requirements are
 
 function efSecurePasswordsCrypt( &$password, &$salt, &$wgPasswordSalt, &$hash ) {
 	$hash = 'SP:';
@@ -231,11 +235,11 @@ function efSecurePasswordsValidate( $password, &$result, $user ) {
 		}
 	}
 	
-	global $wgValidPasswords, $wgContLang;
+	global $wgValidPasswords, $wgContLang, $wgSecurePasswordsSpecialChars;
 	$lang = $wgContLang->getPreferredVariant( false );
 	
 	// check password length
-	if( strlen( $password ) < $wgValidPasswords['minlength'] || strlen( $password ) > $wgValidPasswords['maxlength'] ) {
+	if( strlen( $password ) < $wgValidPasswords['minlength'] ) {
 		$result = false;
 		return false;
 	}
@@ -259,8 +263,7 @@ function efSecurePasswordsValidate( $password, &$result, $user ) {
 	}
 	
 	// check for a special character, if needed
-	$special = '.|\/!@#$%^&*()-_=+[]{}\\\\`~,<>?\'";: ';
-	if( $wgValidPasswords['special'] && !preg_match( '/[' . $special . ']/', $password ) ) {
+	if( $wgValidPasswords['special'] && !preg_match( '/[' . $wgSecurePasswordsSpecialChars . ']/', $password ) ) {
 		$result = false;
 		return false;
 	}
@@ -293,4 +296,60 @@ function efSecurePasswordsValidate( $password, &$result, $user ) {
 
 	$result = true;
 	return false;
+}
+
+function efSecurePasswordsMessage( &$key, &$useDB, &$langCode, &$transform ) {
+	// do we have the right key?
+	if( $key != 'passwordtooshort' ) {
+		return true;
+	}
+
+	// don't replace the message if we're viewing Special:AllMessages
+	global $wgTitle, $wgMessageCache, $wgValidPasswords;
+	if( is_object( $wgTitle ) && $wgTitle instanceOf Title ) {
+		$page = $wgTitle->getText();
+		$ns = $wgTitle->getNamespace();
+	} else {
+		// $wgTitle isn't defined, fail gracefully
+		return true;
+	}
+	
+	if( $ns === NS_SPECIAL ) {
+		list( $title, $sp ) = SpecialPage::resolveAliasWithSubpage( $page );
+		if( $title == 'AllMessages' ) {
+			return true;
+		}
+	}
+	
+	// ok, this isn't AllMessages, so we can replace the key
+	// TODO: this is an epic hack, add a hook to core to modify the message params
+	if( !is_object( $wgMessageCache ) ) {
+		// quit early... we can't properly change the message
+		return true;
+	}
+	wfLoadExtensionMessages('SecurePasswords');
+	$key = 'securepasswords-password';
+	$msg = wfMsg( 'securepasswords-valid' ) . ' ';
+	$msg .= wfMsg( 'securepasswords-minlength', $wgValidPasswords['minlength'] );
+	if( $wgValidPasswords['lowercase'] ) {
+		$msg .= ', ' . wfMsg( 'securepasswords-lowercase' );
+	}
+	if( $wgValidPasswords['uppercase'] ) {
+		$msg .= ', ' . wfMsg( 'securepasswords-uppercase' );
+	}
+	if( $wgValidPasswords['digit'] ) {
+		$msg .= ', ' . wfMsg( 'securepasswords-digit' );
+	}
+	if( $wgValidPasswords['special'] ) {
+		$msg .= ', ' . wfMsg( 'securepasswords-special', str_replace( '\\', '', $wgSecurePasswordsSpecialChars ) );
+	}
+	if( $wgValidPasswords['usercheck'] ) {
+		$msg .= ', ' . wfMsg( 'securepasswords-username' );
+	}
+	if( $wgValidPasswords['wordcheck'] ) {
+		$msg .= ', ' . wfMsg( 'securepasswords-word' );
+	}
+	$wgMessageCache->addMessage( 'securepasswords-password', $msg, 'en' );
+	
+	return true;
 }
