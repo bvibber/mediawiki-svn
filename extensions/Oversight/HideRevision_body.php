@@ -606,7 +606,12 @@ class HiddenRevisionsPager extends ReverseChronologicalPager {
 		$this->namespace = $title ? $title->getNamespace() : -1;
 		$this->dbKey = $title ? $title->getDBKey() : null;
 		$this->uid = $user ? $user->getId() : null;
-		$this->author = strlen($offender) ? $offender : null;
+		if ( strlen($offender) ) {
+			$offender = User::newFromName( $offender );
+			$this->author = is_null( $offender ) ? '' : $offender->getName();
+		} else {
+			$this->author = null;
+		}
 
 		parent::__construct();
 	}
