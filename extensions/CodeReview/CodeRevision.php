@@ -227,7 +227,7 @@ class CodeRevision {
 		$commentId = $dbw->insertId();
 		$dbw->commit();
 
-		// Give email notices to committer and commentors
+		// Give email notices to committer and commenters
 		global $wgCodeReviewENotif, $wgEnableEmail;
 		if( $wgCodeReviewENotif && $wgEnableEmail ) {
 			// Make list of users to send emails to
@@ -240,7 +240,7 @@ class CodeRevision {
 			$title->setFragment( "#c{$commentId}" );
 			$url = $title->getFullUrl();
 			foreach( $users as $userId => $user ) {
-				// No sense in notifying this commentor
+				// No sense in notifying this commenter
 				if( $wgUser->getId() == $user->getId() ) {
 					continue;
 				}

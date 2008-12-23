@@ -146,7 +146,7 @@ CREATE TABLE /*$wgDBprefix*/code_comment (
   -- cc_id of parent comment if a threaded child, otherwise NULL
   cc_parent int,
 
-  -- User id/name of the commentor
+  -- User id/name of the commenter
   cc_user int not null,
   cc_user_text varchar(255) not null,
 
@@ -189,7 +189,7 @@ CREATE TABLE /*$wgDBprefix*/code_prop_changes (
   -- Timestamp of the change, in MediaWiki format.
   cpc_timestamp binary(14) not null default '',
 
-  -- User id/name of the commentor
+  -- User id/name of the commenter
   cpc_user int not null,
   cpc_user_text varchar(255) not null,
 
