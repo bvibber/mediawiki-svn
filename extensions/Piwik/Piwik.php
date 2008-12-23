@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'Piwik Integration',
-	'version'        => '0.2.5rev0.7.5 (1.0-RC2)',
+	'version'        => '0.8-piwik0.2.26 (1.0-RC3)',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'author'         => 'Isb1009',
@@ -80,6 +80,10 @@ PIWIK;
 
 	return $funcOutput;
 }
+
+$wgGroupPermissions['sysop']['viewpiwik'] = true; # Which users can see the special page?
+$wgAvailableRights[] = 'viewpiwik';
+
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['Piwik'] = $dir . 'Piwik_specialpage.php'; # Tell MediaWiki to load the extension body.
 $wgExtensionMessagesFiles['Piwik'] = $dir . 'Piwik.i18n.php';

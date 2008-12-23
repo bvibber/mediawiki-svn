@@ -5,7 +5,7 @@
 
 class Piwik extends SpecialPage {
 	function __construct() {
-		parent::__construct( 'Piwik' );
+		parent::__construct( 'Piwik', 'viewpiwik' );
 	}
 
 	function execute( $par ) {
