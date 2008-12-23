@@ -311,7 +311,7 @@ div.floatleft, table.floatleft {
 	width: 183px;
 	overflow: hidden;
 	position: absolute;
-	z-index: 2;
+	z-index: 100;
 /*	margin: 0 0 0 230px;*/
 }
 *:first-child+html .videoOptions {margin-top: -20px;}
@@ -484,23 +484,30 @@ div.floatleft, table.floatleft {
 #resizable css:
 .ui-resizable-handle { position: absolute; background: #ddd; display: none; }
 .ui-resizable .ui-resizable-handle { display: block }
-.ui-resizable-e { z-index:5; position:absolute; cursor: e-resize; width: 15px;height:19px; top: 0px; bottom: 0px; right: 0px;}
-.ui-resizable-w { z-index:5; position:absolute; cursor: w-resize; width: 15px;height:19px; top: 0px; bottom: 0px; left: 0px;}
+.ui-resizable-e { z-index:5; position:absolute; cursor: e-resize;
+	width: 15px;height:19px; top: 0px; bottom: 0px; right: 0px;
+	background: transparent url(images/slider_handle_red.gif) no-repeat scroll 0% 0%;
+}
+.ui-resizable-w { z-index:5; position:absolute; cursor: w-resize;
+	width: 15px;height:19px; top: 0px; bottom: 0px; left: 0px;
+	background: transparent url(images/slider_handle_green.gif) no-repeat scroll 0% 0%;
+}
 .ui-dragSpan {filter: alpha(opacity=70); -moz-opacity: .7; background-color:#AAF; position:absolute; left: 10px; right:10px;height:19px;  }
 
 #remote search css:
+
 ul.rsd_cp_tabs {	
 	border-bottom:1px solid #CCCCCC;
 	display:inline;
 	list-style-image:none;
 	list-style-position:outside;
 	list-style-type:none;	
-	z-index:2;
+	z-index:2;			
 }
 ul.rsd_cp_tabs li.rsd_selected {
 	background:#FFFFFF none repeat scroll 0 0;
 	border-bottom:0;
-	padding-bottom:1px;
+	padding-bottom:7px;
 	padding-top:12px;
 	top:40px;
 }
@@ -510,7 +517,7 @@ ul.rsd_cp_tabs li {
 	padding:10px 0 0;
 	background:#F7F7F7 url(remote_search/tab-bg.png) repeat-x scroll left bottom;
 	border:1px solid #777;
-	padding-bottom:0;
+	padding-bottom:6px;
 	margin-left:7px;
 	cursor:pointer;
 }
@@ -574,4 +581,19 @@ ul.rsd_cp_tabs li {
 }
 .mv_scale_button_selected{
 	background-image: url('images/stock-tool-button-scale_over.png');
+}
+.mv_loading_img{
+	width:32px;
+	height:32px;
+	display:inline;
+	padding:0px;
+	position:absolute;
+	background-image: url('images/loading_ani.gif');
+}
+.mv_loading_bar_img{
+	width:220px;
+	height:19px;
+	display:inline;
+	position:absolute;
+	background-image: url('images/loading_bar_ani.gif');
 }

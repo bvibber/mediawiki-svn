@@ -23,12 +23,15 @@ var default_remote_search_options = {
 	
 	'caret_pos':null,
 	'local_wiki_api_url':null,
+	'target_title':null,
 	
 	'target_textbox':null,
 	'instance_name': null, //a globally accessible callback instance name
 	'default_query':'', //default search query
 	//specific to sequence profile
-	'p_seq':null
+	'p_seq':null,
+	'cFileNS':'Image' //what is the cannonical namespace for images 
+					  //@@todo (should be able to get that from the api in the future) 
 }
 var remoteSearchDriver = function(initObj){
 	return this.init( initObj );
@@ -69,28 +72,33 @@ remoteSearchDriver.prototype = {
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,
+			'd'		:0,
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
 			'homepage': 'http://commons.wikimedia.org/wiki/Main_Page',		
 			'api_url':'http://commons.wikimedia.org/w/api.php',
-			'lib'	:'mediaWiki',
-			'search_title':false, //disable title search
+			'lib'	:'mediaWiki',			
 			'local'	:false,
-			'resource_prefix': 'WC_' //prefix on imported resources (not applicable if the repository is local) 
+			'resource_prefix': 'WC_', //prefix on imported resources (not applicable if the repository is local)
+			
+			//specific to wiki comons config: 
+			'search_title':false //disable title search 
 		},
 		'metavid':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,			
+			'd'		:1,			
 			'title'	:'Metavid.org',
 			'homepage':'http://metavid.org',
 			'desc'	: 'Metavid hosts thousands of hours of US house and senate floor proceedings',
-			'api_url':'http://localhost/wiki/index.php?title=Special:MvExportSearch',
+			'api_url':'http://metavid.org/w/index.php?title=Special:MvExportSearch',
 			'lib'	: 'metavid',
-			'local'	:false,
-			'resource_prefix': 'MV_' //what prefix to use on imported resources 
+			'local'	:false,			//if local set to true we can use local 
+			'resource_prefix': 'MV_', //what prefix to use on imported resources
+			
+			'local_copy': true //if local_copy set to true if we should download assets 
+							   //(else just remote embed copy) 
 		},
 		'archive_org':{
 			'enabled':0,
@@ -141,12 +149,12 @@ remoteSearchDriver.prototype = {
 	getTexboxSelection:function(){				
 		if(this.caret_pos.s && this.caret_pos.e &&
 			(this.caret_pos.s != this.caret_pos.e))
-			this.default_query = caret_pos.text.substring(this.caret_pos.s, this.caret_pos.e).replace(/ /g, '\xa0') || '\xa0'		
+			this.default_query = this.caret_pos.text.substring(this.caret_pos.s, this.caret_pos.e).replace(/ /g, '\xa0') || '\xa0'		
 	},
 	//sets up the initial html interface 
 	init_interface_html:function(){
 		var out = '<div class="rsd_control_container" style="width:100%">' + 
-					'<table style="width:100%">' +
+					'<table style="width:100%;background-color:transparent;">' +
 						'<tr>'+
 							'<td style="width:110px">'+
 								'<h3> Media Search </h3>'+
@@ -197,11 +205,8 @@ remoteSearchDriver.prototype = {
 		var _this = this;
 		js_log("add_interface_bindings:");		
 		//setup for this.main_search_options:
-		$j('#mso_cancel').click(function(){
-			$j('#modalbox').fadeOut("normal",function(){
-				$j(this).remove();
-				$j('#mv_overlay').remove();
-			});
+		$j('#mso_cancel').click(function(){ 
+			_this.closeAll(); 
 		});
 		
 		$j('#mso_selprovider,#mso_selprovider_close').click(function(){
@@ -229,8 +234,8 @@ remoteSearchDriver.prototype = {
 		var _this = this;						
 		//set loading div: 
 		$j('#rsd_results').append('<div style="position:absolute;top:0px;left:0px;height:100%;width:100%;'+
-			'background-color:#FFF;margin:30px">' + 			
-				mv_get_loading_img('padding:30px') + 
+			'background-color:#FFF;">' + 			
+				mv_get_loading_img('top:30px;left:30px') + 
 			'</div>');		
 		//get a remote search object for each search provider and run the search
 		for(var cp_id in  this.content_providers){
@@ -272,7 +277,7 @@ remoteSearchDriver.prototype = {
 	drawTabs: function(){
 		var _this = this;
 		//add the tabs to the rsd_results container: 
-		var o= '<ul class="rsd_cp_tabs" style="margin-bottom:2px;">'; //no idea why margin-bottom does not work in the css file
+		var o= '<ul class="rsd_cp_tabs" style="margin: 1em 0 0 1em;position:absolute;top:42px;padding:0;">'; //no idea why margin does not overwrite from the css
 			o+='<li id="rsd_tab_combined" ><img src="' + mv_embed_path + 'skins/'+mv_skin_name+ '/remote_search/combined_tab.png"></li>';		 			 	
 			for(var cp_id in  this.content_providers){
 				var cp = this.content_providers[cp_id];
@@ -308,7 +313,7 @@ remoteSearchDriver.prototype = {
 		return false;
 	},
 	drawOutputResults: function(){		
-		js_log('f:drawOutputResults');				
+		js_log('f:drawOutputResults');					
 		var _this = this;			
 		var o='';
 		$j('#rsd_results').empty();
@@ -344,29 +349,42 @@ remoteSearchDriver.prototype = {
 		this.addResultBindings();
 	},
 	addResultBindings:function(){
-		var _this = this;
+		var _this = this;			
 		$j('.mv_clip_box_result').hover(function(){
 			$j(this).addClass('mv_clip_box_result_over');
 		},function(){
 			$j(this).removeClass('mv_clip_box_result_over');
-		});
+		});		
 		//resource click action: (bring up the resource editor) 		
 		$j('.rsd_res_item').click(function(){		
 			//get the resource obj:
-			rObj = _this.getResourceFromId( this.id );						
+			var rObj = _this.getResourceFromId( this.id );						
 			//remove any existing resource edit interface: 
-			$j('#rsd_resource_edit').remove();						
+			$j('#rsd_resource_edit').remove();					
+			
+			//set the media type:
+			if(rObj.mime.indexOf('image')!=-1){	 			
+				//set width to default image_edit_width
+				var maxWidth = _this.image_edit_width;		
+				var mediaType = 'image';										
+			}else{
+				//set to default video size: 
+				var maxWidth = _this.video_edit_width;
+				var mediaType = 'video';
+			}
+			//so that transcripts show ontop
+			var overflow_style = ( mediaType =='video' )?'':'overflow:auto;';
 			//append to the top level of model window: 
 			$j( '#'+ _this.target_id ).append('<div id="rsd_resource_edit" '+ 
 				'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
 					'<h3 style="margin:4px;">' + getMsg('rsd_resource_edit') + ' ' + rObj.title +'</h3>'+
-					'<div id="clip_edit_disp" style="position:absolute;top:30px;left:0px;bottom:0px;'+
-						'width:' + (_this.image_edit_width+30) + 'px;overflow:auto;" >' +
+					'<div id="clip_edit_disp" style="position:absolute;'+overflow_style+'top:30px;left:0px;bottom:0px;'+
+						'width:' + (maxWidth + 30) + 'px;" >' +
 							mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
 					'</div>'+
 					'<div id="clip_edit_ctrl" style="position:absolute;border:solid thin blue;'+
-						'top:30px;left:' + (_this.image_edit_width+30) +'px;bottom:0px;right:0px;">'+
-						mv_get_loading_img('padding:30px') +  					
+						'top:30px;left:' + (maxWidth+30) +'px;bottom:0px;right:0px;">'+
+						mv_get_loading_img() +  					
 					'</div>'+
 				'</div>');
 			$j('#rsd_resource_edit').css('opacity',0);
@@ -380,15 +398,7 @@ remoteSearchDriver.prototype = {
 				'left':'20%',
 				'opacity':0	
 			});															
-			if(rObj.mime.indexOf('image')!=-1){	 			
-				//set width to default image_edit_width
-				var maxWidth = _this.image_edit_width;		
-				var mediaType = 'image';										
-			}else{
-				//set to default video size: 
-				var maxWidth = _this.video_edit_width;
-				var mediaType = 'video';
-			}
+			
 			//assume we keep aspect ratio for the thumbnail that we clicked:			
 			var tRatio = $j(this).height() / $j(this).width();
 			if(	! tRatio )		
@@ -436,7 +446,7 @@ remoteSearchDriver.prototype = {
 				js_log('using req size: ' + imObj.width + 'x' + imObj.height);
 				$j('#'+target_img_id).animate( {'width':imObj.width+'px', 'height' : imObj.height + 'px'});
 			}
-			//don't swap it in untill its loaded: 
+			//don't swap it in until its loaded: 
 			var img = new Image();		
 			// load the image image: 				
 			$j(img).load(function () { 
@@ -457,23 +467,32 @@ remoteSearchDriver.prototype = {
 				'clip_disp_ct':'clip_edit_disp',
 				'control_ct': 'clip_edit_ctrl',
 				'media_type': mediaType,
-				'p_rsdObj': _this							
-						
+				'p_rsdObj': _this						
 		};
 		var loadLibs =  {'mvClipEdit':'libSequencer/mv_clipedit.js'};		
 		if( mediaType == 'image'){
 			//load the croping library:
 			loadLibs['$j.Jcrop']='jquery/plugins/Jcrop/js/jquery.Jcrop.js';
 			//@@todo integrate css calls into mvJsLoader or move jcrop css
-			loadExternalCss( mv_embed_path + 'jquery/plugins/Jcrop/css/jquery.Jcrop.css');				
-		}
-		//load the library:
-		mvJsLoader.doLoad( loadLibs,
-			function(){
-				js_log('done loading libs: mvClipEdit + Jcrop');
+			loadExternalCss( mv_embed_path + 'jquery/plugins/Jcrop/css/jquery.Jcrop.css');
+			//display the mvClipEdit obj once we are done loading:
+			mvJsLoader.doLoad( loadLibs,function(){				
 				//run the image clip tools 
 				_this.cEdit = new mvClipEdit( mvClipInit );
-		});
+			});				
+		}
+		if( mediaType == 'video'){
+			$j('#clip_edit_disp').append('<video id="embed_vid" roe="'+ rObj['roe_url']+'"></video>');	
+			//rewrite by id hanldes getting any libs we are missing: 		
+			rewrite_by_id('embed_vid',function(){
+				//add the resizable to the doLoad request: 
+				loadLibs['$j.ui.resizable']	= 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
+				mvJsLoader.doLoad( loadLibs,function(){				
+					//run the image clip tools 
+					_this.cEdit = new mvClipEdit( mvClipInit );
+				});	
+			});
+		}	
 	},
 	checkImportResource:function( rObj, cir_callback){
 		//check if the resource is "locally accesible" 
@@ -485,23 +504,25 @@ remoteSearchDriver.prototype = {
 			var cp = rObj.pSobj.cp;
 			
 			//first check if the resource is not already on this wiki: 
-			//@@todo get the File Msg			
-			var cFileNS= 'Image'
-			var target_resource_title = cp.resource_prefix + rObj.titleKey.substr( cFileNS.length + 1 );
-			reqObj={'action':'query', titles: cFileNS + ':' + target_resource_title + '|' + rObj.titleKey};
+			//@@todo get the File/Image namespace name:						
+			rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');
+			
+			reqObj={'action':'query', titles: _this.cFileNS + ':' + rObj.target_resource_title + '|' + rObj.titleKey};
 			do_api_req( reqObj, this.local_wiki_api_url, function(data){	
 				var found_title = false;
 				for(var i in data.query.pages){
-					if(i>0)
-						found_title=true;
+					if( i != '-1' && i != '-2' ){
+						js_log('found title: ' + i + ':' +  data.query.pages[i]['title']);
+						found_title=data.query.pages[i]['title'];
+					}
 				}			
 				if( found_title ){
+					js_log("checkImportResource:found title:" + found_title);  
 					//resource is already present (or resource with same name is already present)
-					js_log("checkImportResource:resource is already present: {"+
-						cp.resource_prefix + '}' + rObj.titleKey);  
+					rObj.target_resource_title = found_title.replace(/File:|Image:/,'');			
 					cir_callback( rObj );
 				}else{
-					js_log("resource not present: update:"+ cFileNS + ':' + target_resource_title);
+					js_log("resource not present: update:"+ _this.cFileNS + ':' + rObj.target_resource_title);
 					
 					//setup the resource description from resource description: 					
 					var base_resource_desc = '{{Information '+"\n"+
@@ -538,7 +559,7 @@ remoteSearchDriver.prototype = {
 							'<div id="rds_edit_import_container" style="position:absolute;left:50%;' +
 								'bottom:0px;top:30px;right:0px;overflow:auto;">'+
 								'<strong>Local Resource Title:</strong><br>'+
-								'<input type="text" size="30" value="' + target_resource_title + '" readonly="true"><br>'+
+								'<input type="text" size="30" value="' + rObj.target_resource_title + '" readonly="true"><br>'+
 								'<strong>Edit WikiText Resource Description:</strong>(will be replaced by forms soon)'+																									
 								'<textarea id="rsd_import_ta" id="mv_img_desc" rows="8" cols="50">'+
 									base_resource_desc + 
@@ -552,7 +573,7 @@ remoteSearchDriver.prototype = {
 							//output the rendered and non-renderd version of description for easy swiching:	
 					'</div>');			
 					//load the preview text: 					
-					_this.getParsedWikiText( base_resource_desc, cFileNS +':'+ target_resource_title, function( o ){						
+					_this.getParsedWikiText( base_resource_desc, _this.cFileNS +':'+ rObj.target_resource_title, function( o ){						
 						$j('#rsd_import_desc').html(o);
 					});
 					//add bidings: 				
@@ -561,14 +582,14 @@ remoteSearchDriver.prototype = {
 							mv_get_loading_img()
 						);
 						//load the preview text: 
-						_this.getParsedWikiText( $j('#rsd_import_ta').val(), cFileNS +':'+ target_resource_title, function( o ){
+						_this.getParsedWikiText( $j('#rsd_import_ta').val(), _this.cFileNS +':'+ rObj.target_resource_title, function( o ){
 							js_log('got updated preivew: '+ o);
 							$j('#rsd_import_desc').html(o);
 						});
 					});
 					$j('#rsd_import_doimport').click(function(){
 						//replace the parent with progress bar: 
-						$j('rsd_resource_import').html(
+						$j('#rsd_resource_import').html(
 							'<h3>Importing asset</h3>'+
 							mv_get_loading_img() 
 						);			
@@ -592,41 +613,46 @@ remoteSearchDriver.prototype = {
 									var postVars = {
 										'wpSourceType'		:'web',
 										'wpUploadFileURL'	: rObj.url,
-										'wpDestFile'		: target_resource_title,
+										'wpDestFile'		: rObj.target_resource_title,
 										'wpUploadDescription':$j('#rsd_import_ta').val(),
 										'wpWatchthis'		: $j('#wpWatchthis').val(),		
 										'wpUpload'			: 'Upload file'																																									
 									}
 									//set to uploading: 
 									$j('#rsd_resource_import').append('<div id="rsd_import_progress"'+										
-										'style="position:abolute;top:0px;"'+
+										'style="position:absolute;top:0px;'+
 											'left:0px;width:100%;height:100%;'+											
-											'z-index:4;background:#555;">'+
-												'<div style="left:30%;right:30%">Importing Asset' + 
-												mv_get_loading_img() + 
-												'</dvi>'+					
+											'z-index:5;background:#FFF;overflow:auto;">'+
+												'<div style="position:absolute;left:30%;right:30%"><h3>Importing Asset</h3><br>' + 
+													mv_get_loading_img('','mv_loading_bar_img') + 
+												'</div>'+					
 										'</div>'																				
-									);
+									);								
+									$j.post(wgArticlePath.replace(/\$1/,'Special:Upload'),
+										postVars,
+										function(data){											
+											//@@todo this will be replaced once we add upload image support to the api. 
 											
-									$j.ajax({
-										type:"POST",
-										url: wgArticlePath.replace(/\$1/,'Special:Upload'),
-										data: postVars,
-										sucess:function(data, textStatus){											
-											js_log('success in uploading: '+target_resource_title +' textStatus:'+ textStatus);
-											//cir_callback with pointer to local resource:
-											cObj.target_resource_title = target_resource_title;  
-											cir_callback( rObj )
-										},
-										error:function(XMLHttpRequest, textStatus, errorThrown){
-											js_log('error httpReq:' + ' status:' + XMLHttpRequest.status)										
-										},
-										complete:function(XMLHttpRequest, textStatus){
-											js_log('completed request:' + textStatus + ' status:'+ XMLHttpRequest.status);
-											rObj.target_resource_title = target_resource_title;  
-											cir_callback( rObj )
+											//very basic test to see if we got passed to the image page:
+											//@@todo more normalization stuff
+											var sstring ='var wgPageName = "' + _this.cFileNS + ':' + rObj.target_resource_title.replace(/ /g,'_') +'"';
+											if(data.indexOf( sstring ) !=-1){
+												js_log('found: ' + sstring);	
+												$j('#rsd_resource_import').remove();											
+												cir_callback( rObj );
+											}else{
+												js_log("Error or warning: (did not find: \"" + sstring + ' in output' );
+												$j('#rsd_resource_import').html(
+													'<b>error importing asset (we should have better error handling soon)</b><br>'+
+													'<a href="#" id="rsd_import_error" >Cancel import</a>'													
+												);
+												$j('#rsd_import_error').click(function(){
+													$j('#rsd_resource_import').remove();
+												});
+											}
+												
 										}
-									});
+									);
 								}								
 							}
 						});
@@ -646,16 +672,29 @@ remoteSearchDriver.prototype = {
 		this.checkImportResource( rObj, function(){		
 			//put another window ontop:
 			$j( '#'+ _this.target_id ).append('<div id="rsd_resource_preview" '+ 
-					'style="position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
-						'<h3>preview resource: ' + rObj.title + '</h3>'+
-						'<div id="rsd_preview_display" style="position:absolute;width:100%;bottom:30px;>'+
-							mv_get_loading_img('position:absolute;top:30px;left:30px', 'mv_img_loader') + 
-						'</div>'+
-						'<div id="rsd_preview_control" style="position:absolute;width:60%;left:40%;bottom:0px;height:30px;">'+
-							'<input type="button" id="preview_do_insert" value="Do Insert">'+
-							'<a href="#" id="preview_close">Close Preview</a>'+
-						'</div>'+
+					'style="position:absolute;z-index:4;top:0px;left:0px;width:100%;height:100%;background-color:#FFF;">' +
+						'<h3>preview insert of resource: ' + rObj.title + '</h3>'+
+						'<div id="rsd_preview_display" style="position:absolute;width:100%;top:30px;bottom:30px;overflow:auto;">' +
+							mv_get_loading_img('top:30px;left:30px') + 
+						'</div>' +
+						'<div id="rsd_preview_control" style="position:absolute;width:60%;left:40%;bottom:0px;height:30px;">' +
+							'<input type="button" id="preview_do_insert" value="Do Insert">' +
+							'<a href="#" id="preview_close">Do More Modification</a>' +
+						'</div>' +
 					'</div>');
+			//do a page preview given the original page text, insert point
+			js_log('insert at: ' + _this.caret_pos.s + "\n" + rObj.pSobj.getEmbedWikiText( rObj ) );
+			
+			//update the preview_wtext
+			_this.preview_wtext = _this.caret_pos.text.substring(0, _this.caret_pos.s) + 
+								rObj.pSobj.getEmbedWikiText( rObj ) + 
+							   _this.caret_pos.text.substring( _this.caret_pos.s );
+							   
+			_this.getParsedWikiText(_this.preview_wtext, _this.target_title,
+				function(phtml){
+					$j('#rsd_preview_display').html( phtml );
+				}
+			);			
 			//add bindings: 
 			$j('#preview_do_insert').click(function(){
 				_this.insertResource( rObj );
@@ -675,7 +714,14 @@ remoteSearchDriver.prototype = {
 		});	
 	},	
 	insertResource:function( rObj){
-		
+		$j('#'+this.target_textbox).val( this.preview_wtext );
+		this.closeAll();
+	},
+	closeAll:function( rObj ){
+		$j('#modalbox').fadeOut("normal",function(){
+				$j(this).remove();
+				$j('#mv_overlay').remove();
+		});
 	},
 	setResultBarControl:function( ){
 		var _this = this;
@@ -824,13 +870,15 @@ mvBaseRemoteSearch.prototype = {
 					}
 				}
 			}			
-			//add pointer to parent serach obj:
+			//force a mime type for now.. in the future generalize for other RSS feeds 
+			rObj['mime'] = 'video/ogg';
+			//add pointer to parent search obj:
 			rObj['pSobj'] = _this;
 			//add the result to the result set: 
 			_this.resultsObj[inx] = rObj;			
 		});
 	},
-	//by default just retrun the existing image: 
+	//by default just return the existing image: 
 	getImageObj:function( rObj, size, callback){
 		callback( {'url':rObj.poster} );
 	}
@@ -856,13 +904,7 @@ metavidSearch.prototype = {
 				this['parent_'+i] =  baseSearch[i];
 			}
 		}
-	},
-	getImageObj:function( rObj, size, callback ){
-		js_log('metavidSearch:getImageObj:'+size + ' s:' + size ); 
-		//metavid uses a dynamic image request url:
-		var pparts = this.parseURI( rObj.poster );		
-		callback( {'url':rObj.poster} );
-	},
+	},	
 	getSearchResults:function(){
 		var _this = this;
 		//start loading:
@@ -880,6 +922,11 @@ metavidSearch.prototype = {
 		do_request(url, function(data){ 
 			//should have an xml rss data object:
 			_this.addRSSData( data , url );
+			//do some metavid specific pos proccessing: 
+			for(var i in _this.resultsObj){
+				var rObj = _this.resultsObj[i];		
+			}
+			
 			//done loading: 
 			_this.loading=0;
 		});
@@ -1028,24 +1075,33 @@ mediaWikiSearch.prototype = {
 		js_log('ERROR:unsupored mime type: ' + rObj.mime);
 	},
 	//returns the inline wikitext for insertion (template based crops for now) 
-	getEmbedWikiText: function( rObj , callback ){		
+	getEmbedWikiText: function( rObj ){		
 			//set default layout to right justified
 			var layout = ( rObj.layout)? rObj.layout:"right"
 			//if crop is null do simple output: 
-			if( rObj.crop == null)
-				callback( '[[' + rObj.titleKey + '|layout' + '|'+rObj.width + 'px|' + rObj.inlineDesc + ']]' ); 	
-			
+			if( rObj.crop == null){
+				var o= '[[' + this.rsd.cFileNS + ':' + rObj.target_resource_title + '|thumb|'+layout;
+				
+				if(rObj.target_width)
+					o+='|' + rObj.target_width + 'px';
+				
+				if( rObj.inlineDesc ) 
+					o+='|' + rObj.inlineDesc;
+					
+				o+=']]';
+				return o;
+			} 						
 			//using the preview crop template: http://en.wikipedia.org/wiki/Template:Preview_Crop
 			//should be replaced with server side cropping 
-			callback( '{{Preview Crop '+
-'|Image   = ' + rObj.titleKey + "\n" +
-'|bSize   = ' + rObj.width + "\n" + 
-'|cWidth  = ' + rObj.crop.w + "\n" +
-'|cHeight = ' + rObj.crop.h + "\n" +
-'|oTop    = ' + rObj.crop.y + "\n" +
-'|oLeft   = ' + rObj.crop.x + "\n" +
-'|Location =' + layout + "\n" +
-'|Description =' + rObj.inlineDesc + "\n" +
-'}}');
+			return '{{Preview Crop ' + "\n" +
+						'|Image   = ' + rObj.target_resource_title + "\n" +
+						'|bSize   = ' + rObj.width + "\n" + 
+						'|cWidth  = ' + rObj.crop.w + "\n" +
+						'|cHeight = ' + rObj.crop.h + "\n" +
+						'|oTop    = ' + rObj.crop.y + "\n" +
+						'|oLeft   = ' + rObj.crop.x + "\n" +
+						'|Location =' + layout + "\n" +
+						'|Description =' + rObj.inlineDesc + "\n" +
+					'}}';
 	}
 }

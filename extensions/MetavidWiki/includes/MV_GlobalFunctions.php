@@ -306,8 +306,7 @@ function mvfAutoAllPageHeader() {
 		
 	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_embed/mv_embed.js?{$unique_req_param}\"></script>" );
 	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_allpages.js?{$unique_req_param}\"></script>" );
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js?{$unique_req_param}\"></script>" );
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_common.js?{$unique_req_param}\"></script>" );
+	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$mvgScriptPath}/skins/mv_search.js?{$unique_req_param}\"></script>" );	
 	
 	//temp for testing: 
 	if( $mvgJSDebug )		

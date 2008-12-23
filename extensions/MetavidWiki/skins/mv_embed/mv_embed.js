@@ -136,8 +136,7 @@ function getMsg( key , args ) {
 function mv_get_loading_img( style , class ){
 	var style_txt = (style)?style:'';
 	var class_attr = (class)?'class="'+class+'"':'class="mv_loading_img"';
-	return '<img '+class_attr+' style="' + style +'" src="'+ 
-		mv_embed_path + 'skins/' + mv_skin_name + '/images/loading_ani.gif">';
+	return '<div '+class_attr+' style="' + style +'"></div>';
 }
 
 /*  the base video control JSON object with default attributes
@@ -213,7 +212,8 @@ var mvEmbed = {
   pc:null, //used to store pointer to parent clip (when in playlist mode)
   load_libs:function( callback , target_id){
   	//js_log('f:load_libs: '+callback);
-  	if(callback)this.load_callback = callback;
+  	if( callback )this.load_callback = callback;
+  	
   	//if libs are already loaded jump directly to the callback
   	if(this.libs_loaded){
   		mvEmbed.init( target_id );
@@ -272,7 +272,7 @@ var mvEmbed = {
     //js_log('f:check_init_done '+ is_ready + ' ' + cur_vid.load_error + ' rtp: '+ cur_vid.ready_to_play);
   	if( !is_ready ){
   		//js_log('some ' + global_player_list + ' not ready');
-  		setTimeout( 'mvEmbed.check_init_done()', 250 );
+  		setTimeout( 'mvEmbed.check_init_done()', 50 );
   	}else{
 		//call the callback:
 		if(typeof this.load_callback == 'function')
@@ -993,10 +993,10 @@ function init_mv_embed(force){
 /*
  * this function allows for targeted rewriting 
  */
-function rewrite_by_id( vid_id ){
+function rewrite_by_id( vid_id, ready_callback ){
 	js_log('f:rewrite_by_id: ' + vid_id);
 	//force a recheck of the dom for playlist or video element: 	
-	mvEmbed.load_libs( vid_id );
+	mvEmbed.load_libs( ready_callback, vid_id );
 }
 
 
@@ -1033,7 +1033,7 @@ function mv_embed( force_id ){
 	var loadPlaylistLib=false;
 	//set up the jQuery selector: 
 	var j_selector = 'video,playlist';
-	if( force_id!=null )
+	if( force_id !=null )
 		var j_selector = '#'+force_id;
 		
 	//process selected elements: 
@@ -1271,7 +1271,7 @@ mediaSource.prototype =
      *  @param {String} end_time in NTP format
      */
     updateSrcTime:function (start_ntp, end_ntp){
-    	js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp + ' from org: ' + this.start_ntp+ '/'+this.end_ntp);
+    	//js_log("f:updateSrcTime: "+ start_ntp+'/'+ end_ntp + ' from org: ' + this.start_ntp+ '/'+this.end_ntp);
     	//js_log("pre uri:" + this.src);
     	//if we have time we can use:
     	if( this.supports_url_time_encoding ){
@@ -1386,7 +1386,7 @@ mediaSource.prototype =
 	   	 	this.start_offset = 0;
 			this.start_ntp = seconds2ntp(this.start_offset);			
         }
-        js_log('f:parseURLDuration() for:' + this.src  + ' d:' + this.duration);
+        //js_log('f:parseURLDuration() for:' + this.src  + ' d:' + this.duration);
 	},
     /** Attempts to detect the type of a media file based on the URI.
         @param {String} uri URI of the media file.
@@ -2266,7 +2266,11 @@ embedVideo.prototype = {
 						'width:' + options.width + 'px">' +
 				'</div>';
 	},
+	updateThumbTimeNTP:function( time){
+		this.updateThumbTime( ntp2seconds(time) - parseInt(this.start_offset) );
+	},
 	updateThumbTime:function( float_sec ){
+		js_log('updateThumbTime:'+float_sec);
 		var _this = this;									   				
 		if( typeof this.org_thum_src=='undefined' ){		
 			this.org_thum_src = this.media_element.getThumbnailURL();
@@ -2285,6 +2289,7 @@ embedVideo.prototype = {
 	},
 	//updates the thumbnail if the thumbnail is being displayed
 	updateThumbnail : function(src, quick_switch){		
+		js_log('update thumb: ' + src);
 		//make sure we don't go to the same url if we are not already updating: 
 		if( !this.thumbnail_updating && $j('#img_thumb_'+this.id).attr('src')== src )
 			return false;
@@ -2427,7 +2432,7 @@ embedVideo.prototype = {
 		//@@todo support position config
 		var loc = $j(this).position();			
 		if($j('#metaBox_'+this.id).length==0){
-			$j(this).after('<div style="position:absolute;z-index:' + ($j(this).css("zindex") + 1) + ';'+
+			$j(this).after('<div style="position:absolute;z-index:10;'+
 						'top:' + (loc.top) + 'px;' +
 						'left:' + (parseInt( loc.left ) + parseInt(this.width) + 10 )+'px;' +
 						'height:'+ parseInt( this.height )+'px;width:400px;' +
@@ -2673,15 +2678,6 @@ embedVideo.prototype = {
         	$j('#'+this_id).get(0).play();
         });
 	},	
-	/*play_or_pause: function(){
-		js_log('embed:f:play_or_pause');
-        //check state and set play or pause
-        if(this.paused){
-            this.play();                        
-        }else{            
-            this.pause();
-        }
-	},*/
 	/*
 	 * base embed stop (can be overwritten by the plugin)
 	 */

@@ -591,7 +591,7 @@ function mv_semantic_stream_desc( & $mvTitle, & $stream ) {
 	return $out;
 }
 function do_bill_insert( $bill_key ) {
-	print "not yet implemented\n";
+	//grab bill list with categories from govtrack
 }
 function do_people_insert( $doInterestLookup = false, $forcePerson = '', $force = false ) {
 	global $valid_attributes, $states_ary;

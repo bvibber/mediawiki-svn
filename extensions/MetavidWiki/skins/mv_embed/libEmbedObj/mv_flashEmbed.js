@@ -1643,14 +1643,16 @@ var flashEmbed = {
     pause : function()
     {
     	this.getFLA();
-    	this.parent_pause();
-    	if(this.fla){    	
-	    	js_log("Flash:Pause: " + this.fla.isPaused() );
-	    	if( this.fla['pause'] ){
-	    		if( ! this.fla.isPaused() ){
-	    			js_log('calling plugin pause');    			
-	    			this.fla.pause();    	
-	    		}
+    	if(!this.thumbnail_disp){
+	    	this.parent_pause();
+	    	if(this.fla){    	
+		    	js_log("Flash:Pause: " + this.fla.isPaused() );
+		    	if( this.fla['pause'] ){
+		    		if( ! this.fla.isPaused() ){
+		    			js_log('calling plugin pause');    			
+		    			this.fla.pause();    	
+		    		}
+		    	}
 	    	}
     	}
     },

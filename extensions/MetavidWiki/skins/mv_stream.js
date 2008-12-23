@@ -60,9 +60,10 @@ function mv_load_interface_libs(){
 		//:hoverIntent
 		//http://cherne.net/brian/resources/jquery.hoverIntent.html
 		mvJsLoader.doLoad({
-			'$j.autocomplete':'jquery/plugins/jquery.autocomplete.js',
-			'$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js',
-			'$j.ui.resizable':'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js'
+			'$j.autocomplete'	: 'jquery/plugins/jquery.autocomplete.js',
+			'$j.fn.hoverIntent'	: 'jquery/plugins/jquery.hoverIntent.js',
+			'$j.ui.resizable'	: 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
+			'mvClipEdit'		: 'libSequencer/mv_clipedit.js'
 	  	},function(){
 	  		//now extend draggable
 	  		mvJsLoader.doLoad({
@@ -1012,47 +1013,6 @@ function do_video_mvd_update(mvd_id){
 		});				
 	}
 }
-function do_video_time_update(start_time, end_time, mvd_id)	{
-	if(mv_lock_vid_updates==false){
-		//update the vid title:
-		$j('#mv_videoPlayerTime').html( start_time + ' to ' + end_time );
-        var ebvid = $j('#embed_vid').get(0);
-        if(ebvid.isPaused())
-            ebvid.stop();
-		$j('#embed_vid').get(0).updateVideoTime(start_time, end_time);
-		do_update_thumb(mvd_id, start_time);
-	}
-}
-function do_update_thumb(mvd_id, start_time){
-	//set via mvd
-	if(mvd_id){
-		if($j('#mv_fd_mvd_'+mvd_id).attr('image_url')!=$j('#embed_vid').get(0).thumbnail){
-			$j('#embed_vid').get(0).updateThumbnail($j('#mv_fd_mvd_'+mvd_id).attr('image_url'));
-			return ;
-		}
-	}
-	//else set via org_thum_src
-	if( $j('#embed_vid').get(0).org_thum_src.indexOf('?')!=-1){
-		var url =  $j('#embed_vid').get(0).org_thum_src.split('?');
-		var args = Array();
-		var arg_parts = url[1].split('&');
-		for(i in arg_parts){
-			var tmp = arg_parts[i].split('=');
-			args[tmp[0]]=tmp[1];
-		}
-		var new_thumb = url[0]+'?';
-		for(k in args){
-			var v = args[k];
-			if(k!='t'){
-				new_thumb+=k+'='+v+'&';
-			}
-		}
-	 	new_thumb+= 't='+ start_time;
-		//js_log("new thumb:" + new_thumb);
-		if(new_thumb!=$j('#embed_vid').get(0).thumbnail)
-			$j('#embed_vid').get(0).updateThumbnail(new_thumb);
-	}
-}
 function mv_tool_disp(tool_id){
 	//set content to loading
 	$j('#mv_tool_cont').html( getMsg('loading_txt') );
@@ -1089,7 +1049,7 @@ function mv_proc_tool_result(tool_id, mv_result){
 		//run any request javascript call backs
 		//do per tool post-req js actions:
 		switch(tool_id){
-			case 'navigate':
+			/*case 'navigate':
 				//set the content payload
   				$j('#mv_tool_cont').html( mv_result['innerHTML']);
 				eval(mv_result['js_eval']);
@@ -1099,7 +1059,7 @@ function mv_proc_tool_result(tool_id, mv_result){
 						'/'+$j('#mv_end_hr_nav').val();
 				});
 				add_adjust_hooks('nav', end_time);
-			break;
+			break;*/
 			case 'search':
 				//load search.js  ... @@todo cleanup path
 				mvJsLoader.doLoad({

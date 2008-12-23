@@ -9,6 +9,7 @@ var wg_content_proivers_config = {
 	},
 	'metavid':{
 		'local':true //this will change the output from [[embed:StreamName]] to [[remoteEmbed:roe_url]]
+					 // you will need to run the mv remoteEmbed extension. 
 	}	
 }
 var wg_local_wiki_api_url = wgServer + wgScriptPath + '/api.php';
@@ -37,7 +38,7 @@ function mv_do_load_wiz(){
 	//show the loading screen:
 	var body_elm = document.getElementsByTagName("body")[0];
 	body_elm.innerHTML = body_elm.innerHTML + ''+		
-		'<div id="modalbox" style="background:#DDD;border:3px solid #666666;'+
+		'<div id="modalbox" style="background:#DDD;border:3px solid #666666;font-size:115%;'+
 			'top:30px;left:20px;right:20px;bottom:30px;position:fixed;z-index:100;">'+
 			
 			'loading external media wizard<blink>...</blink>'+
@@ -71,9 +72,10 @@ function check_for_mv_embed(){
 			'target_id':'modalbox',
 			'profile':'mediawiki_edit',
 			'target_textbox': 'wpTextbox1', 
-			'caret_pos':caret_pos,
+			'caret_pos':caret_pos,			
 			//note selections in the textbox will take over the default query
 			'default_query': wgTitle,
+			'target_title':wgPageName,
 			'cpconfig':wg_content_proivers_config,
 			'local_wiki_api_url': wg_local_wiki_api_url
 		});

@@ -115,6 +115,9 @@ class MV_StreamImage {
 		list( $im_width, $im_height, $ext ) = MV_StreamImage::getSizeType( $req_size );
 		if ( $ext == 'jpg' )header( "Content-type: image/jpeg" );
 		if ( $ext == 'png' )header( "Content-type: image/png" );
+		//set out a long expire: 
+		//keep in the cache for a 90 days: 
+		header('Expires: ' . gmdate('D, d M Y H:i:s', time()+90*24*60*60) . ' GMT');
 		// print "img path: $img_path";
 		// @@todo a redirect to real image (will serv from cache that way) 
 		if ( is_file( $img_path ) ) {
