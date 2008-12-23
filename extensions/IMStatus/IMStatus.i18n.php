@@ -485,6 +485,16 @@ $messages['pt'] = array(
 	'imstatus_or' => 'ou',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'imstatus_syntax' => 'Sintaxă',
+	'imstatus_default' => 'Implicit',
+	'imstatus_example' => 'Exemplu',
+	'imstatus_possible_val' => 'Valori posibile',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв

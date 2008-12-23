@@ -238,6 +238,13 @@ $messages['pt'] = array(
 	'didyoumean-desc' => 'Adiciona ligações a páginas com títulos "semelhantes"',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'didyoumean-desc' => 'Adaugă legături la paginile cu titluri "similare"',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

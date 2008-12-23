@@ -57,10 +57,11 @@ $messages['bcc'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'titlekey-desc' => 'Дапамога ў пошуку па першых літарах назвы',
+	'titlekey-desc' => 'Праграмная забесьпячэньне для падказак па першых літарах назвы ў пошуку',
 );
 
 /** Bosnian (Bosanski)

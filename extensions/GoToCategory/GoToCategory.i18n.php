@@ -59,9 +59,10 @@ $messages['dsb'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
-	'gotocategory-desc' => "Cocher les termes des recherches à l’encontre de la catégorie : nom d'espace pour « Aller » à partir de la fonctionnalité « aller à la page »",
+	'gotocategory-desc' => "Vérifier les termes des recherches envers l'espace de noms « Catégorie: » pour la fonctionnalité « Aller à la page »",
 );
 
 /** Galician (Galego)

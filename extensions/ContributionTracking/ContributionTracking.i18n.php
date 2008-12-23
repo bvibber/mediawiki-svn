@@ -156,15 +156,16 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  * @author Tarmo
  */
 $messages['fi'] = array(
 	'contributiontracking-desc' => 'Lahjoitusseuranta Wikimedian rahankeräykseen.',
 	'contributiontracking' => 'Lahjoitusseuranta',
 	'contrib-tracking-error' => 'Virhe',
-	'contrib-tracking-error-text' => 'Viallinen lomakkeen lähetys',
+	'contrib-tracking-error-text' => 'Lähetetty lomake oli viallinen',
 	'contrib-tracking-submitting' => 'Lähetetään maksujen käsittelyyn...',
-	'contrib-tracking-continue' => 'Jos sinua ei ohjata eteenpäin automaattisesti, paina nappia viimeistelläksesi lahjoituksesi PayPalissa.',
+	'contrib-tracking-continue' => 'Jos sinua ei ohjata eteenpäin automaattisesti, viimeistele lahjoituksesi PayPalissa napsauttamalla.',
 	'contrib-tracking-button' => 'Jatka',
 );
 

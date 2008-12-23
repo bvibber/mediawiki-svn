@@ -155,6 +155,13 @@ $messages['pt'] = array(
 	'mootools12core-desc' => 'Adiciona mootools-1.2-core-yc.js a todas as páginas',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'mootools12core-desc' => 'Adaugă mootools-1.2-core-yc.js la fiecare pagină',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

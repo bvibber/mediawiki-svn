@@ -69,9 +69,10 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  */
 $messages['fi'] = array(
-	'randomimage-desc' => 'Antaa satunnaisen mediatiedoston <tt>&lt;randomimage /&gt;</tt>-tagilla.',
+	'randomimage-desc' => 'Antaa satunnaisen mediatiedoston <tt>&lt;randomimage /&gt;</tt>-elementillä.',
 );
 
 /** French (Français)

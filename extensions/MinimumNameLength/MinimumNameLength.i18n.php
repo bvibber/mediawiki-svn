@@ -314,6 +314,14 @@ $messages['pt'] = array(
 	'minnamelength-desc' => 'Obrigar a um comprimento mínimo do nome de utilizador',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'minnamelength-error' => 'Numele dumneavoastră de utilizator este prea scurt. Lungimea minimă este $1.',
+	'minnamelength-desc' => 'Impune o lungime minimă a numelui de utilizator',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

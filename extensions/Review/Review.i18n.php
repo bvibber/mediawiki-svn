@@ -539,33 +539,34 @@ $messages['gv'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'review_sidebar_title' => 'סקירה',
 	'review-desc' => 'תכונת ה[[Special:Review|אימות]] המשוקמת.',
-	'review_topics' => "# להלן רשימת הנושאים והטווחים עבור הרחבת הסקירה החדשה.
-# כל נושא מוגדר על ידי שורה של חמישה ערכים, מופרדים ב־':' (כל השורות האחרות אינן נכללות).
+	'review_topics' => "# להלן רשימת הנושאים והטווחים עבור הרחבת הסקירה.
+# כל נושא מוגדר על ידי שורה של חמישה ערכים, מופרדים עם ':' (כל השורות האחרות אינן נכללות).
 # הסדר הינו: ערך מספרי (>0), שם, טווח מרבי (>1; 2=yes/no), משמעות הערך הנמוך ביותר (לדוגמה 'bad'), משמעות הערך הגבוה ביותר (לדוגמה 'good').
 1:איכות:5:bad:good
 2:מוכן עבור 1.0:2:no:yes",
 	'review_topic_page' => 'נושאי הסקירה',
 	'review_sidebar_explanation' => "תיבת הסימון הימנית ביותר משמעותה תמיד 'אין דעה'.",
 	'review_save' => 'איחסון הסקירה',
-	'review_your_review' => 'סקירתכם לדף/מהדורה אלו:',
-	'review_sidebar_you_have_other_reviews_for_this_article' => "כבר סיקרתם גרסאות אחרות של דף זה. הדירוגים האחרים שלכם יתמזגו לתוך סיקור זה היכן שבחרת ב־'אין דעה'.",
+	'review_your_review' => 'סקירתכם לדף/גרסה אלה:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "כבר סקרתם גרסאות אחרות של דף זה. הדירוגים האחרים שלכם יתמזגו לתוך סקירה זה במקומות שבחרתם ב'אין דעה'.",
 	'review_page_link' => 'סטטיסטיקת הסקירה',
-	'review_sidebar_final' => 'לנתוני סקירת תצוגת דף זה, עיינו ב$1 שלו',
+	'review_sidebar_final' => 'לנתוני הסקירה של תצוגת הדף הזה, עיינו ב$1 שלו',
 	'review_for_page' => 'סקירת הדף "$1"',
 	'review_for_user' => 'סקירה עבור המשתמש "$1"',
 	'review_error' => 'משהו אינו כשורה!',
 	'review_no_reviews_for_page' => 'נכון לעכשיו אין סקירות עבור "$1".',
-	'review_total_statistics' => 'סך הכל',
-	'review_statistics_left_corner' => 'מהדורה',
-	'review_version_link' => "מהדורה מס' $1",
+	'review_total_statistics' => 'סך הכול',
+	'review_statistics_left_corner' => 'גרסה',
+	'review_version_link' => "גרסה מס' $1",
 	'review_statistic_cell' => 'ממוצע: $1 מתוך $2<br />($4 משתמשים, $5 אנונימיים)',
 	'review_version_statistic_cell' => '$1 מתוך $2',
-	'review_version_reviews_link' => '<small>(סקירות לגירסה)</small>',
+	'review_version_reviews_link' => '<small>(סקירות לגרסה)</small>',
 	'review_concerns_page' => 'סקירה זו מתייחסת לדף "$1".',
 	'review_concerns_user' => 'בנוגע לסקירות שבוצעו על ידי המשתמש "$1".',
 	'review_user_reviews' => '<small>(סקירות שבוצעו על ידי משתמש זה)</small>',

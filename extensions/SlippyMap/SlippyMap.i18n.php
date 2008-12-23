@@ -257,19 +257,20 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'slippymap_desc' => 'מתן האפשרות לשימוש בתגית <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> להצגת מפת OpenLayers רדומה. המפות הן מהאתר [http://openstreetmap.org openstreetmap.org]',
 	'slippymap_latmissing' => 'ערך ה־lat חסר (עבור קו־הרוחב).',
 	'slippymap_lonmissing' => 'ערך ה־lon חסר(עבור קו־האורך).',
-	'slippymap_zoommissing' => 'ערך ה־z חסר (לרמת התקריב).',
-	'slippymap_longdepreciated' => "אנא השתמש ב־'lon' במקום ב־'long' (שם הפרמטר שונה).",
-	'slippymap_widthnan' => "ערך הרוחב (w) '%1' אינו מספר שלם חיובי ותקני",
-	'slippymap_heightnan' => "ערך הגובה (h) '%1' אינו מספר שלם חיובי ותקני",
-	'slippymap_zoomnan' => "ערך התקריב (z) '%1' אינו מספר שלם חיובי ותקני",
-	'slippymap_latnan' => "ערך קו־הרוחב (lat) '%1' אינו מספר תקני",
-	'slippymap_lonnan' => "ערך קו־האורך (lon) '%1' אינו מספר תקני",
+	'slippymap_zoommissing' => 'ערך ה־z חסר (לרמת ההגדלה).',
+	'slippymap_longdepreciated' => "אנא השתמשו ב־'lon' במקום ב־'long' (שם הפרמטר שונה).",
+	'slippymap_widthnan' => "ערך הרוחב (w) '%1' אינו מספר שלם תקין",
+	'slippymap_heightnan' => "ערך הגובה (h) '%1' אינו מספר שלם תקין",
+	'slippymap_zoomnan' => "ערך ההגדלה (z) '%1' אינו מספר שלם תקין",
+	'slippymap_latnan' => "ערך קו־הרוחב (lat) '%1' אינו מספר תקין",
+	'slippymap_lonnan' => "ערך קו־האורך (lon) '%1' אינו מספר תקין",
 	'slippymap_widthbig' => 'ערך הרוחב (w) לא יכול לחרוג מעבר ל־1000.',
 	'slippymap_widthsmall' => 'ערך הרוחב (w) לא יכול לחרוג אל מתחת ל־100',
 	'slippymap_heightbig' => 'ערך הגובה (h) לא יכול לחרוג אל מעבר ל־1000',

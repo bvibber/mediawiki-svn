@@ -191,6 +191,7 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'formatchanges-desc' => 'Reformatează [[Special:RecentChanges|schimbările recente]]',
 	'formatchanges-anonymous' => 'Anonim',
 	'formatchanges-createdby' => 'creat de',
 	'formatchanges-editedby' => 'modificat de',

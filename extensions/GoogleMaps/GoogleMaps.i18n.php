@@ -661,7 +661,7 @@ $wgGoogleMapsMessages['de'] = array(
 	'gm-no-results' => 'Tut mir leid, keine Ergebnisse',
 	'gm-searching' => 'Suche …',
 	'gm-map' => 'Karte',
-	'gm-note' => 'Achtung: Kopiere die Wiki-Syntax in den Artikel (unten), bevor du „Karte laden“, „Speichern“ oder „Vorschau“ klickst!',
+	'gm-note' => 'Achtung: Kopiere die Wiki-Syntax in die Seite (unten), bevor du „Karte laden“, „Speichern“ oder „Vorschau“ klickst!',
 	'gm-instructions' => 'Die nötige Wiki-Syntax um diese Karte zu erzeugen:',
 	'gm-are-you-sure' => 'Bist du sicher?',
 	'gm-clear-all-points' => 'Alle Punkte entfernen',
@@ -1054,12 +1054,13 @@ $wgGoogleMapsMessages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Str4nd
  * @author Tarmo
  */
 $wgGoogleMapsMessages['fi'] = array(
-	'gm-incompatible-browser' => 'Sinun on käytettävä yhteensopivaa selainta nähdäksesi tähän kuuluvan kartan.',
-	'gm-incompatible-browser-link' => 'Napsauta tästä nähdäksesi luettelon yhteensopivista selaimista.',
+	'gm-incompatible-browser' => 'Tässä oleva kartta näkyy vain yhteensopivilla selaimilla.',
+	'gm-incompatible-browser-link' => 'Saat listan yhteensopivista selaimista napsauttamalla tästä.',
 	'gm-no-editor' => 'Valitettavasti selaimesi ei tue interaktiivisia kartanlaatimistoimintoja. Yritä uusinta versiota <a href="http://www.microsoft.com/ie">Internet Explorerista</a> (Windows) tai <a href="http://www.mozilla.org/products/firefox">Firefoxista</a> (Windows, Mac ja Linux).',
 	'gm-balloon-title' => 'Otsikko:',
 	'gm-balloon-link-article' => 'Linkki tälle sivulle (valinnainen):',
@@ -1079,8 +1080,8 @@ $wgGoogleMapsMessages['fi'] = array(
 	'gm-no-results' => 'Ei tuloksia',
 	'gm-searching' => 'etsitään...',
 	'gm-map' => 'Kartta',
-	'gm-note' => 'Huom: muista kopioida tallennettavat asiat alla olevalle sivulle ennen kuin painat "Lataa kartta", "Tallenna" tai "Esikatsele".',
-	'gm-instructions' => 'Alla on Wiki-merkinnät yllä olevan kartan luomiseksi.',
+	'gm-note' => 'Muista kopioida tallennettavat asiat alla olevalle sivulle ennen kuin valitset ”Lataa kartta”, ”Tallenna” tai ”Esikatsele”.',
+	'gm-instructions' => 'Alla on wikikoodi, joka luo yllä olevan kartan.',
 	'gm-are-you-sure' => 'Oletko varma?',
 	'gm-clear-all-points' => 'Poista kaikki pisteet',
 	'gm-refresh-points' => 'Päivitä pisteet',
@@ -1088,7 +1089,7 @@ $wgGoogleMapsMessages['fi'] = array(
 	'gm-height' => 'Korkeus',
 	'gm-scale-control' => 'Mittakaava',
 	'gm-overview-control' => 'Yleiskatsaus',
-	'gm-selector-control' => 'Kartta/satelliittivalitsin',
+	'gm-selector-control' => 'Kartta—satelliitti-valitsin',
 	'gm-zoom-control' => 'Ohjaus',
 	'gm-large' => 'Suuri',
 	'gm-medium' => 'Keskikokoinen',
@@ -1096,14 +1097,14 @@ $wgGoogleMapsMessages['fi'] = array(
 	'gm-no-zoom-control' => 'Ei ole',
 	'gm-yes' => 'Kyllä',
 	'gm-no' => 'Ei',
-	'gm-search-preface' => 'Napsauta karttaa lisätäksesi pisteen tai siirtyäksesi kaupunkiin, maahan, osoitteeseen tai toimipaikkaan:',
-	'gm-geocode-preface' => 'Napsauta karttaa lisätäksesi pisteen tai siirtyäksesi kaupunkiin, maahan tai osoitteeseen:',
-	'gm-no-search-preface' => 'Napsauta karttaa lisätäksesi pisteen.',
+	'gm-search-preface' => 'Lisää piste kartalle napsauttamalla tai siirry kaupunkiin, maahan, osoitteeseen tai toimipaikkaan:',
+	'gm-geocode-preface' => 'Lisää piste kartalle napsauttamalla tai siirry kaupunkiin, maahan tai osoitteeseen:',
+	'gm-no-search-preface' => 'Lisää piste kartalle napsauttamalla.',
 	'gm-search' => 'Hae',
 	'gm-clear-search' => 'tyhjennä hakutulokset',
 	'gm-meters' => 'metriä',
 	'gm-miles' => 'mailia',
-	'gm-editing-path' => 'Napsauta karttaa lisätäksesi lisää pisteitä tähän polkuun.',
+	'gm-editing-path' => 'Lisää pisteitä tähän polkuun napsauttamalla karttaa.',
 	'gm-save-path' => 'Tallenna',
 	'gm-edit-path' => 'lisää pisteitä',
 	'gm-show-path' => 'näytä pisteet',

@@ -242,6 +242,13 @@ $messages['pt'] = array(
 	'searchbox-namespaces' => 'Domínios:',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'searchbox-namespaces' => 'Spaţiu de nume:',
+);
+
 /** Russian (Русский)
  * @author Rubin
  */

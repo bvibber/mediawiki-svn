@@ -1487,6 +1487,11 @@ $messages['ro'] = array(
 	'youtubeauthsub_keywords' => 'Cuvinte cheie',
 	'youtubeauthsub_category' => 'Categorie',
 	'youtubeauthsub_summary' => 'Încărcare video YouTube',
+	'youtubeauthsub_uploading' => 'Videoclipul dumneavoastră este în curs de încărcare.
+Vă rugăm să aveţi răbdare.',
+	'youtubeauthsub_jserror_nokeywords' => 'Vă rugăm să introduceţi cel puţin un cuvânt cheie.',
+	'youtubeauthsub_jserror_notitle' => 'Vă rugăm să introduceţi un titlu pentru videoclip.',
+	'youtubeauthsub_jserror_nodesc' => 'Vă rugăm să introduceţi o descriere pentru videoclip.',
 );
 
 /** Tarandíne (Tarandíne)

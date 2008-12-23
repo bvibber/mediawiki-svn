@@ -764,6 +764,13 @@ $messages['km'] = array(
 	'tasks_logentry' => 'សម្រាប់"[[$1]]"',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'tasks_desc' => 'Ene Zosatz öm Aufjabe ze verwallde.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -1142,6 +1149,7 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'tasks_form_comment' => 'Comentariu',
+	'tasks_sort' => 'Ordonează',
 );
 
 /** Russian (Русский)

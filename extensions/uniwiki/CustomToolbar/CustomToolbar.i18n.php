@@ -873,6 +873,7 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_close' => 'Închide fereastra',
 	'ct_success' => 'Încărcare a fişierului cu succes!',
 	'ct_user_user' => 'Utilizator',
+	'ct_user_tip' => 'Inserează o legătură într-o pagină de utilizator.',
 	'ct_user_sample' => 'Nume de utilizator',
 );
 

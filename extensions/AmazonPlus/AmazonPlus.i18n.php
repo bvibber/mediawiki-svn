@@ -33,6 +33,13 @@ $messages['en'] = array(
 	'amazonplus-cp-jpy' => 'JPY',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'amazonplus-desc' => 'A short description of this extension. Shown in [[Special:Version]]. Do not translate links.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -223,6 +230,13 @@ $messages['km'] = array(
 	'amazonplus-new' => 'ថ្មី',
 	'amazonplus-none' => 'គ្មាន​ផលិតផល​ថតចម្លង​ណាមួយ​ត្រូវ​បាន​ដាក់​លក់​ឡើយ​។',
 	'amazonplus-cp-none' => 'គ្មាន',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'amazonplus-desc' => 'Dä Zosatz met ööhndlesch Müjjeleschkeite zom Enstelle zeijsch Date fun <i lang="en">Amazon</i> aan.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

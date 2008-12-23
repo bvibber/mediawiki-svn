@@ -385,6 +385,7 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'userimages-desc' => 'Generează galerii de imagini încărcate de utilizatori cu <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Imagini încărcate de $1',
 	'userimages-noname' => 'Nume de utilizator nevalid sau nespecificat.',
 	'userimages-noimages' => '$1 nu a încărcat imagini.',

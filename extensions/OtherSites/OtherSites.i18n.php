@@ -200,6 +200,13 @@ $messages['pt'] = array(
 	'othersites' => 'Outros sites',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'othersites' => 'Alte situri',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

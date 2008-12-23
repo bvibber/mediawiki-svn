@@ -299,6 +299,13 @@ $messages['pt'] = array(
 	'donationform-submit' => 'Doe pelo PayPal',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'donationform-submit' => 'Donează via PayPal',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

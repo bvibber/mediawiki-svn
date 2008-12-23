@@ -142,6 +142,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Tarmo
  */
 $messages['fi'] = array(
@@ -149,8 +150,8 @@ $messages['fi'] = array(
 	'dplforum-by' => 'tehnyt',
 	'dplforum-edited' => ' - Viimeksi muokattu',
 	'dplforum-never' => 'Ei koskaan',
-	'dplforum-toofew' => 'DPL-forum: Liian vähän kategorioita!',
-	'dplforum-toomany' => 'DPL-forum: Liian paljon kategorioita!',
+	'dplforum-toofew' => 'DPL-forum: Liian vähän luokkia!',
+	'dplforum-toomany' => 'DPL-forum: Liian paljon luokkia!',
 );
 
 /** French (Français)

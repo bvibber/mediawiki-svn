@@ -226,12 +226,13 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Jaakonam
+ * @author Nike
  * @author Tarmo
  */
 $messages['fi'] = array(
 	'lookupuser' => 'Katso käyttäjän tiedot',
 	'lookupuser-desc' => '[[Special:LookupUser|Hakee tietoja]] käyttäjästä, kuten sähköpostiosoitteen ja tunnuksen.',
-	'lookupuser-intro' => 'Syötä käyttäjätunnus nähdäksesi tämän asetukset',
+	'lookupuser-intro' => 'Anna käyttäjätunnus, jonka asetukset haluat nähdä.',
 	'lookupuser-nonexistent' => 'Virhe: Tunnusta ei ole olemassa',
 	'lookupuser-authenticated' => 'tunnistettu osoite $1',
 	'lookupuser-not-authenticated' => 'ei tunnistettu',

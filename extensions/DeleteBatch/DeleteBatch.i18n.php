@@ -527,7 +527,7 @@ $messages['kri'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'deletebatch-desc' => 'Extension description displayed on [[Special:Version]].',
+	'deletebatch-desc' => 'En [[Special:DeleteBatch|Aanzahl Sigge fottschmiiße]]',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

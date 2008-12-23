@@ -583,6 +583,13 @@ Os responsáveis por este site não podem ser responsabilizados pelo conteúdo d
 	'talkhere-collapse' => 'esconder editor',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'talkhere-addcomment' => 'adaugă comentariu',
+);
+
 /** Russian (Русский) */
 $messages['ru'] = array(
 	'talkhere-foottext' => 'Вы можете оставить свои комментиии к этой статье в нижней части страницы.

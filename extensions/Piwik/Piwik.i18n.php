@@ -307,6 +307,15 @@ $messages['pt'] = array(
 	'piwik-browsers' => 'Browsers',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'piwik-lastvisits' => 'Ultimele vizite',
+	'piwik-countries' => 'Ţări',
+	'piwik-browsers' => 'Browsere',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

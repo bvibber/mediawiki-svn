@@ -103,14 +103,15 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'shareduserrights' => 'ניהול הרשאות משתמשים שיתופיות',
+	'shareduserrights' => 'ניהול הרשאות משתמש משותפות',
 	'gblrights-desc' => '[[Special:SharedUserRights|ניהול הרשאות משתמשים כלליות]] בקלות',
 	'gblrights-logpage' => 'יומן ההרשאות הכלליות',
 	'gblrights-pagetext' => 'זהו יומן המציג את כל השינויים שבוצעו לטבלת ההרשאות הכלליות של משפחת הוויקי',
-	'gblrights-rights-entry' => 'החברות הכללית של הקבוצה עבור $1 שונו מ־$2 ל־$3',
+	'gblrights-rights-entry' => 'שינה את ההרשאות הכלליות של $1 מ־$2 ל־$3',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -123,6 +123,13 @@ $messages['nl'] = array(
 	'htmlets-desc' => 'Voegt de tag <tt><nowiki><htmlet></nowiki></tt> toe om HTML snippets uit bestanden te kunnen gebruiken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'htmlets-desc' => 'Lèt deg nytta HTML-fragment frå filer ved bruk av merket <tt><nowiki><htmlet></nowiki></tt>',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

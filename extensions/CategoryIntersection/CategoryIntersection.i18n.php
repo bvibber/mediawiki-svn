@@ -365,6 +365,9 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'categoryintersection' => 'Intersecţia categoriilor',
+	'categoryintersection-desc' => 'Menţine un tabel cu valori hash pentru [[Special:CategoryIntersection|intersecţiile categoriilor]] dintr-o pagină',
+	'categoryintersection-doit' => 'Afişează paginile în toate aceste categorii',
+	'categoryintersection-maxcategories' => 'Numărul maxim permis de categorii intersectante este $1.',
 	'categoryintersection-results' => 'Căutarea a returnat $1 {{PLURAL:$1|rezultat|rezultate}}.',
 );
 

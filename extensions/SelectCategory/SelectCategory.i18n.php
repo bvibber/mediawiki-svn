@@ -152,12 +152,13 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'selectcategory-title' => 'בחירת קטגוריות',
 	'selectcategory-desc' => 'מתן האפשרות למשתמש לבחור מקטגוריות קיימות בעת עריכת דף.',
-	'selectcategory-subtitle' => 'Shift-לחיצת עכבר לבחירת מספר רשומות עוקבות, Ctrl-לחיצת עכבר לבחירת מספר רשומות לא עוקבות.',
+	'selectcategory-subtitle' => 'השתמשו ב־Shift בזמן הלחיצה על העכבר כדי לבחור מספר רשומות עוקבות, והשתמשו ב־Ctrl בזמן לחיצת העכבר כדי לבחור מספר רשומות לא עוקבות.',
 );
 
 /** Hindi (हिन्दी)

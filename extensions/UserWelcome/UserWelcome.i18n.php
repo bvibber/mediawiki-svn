@@ -175,6 +175,7 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jack Phoenix
  */
 $messages['fi'] = array(
@@ -182,7 +183,7 @@ $messages['fi'] = array(
 	'mp-welcome-upload' => 'Tallenna',
 	'mp-welcome-edit' => 'Muokkaa',
 	'mp-welcome-points' => '$1 pistettä',
-	'mp-welcome-needed-points' => 'Päästäksesi tasolle <b><a href="$1">$2</a></b>, ansaitse <i>$3</i> pistettä lisää!',
+	'mp-welcome-needed-points' => 'Päästäksesi tasolle <b><a href="$1">$2</a></b>, ansaitse <i>$3</i> {{PLURAL:$3|piste|pistettä}} lisää!',
 	'mp-welcome-logged-in' => 'Hei $1',
 	'mp-requests-title' => 'Pyynnöt',
 	'mp-requests-message' => 'Sinulla on seuraavat pyynnöt.',

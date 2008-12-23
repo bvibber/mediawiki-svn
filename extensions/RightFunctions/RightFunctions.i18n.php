@@ -104,10 +104,11 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'rightfunctions-desc' => 'פונקציות תגיות מבוססות הרשאות',
+	'rightfunctions-desc' => 'הוראות תנאי מבוססות הרשאות',
 	'rightfunctions-rest1' => '$1 $2',
 	'rightfunctions-rest2' => '$1 $2$5 $3 $4',
 	'rightfunctions-rest3' => '$1 $2$7 $3 $4$7 $5 $6',

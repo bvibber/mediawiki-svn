@@ -142,6 +142,13 @@ $messages['oc'] = array(
 	'rights-userrights-global' => "Gerir los dreches d'utilizaires globals",
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'gur-rightslog-name' => 'Jurnal drepturi globale',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

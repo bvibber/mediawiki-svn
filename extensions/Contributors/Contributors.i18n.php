@@ -969,6 +969,7 @@ $messages['rm'] = array(
  */
 $messages['ro'] = array(
 	'contributors' => 'Contribuitori',
+	'contributors-desc' => 'Rezumă principalii contribuitori la o pagină',
 	'contributors-toolbox' => 'Contribuitori principali',
 	'contributors-legend' => 'Afişează contribuitorii principali la o pagină',
 	'contributors-target' => 'Titlu:',

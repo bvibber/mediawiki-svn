@@ -321,6 +321,13 @@ $messages['pt'] = array(
 	'doublewiki-desc' => 'Apresenta uma página e a sua tradução de outro wiki em duas colunas da mesma página',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'doublewiki-desc' => 'Arată o pagină şi traducerea sa dintr-un alt wiki pe două coloane pe aceeaşi pagină',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

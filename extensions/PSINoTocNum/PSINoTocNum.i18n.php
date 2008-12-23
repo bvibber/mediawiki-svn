@@ -173,6 +173,13 @@ $messages['pt'] = array(
 	'psinotocnum-desc' => 'Nova palavra mágica "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'psinotocnum-desc' => 'Cuvânt magic nou "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

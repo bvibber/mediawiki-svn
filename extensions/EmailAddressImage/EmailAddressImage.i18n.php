@@ -210,6 +210,13 @@ $messages['pt'] = array(
 	'emailaddressimage-desc' => 'Adiciona <tt>&lt;email&gt;</tt> para apresentar um endereço de e-mail como imagem',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'emailaddressimage-desc' => 'Adaugă <tt>&lt;email&gt;</tt> pentru a afişa o adresă de e-mail ca imagine',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

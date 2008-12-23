@@ -2985,6 +2985,55 @@ $messages['tg-cyrl'] = array(
 	'oversight-header' => 'Дар зер феҳристе аз нусхаҳои, ки ба тозагӣ аз диди умум барои ҳамеша пинҳон шударо мебинед. Мунташир кардани ин иттилоот метавонад ба натиҷаи аз даст додани ҳамешагии ихтиёроти шумо оварда расонад.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'hiderevision' => 'Pamalagiang itago ang mga pagbabago',
+	'hiderevision-desc' => 'Itago ang bawat mga pagbabago mula sa lahat ng mga tagagamit dahil sa mga kadahilanang legal, atbp.',
+	'group-oversight' => 'Mga tagapagingat-tago',
+	'group-oversight-member' => 'tagapagingat-tago',
+	'grouppage-oversight' => '{{ns:project}}:Tagapagingat-tago',
+	'right-oversight' => 'Tingnan ang isang dating nakatagong pagbabago',
+	'right-hiderevision' => "Suriing muli at ibalik ang mga pagbabagong nakatago mula sa mga ''sysop''",
+	'hiderevision-prompt' => 'Ang tatanggaling bilang ng pagbabago:',
+	'hiderevision-continue' => 'Magpatuloy',
+	'hiderevision-text' => "Dapat na gamitin '''lamang''' ito sa sumusunod na mga pagkakataon:
+* Hindi naaangkop na mga kabatirang pansarili
+*: ''mga adres ng tirahan at mga bilang na pangtelepono, mga bilang na pangkaseguruhang panlipunan, atbp''
+
+Magdurulot ng pagkawala ng mga karapatan ang pangaabuso sa sistemang ito.'''
+
+Hindi makikita ninuman ang mga tinanggal na mga bagay sa pamamagitan ng websayt, subalit nakatala ang mga pagbura at maibabalik sa kaparaanang kinakamay ng isang tagapangasiwa ng kalipunan ng dato kung sakaling magkamali ka.",
+	'hiderevision-reason' => 'Dahilan (itatala bilang pribado):',
+	'hiderevision-submit' => 'Pamalagiang itago ang datong ito',
+	'hiderevision-tab' => 'Itago ang pagbabago',
+	'hiderevision-link' => 'Nakatagong mga ambag ng tagagamit',
+	'hiderevision-norevisions' => 'Walang tinukoy na mga pagbabagong buburahin.',
+	'hiderevision-noreason' => 'Kailangan mong ilarawan ang dahilan para sa pagtatanggal na ito.',
+	'hiderevision-status' => 'Pagbabagong $1: $2',
+	'hiderevision-success' => 'Matagumpay na nasinop (naarkibo) at nabura.',
+	'hiderevision-error-missing' => 'Hindi natagpuan sa kalipunan ng dato.',
+	'hiderevision-error-current' => 'Hindi mabura ang pinakahuling pagbabago sa isang pahina.
+Ibalik muna ang pagbabagong ito.',
+	'hiderevision-error-delete' => 'Hindi masinop o mailagay sa arkibo: nabura na ba ito dati?',
+	'hiderevision-archive-status' => 'Binurang pagbabago mula sa $1: $2',
+	'oversight-nodiff' => 'Hindi mabalikan ang bakas ng mga pagbabago dahil sa kasalukuyang walang dating pagbabago para sa pahina. Maaaring:
+*Nabura na ang pahina
+*Ang nakatagong pagbabagong ito ang unang pagbabago',
+	'oversight-log-hiderev' => 'tinanggal ang isang pagbabago mula sa $1',
+	'oversight' => 'Tagapagingat-tago',
+	'oversight-view' => 'Mga detalye',
+	'oversight-difference' => '(Pagkakaiba mula sa dating natitirang pagbabago)',
+	'oversight-prev' => 'Huling dati nang pagbabago',
+	'oversight-hidden' => 'Nakatagong pagbabago',
+	'oversight-header' => 'Nasa ibaba ang isang talaan ng mga pagbabago na kamakailang pampamalagiang nakatago mula sa pagtanaw ng madla/publiko,
+Magreresulta/Hahantong ang paglalabas ng kabatirang (impormasyon) ito sa pagkawala ng mga karapatang pangtagapagingat-tago.',
+	'oversight-legend' => 'Maghanap sa talaan ng mga pagtatago ng pagbabago',
+	'oversight-oversighter' => 'Tagapagingat-tago:',
+	'oversight-offender' => 'Ang nagkamali:',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  * @author Runningfridgesrule

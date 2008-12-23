@@ -199,6 +199,13 @@ $messages['pt'] = array(
 	'googleadsense-desc' => 'Adiciona o [http://www.google.com/adsense Google AdSense] à barra lateral',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'googleadsense-desc' => 'Adaugă [http://www.google.com/adsense Google AdSense] la bara laterală',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

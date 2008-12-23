@@ -142,6 +142,13 @@ $messages['pt'] = array(
 	'regexfunctions-desc' => 'funções do analisador (parser) para expressões regulares',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'regexfunctions-desc' => 'Funcţii de parsare a expresiilor regulate',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

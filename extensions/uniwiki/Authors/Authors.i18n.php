@@ -188,6 +188,7 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'authors-desc' => 'Adaugă o listă de contribuitori la sfârşitul paginilor',
 	'authors_authors' => 'Autori',
 	'authors_anonymous' => 'Anonim',
 );

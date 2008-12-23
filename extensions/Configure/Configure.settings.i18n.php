@@ -2669,6 +2669,17 @@ $messages['ps'] = array(
 	'configure-setting-wgSitename' => 'د وېبڅي نوم',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'configure-setting-wgMediaHandlers-key' => 'Tip MIME',
+	'configure-setting-wgLanguageCode' => 'Codul limbii sitului',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Titlul paginii',
+	'configure-setting-wgExtraLanguageNames-key' => 'Codul limbii',
+	'configure-setting-wgExtraLanguageNames-value' => 'Nume',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -108,10 +108,11 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'charinsert-desc' => 'Mahdollistaa JavaScript-laatikon luomisen [[MediaWiki:Edittools|erikoismerkkien syöttämiseksi]].',
+	'charinsert-desc' => 'Mahdollistaa [[MediaWiki:Edittools|erikoismerkkien syöttämisen]] JavaScript-laatikon avulla.',
 );
 
 /** French (Français)

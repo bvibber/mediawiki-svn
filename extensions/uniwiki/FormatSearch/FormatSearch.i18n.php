@@ -140,6 +140,13 @@ $messages['pt'] = array(
 	'formatsearch-desc' => 'Limpa a página de resultados de pesquisa',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'formatsearch-desc' => 'Curăţă pagina cu rezultatele căutării',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

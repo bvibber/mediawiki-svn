@@ -74,9 +74,10 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  */
 $messages['fi'] = array(
-	'stringfunctions-desc' => 'Parantaa parseria merkkijonojen käsittelytoiminnoilla.',
+	'stringfunctions-desc' => 'Laajentaa jäsennintä merkkijonojen käsittelyyn sopivilla funktioilla.',
 );
 
 /** French (Français)
@@ -182,6 +183,13 @@ $messages['oc'] = array(
  */
 $messages['pt'] = array(
 	'stringfunctions-desc' => 'Acrescenta funções de strings ao analisador (parser)',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'stringfunctions-desc' => 'Îmbunătăţeşte parserul cu funcţii pe şiruri',
 );
 
 /** Russian (Русский)

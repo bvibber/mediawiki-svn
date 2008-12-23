@@ -591,6 +591,30 @@ $messages['lb'] = array(
 	'disabledusers-summary' => 'Dëst ass eng Lëscht vun den, iwwer PasswordReset, deaktivéierte Benotzer.',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'passwordreset' => 'Wachwaord obbenuuts insjtèlle',
+	'passwordreset-desc' => "Duid 'n [[Speciaal:PasswordReset|speciaal pagina]] bie om wachwaorde van gebroekers obbenuuts in te sjtèlle - hieveur is 't rech 'passwordreset' nudig",
+	'passwordreset-invalidusername' => 'Verkierde gebroeker',
+	'passwordreset-emptyusername' => 'Gebroeker neet ingegeve',
+	'passwordreset-nopassmatch' => 'De wachwäörd kómme neet euverein',
+	'passwordreset-badtoken' => 'Ongeljig bewèrkingstoken',
+	'passwordreset-username' => 'Gebroekersnaam:',
+	'passwordreset-newpass' => 'Nuuj wachwaord',
+	'passwordreset-confirmpass' => 'Bevestig wachwaord:',
+	'passwordreset-submit' => 'Wachwaord obbenuuts insjtèlle',
+	'passwordreset-success' => 'Wachwaord veur gebroekersnómmer $1 is obbenuuts ingesjtèld',
+	'passwordreset-disableuser' => 'Gebroeker deaktivere?',
+	'passwordreset-disableuserexplain' => "(sjtèlt 'ne foute wachwaordhash in - gebroeker kin neet aanmelje)",
+	'passwordreset-disablesuccess' => 'Gebroeker is gedeaktiveerd (gebroekersnómmer $1)',
+	'passwordreset-accountdisabled' => 'Gebroeker is gedeaktiveerd',
+	'disabledusers' => 'Gedeaktiveerde gebroekers',
+	'disabledusers-summary' => "Dit is 'n lies van gebroekers die gedeaktiveerd zien via PasswordReset",
+	'right-passwordreset' => "Wachwaord van 'ne gebroeker obbenuuts insjtèlle ([[Speciaal:PasswordReset|speciaal pagina]])",
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
@@ -858,7 +882,18 @@ $messages['rm'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'passwordreset-username' => 'Nume de utilizator',
+	'passwordreset' => 'Resetare parolă',
+	'passwordreset-invalidusername' => 'Nume de utilizator incorect',
+	'passwordreset-emptyusername' => 'Nume de utilizator gol',
+	'passwordreset-nopassmatch' => 'Parolele nu sunt identice',
+	'passwordreset-username' => 'Nume de utilizator:',
+	'passwordreset-newpass' => 'Parolă nouă:',
+	'passwordreset-confirmpass' => 'Confirmare parolă:',
+	'passwordreset-submit' => 'Resetează parola',
+	'passwordreset-success' => 'Parola a fost resetată pentru ID-ul de utilizator: $1',
+	'passwordreset-disableuser' => 'Dezactivare cont de utilizator?',
+	'passwordreset-accountdisabled' => 'Contul a fost dezactivat',
+	'disabledusers' => 'Utilizatori dezactivaţi',
 );
 
 /** Russian (Русский)

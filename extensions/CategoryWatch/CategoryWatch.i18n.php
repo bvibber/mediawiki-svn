@@ -248,7 +248,7 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'categorywatch-desc' => 'Deit aan de Oppassleß noch aanhange, dat mer övver Änderunge aan de Leß met Sigge en en Saachjrop Bescheid kritt.',
-	'categorywatch-emailbody' => 'Dach $1,
+	'categorywatch-emailbody' => 'Daach $1,
 
 aam $6 öm $7 Uhr hät uns Metmaacher "$4"
 $5.
@@ -349,6 +349,20 @@ Ta wiadomość ma poinformować, że $3 użytkownik $4 $5.',
 	'categorywatch-catmoveout' => 'przeniósł $1 z kategorii $2 do $3',
 	'categorywatch-catadd' => 'dodał $1 do kategorii $2',
 	'categorywatch-catsub' => 'usunął $1 z kategorii $2',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'categorywatch-desc' => 'Extinde funcţionalitatea listei de urmărire pentru a include notifcări privind modificările categoriilor urmărite',
+	'categorywatch-emailbody' => 'Bună $1, ai primit acest mesaj pentru că urmăreşti categoria "$2".
+Prin acest mesaj te anunţăm că la $3 utilizatorul $4 $5.',
+	'categorywatch-emailsubject' => 'Activitatea privind categoria urmărită "$1"',
+	'categorywatch-catmovein' => 'a mutat $1 în categoria $2 din $3',
+	'categorywatch-catmoveout' => 'a mutat $1 din categoria $2 în $3',
+	'categorywatch-catadd' => 'a adăugat $1 în categoria $2',
+	'categorywatch-catsub' => 'a eliminat $1 din categoria $2',
 );
 
 /** Tarandíne (Tarandíne)

@@ -798,6 +798,7 @@ $messages['pt'] = array(
 $messages['ro'] = array(
 	'ajax-se-desc' => 'Arată utilizatorii care modifică aceeaşi pagină',
 	'ajax-se-title' => 'Modificare curentă:',
+	'ajax-se-pending' => 'reîncărcare în aşteptare… (click în această cutie sau începeţi să modificaţi)',
 	'ajax-se-idling' => '(acum $1s)',
 	'ajax-se-pagedoesnotexist' => 'pagina nu există',
 	'ajax-se-userinvalid' => 'Eroare: utilizator incorect',
