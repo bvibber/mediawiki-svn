@@ -1346,7 +1346,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		* Special page main function
 		*/
 		function execute( $par = null ) { # Checked for HTML and MySQL insertion attacks
-			global $wgOut, $wgRequest, $wgUser, $wgTitle;
+			global $wgOut, $wgRequest, $wgUser, $wgTitle, $wgLang;
 			$fname = 'Special::Tasks:execute';
 
 			$out = '';
@@ -1395,7 +1395,9 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					if( $data->num == 0 ) {
 						$out .= wfMsgHTML( 'tasks_you_have_no_assignments' ) . '.' ;
 					} else {
-						$out .= wfMsgExt( 'tasks_see_your_assignments', array( 'escape', 'parsemag' ), $data->num, $link ) ;
+						$out .= wfMsgExt( 'tasks_see_your_assignments',
+							array( 'escape', 'parsemag' ),
+							$wgLang->formatNum( $data->num ), $link ) ;
 					}
 					$out .= '</p>';
 
