@@ -27,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'SecurePasswords',
 	'author'         => 'Ryan Schmidt',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SecurePasswords',
-	'version'        => '1.1',
+	'version'        => '1.1.1',
 	'svn-date'       => '$LastChangedDate$',
 	'svn-revision'   => '$LastChangedRevision$',
 	'description'    => 'Creates more secure password hashes and adds a password strength checker',
@@ -330,7 +330,7 @@ function efSecurePasswordsMessage( &$key, &$useDB, &$langCode, &$transform ) {
 	wfLoadExtensionMessages('SecurePasswords');
 	$key = 'securepasswords-password';
 	$msg = wfMsg( 'securepasswords-valid' ) . ' ';
-	$msg .= wfMsg( 'securepasswords-minlength', $wgValidPasswords['minlength'] );
+	$msg .= wfMsgExt( 'securepasswords-minlength', array( 'parsemag' ), $wgValidPasswords['minlength'] );
 	if( $wgValidPasswords['lowercase'] ) {
 		$msg .= ', ' . wfMsg( 'securepasswords-lowercase' );
 	}

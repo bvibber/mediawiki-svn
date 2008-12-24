@@ -10,12 +10,13 @@ $messages = array();
  */
 $messages['en'] = array(
 	'securepasswords-desc' => 'Creates more secure password hashes and adds a password strength checker',
-	'securepasswords-valid' => 'Your password is invalid or too short. It must:',
-	'securepasswords-minlength' => 'be at least $1 characters long',
+	'securepasswords-valid' => 'Your password is invalid or too short.
+It must:',
+	'securepasswords-minlength' => 'be at least $1 {{PLURAL:$1|character|characters}} long',
 	'securepasswords-lowercase' => 'contain at least 1 lowercase letter',
 	'securepasswords-uppercase' => 'contain at least 1 uppercase letter',
 	'securepasswords-digit' => 'contain at least 1 digit',
-	'securepasswords-special' => 'contain at least 1 special character (Special characters are: $1)',
+	'securepasswords-special' => 'contain at least 1 special character (special characters are: $1)',
 	'securepasswords-username' => 'be different from your username',
 	'securepasswords-word' => 'not be a word',
 );
