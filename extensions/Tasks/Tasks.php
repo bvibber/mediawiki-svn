@@ -1362,7 +1362,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					if( count( $tasks ) == 0 ) {
 						$out .= '<p>' . wfMsgHTML( 'tasks_you_have_no_assignments' ) . '</p>';
 					} else {
-						$out .= '<h2>' . wfMsgHTML( 'tasks_my_assignments' ) . "</h2>\n"
+						$out .= '<h2>' . wfMsgExt( 'tasks_my_assignments', array( 'escape', 'parsemag' ), count( $tasks ) ) . "</h2>\n"
 						      . '<br /><table border="1" cellspacing="1" cellpadding="2">'
 						      . '<tr>' . wfTaskExtensionGetTableHeader( true ) . '</tr>'
 						;
@@ -1395,7 +1395,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 					if( $data->num == 0 ) {
 						$out .= wfMsgHTML( 'tasks_you_have_no_assignments' ) . '.' ;
 					} else {
-						$out .= wfMsgHTML( 'tasks_see_your_assignments', $data->num, $link ) ;
+						$out .= wfMsgExt( 'tasks_see_your_assignments', array( 'escape', 'parsemag' ), $data->num, $link ) ;
 					}
 					$out .= '</p>';
 
