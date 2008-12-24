@@ -1,7 +1,6 @@
 //add media wizard integration for mediaWiki
 
 /* config */
-var mv_embed_url = 'http://localhost/wiki/extensions/MetavidWiki/skins/mv_embed/mv_embed.js';
 //Setup your content providers (see the remoteSearchDriver::content_providers for all options)
 var wg_content_proivers_config = {
 	'wiki_commons':{
@@ -14,6 +13,8 @@ var wg_content_proivers_config = {
 }
 var wg_local_wiki_api_url = wgServer + wgScriptPath + '/api.php';
 
+//if mv_embed is hosted somewhere other than near by the external_media_wizzard you can define it here: 
+var mv_embed_url = null;
 
 //*code should not have to modify anything below*/
 //check if we are on a edit page:
@@ -47,7 +48,10 @@ function mv_do_load_wiz(){
 		'<div id="mv_overlay" style="background:#000;cursor:wait;height:100%;left:0;position:fixed;'+
 			'top:0;width:100%;z-index:5;filter:alpha(opacity=60);-moz-opacity: 0.6;'+
 			'opacity: 0.6;"/>';
-							
+	//get mv_embed path from _this_ file location: 
+	if(!mv_embed_url)
+		mv_embed_url = getMvEmbedUrl();
+	
 	//inject mv_embed
 	if( typeof MV_EMBED_VERSION == 'undefined'){
 		var e = document.createElement("script");
@@ -80,6 +84,16 @@ function check_for_mv_embed(){
 			'local_wiki_api_url': wg_local_wiki_api_url
 		});
 	}
+}
+function getMvEmbedUrl(){
+	for(var i in document.getElementsByTagName('script')){
+		var s = document.getElementsByTagName('script')[i];
+		if( s.src.indexOf('external_media_wizard.js') != -1 ){
+			//use the path: 
+			return s.src= s.src.replace('external_media_wizard.js', '') + 'mv_embed/mv_embed.js';
+		}
+	}
+	alert('Error: could not find mv_embed path');
 }
 /*once we modify the dom we lose the text selection :( so here are some get pos functions  */
 function getTextCusorStartPos(o){		

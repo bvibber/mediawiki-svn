@@ -72,7 +72,7 @@ remoteSearchDriver.prototype = {
 		'wiki_commons':{
 			'enabled':1,
 			'checked':1,
-			'd'		:0,
+			'd'		:1,
 			'title'	:'Wikipedia Commons',			
 			'desc'	: 'Wikimedia Commons is a media file repository making available public domain '+
 			 		'and freely-licensed educational media content (images, sound and video clips) to all.',
@@ -88,7 +88,7 @@ remoteSearchDriver.prototype = {
 		'metavid':{
 			'enabled':1,
 			'checked':1,
-			'd'		:1,			
+			'd'		:0,			
 			'title'	:'Metavid.org',
 			'homepage':'http://metavid.org',
 			'desc'	: 'Metavid hosts thousands of hours of US house and senate floor proceedings',
@@ -97,8 +97,9 @@ remoteSearchDriver.prototype = {
 			'local'	:false,			//if local set to true we can use local 
 			'resource_prefix': 'MV_', //what prefix to use on imported resources
 			
-			'local_copy': true //if local_copy set to true if we should download assets 
-							   //(else just remote embed copy) 
+			'local_copy': true, //if local_copy set to true if we should download assets 
+							   //(else just remote embed the metavid stream (recomended) ) 
+			'target_source_id':'mv_ogg_low_quality' // the source id/name to import
 		},
 		'archive_org':{
 			'enabled':0,
@@ -277,7 +278,8 @@ remoteSearchDriver.prototype = {
 	drawTabs: function(){
 		var _this = this;
 		//add the tabs to the rsd_results container: 
-		var o= '<ul class="rsd_cp_tabs" style="margin: 1em 0 0 1em;position:absolute;top:42px;padding:0;">'; //no idea why margin does not overwrite from the css
+		var o='<div class="rsd_tabs_container" style="position:absolute;top:53px;width:100%;left:12px;">';
+		o+= '<ul class="rsd_cp_tabs" style="margin: 0 0 0 0;position:absolute;top:0px;padding:0;">'; //no idea why margin does not overwrite from the css
 			o+='<li id="rsd_tab_combined" ><img src="' + mv_embed_path + 'skins/'+mv_skin_name+ '/remote_search/combined_tab.png"></li>';		 			 	
 			for(var cp_id in  this.content_providers){
 				var cp = this.content_providers[cp_id];
@@ -287,6 +289,7 @@ remoteSearchDriver.prototype = {
 				}
 			}
 		o+='</ul>';		
+		o+='</div>';
 		//outout the resource results holder	
 		o+='<div id="rsd_results" />';				
 		$j('#rsd_results_container').html(o);
@@ -482,9 +485,13 @@ remoteSearchDriver.prototype = {
 			});				
 		}
 		if( mediaType == 'video'){
-			$j('#clip_edit_disp').append('<video id="embed_vid" roe="'+ rObj['roe_url']+'"></video>');	
+			$j('#clip_edit_disp').append(
+				rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})				
+			);	
 			//rewrite by id hanldes getting any libs we are missing: 		
 			rewrite_by_id('embed_vid',function(){
+				//grab any information that we got from the ROE xml or parsed from the media file
+				rObj = rObj.pSobj.getEmbedObjParsedInfo(rObj, 'embed_vid');					
 				//add the resizable to the doLoad request: 
 				loadLibs['$j.ui.resizable']	= 'jquery/jquery.ui-1.5.2/ui/minified/ui.resizable.min.js',
 				mvJsLoader.doLoad( loadLibs,function(){				
@@ -505,9 +512,9 @@ remoteSearchDriver.prototype = {
 			
 			//first check if the resource is not already on this wiki: 
 			//@@todo get the File/Image namespace name:						
-			rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');
+			rObj.target_resource_title = cp.resource_prefix + rObj.titleKey.replace(/File:|Image:/,'');
 			
-			reqObj={'action':'query', titles: _this.cFileNS + ':' + rObj.target_resource_title + '|' + rObj.titleKey};
+			reqObj={'action':'query', titles: _this.cFileNS + ':' + rObj.target_resource_title};
 			do_api_req( reqObj, this.local_wiki_api_url, function(data){	
 				var found_title = false;
 				for(var i in data.query.pages){
@@ -516,40 +523,51 @@ remoteSearchDriver.prototype = {
 						found_title=data.query.pages[i]['title'];
 					}
 				}			
-				if( found_title ){
+				if( found_title ){				
 					js_log("checkImportResource:found title:" + found_title);  
 					//resource is already present (or resource with same name is already present)
-					rObj.target_resource_title = found_title.replace(/File:|Image:/,'');			
+					rObj.target_resource_title = found_title.replace(/File:|Image:/,'');					
+					//@@todo give user option to write over it			
 					cir_callback( rObj );
 				}else{
 					js_log("resource not present: update:"+ _this.cFileNS + ':' + rObj.target_resource_title);
+					
+					//update the rObj with import info
+					rObj.pSobj.updateDataForImport( rObj );
 					
 					//setup the resource description from resource description: 					
 					var base_resource_desc = '{{Information '+"\n"+
 					'|Description= ' + rObj.title + ' imported from ' + '[' + cp.homepage + 
 								 ' ' + cp.title+']' + "\n" +
-					'|Source=' + '[' + rObj.link +' Original Source]'+ "\n";
+					'|Source=' + '[' + rObj.link.replace(/^\s\s*/, '').replace(/\s\s*$/, '') +' Original Source]'+ "\n";
 					
 					if( rObj.author )
-						base_resource_desc+='|Author= US government' +"\n";
+						base_resource_desc+='|Author= ' + rObj.author +"\n";										
 						
 					if( rObj.date )
-						base_resource_desc+='|Date= October 1st 2008' +"\n";
+						base_resource_desc+='|Date=' + rObj.date +"\n";								
 											
 					if( rObj.permission )
-						base_resource_desc+='|Permission=' +"\n";
+						base_resource_desc+='|Permission='+ rObj.permission +"\n";
 						
 					if( rObj.other_versions )
-						base_resource_desc+='|other_versions=' +"\n";
+						base_resource_desc+='|Other_versions=' + rObj.other_versions + "\n";
 											
 					base_resource_desc+='}}';
+					
+					//add in licence template tag: 
+					if( rObj.licence_template_tag )
+						base_resource_desc += "\n" +
+							'== [[Commons:Copyright tags|Licensing]]: ==' +"\n"+
+							'{{' + rObj.licence_template_tag + '}}';
+					
 					$j('#rsd_resource_import').remove();//remove any old resource imports
 					//@@ show user dialog to import the resource
 					$j( '#'+ _this.target_id ).append('<div id="rsd_resource_import" '+ 
 					'style="position:absolute;top:50px;left:50px;right:50px;bottom:50px;background-color:#FFF;border:solid thick red;z-index:3">' +
 						'<h3 style="color:red">Resource: <span style="color:black">' + rObj.title + '</span> needs to be imported</h3>'+
 							'<div id="rsd_preview_import_container" style="position:absolute;width:50%;bottom:0px;left:0px;overflow:auto;top:30px;">' +
-								rObj.pSobj.getEmbedHTML( rObj, {'max_height':'200'} )+ //get embedHTML with small thumb: 
+								rObj.pSobj.getEmbedHTML( rObj, {'max_height':'200','only_poster':true} )+ //get embedHTML with small thumb: 
 								'<br style="clear both">'+
 								'<strong>Resource Page Description:</strong>'+
 								'<div id="rsd_import_desc" syle="display:inline;">'+
@@ -561,7 +579,7 @@ remoteSearchDriver.prototype = {
 								'<strong>Local Resource Title:</strong><br>'+
 								'<input type="text" size="30" value="' + rObj.target_resource_title + '" readonly="true"><br>'+
 								'<strong>Edit WikiText Resource Description:</strong>(will be replaced by forms soon)'+																									
-								'<textarea id="rsd_import_ta" id="mv_img_desc" rows="8" cols="50">'+
+								'<textarea id="rsd_import_ta" id="mv_img_desc" style="width:90%;" rows="8" cols="50">'+
 									base_resource_desc + 
 								'</textarea><br>'+
 								'<input type="checkbox" value="true" id="wpWatchthis" name="wpWatchthis" tabindex="7"/>'+
@@ -642,8 +660,18 @@ remoteSearchDriver.prototype = {
 												cir_callback( rObj );
 											}else{
 												js_log("Error or warning: (did not find: \"" + sstring + ' in output' );
+												pos_etitle = '<h1 class="firstHeading">';
+												var error_txt='';
+												if(data.indexOf(pos_etitle)!=-1){
+													var sp = data.indexOf(pos_etitle) + pos_etitle.length;
+													error_txt = data.substr(sp , 
+																(data.indexOf('</h1>',sp	)-sp)
+															);
+												}
+												//var error_msg = 
 												$j('#rsd_resource_import').html(
 													'<b>error importing asset (we should have better error handling soon)</b><br>'+
+													error_txt + '<br>'+
 													'<a href="#" id="rsd_import_error" >Cancel import</a>'													
 												);
 												$j('#rsd_import_error').click(function(){
@@ -881,6 +909,22 @@ mvBaseRemoteSearch.prototype = {
 	//by default just return the existing image: 
 	getImageObj:function( rObj, size, callback){
 		callback( {'url':rObj.poster} );
+	},
+	getEmbedWikiText:function(rObj){
+		var layout = ( rObj.layout)? rObj.layout:"right"
+		var o= '[[' + this.rsd.cFileNS + ':' + rObj.target_resource_title + '|thumb|'+layout;
+			
+		if(rObj.target_width)
+			o+='|' + rObj.target_width + 'px';
+		
+		if( rObj.inlineDesc ) 
+			o+='|' + rObj.inlineDesc;
+			
+		o+=']]';
+		return o;
+	},
+	updateDataForImport:function( rObj ){
+		return rObj;
 	}
 }
 /*
@@ -911,7 +955,7 @@ metavidSearch.prototype = {
 		_this.loading= 1;
 		js_log('metavidSearch::getSearchResults()');
 		//proccess all options
-		url = this.cp.api_url;
+		var url = this.cp.api_url;
 		//add on the req_param
 		for(var i in this.reqObj){
 			url += '&' + i + '=' + this.reqObj[i];
@@ -922,15 +966,65 @@ metavidSearch.prototype = {
 		do_request(url, function(data){ 
 			//should have an xml rss data object:
 			_this.addRSSData( data , url );
-			//do some metavid specific pos proccessing: 
+			//do some metavid specific pos proccessing on the rObj data: 
 			for(var i in _this.resultsObj){
-				var rObj = _this.resultsObj[i];		
-			}
-			
+				var rObj = _this.resultsObj[i];	
+				var proe = parseUri( rObj['roe_url'] );				
+				rObj['start_time'] = proe.queryKey['t'].split('/')[0];
+				rObj['end_time'] = proe.queryKey['t'].split('/')[1];	
+				//transform the title into a wiki_safe title: 			
+				rObj['titleKey'] = proe.queryKey['stream_name'] + '_' + rObj['start_time'].replace(/:/g,'.') + '_' + rObj['end_time'].replace(/:/g,'.') + '.ogg';						
+			}			
 			//done loading: 
 			_this.loading=0;
 		});
-	}	
+	},
+	getEmbedWikiText:function(rObj, options){
+		//if we are using a local copy do the standard b:  
+		if( this.cp.local_copy == true)
+			return this.parent_getEmbedWikiText(rObj, options);						
+		
+		//if local_copy is false and embed metavid extension is enabled: 
+		
+		return 
+	},
+	getEmbedHTML:function( rObj , options ){
+		var id_attr = (options['id'])?' id = "' + options['id'] +'" ': '';
+		var style_attr = (options['max_width'])?' style="width:'+options['max_width']+'px;"':'';		
+		if(options['only_poster']){
+			return '<img ' + id_attr + ' src="' + rObj['poster']+'" ' + style_attr + '>';	
+		}else{
+			return '<video ' + id_attr + ' roe="' + rObj['roe_url'] + '"></video>';
+		}
+	},	
+	getEmbedObjParsedInfo:function(rObj, eb_id){
+		var sources = $j('#'+eb_id).get(0).media_element.getSources();
+		rObj.other_versions ='*[' + rObj['roe_url'] + ' XML of all Video Formats and Timed Text]'+"\n";
+		for(var i in sources){
+			var cur_source = sources[i];
+			//rObj.other_versions += '*['+cur_source.getURI() +' ' + cur_source.title +']' + "\n";			
+			if( cur_source.id ==  this.cp.target_source_id)
+				rObj['url'] = cur_source.getURI();
+		}
+		js_log('set url to: ' + rObj['url']);
+		return rObj;			
+	},
+	//update rObj for import:
+	updateDataForImport:function( rObj ){
+		rObj['author']='US Government';
+		//convert data to UTC type date:
+		var dateExp = new RegExp(/_([0-9]+)\-([0-9]+)\-([0-9]+)/);	
+		var dParts = rObj.link.match (dateExp);
+		var d = new Date();
+		var year_full = (dParts[3].length==2)?'20'+dParts[3].toString():dParts[3];
+		d.setFullYear(year_full, dParts[1]-1, dParts[2]);	
+		rObj['date'] = 	d.toDateString();		
+		rObj['licence_template_tag']='PD-USGov';
+				
+		js_log('url is: '+rObj.url);				
+		
+		return rObj;
+	}
 }
 
 var mediaWikiSearch = function( initObj ) {		
@@ -1078,21 +1172,12 @@ mediaWikiSearch.prototype = {
 	getEmbedWikiText: function( rObj ){		
 			//set default layout to right justified
 			var layout = ( rObj.layout)? rObj.layout:"right"
-			//if crop is null do simple output: 
-			if( rObj.crop == null){
-				var o= '[[' + this.rsd.cFileNS + ':' + rObj.target_resource_title + '|thumb|'+layout;
-				
-				if(rObj.target_width)
-					o+='|' + rObj.target_width + 'px';
-				
-				if( rObj.inlineDesc ) 
-					o+='|' + rObj.inlineDesc;
-					
-				o+=']]';
-				return o;
-			} 						
+			//if crop is null do base output: 
+			if( rObj.crop == null)
+				return this.parent_getEmbedWikiText( rObj );		
+									
 			//using the preview crop template: http://en.wikipedia.org/wiki/Template:Preview_Crop
-			//should be replaced with server side cropping 
+			//@@todo should be replaced with server side cropping 
 			return '{{Preview Crop ' + "\n" +
 						'|Image   = ' + rObj.target_resource_title + "\n" +
 						'|bSize   = ' + rObj.width + "\n" + 

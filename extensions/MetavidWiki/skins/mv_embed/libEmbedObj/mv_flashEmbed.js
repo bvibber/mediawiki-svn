@@ -1580,7 +1580,7 @@ var flashEmbed = {
     {   
     	var _this = this;
     	js_log('embedFlow: uri:'+ _this.media_element.selected_source.getURI(this.seek_time_sec)
-    			 +' '+ mv_embed_path + 'flowplayer/flowplayer-3.0.1.swf' ) ;
+    			 +"\n"+ mv_embed_path + 'flowplayer/flowplayer-3.0.1.swf' ) ;
     	var flowConfig = { 
 		    clip: { 
 		        url: _this.media_element.selected_source.getURI(this.seek_time_sec), 		         
@@ -1627,6 +1627,11 @@ var flashEmbed = {
     	this.parent_play();      	  	
     	if( this.fla ){	    	
             this.fla.play();			
+            
+            //on a resume make sure volume and opacity are correct 
+            this.fla.setVolume(90);
+        	$f().getPlugin('screen').css({'opacity':'1.0'}); 
+        				
 			setTimeout('$j(\'#'+this.id+'\').get(0).monitor()', 250);
     	}
     },
@@ -1658,7 +1663,11 @@ var flashEmbed = {
 		    	if( this.fla['pause'] ){
 		    		if( ! this.fla.isPaused() ){
 		    			js_log('calling plugin pause');    			
-		    			this.fla.pause();    	
+		    			this.fla.pause();  
+		    			
+		    			//restore volume and opacity 
+		    			this.fla.setVolume(90);
+        				$f().getPlugin('screen').css({'opacity':'1.0'});    	  	
 		    		}
 		    	}
 	    	}
@@ -1681,7 +1690,11 @@ var flashEmbed = {
         if( typeof flash_state == 'undefined' ){
         	 var flash_state = {
         	 	"time" : this.fla.getTime()
-        	 };        	         	
+        	 };        	     
+        	//we are not getting buffered data restore volume and opacity
+        	this.fla.setVolume(90);
+        	$f().getPlugin('screen').css({'opacity':'1.0'});    	
+        	     	
         }else{
 	        //simplification of buffer state ... should move to support returning time rages like:
 	        //http://www.whatwg.org/specs/web-apps/current-work/#normalized-timeranges-object        	

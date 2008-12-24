@@ -23,10 +23,12 @@ function mv_setup_allpage(){
  		_global['$j'] = jQuery.noConflict();
  		js_log('allpage_ did jquery check');
  		
- 		//(@@todo genneralize to a script action taken by the php so its not language specifc) 
-		if(wgCanonicalNamespace=='Sequence' && $j('#ca-edit').hasClass("selected")){
-			mv_do_sequence_edit_swap('seq');
-		}
+ 		if(typeof wgCanonicalNamespace != 'undefined'){
+			//(@@todo genneralize to a script action taken by the php so its not language specifc) 
+			if(wgCanonicalNamespace=='Sequence' && $j('#ca-edit').hasClass("selected")){
+				mv_do_sequence_edit_swap('seq');
+			}
+ 		}
  		
  		var reqLibs = {'$j.fn.autocomplete':'jquery/plugins/jquery.autocomplete.js',
  					   '$j.fn.hoverIntent':'jquery/plugins/jquery.hoverIntent.js'};

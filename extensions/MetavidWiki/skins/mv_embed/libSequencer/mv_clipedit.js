@@ -57,24 +57,28 @@ mvClipEdit.prototype = {
 			'<h3>Edit Video Tools:</h3>' +
 			'<strong>Set in-out points</strong>'+
 			'<table border="0" style="background: transparent; width:94%;height:50px;">'+
-				'<tbody><tr><td width="40">'+
-				'<span style="font-size: small;" id="track_time_start_rsd">' + eb.start_ntp +'</span>'+
-					'</td><td><div style="border: 1px solid black; width: 100%; height: 5px; background-color: #888;" '+
-						'id="container_track_rsd">'+					
-					'<div id="resize_rsd" class="ui-resizable ui-draggable">'+
-					
-					'<div class="ui-resizable-w ui-resizable-handle"'+
-						' id="handle1_rsd" unselectable="on"/>'+	
-						
-					'<div class="ui-resizable-e ui-resizable-handle" '+ 
-						' id="handle2_rsd" unselectable="on"/>'+
-							
-					'<div class="ui-dragSpan" id="dragSpan_rsd" style="cursor: move;"/>'+		
-				'</div>'+
-				'</div>'+
-				'</td><td width="50">'+
-				'<span style="font-size: small;" id="track_time_end_rsd">'+ eb.end_ntp +'</span>'+
-				'</td></tr></tbody>'+
+				'<tr>' +
+					'<td style="width:50px">'+
+						'<span style="font-size: small;" id="track_time_start_rsd">' + eb.start_ntp +'</span>'+
+					'</td>' +
+					'<td>' +
+						'<div style="border: 1px solid black; width: 100%; height: 5px; background-color: #888;" '+
+							'id="container_track_rsd">'+					
+							'<div id="resize_rsd" class="ui-resizable ui-draggable">'+						
+								'<div class="ui-resizable-w ui-resizable-handle"'+
+									' id="handle1_rsd" unselectable="on"/>'+	
+									
+								'<div class="ui-resizable-e ui-resizable-handle" '+ 
+									' id="handle2_rsd" unselectable="on"/>'+
+										
+								'<div class="ui-dragSpan" id="dragSpan_rsd" style="cursor: move;"/>'+		
+							'</div>'+
+						'</div>'+
+					'</td>' +
+					'<td style="width:50px">'+
+						'<span style="font-size: small;" id="track_time_end_rsd">'+ eb.end_ntp +'</span>'+
+					'</td>' +
+				'</tr>' +
 			'</table>'+
 			'<span style="float: left;">'+
 				'<label class="mv_css_form" for="mv_start_hr_rsd"><i>Start time:</i></label>'+
@@ -85,7 +89,7 @@ mvClipEdit.prototype = {
 				'<input name="mv_end_hr_rsd" id="mv_end_hr_rsd" value="' + eb.end_ntp + '" maxlength="8" size="8" class="mv_adj_hr"/>'+
 			'</span>'+
 			'<div style="clear: both;"/>'+		
-			'<input id="mv_preview_clip" type="button" value="Preview In-out points">'+
+			'<input id="mv_preview_clip" type="button" value="Preview/Play In-out points">'+
 				this.getInsertControl()					
 		); 	
 		//setup bindings: 
@@ -99,7 +103,8 @@ mvClipEdit.prototype = {
 		this.applyInsertControlBindings();
 	},
 	getInsertControl:function(){
-		return '<h3>Inline Caption Description</h3>'+				
+		return '<h3>Inline Description</h3>' +
+				'(you can copy and paste from the transcript by clicking on the cc button below the video)'+ 				
 					'<textarea style="width:300px;" id="mv_inline_img_desc" rows="4" cols="30"></textarea><br>'+
 				'<h3>Actions</h3>'+
 				'<input type="button" class="mv_insert_image_page" value="' + getMsg('mv_insert_image_page') + '"> '+				
@@ -170,9 +175,9 @@ mvClipEdit.prototype = {
 		this.applyInsertControlBindings();	
 	},
 	applyVideoAdj:function(){		
-		//update video related keys
-		_this.rObj['titleKey'] = 'Stream:';  
-		_this.rObj['start_time'] = '';
+		//update video related keys		
+		this.rObj['start_time'] = $j('#mv_start_hr_rsd').val();
+		this.rObj['end_time'] = $j('#mv_end_hr_rsd').val();
 	},
 	applyCrop:function(){
 		var _this = this;
@@ -361,8 +366,7 @@ function add_adjust_hooks(mvd_id){
 		drag:function(e, ui){
 			mv_slider_update_stats(mvd_id, true);
 		},
-		stop:function(e,ui){			
-			$j('#resize_'+mvd_id).css('top', 0);					
+		stop:function(e,ui){					
 			do_video_time_update($j('#mv_start_hr_'+mvd_id).val(), $j('#mv_end_hr_'+mvd_id).val() );
 		}
 	});
