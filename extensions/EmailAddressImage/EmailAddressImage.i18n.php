@@ -175,6 +175,13 @@ $messages['nl'] = array(
 	'emailaddressimage-desc' => 'Voegt <tt>&lt;email&gt;</tt> toe om een e-mailadres als afbeelding weer te geven',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'emailaddressimage-desc' => 'Legg til <tt>&lt;email&gt;</tt> for å visa ei e-postadressa som bilete',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

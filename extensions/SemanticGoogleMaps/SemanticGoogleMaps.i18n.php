@@ -95,6 +95,13 @@ $messages['gl'] = array(
 	'semanticgooglemaps-desc' => 'Permite aos usuarios engadir Mapas do Google a páxinas do wiki baseándose en datos estruturados',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'semanticgooglemaps-desc' => 'מתן האפשרות למשתמשים להוספת מפות של גוגל לדפי ויקי בהתבסס על נתונים מבניים',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -123,6 +130,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Koordinate nohkike',
 	'semanticgooglemaps-desc' => 'Määt et müjjelesch, op semantesche Date opjeboute <i lang="en">Google Maps</i> (Landkaate) en et Wiki ennzeboue.',
 );
 
@@ -180,5 +188,13 @@ $messages['sk'] = array(
 $messages['sv'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Kolla upp koordinater',
 	'semanticgooglemaps-desc' => 'Tillåter användare att lägga Google Maps till wikibaserade sidor baserade på strukturerad data',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'semanticgooglemaps_lookupcoordinates' => "Hanapin ang mga tugmaang-pampook (''coordinate'')",
+	'semanticgooglemaps-desc' => 'Nagpapahintulot sa mga tagagamit na makapagdagdag ng mga Mapa ng Google sa mga pahina ng wiki batay sa napagkayariang mga dato',
 );
 

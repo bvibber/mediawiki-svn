@@ -177,8 +177,10 @@ $messages['eo'] = array(
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix
+ * @author Nike
  */
 $messages['fi'] = array(
+	'userwelcome-desc' => 'Lisää <tt>&lt;welcomeUser&gt;</tt>-elementin käyttäjäkohtaisten sosiaalisten tietojen näyttämiseen.',
 	'mp-userlevels-link' => 'Käyttäjätasot',
 	'mp-welcome-upload' => 'Tallenna',
 	'mp-welcome-edit' => 'Muokkaa',
@@ -339,7 +341,7 @@ $messages['km'] = array(
 	'mp-requests-title' => 'សំណើ',
 	'mp-requests-message' => 'អ្នក​មាន​សំណើ​ដូចខាងក្រោម​។',
 	'mp-request-new-message' => 'សារថ្មី',
-	'mp-request-new-award' => '{{PLURAL:$1|award|រង្វាន់}}ថ្មី $1',
+	'mp-request-new-award' => '{{PLURAL:$1|រង្វាន់|រង្វាន់}} ថ្មី $1',
 	'mp-request-new-gift' => '{{PLURAL:$1|អំណោយ|អំណោយ}}ថ្មីចំនួន$1',
 	'mp-request-new-friend' => '{{PLURAL:$1|friend|មិត្តភ័ក្ដិ}}ថ្មី $1',
 );
@@ -349,7 +351,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'userwelcome-desc' => 'Deit dä Befäähl <tt lang="en">&lt;welcomeUser&gt;</tt> en et Wiki, öm bestemmpte Saache övver de Metmaacher un sing Schmölzjes aanzezeije, wann hä ennjelogg eß.',
-	'mp-userlevels-link' => 'Ebene för MEtmaacher',
+	'mp-userlevels-link' => 'Ebene för Metmaacher',
 	'mp-welcome-upload' => 'Huhlaade',
 	'mp-welcome-edit' => 'Ändere',
 	'mp-welcome-points' => '$1 Pungkte',

@@ -480,6 +480,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'profiling-data-count' => 'شمېرل',
 	'profiling-data-time' => 'وخت (ټول)',
 );
 

@@ -36,9 +36,13 @@ riddler|Riddler",
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
 	'vote' => '{{Identical|Vote}}',
+	'vote-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
 	'vote-submit' => '{{Identical|Vote}}',
 	'vote-results-count' => '{{Identical|Count}}',
 	'vote-login-link' => '{{Identical|Log in}}',
@@ -327,6 +331,24 @@ $messages['fa'] = array(
 	'vote-invalid-choice' => 'شما باید یکی از گزینه‌های موجود را انتخاب کنید.',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'vote-legend' => 'Äänestä tai muuta ääntäsi',
+	'vote-caption' => 'Valintasi',
+	'vote-choices' => 'joker|Jokeri
+penguin|Pingviini
+riddler|Arvuuttaja',
+	'vote-submit' => 'Äänestä',
+	'vote-registered' => 'Äänesi on rekisteröity.',
+	'vote-view-results' => 'Näytä tulokset',
+	'vote-results-count' => 'Määrä',
+	'vote-login' => 'Sinun tulee $1 äänestääksesi.',
+	'vote-login-link' => 'kirjautua sisään',
+	'vote-invalid-choice' => 'Sinun tulee valita vaihtoehdoista yksi.',
+);
+
 /** French (Français)
  * @author Ashar Voultoiz
  * @author Grondin
@@ -565,6 +587,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'vote' => 'Affstemme',
+	'vote-desc' => 'Määt en eifache Zoot Afshtemmunge müjjelesch.',
 	'vote-header' => "Do kanns hee för der '''Bövverschte en de Welt''' affstemme!",
 	'vote-current' => "Ding Stemm (em Momang) es för '''$1'''.",
 	'vote-legend' => 'Afstemme',
@@ -846,6 +869,7 @@ $messages['ps'] = array(
 	'vote-registered' => 'ستاسو رايه ثبته شوه.',
 	'vote-view-results' => 'پايلې کتل',
 	'vote-results' => 'د رايو پايلې',
+	'vote-results-count' => 'شمېرل',
 	'vote-login' => 'ددې لپاره چې تاسو رايه ورکړی نو پکار ده چې $1.',
 	'vote-login-link' => 'ننوتل',
 );

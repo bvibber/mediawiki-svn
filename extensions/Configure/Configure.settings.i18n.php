@@ -1570,6 +1570,7 @@ $messages['lb'] = array(
 	'configure-setting-wgDisableQueryPageUpdate' => 'Spezialsäiten déi ausgeschalt sinn',
 	'configure-setting-wgDisableInternalSearch' => 'Intern Sich ausschalten',
 	'configure-setting-wgExtensionFunctions' => 'Erweiderungsfunktiounen',
+	'configure-setting-wgHitcounterUpdateFreq' => 'Frequenz vun der Aktualisatioun vum Compteur vun de Säitenoffroen',
 	'configure-setting-wgValidSkinNames-key' => 'Interne Numm',
 	'configure-setting-wgExtraNamespaces-value' => 'Numm vum Nummraum',
 	'configure-setting-wgActiveUserDays' => 'Zäit no däer e Benotzer als inaktiv gëlt',

@@ -84,6 +84,16 @@ $messages['bcc'] = array(
 	'simpleantispam-desc' => 'اضافه کنت یم ساده اسپم/روبوت چک په کنترل فرم آن',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'simpleantispam' => 'Ваша рэдагаваньне ўключыла мэханізм анты-спаму',
+	'simpleantispam-label' => "Праверка анты-спаму.
+'''НЕ''' запаўняйце тут нічога!",
+	'simpleantispam-desc' => 'Дадае ў формы простую праверку на спам/робата',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

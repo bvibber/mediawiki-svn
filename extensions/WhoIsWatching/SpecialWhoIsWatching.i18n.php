@@ -157,11 +157,22 @@ $messages['eo'] = array(
 	'specialwhoiswatchingaddbtn' => 'Aldonas selektitajn Uzantojn',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'whoiswatching' => 'Quien está vigilando una página',
+);
+
 /** Finnish (Suomi)
+ * @author Nike
  * @author Silvonen
+ * @author Str4nd
  */
 $messages['fi'] = array(
+	'whoiswatching-desc' => 'Mahdollistaa wikisivun tarkkailijoidan listauksen.',
 	'specialwhoiswatchingthepage' => 'Kuka tarkkailee sivua %s',
+	'specialwhoiswatchingaddbtn' => 'Lisää valitut käyttäjät',
 );
 
 /** French (Français)

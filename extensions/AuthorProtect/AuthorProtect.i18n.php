@@ -830,6 +830,7 @@ $messages['ro'] = array(
 	'authorprotect-reason' => 'Motiv',
 	'authorprotect-success' => 'Protejare cu succes!',
 	'authorprotect-failure' => 'Protejare fără succes',
+	'restriction-level-author' => 'Protejat de autor',
 );
 
 /** Russian (Русский)

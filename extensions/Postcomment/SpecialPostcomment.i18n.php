@@ -234,6 +234,15 @@ $messages['hsb'] = array(
 	'postcomment_nopostingtoadd' => 'Njeje powěsć, kotraž hodźi so přidać.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'postcomment_notloggedin' => 'Nem vagy bejelentkezve',
+	'postcomment_youareloggedinas' => 'Bejelentkeztél, mint $1',
+	'postcomment_invalidrequest' => 'Érvénytelen kérés.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

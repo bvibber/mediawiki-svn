@@ -263,6 +263,18 @@ $messages['nl'] = array(
 	'eval_code' => 'Code',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => 'Legg til [[Special:Eval|eit grensesnitt]] til <code>eval()</code>-funksjonen',
+	'eval_submit' => 'Evaluer',
+	'eval_escape' => 'Unngå utdata',
+	'eval_out' => 'Resultat',
+	'eval_code' => 'Kode',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

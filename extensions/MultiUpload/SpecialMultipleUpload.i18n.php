@@ -430,9 +430,19 @@ Njepřihódne wobrazy budu so hnydom wušmórować, hlej [[{{MediaWiki:Multipleu
  */
 $messages['hu'] = array(
 	'multipleupload' => 'Fájlok feltöltése',
+	'multipleupload-desc' => 'Lehetővé teszi a szerkesztők számára [[Special:MultipleUpload|egyszerre több fájl feltöltését]]',
 	'multipleupload-ignoreallwarnings' => "Az '''összes figyelmeztetés''' mellőzése és a fájlok elmentése.",
 	'multipleupload-saveallfiles' => 'Összes fájl mentése',
+	'multipleupload-addresswarnings' => 'Nézd végig az összes figyelmeztetést, mielőtt újra feltöltöd a fájlokat.',
 	'multipleupload-page' => '{{ns:project}}:Fájltörlési irányelvek',
+	'multipleupload-text' => "Itt tölthetsz fel egyszerre több fájlt.
+
+Kattints a „Keresés” gombra, és válaszd ki azokat a fájlokat, amiket fel akarsz tölteni.
+Maximum $1 fájlt tölthetsz fel egyszerre.
+
+Megadhatod a fájl '''célnevét''' és a hozzá tartozó '''összefoglalót''' is.
+
+A nem megfelelő fájlok azonnal törölve lesznek, lásd a [[{{MediaWiki:Multipleupload-page}}|fájltörlési irányelveket]].",
 	'multiupload-fileuploaded' => 'Fájl feltöltve.',
 	'multiupload-toolbox' => 'Több fájl feltöltése',
 );

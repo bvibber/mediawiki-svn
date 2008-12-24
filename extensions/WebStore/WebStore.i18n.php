@@ -68,8 +68,12 @@ $1\n",
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'webstore-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
 	'webstore_404' => '{{Identical|File not found}}',
 );
 
@@ -434,6 +438,7 @@ $messages['ext'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Dereckson
  * @author Grondin
  * @author Sherbrooke
@@ -452,9 +457,9 @@ $messages['fr'] = array(
 	'webstore-desc' => 'Intergiciel de stockage de fichiers pour Internet uniquement (non NFS)',
 	'webstore_access' => 'Ce service est restreint par adresse IP.',
 	'webstore_path_invalid' => "Le nom de fichier n'est pas correct.",
-	'webstore_dest_open' => 'Impossible d\'ouvrir le fichier de destination "$1".',
+	'webstore_dest_open' => "Impossible d'ouvrir le fichier de destination « $1 ».",
 	'webstore_dest_lock' => 'Échec d’obtention du verrou sur le fichier de destination « $1 ».',
-	'webstore_dest_mkdir' => 'Impossible de créer le répertoire "$1".',
+	'webstore_dest_mkdir' => 'Impossible de créer le répertoire « $1 ».',
 	'webstore_archive_lock' => 'Échec d’obtention du verrou du fichier archivé « $1 ».',
 	'webstore_archive_mkdir' => "Impossible de créer le répertoire d'archivage « $1 ».",
 	'webstore_src_open' => 'Impossible d’ouvrir le fichier source « $1 ».',
@@ -478,7 +483,8 @@ $messages['fr'] = array(
 	'webstore_php_warning' => 'PHP Warning: $1',
 	'webstore_metadata_not_found' => 'Fichier non trouvé : $1',
 	'webstore_postfile_not_found' => 'Fichier à enregistrer non trouvé.',
-	'webstore_scaler_empty_response' => "L’échantillonnage de l'image a donné une réponse nulle avec un code de 200 réponses. Ceci pourrait être dû à une erreur de l'échantillonage.",
+	'webstore_scaler_empty_response' => "L’échantillonnage de l'image a donné une réponse nulle avec un code de réponse 200.
+Ceci pourrait être dû à une erreur de l'échantillonage.",
 	'webstore_invalid_response' => 'Réponse invalide depuis le serveur : 
 
 $1',
@@ -850,6 +856,7 @@ wo mer erin schrieve künne.',
 	'inplace_scaler_no_handler' => 'Mer han keij Projramm för hee dä <i lang="en">MIME</i>-Tüp ömzewandelle.',
 	'inplace_scaler_no_output' => 'Beim Ömwandelle es kei Datei erus jekumme.',
 	'inplace_scaler_zero_size' => 'Beim Ömwandelle es en Datei met nix dren eruß jekumme.',
+	'webstore-desc' => 'En <i lang="en">middelware</i> för et Web (ävver nit <i lang="en">NFS</i>) för Dateie ze speichere.',
 	'webstore_access' => 'Dä Deens hee es beschrängk op bestemmpte IP-Addräße.',
 	'webstore_path_invalid' => 'Dä Name för di Datei es Kappes.',
 	'webstore_dest_open' => 'Mer künne di Ziel-Datei „$1“ nit opmaache.',

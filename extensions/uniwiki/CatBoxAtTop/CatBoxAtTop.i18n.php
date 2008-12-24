@@ -77,6 +77,14 @@ $messages['eo'] = array(
 	'catboxattop-categories' => 'Kategorioj',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'catboxattop-desc' => 'Lisää luokkalaatikon sivujen oikeaan yläkulmaan.',
+	'catboxattop-categories' => 'Luokat',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

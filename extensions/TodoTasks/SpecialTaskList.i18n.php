@@ -180,6 +180,15 @@ $messages['eo'] = array(
 	'tasklistbyname' => '== Farenda listo por $s ==',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'tasklistunknownproject' => 'Tuntematon projekti',
+	'tasklistincorrectuser' => 'Virheellinen käyttäjätunnus',
+);
+
 /** French (Français)
  * @author Grondin
  * @author McDutchie

@@ -121,6 +121,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'random-users-avatars-title' => 'Donn de Metmaacher treffe',
 	'random-users-avatars-desc' => 'Määt et müjjelesch, met <tt>&lt;randomuserswithavatars&gt;</tt> de Avataare fun zofälesch ußsohte Metmaacher aanzezeije.',
 );
 

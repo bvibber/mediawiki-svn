@@ -827,11 +827,21 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'contributors' => 'Bidragsytarar',
+	'contributors-desc' => 'Gjev eit samandrag av hovudbidragsytarane på ei sida',
+	'contributors-toolbox' => 'Hovudbidragsytarar',
+	'contributors-legend' => 'List hovudbidragsytarane til ei sida',
 	'contributors-target' => 'Tittel:',
 	'contributors-submit' => 'Vis',
+	'contributors-subtitle' => 'Hovudbidragsytarar til $1',
+	'contributors-others-long' => 'Det finst {{PLURAL:$1|éin annan bidragsytar|$1 andre bidragsytarar til}} denne sida.',
+	'contributors-others' => 'og {{PLURAL:$1|éin annan|$1 andre}}',
+	'contributors-badtitle' => 'Ugyldig tittel.',
+	'contributors-nosuchpage' => 'Sida $1 finst ikkje.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

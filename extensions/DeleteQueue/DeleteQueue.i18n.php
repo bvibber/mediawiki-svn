@@ -807,6 +807,7 @@ $messages['es'] = array(
 * [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Opine sobre el borrado de esta página].',
 	'deletequeue-review-reason' => 'Comentarios:',
 	'deletequeue-vote-reason' => 'Comentarios:',
+	'deletequeue-vote-submit' => 'Enviar',
 );
 
 /** French (Français)
@@ -1429,18 +1430,40 @@ $messages['ja'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'deletequeue-desc' => 'បង្កើត​[[Special:DeleteQueue|ប្រព័ន្ធ​ជា​ជួរ​សម្រាប់​គ្រប់គ្រង​ការ​លុប]]',
 	'deletequeue-action-queued' => 'ការលុប',
 	'deletequeue-action' => 'ស្នើឱ្យ​លុប',
 	'deletequeue-action-title' => 'ស្នើឱ្យ​លុប​ចំពោះ "$1"',
+	'deletequeue-nom-alreadyqueued' => 'ទំព័រ​នេះ​ស្ថិត​នៅ​ក្នុង​ជួរ​ដែល​ត្រូវ​លុប​រួចហើយ​។',
+	'deletequeue-speedy-title' => 'សម្គាល់ "$1" សម្រាប់​ការលុប​ឱ្យ​បាន​លឿន',
 	'deletequeue-delnom-otherreason' => 'មូលហេតុផ្សេងទៀត',
 	'deletequeue-delnom-extra' => 'ព័ត៌មានបន្ថែម៖',
+	'right-deletediscuss-nominate' => 'ចាប់ផ្ដើម​កិច្ចពិភាក្សា​អំពី​ការលុប',
+	'right-deletediscuss-review' => 'បិទ​កិច្ចពិភាក្សា​អំពី​ការលុប',
+	'right-deletequeue-vote' => 'យល់ស្រប ឬ ជំទាស់​ចំពោះ​ការលុប',
+	'deletequeue-queue-speedy' => 'លុប​ឱ្យ​បាន​លឿន',
+	'deletequeue-queue-deletediscuss' => 'កិច្ចពិភាក្សា​អំពី​ការលុប',
 	'deletequeue-review-delete' => 'លុបទំព័រ។',
 	'deletequeue-review-reason' => 'យោបល់៖',
 	'deletequeue-review-newreason' => 'មូលហេតុថ្មី៖',
 	'deletequeue-review-newextra' => 'ព័ត៌មានបន្ថែម៖',
+	'deletequeue-discusscreate-summary' => 'បាន​បង្កើត​កិច្ចពិភាក្សា​សម្រាប់​ការលុប [[$1]] ។',
+	'deletequeue-role-vote-endorse' => 'អ្នកយល់ស្រប​ចំពោះ​ការលុប',
+	'deletequeue-role-vote-object' => 'អ្នកជំទាស់​ចំពោះ​ការលុប',
+	'deletequeue-vote-tab' => 'បោះឆ្នោត​ស្ដីពីការលុប',
+	'deletequeue-vote-title' => 'យល់ស្រប ឬ បដិសេធ​ចំពោះ​ការលុប "$1"',
+	'deletequeue-vote-legend' => 'យល់ស្រប/ជំទាស់ ចំពោះ​ការលុប',
+	'deletequeue-vote-action' => 'អនុសាសន៍​៖',
+	'deletequeue-vote-endorse' => 'យល់ស្រប​ឱ្យ​លុប​។',
+	'deletequeue-vote-object' => 'ជំទាស់​មិនឱ្យ​លុប​។',
+	'deletequeue-vote-reason' => 'សេចក្ដីអធិប្បាយ​៖',
 	'deletequeue-vote-submit' => 'ដាក់ស្នើ',
+	'deletequeue-vote-success-endorse' => 'អ្នក​បាន​បញ្ចេញ​មតិ​យល់ស្រប​ចំពោះ​ការលុប​ទំព័រ​នេះ ដោយជោគជ័យ​ហើយ​។',
+	'deletequeue-vote-success-object' => 'អ្នក​បាន​បញ្ចេញ​មតិ​ជំទាស់​ចំពោះ​ការលុប​ទំព័រ​នេះ ដោយជោគជ័យ​ហើយ​។',
+	'deletequeue-showvotes' => 'ការយល់ស្រប និង​ជំទាស់​ចំពោះ​ការ​លុប "$1"',
 	'deletequeue-showvotes-restrict-endorse' => 'បង្ហាញ​ការ​យល់ស្រប​តែ​ប៉ុណ្ណោះ',
 	'deletequeue-showvotes-restrict-object' => 'បង្ហាញ​ការ​ជំទាស់​តែ​ប៉ុណ្ណោះ',
+	'deletequeue-showvotes-restrict-none' => 'បង្ហាញ​រាល់​ការយល់ស្រប និង​ជំទាស់​ទាំងអស់',
 	'deletequeue-showvotes-vote-endorse' => "'''យល់ស្រប''' ចំពោះ​ការលុប $1 $2",
 	'deletequeue-showvotes-vote-object' => "'''ជំទាស់''' ចំពោះ​ការលុប $1 $2",
 	'deletequeue-showvotes-showingonly-endorse' => 'បង្ហាញ​តែ​ការ​យល់ស្រប',
@@ -1457,6 +1480,9 @@ $messages['km'] = array(
 	'deletequeue-list-anyqueue' => '(ណាមួយ)',
 	'deletequeue-list-votes' => 'បញ្ជី​នៃ​ការបោះឆ្នោត',
 	'deletequeue-list-header-page' => 'ទំព័រ',
+	'deletequeue-list-header-queue' => 'ជួរ',
+	'deletequeue-list-header-votes' => 'ការយល់ស្រប និង​ជំទាស់',
+	'deletequeue-list-header-discusspage' => 'ទំព័រ​ពិភាក្សា',
 );
 
 /** Krio (Krio)
@@ -1987,6 +2013,14 @@ $messages['pt'] = array(
 	'deletequeue-vote-submit' => 'Submeter',
 	'deletequeue-list-anyqueue' => '(qualquer)',
 	'deletequeue-list-header-page' => 'Página',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'deletequeue-review-reason' => 'Comentarii:',
+	'deletequeue-vote-reason' => 'Comentarii:',
 );
 
 /** Russian (Русский)

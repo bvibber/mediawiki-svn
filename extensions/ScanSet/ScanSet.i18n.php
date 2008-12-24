@@ -982,6 +982,24 @@ $messages['tg-cyrl'] = array(
 	'scanset_prev' => '&lt; Қаблӣ',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'scanset-desc' => 'Tingnan ang mga larawang napasailalim sa panggagalugad (pag-i-iskan) ng pahina mula sa mga pangkat ng CD/DVD ni Andreas Grosz',
+	'scanset_no_name' => 'Kamalian: Dapat mong tukuyin ang isang pangalan ng pangkat na ginalugad (na-iskan), halimbawa na ang &lt;pangalan ng pangkat na ginalugad="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Kamalian: Hindi tanggap o nawawalang pangkat na pangpagmamasid (iskan)',
+	'scanset_unrecognised_index_format' => 'Kamalian: Hindi nalalamang anyo ng pagpapaksa (pormat ng indeks)',
+	'scanset_opendir_error' => 'Kamalian: Hindi mabuksan ang direktoryong $1',
+	'scanset_no_files' => 'Kamalian: Walang mga talaksang natagpuan sa loob ng tinukoy na direktoryo.',
+	'scanset_no_volumes' => 'Kamalian:Walang natagpuan mga direktoryo ng bulto (tomo)',
+	'scanset_missing_index_file' => 'Kamalian: Hindi natagpuan ang talaksang pampaksa (indeks) na $1',
+	'scanset_index_file_error' => 'Kamalian: May kamalian sa anyo ng pagpapaksa (indeks) ng talaksan sa hanay (linya) na $1',
+	'scanset_invalid_volume' => 'Kamalian: Hindi tanggap na dami (bulto)',
+	'scanset_next' => 'Kasunod &gt;',
+	'scanset_prev' => '&lt; Nakaraan',
+);
+
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
  */

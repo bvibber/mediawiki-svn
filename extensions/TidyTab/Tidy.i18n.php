@@ -47,6 +47,15 @@ $messages['de'] = array(
 	'untidy' => 'Nicht ordnen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'tidy-desc' => 'Pśidawa rejtark "pórědny" abo "njepórědny" (we wótwisnosći wót $wgUseTidy) na normalnych bokach, kótaryž dowólujo změniś globalne HTML-nastajenje tidy za jadnory naglěd.',
+	'tidy' => 'Pórědny',
+	'untidy' => 'Njepórědny',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -90,7 +99,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'tidy-desc' => 'Přidawa rajtark "porjadny" abo "njeporjadny" (we wotwisnosći wot $wgUseTidy) na normalnych stronach, dźiwajo na znjemóžnjenje nastajenja HTML tidy za jednory napohlad',
+	'tidy-desc' => 'Přidawa rajtark "porjadny" abo "njeporjadny" (we wotwisnosći wot $wgUseTidy) na normalnych stronach, kotryž dowola nastajenja HTML tidy za jednory napohlad změniś',
 	'tidy' => 'Porjadny',
 	'untidy' => 'Njeporjadny',
 );

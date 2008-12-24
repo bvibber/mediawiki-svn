@@ -570,6 +570,18 @@ $messages['he'] = array(
 	'review_concerns_page' => 'סקירה זו מתייחסת לדף "$1".',
 	'review_concerns_user' => 'בנוגע לסקירות שבוצעו על ידי המשתמש "$1".',
 	'review_user_reviews' => '<small>(סקירות שבוצעו על ידי משתמש זה)</small>',
+	'review_user_page_list' => 'המשתמש סקר את הדפים הבאים:',
+	'review_user_details_link' => '(פרטים)',
+	'review_do_merge' => 'מיזוג סקירות שבוצעו על ידי לגרסאות אחרות של דף זה עם הסקירה הנוכחית',
+	'review_has_been_stored' => "<span id='review_has_been_stored'>הסקירה שלכם נשמרה!</span>",
+	'revision_review_this_page_version_link' => 'סקירת גרסה זו של הדף.',
+	'review_page_review' => 'סקירת הדף "$1"',
+	'review_blocked' => 'נחסמתם, לכו מפה.',
+	'review_wrong_namespace' => 'לא ניתן לסקור דפים במרחב שם זה!',
+	'review_topic' => 'נושא',
+	'review_no_opinion' => 'אין דעה',
+	'review_rating' => 'דירוג',
+	'review_comment' => 'הערה',
 );
 
 /** Hindi (हिन्दी)
@@ -1140,7 +1152,7 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'review_sidebar_title' => 'Оценка',
-	'review-desc' => 'Возрождённая функция [[Special:Review|оценки]]',
+	'review-desc' => 'Возрождённая функция [[Special:Review|проверки]]',
 	'review_topics' => '# Ниже представлен список тем и диапазонов для расширения оценки.
 # Каждая тема определяется в строке из пяти значений, разделённых «:» (все другие строки игнорируются).
 # Порядок следующий: числовой ключ (>0), имя, максимальное значение (>1; 2=yes/no), описание низшего значения (например, «плохая»), описание высшего значения (например, «хорошая»).
@@ -1148,7 +1160,7 @@ $messages['ru'] = array(
 2:Ready for 1.0:2:no:yes',
 	'review_topic_page' => 'Оценка по критериям',
 	'review_sidebar_explanation' => 'Левое значение всегда означает «нет мнения».',
-	'review_save' => 'Сохранить оценку',
+	'review_save' => 'Сохранить проверку',
 	'review_your_review' => 'Ваша оценка этой страницы или версии:',
 	'review_sidebar_you_have_other_reviews_for_this_article' => 'Вы уже оценивали другие версии этой страницы. Ваши другие оценки будут объединены с текущими там, где вы указали «нет мнения».',
 	'review_page_link' => 'статистике оценок',
@@ -1170,8 +1182,8 @@ $messages['ru'] = array(
 	'review_user_details_link' => '(подробности)',
 	'review_do_merge' => 'Перенести мои оценки других версий этой страницы на эту версию',
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Ваша оценка сохранена!</span>",
-	'revision_review_this_page_version_link' => 'Оценить эту версию страницы.',
-	'review_page_review' => 'Оценка страницы «$1»',
+	'revision_review_this_page_version_link' => 'Проверить эту версию страницы.',
+	'review_page_review' => 'Проверка страницы «$1»',
 	'review_blocked' => 'Вы заблокированы, уходите.',
 	'review_wrong_namespace' => 'Страницы в этом пространстве имён не могут быть оценены!',
 	'review_topic' => 'Категория',

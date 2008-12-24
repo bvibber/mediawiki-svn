@@ -480,6 +480,13 @@ $messages['hr'] = array(
 	'imagetagging-article' => 'Stranica',
 );
 
+/** Hungarian (Magyar)
+ * @author Bdamokos
+ */
+$messages['hu'] = array(
+	'imagetagging-imghistory' => 'Történet',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

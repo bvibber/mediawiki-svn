@@ -26,6 +26,15 @@ This allows you to use your userpage as an OpenID as well.',
 	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:', # Only translate this if needed.
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'linkopenid-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -122,6 +131,19 @@ $messages['ja'] = array(
 	'linkopenid-prefstext-openid' => 'あなたのOpenID:',
 	'linkopenid-prefstext-v1url' => 'OpenID バージョン1.1用の Server-URL:',
 	'linkopenid-prefstext-v2url' => 'OpenID バージョン2用の Server-URL:',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'linkopenid-desc' => 'Maat et müjjelesch, dat Metmaacher en <i lang="en">OpenID</i> fun wo anders met dänne iere Aanmeldung hee verbenge künne.',
+	'linkopenid-prefs' => '<i lang="en">OpenID</i>',
+	'linkopenid-prefstext-pre' => 'Wann de en <i lang="en">OpenID</i> fun woanders haß, dann kanns De di hee aanjävve. Domet kanns De dann Ding Metmaachersigg hee och als en <i lang="en">OpenID</i> bruche.',
+	'linkopenid-prefstext-openid' => 'Ding <i lang="en">OpenID</i>:',
+	'linkopenid-prefstext-v1url' => 'De <i lang="en">Server-URL</i> för <i lang="en">OpenID</i> Version 1.1:',
+	'linkopenid-prefstext-v2url' => 'De <i lang="en">Server-URL</i> för <i lang="en">OpenID</i> Version 2:',
+	'linkopenid-prefstext-xrdsurl' => 'De <i lang="en">XRDS-URL</i>:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

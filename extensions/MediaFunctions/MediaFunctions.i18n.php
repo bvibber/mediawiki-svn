@@ -205,6 +205,8 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'mediafunctions-desc' => 'Parser-Funxjohne öm Date övver Medije-Datteije eruß ze krijje.',
+	'mediafunctions-invalid-title' => '„$1“ es keine jöltije Name för en Sigg',
+	'mediafunctions-not-exist' => '„$1“ es nit do',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

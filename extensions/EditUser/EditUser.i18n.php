@@ -540,8 +540,14 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'edituser-desc' => 'Määt et müjjelesch, dat Metmaacher met däm Rääsch dozoh aan anderlüx Enstelleunge driije künne.',
+	'edituser' => 'De Enstellunge för dä Metmaacher ändere',
+	'edituser-logout' => 'Dä Metmaacher ußlogge',
 	'edituser-username' => 'Metmaacher Name',
 	'edituser-dosearch' => 'Sööke',
+	'edituser-nouser' => 'Dä Metmaacher ham_mer nit.',
+	'edituser-exempt' => 'Dä Metmaacher kam_mer nit beärbeide.',
+	'right-edituser' => 'Enstellunge för ander Metmaacher Ändere',
+	'right-edituser-exempt' => 'Kann de Enstellunge nit fun andere ändere lohße',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))

@@ -96,9 +96,12 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Silvonen
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'unicodeconverter' => 'Unicode-muunnin',
+	'unicodeconverter-oldtext' => 'Alkuperäinen teksti',
+	'unicodeconverter-newtext' => 'Muunnettu teksti',
 );
 
 /** French (Français)

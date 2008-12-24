@@ -226,7 +226,8 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'pageby-desc' => '<code><nowiki><pageby></nowiki></code>タグを使って、wikiページに投稿者をインラインで表示する',
-	'pageby-first' => '[[Support#Pageby-first　and Pageby-last]]で、変数の意味を確認中。--[[User:Mizusumashi|Mizusumashi]] 15:01, 23 December 2008 (UTC)',
+	'pageby-first' => '$2に$1により作成されたページ',
+	'pageby-last' => '最後の<a href="$3">変更</a>は$2、$1による',
 	'pageby-contributors' => '投稿者:',
 	'pageby-anon' => '<i>匿名</i>',
 );

@@ -175,6 +175,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'languageselector' => 'Idioma',
+	'languageselector-desc' => 'Selector de idioma en cada página, incluso para visitantes',
+	'languageselector-setlang' => 'selecciona',
 );
 
 /** Extremaduran (Estremeñu)
@@ -646,6 +648,7 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'languageselector' => 'Lian',
+	'languageselector-desc' => 'Hili lian iha pájina hotu, mós ba vizitante',
 	'languageselector-setlang' => 'hili',
 );
 

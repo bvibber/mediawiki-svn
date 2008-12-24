@@ -340,6 +340,24 @@ De pagina $1 kan uw hulp ook gebruiken.',
 	'tog-edit-similar' => 'Gelijksoortige paginasuggesties inschakelen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'editsimilar-desc' => 'Oppfordrar brukarar til å endra liknande sider etter å ha lagra ei sida',
+	'editsimilar-thanks' => 'Takk for bidraget ditt.
+Sjekk desse relaterte sidene: $1.',
+	'editsimilar-thanks-singleresult' => 'Takk for bidraget ditt.
+Sjekk denne relaterte sida: $1.',
+	'editsimilar-thanks-notsimilar' => 'Takk for bidraget ditt.
+Desse sidene kan òg trenga hjelpa di: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Takk for bidraget ditt.
+Denne sida kan òg trenga hjelpa di: $1.',
+	'editsimilar-thankyou' => 'Takk for bidraget ditt, $1!',
+	'editsimilar-link-disable' => 'endra innstillingar',
+	'tog-edit-similar' => 'Slå på forslag for liknande sider',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

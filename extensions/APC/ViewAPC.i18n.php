@@ -2977,6 +2977,7 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Silviubogan
  */
 $messages['ro'] = array(
 	'viewapc' => 'Informaţii APC',
@@ -2986,6 +2987,7 @@ $messages['ro'] = array(
 	'viewapc-info-general' => 'Informaţii generale',
 	'viewapc-apc-version' => 'Versiune APC',
 	'viewapc-php-version' => 'Versiune PHP',
+	'viewapc-shared-memory' => 'Memorie partajată',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|fişier|fişiere}} ($2)',
 	'viewapc-misses' => 'Ratări',
 	'viewapc-requests' => 'Rată de cerere',
@@ -2998,6 +3000,7 @@ $messages['ro'] = array(
 	'viewapc-display-attribute' => 'Atribut',
 	'viewapc-display-value' => 'Valoare',
 	'viewapc-display-filename' => 'Nume fişier',
+	'viewapc-display-device' => 'Aparat',
 	'viewapc-display-info' => 'Nume',
 	'viewapc-display-type' => 'Tip',
 	'viewapc-display-mtime' => 'Modificat',
@@ -3018,6 +3021,7 @@ $messages['ro'] = array(
 	'viewapc-ls-delete' => '[Şterge acum]',
 	'viewapc-ls-scope-active' => 'Activ',
 	'viewapc-ls-scope-deleted' => 'Şters',
+	'viewapc-ls-scope-both' => 'Amândouă',
 	'viewapc-ls-sort-size' => 'Mărime',
 	'viewapc-ls-sort-name' => 'Nume',
 	'viewapc-ls-sort-accessed' => 'Ultima accesare',

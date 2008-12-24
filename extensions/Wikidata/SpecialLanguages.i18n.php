@@ -1153,8 +1153,14 @@ Contacta por favor el operador o el administrador del servicio.',
 /** Finnish (Suomi)
  * @author Nike
  * @author Silvonen
+ * @author Str4nd
  */
 $wdMessages['fi'] = array(
+	'ow_save' => 'Tallenna',
+	'ow_history' => 'Historia',
+	'ow_noedit_title' => 'Ei muokkausoikeutta',
+	'ow_none_selected' => 'Ei yhtään valittu',
+	'ow_dm_OK' => 'OK',
 	'ow_AlternativeDefinition' => 'Vaihtoehtoinen määritelmä',
 	'ow_AlternativeDefinitions' => 'Vaihtoehtoiset määritelmät',
 	'ow_Annotation' => 'Annotaatiot',
@@ -1745,34 +1751,70 @@ $wdMessages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Bdamokos
  * @author Dani
+ * @author Gondnok
  */
 $wdMessages['hu'] = array(
+	'langman_title' => 'Nyelv kezelő',
 	'ow_save' => 'Mentés',
+	'ow_history' => 'Történet',
 	'ow_uipref_datasets' => 'Alapértelmezett nézet',
 	'ow_dm_OK' => 'OK',
+	'ow_AlternativeDefinitions' => 'Más definíciók',
+	'ow_Annotation' => 'Jegyzetek',
+	'ow_ApproximateMeanings' => 'Megközelítő jelentések',
+	'ow_ClassAttributeAttribute' => 'Tulajdonság',
+	'ow_ClassAttributes' => 'Osztály tulajdonságok',
 	'ow_ClassAttributeLevel' => 'Szint',
 	'ow_ClassAttributeType' => 'Típus',
+	'ow_ClassMembership' => 'Osztály tagság',
+	'ow_Collection' => 'Gyűjtemény',
+	'ow_CollectionMembership' => 'Gyűjtemény tagság',
+	'ow_Definition' => 'Definíció',
+	'ow_DefinedMeaningAttributes' => 'Jegyzetek',
+	'ow_DefinedMeaning' => 'Definiált jelentés',
+	'ow_DefinedMeaningReference' => 'Definiált jelentés',
 	'ow_ExactMeanings' => 'Pontos jelentések',
 	'ow_Expression' => 'Kifejezés',
+	'ow_ExpressionMeanings' => 'Kifejezés jelentések',
 	'ow_Expressions' => 'Kifejezések',
+	'ow_IdenticalMeaning' => 'Megegyező jelentés?',
+	'ow_IncomingRelations' => 'Bejövő kapcsolatok',
+	'ow_GotoSource' => 'Menj a forráshoz',
 	'ow_Language' => 'Nyelv',
+	'ow_LevelAnnotation' => 'Annotáció',
+	'ow_OptionAttribute' => 'Tulajdon',
+	'ow_OptionAttributeOption' => 'Opció',
+	'ow_OptionAttributeOptions' => 'Opciók',
+	'ow_OptionAttributeValues' => 'Opció értékek',
+	'ow_OtherDefinedMeaning' => 'Egyéb definiált jelentés',
+	'ow_PopupAnnotation' => 'Annotáció',
 	'ow_Relations' => 'Relációk',
 	'ow_RelationType' => 'Reláció típusa',
-	'ow_Spelling' => 'Kiejtés',
+	'ow_Spelling' => 'Helyesírás',
 	'ow_Synonyms' => 'Szinonímák',
+	'ow_SynonymsAndTranslations' => 'Szinonímák és fordítások',
 	'ow_Source' => 'Forrás',
 	'ow_SourceIdentifier' => 'Forrásazonosító',
 	'ow_TextAttribute' => 'Tulajdonság',
 	'ow_Text' => 'Szöveg',
+	'ow_TextAttributeValues' => 'Egyszerű szövegek',
 	'ow_TranslatedTextAttribute' => 'Tulajdonság',
 	'ow_TranslatedText' => 'Lefordított szöveg',
 	'ow_TranslatedTextAttributeValue' => 'Szöveg',
 	'ow_TranslatedTextAttributeValues' => 'Fordítandó szöveg',
 	'ow_LinkAttribute' => 'Tulajdonság',
+	'ow_LinkAttributeValues' => 'Hivatkozások',
 	'ow_Property' => 'Tulajdonság',
 	'ow_Value' => 'Érték',
 	'ow_meaningsoftitle' => '„$1” jelentései',
+	'ow_meaningsofsubtitle' => '<em>Wiki hivatkozás:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>Engedély megtagadva</h2>',
+	'ow_copy_no_action_specified' => 'Kérlek adj meg egy akciót',
+	'ow_copy_help' => 'Egy nap, lehet hogy segítünk neked.',
+	'ow_please_proved_dmid' => 'Úgy tűnik, hiányzik egy „?dmid=<ID>” (dmid= Defined Meaning ID, definiált jelentés azonosító) abból, amit megadtál.<br />
+Kérlek lépj kapcsolatba egy szerveradminisztrátorral.',
 );
 
 /** Interlingua (Interlingua)

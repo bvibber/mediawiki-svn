@@ -940,6 +940,7 @@ Jeli chceš OpenID wužiwać, hdyž přichodnje přizjewiš, móžeš [[Special:
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -952,7 +953,8 @@ $messages['hu'] = array(
 	'openiderror' => 'Hiba az ellenőrzés során',
 	'openiderrortext' => 'Az OpenID URL elenőrzése nem sikerült.',
 	'openidconfigerror' => 'OpenID konfigurációs hiba',
-	'openidconfigerrortext' => 'A wiki OpenID-tárhely-beállítása hibás. Beszélj a wiki üzemeltetőjével.',
+	'openidconfigerrortext' => 'A wiki OpenID tárhelyének beállítása érvénytelen.
+Lépj kapcsolatba egy [[Special:ListUsers/sysop|adminisztrátorral]].',
 	'openidpermission' => 'OpenID jogosultság hiba',
 	'openidpermissiontext' => 'Ezzel az OpenID-vel nem vagy jogosult belépni erre a wikire.',
 	'openidcancel' => 'Ellenőrzés visszavonva',
@@ -961,6 +963,7 @@ $messages['hu'] = array(
 	'openidfailuretext' => 'Az OpenID URL ellenőrzése nem sikerült. A kapott hibaüzenet: „$1”',
 	'openidsuccess' => 'Sikeres ellenőrzés',
 	'openidsuccesstext' => 'Az OpenID URL ellenőrzése sikerült.',
+	'openidusernameprefix' => 'OpenID-s szerkesztő',
 	'openidserverlogininstructions' => 'Add meg a jelszót a(z) $3 oldalra való bejelentkezéshez $2 néven (userlap: $1).',
 	'openidtrustinstructions' => 'Adatok megosztása a(z) $1 oldallal.',
 	'openidallowtrust' => '$1 megbízhat ebben a felhasználóban.',
@@ -994,6 +997,7 @@ Ha ezentúl az OpenID-del akarsz bejelentkezni, [[Special:OpenIDConvert|konvert�
 	'openidbadusername' => 'Rossz felhasználónevet adtál meg.',
 	'openidautosubmit' => 'Az ezen az oldalon lévő űrlap automatikusan elküldi az adatokat, ha a JavaScript engedélyezve van. Ha nem, használd a \\"Tovább\\" gombot.',
 	'openidclientonlytext' => 'Az itteni felhasználónevedet nem használhatod OpenID-ként más weboldalon.',
+	'openidloginlabel' => 'OpenID URL',
 	'openidlogininstructions' => "A(z) {{SITENAME}} támogatja az [http://openid.net/ OpenID]-alapú bejelentkezést.
 A OpenID lehetővé teszi, hogy számos különböző weboldalra jelentkezz be úgy, hogy csak egyszer kell megadnod a jelszavadat. (Lásd [http://hu.wikipedia.org/wiki/OpenID a Wikipédia OpenID cikkét] további információkért.)
 

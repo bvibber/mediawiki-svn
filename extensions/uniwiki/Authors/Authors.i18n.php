@@ -69,6 +69,13 @@ $messages['eo'] = array(
 	'authors_anonymous' => 'Anonima',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'authors_anonymous' => 'Nimetön',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

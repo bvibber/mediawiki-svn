@@ -191,6 +191,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'intersection_toomanycats' => '¡Error: Demasiadas categorías!',
+	'intersection_toofewcats' => 'Error: ¡Muy pocas categorías!',
 	'intersection_noresults' => 'Error: ¡Sin resultados!',
 	'intersection_noincludecats' => 'Error: ¡Necesita incluir al menos una categoría, o especificar un espacio de nombres!',
 );

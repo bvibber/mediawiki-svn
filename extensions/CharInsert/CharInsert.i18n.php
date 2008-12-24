@@ -58,6 +58,13 @@ $messages['bn'] = array(
 	'charinsert-desc' => 'আদর্শ নয় এমন ক্যারেক্টার অনুপ্রবেশ করানোর জন্য জাভাস্ক্রিপ্ট বাক্স সৃষ্টি অনুমোদন করে',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'charinsert-desc' => 'Omogućuje pravljenje JavaScript kutije za [[MediaWiki:Edittools|ubacivanje nestandardnih znakova]]',
+);
+
 /** Catalan (Català)
  * @author Jordi Roqué
  */

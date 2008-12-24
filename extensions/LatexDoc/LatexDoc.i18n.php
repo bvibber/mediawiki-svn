@@ -475,7 +475,7 @@ $3',
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'latexdoc_no_text' => 'Articolul nu conţine text, nu se poate genera DVI',
+	'latexdoc_no_text' => 'Pagina nu conţine text, nu se poate genera DVI',
 	'latexdoc_cant_create_dir' => 'Directorul temporar "$1" nu poate fi creat',
 	'latexdoc_cant_write' => 'Fişierul "$1" nu poate fi scris',
 	'latexdoc_error' => 'Eroare LaTeX
@@ -487,6 +487,7 @@ Rezultat: $2
 $3',
 	'latexdoc_get_dvi' => 'Obţine DVI',
 	'latexdoc_get_pdf' => 'Obţine PDF',
+	'latexdoc-desc' => 'Modificare colaborativă a documentelor LaTeX',
 );
 
 /** Russian (Русский)

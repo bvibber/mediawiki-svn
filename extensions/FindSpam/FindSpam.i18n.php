@@ -268,7 +268,10 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'findspam' => 'Spam keresése',
+	'findspam-desc' => 'A közelmúltban elhelyezett spam és reklám megtalálására használható [[Special:FindSpam|speciális lap]]',
 	'findspam-ip' => 'IP-cím:',
+	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Nem találtam ilyen szerkesztést.',
 );
 
 /** Interlingua (Interlingua)

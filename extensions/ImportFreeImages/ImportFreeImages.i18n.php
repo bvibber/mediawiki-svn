@@ -365,10 +365,12 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'importfreeimages' => 'Szabad képek importálása',
+	'importfreeimages-desc' => 'Lehetővé teszi a [[Special:ImportFreeImages|megfelelően licencelt képek importálását]] a [http://www.flickr.com flickr-ről]',
 	'importfreeimages_description' => 'Ez az oldal lehetővé teszi számodra megfelelően licencelt flickr képek keresését és importálását a wikidbe.',
 	'importfreeimages_noapikey' => 'Nem állítottad be a Flickr API kulcsodat. Ahhoz, hogy ezt megtedd, kérj egy API kulcsot
 [http://www.flickr.com/services/api/misc.api_keys.html innen], majd állítsd be a wgFlickrAPIKey értékét a ImportFreeImages.php-ben.',
 	'importfreeimages_nophotosfound' => 'Nem találtam a keresési feltételeidnek ($1) megfelelő képet, próbáld újra.',
+	'importfreeimages_invalidurl' => 'A megadott URL „$1” nem egy érvényes Flickr-kép címe.',
 	'importfreeimages_owner' => 'Szerző',
 	'importfreeimages_importthis' => 'importálás',
 	'importfreeimages_next' => 'Következő $1',

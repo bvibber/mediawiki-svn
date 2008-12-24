@@ -1995,12 +1995,36 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'voctrain_Permission_Denied' => 'Permisiune Refuzată',
+	'voctrain_Action_unknown' => 'Acţiune necunoscută',
+	'voctrain_User_added' => 'Utilizator adăugat',
 	'voctrain_continue' => 'continuă',
+	'voctrain_Number_of_questions' => 'Număr de întrebări',
+	'voctrain_Languages' => 'Limbi',
+	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(de exemplu, eng pentru engleză, deu pentru germană).',
+	'voctrain_Questions' => 'Întrebări',
+	'voctrain_Answers' => 'Răspunsuri',
+	'voctrain_start_exercise' => 'începe exerciţiul',
 	'voctrain_collection' => 'colecţie',
+	'voctrain_ISO_639_3_format' => 'format ISO-639-3',
+	'voctrain_Definition' => 'Definiţie',
+	'voctrain_Word' => 'Cuvânt',
+	'voctrain_submit_answer' => 'trimite răspuns',
+	'voctrain_Question' => 'Întrebare',
+	'voctrain_The_word_to_translate' => 'Cuvântul de tradus',
+	'voctrain_Answer' => 'Răspuns',
+	'voctrain_list_of_questions_and_answers' => 'listă de întrebări şi răspunsuri',
+	'voctrain_Answer_s_' => 'Răspuns(uri)',
+	'voctrain_Exercise_complete' => 'Exerciţiu complet',
+	'voctrain_Exercise_terminated' => 'Exerciţiu terminat',
+	'voctrain_Start_a_new_exercise' => 'Începe un exerciţiu nou',
 	'voctrain_User_name' => 'Nume de utilizator',
+	'voctrain_Password' => 'Parolă',
 	'voctrain_Login' => 'Autentificare',
+	'voctrain_Create_new_user' => 'Creează un utilizator nou',
 	'voctrain_Language' => 'Limbă',
 	'voctrain_Log_in' => 'Autentificare',
+	'voctrain_Definitions' => 'Definiţii',
 );
 
 /** Russian (Русский)

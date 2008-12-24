@@ -330,12 +330,17 @@ $messages['ps'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Silviubogan
  */
 $messages['ro'] = array(
 	'amazonplus-nores' => 'Eroare: Nici un rezultat găsit!',
+	'amazonplus-used' => 'folosit',
 	'amazonplus-german' => 'germană',
 	'amazonplus-french' => 'franceză',
 	'amazonplus-japanese' => 'japoneză',
+	'amazonplus-amazon' => 'preţul amazon',
+	'amazonplus-new' => 'nou',
+	'amazonplus-cp-none' => 'Nimic',
 );
 
 /** Russian (Русский)

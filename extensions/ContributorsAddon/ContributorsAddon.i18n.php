@@ -123,6 +123,13 @@ $messages['nl'] = array(
 	'contributorsaddon-desc' => 'Voegt "JavaScript onMouseOver"-popups toe aan de link "Belangrijkste schrijvers"',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'contributorsaddon-desc' => 'Legg til JavaScript-sprettoppvindauge med lenkjer til «hovudbidragsytarar»',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

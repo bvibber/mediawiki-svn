@@ -814,11 +814,21 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'countedits' => 'Tel endringar',
+	'countedits-desc' => '[[Special:CountEdits|Spesialsida]] som tel endringar av brukarar og gjev ei lista over dei ti mest aktive brukarane',
+	'countedits-warning' => "'''Åtvaring:''' Ikkje skoda hunden på håra. 
+Ikkje vurder ein bidragsytar etter talet på endringar av han/ho.",
 	'countedits-username' => 'Brukarnamn:',
 	'countedits-ok' => 'OK',
+	'countedits-nosuchuser' => 'Det finst ingen brukar med namnet $1.',
+	'countedits-resultheader' => 'Resultat for $1',
+	'countedits-resulttext' => '$1 har gjort $2 endringar',
+	'countedits-mostactive' => 'Mest aktive bidragsytarar',
+	'countedits-nocontribs' => 'Det har ikkje blitt gjort endringar på denne wikien.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

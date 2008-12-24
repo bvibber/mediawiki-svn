@@ -65,6 +65,13 @@ $messages['eo'] = array(
 	'woopra-desc' => 'Ebligas la [http://www.woopra.com/ Aktualan Kontroladan Softvaron Woopra] funkcii en via MediaWiki programaro',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'woopra-desc' => 'Permite trabajar al [http://www.woopra.com/ software de seguimiento en vivo Woopra] con tu instalación MediaWiki',
+);
+
 /** French (Français)
  * @author McDutchie
  */

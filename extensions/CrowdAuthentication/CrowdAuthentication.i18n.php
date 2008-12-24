@@ -152,6 +152,13 @@ $messages['nl'] = array(
 	'crowdauthentication-desc' => 'Authenticatieplugin voor Atlassian Crowd',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'crowdauthentication-desc' => 'Autentifiseringsprogramtillegg for Atlassian Crowd',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

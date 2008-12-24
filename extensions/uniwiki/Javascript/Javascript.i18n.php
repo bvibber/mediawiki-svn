@@ -28,6 +28,13 @@ $messages['dsb'] = array(
 	'javascript-desc' => 'Pśidawa dataju uniwiki.js ku kuždemu bokoju, kótaraž wopśimujo JavaScriptowy kod, kótaryž jo zgromadny za rozšyrjenja Uniwiki',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'javascript-desc' => 'Añade a cada página uniwiki.js, que contiene código JavaScript compartido entre extensiones UniWiki',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Sherbrooke

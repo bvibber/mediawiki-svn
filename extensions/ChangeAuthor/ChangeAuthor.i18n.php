@@ -1090,10 +1090,33 @@ Als u deze foutmelding elke keer weer ziet, is er waarschijnlijk iets mis met de
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'changeauthor' => 'Endra versjonsforfattar',
+	'changeauthor-desc' => 'Gjer det mogleg å endra forfattar for sideversjonar',
+	'changeauthor-title' => 'Endra forfattar til sideversjon',
+	'changeauthor-search-box' => 'Søk i versjonar',
+	'changeauthor-pagename-or-revid' => 'Sidenamn eller versjons-ID:',
+	'changeauthor-pagenameform-go' => 'Gå',
 	'changeauthor-comment' => 'Kommentar:',
+	'changeauthor-changeauthors-multi' => 'Endra {{PLURAL:$1|forfattar|forfattarar}}',
+	'changeauthor-explanation-multi' => 'Med dette skjemaet kan du endra kven som blir oppgjeve som forfattar til versjonar. 
+Endra eitt eller fleire av brukarnamna i lista nedanfor, legg til ein (valfri) kommentar og trykk knappen «Endra forfattar(ar)».',
+	'changeauthor-changeauthors-single' => 'Endra forfattar',
+	'changeauthor-explanation-single' => 'Med dette skjemaet kan du endra på kven som blir oppgjeve som forfattaren til ein versjon. Endra brukarnamnet nedanfor, legg til ein (valfri) kommentar, og trykk på knappen «Endra forfattar».',
+	'changeauthor-invalid-username' => 'Brukarnamnet «$1» er ugyldig.',
+	'changeauthor-nosuchuser' => 'Ingen brukar med namnet «$1».',
+	'changeauthor-revview' => 'Versjon #$1 av $2',
+	'changeauthor-nosuchtitle' => 'Det finst ikkje noka sida med namnet «$1».',
+	'changeauthor-weirderror' => 'Ein merkeleg feil oppstod.
+Prøv om att.
+Om denne feilen held fram med å dukka opp, kan det vera noko gale med databasen.',
+	'changeauthor-invalidform' => 'Nytt skjemaet på [[Special:ChangeAuthor|spesialsida]] og ikkje eit eigendefinert skjema.',
+	'changeauthor-success' => 'Førespurnaden har blitt utført.',
+	'changeauthor-logentry' => 'Endra forfattaren av $2 av $1 frå $3 til $4',
+	'changeauthor-logpagename' => 'Logg for endring av forfattar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

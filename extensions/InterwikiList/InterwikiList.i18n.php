@@ -292,6 +292,18 @@ $messages['nl'] = array(
 	'interwikilist-prefix' => 'Interwikivoorvoegsel:',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'interwikilist' => 'Interwikilista',
+	'interwikilist-desc' => 'Legg til ei [[Special:Interwikilist|spesialsida]] for å visa tilgjengelege interwikilenkjer',
+	'interwikilist-linkname' => 'Interwikilenkja',
+	'interwikilist-target' => 'Måladressa',
+	'interwikilist-filter' => 'Filtrer lista',
+	'interwikilist-prefix' => 'Interwikiprefiks:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

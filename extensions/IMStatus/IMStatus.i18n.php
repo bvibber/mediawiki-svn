@@ -444,6 +444,39 @@ Het nummer dat u moet opgeven is de nummers en letters tussen "$2" en "$3".',
 	'imstatus_yahoo_style' => 'de stijl van de knop, van $1 (kleinste) tot $2 (grootste), $3 en $4 voor voicemail.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'imstatus-desc' => 'Legg til merke for å visa forskjellige påloggingstatusar i direktemeldingsprogram (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Syntaks',
+	'imstatus_default' => 'Standard',
+	'imstatus_example' => 'Døme',
+	'imstatus_possible_val' => 'Moglege verdiar',
+	'imstatus_max' => 'høgst',
+	'imstatus_min' => 'minst',
+	'imstatus_or' => 'eller',
+	'imstatus_style' => 'stilen til statusindikatoren',
+	'imstatus_action' => 'handling når knappen blir trykt på',
+	'imstatus_details_saa' => 'For fleire detaljar om alle stilane og handlingane, sjå $1.',
+	'imstatus_your_name' => 'ditt $1 namn',
+	'imstatus_aim_presence' => '$1 syner statusen din med ei lenkja som vil fyra i gang AIM for å senda deg ei direktemelding, gjeve at brukaren har det installert.',
+	'imstatus_aim_api' => '$1 syner statusen din med ei lenkja som vil fyra i gang ein <b>nettlesar</b>-javascript-versjon av AIM for å senda deg ei direktemelding.',
+	'imstatus_gtalk_code' => 'google talk-koden din',
+	'imstatus_gtalk_get_code' => 'google talk-koden din: få han på $1.',
+	'imstatus_gtalk_height' => 'høgda til boksen i pikslar',
+	'imstatus_gtalk_width' => 'breidda til boksen i pikslar',
+	'imstatus_icq_id' => 'din ICQ-ID',
+	'imstatus_icq_style' => 'eit tal i intervallet 0-26 (ja, det finst 27 tilgjengeleg stilar...).',
+	'imstatus_live_code' => "ID'en til Live Messenger-nettstaden din",
+	'imstatus_live_get_code' => 'ID\'en til Live Messenger-nettstaden din: <strong>dette er ikkje e-postadressa di</strong>, du må laga ein i 
+<a href="$1">live messenger-vala dine</a>.
+ID\'en du må oppgje er tala og bokstavane mellom  «$2» og «$3».',
+	'imstatus_skype_nbstyle' => 'Merk: Om du vel ein stil som òg er ei handling, vil handlingsvalet ditt bli overkøyrt av handlinga som samsvarer med stilvalet ditt.',
+	'imstatus_xfire_size' => 'knappestorleiken, frå $1 (størst) til $2 (minst).',
+	'imstatus_yahoo_style' => 'knappestilen, frå $1 (minst) til $2 (størst), $3 og $4 er for lydpost.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

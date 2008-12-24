@@ -117,6 +117,28 @@ $messages['de'] = array(
 	'smoothgallery-javascript-disabled' => 'JavaScript wird benötigt, um die Galerie darzustellen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-desc' => 'Zmóžnja wužywarjam napóraś galerije z wobrazami, kótarež su se nagrali.
+Zmóžnja nejwěcej opcijow SmoothGallery',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
+	'smoothgallery-error' => '<b>SmoothGallery zmólka:</b>',
+	'smoothgallery-gallery-not-found' => 'Pominana galerija njeeksistěrujo.',
+	'smoothgallery-not-found' => 'Galerija njewopśimujo wobraze.
+Pšosym pśidaj nanejmjenjej jaden wobraz.',
+	'smoothgallery-no-images' => 'W toś tej galeriji njejsu se wobraze namakali.
+Pśeznań se, lěc pominane wobraze eksistěruju.
+Slědujuce wobraze njejsu se namakali: $1',
+	'smoothgallery-invalid-images' => 'Slědujuce pominane wobraze maju njepłaśiwy typ: $1',
+	'smoothgallery-unexpected-error' => 'Njewócakana zmólka jo nastała.
+Pšosym napiš powěźeńku zmólki.',
+	'smoothgallery-javascript-disabled' => 'JavaScript jo trěbny, aby se galerija korektnje zwobrazniła.',
+);
+
 /** French (Français)
  * @author Dereckson
  * @author Grondin

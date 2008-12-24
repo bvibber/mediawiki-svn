@@ -189,6 +189,27 @@ $messages['eo'] = array(
 	'slippymap_resetview' => 'Restarigi vidon',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'slippymap_latmissing' => 'Puuttuva ”lat”-arvo leveysasteille.',
+	'slippymap_lonmissing' => 'Puuttuva ”lon”-arvo pituusasteille.',
+	'slippymap_zoommissing' => 'Puuttuva ”z”-arvo zoomaukselle.',
+	'slippymap_longdepreciated' => 'Käytä ”lon”-arvoa ”long”-arvon sijasta nimenmuutoksen vuoksi.',
+	'slippymap_widthnan' => 'leveysarvo (w) ”%1” ei ole kelvollinen kokonaisluku',
+	'slippymap_heightnan' => 'Korkeusarvo (h) ”%1” ei ole kelvollinen kokonaisluku',
+	'slippymap_zoomnan' => 'zoom-arvo (z) ”%1” ei ole kelvollinen kokonaisluku',
+	'slippymap_latnan' => 'leveysastearvo (lat) ”%1” ei ole kelvollinen luku',
+	'slippymap_lonnan' => 'Pituusastearvo ”%1” ei ole kelvollinen luku',
+	'slippymap_widthbig' => 'leveysarvo (w) ei voi olla yli 1000',
+	'slippymap_widthsmall' => 'leveysarvo (w) ei voi olla alle 100',
+	'slippymap_heightbig' => 'korkeusarvo (h) ei voi olla yli 1000',
+	'slippymap_heightsmall' => 'korkeusarvo (h) ei voi olla alle 100',
+	'slippymap_latbig' => 'leveysastearvo (lat) ei voi olla yli 90',
+	'slippymap_latsmall' => 'leveysastearvo (lat) ei voi olla alle -90',
+);
+
 /** French (Français)
  * @author Cedric31
  * @author Grondin
@@ -276,6 +297,18 @@ $messages['he'] = array(
 	'slippymap_heightbig' => 'ערך הגובה (h) לא יכול לחרוג אל מעבר ל־1000',
 	'slippymap_heightsmall' => 'ערך הגובה (h) לא יכול לחרוג אל מתחת ל־100',
 	'slippymap_latbig' => 'ערך קו־הרוחב (lat) לא יכול לחרוג מעבר ל־90',
+	'slippymap_latsmall' => 'ערך קו־הרוחב (lat) לא יכול לחרוג אל מתחת ל־ -90',
+	'slippymap_lonbig' => 'ערך קו־האורך (lon) לא יכול לחרוג אל מעבר ל־180',
+	'slippymap_lonsmall' => 'ערך קו־האורך (lon) לא יכול לחרוג אל מתחת ל־ -180',
+	'slippymap_zoomsmall' => 'ערך ההגדלה (z) לא יכול לחרוג אל מתחת לאפס',
+	'slippymap_zoom18' => "ערך ההגדלה (z) לא יכול לחרוג אל מעבר ל־17. שימו לב שהרחבת מדיה־ויקי זו מתממשקת אל שכבת ה־'osmarender' של OpenStreetMap שאינה תומכת ברמת הגדלה הגדולה מ־17. שכבת ה־Mapnik הזמינה באתר openstreetmap.org, מגיעה לרמת הגדלה 18.",
+	'slippymap_zoombig' => 'ערך ההגדלה (z) לא יכול לחרוג אל מעבר ל־17.',
+	'slippymap_invalidlayer' => "ערך ה־'layer' אינו תקין '%1'",
+	'slippymap_maperror' => 'שגיאת מפה:',
+	'slippymap_osmtext' => 'עיינו במפה זו באתר OpenStreetMap.org',
+	'slippymap_code' => 'קוד הוויקי להצגת מפה זו:',
+	'slippymap_button_code' => 'איחזור קוד הוויקי',
+	'slippymap_resetview' => 'איפוס התצוגה',
 );
 
 /** Interlingua (Interlingua)

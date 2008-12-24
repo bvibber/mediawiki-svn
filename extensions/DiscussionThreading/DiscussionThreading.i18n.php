@@ -104,8 +104,11 @@ $messages['eo'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Fari novan fadenon',
 );
 
-/** Spanish (Español) */
+/** Spanish (Español)
+ * @author Sanbec
+ */
 $messages['es'] = array(
+	'discussionthreading-desc' => 'Añade organización por temas a las páginas de discusión',
 	'discussionthreading-replysection' => 'respuesta',
 	'discussionthreading-replysectionhint' => 'Respuesta a este tema',
 	'discussionthreading-threadnewsection' => 'nuevo',

@@ -158,10 +158,14 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Silvonen
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'filelist' => 'Tiedostoluettelo',
+	'filelist-desc' => '[[Special:Filelist|Toimintosivu]] tallennettujen tiedostojen listaukseen.',
 	'filelist-show-list' => 'Näytä luettelo',
+	'filelist-show-gallery' => 'Näytä galleria',
+	'filelist-image-desc' => 'kuvaus',
 );
 
 /** Võro (Võro) */

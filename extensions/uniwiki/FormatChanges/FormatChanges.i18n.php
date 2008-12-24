@@ -56,6 +56,14 @@ $messages['eo'] = array(
 	'formatchanges-editedby' => 'redaktita de',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'formatchanges-desc' => 'Muotoilee [[Special:RecentChanges|tuoreet muutokset]] -sivun uudelleen.',
+	'formatchanges-anonymous' => 'Nimetön',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Sherbrooke

@@ -563,6 +563,10 @@ $messages['ksh'] = array(
 	'closewikis-list-header-dispreason' => 'Dä aanjzeichte Jrond',
 	'closewikis-log' => 'Logbooch met de zojemaate un widder opjemaate Wikis',
 	'closewikis-log-header' => 'He es jedes Zomaache un Widderopmaache opjeliß, wat de <i lang="en">Stewards</i> met Wikis jemaat han.',
+	'closewikis-log-close' => 'hät $2 zojemaat',
+	'closewikis-log-reopen' => 'hät $2 wider op jemaat',
+	'right-editclosedwikis' => 'zojemaate Wikis ändere',
+	'right-closewikis' => 'Wikis zomaache',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -642,6 +646,40 @@ $messages['nl'] = array(
 	'closewikis-log-reopen' => 'heeft $2 heropend',
 	'right-editclosedwikis' => 'Gesloten wikis bewerken',
 	'right-closewikis' => "Gesloten wiki's",
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'closewikis-desc' => 'Tillèt stenging av wikiar i wikisamlingar',
+	'closewikis-page' => 'Steng wiki',
+	'closewikis-page-close' => 'Steng wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Årsak (blir vist):',
+	'closewikis-page-close-reason' => 'Årsak (blir logga):',
+	'closewikis-page-close-submit' => 'Steng',
+	'closewikis-page-close-success' => 'Wiki stengt',
+	'closewikis-page-reopen' => 'Attopna wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Årsak:',
+	'closewikis-page-reopen-submit' => 'Attopna',
+	'closewikis-page-reopen-success' => 'Wikien blei attopna',
+	'closewikis-page-err-nowiki' => 'Oppgav ugyldig wiki',
+	'closewikis-page-err-closed' => 'Wikien er allereie stengt',
+	'closewikis-page-err-opened' => 'Wikien er ikkje stengt',
+	'closewikis-list' => 'Lista over stengte wikiar',
+	'closewikis-list-intro' => 'Denne lista inneheld wikiar som har blitt stengt av forvaltarar.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Stengt av',
+	'closewikis-list-header-timestamp' => 'Stengt den',
+	'closewikis-list-header-dispreason' => 'Vist årsak',
+	'closewikis-log' => 'Logg over stenging av wikiar',
+	'closewikis-log-header' => 'Her er ein logg over alle stengingar og attopningar av gjort av forvaltarar.',
+	'closewikis-log-close' => 'stengte $2',
+	'closewikis-log-reopen' => 'opna att $2',
+	'right-editclosedwikis' => 'Endra stengte wikiar',
+	'right-closewikis' => 'Steng wikiar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -747,11 +785,26 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Motiv (afişat):',
 	'closewikis-page-close-submit' => 'Închide',
+	'closewikis-page-close-success' => 'Wiki închis cu succes',
 	'closewikis-page-reopen' => 'Redeschide wiki',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
 	'closewikis-page-reopen-reason' => 'Motiv:',
 	'closewikis-page-reopen-submit' => 'Redeschide',
+	'closewikis-page-reopen-success' => 'Wiki redeschis cu succes',
+	'closewikis-page-err-closed' => 'Acest wiki e deja închis',
+	'closewikis-page-err-opened' => 'Acest wiki nu e închis',
+	'closewikis-list' => 'Listă de wiki închise',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Închis de',
+	'closewikis-list-header-timestamp' => 'Închis la',
+	'closewikis-list-header-dispreason' => 'Motiv afişat',
+	'closewikis-log' => 'Jurnal închidere wiki',
+	'closewikis-log-close' => 'închis $2',
+	'closewikis-log-reopen' => 'redeschis $2',
+	'right-editclosedwikis' => 'Modifică wiki închise',
 );
 
 /** Tarandíne (Tarandíne)

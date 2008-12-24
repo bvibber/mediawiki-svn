@@ -132,12 +132,13 @@ Et voi luoda tätä sivua, mutta voit [{{fullurl:{{FULLPAGENAME}}|action=edit}} 
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Verdy p
  */
 $messages['fr'] = array(
 	'createbox-desc' => 'Boîte de saisie spécialisée pour la création de page',
 	'createbox-create' => 'Créer',
-	'createbox-exists' => "Désolé, \"'''{{FULLPAGENAME}}'''\" existe déjà.
+	'createbox-exists' => "Désolé, « '''{{FULLPAGENAME}}''' » existe déjà.
 
 Vous ne pouvez pas créer cette page, mais vous pouvez [{{fullurl:{{FULLPAGENAME}}|action=edit}} la modifier], [{{fullurl:{{FULLPAGENAME}}}} la lire] ou choisir de créer une page différente à l’aide de la boîte ci-dessous.
 

@@ -148,6 +148,22 @@ Die Betreiber dieser Webseite können keine Verantwortung für den Inhalt diser 
 	'talkhere-collapse' => 'Editor verbergen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'talkhere-desc' => 'Zasajźujo diskusijny bok do boka',
+	'talkhere-foottext' => 'Górjejcne komentary su snaź woglědowarje zawóstajili.
+
+Awtory toś togo sedła njamógu pśewześ žednu zagronitosć za wopśimjeśe takich komentarow.',
+	'talkhere-talkpage' => 'diskusijny bok',
+	'talkhere-notalk' => "''(doněnta žedne komentary)''",
+	'talkhere-addcomment' => 'komentar pśidaś',
+	'talkhere-beforeinput' => 'Móžoš dołojce komentar zapódaś',
+	'talkhere-loading' => 'Editor se startujo...',
+	'talkhere-collapse' => 'Editor schowaś',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

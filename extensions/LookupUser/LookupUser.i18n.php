@@ -390,15 +390,19 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'lookupuser' => 'Felhasználói információ keresése',
+	'lookupuser-desc' => '[[Special:LookupUser|Információ lekérése]] egy adott felhasználóról, például annak e-mail címe vagy azonosítója',
 	'lookupuser-intro' => 'Add meg a felhasználó nevét, akinek meg szeretnéd nézni a beállításait.',
 	'lookupuser-nonexistent' => 'Hiba: a felhasználó nem létezik',
 	'lookupuser-authenticated' => 'Email megerősítés: $1',
 	'lookupuser-not-authenticated' => 'nincs megerősítve',
 	'lookupuser-id' => 'Azonosító: <tt>#$1</tt>',
 	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'nincs megadva',
 	'lookupuser-realname' => 'Valódi név: $1',
 	'lookupuser-registration' => 'Regisztráció időpontja: $1',
+	'lookupuser-no-registration' => 'nincs feljegyezve',
 	'lookupuser-touched' => 'Utolsó hozzáférés ideje: $1',
+	'lookupuser-info-authenticated' => 'Megerősített e-mail cím: $1',
 	'lookupuser-useroptions' => 'Beállításai:',
 );
 
@@ -539,9 +543,10 @@ $messages['ksh'] = array(
 	'lookupuser-email' => 'E-mail Address: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => '–nit&nbsp;aanjejovve–',
 	'lookupuser-realname' => 'Rechteje Name: $1',
-	'lookupuser-registration' => 'Et eets aanjemelldt:',
+	'lookupuser-registration' => 'Et eets aanjemelldt om: $1',
 	'lookupuser-no-registration' => '–nit&nbsp;faßjehallde–',
 	'lookupuser-touched' => 'Letz Änderung am Metmaacher-Datesatz: $1',
+	'lookupuser-info-authenticated' => 'Bestätesch övver <i lang="en">e-mail</i>:',
 	'lookupuser-useroptions' => 'Enstellunge:',
 );
 

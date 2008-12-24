@@ -286,6 +286,13 @@ $messages['nl'] = array(
 	'doublewiki-desc' => 'Presenteert een pagina en de vertaling uit een andere wiki in twee kolommen op dezelfde pagina',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'doublewiki-desc' => 'Syner ei sida og omsetjinga hennar frå ein annan wiki sida ved sida',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

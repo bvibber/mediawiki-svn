@@ -6130,10 +6130,86 @@ $messages['th'] = array(
  */
 $messages['tl'] = array(
 	'boardvote' => 'Halalan ng Pabahalaan<!--Board of Trustees is Pabahalaan--> (Lupon ng mga Kabahala) ng Wikimedia',
-	'boardvote-desc' => '[[meta:Board elections/2008|Halalan ng Pabahalaan ng Wikimedia]]',
+	'boardvote-desc' => '[[meta:Board elections/2008|Halalan ng Lupon ng mga Pabahalaan ng Wikimedia]]',
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Maghalal/Bumoto]]
 * [[Special:Boardvote/list|Talaan ng mga paghalal/pagboto sa ngayon]]
 * [[Special:Boardvote/dump|Ibasura ang de-kodigong rekord ng halalan]]',
+	'boardvote_intro' => '<p>Maligayang pagdating sa halalan para sa Lupon ng Pabahalaan ng Wikimedia ng 2008.
+Naghahalal kami ng isang tao para kumatawan sa pamayan ng mga tagagamit na nasa sari-saring mga proyekto ng Wikimedia.
+Tutulong sila para sa pagtukoy ng gagawin para sa panghinaharap na patutunguhan ng mga proyekto ng Wikimedia, bilang isang tao at bilang isang pangkat, at katawanin ang <em>iyong</em> mga kagustuhan at mga alalahanin sa harap ng Lupon ng mga Pabahalaan.
+Magpapasya sila hinggil sa mga kaparaanan para makapangalap ng kita at pagtatakda ng mga salaping nalikom.</p>
+
+<p>Pakibasa lamang na may pagiingat ang mga pahayag at mga katugunan sa mga katanungan ng mga kandidato bago bumoto.
+Bawat isa sa mga kandidato ay isang iginagalang na tagagamit, na nakapagambag na ng malaking panahon at pagod para magawang isang kahalihalinang kapaligiran ang mga proyektong ito na may paninindigan sa masigasig na paghahanap ng kaalamang pantao at malayang pagpapalaganap nito.</p>
+
+<p>Pakihanay (bigyan ng ranggo) ang mga kandidato ayon sa iyong kagustuhan sa pamamagitan ng pagpupuno ng isang bilang sa tabi ng kahon (1 = paboritong kandidato, 2 = pangalawang paborito, ...).
+Maaari mong ibigay ang katulad na kagustuhan sa mahigit pa sa isang kandidato ay maaaring huwag lagyan ng kahanayan (walang ranggo) ang mga kandidato.
+Itinuturing na mas gusto mo ang lahat ng mga hinanay na mga kandidato (binigyan ng ranggo) kaysa walang kahanayang mga kandidato (walang ranggo) at walang damdamin para sa lahat ng walang ranggong mga kandidato.</p>
+
+<p>Tutuusin ang nagwagi sa halalan sa pamamagitan ng pamamaraang Schulze method. Para mas marami pang kabatiran, tingnan ang opisyal na mga pahinan ng halalan.</p>
+
+<p>Para sa mas marami pang kabatiran, tingnan ang:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Mga halalan ng lupon ng 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Mga kandidato</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Schulze_method" class="external">pamamaraang Schulze </a></li></ul>',
+	'boardvote_intro_change' => '<p>Nakapaghalal ka na dati.  Ngunit maaari mong baguhin ang iyong boto sa pamamagitan ng paggamit ng pormularyong nasa ibaba.  Pakihanay (bigyan ng ranggo) ang mga kandidato ayon sa mga kagustuhan, kung saan ang isang mas maliit na bilang ay nagpapahiwatig ng isang mas mataas na kagustuhan para sa partikular na kandidatong iyon.  Maaari mong ibigay ang katulad na kagustuhan sa mas higit pa sa isang kandidato at maaaring panatilihing walang kahanayan (ranggo) ang mga kandidato.</p>',
+	'boardvote_entered' => 'Salamat sa iyo, naitala na ang iyong boto.
+
+Kung iibigin mo, maaari mong itala ang sumusunod na mga detalye.  Ang talaang panghalalan mo ay:
+
+<pre>$1</pre>
+
+Nilagyan ito ng kodigong may susing pampubliko o pangmadla ng mga Tagapangasiwa ng Halalan:
+
+<pre>$2</pre>
+
+Ang kasunod ay ang kinalabasang bersyong may kodigo.  Ito ay [[Special:Boardvote/dump|itatanghal para makita ng publiko]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Bumalik]]',
+	'boardvote_invalidentered' => '<p><strong>May kamalian</strong>: dapat na gamitan ng mga pasulong o positibong buong bilang lamang (1, 2, 3, ....), o iniwang walang laman ang kagustuhang pangkandidato.</p>',
+	'boardvote_nosession' => 'Hindi matukoy ang iyong ID ng tagagamit na pang-Wikimdia.
+Lumagda lamang sa loob ng wiki kung saan ka maaaring bumoto o maghalal, at pumunta sa <nowiki>[[Special:Boardvote]]</nowiki>.
+Dapat kang gumamit ng isang kuwenta o kawnat na may {{PLURAL:$1|ambag|mga ambag}} na hindi bababa kaysa $1 bago ang $2, at nakagawa ng {{PLURAL:$3|ambag|mga ambag}} na hindi bababa sa $3 sa pagitan ng $4 at $5.',
+	'boardvote_notloggedin' => 'Hindi ka nakalagda.
+Para makapaghalal, dapat kang gumamit ng isang kuwenta o akawnt na may {{PLURAL:$1|ambag|mga ambag}} na hindi bababa sa $1 bago ang $2, at nakagawa ng {{PLURAL:$3|ambag|mga ambag}} na hindi bababa sa $3 sa pagitan ng $4 at $5.',
+	'boardvote_notqualified' => 'Hindi ka pa maaaring bumoto sa halalang ito.
+Para makapaghalal, dapat kang gumamit ng isang kuwenta o akawnt na may {{PLURAL:$1|ambag|mga ambag}} na hindi bababa sa $1 bago ang $2, at nakagawa ng {{PLURAL:$3|ambag|mga ambag}} na hindi bababa sa $3 sa pagitan ng $4 at $5.',
+	'boardvote_novotes' => 'Walang pang bumoboto.',
+	'boardvote_time' => 'Oras',
+	'boardvote_user' => 'Tagagamit',
+	'boardvote_edits' => 'Mga pagbabago',
+	'boardvote_days' => 'Mga araw',
+	'boardvote_ip' => 'IP',
+	'boardvote_ua' => 'Ahente ng tagagamit',
+	'boardvote_listintro' => '<p>Isa itong talaan ng lahat ng mga paghalal (boto) na naitala na sa ngayon.
+$1 para sa may kodigong dato.</p>',
+	'boardvote_dumplink' => 'Pindutin dito',
+	'boardvote_submit' => "Sige/Ayos 'yan",
+	'boardvote_strike' => 'Patamaan ng guhit',
+	'boardvote_unstrike' => 'Tanggalin ang pagkakadaan ng guhit',
+	'boardvote_needadmin' => 'Tanging mga tagapangasiwa lamang na halalan ang makagagawa ng gawaing ito.',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Mga Halalan ng Lupon ng Wikimedia</a>:
+Bukas ang paghahalal/pagboto hanggang Hunyo 22',
+	'boardvote_notstarted' => 'Hindi pa nagsisimula ang halalan',
+	'boardvote_closed' => 'Sarado na ang paghahalal, tingnan [http://meta.wikimedia.org/wiki/Board_elections/2008/Results ang pahina ng mga halalan para sa mga kinalabasan o resulta]',
+	'boardvote_edits_many' => 'marami',
+	'group-boardvote' => 'Mga tagapangasiwa ng halalang panlupon',
+	'group-boardvote-member' => 'tagapangasiwa ng halalang panlupon',
+	'grouppage-boardvote' => '{{ns:project}}:Tagapangasiwa ng halalang panlupon',
+	'boardvote_blocked' => 'Hinadlangan ka sa iyong nakatalang wiki.
+Hindi pinapahintulutang bumoto ang hinarang na mga tagagamit.',
+	'boardvote_bot' => "Tinatakan ka bilang isang ''bot'' sa iyong nakatalang wiki.
+Hindi pinapahintulutang bumoto ang mga kuwenta/akawnt na pang-''bot''.",
+	'boardvote_welcome' => "Maligayang pagdating '''$1'''!",
+	'go_to_board_vote' => 'Mga Halalan ng Lupon ng Wikimedia ng 2008',
+	'boardvote_redirecting' => 'Para sa mas mainam na kaligtasan (seguridad) at pagkanaaninag, pinatatakbo namin ang paghahalal sa isang panlabas at napapangasiwaang malayang (independiyente) serbidor.
+
+Ituturo/ililipat ka patungo sa panlabas na serbidor na ito sa loob ng 20 segundo.  [$1 Pindutin dito] para pumunta na doon ngayon.
+
+Maaaring lumitaw ang isang babalang pangkaligtasan o pangseguridad na hinggil sa isang walang lagdang katibayan (sertipiko).',
+	'right-boardvote' => 'Mangasiwa sa mga halalan',
 );
 
 /** Tonga (faka-Tonga) */

@@ -477,6 +477,8 @@ Apondètz-ne en utilizant l'esplech a drecha.",
  */
 $messages['ps'] = array(
 	'gep-categories' => 'وېشنيزې',
+	'gep-addcategorybutton' => 'ورګډول',
+	'gep-addsectionbutton' => 'ورګډول',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

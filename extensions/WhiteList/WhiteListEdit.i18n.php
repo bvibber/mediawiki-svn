@@ -336,15 +336,18 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Smooth O
  */
 $messages['bs'] = array(
 	'whitelisttablemodifyall' => 'Sve',
 	'whitelisttablemodifynone' => 'Ništa',
 	'whitelisttableedit' => 'Uredi',
 	'whitelisttableremove' => 'Ukloni',
-	'whitelistrequestmsg' => '$1 zahtijeva pristup slijedećim stranicama:
+	'whitelistrequest' => 'Traži pristup za više stranica',
+	'whitelistrequestmsg' => '$1 zahtijeva pristup slijedećim {{PLURAL:$3|stranica|stranicama}}:
 
 $2',
+	'whitelistrequestconf' => 'Zahtjen za nove stranice je poslan na $1',
 );
 
 /** Catalan (Català)
@@ -1891,6 +1894,67 @@ $2',
  */
 $messages['th'] = array(
 	'whitelisttablemodifyall' => 'ทั้งหมด',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'whitelist-desc' => 'Baguhin ang mga pahintulot na pangakseso ng pinagbabawalang mga tagagamit',
+	'whitelistedit' => 'Patnugot na may akseso sa "puting talaan"',
+	'whitelist' => 'Mga pahina ng "puting talaan"',
+	'mywhitelistpages' => 'Mga pahina ko',
+	'whitelistfor' => '<center>Pangkasalukuyang kabatiran para sa/kay <b>$1</b></center>',
+	'whitelisttablemodify' => 'Baguhin',
+	'whitelisttablemodifyall' => 'Lahat',
+	'whitelisttablemodifynone' => 'Wala',
+	'whitelisttablepage' => 'Pahina ng Wiki',
+	'whitelisttabletype' => 'Uri ng akseso',
+	'whitelisttableexpires' => 'Magwawakas sa',
+	'whitelisttablemodby' => 'Huling binago ni',
+	'whitelisttablemodon' => 'Huling nabago noong',
+	'whitelisttableedit' => 'Baguhin',
+	'whitelisttableview' => 'Tingnan',
+	'whitelisttablenewdate' => 'Bagong petsa:',
+	'whitelisttablechangedate' => 'Baguhin ang petsa ng pagwawakas:',
+	'whitelisttablesetedit' => 'Itakda sa makapagbabago',
+	'whitelisttablesetview' => 'Itakda bilang matitingnan',
+	'whitelisttableremove' => 'Tanggalin',
+	'whitelistnewpagesfor' => 'Magdagdag ng bagong mga pahina sa "puting talaan" ni <b>$1</b><br />
+Gumamit ng * o kaya % bilang panitik (karakter) na "barahang pamalit"',
+	'whitelistnewtabledate' => 'Petsa ng pagwawakas:',
+	'whitelistnewtableedit' => 'Itakda sa makapagbabago',
+	'whitelistnewtableview' => 'Itakda bilang matatanaw',
+	'whitelistnowhitelistedusers' => 'Walang mga tagagamit sa pangkat na "{{MediaWiki:Pinagbawalang-Pangkat}}".
+Kailangan mong [[Special:UserRights|magdagdag ng mga tagagamit sa pangkat]] bago ka makapagdag ng mga pahina sa "puting talaan" ng isang tagagamit.',
+	'whitelistnewtableprocess' => 'Isagawa',
+	'whitelistnewtablereview' => 'Suriing muli',
+	'whitelistselectrestricted' => '== Piliin ang pangalan ng pinagbabawalang tagagamit ==',
+	'whitelistpagelist' => 'Mga pahina sa {{SITENAME}} para kay $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Tila hindi nainstala/nailuklok ng tama ang [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Karugtong:PaggamitEstadistika], na isang pangangailangan para sa karugtong (ekstensyon) na ito!</font>",
+	'whitelistbadtitle' => 'Masamang pamagat -',
+	'whitelistoverview' => '== Pagtunghay ng mga pagbabago para sa/kay $1 ==',
+	'whitelistoverviewcd' => "* Pinapalitan ang petsa patungong '''$1''' para kay [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Itinatakda ang akseso sa '''$1''' para kay [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Tinatanggal ang akseso sa [[:$1|$1]]',
+	'whitelistoverviewna' => "* Idinaragdag ang [[:\$1|\$1]] sa \"puting talaan\" na may aksesong '''\$2''' at katapusang petsang '''\$3'''",
+	'whitelistrequest' => 'Humiling ng akseso para sa mas marami pang mga pahina',
+	'whitelistrequestmsg' => 'Humihiling si $1 ng akseso patungo sa sumusunod na {{PLURAL:$3|pahina|mga pahina}}:
+
+$2',
+	'whitelistrequestconf' => 'Ipinadala kay $1 ang kahilingan para sa bagong mga pahina',
+	'whitelistnonrestricted' => "Hindi isang pinagbabawalang tagagamit si '''$1'''.
+Nararapat lamang para sa pinagbabawalang mga tagagamit ang pahinang ito",
+	'whitelistnever' => 'hindi kailanman',
+	'whitelistnummatches' => '  - {{PLURAL:$1|isang katugma|$1 mga katugma}}',
+	'right-editwhitelist' => 'Baguhin ang "puting talaan" para sa umiiral na mga tagagamit',
+	'right-restricttowhitelist' => 'Baguhin at tingnan ang mga pahinang nasa "puting talaan" lamang',
+	'action-editwhitelist' => 'baguhin ang "puting talaan" para sa umiiral na mga tagagamit',
+	'action-restricttowhitelist' => 'Magbago ang tingnan ang mga pahinang nasa "puting talaan" lamang',
+	'group-restricted' => 'Pinagbawalang mga tagagamit',
+	'group-restricted-member' => 'Pinagbawalang tagagamit',
+	'group-manager' => 'Mga tagapamahala',
+	'group-manager-member' => 'Tagapamahala',
 );
 
 /** Turkish (Türkçe)

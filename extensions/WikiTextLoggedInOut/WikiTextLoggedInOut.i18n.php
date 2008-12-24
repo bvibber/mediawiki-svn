@@ -56,6 +56,13 @@ $messages['dsb'] = array(
 	'wikitextloggedinout-desc' => 'Dwě parserowej kokulce, <tt>&lt;loggedin&gt;</tt> and <tt>&lt;loggedout&gt;</tt>, aby se drugi tekst we wotwisnosći pśizjawjeńskego statusa wužywarja pokazał',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'wikitextloggedinout-desc' => 'Dos funciones del analizador sintáctico, <tt>&lt;loggedin&gt;</tt> y <tt>&lt;loggedout&gt;</tt>, para mostrar textos diferentes dependiendo del estado de registro del usuario',
+);
+
 /** French (Français)
  * @author Grondin
  */

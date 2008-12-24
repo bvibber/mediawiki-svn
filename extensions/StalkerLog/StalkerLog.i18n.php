@@ -84,6 +84,15 @@ $messages['eo'] = array(
 	'stalkerlog-log-text' => 'Jen protokolo pri ensalutoj kaj elsaltuoj de uzantoj.',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'stalkerlog-desc' => 'Lisää [[Special:Log/stalkerlog|lokin]] käyttäjien sisään- ja uloskirjautumisista.',
+	'stalkerlog-log-login' => 'kirjautunut sisään.',
+	'stalkerlog-log-logout' => 'kirjautunut ulos.',
+);
+
 /** French (Français)
  * @author Cedric31
  * @author Grondin

@@ -519,6 +519,7 @@ $messages['hu'] = array(
 	'imagemap_desc' => 'Lehetővé teszi kliensoldali imagemap-ek létrehozását a <tt><nowiki><imagemap></nowiki></tt> tag segítségével',
 	'imagemap_no_image' => 'Error: kell egy előírt kép az első sorban',
 	'imagemap_invalid_image' => 'Error: érvénytelen vagy nem létező kép',
+	'imagemap_bad_image' => 'Hiba: a kép feketelistán van ezen az oldalon',
 	'imagemap_no_link' => 'Error: nincs érvényes link a(z) $1. sor végén',
 	'imagemap_invalid_title' => 'Error: érvénytelen cím a linkben a $1 vonalban',
 	'imagemap_missing_coord' => 'Error: nincs elég koordináta az alakításhoz a $1 sorban',
@@ -527,6 +528,7 @@ $messages['hu'] = array(
 	'imagemap_invalid_coord' => 'Error: érvénytelen koordináta a $1 vonalban, számnak kell lennie',
 	'imagemap_invalid_desc' => 'Error: hibás desc leírás, ezek egyike kell: <tt>$1</tt>',
 	'imagemap_description' => 'Kép leírása',
+	'imagemap_poly_odd' => 'Hiba: az $1. sorban páratlan számú koordináta található',
 );
 
 /** Interlingua (Interlingua)

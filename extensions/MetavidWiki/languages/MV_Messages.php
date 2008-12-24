@@ -2051,6 +2051,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Bdamokos
  * @author Dani
  * @author Dorgan
  * @author Tgr
@@ -2079,6 +2080,7 @@ $messages['hu'] = array(
 	'mv_tool_search' => 'Keresés',
 	'mv_play' => 'Lejátszás',
 	'mv_edit' => 'Szerkesztés',
+	'mv_history' => 'Történet',
 	'mv_edit_title' => 'Szöveg szerkesztése',
 	'mv_remove' => 'eltávolítás',
 	'mv_search_and' => 'és',
@@ -2544,6 +2546,7 @@ $messages['lb'] = array(
 	'mv_tool_search' => 'Sichen',
 	'mv_tool_navigate' => 'Navigéieren',
 	'mv_tool_export' => 'Exportéieren',
+	'mv_tool_embed' => 'Abannen',
 	'mv_watch_clip' => 'Clip kucken',
 	'mv_close_clip' => 'Clip zoumaachen',
 	'mv_click_to_edit' => "klickt fir z'änneren",
@@ -2563,9 +2566,11 @@ $messages['lb'] = array(
 	'mv_remove_category' => 'Kategorie ewechhuelen',
 	'mv_existing_categories' => '{{PLURAL:$1|Kategorie|Kategorien}}:',
 	'mv_add_category' => 'Eng Kategorie derbäisetzen',
+	'mv_basic_text_desc' => 'Text Beschreiwung (fakultativ)',
 	'mv_viewnext' => '($1) weisen',
 	'mv_viewprevnext' => '($1) ($2) weisen',
 	'mv_results_for' => 'Resultater fir $1',
+	'mv_video_search' => 'Video-Sich',
 	'mv_add_filter' => 'Filter derbäisetzen',
 	'mv_search_match' => 'Text sichen',
 	'mv_search_spoken_by' => 'Geschwat vum',

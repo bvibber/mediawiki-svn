@@ -187,6 +187,7 @@ $2',
  * @author Dani
  */
 $messages['hu'] = array(
+	'email-desc' => 'Lehetővé teszi egyéni fejlécek/láblécek hozzáadását a szerkesztők e-mailjeihez',
 	'email_footer' => '----------------------------------------------------------------------------
 Ezt az üzenetet $1 küldte neked a(z) {{SITENAME}} email-rendszerén keresztül.
 

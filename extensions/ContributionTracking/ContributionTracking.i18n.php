@@ -364,6 +364,19 @@ $messages['nl'] = array(
 	'contrib-tracking-button' => 'Doorgaan',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'contributiontracking-desc' => 'Bidragssporing for innsamlinga til Wikimedia',
+	'contributiontracking' => 'Bidragssporing',
+	'contrib-tracking-error' => 'Feil',
+	'contrib-tracking-error-text' => 'Ugyldig skjema',
+	'contrib-tracking-submitting' => 'Sender til betalingshandtering...',
+	'contrib-tracking-continue' => 'Om du ikkje blir omdirigert automatsik, klikk på knappen for å gjennomføra donasjonen hjå PayPal.',
+	'contrib-tracking-button' => 'Hald fram',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

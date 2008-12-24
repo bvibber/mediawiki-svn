@@ -523,12 +523,21 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'passwordreset' => 'កំណត់​ពាក្យសំងាត់​សាឡើងវិញ',
+	'passwordreset-desc' => '[[Special:PasswordReset|ដើម្បី​កំណត់​ពាក្យសំងាត់​អ្នកប្រើប្រាស់​វិគី​សាឡើងវិញ]] ត្រូវ​ទាមទារ​ឱ្យ​មាន​សិទ្ធិ​លើ​ការកំណត់​ពាក្យសំងាត់',
 	'passwordreset-invalidusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ គ្មានសុពលភាព',
 	'passwordreset-emptyusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ ទទេ',
+	'passwordreset-nopassmatch' => 'ពាក់សំងាត់​មិន​ត្រឹមត្រូវ​ទេ',
 	'passwordreset-username' => 'ឈ្មោះអ្នកប្រើប្រាស់៖',
 	'passwordreset-newpass' => 'ពាក្យសំងាត់​ថ្មី៖',
 	'passwordreset-confirmpass' => 'បញ្ជាក់​ទទួល​ស្គាល់​ពាក្យសំងាត់៖',
 	'passwordreset-submit' => 'កំណត់​ពាក្យសំងាត់​សាឡើងវិញ',
+	'passwordreset-success' => 'ពាក្យសំងាត់​ត្រូវ​បាន​កំណត់​សាឡើងវិញ​សម្រាប់​អ្នកប្រើប្រាស់ ដែល​មាន​អត្តលេខ​៖ $1',
+	'passwordreset-disableuser' => 'បិទ​គណនី​អ្នកប្រើប្រាស់​ឬ​?',
+	'passwordreset-disablesuccess' => 'គណនី​ត្រូវ​បាន​បិទ ចំពោះ​អ្នកប្រើប្រាស់​ដែល​មាន​អត្តលេខ​៖ $1',
+	'passwordreset-accountdisabled' => 'គណនី​ត្រូវ​បាន​បិទ',
+	'disabledusers' => 'អ្នកប្រើប្រាស់​ដែល​ត្រូវ​បាន​បិទ',
+	'disabledusers-summary' => 'នេះ​គឺជា​បញ្ជី​អ្នកប្រើប្រាស់ ដែល​ត្រូវ​បាន​បិទ​តាមរយៈ​ការកំណត់​ពាក្យសំងាត់​ឡើងវិញ​។',
+	'right-passwordreset' => 'កំណត់​ពាក្យសំងាត់​ឡើងវិញ​សម្រាប់​អ្នកប្រើប្រាស់ ([[Special:PasswordReset|មើល​ទំព័រ​ពិសេស]])',
 );
 
 /** Korean (한국어)
@@ -549,9 +558,9 @@ $messages['ksh'] = array(
 	'passwordreset-emptyusername' => 'Dä Metmaacher-Name es leddisch',
 	'passwordreset-nopassmatch' => 'De Paßwööter sin unejaal',
 	'passwordreset-badtoken' => 'Dat <i lang="en">edit token</i> es Kappes',
-	'passwordreset-username' => 'Metmaacher Name',
-	'passwordreset-newpass' => 'Neu Paßwoot',
-	'passwordreset-confirmpass' => 'Norr_ens dat Paßwoot',
+	'passwordreset-username' => 'Metmaacher Name:',
+	'passwordreset-newpass' => 'Neu Paßwoot:',
+	'passwordreset-confirmpass' => 'Norr_ens dat Paßwoot:',
 	'passwordreset-submit' => 'Paßwoot zeröck setze',
 	'passwordreset-success' => 'Dat Paßwoot för de Metmaacher-Nommer $1 wood zeröck jesatz.',
 	'passwordreset-disableuser' => 'Däm Metmaacher singe Zojang still läje?',

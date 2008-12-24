@@ -57,6 +57,13 @@ $messages['dsb'] = array(
 	'gotocategory-desc' => 'Pśeglědujo pytańske zapśimjeśa pśeśiwo mjenjowemu rumoju Kategorija: za funkcionalnosć "Źi k bokoju"',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'gotocategory-desc' => 'Compruebas los términos de búsqueda en el espacio de nombres «Categoría:» para la función «Ir a la página»',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

@@ -222,6 +222,16 @@ $messages['ksh'] = array(
 	'editsubpages-desc' => 'Löht de Wiki-Köbesse en Sigg met all ier Ungersigge
 [[MediaWiki:Unlockedpages|freijevve]] för de namelose
 Metmaacher se ze Ändere.',
+	'unlockedpages' => '#<!-- donn en en dä Reih nix ändere! --><pre>
+# Don di Sigge, die de freijevve wells hee dronger met:
+# * Name-fun-dä-Sigg
+# Vör däm Nam moß ene Shtähn shtonn, domet se aanjenumme weed,
+# alles söns jelld als enne Kommentaa un määt nix
+# Name kam_mer och als [[links]] schrieve.
+# Jruß- un Kleinjeschrevve määt ene Ongerscheed.
+# Klaafsigge wäde automattesch zosamme met dänne ier Sigge freijejovve.
+# Op http://www.mediawiki.org/wiki/Extension:EditSubpages kanns De noch mieh nohlesse
+  #</pre><!-- donn en en dä Reih nix ändere! -->',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -269,6 +279,23 @@ $messages['nl'] = array(
 # pagina's. Zie http://www.mediawiki.org/wiki/Extension:EditSubpages voor
 # meer informatie.
   #</pre><!-- deze regel niet wijzigen -->",
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'editsubpages-desc' => 'Lèt administratorane låsa opp ei sida og alle undersidene hennar for endringar for uregistrerte via [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => ' #<!-- lat denne linja vera som ho er --><pre>
+# Skriv inn sider du vil låsa opp nedanfor på formen
+# * sidenamn
+# Namna må byrja med stjerna,
+# alt anna blir rekna som ein kommentar
+# Sidenamn kan vera [[lenkjer]], og
+# ein må skilja mellom store og små bokstavar.
+# Diskusjonssider blir automatisk låste opp saman med hovudsida
+# Sjå http://www.mediawiki.org/wiki/Extension:EditSubpages for meir informasjon
+   #</pre><!-- lat denne linja vera som ho er -->',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

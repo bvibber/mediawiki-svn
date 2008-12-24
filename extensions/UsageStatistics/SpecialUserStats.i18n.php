@@ -428,11 +428,13 @@ $messages['eo'] = array(
 /** Finnish (Suomi)
  * @author Japsu
  * @author Silvonen
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'specialuserstats' => 'Käyttäjäkohtaiset tilastot',
 	'usagestatistics' => 'Käyttäjäkohtaiset tilastot',
 	'usagestatisticsfor' => '<h2>Käyttäjäkohtaiset tilastot ([[User:$1|$1]])</h2>',
+	'usagestatisticsforallusers' => '<h2>Käyttötilastot kaikilta käyttäjiltä</h2>',
 	'usagestatisticsinterval' => 'Aikaväli',
 	'usagestatisticstype' => 'Tyyppi',
 	'usagestatisticsstart' => 'Aloituspäivä',
@@ -1213,6 +1215,35 @@ $messages['tg-cyrl'] = array(
 	'usagestatisticscumulative' => 'Анбошта',
 	'usagestatisticscumulative-text' => 'анбошта',
 	'usagestatisticscalselect' => 'Интихоб кардан',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'specialuserstats' => 'Mga estadistika ng paggamit',
+	'usagestatistics' => 'Mga estadistika ng paggamit',
+	'usagestatistics-desc' => 'Ipakita ang isang (indibiduwal na) tagagamit at pangkalahatang mga estadistika ng paggamit ng wiki',
+	'usagestatisticsfor' => '<h2>Mga estadistika ng paggamit para kay [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Mga estadistika ng paggamit para sa lahat ng mga tagagamit</h2>',
+	'usagestatisticsinterval' => 'Agwat sa pagitan',
+	'usagestatisticstype' => 'Uri (tipo)',
+	'usagestatisticsstart' => 'Petsa ng simula',
+	'usagestatisticsend' => 'Petsa ng pagwawakas',
+	'usagestatisticssubmit' => 'Lumikha ng mga palaulatan (estadistika)',
+	'usagestatisticsnostart' => '* <font color=red>Pakitukoy ang isang petsa ng pagsisimula</font>',
+	'usagestatisticsnoend' => '* <font color=red>Pakitukoy ang isang petsa ng pagwawakas</font>',
+	'usagestatisticsbadstartend' => '<b>Maling petsa ng <i>pagsisimula</i> at/o <i>pagwawakas</i>!</b>',
+	'usagestatisticsintervalday' => 'Araw',
+	'usagestatisticsintervalweek' => 'Linggo',
+	'usagestatisticsintervalmonth' => 'Buwan',
+	'usagestatisticsincremental' => 'Unti-unting dagdag (may inkremento)',
+	'usagestatisticsincremental-text' => 'unti-unting dagdag (may inkremento)',
+	'usagestatisticscumulative' => 'Maramihang dagdag (kumulatibo)',
+	'usagestatisticscumulative-text' => 'maramihang dagdag (kumulatibo)',
+	'usagestatisticscalselect' => 'Piliin',
+	'usagestatistics-editindividual' => '$1 mga estadistika ng paggamit para sa indibidwal o isang tagagamit',
+	'usagestatistics-editpages' => '$1 mga estadistika ng pahina para sa isang indibidwal o isang tagagamit',
 );
 
 /** Turkish (Türkçe)

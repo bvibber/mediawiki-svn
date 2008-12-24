@@ -34,6 +34,13 @@ $messages['es'] = array(
 	'formatsearch-desc' => 'Limpia la página de resultados de búsqueda',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'formatsearch-desc' => 'Siivoaa hakutulossivun.',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Sherbrooke

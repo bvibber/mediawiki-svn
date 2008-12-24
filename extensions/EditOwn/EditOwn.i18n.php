@@ -175,6 +175,13 @@ $messages['nl'] = array(
 	'editown-desc' => "Gebruikers zonder het recht ''editall'' kunnen alleen pagina's bewerken die ze zelf hebben gemaakt",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'editown-desc' => "Brukarar utan ''editall''-rettar kan berre endra sider dei sjølv har oppretta",
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

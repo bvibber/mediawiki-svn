@@ -14,6 +14,15 @@ $messages['en'] = array(
 	'semanticgallery-desc' => 'Adds a gallery output format to SMW inline queries',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'semanticgallery-desc' => 'Short description of the extension.
+Shown in [[Special:Version]].
+Do not translage links.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -35,11 +44,32 @@ $messages['gl'] = array(
 	'semanticgallery-desc' => 'Engade unha galería de formato de saída ás dúbidas SMW en liña',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'semanticgallery-desc' => 'הוספת מבנה פלט גלריה לשאילתות עריכה של SMW',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'semanticgallery-desc' => 'Přidawa galerijowy wudawanski format k wotprašanjam Semantic MediaWiki',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'semanticgallery-desc' => 'ギャラリー出力フォーマットにSMWインラインクエリーを追加する',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'semanticgallery-desc' => 'Deiht en Fommaat för en Jallerie-aatijje Aanzeich dobei, bei <i lang="en">Semantic Mediawiki</i> singe Froore en Sigge.',
 );
 
 /** Dutch (Nederlands)

@@ -96,6 +96,23 @@ $messages['es'] = array(
 	'abcdownload' => 'Descargar:',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'abcdesc' => '<tt>&lt;abc&gt;</tt> etiketa gehitzen du ABC musika formatura',
+	'abcdownload' => 'Jaitsi:',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Ilaiho
+ */
+$messages['fi'] = array(
+	'abcdesc' => 'Lisää <tt>&lt;abc&gt;</tt>-elementin ABC-musiikin muotoilemiseen.',
+	'abcdownload' => 'Lataa:',
+);
+
 /** French (Français)
  * @author Grondin
  */

@@ -617,12 +617,14 @@ $messages['ka'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'patrol-endorse' => 'យល់ស្រប',
 	'patrol-revert' => 'ត្រឡប់',
 	'patrol-revert-reason' => 'មូលហេតុ៖',
 	'patrol-skip' => 'រំលង',
 	'patrol-reverting' => 'កំពុងត្រឡប់: $1',
 	'patrol-reverted-ok' => 'កំណែប្រែត្រូវត្រឡប់រួច។',
 	'patrol-reverted-failed' => 'កំណែប្រែមិនអាចត្រឡប់បានទេ។',
+	'patrol-resume' => 'ចុច​ទីនេះ ដើម្បី​បន្ត​។',
 	'group-patroller' => 'អ្នកតាមដាន',
 	'group-patroller-member' => 'អ្នកតាមដាន',
 	'grouppage-patroller' => '{{ns:project}}:អ្នកតាមដាន',

@@ -517,7 +517,8 @@ $messages['ksh'] = array(
 	'editmsg-warning-parse1' => '* di <i lang="en">regular expression</i> paß op kein Name fun System-Nohreschte: <code>$1</code>',
 	'editmsg-warning-parse2' => '* Mer wollte ävver en Aanföhrung noh dämm Piel hann: <code>$1</code>',
 	'editmsg-warning-parse3' => '* Dä Wäät jeiht nit zo Engk: <code>$1</code>',
-	'editmsg-warning-file' => '* Fähler beim Lesse fun dä Dateie för de Shprooche: $1',
+	'editmsg-warning-file' => '* Fähler beim Dateie-Lesse för de Shprooch{{PLURAL:$2||e|e}: $1',
+	'editmsg-warning-mismatch' => '* Dä Ojinaal Täx wohr nit wat mer äwaadt han för {{PLURAL:$2|di Shprooch|de Shprooche|nix}}: $1',
 	'editmsg-apply-patch' => 'Donn dä „Flecke“ (<i lang="en">patch</i>) aanwennde',
 	'editmsg-no-patch' => 'Kann dat Kommando <i lang="en"><code>patch</code></i> nit aanwende',
 	'editmsg-patch-failed' => 'Dat Ändere eß scheif jejange. Dä Stattus-Kood am Eng wohr: $1.',
@@ -642,10 +643,26 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Nettbasert endring]] av eit stort tal av Messages*.php-filer',
+	'editmessages' => 'Endra meldingar',
+	'editmsg-target' => 'Målmelding:',
 	'editmsg-search' => 'Søk',
+	'editmsg-show-list' => 'Syner verdiar for meldingsnamnet «$1»',
+	'editmsg-get-patch' => 'Lag oppdatering',
+	'editmsg-new-search' => 'Nytt søk',
+	'editmsg-warning-parse1' => '* Regulært uttrykk for meldingsnamn passar ikkje: $1',
+	'editmsg-warning-parse2' => '* Sitatteikn forventa etter pil: $1',
+	'editmsg-warning-parse3' => '* Slutten på verditekst ikkje funnen: $1',
+	'editmsg-warning-file' => '* Fillesingsfeil blei funnen for følgjande {{PLURAL:$2|språk|språk}}: $1',
+	'editmsg-warning-mismatch' => '* Originalteksten hadde ikkje den forventa verdien for følgjande {{PLURAL:$2|språk|språk}}: $1',
+	'editmsg-apply-patch' => 'Gjer oppdatering verksam',
+	'editmsg-no-patch' => 'Kunne ikkje utføra «patch»-kommando',
+	'editmsg-patch-failed' => 'Oppdatering mislukkast med avslutningsstatus $1',
+	'editmsg-patch-success' => 'Oppdatert.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

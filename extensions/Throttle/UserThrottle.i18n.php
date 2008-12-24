@@ -69,6 +69,17 @@ Bitte warten Sie einige Minuten und versuchen Sie es dann erneut.',
 	'acct_creation_global_hard_throttle_hit' => 'Die Möglichkeit zur Erstellung von Benutzerkonten wurde für einige Sekunden unterbrochen, um eine Flut von Registrierungen zu reduzieren. Bitte warten Sie einen Moment und drücken Sie dann die Neuladen-Schaltfläche an Ihrem Browser.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Załoženje kontow jo se awtomatiski wopśestało na někotare wokognuśa dla mimoměry licby aktualnych pśizjawjeńskich wopytow.
+Pšosym pócakaj někotare minuty a wopytaj hyšći raz.',
+	'acct_creation_global_hard_throttle_hit' => "Załoženje kontow jo se awtomatiski wopśestało na někotare sekundy, aby se kopica zregistrěrowanjow reducěrowała.
+Pšosym pócakaj wokognuśe a klikni pótom na 'Znowego' we swójom wobglědowaku.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Załoženje wužywarskich kontow wobgranicowaś',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

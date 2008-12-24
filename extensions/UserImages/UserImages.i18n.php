@@ -20,8 +20,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Agbad
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'userimages-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version].
+Do not translate or change links.',
 	'userimages-noimages' => "This message is displayed when the wanted user didn't upload any images.
 
 Parameters:
@@ -237,6 +241,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'userimages-desc' => 'Zeich Jallerieje met dä Bellder, di ene Metmaacher huhjelaade hät met <code><nowiki><userimage /></nowiki></code> aan.',
 	'userimages-caption' => 'Däm „$1“ sing huhjelade Bellder',
 	'userimages-noname' => 'Dä Metmaacher-Name es Kappes udder jaa nit enjejovve.',
 	'userimages-noimages' => 'Dä „$1“ hät kei Belder huhjelade.',

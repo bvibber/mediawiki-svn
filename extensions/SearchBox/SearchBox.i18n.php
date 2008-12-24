@@ -129,6 +129,17 @@ $messages['grc'] = array(
 	'searchbox-namespaces' => 'Ὀνοματεῖα:',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'searchbox-desc' => 'מתן האפשרות להכללת טפסי חיפוש',
+	'searchbox-search' => 'חיפוש',
+	'searchbox-go' => 'לדף',
+	'searchbox-namespaces' => 'מרחבי שם:',
+);
+
 /** Croatian (Hrvatski)
  * @author Suradnik13
  */
@@ -203,7 +214,10 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'searchbox-desc' => 'Tillat inkludering av søkeskjema',
 	'searchbox-search' => 'Søk',
+	'searchbox-go' => 'Gå',
+	'searchbox-namespaces' => 'Namnerom:',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

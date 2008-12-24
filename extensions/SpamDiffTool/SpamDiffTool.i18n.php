@@ -229,6 +229,13 @@ Klaku <a href='$1'>ĉi tie</a> por reveni.",
 	'spamdifftool_submit_buttom' => 'Ek',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'spamdifftool_submit_buttom' => 'Enviar',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
@@ -347,6 +354,14 @@ Zawěsć so, zo njeby cyle domejny blokował, kotrež wužiwarske konta hospoduj
 	'spamdifftool_option_none' => 'ničo',
 	'spamdifftool_block' => 'Blokować:',
 	'spamdifftool_submit_buttom' => 'Wotesłać',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'spamdifftool_no_urls_detected' => "Nem találtam URL-t.
+Kattints <a href='$1'>ide</a> a visszatéréshez.",
 );
 
 /** Interlingua (Interlingua)
@@ -874,6 +889,34 @@ $messages['tg-cyrl'] = array(
 	'spamdifftool_option_none' => 'ҳеҷчиз',
 	'spamdifftool_block' => 'Бастан:',
 	'spamdifftool_submit_buttom' => 'Ирсол',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'spamdifftool' => "Pangasiwaan ang talaan ng pinagbabawalang mga \"manlulusbo\" (''spam'')",
+	'spamdifftool-desc' => "Nagbibigay ng isang payak na paraan ng pagdaragdag ng bagong mga entrada/lahok sa talaan ng pinagbabawalang mga \"manlulusob\" (''spam'') mula sa iba't ibang mga pahina",
+	'spamdifftool_cantedit' => "Paumanhin - wala kang pahintulot na baguhin ang talaan ng pinagbabawalang mga \"manlulusob\" (''spam'').",
+	'spamdifftool_notext' => "Walang tekstong mapagdaragdagan ng talaan ng pinagbabawalang mga \"manlulusob\" (''spam'').
+Pindutin <a href='\$1'>dito</a> upang makapagpatuloy.",
+	'spamdifftool_confirm' => "Tiyakin kung ibig mong idagdag ang mga lahok (entrada) na ito sa talaan ng pinagbabawalang mga \"manlulusob\" (''spam'').
+(Pindutin <a href='\$1' target='bago'>dito</a> upang makapag-ulat ng suliranin/problema.)",
+	'spamdifftool_summary' => "Idinaragdag sa talaan ng pinagbabawalang mga \"manlulusob\" (''spam'').",
+	'spamdifftool_urls_detected' => "Napansin ang sumusunod na mga URL sa loob ng (mga) pagbabago, alin sa mga ito ang nais mong idagdag sa talaan ng pinagbabawalang mga \"manlulusob\" (''spam'')?
+
+Nakaayos ang mga pagpipiliang ito mula sa mas mahigpit magpahanggang sa mas maluwag, ang pagharang sa buong dominyo ay makahahadlang sa lahat ng mga kawing patungo sa anumang bagay na manggagaling mula sa dominyong iyon.
+
+Tiyaking hindi mahaharang/mahahadlangan ang kabuoan ng mga dominyong nagpapasinaya sa mga kuwenta/akawnt ng tagagamit, katulad ng blogpost.com, geocities.com, atbp.",
+	'spamdifftool_no_urls_detected' => "Walang napansing mga ''url''.
+Pindutin <a href='$1'>dito</a> para makabalik.",
+	'spamdifftool_spam_link_text' => "idagdag sa mga \"manlulusob\" (''spam'')",
+	'spamdifftool_option_domain' => 'lahat ng nagmula sa dominyong ito',
+	'spamdifftool_option_subdomain' => 'lahat ng mula sa kabahaging dominyong (subdominyo) ito',
+	'spamdifftool_option_directory' => 'ang kabahaging dominyo (subdominyo) at direktoryong ito',
+	'spamdifftool_option_none' => 'wala',
+	'spamdifftool_block' => 'Harang:',
+	'spamdifftool_submit_buttom' => 'Ipasa',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -442,7 +442,45 @@ Bonvolu pacienciĝi.',
  * @author Sanbec
  */
 $messages['es'] = array(
+	'youtubeauthsub' => 'Subir un video a YouTube',
+	'youtubeauthsub-desc' => 'Permite a los usuarios [[Special:YouTubeAuthSub|subir vídeos]] directamente a YouTube',
+	'youtubeauthsub_info' => 'Para subir un vídeo a YouTube e incluirlo en una página, rellena la siguiente información:',
+	'youtubeauthsub_title' => 'Título',
+	'youtubeauthsub_description' => 'Descripción',
+	'youtubeauthsub_password' => 'Contraseña en YouTube',
+	'youtubeauthsub_username' => 'Usuario en YouTube',
+	'youtubeauthsub_keywords' => 'Palabras clave',
 	'youtubeauthsub_category' => 'Categoría',
+	'youtubeauthsub_submit' => 'Enviar',
+	'youtubeauthsub_clickhere' => 'Pulsa aquí para iniciar sesión en YouTube',
+	'youtubeauthsub_tokenerror' => 'Error al generar la demanda de autorización, intenta recargar la página.',
+	'youtubeauthsub_success' => "¡Enhorabuena!
+Has subido tu vídeo
+Para ver tu vídeo pulsa <a href='http://www.youtube.com/watch?v=$1'>aquí</a>.
+YouTube puede necesitar algún tiempo para procesar tu vídeo, por lo que puede que aún no esté listo.
+
+Para poner tu vídeo en una página de la wiki, añade el siguiente código:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Para subir un vídeo, tendrás que iniciar sesión previamente en YouTube.',
+	'youtubeauthsub_uploadhere' => 'Subir tu vídeo desde aquí:',
+	'youtubeauthsub_uploadbutton' => 'Subir',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Este vídeo puede verse [http://www.youtube.com/watch?v=$1 aquí]',
+	'youtubeauthsub_summary' => 'Subiendo vídeo a YouTube',
+	'youtubeauthsub_uploading' => 'Tu vídeo se está subiendo.
+Por favor, sé paciente.',
+	'youtubeauthsub_viewpage' => 'Como alternativa, puedes ver tu vídeo [[$1|aquí]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Por favor, introduce una o más palabras clave.',
+	'youtubeauthsub_jserror_notitle' => 'Por favor, pon un título para el vídeo.',
+	'youtubeauthsub_jserror_nodesc' => 'Por favor, pon una descripción para el vídeo.',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'youtubeauthsub_description' => 'Kuvaus',
 );
 
 /** French (Français)
@@ -659,6 +697,7 @@ $messages['hu'] = array(
 	'youtubeauthsub_category' => 'Kategória',
 	'youtubeauthsub_submit' => 'Elküldés',
 	'youtubeauthsub_clickhere' => 'Kattints ide a YouTube-ra való bejelentkezéshez',
+	'youtubeauthsub_tokenerror' => 'Hiba törént az azonosítótoken készítése közben, próbáld meg frissíteni a lapot.',
 	'youtubeauthsub_success' => "Gratulálunk!
 A videó fel lett töltve.
 A megtekintéshez kattints <a href='http://www.youtube.com/watch?v=$1'>ide</a>.

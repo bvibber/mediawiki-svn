@@ -244,6 +244,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  * @author IAlex
  * @author McDutchie
@@ -253,7 +254,7 @@ $messages['fr'] = array(
 	'form-desc' => 'Une [[Special:Form|interface de formulaire]] pour commencer des nouvelles pages',
 	'form' => 'Formulaire',
 	'formnoname' => 'Aucun nom',
-	'formnonametext' => 'Veuillez spécifier le nom du formulaire, sous la forme "Special:Formulaire/NomDuFormulaire".',
+	'formnonametext' => 'Veuillez spécifier le nom du formulaire, sous la forme « Special:Formulaire/NomDuFormulaire ».',
 	'formbadname' => 'Nom incorrect',
 	'formbadnametext' => "Le nom choisi pour le formulaire est incorrect. Aucun formulaire n'existe sous ce nom.",
 	'formpattern' => 'formulaire-$1',

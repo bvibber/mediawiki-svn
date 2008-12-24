@@ -103,6 +103,13 @@ $messages['hsb'] = array(
 	'randomimage-desc' => 'Přidawa tafličku <tt>&lt;randomimage /&gt;</tt> za zwobraznjenje připadneho wobraza',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'randomimage-desc' => 'Lehetővé teszi véletlenszerű médiafájl elhelyezését a <tt>&lt;randomimage /&gt;</tt> tag segítségével',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

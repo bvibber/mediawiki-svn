@@ -218,6 +218,17 @@ $messages['hsb'] = array(
 	'dplforum-toomany' => 'Forum DPL: Přewjele kategorijow!',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'dplforum-desc' => 'DPL-alapú fórumkiterjesztés',
+	'dplforum-edited' => '  - Utolsó szerkesztés',
+	'dplforum-never' => 'soha',
+	'dplforum-toofew' => 'DPL fórum: túl kevés kategória!',
+	'dplforum-toomany' => 'DPL fórum: túl sok kategória!',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

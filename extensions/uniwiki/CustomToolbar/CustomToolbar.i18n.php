@@ -261,6 +261,18 @@ $wgCustomToolbarMessages['es'] = array(
 	'ct_popupblocked' => 'No se pudo abrir la ventana para subir el archivo. Revise su bloqueador de ventanas emergentes.',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Str4nd
+ */
+$wgCustomToolbarMessages['fi'] = array(
+	'ct_italic_caption' => 'Kursiivi',
+	'ct_close' => 'Sulje ikkuna',
+	'ct_popupblocked' => 'Tiedostojen tallennuksen ponnahdusikkunan avaus epäonnistui.
+Tarkista ponnahdusikkunoiden eston asetukset.',
+	'ct_user_user' => 'Käyttäjä',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
@@ -613,6 +625,39 @@ $wgCustomToolbarMessages['km'] = array(
  */
 $wgCustomToolbarMessages['ksh'] = array(
 	'ct-desc' => 'Deiht en ußboubare Werkzeuch-Reih dobei.',
+	'ct_bold_sample' => '{{int:bold_sample}}',
+	'ct_bold_tip_ins' => '{{int:bold_tip}}',
+	'ct_bold_tip_wrap' => '{{int:bold tip}} druß maache',
+	'ct_bold_caption' => '{{int:bold_tip}}',
+	'ct_italic_sample' => '{{int:italic_sample}}',
+	'ct_italic_tip_ins' => '{{int:italic tip}} enfööje',
+	'ct_italic_tip_wrap' => '{{int:italic tip}} druß maache',
+	'ct_italic_caption' => '{{int:italic-tip}}',
+	'ct_internal_sample' => '{{int:internal sample}}',
+	'ct_internal_tip_ins' => '{{int:link_tip}} enfööje',
+	'ct_internal_tip_wrap' => '{{int:link tip}} druß maache',
+	'ct_internal_caption' => '{{int:link_tip}}',
+	'ct_external_tip_ins' => '{{int:external_link_tip}}',
+	'ct_external_tip_wrap' => '{{int:external tip}} druß maache',
+	'ct_image_tip' => '{{int:image_tip}}',
+	'ct_image_caption' => '{{int:image_tip}}',
+	'ct_math_sample' => '{{int:math sample}}',
+	'ct_math_tip_ins' => '{{int:math tip}} enfööje',
+	'ct_math_tip_wrap' => '{{int:math tip}} druß maache',
+	'ct_math_caption' => '{{int:math tip}}',
+	'ct_nowiki_sample' => '{{int:nowiki sample}}',
+	'ct_nowiki_tip_ins' => 'E Stöck Tex enföje, wo dä Wiki-Code för et Fommatteere üvverjange weed',
+	'ct_nowiki_tip_wrap' => 'Dat Stöck Tex esu änderee, dat dä Wiki-Code för et Fommatteere üvverjange weed',
+	'ct_nowiki_caption' => '{{int:nowiki tip}}',
+	'ct_horizontal_tip' => '{{int:hr tip}}',
+	'ct_horizontal_caption' => '{{int:hr tip}}',
+	'ct_upload' => '$1 huhlaade',
+	'ct_submit' => 'Loß Jonn!',
+	'ct_close' => 'He dat Finster zo maache',
+	'ct_success' => 'De Datei es huhjelaade.',
+	'ct_user_user' => 'Metmaacher',
+	'ct_user_caption' => 'Ene Lengk op ene Metmaacher enföje',
+	'ct_user_sample' => 'Metmaachername',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
