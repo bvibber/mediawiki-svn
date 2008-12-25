@@ -2,15 +2,8 @@
 
 /* config */
 //Setup your content providers (see the remoteSearchDriver::content_providers for all options)
-var wg_content_proivers_config = {
-	'wiki_commons':{
-		'local':false //note you will need to enable url file uploading to import assets	
-	},
-	'metavid':{
-		'local':true //this will change the output from [[embed:StreamName]] to [[remoteEmbed:roe_url]]
-					 // you will need to run the mv remoteEmbed extension. 
-	}	
-}
+var wg_content_proivers_config = {}; //you can overwrite by defining (after)
+
 var wg_local_wiki_api_url = wgServer + wgScriptPath + '/api.php';
 
 //if mv_embed is hosted somewhere other than near by the external_media_wizzard you can define it here: 
@@ -48,10 +41,11 @@ function mv_do_load_wiz(){
 		'<div id="mv_overlay" style="background:#000;cursor:wait;height:100%;left:0;position:fixed;'+
 			'top:0;width:100%;z-index:5;filter:alpha(opacity=60);-moz-opacity: 0.6;'+
 			'opacity: 0.6;"/>';
+
 	//get mv_embed path from _this_ file location: 
 	if(!mv_embed_url)
 		mv_embed_url = getMvEmbedUrl();
-	
+		
 	//inject mv_embed
 	if( typeof MV_EMBED_VERSION == 'undefined'){
 		var e = document.createElement("script");

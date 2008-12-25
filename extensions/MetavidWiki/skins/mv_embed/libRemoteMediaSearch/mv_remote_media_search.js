@@ -79,10 +79,11 @@ remoteSearchDriver.prototype = {
 			'homepage': 'http://commons.wikimedia.org/wiki/Main_Page',		
 			'api_url':'http://commons.wikimedia.org/w/api.php',
 			'lib'	:'mediaWiki',			
-			'local'	:false,
+			'local_domain':'wikimedia.org', //if we contain this domain we are local 
+											//(no need to import commons to wikimedia sites) 
 			'resource_prefix': 'WC_', //prefix on imported resources (not applicable if the repository is local)
 			
-			//specific to wiki comons config: 
+			//specific to wiki commons config: 
 			'search_title':false //disable title search 
 		},
 		'metavid':{
@@ -97,9 +98,11 @@ remoteSearchDriver.prototype = {
 			'local'	:false,			//if local set to true we can use local 
 			'resource_prefix': 'MV_', //what prefix to use on imported resources
 			
-			'local_copy': true, //if local_copy set to true if we should download assets 
-							   //(else just remote embed the metavid stream (recomended) ) 
-			'target_source_id':'mv_ogg_low_quality' // the source id/name to import
+			'local_domain': 'metavid', // if the domain name contains metavid 
+									   // no need to import metavid content to metavid sites
+									   
+			'remote_embed_ext': false //if running the remoteEmbed extension no need to copy local 
+									  //syntax will be [remoteEmbed:roe_url link title]							   		 
 		},
 		'archive_org':{
 			'enabled':0,
@@ -502,17 +505,18 @@ remoteSearchDriver.prototype = {
 		}	
 	},
 	checkImportResource:function( rObj, cir_callback){
-		//check if the resource is "locally accesible" 
-		if( rObj.pSobj.local ){
-			js_log("checkImportResource:local");
+		//@@todo get the localized File/Image namespace name or do a general {NS}:Title aproch
+		rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');
+		//check if the resource is "locally accessible" 
+		if(   parseUri(this.local_wiki_api_url).host.indexOf( rObj.pSobj.cp.local_domain ) != -1 ){
+			js_log("checkImportResource:local: " + parseUri(this.local_wiki_api_url).host + 'contains:'+
+						rObj.pSobj.cp.local_domain);		
 		 	cir_callback( rObj );
 		}else{
 			var _this = this;
 			var cp = rObj.pSobj.cp;
 			
-			//first check if the resource is not already on this wiki: 
-			//@@todo get the File/Image namespace name:						
-			rObj.target_resource_title = cp.resource_prefix + rObj.titleKey.replace(/File:|Image:/,'');
+			//first check if the resource is not already on this wiki: 											
 			
 			reqObj={'action':'query', titles: _this.cFileNS + ':' + rObj.target_resource_title};
 			do_api_req( reqObj, this.local_wiki_api_url, function(data){	
@@ -526,8 +530,7 @@ remoteSearchDriver.prototype = {
 				if( found_title ){				
 					js_log("checkImportResource:found title:" + found_title);  
 					//resource is already present (or resource with same name is already present)
-					rObj.target_resource_title = found_title.replace(/File:|Image:/,'');					
-					//@@todo give user option to write over it			
+					rObj.target_resource_title = found_title.replace(/File:|Image:/,'');			
 					cir_callback( rObj );
 				}else{
 					js_log("resource not present: update:"+ _this.cFileNS + ':' + rObj.target_resource_title);
