@@ -29,7 +29,7 @@ public abstract class Sink extends Element
   private boolean needPreroll;
   private Clock.ClockID clockID;
   protected boolean discont; 
-  protected long segStart;
+  protected long segStart = 0;
   protected long segStop;
   protected long segPosition;
   protected long pauseTime;
@@ -352,11 +352,11 @@ public abstract class Sink extends Element
           synchronized (this) {
 	    if (currentState == PLAY) {
 	      if (clock != null) {
-	        position = clock.getTime() - baseTime + segPosition;
+	        position = clock.getTime() - baseTime + segPosition + segStart;
 	      }
 	    }
 	    else {
-	      position = pauseTime + segPosition;
+	      position = pauseTime + segPosition + segStart;
 	    }
 	  }
 	  query.setPosition(Format.TIME, position);

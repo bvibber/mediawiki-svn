@@ -9,6 +9,8 @@ directory layout:
     - utils:       utitity classes used by jst, jheora, examples
     - jst:         a java port of the GStreamer 0.10 design
     - jheora:      a java implementation of the Theora video codec
+    - jkate:       a basic java implementation of the Kate codec
+    - jtiger:      a basic Kate stream renderer (simple text/images only for now)
     - codecs:      additional codecs; currently contains the Smoke codec
     - plugin:      plugins implementing/wrapping sources/decoders/sinks
     - examples:    example programs

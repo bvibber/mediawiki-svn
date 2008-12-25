@@ -1,4 +1,5 @@
-/* Copyright (C) <2004> Wim Taymans <wim@fluendo.com>
+/* Copyright (C) <2008> ogg.k.ogg.k <ogg.k.ogg.k@googlemail.com>
+ * based on code Copyright (C) <2004> Wim Taymans <wim@fluendo.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -20,23 +21,32 @@ package com.fluendo.plugin;
 
 import java.util.*;
 import com.jcraft.jogg.*;
-import com.fluendo.jheora.*;
+import com.fluendo.jkate.*;
 import com.fluendo.jst.*;
 import com.fluendo.utils.*;
 
-public class TheoraDec extends Element implements OggPayload
+/**
+ * Katedec is a decoder element for the Kate stream format.
+ * See http://wiki.xiph.org/index.php/OggKate for more information.
+ * Kate streams may be multiplexed in Ogg.
+ * The Katedec element accepts Kate packets (presumably demultiplexed by an
+ * Ogg demuxer element) on its sink, and generates Kate events on its source.
+ * Kate events are Kate specific structures, which may then be interpreted
+ * by a renderer.
+*/
+public class KateDec extends Element implements OggPayload
 {
-  private static final byte[] signature = { -128, 0x74, 0x68, 0x65, 0x6f, 0x72, 0x61 };
+  /* Kate magic: 0x80 (BOS header) followed by "kate\0\0\0" */
+  private static final byte[] signature = { -128, 0x6b, 0x61, 0x74, 0x65, 0x00, 0x00, 0x00 };
 
-  private Info ti;
-  private Comment tc;
-  private State ts;
+  private Info ki;
+  private Comment kc;
+  private State k;
   private Packet op;
-  private int packet;
-  private YUVBuffer yuv;
+  private int packetno;
 
+  private long basetime = 0;
   private long lastTs;
-  private boolean needKeyframe;
   private boolean haveDecoder = false;
 
   /* 
@@ -46,14 +56,24 @@ public class TheoraDec extends Element implements OggPayload
   {
     return typeFind (op.packet_base, op.packet, op.bytes) > 0;
   }
+  public boolean isKeyFrame (Packet op)
+  {
+    return true;
+  }
+
+  /**
+   * A discontinuous codec will not cause the pipeline to wait for data if starving
+   */
+  public boolean isDiscontinuous ()
+  {
+    return true;
+  }
   public int takeHeader (Packet op)
   {
-    int ret;
-    byte header;
-    ret = ti.decodeHeader(tc, op);
-    header = op.packet_base[op.packet];
-    if (header == -126) {
-      ts.decodeInit(ti);
+    int ret = ki.decodeHeader(kc, op);
+    if (ret > 0) {
+      k.decodeInit(ki);
+      Debug.debug("Kate decoder ready");
       haveDecoder = true;
     }
     return ret;
@@ -61,14 +81,6 @@ public class TheoraDec extends Element implements OggPayload
   public boolean isHeader (Packet op)
   {
     return (op.packet_base[op.packet] & 0x80) == 0x80;
-  }
-  public boolean isKeyFrame (Packet op)
-  {
-    return ts.isKeyframe(op);
-  }
-  public boolean isDiscontinuous ()
-  {
-    return false;
   }
   public long getFirstTs (Vector packets)
   {
@@ -90,10 +102,14 @@ public class TheoraDec extends Element implements OggPayload
     time = granuleToTime (data.time_offset);
 
     data = (com.fluendo.jst.Buffer) packets.elementAt(0);
-    data.timestamp = time - (long) ((i+1) * (Clock.SECOND * ti.fps_denominator / ti.fps_numerator));
+    data.timestamp = time - (long) ((i+1) * (Clock.SECOND * ki.gps_denominator / ki.gps_numerator));
 
     return time;
   }
+
+  /**
+   * Converts a granule position to its time equivalent
+  */
   public long granuleToTime (long gp)
   {
     long res;
@@ -101,7 +117,22 @@ public class TheoraDec extends Element implements OggPayload
     if (gp < 0 || !haveDecoder)
       return -1;
 
-    res = (long) (ts.granuleTime(gp) * Clock.SECOND);
+    res = (long) (k.granuleTime(gp) * Clock.SECOND);
+
+    return res;
+  }
+
+  /**
+   * Converts a granule position to its duration equivalent
+   */
+  public long granuleToDuration (long gp)
+  {
+    long res;
+
+    if (gp < 0 || !haveDecoder)
+      return -1;
+
+    res = (long) (k.granuleDuration(gp) * Clock.SECOND);
 
     return res;
   }
@@ -131,6 +162,10 @@ public class TheoraDec extends Element implements OggPayload
           result = srcPad.pushEvent(event);
           break;
         case com.fluendo.jst.Event.NEWSEGMENT:
+          basetime = event.parseNewsegmentStart();
+          Debug.info("new segment: base time "+basetime);
+          result = srcPad.pushEvent(event);
+          break;
 	default:
           result = srcPad.pushEvent(event);
           break;
@@ -138,6 +173,9 @@ public class TheoraDec extends Element implements OggPayload
       return result;
     }
 
+    /**
+     * receives Kate packets, and generates Kate events
+     */
     protected int chainFunc (com.fluendo.jst.Buffer buf) {
       int result;
       long timestamp;
@@ -147,85 +185,76 @@ public class TheoraDec extends Element implements OggPayload
       op.packet_base = buf.data;
       op.packet = buf.offset;
       op.bytes = buf.length;
-      op.b_o_s = (packet == 0 ? 1 : 0);
+      op.b_o_s = (packetno == 0 ? 1 : 0);
       op.e_o_s = 0;
-      op.packetno = packet;
+      op.packetno = packetno;
       timestamp = buf.timestamp;
 
-      if (buf.isFlagSet (com.fluendo.jst.Buffer.FLAG_DISCONT)) {
-        Debug.log(Debug.INFO, "theora: got discont");
-        needKeyframe = true;
-	lastTs = -1;
-      }
+      Debug.log(Debug.DEBUG, "Kate chainFunc with packetno "+packetno+", haveDecoder "+haveDecoder);
 
-      if (packet < 3) {
+//      if (buf.isFlagSet (com.fluendo.jst.Buffer.FLAG_DISCONT)) {
+//        Debug.log(Debug.INFO, "kate: got discont");
+//        /* should flush, if we keep events to handle repeats in the future */
+//        lastTs = -1;
+//      }
+
+      if (!haveDecoder) {
         //System.out.println ("decoding header");
-        if (takeHeader(op) < 0){
+        result = takeHeader(op);
+        if (result < 0){
           buf.free();
-          // error case; not a theora header
-          Debug.log(Debug.ERROR, "does not contain Theora video data.");
+          // error case; not a kate header
+          Debug.log(Debug.ERROR, "does not contain Kate data.");
           return ERROR;
         }
-        if (packet == 2) {
-          ts.decodeInit(ti);
-    
-          Debug.log(Debug.INFO, "theora dimension: "+ti.width+"x"+ti.height);
-          if (ti.aspect_denominator == 0) {
-            ti.aspect_numerator = 1;
-            ti.aspect_denominator = 1;
-          }
-          Debug.log(Debug.INFO, "theora offset: "+ti.offset_x+","+ti.offset_y);
-          Debug.log(Debug.INFO, "theora frame: "+ti.frame_width+","+ti.frame_height);
-          Debug.log(Debug.INFO, "theora aspect: "+ti.aspect_numerator+"/"+ti.aspect_denominator);
-          Debug.log(Debug.INFO, "theora framerate: "+ti.fps_numerator+"/"+ti.fps_denominator);
+        else if (result > 0) {
+          // we've decoded all headers
+          Debug.log(Debug.DEBUG, "Kate initialized for decoding");
 
-	  caps = new Caps ("video/raw");
-	  caps.setFieldInt ("width", ti.frame_width);
-	  caps.setFieldInt ("height", ti.frame_height);
-	  caps.setFieldInt ("aspect_x", ti.aspect_numerator);
-	  caps.setFieldInt ("aspect_y", ti.aspect_denominator);
+          /* we're sending raw kate_event structures */
+	  caps = new Caps ("application/x-kate-event");
         }
         buf.free();
-        packet++;
+        packetno++;
 
 	return OK;
       }
       else {
         if ((op.packet_base[op.packet] & 0x80) == 0x80) {
-          Debug.log(Debug.INFO, "ignoring header");
+          Debug.log(Debug.DEBUG, "ignoring header");
+          buf.free();
           return OK;
-        }
-        if (needKeyframe && ts.isKeyframe(op)) {
-	  needKeyframe = false;
         }
 
 	if (timestamp != -1) {
 	  lastTs = timestamp;
 	}
-	else if (lastTs != -1) {
-	  long add;
 
-	  add = (Clock.SECOND * ti.fps_denominator) / ti.fps_numerator;
-	  lastTs += add;
-	  timestamp = lastTs;
-	}
-
-	if (!needKeyframe) {
+	if (true) {
 	  try{
-            if (ts.decodePacketin(op) != 0) {
-              Debug.log(Debug.ERROR, "Bad Theora packet. Most likely not fatal, hoping for better luck next packet.");
-            }
-            if (ts.decodeYUVout(yuv) != 0) {
+            result = k.decodePacketin(op);
+            if (result < 0) {
               buf.free();
-	      postMessage (Message.newError (this, "Error getting the Theora picture"));
-              Debug.log(Debug.ERROR, "Error getting the picture.");
+              Debug.log(Debug.ERROR, "Error Decoding Kate.");
+	      postMessage (Message.newError (this, "Error decoding Kate"));
               return ERROR;
-	    }
-            buf.object = yuv.getObject(ti.offset_x, ti.offset_y, ti.frame_width, ti.frame_height);
-	    buf.caps = caps;
-	    buf.timestamp = timestamp;
-            Debug.log( Debug.DEBUG, parent.getName() + " >>> " + buf );
-            result = srcPad.push(buf);
+            }
+            com.fluendo.jkate.Event ev = k.decodeEventOut();
+            if (ev != null) {
+              buf.object = ev;
+	      buf.caps = caps;
+	      buf.timestamp = granuleToDuration(ev.start);
+	      buf.timestampEnd = buf.timestamp + granuleToDuration(ev.duration);
+              Debug.log( Debug.DEBUG, parent.getName() + " >>> " + buf );
+              Debug.debug("Got Kate text: "+new String(ev.text)+" from "+buf.timestamp+" to "+buf.timestampEnd+", basetime "+basetime);
+              result = srcPad.push(buf);
+              Debug.log(Debug.DEBUG, "push returned "+result);
+            }
+            else {
+              Debug.debug("Got no event");
+	      buf.free();
+              result = OK;
+            }
           }
 	  catch (Exception e) {
 	    e.printStackTrace();
@@ -238,7 +267,7 @@ public class TheoraDec extends Element implements OggPayload
 	  buf.free();
 	}
       }
-      packet++;
+      packetno++;
 
       return result;
     }
@@ -249,13 +278,12 @@ public class TheoraDec extends Element implements OggPayload
     }
   };
 
-  public TheoraDec() {
+  public KateDec() {
     super();
 
-    ti = new Info();
-    tc = new Comment();
-    ts = new State();
-    yuv = new YUVBuffer();
+    ki = new Info();
+    kc = new Comment();
+    k = new State();
     op = new Packet();
 
     addPad (srcPad);
@@ -268,8 +296,7 @@ public class TheoraDec extends Element implements OggPayload
     switch (transition) {
       case STOP_PAUSE:
         lastTs = -1;
-        packet = 0;
-        needKeyframe = true;
+        packetno = 0;
 	break;
       default:
         break;
@@ -279,9 +306,9 @@ public class TheoraDec extends Element implements OggPayload
 
     switch (transition) {
       case PAUSE_STOP:
-	ti.clear();
-	tc.clear();
-	ts.clear();
+	ki.clear();
+	kc.clear();
+	k.clear();
 	break;
       default:
         break;
@@ -292,11 +319,11 @@ public class TheoraDec extends Element implements OggPayload
 
   public String getFactoryName ()
   {
-    return "theoradec";
+    return "katedec";
   }
   public String getMime ()
   {
-    return "video/x-theora";
+    return "application/x-kate";
   }
   public int typeFind (byte[] data, int offset, int length)
   {
