@@ -134,7 +134,7 @@ class SubversionShell extends SubversionAdaptor {
 		if( $rev )
 			$path .= "@$rev";
 		$command = sprintf(
-			"svn cat %s",
+			"LC_ALL=en_US.utf-8 svn cat %s",
 			escapeshellarg( $this->mRepo . $path ) );
 
 		return shell_exec( $command );
@@ -142,7 +142,7 @@ class SubversionShell extends SubversionAdaptor {
 
 	function getDiff( $path, $rev1, $rev2 ) {
 		$command = sprintf(
-			"svn diff -r%d:%d %s",
+			"LC_ALL=en_US.utf-8 svn diff -r%d:%d %s",
 			intval( $rev1 ),
 			intval( $rev2 ),
 			escapeshellarg( $this->mRepo . $path ) );
@@ -152,7 +152,7 @@ class SubversionShell extends SubversionAdaptor {
 
 	function getLog( $path, $startRev=null, $endRev=null ) {
 		$command = sprintf(
-			"svn log -v -r%s:%s --non-interactive %s",
+			"LC_ALL=en_US.utf-8 svn log -v -r%s:%s --non-interactive %s",
 			escapeshellarg( $this->_rev( $startRev, 'BASE' ) ),
 			escapeshellarg( $this->_rev( $endRev, 'HEAD' ) ),
 			escapeshellarg( $this->mRepo . $path ) );
