@@ -10,13 +10,13 @@
  * @note Some of the code based on stuff by Lukasz 'TOR' Garczewski, as well as SpecialUserrights.php and CentralAuth
  */
 
-if( !defined( 'MEDIAWIKI' ) ) die();
+if (!defined('MEDIAWIKI')) die();
 
 // Extension credits
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'GlobalUserrights',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GlobalUserrights',
-	'version'        => '1.0',
+	'version'        => '1.0.1',
 	'author'         => 'Nathaniel Herman',
 	'description'    => 'Easy [[Special:GlobalUserRights|global user rights]] administration',
 	'descriptionmsg' => 'gur-desc',
@@ -106,9 +106,9 @@ function efGURUpdateQueryInfo( $that, &$query ) {
 	$dbr = wfGetDB( DB_SLAVE );
 	list( $gug ) = $dbr->tableNamesN( 'global_user_groups' );
 	$query['tables'] .= "LEFT JOIN $gug ON user_id=gug_user";
-	$query['fields'][2] = 'COUNT(ug_group) + COUNT(gug_group) AS numgroups';
+	$query['fields'][3] = 'COUNT(ug_group) + COUNT(gug_group) AS numgroups';
 	// kind of yucky statement, I blame MySQL 5.0.13 http://bugs.mysql.com/bug.php?id=15610
-	$query['fields'][3] = 'GREATEST(COALESCE(ug_group, gug_group), COALESCE(gug_group, ug_group)) AS singlegroup';
+	$query['fields'][4] = 'GREATEST(COALESCE(ug_group, gug_group), COALESCE(gug_group, ug_group)) AS singlegroup';
 
 	// if there's a $query['conds']['ug_group'], destroy it and make one that accounts for gug_group
 	if( isset( $query['conds']['ug_group'] ) ) {
