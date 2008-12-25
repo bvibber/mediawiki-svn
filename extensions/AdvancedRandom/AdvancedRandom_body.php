@@ -81,7 +81,7 @@ class SpecialAdvancedRandom extends SpecialPage {
 			);
 		}
 
-		$title =& Title::makeTitle( Namespace::getSubject( $namespace ), $res->page_title );
+		$title =& Title::makeTitle( MWNamespace::getSubject( $namespace ), $res->page_title );
 		if ( is_null( $title ) || $title->getText() == '' )
 			$title = Title::newMainPage();;
 		$this->redirect( $title );

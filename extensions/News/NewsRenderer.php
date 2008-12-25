@@ -150,7 +150,7 @@ class NewsRenderer {
 				if ( $ns === '-' || $ns === '0' || $ns === 'main' || $ns === 'article' ) {
 					$this->namespaces[$i] = 0;
 				} else {
-					$this->namespaces[$i] = Namespace::getCanonicalIndex( $ns );
+					$this->namespaces[$i] = MWNamespace::getCanonicalIndex( $ns );
 					if ( $this->namespaces[$i] === false || $this->namespaces[$i] === NULL )
 						$this->namespaces[$i] = $wgContLang->getNsIndex( $ns );
 				}

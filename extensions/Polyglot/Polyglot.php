@@ -91,7 +91,7 @@ function wfPolyglotArticleFromTitle( &$title, &$article ) {
 
 	if ( $ns < 0 
 		|| in_array($ns,  $wfPolyglotExcemptNamespaces) 
-		|| ($wfPolyglotExcemptTalkPages && Namespace::isTalk($ns)) ) {
+		|| ($wfPolyglotExcemptTalkPages && MWNamespace::isTalk($ns)) ) {
 		return true;
 	}
 
@@ -194,7 +194,7 @@ function wfPolyglotParserAfterTidy( &$parser, &$text ) {
 	//      at least if wgPolyglotFollowRedirects is true
 
 	if ( $ns >= 0 && !in_array($ns,  $wfPolyglotExcemptNamespaces)
-		&& (!$wfPolyglotExcemptTalkPages || !Namespace::isTalk($ns)) ) {
+		&& (!$wfPolyglotExcemptTalkPages || !MWNamespace::isTalk($ns)) ) {
 		$ll = wfPolyglotGetLanguages($parser->mTitle);
 		if ($ll) $links = array_merge($links, $ll);
 

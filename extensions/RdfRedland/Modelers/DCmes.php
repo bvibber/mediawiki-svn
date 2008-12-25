@@ -76,7 +76,7 @@ class MwRdf_DCmes_Modeler extends MwRdf_Modeler {
 			$this->Agent->getTimestampResource() ) );
 		}
 
-		if ( Namespace::isTalk( $this->Agent->getTitle()->getNamespace() ) ) {
+		if ( MWNamespace::isTalk( $this->Agent->getTitle()->getNamespace() ) ) {
 			$model->addStatement( MwRdf::Statement(
 			$artres,
 			$dc->subject,

@@ -133,7 +133,7 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
 			if ( $last_type != $p->from_category ) $html .= "<div class='MiniPreviewSeparator'>&nbsp;</div>" ; # Visually separate categories from galleries
 			$last_type = $p->from_category;
 			$nsid = $p->from_category ? 14 : $wgMiniPreviewGalleryNamespace ;
-			$ns = Namespace::getCanonicalName ( $nsid ) . ':' ;
+			$ns = MWNamespace::getCanonicalName ( $nsid ) . ':' ;
 			$t = Title::newFromDBkey( $ns . $p->source_title );
 			$mode = ( $p->from_category ? "category" : "gallery" ) ;
 

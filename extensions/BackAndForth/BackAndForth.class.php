@@ -17,7 +17,7 @@ class BackAndForth {
 	public static function viewHook( $article ) {
 		global $wgOut, $wgUser;
 		$title = $article->getTitle();
-		if( Namespace::isContent( $title->getNamespace() ) ) {
+		if( MWNamespace::isContent( $title->getNamespace() ) ) {
 			$wgOut->addHTML( self::buildLinks( $title ) );
 			$wgOut->addHeadItem( 'backandforth', self::buildHeadItem() );
 		}
