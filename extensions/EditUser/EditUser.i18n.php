@@ -419,7 +419,15 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
+	'edituser-desc' => 'A megfelelő joggal rendelkező szerkesztők számára lehetővé teszi más szerkesztők beállításainak módosítását',
+	'edituser' => 'Szerkesztő módosítása',
+	'edituser-logout' => 'Szerkesztő kijelentkeztetése',
+	'edituser-username' => 'Név',
 	'edituser-dosearch' => 'Keresés',
+	'edituser-nouser' => 'A kiválasztott szerkesztő nem létezik',
+	'edituser-exempt' => 'A kiválasztott szerkesztő nem módosítható',
+	'right-edituser' => 'más szerkesztők beállításainak módosítása',
+	'right-edituser-exempt' => 'más szerkesztők nem módosíthatják a beállításait',
 );
 
 /** Armenian (Հայերեն)
@@ -774,6 +782,9 @@ $messages['ro'] = array(
 	'edituser-username' => 'Nume',
 	'edituser-dosearch' => 'Caută',
 	'edituser-nouser' => 'Utilizatorul specificat nu există.',
+	'edituser-exempt' => 'Utilizatorul specificat nu poate fi modificat',
+	'right-edituser' => 'Modifică preferinţele altor utilizatori',
+	'right-edituser-exempt' => 'Preferinţele lor nu pot fi modificate de alţi utilizatori',
 );
 
 /** Tarandíne (Tarandíne)

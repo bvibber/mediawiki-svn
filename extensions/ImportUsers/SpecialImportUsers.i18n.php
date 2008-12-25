@@ -574,7 +574,9 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'importusers-log-summary' => '要約',
 	'importusers-log-summary-all' => 'すべて',
+	'importusers-password' => 'パスワード',
 );
 
 /** Javanese (Basa Jawa)

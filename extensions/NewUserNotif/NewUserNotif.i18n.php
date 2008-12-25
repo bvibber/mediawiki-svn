@@ -163,6 +163,17 @@ $messages['gl'] = array(
 Unha nova conta de usuario, $2, foi creada sobre $3 en $4.',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'newusernotifsubj' => 'הודעת משתמש חדשה עבור $1',
+	'newusernotif-desc' => 'שליחת הודעה בדוא"ל כאשר נוצרים חשבונות משתמשים',
+	'newusernotifbody' => 'היי $1,
+
+חשבון משתמש חדש, $2, נוצר תחת $3 ב־$4',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

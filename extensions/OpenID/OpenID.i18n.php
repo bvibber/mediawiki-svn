@@ -548,12 +548,18 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Silvonen
+ * @author Str4nd
  */
 $messages['fi'] = array(
+	'openidlogin' => 'Kirjaudu OpenID:llä',
 	'openidserver' => 'OpenID-palvelin',
+	'openiderror' => 'Todennusvirhe',
+	'openidemail' => 'Sähköpostiosoite',
 	'openidlanguage' => 'Kieli',
 	'openidchoosepassword' => 'salasana:',
+	'openidloginlabel' => 'OpenID-URL',
 );
 
 /** French (Français)
@@ -2229,11 +2235,13 @@ Det finns många [http://wiki.openid.net/Public_OpenID_providers leverantörer a
 $messages['te'] = array(
 	'openidoptional' => 'ఐచ్చికం',
 	'openidrequired' => 'తప్పనిసరి',
+	'openidnickname' => 'ముద్దుపేరు',
 	'openidfullname' => 'పూర్తిపేరు',
 	'openidemail' => 'ఈ-మెయిల్ చిరునామా',
 	'openidlanguage' => 'భాష',
 	'openidchoosefull' => 'మీ పూర్తి పేరు ($1)',
 	'openidchoosemanual' => 'మీరు ఎన్నుకున్న పేరు:',
+	'openidchooseexisting' => 'ఈ వికీలో ఇప్పటికే ఉన్న ఖాతా:',
 	'openidchoosepassword' => 'సంకేతపదం:',
 	'openidnousername' => 'వాడుకరిపేరు ఇవ్వలేదు.',
 );

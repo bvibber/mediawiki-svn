@@ -1578,6 +1578,10 @@ $messages['pl'] = array(
 	'contribstats-max' => 'Maksimum (USD)',
 	'contribstats-percentage-ytd' => 'Procent (od początku roku)',
 	'contribstats-total-ytd' => 'Suma (od początku roku)',
+	'contribstats-value-exactly' => 'Dokładnie $1',
+	'contribstats-value-under' => 'Poniżej $1',
+	'contribstats-value-from' => 'Pomiędzy $1 a $2',
+	'contribstats-value-over' => 'Powyżej $1',
 	'fundraiserstatistics' => 'Statystyka zebranych funduszy',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Dzień $1 z $2',
@@ -1589,6 +1593,7 @@ $messages['pl'] = array(
 	'fundraiserstats-tab-contributions' => 'Liczba darowizn',
 	'fundraiserstats-tab-averages' => 'Średnie (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksima (USD)',
+	'specialpages-group-contribution' => 'Darowizny/Zbieranie funduszy',
 );
 
 /** Pashto (پښتو)
@@ -1630,6 +1635,21 @@ $messages['pt'] = array(
 	'contribstats-total-ytd' => 'Total (do início do ano até hoje)',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'contrib-hist-name' => 'Nume',
+	'contrib-hist-anonymous' => 'Anonim',
+	'contribstats-day' => 'Zi',
+	'contribstats-month' => 'Lună',
+	'contribstats-contributions' => 'Contribuţii',
+	'contribstats-total' => 'Total (USD)',
+	'contribstats-value-exactly' => 'Exact $1',
+	'contribstats-value-under' => 'Sub $1',
+	'contribstats-value-over' => 'Peste $1',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -1669,7 +1689,7 @@ $messages['ru'] = array(
 	'contribstats-value-over' => 'Более $1',
 	'fundraiserstatistics' => 'Статистика сбора средств',
 	'fundraiserstats-date' => 'Дата',
-	'fundraiserstats-day' => 'День $1 из $2',
+	'fundraiserstats-day' => '$1 день $2',
 	'fundraiserstats-contributions' => 'Взносы',
 	'fundraiserstats-total' => 'Всего (USD)',
 	'fundraiserstats-avg' => 'Среднее (USD)',

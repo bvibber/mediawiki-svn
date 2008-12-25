@@ -72,6 +72,13 @@ $messages['cs'] = array(
 	'metakeywords-desc' => 'Umožňuje konfiguraci značek <tt>&lt;meta "keywords"&gt;</tt> a <tt>&lt;meta "description"&gt;</tt> v závislosti na jmenném prostoru',
 );
 
+/** German (Deutsch)
+ * @author Umherirrender
+ */
+$messages['de'] = array(
+	'metakeywords-desc' => 'Erlaubt die Konfiguration von <tt><nowiki><meta "keywords"></nowiki></tt>- und <tt><nowiki><meta "description"></nowiki></tt>-Tags pro Namensraum',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -164,6 +171,13 @@ $messages['nl'] = array(
 	'metadescription' => ' # Voeg regels toe aan deze pagina in de vorm "naamruimte|beschrijving van in te stellen tag"
  # De naamruimtebenamingen (all) en (main) geven een standaard tag voor respectievelijk alle naamruimten en de hoofdnaamruimte.
  # Het voorkomen van $1 wordt vervangen door de naam van de huidige pagina.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'metakeywords-desc' => 'Mogleggjer konfigurering av <tt><nowiki><meta "keywords"></nowiki></tt> og <tt><nowiki><meta "description"></nowiki></tt>-merke per namnerom',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

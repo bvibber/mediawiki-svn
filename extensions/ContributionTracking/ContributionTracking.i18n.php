@@ -83,6 +83,18 @@ $messages['bg'] = array(
 	'contrib-tracking-button' => 'Продължаване',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'contributiontracking-desc' => 'Praćenje doprinosa za Wikimedia donacije',
+	'contributiontracking' => 'Praćenje doprinosa',
+	'contrib-tracking-error' => 'Greška',
+	'contrib-tracking-error-text' => 'Slanje nevaljanog obrasca',
+	'contrib-tracking-submitting' => 'Šaljem za proces plaćanja...',
+	'contrib-tracking-button' => 'nastavi',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -430,6 +442,13 @@ $messages['pt'] = array(
 	'contrib-tracking-button' => 'Continuar',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'contrib-tracking-error' => 'Eroare',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -481,6 +500,8 @@ $messages['sv'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'contributiontracking-desc' => 'Traciamento dei contributi par la racolta fondi Wikimedia',
+	'contributiontracking' => 'Traciamento dei contributi',
 	'contrib-tracking-error' => 'Eròr',
 	'contrib-tracking-button' => 'Và vanti',
 );

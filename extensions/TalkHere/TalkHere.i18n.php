@@ -676,6 +676,7 @@ $messages['te'] = array(
 	'talkhere-talkpage' => 'చర్చా పేజీ',
 	'talkhere-notalk' => "''(ఇంకా వ్యాఖ్యలు లేవు)''",
 	'talkhere-addcomment' => 'వ్యాఖ్యానించండి',
+	'talkhere-beforeinput' => 'క్రింద మీ వ్యాఖ్యని చేర్చవచ్చు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

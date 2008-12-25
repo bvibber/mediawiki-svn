@@ -242,6 +242,24 @@ Tuta strona by tež twoju pomoc trjebała: $1.',
 	'tog-edit-similar' => 'Namjety za podobne strony zmóžnić',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'editsimilar-desc' => 'Lap elmentése után hasonló oldalak szerkesztését javasolja a szerkesztőknek',
+	'editsimilar-thanks' => 'Köszönjük a szerkesztésedet.
+Nézd meg ezeket a kapcsolódó lapokat: $1.',
+	'editsimilar-thanks-singleresult' => 'Köszönjük a szerkesztésedet.
+Nézd meg ezt a kapcsolódó lapot: $1.',
+	'editsimilar-thanks-notsimilar' => 'Köszönjük a szerkesztésedet.
+Ezeknél a lapoknál is segítségedet vehetjük: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Köszönjük a szerkesztésedet.
+Ennél a lapnál is segítségedet vehetjük: $1.',
+	'editsimilar-thankyou' => 'Köszönjük a szerkesztésedet, $1!',
+	'editsimilar-link-disable' => 'beállítás',
+	'tog-edit-similar' => 'Hasonló oldalak javasolása',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -434,13 +452,17 @@ Esta página também poderia beneficiar da sua ajuda: $1.',
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'editsimilar-desc' => 'Încurajează utilizatorii să modifice o pagină similară după salvearea unei pagini',
 	'editsimilar-thanks' => 'Vă mulţumim pentru contribuţia dumneavoastră.
 Vizitaţi şi paginile conexe: $1.',
 	'editsimilar-thanks-singleresult' => 'Vă mulţumim pentru contribuţia dumneavoastră.
 Vizitaţi şi pagina conexă: $1.',
 	'editsimilar-thanks-notsimilar' => 'Vă mulţumim pentru contribuţia dumneavoastră.
 Şi aceste pagini ar avea nevoie de ajutorul dumneavoastră: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Vă mulţumim pentru contribuţia dumneavoastră.
+Şi această pagină ar putea avea nevoie de ajutorul dumneavoastră: $1.',
 	'editsimilar-thankyou' => 'Mulţumim pentru contribuţia dumneaovastră, $1!',
+	'tog-edit-similar' => 'Activează sugestiile paginilor similare',
 );
 
 /** Russian (Русский)

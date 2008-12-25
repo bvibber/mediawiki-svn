@@ -85,6 +85,13 @@ $messages['gl'] = array(
 	'purge-desc' => 'Engade unha lapela "Purgar" en todas as páxinas normais e salta a comprobación de purgar para os usuarios anónimos, permitindo unha purga rápida da caché',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'purge-desc' => 'הוספת לשונית ריקון לכל הדפים הרגילים, ועקיפת בדיקת הריקון למשתמשים אנונימיים כדי לאפשר ריקון זריז של המטמון.',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

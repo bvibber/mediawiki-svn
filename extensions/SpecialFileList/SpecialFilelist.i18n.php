@@ -623,6 +623,8 @@ $messages['tr'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'filelist' => 'Elenco dei file',
+	'filelist-desc' => '[[Special:Filelist|Pàxena speciale]] par elencar i file caricài',
 	'filelist-show-list' => 'Mostra lista',
 	'filelist-show-gallery' => 'Mostra galeria',
 	'filelist-image-desc' => 'desc',

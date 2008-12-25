@@ -267,6 +267,14 @@ $messages['nl'] = array(
 	'icon-desc' => 'Maakt het mogelijk om afbeeldingen als iconen en icoonlinks te gebruiken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'icon-badwidth' => 'Dårleg breidd',
+	'icon-desc' => 'Lèt det nytta bilete som ikon og ikonlekkjer.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -352,6 +360,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Harald Khan
  * @author Lejonel
  * @author M.M.S.
  */

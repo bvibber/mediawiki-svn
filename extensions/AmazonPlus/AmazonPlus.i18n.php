@@ -277,6 +277,22 @@ $messages['lb'] = array(
 	'amazonplus-cp-none' => 'Keng',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'amazonplus-nores' => 'Ralat : Carian tidak menyamai mana-mana dokumen',
+	'amazonplus-noidres' => 'Ralat : ID barang tidak terdapat dalam pangkalan data',
+	'amazonplus-used' => 'terpakai',
+	'amazonplus-german' => 'German',
+	'amazonplus-french' => 'Perancis',
+	'amazonplus-japanese' => 'Jepun',
+	'amazonplus-amazon' => 'harga amazon',
+	'amazonplus-new' => 'baru',
+	'amazonplus-none' => 'Tiada salinan barang ini yang dipaparkan untuk dijual.',
+	'amazonplus-cp-none' => 'Tiada',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

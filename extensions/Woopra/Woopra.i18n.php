@@ -76,7 +76,7 @@ $messages['es'] = array(
  * @author McDutchie
  */
 $messages['fr'] = array(
-	'woopra-desc' => 'Autorise pour le [http://www.woopra.com/ logicial pour suivi en direct Woopra] de travailler pour votre installation Mediawiki',
+	'woopra-desc' => 'Autorise pour le [http://www.woopra.com/ logicial pour suivi en direct Woopra] de travailler pour votre installation MediaWiki',
 );
 
 /** Galician (Galego)
@@ -197,7 +197,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'woopra-desc' => 'Autoriza pel [http://www.woopra.com/ seguit en dirècte del logicial Woopra] de trabalhar per vòstra installacion Mediawiki',
+	'woopra-desc' => 'Autoriza pel [http://www.woopra.com/ seguit en dirècte del logicial Woopra] de trabalhar per vòstra installacion MediaWiki',
 );
 
 /** Polish (Polski)
@@ -226,6 +226,13 @@ $messages['pt'] = array(
  */
 $messages['roa-tara'] = array(
 	'woopra-desc' => "Segue pe [http://www.woopra.com/ Woopra Live Tracking Software] pe fatià pe l'installazione d'a MediaUicchi toje",
+);
+
+/** Russian (Русский)
+ * @author Aleksandrit
+ */
+$messages['ru'] = array(
+	'woopra-desc' => 'Позволяет [http://www.woopra.com/ Woopra Live Tracking Software] работать с вашей инсталляцией MediaWiki',
 );
 
 /** Slovak (Slovenčina)

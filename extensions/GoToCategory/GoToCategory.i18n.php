@@ -135,6 +135,13 @@ $messages['nl'] = array(
 	'gotocategory-desc' => "Doorzoekt ook de naamruimte Category: voor zoektermen om 'naar pagina gaan' mogelijk te maken",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'gotocategory-desc' => 'Sjekkar søkeord opp mot kategorinamnerommet for «Gå»-funksjonaliteten i søkeboksen',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

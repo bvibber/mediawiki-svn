@@ -1098,9 +1098,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'voctrain_collection' => 'コレクション',
+	'voctrain_User_name' => '利用者名',
 );
 
 /** Georgian (ქართული)

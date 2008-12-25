@@ -991,6 +991,7 @@ $messages['te'] = array(
 	'imagetagging-imghistory' => 'చరిత్ర',
 	'imagetagging-images' => 'బొమ్మలు',
 	'imagetagging-inthisimage' => 'ఈ బొమ్మలో: $1',
+	'imagetagging-tagcancel-button' => 'రద్దుచేయి',
 );
 
 /** Turkish (Türkçe)

@@ -1464,7 +1464,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'bookinfo-header' => 'Informazion sui libri',
-	'bookinfo-desc' => 'Zonta a [[Special:Booksources]] informazion provenienti da un servizio Web',
+	'bookinfo-desc' => 'Espande la [[Special:Booksources|pàxena speciale par sercar le fonti librarie]] con informazion provenienti da un servizio web',
 	'bookinfo-result-title' => 'Titolo:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editor:',

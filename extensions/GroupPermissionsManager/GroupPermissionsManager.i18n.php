@@ -393,6 +393,74 @@ Schwebe mit der Maus über eine Berechtigung, um eine Beschreibung anzuzeigen.',
 	'right-readold' => 'Betrachte den Inhalt von alten Versionen und Versionsunterschieden',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'grouppermissions' => 'Kupkowe pšawa zastojaś',
+	'sortpermissions' => 'Pšawa sortěrowaś',
+	'removeunusedgroups' => 'Njewužywane kupki wótwónoźeś',
+	'grouppermissions-desc' => 'Kupkowe pšawa pśez [[Special:GroupPermissions|specialny bok]] zastojaś',
+	'grouppermissions-desc2' => 'Rozšyrjony system pšawow',
+	'grouppermissions-desc3' => 'Zmóžnja pśiměrjenje wopśimjeśowych akcijow (rejtarki)',
+	'grouppermissions-desc4' => 'Zmóžnja pśidawanje pśidatnych zapiskow do kašćika rědow',
+	'grouppermissions-desc-nsm' => 'Mjenjowe rumy pśez specialny bok zastojaś',
+	'grouppermissions-header' => 'Móžoš toś ten bok wužywaś, aby změnił pšawa wšakorych wužywarskich kupkow.',
+	'grouppermissions-search' => 'Kupka:',
+	'grouppermissions-dologin' => 'Pśizjawjenje',
+	'grouppermissions-dosearch' => 'Pytaś',
+	'grouppermissions-searchlabel' => 'Kupku pytaś',
+	'grouppermissions-deletelabel' => 'Kupku lašowaś',
+	'grouppermissions-error' => 'Njeznata zmólka jo nastała, pšosym klikni na tłocašk "Slědk" a wopytaj hyšći raz.',
+	'grouppermissions-change' => 'Kupkowe pšawa změniś',
+	'grouppermissions-add' => 'Kupku pśidaś',
+	'grouppermissions-delete' => 'Kupku lašowaś',
+	'grouppermissions-comment' => 'Komentar:',
+	'grouppermissions-addsuccess' => '$1 jo se wuspěšnje pśidał',
+	'grouppermissions-deletesuccess' => '$1 jo se wuspěšnje wulašował',
+	'grouppermissions-changesuccess' => 'Pšawa za $1 su se wuspěšnje změnili',
+	'grouppermissions-true' => 'Wěrny',
+	'grouppermissions-false' => 'Njewěrny',
+	'grouppermissions-never' => 'Nigda',
+	'grouppermissions-nooldrev' => 'Pśi wopyśe aktualnu konfiguracisku dataju archiwěrowaś joe zmólka nastała. Njenapórajo se žeden archiw.',
+	'grouppermissions-sort-read' => 'Cytanje',
+	'grouppermissions-sort-edit' => 'Wobźěłowanje',
+	'grouppermissions-sort-manage' => 'Zastojanje',
+	'grouppermissions-sort-admin' => 'Administrěrowanje',
+	'grouppermissions-sort-tech' => 'Techniske',
+	'grouppermissions-sort-misc' => 'Wšakore',
+	'grouppermissions-log-add' => 'jo kupku "$2" pśidał',
+	'grouppermissions-log-change' => 'jo pšawa za kupku "$2" změnił',
+	'grouppermissions-log-delete' => 'jo kupku "$2" wulašował',
+	'grouppermissions-log-name' => 'Protokol kupkowych pšawow',
+	'grouppermissions-log-header' => 'Toś ten bok slědujo změny pšawow wužywarskich kupkow.',
+	'grouppermissions-needjs' => 'Warnowanje: JavaScript jo w twójom wobglědowaku znjemóžnjony. Móžno, až někotare funkcije njestoje k dispoziciji.',
+	'grouppermissions-sp-header' => 'Móžoš toś ten bok wužywaś, aby sortěrował pšawa a pśidał nowe pšawa. Gibni myškowy cursor nad pšawo, aby cytał jogo wopisanje',
+	'grouppermissions-sp-sort' => 'Pšawa sortěrowaś',
+	'grouppermissions-sp-save' => 'Składowaś',
+	'grouppermissions-sp-success' => 'Pšawa su se wuspěšnje sortěrowali',
+	'grouppermissions-sp-addtype' => 'Sortěrowański typ pśidaś',
+	'grouppermissions-sp-addperm' => 'Pšawo pśidaś',
+	'grouppermissions-sp-remove' => 'wótwónoźeś',
+	'grouppermissions-sp-deltype' => 'Sortěrowański typ lašowaś',
+	'grouppermissions-rug-header' => 'Móžoš toś ten bok wužywaś, aby wótwónoźeł wužywarjow z njewužywanych (wulašowanych) kupkow.',
+	'grouppermissions-rug-success' => 'Wužywarje su se wuspěšnje z njewužywanych kupkow wótwónoźeli!',
+	'grouppermissions-rug-confirm' => 'Wužywarjow z njewužywanych kupkow wótwónoźeś',
+	'right-grouppermissions' => 'Kupkowe pšawa zastojaś',
+	'right-viewsource' => 'Wikijowy žrědłowy tekst šćitanych bokow se woglědaś',
+	'right-raw' => 'Surowe boki se woglědaś',
+	'right-render' => 'Nakreslone boki bźez nawigacije se woglědaś',
+	'right-info' => 'Informacije wo boku se woglědaś',
+	'right-credits' => 'Awtorow boka se woglědaś',
+	'right-history' => 'Stawizny bokow se woglědaś',
+	'right-search' => 'Wiki pśepytaś',
+	'right-contributions' => 'Pśinoski se woglědaś',
+	'right-recentchanges' => 'Aktualne změny se woglědaś',
+	'right-edittalk' => 'Diskusijne boki wobźěłaś',
+	'right-edit-new' => 'Boki (mimo diskusijnych bokow) wobźěłaś',
+	'right-readold' => 'Wopśimjeśe starych wersijow a rozdźělow wersijow se woglědaś',
+);
+
 /** Ewe (Eʋegbe)
  * @author Natsubee
  */
@@ -459,6 +527,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'grouppermissions-sp-save' => 'Guardar',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'grouppermissions-search' => 'Ryhmä',
 );
 
 /** French (Français)
@@ -760,6 +835,74 @@ $messages['hr'] = array(
 	'right-edittalk' => 'Uređivanje stranica za razgovor',
 	'right-edit-new' => 'Uređivanje stranica (koje nisu stranice za razgovor)',
 	'right-readold' => 'Gledanje sadržaja starih izmjena i razlika',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'grouppermissions' => 'Skupinske prawa zrjadować',
+	'sortpermissions' => 'Prawa sortěrować',
+	'removeunusedgroups' => 'Njewužiwane skupiny wotstronić',
+	'grouppermissions-desc' => 'Skupinske prawa přez [[Special:GroupPermissions|specialnu stronu]] zrjadować',
+	'grouppermissions-desc2' => 'Rozšěrjeny system prawow',
+	'grouppermissions-desc3' => 'Zmóžnja přiměrjenje wobsahowych akcijow (rajtarkow)',
+	'grouppermissions-desc4' => 'Zmóžnja přidawanje přidatnych zapiskow do kašćika nastrojow',
+	'grouppermissions-desc-nsm' => 'Mjenowe rumy přez specialnu stronu zrjadować',
+	'grouppermissions-header' => 'Móžeš tutu stronu wužiwać, zo by prawa wšelakich wužiwarskich skupinow změnił.',
+	'grouppermissions-search' => 'Skupina:',
+	'grouppermissions-dologin' => 'Přizjewjenje',
+	'grouppermissions-dosearch' => 'Pytać',
+	'grouppermissions-searchlabel' => 'Skupinu pytać',
+	'grouppermissions-deletelabel' => 'Skupinu wušmórnyć',
+	'grouppermissions-error' => 'Je njeznaty zmylk wustupił, prošu klikń na tłóčatko "Wróćo" w swojim wobhladowaku a spytaj hišće raz.',
+	'grouppermissions-change' => 'Skupinske prawa změnić',
+	'grouppermissions-add' => 'Skupinu přidać',
+	'grouppermissions-delete' => 'Skupinu wušmórnyć',
+	'grouppermissions-comment' => 'Komentar:',
+	'grouppermissions-addsuccess' => '$1 je so wuspěšnje přidał',
+	'grouppermissions-deletesuccess' => '$1 je so wuspěšnje wušmórnył',
+	'grouppermissions-changesuccess' => 'Prawa za $1 su so wuspěšnje změnili',
+	'grouppermissions-true' => 'Wěrny',
+	'grouppermissions-false' => 'Njewěrny',
+	'grouppermissions-never' => 'Ženje',
+	'grouppermissions-nooldrev' => 'Při pospyće aktualnu konfiguracisku dataju archiwować je so zmylk wustupił. Archiw so njewutworja.',
+	'grouppermissions-sort-read' => 'Čitanje',
+	'grouppermissions-sort-edit' => 'Wobdźěłowanje',
+	'grouppermissions-sort-manage' => 'Zrjadowanje',
+	'grouppermissions-sort-admin' => 'Administrowanje',
+	'grouppermissions-sort-tech' => 'Techniske',
+	'grouppermissions-sort-misc' => 'Wšelake',
+	'grouppermissions-log-add' => 'je skupinu "$2" přidał',
+	'grouppermissions-log-change' => 'je prawa za skupinu "$2" změnił',
+	'grouppermissions-log-delete' => 'je skupinu "$2" wušmórnył',
+	'grouppermissions-log-name' => 'Protokol skupinskich prawow',
+	'grouppermissions-log-header' => 'Tuta strona slěduje změny prawow wužiwarskich skupinow.',
+	'grouppermissions-needjs' => 'Warnowanje: JavaScript je w twojim wobhladowaku znjemóžnjeny. Je móžno, zo někotre funkcije k dispoziciji njesteja!',
+	'grouppermissions-sp-header' => 'Móžeš tutu stronu wužiwać, zo by prawa sortěrował a nowe prawa přidał. Pohibń myšowy kursor nad prawo, zo by jeho wopisanje čitał',
+	'grouppermissions-sp-sort' => 'Prawa sortěrować',
+	'grouppermissions-sp-save' => 'Składować',
+	'grouppermissions-sp-success' => 'Prawa su so wuspěšnje sortěrowali',
+	'grouppermissions-sp-addtype' => 'Sortěrowanski typ přidać',
+	'grouppermissions-sp-addperm' => 'Prawo přidać',
+	'grouppermissions-sp-remove' => 'wotstronić',
+	'grouppermissions-sp-deltype' => 'Sortěrowanski typ wušmórnyć',
+	'grouppermissions-rug-header' => 'Móžeš tutu stronu wužiwać, zo by wužiwarjow z njewužiwanych (wušmórnych) skupinow wotstronił.',
+	'grouppermissions-rug-success' => 'Wužiwarjo su so wuspěšnje z njewužiwanych skupinow wotstronili!',
+	'grouppermissions-rug-confirm' => 'Wužiwarjow z njewužiwanych skupinow wotstronić',
+	'right-grouppermissions' => 'Skupinske prawa zrjadować',
+	'right-viewsource' => 'Wikijowy žórłowy tekst škitanych stronow sej wobhladać',
+	'right-raw' => 'Surowe strony sej wobhladać',
+	'right-render' => 'Narysowane strony bjez nawigacije sej wobhladać',
+	'right-info' => 'Informacije wo stronje sej wobhladać',
+	'right-credits' => 'Awtorow strony sej wobhladać',
+	'right-history' => 'Stawizny strony sej wobhladać',
+	'right-search' => 'Wiki přepytać',
+	'right-contributions' => 'Přinoški se wobhladać',
+	'right-recentchanges' => 'Aktualne změny sej wobhladać',
+	'right-edittalk' => 'Diskusijne strony wobdźěłać',
+	'right-edit-new' => 'Strony wobdźěłać (nimo diskusijnych stronow)',
+	'right-readold' => 'Wobsah starych wersijow a rozdźělow wersijow sej wobhladać',
 );
 
 /** Interlingua (Interlingua)

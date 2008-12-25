@@ -167,6 +167,22 @@ $messages['hsb'] = array(
   #</pre><!-- tutu linku njezměnjenu wostajić -->',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'editsubpages-desc' => 'Lehetővé teszi az adminisztrátorok számára, hogy engedélyezzék a szerkesztést egy lapon és annak összes allapján a [[MediaWiki:Unlockedpages]] lapon keresztül.',
+	'unlockedpages' => '  #<!-- ezt a sort hagyd így --><pre>
+# Az engedélyezni kívánt lapok listáját sorold fel a
+# * Lap neve
+# forma használatával. A lapok előtt csillagnak kell szerepelni, hogy
+# számítsanak, minden más megjegyzésnek számít.
+# A lapnevek lehetnek [[linkek]] és kis- és nagybetűérzékenyek.
+# Továbbá, a lapok vitalapjai is szerkeszthetőek lesznek.
+# Lásd a http://www.mediawiki.org/wiki/Extension:EditSubpages lapot további információért
+  #</pre><!-- ezt a sort hagyd így -->',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

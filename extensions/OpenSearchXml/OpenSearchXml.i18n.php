@@ -40,10 +40,11 @@ $messages['ast'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'opensearchxml-desc' => 'Інтэрфэйс XML [http://www.opensearch.org OpenSearch] для тэкставых вытрымак',
+	'opensearchxml-desc' => 'XML-інтэрфэйс [http://www.opensearch.org OpenSearch] для тэкставых вытрымак',
 );
 
 /** Bosnian (Bosanski)

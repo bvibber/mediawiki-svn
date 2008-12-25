@@ -58,6 +58,15 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'securepasswords-desc' => 'Crea un contrasinal cardinal máis seguro e engade un comprobador da fortaleza deste',
+	'securepasswords-valid' => 'O seu contrasinal é inválido ou moi curto.
+Debe:',
+	'securepasswords-minlength' => 'ter, polo menos, {{PLURAL:$1|un carácter|$1 caracteres}}',
+	'securepasswords-lowercase' => 'conter, polo menos, unha letra minúscula',
+	'securepasswords-uppercase' => 'conter, polo menos, unha letra maiúscula',
+	'securepasswords-digit' => 'conter, polo menos, un díxito',
+	'securepasswords-special' => 'conter, polo menos, un carácter especial (caracteres especiais son: $1)',
+	'securepasswords-username' => 'ser diferente do seu nome de usuario',
+	'securepasswords-word' => 'non ser unha palabra',
 );
 
 /** Hebrew (עברית)
@@ -140,5 +149,20 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'securepasswords-desc' => 'Skapar säkrare lösenordshashar och lägger till en funktion för att kontrollera lösenordets styrka',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'securepasswords-valid' => 'మీ సంకేతపదం సరైనది కాదు లేదా మరీ చిన్నగా ఉంది.
+అది:',
+	'securepasswords-minlength' => 'కనీసం $1 {{PLURAL:$1|అక్షరం|అక్షరాల}} పొడవుండాలి',
+	'securepasswords-lowercase' => 'కనీసం ఒక్క చిన్న బడి అక్షరాన్నైనా కలిగివుండాలి.',
+	'securepasswords-uppercase' => 'కనీసం ఒక్క పెద్దబడి అక్షరాన్నైనా కలిగివుండాలి.',
+	'securepasswords-digit' => 'కనీసం ఒక్క అంకెనైనా కలిగివుండాలి.',
+	'securepasswords-special' => 'కనీసం 1 ప్రత్యేక అక్షరాన్నైనా కలిగివుండాలి (ప్రత్యేక అక్షరాలు ఇవీ: 1)',
+	'securepasswords-username' => 'మీ వాడుకరిపేరు అయివుండకూడదు',
+	'securepasswords-word' => 'ఒక పదం అయివుండకూడదు',
 );
 

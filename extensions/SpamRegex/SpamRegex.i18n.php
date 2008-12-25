@@ -267,6 +267,8 @@ $messages['eo'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'spamregex-unblock-success' => 'Eston poisto onnistui',
+	'spamregex-block-success' => 'Esto onnistui',
 	'spamregex-error-1' => 'Virheellinen säännöllinen lauseke.',
 );
 
@@ -481,6 +483,13 @@ Caution avisate: le expressiones non debe esser troppo curte o troppo commun.',
  */
 $messages['is'] = array(
 	'spamregex-already-blocked' => '„$1“ er nú þegar í banni',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'spamregex-summary-log' => '(要約)',
 );
 
 /** Javanese (Basa Jawa)

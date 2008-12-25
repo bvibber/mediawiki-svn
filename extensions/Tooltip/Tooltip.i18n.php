@@ -215,6 +215,13 @@ $messages['sv'] = array(
 	'tooltip-desc' => 'Lägger till <tt><nowiki><tooltip></nowiki></tt> och <tt><nowiki>{{#tooltip:}}</nowiki></tt>-taggarna',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'tooltip-desc' => 'Zonta i tag <tt><nowiki><tooltip></nowiki></tt> e <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Chinese (Taiwan) (‪中文(台灣)‬)
  * @author Roc michael
  */

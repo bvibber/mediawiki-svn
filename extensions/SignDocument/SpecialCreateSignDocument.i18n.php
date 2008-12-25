@@ -287,6 +287,7 @@ $messages['ext'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'createsigndoc-allowedgroup' => 'Sallittu ryhmä',
 	'createsigndoc-email' => 'Sähköpostiosoite',
 	'createsigndoc-address' => 'Kotiosoite',
 	'createsigndoc-phone' => 'Puhelinnumero',

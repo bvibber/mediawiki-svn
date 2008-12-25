@@ -368,6 +368,7 @@ $messages['te'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'mediafunctions-desc' => 'Funsioni parser par otegner informassion sui file multimediali',
 	'mediafunctions-invalid-title' => '"$1" no\'l xe un titolo valido',
 	'mediafunctions-not-exist' => '"$1" no l\'esiste mìa',
 );

@@ -554,6 +554,13 @@ $messages['mr'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: इनपुट त्रुटी!',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'chemFunctions_Formula' => 'Formula',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

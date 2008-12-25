@@ -848,6 +848,7 @@ $messages['ro'] = array(
 	'authorprotect-move' => 'Restricţionează mutarea la autori',
 	'authorprotect-expiry' => 'Timpul expirării',
 	'authorprotect-reason' => 'Motiv',
+	'authorprotect-intro' => 'Utilizaţi acest formular pentru a proteja această pagină de non-autori',
 	'authorprotect-success' => 'Protejare cu succes!',
 	'authorprotect-failure' => 'Protejare fără succes',
 	'protect-level-author' => 'Potejează de non-autori',

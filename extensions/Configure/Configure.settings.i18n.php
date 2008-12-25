@@ -635,6 +635,82 @@ $messages['bs'] = array(
 	'configure-setting-wgMediaHandlers-key' => 'MIME vrsta',
 );
 
+/** German (Deutsch)
+ * @author ChrisiPK
+ */
+$messages['de'] = array(
+	'configure-setting-wgSitename' => 'Name der Website',
+	'configure-setting-wgActionPaths' => 'URL für alle Aktionen',
+	'configure-setting-wgActionPaths-key' => 'Aktion',
+	'configure-setting-wgActionPaths-value' => 'URL-Vorlage',
+	'configure-setting-wgAllDBsAreLocalhost' => 'Ohne weitere Meldung alle Datenbankverbindungen auf den Hostrechner umschreiben',
+	'configure-setting-wgCheckDBSchema' => 'Bei jedem Aufruf einer Seite überprüfen, dass die Datenbank auf dem aktuellen Stand ist (nicht empfohlen)',
+	'configure-setting-wgDBAvgStatusPoll' => 'Durchschnittliche Zeit zwischen SHOW STATUS-Anfragen bei Überlastung',
+	'configure-setting-wgDBerrorLog' => 'Datei, in die Datenbankfehler geschrieben werden',
+	'configure-setting-wgDBname' => 'Name der Datenbank',
+	'configure-setting-wgDBpassword' => 'Passwort für $wgDBuser',
+	'configure-setting-wgDBport' => 'Port für den Datenbank-Server',
+	'configure-setting-wgDBserver' => 'Hostname oder IP-Adresse des Datenbankservers',
+	'configure-setting-wgDBtype' => 'Typ der Datenbank',
+	'configure-setting-wgDBuser' => 'Username zum Einloggen in die Datenbank',
+	'configure-setting-wgLocalDatabases' => 'Andere Datenbanken, die von diesem Server aus verwaltet werden können',
+	'configure-setting-wgSearchType' => 'Typ der Datenbanksuche. Auf einen Klassennamen setzen, um eine eigene Suchmaschine zu verwenden',
+	'configure-setting-wgSharedDB' => 'Name der geteilten Datenbank',
+	'configure-setting-wgSharedPrefix' => 'Präfix der geteilten Datenbank',
+	'configure-setting-wgSharedTables' => 'Tabellen, die geteilt werden sollen',
+	'configure-setting-wgAllowImageMoving' => 'Umbenennung von Dateien zulassen',
+	'configure-setting-wgCustomConvertCommand' => 'Alternatives Programm zur Bildskalierung',
+	'configure-setting-wgGenerateThumbnailOnParse' => 'Thumbnails generieren, wenn Seiten, die sie enthalten, geparst werden',
+	'configure-setting-wgIgnoreImageErrors' => 'Keine Fehlermeldungen für Bilder anzeigen',
+	'configure-setting-wgImageLimits' => 'Bildgrößenlimits für Beschreibungsseiten',
+	'configure-setting-wgMaxAnimatedGifArea' => 'Maximaler Bereich in Pixeln für animierte GIFs',
+	'configure-setting-wgMaxImageArea' => 'Maximaler Bereich in Pixeln für Bilder',
+	'configure-setting-wgMediaHandlers' => 'Plugins für die Behandlung von Media-Dateitypen',
+	'configure-setting-wgMediaHandlers-key' => 'MIME-Type',
+	'configure-setting-wgMediaHandlers-value' => 'Handlerklasse',
+	'configure-setting-wgThumbnailScriptPath' => 'Pfad zu thumb.php für Thumbnailgenerierung bei Notwendigkeit anstelle von beim Parsen',
+	'configure-setting-wgThumbUpright' => 'Anpassungsfaktor für die Breite von mit „upright“ eingebundenen Bildern',
+	'configure-setting-wgShowEXIF' => 'EXIF-Daten auf Dateibeschreibungsseiten anzeigen',
+	'configure-setting-wgThumbLimits' => 'Zugelassene Thumbnailgrößen',
+	'configure-setting-wgTrustedMediaFormats' => 'Mediatypen und MIME-Types, die als „ungefährlich“ eingestuft werden',
+	'configure-setting-wgMainCacheType' => 'Typ des Hauptcachingsystems',
+	'configure-setting-wgCacheEpoch' => 'Gültigkeitsdauer des Caches',
+	'configure-setting-wgCachePages' => 'Clientseitiges Seiten-Caching zulassen',
+	'configure-setting-wgClockSkewFudge' => 'Zeit, die zu den Cache-Zeitstempeln addiert wird, fälschen, um sie an den Versatz der Uhr anzupassen',
+	'configure-setting-wgFileCacheDirectory' => 'Dateicache-Verzeichnis',
+	'configure-setting-wgForcedRawSMaxage' => 'Voreingestelltes Maximalalter für Rohdaten-CSS/JS-Zugriff',
+	'configure-setting-wgQueryCacheLimit' => "Anzahl an Zeilen, die in der 'querycache'-Tabelle gecacht werden",
+	'configure-setting-wgRevisionCacheExpiry' => 'Ablaufzeit für gecachten Versionstext in memcached (oder 0 zum Deaktivieren)',
+	'configure-setting-wgThumbnailEpoch' => 'Gültigkeitsdauer von Thumbnails',
+	'configure-setting-wgTranscludeCacheExpiry' => 'Ablaufzeitpunkt des Caches für interwiki-Einbindungen',
+	'configure-setting-wgUseFileCache' => 'Dateicache verwenden',
+	'configure-setting-wgUseGzip' => 'GZIP-Codierung verwenden',
+	'configure-setting-wgAllowDisplayTitle' => 'Die Verwendung von <nowiki>{{DISPLAYTITLE}}</nowiki> zulassen',
+	'configure-setting-wgAllowExternalImages' => 'Einbindung externer Dateien zulassen',
+	'configure-setting-wgAllowExternalImagesFrom' => 'Ausnahmen für $wgAllowExternalImages = false',
+	'configure-setting-wgEnableImageWhitelist' => 'Die Verwendung von „MediaWiki:External file whitelist“ zulassen',
+	'configure-setting-wgExpensiveParserFunctionLimit' => 'Maximale Anzahl an Aufrufen anspruchsvoller Parser-Funktionen pro Parse-Vorgang',
+	'configure-setting-wgExternalLinkTarget' => 'Voreingestelltes target-Attribut für externe Links',
+	'configure-setting-wgCleanSignatures' => 'Vorlagen in Signaturen substituieren',
+	'configure-setting-wgGrammarForms' => 'Grammatikalische Formen für die Parser-Funktion GRAMMAR',
+	'configure-setting-wgLinkHolderBatchSize' => 'Stapelgröße für LinkHolderArray',
+	'configure-setting-wgMaxPPExpandDepth' => 'Stapeltiefelimit für die Vorlagenexpansion durch der Präprozessor',
+	'configure-setting-wgMaxPPNodeCount' => 'Maximale Knotenanzahl, die der Präprozessor parst',
+	'configure-setting-wgMaxTemplateDepth' => 'Vorlagentiefelimit für den Präprozessor',
+	'configure-setting-wgMaxTocLevel' => 'Maximale Einrückungsebene für Inhaltsverzeichnisse',
+	'configure-setting-wgParserConf' => 'Parserkonfiguration',
+	'configure-setting-wgParserCacheExpireTime' => 'Ablaufzeitpunkt des Parsercaches',
+	'configure-setting-wgParserTestFiles' => 'Dateien, die für parserTests.php ausgeführt werden',
+	'configure-setting-wgRestrictDisplayTitle' => 'Beschränkt die Verwendung von <nowiki>{{DISPLAYTITLE}}</nowiki> so, dass nur zum selben kanonischen Seitentitel normalisiert wird',
+	'configure-setting-wgAmericanDates' => 'Verwendet „May 12“ anstellen von „12 May“ in Englisch',
+	'configure-setting-wgDisableLangConversion' => 'Sprachumwandlung deaktivieren',
+	'configure-setting-wgDisableTitleConversion' => 'Sprachvariantenumwandlung für Seitentitel deaktivieren',
+	'configure-setting-wgEditEncoding' => 'Zeichen, die nicht ausdrücklich von der Ausgabecodierung konvertiert werden',
+	'configure-setting-wgForceUIMsgAsContentMsg' => 'UI-Nachrichten, die als Inhaltsnachrichten behandelt werden',
+	'configure-setting-wgInputEncoding' => 'Codierung des Eingabetexts',
+	'configure-setting-wgInterwikiMagic' => 'Interwiki-Links in einer speziellen Liste anzeigen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -790,7 +866,7 @@ $messages['fr'] = array(
 	'configure-setting-wgMaxUploadSize' => 'Taille maximale de l’import',
 	'configure-setting-wgHTTPTimeout' => 'Durée d’expiration pour la requête HTTP',
 	'configure-setting-wgHTTPProxy' => 'Proxy HTTP à utiliser',
-	'configure-setting-wgVersion' => 'Version de Mediawiki',
+	'configure-setting-wgVersion' => 'Version de MediaWiki',
 	'configure-setting-wgAllowSpecialInclusion' => 'Permet l’inclusion des pages spéciales',
 	'configure-setting-wgExportAllowHistory' => 'Permet l’export pour inclure l’historique complet',
 	'configure-setting-wgExportAllowListContributors' => 'Permet une liste de contributeurs à exporter',
@@ -2276,7 +2352,7 @@ $messages['oc'] = array(
 	'configure-setting-wgMaxUploadSize' => 'Talha maximala de l’impòrt',
 	'configure-setting-wgHTTPTimeout' => 'Durada d’expiracion per la requèsta HTTP',
 	'configure-setting-wgHTTPProxy' => "Proxy HTTP d'utilizar",
-	'configure-setting-wgVersion' => 'Version de Mediawiki',
+	'configure-setting-wgVersion' => 'Version de MediaWiki',
 	'configure-setting-wgAllowSpecialInclusion' => 'Permet l’inclusion de las paginas especialas',
 	'configure-setting-wgExportAllowHistory' => 'Permet l’expòrt per enclure l’istoric complet',
 	'configure-setting-wgExportAllowListContributors' => "Permet una lista de contributors d'exportar",
@@ -2699,11 +2775,14 @@ $messages['ps'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'configure-setting-wgActionPaths-key' => 'Acţiune',
 	'configure-setting-wgMediaHandlers-key' => 'Tip MIME',
 	'configure-setting-wgLanguageCode' => 'Codul limbii sitului',
 	'configure-setting-wgArticleRobotPolicies-key' => 'Titlul paginii',
 	'configure-setting-wgExtraLanguageNames-key' => 'Codul limbii',
 	'configure-setting-wgExtraLanguageNames-value' => 'Nume',
+	'configure-setting-wgMaxArticleSize' => 'Mărimea maximă a paginilor (kB)',
+	'configure-setting-wgPageShowWatchingUsers' => 'Arată care utilizatori urmăresc o pagină',
 );
 
 /** Slovak (Slovenčina)
@@ -3535,5 +3614,21 @@ $messages['uk'] = array(
 $messages['vi'] = array(
 	'configure-setting-wgUseDynamicDates' => 'Định dạng lại các ngày tháng được liên kết',
 	'configure-setting-wgDisableSearchContext' => 'Không hiển thị thông tin phụ về những ngày tháng và phiên bản trang nào đó trong kết quả tìm kiếm',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'configure-setting-wgParserTestFiles' => '為parserTests.php執行的檔案',
+	'configure-setting-wgRestrictDisplayTitle' => '需要使用<nowiki>{{DISPLAYTITLE}}</nowiki>常態化至相同標準頁面標題',
+	'configure-setting-wgArticleRobotPolicies' => '每頁機器人方針',
+	'configure-setting-wgArticleRobotPolicies-key' => '頁面標題',
+	'configure-setting-wgArticleRobotPolicies-value' => '機器人方針',
+	'configure-setting-wgSiteNotice' => '網站通告',
+	'configure-setting-wgSiteSupportPage' => '含捐款信息的頁面',
+	'configure-setting-wgStyleVersion' => 'MediaWiki CSS/JS檔案版本',
+	'configure-setting-wgUniversalEditButton' => '啟用「通用編輯按鈕」',
+	'configure-setting-wgUrlProtocols' => '准許的外部連結協定',
 );
 

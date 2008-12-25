@@ -363,6 +363,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'templatelink' => 'మూస లింకు',
+	'templatelink_desc' => 'ఈ పొడగింత మూసని ఒక కొత్త పేజీగా చూపించగలదు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -378,6 +379,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['vec'] = array(
 	'templatelink' => 'Colegamento al template',
+	'templatelink_desc' => 'Sta estension la pode mostrar un modèl come nova pàxena',
 	'templatelink_empty' => 'Ti gà da fornir un parametro.',
 	'templatelink_newtitle' => '$1 (trasclusión)',
 );

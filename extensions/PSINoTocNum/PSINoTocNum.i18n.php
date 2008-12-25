@@ -83,6 +83,13 @@ $messages['gl'] = array(
 	'psinotocnum-desc' => 'Nova palabra máxica "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'psinotocnum-desc' => 'מילת קסם חדשה "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>"',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

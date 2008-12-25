@@ -229,11 +229,14 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'sitematrix' => 'Spisak Wikimedia wikija',
 	'sitematrix-summary' => 'Ova posebna stranica prikazuje sve Wikimedia wikije.',
+	'sitematrix-desc' => 'Prikazuje [[Special:SiteMatrix|spisak Wikimedia wikija]]',
 	'sitematrix-language' => 'Jezik',
+	'sitematrix-project' => 'Naziv projekta, link ka međuprojektu i međuwiki link',
 	'sitematrix-others' => 'Ostali projekti Wikimedije',
 	'sitematrix-total' => "'''Ukupni zbir: $1'''",
 	'sitematrix-sitetotal' => 'Ukupno',
 	'sitematrix-private' => 'privatno',
+	'sitematrix-fishbowl' => 'uređivanje zabranjeno',
 );
 
 /** Catalan (Català)

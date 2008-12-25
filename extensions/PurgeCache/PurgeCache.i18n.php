@@ -128,6 +128,17 @@ $messages['gl'] = array(
 	'purgecache-button' => 'Depurar',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'purgecache' => 'ריקון המטמון',
+	'purgecache-desc' => '[[Special:PurgeCache|דף מיוחד]] המשמש לריקון טבלת ב־OBJECTCACHE',
+	'purgecache-warning' => 'פעולה זו תרוקן לחלוטין את טבלאות המטמון.',
+	'purgecache-purged' => 'המטמון התרוקן לחלוטין.',
+	'purgecache-button' => 'ריקון',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */

@@ -198,6 +198,14 @@ $messages['gl'] = array(
 	'refreshspecial-total-display' => '<br />$1 páxinas refrescadas dun total de $2 liñas dunha duración de $3 (a duración completa  da escritura é de $4)',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'refreshspecial-link-back' => 'חזרה להרחבה',
+	'refreshspecial-here' => '<b>כאן</b>',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -503,6 +511,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'refreshspecial-select-all-pages' => ' అన్ని పేజీలను ఎంచుకోండి',
 	'refreshspecial-here' => '<b>ఇక్కడ</b>',
+	'refreshspecial-db-error' => 'విఫలం: డాటాబేసు పొరపాటు',
 	'refreshspecial-no-page' => 'అటువంటి ప్రత్యేక పేజీ లేదు',
 );
 

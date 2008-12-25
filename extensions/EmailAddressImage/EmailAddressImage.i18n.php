@@ -111,6 +111,13 @@ $messages['hsb'] = array(
 	'emailaddressimage-desc' => 'Přidawa <tt>&lt;email&gt;</tt>, zo by e-mejlowu adresu jako wobraz zwobrazniło',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'emailaddressimage-desc' => '<tt>&lt;email&gt;</tt> tag e-mail címek képként való megjelenítéséhez',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

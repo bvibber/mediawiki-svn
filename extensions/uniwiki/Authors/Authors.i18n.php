@@ -42,6 +42,8 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'authors-desc' => 'Добавя списък на редакторите към страниците',
+	'authors_authors' => 'Автори',
+	'authors_anonymous' => 'Анонимни',
 );
 
 /** German (Deutsch)
@@ -224,6 +226,7 @@ $messages['sk'] = array(
  */
 $messages['te'] = array(
 	'authors_authors' => 'రచయితలు',
+	'authors_anonymous' => 'అజ్ఞాత',
 );
 
 /** Vietnamese (Tiếng Việt)

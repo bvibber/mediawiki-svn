@@ -442,6 +442,7 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Nike
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'crosswikiblock' => 'Estä käyttäjä toisessa wikissä',
@@ -461,6 +462,20 @@ Tarkista, saatko toimia tässä wikissä ja että toimesi ovat käytäntöjen mu
 	'crosswikiunblock-user' => 'Käyttäjänimi, IP-osoite tai eston ID ja kohdewiki',
 	'crosswikiunblock-reason' => 'Syy',
 	'crosswikiunblock-submit' => 'Poista tämän käyttäjän muokkausesto',
+	'crosswikiunblock-success' => "Käyttäjän '''$1''' esto poistettiin.
+
+Palaa takaisin:
+* [[Special:CrosswikiBlock|estosivulle]]
+* [[$2]].",
+	'crosswikiblock-dbnotfound' => 'Tietokantaa $1 ei ole',
+	'crosswikiblock-nouser' => 'Käyttäjää ”$3” ei löydy.',
+	'crosswikiblock-alreadyblocked' => 'Käyttäjä $3 on jo estetty.',
+	'crosswikiblock-noblock' => 'Käyttäjää ei ole estetty.',
+	'crosswikiblock-success' => "Käyttäjä '''$3''' estettiin.
+
+Palaa:
+* [[Special:CrosswikiBlock|estosivulle]]
+* [[$4]]",
 );
 
 /** French (Français)

@@ -235,6 +235,15 @@ $messages['sv'] = array(
 	'formatchanges-editedby' => 'redigerad av',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'formatchanges-anonymous' => 'అజ్ఞాత',
+	'formatchanges-createdby' => 'సృష్టించినది',
+	'formatchanges-editedby' => 'మార్చినది',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -1535,6 +1535,9 @@ $messages['te'] = array(
 
 $1',
 	'webstore_no_response' => 'సర్వరునుండి స్పందన లేదు',
+	'webstore_backend_error' => 'భద్రపరిచే సర్వరు నుండి పొరపాటు:
+
+$1',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

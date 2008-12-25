@@ -124,6 +124,16 @@ $messages['gl'] = array(
 	'protectsection_forbidden' => 'Prohibido',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'protectsection_desc' => 'מתן האפשרות למשתמשים מורשים להגן על חלקים מהדף באמצעות התגית <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'ניסיתם להוסיף או להסיר קטע מוגן',
+	'protectsection_modify' => 'ניסיתם לשנות טקסט מוגן',
+	'protectsection_forbidden' => 'אסור',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -360,6 +370,7 @@ $messages['tr'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'protectsection_desc' => 'Permete ai utenti autorizà de protègiar tochi de na pàxena doparando el tag <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Ti gà sercà de zontar o cavar na sezion proteta',
 	'protectsection_modify' => 'Ti gà sercà de modificar del testo proteto',
 	'protectsection_forbidden' => 'Proibìo',

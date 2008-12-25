@@ -628,6 +628,38 @@ Het bestand dat u uploadt moet op iedere regel een paginanaam en een reden bevat
 	'deletebatch-no-page' => "Geef tenminste één te verwijderen pagina op of kies een bestand dat de lijst met pagina's bevat.",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'deletebatch' => 'Slett fleire sider',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Slett fleire sider]]',
+	'deletebatch-button' => 'Slett',
+	'deletebatch-here' => '<b>her</b>',
+	'deletebatch-help' => 'Slett ein serie av sider. Du kan òg utføra ei enkel sletting, eller sletta sider lista opp i ei fil.
+Vel ein brukar som skal bli vist i sletteloggen.
+Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteårsak skilt frå tittelen med «|».',
+	'deletebatch-caption' => 'Sidelista',
+	'deletebatch-title' => 'Slett serie',
+	'deletebatch-link-back' => 'Du kan gå attende til utvidinga',
+	'deletebatch-as' => 'Køyr skriptet som',
+	'deletebatch-both-modes' => 'Vel éi sida eller ei lista over sider.',
+	'deletebatch-or' => '<b>eller</b>',
+	'deletebatch-page' => 'Sider som skal bli sletta',
+	'deletebatch-reason' => 'Sletteårsak',
+	'deletebatch-processing' => 'slettar sider',
+	'deletebatch-from-file' => 'frå fillista',
+	'deletebatch-from-form' => 'frå skjema',
+	'deletebatch-success-subtitle' => 'for $1',
+	'deletebatch-omitting-nonexistant' => 'Tek ikkje med sida $1 som ikkje finst.',
+	'deletebatch-omitting-invalid' => 'Tek ikkje med den ugyldige sida $1.',
+	'deletebatch-file-bad-format' => 'Fila bør innehalda rein tekst',
+	'deletebatch-file-missing' => 'Kunne ikkje lesa fila',
+	'deletebatch-select-script' => 'slett sideskript',
+	'deletebatch-select-yourself' => 'du',
+	'deletebatch-no-page' => 'Oppgje minst éi sida som skal bli sletta, eller vel ei fil med ei lista over sider.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

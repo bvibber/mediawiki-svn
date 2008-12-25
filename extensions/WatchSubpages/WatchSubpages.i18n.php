@@ -160,6 +160,9 @@ $messages['eo'] = array(
  */
 $messages['fi'] = array(
 	'watchsubpages' => 'Tarkkaile alasivuja',
+	'watchsubpages-addedtowatchlist' => 'Seuraavat sivut on lisätty tarkkailulistallesi.',
+	'watchsubpages-addtitles' => 'Lisää sivut',
+	'watchsubpages-addtitlestowatchlist' => 'Lisää sivut tarkkailulistalle',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Lisää kaikki sivun alasivut]] tarkkailulistalle.',
 );
 

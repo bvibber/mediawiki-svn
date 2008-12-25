@@ -324,6 +324,30 @@ $messages['hak'] = array(
 	'passwordreset-username' => 'Yung-fu-miàng',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'passwordreset' => 'איפוס סיסמה',
+	'passwordreset-desc' => "[[Special:PasswordReset|איפוס סיסמאות המשתמשים בוויקי]] - נדרשות הרשאות 'passwordreset'",
+	'passwordreset-invalidusername' => 'שם המשתמש שגוי',
+	'passwordreset-emptyusername' => 'שם המשתמש ריק',
+	'passwordreset-nopassmatch' => 'הסיסמאות אינן תואמות',
+	'passwordreset-badtoken' => 'אסימון העריכה שגוי',
+	'passwordreset-username' => 'שם המשתמש:',
+	'passwordreset-newpass' => 'סיסמה חדשה:',
+	'passwordreset-confirmpass' => 'אימות הסיסמה:',
+	'passwordreset-submit' => 'איפוס הסיסמה',
+	'passwordreset-success' => "הסיסמה אופסה עבור משתמש מס': $1",
+	'passwordreset-disableuser' => 'האם לבטל את חשבון המשתמש?',
+	'passwordreset-disableuserexplain' => '(מגדיר סיסמת גיבוב שגויה - המשתמש לא יוכל להתחבר)',
+	'passwordreset-disablesuccess' => "חשבון המשתמש בוטל עבור משתמש מס': $1",
+	'passwordreset-accountdisabled' => 'החשבון בוטל',
+	'disabledusers' => 'משתמשים שחשבונם בוטל',
+	'disabledusers-summary' => 'זוהי רשימת המשתמשים שחשבונם בוטל דרך איפוס־הסיסמה (PasswordReset).',
+	'right-passwordreset' => '([[Special:PasswordReset|דף מיוחד]]) לאיפוס סיסמת המשתמש',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -500,6 +524,13 @@ $messages['it'] = array(
 	'disabledusers' => 'Utenti disabilitati',
 	'disabledusers-summary' => 'Questa è la lista degli utenti che sono stati disabilitati con PasswordReset.',
 	'right-passwordreset' => 'Reimposta la password di un utente ([[Special:PasswordReset|pagina speciale]])',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'passwordreset-username' => '利用者名:',
 );
 
 /** Javanese (Basa Jawa)

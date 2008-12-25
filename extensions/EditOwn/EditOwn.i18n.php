@@ -119,6 +119,13 @@ $messages['hsb'] = array(
 	'editown-desc' => 'Wužiwarjo, kotřiž nimaja prawo wšo wobdźěłować, móža jenož strony wobdźěłać, kotrež su sami wutworili.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'editown-desc' => 'Az editall jog nélküli szerkesztők csak az általuk készített lapokat szerkeszthetik',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -251,6 +258,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'editown-desc' => 'అన్ని పేజీలను మార్చే అధికారం లేని వాడుకర్లు వారు సృష్టించిన పేజీలను మాత్రమే మార్చగలరు',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'editown-desc' => 'I utenti che no gà el dirito de modificar tute le pàxene i pode solo modificar le pàxene creà da lori',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -133,11 +133,12 @@ $messages['bcc'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'scanset-desc' => 'Прагляд сканаваных выяваў старонак з CD/DVD калекцыяў Андрэаса Гроса',
-	'scanset_no_name' => 'Памылка: Вы павінны пазначыць назву калекцыі выяваў, напр. &lt;scanset name="EB1911" /&gt;.',
+	'scanset-desc' => 'Прагляд адсканаваных выяваў з CD/DVD калекцыі Андрэаса Гроса',
+	'scanset_no_name' => 'Памылка: Вы павінны пазначыць назву калекцыі выяваў, напрыклад, &lt;scanset name="EB1911" /&gt;.',
 );
 
 /** Bulgarian (Български)

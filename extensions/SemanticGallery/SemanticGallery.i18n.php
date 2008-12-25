@@ -69,7 +69,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'semanticgallery-desc' => 'Deiht en Fommaat för en Jallerie-aatijje Aanzeich dobei, bei <i lang="en">Semantic Mediawiki</i> singe Froore en Sigge.',
+	'semanticgallery-desc' => 'Deiht en Fommaat för en Jallerie-aatijje Aanzeich dobei, bei <i lang="en">Semantic MediaWiki</i> singe Froore en Sigge.',
 );
 
 /** Dutch (Nederlands)

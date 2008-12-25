@@ -127,6 +127,7 @@ $wgCustomToolbarMessages['bg'] = array(
 	'ct_math_tip_ins' => 'Вмъкване на математическа формула (LaTeX)',
 	'ct_math_caption' => 'Формула',
 	'ct_close' => 'Затваряне на прозореца',
+	'ct_success' => 'Качването беше успешно!',
 	'ct_user_user' => 'Потребител',
 	'ct_user_tip' => 'Вмъкване на препратка към потребителската страница',
 	'ct_user_sample' => 'Потребителско име',
@@ -1057,17 +1058,28 @@ $wgCustomToolbarMessages['sv'] = array(
 	'ct_horizontal_tip' => 'Sätt in en horisontell linje (använd sparsamt)',
 	'ct_horizontal_caption' => 'Horisontell linje',
 	'ct_upload' => 'Ladda upp $1',
+	'ct_select' => 'Välj $1 för att ladda upp',
+	'ct_submit' => 'Gå!',
+	'ct_close' => 'Stäng fönster',
+	'ct_success' => 'Filen har laddats upp!',
+	'ct_user_user' => 'Användare',
+	'ct_user_tip' => 'Sätt in en länk till en användarsida',
+	'ct_user_caption' => 'Användarlänk',
+	'ct_user_sample' => 'Användarnamn',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $wgCustomToolbarMessages['te'] = array(
+	'ct_bold_sample' => 'బొద్దు పాఠ్యం',
 	'ct_bold_caption' => 'బొద్దు',
+	'ct_italic_sample' => 'వాలు పాఠ్యం',
 	'ct_italic_caption' => 'వాలు',
 	'ct_internal_sample' => 'పేజీపేరు',
 	'ct_internal_caption' => 'అంతర్గత లింకు',
 	'ct_external_caption' => 'బయటి లింకు',
+	'ct_image_caption' => 'బొమ్మని చేర్చండి',
 	'ct_submit' => 'వెళ్ళు!',
 	'ct_success' => 'పైలు ఎగుమతి విజయవంతం!',
 	'ct_user_user' => 'వాడుకరి',

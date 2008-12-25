@@ -159,7 +159,9 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'eval' => 'Kiértékelés',
+	'eval-desc' => '[[Special:Eval|Speciális lap]] az <code>eval()</code> függvény használatára',
 	'eval_submit' => 'Kiértékelés',
+	'eval_out' => 'Kimenet',
 	'eval_code' => 'Kód',
 );
 

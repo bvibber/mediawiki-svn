@@ -171,6 +171,13 @@ $messages['nl'] = array(
 	'googleadsense-desc' => 'Voegt [http://www.google.com/adsense?hl=nl Google AdSense] toe aan de sidebar',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'googleadsense-desc' => 'Legg til [http://google.com/adsense Google AdSense] til sidemenyen',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -240,6 +247,13 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'googleadsense-desc' => 'Lägger till [http://www.google.com/adsense Google AdSense] till sidpanelen',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'googleadsense-desc' => 'Zonta [http://www.google.com/adsense Google AdSense] a la barra laterale',
 );
 
 /** Vietnamese (Tiếng Việt)

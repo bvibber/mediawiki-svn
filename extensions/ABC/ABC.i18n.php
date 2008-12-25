@@ -355,6 +355,14 @@ $messages['tl'] = array(
 	'abcvorbis' => 'Ogg Vorbis',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'abcdesc' => 'Zonta el tag <tt>&lt;abc&gt;</tt> par la musica in formato ABC',
+	'abcdownload' => 'Descarga:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -748,6 +748,24 @@ $2
 $2',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'userrightsnotifysubject' => 'Pagbabago sa kasapiang pampangkat noong $1',
+	'userrightsnotifybody' => 'Kumusta ka $1.
+
+Isa itong pagpapabatid sa iyo na ang mga kasapiang pangkapangkatan mo ay binago ni $3 noong $4.
+
+Idinagdag: $5
+Tinanggal: $6
+
+Gumagalang,
+
+$2',
+	'userrightsnotif-desc' => 'Nagpapadala ng e-liham patungo sa mga tagagamit na may dalang pabatid kapag naganap ang mga pagbabago sa karapatan',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

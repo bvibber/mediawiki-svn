@@ -468,7 +468,7 @@ $messages['th'] = array(
  */
 $messages['vec'] = array(
 	'contributionseditcount' => 'Sto utente el gà fato $1 modifiche.',
-	'contributionseditcount-desc' => 'Mostra un contegio dei contributi su [[Special:Contributions]]',
+	'contributionseditcount-desc' => 'Mostra un contegio dei contributi in te la [[Special:Contributions|pàxena dei contributi utente]]',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -162,6 +162,26 @@ $messages['nl'] = array(
 	'right-emergencydesysop' => 'In staat om de beheerdersrechten van een andere gebruiker en zichzelf in te trekken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'emergencydesysop' => 'Nødsfallavsetjing av administrator',
+	'emergencydesysop-desc' => 'Gjer det mogleg for ein administrator å ofra sine eigne privilegium for å avsetja ein annan administrator',
+	'emergencydesysop-title' => 'Fjern administratorrettane til både den aktuelle brukaren og ein annan administrator.',
+	'emergencydesysop-otheradmin' => 'Annan administrator som skal verta avsett',
+	'emergencydesysop-reason' => 'Årsak for avsetjing',
+	'emergencydesysop-submit' => 'Utfør',
+	'emergencydesysop-incomplete' => 'All skjemafelta må verta fylte ut; prøv om att.',
+	'emergencydesysop-notasysop' => 'Målbrukaren er ikkje ein administrator.',
+	'emergencydesysop-nogroups' => 'Ingen',
+	'emergencydesysop-done' => 'Handlinga har vorte gjennomført; både du og [[$1]] har mista administratorrettane.',
+	'emergencydesysop-invalidtarget' => 'Målbrukaren finst ikkje',
+	'emergencydesysop-blocked' => 'Du har ikkje tilgjenge til denne sida so lenge du er blokkert.',
+	'emergencydesysop-noright' => 'Du har ikkje dei rette rettane til å få tilgjenge til denne sida.',
+	'right-emergencydesysop' => 'Kan avsetja seg sjølv og ein annan administrator',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -234,5 +254,13 @@ $messages['sv'] = array(
 	'emergencydesysop-blocked' => 'Du har inte tillgång till denna sida så länge du är blockerad',
 	'emergencydesysop-noright' => 'Du har inte tillräckliga rättigheter för att få tillgång till denna sida',
 	'right-emergencydesysop' => 'Möjlighet att ömsesidigt avsätta en annan användare',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'emergencydesysop-reason' => 'తొలగింపునకు కారణం',
+	'emergencydesysop-submit' => 'దాఖలుచెయ్యి',
 );
 

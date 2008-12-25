@@ -124,8 +124,11 @@ $messages['gl'] = array(
 	'donationform-submit' => 'Doar mediante PayPal',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
 $messages['he'] = array(
+	'donationform-desc' => 'הוספת תגית <tt>&lt;donateform&gt;</tt> לתמיכה בתרומות באמצעות PayPal',
 	'donationform-submit' => 'תרומה באמצעות PayPal',
 );
 
@@ -372,6 +375,7 @@ $messages['tg-cyrl'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'donationform-desc' => 'Zonta un tag <tt>&lt;donateform&gt;</tt> par sostegner le donassion atraverso PayPal',
 	'donationform-submit' => 'Dona tramite PayPal',
 );
 

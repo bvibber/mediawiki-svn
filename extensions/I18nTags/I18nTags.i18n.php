@@ -164,6 +164,13 @@ $messages['nl'] = array(
 	'i18ntags-desc' => 'Geeft toegang tot de i18n-functies voor nummeropmaak, grammatica en meervoud in alle beschikbare talen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'i18ntags-desc' => 'Gjev tilgjenge til internasjonaliseringsfunksjonar for talformatering, grammatikk og fleiral i alle tilgjengelege språk',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -226,6 +233,13 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'i18ntags-desc' => 'Ger tillgång till internationaliseringsfunktioner för talformatering, grammatik och plural i alla tillgängliga språk',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'i18ntags-desc' => 'Acedi a le funsion i18n par la formatassion dei nùmari, la gramàtega e el plurale in tute le lengue disponibili',
 );
 
 /** Vietnamese (Tiếng Việt)

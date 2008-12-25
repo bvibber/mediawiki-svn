@@ -167,6 +167,26 @@ $messages['gl'] = array(
 	'nss-db-error' => 'Erro ao ler a base de datos de autenticación',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'accountmanager' => 'מנהל החשבונות',
+	'am-username' => 'שם משתמש',
+	'am-email' => 'דוא"ל',
+	'am-active' => 'פעיל',
+	'am-updated' => 'השינויים שלכם נשמרו בהצלחה',
+	'nss-desc' => 'תוסף לאימות מול מסד נתונים מסוג libnss-mysql. כולל [[Special:AccountManager|מנהל חשבונות]]',
+	'nss-rights' => 'הרשאות',
+	'nss-save-changes' => 'שמירת השינויים',
+	'nss-create-account-header' => 'יצירת חשבון חדש',
+	'nss-create-account' => 'יצירת חשבון',
+	'nss-no-mail' => 'ללא שליחת דוא"ל',
+	'nss-welcome-mail' => 'נוצר עבורכם חשבון משתמש עם שם המשתמש $1 והסיסמה $2.',
+	'nss-welcome-mail-subject' => 'יצירת חשבון',
+	'nss-db-error' => 'שגיאה בקריאה ממסד נתוני האימות',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */

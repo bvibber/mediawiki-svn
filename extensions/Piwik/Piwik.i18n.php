@@ -61,7 +61,7 @@ $messages['arz'] = array(
  * @author Esbardu
  */
 $messages['ast'] = array(
-	'piwik-desc' => "Enxerta'l script Piwik nes páxines de Mediawiki pa facer seguimientu y añade [[Special:Piwik|dalgunes estadístiques]]",
+	'piwik-desc' => "Enxerta'l script Piwik nes páxines de MediaWiki pa facer seguimientu y añade [[Special:Piwik|dalgunes estadístiques]]",
 	'piwik-lastvisits' => 'Caberes visites',
 	'piwik-countries' => 'Países',
 	'piwik-browsers' => 'Navegadores',
@@ -151,7 +151,7 @@ $messages['es'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'piwik-desc' => 'Ajoute un script Piwik dans les pages Mediawiki pour le pistage et ajoute [[Special:Piwik|quelques statistiques]]',
+	'piwik-desc' => 'Ajoute un script Piwik dans les pages MediaWiki pour le pistage et ajoute [[Special:Piwik|quelques statistiques]]',
 	'piwik-lastvisits' => 'Dernières visites',
 	'piwik-countries' => 'Pays',
 	'piwik-browsers' => 'Navigateurs',
@@ -231,7 +231,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'piwik-desc' => 'Setzt Piwik-Script op Mediawiki Säiten derbäi fir den Tracking ze maachen a setzt [[Special:Piwik|e puer Statistiken]] derbäi',
+	'piwik-desc' => 'Setzt Piwik-Script op MediaWiki Säiten derbäi fir den Tracking ze maachen a setzt [[Special:Piwik|e puer Statistiken]] derbäi',
 	'piwik-lastvisits' => 'Läscht Visiten',
 	'piwik-countries' => 'Länner',
 	'piwik-browsers' => 'Browser',
@@ -272,7 +272,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'piwik-desc' => 'Apond un escript Piwik dins las paginas Mediawiki per lo pistatge e apond [[Special:Piwik|qualques estatisticas]]',
+	'piwik-desc' => 'Apond un escript Piwik dins las paginas MediaWiki per lo pistatge e apond [[Special:Piwik|qualques estatisticas]]',
 	'piwik-lastvisits' => 'Darrièras visitas',
 	'piwik-countries' => 'Païses',
 	'piwik-browsers' => 'Navigadors',

@@ -157,6 +157,19 @@ $messages['gl'] = array(
 	'newschannel_submit_button' => 'Crear a fonte de novas',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'newschannel' => 'ערוץ חדשות',
+	'newschannel-desc' => 'הטמעת ערוץ חדשות בתור [[Special:NewsChannel|דף מיוחד]] דינאמי',
+	'newschannel_format' => 'מבנה:',
+	'newschannel_limit' => 'מגבלה:',
+	'newschannel_include_category' => 'קטגוריה נוספת:',
+	'newschannel_exclude_category' => 'קטגוריות חריגות:',
+	'newschannel_submit_button' => 'יצירת הזנה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -315,6 +328,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'newschannel_limit' => 'పరిమితి:',
+	'newschannel_include_category' => 'అదనపు వర్గం:',
 );
 
 /** Ukrainian (Українська)

@@ -590,6 +590,7 @@ $messages['tl'] = array(
  */
 $messages['vec'] = array(
 	'watchers' => 'Osservadori',
+	'watchers-desc' => 'Mostra [[Special:Watchers|quanti utenti i gà na pàxena in tei osservati speciali]]',
 	'watchers_link_title' => "Chi tien d'ocio sta pagina?",
 	'watchers_error_article' => '<b>Erór:</b> sta pagina no la esiste.',
 	'watchers_header' => '{{PLURAL:$2|Utente|Utenti}} che tien d\'ocio "$1"',

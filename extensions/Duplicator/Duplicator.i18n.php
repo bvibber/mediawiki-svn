@@ -485,6 +485,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'duplicator' => 'Oldal másolása',
+	'duplicator-desc' => '[[Special:Duplicate|Másolatok]] készítése a lapokról teljes laptörténettel',
 	'duplicator-toolbox' => 'Oldal másolása',
 	'duplicator-header' => 'Ez az oldal lehetővé teszi egy teljes oldal lemásolását, a laptörténettel együttvéve. A funkció hasznos lehet pl. oldalak két ágra bontásánál.',
 	'duplicator-options' => 'Beállítások',

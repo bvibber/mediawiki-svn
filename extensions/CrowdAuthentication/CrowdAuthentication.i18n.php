@@ -229,6 +229,13 @@ $messages['sv'] = array(
 	'crowdauthentication-desc' => 'Verifieringsprogramtillägg för Atlassian Crowd',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'crowdauthentication-desc' => 'Plugin de autenticassion par Atlassian Crowd',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

@@ -3140,6 +3140,8 @@ in caso de erori.",
 	'oversight-header' => 'Qua de seguito vien presentà na lista de le revision oscurà in modo permanente ai visitatori del sito.
 La divulgazion di ste informassion la pol conportar la rimozion permanente dei diriti de supervisor.',
 	'oversight-legend' => 'Serca i registri de le revision sconte',
+	'oversight-oversighter' => 'Supervisor:',
+	'oversight-offender' => 'Trasgressor:',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -203,11 +203,18 @@ $messages['de'] = array(
 	'closewikis-page-err-nowiki' => 'Ungültiges Wiki angegeben',
 	'closewikis-page-err-closed' => 'Wiki ist bereits geschlossen',
 	'closewikis-page-err-opened' => 'Wiki ist nicht geschlossen',
+	'closewikis-list' => 'Liste geschlossener Wikis',
+	'closewikis-list-intro' => 'Diese Liste enthält Wikis, die von Stewards geschlossen wurden.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Geschlossen von',
+	'closewikis-list-header-timestamp' => 'Geschlossen am',
+	'closewikis-list-header-dispreason' => 'Angezeigter Grund',
 	'closewikis-log' => 'Wikischließungs-Logbuch',
 	'closewikis-log-header' => 'Dieses Logbuch zeigt alle Schließungen und Wiederöffnungen von Wikis durch Stewards an.',
 	'closewikis-log-close' => 'schloss $2',
 	'closewikis-log-reopen' => 'öffnete $2 wieder',
 	'right-editclosedwikis' => 'Geschlossene Wikis bearbeiten',
+	'right-closewikis' => 'Wikis schließen',
 );
 
 /** Lower Sorbian (Dolnoserbski)

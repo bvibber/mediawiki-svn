@@ -385,11 +385,16 @@ $messages['hil'] = array(
 $messages['hu'] = array(
 	'editmessages-desc' => '[[Special:EditMessages|Web-alapú szerkesztő]] nagy mennyiségű Messages*.php fájl szerkesztéséhez',
 	'editmessages' => 'Üzenetek szerkesztése',
+	'editmsg-target' => 'Célüzenet:',
 	'editmsg-search' => 'Keresés',
 	'editmsg-show-list' => '„$1” értékeinek megjelenítése',
 	'editmsg-get-patch' => 'Javítás készítése',
 	'editmsg-new-search' => 'Új keresés',
-	'editmsg-warning-file' => 'A következő nyelvekhez tartozó fájlok olvasásakor hiba lépett fel: $1',
+	'editmsg-warning-parse1' => '* Az üzenetnév reguláris kifejezése nem eredményezett találatot: $1',
+	'editmsg-warning-parse2' => '* A nyíl után idézőjel szükséges: $1',
+	'editmsg-warning-parse3' => '* A szöveg vége nem található: $1',
+	'editmsg-warning-file' => 'A következő {{PLURAL:$2|nyelvhez|nyelvekhez}} tartozó fájlok olvasásakor hiba lépett fel: $1',
+	'editmsg-warning-mismatch' => '* Az eredeti szöveg nem a megfelelő értéket tartalmazta a következő {{PLURAL:$2|nyelvnél|nyelveknél}}: $1',
 	'editmsg-apply-patch' => 'Javítás alkalmazása',
 	'editmsg-no-patch' => 'A „patch” parancs nem hajtható végre',
 	'editmsg-patch-failed' => 'A javítás sikertelen, visszatérési értéke: $1',
@@ -771,6 +776,8 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'editmessages' => 'Modifică mesajele',
+	'editmsg-target' => 'Mesaj ţintă:',
 	'editmsg-search' => 'Caută',
 	'editmsg-new-search' => 'Căutare nouă',
 );

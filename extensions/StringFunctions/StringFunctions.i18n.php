@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'stringfunctions-desc' => 'يعزز المحلل بدوال سلسلة',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'stringfunctions-desc' => 'Подобрява парсера с низови функции',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -225,6 +232,13 @@ $messages['sv'] = array(
  */
 $messages['uk'] = array(
 	'stringfunctions-desc' => 'Розширює можливості парсера за рахунок функцій для роботи з рядками',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'stringfunctions-desc' => 'Zonta al parser dele funsion par le stringhe',
 );
 
 /** Vietnamese (Tiếng Việt)

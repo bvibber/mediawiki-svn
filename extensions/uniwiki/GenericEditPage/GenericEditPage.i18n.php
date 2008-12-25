@@ -585,7 +585,9 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'gep-categories' => 'వర్గాలు',
+	'gep-addcategory' => 'ఒక వర్గాన్ని చేర్చండి',
 	'gep-addcategorybutton' => 'చేర్చు',
+	'gep-suggestcategory' => 'ఒక వర్గాన్ని సూచించండి',
 	'gep-sections' => 'విభాగాలు',
 	'gep-addsectionbutton' => 'చేర్చు',
 );

@@ -178,6 +178,15 @@ $messages['hsb'] = array(
 	'right-forcepreviewexempt' => 'Bjez zwobraznjenja přehlada składować',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'forcepreview' => 'Lap mentése (használd először az előnézetet)',
+	'forcepreview-desc' => 'Előnézet kötelezése a szerkesztők számára',
+	'right-forcepreviewexempt' => 'lap mentése az előnézet megtekintése nélkül',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

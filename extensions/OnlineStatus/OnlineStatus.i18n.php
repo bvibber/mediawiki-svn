@@ -268,6 +268,26 @@ $messages['grc'] = array(
 	'onlinestatus-tab' => 'Καθεστώς',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'onlinestatus-desc' => 'הוספת העדפה להצגה האם המשתמש עדיין פעיל בוויקי או שאינו',
+	'onlinestatus-js-anon' => 'שגיאה: עליכם לבצע כניסה למערכת כדי להשתמש בתכונה זו',
+	'onlinestatus-js-changed' => 'מצבכם שונה ל־"$1"',
+	'onlinestatus-js-error' => 'לא ניתן לשנות את המצב, הערך "$1" אינו תקין',
+	'onlinestatus-subtitle-offline' => 'המשתמש אינו מקוון כרגע',
+	'onlinestatus-subtitle-online' => 'משתמש זה מקוון כרגע',
+	'onlinestatus-tab' => 'מצב',
+	'onlinestatus-toggles-desc' => 'המצב שלכם:',
+	'onlinestatus-toggles-explain' => 'הרחבה זו מאפשרת לכם להציג למשתמשים אחרים האם אתם מקוונים באותו הרגע או שלא על ידי בדיקת דף המשתמש שלכם.',
+	'onlinestatus-toggles-show' => 'הצגת מצב הנוכחות בדף המשתמש שלכם',
+	'onlinestatus-toggle-offline' => 'מנותק',
+	'onlinestatus-toggle-online' => 'מקוון',
+	'tog-onlineOnLogin' => 'שינוי המצב שלכם למקוון בעת הכניסה',
+	'tog-offlineOnLogout' => 'שינוי המצב שלכם למנותק בעת היציאה מהמערכת',
+);
+
 /** Hindi (हिन्दी)
  * @author Kaustubh
  */
@@ -622,6 +642,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'onlinestatus-js-changed' => 'మీ స్థితిని "$1"కి మార్చాం',
 	'onlinestatus-tab' => 'స్థితి',
 	'onlinestatus-toggles-desc' => 'మీ స్థితి:',
 );

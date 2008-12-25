@@ -163,6 +163,13 @@ $messages['nl'] = array(
 	'gnuplot-desc' => 'Voegt de tag <code><nowiki><gnuplot></nowiki></code> toe voor het gebruik van Gnuplot',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'gnuplot-desc' => 'Legg til merket <code><nowiki><gnuplot></nowiki></code> for å nytta Gnuplot',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -189,6 +196,13 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'gnuplot-desc' => 'Adiciona a marca <code><nowiki><gnuplot></nowiki></code> para utilizar o Gnuplot',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Heldergeovane
+ */
+$messages['pt-br'] = array(
 	'gnuplot-desc' => 'Adiciona a marca <code><nowiki><gnuplot></nowiki></code> para utilizar o Gnuplot',
 );
 
@@ -225,6 +239,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'gnuplot-desc' => 'గ్నూప్లాట్&zwnj;ని ఉపయోగించడానికై<code><nowiki><gnuplot></nowiki></code> అనే టాగుని చేరుస్తుంది',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'gnuplot-desc' => 'Zonta el tag <code><nowiki><gnuplot></nowiki></code> par doparar Gnuplot',
 );
 
 /** Vietnamese (Tiếng Việt)

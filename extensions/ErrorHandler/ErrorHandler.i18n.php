@@ -182,7 +182,7 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
-	'errorhandler-desc' => 'Error operativo de Mediawiki',
+	'errorhandler-desc' => 'Error operativo de MediaWiki',
 	'errorhandler-errors' => 'Errores:',
 	'errorhandler-error-fatal' => 'Error grave',
 	'errorhandler-error-warning' => 'Cuidado',
@@ -368,7 +368,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'errorhandler-desc' => 'Feelerbehandlung fir Mediawiki',
+	'errorhandler-desc' => 'Feelerbehandlung fir MediaWiki',
 	'errorhandler-errors' => 'Feeler:',
 	'errorhandler-error-fatal' => 'Fatale Feeler',
 	'errorhandler-error-warning' => 'Warnung',

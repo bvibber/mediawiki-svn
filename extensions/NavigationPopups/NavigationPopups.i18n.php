@@ -62,7 +62,7 @@ $messages['es'] = array(
  * @author Zetud
  */
 $messages['fr'] = array(
-	'navigationpopups-desc' => 'Charge, dans Mediawiki, les scripts des fenêtres de navigation de Lupin',
+	'navigationpopups-desc' => 'Charge, dans MediaWiki, les scripts des fenêtres de navigation de Lupin',
 );
 
 /** Galician (Galego)
@@ -90,7 +90,7 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'navigationpopups-desc' => 'Carga in Mediawiki le scripts de Lupin pro fenestras de navigation',
+	'navigationpopups-desc' => 'Carga in MediaWiki le scripts de Lupin pro fenestras de navigation',
 );
 
 /** Italian (Italiano)
@@ -125,7 +125,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'navigationpopups-desc' => 'Lued dem Lupin seng Popup-Skripten a Mediawiki',
+	'navigationpopups-desc' => 'Lued dem Lupin seng Popup-Skripten a MediaWiki',
 );
 
 /** Marathi (मराठी)

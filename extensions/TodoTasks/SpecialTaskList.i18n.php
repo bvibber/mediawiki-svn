@@ -800,6 +800,8 @@ $messages['te'] = array(
 	'tasklistincorrectuser' => 'తప్పుడు వాడుకరిపేరు',
 	'tasklistemail' => 'ప్రియమైన %s',
 	'tasklistmytasks' => 'నా పనులు',
+	'tasklistchooseproj' => 'ప్రాజెక్టుని ఎంచుకోండి:',
+	'tasklistprojdisp' => 'చూపించు',
 	'tasklistbyname' => '== %s కొరకు చేయాల్సిన పనుల జాబితా ==',
 );
 

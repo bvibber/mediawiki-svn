@@ -374,6 +374,14 @@ $messages['tg-cyrl'] = array(
 	'minnamelength-error' => 'Номи корбарии шумо хеле кӯтоҳ аст. Дарозии он дасти кам $1 бошад.',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'minnamelength-error' => 'El to nome utente el xe massa curto. La longhessa minima la xe $1 caràteri.',
+	'minnamelength-desc' => 'Imponi na longhessa minima par el nome utente',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

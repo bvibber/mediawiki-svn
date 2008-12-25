@@ -169,6 +169,19 @@ Hierdoor wordt het mogelijk uw gebruikerspagina ook al OpenID te gebruiken.',
 	'linkopenid-prefstext-v2url' => 'Server-URL voor OpenID-versie 2:',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'linkopenid-desc' => 'Gjer det mogleg for brukarar å lenkja kontoen sin til ein ekstern OpenID',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Om du har ein OpenID frå ein ekstern leverandør, kan du oppgje det her.
+Dette lèt deg nytta brukarsida di som ein OpenID.',
+	'linkopenid-prefstext-openid' => 'Din OpenID:',
+	'linkopenid-prefstext-v1url' => 'Tenar-URL for OpenID-versjon 1.1:',
+	'linkopenid-prefstext-v2url' => 'Tenar-URL for OpenID-versjon 2:',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

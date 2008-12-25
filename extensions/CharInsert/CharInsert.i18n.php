@@ -302,6 +302,13 @@ $messages['pt'] = array(
 	'charinsert-desc' => 'Permite a criação de uma caixa JavaScript para [[MediaWiki:Edittools|inserção de caracteres não "standard"]]',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'charinsert-desc' => 'Permite crearea unei cutii JavaScript pentru [[MediaWiki:Edittools|inserarea caracterelor nestandard]]',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

@@ -50,9 +50,13 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'layouts-desc' => 'Запълване на новосъздадените страници с редактируеми формати за насърчаване на обща структура за страниците',
 	'layouts_title' => 'Създаване на страница',
+	'layouts_chooselayout' => 'Избиране на формат за $1:',
+	'layouts_nolayout' => 'Без формат',
 	'layouts_continue' => 'Продължаване',
 	'layouts_choosecategory' => 'Избиране на категория за $1:',
+	'layouts_tagline' => "Тази страница е създадена с формат '''$1'''.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
@@ -343,6 +347,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'layouts_title' => 'ఒక పేజీని సృష్టించండి',
 	'layouts_continue' => 'కొనసాగించు',
 );
 

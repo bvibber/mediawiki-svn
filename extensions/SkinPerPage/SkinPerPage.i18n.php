@@ -54,10 +54,11 @@ $messages['bcc'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'skinperpage-desc' => 'Дадае тэг <tt>&lt;skin&gt;</tt> для выкарыстаньня розных скураў на старонцы',
+	'skinperpage-desc' => 'Дадае тэг <tt>&lt;skin&gt;</tt> для ўказаньня афармленьня старонкі',
 );
 
 /** Bulgarian (Български)

@@ -349,7 +349,7 @@ $messages['fi'] = array(
  * @author McDutchie
  */
 $messages['fr'] = array(
-	'extensiondistributor' => 'Télécharger l’extension Mediawiki',
+	'extensiondistributor' => 'Télécharger l’extension MediaWiki',
 	'extdist-desc' => 'Extension pour la distribution des archives photographiques des extensions',
 	'extdist-not-configured' => 'Veuillez configurer $wgExtDistTarDir et $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'La répertoire pour copies de travail configurée n’existe pas !',
@@ -870,7 +870,7 @@ Om du har spørsmål om dette distribusjonssytemet for utvidelser, gå til [http
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'extensiondistributor' => 'Telecargar l’extension Mediawiki',
+	'extensiondistributor' => 'Telecargar l’extension MediaWiki',
 	'extdist-desc' => 'Extension per la distribucion dels archius fotografics de las extensions',
 	'extdist-not-configured' => 'Configuratz $wgExtDistTarDir e $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Lo repertòri de la còpia de trabalh configurada existís pas !',

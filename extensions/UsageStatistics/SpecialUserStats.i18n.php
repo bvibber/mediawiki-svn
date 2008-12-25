@@ -1201,6 +1201,9 @@ $messages['te'] = array(
 	'usagestatisticsintervalweek' => 'వారం',
 	'usagestatisticsintervalmonth' => 'నెల',
 	'usagestatisticscumulative' => 'సంచిత',
+	'usagestatisticscumulative-text' => 'సంచిత',
+	'usagestatistics-editindividual' => 'వ్యక్తిగత వాడుకరి $1 మార్పుల గణాంకాలు',
+	'usagestatistics-editpages' => 'వ్యక్తిగత వాడుకరి $1 పేజీల గణాంకాలు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

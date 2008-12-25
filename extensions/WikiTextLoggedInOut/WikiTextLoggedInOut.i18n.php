@@ -224,3 +224,10 @@ $messages['uk'] = array(
 	'wikitextloggedinout-desc' => 'Дві парсерні „пастки“, <tt>&lt;loggedin&gt;</tt> та <tt>&lt;loggedout&gt;</tt>, які показуються різний текст в залежності від стану авторизації користувача',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'wikitextloggedinout-desc' => "Dó hook del parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt> par far védar testi difarenti a seconda del stato de login de l'utente",
+);
+

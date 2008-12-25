@@ -1835,8 +1835,11 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'mywhitelistpages' => 'నా పేజీలు',
+	'whitelistfor' => '<center><b>$1</b> కొరకు ప్రస్తుత సమాచారం</center>',
 	'whitelisttablemodifyall' => 'అన్నీ',
 	'whitelisttablepage' => 'వికీ పేజీ',
+	'whitelisttablemodby' => 'చివరగా మార్చినది',
+	'whitelisttablemodon' => 'చివరి మార్పు తేదీ',
 	'whitelisttableedit' => 'మార్చు',
 	'whitelisttableview' => 'చూడండి',
 	'whitelisttablenewdate' => 'కొత్త తేదీ:',
@@ -1844,7 +1847,11 @@ $messages['te'] = array(
 	'whitelistnewtabledate' => 'కాల పరిమితి:',
 	'whitelistnewtablereview' => 'సమీక్షించు',
 	'whitelistpagelist' => '$1 కై {{SITENAME}} పేజీలు',
+	'whitelistbadtitle' => 'తప్పు శీర్షిక -',
 	'whitelistrequest' => 'మరిన్ని పేజీలకు అనుమతిని అభ్యర్థించండి',
+	'whitelistrequestmsg' => 'ఈ క్రింది {{PLURAL:$3|పేజీకి|పేజీలకు}} $1 అనుమతిని అడిగారు:
+
+$2',
 	'whitelistnummatches' => ' - {{PLURAL:$1|ఒక పోలిక|$1 పోలికలు}}',
 	'group-restricted' => 'నియంత్రిత వాడుకరులు',
 	'group-restricted-member' => 'నియంత్రిత వాడుకరి',

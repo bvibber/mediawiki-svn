@@ -811,6 +811,21 @@ $messages['es'] = array(
 	'deletequeue-vote-submit' => 'Enviar',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'deletequeue-generic-reasons' => '* Yleiset poistosyyt 
+  ** Vandalismi
+  ** Spam
+  ** Ylläpito
+  ** Epäoleellinen projektille',
+	'deletequeue-nom-alreadyqueued' => 'Sivu on valmiiksi poistojonossa.',
+	'deletequeue-speedy-title' => 'Merkitse ”$1” poistettavaksi',
+	'deletequeue-delnom-otherreason' => 'Muu syy',
+	'deletequeue-delnom-extra' => 'Lisätiedot',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

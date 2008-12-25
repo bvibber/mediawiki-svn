@@ -301,3 +301,10 @@ $messages['sv'] = array(
 	'stalkerlog-log-text' => 'Det här är en logg över in och utloggningar.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'stalkerlog-log-text' => 'ఇది వాడుకరి ప్రవేశాలు మరియు నిష్క్రమణల చిట్టా.',
+);
+

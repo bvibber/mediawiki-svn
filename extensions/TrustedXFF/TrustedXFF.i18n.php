@@ -40,10 +40,11 @@ $messages['ast'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'trustedxff-desc' => 'Апрацоўка сьпісу давераных проксі-адрасоў ([http://meta.wikimedia.org/wiki/XFF_project XFF праект])',
+	'trustedxff-desc' => 'Апрацоўка сьпісу давераных проксі-адрасоў ([http://meta.wikimedia.org/wiki/XFF_project Праект XFF])',
 );
 
 /** Bosnian (Bosanski)

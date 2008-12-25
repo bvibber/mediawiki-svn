@@ -107,6 +107,14 @@ $messages['gl'] = array(
 	'othersites-desc' => 'Move as ligazóns interwiki diferentes ás ligazóns á lingua no seu propio portal',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'othersites' => 'אתרים אחרים',
+	'othersites-desc' => 'העברת קישורי בינוויקי השונים מקישורי השפה למיני פורטל משלהם',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

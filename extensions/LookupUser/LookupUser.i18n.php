@@ -909,6 +909,7 @@ $messages['vec'] = array(
 	'lookupuser-registration' => 'Data de registrassion: $1',
 	'lookupuser-no-registration' => 'mia disponibile',
 	'lookupuser-touched' => "Ultima visita registrà de l'utente: $1",
+	'lookupuser-info-authenticated' => 'Autenticassion de posta eletronica: $1',
 	'lookupuser-useroptions' => 'Preferense utente:',
 );
 
