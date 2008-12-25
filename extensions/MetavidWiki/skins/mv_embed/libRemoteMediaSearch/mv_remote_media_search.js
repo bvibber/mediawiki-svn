@@ -79,10 +79,9 @@ remoteSearchDriver.prototype = {
 			'homepage': 'http://commons.wikimedia.org/wiki/Main_Page',		
 			'api_url':'http://commons.wikimedia.org/w/api.php',
 			'lib'	:'mediaWiki',			
-			'local_domain':'wikimedia.org', //if we contain this domain we are local 
-											//(no need to import commons to wikimedia sites) 
 			'resource_prefix': 'WC_', //prefix on imported resources (not applicable if the repository is local)
 			
+			'local_domains': ['wikimedia','wikipedia','wikibooks'],
 			//specific to wiki commons config: 
 			'search_title':false //disable title search 
 		},
@@ -98,7 +97,7 @@ remoteSearchDriver.prototype = {
 			'local'	:false,			//if local set to true we can use local 
 			'resource_prefix': 'MV_', //what prefix to use on imported resources
 			
-			'local_domain': 'metavid', // if the domain name contains metavid 
+			'local_domains': ['metavid'], // if the domain name contains metavid 
 									   // no need to import metavid content to metavid sites
 									   
 			'remote_embed_ext': false //if running the remoteEmbed extension no need to copy local 
@@ -491,7 +490,7 @@ remoteSearchDriver.prototype = {
 			$j('#clip_edit_disp').append(
 				rObj.pSobj.getEmbedHTML( rObj, {id:'embed_vid'})				
 			);	
-			//rewrite by id hanldes getting any libs we are missing: 		
+			//rewrite by id handldes getting any libs we are missing: 		
 			rewrite_by_id('embed_vid',function(){
 				//grab any information that we got from the ROE xml or parsed from the media file
 				rObj = rObj.pSobj.getEmbedObjParsedInfo(rObj, 'embed_vid');					
@@ -506,18 +505,26 @@ remoteSearchDriver.prototype = {
 	},
 	checkImportResource:function( rObj, cir_callback){
 		//@@todo get the localized File/Image namespace name or do a general {NS}:Title aproch
-		rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');
-		//check if the resource is "locally accessible" 
-		if(   parseUri(this.local_wiki_api_url).host.indexOf( rObj.pSobj.cp.local_domain ) != -1 ){
-			js_log("checkImportResource:local: " + parseUri(this.local_wiki_api_url).host + 'contains:'+
-						rObj.pSobj.cp.local_domain);		
+		rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');					
+		
+		//check if we can embed the content locally per a domain name check:
+		var local_embed_ref=false;
+		var local_host = parseUri(this.local_wiki_api_url).host;
+		if( rObj.pSobj.cp.local_domains ) {								
+			for(var i=0;i < rObj.pSobj.cp.local_domains.length; i++){
+				var ld = rObj.pSobj.cp.local_domains[i];
+				 if( local_host.indexOf( ld ) != -1)
+				 	local_embed_ref=true;
+			}
+		}
+		
+		if( local_embed_ref ){
 		 	cir_callback( rObj );
 		}else{
 			var _this = this;
-			var cp = rObj.pSobj.cp;
-			
-			//first check if the resource is not already on this wiki: 											
-			
+			var cp = rObj.pSobj.cp;			
+						
+			//first check if the resource is not already on this wiki			
 			reqObj={'action':'query', titles: _this.cFileNS + ':' + rObj.target_resource_title};
 			do_api_req( reqObj, this.local_wiki_api_url, function(data){	
 				var found_title = false;
