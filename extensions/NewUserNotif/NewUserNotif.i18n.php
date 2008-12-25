@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'newusernotif-desc' => 'Sends e-mail notification when user accounts are created',
 	'newusernotifbody'  => "Hello $1,
 
-A new user account, $2, has been created on $3 at $4.",
+A new user account, $2, has been created on $3 at $4.", # optional: $5 date, $6 time
 );
 
 /** Message documentation (Message documentation)
