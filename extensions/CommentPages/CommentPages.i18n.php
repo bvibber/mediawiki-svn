@@ -158,6 +158,14 @@ $messages['hsb'] = array(
 	'nstab-comments' => 'Komentar',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'commentpages-desc' => 'Megjegyzéslapok a főnévtérhez',
+	'nstab-comments' => 'Megjegyzések',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

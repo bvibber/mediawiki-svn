@@ -103,6 +103,13 @@ $messages['eo'] = array(
 	'usercontactlink-baduser' => 'malkorekta salutnomo',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'usercontactlink-baduser' => 'nombre de usuario incorrecto',
+);
+
 /** French (Français)
  * @author Grondin
  */

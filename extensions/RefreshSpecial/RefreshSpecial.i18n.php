@@ -502,6 +502,8 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'refreshspecial-select-all-pages' => ' అన్ని పేజీలను ఎంచుకోండి',
+	'refreshspecial-here' => '<b>ఇక్కడ</b>',
+	'refreshspecial-no-page' => 'అటువంటి ప్రత్యేక పేజీ లేదు',
 );
 
 /** Vietnamese (Tiếng Việt)

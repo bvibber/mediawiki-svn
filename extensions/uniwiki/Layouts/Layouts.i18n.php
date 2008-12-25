@@ -339,6 +339,13 @@ $messages['sv'] = array(
 	'layouts_unknown' => 'Okänd',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'layouts_continue' => 'కొనసాగించు',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

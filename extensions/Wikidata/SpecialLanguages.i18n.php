@@ -847,6 +847,7 @@ $wdMessages['da'] = array(
 /** German (Deutsch)
  * @author Purodha
  * @author Revolus
+ * @author Umherirrender
  */
 $wdMessages['de'] = array(
 	'datasearch' => 'Wikidata: Datensuche',
@@ -856,13 +857,20 @@ $wdMessages['de'] = array(
 	'ow_history' => 'Versionen/Autoren',
 	'ow_datasets' => 'Auswahl des Datasets',
 	'ow_noedit_title' => 'Keine Editiererlaubnis',
-	'ow_noedit' => 'Du hast nicht die Erlaubnis Seiten im Dataset "$1" zu editieren. Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
+	'ow_noedit' => 'Du hast nicht die Erlaubnis Seiten im Dataset „$1“ zu editieren.
+Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_uipref_datasets' => 'Standardansicht',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'nichts ausgewählt',
-	'ow_conceptmapping_help' => '<p>Mögliche Aktionen: <ul> <li>&action=insert&<data_context_prefix>=<defined_id>&... Eine Verknüpfung hinzufügen</li> <li>&action=get&concept=<concept_id> Eine Verknüpfung abrufen</li> <li>&action=list_sets Zeige eine Liste von möglichen Datenkontextpräfixen und auf was sie sich beziehen</li> <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> für eine DefinedMeaning in einem Kontext, zeige alle anderen</li> <li>&action=help Hilfe anzeigen.</li> </ul></p>',
+	'ow_conceptmapping_help' => '<p>Mögliche Aktionen: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&… Eine Verknüpfung hinzufügen</li>
+<li>&action=get&concept=<concept_id> Eine Verknüpfung abrufen</li>
+<li>&action=list_sets Zeige eine Liste von möglichen Datenkontextpräfixen und auf was sie sich beziehen</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> für eine DefinedMeaning in einem Kontext, zeige alle anderen</li>
+<li>&action=help Hilfe anzeigen.</li>
+</ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mit Concept Mapping kann festgelegt werden, welche DefinedMeaning in einem Dataset mit anderen DefinedMeanings aus anderen Datasets identisch ist.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Entschuldigung, ich kann nicht "$1".',
+	'ow_conceptmapping_no_action_specified' => 'Entschuldigung, ich kann nicht „$1“.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'nicht eingegeben',
 	'ow_dm_not_found' => 'nicht in der Datenbank gefunden oder fehlerhaft',
@@ -923,7 +931,7 @@ $wdMessages['de'] = array(
 	'ow_LinkAttributeValues' => 'Links',
 	'ow_Property' => 'Eigenschaft',
 	'ow_Value' => 'Wert',
-	'ow_meaningsoftitle' => 'Bedeutungen von "$1"',
+	'ow_meaningsoftitle' => 'Bedeutungen von „$1“',
 	'ow_meaningsofsubtitle' => '<em>Wikilink:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>ERLAUBNIS VERWEIGERT</h2>',
 	'ow_copy_no_action_specified' => 'Bitte lege eine Aktion fest.',

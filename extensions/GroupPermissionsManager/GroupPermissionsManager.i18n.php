@@ -454,6 +454,13 @@ $messages['eo'] = array(
 	'right-edit-new' => 'Redaktu paĝojn',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'grouppermissions-sp-save' => 'Guardar',
+);
+
 /** French (Français)
  * @author Grondin
  */

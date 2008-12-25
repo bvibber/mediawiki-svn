@@ -267,6 +267,8 @@ $messages['ksh'] = array(
 	'interwikilist-desc' => 'Brengk en [[Special:Interwikilist|Söndersigk]] för de Ėngerwikki Lėngkß ze belooere.',
 	'interwikilist-linkname' => 'Ėngerwikki Lėngk',
 	'interwikilist-target' => 'URL wohėn',
+	'interwikilist-filter' => 'De Leß feltere',
+	'interwikilist-prefix' => 'Engerwiki-Fürsaz:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -4283,7 +4283,10 @@ $messages['te'] = array(
 	'configure-desc-group' => 'గుంపులు',
 	'configure-desc-ns' => 'పేరుబరులు',
 	'configure-desc-val' => 'విలువ',
+	'configure-edit-core' => 'మీడియావికీ',
+	'configure-edit-ext' => 'పొడగింతలు',
 	'configure-ext-settings' => 'అమరికలు',
+	'configure-form-reason' => 'మార్చడానికి కారణం:',
 	'configure-btn-save' => 'అమరికలు భద్రపరచు',
 	'configure-js-group-exists' => 'పొరపాటు: ఆ గుంపు ఇప్పటికే ఉంది.',
 	'configure-js-prompt-group' => 'కొత్త గుంపు యొక్క పేరు ఇవ్వండి:',
@@ -4313,6 +4316,10 @@ $messages['te'] = array(
 	'configure-setting-not-available' => 'ఈ మీడియావికీ సంచికలో ఆ అమరిక అందుబాటులో  లేదు',
 	'configure-view' => 'చూడండి',
 	'configure-view-not-allowed' => 'ఈ అమరికని చూడడానికి మీకు అనుమతి లేదు',
+	'configure-throttle-limit' => 'పరిమితి',
+	'configure-throttle-none' => 'పరిమితి లేదు',
+	'configure-condition-operator-or' => 'లేదా',
+	'configure-condition-operator-and' => 'మరియు',
 );
 
 /** Thai (ไทย)

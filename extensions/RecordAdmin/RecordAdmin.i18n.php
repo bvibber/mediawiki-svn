@@ -336,6 +336,17 @@ $messages['sk'] = array(
 	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'recordadmin-buttonsearch' => 'వెతుకు',
+	'recordadmin-buttoncreate' => 'సృష్టించు',
+	'recordadmin-buttonsave' => 'భద్రపరచు',
+	'recordadmin-viewlink' => 'చూడు',
+	'recordadmin-editlink' => 'మార్చు',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

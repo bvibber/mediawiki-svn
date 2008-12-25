@@ -138,6 +138,13 @@ $messages['hsb'] = array(
 	'ajax-qp-desc' => 'AJAX naprašowanskim stronam kaž na př. [[Special:Shortpages|{{int:shortpages}}]] přidać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'ajax-qp-desc' => 'AJAX-szal bővíti a lekérdezőlapokat, például a [[Special:Shortpages|{{int:shortpages}}]] listáját.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

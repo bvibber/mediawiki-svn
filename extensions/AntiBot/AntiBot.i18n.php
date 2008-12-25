@@ -98,6 +98,13 @@ $messages['eo'] = array(
 	'antibot-desc' => 'Simpla programaro por kontroli spamrobotojn kaj ĉanajn sendaĵojn',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'antibot-desc' => 'Entorno sencillo para las comprobaciones de bots de spam y la activación de contenidos de descarga condicional automatizada.',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

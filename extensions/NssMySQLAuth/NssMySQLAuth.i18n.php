@@ -334,6 +334,17 @@ $messages['sv'] = array(
 	'am-updated' => 'Dina ändringar har sparats',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'am-username' => 'వాడుకరిపేరు',
+	'am-email' => 'ఈ-మెయిల్',
+	'nss-save-changes' => 'మార్పులను భద్రపరచు',
+	'nss-create-account-header' => 'కొత్త ఖాతాని సృష్టించండి',
+	'nss-welcome-mail-subject' => 'ఖాతా సృష్టింపు',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

@@ -39,6 +39,13 @@ $messages['ast'] = array(
 	'opensearchxml-desc' => "La interface qu'[http://www.opensearch.org OpenSearch] XML apurre pa estrayer testu",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'opensearchxml-desc' => 'Інтэрфэйс XML [http://www.opensearch.org OpenSearch] для тэкставых вытрымак',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

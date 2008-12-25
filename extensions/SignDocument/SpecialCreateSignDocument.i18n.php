@@ -283,6 +283,18 @@ $messages['ext'] = array(
 	'createsigndoc-error-pagenoexist' => 'Marru: La páhina [[$1]] nu desisti.',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'createsigndoc-email' => 'Sähköpostiosoite',
+	'createsigndoc-address' => 'Kotiosoite',
+	'createsigndoc-phone' => 'Puhelinnumero',
+	'createsigndoc-bday' => 'Syntymäaika',
+	'createsigndoc-minage' => 'Vähimmäisikä',
+	'createsigndoc-optional' => 'Valinnainen',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex
@@ -513,6 +525,13 @@ $messages['is'] = array(
 $messages['it'] = array(
 	'createsigndoc-optional' => 'Opzionale',
 	'createsigndoc-create' => 'Crea',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'createsigndoc-optional' => '任意',
 );
 
 /** Javanese (Basa Jawa)

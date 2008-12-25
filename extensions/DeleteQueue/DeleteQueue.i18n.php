@@ -573,6 +573,7 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'deletequeue-desc' => 'Erstellt ein [[Special:DeleteQueue|auf einer Warteschlange basierendes System zur Verwaltung von Löschungen]]',
@@ -684,7 +685,7 @@ Der Löschantragsgrund war ''$2'.",
 	'deletequeue-vote-requeued' => 'Du hast erfolgreich die Löschung dieser Seite abgelehnt.
 Durch deinen Widerspruch wurde die Seite in die Lösch-Warteschlange $1 verschoben.',
 	'deletequeue-showvotes' => 'Befürwortungen und Ablehnungen der Löschung von „$1“',
-	'deletequeue-showvotes-text' => "Untenstehend sind die Befürwortungen und Ablehnungen der Löschung von „'''$1'''“ .
+	'deletequeue-showvotes-text' => "Untenstehend sind die Befürwortungen und Ablehnungen der Löschung von „'''$1'''“.
 Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{FULLPAGENAME}}|action=delvote}} hier] eintragen.",
 	'deletequeue-showvotes-restrict-endorse' => 'Nur Befürwortungen anzeigen',
 	'deletequeue-showvotes-restrict-object' => 'Nur Ablehnungen anzeigen',
@@ -2366,6 +2367,7 @@ $messages['te'] = array(
 	'deletequeue-vote-reason' => 'వ్యాఖ్యలు:',
 	'deletequeue-list-status' => 'స్థితి:',
 	'deletequeue-list-header-page' => 'పేజీ',
+	'deletequeue-list-header-discusspage' => 'చర్చా పేజీ',
 );
 
 /** Thai (ไทย)

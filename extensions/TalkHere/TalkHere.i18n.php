@@ -135,6 +135,7 @@ Els operadors d'aquest lloc no poden responsabilitzar-se dels continguts d'aques
 
 /** German (Deutsch)
  * @author Daniel Kinzler, brightbyte.de
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'talkhere-foottext' => 'Die obigen Kommentare wurden möglicherweise von Besuchern hinterlassen.
@@ -144,7 +145,7 @@ Die Betreiber dieser Webseite können keine Verantwortung für den Inhalt diser 
 	'talkhere-notalk' => "''(Noch keine Kommentare)''",
 	'talkhere-addcomment' => 'Kommentar hinzufügen',
 	'talkhere-beforeinput' => 'Kommentare bitte unten eingeben.',
-	'talkhere-loading' => 'Editor wird geladen...',
+	'talkhere-loading' => 'Editor wird geladen …',
 	'talkhere-collapse' => 'Editor verbergen',
 );
 

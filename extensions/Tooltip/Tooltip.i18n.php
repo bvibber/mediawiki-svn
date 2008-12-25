@@ -65,6 +65,13 @@ $messages['eo'] = array(
 	'tooltip-desc' => 'Aldonas etikedojn <tt><nowiki><tooltip></nowiki></tt> kaj <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'tooltip-desc' => 'Lisää <tt><nowiki><tooltip></nowiki></tt>- ja <tt><nowiki>{{#tooltip:}}</nowiki></tt>-tägit.',
+);
+
 /** French (Français)
  * @author Grondin
  */

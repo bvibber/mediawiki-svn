@@ -263,6 +263,13 @@ $messages['eo'] = array(
 	'spamregex-summary-log' => '(Resumo)',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'spamregex-error-1' => 'Virheellinen säännöllinen lauseke.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

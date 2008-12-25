@@ -162,6 +162,11 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'whoiswatching' => 'Quien está vigilando una página',
+	'whoiswatching-desc' => 'Proporciona una lista de usuarios que vigilan una página de la wiki.',
+	'specialwhoiswatchingthepage' => 'Quién está vigilando %s',
+	'specialwhoiswatchingusage' => 'Esta página especial no puede ser usada por sí sola. Por favor usa la página [[MediaWiki:Number_of_watching_users_pageview]] para definir un punto de entrada a esta página especial.',
+	'specialwhoiswatchingaddusers' => 'Añade usuarios para que vigilen la página',
+	'specialwhoiswatchingaddbtn' => 'Añade los usuarios seleccionados',
 );
 
 /** Finnish (Suomi)
@@ -555,6 +560,19 @@ $messages['te'] = array(
  */
 $messages['tg-cyrl'] = array(
 	'specialwhoiswatchingaddbtn' => 'Илова кардани Корбарони интихобшуда',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'whoiswatching' => 'Sino ang nagbabantay (nagmamatyag) sa isang pahina ng wiki',
+	'whoiswatching-desc' => 'Nagbibigay ng isang talaan ng mga pangalan ng tagagamit na nagbabantay sa isang pahina ng wiki',
+	'specialwhoiswatchingthepage' => 'Sino ang nagbabantay ng %s',
+	'specialwhoiswatchingusage' => 'Hindi magagamit ang natatanging pahinang ito na nagiisa lamang.
+Pakigamit ang pahinang [[MediaWiki:Number_of_watching_users_pageview|Mediawiki:Bilang_ng_nagmamatyag_na_mga_tagagamit_tanawin_ng_pahina]] para mabigyang kahulugan ang isang pasukang daanang patungo sa natatanging pahinang ito.',
+	'specialwhoiswatchingaddusers' => 'Magdagdag ng mga tagagamit upang bantayan ang pahina',
+	'specialwhoiswatchingaddbtn' => 'Idagdag ang napiling mga tagagamit',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

@@ -193,6 +193,25 @@ $messages['hsb'] = array(
 	'amazonplus-cp-none' => 'Žadyn',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'amazonplus-desc' => 'Egy teljesen testreszabható kiterjesztés Amazon-információk megjeleneítésére',
+	'amazonplus-nores' => 'Hiba: nincsenek találatok!',
+	'amazonplus-noidres' => 'Hiba: a termékazonosító nem található!',
+	'amazonplus-fgcerr' => 'Hiba: nem sikerült betölteni az adatokat az Amazonról!',
+	'amazonplus-slserr' => 'Hiba: nem sikerült értelmezni az Amazonról származó adatokat!',
+	'amazonplus-used' => 'használt',
+	'amazonplus-german' => 'német',
+	'amazonplus-french' => 'francia',
+	'amazonplus-japanese' => 'japán',
+	'amazonplus-amazon' => 'amazon ár',
+	'amazonplus-new' => 'új',
+	'amazonplus-none' => 'A termék egyetlen példánya sem eladó.',
+	'amazonplus-cp-none' => 'Semmi',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
@@ -402,5 +421,14 @@ $messages['su'] = array(
 	'amazonplus-japanese' => 'Basa Jepang',
 	'amazonplus-amazon' => 'harga amazon',
 	'amazonplus-new' => 'anyar',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'amazonplus-german' => 'జర్మను',
+	'amazonplus-french' => 'ఫ్రెంచి',
+	'amazonplus-japanese' => 'జపనీస్',
 );
 

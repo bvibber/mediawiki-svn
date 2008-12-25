@@ -428,6 +428,13 @@ $1',
 	'webstore_php_error' => 'Jen eraroj PHP:',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'webstore_404' => 'Archivo no encontrado.',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

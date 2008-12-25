@@ -190,6 +190,7 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
+	'intersection-desc' => 'Devuelve una lista de los elementos más recientes que están en una categoría o en una intersección de varias categorías',
 	'intersection_toomanycats' => '¡Error: Demasiadas categorías!',
 	'intersection_toofewcats' => 'Error: ¡Muy pocas categorías!',
 	'intersection_noresults' => 'Error: ¡Sin resultados!',

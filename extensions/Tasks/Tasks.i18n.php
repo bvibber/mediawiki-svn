@@ -187,7 +187,7 @@ $messages['bs'] = array(
 	'tasks_tab' => 'zadaci',
 	'tasks_no_task_delete_title' => 'nije dopušteno',
 	'tasks_more_like_it' => 'više',
-	'tasks_my_assignments' => 'Vaši trenutni zadaci',
+	'tasks_my_assignments' => '{{PLURAL:$1|Vaš trenutni zadatak|Vaša trenutna $1 zadatka|Vaših trenutnih $1 zadataka}}',
 	'tasks_search_form_title' => 'Pretraga',
 	'tasks_search_tasks' => 'zadaci',
 	'tasks_previous' => 'prethodno',
@@ -236,7 +236,7 @@ Nur Administratoren dürfen dies tun.',
 	'tasks_discussion_page_link' => 'Aufgaben-Diskussionsseite',
 	'tasks_closedby' => 'Geschlossen von $1',
 	'tasks_assigned_myself_log' => 'Selbstzuweisung von Aufgabe $1',
-	'tasks_discussion_page_for' => 'Diese Aufgabe ist für die Seite "$1". Die Liste für alle Aufgaben für diese Seite ist $2.',
+	'tasks_discussion_page_for' => 'Diese Aufgabe ist für die Seite „$1“. Die Liste für alle Aufgaben für diese Seite ist $2.',
 	'tasks_sidebar_title' => 'Aufgaben öffnen',
 	'tasks_here' => 'hier',
 	'tasks_returnto' => 'Du wirst nun weitergeleitet.
@@ -273,7 +273,7 @@ Falls du nicht in ein paar Sekunden weitergeleitet wirst, klicke $1.',
 	'tasks_action_open' => 'Aufgabe „$1“ geöffnet.',
 	'tasks_action_assigned' => 'Aufgabe „$1“ zugewiesen.',
 	'tasks_action_closed' => 'Aufgabe „$1“ geschlosssen.',
-	'tasks_action_wontfix' => 'Aufgabe "$1" abgelehnt.',
+	'tasks_action_wontfix' => 'Aufgabe „$1“ abgelehnt.',
 	'tasks_sign_delete' => '<b>Es wurde angefordert diese Seite zu löschen!</b>',
 	'tasks_logpage' => 'Aufgaben-Logbuch',
 	'tasks_logpagetext' => 'Dieses Logbuch protokolliert Änderungen an Aufgaben.',
@@ -398,7 +398,7 @@ $messages['fr'] = array(
 	'tasks_on_creation_comment' => 'Tâche automatique, créée lors de la création de la page',
 	'tasks_link_your_assignments' => 'distributions ouvertes',
 	'tasks_see_your_assignments' => 'Vous avez actuellement $1 {{PLURAL:$1|tâche assignée|tâches assignées}}. Voyez vos $2.',
-	'tasks_my_assignments' => 'Vos assignements en cours',
+	'tasks_my_assignments' => '{{PLURAL:$1|Votre assignement|Vos assignements}} en cours',
 	'tasks_table_header_page' => 'Page',
 	'tasks_you_have_no_assignments' => 'Vous n’avez aucune tâche',
 	'tasks_search_form_title' => 'Chercher',
@@ -663,6 +663,8 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'tasks_see_your_assignments' => 'あなたは現在 $1 個の未確定な割り当てがあります。あなたの$2を参照してください。',
+	'tasks_my_assignments' => '現在のあなたの割り当て',
 	'tasks_search_status' => '状況',
 );
 
@@ -1255,6 +1257,7 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Rubin
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'tasks' => 'Задачи',
@@ -1300,8 +1303,8 @@ $messages['ru'] = array(
 	'tasks_event_on_creation_anon' => 'проверить',
 	'tasks_on_creation_comment' => 'Автоматическая задача, установлена после создания статьи',
 	'tasks_link_your_assignments' => 'текущие назначения',
-	'tasks_see_your_assignments' => 'У вас сейчас $1 назначений. См. ваш $2.',
-	'tasks_my_assignments' => 'Ваши текущие назначений',
+	'tasks_see_your_assignments' => 'У вас сейчас $1 {{PLURAL:$1|открытое назначение|открытых назначения|открытых назначений}}. См. ваш $2.',
+	'tasks_my_assignments' => '{{PLURAL:$1|Ваше текущее назначение|Ваши текущие назначения}}',
 	'tasks_table_header_page' => 'Страница',
 	'tasks_you_have_no_assignments' => 'У вас нет текущих назначений',
 	'tasks_search_form_title' => 'Поиск',
@@ -1432,6 +1435,34 @@ $messages['sv'] = array(
 	'tasks_sort' => 'Sortera',
 	'tasks_ascending' => 'Äldsta först',
 	'tasks_status_open' => 'Öppen',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'tasks' => 'పనులు',
+	'tasks_tab' => 'పనులు',
+	'tasks_form_comment' => 'వ్యాఖ్య',
+	'tasks_delete' => 'తొలగించు',
+	'tasks_action_delete' => 'ఒక పనిని తొలగించారు.',
+	'tasks_discussion_page_link' => 'పని యొక్క చర్చా పేజీ',
+	'tasks_see_page_tasks' => '(ఈ పేజీ యొక్క పనులు)',
+	'tasks_plain_text_only' => '(సాదా పాఠ్యం, 256 అక్షరాలు మాత్రమే)',
+	'tasks_help_page' => 'పనులు',
+	'tasks_more_like_it' => 'మరిన్ని',
+	'tasks_table_header_page' => 'పేజీ',
+	'tasks_search_form_title' => 'వెతుకు',
+	'tasks_search_tasks' => 'పనులు',
+	'tasks_search_status' => 'స్థితి',
+	'tasks_search_results' => 'అన్వేషణ ఫలితాలు',
+	'tasks_previous' => 'గత',
+	'tasks_next' => 'తర్వాతి',
+	'tasks_ascending' => 'పాతవి ముందు',
+	'tasks_sign_delete' => '<b>ఈ పేజీని తొలగించమని కోరారు!</b>',
+	'tasks_logpage' => 'పనుల చిట్టా',
+	'tasks_logpagetext' => 'ఇది పనులకు జరిగిన మార్పుల చిట్టా',
+	'tasks_logentry' => '"[[$1]]" కొరకు',
 );
 
 /** Vietnamese (Tiếng Việt)

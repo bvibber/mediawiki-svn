@@ -39,6 +39,13 @@ $messages['ast'] = array(
 	'trustedxff-desc' => "Xestión d'una llista de direiciones proxy d'enfotu ([http://meta.wikimedia.org/wiki/XFF_project proyeutu XFF])",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'trustedxff-desc' => 'Апрацоўка сьпісу давераных проксі-адрасоў ([http://meta.wikimedia.org/wiki/XFF_project XFF праект])',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -91,6 +91,7 @@ $messages['fi'] = array(
 	'stalkerlog-desc' => 'Lisää [[Special:Log/stalkerlog|lokin]] käyttäjien sisään- ja uloskirjautumisista.',
 	'stalkerlog-log-login' => 'kirjautunut sisään.',
 	'stalkerlog-log-logout' => 'kirjautunut ulos.',
+	'stalkerlog-log-text' => 'Tämä on loki käyttäjien sisään- ja uloskirjautumisista.',
 );
 
 /** French (Français)

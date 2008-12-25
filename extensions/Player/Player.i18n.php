@@ -227,11 +227,37 @@ $messages['eo'] = array(
 	'player-goto-file' => 'dosiero',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'player-not-found' => 'archivo no encontrado',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
 $messages['eu'] = array(
 	'player-goto-file' => 'fitxategia',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'player' => 'Soitin',
+	'player-desc' => 'Yleisimpiä selainten lisäosia käyttävä upotettu multimediasoitin ja [[Special:Player|toimintosivu]].',
+	'player-title' => 'Soitin',
+	'player-playertitle' => 'Soitin: $1',
+	'player-file' => 'Tiedostonimi',
+	'player-play' => 'Soita',
+	'player-not-allowed' => 'kielletty muoto',
+	'player-not-found' => 'tiedostoa ei löydy',
+	'player-invalid-title' => 'virheellinen otsikko',
+	'player-clicktoplay' => 'Soita $1',
+	'player-goto-player' => 'soitin',
+	'player-goto-page' => 'Sivu',
+	'player-goto-file' => 'tiedosto',
 );
 
 /** French (Français)
@@ -467,6 +493,13 @@ $messages['it'] = array(
 	'player-goto-player' => 'player',
 	'player-goto-page' => 'Pagina',
 	'player-goto-file' => 'file',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'player-file' => 'ファイル名',
 );
 
 /** Javanese (Basa Jawa)

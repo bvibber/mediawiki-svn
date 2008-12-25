@@ -415,6 +415,21 @@ Postavljena datoteka treba sadržavati nazive stranica, a dodatno razlog odvojen
 	'deletebatch-no-page' => 'Molimo vas odredite barem jednu stranicu za brisanje ILI odaberite datoteku koja sadrži popis.',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'deletebatch' => 'Lapok tömeges törlése',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Lapok tömeges törlése]]',
+	'deletebatch-button' => 'Törlés',
+	'deletebatch-here' => '<b>itt</b>',
+	'deletebatch-help' => 'Törölhetsz egyetlen lapot, vagy egy fájlban listázottakat.
+Válaszd ki a felhasználói nevet, ami meg fog jelenni a törlési naplóban.
+A feltöltött fájl minden sora tartalmazhat „|” karakterrel elválasztva egy törlési okot.',
+	'deletebatch-caption' => 'Lapok listája',
+	'deletebatch-title' => 'Lapok tömeges törlése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

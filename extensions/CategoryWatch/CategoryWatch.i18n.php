@@ -189,6 +189,20 @@ $messages['hsb'] = array(
 	'categorywatch-catsub' => 'wotstroni $1 z kategorije $2',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'categorywatch-desc' => 'Kiegészíti a figyelőlista képességeit egy figyelt kategória tagjaiban történt változásokkal.',
+	'categorywatch-emailbody' => 'Szia $1! Ezt az üzenetet azért kapod, mert figyeled a(z) „$2” nevű kategóriát.
+Értesítünk, hogy $4 $3-kor $5.',
+	'categorywatch-emailsubject' => 'Változás a(z) "$1" nevű figyelt kategóriában',
+	'categorywatch-catmovein' => 'áthelyezte a(z) $1 című lapot a(z) $3 kategóriából a(z) $2 kategóriába',
+	'categorywatch-catmoveout' => 'áthelyezte a(z) $1 című lapot a(z) $2 kategóriából a(z) $3 kategóriába',
+	'categorywatch-catadd' => 'hozzáadta a(z) $1 című lapot a(z) $2 kategóriához',
+	'categorywatch-catsub' => 'eltávolította a(z) $1 című lapot a(z) $2 kategóriából',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

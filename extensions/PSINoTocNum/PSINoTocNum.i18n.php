@@ -37,9 +37,10 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
-	'psinotocnum-desc' => 'Ergänzt das magische Wort "<nowiki>__NOTOCNUM__</nowiki>"',
+	'psinotocnum-desc' => 'Ergänzt das magische Wort „<nowiki>__NOTOCNUM__</nowiki>“',
 );
 
 /** Lower Sorbian (Dolnoserbski)

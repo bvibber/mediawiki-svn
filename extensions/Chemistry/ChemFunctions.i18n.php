@@ -365,6 +365,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'chemicalsources' => 'Kémiával kapcsolatos források',
+	'chemicalsource-desc' => '<nowiki><chemform></nowiki> tag kémiai formulák elhelyezéséhez',
 	'chemFunctions_ListPage' => 'Kémiával kapcsolatos források',
 	'chemFunctions_DataList' => 'Lenn azon oldalak listája található, amelyek információval szolgálhatnak az általad keresett kémiai anyagról.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula az NIST-nél</a><br />

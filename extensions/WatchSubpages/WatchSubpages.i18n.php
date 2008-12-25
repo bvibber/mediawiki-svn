@@ -498,6 +498,28 @@ För att lägga till en sida, markera rutan intill den, och klicka på "Lägg ti
 När du markerar eller avmarkerar flera sidor, så kan du markera intilliggande rutor genom att hålla ner shift-tangenten och klicka på den första och sista rutan du vill markera.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'watchsubpages-addtitles' => 'పేజీలను చేర్చండి',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'watchsubpages' => 'Bantayan ang kabahaging mga pahina (subpahina)',
+	'watchsubpages-addedtowatchlist' => 'Idinagdag ang sumusunod sa iyong talaan ng mga binabantayan.',
+	'watchsubpages-addtitles' => 'Magdagdag ng mga pahina',
+	'watchsubpages-addtitlestowatchlist' => 'Magdagdag ng mga pahina sa talaan ng mga binabantayan',
+	'watchsubpages-desc' => 'Mabilisang [[Special:WatchSubpages|idagdag ang lahat ng kabahaging mga pahina]] ng isang pahina sa talaan ng mga binabantayan',
+	'watchsubpages-form' => 'Piliin ang mga pahinang idaragdag sa iyong talaan ng mga binabantayang nasa ibaba.
+Para magdagdag ng isang pahina, lagyan ng tsek ang kahong katabi nito, at pindutin ang "Magdagdag ng mga pahina."
+
+Kapag naglalagay o nagtatanggal ng mga tsek sa maramihang mga pahina, ang matagalang pagpindot sa "susing pampalit" (\'\'shift key\'\') ay magpapahintulot sa iyong makapili ng magkakasunod na mga kahon sa pamamagitan ng pagpindot sa bawat katapusan ng saklaw na paglalagyan ng tsek.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

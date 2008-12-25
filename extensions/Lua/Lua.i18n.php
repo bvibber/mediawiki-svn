@@ -226,6 +226,20 @@ $messages['ia'] = array(
 	'lua_overflow_time' => 'Durata maxime de execution excedite',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'lua_desc' => 'パーサーを拡張し、[http://www.lua.org/ Lua] コードのブロックを埋め込めるようにする',
+	'lua_error' => '行 $1 上のエラー',
+	'lua_extension_notfound' => 'Lua 拡張機能は設定されていません',
+	'lua_interp_notfound' => 'Lua インタプリタが見つかりません',
+	'lua_error_internal' => '内部エラー',
+	'lua_overflow_recursion' => '再帰制限に達しました',
+	'lua_overflow_loc' => '最大行数制限に達しました',
+	'lua_overflow_time' => '最大実行時間に達しました',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

@@ -451,6 +451,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'countedits' => 'Szerkesztésszámláló',
+	'countedits-desc' => 'Szerkesztésszámláló [[Special:CountEdits|speciális lap]], ami a legjobb tíz közreműködő listáját is megjeleníti',
 	'countedits-warning' => "'''Figyelem:''' Ne ítélj meg egy könyvet a borítója alapján. Ne ítélj meg egy szerkesztőt a szerkesztéseinek száma alapján.",
 	'countedits-username' => 'Felhasználói név:',
 	'countedits-ok' => 'OK',

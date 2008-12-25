@@ -453,6 +453,7 @@ az eszközt.",
 	'querybtn' => 'Lekérdezés elküldése',
 	'selectonly' => 'Csak az olvasást végző lekérdezések engedélyezettek.',
 	'querysuccessful' => 'Lekérdezés sikeresen megtörtént',
+	'right-asksql' => 'SQL-lekérdezések készítése',
 );
 
 /** Interlingua (Interlingua)

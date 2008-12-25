@@ -141,6 +141,15 @@ Per favor attende un momento e preme 'recargar' in tu navigator pro resubmitter 
 	'acct_creation_global_soft_throttle_hit-desc' => 'Limita le frequentia de creation de usatores',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'acct_creation_global_soft_throttle_hit' => '最近のログイン要求が異常に多かったため、アカウント作成は自動的にしばらく停止されています。しばらく待ってから、再度試行してください。',
+	'acct_creation_global_hard_throttle_hit' => '登録サービス不能攻撃を減少させるため、アカウント作成は自動的にしばらく停止されています。しばらく待ってから、ブラウザの再読み込みボタンを押して再送信してください。',
+	'acct_creation_global_soft_throttle_hit-desc' => 'アカウント作成数を制限する',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

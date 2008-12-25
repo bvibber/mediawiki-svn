@@ -1975,6 +1975,13 @@ $wgGoogleMapsMessages['jv'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Kara-Kalpak (Qaraqalpaqsha)
+ * @author Atabek
+ */
+$wgGoogleMapsMessages['kaa'] = array(
+	'gm-height' => "Uzunlıg'ı",
+);
+
 /** Kazakh (Cyrillic) (Қазақша (Cyrillic))
  * @author GaiJin
  */

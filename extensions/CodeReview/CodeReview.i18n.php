@@ -2075,6 +2075,7 @@ $messages['ja'] = array(
 	'code-rev-status' => '状況:',
 	'code-pathsearch-path' => 'パス:',
 	'code-rev-submit' => '変更を保存',
+	'specialpages-group-developer' => '開発者用ツール',
 );
 
 /** Javanese (Basa Jawa)
@@ -2223,6 +2224,7 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'code-comments' => '의견',
 	'code-change-removed' => '제거:',
 	'code-change-added' => '추가:',
 	'code-rev-date' => '날짜:',
@@ -2230,10 +2232,13 @@ $messages['ko'] = array(
 	'code-rev-modified-d' => '삭제됨',
 	'code-rev-modified-m' => '수정됨',
 	'code-rev-comment-by' => '$1의 의견',
+	'code-rev-comment-preview' => '미리 보기',
 	'code-rev-diff' => '차이',
 	'code-rev-diff-link' => '차이',
+	'code-rev-purge-link' => '새로 고침',
 	'code-status-reverted' => '되돌려짐',
 	'code-pathsearch-path' => '경로:',
+	'codereview-reply-link' => '답변',
 	'codereview-email-subj' => '[$1] [$2판]: 새 의견이 추가되었습니다.',
 	'codereview-email-body' => '"$1" 사용자가 $3판에 대해 의견을 올렸습니다.
 
@@ -3671,21 +3676,29 @@ $4',
 $messages['te'] = array(
 	'code-comments' => 'వ్యాఖ్యలు',
 	'code-change-removed' => 'తొలిగించబడినది',
+	'code-authors' => 'రచయితలు',
+	'code-field-author' => 'రచయిత',
+	'code-field-user' => 'వ్యాఖ్యాత',
 	'code-field-message' => 'వ్యాఖ్య',
 	'code-field-status' => 'స్థితి',
 	'code-field-timestamp' => 'తేదీ',
 	'code-field-text' => 'గమనిక',
+	'code-rev-author' => 'రచయిత:',
 	'code-rev-date' => 'తేది:',
 	'code-rev-message' => 'వ్యాఖ్య:',
+	'code-rev-rev' => 'కూర్పు:',
 	'code-rev-modified-r' => 'మార్పు చేయబడినది',
 	'code-rev-modified-d' => 'తొలిగించబడినది',
 	'code-rev-status' => 'స్థితి:',
 	'code-rev-status-set' => 'మార్పు స్థితి',
+	'code-rev-comment-preview' => 'మునుజూపు',
 	'code-rev-diff' => 'తేడా',
 	'code-status-new' => 'కొత్త',
 	'code-status-reverted' => 'వెనక్కి తీసుకోబడినది',
 	'code-status-ok' => 'సరి',
+	'code-rev-submit' => 'మార్పులను భద్రపరచు',
 	'repoadmin-edit-button' => 'సరే',
+	'specialpages-group-developer' => 'వికాసకుల పనిముట్లు',
 );
 
 /** Thai (ไทย)

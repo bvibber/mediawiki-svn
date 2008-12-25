@@ -599,6 +599,43 @@ $messages['ext'] = array(
 	'sign-closed' => 'afechau',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'sign-realname' => 'Nimi',
+	'sign-address' => 'Katuosoite',
+	'sign-city' => 'Kaupunki',
+	'sign-state' => 'Valtio',
+	'sign-zip' => 'Postinumero',
+	'sign-country' => 'Maa',
+	'sign-phone' => 'Puhelinnumero',
+	'sign-bday' => 'Ikä',
+	'sign-email' => 'Sähköpostiosoite',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> tarkoittaa pakollista kenttää.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Huomautus: Piilotettu tieto tulee silti valvojien näkyville.</i></small>',
+	'sign-list-anonymous' => 'Listaa nimettömänä',
+	'sign-list-hideaddress' => 'Älä listaa osoitetta',
+	'sign-list-hideextaddress' => 'Älä listaa kaupunkia, valtiota, postinumeroa tai maata',
+	'sign-list-hidephone' => 'Älä listaa puhelinnumeroa',
+	'sign-list-hidebday' => 'Älä listaa ikää',
+	'sign-list-hideemail' => 'Älä listaa sähköpostiosoitetta',
+	'sign-closed' => 'suljettu',
+	'sig-anonymous' => '<i>Nimetön</i>',
+	'sig-private' => '<i>Yksityinen</i>',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|keskustelu]] • <!--
+-->[[Special:Contributions/$1|muokkaukset]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBL:t] • <!--
+-->[[Special:BlockIP/$1|estä käyttäjä]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} estoloki] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} osoitepaljastus])<!--
+--></span>',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

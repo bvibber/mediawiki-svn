@@ -1249,6 +1249,7 @@ Esistono molti [http://wiki.openid.net/Public_OpenID_providers Provider OpenID p
 
 /** Japanese (日本語)
  * @author Fievarsty
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
@@ -1260,6 +1261,8 @@ $messages['ja'] = array(
 	'openidconfigerror' => 'OpenID設定エラー',
 	'openidpermission' => 'OpenID パーミッション エラー',
 	'openidusernameprefix' => 'OpenIDユーザー',
+	'openidoptional' => '任意',
+	'openidrequired' => '必須',
 	'openidnickname' => 'ニックネーム',
 	'openidemail' => 'Eメールアドレス',
 	'openidlanguage' => '言語',

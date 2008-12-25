@@ -194,6 +194,7 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
+	'categorystepper-desc' => 'Megjelenít egy kategórianavigációs dobozt, amivel a lapon található kategóriák között lehet navigálni ábécésorrendben',
 	'categorystepper-end' => '(a kategória vége)',
 	'categorystepper-start' => '(a kategória eleje)',
 );

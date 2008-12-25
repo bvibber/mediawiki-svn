@@ -177,6 +177,16 @@ $messages['es'] = array(
 	'randomincategory-submit' => 'Ir',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'randomincategory' => 'Satunnainen sivu luokassa',
+	'randomincategory-toolbox' => 'Satunnainen sivu',
+	'randomincategory-label' => 'Luokka',
+	'randomincategory-submit' => 'Siirry',
+);
+
 /** French (Français)
  * @author Cedric31
  * @author Grondin
@@ -385,7 +395,11 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'randomincategory' => '{{int:randompage}} en ene Saachjrupp',
 	'randomincategory-desc' => '[[Special:Randomincategory|Söndersigg]], öm en zofälleje Sigg uß ene Saachjrupp ze krijje.',
+	'randomincategory-toolbox' => '{{int:randompage}} en de Saachjrupp',
+	'randomincategory-nocategory' => 'De Saachjrupp „$1“ jidd_et nit, udder_et sin_er kei Sigge dren',
+	'randomincategory-label' => 'Saachjrupp:',
 	'randomincategory-submit' => 'Loß Jonn!',
 );
 

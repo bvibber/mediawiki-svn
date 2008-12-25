@@ -208,6 +208,11 @@ $messages['fi'] = array(
 	'slippymap_heightsmall' => 'korkeusarvo (h) ei voi olla alle 100',
 	'slippymap_latbig' => 'leveysastearvo (lat) ei voi olla yli 90',
 	'slippymap_latsmall' => 'leveysastearvo (lat) ei voi olla alle -90',
+	'slippymap_lonbig' => 'pituusastearvo (lon) ei voi olla yli 180',
+	'slippymap_lonsmall' => 'pituusastearvo (lon) ei voi olla alle -180',
+	'slippymap_zoomsmall' => 'zoom-arvo (z) ei voi olla alle nollan',
+	'slippymap_zoombig' => 'zoom-arvo (z) ei voi olla yli 17.',
+	'slippymap_invalidlayer' => 'Virheellinen ”layer”-arvo ”%1”',
 );
 
 /** French (Français)

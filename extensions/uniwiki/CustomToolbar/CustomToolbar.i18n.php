@@ -271,6 +271,7 @@ $wgCustomToolbarMessages['fi'] = array(
 	'ct_popupblocked' => 'Tiedostojen tallennuksen ponnahdusikkunan avaus epäonnistui.
 Tarkista ponnahdusikkunoiden eston asetukset.',
 	'ct_user_user' => 'Käyttäjä',
+	'ct_user_sample' => 'Käyttäjänimi',
 );
 
 /** French (Français)
@@ -1056,6 +1057,21 @@ $wgCustomToolbarMessages['sv'] = array(
 	'ct_horizontal_tip' => 'Sätt in en horisontell linje (använd sparsamt)',
 	'ct_horizontal_caption' => 'Horisontell linje',
 	'ct_upload' => 'Ladda upp $1',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$wgCustomToolbarMessages['te'] = array(
+	'ct_bold_caption' => 'బొద్దు',
+	'ct_italic_caption' => 'వాలు',
+	'ct_internal_sample' => 'పేజీపేరు',
+	'ct_internal_caption' => 'అంతర్గత లింకు',
+	'ct_external_caption' => 'బయటి లింకు',
+	'ct_submit' => 'వెళ్ళు!',
+	'ct_success' => 'పైలు ఎగుమతి విజయవంతం!',
+	'ct_user_user' => 'వాడుకరి',
+	'ct_user_sample' => 'వాడుకరిపేరు',
 );
 
 /** Vietnamese (Tiếng Việt)

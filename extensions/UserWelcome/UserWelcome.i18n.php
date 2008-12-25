@@ -174,6 +174,13 @@ $messages['eo'] = array(
 	'mp-request-new-award' => '$1 {{PLURAL:$1|nova premio|novaj premioj}}',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'mp-welcome-edit' => 'Editar',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix
@@ -616,7 +623,34 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'mp-userlevels-link' => 'వాడుకరి స్థాయిలు',
+	'mp-welcome-logged-in' => 'హలో $1',
 	'mp-requests-title' => 'అభ్యర్థనలు',
+	'mp-requests-message' => 'మీకై ఈ క్రింది అభ్యర్థనలు ఉన్నాయి.',
+	'mp-request-new-message' => 'కొత్త సందేశం',
+	'mp-request-new-gift' => '$1 కొత్త {{PLURAL:$1|బహుమతి|బహుమతులు}}',
+	'mp-request-new-foe' => '$1 కొత్త {{PLURAL:$1|శతృవు|శతృవులు}}',
+	'mp-request-new-friend' => '$1 కొత్త {{PLURAL:$1|మిత్రుడు|మిత్రులు}}',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'userwelcome-desc' => 'Nagdaragdag ng tatak na <tt>&lt;maligayangpagdatingTagagamit&gt;</tt> upang maipakita sa nakalagda/nakatalang mga tagagamit ang kabatirang panlipunang (impormasyon) tumutukoy sa   partikular na tagagamit',
+	'mp-userlevels-link' => 'Mga antas na pangtagagamit',
+	'mp-welcome-upload' => 'Ikarga',
+	'mp-welcome-edit' => 'Baguhin',
+	'mp-welcome-points' => '$1 mga puntos',
+	'mp-welcome-needed-points' => 'Upang makasulong patungo sa <b><a href="$1">$2</a></b> umani ng <i>$3</i> karagdagang {{PLURAL:$3|puntos|mga puntos}}!',
+	'mp-welcome-logged-in' => 'Mabuhay $1',
+	'mp-requests-title' => 'Mga kahilingan',
+	'mp-requests-message' => 'Mayroon kang sumusunod na mga kahilingan.',
+	'mp-request-new-message' => 'bagong mensahe',
+	'mp-request-new-award' => '$1 bagong {{PLURAL:$1|gantimpala|mga gantimpala}}',
+	'mp-request-new-gift' => '$1 bagong {{PLURAL:$1|handog|mga handog}}',
+	'mp-request-new-foe' => '$1 bagong {{PLURAL:$1|katunggali|mga katunggali}}',
+	'mp-request-new-friend' => '$1 bagong {{PLURAL:$1|kaibigan|mga kaibigan}}',
 );
 
 /** Vietnamese (Tiếng Việt)

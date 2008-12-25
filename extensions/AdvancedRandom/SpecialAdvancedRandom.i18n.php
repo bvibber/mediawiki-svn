@@ -114,6 +114,14 @@ $messages['eo'] = array(
 	'advancedrandom' => 'Progresa hazardpaĝo',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'advancedrandom' => 'Acceso aleatorio avanzado',
+	'advancedrandom-desc' => 'Obtener una página al azar a partir de una discusión o de un enlace de una página de asunto a una página dada. Puede ser usado como en [[Special:AdvancedRandom/Template:Featured/Talk]] para obtener un artículo destacado al azar o como [[Special:AdvancedRandom/Template:GFDL/Image]] para obtener un archivo GFDL al azar',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */

@@ -437,6 +437,40 @@ $messages['hsb'] = array(
 	'right-closewikis' => 'Wikije začinić',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'closewikis-desc' => 'Lehetővé teszi wikik bezárását wikifarmokon',
+	'closewikis-page' => 'Wiki bezárása',
+	'closewikis-page-close' => 'Wiki bezárása',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Ok (megjelenített):',
+	'closewikis-page-close-reason' => 'Ok (naplózott):',
+	'closewikis-page-close-submit' => 'Bezárás',
+	'closewikis-page-close-success' => 'Wiki sikeresen bezárva',
+	'closewikis-page-reopen' => 'Wiki megnyitása',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Ok:',
+	'closewikis-page-reopen-submit' => 'Megnyitás',
+	'closewikis-page-reopen-success' => 'Wiki sikeresen megnyitva',
+	'closewikis-page-err-nowiki' => 'A megadott wiki érvénytelen',
+	'closewikis-page-err-closed' => 'A wiki már be van zárva',
+	'closewikis-page-err-opened' => 'A megadott wiki nincs bezárva',
+	'closewikis-list' => 'Bezárt wikik listája',
+	'closewikis-list-intro' => 'Ez a lista azon wikik listáját tartalmazza, amiket bezártak a helytartók.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Bezárta',
+	'closewikis-list-header-timestamp' => 'Bezárás ideje:',
+	'closewikis-list-header-dispreason' => 'Megjelenített ok',
+	'closewikis-log' => 'Wikibezárási napló',
+	'closewikis-log-header' => 'Itt található a helytartók által végzett wikibezárások és újra-megnyitások listája',
+	'closewikis-log-close' => 'bezárta a(z) $2 wikit',
+	'closewikis-log-reopen' => 'újra megnyitotta a(z) $2 wikit',
+	'right-editclosedwikis' => 'bezárt wikik szerkesztése',
+	'right-closewikis' => 'wikik bezárása',
+);
+
 /** Interlingua (Interlingua)
  * @author Malafaya
  * @author McDutchie

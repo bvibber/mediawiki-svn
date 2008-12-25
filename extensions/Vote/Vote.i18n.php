@@ -303,6 +303,14 @@ $messages['eo'] = array(
 	'vote-login-link' => 'ensaluti',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'vote' => 'Votar',
+	'vote-submit' => 'Votar',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -1072,6 +1080,31 @@ $messages['th'] = array(
 	'vote-results' => 'ผลโหวต',
 	'vote-login' => 'คุณจำเป็นต้อง $1 สำหรับโหวต',
 	'vote-login-link' => 'ล็อกอิน',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vote' => 'Maghalal/bumoto',
+	'vote-desc' => 'Nagbibigay ng payak kakayahan sa pagtanggap ng bilang ng mga boto',
+	'vote-header' => "Maaari kang humalal/bumoto para kay/sa '''Kataastaasang Pinakamakapangyarihang Panginoon ng Daigdig''' dito!",
+	'vote-current' => "Ang pangkasalukuyang mong boto/paghalal ay para kay '''$1'''.",
+	'vote-legend' => 'Ilagay o baguhin ang boto/hinalal',
+	'vote-caption' => 'Ang pagpipilian mo:',
+	'vote-choices' => "joker|''The Joker'' (\"Ang Mambibiro\")
+penguin|''The Penguin'' (\"Ang Penguino\")
+riddler|''Riddler'' (\"Mambubugtong\")",
+	'vote-submit' => 'Maghalal/Bumoto',
+	'vote-registered' => 'Itinala na ang iyong paghalal/boto.',
+	'vote-view-results' => 'Tingnan ang mga kinalabasan (resulta)',
+	'vote-results' => 'Kinalabasan/resulta ng halalan',
+	'vote-results-choice' => 'Pinili',
+	'vote-results-count' => 'Bilang',
+	'vote-results-none' => 'Wala pang iniligay na mga boto/paghalal sa panahong (oras) ito.',
+	'vote-login' => 'Dapat kang $1 para makapaghalal/makaboto.',
+	'vote-login-link' => 'lumagda/tumala',
+	'vote-invalid-choice' => 'Dapat kang pumili ng isa mula sa makukuhang mga pagpipilian.',
 );
 
 /** Turkish (Türkçe)

@@ -228,6 +228,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'forcepreview' => '문서 저장 (미리 보기 후)',
+	'right-forcepreviewexempt' => '미리 보기 없이 편집 가능',
 );
 
 /** Ripoarisch (Ripoarisch)

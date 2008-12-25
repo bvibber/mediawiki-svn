@@ -79,6 +79,15 @@ $messages['eo'] = array(
 	'stalepages-summary' => 'Jen listo de paĝoj ne redaktitaj dum la lastaj $1 tagoj.',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'stalepages' => 'Páginas abandonadas',
+	'stalepages-desc' => 'Genera una [[Special:Stalepages|lista de páginas]] que no han sido editadas recientemente',
+	'stalepages-summary' => 'Esta es una lista de páginas que no han sido editadas en los últimos $1 días',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

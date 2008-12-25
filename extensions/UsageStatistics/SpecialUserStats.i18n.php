@@ -425,6 +425,15 @@ $messages['eo'] = array(
 	'usagestatistics-editpages' => 'Individua uzanto $1 paĝoj statistikoj',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'usagestatisticsintervalday' => 'Día',
+	'usagestatisticsintervalweek' => 'Semana',
+	'usagestatisticsintervalmonth' => 'Mes',
+);
+
 /** Finnish (Suomi)
  * @author Japsu
  * @author Silvonen
@@ -1179,6 +1188,7 @@ $messages['te'] = array(
 	'specialuserstats' => 'వాడుక గణాంకాలు',
 	'usagestatistics' => 'వాడుక గణాంకాలు',
 	'usagestatisticsfor' => '<h2>[[User:$1|$1]] కు వాడుక గణాంకాలు</h2>',
+	'usagestatisticsforallusers' => '<h2>అందరు వాడుకరుల వాడుక గణాంకాలు</h2>',
 	'usagestatisticsinterval' => 'సమయాంతరం',
 	'usagestatisticstype' => 'రకం',
 	'usagestatisticsstart' => 'ప్రారంభ తేదీ',

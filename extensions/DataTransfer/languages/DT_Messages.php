@@ -437,7 +437,19 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
+	'dt-desc' => 'Lehetővé teszi a sablonhívásokban található adatszerkezetek importálását és exportálását',
+	'viewxml' => 'XML megtekintése',
+	'dt_viewxml_docu' => 'Válaszd ki a kategóriák és a névterek közül azt, amelyiket meg akarod tekinteni XML formátumban.',
+	'dt_viewxml_categories' => 'Kategóriák',
+	'dt_viewxml_namespaces' => 'Névterek',
+	'dt_viewxml_simplifiedformat' => 'Egyszerűsített formátum',
+	'dt_xml_namespace' => 'Névtér',
+	'dt_xml_page' => 'Lap',
+	'dt_xml_field' => 'Mező',
+	'dt_xml_name' => 'Név',
 	'dt_xml_title' => 'Cím',
+	'dt_xml_id' => 'Azonosító',
+	'dt_xml_freetext' => 'Szabad szöveg',
 );
 
 /** Interlingua (Interlingua)
@@ -692,15 +704,23 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'dt-desc' => 'Gjer det mogleg å importera og eksportera strukturert data i maloppkallingar',
+	'viewxml' => 'Syn XML',
+	'dt_viewxml_docu' => 'Vel mellom følgjande kategoriar og namnerom for å syna dei i XML-format.',
 	'dt_viewxml_categories' => 'Kategoriar',
+	'dt_viewxml_namespaces' => 'Namnerom',
+	'dt_viewxml_simplifiedformat' => 'Forenkla format',
 	'dt_xml_namespace' => 'Namnerom',
 	'dt_xml_page' => 'Side',
+	'dt_xml_field' => 'Felt',
 	'dt_xml_name' => 'Namn',
 	'dt_xml_title' => 'Tittel',
 	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Fritekst',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

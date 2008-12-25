@@ -51,9 +51,10 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['de'] = array(
-	'pnghandler-desc' => 'Ändere die Größe von PNGs mit Hilfe von "pngds"',
+	'pnghandler-desc' => 'Ändere die Größe von PNGs mit Hilfe von „pngds“',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -580,6 +580,16 @@ $messages['sv'] = array(
 	'gep-addsectionbutton' => 'Lägg till',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'gep-categories' => 'వర్గాలు',
+	'gep-addcategorybutton' => 'చేర్చు',
+	'gep-sections' => 'విభాగాలు',
+	'gep-addsectionbutton' => 'చేర్చు',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

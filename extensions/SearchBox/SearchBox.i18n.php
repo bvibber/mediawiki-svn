@@ -20,8 +20,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Purodha
  */
 $messages['qqq'] = array(
+	'searchbox-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
 	'searchbox-search' => '{{Identical|Search}}',
 	'searchbox-go' => '{{Identical|Go}}',
 	'searchbox-namespaces' => '{{Identical|Namespaces}}',
@@ -102,6 +106,15 @@ $messages['eo'] = array(
 	'searchbox-namespaces' => 'Nomspacoj:',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'searchbox-search' => 'Etsi',
+	'searchbox-go' => 'Siirry',
+	'searchbox-namespaces' => 'Nimiavaruudet',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -166,7 +179,7 @@ $messages['hsb'] = array(
 $messages['ja'] = array(
 	'searchbox-desc' => '検索フォームの呼び出しをできるようにする',
 	'searchbox-search' => '検索',
-	'searchbox-go' => '検索',
+	'searchbox-go' => '表示',
 	'searchbox-namespaces' => '名前空間:',
 );
 
@@ -177,6 +190,15 @@ $messages['km'] = array(
 	'searchbox-search' => 'ស្វែងរក',
 	'searchbox-go' => 'ទៅ',
 	'searchbox-namespaces' => 'លំហឈ្មោះ៖',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'searchbox-desc' => 'Maad_et müjjelesch, e Fommulaa zom Söke enzebernge.',
+	'searchbox-go' => 'Loß Jonn!',
+	'searchbox-namespaces' => 'Appachtemengs:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -289,5 +311,13 @@ $messages['sv'] = array(
 	'searchbox-search' => 'Sök',
 	'searchbox-go' => 'Gå',
 	'searchbox-namespaces' => 'Namnrymder:',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'searchbox-search' => 'వెతుకు',
+	'searchbox-go' => 'వెళ్ళు',
 );
 

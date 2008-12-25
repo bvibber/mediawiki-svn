@@ -53,6 +53,13 @@ $messages['bcc'] = array(
 	'skinperpage-desc' => 'هورکنت <tt>&lt;skin&gt;</tt> برچسپء په استفاده مختلف این پوست ته هر صفحه ای',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'skinperpage-desc' => 'Дадае тэг <tt>&lt;skin&gt;</tt> для выкарыстаньня розных скураў на старонцы',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

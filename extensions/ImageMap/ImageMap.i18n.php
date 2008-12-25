@@ -709,6 +709,7 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'imagemap_no_image' => '오류: 첫 줄에 그림이 제시되어야 합니다.',
 	'imagemap_invalid_image' => '오류: 그림이 잘못되었거나 존재하지 않습니다.',
+	'imagemap_bad_image' => '오류: 이 그림은 이 문서에서 사용이 금지되어 있습니다.',
 	'imagemap_description' => '이 그림에 대한 정보',
 );
 

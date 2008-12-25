@@ -103,6 +103,13 @@ $messages['hsb'] = array(
 	'crowdauthentication-desc' => 'Awtentifikaciski tykač za Atlassian Crowd',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'crowdauthentication-desc' => 'Autentikációs kiterjesztés Atlassian Crowdhoz',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

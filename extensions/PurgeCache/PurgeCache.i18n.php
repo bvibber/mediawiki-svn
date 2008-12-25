@@ -99,6 +99,14 @@ $messages['eo'] = array(
 	'purgecache-button' => 'Ĝisdatigu',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'purgecache' => 'Tyhjennä välimuisti',
+	'purgecache-desc' => '[[Special:PurgeCache|Toimintosivu]] OBJECTCACHE-taulun siivoamiseen.',
+);
+
 /** French (Français) */
 $messages['fr'] = array(
 	'purgecache' => 'Purger le cache',

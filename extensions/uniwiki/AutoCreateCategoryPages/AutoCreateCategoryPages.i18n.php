@@ -142,6 +142,10 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'autocreatecategorypages-desc' => 'Deiht fäälende {{int:categories}} automattesch aanlääje, wam_mer en Sigg avspeichere deiht.',
+	'autocreatecategorypages-stub' => 'Dat ess_en Sigg förr_en Saachjrupp.
+Se zeijch all de Sigge en_de Saachjrupp „$1“ un de {{int:Subcategories}} dovun, wann et se jitt.',
+	'autocreatecategorypages-createdby' => 'Automattesch aanjelaat övver der ßoffwäer-Zosaz: AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Dä automattesche {{int:Categories}} Aanlääjer',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -49,6 +49,13 @@ $messages['eo'] = array(
 	'newsextension-desc' => 'Montras proprajn lastatempajn ŝanĝojn en vikiaj paĝoj aŭ kiel RSS aŭ Atom-fonto',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'newsextension-desc' => 'Muestra cambios recientes configurables en páginas wiki o como sindicación RSS o Atom',
+);
+
 /** French (Français)
  * @author Verdy p
  */

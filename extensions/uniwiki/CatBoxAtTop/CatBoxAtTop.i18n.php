@@ -219,6 +219,13 @@ $messages['sv'] = array(
 	'catboxattop-categories' => 'Kategorier',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'catboxattop-categories' => 'వర్గాలు',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

@@ -198,6 +198,19 @@ Njemóžeš tutu stronu wutworić, ale móžeš [{{fullurl:{{FULLPAGENAME}}|acti
 <createbox>break=no</createbox>",
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'createbox-desc' => 'Speciális inputbox lapkészítéshez',
+	'createbox-create' => 'Készítés',
+	'createbox-exists' => "Sajnáljuk, de „'''{{FULLPAGENAME}}'''” című lap már létezik.
+
+Nem készítheted el a lapot, de [{{fullurl:{{FULLPAGENAME}}|action=edit}} szerkesztheted], [{{fullurl:{{FULLPAGENAME}}}} elolvashatod], vagy választhatsz egy másik lapnevet a lenti dobozban.
+
+<createbox>break=no</createbox>",
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

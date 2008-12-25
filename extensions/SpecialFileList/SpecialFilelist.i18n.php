@@ -156,6 +156,17 @@ $messages['eo'] = array(
 	'filelist-show-gallery' => 'Montru galerion',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'filelist' => 'Lista de archivos',
+	'filelist-desc' => '[[Special:Filelist|Página especial]] para listar archivos subidos',
+	'filelist-show-list' => 'Mostrar lista',
+	'filelist-show-gallery' => 'Mostrar galería',
+	'filelist-image-desc' => 'desc',
+);
+
 /** Finnish (Suomi)
  * @author Silvonen
  * @author Str4nd

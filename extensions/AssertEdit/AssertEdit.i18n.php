@@ -563,6 +563,15 @@ $messages['tg-cyrl'] = array(
 	'assert_edit_message' => 'Таъйиди мавриди назар ($1) номувофиқ буд.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'assert_edit_title' => 'Nabigo ang paggigiit (pagtatanggol)',
+	'assert_edit_desc' => "Nagdaragdag ng mga panggigiit (pagtatanggol) na pampagbabago na magagamit ng mga ''bot''",
+	'assert_edit_message' => 'Nabigo ang tinukoy na panggigiit/pagtatanggol ($1).',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

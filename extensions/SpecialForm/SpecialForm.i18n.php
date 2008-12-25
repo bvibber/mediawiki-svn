@@ -219,6 +219,13 @@ $messages['eo'] = array(
 	'formbadpagename' => 'Fuŝa paĝnomo',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'formsave' => 'Guardar',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */

@@ -260,6 +260,13 @@ $messages['sv'] = array(
 	'rightfunctions-local' => '(från lokal sida)',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'rightfunctions-local' => '(స్థానిక పేజీ నుండి)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

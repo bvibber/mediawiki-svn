@@ -802,10 +802,32 @@ Geeft een doelpagina op die niet bestaat.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
-	'duplicator-source' => 'Kjelde:',
+	'duplicator' => 'Kopier ei sida',
+	'duplicator-desc' => 'Opprett sjølvstendige [[Special:Duplicate|kopiar av sider]] med full endringshistorikk',
+	'duplicator-toolbox' => 'Kopier denne sida',
+	'duplicator-header' => 'Denne sida mogleggjer fullstendig kopiering av ei sida, med sjølvstendige kopiar av all historikk. 
+Dette er nyttig for oppdeling av sider, etc.',
+	'duplicator-options' => 'Val',
+	'duplicator-source' => 'Kjelda:',
+	'duplicator-dest' => 'Mål:',
+	'duplicator-dotalk' => 'Kopier diskusjonssida (om mogleg)',
+	'duplicator-submit' => 'Kopier',
+	'duplicator-summary' => 'Kopiert frå [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] blei kopiert til [[$2]].'''</big>",
+	'duplicator-success-revisions' => '{{PLURAL:$1|Éin versjon blei kopiert|$1 versjonar blei kopierte}}.',
+	'duplicator-success-talkcopied' => 'Diskusjonssida blei òg kopiert.',
+	'duplicator-success-talknotcopied' => 'Diskusjonssida kunne ikkje bli kopiert.',
+	'duplicator-failed' => 'Sida kunne ikkje bli kopiert då ein ukjend feil oppstod.',
+	'duplicator-source-invalid' => 'Oppgje ein gyldig kjeldetittel.',
+	'duplicator-source-notexist' => '[[$1]] finst ikkje. Oppgje tittelen til ei eksisterande sida.',
+	'duplicator-dest-invalid' => 'Oppgje ein gyldig måltittel.',
+	'duplicator-dest-exists' => '[[$1]] finst allereie. Oppgje ein måltittel som ikkje finst.',
+	'duplicator-toomanyrevisions' => '[[$1]] har for mange ($2) versjonar og kan ikkje bli kopiert.
+Noverande grensa er $3.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -964,6 +986,8 @@ $messages['ro'] = array(
 	'duplicator-options' => 'Opţiuni',
 	'duplicator-source' => 'Sursă:',
 	'duplicator-dest' => 'Destinaţie:',
+	'duplicator-dotalk' => 'Duplică pagina de discuţii (dacă este cazul)',
+	'duplicator-submit' => 'Duplică',
 	'duplicator-summary' => 'Copiat de la [[$1]]',
 	'duplicator-success-revisions' => '$1 {{PLURAL:$1|versiune a fost|versiuni au fost}} copiate.',
 	'duplicator-success-talkcopied' => 'A fost copiată şi pagina de discuţii.',

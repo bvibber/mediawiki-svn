@@ -287,6 +287,20 @@ $messages['es'] = array(
 	'patrol-resume' => 'Haz click aquí para continuar.',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'patrol' => 'Tarkasta muokkauksia',
+	'patrol-revert' => 'Palauta',
+	'patrol-revert-reason' => 'Syy',
+	'patrol-skip' => 'Ohita',
+	'patrol-reverting' => 'Palautetaan $1',
+	'patrol-reasons' => '* Selvää vandalismia
+* Tulokkaan kokeilu
+* Katso keskustelusivu',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -1164,6 +1178,7 @@ $messages['te'] = array(
 	'patrol-revert-reason' => 'కారణం:',
 	'patrol-skip' => 'వదిలివేయి',
 	'patrol-resume' => 'కొనసాగించడానికి ఇక్కడ నొక్కండి.',
+	'right-patroller' => 'పేజీలను పర్యవేక్షించగలగడం',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

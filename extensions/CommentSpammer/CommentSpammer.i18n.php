@@ -76,6 +76,7 @@ Vyhněte se tomu tím, že [[Special:UserLogin|se přihlásíte nebo si vytvoř�
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'commentspammer-save-blocked' => 'Deine IP-Adresse stammt mutmaßlich von einem Kommentar-Spammer.
@@ -83,7 +84,7 @@ Die Seite wurde nicht gespeichert.
 [[Special:UserLogin|Melde dich an oder erstelle ein Benutzerkonto]], um diese Warnung zu unterbinden.',
 	'commentspammer-desc' => 'Unterbindet Bearbeitungen durch vermutliche Kommentarspammer auf einer DNS-Blacklist',
 	'commentspammer-log-msg' => 'Bearbeitung von [[Special:Contributions/$1|$1]] für [[:$2]].',
-	'commentspammer-log-msg-info' => 'Letztes Spamming vor $1 {{PLURAL:$1|Tag|Tagen}}, der "threat level" ist $2 und der and "offence code" is $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details ansehen] oder [[Special:Blockip/$4|sperren]].',
+	'commentspammer-log-msg-info' => 'Letztes Spamming vor $1 {{PLURAL:$1|Tag|Tagen}}, der „threat level“ ist $2 und der „offence code“ ist $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Details ansehen] oder [[Special:Blockip/$4|sperren]].',
 	'cspammerlogpagetext' => 'Liste der Bearbeitungen, die genehmigt oder abgelehnt wurden auf der Basis, ob die Quelle ein bekannter Kommentar-Spammer war.',
 	'cspammer-log-page' => 'Kommentar-Spammer Logbuch',
 );
@@ -199,6 +200,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'commentspammer-save-blocked' => 'Az IP-címed feltételezett tartalomspammer, ezért az oldal nem lett elmentve. [[Special:UserLogin|Jelentkezz be]] ennek kiküszöböléséhez.',
+	'commentspammer-desc' => 'DNS feketelista alapján visszautasítja a spamgyanús szerkesztéseket.',
 	'commentspammer-log-msg' => '[[Special:Contributions/$1|$1]] szerkesztése a(z) [[:$2]] lapon.',
 	'commentspammer-log-msg-info' => 'Utoljára $1 napja spammelt, veszélyességi szintje $2, támadókódja $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Részletek megtekintése], vagy [[Special:Blockip/$4|blokkolás]].',
 	'cspammerlogpagetext' => 'Azon szerkesztések listája, melyek engedélyezve vagy tiltva lettek attól függően, hogy a szerző ismert tartalomspammer volt-e.',

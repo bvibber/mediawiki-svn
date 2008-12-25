@@ -267,8 +267,8 @@ $messages['it'] = array(
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'contributiontracking-desc' => 'ウィキメディア資金調達者向け投稿追跡',
-	'contributiontracking' => '投稿追跡',
+	'contributiontracking-desc' => 'ウィキメディア資金調達者向け寄付追跡',
+	'contributiontracking' => '寄付追跡',
 	'contrib-tracking-error' => 'エラー',
 	'contrib-tracking-error-text' => '無効なフォームの提出',
 	'contrib-tracking-submitting' => '納付処理係に提出中…',

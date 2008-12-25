@@ -420,6 +420,25 @@ $messages['hsb'] = array(
 	'restriction-level-author' => 'Za awtorow škitane',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'authorprotect' => 'Lap védelme a nem-szerzőkkel szemben',
+	'authorprotect-desc' => 'Lehetővé teszi egy lap szerzője számára, hogy levédje azt más szerkesztőkkel szemben',
+	'authorprotect-notauthor' => 'Te nem vagy szerzője ennek a lapnak',
+	'authorprotect-confirm' => 'Védelmi szintek megváltoztatása',
+	'authorprotect-edit' => 'Szerkesztés korlátozása a szerzőkre',
+	'authorprotect-move' => 'Átnevezés korlátozása a szerzőkre',
+	'authorprotect-expiry' => 'Lejárati idő',
+	'authorprotect-reason' => 'Ok',
+	'authorprotect-intro' => 'Az űrlap használatával lezárhatod a lapot azon szerkesztők elől, akik nem szerzői annak',
+	'authorprotect-success' => 'Levédés sikeres!',
+	'authorprotect-failure' => 'Levédés sikertelen',
+	'protect-level-author' => 'Levédés nem szerzőkkel szemben',
+	'restriction-level-author' => 'Szerző-védett',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -826,10 +845,12 @@ $messages['ro'] = array(
 	'authorprotect-notauthor' => 'Nu eşti autorul acestei pagini',
 	'authorprotect-confirm' => 'Schimbă niveluri de protecţie',
 	'authorprotect-edit' => 'Restricţionează modificările autorilor',
+	'authorprotect-move' => 'Restricţionează mutarea la autori',
 	'authorprotect-expiry' => 'Timpul expirării',
 	'authorprotect-reason' => 'Motiv',
 	'authorprotect-success' => 'Protejare cu succes!',
 	'authorprotect-failure' => 'Protejare fără succes',
+	'protect-level-author' => 'Potejează de non-autori',
 	'restriction-level-author' => 'Protejat de autor',
 );
 

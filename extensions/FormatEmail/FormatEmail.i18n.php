@@ -104,6 +104,17 @@ $messages['eo'] = array(
 $2',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'email-desc' => 'Permite configurar encabezados y pies para añadir a los correos electrónicos del usuario.',
+	'email_footer' => '----------------------------------------------------------------------------
+Este correo ha sido enviado por $1 a través del sistema de correo electrónico de {{SITENAME}}.
+
+$2',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

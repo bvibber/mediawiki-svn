@@ -132,6 +132,14 @@ $messages['bcc'] = array(
 	'scanset_prev' => '&lt; پیش',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'scanset-desc' => 'Прагляд сканаваных выяваў старонак з CD/DVD калекцыяў Андрэаса Гроса',
+	'scanset_no_name' => 'Памылка: Вы павінны пазначыць назву калекцыі выяваў, напр. &lt;scanset name="EB1911" /&gt;.',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

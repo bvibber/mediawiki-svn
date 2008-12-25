@@ -380,6 +380,18 @@ $messages['sw'] = array(
 	'createpage_editexisting' => 'Ndiyo. Ninataka kusaidia kuhariri ukurasa uliomo.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'createpage' => 'ఓ పేజీని సృష్టించండి',
+	'createpage_titleexists' => '[[$1]] అనే పేరుతో ఇప్పటికే ఓ పేజీ ఉంది.
+మీరు దాన్ని మార్చాలనుకుంటున్నారా?',
+	'createpage_tryagain' => 'లేదు. మరో పేరుతో నేను కొత్త పేజీని సృష్టించాలనుకుంటున్నాను.',
+	'createpage_editexisting' => 'అవును. ప్రస్తుత పేజీకి నేను చేర్పులు చేస్తాను.',
+	'createpage-badtitle' => '"$1"ని పేజీ శీర్షికగా వాడలేరు',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

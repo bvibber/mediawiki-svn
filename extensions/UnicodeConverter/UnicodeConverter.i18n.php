@@ -100,6 +100,7 @@ $messages['eo'] = array(
  */
 $messages['fi'] = array(
 	'unicodeconverter' => 'Unicode-muunnin',
+	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Alkuperäinen teksti',
 	'unicodeconverter-newtext' => 'Muunnettu teksti',
 );

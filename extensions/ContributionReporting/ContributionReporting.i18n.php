@@ -1182,6 +1182,7 @@ $messages['ko'] = array(
 	'contribstats-value-from' => '$1 - $2 사이',
 	'contribstats-value-over' => '$1 초과',
 	'fundraiserstats-date' => '날짜',
+	'fundraiserstats-total' => '합계 (USD)',
 	'fundraiserstats-avg' => '평균 (USD)',
 	'fundraiserstats-tab-averages' => '평균 (USD)',
 );
@@ -1796,6 +1797,21 @@ $messages['sv'] = array(
 	'fundraiserstats-tab-averages' => 'Genomsnitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 	'specialpages-group-contribution' => 'Bidrag/Insamling',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'contribstats-day' => 'రోజు',
+	'contribstats-month' => 'నెల',
+	'contribstats-total' => 'మొత్తం (USD)',
+	'contribstats-avg' => 'సగటు (USD)',
+	'contribstats-max' => 'గరిష్టం (USD)',
+	'contribstats-percentage-ytd' => 'శాతం (YTD)',
+	'contribstats-total-ytd' => 'మొత్తం (YTD)',
+	'fundraiserstats-date' => 'తేదీ',
+	'fundraiserstats-total' => 'మొత్తం (USD)',
 );
 
 /** Vèneto (Vèneto)

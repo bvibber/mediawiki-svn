@@ -26,11 +26,13 @@ $messages['qqq'] = array(
 	'newusernotifsubj' => 'This message contains the subject line for the email.
 $1 is replaced with the wiki site name.',
 	'newusernotif-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
-	'newusernotifbody' => "This file contains the body text for the email.
-$1 is replaced with the username of the recipient;
-$2 is replaced with the username of the new user account;
-$3 is replaced with the wiki site;
-$4 is replaced with the time and date of the account's creation.",
+	'newusernotifbody' => "This file contains the body text for the e-mail.
+* $1 is replaced with the username of the recipient;
+* $2 is replaced with the username of the new user account;
+* $3 is replaced with the wiki site;
+* $4 is replaced with the time and date of the account's creation.
+* $5 (optional) is replaced with the date of the account's creation.
+* $6 (optional) is replaced with the time of the account's creation.",
 );
 
 /** Old English (Anglo-Saxon)
@@ -309,7 +311,7 @@ $messages['nl'] = array(
 	'newusernotif-desc' => 'Stuurt een e-mail als nieuwe gebruikers worden aangemaakt',
 	'newusernotifbody' => 'Hallo $1.
 
-Er is een nieuwe gebruiker $2 aangemaakt om $3 op $4.',
+Er is een nieuwe gebruiker $2 aangemaakt op $3 op $5 om $6.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

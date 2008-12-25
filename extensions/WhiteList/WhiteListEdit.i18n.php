@@ -344,10 +344,10 @@ $messages['bs'] = array(
 	'whitelisttableedit' => 'Uredi',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistrequest' => 'Traži pristup za više stranica',
-	'whitelistrequestmsg' => '$1 zahtijeva pristup slijedećim {{PLURAL:$3|stranica|stranicama}}:
+	'whitelistrequestmsg' => '$1 je zahtijevao pristup {{PLURAL:$3|slijedećoj stranici|slijedećim stranicama}}:
 
 $2',
-	'whitelistrequestconf' => 'Zahtjen za nove stranice je poslan na $1',
+	'whitelistrequestconf' => 'Zahtjev za nove stranice je poslan na $1',
 );
 
 /** Catalan (Català)
@@ -1837,13 +1837,17 @@ $messages['te'] = array(
 	'mywhitelistpages' => 'నా పేజీలు',
 	'whitelisttablemodifyall' => 'అన్నీ',
 	'whitelisttablepage' => 'వికీ పేజీ',
+	'whitelisttableedit' => 'మార్చు',
 	'whitelisttableview' => 'చూడండి',
 	'whitelisttablenewdate' => 'కొత్త తేదీ:',
 	'whitelisttableremove' => 'తొలగించు',
 	'whitelistnewtabledate' => 'కాల పరిమితి:',
 	'whitelistnewtablereview' => 'సమీక్షించు',
 	'whitelistpagelist' => '$1 కై {{SITENAME}} పేజీలు',
+	'whitelistrequest' => 'మరిన్ని పేజీలకు అనుమతిని అభ్యర్థించండి',
 	'whitelistnummatches' => ' - {{PLURAL:$1|ఒక పోలిక|$1 పోలికలు}}',
+	'group-restricted' => 'నియంత్రిత వాడుకరులు',
+	'group-restricted-member' => 'నియంత్రిత వాడుకరి',
 );
 
 /** Tetum (Tetun)

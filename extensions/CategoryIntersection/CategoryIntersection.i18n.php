@@ -186,6 +186,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'categoryintersection' => 'Kategóriák metszete',
+	'categoryintersection-desc' => 'Fenntart egy hashértékeket tartalmazó táblát [[Special:CategoryIntersection|kategóriametszetek]] létrehozásához',
 	'categoryintersection-doit' => 'Lapok megjelenítése, melyek a következő összes kategóriában benne vannak',
 	'categoryintersection-maxcategories' => 'Egyszerre maximum $1 kategóriának lehet lekérni a metszetét.',
 	'categoryintersection-results' => 'A keresésnek {{PLURAL:$1|egy|$1}} eredménye van.',

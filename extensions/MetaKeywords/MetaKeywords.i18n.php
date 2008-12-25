@@ -79,6 +79,13 @@ $messages['dsb'] = array(
 	'metakeywords-desc' => 'Dowólujo konfiguraćiju toflickowu <tt><nowiki><meta "keywords"></nowiki></tt> a <tt><nowiki><meta "description"></nowiki></tt> na mjenjowy rum',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'metakeywords-desc' => 'Permite configurar etiquetas de <tt><nowiki><meta "keywords"></nowiki></tt> y <tt><nowiki><meta "description"></nowiki></tt> para cada espacio de nombres',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p

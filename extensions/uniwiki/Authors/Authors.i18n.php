@@ -219,6 +219,13 @@ $messages['sk'] = array(
 	'authors_anonymous' => 'Anonym',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'authors_authors' => 'రచయితలు',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

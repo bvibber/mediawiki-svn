@@ -60,6 +60,13 @@ $messages['eo'] = array(
 	'randomimage-desc' => 'Donas selektilo de hazarda bildo uzante <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'randomimage-desc' => 'Proporciona un archivo multimedia al azar usando <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

@@ -4577,6 +4577,7 @@ $messages['te'] = array(
 	'mv_external_file' => 'బయటి ఫైలు',
 	'mv_tool_search' => 'వెతుకు',
 	'mv_tool_overlay' => 'మూస పైపూతలు',
+	'mv_click_to_edit' => 'మార్చడానికి నొక్కండి',
 	'mvd_default_mismatch' => 'అమరికల ఫైలులో పొరపాటు',
 	'mv_data_page_title' => '$3 నుండి $2కై $1',
 	'mv_time_separator' => '$1 నుండి $2 వరకు',
@@ -4592,6 +4593,7 @@ $messages['te'] = array(
 	'mv_start_desc' => 'ప్రారంభ సమయం',
 	'mv_end_desc' => 'ముగింపు సమయం',
 	'mv_existing_categories' => 'వర్గాలు:',
+	'mv_basic_text_desc' => 'పాఠ్య వివరణ (ఐచ్ఛికం)',
 	'mv_search_sel_t' => 'అన్వేషణ రకాన్ని ఎంచుకోండి',
 	'mv_add_filter' => 'వడపోతని చేర్చండి',
 	'mv_search_match' => 'పాఠ్యంలో వెతకండి',
@@ -4600,6 +4602,7 @@ $messages['te'] = array(
 	'mv_search_category' => 'వర్గం',
 	'mv_search_and' => 'మరియు',
 	'mv_search_or' => 'లేదా',
+	'mv_date_last_week' => 'చివరి వారం',
 	'mv_spoken_by' => 'మాట్లాడినది',
 	'mv_category' => 'వర్గం',
 	'mv_remove_filter' => 'వడపోతని తీసివేయి',
@@ -4609,7 +4612,10 @@ $messages['te'] = array(
 	'mv_match_text_one' => '~ 1 పోలిక',
 	'mv_sequence_add_manual' => 'పేరు ద్వారా చేర్చండి',
 	'mv_sequence_add_search' => 'వెతికి చేర్చండి',
+	'mv_other_options' => 'ఇతర ఎంపికలు',
 	'mv_embed_options' => 'ఎంబెడ్ ఎంపికలు',
+	'mv_prev_cat' => 'క్రితం వర్గం: $1',
+	'mv_next_cat' => 'తర్వాతి వర్గం: $1',
 );
 
 /** Tetum (Tetun)

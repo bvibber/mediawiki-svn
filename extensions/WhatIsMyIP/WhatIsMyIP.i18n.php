@@ -122,6 +122,13 @@ $messages['eo'] = array(
 	'whatismyip-out' => 'Via IP:',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'whatismyip' => 'Cuál es mi IP',
+);
+
 /** Persian (فارسی)
  * @author BlueDevil
  */
@@ -408,6 +415,23 @@ $messages['sv'] = array(
 	'whatismyip' => 'Vilken är min IP-adress',
 	'whatismyip-desc' => 'Visar den nuvarande användarens IP-adress på [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'Din IP-adress:',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'whatismyip' => 'నా ఐపీ ఏమిటి',
+	'whatismyip-out' => 'మీ ఐపీ:',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'whatismyip' => 'Ano ba ang aking IP',
+	'whatismyip-desc' => 'Nagpapakita ng adress ng IP ng pangkasulukuyang tagagamit sa [[Special:WhatIsMyIP|Natatangi:AnoBaAngAkingIP]]',
+	'whatismyip-out' => 'Ang IP mo:',
 );
 
 /** Ukrainian (Українська)

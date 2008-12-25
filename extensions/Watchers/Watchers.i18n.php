@@ -156,12 +156,13 @@ $messages['br'] = array(
 
 /** German (Deutsch)
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'watchers' => 'Beobachter',
 	'watchers-desc' => 'Zeigt, [[Special:Watchers|wieviele Benutzer]] eine Seite auf ihrer Beobachtungsliste haben',
 	'watchers_link_title' => 'Wer beobachtet diese Seite?',
-	'watchers_error_article' => '"<b>Fehler:</b> Seite existiert nicht.',
+	'watchers_error_article' => "'''Fehler:''' Seite existiert nicht.",
 	'watchers_header' => '{{PLURAL:$2|Benutzer, der „$1“ beobachtet|Benutzer, die „$1“ beobachten}}',
 	'watchers_noone_watches' => 'Es gibt keine Benutzer, die diese Seite beobachten.',
 	'watchers_x_or_more' => '$1 oder mehr {{PLURAL:$1|Benutzer|Benutzer}} beobachten diese Seite.',
@@ -568,6 +569,20 @@ $messages['te'] = array(
 	'watchers_error_article' => '<b>పొరపాటు:</b> పేజీ ఉనికిలో లేదు.',
 	'watchers_header' => '"$1"గురు ఈ పేజీని చూస్తున్నారు',
 	'watchers_noone_watches' => 'ఈ పేజీని ఎవరూ గమనించట్లేదు.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'watchers' => 'Mga nagbabantay (nagmamatyag)',
+	'watchers-desc' => 'Nagpapakita [[Special:Watchers|kung sinu-sinong mga tagagamit ang mayroon ng isang pahina sa kanilang talaan ng mga binabantayan]]',
+	'watchers_link_title' => 'Sino ang nagbabantay sa pahinang ito?',
+	'watchers_error_article' => "'''Kamalian:''' Hindi umiiral ang pahina.",
+	'watchers_header' => '{{PLURAL:$2|Tagagamit na|Mga tagagamit na}} nagbabantay ng "$1"',
+	'watchers_noone_watches' => 'Walang nagbabantay ng (nagmamatyag sa) pahinang ito.',
+	'watchers_x_or_more' => '$1 o mahigit pa sa {{PLURAL:$1|mga tagagamit|mga tagagamit}} ang mayroon ng pahinang ito sa kanilang talaan ng mga binabantayan.',
+	'watchers_less_than_x' => 'Mas kakaunti kaysa $1 {{PLURAL:$1|mga tagagamit|mga tagagamit}} ang mayroon ng pahinang ito sa kanilang talaan ng mga binabantayan.',
 );
 
 /** Vèneto (Vèneto)

@@ -1768,6 +1768,14 @@ $messages['te'] = array(
 	'youtubeauthsub_keywords' => 'కీలకపదాలు',
 	'youtubeauthsub_category' => 'వర్గం',
 	'youtubeauthsub_submit' => 'దాఖలుచెయ్యి',
+	'youtubeauthsub_clickhere' => 'యూట్యూబ్ లోనికి ప్రవేశించడానికి ఇక్కడ నొక్కండి',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+ఈ వీడియోని [http://www.youtube.com/watch?v=$1 ఇక్కడ] చూడవచ్చు',
+	'youtubeauthsub_uploading' => 'మీ వీడియో ఎగుమతవుతూండి.
+దయచేసి ఓపిక వహించండి.',
+	'youtubeauthsub_viewpage' => 'లేదా, మీ వీడియోని [[$1|ఇక్కడ]] చూడవచ్చు.',
+	'youtubeauthsub_jserror_nokeywords' => 'దయచేసి 1 లేదా అంతకంటే ఎక్కువ కీపదాలు ఇవ్వండి.',
 	'youtubeauthsub_jserror_notitle' => 'ఈ వీడియోకి ఓ పేరు ఇవ్వండి.',
 	'youtubeauthsub_jserror_nodesc' => 'ఈ వీడియో గురించి వివరణ ఇవ్వండి.',
 );

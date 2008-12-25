@@ -155,7 +155,10 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'signaturelogpage' => 'Logbooch fun Ungerschriive',
 	'signature-desc' => 'Määt et Dokumänte [[Special:SignDocument|Ungerschrieve]] müjjelesch.',
+	'signaturelogpagetext' => 'Dat es et Logbooch vun all de [[Special:SignDocument|Ungerschreffte unger Dokkemänte]].',
+	'signaturelogentry' => 'hät dat Dokkemeänt „$1“ „ongerschrevve“.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
