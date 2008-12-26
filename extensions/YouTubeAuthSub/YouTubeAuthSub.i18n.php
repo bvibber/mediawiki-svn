@@ -25,7 +25,7 @@ $messages['en'] = array(
 	'youtubeauthsub_tokenerror'          => 'Error generating authorization token, try refreshing.',
 	'youtubeauthsub_success'             => "Congratulations!
 Your video is uploaded.
-To view your video click <a href='http://www.youtube.com/watch?v=$1'>here</a>.
+<a href='http://www.youtube.com/watch?v=$1'>View your video</a>.
 YouTube may require some time to process your video, so it might not be ready just yet.
 
 To include your video in a page on the wiki, insert the following code into a page:
@@ -35,11 +35,11 @@ To include your video in a page on the wiki, insert the following code into a pa
 	'youtubeauthsub_uploadbutton'        => 'Upload',
 	'youtubeauthsub_code'                => '{{#ev:youtube|$1}}.
 
-This video can be viewed [http://www.youtube.com/watch?v=$1 here]',
+[http://www.youtube.com/watch?v=$1 View this video]',
 	'youtubeauthsub_summary'             => 'Uploading YouTube video',
 	'youtubeauthsub_uploading'           => 'Your video is being uploaded.
 Please be patient.',
-	'youtubeauthsub_viewpage'            => 'Alternatively, you can view your video [[$1|here]].',
+	'youtubeauthsub_viewpage'            => 'Alternatively, you can [[$1|view your video]].',
 	'youtubeauthsub_jserror_nokeywords'  => 'Please enter 1 or more keywords.',
 	'youtubeauthsub_jserror_notitle'     => 'Please enter a title for the video.',
 	'youtubeauthsub_jserror_nodesc'      => 'Please enter a description for the video.',
