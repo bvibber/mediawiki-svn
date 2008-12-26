@@ -81,7 +81,7 @@ class SpecialCountEdits extends SpecialPage {
 		$skin =& $wgUser->getSkin();
 		$wgOut->addHTML( '<h2>' . wfMsgHtml( 'countedits-resultheader', htmlspecialchars( $this->target ) ) . '</h2>' );
 		$links = $skin->userLink( $id, $this->target ) . $skin->userToolLinks( $id, $this->target );
-		$wgOut->addHTML( '<p>' . wfMsgHtml( 'countedits-resulttext', $links, $count ) . '</p>' );
+		$wgOut->addHTML( '<p>' . wfMsgExt( 'countedits-resulttext', array( 'escape', 'parsemag' ), $links, $count ) . '</p>' );
 		$wgOut->addWikiText( wfMsg( 'countedits-warning' ) );
 	}
 

@@ -20,7 +20,7 @@ Do not judge contributors by their edit count.",
 	'countedits-ok'           => 'OK',
 	'countedits-nosuchuser'   => 'There is no user with the name $1.',
 	'countedits-resultheader' => 'Results for $1',
-	'countedits-resulttext'   => '$1 has made $2 edits',
+	'countedits-resulttext'   => '$1 has made $2 {{PLURAL:$2|edit|edits}}',
 	'countedits-mostactive'   => 'Most active contributors',
 	'countedits-nocontribs'   => 'There have been no contributions to this wiki.',
 );
