@@ -505,6 +505,8 @@ remoteSearchDriver.prototype = {
 	},
 	checkImportResource:function( rObj, cir_callback){
 		//@@todo get the localized File/Image namespace name or do a general {NS}:Title aproch
+		var cp = rObj.pSobj.cp;	
+		var _this = this;
 		rObj.target_resource_title = rObj.titleKey.replace(/File:|Image:/,'');					
 		
 		//check if we can embed the content locally per a domain name check:
@@ -516,16 +518,17 @@ remoteSearchDriver.prototype = {
 				 if( local_host.indexOf( ld ) != -1)
 				 	local_embed_ref=true;
 			}
-		}
-		
+		}		
+		//locally embeddalbe jump to callback:
 		if( local_embed_ref ){
 		 	cir_callback( rObj );
-		}else{
-			var _this = this;
-			var cp = rObj.pSobj.cp;			
-						
-			//first check if the resource is not already on this wiki			
-			reqObj={'action':'query', titles: _this.cFileNS + ':' + rObj.target_resource_title};
+		}else{											
+			//not a local domain update target resource name with the prefix: 
+			rObj.target_resource_title = cp.resource_prefix +rObj.target_resource_title;  
+			
+			//check if the resource is not already on this wiki			
+			reqObj={'action':'query', 'titles': _this.cFileNS + ':' + rObj.target_resource_title};					
+			
 			do_api_req( reqObj, this.local_wiki_api_url, function(data){	
 				var found_title = false;
 				for(var i in data.query.pages){
@@ -1096,7 +1099,13 @@ mediaWikiSearch.prototype = {
 		//make sure we have pages to idoerate: 
 		if(data.query && data.query.pages){
 			for(var page_id in  data.query.pages){
-				var page =  data.query.pages[ page_id ];				
+				var page =  data.query.pages[ page_id ];
+				//make sure the page is not a redirect
+				if(page.revisions[0]['*'].indexOf('#REDIRECT')===0){
+					//skip page is redirect 
+					continue;
+				}
+												
 				this.resultsObj[page_id]={
 					'titleKey':page.title,
 					'link':page.imageinfo[0].descriptionurl,				
