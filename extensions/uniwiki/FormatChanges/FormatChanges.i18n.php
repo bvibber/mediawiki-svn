@@ -23,6 +23,15 @@ $messages['qqq'] = array(
 	'formatchanges-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Arabic (العربية)
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'formatchanges-anonymous' => 'مجهول',
+	'formatchanges-createdby' => 'أنشئت بواسطة',
+	'formatchanges-editedby' => 'عدلت بواسطة',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -35,6 +44,16 @@ $messages['arz'] = array(
  */
 $messages['bg'] = array(
 	'formatchanges-desc' => 'Преформатира [[Special:RecentChanges|списъка с последните промени]]',
+);
+
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'formatchanges-desc' => 'Bereitet die [[Special:RecentChanges|Letzten Änderungen]] neu auf',
+	'formatchanges-anonymous' => 'Anonym',
+	'formatchanges-createdby' => 'erstellt von',
+	'formatchanges-editedby' => 'bearbeitet durch',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -249,5 +268,14 @@ $messages['te'] = array(
  */
 $messages['vi'] = array(
 	'formatchanges-anonymous' => 'Vô danh',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'formatchanges-anonymous' => '匿名',
+	'formatchanges-createdby' => '建立者：',
+	'formatchanges-editedby' => '編輯者：',
 );
 

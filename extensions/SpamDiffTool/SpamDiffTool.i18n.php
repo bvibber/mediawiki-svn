@@ -729,6 +729,7 @@ Carregue <a href='$1'>aqui</a> para voltar.",
 );
 
 /** Russian (Русский)
+ * @author Aleksandrit
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -739,7 +740,7 @@ $messages['ru'] = array(
 Нажмите <a href='$1'>здесь</a>, чтобы продолжить.",
 	'spamdifftool_confirm' => "Подтвердите, что вы хотите добавить эти записи в чёрный список спама.
 (Нажмите <a href='$1' target='new'>здесь</a>, чтобы сообщить о проблеме.)",
-	'spamdifftool_summary' => 'Пополнение в чёрного списка спама',
+	'spamdifftool_summary' => 'Добавить в чёрный список спама',
 	'spamdifftool_urls_detected' => 'Следующие адреса были обнаружены в указанной правке, какие из них следует добавить в чёрный список спама?
 Настройки расположены в порядке от наиболее строгих ограничений к менее строгим, блокировка всего домена заблокирует все ссылки, ведущие на любой адрес в этом домене.
 
@@ -919,6 +920,33 @@ Pindutin <a href='$1'>dito</a> para makabalik.",
 	'spamdifftool_submit_buttom' => 'Ipasa',
 );
 
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'spamdifftool' => 'Управління чорним списком спаму',
+	'spamdifftool-desc' => 'Дозволяє легко додавати нові записи в чорний список спаму зі сторінок порівняння версій',
+	'spamdifftool_cantedit' => 'Вибачте, у вас немає дозволу змінювати чорний список спаму.',
+	'spamdifftool_notext' => "Немає тексту для додавання в чорний список спаму.
+Натисніть <a href='$1'>тут</a>, щоб продовжити.",
+	'spamdifftool_confirm' => "Підтвердите, що ви хочете додати ці записи в чорний список спаму. 
+(Натисніть <a href='$1' target='new'>тут</a>, щоб повідомити про проблему.)",
+	'spamdifftool_summary' => 'Додати до чорного списку спаму',
+	'spamdifftool_urls_detected' => 'Наступні адреси були виявлені у зазначеній правці, які з них слід додати в чорний список спаму? 
+Налаштування розташовані в порядку від найбільш суворих обмежень до менш строгих, блокування всього домену заблокує всі посилання, що ведуть на будь-яку адресу в цьому домені.
+
+Переконайтеся, що ви не блокуєте домен, що містить сторінки різних користувачів, наприклад blogpost.com, narod.ru і подібні.',
+	'spamdifftool_no_urls_detected' => "Не виявлено адрес. 
+Натисніть <a href='$1'>тут </a>, щоб повернутися.",
+	'spamdifftool_spam_link_text' => 'додати в спам',
+	'spamdifftool_option_domain' => 'все з цього домену',
+	'spamdifftool_option_subdomain' => 'все з цього субдомену',
+	'spamdifftool_option_directory' => 'цього субдомену і директорії',
+	'spamdifftool_option_none' => 'нічого',
+	'spamdifftool_block' => 'Блокування:',
+	'spamdifftool_submit_buttom' => 'Відправити',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
@@ -947,5 +975,12 @@ Xin đừng cấm cả tên miền của website chứa tên miền phụ của 
  */
 $messages['vo'] = array(
 	'spamdifftool_option_none' => 'nos',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'spamdifftool' => '管理垃圾信息黑名單',
 );
 

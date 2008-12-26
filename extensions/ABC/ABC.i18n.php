@@ -42,11 +42,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'abcdesc' => 'يضيف وسم <tt>&lt;abc&gt;</tt> لصياغة موسيقى ABC',
 	'abcdownload' => 'تنزيل:',
+	'abcsep' => '|',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -86,6 +88,13 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'abcdesc' => 'Pśidawa toflicku <tt>&lt;abc&gt;</tt>, aby se muzika w ABC formatěrowała',
 	'abcdownload' => 'Ześěgnuś:',
+);
+
+/** Esperanto (Esperanto)
+ * @author Melancholie
+ */
+$messages['eo'] = array(
+	'abcdownload' => 'Elŝuto:',
 );
 
 /** Spanish (Español)
@@ -376,5 +385,20 @@ $messages['vi'] = array(
  */
 $messages['yo'] = array(
 	'abcdownload' => 'Ìrùsílẹ̀:',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
+ */
+$messages['zh-hans'] = array(
+	'abcdesc' => '加入<tt>&lt;abc&gt;</tt>标签以格式化ABC音乐',
+	'abcdownload' => '下载：',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'abcdownload' => '下載:',
 );
 

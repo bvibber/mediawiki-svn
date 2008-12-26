@@ -25,6 +25,13 @@ $messages['qqq'] = array(
 	'unicodeconverter-ok' => '{{Identical|OK}}',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'unicodeconverter-ok' => 'እሺ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -294,6 +301,7 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'unicodeconverter' => 'Convertor Unicode',
+	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Text original:',
 	'unicodeconverter-newtext' => 'Text convertit:',
 );
@@ -354,5 +362,14 @@ $messages['vi'] = array(
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Nguyên văn:',
 	'unicodeconverter-newtext' => 'Văn bản chuyển đổi:',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'unicodeconverter' => 'Unicode轉換器',
+	'unicodeconverter-oldtext' => '原文字:',
+	'unicodeconverter-newtext' => '轉換後文字:',
 );
 

@@ -37,6 +37,13 @@ $messages['ca'] = array(
 	'navigationpopups-desc' => "Carrega el codi de les finestres emergents de navegació d'en Lupin al mediawiki",
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'navigationpopups-desc' => 'Lädt Lupins Navigationsskript-Popups (MediaWiki)',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

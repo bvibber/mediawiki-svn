@@ -33,11 +33,15 @@ $messages['bg'] = array(
 Тя съдържа всички страници в категория „$1“ както и всички подкатегории на категорията „$1“, ако такива са налични.',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ */
 $messages['de'] = array(
+	'autocreatecategorypages-desc' => 'Lege fehlende Kategorienseiten beim Speichern automatisch an',
 	'autocreatecategorypages-stub' => 'Dies ist eine Kategorieseite.
 Es listet alle Seiten in der Kategorie „$1“ sowie alle Unterkategorien der Kategorie „$1“, sofern welche vorhanden sind.',
 	'autocreatecategorypages-createdby' => 'Automatisch von der AutoCreateCategoryPages-Erweiterung erstellt.',
+	'autocreatecategorypages-editor' => 'Automatische Kategorienerstellung',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -128,6 +132,17 @@ $messages['hu'] = array(
 	'autocreatecategorypages-desc' => 'Hiányzó kategóriaoldalak automatikus létrehozása a mentés után.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'autocreatecategorypages-desc' => 'Crear automaticamente le paginas mancante del categorias de un articulo quando illo es publicate',
+	'autocreatecategorypages-stub' => 'Isto es le pagina de un categoria.
+Hic es listate tote le paginas in le categoria "$1", e omne subcategoria existente del categoria "$1".',
+	'autocreatecategorypages-createdby' => 'Create automaticamente per le extension AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Creator automatic de categorias',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */
@@ -193,6 +208,15 @@ $messages['pt-br'] = array(
 	'autocreatecategorypages-stub' => 'Esta Ã© uma página de categoria.
 Ela lista todas as páginas da categoria "$1", bem como todas as subcategorias da categoria "$1", se existirem.',
 	'autocreatecategorypages-createdby' => 'Gerada automaticamente pela extensxo AutoCreateCategoryPages.',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'autocreatecategorypages-desc' => 'Creează paginile lipsă ale categoriilor automat la salvare',
+	'autocreatecategorypages-createdby' => 'Creat automat de extensia AutoCreateCategoryPages',
+	'autocreatecategorypages-editor' => 'Creator automat de categorii',
 );
 
 /** Russian (Русский)

@@ -880,6 +880,13 @@ $messages['grc'] = array(
 	'ogg-more' => 'πλέον...',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Melancholie
+ */
+$messages['gsw'] = array(
+	'ogg-long-audio' => '(Ogg-$1-Audiodatei, Längi: $2, $3)',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */

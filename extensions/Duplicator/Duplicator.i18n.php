@@ -1246,9 +1246,11 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
+ * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'duplicator' => '複製一篇文章',
+	'duplicator-desc' => '建立含所有編輯歷程記錄的獨立[[Special:Duplicate|頁面副本]]',
 	'duplicator-toolbox' => '複製這篇文章',
 	'duplicator-header' => '這一版可以完全複製一篇文章，建立一個完整的修訂歷史。這對於文章分叉等的動作是很有用的。',
 	'duplicator-options' => '選項',

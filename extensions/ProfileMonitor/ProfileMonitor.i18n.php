@@ -49,6 +49,13 @@ $messages['af'] = array(
 	'profiling-data-count' => 'Aantal',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'profiling-ok' => 'እሺ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -117,21 +124,27 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
+	'profiling-process' => 'Prozessaufruf:',
+	'profiling-wildcard' => 'verwende Platzhalter',
 	'profiling-ok' => 'Okay',
 	'profiling-data-process' => 'Fortschritt',
 	'profiling-data-count' => 'Anzahl',
 	'profiling-data-time' => 'Zeit (gesamt)',
 	'profiling-data-average' => 'Zeit (durchschnittlich)',
+	'profiling-no-data' => 'Keine zutreffenden Daten gefunden.',
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'profiling-ok' => 'Ek!',
+	'profiling-data-process' => 'Procezo',
 	'profiling-data-count' => 'Nombro',
 );
 

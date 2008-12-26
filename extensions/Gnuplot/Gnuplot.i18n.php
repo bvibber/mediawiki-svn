@@ -241,6 +241,13 @@ $messages['te'] = array(
 	'gnuplot-desc' => 'గ్నూప్లాట్&zwnj;ని ఉపయోగించడానికై<code><nowiki><gnuplot></nowiki></code> అనే టాగుని చేరుస్తుంది',
 );
 
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'gnuplot-desc' => 'ใส่แท็ก <code><nowiki><gnuplot></nowiki></code> เพื่อใช้งานนิวพลอต (Gnuplot)',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

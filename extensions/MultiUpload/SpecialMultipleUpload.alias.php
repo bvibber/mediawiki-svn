@@ -90,6 +90,11 @@ $aliases['no'] = array(
 	'MultiUpload' => array( 'Last opp mange filer' ),
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'MultiUpload' => array( 'Carregamentos em massa' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'MultiUpload' => array( 'Multiuppladdning' ),

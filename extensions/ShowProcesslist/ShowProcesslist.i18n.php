@@ -109,10 +109,12 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Melancholie
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'showprocesslist' => 'Zeige Prozessliste',
+	'showprocesslist-desc' => 'Zeige die Ausgabe von [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'ID',
 	'showprocesslist-user' => 'Benutzer',
 	'showprocesslist-host' => 'Host',
@@ -161,6 +163,17 @@ $messages['eo'] = array(
 	'showprocesslist-time' => 'Tempo',
 	'showprocesslist-state' => 'Stato',
 	'showprocesslist-info' => 'Informo',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'showprocesslist-user' => 'Käyttäjä',
+	'showprocesslist-db' => 'Tietokanta',
+	'showprocesslist-command' => 'Komento',
+	'showprocesslist-time' => 'Aika',
+	'showprocesslist-state' => 'Tilanne',
 );
 
 /** French (Français)
@@ -555,13 +568,14 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'showprocesslist' => 'Показать список процессов',
 	'showprocesslist-desc' => 'Показывает вывод команды MySQL «[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]»',
 	'showprocesslist-id' => 'Id',
-	'showprocesslist-user' => 'Пользователь',
+	'showprocesslist-user' => 'Участник',
 	'showprocesslist-host' => 'Хост',
 	'showprocesslist-db' => 'БД',
 	'showprocesslist-command' => 'Команда',

@@ -109,6 +109,13 @@ $messages['hsb'] = array(
 	'tab0-desc' => 'Přidawa rajtark "0", kotryž na wobdźěłansku stronu prěnjeho wotrězka strony wotkazuje',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'tab0-desc' => '„0” fül a lap első fejezetének szerkesztéséhez',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

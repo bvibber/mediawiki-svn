@@ -35,6 +35,13 @@ $messages['be-tarask'] = array(
 	'newsextension-desc' => 'Паказаць налады апошніх зьменаў як старонкі вікі ці у выглядзе RSS ці Atom',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'newsextension-desc' => 'Zeigt angepasste, individuelle "Letzte Änderungen" in einer Seite oder als RSS- oder Atom-Feed.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -141,6 +148,13 @@ $messages['mr'] = array(
  */
 $messages['nl'] = array(
 	'newsextension-desc' => 'Aangepaste recente wijzigingen weergeven op een wikipagina, of als RSS-feed of Atom-feed',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'newsextension-desc' => 'Syner eigendefinert siste endringar på ei wikisida eller som RSS- eller Atom-feed.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

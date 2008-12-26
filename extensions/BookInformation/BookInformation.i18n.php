@@ -858,6 +858,20 @@ $messages['km'] = array(
 	'bookinfo-provider' => 'អ្នកផ្គត់ផ្គង់ទិន្នន័យ៖ $1',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'bookinfo-header' => '책 정보',
+	'bookinfo-result-title' => '제목:',
+	'bookinfo-result-author' => '저자:',
+	'bookinfo-result-publisher' => '출판사:',
+	'bookinfo-result-year' => '연도:',
+	'bookinfo-error-invalidisbn' => '잘못된 ISBN이 입력되었습니다.',
+	'bookinfo-purchase' => '$1에서 이 책을 구입하기',
+	'bookinfo-provider' => '데이터 제공자: $1',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

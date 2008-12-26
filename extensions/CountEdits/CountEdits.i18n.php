@@ -58,6 +58,13 @@ $messages['af'] = array(
 	'countedits-ok' => 'OK',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'countedits-ok' => 'እሺ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -646,8 +653,17 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'countedits' => 'Bearbeidunge zälle',
 	'countedits-desc' => '[[Special:CountEdits|Sondersigg]] för de Metmaacher ier Beidräsch ze zälle un en „<span lang="en">Top 10</span>“ Leß aanzezeije.',
+	'countedits-warning' => "'''Opjepaß:''' Donn Böscher nit noh ierem Ömschlaach enstufe!
+Donn ene Metmaache nit doh de Aanzahl fun singe Änderunge aam Wiki enstufe!",
 	'countedits-username' => 'Metmaacher Name:',
+	'countedits-ok' => 'Loß Jonn!',
+	'countedits-nosuchuser' => 'Mer han keine Metmaacher met dämm Name „$1“.',
+	'countedits-resultheader' => 'Zähler för dä Metmaacher „$1“',
+	'countedits-resulttext' => 'Unse Metmaacher „$1“ hät {{PLURAL:$1|ein Änderung|$2 Änderunge|noch kei Änderung}} hee aam Wiki jemaat.',
+	'countedits-mostactive' => 'De Schriiver met de mihßte Änderunge aam Wiki',
+	'countedits-nocontribs' => 'En däm Wiki hee sin kein Beidrääsch vun Metmaachere.',
 );
 
 /** Kurdish (Latin) (Kurdî / كوردی (Latin))
@@ -809,7 +825,7 @@ $messages['nl'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Er is geen gebruiker met de naam $1.',
 	'countedits-resultheader' => 'Resulaten voor $1',
-	'countedits-resulttext' => '$1 heeft $2 bewerkingen gemaakt',
+	'countedits-resulttext' => '$1 heeft $2 {{PLURAL:$2|bewerking|bewerkingen}} gemaakt',
 	'countedits-mostactive' => 'Meest actieve redacteuren',
 	'countedits-nocontribs' => 'Er zijn geen bewerkingen op deze wiki.',
 );
@@ -1244,9 +1260,11 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
+ * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'countedits' => '編輯計量',
+	'countedits-desc' => '計算及提供頭十名編輯次數最多的貢獻者之[[Special:CountEdits|特殊頁面]]',
 	'countedits-warning' => "'''警告:''' 不要只憑封面判斷書本。不要以幾他們的編輯計量判斷一位貢獻者。",
 	'countedits-username' => '用戶名稱:',
 	'countedits-ok' => '確定',

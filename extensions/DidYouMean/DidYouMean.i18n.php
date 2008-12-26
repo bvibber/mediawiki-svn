@@ -308,3 +308,10 @@ $messages['vi'] = array(
 	'didyoumean-desc' => 'Thêm liên kết vào các trang có tên “tương tự”',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'didyoumean-desc' => '在「近似」標題的頁面內加入連結',
+);
+

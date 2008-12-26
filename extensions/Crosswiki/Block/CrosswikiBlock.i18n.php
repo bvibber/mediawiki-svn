@@ -984,11 +984,16 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'crosswikiblock' => '다른 위키의 사용자 차단',
+	'crosswikiblock-expiry' => '기한:',
 	'crosswikiblock-reason' => '이유:',
+	'crosswikiblock-anononly' => '익명 사용자만 막기',
 	'crosswikiblock-nocreate' => '계정 생성을 막기',
 	'crosswikiblock-noemail' => '이메일을 보내지 못하도록 막기',
+	'crosswikiunblock' => '다른 위키의 사용자 차단 해제',
 	'crosswikiunblock-reason' => '이유:',
 	'crosswikiblock-nousername' => '사용자 이름이 입력되지 않았습니다.',
+	'crosswikiblock-dbnotfound' => '데이터베이스 $1가 존재하지 않습니다.',
 	'crosswikiblock-alreadyblocked' => '사용자 $3은 이미 차단되었습니다.',
 );
 
@@ -1168,6 +1173,7 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'crosswikiblock-expiry' => 'Motlamia:',
 	'crosswikiblock-reason' => 'Īxtlamatiliztli:',
 	'crosswikiunblock-reason' => 'Īxtlamatiliztli:',
 );

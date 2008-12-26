@@ -308,3 +308,14 @@ $messages['te'] = array(
 	'stalkerlog-log-text' => 'ఇది వాడుకరి ప్రవేశాలు మరియు నిష్క్రమణల చిట్టా.',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'stalkerlog-desc' => '加入使用者登入及登出的[[Special:Log/stalkerlog|記錄]]',
+	'stalkerlog-log-login' => '已登入',
+	'stalkerlog-log-logout' => '已登出',
+	'stalkerlog-log-type' => '使用者驗證記錄',
+	'stalkerlog-log-text' => '這是用戶登入及登出的記錄。',
+);
+

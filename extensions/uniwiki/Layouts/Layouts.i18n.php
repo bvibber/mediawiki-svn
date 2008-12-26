@@ -29,6 +29,16 @@ $messages['qqq'] = array(
 Do not translate or change links.',
 );
 
+/** Arabic (العربية)
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'layouts_title' => 'إنشاء صفحة',
+	'layouts_nolayout' => 'لا يوجد تصميم',
+	'layouts_continue' => 'أستمرار',
+	'layouts_unknown' => 'غير معروف',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -70,8 +80,11 @@ $messages['bs'] = array(
 	'layouts_unknown' => 'Nepoznato',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ */
 $messages['de'] = array(
+	'layouts-desc' => 'Bestückt frisch erzeugte Seiten mit bearbeitbaren "Gestaltungen", um eine einheitliche Struktur von Seiten zu fördern',
 	'layouts_title' => 'Neue Seite erstellen',
 	'layouts_chooselayout' => 'Suche ein Format für $1 aus:',
 	'layouts_nolayout' => 'Kein Format',
@@ -82,11 +95,13 @@ $messages['de'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'layouts_title' => 'Krei paĝon',
 	'layouts_chooselayout' => 'Elektu aspekton por $1:',
+	'layouts_nolayout' => 'Nenia aranĝo',
 	'layouts_continue' => 'Daŭrigi',
 	'layouts_choosecategory' => 'Selekti kategorion por $1:',
 	'layouts_unknown' => 'Nekonata',
@@ -351,6 +366,21 @@ $messages['te'] = array(
 	'layouts_continue' => 'కొనసాగించు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'layouts-desc' => 'Panahanan (dagdagan pa ng laman) ang mga bagong likhang pahina na may maaaring baguhing mga "anyo ng pagkakalatag" upang makahimok ng isang karaniwang kayarian para sa mga pahina',
+	'layouts_title' => 'Lumikha ng isang pahina',
+	'layouts_chooselayout' => 'Pumili ng anyo ng pagkakalatag para sa $1:',
+	'layouts_nolayout' => 'Walang anyo ng paglalatag',
+	'layouts_continue' => 'Magpatuloy',
+	'layouts_choosecategory' => 'Pumili ng isang kaurian para sa $1:',
+	'layouts_unknown' => 'Hindi nalalaman',
+	'layouts_tagline' => "Ginawa ang pahinang ito sa pamamagitan ng anyo ng pagkakalatag na '''$1'''.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Baguhinpahinamgatatak',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
@@ -358,5 +388,14 @@ $messages['vi'] = array(
 	'layouts_title' => 'Tạo trang',
 	'layouts_continue' => 'Tiếp tục',
 	'layouts_unknown' => 'Không biết',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'layouts_title' => '建立一個頁面',
+	'layouts_continue' => '繼續',
+	'layouts_choosecategory' => '為$1選擇一個分類:',
 );
 

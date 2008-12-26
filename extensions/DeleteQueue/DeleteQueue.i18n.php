@@ -715,6 +715,7 @@ Du kannst deine eigene Befürwortung oder Ablehnung der Löschung [{{fullurl:{{F
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -778,6 +779,7 @@ Vi povas kontraŭi la forigon de ĉi tiu paĝo de [{{fullurl:{{FULLPAGENAME}}|ac
 Pro via malkonsento, la paĝo estis movita al la laborlisto $1.',
 	'deletequeue' => 'Listo de forigoj',
 	'deletequeue-list-search-legend' => 'Serĉi paĝojn',
+	'deletequeue-list-queue' => 'Atendovico:',
 	'deletequeue-list-status' => 'Statuso:',
 	'deletequeue-list-search' => 'Serĉi',
 	'deletequeue-list-anyqueue' => '(iu)',
@@ -812,12 +814,13 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'deletequeue-generic-reasons' => '* Yleiset poistosyyt 
-  ** Vandalismi
-  ** Spam
+  ** Häiriköinti
+  ** Mainostaminen
   ** Ylläpito
   ** Epäoleellinen projektille',
 	'deletequeue-nom-alreadyqueued' => 'Sivu on valmiiksi poistojonossa.',
@@ -1603,6 +1606,13 @@ $messages['myv'] = array(
 	'deletequeue-list-header-queue' => 'Чиполань пуло',
 	'deletequeue-list-header-expiry' => 'Таштомома шказо',
 	'deletequeue-list-header-discusspage' => 'Кортнема лопа',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'deletequeue-list-header-expiry' => 'Motlamia',
 );
 
 /** Dutch (Nederlands)
@@ -2478,5 +2488,24 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'deletequeue-list-search' => 'זוכן',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'deletequeue-action-queued' => '刪除',
+	'deletequeue-delnom-otherreason' => '其他原因',
+	'deletequeue-delnom-extra' => '附加資料:',
+	'deletequeue-queue-speedy' => '快速刪除',
+	'deletequeue-review-delete' => '刪除頁面。',
+	'deletequeue-vote-tab' => '投票刪除',
+	'deletequeue-vote-endorse' => '贊成刪除。',
+	'deletequeue-vote-object' => '反對刪除。',
+	'deletequeue-showvotes-restrict-endorse' => '只顯示贊成票',
+	'deletequeue-showvotes-restrict-object' => '只顯示反對票',
+	'deletequeue-list-search' => '搜尋',
+	'deletequeue-list-anyqueue' => '(任何)',
+	'deletequeue-list-votes' => '投票清單',
 );
 

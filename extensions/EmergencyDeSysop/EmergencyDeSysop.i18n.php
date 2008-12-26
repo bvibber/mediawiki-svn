@@ -127,6 +127,16 @@ $messages['ja'] = array(
 	'emergencydesysop-nogroups' => 'なし',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'emergencydesysop' => '긴급 관리자 권한 해제',
+	'emergencydesysop-otheradmin' => '권한을 해제할 다른 관리자',
+	'emergencydesysop-submit' => '확인',
+	'emergencydesysop-done' => '명령 완료, 당신과 [[$1]] 사용자는 관리자 권한이 해제되었습니다.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -262,5 +272,17 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'emergencydesysop-reason' => 'తొలగింపునకు కారణం',
 	'emergencydesysop-submit' => 'దాఖలుచెయ్యి',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'emergencydesysop-desc' => '容許管理員犧牲他們的特權，免除另一名管理員的權限。',
+	'emergencydesysop-reason' => '移除理由',
+	'emergencydesysop-notasysop' => '目標使用者不在管理員群組中。',
+	'emergencydesysop-invalidtarget' => '目標使用者不存在',
+	'emergencydesysop-blocked' => '您在封禁期內不能存取本頁',
+	'emergencydesysop-noright' => '您沒有足夠權限存取本頁',
 );
 

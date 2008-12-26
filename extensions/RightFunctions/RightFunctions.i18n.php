@@ -58,6 +58,16 @@ $messages['bs'] = array(
 	'rightfunctions-ns' => '(od zaštite imenskog prostora)',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'rightfunctions-desc' => 'Erlaubnisbasierte Parser-Funktionen',
+	'rightfunctions-casc' => '(von kaskadierenden Quellen)',
+	'rightfunctions-local' => '(von lokalen Seiten)',
+	'rightfunctions-ns' => '(von Namensraumsperrungen)',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -205,7 +215,10 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'rightfunctions-desc' => 'Rettbaserte parserfunksjonar',
+	'rightfunctions-casc' => '(frå etterfølgjande kjelder)',
 	'rightfunctions-local' => '(frå lokal sida)',
+	'rightfunctions-ns' => '(frå namneromvern)',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

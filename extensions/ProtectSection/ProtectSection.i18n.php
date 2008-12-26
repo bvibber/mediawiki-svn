@@ -164,6 +164,7 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
+	'protectsection_desc' => 'Lehetővé teszi a megfelelő engedéllyel rendelkező szerkesztők számára, hogy levédjék a lap egyes részeit a <tt>&lt;protect&gt;</tt> tag segítségével',
 	'protectsection_add_remove' => 'Egy védett fejezetet próbáltál meg hozzáadni vagy eltávolítani.',
 	'protectsection_modify' => 'Védett szöveget próbáltál meg módosítani.',
 	'protectsection_forbidden' => 'Megtagadva',
@@ -383,5 +384,12 @@ $messages['vi'] = array(
 	'protectsection_add_remove' => 'Bạn đng cố thêm hoặc xóa một đề mục bị khóa',
 	'protectsection_modify' => 'Bạn đang cố sửa đổi đoạn văn bản bị khóa',
 	'protectsection_forbidden' => 'Bị cấm',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'protectsection_forbidden' => '禁止',
 );
 

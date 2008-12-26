@@ -252,12 +252,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'todo' => 'Tasklisto',
 	'todo-tab' => 'tasko',
 	'todo-new-queue' => 'nova',
+	'todo-add-queue' => 'Aldoni atendovico…',
 	'todo-list-change' => 'Ŝanĝu',
 	'todo-list-cancel' => 'Nuligi',
 	'todo-new-item' => 'Nova aĵo',
@@ -499,8 +501,10 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'todo-list-cancel' => 'キャンセル',
 	'todo-form-details' => '詳細:',
 );
 
@@ -1014,6 +1018,7 @@ $messages['te'] = array(
 	'todo-unrecognize-type' => 'గుర్తుతెలియని రకం',
 	'todo-item-list' => 'మీ అంశాలు',
 	'todo-list-change' => 'మార్చు',
+	'todo-list-cancel' => 'రద్దుచేయి',
 	'todo-new-item' => 'కొత్త అంశం',
 	'todo-form-details' => 'వివరాలు:',
 );
@@ -1067,5 +1072,12 @@ $messages['vo'] = array(
 	'todo-new-queue' => 'nulik',
 	'todo-list-change' => 'Votükön',
 	'todo-form-details' => 'Notets:',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'todo-list-cancel' => '取消',
 );
 

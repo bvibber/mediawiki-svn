@@ -633,6 +633,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Melancholie
  * @author Revolus
  * @author SabineCretella
  */
@@ -656,9 +657,11 @@ $messages['de'] = array(
 	'voctrain_collection' => 'Sammlung',
 	'voctrain_ISO_639_3_format' => 'ISO-639-3-Format',
 	'voctrain_Definition' => 'Definition',
+	'voctrain_Dictionary_definition_to_help_you' => 'Wörterbuch-Definition, um dir zu helfen',
 	'voctrain_Word' => 'Wort',
 	'voctrain_Please_type_your_answer_here' => 'Anwort hier eingeben',
 	'voctrain_submit_answer' => 'Antwort übermitteln',
+	'voctrain_peek' => 'Spitze',
 	'voctrain_skip' => 'überspringen',
 	'voctrain_I_know_it_do_not_ask_again' => 'Ich weiß es/nicht noch mal fragen',
 	'voctrain_abort_exercise' => 'Übung abbrechen',
@@ -681,10 +684,15 @@ $messages['de'] = array(
 	'voctrain_Switch_language' => 'Sprache wechseln',
 	'voctrain_Language' => 'Sprache',
 	'voctrain_Log_in' => 'Einloggen',
+	'voctrain_Omegawiki_vocabulary_trainer' => 'OmegaWiki-Vokabel-Trainer',
 	'voctrain_Definitions' => 'Definitionen',
+	'voctrain_Could_not_create_new_user' => 'Konnte keinen neuen Benutzer anlegen',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Gib einen Benutzernamen und ein optionales Passwort ein (oder versuche einen anderen Benutzernamen)',
+	'voctrain_Vocview' => 'Vokabel-Betrachter',
 	'voctrain_Translation' => 'Übersetzung',
 	'voctrain_unhide_definition' => 'Definitionen aufdecken',
 	'voctrain_unhide_words' => 'Wörter aufdecken',
+	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Trenne Werte durch Kommas um mehrere Sprachen zu verwenden',
 );
 
 /** Greek (Ελληνικά)

@@ -472,10 +472,15 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
+	'signdocument' => 'Dokument signieren',
+	'sign-nodocselected' => 'Bitte wähle das zu signierende Dokument aus.',
 	'sign-selectdoc' => 'Dokument:',
+	'sign-docheader' => '<div class="noarticletext">Bitte benutze dieses Formular, um das hierunter angezeigte Dokument „[[$1]]“ zu signieren.
+Bitte lies das gesammte Dokument und wenn du ihm deine Zustimmung gibt, fülle bitte die nötigen Felder aus, um es zu signieren.',
 	'sign-error-nosuchdoc' => 'Das angeforderte Dokument ($1) existiert nicht.',
 	'sign-realname' => 'Name:',
 	'sign-address' => 'Straße:',
@@ -486,9 +491,18 @@ $messages['de'] = array(
 	'sign-phone' => 'Telefonnummer:',
 	'sign-bday' => 'Alter:',
 	'sign-email' => 'E-Mail-Adresse:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> benötigtes Feld.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Beachte: Unaufgelistete Informationen sind trotzdem für Moderatoren sichtbar.</i></small>',
+	'sign-list-anonymous' => 'Anonym auflisten',
+	'sign-list-hideaddress' => 'Adresse nicht auflisten',
+	'sign-list-hideextaddress' => 'Stadt, Staat, PLZ oder Land nicht auflisten',
+	'sign-list-hidephone' => 'Telefonnummer nicht auflisten',
+	'sign-list-hidebday' => 'Alter nicht auflisten',
+	'sign-list-hideemail' => 'E-Mail-Adresse nicht auflisten',
 	'sign-submit' => 'Dokument unterzeichnen',
 	'sig-success' => 'Du hast das Dokument erfolgreich unterschrieben.',
 	'sign-view-selectfields' => '<b>Anzuzeigende Felder:</b>',
+	'sign-viewfield-entryid' => 'Eintragskennung',
 	'sign-viewfield-timestamp' => 'Zeitstempel',
 	'sign-viewfield-realname' => 'Name',
 	'sign-viewfield-address' => 'Adresse',
@@ -498,13 +512,48 @@ $messages['de'] = array(
 	'sign-viewfield-zip' => 'Postleitzahl',
 	'sign-viewfield-ip' => 'IP-Adresse',
 	'sign-viewfield-agent' => 'Browser',
+	'sign-viewfield-phone' => 'Telefon',
 	'sign-viewfield-email' => 'E-Mail',
 	'sign-viewfield-age' => 'Alter',
 	'sign-viewfield-options' => 'Optionen',
+	'sign-viewsigs-intro' => 'Unterhalb werden die für <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span> aufgezeichneten Signaturen aufgelistet.',
+	'sign-sigadmin-currentlyopen' => 'Es ist derzeit möglich, dieses Dokument zu signieren.',
+	'sign-sigadmin-close' => 'Signieren deaktivieren',
+	'sign-sigadmin-currentlyclosed' => 'Es ist derzeit nicht möglich, dieses Dokument zu signieren.',
+	'sign-sigadmin-open' => 'Signieren ermöglichen',
+	'sign-signatures' => 'Signaturen',
+	'sign-sigadmin-closesuccess' => 'Signieren erfolgreich aktiviert.',
+	'sign-sigadmin-opensuccess' => 'Signieren erfolgreich aktiviert.',
+	'sign-viewsignatures' => 'Signaturen anschauen',
 	'sign-closed' => 'geschlossen',
+	'sign-error-closed' => 'Es ist derzeit nicht möglich, dieses Dokument zu signieren.',
 	'sig-anonymous' => '<i>Anonym</i>',
 	'sig-private' => '<i>Privat</i>',
+	'sign-sigdetails' => 'Signaturdetails',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
+	'sign-viewfield-stricken' => 'Gestrichen',
+	'sign-viewfield-reviewedby' => 'Prüfer',
+	'sign-viewfield-reviewcomment' => 'Kommentar',
+	'sign-detail-uniquequery' => 'Ähnliche Einträge',
+	'sign-detail-uniquequery-run' => 'Anfrage laufen lassen',
+	'sign-detail-strike' => 'Signatur ausstreichen',
+	'sign-reviewsig' => 'Signatur überprüfen',
 	'sign-review-comment' => 'Kommentar',
+	'sign-submitreview' => 'Bericht absenden',
+	'sign-uniquequery-similarname' => 'Ähnlicher Name',
+	'sign-uniquequery-similaraddress' => 'Ähnliche Adresse',
+	'sign-uniquequery-similarphone' => 'Ähnliche Telefonnummer',
+	'sign-uniquequery-similaremail' => 'Ähnliche E-Mail-Adresse',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signierte [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Revolus
+ */
+$messages['de-formal'] = array(
+	'sign-nodocselected' => 'Bitte wählen Sie das zu signierende Dokument aus.',
+	'sign-docheader' => '<div class="noarticletext">Bitte benutzen Sie dieses Formular, um das hierunter angezeigte Dokument „[[$1]]“ zu signieren.
+Bitte lesen Sie das gesammte Dokument und wenn Sie ihm Ihre Zustimmung geben, füllen Sie bitte die nötigen Felder aus, um es zu signieren.',
 );
 
 /** Greek (Ελληνικά)
@@ -600,23 +649,24 @@ $messages['ext'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'sign-realname' => 'Nimi',
 	'sign-address' => 'Katuosoite',
 	'sign-city' => 'Kaupunki',
-	'sign-state' => 'Valtio',
+	'sign-state' => 'Lääni',
 	'sign-zip' => 'Postinumero',
 	'sign-country' => 'Maa',
 	'sign-phone' => 'Puhelinnumero',
 	'sign-bday' => 'Ikä',
 	'sign-email' => 'Sähköpostiosoite',
 	'sign-indicates-req' => '<small><i><font color="red">*</font> tarkoittaa pakollista kenttää.</i></small>',
-	'sign-hide-note' => '<small><i><font color="red">**</font> Huomautus: Piilotettu tieto tulee silti valvojien näkyville.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Valvojat voivat nähdä piilotetut tiedot.</i></small>',
 	'sign-list-anonymous' => 'Listaa nimettömänä',
 	'sign-list-hideaddress' => 'Älä listaa osoitetta',
-	'sign-list-hideextaddress' => 'Älä listaa kaupunkia, valtiota, postinumeroa tai maata',
+	'sign-list-hideextaddress' => 'Älä listaa kaupunkia, osavaltiota ja lääniä, postinumeroa tai maata',
 	'sign-list-hidephone' => 'Älä listaa puhelinnumeroa',
 	'sign-list-hidebday' => 'Älä listaa ikää',
 	'sign-list-hideemail' => 'Älä listaa sähköpostiosoitetta',
@@ -624,6 +674,8 @@ $messages['fi'] = array(
 	'sign-viewfield-realname' => 'Nimi',
 	'sign-viewfield-address' => 'Osoite',
 	'sign-viewfield-city' => 'Kaupunki',
+	'sign-viewfield-state' => 'Lääni',
+	'sign-viewfield-country' => 'Maa',
 	'sign-viewfield-zip' => 'Postinumero',
 	'sign-viewfield-ip' => 'IP-osoite',
 	'sign-viewfield-phone' => 'Puhelin',
@@ -2557,6 +2609,7 @@ $messages['te'] = array(
 	'sign-list-hideemail' => 'ఈ-మెయిలుని చూపించకు',
 	'sign-submit' => 'సంతకం చేయండి',
 	'sig-success' => 'ఈ పత్రంపై మీరు విజయవంతంగా సంతకం చేసారు.',
+	'sign-view-selectfields' => '<b>చూపించాల్సిన ఖాళీలు:</b>',
 	'sign-viewfield-timestamp' => 'కాలముద్ర',
 	'sign-viewfield-realname' => 'పేరు',
 	'sign-viewfield-address' => 'చిరునామా',
@@ -2741,5 +2794,21 @@ $messages['vo'] = array(
 	'sign-viewfield-state' => 'Tat',
 	'sign-viewfield-country' => 'Län',
 	'sign-viewfield-reviewcomment' => 'Küpet',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'sign-viewfield-realname' => '姓名',
+	'sign-viewfield-address' => '地址',
+	'sign-viewfield-ip' => 'IP位址',
+	'sign-viewfield-phone' => '電話',
+	'sign-viewfield-email' => '電郵',
+	'sign-viewfield-age' => '年齡',
+	'sign-uniquequery-similarname' => '近似姓名',
+	'sign-uniquequery-similaraddress' => '近似地址',
+	'sign-uniquequery-similarphone' => '近似電話',
+	'sign-uniquequery-similaremail' => '近似電郵',
 );
 

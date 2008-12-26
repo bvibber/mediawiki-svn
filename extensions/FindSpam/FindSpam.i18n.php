@@ -32,6 +32,13 @@ $messages['af'] = array(
 	'findspam-ok' => 'OK',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'findspam-ok' => 'እሺ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -646,9 +653,14 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Aleksandrit
  */
 $messages['uk'] = array(
+	'findspam' => 'Пошук спаму',
+	'findspam-desc' => 'Додає [[Special:FindSpam|спеціальну сторінку]], що дозволяє знайти нещодавно доданий спам',
+	'findspam-ip' => 'IP-адреса:',
 	'findspam-ok' => 'Гаразд',
+	'findspam-notextfound' => 'Не знайдено внеску',
 );
 
 /** Vèneto (Vèneto)

@@ -329,11 +329,13 @@ $messages['os'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'forcepreview' => 'Zapisz (najpierw sprawdź Podgląd)',
 	'forcepreview-desc' => 'Wymusza na nieuprawnionych użytkownikach użycie podglądu przed zapisaniem strony',
+	'right-forcepreviewexempt' => 'Możliwość zapisywania bez użycia „Pokaż podgląd”',
 );
 
 /** Portuguese (Português)
@@ -397,5 +399,12 @@ $messages['vi'] = array(
 Lưu trang (sau khi xem thử)',
 	'forcepreview-desc' => 'Bắt buộc xem thử đối với thành viên không đủ quyền',
 	'right-forcepreviewexempt' => 'Có thể lưu mà không sử dụng Xem trước',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'forcepreview' => '儲存頁面 (需先預覽)',
 );
 

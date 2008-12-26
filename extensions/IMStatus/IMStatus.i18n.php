@@ -161,6 +161,7 @@ Die ID, die du benötigst, sind die Zahlen und Buchstaben zwischen „$2“ und 
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -172,6 +173,7 @@ $messages['eo'] = array(
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'aŭ',
 	'imstatus_your_name' => 'via $1 nomo',
+	'imstatus_icq_id' => 'via ID de ICQ',
 );
 
 /** Persian (فارسی)

@@ -51,6 +51,14 @@ $messages['cs'] = array(
 	'catfeed-desc' => 'Používá kousky z kanálů posledních změn. Vytvoří verzi v rámci stránky. Obzvlášť užitečné pro Wikinews.',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'catfeed-desc' => 'Nutzt Teile der Letzte-Änderungen-Newsfeeds.
+Erzeugung einer eingebetteten Version; besonders für Wikinews nützlich.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

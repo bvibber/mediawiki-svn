@@ -168,6 +168,23 @@ An dra-se a c'hall kargañ ar servijer spontus, setu n'emañ ket da vezañ impli
 	'querysuccessful' => "Reked disoc'het",
 );
 
+/** Bosnian (Bosanski)
+ * @author Seha
+ */
+$messages['bs'] = array(
+	'asksql' => 'SQL Pretraga',
+	'asksql-desc' => 'Napravi pretragu putem SQL na [[Special:Asksql|specijalna stranica]]',
+	'asksqltext' => "Koristi dole navedeni formular za direktnu pretragu baze podataka.
+Koristi jednostruke navodnike ('primjer') za sklanjanje ograničenja reda riječi.
+Ovo može dovesti do češćeg ažuriranja na serveru, pa te molimo da ovo funkciju koristiš rijetko.",
+	'sqlislogged' => 'Uzmi na znanje da se svi upiti loguju.',
+	'sqlquery' => 'Unesi upit.',
+	'querybtn' => 'Potvrdi upit.',
+	'selectonly' => 'Samo pretrage koje čizaju podatke su dozvoljene.',
+	'querysuccessful' => 'Pretraga uspjela.',
+	'right-asksql' => 'Napravi SQL pretragu/upit.',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -1014,6 +1031,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
  * @author Formulax
  * @author Shizhao
  */
@@ -1028,11 +1046,13 @@ $messages['zh-hans'] = array(
 	'querybtn' => '提交查询',
 	'selectonly' => '只允许只读方式的查询。',
 	'querysuccessful' => '查询完成',
+	'right-asksql' => '进行SQL查询',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
  * @author Vipuser
+ * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'asksql' => 'SQL查詢',
@@ -1045,5 +1065,6 @@ $messages['zh-hant'] = array(
 	'querybtn' => '遞交查詢',
 	'selectonly' => '只允許唯讀模式的查詢。',
 	'querysuccessful' => '查詢完成',
+	'right-asksql' => '進行SQL查詢',
 );
 

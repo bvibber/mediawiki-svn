@@ -65,11 +65,19 @@ $messages['eo'] = array(
 	'tooltip-desc' => 'Aldonas etikedojn <tt><nowiki><tooltip></nowiki></tt> kaj <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'tooltip-desc' => 'Añade las etiquetas <tt><nowiki><tooltip></nowiki></tt> y <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Finnish (Suomi)
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'tooltip-desc' => 'Lisää <tt><nowiki><tooltip></nowiki></tt>- ja <tt><nowiki>{{#tooltip:}}</nowiki></tt>-tägit.',
+	'tooltip-desc' => 'Lisää jäsenninlaajennukset <tt><nowiki><tooltip></nowiki></tt> ja <tt><nowiki>{{#tooltip:}}</nowiki></tt>.',
 );
 
 /** French (Français)
@@ -99,6 +107,13 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'tooltip-desc' => 'přidawa tafličku <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'tooltip-desc' => '<tt><nowiki><tooltip></nowiki></tt> és <tt><nowiki>{{#tooltip:}}</nowiki></tt> tagek',
 );
 
 /** Interlingua (Interlingua)

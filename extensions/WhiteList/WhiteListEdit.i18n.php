@@ -145,6 +145,14 @@ $messages['af'] = array(
 	'whitelistnever' => 'nooit',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'whitelisttablemodifyall' => 'ሁሉ',
+	'whitelisttableedit' => 'አርም',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -159,6 +167,7 @@ $messages['an'] = array(
  * @author Alnokta
  * @author Meno25
  * @author OsamaK
+ * @author Ouda
  */
 $messages['ar'] = array(
 	'whitelist-desc' => 'عدل سماحات الوصول للمستخدمين المحددين',
@@ -186,6 +195,9 @@ $messages['ar'] = array(
 	'whitelistnewtabledate' => 'تاريخ الانتهاء:',
 	'whitelistnewtableedit' => 'ضبط للتعديل',
 	'whitelistnewtableview' => 'ضبط للعرض',
+	'whitelistnowhitelistedusers' => 'لا يوجد مستخدمون في المجموعة "{{ميدياويكي:مجموعة-محظورة}}" 
+
+  [[Special:UserRights|  يجب أن تضيف مستخدمين إلى هذه المجموعة]] قبل ان تستطيع إضافة صفحات إلى قائمة المستخدم البيضاء',
 	'whitelistnewtableprocess' => 'عملية',
 	'whitelistnewtablereview' => 'مراجعة',
 	'whitelistselectrestricted' => '== اختر اسم المستخدم المحدد ==',
@@ -206,14 +218,22 @@ $2',
 هذه الصفحة مطبقة فقط على المستخدمين المحددين",
 	'whitelistnever' => 'أبدا',
 	'whitelistnummatches' => ' - {{PLURAL:$1|مطابقة واحدة|$1 مطابقة}}',
+	'right-editwhitelist' => 'عدل القائمة البيضاء للمستخدمون الموجودون',
+	'action-editwhitelist' => 'عدل القائمة البيضاء لمستخدمين موجودين',
+	'action-restricttowhitelist' => 'عدل وأعرض الصفحات على القائمة البيضاء فقط',
+	'group-restricted' => 'مستخدمون محظورون',
+	'group-restricted-member' => 'مستخدم محظور',
+	'group-manager' => 'مديرون',
+	'group-manager-member' => 'مدير',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'whitelist-desc' => 'عدل سماحات الوصول للمستخدمين المحددين',
+	'whitelist-desc' => 'عدل سماحات الوصول لليوزرز المحددين',
 	'whitelistedit' => 'محرر وصول القائمة البيضاء',
 	'whitelist' => 'صفحات القائمة البيضاء',
 	'mywhitelistpages' => 'صفحاتي',
@@ -256,8 +276,8 @@ $messages['arz'] = array(
 
 $2',
 	'whitelistrequestconf' => 'الطلب للصفحات الجديدة تم إرساله إلى $1',
-	'whitelistnonrestricted' => "المستخدم '''$1''' ليس مستخدما محددا.
-هذه الصفحة مطبقة فقط على المستخدمين المحددين",
+	'whitelistnonrestricted' => "اليوزر '''$1''' مش يوزر محدد.
+هذه الصفحة متطبقة بس على اليوزرز المحددين",
 	'whitelistnever' => 'أبدا',
 	'whitelistnummatches' => ' - {{PLURAL:$1|مطابقة واحده|$1 مطابقة}}',
 	'right-editwhitelist' => 'عدل الليستة البيضا بتاعة اليوزرز الموجودين',
@@ -387,6 +407,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Liam Rosen
+ * @author Melancholie
  * @author Pill
  * @author Revolus
  */
@@ -439,6 +460,13 @@ Diese Seite gilt nur für beschränkte Bentzer.",
 	'whitelistnever' => 'niemals',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Übereinstimmung|Übereinstimmungen}}',
 	'right-editwhitelist' => 'Weiße Liste für existierende Benutzer bearbeiten',
+	'right-restricttowhitelist' => 'Bearbeite und betrachte nur Seiten die in der Positivliste enthalten sind',
+	'action-editwhitelist' => 'modifiziere die Positivliste für existierende Benutzer',
+	'action-restricttowhitelist' => 'bearbeite und betrachte nur Seiten die in der Positivliste enthalten sind',
+	'group-restricted' => 'Eingeschränkte Benutzer',
+	'group-restricted-member' => 'Eingeschränkter Benutzer',
+	'group-manager' => 'Verwalter',
+	'group-manager-member' => 'Verwalter',
 );
 
 /** Zazaki (Zazaki)
@@ -520,6 +548,7 @@ $messages['es'] = array(
 	'whitelisttableedit' => 'Editar',
 	'whitelisttablenewdate' => 'Nueva fecha:',
 	'whitelisttableremove' => 'Borrar',
+	'whitelistnewtabledate' => 'Fecha de caducidad:',
 	'whitelistnewtableedit' => 'Establecer en modo edición',
 	'whitelistnewtableview' => 'Establecer en modo visualización',
 	'whitelistnewtablereview' => 'Revisión',
@@ -534,6 +563,16 @@ $2',
 	'whitelistrequestconf' => 'La solicitud de nuevas páginas fue enviada a $1',
 	'whitelistnever' => 'nunca',
 	'whitelistnummatches' => ' - {{PLURAL:$1|una coincidencia|$1 coincidencias}}.',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'whitelisttableremove' => 'Poista',
+	'group-restricted' => 'rajoitetut käyttäjät',
+	'group-restricted-member' => 'rajoitettu käyttäjä',
 );
 
 /** French (Français)
@@ -1627,7 +1666,9 @@ $messages['rif'] = array(
  */
 $messages['ro'] = array(
 	'mywhitelistpages' => 'Paginile mele',
+	'whitelisttablemodify' => 'Modifică',
 	'whitelisttablemodifynone' => 'Nimic',
+	'whitelisttablepage' => 'Pagină wiki',
 	'whitelisttabletype' => 'Tip de acces',
 	'whitelisttableexpires' => 'Expiră la',
 	'whitelisttablemodby' => 'Ultima dată modificat de',
@@ -1636,10 +1677,17 @@ $messages['ro'] = array(
 	'whitelisttablenewdate' => 'Dată nouă:',
 	'whitelisttableremove' => 'Elimină',
 	'whitelistbadtitle' => 'Titlu incorect -',
+	'whitelistrequestmsg' => '$1 a cerut acces la {{PLURAL:$3|următoarea pagină|următoarele pagini}}:
+
+$2',
+	'whitelistrequestconf' => 'Cererea pentru pagini noi a fost trimisă la $1',
 	'whitelistnever' => 'niciodată',
+	'group-restricted' => 'Utilizatori restricţionaţi',
+	'group-restricted-member' => 'Utilizator restricţionat',
 );
 
 /** Russian (Русский)
+ * @author Aleksandrit
  * @author Ferrer
  * @author Innv
  * @author Rubin
@@ -1660,16 +1708,25 @@ $messages['ru'] = array(
 	'whitelisttableedit' => 'Править',
 	'whitelisttableview' => 'Просмотр',
 	'whitelisttablenewdate' => 'Новая дата:',
+	'whitelisttablechangedate' => 'Изменение срока действия',
 	'whitelisttablesetedit' => 'Установить для правки',
 	'whitelisttablesetview' => 'Установить для просмотра',
 	'whitelisttableremove' => 'Удалить',
+	'whitelistnewtabledate' => 'Дата окончания:',
+	'whitelistnewtableedit' => 'Установить для редактирования',
+	'whitelistnewtableview' => 'Установить для просмотра',
 	'whitelistnewtableprocess' => 'Процесс',
+	'whitelistnewtablereview' => 'Обзор',
 	'whitelistselectrestricted' => '== Выберите имя участника ==',
 	'whitelistpagelist' => 'Страницы {{SITENAME}} для $1',
 	'whitelistbadtitle' => 'Неправильный заголовок -',
+	'whitelistoverview' => '== Обзор изменений для $1 ==',
 	'whitelistoverviewsa' => "* Установить доступ '''$1''' для [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Снять права [[:$1|$1]]',
+	'whitelistrequest' => 'Запрос доступ к большему количеству страниц',
 	'whitelistnever' => 'никогда',
+	'right-editwhitelist' => 'Изменить белый список для существующих пользователей',
+	'right-restricttowhitelist' => 'Редактировать и просматривать только страницы из белого списка',
 	'group-manager' => 'Управляющие',
 	'group-manager-member' => 'управляющий',
 );
@@ -1901,10 +1958,22 @@ $2',
 );
 
 /** Thai (ไทย)
+ * @author Manop
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'whitelisttablemodify' => 'ปรับปรุง',
 	'whitelisttablemodifyall' => 'ทั้งหมด',
+	'whitelisttablemodifynone' => 'ไม่มีค่า',
+	'whitelisttablepage' => 'หน้าวิกิ',
+	'whitelisttableedit' => 'แก้ไข',
+	'whitelisttableview' => 'ดู',
+	'whitelisttablenewdate' => 'วันที่ใหม่:',
+	'whitelistnewtabledate' => 'วันที่หมดอายุ:',
+	'whitelistnewtablereview' => 'ตรวจสอบ',
+	'whitelistpagelist' => 'หน้า {{SITENAME}} สำหรับ $1',
+	'group-manager' => 'ผู้จัดการ',
+	'group-manager-member' => 'ผู้จัดการ',
 );
 
 /** Tagalog (Tagalog)

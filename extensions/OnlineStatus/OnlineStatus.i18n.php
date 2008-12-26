@@ -269,23 +269,24 @@ $messages['grc'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'onlinestatus-desc' => 'הוספת העדפה להצגה האם המשתמש עדיין פעיל בוויקי או שאינו',
-	'onlinestatus-js-anon' => 'שגיאה: עליכם לבצע כניסה למערכת כדי להשתמש בתכונה זו',
-	'onlinestatus-js-changed' => 'מצבכם שונה ל־"$1"',
+	'onlinestatus-desc' => 'הוספת העדפה להצגה האם המשתמש עדיין פעיל בוויקי או לא',
+	'onlinestatus-js-anon' => 'שגיאה: עליכם להיכנס לחשבון כדי להשתמש בתכונה זו',
+	'onlinestatus-js-changed' => 'מצבכם שונה ל"$1"',
 	'onlinestatus-js-error' => 'לא ניתן לשנות את המצב, הערך "$1" אינו תקין',
-	'onlinestatus-subtitle-offline' => 'המשתמש אינו מקוון כרגע',
+	'onlinestatus-subtitle-offline' => 'משתמש זה אינו מקוון כרגע',
 	'onlinestatus-subtitle-online' => 'משתמש זה מקוון כרגע',
 	'onlinestatus-tab' => 'מצב',
 	'onlinestatus-toggles-desc' => 'המצב שלכם:',
-	'onlinestatus-toggles-explain' => 'הרחבה זו מאפשרת לכם להציג למשתמשים אחרים האם אתם מקוונים באותו הרגע או שלא על ידי בדיקת דף המשתמש שלכם.',
+	'onlinestatus-toggles-explain' => 'הרחבה זו מאפשרת לכם להראות למשתמשים אחרים האם אתם מקוונים באותו הרגע או שלא על ידי בדיקת דף המשתמש שלכם.',
 	'onlinestatus-toggles-show' => 'הצגת מצב הנוכחות בדף המשתמש שלכם',
 	'onlinestatus-toggle-offline' => 'מנותק',
 	'onlinestatus-toggle-online' => 'מקוון',
-	'tog-onlineOnLogin' => 'שינוי המצב שלכם למקוון בעת הכניסה',
-	'tog-offlineOnLogout' => 'שינוי המצב שלכם למנותק בעת היציאה מהמערכת',
+	'tog-onlineOnLogin' => 'שינוי המצב שלכם למקוון בעת הכניסה לחשבון',
+	'tog-offlineOnLogout' => 'שינוי המצב שלכם למנותק בעת היציאה מהחשבון',
 );
 
 /** Hindi (हिन्दी)
@@ -477,6 +478,26 @@ $messages['nl'] = array(
 	'onlinestatus-toggle-online' => 'Online',
 	'tog-onlineOnLogin' => 'Mijn status naar online wijzigen als ik me aanmeld',
 	'tog-offlineOnLogout' => 'Mijn status naar offline wijzigen als ik me afmeld',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'onlinestatus-desc' => 'Legg til eit val som gjer det mogleg å visa om brukaren er pålogga eller ikkje',
+	'onlinestatus-js-anon' => 'Feil: du må vera innlogga for å nytta denne funksjonen',
+	'onlinestatus-js-changed' => 'Statusen din er endra til «$1»',
+	'onlinestatus-js-error' => 'Kunne ikkje endra status, verdien «$1» er ugyldig',
+	'onlinestatus-subtitle-offline' => 'Denne brukaren er ikkje pålogga',
+	'onlinestatus-subtitle-online' => 'Denne brukaren er pålogga',
+	'onlinestatus-tab' => 'Status',
+	'onlinestatus-toggles-desc' => 'Din status:',
+	'onlinestatus-toggles-explain' => 'Dette lèt deg visa andre brukarar om du er pålogga eller ikkje ved at dei vitjar brukarsida di.',
+	'onlinestatus-toggles-show' => 'Vis påloggingsstatus på brukarsida mi',
+	'onlinestatus-toggle-offline' => 'Ikkje pålogga',
+	'onlinestatus-toggle-online' => 'Logga på',
+	'tog-onlineOnLogin' => 'Endra statusen min til pålogga når eg loggar inn',
+	'tog-offlineOnLogout' => 'Endra statusen min til ikkje pålogga når eg loggar ut',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

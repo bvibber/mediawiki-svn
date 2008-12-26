@@ -102,17 +102,23 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Melancholie
  * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
+	'postcomment_desc' => 'Benutzern das Kommentieren auf Diskussionsseiten erlauben',
+	'postcomment_discussionprotected' => 'Diese Diskussionsseite wurde gegenüber weiteren Hinzufügungen gesperrt.',
 	'postcomment_notloggedin' => 'Du bist nicht angemeldet.',
 	'postcomment_youareloggedinas' => 'Du bist jetzt als $1 angemeldet.',
+	'postcomment_addcommentdiscussionpage' => 'Füge deinen Kommentar auf dieser Diskussionsseite hinzu',
 	'postcomment_leavemessagefor' => '$1 eine Nachricht hinterlassen',
 	'postcomment_post' => 'Senden',
 	'postcomment_on' => 'Am',
 	'postcomment_said' => 'schrieb',
+	'postcomment_invalidrequest' => 'Ungültige Anfrage.',
 	'postcomment_replyto' => 'Antwort an $1',
+	'postcomment_nopostingtoadd' => 'Nichts zum Hinzufügen.',
 );
 
 /** Greek (Ελληνικά)
@@ -539,6 +545,24 @@ $messages['ru'] = array(
 	'postcomment_nopostingtoadd' => 'Нет сообщения для добавления',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'postcomment_desc' => "Pirmetti a l'utenti di nziriri cummenti direttamenti ntê pàggini di discussioni.",
+	'postcomment_discussionprotected' => 'Sta pàggina di discussioni fù prutetta di àutri nzirimenti.',
+	'postcomment_notloggedin' => 'Non facisti li login.',
+	'postcomment_youareloggedinas' => 'Ti cunnittisti cô nomu utenti di $1',
+	'postcomment_addcommentdiscussionpage' => 'Jùncicci lu tò pinzeri nti sta pàggina di discussioni',
+	'postcomment_leavemessagefor' => 'Lassa nu missaggiu pi $1',
+	'postcomment_post' => 'Nzirisci',
+	'postcomment_on' => 'Lu',
+	'postcomment_said' => 'dissi',
+	'postcomment_invalidrequest' => 'Dumanna non vàlida.',
+	'postcomment_replyto' => 'Arispunni a $1',
+	'postcomment_nopostingtoadd' => 'Nuddu post di juncìricci.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -612,6 +636,24 @@ $messages['tr'] = array(
 	'postcomment_post' => 'Posta',
 );
 
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'postcomment_desc' => 'Дозволяє користувачам надсилати коментарі відразу на сторінки обговорення.',
+	'postcomment_discussionprotected' => 'Сторінка обговорення була захищена від розміщення нових повідомлень.',
+	'postcomment_notloggedin' => 'Ви не ввійшли в систему.',
+	'postcomment_youareloggedinas' => 'Ви увійшли як $1',
+	'postcomment_addcommentdiscussionpage' => 'Додайте свій коментар на цій сторінці обговорення',
+	'postcomment_leavemessagefor' => 'Залишити повідомлення для $1',
+	'postcomment_post' => 'Відправити',
+	'postcomment_on' => 'Включити',
+	'postcomment_said' => 'написав(-ла)',
+	'postcomment_invalidrequest' => 'Помилковий запит.',
+	'postcomment_replyto' => 'У відповідь на $1',
+	'postcomment_nopostingtoadd' => 'Немає повідомлення для додавання.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
@@ -629,5 +671,21 @@ $messages['vi'] = array(
 	'postcomment_invalidrequest' => 'Yêu cầu không hợp lệ.',
 	'postcomment_replyto' => 'Trả lời $1',
 	'postcomment_nopostingtoadd' => 'Không có bài nào để đăng.',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'postcomment_desc' => '容許使用者直接在討論頁面張貼評論。',
+	'postcomment_discussionprotected' => '此討論頁經已保護，不能張貼新文章。',
+	'postcomment_notloggedin' => '您尚未登入。',
+	'postcomment_youareloggedinas' => '您已以$1的名義登入',
+	'postcomment_addcommentdiscussionpage' => '在此討論頁加入您的評論',
+	'postcomment_leavemessagefor' => '為$1留言',
+	'postcomment_post' => '張貼',
+	'postcomment_said' => '說',
+	'postcomment_invalidrequest' => '請求無效。',
+	'postcomment_replyto' => '回應$1',
 );
 

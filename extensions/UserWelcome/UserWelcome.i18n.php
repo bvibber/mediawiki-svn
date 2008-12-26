@@ -57,11 +57,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'userwelcome-desc' => 'يضيف وسم <tt>&lt;welcomeUser&gt;</tt> لعرض معلومات اجتماعية خاصة بالمستخدم للمستخدمين المسجلين',
-	'mp-userlevels-link' => 'مستويات المستخدم',
+	'mp-userlevels-link' => 'مستويات اليوزر',
 	'mp-welcome-upload' => 'رفع',
 	'mp-welcome-edit' => 'عدل',
 	'mp-welcome-points' => '$1 نقطة',
@@ -118,14 +119,24 @@ $messages['bs'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author MF-Warburg
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
 	'userwelcome-desc' => 'Fügt ein <tt>&lt;welcomeUser&gt;</tt>-Tag hinzu, mit dem man benutzerspezifische soziale Informationen eingeloggten Benutzern zeigen kann',
+	'mp-userlevels-link' => 'Benutzerebenen',
 	'mp-welcome-upload' => 'Hochladen',
 	'mp-welcome-edit' => 'Bearbeiten',
+	'mp-welcome-points' => '$1 Punkte',
+	'mp-welcome-needed-points' => 'Um <b><a href="$1">$2</a></b> zu werden musst du noch <i>$3</i> {{PLURAL:$3|weiteren Punkt|weitere Punkte}} verdienen!',
 	'mp-welcome-logged-in' => 'Hallo $1',
+	'mp-requests-title' => 'Anfragen',
+	'mp-requests-message' => 'Du hast die folgenden Anfragen.',
 	'mp-request-new-message' => 'neue Nachricht',
+	'mp-request-new-award' => '$1 neue {{PLURAL:$1|Auszeichnung|Auszeichnungen}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|neues Geschenk|neue Geschenke}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|neuen Gegner/Feind|neue Gegner/Feinde}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|neuen Freund|neue Freunde}}',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -395,12 +406,12 @@ $messages['lb'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'userwelcome-desc' => 'Додава <tt>&lt;welcomeUser&gt;</tt> таг за приказ на специфични социјални информации за корисникот на најавени корисници',
+	'userwelcome-desc' => 'Додава <tt>&lt;welcomeUser&gt;</tt> приврзок за приказ на специфични кориснички социјални информации на најавени корисници',
 	'mp-userlevels-link' => 'Кориснички нивоа',
 	'mp-welcome-upload' => 'Подигнување',
 	'mp-welcome-edit' => 'Уреди',
 	'mp-welcome-points' => '$1 поени',
-	'mp-welcome-needed-points' => 'За да напредувате до <b><a href="$1">$2</a></b> заработете <i>$3</i> повеќе поени!',
+	'mp-welcome-needed-points' => 'За да напредувате до <b><a href="$1">$2</a></b> заработете повеќе од <i>$3</i> {{PLURAL:$3|поен|поени}}!',
 	'mp-welcome-logged-in' => 'Добредојдовте $1',
 	'mp-requests-title' => 'Барања',
 	'mp-requests-message' => 'Вие ги имате следниве барања.',
@@ -540,6 +551,7 @@ $messages['ro'] = array(
 	'mp-userlevels-link' => 'Niveluri de utilizatori',
 	'mp-welcome-points' => '$1 puncte',
 	'mp-requests-title' => 'Cereri',
+	'mp-requests-message' => 'Aveţi următoarele cereri.',
 	'mp-request-new-message' => 'mesaj nou',
 	'mp-request-new-award' => '$1 {{PLURAL:$1|premiu nou|premii noi}}',
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|cadou nou|cadouri noi}}',
@@ -637,6 +649,14 @@ $messages['te'] = array(
 	'mp-request-new-friend' => '$1 కొత్త {{PLURAL:$1|మిత్రుడు|మిత్రులు}}',
 );
 
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'mp-userlevels-link' => 'ระดับผู้ใช้',
+	'mp-welcome-upload' => 'อัปโหลด',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -693,5 +713,19 @@ $messages['wo'] = array(
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|ndimbal bu bees|ndimbal yu yees}}',
 	'mp-request-new-foe' => '$1 {{PLURAL:$1|noon bu bees|noon yu yees}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|xarit bu bees|xarit yu yees}}',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'mp-welcome-upload' => '上載',
+	'mp-welcome-edit' => '編輯',
+	'mp-welcome-logged-in' => '$1您好',
+	'mp-requests-title' => '請求',
+	'mp-requests-message' => '您有以下請求。',
+	'mp-request-new-message' => '新訊息',
+	'mp-request-new-gift' => '$1件新禮物',
+	'mp-request-new-friend' => '$1名新朋友',
 );
 

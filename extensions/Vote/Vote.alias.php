@@ -39,6 +39,11 @@ $aliases['de'] = array(
 	'Vote' => array( 'Abstimmen' ),
 );
 
+/** Divehi (ދިވެހިބަސް) */
+$aliases['dv'] = array(
+	'Vote' => array( 'ވޯޓް' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'Vote' => array( 'Votar' ),

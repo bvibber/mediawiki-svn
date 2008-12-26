@@ -56,10 +56,11 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
-	'newusernotifsubj' => 'إخطار مستخدم جديد ل$1',
+	'newusernotifsubj' => 'إخطار يوزر جديد ل$1',
 	'newusernotif-desc' => 'يرسل إخطار بريد إلكترونى عندما يتم إنشاء حسابات مستخدمين',
 	'newusernotifbody' => 'مرحبا يا $1،
 
@@ -88,14 +89,15 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author Purodha
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'newusernotifsubj' => 'Benachrichtung für $1 über die Einrichtung eines neuen Benutzerskontos',
+	'newusernotifsubj' => 'Benachrichtung von $1 über die Einrichtung eines neuen Benutzerskontos',
 	'newusernotif-desc' => 'Versendet E-Mail-Benachrichtigungen bei Erstellung neuer Benutzerkonten',
 	'newusernotifbody' => 'Hallo $1,
 
-Ein neues Benutzerkonto, $2, wurde am $4 auf $3 angelegt.',
+Ein neues Benutzerkonto, $2, wurde am $5, $6 Uhr auf $3 angelegt.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -164,14 +166,15 @@ Unha nova conta de usuario, $2, foi creada sobre $3 en $4.',
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'newusernotifsubj' => 'הודעת משתמש חדשה עבור $1',
-	'newusernotif-desc' => 'שליחת הודעה בדוא"ל כאשר נוצרים חשבונות משתמשים',
-	'newusernotifbody' => 'היי $1,
+	'newusernotif-desc' => 'שליחת הודעה בדוא"ל כאשר נוצרים חשבונות משתמש',
+	'newusernotifbody' => 'שלום $1,
 
-חשבון משתמש חדש, $2, נוצר תחת $3 ב־$4',
+חשבון משתמש חדש, $2, נוצר באתר $3 ב־$4.',
 );
 
 /** Hindi (हिन्दी)
@@ -277,7 +280,14 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'newusernotifsubj' => 'Nohresch övver Ding neu Aanmeldung op $1',
 	'newusernotif-desc' => 'Scheck en <i lang="en">e-mail</i> eruß, wann en neu Aanmeldung för ene neue Metmaacher kütt.',
+	'newusernotifbody' => 'Jooden Daach $1,
+
+Ene neue Metmaacher mem Name "$2"
+es aam $5 öm $6 Uhr en de $3 neu aanjemeldt woode.
+
+Ene Jrooss vun de {{SITENAME}}',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -323,6 +333,17 @@ $messages['nl'] = array(
 	'newusernotifbody' => 'Hallo $1.
 
 Er is een nieuwe gebruiker $2 aangemaakt op $3 op $5 om $6.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'newusernotifsubj' => 'Melding om ny brukar for $1',
+	'newusernotif-desc' => 'Ein e-post blir sendt når nye brukarkontoar blir oppretta',
+	'newusernotifbody' => 'Hei, $1. 
+
+Ein ny brukarkonto, $2, blei oppretta på $3 $4.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -139,6 +139,16 @@ $messages['bcc'] = array(
 $messages['be-tarask'] = array(
 	'scanset-desc' => 'Прагляд адсканаваных выяваў з CD/DVD калекцыі Андрэаса Гроса',
 	'scanset_no_name' => 'Памылка: Вы павінны пазначыць назву калекцыі выяваў, напрыклад, &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Памылка: Памылка ў назве набору здымкаў, ці пазначаны набор адсутнічае.',
+	'scanset_unrecognised_index_format' => 'Памылка: Невядомы фармат індэксу',
+	'scanset_opendir_error' => 'Памылка: Немагчыма адчыніць дырэкторыю $1',
+	'scanset_no_files' => 'Памылка: Няма файлаў у пазначанай дырэкторыі.',
+	'scanset_no_volumes' => 'Памылка: Ня знойдзена дырэкторыяў для тамоў',
+	'scanset_missing_index_file' => 'Памылка: Файл індэксу $1 ня знойдзены',
+	'scanset_index_file_error' => 'Памылка: Памылка ў файле індэсу ў радку $1',
+	'scanset_invalid_volume' => 'Памылка: Няправільны том',
+	'scanset_next' => 'Наст. &gt;',
+	'scanset_prev' => '&lt; Папярэд.',
 );
 
 /** Bulgarian (Български)
@@ -750,26 +760,39 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'scanset-desc' => 'Syn bilete av skanna sider frå Andreas Grosz sine CD-/DVD-sett',
+	'scanset_no_name' => 'Feil: Du må oppgje namnet på eit «scan set», til dømes &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Feil: Ugyldig eller manglande «scan set».',
+	'scanset_unrecognised_index_format' => 'Feil: Ukjend indeksformat',
+	'scanset_opendir_error' => 'Feil: Kan ikkje opna mappa $1',
+	'scanset_no_files' => 'Feil: Det finst ingen filer den oppgjevne mappa.',
+	'scanset_no_volumes' => 'Feil: Fann inga volummappa',
+	'scanset_missing_index_file' => 'Feil: Fann ikkje indeksfila $1',
+	'scanset_index_file_error' => 'Feil: Feil i indeksfilformatet på linja $1',
+	'scanset_invalid_volume' => 'Feil: Ugyldig volum',
 	'scanset_next' => 'Neste &gt;',
+	'scanset_prev' => '&lt; Førre',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'scanset-desc' => 'Vis bilder av skannede sider fra Andreas Grosz’ CD-/DVD-sett',
 	'scanset_no_name' => 'Error: Du må angi navnet på et ScanSet, f.eks. &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Error: Ugyldig eller manglende ScanSet.',
-	'scanset_unrecognised_index_format' => 'Error: Ukjent indeksformat',
-	'scanset_opendir_error' => 'Error: Feil, kan ikke åpne mappen $1',
-	'scanset_no_files' => 'Error: Ingen filer i mappen som ble oppgitt.',
-	'scanset_no_volumes' => 'Error: Ingen volummapper funnet',
-	'scanset_missing_index_file' => 'Error: Indeksfil $1 ikke funnet',
-	'scanset_index_file_error' => 'Error: Feil i indeksfilformat på linje $1',
-	'scanset_invalid_volume' => 'Error: Ugyldig volum',
+	'scanset_invalid_name' => 'Feil: Ugyldig eller manglende ScanSet.',
+	'scanset_unrecognised_index_format' => 'Feil: Ukjent indeksformat',
+	'scanset_opendir_error' => 'Feil: Kan ikke åpne mappen $1',
+	'scanset_no_files' => 'Feil: Ingen filer i mappen som ble oppgitt.',
+	'scanset_no_volumes' => 'Feil: Ingen volummapper funnet',
+	'scanset_missing_index_file' => 'Feil: Indeksfil $1 ikke funnet',
+	'scanset_index_file_error' => 'Feil: Feil i indeksfilformat på linje $1',
+	'scanset_invalid_volume' => 'Feil: Ugyldig volum',
 	'scanset_next' => 'Neste &gt;',
 	'scanset_prev' => '&lt; Forrige',
 );

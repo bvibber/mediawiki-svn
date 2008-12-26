@@ -220,16 +220,50 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
+	'createsigndocument' => 'Dokumentensignieren erlauben',
+	'createsigndoc-head' => "Benutze dieses Formular, um ein „Signaturdokument“ für die gegebene Seite zu erstellen, so dass Benutzer in der Lage sein werden, es zu [[Special:SignDocument|signieren]].
+Bitte gib den Namen der Seite an, auf welcher du digitales Signieren erlauben willst, welche Benutzergruppen in der Lage sein sollen, sie zu signieren, welche Felder sichtbar sein sollen und welche optional, ein gegebenenfalls minimales Benutzeralter, um das Dokument zu unterzeichnen, und einen kurzen Einleizungstext, der dem Benutzer das Dokument beschreibt und ihm eine kurze Anleitung gibt.
+
+<b>Derzeit ist es nicht möglich, einmal gegeben Signaturen zu modifizieren oder zu entfernen</b> ohne direkt die Datenbank zu bearbeiten.
+Zusätzlich wird der angezeigte Text beim Signieren der Seite der ''derzeitige'' Text sein, egal welche Änderungen danach noch vorgenommen wurden.
+Bitte sei dir absolut sicher, dass das Dokument in einem gut genugen Zustand zum Signieren ist.
+Bitte sei dir ebenfalls sicher, dass du alle nögtigen Felder angegeben hast, ''bevor du dieses Formular übersendest''.",
 	'createsigndoc-pagename' => 'Seite:',
+	'createsigndoc-allowedgroup' => 'Erlaubte Gruppen:',
 	'createsigndoc-email' => 'E-Mail-Adresse:',
+	'createsigndoc-address' => 'Hausanschrift:',
+	'createsigndoc-extaddress' => 'Stadt, Staat, Land:',
+	'createsigndoc-phone' => 'Telefonnummer:',
 	'createsigndoc-bday' => 'Geburtstag:',
 	'createsigndoc-minage' => 'Mindestalter:',
+	'createsigndoc-introtext' => 'Anleitung:',
 	'createsigndoc-hidden' => 'Versteckt',
+	'createsigndoc-optional' => 'Optional',
+	'createsigndoc-create' => 'Erstelle',
 	'createsigndoc-error-generic' => 'Fehler: $1',
 	'createsigndoc-error-pagenoexist' => 'Fehler: Die Seite [[$1]] existiert nicht.',
+	'createsigndoc-success' => 'Das Signieren wurde erfolgreich auf [[$1]] aktiviert.
+Besuche bitte [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} diese Seite], um es auszuprobieren.',
+	'createsigndoc-error-alreadycreated' => 'Dokumentsignatur „$1“ exitiert bereits.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Revolus
+ */
+$messages['de-formal'] = array(
+	'createsigndoc-head' => "Benutze dieses Formular, um ein „Signaturdokument“ für die gegebene Seite zu erstellen, so dass Benutzer in der Lage sein werden, es zu [[Special:SignDocument|signieren]].
+Bitte gib den Namen der Seite an, auf welcher Sie digitales Signieren erlauben wollen, welche Benutzergruppen in der Lage sein sollen, sie zu signieren, welche Felder sichtbar sein sollen und welche optional, ein gegebenenfalls minimales Benutzeralter, um das Dokument zu unterzeichnen, und einen kurzen Einleizungstext, der dem Benutzer das Dokument beschreibt und ihm eine kurze Anleitung gibt.
+
+<b>Derzeit ist es nicht möglich, einmal gegeben Signaturen zu modifizieren oder zu entfernen</b> ohne direkt die Datenbank zu bearbeiten.
+Zusätzlich wird der angezeigte Text beim Signieren der Seite der ''derzeitige'' Text sein, egal welche Änderungen danach noch vorgenommen wurden.
+Bitte seien Sie sich absolut sicher, dass das Dokument in einem gut genugen Zustand zum Signieren ist.
+Bitte seien Sie sich ebenfalls sicher, dass du alle nögtigen Felder angegeben hast, ''bevor du dieses Formular übersendest''.",
+	'createsigndoc-success' => 'Das Signieren wurde erfolgreich auf [[$1]] aktiviert.
+Besuchen Sue bitte [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} diese Seite], um es auszuprobieren.',
 );
 
 /** Greek (Ελληνικά)
@@ -287,13 +321,19 @@ $messages['ext'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'createsigndoc-pagename' => 'Sivu',
 	'createsigndoc-allowedgroup' => 'Sallittu ryhmä',
 	'createsigndoc-email' => 'Sähköpostiosoite',
 	'createsigndoc-address' => 'Kotiosoite',
+	'createsigndoc-extaddress' => 'Kaupunki, lääni, maa',
 	'createsigndoc-phone' => 'Puhelinnumero',
 	'createsigndoc-bday' => 'Syntymäaika',
 	'createsigndoc-minage' => 'Vähimmäisikä',
+	'createsigndoc-introtext' => 'Johdanto',
 	'createsigndoc-optional' => 'Valinnainen',
+	'createsigndoc-create' => 'Luo',
+	'createsigndoc-error-generic' => 'Virhe: $1',
+	'createsigndoc-error-pagenoexist' => 'Virhe: sivua [[$1]] ei löydy.',
 );
 
 /** French (Français)
@@ -1155,5 +1195,17 @@ $messages['vo'] = array(
 	'createsigndoc-extaddress' => 'Zif, Tat, Län:',
 	'createsigndoc-create' => 'Jafön',
 	'createsigndoc-error-generic' => 'Pöl: $1',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'createsigndocument' => '啟用文件簽名',
+	'createsigndoc-phone' => '電話號碼:',
+	'createsigndoc-bday' => '出生日期:',
+	'createsigndoc-hidden' => '隱藏',
+	'createsigndoc-optional' => '可選擇',
+	'createsigndoc-error-generic' => '錯誤: $1',
 );
 

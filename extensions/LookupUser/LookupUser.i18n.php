@@ -129,18 +129,24 @@ $messages['cs'] = array(
 	'lookupuser-useroptions' => 'Nastavení uživatele:',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ */
 $messages['de'] = array(
 	'lookupuser' => 'Benutzerinformationen einsehen',
+	'lookupuser-desc' => '[[Special:LookupUser|Informationen]] über Benutzer erhalten, etwa E-Mail-Adresse oder ID.',
 	'lookupuser-intro' => 'Gib einen Benutzernamen ein, um dir die persönlichen Einstellungen eines Benutzers anzusehen.',
 	'lookupuser-nonexistent' => 'Fehler: Benutzer nicht vorhanden',
 	'lookupuser-authenticated' => 'E-Mail-Bestätigung: $1',
 	'lookupuser-not-authenticated' => 'nicht bestätigt',
 	'lookupuser-id' => 'Benutzer-ID: <tt>$1</tt>',
 	'lookupuser-email' => 'E-Mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'nicht vorhanden',
 	'lookupuser-realname' => 'Wirklicher Name: $1',
 	'lookupuser-registration' => 'Datum der Registrierung: $1',
+	'lookupuser-no-registration' => 'nicht verzeichnet',
 	'lookupuser-touched' => 'Benutzerkonto zuletzt berührt: $1',
+	'lookupuser-info-authenticated' => 'E-Mail-Bestätigung: $1',
 	'lookupuser-useroptions' => 'Einstellungen des Benutzerkontos:',
 );
 
@@ -886,10 +892,24 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Aleksandrit
  */
 $messages['uk'] = array(
 	'lookupuser' => 'Показати відомості про користувача',
 	'lookupuser-desc' => '[[Special:LookupUser|Отримання відомостей]] про користувача, таких як адреса Е-пошти та ідентифікатор',
+	'lookupuser-intro' => "Введіть ім'я користувача, щоб переглянути налаштування цього користувача.",
+	'lookupuser-nonexistent' => 'Помилка. Користувача не існує',
+	'lookupuser-authenticated' => 'Аутентифікація ел. поштою: $1',
+	'lookupuser-not-authenticated' => 'не аутентіфіцірован',
+	'lookupuser-id' => 'ID користувача: <tt>#$1</tt>',
+	'lookupuser-email' => 'Ел. пошта: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'не указан',
+	'lookupuser-realname' => "Справжнє ім'я: $1",
+	'lookupuser-registration' => 'Дата реєстрації: $1',
+	'lookupuser-no-registration' => 'не записана',
+	'lookupuser-touched' => 'Останнє оновлення запису користувача: $1',
+	'lookupuser-info-authenticated' => 'Аутентифікація по пошті: $1',
+	'lookupuser-useroptions' => 'Налаштування користувача:',
 );
 
 /** Vèneto (Vèneto)
@@ -940,5 +960,14 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'lookupuser-realname' => 'Nem jenöfik: $1',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'lookupuser-email' => '電郵: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-realname' => '真實姓名: $1',
+	'lookupuser-registration' => '註冊日期: $1',
 );
 

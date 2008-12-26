@@ -648,3 +648,17 @@ $messages['vi'] = array(
 	'slippymap_resetview' => 'Mặc định lại bản đồ',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'slippymap_widthbig' => '寬度值(w)不能多於1000',
+	'slippymap_widthsmall' => '寬度值(w)不能少於100',
+	'slippymap_heightbig' => '高度值(h)不能多於1000',
+	'slippymap_heightsmall' => '高度值(h)不能少於100',
+	'slippymap_latbig' => '緯度值(lat)不能大於90',
+	'slippymap_latsmall' => '緯度值(lat)不能小於-90',
+	'slippymap_lonbig' => '經度值(lon)不能大於180',
+	'slippymap_lonsmall' => '經度值(lon)不能小於-180',
+);
+

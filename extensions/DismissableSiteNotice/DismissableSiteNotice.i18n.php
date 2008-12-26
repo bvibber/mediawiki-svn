@@ -37,6 +37,7 @@ $messages['af'] = array(
  */
 $messages['am'] = array(
 	'sitenotice_close' => '<-- ይህን አውጣ',
+	'sitenotice-desc' => 'መልእክቱን ለማውጣት ያስችላል',
 );
 
 /** Aragonese (Aragonés)
@@ -302,6 +303,13 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'sitenotice_close' => 'ἀποπέμπειν',
 	'sitenotice-desc' => 'Ἐπιτρέπει τοῖς χρωμένοις τὸ κλῄειν τὴν άναγγελίαν τοῦ ἱστοτόπου',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Melancholie
+ */
+$messages['gsw'] = array(
+	'sitenotice_close' => 'usblände',
 );
 
 /** Hebrew (עברית)

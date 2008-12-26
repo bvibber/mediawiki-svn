@@ -187,6 +187,18 @@ $messages['br'] = array(
 	'imagemap_description' => 'Diwar-benn ar skeudenn-mañ',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'imagemap_no_image' => 'Greška: morate odrediti sliku u prvom redu',
+	'imagemap_invalid_image' => 'Greška: slika je nevaljana ili ne postoji',
+	'imagemap_bad_image' => 'Greška: slika je nepoželjna na ovoj stranici',
+	'imagemap_no_link' => 'Greška: nije pronađen valjan link na kraju reda $1',
+	'imagemap_invalid_title' => 'Greška: nevaljan naslov u linku u redu $1',
+	'imagemap_description' => 'O ovoj slici',
+);
+
 /** Catalan (Català)
  * @author Toniher
  */

@@ -130,6 +130,11 @@ $aliases['ps'] = array(
 	'Invitations' => array( 'بلنې' ),
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'Invitations' => array( 'Convites' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Invitations' => array( 'Inbjudningar' ),

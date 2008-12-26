@@ -146,6 +146,16 @@ $wgGoogleMapsMessages['af'] = array(
 	'gm-back' => 'terug',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$wgGoogleMapsMessages['am'] = array(
+	'gm-width' => 'ስፋት',
+	'gm-yes' => 'አዎ',
+	'gm-line-width' => 'ስፋት',
+	'gm-moon' => 'ጨረቃ',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -634,6 +644,7 @@ $wgGoogleMapsMessages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Melancholie
  * @author Pill
  * @author Purodha
  * @author Raimond Spekking
@@ -652,6 +663,7 @@ $wgGoogleMapsMessages['de'] = array(
 	'gm-tab-title' => 'Karteireiter-Titel',
 	'gm-tab' => 'Karteireiter',
 	'gm-start-path' => 'Pfad beginnen',
+	'gm-trace-area' => 'ein Gebiet ausfindig machen',
 	'gm-save-point' => 'Speichern',
 	'gm-load-map-from-article' => 'Lade Karte aus Artikel:',
 	'gm-no-maps' => 'Dieser Artikel enthält keine Karten.',
@@ -3073,6 +3085,7 @@ $wgGoogleMapsMessages['ro'] = array(
 	'gm-refresh-points' => 'Reactualizează toate punctele',
 	'gm-width' => 'Lăţime',
 	'gm-height' => 'Înălţime',
+	'gm-zoom-control' => 'Navigare',
 	'gm-large' => 'Mare',
 	'gm-medium' => 'Mediu',
 	'gm-small' => 'Mic',
@@ -3108,6 +3121,7 @@ $wgGoogleMapsMessages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Aleksandrit
  * @author Александр Сигачёв
  */
 $wgGoogleMapsMessages['ru'] = array(
@@ -3125,12 +3139,12 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-trace-area' => 'очертить территорию',
 	'gm-save-point' => 'Сохранить &amp; закрыть',
 	'gm-load-map-from-article' => 'Загрузить карту из статьи:',
-	'gm-no-maps' => 'В этот статье нет карт для загрузки.',
+	'gm-no-maps' => 'В этой статье нет карт для загрузки.',
 	'gm-refresh-list' => 'Обновить список',
 	'gm-load-map' => 'Загрузить карту',
 	'gm-clip-result' => 'Добавить карту',
 	'gm-no-results' => 'Извините, ничего не найдено',
-	'gm-searching' => 'Ищем-с...',
+	'gm-searching' => 'Ищем…',
 	'gm-map' => 'Карта',
 	'gm-note' => 'Внимание: Сохраните полученный код в статье (см. ниже) перед тем, как \\"Загрузить карту\\", \\"Сохранить\\" или \\"Предварительный просмотр\\"!',
 	'gm-instructions' => 'Вики-разметка для создания карты.',
@@ -3655,6 +3669,7 @@ $wgGoogleMapsMessages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Manop
  * @author Octahedron80
  * @author Passawuth
  */
@@ -3664,6 +3679,8 @@ $wgGoogleMapsMessages['th'] = array(
 กรุณาตรวจสอบให้แน่ใจก่อนว่า เว็บบราวเซอร์ของคุณเป็นรุ่นล่าสุดแล้ว สำหรับ อินเตอร์เน็ต เอ็กซ์พลอเรอร์ <a href="http://www.microsoft.com/ie">ตรวจสอบได้ที่นี่</a> (สำหรับวินโดวส์) ส่วนไฟร์ฟอกซ์ <a href="http://www.mozilla.org/products/firefox">ตรวจสอบได้ที่นี่</a> (สำหรับวินโดวส์ แม็ค และ ลินุกซ์)',
 	'gm-balloon-title' => 'ชื่อเรื่อง :',
 	'gm-remove' => 'เอาออก',
+	'gm-tab-title' => 'ชื่อแท็บ',
+	'gm-tab' => 'แท็บ',
 	'gm-save-point' => 'บันทึก และ ปิด',
 	'gm-load-map' => 'โหลดแผนที่',
 	'gm-clip-result' => 'เพิ่มไปที่แผนที่',
@@ -3682,6 +3699,12 @@ $wgGoogleMapsMessages['th'] = array(
 	'gm-meters' => 'เมตร',
 	'gm-miles' => 'ไมล์',
 	'gm-save-path' => 'บันทึก',
+	'gm-edit-path' => 'เพิ่มจุด',
+	'gm-show-path' => 'แสดงจุด',
+	'gm-color-path' => 'เปลี่ยนสี',
+	'gm-add-fill' => 'ถมสีในบริเวณ',
+	'gm-fill-color' => 'สีถม',
+	'gm-line-color' => 'สีเส้น',
 	'gm-opacity' => 'ความทึบ',
 	'gm-line-width' => 'ความกว้าง',
 	'gm-make-map' => 'สร้างแผนที่',
@@ -3773,26 +3796,69 @@ $wgGoogleMapsMessages['tt-cyrl'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author Aleksandrit
  */
 $wgGoogleMapsMessages['uk'] = array(
+	'gm-incompatible-browser' => 'Для перегляду карти скористайтеся сумісним браузером.',
+	'gm-incompatible-browser-link' => 'Натисніть тут, щоб побачити список підходящих браузерів.',
+	'gm-no-editor' => 'На жаль, ваш браузер на підтримує функцію створення інтерактивних карт. Скористайтеся останньою версією <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) або <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac і Linux).',
 	'gm-balloon-title' => 'Заголовок:',
 	'gm-balloon-link-article' => "Посилання на цю сторінку (необов'язково):",
+	'gm-make-marker' => 'Маркер (можлива вікі-розмітка):',
 	'gm-remove' => 'вилучити',
 	'gm-caption' => 'Заголовок',
 	'gm-tab-title' => 'Назва позначки',
 	'gm-tab' => 'Помітка',
+	'gm-start-path' => 'прокласти маршрут',
+	'gm-trace-area' => 'окреслити територію',
+	'gm-save-point' => 'Зберегти &amp; закрити',
+	'gm-load-map-from-article' => 'Завантажити карту зі статті:',
+	'gm-no-maps' => 'У цій статті немає карт для завантаження.',
 	'gm-refresh-list' => 'Оновити список',
 	'gm-load-map' => 'Завантажити карту',
 	'gm-clip-result' => 'Додати до карти',
+	'gm-no-results' => 'На жаль, нічого не знайдено',
+	'gm-searching' => 'шукаємо…',
 	'gm-map' => 'Карта',
+	'gm-instructions' => 'Вікі-розмітка для створення карти.',
+	'gm-are-you-sure' => 'Ви впевнені?',
+	'gm-clear-all-points' => 'Видалити всі крапки',
+	'gm-refresh-points' => 'Оновити точки',
 	'gm-width' => 'Ширина',
 	'gm-height' => 'Висота',
 	'gm-scale-control' => 'Шкала',
 	'gm-overview-control' => 'Загальний вигляд',
+	'gm-selector-control' => 'Вибір Карта / Супутник',
 	'gm-zoom-control' => 'Навігація',
+	'gm-large' => 'Великий',
+	'gm-medium' => 'Середній',
+	'gm-small' => 'Маленький',
+	'gm-no-zoom-control' => 'Ні',
 	'gm-yes' => 'Так',
 	'gm-no' => 'Ні',
+	'gm-search-preface' => 'Клацніть по карті для додавання точки або пошуку міста, країни або адреси:',
+	'gm-geocode-preface' => ' Клацніть по карті для додавання точки або пошуку міста, країни або адреси:',
+	'gm-no-search-preface' => 'Клацніть по карті для додавання точки.',
+	'gm-search' => 'Пошук',
+	'gm-clear-search' => 'видалити результати пошуку',
+	'gm-meters' => 'метри',
+	'gm-miles' => 'милі',
+	'gm-editing-path' => 'Клацніть на карті, щоб додати точки в цей шлях.',
 	'gm-save-path' => 'Зберегти',
+	'gm-edit-path' => 'додати точки',
+	'gm-show-path' => 'показати точки',
+	'gm-color-path' => 'змінити колір',
+	'gm-color-fill' => 'змінити колір заповнення',
+	'gm-line-color' => 'Колір лінії',
+	'gm-opacity' => 'Непрозорість',
+	'gm-line-width' => 'Ширина',
+	'gm-make-map' => 'зробити карту',
+	'gm-hide-map' => 'заховати карту',
+	'gm-back' => 'назад',
+	'gm-kml-include' => 'Зовнішній KML/GeoRSS:',
+	'gm-kml-include-link' => 'додати на карту',
+	'gm-kml-loading' => 'завантаження…',
+	'gm-kml-export' => 'Експортувати цю карту в KML',
 	'gm-earth' => 'Земля',
 	'gm-moon' => 'Місяць',
 	'gm-mars' => 'Марс',

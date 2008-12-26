@@ -39,6 +39,12 @@ $aliases['de'] = array(
 	'WhiteListEdit' => array( 'Weiße Liste bearbeiten' ),
 );
 
+/** Divehi (ދިވެހިބަސް) */
+$aliases['dv'] = array(
+	'WhiteList' => array( 'ވައިޓް ލިސްޓް' ),
+	'WhiteListEdit' => array( 'ވައިޓް ލިސްޓަށް ބަދަލް ގެންނަވާ' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WhiteList' => array( 'فهرست_سفید' ),

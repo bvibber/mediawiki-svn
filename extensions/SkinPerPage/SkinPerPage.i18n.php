@@ -339,6 +339,13 @@ $messages['sv'] = array(
 	'skinperpage-desc' => 'Lägger till <tt>&lt;skin&gt;</tt>-taggen för att använda olika utseenden per sida',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'skinperpage-desc' => "Nagdaragdag ng tatak na <tt>&lt;pabalat&gt;</tt> upang gumamit/makagamit ng iba't ibang mga pabalat sa bawat pahina",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

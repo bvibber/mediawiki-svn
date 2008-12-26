@@ -266,6 +266,14 @@ $messages['nl'] = array(
 	'minnamelength-desc' => 'Laat toe om een minimumlengte voor gebruikersnamen te bepalen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'minnamelength-error' => 'Brukarnamnet ditt er for kort. Minimumslengda er $1.',
+	'minnamelength-desc' => 'Gjer det mogleg å innføra ei minstelengd på brukarnamn.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

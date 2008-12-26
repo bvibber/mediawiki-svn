@@ -325,27 +325,28 @@ $messages['hak'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'passwordreset' => 'איפוס סיסמה',
-	'passwordreset-desc' => "[[Special:PasswordReset|איפוס סיסמאות המשתמשים בוויקי]] - נדרשות הרשאות 'passwordreset'",
+	'passwordreset-desc' => '[[Special:PasswordReset|איפוס סיסמאות המשתמשים בוויקי]] - נדרשת הרשאת passwordreset',
 	'passwordreset-invalidusername' => 'שם המשתמש שגוי',
 	'passwordreset-emptyusername' => 'שם המשתמש ריק',
 	'passwordreset-nopassmatch' => 'הסיסמאות אינן תואמות',
 	'passwordreset-badtoken' => 'אסימון העריכה שגוי',
-	'passwordreset-username' => 'שם המשתמש:',
+	'passwordreset-username' => 'שם משתמש:',
 	'passwordreset-newpass' => 'סיסמה חדשה:',
-	'passwordreset-confirmpass' => 'אימות הסיסמה:',
+	'passwordreset-confirmpass' => 'חזרו על הסיסמה:',
 	'passwordreset-submit' => 'איפוס הסיסמה',
-	'passwordreset-success' => "הסיסמה אופסה עבור משתמש מס': $1",
+	'passwordreset-success' => 'הסיסמה אופסה עבור משתמש מספר: $1',
 	'passwordreset-disableuser' => 'האם לבטל את חשבון המשתמש?',
-	'passwordreset-disableuserexplain' => '(מגדיר סיסמת גיבוב שגויה - המשתמש לא יוכל להתחבר)',
-	'passwordreset-disablesuccess' => "חשבון המשתמש בוטל עבור משתמש מס': $1",
+	'passwordreset-disableuserexplain' => '(הגדרת גיבוב סיסמה בלתי תקין - המשתמש לא יוכל להיכנס לחשבון)',
+	'passwordreset-disablesuccess' => 'חשבון המשתמש בוטל עבור משתמש מספר: $1',
 	'passwordreset-accountdisabled' => 'החשבון בוטל',
 	'disabledusers' => 'משתמשים שחשבונם בוטל',
 	'disabledusers-summary' => 'זוהי רשימת המשתמשים שחשבונם בוטל דרך איפוס־הסיסמה (PasswordReset).',
-	'right-passwordreset' => '([[Special:PasswordReset|דף מיוחד]]) לאיפוס סיסמת המשתמש',
+	'right-passwordreset' => 'איפוס סיסמה של משתמש ([[Special:PasswordReset|דף מיוחד]])',
 );
 
 /** Hindi (हिन्दी)
@@ -838,18 +839,19 @@ $messages['pdt'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'passwordreset' => 'Wyczyszczenie hasła',
-	'passwordreset-desc' => "Ponowne ustawienie hasła użytkownika – wymaga uprawnienia 'passwordreset'",
+	'passwordreset-desc' => "[[Special:PasswordReset|Ponowne ustawienie hasła użytkownika]] – wymaga uprawnienia 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nieprawidłowa nazwa użytkownika',
 	'passwordreset-emptyusername' => 'Pusta nazwa użytkownika',
 	'passwordreset-nopassmatch' => 'Hasła nie są identyczne',
 	'passwordreset-badtoken' => 'Nieprawidłowy żeton edycji',
-	'passwordreset-username' => 'Nazwa użytkownika',
-	'passwordreset-newpass' => 'Nowe hasło',
-	'passwordreset-confirmpass' => 'Potwierdź hasło',
+	'passwordreset-username' => 'Nazwa użytkownika:',
+	'passwordreset-newpass' => 'Nowe hasło:',
+	'passwordreset-confirmpass' => 'Potwierdź hasło:',
 	'passwordreset-submit' => 'Wyczyść hasło',
 	'passwordreset-success' => 'Hasło zostało wyczyszczone dla użytkownika z ID: $1',
 	'passwordreset-disableuser' => 'Czy wyłączyć konto tego użytkownika?',
@@ -858,6 +860,7 @@ $messages['pl'] = array(
 	'passwordreset-accountdisabled' => 'Konto zostało zablokowane',
 	'disabledusers' => 'Zablokowani użytkownicy',
 	'disabledusers-summary' => 'Lista użytkowników, którzy zostali zablokowaniu poprzez użycie PasswordReset.',
+	'right-passwordreset' => 'Resetować hasło użytkownika ([[Special:PasswordReset|strona specjalna]])',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1153,7 +1156,9 @@ $messages['zh-hans'] = array(
 	'passwordreset-success' => 'User_id: $1 的密码已经重设',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
 $messages['zh-hant'] = array(
 	'passwordreset' => '密碼重設',
 	'passwordreset-invalidusername' => '無效的用戶名',
@@ -1165,5 +1170,9 @@ $messages['zh-hant'] = array(
 	'passwordreset-confirmpass' => '確認新密碼',
 	'passwordreset-submit' => '重設密碼',
 	'passwordreset-success' => 'User_id: $1 的密碼已經重設',
+	'passwordreset-disableuser' => '停用使用者戶口?',
+	'passwordreset-accountdisabled' => '戶口經已停用',
+	'disabledusers' => '已停用的使用者',
+	'disabledusers-summary' => '這是透過PasswordReset停用戶口的使用者清單。',
 );
 

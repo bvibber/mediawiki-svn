@@ -109,6 +109,41 @@ $messages['bg'] = array(
 	'refreshspecial-no-page' => 'Няма такава специална страница',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'refreshspecial' => 'Spezialseiten aktualisieren',
+	'refreshspecial-desc' => 'Erlaubt das [[Special:RefreshSpecial|manuelle Auffrischen von Spezialseiten]]',
+	'refreshspecial-title' => 'Spezialseiten aktualisieren',
+	'refreshspecial-help' => 'Diese Spezialseite stellt ein Werkzeug zum manuellen Aktualisieren der Spezialseiten bereit. Sobald du alle Spezialseiten zum Aktualisieren ausgewählt hast, drücke den Aktualiseren-Knöpf unterhalb, um die Aktualisierung zu starten. Achtung: Das Aktualisieren kann lange auf großen Wikis dauern.',
+	'refreshspecial-button' => 'ausgewählte auffrischen',
+	'refreshspecial-fail' => 'Bitte hake mindestens eine Spezialseite zum Auffrischen an.',
+	'refreshspecial-refreshing' => 'Spezialseiten werden aktualisiert',
+	'refreshspecial-skipped' => 'wertlos, übersprungen',
+	'refreshspecial-success-subtitle' => 'aktualisiere Spezialseiten',
+	'refreshspecial-choice' => 'aktualisiere Spezialseiten',
+	'refreshspecial-js-disabled' => '(<i>Du kannst nicht alle Seiten auswählen, wenn du Javascript deaktiviert hast</i>)',
+	'refreshspecial-select-all-pages' => '  alle Seiten auswählen',
+	'refreshspecial-link-back' => 'Zurück zur Erweiterung',
+	'refreshspecial-here' => '<b>hier</b>',
+	'refreshspecial-none-selected' => 'Du hast keine Spezialseiten ausgewählt; somit Zurücksetzung auf die Standardauswahl.',
+	'refreshspecial-db-error' => 'Störung: Datenbankfehler',
+	'refreshspecial-no-page' => 'Keine solche Spezialseite',
+	'refreshspecial-reconnected' => 'Wiederverbunden.',
+	'refreshspecial-reconnecting' => 'Verbindung fehlgeschlagen, wiederverbinde in 10 Sekunden …',
+	'refreshspecial-total-display' => '<br />Aktualisierte $1 Seiten, insgesammt $1 Zeilen, einer Zeit von $3 (Gesammtlaufzeit des Skriptlaufs ist $4)',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Revolus
+ */
+$messages['de-formal'] = array(
+	'refreshspecial-help' => 'Diese Spezialseite stellt ein Werkzeug zum manuellen Aktualisieren der Spezialseiten bereit. Sobald Sie alle Spezialseiten zum Aktualisieren ausgewählt haben, drücken den Aktualisieren-Knöpf unterhalb, um die Aktualisierung zu starten. Achtung: Das Aktualisieren kann lange auf großen Wikis dauern.',
+	'refreshspecial-js-disabled' => '(<i>Sie können nicht alle Seiten auswählen, wenn Sie Javascript deaktiviert haben</i>)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -510,6 +545,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'refreshspecial-select-all-pages' => ' అన్ని పేజీలను ఎంచుకోండి',
+	'refreshspecial-link-back' => 'తిరిగి పొడగింతకు వెళ్ళండి',
 	'refreshspecial-here' => '<b>ఇక్కడ</b>',
 	'refreshspecial-db-error' => 'విఫలం: డాటాబేసు పొరపాటు',
 	'refreshspecial-no-page' => 'అటువంటి ప్రత్యేక పేజీ లేదు',
@@ -541,5 +577,16 @@ $messages['vi'] = array(
 	'refreshspecial-reconnected' => 'Đã kết nối lại.',
 	'refreshspecial-reconnecting' => 'Kết nối thất bại, đang kết nối lại trong 10 giây nữa…',
 	'refreshspecial-total-display' => '<br />Đã làm mới $1 trang, tổng cộng là $2 hàng trong thời gian $3 (thời gian để hoàn thành chạy mã kịch bản là $4)',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'refreshspecial' => '重新載入特殊頁面',
+	'refreshspecial-title' => '重新載入特殊頁面',
+	'refreshspecial-button' => '重新載入已選頁面',
+	'refreshspecial-success-subtitle' => '正在重新載入特殊頁面',
+	'refreshspecial-choice' => '正在重新載入特殊頁面',
 );
 

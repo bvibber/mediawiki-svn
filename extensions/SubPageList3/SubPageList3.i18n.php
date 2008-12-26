@@ -270,6 +270,14 @@ $messages['pt'] = array(
 	'spl3_nosubpages' => '$1 não tem subpáginas para listar.',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'spl3_debug' => 'Valoare necunoscută pentru opţiunea $1.',
+	'spl3_nosubpages' => '$1 nu are subpagini pentru afişat.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -320,5 +328,12 @@ $messages['vi'] = array(
 	'spl3-desc' => 'Tự động tạo danh sách các trang con của một trang nào đó bằng cách sử dụng thẻ <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Giá trị không rõ đối với tùy chọn $1.',
 	'spl3_nosubpages' => '$1 không có trang con nào cả.',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'spl3_debug' => '不明的選項$1的設定值',
 );
 

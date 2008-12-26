@@ -129,13 +129,14 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'purgecache' => 'ריקון המטמון',
-	'purgecache-desc' => '[[Special:PurgeCache|דף מיוחד]] המשמש לריקון טבלת ב־OBJECTCACHE',
-	'purgecache-warning' => 'פעולה זו תרוקן לחלוטין את טבלאות המטמון.',
-	'purgecache-purged' => 'המטמון התרוקן לחלוטין.',
+	'purgecache-desc' => '[[Special:PurgeCache|דף מיוחד]] המשמש לריקון טבלת ה־objectcache',
+	'purgecache-warning' => 'פעולה זו תרוקן את טבלאות המטמון.',
+	'purgecache-purged' => 'המטמון התרוקן.',
 	'purgecache-button' => 'ריקון',
 );
 
@@ -227,7 +228,11 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'purgecache' => 'Zweschespeicher (<i lang="en">cache</i>) leddisch maache',
 	'purgecache-desc' => '[[Special:PurgeCache|Söndersigg]] öm de <i lang="en">OBJECTCACHE</i> Tabell en de Datebank leddisch ze maache.',
+	'purgecache-warning' => 'Dat määt de <i lang="en">cache</i> Tabelle fott.',
+	'purgecache-purged' => 'Dä Zweschespeicher (<i lang="en">cache</i>) es leddisch.',
+	'purgecache-button' => 'Leddesch Maache!',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -407,5 +412,14 @@ $messages['vi'] = array(
 	'purgecache-warning' => 'Cái này sẽ tẩy các bảng bộ đệm.',
 	'purgecache-purged' => 'Đã tẩy sạch vùng nhớ đệm.',
 	'purgecache-button' => 'Làm tươi',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'purgecache' => '清除緩存',
+	'purgecache-purged' => '緩存經已清除。',
+	'purgecache-button' => '清除',
 );
 

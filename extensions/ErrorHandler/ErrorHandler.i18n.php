@@ -626,3 +626,11 @@ $messages['te'] = array(
 	'errorhandler-error-notice' => 'గమనిక',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'errorhandler-errors' => '錯誤:',
+	'errorhandler-error-warning' => '警告',
+);
+

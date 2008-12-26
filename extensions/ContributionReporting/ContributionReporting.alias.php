@@ -70,6 +70,13 @@ $aliases['pl'] = array(
 	'ContributionTotal' => array( 'Łączna suma darowizn' ),
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'ContributionHistory' => array( 'Histórico de contribuições' ),
+	'ContributionStatistics' => array( 'Estatísticas de contribuições' ),
+	'ContributionTotal' => array( 'Total de contribuições' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'ContributionHistory' => array( 'HistoriayaWachangiaji' ),

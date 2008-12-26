@@ -678,3 +678,11 @@ $messages['vo'] = array(
 	'randomincategory-label' => 'Klad:',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'randomincategory-toolbox' => '隨機頁面',
+	'randomincategory-label' => '頁面分類:',
+);
+

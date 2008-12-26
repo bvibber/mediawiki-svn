@@ -288,7 +288,7 @@ Agli utenti anonimi ne è dato uno generato automaticamente, ma si può cambiare
 $messages['ja'] = array(
 	'mibbit' => 'Mibbitチャット',
 	'mibbit-desc' => '他のウィキユーザーとリアルタイムにチャットをするのための[[Special:Mibbit|特別ページ]]を追加します',
-	'mibbit-header' => 'この特別ページによって、あなたはこのウィキの他の利用者とリアルタイムで共同作業ができるようになります。接続するには接続ボタンを押すだけです。ニックネームでログインしている場合はその名前があらかじめ入力されています。匿名の利用者は自動的に名前がつけられますが、変えることもできます。',
+	'mibbit-header' => 'この特別ページを使うと、あなたはこのウィキの他の利用者とリアルタイムで共同作業ができるようになります。接続するには接続ボタンを押すだけです。ニックネームでログインしている場合はその名前があらかじめ入力されています。匿名の利用者は自動的に名前がつけられますが、変えることもできます。',
 	'right-mibbit' => 'Mibbitチャットを使用できる',
 );
 
@@ -358,6 +358,19 @@ Klik op de knop "Connect" om te beginnen.
 Als u aangemeld bent bij de wiki is uw gebruikersnaam ingevuld.
 Anonieme gebruikers krijgen automatisch een gebruikersnaam toegewezen die te wijzigen is.',
 	'right-mibbit' => 'Mag Mibbit-chat gebruiken',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'mibbit' => 'Mibbit-chat',
+	'mibbit-desc' => 'Legg til ei [[Special:Mibbit|spesialsida]] brukt for å prata med andre brukarar i sanntid.',
+	'mibbit-header' => 'Denne spesialsida lèt deg samarbeida med andre wikibrukarar i sanntid.
+For å kopla deg til, trykker du ganske enkelt på «Connect»-knappen.
+Om du er logga inn, vil kallenamnet ditt vera fylt inn automatisk.
+Uregistrerte brukarar blir gjevne kallenamn oppretta automatisk, men desse kan bli endra.',
+	'right-mibbit' => 'Kan nytta Mibbit-chat',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

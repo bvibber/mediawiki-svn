@@ -83,6 +83,16 @@ $messages['bg'] = array(
 	'minipreview-no_category_gallery' => 'Няма категории или галерии!',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|Datei|Dateien}} (gesamt) in dieser Kategorie.",
+	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|Datei|Dateien}} (gesamt) in dieser Galerie.",
+	'minipreview-no_more_files_here' => 'Keine weiteren Dateien in dieser Richtung.',
+	'minipreview-no_category_gallery' => 'Keine Kategorien oder Galerien!',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -255,10 +265,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'minipreview-desc' => '画像の隣に同じカテゴリに属すファイルや同じページに挿入されているファイルの小さなプレビューを生成する',
-	'minipreview-files_in_category' => "このカテゴリには全部で'''$1'''ファイル属しています。",
+	'minipreview-files_in_category' => "このカテゴリには合計で'''$1'''ファイルが属しています。",
 	'minipreview-files_in_gallery' => "このギャラリーには全部で'''$1'''ファイル属しています。",
 	'minipreview-no_more_files_here' => 'この先にはファイルがありません。',
 	'minipreview-no_category_gallery' => 'カテゴリもギャラリーもありません。',
@@ -367,6 +378,23 @@ $messages['nl'] = array(
 	'minipreview-ignore_categories' => 'Hieronder staat een lijst met (het begin van) categorienamen.
 Deze categorieën worden niet weergegeven door MiniPreview.
 "* PD-" geeft bijvoorbeeld alle categorieën niet weer die beginnen met "PD-", zoals "PD-old".
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'minipreview-desc' => 'MiniPreview syner, ved sida av eit bilete, små førehandsvisingar av andre medium som ligg i dei same kategoriane eller som er synte på dei same sidene.',
+	'minipreview-files_in_category' => 'Totalt {{PLURAL:$1|éi fil|$1 filer}} i denne kategorien.',
+	'minipreview-files_in_gallery' => 'Totalt {{PLURAL:$1|éi fil|$1 filer}} i dette galleriet.',
+	'minipreview-no_more_files_here' => 'Ikkje fleire filer i denne retninga.',
+	'minipreview-no_category_gallery' => 'Ingen kategoriar eller galleri!',
+	'minipreview-ignore_categories' => 'Følgjande er ei lista over kategorinamn eller starten på dei. Desse kategoriane vil ikkje bli viste av MiniPreview. Til dømes vil «* PD-» gjera at bilete ikkje blir valte ut av di dei er i kategoriar som byrjar med «PD-», slik som «PD-old».
 * GFDL-
 * GFDL
 * CC-

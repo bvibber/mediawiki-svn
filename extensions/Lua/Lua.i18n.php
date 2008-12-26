@@ -111,12 +111,18 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
+	'lua_desc' => 'Erweitert den Parser mit einer Unterstützung für eingebettete Blöcke des [http://www.lua.org/ Lua]-Codes',
 	'lua_error' => 'Fehler in Zeile $1',
+	'lua_extension_notfound' => 'Lua-Erweiterung nicht konfiguriert',
+	'lua_interp_notfound' => 'Lua-Interpreter nicht gefunden',
 	'lua_error_internal' => 'Interner Fehler',
 	'lua_overflow_recursion' => 'Maximale Anzahl von Rekursionen erreicht',
+	'lua_overflow_loc' => 'Maximale Zeilenanzahl an Code erreicht',
+	'lua_overflow_time' => 'Maximale Ausführungsdauer erreicht',
 );
 
 /** Lower Sorbian (Dolnoserbski)

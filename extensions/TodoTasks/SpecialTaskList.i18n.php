@@ -136,12 +136,14 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author Melancholie
  * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
 	'tasklist' => 'Aufgabenliste',
 	'tasklist-parser-desc' => 'Fügt die Parserfunktion <nowiki>{{#todo:}}</nowiki> zum Zuordnen von Aufgaben hinzu',
+	'tasklist-special-desc' => 'Fügt eine Spezialseite für die Nachprüfung von [[Special:TaskList|Aufgabenzuteilungen]] hinzu',
 	'tasklistbyproject' => 'Aufgabenliste pro Projekt',
 	'tasklistunknownproject' => 'Unbekanntes Projekt',
 	'tasklistunspecuser' => 'Unbestimmter Benutzername',
@@ -852,6 +854,13 @@ $messages['zh-cn'] = array(
 	'tasklistchooseproj' => '选取专案：',
 	'tasklistprojdisp' => '显示',
 	'tasklistbyname' => '==  名称为「%s」的任务 ==',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'tasklistincorrectuser' => '使用者名稱錯誤',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

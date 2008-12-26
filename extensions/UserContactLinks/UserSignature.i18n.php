@@ -44,10 +44,11 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
-	'usercontactlink-baduser' => 'اسم مستخدم غير صحيح',
+	'usercontactlink-baduser' => 'اسم يوزر مش صحيح',
 	'usercontactlink-desc' => 'يوفر القدرة على تبسيط وإضافة أسماء المستخدمين الآخرين باستخدام صياغة ^^^user^^^',
 );
 
@@ -108,6 +109,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'usercontactlink-baduser' => 'nombre de usuario incorrecto',
+	'usercontactlink-desc' => 'Proporciona la capacidad para añadir sencilla y consistentemente otros usuarios usando la sintaxis ^^^user^^^',
 );
 
 /** French (Français)
@@ -339,6 +341,14 @@ $messages['tg-cyrl'] = array(
 	'usercontactlink-baduser' => 'номи корбарии нодуруст',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'usercontactlink-baduser' => 'hindi tamang pangalan ng tagagamit',
+	'usercontactlink-desc' => 'Nagbibigay ng kakayahan upang payak at parating makapagdagdag ng iba pang mga pangalan ng tagagamit na ginagamitan ng palaugnayang ^^^tagagamit^^^',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */
@@ -351,5 +361,12 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'usercontactlink-baduser' => 'tên hiệu không đúng',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'usercontactlink-baduser' => '使用者名稱錯誤',
 );
 

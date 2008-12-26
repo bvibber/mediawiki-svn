@@ -380,3 +380,11 @@ $messages['vo'] = array(
 	'piwik-countries' => 'Läns',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'piwik-countries' => '國家地區',
+	'piwik-browsers' => '瀏覽器',
+);
+

@@ -74,11 +74,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'watchers' => 'المراقبون',
-	'watchers-desc' => 'يعرض [[Special:Watchers|أى المستخدمين لديهم صفحة ما فى قائمة مراقبتهم]]',
+	'watchers-desc' => 'يعرض [[Special:Watchers|أى يوزرز عندهم صفحة فى لستة مراقبتهم]]',
 	'watchers_link_title' => 'من يراقب هذه الصفحة؟',
 	'watchers_error_article' => '<b>خطأ:</b> الصفحة غير موجودة.',
 	'watchers_header' => '{{PLURAL:$2|المستخدم الذى يراقب|المستخدمون الذين يراقبون}} "$1"',
@@ -514,6 +515,7 @@ $messages['pt'] = array(
 $messages['ro'] = array(
 	'watchers_link_title' => 'Cine urmăreşte această pagină?',
 	'watchers_error_article' => "'''Eroare:''' Pagina nu există.",
+	'watchers_header' => '{{PLURAL:$2|Utilizator care urmăreşte|Utilizatori care urmăresc}} "$1"',
 	'watchers_noone_watches' => 'Nimeni nu urmăreşte această pagină.',
 );
 
@@ -597,5 +599,14 @@ $messages['vec'] = array(
 	'watchers_noone_watches' => "Nissuni tien d'ocio sta pagina.",
 	'watchers_x_or_more' => "Almanco $1 {{PLURAL:$1|utente el|utenti i}} sta tegnendo d'ocio sta pagina.",
 	'watchers_less_than_x' => "Manco de $1 {{PLURAL:$1|utente el|utenti i}} tien d'ocio sta pagina.",
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'watchers' => '監視者',
+	'watchers_link_title' => '誰監視此頁面?',
+	'watchers_noone_watches' => '沒有人監視此頁面。',
 );
 

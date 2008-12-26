@@ -177,6 +177,14 @@ $messages['af'] = array(
 	'repoadmin-edit-button' => 'OK',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'code-status-ok' => 'እሺ',
+	'repoadmin-edit-button' => 'እሺ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -1086,8 +1094,12 @@ $messages['es'] = array(
 	'code-field-status' => 'Estatus',
 	'code-field-timestamp' => 'Fecha',
 	'code-field-comments' => 'Apuntes',
+	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Fecha:',
+	'code-rev-message' => 'Comentario:',
 	'code-rev-rev' => 'Revisión:',
 	'code-rev-status' => 'Estatus:',
+	'code-rev-status-set' => 'Cambiar estatus',
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
 	'code-status-new' => 'nuevo',
@@ -3078,6 +3090,7 @@ $messages['ro'] = array(
 	'code-rev-author' => 'Autor:',
 	'code-rev-message' => 'Comentariu:',
 	'code-rev-comment-preview' => 'Previzualizare',
+	'code-status-ok' => 'ok',
 	'repoadmin-new-button' => 'Creează',
 	'repoadmin-edit-button' => 'OK',
 );
@@ -3261,6 +3274,7 @@ $messages['sah'] = array(
 
 /** Sicilian (Sicilianu)
  * @author Gmelfi
+ * @author Santu
  */
 $messages['scn'] = array(
 	'code' => 'Rivisioni dû còdici',
@@ -3326,7 +3340,7 @@ $messages['scn'] = array(
 	'code-pathsearch-legend' => 'Cerca li rivisioni nti stu dipòsitu classificati pî pircursa',
 	'code-pathsearch-path' => 'Pircursu:',
 	'code-rev-submit' => 'Canci di assignazzioni',
-	'code-rev-submit-next' => 'Assignazzioni & prossimi nun risorti',
+	'code-rev-submit-next' => 'Assignazzioni & pròssimi nun risurvuti',
 	'codereview-reply-link' => 'Arrispunni',
 	'codereview-email-subj' => '[$1] [r$2]: Cummentu novu jiunchiutu',
 	'codereview-email-body' => 'L\'utilizzaturi "$1" misi nu cummentu supra r$3.
@@ -3603,7 +3617,7 @@ $messages['sv'] = array(
 	'code-field-id' => 'Version',
 	'code-field-author' => 'Författare',
 	'code-field-user' => 'Kommenerare',
-	'code-field-message' => 'Gör sammanfattning',
+	'code-field-message' => 'Spara sammanfattning',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Noter',
@@ -3841,29 +3855,43 @@ $messages['uk'] = array(
 	'code-author-link' => "встановити зв'язок?",
 	'code-author-unlink' => "розірвати зв'язок?",
 	'code-author-unlinksuccess' => "Для автора $1 розірвано зв'язок з обліковим записом",
+	'code-field-id' => 'Редакція',
 	'code-field-author' => 'Автор',
-	'code-field-user' => 'Коментатор',
+	'code-field-user' => 'Автор коментаря',
 	'code-field-message' => 'Опис змін',
-	'code-field-status' => 'Статус',
+	'code-field-status' => 'Стан',
 	'code-field-timestamp' => 'Дата',
+	'code-field-comments' => 'Коментарів',
 	'code-field-path' => 'Шлях',
 	'code-field-text' => 'Примітка',
 	'code-rev-author' => 'Автор:',
 	'code-rev-date' => 'Дата:',
 	'code-rev-message' => 'Опис змін:',
-	'code-rev-repo' => 'Вмістище:',
+	'code-rev-repo' => 'Сховище:',
+	'code-rev-rev' => 'Редакція:',
+	'code-rev-rev-viewvc' => 'через ViewVC',
 	'code-rev-paths' => 'Посилання на зміни:',
 	'code-rev-modified-a' => 'додано',
 	'code-rev-modified-r' => 'замінено',
 	'code-rev-modified-d' => 'вилучено',
 	'code-rev-modified-m' => 'змінено',
-	'code-rev-status' => 'Статус:',
-	'code-rev-status-set' => 'Змінити статус',
+	'code-rev-status' => 'Стан:',
+	'code-rev-status-set' => 'Змінити стан',
+	'code-rev-tags' => 'Мітки:',
+	'code-rev-tag-add' => 'Додати мітки:',
+	'code-rev-tag-remove' => 'Вилучити мітки:',
 	'code-rev-comment-by' => 'Коментар від $1',
 	'code-rev-comment-submit' => 'Відправити коментар',
 	'code-rev-comment-preview' => 'Попередній перегляд',
 	'code-rev-diff' => 'Зміна',
+	'code-rev-diff-link' => 'різн.',
 	'code-rev-purge-link' => 'очистити кеш',
+	'code-status-new' => 'нове',
+	'code-status-fixme' => 'виправити',
+	'code-status-reverted' => 'відкинуто',
+	'code-status-resolved' => 'виправлено',
+	'code-status-ok' => 'ОК',
+	'code-status-deferred' => 'відкладено',
 );
 
 /** Vèneto (Vèneto)

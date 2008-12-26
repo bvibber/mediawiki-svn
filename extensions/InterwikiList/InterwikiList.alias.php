@@ -130,6 +130,11 @@ $aliases['no'] = array(
 	'InterwikiList' => array( 'Interwikiliste' ),
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'InterwikiList' => array( 'Lista de interwikis' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'InterwikiList' => array( 'Interwikilista' ),

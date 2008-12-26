@@ -395,6 +395,14 @@ $messages['af'] = array(
 	'mv_category' => 'kategorie',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'mv_edit' => 'አርም',
+	'mv_history' => 'ታሪክ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -1030,33 +1038,89 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author DaSch
  * @author Leithian
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
+	'metavid' => 'Metavid-Seite',
+	'mv_missing_stream' => 'Fehlender Stream: $1',
+	'specialpages-group-mv_group' => 'MetaVidWiki-Spezialseiten',
 	'mv_ogg_high_quality' => 'hohe Qualität - Ogg Theora 900 kbit/s',
+	'mv_stream_added' => 'Du hast den Stream $1 hinzugefügt',
+	'mvexportsearch' => 'Metavid-Export',
 	'mv_add_stream_submit' => 'Stream hinzufügen',
+	'mv_path_type_url_anx' => 'komplette Medien-URL',
+	'mv_path_type_wiki_title' => 'Wiki-Medientitel',
+	'mv_path_type_label' => 'Pfad-Typ',
 	'mv_duration_label' => 'Dauer',
 	'mv_save_changes' => 'Änderungen speichern',
+	'mv_user_cant_edit' => 'Du könntest dich zum Editieren $1, $2',
+	'mv_missing_cat' => 'Fehlender Kategorienname',
+	'mv_redirect_and_delete_reason' => 'Weiterleitungsseite entfernt',
 	'mv_remove_reason' => 'Löschgrund:',
+	'mv_metavid_file' => 'Datei existiert auf dem Server',
 	'mv_upload_file' => 'Datei hochladen',
+	'mv_external_file' => 'Externe Datei',
 	'mv_tool_search' => 'Suche',
+	'mv_search_transcripts_for' => 'Suche Videos für $1 (diese Box ausblenden)',
+	'mv_tool_navigate' => 'Navigiere',
+	'mv_tool_export' => 'Exportieren',
+	'mv_tool_embed' => 'Einbinden',
 	'mv_click_to_edit' => 'Klicken zum bearbeiten',
 	'mv_time_separator' => '$1 bis $2',
 	'mv_play' => 'Start',
 	'mv_edit' => 'Bearbeiten',
 	'mv_history' => 'Versionen/Autoren',
+	'mv_edit_title' => 'Text bearbeiten',
 	'mv_remove' => 'entfernen',
 	'mv_adjust' => 'Anpassen',
 	'mv_adjust_preview_stop' => 'Vorschau anhalten',
+	'mv_start_desc' => 'Startzeit',
+	'mv_end_desc' => 'Endzeit',
 	'mv_of' => '&#32;von&#32;',
+	'mv_edit_metadata' => 'Metadaten bearbeiten',
+	'mv_advanced_edit' => 'Erweiterte Bearbeitung',
+	'mv_basic_edit' => 'Einfache Bearbeitung',
+	'mv_remove_category' => 'Kategorie entfernen',
+	'mv_existing_categories' => '{{PLURAL:$1|Kategorie|Kategorien}}:',
+	'mv_add_category' => 'Kategorisierung hinzufügen',
+	'mv_basic_text_desc' => 'Text-Beschreibung (optional)',
+	'mv_do_media_search' => 'Metavid-Medien-Suche für $1',
+	'mv_results_for' => 'Ergebnisse für $1',
+	'mv_video_search' => 'Video-Suche',
+	'mv_page_search' => 'Wikiseiten-Suche für $1',
 	'mv_add_filter' => 'Filter hinzufügen',
+	'mv_search_match' => 'Suchtext',
+	'mv_search_spoken_by' => 'Gesprochen von',
+	'mv_search_categories' => 'Kategorien',
+	'mv_search_category' => 'Kategorie',
 	'mv_search_and' => 'und',
 	'mv_search_or' => 'oder',
 	'mv_search_not' => 'nicht',
+	'mv_search_date_range' => 'Zeitspanne',
+	'mv_date_range' => 'Zeitspanne',
+	'mv_date_last_week' => 'Letzte Woche',
+	'mv_category_results' => 'Kategorien-Ergebnisse',
+	'mv_intrest_group_results' => 'Interessensgruppen',
+	'mv_spoken_by' => 'gesprochen von',
 	'mv_category' => 'Kategorie',
 	'mv_remove_filter' => 'Filter entfernen',
 	'mv_match_text' => '~  $1 Treffer',
 	'mv_match_text_one' => '~ ein Treffer',
+	'mv_media_search' => 'Mediensuche',
+	'mv_other_options' => 'Andere Optionen',
+	'mv_contextmenu_opt' => 'Kontextmenüs aktivieren',
+	'mv_tool_missing' => 'angefordertes Werkzeug existiert nicht',
+	'mv_prev_cat' => 'Vorherige Kategorie: $1',
+	'mv_next_cat' => 'Nächste Kategorie: $1',
+	'mv_protect_source_material' => 'Originalmaterial gegenüber Bearbeitungen gesperrt',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Revolus
+ */
+$messages['de-formal'] = array(
+	'mv_user_cant_edit' => 'Sie können sich zum Editieren $1, $2',
 );
 
 /** Greek (Ελληνικά)
@@ -1071,9 +1135,11 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author ArnoLagrange
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'metavid' => 'Metavid paĝo',
 	'mv_duration_label' => 'Daŭro',
 	'mv_save_changes' => 'Konservu Ŝanĝojn',
 	'mv_missing_cat' => 'Kategoria nomo mankas',
@@ -1122,7 +1188,10 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'mv_tool_search' => 'Buscar',
 	'mv_edit' => 'Editar',
+	'mv_search_spoken_by' => 'Hablado por',
+	'mv_search_categories' => 'Categorías',
 	'mv_search_category' => 'Categoría',
+	'mv_spoken_by' => 'hablado por',
 	'mv_category' => 'categoría',
 );
 
@@ -4906,5 +4975,12 @@ Nhảy đến cảnh luồng: $2',
  */
 $messages['vo'] = array(
 	'mv_search_category' => 'Klad',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'mv_tool_search' => '搜尋',
 );
 

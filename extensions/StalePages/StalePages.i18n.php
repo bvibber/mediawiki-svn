@@ -48,9 +48,12 @@ $messages['bg'] = array(
 	'stalepages-summary' => 'Това е списък от страници, които не са били редактирани през последните $1 дни.',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ */
 $messages['de'] = array(
 	'stalepages' => 'Alte Seiten',
+	'stalepages-desc' => 'Erzeugt eine [[Special:Stalepages|Liste von Seiten]] die seit einer Weile nicht mehr bearbeitet wurden',
 	'stalepages-summary' => 'Dies ist eine Liste von Seiten, die in den letzten $1 Tagen nicht bearbeitet wurden.',
 );
 
@@ -141,6 +144,15 @@ $messages['hsb'] = array(
 	'stalepages' => 'spadnjene strony',
 	'stalepages-desc' => 'Wutworja [[Special:Stalepages|lisćinu stronow]], kotrež tuchwilu njebuchu wobdźěłane.',
 	'stalepages-summary' => 'To je lisćina stronow, kotrež njebuchu za {{PLURAL:$1|posledni $1 dźeń|poslednjeju $1 dnjow|posdlednje $1 dny|poslednych $1 dnjow}} změnjene.',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'stalepages' => 'Elévült lapok',
+	'stalepages-desc' => 'A közelmúltban nem szerkesztett [[Special:Stalepages|lapok listája]]',
+	'stalepages-summary' => 'Ez a(z) $1 napnál régebben szerkesztett lapok listája.',
 );
 
 /** Interlingua (Interlingua)
@@ -324,5 +336,12 @@ $messages['te'] = array(
  */
 $messages['tr'] = array(
 	'stalepages' => 'Eski sayfalar',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'stalepages-summary' => '這是在最近$1天內未曾編輯的頁面單。',
 );
 

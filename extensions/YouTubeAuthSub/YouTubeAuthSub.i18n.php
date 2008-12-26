@@ -117,16 +117,17 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'youtubeauthsub' => 'رفع فيديو يوتيوب',
-	'youtubeauthsub-desc' => 'السماح للمستخدمين [[Special:YouTubeAuthSub|بتحميل الفيديو]] مباشرة إلى يوتيوب',
+	'youtubeauthsub-desc' => 'السماح لليوزرز [[Special:YouTubeAuthSub|بتحميل الفيديو]] مباشرة ليوتيوب',
 	'youtubeauthsub_info' => 'لرفع فيديو إلى يوتيوب لتضمينه فى صفحة، املأ المعلومات التالية:',
 	'youtubeauthsub_title' => 'عنوان',
 	'youtubeauthsub_description' => 'وصف',
 	'youtubeauthsub_password' => 'كلمة سر يوتيوب',
-	'youtubeauthsub_username' => 'اسم مستخدم يوتيوب',
+	'youtubeauthsub_username' => 'اسم يوزر يوتيوب',
 	'youtubeauthsub_keywords' => 'كلمات مفتاحية',
 	'youtubeauthsub_category' => 'تصنيف',
 	'youtubeauthsub_submit' => 'تنفيذ',
@@ -175,6 +176,7 @@ $messages['be-tarask'] = array(
 	'youtubeauthsub' => 'Загрузка відэафайла YouTube',
 	'youtubeauthsub-desc' => 'Дазваляе ўдзельнікам [[Special:YouTubeAuthSub|загружаць відэа]] непасрэдна на YouTube',
 	'youtubeauthsub_info' => 'Каб загрузіць відэа на YouTube і дадаць яго на старонку, падайце наступную інфармацыю:',
+	'youtubeauthsub_title' => 'Загаловак',
 	'youtubeauthsub_category' => 'Катэгорыя',
 );
 
@@ -481,6 +483,14 @@ Por favor, sé paciente.',
  */
 $messages['fi'] = array(
 	'youtubeauthsub_description' => 'Kuvaus',
+	'youtubeauthsub_password' => 'YouTube-salasana',
+	'youtubeauthsub_username' => 'YouTube-käyttäjätunnus',
+	'youtubeauthsub_keywords' => 'Avainsanat',
+	'youtubeauthsub_category' => 'Luokka',
+	'youtubeauthsub_submit' => 'Lähetä',
+	'youtubeauthsub_clickhere' => 'Kirjaudu YouTubeen',
+	'youtubeauthsub_jserror_notitle' => 'Anna videolle otsikko.',
+	'youtubeauthsub_jserror_nodesc' => 'Anna videolle kuvaus.',
 );
 
 /** French (Français)
@@ -1220,6 +1230,8 @@ $messages['nah'] = array(
 	'youtubeauthsub_title' => 'Tōcāitl',
 	'youtubeauthsub_category' => 'Neneuhcāyōtl',
 	'youtubeauthsub_submit' => 'Tiquihuāz',
+	'youtubeauthsub_uploadbutton' => 'Ticquetzāz',
+	'youtubeauthsub_summary' => 'Moquetzacah YouTube vīdeo',
 );
 
 /** Low German (Plattdüütsch)
@@ -1769,6 +1781,8 @@ $messages['te'] = array(
 	'youtubeauthsub_category' => 'వర్గం',
 	'youtubeauthsub_submit' => 'దాఖలుచెయ్యి',
 	'youtubeauthsub_clickhere' => 'యూట్యూబ్ లోనికి ప్రవేశించడానికి ఇక్కడ నొక్కండి',
+	'youtubeauthsub_uploadhere' => 'మీ వీడియోని ఇక్కడ నుండి ఎగుమతి చేయండి:',
+	'youtubeauthsub_uploadbutton' => 'ఎగుమతిచెయ్యండి',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 ఈ వీడియోని [http://www.youtube.com/watch?v=$1 ఇక్కడ] చూడవచ్చు',
@@ -2026,5 +2040,38 @@ Có thể coi video này [http://www.youtube.com/watch?v=$1 tại đây].',
 $messages['vo'] = array(
 	'youtubeauthsub_title' => 'Tiäd',
 	'youtubeauthsub_category' => 'Klad',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'youtubeauthsub' => '上載YouTube影片',
+	'youtubeauthsub-desc' => '容許使用者直接[[Special:YouTubeAuthSub|上載影片]]至YouTube。',
+	'youtubeauthsub_info' => '在上載YouTube影片至包含頁面前，請填寫以下資料:',
+	'youtubeauthsub_title' => '標題',
+	'youtubeauthsub_password' => 'YouTube密碼',
+	'youtubeauthsub_username' => 'YouTube使用者名稱',
+	'youtubeauthsub_keywords' => '關鍵字',
+	'youtubeauthsub_category' => '分類',
+	'youtubeauthsub_clickhere' => '按這裡登入YouTube',
+	'youtubeauthsub_success' => "上載成功!
+您的影片經已上載。
+按<a href='http://www.youtube.com/watch?v=$1'這裡</a>觀看恁的影片。
+YouTube需要一些時間去處理閣下的影片，因此或未能即時觀看它。
+
+要把影片方進wiki的頁面內，請使用以下代碼:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => '在上載影片前，您需先登入YouTube。',
+	'youtubeauthsub_uploadbutton' => '上載',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}
+
+本影片可在[http://www.youtube.com/watch?v=$1 這裡]觀看',
+	'youtubeauthsub_summary' => '上載YouTube影片中',
+	'youtubeauthsub_uploading' => '您的影片正在上載中。
+請耐心等候。',
+	'youtubeauthsub_viewpage' => '除此之外，您也可在[[$1|這裡]]觀看影片。',
+	'youtubeauthsub_jserror_nokeywords' => '請輸入一個或以上的關鍵詞。',
+	'youtubeauthsub_jserror_notitle' => '請輸入影片標題',
 );
 

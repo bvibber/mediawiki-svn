@@ -117,6 +117,11 @@ $aliases['pl'] = array(
 	'Contributors' => array( 'Autorzy' ),
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'Contributors' => array( 'Contribuidores', 'Colaboradores' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Contributors' => array( 'Wachangiaji' ),

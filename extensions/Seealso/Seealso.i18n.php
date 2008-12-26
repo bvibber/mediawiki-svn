@@ -71,10 +71,12 @@ $messages['br'] = array(
 );
 
 /** German (Deutsch)
+ * @author Melancholie
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'seealso' => 'Siehe auch',
+	'seealso-desc' => 'Lokalisierte Siehe-auch-Überschriften mittels <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -98,6 +100,13 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'seealso' => 'Vidu ankaŭ',
 	'seealso-desc' => "Asimilita 'Vidu ankaŭ' sekcio-titolo uzante la markojn <code><nowiki><seealso></nowiki></code>.",
+);
+
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'seealso' => 'Véase también',
 );
 
 /** Finnish (Suomi)
@@ -399,6 +408,13 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'seealso' => 'Logolös i',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'seealso' => '參見',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

@@ -27,6 +27,13 @@ $messages['bg'] = array(
 	'csshooks-desc' => 'Добавя CSS към HTML-изходния код на страниците са по-добро оформление',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'csshooks-desc' => 'Fügt der HTML-Ausgabe von Seiten CSS-Stil-Deklarationen hinzu',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

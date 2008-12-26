@@ -103,6 +103,13 @@ $messages['hsb'] = array(
 	'substall-desc' => 'Wutwori tafličku <nowiki><substall></nowikim kotraž wšě předłohi do wikijoweje syntaksy ekspanduje',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'substall-desc' => '<nowiki><substall></nowiki> tag az összes sablon wikikóddá alakításához',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

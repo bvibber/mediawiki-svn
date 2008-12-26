@@ -150,7 +150,7 @@ $messages['bn'] = array(
  */
 $messages['bs'] = array(
 	'editmsg-search' => 'Traži',
-	'editmsg-warning-file' => '* Greške pri čitanju datoteke su se desile kod slijedećih jezika: $1',
+	'editmsg-warning-file' => '* Greške pri čitanju datoteke su se desile kod {{PLURAL:$2|slijedećeg|slijedećih}} jezika: $1',
 );
 
 /** Catalan (Català)

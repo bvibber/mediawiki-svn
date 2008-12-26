@@ -49,11 +49,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'accountmanager' => 'مدير الحساب',
-	'am-username' => 'اسم المستخدم',
+	'am-username' => 'اسم اليوزر',
 	'am-email' => 'البريد الإلكترونى',
 	'am-active' => 'نشط',
 	'am-updated' => 'تغييراتك تم حفظها بنجاح',
@@ -62,7 +63,7 @@ $messages['arz'] = array(
 	'nss-save-changes' => 'حفظ التغييرات',
 	'nss-create-account-header' => 'إنشاء حساب جديد',
 	'nss-create-account' => 'إنشاء الحساب',
-	'nss-welcome-mail' => 'الحساب باسم المستخدم $1 وكلمة السر $2 تم إنشاؤه من أجلك.',
+	'nss-welcome-mail' => 'الحساب باسم اليوزر $1 وكلمة السر $2 تم إنشاؤه من أجلك.',
 	'nss-welcome-mail-subject' => 'إنشاء الحساب',
 	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
 );
@@ -168,6 +169,7 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -176,7 +178,7 @@ $messages['he'] = array(
 	'am-email' => 'דוא"ל',
 	'am-active' => 'פעיל',
 	'am-updated' => 'השינויים שלכם נשמרו בהצלחה',
-	'nss-desc' => 'תוסף לאימות מול מסד נתונים מסוג libnss-mysql. כולל [[Special:AccountManager|מנהל חשבונות]]',
+	'nss-desc' => 'תוסף להזדהות מול מסד נתונים מסוג libnss-mysql. כולל [[Special:AccountManager|מנהל חשבונות]]',
 	'nss-rights' => 'הרשאות',
 	'nss-save-changes' => 'שמירת השינויים',
 	'nss-create-account-header' => 'יצירת חשבון חדש',
@@ -184,7 +186,7 @@ $messages['he'] = array(
 	'nss-no-mail' => 'ללא שליחת דוא"ל',
 	'nss-welcome-mail' => 'נוצר עבורכם חשבון משתמש עם שם המשתמש $1 והסיסמה $2.',
 	'nss-welcome-mail-subject' => 'יצירת חשבון',
-	'nss-db-error' => 'שגיאה בקריאה ממסד נתוני האימות',
+	'nss-db-error' => 'שגיאה בקריאה מבסיס הנתונים של ההזדהות',
 );
 
 /** Khmer (ភាសាខ្មែរ)

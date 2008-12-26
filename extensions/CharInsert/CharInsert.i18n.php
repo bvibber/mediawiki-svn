@@ -44,6 +44,13 @@ $messages['ast'] = array(
 	'charinsert-desc' => "Permite la creación d'una caxa JavaScript pa [[MediaWiki:Edittools|enxertar carauteres non estándar]]",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'charinsert-desc' => 'Дазваляе стварыць JavaScript-блёк для [[MediaWiki:Edittools|ўстаўкі нестандартных сымбаляў]]',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

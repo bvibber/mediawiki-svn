@@ -68,6 +68,20 @@ $messages['dsb'] = array(
 	'purge-desc' => 'Pśidawa rejtark "wuprozniś" wšym normalnym bokam a wobija se kontrolu za proznjenje cacha za anonymnych wužywarjow, aby zmóžnił spěšnje proznjenje cacha',
 );
 
+/** Esperanto (Esperanto)
+ * @author Melancholie
+ */
+$messages['eo'] = array(
+	'purge' => 'forviŝigi',
+);
+
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'purge' => 'purgar',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -321,5 +335,12 @@ $messages['tr'] = array(
 $messages['vi'] = array(
 	'purge' => 'làm tươi',
 	'purge-desc' => 'Thêm một tab tẩy bộ đệm tại những trang bình thường, và bỏ qua kiểm tra tẩy đệm cho những thành viên vô danh cho phép tẩy nhanh bộ đệm',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'purge' => '清除',
 );
 

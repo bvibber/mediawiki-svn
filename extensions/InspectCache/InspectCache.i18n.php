@@ -47,6 +47,13 @@ $messages['af'] = array(
 	'inspectcache-delete' => 'Skrap',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'inspectcache-ok' => 'እሺ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -132,9 +139,12 @@ $messages['da'] = array(
 	'inspectcache-delete' => 'Slet',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ */
 $messages['de'] = array(
 	'inspectcache' => 'Cache ansehen',
+	'inspectcache-desc' => 'Ein einfaches Diagnosewerkzeug für Inhalte des geteilten Zwischenspeichers',
 	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Allgemeiner Cache',
 	'inspectcache-parser' => 'Parser-Cache',
@@ -143,6 +153,22 @@ $messages['de'] = array(
 	'inspectcache-delete' => 'Löschen',
 	'inspectcache-deleted' => 'Gelöschter Cache',
 	'inspectcache-list' => 'Liste',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'inspectcache' => 'Cache kontrolěrowaś',
+	'inspectcache-desc' => 'Jadnory rěd za pytanje za zmólkami, aby wopśimjeśe zgromadnego cacha kobntrolěrowało',
+	'inspectcache-ok' => 'W pórěźe',
+	'inspectcache-general' => 'Powšykny cache',
+	'inspectcache-parser' => 'Cache parsera',
+	'inspectcache-message' => 'Cache powěsćow',
+	'inspectcache-get' => 'Wobstaraś',
+	'inspectcache-delete' => 'Lašowaś',
+	'inspectcache-deleted' => 'Wulašowany cache',
+	'inspectcache-list' => 'Lisćina',
 );
 
 /** Ewe (Eʋegbe) */

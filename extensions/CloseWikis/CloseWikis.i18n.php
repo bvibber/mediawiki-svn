@@ -252,6 +252,7 @@ $messages['dsb'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -270,6 +271,7 @@ $messages['eo'] = array(
 	'closewikis-page-err-nowiki' => 'Nevalida vikio estis specifita',
 	'closewikis-page-err-closed' => 'Vikio estas jam fermita',
 	'closewikis-page-err-opened' => 'Vikio ne estas fermita',
+	'closewikis-list-header-wiki' => 'Vikio',
 	'closewikis-log' => 'Protokolo pri vikia fermado',
 	'closewikis-log-close' => 'fermis $2',
 	'closewikis-log-reopen' => 'remalfermis $2',
@@ -573,6 +575,7 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'closewikis-page-reopen-reason' => '이유:',
 	'closewikis-list' => '닫힌 위키의 목록',
 );
 

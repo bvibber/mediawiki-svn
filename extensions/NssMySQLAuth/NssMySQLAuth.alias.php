@@ -57,6 +57,11 @@ $aliases['no'] = array(
 	'AccountManager' => array( 'Kontobehandling' ),
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'AccountManager' => array( 'Gerenciador de contas' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'AccountManager' => array( 'AkauntiKuu' ),

@@ -29,10 +29,11 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikitextloggedinout-desc' => 'خطافا محلل، <tt>&lt;loggedin&gt;</tt> و <tt>&lt;loggedout&gt;</tt> لعرض نص مختلف بالاعتماد على حالة دخول المستخدمين',
+	'wikitextloggedinout-desc' => 'خطافا محلل، <tt>&lt;loggedin&gt;</tt> و <tt>&lt;loggedout&gt;</tt> لعرض نص مختلف بالاعتماد على حالة دخول اليوزرز',
 );
 
 /** Bulgarian (Български)

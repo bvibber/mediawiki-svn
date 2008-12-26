@@ -57,6 +57,13 @@ $messages['bcc'] = array(
 	'oai-desc' => 'پیش آریت دست رسی منبع په [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'oai-desc' => 'Надае інтэрфэйс сховішчу [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

@@ -75,9 +75,12 @@ $messages['bg'] = array(
 	'templatelink_empty' => 'Необходимо е да се въведе параметър.',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ */
 $messages['de'] = array(
 	'templatelink' => 'Vorlagen-Link',
+	'templatelink_desc' => 'Diese Erweiterung kann eine Vorlage als neue Seite anzeigen',
 	'templatelink_empty' => 'Ein Parameter muss angegeben werden.',
 	'templatelink_newtitle' => '$1 (ersetzt)',
 );
@@ -382,5 +385,12 @@ $messages['vec'] = array(
 	'templatelink_desc' => 'Sta estension la pode mostrar un modèl come nova pàxena',
 	'templatelink_empty' => 'Ti gà da fornir un parametro.',
 	'templatelink_newtitle' => '$1 (trasclusión)',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'templatelink' => '模板連結',
 );
 

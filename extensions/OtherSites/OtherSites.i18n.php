@@ -60,10 +60,12 @@ $messages['ca'] = array(
 );
 
 /** German (Deutsch)
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
 	'othersites' => 'andere Seiten',
+	'othersites-desc' => 'Verschiebt Interwikilinks in eine eigene Box, falls sie keine Sprachlinks darstellen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -108,11 +110,12 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
 	'othersites' => 'אתרים אחרים',
-	'othersites-desc' => 'העברת קישורי בינוויקי השונים מקישורי השפה למיני פורטל משלהם',
+	'othersites-desc' => 'העברת קישורי בינוויקי שאינם קישורי שפה למסגרת נפרדת',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

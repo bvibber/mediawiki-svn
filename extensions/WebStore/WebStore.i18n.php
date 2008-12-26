@@ -325,6 +325,7 @@ $1',
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
@@ -338,6 +339,7 @@ Setze $wgLocalTmpDirectory auf ein Verzeichnis mit Schreibzugriff.',
 	'inplace_scaler_no_handler' => 'Keine Routine zur Transformation dieses MIME-Typ vorhanden',
 	'inplace_scaler_no_output' => 'Die Transformation erzeugte keine Ausgabedatei.',
 	'inplace_scaler_zero_size' => 'Die Transformation erzeugte eine Ausgabedatei der Länge Null.',
+	'webstore-desc' => 'Online-Zwischenanwendung zur Dateilagerung (kein NFS)',
 	'webstore_access' => 'Der Zugriff auf diesen Service wird durch die IP-Adresse des Clients reguliert.',
 	'webstore_path_invalid' => 'Der Dateiname war ungültig.',
 	'webstore_dest_open' => 'Zieldatei „$1“ kann nicht geöffnet werden.',
@@ -1384,7 +1386,24 @@ $1',
  */
 $messages['ro'] = array(
 	'inplace_scaler_not_enough_params' => 'Parametri insuficienţi.',
+	'inplace_scaler_invalid_image' => 'Imagine incorectă, nu s-a putut determina mărimea.',
+	'inplace_scaler_zero_size' => 'Transformarea a produs un fişier de ieşire de mărime zero.',
 	'webstore_path_invalid' => 'Numele fişierului a fost incorect.',
+	'webstore_dest_open' => 'Nu s-a putut deschide fişierul de destinaţie "$1".',
+	'webstore_dest_mkdir' => 'Nu s-a putut crea directorul destinaţie "$1".',
+	'webstore_archive_mkdir' => 'Nu s-a putut crea directorul arhivă "$1".',
+	'webstore_src_open' => 'Nu s-a putut deschide fişierul sursă "$1".',
+	'webstore_src_close' => 'Eroare la închiderea fişierului sursă "$1".',
+	'webstore_src_delete' => 'Eroare la ştergerea fişierului sursă "$1".',
+	'webstore_rename' => 'Eroare la redenumirea fişierului "$1" în "$2".',
+	'webstore_dest_exists' => 'Eroare, fişierul destinaţie "$1" există.',
+	'webstore_temp_open' => 'Eroare la deschiderea fişierului temporar "$1".',
+	'webstore_temp_copy' => 'Eroare la copierea fişierului temporar "$1" în fişierul destinaţie "$2".',
+	'webstore_temp_close' => 'Eroare la închiderea fişierului temporar "$1".',
+	'webstore_no_archive' => 'Fişierul destinaţie există şi nu a fost oferită nici o arhivă.',
+	'webstore_no_file' => 'Nici un fişier nu a fost încărcat.',
+	'webstore_move_uploaded' => 'Eroare la mutarea fişierului încărcat "$1" în fişierul temporar "$2".',
+	'webstore_no_deleted' => 'Nu este definită nici o arhivă pentru fişierele şterse.',
 	'webstore_curl' => 'Eroare de la cURL: $1',
 	'webstore_php_warning' => 'Avertizare PHP: $1',
 	'webstore_invalid_response' => 'Răspuns incorect de la server:
@@ -1556,6 +1575,13 @@ $messages['tg-cyrl'] = array(
 	'webstore_php_error' => 'Хатоҳои PHP рух доданд:',
 );
 
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'inplace_scaler_not_enough_params' => 'พารามิเตอร์ไม่เพียงพอ',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -1626,5 +1652,20 @@ $messages['tr'] = array(
 $messages['vi'] = array(
 	'webstore_curl' => 'Lỗi cURL: $1',
 	'webstore_php_warning' => 'Cảnh báo PHP: $1',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'inplace_scaler_invalid_image' => '圖像無效，不能判斷大小。',
+	'inplace_scaler_failed' => '在縮放圖像其間遇到錯誤: $1',
+	'webstore_path_invalid' => '檔名無效。',
+	'webstore_no_file' => '沒有上載檔案。',
+	'webstore_404' => '找不到檔案。',
+	'webstore_php_warning' => 'PHP警告: $1',
+	'webstore_metadata_not_found' => '找不到檔案: $1',
+	'webstore_no_response' => '伺服器沒有回應',
+	'webstore_php_error' => '遇到PHP錯誤:',
 );
 

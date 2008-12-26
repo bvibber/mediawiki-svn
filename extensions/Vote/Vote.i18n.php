@@ -246,11 +246,13 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Leithian
  * @author MF-Warburg
+ * @author Melancholie
  * @author Metalhead64
  * @author Revolus
  */
 $messages['de'] = array(
 	'vote' => 'Wählen',
+	'vote-desc' => 'Bietet einfache Umfragefähigkeiten',
 	'vote-header' => "Du kannst hier den '''Obersten Oberherrn der Welt''' wählen!",
 	'vote-current' => "Deine aktuelle Stimme ist für '''$1'''.",
 	'vote-legend' => 'Abstimmen',
@@ -920,10 +922,13 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'vote-current' => "Votul dumneavoastră curent este pentru '''$1'''.",
 	'vote-submit' => 'Votează',
+	'vote-registered' => 'Votul dumneavoastră a fost înregistrat.',
 	'vote-view-results' => 'Vizualizează rezultatele',
 	'vote-results' => 'Rezultatele votului',
 	'vote-login-link' => 'autentificare',
+	'vote-invalid-choice' => 'Trebuie să selectaţi una din opţiunile disponibile.',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1044,6 +1049,7 @@ riddler|Gåtan',
 $messages['te'] = array(
 	'vote-current' => "మీ ప్రస్తుత వోటు '''$1'''కి వేసారు.",
 	'vote-caption' => 'మీ ఎంపిక:',
+	'vote-submit' => 'వోటేయండి',
 	'vote-registered' => 'మీ వోటు నమోదయ్యింది.',
 	'vote-view-results' => 'ఫలితాలు చూడండి',
 	'vote-results' => 'వోటు ఫలితాలు',
@@ -1198,9 +1204,11 @@ riddler|谜人',
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Shinjiman
+ * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'vote' => '投票',
+	'vote-desc' => '提供簡單的投票能力',
 	'vote-header' => "您可以在這裡投下'''在這個世界中至高無尚'''的一票！",
 	'vote-current' => "您現正為'''$1'''投票。",
 	'vote-legend' => '放下或更改投票',

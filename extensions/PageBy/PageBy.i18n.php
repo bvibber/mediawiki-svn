@@ -112,6 +112,13 @@ $messages['eo'] = array(
 	'pageby-anon' => '<i>anonima</i>',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'pageby-anon' => '<i>nimetön</i>',
+);
+
 /** French (Français)
  * @author Sherbrooke
  */

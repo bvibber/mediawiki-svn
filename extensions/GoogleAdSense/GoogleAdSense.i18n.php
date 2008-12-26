@@ -249,6 +249,13 @@ $messages['sv'] = array(
 	'googleadsense-desc' => 'Lägger till [http://www.google.com/adsense Google AdSense] till sidpanelen',
 );
 
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'googleadsense-desc' => 'เพิ่ม [http://www.google.com/adsense กูเกิลแอดเซนส์ (Google AdSense)] ไว้ที่แถบด้านข้าง',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
@@ -261,5 +268,12 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'googleadsense-desc' => 'Thêm [http://www.google.com/adsense Google AdSense] vào thanh bên',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'googleadsense-desc' => '在頁側欄位加入[http://www.google.com/adsense Google AdSense]',
 );
 

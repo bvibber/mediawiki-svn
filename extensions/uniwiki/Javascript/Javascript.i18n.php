@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 Do not translate or change links.',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'javascript-desc' => 'Fügt uniwiki.js in jede Seite ein die einen JavaScript-Code enthält den sich verschiedene Uniwiki-Erweiterungen teilen.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

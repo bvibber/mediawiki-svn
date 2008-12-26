@@ -58,8 +58,11 @@ $messages['bg'] = array(
 	'donationform-submit' => 'Направете дарение чрез PayPal',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ */
 $messages['de'] = array(
+	'donationform-desc' => 'Fügt einen Tag <tt>&lt;donateform&gt;</tt> hinzu, um Spenden über PayPal zu ermöglichen',
 	'donationform-submit' => 'Spenden über PayPal',
 );
 
@@ -256,6 +259,14 @@ $messages['nl'] = array(
 	'donationform-submit' => 'Via PayPal doneren',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'donationform-desc' => 'Legg til merket <tt>&lt;donateform&gt;</tt> for å støtta donasjonar gjennom PayPal',
+	'donationform-submit' => 'Doner gjennom PayPal',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -391,8 +402,11 @@ $messages['yue'] = array(
 	'donationform-submit' => '透過PayPal捐款',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
+ */
 $messages['zh-hans'] = array(
+	'donationform-desc' => '加入<tt>&lt;donateform&gt;</tt>标签以支持使用PayPal的捐赠',
 	'donationform-submit' => '经PayPal捐款',
 );
 

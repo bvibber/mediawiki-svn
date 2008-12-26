@@ -38,16 +38,17 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'whoiswatching' => 'من يراقب صفحة ويكي',
-	'whoiswatching-desc' => 'يوفر قائمة بأسماء المستخدمين الذين يراقبون صفحة ويكي',
+	'whoiswatching-desc' => 'يوفر لستة بأسماء اليوزرز اللى بيراقبو صفحة ويكى',
 	'specialwhoiswatchingthepage' => 'من يراقب %s',
 	'specialwhoiswatchingusage' => 'هذه الصفحة الخاصة لا يمكن استخدامها بمفردها.
 من فضلك استخدم الصفحة [[MediaWiki:Number_of_watching_users_pageview]] لتعريف نقطة مدخل إلى هذه الصفحة الخاصة.',
-	'specialwhoiswatchingaddusers' => 'أضف مستخدمين لمراقبة الصفحة',
-	'specialwhoiswatchingaddbtn' => 'أضف مستخدمين مختارين',
+	'specialwhoiswatchingaddusers' => 'ضيف يوزرز لمراقبة الصفحة',
+	'specialwhoiswatchingaddbtn' => 'ضيف يوزرز مختارين',
 );
 
 /** Asturian (Asturianu)
@@ -495,6 +496,8 @@ Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] par
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'whoiswatching' => 'Cine urmăreşte o pagină wiki',
+	'specialwhoiswatchingthepage' => 'Cine urmăreşte %s',
 	'specialwhoiswatchingaddbtn' => 'Adaugă utilizatorii selectaţi',
 );
 

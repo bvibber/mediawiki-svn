@@ -959,3 +959,12 @@ $messages['yi'] = array(
 	'edituser-dosearch' => 'זוכן',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'edituser' => '編輯使用者',
+	'edituser-logout' => '把使用者登出',
+	'edituser-dosearch' => '搜尋',
+);
+

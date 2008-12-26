@@ -143,9 +143,22 @@ $messages['bg'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Seha
  */
 $messages['bs'] = array(
+	'authorprotect' => 'Zaštiti stranicu od ne-autora.',
+	'authorprotect-desc' => 'Dozvoli autoru stranice da je zaštiti od drugih korsinika.',
+	'authorprotect-notauthor' => 'Vi niste autor ove stranice.',
+	'authorprotect-confirm' => 'Izmjeni stepen zaštite.',
+	'authorprotect-edit' => 'Zabrani uređivanje autorima.',
+	'authorprotect-move' => 'Zabrani preusmjeravanje autorima.',
+	'authorprotect-expiry' => 'Vrijeme isticanja.',
 	'authorprotect-reason' => 'Razlog',
+	'authorprotect-intro' => 'Koristi ovaj formular za zaključavanje stranice ne-autorima.',
+	'authorprotect-success' => 'Zaštita uspješna.',
+	'authorprotect-failure' => 'Zaštita nije uspjela.',
+	'protect-level-author' => 'Zaštiti od ne-autora.',
+	'restriction-level-author' => 'Autorska zaštita.',
 );
 
 /** Catalan (Català)
@@ -526,7 +539,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'authorprotect' => '非作成者からページを保護',
-	'authorprotect-desc' => 'ページの作成者が他の利用者からそのページを保護できるようにします',
+	'authorprotect-desc' => 'ページの作成者が他の利用者からそのページを保護できるようにする',
 	'authorprotect-notauthor' => 'あなたはこのページの作成者ではありません',
 	'authorprotect-confirm' => '保護レベルを変更',
 	'authorprotect-edit' => '編集を作成者に制限',
@@ -1018,5 +1031,17 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'authorprotect-reason' => 'Kod',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'authorprotect-notauthor' => '您並非本頁面的原作者',
+	'authorprotect-confirm' => '更改保護等級',
+	'authorprotect-expiry' => '終止時間',
+	'authorprotect-reason' => '原因',
+	'authorprotect-success' => '保護成功!',
+	'authorprotect-failure' => '保護失敗',
 );
 

@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'formatsearch-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'formatsearch-desc' => 'Leert die Suchergebnisseite',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -180,5 +187,12 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'formatsearch-desc' => 'Rensar upp sökresultatssidan',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'formatsearch-desc' => '清理搜尋結果頁面',
 );
 

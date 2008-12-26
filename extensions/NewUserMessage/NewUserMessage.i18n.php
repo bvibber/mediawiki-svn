@@ -65,6 +65,14 @@ $messages['ast'] = array(
 	'newuseredit-summary' => "Añadiendo [[{{int:newusermessage-template}}|mensaxe de bienvenida]] a la nueva páxina d'alderique d'usuariu",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'newusermessage-desc' => 'Дадае паведамленьне на старонку размоваў новага ўдзельніка',
+	'newuseredit-summary' => 'Даданьне [[{{int:newusermessage-template}}|прывітальнае паведамленьне]] у старонку размоваў новага ўдзельніка',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -322,6 +330,14 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'newusermessage-desc' => 'Voegt een bericht toe aan de overlegpagina van nieuwe gebruikers',
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Welkomstbericht]] toegevoegd aan de overlegpagina van de nieuwe gebruiker',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'newusermessage-desc' => 'Legg inn meldingar på diskusjonssidene til nye brukarar',
+	'newuseredit-summary' => 'La til ei [[{{int:newusermessage-template}}|velkomstmelding]] på diskusjonssida til ein ny brukar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

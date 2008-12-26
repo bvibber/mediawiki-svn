@@ -110,6 +110,18 @@ $messages['dsb'] = array(
 	'amazonplus-cp-none' => 'Žeden',
 );
 
+/** Esperanto (Esperanto)
+ * @author Melancholie
+ */
+$messages['eo'] = array(
+	'amazonplus-used' => 'uzita',
+	'amazonplus-german' => 'Germana',
+	'amazonplus-french' => 'Franca',
+	'amazonplus-japanese' => 'Japana',
+	'amazonplus-new' => 'nova',
+	'amazonplus-cp-none' => 'Nenia',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -446,5 +458,14 @@ $messages['te'] = array(
 	'amazonplus-german' => 'జర్మను',
 	'amazonplus-french' => 'ఫ్రెంచి',
 	'amazonplus-japanese' => 'జపనీస్',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'amazonplus-german' => '德語',
+	'amazonplus-french' => '法語',
+	'amazonplus-japanese' => '日語',
 );
 

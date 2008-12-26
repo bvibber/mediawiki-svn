@@ -80,6 +80,13 @@ $messages['af'] = array(
 	'imagetagging-imghistory' => 'Geskiedenis',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'imagetagging-imghistory' => 'ታሪክ',
+);
+
 /** Aragonese (Aragonés)
  * @author Remember the dot
  */
@@ -239,6 +246,7 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author DaSch
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
@@ -259,6 +267,8 @@ $messages['de'] = array(
 	'imagetagging-addtagsuccess' => 'Hinzugefügte Tags.',
 	'imagetagging-removetagsuccess' => 'Entfernte Tags.',
 	'imagetagging-oneuniquetagmessage' => 'Dieses Bild hat bereits einen Tag mit diesem Namen.',
+	'imagetagging-imagetag-seemoreimages' => 'Siehe mehr Bilder von "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Bilder von "$1"',
 );
 
 /** Esperanto (Esperanto)
@@ -543,9 +553,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'imagetagging-imghistory' => '履歴',
+	'imagetagging-tagcancel-button' => 'キャンセル',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -741,6 +753,44 @@ Wacht totdat de huidige handeling is voltooid.',
 	'imagetagging-taggedimages-displaying' => 'De resultaten $1 tot $2 van $3 van afbeeldingen van "$4" worden weergegeven',
 	'tag-logpagename' => 'Annotatielogboek',
 	'tag-logpagetext' => 'In dit logboek worden toegevoegde en verwijderde annotaties bij afbeeldingen weergegeven.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'taggedimages' => 'Merkte bilete',
+	'imagetagging-desc' => 'Lèt ein brukar velja område på eit bilete og lenkja dette området til ei sida',
+	'imagetagging-addimagetag' => 'Merk dette biletet',
+	'imagetagging-article' => 'Sida:',
+	'imagetagging-articletotag' => 'Sida som skal bli merkt',
+	'imagetagging-canteditothermessage' => 'Du kan ikkje endra denne sida, anten av di du ikkje har rettane til å gjera det, eller av di sida er låst av andre grunnar.',
+	'imagetagging-imghistory' => 'Historikk',
+	'imagetagging-images' => 'bilete',
+	'imagetagging-inthisimage' => 'På dette biletet: $1',
+	'imagetagging-logentry' => 'Fjerna merke til sida [[$1]] av $2',
+	'imagetagging-log-tagged' => 'Biletet [[$1|$2]] blei merka til sida [[$3]] av $4',
+	'imagetagging-new' => '<sup><span style="color:red">Ny!</span></sup>',
+	'imagetagging-removetag' => 'fjern merke',
+	'imagetagging-done-button' => 'Ferdig med å merkja',
+	'imagetagging-tag-button' => 'Merk',
+	'imagetagging-tagcancel-button' => 'Avbryt',
+	'imagetagging-tagging-instructions' => 'Trykk på folk eller ting på biletet for å merkja dei.',
+	'imagetagging-addingtag' => 'Legg til merke …',
+	'imagetagging-removingtag' => 'Fjernar merke …',
+	'imagetagging-addtagsuccess' => 'La til merke.',
+	'imagetagging-removetagsuccess' => 'Fjerna merke.',
+	'imagetagging-canteditneedloginmessage' => 'Du kan ikkje endra denne sida.
+Det kan vera av di ein må logga inn for å merkja bilete.
+Vil du logga in no?',
+	'imagetagging-oneactionatatimemessage' => 'Berre éi merkehandling av gongen er tillate.
+Vent til den førre handlinga er ferdig.',
+	'imagetagging-oneuniquetagmessage' => 'Dette biletet har allereie eit merke med dette namnet.',
+	'imagetagging-imagetag-seemoreimages' => 'Sjå fleire bilete av «$1» ($2)',
+	'imagetagging-taggedimages-title' => 'Bilete av «$1»',
+	'imagetagging-taggedimages-displaying' => 'Syner $1&ndash;$2 av $3 bilete av «$4»',
+	'tag-logpagename' => 'Merkjelogg',
+	'tag-logpagetext' => 'Dette er ein logg over alle biletmerke lagt til eller fjerna.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

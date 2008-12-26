@@ -257,6 +257,17 @@ $messages['hsb'] = array(
 	'filelist-image-desc' => 'spadowacy',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'filelist' => 'Fájlok listája',
+	'filelist-desc' => '[[Special:Filelist|Speciális lap]] a feltöltött fájlok listázásához',
+	'filelist-show-list' => 'Lista megjelenítése',
+	'filelist-show-gallery' => 'Galéria megjelenítése',
+	'filelist-image-desc' => 'leírás',
+);
+
 /** Armenian (Հայերեն) */
 $messages['hy'] = array(
 	'filelist-image-desc' => 'նկարագրություն',
@@ -640,5 +651,12 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'filelist' => 'Ragivalised',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'filelist' => '檔案清單',
 );
 

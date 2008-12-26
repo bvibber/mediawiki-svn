@@ -21,6 +21,22 @@ It must:',
 	'securepasswords-word' => 'not be a word',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'securepasswords-desc' => 'Erzeugt sicherere Passwort-Hashes und fügt eine Passwortstärkenprüfung hinzu',
+	'securepasswords-valid' => 'Dein Passwort ist ungültig oder zu kurz.
+Es muss:',
+	'securepasswords-minlength' => 'mindestens $1 Zeichen lang sein',
+	'securepasswords-lowercase' => 'mindestens einen Kleinbuchstaben enthalten',
+	'securepasswords-uppercase' => 'mindestens einen Großbuchstaben enthalten',
+	'securepasswords-digit' => 'mindestens eine Ziffer enthalten',
+	'securepasswords-special' => 'mindestens ein Sonderzeichen enthalten (Sonderzeichen sind: $1)',
+	'securepasswords-username' => 'sich von deinem Benutzernamen unterscheiden',
+	'securepasswords-word' => 'etwas anderes sein als ein Wort',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -139,9 +155,12 @@ $messages['oc'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Rudko
  */
 $messages['sk'] = array(
 	'securepasswords-desc' => 'Vytvára bezpečnejšie haše hesiel a pridáva kontrolu sily hesla',
+	'securepasswords-valid' => 'Vaše heslo je nesprávne alebo príliš krátke.
+Ono musí:',
 );
 
 /** Swedish (Svenska)
@@ -164,5 +183,16 @@ $messages['te'] = array(
 	'securepasswords-special' => 'కనీసం 1 ప్రత్యేక అక్షరాన్నైనా కలిగివుండాలి (ప్రత్యేక అక్షరాలు ఇవీ: 1)',
 	'securepasswords-username' => 'మీ వాడుకరిపేరు అయివుండకూడదు',
 	'securepasswords-word' => 'ఒక పదం అయివుండకూడదు',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'securepasswords-minlength' => '長度需要最少$1個字元',
+	'securepasswords-lowercase' => '包含最少1個小寫字母',
+	'securepasswords-uppercase' => '包含最少1個大寫字母',
+	'securepasswords-digit' => '包含最少1個數字',
+	'securepasswords-username' => '不與您的使用者名稱相同',
 );
 

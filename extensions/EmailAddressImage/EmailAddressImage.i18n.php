@@ -287,3 +287,10 @@ $messages['vi'] = array(
 	'emailaddressimage-desc' => 'Thêm <tt>&lt;email&gt;</tt> để hiển thị địa chỉ thư điện tử dưới dạng hình ảnh',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'emailaddressimage-desc' => '加入<tt>&lt;email&gt;</tt>把電郵地址顯示成圖像',
+);
+

@@ -66,6 +66,14 @@ $messages['br'] = array(
 	'advancedrandom-desc' => 'Tapout a ra ur bajenn dre zegouezh diwar ur gaoz pe ul liamm danvezel bennak war-du ur bajenn lakaet. Gallout a ra bezañ implijet evel [[Special:AdvancedRandom/Template:Featured/Talk]] evit tapout ur pennad termenet dre zegouezh pe evel [[Special:AdvancedRandom/Template:GFDL/Image]] a-benn tapout ur restr dindan aotre GFDL',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'advancedrandom' => 'Napredna slučajna stranica',
+	'advancedrandom-desc' => 'Prikazuje slučajnu stranicu na čijoj stranici za razgovor ili linkovima o predmetu stranice, može biti korišteno poput [[Special:AdvancedRandom/Template:Featured/Talk]] za dobivanje slučajnog odabranog članka ili [[Special:AdvancedRandom/Template:GFDL/Image]] za dobivanje slučajne GFDL datoteke',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

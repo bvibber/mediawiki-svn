@@ -408,3 +408,11 @@ $messages['vo'] = array(
 	'eval_code' => 'Kot',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'eval_out' => '輸出',
+	'eval_code' => '代碼',
+);
+

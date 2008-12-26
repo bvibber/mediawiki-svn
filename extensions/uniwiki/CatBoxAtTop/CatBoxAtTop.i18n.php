@@ -56,8 +56,10 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author MF-Warburg
+ * @author Melancholie
  */
 $messages['de'] = array(
+	'catboxattop-desc' => 'Fügt in Seiten oben rechts eine Kategorienbox ein',
 	'catboxattop-categories' => 'Kategorien',
 );
 
@@ -75,6 +77,14 @@ $messages['dsb'] = array(
 $messages['eo'] = array(
 	'catboxattop-desc' => 'Aldonas kategorian kadron al la supra-dekstro de paĝoj',
 	'catboxattop-categories' => 'Kategorioj',
+);
+
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'catboxattop-desc' => 'Añade una caja de categorías en la parte superior derecha de las páginas',
+	'catboxattop-categories' => 'Categorías',
 );
 
 /** Finnish (Suomi)
@@ -132,6 +142,14 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'catboxattop-desc' => 'Přidawa kategorijowy kašćik do praweho hornjeho róžka stronow',
 	'catboxattop-categories' => 'Kategorije',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'catboxattop-desc' => 'Adde un quadro con categorias in alto a derecta del paginas',
+	'catboxattop-categories' => 'Categorias',
 );
 
 /** Japanese (日本語)
@@ -231,5 +249,12 @@ $messages['te'] = array(
  */
 $messages['vi'] = array(
 	'catboxattop-categories' => 'Thể loại',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'catboxattop-categories' => '頁面分類',
 );
 

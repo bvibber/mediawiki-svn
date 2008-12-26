@@ -494,3 +494,10 @@ $messages['yi'] = array(
 	'createbox-create' => 'שאַפֿן',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'createbox-create' => '建立',
+);
+

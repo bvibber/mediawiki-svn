@@ -274,3 +274,10 @@ $messages['vi'] = array(
 	'editown-desc' => 'Người dùng không có quyền sửa toàn bộ (editall) chỉ có thể sửa đổi những trang do họ tạo ra',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'editown-desc' => '沒有全編權限的使用者只能編輯由他們建立的頁面',
+);
+

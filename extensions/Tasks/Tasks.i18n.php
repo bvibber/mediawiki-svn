@@ -293,9 +293,12 @@ Falls Sie nicht in ein paar Sekunden weitergeleitet wurden, klicken Sie $1.',
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'tasks' => 'Taskoj',
+	'tasks_tab' => 'Taskoj',
 	'tasks_title' => 'Taskoj por "$1"',
 	'tasks_form_new' => 'Krei novan taskon',
 	'tasks_form_comment' => 'Komento',
@@ -1049,6 +1052,7 @@ $messages['nn'] = array(
 	'tasks_help_page_link' => '?',
 	'tasks_help_separator' => '$2 | $1',
 	'tasks_more_like_it' => 'meir',
+	'tasks_task_types' => '1:cleanup:Reins|2:wikify:Wikifiser|3:rewrite:Skriv om|4:delete:Slett|5:create:Opprett|6:write:Skriv|7:check:Sjekk',
 	'tasks_significance_order' => 'skriv om<slett',
 	'tasks_event_on_creation' => 'sjekk',
 	'tasks_event_on_creation_anon' => 'sjekk',
@@ -1253,7 +1257,9 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'tasks_form_comment' => 'Comentariu',
+	'tasks_table_header_page' => 'Pagină',
 	'tasks_sort' => 'Ordonează',
+	'tasks_ascending' => 'Întâi cele mai vechi',
 );
 
 /** Russian (Русский)
@@ -1334,6 +1340,7 @@ $messages['ru'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Rudko
  */
 $messages['sk'] = array(
 	'tasks' => 'Úlohy',
@@ -1380,8 +1387,8 @@ $messages['sk'] = array(
 	'tasks_event_on_creation_anon' => 'skontrolovať',
 	'tasks_on_creation_comment' => 'Automatická úloha, vygenerovaná pri vytvorení stránky',
 	'tasks_link_your_assignments' => 'otvoriť pridelené úlohy',
-	'tasks_see_your_assignments' => 'Momentálne máte $1 otvorených pridelených úloh. Pozrite si váš $2.',
-	'tasks_my_assignments' => 'Vaše súčasné pridelené úlohy',
+	'tasks_see_your_assignments' => 'Momentálne máte $1 otvorené {{PLURAL:$1|pridelená úloha|pridelené úlohy}}. Pozrite si váš $2.',
+	'tasks_my_assignments' => 'Vaše súčasné pridelené {{PLURAL:$1|úloha|úlohy}}',
 	'tasks_table_header_page' => 'Stránka',
 	'tasks_you_have_no_assignments' => 'Nemáte otvorené pridelené úlohy',
 	'tasks_search_form_title' => 'Hľadať',
@@ -1451,6 +1458,7 @@ $messages['te'] = array(
 	'tasks_no_task_delete_texe' => 'మీరు పనులని తొలగించలేరు. నిర్వాహకులు మాత్రమే తొలగించగలరు.',
 	'tasks_action_delete' => 'ఒక పనిని తొలగించారు.',
 	'tasks_discussion_page_link' => 'పని యొక్క చర్చా పేజీ',
+	'tasks_here' => 'ఇక్కడ',
 	'tasks_see_page_tasks' => '(ఈ పేజీ యొక్క పనులు)',
 	'tasks_plain_text_only' => '(సాదా పాఠ్యం, 256 అక్షరాలు మాత్రమే)',
 	'tasks_help_page' => 'పనులు',
@@ -1502,5 +1510,17 @@ $messages['vi'] = array(
 	'tasks_status_assigned' => 'Chỉ định',
 	'tasks_status_closed' => 'Đóng',
 	'tasks_logpage' => 'Nhật trình việc cần làm',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'tasks_delete' => '刪除',
+	'tasks_event_on_creation' => '檢查',
+	'tasks_event_on_creation_anon' => '檢查',
+	'tasks_table_header_page' => '頁面',
+	'tasks_search_form_title' => '搜尋',
+	'tasks_search_results' => '搜尋結果',
 );
 

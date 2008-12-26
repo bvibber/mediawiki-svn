@@ -509,6 +509,15 @@ $messages['sah'] = array(
 	'assert_edit_message' => 'Этиллибит ($1) этии толоруллубат',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'assert_edit_title' => 'Affirmazzioni non arinisciuta',
+	'assert_edit_desc' => 'Junci affirmazzionid mudìfica a usu di li bot',
+	'assert_edit_message' => "L'affirmazzioni nnicata ($1) non ariniscìu.",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

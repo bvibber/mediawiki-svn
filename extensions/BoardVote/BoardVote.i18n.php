@@ -233,6 +233,13 @@ U sal na hierdie bediener aangestuur word binne 20 sekondes. [$1 Kliek hier] om 
 	'right-boardvote' => 'Administreer verkiesings',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'boardvote_submit' => 'እሺ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

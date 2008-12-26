@@ -81,6 +81,13 @@ To śi dowólijo swój wužywarski bok teke ako OpenID wužywaś.',
 	'linkopenid-prefstext-v2url' => 'Serwerowy URL za OpenID wersiju 2;',
 );
 
+/** Esperanto (Esperanto)
+ * @author Melancholie
+ */
+$messages['eo'] = array(
+	'linkopenid-prefstext-openid' => 'Via OpenID:',
+);
+
 /** French (Français)
  * @author IAlex
  */

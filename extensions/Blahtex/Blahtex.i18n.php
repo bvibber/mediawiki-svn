@@ -417,7 +417,17 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'math_MissingOpenBraceBefore' => 'Nedostaje otvorena zagrada "(" ispred "$1"',
+	'math_IllegalCharacter' => 'Nevaljan znak u unosu',
+	'math_IllegalFinalBackslash' => 'Nevaljana kosa crta "\\" na kraju unosa',
+	'math_MissingOpenBraceAfter' => 'Nedostaje otvorena zagrada "{" poslije "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Nedostaje otvorena zagrada "{" na kraju unosa',
+	'math_MissingOpenBraceBefore' => 'Nedostaje otvorena zagrada "{" ispred "$1"',
+	'math_UnexpectedNextRow' => 'Komanda "\\\\" se može nalaziti samo unutar "\\begin ... \\end" bloka',
+	'math_UnmatchedEnd' => 'Pronađen "\\end" bez pripadajućeg "\\begin"',
+	'math_UnmatchedLeft' => 'Pronađeno "\\left" bez pripadajućeg "\\right"',
+	'math_UnmatchedOpenBrace' => 'Pronađena otvorena zagrada "{" bez pripadajuće zatvorene zagrade "}"',
+	'math_UnmatchedRight' => 'Pronađeno "\\right" bez pripadajućeg "\\left"',
+	'math_UnrecognisedCommand' => 'Neprepoznata komanda "$1"',
 );
 
 /** Catalan (Català)
@@ -2522,5 +2532,12 @@ $messages['vi'] = array(
 	'math_UnrecognisedCommand' => 'Không hiểu lệnh "$1"',
 	'math_WrongFontEncoding' => 'Ký hiệu "$1" không xuất hiện trong phông chữ mã hóa "$2"',
 	'math_WrongFontEncodingWithHint' => 'Ký hiệu "$1" không xuất hiện trong phông chữ mã hóa "$2" (thử dùng lệnh "$3{...}")',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'math_TooManyTokens' => '輸入過長',
 );
 

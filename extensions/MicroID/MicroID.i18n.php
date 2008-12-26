@@ -184,6 +184,14 @@ $messages['nl'] = array(
 	'tog-microid' => 'Publiceer een <a href="http://microid.org/">MicroID</a> om een gebruiker te bevestigen bij externe diensten',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'microid-desc' => 'Legg til [http://www.microid.org/ MicroID] på brukarsider for å stadfesta kontoar med eksterne tenester',
+	'tog-microid' => 'Publiser ein <a href="http://microid.org/">MicroID</a> for å stadfesta kontoen med eksterne tenester',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

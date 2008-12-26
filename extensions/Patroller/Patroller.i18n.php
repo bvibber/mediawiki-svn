@@ -239,10 +239,12 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'patrol' => 'Patroli redaktojn',
+	'patrol-endorse' => 'Aprobi',
 	'patrol-revert' => 'Restarigi',
 	'patrol-revert-reason' => 'Kialo:',
 	'patrol-skip' => 'Forlasi',
@@ -288,6 +290,7 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -299,6 +302,10 @@ $messages['fi'] = array(
 	'patrol-reasons' => '* Selvää vandalismia
 * Tulokkaan kokeilu
 * Katso keskustelusivu',
+	'group-patroller' => 'tarkastajat',
+	'group-patroller-member' => 'tarkastaja',
+	'grouppage-patroller' => '{{ns:project}}:Tarkastajat',
+	'right-patroller' => 'Tarkasta sivuja',
 );
 
 /** French (Français)
@@ -494,6 +501,7 @@ $messages['hu'] = array(
 	'group-patroller' => 'járőrök',
 	'group-patroller-member' => 'FV-járőr',
 	'grouppage-patroller' => '{{ns:project}}:FV-járőr',
+	'right-patroller' => 'lapok járőrözése',
 );
 
 /** Interlingua (Interlingua)
@@ -908,6 +916,7 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -931,6 +940,7 @@ $messages['pl'] = array(
 	'group-patroller' => 'Patrolujący',
 	'group-patroller-member' => 'Patrolujący',
 	'grouppage-patroller' => '{{ns:project}}:Patrolujący',
+	'right-patroller' => 'Patrolować strony',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1303,6 +1313,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author KilluaZaoldyeck
  * @author Shinjiman
+ * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'patrol' => '覆查編輯',
@@ -1326,5 +1337,6 @@ $messages['zh-hant'] = array(
 	'group-patroller' => '巡邏員',
 	'group-patroller-member' => '巡邏員',
 	'grouppage-patroller' => '{{ns:project}}:巡邏員',
+	'right-patroller' => '巡視頁面',
 );
 

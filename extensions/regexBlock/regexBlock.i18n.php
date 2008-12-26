@@ -119,6 +119,13 @@ $messages['af'] = array(
 	'regexblock-view-time' => 'op $1',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'regexblock-view-all' => 'ሁሉ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -337,12 +344,59 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Melancholie
  * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
+	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten zu Editieren, da von dieser IP-Adresse – von dir oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
+Wenn du denkst, dass es sich hierbei um einen Fehler handelt, $1',
+	'regexblock-reason-name' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem verhalten, verboten zu Editieren.
+Wenn du denkst, dass es sich hierbei um einen Fehler handelt, $1',
+	'regexblock-reason-regex' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem Verhalten eines Benutzers mit einem ähnliches Benutzernamen, verboten zu Editieren.
+Bitte melde dich mit einem anderen Benutzernamen an oder $1 über das Problem.',
+	'regexblock-page-title-1' => 'Sperre Adressen anhand regulärer Ausdrücke',
+	'regexblock-unblock-success' => 'Entsperrung erfolgreich',
+	'regexblock-unblock-log' => "Benutzername oder IP-Adresse '''$1''' wurde entsperrt.",
+	'regexblock-unblock-error' => 'Fehler beim Entsperren von $1.
+Vermutlich gibt es keinen solchen Benutzer.',
+	'regexblock-form-username' => 'IP-Adresse oder Benutzername:',
 	'regexblock-form-reason' => 'Grund:',
+	'regexblock-form-expiry' => 'Ablaufdatum:',
+	'regexblock-form-account-block' => 'Sperre die Erstellung neuer Accounts',
+	'regexblock-form-submit' => 'Sperre diesen Benutzer',
+	'regexblock-block-log' => "Benutzername oder IP-Adresse '''$1''' wurde gesperrt.",
+	'regexblock-block-success' => 'Sperrung erfolgreich',
+	'regexblock-form-submit-empty' => 'Einen Benutzernamen oder eine IP-Adresse für die Sperrung angeben.',
+	'regexblock-form-submit-regex' => 'Ungültiger regulärer Ausdruck.',
+	'regexblock-form-submit-expiry' => 'Bitte wähle einen Verfallszeitraum.',
+	'regexblock-already-blocked' => '$1 ist bereits gesperrt.',
+	'regexblock-stats-username' => 'Für $1',
+	'regexblock-stats-times' => 'wurde gesperrt von',
+	'regexblock-currently-blocked' => 'Derzeit gesperrte Adressen:',
+	'regexblock-view-blocked' => 'Ansicht gesperrt von:',
 	'regexblock-view-go' => 'Los',
+	'regexblock-view-account' => '(Accounterstellung gesperrt)',
+	'regexblock-view-reason' => 'Grund: $1',
+	'regexblock-view-reason-default' => 'allgemeiner Grund',
+	'regexblock-view-block-infinite' => 'permanente Sperrung',
+	'regexblock-view-block-temporary' => 'läuft ab am',
+	'regexblock-view-block-expired' => 'ABGELAUFEN am',
+	'regexblock-view-block-by' => 'gesperrt von',
+	'regexblock-view-block-unblock' => 'entsperren',
+	'regexblock-view-stats' => '(Statistiken)',
+	'regexblock-view-empty' => 'Die Liste der gesperrten Namen und Adressen ist leer.',
+	'regexblock-view-time' => 'am $1',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Revolus
+ */
+$messages['de-formal'] = array(
+	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten zu Editieren, da von dieser IP-Adresse – von Ihnen oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
+Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, $1',
+	'regexblock-reason-name' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem Verhalten, verboten zu Editieren.
+Wenn Sie denken, dass es sich hierbei um einen Fehler handelt, $1',
 );
 
 /** Greek (Ελληνικά)
@@ -1060,6 +1114,7 @@ $messages['myv'] = array(
  */
 $messages['nah'] = array(
 	'regexblock-form-reason' => 'Īxtlamatiliztli:',
+	'regexblock-form-expiry' => 'Motlamia:',
 	'regexblock-stats-username' => '$1 ītechcopa',
 	'regexblock-view-all' => 'Mochīntīn',
 	'regexblock-view-go' => 'Yāuh',
@@ -1624,6 +1679,7 @@ $messages['te'] = array(
 	'regexblock-form-submit-expiry' => 'దయచేసి ఓ కాలపరిమితి ఇవ్వండి.',
 	'regexblock-already-blocked' => '$1ని ఇదివరకే నిషేధించారు.',
 	'regexblock-stats-username' => '$1 కొరకు',
+	'regexblock-stats-logging' => 'ప్రవేశిస్తున్న చిరునామా',
 	'regexblock-currently-blocked' => 'ప్రస్తుతం నిరోధంలో ఉన్న చిరునామాలు:',
 	'regexblock-view-all' => 'అన్నీ',
 	'regexblock-view-go' => 'వెళ్ళు',
@@ -1772,5 +1828,17 @@ $messages['vo'] = array(
 	'regexblock-form-reason' => 'Kod:',
 	'regexblock-view-all' => 'Valik',
 	'regexblock-view-reason' => 'kod: $1',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'regexblock-form-username' => 'IP位址或使用者名稱:',
+	'regexblock-form-reason' => '原因:',
+	'regexblock-form-expiry' => '到期日:',
+	'regexblock-form-submit' => '封禁該名使用者',
+	'regexblock-block-success' => '封禁成功',
+	'regexblock-view-stats' => '(統計)',
 );
 

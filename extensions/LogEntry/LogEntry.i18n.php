@@ -44,9 +44,13 @@ $messages['arz'] = array(
 	'logentry-invalidtoken' => 'نص غير صحيح',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ */
 $messages['de'] = array(
 	'logentry-append' => 'Anfügen',
+	'logentry-parserhook-desc' => 'Diese Tag-Erweiterung bietet ein Formular zur Anhängung/Voranstellung in Logbuchseiten',
+	'logentry-specialpage-desc' => 'Diese Tag-Erweiterung bietet die Aufbereitung für Anhängungen an Logbuchseiten',
 	'logentry' => 'Logbucheintrag',
 	'logentry-invalidpage' => 'Ungültige Seite',
 	'logentry-invalidtoken' => 'Ungültiges Token',
@@ -62,6 +66,15 @@ $messages['dsb'] = array(
 	'logentry' => 'Protokolowy zapisk',
 	'logentry-invalidpage' => 'Njepłaśiwy bok',
 	'logentry-invalidtoken' => 'Njepłaśiwy token',
+);
+
+/** Esperanto (Esperanto)
+ * @author Melancholie
+ */
+$messages['eo'] = array(
+	'logentry-append' => 'Almeti',
+	'logentry-invalidpage' => 'Malvalida paĝo',
+	'logentry-invalidtoken' => 'Malvalida ĵetono',
 );
 
 /** French (Français)

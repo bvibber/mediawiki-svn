@@ -82,6 +82,11 @@ $aliases['ps'] = array(
 	'NewsChannel' => array( 'خبري کانال' ),
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'NewsChannel' => array( 'Canal de notícias' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'NewsChannel' => array( 'Nyhetskanal' ),

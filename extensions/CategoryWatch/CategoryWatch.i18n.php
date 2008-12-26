@@ -451,3 +451,11 @@ Chúng tôi muốn báo cho bạn biết là vào lúc $3, thành viên $4 $5.',
 	'categorywatch-catsub' => 'đã bỏ $1 ra khỏi thể loại $2',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'categorywatch-catadd' => '已把$1新增至分類$2',
+	'categorywatch-catsub' => '已把$1從分類$2移除',
+);
+

@@ -131,6 +131,7 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author Melancholie
  * @author Pill
  * @author Raimond Spekking
  */
@@ -138,9 +139,11 @@ $messages['de'] = array(
 	'invite-logpage' => 'Einladungs-Logbuch',
 	'invite-logpagetext' => 'Dies ist das Logbuch der einladungsbasierten Softwarefunktionen.',
 	'invite-logentry' => 'hat $1 eingeladen, um die Softwarefunktionen <i>$2</i> zu nutzen.',
+	'invitations' => 'Verwalte Einladungen/Aufforderungen für Software-Fähigkeiten (features)',
 	'invitations-desc' => 'Ermöglicht die [[Special:Invitations|Verwaltung von Softwarefunktionen]] auf Basis von Einladungen',
 	'invitations-invitedlist-description' => 'Du hast Zugang zu den folgenden einladungsbasierten Softwarefunktionen. Um Einladungen für eine bestimmte Softwarefunktion zu verwalten, klicke auf ihren Namen.',
 	'invitations-invitedlist-none' => 'Du hast bisher keine Einladung zur Nutzung von einladungsbasierten Softwarefunktionen erhalten.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Eine Einladung/Aufforderung|$1 Einladungen/Aufforderungen}} verfügbar)',
 	'invitations-pagetitle' => 'Softwarefunktionen auf Einladungs-Basis',
 	'invitations-uninvitedlist-description' => 'Du hast keinen Zugang zu anderen einladungsbasierten Softwarefunktionen.',
 	'invitations-uninvitedlist-none' => 'Zur Zeit sind keine weiteren Softwarefunktionen einladungsbasiert.',

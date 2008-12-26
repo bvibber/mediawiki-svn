@@ -665,7 +665,7 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'ajax-se-title' => 'Āxcān ticpatlahua:',
+	'ajax-se-title' => 'Āxcān ticpatlacah:',
 	'ajax-se-pagedoesnotexist' => 'zāzanilli ahmo ia',
 );
 

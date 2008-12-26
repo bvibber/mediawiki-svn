@@ -48,9 +48,12 @@ $messages['bg'] = array(
 
 /** German (Deutsch)
  * @author MF-Warburg
+ * @author Melancholie
  */
 $messages['de'] = array(
+	'authors-desc' => 'Hängt an Seiten eine Liste von Autoren an',
 	'authors_authors' => 'Autoren',
+	'authors_anonymous' => 'Anonym',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -71,21 +74,31 @@ $messages['eo'] = array(
 	'authors_anonymous' => 'Anonima',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'authors_anonymous' => 'Anónimo',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'authors-desc' => 'Lisää sivuille listan muokkaajista.',
+	'authors_authors' => 'Tekijät',
 	'authors_anonymous' => 'Nimetön',
 );
 
 /** French (Français)
  * @author Grondin
+ * @author McDutchie
  * @author Sherbrooke
  */
 $messages['fr'] = array(
 	'authors-desc' => 'Ajouter aux pages une liste des contributeurs',
 	'authors_authors' => 'Auteurs',
-	'authors_anonymous' => 'Anomyne',
+	'authors_anonymous' => 'Anonyme',
 );
 
 /** Irish (Gaeilge)
@@ -120,6 +133,15 @@ $messages['hsb'] = array(
 	'authors-desc' => 'Přidawa lisćinu awtorow stronow',
 	'authors_authors' => 'Awtorojo',
 	'authors_anonymous' => 'Anonymny',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'authors-desc' => 'Appende un lista de contributores a paginas',
+	'authors_authors' => 'Autores',
+	'authors_anonymous' => 'Anonyme',
 );
 
 /** Japanese (日本語)
@@ -229,11 +251,28 @@ $messages['te'] = array(
 	'authors_anonymous' => 'అజ్ఞాత',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'authors-desc' => 'Nagkakabit/naglalakip ng isang talaan ng mga tagapagambag sa mga pahina',
+	'authors_authors' => 'Mga may-akda',
+	'authors_anonymous' => 'Hindi nagpapakilala (anonimo)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
 	'authors_authors' => 'Tác giả',
 	'authors_anonymous' => 'Vô danh',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'authors_authors' => '作者',
+	'authors_anonymous' => '匿名',
 );
 

@@ -60,6 +60,13 @@ Dit word gedoen deur die relevante funksies in die MediaWiki-ontleder te roep.',
 	'expand_templates_preview' => 'Voorskou',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'expand_templates_ok' => 'እሺ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -394,6 +401,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'expandtemplates' => 'Sustituidor de plantillas',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expande plantillas, funciones del parser y variables]] para mostrar wikitexto expandido y previstar la página renderizada',
 	'expand_templates_title' => 'Título para contexto, para {{PAGENAME}} etc.:',
 	'expand_templates_input' => 'Texto a expandir:',
 	'expand_templates_output' => 'Resultado:',

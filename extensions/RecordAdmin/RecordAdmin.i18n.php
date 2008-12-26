@@ -68,6 +68,51 @@ $messages['bg'] = array(
 	'recordadmin-editlink' => 'редактиране',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ * @author Revolus
+ */
+$messages['de'] = array(
+	'recordadmin' => 'Aufzeichnungsadministrierung',
+	'recordadmin-desc' => 'Eine [[Special:RecordAdmin|spezielle Seite]] zum Finden und Editieren der Aufzeichnungsseiten mittels eines Formulars',
+	'recordadmin-category' => 'Aufzeichnungen',
+	'recordadmin-select' => 'Wähle den Aufzeichnungstypen, nach dem gesucht werden soll',
+	'recordadmin-newrecord' => 'Wähle einen anderen Aufzeichnungstypen',
+	'recordadmin-submit' => 'Übermitteln',
+	'recordadmin-create' => 'Finde oder Erstelle eine „$1“-Aufzeichnung',
+	'recordadmin-alreadyexist' => 'Entschuldige, "$1" existiert bereits!',
+	'recordadmin-createsuccess' => '$1 erstellt',
+	'recordadmin-createerror' => 'Während des Erstellens von $1 trat ein Fehler auf!',
+	'recordadmin-badtitle' => 'Ungültiger Titel!',
+	'recordadmin-recordid' => 'Aufzeichnungskennung:',
+	'recordadmin-invert' => 'Auswahl umkehren',
+	'recordadmin-buttonsearch' => 'Suche',
+	'recordadmin-buttoncreate' => 'Erstelle',
+	'recordadmin-buttonreset' => 'Zurücksetzen',
+	'recordadmin-searchresult' => 'Suchergebnisse',
+	'recordadmin-nomatch' => 'Keine passenden Aufzeichnungen gefunden!',
+	'recordadmin-edit' => 'Ändere $1',
+	'recordadmin-typeupdated' => '$1 Werte aktualisiert',
+	'recordadmin-updatesuccess' => '$1 aktualisiert',
+	'recordadmin-updateerror' => 'Während der Aktualisierung trat ein Fehler auf',
+	'recordadmin-buttonsave' => 'Speichern',
+	'recordadmin-noform' => 'Es gibt kein Formular für „$1“-Aufzeichnungen!',
+	'recordadmin-createlink' => '<a href=$1>erstelle eins</a>',
+	'recordadmin-newcreated' => 'Neues $1 auf einem öffentlichen Formular erstellt',
+	'recordadmin-summary-typecreated' => 'Neues $1 erstellt',
+	'recordadmin-viewlink' => 'ansehen',
+	'recordadmin-editlink' => 'ändern',
+	'recordadmin-created' => 'Erstellt',
+	'right-recordadmin' => 'Finde und Editiere Aufzeichnungsseiten',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Revolus
+ */
+$messages['de-formal'] = array(
+	'recordadmin-select' => 'Ihre Prüfung dieser Seite/Version:',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -340,6 +385,7 @@ $messages['sk'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'recordadmin-alreadyexist' => 'క్షమించండి, "$1" ఇప్పటికే ఉంది!',
 	'recordadmin-buttonsearch' => 'వెతుకు',
 	'recordadmin-buttoncreate' => 'సృష్టించు',
 	'recordadmin-buttonsave' => 'భద్రపరచు',
@@ -360,5 +406,13 @@ $messages['vi'] = array(
 	'recordadmin-submit' => 'Đăng',
 	'recordadmin-create' => 'Tìm hoặc tạo một bản ghi “$1”',
 	'recordadmin-alreadyexist' => 'Xin lỗi,  	 	 	“$1” đã tồn tại!',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'recordadmin-badtitle' => '標題錯誤!',
+	'recordadmin-buttonreset' => '重置',
 );
 

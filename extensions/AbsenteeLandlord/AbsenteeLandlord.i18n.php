@@ -512,3 +512,18 @@ $messages['wo'] = array(
 	'absenteelandlord-desc' => 'Dàttub njoxe bi caabi boppam su yorkat yi yënguwul benn diir bi.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Bencmq
+ */
+$messages['zh-hans'] = array(
+	'absenteelandlord-reason' => '由于管理员不活跃，数据库已经被自动锁定。',
+	'absenteelandlord-desc' => '若所有的管理人员在一段时间内不活跃，维基数据库将被自动锁定',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'absenteelandlord-reason' => '由於管理員不活躍，數據庫已經被自動鎖定。',
+);
+

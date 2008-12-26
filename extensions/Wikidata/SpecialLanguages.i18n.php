@@ -201,6 +201,14 @@ $wdMessages['af'] = array(
 	'ow_Value' => 'Waarde',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$wdMessages['am'] = array(
+	'ow_history' => 'ታሪክ',
+	'ow_dm_OK' => 'እሺ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -1167,6 +1175,7 @@ $wdMessages['fi'] = array(
 	'ow_save' => 'Tallenna',
 	'ow_history' => 'Historia',
 	'ow_noedit_title' => 'Ei muokkausoikeutta',
+	'ow_uipref_datasets' => 'Oletusnäkymä',
 	'ow_none_selected' => 'Ei yhtään valittu',
 	'ow_dm_OK' => 'OK',
 	'ow_AlternativeDefinition' => 'Vaihtoehtoinen määritelmä',
@@ -3645,7 +3654,9 @@ $wdMessages['ro'] = array(
 	'ow_OptionAttributeOptions' => 'Opţiuni',
 	'ow_PopupAnnotation' => 'Adnotare',
 	'ow_Relations' => 'Relaţii',
+	'ow_RelationType' => 'Tipul relaţiei',
 	'ow_Synonyms' => 'Sinonime',
+	'ow_SynonymsAndTranslations' => 'Sinonime şi traduceri',
 	'ow_Source' => 'Sursă',
 	'ow_TextAttribute' => 'Proprietate',
 	'ow_Text' => 'Text',
@@ -3657,6 +3668,8 @@ $wdMessages['ro'] = array(
 	'ow_Property' => 'Proprietate',
 	'ow_Value' => 'Valoare',
 	'ow_Permission_denied' => '<h2>Permisiune refuzată</h2>',
+	'ow_copy_no_action_specified' => 'Vă rugăm să specificaţi o acţiune',
+	'ow_copy_help' => 'Într-o zi vă vom putea ajuta.',
 	'ow_copy_successful' => '<h2>Copiere cu succes</h2>
 Datele par a fi fost copiate cu succes.
 Nu uitaţi să verificaţi pentru a fi siguri!',
@@ -4326,6 +4339,7 @@ $wdMessages['tg-cyrl'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Manop
  * @author Octahedron80
  * @author Passawuth
  */
@@ -4333,7 +4347,17 @@ $wdMessages['th'] = array(
 	'ow_save' => 'บันทึก',
 	'ow_history' => 'ประวัติ',
 	'ow_dm_OK' => 'ตกลง',
+	'ow_ClassAttributeLevel' => 'ระดับ',
+	'ow_ClassAttributeType' => 'ชนิด',
+	'ow_OptionAttributeOption' => 'ตัวเลือก',
+	'ow_OptionAttributeOptions' => 'ตัวเลือก',
+	'ow_Relations' => 'ความสัมพันธ์',
 	'ow_Source' => 'แหล่งที่มา',
+	'ow_Text' => 'ข้อความ',
+	'ow_TextAttributeValues' => 'ข้อความเรียบ',
+	'ow_LinkAttributeValues' => 'ลิงก์',
+	'ow_Value' => 'ค่า',
+	'ow_meaningsoftitle' => 'ความหมายของ "$1"',
 );
 
 /** Tagalog (Tagalog)

@@ -241,6 +241,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -248,6 +249,8 @@ $messages['eo'] = array(
 	'povwatch_unknown_subpage' => 'Nekonata subpaĝo.',
 	'povwatch_title' => 'Titolo:',
 	'povwatch_comment' => 'Komento por protokolo:',
+	'povwatch_unsubscribe' => 'Ellistiĝi',
+	'povwatch_subscribe' => 'Enskribiĝi',
 	'povwatch_added' => 'aldonita',
 );
 
@@ -1137,5 +1140,23 @@ Nhấn vào nút phía dưới để đăng ký.',
  */
 $messages['vo'] = array(
 	'povwatch_title' => 'Tiäd:',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'povwatch_already_subscribed' => '您已訂閱過PovWatch',
+	'povwatch_subscribed' => '您現已訂閱PovWatch',
+	'povwatch_not_subscribed' => '您並未訂閱PovWatch，因此不能取消訂閱。',
+	'povwatch_unsubscribed' => '您已取消訂閱PovWatch',
+	'povwatch_subscriber_list_intro' => '<strong>訂閱用戶清單</strong>',
+	'povwatch_title' => '標題:',
+	'povwatch_no_subscribers' => '現時沒有訂閱用戶。',
+	'povwatch_unsubscribe' => '取消訂閱',
+	'povwatch_subscribe_intro' => '您並未訂閱PovWatch。
+按下方的按鈕訂閱。',
+	'povwatch_subscribe' => '訂閱',
+	'povwatch_added' => '已加入',
 );
 

@@ -633,6 +633,13 @@ $2',
 	'userrightsnotif-desc' => 'Enviar notificação por email a usuários que sofreram alteração de privilégios',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'userrightsnotif-desc' => 'Trimite notificare prin e-mail utilizatorilor când li se modifică permisiunile',
+);
+
 /** Russian (Русский)
  * @author Flrn
  */

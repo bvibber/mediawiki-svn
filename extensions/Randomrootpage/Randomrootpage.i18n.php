@@ -46,6 +46,14 @@ $messages['bg'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Специална страница]], която извлича случайна начална страница',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'randomrootpage' => 'Zufällige Stammseite',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Spezialseite]] um eine zufällige Stammseite aufzurufen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

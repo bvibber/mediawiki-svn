@@ -178,10 +178,14 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
 	'player' => 'Spieler',
+	'player-desc' => 'Eingebettetes Multimedia-Playback über gebräuchliche Browser-Plugins, sowie eine [[Special:Player|Spezialseite]]',
+	'player-title' => 'Spieler',
+	'player-playertitle' => 'Spieler: $1',
 	'player-file' => 'Dateiname',
 	'player-play' => 'Abspielen',
 	'player-not-allowed' => 'Unerlaubtes Format',
@@ -242,6 +246,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -251,7 +256,7 @@ $messages['fi'] = array(
 	'player-playertitle' => 'Soitin: $1',
 	'player-file' => 'Tiedostonimi',
 	'player-play' => 'Soita',
-	'player-not-allowed' => 'kielletty muoto',
+	'player-not-allowed' => 'ei-sallittu muoto',
 	'player-not-found' => 'tiedostoa ei löydy',
 	'player-invalid-title' => 'virheellinen otsikko',
 	'player-clicktoplay' => 'Soita $1',
@@ -497,8 +502,10 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'player' => 'プレイヤー',
 	'player-file' => 'ファイル名',
 );
 
@@ -1008,5 +1015,15 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'player-goto-page' => 'Pad',
 	'player-goto-file' => 'ragiv',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'player' => '播放器',
+	'player-title' => '播放器',
+	'player-not-found' => '找不到檔案',
+	'player-goto-file' => '檔案',
 );
 

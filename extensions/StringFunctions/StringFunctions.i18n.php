@@ -51,6 +51,13 @@ $messages['bs'] = array(
 	'stringfunctions-desc' => 'Proširuje parser sa string funkcijama',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'stringfunctions-desc' => 'Erweitert den Parser mit Zeichenkettenfunktionen (String Functions)',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

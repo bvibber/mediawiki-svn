@@ -34,6 +34,11 @@ $aliases['de'] = array(
 	'WhosOnline' => array( 'Wer ist online' ),
 );
 
+/** Divehi (ދިވެހިބަސް) */
+$aliases['dv'] = array(
+	'WhosOnline' => array( 'މިވަގުތު އޮންލައިންގައި ތިބީ' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'WhosOnline' => array( 'QuiénEstáConectado' ),

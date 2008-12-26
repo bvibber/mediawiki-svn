@@ -288,6 +288,7 @@ $messages['bs'] = array(
 	'contributionreporting-desc' => 'Izvještaj uživo donacija za Wikimediju',
 	'contributiontotal' => 'Ukupni doprinos',
 	'contributionhistory' => 'Historija doprinosa',
+	'contrib-hist-header' => 'Komentari donatora iz cijelog svijeta u realnom vremenu',
 	'contrib-hist-name' => 'Ime',
 	'contrib-hist-date' => 'Vrijeme i datum',
 	'contrib-hist-amount' => 'Iznos',
@@ -295,8 +296,14 @@ $messages['bs'] = array(
 	'contrib-hist-previous' => 'Novije donacije',
 	'contrib-hist-anonymous' => 'Anonimni',
 	'contributionstatistics' => 'Statistike doprinosa',
+	'contribstats-desc' => 'Prikazuje statistike donacija koje su donirane za Wikimedia Foundation',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Ukupno za danas|Dnevne sume za proteklih $1 dana}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Ukupno za ovaj mjesec|Mjesečne sume za proteklih $1 mjeseci}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Ukupno za mjesec $1|Mjesečne sume za $1 mjeseci}}',
 	'contribstats-currency-range-totals' => 'Ukupno za valutu (od $1 do $2)',
+	'contribstats-contribution-range-breakdown' => 'Razvrstavanje doprinosa po vrijednostima (od $1 do $2)',
 	'contribstats-currency-totals' => 'Ukupno valuta za fiskalnu godinu $1',
+	'contribstats-contribution-breakdown' => 'Presjek donacija po vrijednostima za fiskalnu godinu $1',
 	'contribstats-day' => 'dan',
 	'contribstats-month' => 'mjesec',
 	'contribstats-currency' => 'valuta',
@@ -307,6 +314,10 @@ $messages['bs'] = array(
 	'contribstats-max' => 'Najviše (USD)',
 	'contribstats-percentage-ytd' => 'Procenat (YTD)',
 	'contribstats-total-ytd' => 'Ukupno (YTD)',
+	'contribstats-value-exactly' => 'Tačno $1',
+	'contribstats-value-under' => 'ispod $1',
+	'contribstats-value-from' => 'Između $1 - $2',
+	'contribstats-value-over' => 'preko $1',
 	'fundraiserstatistics' => 'Statistike donatora',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dan $1 od $2',
@@ -318,6 +329,7 @@ $messages['bs'] = array(
 	'fundraiserstats-tab-contributions' => 'Broj doprinosa',
 	'fundraiserstats-tab-averages' => 'Prosjek (USD)',
 	'fundraiserstats-tab-maximums' => 'Najviše (USD)',
+	'specialpages-group-contribution' => 'Doprinosi/donacije',
 );
 
 /** Czech (Česky)
@@ -532,13 +544,19 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'contrib-hist-name' => 'Nombre',
+	'contrib-hist-amount' => 'Cantidad',
 	'contrib-hist-anonymous' => 'Anónimo',
 	'contributionstatistics' => 'Estadísticas de contribución',
 	'contribstats-desc' => 'Muestra estadísticas de contribuciones hechas a la Fundación Wikimedia',
 	'contribstats-day' => 'Día',
 	'contribstats-month' => 'Mes',
+	'contribstats-amount' => 'Cantidad (USD)',
 	'contribstats-contributions' => 'Contribuciones',
+	'contribstats-avg' => 'Promedio (USD)',
+	'contribstats-max' => 'Máximo (USD)',
+	'contribstats-value-exactly' => 'Exactamente $1',
 	'fundraiserstats-date' => 'Fecha',
+	'fundraiserstats-day' => 'Día $1 de $2',
 	'fundraiserstats-contributions' => 'Contribuciones',
 );
 

@@ -218,6 +218,13 @@ $messages['nl'] = array(
 	'multiboilerplate-submit' => 'Laden',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'multiboilerplate-submit' => 'Last',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

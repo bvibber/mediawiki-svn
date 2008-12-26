@@ -135,9 +135,11 @@ Els operadors d'aquest lloc no poden responsabilitzar-se dels continguts d'aques
 
 /** German (Deutsch)
  * @author Daniel Kinzler, brightbyte.de
+ * @author Melancholie
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'talkhere-desc' => 'Baut die Diskussionsseite in eine Seite ein',
 	'talkhere-foottext' => 'Die obigen Kommentare wurden möglicherweise von Besuchern hinterlassen.
 
 Die Betreiber dieser Webseite können keine Verantwortung für den Inhalt diser Kommentare übernehmen.',
@@ -720,8 +722,10 @@ $messages['vo'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Roc michael
+ * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'talkhere-desc' => '把討論頁內容轉移至頁面',
 	'talkhere-foottext' => '此上方可能有討論留言
 
 在此的留言不代表本站立場，站長對站內之留言不負任何責任',

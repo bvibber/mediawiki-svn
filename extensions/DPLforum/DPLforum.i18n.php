@@ -498,6 +498,18 @@ $messages['tr'] = array(
 	'dplforum-never' => 'Asla',
 );
 
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'dplforum-desc' => 'Форумне розширення, засноване на DPL',
+	'dplforum-by' => 'від',
+	'dplforum-edited' => '- Остання правка',
+	'dplforum-never' => 'Ніколи',
+	'dplforum-toofew' => 'Форум DPL: Занадто мало категорій!',
+	'dplforum-toomany' => 'Форум DPL: Занадто багато категорій!',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

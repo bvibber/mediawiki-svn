@@ -573,6 +573,17 @@ $messages['km'] = array(
 	'multiupload-toolbox' => 'ផ្ទុកឡើងពហុឯកសារ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'multipleupload' => '파일 올리기',
+	'multipleupload-saveallfiles' => '모든 파일 저장',
+	'multipleupload-page' => '{{ns:project}}:파일 삭제 정책',
+	'multiupload-fileuploaded' => '파일이 올려졌습니다.',
+	'multiupload-toolbox' => '파일 다중 올리기',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -886,6 +897,16 @@ $messages['ru'] = array(
 	'multiupload-toolbox' => 'Загрузка нескольких файлов',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'multipleupload' => 'Càrica file multimediali',
+	'multipleupload-desc' => "Pirmetti a l'utenti di [[Special:MultipleUpload|caricari cchiù file 'n cuntimpurrania]]",
+	'multipleupload-ignoreallwarnings' => "Trascura '''tutti l'avvisi''' e lu stissu sarva li file.",
+	'multipleupload-saveallfiles' => 'Sarva tutti li file.',
+);
+
 /** Sassaresu (Sassaresu)
  * @author Felis
  */
@@ -1075,5 +1096,12 @@ Bạn có thể nhập vào một '''Tên tập tin đích''' tùy chọn và cu
 Những tập tin không phù hợp sẽ bị xóa lập tức, mời xem [[{{MediaWiki:Multipleupload-page}}|quy định xóa tập tin]].",
 	'multiupload-fileuploaded' => 'Tập tin đã được tải lên.',
 	'multiupload-toolbox' => 'Tải nhiều tập tin',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'multipleupload-saveallfiles' => '儲存所有檔案',
 );
 

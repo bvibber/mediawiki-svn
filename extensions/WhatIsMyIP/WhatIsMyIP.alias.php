@@ -34,6 +34,11 @@ $aliases['de'] = array(
 	'WhatIsMyIP' => array( 'Meine IP-Adresse' ),
 );
 
+/** Divehi (ދިވެހިބަސް) */
+$aliases['dv'] = array(
+	'WhatIsMyIP' => array( 'އަހަރެންގެ އައި.ޕީ އަކީ' ),
+);
+
 /** Persian (فارسی) */
 $aliases['fa'] = array(
 	'WhatIsMyIP' => array( 'نشانی_اینترنتی_من_چیست' ),

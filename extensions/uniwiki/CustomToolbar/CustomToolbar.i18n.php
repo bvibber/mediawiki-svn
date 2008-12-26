@@ -72,6 +72,15 @@ $wgCustomToolbarMessages['qqq'] = array(
 * $1 can be "image" or "link"',
 );
 
+/** Arabic (العربية)
+ * @author Ouda
+ */
+$wgCustomToolbarMessages['ar'] = array(
+	'ct_italic_caption' => 'خط مائل',
+	'ct_internal_caption' => 'وصلة داخلية',
+	'ct_external_caption' => 'وصلة خارجية',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -133,8 +142,11 @@ $wgCustomToolbarMessages['bg'] = array(
 	'ct_user_sample' => 'Потребителско име',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ */
 $wgCustomToolbarMessages['de'] = array(
+	'ct-desc' => 'Fügt eine erweiterbare Werkzeugleiste hinzu',
 	'ct_bold_sample' => 'Fetter Text',
 	'ct_bold_tip_ins' => 'Fetten Text einfügen',
 	'ct_bold_tip_wrap' => 'Diesen Text fett markieren',
@@ -181,6 +193,7 @@ Bitte überprüfe deinen Popup-Blocker.',
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $wgCustomToolbarMessages['eo'] = array(
@@ -217,6 +230,7 @@ $wgCustomToolbarMessages['eo'] = array(
 	'ct_success' => 'Dosiera alŝuto sukcesis!',
 	'ct_user_user' => 'Uzanto',
 	'ct_user_tip' => 'Enmeti ligilon al uzula paĝo',
+	'ct_user_caption' => 'uzanto ligilo',
 	'ct_user_sample' => 'Salutnomo',
 );
 
@@ -267,12 +281,44 @@ $wgCustomToolbarMessages['es'] = array(
  * @author Str4nd
  */
 $wgCustomToolbarMessages['fi'] = array(
+	'ct-desc' => 'Lisää laajennettavan työkalupalkin.',
+	'ct_bold_sample' => 'Lihavoitu teksti',
+	'ct_bold_tip_ins' => 'Lisää lihavoitu teksti',
+	'ct_bold_tip_wrap' => 'Tee tästä tekstistä lihavoitu',
+	'ct_bold_caption' => 'Lihavointi',
+	'ct_italic_sample' => 'Kursivoitu teksti',
+	'ct_italic_tip_ins' => 'Lisää kursivoitu teksti',
+	'ct_italic_tip_wrap' => 'Tee tästä tekstistä kursivoitu',
 	'ct_italic_caption' => 'Kursiivi',
+	'ct_internal_tip_ins' => 'Lisää sisäinen linkki',
+	'ct_internal_tip_wrap' => 'Tee tästä tekstistä sisäinen linkki',
+	'ct_internal_caption' => 'Sisäinen linkki',
+	'ct_external_tip_ins' => 'Lisää ulkoinen linkki',
+	'ct_external_tip_wrap' => 'Tee tästä tekstistä ulkoinen linkki',
+	'ct_external_caption' => 'Ulkoinen linkki',
+	'ct_image_tip' => 'Lisää kuva',
+	'ct_image_caption' => 'Kuvan lisäys',
+	'ct_attachment_tip' => 'Lisää liitetiedosto',
+	'ct_attachment_caption' => 'Liitetiedoston lisäys',
+	'ct_math_sample' => 'Lisää LaTeX-kaava tähän',
+	'ct_math_tip_ins' => 'Lisää matemaattinen kaava (LaTeX)',
+	'ct_math_tip_wrap' => 'Tee tästä tekstistä matemaattinen kaava (LaTeX)',
+	'ct_math_caption' => 'Kaava',
+	'ct_nowiki_sample' => 'Lisää muotoilematon teksti tähän',
+	'ct_nowiki_caption' => 'Ei wikitekstiä',
+	'ct_horizontal_tip' => 'Lisää vaakasuora viiva (käytä niukasti)',
+	'ct_horizontal_caption' => 'Vaakasuora viiva',
+	'ct_upload' => 'Tallenna $1',
+	'ct_select' => 'Valitse $1 tallentaaksesi',
+	'ct_caption' => 'Lisää otsikko (valinnainen)',
+	'ct_link' => 'Lisää linkin nimi (valinnainen)',
 	'ct_close' => 'Sulje ikkuna',
+	'ct_success' => 'Tiedoston tallennus onnistui.',
 	'ct_popupblocked' => 'Tiedostojen tallennuksen ponnahdusikkunan avaus epäonnistui.
 Tarkista ponnahdusikkunoiden eston asetukset.',
 	'ct_user_user' => 'Käyttäjä',
-	'ct_user_sample' => 'Käyttäjänimi',
+	'ct_user_tip' => 'Lisää linkki käyttäjäsivulle',
+	'ct_user_sample' => 'Käyttäjätunnus',
 );
 
 /** French (Français)
@@ -895,6 +941,7 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_bold_caption' => 'Aldin',
 	'ct_italic_sample' => 'Text cursiv',
 	'ct_italic_tip_ins' => 'Inserează text cursiv',
+	'ct_italic_tip_wrap' => 'Fă acest text cursiv',
 	'ct_italic_caption' => 'Cursiv',
 	'ct_internal_tip_ins' => 'Inserează o legătură internă',
 	'ct_internal_tip_wrap' => 'Fă acest text o legătură internă',
@@ -1075,14 +1122,26 @@ $wgCustomToolbarMessages['te'] = array(
 	'ct_bold_sample' => 'బొద్దు పాఠ్యం',
 	'ct_bold_caption' => 'బొద్దు',
 	'ct_italic_sample' => 'వాలు పాఠ్యం',
+	'ct_italic_tip_wrap' => 'ఈ పాఠ్యాన్ని వాలుగా చెయ్యి',
 	'ct_italic_caption' => 'వాలు',
 	'ct_internal_sample' => 'పేజీపేరు',
+	'ct_internal_tip_ins' => 'ఒక అంతర్గత లింకుని చేర్చండి',
+	'ct_internal_tip_wrap' => 'ఈ పాఠ్యాన్ని అంతర్గత లింకుగా మార్చండి',
 	'ct_internal_caption' => 'అంతర్గత లింకు',
+	'ct_external_tip_ins' => 'బయటి లింకుని చేర్చండి',
+	'ct_external_tip_wrap' => 'ఈ పాఠ్యాన్ని బయటి లింకుగా చెయ్యండి',
 	'ct_external_caption' => 'బయటి లింకు',
+	'ct_image_tip' => 'ఒక బొమ్మని చేర్చండి',
 	'ct_image_caption' => 'బొమ్మని చేర్చండి',
+	'ct_attachment_tip' => 'ఒక జోడింపుని చేర్చండి',
+	'ct_attachment_caption' => 'జోడింపుని చేర్చు',
+	'ct_math_tip_ins' => 'గణిత సూత్రాలని చేర్చండి (LaTeX)',
+	'ct_link' => 'లింకు పేరుని చేర్చండి (ఐచ్ఛికం)',
 	'ct_submit' => 'వెళ్ళు!',
 	'ct_success' => 'పైలు ఎగుమతి విజయవంతం!',
 	'ct_user_user' => 'వాడుకరి',
+	'ct_user_tip' => 'వాడుకరి పేజీకి ఒక లింకుని చేర్చండి',
+	'ct_user_caption' => 'వాడుకరి లింకు',
 	'ct_user_sample' => 'వాడుకరిపేరు',
 );
 
@@ -1104,5 +1163,22 @@ $wgCustomToolbarMessages['vi'] = array(
 	'ct_upload' => 'Tải liên $1',
 	'ct_close' => 'Đóng cửa sổ',
 	'ct_user_user' => 'Người dùng',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$wgCustomToolbarMessages['zh-hant'] = array(
+	'ct_bold_sample' => '粗體文字',
+	'ct_bold_caption' => '粗體',
+	'ct_italic_sample' => '斜體文字',
+	'ct_italic_caption' => '斜體',
+	'ct_internal_caption' => '內部連結',
+	'ct_external_caption' => '外部連結',
+	'ct_select' => '選擇要上載的$1',
+	'ct_close' => '關閉視窗',
+	'ct_success' => '上載檔案成功!',
+	'ct_user_user' => '使用者',
+	'ct_user_sample' => '使用者名稱',
 );
 

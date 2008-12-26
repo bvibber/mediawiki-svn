@@ -867,11 +867,22 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Aleksandrit
  */
 $messages['uk'] = array(
 	'importfreeimages' => 'Імпорт вільних зображень',
 	'importfreeimages-desc' => 'Дозволяє [[Special:ImportFreeImages|імпортувати ліцензовані належним чином фотографії]] з [http://www.flickr.com flickr]',
 	'importfreeimages_description' => 'Ця сторінка дозволяє вам шукати фотографії з Flickr, ліцензовані належним чином, та імпортувати їх до вікі.',
+	'importfreeimages_noapikey' => 'Ви не налаштували ваш Flickr API-ключ.
+Щоб це зробити, отримайте API-ключ [http://www.flickr.com/services/api/misc.api_keys.html тут] і встановіть wgFlickrAPIKey в ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => 'Не знайдено фотографій за умовою «$1», спробуйте ще раз.',
+	'importfreeimages_invalidurl' => "URL «$1» не є правильним ім'ям зображення з Flickr.",
+	'importfreeimages_owner' => 'Автор',
+	'importfreeimages_importthis' => 'імпортувати це',
+	'importfreeimages_next' => 'Наступні $1',
+	'importfreeimages_filefromflickr' => '$1 авторства <b>[$2]</b> з Flickr. Оригінальний URL',
+	'importfreeimages_promptuserforfilename' => "Будь-ласка, введіть нове ім'я файлу:",
+	'importfreeimages_returntoform' => "Або натисніть <a href='$1'>тут</a>, щоб повернутися до ваших результатів пошуку.",
 );
 
 /** Vèneto (Vèneto)

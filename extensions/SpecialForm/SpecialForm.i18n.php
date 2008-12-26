@@ -180,8 +180,12 @@ $messages['cs'] = array(
 	'formsaveerrortext' => "Při ukládání formuláře se vyskytla neznámá chyba: ''$1''.",
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ * @author Umherirrender
+ */
 $messages['de'] = array(
+	'form-desc' => 'Eine [[Special:Form|Eingabemaske]] für das Erzeugen von neuen Seiten',
 	'form' => 'Formular',
 	'formnoname' => 'Kein Formularname',
 	'formnonametext' => 'Du musst einen Formularnamen angeben, z.B. „{{ns:Special}}:Form/Formularname“.',
@@ -190,10 +194,12 @@ $messages['de'] = array(
 	'formpattern' => '$1-Formular',
 	'formtitlepattern' => 'Füge neue $1 hinzu',
 	'formsave' => 'Speichern',
+	'formindexmismatch-title' => 'Ungleichgewicht zwischen Namensmustern und Vorlagen',
 	'formindexmismatch' => 'Dieses Formular hat ein Ungleichgewicht zwischen Namensmustern und Vorlagen, beginnend bei Index $1.',
 	'formarticleexists' => 'Seite bereits vorhanden',
 	'formarticleexiststext' => 'Die Seite „[[$1]]“ ist bereits vorhanden.',
 	'formbadpagename' => 'Unzulässiger Seitenname',
+	'formbadrecaptcha' => 'Ungültige Werte für reCaptcha. Versuche es nochmals.',
 	'formbadpagenametext' => 'Die eingegebenen Formulardaten erzeugen einen unzulässigen Seitennamen: „$1“.',
 	'formrequiredfieldpluralerror' => 'Die Felder $1 sind Pflichtfelder. Bitte fülle sie aus.',
 	'formrequiredfielderror' => 'Das Feld $1 ist ein Pfichtfeld. Bitte fülle es aus.',
@@ -210,9 +216,13 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'form' => 'Formulario',
+	'formpattern' => '$1-formularo',
+	'formtitlepattern' => 'Aldoni nova $1',
 	'formsave' => 'Konservi',
 	'formarticleexists' => 'Paĝo ekzistas',
 	'formarticleexiststext' => 'La paĝo [[$1]] jam ekzistas.',
@@ -810,6 +820,8 @@ $messages['ro'] = array(
 	'formsave' => 'Salvează',
 	'formarticleexists' => 'Pagina există',
 	'formarticleexiststext' => 'Pagina [[$1]] deja există.',
+	'formsaveerror' => 'Eroare la salvarea formularului',
+	'formsaveerrortext' => "A intervenit o eroare necunoscută la salvarea paginii '$1'.",
 );
 
 /** Russian (Русский)
@@ -978,5 +990,13 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'formsave' => 'บันทึก',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'formsave' => '儲存',
+	'formarticleexists' => '頁面存在',
 );
 

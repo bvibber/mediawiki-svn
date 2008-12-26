@@ -136,6 +136,6 @@ $aliases['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
-	'CrossNamespaceLinks' => array( 'Links espalhados em diversos espaços nominais', 'Links espalhados em diversos domínios' ),
+	'CrossNamespaceLinks' => array( 'Links espalhados em diversos espaços nominais', 'Links espalhados em diversos domínios', 'Ligações espalhadas em diversos espaços nominais' ),
 );
 

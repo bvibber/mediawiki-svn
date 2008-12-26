@@ -217,6 +217,13 @@ $messages['af'] = array(
 	'viewapc-ls-limit-none' => 'Alles',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'viewapc-ls-limit-none' => 'ሁሉ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -876,6 +883,13 @@ APC verŝajne ne funkcias.',
 	'viewapc-version-ok' => 'Vi operacias la plej lastan version de APC ($1)',
 	'viewapc-filecache-cleared' => "'''''Dosiera kaŝejo forviŝita.'''''",
 	'viewapc-usercache-cleared' => "'''''Kaŝmemoro de programaro estis forviŝita.'''''",
+);
+
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'viewapc-ls-limit-none' => 'Todos',
 );
 
 /** Persian (فارسی)
@@ -3804,5 +3818,18 @@ Phiên bản $2 mới hơn có tại http://pecl.php.net/package/APC/$2',
  */
 $messages['zh-hans'] = array(
 	'viewapc-php-version' => 'PHP 版本',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'viewapc-mode-version-check' => '檢查版本',
+	'viewapc-apc-version' => 'APC版本',
+	'viewapc-php-version' => 'PHP版本',
+	'viewapc-upload-support' => '檔案上載支援',
+	'viewapc-display-filename' => '檔名',
+	'viewapc-ls-sort-modified' => '最近修改',
+	'viewapc-version-info' => '版本資料',
 );
 

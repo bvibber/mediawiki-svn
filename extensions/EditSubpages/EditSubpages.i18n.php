@@ -100,6 +100,13 @@ $messages['dsb'] = array(
   #</pre><!-- toś tu smužku njezměniś -->',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'editsubpages-desc' => 'Permita a los administradores desbloquear una página y sus subpáginas para edición anónima a través de [[MediaWiki:Unlockedpages]]',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix

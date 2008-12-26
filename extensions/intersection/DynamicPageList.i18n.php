@@ -87,6 +87,17 @@ $messages['bcc'] = array(
 	'intersection_noincludecats' => 'لیست صفحات دینامیکی: شما لازمنت حداقل یک دسته هور کنیت یا یک نام فضایی مشخص کنیت!',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'intersection-desc' => "Выводзіць у маркіраваны сьпіс апошнія дабаўленьні да катэгорыі ці аб'ядноўвае некалькі катэгорыяў",
+	'intersection_toomanycats' => 'Памылка: За шмат катэгорыяў!',
+	'intersection_toofewcats' => 'Памылка: Занадта мала катэгорыяў!',
+	'intersection_noresults' => 'Памылка: Няма вынікаў!',
+	'intersection_noincludecats' => 'Памылка: Вам неабходна ўключыць хаця б адну катэгорыю ці прастору назваў!',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -120,8 +131,10 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Seha
  */
 $messages['bs'] = array(
+	'intersection-desc' => 'Izbacuje listu najčešćih tačaka koje se nalaze u kategoriji ili u sekciji nekoliko kategorija.',
 	'intersection_toomanycats' => 'Greška: Previše kategorija!',
 	'intersection_toofewcats' => 'Greška: Premalo kategorija!',
 	'intersection_noresults' => 'Greška: Nema rezultata!',

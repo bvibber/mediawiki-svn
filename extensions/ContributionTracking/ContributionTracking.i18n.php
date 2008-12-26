@@ -92,6 +92,7 @@ $messages['bs'] = array(
 	'contrib-tracking-error' => 'Greška',
 	'contrib-tracking-error-text' => 'Slanje nevaljanog obrasca',
 	'contrib-tracking-submitting' => 'Šaljem za proces plaćanja...',
+	'contrib-tracking-continue' => 'Ako niste automatski preusmjereni, kliknite na dugme da završite Vašu donaciju putem PayPala.',
 	'contrib-tracking-button' => 'nastavi',
 );
 

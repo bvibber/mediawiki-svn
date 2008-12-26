@@ -122,6 +122,14 @@ $messages['dsb'] = array(
 	'newschannel_submit_button' => 'Kanal napóraś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Melancholie
+ */
+$messages['eo'] = array(
+	'newschannel_format' => 'Formato:',
+	'newschannel_limit' => 'Limo:',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Mauro Bornet
@@ -158,6 +166,7 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
@@ -166,7 +175,7 @@ $messages['he'] = array(
 	'newschannel_format' => 'מבנה:',
 	'newschannel_limit' => 'מגבלה:',
 	'newschannel_include_category' => 'קטגוריה נוספת:',
-	'newschannel_exclude_category' => 'קטגוריות חריגות:',
+	'newschannel_exclude_category' => 'התעלמות מהקטגוריה:',
 	'newschannel_submit_button' => 'יצירת הזנה',
 );
 
@@ -238,6 +247,19 @@ $messages['nl'] = array(
 	'newschannel_include_category' => 'Additionele categorie:',
 	'newschannel_exclude_category' => 'Uitgesloten categorie:',
 	'newschannel_submit_button' => 'Feed aanmaken',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'newschannel' => 'Nyhendekanal',
+	'newschannel-desc' => 'Implementerer ein nyhendekanal som ei dynamisk [[Special:NewsChannel|spesialsida]]',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Grensa:',
+	'newschannel_include_category' => 'Ekstra kategori:',
+	'newschannel_exclude_category' => 'Ekskluder kategori:',
+	'newschannel_submit_button' => 'Opprett nyhendekjelda',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -311,16 +311,48 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
+	'review_sidebar_title' => 'Prüfung',
+	'review-desc' => 'Das wiederauferstehen [[Special:Review|Validierungswerkzeug]].',
+	'review_topic_page' => 'Themen prüfen',
+	'review_sidebar_explanation' => 'Das ganz linke Auswahlkästchen bedeutet immer "keine Meinung".',
+	'review_save' => 'Prüfung speichern',
+	'review_your_review' => 'Deine Prüfung dieser Seite/Version:',
+	'review_page_link' => 'Prüfungsstatistiken',
+	'review_for_page' => 'Prüfung der Seite „$1“',
+	'review_for_user' => 'Prüfung des Bentzers „$1“',
 	'review_error' => 'Irgendetwas stimmt nicht!',
+	'review_no_reviews_for_page' => 'Es gibt derzeit keine Prüfungen für „$1“.',
+	'review_total_statistics' => 'Gesammt',
+	'review_statistics_left_corner' => 'Prüfung',
+	'review_version_link' => 'Prüfung Nr. $1',
+	'review_statistic_cell' => 'Durchschnitt: $1 von $2<br />($4 Benutzer, $5 IPs)',
 	'review_version_statistic_cell' => '$1 von $2',
+	'review_version_reviews_link' => '<small>(Versionsprüfung)</small>',
+	'review_user_reviews' => '<small>(Prüfungen dieses Benutzers)</small>',
+	'review_user_page_list' => 'Dieser Benutzer prüfte auch diese Seiten:',
 	'review_user_details_link' => '(Details)',
+	'review_do_merge' => 'Verschmelze meine Prüfungen dieser Seite in diese Prüfung',
+	'review_has_been_stored' => "<span id='review_has_been_stored'>Deine Prüfung wurde gespeichert!</span>",
+	'revision_review_this_page_version_link' => 'Prüfe diese Version der Seite.',
+	'review_page_review' => 'Prüfung der Seite „$1“',
 	'review_blocked' => 'Du bist gesperrt, es gibt nichts für dich zu tun.',
+	'review_wrong_namespace' => 'Seiten in diesem Namensraum können nicht geprüft werden!',
 	'review_topic' => 'Überschrift',
+	'review_no_opinion' => 'Keine Meinung',
 	'review_rating' => 'Bewertung',
 	'review_comment' => 'Kommentar',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Revolus
+ */
+$messages['de-formal'] = array(
+	'review_your_review' => 'Ihre Prüfung dieser Seite/Version:',
+	'review_has_been_stored' => "<span id='review_has_been_stored'>Ihre Prüfung wurde gespeichert!</span>",
 );
 
 /** Greek (Ελληνικά)
@@ -403,6 +435,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Arvostelusi tallennettiin.</span>",
+	'review_blocked' => 'Olet estetty, mene pois.',
 );
 
 /** French (Français)

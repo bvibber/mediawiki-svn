@@ -556,6 +556,12 @@ $messages['fi'] = array(
 	'openidlogin' => 'Kirjaudu OpenID:llä',
 	'openidserver' => 'OpenID-palvelin',
 	'openiderror' => 'Todennusvirhe',
+	'openidcancel' => 'Todennus peruutettiin',
+	'openidfailure' => 'Todennus epäonnistui',
+	'openidsuccess' => 'Todennus onnistui',
+	'openidoptional' => 'Valinnainen',
+	'openidrequired' => 'Vaadittu',
+	'openidfullname' => 'Koko nimi',
 	'openidemail' => 'Sähköpostiosoite',
 	'openidlanguage' => 'Kieli',
 	'openidchoosepassword' => 'salasana:',
@@ -1986,6 +1992,8 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Aleksandrit
+ * @author Ferrer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1998,7 +2006,7 @@ $messages['ru'] = array(
 	'openiderror' => 'Ошибка проверки полномочий',
 	'openiderrortext' => 'Во время проверки адреса OpenID произошла ошибка.',
 	'openidconfigerror' => 'Ошибка настройки OpenID',
-	'openidconfigerrortext' => 'Настройка храненилища OpenID для этой вики ошибочна.
+	'openidconfigerrortext' => 'Настройка хранилища OpenID для этой вики ошибочна.
 Пожалуйста, обратитесь к [[Special:ListUsers/sysop|администратору сайта]].',
 	'openidpermission' => 'Ошибка прав доступа OpenID',
 	'openidpermissiontext' => 'Указанный OpenID не позволяет войти на этот сервер.',
@@ -2009,7 +2017,7 @@ $messages['ru'] = array(
 	'openidsuccess' => 'Проверка прошла успешно',
 	'openidsuccesstext' => 'Проверка адреса OpenID прошла успешно.',
 	'openidusernameprefix' => 'УчастникOpenID',
-	'openidserverlogininstructions' => 'Введите ниже ваш пароль, чтобы войти на $3 как пользователь $2 (личная страница $1).',
+	'openidserverlogininstructions' => 'Введите ниже ваш пароль, чтобы войти на $3 как участник $2 (личная страница $1).',
 	'openidtrustinstructions' => 'Отметьте, если вы хотите предоставить доступ к данным для $1.',
 	'openidallowtrust' => 'Разрешить $1 доверять этой учётной записи.',
 	'openidnopolicy' => 'Сайт не указал политику конфиденциальности.',
@@ -2276,8 +2284,28 @@ $messages['tg-cyrl'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Aleksandrit
  */
 $messages['uk'] = array(
+	'openid-desc' => 'Вхід у вікі за допомогою [http://openid.net/ OpenID], а також вхід на інші сайти, що підтримують OpenID за допомогою акаунта в вікі',
+	'openidlogin' => 'Вхід з допомогою OpenID',
+	'openidserver' => 'Сервер OpenID',
+	'openidxrds' => 'Файл Yadis',
+	'openidconvert' => 'Перетворювач OpenID',
+	'openiderror' => 'Помилка перевірки повноважень',
+	'openiderrortext' => 'Під час перевірки адреси OpenID сталася помилка.',
+	'openidconfigerror' => 'Помилка налаштування OpenID',
+	'openidconfigerrortext' => 'Налаштування сховища OpenID для цієї вікі помилкова. 
+Будь-ласка, зверніться до [[Special:ListUsers/sysop|адміністратору сайту]].',
+	'openidpermission' => 'Помилка прав доступу OpenID',
+	'openidpermissiontext' => 'Вказаний OpenID не дозволяє увійти на цей сервер.',
+	'openidcancel' => 'Перевірку скасовано',
+	'openidcanceltext' => 'Перевірка адреси OpenID була скасована.',
+	'openidfailure' => 'Перевірка невдала',
+	'openidfailuretext' => 'Перевірка адреси OpenID завершилася невдачею. Повідомлення про помилку: «$1»',
+	'openidsuccess' => 'Перевірка пройшла успішно',
+	'openidsuccesstext' => 'Перевірка адреси OpenID пройшла успішно.',
+	'openidusernameprefix' => 'Користувач OpenID',
 	'openidlanguage' => 'Мова',
 );
 
@@ -2361,5 +2389,20 @@ Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp ID M
  */
 $messages['vo'] = array(
 	'openidlanguage' => 'Pük',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'openidserver' => 'OpenID伺服器',
+	'openidconvert' => 'OpenID轉換器',
+	'openiderror' => '驗證錯誤',
+	'openidnickname' => '暱稱',
+	'openidfullname' => '全名',
+	'openidchoosefull' => '您的全名 ($1)',
+	'openidchoosepassword' => '密碼:',
+	'openidconvertyourstext' => '這已是您的OpenID了。',
+	'openidloginlabel' => 'OpenID網址',
 );
 

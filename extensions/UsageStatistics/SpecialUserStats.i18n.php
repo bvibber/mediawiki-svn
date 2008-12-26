@@ -79,6 +79,15 @@ $messages['af'] = array(
 	'usagestatisticsintervalmonth' => 'Maand',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'usagestatisticsintervalday' => 'ቀን',
+	'usagestatisticsintervalweek' => 'ሳምንት',
+	'usagestatisticsintervalmonth' => 'ወር',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -119,6 +128,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -126,7 +136,7 @@ $messages['arz'] = array(
 	'usagestatistics' => 'إحصاءات الاستخدام',
 	'usagestatistics-desc' => 'يعرض إحصاءات الاستخدام لمستخدم منفرد وللويكى ككل',
 	'usagestatisticsfor' => '<h2>إحصاءات الاستخدام ل[[User:$1|$1]]</h2>',
-	'usagestatisticsforallusers' => '<h2>إحصاءات الاستخدام لكل المستخدمين</h2>',
+	'usagestatisticsforallusers' => '<h2>إحصاءات الاستخدام لكل اليوزرر</h2>',
 	'usagestatisticsinterval' => 'مدة',
 	'usagestatisticstype' => 'نوع',
 	'usagestatisticsstart' => 'تاريخ البدء',
@@ -143,8 +153,8 @@ $messages['arz'] = array(
 	'usagestatisticscumulative' => 'تراكمي',
 	'usagestatisticscumulative-text' => 'تراكمي',
 	'usagestatisticscalselect' => 'اختيار',
-	'usagestatistics-editindividual' => 'إحصاءات تعديلات المستخدم المنفرد $1',
-	'usagestatistics-editpages' => 'إحصاءات صفحات المستخدم المنفرد $1',
+	'usagestatistics-editindividual' => 'إحصاءات تعديلات اليوزر المنفرد $1',
+	'usagestatistics-editpages' => 'إحصاءات صفحات اليوزر المنفرد $1',
 );
 
 /** Asturian (Asturianu)
@@ -331,6 +341,7 @@ $messages['da'] = array(
  * @author ChrisiPK
  * @author Gnu1742
  * @author Katharina Wolkwitz
+ * @author Melancholie
  * @author Purodha
  * @author Revolus
  */
@@ -354,7 +365,10 @@ $messages['de'] = array(
 	'usagestatisticsincremental' => 'Inkrementell',
 	'usagestatisticsincremental-text' => 'aufsteigend',
 	'usagestatisticscumulative' => 'Kumulativ',
+	'usagestatisticscumulative-text' => 'gehäuft',
 	'usagestatisticscalselect' => 'Wähle',
+	'usagestatistics-editindividual' => 'Individuelle Bearbeitungsstatistiken für Benutzer $1',
+	'usagestatistics-editpages' => 'Individuelle Seitenstatistiken für Benutzer $1',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1075,7 +1089,11 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'usagestatisticsinterval' => 'Interval',
 	'usagestatisticstype' => 'Tip',
+	'usagestatisticsstart' => 'Dată început',
+	'usagestatisticsend' => 'Dată sfârşit',
+	'usagestatisticssubmit' => 'Generează statistici',
 	'usagestatisticsintervalday' => 'Zi',
 	'usagestatisticsintervalweek' => 'Săptămână',
 	'usagestatisticsintervalmonth' => 'Lună',
@@ -1228,6 +1246,18 @@ $messages['tg-cyrl'] = array(
 	'usagestatisticscumulative' => 'Анбошта',
 	'usagestatisticscumulative-text' => 'анбошта',
 	'usagestatisticscalselect' => 'Интихоб кардан',
+);
+
+/** Thai (ไทย)
+ * @author Manop
+ */
+$messages['th'] = array(
+	'usagestatisticsstart' => 'วันที่เริ่มต้น',
+	'usagestatisticsend' => 'วันที่สิ้นสุด',
+	'usagestatisticsintervalday' => 'วัน',
+	'usagestatisticsintervalweek' => 'อาทิตย์',
+	'usagestatisticsintervalmonth' => 'เดือน',
+	'usagestatisticscalselect' => 'เลือก',
 );
 
 /** Tagalog (Tagalog)

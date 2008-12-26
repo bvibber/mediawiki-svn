@@ -43,11 +43,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'userimages-caption' => 'الصور المرفوعة بواسطة $1',
-	'userimages-noname' => 'اسم مستخدم غير صحيح أو لم يتم توفير واحد.',
+	'userimages-noname' => 'اسم اسم يوزر مش صحيح أو لم يتم توفير واحد.',
 	'userimages-noimages' => 'ليس لدى $1 صور مرفوعة.',
 );
 
@@ -98,8 +99,10 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Melancholie
  */
 $messages['de'] = array(
+	'userimages-desc' => 'Erzeuge per <code><nowiki><userimage /></nowiki></code> Galerien von Bildern die von jew. Benutzern hochgeladen wurden',
 	'userimages-caption' => 'Von $1 hochgeladene Bilder',
 	'userimages-noname' => 'Ungültiger Benutzername oder Eingabefeld leer.',
 	'userimages-noimages' => '$1 hat keine hochgeladenen Bilder.',
@@ -278,6 +281,7 @@ $messages['lt'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
+	'userimages-desc' => 'Генерира галерии на подигнати слики од корисникот со <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Слики подигнати од $1',
 	'userimages-noname' => 'Погрешно корисничко име или воопшто не е наведено.',
 	'userimages-noimages' => '$1 нема подигнато слики.',
@@ -480,6 +484,20 @@ $messages['te'] = array(
 $messages['tg-cyrl'] = array(
 	'userimages-caption' => 'Аксҳо тавассути $1 боргузорӣ шудаанд',
 	'userimages-noimages' => '$1 дорои боргузориҳои аксе нест.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'userimages-desc' => 'Gumawa ng mga tanghalan (galerya) ng mga larawang ikinarga ng tagagamit na may <code><nowiki><tagagamitlarawan /></nowiki></code>',
+	'userimages-caption' => 'Mga larawang ikinarga ni $1',
+	'userimages-noname' => 'Hindi tanggap na pangalan ng tagagamit o walang ibinigay.',
+	'userimages-noimages' => 'Lumilitaw ang mensaheng ito kapag hindi nagkarga ng anumang mga larawan ang kinakailangang tagagamit.
+
+Mga parametro: 
+
+$1: Ang pangalan ng tagagamit',
 );
 
 /** Turkish (Türkçe)

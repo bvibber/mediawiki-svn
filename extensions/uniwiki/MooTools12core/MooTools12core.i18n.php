@@ -28,6 +28,13 @@ $messages['bg'] = array(
 	'mootools12core-desc' => 'Добавя mootools-1.2-core-yc.js към всяка страница',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'mootools12core-desc' => 'Fügt mootools-1.2-core-yc.js in jede Seite ein',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

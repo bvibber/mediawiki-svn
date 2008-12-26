@@ -538,3 +538,12 @@ $messages['vi'] = array(
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Thêm tất cả các trang con]] của một trang vào danh sách theo dõi một cách nhanh chóng.',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'watchsubpages' => '監視子頁面',
+	'watchsubpages-addtitles' => '增加頁面',
+	'watchsubpages-addtitlestowatchlist' => '增加頁面至監視清單',
+);
+

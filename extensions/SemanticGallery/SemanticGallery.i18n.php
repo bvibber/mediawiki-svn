@@ -23,6 +23,13 @@ Shown in [[Special:Version]].
 Do not translage links.',
 );
 
+/** German (Deutsch)
+ * @author Melancholie
+ */
+$messages['de'] = array(
+	'semanticgallery-desc' => 'Fügt SMW-Inline-Abfragen ein Galerienausgabeformat hinzu',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -59,10 +66,11 @@ $messages['hsb'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'semanticgallery-desc' => 'ギャラリー出力フォーマットにSMWインラインクエリーを追加する',
+	'semanticgallery-desc' => 'SMWインラインクエリーにギャラリー出力フォーマットを追加する',
 );
 
 /** Ripoarisch (Ripoarisch)

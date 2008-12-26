@@ -91,11 +91,13 @@ $3',
 
 /** German (Deutsch)
  * @author Leithian
+ * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
 	'latexdoc_no_text' => 'Seite enthält keinen Text, DVI kann nicht generiert werden',
 	'latexdoc_cant_create_dir' => 'Temporäres Verzeichnis $1 kann nicht erstellt werden',
+	'latexdoc_cant_write' => 'Datei $1 kann nicht geschrieben werden',
 	'latexdoc_error' => 'LaTeX-Fehler
 
 Aufruf: $1
@@ -105,6 +107,7 @@ Ausgabe: $2
 $3',
 	'latexdoc_get_dvi' => 'DVI herunterladen',
 	'latexdoc_get_pdf' => 'PDF herunterladen',
+	'latexdoc-desc' => 'Gemeinschaftliches Bearbeiten von LaTeX-Dokumenten',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -127,6 +130,7 @@ $3',
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -140,6 +144,7 @@ Komando: $1
 Eligo: $2
 
 $3',
+	'latexdoc_get_dvi' => 'Akiri DVI',
 	'latexdoc_get_pdf' => 'Akiri PDF-on',
 );
 

@@ -172,6 +172,16 @@ $messages['hsb'] = array(
 	'searchbox-namespaces' => 'Mjenowe rumy:',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'searchbox-desc' => 'Lehetővé teszi keresőmezők beilleszését',
+	'searchbox-search' => 'Keresés',
+	'searchbox-go' => 'Menj',
+	'searchbox-namespaces' => 'Névterek:',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi
@@ -197,6 +207,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'searchbox-desc' => 'Maad_et müjjelesch, e Fommulaa zom Söke enzebernge.',
+	'searchbox-search' => 'Söke',
 	'searchbox-go' => 'Loß Jonn!',
 	'searchbox-namespaces' => 'Appachtemengs:',
 );
@@ -319,5 +330,12 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'searchbox-search' => 'వెతుకు',
 	'searchbox-go' => 'వెళ్ళు',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'searchbox-search' => '搜尋',
 );
 

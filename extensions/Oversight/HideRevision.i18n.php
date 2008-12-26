@@ -1796,12 +1796,14 @@ $messages['ko'] = array(
 	'hiderevision-tab' => '이 판을 숨기기',
 	'hiderevision-link' => '숨겨진 사용자 기여',
 	'hiderevision-norevisions' => '삭제할 판이 제시되지 않았습니다.',
+	'hiderevision-noreason' => '숨기는 이유를 반드시 입력해야 합니다.',
 	'hiderevision-status' => '$1판: $2',
 	'hiderevision-success' => '문서가 성공적으로 삭제되어 보존되었습니다.',
 	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',
 	'oversight' => '오버사이트',
 	'oversight-view' => '내용 보기',
 	'oversight-hidden' => '숨겨진 판',
+	'oversight-legend' => '특정 판 숨기기 기록 찾기',
 	'oversight-offender' => '편집자:',
 );
 
@@ -2609,9 +2611,54 @@ $messages['sah'] = array(
 
 /** Sicilian (Sicilianu)
  * @author Melos
+ * @author Santu
  */
 $messages['scn'] = array(
-	'right-hiderevision' => 'Ritalìa e riprìstina virsioni ammucciati',
+	'hiderevision' => 'Ammucciata pi sempri di li rivisioni',
+	'hiderevision-desc' => "Ammuccia a tutti l'utenti rivisioni ùnichi di li pàggini (pi mutivi di liggi, eccettra)",
+	'group-oversight' => 'Oversighters',
+	'group-oversight-member' => 'oversight',
+	'grouppage-oversight' => '{{ns:project}}:Oversight',
+	'right-oversight' => "Fà taliari na rivisioni ca s'avìa ammucciatu prima",
+	'right-hiderevision' => "Talìa n'àutra vota e riprìstina virsioni ammucciati",
+	'hiderevision-prompt' => "Nùmmiru di li rivisioni d'ammucciari:",
+	'hiderevision-continue' => 'Cuntìnua',
+	'hiderevision-text' => "Sta funzioni s'hà usari '''sulamenti''' nta sti casi: 
+* Dati pirsunali non apprupriati
+*: ''ndirizzi pustali, nùmmiri di tilèfunu, còdici fiscali, ecc.''
+
+'''Tutti l'abbusi dû sistema porta a la livata di li privileggi.'''
+
+L'elimenti ammucciati li ponnu taliari tutti ntô situ, ma
+c'è nu riggistru di li rivisioni ammucciati e la pussibbilitati di
+nu riprìstinu manuali ca pù fari n'amministraturi dû database
+ntô casu di erruri.",
+	'hiderevision-reason' => 'Mutivu (pô riggistru arisirvatu):',
+	'hiderevision-submit' => 'Ammuccia li dati pi sempri',
+	'hiderevision-tab' => 'Ammuccia rivisioni',
+	'hiderevision-link' => 'Cuntribbuti utenti ammucciati',
+	'hiderevision-norevisions' => "Non vinni ammustrata nudda rivizioni d'ammucciari.",
+	'hiderevision-noreason' => "E' nicissariu ammustrari lu mutivi di l'ammucciatina.",
+	'hiderevision-status' => 'Rivisioni $1: $2',
+	'hiderevision-success' => 'Archiviazzioni e ammucciatini cumplitati.',
+	'hiderevision-error-missing' => 'Non attruvatu ntô database.',
+	'hiderevision-error-current' => "Mpussìbbili ammucciari l'ùrtima mudìfica di na pàggina. Scancillari la mudìfica prima di jiri avanti p'ammucciari.",
+	'hiderevision-error-delete' => "Nun si pò archiviari; apprima c'èranu scancillazzioni?",
+	'hiderevision-archive-status' => 'Rivisioni ammucciata di $1: $2',
+	'oversight-nodiff' => "Mpussìbbili ammustrari li mudìfichi pirchì apprima non ci sunnu rivisioni dâ pàggina. Pò èssiri ca:
+*La pàggina fu scancillata
+*St'ammucciata di rivisioni era la prima pi la pàggina",
+	'oversight-log-hiderev' => 'Ammucciau na mudìfica di $1',
+	'oversight' => 'Oversight',
+	'oversight-view' => 'dittagghi',
+	'oversight-difference' => "(Diffirenzi 'n cunfruntu a la virsioni c'avìa aristata prima)",
+	'oversight-prev' => 'Ùrtima rivisioni di prima',
+	'oversight-hidden' => 'Rivisioni ammucciata',
+	'oversight-header' => 'Ccà di sècutu veni ammustrata na lista dî rivizioni ammucciati pi sempri a li visitaturi dû situ.
+Lu spàrgiri ssi nfurmazzioni pò fari livari pi sempri li diritti di oversight.',
+	'oversight-legend' => 'Cerca li log di li rivisioni ammucciati',
+	'oversight-oversighter' => 'Oversighter:',
+	'oversight-offender' => 'Riatu:',
 );
 
 /** Sinhala (සිංහල)

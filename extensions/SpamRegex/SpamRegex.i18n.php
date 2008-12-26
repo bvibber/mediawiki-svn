@@ -250,6 +250,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Melancholie
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -257,6 +258,7 @@ $messages['eo'] = array(
 	'spamregex-log-2' => 'je $1',
 	'spamregex-unblock-success' => 'Malforbaro sukcesis',
 	'spamregex-block-success' => 'Forbaro sukcesis',
+	'spamregex-error-1' => 'Nevalida regula esprimo.',
 	'spamregex-already-blocked' => '"$1" jam estas forbarita.',
 	'spamregex-phrase-block' => 'Vorta kombinaĵo por forbari:',
 	'spamregex-text' => '(Teksto)',

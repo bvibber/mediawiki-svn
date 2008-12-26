@@ -108,8 +108,11 @@ $messages['da'] = array(
 	'msfunc_div_zero' => 'Division med nul',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Melancholie
+ */
 $messages['de'] = array(
+	'msfunc_desc' => 'Eine Sammlung von mathematischen und statistischen Funktionen',
 	'msfunc_nan' => 'Ergebniswert ist keine Zahl',
 	'msfunc_inf' => 'Ergebniswert ist unendlich',
 	'msfunc_div_zero' => 'Division durch Null',

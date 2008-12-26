@@ -79,6 +79,13 @@ $messages['af'] = array(
 	'importusers-realname' => 'regte naam',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'importusers-log-summary-all' => 'ሁሉ',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -663,6 +670,13 @@ $messages['ksh'] = array(
 	'importusers-desc' => 'Donn Metmaacher em Knubbel fun en Datei [[Special:ImportUsers|emptotteere]], dat Fommaat es: <code lang="en">text/csv; charset: UTF-8</code>',
 	'importusers-log-summary-all' => 'All',
 	'importusers-realname' => 'Dinge richtije Name',
+);
+
+/** Latin (Latina)
+ * @author UV
+ */
+$messages['la'] = array(
+	'importusers-log-summary' => 'Summarium',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -43,11 +43,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'whatismyip' => 'ما هو الأيبى الخاص بي',
-	'whatismyip-desc' => 'يظهر عنوان أيبى المستخدم الحالى فى [[Special:WhatIsMyIP|صفحة خاصة]]',
+	'whatismyip-desc' => 'يظهر عنوان أيبى اليوزر الحالى فى [[Special:WhatIsMyIP|صفحة خاصة]]',
 	'whatismyip-out' => 'الأيبى الخاص بك:',
 );
 
@@ -127,6 +128,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'whatismyip' => 'Cuál es mi IP',
+	'whatismyip-desc' => 'Muestra la dirección IP del usuario actual en [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Tu IP:',
 );
 
 /** Persian (فارسی)
@@ -460,5 +463,12 @@ $messages['vi'] = array(
 	'whatismyip' => 'IP của tôi là gì?',
 	'whatismyip-desc' => 'Hiển thị địa chỉ IP của người dùng tại [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'IP của bạn:',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hant'] = array(
+	'whatismyip-out' => '您的IP:',
 );
 
