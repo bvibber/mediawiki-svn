@@ -72,7 +72,7 @@ class SpecialAccountManager extends SpecialPage {
 			foreach( $wgUserProperties as $key ) {
 				$value = isset( $props[$key] ) ? $props[$key] : '';
 				$row .= "<td>".Xml::input(
-						"am-{$name}-{$key}", 30, $value
+						"am-{$name}-".str_replace( ' ', '_', $key ), 30, $value
 					)."</td>";
 			}
 			$row .= "</tr>\n";
@@ -108,7 +108,7 @@ class SpecialAccountManager extends SpecialPage {
 			$msg = 'am-'.$i;
 			$wgOut->addHTML( "\t<tr><th>".
 				(wfEmptyMsg( $msg, wfMsg( $msg ) ) ? $i : wfMsgHtml( $msg )).
-				"</th><td>".Xml::input( "am-{$i}", 40 ).
+				"</th><td>".Xml::input( "am-".str_replace( ' ', '_', $i ), 40 ).
 				"</td></tr>\n"
 			 );
 		}
@@ -131,8 +131,25 @@ class SpecialAccountManager extends SpecialPage {
 				'type' => 'submit',
 				'value' => wfMsg( 'nss-create-account' )
 			) ).
-			"</div>\n</form>"
+			"</div>\n</form>\n"
 		);
+		
+		$wgOut->addHTML( Xml::openElement( 'form', array(
+			'action' => $this->getTitle()->getLocalURL(),
+			'method' => 'post' )
+		) );
+		$wgOut->addHTML( "<div id=\"newaccount-raw\">\n".
+			Xml::textarea( 'nss-create-account-raw', '' )."\n".
+			Xml::hidden( 'action', 'create-raw' ).
+			Xml::checkLabel( wfMsg( 'nss-no-mail' ), 'nss-no-mail', 'nss-no-mail' ).
+			"<br />\n".
+			Xml::element( 'input', array(
+				'type' => 'submit',
+				'value' => wfMsg( 'nss-create-account' )
+			) ).
+			"</div>\n</form>\n"
+		);
+				
 	}
 
 	function processData() {
@@ -149,13 +166,13 @@ class SpecialAccountManager extends SpecialPage {
 				continue;
 
 			$username = strtolower( $parts[1] );
-			$keyname = strtolower( $parts[2] );
+			$keyname = str_replace( '_', ' ', strtolower( $parts[2] ) );
 
 			if( !isset( $this->users[$username] ) )
 				continue;
 
 			if( !in_array( $keyname, $wgUserProperties ) && 
-					!in_array( $keyname, array( 'email', 'active' )) )
+					!in_array( $keyname, array( 'email', 'active' ) ) )
 				continue;
 
 			$this->users[$username]->set( $keyname, $value );
@@ -181,9 +198,36 @@ class SpecialAccountManager extends SpecialPage {
 			if( count( $parts ) != 2 )
 				continue;
 
-			$keyname = strtolower( $parts[1] );
+			$keyname = str_replace( '_', '-', strtolower( $parts[1] ) );
 			$options[$keyname] = $value;
 		}
+		return $this->internalProcessCreateAccount( $options, 
+			$wgRequest->getCheck( 'nss-no-mail') );
+	
+	}
+	function processCreateAccountRaw() {
+		global $wgRequest, $wgUserProperties;
+		if( !$wgRequest->wasPosted() || $wgRequest->getVal('action') != 'create-raw' )
+			return;
+			
+		$data = $wgRequest->getText( 'nss-create-account-raw' );
+		$nomail = $wgRequest->getCheck( 'nss-no-mail');
+		$lines = explode( "\n", $data );
+		foreach ( $lines as $line ) {
+			$line = trim( $line );
+			$items = explode( "\t", $line );
+			if ( count( $items ) == $wgUserProperties + 1 ) {
+				$username = array_shift( $items );
+				$options = array_combine( $wgUserProperties, $items );
+				$options['username'] = $username;
+				$this->internalProcessCreateAccount( $options, $nomail );
+			}
+			
+		}
+		
+	}
+	
+	function internalProcessCreateAccount( $options, $nomail = false ) {
 		if( empty( $options['username'] ) ) {
 			$this->mErrors[] = 'noname';
 			return false;
@@ -201,7 +245,7 @@ class SpecialAccountManager extends SpecialPage {
 		}
 		$this->users[$userprops->getName()] = $userprops;
 
-		if ( $wgRequest->getCheck( 'nss-no-mail' ) )
+		if ( $nomail )
 			return true;
 		
 		global $wgPasswordSender;
