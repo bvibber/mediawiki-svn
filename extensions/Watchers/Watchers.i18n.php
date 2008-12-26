@@ -155,6 +155,20 @@ $messages['br'] = array(
 	'watchers_less_than_x' => "Nebeutoc'h eget $1 implijer o deus lakaet ar bajenn-mañ war evezh.",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'watchers' => 'Sledující',
+	'watchers-desc' => 'Zobrazuje [[Special:Watchers|uživatele, kteří mají stránku v seznamu sledovaných]]',
+	'watchers_link_title' => 'Kdo sleduje tuto stránku?',
+	'watchers_error_article' => '<b>Chyba:</b> Článek neexistuje.',
+	'watchers_header' => '{{PLURAL:$2|Uživatel|Uživatelé}} sledující stránku „$1”',
+	'watchers_noone_watches' => 'Nikdo nesleduje tuto stránku',
+	'watchers_x_or_more' => '$1 nebo více uživatelů sleduje tuto stránku.',
+	'watchers_less_than_x' => 'Méně než $1 {{PLURAL:|uživatel sleduje|uživatelé sledují|uživatelů sleduje}} tuto stránku.',
+);
+
 /** German (Deutsch)
  * @author Revolus
  * @author Umherirrender
@@ -279,6 +293,20 @@ $messages['hsb'] = array(
 	'watchers_noone_watches' => 'Nichtó tutu stronu njewobkedźbuje.',
 	'watchers_x_or_more' => '$1 {{PLURAL:$1|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}} abo wjace {{PLURAL:$1|wobkedźbuje|wobkedźbujetej|wobkedźbuja|wobkedźbuje}} tutu stronu.',
 	'watchers_less_than_x' => 'Mjenje hač $1 {{PLURAL:$1|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}} {{PLURAL:$1|wobkedźbuje|wobkedźbujetaj|wobkedźbuja|wobkedźbuje}} tutu stronu.',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'watchers' => 'Figyelők',
+	'watchers-desc' => 'Megmutatja, hogy [[Special:Watchers|egy adott lapot mely szerkesztők figyelik]]',
+	'watchers_link_title' => 'Ki figyeli ezt a lapot?',
+	'watchers_error_article' => "'''Hiba:''' A lap nem létezik.",
+	'watchers_header' => '{{PLURAL:$2|Szerkesztő, aki figyeli|Szerkesztők, akik figyelik}} a(z) „$1” című lapot',
+	'watchers_noone_watches' => 'Ezt a lapot nem figyeli senki.',
+	'watchers_x_or_more' => '{{PLURAL:$1|Egy|$1}} vagy több szerkesztő figyeli ezt a lapot.',
+	'watchers_less_than_x' => 'Kevesebb, mint {{PLURAL:$1|Egy|$1}} szerkesztő figyeli ezt a lapot.',
 );
 
 /** Interlingua (Interlingua)
@@ -408,6 +436,13 @@ $messages['mr'] = array(
 	'watchers_noone_watches' => 'या पानावर कुणीही पहारा दिलेला नाही.',
 	'watchers_x_or_more' => '$1 किंवा जास्त सदस्यांनी पहारा दिलेला आहे.',
 	'watchers_less_than_x' => '$1 पेक्षा कमी सदस्यांनी पहारा दिलेला आहे.',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'watchers' => 'Tlachiyalōnih',
 );
 
 /** Dutch (Nederlands)
@@ -560,6 +595,20 @@ $messages['sv'] = array(
 	'watchers_noone_watches' => 'Ingen bevakar denna sida.',
 	'watchers_x_or_more' => '$1 eller fler {{PLURAL:$1|användare|användare}} har denna sida på sin bevakningslista.',
 	'watchers_less_than_x' => 'Färre än $1 {{PLURAL:$1|användare|användare}} bevakar den här sidan.',
+);
+
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'watchers' => 'Filujůncy',
+	'watchers-desc' => 'Pokozuje, [[Special:Watchers|kere użytkowńiki majům zajta na pozorliśće]]',
+	'watchers_link_title' => 'Fto mo ta zajta na pozorliśće?',
+	'watchers_error_article' => '<b>Feler:</b> Zajta ńy istńeje',
+	'watchers_header' => '{{PLURAL:$2|Filujůncy|Filujůncy}} „$1”',
+	'watchers_noone_watches' => 'Ńikt ńy mo tyj zajty na pozorliśće',
+	'watchers_x_or_more' => 'Ńy myńi jak {{PLURAL:$1|użytkowńik|użytkowńikůw}} mo ta zajta na pozorliśće.',
+	'watchers_less_than_x' => 'Myńi jak {{PLURAL:$1|użytkowńik|użytkowńikůw}} mo ta zajta na pozorliśće.',
 );
 
 /** Telugu (తెలుగు)

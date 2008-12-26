@@ -205,6 +205,7 @@ Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
  */
 $messages['hu'] = array(
 	'newusernotifsubj' => 'Értesítés új $1 felhasználóról',
+	'newusernotif-desc' => 'E-mail üzeneteket küld, ha új felhasználói fiókok készülnek',
 	'newusernotifbody' => 'Szia $1,
 
 egy új felhasználói fiókot készítettek $2 névvel a(z) $3 wikin, $4-kor.',

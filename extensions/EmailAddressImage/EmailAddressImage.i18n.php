@@ -75,6 +75,13 @@ $messages['es'] = array(
 	'emailaddressimage-desc' => 'Añade la etiqueta <tt>&lt;email&gt;</tt> que muestra una dirección de correo electrónico como imagen.',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'emailaddressimage-desc' => 'Lisää <tt>&lt;email&gt;</tt>-elementin, jolla sähköpostiosoitteet voi näyttää kuvina.',
+);
+
 /** French (Français)
  * @author Grondin
  */

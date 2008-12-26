@@ -88,14 +88,15 @@ $messages['bcc'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'intersection-desc' => "Выводзіць у маркіраваны сьпіс апошнія дабаўленьні да катэгорыі ці аб'ядноўвае некалькі катэгорыяў",
-	'intersection_toomanycats' => 'Памылка: За шмат катэгорыяў!',
+	'intersection-desc' => "Выводзіць у маркіраваны сьпіс апошнія дабаўленьні да катэгорыі альбо аб'ядноўвае некалькі катэгорыяў",
+	'intersection_toomanycats' => 'Памылка: Зашмат катэгорыяў!',
 	'intersection_toofewcats' => 'Памылка: Занадта мала катэгорыяў!',
 	'intersection_noresults' => 'Памылка: Няма вынікаў!',
-	'intersection_noincludecats' => 'Памылка: Вам неабходна ўключыць хаця б адну катэгорыю ці прастору назваў!',
+	'intersection_noincludecats' => 'Памылка: Вам неабходна ўключыць хаця б адну катэгорыю альбо ўказаць прастору назваў!',
 );
 
 /** Bulgarian (Български)

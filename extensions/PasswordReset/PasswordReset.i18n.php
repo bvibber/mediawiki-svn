@@ -73,6 +73,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'passwordreset' => 'تمت إعادة ضبط كلمة السر',
@@ -81,9 +82,9 @@ $messages['ar'] = array(
 	'passwordreset-emptyusername' => 'اسم مستخدم فارغ',
 	'passwordreset-nopassmatch' => 'كلمات السر لا تتطابق',
 	'passwordreset-badtoken' => 'نص تعديل غير صحيح',
-	'passwordreset-username' => 'اسم مستخدم',
-	'passwordreset-newpass' => 'كلمة سر جديدة',
-	'passwordreset-confirmpass' => 'أكد كلمة السر',
+	'passwordreset-username' => 'اسم المستخدم:',
+	'passwordreset-newpass' => 'كلمة سر جديدة:',
+	'passwordreset-confirmpass' => 'أكد كلمة السر:',
 	'passwordreset-submit' => 'أعد ضبط كلمة السر',
 	'passwordreset-success' => 'كلمة السر تم ضبطها ل user_id: $1',
 	'passwordreset-disableuser' => 'عطل حساب المستخدم؟',

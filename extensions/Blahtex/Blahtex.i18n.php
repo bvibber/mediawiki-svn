@@ -638,6 +638,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Nike
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'math_noblahtex' => 'Blahtexin suorittaminen epäonnistui. Sen pitäisi sijaita kohteessa $1.',
@@ -645,6 +646,8 @@ $messages['fi'] = array(
 	'math_CannotCreateTexFile' => 'Tex-tiedoston luominen epäonnistui.',
 	'math_CannotWriteTexFile' => 'Tex-tiedostoon kirjoittaminen epäonnistui.',
 	'math_IllegalCharacter' => 'Kelpaamaton merkki syötteessä',
+	'math_InvalidColour' => 'Väri ”$1” on virheellinen',
+	'math_InvalidUtf8Input' => 'Tekstisyöte ei ole UTF-8-merkistökoodattu',
 	'math_NotEnoughArguments' => 'Liian vähän argumentteja komennolle $1.',
 	'math_PngIncompatibleCharacter' => 'Merkin $1 sisältävän PNG-tiedoston luominen oikein ei onnistu',
 	'math_ReservedCommand' => 'Komento <tt>$1</tt> on varattu blahtexin sisäiseen käyttöön',

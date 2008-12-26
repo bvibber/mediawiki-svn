@@ -54,6 +54,13 @@ $messages['af'] = array(
 	'contributors-submit' => 'Wys',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'contributors-target' => 'አርዕስት፡',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido
@@ -120,6 +127,13 @@ $messages['bcl'] = array(
 	'contributors-others' => 'asin $1 iba pa',
 	'contributors-badtitle' => 'Salang titulo.',
 	'contributors-nosuchpage' => 'An artikulong $1 mayò man.',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'contributors-target' => 'Назва:',
 );
 
 /** Bulgarian (Български)
@@ -301,6 +315,7 @@ $messages['ext'] = array(
  * @author Jaakonam
  * @author Nike
  * @author Silvonen
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'contributors' => 'Muokkaajat',
@@ -312,6 +327,7 @@ $messages['fi'] = array(
 	'contributors-subtitle' => 'Sivun $1 pääasialliset muokkaajat',
 	'contributors-others-long' => 'Tätä sivua on muokannut {{PLURAL:$1|yksi muu käyttäjä|$1 muuta käyttäjää}}.',
 	'contributors-others' => 'ja {{PLURAL:$1|yksi muu|$1 muuta}}',
+	'contributors-badtitle' => 'Epäkelpo otsikko.',
 	'contributors-nosuchpage' => 'Sivua $1 ei ole olemassa.',
 );
 

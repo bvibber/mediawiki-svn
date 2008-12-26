@@ -212,11 +212,18 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Jaakonam
+ * @author Nike
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'onlinestatus-desc' => 'Lisää asetuksen, joka näyttää onko käyttäjä kirjautunut sisään vai ei',
+	'onlinestatus-js-anon' => 'Et voi käyttää tätä ominaisuutta ennen kirjautumista sisään.',
+	'onlinestatus-js-changed' => 'Tilasi on nyt ”$1”',
+	'onlinestatus-js-error' => 'Tilan muuttaminen on mahdotonta, sillä arvo ”$1” on epäkelpo',
 	'onlinestatus-subtitle-offline' => 'Tämä käyttäjä ei ole kirjautunut sisään nyt',
 	'onlinestatus-subtitle-online' => 'Tämä käyttäjä on kirjautunut sisään',
+	'onlinestatus-tab' => 'Tila',
+	'onlinestatus-toggles-desc' => 'Tilasi:',
 	'onlinestatus-toggles-show' => 'Näytä sisäänkirjautumisen tila käyttäjäsivullani',
 );
 
@@ -333,6 +340,24 @@ $messages['hsb'] = array(
 	'onlinestatus-toggle-online' => 'Online',
 	'tog-onlineOnLogin' => 'Při přizjewjenju status do online změnić',
 	'tog-offlineOnLogout' => 'Při wotzjewjenju status do offline změnić',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'onlinestatus-desc' => 'Beállítás, amivel a szerkesztő jelezheti, hogy online van-e egy adott időpontban a wikin.',
+	'onlinestatus-js-anon' => 'Hiba: be kell jelentkezned a funkció használatához',
+	'onlinestatus-js-changed' => 'Állapotod megváltoztatva a(z) „$1” értékre',
+	'onlinestatus-js-error' => 'Nem sikerült megváltoztatni az állapotot, a(z) „$1” érték érvénytelen',
+	'onlinestatus-subtitle-offline' => 'A szerkesztő nincs wikiközelben',
+	'onlinestatus-subtitle-online' => 'A szerkesztő jelenleg itt van',
+	'onlinestatus-tab' => 'Állapot',
+	'onlinestatus-toggles-desc' => 'Állapotod:',
+	'onlinestatus-toggles-explain' => 'Lehetővé teszi számodra, hogy a szerkesztői lapodon jelezd más szerkesztők számára, hogy wikiközelben vagy-e vagy sem.',
+	'onlinestatus-toggles-show' => 'Elérhetőségi állapotom mutatása a szerkesztői lapomon',
+	'onlinestatus-toggle-online' => 'Elérhető',
+	'tog-onlineOnLogin' => 'Változtassa az állapotomat elérhetőre, ha bejelentkezek',
 );
 
 /** Interlingua (Interlingua)

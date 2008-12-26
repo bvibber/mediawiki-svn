@@ -51,6 +51,13 @@ $messages['bs'] = array(
 	'stringfunctions-desc' => 'Proširuje parser sa string funkcijama',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'stringfunctions-desc' => 'Rožšiřuje syntaktický analyzátor o funkce pro práci s řetězci',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

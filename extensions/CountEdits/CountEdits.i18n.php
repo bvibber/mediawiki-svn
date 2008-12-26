@@ -74,6 +74,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'countedits' => 'عد التعديلات',
@@ -84,7 +85,7 @@ $messages['ar'] = array(
 	'countedits-ok' => 'موافق',
 	'countedits-nosuchuser' => 'لا يوجد مستخدم بالاسم $1.',
 	'countedits-resultheader' => 'النتائج ل $1',
-	'countedits-resulttext' => '$1 لديه $2 مساهمة',
+	'countedits-resulttext' => '$1 لديه $2 {{PLURAL:$2|تعديل|تعديلات}}',
 	'countedits-mostactive' => 'أكثر المساهمين نشاطا',
 	'countedits-nocontribs' => 'لا يوجد مساهمون في هذه الويكي.',
 );
@@ -212,7 +213,7 @@ $messages['de'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Es gibt keinen Benutzer mit dem Namen $1.',
 	'countedits-resultheader' => 'Ergebnis für $1',
-	'countedits-resulttext' => '$1 hat $2 Bearbeitungen',
+	'countedits-resulttext' => '$1 hat $2 {{PLURAL:$2|Bearbeitung|Bearbeitungen}}',
 	'countedits-mostactive' => 'Die aktivsten Benutzer',
 	'countedits-nocontribs' => 'In {{ns:project}} sind keine Bearbeitungen vorhanden.',
 );
@@ -276,6 +277,7 @@ $messages['ext'] = array(
  * @author Jaakonam
  * @author Nike
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'countedits' => 'Muokkausmäärälaskuri',
@@ -285,13 +287,14 @@ $messages['fi'] = array(
 	'countedits-ok' => 'Hae',
 	'countedits-nosuchuser' => 'Käyttäjää $1 ei ole.',
 	'countedits-resultheader' => 'Tulos käyttäjälle $1',
-	'countedits-resulttext' => '$1 on tehnyt $2 muokkausta.',
+	'countedits-resulttext' => '$1 on tehnyt $2 {{PLURAL:$2|muokkauksen|muokkausta}}',
 	'countedits-mostactive' => 'Aktiivisimmat käyttäjät',
 	'countedits-nocontribs' => 'Tätä wikiä ei ole muokattu.',
 );
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Sherbrooke
  * @author Urhixidur
  */
@@ -303,7 +306,7 @@ $messages['fr'] = array(
 	'countedits-ok' => 'Accepter',
 	'countedits-nosuchuser' => 'Aucun utilisateur ne correspond à $1',
 	'countedits-resultheader' => 'Résultats pour $1',
-	'countedits-resulttext' => '$1 a fait {{PLURAL:$2|$2 édition|$2 éditions}}',
+	'countedits-resulttext' => '$1 a fait $2 {{PLURAL:$2|édition|éditions}}',
 	'countedits-mostactive' => 'Contributeurs les plus actifs',
 	'countedits-nocontribs' => 'Aucune contribution sur ce wiki.',
 );
@@ -548,6 +551,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -843,7 +847,7 @@ Ikkje vurder ein bidragsytar etter talet på endringar av han/ho.",
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Det finst ingen brukar med namnet $1.',
 	'countedits-resultheader' => 'Resultat for $1',
-	'countedits-resulttext' => '$1 har gjort $2 endringar',
+	'countedits-resulttext' => '$1 har gjort {{PLURAL:$2|éi endring|$2 endringar}}',
 	'countedits-mostactive' => 'Mest aktive bidragsytarar',
 	'countedits-nocontribs' => 'Det har ikkje blitt gjort endringar på denne wikien.',
 );
@@ -1014,6 +1018,7 @@ $messages['sah'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Rudko
  */
 $messages['sk'] = array(
 	'countedits' => 'Počet príspevkov',
@@ -1023,7 +1028,7 @@ $messages['sk'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Používateľ s menom $1 neexistuje.',
 	'countedits-resultheader' => 'Výsledky pre $1',
-	'countedits-resulttext' => '$1 urobil $2 úprav',
+	'countedits-resulttext' => '$1 urobil $2 {{PLURAL:$2|úprava|úprav}}',
 	'countedits-mostactive' => 'Najaktívnejší prispievatelia',
 	'countedits-nocontribs' => 'Táto wiki neobsahuje zatiaľ žiadne príspevky.',
 );
@@ -1106,6 +1111,7 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Lejonel
  * @author M.M.S.
+ * @author Najami
  */
 $messages['sv'] = array(
 	'countedits' => 'Räkna redigeringar',
@@ -1115,7 +1121,7 @@ $messages['sv'] = array(
 	'countedits-ok' => 'Visa',
 	'countedits-nosuchuser' => 'Det finns ingen användare med namnet $1.',
 	'countedits-resultheader' => 'Resultat för $1',
-	'countedits-resulttext' => '$1 har gjort $2 redigeringar',
+	'countedits-resulttext' => '$1 har gjort $2 {{PLURAL:$2|redigering|redigeringar}}',
 	'countedits-mostactive' => 'Mest aktiva bidragsgivare',
 	'countedits-nocontribs' => 'Det har inte gjorts några redigeringar på denna wiki.',
 );
@@ -1244,10 +1250,12 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'countedits' => '编辑计量',
+	'countedits-desc' => '计算及提供头十名编辑次数最多的贡献者之[[Special:CountEdits|特殊页面]]',
 	'countedits-warning' => "'''警告:''' 不要只凭封面判断书本。不要以他们的编辑计量判断一位贡献者。",
 	'countedits-username' => '用户名称:',
 	'countedits-ok' => '确定',

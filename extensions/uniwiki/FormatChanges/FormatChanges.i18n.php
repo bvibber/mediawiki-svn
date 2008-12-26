@@ -24,9 +24,11 @@ $messages['qqq'] = array(
 );
 
 /** Arabic (العربية)
+ * @author OsamaK
  * @author Ouda
  */
 $messages['ar'] = array(
+	'formatchanges-desc' => 'يعيد تنسيق [[Special:RecentChanges|أحدث التغييرات]]',
 	'formatchanges-anonymous' => 'مجهول',
 	'formatchanges-createdby' => 'أنشئت بواسطة',
 	'formatchanges-editedby' => 'عدلت بواسطة',
@@ -175,6 +177,13 @@ $messages['lb'] = array(
 	'formatchanges-editedby' => 'geännert vum',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'formatchanges-anonymous' => 'Ahtōcāitl',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -268,6 +277,15 @@ $messages['te'] = array(
  */
 $messages['vi'] = array(
 	'formatchanges-anonymous' => 'Vô danh',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'formatchanges-anonymous' => '匿名',
+	'formatchanges-createdby' => '创建者：',
+	'formatchanges-editedby' => '编辑者：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

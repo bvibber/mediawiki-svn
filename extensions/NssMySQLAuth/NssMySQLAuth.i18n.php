@@ -29,8 +29,18 @@ $messages['en'] = array(
 	'nss-db-error' => 'Error reading from authentication database'
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'nss-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'accountmanager' => 'مدير الحساب',
@@ -43,6 +53,7 @@ $messages['ar'] = array(
 	'nss-save-changes' => 'حفظ التغييرات',
 	'nss-create-account-header' => 'إنشاء حساب جديد',
 	'nss-create-account' => 'إنشاء الحساب',
+	'nss-no-mail' => 'لا ترسل بريدا إلكترونيا',
 	'nss-welcome-mail' => 'الحساب باسم المستخدم $1 وكلمة السر $2 تم إنشاؤه من أجلك.',
 	'nss-welcome-mail-subject' => 'إنشاء الحساب',
 	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
@@ -80,6 +91,26 @@ $messages['bg'] = array(
 	'nss-create-account-header' => 'Създаване на нова сметка',
 	'nss-create-account' => 'Създаване на сметка',
 	'nss-welcome-mail' => 'Беше ви създадена сметка с потребителско име $1 и парола $2.',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'accountmanager' => 'Správce účtů',
+	'am-username' => 'uživatelské jméno',
+	'am-email' => 'email',
+	'am-active' => 'aktivní',
+	'am-updated' => 'Vaše změny byly úspěšně uloženy',
+	'nss-desc' => 'Zásuvný modul na ověřování vůči dtabázi libnss-mysql. Obsahuje [[Special:AccountManager|správce účtů]]',
+	'nss-rights' => 'práva',
+	'nss-save-changes' => 'Uložit změny',
+	'nss-create-account-header' => 'Vytvořit nový účet',
+	'nss-create-account' => 'Vytvořit účet',
+	'nss-no-mail' => 'Neposílat email',
+	'nss-welcome-mail' => 'Byl pro vás vytvořen účet s uživatelským jménem $1 a heslem $2.',
+	'nss-welcome-mail-subject' => 'Vytvoření účtu',
+	'nss-db-error' => 'Chyba při čtení z ověřovací databáze',
 );
 
 /** German (Deutsch) */
@@ -215,6 +246,26 @@ $messages['krj'] = array(
 	'am-email' => 'e-mail',
 	'am-active' => 'aktibo',
 	'am-updated' => 'Ang imo mga gin-ilis nabaton run',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'accountmanager' => 'Metmaacher ier Aanmeldunge verwallde',
+	'am-username' => 'Metmaachername',
+	'am-email' => '<i lang="en">e-mail</i>',
+	'am-active' => 'ne Aktive',
+	'am-updated' => 'De Änderunge sen avjespeichert',
+	'nss-desc' => 'Ene Zosatz, öm Metmaacher ier Annmeldunge övver en <i lang="en"><code>libnss-mysql</code></i> Datebangk pröve ze lohße. Met enem [[Special:AccountManager|Söndersigg för de Metmaacher ier Aanmeldunge zu verwallde]] dobei.',
+	'nss-rights' => 'Rääschte',
+	'nss-save-changes' => 'Änderunge avspeichere',
+	'nss-create-account-header' => 'Ene neue Metmaacher aanlääje',
+	'nss-create-account' => 'Aanlääje',
+	'nss-no-mail' => 'Kein <i lang="en">e-mail</i> schecke',
+	'nss-welcome-mail' => 'Ene Metmmacher met däm Name „$1“ un dämm Paßwoot „$2“ es för Desch opjesatz woode.',
+	'nss-welcome-mail-subject' => 'Metmaacher neu aanmellde.',
+	'nss-db-error' => 'Fähler beim Lesse uß dä Datebangk met dä Zohjangßdaate',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

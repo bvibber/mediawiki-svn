@@ -344,11 +344,17 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Melancholie
  * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
+	'regexblock' => 'Regex-Sperre',
+	'regexblock-desc' => 'Erweiterung zum Sperren von Benutzernamen und IP-Adressen mit regulären Ausdrücken. Enthält den Sperrmechanismus und eine [[Special:Regexblock|Spezialseite]] um Sperren hinzuzufügen und zu verwalten',
+	'regexblock-special-desc' => 'Benutzersperre verändern (über festgelegten Namen, mit regulären Ausdrücken)',
+	'regexblock-stat-desc' => 'Zeigt [[Special:Regexblockstats|Sperrstatistiken]] für die Regexblock-Erweiterung an',
+	'regexblockstats' => 'Regex-Sperrstatistiken',
 	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten zu Editieren, da von dieser IP-Adresse – von dir oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
 Wenn du denkst, dass es sich hierbei um einen Fehler handelt, $1',
 	'regexblock-reason-name' => 'Diesem Benutzernamen ist es, aufgrund von Vandalismus oder anderem schändlichem verhalten, verboten zu Editieren.
@@ -363,6 +369,7 @@ Vermutlich gibt es keinen solchen Benutzer.',
 	'regexblock-form-username' => 'IP-Adresse oder Benutzername:',
 	'regexblock-form-reason' => 'Grund:',
 	'regexblock-form-expiry' => 'Ablaufdatum:',
+	'regexblock-form-match' => 'Genauer Treffer',
 	'regexblock-form-account-block' => 'Sperre die Erstellung neuer Accounts',
 	'regexblock-form-submit' => 'Sperre diesen Benutzer',
 	'regexblock-block-log' => "Benutzername oder IP-Adresse '''$1''' wurde gesperrt.",
@@ -371,11 +378,15 @@ Vermutlich gibt es keinen solchen Benutzer.',
 	'regexblock-form-submit-regex' => 'Ungültiger regulärer Ausdruck.',
 	'regexblock-form-submit-expiry' => 'Bitte wähle einen Verfallszeitraum.',
 	'regexblock-already-blocked' => '$1 ist bereits gesperrt.',
+	'regexblock-stats-title' => 'Regex-Sperrstatistiken',
 	'regexblock-stats-username' => 'Für $1',
 	'regexblock-stats-times' => 'wurde gesperrt von',
 	'regexblock-currently-blocked' => 'Derzeit gesperrte Adressen:',
 	'regexblock-view-blocked' => 'Ansicht gesperrt von:',
+	'regexblock-view-all' => 'Alle',
 	'regexblock-view-go' => 'Los',
+	'regexblock-view-match' => '(genauer Treffer)',
+	'regexblock-view-regex' => '(Regex-Treffer)',
 	'regexblock-view-account' => '(Accounterstellung gesperrt)',
 	'regexblock-view-reason' => 'Grund: $1',
 	'regexblock-view-reason-default' => 'allgemeiner Grund',
@@ -849,6 +860,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'regexblock-form-reason' => '理由:',
+	'regexblock-already-blocked' => '$1 は既にブロックされています。',
 	'regexblock-view-all' => 'すべて',
 );
 

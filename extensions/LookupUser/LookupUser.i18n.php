@@ -98,14 +98,20 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'lookupuser' => 'Pretraga podataka o korisniku',
+	'lookupuser-desc' => '[[Special:LookupUser|Traženje podataka]] o korisniku poput e-mail adresa i ID',
 	'lookupuser-intro' => 'Unesite korisničko ime da biste vidjeli postavke tog korisnika.',
 	'lookupuser-nonexistent' => 'Greška: Korisnik ne postoji',
 	'lookupuser-authenticated' => 'potvrđeno $1',
+	'lookupuser-not-authenticated' => 'nije potvrđeno',
 	'lookupuser-id' => 'Korisnički ID: <tt>#$1</tt>',
 	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'nije naveden',
 	'lookupuser-realname' => 'Pravo ime: $1',
+	'lookupuser-registration' => 'Datum registracije: $1',
 	'lookupuser-no-registration' => 'nije zabilježen',
+	'lookupuser-touched' => 'Korisnički zapis posljednji pogledan: $1',
+	'lookupuser-info-authenticated' => 'Potvrđen e-mailom: $1',
 	'lookupuser-useroptions' => 'Korisničke postavke:',
 );
 
@@ -126,6 +132,7 @@ $messages['cs'] = array(
 	'lookupuser-registration' => 'Datum registrace: $1',
 	'lookupuser-no-registration' => 'nebyl zaznamenán',
 	'lookupuser-touched' => 'Poslední záznam uživatele: $1',
+	'lookupuser-info-authenticated' => 'Ověření emailu: $1',
 	'lookupuser-useroptions' => 'Nastavení uživatele:',
 );
 

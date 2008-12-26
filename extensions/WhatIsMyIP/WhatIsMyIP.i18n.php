@@ -420,6 +420,15 @@ $messages['sv'] = array(
 	'whatismyip-out' => 'Din IP-adress:',
 );
 
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'whatismyip' => 'Jako je moja adresa IP',
+	'whatismyip-desc' => 'Pokozuje na [[Special:WhatUsMyIP|ekstra zajće]] aktualno adresa IP użytkowńika',
+	'whatismyip-out' => 'Twoje IP:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -308,14 +308,26 @@ $messages['te'] = array(
 	'stalkerlog-log-text' => 'ఇది వాడుకరి ప్రవేశాలు మరియు నిష్క్రమణల చిట్టా.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'stalkerlog-desc' => '加入用户登录及退出的[[Special:Log/stalkerlog|日志]]',
+	'stalkerlog-log-login' => '已登录',
+	'stalkerlog-log-logout' => '已退出',
+	'stalkerlog-log-type' => '用户身份验证日志',
+	'stalkerlog-log-text' => '这是用户登录及退出的日志。',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'stalkerlog-desc' => '加入使用者登入及登出的[[Special:Log/stalkerlog|記錄]]',
 	'stalkerlog-log-login' => '已登入',
 	'stalkerlog-log-logout' => '已登出',
-	'stalkerlog-log-type' => '使用者驗證記錄',
-	'stalkerlog-log-text' => '這是用戶登入及登出的記錄。',
+	'stalkerlog-log-type' => '使用者身份驗證日誌',
+	'stalkerlog-log-text' => '這是用戶登入及登出的日誌。',
 );
 

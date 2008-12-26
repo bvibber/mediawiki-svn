@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 Do not translate or change links.',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'javascript-desc' => 'يضيف uniwiki.js لكل صفحة تحتوي شيفرة جافاسكربت مشاركة بين امتدادات يونيويكي.',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

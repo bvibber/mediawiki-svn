@@ -44,7 +44,7 @@ $messages['arz'] = array(
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'tidy-desc' => 'Fügt auf normalen Seiten einen Reiter "gültig" und einen Reiter "ungültig" ein (abhängig von $wgUseTidy), um die globale HTML-Tidy-Einstellung für eine einzelne Betrachtung überschreiben zu können.',
+	'tidy-desc' => 'Fügt auf normalen Seiten einen Reiter „gültig“ und einen Reiter „ungültig“ ein (abhängig von $wgUseTidy), um die globale HTML-Tidy-Einstellung für eine einzelne Betrachtung überschreiben zu können.',
 	'tidy' => 'Ordnen',
 	'untidy' => 'Nicht ordnen',
 );

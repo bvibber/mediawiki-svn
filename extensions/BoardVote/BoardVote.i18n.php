@@ -3611,6 +3611,21 @@ $messages['ko'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|투표]]
 * [[Special:Boardvote/list|투표한 날짜의 목록]]
 * [[Special:Boardvote/dump|암호화된 선거 기록의 덤프]]',
+	'boardvote_entered' => '감사합니다, 당신의 투표가 기록되었습니다.
+
+만약 당신이 원하신다면 다음 정보를 기록할 수 있습니다. 당신의 투표 기록은 아래에 있습니다:
+
+<pre>$1</pre>
+
+당신의 투표는 선거 관리자의 퍼블릭 키로 암호화되어 제출되었습니다:
+
+<pre>$2</pre>
+
+암호화된 버전의 결과가 다음에 있습니다. 이것은 [[Special:Boardvote/dump|공개]]될 것입니다.
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|돌아가기]]',
 	'boardvote_nosession' => '당신의 위키미디어 계정 이름을 알 수 없습니다.
 투표 조건을 만족하는 위키에서 로그인한 후 <nowiki>[[Special:Boardvote]]를 이용해주세요.
 당신은 $2 이전에 적어도 $1개의 편집을 하고, $4와 $5 사이에 $3개의 편집을 한 계정을 이용해야 합니다.',
@@ -4049,6 +4064,22 @@ Gali būti rodomas saugumo įspėjimas apie nepasirašytą sertifikatą.',
  */
 $messages['mhr'] = array(
 	'boardvote_user' => 'Пайдаланыше',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'boardvote_time' => 'Време',
+	'boardvote_user' => 'Корисник',
+	'boardvote_edits' => 'Уредувања',
+	'boardvote_days' => 'Денови',
+	'boardvote_ip' => 'IP',
+	'boardvote_dumplink' => 'Кликни тука',
+	'boardvote_submit' => 'OK',
+	'boardvote_strike' => 'Поништи',
+	'boardvote_unstrike' => 'Откажи поништување',
+	'boardvote_welcome' => "Добредојде '''$1'''!",
 );
 
 /** Malayalam (മലയാളം)

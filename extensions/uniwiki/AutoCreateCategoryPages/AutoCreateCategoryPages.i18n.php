@@ -241,3 +241,11 @@ Obsahuje všetky stránky v kategórii „$1“ ako aj všeky podkategórie kate
 	'autocreatecategorypages-editor' => 'Autoamtická tvorba kategórií',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'autocreatecategorypages-stub' => 'ఇది వర్గపు పేజీ.
+"$1" వర్గంలోని అన్ని పేజీలను మరియు ఏవైనా ఉపవర్గాలని ఈ పేజీ చూపిస్తుంది.',
+);
+

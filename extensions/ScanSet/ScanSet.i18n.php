@@ -139,16 +139,16 @@ $messages['bcc'] = array(
 $messages['be-tarask'] = array(
 	'scanset-desc' => 'Прагляд адсканаваных выяваў з CD/DVD калекцыі Андрэаса Гроса',
 	'scanset_no_name' => 'Памылка: Вы павінны пазначыць назву калекцыі выяваў, напрыклад, &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Памылка: Памылка ў назве набору здымкаў, ці пазначаны набор адсутнічае.',
+	'scanset_invalid_name' => 'Памылка: Памылка ў назьве набору здымкаў альбо пазначаны набор адсутнічае.',
 	'scanset_unrecognised_index_format' => 'Памылка: Невядомы фармат індэксу',
-	'scanset_opendir_error' => 'Памылка: Немагчыма адчыніць дырэкторыю $1',
+	'scanset_opendir_error' => 'Памылка: Немагчыма адкрыць дырэкторыю $1',
 	'scanset_no_files' => 'Памылка: Няма файлаў у пазначанай дырэкторыі.',
 	'scanset_no_volumes' => 'Памылка: Ня знойдзена дырэкторыяў для тамоў',
 	'scanset_missing_index_file' => 'Памылка: Файл індэксу $1 ня знойдзены',
 	'scanset_index_file_error' => 'Памылка: Памылка ў файле індэсу ў радку $1',
-	'scanset_invalid_volume' => 'Памылка: Няправільны том',
-	'scanset_next' => 'Наст. &gt;',
-	'scanset_prev' => '&lt; Папярэд.',
+	'scanset_invalid_volume' => 'Памылка: Няслушны том',
+	'scanset_next' => 'Наступны &gt;',
+	'scanset_prev' => '&lt; Папярэдні',
 );
 
 /** Bulgarian (Български)

@@ -199,6 +199,15 @@ $messages['km'] = array(
 	'unicodeconverter-newtext' => 'អត្ថបទបម្លែងរួច៖',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'unicodeconverter' => '유니코드 변환기',
+	'unicodeconverter-oldtext' => '원본 문자열:',
+	'unicodeconverter-newtext' => '변환된 문자열:',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -232,6 +241,13 @@ $messages['myv'] = array(
 	'unicodeconverter-ok' => 'Вадря',
 	'unicodeconverter-oldtext' => 'Васнянь текст:',
 	'unicodeconverter-newtext' => 'Полавтозь текст:',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'unicodeconverter-ok' => 'Quēmah',
 );
 
 /** Dutch (Nederlands)
@@ -364,12 +380,22 @@ $messages['vi'] = array(
 	'unicodeconverter-newtext' => 'Văn bản chuyển đổi:',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'unicodeconverter' => 'Unicode转换器',
+	'unicodeconverter-oldtext' => '原文字：',
+	'unicodeconverter-newtext' => '转换后文字',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'unicodeconverter' => 'Unicode轉換器',
-	'unicodeconverter-oldtext' => '原文字:',
-	'unicodeconverter-newtext' => '轉換後文字:',
+	'unicodeconverter-oldtext' => '原文字：',
+	'unicodeconverter-newtext' => '轉換後文字：',
 );
 

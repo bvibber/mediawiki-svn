@@ -59,6 +59,14 @@ $messages['ca'] = array(
 	'othersites' => 'Altres llocs',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'othersites' => 'jiné stránky',
+	'othersites-desc' => 'Přesune interwiki odkazy kromě odkazů an jiné jazyky do jejich vlastních portletů',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  * @author Revolus
@@ -147,6 +155,13 @@ $messages['ia'] = array(
  */
 $messages['it'] = array(
 	'othersites' => 'Altri siti',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'othersites' => '他のサイト',
 );
 
 /** Khmer (ភាសាខ្មែរ)

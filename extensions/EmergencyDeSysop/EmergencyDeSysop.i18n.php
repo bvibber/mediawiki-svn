@@ -37,6 +37,15 @@ $messages['qqq'] = array(
 	'emergencydesysop-nogroups' => '{{Identical|None}}',
 );
 
+/** Arabic (العربية)
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'emergencydesysop-reason' => 'سبب الحذف',
+	'emergencydesysop-submit' => 'تنفيذ',
+	'emergencydesysop-nogroups' => 'لا يوجد',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -71,6 +80,13 @@ $messages['de'] = array(
 $messages['eo'] = array(
 	'emergencydesysop-reason' => 'Kialo por forigo',
 	'emergencydesysop-nogroups' => 'Neniu',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'emergencydesysop-invalidtarget' => 'Kohdekäyttäjää ei ole olemassa.',
 );
 
 /** French (Français)

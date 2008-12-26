@@ -13,6 +13,7 @@ $fallback=array(
 	'ar'  => 'en',
 	'arz' => 'en',
 	'bcc' => 'en',
+	'be-tarask'  => 'en',
 	'bg'  => 'en',
 	'br'  => 'en',
 	'bs'  => 'en',
@@ -493,6 +494,13 @@ $messages['bcc'] = array(
 	'voctrain_hide_definitions_in_question_language' => 'پناه کن تعاریفء ته زبان سوال',
 	'voctrain_hide_words_in_question_language' => 'پناه کن کلمات ته زبان سوال',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'ارزشانء گون کاما دورا کنیت په استفاده کتن چه چنت زبان.',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'voctrain_collection' => 'калекцыя',
 );
 
 /** Bulgarian (Български)

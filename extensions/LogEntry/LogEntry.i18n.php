@@ -77,6 +77,13 @@ $messages['eo'] = array(
 	'logentry-invalidtoken' => 'Malvalida ĵetono',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'logentry-invalidpage' => 'Virheellinen sivu',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex
@@ -112,6 +119,17 @@ $messages['hsb'] = array(
 	'logentry' => 'Protokolowy zapisk',
 	'logentry-invalidpage' => 'Njepłaćiwa strona',
 	'logentry-invalidtoken' => 'Njepłaćiwy token',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'logentry-append' => 'Hozzáfűzés',
+	'logentry-parserhook-desc' => 'Ez a kiegészítő lehetővé teszi bejegyzések hozzáfűzését a naplófájlokhoz',
+	'logentry-specialpage-desc' => 'Ez a kiegészítő feldolgozza a naplófájlokhoz való hozzáfűzéseket',
+	'logentry-invalidpage' => 'Érvénytelen lap',
+	'logentry-invalidtoken' => 'Érvénytelen token',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

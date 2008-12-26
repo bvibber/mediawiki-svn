@@ -497,6 +497,19 @@ $messages['sv'] = array(
 	'contrib-tracking-button' => 'Fortsätt',
 );
 
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'contributiontracking-desc' => 'Відстеження збору пожертвувань на користь Вікімедіі',
+	'contributiontracking' => 'Відстеження збору пожертвувань',
+	'contrib-tracking-error' => 'Помилка',
+	'contrib-tracking-error-text' => 'Неправильне підпорядкування форми',
+	'contrib-tracking-submitting' => 'Відправка оброблювачеві платежів…',
+	'contrib-tracking-continue' => 'Якщо ви не були автоматично перенаправлені, натисніть на кнопку, щоб завершити вашу пожертву на сайті PayPal.',
+	'contrib-tracking-button' => 'Продовжити',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

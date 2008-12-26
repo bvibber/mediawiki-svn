@@ -94,10 +94,17 @@ $messages['bg'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
+	'postcomment_desc' => 'Umožňuje uživatelům posílat komentáře přímo na diskusní stránky',
+	'postcomment_discussionprotected' => 'Tato diskusní stránka byla zamknuta proti dalším příspěvkům.',
+	'postcomment_notloggedin' => 'Nejste přihlášeni.',
+	'postcomment_youareloggedinas' => 'Jste přihlášeni jako $1',
+	'postcomment_addcommentdiscussionpage' => 'Přidejte svůj komentář na tuto diskusní stránku',
+	'postcomment_leavemessagefor' => 'Zanechte zprávu pro $1',
 	'postcomment_post' => 'Poslat',
 	'postcomment_on' => '&nbsp;',
 	'postcomment_said' => 'řekl',
 	'postcomment_invalidrequest' => 'Neplatný požadavek.',
+	'postcomment_replyto' => 'Odpovědět $1',
 );
 
 /** German (Deutsch)
@@ -144,6 +151,21 @@ $messages['eo'] = array(
 	'postcomment_invalidrequest' => 'Nevalida peto.',
 	'postcomment_replyto' => 'Respondo al $1',
 	'postcomment_nopostingtoadd' => 'Neniu afiŝaĵo aldonebla.',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'postcomment_desc' => 'Mahdollistaa käyttäjien lähettää kommentteja suoraan keskustelusivulle.',
+	'postcomment_notloggedin' => 'Et ole kirjautunut sisään.',
+	'postcomment_youareloggedinas' => 'Olet kirjautunut sisään käyttäjänä $1',
+	'postcomment_addcommentdiscussionpage' => 'Lisää kommenttisi tälle keskustelusivulle',
+	'postcomment_post' => 'Lähetä',
+	'postcomment_said' => 'sanoi',
+	'postcomment_invalidrequest' => 'Epäkelpo pyyntö.',
+	'postcomment_replyto' => 'Vastaa käyttäjälle $1',
 );
 
 /** French (Français)

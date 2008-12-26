@@ -98,11 +98,13 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  */
 $messages['fi'] = array(
 	'forcepreview' => 'Tallenna sivu (esikatsele ensin)',
-	'forcepreview-desc' => 'Pakottaa oikeudettomat käyttäjät käyttämään esikatselua',
+	'forcepreview-desc' => 'Pakottaa oikeudettomat käyttäjät käyttämään esikatselua.',
+	'right-forcepreviewexempt' => 'Tallentaa ilman pakotettua esikatselua',
 );
 
 /** French (Français)

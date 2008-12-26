@@ -250,6 +250,7 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'abcdesc' => 'Legg til <tt>&lt;abc&gt;</tt>-merket for å formatera ABC-musikk',
 	'abcdownload' => 'Last ned:',
 );
 

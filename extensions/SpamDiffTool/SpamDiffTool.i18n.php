@@ -162,6 +162,22 @@ $messages['bn'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
+	'spamdifftool' => 'Spravovat černou listinu spamu',
+	'spamdifftool-desc' => 'Poskytuje základní způsob přidávání nových záznamů na černou listinu spamu ze stránek rozdílů revizí',
+	'spamdifftool_cantedit' => 'Omlouváme se, nemáte oprávnění upravovat černou listinu spamu.',
+	'spamdifftool_notext' => "Není co přidat na černou listinu spamu. Pokračujte <a href='$1'>kliknutím sem</a>.",
+	'spamdifftool_confirm' => "Potvrďte, že chcete přidat tyto položky na černou listinu spamu. (Můžete také <a href='$1' target='new'>nahlásit problém</a>.)",
+	'spamdifftool_summary' => 'Přidání na černou listinu spamu',
+	'spamdifftool_urls_detected' => 'V editaci byly zjištěny následující URL.
+Které z nich chcete přidat na černou listinu spamu?
+Tyto volby jsou v pořadí od nejomezenějších po méně omezené. Zablokováním celé domény zablokujete všechny odkazy na danou doménu.
+
+Určitě nezablokujte celé domény, které umožňují tvorbu uživatelských účtů, jako blogspot.com, geocities.com, apod.',
+	'spamdifftool_no_urls_detected' => "Nebyly zjištěny žádné URL. Vratíte se zpět <a href='$1'>kliknutím sem</a>.",
+	'spamdifftool_spam_link_text' => 'přidat mezi spam',
+	'spamdifftool_option_domain' => 'všechny z této domény',
+	'spamdifftool_option_subdomain' => 'všechny z této subdomény',
+	'spamdifftool_option_directory' => 'tuto sudoménu a adresář',
 	'spamdifftool_option_none' => 'nic',
 	'spamdifftool_block' => 'Blokovat:',
 	'spamdifftool_submit_buttom' => 'Odeslat',
@@ -975,6 +991,13 @@ Xin đừng cấm cả tên miền của website chứa tên miền phụ của 
  */
 $messages['vo'] = array(
 	'spamdifftool_option_none' => 'nos',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'spamdifftool' => '管理垃圾信息黑名单',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

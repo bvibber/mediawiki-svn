@@ -206,6 +206,33 @@ $messages['es'] = array(
 	'errorhandler-trace-line-internal' => '[función interna]: $1',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'errorhandler-desc' => 'Virhekäsittelijä MediaWikille',
+	'errorhandler-errors' => 'Virheet:',
+	'errorhandler-error-fatal' => 'Vakava virhe',
+	'errorhandler-error-warning' => 'Varoitus',
+	'errorhandler-error-parse' => 'Jäsennysvirhe',
+	'errorhandler-error-notice' => 'Huomautus',
+	'errorhandler-error-deprecated' => 'Käytöstä poistuva',
+	'errorhandler-error-core-error' => 'Ydinosan virhe',
+	'errorhandler-error-core-warning' => 'Ydinosan varoitus',
+	'errorhandler-error-compile-error' => 'Käännösvirhe',
+	'errorhandler-error-compile-warning' => 'Käännösvaroitus',
+	'errorhandler-error-user-error' => 'Koodissa määritelty virhe',
+	'errorhandler-error-user-warning' => 'Koodissa määritelty varoitus',
+	'errorhandler-error-user-notice' => 'Koodissa määritelty huomautus',
+	'errorhandler-error-user-deprecated' => 'Koodissa määritelty käytöstä poistuva -varoitus',
+	'errorhandler-msg-text' => '$1 : $2 kohteessa $3 (rivi $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> kohteessa <b>$3</b> (rivi <b>$4</b>)',
+	'errorhandler-trace' => 'pinolistaus:',
+	'errorhandler-trace-line' => '$1 (rivi $2): $3',
+	'errorhandler-trace-line-internal' => '[sisäinen funktio]: $1',
+);
+
 /** French (Français)
  * @author IAlex
  * @author McDutchie
@@ -268,6 +295,30 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'errorhandler-trace' => 'ἴχνος:',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'errorhandler-desc' => 'כלי לטיפול בשגיאות עבור מדיה־ויקי',
+	'errorhandler-errors' => 'שגיאות:',
+	'errorhandler-error-fatal' => 'שגיאה קריטית',
+	'errorhandler-error-warning' => 'אזהרה',
+	'errorhandler-error-parse' => 'שגיאת מפענח',
+	'errorhandler-error-notice' => 'התראה',
+	'errorhandler-error-core-error' => 'שגיאת ליבה',
+	'errorhandler-error-core-warning' => 'אזהרת ליבה',
+	'errorhandler-error-compile-error' => 'שגיאת הידור',
+	'errorhandler-error-compile-warning' => 'אזהרת הידור',
+	'errorhandler-error-user-error' => 'שגיאת משתמש',
+	'errorhandler-error-user-warning' => 'אזהרת משתמש',
+	'errorhandler-error-user-notice' => 'התראת משתמש',
+	'errorhandler-error-strict' => 'תקנים מחמירים',
+	'errorhandler-msg-text' => '$1 : $2 ב־$3 (שורה $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> ב־<b>$3</b> (שורה <b>$4</b>)',
+	'errorhandler-trace' => 'מעקב:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

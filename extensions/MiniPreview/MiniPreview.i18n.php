@@ -84,6 +84,7 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Melancholie
  */
 $messages['de'] = array(
@@ -91,6 +92,12 @@ $messages['de'] = array(
 	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|Datei|Dateien}} (gesamt) in dieser Galerie.",
 	'minipreview-no_more_files_here' => 'Keine weiteren Dateien in dieser Richtung.',
 	'minipreview-no_category_gallery' => 'Keine Kategorien oder Galerien!',
+	'minipreview-ignore_categories' => 'Im Folgenden eine Liste von Kategorienamen und Namensanfängen. Diese Kategorien werden nicht im MiniPreview angezeigt. Zum Beispiel zeigt "* PD-" nicht alle Kategorien an, die mit "PD-" (wie "PD-old") anfangen.
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -215,8 +222,9 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
-	'minipreview-files_in_category' => '$1 fájl található a kategóriában.',
-	'minipreview-files_in_gallery' => '$1 fájl található a galériában.',
+	'minipreview-desc' => 'A MiniPreview a képek mellett más médiafájlok előnézetét jeleníti meg ugyanabból a kategóriából az adott oldalon.',
+	'minipreview-files_in_category' => '{{PLURAL:$1|egy|$1}} fájl található a kategóriában.',
+	'minipreview-files_in_gallery' => '{{PLURAL:$1|Egy|$1}} fájl található a galériában.',
 	'minipreview-no_more_files_here' => 'Nem található több fájl ebben az irányban.',
 	'minipreview-no_category_gallery' => 'Nincsenek kategóriák vagy galériák!',
 	'minipreview-ignore_categories' => 'Ez egy kategórialista, kategóriák nevének kezdetével. Ezeket a kategóriákat nem 

@@ -51,6 +51,17 @@ $messages['bg'] = array(
 	'gblrights-logpage' => 'Дневник на глобалните права',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'shareduserrights' => 'Správa sdílených uživatelských práv',
+	'gblrights-desc' => 'Jednoduchá [[Special:SharedUserRight|správa globálních uživatelských práv]]',
+	'gblrights-logpage' => 'Záznam globálních práv',
+	'gblrights-pagetext' => 'Toto je záznam všech změn v tabulce globálních práv této rodiny wiki',
+	'gblrights-rights-entry' => 'změněné globální členství ve skupině uživatele $1 z $2 na $3',
+);
+
 /** German (Deutsch)
  * @author Umherirrender
  */

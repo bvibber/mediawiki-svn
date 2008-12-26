@@ -96,6 +96,56 @@ $messages['qqq'] = array(
 	'tasks_search_status' => '{{Identical|Status}}',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'tasks_no_task_delete_title' => 'አልተፈቀደም',
+);
+
+/** Arabic (العربية)
+ * @author OsamaK
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'tasks' => 'المهام',
+	'tasks_tab' => 'مهام',
+	'tasks_title' => 'مهام "$1"',
+	'tasks_form_new' => 'أنشئ مهمة جديدة',
+	'tasks_form_comment' => 'تعليق',
+	'tasks_create_header' => 'إنشاء مهمة جديدة',
+	'tasks_existing_header' => 'المهام الموجودة',
+	'tasks_noone' => 'لا أحد',
+	'tasks_close' => 'أغلق المهمة',
+	'tasks_wontfix' => 'لن يصلح',
+	'tasks_delete' => 'أحذف',
+	'tasks_no_task_delete_title' => 'غير مسموح',
+	'tasks_action_delete' => 'المهمة قد حذفت',
+	'tasks_reopen' => 'إعادة فتح مهمة',
+	'tasks_created_by' => 'أنشئت بواسطة $1',
+	'tasks_closedby' => 'أغلقت بواسطة $1',
+	'tasks_sidebar_title' => 'المهمات المفتوحة',
+	'tasks_here' => 'هنا',
+	'tasks_see_page_tasks' => '(مهام هذه الصفحة)',
+	'tasks_help_page' => 'مهام',
+	'tasks_more_like_it' => 'أكثر',
+	'tasks_significance_order' => 'إعادة كتابة>حذف',
+	'tasks_event_on_creation' => 'التماس',
+	'tasks_event_on_creation_anon' => 'التماس',
+	'tasks_link_your_assignments' => 'الإسنادات المفتوحة',
+	'tasks_table_header_page' => 'صفحة',
+	'tasks_search_form_title' => 'بحث',
+	'tasks_search_tasks' => 'المهام',
+	'tasks_search_status' => 'الحالة',
+	'tasks_search_results' => 'بحث النتائج',
+	'tasks_previous' => 'السابق',
+	'tasks_next' => 'التالي',
+	'tasks_sort' => 'رتب',
+	'tasks_ascending' => 'الأقدم أولا',
+	'tasks_status_open' => 'أفتح',
+	'tasks_status_closed' => 'مغلق',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -302,28 +352,36 @@ $messages['eo'] = array(
 	'tasks_title' => 'Taskoj por "$1"',
 	'tasks_form_new' => 'Krei novan taskon',
 	'tasks_form_comment' => 'Komento',
+	'tasks_error1' => 'Tasko ne kreiĝis; jam estas tia tasko!',
 	'tasks_ok1' => 'Nova tasko estis kreita!',
 	'tasks_create_header' => 'Krei novan taskon',
 	'tasks_existing_header' => 'Ekzistantaj taskoj',
+	'tasks_noone' => 'neniu',
 	'tasks_assign_me' => 'Asigni al mi mem',
 	'tasks_assign_to' => 'Asigni al',
+	'tasks_unassign_me' => 'Forigi mian asignon',
 	'tasks_close' => 'Fermi taskon',
+	'tasks_wontfix' => 'Ne reparinda',
 	'tasks_delete' => 'Forigi',
 	'tasks_no_task_delete_title' => 'Ne permesita',
 	'tasks_action_delete' => 'Tasko estis forigita.',
+	'tasks_task_was_deleted' => 'La tasko estis sukcese forigita.',
 	'tasks_reopen' => 'Remalfermi taskon',
 	'tasks_assignedto' => 'Asignita al $1',
 	'tasks_created_by' => 'Kreita de $1',
+	'tasks_discussion_page_link' => 'Taska diskuto-paĝo',
 	'tasks_closedby' => 'Fermita de $1',
 	'tasks_sidebar_title' => 'Malfermaj taskoj',
 	'tasks_here' => 'ĉi tie',
+	'tasks_see_page_tasks' => '(taskoj de ĉi tiu paĝo)',
 	'tasks_task_is_assigned' => '(asignita)',
+	'tasks_plain_text_only' => '(ordinara teksto, nur 256 signoj)',
 	'tasks_help_page' => 'Taskoj',
 	'tasks_more_like_it' => 'pluaj',
 	'tasks_event_on_creation' => 'revizii',
 	'tasks_event_on_creation_anon' => 'revizii',
 	'tasks_link_your_assignments' => 'malfermaj asignoj',
-	'tasks_my_assignments' => 'Viaj aktualaj asignoj',
+	'tasks_my_assignments' => '{{PLURAL:$1:Via aktuala asigno|Viaj aktualaj asignoj}}',
 	'tasks_table_header_page' => 'Paĝo',
 	'tasks_search_form_title' => 'Serĉi',
 	'tasks_search_tasks' => 'Taskoj',
@@ -334,6 +392,8 @@ $messages['eo'] = array(
 	'tasks_status_open' => 'Malferma',
 	'tasks_status_assigned' => 'Asignita',
 	'tasks_status_closed' => 'Fermita',
+	'tasks_action_open' => 'Tasko "$1" malfermiĝis.',
+	'tasks_action_assigned' => 'Tasko "$1" asigniĝis.',
 	'tasks_action_closed' => 'Tasko "$1" fermiĝis.',
 	'tasks_sign_delete' => '<b>Estis petita por forigi ĉi tiun paĝon!</b>',
 	'tasks_logpage' => 'Protokolo de taskoj',
@@ -1450,6 +1510,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'tasks' => 'పనులు',
+	'tasks_desc' => 'పనులను సంభాళించడానికి పొడగింత',
 	'tasks_tab' => 'పనులు',
 	'tasks_form_comment' => 'వ్యాఖ్య',
 	'tasks_create_header' => 'కొత్త పనిని సృష్టించండి',
@@ -1510,6 +1571,18 @@ $messages['vi'] = array(
 	'tasks_status_assigned' => 'Chỉ định',
 	'tasks_status_closed' => 'Đóng',
 	'tasks_logpage' => 'Nhật trình việc cần làm',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'tasks_delete' => '删除',
+	'tasks_event_on_creation' => '页面',
+	'tasks_event_on_creation_anon' => '检查',
+	'tasks_table_header_page' => '页面',
+	'tasks_search_form_title' => '搜索',
+	'tasks_search_results' => '搜索结果',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -54,6 +54,13 @@ $messages['af'] = array(
 	'bookinfo-provider' => 'Gegewens verskaf deur: $1',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'bookinfo-result-title' => 'አርዕስት፡',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

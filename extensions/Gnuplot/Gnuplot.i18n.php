@@ -65,6 +65,13 @@ $messages['es'] = array(
 	'gnuplot-desc' => 'Añade la etiqueta <code><nowiki><gnuplot></nowiki></code> para usar Gnuplot',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'gnuplot-desc' => 'Lisää <code><nowiki><gnuplot></nowiki></code>-elementin, jolla voi käyttää Gnuplotia.',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -98,6 +105,13 @@ $messages['hi'] = array(
  */
 $messages['hsb'] = array(
 	'gnuplot-desc' => 'Přidawa tafličku <code><nowiki><gnuplot></nowiki></code> za wužiwanje rozšěrjenja Gnuplot',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'gnuplot-desc' => '<code><nowiki><gnuplot></nowiki></code> tag Gnuplot használatához',
 );
 
 /** Interlingua (Interlingua)

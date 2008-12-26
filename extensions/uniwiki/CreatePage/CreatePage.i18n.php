@@ -29,6 +29,18 @@ $messages['qqq'] = array(
 	'createpage-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'createpage' => 'أنشئ صفحة',
+	'createpage_submitbutton' => 'إرسال',
+	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
+	'createpage_tryagain' => 'لا. أريد إنشاء صفحة جديدة بعنوان مميز.',
+	'createpage_editexisting' => 'نعم. أريد المساهمة للصفحة الموجودة.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -81,7 +93,7 @@ $messages['de'] = array(
 Möchtest Du die existierende Seite bearbeiten?',
 	'createpage_tryagain' => 'Nein - Ich möchte eine neue Seite mit einem anderen Titel anlegen.',
 	'createpage_editexisting' => 'Ja - Ich möchte die existierende Seite bearbeiten.',
-	'createpage-badtitle' => '"$1" kann nicht als Seitentitel genutzt werden',
+	'createpage-badtitle' => '„$1“ kann nicht als Seitentitel genutzt werden',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -434,6 +446,15 @@ Danga bëgg a soppi xët wi fi nekk ?',
 	'createpage_tryagain' => 'Déet, Damaa bëgg a sos weneen xët ak been koj.',
 	'createpage_editexisting' => 'Waaw, damaa bëgg a cëru ak xët wi fi nekk.',
 	'createpage-badtitle' => '« $1 » manoo koo jëfandikoo niki kojuw xët',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'createpage' => '创建一个页面',
+	'createpage_submitbutton' => '提交',
+	'createpage_entertitle' => '请输入您的页面标题。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

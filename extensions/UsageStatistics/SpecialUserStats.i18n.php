@@ -419,6 +419,7 @@ $messages['eo'] = array(
 	'usagestatistics' => 'Statistiko de uzado',
 	'usagestatistics-desc' => 'Montru individuan uzanton kaj ĉiun statistikon pri uzado de vikio',
 	'usagestatisticsfor' => '<h2>Statistiko pri uzado por [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Uzadaj statistikoj por ĉiuj uzantoj</h2>',
 	'usagestatisticsinterval' => 'Intervalo',
 	'usagestatisticstype' => 'Speco',
 	'usagestatisticsstart' => 'Komenco-dato',

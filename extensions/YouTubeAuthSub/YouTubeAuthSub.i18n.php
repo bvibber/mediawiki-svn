@@ -70,6 +70,13 @@ $messages['af'] = array(
 	'youtubeauthsub_jserror_nokeywords' => 'Verskaf asseblief een of meer sleutelwoorde.',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'youtubeauthsub_title' => 'አርዕስት',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -176,7 +183,7 @@ $messages['be-tarask'] = array(
 	'youtubeauthsub' => 'Загрузка відэафайла YouTube',
 	'youtubeauthsub-desc' => 'Дазваляе ўдзельнікам [[Special:YouTubeAuthSub|загружаць відэа]] непасрэдна на YouTube',
 	'youtubeauthsub_info' => 'Каб загрузіць відэа на YouTube і дадаць яго на старонку, падайце наступную інфармацыю:',
-	'youtubeauthsub_title' => 'Загаловак',
+	'youtubeauthsub_title' => 'Назва',
 	'youtubeauthsub_category' => 'Катэгорыя',
 );
 
@@ -307,6 +314,8 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'youtubeauthsub' => 'Nahrát YouTube video',
+	'youtubeauthsub-desc' => 'Umožňuje uživatelům [[Special:YouTubeAuthSub|nahrávat videa]] přimo na YouTube',
+	'youtubeauthsub_info' => 'Abyste mohli nahrát video na YouTube pro následné použití na stránce, vyplňte následující informace:',
 	'youtubeauthsub_title' => 'Název',
 	'youtubeauthsub_description' => 'Popis',
 	'youtubeauthsub_password' => 'YouTube heslo',
@@ -314,9 +323,28 @@ $messages['cs'] = array(
 	'youtubeauthsub_keywords' => 'Klíčová slova',
 	'youtubeauthsub_category' => 'Kategorie',
 	'youtubeauthsub_submit' => 'Poslat',
+	'youtubeauthsub_clickhere' => 'Kliknutím sem se přihlásíte na YouTube',
+	'youtubeauthsub_tokenerror' => 'Chyba při vytváření autentifikačního tokenu. Zkuste obnovit stránku.',
+	'youtubeauthsub_success' => "Gratulujeme!
+Vaše vide je nahrané.
+Svoje video si prohlédnou po <a href='http://www.youtube.com/watch?v=$1'>kliknutí sem</a>.
+YouTube může nějaký čas trvat, než vaše video zpracuje, takže ještě není připravené.
+
+Video můžete na wiki stránku vložit pomocí následujícího kódu:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Abyste mohli nahrát video, musíte se nejprve přihlásit na YouTube.',
 	'youtubeauthsub_uploadhere' => 'Nahrajte svoje video odtud:',
 	'youtubeauthsub_uploadbutton' => 'Nahrát',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Toto video si mužete [http://www.youtube.com/watch?v=$1 prohlédnout zde].',
 	'youtubeauthsub_summary' => 'Nahrává se YouTube video',
+	'youtubeauthsub_uploading' => 'Vaše video se nahrává.
+Buďte prosím trpěliví.',
+	'youtubeauthsub_viewpage' => 'Jinak si můžete video [[$1|prohlédnout zde]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Prosím, zadejte jedno nebo více klíčových slov.',
+	'youtubeauthsub_jserror_notitle' => 'Prosím, zadejte název videa.',
+	'youtubeauthsub_jserror_nodesc' => 'Prosím, zadejte popis videa.',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -479,9 +507,14 @@ Por favor, sé paciente.',
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
+	'youtubeauthsub' => 'Lähetä YouTube-video',
+	'youtubeauthsub-desc' => 'Mahdollistaa käyttäjien [[Special:YouTubeAuthSub|lähettää videoita]] suoraan YouTubeen.',
+	'youtubeauthsub_title' => 'Nimi',
 	'youtubeauthsub_description' => 'Kuvaus',
 	'youtubeauthsub_password' => 'YouTube-salasana',
 	'youtubeauthsub_username' => 'YouTube-käyttäjätunnus',
@@ -489,6 +522,17 @@ $messages['fi'] = array(
 	'youtubeauthsub_category' => 'Luokka',
 	'youtubeauthsub_submit' => 'Lähetä',
 	'youtubeauthsub_clickhere' => 'Kirjaudu YouTubeen',
+	'youtubeauthsub_authsubinstructions' => 'Kirjaudu sisään YouTubeen ennen videon lähettämistä.',
+	'youtubeauthsub_uploadhere' => 'Lähetä videosi täältä:',
+	'youtubeauthsub_uploadbutton' => 'Lähetä',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Tämän videon voi katsoa [http://www.youtube.com/watch?v=$1 tästä]',
+	'youtubeauthsub_summary' => 'Lähetetään YouTube-videota',
+	'youtubeauthsub_uploading' => 'Videotasi lähetetään.
+Ole kärsivällinen.',
+	'youtubeauthsub_viewpage' => 'Voit katsoa videosi myös [[$1|täällä]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Anna yksi tai useampi avainsana.',
 	'youtubeauthsub_jserror_notitle' => 'Anna videolle otsikko.',
 	'youtubeauthsub_jserror_nodesc' => 'Anna videolle kuvaus.',
 );
@@ -861,11 +905,21 @@ Sii paziente.',
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'youtubeauthsub' => 'YouTube動画をアップロード',
 	'youtubeauthsub-desc' => '利用者に直接 YouTube へ[[Special:YouTubeAuthSub|動画をアップロード]]できるようにする',
 	'youtubeauthsub_title' => 'タイトル',
+	'youtubeauthsub_password' => 'YouTube パスワード',
+	'youtubeauthsub_username' => 'YouTube ユーザー名',
+	'youtubeauthsub_keywords' => 'キーワード',
+	'youtubeauthsub_category' => 'カテゴリ',
+	'youtubeauthsub_submit' => '送信',
+	'youtubeauthsub_clickhere' => 'YouTubeにログインするため、ここをクリックしてください',
+	'youtubeauthsub_uploadhere' => 'ここからビデオをアップロード:',
+	'youtubeauthsub_uploadbutton' => 'アップロード',
+	'youtubeauthsub_summary' => 'TouTubeビデオをアップロード',
 );
 
 /** Javanese (Basa Jawa)
@@ -1291,6 +1345,7 @@ Even geduld alstublieft.',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
@@ -1306,7 +1361,7 @@ $messages['nn'] = array(
 	'youtubeauthsub_submit' => 'Lagre',
 	'youtubeauthsub_clickhere' => 'Klikk her for å logge inn på YouTube',
 	'youtubeauthsub_tokenerror' => 'Feil i oppretting av godkjenningsteikn; prøv å oppdatere.',
-	'youtubeauthsub_success' => 'Gratulerar!
+	'youtubeauthsub_success' => 'Gratulerer!
 Videoen din er lasta opp.
 Gå <a href="http://youtube.com/watch?v=$1">hit</a> for å sjå videoen.
 Det kan ta litt tid før YouTube har handsama videoen din, så det kan hende han ikkje er klar enno.
@@ -1767,6 +1822,44 @@ Var tålmodig.',
 	'youtubeauthsub_jserror_nokeywords' => 'Var god välj 1 eller fler nyckelord.',
 	'youtubeauthsub_jserror_notitle' => 'Var god välj en titel för videon.',
 	'youtubeauthsub_jserror_nodesc' => 'Var god välj en beskrivning för videon.',
+);
+
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'youtubeauthsub' => 'Wkludź plik wideo s YouTube',
+	'youtubeauthsub-desc' => 'Dozwalo użytkowńikům na [[Special:YouTubeAuthSub|wćepywańy plikůw wideo]] bezpostrzedńo do serwisu YouTube',
+	'youtubeauthsub_info' => 'Coby wćepać do serwisa YouTube plik wideo, kery mo by ńyskorzi wykorzistywany na zajtach tyj wiki, podej půńiższe informacyje:',
+	'youtubeauthsub_title' => 'Titel',
+	'youtubeauthsub_description' => 'Uopis',
+	'youtubeauthsub_password' => 'Hasło do serwisa YouTube',
+	'youtubeauthsub_username' => 'Mjano użytkowńika we serwiśe YouTube',
+	'youtubeauthsub_keywords' => 'Słowa kluczowe',
+	'youtubeauthsub_category' => 'Katygoryja',
+	'youtubeauthsub_submit' => 'Wćepnij',
+	'youtubeauthsub_clickhere' => 'Kliknij, coby zalogować śe do serwisa YouTube',
+	'youtubeauthsub_tokenerror' => 'Podczas generowańo tokena uwjerzitelńajůncygo zdorzył śe feler.
+Sprůbuj załadować zajta zaś.',
+	'youtubeauthsub_success' => "Gratulacje!
+Twůj plik wideo zostoł wćepany.
+Jeli chcesz uobejzdrzeć wćepany matyrjoł wideo, kliknij <a href='http://www.youtube.com/watch?v=$1'>sam</a>.
+Serwis YouTube może potrzybować na przetworzyńy Twojygo plika trocha czasu, skiż tygo matyrjoł może ńy być jeszcze dostympny.
+
+Jeli chcesz dołůnczyć wćepany plik wideo do matyrjołu we serwiśe wiki, wstow na żůndano zajta kod <code>{{&#35;ev:youtube|$1}}</code>.",
+	'youtubeauthsub_authsubinstructions' => 'Jeli chcesz wćepać plik, nojpjyrw muśisz zalogować śe do serwisa YouTube.',
+	'youtubeauthsub_uploadhere' => 'Plik wideo możesz wćepać s nastympujůncyj lokalizacyji:',
+	'youtubeauthsub_uploadbutton' => 'Wćepńij',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+Tyn plik wideo idźe uobejzdrzyć [http://www.youtube.com/watch?v=$1 sam]',
+	'youtubeauthsub_summary' => 'Wćepywańy plika wideo YouTube',
+	'youtubeauthsub_uploading' => 'Pliki wideo sům wćepywane.
+Czekej.',
+	'youtubeauthsub_viewpage' => 'Uopcjůnalńy plik wideo idźe uobejzdrzeć [[$1|sam]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Wkludź jydno abo wjyncyj słów kluczowych.',
+	'youtubeauthsub_jserror_notitle' => 'Wkludź mjano matyrjołu wideo.',
+	'youtubeauthsub_jserror_nodesc' => 'Wkludź uopis matyrjołu wideo.',
 );
 
 /** Telugu (తెలుగు)

@@ -43,6 +43,20 @@ $messages['bg'] = array(
 	'wikitextloggedinout-desc' => 'Добавя две куки в парсета, <tt>&lt;loggedin&gt;</tt> и <tt>&lt;loggedout&gt;</tt>, чрез които се показва различен текст в зависимост дали потребителят е влязъл или не',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'wikitextloggedinout-desc' => 'Dvije parserske kuke, <tt>&lt;loggedin&gt;</tt> i <tt>&lt;loggedout&gt;</tt> koje prikazuju različite tekstove u zavisnosti od korisničkog statusa prijave',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'wikitextloggedinout-desc' => 'Přidává dva přípojné body sytaktického analyzátoru, <tt>&lt;loggedin&gt;</tt> a <tt>&lt;loggedout&gt;</tt> pro zobrazení odlišného textu v závislosti na stavu přihlášeného uživatele',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -209,6 +223,13 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'wikitextloggedinout-desc' => 'Två parser hooks, <tt>&lt;loggedin&gt;</tt> och <tt>&lt;loggedout&gt;</tt> för att visa olika text beroende på användarens inloggningsstatus',
+);
+
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'wikitextloggedinout-desc' => 'Dodowo dwa haki parsera <tt>&lt;loggedin&gt;</tt> a tyż <tt>&lt;loggedout&gt;</tt> kere dozwalajům wyśwjetlać roztůmajte teksty zależńy uod statusa zalugwańo śe użytkowńika',
 );
 
 /** Tagalog (Tagalog)

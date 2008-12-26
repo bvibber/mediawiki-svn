@@ -127,6 +127,38 @@ $messages['bg'] = array(
 	'imstatus_or' => 'или',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'imstatus-desc' => 'Přidává značky zobrazující stav přítomnosti uživatelů různých IM sítí (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo!)',
+	'imstatus_syntax' => 'Sntaxe',
+	'imstatus_default' => 'Výchozí',
+	'imstatus_example' => 'Příklad',
+	'imstatus_possible_val' => 'Možné hodnoty',
+	'imstatus_max' => 'max.',
+	'imstatus_min' => 'min.',
+	'imstatus_or' => 'nebo',
+	'imstatus_style' => 'styl indikátoru stavu',
+	'imstatus_action' => 'akce po kliknutí na tlačítko',
+	'imstatus_details_saa' => 'Podrobnosti o stylech a akcích najdete na $1.',
+	'imstatus_your_name' => 'vaše jméno na $1',
+	'imstatus_aim_presence' => '$1 zobrazuje váš stav přítomnosti s odkazem, který spustí odeslání zprávy v AIM pokud ho má uživatel nainstalovaný.',
+	'imstatus_aim_api' => '$1 zobrazuje váš stav přítomnosti s odkazem, který spustí odeslání zprávy ve <b>webovém prohlížeči</b>, javascriptové verzi AIM.',
+	'imstatus_gtalk_code' => 'váš kód Google Talk',
+	'imstatus_gtalk_get_code' => 'Svůj kód Google Talk získáte na $1.',
+	'imstatus_gtalk_height' => 'výška okraje v pixelech',
+	'imstatus_gtalk_width' => 'šířka okraje v pixelech',
+	'imstatus_icq_id' => 'váš ICQ identifikátor',
+	'imstatus_icq_style' => 'číslo v rozsahu 0-26 (ano, je dostupných 27 stylů…).',
+	'imstatus_live_code' => 'váš identifikátor na webu Live Messenger',
+	'imstatus_live_get_code' => 'váš identifikátor na webu Live Messenger: <strong>toto není vaše emailová adresa</strong>, musíte si ji vytvořit <a href="$1">ve svých nastaveních Live Messenger</a>.
+Indentifikítor, který musíte zadat, jsou písmena a číslice mezi $2 a $3.',
+	'imstatus_skype_nbstyle' => 'Poznámka: Pokud si zvolíte styl, který je i akcí, před vaší voublou akce bude mít přednost akce odpovídající zvolenému stylu.',
+	'imstatus_xfire_size' => 'velikost tlačítka od $1 (největší) do $2 (nejmenší).',
+	'imstatus_yahoo_style' => 'styl tlačítka od $1 (nejmenší) do $2 (největší), $3 a $4 slouží pro hlasovou poštu.',
+);
+
 /** German (Deutsch)
  * @author Purodha
  */

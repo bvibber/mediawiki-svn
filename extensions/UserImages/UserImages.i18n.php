@@ -35,8 +35,10 @@ Parameters:
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido
+ * @author OsamaK
  */
 $messages['ar'] = array(
+	'userimages-desc' => 'توليد معارض لصور مستخدم مرفوعة مع <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'الصور المرفوعة بواسطة $1',
 	'userimages-noname' => 'اسم مستخدم غير صحيح أو لم يتم توفير واحد.',
 	'userimages-noimages' => 'ليس لدى $1 صور مرفوعة.',
@@ -97,12 +99,22 @@ $messages['bs'] = array(
 	'userimages-noimages' => '$1 nije postavljao slike.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'userimages-desc' => 'Umožňuje vytvářet galerie uživatelských obrázků pomocí <code>&lt;userimage /&gt;</code>',
+	'userimages-caption' => 'Obrázky nahrané uživatelem $1',
+	'userimages-noname' => 'Neplatné nebo neposkytnuté uživatelské jméno',
+	'userimages-noimages' => '$1 nenahrál žádné obrázky',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Melancholie
  */
 $messages['de'] = array(
-	'userimages-desc' => 'Erzeuge per <code><nowiki><userimage /></nowiki></code> Galerien von Bildern die von jew. Benutzern hochgeladen wurden',
+	'userimages-desc' => 'Erzeuge per <code><nowiki><userimage /></nowiki></code> Galerien von Bildern, die von den jeweiligen Benutzern hochgeladen wurden',
 	'userimages-caption' => 'Von $1 hochgeladene Bilder',
 	'userimages-noname' => 'Ungültiger Benutzername oder Eingabefeld leer.',
 	'userimages-noimages' => '$1 hat keine hochgeladenen Bilder.',
@@ -129,6 +141,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'userimages-desc' => 'Generi galerioj de bildoj alŝutitaj de uzantoj kun etikedo <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Bildoj alŝutitaj de $1',
 	'userimages-noname' => 'Nevalida salutnomo aŭ nenio provizita.',
 	'userimages-noimages' => '$1 havas neniujn alŝutojn de bildoj.',
@@ -184,6 +197,16 @@ $messages['hsb'] = array(
 	'userimages-caption' => 'Wobrazy wot $1 nahrate',
 	'userimages-noname' => 'Njepłaćiwe wužiwarske mjeno abo njepodate.',
 	'userimages-noimages' => '$1 nahraća wobrazow nima.',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'userimages-desc' => 'Galéria készítése a szerkesztő által feltöltött képekből a <code><nowiki><userimage /></nowiki></code> tag segítségével',
+	'userimages-caption' => '$1 által feltöltött képek',
+	'userimages-noname' => 'Érvénytelen felhasználói név.',
+	'userimages-noimages' => '$1 még nem töltött fel képeket.',
 );
 
 /** Interlingua (Interlingua)
@@ -468,6 +491,13 @@ $messages['sv'] = array(
 	'userimages-caption' => 'Bilder som laddats upp av $1',
 	'userimages-noname' => 'Användarnamnet är ogiltigt eller angavs ej.',
 	'userimages-noimages' => '$1 har inte laddat upp några bilder.',
+);
+
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'userimages-caption' => 'Grafiki wćepane bez $1',
 );
 
 /** Telugu (తెలుగు)

@@ -387,6 +387,13 @@ $messages['vec'] = array(
 	'templatelink_newtitle' => '$1 (trasclusión)',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'templatelink' => '模板链接',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

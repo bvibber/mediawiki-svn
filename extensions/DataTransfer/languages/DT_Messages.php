@@ -62,6 +62,14 @@ $messages['af'] = array(
 	'dt_xml_title' => 'Titel',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'dt_viewxml_categories' => 'መደቦች',
+	'dt_xml_title' => 'አርዕስት',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  * @author Remember the dot
@@ -124,6 +132,7 @@ $messages['be-tarask'] = array(
 	'dt_viewxml_categories' => 'Катэгорыі',
 	'dt_xml_namespace' => 'Прастора назваў',
 	'dt_xml_page' => 'Старонка',
+	'dt_xml_title' => 'Назва',
 );
 
 /** Bulgarian (Български)
@@ -261,6 +270,18 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'dt_viewxml_categories' => 'Categorías',
 	'dt_viewxml_namespaces' => 'Espacios de nombres',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'viewxml' => 'Näytä XML',
+	'dt_viewxml_categories' => 'Luokat',
+	'dt_xml_namespace' => 'Nimiavaruus',
+	'dt_xml_page' => 'Sivu',
+	'dt_xml_name' => 'Nimi',
+	'dt_xml_title' => 'Otsikko',
 );
 
 /** French (Français)
@@ -833,6 +854,7 @@ $messages['ro'] = array(
 	'dt_viewxml_simplifiedformat' => 'Format simplificat',
 	'dt_xml_namespace' => 'Spaţiu de nume',
 	'dt_xml_page' => 'Pagină',
+	'dt_xml_field' => 'Câmp',
 	'dt_xml_name' => 'Nume',
 	'dt_xml_title' => 'Titlu',
 	'dt_xml_id' => 'ID',

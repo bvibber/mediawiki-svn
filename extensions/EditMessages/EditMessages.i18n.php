@@ -67,6 +67,7 @@ $messages['ang'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'editmessages-desc' => '[[Special:EditMessages|تعديل معتمد على الويب]] لأعدادا كبيرة من ملفات Messages*.php',
@@ -79,8 +80,8 @@ $messages['ar'] = array(
 	'editmsg-warning-parse1' => '* تعبير اسم الرسالة المنتظم لم يطابق: $1',
 	'editmsg-warning-parse2' => '* حرف اقتباس متوقع بعد السهم: $1',
 	'editmsg-warning-parse3' => '* نهاية خيط القيمة لم يتم العثور عليه: $1',
-	'editmsg-warning-file' => '* أخطاء قراءة الملف تمت مصادفتها للغات التالية: $1',
-	'editmsg-warning-mismatch' => '* النص الأصلي لم يمتلك القيمة المتوقعة للغات التالية: $1',
+	'editmsg-warning-file' => '* أخطاء قراءة الملف تمت مصادفتها {{PLURAL:$2|للغة|للغات}} التالية: $1',
+	'editmsg-warning-mismatch' => '* النص الأصلي لم يمتلك القيمة المتوقعة {{PLURAL:$2|للغة|للغات}} التالية: $1',
 	'editmsg-apply-patch' => 'تنفيذ الباتش',
 	'editmsg-no-patch' => 'غير قادر على تنفيذ أمر "patch"',
 	'editmsg-patch-failed' => 'الباتش فشلت مع حالة خروج $1',
@@ -236,6 +237,23 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'editmessages' => 'Editando mensajes',
 	'editmsg-search' => 'Buscar',
+);
+
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'editmessages' => 'Muokkaa viestejä',
+	'editmsg-target' => 'Kohdeviesti',
+	'editmsg-search' => 'Etsi',
+	'editmsg-show-list' => 'Viestin $1 sisällöt',
+	'editmsg-get-patch' => 'Luo polku',
+	'editmsg-new-search' => 'Uusi haku',
+	'editmsg-apply-patch' => 'Toteuta korjaus',
+	'editmsg-no-patch' => 'Komennon <tt>patch</tt> suorittaminen epäonnistui',
+	'editmsg-patch-failed' => 'Muutosten sisäänajaminen epäonnistui paluuarvolla $1',
+	'editmsg-patch-success' => 'Muutokset toteutettiin.',
 );
 
 /** French (Français)

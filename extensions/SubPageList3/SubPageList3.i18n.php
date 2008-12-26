@@ -330,6 +330,13 @@ $messages['vi'] = array(
 	'spl3_nosubpages' => '$1 không có trang con nào cả.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'spl3_debug' => '未知的选项$1的数值',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

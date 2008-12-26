@@ -42,6 +42,14 @@ $messages['bg'] = array(
 	'tog-microid' => 'Публикува <a href="http://microid.org/">MicroID</a> за потвърждаване на сметката с външни услуги',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'microid-desc' => 'Přidává na uživatelské stránky [http://www.microid.org/ MicroID] na potvrzení účtu u externích služeb',
+	'tog-microid' => 'Zveřejnit <a href="http://microid.org/">MicroID</a> na potvrzení účtu pro externí služby',
+);
+
 /** German (Deutsch)
  * @author MichaelFrey
  */

@@ -191,11 +191,16 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'imagemap_desc' => 'Omogućuje mape slika na klijentskom računaru koje se mogu kliknuti koristeći oznaku <tt><nowiki><imagemap></nowiki></tt>',
 	'imagemap_no_image' => 'Greška: morate odrediti sliku u prvom redu',
 	'imagemap_invalid_image' => 'Greška: slika je nevaljana ili ne postoji',
 	'imagemap_bad_image' => 'Greška: slika je nepoželjna na ovoj stranici',
 	'imagemap_no_link' => 'Greška: nije pronađen valjan link na kraju reda $1',
 	'imagemap_invalid_title' => 'Greška: nevaljan naslov u linku u redu $1',
+	'imagemap_missing_coord' => 'Greška: nema dovoljno koordinata za iscrtavanje u redu $1',
+	'imagemap_no_areas' => 'Greška: mora se navesti bar jedno područje specifikacije',
+	'imagemap_invalid_coord' => 'Greška: nevaljane koordinate u redu $1, treba biti broj',
+	'imagemap_invalid_desc' => 'Greška: nevaljana specifikacija opisa, mora biti jedan od: <tt>$1</tt>',
 	'imagemap_description' => 'O ovoj slici',
 );
 

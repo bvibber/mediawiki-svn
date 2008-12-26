@@ -150,6 +150,7 @@ $wgGoogleMapsMessages['af'] = array(
  * @author Codex Sinaiticus
  */
 $wgGoogleMapsMessages['am'] = array(
+	'gm-balloon-title' => 'አርዕስት፡',
 	'gm-width' => 'ስፋት',
 	'gm-yes' => 'አዎ',
 	'gm-line-width' => 'ስፋት',
@@ -309,6 +310,13 @@ $wgGoogleMapsMessages['arz'] = array(
  */
 $wgGoogleMapsMessages['az'] = array(
 	'gm-kml-loading' => 'yüklənir…',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$wgGoogleMapsMessages['be-tarask'] = array(
+	'gm-balloon-title' => 'Назва:',
 );
 
 /** Bulgarian (Български)
@@ -2068,10 +2076,21 @@ $wgGoogleMapsMessages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Kwj2772
  * @author ToePeu
  */
 $wgGoogleMapsMessages['ko'] = array(
+	'gm-remove' => '제거',
+	'gm-map' => '지도',
+	'gm-scale-control' => '축척',
+	'gm-yes' => '예',
+	'gm-no' => '아니오',
 	'gm-search' => '찾기',
+	'gm-meters' => '미터',
+	'gm-miles' => '마일',
+	'gm-earth' => '지구',
+	'gm-moon' => '달',
+	'gm-mars' => '화성',
 );
 
 /** Krio (Krio)

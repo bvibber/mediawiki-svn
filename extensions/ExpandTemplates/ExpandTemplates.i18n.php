@@ -269,6 +269,20 @@ Ober a ra kement-mañ dre c'hervel pazenn ar parser a zegouezh digant MediaWiki 
 	'expand_templates_preview' => 'Rakwelet',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'expandtemplates' => 'Proširi šablone',
+	'expand_templates_input' => 'Tekst unosa:',
+	'expand_templates_output' => 'Rezultat',
+	'expand_templates_xml_output' => 'XML izlaz',
+	'expand_templates_ok' => 'U redu',
+	'expand_templates_remove_comments' => 'Ukloni komentare',
+	'expand_templates_generate_xml' => 'Prikaži XML stablo parsera',
+	'expand_templates_preview' => 'Pregled',
+);
+
 /** Catalan (Català)
  * @author SMP
  * @author Toniher
@@ -778,15 +792,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'expandtemplates' => 'テンプレートを展開',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|テンプレート・パーサー関数・変数を展開し]]、展開されたウィキテキストと生成されたプレビューページを表示する',
-	'expand_templates_intro' => '指定したウィキ構文に含まれている全てのテンプレートを再帰的に展開します。
-<nowiki>{{</nowiki>#if:...}} のようなパーサー関数や、<nowiki>{{</nowiki>CURRENTDAY}} のような変数など、<nowiki>{{</nowiki> ～ }} で囲まれているものも展開されます。
-これは、MediaWiki 自身の適切な構文解釈段階で呼び出されます。',
-	'expand_templates_title' => '{{PAGENAME}} 等に使用するページ名:',
+	'expand_templates_intro' => 'この特別ページは入力したテキストに含まれているすべてのテンプレートを再帰的に展開します。<nowiki>{{</nowiki>#if:…}} のようなパーサー関数や、<nowiki>{{</nowiki>CURRENTDAY}} のような変数など、<nowiki>{{</nowiki> ～ }} で囲まれているほとんどのものを展開します。この機能は、MediaWiki 自身から関連する構文解析段階を呼び出すことで実現されています。',
+	'expand_templates_title' => '{{PAGENAME}} などの評価を行うページの名前:',
 	'expand_templates_input' => '展開するテキスト',
 	'expand_templates_output' => '展開結果',
 	'expand_templates_xml_output' => 'XML出力',

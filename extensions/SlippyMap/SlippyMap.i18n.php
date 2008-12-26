@@ -533,6 +533,14 @@ $messages['pt'] = array(
 	'slippymap_lonmissing' => 'Faltando o valor lon (para a longitude).',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'slippymap_latmissing' => 'Valoarea lat lipsă (pentru latitudine).',
+	'slippymap_lonmissing' => 'Valoarea lon lipsă (pentru longitudine).',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */

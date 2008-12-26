@@ -336,11 +336,16 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'extensiondistributor' => 'Lataa MediaWikin laajennus',
+	'extdist-no-such-extension' => 'Laajennusta ”$1” ei löydy',
 	'extdist-submit-extension' => 'Jatka',
+	'extdist-current-version' => 'Nykyinen versio (trunk)',
 	'extdist-submit-version' => 'Jatka',
+	'extdist-tar-error' => 'Tar-ohjelman suoritus päättyi paluuarvoon $1:',
 );
 
 /** French (Français)

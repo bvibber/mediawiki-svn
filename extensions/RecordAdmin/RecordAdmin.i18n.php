@@ -53,6 +53,24 @@ $messages['qqq'] = array(
 	'recordadmin-category' => 'Category which contains the templates used as records and having corresponding forms',
 );
 
+/** Arabic (العربية)
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'recordadmin-category' => 'تسجيلات',
+	'recordadmin-submit' => 'نفذ',
+	'recordadmin-badtitle' => '! عنوان سئ',
+	'recordadmin-invert' => 'أعكس الأختيار',
+	'recordadmin-buttonsearch' => 'بحث',
+	'recordadmin-buttoncreate' => 'أنشئ',
+	'recordadmin-searchresult' => 'نتائج البحث',
+	'recordadmin-edit' => 'تعديل',
+	'recordadmin-buttonsave' => 'حفظ',
+	'recordadmin-viewlink' => 'عرض',
+	'recordadmin-editlink' => 'عدل',
+	'recordadmin-created' => 'أنشئت',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -69,6 +87,7 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Melancholie
  * @author Revolus
  */
@@ -77,10 +96,11 @@ $messages['de'] = array(
 	'recordadmin-desc' => 'Eine [[Special:RecordAdmin|spezielle Seite]] zum Finden und Editieren der Aufzeichnungsseiten mittels eines Formulars',
 	'recordadmin-category' => 'Aufzeichnungen',
 	'recordadmin-select' => 'Wähle den Aufzeichnungstypen, nach dem gesucht werden soll',
+	'recordadmin-newsearch' => 'Neue $1-Suche',
 	'recordadmin-newrecord' => 'Wähle einen anderen Aufzeichnungstypen',
 	'recordadmin-submit' => 'Übermitteln',
 	'recordadmin-create' => 'Finde oder Erstelle eine „$1“-Aufzeichnung',
-	'recordadmin-alreadyexist' => 'Entschuldige, "$1" existiert bereits!',
+	'recordadmin-alreadyexist' => 'Entschuldige, „$1“ existiert bereits!',
 	'recordadmin-createsuccess' => '$1 erstellt',
 	'recordadmin-createerror' => 'Während des Erstellens von $1 trat ein Fehler auf!',
 	'recordadmin-badtitle' => 'Ungültiger Titel!',

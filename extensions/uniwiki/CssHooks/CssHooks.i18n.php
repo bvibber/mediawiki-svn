@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'csshooks-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'csshooks-desc' => 'يضيف سي إس إس لمخرج إتش تي إم إل للصفحات لأسلوبٍ أفضل',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

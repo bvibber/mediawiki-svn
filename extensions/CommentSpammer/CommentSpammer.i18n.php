@@ -116,6 +116,14 @@ $messages['eo'] = array(
 	'cspammer-log-page' => 'Protokolo de komentaj spamistoj',
 );
 
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'commentspammer-save-blocked' => 'IP-osoitteesi epäillään olevan kommenttispämmeri, joten sivua ei ole tallennettu.
+[[Special:UserLogin|Kirjaudu sisään tai luo tili]] välttääksesi tämän.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

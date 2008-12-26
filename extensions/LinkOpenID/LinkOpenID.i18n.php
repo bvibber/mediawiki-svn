@@ -88,6 +88,21 @@ $messages['eo'] = array(
 	'linkopenid-prefstext-openid' => 'Via OpenID:',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'linkopenid-desc' => 'Antaa käyttäjille mahdollisuuden linkittää heidän tunnuksensa ulkoiseen OpenID-palveluun.',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Jos sinulla on OpenID-tunnus ulkoisella palveluntarjoajalla, voit määritellä sen tässä.
+Tämä antaa sinun käyttää myös käyttäjäsivuasi OpenID:nä.',
+	'linkopenid-prefstext-openid' => 'OpenID:si',
+	'linkopenid-prefstext-v1url' => 'Palvelimen osoite OpenID:n versiolle 1.1:',
+	'linkopenid-prefstext-v2url' => 'Palvelimen osoite OpenID:n versiolle 2:',
+	'linkopenid-prefstext-xrdsurl' => 'XRDS-osoite:',
+);
+
 /** French (Français)
  * @author IAlex
  */

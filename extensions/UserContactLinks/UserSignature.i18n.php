@@ -146,6 +146,14 @@ $messages['hsb'] = array(
 	'usercontactlink-desc' => 'Skići móžnosć jednorje a konsistentnje druhe wužiwarske mjena z pomocu syntaksy ^^^wužiwar^^^ přidać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'usercontactlink-baduser' => 'érvénytelen felhasználói név',
+	'usercontactlink-desc' => 'Lehetővé teszi a szerkesztők neveire való gyors hivatkozást a ^^^szerkesztő^^^ kóddal',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -361,6 +369,13 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'usercontactlink-baduser' => 'tên hiệu không đúng',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'usercontactlink-baduser' => '用户名不正确',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

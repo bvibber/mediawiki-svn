@@ -218,6 +218,7 @@ $messages['ext'] = array(
  * @author Nike
  */
 $messages['fi'] = array(
+	'talkhere-desc' => 'Laittaa keskustelusivun sivulle.',
 	'talkhere-foottext' => 'Ylläolevat kommentit saattavat olla vierailijoiden jättämiä.
 
 Tämän sivuston ylläpitäjät eivät voi ottaa vastuuta kyseisten kommenttien sisällöstä.',
@@ -718,6 +719,13 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'talkhere-talkpage' => 'bespikapad',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'talkhere-desc' => '把讨论页内容转移至页面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

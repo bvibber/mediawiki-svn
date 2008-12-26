@@ -226,12 +226,12 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'createsigndocument' => 'Dokumentensignieren erlauben',
 	'createsigndoc-head' => "Benutze dieses Formular, um ein „Signaturdokument“ für die gegebene Seite zu erstellen, so dass Benutzer in der Lage sein werden, es zu [[Special:SignDocument|signieren]].
-Bitte gib den Namen der Seite an, auf welcher du digitales Signieren erlauben willst, welche Benutzergruppen in der Lage sein sollen, sie zu signieren, welche Felder sichtbar sein sollen und welche optional, ein gegebenenfalls minimales Benutzeralter, um das Dokument zu unterzeichnen, und einen kurzen Einleizungstext, der dem Benutzer das Dokument beschreibt und ihm eine kurze Anleitung gibt.
+Bitte gib den Namen der Seite an, auf welcher du digitales Signieren erlauben willst, welche Benutzergruppen in der Lage sein sollen, sie zu signieren, welche Felder sichtbar sein sollen und welche optional, ein gegebenenfalls minimales Benutzeralter, um das Dokument zu unterzeichnen, und einen kurzen Einleitungstext, der dem Benutzer das Dokument beschreibt und ihm eine kurze Anleitung gibt.
 
-<b>Derzeit ist es nicht möglich, einmal gegeben Signaturen zu modifizieren oder zu entfernen</b> ohne direkt die Datenbank zu bearbeiten.
+<b>Derzeit ist es nicht möglich, einmal gegebene Signaturen zu modifizieren oder zu entfernen</b> ohne direkt die Datenbank zu bearbeiten.
 Zusätzlich wird der angezeigte Text beim Signieren der Seite der ''derzeitige'' Text sein, egal welche Änderungen danach noch vorgenommen wurden.
-Bitte sei dir absolut sicher, dass das Dokument in einem gut genugen Zustand zum Signieren ist.
-Bitte sei dir ebenfalls sicher, dass du alle nögtigen Felder angegeben hast, ''bevor du dieses Formular übersendest''.",
+Bitte sei dir absolut sicher, dass das Dokument in einem ausreichend stabilen Zustand zum Signieren ist.
+Bitte sei dir ebenfalls sicher, dass du alle nötigen Felder angegeben hast, ''bevor du dieses Formular übersendest''.",
 	'createsigndoc-pagename' => 'Seite:',
 	'createsigndoc-allowedgroup' => 'Erlaubte Gruppen:',
 	'createsigndoc-email' => 'E-Mail-Adresse:',
@@ -255,15 +255,15 @@ Besuche bitte [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} diese Seite],
  * @author Revolus
  */
 $messages['de-formal'] = array(
-	'createsigndoc-head' => "Benutze dieses Formular, um ein „Signaturdokument“ für die gegebene Seite zu erstellen, so dass Benutzer in der Lage sein werden, es zu [[Special:SignDocument|signieren]].
-Bitte gib den Namen der Seite an, auf welcher Sie digitales Signieren erlauben wollen, welche Benutzergruppen in der Lage sein sollen, sie zu signieren, welche Felder sichtbar sein sollen und welche optional, ein gegebenenfalls minimales Benutzeralter, um das Dokument zu unterzeichnen, und einen kurzen Einleizungstext, der dem Benutzer das Dokument beschreibt und ihm eine kurze Anleitung gibt.
+	'createsigndoc-head' => "Benutzen Sie dieses Formular, um ein „Signaturdokument“ für die gegebene Seite zu erstellen, so dass Benutzer in der Lage sein werden, es zu [[Special:SignDocument|signieren]].
+Bitte geben Sie den Namen der Seite an, auf welcher Sie digitales Signieren erlauben wollen, welche Benutzergruppen in der Lage sein sollen, sie zu signieren, welche Felder sichtbar sein sollen und welche optional, ein gegebenenfalls minimales Benutzeralter, um das Dokument zu unterzeichnen, und einen kurzen Einleitungstext, der dem Benutzer das Dokument beschreibt und ihm eine kurze Anleitung gibt.
 
-<b>Derzeit ist es nicht möglich, einmal gegeben Signaturen zu modifizieren oder zu entfernen</b> ohne direkt die Datenbank zu bearbeiten.
+<b>Derzeit ist es nicht möglich, einmal gegebene Signaturen zu modifizieren oder zu entfernen</b> ohne direkt die Datenbank zu bearbeiten.
 Zusätzlich wird der angezeigte Text beim Signieren der Seite der ''derzeitige'' Text sein, egal welche Änderungen danach noch vorgenommen wurden.
-Bitte seien Sie sich absolut sicher, dass das Dokument in einem gut genugen Zustand zum Signieren ist.
-Bitte seien Sie sich ebenfalls sicher, dass du alle nögtigen Felder angegeben hast, ''bevor du dieses Formular übersendest''.",
+Bitte seien Sie sich absolut sicher, dass das Dokument in einem ausreichend stabilen Zustand zum Signieren ist.
+Bitte seien Sie sich ebenfalls sicher, dass Sie alle nötigen Felder angegeben haben, ''bevor Sie dieses Formular übersenden''.",
 	'createsigndoc-success' => 'Das Signieren wurde erfolgreich auf [[$1]] aktiviert.
-Besuchen Sue bitte [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} diese Seite], um es auszuprobieren.',
+Besuchen Sie bitte [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} diese Seite], um es auszuprobieren.',
 );
 
 /** Greek (Ελληνικά)
@@ -957,9 +957,15 @@ Para testar a funcionalidade, por favor visite [{{SERVER}}{{localurl: Special:Si
 $messages['ro'] = array(
 	'createsigndoc-pagename' => 'Pagină:',
 	'createsigndoc-email' => 'Adresă e-mail:',
+	'createsigndoc-phone' => 'Număr de telefon:',
+	'createsigndoc-bday' => 'Zi de naştere:',
+	'createsigndoc-minage' => 'Vârstă minimă:',
+	'createsigndoc-introtext' => 'Introducere:',
 	'createsigndoc-hidden' => 'Ascunse',
 	'createsigndoc-optional' => 'Opţional',
 	'createsigndoc-create' => 'Creează',
+	'createsigndoc-error-generic' => 'Eroare: $1',
+	'createsigndoc-error-pagenoexist' => 'Eroare: Pagina [[$1]] nu există.',
 );
 
 /** Tarandíne (Tarandíne)

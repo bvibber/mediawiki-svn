@@ -332,6 +332,13 @@ $messages['te'] = array(
 	'searchbox-go' => 'వెళ్ళు',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'searchbox-search' => '搜索',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

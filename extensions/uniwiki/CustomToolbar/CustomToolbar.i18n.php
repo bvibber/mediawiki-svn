@@ -73,12 +73,43 @@ $wgCustomToolbarMessages['qqq'] = array(
 );
 
 /** Arabic (العربية)
+ * @author OsamaK
  * @author Ouda
  */
 $wgCustomToolbarMessages['ar'] = array(
+	'ct_bold_sample' => 'نص عريض',
+	'ct_bold_tip_ins' => 'إدراج نص عريض',
+	'ct_bold_tip_wrap' => 'جعل هذا النص عريضا',
+	'ct_bold_caption' => 'عريض',
+	'ct_italic_sample' => 'نص مائل',
+	'ct_italic_tip_ins' => 'إدراج نص مائل',
+	'ct_italic_tip_wrap' => 'اجعل هذا النص مائلا',
 	'ct_italic_caption' => 'خط مائل',
+	'ct_internal_sample' => 'اسم الصفحة',
+	'ct_internal_tip_ins' => 'إدراج وصلة داخلية',
+	'ct_internal_tip_wrap' => 'جعل هذا النص وصلة داخلية',
 	'ct_internal_caption' => 'وصلة داخلية',
+	'ct_external_tip_ins' => 'إدراج وصلة خارجية',
+	'ct_external_tip_wrap' => 'جعل هذا النص وصلة خارجية',
 	'ct_external_caption' => 'وصلة خارجية',
+	'ct_image_tip' => 'إدراج صورة',
+	'ct_image_caption' => 'أضف صورة',
+	'ct_attachment_tip' => 'إدراج مُرفق',
+	'ct_attachment_caption' => 'إضافة مرفق',
+	'ct_nowiki_sample' => 'أدرج نصا غير منسق هنا',
+	'ct_nowiki_caption' => 'لا ويكي',
+	'ct_horizontal_caption' => 'خط أفقي',
+	'ct_upload' => 'رفع $1',
+	'ct_select' => 'انتقاء $1 للرفع',
+	'ct_caption' => 'أضف عنوان فرعي (أختياري)',
+	'ct_link' => 'أضف اسم الرابط (أختياري)',
+	'ct_submit' => '! أذهب',
+	'ct_close' => 'أغلق النافذة',
+	'ct_success' => '! تم رفع الملف بنجاح',
+	'ct_user_user' => 'مستخدم',
+	'ct_user_tip' => 'إدراج وصلة لصفحة مستخدم',
+	'ct_user_caption' => 'وصلة المستخدم',
+	'ct_user_sample' => 'أسم المستخدم',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -310,7 +341,7 @@ $wgCustomToolbarMessages['fi'] = array(
 	'ct_horizontal_caption' => 'Vaakasuora viiva',
 	'ct_upload' => 'Tallenna $1',
 	'ct_select' => 'Valitse $1 tallentaaksesi',
-	'ct_caption' => 'Lisää otsikko (valinnainen)',
+	'ct_caption' => 'Lisää kuvateksti (valinnainen)',
 	'ct_link' => 'Lisää linkin nimi (valinnainen)',
 	'ct_close' => 'Sulje ikkuna',
 	'ct_success' => 'Tiedoston tallennus onnistui.',
@@ -528,6 +559,55 @@ Prošu skontroluj swój blokowak wuskakowacych woknow.',
 	'ct_user_sample' => 'Wužiwarske mjeno',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$wgCustomToolbarMessages['hu'] = array(
+	'ct-desc' => 'Bővíthető eszköztár',
+	'ct_bold_sample' => 'Félkövér szöveg',
+	'ct_bold_tip_ins' => 'Félkövér szöveg beillesztése',
+	'ct_bold_tip_wrap' => 'A szöveg félkövérré alakítása',
+	'ct_bold_caption' => 'Félkövér',
+	'ct_italic_sample' => 'Dőlt szöveg',
+	'ct_italic_tip_ins' => 'Dőlt szöveg beillesztése',
+	'ct_italic_tip_wrap' => 'A szöveg dőltté alakítása',
+	'ct_italic_caption' => 'Dőlt',
+	'ct_internal_sample' => 'Lap neve',
+	'ct_internal_tip_ins' => 'Belső link beszúrása',
+	'ct_internal_tip_wrap' => 'A szöveg belső linkké alakítása',
+	'ct_internal_caption' => 'Belső link',
+	'ct_external_tip_ins' => 'Külső hivatkozás beszúrása',
+	'ct_external_tip_wrap' => 'Szöveg külső linkké alakítása',
+	'ct_external_caption' => 'Külső link',
+	'ct_image_tip' => 'Kép beszúrása',
+	'ct_image_caption' => 'Kép hozzáadása',
+	'ct_attachment_tip' => 'Csatolmány beszúrása',
+	'ct_attachment_caption' => 'Csatolmány hozzáadása',
+	'ct_math_sample' => 'Ide írd a LaTeX formulát',
+	'ct_math_tip_ins' => 'Matematikai formula beillesztése (LaTeX)',
+	'ct_math_tip_wrap' => 'Szöveg matematikai formulává (LaTeX) alakítása',
+	'ct_math_caption' => 'Formula',
+	'ct_nowiki_sample' => 'Nem-formázott szöveg beszúrása',
+	'ct_nowiki_tip_ins' => 'Formázás mellőzése',
+	'ct_nowiki_tip_wrap' => 'A szöveg formázásának mellőzése',
+	'ct_nowiki_caption' => 'Nincs formázás',
+	'ct_horizontal_tip' => 'Vízszintes vonal beszúrása (ritkán használd)',
+	'ct_horizontal_caption' => 'Vízszintes vonal',
+	'ct_upload' => '$1 feltöltése',
+	'ct_select' => '$1 kiválasztása feltöltéshez',
+	'ct_caption' => 'Cím hozzáadása (nem kötelező)',
+	'ct_link' => 'Linknév hozzáadása (nem kötelező)',
+	'ct_submit' => 'Gyerünk!',
+	'ct_close' => 'Ablak bezárása',
+	'ct_success' => 'A fájl feltöltése sikerült!',
+	'ct_popupblocked' => 'A feltöltéshez szükséges ablakot nem sikerült megnyitni.
+Ellenőrízd a felugró ablakokat blokkoló programodat.',
+	'ct_user_user' => 'Szerkesztő',
+	'ct_user_tip' => 'Szerkesztői lapra mutató link beszúrása',
+	'ct_user_caption' => 'Hivatkozás szerkesztőre',
+	'ct_user_sample' => 'Szerkesztő neve',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -703,6 +783,9 @@ $wgCustomToolbarMessages['ksh'] = array(
 	'ct_submit' => 'Loß Jonn!',
 	'ct_close' => 'He dat Finster zo maache',
 	'ct_success' => 'De Datei es huhjelaade.',
+	'ct_popupblocked' => 'Dat Finster för et Huhlade kunnt op Dingem Kompjutor nit opjemaat wääde.
+Dinge Brauser odder Ding BedriifßSüßteem hat dat nit zohjelooßhe.
+Odder loor ens noh Dingem <i lang="en">Popup-Blocker</i>.',
 	'ct_user_user' => 'Metmaacher',
 	'ct_user_caption' => 'Ene Lengk op ene Metmaacher enföje',
 	'ct_user_sample' => 'Metmaachername',
@@ -1120,8 +1203,11 @@ $wgCustomToolbarMessages['sv'] = array(
  */
 $wgCustomToolbarMessages['te'] = array(
 	'ct_bold_sample' => 'బొద్దు పాఠ్యం',
+	'ct_bold_tip_ins' => 'బొద్దు పాఠ్యాన్ని చేర్చండి',
+	'ct_bold_tip_wrap' => 'ఈ పాఠ్యాన్ని బొద్దుగా చేయండి',
 	'ct_bold_caption' => 'బొద్దు',
 	'ct_italic_sample' => 'వాలు పాఠ్యం',
+	'ct_italic_tip_ins' => 'వాలు పాఠ్యాన్ని చేర్చండి',
 	'ct_italic_tip_wrap' => 'ఈ పాఠ్యాన్ని వాలుగా చెయ్యి',
 	'ct_italic_caption' => 'వాలు',
 	'ct_internal_sample' => 'పేజీపేరు',
@@ -1136,8 +1222,11 @@ $wgCustomToolbarMessages['te'] = array(
 	'ct_attachment_tip' => 'ఒక జోడింపుని చేర్చండి',
 	'ct_attachment_caption' => 'జోడింపుని చేర్చు',
 	'ct_math_tip_ins' => 'గణిత సూత్రాలని చేర్చండి (LaTeX)',
+	'ct_math_tip_wrap' => 'ఈ పాఠ్యాన్ని గణిత సూత్రంగా మార్చండి (LaTeX)',
+	'ct_math_caption' => 'సూత్రం',
 	'ct_link' => 'లింకు పేరుని చేర్చండి (ఐచ్ఛికం)',
 	'ct_submit' => 'వెళ్ళు!',
+	'ct_close' => 'కిటికీని మూసివేయి',
 	'ct_success' => 'పైలు ఎగుమతి విజయవంతం!',
 	'ct_user_user' => 'వాడుకరి',
 	'ct_user_tip' => 'వాడుకరి పేజీకి ఒక లింకుని చేర్చండి',
@@ -1165,7 +1254,25 @@ $wgCustomToolbarMessages['vi'] = array(
 	'ct_user_user' => 'Người dùng',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$wgCustomToolbarMessages['zh-hans'] = array(
+	'ct_bold_sample' => '粗体文字',
+	'ct_bold_caption' => '粗体',
+	'ct_italic_sample' => '斜体文字',
+	'ct_italic_caption' => '斜体',
+	'ct_internal_caption' => '内部链接',
+	'ct_external_caption' => '外部链接',
+	'ct_select' => '选择要上传的$1',
+	'ct_close' => '关闭窗口',
+	'ct_success' => '上传文件成功！',
+	'ct_user_user' => '用户',
+	'ct_user_sample' => '用户名',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $wgCustomToolbarMessages['zh-hant'] = array(
@@ -1177,7 +1284,7 @@ $wgCustomToolbarMessages['zh-hant'] = array(
 	'ct_external_caption' => '外部連結',
 	'ct_select' => '選擇要上載的$1',
 	'ct_close' => '關閉視窗',
-	'ct_success' => '上載檔案成功!',
+	'ct_success' => '上載檔案成功！',
 	'ct_user_user' => '使用者',
 	'ct_user_sample' => '使用者名稱',
 );

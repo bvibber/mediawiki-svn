@@ -423,6 +423,13 @@ $messages['pt'] = array(
 	'smoothgallery-gallery-not-found' => 'A galeria requisitada não existe.',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'smoothgallery-gallery-not-found' => 'Galeria cerută nu există.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -84,7 +84,7 @@ $messages['bs'] = array(
  * @author Melancholie
  */
 $messages['de'] = array(
-	'layouts-desc' => 'Bestückt frisch erzeugte Seiten mit bearbeitbaren "Gestaltungen", um eine einheitliche Struktur von Seiten zu fördern',
+	'layouts-desc' => 'Bestückt frisch erzeugte Seiten mit bearbeitbaren „Gestaltungen“, um eine einheitliche Struktur von Seiten zu fördern',
 	'layouts_title' => 'Neue Seite erstellen',
 	'layouts_chooselayout' => 'Suche ein Format für $1 aus:',
 	'layouts_nolayout' => 'Kein Format',
@@ -188,6 +188,13 @@ $messages['hsb'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -236,6 +243,9 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'layouts-desc' => 'Deit op jede neu aanjelaate Sigg en änderbaa „Läj_aut“ drop, ön ene einheitlijje Opbou för de Sigge ze fördere.',
 	'layouts_title' => 'En neu Sigg aanlääje',
+	'layouts_continue' => 'Wigger',
+	'layouts_choosecategory' => 'Söök en Saachjrupp för $1 us:',
+	'layouts_unknown' => 'Onbikannt',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -364,6 +374,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'layouts_title' => 'ఒక పేజీని సృష్టించండి',
 	'layouts_continue' => 'కొనసాగించు',
+	'layouts_choosecategory' => '$1కి ఒక వర్గాన్ని ఎంచుకోండి:',
 );
 
 /** Tagalog (Tagalog)
@@ -390,12 +401,22 @@ $messages['vi'] = array(
 	'layouts_unknown' => 'Không biết',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'layouts_title' => '建立一个页面',
+	'layouts_continue' => '继续',
+	'layouts_choosecategory' => '为$1选择一个分类：',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'layouts_title' => '建立一個頁面',
 	'layouts_continue' => '繼續',
-	'layouts_choosecategory' => '為$1選擇一個分類:',
+	'layouts_choosecategory' => '為$1選擇一個分類：',
 );
 

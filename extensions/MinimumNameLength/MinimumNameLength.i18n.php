@@ -156,6 +156,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'minnamelength-error' => 'A felhasználói neved túl rövid, minimum $1 karakter hosszúnak kell lennie.',
+	'minnamelength-desc' => 'Kötelezővé tesz egy minimális hosszt a felhasználói neveknél',
 );
 
 /** Interlingua (Interlingua)

@@ -129,6 +129,7 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Jaakonam
+ * @author Mobe
  * @author Nike
  */
 $messages['fi'] = array(

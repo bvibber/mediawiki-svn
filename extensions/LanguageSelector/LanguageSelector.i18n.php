@@ -188,10 +188,12 @@ $messages['ext'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  */
 $messages['fi'] = array(
 	'languageselector' => 'Kieli',
+	'languageselector-desc' => 'Kielen valinta jokaisella sivulla, myös vierailijoille.',
 	'languageselector-setlang' => 'aseta',
 );
 

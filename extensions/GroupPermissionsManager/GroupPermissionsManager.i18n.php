@@ -121,6 +121,13 @@ $messages['af'] = array(
 	'grouppermissions-sp-remove' => 'verwyder',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'grouppermissions-comment' => 'ማጠቃለያ፦',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

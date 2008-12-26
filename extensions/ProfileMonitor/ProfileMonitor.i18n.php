@@ -124,13 +124,16 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
+	'profiling' => 'Profiliere Daten',
 	'profiling-process' => 'Prozessaufruf:',
 	'profiling-wildcard' => 'verwende Platzhalter',
 	'profiling-ok' => 'Okay',
+	'profiling-data' => 'Profiliere Daten für `$1`',
 	'profiling-data-process' => 'Fortschritt',
 	'profiling-data-count' => 'Anzahl',
 	'profiling-data-time' => 'Zeit (gesamt)',

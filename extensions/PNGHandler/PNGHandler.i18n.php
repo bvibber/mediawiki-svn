@@ -78,6 +78,13 @@ $messages['es'] = array(
 	'pnghandler-desc' => 'Escalar PNG usando pngds',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'pnghandler-desc' => 'Muuttaa PNG-kuvien mittoja pngds:llä.',
+);
+
 /** French (Français)
  * @author Urhixidur
  */

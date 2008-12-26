@@ -167,6 +167,25 @@ $messages['de-formal'] = array(
 	'importfreeimages_returntoform' => "Oder klicken Sie <a href='$1'>hier</a>, um zu der Seite mit den Suchergebnissen zurückzukommen.",
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'importfreeimages' => 'Liche wobraze importěrowaś',
+	'importfreeimages-desc' => 'Zmóžnja [[Special:ImportFreeImages|import pórědnje licencěrowanych fotow]] z [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Toś ten bok śi zmóžnja, na Flickrje pórědnje licencěrowane fota pytaś a je do twójogo wikija importěrowaś.',
+	'importfreeimages_noapikey' => 'Njejsy konfigurěrował swój API-kluc za Flickr.
+Aby to cynił, wobstaraj se pšosym API-kluc wót [http://www.flickr.com/services/api/misc.api_keys.html how]',
+	'importfreeimages_nophotosfound' => "Za twóje pytańske kriteriumy '$1' njejsu žedne fota namakali, pšosym wopytaj hyšći raz.",
+	'importfreeimages_invalidurl' => 'URL "$1" njejo płaśiwy Flickr-wobraz.',
+	'importfreeimages_owner' => 'Awtor',
+	'importfreeimages_importthis' => 'to importěrowaś',
+	'importfreeimages_next' => 'Pśiducy $1',
+	'importfreeimages_filefromflickr' => '$1 wót wužywarja <b>[$2]</b> z flickr. Originalny URL',
+	'importfreeimages_promptuserforfilename' => 'Pšosym zapódaj mě celowego dataje:',
+	'importfreeimages_returntoform' => "Abo klikni < a href='$1'>sem</a>, aby se wróśił k swójim pytańskim wuslědkam",
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

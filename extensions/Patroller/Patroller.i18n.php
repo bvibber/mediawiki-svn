@@ -228,7 +228,7 @@ $messages['de'] = array(
  */
 $messages['de-formal'] = array(
 	'patrol-stopped' => 'Sie haben entschieden, keine weitere Bearbeitung zu kontrollieren. $1',
-	'patrol-resume' => 'Klicken Sie hier zum fortsetzen.',
+	'patrol-resume' => 'Klicken Sie hier zum Fortsetzen.',
 );
 
 /** Greek (Ελληνικά)
@@ -291,6 +291,7 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -305,7 +306,7 @@ $messages['fi'] = array(
 	'group-patroller' => 'tarkastajat',
 	'group-patroller-member' => 'tarkastaja',
 	'grouppage-patroller' => '{{ns:project}}:Tarkastajat',
-	'right-patroller' => 'Tarkasta sivuja',
+	'right-patroller' => 'Tarkastaa sivuja',
 );
 
 /** French (Français)

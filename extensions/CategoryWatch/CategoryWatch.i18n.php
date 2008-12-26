@@ -53,6 +53,7 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'categorywatch-desc' => 'يمدد وظيفة قائمة المراقبة لتشمل الإخطارات حول تغييرات العضوية للتصنيفات المراقبة',
@@ -62,7 +63,7 @@ $messages['ar'] = array(
 	'categorywatch-catmovein' => 'نقل $1 إلى التصنيف $2 من $3',
 	'categorywatch-catmoveout' => 'نقل $1 من التصنيف $2 إلى $3',
 	'categorywatch-catadd' => 'أضاف $1 إلى التصنيف $2',
-	'categorywatch-catsub' => 'ازال $1 من التصنيف $2',
+	'categorywatch-catsub' => 'أزال $1 من التصنيف $2',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -106,6 +107,22 @@ Ova poruka služi da Vas obavijesti da je dana $3 korisnik $4 $5.',
 	'categorywatch-catsub' => 'uklonio $1 iz kategorije $2',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'categorywatch-desc' => 'Rozšiřuje možnosti seznamu sledovaných stránek na upozornění o změně členství sledovaných kategorií',
+	'categorywatch-emailbody' => 'Dobrá den, $1,
+
+dostali jste tento email, protože sledujete kategorii „$2”.
+Toto je oznámení, že $3 uživatel $4 $5.',
+	'categorywatch-emailsubject' => 'Aktivita týkající se sledování kategorie „$1”',
+	'categorywatch-catmovein' => 'přesunul $1 do kategorie $2 z $3',
+	'categorywatch-catmoveout' => 'přesunul $1 z kategorie $2 do $3',
+	'categorywatch-catadd' => 'přidal $1 do kategorie $2',
+	'categorywatch-catsub' => 'odstranil $1 z kategorie $2',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */
@@ -144,6 +161,17 @@ $messages['eo'] = array(
 	'categorywatch-catmoveout' => 'movis $1 el kategorio $2 en $3',
 	'categorywatch-catadd' => 'aldonis $1 al kategorio $2',
 	'categorywatch-catsub' => 'eligis $1 de kategorio $2',
+);
+
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'categorywatch-desc' => 'Laajennettu seurantalistatoiminnallisuus, joka sisältää huomautukset seurattujen luokkien jäsenyysmuutoksista.',
+	'categorywatch-catmovein' => 'siirrettiin $1 kategoriaan $2 kategoriasta $3',
+	'categorywatch-catmoveout' => 'siirrettiin $1 kategoriasta $2 kategoriaan $3',
+	'categorywatch-catadd' => 'lisättiin $1 kategoriaan $2',
+	'categorywatch-catsub' => 'poistettiin $1 kategoriasta $2',
 );
 
 /** French (Français)

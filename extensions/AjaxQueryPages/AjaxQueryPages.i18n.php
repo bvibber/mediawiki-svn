@@ -102,6 +102,13 @@ $messages['es'] = array(
 	'ajax-qp-desc' => 'Agregar AJAX para consultar páginas tales como  [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'ajax-qp-desc' => 'Lisää AJAXia kyselysivulle – esimerkiksi sivulle [[Special:Shortpages|lyhyet sivut]].',
+);
+
 /** French (Français)
  * @author Grondin
  */

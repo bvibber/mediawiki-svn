@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'formatsearch-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'formatsearch-desc' => 'ينظف صفحة نتائج البحث',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -75,6 +82,13 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'formatsearch-desc' => 'Wurjedźa stronu pytanskich wuslědkow',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'formatsearch-desc' => 'Eltávolítja a felesleges részeket a keresési találatok lapról',
 );
 
 /** Interlingua (Interlingua)
@@ -187,6 +201,13 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'formatsearch-desc' => 'Rensar upp sökresultatssidan',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'formatsearch-desc' => '清理搜索结果页面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

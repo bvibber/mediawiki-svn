@@ -84,6 +84,13 @@ $messages['af'] = array(
 	'todo-form-details' => 'Details:',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'todo-new-queue' => 'አዲስ',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -1072,6 +1079,13 @@ $messages['vo'] = array(
 	'todo-new-queue' => 'nulik',
 	'todo-list-change' => 'Votükön',
 	'todo-form-details' => 'Notets:',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'todo-list-cancel' => '取消',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

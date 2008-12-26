@@ -245,30 +245,56 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author DaSch
  * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
 	'taggedimages' => 'Bilder mit Tags',
+	'imagetagging-desc' => 'Ermöglicht es Benutzern, Bereiche von eingebetteten Bildern auszuwählen und diese mit einer Seite zu verknüpfen',
 	'imagetagging-addimagetag' => 'Tags hinzufügen',
 	'imagetagging-article' => 'Seite:',
+	'imagetagging-articletotag' => 'Seite, die getaggt wird',
+	'imagetagging-canteditothermessage' => 'Du kannst diese Seite nicht bearbeiten, weil du entweder keine Berechtigung dazu hast oder weil die Seite aus einem anderen Grund gesperrt ist.',
 	'imagetagging-imghistory' => 'Versionen',
 	'imagetagging-images' => 'Bild',
 	'imagetagging-inthisimage' => 'In diesem Bild: $1',
+	'imagetagging-logentry' => 'Tag auf Seite [[$1]] wurde durch $2 entfernt',
 	'imagetagging-log-tagged' => 'Bild [[$1|$2]] wurde von $4 mit [[$3]] getagged',
 	'imagetagging-new' => '<sup><span style="color:red">Neu!</span></sup>',
 	'imagetagging-removetag' => 'Tag entfernen',
 	'imagetagging-done-button' => 'Tagging erledigt',
+	'imagetagging-tag-button' => 'Taggen',
 	'imagetagging-tagcancel-button' => 'Abbrechen',
 	'imagetagging-tagging-instructions' => 'Klick auf Personen oder Dinge in dem Bild um sie mit einem Tag zu versehen.',
 	'imagetagging-addingtag' => 'Füge Tag hinzu…',
 	'imagetagging-removingtag' => 'Entferne Tag…',
 	'imagetagging-addtagsuccess' => 'Hinzugefügte Tags.',
 	'imagetagging-removetagsuccess' => 'Entfernte Tags.',
+	'imagetagging-canteditneedloginmessage' => 'Du kannst diese Seite nicht bearbeiten.
+Möglicherweise musst du dich anmelden, um Bilder zu taggen.
+Möchtest du dich jetzt anmelden?',
+	'imagetagging-oneactionatatimemessage' => 'Es ist nur eine gleichzeitige Tagging-Aktion erlaubt.
+Bitte warte, bis die momentane Aktion abgeschlossen ist.',
 	'imagetagging-oneuniquetagmessage' => 'Dieses Bild hat bereits einen Tag mit diesem Namen.',
-	'imagetagging-imagetag-seemoreimages' => 'Siehe mehr Bilder von "$1" ($2)',
-	'imagetagging-taggedimages-title' => 'Bilder von "$1"',
+	'imagetagging-imagetag-seemoreimages' => 'Siehe mehr Bilder von „$1“ ($2)',
+	'imagetagging-taggedimages-title' => 'Bilder von „$1“',
+	'imagetagging-taggedimages-displaying' => 'Angezeigt werden $1 - $2 von $3 Bilder aus „$4“',
+	'tag-logpagename' => 'Tagging-Logbuch',
+	'tag-logpagetext' => 'Dies ist ein Logbuch aller hinzugefügten und entfernten Bildertags.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author ChrisiPK
+ */
+$messages['de-formal'] = array(
+	'imagetagging-canteditothermessage' => 'Sie können diese Seite nicht bearbeiten, weil Sie entweder keine Berechtigung dazu haben oder weil die Seite aus einem anderen Grund gesperrt ist.',
+	'imagetagging-canteditneedloginmessage' => 'Sie können diese Seite nicht bearbeiten.
+Möglicherweise müssen Sie sich anmelden, um Bilder zu taggen.
+Möchten Sie sich jetzt anmelden?',
+	'imagetagging-oneactionatatimemessage' => 'Es ist nur eine gleichzeitige Tagging-Aktion erlaubt.
+Bitte warten Sie, bis die momentane Aktion abgeschlossen ist.',
 );
 
 /** Esperanto (Esperanto)

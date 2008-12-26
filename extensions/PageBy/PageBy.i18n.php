@@ -23,11 +23,17 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'pageby-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'pageby-first' => '* $1 link to user page
+* $2 timeanddate',
+	'pageby-last' => '* $1 link to user page
+* $2 timeanddate
+* $3 link to diff (or first revision of page)',
 	'pageby-contributors' => '{{Identical|Contributors}}',
 );
 

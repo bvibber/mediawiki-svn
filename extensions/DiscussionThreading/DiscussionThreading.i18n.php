@@ -72,6 +72,17 @@ $messages['bs'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Započni novu temu',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'discussionthreading-desc' => 'Přidává zobrazení vláken na diskusní stránky',
+	'discussionthreading-replysection' => 'odpovědět',
+	'discussionthreading-replysectionhint' => 'Odpovědět na tento příspěvek',
+	'discussionthreading-threadnewsection' => 'nové',
+	'discussionthreading-threadnewsectionhint' => 'Začít nové vlákno',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */
@@ -113,6 +124,17 @@ $messages['es'] = array(
 	'discussionthreading-replysectionhint' => 'Respuesta a este tema',
 	'discussionthreading-threadnewsection' => 'nuevo',
 	'discussionthreading-threadnewsectionhint' => 'Empezar un nuevo tema',
+);
+
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'discussionthreading-desc' => 'Lisää viestiketjut keskustelusivuille',
+	'discussionthreading-replysection' => 'vastaa',
+	'discussionthreading-replysectionhint' => 'Vastaa tähän viestiin',
+	'discussionthreading-threadnewsection' => 'uusi',
+	'discussionthreading-threadnewsectionhint' => 'Aloita uusi viestiketju',
 );
 
 /** French (Français)

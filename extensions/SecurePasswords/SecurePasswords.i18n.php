@@ -21,6 +21,14 @@ It must:',
 	'securepasswords-word' => 'not be a word',
 );
 
+/** Arabic (العربية)
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'securepasswords-username' => 'تكون مختلفة عن اسم المستخدم',
+	'securepasswords-word' => 'لا تكون كلمة',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -123,6 +131,22 @@ $messages['ja'] = array(
 	'securepasswords-desc' => 'より安全なパスワードのハッシュを生成し、パスワード文字列チェッカーを追加する',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'securepasswords-desc' => '안전한 비밀번호 해쉬를 만들고 비밀번호 강도 검사를 실시',
+	'securepasswords-valid' => '당신의 비밀번호가 잘못되었거나 너무 짧습니다.
+비밀번호는 반드시:',
+	'securepasswords-minlength' => '적어도 $1글자 이상이어야 합니다.',
+	'securepasswords-lowercase' => '적어도 1개의 소문자가 있어야 합니다.',
+	'securepasswords-uppercase' => '적어도 1개의 대문자를 포함해야 합니다.',
+	'securepasswords-digit' => '적어도 1개의 숫자를 포함해야 합니다.',
+	'securepasswords-special' => '적어도 1개의 특수 문자를 포함해야 합니다. (특수 문자: $1)',
+	'securepasswords-username' => '당신의 계정 이름과 달라야 합니다.',
+	'securepasswords-word' => '단어가 아니어야 합니다.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -161,6 +185,8 @@ $messages['sk'] = array(
 	'securepasswords-desc' => 'Vytvára bezpečnejšie haše hesiel a pridáva kontrolu sily hesla',
 	'securepasswords-valid' => 'Vaše heslo je nesprávne alebo príliš krátke.
 Ono musí:',
+	'securepasswords-username' => 'nesprávne užívateľské meno',
+	'securepasswords-word' => 'to nieje slovo',
 );
 
 /** Swedish (Svenska)
@@ -183,6 +209,16 @@ $messages['te'] = array(
 	'securepasswords-special' => 'కనీసం 1 ప్రత్యేక అక్షరాన్నైనా కలిగివుండాలి (ప్రత్యేక అక్షరాలు ఇవీ: 1)',
 	'securepasswords-username' => 'మీ వాడుకరిపేరు అయివుండకూడదు',
 	'securepasswords-word' => 'ఒక పదం అయివుండకూడదు',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'securepasswords-minlength' => '长度至少需要$1个字符',
+	'securepasswords-lowercase' => '包含最少一个小写字母',
+	'securepasswords-digit' => '包含最少一个数字',
+	'securepasswords-username' => '不与您的用户名相同',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -64,6 +64,13 @@ $messages['af'] = array(
 	'povwatch_title' => 'Titel:',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'povwatch_title' => 'አርዕስት፡',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -141,6 +148,13 @@ $messages['arz'] = array(
 	'povwatch_added' => 'تمت الإضافة',
 	'right-povwatch_admin' => 'إدارة صلاحيات المستخدم لإضافة الصفحات إلى قوائم مراقبة المستخدمين الآخرين',
 	'right-povwatch_user' => 'إضافة صفحات إلى قوائم مراقبة مستخدمين آخرين',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'povwatch_title' => 'Назва:',
 );
 
 /** Bulgarian (Български)
@@ -1142,7 +1156,22 @@ $messages['vo'] = array(
 	'povwatch_title' => 'Tiäd:',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'povwatch_already_subscribed' => '您已订阅过PovWatch',
+	'povwatch_subscribed' => '您现已订阅PovWatch',
+	'povwatch_not_subscribed' => '您并未订阅PovWatch，因此不能取消订阅。',
+	'povwatch_unsubscribed' => '您已取消订阅PovWatch',
+	'povwatch_title' => '标题：',
+	'povwatch_unsubscribe' => '取消订阅',
+	'povwatch_subscribe_intro' => '您并未订阅PovWatch。按下方的按钮订阅。',
+	'povwatch_added' => '已加入',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -1151,7 +1180,7 @@ $messages['zh-hant'] = array(
 	'povwatch_not_subscribed' => '您並未訂閱PovWatch，因此不能取消訂閱。',
 	'povwatch_unsubscribed' => '您已取消訂閱PovWatch',
 	'povwatch_subscriber_list_intro' => '<strong>訂閱用戶清單</strong>',
-	'povwatch_title' => '標題:',
+	'povwatch_title' => '標題：',
 	'povwatch_no_subscribers' => '現時沒有訂閱用戶。',
 	'povwatch_unsubscribe' => '取消訂閱',
 	'povwatch_subscribe_intro' => '您並未訂閱PovWatch。

@@ -653,6 +653,13 @@ $messages['vo'] = array(
 	'filelist' => 'Ragivalised',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'filelist' => '文件列表',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

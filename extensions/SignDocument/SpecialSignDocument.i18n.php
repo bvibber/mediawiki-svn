@@ -149,6 +149,14 @@ $messages['af'] = array(
 	'sign-review-comment' => 'Opmerking',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'sign-viewfield-reviewcomment' => 'ማጠቃለያ',
+	'sign-review-comment' => 'ማጠቃለያ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -471,6 +479,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Leithian
  * @author Melancholie
  * @author Revolus
@@ -500,6 +509,14 @@ Bitte lies das gesammte Dokument und wenn du ihm deine Zustimmung gibt, fülle b
 	'sign-list-hidebday' => 'Alter nicht auflisten',
 	'sign-list-hideemail' => 'E-Mail-Adresse nicht auflisten',
 	'sign-submit' => 'Dokument unterzeichnen',
+	'sign-information' => '<div class="noarticletext">Danke, dass du dir die Zeit genommen hast, dieses Dokument durchzulesen.
+Wenn du ihm zustimmst, zeige dies bitte indem du die benötigten Felder unten ausfüllst und anschließend auf „Dokument unterschreiben“ klickst.
+Bitte stelle sicher, dass deine persönlichen Informationen korrekt sind und dass wir die Möglichkeit haben, dich zur Feststellung deiner Identität zu kontaktieren.
+Beachte, dass deine IP-Adresse und andere persönliche Informationen von diesem Formular aufgezeichnet werden und dass sie von Moderatoren benutzt werden, um doppelte Unterschriften zu beseitigen und deine Daten zu verifizieren.
+Da die Benutzung offener Proxys uns in der Durchführung dieser Aufgabe einschränkt, werden Unterschriften über solche Proxys in der Regel nicht bearbeitet.
+Solltest du gerade über einen solchen Server verbunden sein, trenne bitte die Verbindung von ihm und nutze eine Standardverbindung.</div>
+
+$1',
 	'sig-success' => 'Du hast das Dokument erfolgreich unterschrieben.',
 	'sign-view-selectfields' => '<b>Anzuzeigende Felder:</b>',
 	'sign-viewfield-entryid' => 'Eintragskennung',
@@ -531,6 +548,16 @@ Bitte lies das gesammte Dokument und wenn du ihm deine Zustimmung gibt, fülle b
 	'sig-private' => '<i>Privat</i>',
 	'sign-sigdetails' => 'Signaturdetails',
 	'sign-emailto' => '<a href="mailto:$1">$1</a>',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|Diskussion]] • <!--
+-->[[Special:Contributions/$1|Beiträge]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|Benutzer sperren]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Sperr-Logbuch] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Checkuser])<!--
+--></span>',
 	'sign-viewfield-stricken' => 'Gestrichen',
 	'sign-viewfield-reviewedby' => 'Prüfer',
 	'sign-viewfield-reviewcomment' => 'Kommentar',
@@ -2273,15 +2300,32 @@ $messages['rm'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'sign-selectdoc' => 'Document:',
 	'sign-realname' => 'Nume:',
+	'sign-city' => 'Oraş:',
+	'sign-zip' => 'Cod poştal:',
+	'sign-country' => 'Ţară:',
+	'sign-phone' => 'Număr de telefon:',
+	'sign-bday' => 'Vârstă:',
 	'sign-email' => 'Adresă e-mail:',
 	'sign-viewfield-realname' => 'Nume',
+	'sign-viewfield-city' => 'Oraş',
+	'sign-viewfield-country' => 'Ţară',
 	'sign-viewfield-ip' => 'Adresă IP',
 	'sign-viewfield-email' => 'E-mail',
 	'sign-viewfield-options' => 'Opţiuni',
+	'sign-signatures' => 'Semnături',
 	'sig-private' => '<i>Privat</i>',
+	'sign-sigdetails' => 'Detaliile semnăturii',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
 	'sign-viewfield-reviewcomment' => 'Comentariu',
+	'sign-detail-uniquequery' => 'Entităţi similare',
+	'sign-detail-uniquequery-run' => 'Rulează interogare',
 	'sign-review-comment' => 'Comentariu',
+	'sign-uniquequery-similarname' => 'Nume similar',
+	'sign-uniquequery-similaraddress' => 'Adresă similară',
+	'sign-uniquequery-similarphone' => 'Telefon similar',
+	'sign-uniquequery-similaremail' => 'E-mail similar',
 );
 
 /** Russian (Русский)

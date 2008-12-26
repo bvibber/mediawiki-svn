@@ -90,6 +90,14 @@ $messages['eo'] = array(
 	'eval_code' => 'Kodo',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'eval_out' => 'Ulostulo',
+	'eval_code' => 'Koodi',
+);
+
 /** French (Français)
  * @author Sherbrooke
  */
@@ -128,6 +136,17 @@ $messages['grc'] = array(
  */
 $messages['gv'] = array(
 	'eval_code' => 'Coad',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'eval' => 'הערכה',
+	'eval-desc' => 'הוספת [[Special:Eval|ממשק]] לפונקציה <code>eval()</code>',
+	'eval_submit' => 'הערכה',
+	'eval_out' => 'פלט',
+	'eval_code' => 'קוד',
 );
 
 /** Hindi (हिन्दी)

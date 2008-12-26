@@ -265,17 +265,19 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Jack Phoenix
  * @author Nike
  */
 $messages['fi'] = array(
-	'edituser-desc' => 'Oikeutetut käyttäjät voivat muokata toisten käyttäjien asetuksia',
+	'edituser-desc' => 'Mahdollistaa oikeutettujen käyttäjien muokata toisten käyttäjien asetuksia.',
 	'edituser' => 'Muokkaa käyttäjää',
 	'edituser-logout' => 'Kirjaa käyttäjä ulos',
 	'edituser-username' => 'Nimi',
 	'edituser-dosearch' => 'Hae',
 	'edituser-nouser' => 'Määriteltyä käyttäjää ei ole olemassa',
 	'edituser-exempt' => 'Määriteltyä käyttäjää ei voida muokata',
+	'right-edituser' => 'Muokata muiden käyttäjien asetuksia',
 );
 
 /** French (Français)

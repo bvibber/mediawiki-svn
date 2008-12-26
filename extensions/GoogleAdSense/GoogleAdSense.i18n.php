@@ -115,6 +115,13 @@ $messages['hsb'] = array(
 	'googleadsense-desc' => '[http://www.google.com/adsense Google AdSense] k pobóčnej lajsće přidać',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'googleadsense-desc' => '[http://www.google.com/adsense Google AdSense] hozzáfűzése a bal oldali menühöz',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -268,6 +275,13 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'googleadsense-desc' => 'Thêm [http://www.google.com/adsense Google AdSense] vào thanh bên',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'googleadsense-desc' => '在页侧栏位加入[http://www.google.com/adsense Google AdSense]',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -322,6 +322,60 @@ $1',
 	'webstore_no_handler' => "N'haller ket treuzfurmiñ ar seurt MIME-mañ.",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'inplace_access_disabled' => 'Přístup k této službě bylv vypnut pro všechny klienty.',
+	'inplace_access_denied' => 'Tato služba je omezena na určené klientské IP adresy.',
+	'inplace_scaler_no_temp' => 'Dočasný adresář není platný, nastavte $wgLocalTmppDirectory na zapisovatelný adresář.',
+	'inplace_scaler_not_enough_params' => 'Nedostatek parametrů.',
+	'inplace_scaler_invalid_image' => 'Neplatný obrázek, nebylo možné určit velikost.',
+	'inplace_scaler_failed' => 'Během změny velikosti obrázku se vyskytla chyba: $1',
+	'inplace_scaler_no_handler' => 'Pro transformaci tohoto MIME typu neexistuje obsluha',
+	'inplace_scaler_no_output' => 'Nebyl vytvořen výstupní soubor této transformace.',
+	'inplace_scaler_zero_size' => 'Transformace vytvořila výstupní soubor s nulovou velikostí.',
+	'webstore-desc' => 'Middleware pouze webové úložiště (ne NFS)',
+	'webstore_access' => 'Tato služba je omezena na určené klientské IP adresy.',
+	'webstore_path_invalid' => 'Nový soubor byl neplatný.',
+	'webstore_dest_open' => 'Nebylo možno otevřít cílový „$1“.',
+	'webstore_dest_lock' => 'Nebylo možno získat zámek pro cílový soubor „$1“.',
+	'webstore_dest_mkdir' => 'Nebylo možno vytvořit cílový adresář „$1“.',
+	'webstore_archive_lock' => 'Nebylo možné získat zámek na soubor archívu „$1“.',
+	'webstore_archive_mkdir' => 'Nebylo možné vytvořit archivní adresář „$1“.',
+	'webstore_src_open' => 'Nebylo možné otevřít zdrojový soubor „$1“.',
+	'webstore_src_close' => 'Chyba při zavírání zdrojového souboru „$1“.',
+	'webstore_src_delete' => 'Chyba při mazání zdrojového souboru „$1“.',
+	'webstore_rename' => 'Chyba při přejmenování souboru „$1“ na „$2“.',
+	'webstore_lock_open' => 'Chyba při otevírání souboru zámku „$1“.',
+	'webstore_lock_close' => 'Chyba při zavírání souboru zámku „$1“.',
+	'webstore_dest_exists' => 'Chyba, cílový soubor „$1“ existuje.',
+	'webstore_temp_open' => 'Chyba při otevírání dočasného souboru „$1“.',
+	'webstore_temp_copy' => 'Chyba přo kopírování dočasného souboru „$1“ do cílového souboru „$2“.',
+	'webstore_temp_close' => 'Chyba pří zavírání dočasného souboru „$1“.',
+	'webstore_temp_lock' => 'Chyba při zamikání dočasného souboru „$1“.',
+	'webstore_no_archive' => 'Cílový soubor existuje a nebyl zadán archív.',
+	'webstore_no_file' => 'žádný soubor nebyl nahrán.',
+	'webstore_move_uploaded' => 'Chyba při přesouvání nahraného souboru „$1“ na dočasné místo „$2“.',
+	'webstore_invalid_zone' => 'Neplatná zóna „$1“.',
+	'webstore_no_deleted' => 'Nebyl zadán žádný archivní adresář pro smazané soubory.',
+	'webstore_curl' => 'Chyb od cURL: $1',
+	'webstore_404' => 'Soubor nenalezen.',
+	'webstore_php_warning' => 'Upozornění PHP: $1',
+	'webstore_metadata_not_found' => 'Soubor nebyl nalezen: $1',
+	'webstore_postfile_not_found' => 'Soubor na odeslání nebyl nalezen.',
+	'webstore_scaler_empty_response' => 'Změna velikosti obrázku vrátila prázdnou odpověď s kódem 200. To by mohlo znamenat kritickou chybu PHP při změně velikosti obrázku.',
+	'webstore_invalid_response' => 'Neplatná odpověď serveru:
+
+$1',
+	'webstore_no_response' => 'Žádná odpověď od serveru',
+	'webstore_backend_error' => 'Chyba od úložného serveru:
+
+$1',
+	'webstore_php_error' => 'Vyskytly se chyby PHP:',
+	'webstore_no_handler' => 'Pro transformaci tohoto MIME typu neexistuje obsluha',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian
@@ -1005,6 +1059,13 @@ $messages['myv'] = array(
 	'webstore_404' => 'Файлась а муеви',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'webstore_path_invalid' => 'Ahcualli tlahcuilōltōcāitl',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -1536,6 +1597,60 @@ $1',
 $1',
 	'webstore_php_error' => 'PHP-fel hittades:',
 	'webstore_no_handler' => 'Ingen behandlare för ändring av denna MIME-typ',
+);
+
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'inplace_access_disabled' => 'Dostymp do tyj usługi zostoł wyłůnczůny lů wszyjstkich klijentůw.',
+	'inplace_access_denied' => 'Ta usługa je uograńiczůno bez IP klijenta.',
+	'inplace_scaler_no_temp' => 'Ńy ma sam poprawnygo kataloga tymczasowygo, nasztaluj $wgLocalTmpDirectory na katalog we kerym idźe szkryflać',
+	'inplace_scaler_not_enough_params' => 'Ńywystarczajůnco liczba parametrůw.',
+	'inplace_scaler_invalid_image' => 'Ńypoprawno grafika, ńy idźe uokryślić jeij rozmjaru.',
+	'inplace_scaler_failed' => 'Zdorzył śe feler przi skalowańu grafiki: $1',
+	'inplace_scaler_no_handler' => 'Ńy ma handlera lů transformacyje tyj zorty MIME',
+	'inplace_scaler_no_output' => 'Ńy ůtworzůno plika wyjśćowygo transformacyje',
+	'inplace_scaler_zero_size' => 'We wyńiku transformacyje powstoł plik uo zerowyj srogośći.',
+	'webstore-desc' => 'Yno lů interneca (ńy-NFS) plac lů wćepywańo plikůw',
+	'webstore_access' => 'Ta usuga je uograńiczůno lů uokreślůnych adresůw IP klijenta.',
+	'webstore_path_invalid' => 'Felerne mjano plika.',
+	'webstore_dest_open' => 'Ńy idźe uodymknůńć plika docelowygo "$1".',
+	'webstore_dest_lock' => 'Ńy udoło śe zawrzyć plika docelowygo "$1".',
+	'webstore_dest_mkdir' => 'Ńy idźe stworzić kataloga docelowygo "$1".',
+	'webstore_archive_lock' => 'Ńy idźe zawrzić plika archiwům "$1".',
+	'webstore_archive_mkdir' => 'Ńy idźe utworzić kataloga archiwům "$1".',
+	'webstore_src_open' => 'Ńy idźe uodymknůńć plika zdrzůdłowygo "$1".',
+	'webstore_src_close' => 'Feler podczos zawjyrańo plika zdrzůdłowygo "$1".',
+	'webstore_src_delete' => 'Feler przi wyćepywańu plika zdrzůdłowygo "$1".',
+	'webstore_rename' => 'Feler przi půmjyńańu mjana plika "$1" na "$2".',
+	'webstore_lock_open' => 'Feler przi uodmykańu plika zawarćo "$1".',
+	'webstore_lock_close' => 'Feler przi zawjyrańu plika zawarćo "$1".',
+	'webstore_dest_exists' => 'Feler: Plik docylowy "$1" już sam můmy.',
+	'webstore_temp_open' => 'Feler przi uodmykańu plika tymczasowygo "$1".',
+	'webstore_temp_copy' => 'Feler kopjowańo plika tymczasowygo "$1" ku lokalizacyji "$2".',
+	'webstore_temp_close' => 'Feler przi zawjyrańu plika tymczasowygo "$1".',
+	'webstore_temp_lock' => 'Feler zawjyrańo uod sprowjyń plika tymczasowygo "$1".',
+	'webstore_no_archive' => 'Plik docylowy już sam můmy, ńy uokreślůno tyż lokalizacyji archiwům.',
+	'webstore_no_file' => 'Ńy wćepano plika.',
+	'webstore_move_uploaded' => 'Zdorzył śe feler przi przekludzańu plika "$1" ku lokalizacyje tymczasowyj "$2".',
+	'webstore_invalid_zone' => 'Felerno sztrefa "$1".',
+	'webstore_no_deleted' => 'Ńy zdefińjowano kataloga archiwum lů wyćepywanych plikůw.',
+	'webstore_curl' => 'Feler cURL: $1',
+	'webstore_404' => 'Ńy znejdźůno plika.',
+	'webstore_php_warning' => 'Uostrzeżyńe PHP $1',
+	'webstore_metadata_not_found' => 'Ńy znejdźůno plika $1',
+	'webstore_postfile_not_found' => 'Ńy znejdźůno plika do uopublikowańo.',
+	'webstore_scaler_empty_response' => 'Modůł skalowańo grafik zwrůćił pusto uodpowjydź s kodym felera 200. Możebne co je tak skiż krytycznygo felera PHP we module skalowańo.',
+	'webstore_invalid_response' => 'Serwer uodpedźoł felerńe:
+
+$1',
+	'webstore_no_response' => 'Serwer ńy uodpado',
+	'webstore_backend_error' => 'Serwer kery przechowujy dane zwrůćůł feler:
+
+$1',
+	'webstore_php_error' => 'Trefjůno nastympujůnce felery PHP:',
+	'webstore_no_handler' => 'Ńy znejdźůno handlera lů obsugi danych tyj zorty MIME',
 );
 
 /** Telugu (తెలుగు)

@@ -23,6 +23,22 @@ $messages['qqq'] = array(
 	'catboxattop-categories' => '{{Identical|Categories}}',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'catboxattop-categories' => 'መደቦች',
+);
+
+/** Arabic (العربية)
+ * @author OsamaK
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'catboxattop-desc' => 'يضيف صندوق تصنيف إلى أعلى يمين الصفحات',
+	'catboxattop-categories' => 'تصنيفات',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -183,6 +199,13 @@ $messages['lb'] = array(
 	'catboxattop-categories' => 'Kategorien',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'catboxattop-categories' => 'Neneuhcāyōtl',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -249,6 +272,13 @@ $messages['te'] = array(
  */
 $messages['vi'] = array(
 	'catboxattop-categories' => 'Thể loại',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'catboxattop-categories' => '页面分类',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -118,6 +118,18 @@ $messages['bs'] = array(
 	'specialwhoiswatchingaddbtn' => 'Dodaj odabrane korisnike',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'whoiswatching' => 'Kdo sleduje wiki stránku',
+	'whoiswatching-desc' => 'Poskytuje seznam uživatelů, kteří sledují určitou wiki stránku',
+	'specialwhoiswatchingthepage' => 'Kdo sleduje %s',
+	'specialwhoiswatchingusage' => 'Tuto speciální stránku není možné používat samostatně. Prosím pužijte [[MediaWiki:Number_of_watching_users_pageview]] pro definování vstupního bodu na tuto stránku.',
+	'specialwhoiswatchingaddusers' => 'Přidat uživatele sledující stránku',
+	'specialwhoiswatchingaddbtn' => 'Přidat zvolené uživatele',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Purodha
@@ -174,8 +186,10 @@ $messages['es'] = array(
  * @author Nike
  * @author Silvonen
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
+	'whoiswatching' => 'Kuka on tarkkailemassa wiki-sivua',
 	'whoiswatching-desc' => 'Mahdollistaa wikisivun tarkkailijoidan listauksen.',
 	'specialwhoiswatchingthepage' => 'Kuka tarkkailee sivua %s',
 	'specialwhoiswatchingaddbtn' => 'Lisää valitut käyttäjät',
@@ -393,6 +407,14 @@ $messages['mr'] = array(
 	'specialwhoiswatchingaddbtn' => 'निवडलेले सदस्य वाढवा',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'whoiswatching' => 'Āquin tēcchiya huiqui zāzanilli',
+	'specialwhoiswatchingthepage' => 'Āquin tēchiya %',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -549,6 +571,18 @@ $messages['sv'] = array(
 Använd [[MediaWiki:Number_of_watching_users_pageview]] för att ange en ingång till denna specialsida.',
 	'specialwhoiswatchingaddusers' => 'Lägg till användare som bevakare av sidan',
 	'specialwhoiswatchingaddbtn' => 'Lägg till valda',
+);
+
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'whoiswatching' => 'Fto filuje w ta zajta',
+	'whoiswatching-desc' => 'Pokozuje lista użytkowńikůw kere majům ta zajta we zajtach na kere dowajům pozůr',
+	'specialwhoiswatchingthepage' => 'Fto filuje we %s',
+	'specialwhoiswatchingusage' => 'Ta ekstra zajta ńy może być użyto sama. Skorzistej ze zajty [[MediaWiki:Number_of_watching_users_pageview]], coby zdefińjować půnkt sztartowy lů tyj zajty.',
+	'specialwhoiswatchingaddusers' => 'Dodej użytkowńikůw kere filujům w ta zajta',
+	'specialwhoiswatchingaddbtn' => 'Dodej wybranych użytkowńikůw',
 );
 
 /** Telugu (తెలుగు)

@@ -22,6 +22,15 @@ $messages['qqq'] = array(
 	'authors-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'authors-desc' => 'يلحق قائمة بالمساهمين للصفحات',
+	'authors_authors' => 'المؤلفون',
+	'authors_anonymous' => 'المجهولون',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ramsis II
  */
@@ -187,6 +196,13 @@ $messages['lb'] = array(
 	'authors_anonymous' => 'Anonym',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'authors_anonymous' => 'Ahtōcāitl',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -266,6 +282,14 @@ $messages['tl'] = array(
 $messages['vi'] = array(
 	'authors_authors' => 'Tác giả',
 	'authors_anonymous' => 'Vô danh',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'authors_authors' => '作者',
+	'authors_anonymous' => '匿名',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

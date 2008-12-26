@@ -65,9 +65,12 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Revolus
  */
 $messages['de'] = array(
+	'multiboilerplate-desc' => 'Ermöglicht während der Seitenbearbeitung, eine Textvorlage aus der Auswahlbox über dem Bearbeitungsformular auszuwählen',
+	'multiboilerplate-legend' => 'Textvorlage auswählen',
 	'multiboilerplate-submit' => 'Laden',
 );
 
@@ -158,6 +161,13 @@ $messages['ia'] = array(
 	'multiboilerplate-desc' => 'Permitte seliger un modello de texto ab un quadro disrolante situate super le formulario pro modificar paginas',
 	'multiboilerplate-legend' => 'Seliger modello',
 	'multiboilerplate-submit' => 'Cargar',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'multiboilerplate-submit' => 'ロード',
 );
 
 /** Javanese (Basa Jawa)

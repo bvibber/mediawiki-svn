@@ -40,6 +40,26 @@ $messages['qqq'] = array(
 	'amazonplus-desc' => 'A short description of this extension. Shown in [[Special:Version]]. Do not translate links.',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'amazonplus-desc' => 'امتداد عالي القابلية للتخصيص لعرض معلومات أمازون',
+	'amazonplus-nores' => '! خطأ: لم يتم العثور على نتائج',
+	'amazonplus-noidres' => 'خطأ: تعذر إيجاد هوية منتج!',
+	'amazonplus-fgcerr' => 'خطأ: تعذر جلب بيانات من أمازون!',
+	'amazonplus-slserr' => 'خطأ: تعذر تحليل بيانات من أمازون!',
+	'amazonplus-used' => 'مستعمل',
+	'amazonplus-german' => 'ألمانية',
+	'amazonplus-french' => 'فرنسية',
+	'amazonplus-japanese' => 'يابانية',
+	'amazonplus-amazon' => 'سعر أمازون',
+	'amazonplus-new' => 'جديد',
+	'amazonplus-none' => 'لا نُسخ من هذا العنصر معروضة للبيع.',
+	'amazonplus-cp-none' => 'لا شيء',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -70,6 +90,24 @@ $messages['bs'] = array(
 	'amazonplus-new' => 'novo',
 	'amazonplus-none' => 'Nijedna kopija ovog predmeta nije trenutno na prodaju.',
 	'amazonplus-cp-none' => 'Ništa',
+);
+
+/** Cebuano (Cebuano)
+ * @author Wrightbus
+ */
+$messages['ceb'] = array(
+	'amazonplus-german' => 'Inaleman',
+	'amazonplus-french' => 'Prinanses',
+	'amazonplus-japanese' => 'Hinapon',
+);
+
+/** Czech (Česky)
+ * @author Wrightbus
+ */
+$messages['cs'] = array(
+	'amazonplus-german' => 'Němčina',
+	'amazonplus-french' => 'Francouzština',
+	'amazonplus-japanese' => 'Japonština',
 );
 
 /** German (Deutsch)
@@ -122,6 +160,28 @@ $messages['eo'] = array(
 	'amazonplus-cp-none' => 'Nenia',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Mobe
+ * @author Nike
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'amazonplus-desc' => 'Helposti mukautuva laajennos Amazon-tietojen näyttämiseen.',
+	'amazonplus-nores' => 'Tuloksia ei löytynyt.',
+	'amazonplus-noidres' => 'Virhe: Tuotteen tunnusta ei löydetty.',
+	'amazonplus-fgcerr' => 'Virhe: Tietojen hakeminen Amazonista epäonnistui.',
+	'amazonplus-slserr' => 'Virhe: Amazonista saadun vastauken jäsentäminen epäonnistui.',
+	'amazonplus-used' => 'käytetty',
+	'amazonplus-german' => 'Saksankielinen',
+	'amazonplus-french' => 'Ranskankielinen',
+	'amazonplus-japanese' => 'Japaninkielinen',
+	'amazonplus-amazon' => 'amazonin hinta',
+	'amazonplus-new' => 'uusi',
+	'amazonplus-none' => 'Tätä tuotetta ei ole yhtään kappaletta myytävänä.',
+	'amazonplus-cp-none' => 'Ei mitään',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -158,6 +218,14 @@ $messages['gl'] = array(
 	'amazonplus-new' => 'novo',
 	'amazonplus-none' => 'Non hai dispoñibles para a venda copias deste produto.',
 	'amazonplus-cp-none' => 'Ningún',
+);
+
+/** Manx (Gaelg)
+ * @author Wrightbus
+ */
+$messages['gv'] = array(
+	'amazonplus-german' => 'Germaanish',
+	'amazonplus-french' => 'Frangish',
 );
 
 /** Hebrew (עברית)
@@ -263,11 +331,40 @@ $messages['km'] = array(
 	'amazonplus-cp-none' => 'គ្មាន',
 );
 
+/** Korean (한국어)
+ * @author Wrightbus
+ */
+$messages['ko'] = array(
+	'amazonplus-german' => '독일어',
+	'amazonplus-french' => '프랑스어',
+	'amazonplus-japanese' => '일본어',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
 	'amazonplus-desc' => 'Dä Zosatz met ööhndlesch Müjjeleschkeite zom Enstelle zeijsch Date fun <i lang="en">Amazon</i> aan.',
+	'amazonplus-nores' => 'Ene Fäähler es opjetrodde. Kei Äjeebnis jefonge!',
+	'amazonplus-noidres' => 'Ene Fäähler es opjetrodde. De Produknommer vun <i lang="en">Amazon</i> wohr nit ze fenge!',
+	'amazonplus-fgcerr' => 'Ene Fäähler es opjetrodde. Mer han kei Date vun <i lang="en">Amazon</i> kräje!',
+	'amazonplus-slserr' => 'Ene Fäähler es opjetrodde. De Date vun <i lang="en">Amazon</i> wohre för nix joot!',
+	'amazonplus-used' => 'jebruch',
+	'amazonplus-german' => 'Dütsch',
+	'amazonplus-french' => 'Franzüsesch',
+	'amazonplus-japanese' => 'Japanesch',
+	'amazonplus-amazon' => 'dä Priiß bei <i lang="en">Amazon</i>',
+	'amazonplus-new' => 'neu',
+	'amazonplus-status' => '($1)',
+	'amazonplus-status-sep' => ',',
+	'amazonplus-none' => 'Et es jraad kei Stöck dovun em Aanjebott.',
+	'amazonplus-currency' => '$3$1 $2$4',
+	'amazonplus-cp-none' => 'Nix',
+	'amazonplus-cp-usd' => 'USD',
+	'amazonplus-cp-cad' => 'CAD',
+	'amazonplus-cp-gbp' => 'GBP',
+	'amazonplus-cp-eur' => 'EUR',
+	'amazonplus-cp-jpy' => 'JPY',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -287,6 +384,15 @@ $messages['lb'] = array(
 	'amazonplus-new' => 'nei',
 	'amazonplus-none' => 'Keng Kopie vun dësem Artikel ass ze verkafen',
 	'amazonplus-cp-none' => 'Keng',
+);
+
+/** Limburgish (Limburgs)
+ * @author Wrightbus
+ */
+$messages['li'] = array(
+	'amazonplus-german' => 'Duits',
+	'amazonplus-french' => 'Frans',
+	'amazonplus-japanese' => 'Japans',
 );
 
 /** Malay (Bahasa Melayu)
@@ -460,10 +566,48 @@ $messages['te'] = array(
 	'amazonplus-japanese' => 'జపనీస్',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Wrightbus
+ */
+$messages['vi'] = array(
+	'amazonplus-german' => 'Tiếng Đức',
+	'amazonplus-french' => 'Tiếng Pháp',
+	'amazonplus-japanese' => 'Tiếng Nhật',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hans'] = array(
+	'amazonplus-german' => '德语',
+	'amazonplus-french' => '法语',
+	'amazonplus-japanese' => '日语',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'amazonplus-used' => '二手',
+	'amazonplus-german' => '德語',
+	'amazonplus-french' => '法語',
+	'amazonplus-japanese' => '日語',
+	'amazonplus-new' => '全新',
+);
+
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Wrightbus
+ */
+$messages['zh-hk'] = array(
+	'amazonplus-german' => '德語',
+	'amazonplus-french' => '法語',
+	'amazonplus-japanese' => '日語',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Wrightbus
+ */
+$messages['zh-tw'] = array(
 	'amazonplus-german' => '德語',
 	'amazonplus-french' => '法語',
 	'amazonplus-japanese' => '日語',

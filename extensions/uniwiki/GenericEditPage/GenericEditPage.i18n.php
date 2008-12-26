@@ -44,19 +44,34 @@ Do not translate or change links.',
 	'gep-addsectionbutton' => '{{Identical|Add}}',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'gep-categories' => 'መደቦች',
+);
+
 /** Arabic (العربية)
+ * @author OsamaK
  * @author Ouda
  * @author ترجمان05
  */
 $messages['ar'] = array(
+	'gep-emailsubject' => '[$1] اقتراح التصنيف: $2',
 	'gep-emailfailure' => 'للأسف ، أقتراحك لا يمكن أن يتم',
+	'gep-emailsuccess' => 'شكرا لاقتراح التصنيف: $1.',
 	'gep-categories' => 'تصنيفات',
+	'gep-addcategory' => 'إضافة تصنيف',
 	'gep-addcategorybutton' => 'أضف',
 	'gep-suggestcategory' => 'أقترح تصنيف',
 	'gep-suggestcategorybutton' => 'تنفيذ',
 	'gep-sections' => 'أقسام',
+	'gep-sectionnotdisabled' => 'هذا القسم لا يمكن أن يعطّل',
 	'gep-addsection' => 'أضف قسم',
 	'gep-addsectionbutton' => 'أضف',
+	'gep-classicmode' => 'النمط التقليدي',
+	'gep-genericmode' => 'النمط العام',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -146,6 +161,7 @@ Gib ein paar ein mit den Werkzeugen an der rechten Seite.',
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'gep-desc' => 'Plifunkcias la redakto-paĝon por esti pli afabla',
 	'gep-emailsubject' => '[$1] Kategoria sugesto: $2',
 	'gep-emailbody' => 'Uzanto "$1" sugestis kategorion "$2" por vikio "$3".',
 	'gep-emailfailure' => 'Bedaŭrinde via sugesto ne eblis esti procesita.',
@@ -154,6 +170,7 @@ $messages['eo'] = array(
 	'gep-addcategory' => 'Aldoni kategorion',
 	'gep-addcategorybutton' => 'Aldoni',
 	'gep-suggestcategory' => 'Sugesti kategorion',
+	'gep-suggestcategorybutton' => 'Enigi',
 	'gep-sections' => 'Sekcioj',
 	'gep-addsection' => 'Aldoni sekcion',
 	'gep-addsectionbutton' => 'Aldoni',
@@ -296,6 +313,32 @@ $messages['hsb'] = array(
 	'gep-nosectioninstructions' => 'Na tutej stronje wotrězki njejsu.
 Přidaj někotre z pomocu nastrojow naprawo.',
 	'gep-nocategories' => 'Prošu wubjer znajmjeńša jednu kategoriju do składowanja.',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'gep-desc' => 'Felhasználóbarátabbá teszi a szerkesztőlapot',
+	'gep-emailsubject' => '[$1] Kategóriaajánlás: $2',
+	'gep-emailbody' => '"$1" a(z) "$2" kategóriát ajánlotta a(z) "$3" oldalon.',
+	'gep-emailfailure' => 'Sajnáljuk, az ajánlatodat nem sikerült feldolgozni.',
+	'gep-emailsuccess' => 'Köszönjük a kategóriaajánlót: $1.',
+	'gep-categories' => 'Kategóriák',
+	'gep-addcategory' => 'Kategória hozzáadása',
+	'gep-addcategorybutton' => 'Hozzáadás',
+	'gep-suggestcategory' => 'Kategória ajánlása',
+	'gep-suggestcategorybutton' => 'Elküldés',
+	'gep-sections' => 'Fejezetek',
+	'gep-sectionnotdisabled' => 'Ezt a fejezetet nem lehet letiltani',
+	'gep-addsection' => 'Fejezet hozzáadása',
+	'gep-addsectionbutton' => 'Hozzáadás',
+	'gep-classicmode' => 'Klasszikus mód',
+	'gep-genericmode' => 'Általános mód',
+	'gep-nosectioninstructions' => 'Ezen a lapon még nincsenek fejezetek.
+A jobboldali eszközök segítségével adhatsz hozzá újakat.',
+	'gep-nocategories' => 'Mielőtt elmentenéd a lapot, kérlek válassz ki legalább egy kategóriát',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
@@ -612,6 +655,7 @@ $messages['te'] = array(
 	'gep-suggestcategory' => 'ఒక వర్గాన్ని సూచించండి',
 	'gep-suggestcategorybutton' => 'దాఖలుచెయ్యి',
 	'gep-sections' => 'విభాగాలు',
+	'gep-addsection' => 'ఒక విభాగాన్ని చేర్చండి',
 	'gep-addsectionbutton' => 'చేర్చు',
 	'gep-nosectioninstructions' => 'ఈ పేజీలో విభాగాలేమీ లేవు.
 కుడివైపునున్న పనిముట్లని ఉపయోగించి కొన్ని చేర్చండి.',
@@ -629,6 +673,18 @@ $messages['vi'] = array(
 	'gep-sections' => 'Đoạn',
 	'gep-addsection' => 'Thêm đoạn',
 	'gep-addsectionbutton' => 'Thêm',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'gep-categories' => '页面分类',
+	'gep-addcategory' => '增加一个分类',
+	'gep-addcategorybutton' => '增加',
+	'gep-suggestcategorybutton' => '提交',
+	'gep-addsection' => '增加一个段落',
+	'gep-addsectionbutton' => '增加',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

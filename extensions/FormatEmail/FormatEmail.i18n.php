@@ -67,10 +67,14 @@ $2',
 );
 
 /** Czech (Česky)
+ * @author Matěj Grabovský
  * @author Mormegil
  */
 $messages['cs'] = array(
 	'email-desc' => 'Umožňuje přidávat do e-mailů uživatelům vlastní hlavičky a patičky',
+	'email_footer' => 'Tento email vám poslal/a $1  pomocí emailového systému {{grammar:2sg|{{SITENAME}}}}.
+
+$2',
 );
 
 /** German (Deutsch) */
@@ -122,6 +126,17 @@ $messages['fa'] = array(
 	'email-desc' => 'امکان افزودن سربرگ‌ها/پانویس‌های شخصی شده به نامه‌های الکترونیکی کاربر به کاربر را فراهم می‌کند.',
 	'email_footer' => '----------------------------------------------------------------------------
 این نامه از طریق سامانه پست الکترونیکی {{SITENAME}} توسط $1 برای شما ارسال شده‌است.
+
+$2',
+);
+
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'email-desc' => 'Mahdollistaa ylä- ja alatunnisteiden lisäämisen käyttäjän sähköposteihin.',
+	'email_footer' => '----------------------------------------------------------------------------
+$1 on lähettänyt tämän sähköpostin sinulle {{GRAMMAR:elative|{{SITENAME}}}}.
 
 $2',
 );
@@ -458,6 +473,17 @@ $2',
  */
 $messages['tg-cyrl'] = array(
 	'email_footer' => 'Ин номаи электронӣ ба шумо тариқи системеи почтаи электронии {{SITENAME}} тавассути $1 фиристода шуд.
+
+$2',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'email-desc' => 'Дозволяє додавати свої власні шапку або закінчення до листів від учасника до учасника',
+	'email_footer' => '----------------------------------------------------------------------------
+Це повідомлення було надіслано через сайт {{SITENAME}} користувачем $1.
 
 $2',
 );

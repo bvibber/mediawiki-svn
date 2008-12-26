@@ -469,6 +469,7 @@ Palaa takaisin:
 * [[$2]].",
 	'crosswikiblock-dbnotfound' => 'Tietokantaa $1 ei ole',
 	'crosswikiblock-nouser' => 'Käyttäjää ”$3” ei löydy.',
+	'crosswikiblock-noexpiry' => 'Virheellinen vanhenemisaika $1.',
 	'crosswikiblock-alreadyblocked' => 'Käyttäjä $3 on jo estetty.',
 	'crosswikiblock-noblock' => 'Käyttäjää ei ole estetty.',
 	'crosswikiblock-success' => "Käyttäjä '''$3''' estettiin.
@@ -859,6 +860,7 @@ Torna a:
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -893,7 +895,7 @@ $messages['ja'] = array(
 	'crosswikiblock-noexpiry' => '不正な期限指定です: $1',
 	'crosswikiblock-noreason' => '理由が記入されていません。',
 	'crosswikiblock-notoken' => '編集トークンが不正です。',
-	'crosswikiblock-alreadyblocked' => '利用者 $3 は、既にブロックされています。',
+	'crosswikiblock-alreadyblocked' => '利用者 $3 は既にブロックされています。',
 	'crosswikiblock-noblock' => 'この利用者は、ブロックされていません。',
 	'crosswikiblock-success' => "利用者 '''$3''' をブロックしました。
 

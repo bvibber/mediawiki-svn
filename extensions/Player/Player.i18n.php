@@ -142,6 +142,17 @@ $messages['bg'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'player' => 'Svirač',
+	'player-desc' => 'Uključuje multimedijalni preglednik koji koristi uobičajene plugin-e preglednika i [[Special:Player|posebnu stranicu]]',
+	'player-title' => 'Svirač',
+	'player-playertitle' => 'Svirač: $1',
+	'player-file' => 'Naziv datoteke',
+	'player-play' => 'Sviraj',
+	'player-not-allowed' => 'nedopušteni format',
+	'player-not-found' => 'datoteka nije nađena',
+	'player-invalid-title' => 'nevaljan naslov',
+	'player-clicktoplay' => 'Reproduciraj $1',
+	'player-goto-player' => 'svirač',
 	'player-goto-page' => 'Stranica',
 	'player-goto-file' => 'datoteka',
 );

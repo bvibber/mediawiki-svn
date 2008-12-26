@@ -176,6 +176,8 @@ $messages['eo'] = array(
 	'tasklistincorrectuser' => 'Malkorekta salutnomo',
 	'tasklistemail' => 'Kara %j',
 	'tasklistmytasks' => 'Miaj taskoj',
+	'tasklistbyprojectbad' => "Projekto '''%s''' ne estas valida projekto.
+Por listo de validaj projektoj, vidu [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Asignitaj taskoj por '''%s'''",
 	'tasklistchooseproj' => 'Selektu Projekton:',
 	'tasklistprojdisp' => 'Montri',
@@ -799,6 +801,7 @@ Från %ss meddelningssystem.',
 $messages['te'] = array(
 	'tasklist' => 'పనుల జాబితా',
 	'tasklistbyproject' => 'ప్రాజెక్టులవారీగా పనుల జాబితా',
+	'tasklistunknownproject' => 'తెలియని ప్రాజెక్టు',
 	'tasklistincorrectuser' => 'తప్పుడు వాడుకరిపేరు',
 	'tasklistemail' => 'ప్రియమైన %s',
 	'tasklistmytasks' => 'నా పనులు',
@@ -854,6 +857,13 @@ $messages['zh-cn'] = array(
 	'tasklistchooseproj' => '选取专案：',
 	'tasklistprojdisp' => '显示',
 	'tasklistbyname' => '==  名称为「%s」的任务 ==',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'tasklistincorrectuser' => '用户名不正确',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -58,10 +58,11 @@ $messages['bcc'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'oai-desc' => 'Надае інтэрфэйс сховішчу [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oai-desc' => 'Дадае інтэрфэйс да сховішча [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
 /** Bosnian (Bosanski)

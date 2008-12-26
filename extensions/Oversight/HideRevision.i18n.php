@@ -1799,6 +1799,8 @@ $messages['ko'] = array(
 	'hiderevision-noreason' => '숨기는 이유를 반드시 입력해야 합니다.',
 	'hiderevision-status' => '$1판: $2',
 	'hiderevision-success' => '문서가 성공적으로 삭제되어 보존되었습니다.',
+	'hiderevision-error-current' => '이 문서의 마지막 편집을 삭제할 수 없습니다.
+이 편집을 먼저 되돌리십시오.',
 	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',
 	'oversight' => '오버사이트',
 	'oversight-view' => '내용 보기',
@@ -3096,6 +3098,7 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Aleksandrit
  */
 $messages['uk'] = array(
 	'hiderevision' => 'Приховати версії',
@@ -3117,6 +3120,7 @@ $messages['uk'] = array(
 	'hiderevision-reason' => 'Причина (буде записана в закритий журнал):',
 	'hiderevision-submit' => 'Приховати ці дані',
 	'hiderevision-tab' => 'Приховати версію',
+	'hiderevision-link' => 'Прихований внесок користувача',
 	'hiderevision-norevisions' => 'Не були зазначені версії для приховування.',
 	'hiderevision-noreason' => 'Ви повинні написати причину приховування.',
 	'hiderevision-status' => 'Версія №$1: $2',
@@ -3138,6 +3142,8 @@ $messages['uk'] = array(
 	'oversight-header' => 'Нижче наведені версії, які нещодавно були приховані.
 Розповсюдження цієї інформації може спричинити позбавлення прав ревізора.',
 	'oversight-legend' => 'Пошук по журналі приховання редагувань',
+	'oversight-oversighter' => 'Ревізор:',
+	'oversight-offender' => 'Порушник:',
 );
 
 /** Vèneto (Vèneto)

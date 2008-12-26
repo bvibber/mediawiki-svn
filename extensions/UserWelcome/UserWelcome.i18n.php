@@ -38,6 +38,7 @@ Do not translate tags names, and links targets.',
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'userwelcome-desc' => 'يضيف وسم <tt>&lt;welcomeUser&gt;</tt> لعرض معلومات اجتماعية خاصة بالمستخدم للمستخدمين المسجلين',
@@ -45,7 +46,7 @@ $messages['ar'] = array(
 	'mp-welcome-upload' => 'رفع',
 	'mp-welcome-edit' => 'عدل',
 	'mp-welcome-points' => '$1 نقطة',
-	'mp-welcome-needed-points' => 'للتقدم إلى <b><a href="$1">$2</a></b> احصل على <i>$3</i> المزيد من النقاط!',
+	'mp-welcome-needed-points' => 'للتقدم <b><a href="$1">$2</a></b> لاستحقاق {{PLURAL:$3|نقطة|<i>$3</i> نقاط}} إضافية!',
 	'mp-welcome-logged-in' => 'مرحبا $1',
 	'mp-requests-title' => 'طلبات',
 	'mp-requests-message' => 'لديك الطلبات التالية.',
@@ -114,6 +115,26 @@ $messages['bs'] = array(
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|novi poklon|nova poklona|novih poklona}}',
 	'mp-request-new-foe' => '$1 {{PLURAL:$1|novi neprijatelj|nova neprijatelja|novih neprijatelja}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|novi prijatelja|nova prijatelja|novih prijatelja}}',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'userwelcome-desc' => 'Přidává značku <tt>&lt;welcomeUser&gt;</tt> pro zobrazování sociálních informací specifických pro uživatele (pro přihlášené uživatele)',
+	'mp-userlevels-link' => 'Urovně uživatelů',
+	'mp-welcome-upload' => 'Nahrát soubor',
+	'mp-welcome-edit' => 'Upravit',
+	'mp-welcome-points' => '$1 {{PLURAL:$1|bod|body|bodů}}',
+	'mp-welcome-needed-points' => 'Abyste postoupili na <b><a href="$1">$2</a></b>, udělejte ještě <i>$3</i> {{PLURAL:$3|bod|body|bodů}}!',
+	'mp-welcome-logged-in' => 'Ahoj $1',
+	'mp-requests-title' => 'Požadavky',
+	'mp-requests-message' => 'Máte následující požadavky.',
+	'mp-request-new-message' => 'nová zpráva',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|nové ocenění|nová ocenění|nových ocenění}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|nový dárek|nové dárky|nových dárků}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|nový nepřítel|noví nepřátelé|nových nepřátel}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|nový přítel|noví přátelé|nových přátel}}',
 );
 
 /** German (Deutsch)
@@ -422,6 +443,15 @@ $messages['mk'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|нов пријател|нови пријатели}}',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'mp-welcome-upload' => 'Titlaquetzāz',
+	'mp-welcome-edit' => 'Ticpatlāz',
+	'mp-welcome-logged-in' => 'Niltze $1',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -631,6 +661,26 @@ $messages['sv'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|ny vän|nya vänner}}',
 );
 
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'userwelcome-desc' => 'Dodej <tt>&lt;welcomeUser&gt;</tt> tag do pokozańo dedykowanym specyficznymu użytkowńikowi informacyjům socyjolnym lů zalogowanych użytkowńikůw',
+	'mp-userlevels-link' => 'Poźůmy użytkowńika',
+	'mp-welcome-upload' => 'Wćepńij',
+	'mp-welcome-edit' => 'Sprowjej',
+	'mp-welcome-points' => '$1 půnktůw',
+	'mp-welcome-needed-points' => 'Coby przyńść ku <b><a href="$1">$2</a></b> zdobůńdź <i>$3</i> wjyncyj {{PLURAL:$3|půnkt|půnktůw}}!',
+	'mp-welcome-logged-in' => 'Witej $1',
+	'mp-requests-title' => 'Żůndańo',
+	'mp-requests-message' => 'Mosz nastympujůnce żůndańa.',
+	'mp-request-new-message' => 'nowo wjadůmość',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|nowo nadgroda|nowe nadgrody}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|nowy geszynk|nowe geszynki}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|nowy przećiwńik|nowe przećiwńiki}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|nowy przijaćel|nowych przijaćeli}}',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -715,13 +765,25 @@ $messages['wo'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|xarit bu bees|xarit yu yees}}',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'mp-welcome-upload' => '上传',
+	'mp-welcome-edit' => '编辑',
+	'mp-welcome-logged-in' => '$1，您好',
+	'mp-requests-message' => '您有以下请求：',
+	'mp-request-new-message' => '新信息',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'mp-welcome-upload' => '上載',
 	'mp-welcome-edit' => '編輯',
-	'mp-welcome-logged-in' => '$1您好',
+	'mp-welcome-logged-in' => '$1，您好',
 	'mp-requests-title' => '請求',
 	'mp-requests-message' => '您有以下請求。',
 	'mp-request-new-message' => '新訊息',

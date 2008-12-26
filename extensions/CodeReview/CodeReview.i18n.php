@@ -181,6 +181,8 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'code-rev-message' => 'ማጠቃለያ:',
+	'code-status-new' => 'አዲስ',
 	'code-status-ok' => 'እሺ',
 	'repoadmin-edit-button' => 'እሺ',
 );
@@ -250,11 +252,13 @@ $4',
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'code' => 'مراجعة الكود',
 	'code-comments' => 'ملاحظات المراجعة',
 	'code-change-status' => "غير '''حالة''' هذه المراجعة",
+	'code-change-tags' => "غيّر '''الوسوم''' لهذه المراجعة",
 	'code-change-removed' => 'أزال:',
 	'code-change-added' => 'أضاف:',
 	'code-prop-changes' => 'سجل الحالة والوسم',
@@ -313,8 +317,8 @@ $messages['ar'] = array(
 	'code-status-deferred' => 'مؤجل',
 	'code-pathsearch-legend' => 'ابحث في النسخ في هذا المستودع بواسطة المسار',
 	'code-pathsearch-path' => 'المسار:',
-	'code-rev-submit' => 'تنفيذ التغييرات',
-	'code-rev-submit-next' => 'تنفيذ والقادم غير محلول',
+	'code-rev-submit' => 'حفظ التغييرات',
+	'code-rev-submit-next' => 'حفظ وغير المحلولة التالية',
 	'codereview-reply-link' => 'رد',
 	'codereview-email-subj' => '[$1] [r$2]: تعليق جديد تمت إضافته',
 	'codereview-email-body' => 'المستخدم "$1" كتب تعليقا على r$3.
@@ -1867,9 +1871,11 @@ $messages['hu'] = array(
 	'code-change-added' => 'hozzáadva:',
 	'code-prop-changes' => 'Állapot & címkézési napló',
 	'code-desc' => '[[Special:Code|Kódellenőrző eszköz]] [[Special:RepoAdmin|Subversion-támogatással]]',
-	'code-no-repo' => 'Nincs repository beállítva!',
+	'code-no-repo' => 'Nincs kódtárhely beállítva!',
+	'code-notes' => 'hozzászólások áttekintése',
 	'code-authors' => 'szerzők',
 	'code-tags' => 'címkék',
+	'code-authors-text' => 'Ezen a lapon a tárhelyhez tartozó szerzők láthatóak a legutóbbi elküldések alapján rendezve.',
 	'code-author-haslink' => 'Ez a szerző megegyezi a wiki $1 nevű szerkesztőjével',
 	'code-author-orphan' => 'Ez a szerkesztő nem rendelkezik felhasználói fiókkal ezen a wikin',
 	'code-author-dolink' => 'Szerző összekapcsolása a wiki egyik szerkesztőjével:',
@@ -1879,12 +1885,17 @@ $messages['hu'] = array(
 	'code-author-success' => '$1 össze lett kapcsolva a wiki $2 nevű szerkesztőjével',
 	'code-field-id' => 'Változat',
 	'code-field-author' => 'Szerző',
-	'code-field-message' => 'Megjegyzés',
+	'code-field-user' => 'Hozzászóló',
+	'code-field-message' => 'Összefoglaló',
 	'code-field-status' => 'Állapot',
 	'code-field-timestamp' => 'Időpont',
 	'code-field-comments' => 'Hozzászólások',
+	'code-field-path' => 'Elérési út',
+	'code-field-text' => 'Megjegyzés',
 	'code-rev-author' => 'Szerző:',
+	'code-rev-date' => 'Dátum:',
 	'code-rev-message' => 'Megjegyzés:',
+	'code-rev-repo' => 'Kódtárhely:',
 	'code-rev-rev' => 'Változat:',
 	'code-rev-rev-viewvc' => 'a ViewVC-n',
 	'code-rev-paths' => 'Módosított elemek:',
@@ -1902,22 +1913,43 @@ $messages['hu'] = array(
 	'code-rev-comment-preview' => 'Előnézet',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-purge-link' => 'frissítés',
 	'code-status-new' => 'új',
 	'code-status-fixme' => 'javítandó',
 	'code-status-reverted' => 'visszaállítva',
 	'code-status-resolved' => 'javítva',
 	'code-status-ok' => 'rendben',
 	'code-status-deferred' => 'halasztva',
+	'code-pathsearch-legend' => 'Változatok keresése elérési út alapján',
+	'code-pathsearch-path' => 'Elérési út:',
 	'code-rev-submit' => 'Változások elmentése',
 	'code-rev-submit-next' => 'Mentés & ugrás a következőre',
 	'codereview-reply-link' => 'válasz',
+	'codereview-email-subj' => '[$1] [r$2]: Új hozzászólás',
+	'codereview-email-body' => '„$1” új hozzászólást fűzött az r$3 változathoz.
+
+Teljes cím: $2
+
+Hozzászólás:
+
+$4',
 	'repoadmin' => 'Tárhelyadminisztráció',
 	'repoadmin-new-legend' => 'Új tárhely készítése',
 	'repoadmin-new-label' => 'Tárhely neve:',
+	'repoadmin-new-button' => 'Elkészítés',
+	'repoadmin-edit-legend' => 'A(z) „$1” kódtárhely módosítása',
+	'repoadmin-edit-path' => 'Kódtárhely elérési útja:',
+	'repoadmin-edit-bug' => 'Elérési út a Bugzillán:',
+	'repoadmin-edit-view' => 'Elérési út a ViewVC-n:',
+	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'A(z) „[[Special:Code/$1|$1]]” kódtárhely sikeresen módosítva.',
+	'right-repoadmin' => 'kódtárhelyek beállítása',
 	'right-codereview-add-tag' => 'új címkék hozzáadása az egyes változatokhoz',
 	'right-codereview-remove-tag' => 'címkék eltávolítása változatokról',
 	'right-codereview-post-comment' => 'hozzászólás az egyes változatokhoz',
 	'right-codereview-set-status' => 'változat állapotának megváltoztatása',
+	'right-codereview-link-user' => 'szerzők összekapcsolása a wiki szerkesztőivel',
+	'specialpages-group-developer' => 'Fejlesztői eszközök',
 );
 
 /** Interlingua (Interlingua)
@@ -2243,6 +2275,7 @@ $messages['ko'] = array(
 	'code-rev-repo' => '저장소:',
 	'code-rev-modified-d' => '삭제됨',
 	'code-rev-modified-m' => '수정됨',
+	'code-rev-status' => '상태:',
 	'code-rev-comment-by' => '$1의 의견',
 	'code-rev-comment-preview' => '미리 보기',
 	'code-rev-diff' => '차이',
@@ -2441,6 +2474,48 @@ $4',
 	'right-codereview-set-status' => 'Ännere vum Status vun de Versiounen',
 	'right-codereview-link-user' => 'Auteure mat Wiki-Benotzer verbannen (verlinken)',
 	'specialpages-group-developer' => 'Handwierksgeschir fir Entwéckler (Programméierer)',
+);
+
+/** Macedonian (Македонски)
+ * @author Brest
+ */
+$messages['mk'] = array(
+	'code-comments' => 'Забелешки',
+	'code-change-removed' => 'избришано:',
+	'code-change-added' => 'додадено:',
+	'code-authors' => 'автори',
+	'code-tags' => 'приврзоци',
+	'code-field-id' => 'Ревизија',
+	'code-field-author' => 'Автор',
+	'code-field-status' => 'Статус',
+	'code-field-timestamp' => 'Датум',
+	'code-field-comments' => 'Белешки',
+	'code-field-path' => 'Пат',
+	'code-field-text' => 'Белешка',
+	'code-rev-author' => 'Автор:',
+	'code-rev-date' => 'Датум:',
+	'code-rev-message' => 'Коментар:',
+	'code-rev-rev' => 'Ревизија:',
+	'code-rev-modified-a' => 'додадено',
+	'code-rev-modified-r' => 'заменето',
+	'code-rev-modified-d' => 'избришано',
+	'code-rev-modified-m' => 'изменето',
+	'code-rev-status' => 'Статус:',
+	'code-rev-status-set' => 'Промени статус',
+	'code-rev-tags' => 'Приврзоци:',
+	'code-rev-tag-add' => 'Додади приврзоци:',
+	'code-rev-tag-remove' => 'Бриши приврзоци:',
+	'code-rev-comment-by' => 'Забелешка од $1',
+	'code-rev-comment-submit' => 'Потврди забелешка',
+	'code-rev-comment-preview' => 'Преглед',
+	'code-rev-diff' => 'Разлика',
+	'code-rev-diff-link' => 'разлика',
+	'code-rev-purge-link' => 'исчисти',
+	'code-status-new' => 'нов',
+	'code-status-fixme' => 'корегирај ме',
+	'code-status-reverted' => 'вратено',
+	'code-status-resolved' => 'разрешено',
+	'code-status-ok' => 'ok',
 );
 
 /** Malay (Bahasa Melayu)
@@ -3830,6 +3905,7 @@ $4',
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Aleksandrit
  */
 $messages['uk'] = array(
 	'code' => 'Перевірка коду',
@@ -3892,6 +3968,36 @@ $messages['uk'] = array(
 	'code-status-resolved' => 'виправлено',
 	'code-status-ok' => 'ОК',
 	'code-status-deferred' => 'відкладено',
+	'code-pathsearch-legend' => 'Пошук в цьому сховищі конкретних редакцій за їх адресою',
+	'code-pathsearch-path' => 'Шлях:',
+	'code-rev-submit' => 'Зберегти зміни',
+	'code-rev-submit-next' => 'Зберегти і показати наступну невирішену',
+	'codereview-reply-link' => 'відповісти',
+	'codereview-email-subj' => '[$1] [r$2]: Доданий новий коментар',
+	'codereview-email-body' => 'Користувач «$1» розмістив коментар до редакції r$3.
+
+Повний URL: $2
+
+Коментар:
+
+$4',
+	'repoadmin' => 'Управління сховищем програмного коду',
+	'repoadmin-new-legend' => 'Створити нове сховище',
+	'repoadmin-new-label' => 'Назва сховища:',
+	'repoadmin-new-button' => 'Створити',
+	'repoadmin-edit-legend' => 'Зміна сховища «$1»',
+	'repoadmin-edit-path' => 'Шлях до сховища:',
+	'repoadmin-edit-bug' => 'Шлях до бази Bugzilla:',
+	'repoadmin-edit-view' => 'Шлях до ViewVC:',
+	'repoadmin-edit-button' => 'Готово',
+	'repoadmin-edit-sucess' => 'Сховище «[[Special:Code/$1|$1]]» успішно змінено.',
+	'right-repoadmin' => 'Управління сховищами кодів',
+	'right-codereview-add-tag' => 'Додавання тегів до редакцій',
+	'right-codereview-remove-tag' => 'Видалення тегів з редакцій',
+	'right-codereview-post-comment' => 'Додавання коментарів до редакцій',
+	'right-codereview-set-status' => 'Зміна статусу редакцій',
+	'right-codereview-link-user' => "Зв'язок авторів з користувачами вікі-проекту",
+	'specialpages-group-developer' => 'Інструменти розробника',
 );
 
 /** Vèneto (Vèneto)

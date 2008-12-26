@@ -44,6 +44,13 @@ $messages['bg'] = array(
 	'woopra-desc' => 'Позволява работата на [http://www.woopra.com/ Woopra Live Tracking Software] в МедияУики',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'woopra-desc' => 'Umožňuje fungování [http://www.woopra.com/ Woopra Live Tracking Software] v rámci vaší wiki',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -254,6 +261,13 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'woopra-desc' => 'Gör att [http://woopra.com/ Woopra Live Tracking Software] fungerar med MediaWiki',
+);
+
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'woopra-desc' => 'Dozwalo wspůłpracować s MediaWiki uoprogramowańu śledzůncymu [http://www.woopra.com/ „Woopra”]',
 );
 
 /** Tagalog (Tagalog)

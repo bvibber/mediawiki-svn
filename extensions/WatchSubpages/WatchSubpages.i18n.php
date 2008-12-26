@@ -234,6 +234,14 @@ Hdyž wjacore strony wubjerješ abo wotwoleš, móžeš z stłóčenej přešalt
  */
 $messages['hu'] = array(
 	'watchsubpages' => 'Allapok figyelése',
+	'watchsubpages-addedtowatchlist' => 'A következő hozzá lett adva a figyelőlistádhoz.',
+	'watchsubpages-addtitles' => 'Lapok hozzáadása',
+	'watchsubpages-addtitlestowatchlist' => 'Lapok hozzáadása a figyelőlistádhoz',
+	'watchsubpages-desc' => 'Egy lap [[Special:WatchSubpages|összes allapjának hozzáadása]] egyszerűen a figyelőlistádhoz',
+	'watchsubpages-form' => 'Válaszd ki a lapokat, amiket hozzá akarsz adni a figyelőlistádhoz.
+Lap hozzáadásához pipáld ki a mellette lévő dobozd, majd kattints a „Lapok hozzáadása” gombra.
+
+Több lap kijelölésekor a shift gomb lenyomásával egyszerre kijelölheted az egymást követő dobozokat, csupán a kijelölés végére kell kattintanod.',
 );
 
 /** Interlingua (Interlingua)
@@ -332,6 +340,14 @@ $messages['mr'] = array(
 	'watchsubpages' => 'उपपाने पहा',
 	'watchsubpages-addtitles' => 'पाने वाढवा',
 	'watchsubpages-addtitlestowatchlist' => 'पृष्ठे पहार्‍याच्या सूचीत टाका',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'watchsubpages-addtitles' => 'Tiquincēntilīz zāzanilli',
+	'watchsubpages-addtitlestowatchlist' => 'Tiquincēntilīz zāzanilli motlachiyalizhuīc',
 );
 
 /** Low German (Plattdüütsch)
@@ -499,6 +515,21 @@ $messages['sv'] = array(
 För att lägga till en sida, markera rutan intill den, och klicka på "Lägg till sidor".
 
 När du markerar eller avmarkerar flera sidor, så kan du markera intilliggande rutor genom att hålla ner shift-tangenten och klicka på den första och sista rutan du vill markera.',
+);
+
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'watchsubpages' => 'Dowej pozůr na podzajty',
+	'watchsubpages-addedtowatchlist' => 'Nastympujůnce zajty zostoły doćepane do Twojij pozorlisty.',
+	'watchsubpages-addtitles' => 'Doćep zajty',
+	'watchsubpages-addtitlestowatchlist' => 'Doćep zajty do pozorlisty',
+	'watchsubpages-desc' => 'Dozwalo na gibke dodowańy [[Special:WatchSubpages|wszyjstkich podzajtůw]] jakijś zajty, do swojij pozorlisty',
+	'watchsubpages-form' => 'Wybjer s listy zajty, kere chcesz doćepać do swojij pozorlisty.
+Coby doćepać zajta, zaznacz pole uobok jeij titla a ńyskorzi klikńij polecyńe "doćep zajty".
+
+Jeli chcesz wybrać wjyncyj jak jedna zajta, możesz użyć przićiska shift, trzimjůnc go klikńij pjyrszo a uostatńo pozycja we raje zajtůw, kere chćołbyś doćepać do pozorlisty.',
 );
 
 /** Telugu (తెలుగు)

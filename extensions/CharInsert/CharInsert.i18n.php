@@ -45,10 +45,11 @@ $messages['ast'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'charinsert-desc' => 'Дазваляе стварыць JavaScript-блёк для [[MediaWiki:Edittools|ўстаўкі нестандартных сымбаляў]]',
+	'charinsert-desc' => 'Дазваляе стварэньне JavaScript-блёку для [[MediaWiki:Edittools|ўстаўкі нестандартных сымбаляў]]',
 );
 
 /** Bulgarian (Български)

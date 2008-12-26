@@ -131,12 +131,15 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'interwikilist' => 'Kieltenvälisten linkkien luettelo',
 	'interwikilist-desc' => 'Lisää [[Special:Interwikilist|toimintosivun]] kieltenvälisten linkkien katselua varten',
 	'interwikilist-linkname' => 'Kieltenvälinen linkki',
 	'interwikilist-target' => 'Kohdeosoite',
+	'interwikilist-filter' => 'Suodatinlista',
+	'interwikilist-prefix' => 'Interwiki-etuliite:',
 );
 
 /** French (Français)

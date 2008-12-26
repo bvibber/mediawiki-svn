@@ -204,6 +204,14 @@ $messages['hsb'] = array(
 	'newuseredit-summary' => 'Přidawa [[{{int:newusermessage-template}}|powitansku powěesć]] k diskusijnej stronje noweho wužiwarja',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'newusermessage-desc' => 'Egy üzenetet helyez el az új szerkesztők vitalapjára',
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Üdvözlő üzenet]] elhelyezése az új szerkesztő vitalapjára',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

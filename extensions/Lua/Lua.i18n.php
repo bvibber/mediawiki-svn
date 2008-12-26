@@ -218,6 +218,20 @@ $messages['hsb'] = array(
 	'lua_overflow_time' => 'Maksimalny čas wuwjedźenja docpěty',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'lua_desc' => 'Kiegészíti a szövegértelmezőt [http://www.lua.org/ Lua] kódok futtatási lehetőségével',
+	'lua_error' => 'Hiba a(z) $1. sorban',
+	'lua_extension_notfound' => 'A Lua kiegészítő nincs beállítva',
+	'lua_interp_notfound' => 'A Lua értelmező nem található',
+	'lua_error_internal' => 'Belső hiba',
+	'lua_overflow_recursion' => 'Rekurziós korlát túllépve',
+	'lua_overflow_loc' => 'A maximális sorok száma túllépve',
+	'lua_overflow_time' => 'Maximális futtatási idő túllépve',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

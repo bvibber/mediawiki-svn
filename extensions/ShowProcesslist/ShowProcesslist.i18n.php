@@ -565,6 +565,8 @@ $messages['pt'] = array(
 $messages['ro'] = array(
 	'showprocesslist-id' => 'ID',
 	'showprocesslist-user' => 'Utilizator',
+	'showprocesslist-command' => 'Comandă',
+	'showprocesslist-time' => 'Timp',
 );
 
 /** Russian (Русский)

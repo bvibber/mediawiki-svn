@@ -263,6 +263,7 @@ Kimenet: $2
 $3',
 	'latexdoc_get_dvi' => 'DVI letöltése',
 	'latexdoc_get_pdf' => 'PDF letöltése',
+	'latexdoc-desc' => 'LaTeX dokumentumok közös szerkesztése',
 );
 
 /** Interlingua (Interlingua)

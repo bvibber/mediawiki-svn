@@ -280,11 +280,32 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Silvonen
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'closewikis-page' => 'Sulje wiki',
 	'closewikis-page-close' => 'Sulje wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Syy (näytetty):',
+	'closewikis-page-close-reason' => 'Syy (kirjattu):',
+	'closewikis-page-close-submit' => 'Sulje',
+	'closewikis-page-close-success' => 'Wiki suljettiin onnistuneesti',
 	'closewikis-page-reopen' => 'Avaa wiki uudestaan',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Syy:',
+	'closewikis-page-reopen-submit' => 'Avaa uudelleen',
+	'closewikis-page-reopen-success' => 'Wiki avattiin onnistuneesti uudelleen',
+	'closewikis-page-err-nowiki' => 'Annettiin epäkelpo wiki',
+	'closewikis-page-err-closed' => 'Wiki on jo suljettu',
+	'closewikis-page-err-opened' => 'Wikiä ei ole suljettu',
+	'closewikis-list' => 'Suljettujen wikien luettelo',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Sulkija:',
+	'closewikis-list-header-dispreason' => 'Näytetty syy',
+	'closewikis-log-close' => 'suljettiin $2',
+	'closewikis-log-reopen' => 'avattiin $2 uudelleen',
+	'right-editclosedwikis' => 'Muokkaa suljettuja wikejä',
+	'right-closewikis' => 'Sulje wikejä',
 );
 
 /** French (Français)

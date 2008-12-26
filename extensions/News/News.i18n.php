@@ -39,7 +39,7 @@ $messages['be-tarask'] = array(
  * @author Melancholie
  */
 $messages['de'] = array(
-	'newsextension-desc' => 'Zeigt angepasste, individuelle "Letzte Änderungen" in einer Seite oder als RSS- oder Atom-Feed.',
+	'newsextension-desc' => 'Zeigt angepasste, individuelle „Letzte Änderungen“ in einer Seite oder als RSS- oder Atom-Feed.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

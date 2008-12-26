@@ -71,6 +71,13 @@ $messages['af'] = array(
 	'review_comment' => 'Opmerking',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'review_comment' => 'ማጠቃለያ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -310,28 +317,32 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Imre
  * @author Leithian
  * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
 	'review_sidebar_title' => 'Prüfung',
-	'review-desc' => 'Das wiederauferstehen [[Special:Review|Validierungswerkzeug]].',
+	'review-desc' => 'Das wiederauferstandene [[Special:Review|Validierungswerkzeug]].',
 	'review_topic_page' => 'Themen prüfen',
-	'review_sidebar_explanation' => 'Das ganz linke Auswahlkästchen bedeutet immer "keine Meinung".',
+	'review_sidebar_explanation' => 'Das ganz linke Auswahlkästchen bedeutet immer „keine Meinung“.',
 	'review_save' => 'Prüfung speichern',
 	'review_your_review' => 'Deine Prüfung dieser Seite/Version:',
 	'review_page_link' => 'Prüfungsstatistiken',
+	'review_sidebar_final' => 'Für die Prüfungsdaten dieser Seite, siehe ihre $1',
 	'review_for_page' => 'Prüfung der Seite „$1“',
-	'review_for_user' => 'Prüfung des Bentzers „$1“',
+	'review_for_user' => 'Prüfung für Benutzer „$1“',
 	'review_error' => 'Irgendetwas stimmt nicht!',
 	'review_no_reviews_for_page' => 'Es gibt derzeit keine Prüfungen für „$1“.',
 	'review_total_statistics' => 'Gesammt',
 	'review_statistics_left_corner' => 'Prüfung',
 	'review_version_link' => 'Prüfung Nr. $1',
-	'review_statistic_cell' => 'Durchschnitt: $1 von $2<br />($4 Benutzer, $5 IPs)',
+	'review_statistic_cell' => 'Durchschnitt: $1 von $2<br />($4 Benutzer, $5 IP-Adressen)',
 	'review_version_statistic_cell' => '$1 von $2',
 	'review_version_reviews_link' => '<small>(Versionsprüfung)</small>',
+	'review_concerns_page' => 'Diese Rezension ist über die Seite "$1".',
+	'review_concerns_user' => 'Dies sind die Rezensionen des Benutzers "$1".',
 	'review_user_reviews' => '<small>(Prüfungen dieses Benutzers)</small>',
 	'review_user_page_list' => 'Dieser Benutzer prüfte auch diese Seiten:',
 	'review_user_details_link' => '(Details)',
@@ -434,6 +445,7 @@ $messages['fa'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'review_total_statistics' => 'Yhteensä',
 	'review_has_been_stored' => "<span id='review_has_been_stored'>Arvostelusi tallennettiin.</span>",
 	'review_blocked' => 'Olet estetty, mene pois.',
 );

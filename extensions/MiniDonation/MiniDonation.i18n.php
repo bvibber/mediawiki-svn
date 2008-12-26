@@ -105,8 +105,11 @@ $messages['ext'] = array(
 	'donationform-submit' => 'Donal meyanti PayPal',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
+ * @author Nike
+ */
 $messages['fi'] = array(
+	'donationform-desc' => 'Lisää <tt>&lt;donateform&gt;</tt>-elementin PayPal-lahjoitulinkkien tekemiseen.',
 	'donationform-submit' => 'Lahjoita PayPalin kautta',
 );
 
@@ -154,6 +157,7 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
+	'donationform-desc' => '<tt>&lt;donateform&gt;</tt> tag PayPalos adományozásokhoz',
 	'donationform-submit' => 'Adakozás PayPalon keresztül',
 );
 

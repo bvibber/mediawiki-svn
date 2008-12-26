@@ -436,7 +436,23 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'ogg-short-audio' => 'Ogg $1 zvučna datoteka, $2',
+	'ogg-short-video' => 'Ogg $1 video datoteka, $2',
+	'ogg-short-general' => 'Ogg $1 medijalna datoteka, $2',
+	'ogg-long-audio' => '(Ogg $1 zvučna datoteka, dužina $2, $3)',
+	'ogg-long-video' => '(Ogg $1 video datoteka, dužina $2, $4×$5 piksela, $3)',
+	'ogg-long-general' => '(Ogg medijalna datoteka, dužina $2, $3)',
+	'ogg-long-error' => '(Nevaljana ogg datoteka: $1)',
+	'ogg-pause' => 'Pauza',
+	'ogg-stop' => 'Zaustavi',
+	'ogg-player-thumbnail' => 'Samo mirne slike',
+	'ogg-player-soundthumb' => 'Nema preglednika',
+	'ogg-player-selected' => '(odabrano)',
+	'ogg-use-player' => 'Koristi svirač:',
+	'ogg-more' => 'Više...',
+	'ogg-dismiss' => 'Zatvori',
 	'ogg-download' => 'Učitaj datoteku',
+	'ogg-desc-link' => 'O ovoj datoteci',
 );
 
 /** Catalan (Català)

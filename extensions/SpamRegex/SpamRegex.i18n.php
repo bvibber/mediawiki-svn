@@ -254,13 +254,20 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'spamregex-currently-blocked' => "'''Nune forbaritaj frazeroj:'''",
+	'spamregex-move' => 'La kialo kiun vi enigis enhavis forbaritajn frazeron.',
 	'spamregex-no-currently-blocked' => "'''Ne estas iuj ajn forbaritaj vortaj kombinaĵoj.'''",
 	'spamregex-log-2' => 'je $1',
 	'spamregex-unblock-success' => 'Malforbaro sukcesis',
 	'spamregex-block-success' => 'Forbaro sukcesis',
+	'spamregex-block-message' => "Frazero '''$1''' estis forbarita.",
+	'spamregex-warning-1' => 'Eligi frazeron por forbari.',
 	'spamregex-error-1' => 'Nevalida regula esprimo.',
 	'spamregex-already-blocked' => '"$1" jam estas forbarita.',
 	'spamregex-phrase-block' => 'Vorta kombinaĵo por forbari:',
+	'spamregex-phrase-block-text' => 'forbari frazon en paĝa teksto',
+	'spamregex-phrase-block-summary' => 'forbari frazeron en resumo',
+	'spamregex-block-submit' => 'Forbari&nbsp;ĉi&nbsp;tiun&nbsp;frazeron',
 	'spamregex-text' => '(Teksto)',
 	'spamregex-summary-log' => '(Resumo)',
 );
@@ -491,6 +498,7 @@ $messages['is'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
+	'spamregex-already-blocked' => '"$1" は既にブロックされています',
 	'spamregex-summary-log' => '(要約)',
 );
 
@@ -834,6 +842,7 @@ $messages['rif'] = array(
 $messages['ro'] = array(
 	'spamregex-already-blocked' => '"$1" este deja blocat',
 	'spamregex-text' => '(Text)',
+	'spamregex-summary-log' => '(Rezumat)',
 );
 
 /** Russian (Русский)

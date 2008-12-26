@@ -109,6 +109,33 @@ $messages['bg'] = array(
 	'refreshspecial-no-page' => 'Няма такава специална страница',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'refreshspecial' => 'Obnovit speciální stránky',
+	'refreshspecial-desc' => 'Umožňje manuální [[Special:RefreshSpecial|obnovení speciálních stránek]]',
+	'refreshspecial-title' => 'Obnovit speciální stránky',
+	'refreshspecial-help' => 'Tato speciální stránka slouží k manuálnímu obnovení speciálních stránek. Po vybrání všech stránek, které chcete obnovit, klikněte na tlačítko „Obnovit”. Upozornění: na vaší wiki může obnovení chvíli trvat.',
+	'refreshspecial-button' => 'Obnovit vybrané',
+	'refreshspecial-fail' => 'Prosím, vyberte alespoň jednu speciální stránku, která se má obnovit',
+	'refreshspecial-refreshing' => 'obnovují se speciální stránky',
+	'refreshspecial-skipped' => 'přeskočeno',
+	'refreshspecial-success-subtitle' => 'obnovují se speciální stránky',
+	'refreshspecial-choice' => 'obnovují se speciální stránky',
+	'refreshspecial-js-disabled' => '(<i>Není možné použít funkci výběru všech stránek, pokud máte vypnutý JavaScript</i>)',
+	'refreshspecial-select-all-pages' => '  vybrat všechny stránky',
+	'refreshspecial-link-back' => 'Zpět na rozšíření',
+	'refreshspecial-here' => '<b>zde</b>',
+	'refreshspecial-none-selected' => 'Nevybrali jste žádné speciální stránky. Vrací se původní výběr.',
+	'refreshspecial-db-error' => 'Chyba: chyba databáze',
+	'refreshspecial-no-page' => 'Taková speciální stránka neexistuje',
+	'refreshspecial-slave-lagged' => 'Spojení s databázovým slave je pomalé, čeká se…',
+	'refreshspecial-reconnected' => 'Znovu připojený.',
+	'refreshspecial-reconnecting' => 'Spojení selhalo, opětovné připojení za 10 sekund…',
+	'refreshspecial-total-display' => '<br />{{PLURAL:$1|Obnovena $1 stránka|Obnoveny $1 stránky|Obnoveno $1 stránek}}, což činí $2 {{PLURAL:$2|řádek|řádky|řádků}} za čas $3 (celkový čas běhu skriptu je $4)',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  * @author Revolus
@@ -133,7 +160,7 @@ $messages['de'] = array(
 	'refreshspecial-no-page' => 'Keine solche Spezialseite',
 	'refreshspecial-reconnected' => 'Wiederverbunden.',
 	'refreshspecial-reconnecting' => 'Verbindung fehlgeschlagen, wiederverbinde in 10 Sekunden …',
-	'refreshspecial-total-display' => '<br />Aktualisierte $1 Seiten, insgesammt $1 Zeilen, einer Zeit von $3 (Gesammtlaufzeit des Skriptlaufs ist $4)',
+	'refreshspecial-total-display' => '<br />Aktualisierte $1 Seiten, insgesamt $2 Zeilen in einer Zeit von $3 (Gesamtlaufzeit des Skripts: $4)',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

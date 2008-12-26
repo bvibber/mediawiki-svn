@@ -53,7 +53,7 @@ $messages['bg'] = array(
  */
 $messages['de'] = array(
 	'stalepages' => 'Alte Seiten',
-	'stalepages-desc' => 'Erzeugt eine [[Special:Stalepages|Liste von Seiten]] die seit einer Weile nicht mehr bearbeitet wurden',
+	'stalepages-desc' => 'Erzeugt eine [[Special:Stalepages|Liste von Seiten]], die seit einer Weile nicht mehr bearbeitet wurden',
 	'stalepages-summary' => 'Dies ist eine Liste von Seiten, die in den letzten $1 Tagen nicht bearbeitet wurden.',
 );
 
@@ -336,6 +336,13 @@ $messages['te'] = array(
  */
 $messages['tr'] = array(
 	'stalepages' => 'Eski sayfalar',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'stalepages-summary' => '这是在最近$1天内未曾编辑的页面列表。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

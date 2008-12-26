@@ -293,10 +293,14 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Jack Phoenix
+ * @author Nike
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'importusers' => 'Tuo käyttäjiä',
+	'importusers-desc' => '[[Special:ImportUsers|Tuo käyttäjiä]] UTF-8-merkistökoodatusta CSV-tiedostosta.',
 	'importusers-uploadfile' => 'Tallenna tiedosto',
+	'importusers-form-caption' => 'Tuotava CSV-tiedosto (UTF-8)',
 	'importusers-form-file' => 'Käyttäjätiedoston muoto (csv):',
 	'importusers-form-replace-present' => 'Korvaa olemassaolevat käyttäjät',
 	'importusers-form-button' => 'Tuo',
@@ -815,13 +819,27 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'importusers' => 'Importer brukarar',
+	'importusers-desc' => '[[Special:ImportUsers|Importer brukarar]] frå ei CSV-fil; teiknkoding: UTF-8',
 	'importusers-uploadfile' => 'Last opp fil',
+	'importusers-form-caption' => 'CSV-fil for inntekst (UTF-8)',
+	'importusers-form-file' => 'Brukarfilformat (csv):',
+	'importusers-form-replace-present' => 'Erstatt brukarar som finst frå før',
 	'importusers-form-button' => 'Importer',
+	'importusers-user-added' => 'Brukaren <b>%s</b> har blitt lagt til.',
+	'importusers-user-present-update' => 'Brukaren <b>%s</b> finst allereie. Oppdatert.',
+	'importusers-user-present-not-update' => 'Brukeren <b>%s</b> finst allereie. Ikkje oppdatert.',
+	'importusers-user-invalid-format' => 'Brukerdataa på linja #%s har ugyldig format eller er blank. Hoppa over.',
 	'importusers-log' => 'Brukarimporteringslogg',
+	'importusers-log-summary' => 'Samandrag',
+	'importusers-log-summary-all' => 'Alle',
+	'importusers-log-summary-added' => 'Lagt til',
 	'importusers-log-summary-updated' => 'Oppdatert',
+	'importusers-login-name' => 'Inloggingsnamn',
 	'importusers-password' => 'passord',
 	'importusers-email' => 'e-post',
 	'importusers-realname' => 'verkeleg namn',
@@ -974,6 +992,9 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'importusers-form-button' => 'Importă',
+	'importusers-log-summary' => 'Rezumat',
+	'importusers-password' => 'parolă',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'nume real',
 );

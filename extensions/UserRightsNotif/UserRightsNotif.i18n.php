@@ -151,6 +151,24 @@ Atentament,
 $2",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'userrightsnotifysubject' => 'Změna členství $1 ve skupině',
+	'userrightsnotifybody' => 'Dobrý den, $1
+
+Tímto vás informujeme, že vaše členství ve skupině bylo změněno z $3 na $4.
+
+Přidáno: $5
+Odstraněno: $6
+
+S pozdravem,
+
+$2',
+	'userrightsnotif-desc' => 'Posílá upozornění na emaily uživatelům při změně oprávnění',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -726,6 +744,25 @@ Hälsningar
 
 $2',
 	'userrightsnotif-desc' => 'Skickar e-postmeddelanden till användare när deras behörigheter ändras',
+);
+
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'userrightsnotifysubject' => 'Zmjana człůnkostwa we grupach we $1',
+	'userrightsnotifybody' => 'Witej $1,
+
+informuja, co Twoje człůnkostwo we grupach we $2 zostało zmjyńůne bez $4 uo $3.
+
+Dodano: $5
+Wyćepano: $6
+
+
+Pozdrowjyńa
+
+$2',
+	'userrightsnotif-desc' => 'Wyślij informacyjo e-brifym ku użytkowńikům uo půmjyńańu uprowńyń',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

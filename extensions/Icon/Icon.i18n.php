@@ -86,6 +86,16 @@ $messages['eo'] = array(
 	'icon-desc' => 'Permesas al vi utiligi bildojn kiel ikonojn kaj ikonligilojn',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'icon-badimage' => 'Huono kuva',
+	'icon-badwidth' => 'Huono leveys',
+	'icon-desc' => 'Mahdollistaa kuvien käyttämisen kuvakkeina ja kuvakelinkkeinä.',
+);
+
 /** French (Français)
  * @author Dereckson
  * @author Grondin

@@ -221,6 +221,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'form' => 'Formulario',
+	'formnoname' => 'Neniu nomo de kamparo',
 	'formpattern' => '$1-formularo',
 	'formtitlepattern' => 'Aldoni nova $1',
 	'formsave' => 'Konservi',
@@ -528,6 +529,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'form-desc' => 'E [[Special:Form|Formulaire]] fir nei Säiten unzefänken',
 	'form' => 'Formulaire',
 	'formnoname' => 'Keen Numm vum Formulaire',
 	'formbadname' => 'Falsche Numm vum Formulaire',
@@ -538,6 +540,7 @@ $messages['lb'] = array(
 	'formarticleexists' => "D'Säit gëtt et schonn.",
 	'formarticleexiststext' => "D'Säit [[$1]] gëtt et schonn.",
 	'formbadpagename' => 'Falsche Säitennumm',
+	'formbadpagenametext' => 'Déi Donnéeën déi Dir an de Formulaire aginn hutt erginn e Säitennumm, den net ka gespäichert ginn: "$1".',
 	'formrequiredfieldpluralerror' => "D'Felder $1 sinn obligatoresch fir dëse Formulaire.
 Fëllt se w.e.g. aus.",
 	'formrequiredfielderror' => "D'Feld $1 muss an dësem Formulaire ausgefëllt ginn.",
@@ -990,6 +993,14 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'formsave' => 'บันทึก',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'formsave' => '保存',
+	'formarticleexists' => '页面存在',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -109,6 +109,13 @@ $messages['af'] = array(
 	'changeauthor-nosuchtitle' => 'Daar is geen bladsy genaamd "$1" nie.',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'changeauthor-comment' => 'ማጠቃለያ፦',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -458,22 +465,29 @@ $messages['es'] = array(
  * @author Nike
  * @author Silvonen
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'changeauthor' => 'Muuta muokkausversion tekijä',
 	'changeauthor-desc' => 'Mahdollistaa muokkausversion tekijän muuttamisen',
 	'changeauthor-title' => 'Muuta muokkausversion tekijä',
 	'changeauthor-search-box' => 'Hae muokkausversioita',
+	'changeauthor-pagename-or-revid' => 'Sivun nimi tai version tunnus:',
 	'changeauthor-pagenameform-go' => 'Siirry',
 	'changeauthor-comment' => 'Kommentti',
+	'changeauthor-changeauthors-multi' => 'Muuta {{PLURAL:$1|tekijää|tekijöitä}}',
+	'changeauthor-explanation-multi' => 'Voit muuttaa tällä lomakkeella version tekijöitä.
+Muutat vain yhtä tai useampaa käyttäjänimeä alla olevassa listassa, lisäät kommentin (valinnainen) ja napsautat ”Muuta tekijöitä”-painiketta.',
 	'changeauthor-changeauthors-single' => 'Muuta tekijä',
 	'changeauthor-invalid-username' => 'Virheellinen käyttäjätunnus ”$1”.',
 	'changeauthor-nosuchuser' => 'Käyttäjää ”$1” ei ole olemassa.',
+	'changeauthor-revview' => 'Versio #$1/$2',
 	'changeauthor-nosuchtitle' => 'Sivua nimeltä ”$1” ei ole.',
 	'changeauthor-weirderror' => 'Tapahtui hyvin outo virhe.
 Yritä uudestaan.
 Jos tämä virhe toistuu, tietokanta on luultavasti rikki.',
 	'changeauthor-success' => 'Pyyntö on suoritettu onnistuneesti.',
+	'changeauthor-logpagename' => 'Tekijämuutosloki',
 );
 
 /** French (Français)

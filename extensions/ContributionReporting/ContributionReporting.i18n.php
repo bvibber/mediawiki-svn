@@ -83,6 +83,8 @@ $messages['qqq'] = array(
 	'contributionreporting-desc' => 'Description for the ContributionReporting Extension. Shown in [[Special:Version]]. Do not translate or change tag names.',
 	'contrib-hist-name' => '{{Identical|Name}}',
 	'contrib-hist-date' => '{{Identical|Date}}',
+	'contribstats-currency-range-totals' => '* $1 is a start date
+* $2 is an end date',
 	'fundraiserstats-date' => '{{Identical|Date}}',
 	'fundraiserstats-day' => '* $1 is the nth day of an annual fundraiser
 * $2 is the year of a fundraiser',
@@ -156,6 +158,7 @@ $messages['an'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
+ * @author Ouda
  */
 $messages['ar'] = array(
 	'contributionreporting-desc' => 'تقرير حي على جامع تبرعات ويكيميديا',
@@ -182,6 +185,10 @@ $messages['ar'] = array(
 	'contribstats-max' => 'الأقصى (دولار أمريكي)',
 	'contribstats-percentage-ytd' => 'النسبة المئوية (منذ بداية السنة)',
 	'contribstats-total-ytd' => 'المجموع  (منذ بداية السنة)',
+	'contribstats-value-exactly' => 'بالظبط $1',
+	'contribstats-value-under' => 'تحت $1',
+	'contribstats-value-from' => 'من $1 - $2',
+	'contribstats-value-over' => 'فوق $1',
 	'fundraiserstatistics' => 'إحصاءات جمع التبرعات',
 	'fundraiserstats-date' => 'تاريخ',
 	'fundraiserstats-day' => 'اليوم $1 من $2',
@@ -193,6 +200,7 @@ $messages['ar'] = array(
 	'fundraiserstats-tab-contributions' => 'عدد المساهمات',
 	'fundraiserstats-tab-averages' => 'المتوسطات (USD)',
 	'fundraiserstats-tab-maximums' => 'القيم القصوى (USD)',
+	'specialpages-group-contribution' => 'المساهمات/جمع التبرعات',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -939,6 +947,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Bdamokos
+ * @author Dani
  */
 $messages['hu'] = array(
 	'contributionreporting-desc' => 'Élő jelentés a Wikimédia adománygyűjtéséről',
@@ -970,6 +979,12 @@ $messages['hu'] = array(
 	'contribstats-max' => 'Maximum (USD)',
 	'contribstats-percentage-ytd' => 'Százalék (YTD)',
 	'contribstats-total-ytd' => 'Összesen (YTD)',
+	'fundraiserstatistics' => 'Adományozási statisztikák',
+	'fundraiserstats-date' => 'Dátum',
+	'fundraiserstats-day' => '$2, $1. nap',
+	'fundraiserstats-total' => 'Összesen (USD)',
+	'fundraiserstats-avg' => 'Átlagosan (USD)',
+	'fundraiserstats-max' => 'Maximum (USD)',
 );
 
 /** Interlingua (Interlingua)
@@ -1669,6 +1684,7 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Aleksandrit
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1679,9 +1695,9 @@ $messages['ru'] = array(
 	'contrib-hist-name' => 'Имя',
 	'contrib-hist-date' => 'Время и дата',
 	'contrib-hist-amount' => 'Сумма',
-	'contrib-hist-next' => 'Более раннее пожертвования',
+	'contrib-hist-next' => 'Более ранние пожертвования',
 	'contrib-hist-previous' => 'Более поздние пожертвования',
-	'contrib-hist-anonymous' => 'Аноним',
+	'contrib-hist-anonymous' => 'Анонім',
 	'contributionstatistics' => 'Статистика пожертвований',
 	'contribstats-desc' => 'Показывает статистику пожертвований в пользу Фонда Викимедиа',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Всего за последний $1 день|Всего за последние $1 дня|Всего за последние $1 дней}}',
@@ -1850,6 +1866,58 @@ $messages['te'] = array(
 	'contribstats-total-ytd' => 'మొత్తం (YTD)',
 	'fundraiserstats-date' => 'తేదీ',
 	'fundraiserstats-total' => 'మొత్తం (USD)',
+);
+
+/** Ukrainian (Українська)
+ * @author Ahonc
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'contributionreporting-desc' => 'Поточні відомості про збір пожертвувань на користь Вікімедіі',
+	'contributiontotal' => 'Всього пожертвувань',
+	'contributionhistory' => 'Історія пожертвувань',
+	'contrib-hist-header' => 'Коментарі донорів з усього світу в реальному часі',
+	'contrib-hist-name' => 'Ім`я',
+	'contrib-hist-date' => 'Час і дата',
+	'contrib-hist-amount' => 'Сума',
+	'contrib-hist-next' => 'Більш ранні пожертвування',
+	'contrib-hist-previous' => 'Більш пізні пожертвування',
+	'contrib-hist-anonymous' => 'Анонім',
+	'contributionstatistics' => 'Статистика пожертвувань',
+	'contribstats-desc' => 'Показує статистику пожертвувань на користь Фонду Вікімедіа',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Всього за останній $1 день|Всього за останні $1 дні|Всього за останні $1 днів}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Всього за цей місяць|Всього за останні кілька місяців}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Всього за $1 місяць|Всього за $1 місяця|Всього за $1 місяців}}',
+	'contribstats-currency-range-totals' => 'Разом (з $1 до $2)',
+	'contribstats-contribution-range-breakdown' => 'Розподіл розмірів пожертвувань (з $1 до $2)',
+	'contribstats-currency-totals' => 'Разом для $1 фінансового року',
+	'contribstats-contribution-breakdown' => 'Розподіл розмірів пожертвувань за $1 фінансовий рік',
+	'contribstats-day' => 'День',
+	'contribstats-month' => 'Місяць',
+	'contribstats-currency' => 'Валюта',
+	'contribstats-amount' => 'Сума (USD)',
+	'contribstats-contributions' => 'Пожертвувань',
+	'contribstats-total' => 'Всього (USD)',
+	'contribstats-avg' => 'Середня (USD)',
+	'contribstats-max' => 'Максимальна (USD)',
+	'contribstats-percentage-ytd' => 'Відсоток (з початку року)',
+	'contribstats-total-ytd' => 'Всього (з початку року)',
+	'contribstats-value-exactly' => 'Рівно $1',
+	'contribstats-value-under' => 'Менш ніж $1',
+	'contribstats-value-from' => 'З $1 - $2',
+	'contribstats-value-over' => 'Більш ніж $1',
+	'fundraiserstatistics' => 'Статистика збору коштів',
+	'fundraiserstats-date' => 'Дата',
+	'fundraiserstats-day' => '$1 день збору коштів $2',
+	'fundraiserstats-contributions' => 'Внески',
+	'fundraiserstats-total' => 'Усього (долари США)',
+	'fundraiserstats-avg' => 'У середньому (долари США)',
+	'fundraiserstats-max' => 'Максимум (долари США)',
+	'fundraiserstats-tab-totals' => 'Загалом (долари США)',
+	'fundraiserstats-tab-contributions' => 'Кількість внесків',
+	'fundraiserstats-tab-averages' => 'У середньому (долари США)',
+	'fundraiserstats-tab-maximums' => 'Максимуми (долари США)',
+	'specialpages-group-contribution' => 'Пожертвування/Збір коштів',
 );
 
 /** Vèneto (Vèneto)

@@ -1269,6 +1269,25 @@ $messages['sv'] = array(
 	'right-uboverride' => 'Upphäva den svarta listan över användarnamn',
 );
 
+/** Silesian (Ślůnski)
+ * @author Lajsikonik
+ */
+$messages['szl'] = array(
+	'usernameblacklist-desc' => 'Dodowo funkcjůnalność [[MediaWiki:Usernameblacklist|listy zabrůńůnych mjan użytkowńikůw]] do uograńiczańo możliwości tworzyńa kůnt użytkowńikůw kere uodpadujům jednymu abo wjelu wyrażyńům regularnym',
+	'blacklistedusername' => 'Zabrůńůne mjano użytkowńika',
+	'blacklistedusernametext' => 'Wybrane bez Ćebje mjano użytkowńika abo uůnygo tajla je ńydowolůno a znajduje śe na [[MediaWiki:Usernameblacklist|liśće zabrůńůnych mjan]]. Wybjer inksze mjano użytkowńika.',
+	'usernameblacklist' => '<pre>
+# Wpisy na tyj liśće bydům użyte kej tajle wyrażyńo regularnygo zabrůńůnych
+# przi rejerowańu mjan użytkowńikůw. Kożdy wpis powińyn być ylymyntym
+# listy wypunktowanyj, l.b.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Nastympujůnco lińja|Nastympujůnce lińje}} na liśće zabrůńůnych mjan użytkowńików {{PLURAL:$1|je felerno|sům felerne}} ; poprow {{PLURAL:$1|ja|je}} przed zaszkryflańym:',
+	'right-uboverride' => 'Wyłůnczo uograńiczyńa nakłodane bez tozszerzyńe Username Blacklist, kere ńy dozwalo tworzić kůnt uo mjanach kere pasujům do predefińjowanych wzorcůw',
+);
+
 /** Telugu (తెలుగు)
  * @author Mpradeep
  * @author Veeven
@@ -1307,11 +1326,13 @@ $messages['tg-cyrl'] = array(
 );
 
 /** Tagalog (Tagalog)
+ * @author AnakngAraw
  * @author Felipe Aira
  */
 $messages['tl'] = array(
 	'blacklistedusername' => 'Ipinagbawal na bansag',
 	'usernameblacklist-invalid-lines' => 'Ang {{PLURAL:$1|sumusunod|mga sumusunod}} na hanay sa mga ipinagbabawal na bansag ay inbalido; pakitama ang {{PLURAL:$1|iyon|mga iyon}} bago magligtas:',
+	'right-uboverride' => 'Daigin (pangibabawan) ang talaan ng pinagbabawalang pangalan ng tagagamit',
 );
 
 /** Turkish (Türkçe) */
