@@ -95,7 +95,7 @@ class NewUserNotifier {
 			$wgSitename,
 			$wgContLang->timeAndDate( wfTimestampNow() ),
 			$wgContLang->date( wfTimestampNow() ),
-			$wgContLang->time( wfTimestampNow() ),
+			$wgContLang->time( wfTimestampNow() )
 		);
 	}
 
