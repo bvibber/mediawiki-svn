@@ -14,19 +14,18 @@ $messages['en'] = array(
 	'deletebatch' => 'Delete batch of pages',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Delete a batch of pages]]',
 	'deletebatch-button' => 'Delete',
-	'deletebatch-here' => '<b>here</b>',
 	'deletebatch-help' => 'Delete a batch of pages. You can either perform a single delete, or delete pages listed in a file.
 Choose a user that will be shown in deletion logs.
 Uploaded file should contain page name and optional reason separated by a "|" character in each line.',
 	'deletebatch-caption' => 'Page list',
 	'deletebatch-title' => 'Delete batch',
-	'deletebatch-link-back' => 'Go back to the special page ',
+	'deletebatch-link-back' => 'Go back to the special page',
 	'deletebatch-as' => 'Run the script as',
 	'deletebatch-both-modes' => 'Please choose either one specified page or a given list of pages.',
 	'deletebatch-or' => '<b>or</b>',
 	'deletebatch-page' => 'Pages to be deleted',
 	'deletebatch-reason' => 'Reason for deletion',
-	'deletebatch-processing' => 'deleting pages ',
+	'deletebatch-processing' => 'deleting pages $1',
 	'deletebatch-from-file' => 'from file list',
 	'deletebatch-from-form' => 'from form',
 	'deletebatch-success-subtitle' => 'for $1',
@@ -49,6 +48,12 @@ $messages['qqq'] = array(
 	'deletebatch-button' => '{{Identical|Delete}}',
 	'deletebatch-reason' => '{{Identical|Reason for deletion}}',
 	'deletebatch-success-subtitle' => '{{Identical|For $1}}',
+	'deletebatch-processing' => 'Used as page subtitle.
+* $1 is text from {{msg-mw|deletebatch-from-file}} or {{msg-mw|deletebatch-from-form}}',
+	'deletebatch-from-file' => 'Used as $1 in {{msg-mw|processing}}',
+	'deletebatch-from-form' => 'Used as $1 in {{msg-mw|processing}}',
+	'deletebatch-select-yourself' => 'Entry in dropdown for user that should execute the deletions',
+	'deletebatch-select-script' => 'User name. Entry in dropdown for user that should execute the deletions',
 );
 
 /** Goanese Konkani (Latin) (कोंकणी/Konknni  (Latin))
