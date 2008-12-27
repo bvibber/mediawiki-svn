@@ -9,11 +9,13 @@ $messages = array();
 
 $messages['en'] = array(
 	'minipreview-desc'                => 'MiniPreview displays, next to an image, small previews of other media in the same categories or displayed on the same pages',
-	'minipreview-files_in_category'   => "'''$1''' total {{PLURAL:$1|file|files}} in this category.",
-	'minipreview-files_in_gallery'    => "'''$1''' total {{PLURAL:$1|file|files}} in this gallery.",
+	'minipreview-files_in_category'   => "This category contains '''$1''' {{PLURAL:$1|file|files}}.",
+	'minipreview-files_in_gallery'    => "This gallery contains '''$1''' {{PLURAL:$1|file|files}}.",
 	'minipreview-no_more_files_here'  => 'No more files in this direction.',
 	'minipreview-no_category_gallery' => 'No categories or galleries!',
-	'minipreview-ignore_categories'   => 'The following is a list of category names or name beginnings. These categories will not be displayed by MiniPreview. For example, "* PD-" will not display all categories that start with "PD-", such as "PD-old".
+	'minipreview-ignore_categories'   => 'The following is a list of category names or name beginnings.
+These categories will not be displayed by MiniPreview.
+For example, "* PD-" will not display all categories that start with "PD-", such as "PD-old".
 * GFDL-
 * GFDL
 * CC-
