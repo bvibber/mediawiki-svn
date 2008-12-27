@@ -24,9 +24,16 @@ class RefreshSpecial extends SpecialPage {
 	 */
 	public function execute( $par ) {
 		global $wgOut, $wgUser, $wgRequest;
+
 		wfLoadExtensionMessages('RefreshSpecial');
 
 		$wgOut->setPageTitle( wfMsg('refreshspecial-title') );
+
+		if( !$wgUser->isAllowed('refreshspecial') ) {
+			$wgOut->permissionRequired( 'refreshspecial' );
+			return;
+		}
+
 		$cSF = new RefreshSpecialForm();
 
 		$action = $wgRequest->getVal( 'action' );
@@ -57,7 +64,7 @@ class RefreshSpecialForm {
 	 */
 	function showForm( $err ) {
 		global $wgOut, $wgUser, $wgRequest, $wgQueryPages;
-	
+
 		$token = htmlspecialchars( $wgUser->editToken() );
 		$titleObj = SpecialPage::getTitleFor( 'RefreshSpecial' );
 		$action = $titleObj->escapeLocalURL( "action=submit" );
@@ -76,7 +83,7 @@ class RefreshSpecialForm {
 		/**
 		 * List pages right here
 		 *
-		 * @todo Display a time estimate or a raw factor 
+		 * @todo Display a time estimate or a raw factor
 		 * I guess it's not that important, since we have a 1000 rows limit on refresh?
 		 * that brings up an interesting question - do we need that limit or not?
 		 */
@@ -99,14 +106,14 @@ class RefreshSpecialForm {
 				$wgOut->addHTML("<li>
 						<input type=\"checkbox\" name=\"wpSpecial[]\"  value=\"$special\" $checked />
 						<b>$special</b>
-					</li>");				
+					</li>");
 			}
 		}
 
 			$wgOut->addHTML("<li>
-				  	<input type=\"checkbox\" name=\"check_all\" id=\"refreshSpecialCheckAll\" onclick=\"refreshSpecialCheck(this.form);\" /><label for=\"refreshSpecialCheckAll\">".wfMsg ('refreshspecial-select-all-pages') ."
-				  <noscript>".wfMsg ('refreshspecial-js-disabled')."
-				  </noscript>");
+				  	<input type=\"checkbox\" name=\"check_all\" id=\"refreshSpecialCheckAll\" onclick=\"refreshSpecialCheck(this.form);\" /><label for=\"refreshSpecialCheckAll\">&nbsp;" . wfMsg ( 'refreshspecial-select-all-pages' ) . "
+				  <noscript>" . wfMsg ( 'refreshspecial-js-disabled' ) . "
+				  </noscript>" );
 				$wgOut->addHTML("</label>
 				  </li>
 				  <script type=\"text/javascript\">
@@ -128,7 +135,7 @@ class RefreshSpecialForm {
 	/**
 	 * Take amount of elapsed time, produce hours (hopefully never needed...), minutes, seconds
 	 *
-	 * @param $amount int 
+	 * @param $amount int
 	 * @return array Amount of elapsed time
 	 */
 	function compute_time($amount) {
@@ -193,44 +200,47 @@ class RefreshSpecialForm {
 			if( !( isset( $options['only'] ) ) or ( $options['only'] == $queryPage->getName() ) ) {
 				$wgOut->addHTML("<b>$special</b>: ");
 
-					  if ( $queryPage->isExpensive() ) {
-								$t1 = explode( ' ', microtime() );
-								# Do the query
-								$num = $queryPage->recache( $limit === null ? REFRESHSPECIAL_ROW_LIMIT : $limit );
-								$t2 = explode( ' ', microtime() );
-
-			  				  if ( $num === false ) {
-									$wgOut->addHTML( wfMsg('refreshspecial-db-error') . "<br />" );
-								} else {
-			  						$message = "got $num rows in ";
-						 			$elapsed = ($t2[0] - $t1[0]) + ($t2[1] - $t1[1]);
-									$total['elapsed'] += $elapsed;
-									$total['rows'] += $num;
-									$total['pages']++;
-									$ftime = $this->compute_time($elapsed);
-									$this->format_time_message($ftime, $message);
-									$wgOut->addHTML("$message<br />");
-								}
+				if ( $queryPage->isExpensive() ) {
 					$t1 = explode( ' ', microtime() );
-								# Reopen any connections that have closed
-								if ( !wfGetLB()->pingAll() ) {
-				  						$wgOut->addHTML("<br />");
-										do {
-												$wgOut->addHTML( wfMsg('refreshspecial-reconnecting') ."<br />" );
-												sleep(REFRESHSPECIAL_RECONNECTION_SLEEP);
-											} while ( !wfGetLB()->pingAll() );
-				  						$wgOut->addHTML( wfMsg('refreshspecial-reconnected') . "<br /><br />" );
-								} else {
-									# Commit the results
-									$dbw->commit();
-								}
+					# Do the query
+					$num = $queryPage->recache( $limit === null ? REFRESHSPECIAL_ROW_LIMIT : $limit );
+					$t2 = explode( ' ', microtime() );
 
-								# Wait for the slave to catch up
-								$slaveDB = wfGetDB( DB_SLAVE, array( 'QueryPage::recache', 'vslow' ) );
-								while( $slaveDB->getLag() > REFRESHSPECIAL_SLAVE_LAG_LIMIT ) {
-				  						$wgOut->addHTML( wfMsg('refreshspecial-slave-lagged') ."<br />" );
-							 			sleep(REFRESHSPECIAL_SLAVE_LAG_SLEEP);
-								}
+			  		if ( $num === false ) {
+						$wgOut->addHTML( wfMsg('refreshspecial-db-error') . "<br />" );
+					} else {
+			  			$message = wfMsgExt( 'refreshspecial-page-result', array( 'escape', 'parsemag' ), $num ) . "&nbsp;";
+						$elapsed = ($t2[0] - $t1[0]) + ($t2[1] - $t1[1]);
+						$total['elapsed'] += $elapsed;
+						$total['rows'] += $num;
+						$total['pages']++;
+						$ftime = $this->compute_time($elapsed);
+						$this->format_time_message($ftime, $message);
+						$wgOut->addHTML("$message<br />");
+					}
+
+					$t1 = explode( ' ', microtime() );
+
+					# Reopen any connections that have closed
+					if ( !wfGetLB()->pingAll() ) {
+						$wgOut->addHTML("<br />");
+						do {
+							$wgOut->addHTML( wfMsg('refreshspecial-reconnecting') ."<br />" );
+							sleep(REFRESHSPECIAL_RECONNECTION_SLEEP);
+						} while ( !wfGetLB()->pingAll() );
+						$wgOut->addHTML( wfMsg('refreshspecial-reconnected') . "<br /><br />" );
+					} else {
+						# Commit the results
+						$dbw->commit();
+					}
+
+					# Wait for the slave to catch up
+					$slaveDB = wfGetDB( DB_SLAVE, array( 'QueryPage::recache', 'vslow' ) );
+					while( $slaveDB->getLag() > REFRESHSPECIAL_SLAVE_LAG_LIMIT ) {
+						$wgOut->addHTML( wfMsg('refreshspecial-slave-lagged') ."<br />" );
+						sleep(REFRESHSPECIAL_SLAVE_LAG_SLEEP);
+					}
+
 					$t2 = explode( ' ', microtime() );
 					$elapsed_total = ($t2[0] - $t1[0]) + ($t2[1] - $t1[1]);
 					$total['total_elapsed'] += $elapsed + $elapsed_total;
@@ -244,7 +254,7 @@ class RefreshSpecialForm {
 		$total_elapsed_message = '';
 		$this->format_time_message( $this->compute_time($total['elapsed']), $elapsed_message );
 		$this->format_time_message( $this->compute_time($total['total_elapsed']), $total_elapsed_message );
-		$wgOut->addHTML( wfMsg('refreshspecial-total-display', $total['pages'], $total['rows'], $elapsed_message, $total_elapsed_message) );
+		$wgOut->addHTML( "<br />" . wfMsgExt('refreshspecial-total-display', array( 'escape', 'parsemag' ), $total['pages'], $total['rows'], $elapsed_message, $total_elapsed_message) );
 		$wgOut->addHTML("</ul></form>");
 	}
 

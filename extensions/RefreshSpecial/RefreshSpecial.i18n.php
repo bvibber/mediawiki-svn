@@ -15,7 +15,9 @@ $messages['en'] = array(
 	'refreshspecial' => 'Refresh special pages',
 	'refreshspecial-desc' => 'Allows [[Special:RefreshSpecial|manual special page refresh]] of special pages',
 	'refreshspecial-title' => 'Refresh special pages',
-	'refreshspecial-help' =>  'This special page provides means to manually refresh special pages. When you have chosen all pages that you want to refresh, click on the Refresh button below to make it go. Warning: the refresh may take a while on larger wikis.',
+	'refreshspecial-help' =>  'This special page provides means to manually refresh special pages.
+When you have chosen all pages that you want to refresh, click on the "Refresh selected" button below to refresh the selected special pages.
+Warning: the refresh may take a while on larger wikis.',
 	'refreshspecial-button' => 'Refresh selected',
 	'refreshspecial-fail' => 'Please check at least one special page to refresh.',
 	'refreshspecial-refreshing' => 'refreshing special pages',
@@ -23,7 +25,7 @@ $messages['en'] = array(
 	'refreshspecial-success-subtitle' => 'refreshing special pages',
 	'refreshspecial-choice' => 'refreshing special pages',
 	'refreshspecial-js-disabled' => '(<i>You cannot select all pages when JavaScript is disabled</i>)',
-	'refreshspecial-select-all-pages' => ' select all pages ',
+	'refreshspecial-select-all-pages' => 'Select all pages',
 	'refreshspecial-link-back' => 'Go back to special page',
 	'refreshspecial-none-selected' => 'You have not selected any special pages. Reverting to default selection.',
 	'refreshspecial-db-error' => 'Failed: database error',
@@ -31,7 +33,9 @@ $messages['en'] = array(
 	'refreshspecial-slave-lagged' => 'Slave lagged, waiting...',
 	'refreshspecial-reconnected' => 'Reconnected.',
 	'refreshspecial-reconnecting' => 'Connection failed, reconnecting in 10 seconds...',
-	'refreshspecial-total-display' => '<br />Refreshed $1 pages totaling $2 rows in time $3 (complete time of the script run is $4)',
+	'refreshspecial-page-result' => 'got $1 {{PLURAL:$1|row|rows}} in',
+	'refreshspecial-total-display' => 'Refreshed $1 {{PLURAL:$1|page|pages}} totaling $2 {{PLURAL:$2|row|rows}} in time $3 (complete time of the script run is $4)',
+	'right-refreshspecial' => 'Refresh special pages',
 );
 
 /** Arabic (العربية)
@@ -49,7 +53,7 @@ $messages['ar'] = array(
 	'refreshspecial-success-subtitle' => 'جاري تحديث الصفحات الخاصة',
 	'refreshspecial-choice' => 'تحديث الصفحات الخاصة',
 	'refreshspecial-js-disabled' => '(<i>أنت لا يمكنك اختيار كل الصفحات عندما تكون الجافاسكريبت معطلة</i>)',
-	'refreshspecial-select-all-pages' => '  اختر كل الصفحات',
+	'refreshspecial-select-all-pages' => ' اختر كل الصفحات',
 	'refreshspecial-link-back' => 'رجوع إلى الامتداد',
 	'refreshspecial-here' => '<b>هنا</b>',
 	'refreshspecial-none-selected' => 'أنت لم تختر أي صفحة خاصة. استرجاع إلى الاختيار الافتراضي.',
@@ -58,7 +62,7 @@ $messages['ar'] = array(
 	'refreshspecial-slave-lagged' => 'الخادم التابع تأخر، جاري الانتظار...',
 	'refreshspecial-reconnected' => 'تمت إعادة التوصيل.',
 	'refreshspecial-reconnecting' => 'التوصيل فشل، إعادة التوصيل خلال 10 ثواني...',
-	'refreshspecial-total-display' => '<br />حدث $1 صفحة بإجمالي $2 صف في وقت $3 (الزمن الإجمالي لعمل السكريبت هو $4)',
+	'refreshspecial-total-display' => 'حدث $1 صفحة بإجمالي $2 صف في وقت $3 (الزمن الإجمالي لعمل السكريبت هو $4)',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -76,7 +80,7 @@ $messages['arz'] = array(
 	'refreshspecial-success-subtitle' => 'جارى تحديث الصفحات الخاصة',
 	'refreshspecial-choice' => 'تحديث الصفحات الخاصة',
 	'refreshspecial-js-disabled' => '(<i>أنت لا يمكنك اختيار كل الصفحات عندما تكون الجافاسكريبت معطلة</i>)',
-	'refreshspecial-select-all-pages' => '  اختر كل الصفحات',
+	'refreshspecial-select-all-pages' => ' اختر كل الصفحات',
 	'refreshspecial-link-back' => 'رجوع إلى الامتداد',
 	'refreshspecial-here' => '<b>هنا</b>',
 	'refreshspecial-none-selected' => 'أنت لم تختر أى صفحة خاصة. استرجاع إلى الاختيار الافتراضي.',
@@ -85,14 +89,14 @@ $messages['arz'] = array(
 	'refreshspecial-slave-lagged' => 'الخادم التابع تأخر، جارى الانتظار...',
 	'refreshspecial-reconnected' => 'تمت إعادة التوصيل.',
 	'refreshspecial-reconnecting' => 'التوصيل فشل، إعادة التوصيل خلال 10 ثواني...',
-	'refreshspecial-total-display' => '<br />حدث $1 صفحة بإجمالى $2 صف فى وقت $3 (الزمن الإجمالى لعمل السكريبت هو $4)',
+	'refreshspecial-total-display' => 'حدث $1 صفحة بإجمالى $2 صف فى وقت $3 (الزمن الإجمالى لعمل السكريبت هو $4)',
 );
 
 /** Bulgarian (Български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'refreshspecial-select-all-pages' => '  избиране на всички страници',
+	'refreshspecial-select-all-pages' => ' избиране на всички страници',
 	'refreshspecial-here' => '<b>тук</b>',
 	'refreshspecial-no-page' => 'Няма такава специална страница',
 );
@@ -112,7 +116,7 @@ $messages['cs'] = array(
 	'refreshspecial-success-subtitle' => 'obnovují se speciální stránky',
 	'refreshspecial-choice' => 'obnovují se speciální stránky',
 	'refreshspecial-js-disabled' => '(<i>Není možné použít funkci výběru všech stránek, pokud máte vypnutý JavaScript</i>)',
-	'refreshspecial-select-all-pages' => '  vybrat všechny stránky',
+	'refreshspecial-select-all-pages' => ' vybrat všechny stránky',
 	'refreshspecial-link-back' => 'Zpět na rozšíření',
 	'refreshspecial-here' => '<b>zde</b>',
 	'refreshspecial-none-selected' => 'Nevybrali jste žádné speciální stránky. Vrací se původní výběr.',
@@ -121,7 +125,7 @@ $messages['cs'] = array(
 	'refreshspecial-slave-lagged' => 'Spojení s databázovým slave je pomalé, čeká se…',
 	'refreshspecial-reconnected' => 'Znovu připojený.',
 	'refreshspecial-reconnecting' => 'Spojení selhalo, opětovné připojení za 10 sekund…',
-	'refreshspecial-total-display' => '<br />{{PLURAL:$1|Obnovena $1 stránka|Obnoveny $1 stránky|Obnoveno $1 stránek}}, což činí $2 {{PLURAL:$2|řádek|řádky|řádků}} za čas $3 (celkový čas běhu skriptu je $4)',
+	'refreshspecial-total-display' => '{{PLURAL:$1|Obnovena $1 stránka|Obnoveny $1 stránky|Obnoveno $1 stránek}}, což činí $2 {{PLURAL:$2|řádek|řádky|řádků}} za čas $3 (celkový čas běhu skriptu je $4)',
 );
 
 /** German (Deutsch)
@@ -141,7 +145,7 @@ $messages['de'] = array(
 	'refreshspecial-success-subtitle' => 'aktualisiere Spezialseiten',
 	'refreshspecial-choice' => 'aktualisiere Spezialseiten',
 	'refreshspecial-js-disabled' => '(<i>Du kannst nicht alle Seiten auswählen, wenn du Javascript deaktiviert hast</i>)',
-	'refreshspecial-select-all-pages' => '  alle Seiten auswählen',
+	'refreshspecial-select-all-pages' => ' alle Seiten auswählen',
 	'refreshspecial-link-back' => 'Zurück zur Erweiterung',
 	'refreshspecial-here' => '<b>hier</b>',
 	'refreshspecial-none-selected' => 'Du hast keine Spezialseiten ausgewählt; somit Zurücksetzung auf die Standardauswahl.',
@@ -150,7 +154,7 @@ $messages['de'] = array(
 	'refreshspecial-slave-lagged' => 'Slave-Server hängt hinterher, warten...',
 	'refreshspecial-reconnected' => 'Wiederverbunden.',
 	'refreshspecial-reconnecting' => 'Verbindung fehlgeschlagen, wiederverbinde in 10 Sekunden …',
-	'refreshspecial-total-display' => '<br />Aktualisierte $1 Seiten, insgesamt $2 Zeilen in einer Zeit von $3 (Gesamtlaufzeit des Skripts: $4)',
+	'refreshspecial-total-display' => 'Aktualisierte $1 Seiten, insgesamt $2 Zeilen in einer Zeit von $3 (Gesamtlaufzeit des Skripts: $4)',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -165,7 +169,7 @@ $messages['de-formal'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'refreshspecial-select-all-pages' => ' selekti ĉiujn paĝojn',
+	'refreshspecial-select-all-pages' => 'selekti ĉiujn paĝojn',
 	'refreshspecial-here' => '<b>ĉi tie</b>',
 );
 
@@ -192,7 +196,7 @@ $messages['fi'] = array(
 	'refreshspecial-success-subtitle' => 'päivitetään toimintosivuja',
 	'refreshspecial-choice' => 'päivitetään toimintosivuja',
 	'refreshspecial-js-disabled' => '(<i>Et voi valita kaikkia sivuja kun JavaScript on pois käytöstä</i>)',
-	'refreshspecial-select-all-pages' => ' valitse kaikki sivut',
+	'refreshspecial-select-all-pages' => 'valitse kaikki sivut',
 	'refreshspecial-link-back' => 'Palaa lisäosaan',
 	'refreshspecial-here' => '<b>täällä</b>',
 	'refreshspecial-none-selected' => 'Et ole valinnut yhtään toimintosivua. Palataan oletusasetuksiin.',
@@ -201,7 +205,7 @@ $messages['fi'] = array(
 	'refreshspecial-slave-lagged' => 'Renki jää jälkeen, odotellaan...',
 	'refreshspecial-reconnected' => 'Yhdistetty uudelleen.',
 	'refreshspecial-reconnecting' => 'Yhteys epäonnistui, yritetään uudelleen 10 sekunnin kuluttua...',
-	'refreshspecial-total-display' => '<br />Päivitettiin $1 sivua; yhteensä $2 riviä ajassa $3 (yhteensä skriptin suorittamiseen meni aikaa $4)',
+	'refreshspecial-total-display' => 'Päivitettiin $1 sivua; yhteensä $2 riviä ajassa $3 (yhteensä skriptin suorittamiseen meni aikaa $4)',
 );
 
 /** French (Français)
@@ -230,7 +234,7 @@ $messages['fr'] = array(
 	'refreshspecial-slave-lagged' => 'Travail retardé, en cours…',
 	'refreshspecial-reconnected' => 'Reconnecté.',
 	'refreshspecial-reconnecting' => 'Échec de la connection, reconnection dans 10 secondes…',
-	'refreshspecial-total-display' => '<br />$1 {{PLURAL:$1|page actualisée|pages actualisées}} totalisant $2 {{PLURAL:$2|ligne|lignes}} sur une durée de $3 (la durée complète de l’action du script est de $4)',
+	'refreshspecial-total-display' => '$1 {{PLURAL:$1|page actualisée|pages actualisées}} totalisant $2 {{PLURAL:$2|ligne|lignes}} sur une durée de $3 (la durée complète de l’action du script est de $4)',
 );
 
 /** Galician (Galego)
@@ -248,7 +252,7 @@ $messages['gl'] = array(
 	'refreshspecial-success-subtitle' => 'actualizando as páxinas especiais',
 	'refreshspecial-choice' => 'actualizando as páxinas especiais',
 	'refreshspecial-js-disabled' => '(<i>Non pode seleccionar todas as páxinas cando o JavaScript está deshabilitado</i>)',
-	'refreshspecial-select-all-pages' => '  seleccionar todas as páxinas',
+	'refreshspecial-select-all-pages' => ' seleccionar todas as páxinas',
 	'refreshspecial-link-back' => 'Voltar á extensión',
 	'refreshspecial-here' => '<b>aquí</b>',
 	'refreshspecial-none-selected' => 'Non seleccionou ningunha páxina especial. Revertendo á selección por defecto.',
@@ -257,7 +261,7 @@ $messages['gl'] = array(
 	'refreshspecial-slave-lagged' => 'Intervalo de retraso, agardando...',
 	'refreshspecial-reconnected' => 'Reconectado.',
 	'refreshspecial-reconnecting' => 'Fallou a conexión, reconectando en 10 segundos...',
-	'refreshspecial-total-display' => '<br />$1 páxinas refrescadas dun total de $2 liñas dunha duración de $3 (a duración completa  da escritura é de $4)',
+	'refreshspecial-total-display' => '$1 páxinas refrescadas dun total de $2 liñas dunha duración de $3 (a duración completa  da escritura é de $4)',
 );
 
 /** Hebrew (עברית)
@@ -283,7 +287,7 @@ $messages['ia'] = array(
 	'refreshspecial-success-subtitle' => 'refrescamento de paginas special',
 	'refreshspecial-choice' => 'refrescamento de paginas special',
 	'refreshspecial-js-disabled' => '<i>(Tu non pote seliger tote le paginas si JavaScript non es active)</i>',
-	'refreshspecial-select-all-pages' => '  seliger tote le paginas',
+	'refreshspecial-select-all-pages' => ' seliger tote le paginas',
 	'refreshspecial-link-back' => 'Retornar al extension',
 	'refreshspecial-here' => '<b>hic</b>',
 	'refreshspecial-none-selected' => 'Tu non ha seligite alcun pagina special. Le selection retorna al predefinite.',
@@ -292,7 +296,7 @@ $messages['ia'] = array(
 	'refreshspecial-slave-lagged' => 'Sclavo in retardo; attende…',
 	'refreshspecial-reconnected' => 'Reconnectite.',
 	'refreshspecial-reconnecting' => 'Connexion fallite, reconnexion post 10 secundas…',
-	'refreshspecial-total-display' => '<br />Refrescava $1 paginas con un total de $2 lineas durante $3 (le durata total del execution del script es $4)',
+	'refreshspecial-total-display' => 'Refrescava $1 paginas con un total de $2 lineas durante $3 (le durata total del execution del script es $4)',
 );
 
 /** Italian (Italiano)
@@ -317,7 +321,7 @@ $messages['it'] = array(
 	'refreshspecial-no-page' => 'Pagina speciale inesistente',
 	'refreshspecial-reconnected' => 'Riconnesso.',
 	'refreshspecial-reconnecting' => 'Connessione fallita, prossimo tentativo fra 10 secondi...',
-	'refreshspecial-total-display' => '<br />$1 pagine aggiornate per un totale di $2 linee in un tempo di $3 (il tempo totale di esecuzione dello script è di $4)',
+	'refreshspecial-total-display' => '$1 pagine aggiornate per un totale di $2 linee in un tempo di $3 (il tempo totale di esecuzione dello script è di $4)',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -370,7 +374,7 @@ $messages['lb'] = array(
 	'refreshspecial-slave-lagged' => 'Aarbecht déi nach usteet, an der Maach ...',
 	'refreshspecial-reconnected' => 'Nees verbonn',
 	'refreshspecial-reconnecting' => "D'Verbindung koum net zustan, nei Verbindung an 10 Sekonnen ...",
-	'refreshspecial-total-display' => "<br />$1 Säite mat am Ganzen $2 Reien an $3 (Dauer) (d'Gesamtzäit déi de Script brauch ass $4)",
+	'refreshspecial-total-display' => "$1 Säite mat am Ganzen $2 Reien an $3 (Dauer) (d'Gesamtzäit déi de Script brauch ass $4)",
 );
 
 /** Erzya (Эрзянь)
@@ -408,7 +412,7 @@ De standaardinstellingen zijn hersteld.",
 	'refreshspecial-reconnected' => 'Weer verbonden.',
 	'refreshspecial-reconnecting' => 'Verbinding kon niet gemaakt worden.
 Over 10 seconden wordt weer geprobeerd verbinding te maken...',
-	'refreshspecial-total-display' => "<br />Er zijn $1 pagina's ververst met $2 regels in $3 tijd (totale duur van de verwerking was $4)",
+	'refreshspecial-total-display' => "Er zijn $1 pagina's ververst met $2 regels in $3 tijd (totale duur van de verwerking was $4)",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -425,7 +429,7 @@ $messages['nn'] = array(
 	'refreshspecial-success-subtitle' => 'oppdaterer spesialsider',
 	'refreshspecial-choice' => 'oppdaterer spesialsider',
 	'refreshspecial-js-disabled' => '(<i>Du kan ikkje merkja alle sider om JavaScript er slege av</i>)',
-	'refreshspecial-select-all-pages' => '  merk alle sider',
+	'refreshspecial-select-all-pages' => ' merk alle sider',
 	'refreshspecial-link-back' => 'Gå attende til utvidinga',
 	'refreshspecial-here' => '<b>her</b>',
 	'refreshspecial-none-selected' => 'Du har ikkje merkt noka spesialsida. Stiller attende til standardval.',
@@ -485,7 +489,7 @@ $messages['oc'] = array(
 	'refreshspecial-slave-lagged' => 'Trabalh retardat, en cors…',
 	'refreshspecial-reconnected' => 'Reconnectat.',
 	'refreshspecial-reconnecting' => 'Fracàs de la connexion, reconnexion dins 10 segondas…',
-	'refreshspecial-total-display' => "<br />$1 {{PLURAL:$1|pagina actualizada|paginas actualizadas}} totalizant $2 {{PLURAL:$2|linha|linhas}} sus una durada de $3 (la durada completa de l’accion de l'escript es de $4)",
+	'refreshspecial-total-display' => "$1 {{PLURAL:$1|pagina actualizada|paginas actualizadas}} totalizant $2 {{PLURAL:$2|linha|linhas}} sus una durada de $3 (la durada completa de l’accion de l'escript es de $4)",
 );
 
 /** Polish (Polski)
@@ -512,7 +516,7 @@ $messages['pt'] = array(
 	'refreshspecial-slave-lagged' => 'Servidor escravo com atraso, aguardando...',
 	'refreshspecial-reconnected' => 'Reconectado.',
 	'refreshspecial-reconnecting' => 'Conexão falhada, reconectando em 10 segundos...',
-	'refreshspecial-total-display' => '<br />$1 páginas refrescadas, totalizando $2 linhas em tempo $3 (tempo total de execução do script é $4)',
+	'refreshspecial-total-display' => '$1 páginas refrescadas, totalizando $2 linhas em tempo $3 (tempo total de execução do script é $4)',
 );
 
 /** Romanian (Română)
@@ -527,7 +531,7 @@ $messages['ro'] = array(
  * @author Ferrer
  */
 $messages['ru'] = array(
-	'refreshspecial-select-all-pages' => '  выбрать все страницы',
+	'refreshspecial-select-all-pages' => ' выбрать все страницы',
 	'refreshspecial-here' => '<b>здесь</b>',
 );
 
@@ -546,7 +550,7 @@ $messages['sk'] = array(
 	'refreshspecial-success-subtitle' => 'obnovujú sa špeciálne stránky',
 	'refreshspecial-choice' => 'obnovujú sa špeciálne stránky',
 	'refreshspecial-js-disabled' => '(<i>Nie je možné použiť funkciu výberu všetkých stránok, keď máte vypnutý JavaScript.</i>)',
-	'refreshspecial-select-all-pages' => '  vybrať všetky stránky',
+	'refreshspecial-select-all-pages' => ' vybrať všetky stránky',
 	'refreshspecial-link-back' => 'Späť na rozšírenie',
 	'refreshspecial-here' => '<b>tu</b>',
 	'refreshspecial-none-selected' => 'Nevybrali ste žiadne špeciálne stránky. Vracia sa pôvodný výber.',
@@ -555,7 +559,7 @@ $messages['sk'] = array(
 	'refreshspecial-slave-lagged' => 'Spojenie s databázovým slave je pomalé, čaká sa...',
 	'refreshspecial-reconnected' => 'Znovu pripojený.',
 	'refreshspecial-reconnecting' => 'Spojenie zlyhalo, opätovné pripojenie o 10 sekúnd...',
-	'refreshspecial-total-display' => '<br />Obnovených $1 stránok, čo činí $2 riadkov za čas $3 (celkový čas behu skriptu je $4)',
+	'refreshspecial-total-display' => 'Obnovených $1 stránok, čo činí $2 riadkov za čas $3 (celkový čas behu skriptu je $4)',
 );
 
 /** Swedish (Svenska)
@@ -568,7 +572,7 @@ $messages['sv'] = array(
 	'refreshspecial-refreshing' => 'uppdaterar specialsidor',
 	'refreshspecial-success-subtitle' => 'uppdaterar specialsidor',
 	'refreshspecial-choice' => 'uppdaterar specialsidor',
-	'refreshspecial-select-all-pages' => ' välj alla sidor',
+	'refreshspecial-select-all-pages' => 'välj alla sidor',
 	'refreshspecial-here' => '<b>här</b>',
 	'refreshspecial-no-page' => 'Ingen sådan specialsida',
 	'refreshspecial-reconnected' => 'Återansluten.',
@@ -579,7 +583,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'refreshspecial-select-all-pages' => ' అన్ని పేజీలను ఎంచుకోండి',
+	'refreshspecial-select-all-pages' => 'అన్ని పేజీలను ఎంచుకోండి',
 	'refreshspecial-link-back' => 'తిరిగి పొడగింతకు వెళ్ళండి',
 	'refreshspecial-here' => '<b>ఇక్కడ</b>',
 	'refreshspecial-db-error' => 'విఫలం: డాటాబేసు పొరపాటు',
@@ -601,7 +605,7 @@ $messages['tl'] = array(
 	'refreshspecial-success-subtitle' => 'sinasariwa ang natatanging mga pahina',
 	'refreshspecial-choice' => 'sinasariwa ang natatanging mga pahina',
 	'refreshspecial-js-disabled' => '(<i>Hindi mo mapipili ang lahat ng mga pahina kapag hindi gumagana ang JavaScript</i>)',
-	'refreshspecial-select-all-pages' => '  piliin ang lahat ng mga pahina',
+	'refreshspecial-select-all-pages' => ' piliin ang lahat ng mga pahina',
 	'refreshspecial-link-back' => 'Magbalik sa karugtong',
 	'refreshspecial-here' => '<b>dito</b>',
 	'refreshspecial-none-selected' => 'Hindi ka pumili ng anumang natatanging mga pahina.  Nagbabalik sa likas na nakatakdang pagpipilian.',
@@ -610,7 +614,7 @@ $messages['tl'] = array(
 	'refreshspecial-slave-lagged' => 'Naiwan/bumagal ang alipin, naghihintay...',
 	'refreshspecial-reconnected' => 'Muli nang naugnay.',
 	'refreshspecial-reconnecting' => 'Nabigo ang pagkakaugnay (koneksyon), muling uugnay sa loob ng 10 segundo...',
-	'refreshspecial-total-display' => '<br />Nasirawa ang $1 mga pahina na bumubuo sa $2 pahalang na mga hanay sa panahong $3 (buong panahon ng pagtakbo sa panitik ay $4)',
+	'refreshspecial-total-display' => 'Nasirawa ang $1 mga pahina na bumubuo sa $2 pahalang na mga hanay sa panahong $3 (buong panahon ng pagtakbo sa panitik ay $4)',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -629,7 +633,7 @@ $messages['vi'] = array(
 	'refreshspecial-success-subtitle' => 'đang làm mới trang đặc biệt',
 	'refreshspecial-choice' => 'đang làm mới trang đặc biệt',
 	'refreshspecial-js-disabled' => '(<i>Bạn không thể chọn tất cả các trang trong khi JavaScript bị tắt</i>)',
-	'refreshspecial-select-all-pages' => '  chọn tất cả các trang',
+	'refreshspecial-select-all-pages' => ' chọn tất cả các trang',
 	'refreshspecial-link-back' => 'Quay về bộ mở rộng',
 	'refreshspecial-here' => '<b>tại đây</b>',
 	'refreshspecial-none-selected' => 'Bạn chưa chọn trang đặc biệt nào. Đang quay về lựa chọn mặc định.',
@@ -638,7 +642,7 @@ $messages['vi'] = array(
 	'refreshspecial-slave-lagged' => 'Máy phụ bị trễ, đang chờ…',
 	'refreshspecial-reconnected' => 'Đã kết nối lại.',
 	'refreshspecial-reconnecting' => 'Kết nối thất bại, đang kết nối lại trong 10 giây nữa…',
-	'refreshspecial-total-display' => '<br />Đã làm mới $1 trang, tổng cộng là $2 hàng trong thời gian $3 (thời gian để hoàn thành chạy mã kịch bản là $4)',
+	'refreshspecial-total-display' => 'Đã làm mới $1 trang, tổng cộng là $2 hàng trong thời gian $3 (thời gian để hoàn thành chạy mã kịch bản là $4)',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -17,7 +17,7 @@ if( !defined('MEDIAWIKI') )
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Refresh Special',
 	'author' => 'Bartek Łapiński',
-	'version' => '1.1',
+	'version' => '1.2',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RefreshSpecial',
 	'description' => 'Allows manual special page refresh of special pages',
 	'descriptionmsg' => 'refreshspecial-desc',
@@ -25,7 +25,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 // New user right, required to use Special:RefreshSpecial
 $wgAvailableRights[] = 'refreshspecial';
-$wgGroupPermissions['staff']['refreshspecial'] = true;
+$wgGroupPermissions['bureaucrat']['refreshspecial'] = true;
 
 // Set up the new special page
 $dir = dirname(__FILE__) . '/';
@@ -33,6 +33,7 @@ $wgExtensionMessagesFiles['RefreshSpecial'] = $dir . 'RefreshSpecial.i18n.php';
 $wgExtensionAliasesFiles['RefreshSpecial'] = $dir . 'RefreshSpecial.alias.php';
 $wgAutoloadClasses['RefreshSpecial'] = $dir. 'RefreshSpecial.body.php';
 $wgSpecialPages['RefreshSpecial'] = 'RefreshSpecial';
+$wgSpecialPageGroups['RefreshSpecial'] = 'wiki';
 
 /* limits the number of refreshed rows */
 define('REFRESHSPECIAL_ROW_LIMIT', 1000);
