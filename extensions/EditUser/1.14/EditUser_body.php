@@ -520,6 +520,7 @@ class EditUser extends SpecialPage {
 		}
 
 		$qbs = $wgLang->getQuickbarSettings();
+		// FIXME: broken. Language::getSkinNames() was removed in r45031.
 		$skinNames = $wgLang->getSkinNames();
 		$mathopts = $wgLang->getMathNames();
 		$dateopts = $wgLang->getDatePreferences();
