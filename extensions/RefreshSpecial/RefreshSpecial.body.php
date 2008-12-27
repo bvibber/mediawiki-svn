@@ -273,7 +273,7 @@ class RefreshSpecialForm {
 		$this->refreshSpecial();
 		$sk = $wgUser->getSkin();
 		$titleObj = SpecialPage::getTitleFor( 'RefreshSpecial' );
-		$link_back = $sk->makeKnownLinkObj( $titleObj, wfMsg('refreshspecial-here') );
-		$wgOut->addHTML("<br />".wfMsg('refreshspecial-link-back')." $link_back.");
+		$link_back = $sk->makeKnownLinkObj( $titleObj, wfMsg('refreshspecial-link-back') );
+		$wgOut->addHTML("<br /><b>" . $link_back . "</b>");
 	}
 }
