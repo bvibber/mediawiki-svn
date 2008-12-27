@@ -41,6 +41,13 @@ $messages['af'] = array(
 	'scanset_prev' => '&lt; Vorige',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'scanset_next' => 'ቀጥሎ &gt;',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -728,6 +735,7 @@ $messages['ms'] = array(
  */
 $messages['nah'] = array(
 	'scanset_next' => 'Niman &gt;',
+	'scanset_prev' => '&lt; Achto',
 );
 
 /** Low German (Plattdüütsch)

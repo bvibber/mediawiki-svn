@@ -349,6 +349,17 @@ $messages['te'] = array(
 	'discussionthreading-replysection' => 'స్పందించండి',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'discussionthreading-desc' => "Magdagdag ng kahanayan ng \"hibla\" ng paguusap (''threading'') sa mga pahina ng usapan",
+	'discussionthreading-replysection' => 'tumugon',
+	'discussionthreading-replysectionhint' => 'Sumagot sa pagtatalang (pagpapahayag na) ito',
+	'discussionthreading-threadnewsection' => 'bago',
+	'discussionthreading-threadnewsectionhint' => "Magsimula ng isang bagong \"hibla\" (''thread'') ng pag-uusap",
+);
+
 /** Turkish (Türkçe)
  * @author Mach
  */

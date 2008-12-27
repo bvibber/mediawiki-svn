@@ -84,10 +84,12 @@ $messages['bg'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Imre
  * @author Melancholie
  */
 $messages['de'] = array(
+	'minipreview-desc' => 'MiniVorschau zeigt neben einem Bild eine kleine Vorschau von anderen Medien in derselben Kategorie oder auf derselben Seite an',
 	'minipreview-files_in_category' => "'''$1''' {{PLURAL:$1|Datei|Dateien}} (gesamt) in dieser Kategorie.",
 	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|Datei|Dateien}} (gesamt) in dieser Galerie.",
 	'minipreview-no_more_files_here' => 'Keine weiteren Dateien in dieser Richtung.',

@@ -711,6 +711,13 @@ $messages['pt'] = array(
 	'invitations-invite-success' => 'Convidou $1 para usar esta funcionalidade com sucesso!',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|O invitaţie disponibilă|$1 invitaţii disponibile}})',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

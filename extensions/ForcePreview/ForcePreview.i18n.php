@@ -403,10 +403,18 @@ Lưu trang (sau khi xem thử)',
 	'right-forcepreviewexempt' => 'Có thể lưu mà không sử dụng Xem trước',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'forcepreview' => '保存页面（需先预览）',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'forcepreview' => '儲存頁面 (需先預覽)',
+	'forcepreview' => '保存頁面（需先預覽）',
 );
 

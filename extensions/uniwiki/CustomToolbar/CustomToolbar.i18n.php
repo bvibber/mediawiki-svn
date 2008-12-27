@@ -173,6 +173,16 @@ $wgCustomToolbarMessages['bg'] = array(
 	'ct_user_sample' => 'Потребителско име',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$wgCustomToolbarMessages['cs'] = array(
+	'ct-desc' => 'Přidává rozširitelný panel nástrojů',
+	'ct_bold_sample' => 'Tučný text',
+	'ct_bold_tip_ins' => 'Vložit tučný text',
+	'ct_bold_tip_wrap' => 'Změnit tento text na tučný',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -265,7 +275,9 @@ $wgCustomToolbarMessages['eo'] = array(
 	'ct_user_sample' => 'Salutnomo',
 );
 
-/** Spanish (Español) */
+/** Spanish (Español)
+ * @author Imre
+ */
 $wgCustomToolbarMessages['es'] = array(
 	'ct_bold_sample' => 'Texto en negrita',
 	'ct_bold_tip_ins' => 'Insertar texto en negrita',
@@ -305,6 +317,8 @@ $wgCustomToolbarMessages['es'] = array(
 	'ct_close' => 'Cerrar la ventana',
 	'ct_success' => '¡El archivo se subió con éxito!',
 	'ct_popupblocked' => 'No se pudo abrir la ventana para subir el archivo. Revise su bloqueador de ventanas emergentes.',
+	'ct_user_user' => 'Usuario',
+	'ct_user_sample' => 'Nombre de usuario',
 );
 
 /** Finnish (Suomi)
@@ -657,6 +671,19 @@ Per favor verifica que tu blocator de pop-up lo permitte.',
 	'ct_user_sample' => 'Nomine de usator',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$wgCustomToolbarMessages['ja'] = array(
+	'ct_bold_sample' => '太字テキスト',
+	'ct_bold_caption' => '太字',
+	'ct_italic_sample' => '斜体テキスト',
+	'ct_italic_caption' => '斜体',
+	'ct_image_caption' => '画像の追加',
+	'ct_user_user' => 'ユーザー',
+	'ct_user_sample' => 'ユーザー名',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -959,6 +986,17 @@ Consultatz vòstres paramètres de blocatge dels popups.',
 	'ct_user_sample' => 'Nom de l’utilizaire',
 );
 
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$wgCustomToolbarMessages['pnb'] = array(
+	'ct_italic_caption' => 'ترچھا',
+	'ct_image_caption' => 'مورت لاؤ',
+	'ct_math_caption' => 'فارمولا',
+	'ct_submit' => 'جاؤ!',
+	'ct_user_sample' => 'ورتن آلا ناں',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -1232,6 +1270,56 @@ $wgCustomToolbarMessages['te'] = array(
 	'ct_user_tip' => 'వాడుకరి పేజీకి ఒక లింకుని చేర్చండి',
 	'ct_user_caption' => 'వాడుకరి లింకు',
 	'ct_user_sample' => 'వాడుకరిపేరు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$wgCustomToolbarMessages['tl'] = array(
+	'ct-desc' => 'Nagdaragdag ng isang nauunat/napapahabang balansang o bareta ng mga kagamitan',
+	'ct_bold_sample' => 'Makapal na panitik',
+	'ct_bold_tip_ins' => 'Magsingit ng makapal na panitik',
+	'ct_bold_tip_wrap' => 'Gawing makapal ang panitik na ito',
+	'ct_bold_caption' => 'Makapal',
+	'ct_italic_sample' => 'Nakapahilis na panitik',
+	'ct_italic_tip_ins' => 'Magsingit ng nakapahilis na panitik',
+	'ct_italic_tip_wrap' => 'Gawing nakapahilis ang pahinitik na ito',
+	'ct_italic_caption' => 'Nakapahilis',
+	'ct_internal_sample' => 'Pangalan ng Pahina',
+	'ct_internal_tip_ins' => 'Magsingit ng isang panloob na kawing',
+	'ct_internal_tip_wrap' => 'Gawing isang panloob na kawing ang panitik na ito',
+	'ct_internal_caption' => 'Panloob na kawing',
+	'ct_external_sample' => 'http://halimbawa.com',
+	'ct_external_tip_ins' => 'Magsingit ng isang panlabas na kawing',
+	'ct_external_tip_wrap' => 'Gawing isang panlabas na kawing ang panitik na ito',
+	'ct_external_caption' => 'Panlabas na kawing',
+	'ct_image_tip' => 'Magsingit ng isang larawan',
+	'ct_image_caption' => 'Idagdag ang larawan',
+	'ct_attachment_tip' => 'Magsingit ng isang kalakip/panlakip',
+	'ct_attachment_caption' => 'Idagdag ang panlakip/kalakip',
+	'ct_math_sample' => 'Isingit dito ang pormulang LaTex',
+	'ct_math_tip_ins' => 'Magsingit ng pormulang pangmatematika (LaTeX)',
+	'ct_math_tip_wrap' => 'Gawing isang pormulang pangmatematika (LaTeX) ang tesktong ito',
+	'ct_math_caption' => 'Pormula',
+	'ct_nowiki_sample' => 'Isingit dito ang hindi nakapormat na panitik/teksto',
+	'ct_nowiki_tip_ins' => 'Balewalain ang pagpopormat/pagsasaayos na pangwiki',
+	'ct_nowiki_tip_wrap' => 'Balewalain ang pagpopormat na pangwiki para sa panitik/tekstong ito',
+	'ct_nowiki_caption' => 'Walang wiki (huwag isawiki)',
+	'ct_horizontal_tip' => 'Magsingit ng isang pahalang na guhit (gamitin lamang ng madalang)',
+	'ct_horizontal_caption' => 'Pahalang na guhit',
+	'ct_upload' => 'Ikarga ang $1',
+	'ct_select' => 'Piliin ang $1 upang ikarga',
+	'ct_caption' => 'Magdagdag ng paliwanag o kapsyon (maaaring wala nito)',
+	'ct_link' => 'Magdagdag ng pangalan ng kawing  (maaaring wala nito)',
+	'ct_submit' => 'Gawin/Sige!',
+	'ct_close' => 'Isara ang bintana',
+	'ct_success' => 'Matagumpay ang pagkarga ng talaksan!',
+	'ct_popupblocked' => "Pinigilan sa pagbukas ang ikinargang \"sulpot-litaw\" (''popup'').
+Pakisuri ang iyong panghadlang ng sulpot-litaw.",
+	'ct_user_user' => 'Tagagamit',
+	'ct_user_tip' => 'Magsingit ng isang kawing na patungo sa isang pahina ng tagagamit',
+	'ct_user_caption' => 'Kawing sa tagagamit',
+	'ct_user_sample' => 'Pangalan ng tagagamit',
 );
 
 /** Vietnamese (Tiếng Việt)

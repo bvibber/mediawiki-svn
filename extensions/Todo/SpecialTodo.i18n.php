@@ -274,6 +274,15 @@ $messages['eo'] = array(
 	'todo-form-submit' => 'Enigi serĉomendon',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'todo-new-queue' => 'nuevo',
+	'todo-list-cancel' => 'Cancelar',
+	'todo-form-details' => 'Detalles:',
+);
+
 /** French (Français)
  * @author McDutchie
  * @author Urhixidur
@@ -511,6 +520,7 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'todo-list-change' => '変更',
 	'todo-list-cancel' => 'キャンセル',
 	'todo-form-details' => '詳細:',
 );
@@ -689,6 +699,9 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'todo' => 'mochi ic tlachīhua',
+	'todo-tab' => 'mochi',
+	'todo-list-change' => 'Ticpatlāz',
 	'todo-list-cancel' => 'Ticcuepāz',
 );
 
@@ -920,6 +933,7 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'todo-unrecognize-type' => 'Tip nerecunoscut',
 	'todo-list-cancel' => 'Anulează',
 	'todo-form-details' => 'Detalii:',
 );

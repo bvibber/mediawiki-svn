@@ -144,8 +144,10 @@ Jen paĝoj kiuj ankaŭ bezonas vian helpon: $1.',
 
 /** Finnish (Suomi)
  * @author Jack Phoenix
+ * @author Mobe
  */
 $messages['fi'] = array(
+	'editsimilar-desc' => 'Rohkaisee käyttäjiä muokkaamaan samankaltaista sivua tallennuksen jälkeen.',
 	'editsimilar-thanks' => 'Kiitos muokkauksestasi.
 Katso nämä aiheeseen liittyvät sivut: $1.',
 	'editsimilar-thanks-singleresult' => 'Kiitos muokkauksestasi.

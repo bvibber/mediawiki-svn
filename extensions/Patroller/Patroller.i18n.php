@@ -607,9 +607,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'patrol-revert-reason' => '理由:',
+	'patrol-skip' => 'スキップ',
 );
 
 /** Javanese (Basa Jawa)
@@ -1285,6 +1287,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -1309,6 +1312,7 @@ $messages['zh-hans'] = array(
 	'group-patroller' => '巡逻员',
 	'group-patroller-member' => '巡逻员',
 	'grouppage-patroller' => '{{ns:project}}:巡逻员',
+	'right-patroller' => '巡查页面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

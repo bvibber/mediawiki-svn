@@ -299,6 +299,13 @@ $messages['eo'] = array(
 	'contributors-nosuchpage' => 'La paĝo $1 ne ekzistas.',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'contributors-target' => 'Título:',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

@@ -196,6 +196,13 @@ $messages['myv'] = array(
 	'didyoumean-desc' => 'Полады сюлмавома пенеть, конатнень вельде ютават «ёнов молиця» конякс марто лопатнес',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'didyoumean-desc' => 'Tiquincēntilīz tzonhuiliztli zāzanilhuīc īca "achi neneuhqui" in ītōca',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

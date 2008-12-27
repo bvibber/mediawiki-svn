@@ -268,6 +268,13 @@ $messages['myv'] = array(
 	'icon-badwidth' => 'Амаштовикс келе',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'icon-badimage' => 'Ahcualli īxiptli',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

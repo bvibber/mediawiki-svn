@@ -278,6 +278,14 @@ Estus utila por disigo de artikoloj, ktp.',
 	'duplicator-toomanyrevisions' => '[[$1]] havas tro multajn ($2) reviziojn kaj ne povas esti kopiata. La aktuala limo estas $3.',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'duplicator-dest' => 'Destinación:',
+	'duplicator-submit' => 'Duplicado',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -286,10 +294,12 @@ $messages['ext'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Mobe
  * @author Niklas Laxström
  */
 $messages['fi'] = array(
 	'duplicator' => 'Monista sivu',
+	'duplicator-desc' => 'Luo itsenäisiä [[Special:Duplicate|kopioita sivuista]] säilyttäen muutoshistorian.',
 	'duplicator-toolbox' => 'Monista tämä sivu',
 	'duplicator-header' => 'Tällä sivulla voit luoda artikkelista täydellisen kopion historioineen.',
 	'duplicator-options' => 'Asetukset',
@@ -696,6 +706,8 @@ $messages['lb'] = array(
 	'duplicator-failed' => 'Wéint engem onbekannte Feeler konnt keen Doublon vun der Säit gemaach ginn.',
 	'duplicator-source-invalid' => 'Gitt w.e.g. e gëltege Quell-Titel un.',
 	'duplicator-source-notexist' => '[[$1]] gëtt et net. Gitt w.e.g. den Titel vun enger Säit un déi et gëtt.',
+	'duplicator-dest-invalid' => 'Gitt w.e.g. eng valabel Zilsäit unn.',
+	'duplicator-dest-exists' => '{{$1]] gëtt et schonn. Gitt w.e.g. eng Zilsäit unn déi et nach net gëtt.',
 	'duplicator-toomanyrevisions' => '[[$1]] huet zevill ($2) Versiounen an et ka keen Doublon dovu gemaach ginn. Déi aktuell Limit vun der Zuel vun de Versiounen ass $3.',
 );
 

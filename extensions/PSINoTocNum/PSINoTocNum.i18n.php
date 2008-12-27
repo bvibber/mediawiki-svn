@@ -71,6 +71,13 @@ $messages['es'] = array(
 	'psinotocnum-desc' => 'Nueva palabra mágica «<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>»',
 );
 
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'psinotocnum-desc' => 'Lisää uuden taikasanan "<nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki>".',
+);
+
 /** French (Français) */
 $messages['fr'] = array(
 	'psinotocnum-desc' => 'Nouveau mot magique « <nowiki>__</nowiki>NOTOCNUM<nowiki>__</nowiki> »',

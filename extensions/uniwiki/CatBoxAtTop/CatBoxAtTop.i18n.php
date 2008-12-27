@@ -203,6 +203,7 @@ $messages['lb'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'catboxattop-desc' => 'Ticcēntilīz in neneuhcāyōcaxitl ahco in zāzanilpan',
 	'catboxattop-categories' => 'Neneuhcāyōtl',
 );
 
@@ -220,6 +221,13 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'catboxattop-desc' => 'Apondre una boita de categoria en naut a drecha de las paginas',
 	'catboxattop-categories' => 'Categorias',
+);
+
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'catboxattop-categories' => 'کیٹاگریاں',
 );
 
 /** Portuguese (Português)

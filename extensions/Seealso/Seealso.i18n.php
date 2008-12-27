@@ -410,6 +410,13 @@ $messages['vo'] = array(
 	'seealso' => 'Logolös i',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'seealso' => '参见',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

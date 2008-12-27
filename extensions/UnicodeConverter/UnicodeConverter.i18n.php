@@ -101,6 +101,14 @@ $messages['eo'] = array(
 	'unicodeconverter-newtext' => 'Konvertita teksto:',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'unicodeconverter-oldtext' => 'Texto original:',
+	'unicodeconverter-newtext' => 'Texto convertido:',
+);
+
 /** Finnish (Suomi)
  * @author Silvonen
  * @author Str4nd
@@ -301,6 +309,15 @@ $messages['pl'] = array(
 	'unicodeconverter-ok' => 'OK',
 );
 
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'unicodeconverter-ok' => 'ٹھیک اے',
+	'unicodeconverter-oldtext' => 'اصلی لکھائي:',
+	'unicodeconverter-newtext' => 'بدلی ہوئی لکھائی:',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
@@ -368,6 +385,17 @@ $messages['te'] = array(
  */
 $messages['th'] = array(
 	'unicodeconverter-ok' => 'ตกลง',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'unicodeconverter' => 'Pampalit ng unikodigo',
+	'unicodeconverter-desc' => 'Isang payak na halimbawa ng isang sangkap (modulo) na pangnatatanging pahina. [[Special:UnicodeConverter|Kapag binigyan ng isang "bagting" na UTF-8]], papalitan ito nito upang maging mga nilalang na HTML na naaangkop para sa isang pahinang pangweb na pang-ISO 8859-1',
+	'unicodeconverter-ok' => "Sige/Ayos 'yan",
+	'unicodeconverter-oldtext' => 'Orihinal na teksto:',
+	'unicodeconverter-newtext' => 'Napalitang teskto:',
 );
 
 /** Vietnamese (Tiếng Việt)

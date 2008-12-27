@@ -117,11 +117,12 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'commentspammer-save-blocked' => 'IP-osoitteesi epäillään olevan kommenttispämmeri, joten sivua ei ole tallennettu.
-[[Special:UserLogin|Kirjaudu sisään tai luo tili]] välttääksesi tämän.',
+[[Special:UserLogin|Kirjaudu sisään tai luo käyttäjätunnus]], jos haluat välttää tämän.',
 );
 
 /** French (Français)

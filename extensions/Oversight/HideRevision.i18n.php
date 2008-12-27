@@ -741,6 +741,7 @@ Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-raj
 
 /** Spanish (Español)
  * @author Aleator
+ * @author Imre
  * @author Remember the dot
  * @author Sanbec
  * @author Titoxd
@@ -748,6 +749,7 @@ Dono de ĉi tiu informo eble povus rezulti en daŭra malgajno de Kontrolanto-raj
 $messages['es'] = array(
 	'hiderevision' => 'Esconder revisiones permanentemente',
 	'hiderevision-desc' => 'Esconde revisiones individuales de todos los usuarios para motivos legales etc.',
+	'group-oversight' => 'Oversighters',
 	'right-oversight' => 'Ver una revisión anteriormente escondida',
 	'right-hiderevision' => 'Revisar y restaurar revisiones ocultadas por los administradores',
 	'hiderevision-prompt' => 'Número de revisión a ocultar:',
@@ -764,6 +766,7 @@ $messages['es'] = array(
 	'oversight-view' => 'detalles',
 	'oversight-difference' => '(Diferencia de revisión anterior restante)',
 	'oversight-hidden' => 'Revisión escondida',
+	'oversight-offender' => 'Contraventor:',
 );
 
 /** Basque (Euskara) */
@@ -2210,14 +2213,20 @@ Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten wor
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
+ * @author Harald Khan
  */
 $messages['nn'] = array(
 	'hiderevision' => 'Fjern versjonar av sider permanent',
 	'hiderevision-desc' => 'Fjern individuelle versjonar av sider for alle brukarane, til dømes av juridiske grunnar.',
+	'group-oversight' => 'Versjonsfjernarar',
+	'group-oversight-member' => 'Versjonsfjernar',
+	'grouppage-oversight' => '{{ns:project}}:Versjonsfjerning',
+	'right-oversight' => 'Syna tidlegare gøymde versjonar',
+	'right-hiderevision' => 'Skoda og attoppretta versjonar gøymde for administratorar',
 	'hiderevision-prompt' => 'Nummeret på versjonen som skal fjernast:',
 	'hiderevision-continue' => 'Hald fram',
 	'hiderevision-text' => "Denne funksjonen bør '''berre''' brukast i slike tilfelle:
-* Upassande perslonleg informasjon
+* Upassande personleg informasjon
 *: ''Heimeadresser og telefonnummer, personnummer osb.''
 
 '''Misbruk av dette systemet vil føre til at du mistar retten til å bruke det.'''
@@ -2226,6 +2235,7 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
 	'hiderevision-reason' => 'Grunn (vert logga privat):',
 	'hiderevision-submit' => 'Fjern denne informasjonen permanent',
 	'hiderevision-tab' => 'Fjern versjonen',
+	'hiderevision-link' => 'Gøymde brukarbidrag',
 	'hiderevision-norevisions' => 'Ingen versjonar er merka for fjerning.',
 	'hiderevision-noreason' => 'Du må gje ein grunn for denne fjerninga.',
 	'hiderevision-status' => 'Versjon $1: $2',
@@ -2234,7 +2244,7 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
 	'hiderevision-error-current' => 'Kan ikkje slette den siste endringa på ei side. Rull attende denne endringa fyrst.',
 	'hiderevision-error-delete' => 'Kunne ikkje arkivere, er endringa sletta tidlegare?',
 	'hiderevision-archive-status' => 'Sletta versjon frå $1: $2',
-	'oversight-nodiff' => 'Kunne ikke spore endringer sidan det ikke finst tidlegare versjonar av sida. Enten:
+	'oversight-nodiff' => 'Kunne ikkje spora endringar sidan det ikkje finst tidlegare versjonar av sida. Anten:
 *Er sida sletta
 *Eller den fjerna versjonen var den fyrste versjonen',
 	'oversight-log-hiderev' => 'fjerna ei endring frå $1',
@@ -2244,9 +2254,13 @@ Versjonar av sider som vert fjerna vil ikkje vere tilgjengelege for nokon via ne
 	'oversight-prev' => 'Siste tidlegare versjon',
 	'oversight-hidden' => 'Fjerna versjon',
 	'oversight-header' => 'Dette er ei liste over dei siste versjonane av sider som permanent er fjerna frå offentleg innsyn. Å gje denne informasjonen vidare kan gjere til at du permanent mistar retten til versjonsfjerning.',
+	'oversight-legend' => 'Søk i versjonsfjerningsloggen',
+	'oversight-oversighter' => 'Versjonsfjernar:',
+	'oversight-offender' => 'Skuldig:',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  * @author Laaknor
  */
@@ -2289,7 +2303,7 @@ Revisjoner som fjernes vil ikke være tilgjengelige for noen via nettsiden, men 
 	'oversight-prev' => 'Siste forrige revisjon',
 	'oversight-hidden' => 'Skjult revisjon',
 	'oversight-header' => 'Nedenfor er en liste over revisjoner som nylig er blitt skjult fra offentligheten. Å frigi denne informasjonen kan føre til permanent tap av revisjonsslettingsrettigheter.',
-	'oversight-legend' => 'Søk i revisjonsferningsloggen',
+	'oversight-legend' => 'Søk i revisjonsfjerningsloggen',
 	'oversight-oversighter' => 'Revisjonssletter:',
 	'oversight-offender' => 'Synder:',
 );
@@ -3368,6 +3382,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
+ * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'hiderevision' => '永久隱藏修訂版本',
@@ -3390,6 +3405,7 @@ $messages['zh-hant'] = array(
 	'hiderevision-reason' => '理由 (這個記錄將不會公開):',
 	'hiderevision-submit' => '永久隱藏這項資料',
 	'hiderevision-tab' => '隱藏此修訂',
+	'hiderevision-link' => '隱藏用戶貢獻',
 	'hiderevision-norevisions' => '沒有指定的修訂版本被刪除',
 	'hiderevision-noreason' => '您必須說明隱藏這個修訂版本的理由。',
 	'hiderevision-status' => '修訂版本 $1: $2',
@@ -3402,11 +3418,13 @@ $messages['zh-hant'] = array(
 *此頁面已經被刪除。
 *隱藏的頁面為最先建立的版本。',
 	'oversight-log-hiderev' => '隱藏 $1 中的一個修訂版本',
+	'oversight' => '監督',
 	'oversight-view' => '內容',
 	'oversight-difference' => '(與之前存在之修訂版本的差異)',
 	'oversight-prev' => '最後一個之前的修訂版本',
 	'oversight-hidden' => '隱藏修訂',
 	'oversight-header' => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
 	'oversight-legend' => '搜尋修訂隱藏日誌',
+	'oversight-oversighter' => '監督者:',
 );
 

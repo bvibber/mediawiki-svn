@@ -330,6 +330,35 @@ $messages['ca'] = array(
 	'usagestatistics-editpages' => "Estadístiques $1 de pàgines de l'usuari",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'specialuserstats' => 'Statistika uživatelů',
+	'usagestatistics' => 'Statistika používanosti',
+	'usagestatistics-desc' => 'Zobrazení statistik jednotlivého uživatele a celé wiki',
+	'usagestatisticsfor' => '<h2>Statistika používanosti pro uživatele [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statistika využití pro všechny uživatele</h2>',
+	'usagestatisticsinterval' => 'Interval',
+	'usagestatisticstype' => 'Typ',
+	'usagestatisticsstart' => 'Počáteční datum',
+	'usagestatisticsend' => 'Konečné datum',
+	'usagestatisticssubmit' => 'Vytvořit statistiku',
+	'usagestatisticsnostart' => '* <font color=red>Prosím, uveďte počáteční datum</font>',
+	'usagestatisticsnoend' => '* <font color=red>Prosím, uveďte konečné datum</font>',
+	'usagestatisticsbadstartend' => '<b>Chybné <i>počáteční</i> a/nebo <i>konečné</i> datum!</b>',
+	'usagestatisticsintervalday' => 'Den',
+	'usagestatisticsintervalweek' => 'Týden',
+	'usagestatisticsintervalmonth' => 'Měsíc',
+	'usagestatisticsincremental' => 'Inkrementální',
+	'usagestatisticsincremental-text' => 'inkrementální',
+	'usagestatisticscumulative' => 'Kumulativní',
+	'usagestatisticscumulative-text' => 'kumulativní',
+	'usagestatisticscalselect' => 'Vybrat',
+	'usagestatistics-editindividual' => 'Statistika úprav jednotlivého uživatele $1',
+	'usagestatistics-editpages' => 'Statistika stránek jednotlivého uživatele $1',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -441,12 +470,18 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'usagestatisticsinterval' => 'Intervalo',
+	'usagestatisticstype' => 'Tipo',
+	'usagestatisticsstart' => 'Fecha del principio',
+	'usagestatisticsend' => 'Fecha del fin',
 	'usagestatisticsintervalday' => 'Día',
 	'usagestatisticsintervalweek' => 'Semana',
 	'usagestatisticsintervalmonth' => 'Mes',
+	'usagestatisticscalselect' => 'seleccionar',
 );
 
 /** Finnish (Suomi)
@@ -682,6 +717,15 @@ $messages['is'] = array(
 	'usagestatisticsintervalday' => 'Dagur',
 	'usagestatisticsintervalweek' => 'Vika',
 	'usagestatisticsintervalmonth' => 'Mánuður',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'usagestatisticsinterval' => 'インターバル',
+	'usagestatisticstype' => 'タイプ',
+	'usagestatisticsintervalday' => '日',
 );
 
 /** Javanese (Basa Jawa)

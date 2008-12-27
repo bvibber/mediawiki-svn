@@ -131,6 +131,26 @@ $messages['de'] = array(
 	'nss-db-error' => 'Fehler beim Lesen aus der Authentifizierungs-Datenbank',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'accountmanager' => 'Zastojnik kontow',
+	'am-username' => 'wužywarske mě',
+	'am-email' => 'e-mail',
+	'am-active' => 'aktiwny',
+	'am-updated' => 'Twóje změny su se wuspěšnje składowali.',
+	'nss-desc' => 'Tykac, aby awtentificěrowało pśeśiwo datowej bance libnss-mysql. Wopśimujo [[Special:AccountManager|zastojnik kontow]]',
+	'nss-rights' => 'pšawa',
+	'nss-save-changes' => 'Změny składowaś',
+	'nss-create-account-header' => 'Nowe konto załožyś',
+	'nss-create-account' => 'Konto załožyś',
+	'nss-no-mail' => 'Njepósćel e-mailku',
+	'nss-welcome-mail' => 'Konto z wužywarskim mjenim $1 a gronidłom $2 jo se załožyło za tebje.',
+	'nss-welcome-mail-subject' => 'Konto załožyś',
+	'nss-db-error' => 'Zmólka pśi cytanju z awtenficěrowańskeje datoweje banki',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -147,6 +167,14 @@ $messages['eo'] = array(
 	'nss-no-mail' => 'Ne sendi retpoŝton',
 	'nss-welcome-mail' => 'Konto kun salutnomo $1 kaj pasvorto $2 estis kreita por vi.',
 	'nss-welcome-mail-subject' => 'Konta kreado',
+);
+
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'am-username' => 'nombre de usuario',
+	'am-active' => 'activo',
 );
 
 /** French (Français)
@@ -220,6 +248,34 @@ $messages['he'] = array(
 	'nss-db-error' => 'שגיאה בקריאה מבסיס הנתונים של ההזדהות',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'accountmanager' => 'Zrjadowak kontow',
+	'am-username' => 'wužiwarske mjeno',
+	'am-email' => 'e-mejl',
+	'am-active' => 'aktiwny',
+	'am-updated' => 'Twoje změny su so wuspěšnje składowali',
+	'nss-desc' => 'Tykač, zo by přećiwo datowej bance libnss-mysql awtentifikowało. Wobsahuje [[Special:AccountManager|zrjadowak kontow]]',
+	'nss-rights' => 'prawa',
+	'nss-save-changes' => 'Změny składować',
+	'nss-create-account-header' => 'Nowe konto załožić',
+	'nss-create-account' => 'Konto załožić',
+	'nss-no-mail' => 'Njepósćel e-mejlku',
+	'nss-welcome-mail' => 'Konto z wužiwarskim mjenom $1 a hesłom $2 je so za tebje załožiło.',
+	'nss-welcome-mail-subject' => 'Konto załožić',
+	'nss-db-error' => 'Zmylk při čitanju z awtentifikaciskeje datoweje banki',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'accountmanager' => 'アカウントマネージャー',
+	'am-active' => '有効',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */
@@ -284,6 +340,15 @@ $messages['lb'] = array(
 	'nss-welcome-mail' => 'E Benotzerkont mat dem Benotzernumm $1 an dem Passwuert $2 gouf fir Iech opgemaach.',
 	'nss-welcome-mail-subject' => 'Benotzerkont opmaachen',
 	'nss-db-error' => 'Feeler beim Liese vun der Datebank mat den Authentifikatiounen',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'am-email' => 'e-mail',
+	'nss-create-account-header' => 'Ticchīhuāz yancuīc cuentah',
+	'nss-create-account' => 'Ticchīhuāz cuentah',
 );
 
 /** Dutch (Nederlands)
@@ -416,6 +481,26 @@ $messages['te'] = array(
 	'nss-save-changes' => 'మార్పులను భద్రపరచు',
 	'nss-create-account-header' => 'కొత్త ఖాతాని సృష్టించండి',
 	'nss-welcome-mail-subject' => 'ఖాతా సృష్టింపు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'accountmanager' => 'Tagapamahala ng kuwenta',
+	'am-username' => 'pangalan ng tagagamit',
+	'am-email' => 'e-liham',
+	'am-active' => 'masigla (aktibo)',
+	'am-updated' => 'Matagumpay na nasagip ang iyong mga pagbabago',
+	'nss-desc' => "Isang pampasak (''plug-in'') na makapagpapatunay laban sa isang kalipunan ng datong libnss-mysql.  Naglalaman ng isang [[Special:AccountManager|tagapamahala ng kuwenta]]",
+	'nss-rights' => 'mga karapatan',
+	'nss-save-changes' => 'Sagipin ang mga pagbabago',
+	'nss-create-account-header' => 'Lumikha ng bagong kuwenta (akawnt)',
+	'nss-create-account' => 'Likhain ang kuwenta (akawnt)',
+	'nss-no-mail' => 'Huwag ipadala ang e-liham',
+	'nss-welcome-mail' => 'Nilikha para sa iyo ang isang akawnt/kuwentang may pangalan ng tagagamit na $1 at hudyat na $2.',
+	'nss-welcome-mail-subject' => 'Paglikha ng kuwenta',
+	'nss-db-error' => 'Kamalian sa pagbasa mula sa kalipunan ng datong pampagpapatunay',
 );
 
 /** Vietnamese (Tiếng Việt)

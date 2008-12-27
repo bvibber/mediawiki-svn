@@ -198,11 +198,13 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Cojoilustrado
+ * @author Imre
  */
 $messages['es'] = array(
 	'onlinestatus-desc' => 'Crea una preferencia para mostrar si el usuario está conectado al wiki',
 	'onlinestatus-subtitle-offline' => 'Este usuario se encuentra desconectado',
 	'onlinestatus-subtitle-online' => 'Este usuario se encuentra conectado',
+	'onlinestatus-tab' => 'Estatus',
 	'onlinestatus-toggles-desc' => 'Tu estatus:',
 	'onlinestatus-toggles-explain' => 'Esto te permite mostrar a otros usuarios si estás conectado en tu página de usuario.',
 	'onlinestatus-toggles-show' => 'Muestra mi status en mi página de usuario',
@@ -382,9 +384,12 @@ $messages['ia'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'onlinestatus-tab' => '状況',
+	'onlinestatus-toggle-offline' => 'オフライン',
+	'onlinestatus-toggle-online' => 'オンライン',
 );
 
 /** Javanese (Basa Jawa)
@@ -423,6 +428,9 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'onlinestatus-desc' => 'Erlaub en de Enstellunge för de Metmaacher e Krützje, öm op de Metmaachersigg ze zeije, of mer Online es odder nit.',
+	'onlinestatus-js-anon' => 'Fähler: Do moß ald ennjelogg sin, öm dat maache ze künne',
+	'onlinestatus-js-changed' => 'Dinge Stattus es op „$1“ jeändert.',
+	'onlinestatus-js-error' => 'Et wohr nit müjjelesch, dä Stattus ze änderer, „$1“ es nit jöltesch.',
 	'onlinestatus-subtitle-offline' => 'Dä Metmaacher is em Momang nit doh',
 	'onlinestatus-subtitle-online' => 'Dä Metmaacher is jrad online',
 	'onlinestatus-tab' => 'Stattus',
@@ -431,6 +439,8 @@ $messages['ksh'] = array(
 	'onlinestatus-toggles-show' => 'Zeich minge Online-Stattus op minge Metmachersigg',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
+	'tog-onlineOnLogin' => 'Donn minge Stattuß op „onlain“ saze, wann esch ennlogg',
+	'tog-offlineOnLogout' => 'Donn minge Stattuß op „offlain“ saze, wann esch ußlogg',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -438,7 +448,9 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'onlinestatus-desc' => 'Setzt eng Astellung derbäi fir ze weisen ob de Benotzer op dëser Wiki zur Zäit online ass',
+	'onlinestatus-js-anon' => 'Feeler: Dir musst ageloggt si fir dës Fonctioun ze benotzen',
 	'onlinestatus-js-changed' => 'Äre Statut gouf op "$1" geännert',
+	'onlinestatus-js-error' => 'Et ass nët méiglech de Statut z\'änneren, de Wert "$1" ass net valabel',
 	'onlinestatus-subtitle-offline' => 'Dëse Benotzer ass zur Zäit offline',
 	'onlinestatus-subtitle-online' => 'Dëse Benotzer ass zur Zäit online',
 	'onlinestatus-tab' => 'Status',
@@ -447,6 +459,8 @@ $messages['lb'] = array(
 	'onlinestatus-toggles-show' => 'Online-Status op menger Benotzersäit weisen',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
+	'tog-onlineOnLogin' => 'Mäi Statut op online änneren esoubal ech mech aloggen',
+	'tog-offlineOnLogout' => 'Mäi Statu op offline änneren esoubal ech mech ausloggen',
 );
 
 /** Lithuanian (Lietuvių)

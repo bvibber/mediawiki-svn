@@ -215,6 +215,13 @@ $messages['eo'] = array(
 	'lookupuser-useroptions' => 'Opcioj de uzanto:',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'lookupuser-realname' => 'Nombre real: $1',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -643,6 +650,14 @@ $messages['ms'] = array(
 	'lookupuser-useroptions' => 'Pilihan pengguna:',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'lookupuser-id' => 'Tlatequitiltilīlli ID: <tt>#$1</tt>',
+	'lookupuser-realname' => 'Melāhuac tōcāitl: $1',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author SPQRobin
@@ -774,6 +789,15 @@ $messages['pt'] = array(
 	'lookupuser-useroptions' => 'Opções de utilizador:',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'lookupuser-nonexistent' => 'Eroare: Utilizatorul nu există',
+	'lookupuser-realname' => 'Nume real: $1',
+	'lookupuser-registration' => 'Data înregistrării: $1',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -801,6 +825,27 @@ $messages['ru'] = array(
 	'lookupuser-touched' => 'Последнее обновление записи участника: $1',
 	'lookupuser-info-authenticated' => 'Аутентификация по почте: $1',
 	'lookupuser-useroptions' => 'Настройки участника:',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'lookupuser' => 'Talìa nfurmazzioni utenti',
+	'lookupuser-desc' => "[[Special:LookupUser|Ricùpira nfurmazzioni]] supra a n'utenti comu ndirizzu e-mail e ID",
+	'lookupuser-intro' => 'Nzirisci nu nomu utenti pi taliari li prifirenzi.',
+	'lookupuser-nonexistent' => "Sbàgghiu: l'utenti non esisti",
+	'lookupuser-authenticated' => 'Cunferma nnirizzu e-mail: $1',
+	'lookupuser-not-authenticated' => 'no cunfirmatu',
+	'lookupuser-id' => 'ID utenti: <tt>#$1</tt>',
+	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'non privisti',
+	'lookupuser-realname' => 'Nomu veru: $1',
+	'lookupuser-registration' => 'Data di riggistrazzioni: $1',
+	'lookupuser-no-registration' => 'non dispunìbbili',
+	'lookupuser-touched' => 'Ùrtima visita riggistrata: $1',
+	'lookupuser-info-authenticated' => 'Autenticazzioni e-mail: $1',
+	'lookupuser-useroptions' => 'Prifirenzi utenti:',
 );
 
 /** Slovak (Slovenčina)

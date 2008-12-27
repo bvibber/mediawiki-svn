@@ -324,6 +324,15 @@ $messages['mr'] = array(
 $3 वर एक नवीन सदस्य नोंदणी, $2, $4 ला झालेली आहे.',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'newusernotifbody' => 'Niltze $1,
+
+Cē yancuīc tlatequitiltilīlli cuentah, $2, ōmochīuh īpan $3 īpan $4.',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

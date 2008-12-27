@@ -153,6 +153,10 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'sign-city' => 'ከተማ:',
+	'sign-country' => 'ሀገር:',
+	'sign-viewfield-city' => 'ከተማ',
+	'sign-viewfield-country' => 'ሀገር',
 	'sign-viewfield-reviewcomment' => 'ማጠቃለያ',
 	'sign-review-comment' => 'ማጠቃለያ',
 );
@@ -654,6 +658,30 @@ $messages['eo'] = array(
 	'sign-uniquequery-similaraddress' => 'Simila adreso',
 	'sign-uniquequery-similarphone' => 'Simila nombro de telefono',
 	'sign-uniquequery-similaremail' => 'Simila retadreso',
+);
+
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'sign-selectdoc' => 'Documento:',
+	'sign-realname' => 'Nombre:',
+	'sign-city' => 'Ciudad:',
+	'sign-state' => 'Estado:',
+	'sign-country' => 'País:',
+	'sign-phone' => 'Número de teléfono:',
+	'sign-bday' => 'Edad:',
+	'sign-email' => 'Dirección de correo electrónico:',
+	'sign-viewfield-realname' => 'Nombre',
+	'sign-viewfield-city' => 'Ciudad',
+	'sign-viewfield-state' => 'Estado',
+	'sign-viewfield-country' => 'País',
+	'sign-viewfield-ip' => 'Dirección IP',
+	'sign-viewfield-email' => 'Correo electrónico',
+	'sig-anonymous' => '<i>Anónimo</i>',
+	'sig-private' => '<i>Privado</i>',
+	'sign-viewfield-reviewcomment' => 'Comentario',
+	'sign-review-comment' => 'Comentario',
 );
 
 /** Extremaduran (Estremeñu)
@@ -1304,8 +1332,17 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'sign-selectdoc' => 'ドキュメント:',
+	'sign-realname' => '名前:',
+	'sign-viewfield-timestamp' => 'タイムスタンプ',
+	'sign-viewfield-realname' => '名前',
+	'sign-viewfield-address' => 'アドレス',
+	'sign-viewfield-ip' => 'IPアドレス',
+	'sign-viewfield-phone' => '電話',
+	'sign-viewfield-options' => 'オプション',
 	'sign-viewfield-reviewcomment' => 'コメント',
 	'sign-review-comment' => 'コメント',
 );
@@ -1746,7 +1783,15 @@ $messages['myv'] = array(
  */
 $messages['nah'] = array(
 	'sign-realname' => 'Tōcāitl:',
+	'sign-address' => 'Ohcān:',
+	'sign-city' => 'Āltepētl:',
+	'sign-state' => 'Tlahtōcāyōtl:',
+	'sign-country' => 'Tlācatiyān:',
 	'sign-viewfield-realname' => 'Tōcāitl',
+	'sign-viewfield-address' => 'Tlacān',
+	'sign-viewfield-city' => 'Āltepētl',
+	'sign-viewfield-state' => 'Tlahtōcāyōtl',
+	'sign-viewfield-country' => 'Tlācatiyān',
 	'sign-viewfield-ip' => 'IP',
 	'sign-viewfield-email' => 'E-mail',
 );
@@ -2308,11 +2353,18 @@ $messages['ro'] = array(
 	'sign-phone' => 'Număr de telefon:',
 	'sign-bday' => 'Vârstă:',
 	'sign-email' => 'Adresă e-mail:',
+	'sign-list-hideaddress' => 'Nu afişa adresa',
+	'sign-list-hidephone' => 'Nu afişa telefonul',
+	'sign-list-hidebday' => 'Nu afişa vârsta',
+	'sign-list-hideemail' => 'Nu afişa adresa de e-mail',
 	'sign-viewfield-realname' => 'Nume',
+	'sign-viewfield-address' => 'Adresă',
 	'sign-viewfield-city' => 'Oraş',
 	'sign-viewfield-country' => 'Ţară',
 	'sign-viewfield-ip' => 'Adresă IP',
+	'sign-viewfield-phone' => 'Telefon',
 	'sign-viewfield-email' => 'E-mail',
+	'sign-viewfield-age' => 'Vârstă',
 	'sign-viewfield-options' => 'Opţiuni',
 	'sign-signatures' => 'Semnături',
 	'sig-private' => '<i>Privat</i>',
@@ -2838,6 +2890,22 @@ $messages['vo'] = array(
 	'sign-viewfield-state' => 'Tat',
 	'sign-viewfield-country' => 'Län',
 	'sign-viewfield-reviewcomment' => 'Küpet',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'sign-viewfield-realname' => '姓名',
+	'sign-viewfield-address' => '地址',
+	'sign-viewfield-ip' => 'IP地址',
+	'sign-viewfield-phone' => '电话',
+	'sign-viewfield-email' => '电子邮件',
+	'sign-viewfield-age' => '年龄',
+	'sign-uniquequery-similarname' => '近似姓名',
+	'sign-uniquequery-similaraddress' => '近似地址',
+	'sign-uniquequery-similarphone' => '近似电话',
+	'sign-uniquequery-similaremail' => '近似电邮',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

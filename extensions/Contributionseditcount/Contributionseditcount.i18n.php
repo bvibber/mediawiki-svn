@@ -299,6 +299,14 @@ $messages['mr'] = array(
 	'contributionseditcount-desc' => '[[Special:Contributions]] वर संपादन संख्या दर्शविते',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'contributionseditcount' => 'Inīn tlatequitiltilīlli quimpiya $1 tlapatlaliztli.',
+	'contributionseditcount-desc' => 'Tiquittāz tlapatlaliztli tlapōhualli [[Special:Contributions|ītlahcuilōlpan]]',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

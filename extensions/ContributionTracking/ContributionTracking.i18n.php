@@ -364,6 +364,13 @@ $messages['ms'] = array(
 	'contrib-tracking-button' => 'Terus',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'contrib-tracking-error' => 'Ahcuallōtl',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -495,6 +502,19 @@ $messages['sv'] = array(
 	'contrib-tracking-submitting' => 'Skickar till betalningshanterare...',
 	'contrib-tracking-continue' => 'Om du inte kommer vidare automatiskt, klicka på knappen för att slutföra din donation hos PayPal.',
 	'contrib-tracking-button' => 'Fortsätt',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'contributiontracking-desc' => 'Pagsunod sa bakas (pagtugaygay) para sa pangangalap ng salaping panustos (pondo) ng Wikimedia',
+	'contributiontracking' => 'Pagtugaygay/pagsunod sa bakas ng ambag',
+	'contrib-tracking-error' => 'Kamalian',
+	'contrib-tracking-error-text' => 'Hindi tanggap na anyo/pormularyo ng pagpasa',
+	'contrib-tracking-submitting' => 'Ipinapasa/ipinapadala sa tagapagsagawa (tagaproseso) ng bayad...',
+	'contrib-tracking-continue' => 'Kapag hindi ka kusang naituro/awtomatikong naihatid, pindutin ang pindutan upang mabuo ang iyong ambag/abuloy doon sa PayPal.',
+	'contrib-tracking-button' => 'Magpatuloy',
 );
 
 /** Ukrainian (Українська)

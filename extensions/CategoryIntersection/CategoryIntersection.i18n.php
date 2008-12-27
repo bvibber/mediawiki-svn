@@ -129,6 +129,15 @@ $messages['eo'] = array(
 	'categoryintersection-results' => 'La serĉo trovis $1 {{PLURAL:$1|pafon|pafojn}}.',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'categoryintersection-doit' => 'Listaa kaikissa näissä luokissa olevat sivut',
+	'categoryintersection-results' => 'Haku palautti $1 {{PLURAL:$1|tuloksen|tulosta}}.',
+);
+
 /** French (Français)
  * @author Grondin
  */

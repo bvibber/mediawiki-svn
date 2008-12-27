@@ -20,6 +20,15 @@ $messages['en'] = array(
 	'gblrights-rights-entry' => 'changed global group membership for $1 from $2 to $3',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'gblrights-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -136,12 +145,34 @@ $messages['hsb'] = array(
 	'gblrights-rights-entry' => 'změni globalne skupinski přisłušnosć za $1 z $2 do $3',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'shareduserrights' => 'Gestion de derectos commun de usatores',
+	'gblrights-desc' => 'Gestion facile del [[Special:SharedUserRights|derectos global de usatores]]',
+	'gblrights-logpage' => 'Registro de derectos global',
+	'gblrights-pagetext' => 'Isto es un registro de tote le cambiamentos facite in le tabula de derectos global del familia de wikis',
+	'gblrights-rights-entry' => 'cambiava le membrato de gruppos global pro $1 de $2 a $3',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
 $messages['ko'] = array(
 	'gblrights-logpage' => '공통 권한 기록',
 	'gblrights-rights-entry' => '$1 사용자의 공통 권한을 $2에서 $3으로 변경',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'shareduserrights' => 'Jemeinsam Rääschte för Metmaacher verwallde',
+	'gblrights-desc' => 'De [[Special:SharedUserRights|jemeinsam Rääshte för Metmaacher verwallde]] op en eifache Aat.',
+	'gblrights-logpage' => 'Logboch met de jemeinsame Rääschte för Metmaacher',
+	'gblrights-pagetext' => 'Hee dat Logbooch zeich de Änderunge aan dä Famillisch vun Wikis iere jemeinsam Rääschte för de Metmaacher.',
+	'gblrights-rights-entry' => 'hät de jemeinsam Rääschte-Jroppe för dä Metmaacher „$1“ fun „$2“ op „$3“ jeändert.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -193,6 +224,17 @@ $messages['sk'] = array(
 	'gblrights-logpage' => 'Záznam globálnych práv',
 	'gblrights-pagetext' => 'Toto je záznam všetkých zmien v tabuľke globálnych práv tejto rodiny wiki',
 	'gblrights-rights-entry' => 'zmenené globálne členstvo v skupine používateľa $1 z $2 na $3',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'shareduserrights' => 'Pamamahala ng Pinagsasaluhang mga Karapatan ng Tagagamit',
+	'gblrights-desc' => 'Maginhawang (madali) [[Special:SharedUserRights|pangangasiwa ng pandaigidigang mga karapatan ng tagagamit]]',
+	'gblrights-logpage' => 'Talaan ng mga Karapatang Pandaigdigan',
+	'gblrights-pagetext' => 'Isa itong talaan ng lahat ng mga pagbabagong ginawa sa tabla ng mga karapatang pandaigdigan ng mag-anak ng wiki',
+	'gblrights-rights-entry' => 'binago ang kasapian sa pandaigidigang pangkat para kay $1 mula $2 patungo sa $3',
 );
 
 /** Ukrainian (Українська)

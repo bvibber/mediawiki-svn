@@ -400,6 +400,23 @@ $messages['eo'] = array(
 	'tasks_logentry' => 'Por "[[$1]]"',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'tasks_form_comment' => 'Comentario',
+	'tasks_delete' => 'Borrar',
+	'tasks_here' => 'aquí',
+	'tasks_help_page' => 'Tareas',
+	'tasks_more_like_it' => 'más',
+	'tasks_table_header_page' => 'Página',
+	'tasks_search_form_title' => 'Buscar',
+	'tasks_search_tasks' => 'Tareas',
+	'tasks_search_status' => 'Estatus',
+	'tasks_sort' => 'Ordenar',
+	'tasks_status_closed' => 'Cerrado',
+);
+
 /** Finnish (Suomi)
  * @author Silvonen
  */
@@ -647,6 +664,82 @@ $messages['he'] = array(
 	'tog-show_task_comments' => 'הכללת דף השיחה של המשימה.',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'tasks' => 'Cargas',
+	'tasks_desc' => 'Un extension pro gerer cosas a facer',
+	'tasks_tab' => 'Cargas',
+	'tasks_title' => 'Cargas pro "$1"',
+	'tasks_form_new' => 'Crear nove carga',
+	'tasks_form_comment' => 'Commento',
+	'tasks_error1' => 'Le carga non es create: il existe ja un tal carga!',
+	'tasks_ok1' => 'Le nove carga ha essite create!',
+	'tasks_create_header' => 'Crear un nove carga',
+	'tasks_existing_header' => 'Cargas existente',
+	'tasks_existing_table_header' => 'Carga|Datas|Commento initial|Assignation/Actiones/Pagina',
+	'tasks_noone' => 'necuno',
+	'tasks_assign_me' => 'Assignar a me',
+	'tasks_assign_to' => 'Assignar a',
+	'tasks_unassign_me' => 'Disassignar de me',
+	'tasks_close' => 'Clauder carga',
+	'tasks_wontfix' => 'Non essera facite',
+	'tasks_delete' => 'Deler',
+	'tasks_no_task_delete_title' => 'Non permittite',
+	'tasks_no_task_delete_texe' => 'Tu non ha le permission de deler un carga. Solmente le administratores pote facer lo.',
+	'tasks_action_delete' => 'Un carga ha essite delite.',
+	'tasks_task_was_deleted' => 'Le carga ha essite delite con successo.',
+	'tasks_reopen' => 'Reaperir carga',
+	'tasks_assignedto' => 'Assignate a $1',
+	'tasks_created_by' => 'Create per $1',
+	'tasks_discussion_page_link' => 'Pagina de discussion del carga',
+	'tasks_closedby' => 'Claudite per $1',
+	'tasks_assigned_myself_log' => 'Autoassignation del carga "$1"',
+	'tasks_discussion_page_for' => 'Iste carga es pro le pagina "$1". Le lista de tote le cargas pro iste pagina es $2.',
+	'tasks_sidebar_title' => 'Cargas aperte',
+	'tasks_here' => 'hic',
+	'tasks_returnto' => 'Tu essera redirigite nunc. Si tu non ha essite redirigite post alcun secundas, clicca $1.',
+	'tasks_see_page_tasks' => '(cargas de iste pagina)',
+	'tasks_task_is_assigned' => '(assignate)',
+	'tasks_plain_text_only' => '(texto simple, 256 chars solmente)',
+	'tasks_help_page' => 'Cargas',
+	'tasks_help_page_link' => '?',
+	'tasks_more_like_it' => 'plus',
+	'tasks_task_types' => '1:cleanup:Polir|2:wikify:Wikificar|3:rewrite:Rescriber|4:delete:Deler|5:create:Crear|6:write:Scriber|7:check:Verificar',
+	'tasks_significance_order' => 'rescriber<deler',
+	'tasks_event_on_creation' => 'verificar',
+	'tasks_event_on_creation_anon' => 'verificar',
+	'tasks_on_creation_comment' => 'Carga automatic, generate al creation del pagina',
+	'tasks_link_your_assignments' => 'assignationes aperte',
+	'tasks_see_your_assignments' => 'Tu ha al momento $1 {{PLURAL:$1|assignation|assignationes}} aperte. Vide tu $2.',
+	'tasks_my_assignments' => 'Tu {{PLURAL:$1|assignation|assignationes}} actual',
+	'tasks_table_header_page' => 'Pagina',
+	'tasks_you_have_no_assignments' => 'Tu non ha assignationes aperte',
+	'tasks_search_form_title' => 'Cercar',
+	'tasks_search_tasks' => 'Cargas',
+	'tasks_search_status' => 'Stato',
+	'tasks_search_no_tasks_chosen_note' => '(Si tu non face un selection, tu cercara in tote le typos de carga.)',
+	'tasks_search_results' => 'Resultatos del recerca',
+	'tasks_previous' => 'Precedente',
+	'tasks_next' => 'Sequente',
+	'tasks_sort' => 'Ordinar',
+	'tasks_ascending' => 'Le plus ancianes primo',
+	'tasks_status_open' => 'Aperte',
+	'tasks_status_assigned' => 'Assignate',
+	'tasks_status_closed' => 'Claudite',
+	'tasks_status_wontfix' => 'Non essera facite',
+	'tasks_action_open' => 'Carga "$1" aperite.',
+	'tasks_action_assigned' => 'Carga "$1" assignate.',
+	'tasks_action_closed' => 'Carga "$1" claudite.',
+	'tasks_action_wontfix' => 'Non facera le carga "$1".',
+	'tasks_sign_delete' => '<b>Il ha un requesta a deler iste pagina!</b>',
+	'tasks_logpage' => 'Registro de cargas',
+	'tasks_logpagetext' => 'Isto es un registro de cambiamentos in le cargas',
+	'tasks_logentry' => 'Pro "[[$1]]"',
+	'tog-show_task_comments' => 'Inserer le pagina de commentos super le carga.',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -725,10 +818,21 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'tasks' => 'タスク',
+	'tasks_tab' => 'タスク',
+	'tasks_form_comment' => 'コメント',
+	'tasks_delete' => '削除',
+	'tasks_help_page' => 'タスク',
+	'tasks_event_on_creation' => 'チェック',
+	'tasks_event_on_creation_anon' => 'チェック',
 	'tasks_see_your_assignments' => 'あなたは現在 $1 個の未確定な割り当てがあります。あなたの$2を参照してください。',
 	'tasks_my_assignments' => '現在のあなたの割り当て',
+	'tasks_table_header_page' => 'ページ',
+	'tasks_search_form_title' => '検索',
+	'tasks_search_tasks' => 'タスク',
 	'tasks_search_status' => '状況',
 );
 
@@ -831,7 +935,7 @@ $messages['km'] = array(
 	'tasks_event_on_creation' => 'ពិនិត្យ',
 	'tasks_event_on_creation_anon' => 'ពិនិត្យ',
 	'tasks_link_your_assignments' => 'បើក​កិច្ចការ​នានា',
-	'tasks_my_assignments' => 'កិច្ចការ​បច្ចុប្បន្ន​របស់​អ្នក',
+	'tasks_my_assignments' => '{{PLURAL:$1|assignment|assignments}} បច្ចុប្បន្ន​របស់​អ្នក',
 	'tasks_table_header_page' => 'ទំព័រ',
 	'tasks_search_form_title' => 'ស្វែងរក',
 	'tasks_search_tasks' => 'ភារកិច្ច​នានា',
@@ -931,7 +1035,7 @@ Loor op Ding $2.',
 	'tasks_action_assigned' => 'Aufjab „$1“ zojedeilt.',
 	'tasks_action_closed' => 'Aufjab „$1“ zojemaat.',
 	'tasks_action_wontfix' => 'Aufjab „$1“ maache mer nit.',
-	'tasks_sign_delete' => 'Wood övver de Aufjabeleß jewönsch.',
+	'tasks_sign_delete' => '<b>Di Sigg hee fott ze schjmiiße wood övver de Aufjabeleß jewönsch.</b>',
 	'tasks_logpage' => 'Logbooch met de Änderunge aan Aufjabe',
 	'tasks_logpagetext' => 'Dat Logbooch hee zeich Änderunge aan Aufjabe',
 	'tasks_logentry' => 'för „[[$1]]“',
@@ -988,6 +1092,18 @@ $messages['lb'] = array(
 	'tasks_logpage' => 'Lëscht vun den Aufgaben',
 	'tasks_logpagetext' => 'Dëst ass eng Lëscht vun den Ännerunge vun den Aufgaben',
 	'tasks_logentry' => 'Fir "[[$1]]"',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'tasks_noone' => 'ayāc',
+	'tasks_delete' => 'Ticpolōz',
+	'tasks_table_header_page' => 'Zāzanilli',
+	'tasks_search_form_title' => 'Titlatēmōz',
+	'tasks_previous' => 'Achto',
+	'tasks_next' => 'Niman',
 );
 
 /** Dutch (Nederlands)
@@ -1536,6 +1652,38 @@ $messages['te'] = array(
 	'tasks_logpage' => 'పనుల చిట్టా',
 	'tasks_logpagetext' => 'ఇది పనులకు జరిగిన మార్పుల చిట్టా',
 	'tasks_logentry' => '"[[$1]]" కొరకు',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'tasks_event_on_creation_anon' => 'перевірити',
+	'tasks_on_creation_comment' => 'Автоматичне завдання, встановлене після створення статті',
+	'tasks_link_your_assignments' => 'поточні призначення',
+	'tasks_see_your_assignments' => 'У вас зараз $1 {{PLURAL:$1|відкрите призначення|відкритих призначення|відкритих призначень}}. Див. ваш $2.',
+	'tasks_my_assignments' => '{{PLURAL:$1|Ваше поточне призначення|Ваші поточні призначення}}',
+	'tasks_table_header_page' => 'Сторінка',
+	'tasks_you_have_no_assignments' => 'У вас не має поточних призначень',
+	'tasks_search_form_title' => 'Пошук',
+	'tasks_search_tasks' => 'Завдання',
+	'tasks_search_status' => 'Статус',
+	'tasks_search_results' => 'Результати пошуку',
+	'tasks_previous' => 'Назад',
+	'tasks_next' => 'Далі',
+	'tasks_sort' => 'Сортування',
+	'tasks_status_open' => 'Відкрита',
+	'tasks_status_assigned' => 'Призначена',
+	'tasks_status_closed' => 'Закрита',
+	'tasks_status_wontfix' => 'Не буде вирішуватися',
+	'tasks_action_open' => 'Завдання «$1» відкрите.',
+	'tasks_action_assigned' => 'Завдання «$1» призначене.',
+	'tasks_action_closed' => 'Завдання «$1» закрите.',
+	'tasks_action_wontfix' => 'Завдання «$1» не буде вирішуватися.',
+	'tasks_sign_delete' => '<b>Був запит на вилучення цієї сторінки!</b>',
+	'tasks_logpage' => 'Журнал завдань',
+	'tasks_logpagetext' => 'Це журнал зміни завдань',
+	'tasks_logentry' => 'Для «[[$1]]»',
 );
 
 /** Vietnamese (Tiếng Việt)

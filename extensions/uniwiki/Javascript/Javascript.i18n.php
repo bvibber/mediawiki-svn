@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'javascript-desc' => 'يضيف uniwiki.js لكل صفحة تحتوي شيفرة جافاسكربت مشاركة بين امتدادات يونيويكي.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'javascript-desc' => 'Přidává uniwiki.js na každou stránku obsahující JavaScriptový kód společný pro rozšíření UniWiki',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -47,6 +54,13 @@ $messages['dsb'] = array(
  */
 $messages['es'] = array(
 	'javascript-desc' => 'Añade a cada página uniwiki.js, que contiene código JavaScript compartido entre extensiones UniWiki',
+);
+
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'javascript-desc' => 'Lisää jokaiselle sivulle uniwiki.js koodin, joka sisältää Uniwiki laajennusten yhteisen JavaScript -ohjelman.',
 );
 
 /** French (Français)

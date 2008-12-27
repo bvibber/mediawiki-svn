@@ -23,7 +23,7 @@ Please create an alternate user name or $1 about the problem',
 	'regexblock-help'                 => 'Use the form below to block write access from a specific IP address or username.
 This should be done only to prevent vandalism, and in accordance with policy.
 \'\'This page will allow you to block even non-existing users, and will also block users with names similar to given, i.e. "Test" will be blocked along with "Test 2" etc.
-You can also block full IP addresses, meaning that no one logging from them will be able to edit pages.
+You can also block full IP addresses, meaning that no one logging in from them will be able to edit pages.
 Note: partial IP addresses will be treated by usernames in determining blocking.
 If no reason is specified, a default generic reason will be used.\'\'',
 	'regexblock-page-title-1'         => 'Block address using regular expressions',
@@ -344,6 +344,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Imre
  * @author Melancholie
  * @author Purodha
@@ -354,6 +355,7 @@ $messages['de'] = array(
 	'regexblock-desc' => 'Erweiterung zum Sperren von Benutzernamen und IP-Adressen mit regulären Ausdrücken. Enthält den Sperrmechanismus und eine [[Special:Regexblock|Spezialseite]] um Sperren hinzuzufügen und zu verwalten',
 	'regexblock-special-desc' => 'Benutzersperre verändern (über festgelegten Namen, mit regulären Ausdrücken)',
 	'regexblock-stat-desc' => 'Zeigt [[Special:Regexblockstats|Sperrstatistiken]] für die Regexblock-Erweiterung an',
+	'regexblock-page-title' => 'Namenssperre mit regulären Ausdrücken',
 	'regexblockstats' => 'Regex-Sperrstatistiken',
 	'regexblock-reason-ip' => 'Dieser IP-Adresse ist es verboten zu Editieren, da von dieser IP-Adresse – von dir oder jemandem mit derselben IP-Adresse – Vandalismus oder schädliches Verhalten ausging.
 Wenn du denkst, dass es sich hierbei um einen Fehler handelt, $1',
@@ -444,12 +446,17 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Jatrobat
  * @author Piolinfax
  */
 $messages['es'] = array(
+	'regexblock-form-reason' => 'Motivo:',
+	'regexblock-stats-username' => 'Por $1',
 	'regexblock-view-all' => 'Todos',
 	'regexblock-view-go' => 'Ir',
+	'regexblock-view-reason' => 'Motivo: $1',
+	'regexblock-view-block-unblock' => 'desbloquear',
 );
 
 /** French (Français)
@@ -857,11 +864,13 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'regexblock-form-reason' => '理由:',
 	'regexblock-already-blocked' => '$1 は既にブロックされています。',
 	'regexblock-view-all' => 'すべて',
+	'regexblock-view-reason' => '理由: $1',
 );
 
 /** Javanese (Basa Jawa)
@@ -1125,11 +1134,18 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'regexblock-form-username' => 'IP nozo tlatequitiltilīltōcāitl:',
 	'regexblock-form-reason' => 'Īxtlamatiliztli:',
 	'regexblock-form-expiry' => 'Motlamia:',
+	'regexblock-form-account-block' => 'Ticquīxtīz yancuīc cuentah ītlachīhualiz',
+	'regexblock-form-submit' => 'Ticquīxtīz inīn tlatequitiltilīlli',
 	'regexblock-stats-username' => '$1 ītechcopa',
 	'regexblock-view-all' => 'Mochīntīn',
 	'regexblock-view-go' => 'Yāuh',
+	'regexblock-view-reason' => 'īxtlamatiliztli: $1',
+	'regexblock-view-block-temporary' => 'motlamīz īpan',
+	'regexblock-view-stats' => '(tlapōhualli)',
+	'regexblock-view-time' => 'īpan $1',
 );
 
 /** Dutch (Nederlands)
@@ -1842,15 +1858,30 @@ $messages['vo'] = array(
 	'regexblock-view-reason' => 'kod: $1',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'regexblock-form-username' => 'IP地址或用户名：',
+	'regexblock-form-reason' => '原因：',
+	'regexblock-form-expiry' => '到期日：',
+	'regexblock-form-submit' => '封禁这位用户',
+	'regexblock-block-success' => '封禁成功',
+	'regexblock-view-stats' => '（统计）',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'regexblock-form-username' => 'IP位址或使用者名稱:',
-	'regexblock-form-reason' => '原因:',
-	'regexblock-form-expiry' => '到期日:',
+	'regexblock-form-username' => 'IP位址或使用者名稱：',
+	'regexblock-form-reason' => '原因：',
+	'regexblock-form-expiry' => '到期日：',
 	'regexblock-form-submit' => '封禁該名使用者',
 	'regexblock-block-success' => '封禁成功',
-	'regexblock-view-stats' => '(統計)',
+	'regexblock-view-reason-default' => '一般原因',
+	'regexblock-view-block-infinite' => '永久封禁',
+	'regexblock-view-stats' => '（統計）',
 );
 

@@ -198,6 +198,13 @@ $messages['tl'] = array(
 	'semanticgooglemaps-desc' => 'Nagpapahintulot sa mga tagagamit na makapagdagdag ng mga Mapa ng Google sa mga pahina ng wiki batay sa napagkayariang mga dato',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'semanticgooglemaps_lookupcoordinates' => '查找坐标',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

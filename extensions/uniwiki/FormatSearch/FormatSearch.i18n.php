@@ -27,6 +27,13 @@ $messages['ar'] = array(
 	'formatsearch-desc' => 'ينظف صفحة نتائج البحث',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'formatsearch-desc' => 'Vyčistí stránku s výsledky vyhledávání',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -201,6 +208,13 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'formatsearch-desc' => 'Rensar upp sökresultatssidan',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'formatsearch-desc' => 'Упорядковує сторінку видачі результатів пошуку',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

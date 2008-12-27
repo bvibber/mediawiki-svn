@@ -241,6 +241,13 @@ $messages['sv'] = array(
 	'stringfunctions-desc' => 'Utökar parsern med strängfunktioner',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'stringfunctions-desc' => "Nagpapainam sa banghay na may mga tungkuling pambagting (''string'')",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

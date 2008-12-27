@@ -337,6 +337,13 @@ $messages['vi'] = array(
 	'purge-desc' => 'Thêm một tab tẩy bộ đệm tại những trang bình thường, và bỏ qua kiểm tra tẩy đệm cho những thành viên vô danh cho phép tẩy nhanh bộ đệm',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'purge' => '清除',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

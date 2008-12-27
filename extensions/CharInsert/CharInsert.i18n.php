@@ -267,6 +267,13 @@ $messages['myv'] = array(
 	'charinsert-desc' => 'Максы теемс-шкамс JavaScript-умине [[MediaWiki:Edittools|аволь эрьва чинь символонь путома]]нь туртов',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'charinsert-desc' => 'Tihuelītīz ticchīhuāz JavaScript caxitl ic [[MediaWiki:Edittools|tlahcuiloa nōncuahquīzqui tlahtōl]]',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

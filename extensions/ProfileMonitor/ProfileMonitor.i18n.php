@@ -124,12 +124,14 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Imre
  * @author Melancholie
  * @author Revolus
  */
 $messages['de'] = array(
 	'profiling' => 'Profiliere Daten',
+	'profiling-desc' => '[[Special:Profiling|Spezialseite]], um Profildaten zu durchsuchen und anzusehen',
 	'profiling-process' => 'Prozessaufruf:',
 	'profiling-wildcard' => 'verwende Platzhalter',
 	'profiling-ok' => 'Okay',
@@ -149,6 +151,13 @@ $messages['eo'] = array(
 	'profiling-ok' => 'Ek!',
 	'profiling-data-process' => 'Procezo',
 	'profiling-data-count' => 'Nombro',
+);
+
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'profiling-data-process' => 'Proceso',
 );
 
 /** French (Français)
@@ -291,6 +300,14 @@ $messages['it'] = array(
 	'profiling-data-time' => 'Tempo totale',
 	'profiling-data-average' => 'Tempo medio',
 	'profiling-no-data' => 'Nessun dato corrispondente.',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'profiling-data-process' => 'プロセス',
+	'profiling-data-count' => 'カウント',
 );
 
 /** Javanese (Basa Jawa)

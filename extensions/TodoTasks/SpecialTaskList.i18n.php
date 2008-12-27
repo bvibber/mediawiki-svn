@@ -185,9 +185,11 @@ Por listo de validaj projektoj, vidu [[MediaWiki:TodoTasksValidProjects]].",
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'tasklistunknownproject' => 'Proyecto desconocido',
 	'tasklistincorrectuser' => 'Nombre de usuario incorrecto',
 );
 
@@ -355,6 +357,13 @@ Amicalmente,
 Le systema de notification de %s',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'tasklistprojdisp' => 'ディスプレイ',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  * @author Pras
@@ -495,6 +504,14 @@ $messages['mr'] = array(
 	'tasklistchooseproj' => 'प्रकल्प निवडा:',
 	'tasklistprojdisp' => 'दर्शवा',
 	'tasklistbyname' => '== %s साठीची करायच्या गोष्टींची यादी ==',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'tasklistincorrectuser' => 'Ahcualli tlatequitiltilīltōcāitl',
+	'tasklistemail' => 'Mahuizoh %',
 );
 
 /** Low German (Plattdüütsch)

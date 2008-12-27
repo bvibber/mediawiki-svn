@@ -208,6 +208,13 @@ $messages['eo'] = array(
 	'imstatus_icq_id' => 'via ID de ICQ',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'imstatus_example' => 'Ejemplo',
+);
+
 /** Persian (فارسی)
  * @author Mardetanha
  */
@@ -445,6 +452,14 @@ $messages['myv'] = array(
 	'imstatus_or' => 'эли',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'imstatus_or' => 'nozo',
+	'imstatus_your_name' => '$1 motōca',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -560,6 +575,10 @@ $messages['ro'] = array(
 	'imstatus_default' => 'Implicit',
 	'imstatus_example' => 'Exemplu',
 	'imstatus_possible_val' => 'Valori posibile',
+	'imstatus_max' => 'max',
+	'imstatus_min' => 'min',
+	'imstatus_or' => 'sau',
+	'imstatus_icq_style' => 'un număr între 0 şi 26 (da, există 27 de stiluri disponibile...).',
 );
 
 /** Russian (Русский)
@@ -640,6 +659,39 @@ $messages['te'] = array(
 	'imstatus_your_name' => 'మీ $1 పేరు',
 	'imstatus_gtalk_height' => 'పెట్టె యొక్క ఎత్తు, పిక్సెళ్ళలో.',
 	'imstatus_gtalk_width' => 'పెట్టె యొక్క వెడల్పు, పిక్సెళ్ళలో.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'imstatus-desc' => 'Nagdaragdag ng mga tatak upang maipakita ang sari-saring mga katayuan ng pagkakakonekta sa linya ng IM (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Palaugnayan',
+	'imstatus_default' => 'Nakatakda',
+	'imstatus_example' => 'Halimbawa',
+	'imstatus_possible_val' => 'Maaaring maging mga halaga',
+	'imstatus_max' => 'pinakamataas',
+	'imstatus_min' => 'pinakamababa',
+	'imstatus_or' => 'o',
+	'imstatus_style' => 'estilo ng tagasabi ng kalagayan',
+	'imstatus_action' => 'galaw kapag pinindot ang pindutan',
+	'imstatus_details_saa' => 'Para sa mas marami pang mga detalye hinggil sa lahat ng mga estilo at mga galaw, tingnan ang $1.',
+	'imstatus_your_name' => 'ang pangalan mong',
+	'imstatus_aim_presence' => 'Ipinapakita ng $1 ang katayuan mo na may isang kawing na maglulunsad sa AIM upang mapadalhan ka ng isang IM, kung iniluklok/ini-instala ito ng tagagamit.',
+	'imstatus_aim_api' => "Ipinapakita ng $1 ang katayuan mo na may isang kawing na maglulunsad sa isang <b>pantingin-tingin (''browser'')</b>, bersyong ''javascript'' ng AIM upang mapadalhan ka ng isang IM.",
+	'imstatus_gtalk_code' => "ang kodigong pang-usapang ''google'' mo",
+	'imstatus_gtalk_get_code' => "ang kodigong pang-usapang ''google'' mo: kunin ito mula sa $1.",
+	'imstatus_gtalk_height' => 'taas ng kahon, sa mga piksel.',
+	'imstatus_gtalk_width' => 'lapad ng kahon, sa mga piksel.',
+	'imstatus_icq_id' => 'ang iyong ID na pang-ICQ',
+	'imstatus_icq_style' => 'isang bilang na sumasakop mula 0 hanggang 26 (oo, mayroong makukuhang 27 mga estilo...).',
+	'imstatus_live_code' => "ang id mong pang-websayt na \"Buhay na Mensahero\" (''Live Messenger'')",
+	'imstatus_live_get_code' => 'ang iyong id na pang-"Buhay na Mensahero" (\'\'Live Messenger\'\'): <strong>hindi ito ang adres ng e-liham mo</strong>, kailangan mong lumikha ng isa sa
+<a href="$1">mga pagpipilian mong pang-"buhay na mensahero"</a>.
+Ang id na dapat mong ibigay ay ang mga bilang at mga titik na nasa pagitan ng "$2" at "$3".',
+	'imstatus_skype_nbstyle' => 'Paunawa: Kapag pinili mo ang isang estilong isa rin galaw, ang napili mong galaw ay madaraig (mapapangingibabawan) ng galaw na tumutugma sa iyong piniling estilo.',
+	'imstatus_xfire_size' => 'sukat ng pindutan, mula $1 (pinakamalaki) hanggang $2 (pinakamaliit).',
+	'imstatus_yahoo_style' => 'estilo ng pindutan, mula $1 (pinakamaliit) hanggang $2 (pinakamalaki), para sa "liham na may tinig" (\'\'voicemail\'\') ang $3 at $4.',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -414,6 +414,15 @@ $messages['vi'] = array(
 	'purgecache-button' => 'Làm tươi',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'purgecache' => '清理缓存',
+	'purgecache-purged' => '缓存已被清除。',
+	'purgecache-button' => '清除',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

@@ -134,7 +134,7 @@ $messages['es'] = array(
  */
 $messages['fi'] = array(
 	'categoryonupload-desc' => 'Pyytää käyttäjää valitsemaan luokan tallennettaessa uutta tiedostoa.',
-	'categoryonupload-label' => 'Luokka:',
+	'categoryonupload-label' => 'Luokka',
 );
 
 /** French (Français)

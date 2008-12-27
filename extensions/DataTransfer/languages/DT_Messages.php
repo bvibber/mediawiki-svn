@@ -265,11 +265,16 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'dt_viewxml_categories' => 'Categorías',
 	'dt_viewxml_namespaces' => 'Espacios de nombres',
+	'dt_xml_namespace' => 'Espacio de nombres',
+	'dt_xml_page' => 'Página',
+	'dt_xml_name' => 'Nombre',
+	'dt_xml_title' => 'Título',
 );
 
 /** Finnish (Suomi)
@@ -697,6 +702,7 @@ $messages['nah'] = array(
 	'dt_xml_page' => 'Zāzanilli',
 	'dt_xml_name' => 'Tōcāitl',
 	'dt_xml_title' => 'Tōcāitl',
+	'dt_xml_id' => 'ID',
 );
 
 /** Low German (Plattdüütsch)

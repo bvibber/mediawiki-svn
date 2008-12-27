@@ -240,9 +240,11 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Jack Phoenix
+ * @author Mobe
  */
 $messages['fi'] = array(
 	'deletebatch' => 'Poista useita sivuja',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Poista erä sivuja]]',
 	'deletebatch-button' => 'POISTA',
 	'deletebatch-here' => '<b>täällä</b>',
 	'deletebatch-help' => 'Poista useita sivuja. Voit joko tehdä yhden poiston tai poistaa tiedostossa listatut sivut. Valitse käyttäjä, joka näytetään poistolokeissa. Tallennetun tiedoston tulisi sisältää sivun nimi ja vapaaehtoinen syy | -merkin erottamina joka rivillä.',
@@ -257,6 +259,7 @@ $messages['fi'] = array(
 	'deletebatch-processing' => 'poistetaan sivuja',
 	'deletebatch-from-file' => 'tiedostolistasta',
 	'deletebatch-from-form' => 'lomakkeesta',
+	'deletebatch-success-subtitle' => '$1',
 	'deletebatch-omitting-nonexistant' => 'Ohitetaan olematon sivu $1.',
 	'deletebatch-omitting-invalid' => 'Ohitetaan kelpaamaton sivu $1.',
 	'deletebatch-file-bad-format' => 'Tiedoston tulisi olla raakatekstiä',
@@ -592,7 +595,9 @@ $messages['myv'] = array(
 $messages['nah'] = array(
 	'deletebatch-button' => 'Ticpolōz',
 	'deletebatch-reason' => 'Tlapololiztli īxtlamatiliztli',
+	'deletebatch-processing' => 'mopolocateh zāzanilli',
 	'deletebatch-success-subtitle' => '$1 ītechcopa',
+	'deletebatch-select-yourself' => 'teh',
 );
 
 /** Dutch (Nederlands)

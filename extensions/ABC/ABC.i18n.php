@@ -238,6 +238,14 @@ $messages['mn'] = array(
 	'abcdownload' => 'Өөртөө хуулах:',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'abcdesc' => 'Ticcēntilīz <tt>&lt;abc&gt;</tt> ic tictequitiltīz ABC cuīcayōtlahtōl',
+	'abcdownload' => 'Tictemōz:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

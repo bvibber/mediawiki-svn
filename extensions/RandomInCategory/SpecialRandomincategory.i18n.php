@@ -53,6 +53,13 @@ $messages['af'] = array(
 	'randomincategory-submit' => 'Gaan',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'randomincategory-label' => 'መደብ:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -169,20 +176,24 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Jatrobat
  * @author Sanbec
  */
 $messages['es'] = array(
+	'randomincategory-toolbox' => 'Página aleatoria',
 	'randomincategory-label' => 'Categoría:',
 	'randomincategory-submit' => 'Ir',
 );
 
 /** Finnish (Suomi)
+ * @author Mobe
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'randomincategory' => 'Satunnainen sivu luokassa',
 	'randomincategory-toolbox' => 'Satunnainen sivu',
+	'randomincategory-nocategory' => 'Luokkaa $1 ei ole tai se on tyhjä.',
 	'randomincategory-label' => 'Luokka',
 	'randomincategory-submit' => 'Siirry',
 );
@@ -350,6 +361,13 @@ $messages['it'] = array(
 	'randomincategory-nocategory' => 'La categoria $1 non esiste o è vuota',
 	'randomincategory-label' => 'Categoria:',
 	'randomincategory-submit' => 'Vai',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'randomincategory-label' => 'カテゴリ:',
 );
 
 /** Javanese (Basa Jawa)
@@ -567,6 +585,8 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'randomincategory-toolbox' => 'Pagină aleatorie',
+	'randomincategory-nocategory' => 'Categoria $1 nu există sau este goală',
 	'randomincategory-label' => 'Categorie:',
 );
 
@@ -678,11 +698,20 @@ $messages['vo'] = array(
 	'randomincategory-label' => 'Klad:',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'randomincategory-toolbox' => '随机页面',
+	'randomincategory-label' => '页面分类：',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'randomincategory-toolbox' => '隨機頁面',
-	'randomincategory-label' => '頁面分類:',
+	'randomincategory-label' => '頁面分類：',
 );
 

@@ -46,6 +46,13 @@ $messages['dsb'] = array(
 	'contributorsaddon-desc' => 'Pśidawa wuskokajuce wókna JS onMouseover k wótkazam "Głowne pśinosowarje"',
 );
 
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'contributorsaddon-desc' => 'Lisää JS onMouseOver popup -toiminnon "Pääavustajat"-linkkeihin',
+);
+
 /** French (Français)
  * @author Grondin
  */

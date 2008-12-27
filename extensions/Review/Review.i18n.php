@@ -341,8 +341,8 @@ $messages['de'] = array(
 	'review_statistic_cell' => 'Durchschnitt: $1 von $2<br />($4 Benutzer, $5 IP-Adressen)',
 	'review_version_statistic_cell' => '$1 von $2',
 	'review_version_reviews_link' => '<small>(Versionsprüfung)</small>',
-	'review_concerns_page' => 'Diese Rezension ist über die Seite "$1".',
-	'review_concerns_user' => 'Dies sind die Rezensionen des Benutzers "$1".',
+	'review_concerns_page' => 'Diese Rezension ist über die Seite „$1“.',
+	'review_concerns_user' => 'Dies sind die Rezensionen des Benutzers „$1“.',
 	'review_user_reviews' => '<small>(Prüfungen dieses Benutzers)</small>',
 	'review_user_page_list' => 'Dieser Benutzer prüfte auch diese Seiten:',
 	'review_user_details_link' => '(Details)',
@@ -395,6 +395,17 @@ $messages['eo'] = array(
 	'review_no_opinion' => 'Neniu opinio',
 	'review_rating' => 'Takso',
 	'review_comment' => 'Komento',
+);
+
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'review_statistics_left_corner' => 'Revisión',
+	'review_version_link' => 'Revisión #$1',
+	'review_version_statistic_cell' => '$1 de $2',
+	'review_user_details_link' => '(detalles)',
+	'review_comment' => 'Comentario',
 );
 
 /** Persian (فارسی)
@@ -781,9 +792,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'review_sidebar_title' => 'レビュー',
+	'review_total_statistics' => 'トータル',
+	'review_statistics_left_corner' => 'リビジョン',
 	'review_user_details_link' => '(詳細)',
+	'review_topic' => 'トピック',
 	'review_comment' => 'コメント',
 );
 
@@ -953,6 +969,8 @@ $messages['nah'] = array(
 	'review_total_statistics' => 'Mochīntīn',
 	'review_statistics_left_corner' => 'Ceppahuiliztli',
 	'review_version_link' => 'Ceppahuiliztli #$1',
+	'review_statistic_cell' => 'Nepantlah: $1 īhuīcpa $2<br />($4 tlatequitiltilīlli, $5 ahtōcāitl)',
+	'review_version_statistic_cell' => '$1 īhuīcpa $2',
 	'review_concerns_page' => 'Inīn ceppahuiliztli cah "$1" ītechcopa.',
 	'review_concerns_user' => 'Inīn cah tlatēquitiltilīlpal "$1" īceppahuiliztechcopa.',
 	'review_user_reviews' => '<small>(ceppahuiliztli tlatequitiltilīlpal)</small>',

@@ -80,7 +80,23 @@ $messages['bs'] = array(
 	'layouts_unknown' => 'Nepoznato',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'layouts-desc' => 'Naplní nově vytvořené stránky rozloženinami, které je možné upravovat, aby se posilnila společná struktura stránek',
+	'layouts_title' => 'Vytvořit stránku',
+	'layouts_chooselayout' => 'Vyberte rozložení pro $1:',
+	'layouts_nolayout' => 'Žádné rozložení',
+	'layouts_continue' => 'Pokračovat',
+	'layouts_choosecategory' => 'Vyberte kategorii pro $1:',
+	'layouts_unknown' => 'Neznámé',
+	'layouts_tagline' => "Tato stránku byla vytvořena s rozložením '''$1'''.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Melancholie
  */
 $messages['de'] = array(
@@ -92,6 +108,7 @@ $messages['de'] = array(
 	'layouts_choosecategory' => 'Suche eine Kategorie für $1 aus:',
 	'layouts_unknown' => 'Unbekannt',
 	'layouts_tagline' => "Diese Seite wurde mit dem '''$1'''-Layout erstellt.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Esperanto (Esperanto)

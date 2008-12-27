@@ -84,9 +84,11 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'authors_authors' => 'Autores',
 	'authors_anonymous' => 'Anónimo',
 );
 
@@ -220,6 +222,14 @@ $messages['oc'] = array(
 	'authors-desc' => 'Apondre a las paginas una lista dels contributors',
 	'authors_authors' => 'Autors',
 	'authors_anonymous' => 'Anomin',
+);
+
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'authors_authors' => 'لکھاری',
+	'authors_anonymous' => 'انجان',
 );
 
 /** Portuguese (Português)

@@ -28,6 +28,13 @@ $messages['bg'] = array(
 	'mootools12core-desc' => 'Добавя mootools-1.2-core-yc.js към всяка страница',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'mootools12core-desc' => 'Přidává mootools-1.2-core-yc.js na každou stránku',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -54,6 +61,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'mootools12core-desc' => 'Añade mootools-1.2-core-yc.js a cada página',
+);
+
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'mootools12core-desc' => 'Lisää koodin mootools-1.2-core-yc.js jokaiselle sivulle.',
 );
 
 /** French (Français)

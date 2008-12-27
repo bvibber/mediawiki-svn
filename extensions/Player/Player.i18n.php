@@ -61,6 +61,13 @@ $messages['af'] = array(
 	'player-goto-file' => 'lêer',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'player-not-found' => 'ፋይል አልተገኘም',
+);
+
 /** Aragonese (Aragonés)
  * @author Remember the dot
  */
@@ -243,10 +250,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'player-not-found' => 'archivo no encontrado',
+	'player-goto-page' => 'Página',
 );
 
 /** Basque (Euskara)
@@ -1026,6 +1035,15 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'player-goto-page' => 'Pad',
 	'player-goto-file' => 'ragiv',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'player-title' => '播放器',
+	'player-not-found' => '找不到文件',
+	'player-goto-file' => '文件',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -328,6 +328,15 @@ $messages['eo'] = array(
 	'tag-logpagetext' => 'Jen protokolo de ĉiuj aldonoj kaj forigoj de bildaj etikedoj.',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'imagetagging-article' => 'Página:',
+	'imagetagging-imghistory' => 'Historial',
+	'imagetagging-tagcancel-button' => 'Cancelar',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -583,6 +592,8 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'imagetagging-imghistory' => '履歴',
+	'imagetagging-removetag' => 'タグの削除',
+	'imagetagging-tag-button' => 'タグ',
 	'imagetagging-tagcancel-button' => 'キャンセル',
 );
 
@@ -740,6 +751,8 @@ $messages['myv'] = array(
 $messages['nah'] = array(
 	'imagetagging-article' => 'Zāzanilli:',
 	'imagetagging-imghistory' => 'Tlahcuilōlloh',
+	'imagetagging-images' => 'īxiptli',
+	'imagetagging-inthisimage' => 'Inīn īxippan: $1',
 	'imagetagging-tagcancel-button' => 'Ticcuepāz',
 );
 

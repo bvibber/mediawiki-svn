@@ -100,6 +100,13 @@ $messages['es'] = array(
 	'othersites-desc' => 'Mueve los enlaces interwiki que no sean de idioma a una caja separada',
 );
 
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'othersites' => 'Muut sivustot',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Zetud
@@ -269,6 +276,14 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'othersites' => 'ఇతర సైట్లు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'othersites' => 'Ibang mga sityo (sayt)',
+	'othersites-desc' => "Naglilipat ng mga kawing na pang-ugnayang-wiki bukod pa sa ibang mga kawing na pangwikang nasa kani-kanilang pangsariling daanang-daungan (''portlet'')",
 );
 
 /** Vietnamese (Tiếng Việt)

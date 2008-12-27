@@ -886,9 +886,17 @@ APC verŝajne ne funkcias.',
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'viewapc-display-info' => 'Nombre',
+	'viewapc-display-deletion_time' => 'Borrado',
+	'viewapc-ls-header-name' => 'Nombre',
+	'viewapc-ls-header-deleted' => 'Borrado',
+	'viewapc-ls-scope-deleted' => 'Borrado',
+	'viewapc-ls-sort-name' => 'Nombre',
+	'viewapc-ls-sort-deleted' => 'Borrado',
 	'viewapc-ls-limit-none' => 'Todos',
 );
 
@@ -3046,6 +3054,41 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'viewapc-rps' => '$1 pedidos por segundo',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Heldergeovane
+ */
+$messages['pt-br'] = array(
+	'viewapc' => 'Informação de cache PHP alternativo (APC)',
+	'viewapc-desc' => '[[Special:ViewAPC|Ver e gerenciar o cache PHP alternativo (APC)]] com o MediaWiki',
+	'right-apc' => 'Usar todos os recursos em [[Special:ViewAPC]]',
+	'viewapc-apc-not-available' => 'Nenhuma informação disponível sobre o cache.
+APC parece não estar sendo executado.',
+	'viewapc-clear-confirm' => 'Você quer limpar o cache?',
+	'viewapc-clear-user-cache' => 'Limpar cache do usuário',
+	'viewapc-clear-code-cache' => 'Limpar cache opcode',
+	'viewapc-mode-system-cache' => 'Entradas do cache do sistema',
+	'viewapc-mode-system-cache-dir' => 'Entradas por diretório',
+	'viewapc-mode-user-cache' => 'Entradas de cache de usuário',
+	'viewapc-info-general' => 'Informação geral',
+	'viewapc-apc-version' => 'Versão APC',
+	'viewapc-php-version' => 'Versão PHP',
+	'viewapc-shared-memory' => 'Memória compartilhada',
+	'viewapc-start-time' => 'Hora de início',
+	'viewapc-upload-support' => 'Suporte ao carregamento de arquivos',
+	'viewapc-filecache-info' => 'Informação do cache de arquivos',
+	'viewapc-usercache-info' => 'Informação sobre o cache de usuário',
+	'viewapc-info-runtime' => 'Informação sobre tempo de execução',
+	'viewapc-info-memory' => 'Diagramas de status do servidor',
+	'viewapc-memory-usage-detailed' => 'Uso de memória<br />
+(fatias múltiplas indicam fragmentos)',
+	'viewapc-memory-free' => 'Livre: $1 ($2)',
+	'viewapc-memory-used' => 'Usada: $1 ($2)',
+	'viewapc-memoryfragmentation' => 'Detalhes sobre o uso de memória e fragmentação',
+	'viewapc-display-attribute' => 'Atributo',
+	'viewapc-display-value' => 'Valor',
+	'viewapc-display-filename' => 'Nome de arquivo',
 );
 
 /** Tarifit (Tarifit)

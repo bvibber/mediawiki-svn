@@ -137,6 +137,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Melancholie
  * @author Revolus
  */
@@ -158,6 +159,7 @@ $messages['de'] = array(
 	'refreshspecial-none-selected' => 'Du hast keine Spezialseiten ausgewählt; somit Zurücksetzung auf die Standardauswahl.',
 	'refreshspecial-db-error' => 'Störung: Datenbankfehler',
 	'refreshspecial-no-page' => 'Keine solche Spezialseite',
+	'refreshspecial-slave-lagged' => 'Slave-Server hängt hinterher, warten...',
 	'refreshspecial-reconnected' => 'Wiederverbunden.',
 	'refreshspecial-reconnecting' => 'Verbindung fehlgeschlagen, wiederverbinde in 10 Sekunden …',
 	'refreshspecial-total-display' => '<br />Aktualisierte $1 Seiten, insgesamt $2 Zeilen in einer Zeit von $3 (Gesamtlaufzeit des Skripts: $4)',
@@ -179,11 +181,20 @@ $messages['eo'] = array(
 	'refreshspecial-here' => '<b>ĉi tie</b>',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'refreshspecial-here' => '<b>aquí</b>',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
+ * @author Mobe
  */
 $messages['fi'] = array(
 	'refreshspecial' => 'Päivitä toimintosivuja',
+	'refreshspecial-desc' => 'Sallii manuaalisen [[Special:RefreshSpecial|erikoissivujen päivitys]] -toiminnon',
 	'refreshspecial-title' => 'Päivitä toimintosivuja',
 	'refreshspecial-help' => 'Tämä toimintosivu tarjoaa keinoja päivittää toimintosivuja manuaalisesti. Kun olet valinnut kaikki sivut, jotka haluat päivittää, napsauta "Päivitä"-nappia alapuolella päivittääksesi valitut. Varoitus: päivittäminen saattaa kestää jonkin aikaa isommissa wikeissä.',
 	'refreshspecial-button' => 'Päivitä valitut',
@@ -199,6 +210,7 @@ $messages['fi'] = array(
 	'refreshspecial-none-selected' => 'Et ole valinnut yhtään toimintosivua. Palataan oletusasetuksiin.',
 	'refreshspecial-db-error' => 'EPÄONNISTUI: tietokantavirhe',
 	'refreshspecial-no-page' => 'Kyseistä toimintosivua ei ole',
+	'refreshspecial-slave-lagged' => 'Renki jää jälkeen, odotellaan...',
 	'refreshspecial-reconnected' => 'Yhdistetty uudelleen.',
 	'refreshspecial-reconnecting' => 'Yhteys epäonnistui, yritetään uudelleen 10 sekunnin kuluttua...',
 	'refreshspecial-total-display' => '<br />Päivitettiin $1 sivua; yhteensä $2 riviä ajassa $3 (yhteensä skriptin suorittamiseen meni aikaa $4)',
@@ -515,6 +527,14 @@ $messages['pt'] = array(
 	'refreshspecial-total-display' => '<br />$1 páginas refrescadas, totalizando $2 linhas em tempo $3 (tempo total de execução do script é $4)',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'refreshspecial-db-error' => 'Eşuat: eroare la baza de date',
+	'refreshspecial-reconnected' => 'Reconectat.',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  */
@@ -578,6 +598,33 @@ $messages['te'] = array(
 	'refreshspecial-no-page' => 'అటువంటి ప్రత్యేక పేజీ లేదు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'refreshspecial' => 'Sariwain ang natatanging mga pahina',
+	'refreshspecial-desc' => 'Nagpapahintulot ng [[Special:RefreshSpecial|kinakamay na pagsasariwa ng natatanging pahina]] ng mga natatanging pahina',
+	'refreshspecial-title' => 'Sariwain ang natatanging mga pahina',
+	'refreshspecial-help' => "Nagbibigay ang natatanging pahinang ito ng pamamaraang makamay ang pagsasariwa ng natatanging mga pahina.  Kapag napili mo na ang lahat ng mga pahinang naisa mong sariwain, pindutin ang  pindutang ''Sariwain'' na sa ibaba upang mawala ito.  Babala: maaaring matagal ang pagsasariwa sa mas malalaking mga wiki.",
+	'refreshspecial-button' => 'Pinili ang pagsasariwa',
+	'refreshspecial-fail' => 'Pakilagyan ng tsek ang kahit isang natatanging pahinang sasariwain.',
+	'refreshspecial-refreshing' => 'sinasariwa ang natatanging mga pahina',
+	'refreshspecial-skipped' => 'mababa ang halaga, nilaktawan',
+	'refreshspecial-success-subtitle' => 'sinasariwa ang natatanging mga pahina',
+	'refreshspecial-choice' => 'sinasariwa ang natatanging mga pahina',
+	'refreshspecial-js-disabled' => '(<i>Hindi mo mapipili ang lahat ng mga pahina kapag hindi gumagana ang JavaScript</i>)',
+	'refreshspecial-select-all-pages' => '  piliin ang lahat ng mga pahina',
+	'refreshspecial-link-back' => 'Magbalik sa karugtong',
+	'refreshspecial-here' => '<b>dito</b>',
+	'refreshspecial-none-selected' => 'Hindi ka pumili ng anumang natatanging mga pahina.  Nagbabalik sa likas na nakatakdang pagpipilian.',
+	'refreshspecial-db-error' => 'Nabigo: kamalian sa kalipunan ng dato',
+	'refreshspecial-no-page' => 'Walang ganyang natatanging pahina',
+	'refreshspecial-slave-lagged' => 'Naiwan/bumagal ang alipin, naghihintay...',
+	'refreshspecial-reconnected' => 'Muli nang naugnay.',
+	'refreshspecial-reconnecting' => 'Nabigo ang pagkakaugnay (koneksyon), muling uugnay sa loob ng 10 segundo...',
+	'refreshspecial-total-display' => '<br />Nasirawa ang $1 mga pahina na bumubuo sa $2 pahalang na mga hanay sa panahong $3 (buong panahon ng pagtakbo sa panitik ay $4)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
@@ -604,6 +651,17 @@ $messages['vi'] = array(
 	'refreshspecial-reconnected' => 'Đã kết nối lại.',
 	'refreshspecial-reconnecting' => 'Kết nối thất bại, đang kết nối lại trong 10 giây nữa…',
 	'refreshspecial-total-display' => '<br />Đã làm mới $1 trang, tổng cộng là $2 hàng trong thời gian $3 (thời gian để hoàn thành chạy mã kịch bản là $4)',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'refreshspecial' => '刷新特殊页面',
+	'refreshspecial-title' => '刷新特殊页面',
+	'refreshspecial-button' => '刷新已选页面',
+	'refreshspecial-success-subtitle' => '正在刷新特殊页面',
+	'refreshspecial-choice' => '正在刷新特殊页面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

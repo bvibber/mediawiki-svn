@@ -116,6 +116,18 @@ $messages['eo'] = array(
 	'interwikilist-prefix' => 'Intervikia prefikso:',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'interwikilist' => 'Interwiki zerrenda',
+	'interwikilist-desc' => 'Erabil daitezkeen interwiki loturen [[Berezi:Interwikilist|orrialde berezi]] bat gehitzen du',
+	'interwikilist-linkname' => 'Interwiki lotura',
+	'interwikilist-target' => 'URL helburua',
+	'interwikilist-filter' => 'Iragazkien zerrenda',
+	'interwikilist-prefix' => 'Interwiki aurrizkia:',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

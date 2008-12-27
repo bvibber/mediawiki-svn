@@ -1227,6 +1227,56 @@ Puede que esté perdido.
 Contacta por favor el operador o el administrador del servicio.',
 );
 
+/** Persian (فارسی)
+ * @author Mardetanha
+ */
+$wdMessages['fa'] = array(
+	'langman_title' => 'مدیریت زبان',
+	'ow_save' => 'ذخیره',
+	'ow_history' => 'تاریخچه',
+	'ow_noedit_title' => 'شما اجازه ویرایش ندارید',
+	'ow_none_selected' => 'هیچکدام انتخاب نشده‌اند',
+	'ow_dm_not_present' => 'وارد نشده',
+	'ow_AlternativeDefinition' => 'معنی دیگر',
+	'ow_AlternativeDefinitions' => 'معانی دیگر',
+	'ow_Annotation' => 'یادآوری',
+	'ow_ApproximateMeanings' => 'معانی احتمالی',
+	'ow_ClassAttributeAttribute' => 'صفات',
+	'ow_ClassAttributeLevel' => 'سطح',
+	'ow_ClassAttributeType' => 'نوع',
+	'ow_Definition' => 'معنی',
+	'ow_DefinedMeaningAttributes' => 'یادآوری',
+	'ow_DefinedMeaning' => 'معنی مشخص',
+	'ow_DefinedMeaningReference' => 'معنی مشخص',
+	'ow_ExactMeanings' => 'معنی دقیق',
+	'ow_Expression' => 'اصطلاح',
+	'ow_ExpressionMeanings' => 'معانی اصطلاح',
+	'ow_Expressions' => 'اصطلاحات',
+	'ow_IdenticalMeaning' => 'هم‌‌معنی ؟',
+	'ow_GotoSource' => 'به منبع بروید',
+	'ow_Language' => 'زبان',
+	'ow_LevelAnnotation' => 'یادآوری',
+	'ow_OptionAttribute' => 'خاصیت',
+	'ow_OptionAttributeOption' => 'اختیار',
+	'ow_OptionAttributeOptions' => 'اختیارت',
+	'ow_PopupAnnotation' => 'یادآوری',
+	'ow_Relations' => 'روابط',
+	'ow_RelationType' => 'نوع رابطه',
+	'ow_Spelling' => 'املاء',
+	'ow_Synonyms' => 'مترادف‌ها',
+	'ow_Source' => 'منبع',
+	'ow_TextAttribute' => 'خاصیت',
+	'ow_Text' => 'متن',
+	'ow_TextAttributeValues' => 'متنون ساده',
+	'ow_TranslatedTextAttribute' => 'خاصیت',
+	'ow_TranslatedTextAttributeValue' => 'متن',
+	'ow_TranslatedTextAttributeValues' => 'متن قابل‌ترجمه',
+	'ow_LinkAttribute' => 'خاصیت',
+	'ow_LinkAttributeValues' => 'پیوندها',
+	'ow_Property' => 'خاصیت',
+	'ow_Value' => 'ارزش',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Silvonen
@@ -3787,6 +3837,24 @@ Por favor, verifique o endereço ''web''.",
 	'ow_meaningsofsubtitle' => '<em>Ligação wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Permissão negada</h2>',
 	'ow_copy_no_action_specified' => 'Por favor, especifique uma ação',
+	'ow_copy_help' => 'Um dia talvez possamos ajudá-lo.',
+	'ow_please_proved_dmid' => 'Parece que em sua entrada está faltando um "?dmid=<qualquercoisa>" (dmid=ID do Significado Definido)<br />
+Por favor, contate um administrador do servidor.',
+	'ow_please_proved_dc1' => 'Parece que em sua entrada está faltando um "?dc1=<qualquercoisa>" (dc1=contexto de conjunto de dados 1, conjunto de dados DO QUAL copiar)<br />
+Por favor, contate um administrador do servidor.',
+	'ow_please_proved_dc2' => 'Parece que em sua entrada está faltando um "?dc2=<qualquercoisa>" (dc2=contexto de conjunto de dados 2, conjunto de dados PARA O QUAL copiar)<br />
+Por favor, contate um administrador do servidor.',
+	'ow_copy_successful' => '<h2>Sucesso na cópia</h2>
+Os seus dados parecem ter sido copiados com sucesso.
+Não se esqueça de verificar para ter a certeza!',
+	'ow_copy_unsuccessful' => '<h3>Falha na cópia</h3>
+Não houve nenhuma operação de cópia.',
+	'ow_no_action_specified' => '<h3>Nenhuma ação foi especificada</h3>
+Talvez você tenha vindo a esta página diretamente? Normalmente você não precisaria estar aqui.',
+	'ow_db_consistency_not_found' => '<h2>Erro</h2>
+Há um problema com a consistência do banco de dados, wikidata não consegue encontrar dados válidos relacionados com o ID deste significado definido.
+Pode ter sido perdido.
+Por favor, contate o operador ou administrador do servidor.',
 );
 
 /** Tarifit (Tarifit)
@@ -3854,6 +3922,7 @@ Poate aţi ajuns la această pagină direct? În mod normal nu ar trebui să fi�
 );
 
 /** Russian (Русский)
+ * @author Aleksandrit
  * @author Kaganer
  * @author Александр Сигачёв
  */
@@ -3940,9 +4009,9 @@ $wdMessages['ru'] = array(
 	'ow_Value' => 'Значение',
 	'ow_meaningsoftitle' => 'Значение «$1»',
 	'ow_meaningsofsubtitle' => '<em>Вики-ссылка:</em> [[$1]]',
-	'ow_Permission_denied' => '<h2>ДОСТУП ЗАПРЕЩЁН</h2>',
+	'ow_Permission_denied' => '<h2>Доступ запрещён</h2>',
 	'ow_copy_no_action_specified' => 'Пожалуйста, укажите действие',
-	'ow_copy_help' => 'Когда-нибудь, мы вам поможем.',
+	'ow_copy_help' => 'Когда-нибудь мы вам поможем.',
 	'ow_please_proved_dmid' => 'Похоже, что во входных данных отсутствует «?dmid=<ID>» (dmid — идентификатор определённого значения)<br /> Пожалуйста, свяжитесь с администратором сервера.',
 	'ow_please_proved_dc1' => 'Похоже, что во входных данных отсутствует «?dc1=<something>» (dc1 — контекст набора данных; набор данных, откуда копировать)<br /> Пожалуйста, свяжитесь с администратором сервера.',
 	'ow_please_proved_dc2' => 'Похоже, что во входных данных отсутствует «dc2=<something>» (dc2 — контекст набора данных; набор данных куда копировать)<br /> Пожалуйста, свяжитесь с администратором сервера.',
@@ -4784,9 +4853,19 @@ $wdMessages['uk'] = array(
 <li>&action=help  Показати довідку.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Встановлення відповідностей концептів дозволяє вам вказати яке певне значення в одному наборі даних тотожне певним значенням в інших наборах даних.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Вибачте, я не знаю що таке «$1».',
+	'ow_conceptmapping_no_action_specified' => 'Вибачте, я не знаю, що таке «$1».',
 	'ow_dm_OK' => 'Гаразд',
 	'ow_dm_not_present' => 'не введено',
+	'ow_dm_not_found' => 'не знайдено в базі даних або неформат',
+	'ow_mapping_successful' => 'Подключенні всі поля, позначені [OK]<br />',
+	'ow_mapping_unsuccessful' => "Потрібно мати принаймні два певних значення, перш ніж я зможу зв'язати їх.",
+	'ow_will_insert' => 'Буде додано наступне:',
+	'ow_contents_of_mapping' => 'Зміст відображення',
+	'ow_available_contexts' => 'Доступні контексти',
+	'ow_add_concept_link' => 'Додати посилання на інші концепти',
+	'ow_concept_panel' => 'Панель концептів',
+	'ow_dm_badtitle' => 'Ця сторінка не вказує ні на одне ПевнеЗначення (концепт). Будь-ласка, перевірте веб-адресу.',
+	'ow_dm_missing' => 'Напевно, ця сторінка вказує на неіснуюче ПевнеЗначення (концепт). Будь-ласка, перевірте веб-адресу.',
 	'ow_AlternativeDefinition' => 'Альтернативне визначення',
 	'ow_AlternativeDefinitions' => 'Альтернативні визначення',
 	'ow_Annotation' => 'Анотація',
@@ -4799,7 +4878,52 @@ $wdMessages['uk'] = array(
 	'ow_Collection' => 'Колекція',
 	'ow_CollectionMembership' => 'Присутні в колекціях',
 	'ow_Definition' => 'Визначення',
+	'ow_DefinedMeaningAttributes' => 'Анотація',
+	'ow_DefinedMeaning' => 'Задане значення',
+	'ow_DefinedMeaningReference' => 'Задане значення',
+	'ow_ExactMeanings' => 'Точне значення',
+	'ow_Expression' => 'Вираз',
+	'ow_ExpressionMeanings' => 'Значення виразів',
+	'ow_Expressions' => 'Вирази',
+	'ow_IdenticalMeaning' => 'Тотожне значення?',
+	'ow_IncomingRelations' => 'Вхідне відношення',
+	'ow_GotoSource' => 'Перейти до початкового коду',
 	'ow_Language' => 'Мова',
+	'ow_LevelAnnotation' => 'Анотація',
+	'ow_OptionAttribute' => 'Властивість',
+	'ow_OptionAttributeOption' => 'Параметр',
+	'ow_OptionAttributeOptions' => 'Параметри',
+	'ow_OptionAttributeValues' => 'Значення параметрів',
+	'ow_OtherDefinedMeaning' => 'Інше задане значення',
+	'ow_PopupAnnotation' => 'Анотація',
+	'ow_Relations' => 'Відношення',
+	'ow_RelationType' => 'Тип відношення',
+	'ow_Spelling' => 'Правопис',
+	'ow_Synonyms' => 'Синоніми',
+	'ow_SynonymsAndTranslations' => 'Синоніми і переклади',
+	'ow_Source' => 'Джерело',
+	'ow_SourceIdentifier' => 'Ідентифікатор джерела',
+	'ow_TextAttribute' => 'Властивість',
+	'ow_Text' => 'Текст',
+	'ow_TextAttributeValues' => 'Прості тексти',
+	'ow_TranslatedTextAttribute' => 'Властивість',
+	'ow_TranslatedText' => 'Перекладений текст',
+	'ow_TranslatedTextAttributeValue' => 'Текст',
+	'ow_TranslatedTextAttributeValues' => 'Тексти для перекладу',
+	'ow_LinkAttribute' => 'Властивість',
+	'ow_LinkAttributeValues' => 'Посилання',
+	'ow_Property' => 'Властивість',
+	'ow_Value' => 'Значення',
+	'ow_meaningsoftitle' => 'Значення «$1»',
+	'ow_meaningsofsubtitle' => '<em>Вікі-посилання:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>Доступ заборонений</h2>',
+	'ow_copy_no_action_specified' => 'Будь ласка, зазначте дію',
+	'ow_copy_help' => 'Колись ми вам допоможемо.',
+	'ow_please_proved_dmid' => "Схоже, що у вхідних даних відсутнє «?dmid=<ID>» (dmid — ідентифікатор певного значення)<br /> 
+Будь ласка, зв'яжіться з адміністратором сервера.",
+	'ow_please_proved_dc1' => "Схоже, що у вхідних даних відсутнє «?dc1=<щось>» (dc1 — контекст набору даних; набір даних, звідки копіювати)<br /> Будь ласка, зв'яжіться з адміністратором сервера.",
+	'ow_copy_unsuccessful' => '<h3>Копіювання невдале</h3>
+Не була виконана операція копіювання.',
 );
 
 /** Vietnamese (Tiếng Việt)

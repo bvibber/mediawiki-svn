@@ -219,8 +219,16 @@ $messages['eo'] = array(
 	'disabledusers' => 'Malebligitaj uzantoj',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'passwordreset-username' => 'Nombre de usuario:',
+);
+
 /** Finnish (Suomi)
  * @author Crt
+ * @author Mobe
  * @author Nike
  * @author Str4nd
  */
@@ -241,6 +249,7 @@ $messages['fi'] = array(
 	'passwordreset-accountdisabled' => 'Käyttäjätunnus on poistettu käytöstä',
 	'disabledusers' => 'Käytöstä poistetut tunnukset',
 	'disabledusers-summary' => 'Tämä on luettelo käyttäjistä, joiden tunnus on poistettu käytöstä PasswordResetillä.',
+	'right-passwordreset' => 'Alusta käyttäjän salasana ([[Special:PasswordReset|Alustussivu]])',
 );
 
 /** French (Français)
@@ -730,7 +739,8 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'passwordreset-username' => 'Tlatequitiltilīltōcāitl',
+	'passwordreset-username' => 'Tlatequitiltilīltōcāitl:',
+	'passwordreset-newpass' => 'Yancuīc tlahtōlichtacāyōtl:',
 );
 
 /** Dutch (Nederlands)
@@ -1143,7 +1153,9 @@ $messages['yue'] = array(
 	'passwordreset-success' => 'User_id: $1 嘅密碼已經重設咗',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
 $messages['zh-hans'] = array(
 	'passwordreset' => '密码重设',
 	'passwordreset-invalidusername' => '无效的用户名',
@@ -1155,6 +1167,10 @@ $messages['zh-hans'] = array(
 	'passwordreset-confirmpass' => '确认新密码',
 	'passwordreset-submit' => '重设密码',
 	'passwordreset-success' => 'User_id: $1 的密码已经重设',
+	'passwordreset-disableuser' => '禁用用户帐户？',
+	'passwordreset-accountdisabled' => '账户已停用',
+	'disabledusers' => '已禁用的用户',
+	'disabledusers-summary' => '这是通过PasswordReset禁用账户的用户列表。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

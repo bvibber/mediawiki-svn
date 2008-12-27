@@ -453,10 +453,12 @@ Se ĉi tiu eraro daŭras okazi, tiel la datumbazo verŝajne estas rompita.',
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Jatrobat
  */
 $messages['es'] = array(
 	'changeauthor-pagenameform-go' => 'Ir',
+	'changeauthor-comment' => 'Comentario:',
 );
 
 /** Finnish (Suomi)

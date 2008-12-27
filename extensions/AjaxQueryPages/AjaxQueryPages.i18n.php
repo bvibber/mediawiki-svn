@@ -232,6 +232,13 @@ $messages['ms'] = array(
 	'ajax-qp-desc' => 'Tambahkan sedikit AJAX kepada laman-laman pertanyaan seperti [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'ajax-qp-desc' => 'Ticcēntilīz AJAX ic tiquimpōhuāz zāzanilli quemeh [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

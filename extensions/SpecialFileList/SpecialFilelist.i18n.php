@@ -411,6 +411,13 @@ $messages['mr'] = array(
 	'filelist-image-desc' => 'माहिती',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'filelist-show-list' => 'Tiquittāz mochi',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

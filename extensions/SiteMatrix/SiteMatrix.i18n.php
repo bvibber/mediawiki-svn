@@ -1052,6 +1052,7 @@ $messages['nah'] = array(
 	'sitematrix' => 'Mochīntīn Huiquimedia huiqui',
 	'sitematrix-language' => 'Tlahtōlli',
 	'sitematrix-sitetotal' => 'Mochīntīn',
+	'sitematrix-private' => 'ichtac',
 );
 
 /** Min Nan Chinese (Bân-lâm-gú) */
@@ -1460,6 +1461,22 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'sitematrix-private' => 'ส่วนตัว',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'sitematrix' => 'Talaan ng mga wiki ng Wikimedia',
+	'sitematrix-summary' => 'Nagtatala ang pahinang ito ng lahat ng mga wiki ng Wikimedia.',
+	'sitematrix-desc' => 'Nagpapakita ng isang [[Special:SiteMatrix|talaan ng mga wiki ng Wikimedia]]',
+	'sitematrix-language' => 'Wika',
+	'sitematrix-project' => "Pangalan ng proyekto, kawing sa kaugnay na proyekto (inter-proyekto) at kawing sa kaugnay na wiki (''interwiki'')",
+	'sitematrix-others' => 'Iba pang mga proyekto ng Wikimedia',
+	'sitematrix-total' => "'''Kabuoang bilang: $1'''",
+	'sitematrix-sitetotal' => 'Kabuoan',
+	'sitematrix-private' => 'pribado (pansarili)',
+	'sitematrix-fishbowl' => 'pinagbabawalan ang pagbago',
 );
 
 /** Tonga (faka-Tonga) */

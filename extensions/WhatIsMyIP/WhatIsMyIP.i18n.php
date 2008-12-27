@@ -132,6 +132,15 @@ $messages['es'] = array(
 	'whatismyip-out' => 'Tu IP:',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'whatismyip' => 'Zein da nire IP',
+	'whatismyip-desc' => '[[Berezi:ZeinDaNireIP]] orrialdean lankidearen momentuko IP helbidea erakusten du',
+	'whatismyip-out' => 'Zure IPa:',
+);
+
 /** Persian (فارسی)
  * @author BlueDevil
  */

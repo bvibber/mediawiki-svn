@@ -432,6 +432,14 @@ Reen:
 	'crosswikiunblock-local' => 'Lokaj malforbaroj ne estas subtenataj per ĉi interfaco. Uzu [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'crosswikiblock-reason' => 'Motivo:',
+	'crosswikiunblock-reason' => 'Motivo:',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

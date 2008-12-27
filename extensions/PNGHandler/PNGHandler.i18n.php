@@ -267,6 +267,13 @@ $messages['vi'] = array(
 	'pnghandler-desc' => 'Thay đổi kích thước PNG bằng cách dùng pngds',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'pnghandler-desc' => '使用pngds调整PNG图像大小',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

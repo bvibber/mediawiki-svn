@@ -1796,6 +1796,15 @@ $messages['myv'] = array(
 	'ogg-desc-link' => 'Те файладонть',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'ogg-more' => 'Huehca ōmpa...',
+	'ogg-download' => 'Tictemōz tlahcuilōlli',
+	'ogg-desc-link' => 'Inīn tlahcuilōltechcopa',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

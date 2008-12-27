@@ -235,6 +235,13 @@ $messages['mr'] = array(
 	'mediafunctions-not-exist' => '"$1" अस्तीत्वात नाही',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'mediafunctions-not-exist' => '"$1" ahmo ia',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */
@@ -311,6 +318,14 @@ $messages['pt'] = array(
 	'mediafunctions-desc' => 'Funções do analisador (parser) para obter informação sobre ficheiros de mídia.',
 	'mediafunctions-invalid-title' => '"$1" não é um título válido',
 	'mediafunctions-not-exist' => '"$1" não existe',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'mediafunctions-invalid-title' => '"$1" nu este un titlu corect',
+	'mediafunctions-not-exist' => '"$1" nu există',
 );
 
 /** Russian (Русский)

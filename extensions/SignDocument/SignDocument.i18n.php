@@ -80,6 +80,21 @@ $messages['el'] = array(
 	'signaturelogentry' => 'υπέγραψε το έγγραφο $1',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'signaturelogpage' => 'Sinatze loga',
+	'signature-desc' => 'Dokumentuak [[Berezi:DokumentuaSinatu|sinatzea]] baimentzen du',
+);
+
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'signature-desc' => 'Sallii dokumentin [[Special:SignDocument|allekirjoituksen]].',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

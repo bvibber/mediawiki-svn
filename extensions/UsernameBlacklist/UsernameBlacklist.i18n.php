@@ -1330,7 +1330,18 @@ $messages['tg-cyrl'] = array(
  * @author Felipe Aira
  */
 $messages['tl'] = array(
-	'blacklistedusername' => 'Ipinagbawal na bansag',
+	'usernameblacklist-desc' => 'Nagdaragdag ng isang [[MediaWiki:Usernameblacklist|talaan ng pinagbabawalang tagagamit]] upang mapigilan ang paglikha ng mga kuwenta ng tagagamit na tumutugma sa isa o mahigit pang mga pangkaraniwang pagpapahayag/pagsasaad',
+	'blacklistedusername' => 'Ipinagbawal na pangalan ng tagagamit (bansag)',
+	'blacklistedusernametext' => 'Ang napili mong pangalan ng tagagamit ay tumutugma sa [[MediaWiki:Usernameblacklist|talaan ng pinagbabawalang mga pangalan ng tagagamit]].
+Pumili lamang ng ibang pangalan.',
+	'usernameblacklist' => '<pre>
+# Ang mga pinasok sa talaang ito ay gagamitin bilang bahagi ng isang pangkaraniwang pagsasaad kung
+# pagbabawal sa mga pangalan ng tagagamit na makapagpatala. Bawat bagay ay dapat na kabahagi ng
+# isang nabibituwinang talaan, halimbawa na ang
+#
+# * Foo
+# * [Bb]ar
+</pre>',
 	'usernameblacklist-invalid-lines' => 'Ang {{PLURAL:$1|sumusunod|mga sumusunod}} na hanay sa mga ipinagbabawal na bansag ay inbalido; pakitama ang {{PLURAL:$1|iyon|mga iyon}} bago magligtas:',
 	'right-uboverride' => 'Daigin (pangibabawan) ang talaan ng pinagbabawalang pangalan ng tagagamit',
 );

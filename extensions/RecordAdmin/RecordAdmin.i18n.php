@@ -48,8 +48,13 @@ $messages['en'] = array(
 	'right-recordadmin' => 'Find and edit record pages',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
 $messages['qqq'] = array(
+	'recordadmin-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
 	'recordadmin-category' => 'Category which contains the templates used as records and having corresponding forms',
 );
 
@@ -152,6 +157,18 @@ $messages['eo'] = array(
 	'recordadmin-created' => 'Kreita',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'recordadmin-buttonsearch' => 'Buscar',
+	'recordadmin-buttoncreate' => 'Crear',
+	'recordadmin-searchresult' => 'Resultados de la búsqueda',
+	'recordadmin-edit' => 'Editando $1',
+	'recordadmin-buttonsave' => 'Guardar',
+	'recordadmin-editlink' => 'editar',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -228,6 +245,17 @@ $messages['gl'] = array(
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'recordadmin-submit' => '送信',
+	'recordadmin-buttonsearch' => '検索',
+	'recordadmin-buttonreset' => 'リセット',
+	'recordadmin-buttonsave' => '保存',
+	'recordadmin-editlink' => '編集',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
@@ -259,6 +287,44 @@ $messages['km'] = array(
 	'right-recordadmin' => 'ស្វែងរក និង​កែប្រែ​ទំព័រ​កំណត់ត្រា',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'recordadmin' => 'Datesätz verwallde',
+	'recordadmin-desc' => 'En [[Special:RecordAdmin|Söndersigg]] för Sigge met Datesätz ze fenge un övver e Fommulaa zo ändere.',
+	'recordadmin-category' => 'Datesätz',
+	'recordadmin-select' => 'Donn de Zoot Datesatz ußsöke, för donoh ze söke',
+	'recordadmin-newsearch' => 'Neu $1 söke',
+	'recordadmin-newrecord' => 'Sök en ander Zoot Datesatz uß',
+	'recordadmin-submit' => 'Loß Jonn!',
+	'recordadmin-create' => 'Donn ene „$1“-Datesatz fenge udder ändere',
+	'recordadmin-alreadyexist' => '„$1“ jitt et ald.',
+	'recordadmin-createsuccess' => '$1 aanjelaat',
+	'recordadmin-createerror' => 'Ene Fääler eß opjetrodde: neu $1 kunnt nit aanjelaat wääde.',
+	'recordadmin-badtitle' => 'Dä Tittel es onjöltesch!',
+	'recordadmin-recordid' => 'Däm Datesatz sing Nommer:',
+	'recordadmin-invert' => 'Ußwahl ömdriehe',
+	'recordadmin-buttonsearch' => 'Söke',
+	'recordadmin-buttoncreate' => 'Aanläje',
+	'recordadmin-buttonreset' => 'Zeröksäze',
+	'recordadmin-searchresult' => 'Wat bem Söke eruß kohm',
+	'recordadmin-nomatch' => 'Kein zopaß Datesätz jefonge.',
+	'recordadmin-edit' => '$1 ändere',
+	'recordadmin-typeupdated' => 'De Date fun däm $1 sin jeändert',
+	'recordadmin-updatesuccess' => '$1 om neue Stand',
+	'recordadmin-updateerror' => 'Beim Ändere es jet donävve jejange',
+	'recordadmin-buttonsave' => 'Dä Datesatz avspeichere!',
+	'recordadmin-noform' => 'Mer han kei Fommulaa för de „$1“-Datesätz',
+	'recordadmin-createlink' => '<a href="$1">ein aanlääje</a>',
+	'recordadmin-newcreated' => 'Neu $1 övver e öffentlesch Fommulaa aanjelaat',
+	'recordadmin-summary-typecreated' => 'Neu $1 aanjelaat',
+	'recordadmin-viewlink' => 'aankike',
+	'recordadmin-editlink' => 'ändere',
+	'recordadmin-created' => 'Neu aanjelaat',
+	'right-recordadmin' => 'Datesätz fenge un ändere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -275,6 +341,22 @@ $messages['lb'] = array(
 	'recordadmin-viewlink' => 'weisen',
 	'recordadmin-editlink' => 'änneren',
 	'recordadmin-created' => 'Ugeluecht',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'recordadmin-badtitle' => '¡Ahcualli tōcāitl!',
+	'recordadmin-buttonsearch' => 'Titlatēmōz',
+	'recordadmin-buttoncreate' => 'Ticchīhuāz',
+	'recordadmin-edit' => 'Ticpatlacah $1',
+	'recordadmin-updateerror' => 'Ahcuallōtl ihcuāc ōmoyancuīya',
+	'recordadmin-buttonsave' => 'Ticchīhuāz',
+	'recordadmin-summary-typecreated' => 'Yancuīc $1 ōmochīuh',
+	'recordadmin-viewlink' => 'tiquittāz',
+	'recordadmin-editlink' => 'ticpatlāz',
+	'recordadmin-created' => 'Ōmochīuh',
 );
 
 /** Dutch (Nederlands)
@@ -353,6 +435,13 @@ $messages['oc'] = array(
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'recordadmin-badtitle' => 'Titlu greşit!',
+);
+
 /** Russian (Русский)
  * @author Rubin
  * @author Александр Сигачёв
@@ -428,11 +517,20 @@ $messages['vi'] = array(
 	'recordadmin-alreadyexist' => 'Xin lỗi,  	 	 	“$1” đã tồn tại!',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'recordadmin-badtitle' => '标题错误！',
+	'recordadmin-buttonreset' => '重置',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'recordadmin-badtitle' => '標題錯誤!',
+	'recordadmin-badtitle' => '標題錯誤！',
 	'recordadmin-buttonreset' => '重置',
 );
 

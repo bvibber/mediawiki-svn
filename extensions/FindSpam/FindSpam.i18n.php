@@ -165,6 +165,13 @@ $messages['eo'] = array(
 	'findspam-notextfound' => 'Neniuj kontribuoj trovitaj',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'findspam-ip' => 'Dirección IP:',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

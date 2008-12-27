@@ -205,6 +205,13 @@ $messages['eo'] = array(
 	'importfreeimages_returntoform' => "Aŭ, klaku <a href='$1'>ĉi tien</a> reveni al viaj serĉrezultoj.",
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'importfreeimages_owner' => 'Autor',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -772,6 +779,25 @@ $messages['ru'] = array(
 	'importfreeimages_filefromflickr' => '$1 авторства <b>[$2]</b> с Flickr. Исходный адрес',
 	'importfreeimages_promptuserforfilename' => 'Пожалуйста, введите новое имя файла:',
 	'importfreeimages_returntoform' => "Или нажмите <a href='$1'>здесь</a>, чтобы вернуться к вашим результатам поиска.",
+);
+
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'importfreeimages' => 'Metti mmàggini lìbbiri',
+	'importfreeimages-desc' => 'Prucura nu modu pi [[Special:ImportFreeImages|mpurtari futugràfìi câ licenza giusta ]] di [http://www.flickr.com flickr]',
+	'importfreeimages_description' => "Sta pàggina ti pirmetti di circari mmàggini câ licenza giusta supr'a flickr e mpurtàrili ntâ tò wiki.",
+	'importfreeimages_noapikey' => "Non cunfigurasti la tò chiavi API Flickr.
+Pi fàrilu addumanna na chiavi [http://www.flickr.com/services/api/misc.api_keys.html ccà] e mposta wgFlickrAPIKey 'n ImportFreeImages.php.",
+	'importfreeimages_nophotosfound' => "Nudda futugrafìa suddisfa lu critèriu di circata $1', prova n'àutra vota.",
+	'importfreeimages_invalidurl' => 'L\'URL "$1" nun currispunni a na mmàggini di Flickr vàlida.',
+	'importfreeimages_owner' => 'Auturi',
+	'importfreeimages_importthis' => 'mporta chistu',
+	'importfreeimages_next' => 'Succissivi $1',
+	'importfreeimages_filefromflickr' => "$1 di l'utenti <b>[$2]</b> di flickr. URL urigginali",
+	'importfreeimages_promptuserforfilename' => 'Nzirisci nu nomu pi lu file di distinazzioni:',
+	'importfreeimages_returntoform' => "Oppuru fà clic <a href='$1'>ccà</a> pi turnari a li risurtati di la tò circata",
 );
 
 /** Slovak (Slovenčina)

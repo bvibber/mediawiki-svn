@@ -268,6 +268,13 @@ $messages['eo'] = array(
 	'povwatch_added' => 'aldonita',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'povwatch_title' => 'Título:',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex
@@ -749,6 +756,7 @@ $messages['myv'] = array(
  */
 $messages['nah'] = array(
 	'povwatch_title' => 'Tōcāitl:',
+	'povwatch_added' => 'ōmocēntili',
 );
 
 /** Dutch (Nederlands)
@@ -944,6 +952,8 @@ Clique no botão abaixo para subscrever.',
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'povwatch_invalid_title' => 'Titlul specificat este incorect',
+	'povwatch_unknown_subpage' => 'Subpagină necunoscută.',
 	'povwatch_title' => 'Titlu:',
 );
 
@@ -1164,9 +1174,12 @@ $messages['zh-hans'] = array(
 	'povwatch_subscribed' => '您现已订阅PovWatch',
 	'povwatch_not_subscribed' => '您并未订阅PovWatch，因此不能取消订阅。',
 	'povwatch_unsubscribed' => '您已取消订阅PovWatch',
+	'povwatch_subscriber_list_intro' => '<strong>订阅用户列表</strong>',
 	'povwatch_title' => '标题：',
+	'povwatch_no_subscribers' => '现时没有订阅用户。',
 	'povwatch_unsubscribe' => '取消订阅',
 	'povwatch_subscribe_intro' => '您并未订阅PovWatch。按下方的按钮订阅。',
+	'povwatch_subscribe' => '订阅',
 	'povwatch_added' => '已加入',
 );
 

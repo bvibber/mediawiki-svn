@@ -62,6 +62,13 @@ $messages['es'] = array(
 	'csshooks-desc' => 'Añade CSS a la salida HTML de las páginas para un mejor estilo',
 );
 
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'csshooks-desc' => 'Lisää paremman ulkoasun vuoksi CSS-muotoilun sivujen HTML-tallenteisiin.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

@@ -215,6 +215,8 @@ Ela lista todas as páginas da categoria "$1", bem como todas as subcategorias d
  */
 $messages['ro'] = array(
 	'autocreatecategorypages-desc' => 'Creează paginile lipsă ale categoriilor automat la salvare',
+	'autocreatecategorypages-stub' => 'Aceasta este o pagină de categorie.
+Afişează toate paginile din categoria "$1" şi toate subcategoriile categoriei "$1", dacă există.',
 	'autocreatecategorypages-createdby' => 'Creat automat de extensia AutoCreateCategoryPages',
 	'autocreatecategorypages-editor' => 'Creator automat de categorii',
 );

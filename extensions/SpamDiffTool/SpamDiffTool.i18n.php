@@ -246,9 +246,12 @@ Klaku <a href='$1'>ĉi tie</a> por reveni.",
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'spamdifftool_option_none' => 'nada',
+	'spamdifftool_block' => 'Bloqueo:',
 	'spamdifftool_submit_buttom' => 'Enviar',
 );
 
@@ -466,6 +469,14 @@ Fai click <a href='$1'>qui</a> per tornare.",
 	'spamdifftool_submit_buttom' => 'Invia',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'spamdifftool_block' => 'ブロック:',
+	'spamdifftool_submit_buttom' => '送信',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -586,6 +597,8 @@ $messages['mr'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'spamdifftool_spam_link_text' => 'ticcēntilīz spamhuīc',
+	'spamdifftool_option_none' => 'ahtlein',
 	'spamdifftool_submit_buttom' => 'Tiquihuāz',
 );
 
@@ -1005,5 +1018,6 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'spamdifftool' => '管理垃圾信息黑名單',
+	'spamdifftool_submit_buttom' => '提交',
 );
 

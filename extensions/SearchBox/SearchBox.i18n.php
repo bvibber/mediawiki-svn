@@ -106,10 +106,20 @@ $messages['eo'] = array(
 	'searchbox-namespaces' => 'Nomspacoj:',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'searchbox-search' => 'Buscar',
+	'searchbox-namespaces' => 'Espacios de nombres:',
+);
+
 /** Finnish (Suomi)
+ * @author Mobe
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'searchbox-desc' => 'Sallii hakulausekkeiden käytön',
 	'searchbox-search' => 'Etsi',
 	'searchbox-go' => 'Siirry',
 	'searchbox-namespaces' => 'Nimiavaruudet',
@@ -231,6 +241,15 @@ $messages['ms'] = array(
 	'searchbox-search' => 'Cari',
 	'searchbox-go' => 'Pergi',
 	'searchbox-namespaces' => 'Ruang nama:',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'searchbox-search' => 'Titlatēmōz',
+	'searchbox-go' => 'Yāuh',
+	'searchbox-namespaces' => 'Tōcātzintli:',
 );
 
 /** Dutch (Nederlands)

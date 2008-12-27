@@ -328,10 +328,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Remember the dot
  */
 $messages['es'] = array(
 	'extensiondistributor' => 'Descargar extensión MediaWiki',
+	'extdist-current-version' => 'Revisión actual (trunk)',
 );
 
 /** Finnish (Suomi)

@@ -65,6 +65,13 @@ $messages['es'] = array(
 	'crowdauthentication-desc' => 'Extensión de autenticación para Atlassian Crowd',
 );
 
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'crowdauthentication-desc' => 'Atlassian Crowd -kirjautumisliitännäinen',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Meithal

@@ -164,14 +164,15 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'categorywatch-desc' => 'Laajennettu seurantalistatoiminnallisuus, joka sisältää huomautukset seurattujen luokkien jäsenyysmuutoksista.',
-	'categorywatch-catmovein' => 'siirrettiin $1 kategoriaan $2 kategoriasta $3',
-	'categorywatch-catmoveout' => 'siirrettiin $1 kategoriasta $2 kategoriaan $3',
-	'categorywatch-catadd' => 'lisättiin $1 kategoriaan $2',
-	'categorywatch-catsub' => 'poistettiin $1 kategoriasta $2',
+	'categorywatch-catmovein' => 'siirrettiin $1 luokkaan $2 luokkaan $3',
+	'categorywatch-catmoveout' => 'siirrettiin $1 luokasta $2 luokkaan $3',
+	'categorywatch-catadd' => 'lisättiin sivu $1 luokkaan $2',
+	'categorywatch-catsub' => 'poistettiin sivu $1 luokasta $2',
 );
 
 /** French (Français)
@@ -463,6 +464,20 @@ Detta meddelande meddelar dig att $3 användare $4 $5.',
 	'categorywatch-catmoveout' => 'flyttade $1 från kategori $2 till $3',
 	'categorywatch-catadd' => 'la till $1 i kategori $2',
 	'categorywatch-catsub' => 'tog bort $1 från kategori $2',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'categorywatch-desc' => 'Nagpapalawak ng katungkulang pangtalaan ng binabantayan upang maisama ang pagpapahayag ng hinggil sa mga pagbabago sa kasapian ng pinagmamatyagang mga kaurian',
+	'categorywatch-emailbody' => 'Kumusta ka $1, natanggap mo ang mensaheng ito dahil binabantayan mo ang kauriang "$2".
+Ang mensaheng ito ay para ipagbigay-alam sa iyo na noong $3 si tagagamit $4 ang $5.',
+	'categorywatch-emailsubject' => 'Galaw na kasangkot ang binabantayang kauriang "$1"',
+	'categorywatch-catmovein' => 'inilipat ang $1 patungo sa kauriang $2 na nagmula sa $3',
+	'categorywatch-catmoveout' => 'inilipat ang $1 palabas mula sa kauriang $2 patungo sa $3',
+	'categorywatch-catadd' => 'idinagdag ang $1 patungo sa kauriang $2',
+	'categorywatch-catsub' => 'tinanggal ang $1 magmula sa kauriang $2',
 );
 
 /** Vietnamese (Tiếng Việt)

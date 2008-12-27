@@ -132,7 +132,34 @@ $messages['bg'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'gep-desc' => 'Doplní stránku na úpravy, aby byla uživatelsky příjemnější',
+	'gep-emailsubject' => '[$1] Návrh kategorie: $2',
+	'gep-emailbody' => 'Uživatel „$1“ navrhnul kategorii „$2“ pro stránku „$3“.',
+	'gep-emailfailure' => 'Omlouváme se, nebylo možné zpracovat váš návrh',
+	'gep-emailsuccess' => 'Děkujeme za váš návrh kategorie: $1.',
+	'gep-categories' => 'Kategorie',
+	'gep-addcategory' => 'Přidat kategorii',
+	'gep-addcategorybutton' => 'Přidat',
+	'gep-suggestcategory' => 'Navrhnout kategorii',
+	'gep-suggestcategorybutton' => 'Odeslat',
+	'gep-sections' => 'Sekce',
+	'gep-sectionnotdisabled' => 'Tato sekce nemůže být vypnuta',
+	'gep-addsection' => 'Přidat sekci',
+	'gep-addsectionbutton' => 'Přidat',
+	'gep-classicmode' => 'Klasický režim',
+	'gep-genericmode' => 'Všeobecný režim',
+	'gep-nosectioninstructions' => 'Na této stránce nejsou žádné sekce.
+Pomocí nástrojů napravo je můžete přidat.',
+	'gep-nocategories' => 'Prosím, vyberte před uložením alespoň jednu kategorii.',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Melancholie
  */
 $messages['de'] = array(
@@ -155,6 +182,7 @@ $messages['de'] = array(
 	'gep-nosectioninstructions' => 'Diese Seite hat keine Abschnitte.
 Gib ein paar ein mit den Werkzeugen an der rechten Seite.',
 	'gep-nocategories' => 'Bitte vor dem Abspeichern mindestens eine Kategorie aussuchen',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Esperanto (Esperanto)
@@ -366,6 +394,19 @@ $messages['ia'] = array(
 Adde alcunes con le instrumentos al derecta.',
 	'gep-nocategories' => 'Per favor selige al minus un categoria ante de publicar',
 	'gep-categorypage' => 'MediaWiki:Modificaretiquettasdepaginas',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'gep-categories' => 'カテゴリ',
+	'gep-addcategory' => 'カテゴリの追加',
+	'gep-addcategorybutton' => '追加',
+	'gep-suggestcategorybutton' => '送信',
+	'gep-sections' => 'セクション',
+	'gep-addsection' => 'セクションの追加',
+	'gep-addsectionbutton' => '追加',
 );
 
 /** Javanese (Basa Jawa)
@@ -660,6 +701,51 @@ $messages['te'] = array(
 	'gep-nosectioninstructions' => 'ఈ పేజీలో విభాగాలేమీ లేవు.
 కుడివైపునున్న పనిముట్లని ఉపయోగించి కొన్ని చేర్చండి.',
 	'gep-nocategories' => 'భద్రపరిచేముంది కనీసం ఒక్క వర్గాన్నైనా ఎంచుకోండి',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'gep-desc' => 'Nagdaragdag (suplemento) sa pahina ng pagbago upang maging higit pang palakaibigan sa tagagamit',
+	'gep-emailsubject' => '[$1] Mungkahing kaurian: $2',
+	'gep-emailbody' => 'Iminungkahi ni tagagamit na "$1" ang kauriang "$2" para sa sayt/sityong "$3".',
+	'gep-emailfailure' => 'Paumanhin, hindi maisasagawa ang mungkahi mo.',
+	'gep-emailsuccess' => 'Salamat sa pagmumungkahi mo ng kauriang: $1.',
+	'gep-categories' => 'Mga kaurian',
+	'gep-addcategory' => 'Magdagdag ng kaurian',
+	'gep-addcategorybutton' => 'Idagdag',
+	'gep-suggestcategory' => 'Magmungkahi ng isang kaurian',
+	'gep-suggestcategorybutton' => 'Ipasa',
+	'gep-sections' => 'Mga seksyon',
+	'gep-sectionnotdisabled' => 'Hindi maaaring huwag paganahin ang seksyong ito',
+	'gep-addsection' => 'Magdagdag ng isang seksyon',
+	'gep-addsectionbutton' => 'Idagdag',
+	'gep-classicmode' => 'Klasikong modalidad',
+	'gep-genericmode' => 'Henerikong (pangkalahatan) modalidad',
+	'gep-nosectioninstructions' => 'Walang mga seksyon sa pahinang ito.
+Magdagdag ng ilan sa pamamagitan ng mga kagamitang nasa kanan.',
+	'gep-nocategories' => 'Pumili lamang ng kahit isang kaurian bago sagipin',
+	'gep-categorypage' => 'MediaWiki:Pagbabagopahinamgatatak',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'gep-emailsuccess' => 'Дякуємо за те, що порадили категорію: $1.',
+	'gep-categories' => 'Категорії',
+	'gep-addcategory' => 'Додати категорію',
+	'gep-addcategorybutton' => 'Додати',
+	'gep-suggestcategory' => 'Порадити категорію',
+	'gep-suggestcategorybutton' => 'Відправити',
+	'gep-sections' => 'Розділи',
+	'gep-sectionnotdisabled' => 'Цей розділ не може бути відключений',
+	'gep-addsection' => 'Додати розділ',
+	'gep-addsectionbutton' => 'Додати',
+	'gep-classicmode' => 'Класичний режим',
+	'gep-genericmode' => 'Загальний режим',
+	'gep-nocategories' => 'Будь ласка, виберіть перед збереженням хоча б одну категорію',
 );
 
 /** Vietnamese (Tiếng Việt)

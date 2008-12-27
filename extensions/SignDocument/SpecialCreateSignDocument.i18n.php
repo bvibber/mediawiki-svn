@@ -306,6 +306,18 @@ Por testi ĝin, bonvolu eniri [{{SERVER}}{{localurl: Special:SignDocument|doc=$2
 	'createsigndoc-error-alreadycreated' => 'Subskribado de dokumento "$1" jam ekzistas.',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'createsigndoc-pagename' => 'Página:',
+	'createsigndoc-email' => 'Dirección de correo electrónico:',
+	'createsigndoc-phone' => 'Número de teléfono:',
+	'createsigndoc-minage' => 'Edad mínima:',
+	'createsigndoc-optional' => 'Opcional',
+	'createsigndoc-create' => 'Crear',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -756,7 +768,11 @@ $messages['myv'] = array(
  */
 $messages['nah'] = array(
 	'createsigndoc-pagename' => 'Zāzanilli:',
+	'createsigndoc-extaddress' => 'Āltepētl, tlahtōcāyōtl, tlācatiyān:',
+	'createsigndoc-hidden' => 'Ichtac',
 	'createsigndoc-create' => 'Ticchīhuāz',
+	'createsigndoc-error-generic' => 'Ahcuallōtl: $1',
+	'createsigndoc-error-pagenoexist' => 'Ahcuallōtl: Zāzanilli [[$1]] ahmo ia.',
 );
 
 /** Dutch (Nederlands)
@@ -1203,15 +1219,28 @@ $messages['vo'] = array(
 	'createsigndoc-error-generic' => 'Pöl: $1',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'createsigndocument' => '启用文档签名',
+	'createsigndoc-phone' => '电话号码：',
+	'createsigndoc-bday' => '出生日期：',
+	'createsigndoc-hidden' => '隐藏',
+	'createsigndoc-optional' => '可选',
+	'createsigndoc-error-generic' => '错误：$1',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'createsigndocument' => '啟用文件簽名',
-	'createsigndoc-phone' => '電話號碼:',
-	'createsigndoc-bday' => '出生日期:',
+	'createsigndoc-phone' => '電話號碼：',
+	'createsigndoc-bday' => '出生日期：',
 	'createsigndoc-hidden' => '隱藏',
 	'createsigndoc-optional' => '可選擇',
-	'createsigndoc-error-generic' => '錯誤: $1',
+	'createsigndoc-error-generic' => '錯誤：$1',
 );
 

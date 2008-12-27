@@ -39,6 +39,13 @@ $messages['af'] = array(
 	'backforth-prev' => 'Vorige ($1)',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'backforth-next' => 'ቀጥሎ ($1)',
+);
+
 /** Old English (Anglo-Saxon) */
 $messages['ang'] = array(
 	'backforth-next' => 'Nīehst ($1)',

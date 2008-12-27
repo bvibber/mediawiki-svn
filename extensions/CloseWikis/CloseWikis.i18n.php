@@ -279,6 +279,8 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
+ * @author Nike
  * @author Silvonen
  * @author Vililikku
  */
@@ -295,7 +297,7 @@ $messages['fi'] = array(
 	'closewikis-page-reopen-reason' => 'Syy:',
 	'closewikis-page-reopen-submit' => 'Avaa uudelleen',
 	'closewikis-page-reopen-success' => 'Wiki avattiin onnistuneesti uudelleen',
-	'closewikis-page-err-nowiki' => 'Annettiin epäkelpo wiki',
+	'closewikis-page-err-nowiki' => 'Annettu wiki ei kelpaa',
 	'closewikis-page-err-closed' => 'Wiki on jo suljettu',
 	'closewikis-page-err-opened' => 'Wikiä ei ole suljettu',
 	'closewikis-list' => 'Suljettujen wikien luettelo',
@@ -304,8 +306,8 @@ $messages['fi'] = array(
 	'closewikis-list-header-dispreason' => 'Näytetty syy',
 	'closewikis-log-close' => 'suljettiin $2',
 	'closewikis-log-reopen' => 'avattiin $2 uudelleen',
-	'right-editclosedwikis' => 'Muokkaa suljettuja wikejä',
-	'right-closewikis' => 'Sulje wikejä',
+	'right-editclosedwikis' => 'Muokata suljettuja wikejä',
+	'right-closewikis' => 'Sulkea wikejä',
 );
 
 /** French (Français)

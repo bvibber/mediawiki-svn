@@ -102,6 +102,13 @@ $messages['eo'] = array(
 	'protectsection_forbidden' => 'Malpermesita',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'protectsection_forbidden' => 'Prohibido',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke
@@ -384,6 +391,13 @@ $messages['vi'] = array(
 	'protectsection_add_remove' => 'Bạn đng cố thêm hoặc xóa một đề mục bị khóa',
 	'protectsection_modify' => 'Bạn đang cố sửa đổi đoạn văn bản bị khóa',
 	'protectsection_forbidden' => 'Bị cấm',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'protectsection_forbidden' => '禁止',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

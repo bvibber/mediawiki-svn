@@ -531,6 +531,8 @@ $messages['ru'] = array(
 	'whoiswatching' => 'Кто следит за вики-страницей',
 	'whoiswatching-desc' => 'Предоставляет список участников, которые следят за вики-страницей',
 	'specialwhoiswatchingthepage' => 'Кто следит %s',
+	'specialwhoiswatchingusage' => 'Эта служебная страница не может быть использована сама по себе.
+Пожалуйста, используйте страницу [[MediaWiki:Number_of_watching_users_pageview]] для определния точки входа в эту служебную страницу.',
 	'specialwhoiswatchingaddusers' => 'Добавить участников для наблюдения страницы',
 	'specialwhoiswatchingaddbtn' => 'Добавить выбранных участников',
 );

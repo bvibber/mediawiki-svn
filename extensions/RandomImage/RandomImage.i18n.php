@@ -229,6 +229,13 @@ $messages['ru'] = array(
 	'randomimage-desc' => 'Позволяет случайно выбирать медиа с помощью <tt>&lt;randomimage /&gt;</tt>',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'randomimage-desc' => 'Pruvvedi a dari nu cuntinituri di file ammuzzu sirvènnusi dû tag <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

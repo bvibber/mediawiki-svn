@@ -138,8 +138,10 @@ $messages['grc'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'emergencydesysop-submit' => '送信',
 	'emergencydesysop-nogroups' => 'なし',
 );
 
@@ -159,12 +161,18 @@ $messages['ko'] = array(
 $messages['lb'] = array(
 	'emergencydesysop' => "Noutprozedur fir d'Adminrechter ewechzehuelen",
 	'emergencydesysop-desc' => "Erlaabt et engem Administrateur seng eege REchter z'opferen fir engem Anere seng Adminrechter ewechzehuelen",
+	'emergencydesysop-title' => "D'Administrateursrechter esouwuel dem aktuelle Benotzer wéi och engem aneren Adminstrateur ewechhuelen.",
 	'emergencydesysop-otheradmin' => "Aneren Administrateur fir d'Adminrechter ewechzehuelen",
 	'emergencydesysop-reason' => "Grond fir d'Ewechhuelen",
 	'emergencydesysop-submit' => 'Späicheren',
+	'emergencydesysop-incomplete' => "All d'Felder vum Formulaire mussen ausgefëllt sinn, versicht et w.e.g. nach eng Kéier.",
+	'emergencydesysop-notasysop' => 'De gewielt Benotzer ass net am Grupp vun den Administrateuren.',
 	'emergencydesysop-nogroups' => 'Keen',
+	'emergencydesysop-done' => "Aktioun ofgeschloss, esouwuel Dir wéi och de Benotzer [[$1]] kruten d'Administraeursrechter ofgeholl.",
+	'emergencydesysop-invalidtarget' => 'De gewielte Benotzer gëtt et net.',
 	'emergencydesysop-blocked' => 'Dir kënnt net op dës Säit goen esoulaang wann Dir gespaart sidd',
 	'emergencydesysop-noright' => 'Dir hutt net genuch Rechter fir op dës Säit ze goen',
+	'right-emergencydesysop' => "Kann engem anere Benotzer d'Administrateursrechter ofhuele, géigesäiteg",
 );
 
 /** Dutch (Nederlands)
@@ -233,6 +241,14 @@ $messages['oc'] = array(
  */
 $messages['ps'] = array(
 	'emergencydesysop-nogroups' => 'هېڅ',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'emergencydesysop-reason' => 'Motiv pentru ştergere',
+	'emergencydesysop-invalidtarget' => 'Utilizatorul ţintă nu există.',
 );
 
 /** Russian (Русский)

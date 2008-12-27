@@ -317,6 +317,8 @@ $wgGoogleMapsMessages['az'] = array(
  */
 $wgGoogleMapsMessages['be-tarask'] = array(
 	'gm-balloon-title' => 'Назва:',
+	'gm-yes' => 'Так',
+	'gm-no' => 'Не',
 );
 
 /** Bulgarian (Български)
@@ -865,10 +867,12 @@ Provu la lastan version de <a href="http://www.microsoft.com/ie">Interreta Esplo
 /** Spanish (Español)
  * @author <anonymous>
  * @author Acrida
+ * @author Imre
  */
 $wgGoogleMapsMessages['es'] = array(
 	'gm-incompatible-browser' => 'Para ver el mapa que hay en esta p&aacute;gina, necesitas usar un navegador compatible.',
 	'gm-no-editor' => 'Desgraciadamente, tu navegador no soporta la funci&oacute;n interactiva de construcci&oacute;n de mapas. Prueba la &oucute;ltima versi&oacute;n de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac y Linux).',
+	'gm-balloon-title' => 'Título:',
 	'gm-make-marker' => 'Leyenda (sintaxis wiki OK):',
 	'gm-remove' => 'eliminar',
 	'gm-caption' => 'Leyenda',
@@ -912,8 +916,12 @@ $wgGoogleMapsMessages['es'] = array(
 	'gm-save-path' => 'Guardar',
 	'gm-edit-path' => 'a&#241;adir puntos',
 	'gm-color-path' => 'cambiar el color',
+	'gm-opacity' => 'Opacidad',
 	'gm-make-map' => 'insertar un mapa',
 	'gm-hide-map' => 'ocultar mapa',
+	'gm-earth' => 'Tierra',
+	'gm-moon' => 'Luna',
+	'gm-mars' => 'Marte',
 );
 
 /** Basque (Euskara)
@@ -1947,11 +1955,16 @@ $wgGoogleMapsMessages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $wgGoogleMapsMessages['ja'] = array(
 	'gm-balloon-title' => 'タイトル:',
+	'gm-remove' => '削除',
+	'gm-tab-title' => 'タブタイトル',
+	'gm-tab' => 'タブ',
 	'gm-no-zoom-control' => 'なし',
 	'gm-search' => '検索',
+	'gm-save-path' => '保存',
 );
 
 /** Javanese (Basa Jawa)
@@ -2521,10 +2534,17 @@ $wgGoogleMapsMessages['nah'] = array(
 	'gm-balloon-link-article' => 'Tzonhuiliztli inīn zāzanilhuīc (mohuelīti):',
 	'gm-map' => 'Āmatohtli',
 	'gm-zoom-control' => 'Ācalpapanōliztli',
+	'gm-large' => 'Huēyi',
+	'gm-medium' => 'Nepantlah',
+	'gm-small' => 'Tepitōn',
 	'gm-no-zoom-control' => 'Ahtlein',
 	'gm-yes' => 'Quēmah',
 	'gm-no' => 'Ahmo',
+	'gm-search' => 'Titlatēmōz',
 	'gm-save-path' => 'Ticpiyāz',
+	'gm-earth' => 'Tlālticpac',
+	'gm-moon' => 'Mētztli',
+	'gm-mars' => 'Chīchīlco',
 );
 
 /** Dutch (Nederlands)
@@ -3213,6 +3233,33 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-mars' => 'Марс',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$wgGoogleMapsMessages['scn'] = array(
+	'gm-incompatible-browser' => 'Pi taliari la mappa ca veni misa nti stu spàzziu, hà usari nu browser cumpatìbbili.',
+	'gm-incompatible-browser-link' => 'Fà clic ccà pi taliari na lista di browser cunpatìbbili.',
+	'gm-no-editor' => 'Purtroppu lu tò browser non è bonu pi la carattirìstica di criazzioni di mappi ntirattivi. Prova l\'ùrtima virsioni di <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) o <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac e Linux).',
+	'gm-balloon-title' => 'Tìtulu:',
+	'gm-balloon-link-article' => 'Lijami a chista pàggina (opzionali):',
+	'gm-make-marker' => 'Liggenda (wiki mark-up OK):',
+	'gm-remove' => 'rimovi',
+	'gm-caption' => 'Liggenda',
+	'gm-tab-title' => 'Tìtulu tab',
+	'gm-tab' => 'Tab',
+	'gm-start-path' => 'Accumincia nu pircorsu',
+	'gm-trace-area' => "signala n'ària",
+	'gm-save-point' => 'sarva &amp; nesci',
+	'gm-load-map-from-article' => 'Càrica na mappa di la pàggina:',
+	'gm-no-maps' => 'Nudda mappa di caricari nti sta pàggina.',
+	'gm-refresh-list' => 'Aggiurna lista',
+	'gm-load-map' => 'Càrica mappa',
+	'gm-clip-result' => 'Jùnci a la mappa',
+	'gm-no-results' => 'Dispiaciuti. nuddu risurtatu.',
+	'gm-searching' => 'Sta circannu...',
+	'gm-map' => 'Mappa',
+);
+
 /** Sinhala (සිංහල)
  * @author Asiri wiki
  */
@@ -3738,14 +3785,20 @@ $wgGoogleMapsMessages['th'] = array(
 /** Turkish (Türkçe)
  * @author Karduelis
  * @author Mach
+ * @author Runningfridgesrule
  * @author Suelnur
  */
 $wgGoogleMapsMessages['tr'] = array(
 	'gm-balloon-title' => 'Başlık:',
 	'gm-remove' => 'kaldır',
+	'gm-searching' => 'arıyor...',
+	'gm-map' => 'Harita',
+	'gm-are-you-sure' => 'Emin misiniz?',
 	'gm-no-zoom-control' => 'Hiçbiri',
 	'gm-yes' => 'Evet',
 	'gm-no' => 'Hayır',
+	'gm-search' => 'Ara',
+	'gm-save-path' => 'Kaydet',
 	'gm-earth' => 'Dünya',
 	'gm-moon' => 'Ay',
 	'gm-mars' => 'Mars',

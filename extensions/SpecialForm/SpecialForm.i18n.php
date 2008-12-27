@@ -231,9 +231,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'form' => 'Formulario',
+	'formpattern' => 'Formulario de $1',
 	'formsave' => 'Guardar',
 );
 
@@ -442,6 +445,13 @@ $messages['is'] = array(
 	'formsave' => 'Vista',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'formsave' => '保存',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  * @author Pras
@@ -626,7 +636,11 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'formtitlepattern' => 'Ticcēntilīz yancuīc $1',
 	'formsave' => 'Ticpiyāz',
+	'formarticleexists' => 'Zāzanilli ia',
+	'formarticleexiststext' => 'Zāzanilli [[$1]] ye ia.',
+	'formbadpagename' => 'Ahcualli zāzaniltōcāitl',
 );
 
 /** Low German (Plattdüütsch)

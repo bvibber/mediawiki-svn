@@ -192,6 +192,13 @@ $messages['nl'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-interface die tekstextracten levert',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'opensearchxml-desc' => 'XML-grensesnitt for [http://opensearch.org/ OpenSearch]',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

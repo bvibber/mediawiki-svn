@@ -81,6 +81,14 @@ $messages['bs'] = array(
 	'usercontactlink-desc' => 'Daje mogućnost jednostavnog i konzistentnog dodavanja drugih korisničkih imena koristeći ^^^user^^^ sintaksu',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'usercontactlink-baduser' => 'Nesprávné uživatelské jméno',
+	'usercontactlink-desc' => 'Poskytuje možnost jednoduše a konzistetně přidávat jména ostatních uživatelů pomocí syntaxe ^^^uživatel^^^',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

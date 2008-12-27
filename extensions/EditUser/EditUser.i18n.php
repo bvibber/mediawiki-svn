@@ -258,15 +258,18 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Jatrobat
  */
 $messages['es'] = array(
+	'edituser-username' => 'Nombre',
 	'edituser-dosearch' => 'Buscar',
 );
 
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix
+ * @author Mobe
  * @author Nike
  */
 $messages['fi'] = array(
@@ -278,6 +281,7 @@ $messages['fi'] = array(
 	'edituser-nouser' => 'Määriteltyä käyttäjää ei ole olemassa',
 	'edituser-exempt' => 'Määriteltyä käyttäjää ei voida muokata',
 	'right-edituser' => 'Muokata muiden käyttäjien asetuksia',
+	'right-edituser-exempt' => 'Muut eivät voi muokata heidän asetuksiaan.',
 );
 
 /** French (Français)
@@ -652,6 +656,7 @@ $messages['myv'] = array(
  */
 $messages['nah'] = array(
 	'edituser-username' => 'Tōcāitl',
+	'edituser-dosearch' => 'Titlatēmōz',
 );
 
 /** Low German (Plattdüütsch)

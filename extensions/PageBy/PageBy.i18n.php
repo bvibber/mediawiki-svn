@@ -26,11 +26,13 @@ $messages['en'] = array(
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'pageby-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 	'pageby-first' => '* $1 link to user page
-* $2 timeanddate',
+* $2 timeanddate
+* $3 (optional) link to initial version of page',
 	'pageby-last' => '* $1 link to user page
 * $2 timeanddate
 * $3 link to diff (or first revision of page)',
@@ -120,8 +122,10 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
+	'pageby-contributors' => 'Osallistujat:',
 	'pageby-anon' => '<i>nimetön</i>',
 );
 

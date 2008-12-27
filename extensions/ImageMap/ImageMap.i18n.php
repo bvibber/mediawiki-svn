@@ -198,10 +198,12 @@ $messages['bs'] = array(
 	'imagemap_no_link' => 'Greška: nije pronađen valjan link na kraju reda $1',
 	'imagemap_invalid_title' => 'Greška: nevaljan naslov u linku u redu $1',
 	'imagemap_missing_coord' => 'Greška: nema dovoljno koordinata za iscrtavanje u redu $1',
+	'imagemap_unrecognised_shape' => 'Greška: neprepoznat oblik u redu $1, svaki red mora počinjati sa jednim od: default, rect, circle ili poly',
 	'imagemap_no_areas' => 'Greška: mora se navesti bar jedno područje specifikacije',
 	'imagemap_invalid_coord' => 'Greška: nevaljane koordinate u redu $1, treba biti broj',
 	'imagemap_invalid_desc' => 'Greška: nevaljana specifikacija opisa, mora biti jedan od: <tt>$1</tt>',
 	'imagemap_description' => 'O ovoj slici',
+	'imagemap_poly_odd' => 'Greška: pronađen poly sa neparnim brojem koordinata u redu $1',
 );
 
 /** Catalan (Català)
@@ -1099,6 +1101,27 @@ $messages['sah'] = array(
 	'imagemap_invalid_coord' => 'Error: $1 строкаҕа сыыһа координата суруллубут, чыыһыла буолуохтаах',
 	'imagemap_invalid_desc' => 'Error: desc суолтата сыыһа турбут, мантан талыахха наада: <tt>$1</tt>',
 	'imagemap_description' => 'Ойуу туһунан',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'imagemap_desc' => "Pirmetti di rializzari ''image map'' cliccàbbili latu client cô tag <tt><nowiki><imagemap></nowiki></tt>",
+	'imagemap_no_image' => "Sbàgghiu: s'hà spicificari na mmàggini ntâ prima riga",
+	'imagemap_invalid_image' => "Sbàgghiu: la mmàggini nun è vàlida o non c'è",
+	'imagemap_bad_image' => "Sbàgghiu: la mmàggini s'attrova ntâ blacklist pi sta pàggina",
+	'imagemap_no_link' => '
+Sbàgghiu: non vinni attruvatu nuddu lijami vàlidu a la fini dâ riga $1',
+	'imagemap_invalid_title' => 'Sbàgghiu: tìtulu dû lijami non vàlidu ntâ riga $1',
+	'imagemap_missing_coord' => 'Sbàgghiu: non ci sunnu abbastanza cuurdinati pi la furma spicificata nti la tiga $1',
+	'imagemap_unrecognised_shape' => 'Sbàgghiu: Furma (shape) non canusciuta nti la riga $1, ogniduna di li righi hà accuminciari cu unu di li furmi ccà di sècutu:  default, rect, circle o poly',
+	'imagemap_no_areas' => "Sbàgghiu: hà èssiri spicificata ô cchiù picca n'ària.",
+	'imagemap_invalid_coord' => 'Sbàgghiu: cuurdinata non vàlida ntâ riga $1, idda hà èssiri nu nùmmiru',
+	'imagemap_invalid_desc' => 'Sbàgghiu: valuri non vàlidu pô paràmitru desc, hà èssiri unu di chisti: <tt>$1</tt>',
+	'imagemap_description' => "Nfumazzioni supr'a â mmàggini",
+	'imagemap_desc_types' => 'top-right (susu-a manu dritta), bottom-right (jusu-a manu dritta) , bottom-left (jusu-a manu manca), top-left (susu-a manu manca), none (nenti)',
+	'imagemap_poly_odd' => "Sbàgghiu: attruvatu pulìgunu c'un nùmmiru sparu di cuurdinati nti la riga $1",
 );
 
 /** Sinhala (සිංහල)

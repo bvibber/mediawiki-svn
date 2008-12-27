@@ -272,6 +272,14 @@ $messages['eo'] = array(
 	'spamregex-summary-log' => '(Resumo)',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'spamregex-text' => '(Texto)',
+	'spamregex-summary-log' => '(Resumen)',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -646,6 +654,7 @@ $messages['mt'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'spamregex-log-2' => ' īpan $1',
 	'spamregex-summary-log' => '(Tlahcuilōltōn)',
 );
 

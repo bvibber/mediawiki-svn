@@ -21,6 +21,15 @@ It must:',
 	'securepasswords-word' => 'not be a word',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'securepasswords-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
+);
+
 /** Arabic (العربية)
  * @author Ouda
  */
@@ -58,6 +67,24 @@ $messages['dsb'] = array(
 	'securepasswords-special' => 'nanejmjenjej 1 specialne znamuško wopśimjeś (Specialne znamuška su: $1)',
 	'securepasswords-username' => 'se wót twójogo wužywarske mjenja rozeznawaś',
 	'securepasswords-word' => 'něco druge byś ako słowo',
+);
+
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Str4nd
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'securepasswords-desc' => 'Luo turvallisempia salasanatiivisteitä ja lisää salasanan vahvuuden tarkistajan.',
+	'securepasswords-valid' => 'Salasanasi ei kelpaa tai on liian lyhyt.
+Sen pitää täyttää seuraavat ehdot:',
+	'securepasswords-minlength' => 'olla vähintään $1 {{PLURAL:$1|merkkiä|merkkiä}}',
+	'securepasswords-lowercase' => 'sisältää vähintään yhden pienaakkosen',
+	'securepasswords-uppercase' => 'sisältää vähintään yksi suuraakkonen',
+	'securepasswords-digit' => 'sisältää vähintään yksi numero',
+	'securepasswords-special' => 'sisältää vähintään yksi erikoismerkki (erikoismerkkejä ovat: $1)',
+	'securepasswords-username' => 'olla eri kuin käyttäjänimesi',
+	'securepasswords-word' => 'ei saa olla sana',
 );
 
 /** French (Français)
@@ -147,6 +174,29 @@ $messages['ko'] = array(
 	'securepasswords-word' => '단어가 아니어야 합니다.',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'securepasswords-desc' => 'Deiht en Pröfung för de Passwoote ier Qualiteit em Wiki dobei, un määt en besser (seechere) Verschlößelung för de Passwoote.',
+	'securepasswords-valid' => 'Ding Paßwoot is onjöltisch udder ze koot.
+Et mööt:',
+	'securepasswords-minlength' => 'winnishßtens {{PLURAL:$1|ei|$1|kei}} Zeiche lang sin',
+	'securepasswords-lowercase' => 'winnischßdens eine kleine Bochstabe enthallde',
+	'securepasswords-uppercase' => 'winnischßdens eine jroße Bochstabe enthallde',
+	'securepasswords-digit' => 'winnischßdens ein Zeffer enthallde',
+	'securepasswords-special' => 'winnischßdens ei Sönderzeiche enthallde. De Sönderzeiche sinn_er: $1',
+	'securepasswords-username' => 'anders wi Dinge Metmaachername sinn',
+	'securepasswords-word' => 'kein nomaal Woot sin',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'securepasswords-word' => 'ahmo tlahtōl',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -175,6 +225,21 @@ $messages['nn'] = array(
  */
 $messages['oc'] = array(
 	'securepasswords-desc' => "Crèa d'hachages de senhals mai segurs e apond un verificator de complexitat de senhal",
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'securepasswords-valid' => 'Parola dumneavoastră este incorectă sau prea scurtă.
+Aceasta trebuie:',
+	'securepasswords-minlength' => 'să fie de cel puţin $1 {{PLURAL:$1|caracter|caractere}} lungime',
+	'securepasswords-lowercase' => 'să conţină cel puţin o literă mică',
+	'securepasswords-uppercase' => 'să conţină cel puţin o literă mare',
+	'securepasswords-digit' => 'să conţină cel puţin o cifră',
+	'securepasswords-special' => 'să conţină cel puţin un caracter special (caracterele speciale sunt: $1)',
+	'securepasswords-username' => 'să fie diferită de numele de utilizator',
+	'securepasswords-word' => 'să nu fie un cuvânt',
 );
 
 /** Slovak (Slovenčina)
@@ -217,6 +282,7 @@ $messages['te'] = array(
 $messages['zh-hans'] = array(
 	'securepasswords-minlength' => '长度至少需要$1个字符',
 	'securepasswords-lowercase' => '包含最少一个小写字母',
+	'securepasswords-uppercase' => '包含最少一个大写字母',
 	'securepasswords-digit' => '包含最少一个数字',
 	'securepasswords-username' => '不与您的用户名相同',
 );

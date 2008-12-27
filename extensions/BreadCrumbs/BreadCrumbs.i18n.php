@@ -197,6 +197,13 @@ $messages['mr'] = array(
 	'breadcrumbs-desc' => 'विकिमधील सदस्याचा मार्ग (पाथ) दर्शविते.',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'breadcrumbs-desc' => 'Tiquinttāz tlatequitiltilīlli in īoh huiquitoca.',
+);
+
 /** Low German (Plattdüütsch)
  * @author Slomox
  */

@@ -386,9 +386,21 @@ $messages['es'] = array(
 
 /** Basque (Euskara)
  * @author Bengoa
+ * @author Theklan
  */
 $messages['eu'] = array(
-	'bookinfo-result-title' => 'Titulua:',
+	'bookinfo-header' => 'Liburuaren informazioa',
+	'bookinfo-desc' => '[[Berezi:Booksources|Liburuen jatorriaren orrialde berezia]] hedatzen du web serbitzu bateko informazioarekin',
+	'bookinfo-result-title' => 'Izenburua:',
+	'bookinfo-result-author' => 'Egilea:',
+	'bookinfo-result-publisher' => 'Argitaletxea:',
+	'bookinfo-result-year' => 'Urtea:',
+	'bookinfo-error-invalidisbn' => 'Baliagarria ez den ISBN bat sartu duzu.',
+	'bookinfo-error-nosuchitem' => 'Elementua ez da esistitzen edo ezin da aurkitu.',
+	'bookinfo-error-nodriver' => 'Ez da posible izan Book Information Driver egoki bat hastea.',
+	'bookinfo-error-noresponse' => 'Ez dago erantzunik edo eskaera denboraz kanpo geratu da.',
+	'bookinfo-purchase' => '$1(e)tik erosi liburu hau',
+	'bookinfo-provider' => 'Datu emalea: $1',
 );
 
 /** Extremaduran (Estremeñu)

@@ -594,11 +594,16 @@ $messages['ar'] = array(
 	'configure-setting-wgDebugLogGroups-value' => 'ملف',
 	'configure-setting-wgCookieSecure' => 'سجلات متصفح آمنه',
 	'configure-setting-wgExtensionFunctions' => 'وظائف الإمتداد',
+	'configure-setting-wgEnableMWSuggest' => 'إتاحة أقتراح البحث',
 	'configure-setting-wgValidSkinNames-key' => 'أسم داخلي',
 	'configure-setting-wgValidSkinNames-value' => 'أظهر أسم',
 	'configure-setting-wgDefaultUserOptions' => 'تفضيلات المستخدم الأساسية',
 	'configure-setting-wgSecretKey' => 'مفتاح سري',
 	'configure-setting-wgDBservers' => 'خوادم قاعدة البيانات',
+	'configure-setting-wgSVGConverter' => 'SVG محول',
+	'configure-setting-wgSVGConverters' => 'SVG محولات',
+	'configure-setting-wgRCLinkDays' => 'أيام محددة في أحدث التغييرات',
+	'configure-setting-wgEnotifUseJobQ' => 'أرسل بريد إلكتروني بواسطة طابور الشغل',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1242,6 +1247,15 @@ $messages['eo'] = array(
 	'configure-setting-wgDBprefix' => 'Tabela prefikso',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'configure-setting-wgActionPaths-key' => 'Acción',
+	'configure-setting-wgExtraLanguageNames-value' => 'Nombre',
+	'configure-setting-wgDebugLogGroups-value' => 'Archivo',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Str4nd
@@ -1270,17 +1284,27 @@ $messages['fi'] = array(
 	'configure-setting-wgUseGzip' => 'Käytä GZIP-pakkausta',
 	'configure-setting-wgAllowDisplayTitle' => 'Salli <nowiki>{{DISPLAYTITLE}}</nowiki>-funktion käyttö',
 	'configure-setting-wgParserConf' => 'Jäsentimen asetukset',
+	'configure-setting-wgInputEncoding' => 'Syötetekstin merkistö',
 	'configure-setting-wgLanguageCode' => 'Sivuston kielikoodi',
+	'configure-setting-wgOutputEncoding' => 'Tulosteen merkistö',
+	'configure-setting-wgArticleRobotPolicies' => 'Sivukohtaiset hakukonekäytännöt',
+	'configure-setting-wgArticleRobotPolicies-value' => 'Hakukonekäytäntö',
+	'configure-setting-wgCapitalLinks' => 'Ensimmäinen kirjain kaikkien sivujen nimissä on aina iso',
+	'configure-setting-wgExemptFromUserRobotsControl' => 'Nimiavaruudet, jotka eivät salli taikasanoja <nowiki>__INDEX__</nowiki> ja <nowiki>__NOINDEX__</nowiki>',
 	'configure-setting-wgExtraLanguageNames-key' => 'Kielikoodi',
 	'configure-setting-wgExtraLanguageNames-value' => 'Nimi',
+	'configure-setting-wgExtraSubtitle' => 'Alaotsikko (näkyy jokaisen sivun otsikon alla)',
+	'configure-setting-wgHideInterlanguageLinks' => 'Piilota kieltenväliset linkit sivupalkista',
 	'configure-setting-wgMaxArticleSize' => 'Sivujen enimmäiskoko (kB)',
 	'configure-setting-wgNoFollowLinks' => 'Lisää linkkeihin rel="nofollow"',
 	'configure-setting-wgSiteSupportPage' => 'Sivu lahjoitustiedoilla',
 	'configure-setting-wgUseExternalEditor' => 'Salli ulkoisen muokkausohjelman käyttö',
+	'configure-setting-wgUseMetadataEdit' => 'Salli metatiedon muokkaus',
 	'configure-setting-wgAjaxLicensePreview' => 'Käytä AJAX-esikatselua lisensseille tiedostoja tallennettaessa',
 	'configure-setting-wgAllowCopyUploads' => 'Salli tiedostojen tallennus URL:sta',
 	'configure-setting-wgCheckFileExtensions' => 'Tarkista tiedostopäätteet',
 	'configure-setting-wgEnableUploads' => 'Salli tiedostojen tallennus',
+	'configure-setting-wgLocalFileRepo' => 'Paikallinen tiedostolähde',
 	'configure-setting-wgMaxUploadSize' => 'Tallennettavien tiedostojen enimmäiskoko',
 	'configure-setting-wgHTTPTimeout' => 'Aikakatkaisu HTTP-pyynnöille',
 	'configure-setting-wgHTTPProxy' => 'Käytettävä HTTP-välityspalvelin',
@@ -1297,6 +1321,8 @@ $messages['fi'] = array(
 	'configure-setting-wgEnableEmail' => 'Salli sähköpostiominaisuudet',
 	'configure-setting-wgEnableUserEmail' => 'Salli käyttäjienväliset sähköpostiviestit',
 	'configure-setting-wgSMTP' => 'SMTP-palvelin',
+	'configure-setting-wgDebugDumpSql' => 'Tee SQL-kyselyistä vedos virheenjäljitystulosteeseen',
+	'configure-setting-wgDebugLogFile' => 'Vianjäljityksen lokitiedosto',
 	'configure-setting-wgDebugLogGroups-value' => 'Tiedosto',
 	'configure-setting-wgCookieExpiration' => 'HTTP-evästeen vanhenemisaika',
 	'configure-setting-wgCookiePrefix' => 'Oma etuliite evästeille',
@@ -1319,6 +1345,8 @@ $messages['fi'] = array(
 	'configure-setting-wgMetaNamespaceTalk' => 'Projektista keskustelun nimiavaruuden nimi',
 	'configure-setting-wgNamespaceAliases-key' => 'Vaihtoehtoinen nimi',
 	'configure-setting-wgNamespaceProtection' => 'Nimiavaruussuojaus',
+	'configure-setting-wgNamespaceRobotPolicies' => 'Nimiavaruuskohtaiset hakurobottikäytännöt',
+	'configure-setting-wgNamespaceRobotPolicies-value' => 'Hakurobottikäytännöt',
 	'configure-setting-wgUseCategoryBrowser' => 'Salli luokkaselain',
 	'configure-setting-wgRightsIcon' => 'Tekijänoikeuskuvake',
 	'configure-setting-wgAllowRealName' => 'Salli oikeat nimet',
@@ -1388,6 +1416,9 @@ $messages['fi'] = array(
 	'configure-setting-wgPutIPinRC' => 'Lisää IP-osoitteet ”recentchanges”-tauluun',
 	'configure-setting-wgRCLinkLimits' => 'Muutosmäärän rajoitus tuoreissa muutoksissa',
 	'configure-setting-wgRCLinkDays' => 'Päivärajoitus tuoreissa muutoksissa',
+	'configure-setting-wgRC2UDPAddress' => 'Osoite tuoreiden muutosten UDP-ilmoituksille',
+	'configure-setting-wgRC2UDPPort' => 'Portti tuoreiden muutosten UDP-ilmoituksille',
+	'configure-setting-wgBlockAllowsUTEdit' => 'Salli estetyn käyttäjän muokata keskustelusivuaan',
 	'configure-setting-wgSysopEmailBans' => 'Salli ylläpitäjien estää pääsy sivulle [[Special:EmailUser]]',
 	'configure-setting-wgSysopRangeBans' => 'Salli ylläpitäjien estää IP-alueita',
 	'configure-setting-wgSysopUserBans' => 'Salli ylläpitäjien estää kirjautuneita käyttäjiä',
@@ -2213,6 +2244,7 @@ $messages['hr'] = array(
 
 /** Japanese (日本語)
  * @author Fievarsty
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'configure-setting-wgSitename' => 'サイトの名前',
@@ -2221,11 +2253,38 @@ $messages['ja'] = array(
 	'configure-setting-wgDBpassword' => '$wgDBuser のパスワード',
 	'configure-setting-wgMediaHandlers-key' => 'MIMEタイプ',
 	'configure-setting-wgArticleRobotPolicies-key' => 'ページタイトル',
+	'configure-setting-wgExtraLanguageNames-key' => '言語コード',
 	'configure-setting-wgExtraLanguageNames-value' => '名前',
 	'configure-setting-wgSiteNotice' => 'サイトのお知らせ',
 	'configure-setting-wgStyleVersion' => 'MediaWikiバージョンの CSS/JS ファイル',
 	'configure-setting-wgCheckFileExtensions' => '拡張機能のファイルをチェック',
 	'configure-setting-wgEnableUploads' => 'アップロードを可能にする',
+	'configure-setting-wgLogNames' => '記録名',
+	'configure-setting-wgLogRestrictions-key' => '記録タイプ',
+	'configure-setting-wgSpecialPageGroups-key' => 'グループ',
+	'configure-setting-wgSMTP' => 'SMTP サーバー',
+	'configure-setting-wgDebugLogFile' => 'デバッグログファイル',
+	'configure-setting-wgDebugLogGroups-value' => 'ファイル',
+	'configure-setting-wgHooks' => 'ホック',
+	'configure-setting-wgDefaultSkin' => 'デフォルトスキン名',
+	'configure-setting-wgExtraNamespaces-key' => '名前空間 ID',
+	'configure-setting-wgExtraNamespaces-value' => '名前空間名',
+	'configure-setting-wgNamespaceAliases' => '名前空間 リダイレクト',
+	'configure-setting-wgNamespaceAliases-key' => 'エイリアス名',
+	'configure-setting-wgNamespaceAliases-value' => 'ターゲット名前空間ID',
+	'configure-setting-wgLocalInterwiki' => 'ローカル インターウィキ プレフィックス',
+	'configure-setting-wgProxyWhitelist' => 'プロキシ ホワイトリスト',
+	'configure-setting-wgDBprefix' => 'テーブル プレフィックス',
+	'configure-setting-wgDBTableOptions' => 'MySQL テーブル オプション',
+	'configure-setting-wgDBClusterTimeout' => 'データベース タイムアウト',
+	'configure-setting-wgDBservers' => 'データベース サーバー',
+	'configure-setting-wgSVGConverter' => 'SVG コンバーター',
+	'configure-setting-wgSVGConverterPath' => 'SVG コンバーター パス',
+	'configure-setting-wgSVGConverters' => 'SVG コンバーター',
+	'configure-setting-wgSVGConverters-key' => 'コンバーター名',
+	'configure-setting-wgImageMagickConvertCommand' => 'ImageMagick コマンド',
+	'configure-setting-wgImageMagickTempDir' => 'ImageMagick テンポラリー ディレクトリ',
+	'configure-setting-wgScriptPath' => 'ベース URL パス',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -2261,6 +2320,7 @@ $messages['lb'] = array(
 	'configure-setting-wgActionPaths' => 'URL fir all Aktioun',
 	'configure-setting-wgActionPaths-key' => 'Aktioun',
 	'configure-setting-wgActionPaths-value' => 'Schabloun vun enger URL',
+	'configure-setting-wgAllDBsAreLocalhost' => "Ouni weider Meldungen all Datebankverbindungen op de ''Localhos'' neischreiwen",
 	'configure-setting-wgCheckDBSchema' => "Kuckt bäi all Säitenoffro no op d'Datebank aktualiséiert ass (sollnet méi benotzt ginn)",
 	'configure-setting-wgDBerrorLog' => "Fichier fir d'Feeler vun der Datebank ofzespäicheren",
 	'configure-setting-wgDBname' => 'Numm vun der Datebank déi benotzt soll ginn',
@@ -2288,13 +2348,17 @@ $messages['lb'] = array(
 	'configure-setting-wgArticleRobotPolicies' => 'Pro-Säit Bot-Richtlinnen',
 	'configure-setting-wgArticleRobotPolicies-key' => 'Titel vun der Säit',
 	'configure-setting-wgArticleRobotPolicies-value' => 'Richtlinne fir Botten',
+	'configure-setting-wgBreakFrames' => 'Aus geframte Fënsteren erausgoen',
 	'configure-setting-wgCapitalLinks' => 'Den éischte Buchstaw vun den Titele vun de Säiten ass grouss geschriwwen',
 	'configure-setting-wgDefaultLanguageVariant' => 'Standard-Sproochevariant',
+	'configure-setting-wgDefaultRobotPolicy' => 'Standard Richtlinne fir Robotten (Sichmaschinen)',
 	'configure-setting-wgExemptFromUserRobotsControl' => 'Nummraim déi et net erlaben fir <nowiki>__INDEX__</nowiki> and <nowiki>__NOINDEX__</nowiki> ze benotzen',
 	'configure-setting-wgExtraLanguageNames' => 'Numm',
 	'configure-setting-wgExtraLanguageNames-key' => 'Sproochecode',
 	'configure-setting-wgExtraLanguageNames-value' => 'Numm',
+	'configure-setting-wgExtraSubtitle' => 'Ënnertitel (steet ënner all Säitentitel)',
 	'configure-setting-wgHideInterlanguageLinks' => 'Interwikilinken an der säitlecher Läischt verstoppen',
+	'configure-setting-wgLegalTitleChars' => 'Buchstawn déi en de Säitentitelen erlaabt sinn (Regex-Zeecheklass)',
 	'configure-setting-wgMaxArticleSize' => 'Maximal Gréisst vun enger Säit (kB)',
 	'configure-setting-wgNoFollowLinks' => 'Den Attribut rel="nofollows" bäi extern Linken derbäisetzen',
 	'configure-setting-wgPageShowWatchingUsers' => 'Weis watfir Benotzer eng Säit iwwerwaachen',
@@ -2313,6 +2377,7 @@ $messages['lb'] = array(
 	'configure-setting-wgLogHeaders' => 'Beschreiwunge vun de Logbicher',
 	'configure-setting-wgLogNames' => 'Nimm vun de Lëschten a Logbicher',
 	'configure-setting-wgLogTypes' => 'Type vu Logbicher',
+	'configure-setting-wgSortSpecialPages' => 'Spezialsäiten op [[Special:SpecialPages]] sortéieren',
 	'configure-setting-wgSpecialPageGroups' => 'Gruppe vu Spezialsäiten',
 	'configure-setting-wgSpecialPageGroups-key' => 'Grupp',
 	'configure-setting-wgAutopromote-value' => 'Bedingungen',
@@ -2327,6 +2392,8 @@ $messages['lb'] = array(
 	'configure-setting-wgSMTP' => 'SMTP-Server',
 	'configure-setting-wgDebugLogGroups-value' => 'Fichier',
 	'configure-setting-wgDisableQueryPageUpdate' => 'Spezialsäiten déi ausgeschalt sinn',
+	'configure-setting-wgCookieSecure' => 'Sécher Cookien',
+	'configure-setting-wgSessionName' => 'Numm vun der Séance',
 	'configure-setting-wgDisableInternalSearch' => 'Intern Sich ausschalten',
 	'configure-setting-wgExtensionFunctions' => 'Erweiderungsfunktiounen',
 	'configure-setting-wgHitcounterUpdateFreq' => 'Frequenz vun der Aktualisatioun vum Compteur vun de Säitenoffroen',
@@ -2350,6 +2417,16 @@ $messages['mk'] = array(
 	'configure-setting-wgEnableUploads' => 'Овозможи подигнувања',
 	'configure-setting-wgVersion' => 'MediaWiki верзија',
 	'configure-setting-wgAllowSpecialInclusion' => 'Допуштено инклузија на специјални страници',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'configure-setting-wgActionPaths-value' => 'URL nemachiyōtīlli',
+	'configure-setting-wgExtraLanguageNames-value' => 'Tōcāitl',
+	'configure-setting-wgSpecialPageGroups-key' => 'Olōlli',
+	'configure-setting-wgDebugLogGroups-value' => 'Tlahcuilōlli',
 );
 
 /** Dutch (Nederlands)
@@ -4324,6 +4401,9 @@ $messages['zh-hans'] = array(
 	'configure-setting-wgInputEncoding' => '输入文字的编码',
 	'configure-setting-wgInterwikiMagic' => '在一特殊列表中显示跨语言（维基）链接',
 	'configure-setting-wgLanguageCode' => '网站语言编码',
+	'configure-setting-wgOutputEncoding' => '输出文字编码',
+	'configure-setting-wgTranslateNumerals' => '翻译数字',
+	'configure-setting-wgUseDatabaseMessages' => '允许使用MediaWiki名字空间修改信息',
 	'configure-setting-wgArticleRobotPolicies' => '每页机器人方针',
 	'configure-setting-wgArticleRobotPolicies-key' => '页面标题',
 	'configure-setting-wgArticleRobotPolicies-value' => '机器人方针',
@@ -4346,7 +4426,9 @@ $messages['zh-hans'] = array(
 	'configure-setting-wgUseExternalEditor' => '允许使用外部编辑器',
 	'configure-setting-wgCheckFileExtensions' => '检查文件扩展名',
 	'configure-setting-wgEnableUploads' => '启用上传',
+	'configure-setting-wgFileStore' => '储存已删文件的位置',
 	'configure-setting-wgHTTPProxy' => '使用的HTTP代理',
+	'configure-setting-wgVersion' => 'MediaWiki版本',
 	'configure-setting-wgLogHeaders' => '记录描述',
 	'configure-setting-wgLogNames' => '记录名称',
 	'configure-setting-wgLogRestrictions' => '记录访问限制',
@@ -4358,6 +4440,8 @@ $messages['zh-hans'] = array(
 	'configure-setting-wgAutopromote-value' => '条件',
 	'configure-setting-wgAccountCreationThrottle' => '每个IP地址可创建的账户数量',
 	'configure-setting-wgEnableAPI' => '启用API',
+	'configure-setting-wgEnableWriteAPI' => '启用编写API',
+	'configure-setting-wgEmergencyContact' => '网站管理员电邮地址',
 	'configure-setting-wgSMTP' => 'SMTP服务器',
 	'configure-setting-wgDebugLogFile' => '调试日志文件',
 	'configure-setting-wgDebugLogGroups-value' => '文件',
@@ -4367,6 +4451,9 @@ $messages['zh-hans'] = array(
 	'configure-setting-wgDisableInternalSearch' => '禁用内部搜索',
 	'configure-setting-wgSpecialPages' => '自定义特殊页面',
 	'configure-setting-wgSearchForwardUrl' => '转送搜索请求',
+	'configure-setting-wgValidSkinNames-key' => '内部名称',
+	'configure-setting-wgValidSkinNames-value' => '显示名称',
+	'configure-setting-wgExtraNamespaces-key' => '名字空间ID',
 	'configure-setting-wgExtraNamespaces-value' => '名字空间名称',
 	'configure-setting-wgNamespaceAliases' => '名字空间重定向',
 	'configure-setting-wgNamespaceRobotPolicies-value' => '机器人方针',
@@ -4378,7 +4465,13 @@ $messages['zh-hans'] = array(
 	'configure-setting-wgDBmysql5' => '使用UTF-8编码',
 	'configure-setting-wgDBservers' => '数据库服务器',
 	'configure-setting-wgExternalServers' => '外部MySQL服务器',
+	'configure-setting-wgAntivirus' => '病毒扫描器内部名称',
+	'configure-setting-wgAntivirusSetup' => '配置病毒扫描器',
+	'configure-setting-wgSVGConverter' => 'SVG转换器',
+	'configure-setting-wgSVGConverters' => 'SVG转换器',
+	'configure-setting-wgSVGConverters-key' => '转换器名称',
 	'configure-setting-wgUseTeX' => '启用TeX',
+	'configure-setting-wgXMLMimeTypes-key' => 'MIME类型',
 	'configure-setting-wgXhtmlDefaultNamespace' => '默认XHTML名字空间',
 	'configure-setting-wgXhtmlNamespaces' => '其他XHTML名字空间',
 	'configure-setting-wgXhtmlNamespaces-key' => '名字空间',
@@ -4391,6 +4484,8 @@ $messages['zh-hans'] = array(
 	'configure-setting-wgMimeTypeBlacklist' => '禁用的MIME类型',
 	'configure-setting-wgUploadPath' => '上传目录的网址',
 	'configure-setting-wgBlockAllowsUTEdit' => '允许被封禁的用户编辑其个人对话页',
+	'configure-setting-wgSysopEmailBans' => '允许管理员禁止用户使用[[Special:EmailUser]]',
+	'configure-setting-wgSysopRangeBans' => '允许管理员封禁IP段',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

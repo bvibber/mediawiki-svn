@@ -639,15 +639,30 @@ $messages['fa'] = array(
  * @author Cimon Avaro
  * @author Nike
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'math_noblahtex' => 'Blahtexin suorittaminen epäonnistui. Sen pitäisi sijaita kohteessa $1.',
+	'math-desc' => 'MathML-ulostulo &lt;math&gt;-elementeille.',
 	'math_CannotChangeDirectory' => 'Työhakemiston vaihtaminen epäonnistui.',
 	'math_CannotCreateTexFile' => 'Tex-tiedoston luominen epäonnistui.',
+	'math_CannotRunDvipng' => 'Ei voida suorittaa ohjelmaa dvipng',
+	'math_CannotRunLatex' => 'Ei voida suorittaa ohjelmaa latex',
+	'math_CannotWritePngDirectory' => 'PNG-kuvien kohdehakemistoon kirjoittaminen epäonnistui',
 	'math_CannotWriteTexFile' => 'Tex-tiedostoon kirjoittaminen epäonnistui.',
 	'math_IllegalCharacter' => 'Kelpaamaton merkki syötteessä',
+	'math_IllegalCommandInMathMode' => 'Komento ”$1” on kielletty matematiikkatilassa.',
+	'math_IllegalCommandInMathModeWithHint' => 'Komento ”$1” on virheellinen matematiikkatilassa.
+Ehkä sinun piti käyttää komentoa ”$2”?',
+	'math_IllegalCommandInTextMode' => 'Komento ”$1” on virheellinen tekstitilassa.',
+	'math_IllegalCommandInTextModeWithHint' => 'Komento ”$1” on virheellinen tekstitilassa.
+Ehkä sinun piti käyttää komentoa ”$2”?',
+	'math_IllegalRedefinition' => 'Komento ”$1” on jo määritelty, joten et voi määritellä sitä uudelleen.',
 	'math_InvalidColour' => 'Väri ”$1” on virheellinen',
 	'math_InvalidUtf8Input' => 'Tekstisyöte ei ole UTF-8-merkistökoodattu',
+	'math_LatexFontNotSpecified' => 'LaTeX-kirjasinta ei ole määritelty kohteelle ”$1”.',
+	'math_LatexPackageUnavailable' => 'PNG-kuvaa piirtäminen ei onnistu, koska LaTeX-paketti ”$1” ei ole saatavilla.',
+	'math_MismatchedBeginAndEnd' => 'Komennot ”$1” ja ”$2” eivät täsmää.',
 	'math_NotEnoughArguments' => 'Liian vähän argumentteja komennolle $1.',
 	'math_PngIncompatibleCharacter' => 'Merkin $1 sisältävän PNG-tiedoston luominen oikein ei onnistu',
 	'math_ReservedCommand' => 'Komento <tt>$1</tt> on varattu blahtexin sisäiseen käyttöön',

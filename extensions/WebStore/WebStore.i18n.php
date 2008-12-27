@@ -86,6 +86,14 @@ $messages['af'] = array(
 	'webstore_no_response' => 'Geen antwoord van die bediener',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'webstore_404' => 'ፋይል አልተገኘም።',
+	'webstore_metadata_not_found' => 'ፋይል አልተገኘም: $1',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -1446,9 +1454,12 @@ $1',
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'inplace_access_disabled' => 'Accesul la acest serviciu a fost dezactivat pentru toţi clienţii.',
+	'inplace_access_denied' => 'Acest serviciu este restricţionat după adresa IP a clientului.',
 	'inplace_scaler_not_enough_params' => 'Parametri insuficienţi.',
 	'inplace_scaler_invalid_image' => 'Imagine incorectă, nu s-a putut determina mărimea.',
 	'inplace_scaler_zero_size' => 'Transformarea a produs un fişier de ieşire de mărime zero.',
+	'webstore_access' => 'Acest serviciu este restricţionat după adresa IP a clientului.',
 	'webstore_path_invalid' => 'Numele fişierului a fost incorect.',
 	'webstore_dest_open' => 'Nu s-a putut deschide fişierul de destinaţie "$1".',
 	'webstore_dest_mkdir' => 'Nu s-a putut crea directorul destinaţie "$1".',
@@ -1478,13 +1489,22 @@ $1',
 );
 
 /** Russian (Русский)
+ * @author Aleksandrit
  * @author Ferrer
  * @author Rubin
  */
 $messages['ru'] = array(
 	'inplace_access_disabled' => 'Доступ у сервису был отключён для всех клиентов',
 	'inplace_scaler_not_enough_params' => 'Недостаточно параметров.',
+	'inplace_scaler_invalid_image' => 'Проблемное изображение, невозможно определить размер.',
+	'inplace_scaler_failed' => 'Произошла ошибка во время масштабирования изображения: $1',
+	'inplace_scaler_no_handler' => 'Нет обработчика для преобразования этого MIME-типа',
 	'webstore_path_invalid' => 'Неверное имя файла.',
+	'webstore_dest_open' => 'Не удаётся открыть файл «$1».',
+	'webstore_dest_mkdir' => 'Не удаётся создать целевой каталог «$1».',
+	'webstore_src_open' => 'Не удаётся открыть исходный файл «$1».',
+	'webstore_rename' => 'Ошибка при переименовании файла «$1» в «$2».',
+	'webstore_temp_open' => 'Ошибка открытия временного файла «$1».',
 	'webstore_404' => 'Файл не найден.',
 	'webstore_metadata_not_found' => 'Файл не найден: $1',
 	'webstore_no_response' => 'Нет ответа от сервера.',

@@ -75,6 +75,20 @@ $messages['es'] = array(
 	'i18ntags-desc' => 'Acceso a las funciones i18n para el formato numérico, gramatical y plurales en cualquier idioma disponible',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'i18ntags-desc' => 'Dagoen edozein hizkuntzako zenbakien formatua, gramatika eta pluralen i18n funtziora sar zaitez',
+);
+
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'i18ntags-desc' => 'i18n toimintojen käyttö numeroiden muotoiluun, kielioppiin ja monikkoihin missä tahan käytettävissä olevassa kielessä.',
+);
+
 /** French (Français) */
 $messages['fr'] = array(
 	'i18ntags-desc' => 'Permet l’accès des fonctions i18n pour le format des nombres, la grammaire et le pluriel dans chaque langue disponible.',

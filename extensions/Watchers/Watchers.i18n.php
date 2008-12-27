@@ -552,6 +552,8 @@ $messages['ro'] = array(
 	'watchers_error_article' => "'''Eroare:''' Pagina nu există.",
 	'watchers_header' => '{{PLURAL:$2|Utilizator care urmăreşte|Utilizatori care urmăresc}} "$1"',
 	'watchers_noone_watches' => 'Nimeni nu urmăreşte această pagină.',
+	'watchers_x_or_more' => '$1 sau mai mulţi {{PLURAL:$1|utilizatori|utilizatori}} au această pagină în lista de urmărire.',
+	'watchers_less_than_x' => 'Mai puţin de $1 {{PLURAL:$1|utilizatori|utilizatori}} au această pagină pe lista de urmărire.',
 );
 
 /** Russian (Русский)

@@ -233,6 +233,13 @@ Malkonvenaj dosieroj estos tuj forigita. Vidu la [[{{MediaWiki:Multipleupload-pa
 	'multiupload-toolbox' => 'Alŝuti multe de dosierojn',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'multipleupload' => 'Subir archivos',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -874,6 +881,7 @@ Ficheiros impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Mult
  */
 $messages['ro'] = array(
 	'multipleupload' => 'Încarcă fişiere',
+	'multiupload-fileuploaded' => 'Fişier încărcat.',
 );
 
 /** Russian (Русский)
@@ -905,6 +913,18 @@ $messages['scn'] = array(
 	'multipleupload-desc' => "Pirmetti a l'utenti di [[Special:MultipleUpload|caricari cchiù file 'n cuntimpurrania]]",
 	'multipleupload-ignoreallwarnings' => "Trascura '''tutti l'avvisi''' e lu stissu sarva li file.",
 	'multipleupload-saveallfiles' => 'Sarva tutti li file.',
+	'multipleupload-addresswarnings' => "Pi favuri teni accura a l'avvirtimenti prima di caricari file",
+	'multipleupload-page' => '{{ns:project}}:Rèuli pi la scancillazzione dî file',
+	'multipleupload-text' => "Càrica ccà cchiù file nzemi.
+
+Scegghi 'Sfògghia' e silizziona li file ca penzi di caricari.
+Poi caricari di 1 a $1 file â vota.
+
+Poi nziriri nu '''Nomu dû file di distinazzioni''' e assignari  '''Dittagghi''' ca fannu na discrizzioni dû tò file.
+
+File nun adatti vènunu scancillati pi sùbbitu, leggi li [[{{MediaWiki:Multipleupload-page}}|rèuli pi la scancillazzioni dî file]].",
+	'multiupload-fileuploaded' => 'File caricatu.',
+	'multiupload-toolbox' => 'Càrica file mùltipli',
 );
 
 /** Sassaresu (Sassaresu)

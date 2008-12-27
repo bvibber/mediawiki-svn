@@ -75,6 +75,7 @@ $messages['af'] = array(
  */
 $messages['am'] = array(
 	'youtubeauthsub_title' => 'አርዕስት',
+	'youtubeauthsub_category' => 'መደብ',
 );
 
 /** Aragonese (Aragonés)
@@ -280,7 +281,7 @@ $messages['bs'] = array(
 	'youtubeauthsub_tokenerror' => 'Greška pri generisanju tokena autorizacije, pokušajte osvježiti.',
 	'youtubeauthsub_success' => "Čestitamo!
 Vaš video je postavljen.
-Da pogledate Vaš video kliknite <a href='http://www.youtube.com/watch?v=$1'>ovdje</a>.
+<a href='http://www.youtube.com/watch?v=$1'>Pogledate Vaš video</a>.
 Stranica YouTube možda treba malo vremena da procesira Vaš video, tako da možda još nije spreman.
 
 Da bi ste uključili Vaš video na neku wiki stranicu, ubacite slijedeći kod na stanicu:
@@ -290,11 +291,11 @@ Da bi ste uključili Vaš video na neku wiki stranicu, ubacite slijedeći kod na
 	'youtubeauthsub_uploadbutton' => 'Postavi',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Ovaj video može se pogledati [http://www.youtube.com/watch?v=$1 ovdje]',
+[http://www.youtube.com/watch?v=$1 Pogledajte ovaj video]',
 	'youtubeauthsub_summary' => 'Postavljanje YouTube videa',
 	'youtubeauthsub_uploading' => 'Vaš video se postavlja.
 Molimo budite strpljivi.',
-	'youtubeauthsub_viewpage' => 'Također, možete pogledati Vaš video [[$1|ovdje]].',
+	'youtubeauthsub_viewpage' => 'Također, možete [[$1|pogledati Vaš video]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Molimo Vas unesite 1 ili više ključnih riječi.',
 	'youtubeauthsub_jserror_notitle' => 'Molimo unesite naslov za video.',
 	'youtubeauthsub_jserror_nodesc' => 'Molimo Vas unesite opis za video.',
@@ -364,6 +365,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Purodha
  * @author Revolus
  */
@@ -382,8 +384,8 @@ $messages['de'] = array(
 	'youtubeauthsub_tokenerror' => 'Fehler beim Erstellen eines Authorisierungstokens. Versuche die Seite neu zuladen.',
 	'youtubeauthsub_success' => "Gratuliere!
 Dein Video wurde hochgeladen.
-Zum schauen klicke <a href='http://www.youtube.com/watch?v=$1'>hier</a>.
-YouTube könnte etwas Zeit brauchen, um dein Video zu verarbeiten, so dass die Seite eventuell noch nicht bereit ist.
+<a href='http://www.youtube.com/watch?v=$1'>Sieh dir dein Video an</a>.
+YouTube könnte etwas Zeit brauchen, um dein Video zu verarbeiten, sodass die Seite eventuell noch nicht bereit ist.
 
 Um das Video auf einer Seite einzubetten, füge folgenden Text ein:
 <code>{{&#35;ev:youtube|$1}}</code>",
@@ -392,14 +394,28 @@ Um das Video auf einer Seite einzubetten, füge folgenden Text ein:
 	'youtubeauthsub_uploadbutton' => 'Hochladen',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Dieses Video kann [http://www.youtube.com/watch?v=$1 hier] angeschaut werden.',
+[http://www.youtube.com/watch?v=$1 Dieses Video ansehen]',
 	'youtubeauthsub_summary' => 'Lade YouTube-Video hoch',
 	'youtubeauthsub_uploading' => 'Dein Video wird gerade hochgeladen.
 Bitte habe Geduld.',
-	'youtubeauthsub_viewpage' => 'Alternativ kann du das Video [[$1|hier]] anschauen.',
+	'youtubeauthsub_viewpage' => 'Alternativ kann du [[$1|dein Video ansehen]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Bitte gib ein oder mehr Schlüsselwörter an.',
 	'youtubeauthsub_jserror_notitle' => 'Bitte gib einen Titel für das Video an.',
 	'youtubeauthsub_jserror_nodesc' => 'Bitte gib eine Beschreibung für das Video an.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author ChrisiPK
+ */
+$messages['de-formal'] = array(
+	'youtubeauthsub_success' => "Gratulation!
+Ihr Video wurde hochgeladen.
+<a href='http://www.youtube.com/watch?v=$1'>Sehen Sie sich ihr Video an</a>.
+YouTube könnte etwas Zeit brauchen, um dein Video zu verarbeiten, sodass die Seite eventuell noch nicht bereit ist.
+
+Um das Video auf einer Seite einzubetten, fügen Sie folgenden Text ein:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_viewpage' => 'Alternativ können Sie [[$1|Ihr Video ansehen]].',
 );
 
 /** Greek (Ελληνικά)
@@ -506,7 +522,36 @@ Por favor, sé paciente.',
 	'youtubeauthsub_jserror_nodesc' => 'Por favor, pon una descripción para el vídeo.',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'youtubeauthsub' => 'YouTube bideoa igo',
+);
+
+/** Persian (فارسی)
+ * @author Mardetanha
+ */
+$messages['fa'] = array(
+	'youtubeauthsub_title' => 'عنوان',
+	'youtubeauthsub_description' => 'توضیحات',
+	'youtubeauthsub_password' => 'گذرواژه یوتیوب',
+	'youtubeauthsub_username' => 'نام‌کاربری یوتیوب',
+	'youtubeauthsub_keywords' => 'کلمات کلیدی',
+	'youtubeauthsub_category' => 'رده',
+	'youtubeauthsub_submit' => 'ثبت',
+	'youtubeauthsub_clickhere' => 'برای ورود به یوتیوب کلیک اینجا کنید',
+	'youtubeauthsub_uploadhere' => 'کلیپ خود را از اینجا باگذرای کنید:',
+	'youtubeauthsub_uploadbutton' => 'بارگذاری',
+	'youtubeauthsub_uploading' => 'کلیپ شما در حال بارگذاریست .
+لطفا صبور باشید.',
+	'youtubeauthsub_jserror_nokeywords' => 'لطفا بیش از 1 کلیدواژه بکار ببرید',
+	'youtubeauthsub_jserror_notitle' => 'لطفا برای کلیپ خود عنوان انتخاب کنید.',
+	'youtubeauthsub_jserror_nodesc' => 'لطفا برای کلیپ خود توضیحاتی وارد کنید.',
+);
+
 /** Finnish (Suomi)
+ * @author Mobe
  * @author Nike
  * @author Str4nd
  * @author Vililikku
@@ -514,6 +559,7 @@ Por favor, sé paciente.',
 $messages['fi'] = array(
 	'youtubeauthsub' => 'Lähetä YouTube-video',
 	'youtubeauthsub-desc' => 'Mahdollistaa käyttäjien [[Special:YouTubeAuthSub|lähettää videoita]] suoraan YouTubeen.',
+	'youtubeauthsub_info' => 'Ladataksesi videon YouTubeen käytettäväksi sivulla, täytä seuraavat tiedot:',
 	'youtubeauthsub_title' => 'Nimi',
 	'youtubeauthsub_description' => 'Kuvaus',
 	'youtubeauthsub_password' => 'YouTube-salasana',
@@ -522,12 +568,20 @@ $messages['fi'] = array(
 	'youtubeauthsub_category' => 'Luokka',
 	'youtubeauthsub_submit' => 'Lähetä',
 	'youtubeauthsub_clickhere' => 'Kirjaudu YouTubeen',
+	'youtubeauthsub_tokenerror' => 'Virhe tunnistusvarmenteen luonnissa, yritä uudelleen.',
+	'youtubeauthsub_success' => "Onnittelut!
+Videosi on tallennettu.
+<a href='http://www.youtube.com/watch?v=$1'>Katso video</a>.
+YouTube voi tarvita hetken aikaa käsitellä uusi video, joten se ei ehkä ole valmis vielä.
+
+Lisää video wiki-sivulle tällä koodilla:
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Kirjaudu sisään YouTubeen ennen videon lähettämistä.',
 	'youtubeauthsub_uploadhere' => 'Lähetä videosi täältä:',
 	'youtubeauthsub_uploadbutton' => 'Lähetä',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Tämän videon voi katsoa [http://www.youtube.com/watch?v=$1 tästä]',
+Katso video [http://www.youtube.com/watch?v=$1 tästä]',
 	'youtubeauthsub_summary' => 'Lähetetään YouTube-videota',
 	'youtubeauthsub_uploading' => 'Videotasi lähetetään.
 Ole kärsivällinen.',
@@ -539,6 +593,7 @@ Ole kärsivällinen.',
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Louperivois
  */
 $messages['fr'] = array(
@@ -554,23 +609,23 @@ $messages['fr'] = array(
 	'youtubeauthsub_submit' => 'Soumettre',
 	'youtubeauthsub_clickhere' => 'Cliquez ici pour vous connecter sur YouTube',
 	'youtubeauthsub_tokenerror' => "Erreur lors de la demande d'autorisation, essayez de rafraîchir la page.",
-	'youtubeauthsub_success' => 'Félicitations :
+	'youtubeauthsub_success' => "Félicitations :
 Votre vidéo est importée.
-Pour visionner votre vidéo, cliquez [http://www.youtube.com/watch?v=$1 ici].
+<a href='http://www.youtube.com/watch?v=$1'>Visionnez votre vidéo</a>.
 YouTube peut demander un laps de temps pour prendre en compte votre vidéo, aussi elle peut ne pas être encore prête.
 
 Pour incorporer votre vidéo dans une page du wiki, insérez le code suivant dans cette dernière :
-<code>{{&#35;ev:youtube|$1}}</code>',
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Pour importer une vidéo, il vous sera demandé de vous connecter d’abord sur YouTube.',
 	'youtubeauthsub_uploadhere' => 'Importer votre vidéo depuis ici :',
 	'youtubeauthsub_uploadbutton' => 'Importer',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Cette vidéo peut être visionnée [http://www.youtube.com/watch?v=$1 ici].',
+[http://www.youtube.com/watch?v=$1 Voir cette vidéo]',
 	'youtubeauthsub_summary' => 'Importer une vidéo YouTube',
 	'youtubeauthsub_uploading' => 'Votre vidéo est en cours d’importation.
 Soyez patient.',
-	'youtubeauthsub_viewpage' => 'Sinon, vous pouvez visionner votre vidéo [[$1|ici]].',
+	'youtubeauthsub_viewpage' => 'Sinon, vous pouvez [[$1|visionner votre vidéo]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Vous être prié d’entrer un ou plusieurs mots clefs.',
 	'youtubeauthsub_jserror_notitle' => 'Vous être prié d’entrer un titre pour la vidéo.',
 	'youtubeauthsub_jserror_nodesc' => 'Veuillez entrer une description pour la vidéo.',
@@ -716,8 +771,8 @@ $messages['hsb'] = array(
 	'youtubeauthsub_tokenerror' => 'Zmylk při wutworjenju awtorizowanskeho wuraza. Spytaj stronu aktualizować.',
 	'youtubeauthsub_success' => "Gratulacija!
 Waše widejo je nahrate.
-Zo by sej swoje widejo wobhladał, klikń <a href='http://www.youtube.com/watch?v=$1'>sem</a>.
-YouTube móhł trochu časa trjebał, zo by twoje widejo předźěłał, tak zo snano hišće hotowe njeje.
+<a href='http://www.youtube.com/watch?v=$1'>Widejo sej wobhladać</a>.
+YouTube móhł trochu čas trjebał, zo by twoje widejo předźěłał, tak zo snano hišće hotowe njeje.
 
 Zo by swoje widejo do strony we wikiju zapřijał, zasuń slědowacy kod do strony:
 <code>{{&#35;ev:youtube|$1}}</code>",
@@ -726,11 +781,11 @@ Zo by swoje widejo do strony we wikiju zapřijał, zasuń slědowacy kod do stro
 	'youtubeauthsub_uploadbutton' => 'Nahrać',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Tute widejo hodźi so [http://www.youtube.com/watch?v=$1 tu] wobhladać',
+[http://www.youtube.com/watch?v=$1 Tute widejo sej wobhladać]',
 	'youtubeauthsub_summary' => 'Widejo YouTube nahrawa so',
 	'youtubeauthsub_uploading' => 'Twoje widejo so runje nahrawa.
 Prošu budź sćerpliwy.',
-	'youtubeauthsub_viewpage' => 'Alternatiwnje móžeš sej swoje widejo [[$1|tu]] wobhladać.',
+	'youtubeauthsub_viewpage' => 'Alternatiwnje móžeš [[$1|swoje widejo wobhladać]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Prošu podaj 1 klučowe słowo abo wjacore klučowe słowa.',
 	'youtubeauthsub_jserror_notitle' => 'Prošu zapodaj titul za widejo.',
 	'youtubeauthsub_jserror_nodesc' => 'Prošu zapodaj wopisanje za widejo.',
@@ -793,8 +848,8 @@ $messages['ia'] = array(
 	'youtubeauthsub_tokenerror' => 'Error durante le generation del indicio de autorisation; prova refrescar le pagina.',
 	'youtubeauthsub_success' => "Felicitationes!
 Tu video ha essite cargate.
-Pro vider tu video, clicca <a href='http://www.youtube.com/watch?v=$1'>hic</a>.
-Le processar de tu video in YouTube pote durar un poco, assi illo pote non esser ancora preste.
+<a href='http://www.youtube.com/watch?v=$1'>Vider tu video</a>.
+YouTube pote requirer alcun tempore pro processar tu video, dunque illo pote non esser ancora preste.
 
 Pro includer tu video in un pagina in le wiki, insere le sequente codice in un pagina:
 <code>{{&#35;ev:youtube|$1}}</code>",
@@ -803,11 +858,11 @@ Pro includer tu video in un pagina in le wiki, insere le sequente codice in un p
 	'youtubeauthsub_uploadbutton' => 'Cargar',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Iste video pote esser vidite [http://www.youtube.com/watch?v=$1 hic]',
+[http://www.youtube.com/watch?v=$1 Vider iste video]',
 	'youtubeauthsub_summary' => 'Cargamento de video YouTube',
 	'youtubeauthsub_uploading' => 'Tu video es in curso de esser cargate.
 Sia patiente.',
-	'youtubeauthsub_viewpage' => 'Alternativemente, tu pote vider tu video [[$1|hic]].',
+	'youtubeauthsub_viewpage' => 'Alternativemente, tu pote [[$1|vider tu video]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Per favor entra 1 o plus parolas-clave.',
 	'youtubeauthsub_jserror_notitle' => 'Per favor entra un titulo pro le video.',
 	'youtubeauthsub_jserror_nodesc' => 'Per favor entra un description pro le video.',
@@ -916,10 +971,10 @@ $messages['ja'] = array(
 	'youtubeauthsub_keywords' => 'キーワード',
 	'youtubeauthsub_category' => 'カテゴリ',
 	'youtubeauthsub_submit' => '送信',
-	'youtubeauthsub_clickhere' => 'YouTubeにログインするため、ここをクリックしてください',
+	'youtubeauthsub_clickhere' => 'YouTubeにログインするにはここをクリックしてください',
 	'youtubeauthsub_uploadhere' => 'ここからビデオをアップロード:',
 	'youtubeauthsub_uploadbutton' => 'アップロード',
-	'youtubeauthsub_summary' => 'TouTubeビデオをアップロード',
+	'youtubeauthsub_summary' => 'YouTubeビデオをアップロード中',
 );
 
 /** Javanese (Basa Jawa)
@@ -980,9 +1035,10 @@ $messages['km'] = array(
 
 វីដេអូរបស់អ្នកបានផ្ទុកឡើងហើយ។
 
-ដើម្បីមើលវីដេអូរបស់អ្នក សូមចុច<a href='http://www.youtube.com/watch?v=$1'>ទីនេះ</a>។
+<a href='http://www.youtube.com/watch?v=$1'>មើល​វីដេអូ​របស់​អ្នក</a>.
 
 យូធ្យូប(YouTube)អាចត្រូវការពេលវេលាមួយរយៈដើម្បីរៀបចំវីដេអូនេះ។ ហេតុនេះវាអាចនឹងមិនទាន់អាចមើលបានទេនៅពេលនេះ។
+
 
 ដើម្បីបញ្ជូលវីដេអូរបស់អ្នកទៅក្នុងទំព័រមួយរបស់វិគី សូមចម្លងកូដខាងក្រោមបញ្ជូលទៅក្នុងទំព័រនោះ៖
 
@@ -990,13 +1046,13 @@ $messages['km'] = array(
 	'youtubeauthsub_authsubinstructions' => 'ដើម្បីផ្ទុកវីដេអូឡើង អ្នកនឹងត្រូវឡុកអ៊ីនទៅក្នុងយូធ្យូប(YouTube)ជាមុនសិន។',
 	'youtubeauthsub_uploadhere' => 'ផ្ទុកឡើងវីដេអូរបស់អ្នកពីទីនេះ៖',
 	'youtubeauthsub_uploadbutton' => 'ផ្ទុកឡើង',
-	'youtubeauthsub_code' => '{{#ev:youtube|$1}}។
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}​។
 
-វីដេអូនេះអាចមើលបាននៅ [http://www.youtube.com/watch?v=$1 ទីនេះ]',
+[http://www.youtube.com/watch?v=$1 មើល​វីដេអូ​នេះ]',
 	'youtubeauthsub_summary' => 'កំពុង​ផ្ទុកឡើង​វីដេអូ​យូធ្យូប(YouTube)',
 	'youtubeauthsub_uploading' => 'វីដេអូ​របស់អ្នក​កំពុង​ត្រូវបាន​ផ្ទុកឡើង។
 សូម​មានការអត់ធ្មត់។',
-	'youtubeauthsub_viewpage' => 'ម្យ៉ាងវិញទៀត អ្នកក៏អាចមើលវីដេអូរបស់អ្នក[[$1|ទីនេះ]]។',
+	'youtubeauthsub_viewpage' => 'ម្យ៉ាងវិញទៀត អ្នក​ក៏​អាច [[$1|មើល​វីដេអូ​របស់​អ្នក]]​។',
 	'youtubeauthsub_jserror_nokeywords' => 'សូមបញ្ជូលពាក្យគន្លឹះមួយឬច្រើន',
 	'youtubeauthsub_jserror_notitle' => 'សូមដាក់ចំណងជើងឱ្យវីដេអូ។',
 	'youtubeauthsub_jserror_nodesc' => 'សូមសរសេរការពិពណ៌នាឱ្យវីដេអូ។',
@@ -1014,8 +1070,7 @@ $messages['krj'] = array(
  */
 $messages['ksh'] = array(
 	'youtubeauthsub' => 'Donn Ding <i lang="en">YouTube</i> Viddeo huhlade',
-	'youtubeauthsub-desc' => 'Määt et müjjesch, dat Metmaacher ier Viddeos direk noh
-<i lang="en">YouTube</i> [[Special:YouTubeAuthSub|huhlade]].',
+	'youtubeauthsub-desc' => 'Määt et müjjesch, dat Metmaacher ier Viddeos direk noh <i lang="en">YouTube</i> [[Special:YouTubeAuthSub|huhlade]].',
 	'youtubeauthsub_info' => 'Öm ene Viddejo op <i lang="en">YouTube</i> en ene Sigg opnemme ze künne, donn hee di Enfommazjuhne aanjevve:',
 	'youtubeauthsub_title' => 'Tittel',
 	'youtubeauthsub_description' => 'Beschrievung',
@@ -1032,23 +1087,23 @@ Dinge Viddejo es huhjelade.
 
 Öm Dinge Viddejo aanzeloore, donn op
 <a href="http://www.youtube.com/watch?v=$1">YouTube <tt>/watch?v=$1</tt></a>
-jonn. Di bruche do ävver e beßje Zick, öm Dinge Viddejo
+jonn. Di bruche ävver e beßje Zick, öm Dinge Viddejo
 doh opzenämme, dröm künnd et sinn, dat dä noch nit janz
 fäädisch es, em Momänt.
 
 Öm Dinge Viddejo en en Sigg hee em Wiki enzeboue, 
-donn dat wat hee follesch en en Sigg enboue:
+donn dat wat hee follesch en en Sigg erenn schriive:
  <code>{{&#35;ev:youtube|$1}}</code>',
 	'youtubeauthsub_authsubinstructions' => 'Öm ene Viddejo huhzelade, moß De eets op <i lang="en">YouTube</i> enjelogg han.',
 	'youtubeauthsub_uploadhere' => 'Don Dinge Viddejo fun huhlade fun:',
 	'youtubeauthsub_uploadbutton' => 'Huhlade',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Dä Viddeje kam_mer [http://www.youtube.com/watch?v=$1 hee beloore]',
+[http://www.youtube.com/watch?v=$1 Dä Viddeje kam_mer hee beloore]',
 	'youtubeauthsub_summary' => 'Ene YouTube Viddejo huhlade',
 	'youtubeauthsub_uploading' => 'Dä Viddejo weet jrad noch huhjelaade.
 Bes jet jedoldesch.',
-	'youtubeauthsub_viewpage' => 'Do kanns Der dä Viddejo och [[$1|hee beloore]].',
+	'youtubeauthsub_viewpage' => 'Do kanns Der och hee [[$1|Dinge Viddejo beloore]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Bes esu joot, jiff mieh Steshwööter aan.',
 	'youtubeauthsub_jserror_notitle' => 'Jeff ene Tittel för dä Viddejo aan.',
 	'youtubeauthsub_jserror_nodesc' => 'Don dä Viddejo winneßtens med enem Satz udder zwei beschrieve, söns weet dat nix, hee.',
@@ -1074,8 +1129,8 @@ $messages['lb'] = array(
 
 Äre Video ass eropgelueden.
 
-Fir äre video z ekucken klickt w.e.g. <a href='http://www.youtube.com/watch?v=$1'>heihinn</a>.
-YouTube brauch e bëssen Zäit fir äre Video ze verschaffen, do wéint kéint et et sinn datt en nach net prätt ass.
+<a href='http://www.youtube.com/watch?v=$1'>Kuckt äre Video</a>.
+YouTube brauch e bëssen Zäit fir äre Video ze verschaffen, do wéint kéint et sinn datt en nach net prätt ass.
 
 Fir äre Video an eng Wiki-Säit anzebannen, gitt w.e.g. de folgende Code an eng Säit an:
 
@@ -1085,12 +1140,12 @@ Fir äre Video an eng Wiki-Säit anzebannen, gitt w.e.g. de folgende Code an eng
 	'youtubeauthsub_uploadbutton' => 'Eroplueden',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Dëse Video kann [http://www.youtube.com/watch?v=$1 hei gekuckt ginn].',
+[http://www.youtube.com/watch?v=$1 Kuckt dëse Video].',
 	'youtubeauthsub_summary' => 'YouTube Video gëtt eropgelueden',
 	'youtubeauthsub_uploading' => 'Äre Video gëtt eropgelueden.
 
 Hutt w.e.g. e bësse Gedold!',
-	'youtubeauthsub_viewpage' => 'alternativ kënnt dir äre Video [[$1|hei kucken]].',
+	'youtubeauthsub_viewpage' => 'alternativ kënnt Dir [[$1|äre Video kucken]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Gitt w.e.g. een oder méi Stechwierder un.',
 	'youtubeauthsub_jserror_notitle' => 'Gitt w.e.g. een Titel fir de Video un.',
 	'youtubeauthsub_jserror_nodesc' => 'Gitt w.e.g eng Beschreiwung vum Video.',
@@ -1323,7 +1378,7 @@ $messages['nl'] = array(
 	'youtubeauthsub_tokenerror' => 'Fout bij het maken van het autorisatietoken. Vernieuw de pagina.',
 	'youtubeauthsub_success' => "Gefeliciteerd!
 Uw video is geüpload.
-Klik <a href='http://www.youtube.com/watch?v=$1'>hier</a> om uw video te bekijken.
+<a href='http://www.youtube.com/watch?v=$1'>Bekijk uw video</a>.
 Het komt voor dat YouTube enige tijd nodig heeft om uw video te verwerken, dus wellicht is die nog niet beschikbaar.
 
 Voeg de volgende code toe om uw video in een pagina op te nemen:
@@ -1333,11 +1388,11 @@ Voeg de volgende code toe om uw video in een pagina op te nemen:
 	'youtubeauthsub_uploadbutton' => 'Uploaden',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-U kunt deze video [http://www.youtube.com/watch?v=$1 hier] bekijken',
+[http://www.youtube.com/watch?v=$1 U kunt deze video bekijken]',
 	'youtubeauthsub_summary' => 'Bezig met uploaden van de YouTube-video',
 	'youtubeauthsub_uploading' => 'Uw video wordt geüpload.
 Even geduld alstublieft.',
-	'youtubeauthsub_viewpage' => 'U kunt uw video ook [[$1|hier]] bekijken.',
+	'youtubeauthsub_viewpage' => 'U kunt uw video ook [[$1|bekijken]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Geef alstublieft een of meer trefwoorden op.',
 	'youtubeauthsub_jserror_notitle' => 'Geef alstublieft een naam voor de video op.',
 	'youtubeauthsub_jserror_nodesc' => 'Geef alstublieft een beschrijving voor de video op.',
@@ -1363,7 +1418,7 @@ $messages['nn'] = array(
 	'youtubeauthsub_tokenerror' => 'Feil i oppretting av godkjenningsteikn; prøv å oppdatere.',
 	'youtubeauthsub_success' => 'Gratulerer!
 Videoen din er lasta opp.
-Gå <a href="http://youtube.com/watch?v=$1">hit</a> for å sjå videoen.
+<a href="http://youtube.com/watch?v=$1">Sjå videoen din</a>.
 Det kan ta litt tid før YouTube har handsama videoen din, så det kan hende han ikkje er klar enno.
 
 Sett inn følgjande kode på ei side for å inkludere videoen på ei side på wikien:
@@ -1373,10 +1428,10 @@ Sett inn følgjande kode på ei side for å inkludere videoen på ei side på wi
 	'youtubeauthsub_uploadbutton' => 'Last opp',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}
 
-Denne videoen kan du sjå [http://youtube.com/watch?v=$1 her]',
+[http://youtube.com/watch?v=$1 Sjå denne videoen]',
 	'youtubeauthsub_summary' => 'Lastar opp YouTube-video',
 	'youtubeauthsub_uploading' => 'Videoen din lastar opp. Ver snill og vent.',
-	'youtubeauthsub_viewpage' => 'Alternativt kan du sjå videoen din [[$1|her]].',
+	'youtubeauthsub_viewpage' => 'Alternativt kan du [[$1|sjå videoen din]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Skriv inn eitt eller fleire nøkkelord.',
 	'youtubeauthsub_jserror_notitle' => 'Velg ein tittel for videoen.',
 	'youtubeauthsub_jserror_nodesc' => 'Skriv inn ei skildring av videoen.',
@@ -1732,6 +1787,7 @@ YouTube may require some time to process your video, so it might not be ready ju
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Rudko
  */
 $messages['sk'] = array(
 	'youtubeauthsub' => 'Nahrať video YouTube',
@@ -1747,8 +1803,8 @@ $messages['sk'] = array(
 	'youtubeauthsub_clickhere' => 'Kliknutím sem sa prihlásite na YouTube',
 	'youtubeauthsub_tokenerror' => 'Chyba pri vytváraní autentifikačného tokenu. Skúste obnoviť stránku.',
 	'youtubeauthsub_success' => "Gratulujeme!
-Vaše video je nahrané.
-Svoje video si môžete pozrieť po <a href='http://www.youtube.com/watch?v=$1'>kliknutí sem</a>.
+Vaše video sa nahralo.
+<a href='http://www.youtube.com/watch?v=$1'>View your video</a>.
 YouTube môže nejaký čas trvať, kým vaše video spracuje, takže možno ešte nie je pripravené.
 
 Video na wiki stránku môžete vložiť pomocou nasledovného kódu:
@@ -1758,11 +1814,11 @@ Video na wiki stránku môžete vložiť pomocou nasledovného kódu:
 	'youtubeauthsub_uploadbutton' => 'Nahrať',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Toto video si môžete [http://www.youtube.com/watch?v=$1 pozrieť tu]',
+[http://www.youtube.com/watch?v=$1 Zobraz video]',
 	'youtubeauthsub_summary' => 'Nahráva sa video na YouTube',
 	'youtubeauthsub_uploading' => 'Vaše video sa nahráva.
 Buďte prosím trpezliví.',
-	'youtubeauthsub_viewpage' => 'Inak si video môžete [[$1|pozrieť tu]].',
+	'youtubeauthsub_viewpage' => 'Alternatívne, si môžete [[$1|video pozrieť tu]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Prosím, zadajte jedno alebo viac kľúčových slov.',
 	'youtubeauthsub_jserror_notitle' => 'Prosím, zadajte názov videa.',
 	'youtubeauthsub_jserror_nodesc' => 'Prosím, zadajte popis videa.',
@@ -1987,22 +2043,22 @@ $messages['tl'] = array(
 	'youtubeauthsub_clickhere' => 'Pindutin rito para makalagda sa YouTube',
 	'youtubeauthsub_tokenerror' => 'May kamalian sa paglikha ng sagisag ng pagbibigay ng pahintulot, subuking sariwain.',
 	'youtubeauthsub_success' => "Maligayang bati!
-Naikarga na ang iyong panoorin/bidyo.
-Para panoorin ang iyong bidyo pindutin <a href='http://www.youtube.com/watch?v=$1'>ito</a>.
-Maaaring mangailangan ang YouTube ng ilang panahon para maisagawa ang iyong panoorin, kaya maaaring hindi pa lang ito nakahanda.
+Naikarga na ang iyong palabas (''video'').
+Para mapanood ang iyong bidyo pindutin <a href='http://www.youtube.com/watch?v=$1'>ito</a>.
+Maaaring mangailangan ang ''YouTube'' ng ilang panahon para maisagawa (maproseso) ang palabas mo, kaya maaaring hindi pa ito ganap na nakahanda.
 
-Para maisama ang iyong panoorin sa isang pahina ng wiki, isingit ang sumusunod na kodigo sa loob ng isang pahina:
+Para maisama ang iyong palabas sa isang pahina ng wiki, isingit ang sumusunod na kodigo sa loob ng isang pahina:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Para makapagkarga ng panoorin (bidyo), kakailanganin mong lumagda muna sa YouTube.',
 	'youtubeauthsub_uploadhere' => 'Ikarga ang iyong panoorin/bidyo mula rito:',
 	'youtubeauthsub_uploadbutton' => 'Ikarga',
-	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+	'youtubeauthsub_code' => "{{#ev:youtube|$1}}.
 
-Mapapanood ang panoorin (bidyo) magmula [http://www.youtube.com/watch?v=$1 rito]',
+Mapapanood ang palabas (''video'') magmula [http://www.youtube.com/watch?v=$1 rito]",
 	'youtubeauthsub_summary' => 'Ikinakarga ang bidyo/panooring pang-YouTube',
 	'youtubeauthsub_uploading' => 'Ikinakarga na ang iyong panoorin (bidyo).
 Magtiyaga po lamang.',
-	'youtubeauthsub_viewpage' => 'Bilang kapalit, maaaring mong panoorin ang bidyo mo mula [[$1|rito]].',
+	'youtubeauthsub_viewpage' => "O kaya, maaari mong panoorin ang palabas (''video'') mo mula [[$1|rito]].",
 	'youtubeauthsub_jserror_nokeywords' => "Magpasok po ng 1 o higit pang mga \"susing-salita\" (''keyword'').",
 	'youtubeauthsub_jserror_notitle' => 'Magpasok ng isang pamagat para sa panoorin.',
 	'youtubeauthsub_jserror_nodesc' => 'Magpasok ng isang paglalarawan para sa panoorin.',
@@ -2010,9 +2066,22 @@ Magtiyaga po lamang.',
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Runningfridgesrule
  */
 $messages['tr'] = array(
 	'youtubeauthsub_title' => 'Başlık',
+	'youtubeauthsub_keywords' => 'Anahtar kelimeler',
+	'youtubeauthsub_category' => 'Kategori',
+	'youtubeauthsub_clickhere' => 'Oturumu açmak için buraya tıklayın',
+	'youtubeauthsub_success' => "Tebrikler!
+Videonuz yüklendi.
+Videonuzu izlemek için <a href='http://www.youtube.com/watch?v=$1'>buraya</a> tıklayın.
+YouTube, videoyu işletmek için belki biraz zamana ihtiyacı olabilir, bu yüzden hemen hazır olmayabilir.
+
+Vikiye videonuzu eklemek için, şu sıradaki kodu bir sayfaya ekleyin: <code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_uploadbutton' => 'Yükle',
+	'youtubeauthsub_uploading' => 'Videonuz yükleniyor.
+Lütfen sabırlı olun.',
 );
 
 /** Ukrainian (Українська)
@@ -2143,10 +2212,12 @@ $messages['zh-hant'] = array(
 	'youtubeauthsub-desc' => '容許使用者直接[[Special:YouTubeAuthSub|上載影片]]至YouTube。',
 	'youtubeauthsub_info' => '在上載YouTube影片至包含頁面前，請填寫以下資料:',
 	'youtubeauthsub_title' => '標題',
+	'youtubeauthsub_description' => '描述',
 	'youtubeauthsub_password' => 'YouTube密碼',
 	'youtubeauthsub_username' => 'YouTube使用者名稱',
 	'youtubeauthsub_keywords' => '關鍵字',
 	'youtubeauthsub_category' => '分類',
+	'youtubeauthsub_submit' => '提交',
 	'youtubeauthsub_clickhere' => '按這裡登入YouTube',
 	'youtubeauthsub_success' => "上載成功!
 您的影片經已上載。
@@ -2156,6 +2227,7 @@ YouTube需要一些時間去處理閣下的影片，因此或未能即時觀看�
 要把影片方進wiki的頁面內，請使用以下代碼:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => '在上載影片前，您需先登入YouTube。',
+	'youtubeauthsub_uploadhere' => '自這裡上載您的影片：',
 	'youtubeauthsub_uploadbutton' => '上載',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}
 
@@ -2166,5 +2238,6 @@ YouTube需要一些時間去處理閣下的影片，因此或未能即時觀看�
 	'youtubeauthsub_viewpage' => '除此之外，您也可在[[$1|這裡]]觀看影片。',
 	'youtubeauthsub_jserror_nokeywords' => '請輸入一個或以上的關鍵詞。',
 	'youtubeauthsub_jserror_notitle' => '請輸入影片標題',
+	'youtubeauthsub_jserror_nodesc' => '請輸入影片描述。',
 );
 

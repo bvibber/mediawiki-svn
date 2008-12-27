@@ -530,9 +530,16 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'grouppermissions-dologin' => 'Entrar',
+	'grouppermissions-comment' => 'Comentario:',
+	'grouppermissions-sort-manage' => 'Gerencia',
+	'grouppermissions-sort-admin' => 'Administración',
+	'grouppermissions-sort-tech' => 'Técnico',
+	'grouppermissions-sort-misc' => 'Miscelánea',
 	'grouppermissions-sp-save' => 'Guardar',
 );
 
@@ -1250,7 +1257,12 @@ $messages['myv'] = array(
  */
 $messages['nah'] = array(
 	'grouppermissions-dosearch' => 'Yāuh',
+	'grouppermissions-true' => 'Melāhuac',
+	'grouppermissions-false' => 'Ahmelāhuac',
 	'grouppermissions-never' => 'Aīcmah',
+	'grouppermissions-sort-read' => 'Mopōhuacah',
+	'grouppermissions-sort-edit' => 'Mopatlacah',
+	'grouppermissions-sort-misc' => 'Zāzotlein',
 	'grouppermissions-sp-save' => 'Ticpiyāz',
 );
 

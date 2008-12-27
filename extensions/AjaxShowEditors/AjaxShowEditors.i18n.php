@@ -269,6 +269,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'ajax-se-desc' => 'Näyttää muokkauslaatikon yhteydessä ketkä muokkaavat samaa sivua samanaikaisesti',
@@ -276,6 +277,8 @@ $messages['fi'] = array(
 	'ajax-se-pending' => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
 	'ajax-se-idling' => '($1 s sitten)',
 	'ajax-se-pagedoesnotexist' => 'sivua ei ole',
+	'ajax-se-userinvalid' => 'Virhe: epäkelpo käyttäjä',
+	'ajax-se-usernotfound' => 'Virhe: käyttäjää ei löydy',
 );
 
 /** French (Français)

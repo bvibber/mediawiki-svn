@@ -265,6 +265,13 @@ $messages['eo'] = array(
 	'countedits-nocontribs' => 'Ne estas iuj kontribuaĵoj por ĉi tiu vikio.',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'countedits-username' => 'Nombre de usuario:',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -451,7 +458,7 @@ $messages['hsb'] = array(
 	'countedits-ok' => 'W porjadku',
 	'countedits-nosuchuser' => 'Wužiwar z mjenom $1 njeeksistuje.',
 	'countedits-resultheader' => 'Wuslědki za wužiwarja $1',
-	'countedits-resulttext' => '$1 je $2 wobdźěłanjow sčinił.',
+	'countedits-resulttext' => '$1 je $2 {{PLURAL:$2|změnu|změnje|změny|změnow}} činił.',
 	'countedits-mostactive' => 'Najaktiwniši přinošowarjo',
 	'countedits-nocontribs' => 'Njejsu žane změny w tutym wikiju.',
 );
@@ -641,7 +648,7 @@ $messages['km'] = array(
 	'countedits-ok' => 'យល់ព្រម',
 	'countedits-nosuchuser' => "មិនមានអ្នកប្រើប្រាស់ណាឈ្មោះ'''$1'''ទេ។",
 	'countedits-resultheader' => 'លទ្ធផលចំពោះ $1',
-	'countedits-resulttext' => "គិតត្រឹមពេលនេះ'''$1'''បានចូលរួមចំណែកកែប្រែ'''$2'''កំណែប្រែ",
+	'countedits-resulttext' => "'''$1'''បានចូលរួមចំណែកកែប្រែ'''$2''' {{PLURAL:$2|កំណែប្រែ|កំណែប្រែ}}",
 	'countedits-mostactive' => 'អ្នករួមចំណែកដែលសកម្មបំផុត',
 	'countedits-nocontribs' => 'មិនមានការរួមចំណែកនៅក្នុងវិគីនេះទេ។',
 );
@@ -799,7 +806,7 @@ $messages['nah'] = array(
 	'countedits' => 'Tlapōhua tlapatlaliztli',
 	'countedits-username' => 'Tlatequitiltilīltōcāitl:',
 	'countedits-ok' => 'Cualli',
-	'countedits-resulttext' => '$1 ōquichīuh $2 tlapatlaliztli',
+	'countedits-resulttext' => '$1 {{PLURAL:$2|ōquichīuh|ōquinchīuh}} $2 tlapatlaliztli',
 );
 
 /** Low German (Plattdüütsch)
@@ -981,7 +988,7 @@ $messages['ro'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Nu există nici un utilizator cu numele $1.',
 	'countedits-resultheader' => 'Rezultate pentru $1',
-	'countedits-resulttext' => '$1 a efectuat {{PLURAL:$2|o modificare|$2 modificări}}',
+	'countedits-resulttext' => '$1 a efectuat $2 {{PLURAL:$2|modificare|modificări}}',
 	'countedits-mostactive' => 'Contribuitorii cei mai activi',
 	'countedits-nocontribs' => 'Nu există contribuitori la acest wiki.',
 );

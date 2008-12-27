@@ -20,6 +20,15 @@ $messages['en'] = array(
 	'logentry-invalidtoken' => 'Invalid token',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'logentry-parserhook-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -132,11 +141,30 @@ $messages['hu'] = array(
 	'logentry-invalidtoken' => 'Érvénytelen token',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'logentry-append' => 'Draanhange',
+	'logentry-parserhook-desc' => 'Brengk ene Zosatz en et Wiki för e Fommulaa för för un henger Logboochsigge jet aanzehange.',
+	'logentry-specialpage-desc' => 'Brengk ene Zosatz en et Wiki för aan Logboochsigge jet aanzehange.',
+	'logentry' => 'Enndraach em Logbooch',
+	'logentry-invalidpage' => 'Onjöltijje Sigg',
+	'logentry-invalidtoken' => 'Onjölisch Markzeiche',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'logentry-append' => 'Derbäisetzen',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'logentry-invalidpage' => 'Ahcualli zāzanilli',
 );
 
 /** Dutch (Nederlands)

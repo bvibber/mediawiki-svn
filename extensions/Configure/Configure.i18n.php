@@ -353,10 +353,12 @@ $messages['ar'] = array(
 	'configure-js-prompt-group' => 'أدخل اسم المجموعة الجديدة:',
 	'configure-js-remove' => 'احذف',
 	'configure-js-remove-row' => 'احذف هذه المدخلة',
+	'configure-js-get-image-url' => 'تحويل الملف إلى عنوان إنترنت',
 	'configure-js-biglist-show' => '[اعرض التفاصيل]',
 	'configure-js-biglist-hide' => '[أخفِ التفاصيل]',
 	'configure-js-summary-none' => 'لا إعدادات',
 	'configure-js-search-legend' => 'إعدادات البحث',
+	'configure-js-search-prompt' => ':استفسار',
 	'configure-no-diff' => 'لا توجد تغييرات بين النسخ المختارة.',
 	'configure-no-directory' => 'المجلد المستخدم لتخزين الإعدادات، <tt>$1</tt>، غير موجود.
 من فضلك قم بإنشائه أو غيره لاستخدام هذا الامتداد.',
@@ -369,6 +371,7 @@ $messages['ar'] = array(
 	'configure-old-changes' => 'تغييرات',
 	'configure-old-summary' => '$1 بواسطة $2 $4 $3',
 	'configure-saved' => 'الإعدادت تم حفظها',
+	'configure-backlink' => 'الرجوع إلى النموذج',
 	'configure-section-features' => 'مواصفات',
 	'configure-section-general' => 'إعدادات عامة',
 	'configure-section-paths' => 'المسارات',
@@ -463,6 +466,7 @@ $messages['ar'] = array(
 	'configure-throttle-limit' => 'حد',
 	'configure-condition-operator-or' => 'أو',
 	'configure-condition-operator-and' => 'و',
+	'configure-condition-name-3' => 'تم تأكيد البريد الإلكتروني',
 	'configure-condition-name-4' => 'في مجموعات',
 	'configure-condition-description-3' => 'تم تأكيد البريد الإلكتروني',
 );
@@ -1157,6 +1161,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Academo
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -1164,7 +1169,7 @@ $messages['es'] = array(
 	'configure-desc' => 'Permite que usuarios autorizados [[Special:Configure|configuren]] la wiki desde una interfaz web',
 	'configure-desc-group' => 'Grupos',
 	'configure-desc-key' => 'Clave',
-	'configure-desc-ns' => 'Espacios de nombres',
+	'configure-desc-ns' => 'Espacio de nombre',
 	'configure-desc-val' => 'Valor',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Extensiones',
@@ -1207,6 +1212,17 @@ Por favor, créelo o cámbielo para usar esta extensión.',
 	'configure-section-timezone' => 'Zona horaria',
 	'configure-section-namespaces' => 'Espacios de nombres',
 	'configure-section-category' => 'Categorías',
+	'configure-section-block' => 'Bloqueos',
+	'configure-section-upload' => 'Subir',
+	'configure-section-images' => 'Archivos',
+	'configure-section-specialpages' => 'Páginas especiales',
+	'configure-section-recentchanges' => 'Cambios recientes',
+	'configure-section-users' => 'Usuarios',
+	'configure-section-job' => 'Trabajos',
+	'configure-section-search' => 'Buscar',
+	'configure-select-wiki-view-all' => 'Todos wikis',
+	'configure-throttle-action-edit' => 'Editar',
+	'configure-throttle-action-move' => 'Trasladar',
 );
 
 /** Basque (Euskara)
@@ -1221,6 +1237,7 @@ $messages['eu'] = array(
  * @author Nike
  * @author Silvonen
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'configure' => 'Wikin asetukset',
@@ -1232,6 +1249,8 @@ $messages['fi'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Laajennukset',
 	'configure-viewconfig-default-diff' => 'Muutokset oletusasetuksiin verrattuna',
+	'configure-ext-doc' => 'Katso verkkodokumentaatio',
+	'configure-ext-schemachange' => "'''Varoitus:''' tämä liitännäinen vaatii tietokannan päivityksen toimiakseen oikein!",
 	'configure-ext-settings' => 'Asetukset',
 	'configure-ext-use-extension' => 'Käytä tätä laajennosta',
 	'configure-ext-use' => 'Käytä',
@@ -1240,9 +1259,12 @@ $messages['fi'] = array(
 	'configure-arrayinput-oneperline' => "''(yksi riviä kohti)''",
 	'configure-btn-save' => 'Tallenna',
 	'configure-error' => 'Asetuksia ei voitu tallentaa',
+	'configure-js-add' => 'Lisää uusi merkintä',
 	'configure-js-group-exists' => 'Virhe: Ryhmä on jo olemassa.',
 	'configure-js-remove' => 'Poista',
+	'configure-js-remove-row' => 'Poista tämä merkintä',
 	'configure-js-get-image-url' => 'Muunna tiedoston nimi URL:ksi',
+	'configure-js-biglist-shown' => 'Asetuksen yksityiskohdat voi piilottaa',
 	'configure-js-biglist-hidden' => 'Asetuksen yksityiskohdat piilotettu',
 	'configure-js-biglist-show' => '[näytä yksityiskohdat]',
 	'configure-js-biglist-hide' => '[piilota yksityiskohdat]',
@@ -1296,8 +1318,11 @@ $messages['fi'] = array(
 	'configure-select-wiki-submit' => 'Valitse',
 	'configure-setting-not-available' => 'Tämä asetus ei ole saatavilla tässä MediaWikin versiossa',
 	'configure-view' => 'Näytä',
+	'configure-view-all-versions' => 'Täydellinen lista versioista',
 	'configure-view-default' => 'Oletusasetukset',
+	'right-viewconfig' => 'Nähdä wikin asetukset',
 	'right-viewconfig-all' => 'Nähdä wikin kaikki asetukset',
+	'viewconfig' => 'Wikin asetukset',
 	'configure-throttle-action-edit' => 'Muokkaa',
 	'configure-throttle-action-move' => 'Siirrä',
 	'configure-throttle-action-rollback' => 'Palautus',
@@ -2369,6 +2394,7 @@ $messages['ja'] = array(
 	'configure-section-cache' => 'キャッシュ',
 	'configure-section-pcache' => 'パーサーキャッシュ',
 	'configure-section-messagecache' => 'メッセージキャッシュ',
+	'configure-section-interwiki' => 'インターウィキ',
 	'configure-section-access' => 'アクセス',
 	'configure-section-groups' => 'グループ',
 	'configure-section-groups-notallowed' => 'あなたはグループの設定を編集することができません。',
@@ -2397,7 +2423,7 @@ $messages['ja'] = array(
 	'configure-section-mw-extensions' => 'MediaWikiの拡張機能',
 	'configure-section-external-tools' => '外部ツール',
 	'configure-section-filesystem' => 'ファイルシステムとシェルのインタラクション',
-	'configure-section-thumbnail' => '画像のサムネイル表示',
+	'configure-section-thumbnail' => '画像のサムネイル生成',
 	'configure-section-output' => '出力',
 	'configure-select-wiki' => 'ウィキを選択',
 	'configure-select-wiki-desc' => '設定したいウィキを選んでください。',
@@ -3085,12 +3111,19 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'configure-desc-ns' => 'Tōcātzin',
+	'configure-desc-group' => 'Olōlli',
+	'configure-desc-ns' => 'Tōcātzintli',
+	'configure-edit-core' => 'Huiquimedia',
 	'configure-js-remove' => 'Ticpolōz',
+	'configure-old-changes' => 'tlapatlaliztli',
+	'configure-section-paths' => 'Ohtli',
 	'configure-section-email' => 'E-mail',
 	'configure-section-namespaces' => 'Tōcātzin',
 	'configure-section-category' => 'Neneuhcāyōtl',
+	'configure-section-groups' => 'Olōlli',
 	'configure-section-specialpages' => 'Nōncuahquīzqui āmatl',
+	'configure-throttle-action-edit' => 'Ticpatlāz',
+	'configure-condition-operator-or' => 'Nozo',
 );
 
 /** Low German (Plattdüütsch)
@@ -4706,6 +4739,8 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'configure' => 'Конфігурувати вікі',
 	'configure-desc' => 'Дозволити авторизованим користувачам конфігурувати вікі, використовуючи веб-інтерфейс',
+	'configure-desc-group' => 'Група',
+	'configure-desc-key' => 'Ключ',
 	'configure-summary' => 'На цій спеціальній сторінці ви можете конфігурувати вікі, гляньте [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings] для детальнішої інформації.',
 	'configure-btn-save' => 'Зберегти налаштування',
 	'configure-edit-old' => 'Попередження: ви редагуєте <strong>стару</strong> версію конфігурації.',

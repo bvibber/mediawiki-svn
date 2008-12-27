@@ -207,6 +207,7 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Mobe
  * @author Nike
  * @author Vililikku
  */
@@ -226,6 +227,7 @@ $messages['fi'] = array(
 	'errorhandler-error-user-warning' => 'Koodissa määritelty varoitus',
 	'errorhandler-error-user-notice' => 'Koodissa määritelty huomautus',
 	'errorhandler-error-user-deprecated' => 'Koodissa määritelty käytöstä poistuva -varoitus',
+	'errorhandler-error-strict' => 'Ehdottomat standardit',
 	'errorhandler-msg-text' => '$1 : $2 kohteessa $3 (rivi $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> kohteessa <b>$3</b> (rivi <b>$4</b>)',
 	'errorhandler-trace' => 'pinolistaus:',
@@ -377,6 +379,14 @@ $messages['ia'] = array(
 	'errorhandler-trace-line-internal' => '[function interne]: $1',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'errorhandler-error-user-error' => 'ユーザーエラー',
+	'errorhandler-error-user-warning' => 'ユーザー警告',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
@@ -440,6 +450,14 @@ $messages['lb'] = array(
 	'errorhandler-trace' => 'Spuer:',
 	'errorhandler-trace-line' => '$1 (Linn $2): $3',
 	'errorhandler-trace-line-internal' => '[intern Fonctioun]: $1',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> īpan <b>$3</b> (pāntli <b>$4</b>)',
+	'errorhandler-trace-line' => '$1 (pāntli $2): $3',
 );
 
 /** Dutch (Nederlands)
@@ -592,6 +610,12 @@ $messages['pt'] = array(
 $messages['ro'] = array(
 	'errorhandler-errors' => 'Erori:',
 	'errorhandler-error-fatal' => 'Eroare fatală',
+	'errorhandler-error-warning' => 'Avertizare',
+	'errorhandler-error-deprecated' => 'Învechit',
+	'errorhandler-error-compile-error' => 'Eroare de compilare',
+	'errorhandler-error-compile-warning' => 'Avertizare de compilare',
+	'errorhandler-error-user-error' => 'Eroare de utilizator',
+	'errorhandler-error-user-warning' => 'Avertizare de utilizator',
 	'errorhandler-msg-text' => '$1 : $2 în $3 (linia $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> în <b>$3</b> (linia <b>$4</b>)',
 	'errorhandler-trace-line' => '$1 (linia $2): $3',

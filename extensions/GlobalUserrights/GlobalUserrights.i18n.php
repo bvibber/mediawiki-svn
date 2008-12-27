@@ -106,6 +106,18 @@ $messages['ko'] = array(
 	'gur-rightslog-name' => '공통 권한 기록',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'globaluserrights' => 'Gestioun vun de globale Benotzerrechter',
+	'gur-desc' => 'Einfach Gestioun vun de [[Special:GlobalUserRights|globale Benotzerrechter]]',
+	'gur-rightslog-name' => 'Logbuch vun de globale Benotzerrechter',
+	'gur-rightslog-header' => "Dëst ass d'Logbuch vun den Ännerunge vun de globale Benotzerrechter.",
+	'gur-rightslog-entry' => 'huet déi global Benotzerrechter vum Benotzer $1 vun $2 op $3 geännert',
+	'rights-userrights-global' => 'Global Benotzerrechter geréieren',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -285,10 +285,17 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Piolinfax
  */
 $messages['es'] = array(
+	'importusers-uploadfile' => 'Subir archivo',
+	'importusers-form-button' => 'Importar',
+	'importusers-log-summary' => 'Sumario',
 	'importusers-log-summary-all' => 'Todos',
+	'importusers-password' => 'contraseña',
+	'importusers-email' => 'correo electrónico',
+	'importusers-realname' => 'nombre real',
 );
 
 /** Finnish (Suomi)
@@ -583,10 +590,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'importusers-form-button' => 'インポート',
+	'importusers-log' => 'インポートログ',
 	'importusers-log-summary' => '要約',
 	'importusers-log-summary-all' => 'すべて',
+	'importusers-login-name' => 'ログイン名',
 	'importusers-password' => 'パスワード',
 );
 
@@ -788,6 +799,7 @@ $messages['nah'] = array(
 	'importusers-log-summary' => 'Tlahcuilōltōn',
 	'importusers-log-summary-all' => 'Mochīntīn',
 	'importusers-log-summary-updated' => 'Ōmoyancuīli',
+	'importusers-password' => 'tlahtōlichtacāyōtl',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'melāhuac motōcā',
 );

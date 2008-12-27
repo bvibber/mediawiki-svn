@@ -670,6 +670,17 @@ $messages['tg-cyrl'] = array(
 	'intersection_noincludecats' => 'Error: Шумо ҳадди ақал бояд як гурӯҳро ворид кунед, ё як фазои номро мушаххас кунед!',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'intersection-desc' => 'Naglalabas ng isang tinuldukang talaan ng pinakakamakailang mga bagay-bagay na naninirahan sa loob ng isang kaurian, o isang pinagsangahang daanan ng ilang mga kaurian',
+	'intersection_toomanycats' => 'Kamalian: Napakaraming mga kaurian!',
+	'intersection_toofewcats' => 'Kamalian: Napakakaunti ng mga kaurian!',
+	'intersection_noresults' => 'Kaurian: Walang mga kinalabasan/resulta!',
+	'intersection_noincludecats' => 'Kamalian: Kinakailangan mong magsama ng kahit na isang kaurian, o tumukoy ng isang espasyo ng pangalan!',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

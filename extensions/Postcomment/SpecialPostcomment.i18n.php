@@ -436,6 +436,7 @@ $messages['myv'] = array(
 $messages['nah'] = array(
 	'postcomment_notloggedin' => 'Teh ahmo ōticalac.',
 	'postcomment_youareloggedinas' => 'Ōticalac quemeh $1',
+	'postcomment_on' => 'Īpan',
 );
 
 /** Dutch (Nederlands)
@@ -547,6 +548,13 @@ $messages['pt'] = array(
 	'postcomment_said' => 'disse',
 	'postcomment_invalidrequest' => 'Pedido inválido.',
 	'postcomment_replyto' => 'Resposta a $1',
+);
+
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'postcomment_invalidrequest' => 'Cerere incorectă.',
 );
 
 /** Russian (Русский)
@@ -695,14 +703,31 @@ $messages['vi'] = array(
 	'postcomment_nopostingtoadd' => 'Không có bài nào để đăng.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'postcomment_desc' => '允许用户直接在讨论页添加评论。',
+	'postcomment_discussionprotected' => '此讨论页已被保护，不能发表新文章。',
+	'postcomment_notloggedin' => '您尚未登录',
+	'postcomment_youareloggedinas' => '您现在以$1的身份登录',
+	'postcomment_addcommentdiscussionpage' => '在此讨论页加入您的评论',
+	'postcomment_leavemessagefor' => '为$1留言',
+	'postcomment_post' => '发表',
+	'postcomment_said' => '说',
+	'postcomment_invalidrequest' => '无效请求。',
+	'postcomment_replyto' => '回复$1',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'postcomment_desc' => '容許使用者直接在討論頁面張貼評論。',
 	'postcomment_discussionprotected' => '此討論頁經已保護，不能張貼新文章。',
 	'postcomment_notloggedin' => '您尚未登入。',
-	'postcomment_youareloggedinas' => '您已以$1的名義登入',
+	'postcomment_youareloggedinas' => '您現在以$1的身份登入',
 	'postcomment_addcommentdiscussionpage' => '在此討論頁加入您的評論',
 	'postcomment_leavemessagefor' => '為$1留言',
 	'postcomment_post' => '張貼',

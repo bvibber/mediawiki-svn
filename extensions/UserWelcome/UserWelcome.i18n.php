@@ -207,10 +207,13 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'mp-welcome-upload' => 'Subir',
 	'mp-welcome-edit' => 'Editar',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|nuevo amigo|nuevos amigos}}',
 );
 
 /** Finnish (Suomi)
@@ -345,6 +348,17 @@ $messages['ia'] = array(
 	'mp-request-new-gift' => '$1 nove {{PLURAL:$1|dono|donos}}',
 	'mp-request-new-foe' => '$1 nove {{PLURAL:$1|inimico|inimicos}}',
 	'mp-request-new-friend' => '$1 nove {{PLURAL:$1|amico|amicos}}',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'mp-welcome-upload' => 'アップロード',
+	'mp-welcome-edit' => '編集',
+	'mp-welcome-logged-in' => 'こんにちは $1',
+	'mp-requests-title' => 'リクエスト',
+	'mp-request-new-message' => '新しいメッセージ',
 );
 
 /** Javanese (Basa Jawa)

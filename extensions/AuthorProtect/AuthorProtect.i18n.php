@@ -265,6 +265,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Academo
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
@@ -272,6 +273,7 @@ $messages['es'] = array(
 	'authorprotect-notauthor' => 'No eres el autor de esta página',
 	'authorprotect-confirm' => 'Cambiar niveles de protección',
 	'authorprotect-edit' => 'Restringir edición a autores',
+	'authorprotect-reason' => 'Razón',
 );
 
 /** Persian (فارسی)
@@ -291,8 +293,10 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
+ * @author Vililikku
  */
 $messages['fi'] = array(
+	'authorprotect' => 'Suojaa sivu muilta kuin tekijöiltä',
 	'authorprotect-desc' => 'Mahdollistaa sivun tekijän suojata se muilta käyttäjiltä.',
 	'authorprotect-notauthor' => 'Et ole tämän sivun luoja.',
 	'authorprotect-confirm' => 'Vaihda suojauksen tasoa',

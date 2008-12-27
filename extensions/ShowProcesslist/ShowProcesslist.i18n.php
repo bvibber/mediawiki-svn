@@ -165,6 +165,14 @@ $messages['eo'] = array(
 	'showprocesslist-info' => 'Informo',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'showprocesslist-user' => 'Usuario',
+	'showprocesslist-state' => 'Estado',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -322,9 +330,13 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'showprocesslist-user' => '利用者',
+	'showprocesslist-host' => 'ホスト',
+	'showprocesslist-command' => 'コマンド',
+	'showprocesslist-time' => '時間',
 );
 
 /** Javanese (Basa Jawa)

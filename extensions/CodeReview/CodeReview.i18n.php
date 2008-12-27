@@ -1085,12 +1085,14 @@ $4',
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Remember the dot
  * @author Sanbec
  */
 $messages['es'] = array(
 	'code-comments' => 'Comentarios',
 	'code-change-removed' => 'quitados:',
+	'code-change-added' => 'agregado:',
 	'code-authors' => 'autores',
 	'code-field-id' => 'Revisión',
 	'code-field-author' => 'Autor',
@@ -1102,8 +1104,10 @@ $messages['es'] = array(
 	'code-rev-date' => 'Fecha:',
 	'code-rev-message' => 'Comentario:',
 	'code-rev-rev' => 'Revisión:',
+	'code-rev-modified-d' => 'borrado',
 	'code-rev-status' => 'Estatus:',
 	'code-rev-status-set' => 'Cambiar estatus',
+	'code-rev-comment-preview' => 'Previsualización',
 	'code-rev-diff' => 'Dif',
 	'code-rev-diff-link' => 'dif',
 	'code-status-new' => 'nuevo',
@@ -1115,6 +1119,19 @@ $messages['es'] = array(
 	'repoadmin-edit-legend' => 'Modificación del repositorio «$1»',
 	'repoadmin-edit-button' => 'Aceptar',
 	'specialpages-group-developer' => 'Herramientas para desarrolladores',
+);
+
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'code' => 'Kode Berrikuspena',
+	'code-comments' => 'Iruzkinak',
+	'code-change-status' => "berrikuspen honen '''egoera''' aldatu da",
+	'code-change-tags' => "berrikuspen honetako '''etiketak''' aldatu dira",
+	'code-change-removed' => 'ezabatua:',
+	'code-change-added' => 'gehitua:',
+	'code-prop-changes' => 'Egoera eta etiketatzeko loga',
 );
 
 /** Persian (فارسی)
@@ -2106,17 +2123,23 @@ $messages['ja'] = array(
 	'code-change-removed' => '除去：',
 	'code-change-added' => '追加:',
 	'code-prop-changes' => 'ステータスとタグ付けのログ',
+	'code-notes' => 'レビュー ノート',
 	'code-authors' => '著者',
 	'code-tags' => 'タグ',
+	'code-field-id' => 'リビジョン',
 	'code-field-author' => '著者',
 	'code-field-message' => 'コミット要約',
 	'code-field-status' => '状況',
 	'code-field-timestamp' => '日付',
+	'code-field-comments' => 'ノート',
 	'code-field-path' => 'パス',
+	'code-field-text' => 'ノート',
 	'code-rev-author' => '著者:',
 	'code-rev-date' => '日付:',
 	'code-rev-message' => 'コメント:',
+	'code-rev-rev' => 'リビジョン:',
 	'code-rev-status' => '状況:',
+	'code-rev-tags' => 'タグ:',
 	'code-pathsearch-path' => 'パス:',
 	'code-rev-submit' => '変更を保存',
 	'specialpages-group-developer' => '開発者用ツール',
@@ -2633,6 +2656,14 @@ $messages['myv'] = array(
 	'repoadmin-new-button' => 'Шкик-теик',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'code-author-link' => '¿tiquitzonhuiliztīz?',
+	'code-status-ok' => 'quēmah',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
@@ -2740,31 +2771,89 @@ $messages['nn'] = array(
 	'code-change-tags' => "endra '''merkelappane''' for denne versjonen",
 	'code-change-removed' => 'tok vekk:',
 	'code-change-added' => 'la til:',
+	'code-prop-changes' => 'Status- og merkelogg',
+	'code-desc' => '[[Special:Code|Kodegjennomgangsverktøy]] med [[Special:RepoAdmin|støtta for Subversion]]',
+	'code-no-repo' => 'Ingen database konfigurert!',
+	'code-notes' => 'gjennomgå notat',
+	'code-authors' => 'forfattarar',
+	'code-tags' => 'merke',
+	'code-authors-text' => 'Nedanfor er ei lista over forfattarar sorterte etter siste bidrag.',
+	'code-author-haslink' => 'Denne forfattaren er lenkja til wikibrukar $1',
+	'code-author-orphan' => 'Denne forfattaren har inga lenkja til ein wikikonto',
+	'code-author-dolink' => 'Lenk denne forfattaren til ein wikibrukar:',
+	'code-author-alterlink' => 'Endra wikibrukaren som er lenkja til denne forfattaren:',
+	'code-author-orunlink' => 'Eller avlenk denne wikibrukaren:',
+	'code-author-name' => 'Skriv inn eit brukarnamn:',
+	'code-author-success' => 'Forfattaren $1 har blitt lenkja til wikibrukaren $2',
+	'code-author-link' => 'lenkja?',
+	'code-author-unlink' => 'avlenk?',
+	'code-author-unlinksuccess' => 'Forfattaren $1 har blitt avlenkja',
 	'code-field-id' => 'Versjon',
 	'code-field-author' => 'Forfattar',
+	'code-field-user' => 'Kommenterte',
+	'code-field-message' => 'Bidragssamandrag',
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Dato',
+	'code-field-comments' => 'Merknader',
 	'code-field-path' => 'Stig',
+	'code-field-text' => 'Merknad',
+	'code-rev-author' => 'Forfattar:',
+	'code-rev-date' => 'Dato:',
 	'code-rev-message' => 'Kommentar:',
+	'code-rev-repo' => 'Database:',
+	'code-rev-rev' => 'Versjon:',
+	'code-rev-rev-viewvc' => 'på ViewVC',
+	'code-rev-paths' => 'Endra stigar:',
 	'code-rev-modified-a' => 'lagt til',
+	'code-rev-modified-r' => 'erstatta',
+	'code-rev-modified-d' => 'sletta',
+	'code-rev-modified-m' => 'endra',
 	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Endra status',
+	'code-rev-tags' => 'Merke:',
+	'code-rev-tag-add' => 'Legg til merke:',
+	'code-rev-tag-remove' => 'Fjern merke:',
+	'code-rev-comment-by' => 'Kommentar av $1',
 	'code-rev-comment-submit' => 'Legg til kommentar',
-	'code-rev-diff' => 'Diff',
-	'code-rev-diff-link' => 'diff',
+	'code-rev-comment-preview' => 'Førehandsvising',
+	'code-rev-diff' => 'Skilnad',
+	'code-rev-diff-link' => 'skilnad',
+	'code-rev-purge-link' => 'oppfrisk',
 	'code-status-new' => 'ny',
 	'code-status-fixme' => 'fiksmeg',
 	'code-status-reverted' => 'attenderulla',
+	'code-status-resolved' => 'løyst',
 	'code-status-ok' => 'OK',
+	'code-status-deferred' => 'forskjøve',
+	'code-pathsearch-legend' => 'Søk i versjonar i databsen etter stig',
 	'code-pathsearch-path' => 'Stig:',
+	'code-rev-submit' => 'Lagra endringar',
+	'code-rev-submit-next' => 'Lagra og gå til neste uløyste',
 	'codereview-reply-link' => 'svar',
 	'codereview-email-subj' => '[$1] [r$2]: Ny kommentar lagt til',
 	'codereview-email-body' => 'Brukar $1 la inn ein kommentar på r$3
 
-Fullstendig URL: $2
+Fullstendig adressa: $2
 
 Kommentar:
 
 $4',
+	'repoadmin' => 'Databaseadministrasjon',
+	'repoadmin-new-legend' => 'Opprett ein ny database',
+	'repoadmin-new-label' => 'Databasenamn:',
 	'repoadmin-new-button' => 'Opprett',
+	'repoadmin-edit-legend' => 'Endring av databasen «$1»',
+	'repoadmin-edit-path' => 'Databasestig:',
+	'repoadmin-edit-bug' => 'Bugzilla-stig:',
+	'repoadmin-edit-view' => 'ViewVC-stig:',
 	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => 'Databasen [[Special:Code/$1|$1]] har blitt endra.',
+	'right-repoadmin' => 'Handsama kodesamlingar',
+	'right-codereview-add-tag' => 'Leggja til nye merke til versjonar',
+	'right-codereview-remove-tag' => 'Fjerna merke frå versjonar',
+	'right-codereview-post-comment' => 'Leggja til kommentarar til versjonar',
+	'right-codereview-set-status' => 'Endra versjonsstatus',
+	'right-codereview-link-user' => 'Lenkja forfattarar til wikibrukarar',
 	'specialpages-group-developer' => 'Utviklarverkty',
 );
 
@@ -3162,7 +3251,9 @@ $messages['ro'] = array(
 	'code-authors' => 'autori',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentator',
+	'code-field-timestamp' => 'Dată',
 	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Dată:',
 	'code-rev-message' => 'Comentariu:',
 	'code-rev-comment-preview' => 'Previzualizare',
 	'code-status-ok' => 'ok',
@@ -3336,13 +3427,28 @@ $messages['sah'] = array(
 	'code-tags' => 'бэлиэлэр',
 	'code-authors-text' => 'Аллараа ааптардар тиһиктэрэ киллэрбит уларытыыларын кэминэн наарданан (саҥалар — үөһэ) бэриллэр.',
 	'code-author-haslink' => 'Бу ааптар $1 кыттааччыга сигэнэр',
+	'code-author-orphan' => 'Бу ааптар биики-бырайыак ханнык эмит кыттааччытыгар сигэммэт',
+	'code-author-dolink' => 'Бу ааптары ханнык эмит кыттаачыга сигииргэ:',
+	'code-author-alterlink' => 'Бу ааптар кыттааччыга сигэниитин уларытарга:',
+	'code-author-orunlink' => 'Эбэтэр кыттаачыга сигэни эрэ соторго:',
+	'code-author-name' => 'Ааккын суруй:',
+	'code-author-success' => '$1 ааптар $2 кыттааччылыын сигэннэ',
+	'code-author-link' => 'холбуурга?',
+	'code-author-unlink' => 'араарарга?',
+	'code-author-unlinksuccess' => '$1 ааптар сигэниитэ сотулунна',
+	'code-field-id' => 'Торум',
+	'code-field-author' => 'Ааптар',
 	'code-field-user' => 'Ырытааччы',
+	'code-field-message' => 'Уларытыылар туһунан',
 	'code-field-status' => 'Турук',
 	'code-field-timestamp' => 'Күнэ-дьыла',
+	'code-field-comments' => 'Быһаарыылара',
 	'code-field-path' => 'Суола',
 	'code-field-text' => 'Быһаарыы',
+	'code-rev-author' => 'Ааптар:',
 	'code-rev-date' => 'Күнэ-дьыла:',
 	'code-rev-message' => 'Быһаарыы:',
+	'code-rev-repo' => 'Ыскылаат:',
 	'code-rev-status' => 'Туруга:',
 	'code-status-ok' => 'сөп',
 );
@@ -4199,5 +4305,28 @@ $messages['yi'] = array(
 	'code-change-added' => 'צוגעלייגט:',
 	'code-authors' => 'שרייבערס',
 	'code-field-author' => 'שרייבער',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Skjackey tse
+ */
+$messages['zh-hant'] = array(
+	'code' => '預覽程式碼',
+	'code-comments' => '附註',
+	'code-change-status' => "改變此版本的'''狀態'''",
+	'code-change-tags' => "改變此版本的'''標籤'''",
+	'code-change-removed' => '移除：',
+	'code-change-added' => '增加：',
+	'code-prop-changes' => '狀態或標籤日誌',
+	'code-desc' => '[[Special:Code|程式碼預覽工具]] with [[Special:RepoAdmin|子版本支援]]',
+	'code-no-repo' => '沒有存放配置！',
+	'code-notes' => '預覽附註',
+	'code-authors' => '作者',
+	'code-tags' => '標籤',
+	'code-authors-text' => '以下是回購作者的最近承諾。',
+	'code-author-haslink' => '此作者與維基用戶$1連結',
+	'code-author-orphan' => '此作者沒有與任何維基用戶連結',
+	'code-author-dolink' => '連結此作者至維基用戶：',
+	'code-author-alterlink' => '改變此作者與維基用戶連結：',
 );
 

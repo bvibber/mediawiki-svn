@@ -282,6 +282,13 @@ $messages['lb'] = array(
 	'lua_error_internal' => 'Interne Feeler',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'lua_error' => 'Ahcuallōtl pāmpan $1',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

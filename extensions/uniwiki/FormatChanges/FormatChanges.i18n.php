@@ -48,6 +48,16 @@ $messages['bg'] = array(
 	'formatchanges-desc' => 'Преформатира [[Special:RecentChanges|списъка с последните промени]]',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'formatchanges-desc' => 'Změní formát [[Special:RecentChanges|posledních změn]]',
+	'formatchanges-anonymous' => 'Anonym',
+	'formatchanges-createdby' => 'vytvořil',
+	'formatchanges-editedby' => 'upravil',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -75,6 +85,13 @@ $messages['eo'] = array(
 	'formatchanges-anonymous' => 'Anonimulo',
 	'formatchanges-createdby' => 'fare de',
 	'formatchanges-editedby' => 'redaktita de',
+);
+
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'formatchanges-anonymous' => 'Anónimo',
 );
 
 /** Finnish (Suomi)
@@ -135,6 +152,13 @@ $messages['ia'] = array(
 	'formatchanges-anonymous' => 'Anonyme',
 	'formatchanges-createdby' => 'create per',
 	'formatchanges-editedby' => 'modificate per',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'formatchanges-anonymous' => '匿名',
 );
 
 /** Javanese (Basa Jawa)
@@ -270,6 +294,24 @@ $messages['te'] = array(
 	'formatchanges-anonymous' => 'అజ్ఞాత',
 	'formatchanges-createdby' => 'సృష్టించినది',
 	'formatchanges-editedby' => 'మార్చినది',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'formatchanges-desc' => 'Nagbabago sa anyo/pormat ng [[Special:RecentChanges|kamakailang mga pagbabago]]',
+	'formatchanges-anonymous' => 'Hindi kilala (anonimo)',
+	'formatchanges-createdby' => 'nilikha ni',
+	'formatchanges-editedby' => 'binago ni',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'formatchanges-desc' => 'Перетворює [[Special:RecentChanges|нові редагування]]',
+	'formatchanges-anonymous' => 'Анонім',
 );
 
 /** Vietnamese (Tiếng Việt)

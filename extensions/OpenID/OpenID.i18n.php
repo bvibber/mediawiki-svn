@@ -485,6 +485,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ChrisiPK
  * @author Leithian
  */
 $messages['de'] = array(
@@ -543,6 +544,19 @@ Wenn du OpenID für künftige Anmeldevorgänge nutzen möchtest, kannst du [[Spe
 	'openidautosubmit' => 'Diese Seite enthält ein Formular, das automatisch übertragen wird, wenn JavaSkript aktiviert ist. Falls nicht, klicke bitte auf „Weiter“.',
 	'openidclientonlytext' => 'Du kannst keine Benutzerkonten aus diesem Wiki als OpenID für andere Seiten verwenden.',
 	'openidloginlabel' => 'OpenID-URL',
+	'openidlogininstructions' => "{{SITENAME}} unterstützt den [http://openid.net/ OpenID]-Standard für ein Login für mehrere Websites.
+OpenID meldet dich bei vielen unterschiedlichen Webseiten an, ohne dass du für jede ein anderes Passwort verwenden musst.
+(Mehr Informationen bietet der [http://de.wikipedia.org/wiki/OpenID Wikipedia-Artikel zu OpenID].)
+
+Falls du bereits ein Benutzerkonto bei {{SITENAME}} hast, kannst du dich ganz normal mit Benutzername und Passwort [[Special:UserLogin|anmelden]].
+Wenn du in Zukunft OpenID verwenden möchtest, kannst du [[Special:OpenIDConvert|deinen Account zu OpenID konvertieren]], nachdem du dich normal eingeloggt hast.
+
+Es gibt viele [http://wiki.openid.net/Public_OpenID_providers öffentliche OpenID-Provider] und möglicherweise hast du bereits ein Benutzerkonto mit aktiviertem OpenID bei einem anderen Anbieter.
+
+; Andere Sites: Wenn du bereits ein Benutzerkonto auf einem Wiki mit aktiviertem OpenID hast, wie beispielsweise [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] oder [http://kei.ki/ Keiki], kannst du dich bei {{SITENAME}} anmelden, indem du die '''komplette URL''' deiner Benutzerseite auf dem anderen Wiki in das obige Textfeld eingibst. Beispielsweise ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!]: Wenn du ein Yahoo!-Konto hast, kannst du dich mit der von Yahoo! angegebenen OpenID im obigen Textfeld anmelden. Yahoo!-OpenIDs haben die Form ''<nowiki>https://me.yahoo.com/deinbenutzername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL]: Wenn du ein [http://www.aol.com/ AOL]-Konto hast, beispielsweise ein [http://www.aim.com/ AIM]-Benutzerkonto, kannst du dich bei {{SITENAME}} anmelden, indem du die von AOL angegebene OpenID im obigen Textfeld eingibst. AOL-OpenIDs haben die Form ''<nowiki>http://openid.aol.com/deinbenutzername</nowiki>''. Dein Benutzername sollte nur aus kleinen Buchstaben bestehen und keine Leerzeichen enthalten.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox]: Wenn du auf diesen Seiten ein Blog hast, gib die URL deines Blogs in das obige Textfeld ein. Beispielsweise ''<nowiki>http://deinbenutzername.blogspot.com/</nowiki>'', ''<nowiki>http://deinbenutzername.wordpress.com/</nowiki>'', ''<nowiki>http://deinbenutzername.livejournal.com/</nowiki>'', oder ''<nowiki>http://deinbenutzername.vox.com/</nowiki>''.",
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -560,6 +574,50 @@ $messages['dsb'] = array(
 	'openidconfigerror' => 'Konfiguraciska zmólka OpenID',
 	'openidconfigerrortext' => 'Konfiguracija składowaka OpenID za toś ten wiki jo njepłaśiwy.
 Pšosym staj se z [[Special:ListUsers/sysop|administratorom]] do zwiska.',
+	'openidpermission' => 'Zmólka pšawow OpenID',
+	'openidpermissiontext' => 'OpenID, kótaryž sy pódał, njedowólujo pśizjawjenje pla toś togo serwera.',
+	'openidcancel' => 'Pśeglědanje pśetergnjone',
+	'openidcanceltext' => 'Pśeglědanje URL OpenID jo se pśetergnuło.',
+	'openidfailure' => 'Pséglědanje jo se njeraźiło',
+	'openidfailuretext' => 'Pśeglědanje URL OpenID je so njeraźiło. Zmólkowa powěźeńka: "$1"',
+	'openidsuccess' => 'Pśeglědanje wuspěšne',
+	'openidsuccesstext' => 'Pśeglědanje URL OpenID jo wuspěšnje było.',
+	'openidusernameprefix' => 'Wužywaŕ OpenID',
+	'openidserverlogininstructions' => 'Zapódaj swójo gronidło dołojce, aby se ako wužywaŕ $2 pla $3 pśizjawił (wužywarski bok $1).',
+	'openidtrustinstructions' => 'Kontrolěruj, lěc coš daty z $1 źěliś.',
+	'openidallowtrust' => '$1 dowóliś, toś tomu wužywarskemu kontoju dowěriś.',
+	'openidnopolicy' => 'Sedło njejo pódało zasady priwatnosći.',
+	'openidpolicy' => 'Kontrolěruj <a target="_new" href="$1">zasady priwatnosći</a> za dalšne informacije.',
+	'openidoptional' => 'Opcionalny',
+	'openidrequired' => 'Trěbny',
+	'openidnickname' => 'Pśimě',
+	'openidfullname' => 'Dopołne mě',
+	'openidemail' => 'E-mailowa adresa:',
+	'openidlanguage' => 'Rěc',
+	'openidnotavailable' => 'Twójo preferěrowane pśimě ($1) se južo wužywa wót drugego wužywarja.',
+	'openidnotprovided' => 'Twój server OpenID njejo dodał pśimě (pak, dokulaž njamóžo, pak, dokulaž njejsy jo jomu k wěsći dał).',
+	'openidchooseinstructions' => 'Wše wužywarje trjebaju pśimě;
+móžoš jadne ze slědujucych opcijow wubraś.',
+	'openidchoosefull' => 'Twójo dopołne mě ($1)',
+	'openidchooseurl' => 'Mě z twójogo OpenID ($1)',
+	'openidchooseauto' => 'Awtomatiski napórane mě ($1)',
+	'openidchoosemanual' => 'Mě twójogo wuzwólenja:',
+	'openidchooseexisting' => 'Eksistěrujuce konto w toś tom wikiju:',
+	'openidchoosepassword' => 'gronidło:',
+	'openidconvertinstructions' => 'Z toś tym formularom móžoš swójo wužywarske konto změniś, aby wužywało URL OpenID.',
+	'openidconvertsuccess' => 'Wuspěšnje do OpenID konwertěrowany',
+	'openidconvertsuccesstext' => 'Sy wuspěšnje konwertěrował twój OpenID do $1.',
+	'openidconvertyourstext' => 'To jo južo twój OpenID.',
+	'openidconvertothertext' => 'Toś ten OpenID słuša někomu drugemu.',
+	'openidalreadyloggedin' => "'''Sy južo pśizjawjony, $1!'''
+
+Jolic pśichodnje coš OpenID wužywaś, aby se pśizjawił, móžoš [[Special:OpenIDConvert|swójo konto za wužiwanje OpenID konwertěrowaś]].",
+	'tog-hideopenid' => 'Schowaj swój <a href="http://openid.net/">OpenID</a> na swójom wužywarskem boku, jolic se pśizjawjaś z OpenID.',
+	'openidnousername' => 'Žedne wužywarske mě pódane.',
+	'openidbadusername' => 'Wopacne wužywarske mě pódane.',
+	'openidautosubmit' => 'Toś ten bok wopśimujo formular, kótaryž se awtmatiski wótpósćeła, jolic JavaScript jo zmóžnjony. Jolic nic, klikni na tłocašk "Dalej".',
+	'openidclientonlytext' => 'Njamóžoš konta z toś togo wikija ako OpneID na drugem sedle wužywaś.',
+	'openidloginlabel' => 'URL OpenID',
 );
 
 /** Greek (Ελληνικά)
@@ -632,10 +690,15 @@ Se vi volas utiligi OpenID por ensaluti estontece, vi povas [[Special:OpenIDConv
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
+	'openidoptional' => 'Opcional',
+	'openidrequired' => 'Necesario',
+	'openidemail' => 'Dirección de correo electrónico',
 	'openidlanguage' => 'Idioma',
+	'openidchoosepassword' => 'contraseña:',
 );
 
 /** Finnish (Suomi)
@@ -665,13 +728,18 @@ $messages['fi'] = array(
 	'openidsuccesstext' => 'OpenID-osoitteen todennus onnistui.',
 	'openidusernameprefix' => 'OpenID-käyttäjä',
 	'openidserverlogininstructions' => 'Kirjaudu sisään sivustolle $3 käyttäjänä $2 (käyttäjäsivu $1) syöttämällä salasana alle.',
-	'openidtrustinstructions' => 'Tarkista haluatko jakaa tietoja $1:n kanssa.',
+	'openidtrustinstructions' => 'Tarkista, haluatko jakaa tietoja $1:n kanssa.',
 	'openidnopolicy' => 'Sivusto ei ole määritellyt yksityisyyskäytäntöä.',
+	'openidpolicy' => 'Lisää tietoa on <a target="_new" href="$1">yksityisyyskäytännöissä</a>.',
 	'openidoptional' => 'Valinnainen',
 	'openidrequired' => 'Vaadittu',
+	'openidnickname' => 'Nimimerkki',
 	'openidfullname' => 'Koko nimi',
 	'openidemail' => 'Sähköpostiosoite',
 	'openidlanguage' => 'Kieli',
+	'openidnotavailable' => 'Toinen käyttäjä käyttää jo haluamaasi nimimerkkiä ($1).',
+	'openidnotprovided' => 'OpenID-palvelimesi ei tarjoa nimimerkkiä (joko se ei osaa, tai olet kieltänyt sen).',
+	'openidchoosefull' => 'Koko nimesi ($1)',
 	'openidchoosepassword' => 'salasana:',
 	'openidloginlabel' => 'OpenID-URL',
 );
@@ -1548,14 +1616,26 @@ Et jitt en jruuße Zahl [http://wiki.openid.net/Public_OpenID_providers <span la
  */
 $messages['lb'] = array(
 	'openidlogin' => 'Umellen mat OpenID',
+	'openidfinish' => "D'Aloggen mat OpenID ofschléissen",
+	'openidserver' => 'OpenID-Server',
 	'openidxrds' => 'Yadis Fichier',
+	'openidconvert' => 'OpenID-Ëmwandler',
 	'openiderror' => 'Feeler bäi der Iwwerpréifung',
+	'openiderrortext' => 'Beim Iwwerpréifen vun der OpenID URL ass e Feeler geschitt.',
+	'openidconfigerror' => 'OpenId-Konfiguratiounsfeeler',
+	'openidpermission' => 'OpenID-Autorisatiounsfeeler',
+	'openidpermissiontext' => "D'OpeniD déi Dir uginn hutt ass net erlaabt fir sech op dëse Server anzeloggen.",
+	'openidcancel' => 'Iwwerpréifung ofgebrach',
+	'openidcanceltext' => "D'Iwwerpréifung vun der OpenID-URL gouf ofgebrach",
+	'openidfailure' => 'Feeler bei der Iwwerpréifung',
 	'openidsuccess' => 'Iwwerpréifung huet geklappt',
+	'openidsuccesstext' => "D'Iwwerpréifung vun der OpenID-URL huet geklappt.",
 	'openidusernameprefix' => 'OpenIDBenotzer',
 	'openidserverlogininstructions' => 'Gitt ärt Passwuert hei ënnendrënner an, fir iech als Benotzer $2 op $3 unzemellen (Benotzersäit $1).',
 	'openidtrustinstructions' => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
 	'openidallowtrust' => 'Erlaabt $1 fir dësem Benotzerkont ze vertrauen.',
 	'openidnopolicy' => 'De Site huet keng Richtlinne fir den Dateschutz uginn.',
+	'openidpolicy' => 'Fir méi Informatiounen <a target="_new" href="$1">kuckt d\'Dateschutzrichtlinnen</a>.',
 	'openidoptional' => 'Facultatif',
 	'openidrequired' => 'Obligatoresch',
 	'openidnickname' => 'Spëtznumm',
@@ -1569,8 +1649,14 @@ $messages['lb'] = array(
 	'openidchoosemanual' => 'E Numm vun ärer Wiel:',
 	'openidchooseexisting' => 'E Benotzerkont den et op dëser Wiki scho gëtt:',
 	'openidchoosepassword' => 'Passwuert:',
+	'openidconvertsuccess' => 'An en OpenID-Benotzerkont ëmgewandelt',
+	'openidconvertsuccesstext' => 'Dir hutt Är OpenID op $1 ëmgewandelt.',
 	'openidconvertyourstext' => 'Dat ass schon är OpenID.',
 	'openidconvertothertext' => 'Dëst ass engem anere seng OpenID.',
+	'openidalreadyloggedin' => "'''Dir sidd schonn ageloggt, $1!'''
+
+Wann Dir OpenID benotze wëllt fir Iech an Zukunft anzeloggen, da kënnt Dir [Special:OpenIDConvert|Äre Benotzerkont an en OpenID-Benotzerkont ëmwandelen]].",
+	'tog-hideopenid' => 'Verstoppt Är <a href="http://openid.net/">OpenID</a> op ärer Benotzersäit, wann dir Iech mat OpenID aloggt.',
 	'openidnousername' => 'Kee Benotzernumm uginn.',
 	'openidbadusername' => 'Falsche Benotzernumm uginn.',
 	'openidautosubmit' => 'Op dëser Säit gëtt et e Formulaire deen automatesch soll verschéckt ginn wann Dir JavaScript ageschalt hutt.
@@ -1758,7 +1844,9 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
+	'openidemail' => 'E-mailcān',
 	'openidlanguage' => 'Tlahtōlli',
+	'openidchoosepassword' => 'tlahtōlichtacāyōtl:',
 );
 
 /** Dutch (Nederlands)

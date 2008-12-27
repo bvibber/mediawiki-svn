@@ -135,6 +135,7 @@ $messages['es'] = array(
  */
 $messages['fi'] = array(
 	'advancedrandom' => 'Ehdollinen satunnainen sivu',
+	'advancedrandom-desc' => 'Hae satunnainen sivu, joka tai jonka keskustelusivu linkittää tietylle sivulle. Tätä voidaan käyttää satunnaisen suositellun sivun valitsemiseen ([[Special:AdvancedRandom/Template:Featured/Talk]]) tai satunnaisen GFDL-lisensoidun tiedoston hakemiseen ([[Special:AdvancedRandom/Template:GFDL/Image]]).',
 );
 
 /** French (Français)
@@ -289,6 +290,13 @@ Kan gebroek waere es [[Special:AdvancedRandom/Template:Featured/Talk]] om 'n wil
 $messages['mr'] = array(
 	'advancedrandom' => 'प्रगत अविशीष्ट',
 	'advancedrandom-desc' => 'असे एक अविशिष्ट पान मिळवा की ज्याचे चर्चा अथवा विषयपान दिलेल्या पानाशी जोडलेले आहे, जसे की अविशिष्ट विशेष लेख मिळविण्यासाठी [[Special:AdvancedRandom/Template:Featured/Talk]] हे वापरता येईल अथवा अविशिष्ट जीएफडीएल (GFDL) संचिका मिळविण्यासाठी [[Special:AdvancedRandom/Template:GFDL/Image]] हे वापरता येईल',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'advancedrandom' => 'Huehca ōmpa zāzotlamantli',
 );
 
 /** Low German (Plattdüütsch)

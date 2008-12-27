@@ -85,12 +85,14 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Mobe
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'stalkerlog-desc' => 'Lisää [[Special:Log/stalkerlog|lokin]] käyttäjien sisään- ja uloskirjautumisista.',
 	'stalkerlog-log-login' => 'kirjautunut sisään.',
 	'stalkerlog-log-logout' => 'kirjautunut ulos.',
+	'stalkerlog-log-type' => 'Käyttäjien kirjautumisloki',
 	'stalkerlog-log-text' => 'Tämä on loki käyttäjien sisään- ja uloskirjautumisista.',
 );
 
@@ -225,6 +227,14 @@ $messages['myv'] = array(
 	'stalkerlog-log-login' => 'совазь.',
 	'stalkerlog-log-logout' => 'лисезь.',
 	'stalkerlog-log-text' => 'Тесэ тешкставить теицянть совамонзо-лисеманзо.',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'stalkerlog-log-login' => 'ōmocalac.',
+	'stalkerlog-log-logout' => 'ōmoquīzac.',
 );
 
 /** Dutch (Nederlands)

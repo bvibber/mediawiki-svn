@@ -402,6 +402,8 @@ $messages['am'] = array(
 	'mv_edit' => 'አርም',
 	'mv_history' => 'ታሪክ',
 	'mv_search_categories' => 'መደቦች',
+	'mv_search_category' => 'መደብ',
+	'mv_category' => 'መደብ',
 );
 
 /** Aragonese (Aragonés)
@@ -1041,6 +1043,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author ABF
  * @author DaSch
  * @author Imre
  * @author Leithian
@@ -1123,6 +1126,8 @@ Bitte berichten Sie dieses Problem dem Seitenadministrator.',
 	'ht_en_desc' => 'Englische Kopie.
 Dieser Einblendungstyp ist für gesprochenen Text.',
 	'anno_en' => 'Anmerkungen und Kategorien',
+	'anno_en_desc' => 'Englische Kategorisierungen und Anmerkungen.
+Dieses Overlay kann verwendet werden, um Videosektionen zu kategorisieren oder Anmerkungen hinzuzufügen, die nicht aus gesprochenem Text bestehen.',
 	'thomas_en' => 'Offizielle Kopie',
 	'mvd_default_mismatch' => 'Fehler in der Einstellungs-Datei',
 	'mvd_default_mismatch_text' => 'Deine Einstellungsdatei ist fehlerhaft.
@@ -1133,9 +1138,11 @@ $mvMVDTypeDefaultDisp sollte eine Teilmenge von $mvMVDTypeAllAvailable sein',
 	'mv_list_streams_page' => 'Mv Streams auflisten',
 	'mv_list_streams_docu' => 'Es existieren die folgenden Streams:',
 	'mv_list_streams_none' => 'Es existieren keine Streams',
+	'video_feed_cat' => 'Video-Einspeisung für die Kategorie:',
 	'mv-category-media-count' => '$1 Mediensegmente sind in der Kategorie',
 	'mv_mvd_linkback' => 'Teil von Stream $1 <br />
 Zur Stream-Ansicht springen: $2',
+	'mvBadMVDtitle' => 'fehlender Typ, fehlender Stream oder ungültiges Zeitformat',
 	'mv_play' => 'Start',
 	'mv_edit' => 'Bearbeiten',
 	'mv_history' => 'Versionen/Autoren',
@@ -1151,6 +1158,7 @@ Zur Stream-Ansicht springen: $2',
 	'mv_adjust_preview_stop' => 'Vorschau anhalten',
 	'mv_adjust_default_reason' => 'metavid Interface-Anpassung',
 	'mv_adjust_old_title_missing' => 'Die Seite, die du von ($1) verschieben willst, existiert nicht',
+	'mv_adjust_ok_move' => 'Erfolgreich, passe an...',
 	'mv_start_desc' => 'Startzeit',
 	'mv_end_desc' => 'Endzeit',
 	'mv_of' => '&#32;von&#32;',
@@ -1173,6 +1181,9 @@ Zur Stream-Ansicht springen: $2',
 	'mv_search_match' => 'Suchtext',
 	'mv_search_spoken_by' => 'Gesprochen von',
 	'mv_search_categories' => 'Kategorien',
+	'mv_search_bills' => 'Liste',
+	'mv_search_bill' => 'Liste',
+	'mv_bill' => 'Liste',
 	'mv_search_category' => 'Kategorie',
 	'mv_search_smw_property' => 'Semantische Eigenschaften',
 	'mv_search_and' => 'und',
@@ -1185,6 +1196,7 @@ Zur Stream-Ansicht springen: $2',
 	'mv_date_last_week' => 'Letzte Woche',
 	'mv_category_results' => 'Kategorien-Ergebnisse',
 	'mv_people_results' => 'Personen-Ergebnisse',
+	'mv_bill_results' => 'Listen-Ergebnisse',
 	'mv_intrest_group_results' => 'Interessensgruppen',
 	'mv_most_relevant' => 'Wichtigste',
 	'mv_most_recent' => 'Neueste',
@@ -1193,11 +1205,13 @@ Zur Stream-Ansicht springen: $2',
 	'mv_spoken_by' => 'gesprochen von',
 	'mv_speech_by' => 'Rede von',
 	'mv_category' => 'Kategorie',
+	'mv_search_no_results' => 'Keine Medien-Ergebnisse',
 	'mv_media_matches' => 'Medien-Treffer',
 	'mv_remove_filter' => 'Filter entfernen',
 	'mv_advaced_search' => 'Fortgeschrittene Mediensuche',
 	'mv_view_in_stream_interface' => 'Stream-Interface einblenden',
 	'mv_view_wiki_page' => 'Wiki-Seite ansehen',
+	'mv_error_mvd_not_found' => 'Fehler: mvd nicht gefunden',
 	'mv_match_text' => '~  $1 Treffer',
 	'mv_match_text_one' => '~ ein Treffer',
 	'mv_edit_sequence' => 'Bearbeite Sequenz: $1',
@@ -1227,6 +1241,7 @@ momentan eine sehr <b>eingeschränkte</b> Funktion. Klicke auf einen Clip um ihn
 	'mv_other_options' => 'Andere Optionen',
 	'mv_contextmenu_opt' => 'Kontextmenüs aktivieren',
 	'mv_sequence_timeline' => 'Sequenzen-Zeitleiste',
+	'mv_edit_sequence_desc_help' => 'Sequenzbeschreibung',
 	'mv_edithelpsequence' => 'Hilfe: Sequenz-Bearbeitung',
 	'mv_seq_summary' => 'Bearbeitungszusammenfassung der Sequenz',
 	'mv_add_clip_by_name' => 'Clip anhand des Namens hinzufügen',
@@ -1238,6 +1253,8 @@ momentan eine sehr <b>eingeschränkte</b> Funktion. Klicke auf einen Clip um ihn
 	'mv_tool_missing' => 'angefordertes Werkzeug existiert nicht',
 	'mv_prev_speech' => 'Vorhergehender Vortrag: $1',
 	'mv_next_speech' => 'Nächster Vortrag: $1',
+	'mv_prev_bill' => 'Vorige Liste: $1',
+	'mv_next_bill' => 'Nächste Liste: $1',
 	'mv_prev_cat' => 'Vorherige Kategorie: $1',
 	'mv_next_cat' => 'Nächste Kategorie: $1',
 	'mv_search_stream_title' => 'Aktuellen Stream suchen',
@@ -1314,15 +1331,23 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Jatrobat
  * @author Sanbec
  */
 $messages['es'] = array(
+	'mv_duration_label' => 'Duración',
+	'mv_upload_file' => 'Subir archivo',
 	'mv_tool_search' => 'Buscar',
+	'mv_tool_export' => 'Exportar',
 	'mv_edit' => 'Editar',
+	'mv_history' => 'Historial',
 	'mv_search_spoken_by' => 'Hablado por',
 	'mv_search_categories' => 'Categorías',
 	'mv_search_category' => 'Categoría',
+	'mv_search_and' => 'y',
+	'mv_search_or' => 'o',
+	'mv_search_not' => 'no',
 	'mv_spoken_by' => 'hablado por',
 	'mv_category' => 'categoría',
 );
@@ -1342,7 +1367,7 @@ $messages['fi'] = array(
 	'mv_adjust_preview_stop' => 'Lopeta esikatselu',
 	'mv_start_desc' => 'Aloitusaika',
 	'mv_end_desc' => 'Päättymisaika',
-	'mv_edit_metadata' => 'Muokkaa metadataa',
+	'mv_edit_metadata' => 'Muokkaa metatietoa',
 	'mv_remove_category' => 'Poista luokka',
 	'mv_video_search' => 'Videohaku',
 	'mv_search_category' => 'Luokka',
@@ -2583,11 +2608,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'mv_remove_reason' => '削除理由:',
 	'mv_tool_search' => '検索',
+	'mv_tool_export' => 'エクスポート',
 	'mv_history' => '履歴',
+	'mv_category' => 'カテゴリ',
 );
 
 /** Lojban (Lojban)
@@ -3140,7 +3168,15 @@ $messages['nah'] = array(
 	'mv_tool_export' => 'Ticnamacāz',
 	'mv_edit' => 'Ticpatlāz',
 	'mv_history' => 'Tlahcuilōlloh',
+	'mv_start_desc' => 'Ihcuāc mopēhua',
+	'mv_end_desc' => 'Ihcuāc motlamia',
+	'mv_of' => '&#32;īhuīcpa&#32;',
+	'mv_viewnext' => 'Tiquittāz ($1)',
+	'mv_viewprevnext' => 'Tiquittāz ($1) ($2)',
 	'mv_search_category' => 'Neneuhcāyōtl',
+	'mv_search_and' => 'īhuān',
+	'mv_search_or' => 'nozo',
+	'mv_search_not' => 'ahmo',
 	'mv_category' => 'neneuhcāyōtl',
 );
 
@@ -4088,15 +4124,23 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'mv_duration_label' => 'Durată',
 	'mv_remove_reason' => 'Motiv pentru ştergere:',
+	'mv_external_file' => 'Fişier extern',
 	'mv_tool_search' => 'Caută',
+	'anno_en' => 'Adnotări şi categorii',
 	'mv_edit' => 'Modifică',
 	'mv_history' => 'Istoric',
 	'mv_remove' => 'elimină',
+	'mv_results_for' => 'Rezultate pentru $1',
 	'mv_search_categories' => 'Categorii',
 	'mv_search_category' => 'Categorie',
 	'mv_search_and' => 'şi',
+	'mv_date_last_week' => 'Săptămâna trecută',
 	'mv_category' => 'categorie',
+	'mv_other_options' => 'Alte Opţiuni',
+	'mv_prev_cat' => 'Categoria anterioară: $1',
+	'mv_next_cat' => 'Categoria următoare: $1',
 );
 
 /** Russian (Русский)
@@ -5134,6 +5178,13 @@ Nhảy đến cảnh luồng: $2',
  */
 $messages['vo'] = array(
 	'mv_search_category' => 'Klad',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'mv_tool_search' => '搜索',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

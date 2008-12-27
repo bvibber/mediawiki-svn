@@ -191,8 +191,10 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
+	'slippymap_desc' => 'Sallii <tt><nowiki>&lt;slippymap&gt;</nowiki></tt>-elementin käytön OpenLayers slippy map -kartan näyttämiseen. Kartat ovat osoitteesta [http://openstreetmap.org openstreetmap.org].',
 	'slippymap_latmissing' => 'Puuttuva ”lat”-arvo leveysasteille.',
 	'slippymap_lonmissing' => 'Puuttuva ”lon”-arvo pituusasteille.',
 	'slippymap_zoommissing' => 'Puuttuva ”z”-arvo zoomaukselle.',
@@ -211,8 +213,14 @@ $messages['fi'] = array(
 	'slippymap_lonbig' => 'pituusastearvo (lon) ei voi olla yli 180',
 	'slippymap_lonsmall' => 'pituusastearvo (lon) ei voi olla alle -180',
 	'slippymap_zoomsmall' => 'zoom-arvo (z) ei voi olla alle nollan',
+	'slippymap_zoom18' => 'Zoomaus (z) -arvo ei voi olla suurempi kuin 17. Huomaa, että tämä mediawikiliitännäinen hakee OpenStreetMap ”Osmarender” -tason, joka ei mene zoomaustason 17 yli. Mapnik-taso, joka on käytettävissä openstreetmap.org:ssa, menee zoomaustasolle 28.',
 	'slippymap_zoombig' => 'zoom-arvo (z) ei voi olla yli 17.',
 	'slippymap_invalidlayer' => 'Virheellinen ”layer”-arvo ”%1”',
+	'slippymap_maperror' => 'Karttavirhe:',
+	'slippymap_osmtext' => 'Katso tämä kartta osoitteessa OpenStreetMap.org.',
+	'slippymap_code' => 'Wikikoodi tälle karttanäkymälle:',
+	'slippymap_button_code' => 'Hae wikikoodi',
+	'slippymap_resetview' => 'Palauta näkymä',
 );
 
 /** French (Français)
@@ -416,6 +424,13 @@ $messages['lb'] = array(
 	'slippymap_code' => 'Wikicode fir dës Kaart ze kucken:',
 	'slippymap_button_code' => 'Wikicode weisen',
 	'slippymap_resetview' => 'Zrécksetzen',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'slippymap_maperror' => 'Ahcuallōtl āmatohcopa',
 );
 
 /** Dutch (Nederlands)
@@ -656,13 +671,28 @@ $messages['vi'] = array(
 	'slippymap_resetview' => 'Mặc định lại bản đồ',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'slippymap_widthbig' => '宽度值（w）不能大于1000',
+	'slippymap_widthsmall' => '宽度值（w）不能小于100',
+	'slippymap_heightbig' => '高度值（h）不能大于1000',
+	'slippymap_heightsmall' => '高度值（h）不能小于100',
+	'slippymap_latbig' => '纬度值（lat）不能大于90',
+	'slippymap_latsmall' => '纬度值（lat）不能小于-90',
+	'slippymap_lonbig' => '经度值（lon）不能大于180',
+	'slippymap_lonsmall' => '经度值（lon）不能小于-180',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'slippymap_widthbig' => '寬度值(w)不能多於1000',
-	'slippymap_widthsmall' => '寬度值(w)不能少於100',
-	'slippymap_heightbig' => '高度值(h)不能多於1000',
+	'slippymap_widthbig' => '寬度值(w)不能大於1000',
+	'slippymap_widthsmall' => '寬度值(w)不能小於100',
+	'slippymap_heightbig' => '高度值(h)不能大於1000',
 	'slippymap_heightsmall' => '高度值(h)不能少於100',
 	'slippymap_latbig' => '緯度值(lat)不能大於90',
 	'slippymap_latsmall' => '緯度值(lat)不能小於-90',

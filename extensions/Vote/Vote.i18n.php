@@ -334,11 +334,14 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'vote' => 'Votar',
 	'vote-submit' => 'Votar',
+	'vote-results-choice' => 'Selección',
+	'vote-login-link' => 'entrar',
 );
 
 /** Extremaduran (Estremeñu)
@@ -371,12 +374,14 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Mobe
  * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'vote' => 'Äänestä',
 	'vote-desc' => 'Tarjoaa yksinkertaisen äänestysmahdollisuuden.',
+	'vote-header' => "Voit äänestää '''Maailman ylivaltiasta''' täällä!",
 	'vote-current' => "Nykyinen äänesi on '''$1'''.",
 	'vote-legend' => 'Äänestä tai muuta ääntäsi',
 	'vote-caption' => 'Valintasi:',
@@ -606,6 +611,15 @@ $messages['it'] = array(
 	'vote' => 'Vota',
 	'vote-current' => "Il tuo voto corrente è per '''$1'''.",
 	'vote-caption' => 'La tua selezione:',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'vote-results-choice' => '選択',
+	'vote-results-count' => 'カウント',
+	'vote-login-link' => 'ログイン',
 );
 
 /** Javanese (Basa Jawa)

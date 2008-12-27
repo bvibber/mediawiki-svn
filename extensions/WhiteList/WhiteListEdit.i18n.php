@@ -598,6 +598,7 @@ $2',
 
 /** Spanish (Español)
  * @author Antur
+ * @author Imre
  * @author Piolinfax
  * @author Sanbec
  */
@@ -614,11 +615,13 @@ $messages['es'] = array(
 	'whitelisttablemodby' => 'Última modificación realizada por',
 	'whitelisttablemodon' => 'Última modificación realizada el',
 	'whitelisttableedit' => 'Editar',
+	'whitelisttableview' => 'ver',
 	'whitelisttablenewdate' => 'Nueva fecha:',
 	'whitelisttableremove' => 'Borrar',
 	'whitelistnewtabledate' => 'Fecha de caducidad:',
 	'whitelistnewtableedit' => 'Establecer en modo edición',
 	'whitelistnewtableview' => 'Establecer en modo visualización',
+	'whitelistnewtableprocess' => 'Proceso',
 	'whitelistnewtablereview' => 'Revisión',
 	'whitelistnocalendar' => "<font color='red' size=3>Aparentemente la [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], requisito necesario para esta extensión, no ha sido instalada correctamente!</font>",
 	'whitelistbadtitle' => 'Título erróneo -',
@@ -631,6 +634,10 @@ $2',
 	'whitelistrequestconf' => 'La solicitud de nuevas páginas fue enviada a $1',
 	'whitelistnever' => 'nunca',
 	'whitelistnummatches' => ' - {{PLURAL:$1|una coincidencia|$1 coincidencias}}.',
+	'group-restricted' => 'Usuarios limitados',
+	'group-restricted-member' => 'Usuario limitado',
+	'group-manager' => 'Administradores',
+	'group-manager-member' => 'Administrador',
 );
 
 /** Finnish (Suomi)
@@ -1027,6 +1034,10 @@ $messages['ja'] = array(
 	'whitelisttabletype' => 'アクセスタイプ',
 	'whitelisttableedit' => '編集',
 	'whitelisttableremove' => '削除',
+	'whitelistnewtableprocess' => 'プロセス',
+	'whitelistnewtablereview' => 'レビュー',
+	'group-manager' => 'マネージャー',
+	'group-manager-member' => 'マネージャー',
 );
 
 /** Javanese (Basa Jawa)
@@ -1213,9 +1224,13 @@ $messages['lb'] = array(
 	'whitelisttableedit' => 'Änneren',
 	'whitelisttableview' => 'Weisen',
 	'whitelisttablenewdate' => 'Neien Datum:',
+	'whitelisttablechangedate' => 'Oflafdatum änneren',
 	'whitelisttablesetedit' => 'Ännerungsparameter',
+	'whitelisttablesetview' => 'Weisen aschalten',
 	'whitelisttableremove' => 'Zréckzéien',
+	'whitelistnewtabledate' => 'Oflafdatum:',
 	'whitelistnewtableedit' => 'Ännerungsparameter',
+	'whitelistnewtableview' => 'Weisen aschalten',
 	'whitelistnewtableprocess' => 'Verschaffen',
 	'whitelistnewtablereview' => 'Nokucken',
 	'whitelistpagelist' => 'Säite vu(n) {{SITENAME}} fir $1',
@@ -1736,6 +1751,28 @@ $2',
 	'whitelistnummatches' => ' - {{PLURAL:$1|um resultado|$1 resultados}}',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Heldergeovane
+ */
+$messages['pt-br'] = array(
+	'whitelist-desc' => 'Edita as permissões de acesso de usuários restritos',
+	'mywhitelistpages' => 'Minhas páginas',
+	'whitelistfor' => '<center>Informação atual para <b>$1</b></center>',
+	'whitelisttablemodify' => 'Modificar',
+	'whitelisttablemodifyall' => 'Todos',
+	'whitelisttablemodifynone' => 'Nenhum',
+	'whitelisttablepage' => 'Página wiki',
+	'whitelisttabletype' => 'Tipo de acesso',
+	'whitelisttableexpires' => 'Expira em',
+	'whitelisttablemodby' => 'Última modificação por',
+	'whitelisttablemodon' => 'Última modificação em',
+	'whitelisttableedit' => 'Editar',
+	'whitelisttableview' => 'Ver',
+	'whitelisttablenewdate' => 'Nova data:',
+	'whitelisttablechangedate' => 'Alterar data em que expira',
+	'whitelisttableremove' => 'Remover',
+);
+
 /** Tarifit (Tarifit)
  * @author Jose77
  */
@@ -1765,6 +1802,8 @@ $messages['ro'] = array(
 
 $2',
 	'whitelistrequestconf' => 'Cererea pentru pagini noi a fost trimisă la $1',
+	'whitelistnonrestricted' => "Utilizatorul '''$1''' nu este un utilizator restricţionat.
+Această pagină este aplicabilă doar utilizatorilor restricţionaţi",
 	'whitelistnever' => 'niciodată',
 	'group-restricted' => 'Utilizatori restricţionaţi',
 	'group-restricted-member' => 'Utilizator restricţionat',
@@ -1789,6 +1828,7 @@ $messages['ru'] = array(
 	'whitelisttablepage' => 'Страница вики',
 	'whitelisttabletype' => 'Тип доступа',
 	'whitelisttableexpires' => 'Истекает',
+	'whitelisttablemodby' => 'Последний раз изменено',
 	'whitelisttableedit' => 'Править',
 	'whitelisttableview' => 'Просмотр',
 	'whitelisttablenewdate' => 'Новая дата:',
@@ -1799,18 +1839,29 @@ $messages['ru'] = array(
 	'whitelistnewtabledate' => 'Дата окончания:',
 	'whitelistnewtableedit' => 'Установить для редактирования',
 	'whitelistnewtableview' => 'Установить для просмотра',
+	'whitelistnowhitelistedusers' => 'В группе «{{MediaWiki:Group-restricted}}» нет участников.
+Вы должны [[Special:UserRights|добавить пользователей в группу]], прежде чем вы сможете добавить страницы участников в белый список.',
 	'whitelistnewtableprocess' => 'Процесс',
 	'whitelistnewtablereview' => 'Обзор',
 	'whitelistselectrestricted' => '== Выберите имя участника ==',
 	'whitelistpagelist' => 'Страницы {{SITENAME}} для $1',
 	'whitelistbadtitle' => 'Неправильный заголовок -',
 	'whitelistoverview' => '== Обзор изменений для $1 ==',
+	'whitelistoverviewcd' => "* Изменение даты на '''$1''' для [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Установить доступ '''$1''' для [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Снять права [[:$1|$1]]',
-	'whitelistrequest' => 'Запрос доступ к большему количеству страниц',
+	'whitelistoverviewna' => "* Добавление [[:$1|$1]] в белый список с доступом '''$2''' и датой истечения срока '''$3'''",
+	'whitelistrequest' => 'Запрос доступа к большему количеству страниц',
+	'whitelistrequestmsg' => '$1 запросил доступ к {{PLURAL:$3|следующей странице|следующим страницам}}:
+
+$2',
+	'whitelistrequestconf' => 'Запрос по новым страницам был отправлен $1',
 	'whitelistnever' => 'никогда',
-	'right-editwhitelist' => 'Изменить белый список для существующих пользователей',
+	'whitelistnummatches' => '  - {{PLURAL:$1|одно совпадение|$1 совпадения|$1 совпадений}}',
+	'right-editwhitelist' => 'Изменить белый список для существующих участников',
 	'right-restricttowhitelist' => 'Редактировать и просматривать только страницы из белого списка',
+	'action-editwhitelist' => 'изменить белый список для существующих участников',
+	'action-restricttowhitelist' => 'редактировать и просматривать страницы только из белого списка',
 	'group-manager' => 'Управляющие',
 	'group-manager-member' => 'управляющий',
 );

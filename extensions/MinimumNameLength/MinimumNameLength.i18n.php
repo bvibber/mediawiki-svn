@@ -94,9 +94,11 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  */
 $messages['fi'] = array(
 	'minnamelength-error' => 'Käyttäjänimesi on liian lyhyt. Minimipituus on $1.',
+	'minnamelength-desc' => 'Asettaa käyttäjätunnuksille vähimmäispituuden.',
 );
 
 /** French (Français)

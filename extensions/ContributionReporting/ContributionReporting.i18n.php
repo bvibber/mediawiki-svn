@@ -548,21 +548,26 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Remember the dot
  */
 $messages['es'] = array(
+	'contributionhistory' => 'Historial de contribuciones',
 	'contrib-hist-name' => 'Nombre',
+	'contrib-hist-date' => 'Tiempo y fecha',
 	'contrib-hist-amount' => 'Cantidad',
 	'contrib-hist-anonymous' => 'Anónimo',
 	'contributionstatistics' => 'Estadísticas de contribución',
 	'contribstats-desc' => 'Muestra estadísticas de contribuciones hechas a la Fundación Wikimedia',
 	'contribstats-day' => 'Día',
 	'contribstats-month' => 'Mes',
+	'contribstats-currency' => 'Moneda',
 	'contribstats-amount' => 'Cantidad (USD)',
 	'contribstats-contributions' => 'Contribuciones',
 	'contribstats-avg' => 'Promedio (USD)',
 	'contribstats-max' => 'Máximo (USD)',
 	'contribstats-value-exactly' => 'Exactamente $1',
+	'contribstats-value-from' => 'De $1 a $2',
 	'fundraiserstats-date' => 'Fecha',
 	'fundraiserstats-day' => 'Día $1 de $2',
 	'fundraiserstats-contributions' => 'Contribuciones',
@@ -1372,6 +1377,15 @@ $messages['ms'] = array(
 	'specialpages-group-contribution' => 'Sumbangan/Tabung',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'contribstats-day' => 'Tōnalli',
+	'contribstats-month' => 'Mētztli',
+	'fundraiserstats-day' => 'Tōnalli $1 īpan $2',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1673,14 +1687,22 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'contrib-hist-name' => 'Nume',
+	'contrib-hist-date' => 'Timp şi dată',
 	'contrib-hist-anonymous' => 'Anonim',
 	'contribstats-day' => 'Zi',
 	'contribstats-month' => 'Lună',
+	'contribstats-currency' => 'Valută',
 	'contribstats-contributions' => 'Contribuţii',
 	'contribstats-total' => 'Total (USD)',
+	'contribstats-percentage-ytd' => 'Procentaj (YTD)',
 	'contribstats-value-exactly' => 'Exact $1',
 	'contribstats-value-under' => 'Sub $1',
 	'contribstats-value-over' => 'Peste $1',
+	'fundraiserstats-date' => 'Dată',
+	'fundraiserstats-day' => 'Ziua $1 din $2',
+	'fundraiserstats-contributions' => 'Contribuţii',
+	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-tab-contributions' => 'Număr de contribuţii',
 );
 
 /** Russian (Русский)

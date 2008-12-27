@@ -53,6 +53,13 @@ $messages['eo'] = array(
 	'htmlets-desc' => 'Permesas al vi enigi HTML-kodpecojn de dosieroj uzante la etikedon <tt><nowiki><htmlet></nowiki></tt>',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'htmlets-desc' => '<tt><nowiki><htmlet></nowiki></tt> etiketa erabiliz fitxategietako HTML zatiak lerroen artean sartzea baimentzen du',
+);
+
 /** French (Français)
  * @author Grondin
  */

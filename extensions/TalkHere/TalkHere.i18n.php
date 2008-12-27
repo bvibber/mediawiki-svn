@@ -197,11 +197,13 @@ La operaciistoj de la retejo ne estas respondeca pri la enhavo de tiaj komentoj.
 );
 
 /** Spanish (Español)
+ * @author Imre
  * @author Lin linao
  */
 $messages['es'] = array(
 	'talkhere-talkpage' => 'página de discusión',
 	'talkhere-addcomment' => 'agregar comentario',
+	'talkhere-collapse' => 'ocultar editor',
 );
 
 /** Extremaduran (Estremeñu)
@@ -345,6 +347,14 @@ Operator situs ini tidak bertanggung jawab atas isi komentar-komentar tersebut.'
 	'talkhere-collapse' => 'sembunyikan editor',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'talkhere-talkpage' => '会話ページ',
+	'talkhere-addcomment' => 'コメントの追加',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */
@@ -473,6 +483,15 @@ $messages['mr'] = array(
 	'talkhere-beforeinput' => 'आपण आपल्या प्रतिक्रिया खाली नोंदवू शकता',
 	'talkhere-loading' => 'संपादनस्थळ चढवले जात आहे',
 	'talkhere-collapse' => 'संपादनस्थळ लपवा',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'talkhere-talkpage' => 'tēixnāmiquiliztli zāzanilli',
+	'talkhere-loading' => 'motemocah tlahcuilōni',
+	'talkhere-collapse' => 'tictlātīz tlahcuilōni',
 );
 
 /** Low German (Plattdüütsch)
@@ -607,6 +626,7 @@ Os responsáveis por este site não podem ser responsabilizados pelo conteúdo d
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'talkhere-notalk' => "''(încă nici un comentariu)''",
 	'talkhere-addcomment' => 'adaugă comentariu',
 );
 

@@ -222,6 +222,13 @@ Vole tu modificar le pagina existente?',
 	'createpage-badtitle' => '"$1" non pote esser usate qua titulo de pagina',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'createpage_submitbutton' => '送信',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -258,8 +265,16 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'createpage' => 'En neu Sigg aanlääje',
 	'createpage-desc' => 'Brengk en [[Special:CreatePage|Söndersigg]] för Sigge aanzelääje en et Wiki.',
 	'createpage_submitbutton' => 'Loß Jonn!',
+	'createpage_instructions' => 'Jif dä Tittel en, för di Sigg, di De aanlääje wells:',
+	'createpage_entertitle' => 'Jif ene Tittel för di Sigg en.',
+	'createpage_titleexists' => 'En Sigg met däm Tittel [[$1]] jit et ald.
+Wells De di Sigg ändere?',
+	'createpage_tryagain' => 'Nä — Esch well en neu Sigg aanlääje met enem ander Tittel.',
+	'createpage_editexisting' => 'Jo — Esch well op dä Sigg jet beidraare, di et ald jitt.',
+	'createpage-badtitle' => '„$1“ es als ene Tittel för en Sigg nit ze bruche',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -323,6 +338,13 @@ La volètz modificar ?",
 	'createpage_tryagain' => 'Non, vòli crear una pagina novèla amb un títol diferent.',
 	'createpage_editexisting' => 'Òc, vòli contribuir dins aquesta pagina existenta.',
 	'createpage-badtitle' => '« $1 » pòt pas èsser utilizat coma nom de pagina',
+);
+
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'createpage_submitbutton' => 'پیجو',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
