@@ -37,6 +37,7 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 	'deletebatch-select-script' => 'delete page script',
 	'deletebatch-select-yourself' => 'you',
 	'deletebatch-no-page' => 'Please specify at least one page to delete OR choose a file containing page list.',
+	'right-deletebatch' => 'Batch delete pages',
 );
 
 /** Message documentation (Message documentation)
