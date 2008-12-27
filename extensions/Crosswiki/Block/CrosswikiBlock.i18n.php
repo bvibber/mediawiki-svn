@@ -36,7 +36,7 @@ Return to:
 * [[$2]]",
 
 	# Errors and success message
-	'crosswikiblock-nousername'     => 'No username was inputed',
+	'crosswikiblock-nousername'     => 'No username was given',
 	'crosswikiblock-local'          => 'Local blocks are not supported via this interface. Use [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound'     => 'Database $1 does not exist',
 	'crosswikiblock-noname'         => '"$1" is not a valid username.',
