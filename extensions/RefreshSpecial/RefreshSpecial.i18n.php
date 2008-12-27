@@ -2,6 +2,7 @@
 /**
  * Internationalisation file for the RefreshSpecial extension.
  *
+ * @file
  * @ingroup Extensions
  */
 
@@ -10,7 +11,7 @@ $messages = array();
 /** English
  * @author Bartek Łapiński
  */
-$messages['en'] = array (
+$messages['en'] = array(
 	'refreshspecial' => 'Refresh special pages',
 	'refreshspecial-desc' => 'Allows [[Special:RefreshSpecial|manual special page refresh]] of special pages',
 	'refreshspecial-title' => 'Refresh special pages',
@@ -32,18 +33,6 @@ $messages['en'] = array (
 	'refreshspecial-reconnected' => 'Reconnected.',
 	'refreshspecial-reconnecting' => 'Connection failed, reconnecting in 10 seconds...',
 	'refreshspecial-total-display' => '<br />Refreshed $1 pages totaling $2 rows in time $3 (complete time of the script run is $4)',
-);
-
-/** Message documentation (Message documentation)
- * @author Jon Harald Søby
- * @author Purodha
- */
-$messages['qqq'] = array(
-	'refreshspecial' => '{{Identical|Refresh special pages}}',
-	'refreshspecial-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
-	'refreshspecial-title' => '{{Identical|Refresh special pages}}',
-	'refreshspecial-refreshing' => '{{Identical|Refreshing special pages}}',
-	'refreshspecial-success-subtitle' => '{{Identical|Refreshing special pages}}',
 );
 
 /** Arabic (العربية)

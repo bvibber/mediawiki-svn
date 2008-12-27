@@ -2,10 +2,13 @@
 /**
  * Aliases for special pages
  *
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();
 
+/** English */
 $aliases['en'] = array(
 	'RefreshSpecial' => array( 'RefreshSpecial' ),
 );
@@ -31,7 +34,7 @@ $aliases['bs'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'RefreshSpecial' => array( 'Toimintosivun päivitys' ),
+	'RefreshSpecial' => array( 'Toimintosivujen päivitys' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -63,4 +66,3 @@ $aliases['nl'] = array(
 $aliases['no'] = array(
 	'RefreshSpecial' => array( 'Oppdater spesialsider' ),
 );
-

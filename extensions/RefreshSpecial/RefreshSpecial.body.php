@@ -13,9 +13,8 @@ class RefreshSpecial extends SpecialPage {
 	/**
 	 * Constructor
 	 */
-	function __construct() {
-		parent::__construct( 'RefreshSpecial', 'refreshspecial', true, 'execute', false );
-		wfLoadExtensionMessages('RefreshSpecial');
+	public function __construct() {
+		parent::__construct( 'RefreshSpecial'/*class*/, 'refreshspecial'/*restriction*/ );
 	}
 
 	/**
@@ -23,17 +22,19 @@ class RefreshSpecial extends SpecialPage {
 	 *
 	 * @param $par Mixed: parameter passed to the page or null
 	 */
-	function execute( $par ) {
+	public function execute( $par ) {
 		global $wgOut, $wgUser, $wgRequest;
+		wfLoadExtensionMessages('RefreshSpecial');
+
 		$wgOut->setPageTitle( wfMsg('refreshspecial-title') );
 		$cSF = new RefreshSpecialForm();
 
-		$action = $wgRequest->getVal('action');
-		if ('success' == $action) {
+		$action = $wgRequest->getVal( 'action' );
+		if( 'success' == $action ) {
 			/* do something */
-		} else if ('failure' == $action) {
+		} else if( 'failure' == $action ) {
 			$cSF->showForm( wfMsg('refreshspecial-fail') );
-		} else if ( $wgRequest->wasPosted() && 'submit' == $action &&
+		} else if( $wgRequest->wasPosted() && 'submit' == $action &&
 			$wgUser->matchEditToken( $wgRequest->getVal('wpEditToken') ) ) {
 			$cSF->doSubmit();
 		} else {
@@ -50,13 +51,6 @@ class RefreshSpecialForm {
 	var $mMode, $mLink;
 
 	/**
-	 * Constructor
-	 */
-	function RefreshSpecialForm() {
-		global $wgRequest;
-	}
-
-	/**
 	 * Show the actual form
 	 *
 	 * @param $err string Error message if there was an error, otherwise null
@@ -65,19 +59,19 @@ class RefreshSpecialForm {
 		global $wgOut, $wgUser, $wgRequest, $wgQueryPages;
 	
 		$token = htmlspecialchars( $wgUser->editToken() );
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'RefreshSpecial' );
+		$titleObj = SpecialPage::getTitleFor( 'RefreshSpecial' );
 		$action = $titleObj->escapeLocalURL( "action=submit" );
 
-		if ( "" != $err ) {
+		if ( '' != $err ) {
 			$wgOut->setSubtitle( wfMsgHtml( 'formerror' ) );
 			$wgOut->addHTML( "<p class='error'>{$err}</p>\n" );
 		}
 
-		$wgOut->addWikiText( wfMsg('refreshspecial-help') );
+		$wgOut->addWikiMsg( 'refreshspecial-help' );
 
-		( 'submit' == $wgRequest->getVal( 'action' )) ? $scLink = htmlspecialchars ($this->mLink) : $scLink = '';
+		( 'submit' == $wgRequest->getVal( 'action' ) ) ? $scLink = htmlspecialchars($this->mLink) : $scLink = '';
 
-			$wgOut->addHTML("<form name=\"RefreshSpecial\" method=\"post\" action=\"{$action}\"><ul>");
+		$wgOut->addHTML("<form name=\"RefreshSpecial\" method=\"post\" action=\"{$action}\"><ul>");
 
 		/**
 		 * List pages right here
@@ -91,7 +85,7 @@ class RefreshSpecialForm {
 
 				$specialObj = SpecialPage::getPage( $special );
 				if ( !$specialObj ) {
-			  		$wgOut->addWikiText( wfMsg('refreshspecial-no-page') . " $special\n");
+			  		$wgOut->addWikiText( wfMsg('refreshspecial-no-page') . " $special\n" );
 					exit;
 				}
 				$file = $specialObj->getFile();
@@ -116,10 +110,10 @@ class RefreshSpecialForm {
 				$wgOut->addHTML("</label>
 				  </li>
 				  <script type=\"text/javascript\">
-					function refreshSpecialCheck (form) {
-						pattern = document.getElementById ('refreshSpecialCheckAll').checked;
-						for (i=0; i<form.elements.length; i++) {
-							if (form.elements[i].type == 'checkbox' && form.elements[i].name != 'check_all') {
+					function refreshSpecialCheck( form ) {
+						pattern = document.getElementById('refreshSpecialCheckAll').checked;
+						for( i = 0; i < form.elements.length; i++ ) {
+							if( form.elements[i].type == 'checkbox' && form.elements[i].name != 'check_all' ) {
 								form.elements[i].checked = pattern;
 							}
 						}
@@ -152,7 +146,7 @@ class RefreshSpecialForm {
 	 * @param $message mixed Message displayed to the user containing the elapsed time
 	 * @return true
 	 */
-	function format_time_message($time, &$message) {
+	function format_time_message( $time, &$message ) {
 		if ( $time['hours'] ) {
 			$message .= $time['hours'] . 'h ';
 		}
@@ -170,7 +164,7 @@ class RefreshSpecialForm {
 	function refreshSpecial() {
 		global $wgRequest, $wgQueryPages, $wgOut;
 		$dbw = wfGetDB( DB_MASTER );
-		$to_refresh = $wgRequest->getArray('wpSpecial');
+		$to_refresh = $wgRequest->getArray( 'wpSpecial' );
 		$total = array (
 				'pages' => 0,
 				'rows' => 0,
@@ -180,13 +174,13 @@ class RefreshSpecialForm {
 
 		foreach ( $wgQueryPages as $page ) {
 			@list( $class, $special, $limit ) = $page;
-			if ( !in_array($special, $to_refresh) ) {
+			if ( !in_array( $special, $to_refresh ) ) {
 				continue;
 			}
 
 			$specialObj = SpecialPage::getPage( $special );
 			if ( !$specialObj ) {
-			 		$wgOut->addWikiText( wfMsg('refreshspecial-no-page').": $special\n");
+			 	$wgOut->addWikiText( wfMsg('refreshspecial-no-page').": $special\n");
 				exit;
 			}
 			$file = $specialObj->getFile();
@@ -195,8 +189,8 @@ class RefreshSpecialForm {
 			}
 			$queryPage = new $class;
 
-			$message = "";
-			if( !(isset($options['only'])) or ($options['only'] == $queryPage->getName()) ) {
+			$message = '';
+			if( !( isset( $options['only'] ) ) or ( $options['only'] == $queryPage->getName() ) ) {
 				$wgOut->addHTML("<b>$special</b>: ");
 
 					  if ( $queryPage->isExpensive() ) {
@@ -206,7 +200,7 @@ class RefreshSpecialForm {
 								$t2 = explode( ' ', microtime() );
 
 			  				  if ( $num === false ) {
-									$wgOut->addHTML( wfMsg('refreshspecial-db-error') . "<br />");
+									$wgOut->addHTML( wfMsg('refreshspecial-db-error') . "<br />" );
 								} else {
 			  						$message = "got $num rows in ";
 						 			$elapsed = ($t2[0] - $t1[0]) + ($t2[1] - $t1[1]);
@@ -222,26 +216,26 @@ class RefreshSpecialForm {
 								if ( !wfGetLB()->pingAll() ) {
 				  						$wgOut->addHTML("<br />");
 										do {
-												$wgOut->addHTML( wfMsg('refreshspecial-reconnecting') ."<br />");
+												$wgOut->addHTML( wfMsg('refreshspecial-reconnecting') ."<br />" );
 												sleep(REFRESHSPECIAL_RECONNECTION_SLEEP);
 											} while ( !wfGetLB()->pingAll() );
-				  						$wgOut->addHTML( wfMsg('refreshspecial-reconnected') . "<br /><br />");
+				  						$wgOut->addHTML( wfMsg('refreshspecial-reconnected') . "<br /><br />" );
 								} else {
 									# Commit the results
-									$dbw->immediateCommit();
+									$dbw->commit();
 								}
 
 								# Wait for the slave to catch up
-								$slaveDB = wfGetDB( DB_SLAVE, array('QueryPage::recache', 'vslow' ) );
+								$slaveDB = wfGetDB( DB_SLAVE, array( 'QueryPage::recache', 'vslow' ) );
 								while( $slaveDB->getLag() > REFRESHSPECIAL_SLAVE_LAG_LIMIT ) {
-				  						$wgOut->addHTML(wfMsg('refreshspecial-slave-lagged') ."<br />");
+				  						$wgOut->addHTML( wfMsg('refreshspecial-slave-lagged') ."<br />" );
 							 			sleep(REFRESHSPECIAL_SLAVE_LAG_SLEEP);
 								}
 					$t2 = explode( ' ', microtime() );
 					$elapsed_total = ($t2[0] - $t1[0]) + ($t2[1] - $t1[1]);
 					$total['total_elapsed'] += $elapsed + $elapsed_total;
 				} else {
-					$wgOut->addHTML(wfMsg('refreshspecial-skipped')."<br />");
+					$wgOut->addHTML( wfMsg('refreshspecial-skipped')."<br />" );
 				}
 			}
 		}
@@ -269,17 +263,17 @@ class RefreshSpecialForm {
 	function doSubmit() {
 		global $wgOut, $wgUser, $wgRequest;
 		/* guard against an empty array */
-		$array = $wgRequest->getArray('wpSpecial');
+		$array = $wgRequest->getArray( 'wpSpecial' );
 		if ( !is_array($array) || empty($array) || is_null($array) ) {
 			$this->showForm( wfMsg('refreshspecial-none-selected') );
 			return;
 		}
 
-		$wgOut->setSubTitle( wfMsg('refreshspecial-choice', wfMsg('refreshspecial-refreshing') ) );
+		$wgOut->setSubTitle( wfMsg( 'refreshspecial-choice', wfMsg('refreshspecial-refreshing') ) );
 		$this->refreshSpecial();
 		$sk = $wgUser->getSkin();
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'RefreshSpecial' );
-		$link_back = $sk->makeKnownLinkObj($titleObj, wfMsg('refreshspecial-here') );
+		$titleObj = SpecialPage::getTitleFor( 'RefreshSpecial' );
+		$link_back = $sk->makeKnownLinkObj( $titleObj, wfMsg('refreshspecial-here') );
 		$wgOut->addHTML("<br />".wfMsg('refreshspecial-link-back')." $link_back.");
 	}
 }

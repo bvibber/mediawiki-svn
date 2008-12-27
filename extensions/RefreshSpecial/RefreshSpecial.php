@@ -2,27 +2,32 @@
 /**
  * A special page providing means to manually refresh special pages
  *
+ * @file
  * @ingroup Extensions
- * @author Bartek Łapiński <bartek@wikia.com>
- * @version 1.0
+ * @author Bartek Łapiński <bartek@wikia-inc.com>
+ * @version 1.1
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  * @link http://www.mediawiki.org/wiki/Extension:RefreshSpecial Documentation
  */
 
-if(!defined('MEDIAWIKI'))
+if( !defined('MEDIAWIKI') )
 	die();
 
-$wgAvailableRights[] = 'refreshspecial';
-$wgGroupPermissions['staff']['refreshspecial'] = true;
-
+// Extension credits that will be shown on Special:Version
 $wgExtensionCredits['specialpage'][] = array(
-	'name'           => 'Refresh Special',
-	'author'         => 'Bartek Łapiński',
-	'version'        => '1.1',
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:RefreshSpecial',
-	'description'    => 'Allows manual special page refresh of special pages',
+	'name' => 'Refresh Special',
+	'author' => 'Bartek Łapiński',
+	'version' => '1.1',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:RefreshSpecial',
+	'description' => 'Allows manual special page refresh of special pages',
 	'descriptionmsg' => 'refreshspecial-desc',
 );
 
+// New user right, required to use Special:RefreshSpecial
+$wgAvailableRights[] = 'refreshspecial';
+$wgGroupPermissions['staff']['refreshspecial'] = true;
+
+// Set up the new special page
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['RefreshSpecial'] = $dir . 'RefreshSpecial.i18n.php';
 $wgExtensionAliasesFiles['RefreshSpecial'] = $dir . 'RefreshSpecial.alias.php';
