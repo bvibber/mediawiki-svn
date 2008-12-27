@@ -43,3 +43,4 @@ $wgExtensionMessagesFiles['Asksql'] = $dir . 'Asksql.i18n.php';
 $wgExtensionAliasesFiles['Asksql'] = $dir . 'Asksql.alias.php';
 $wgAutoloadClasses['SpecialAsksql'] = $dir . 'Asksql_body.php';
 $wgSpecialPages['Asksql'] = 'SpecialAsksql';
+$wgSpecialPageGroups['Asksql'] = 'wiki';
