@@ -177,16 +177,19 @@ class CodeRepository {
 	 *                   'cached' to *only* fetch if cached
 	 */
 	public function getDiff( $rev, $useCache = '' ) {
-		global $wgMemc;
+		global $wgMemc, $wgDefaultExternalStore;
+		wfProfileIn( __METHOD__ );
 
 		$rev1 = $rev - 1;
 		$rev2 = $rev;
 		
 		$revision = $this->getRevision( $rev );
 		if( $revision == null || !$revision->isDiffable() ) {
+			wfProfileOut( __METHOD__ );
 			return false;
 		}
 
+		# Try memcached...
 		$key = wfMemcKey( 'svn', md5( $this->mPath ), 'diff', $rev1, $rev2 );
 		if( $useCache === 'skipcache' ) {
 			$data = NULL;
@@ -194,12 +197,65 @@ class CodeRepository {
 			$data = $wgMemc->get( $key );
 		}
 
+		# Try the database...
+		if( !$data ) {
+			$dbr = wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow( 'code_rev', 
+				array( 'cr_diff', 'cr_flags' ),
+				array( 'cr_repo_id' => $this->mId, 'cr_id' => $rev, 'cr_diff IS NOT NULL' ),
+				__METHOD__
+			);
+			if( $row ) {
+				$flags = explode( ',', $row->cr_flags );
+				$data = $row->cr_diff;
+				# Use external methods for external objects, text in table is URL-only then
+				if( in_array( 'external', $flags ) ) {
+					$url = $data;
+					@list(/* $proto */,$path) = explode('://',$url,2);
+					if( $path == "" ) {
+						$data = false; // something is wrong...
+					} else {
+						$data = ExternalStore::fetchFromURL($url);
+					}
+				}
+				// If the text was fetched without an error, convert it
+				if( $data !== false && in_array( 'gzip', $flags ) ) {
+					# Deal with optional compression of archived pages.
+					# This can be done periodically via maintenance/compressOld.php, and
+					# as pages are saved if $wgCompressRevisions is set.
+					$data = gzinflate( $data );
+				}
+			}
+		}
+
+		# Generate the diff as needed...
 		if( !$data && $useCache !== 'cached' ) {
 			$svn = SubversionAdaptor::newFromRepo( $this->mPath );
 			$data = $svn->getDiff( '', $rev1, $rev2 );
+			// Store to cache
 			$wgMemc->set( $key, $data, 3600*24*3 );
+			// Permanent DB storage
+			$flags = Revision::compressRevisionText( $data );
+			if( ($storage = $wgDefaultExternalStore) ) {
+				if( is_array($storage) ) {
+					# Distribute storage across multiple clusters
+					$store = $storage[mt_rand(0, count( $storage ) - 1)];
+				} else {
+					$store = $storage;
+				}
+				# Store and get the URL
+				$data = ExternalStore::insert( $store, $data );
+				if( $flags ) $flags .= ',';
+				$flags .= 'external';
+			}
+			$dbw = wfGetDB( DB_MASTER );
+			$dbw->update( 'code_rev', 
+				array( 'cr_diff' => $data, 'cr_flags' => $flags ),
+				array( 'cr_repo_id' => $this->mId, 'cr_id' => $rev ),
+				__METHOD__
+			);
 		}
-
+		wfProfileOut( __METHOD__ );
 		return $data;
 	}
 
