@@ -46,6 +46,14 @@ class ApiCodeUpdate extends ApiBase {
 				'message' => $codeRev->getMessage()
 			);
 		}
+		// Cache the diffs if there are a only a few.
+		// Mainly for WMF post-commit ping hook...
+		if( count($result) <= 2 ) {
+			foreach( $result as $revData ) {
+				$rev = $repo->getRevision( $revData['id'] );
+				$diff = $repo->getDiff( $revData['id'] ); // trigger caching
+			}
+		}
 		$this->getResult()->setIndexedTagName($result, 'rev');
 		$this->getResult()->addValue(null, $this->getModuleName(), $result);
 	}
