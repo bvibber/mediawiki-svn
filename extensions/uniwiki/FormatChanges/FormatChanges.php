@@ -73,9 +73,9 @@ class UniwikiChangesList extends ChangesList {
 			$timestamp = $wgLang->time( $rc->mAttribs['rc_timestamp'], true, true );
 
 			if ( $rc_type == RC_NEW ) {
-				$line = wfMsgHtml( 'formatchanges-createdby', $page_link, $user_link, $timestamp );
+				$line .= wfMsgHtml( 'formatchanges-createdby', $page_link, $user_link, $timestamp );
 			} else {
-				$line = wfMsgHtml( 'formatchanges-editedby', $page_link, $user_link, $timestamp );
+				$line .= wfMsgHtml( 'formatchanges-editedby', $page_link, $user_link, $timestamp );
 			}
 			$line .= "</li>";
 		}
