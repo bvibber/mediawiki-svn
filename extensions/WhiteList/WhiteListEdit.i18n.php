@@ -67,7 +67,6 @@ You have to [[Special:UserRights|add users to the group]] before you can add pag
 	'whitelistselectrestricted' => '== Select restricted user name ==',
 	'whitelistpagelist' => "{{SITENAME}} pages for $1",
 	'whitelistnocalendar' => "<font color='red' size=3>It looks like [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], a prerequisite for this extension, was not installed properly!</font>",
-	'whitelistbadtitle' => 'Bad title - ',
 	'whitelistoverview' => "== Overview of changes for $1 ==",
 	'whitelistoverviewcd' => "* Changing date to '''$1''' for [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Setting access to '''$1''' for [[:$2|$2]]",
