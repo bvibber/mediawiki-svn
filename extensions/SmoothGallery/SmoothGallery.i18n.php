@@ -20,9 +20,9 @@ Allows most options of SmoothGallery',
 	'smoothgallery-not-found'           => 'No images were added into the gallery.
 Please add at least one image.',
 	'smoothgallery-no-images'           => 'No images were found in this gallery.
-Make sure all images requested exist.
+Make sure {{PLURAL:$2|the image|all images}} requested exist.
 The following images were not found: $1',
-	'smoothgallery-invalid-images'      => 'The following requested images were of an invalid type: $1',
+	'smoothgallery-invalid-images'      => 'The following requested {{PLURAL:$2|image was|images were}} of an invalid type: $1',
 	'smoothgallery-unexpected-error'    => 'There was an unexpected error.
 Please file a bug report.',
 	'smoothgallery-javascript-disabled' => 'Javascript is required to view this gallery properly.',
