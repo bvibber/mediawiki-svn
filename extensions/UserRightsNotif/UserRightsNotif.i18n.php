@@ -765,6 +765,14 @@ $2',
 	'userrightsnotif-desc' => 'Wyślij informacyjo e-brifym ku użytkowńikům uo půmjyńańu uprowńyń',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'userrightsnotifysubject' => '$1 లో సమూహ సభ్యత్వ మార్పు',
+	'userrightsnotif-desc' => 'హక్కుల మార్పుల గురించి వాడుకర్లకు ఈ-మెయిలు గమనింపులు పంపిస్తుంది',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */

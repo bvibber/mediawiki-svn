@@ -80,6 +80,13 @@ $messages['el'] = array(
 	'signaturelogentry' => 'υπέγραψε το έγγραφο $1',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'signaturelogpage' => 'Protokolo pri subskriboj',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */

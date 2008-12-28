@@ -266,13 +266,14 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Sanbec
  * @author Titoxd
  */
 $messages['es'] = array(
 	'patrol' => 'Revisar ediciones',
 	'patrol-endorse' => 'Aprovar',
 	'patrol-revert' => 'Revertir',
-	'patrol-revert-reason' => 'Razón:',
+	'patrol-revert-reason' => 'Motivo:',
 	'patrol-skip' => 'Omitir',
 	'patrol-reverting' => 'Revirtiendo: $1',
 	'patrol-nonefound' => 'No hay ediciones disponibles para revisar.',
@@ -1191,6 +1192,9 @@ $messages['te'] = array(
 	'patrol-revert-reason' => 'కారణం:',
 	'patrol-skip' => 'వదిలివేయి',
 	'patrol-resume' => 'కొనసాగించడానికి ఇక్కడ నొక్కండి.',
+	'group-patroller' => 'పర్యవేక్షకులు',
+	'group-patroller-member' => 'పర్యవేక్షకుడు',
+	'grouppage-patroller' => '{{ns:project}}:పర్యవేక్షకుడు',
 	'right-patroller' => 'పేజీలను పర్యవేక్షించగలగడం',
 );
 

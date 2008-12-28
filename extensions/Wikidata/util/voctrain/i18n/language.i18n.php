@@ -59,6 +59,7 @@ $fallback=array(
 	'sk'  => 'en',
 	'sv'  => 'en',
 	'te'  => 'en',
+	'tet'  => 'en',
 	'tl'  => 'en',
 	'uk'  => 'en',
 	'vec' => 'en',
@@ -2285,6 +2286,14 @@ $messages['te'] = array(
 	'voctrain_Language' => 'భాష',
 	'voctrain_Definitions' => 'నిర్వచనాలు',
 	'voctrain_Translation' => 'అనువాదం',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'voctrain_logout' => 'husik',
+	'voctrain_Language' => 'Lian',
 );
 
 /** Tagalog (Tagalog)

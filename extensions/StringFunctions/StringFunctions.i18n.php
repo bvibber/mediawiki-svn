@@ -220,6 +220,13 @@ $messages['ru'] = array(
 	'stringfunctions-desc' => 'Расширяет возможности парсера функциями работы со строками',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'stringfunctions-desc' => 'Fà megghiu lu parser cu funzioni stringa',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

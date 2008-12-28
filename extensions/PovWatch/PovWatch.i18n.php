@@ -278,6 +278,7 @@ $messages['es'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author McDutchie
  * @author Urhixidur
  */
 $messages['fr'] = array(
@@ -290,7 +291,7 @@ $messages['fr'] = array(
 	'povwatch_not_subscribed' => 'Vous n’êtes pas inscrit pour la surveillance des guerres d’édition. Par conséquent, vous ne pouvez pas résilier d’inscription.',
 	'povwatch_unsubscribed' => 'Votre inscription pour la surveillance des guerres d’édition est maintenant résiliée.',
 	'povwatch_invalid_title' => 'Le titre indiqué est invalide.',
-	'povwatch_pushed' => '[[$1]] a été inscrite avec succès dans {{PLURAL:$2|la liste|les listes}} de surveillance de l’utilisateur $2.',
+	'povwatch_pushed' => '[[$1]] a été inscrite avec succès dans {{PLURAL:$2|la liste|les listes}} de surveillance de $2 {{PLURAL:$2|utilisateur|utilisateurs}}',
 	'povwatch_intro' => 'La surveillance des guerres d’édition est un service qui autorise la surveillance discrète des pages conflictuelles. Ceux-ci peuvent être inscrits dans la liste de surveillance des administrateurs enregistrés.
 
 Un journal de surveillance des pages inscrites est disponible sur [[Special:PovWatch/log]].',
@@ -1093,8 +1094,10 @@ $messages['te'] = array(
 	'povwatch_subscriber_list_intro' => '<strong>చందాదార్ల జాబితా</strong>',
 	'povwatch_unknown_subpage' => 'గుర్తుతెలియని ఉపపేజీ.',
 	'povwatch_title' => 'శీర్షిక:',
+	'povwatch_comment' => 'చిట్టా వ్యాఖ్య:',
 	'povwatch_no_log' => 'దినచర్యలో అంశాలేమీ లేవు.',
 	'povwatch_no_subscribers' => 'చందాదార్లు ఎవరూ లేరు.',
+	'povwatch_added' => 'చేర్చాం',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

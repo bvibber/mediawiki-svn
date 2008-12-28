@@ -274,6 +274,13 @@ Ober a ra kement-mañ dre c'hervel pazenn ar parser a zegouezh digant MediaWiki 
  */
 $messages['bs'] = array(
 	'expandtemplates' => 'Proširi šablone',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Proširivanje šablona, parserskih funkcija i promijenjivih]] za prikaz proširenog wiki teksta i pregleda iscrtanih stranica',
+	'expand_templates_intro' => 'Ova posebna stranica uzima neki tekst i proširuje sve šablone u njemu rekurzivno.
+Ona također proširuje parserske funkcije poput
+<nowiki>{{</nowiki>#if:…}} i varijable poput
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;u principu gotovo sve između dvostrukih zagrada.
+Ovo se uradi putem poziva relevantnog parserskog nivoa iz same MediaWiki.',
+	'expand_templates_title' => 'Naslov konteksta, za {{PAGENAME}} itd.:',
 	'expand_templates_input' => 'Tekst unosa:',
 	'expand_templates_output' => 'Rezultat',
 	'expand_templates_xml_output' => 'XML izlaz',

@@ -215,6 +215,25 @@ $messages['de'] = array(
 	'player-goto-file' => 'Datei',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'player' => 'Grajadło',
+	'player-desc' => 'Zapśěgnjony multimedjowy playback z pomocu nałožnych tykacow a [[Special:Player|specialnego boka]]',
+	'player-title' => 'Grajadło',
+	'player-playertitle' => 'Grajadło: $1',
+	'player-file' => 'Datajowe mě',
+	'player-play' => 'Wótegraś',
+	'player-not-allowed' => 'njedowólony format',
+	'player-not-found' => 'dataja njenamakana',
+	'player-invalid-title' => 'njepłaśiwy titel',
+	'player-clicktoplay' => '$1 wótegraś',
+	'player-goto-player' => 'grajadło',
+	'player-goto-page' => 'Bok',
+	'player-goto-file' => 'dataja',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -854,6 +873,7 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'player-file' => 'Nume fişier',
+	'player-invalid-title' => 'titlu incorect',
 	'player-goto-page' => 'Pagină',
 	'player-goto-file' => 'fişier',
 );

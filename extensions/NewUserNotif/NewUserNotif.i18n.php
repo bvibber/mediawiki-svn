@@ -550,9 +550,12 @@ $messages['yue'] = array(
 一個新嘅用戶戶口$2，已經響$4喺$3度開咗。',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
 $messages['zh-hans'] = array(
 	'newusernotifsubj' => '$1的新用户通知',
+	'newusernotif-desc' => '当用户创建时，发送邮件确认电子邮件地址',
 	'newusernotifbody' => '你好 $1，
 
 一个新的用户账号$2，已经在$4于$3创建。',

@@ -990,6 +990,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'dt_viewxml_categories' => 'Kategoria sira',
 	'dt_xml_page' => 'Pájina',
 	'dt_xml_name' => 'Naran',
 );

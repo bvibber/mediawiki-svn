@@ -137,6 +137,13 @@ $messages['af'] = array(
 	'openidchoosepassword' => 'wagwoord:',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'openidlanguage' => 'ቋንቋ',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -618,6 +625,19 @@ Jolic pśichodnje coš OpenID wužywaś, aby se pśizjawił, móžoš [[Special:
 	'openidautosubmit' => 'Toś ten bok wopśimujo formular, kótaryž se awtmatiski wótpósćeła, jolic JavaScript jo zmóžnjony. Jolic nic, klikni na tłocašk "Dalej".',
 	'openidclientonlytext' => 'Njamóžoš konta z toś togo wikija ako OpneID na drugem sedle wužywaś.',
 	'openidloginlabel' => 'URL OpenID',
+	'openidlogininstructions' => "{{SITENAME}} pódpěra standard [http://openid.net/ OpenID] za jadnotliwe pśizjawjenje mjazy websedłami.
+OpenID śi zmóžnja se do wjele rozdźělnych websedłow pśizawiś, mimo až musyš za kužde websedło druge gornidło wužywaś.
+(Glědaj [http://de.wikipedia.org/wiki/OpenID nastawk wó OpenID we Wikipediji] za dalšne informacije.)
+
+Jolic maš južo konto na {{GRAMMAR:lokatiw|{{SITENAME}}}}, móžoš se ze swójim wužywarskim mjenim a gronidłom ako pśecej [[Special:UserLogin|pśizjawiś]].
+Aby pśichodnje wužywał OpenID, móžoš [[Special:OpenIDConvert|swójo konto do OpenID konwertěrowaś]], za tym až sy se normalnje pśizjawił.
+
+Jo wjele [http://wiki.openid.net/Public_OpenID_providers zjawnych póbitowarjow OpenID] a snaź maš južo konto z OpenID pla drugeje słužby.
+
+; Druge wikije: Jolic maš konto na wikiju z OpenID, kaž [http://wikitravel.org/ Wikitravel], [http://www.wikihow.com/ wikiHow], [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] ab [http://kei.ki/ Keiki], móžoš se pla {{GRAMMAR:genitiw|{{SITENAME}}}} pśizjawiś, z tym až zapódaš '''dopołny URL''' swójogo wužywarskego boka na tom drugem wikiju górjejce w kašćiku. Na pśikład, ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!]: Jolic maš konto pla Yahoo!, móžoš se pla toś togo sedła pśizjawiś, z tym až zapódaš OpenID, kótaryž sy dostał wót Yahoo górjejce w kašćiku. URL OpenID wót Yahoo! maju formu ''<nowiki>https://me.yahoo.com/twójowužywarske mě</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL]: Jolic maš konto pla [http://www.aol.com/ AOL], kaž na pśikład konto [http://www.aim.com/ AIM], móžoš se pla {{GRAMMAR:lokatiw|{{SITENAME}}}} pśizjawiś, z tym až zapódaš OpenId, kótaryž sy dostał wót AOL, górjejce w kašćiki. URL OpenID wót AOL maju formu ''<nowiki>http://openid.aol.com/twójowužywarskemě</nowiki>''. Twójo wužywarske mě by měło jano małe pismiki wopśimjeś, ale žedne prozne znamjenja.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox]: Jolic maš blog na jadnej z toś tych słužbow, zapódaj swój blogowy URL górjejce w kašćiku. Na pśikład, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'' abo ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
 );
 
 /** Greek (Ελληνικά)
@@ -739,8 +759,24 @@ $messages['fi'] = array(
 	'openidlanguage' => 'Kieli',
 	'openidnotavailable' => 'Toinen käyttäjä käyttää jo haluamaasi nimimerkkiä ($1).',
 	'openidnotprovided' => 'OpenID-palvelimesi ei tarjoa nimimerkkiä (joko se ei osaa, tai olet kieltänyt sen).',
+	'openidchooseinstructions' => 'Kaikki käyttäjät tarvitsevat nimimerkin;
+voit valita sellaisen alla olevista valinnoista.',
 	'openidchoosefull' => 'Koko nimesi ($1)',
+	'openidchooseurl' => 'Nimi OpenID:stäsi ($1)',
+	'openidchooseauto' => 'Automaattisesti luotu nimi ($1)',
+	'openidchoosemanual' => 'Valintasi nimi:',
+	'openidchooseexisting' => 'Aikaisempi tili tässä wikissä:',
 	'openidchoosepassword' => 'salasana:',
+	'openidconvertinstructions' => 'Tämä lomake antaa sinun muuttaa käyttäjätilisi käyttämään OpenID-osoitetta.',
+	'openidconvertsuccess' => 'Muutettiin onnistuneesti OpenID:hen.',
+	'openidconvertyourstext' => 'Tämä on jo OpenID:si.',
+	'openidconvertothertext' => 'Tämä on jonkun muun OpenID.',
+	'tog-hideopenid' => 'Piilota <a href="http://openid.net/">OpenID:si</a> käyttäjäsivultasi, jos kirjaudut sisään OpenID-tunnuksilla.',
+	'openidnousername' => 'Käyttäjänimeä ei annettu.',
+	'openidbadusername' => 'Annettiin virheellinen käyttäjänimi',
+	'openidautosubmit' => 'Tämä sivu sisältää lomakkeen, joka pitäisi lähettää automaattisesti, jos sinulla on JavaScript käytössä.
+Jos näin ei tapahtunut, kokeile ”Jatka”-painiketta.',
+	'openidclientonlytext' => 'Et voi käyttää tämän wikin tilejä OpenID-tunnuksina muilla sivustoilla.',
 	'openidloginlabel' => 'OpenID-URL',
 );
 
@@ -2245,9 +2281,14 @@ Caso contrário, utilize o botão \\"Continuar\\".',
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'openidcancel' => 'Verificare anulată',
+	'openidfailure' => 'Verificare eşuată',
+	'openidsuccess' => 'Verificare cu succes',
 	'openidoptional' => 'Opţional',
 	'openidemail' => 'Adresă e-mail',
 	'openidlanguage' => 'Limbă',
+	'openidchoosemanual' => 'Un nume la alegere:',
+	'openidchooseexisting' => 'Un cont existent pe acest wiki:',
 	'openidchoosepassword' => 'parolă:',
 );
 
@@ -2501,6 +2542,10 @@ Det finns många [http://wiki.openid.net/Public_OpenID_providers leverantörer a
  * @author Veeven
  */
 $messages['te'] = array(
+	'openidpermission' => 'ఓపెన్ఐడీ అనుమతుల పొరపాటు',
+	'openidcancel' => 'తనిఖీ రద్దయింది',
+	'openidfailure' => 'తనిఖీ విఫలమైంది',
+	'openidsuccess' => 'తనిఖీ విజయవంతమైంది',
 	'openidoptional' => 'ఐచ్చికం',
 	'openidrequired' => 'తప్పనిసరి',
 	'openidnickname' => 'ముద్దుపేరు',
@@ -2511,6 +2556,7 @@ $messages['te'] = array(
 	'openidchoosemanual' => 'మీరు ఎన్నుకున్న పేరు:',
 	'openidchooseexisting' => 'ఈ వికీలో ఇప్పటికే ఉన్న ఖాతా:',
 	'openidchoosepassword' => 'సంకేతపదం:',
+	'openidconvertyourstext' => 'అది ఇప్పటికే మీ ఓపెన్ఐడీ.',
 	'openidnousername' => 'వాడుకరిపేరు ఇవ్వలేదు.',
 );
 
@@ -2518,7 +2564,10 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'openidnickname' => "Naran uza-na'in",
+	'openidfullname' => 'Naran kompletu',
 	'openidemail' => 'Diresaun korreiu eletróniku',
+	'openidlanguage' => 'Lian',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

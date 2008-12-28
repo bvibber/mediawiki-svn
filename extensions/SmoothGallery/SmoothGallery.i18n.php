@@ -139,6 +139,13 @@ Pšosym napiš powěźeńku zmólki.',
 	'smoothgallery-javascript-disabled' => 'JavaScript jo trěbny, aby se galerija korektnje zwobrazniła.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'smoothgallery-javascript-disabled' => 'Javascript estas deviga pro vidi ĉi tiun galerion ĝuste.',
+);
+
 /** French (Français)
  * @author Dereckson
  * @author Grondin

@@ -13,9 +13,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'contributorsaddon-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'contributorsaddon-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links. "Main contributions" comes from {{msg-mw|contributors-toolbox}}.',
 );
 
 /** Arabic (العربية)
@@ -30,6 +31,13 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'contributorsaddon-desc' => 'يضيف منبثقات JS onMouseOver إلى وصلات "المساهمون الأساسيون"',
+);
+
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'contributorsaddon-desc' => 'Přidává pop-up okna nad odkazy „Hlavní přispěvatelé“',
 );
 
 /** German (Deutsch)
@@ -125,9 +133,10 @@ $messages['mr'] = array(
 
 /** Dutch (Nederlands)
  * @author SPQRobin
+ * @author Siebrand
  */
 $messages['nl'] = array(
-	'contributorsaddon-desc' => 'Voegt "JavaScript onMouseOver"-popups toe aan de link "Belangrijkste schrijvers"',
+	'contributorsaddon-desc' => 'Voegt "JavaScript-popups toe aan de link "Belangrijkste bijdragers"',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

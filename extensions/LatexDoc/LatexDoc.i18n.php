@@ -148,6 +148,25 @@ $3',
 	'latexdoc_get_pdf' => 'Akiri PDF-on',
 );
 
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'latexdoc_no_text' => 'Sivu ei sisällä tekstiä, joten DVI:tä ei voida luoda.',
+	'latexdoc_cant_create_dir' => 'Väliaikaishakemistoa $1 ei voida luoda.',
+	'latexdoc_cant_write' => 'Tiedostoon $1 ei voida kirjoittaa.',
+	'latexdoc_error' => 'LaTeX-virhe
+
+Komento: $1
+
+Tuloste: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Hae DVI',
+	'latexdoc_get_pdf' => 'Hae PDF',
+	'latexdoc-desc' => 'LaTeX-asiakirjojen ryhmätyömuokkaus',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Urhixidur
@@ -607,5 +626,22 @@ $3',
 $messages['vo'] = array(
 	'latexdoc_get_dvi' => 'Dagetön DVI-i',
 	'latexdoc_get_pdf' => 'Dagetön PDF-i',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'latexdoc_no_text' => '页面未包含文字，无法生成DVI文件',
+	'latexdoc_cant_create_dir' => '无法生成临时目录 $1',
+	'latexdoc_cant_write' => '$1 无法创建',
+	'latexdoc_error' => 'LaTeX 出现错误
+
+命令: $1
+
+输出: $2
+
+$3',
+	'latexdoc-desc' => '协作编辑 LaTex 文件',
 );
 

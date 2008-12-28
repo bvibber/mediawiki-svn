@@ -116,6 +116,13 @@ $messages['ksh'] = array(
 	'htmlets-desc' => 'Määt Schnibbel fun HTML em Wiki müjjelesch övver der <tt><nowiki><htmlet></nowiki></tt>-Befäähl.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'htmlets-desc' => 'Léisst Iech HTML-Schnëppelen vu Fichier mat Hellëf vum <tt><nowiki><htmlet></nowiki></tt> Tag asetzen',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

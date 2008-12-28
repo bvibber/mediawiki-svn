@@ -371,6 +371,15 @@ $messages['nah'] = array(
 	'contrib-tracking-error' => 'Ahcuallōtl',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'contributiontracking' => 'Spennen folgen',
+	'contrib-tracking-error' => 'Fehler',
+	'contrib-tracking-button' => 'Wiedermaken',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

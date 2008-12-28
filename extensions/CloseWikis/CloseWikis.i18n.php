@@ -157,6 +157,7 @@ $messages['bs'] = array(
 );
 
 /** Czech (Česky)
+ * @author Danny B.
  * @author Li-sung
  */
 $messages['cs'] = array(
@@ -176,11 +177,18 @@ $messages['cs'] = array(
 	'closewikis-page-err-nowiki' => 'Chybné určení wiki',
 	'closewikis-page-err-closed' => 'Wiki již je zavřena',
 	'closewikis-page-err-opened' => 'Wiki není zavřená',
+	'closewikis-list' => 'Seznam uzavřených wiki',
+	'closewikis-list-intro' => 'Tento seznam obsahuje wiki uzavřené stewardy.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Zavřel',
+	'closewikis-list-header-timestamp' => 'Kdy',
+	'closewikis-list-header-dispreason' => 'Zobrazený důvod',
 	'closewikis-log' => 'Kniha zavření wiki',
 	'closewikis-log-header' => 'Tato kniha zachycuje všechna zavření a znovuotevření wiki provedená stevardy',
 	'closewikis-log-close' => 'uzavírá $2',
 	'closewikis-log-reopen' => 'opět otevírá $2',
 	'right-editclosedwikis' => 'Editování uzavřených wiki',
+	'right-closewikis' => 'Zavírání wiki',
 );
 
 /** German (Deutsch)
@@ -564,6 +572,22 @@ $messages['it'] = array(
 	'closewikis-log-reopen' => 'riaperta $2',
 	'right-editclosedwikis' => 'Modifica le wiki chiuse',
 	'right-closewikis' => 'Chiude wiki',
+);
+
+/** Japanese (日本語)
+ * @author Aotake
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'closewikis-page' => '閉鎖されたウィキ',
+	'closewikis-page-close' => '閉鎖されたウィキ',
+	'closewikis-page-close-wiki' => 'ウィキ:',
+	'closewikis-page-close-submit' => '閉鎖',
+	'closewikis-page-close-success' => '正常に閉鎖されたウィキ',
+	'closewikis-page-reopen-wiki' => 'ウィキ:',
+	'closewikis-page-reopen-reason' => '理由:',
+	'closewikis-list-header-wiki' => 'ウィキ',
+	'right-closewikis' => 'ウィキを閉鎖する',
 );
 
 /** Khmer (ភាសាខ្មែរ)

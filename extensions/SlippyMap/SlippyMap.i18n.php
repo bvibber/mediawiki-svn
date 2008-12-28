@@ -145,6 +145,39 @@ $messages['bg'] = array(
 	'slippymap_code' => 'Уикикод за тази карта:',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'slippymap_desc' => 'Umožňuje použití tagu <code><nowiki>&lt;slippymap&gt;</nowiki></code> pro zobrazení posuvné mapy OpenLayers. Mapy pocházejí z [http://openstreetmap.org openstreetmap.org].',
+	'slippymap_latmissing' => 'Chybí hodnota lat (zeměpisná šířka)',
+	'slippymap_lonmissing' => 'Chybí hodnota lon (zeměpisná délka)',
+	'slippymap_zoommissing' => 'Chybí hodnota z (úroveň přiblížení)',
+	'slippymap_longdepreciated' => 'Prosím, použijte „lon” namísto „long” (parametr byl přejmenován).',
+	'slippymap_widthnan' => 'hodnota šířky (w) „%1” není platné celé číslo',
+	'slippymap_heightnan' => 'hodnota výšky (h) „%1” není platné celé číslo',
+	'slippymap_zoomnan' => 'hodnota úrovně přiblížení (z) „%1” není platné celé číslo',
+	'slippymap_latnan' => 'hodnota zeměpisné šířky (lat) „%1” není platné číslo',
+	'slippymap_lonnan' => 'hodnota zeměpisné délky (lon) „%1” není platné číslo',
+	'slippymap_widthbig' => 'hodnota šířky (w) nemůže být větší než 1000',
+	'slippymap_widthsmall' => 'hodnota šířky (w) nemůže být menší než 100',
+	'slippymap_heightbig' => 'hodnota výšky (h) nemůže být větší než 1000',
+	'slippymap_heightsmall' => 'hodnota výšky (h) nemůže být menší než 100',
+	'slippymap_latbig' => 'hodnota zeměpisné šířky (lat) nemůže být větší než 90',
+	'slippymap_latsmall' => 'hodnota zeměpisné šířky (lat) nemůže být menší než -90',
+	'slippymap_lonbig' => 'hodnota zeměpisné délky (lon) nemůže být větší než 180',
+	'slippymap_lonsmall' => 'hodnota zeměpisné délky (lon) nemůže být menší než -180',
+	'slippymap_zoomsmall' => 'hodnota úrovně přiblížení (z) nemůže být menší než nula',
+	'slippymap_zoom18' => 'Hodnota úrovně přiblížení (z) nemůže být větší než 17. Mějte na vědomí, že toto rozšíření MediaWiki používá vrstvu „osmarender” OpenStreetMap, která umožňuje úroveň priblížení až 17. Vrstva „Mapnik“ na openstreetmap.org umožňuje priblížení do úrovně 18.',
+	'slippymap_zoombig' => 'Hodnota úrovně přiblížení (z) nemůže být větší než 17.',
+	'slippymap_invalidlayer' => 'Neplatná hodnota „layer” „%1”',
+	'slippymap_maperror' => 'Chyba mapy:',
+	'slippymap_osmtext' => 'Zobrazit tuto mapu na OpenStreetMap.org',
+	'slippymap_code' => 'Wikikód tohoto pohledu na mapu:',
+	'slippymap_button_code' => 'Zobrazit wikikód',
+	'slippymap_resetview' => 'Obnovit zobrazení',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -190,11 +223,12 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'slippymap_desc' => 'Sallii <tt><nowiki>&lt;slippymap&gt;</nowiki></tt>-elementin käytön OpenLayers slippy map -kartan näyttämiseen. Kartat ovat osoitteesta [http://openstreetmap.org openstreetmap.org].',
+	'slippymap_desc' => 'Mahdollistaa <tt><nowiki>&lt;slippymap&gt;</nowiki></tt>-elementin käytön OpenLayers slippy map -kartan näyttämiseen. Kartat ovat osoitteesta [http://openstreetmap.org openstreetmap.org].',
 	'slippymap_latmissing' => 'Puuttuva ”lat”-arvo leveysasteille.',
 	'slippymap_lonmissing' => 'Puuttuva ”lon”-arvo pituusasteille.',
 	'slippymap_zoommissing' => 'Puuttuva ”z”-arvo zoomaukselle.',
@@ -213,7 +247,7 @@ $messages['fi'] = array(
 	'slippymap_lonbig' => 'pituusastearvo (lon) ei voi olla yli 180',
 	'slippymap_lonsmall' => 'pituusastearvo (lon) ei voi olla alle -180',
 	'slippymap_zoomsmall' => 'zoom-arvo (z) ei voi olla alle nollan',
-	'slippymap_zoom18' => 'Zoomaus (z) -arvo ei voi olla suurempi kuin 17. Huomaa, että tämä mediawikiliitännäinen hakee OpenStreetMap ”Osmarender” -tason, joka ei mene zoomaustason 17 yli. Mapnik-taso, joka on käytettävissä openstreetmap.org:ssa, menee zoomaustasolle 28.',
+	'slippymap_zoom18' => 'Zoomaus (z) -arvo ei voi olla suurempi kuin 17. Tämä MediaWiki-laajennos hakee OpenStreetMapin Osmarender-tason, jota ei voi lähentää tasoa 17 enempää. Mapnik-taso, joka myös on käytettävissä openstreetmap.org:ssa, sisältää myös 18. lähennystason.',
 	'slippymap_zoombig' => 'zoom-arvo (z) ei voi olla yli 17.',
 	'slippymap_invalidlayer' => 'Virheellinen ”layer”-arvo ”%1”',
 	'slippymap_maperror' => 'Karttavirhe:',

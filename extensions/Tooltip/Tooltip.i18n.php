@@ -44,6 +44,13 @@ $messages['bg'] = array(
 	'tooltip-desc' => 'Добавя етикетите <tt><nowiki><tooltip></nowiki></tt> и <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'tooltip-desc' => 'Přidává značky <tt>&lt;tooltip&gt;</tt> a <tt>{{&#35;tooltip:}}</tt>',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -228,6 +235,13 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'tooltip-desc' => 'Lägger till <tt><nowiki><tooltip></nowiki></tt> och <tt><nowiki>{{#tooltip:}}</nowiki></tt>-taggarna',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'tooltip-desc' => '<tt><nowiki><tooltip></nowiki></tt> మరియు <tt><nowiki>{{#tooltip:}}</nowiki></tt> ట్యాగులను చేరుస్తుంది',
 );
 
 /** Vèneto (Vèneto)

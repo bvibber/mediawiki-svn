@@ -55,6 +55,18 @@ $messages['bg'] = array(
 	'eval_code' => 'Код',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => 'Přidává [[Special:Eval|rozhraní]] k funkci <code>eval()</code>',
+	'eval_submit' => 'Vyhodnotit',
+	'eval_escape' => 'Escapovat výstup',
+	'eval_out' => 'Výstup',
+	'eval_code' => 'Kód',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian

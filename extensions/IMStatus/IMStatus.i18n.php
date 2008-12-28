@@ -222,6 +222,27 @@ $messages['fa'] = array(
 	'imstatus_default' => 'پیش‌فرض',
 );
 
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'imstatus-desc' => 'Lisää elementit muutamien pikaviestimien tilan näyttämiseen (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo).',
+	'imstatus_syntax' => 'Syntaksi',
+	'imstatus_default' => 'Oletus',
+	'imstatus_example' => 'Esimerkki',
+	'imstatus_possible_val' => 'Mahdolliset arvot',
+	'imstatus_style' => 'tilanilmaisimen tyyli',
+	'imstatus_action' => 'toimenpide, kun painiketta napsautetaan',
+	'imstatus_details_saa' => 'Lisätietoja kaikista tyyleistä ja toimenpiteistä löytyy sivulta $1.',
+	'imstatus_gtalk_height' => 'laatikon korkeus, pikseleinä.',
+	'imstatus_gtalk_width' => 'laatikon leveys, pikseleinä.',
+	'imstatus_icq_id' => 'ICQ-tunnuksesi',
+	'imstatus_icq_style' => 'numero 0 ja 26 väliltä (kyllä, käytettävissä on 27 tyyliä).',
+	'imstatus_live_code' => 'Live Messenger -sivustosi tunnus',
+	'imstatus_live_get_code' => 'Live Messenger -sivustosi tunnus: <strong>tämä ei ole sähköpostiosoitteesi</strong>, vaan sinun tätyy luoda sellainen <a href="$1">Live Messenger -asetuksissasi</a>.
+Tunnus, joka sinun pitää antaa, on numeroita ja kirjaimia ”$2” ja ”$3” väliltä.',
+);
+
 /** French (Français)
  * @author Verdy p
  * @author Zetud
@@ -579,6 +600,7 @@ $messages['ro'] = array(
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'sau',
 	'imstatus_icq_style' => 'un număr între 0 şi 26 (da, există 27 de stiluri disponibile...).',
+	'imstatus_xfire_size' => 'mărimea butoanelor, de la $1 (cel mai mare) la $2 (cel mai mic).',
 );
 
 /** Russian (Русский)

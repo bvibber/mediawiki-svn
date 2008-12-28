@@ -46,6 +46,14 @@ $messages['bg'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Специална страница]], която извлича случайна начална страница',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'randomrootpage' => 'Náhodná kořenová stránka',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Speciální stránka]] přesměrovávající na náhodnou kořenovou stránku',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

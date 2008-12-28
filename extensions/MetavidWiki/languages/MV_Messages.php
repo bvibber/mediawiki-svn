@@ -1049,6 +1049,7 @@ $messages['da'] = array(
  * @author Leithian
  * @author Melancholie
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'metavid' => 'Metavid-Seite',
@@ -1158,7 +1159,7 @@ Zur Stream-Ansicht springen: $2',
 	'mv_adjust_preview_stop' => 'Vorschau anhalten',
 	'mv_adjust_default_reason' => 'metavid Interface-Anpassung',
 	'mv_adjust_old_title_missing' => 'Die Seite, die du von ($1) verschieben willst, existiert nicht',
-	'mv_adjust_ok_move' => 'Erfolgreich, passe an...',
+	'mv_adjust_ok_move' => 'Erfolgreich, passe an …',
 	'mv_start_desc' => 'Startzeit',
 	'mv_end_desc' => 'Endzeit',
 	'mv_of' => '&#32;von&#32;',
@@ -1348,6 +1349,8 @@ $messages['es'] = array(
 	'mv_search_and' => 'y',
 	'mv_search_or' => 'o',
 	'mv_search_not' => 'no',
+	'mv_search_date_range' => 'Rango de fechas',
+	'mv_date_range' => 'rango de fechas',
 	'mv_spoken_by' => 'hablado por',
 	'mv_category' => 'categoría',
 );
@@ -2366,7 +2369,7 @@ Per favor reporta isto al administrator del sito.',
 	'mvexportsearch' => 'Exportar Metavid',
 	'mvexportsequence' => 'Exportar sequentia Metavid',
 	'mvexportstream' => 'Exportar un fluxo Metavid',
-	'mv_move_delete_msg' => 'mvd displaciate (original removite)',
+	'mv_move_delete_msg' => 'mvd movite verso $1',
 	'mv_add_stream_page' => 'Adder un fluxo Metavid',
 	'mv_edit_strea_docu' => '<p>Modificar fluxo <b>(admin)</b><br />pro visualisation/modification per usatores normal, vide le pagina $1',
 	'mv_add_stream_docu' => '<p>Adde un nove fluxo con le campo infra.</p>
@@ -2484,7 +2487,7 @@ Saltar verso le vista del fluxo: $2',
 	'mv_advanced_edit' => 'Modification avantiate',
 	'mv_basic_edit' => 'Modification basic',
 	'mv_remove_category' => 'Remover categoria',
-	'mv_existing_categories' => 'categorias:',
+	'mv_existing_categories' => '{{PLURAL:$1|categoria|categorias}}:',
 	'mv_add_category' => 'Adder un categorisation',
 	'mv_basic_text_desc' => 'Description del texto (optional)',
 	'mv_viewnext' => 'Vider ($1)',
@@ -2557,7 +2560,7 @@ Saltar verso le vista del fluxo: $2',
 	'mv_embed_options' => 'Optiones de incastration',
 	'mv_overlay' => 'Controlos de superposition',
 	'mv_stream_tool_heading' => 'Instrumentos pro fluxos',
-	'mv_tool_missing' => 'requesta de instrumento ($1) non existe',
+	'mv_tool_missing' => 'le instrumento requestate non existe',
 	'mv_bad_tool_request' => 'linea de instrumento invalide, debe haber forma: nomine_del_instrumento|nomine_de_visualisation_del_instrumento',
 	'mv_prev_speech' => 'Discurso precedente: $1',
 	'mv_next_speech' => 'Discurso sequente: $1',
@@ -4135,6 +4138,7 @@ $messages['ro'] = array(
 	'mv_results_for' => 'Rezultate pentru $1',
 	'mv_search_categories' => 'Categorii',
 	'mv_search_category' => 'Categorie',
+	'mv_search_smw_property' => 'Proprietăţi semantice',
 	'mv_search_and' => 'şi',
 	'mv_date_last_week' => 'Săptămâna trecută',
 	'mv_category' => 'categorie',
@@ -4900,6 +4904,7 @@ $messages['te'] = array(
 $messages['tet'] = array(
 	'mv_tool_search' => 'Buka',
 	'mv_edit' => 'Edita',
+	'mv_search_categories' => 'Kategoria sira',
 	'mv_search_category' => 'Kategoria',
 	'mv_search_and' => 'ho',
 	'mv_category' => 'kategoria',

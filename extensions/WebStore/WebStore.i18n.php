@@ -496,6 +496,8 @@ $1',
  * @author Sanbec
  */
 $messages['es'] = array(
+	'inplace_access_disabled' => 'Se ha deshabilitado el acceso a este servicio para todos los clientes.',
+	'inplace_access_denied' => 'Este servicio está restringido por IP de cliente.',
 	'webstore_404' => 'Archivo no encontrado.',
 );
 
@@ -977,6 +979,8 @@ $messages['lb'] = array(
 	'inplace_access_disabled' => 'Den Zougang zu dësem Service gouf fir all Cliente gespaart.',
 	'inplace_access_denied' => 'Dëse Service ass limitéiert op Grond vun der IP-Adress vum Client.',
 	'inplace_scaler_not_enough_params' => 'Net genuch Parameteren.',
+	'inplace_scaler_invalid_image' => "Net valabelt Bild, d'Gréisst konnt net festgestallt ginn",
+	'inplace_scaler_no_handler' => 'Et gëtt keng Funktioun ("handler") fir dësen Typ vu MIME ëmzewandelen',
 	'inplace_scaler_zero_size' => 'Bäi der Ëmwandlung gouf en eidele Fichier generéiert.',
 	'webstore_access' => 'Dëse Service ass pro IP-Adress limitéiert.',
 	'webstore_path_invalid' => 'De Numm vum Fichier war ongëlteg.',
@@ -987,6 +991,8 @@ $messages['lb'] = array(
 	'webstore_temp_close' => 'Feeler beim Zoumaache vum temporäre Fichier "$1".',
 	'webstore_temp_lock' => 'Feeler beim Zoumaache vum tempräre Fichier "$1".',
 	'webstore_no_file' => 'Et gouf kee Fichier eropgelueden.',
+	'webstore_invalid_zone' => 'Zon "$1" ass net valabel',
+	'webstore_curl' => 'Feeler vun cURL: $1',
 	'webstore_404' => 'De Fichier gouf net fonnt.',
 	'webstore_php_warning' => 'PHP Warnung: $1',
 	'webstore_metadata_not_found' => 'De Fichier $1 gouf net fonnt',
@@ -998,6 +1004,7 @@ $1',
 
 $1',
 	'webstore_php_error' => 'Dës PHP Feeler sinn opgetratt:',
+	'webstore_no_handler' => 'Dësen Typ vu MIME kann net ëmgewandelt ginn',
 );
 
 /** Malayalam (മലയാളം)
@@ -1682,6 +1689,7 @@ $messages['te'] = array(
 	'webstore_dest_exists' => 'పొరపాటు, "$1" అనే గమ్యస్థానపు ఫైలు ఇప్పటికే ఉంది.',
 	'webstore_temp_open' => '"$1" అనే తాత్కాలిక ఫైలుని తెరవడంలో పొరపాటు.',
 	'webstore_temp_close' => '"$1" అనే తాత్కాలిక ఫైలుని మూయడంలో పొరపాటు.',
+	'webstore_no_file' => 'ఫైలేమీ ఎగుమతి కాలేదు.',
 	'webstore_404' => 'ఫైలు కనబడలేదు.',
 	'webstore_php_warning' => 'PHP హెచ్చరిక: $1',
 	'webstore_metadata_not_found' => 'ఫైలు కనబడలేదు: $1',

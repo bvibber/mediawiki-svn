@@ -1331,6 +1331,7 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -1339,7 +1340,7 @@ $messages['ja'] = array(
 	'sign-realname' => '名前:',
 	'sign-viewfield-timestamp' => 'タイムスタンプ',
 	'sign-viewfield-realname' => '名前',
-	'sign-viewfield-address' => 'アドレス',
+	'sign-viewfield-address' => '住所',
 	'sign-viewfield-ip' => 'IPアドレス',
 	'sign-viewfield-phone' => '電話',
 	'sign-viewfield-options' => 'オプション',
@@ -2736,6 +2737,10 @@ $messages['te'] = array(
 	'sign-reviewsig' => 'సంతకాన్ని సమీక్షించండి',
 	'sign-review-comment' => 'వ్యాఖ్య',
 	'sign-submitreview' => 'సమీక్షని దాఖలు చేయండి',
+	'sign-uniquequery-similarname' => 'అలాంటి పేరు',
+	'sign-uniquequery-similaraddress' => 'అలాంటి చిరునామా',
+	'sign-uniquequery-similarphone' => 'అలాంటి ఫోను',
+	'sign-uniquequery-similaremail' => 'అలాంటి ఈమెయిలు',
 );
 
 /** Tetum (Tetun)

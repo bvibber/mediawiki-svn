@@ -436,15 +436,27 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'ogg-desc' => 'Upravljač za Ogg Theora i Vorbis datotekem sa JavaScript preglednikom',
 	'ogg-short-audio' => 'Ogg $1 zvučna datoteka, $2',
 	'ogg-short-video' => 'Ogg $1 video datoteka, $2',
 	'ogg-short-general' => 'Ogg $1 medijalna datoteka, $2',
 	'ogg-long-audio' => '(Ogg $1 zvučna datoteka, dužina $2, $3)',
 	'ogg-long-video' => '(Ogg $1 video datoteka, dužina $2, $4×$5 piksela, $3)',
+	'ogg-long-multiplexed' => '(Ogg multipleksna zvučna/video datoteka, $1, dužina $2, $4×$5 piksela, $3 sveukupno)',
 	'ogg-long-general' => '(Ogg medijalna datoteka, dužina $2, $3)',
 	'ogg-long-error' => '(Nevaljana ogg datoteka: $1)',
+	'ogg-play' => 'Pokreni',
 	'ogg-pause' => 'Pauza',
 	'ogg-stop' => 'Zaustavi',
+	'ogg-play-video' => 'Pokreni video',
+	'ogg-play-sound' => 'Sviraj zvuk',
+	'ogg-no-player' => 'Žao nam je, Vaš sistem izgleda da nema nikakvog podržanog softvera za pregled.
+Molimo Vas <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">da skinete preglednik</a>.',
+	'ogg-no-xiphqt' => 'Izgleda da nemate XiphQT komponentu za program QuickTime.
+QuickTime ne može reproducirati Ogg datoteke bez ove komponente.
+Molimo Vas da <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">skinete XiphQT</a> ili da odaberete drugi preglednik.',
+	'ogg-player-videoElement' => 'Prirodna podrška preglednika',
+	'ogg-player-oggPlugin' => 'Dodatak pregledniku',
 	'ogg-player-thumbnail' => 'Samo mirne slike',
 	'ogg-player-soundthumb' => 'Nema preglednika',
 	'ogg-player-selected' => '(odabrano)',

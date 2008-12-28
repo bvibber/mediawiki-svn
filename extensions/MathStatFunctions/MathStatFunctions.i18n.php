@@ -96,6 +96,7 @@ $messages['ca'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
+	'msfunc_desc' => 'Sbírka matematických a statistických funkcí',
 	'msfunc_nan' => 'Výsledná hodnota není číslo',
 	'msfunc_inf' => 'Výsledná hodnota je nekonečno',
 	'msfunc_div_zero' => 'Dělení nulou',

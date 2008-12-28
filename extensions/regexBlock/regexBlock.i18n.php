@@ -867,6 +867,13 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'regexblock' => '正規表現ブロック',
+	'regexblock-desc' => '利用者名やIPアドレスを正規表現でブロックするための拡張機能。ブロック機構とブロックを追加・管理するための[[Special:Regexblock|特別ページ]]の両方を含む',
+	'regexblock-special-desc' => '代替利用者ブロック (正規表現を使用)',
+	'regexblock-stat-desc' => '正規表現ブロック拡張機能の[[Special:Regexblockstats|ブロック統計]]を表示する',
+	'regexblock-page-title' => '正規表現による利用者名のブロック',
+	'regexblockstats' => '正規表現ブロック統計',
+	'regexblock-reason-ip' => 'このIPアドレスは、あなたかあなたとIPアドレスを共有するだれかによる、荒らしなどの破壊のため、編集が禁止されています。これが間違いだとお考えなら、$1 してください',
 	'regexblock-form-reason' => '理由:',
 	'regexblock-already-blocked' => '$1 は既にブロックされています。',
 	'regexblock-view-all' => 'すべて',
@@ -1469,9 +1476,13 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'regexblock-form-username' => 'Adresă IP sau nume d utilizator:',
 	'regexblock-form-reason' => 'Motiv:',
 	'regexblock-already-blocked' => '$1 este deja blocat.',
 	'regexblock-stats-username' => 'Pentru $1',
+	'regexblock-stats-times' => 'a fost blocat la',
+	'regexblock-view-reason' => 'motiv: $1',
+	'regexblock-view-reason-default' => 'motiv generic',
 	'regexblock-view-block-temporary' => 'expiră la',
 );
 

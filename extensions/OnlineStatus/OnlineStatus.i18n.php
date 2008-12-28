@@ -125,17 +125,24 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Danny B.
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
 	'onlinestatus-desc' => 'Přidá možnost zobrazovat, zda je uživatel na wiki momentálně přítomný nebo ne',
+	'onlinestatus-js-anon' => 'Chyba: K využívání této funkce musíte být přihlášeni',
+	'onlinestatus-js-changed' => 'Váš stav byl změněn na „$1”',
+	'onlinestatus-js-error' => 'Nebylo možné změnit stav, hodnota „$1” je neplatná',
 	'onlinestatus-subtitle-offline' => 'Tento uživatel je momentálně odpojený',
 	'onlinestatus-subtitle-online' => 'Tento uživatel je momentálně připojený',
+	'onlinestatus-tab' => 'Stav',
 	'onlinestatus-toggles-desc' => 'Váš stav:',
 	'onlinestatus-toggles-explain' => 'Toto Vám umožní zobrazovat na vaší uživatelské stránce ostatním uživatelům, zda jste ve skutečnosti připojen nebo ne.',
 	'onlinestatus-toggles-show' => 'Zobrazovat můj stav na mojí uživatelské stránce',
 	'onlinestatus-toggle-offline' => 'Odpojený',
 	'onlinestatus-toggle-online' => 'Připojený',
+	'tog-onlineOnLogin' => 'Změnit po přihlášení můj stav na „online“',
+	'tog-offlineOnLogout' => 'Změnit po odhlášení můj stav na „offline“',
 );
 
 /** German (Deutsch)

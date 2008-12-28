@@ -4393,23 +4393,32 @@ $messages['nds'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Afstimmen]]
 * [[Special:Boardvote/list|Bet nu al afgevene Stimmen]]
 * [[Special:Boardvote/dump|Verslötelte Wahlindrääg]]',
+	'boardvote_notloggedin' => 'Du büst nich anmellt.
+Dat du wählen dröffst, musst du as en Bruker anmellt wesen, de opminnst $1 {{PLURAL:$1|Bidrag|Bidrääg}} vör $2 un opminnt $3 {{PLURAL:$3|Bidrag|Bidrääg}} twischen $4 un $5 maakt hett.',
 	'boardvote_novotes' => 'Noch hett nüms afstimmt.',
 	'boardvote_time' => 'Tiet',
 	'boardvote_user' => 'Bruker',
 	'boardvote_edits' => 'Ännern',
 	'boardvote_days' => 'Daag',
 	'boardvote_ip' => 'IP',
+	'boardvote_ua' => 'User-Agent',
+	'boardvote_listintro' => '<p>Dit is en List vun all Stimmen, de betnuto optekent worrn sünd.
+$1 för de verslötelt Daten.</p>',
 	'boardvote_dumplink' => 'Hier klicken',
 	'boardvote_submit' => 'Afstimmen',
 	'boardvote_strike' => 'Strieken',
 	'boardvote_unstrike' => 'Strieken trüchnehmen',
+	'boardvote_needadmin' => 'Blot Wahladministraters köönt disse Akschoon utföhren.',
 	'boardvote_notstarted' => 'De Wahl hett noch nich anfungen',
 	'boardvote_edits_many' => 'veel',
 	'group-boardvote' => 'Wahl-Administraters',
 	'group-boardvote-member' => 'Wahl-Administrater',
 	'grouppage-boardvote' => '{{ns:project}}:Wahl-Administrater',
+	'boardvote_bot' => 'Op dat indragen Wiki büst du as Bot kenntekent.
+Bots dröfft nich afstimmen.',
 	'boardvote_welcome' => "Moin '''$1'''.",
 	'go_to_board_vote' => 'Wahlen to dat Wikimedia-Kuratorium 2008',
+	'right-boardvote' => 'Wahlen administreren',
 );
 
 /** Nepali (नेपाली) */
@@ -6145,6 +6154,7 @@ $messages['tg-cyrl'] = array(
 Шумо зарфи 20 сония ба коргузори хориҷӣ ҳидоят мешавед. Барои он, ки ҳозир онҷо биравед [$1 инҷо клик кунед].
 
 Мумкин аст як пайёми амнияти дар мавриди гувоҳиномаи  ғайримиҷоз дарёфт кунед.',
+	'right-boardvote' => 'Мудирияти Раъйдиҳӣ',
 );
 
 /** Thai (ไทย)

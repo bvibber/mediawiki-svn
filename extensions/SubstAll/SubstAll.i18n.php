@@ -73,6 +73,13 @@ $messages['es'] = array(
 	'substall-desc' => 'Crea la etiqueta <nowiki><substall></nowiki> que expande todas las plantillas a sintaxis wiki',
 );
 
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'substall-desc' => 'Luo <nowiki><substall></nowiki> tägin, joka laajentaa kaikki mallineet wikisyntaksiin.',
+);
+
 /** French (Français)
  * @author Grondin
  */

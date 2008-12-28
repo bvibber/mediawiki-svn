@@ -273,7 +273,7 @@ $messages['es'] = array(
 	'authorprotect-notauthor' => 'No eres el autor de esta página',
 	'authorprotect-confirm' => 'Cambiar niveles de protección',
 	'authorprotect-edit' => 'Restringir edición a autores',
-	'authorprotect-reason' => 'Razón',
+	'authorprotect-reason' => 'Motivo',
 );
 
 /** Persian (فارسی)

@@ -63,6 +63,13 @@ $messages['es'] = array(
 	'preloader-desc' => 'Provee texto por defecto para las páginas nuevas configurable para cada espacio de nombres',
 );
 
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'preloader-desc' => 'Tarjoaa muokattavan nimiavaruuskohtaisen pohjatekstin uusille sivuille.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Zetud

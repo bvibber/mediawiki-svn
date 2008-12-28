@@ -292,6 +292,25 @@ $messages['de'] = array(
 	'imagemap_poly_odd' => 'Fehler: Polygon mit ungerader Anzahl an Koordinaten in Zeile $1',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'imagemap_desc' => 'Zmóžnja klikajobne wobraze wót boka klienta z pomocu toflicki <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image' => 'Zmólka: musyš wobraz w prědnej zmužce pódaś',
+	'imagemap_invalid_image' => 'Zmólka: wobraz jo njepłaśiwy abo njeeksistěrujo',
+	'imagemap_bad_image' => 'Zmólka: wobraz stoj na cornej lisćinje',
+	'imagemap_no_link' => 'Zmólka: žeden płaśiwy wótkaz na kóńcu smužki $1 namakany',
+	'imagemap_invalid_title' => 'Zmólka: njepłaśiwy titel we wótkazu w smužce $1',
+	'imagemap_missing_coord' => 'Zmólka: nic dosć koordinatow za formu w smužce $1',
+	'imagemap_unrecognised_shape' => 'Zmólka: njespóznata forma w smužce $1, kužda smužka musy se z jadnym z toś tych parametrow zachopiś: default, rect, circle abo poly',
+	'imagemap_no_areas' => 'Umólka: nanejmjenjej jaden parameter "area" musy se definěrowaś',
+	'imagemap_invalid_coord' => 'Zmólka: njepłaśiwa koordinata w smužce $1, musy to licba byś',
+	'imagemap_invalid_desc' => 'Zmólka: njepłaśiwy parameter "desc", móžno su: <tt>$1</tt>',
+	'imagemap_description' => 'Wó toś tom wobrazu',
+	'imagemap_poly_odd' => 'Zmólka: polygon z njerowneju licbu koordinatow w smužce $1',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

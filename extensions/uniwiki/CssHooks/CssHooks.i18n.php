@@ -34,6 +34,13 @@ $messages['bg'] = array(
 	'csshooks-desc' => 'Добавя CSS към HTML-изходния код на страниците са по-добро оформление',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'csshooks-desc' => 'Přidává CSS do HTML výstupu stránek pro zlepšení stylu',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -64,9 +71,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Mobe
+ * @author Nike
  */
 $messages['fi'] = array(
-	'csshooks-desc' => 'Lisää paremman ulkoasun vuoksi CSS-muotoilun sivujen HTML-tallenteisiin.',
+	'csshooks-desc' => 'Mahdollistaa sivukohtaiset ulkoasut lisäämällä CSS-muotoiluja niiden HTML-tulosteeseen.',
 );
 
 /** French (Français)

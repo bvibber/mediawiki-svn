@@ -294,6 +294,13 @@ $messages['vi'] = array(
 	'emailaddressimage-desc' => 'Thêm <tt>&lt;email&gt;</tt> để hiển thị địa chỉ thư điện tử dưới dạng hình ảnh',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'emailaddressimage-desc' => '增加<tt>&lt;email&gt;</tt>标签将电子邮件地址显示为图像',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

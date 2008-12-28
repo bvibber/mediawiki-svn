@@ -469,3 +469,19 @@ $messages['vi'] = array(
   #</pre><!-- đừng sửa vào dòng này -->',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'editsubpages-desc' => '允许系统管理员通过[[MediaWiki:Unlockedpages]]将一个页面及其子页面解除封锁，以便任何用户都可以编辑。',
+	'unlockedpages' => '  #<!-- 本行需要保留 --><pre>
+# 使用这个形式，将您想解除封锁的页面写于下方
+# * 页面名称
+# 解除封锁的页面必须以星号开头
+# 否则无效
+# 页面名称可以是 [[链接]] 的形式，并且所罗列的页面名称对简繁体敏感
+# 讨论页将会随着页面自动解除封锁
+# 请浏览 http://www.mediawiki.org/wiki/Extension:EditSubpages 以获得更多帮助
+  #</pre><!-- 本行需要保留 -->',
+);
+

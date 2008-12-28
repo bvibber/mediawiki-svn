@@ -402,6 +402,14 @@ $messages['pt'] = array(
 	'pageby-anon' => '<i>anónimo</i>',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'pageby-contributors' => 'Contribuitori:',
+	'pageby-anon' => '<i>anonim</i>',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

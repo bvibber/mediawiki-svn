@@ -241,6 +241,34 @@ $messages['de'] = array(
 	'duplicator-toomanyrevisions' => 'Die Seite [[$1]] hat {{PLURAL:$2|eine Version|$2 Versionen}}, und kann daher nicht dupliziert werden. Es können nur Seiten mit {{PLURAL:$3|einer Version|maximal $3 Versionen}} dupliziert werden.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'duplicator' => 'Bok duplicěrowaś',
+	'duplicator-desc' => 'Njewótwisne [[Special:Duplicate|kopije bokow]] z jich dopołnymi stawiznami napóraś',
+	'duplicator-toolbox' => 'Toś ten bik duplicěrowaś',
+	'duplicator-header' => 'Toś ten bok zmóžnja kompletnu duplikaciju boka. Mimo togo napóraju se njewótwisne kopije wersijowych stawiznow. To móžo wužytne byś, aby rozrědował boki atd.',
+	'duplicator-options' => 'Opcije',
+	'duplicator-source' => 'Žrědło:',
+	'duplicator-dest' => 'Cel:',
+	'duplicator-dotalk' => 'Diskusijny bok duplicěrowaś (jolic móžno)',
+	'duplicator-submit' => 'Duplicěrowaś',
+	'duplicator-summary' => 'Z [[$1]] kopěrowany',
+	'duplicator-success' => "<big>'''[[$1]] jo se kopěrował do [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|wersija jo se kopěrowała|wersiji stej kopěrowałej|wersije su kopěrowali|wersijow jo kopěrowało}}.',
+	'duplicator-success-talkcopied' => 'Diskusijny bok jo se teke kopěrował.',
+	'duplicator-success-talknotcopied' => 'Diskusijny bok njejo se dał kopěrowaś.',
+	'duplicator-failed' => 'Bok njejo se dał duplicěrowaś.
+Njeznata zmólka jo nastała.',
+	'duplicator-source-invalid' => 'Pšosym pódaj płaśiwy žrědłowy titel.',
+	'duplicator-source-notexist' => '[[$1]] njeeksistěrujo. Pšosym pódaj titel boka, kótaryž eksistěrujo.',
+	'duplicator-dest-invalid' => 'Pšosym pódaj płaśiwy celowy titel.',
+	'duplicator-dest-exists' => '[[$1]] južo eksistěrujo. Pšosym pódaj celowy titel, kótaryž hyšći njeeksistěrujo.',
+	'duplicator-toomanyrevisions' => '[[$1]] ma pśewjele ($2) wersijow a njedajo se kopěrowaś.
+Aktualny limit jo $3.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -280,9 +308,10 @@ Estus utila por disigo de artikoloj, ktp.',
 
 /** Spanish (Español)
  * @author Imre
+ * @author Sanbec
  */
 $messages['es'] = array(
-	'duplicator-dest' => 'Destinación:',
+	'duplicator-dest' => 'Destino:',
 	'duplicator-submit' => 'Duplicado',
 );
 

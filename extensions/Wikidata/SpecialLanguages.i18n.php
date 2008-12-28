@@ -207,6 +207,7 @@ $wdMessages['af'] = array(
 $wdMessages['am'] = array(
 	'ow_history' => 'ታሪክ',
 	'ow_dm_OK' => 'እሺ',
+	'ow_Language' => 'ቋንቋ',
 );
 
 /** Aragonese (Aragonés)
@@ -1121,6 +1122,9 @@ $wdMessages['eo'] = array(
 	'ow_Permission_denied' => '<h2>PERMESO NEITA</h2>',
 	'ow_copy_no_action_specified' => 'Bonvolu specifigi agon',
 	'ow_copy_help' => 'Iutage, ne eble helpos vin.',
+	'ow_copy_successful' => '<h2>Kopio sukcesis</h2>
+Viaj datenoj verŝajne estis kopiitaj sukcese.
+Ne forgesu rekontroli por certigi!',
 );
 
 /** Spanish (Español)
@@ -1228,6 +1232,7 @@ Contacta por favor el operador o el administrador del servicio.',
 );
 
 /** Persian (فارسی)
+ * @author Huji
  * @author Mardetanha
  */
 $wdMessages['fa'] = array(
@@ -1235,42 +1240,42 @@ $wdMessages['fa'] = array(
 	'ow_save' => 'ذخیره',
 	'ow_history' => 'تاریخچه',
 	'ow_noedit_title' => 'شما اجازه ویرایش ندارید',
-	'ow_none_selected' => 'هیچکدام انتخاب نشده‌اند',
+	'ow_none_selected' => 'هیچ‌کدام انتخاب نشده‌اند',
 	'ow_dm_not_present' => 'وارد نشده',
 	'ow_AlternativeDefinition' => 'معنی دیگر',
 	'ow_AlternativeDefinitions' => 'معانی دیگر',
-	'ow_Annotation' => 'یادآوری',
-	'ow_ApproximateMeanings' => 'معانی احتمالی',
-	'ow_ClassAttributeAttribute' => 'صفات',
+	'ow_Annotation' => 'یادداشت',
+	'ow_ApproximateMeanings' => 'معانی حدودی',
+	'ow_ClassAttributeAttribute' => 'صفت',
 	'ow_ClassAttributeLevel' => 'سطح',
 	'ow_ClassAttributeType' => 'نوع',
-	'ow_Definition' => 'معنی',
-	'ow_DefinedMeaningAttributes' => 'یادآوری',
-	'ow_DefinedMeaning' => 'معنی مشخص',
-	'ow_DefinedMeaningReference' => 'معنی مشخص',
-	'ow_ExactMeanings' => 'معنی دقیق',
+	'ow_Definition' => 'تعریف',
+	'ow_DefinedMeaningAttributes' => 'یادداشت',
+	'ow_DefinedMeaning' => 'معنی تعریف شده',
+	'ow_DefinedMeaningReference' => 'معنی تعریف شده',
+	'ow_ExactMeanings' => 'معانی دقیق',
 	'ow_Expression' => 'اصطلاح',
 	'ow_ExpressionMeanings' => 'معانی اصطلاح',
 	'ow_Expressions' => 'اصطلاحات',
-	'ow_IdenticalMeaning' => 'هم‌‌معنی ؟',
+	'ow_IdenticalMeaning' => 'هم‌‌معنی؟',
 	'ow_GotoSource' => 'به منبع بروید',
 	'ow_Language' => 'زبان',
-	'ow_LevelAnnotation' => 'یادآوری',
+	'ow_LevelAnnotation' => 'یادداشت',
 	'ow_OptionAttribute' => 'خاصیت',
-	'ow_OptionAttributeOption' => 'اختیار',
-	'ow_OptionAttributeOptions' => 'اختیارت',
-	'ow_PopupAnnotation' => 'یادآوری',
+	'ow_OptionAttributeOption' => 'گزینه',
+	'ow_OptionAttributeOptions' => 'گزینه‌ها',
+	'ow_PopupAnnotation' => 'یادداشت',
 	'ow_Relations' => 'روابط',
 	'ow_RelationType' => 'نوع رابطه',
-	'ow_Spelling' => 'املاء',
+	'ow_Spelling' => 'املا',
 	'ow_Synonyms' => 'مترادف‌ها',
 	'ow_Source' => 'منبع',
 	'ow_TextAttribute' => 'خاصیت',
 	'ow_Text' => 'متن',
-	'ow_TextAttributeValues' => 'متنون ساده',
+	'ow_TextAttributeValues' => 'متون ساده',
 	'ow_TranslatedTextAttribute' => 'خاصیت',
 	'ow_TranslatedTextAttributeValue' => 'متن',
-	'ow_TranslatedTextAttributeValues' => 'متن قابل‌ترجمه',
+	'ow_TranslatedTextAttributeValues' => 'متن‌های ترجمه شدنی',
 	'ow_LinkAttribute' => 'خاصیت',
 	'ow_LinkAttributeValues' => 'پیوندها',
 	'ow_Property' => 'خاصیت',
@@ -2134,9 +2139,11 @@ $wdMessages['is'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Melos
  * @author Nemo bis
  */
 $wdMessages['it'] = array(
+	'ow_save' => 'Salva',
 	'ow_history' => 'Cronologia',
 	'ow_Language' => 'Lingua',
 	'ow_OptionAttributeOptions' => 'Opzioni',
@@ -2183,20 +2190,40 @@ $wdMessages['ja'] = array(
 	'ow_concept_panel' => '概念パネル',
 	'ow_dm_badtitle' => 'このページが指し示す意味定義（概念）は何もありません。URLの指定が正しいか確認してください。',
 	'ow_dm_missing' => 'このページは存在しない意味定義（概念）を指し示しているように見えます。URLの指定が正しいか確認してください。',
+	'ow_AlternativeDefinition' => '代替定義',
+	'ow_AlternativeDefinitions' => '代替定義',
+	'ow_ApproximateMeanings' => 'おおよその意味',
+	'ow_ClassAttributeAttribute' => '属性',
+	'ow_ClassAttributes' => 'クラス属性',
 	'ow_ClassAttributeLevel' => 'レベル',
 	'ow_ClassAttributeType' => 'タイプ',
+	'ow_ClassMembership' => 'クラス帰属',
 	'ow_Collection' => 'コレクション',
+	'ow_Definition' => '定義',
+	'ow_Language' => '言語',
 	'ow_OptionAttributeOption' => 'オプション',
 	'ow_OptionAttributeOptions' => 'オプション',
+	'ow_Relations' => '関係',
+	'ow_RelationType' => '関係型',
+	'ow_Spelling' => 'スペル',
+	'ow_Synonyms' => '同義語',
+	'ow_SynonymsAndTranslations' => '同義語と翻訳語',
 	'ow_Source' => 'ソース',
 	'ow_TextAttribute' => 'プロパティ',
 	'ow_Text' => 'テキスト',
+	'ow_TextAttributeValues' => 'プレーンテキスト',
 	'ow_TranslatedTextAttribute' => 'プロパティ',
+	'ow_TranslatedText' => '翻訳文',
 	'ow_TranslatedTextAttributeValue' => 'テキスト',
+	'ow_TranslatedTextAttributeValues' => '翻訳可能なテキスト',
 	'ow_LinkAttribute' => 'プロパティ',
 	'ow_LinkAttributeValues' => 'リンク',
 	'ow_Property' => 'プロパティ',
 	'ow_Value' => '値',
+	'ow_meaningsoftitle' => '「$1」の意味',
+	'ow_meaningsofsubtitle' => '<em>ウィキリンク:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>不許可</h2>',
+	'ow_copy_no_action_specified' => '操作を指定してください',
 );
 
 /** Javanese (Basa Jawa)
@@ -2626,19 +2653,26 @@ $wdMessages['lb'] = array(
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'net aginn',
 	'ow_will_insert' => 'Dëst drasetzen:',
+	'ow_available_contexts' => 'Disponibel Kontexter',
+	'ow_add_concept_link' => 'E Link op déi aner Konzepter derbäisetzen',
 	'ow_AlternativeDefinition' => 'Alternativ Definitioun',
 	'ow_AlternativeDefinitions' => 'Alternativ Definitiounen',
 	'ow_Annotation' => 'Notiz',
 	'ow_ApproximateMeanings' => 'Ongeféier Bedeitungen',
+	'ow_ClassAttributeAttribute' => 'Attribut',
+	'ow_ClassAttributes' => 'Klassenattributer',
 	'ow_ClassAttributeLevel' => 'Niveau',
 	'ow_ClassAttributeType' => 'Typ',
+	'ow_ClassMembership' => 'Member vun der Klass',
 	'ow_Collection' => 'Sammlung',
+	'ow_CollectionMembership' => 'Member vun der Sammlung',
 	'ow_Definition' => 'Definitioun',
 	'ow_DefinedMeaningAttributes' => 'Notiz',
 	'ow_DefinedMeaning' => 'Definéierte Sënn',
 	'ow_DefinedMeaningReference' => 'Definéierte Sënn',
 	'ow_ExactMeanings' => 'Genee Bedeitungen',
 	'ow_Expression' => 'Ausdrock',
+	'ow_ExpressionMeanings' => 'Bedeitunge vun den Ausdréck',
 	'ow_Expressions' => 'Ausdréck',
 	'ow_IdenticalMeaning' => 'Déi selwescht Bedeitung?',
 	'ow_GotoSource' => "Zréck op d'Quell",
@@ -2648,14 +2682,17 @@ $wdMessages['lb'] = array(
 	'ow_OptionAttributeOption' => 'Optioun',
 	'ow_OptionAttributeOptions' => 'Optiounen',
 	'ow_OptionAttributeValues' => 'Werter vun den Optiounen',
+	'ow_OtherDefinedMeaning' => 'Aner definéiert Bedeitung',
 	'ow_PopupAnnotation' => 'Notiz',
 	'ow_Relations' => 'Relatiounen',
+	'ow_RelationType' => 'Typ vu Relatioun',
 	'ow_Spelling' => 'Schreifweis',
 	'ow_Synonyms' => 'Synonymen',
 	'ow_SynonymsAndTranslations' => 'Synonymer an Iwwersetzungen',
 	'ow_Source' => 'Quell',
 	'ow_TextAttribute' => 'Eegeschaft',
 	'ow_Text' => 'Text',
+	'ow_TextAttributeValues' => 'Fräi Texter',
 	'ow_TranslatedTextAttribute' => 'Eegeschaft',
 	'ow_TranslatedText' => 'Iwwersatenen Text',
 	'ow_TranslatedTextAttributeValue' => 'Text',
@@ -2984,6 +3021,8 @@ $wdMessages['nah'] = array(
 	'ow_uiprefs' => 'Huiquidatah',
 	'ow_dm_OK' => 'Cualli',
 	'ow_Language' => 'Tlahtōlli',
+	'ow_Synonyms' => 'Neneuhtlahtōl',
+	'ow_SynonymsAndTranslations' => 'Neneuhtlahtōl īhuān tlahtōlcuepaliztli',
 	'ow_Source' => 'Īhuīcpa:',
 	'ow_Text' => 'Tlahcuilōlli',
 	'ow_TranslatedText' => 'Tlahtōlli ōmotlahtōlcuep',
@@ -4606,6 +4645,7 @@ $wdMessages['te'] = array(
  */
 $wdMessages['tet'] = array(
 	'ow_dm_OK' => 'OK',
+	'ow_Language' => 'Lian',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -4687,12 +4727,16 @@ $wdMessages['th'] = array(
 	'ow_dm_OK' => 'ตกลง',
 	'ow_ClassAttributeLevel' => 'ระดับ',
 	'ow_ClassAttributeType' => 'ชนิด',
+	'ow_OptionAttribute' => 'คุณสมบัติ',
 	'ow_OptionAttributeOption' => 'ตัวเลือก',
 	'ow_OptionAttributeOptions' => 'ตัวเลือก',
 	'ow_Relations' => 'ความสัมพันธ์',
+	'ow_Spelling' => 'การสะกด',
 	'ow_Source' => 'แหล่งที่มา',
 	'ow_Text' => 'ข้อความ',
 	'ow_TextAttributeValues' => 'ข้อความเรียบ',
+	'ow_TranslatedTextAttributeValue' => 'ข้อความ',
+	'ow_LinkAttribute' => 'คุณสมบัติ',
 	'ow_LinkAttributeValues' => 'ลิงก์',
 	'ow_Value' => 'ค่า',
 	'ow_meaningsoftitle' => 'ความหมายของ "$1"',
@@ -4993,11 +5037,18 @@ $wdMessages['vo'] = array(
 	'ow_LinkAttributeValues' => 'Liuds',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
 $wdMessages['zh-hans'] = array(
 	'datasearch' => 'Wikidata: 数据搜寻',
 	'langman_title' => '语言管理员',
 	'languages' => 'Wikidata: 语言管理员',
+	'ow_save' => '保存',
+	'ow_history' => '历史',
+	'ow_noedit_title' => '无权进行编辑',
+	'ow_noedit' => '您无权在 "$1" 中编辑页面。
+请见[[{{MediaWiki:Ow editing policy url}}|我们的编辑政策]]。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

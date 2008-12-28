@@ -51,6 +51,13 @@ $messages['es'] = array(
 	'regexfunctions-desc' => 'Funciones sintácticas de expresiones regulares',
 );
 
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'regexfunctions-desc' => 'Säännöllisten lausekkeiden jäsennysfunktiot.',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -119,6 +126,13 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'regexfunctions-desc' => 'Parserfuncties voor reguliere expressies',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'regexfunctions-desc' => 'Parserfunksjonar for regulære uttrykk',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

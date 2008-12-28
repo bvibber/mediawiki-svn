@@ -120,6 +120,13 @@ $messages['es'] = array(
 	'usercontactlink-desc' => 'Proporciona la capacidad para añadir sencilla y consistentemente otros usuarios usando la sintaxis ^^^user^^^',
 );
 
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'usercontactlink-baduser' => 'virheellinen käyttäjänimi',
+);
+
 /** French (Français)
  * @author Grondin
  */

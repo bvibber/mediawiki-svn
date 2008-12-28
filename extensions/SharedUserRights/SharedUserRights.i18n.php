@@ -58,6 +58,7 @@ $messages['bg'] = array(
 	'shareduserrights' => 'Управление на споделените потребителски права',
 	'gblrights-desc' => 'Лесно [[Special:SharedUserRights|администриране на глобалните потребителски права]]',
 	'gblrights-logpage' => 'Дневник на глобалните права',
+	'gblrights-rights-entry' => 'промени членството в глобална група за $1 от $2 на $3',
 );
 
 /** Czech (Česky)
@@ -91,6 +92,14 @@ $messages['dsb'] = array(
 	'gblrights-logpage' => 'Protokol globalnych pšawow',
 	'gblrights-pagetext' => 'Toś ten protokol wopśimujo změny, kótarež su se pśewjadli na tabeli globalnych pšawow wikijoweje swójźby',
 	'gblrights-rights-entry' => 'jo globalne kupkowe cłonkojstwo za $1 z $2 do $3 změnił',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'gblrights-desc' => 'Facila [[Special:SharedUserRights|administrado de ĝeneralaj uzulaj rajtoj]]',
+	'gblrights-logpage' => 'Protokolo pri Ĝeneralaj Rajtoj',
 );
 
 /** French (Français)
@@ -154,6 +163,13 @@ $messages['ia'] = array(
 	'gblrights-logpage' => 'Registro de derectos global',
 	'gblrights-pagetext' => 'Isto es un registro de tote le cambiamentos facite in le tabula de derectos global del familia de wikis',
 	'gblrights-rights-entry' => 'cambiava le membrato de gruppos global pro $1 de $2 a $3',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'gblrights-logpage' => 'កំណត់ហេតុ​សិទ្ធិសកល',
 );
 
 /** Korean (한국어)
@@ -224,6 +240,13 @@ $messages['sk'] = array(
 	'gblrights-logpage' => 'Záznam globálnych práv',
 	'gblrights-pagetext' => 'Toto je záznam všetkých zmien v tabuľke globálnych práv tejto rodiny wiki',
 	'gblrights-rights-entry' => 'zmenené globálne členstvo v skupine používateľa $1 z $2 na $3',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'gblrights-logpage' => 'సార్వత్రిక హక్కుల చిట్టా',
 );
 
 /** Tagalog (Tagalog)

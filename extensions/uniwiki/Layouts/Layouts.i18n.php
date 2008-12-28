@@ -34,8 +34,10 @@ Do not translate or change links.',
  */
 $messages['ar'] = array(
 	'layouts_title' => 'إنشاء صفحة',
+	'layouts_chooselayout' => 'أختار تنسيق ل$1',
 	'layouts_nolayout' => 'لا يوجد تصميم',
 	'layouts_continue' => 'أستمرار',
+	'layouts_choosecategory' => 'أختار تصنيف ل$1',
 	'layouts_unknown' => 'غير معروف',
 );
 
@@ -260,9 +262,13 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'layouts-desc' => 'Deit op jede neu aanjelaate Sigg en änderbaa „Läj_aut“ drop, ön ene einheitlijje Opbou för de Sigge ze fördere.',
 	'layouts_title' => 'En neu Sigg aanlääje',
+	'layouts_chooselayout' => 'Sök e Läj_aut för „$1“ uß:',
+	'layouts_nolayout' => 'Keij Läj_aut',
 	'layouts_continue' => 'Wigger',
 	'layouts_choosecategory' => 'Söök en Saachjrupp för $1 us:',
 	'layouts_unknown' => 'Onbikannt',
+	'layouts_tagline' => "Hee die Sigg woode met dämm Läj_aut '''$1''' opjebout.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -297,6 +303,9 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'layouts_title' => 'Opprett ei sida',
+	'layouts_continue' => 'Hald fram',
+	'layouts_choosecategory' => 'Vel ein kategori for $1:',
+	'layouts_unknown' => 'Ukjend',
 );
 
 /** Occitan (Occitan)
@@ -392,6 +401,7 @@ $messages['te'] = array(
 	'layouts_title' => 'ఒక పేజీని సృష్టించండి',
 	'layouts_continue' => 'కొనసాగించు',
 	'layouts_choosecategory' => '$1కి ఒక వర్గాన్ని ఎంచుకోండి:',
+	'layouts_tagline' => "ఈ పేజీ '''$1''' అమరిక ద్వారా తయారైంది.",
 );
 
 /** Tagalog (Tagalog)

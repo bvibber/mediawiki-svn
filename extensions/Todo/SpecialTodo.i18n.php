@@ -187,6 +187,41 @@ $messages['bs'] = array(
 	'todo-form-details' => 'Detalji:',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'todo' => 'Seznam úkolů',
+	'todo-desc' => 'Osobní [[Special:Todo|seznam úkolů]] (experimentální rozšíření)',
+	'todo-tab' => 'seznam úkolů',
+	'todo-new-queue' => 'nová',
+	'todo-mail-subject' => 'Dokončený úkol ze seznamu uživatele $1',
+	'todo-mail-body' => 'Žádali jste o potvrzovací email po dokončení úkolu, který jste poslali do seznamu úloh uživatele $1.
+
+Úkol: $2
+Posláno: $3
+
+Tento úkol byl označen jako dokončený s tímto komentářem:
+$4',
+	'todo-invalid-item' => 'Chybějící nebo neplatný úkol',
+	'todo-update-else-item' => 'Pokoušíte se aktualizovat úkoly někoho jiného',
+	'todo-unrecognize-type' => 'Nerozpoznaný typ',
+	'todo-user-invalide' => 'Zadaný úkol je neplatný, chybí nebo uživatel nepoužívá seznam úkolů.',
+	'todo-item-list' => 'Vaše úkoly',
+	'todo-no-item' => 'Žádné úkoly.',
+	'todo-invalid-owner' => 'Vlastník této položky je neplatný',
+	'todo-add-queue' => 'Přidat frontu…',
+	'todo-move-queue' => 'Přesunout do fronty…',
+	'todo-list-for' => 'Seznam úkolů uživatele',
+	'todo-list-change' => 'Změnit',
+	'todo-list-cancel' => 'Zrušit',
+	'todo-new-item' => 'Nový úkol',
+	'todo-issue-summary' => 'Shrnutí problému:',
+	'todo-form-details' => 'Podrobnosti:',
+	'todo-form-email' => 'Dostávat upozornění emailem, pokud bude úkol uzavřen. Napište svoji adresu sem:',
+	'todo-form-submit' => 'Odeslat požadavek',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -264,9 +299,13 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'todo' => 'Tasklisto',
+	'todo-desc' => 'Eksperimenta persona etendilo [[Special:Todo|tasklisto]]',
 	'todo-tab' => 'tasko',
 	'todo-new-queue' => 'nova',
+	'todo-item-list' => 'Viaj taskoj',
+	'todo-no-item' => 'Neniuj taskoj.',
 	'todo-add-queue' => 'Aldoni atendovico…',
+	'todo-list-for' => 'Tasklisto por',
 	'todo-list-change' => 'Ŝanĝu',
 	'todo-list-cancel' => 'Nuligi',
 	'todo-new-item' => 'Nova aĵo',
@@ -617,6 +656,7 @@ $messages['lb'] = array(
 	'todo-new-queue' => 'nei',
 	'todo-invalid-item' => 'Keen oder ongëltegen Objet',
 	'todo-update-else-item' => "Versuch engem anere seng Objeten z'aktualiséieren",
+	'todo-unrecognize-type' => 'Onbekannten Typ',
 	'todo-item-list' => 'Är Objeten',
 	'todo-no-item' => 'Keng Objeten op der Lëscht vun den Aufgaben.',
 	'todo-list-for' => 'Lëscht vun den Aufgabe fir',
@@ -625,6 +665,7 @@ $messages['lb'] = array(
 	'todo-new-item' => 'Neien Objet',
 	'todo-issue-summary' => 'Resumé vun der Aufgab:',
 	'todo-form-details' => 'Detailer:',
+	'todo-form-submit' => 'Ufro starten',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -1038,6 +1079,7 @@ $messages['te'] = array(
 	'todo-new-queue' => 'కొత్తది',
 	'todo-unrecognize-type' => 'గుర్తుతెలియని రకం',
 	'todo-item-list' => 'మీ అంశాలు',
+	'todo-no-item' => 'చేయాల్సిన అంశాలేమీ లేవు.',
 	'todo-list-change' => 'మార్చు',
 	'todo-list-cancel' => 'రద్దుచేయి',
 	'todo-new-item' => 'కొత్త అంశం',

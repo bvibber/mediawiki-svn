@@ -51,6 +51,15 @@ $messages['bg'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Създаването на сметки беше автоматично спряно за малко заради необичайно големия брой опити за влизане. Изчакайте няколко минути и опитайте отново.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Vytváření účtů bylo na chvíli automaticky vypnuto z důvodů neobyčejně vysokého počtu pokusů o přihlášení v poslední době. Prosím, chvíli počkejte a zkuste to znovu později.',
+	'acct_creation_global_hard_throttle_hit' => 'Tvorba účtů byla na několik sekund automaticky vypnuta z důvodů zabránění útoku hromadné registrace. Prosím, chvíli počkejte a znovu odešlete formulář kliknutím na tlačítko „Znovu načíst“ ve vašem prohlížeči.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Omezí rychlost vytváření uživatelských účtů',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

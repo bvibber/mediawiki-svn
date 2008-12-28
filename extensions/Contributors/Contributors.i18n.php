@@ -215,17 +215,21 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Danny B.
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
 	'contributors' => 'Přispěvatelé',
 	'contributors-desc' => 'Shrnuje hlavní přispěvatele na stránku',
 	'contributors-toolbox' => 'Hlavní přispěvatelé',
+	'contributors-legend' => 'Zobrazit seznam hlavních přispěvatelů stránky',
 	'contributors-target' => 'Název:',
 	'contributors-submit' => 'Zobrazit',
 	'contributors-subtitle' => 'Hlavní přispěvatelé článku $1',
+	'contributors-others-long' => '{{plural:$1|Existuje další přispěvatel|Existují další $1 přispěvatelé|Existuje dalších $1 přispěvatelů}} tohoto článku.',
 	'contributors-others' => 'a $1 {{PLURAL:$1|další|další|dalších}}',
 	'contributors-badtitle' => 'Neplatný název.',
+	'contributors-nosuchpage' => 'Stránka $1 neexistuje.',
 );
 
 /** Danish (Dansk)
@@ -1277,10 +1281,12 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'contributors' => '贡献者',
+	'contributors-desc' => '将主要参与者汇总到一页',
 	'contributors-toolbox' => '主要贡献者',
 	'contributors-legend' => '列示这篇条目的主要贡献者',
 	'contributors-target' => '标题:',

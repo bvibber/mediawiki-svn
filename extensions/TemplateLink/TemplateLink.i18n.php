@@ -75,6 +75,16 @@ $messages['bg'] = array(
 	'templatelink_empty' => 'Необходимо е да се въведе параметър.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'templatelink' => 'Odkaz šablony',
+	'templatelink_desc' => 'Toto rozšíření dokáže zobrazit šablonu jako novou stránku',
+	'templatelink_empty' => 'Musíte zadat parametr.',
+	'templatelink_newtitle' => '$1 (vložená)',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

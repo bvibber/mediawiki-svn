@@ -69,6 +69,15 @@ $messages['bs'] = array(
 	'right-forcepreviewexempt' => 'Može sačuvati izmjene bez obaveznog prikaza izgleda',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'forcepreview' => 'Uložit stránku (nejprve použijte náhled)',
+	'forcepreview-desc' => 'Vynucování náhledu u neprivilegovaných uživatelů',
+	'right-forcepreviewexempt' => 'Ukládání stránky bez používání náhledu',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author sokai

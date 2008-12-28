@@ -51,6 +51,13 @@ $messages['af'] = array(
 	'sitematrix-fishbowl' => 'wysiging beperk',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'sitematrix-language' => 'ቋንቋ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

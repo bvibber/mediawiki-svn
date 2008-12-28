@@ -224,6 +224,13 @@ $messages['eo'] = array(
 	'watchers_less_than_x' => 'Malpli ol $1 {{PLURAL:$1|uzanto|uzantoj}} atentas ĉi tiun paĝon.',
 );
 
+/** Spanish (Español)
+ * @author Imre
+ */
+$messages['es'] = array(
+	'watchers' => 'Vigilantes',
+);
+
 /** Finnish (Suomi)
  * @author Silvonen
  */

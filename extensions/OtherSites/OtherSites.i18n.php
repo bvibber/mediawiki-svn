@@ -165,10 +165,12 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
 	'othersites' => '他のサイト',
+	'othersites-desc' => '言語リンク以外のインターウィキリンクを独自のポートレットに移動する',
 );
 
 /** Khmer (ភាសាខ្មែរ)

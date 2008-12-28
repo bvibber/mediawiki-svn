@@ -630,15 +630,17 @@ $messages['ro'] = array(
 	'talkhere-addcomment' => 'adaugă comentariu',
 );
 
-/** Russian (Русский) */
+/** Russian (Русский)
+ * @author Aleksandrit
+ */
 $messages['ru'] = array(
-	'talkhere-foottext' => 'Вы можете оставить свои комментиии к этой статье в нижней части страницы.
+	'talkhere-foottext' => 'Вы можете оставить свои комментарии к этой статье в нижней части страницы.
 
-Администратоы этого сайта не несут ответственность за содержание комментариев к статьям расположенным на сайте.',
-	'talkhere-talkpage' => 'Страница Обсуждение',
+Администраторы этого сайта не несут ответственность за содержание комментариев к статьям, расположенным на сайте.',
+	'talkhere-talkpage' => 'страница обсуждения',
 	'talkhere-notalk' => "''(Комментарии пока отсутствуют)''",
-	'talkhere-addcomment' => 'Добавьте Ваш комментарий',
-	'talkhere-beforeinput' => 'Добавьте Ваш комментарий ниже.',
+	'talkhere-addcomment' => 'Добавьте ваш комментарий',
+	'talkhere-beforeinput' => 'Добавьте ваш комментарий ниже.',
 	'talkhere-loading' => 'Загрузка модуля редактирования...',
 	'talkhere-collapse' => 'Скрыть модуль редактирования',
 );
@@ -723,6 +725,21 @@ $messages['tg-cyrl'] = array(
 $messages['tr'] = array(
 	'talkhere-talkpage' => 'Tartışma sayfası',
 	'talkhere-addcomment' => 'Yorumu ekle',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'talkhere-foottext' => 'Ви можете залишити свої коментарі до цієї статті в нижній частині сторінки. 
+
+Адміністратори цього сайту не несуть відповідальність за зміст коментарів до статей, що розташовані на сайті.',
+	'talkhere-talkpage' => 'сторінка обговорення',
+	'talkhere-notalk' => "''(Коментарі поки що відсутні)''",
+	'talkhere-addcomment' => 'Додайте ваш коментар',
+	'talkhere-beforeinput' => 'Додайте ваш коментар нижче.',
+	'talkhere-loading' => 'Завантаження модуля редагування…',
+	'talkhere-collapse' => 'Приховати модуль редагування',
 );
 
 /** Vietnamese (Tiếng Việt)

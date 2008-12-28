@@ -89,6 +89,7 @@ $messages['bg'] = array(
  * @author ChrisiPK
  * @author Imre
  * @author Melancholie
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'minipreview-desc' => 'MiniVorschau zeigt neben einem Bild eine kleine Vorschau von anderen Medien in derselben Kategorie oder auf derselben Seite an',
@@ -96,7 +97,7 @@ $messages['de'] = array(
 	'minipreview-files_in_gallery' => "'''$1''' {{PLURAL:$1|Datei|Dateien}} (gesamt) in dieser Galerie.",
 	'minipreview-no_more_files_here' => 'Keine weiteren Dateien in dieser Richtung.',
 	'minipreview-no_category_gallery' => 'Keine Kategorien oder Galerien!',
-	'minipreview-ignore_categories' => 'Im Folgenden eine Liste von Kategorienamen und Namensanfängen. Diese Kategorien werden nicht im MiniPreview angezeigt. Zum Beispiel zeigt "* PD-" nicht alle Kategorien an, die mit "PD-" (wie "PD-old") anfangen.
+	'minipreview-ignore_categories' => 'Im Folgenden eine Liste von Kategorienamen und Namensanfängen. Diese Kategorien werden nicht im MiniPreview angezeigt. Zum Beispiel zeigt „* PD-“ nicht alle Kategorien an, die mit „PD-“ (wie „PD-old“) anfangen.
 * GFDL-
 * GFDL
 * CC-
@@ -136,6 +137,15 @@ $messages['eo'] = array(
 	'minipreview-files_in_gallery' => '$1 {{PLURAL:$1|dosiero|dosieroj}} entute en ĉi tiu galerio.',
 	'minipreview-no_more_files_here' => 'Neniuj pluaj dosieroj en ĉi tiu direkto.',
 	'minipreview-no_category_gallery' => 'Neniuj kategorioj aŭ galerioj!',
+);
+
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'minipreview-files_in_category' => "Tämä luokka sisältää '''$1''' {{PLURAL:$1|tiedoston|tiedostoa}}.",
+	'minipreview-files_in_gallery' => "Tämä galleria sisältää '''$1''' {{PLURAL:$1|tiedoston|tiedostoa}}.",
+	'minipreview-no_category_gallery' => 'Luokkia tai gallerioita ei ole!',
 );
 
 /** French (Français)

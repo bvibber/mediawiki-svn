@@ -442,9 +442,11 @@ $messages['sah'] = array(
 
 /** Sicilian (Sicilianu)
  * @author Gmelfi
+ * @author Santu
  */
 $messages['scn'] = array(
 	'absenteelandlord-reason' => "Lu databbasi fu autumaticamenti bluccatu a causa di l'inattività di l'amministratura.",
+	'absenteelandlord-desc' => "Blocca autumàticamenti lu database di na wiki si tutti l'amministraturi soi non sunnu attivi pi quarchi tempu",
 );
 
 /** Slovak (Slovenčina)

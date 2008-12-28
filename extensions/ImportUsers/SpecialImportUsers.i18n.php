@@ -183,6 +183,32 @@ $messages['ch'] = array(
 	'importusers-uploadfile' => "Na'kåtga hulu' i atkibu",
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'importusers' => 'Importovat uživatele',
+	'importusers-desc' => 'Hromadný [[Special:ImportUsers|import uživatelů]] z CSV souboru v kódování UTF-8',
+	'importusers-uploadfile' => 'Nahrát soubor',
+	'importusers-form-caption' => 'Vstupní CSV soubor (UTF-8)',
+	'importusers-form-file' => 'Formát souboru uživatelů (csv):',
+	'importusers-form-replace-present' => 'Nahradit existující uživatele',
+	'importusers-form-button' => 'Importovat',
+	'importusers-user-added' => 'Uživatel <b>%s</b> byl přidán.',
+	'importusers-user-present-update' => 'Uživatel <b>%s</b> již existuje. Aktualizován.',
+	'importusers-user-present-not-update' => 'Uživatel <b>%s</b> již existuje. Neaktualizován.',
+	'importusers-user-invalid-format' => 'Údaje na řádku #%s mají neplatný formát anebo je řádek prázdný. Přeskočeno.',
+	'importusers-log' => 'Kniha importů',
+	'importusers-log-summary' => 'Shrnutí',
+	'importusers-log-summary-all' => 'Vše',
+	'importusers-log-summary-added' => 'Přidané',
+	'importusers-log-summary-updated' => 'Aktualizované',
+	'importusers-login-name' => 'Přihlašovací jméno',
+	'importusers-password' => 'heslo',
+	'importusers-email' => 'e-mail',
+	'importusers-realname' => 'skutečné jméno',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

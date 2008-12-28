@@ -139,10 +139,28 @@ $messages['bg'] = array(
 );
 
 /** Czech (Česky)
+ * @author Danny B.
  * @author Mormegil
  */
 $messages['cs'] = array(
+	'passwordreset' => 'Reset hesla',
+	'passwordreset-desc' => 'Umožňuje [[Special:PasswordReset|vygenerování nového hesla uživateli]]. Vyžaduje oprávnění „passwordreset“.',
+	'passwordreset-invalidusername' => 'Neplatné uživatelské jméno',
+	'passwordreset-emptyusername' => 'Nevyplněné uživatelské jméno',
+	'passwordreset-nopassmatch' => 'Hesla se neshodují',
+	'passwordreset-badtoken' => 'Neplatný editační token',
+	'passwordreset-username' => 'Uživatelské jméno:',
 	'passwordreset-newpass' => 'Nové heslo:',
+	'passwordreset-confirmpass' => 'Potvrdit heslo:',
+	'passwordreset-submit' => 'Resetovat heslo',
+	'passwordreset-success' => 'Heslo uživatele s ID $1 bylo resetováno',
+	'passwordreset-disableuser' => 'Deaktivovat uživatelský účet?',
+	'passwordreset-disableuserexplain' => '(nastaví neplatný hash hesla – uživatel se tak nebude moci přihlásit)',
+	'passwordreset-disablesuccess' => 'Uživatelský účet pro uživatelské ID $1 byl deaktivovaný',
+	'passwordreset-accountdisabled' => 'Účet byl deaktivovaný',
+	'disabledusers' => 'Deaktivovaní uživatelé',
+	'disabledusers-summary' => 'Toto je seznam uživatelů, kteří byli deaktivováni pomocí PasswordReset.',
+	'right-passwordreset' => 'Reset hesla uživatele ([[Special:PasswordReset|speciální stránka]])',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -249,7 +267,7 @@ $messages['fi'] = array(
 	'passwordreset-accountdisabled' => 'Käyttäjätunnus on poistettu käytöstä',
 	'disabledusers' => 'Käytöstä poistetut tunnukset',
 	'disabledusers-summary' => 'Tämä on luettelo käyttäjistä, joiden tunnus on poistettu käytöstä PasswordResetillä.',
-	'right-passwordreset' => 'Alusta käyttäjän salasana ([[Special:PasswordReset|Alustussivu]])',
+	'right-passwordreset' => 'Alustaa käyttäjän salasana ([[Special:PasswordReset|toimintosivu alustamiseen]])',
 );
 
 /** French (Français)
@@ -467,9 +485,9 @@ $messages['ia'] = array(
 	'passwordreset-emptyusername' => 'Nomine de usator vacue',
 	'passwordreset-nopassmatch' => 'Le contrasignos non es identic',
 	'passwordreset-badtoken' => 'Indicio de modification invalide',
-	'passwordreset-username' => 'Nomine de usator',
-	'passwordreset-newpass' => 'Nove contrasigno',
-	'passwordreset-confirmpass' => 'Confirma contrasigno',
+	'passwordreset-username' => 'Nomine de usator:',
+	'passwordreset-newpass' => 'Nove contrasigno:',
+	'passwordreset-confirmpass' => 'Confirma contrasigno:',
 	'passwordreset-submit' => 'Reinitiar contrasigno',
 	'passwordreset-success' => 'Le contrasigno ha essite reinitiate pro le usator con ID: $1',
 	'passwordreset-disableuser' => 'Disactivar conto de usator?',
@@ -630,16 +648,19 @@ $messages['lb'] = array(
 	'passwordreset-invalidusername' => 'Onbekannte Benotzernumm',
 	'passwordreset-emptyusername' => 'Eidele Benotzernumm',
 	'passwordreset-nopassmatch' => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
+	'passwordreset-badtoken' => 'Ännerungs-Jeton net valabel',
 	'passwordreset-username' => 'Benotzernumm:',
 	'passwordreset-newpass' => 'Neit Passwuert:',
 	'passwordreset-confirmpass' => 'Passwuert widderhuelen:',
 	'passwordreset-submit' => 'Passwuert zrécksetzen',
 	'passwordreset-success' => "Passwuert fir d'Benotzernummer (User_id) $1 gouf zréckgesat",
 	'passwordreset-disableuser' => 'Benotzerkont deaktivéieren?',
+	'passwordreset-disableuserexplain' => '(en net vvalabele Passwuert-"Hash" setzen - de Benotzer ka sechnet aloggen)',
 	'passwordreset-disablesuccess' => 'De benotzerkont gouf desaktivéiert (Benotzernummer/user ID:$1)',
 	'passwordreset-accountdisabled' => 'De Benotzerkont gouf desaktivéiert',
 	'disabledusers' => 'Desaktivéiert Benotzer',
 	'disabledusers-summary' => 'Dëst ass eng Lëscht vun den, iwwer PasswordReset, deaktivéierte Benotzer.',
+	'right-passwordreset' => 'Passwuert vun engem Benotzer zrécksetzen ([[Special:PasswordReset|Spezialsäit]])',
 );
 
 /** Limburgish (Limburgs)

@@ -201,6 +201,7 @@ používejte s rozmyslem.",
 	'querybtn' => 'Odeslat dotaz',
 	'selectonly' => 'Jsou povoleny dotazy pouze pro čtení.',
 	'querysuccessful' => 'Dotaz byl úspěšně dokončen',
+	'right-asksql' => 'Zadávání SQL požadavků',
 );
 
 /** Danish (Dansk)
@@ -847,13 +848,15 @@ $messages['sah'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Santu
  * @author Tonyfroio
  */
 $messages['scn'] = array(
 	'asksql' => 'Query SQL',
+	'asksql-desc' => 'Fai query SQL attraversu na [[Special:Asksql|pàggina spiciali]]',
 	'asksqltext' => "Lu mòdulu riportatu ccà sutta cunzenti di esequiri query diretti supra lu databbasi.
-Usari apici singuli ('comu chisti') pi nnicari li stringhi costanti.
-Chista funzioni pò èssiri moltu pisanti pô server, pirciò
+Usari apici sìnguli ('comu chisti') pi nnicari li stringhi custanti.
+Chista funzioni pò èssiri assai pisanti pô server, pirciò
 si prega di usàrila cu giudizziu.",
 	'sqlislogged' => 'Accura: tutti li query vennu arriggistrati.',
 	'sqlquery' => 'Nzeriri la query',

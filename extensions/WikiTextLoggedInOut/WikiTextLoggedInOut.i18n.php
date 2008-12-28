@@ -253,3 +253,10 @@ $messages['vec'] = array(
 	'wikitextloggedinout-desc' => "Dó hook del parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt> par far védar testi difarenti a seconda del stato de login de l'utente",
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'wikitextloggedinout-desc' => '使用<tt>&lt;loggedin&gt;</tt> 与 <tt>&lt;loggedout&gt;</tt>这两个解析挂钩，就可以根据用户登录的状态显示不同的文字',
+);
+

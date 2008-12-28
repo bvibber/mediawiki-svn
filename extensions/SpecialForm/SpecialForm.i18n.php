@@ -976,11 +976,16 @@ $messages['te'] = array(
 	'form' => 'ఫారం',
 	'formnoname' => 'ఫారం పేరు లేదు',
 	'formnonametext' => 'మీరు తప్పనిసరిగా ఫారానికి ఓ పేరు, "Special:Form/Nameofform" వంటిది ఇవ్వాలి.',
+	'formbadname' => 'తప్పుడు ఫారం పేరు',
 	'formbadnametext' => 'అటువంటి పేరుతో ఫారం లేదు.',
 	'formsave' => 'భద్రపరచు',
 	'formarticleexists' => 'పేజీ ఉంది',
 	'formarticleexiststext' => '[[$1]] అనే పేజీ ఇప్పటికే ఉంది.',
 	'formbadpagename' => 'తప్పుడు పేజీ పేరు',
+	'formbadrecaptcha' => 'రీకాప్చాకి తప్పుడు విలువలు. మళ్ళీ ప్రయత్నించండి.',
+	'formsavesummary' => '[[Special:Form/$1|$1 ఫారాన్ని]] వాడి కొత్త పేజీ',
+	'formsaveerror' => 'ఫారాన్ని భద్రపరచడంలో పొరపాటు',
+	'formsaveerrortext' => "'$1' పేజీని భద్రపరచడంలో ఏదో తెలియని పొరపాటు జరిగింది.",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -1007,6 +1012,14 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'formsave' => 'บันทึก',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'formsave' => 'Зберегти',
+	'formarticleexists' => 'Сторінка існує',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

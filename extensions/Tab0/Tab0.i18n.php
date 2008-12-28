@@ -75,6 +75,13 @@ $messages['es'] = array(
 	'tab0-desc' => 'Añade la pestaña «0», un enlace para editar la sección inicial de la página.',
 );
 
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'tab0-desc' => 'Lisää ”0”-välilehden, joka linkittää sivun ensimmäisen osan muokkaussivulle.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Verdy p

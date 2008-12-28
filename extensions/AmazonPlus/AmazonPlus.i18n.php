@@ -160,6 +160,14 @@ $messages['eo'] = array(
 	'amazonplus-cp-none' => 'Nenia',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'amazonplus-nores' => 'Viga: tulemusi ei leitud!',
+	'amazonplus-new' => 'uus',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Mobe

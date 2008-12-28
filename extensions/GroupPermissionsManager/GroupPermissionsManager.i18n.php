@@ -1163,6 +1163,8 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'grouppermissions-sort-misc' => '기타',
 	'grouppermissions-log-add' => '"$2" 그룹을 추가함',
+	'grouppermissions-log-change' => '"$2" 그룹에 대한 권한을 변경',
+	'grouppermissions-sp-save' => '저장',
 	'right-viewsource' => '보호된 문서의 내용 보기',
 );
 

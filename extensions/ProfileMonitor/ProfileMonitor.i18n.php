@@ -666,10 +666,12 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'profiling' => '检核数据',
+	'profiling-desc' => '[[Special:Profiling|特殊页面]]用以查找和检查配置信息',
 	'profiling-process' => '处理字串:',
 	'profiling-wildcard' => '使用通配符',
 	'profiling-ok' => '确定',

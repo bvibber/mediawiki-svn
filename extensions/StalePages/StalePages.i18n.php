@@ -328,6 +328,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'stalepages' => 'పాచి పేజీలు',
+	'stalepages-desc' => 'ఇటీవల మార్పులేమీ జరగని [[Special:Stalepages|పేజీల జాబితా]]ని తయారుచేస్తుంది',
 	'stalepages-summary' => 'గత $1 రోజులుగా ఎటువంటి మార్పులూ లేని పేజీల జాబితా ఇది.',
 );
 

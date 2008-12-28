@@ -124,6 +124,18 @@ $messages['ch'] = array(
 	'randomincategory-submit' => 'Hånao',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'randomincategory' => 'Náhodná stránka v kategorii',
+	'randomincategory-desc' => '[[Special:Randomincategory|Speciální stránka]] na výběr náhodné stránky z kategorie',
+	'randomincategory-toolbox' => 'Náhodná stránka',
+	'randomincategory-nocategory' => 'Kategorie „$1“ neexistuje nebo je prázdná',
+	'randomincategory-label' => 'Kategorie:',
+	'randomincategory-submit' => 'Jít na',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
@@ -585,6 +597,7 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'randomincategory' => 'Pagină aleatorie în categorie',
 	'randomincategory-toolbox' => 'Pagină aleatorie',
 	'randomincategory-nocategory' => 'Categoria $1 nu există sau este goală',
 	'randomincategory-label' => 'Categorie:',

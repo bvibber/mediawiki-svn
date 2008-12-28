@@ -127,6 +127,14 @@ $messages['br'] = array(
 	'sitenotice-desc' => 'Aotren a ra an implijerien da serriñ ar sitenotice',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'sitenotice_close' => 'sakrij',
+	'sitenotice-desc' => 'Omogućuje korisnicima da zatvore središnje obavještenje',
+);
+
 /** Catalan (Català)
  * @author SMP
  */
@@ -643,6 +651,14 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'sitenotice_close' => 'кистээ',
 	'sitenotice-desc' => 'Саайт биллэриилэрин көрбөт гынар',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'sitenotice_close' => 'ammuccia',
+	'sitenotice-desc' => "Pirmetti a l'utenti di chiudiri lu sitenotice",
 );
 
 /** Sassaresu (Sassaresu)

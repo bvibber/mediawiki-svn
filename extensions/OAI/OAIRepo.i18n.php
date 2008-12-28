@@ -251,6 +251,13 @@ $messages['nl'] = array(
 	'oai-desc' => 'Biedt een interface naar de [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH-repository]',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'oai-desc' => 'Gjev tilgjenge til [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]-grensesnittet',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

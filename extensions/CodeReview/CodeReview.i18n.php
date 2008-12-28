@@ -1202,7 +1202,7 @@ $messages['fa'] = array(
 	'code-status-deferred' => 'معوق',
 	'code-pathsearch-legend' => 'جستجوی نسخه‌ها در این مخزن بر اساس مسیر',
 	'code-pathsearch-path' => 'مسیر:',
-	'code-rev-submit' => 'ذخیره تغییرات',
+	'code-rev-submit' => 'ذخیرهٔ تغییرات',
 	'code-rev-submit-next' => 'ذخیره و حرکت به مورد حل نشدهٔ بعدی',
 	'codereview-reply-link' => 'پاسخ',
 	'codereview-email-subj' => '[$1] [r$2]: نظر جدید اضافه شد',
@@ -2140,8 +2140,13 @@ $messages['ja'] = array(
 	'code-rev-rev' => 'リビジョン:',
 	'code-rev-status' => '状況:',
 	'code-rev-tags' => 'タグ:',
+	'code-rev-tag-add' => 'タグを追加:',
+	'code-rev-comment-submit' => 'コメント送信',
+	'code-rev-comment-preview' => 'プレビュー',
 	'code-pathsearch-path' => 'パス:',
 	'code-rev-submit' => '変更を保存',
+	'repoadmin-edit-bug' => 'Bugzilla パス:',
+	'repoadmin-edit-view' => 'ViewVC パス:',
 	'specialpages-group-developer' => '開発者用ツール',
 );
 
@@ -2320,6 +2325,7 @@ $4',
 	'repoadmin-new-label' => '저장소 이름:',
 	'repoadmin-new-button' => '생성',
 	'repoadmin-edit-path' => '저장소 경로:',
+	'repoadmin-edit-bug' => '버그질라 경로:',
 	'repoadmin-edit-button' => '확인',
 	'right-repoadmin' => '코드 저장소 관리',
 	'specialpages-group-developer' => '개발자 도구',
@@ -2662,6 +2668,89 @@ $messages['myv'] = array(
 $messages['nah'] = array(
 	'code-author-link' => '¿tiquitzonhuiliztīz?',
 	'code-status-ok' => 'quēmah',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'code' => 'Koodkuntrull',
+	'code-comments' => 'Kommentarn',
+	'code-change-status' => "hett den '''Status''' för disse Version ännert",
+	'code-change-tags' => "hett de '''Tags''' för disse Version ännert",
+	'code-change-removed' => 'rutnahmen:',
+	'code-change-added' => 'toföögt:',
+	'code-prop-changes' => 'Status- un Tag-Logbook',
+	'code-desc' => '[[Special:Code|Koodkuntrull-Warktüüch]], dat [[Special:RepoAdmin|Subversion]] ünnerstütt',
+	'code-no-repo' => 'Keen Repositorium instellt.',
+	'code-notes' => 'Kuntrull-Notizen',
+	'code-authors' => 'Autorn',
+	'code-tags' => 'Tags',
+	'code-authors-text' => 'Dit is de List vun de Autorn na de Reeg vun de Commits.',
+	'code-author-haslink' => 'Disse Autor is mit’n Wiki-Bruker $1 verbunnen',
+	'code-author-name' => 'Brukernaam ingeven:',
+	'code-author-success' => 'De Autor $1 is mit’n Wikibruker $2 verbunnen worrn',
+	'code-author-link' => 'verbinnen?',
+	'code-author-unlink' => 'trennen?',
+	'code-author-unlinksuccess' => 'De Autor $1 is trennt worrn',
+	'code-field-id' => 'Version',
+	'code-field-author' => 'Autor',
+	'code-field-user' => 'Kommentator',
+	'code-field-message' => 'Commit-Kommentar',
+	'code-field-status' => 'Status',
+	'code-field-timestamp' => 'Datum',
+	'code-field-comments' => 'Notizen',
+	'code-field-path' => 'Padd',
+	'code-field-text' => 'Notiz',
+	'code-rev-author' => 'Autor:',
+	'code-rev-date' => 'Datum:',
+	'code-rev-message' => 'Kommentar:',
+	'code-rev-repo' => 'Repositorium:',
+	'code-rev-rev' => 'Version:',
+	'code-rev-rev-viewvc' => 'in ViewVC',
+	'code-rev-paths' => 'Ännert Padden:',
+	'code-rev-modified-a' => 'toföögt',
+	'code-rev-modified-r' => 'utwesselt',
+	'code-rev-modified-d' => 'löscht',
+	'code-rev-modified-m' => 'ännert',
+	'code-rev-status' => 'Status:',
+	'code-rev-status-set' => 'Status ännern',
+	'code-rev-tags' => 'Tags:',
+	'code-rev-tag-add' => 'Tags tofögen:',
+	'code-rev-tag-remove' => 'Tags rutnehmen:',
+	'code-rev-comment-by' => 'Kommentar vun $1',
+	'code-rev-comment-submit' => 'Kommentar afschicken',
+	'code-rev-comment-preview' => 'Vörschau',
+	'code-rev-diff' => 'Verscheel',
+	'code-rev-diff-link' => 'Verscheel',
+	'code-rev-purge-link' => 'opfrischen',
+	'code-status-new' => 'nee',
+	'code-status-fixme' => 'fixme',
+	'code-status-reverted' => 'trüchdreit',
+	'code-status-resolved' => 'lööst',
+	'code-status-ok' => 'OK',
+	'code-status-deferred' => 'trüchstellt',
+	'code-pathsearch-path' => 'Padd:',
+	'code-rev-submit' => 'Ännern spiekern',
+	'codereview-reply-link' => 'antern',
+	'codereview-email-subj' => '[$1] [r$2]: Ne’en Kommentar toföögt',
+	'codereview-email-body' => 'Bruker „$1“ hett en Kommentarn to r$3 maakt.
+
+Vulle URL: $2
+
+Kommentar:
+
+$4',
+	'repoadmin' => 'Repositorium-Administratschoon',
+	'repoadmin-new-legend' => 'Nee Repositorium opstellen',
+	'repoadmin-new-label' => 'Naam vun dat Repositorium:',
+	'repoadmin-new-button' => 'Opstellen',
+	'repoadmin-edit-path' => 'Repositoriums-Padd:',
+	'repoadmin-edit-bug' => 'Bugzilla-Padd:',
+	'repoadmin-edit-view' => 'ViewVC-Padd:',
+	'repoadmin-edit-button' => 'OK',
+	'right-repoadmin' => 'Kood-Repositorien verwalten',
+	'specialpages-group-developer' => 'Developer-Warktüüch',
 );
 
 /** Dutch (Nederlands)
@@ -3894,6 +3983,14 @@ $messages['te'] = array(
 	'code-rev-submit' => 'మార్పులను భద్రపరచు',
 	'repoadmin-edit-button' => 'సరే',
 	'specialpages-group-developer' => 'వికాసకుల పనిముట్లు',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'code' => 'Баррасии Рамз',
+	'code-comments' => 'Тавзеҳот',
 );
 
 /** Thai (ไทย)

@@ -1205,6 +1205,7 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'review_error' => 'Ceva e greşit!',
 	'review_total_statistics' => 'Total',
 	'review_user_details_link' => '(detalii)',
 	'review_comment' => 'Comentariu',

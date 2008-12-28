@@ -35,6 +35,13 @@ $messages['bg'] = array(
 	'psinotocnum-desc' => 'Нова вълшебна думичка „<nowiki>__NOTOCNUM__</nowiki>“',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'psinotocnum-desc' => 'Nové magické slovo <code><nowiki>__NOTOCNUM__</nowiki></code>',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Umherirrender
@@ -72,10 +79,11 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Mobe
  */
 $messages['fi'] = array(
-	'psinotocnum-desc' => 'Lisää uuden taikasanan "<nowiki>__NOTOCNUM__</nowiki>".',
+	'psinotocnum-desc' => 'Lisää uuden taikasanan <nowiki>__NOTOCNUM__</nowiki>.',
 );
 
 /** French (Français) */

@@ -315,6 +315,9 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'stalkerlog-desc' => 'వాడుకరుల యొక్క ప్రవేశ మరియు నిష్క్రమణల [[Special:Log/stalkerlog|చిట్టా]]ని చేరుస్తుంది',
+	'stalkerlog-log-login' => 'లోనికి ప్రవేశించారు.',
+	'stalkerlog-log-logout' => 'నిష్క్రమించారు.',
 	'stalkerlog-log-text' => 'ఇది వాడుకరి ప్రవేశాలు మరియు నిష్క్రమణల చిట్టా.',
 );
 

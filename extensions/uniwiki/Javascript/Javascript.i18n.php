@@ -58,9 +58,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Mobe
+ * @author Nike
  */
 $messages['fi'] = array(
-	'javascript-desc' => 'Lisää jokaiselle sivulle uniwiki.js koodin, joka sisältää Uniwiki laajennusten yhteisen JavaScript -ohjelman.',
+	'javascript-desc' => 'Lisää jokaiselle sivulle uniwiki.js-koodin, joka sisältää Uniwikin laajennusten yhteiset JavaScript-koodit.',
 );
 
 /** French (Français)

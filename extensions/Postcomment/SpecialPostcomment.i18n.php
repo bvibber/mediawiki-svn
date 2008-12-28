@@ -128,6 +128,24 @@ $messages['de'] = array(
 	'postcomment_nopostingtoadd' => 'Nichts zum Hinzufügen.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'postcomment_desc' => 'Zmóžnja wužywarjam komentary direktnje do diskusijnych bokow pósłaś.',
+	'postcomment_discussionprotected' => 'Toś ten diskusijny bok jo se šćitał pśeśiwo dalšnym powěźeńkam.',
+	'postcomment_notloggedin' => 'Njejsy se pśizjawił.',
+	'postcomment_youareloggedinas' => 'Sy ako $1 pśizjawony.',
+	'postcomment_addcommentdiscussionpage' => 'Pśidaj swój komentar na toś tom diskusijnem boku',
+	'postcomment_leavemessagefor' => 'Powěsć za $1 zawóstajiś',
+	'postcomment_post' => 'Pósłaś',
+	'postcomment_on' => '&nbsp;',
+	'postcomment_said' => 'jo napisał',
+	'postcomment_invalidrequest' => 'Njepłaśiwe napšašowanje.',
+	'postcomment_replyto' => 'Wótegrono na $1',
+	'postcomment_nopostingtoadd' => 'Njejo nic za pśidaśe.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

@@ -642,6 +642,8 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'crossnamespacelinks' => 'Lenkjer mellom namnerom',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Listar opp lenkjer mellom namnerom]] som ikkje burde vera til på {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Denne sida gjev ei lista over lenkjer frå sider i hovudnamnerommet til sider i andre namnerom (utanom namneromma {{ns:special}}, {{ns:talk}}, {{ns:project}} og {{ns:template}}), som det er frårådd å nytta.',
+	'crossnamespacelinkstext' => '$1:  {{PLURAL:$2|éi lenkja|$2 lenkjer}} til $3',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -651,8 +653,8 @@ $messages['nn'] = array(
 $messages['no'] = array(
 	'crossnamespacelinks' => 'Lenker mellom navnerom',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Lister opp lenker mellom navnerom]] som ikke burde finnes på {{SITENAME}}',
-	'crossnamespacelinks-summary' => 'Denne sida gjev ei lista over lenkjer frå sider i hovudnamnerommet til sider i andre namnerom (utanom namneromma {{ns:special}}, {{ns:talk}}, {{ns:project}} og {{ns:template}}), som det er frårådd å nytta.',
-	'crossnamespacelinkstext' => '$1:  {{PLURAL:$2|éi lenkja|$2 lenkjer}} til $3',
+	'crossnamespacelinks-summary' => 'Denne siden gir ei liste over lenker fra sider i hovednavnerommet til sider i andre navnerom (utenom navnerommene {{ns:special}}, {{ns:talk}}, {{ns:project}} og {{ns:template}}), som det er frarådd å bruke.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lenke|lenker}} til $3',
 );
 
 /** Northern Sotho (Sesotho sa Leboa)

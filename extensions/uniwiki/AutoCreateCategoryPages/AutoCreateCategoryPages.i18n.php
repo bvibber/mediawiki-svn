@@ -33,6 +33,17 @@ $messages['bg'] = array(
 Тя съдържа всички страници в категория „$1“ както и всички подкатегории на категорията „$1“, ако такива са налични.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'autocreatecategorypages-desc' => 'Při ukládání automaticky vytváří chybějící stránky kategorií',
+	'autocreatecategorypages-stub' => 'Toto je stránka kategorie.
+Obsahuje všechny stránky v kategorii „$1“ a také všechny podkategorie kategorie „$1“ pokud nějaké existují.',
+	'autocreatecategorypages-createdby' => 'Automaticky vytvořené rozšířením AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Automatická tvorba kategorií',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -222,14 +233,15 @@ Afişează toate paginile din categoria "$1" şi toate subcategoriile categoriei
 );
 
 /** Russian (Русский)
+ * @author Aleksandrit
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'autocreatecategorypages-desc' => 'Создаёт отсутствующие категории автоматически при созранении',
+	'autocreatecategorypages-desc' => 'Создаёт отсутствующие категории автоматически при сохранении',
 	'autocreatecategorypages-stub' => 'Это страница категории.
 На ней перечислены все страницы из категории «$1», а также все подкатегории категории «$1», если они существуют.',
 	'autocreatecategorypages-createdby' => 'Создана автоматически с помощью расширения AutoCreateCategoryPages.',
-	'autocreatecategorypages-editor' => 'Автоматический создатель категрий',
+	'autocreatecategorypages-editor' => 'Автоматический создатель категорий',
 );
 
 /** Slovak (Slovenčina)
@@ -249,5 +261,16 @@ Obsahuje všetky stránky v kategórii „$1“ ako aj všeky podkategórie kate
 $messages['te'] = array(
 	'autocreatecategorypages-stub' => 'ఇది వర్గపు పేజీ.
 "$1" వర్గంలోని అన్ని పేజీలను మరియు ఏవైనా ఉపవర్గాలని ఈ పేజీ చూపిస్తుంది.',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'autocreatecategorypages-desc' => 'Створює всі категорії автоматично при збереженні',
+	'autocreatecategorypages-stub' => 'Це сторінка категорії. 
+На ній перераховані всі сторінки з категорії «$1», а також всі підкатегорії категорії «$1», якщо вони існують.',
+	'autocreatecategorypages-createdby' => 'Створена автоматично за допомогою розширення AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Автоматичний творець категорій',
 );
 

@@ -38,6 +38,36 @@ Warning: the refresh may take a while on larger wikis.',
 	'right-refreshspecial' => 'Refresh special pages',
 );
 
+/** Message documentation (Message documentation)
+ * @author Jack Phoenix
+ * @author Purodha
+ * @author Siebrand
+ */
+$messages['qqq'] = array(
+	'refreshspecial' => '{{Identical|Refresh special pages}}
+Title of Special:RefreshSpecial as displayed on Special:SpecialPages.',
+	'refreshspecial-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'refreshspecial-title' => '{{Identical|Refresh special pages}}
+Title of the special page Special:RefreshSpecial',
+	'refreshspecial-help' => 'Help displayed to the user on Special:RefreshSpecial. "Refresh selected" comes from {{msg-mw|refreshspecial-button}}.',
+	'refreshspecial-button' => 'Text displayed on the button on Special:RefreshSpecial. Clicking on the button refreshes the selected special pages.',
+	'refreshspecial-fail' => 'Failure message displayed if no special pages were checked to refresh.',
+	'refreshspecial-refreshing' => '{{Identical|Refreshing special pages}}
+Text displayed in the subtitle below the actual page title once the user has pressed the "Refresh selected" button.',
+	'refreshspecial-success-subtitle' => '{{Identical|Refreshing special pages}}
+Text displayed in the subtitle below the actual page title once the user has pressed the "Refresh selected" button.',
+	'refreshspecial-js-disabled' => 'Displayed to users with JavaScript disabled so that they won\'t wonder why the "select all pages" checkbox isn\'t working properly.',
+	'refreshspecial-select-all-pages' => 'Text displayed next to a checkbox on Special:RefreshSpecial; checking the checkbox allows to select all listed pages.',
+	'refreshspecial-link-back' => 'Displayed on Special:RefreshSpecial after the user has pressed the "Refresh selected" button, at the bottom of the page.',
+	'refreshspecial-none-selected' => 'If the user pressed the "Refresh selected" button without checking any of the checkboxes, this message will be displayed to him/her.',
+	'refreshspecial-db-error' => 'Error message shown to the user if a database error is encountered while trying to do the necessary queries.',
+	'refreshspecial-no-page' => 'If an invalid special page is encountered, this message will be displayed.',
+	'refreshspecial-slave-lagged' => 'Displayed if a slave database server is lagging',
+	'refreshspecial-reconnected' => 'Displayed if the connection to the database was lost for some reason but the extension was able to reconnect to it.',
+	'refreshspecial-reconnecting' => 'Displayed if the connection to the database was lost for some reason.',
+	'refreshspecial-total-display' => 'Displayed on Special:RefreshSpecial after the user has pressed the "Refresh selected" button if the refreshing was done successfully. $1 is the amount of special pages refreshed, $2 is the amount of database rows touched, $3 is the time how long it took to refresh all the selected special pages and $4 is the complete time of the script run.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -55,7 +85,6 @@ $messages['ar'] = array(
 	'refreshspecial-js-disabled' => '(<i>أنت لا يمكنك اختيار كل الصفحات عندما تكون الجافاسكريبت معطلة</i>)',
 	'refreshspecial-select-all-pages' => ' اختر كل الصفحات',
 	'refreshspecial-link-back' => 'رجوع إلى الامتداد',
-	'refreshspecial-here' => '<b>هنا</b>',
 	'refreshspecial-none-selected' => 'أنت لم تختر أي صفحة خاصة. استرجاع إلى الاختيار الافتراضي.',
 	'refreshspecial-db-error' => 'فشل: خطأ قاعدة بيانات',
 	'refreshspecial-no-page' => 'لا توجد صفحة خاصة كهذه',
@@ -82,7 +111,6 @@ $messages['arz'] = array(
 	'refreshspecial-js-disabled' => '(<i>أنت لا يمكنك اختيار كل الصفحات عندما تكون الجافاسكريبت معطلة</i>)',
 	'refreshspecial-select-all-pages' => ' اختر كل الصفحات',
 	'refreshspecial-link-back' => 'رجوع إلى الامتداد',
-	'refreshspecial-here' => '<b>هنا</b>',
 	'refreshspecial-none-selected' => 'أنت لم تختر أى صفحة خاصة. استرجاع إلى الاختيار الافتراضي.',
 	'refreshspecial-db-error' => 'فشل: خطأ قاعدة بيانات',
 	'refreshspecial-no-page' => 'لا توجد صفحة خاصة كهذه',
@@ -97,7 +125,6 @@ $messages['arz'] = array(
  */
 $messages['bg'] = array(
 	'refreshspecial-select-all-pages' => ' избиране на всички страници',
-	'refreshspecial-here' => '<b>тук</b>',
 	'refreshspecial-no-page' => 'Няма такава специална страница',
 );
 
@@ -108,7 +135,9 @@ $messages['cs'] = array(
 	'refreshspecial' => 'Obnovit speciální stránky',
 	'refreshspecial-desc' => 'Umožňje manuální [[Special:RefreshSpecial|obnovení speciálních stránek]]',
 	'refreshspecial-title' => 'Obnovit speciální stránky',
-	'refreshspecial-help' => 'Tato speciální stránka slouží k manuálnímu obnovení speciálních stránek. Po vybrání všech stránek, které chcete obnovit, klikněte na tlačítko „Obnovit”. Upozornění: na vaší wiki může obnovení chvíli trvat.',
+	'refreshspecial-help' => 'Tato speciální stránka slouží k manuálnímu obnovení speciálních stránek.
+Po vybrání všech stránek, které chcete obnovit, klikněte na tlačítko „Obnovit vybrané”.
+Upozornění: na větších wiki může obnovení chvíli trvat.',
 	'refreshspecial-button' => 'Obnovit vybrané',
 	'refreshspecial-fail' => 'Prosím, vyberte alespoň jednu speciální stránku, která se má obnovit',
 	'refreshspecial-refreshing' => 'obnovují se speciální stránky',
@@ -118,7 +147,6 @@ $messages['cs'] = array(
 	'refreshspecial-js-disabled' => '(<i>Není možné použít funkci výběru všech stránek, pokud máte vypnutý JavaScript</i>)',
 	'refreshspecial-select-all-pages' => ' vybrat všechny stránky',
 	'refreshspecial-link-back' => 'Zpět na rozšíření',
-	'refreshspecial-here' => '<b>zde</b>',
 	'refreshspecial-none-selected' => 'Nevybrali jste žádné speciální stránky. Vrací se původní výběr.',
 	'refreshspecial-db-error' => 'Chyba: chyba databáze',
 	'refreshspecial-no-page' => 'Taková speciální stránka neexistuje',
@@ -132,12 +160,15 @@ $messages['cs'] = array(
  * @author ChrisiPK
  * @author Melancholie
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'refreshspecial' => 'Spezialseiten aktualisieren',
 	'refreshspecial-desc' => 'Erlaubt das [[Special:RefreshSpecial|manuelle Auffrischen von Spezialseiten]]',
 	'refreshspecial-title' => 'Spezialseiten aktualisieren',
-	'refreshspecial-help' => 'Diese Spezialseite stellt ein Werkzeug zum manuellen Aktualisieren der Spezialseiten bereit. Sobald du alle Spezialseiten zum Aktualisieren ausgewählt hast, drücke den Aktualiseren-Knöpf unterhalb, um die Aktualisierung zu starten. Achtung: Das Aktualisieren kann lange auf großen Wikis dauern.',
+	'refreshspecial-help' => 'Diese Spezialseite stellt ein Werkzeug zum manuellen Aktualisieren der Spezialseiten bereit.
+Sobald du alle Spezialseiten zum Aktualisieren ausgewählt hast, drücke die Aktualisieren-Schaltfläche, um die Aktualisierung zu starten.
+Achtung: Das Aktualisieren kann auf großen Wikis länger dauern.',
 	'refreshspecial-button' => 'ausgewählte auffrischen',
 	'refreshspecial-fail' => 'Bitte hake mindestens eine Spezialseite zum Auffrischen an.',
 	'refreshspecial-refreshing' => 'Spezialseiten werden aktualisiert',
@@ -145,16 +176,15 @@ $messages['de'] = array(
 	'refreshspecial-success-subtitle' => 'aktualisiere Spezialseiten',
 	'refreshspecial-choice' => 'aktualisiere Spezialseiten',
 	'refreshspecial-js-disabled' => '(<i>Du kannst nicht alle Seiten auswählen, wenn du Javascript deaktiviert hast</i>)',
-	'refreshspecial-select-all-pages' => ' alle Seiten auswählen',
+	'refreshspecial-select-all-pages' => 'Alle Seiten auswählen',
 	'refreshspecial-link-back' => 'Zurück zur Erweiterung',
-	'refreshspecial-here' => '<b>hier</b>',
 	'refreshspecial-none-selected' => 'Du hast keine Spezialseiten ausgewählt; somit Zurücksetzung auf die Standardauswahl.',
 	'refreshspecial-db-error' => 'Störung: Datenbankfehler',
 	'refreshspecial-no-page' => 'Keine solche Spezialseite',
-	'refreshspecial-slave-lagged' => 'Slave-Server hängt hinterher, warten...',
+	'refreshspecial-slave-lagged' => 'Slave-Server hängt hinterher, warten …',
 	'refreshspecial-reconnected' => 'Wiederverbunden.',
 	'refreshspecial-reconnecting' => 'Verbindung fehlgeschlagen, wiederverbinde in 10 Sekunden …',
-	'refreshspecial-total-display' => 'Aktualisierte $1 Seiten, insgesamt $2 Zeilen in einer Zeit von $3 (Gesamtlaufzeit des Skripts: $4)',
+	'refreshspecial-total-display' => 'Aktualisierte $1 {{PLURAL:$1|Seite|Seiten}}, insgesamt $2 {{PLURAL:$2|Zeile|Zeilen}} in einer Zeit von $3 (Gesamtlaufzeit des Skripts: $4)',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -170,7 +200,6 @@ $messages['de-formal'] = array(
  */
 $messages['eo'] = array(
 	'refreshspecial-select-all-pages' => 'selekti ĉiujn paĝojn',
-	'refreshspecial-here' => '<b>ĉi tie</b>',
 );
 
 /** Spanish (Español)
@@ -183,6 +212,7 @@ $messages['es'] = array(
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Mobe
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'refreshspecial' => 'Päivitä toimintosivuja',
@@ -196,9 +226,8 @@ $messages['fi'] = array(
 	'refreshspecial-success-subtitle' => 'päivitetään toimintosivuja',
 	'refreshspecial-choice' => 'päivitetään toimintosivuja',
 	'refreshspecial-js-disabled' => '(<i>Et voi valita kaikkia sivuja kun JavaScript on pois käytöstä</i>)',
-	'refreshspecial-select-all-pages' => 'valitse kaikki sivut',
+	'refreshspecial-select-all-pages' => 'Valitse kaikki sivut',
 	'refreshspecial-link-back' => 'Palaa lisäosaan',
-	'refreshspecial-here' => '<b>täällä</b>',
 	'refreshspecial-none-selected' => 'Et ole valinnut yhtään toimintosivua. Palataan oletusasetuksiin.',
 	'refreshspecial-db-error' => 'EPÄONNISTUI: tietokantavirhe',
 	'refreshspecial-no-page' => 'Kyseistä toimintosivua ei ole',
@@ -206,10 +235,12 @@ $messages['fi'] = array(
 	'refreshspecial-reconnected' => 'Yhdistetty uudelleen.',
 	'refreshspecial-reconnecting' => 'Yhteys epäonnistui, yritetään uudelleen 10 sekunnin kuluttua...',
 	'refreshspecial-total-display' => 'Päivitettiin $1 sivua; yhteensä $2 riviä ajassa $3 (yhteensä skriptin suorittamiseen meni aikaa $4)',
+	'right-refreshspecial' => 'Päivitä erikoissivut',
 );
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author McDutchie
  * @author Zetud
  */
@@ -217,7 +248,9 @@ $messages['fr'] = array(
 	'refreshspecial' => 'Rafraichir les pages spéciales',
 	'refreshspecial-desc' => 'Permet [[Special:RefreshSpecial|l’actualisation manuelle]] des pages spéciales',
 	'refreshspecial-title' => 'Rafraichir les pages spéciales',
-	'refreshspecial-help' => 'Cette page spéciale fournit les moyens de rafraichir manuellement les pages spéciales. Quand vous avez choisi toutes les pages que vous voulez actualiser, cliquer sur le bouton Actualiser ci-dessous pour lancer la procédure. Attention : l’actualisation peut prendre un certain temps sur des wikis disposant d’une grande taille.',
+	'refreshspecial-help' => 'Cette page spéciale fournit les moyens de rafraichir manuellement les pages spéciales.
+Quand vous avez choisi toutes les pages que vous voulez actualiser, cliquer sur le bouton « Actualiser » ci-dessous pour actualiser les pages sélectionnées.
+Attention : l’actualisation peut prendre un certain temps sur des wikis disposant d’une grande taille.',
 	'refreshspecial-button' => 'Actualiser sélectionnées',
 	'refreshspecial-fail' => 'Veuillez cocher au moins une page spéciale à rafraichir.',
 	'refreshspecial-refreshing' => 'Actualisation des pages spéciales',
@@ -225,16 +258,17 @@ $messages['fr'] = array(
 	'refreshspecial-success-subtitle' => 'actualisation des pages spéciales',
 	'refreshspecial-choice' => 'actualisation des pages spéciales',
 	'refreshspecial-js-disabled' => '(<i>Vous ne pouvez sélectionnez toutes les pages quand JavaScript est désactivé</i>)',
-	'refreshspecial-select-all-pages' => 'sélectionner toutes les pages',
+	'refreshspecial-select-all-pages' => 'Sélectionner toutes les pages',
 	'refreshspecial-link-back' => 'Revenir à l’extension',
-	'refreshspecial-here' => '<b>ici</b>',
 	'refreshspecial-none-selected' => 'Vous n’avez pas sélectionné de pages spéciales. Retour vers la sélection par défaut.',
 	'refreshspecial-db-error' => 'Échec : erreur de la base de données',
 	'refreshspecial-no-page' => 'Aucune page spéciale',
 	'refreshspecial-slave-lagged' => 'Travail retardé, en cours…',
 	'refreshspecial-reconnected' => 'Reconnecté.',
 	'refreshspecial-reconnecting' => 'Échec de la connection, reconnection dans 10 secondes…',
+	'refreshspecial-page-result' => '$1 {{PLURAL:$1|ligne obtenue|lignes obtenues}} en',
 	'refreshspecial-total-display' => '$1 {{PLURAL:$1|page actualisée|pages actualisées}} totalisant $2 {{PLURAL:$2|ligne|lignes}} sur une durée de $3 (la durée complète de l’action du script est de $4)',
+	'right-refreshspecial' => 'Actualiser les pages spéciales',
 );
 
 /** Galician (Galego)
@@ -244,7 +278,9 @@ $messages['gl'] = array(
 	'refreshspecial' => 'Refrescar a páxina especial',
 	'refreshspecial-desc' => 'Permite [[Special:RefreshSpecial|refrescar páxinas especiais manualmente]]',
 	'refreshspecial-title' => 'Refrescar as páxinas especiais',
-	'refreshspecial-help' => 'Esta páxina especial proporciona medios para refrescar manualmente as páxinas especiais. Cando escolla todas as páxinas que quere refrescar, prema no botón "Refrescar" para levar a cabo a acción. Aviso: o refrescado pode levar uns intres nos wikis grandes.',
+	'refreshspecial-help' => 'Esta páxina especial proporciona medios para refrescar manualmente as páxinas especiais.
+Cando escolla todas as páxinas que quere refrescar, prema no botón "Actualizar o seleccionado" para levar a cabo a acción.
+Aviso: o refrescado pode levar uns intres nos wikis grandes.',
 	'refreshspecial-button' => 'Actualizar o seleccionado',
 	'refreshspecial-fail' => 'Por favor, comprobe polo menos unha páxina especial para refrescar.',
 	'refreshspecial-refreshing' => 'actualizando as páxinas especiais',
@@ -252,24 +288,39 @@ $messages['gl'] = array(
 	'refreshspecial-success-subtitle' => 'actualizando as páxinas especiais',
 	'refreshspecial-choice' => 'actualizando as páxinas especiais',
 	'refreshspecial-js-disabled' => '(<i>Non pode seleccionar todas as páxinas cando o JavaScript está deshabilitado</i>)',
-	'refreshspecial-select-all-pages' => ' seleccionar todas as páxinas',
+	'refreshspecial-select-all-pages' => 'Seleccionar todas as páxinas',
 	'refreshspecial-link-back' => 'Voltar á extensión',
-	'refreshspecial-here' => '<b>aquí</b>',
 	'refreshspecial-none-selected' => 'Non seleccionou ningunha páxina especial. Revertendo á selección por defecto.',
 	'refreshspecial-db-error' => 'Fallou: erro da base de datos',
 	'refreshspecial-no-page' => 'Non existe tal páxina especial',
 	'refreshspecial-slave-lagged' => 'Intervalo de retraso, agardando...',
 	'refreshspecial-reconnected' => 'Reconectado.',
 	'refreshspecial-reconnecting' => 'Fallou a conexión, reconectando en 10 segundos...',
-	'refreshspecial-total-display' => '$1 páxinas refrescadas dun total de $2 liñas dunha duración de $3 (a duración completa  da escritura é de $4)',
+	'refreshspecial-page-result' => '{{PLURAL:$1|Obtívose unha liña|Obtivéronse $1 liñas}} en',
+	'refreshspecial-total-display' => '$1 {{PLURAL:$1|páxina refrescada|páxinas refrescadas}} dun total {{PLURAL:$2|dunha liña|de $2 liñas}} dunha duración de $3 (a duración completa da escritura é de $4)',
+	'right-refreshspecial' => 'Actualizar as páxinas especiais',
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
+	'refreshspecial' => 'רענון דפים מיוחדים',
+	'refreshspecial-desc' => 'מתן האפשרות ל[[Special:RefreshSpecial|רענון ידני של דפים מיוחדים]]',
+	'refreshspecial-title' => 'רענון דפים מיוחדים',
+	'refreshspecial-help' => 'דף מיוחד זה מספק שיטות לרענון ידני של דפים מיוחדים.
+לאחר שתבחרו את כל הדפים אותם תרצו לרענן, לחצו על הכפתור "רענון הנבחרים" שלהלן כדי לרענן את הדפים המיוחדים שבחרתם.
+אזהרה: הרענון עלול לארוך זמן מה באתרי ויקי גדולים.',
+	'refreshspecial-button' => 'רענון הנבחרים',
+	'refreshspecial-fail' => 'אנא בחרו לפחות דף מיוחד אחד לרענון.',
+	'refreshspecial-refreshing' => 'מבוצע רענון הדפים המיוחדים',
+	'refreshspecial-success-subtitle' => 'הדפים המיוחדים רועננו',
+	'refreshspecial-choice' => 'דפים מיוחדים לרענון',
+	'refreshspecial-js-disabled' => '(<i>לא תוכלו לבחור את כל הדפים כאשר JavaScript מבוטלת</i>)',
+	'refreshspecial-select-all-pages' => 'בחירת כל הדפים',
 	'refreshspecial-link-back' => 'חזרה להרחבה',
-	'refreshspecial-here' => '<b>כאן</b>',
+	'refreshspecial-none-selected' => 'לא בחרתם דפים מיוחדים. הבחירה תוחזר לברירת המחדל.',
 );
 
 /** Interlingua (Interlingua)
@@ -289,7 +340,6 @@ $messages['ia'] = array(
 	'refreshspecial-js-disabled' => '<i>(Tu non pote seliger tote le paginas si JavaScript non es active)</i>',
 	'refreshspecial-select-all-pages' => ' seliger tote le paginas',
 	'refreshspecial-link-back' => 'Retornar al extension',
-	'refreshspecial-here' => '<b>hic</b>',
 	'refreshspecial-none-selected' => 'Tu non ha seligite alcun pagina special. Le selection retorna al predefinite.',
 	'refreshspecial-db-error' => 'Falta: error del base de datos',
 	'refreshspecial-no-page' => 'Iste pagina special non existe',
@@ -315,7 +365,6 @@ $messages['it'] = array(
 	'refreshspecial-js-disabled' => '(<i>Non è possibile selezionare tutte le pagine se JavaScript è disattivato</i>)',
 	'refreshspecial-select-all-pages' => 'seleziona tutte le pagine',
 	'refreshspecial-link-back' => "Torna all'estensione",
-	'refreshspecial-here' => '<b>qui</b>',
 	'refreshspecial-none-selected' => 'Non è stata selezionata alcuna pagina speciale. Ripristino alla selezione di default.',
 	'refreshspecial-db-error' => 'Fallito: errore del database',
 	'refreshspecial-no-page' => 'Pagina speciale inesistente',
@@ -335,7 +384,6 @@ $messages['km'] = array(
 	'refreshspecial-choice' => 'ដែល​ធ្វើឱ្យ​ទំព័រពិសេសស្រស់',
 	'refreshspecial-select-all-pages' => 'ជ្រើស​ទំព័រ​ទាំងអស់',
 	'refreshspecial-link-back' => 'ត្រឡប់ក្រោយ​ទៅ​ផ្នែកបន្ថែម​វិញ',
-	'refreshspecial-here' => '<b>ទីនេះ</b>',
 	'refreshspecial-none-selected' => 'អ្នក​មិន​បាន​ជ្រើស​ទំព័រពិសេសេ​ណាមួយ​ទេ​។ សូម​ត្រឡប់​ទៅរក​ការជ្រើស​តាម​លំនាំដើម​វិញ​។',
 	'refreshspecial-db-error' => 'បរាជ័យ​៖ កំហុស​មូលដ្ឋានទិន្នន័យ',
 	'refreshspecial-no-page' => 'មិនមាន​ទំព័រពិសេសេ',
@@ -357,7 +405,9 @@ $messages['lb'] = array(
 	'refreshspecial' => 'Spezialsäiten aktualiséieren',
 	'refreshspecial-desc' => 'Erlaabt et [[Special:RefreshSpecial|manuell Aktualiséierung]] vu Spezialsäiten',
 	'refreshspecial-title' => 'Spezialsäiten aktualiséieren',
-	'refreshspecial-help' => "Dës Spezialsäit erlaabt et fir Spezialsäite manuell z'aktualiséieren. Wann Dir all Säiten ugewielt hutt déi dir wëllt aktualiséiert kréien, da klickt op den Aktulisatiouns-Knäppchen hei ënnendrënner fir datt et fonctionnéiert. Opgepasst: op méi grousse Wikien kann d'Aktualisatioun eng Zäit daueren.",
+	'refreshspecial-help' => "Dës Spezialsäit erlaabt et fir Spezialsäite manuell z'aktualiséieren. 
+Wann Dir all Säiten ugewielt hutt déi dir wëllt aktualiséiert kréien, da klickt op den ''Aktulisatiouns-Knäppchen'' hei ënnendrënner fir déi gewielte Spezialsäiten z'aktualiséieren. 
+Opgepasst: op méi grousse Wikien kann d'Aktualisatioun eng Zäit daueren.",
 	'refreshspecial-button' => 'Déi gewielten aktualiséieren',
 	'refreshspecial-fail' => "Wielt mindestens eng Spezialsäit aus fir z'aktualiséieren.",
 	'refreshspecial-refreshing' => 'Spezialsäiten aktualiséieren',
@@ -365,16 +415,15 @@ $messages['lb'] = array(
 	'refreshspecial-success-subtitle' => 'Aktualisatioun vu Spezialsäiten',
 	'refreshspecial-choice' => 'Aktualisatioun vu Spezialsäiten',
 	'refreshspecial-js-disabled' => "(<i>dir kënnt net all d'Säiten auswielen, wa JavaScript ausgeschalt ass</i>)",
-	'refreshspecial-select-all-pages' => 'all Säiten auswielen',
+	'refreshspecial-select-all-pages' => ' All Säiten auswielen',
 	'refreshspecial-link-back' => "Zréck op d'Erweiderung",
-	'refreshspecial-here' => '<b>hei</b>',
 	'refreshspecial-none-selected' => "Dir hutt keng Spezialssäiten ausgewielt. Zrèck op d'Astellung 'par défaut'",
 	'refreshspecial-db-error' => 'Et geet net: Feeler vun der Datebank',
 	'refreshspecial-no-page' => 'Et gëtt keng esou Spezialsäit',
 	'refreshspecial-slave-lagged' => 'Aarbecht déi nach usteet, an der Maach ...',
 	'refreshspecial-reconnected' => 'Nees verbonn',
 	'refreshspecial-reconnecting' => "D'Verbindung koum net zustan, nei Verbindung an 10 Sekonnen ...",
-	'refreshspecial-total-display' => "$1 Säite mat am Ganzen $2 Reien an $3 (Dauer) (d'Gesamtzäit déi de Script brauch ass $4)",
+	'refreshspecial-total-display' => "$1 {{PLURAL:$1|Säit|Säiten}} aktuliséiert mat am Ganzen $2 {{PLURAL:$2|Rei|Reien}} an $3 (Dauer) (d'Gesamtzäit déi de Script gebraucht huet ass $4)",
 );
 
 /** Erzya (Эрзянь)
@@ -392,7 +441,7 @@ $messages['nl'] = array(
 	'refreshspecial-desc' => "Maakt het mogelijk om [[Special:RefreshSpecial|handmatig speciale pagina's te verversen]]",
 	'refreshspecial-title' => "Speciale pagina's verversen",
 	'refreshspecial-help' => "Via deze pagina kunt u speciale pagina's handmatig verversen.
-Nadat u alle gewenste pagina's hebt aangevinkt, kunt u 'Verversen' kiezen.
+Nadat u alle gewenste pagina's hebt aangevinkt, kunt u 'Geselecteerde pagina's verversen' kiezen om de geselecteerde speciale pagina's bij te laten werken.
 Waarschuwing: op grotere wiki's kan dit enige tijd duren.",
 	'refreshspecial-button' => "Geselecteerde pagina's verversen",
 	'refreshspecial-fail' => 'Vink tenminste één te verversen pagina aan.',
@@ -401,9 +450,8 @@ Waarschuwing: op grotere wiki's kan dit enige tijd duren.",
 	'refreshspecial-success-subtitle' => "bezig met het verversen van speciale pagina's",
 	'refreshspecial-choice' => "bezig met het verversen van speciale pagina's",
 	'refreshspecial-js-disabled' => "(<i>U kunt alle pagina's niet selecteren als JavaScript is uitgeschakeld</i>)",
-	'refreshspecial-select-all-pages' => "alle pagina's selecteren",
+	'refreshspecial-select-all-pages' => "Alle pagina's selecteren",
 	'refreshspecial-link-back' => 'Terug naar uitbreiding',
-	'refreshspecial-here' => '<b>hier</b>',
 	'refreshspecial-none-selected' => "U hebt geen speciale pagina's geselecteerd.
 De standaardinstellingen zijn hersteld.",
 	'refreshspecial-db-error' => 'Fout: databasefout',
@@ -412,7 +460,9 @@ De standaardinstellingen zijn hersteld.",
 	'refreshspecial-reconnected' => 'Weer verbonden.',
 	'refreshspecial-reconnecting' => 'Verbinding kon niet gemaakt worden.
 Over 10 seconden wordt weer geprobeerd verbinding te maken...',
-	'refreshspecial-total-display' => "Er zijn $1 pagina's ververst met $2 regels in $3 tijd (totale duur van de verwerking was $4)",
+	'refreshspecial-page-result' => '$1 {{PLURAL:$1|rij|rijen}} verwerkt in',
+	'refreshspecial-total-display' => "Er {{PLURAL:$1|is $1 pagina|zijn $1 pagina's}} ververst met $2 {{PLURAL:$2|rij|rijen}} in $3 tijd (totale duur van de verwerking was $4)",
+	'right-refreshspecial' => "Speciale pagina's verversen",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -422,16 +472,16 @@ $messages['nn'] = array(
 	'refreshspecial' => 'Oppdater spesialsider',
 	'refreshspecial-desc' => 'Mogleggjer [[Special:RefreshSpecial|manuell oppdatering]] av spesialsider',
 	'refreshspecial-title' => 'Oppdater spesialsider',
-	'refreshspecial-help' => "Denne spesialsida gjer at ein manuelt kan oppdatera spesialsider. Når du har valt kva sider du ønskjer å oppdatera, klikk på 'Oppdater' for å gjennomføra oppdateringa. Åtvaring: Oppdatering kan ta ei stund på større wikiar.",
+	'refreshspecial-help' => "Denne spesialsida gjer at ein manuelt kan oppdatera spesialsider. 
+Når du har valt kva sider du ønskjer å oppdatera, klikk på 'Oppdater valte' for å gjennomføra oppdateringa. Åtvaring: Oppdatering kan ta ei stund på større wikiar.",
 	'refreshspecial-button' => 'Oppdater valte',
 	'refreshspecial-fail' => 'Merk av minst éi spesialsida som skal oppdaterast',
 	'refreshspecial-refreshing' => 'oppdaterer spesialsider',
 	'refreshspecial-success-subtitle' => 'oppdaterer spesialsider',
 	'refreshspecial-choice' => 'oppdaterer spesialsider',
 	'refreshspecial-js-disabled' => '(<i>Du kan ikkje merkja alle sider om JavaScript er slege av</i>)',
-	'refreshspecial-select-all-pages' => ' merk alle sider',
+	'refreshspecial-select-all-pages' => 'Merk alle sider',
 	'refreshspecial-link-back' => 'Gå attende til utvidinga',
-	'refreshspecial-here' => '<b>her</b>',
 	'refreshspecial-none-selected' => 'Du har ikkje merkt noka spesialsida. Stiller attende til standardval.',
 	'refreshspecial-db-error' => 'Mislukkast: databasefeil',
 	'refreshspecial-no-page' => 'Spesialsida finst ikkje',
@@ -456,7 +506,6 @@ $messages['no'] = array(
 	'refreshspecial-js-disabled' => "(''Du kan ikke merke alle sider om JavaScript er slått av'')",
 	'refreshspecial-select-all-pages' => 'merk alle sider',
 	'refreshspecial-link-back' => 'Tilbake til utvidelsen',
-	'refreshspecial-here' => "'''her'''",
 	'refreshspecial-none-selected' => 'Du har ikke merket noen spesialsider. Tilbakestiller til standardvalg.',
 	'refreshspecial-db-error' => 'Mislyktes: databasefeil',
 	'refreshspecial-no-page' => 'Ingen slik spesialside',
@@ -482,7 +531,6 @@ $messages['oc'] = array(
 	'refreshspecial-js-disabled' => '(<i>Podètz pas seleccionar totas las paginas quand JavaScript es desactivat</i>)',
 	'refreshspecial-select-all-pages' => 'seleccionar totas las paginas',
 	'refreshspecial-link-back' => 'Tornar a l’extension',
-	'refreshspecial-here' => '<b>aicí</b>',
 	'refreshspecial-none-selected' => 'Avètz pas seleccionat cap de paginas especialas. Retorn cap a la seleccion per defaut.',
 	'refreshspecial-db-error' => 'Fracàs : error de la banca de donada',
 	'refreshspecial-no-page' => 'Pas cap de pagina especiala',
@@ -510,7 +558,6 @@ $messages['pt'] = array(
 	'refreshspecial-fail' => 'Por favor, seleccione pelo menos uma página especial para refrescar.',
 	'refreshspecial-js-disabled' => '(<i>Não pode seleccionar todas as páginas quando o JavaScript está desactivado</i>)',
 	'refreshspecial-link-back' => 'Voltar à extensão',
-	'refreshspecial-here' => '<b>aqui</b>',
 	'refreshspecial-db-error' => 'Falha: erro de base de dados',
 	'refreshspecial-no-page' => 'Página especial inexistente',
 	'refreshspecial-slave-lagged' => 'Servidor escravo com atraso, aguardando...',
@@ -532,7 +579,6 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'refreshspecial-select-all-pages' => ' выбрать все страницы',
-	'refreshspecial-here' => '<b>здесь</b>',
 );
 
 /** Slovak (Slovenčina)
@@ -552,7 +598,6 @@ $messages['sk'] = array(
 	'refreshspecial-js-disabled' => '(<i>Nie je možné použiť funkciu výberu všetkých stránok, keď máte vypnutý JavaScript.</i>)',
 	'refreshspecial-select-all-pages' => ' vybrať všetky stránky',
 	'refreshspecial-link-back' => 'Späť na rozšírenie',
-	'refreshspecial-here' => '<b>tu</b>',
 	'refreshspecial-none-selected' => 'Nevybrali ste žiadne špeciálne stránky. Vracia sa pôvodný výber.',
 	'refreshspecial-db-error' => 'Chyba: chyba databázy',
 	'refreshspecial-no-page' => 'Taká špeciálna stránka neexistuje',
@@ -573,7 +618,6 @@ $messages['sv'] = array(
 	'refreshspecial-success-subtitle' => 'uppdaterar specialsidor',
 	'refreshspecial-choice' => 'uppdaterar specialsidor',
 	'refreshspecial-select-all-pages' => 'välj alla sidor',
-	'refreshspecial-here' => '<b>här</b>',
 	'refreshspecial-no-page' => 'Ingen sådan specialsida',
 	'refreshspecial-reconnected' => 'Återansluten.',
 	'refreshspecial-reconnecting' => 'Anslutning misslyckades, återansluter om 10 sekunder...',
@@ -583,9 +627,14 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'refreshspecial' => 'ప్రత్యేక పేజీలను తాజాకరించు',
+	'refreshspecial-title' => 'ప్రత్యేక పేజీల తాజాకరణ',
+	'refreshspecial-refreshing' => 'ప్రత్యేక పేజీలను తాజాకరిస్తున్నాం',
+	'refreshspecial-success-subtitle' => 'ప్రత్యేక పేజీలను తాజాకరిస్తున్నాం',
+	'refreshspecial-choice' => 'ప్రత్యేక పేజీలను తాజాకరిస్తున్నాం',
+	'refreshspecial-js-disabled' => '(<i>జావాస్క్రిప్ట్ అచేతనంగా ఉన్నప్పుడు అన్నీ పేజీలను మీరు ఎంచుకోలేరు</i>)',
 	'refreshspecial-select-all-pages' => 'అన్ని పేజీలను ఎంచుకోండి',
 	'refreshspecial-link-back' => 'తిరిగి పొడగింతకు వెళ్ళండి',
-	'refreshspecial-here' => '<b>ఇక్కడ</b>',
 	'refreshspecial-db-error' => 'విఫలం: డాటాబేసు పొరపాటు',
 	'refreshspecial-no-page' => 'అటువంటి ప్రత్యేక పేజీ లేదు',
 );
@@ -607,7 +656,6 @@ $messages['tl'] = array(
 	'refreshspecial-js-disabled' => '(<i>Hindi mo mapipili ang lahat ng mga pahina kapag hindi gumagana ang JavaScript</i>)',
 	'refreshspecial-select-all-pages' => ' piliin ang lahat ng mga pahina',
 	'refreshspecial-link-back' => 'Magbalik sa karugtong',
-	'refreshspecial-here' => '<b>dito</b>',
 	'refreshspecial-none-selected' => 'Hindi ka pumili ng anumang natatanging mga pahina.  Nagbabalik sa likas na nakatakdang pagpipilian.',
 	'refreshspecial-db-error' => 'Nabigo: kamalian sa kalipunan ng dato',
 	'refreshspecial-no-page' => 'Walang ganyang natatanging pahina',
@@ -635,7 +683,6 @@ $messages['vi'] = array(
 	'refreshspecial-js-disabled' => '(<i>Bạn không thể chọn tất cả các trang trong khi JavaScript bị tắt</i>)',
 	'refreshspecial-select-all-pages' => ' chọn tất cả các trang',
 	'refreshspecial-link-back' => 'Quay về bộ mở rộng',
-	'refreshspecial-here' => '<b>tại đây</b>',
 	'refreshspecial-none-selected' => 'Bạn chưa chọn trang đặc biệt nào. Đang quay về lựa chọn mặc định.',
 	'refreshspecial-db-error' => 'Thất bại: lỗi cơ sở dữ liệu',
 	'refreshspecial-no-page' => 'Không có trang đặc biệt như vậy',

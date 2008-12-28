@@ -41,6 +41,7 @@ Uploaded file should contain page name and optional reason separated by a "|" ch
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  */
@@ -48,13 +49,13 @@ $messages['qqq'] = array(
 	'deletebatch-desc' => 'Short description of the :Deletebatch extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'deletebatch-button' => '{{Identical|Delete}}',
 	'deletebatch-reason' => '{{Identical|Reason for deletion}}',
-	'deletebatch-success-subtitle' => '{{Identical|For $1}}',
 	'deletebatch-processing' => 'Used as page subtitle.
 * $1 is text from {{msg-mw|deletebatch-from-file}} or {{msg-mw|deletebatch-from-form}}',
-	'deletebatch-from-file' => 'Used as $1 in {{msg-mw|processing}}',
+	'deletebatch-from-file' => 'Used as $1 in {{msg-mw|Deletebatch-processing}}',
 	'deletebatch-from-form' => 'Used as $1 in {{msg-mw|processing}}',
-	'deletebatch-select-yourself' => 'Entry in dropdown for user that should execute the deletions',
+	'deletebatch-success-subtitle' => '{{Identical|For $1}}',
 	'deletebatch-select-script' => 'User name. Entry in dropdown for user that should execute the deletions',
+	'deletebatch-select-yourself' => 'Entry in dropdown for user that should execute the deletions',
 );
 
 /** Goanese Konkani (Latin) (कोंकणी/Konknni  (Latin))
@@ -71,7 +72,6 @@ $messages['ar'] = array(
 	'deletebatch' => 'حذف باتش من الصفحات',
 	'deletebatch-desc' => '[[Special:DeleteBatch|حذف باتش من الصفحات]]',
 	'deletebatch-button' => 'حذف',
-	'deletebatch-here' => '<b>هنا</b>',
 	'deletebatch-help' => 'حذف باتش من الصفحات. يمكنك إما عمل عملية حذف واحدة، أو حذف الصفحات المرتبة في ملف.
 اختر مستخدما ليتم عرضه في سجلات الحذف.
 الملف المرفوع ينبغي أن يحتوي على اسم الصفحة وسبب اختياري مفصولين بواسطة حرف "|" في كل سطر.',
@@ -103,7 +103,6 @@ $messages['arz'] = array(
 	'deletebatch' => 'حذف باتش من الصفحات',
 	'deletebatch-desc' => '[[Special:DeleteBatch|حذف باتش من الصفحات]]',
 	'deletebatch-button' => 'حذف',
-	'deletebatch-here' => '<b>هنا</b>',
 	'deletebatch-help' => 'حذف باتش من الصفحات. يمكنك إما عمل عملية حذف واحدة، أو حذف الصفحات المرتبة فى ملف.
 اختر مستخدما ليتم عرضه فى سجلات الحذف.
 الملف المرفوع ينبغى أن يحتوى على اسم الصفحة وسبب اختيارى مفصولين بواسطة حرف "|" فى كل سطر.',
@@ -133,7 +132,6 @@ $messages['arz'] = array(
  */
 $messages['bg'] = array(
 	'deletebatch-button' => 'ИЗТРИВАНЕ',
-	'deletebatch-here' => '<b>тук</b>',
 	'deletebatch-as' => 'Стартиране на скрипта като',
 	'deletebatch-or' => '<b>ИЛИ</b>',
 	'deletebatch-page' => 'Страници за изтриване',
@@ -153,7 +151,7 @@ $messages['bs'] = array(
 	'deletebatch-button' => 'Obriši',
 	'deletebatch-or' => '<b>ili</b>',
 	'deletebatch-reason' => 'Razlog brisanja',
-	'deletebatch-processing' => 'brisanje stranice',
+	'deletebatch-processing' => 'brisanje stranica $1',
 );
 
 /** Catalan (Català)
@@ -167,13 +165,13 @@ $messages['ca'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian
+ * @author MF-Warburg
  * @author Revolus
  */
 $messages['de'] = array(
 	'deletebatch' => 'Eine Reihe von Seiten löschen',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Lösche eine Reihe von Seiten]]',
 	'deletebatch-button' => 'Löschen',
-	'deletebatch-here' => '<b>hier</b>',
 	'deletebatch-help' => 'Lösche eine Reihe von Seiten. Du kannst einerseits eine einzelne Seite löschen, aber auch mehrere Seiten, die du in einer Datei aufzählst.
 Wähle einen Benutzer, der im Löschlogbuch angezeigt werden soll.
 Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional einen mit einem senkrechten Stich („|“) abgetrennten Löschgrund enthalten.',
@@ -185,7 +183,7 @@ Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional ein
 	'deletebatch-or' => '<b>oder</b>',
 	'deletebatch-page' => 'Zu löschende Seiten',
 	'deletebatch-reason' => 'Löschgrund',
-	'deletebatch-processing' => 'Lösche Seiten',
+	'deletebatch-processing' => 'lösche Seiten $1',
 	'deletebatch-from-file' => 'von Dateiliste',
 	'deletebatch-from-form' => 'von Eingabe',
 	'deletebatch-success-subtitle' => 'für $1',
@@ -196,6 +194,7 @@ Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional ein
 	'deletebatch-select-script' => 'Seitenlöschskript',
 	'deletebatch-select-yourself' => 'du',
 	'deletebatch-no-page' => 'Bitte gib entweder zumindest eine zu löschende Seite an oder wähle eine Datei, die eine Liste von zu löschenden Seiten enthält.',
+	'right-deletebatch' => 'Eine Reihe von Seiten löschen',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -212,7 +211,6 @@ $messages['eo'] = array(
 	'deletebatch' => 'Forigi aron de paĝoj',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Forigi aron de paĝoj]]',
 	'deletebatch-button' => 'FORIGI',
-	'deletebatch-here' => '<b>ĉi tie</b>',
 	'deletebatch-help' => 'Por forigi aron de paĝoj. Vi povas aŭ fari unuopan forigon, aŭ forigi paĝojn listitajn en dosiero.
 Selektu uzanton kiu estos montrata en forigadaj protokoloj.
 Alŝutita dosiero enhavu paĝan nomon kaj nedevigan kialon apartigita de signo "|" en ĉiu linio.',
@@ -252,7 +250,6 @@ $messages['fi'] = array(
 	'deletebatch' => 'Poista useita sivuja',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Poista erä sivuja]]',
 	'deletebatch-button' => 'POISTA',
-	'deletebatch-here' => '<b>täällä</b>',
 	'deletebatch-help' => 'Poista useita sivuja. Voit joko tehdä yhden poiston tai poistaa tiedostossa listatut sivut. Valitse käyttäjä, joka näytetään poistolokeissa. Tallennetun tiedoston tulisi sisältää sivun nimi ja vapaaehtoinen syy | -merkin erottamina joka rivillä.',
 	'deletebatch-caption' => 'Sivulista',
 	'deletebatch-title' => 'Poista useita sivuja',
@@ -277,13 +274,13 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author McDutchie
  */
 $messages['fr'] = array(
 	'deletebatch' => 'Supprimer lot de pages',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Supprime un lot de pages]]',
 	'deletebatch-button' => 'SUPPRIMER',
-	'deletebatch-here' => '<b>ici</b>',
 	'deletebatch-help' => 'Supprime un lot de pages. Vous pouvez soit lancer une simple suppression, soit supprimer des pages listées dans un fichier.
 Choisissez un utilisateur qui sera affiché dans le journal des suppressions.
 Un fichier importé pourra contenir un nom de la page et un motif facultatif séparé par un « | » dans chaque ligne.',
@@ -295,7 +292,7 @@ Un fichier importé pourra contenir un nom de la page et un motif facultatif sé
 	'deletebatch-or' => '<b>OU</b>',
 	'deletebatch-page' => 'Pages à supprimer',
 	'deletebatch-reason' => 'Motif de la suppression',
-	'deletebatch-processing' => 'suppression des pages',
+	'deletebatch-processing' => 'suppression des pages $1',
 	'deletebatch-from-file' => 'depuis la liste d’un fichier',
 	'deletebatch-from-form' => 'à partir du formulaire',
 	'deletebatch-success-subtitle' => 'pour « $1 »',
@@ -306,6 +303,7 @@ Un fichier importé pourra contenir un nom de la page et un motif facultatif sé
 	'deletebatch-select-script' => 'script pour supprimer pages',
 	'deletebatch-select-yourself' => 'vous',
 	'deletebatch-no-page' => 'Veuillez indiquer au moins une page à supprimer OU un fichier donné contenant une liste de pages.',
+	'right-deletebatch' => 'Supprimer des pages en lot',
 );
 
 /** Western Frisian (Frysk)
@@ -323,7 +321,6 @@ $messages['gl'] = array(
 	'deletebatch' => 'Borrar un conxunto de páxinas',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Borrar un conxunto de páxinas]]',
 	'deletebatch-button' => 'BORRAR',
-	'deletebatch-here' => '<b>aquí</b>',
 	'deletebatch-help' => 'Borrar un conxunto de páxinas. Pode levar a cabo un borrado único ou borrar as páxinas listadas nun ficheiro.
 Escolla o usuario que será amosado nos rexistros de borrado.
 O ficheiro cargado debería conter o nome da páxina e unha razón opcional separados por un carácter de barra vertical ("|") en cada liña.',
@@ -335,7 +332,7 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
 	'deletebatch-or' => '<b>OU</b>',
 	'deletebatch-page' => 'Páxinas para ser borradas',
 	'deletebatch-reason' => 'Razón para o borrado',
-	'deletebatch-processing' => 'borrando a páxina',
+	'deletebatch-processing' => 'borrando as páxinas $1',
 	'deletebatch-from-file' => 'da lista de ficheiros',
 	'deletebatch-from-form' => 'do formulario',
 	'deletebatch-success-subtitle' => 'de $1',
@@ -346,6 +343,7 @@ O ficheiro cargado debería conter o nome da páxina e unha razón opcional sepa
 	'deletebatch-select-script' => 'borrar o guión dunha páxina',
 	'deletebatch-select-yourself' => 'vostede',
 	'deletebatch-no-page' => 'Por favor, especifique, polo menos, unha páxina para borrar OU escolla un ficheiro que conteña unha lista de páxinas.',
+	'right-deletebatch' => 'Borrar conxuntos de páxinas',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -367,7 +365,6 @@ $messages['he'] = array(
 	'deletebatch' => 'מחיקת מקבץ דפים',
 	'deletebatch-desc' => '[[Special:DeleteBatch|מחיקת מקבץ דפים]]',
 	'deletebatch-button' => 'מחיקה',
-	'deletebatch-here' => '<b>כאן</b>',
 	'deletebatch-help' => 'מחיקת מקבץ דפים. באפשרותכם לבצע מחיקה בודדת, או למחוק דפים הרשומים בקובץ.
 נא בחרו משתמש שיופיע ביומני המחיקה.
 הקובץ המועלה אמור לכלול שם של דף בכל שורה, ואפשר גם לכלול סיבה המופרדת בתו "|" משם הדף בכל אחת מהשורות.',
@@ -399,7 +396,6 @@ $messages['hr'] = array(
 	'deletebatch' => 'Izbriši skupinu stranica',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Izbriši skupinu stranica]]',
 	'deletebatch-button' => 'Izbriši',
-	'deletebatch-here' => '<b>ovdje</b>',
 	'deletebatch-help' => 'Brisanje skupine stranica. Možete izbrisati samo jednu stranicu, ili izbrisati stranice s popisa.
 Odaberite suradnika koje će biti prikazan u evidencijama.
 Postavljena datoteka treba sadržavati nazive stranica, a dodatno razlog odvojen kosom crtom "|", u svakom redu.',
@@ -446,7 +442,6 @@ $messages['ia'] = array(
 	'deletebatch' => 'Deler lot de paginas',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Deler un lot de paginas]]',
 	'deletebatch-button' => 'Deler',
-	'deletebatch-here' => '<b>hic</b>',
 	'deletebatch-help' => 'Deler un lot de paginas. Tu pote executar un deletion singule, o deler paginas listate in un file.
 Selige un usator que se monstrara in le registro de deletiones.
 Le file cargate debe continer in cata linea un nomine de pagina e un motivo facultative separate per un character "|".',
@@ -483,15 +478,13 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'deletebatch' => 'ページを一括削除する',
 	'deletebatch-desc' => '[[Special:DeleteBatch|ページを一括削除する]]',
 	'deletebatch-button' => '削除',
-	'deletebatch-here' => '<b>こちらへ</b>',
-	'deletebatch-help' => 'ページを一括削除することができます。ページ毎の削除の他に、ファイルにリストしたページ群を削除することができます。
-削除記録に表示される利用者を選択してください。
-アップロードされたファイルについては、各行にページ名とパイプ記号（ "|" ）で区切った理由の追加説明を記す必要があります。',
+	'deletebatch-help' => 'ページを一括削除することができます。ページ毎の削除の他に、ファイルに列挙したページ群を削除することができます。削除記録に表示される利用者を選択してください。アップロードされたファイルについては、各行にページ名とパイプ記号 (|) で区切った理由の追加説明を記す必要があります。',
 	'deletebatch-caption' => 'ページリスト',
 	'deletebatch-title' => '一括削除',
 	'deletebatch-link-back' => '前のページに戻る',
@@ -500,7 +493,7 @@ $messages['ja'] = array(
 	'deletebatch-or' => '<b>または</b>',
 	'deletebatch-page' => '削除するページ',
 	'deletebatch-reason' => '削除の理由',
-	'deletebatch-processing' => 'ページを削除する',
+	'deletebatch-processing' => '$1ページを削除する',
 	'deletebatch-from-file' => 'ファイルリストから',
 	'deletebatch-from-form' => 'フォームから',
 	'deletebatch-success-subtitle' => '$1',
@@ -511,6 +504,7 @@ $messages['ja'] = array(
 	'deletebatch-select-script' => 'Delete page script',
 	'deletebatch-select-yourself' => 'あなた',
 	'deletebatch-no-page' => '削除するページを少なくとも1ページ指定するか、ページリストを含むファイルを選んでください。',
+	'right-deletebatch' => 'ページ削除を一括して実行する',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -521,7 +515,6 @@ $messages['km'] = array(
 	'deletebatch' => 'លុប​បាច់​នៃ​ទំព័រ',
 	'deletebatch-desc' => '[[Special:DeleteBatch|លុប​បាច់​ទំព័រ]]',
 	'deletebatch-button' => 'លុប',
-	'deletebatch-here' => '<b>ទីនេះ</b>',
 	'deletebatch-caption' => 'បញ្ជី​ទំព័រ',
 	'deletebatch-title' => 'លុប​បាច់',
 	'deletebatch-link-back' => 'អ្នក​អាច​ត្រឡប់​ទៅកាន់​ផ្នែកបន្ថែម',
@@ -552,6 +545,7 @@ $messages['kri'] = array(
  */
 $messages['ksh'] = array(
 	'deletebatch-desc' => 'En [[Special:DeleteBatch|Aanzahl Sigge fottschmiiße]]',
+	'deletebatch-success-subtitle' => 'för $1',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -561,7 +555,6 @@ $messages['lb'] = array(
 	'deletebatch' => 'Rei vu Säite läschen',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Läscht eng Rei Säiten]]',
 	'deletebatch-button' => 'LÄSCHEN',
-	'deletebatch-here' => '<b>hei</b>',
 	'deletebatch-caption' => 'Lëscht vun der Säit',
 	'deletebatch-title' => 'Zesumme läschen',
 	'deletebatch-link-back' => "Dir kënnt op d'Erweiderung zréckgoen",
@@ -569,8 +562,8 @@ $messages['lb'] = array(
 	'deletebatch-or' => '<b>ODER</b>',
 	'deletebatch-page' => 'Säite fir ze läschen',
 	'deletebatch-reason' => 'Grond fir ze läschen',
-	'deletebatch-processing' => "d'Säite gi geläscht",
-	'deletebatch-from-file' => 'vun der Lëscht vun engem Fichier',
+	'deletebatch-processing' => "d'Säite gi $1 geläscht",
+	'deletebatch-from-file' => 'vun der Lëscht vun de Fichiere',
 	'deletebatch-from-form' => 'vum Formulaire',
 	'deletebatch-success-subtitle' => 'fir $1',
 	'deletebatch-omitting-nonexistant' => "D'Säit $1 déi et net gëtt iwwersprangen.",
@@ -613,7 +606,6 @@ $messages['nl'] = array(
 	'deletebatch' => 'Paginareeks verwijderen',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Paginareeks verwijderen]]',
 	'deletebatch-button' => 'VERWIJDEREN',
-	'deletebatch-here' => '<b>hier</b>',
 	'deletebatch-help' => 'Een lijst pagina\'s verwijderen.
 U kunt een enkele pagina verwijderen of een lijst van pagina\'s in een bestand.
 Kies een gebruiker die in het verwijderlogboek wordt genoemd.
@@ -626,7 +618,7 @@ Het bestand dat u uploadt moet op iedere regel een paginanaam en een reden bevat
 	'deletebatch-or' => '<b>OF</b>',
 	'deletebatch-page' => "Te verwijderen pagina's",
 	'deletebatch-reason' => 'Reden voor verwijderen',
-	'deletebatch-processing' => "bezig met het verwijderen van pagina's",
+	'deletebatch-processing' => "bezig met het verwijderen van pagina's $1",
 	'deletebatch-from-file' => 'van een lijst uit een bestand',
 	'deletebatch-from-form' => 'uit het formulier',
 	'deletebatch-success-subtitle' => 'voor $1',
@@ -637,16 +629,16 @@ Het bestand dat u uploadt moet op iedere regel een paginanaam en een reden bevat
 	'deletebatch-select-script' => "script pagina's verwijderen",
 	'deletebatch-select-yourself' => 'u',
 	'deletebatch-no-page' => "Geef tenminste één te verwijderen pagina op of kies een bestand dat de lijst met pagina's bevat.",
+	'right-deletebatch' => "Pagina's in batch verwijderen",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
  */
 $messages['nn'] = array(
-	'deletebatch' => 'Slett fleire sider',
-	'deletebatch-desc' => '[[Special:DeleteBatch|Slett fleire sider]]',
+	'deletebatch' => 'Masseslett sider',
+	'deletebatch-desc' => '[[Special:DeleteBatch|Masseslett sider]]',
 	'deletebatch-button' => 'Slett',
-	'deletebatch-here' => '<b>her</b>',
 	'deletebatch-help' => 'Slett ein serie av sider. Du kan òg utføra ei enkel sletting, eller sletta sider lista opp i ei fil.
 Vel ein brukar som skal bli vist i sletteloggen.
 Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteårsak skilt frå tittelen med «|».',
@@ -658,7 +650,7 @@ Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteår
 	'deletebatch-or' => '<b>eller</b>',
 	'deletebatch-page' => 'Sider som skal bli sletta',
 	'deletebatch-reason' => 'Sletteårsak',
-	'deletebatch-processing' => 'slettar sider',
+	'deletebatch-processing' => 'slettar sidene $1',
 	'deletebatch-from-file' => 'frå fillista',
 	'deletebatch-from-form' => 'frå skjema',
 	'deletebatch-success-subtitle' => 'for $1',
@@ -669,16 +661,17 @@ Ei opplasta fil må innehalda namnet på sida, og kan òg ha ei valfri sletteår
 	'deletebatch-select-script' => 'slett sideskript',
 	'deletebatch-select-yourself' => 'du',
 	'deletebatch-no-page' => 'Oppgje minst éi sida som skal bli sletta, eller vel ei fil med ei lista over sider.',
+	'right-deletebatch' => 'Massesletta sider',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'deletebatch' => 'Slett mange sider',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Slett mange sider]]',
 	'deletebatch-button' => 'Slett',
-	'deletebatch-here' => '<b>her</b>',
 	'deletebatch-help' => 'Slett en serie av sider. Du kan også utføre en enkel sletting, eller slette sider listet opp i en fil.
 Velg en bruker som skal vises i slettingsloggen.
 En opplastet fil må inneholde navnet på siden, og kan også ha en valgfri slettingsgrunn skilt fra tittelen med «|».',
@@ -690,7 +683,7 @@ En opplastet fil må inneholde navnet på siden, og kan også ha en valgfri slet
 	'deletebatch-or' => '<b>eller</b>',
 	'deletebatch-page' => 'Sider som skal slettes',
 	'deletebatch-reason' => 'Slettingsårsak',
-	'deletebatch-processing' => 'sletter sider',
+	'deletebatch-processing' => 'sletter sidene $1',
 	'deletebatch-from-file' => 'fra filliste',
 	'deletebatch-from-form' => 'fra skjema',
 	'deletebatch-success-subtitle' => 'for $1',
@@ -710,7 +703,6 @@ $messages['oc'] = array(
 	'deletebatch' => 'Lòt de supression de las paginas',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Suprimís un lòt de paginas]]',
 	'deletebatch-button' => 'SUPRIMIR',
-	'deletebatch-here' => '<b>aicí</b>',
 	'deletebatch-help' => 'Suprimís un lòt de paginas. Podètz siá aviar una supression simpla, siá suprimir de paginas listadas dins un fichièr.
 Causissètz un utilizaire que serà afichat dins lo jornal de las supressions.
 Un fichièr importat poirà conténer un nom de la pagina e un motiu facultatiu separat per un « | » dins cada linha.',
@@ -744,7 +736,6 @@ $messages['pl'] = array(
 	'deletebatch' => 'Usuń grupę stron',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Usuń grupę stron]]',
 	'deletebatch-button' => 'Usuń',
-	'deletebatch-here' => '<b>tutaj</b>',
 	'deletebatch-help' => 'Usuwanie grupy stron. Strony możesz usuwać pojedynczo lub poprzez usunięcie grupy stron, wymienionych w pliku.
 Wybierz użytkownika, który będzie widoczny w logu stron usuniętych.
 Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej linii tekstu, przedzielone symbolem "|".',
@@ -782,7 +773,6 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'deletebatch-button' => 'Şterge',
-	'deletebatch-here' => '<b>aici</b>',
 	'deletebatch-or' => '<b>sau</b>',
 	'deletebatch-page' => 'Pagini de şters',
 	'deletebatch-reason' => 'Motiv pentru ştergere',
@@ -820,7 +810,6 @@ $messages['sk'] = array(
 	'deletebatch' => 'Zmazanie viacerých stránok',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Zmazanie viacerých stránok]]',
 	'deletebatch-button' => 'ZMAZAŤ',
-	'deletebatch-here' => '<b>tu</b>',
 	'deletebatch-help' => 'Zmazanie viacerých stránok. Môžete buď vykonať jedno zmazanie alebo zmazať stránky uvedené v súbore.
 Vyberte, ktorý používateľ sa zobrazí v záznamoch zmazania.
 Nahraný súbor by mal na každom riadku obsahovať názov stránky a nepovinne aj dôvod zmazania oddelený znakom „|”.',
@@ -852,7 +841,6 @@ $messages['sv'] = array(
 	'deletebatch' => 'Radera serier av sidor',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Radera en serie av sidor]]',
 	'deletebatch-button' => 'RADERA',
-	'deletebatch-here' => '<b>här</b>',
 	'deletebatch-help' => 'Radera en serie av sidor. Du kan också utföra en ensam radering, eller radera sidor listade i en fil.
 Välj en användare som kommer att visas i raderingsloggen.
 En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med ett "|"-tecken på varje rad.',
@@ -907,7 +895,6 @@ $messages['uk'] = array(
 	'deletebatch' => 'Вилучення сторінок групами',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Вилучення сторінок групами]]',
 	'deletebatch-button' => 'Вилучити',
-	'deletebatch-here' => '<b>тут</b>',
 	'deletebatch-help' => 'Вилучення групи сторінок. Також ви можете зробити окреме вилучення, або вилучити сторінки, перераховані у файлі.
 Виберіть користувача, який згадуватиметься у журналі вилучень.
 Завантажений файл повинен містити у кожному рядку назву сторінки та необов\'язкову причину вилучення, відокремлену символом "|".',
@@ -933,7 +920,6 @@ $messages['vi'] = array(
 	'deletebatch' => 'Xóa một nhóm trang',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Xóa một nhóm trang]]',
 	'deletebatch-button' => 'Xóa',
-	'deletebatch-here' => '<b>tại đây</b>',
 	'deletebatch-help' => 'Xóa một nhóm trang. Bạn có thể thực hiện việc xóa từng trang, hoặc xóa các trang liệt kê trong một tập tin.
 Chọn một thành viên sẽ hiện ra trong nhật trình xóa.
 Tập tin đã tải nên có chứa tên trang và lý do tùy chọn phân tách bằng ký tự "|" tại mỗi dòng.',

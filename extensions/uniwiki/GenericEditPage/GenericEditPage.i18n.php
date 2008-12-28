@@ -71,6 +71,7 @@ $messages['ar'] = array(
 	'gep-addsectionbutton' => 'أضف',
 	'gep-classicmode' => 'النمط التقليدي',
 	'gep-genericmode' => 'النمط العام',
+	'gep-nocategories' => 'من فضلك أختار على الأقل تصنيف واحد قبل الحفظ',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
@@ -537,8 +538,19 @@ Gebruik de hulpmiddelen aan de rechterkant om er een toe te voegen.',
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'gep-desc' => 'Supplementerer endringssida for å få ho til å verta meir brukarvennleg',
+	'gep-emailsubject' => '[$1] Kategoriforslag: $2',
+	'gep-emailbody' => 'Brukaren «$1» føreslo kategorien «$2» for sida «$3».',
+	'gep-emailfailure' => 'Forslaget ditt kunne diverre ikkje verta handsama.',
+	'gep-emailsuccess' => 'Takk for at du føreslo kategorien:  $1.',
+	'gep-categories' => 'Kategoriar',
+	'gep-addcategory' => 'Legg til ein kategori',
 	'gep-addcategorybutton' => 'Legg til',
+	'gep-suggestcategory' => 'Føreslå ein kategori',
+	'gep-suggestcategorybutton' => 'OK',
 	'gep-addsectionbutton' => 'Legg til',
+	'gep-classicmode' => 'Klassisk modus',
+	'gep-nocategories' => 'Vel minst ein kategori før du lagrar',
 );
 
 /** Occitan (Occitan)
@@ -701,6 +713,13 @@ $messages['te'] = array(
 	'gep-nosectioninstructions' => 'ఈ పేజీలో విభాగాలేమీ లేవు.
 కుడివైపునున్న పనిముట్లని ఉపయోగించి కొన్ని చేర్చండి.',
 	'gep-nocategories' => 'భద్రపరిచేముంది కనీసం ఒక్క వర్గాన్నైనా ఎంచుకోండి',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'gep-categories' => 'Kategoria sira',
 );
 
 /** Tagalog (Tagalog)

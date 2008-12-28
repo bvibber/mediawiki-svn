@@ -53,6 +53,13 @@ $messages['ca'] = array(
 	'didyoumean-desc' => 'Afegeix enllaços a pàgines amb títols similars',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'didyoumean-desc' => 'Přidává odkazy na stránky s „podobnými“ názvy',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

@@ -95,11 +95,14 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Mobe
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'formatchanges-desc' => 'Muotoilee [[Special:RecentChanges|tuoreet muutokset]] -sivun uudelleen.',
 	'formatchanges-anonymous' => 'Nimetön',
+	'formatchanges-createdby' => 'luonut',
+	'formatchanges-editedby' => 'muokannut',
 );
 
 /** French (Français)
@@ -312,6 +315,7 @@ $messages['tl'] = array(
 $messages['uk'] = array(
 	'formatchanges-desc' => 'Перетворює [[Special:RecentChanges|нові редагування]]',
 	'formatchanges-anonymous' => 'Анонім',
+	'formatchanges-createdby' => 'створено',
 );
 
 /** Vietnamese (Tiếng Việt)

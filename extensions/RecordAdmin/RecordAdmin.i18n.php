@@ -62,8 +62,13 @@ Do not translate or change tag names, or link anchors.',
  * @author Ouda
  */
 $messages['ar'] = array(
+	'recordadmin' => 'إدارة السجل',
 	'recordadmin-category' => 'تسجيلات',
+	'recordadmin-select' => 'أختار نوع السجل للبحث عنه',
+	'recordadmin-newsearch' => 'بحث $1 جديد',
+	'recordadmin-newrecord' => 'أختار نوع سجل أخر',
 	'recordadmin-submit' => 'نفذ',
+	'recordadmin-create' => 'أبحث أو أنشئ ملف $1',
 	'recordadmin-badtitle' => '! عنوان سئ',
 	'recordadmin-invert' => 'أعكس الأختيار',
 	'recordadmin-buttonsearch' => 'بحث',
@@ -497,6 +502,7 @@ $messages['te'] = array(
 	'recordadmin-alreadyexist' => 'క్షమించండి, "$1" ఇప్పటికే ఉంది!',
 	'recordadmin-buttonsearch' => 'వెతుకు',
 	'recordadmin-buttoncreate' => 'సృష్టించు',
+	'recordadmin-searchresult' => 'అన్వేషణ ఫలితాలు',
 	'recordadmin-buttonsave' => 'భద్రపరచు',
 	'recordadmin-viewlink' => 'చూడు',
 	'recordadmin-editlink' => 'మార్చు',

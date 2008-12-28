@@ -38,6 +38,13 @@ $messages['af'] = array(
 	'languageselector-setlang' => 'stel',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'languageselector' => 'ቋንቋ',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

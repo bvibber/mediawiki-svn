@@ -81,6 +81,18 @@ $messages['bs'] = array(
 	'interwikilist-prefix' => 'Prefiks međuwikija:',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'interwikilist' => 'Seznam interwiki',
+	'interwikilist-desc' => 'Přidává [[Special:Interwikilist|speciální stránku]] se seznamem dostupných interwiki odkazů',
+	'interwikilist-linkname' => 'Interwiki odkaz',
+	'interwikilist-target' => 'Cílové URL',
+	'interwikilist-filter' => 'Seznam filtrů',
+	'interwikilist-prefix' => 'Interwiki prefix:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -253,14 +265,15 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Fievarsty
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'interwikilist' => 'インターウィキリスト',
+	'interwikilist' => 'インターウィキ一覧',
 	'interwikilist-desc' => '利用可能なインターウィキリンクを見ることができる[[Special:Interwikilist|特別ページ]]を追加する',
 	'interwikilist-linkname' => 'インターウィキリンク',
 	'interwikilist-target' => 'リンク先のURL',
-	'interwikilist-filter' => 'フィルターリスト',
-	'interwikilist-prefix' => 'インターウィキプレフィックス:',
+	'interwikilist-filter' => 'フィルター一覧',
+	'interwikilist-prefix' => 'インターウィキ接頭辞:',
 );
 
 /** Khmer (ភាសាខ្មែរ)

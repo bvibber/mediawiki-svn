@@ -36,6 +36,17 @@ Shown in [[Special:Version]].
 Do not translate tags names, and links targets.',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'mp-request-new-message' => 'አዲስ መልዕክት',
+	'mp-request-new-award' => '$1 አዲስ {{PLURAL:$1|ሽልማት|ሽልማቶች}}',
+	'mp-request-new-gift' => '$1 አዲስ {{PLURAL:$1|ስጦታ|ስጦታዎች}}',
+	'mp-request-new-foe' => '$1 አዲስ {{PLURAL:$1|ጠላት|ጠላቶች}}',
+	'mp-request-new-friend' => '$1 አዲስ {{PLURAL:$1|ወዳጅ|ወዳጆች}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -195,6 +206,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'mp-userlevels-link' => 'Uzulaj niveloj',
 	'mp-welcome-upload' => 'Alŝuti',
 	'mp-welcome-edit' => 'Redakti',
 	'mp-welcome-points' => '$1 poentoj',
@@ -211,8 +223,11 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
+	'userwelcome-desc' => 'Añade la etiqueta <tt>&lt;welcomeUser&gt;</tt> para mostrar información social específica de cada usuario a los usuarios registrados',
 	'mp-welcome-upload' => 'Subir',
 	'mp-welcome-edit' => 'Editar',
+	'mp-welcome-points' => '$1 puntos',
+	'mp-request-new-message' => 'nuevo mensaje',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|nuevo amigo|nuevos amigos}}',
 );
 

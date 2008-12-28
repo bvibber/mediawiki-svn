@@ -31,9 +31,13 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Purodha
  * @author SPQRobin
  */
 $messages['qqq'] = array(
+	'emergencydesysop-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
 	'emergencydesysop-nogroups' => '{{Identical|None}}',
 );
 
@@ -44,6 +48,8 @@ $messages['ar'] = array(
 	'emergencydesysop-reason' => 'سبب الحذف',
 	'emergencydesysop-submit' => 'تنفيذ',
 	'emergencydesysop-nogroups' => 'لا يوجد',
+	'emergencydesysop-invalidtarget' => 'المستخدم المراد لا يوجد',
+	'emergencydesysop-blocked' => 'لا يمكن الدخول على هذه الصفحة أثناء المنع',
 );
 
 /** Bosnian (Bosanski)
@@ -56,22 +62,23 @@ $messages['bs'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Metalhead64
+ * @author Purodha
  */
 $messages['de'] = array(
 	'emergencydesysop' => 'Not-DeSysop',
 	'emergencydesysop-desc' => 'Ermöglicht einem Administrator, seine Privilegien aufzugeben, um den Adminstatus eines anderen Administrators zu entfernen',
 	'emergencydesysop-title' => 'Entfernt den Sysop-Status des aktuellen und eines anderen Benutzers',
-	'emergencydesysop-otheradmin' => 'Anderen Sysop degruppieren',
+	'emergencydesysop-otheradmin' => 'Anderen Sysop zum Deklassieren',
 	'emergencydesysop-reason' => 'Grund für die Entfernung',
 	'emergencydesysop-submit' => 'Übertragen',
 	'emergencydesysop-incomplete' => 'Es werden Eingaben in allen Feldern benötigt. Bitte erneut versuchen.',
 	'emergencydesysop-notasysop' => "Der gewählte Benutzer ist nicht in der Gruppe ''Sysop''.",
 	'emergencydesysop-nogroups' => 'Keine',
-	'emergencydesysop-done' => 'Aktion erfolgreich. Du und [[$1]] wurden degruppiert.',
+	'emergencydesysop-done' => 'Aktion erfolgreich. Du und [[$1]] wurden degradiert.',
 	'emergencydesysop-invalidtarget' => 'Der gewählte Benutzer existiert nicht.',
 	'emergencydesysop-blocked' => 'Du kannst nicht auf diese Seite zugreifen, während du gesperrt bist',
 	'emergencydesysop-noright' => 'Du hast keine ausreichenden Berechtigungen für diese Seite',
-	'right-emergencydesysop' => 'Ermöglicht die gegenseitige Degruppierung von Sysops',
+	'right-emergencydesysop' => 'Ermöglicht die gegenseitige Degradierung von Sysops',
 );
 
 /** Esperanto (Esperanto)
@@ -153,6 +160,25 @@ $messages['ko'] = array(
 	'emergencydesysop-otheradmin' => '권한을 해제할 다른 관리자',
 	'emergencydesysop-submit' => '확인',
 	'emergencydesysop-done' => '명령 완료, 당신과 [[$1]] 사용자는 관리자 권한이 해제되었습니다.',
+);
+
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'emergencydesysop' => 'Notfall — ene dorschjedriehte WikiKöbes erus schmiiße',
+	'emergencydesysop-desc' => 'Määt et för Nuutfäll müjjelesch, zwei WikiKöbes op eimol erus schmiiße, sesch sellver, un eine dorschjedriehte Kolleje.',
+	'emergencydesysop-title' => 'Nemmp däm Metmaacher sellver un enem andere de Rääschte fun enem WikiKöbes fott.',
+	'emergencydesysop-otheradmin' => 'Dä andere, öm en uß dä Jrup „{{int:group-sysop}}“ eruß ze nämme',
+	'emergencydesysop-reason' => 'Dä Jrund för et Rußschmiiße',
+	'emergencydesysop-submit' => 'Loß Jonn!',
+	'emergencydesysop-incomplete' => 'Do moß en jedes Feld en dämm Fommulaa jet enjävve!',
+	'emergencydesysop-notasysop' => 'Dä Metmaacher es jaa nit en dä Jopp „{{int:group-sysop}}“.',
+	'emergencydesysop-nogroups' => 'Keine',
+	'emergencydesysop-done' => 'Dat hät jefupp, dä [[$1]] un Du, Ühr sid jetz kein {{int:group-sysop}} mieh.',
+	'emergencydesysop-invalidtarget' => 'Esu ene Metmaacher ham_mer nit.',
+	'emergencydesysop-blocked' => 'Dat kanns De nit maache, esu lang wi De jespertt bes.',
+	'emergencydesysop-noright' => 'Do häs nit dat Rääsch, op die Sigg ze jonn.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

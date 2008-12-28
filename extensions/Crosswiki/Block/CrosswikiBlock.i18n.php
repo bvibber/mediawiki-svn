@@ -451,6 +451,7 @@ $messages['eu'] = array(
  * @author Jack Phoenix
  * @author Nike
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'crosswikiblock' => 'Estä käyttäjä toisessa wikissä',
@@ -475,9 +476,12 @@ Tarkista, saatko toimia tässä wikissä ja että toimesi ovat käytäntöjen mu
 Palaa takaisin:
 * [[Special:CrosswikiBlock|estosivulle]]
 * [[$2]].",
+	'crosswikiblock-nousername' => 'Käyttäjätunnusta ei annettu',
 	'crosswikiblock-dbnotfound' => 'Tietokantaa $1 ei ole',
+	'crosswikiblock-noname' => '”$1” ei ole kelvollinen käyttäjätunnus.',
 	'crosswikiblock-nouser' => 'Käyttäjää ”$3” ei löydy.',
 	'crosswikiblock-noexpiry' => 'Virheellinen vanhenemisaika $1.',
+	'crosswikiblock-noreason' => 'Syytä ei eritelty.',
 	'crosswikiblock-alreadyblocked' => 'Käyttäjä $3 on jo estetty.',
 	'crosswikiblock-noblock' => 'Käyttäjää ei ole estetty.',
 	'crosswikiblock-success' => "Käyttäjä '''$3''' estettiin.
@@ -1051,6 +1055,7 @@ Zréck op:
 	'crosswikiblock-nouser' => 'De Benotzer "$3" gouf net fonnt.',
 	'crosswikiblock-noexpiry' => 'Ongëlteg Dauer vun der Spär: $1',
 	'crosswikiblock-noreason' => 'Kee Grond uginn.',
+	'crosswikiblock-notoken' => 'Ännerungs-Jeton net valabel',
 	'crosswikiblock-alreadyblocked' => 'De Benotzer $3 ass scho gespaart.',
 	'crosswikiblock-noblock' => 'Dëse Benotzer ass net gespaart.',
 	'crosswikiblock-success' => "De Benotzer '''$3''' ass gespaart.

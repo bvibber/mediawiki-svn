@@ -58,6 +58,15 @@ $messages['bg'] = array(
 	'icon-desc' => 'Позволява да се използват картинките като икони и като иконни препратки',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'icon-badimage' => 'Špatný obrázek',
+	'icon-badwidth' => 'Špatná šířka',
+	'icon-desc' => 'Umožňuje používat obrázky jako ikony a ikonové odkazy',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Raimond Spekking
@@ -192,6 +201,14 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'icon-badimage' => 'Gambaré salah',
+);
+
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'icon-badimage' => 'ცუდი სურათი',
+	'icon-badwidth' => 'ცუდი სიგანე',
 );
 
 /** Khmer (ភាសាខ្មែរ)

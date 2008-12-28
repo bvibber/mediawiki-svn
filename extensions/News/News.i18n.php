@@ -63,6 +63,13 @@ $messages['es'] = array(
 	'newsextension-desc' => 'Muestra cambios recientes configurables en páginas wiki o como sindicación RSS o Atom',
 );
 
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'newsextension-desc' => 'Näyttää valikoituja viimeisiä muutoksia wikisivulla tai joko RSS- tai Atom-syötteenä.',
+);
+
 /** French (Français)
  * @author Verdy p
  */

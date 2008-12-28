@@ -70,6 +70,14 @@ $messages['bs'] = array(
 	'catboxattop-categories' => 'Kategorije',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'catboxattop-desc' => 'Přidává pole s kategoriemi do pravého horního rohu stránek',
+	'catboxattop-categories' => 'Kategorie',
+);
+
 /** German (Deutsch)
  * @author MF-Warburg
  * @author Melancholie
@@ -215,6 +223,14 @@ $messages['nl'] = array(
 	'catboxattop-categories' => 'Categorieën',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'catboxattop-desc' => 'Legg til ein kategoriboks oppe til høgre på sider',
+	'catboxattop-categories' => 'Kategoriar',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -273,6 +289,21 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'catboxattop-categories' => 'వర్గాలు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'catboxattop-categories' => 'Kategoria sira',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'catboxattop-desc' => 'Додає блок категорій у верхній правий кут сторінок',
+	'catboxattop-categories' => 'Категорії',
 );
 
 /** Vietnamese (Tiếng Việt)

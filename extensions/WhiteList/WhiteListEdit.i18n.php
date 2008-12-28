@@ -604,6 +604,8 @@ $2',
  */
 $messages['es'] = array(
 	'whitelist-desc' => 'Editar los permisos de acceso de usuarios restringidos',
+	'whitelistedit' => 'Editor de acceso de la lista blanca',
+	'whitelist' => 'Páginas de la lista blanca',
 	'mywhitelistpages' => 'Mis páginas',
 	'whitelistfor' => '<center>Informacion actual para <b>$1</b></center>',
 	'whitelisttablemodify' => 'Modifica',
@@ -615,41 +617,76 @@ $messages['es'] = array(
 	'whitelisttablemodby' => 'Última modificación realizada por',
 	'whitelisttablemodon' => 'Última modificación realizada el',
 	'whitelisttableedit' => 'Editar',
-	'whitelisttableview' => 'ver',
+	'whitelisttableview' => 'Ver',
 	'whitelisttablenewdate' => 'Nueva fecha:',
+	'whitelisttablechangedate' => 'Cambiar la fecha de caducidad',
+	'whitelisttablesetedit' => 'Activar modificación',
+	'whitelisttablesetview' => 'Activar visualización',
 	'whitelisttableremove' => 'Borrar',
+	'whitelistnewpagesfor' => 'Añadir páginas a la lista blanca de <b>$1</b> <br />
+Usa * o % como comodines.',
 	'whitelistnewtabledate' => 'Fecha de caducidad:',
-	'whitelistnewtableedit' => 'Establecer en modo edición',
-	'whitelistnewtableview' => 'Establecer en modo visualización',
+	'whitelistnewtableedit' => 'Activar modificación',
+	'whitelistnewtableview' => 'Activar visualización',
+	'whitelistnowhitelistedusers' => 'No hay usuarios en el grupo «{{MediaWiki:Group-restricted}}».
+Tienes que [[Special:UserRights|añadir usuarios al grupo]] antes de poder añadir páginas a una lista blanca de usuario.',
 	'whitelistnewtableprocess' => 'Proceso',
 	'whitelistnewtablereview' => 'Revisión',
+	'whitelistselectrestricted' => '== Selecciona un nombre de usuario restringido ==',
+	'whitelistpagelist' => 'Páginas de {{SITENAME}} para $1',
 	'whitelistnocalendar' => "<font color='red' size=3>Aparentemente la [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], requisito necesario para esta extensión, no ha sido instalada correctamente!</font>",
 	'whitelistbadtitle' => 'Título erróneo -',
 	'whitelistoverview' => '== Resumen de cambios para $1 ==',
+	'whitelistoverviewcd' => "* Cambiando la fecha a '''$1''' para [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Estableciendo acceso a '''$1''' para [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Quitando acceso a [[:$1|$1]]',
 	'whitelistoverviewna' => "* Agregando [[:$1|$1]] a la lista con acceso '''$2''' y fecha de expiración '''$3'''",
 	'whitelistrequest' => 'Solicitar acceso a más páginas',
 	'whitelistrequestmsg' => '$1 solicitó acceso a {{PLURAL:$3|la siguiente página|las siguientes $3 páginas}}:
 
 $2',
 	'whitelistrequestconf' => 'La solicitud de nuevas páginas fue enviada a $1',
+	'whitelistnonrestricted' => "El usuario '''$1''' no está restringido.
+Está página sólo es aplicable a usuarios restringidos",
 	'whitelistnever' => 'nunca',
 	'whitelistnummatches' => ' - {{PLURAL:$1|una coincidencia|$1 coincidencias}}.',
+	'right-editwhitelist' => 'Modificar la lista blanca para usuarios existentes',
+	'right-restricttowhitelist' => 'Editar y ver sólo las páginas de la lista blanca',
+	'action-editwhitelist' => 'modificar la lista blanca para usuarios existentes',
+	'action-restricttowhitelist' => 'editar y ver sólo las páginas de la lista blanca',
 	'group-restricted' => 'Usuarios limitados',
 	'group-restricted-member' => 'Usuario limitado',
-	'group-manager' => 'Administradores',
-	'group-manager-member' => 'Administrador',
+	'group-manager' => 'Gestores',
+	'group-manager-member' => 'Gestor',
 );
 
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
+	'mywhitelistpages' => 'Minun sivuni',
+	'whitelisttablemodify' => 'Muokkaa',
 	'whitelisttablemodifyall' => 'Kaikki',
+	'whitelisttablemodifynone' => 'Ei mitään',
 	'whitelisttablepage' => 'Wikisivu',
+	'whitelisttableexpires' => 'Vanhentumispäivä:',
+	'whitelisttablemodby' => 'Viimeisin muokkaaja:',
+	'whitelisttablemodon' => 'Viimeksi muokattu:',
 	'whitelisttableedit' => 'Muokkaa',
 	'whitelisttableview' => 'Näytä',
+	'whitelisttablenewdate' => 'Uusi päivämäärä:',
+	'whitelisttablechangedate' => 'Muuta vanhentumispäivämäärää',
 	'whitelisttableremove' => 'Poista',
+	'whitelistnewtabledate' => 'Vanhentumispäivämäärä:',
+	'whitelistbadtitle' => 'Virheellinen otsikko -',
+	'whitelistrequest' => 'Pyydä pääsy useammille sivuille',
+	'whitelistrequestmsg' => '$1 on pyytänyt pääsyä {{PLURAL:$3|seuraavalle sivulle|seuraaville sivuille}}:
+
+$2',
+	'whitelistnever' => 'ei koskaan',
+	'whitelistnummatches' => '  - {{PLURAL:$1|yksi osuma|$1 osumaa}}',
 	'group-restricted' => 'rajoitetut käyttäjät',
 	'group-restricted-member' => 'rajoitettu käyttäjä',
 );
@@ -1100,6 +1137,13 @@ Kaca iki mung kanggo panganggo kawates",
 	'group-restricted-member' => 'Panganggo kawates',
 	'group-manager' => 'Para manajer',
 	'group-manager-member' => 'Manager',
+);
+
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'whitelisttableedit' => 'რედაქტირება',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -2099,6 +2143,7 @@ $messages['te'] = array(
 	'whitelistrequestmsg' => 'ఈ క్రింది {{PLURAL:$3|పేజీకి|పేజీలకు}} $1 అనుమతిని అడిగారు:
 
 $2',
+	'whitelistrequestconf' => 'కొత్త పేజీలకై అభ్యర్థనని $1 కి పంపించాం',
 	'whitelistnummatches' => ' - {{PLURAL:$1|ఒక పోలిక|$1 పోలికలు}}',
 	'group-restricted' => 'నియంత్రిత వాడుకరులు',
 	'group-restricted-member' => 'నియంత్రిత వాడుకరి',

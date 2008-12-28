@@ -470,6 +470,14 @@ $messages['vi'] = array(
 	'newuseredit-summary' => 'Thêm [[{{int:newusermessage-template}}|thông báo hoan nghênh]] vào trang thảo luận của người dùng mới',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'newusermessage-desc' => '在新用户的讨论页上添加一条信息',
+	'newuseredit-summary' => '在新用户的讨论页上添加[[{{int:newusermessage-template}}|欢迎信息]]',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
  */

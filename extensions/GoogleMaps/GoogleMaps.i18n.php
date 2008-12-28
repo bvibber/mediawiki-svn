@@ -152,6 +152,7 @@ $wgGoogleMapsMessages['af'] = array(
 $wgGoogleMapsMessages['am'] = array(
 	'gm-balloon-title' => 'አርዕስት፡',
 	'gm-width' => 'ስፋት',
+	'gm-large' => 'ትልቅ',
 	'gm-yes' => 'አዎ',
 	'gm-line-width' => 'ስፋት',
 	'gm-moon' => 'ጨረቃ',
@@ -2008,6 +2009,20 @@ $wgGoogleMapsMessages['jv'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$wgGoogleMapsMessages['ka'] = array(
+	'gm-clip-result' => 'რუკაზე დამატება',
+	'gm-map' => 'რუკა',
+	'gm-are-you-sure' => 'დარწმუნებული ხართ?',
+	'gm-large' => 'დიდი',
+	'gm-medium' => 'საშუალო',
+	'gm-small' => 'პატარა',
+	'gm-earth' => 'დედამიწა',
+	'gm-moon' => 'მთვარე',
+);
+
 /** Kara-Kalpak (Qaraqalpaqsha)
  * @author Atabek
  */
@@ -3258,6 +3273,52 @@ $wgGoogleMapsMessages['scn'] = array(
 	'gm-no-results' => 'Dispiaciuti. nuddu risurtatu.',
 	'gm-searching' => 'Sta circannu...',
 	'gm-map' => 'Mappa',
+	'gm-note' => 'Annutazzioni: teni accura di cupiari chiddu ca voi sarvari ntâ pàggina (di sècutu) prima di mùnciri "Càrica mappa", "Sarva" o "Antiprima"!',
+	'gm-instructions' => 'Di sècutu è ripurtatu lu mark-up Wiki pi criari la mappa suprastanti.',
+	'gm-are-you-sure' => 'Si sicuru ?',
+	'gm-clear-all-points' => 'Leva tutti li punti',
+	'gm-refresh-points' => 'Aggiorna punti',
+	'gm-width' => 'Larighizza',
+	'gm-height' => 'Autizza',
+	'gm-scale-control' => 'Scala',
+	'gm-overview-control' => 'Panuràmica',
+	'gm-selector-control' => 'Silitturi Mappa/Satèlliti',
+	'gm-zoom-control' => 'Navicazzioni',
+	'gm-large' => 'Granni',
+	'gm-medium' => 'Mèdiu/Minzanu',
+	'gm-small' => 'Nicu',
+	'gm-no-zoom-control' => 'Nuddu',
+	'gm-yes' => 'Sì/Sini',
+	'gm-no' => 'Nò/Noni',
+	'gm-search-preface' => "Fai clic supr'a mappa pi juncìricci nu puntu, oppuru sàuta a na citati, paisi, nnirizzu o attivitati:",
+	'gm-geocode-preface' => "Fai clic supr'a mappa pi juncìricci nu puntu, oppuru sàuta a na citati, paisi o attivitati:",
+	'gm-no-search-preface' => "Fai clic supr'a mappa pi juncìricci nu puntu.",
+	'gm-search' => 'Circata',
+	'gm-clear-search' => 'scancella li risurtati dâ circata',
+	'gm-meters' => 'metri',
+	'gm-miles' => 'migghia',
+	'gm-editing-path' => "fai clic supr'a mappa pi juncìricci àutri punti a stu pircorsu.",
+	'gm-save-path' => 'Sarva',
+	'gm-edit-path' => 'Junci punti',
+	'gm-show-path' => 'ammustra punti',
+	'gm-color-path' => 'cancia culuri',
+	'gm-color-fill' => 'cancia culuri di inchimentu',
+	'gm-add-fill' => 'inchi ària',
+	'gm-remove-fill' => 'svacanta-inchi',
+	'gm-fill-color' => 'Culuri di inchimentu',
+	'gm-line-color' => 'Culuri lìnia',
+	'gm-opacity' => 'Upacitati',
+	'gm-line-width' => 'Larichizza',
+	'gm-make-map' => 'cria na mappa',
+	'gm-hide-map' => 'ammùccia mappa',
+	'gm-back' => 'arredi',
+	'gm-kml-include' => 'KML/GeoRSS di fora:',
+	'gm-kml-include-link' => 'junci a la mappa',
+	'gm-kml-loading' => 'sta caricannu...',
+	'gm-kml-export' => "Esporta chista mappa 'n KML",
+	'gm-earth' => 'Terra',
+	'gm-moon' => 'Luna',
+	'gm-mars' => 'Marti',
 );
 
 /** Sinhala (සිංහල)

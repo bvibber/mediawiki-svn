@@ -794,6 +794,8 @@ $messages['pt'] = array(
  */
 $messages['ro'] = array(
 	'lookupuser-nonexistent' => 'Eroare: Utilizatorul nu există',
+	'lookupuser-authenticated' => 'autentificat la $1',
+	'lookupuser-not-authenticated' => 'neautentificat',
 	'lookupuser-realname' => 'Nume real: $1',
 	'lookupuser-registration' => 'Data înregistrării: $1',
 );

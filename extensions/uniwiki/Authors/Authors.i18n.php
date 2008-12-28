@@ -55,6 +55,15 @@ $messages['bg'] = array(
 	'authors_anonymous' => 'Анонимни',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'authors-desc' => 'Přidává na stránky seznam autorů',
+	'authors_authors' => 'Autoři',
+	'authors_anonymous' => 'Anonym',
+);
+
 /** German (Deutsch)
  * @author MF-Warburg
  * @author Melancholie
@@ -215,6 +224,13 @@ $messages['nl'] = array(
 	'authors_anonymous' => 'Anoniem',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'authors_authors' => 'Forfattarar',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -284,6 +300,15 @@ $messages['tl'] = array(
 	'authors-desc' => 'Nagkakabit/naglalakip ng isang talaan ng mga tagapagambag sa mga pahina',
 	'authors_authors' => 'Mga may-akda',
 	'authors_anonymous' => 'Hindi nagpapakilala (anonimo)',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'authors-desc' => 'Додає на сторінку список авторів',
+	'authors_authors' => 'Автори',
+	'authors_anonymous' => 'Анонім',
 );
 
 /** Vietnamese (Tiếng Việt)

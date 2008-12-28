@@ -274,6 +274,13 @@ $messages['vi'] = array(
 	'editown-desc' => 'Người dùng không có quyền sửa toàn bộ (editall) chỉ có thể sửa đổi những trang do họ tạo ra',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'editown-desc' => '用户只能编辑自己创建的页面',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

@@ -129,9 +129,10 @@ $messages['es'] = array(
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Mobe
+ * @author Nike
  */
 $messages['fi'] = array(
-	'createbox-desc' => 'Erityinen syöttölomake sivun luontiin',
+	'createbox-desc' => 'Erityinen syöttölomake sivun luontiin.',
 	'createbox-create' => 'Luo',
 	'createbox-exists' => "Pahoittelut, \"'''{{FULLPAGENAME}}'''\" on jo olemassa.
 

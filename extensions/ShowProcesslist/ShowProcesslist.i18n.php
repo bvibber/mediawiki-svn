@@ -93,6 +93,22 @@ $messages['co'] = array(
 	'showprocesslist-user' => 'Utilizatore',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'showprocesslist' => 'Zobrazit seznam procesů',
+	'showprocesslist-desc' => 'Zobrazuje výstup [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-id' => 'ID',
+	'showprocesslist-user' => 'Uživatel',
+	'showprocesslist-host' => 'Host',
+	'showprocesslist-db' => 'db',
+	'showprocesslist-command' => 'Příkaz',
+	'showprocesslist-time' => 'Čas',
+	'showprocesslist-state' => 'Stav',
+	'showprocesslist-info' => 'Info',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
@@ -365,7 +381,9 @@ $messages['ka'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'showprocesslist' => 'បង្ហាញ​បញ្ជី​ដំណើរការ',
 	'showprocesslist-user' => 'អ្នកប្រើប្រាស់',
+	'showprocesslist-host' => 'ម៉ាស៊ីន',
 	'showprocesslist-time' => 'ពេលវេលា',
 	'showprocesslist-state' => 'រដ្ឋ',
 	'showprocesslist-info' => 'ព័ត៌មាន',
@@ -650,6 +668,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'showprocesslist' => 'ప్రక్రియల జాబితా చూపించు',
 	'showprocesslist-user' => 'వాడుకరి',
 	'showprocesslist-command' => 'ఆదేశం',
 	'showprocesslist-time' => 'సమయం',

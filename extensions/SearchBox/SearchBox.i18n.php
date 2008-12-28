@@ -79,6 +79,16 @@ $messages['br'] = array(
 	'searchbox-namespaces' => 'Esaouennoù anv :',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'searchbox-desc' => 'Umožňuje vkládání vyhledávacích formulářů',
+	'searchbox-search' => 'Hledat',
+	'searchbox-go' => 'Jít na',
+	'searchbox-namespaces' => 'Jmenné prostory:',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'searchbox-desc' => 'Ermöglicht das Einbinden eines Suchformulares',
@@ -116,10 +126,11 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Mobe
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'searchbox-desc' => 'Sallii hakulausekkeiden käytön',
+	'searchbox-desc' => 'Mahdollistaa hakulomakkeen upottamisen sivuille.',
 	'searchbox-search' => 'Etsi',
 	'searchbox-go' => 'Siirry',
 	'searchbox-namespaces' => 'Nimiavaruudet',

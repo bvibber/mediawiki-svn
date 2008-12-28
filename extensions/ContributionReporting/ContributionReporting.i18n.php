@@ -550,11 +550,12 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Imre
  * @author Remember the dot
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'contributionhistory' => 'Historial de contribuciones',
 	'contrib-hist-name' => 'Nombre',
-	'contrib-hist-date' => 'Tiempo y fecha',
+	'contrib-hist-date' => 'Fecha y hora',
 	'contrib-hist-amount' => 'Cantidad',
 	'contrib-hist-anonymous' => 'Anónimo',
 	'contributionstatistics' => 'Estadísticas de contribución',
@@ -1386,6 +1387,51 @@ $messages['nah'] = array(
 	'fundraiserstats-day' => 'Tōnalli $1 īpan $2',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'contributiontotal' => 'Spennen alltohoop',
+	'contributionhistory' => 'Spennenverloop',
+	'contrib-hist-name' => 'Naam',
+	'contrib-hist-date' => 'Datum un Tied',
+	'contrib-hist-amount' => 'Bedrag',
+	'contrib-hist-next' => 'Öllere Spennen',
+	'contrib-hist-previous' => 'Ne’ere Spennen',
+	'contrib-hist-anonymous' => 'Anonym',
+	'contributionstatistics' => 'Spennenstatistik',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Alltohoop vundaag|Alltohoop för de lesten $1 Daag}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Alltohoop dissen Maand|Alltohoop för de lesten $1 Maanden}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Alltohoop för een Maand|Alltohoop för $1 Maanden}}',
+	'contribstats-currency-totals' => 'Geldsoorten alltohoop för dat Stüürjohr $1',
+	'contribstats-day' => 'Dag',
+	'contribstats-month' => 'Maand',
+	'contribstats-currency' => 'Geldsoort',
+	'contribstats-amount' => 'Bedrag (in USD)',
+	'contribstats-contributions' => 'Spennen',
+	'contribstats-total' => 'Alltohoop (in USD)',
+	'contribstats-avg' => 'Dörsnidd (in USD)',
+	'contribstats-max' => 'Maximum (in USD)',
+	'contribstats-percentage-ytd' => 'Perzentsatz (bet nu dit Johr)',
+	'contribstats-total-ytd' => 'Alltohoop (bet nu dit Johr)',
+	'contribstats-value-exactly' => 'Exakt $1',
+	'contribstats-value-under' => 'Minn as $1',
+	'contribstats-value-from' => 'Twischen $1 un $2',
+	'contribstats-value-over' => 'Över $1',
+	'fundraiserstatistics' => 'Spennenstatistiken',
+	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-day' => 'Dag $1 vun $2',
+	'fundraiserstats-contributions' => 'Spennen',
+	'fundraiserstats-total' => 'Alltohoop (in USD)',
+	'fundraiserstats-avg' => 'Dörsnidd (in USD)',
+	'fundraiserstats-max' => 'Maximum (in USD)',
+	'fundraiserstats-tab-totals' => 'Summen (in USD)',
+	'fundraiserstats-tab-contributions' => 'Tall Spennen',
+	'fundraiserstats-tab-averages' => 'Dörsneden (in USD)',
+	'fundraiserstats-tab-maximums' => 'Maximaltallen (in USD)',
+	'specialpages-group-contribution' => 'Spennen/Fundraiser',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1688,6 +1734,8 @@ $messages['pt'] = array(
 $messages['ro'] = array(
 	'contrib-hist-name' => 'Nume',
 	'contrib-hist-date' => 'Timp şi dată',
+	'contrib-hist-next' => 'Donaţii anterioare',
+	'contrib-hist-previous' => 'Donaţii mai noi',
 	'contrib-hist-anonymous' => 'Anonim',
 	'contribstats-day' => 'Zi',
 	'contribstats-month' => 'Lună',

@@ -34,6 +34,14 @@ Do not translate or change tag names, or link anchors.',
  * @author Ouda
  */
 $messages['ar'] = array(
+	'securepasswords-valid' => 'كلمة السر غير صحيحة أو قصيرة جدا
+<br>يجب:
+
+<br />',
+	'securepasswords-lowercase' => 'lowercase تحتوى على الأقل على حرف في حالة',
+	'securepasswords-uppercase' => 'uppercase تحتوى على الأقل على حرف في حالة',
+	'securepasswords-digit' => 'يحتوى على رقم واحد على الأقل',
+	'securepasswords-special' => 'تحتوى على الأقل على رمز خاص (الرموز الخاصة مثل : $1)',
 	'securepasswords-username' => 'تكون مختلفة عن اسم المستخدم',
 	'securepasswords-word' => 'لا تكون كلمة',
 );
@@ -149,6 +157,22 @@ $messages['hsb'] = array(
 	'securepasswords-special' => 'znajmjeńša 1 specialne znamješko wobsahować (Specialne znamješka su: $1)',
 	'securepasswords-username' => 'so wot twojeho wužywarskeho mjena rozeznać',
 	'securepasswords-word' => 'něšto druhe być hač słowo',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'securepasswords-desc' => 'Crea hashes plus secur del contrasignos e adde un verificator de complexitate de contrasignos',
+	'securepasswords-valid' => 'Tu contrasigno es invalide o troppo curte.
+Illo debe:',
+	'securepasswords-minlength' => 'esser al minus $1 {{PLURAL:$1|character|characteres}} de longitude',
+	'securepasswords-lowercase' => 'continer al minus 1 littera minuscule',
+	'securepasswords-uppercase' => 'continer al minus 1 littera majuscule',
+	'securepasswords-digit' => 'continer al minus 1 digito',
+	'securepasswords-special' => 'continer al minus 1 character special (le characteres special es: $1)',
+	'securepasswords-username' => 'esser differente de tu nomine de usator',
+	'securepasswords-word' => 'non esser un parola',
 );
 
 /** Japanese (日本語)

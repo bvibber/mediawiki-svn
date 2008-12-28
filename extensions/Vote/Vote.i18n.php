@@ -1233,9 +1233,25 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author Aleksandrit
  */
 $messages['uk'] = array(
+	'vote' => 'Голосування',
+	'vote-header' => "Ви можете проголосувати за '''Вищого повелителя світу''' тут!",
+	'vote-current' => "Ваш поточний голос за '''$1'''.",
+	'vote-legend' => 'Проголосувати або змінити голос',
 	'vote-caption' => 'Ваш вибір:',
+	'vote-choices' => 'джокер|Джокер
+пінгвін|Пінгвін
+загадка|Загадка',
+	'vote-submit' => 'Голосувати',
+	'vote-registered' => 'Ваш голос був зареєстрований.',
+	'vote-view-results' => 'Переглянути результати',
+	'vote-results' => 'Результати голосування',
+	'vote-results-choice' => 'Вибір',
+	'vote-results-count' => 'Кількість',
+	'vote-login' => 'Ви повинні $1 для голосування.',
+	'vote-login-link' => 'вхід у систему',
 );
 
 /** Vietnamese (Tiếng Việt)

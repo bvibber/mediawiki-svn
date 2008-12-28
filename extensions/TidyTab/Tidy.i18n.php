@@ -39,6 +39,15 @@ $messages['arz'] = array(
 	'untidy' => 'لا ترتيب',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'tidy-desc' => 'Přidává na běžné stránky záložku „Tidy“ nebo „Zrušit Tidy“ (v závislosti na nastavení $wgUseTidy) umožňující potlačení globálního nastavení HTML Tidy pro jedno zobrazení.',
+	'tidy' => 'Tidy',
+	'untidy' => 'Zrušit Tidy',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  * @author Raimond Spekking
@@ -241,5 +250,13 @@ $messages['sv'] = array(
 $messages['tg-cyrl'] = array(
 	'tidy' => 'Муратаб',
 	'untidy' => 'Номуратаб',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'tidy' => 'Впорядкувати',
+	'untidy' => 'Розпорядкувати',
 );
 

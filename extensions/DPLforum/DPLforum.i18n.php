@@ -467,6 +467,18 @@ $messages['ru'] = array(
 	'dplforum-toomany' => 'Форум DPL: Слишком много категорий!',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'dplforum-desc' => 'Estenzioni forum basata sù DPL',
+	'dplforum-by' => 'di',
+	'dplforum-edited' => '- Mudificatu ùrtima vota',
+	'dplforum-never' => 'Mai',
+	'dplforum-toofew' => 'DPL Forum: Troppi picca catigurìi!',
+	'dplforum-toomany' => 'DPL Forum: Troppi catigurìi!',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

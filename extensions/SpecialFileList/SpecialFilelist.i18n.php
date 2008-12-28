@@ -106,6 +106,17 @@ $messages['ca'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'filelist' => 'Seznam souborů',
+	'filelist-desc' => '[[Special:Filelist|Speciální stránka]] pro výpis nahraných souborů',
+	'filelist-show-list' => 'Zobrazit seznam',
+	'filelist-show-gallery' => 'Zobrazit galerii',
+	'filelist-image-desc' => 'popis',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -635,6 +646,13 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tr'] = array(
 	'filelist' => 'Dosya listesi',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'filelist' => 'Список файлів',
 );
 
 /** Vèneto (Vèneto)

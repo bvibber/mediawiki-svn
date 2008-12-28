@@ -210,6 +210,13 @@ $messages['sv'] = array(
 	'formatsearch-desc' => 'Rensar upp sökresultatssidan',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'formatsearch-desc' => 'Naglilinis ng pahina ng lumabas na mga resulta matapos ang paghahanap',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

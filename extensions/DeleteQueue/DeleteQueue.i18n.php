@@ -540,6 +540,14 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
+	'deletequeue-desc' => 'Създава [[Special:DeleteQueue|система от опашки за управление на изтриванията]]',
+	'deletequeue-action-queued' => 'Изтриване',
+	'deletequeue-generic-reasons' => '* Основни причини
+  ** Вандализъм
+  ** Спам
+  ** Поддръжка
+  ** Извън тематиката на проекта',
+	'deletequeue-nom-alreadyqueued' => 'Тази страница вече е в опашката за изтриване.',
 	'deletequeue-speedy-title' => 'Отбелязване на „$1“ за бързо изтриване',
 	'deletequeue-delnom-reason' => 'Причина за номинирането:',
 	'deletequeue-delnom-otherreason' => 'Друга причина',
@@ -818,10 +826,17 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
+	'deletequeue-desc' => 'Luo [[Special:DeleteQueue|jonopohjaisen järjestelmän poistojen hallintaan]].',
+	'deletequeue-action-queued' => 'Poisto',
+	'deletequeue-action' => 'Ehdota poistoa',
+	'deletequeue-action-title' => 'Ehdota sivun ”$1” poistoa',
+	'deletequeue-permissions-noedit' => 'Voidaksesi muuttaa sivun poistotilaa sinun täytyy pystyä muokkaamaan sivua.',
 	'deletequeue-generic-reasons' => '* Yleiset poistosyyt 
   ** Häiriköinti
   ** Mainostaminen
@@ -829,8 +844,88 @@ $messages['fi'] = array(
   ** Epäoleellinen projektille',
 	'deletequeue-nom-alreadyqueued' => 'Sivu on valmiiksi poistojonossa.',
 	'deletequeue-speedy-title' => 'Merkitse ”$1” poistettavaksi',
+	'deletequeue-prod-title' => 'Ehdota sivun ”$1” poistoa',
+	'deletequeue-prod-text' => "Voit käyttää tätä lomaketta sivun ”'''$1'''” poistamisen ehdottamiseen.
+
+Jos viiden päivän jälkeen kukaan ei ole aloittanut äänestystä sivun poistosta, se poistetaan ylläpitäjän tarkistuksen jälkeen.",
+	'deletequeue-prod-reasons' => '-',
+	'deletequeue-delnom-reason' => 'Syy ehdollepanoon:',
 	'deletequeue-delnom-otherreason' => 'Muu syy',
 	'deletequeue-delnom-extra' => 'Lisätiedot',
+	'deletequeue-delnom-submit' => 'Lähetä ehdollepano',
+	'deletequeue-log-requeue' => 'siirrettiin [[$1]] toiseen poistojonoon: jonosta ”$2” jonoon ”$3”.',
+	'deletequeue-log-dequeue' => 'poistettiin [[$1]] poistojonosta ”$2”.',
+	'right-speedy-nominate' => 'Ehdottaa sivuja nopeaan poistoon',
+	'right-speedy-review' => 'Tarkastaa nopean poiston ehdotukset',
+	'right-prod-nominate' => 'Ehdottaa sivun poistoa',
+	'right-prod-review' => 'Tarkastaa kaikki poistoehdotukset, joista ei ole äänestetty',
+	'right-deletediscuss-nominate' => 'Aloittaa poistokeskustelu',
+	'right-deletediscuss-review' => 'Sulkea poistokeskustelu',
+	'right-deletequeue-vote' => 'Myötäile tai vastusta poistoja',
+	'deletequeue-queue-speedy' => 'Nopea poisto',
+	'deletequeue-queue-prod' => 'Ehdotettu poisto',
+	'deletequeue-queue-deletediscuss' => 'Poistokeskustelu',
+	'deletequeue-page-speedy' => "Tätä sivua on ehdotettu nopeasti poistettavaksi.
+Syyksi tälle annettiin ''$1''.",
+	'deletequeue-notqueued' => 'Valitsemasi sivu ei ole poistojonossa.',
+	'deletequeue-review-action' => 'Tehtävä toimenpide:',
+	'deletequeue-review-delete' => 'Poista sivu.',
+	'deletequeue-review-change' => 'Poista sivu, mutta eri perusteluilla.',
+	'deletequeue-review-requeue' => 'Siirrä tämä sivu seuraavaan jonoon:',
+	'deletequeue-review-dequeue' => 'Älä tee mitään ja poista sivu poistojonosta.',
+	'deletequeue-review-reason' => 'Kommentit:',
+	'deletequeue-review-newreason' => 'Uusi syy:',
+	'deletequeue-review-newextra' => 'Lisätietoja:',
+	'deletequeue-review-submit' => 'Tallenna katsaus',
+	'deletequeue-review-original' => 'Syy ehdollepanolle',
+	'deletequeue-actiondisabled-notexpired' => 'Seuraava toiminto on estetty, koska poistoehdotus ei ole vielä vanhentunut:',
+	'deletequeue-review-badaction' => 'Määrittelit virheellisen toiminnon',
+	'deletequeue-review-actiondenied' => 'Määrittelit toiminnon, joka on estetty tälle sivulle.',
+	'deletequeue-review-objections' => "'''Varoitus''': Tämän sivun poistolla on [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} vastaväitettä].
+Varmista, että olet ottanut huomioon nämä vastaväitteet ennen sivun poistoa.",
+	'deletequeue-reviewspeedy-tab' => 'Tarkasta nopea poisto',
+	'deletequeue-reviewspeedy-title' => 'Tarkasta sivun ”$1” nopean poiston ehdotus',
+	'deletequeue-reviewspeedy-text' => "Voit käyttää tätä lomaketta sivun ”'''$1'''” nopean poiston ehdotuksen tarkastamiseen.
+Huomaa, että tämä sivu voidaan poistaa nopeasti käytännön mukaisesti.",
+	'deletequeue-reviewprod-tab' => 'Tarkasta ehdotettu poisto',
+	'deletequeue-reviewprod-title' => 'Tarkasta sivun ”$1” ehdotettu poisto',
+	'deletequeue-reviewdeletediscuss-tab' => 'Tarkasta poisto',
+	'deletequeue-reviewdeletediscuss-title' => 'Tarkasta sivun ”$1” poistokeskustelu',
+	'deletequeue-discusscreate-summary' => 'Luodaan keskustelusivua sivun [[$1]] poistosta.',
+	'deletequeue-discusscreate-text' => 'Poistoa ehdotettiin seuraavan syyn takia: $2',
+	'deletequeue-role-nominator' => 'alkuperäinen poiston ehdottaja',
+	'deletequeue-role-vote-endorse' => 'poiston siirtäjä',
+	'deletequeue-vote-title' => 'Myötäile tai vastusta sivun ”$1” poistoa',
+	'deletequeue-vote-action' => 'Suositus:',
+	'deletequeue-vote-endorse' => 'Hyväksy poisto.',
+	'deletequeue-vote-object' => 'Vastusta poistoa.',
+	'deletequeue-vote-reason' => 'Kommentit:',
+	'deletequeue-vote-submit' => 'Lähetä',
+	'deletequeue-vote-success-endorse' => 'Äänestyksesi sivun poistosta onnistui.',
+	'deletequeue-vote-success-object' => 'Äänesi sivun säilyttämisestä on kirjattu.',
+	'deletequeue-showvotes' => 'Sivun ”$1” vastustajat ja hyväksyjät',
+	'deletequeue-showvotes-restrict-endorse' => 'Näytä vain hyväksyjät',
+	'deletequeue-showvotes-restrict-object' => 'Näytä vain vastustajat',
+	'deletequeue-showvotes-restrict-none' => 'Näytä kaikki vastustajat ja hyväksyjät',
+	'deletequeue-showvotes-showingonly-endorse' => 'Näytetään vain hyväksyjät',
+	'deletequeue-showvotes-showingonly-object' => 'Näytetään vain vastustajat',
+	'deletequeue-showvotes-none' => 'Tämän sivun poistolle ei ole yhtään vastustajaa tai hyväksyjää.',
+	'deletequeue-showvotes-none-endorse' => 'Tämän sivun poistolle ei ole yhtään hyväksyjää.',
+	'deletequeue-showvotes-none-object' => 'Tämän sivun poistolle ei ole yhtään vastustajaa.',
+	'deletequeue' => 'Poistojono',
+	'deletequeue-list-text' => 'Tällä sivulla näkyy kaikki poistojärjestelmässä olevat sivut.',
+	'deletequeue-list-search-legend' => 'Etsi sivuja',
+	'deletequeue-list-queue' => 'Jono:',
+	'deletequeue-list-status' => 'Tila:',
+	'deletequeue-list-expired' => 'Näytä vain sulkemisen vaativat ehdotukset.',
+	'deletequeue-list-search' => 'Etsi',
+	'deletequeue-list-anyqueue' => '(mikä tahansa)',
+	'deletequeue-list-votes' => 'Äänestyslista',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|hyväksyjä|hyväksyjää}}, $2 {{PLURAL:$2|vastustaja|vastustajaa}}',
+	'deletequeue-list-header-page' => 'Sivu',
+	'deletequeue-list-header-queue' => 'Jono',
+	'deletequeue-list-header-votes' => 'Hyväksyjät ja vastustajat',
+	'deletequeue-list-header-discusspage' => 'Keskustelusivu',
 );
 
 /** French (Français)
@@ -2202,10 +2297,12 @@ Você pode registrar que também apóia, ou oferecer objeção a essa eliminaç�
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'deletequeue-delnom-reason' => 'Motiv pentru nominalizare:',
 	'deletequeue-delnom-otherreason' => 'Alt motiv',
 	'deletequeue-queue-speedy' => 'Ştergere rapidă',
 	'deletequeue-review-reason' => 'Comentarii:',
 	'deletequeue-review-newreason' => 'Motiv nou:',
+	'deletequeue-review-original' => 'Motiv pentru nominalizare',
 	'deletequeue-vote-action' => 'Recomandare:',
 	'deletequeue-vote-reason' => 'Comentarii:',
 	'deletequeue-list-header-page' => 'Pagină',

@@ -476,22 +476,26 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'usagestatisticsinterval' => 'Intervalo',
 	'usagestatisticstype' => 'Tipo',
-	'usagestatisticsstart' => 'Fecha del principio',
-	'usagestatisticsend' => 'Fecha del fin',
+	'usagestatisticsstart' => 'Fecha de inicio',
+	'usagestatisticsend' => 'Fecha de fin',
+	'usagestatisticsnoend' => '* <font color=red>Especifique una fecha de fin, por favor</font>',
+	'usagestatisticsbadstartend' => '<b>¡La fecha de <i>inicio</i> o la de <i>fin</i> es incorrecta!</b>',
 	'usagestatisticsintervalday' => 'Día',
 	'usagestatisticsintervalweek' => 'Semana',
 	'usagestatisticsintervalmonth' => 'Mes',
-	'usagestatisticscalselect' => 'seleccionar',
+	'usagestatisticscalselect' => 'Seleccionar',
 );
 
 /** Finnish (Suomi)
  * @author Japsu
  * @author Silvonen
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'specialuserstats' => 'Käyttäjäkohtaiset tilastot',
 	'usagestatistics' => 'Käyttäjäkohtaiset tilastot',
+	'usagestatistics-desc' => 'Näyttää käyttötilastoja yksittäisestä käyttäjästä ja wikin kokonaisuudesta.',
 	'usagestatisticsfor' => '<h2>Käyttäjäkohtaiset tilastot ([[User:$1|$1]])</h2>',
 	'usagestatisticsforallusers' => '<h2>Käyttötilastot kaikilta käyttäjiltä</h2>',
 	'usagestatisticsinterval' => 'Aikaväli',
@@ -504,6 +508,12 @@ $messages['fi'] = array(
 	'usagestatisticsbadstartend' => '<b>Aloitus- tai lopetuspäivä ei kelpaa! Tarkista päivämäärät.</b>',
 	'usagestatisticsintervalweek' => 'Viikko',
 	'usagestatisticsintervalmonth' => 'Kuukausi',
+	'usagestatisticsincremental' => 'Kasvava',
+	'usagestatisticsincremental-text' => 'kasvava',
+	'usagestatisticscumulative' => 'Kasaantuva',
+	'usagestatisticscumulative-text' => 'kasaantuva',
+	'usagestatisticscalselect' => 'Valitse',
+	'usagestatistics-editindividual' => 'Yksittäisen käyttäjän $1 muokkaustilastot',
 );
 
 /** French (Français)

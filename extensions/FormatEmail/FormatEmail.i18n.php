@@ -499,3 +499,14 @@ E-mail này được gửi đến cho bạn từ hệ thống e-mail của $1.
 $2',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'email-desc' => '给用户的电子邮件中，您可以自行设计页眉和页脚',
+	'email_footer' => '----------------------------------------------------------------------------
+这封电子邮件由 $1 通过 {{SITENAME}} 的电子邮件系统寄出。
+
+$2',
+);
+

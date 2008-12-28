@@ -84,9 +84,10 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Mobe
+ * @author Nike
  */
 $messages['fi'] = array(
-	'i18ntags-desc' => 'i18n toimintojen käyttö numeroiden muotoiluun, kielioppiin ja monikkoihin missä tahan käytettävissä olevassa kielessä.',
+	'i18ntags-desc' => 'Tarjoaa i18n-elementtejä numeroiden muotoiluun, kielioppiin ja monikkoihin millä tahansa saatavilla olevalla kielellä.',
 );
 
 /** French (Français) */

@@ -32,21 +32,22 @@ $messages['bg'] = array(
  * @author Matěj Grabovský
  */
 $messages['cs'] = array(
-	'mootools12core-desc' => 'Přidává [http://mootools.net mootools-1.2-core-yc.js] na každou stránku',
+	'mootools12core-desc' => 'Přidává [http://mootools.net mootools-1.2-core-yc.js], kompaktní JavaScriptový framework, na každou stránku',
 );
 
 /** German (Deutsch)
+ * @author MF-Warburg
  * @author Melancholie
  */
 $messages['de'] = array(
-	'mootools12core-desc' => 'Fügt [http://mootools.net mootools-1.2-core-yc.js] in jede Seite ein',
+	'mootools12core-desc' => 'Fügt [http://mootools.net mootools-1.2-core-yc.js], ein JavaScript-Framework, in jede Seite ein',
 );
 
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'mootools12core-desc' => 'Pśidawa [http://mootools.net mootools-1.2-core-yc.js] kuždemu bokoju',
+	'mootools12core-desc' => 'Pśidawa [http://mootools.net mootools-1.2-core-yc.js], kompaktny JavaScriptowy wobłukowy system, kuždemu bokoju',
 );
 
 /** Esperanto (Esperanto)
@@ -60,7 +61,7 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
-	'mootools12core-desc' => 'Añade [http://mootools.net mootools-1.2-core-yc.js] a cada página',
+	'mootools12core-desc' => 'Añade [http://mootools.net mootools-1.2-core-yc.js], un entorno JavaScript compacto, a cada página',
 );
 
 /** Finnish (Suomi)
@@ -75,14 +76,14 @@ $messages['fi'] = array(
  * @author Sherbrooke
  */
 $messages['fr'] = array(
-	'mootools12core-desc' => 'Ajouter [http://mootools.net mootools-1.2-core-yc.js] à chaque page',
+	'mootools12core-desc' => 'Ajoute [http://mootools.net mootools-1.2-core-yc.js], un framework JavaScript compacte, à chaque page',
 );
 
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
-	'mootools12core-desc' => 'Engade [http://mootools.net mootools-1.2-core-yc.js] a cada páxina',
+	'mootools12core-desc' => 'Engade [http://mootools.net mootools-1.2-core-yc.js], un armazón de JavaScript compacto, a cada páxina',
 );
 
 /** Hebrew (עברית)
@@ -96,21 +97,22 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'mootools12core-desc' => 'Přidawa [http://mootools.net mootools-1.2-core-yc.js] kóždej stronje',
+	'mootools12core-desc' => 'Přidawa [http://mootools.net mootools-1.2-core-yc.js], kompaktny JavaScriptowy wobłukowy system, kóždej stronje',
 );
 
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'mootools12core-desc' => 'Adde [http://mootools.net mootools-1.2-core-yc.js] a cata pagina',
+	'mootools12core-desc' => 'Adde [http://mootools.net mootools-1.2-core-yc.js], un framework compacte de JavaScript, a cata pagina',
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'mootools12core-desc' => '[http://mootools.net mootools-1.2-core-yc.js]をそれぞれのページに加える',
+	'mootools12core-desc' => 'コンパクトな JavaScript フレームワーク [http://mootools.net mootools-1.2-core-yc.js] をそれぞれのページに加える',
 );
 
 /** Javanese (Basa Jawa)
@@ -131,14 +133,14 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'mootools12core-desc' => 'Deit <i lang="en">[http://mootools.net mootools-1.2-core-yc.js]</i> op jede Sigg.',
+	'mootools12core-desc' => 'Deit dat kompak JavaSkripp-Projamm-Jeröß <i lang="en">[http://mootools.net mootools-1.2-core-yc.js]</i> en jede Sigg erin.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'mootools12core-desc' => '[http://mootools.net mootools-1.2-core-yc.js] op all Säit derbäisetzen',
+	'mootools12core-desc' => 'Setzt [http://mootools.net mootools-1.2-core-yc.js], e kompakte JavaScript Programm, op all Säit derbäi',
 );
 
 /** Nedersaksisch (Nedersaksisch)
@@ -152,7 +154,14 @@ $messages['nds-nl'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'mootools12core-desc' => 'Voegt [http://mootools.net mootools-1.2-core-yc.js] toe aan iedere pagina',
+	'mootools12core-desc' => 'Voegt [http://mootools.net mootools-1.2-core-yc.js], een compact JavaScript-framework, toe aan iedere pagina',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'mootools12core-desc' => 'Legg til [http://mootools.net mootools-1.2-core-yc.js] på kvar sida, eit kompakt JavaScript-rammeverk',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

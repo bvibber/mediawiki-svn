@@ -59,6 +59,15 @@ $messages['ca'] = array(
 	'mediafunctions-not-exist' => '«$1» no existeix',
 );
 
+/** Czech (Česky)
+ * @author Danny B.
+ */
+$messages['cs'] = array(
+	'mediafunctions-desc' => 'Funkce parseru pro získávání informací o multimediálních souborech',
+	'mediafunctions-invalid-title' => '„$1“ není platný název',
+	'mediafunctions-not-exist' => '„$1“ neexistuje',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -100,6 +109,15 @@ $messages['es'] = array(
 	'mediafunctions-desc' => 'Funciones para obtener información sobre ficheros de imagen y sonido',
 	'mediafunctions-invalid-title' => '«$1» no es un título válido',
 	'mediafunctions-not-exist' => '«$1» no existe',
+);
+
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'mediafunctions-desc' => 'Jäsennysfunktioita mediatiedostojen tietojen hankkimiseen.',
+	'mediafunctions-invalid-title' => '”$1” ei ole kelvollinen otsikko.',
+	'mediafunctions-not-exist' => '”$1” ei ole olemassa.',
 );
 
 /** French (Français)

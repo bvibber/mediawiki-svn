@@ -560,7 +560,39 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'spamregex-desc' => 'Övver <i lang="en">regular expressions</i>, [[Special:SpamRegex|sök esu en Säz eruß]] uß fresch jeänderte Sigge, di mer doh nit han welle.',
+	'spamregex' => 'Spam regex',
+	'spamregex-desc' => 'Övver <i lang="en">regular expressions</i>, [[Special:SpamRegex|sök esu en Texstöcke eruß]] uß fresch jeänderte Sigge, di mer doh nit han welle.',
+	'spamregex-error-unblocking' => 'Ene Fähler es opjetrodde: Mer kunnte „$1“ nit frei jevve. Wascheinlesch jit et esu e Dinge nit.',
+	'spamregex-summary' => 'Dä Tex wood en dä Zosammefaßung för di Sigg jevonge.',
+	'spamregex-intro' => "Övver dat Fommulaa hee kanns De Textstöcke un <i lang=\"en\">regular expressions</i>
+sperre, dat se nit em Tex fun Sigge enjedrare wäde künne.
+Wann esu jet en ener Sigg steiht, die eine avspeichere well, dann jeiht
+dat nit, un dä kritt ene Fähler jemeldt.
+<br />
+'''Opjepaß:''' Maat Ühr jesperrte Ußdröck nit zo koot un nit zo jewöönlesch!",
+	'spamregex-page-title' => 'Spam regex — Texshtöck sperre, die mer nit avspeichere wolle.',
+	'spamregex-currently-blocked' => "'''De aktoäll jesperrte Texstöcke:'''",
+	'spamregex-move' => 'Wat De unger „{{int:Summary}}“ enjejovve häß, dat jeiht esu nit,
+do es e Stöck Tex dren, dä jesperrt es.',
+	'spamregex-no-currently-blocked' => "'''Mer han_er kei jesperrt_Texstöck.'''",
+	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 fott domet!]) — dobei jedonn vum",
+	'spamregex-log-2' => '  op $1',
+	'spamregex-page-title-1' => 'Als en <i lang="en">regular expression</i> sperre',
+	'spamregex-unblock-success' => 'Frei jejovve',
+	'spamregex-unblock-message' => 'Dat Textstöck „$1“ es frei jejovve.',
+	'spamregex-page-title-2' => 'Texshtöck med <i lang="en">regular expressions</i> jäje et Avspeichere sperre',
+	'spamregex-block-success' => 'Jesperrt',
+	'spamregex-block-message' => "Dat Texstöck  „'''$1'''“ es jesperrt.",
+	'spamregex-warning-1' => 'Wat sull dann nu jesperrt wäde? Jif do jet en!',
+	'spamregex-error-1' => 'Dat es en kappodde <i lang="en">regular expression</i>.',
+	'spamregex-warning-2' => 'Winnischßtens ein Aat ze Sperre bruch e Höksche!',
+	'spamregex-already-blocked' => '„$1“ es ald jesperrt',
+	'spamregex-phrase-block' => 'Dat Texstöck för zom Sperre',
+	'spamregex-phrase-block-text' => 'esu e Texstöck em Tex fun en de Sigge sperre',
+	'spamregex-phrase-block-summary' => 'esu e Texstöck en de Zosammefassung sperre',
+	'spamregex-block-submit' => 'Dat&nbsp;Texstöck&nbsp;sperre',
+	'spamregex-text' => '(Tex)',
+	'spamregex-summary-log' => '(Zosammefaßung)',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -965,8 +997,10 @@ $messages['ta'] = array(
 $messages['te'] = array(
 	'spamregex-summary' => 'పేజీ యొక్క సంగ్రహంలో ఆ పాఠ్యం కనబడింది.',
 	'spamregex-currently-blocked' => "'''ప్రస్తుతం నిరోధంలో ఉన్న పదబంధాలు:'''",
+	'spamregex-unblock-success' => 'నిరోధం ఎత్తివేత విజయవంతం',
 	'spamregex-block-success' => 'నిరోధం విజయవంతమయ్యింది',
 	'spamregex-error-1' => 'తప్పుడు రెగ్యులర్ ఎక్స్&zwnj;ప్రెషన్.',
+	'spamregex-warning-2' => 'కనీసం ఒక్క నిరోధపు పద్ధతినైనా ఎంచుకోండి.',
 	'spamregex-already-blocked' => '"$1"ని ఈసరికే నిరోధించాం',
 	'spamregex-phrase-block' => 'నిరోధించాల్సిన పదబంధం:',
 	'spamregex-phrase-block-text' => 'పదబంధాన్ని పేజీ పాఠ్యంలో ఉంటే నిరోధించు',

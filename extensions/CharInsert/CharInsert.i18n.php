@@ -345,6 +345,13 @@ $messages['sah'] = array(
 	'charinsert-desc' => 'Оччо биллибэт, сэдэх бэлиэлэри [[MediaWiki:Edittools|туруорарга]] аналлаах JavaScript түннүгүн оҥорорго аналлаах',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'charinsert-desc' => 'Pirmetti di criari nu box JavaScript pi [[MediaWiki:Edittools|nziriri caràttiri non-standard]]',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

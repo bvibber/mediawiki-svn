@@ -192,13 +192,14 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author Consta
+ * @author Michawiki
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'spamdifftool' => 'Spam-Blacklist bearbeiten',
 	'spamdifftool-desc' => 'Ermöglicht das Hinzufügen neuer Einträge zur Spamblacklist aus Versionsunterschieden',
 	'spamdifftool_cantedit' => 'Du hast keine Berechitung zur Bearbeitung der Spam-Blacklist.',
-	'spamdifftool_notext' => "Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicke <a href='$1'>hier</a> zum Forfahren.",
+	'spamdifftool_notext' => "Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicke <a href='$1'>hier</a>, um fortzufahren.",
 	'spamdifftool_confirm' => "Bestätige, dass du diese Einträge der Spam-Blacklist hinzufügen möchtest.
 (Klicke <a href='$1' target='new'>hier</a>, um ein Problem zu melden.)",
 	'spamdifftool_summary' => 'Zur Spam-Blacklist hinzufügen',
@@ -214,6 +215,33 @@ Stelle sicher, dass du nicht komplette Domains blockierst, die separate Benutzer
 	'spamdifftool_option_none' => 'nichts',
 	'spamdifftool_block' => 'Sperre:',
 	'spamdifftool_submit_buttom' => 'Speichern',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'spamdifftool' => 'Corna lisćina spama zastojaś',
+	'spamdifftool-desc' => 'Zmóžnja pśidawanje nowych zapiskow k cornej lisćinje spama z rozdźělowych bokow.',
+	'spamdifftool_cantedit' => 'Wódaj - njamaš pšawo cornu lisćinu spama wobźěłaś.',
+	'spamdifftool_notext' => "Njejo tekst, kótaryž dajo se k cornej lisćinje spama pśidaś.
+Klikni <a href='$1'>sem</a>, aby pókšacował.",
+	'spamdifftool_confirm' => "Wobkšuś, až coš toś te zapiski k cornej lisćinje spama pśidaś.
+(Klikni <a href='$1' target='new'>sem</a>, aby dał problem k wěsći.)",
+	'spamdifftool_summary' => 'K cornej lisćinje spama pśidaś',
+	'spamdifftool_urls_detected' => 'Slědujuce URL su se nadejšli w změnach, kótarež coš cornej lišćinje spama pśidaś?
+Toś te opcije su w rěźe wót wjelgin restriktiwne až mjenjej restriktiwne, blokěrowanje cełeje domeny buźo wšykne wótkaze blokěrowaś, kótarež pśidu z toś teje domeny.
+
+Pšosym se wobwěsć, až njeblokěrujoš cełe domeny, kótarež góspóduju wužywarske konta, ako na pśikład blogpost.com, geocities.com atd.',
+	'spamdifftool_no_urls_detected' => "Žedne URL su se namakali.
+Klikni <a href='$1'>sem</a>, aby se wróśił.",
+	'spamdifftool_spam_link_text' => 'K spamoju pśidaś',
+	'spamdifftool_option_domain' => 'wšykne z toś teje domeny',
+	'spamdifftool_option_subdomain' => 'wšykne z toś teje póddomeny',
+	'spamdifftool_option_directory' => 'toś ta póddomena a zapis',
+	'spamdifftool_option_none' => 'nic',
+	'spamdifftool_block' => 'Blokěrowanje:',
+	'spamdifftool_submit_buttom' => 'Wótpósłaś',
 );
 
 /** Greek (Ελληνικά)

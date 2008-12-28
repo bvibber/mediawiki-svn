@@ -88,8 +88,10 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
+	'logentry-append' => 'Lisää',
 	'logentry-invalidpage' => 'Virheellinen sivu',
 );
 

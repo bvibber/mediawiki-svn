@@ -65,6 +65,13 @@ $messages['es'] = array(
 	'navigationpopups-desc' => "Carga las ventanas emergentes de navegación de ''Lupin'' en MediaWiki",
 );
 
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'navigationpopups-desc' => 'Lataa Lupinin navigointiskriptien kohoikkunat mediawikiin.',
+);
+
 /** French (Français)
  * @author Zetud
  */

@@ -69,6 +69,17 @@ $messages['bg'] = array(
 	'unicodeconverter-newtext' => 'Преобразуван текст:',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'unicodeconverter' => 'Konverze Unicode',
+	'unicodeconverter-desc' => 'Jednoduchý příklad modulu speciální stránky. [[Special:UnicodeConverter|Po zadání řetezce v UTF-8]] ho zkonvertuje na HTML entity vhodné pro použití na webové stránce v kódování ISO 8859-1.',
+	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Původní text:',
+	'unicodeconverter-newtext' => 'Zkonvertovaný text:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -396,6 +407,15 @@ $messages['tl'] = array(
 	'unicodeconverter-ok' => "Sige/Ayos 'yan",
 	'unicodeconverter-oldtext' => 'Orihinal na teksto:',
 	'unicodeconverter-newtext' => 'Napalitang teskto:',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'unicodeconverter' => 'Конвертер Unicode',
+	'unicodeconverter-ok' => 'ОК',
+	'unicodeconverter-oldtext' => 'Оригінальний текст:',
 );
 
 /** Vietnamese (Tiếng Việt)

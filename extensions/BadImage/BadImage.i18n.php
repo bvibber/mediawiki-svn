@@ -1045,6 +1045,16 @@ $messages['km'] = array(
 	'badimages-page' => '{{ns:help}}:បញ្ជីរូបភាពមិនល្អ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'badimages-add-btn' => '추가',
+	'badimages-name' => '이름:',
+	'badimages-reason' => '이유:',
+	'badimages-remove-btn' => '제거',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

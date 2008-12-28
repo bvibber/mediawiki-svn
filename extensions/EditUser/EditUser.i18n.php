@@ -281,7 +281,7 @@ $messages['fi'] = array(
 	'edituser-nouser' => 'Määriteltyä käyttäjää ei ole olemassa',
 	'edituser-exempt' => 'Määriteltyä käyttäjää ei voida muokata',
 	'right-edituser' => 'Muokata muiden käyttäjien asetuksia',
-	'right-edituser-exempt' => 'Muut eivät voi muokata heidän asetuksiaan.',
+	'right-edituser-exempt' => 'Muut eivät voi muokata tämän käyttäjän asetuksia.',
 );
 
 /** French (Français)
@@ -964,6 +964,20 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'edituser-dosearch' => 'זוכן',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'edituser' => '编辑用户',
+	'edituser-logout' => '登出用户',
+	'edituser-username' => '用户名',
+	'edituser-dosearch' => '搜索',
+	'edituser-nouser' => '指定的用户不存在',
+	'edituser-exempt' => '指定的用户无法被编辑',
+	'right-edituser' => '编辑其他用户的参数设置',
+	'right-edituser-exempt' => '他人无法编辑这个用户的参数设置',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

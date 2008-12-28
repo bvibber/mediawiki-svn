@@ -227,7 +227,7 @@ $messages['fi'] = array(
 	'errorhandler-error-user-warning' => 'Koodissa määritelty varoitus',
 	'errorhandler-error-user-notice' => 'Koodissa määritelty huomautus',
 	'errorhandler-error-user-deprecated' => 'Koodissa määritelty käytöstä poistuva -varoitus',
-	'errorhandler-error-strict' => 'Ehdottomat standardit',
+	'errorhandler-error-strict' => 'Tiukat standardit',
 	'errorhandler-msg-text' => '$1 : $2 kohteessa $3 (rivi $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> kohteessa <b>$3</b> (rivi <b>$4</b>)',
 	'errorhandler-trace' => 'pinolistaus:',
@@ -320,7 +320,7 @@ $messages['he'] = array(
 	'errorhandler-error-strict' => 'תקנים מחמירים',
 	'errorhandler-msg-text' => '$1 : $2 ב־$3 (שורה $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> ב־<b>$3</b> (שורה <b>$4</b>)',
-	'errorhandler-trace' => 'מעקב:',
+	'errorhandler-trace' => 'עקבות:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -616,6 +616,7 @@ $messages['ro'] = array(
 	'errorhandler-error-compile-warning' => 'Avertizare de compilare',
 	'errorhandler-error-user-error' => 'Eroare de utilizator',
 	'errorhandler-error-user-warning' => 'Avertizare de utilizator',
+	'errorhandler-error-strict' => 'Standarde stricte',
 	'errorhandler-msg-text' => '$1 : $2 în $3 (linia $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> în <b>$3</b> (linia <b>$4</b>)',
 	'errorhandler-trace-line' => '$1 (linia $2): $3',
@@ -699,6 +700,29 @@ $messages['te'] = array(
 	'errorhandler-errors' => 'పొరపాట్లు:',
 	'errorhandler-error-warning' => 'హెచ్చరిక',
 	'errorhandler-error-notice' => 'గమనిక',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'errorhandler-errors' => '错误：',
+	'errorhandler-error-fatal' => '致命错误',
+	'errorhandler-error-warning' => '警告',
+	'errorhandler-error-notice' => '提示',
+	'errorhandler-error-deprecated' => '不推荐使用',
+	'errorhandler-error-compile-error' => '编译错误',
+	'errorhandler-error-compile-warning' => '编译警告',
+	'errorhandler-error-user-error' => '用户错误',
+	'errorhandler-error-user-warning' => '用户警告',
+	'errorhandler-error-user-notice' => '用户提示',
+	'errorhandler-error-user-deprecated' => '用户不推荐使用',
+	'errorhandler-error-strict' => '严格的标准',
+	'errorhandler-msg-text' => '$1 : $2 在 $3 中 (第$4行)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> 在 <b>$3</b> 中(第 <b>$4</b> 行)',
+	'errorhandler-trace' => '跟踪：',
+	'errorhandler-trace-line' => '$1 (第$2行): $3',
+	'errorhandler-trace-line-internal' => '[内部函数]: $1',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

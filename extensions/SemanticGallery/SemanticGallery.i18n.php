@@ -65,6 +65,13 @@ $messages['hsb'] = array(
 	'semanticgallery-desc' => 'Přidawa galerijowy wudawanski format k wotprašanjam Semantic MediaWiki',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'semanticgallery-desc' => 'Adde un formato de output de galeria al requestas in linea de SMW',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Hosiryuhosi

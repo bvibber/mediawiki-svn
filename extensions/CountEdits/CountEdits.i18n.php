@@ -339,7 +339,7 @@ Non xulgue a un colaborador polo seu número de edicións.",
 	'countedits-ok' => 'De acordo',
 	'countedits-nosuchuser' => 'Non existe ningún usuario chamado $1.',
 	'countedits-resultheader' => 'Resultados de $1',
-	'countedits-resulttext' => '$1 ten feitas $2 edicións',
+	'countedits-resulttext' => '$1 ten {{PLURAL:$2|feita unha edición|feitas $2 edicións}}',
 	'countedits-mostactive' => 'Colaboradores máis activos',
 	'countedits-nocontribs' => 'Non houbo ningunha colaboración neste wiki.',
 );
@@ -506,7 +506,7 @@ Non judica le contributores per le numero de lor modificationes.",
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Non existe un usator con le nomine $1.',
 	'countedits-resultheader' => 'Resultatos pro $1',
-	'countedits-resulttext' => '$1 ha facite $2 modificationes',
+	'countedits-resulttext' => '$1 ha facite $2 {{PLURAL:$2|modification}modificationes}}',
 	'countedits-mostactive' => 'Contributores le plus active',
 	'countedits-nocontribs' => 'Il non ha alcun contribution a iste wiki.',
 );
@@ -1018,7 +1018,7 @@ $messages['sah'] = array(
 	'countedits-username' => 'Аата:',
 	'countedits-nosuchuser' => 'Маннык $1 ааттаах кыттааччы суох',
 	'countedits-resultheader' => '$1 дааннайдара (түмүктэрэ)',
-	'countedits-resulttext' => '$1 $2 көннөрүүнү оҥорбут',
+	'countedits-resulttext' => '$1 $2 {{PLURAL:$2|биир көннөрүүлээх|көннөрүүнү}} оҥорбут',
 	'countedits-mostactive' => 'Саамай элбэх көннөрүүнү оҥорбут кыттааччылар',
 	'countedits-nocontribs' => 'Бу биикигэ көннөрүү оҥоһуллубатах.',
 );
@@ -1171,7 +1171,7 @@ $messages['tet'] = array(
 	'countedits-username' => "Naran uza-na'in:",
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => "Uza-na'in ho naran $1 lá'os iha ne'e.",
-	'countedits-resulttext' => '$1 edita tiha ona ba dala $2',
+	'countedits-resulttext' => '$1 edita tiha ona ba dala $2{{PLURAL:$2||}}',
 	'countedits-nocontribs' => "Ema lá'os kintribui iha wiki ne'e.",
 );
 

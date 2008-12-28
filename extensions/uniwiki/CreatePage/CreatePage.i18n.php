@@ -35,7 +35,9 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'createpage' => 'أنشئ صفحة',
+	'createpage-desc' => 'أضف [[خاص:أنشئ صفحة|صفحة خاصة]] لإنشاء صفحات جديدة',
 	'createpage_submitbutton' => 'إرسال',
+	'createpage_instructions' => 'أدخل عنوان الصفحة التي تريد أنشائها',
 	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
 	'createpage_tryagain' => 'لا. أريد إنشاء صفحة جديدة بعنوان مميز.',
 	'createpage_editexisting' => 'نعم. أريد المساهمة للصفحة الموجودة.',
@@ -78,6 +80,22 @@ $messages['bs'] = array(
 Da li želite uređivati postojeću stranicu?',
 	'createpage_tryagain' => 'Ne. Želim napraviti novu stranicu sa različitim naslovom.',
 	'createpage_editexisting' => 'Da. Želim doprinositi na postojećoj stranici.',
+);
+
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'createpage' => 'Vytvořit stránku',
+	'createpage-desc' => 'Přidává [[Special:CreatePage|speciální stránku]] na vytváření nových stránek',
+	'createpage_submitbutton' => 'Poslat',
+	'createpage_instructions' => 'Zadejte název stránky, kterou si přejete vytvořit:',
+	'createpage_entertitle' => 'Prosím, zadejte název vaší stánky.',
+	'createpage_titleexists' => 'Stránka s názve [[$1]] už existuje.
+Přejete si upravit existující stránku?',
+	'createpage_tryagain' => 'Ne, chci vytvořit novou stránku s jiným názvem.',
+	'createpage_editexisting' => 'Ano, chci přispět k existující stránce.',
+	'createpage-badtitle' => '„$1“ nelze použít jako název stránky',
 );
 
 /** German (Deutsch)
@@ -324,6 +342,22 @@ Wilt u de bestaande pagina bewerken?',
 	'createpage-badtitle' => '"$1" kan niet gebruikt worden als paginanaam',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'createpage' => 'Opprett ei sida',
+	'createpage-desc' => 'Legg til ei [[Special:CreatePage|spesialsida]] for å oppretta nye sider',
+	'createpage_submitbutton' => 'OK',
+	'createpage_instructions' => 'Skriv inn tittelen til sida du ynskjer å oppretta:',
+	'createpage_entertitle' => 'Skriv inn ein tittel for sida di.',
+	'createpage_titleexists' => 'Ei sida med tittelen [[$1]] finst frå før.
+Vil du endra denne?',
+	'createpage_tryagain' => 'Nei. Eg vil oppretta ei ny sida med ein annan tittel.',
+	'createpage_editexisting' => 'Ja. Eg vil bidra til sida som finst frå før.',
+	'createpage-badtitle' => '«$1» kan ikkje bli nytta som sidetittel',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -445,6 +479,22 @@ $messages['te'] = array(
 	'createpage_tryagain' => 'లేదు. మరో పేరుతో నేను కొత్త పేజీని సృష్టించాలనుకుంటున్నాను.',
 	'createpage_editexisting' => 'అవును. ప్రస్తుత పేజీకి నేను చేర్పులు చేస్తాను.',
 	'createpage-badtitle' => '"$1"ని పేజీ శీర్షికగా వాడలేరు',
+);
+
+/** Ukrainian (Українська)
+ * @author Aleksandrit
+ */
+$messages['uk'] = array(
+	'createpage' => 'Створити сторінку',
+	'createpage-desc' => 'Додає [[Special:CreatePage|службову сторінку]] для створення нових сторінок',
+	'createpage_submitbutton' => 'Відправити',
+	'createpage_instructions' => 'Введіть назву сторінки, яку ви хочете створити:',
+	'createpage_entertitle' => 'Будь ласка, введіть назву вашої сторінки.',
+	'createpage_titleexists' => 'Сторінка з назвою [[$1]] вже існує. 
+Чи бажаєте ви редагувати існуючу сторінку?',
+	'createpage_tryagain' => 'Ні. Я хочу створити нову сторінку з іншою назвою.',
+	'createpage_editexisting' => 'Так. Я хочу внести свій внесок в існуючу сторінку.',
+	'createpage-badtitle' => '«$1» не можна використовувати як заголовок сторінки',
 );
 
 /** Vietnamese (Tiếng Việt)

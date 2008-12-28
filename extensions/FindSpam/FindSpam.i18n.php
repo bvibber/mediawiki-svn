@@ -439,6 +439,7 @@ $messages['nah'] = array(
 $messages['nds'] = array(
 	'findspam' => 'Spam finnen',
 	'findspam-ip' => 'IP-Adress:',
+	'findspam-ok' => 'OK',
 );
 
 /** Dutch (Nederlands)
@@ -540,6 +541,7 @@ $messages['pt'] = array(
 $messages['ro'] = array(
 	'findspam-ip' => 'Adresă IP:',
 	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Nici o contribuţie găsită',
 );
 
 /** Tarandíne (Tarandíne)
@@ -558,6 +560,17 @@ $messages['ru'] = array(
 	'findspam-ip' => 'IP-адрес:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Не найдено вклада',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'findspam' => 'Attrova spam',
+	'findspam-desc' => "Junci na [[Special:FindSpam|pàggina spiciali]] ca pirmetti d'attruvari spam junciutu di picca tempu",
+	'findspam-ip' => 'Nnirizzu IP:',
+	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Nuddu cuntribbutu attruvatu',
 );
 
 /** Slovak (Slovenčina)

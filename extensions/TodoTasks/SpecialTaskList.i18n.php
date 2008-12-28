@@ -135,6 +135,35 @@ $messages['bg'] = array(
 	'tasklistnoprojects' => "Грешка: Изглежда сте включили '''\$wgUseProjects''', но не сте създали [[MediaWiki:TodoTasksValidProjects]]. За повече информация, прегледайте [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 инструкциите за инсталация].",
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'tasklist' => 'Seznam úkolů',
+	'tasklist-parser-desc' => 'Přidává funkci syntaktického analyzátoru <tt>{{&#35;todo:}}</tt> pro přidělování úkolů',
+	'tasklist-special-desc' => 'Přidává speciální stránku pro kontrolu [[Special:TaskList|přidělených úkolů]]',
+	'tasklistbyproject' => 'Seznam úkolů podle projektů',
+	'tasklistunknownproject' => 'Neznámý projekt',
+	'tasklistunspecuser' => 'Nespecifikovaný uživatel',
+	'tasklistincorrectuser' => 'Nesprávné uživatelské jméno',
+	'tasklistemail' => 'Vážený %s',
+	'tasklistemailsubject' => '[%s] Změna seznamu úkolů',
+	'tasklistmytasks' => 'Moje úkoly',
+	'tasklistbyprojectbad' => "Projekt '''%s''' není platný projekt. Seznam platných projektů najdete na [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Přidělené úkoly pro '''%s'''",
+	'tasklistchooseproj' => 'Vyberte projekt:',
+	'tasklistprojdisp' => 'Zobrazit',
+	'tasklistbyname' => '== Seznam úkolů pro %s ==',
+	'tasklistnoprojects' => "Chyba: Zdá se, že jste zapnuli '''\$wgUseProjects''', ale nevytvořili jste [[MediaWiki:TodoTasksValidProjects]]. Podívejte se na podrobnosti v [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instalačních instrukcích].",
+	'tasklistemailbody' => ',
+
+Někdo vám přiřadil nový úkol na %s.
+
+Svůj úplný seznam úkolů si můžete prohlédnout na %s.
+
+Váš přátelský upozorňovací systém %s',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  * @author Purodha
@@ -817,6 +846,7 @@ Från %ss meddelningssystem.',
  */
 $messages['te'] = array(
 	'tasklist' => 'పనుల జాబితా',
+	'tasklist-special-desc' => '[[Special:TaskList|పనుల అప్పగింతలను]] సమీక్షించడానికి ఒక ప్రత్యేక పేజీని చేరుస్తుంది',
 	'tasklistbyproject' => 'ప్రాజెక్టులవారీగా పనుల జాబితా',
 	'tasklistunknownproject' => 'తెలియని ప్రాజెక్టు',
 	'tasklistincorrectuser' => 'తప్పుడు వాడుకరిపేరు',
@@ -877,10 +907,34 @@ $messages['zh-cn'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'tasklist' => '任务列表',
+	'tasklist-parser-desc' => '增加了<nowiki>{{#todo:}}</nowiki>语句，用来分配任务',
+	'tasklist-special-desc' => '增加了一个特殊页面，用以查看[[Special:TaskList|分配到的任务]]',
+	'tasklistbyproject' => '项目任务列表',
+	'tasklistunknownproject' => '未知的项目',
+	'tasklistunspecuser' => '未认证用户',
 	'tasklistincorrectuser' => '用户名不正确',
+	'tasklistemail' => '亲爱的 %s',
+	'tasklistemailsubject' => '[%s] 任务列表有变化',
+	'tasklistmytasks' => '我的任务',
+	'tasklistbyprojectbad' => "任务 '''%s''' 无法识别。
+如要查看可执行的任务，请见[[MediaWiki:TodoTasksValidProjects]]。",
+	'tasklistbyprojname' => "'''%s'''的指定任务",
+	'tasklistchooseproj' => '选择项目：',
+	'tasklistprojdisp' => '显示',
+	'tasklistbyname' => '== %s 的任务列表 ==',
+	'tasklistnoprojects' => "错误：您启动了'''\$wgUseProjects'''，但是没有创建[[MediaWiki:TodoTasksValidProjects]]。参见[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions]以获得更多信息。",
+	'tasklistemailbody' => '，
+
+某人在 %s 上给您指定了新的任务。
+
+如要查看您的完整任务列表，请到 %s。
+
+%s 提示系统敬上',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

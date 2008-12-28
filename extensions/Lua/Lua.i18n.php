@@ -155,6 +155,20 @@ $messages['eo'] = array(
 	'lua_error_internal' => 'Interna eraro',
 );
 
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'lua_desc' => 'Lisää jäsentäjään tuen upotetuille [http://www.lua.org/ Lua]-ohjelmalohkoille.',
+	'lua_error' => 'Virhe rivillä $1',
+	'lua_extension_notfound' => 'Lua laajennusta ei ole konfiguroitu',
+	'lua_interp_notfound' => 'Lua -tulkkia ei löydy',
+	'lua_error_internal' => 'Sisäinen virhe',
+	'lua_overflow_recursion' => 'Rekursion enimmäissyvyys saavutettu',
+	'lua_overflow_loc' => 'Ohjelmarivien enimmäismäärä saavutettu',
+	'lua_overflow_time' => 'Suorituksen enimmäisaika saavutettu',
+);
+
 /** French (Français)
  * @author Grondin
  */

@@ -2126,19 +2126,28 @@ Pendedahan maklumat ini boleh mengakibatkan jawatan pengawal ditarik balik.',
  * @author Slomox
  */
 $messages['nds'] = array(
+	'hiderevision' => 'Versionen duurhaft versteken',
+	'hiderevision-desc' => 'Enkelte Versionen ut Rechtsgrünn etc. vör all Brukers duurhaft versteken',
 	'group-oversight' => 'Oversighters',
 	'group-oversight-member' => 'Oversight',
 	'grouppage-oversight' => '{{ns:project}}:Oversight',
+	'right-oversight' => 'Ankieken vun en versteken Version',
 	'right-hiderevision' => 'Ankieken un wedderhalen vun Versionen, de ok för Administraters versteken sünd',
+	'hiderevision-prompt' => 'Versionsnummer, de wegdaan warrn schall:',
 	'hiderevision-continue' => 'Wieder',
 	'hiderevision-reason' => 'Grund (warrt nich sichtbor in’t Logbook opnahmen):',
+	'hiderevision-submit' => 'Disse Daten duurhaft versteken',
 	'hiderevision-tab' => 'Version versteken',
+	'hiderevision-link' => 'Versteken Brukerbidrääg',
 	'hiderevision-status' => 'Version $1: $2',
 	'hiderevision-error-missing' => 'Nich funnen in’e Datenbank.',
+	'hiderevision-archive-status' => 'Wegdaan Version vun $1: $2',
 	'oversight-log-hiderev' => 'en Ännern vun $1 rutnahmen',
 	'oversight' => 'Oversight',
 	'oversight-view' => 'Details',
 	'oversight-hidden' => 'Versteken Version',
+	'oversight-oversighter' => 'Oversighter:',
+	'oversight-offender' => 'Öveldader:',
 );
 
 /** Nedersaksisch (Nedersaksisch)
