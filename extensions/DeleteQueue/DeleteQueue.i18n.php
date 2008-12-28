@@ -192,7 +192,6 @@ You can register your own endorsement of, or objection to this deletion [{{fullu
  */
 $messages['qqq'] = array(
 	'deletequeue-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
-	'deletequeue-permissions-noedit' => '* $1 is a list of formatted error messages.',
 	'deletequeue-generic-reasons' => 'Delete reasons in a dropdown menu. Lines prepended with "*" are a category separator. Lines prepended with "**" can be used as a reason. Please do not add additional reasons. This should be customised on wikis where the extension is actually being used.',
 	'deletequeue-delnom-otherreason' => '{{Identical|Other reason}}',
 	'deletequeue-delnom-extra' => '{{Identical|Extra information}}',
