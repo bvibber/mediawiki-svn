@@ -15,7 +15,7 @@ $messages['en'] = array(
 	'refreshspecial' => 'Refresh special pages',
 	'refreshspecial-desc' => 'Allows [[Special:RefreshSpecial|manual special page refresh]] of special pages',
 	'refreshspecial-title' => 'Refresh special pages',
-	'refreshspecial-help' =>  'This special page provides means to manually refresh special pages.
+	'refreshspecial-help' => 'This special page provides means to manually refresh special pages.
 When you have chosen all pages that you want to refresh, click on the "Refresh selected" button below to refresh the selected special pages.
 Warning: the refresh may take a while on larger wikis.',
 	'refreshspecial-button' => 'Refresh selected',
@@ -36,36 +36,6 @@ Warning: the refresh may take a while on larger wikis.',
 	'refreshspecial-page-result' => 'got $1 {{PLURAL:$1|row|rows}} in',
 	'refreshspecial-total-display' => 'Refreshed $1 {{PLURAL:$1|page|pages}} totaling $2 {{PLURAL:$2|row|rows}} in time $3 (complete time of the script run is $4)',
 	'right-refreshspecial' => 'Refresh special pages',
-);
-
-/** Message documentation (Message documentation)
- * @author Jack Phoenix
- * @author Purodha
- * @author Siebrand
- */
-$messages['qqq'] = array(
-	'refreshspecial' => '{{Identical|Refresh special pages}}
-Title of Special:RefreshSpecial as displayed on Special:SpecialPages.',
-	'refreshspecial-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
-	'refreshspecial-title' => '{{Identical|Refresh special pages}}
-Title of the special page Special:RefreshSpecial',
-	'refreshspecial-help' => 'Help displayed to the user on Special:RefreshSpecial. "Refresh selected" comes from {{msg-mw|refreshspecial-button}}.',
-	'refreshspecial-button' => 'Text displayed on the button on Special:RefreshSpecial. Clicking on the button refreshes the selected special pages.',
-	'refreshspecial-fail' => 'Failure message displayed if no special pages were checked to refresh.',
-	'refreshspecial-refreshing' => '{{Identical|Refreshing special pages}}
-Text displayed in the subtitle below the actual page title once the user has pressed the "Refresh selected" button.',
-	'refreshspecial-success-subtitle' => '{{Identical|Refreshing special pages}}
-Text displayed in the subtitle below the actual page title once the user has pressed the "Refresh selected" button.',
-	'refreshspecial-js-disabled' => 'Displayed to users with JavaScript disabled so that they won\'t wonder why the "select all pages" checkbox isn\'t working properly.',
-	'refreshspecial-select-all-pages' => 'Text displayed next to a checkbox on Special:RefreshSpecial; checking the checkbox allows to select all listed pages.',
-	'refreshspecial-link-back' => 'Displayed on Special:RefreshSpecial after the user has pressed the "Refresh selected" button, at the bottom of the page.',
-	'refreshspecial-none-selected' => 'If the user pressed the "Refresh selected" button without checking any of the checkboxes, this message will be displayed to him/her.',
-	'refreshspecial-db-error' => 'Error message shown to the user if a database error is encountered while trying to do the necessary queries.',
-	'refreshspecial-no-page' => 'If an invalid special page is encountered, this message will be displayed.',
-	'refreshspecial-slave-lagged' => 'Displayed if a slave database server is lagging',
-	'refreshspecial-reconnected' => 'Displayed if the connection to the database was lost for some reason but the extension was able to reconnect to it.',
-	'refreshspecial-reconnecting' => 'Displayed if the connection to the database was lost for some reason.',
-	'refreshspecial-total-display' => 'Displayed on Special:RefreshSpecial after the user has pressed the "Refresh selected" button if the refreshing was done successfully. $1 is the amount of special pages refreshed, $2 is the amount of database rows touched, $3 is the time how long it took to refresh all the selected special pages and $4 is the complete time of the script run.',
 );
 
 /** Arabic (العربية)
