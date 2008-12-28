@@ -47,7 +47,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'AmazonPlus',
 	'description'    => 'A highly customizable extension to display Amazon information',
 	'descriptionmsg' => 'amazonplus-desc',
-	'version'        => '0.2',
+	'version'        => '0.3',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:AmazonPlus',
 	'author'         => 'Ryan Schmidt',
 );
@@ -85,7 +85,7 @@ function efAmazonPlusSetup() {
 function efAmazonPlusJavascript( &$out, $sk ) {
 	global $wgScriptPath;
 	$src = $wgScriptPath . '/extensions/AmazonPlus/AmazonPlus.js';
-	$out->addScript( '<script type="text/javascript" src="' . $src . '"></script>' );
+	$out->addScript( '<script type="text/javascript" src="' . $src . '"></script>' . "\n" );
 	return true;
 }
 
@@ -113,7 +113,8 @@ function efAmazonPlusRender( $input, $args, $parser ) {
 	$ret = $am->getResult();
 	$temp = $parser->mOptions->setAllowExternalImages( true );
 	$ret = $parser->recursiveTagParse( $ret );
-	$ret = str_replace( '%' . $am->getToken() . '%', $am->priceSelect(), $ret );
+	$ret = str_replace( '%' . $am->getToken( 'priceSelect' ) . '%', $am->priceSelect(), $ret );
+	$ret = str_replace( '%' . $am->getToken( 'shortReview' ) . '%', $am->shortReview(), $ret );
 	$parser->mOptions->setAllowExternalImages( $temp );
 	wfRestoreWarnings();
 	return $ret;
@@ -121,13 +122,13 @@ function efAmazonPlusRender( $input, $args, $parser ) {
 
 # Class for holding/parsing information from the Amazon REST interface
 class AmazonPlus {
-	var $locale, $request, $response, $xml, $input, $error, $valid, $token, $title;
+	var $locale, $request, $response, $xml, $input, $error, $valid, $token, $title, $shortReview;
 
 	function __construct( $title, $args, $input ) {
 		global $wgAmazonPlusAWS, $wgAmazonPlusAssociates;
 		$this->valid = array( 'us', 'gb', 'ca', 'de', 'fr', 'jp' );
 		$this->currencies = array();
-		$this->token = rand();
+		$this->token = array( 'priceSelect' => rand() . '1', 'shortReview' => rand() . '2' );
 		if ( isset( $args['locale'] ) ) {
 			$this->locale = ( $this->validLocale( $args['locale'] ) ) ? $args['locale'] : 'us';
 		} else {
@@ -157,7 +158,7 @@ class AmazonPlus {
 
 	function setValue( $key, $value ) { $this->request[$key] = $value; }
 	function getValue( $key ) { return $this->request[$key]; }
-	function getToken() { return $this->token; }
+	function getToken( $key ) { return $this->token[$key]; }
 	function getLocale() { return $this->locale; }
 
 	function getId( $title, $args ) {
@@ -230,12 +231,13 @@ class AmazonPlus {
 			'swatchimage'     => $imageset->SwatchImage->URL,
 			'thumbnail'       => $imageset->ThumbnailImage->URL,
 			/* REVIEWS AND RATINGS */
-			'review'          => $editorials->Content,
+			'editorialreview' => $editorials->Content,
+			'shortreview'     => $this->shortReview( $editorials->Content ),
 			'reviewlink'      => $links['AllCustomerReviews'],
-			'source'          => $editorials->Source,
+			'editorialsource' => $editorials->Source,
 			'rating'          => $reviews->AverageRating,
 			'stars'           => $this->starsImage( $reviews->AverageRating ),
-			'total'           => $reviews->TotalReviews,
+			'totalreviews'    => $reviews->TotalReviews,
 			/* PRICES */
 			'price'           => $this->formatPrice( $item, AMAZONPLUS_ALL ),
 			'price-amazon'    => $this->formatPrice( $item, AMAZONPLUS_AMAZON ),
@@ -265,7 +267,7 @@ class AmazonPlus {
 			'price-de-used'   => $this->getPrice( 'de', $item->ASIN, AMAZONPLUS_USED ),
 			'price-jp-used'   => $this->getPrice( 'jp', $item->ASIN, AMAZONPLUS_USED ),
 			'price-fr-used'   => $this->getPrice( 'fr', $item->ASIN, AMAZONPLUS_USED ),
-			'compare'         => '%' . $this->token . '%',
+			'compare'         => '%' . $this->token['priceSelect'] . '%',
 			'offers'          => $links['AllOffers'],
 			/* DETAILS */
 			'url'             => $item->DetailPageURL,
@@ -310,6 +312,38 @@ class AmazonPlus {
 	function parseDate( $date, $segment ) {
 		$pieces = explode( '-', $date );
 		return $pieces[$segment];
+	}
+	
+	function shortReview( $rev ) {
+		// return the first 3 paragraphs and have a more/less link afterwards
+		if( !$this->shortReview ) {
+			$rev = str_replace( '<br>', '<br />', $rev );
+			$paras = explode( '<br />', $rev );
+			switch( count( $paras ) ) {
+				case 1:
+					$this->shortReview = $rev;
+				case 2:
+					$this->shortReview = $rev;
+				case 3:
+					$this->shortReview = $rev;
+				default:
+					$head = implode( '<br />', array( $paras[0], $paras[1], $paras[2] ) );
+					$html = '<div class="shortReviewFrame" id="shortReviewFrame' . ++$this->src . '">';
+					$html .= '<div class="shortReviewHead">' . $head . '</div>';
+					$html .= '<div class="shortReviewBody" style="display: none">';
+					for( $i = 3; $i < count( $paras ); $i++ ) {
+						$html .= '<br />' . $paras[$i];
+					}
+					$more = wfMsg( 'amazonplus-more' );
+					$less = wfMsg( 'amazonplus-less' );
+					$internal = "'{$more}', '{$less}', '{$this->src}'";
+					$id = 'shortReviewLink' . $this->src;
+					$html .= '</div> [<a href="#" id="' . $id . '" onclick="javascript:toggleReview(' . $internal . ');">' . $more . '</a>]</div>';
+					$this->shortReview = $html;
+			}
+			return '%' . $this->token['shortReview'] . '%';
+		}
+		return $this->shortReview;
 	}
 
 	function getPrice( $loc, $asin, $type ) {

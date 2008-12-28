@@ -8,6 +8,9 @@
 
 $messages = array();
 
+/** English (English)
+ * @author Skizzerz
+ */
 $messages['en'] = array(
 	'amazonplus-desc' => 'A highly customizable extension to display Amazon information',
 	'amazonplus-nores' => 'Error: No results found!',
@@ -31,13 +34,31 @@ $messages['en'] = array(
 	'amazonplus-cp-gbp' => 'GBP',
 	'amazonplus-cp-eur' => 'EUR',
 	'amazonplus-cp-jpy' => 'JPY',
+	'amazonplus-more' => 'more',
+	'amazonplus-less' => 'less',
 );
 
 /** Message documentation (Message documentation)
+ * @author Skizzerz
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'amazonplus-desc' => 'A short description of this extension. Shown in [[Special:Version]]. Do not translate links.',
+	'amazonplus-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'amazonplus-nores' => 'Error message, automatically wrapped in a span tag with class="error."',
+	'amazonplus-noidres' => 'Error message, automatically wrapped in a span tag with class="error."',
+	'amazonplus-fgcerr' => 'Error message, automatically wrapped in a span tag with class="error."',
+	'amazonplus-slserr' => 'Error message, automatically wrapped in a span tag with class="error."',
+	'amazonplus-used' => 'Definition of "used" in this message is "not new."',
+	'amazonplus-german' => 'Name of the German language, or an empty string if translating to German.',
+	'amazonplus-french' => 'Name of the French language, or an empty string if translating to French.',
+	'amazonplus-japanese' => 'Name of the Japanese language, or an empty string if translating to Japanese.',
+	'amazonplus-english' => 'Name of the English language, or an empty string if translating to English.',
+	'amazonplus-status' => ';$1:A combination of status messages seperated with [[MediaWiki:Amazonplus-status-sep/en|amazonplus-status-sep]]',
+	'amazonplus-status-sep' => 'Seperator used in [[MediaWiki:Amazonplus-status/en|amazonplus-status]] to divide the listing of terms',
+	'amazonplus-currency' => ';$1:Formatted price without symbol (e.g. 16.41)
+;$2:Currency code (e.g. USD)
+;$3:Currency symbol (e.g. $)
+;$4:Status message',
 );
 
 /** Arabic (العربية)
