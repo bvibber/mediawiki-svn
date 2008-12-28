@@ -71,8 +71,12 @@ class UniwikiChangesList extends ChangesList {
 				$user_link = ( $rc_user > 0 ) ? $this->skin->userLink( $rc_user, $rc_user_text ) : wfMsg( 'formatchanges-anonymous' );
 			}
 			$timestamp = $wgLang->time( $rc->mAttribs['rc_timestamp'], true, true );
-			$action = ( $rc_type == RC_NEW ) ? wfMsg( 'formatchanges-createdby' ) : wfMsg( 'formatchanges-editedby' );
-			$line .= $page_link . " - " . $action . " "  . $user_link . " (" . $timestamp . ")";
+
+			if ( $rc_type == RC_NEW ) {
+				$line = wfMsgHtml( 'formatchanges-createdby', $page_link, $user_link, $timestamp );
+			} else {
+				$line = wfMsgHtml( 'formatchanges-editedby', $page_link, $user_link, $timestamp );
+			}
 			$line .= "</li>";
 		}
 

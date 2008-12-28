@@ -12,8 +12,8 @@ $messages = array();
 $messages['en'] = array(
 	'formatchanges-desc' => 'Reformats the [[Special:RecentChanges|recent changes]]',
 	'formatchanges-anonymous' => 'Anonymous',
-	'formatchanges-createdby' => 'created by',
-	'formatchanges-editedby' => 'edited by',
+	'formatchanges-createdby' => '$1 - created by $2 ($3)',
+	'formatchanges-editedby' => '$1 - edited by $2 ($3)',
 );
 
 /** Message documentation (Message documentation)
@@ -21,6 +21,12 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'formatchanges-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'formatchanges-createdby' => '* $1 is a link to a page with the page title as link description
+* $2 is a link to a user page with the user name as link description
+* $3 is the time at which the page was created',
+	'formatchanges-editedby' => '* $1 is a link to a page with the page title as link description
+* $2 is a link to a user page with the user name as link description
+* $3 is the time at which the page was changed',
 );
 
 /** Arabic (العربية)
