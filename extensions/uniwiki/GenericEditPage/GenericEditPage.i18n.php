@@ -27,7 +27,7 @@ $messages['en'] = array(
 	'gep-classicmode' => 'Classic mode',
 	'gep-genericmode' => 'Generic mode',
 	'gep-nosectioninstructions' => 'There are no sections on this page.
-Add some using the tools on the right.', // on the right? How does that work in RTL UIs?
+Add some using the tools in the menu bar.',
 	'gep-nocategories' => 'Please select at least one category before saving',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
