@@ -6,7 +6,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'navigationpopups-desc' => 'Loads Lupin’s navigation scripts popups in mediawiki',
+	'navigationpopups-desc' => 'Loads Lupin’s navigation scripts popups in MediaWiki',
 );
 
 /** Message documentation (Message documentation)
@@ -34,7 +34,7 @@ $messages['arz'] = array(
  * @author SMP
  */
 $messages['ca'] = array(
-	'navigationpopups-desc' => "Carrega el codi de les finestres emergents de navegació d'en Lupin al mediawiki",
+	'navigationpopups-desc' => "Carrega el codi de les finestres emergents de navegació d'en Lupin al MediaWiki",
 );
 
 /** German (Deutsch)
@@ -69,7 +69,7 @@ $messages['es'] = array(
  * @author Mobe
  */
 $messages['fi'] = array(
-	'navigationpopups-desc' => 'Lataa Lupinin navigointiskriptien kohoikkunat mediawikiin.',
+	'navigationpopups-desc' => 'Lataa Lupinin navigointiskriptien kohoikkunat MediaWikiin.',
 );
 
 /** French (Français)
@@ -209,6 +209,6 @@ $messages['sv'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'navigationpopups-desc' => 'Mở công cụ popup chuyển hướng của Lupin trong mediawiki',
+	'navigationpopups-desc' => 'Mở công cụ popup chuyển hướng của Lupin trong MediaWiki',
 );
 
