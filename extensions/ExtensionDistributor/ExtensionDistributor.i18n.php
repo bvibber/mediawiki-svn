@@ -368,7 +368,7 @@ $messages['fr'] = array(
 	'extdist-current-version' => 'Version courante (trunk)',
 	'extdist-choose-version' => '<big>Vous êtes en train de télécharger l’extension <b>$1</b>.</big>
 
-Sélectionnez votre version Mediawiki.
+Sélectionnez votre version MediaWiki.
 
 La plupart des extensions tourne sur différentes versions de MediaWiki. Aussi, si votre version n’est pas présente ici, ou si vous avez besoin des dernières fonctionnalités de l’extension, essayez d’utiliser la version courante.',
 	'extdist-no-versions' => "L’extension sélectionnée ($1) n'est disponible dans aucune version !",
@@ -889,7 +889,7 @@ $messages['oc'] = array(
 	'extdist-current-version' => 'Version correnta (trunk)',
 	'extdist-choose-version' => "<big>Sètz a telecargar l’extension <b>$1</b>.</big>
 
-Seleccionatz vòstra version Mediawiki.
+Seleccionatz vòstra version MediaWiki.
 
 La màger part de las extensions vira sus diferentas versions de MediaWiki. Atal, se vòstra version es pas presenta aicí, o s'avètz besonh de las darrièras foncionalitats de l’extension, ensajatz d’utilizar la version correnta.",
 	'extdist-no-versions' => 'L’extension seleccionada ($1) es indisponibla dins mantuna version !',
@@ -1164,7 +1164,7 @@ $messages['yue'] = array(
 
 揀你要嘅 MediaWiki 版本。 
 
-多數嘅擴展都可以響多個 MediaWiki 嘅版本度行到，噉如果你嘅 Mediawiki 版本唔響度，又或者你需要最新嘅擴展功能嘅話，試吓用最新嘅版本。',
+多數嘅擴展都可以響多個 MediaWiki 嘅版本度行到，噉如果你嘅 MediaWiki 版本唔響度，又或者你需要最新嘅擴展功能嘅話，試吓用最新嘅版本。',
 	'extdist-no-versions' => '所揀嘅擴展 ($1) 不適用於任何嘅版本！',
 	'extdist-submit-version' => '繼續',
 	'extdist-no-remote' => '唔能夠聯絡遠端 subversion 客戶端。',
@@ -1216,7 +1216,7 @@ $messages['zh-hans'] = array(
 
 选择您要的 MediaWiki 版本。 
 
-多数的扩展都可以在多个 MediaWiki 版本上运行，如果您的 Mediawiki 版本不存在，又或者您需要最新的扩展功能的话，可尝试用最新的版本。',
+多数的扩展都可以在多个 MediaWiki 版本上运行，如果您的 MediaWiki 版本不存在，又或者您需要最新的扩展功能的话，可尝试用最新的版本。',
 	'extdist-no-versions' => '所选择扩展 ($1) 不适用于任何的版本！',
 	'extdist-submit-version' => '继续',
 	'extdist-no-remote' => '不能够联络远端 subversion 客户端。',
@@ -1268,7 +1268,7 @@ $messages['zh-hant'] = array(
 
 選擇您要的 MediaWiki 版本。 
 
-多數的擴展都可以在多個 MediaWiki 版本上運行，如果您的 Mediawiki 版本不存在，又或者您需要最新的擴展功能的話，可嘗試用最新的版本。',
+多數的擴展都可以在多個 MediaWiki 版本上運行，如果您的 MediaWiki 版本不存在，又或者您需要最新的擴展功能的話，可嘗試用最新的版本。',
 	'extdist-no-versions' => '所選擇擴展 ($1) 不適用於任何的版本！',
 	'extdist-submit-version' => '繼續',
 	'extdist-no-remote' => '不能夠聯絡遠端 subversion 客戶端。',
