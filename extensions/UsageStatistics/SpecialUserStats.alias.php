@@ -10,107 +10,107 @@ $aliases = array();
  * @author Paul Grinberg
  */
 $aliases['en'] = array(
-	'UserStats'          => array( 'UserStats', 'SpecialUserStats' ),
+	'SpecialUserStats'          => array( 'UserStats', 'SpecialUserStats' ),
 );
 
 /** Arabic (العربية)
  * @author Meno25
  */
 $aliases['ar'] = array(
-	'UserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
+	'SpecialUserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
 $aliases['arz'] = array(
-	'UserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
+	'SpecialUserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
 );
 
 /** Assamese (অসমীয়া) */
 $aliases['as'] = array(
-	'UserStats' => array( 'সদস্য পৰিসংখ্যা', 'বিশেষ সদস্য পৰিসংখ্যা' ),
+	'SpecialUserStats' => array( 'সদস্য পৰিসংখ্যা', 'বিশেষ সদস্য পৰিসংখ্যা' ),
 );
 
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'UserStats' => array( 'KorisnickeStatistike' ),
+	'SpecialUserStats' => array( 'KorisnickeStatistike' ),
 );
 
 /** German (Deutsch) */
 $aliases['de'] = array(
-	'UserStats' => array( 'Benutzerstatistik' ),
+	'SpecialUserStats' => array( 'Benutzerstatistik' ),
 );
 
 /** Persian (فارسی) */
 $aliases['fa'] = array(
-	'UserStats' => array( 'آمار_کاربر' ),
+	'SpecialUserStats' => array( 'آمار_کاربر' ),
 );
 
 /** French (Français) */
 $aliases['fr'] = array(
-	'UserStats' => array( 'StatistiquesUtilisateur' ),
+	'SpecialUserStats' => array( 'StatistiquesUtilisateur' ),
 );
 
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'UserStats' => array( 'Benutzerstatischtik' ),
+	'SpecialUserStats' => array( 'Benutzerstatischtik' ),
 );
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'UserStats' => array( 'Felhasználói statisztika', 'Felhasználóstatisztika' ),
+	'SpecialUserStats' => array( 'Felhasználói statisztika', 'Felhasználóstatisztika' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'UserStats' => array( 'Statistik pengguna' ),
+	'SpecialUserStats' => array( 'Statistik pengguna' ),
 );
 
 /** Japanese (日本語) */
 $aliases['ja'] = array(
-	'UserStats' => array( '利用統計' ),
+	'SpecialUserStats' => array( '利用統計' ),
 );
 
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
-	'UserStats' => array( 'Statistik vun fun de Metmaacher', 'Statistik vun fun de Medmaacher', 'Metmaacher ier Zahle', 'Medmaacher ier Zahle' ),
+	'SpecialUserStats' => array( 'Statistik vun fun de Metmaacher', 'Statistik vun fun de Medmaacher', 'Metmaacher ier Zahle', 'Medmaacher ier Zahle' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'UserStats' => array( 'Benotzerstistiken' ),
+	'SpecialUserStats' => array( 'Benotzerstistiken' ),
 );
 
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'UserStats' => array( 'СтатистикиЗаКорисник', 'СпецијалниСтатистикиЗаКорисник' ),
+	'SpecialUserStats' => array( 'СтатистикиЗаКорисник', 'СпецијалниСтатистикиЗаКорисник' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'UserStats' => array( 'Gebrukersgegevens' ),
+	'SpecialUserStats' => array( 'Gebrukersgegevens' ),
 );
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $aliases['nl'] = array(
-	'UserStats' => array( 'Gebruikersgegevens', 'Gebruikersstatistieken' ),
+	'SpecialUserStats' => array( 'Gebruikersgegevens', 'Gebruikersstatistieken' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'UserStats' => array( 'Brukerstatistikk' ),
+	'SpecialUserStats' => array( 'Brukerstatistikk' ),
 );
 
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'UserStats' => array( 'Användarstatistik' ),
+	'SpecialUserStats' => array( 'Användarstatistik' ),
 );
 
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
-	'UserStats' => array( 'TakwimuzaMtumiaji', 'TakwimumaalumzaMtumiaji' ),
+	'SpecialUserStats' => array( 'TakwimuzaMtumiaji', 'TakwimumaalumzaMtumiaji' ),
 );
 
