@@ -250,34 +250,35 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Silvonen
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'invite-logpage' => 'Kutsuloki',
-	'invite-logpagetext' => 'Tämä on käyttäjien, jotka kutsuvat muita käyttämään erilaisia ohjelmien ominaisuuksia, loki.',
-	'invite-logentry' => 'kutsuttiin $1 käyttämään ominaisuutta <i>$2</i>.',
+	'invite-logpagetext' => 'Tämä on loki käyttäjien kutsuista muita käyttäjiä käyttämään ohjelmiston eri ominaisuuksia.',
+	'invite-logentry' => 'kutsui käyttäjän $1 käyttämään ominaisuutta <i>$2</i>.',
 	'invitations' => 'Hallitse kutsuja ohjelmien ominaisuuksiin',
-	'invitations-desc' => 'Sallii [[Special:Invitations|uusien ominaisuuksien hallinnan]] rajoittamalla ne kutsupohjaisella järjestelmällä.',
-	'invitations-invitedlist-description' => 'Sinulla on pääsy seuraaviin ohjelmien kutsuominaisuuksiin.
-Hallitaksesi yksittäisen ominaisuuden kutsuja, napsauta sen nimeä.',
-	'invitations-invitedlist-none' => 'Sinua ei ole kutsuttu käyttämään mitään vain kutsutuille olevia ohjelmien ominaisuuksia.',
+	'invitations-desc' => 'Mahdollistaa [[Special:Invitations|uusien ominaisuuksien hallinnan]] rajoittamalla niiden käyttöoikeutta kutsupohjaisella järjestelmällä.',
+	'invitations-invitedlist-description' => 'Sinulla on pääsy seuraaviin vain kutsutuille tarjolla oleviin ominaisuuksiin.
+Yksittäisen ominaisuuden kutsuja voi hallita napsauttamalla sen nimestä.',
+	'invitations-invitedlist-none' => 'Sinua ei ole kutsuttu käyttämään mitään vain kutsutuille tarjolla olevia ominaisuuksia.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Yksi kutsu|$1 kutsua}} jäljellä)',
-	'invitations-pagetitle' => 'Vain kutsuille olevat ohjelmien ominaisuudet',
-	'invitations-uninvitedlist-description' => 'Sinulla ei ole pääsyä näihin muihin vain kutsutuille oleviin ohjelmien ominaisuuksiin.',
-	'invitations-uninvitedlist-none' => 'Tällä hetkellä muita ohjelmien ominaisuuksia ei ole suunniteltu vain kutsutuille oleviksi.',
+	'invitations-pagetitle' => 'Vain kutsuille tarjolla olevat ohjelmien ominaisuudet',
+	'invitations-uninvitedlist-description' => 'Sinulla ei ole pääsyä muihin vain kutsutuille tarjolla oleviin ominaisuuksiin.',
+	'invitations-uninvitedlist-none' => 'Tällä hetkellä muita ominaisuuksia ei ole osoitettu vain kutsutuille tarjolla oleviksi.',
 	'invitations-feature-pagetitle' => 'Kutsujen hallinta – $1',
 	'invitations-feature-access' => 'Sinulla on oikeudet käyttää ominaisuutta <i>$1</i>.',
 	'invitations-feature-numleft' => 'Sinulla on vielä {{PLURAL:$2|yksi kutsu jäljellä|<b>$1</b> kaikkiaan $2 kutsusta jäljellä}}.',
-	'invitations-feature-noneleft' => 'Olet käyttänyt kaikki tälle ominaisuudelle varatut kutsusi.',
-	'invitations-feature-noneyet' => 'Et ole vielä saanut tälle ominaisuudelle varattuja kutsuja.',
+	'invitations-feature-noneleft' => 'Olet käyttänyt kaikki tälle ominaisuudelle myönnetyt kutsusi.',
+	'invitations-feature-noneyet' => 'Et ole vielä saanut tälle ominaisuudelle myönnettyjä kutsujasi.',
 	'invitations-feature-notallowed' => 'Sinulla ei ole oikeuksia käyttää ominaisuutta <i>$1</i>.',
 	'invitations-inviteform-title' => 'Kutsu käyttäjä käyttämään ominaisuutta $1',
 	'invitations-inviteform-username' => 'Kutsuttava käyttäjä',
 	'invitations-inviteform-submit' => 'Kutsu',
-	'invitations-error-baduser' => 'Antamaasi käyttäjää ei vaikuta olevan.',
-	'invitations-error-alreadyinvited' => 'Antamallasi käyttäjällä on jo oikeudet käyttää tätä ominaisuutta!',
-	'invitations-invite-success' => 'Kutsuit onnistuneesti käyttäjän $1 käyttämään tätä ominaisuutta!',
+	'invitations-error-baduser' => 'Annettua käyttäjätunnusta ei ole olemassa.',
+	'invitations-error-alreadyinvited' => 'Annetulla käyttäjällä on jo oikeudet käyttää tätä ominaisuutta.',
+	'invitations-invite-success' => 'Olet kutsunut käyttäjän $1 käyttämään tätä ominaisuutta.',
 );
 
 /** French (Français)

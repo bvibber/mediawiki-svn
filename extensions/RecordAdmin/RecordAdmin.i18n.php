@@ -69,16 +69,31 @@ $messages['ar'] = array(
 	'recordadmin-newrecord' => 'أختار نوع سجل أخر',
 	'recordadmin-submit' => 'نفذ',
 	'recordadmin-create' => 'أبحث أو أنشئ ملف $1',
+	'recordadmin-alreadyexist' => '! للأسف، "$1" موجود فعلا',
+	'recordadmin-createsuccess' => '$1 أنشئت',
 	'recordadmin-badtitle' => '! عنوان سئ',
 	'recordadmin-invert' => 'أعكس الأختيار',
 	'recordadmin-buttonsearch' => 'بحث',
 	'recordadmin-buttoncreate' => 'أنشئ',
 	'recordadmin-searchresult' => 'نتائج البحث',
 	'recordadmin-edit' => 'تعديل',
+	'recordadmin-typeupdated' => '$1 تم تحديث خصائص',
 	'recordadmin-buttonsave' => 'حفظ',
 	'recordadmin-viewlink' => 'عرض',
 	'recordadmin-editlink' => 'عدل',
 	'recordadmin-created' => 'أنشئت',
+	'right-recordadmin' => 'أبحث و عدل صفحات السجل',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ouda
+ */
+$messages['arz'] = array(
+	'recordadmin-submit' => 'نفذ',
+	'recordadmin-buttonsearch' => 'بحث',
+	'recordadmin-buttonsave' => 'حفظ',
+	'recordadmin-viewlink' => 'عرض',
+	'recordadmin-editlink' => 'عدل',
 );
 
 /** Bulgarian (Български)
@@ -149,13 +164,19 @@ $messages['de-formal'] = array(
 $messages['eo'] = array(
 	'recordadmin-category' => 'Rekordoj',
 	'recordadmin-newsearch' => 'Nova $1 serĉo',
+	'recordadmin-submit' => 'Ek!',
+	'recordadmin-create' => 'Trovi aŭ krei rikordon "$1"',
+	'recordadmin-alreadyexist' => 'Bedaŭrinde, "$1" jam ekzistas!',
 	'recordadmin-createsuccess' => '$1 kreita',
 	'recordadmin-badtitle' => 'Fuŝa titolo!',
 	'recordadmin-invert' => 'Inversigi selekton',
 	'recordadmin-buttonsearch' => 'Serĉi',
 	'recordadmin-buttoncreate' => 'Krei',
+	'recordadmin-searchresult' => 'Rezultoj de serĉo',
 	'recordadmin-edit' => 'Redaktante $1',
+	'recordadmin-updatesuccess' => '$1 ĝisdatigita',
 	'recordadmin-buttonsave' => 'Konservi',
+	'recordadmin-createlink' => '<a href=$1>krei unu</a>',
 	'recordadmin-summary-typecreated' => 'Nova $1 kreita',
 	'recordadmin-viewlink' => 'vidi',
 	'recordadmin-editlink' => 'redakti',
@@ -172,6 +193,29 @@ $messages['es'] = array(
 	'recordadmin-edit' => 'Editando $1',
 	'recordadmin-buttonsave' => 'Guardar',
 	'recordadmin-editlink' => 'editar',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'recordadmin-newsearch' => 'Uus $1 otsing',
+	'recordadmin-badtitle' => 'Vale pealkiri!',
+	'recordadmin-buttonsearch' => 'Otsing',
+	'recordadmin-buttoncreate' => 'Loo',
+	'recordadmin-searchresult' => 'Otsingu tulemused',
+	'recordadmin-nomatch' => 'Sobivaid tulemusi ei leitud!',
+	'recordadmin-edit' => '$1 toimetamine',
+	'recordadmin-buttonsave' => 'Salvesta',
+	'recordadmin-viewlink' => 'vaata',
+	'recordadmin-editlink' => 'toimeta',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'recordadmin-editlink' => 'muokkaa',
 );
 
 /** French (Français)
@@ -250,6 +294,44 @@ $messages['gl'] = array(
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'recordadmin' => 'Gestion de datos',
+	'recordadmin-desc' => 'Un [[Special:RecordAdmin|pagina special]] pro cercar e modificar le paginas de datos con un formulario',
+	'recordadmin-category' => 'Datos',
+	'recordadmin-select' => 'Selige le typo de datos a cercar',
+	'recordadmin-newsearch' => 'Nove recerca $1',
+	'recordadmin-newrecord' => 'Selige un altere typo de datos',
+	'recordadmin-submit' => 'Submitter',
+	'recordadmin-create' => 'Cercar o crear un dato "$1"',
+	'recordadmin-alreadyexist' => 'Pardono, "$1" ja existe!',
+	'recordadmin-createsuccess' => '$1 create',
+	'recordadmin-createerror' => 'Un error occurreva durante le creation de $1!',
+	'recordadmin-badtitle' => 'Titulo invalide!',
+	'recordadmin-recordid' => 'ID del dato:',
+	'recordadmin-invert' => 'Inverter selection',
+	'recordadmin-buttonsearch' => 'Cercar',
+	'recordadmin-buttoncreate' => 'Crear',
+	'recordadmin-buttonreset' => 'Reinitiar',
+	'recordadmin-searchresult' => 'Resultatos del recerca',
+	'recordadmin-nomatch' => 'Nulle datos correspondente trovate!',
+	'recordadmin-edit' => 'Modificante $1',
+	'recordadmin-typeupdated' => '$1 proprietates actualisate',
+	'recordadmin-updatesuccess' => '$1 actualisate',
+	'recordadmin-updateerror' => 'Un error occurreva durante le actualisation',
+	'recordadmin-buttonsave' => 'Immagazinar',
+	'recordadmin-noform' => 'Non existe un formulario associate con datos "$1"!',
+	'recordadmin-createlink' => '<a href=$1>crear un</a>',
+	'recordadmin-newcreated' => 'Nove $1 create ab formulario public',
+	'recordadmin-summary-typecreated' => 'Nove $1 create',
+	'recordadmin-viewlink' => 'vider',
+	'recordadmin-editlink' => 'modificar',
+	'recordadmin-created' => 'Create',
+	'right-recordadmin' => 'Cercar e modificar paginas de datos',
+);
+
 /** Japanese (日本語)
  * @author Hosiryuhosi
  */
@@ -277,6 +359,7 @@ $messages['km'] = array(
 	'recordadmin-createsuccess' => '$1 ត្រូវ​បាន​បង្កើត',
 	'recordadmin-createerror' => 'កំហុស​មួយ​បាន​កើតឡើង ខណៈដែល​កំពុង​ព្យាយាម​បង្កើត $1',
 	'recordadmin-badtitle' => 'ចំណងជើង​មិនល្អ',
+	'recordadmin-invert' => 'ដាក់បញ្ច្រាស​ជម្រើស',
 	'recordadmin-buttonsearch' => 'ស្វែងរក',
 	'recordadmin-buttoncreate' => 'បង្កើត',
 	'recordadmin-buttonreset' => 'កំណត់ឡើងវិញ',

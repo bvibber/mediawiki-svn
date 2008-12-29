@@ -294,6 +294,13 @@ $messages['te'] = array(
 	'didyoumean-desc' => '"ఒకే విధమైన" పేర్లు కలిగిన పేజీలకు లింకులు ఇస్తుంది',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'didyoumean-desc' => 'Tau tan ligasaun ba pájina sira-ne\'ebé iha naran "hanesan"',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */

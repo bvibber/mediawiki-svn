@@ -205,6 +205,7 @@ $messages['eo'] = array(
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'aŭ',
 	'imstatus_your_name' => 'via $1 nomo',
+	'imstatus_gtalk_width' => 'larĝo de la kesto, je rastumeroj',
 	'imstatus_icq_id' => 'via ID de ICQ',
 );
 
@@ -223,10 +224,12 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'imstatus-desc' => 'Lisää elementit muutamien pikaviestimien tilan näyttämiseen (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo).',
+	'imstatus-desc' => 'Lisää elementit monien pikaviestimien tilan näyttämiseen (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo).',
 	'imstatus_syntax' => 'Syntaksi',
 	'imstatus_default' => 'Oletus',
 	'imstatus_example' => 'Esimerkki',
@@ -237,9 +240,9 @@ $messages['fi'] = array(
 	'imstatus_gtalk_height' => 'laatikon korkeus, pikseleinä.',
 	'imstatus_gtalk_width' => 'laatikon leveys, pikseleinä.',
 	'imstatus_icq_id' => 'ICQ-tunnuksesi',
-	'imstatus_icq_style' => 'numero 0 ja 26 väliltä (kyllä, käytettävissä on 27 tyyliä).',
-	'imstatus_live_code' => 'Live Messenger -sivustosi tunnus',
-	'imstatus_live_get_code' => 'Live Messenger -sivustosi tunnus: <strong>tämä ei ole sähköpostiosoitteesi</strong>, vaan sinun tätyy luoda sellainen <a href="$1">Live Messenger -asetuksissasi</a>.
+	'imstatus_icq_style' => 'numero nollan ja 26:n väliltä (käytettävissä on siis 27 tyyliä).',
+	'imstatus_live_code' => 'Live Messenger -sivuston tunnuksesi',
+	'imstatus_live_get_code' => 'Live Messenger -sivuston tunnus: <strong>tämä ei ole sähköpostiosoitteesi</strong>. Sinun täytyy luoda se <a href="$1">Live Messenger -asetuksissasi</a>.
 Tunnus, joka sinun pitää antaa, on numeroita ja kirjaimia ”$2” ja ”$3” väliltä.',
 );
 

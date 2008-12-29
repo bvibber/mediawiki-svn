@@ -863,6 +863,7 @@ si prega di usàrila cu giudizziu.",
 	'querybtn' => 'Suttamitta query',
 	'selectonly' => 'Sugnu cunzintiti sulu query di littura.',
 	'querysuccessful' => 'Query esequita currittamenti',
+	'right-asksql' => 'Fà query SQL',
 );
 
 /** Tachelhit (Tašlḥiyt)

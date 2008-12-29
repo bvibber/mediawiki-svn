@@ -67,9 +67,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Mobe
+ * @author Nike
  */
 $messages['fi'] = array(
-	'navigationpopups-desc' => 'Lataa Lupinin navigointiskriptien kohoikkunat MediaWikiin.',
+	'navigationpopups-desc' => 'Lisää Lupinin navigointiavun ponnahdusikkunat.',
 );
 
 /** French (Français)

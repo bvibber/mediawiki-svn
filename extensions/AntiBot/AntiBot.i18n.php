@@ -311,6 +311,13 @@ $messages['sv'] = array(
 	'antibot-desc' => 'Enkel struktur för spambotskontroller och nyttolastsutlösare.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'antibot-desc' => "Payak na kayarian ng balangkas para sa mga pagsusuri ng ''bot'' na pangmanlulusob (''spambot'') at pampagalaw ng mga \"pambayad-karga\" (''payload'')",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

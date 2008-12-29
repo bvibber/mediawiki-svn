@@ -318,6 +318,13 @@ $messages['sv'] = array(
 	'titlekey-desc' => 'Bakstycke för sökning efter titelprefix',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'titlekey-desc' => 'Mungkahing katapusang panghulihan pagkaraan ng paghahanap ng unlaping pampamagat',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

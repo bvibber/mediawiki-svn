@@ -149,12 +149,13 @@ $3',
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'latexdoc_no_text' => 'Sivu ei sisällä tekstiä, joten DVI:tä ei voida luoda.',
 	'latexdoc_cant_create_dir' => 'Väliaikaishakemistoa $1 ei voida luoda.',
-	'latexdoc_cant_write' => 'Tiedostoon $1 ei voida kirjoittaa.',
+	'latexdoc_cant_write' => 'Tiedostoon $1 kirjoittaminen ei onnistu.',
 	'latexdoc_error' => 'LaTeX-virhe
 
 Komento: $1

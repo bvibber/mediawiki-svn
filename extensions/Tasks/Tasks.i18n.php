@@ -157,6 +157,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ouda
  * @author Ramsis II
  */
 $messages['arz'] = array(
@@ -178,6 +179,7 @@ $messages['arz'] = array(
 	'tasks_here' => 'هنا',
 	'tasks_help_page' => 'المهمات',
 	'tasks_more_like_it' => 'اكتر',
+	'tasks_event_on_creation' => 'راجع',
 	'tasks_table_header_page' => 'صفحه',
 	'tasks_search_form_title' => 'دور',
 	'tasks_search_tasks' => 'المهمات',
@@ -192,6 +194,7 @@ $messages['arz'] = array(
 	'tasks_status_assigned' => 'متعين',
 	'tasks_status_closed' => 'مقفول',
 	'tasks_status_wontfix' => 'مش ح يتصلح',
+	'tasks_logpage' => 'سجل المهام',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -322,6 +325,15 @@ $messages['cs'] = array(
 	'tasks_status_assigned' => 'Přiděleno',
 	'tasks_status_closed' => 'Uzavřeno',
 	'tasks_status_wontfix' => 'Neopravitelné',
+	'tasks_action_open' => 'Úloha „$1“ byla otevřena.',
+	'tasks_action_assigned' => 'Úkol „$1“ byl přidělen.',
+	'tasks_action_closed' => 'Úkol „$1“ byl uzavřen.',
+	'tasks_action_wontfix' => 'Neopravíme úkol „$1“.',
+	'tasks_sign_delete' => '<b>Bylo zažádáno o smazání této stránky!</b>',
+	'tasks_logpage' => 'Seznam úkolů',
+	'tasks_logpagetext' => 'Toto je seznam změn v úkolech',
+	'tasks_logentry' => 'Pro „[[$1]]“',
+	'tog-show_task_comments' => 'Vložení diskusní stránky úkolu.',
 );
 
 /** German (Deutsch)
@@ -406,13 +418,15 @@ Falls du nicht in ein paar Sekunden weitergeleitet wirst, klicke $1.',
 	'tog-show_task_comments' => 'Aufgaben-Diskussionsseite einbinden.',
 );
 
-/** German (formal address) (Deutsch (Sie-Form)) */
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Umherirrender
+ */
 $messages['de-formal'] = array(
 	'tasks_no_task_delete_texe' => 'Sie dürfen keine Aufgabe löschen. Nur Administratoren dürfen dies tun.',
 	'tasks_returnto' => 'Sie werden nun weitergeleitet.
 Falls Sie nicht in ein paar Sekunden weitergeleitet wurden, klicken Sie $1.',
-	'tasks_see_your_assignments' => 'Sie haben $1 offene Aufgaben. Siehe Ihre $2.',
-	'tasks_my_assignments' => 'Ihre aktuellen Aufgaben',
+	'tasks_see_your_assignments' => 'Sie haben $1 offene {{PLURAL:$1|Aufgabe|Aufgaben}}. Siehe Ihre $2.',
+	'tasks_my_assignments' => 'Ihre {{PLURAL:$1|aktuelle Aufgabe|aktuellen Aufgaben}}',
 	'tasks_you_have_no_assignments' => 'Sie haben keine offenen Aufgaben',
 );
 
@@ -438,6 +452,7 @@ $messages['eo'] = array(
 	'tasks_wontfix' => 'Ne reparinda',
 	'tasks_delete' => 'Forigi',
 	'tasks_no_task_delete_title' => 'Ne permesita',
+	'tasks_no_task_delete_texe' => 'Vi ne rajtas forigi taskon. Nur administrantoj povas fari tiel.',
 	'tasks_action_delete' => 'Tasko estis forigita.',
 	'tasks_task_was_deleted' => 'La tasko estis sukcese forigita.',
 	'tasks_reopen' => 'Remalfermi taskon',
@@ -445,6 +460,8 @@ $messages['eo'] = array(
 	'tasks_created_by' => 'Kreita de $1',
 	'tasks_discussion_page_link' => 'Taska diskuto-paĝo',
 	'tasks_closedby' => 'Fermita de $1',
+	'tasks_assigned_myself_log' => 'Mem-asigni taskon "$1"',
+	'tasks_discussion_page_for' => 'Ĉi tiu tasko estas por la paĝo "$1". La listo de ĉiuj taskoj por tiu paĝo estas $2.',
 	'tasks_sidebar_title' => 'Malfermaj taskoj',
 	'tasks_here' => 'ĉi tie',
 	'tasks_see_page_tasks' => '(taskoj de ĉi tiu paĝo)',
@@ -452,26 +469,36 @@ $messages['eo'] = array(
 	'tasks_plain_text_only' => '(ordinara teksto, nur 256 signoj)',
 	'tasks_help_page' => 'Taskoj',
 	'tasks_more_like_it' => 'pluaj',
+	'tasks_significance_order' => 'reskribi<forigi',
 	'tasks_event_on_creation' => 'revizii',
 	'tasks_event_on_creation_anon' => 'revizii',
+	'tasks_on_creation_comment' => 'Aŭtomata tasko, generita per paĝo-kreado',
 	'tasks_link_your_assignments' => 'malfermaj asignoj',
+	'tasks_see_your_assignments' => 'Vi nune havas $1 {{PLURAL:$1|malferman asignon|malfermajn asignojn}}. Informi vian $2.',
 	'tasks_my_assignments' => '{{PLURAL:$1:Via aktuala asigno|Viaj aktualaj asignoj}}',
 	'tasks_table_header_page' => 'Paĝo',
+	'tasks_you_have_no_assignments' => 'Vi havas neniujn malfermajn asignojn',
 	'tasks_search_form_title' => 'Serĉi',
 	'tasks_search_tasks' => 'Taskoj',
 	'tasks_search_status' => 'Statuso',
+	'tasks_search_results' => 'Serĉaj rezultoj',
 	'tasks_previous' => 'Antaŭa',
 	'tasks_next' => 'Posta',
 	'tasks_sort' => 'Ordigi',
+	'tasks_ascending' => 'Plej malnovaj antaŭe',
 	'tasks_status_open' => 'Malferma',
 	'tasks_status_assigned' => 'Asignita',
 	'tasks_status_closed' => 'Fermita',
+	'tasks_status_wontfix' => 'Ne reparinda',
 	'tasks_action_open' => 'Tasko "$1" malfermiĝis.',
 	'tasks_action_assigned' => 'Tasko "$1" asigniĝis.',
 	'tasks_action_closed' => 'Tasko "$1" fermiĝis.',
+	'tasks_action_wontfix' => 'Tasko "$1" ne estis riparinda.',
 	'tasks_sign_delete' => '<b>Estis petita por forigi ĉi tiun paĝon!</b>',
 	'tasks_logpage' => 'Protokolo de taskoj',
+	'tasks_logpagetext' => 'Jen protokolo de ŝanĝoj al taskoj',
 	'tasks_logentry' => 'Por "[[$1]]"',
+	'tog-show_task_comments' => 'Transinkluzivi paĝon de taskaj komentoj.',
 );
 
 /** Spanish (Español)
@@ -1003,6 +1030,7 @@ $messages['km'] = array(
 	'tasks_discussion_page_for' => 'ភារកិច្ច​នេះ​គឺ​សម្រាប់​ទំព័រ "$1" ។ បញ្ជី​នៃ​ភារកិច្ច​ទាំងអស់​សម្រាប់​ទំព័រ​នោះ​គឺ $2 ។',
 	'tasks_sidebar_title' => 'បើក​ភារកិច្ច​នានា',
 	'tasks_here' => 'ទីនេះ',
+	'tasks_returnto' => 'អ្នក​នឹង​ត្រូវ​បាន​បញ្ជូនបន្ត​ឥឡូវនេះ​។ ប្រសិនបើ អ្នក​មិន​ត្រូវ​បាន​បញ្ជូនបន្ត​ក្នុងរយៈពេល ២-៣ វិនាទី​ទេ​នោះ សូម​ចុច $1 ។',
 	'tasks_see_page_tasks' => '(ភារកិច្ច​នានា​នៃ​ទំព័រ​នេះ)',
 	'tasks_task_is_assigned' => '(បាន​កំណត់តម្លៃ)',
 	'tasks_plain_text_only' => '(អត្ថបទ​ធម្មតា, ២៥៦ តួអក្សរ​ប៉ុណ្ណោះ)',

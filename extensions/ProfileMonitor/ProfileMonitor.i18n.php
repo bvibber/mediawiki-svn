@@ -127,16 +127,17 @@ $messages['da'] = array(
  * @author ChrisiPK
  * @author Imre
  * @author Melancholie
+ * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
-	'profiling' => 'Profiliere Daten',
+	'profiling' => 'Profildaten gewinnen',
 	'profiling-desc' => '[[Special:Profiling|Spezialseite]], um Profildaten zu durchsuchen und anzusehen',
 	'profiling-process' => 'Prozessaufruf:',
 	'profiling-wildcard' => 'verwende Platzhalter',
 	'profiling-ok' => 'Okay',
-	'profiling-data' => 'Profiliere Daten für `$1`',
-	'profiling-data-process' => 'Fortschritt',
+	'profiling-data' => 'Profildaten für „$1“',
+	'profiling-data-process' => 'Vorgang',
 	'profiling-data-count' => 'Anzahl',
 	'profiling-data-time' => 'Zeit (gesamt)',
 	'profiling-data-average' => 'Zeit (durchschnittlich)',
@@ -148,6 +149,8 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'profiling-process' => 'Procezi bitĉenon.',
+	'profiling-wildcard' => 'Uzi ĵokeron.',
 	'profiling-ok' => 'Ek!',
 	'profiling-data-process' => 'Procezo',
 	'profiling-data-count' => 'Nombro',
@@ -155,9 +158,20 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Imre
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'profiling-ok' => 'Aceptar',
 	'profiling-data-process' => 'Proceso',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'profiling-ok' => 'OK',
+	'profiling-data-count' => 'Määrä',
+	'profiling-data-average' => 'Aika (keskiarvo)',
 );
 
 /** French (Français)
@@ -342,7 +356,17 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'profiling-desc' => '[[Special:Profiling|Söndersigg]], öm noh <i lang="en">profiling</i> Date ze söke un se ze ongersöke.',
+	'profiling' => 'Profildate för Förjäng',
+	'profiling-desc' => '[[Special:Profiling|Söndersigg]], öm noh Profildate för Förjäng ze söke, un se ze ongersöke.',
+	'profiling-process' => 'Et Kommando för dä Förjang',
+	'profiling-wildcard' => 'Kanns Plazhallder bruche',
+	'profiling-ok' => 'Jot!',
+	'profiling-data' => 'Profildate för „$1“',
+	'profiling-data-process' => 'Förjang',
+	'profiling-data-count' => 'Aanzahl',
+	'profiling-data-time' => 'Zigg (Jesamp)',
+	'profiling-data-average' => 'Zigg (em Dorschnett)',
+	'profiling-no-data' => 'Kein zopass Date jefonge.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

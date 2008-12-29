@@ -239,6 +239,18 @@ $messages['es'] = array(
 	'editmsg-search' => 'Buscar',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'editmessages' => 'Redigeeri teateid',
+	'editmsg-target' => 'Sihtsõnum:',
+	'editmsg-search' => 'Otsing',
+	'editmsg-show-list' => 'Näidatakse sõnumi "$1" väärtuseid',
+	'editmsg-get-patch' => 'Genereeri embleem',
+	'editmsg-new-search' => 'Uus otsing',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku

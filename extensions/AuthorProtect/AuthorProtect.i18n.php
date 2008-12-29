@@ -276,6 +276,14 @@ $messages['es'] = array(
 	'authorprotect-reason' => 'Motivo',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'authorprotect-reason' => 'Põhjus',
+	'authorprotect-success' => 'Kaitse edukas!',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Mardetanha

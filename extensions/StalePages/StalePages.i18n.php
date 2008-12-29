@@ -91,6 +91,15 @@ $messages['es'] = array(
 	'stalepages-summary' => 'Esta es una lista de páginas que no han sido editadas en los últimos $1 días',
 );
 
+/** Finnish (Suomi)
+ * @author Vililikku
+ */
+$messages['fi'] = array(
+	'stalepages' => 'Seisahtaneet sivut',
+	'stalepages-desc' => 'Luo [[Special:Stalepages|luettelon sivuista]], joita ei ole muokattu hetkeen.',
+	'stalepages-summary' => 'Tämän listan sivuja ei ole muokattu viimeiseen $1 päivään.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

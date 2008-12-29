@@ -126,7 +126,7 @@ $messages['jv'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
-	'mootools12core-desc' => 'បន្ថែម [http://mootools.net mootools-1.2-core-yc.js] ទៅ​ទំព័រ​នីមួយៗ',
+	'mootools12core-desc' => 'បន្ថែម [http://mootools.net mootools-1.2-core-yc.js] ដែល​ជា​ការបង្រួម​គ្រោង JavaScript ទៅ​ទំព័រ​នីមួយៗ',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -178,6 +178,13 @@ $messages['oc'] = array(
 	'mootools12core-desc' => 'Apondre [http://mootools.net mootools-1.2-core-yc.js] a cada pagina',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'mootools12core-desc' => 'Dodaje do każdej strony [http://mootools.net mootools-1.2-core-yc.js], spójną strukturę JavyScript',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -218,5 +225,12 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'mootools12core-desc' => 'Lägger till [http://mootools.net mootools-1.2-core-yc.js] på varje sida',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'mootools12core-desc' => 'Nagdaragdag ng [http://mootools.net mootools-1.2-core-yc.js], isang siksik na kaayusan ng balangkas ng JavaScript, sa bawat pahina',
 );
 

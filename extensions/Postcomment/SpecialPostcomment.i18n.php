@@ -702,6 +702,24 @@ $messages['uk'] = array(
 	'postcomment_nopostingtoadd' => 'Немає повідомлення для додавання.',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'postcomment_desc' => 'Parmete ai utenti de inserir comenti diretamente in te le pàxene de discussion.',
+	'postcomment_discussionprotected' => 'Sta pàxena de discussion la xe stà protèta da ulteriori inserimenti.',
+	'postcomment_notloggedin' => "No te ghè fato l'acesso.",
+	'postcomment_youareloggedinas' => 'Te sì entrà col nome utente de $1',
+	'postcomment_addcommentdiscussionpage' => 'Zonta el to comento in sta pàxena de discussion',
+	'postcomment_leavemessagefor' => 'Làsseghe un messajo a $1',
+	'postcomment_post' => 'Inserissi',
+	'postcomment_on' => 'El',
+	'postcomment_said' => 'gà dito',
+	'postcomment_invalidrequest' => 'Richiesta mia valida.',
+	'postcomment_replyto' => 'Rispóndighe a $1',
+	'postcomment_nopostingtoadd' => 'Nissun messajo da inserir.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

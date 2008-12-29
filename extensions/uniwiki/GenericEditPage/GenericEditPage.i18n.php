@@ -161,6 +161,7 @@ Pomocí nástrojů napravo je můžete přidat.',
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author MF-Warburg
  * @author Melancholie
  */
 $messages['de'] = array(
@@ -181,7 +182,7 @@ $messages['de'] = array(
 	'gep-classicmode' => 'Normaler Modus',
 	'gep-genericmode' => 'Genereller Modus',
 	'gep-nosectioninstructions' => 'Diese Seite hat keine Abschnitte.
-Gib ein paar ein mit den Werkzeugen an der rechten Seite.',
+Mit den Werkzeugen an der Seite können welche hinzugefügt werden.',
 	'gep-nocategories' => 'Bitte vor dem Abspeichern mindestens eine Kategorie aussuchen',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
@@ -201,10 +202,14 @@ $messages['eo'] = array(
 	'gep-suggestcategory' => 'Sugesti kategorion',
 	'gep-suggestcategorybutton' => 'Enigi',
 	'gep-sections' => 'Sekcioj',
+	'gep-sectionnotdisabled' => 'Ĉi tiu sekcio ne povas esti malŝalta',
 	'gep-addsection' => 'Aldoni sekcion',
 	'gep-addsectionbutton' => 'Aldoni',
 	'gep-classicmode' => 'Klasika regximo',
 	'gep-genericmode' => 'Gxenerala regximo',
+	'gep-nosectioninstructions' => 'Estas neniuj sekcioj en ĉi tiu paĝo.
+Aldonu iujn uzante la iloj dekstre.',
+	'gep-nocategories' => 'Bonvolu selekti almenaŭ unu kategorion antaŭ konservado',
 );
 
 /** Spanish (Español) */
@@ -252,7 +257,7 @@ $messages['fr'] = array(
 	'gep-classicmode' => 'Mode classique',
 	'gep-genericmode' => 'Mode générique',
 	'gep-nosectioninstructions' => "Il n'y a aucune section dans cette page.
-Ajoutez-en en utilisant l'outil sur la droite.",
+Ajoutez-en en utilisant les outils dans la barre de menu.",
 	'gep-nocategories' => 'Choisir au moins une catégorie avant de sauvegarder la page',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
@@ -440,6 +445,8 @@ Tambahaké kanthi migunakaké piranti (''tools'') sing ana ing tengen.",
  * @author Thearith
  */
 $messages['km'] = array(
+	'gep-emailsubject' => '[$1] ការផ្ដល់យោបល់​ចំណាត់ថ្នាក់ក្រុម: $2',
+	'gep-emailbody' => 'អ្នកប្រើប្រាស់ "$1" ត្រូវ​បានផ្ដល់​ចំណាត់ថ្នាក់ក្រុម "$2" សម្រាប់​តំបន់បណ្ដាញ "$3" ។',
 	'gep-emailfailure' => 'សូម​អភ័យទោស, ការផ្ដល់យោបល់​របស់​អ្នក​មិនអាច​ដំណើរការ​បានទេ​។',
 	'gep-emailsuccess' => 'សូមអរគុណ​សម្រាប់​ការស្នើ​ចំណាត់ថ្នាក់ក្រុម​៖ $1 ។',
 	'gep-categories' => 'ចំណាត់ថ្នាក់ក្រុម​នានា',
@@ -452,6 +459,8 @@ $messages['km'] = array(
 	'gep-addsection' => 'បន្ថែម​បំណែក​មួយ',
 	'gep-addsectionbutton' => 'បន្ថែម',
 	'gep-classicmode' => 'របៀប​បុរាណ',
+	'gep-nosectioninstructions' => 'មិនមាន​ភាគ​ណាមួយ​នៅលើ​ទំព័រ​នេះ​ទេ​។
+ចូរ​បន្ថែម​បម្រើបម្រាស់​ឧបករណ៍​ខ្លះ​នៅ​ខាងស្ដាំ​។',
 	'gep-nocategories' => 'សូម​ជ្រើសយក​ចំណាត់ថ្នាក់ក្រុម​យ៉ាងហោច​មួយ​មុនពេល​រក្សាទុក',
 );
 
@@ -460,7 +469,25 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'gep-desc' => 'Määt de de Sigg för Sigge ze Ändere bequeemer för de Schriever.',
+	'gep-emailsubject' => '[$1] Vörjeschlare Saachjrupp: $2',
+	'gep-emailbody' => 'Dä Metmaacher „$1“ hat de Saachjrupp „$2“ för de Sigg „$3“ ußjesooht.',
+	'gep-emailfailure' => 'Schaadt. Dinge Vörschlaach kunnte mer nit verärbeide.',
+	'gep-emailsuccess' => 'Mer bedanke uns för Dinge Vörschlaach, de Saachjupp: $1.',
+	'gep-categories' => 'Saachjruppe',
+	'gep-addcategory' => 'En Saachjrupp dobei donn',
+	'gep-addcategorybutton' => 'Loß Jonn!',
+	'gep-suggestcategory' => 'Donn en Saachjropp förschlaare',
+	'gep-suggestcategorybutton' => 'Loß Jonn!',
+	'gep-sections' => 'Afschnedde',
+	'gep-sectionnotdisabled' => 'Hee dä Afschnet künne mer nit ophevve',
+	'gep-addsection' => 'Ene Afschnet enfööje',
+	'gep-addsectionbutton' => 'Loß Jonn!',
+	'gep-classicmode' => 'Nomaale Aat',
+	'gep-genericmode' => 'Jrondläje Aat',
+	'gep-nosectioninstructions' => 'Die Sigg hee hät kei Afschnedde.
+Jif e paa en, met dä Knöpp aam Rand fun de Sigg.',
 	'gep-nocategories' => 'Vör em Afspeichere moß winnichstens ein Saachjropp ußjesooht sin.',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -484,7 +511,7 @@ $messages['lb'] = array(
 	'gep-classicmode' => 'Klassesch Manéier',
 	'gep-genericmode' => 'Generell Manéier',
 	'gep-nosectioninstructions' => 'Et gëtt keng Abschnitter op dëser Säit.
-Setzt der mat den Toolen op der rietser Säit derbäi.',
+Setzt der mat den Toolen am Menü derbäi.',
 	'gep-nocategories' => 'Wielt w.e.g. mindestens eng Kategorie aus ier Dir ofspäichert',
 	'gep-categorypage' => 'MediaWiki:Säitenännerungs-Tagen',
 );
@@ -529,7 +556,7 @@ $messages['nl'] = array(
 	'gep-classicmode' => 'Klassieke modus',
 	'gep-genericmode' => 'Algemene modus',
 	'gep-nosectioninstructions' => 'Er staan geen kopjes op deze pagina.
-Gebruik de hulpmiddelen aan de rechterkant om er een toe te voegen.',
+Gebruik de hulpmiddelen in het menu om er een toe te voegen.',
 	'gep-nocategories' => 'Selecteer tenminste één categorie voordat u de pagina opslaat',
 	'gep-categorypage' => 'MediaWiki:Editpagelabels',
 );
@@ -742,8 +769,8 @@ $messages['tl'] = array(
 	'gep-addsectionbutton' => 'Idagdag',
 	'gep-classicmode' => 'Klasikong modalidad',
 	'gep-genericmode' => 'Henerikong (pangkalahatan) modalidad',
-	'gep-nosectioninstructions' => 'Walang mga seksyon sa pahinang ito.
-Magdagdag ng ilan sa pamamagitan ng mga kagamitang nasa kanan.',
+	'gep-nosectioninstructions' => 'Walang mga pitak (seksyon) sa ibabaw ng pahinang ito.
+Magdagdag ng ilan sa pamamagitan ng mga pilian ng mga kagamitang nasa kanan.',
 	'gep-nocategories' => 'Pumili lamang ng kahit isang kaurian bago sagipin',
 	'gep-categorypage' => 'MediaWiki:Pagbabagopahinamgatatak',
 );

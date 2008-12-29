@@ -428,9 +428,30 @@ $messages['it'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'slippymap_latmissing' => 'ខ្វះ​តម្លៃ​រយៈទទឹង (សម្រាប់​រយៈទទឹង)​។',
+	'slippymap_lonmissing' => 'ខ្វះ​តម្លៃ​រយៈបណ្ដោយ (សម្រាប់​រយៈបណ្ដោយ)​។',
+	'slippymap_zoommissing' => 'ខ្វះ​តម្លៃ Z (សម្រាប់​កម្រិត​ពង្រីក)​។',
+	'slippymap_longdepreciated' => "សូម​ប្រើ 'lon' ជំនួស​ឱ្យ 'long' (ប៉ារ៉ាម៉ែត្រ​ត្រូវ​បាន​ប្ដូរឈ្មោះ)​។",
+	'slippymap_widthnan' => "តម្លៃ​ទទឹង (w) '%1' មិនមែន​ជា​ចំនួនគត់​ត្រឹមត្រូវ​ទេ",
+	'slippymap_heightnan' => "តម្លៃ​កម្ពស់ (h) '%1' មិនមែន​ជា​ចំនួនគត់​ត្រឹមត្រូវ​ទេ",
+	'slippymap_zoomnan' => "តម្លៃ​ពង្រីក (z) '%1' មិនមែន​ជា​ចំនួនគត់​ត្រឹមត្រូវ​ទេ",
+	'slippymap_latnan' => "តម្លៃ​ទទឹង (lat) '%1' មិនមែន​ជា​ចំនួន​ត្រឹមត្រូវ​ទេ",
+	'slippymap_lonnan' => "តម្លៃ​បណ្ដោយ (lon) '%1' មិនមែន​ជា​ចំនួន​ត្រឹមត្រូវ​ទេ",
+	'slippymap_widthbig' => 'តម្លៃ​ទទឹង (w) មិន​អាច​ធំជាង ១០០០ ទេ',
+	'slippymap_widthsmall' => 'តម្លៃ​ទទឹង (w) មិន​អាច​តូចជាង ១០០ ទេ',
+	'slippymap_heightbig' => 'តម្លៃ​កម្ពស់ (h) មិន​អាច​ធំជាង ១០០០ ទេ',
+	'slippymap_heightsmall' => 'តម្លៃ​កម្ពស់ (h) មិន​អាច​តូចជាង ១០០ ទេ',
+	'slippymap_latbig' => 'តម្លៃ​រយៈទទឹង (lat) មិន​អាច​ធំជាង ៩០ ទេ',
+	'slippymap_latsmall' => 'តម្លៃ​រយៈទទឹង (lat) មិន​អាច​តូចជាង -៩០ ទេ',
+	'slippymap_lonbig' => 'តម្លៃ​រយៈបណ្ដោយ (lon) មិន​អាច​ធំជាង ១៨០ ទេ',
+	'slippymap_lonsmall' => 'តម្លៃ​រយៈបណ្ដោយ (lon) មិន​អាច​តូចជាង -១៨០ ទេ',
+	'slippymap_zoomsmall' => 'តម្លៃ​ពង្រីក (z) មិន​អាច​តូចជាង​សូន្យ​ទេ',
+	'slippymap_zoombig' => 'តម្លៃ​ពង្រីក (z) មិន​អាច​ធំជាង ១៧ ទេ​។',
 	'slippymap_maperror' => 'កំហុស​ផែនទី​៖',
+	'slippymap_osmtext' => 'មើល​ផែនទី​នេះ នៅលើ OpenStreetMap.org',
 	'slippymap_code' => 'កូដឹវិគី​សម្រាប់​មើល​ផែនទី​នេះ​៖',
 	'slippymap_button_code' => 'យក​កូដវិគី',
+	'slippymap_resetview' => 'កំណត់​ការមើល​ឡើងវិញ',
 );
 
 /** Ripoarisch (Ripoarisch)

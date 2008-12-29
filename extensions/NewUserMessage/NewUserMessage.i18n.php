@@ -445,6 +445,14 @@ $messages['te'] = array(
 	'newusermessage-desc' => 'కొత్తగా చేరిన వాడుకరుల చర్చా పేజీలకు ఓ సందేశాన్ని చేర్చండి',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'newusermessage-desc' => 'Nagdaragdag ng isang mensahe sa mga pahina ng usapan ng bagong likhang tagagamit',
+	'newuseredit-summary' => 'Nagdaragdag ng [[{{int:newusermessage-template}}|pahina ng pagbati]] sa pahina ng usapan ng bagong tagagamit',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

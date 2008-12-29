@@ -384,6 +384,19 @@ $messages['es'] = array(
 	'bookinfo-error-invalidisbn' => 'Se introduce el ISBN inválido.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'bookinfo-header' => 'Raamatu informatsioon',
+	'bookinfo-result-title' => 'Pealkiri:',
+	'bookinfo-result-author' => 'Autor:',
+	'bookinfo-result-publisher' => 'Väljaandja:',
+	'bookinfo-result-year' => 'Aasta:',
+	'bookinfo-error-invalidisbn' => 'Sisestati kehtetu ISBN.',
+	'bookinfo-error-nosuchitem' => 'Toodet ei ole olemas või ei leitud.',
+);
+
 /** Basque (Euskara)
  * @author Bengoa
  * @author Theklan

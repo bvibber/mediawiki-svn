@@ -195,15 +195,19 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
+	'inspectcache-ok' => 'Aceptar',
 	'inspectcache-delete' => 'Borrar',
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Silvonen
  */
 $messages['fi'] = array(
 	'inspectcache' => 'Tutki välimuistia',
+	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Yleinen välimuisti',
+	'inspectcache-delete' => 'Poista',
 );
 
 /** French (Français)
@@ -388,6 +392,13 @@ $messages['ia'] = array(
  */
 $messages['it'] = array(
 	'inspectcache-delete' => 'Cancella',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'inspectcache-ok' => 'OK',
 );
 
 /** Javanese (Basa Jawa)

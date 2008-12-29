@@ -328,11 +328,13 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'icon-badimage' => 'Zły obrazek',
 	'icon-badwidth' => 'Zła szerokość',
+	'icon-desc' => 'Pozwala używać grafiki jako ikony oraz jako ikony z linkami',
 );
 
 /** Pashto (پښتو)

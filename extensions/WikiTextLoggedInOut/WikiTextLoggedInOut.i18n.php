@@ -78,6 +78,13 @@ $messages['es'] = array(
 	'wikitextloggedinout-desc' => 'Dos funciones del analizador sintáctico, <tt>&lt;loggedin&gt;</tt> y <tt>&lt;loggedout&gt;</tt>, para mostrar textos diferentes dependiendo del estado de registro del usuario',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'wikitextloggedinout-desc' => 'Uudet elementit <tt>&lt;loggedin&gt;</tt> ja <tt>&lt;loggedout&gt;</tt>, joilla voi tuottaa eri tekstiä riippuen siitä, onko käyttäjä kirjautunut sisään vai ei.',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -202,6 +209,13 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'wikitextloggedinout-desc' => 'Dodaje dwa haki parsera <tt>&lt;loggedin&gt;</tt> oraz <tt>&lt;loggedout&gt;</tt> pozwalające wyświetlać różne teksty w zależności od statusu zalogowania się użytkownika',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'wikitextloggedinout-desc' => "Dui hook dû parser, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt> p'ammustrari testi diffirenti a sècunnu dû statu di login di l'utenti",
 );
 
 /** Slovak (Slovenčina)

@@ -56,6 +56,13 @@ $messages['es'] = array(
 	'javascript-desc' => 'Añade a cada página uniwiki.js, que contiene código JavaScript compartido entre extensiones UniWiki',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'javascript-desc' => 'Uniwiki luzapenekin JavaScripto kodea partekatzen duen orrialde bakoitzari uniwiki.js gehitzen dio',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  * @author Nike
@@ -112,6 +119,13 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'javascript-desc' => 'Tambahaké uniwiki.js menyang saben kaca sing ngandhut kodhe JavaScript sing dianggo bebarengan ing antara èkstènsi Uniwiki',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'javascript-desc' => 'បន្ថែម uniwiki.js ទៅ​គ្រប់​ទំព័រ​មាន​កូដ JavaScript ដែល​​បាន​ចែករំលែក​រវាង​ផ្នែកបន្ថែម Uniwiki',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -182,5 +196,12 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'javascript-desc' => 'Lägger till uniwiki.js på varje sida som innehåller JavaScript som delas mellan Uniwiki-tilläggen',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'javascript-desc' => 'Nagdaragdag ng uniwiki.js sa bawat pahinang naglalaman ng kodigong JavaScript na pinagsasaluhan sa pagitan ng mga karugtong na pang-Uniwiki',
 );
 

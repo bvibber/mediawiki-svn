@@ -48,6 +48,13 @@ $messages['dsb'] = array(
 	'formatsearch-desc' => 'Rumujo bok pytańskich wuslědkow',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'formatsearch-desc' => 'Plibeligas la paĝon de serĉaj rezultoj',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

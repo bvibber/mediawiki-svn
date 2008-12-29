@@ -562,6 +562,13 @@ $messages['jv'] = array(
 	'player-goto-file' => 'berkas',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'player-goto-file' => 'ფაილი',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -597,7 +604,19 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'player' => 'Tonafschpiller',
 	'player-desc' => 'En Wikisigge enthallde Medije Affshpelle med de üüblesche <i lang="en">plugins</i> för de Brauser, un en [[Special:Player|Söndersigg]] doför.',
+	'player-title' => 'Tonafschpiller',
+	'player-playertitle' => 'Tonafschpiller: $1',
+	'player-file' => 'Dä Datei ier Name',
+	'player-play' => 'Afschpille',
+	'player-not-allowed' => 'dat Fomaat es nit zojelohße',
+	'player-not-found' => 'Datei nit ze fenge',
+	'player-invalid-title' => 'onjöltijje Tittel',
+	'player-clicktoplay' => '$1 afschpille',
+	'player-goto-player' => 'Tonafschpiller',
+	'player-goto-page' => 'Sigg',
+	'player-goto-file' => 'Datei',
 );
 
 /** Latin (Latina)

@@ -67,6 +67,7 @@ $messages['gom-latn'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
 	'deletebatch' => 'حذف باتش من الصفحات',
@@ -83,7 +84,7 @@ $messages['ar'] = array(
 	'deletebatch-or' => '<b>أو</b>',
 	'deletebatch-page' => 'الصفحات للحذف',
 	'deletebatch-reason' => 'سبب الحذف',
-	'deletebatch-processing' => 'جاري حذف الصفحات',
+	'deletebatch-processing' => 'حذف الصفحات $1',
 	'deletebatch-from-file' => 'من قائمة ملف',
 	'deletebatch-from-form' => 'من استمارة',
 	'deletebatch-success-subtitle' => 'ل$1',
@@ -94,6 +95,7 @@ $messages['ar'] = array(
 	'deletebatch-select-script' => 'سكريبت حذف الصفحات',
 	'deletebatch-select-yourself' => 'أنت',
 	'deletebatch-no-page' => 'من فضلك اختر على الأقل صفحة واحدة للحذف أو اختر ملفا يحتوي على قائمة الصفحات.',
+	'right-deletebatch' => 'حذف باتش الصفحات',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -776,7 +778,8 @@ $messages['ro'] = array(
 	'deletebatch-or' => '<b>sau</b>',
 	'deletebatch-page' => 'Pagini de şters',
 	'deletebatch-reason' => 'Motiv pentru ştergere',
-	'deletebatch-processing' => 'ştergere pagini',
+	'deletebatch-processing' => 'ştergere pagini $1',
+	'deletebatch-from-file' => 'din lista de fişiere',
 	'deletebatch-from-form' => 'din formular',
 	'deletebatch-success-subtitle' => 'pentru $1',
 	'deletebatch-file-missing' => 'Nu se poate citi fişierul dat',
@@ -878,6 +881,18 @@ $messages['te'] = array(
 	'deletebatch-reason' => 'తొలగింపునకు కారణం',
 	'deletebatch-from-file' => 'ఫైలు నుంచి',
 	'deletebatch-from-form' => 'ఫారం నుంచి',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'deletebatch-button' => 'Ҳазв',
+	'deletebatch-caption' => 'Феҳристи саҳифа',
+	'deletebatch-reason' => 'Сабаби ҳазв',
+	'deletebatch-from-file' => 'аз феҳристи парванда',
+	'deletebatch-success-subtitle' => 'барои $1',
+	'deletebatch-select-yourself' => 'шумо',
 );
 
 /** Turkish (Türkçe)

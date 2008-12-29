@@ -488,6 +488,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'grouppermissions' => 'Administri grupajn rajtojn',
 	'sortpermissions' => 'Ordigi rajtojn',
 	'grouppermissions-desc-nsm' => 'Administri nomspacojn per speciala paĝo',
 	'grouppermissions-search' => 'Grupo:',
@@ -544,10 +545,18 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'removeunusedgroups' => 'Poista käyttämättömät ryhmät',
 	'grouppermissions-search' => 'Ryhmä',
+	'grouppermissions-dosearch' => 'Siirry',
+	'grouppermissions-searchlabel' => 'Etsi ryhmää',
+	'grouppermissions-add' => 'Lisää ryhmä',
+	'grouppermissions-delete' => 'Poista ryhmä',
+	'grouppermissions-addsuccess' => '$1 lisättiin onnistuneesti',
+	'grouppermissions-deletesuccess' => '$1 poistettiin onnistuneesti',
 );
 
 /** French (Français)
@@ -1224,10 +1233,12 @@ $messages['lb'] = array(
 	'grouppermissions-needjs' => 'Opgepasst: Java Script ass an ärem Browser ausgeschalt. Et ka sënn datt e puer Fonctionalitéite net ginn !',
 	'grouppermissions-sp-sort' => 'Rechter sortéieren',
 	'grouppermissions-sp-save' => 'Späicheren',
+	'grouppermissions-sp-success' => "D'Rechter goufe sortéiert",
 	'grouppermissions-sp-addperm' => 'Rechter derbäisetzen',
 	'grouppermissions-sp-remove' => 'ewech huelen',
 	'grouppermissions-rug-confirm' => 'Benotzer aus net benotzte Gruppen eraushuelen',
 	'right-grouppermissions' => 'Grupperechter verwalten',
+	'right-viewsource' => 'De Wiki-Quelltext vu gespaarte Säit weisen',
 	'right-info' => "D'Informarioune vun der Säit weisen",
 	'right-history' => "D'Versioune vun der Säit weisen",
 	'right-search' => 'Op der Wiki sichen',

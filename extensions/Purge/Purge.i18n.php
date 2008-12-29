@@ -82,6 +82,15 @@ $messages['es'] = array(
 	'purge' => 'purgar',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'purge' => 'tyhjennä välimuisti',
+	'purge-desc' => 'Lisää välimuistin tyhjennysvälilehden kaikille tavallisille sivuille ja ohittaa tarkistuksen kirjautumattomille käyttäjille välimuistin nopeaan tyhjennykseen.',
+);
+
 /** French (Français)
  * @author Grondin
  */

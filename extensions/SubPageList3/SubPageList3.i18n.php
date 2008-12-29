@@ -80,6 +80,15 @@ $messages['ca'] = array(
 	'spl3_nosubpages' => '$1 no té subpàgines a mostrar.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'spl3-desc' => 'Automaticky vytváří seznam podstránek stránky pomocí značky <tt>&lt;splist /&gt;</tt>',
+	'spl3_debug' => 'Neznáma hodnota volby $1.',
+	'spl3_nosubpages' => '$1 nemá žádné zobrazitelné podstránky.',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

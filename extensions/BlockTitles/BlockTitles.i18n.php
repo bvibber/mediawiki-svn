@@ -528,11 +528,13 @@ $messages['ru'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Santu
  * @author Tonyfroio
  */
 $messages['scn'] = array(
 	'block_title_error_page_title' => 'Tìtulu bluccatu',
-	'block_title_error' => 'Semu spiacenti, nun è cunzintitu sarvari na vuci cu chistu tìtulu.',
+	'block_title_error-desc' => 'Duna nu sèmprici modu pi mpidiri ca li pàggini ca cuntènunu tìtuli ponnu èssiri sarvati o criati',
+	'block_title_error' => 'Semu dispiaciuti, nun è pirmessu sarvari na vuci cu stu tìtulu.',
 );
 
 /** Slovak (Slovenčina)

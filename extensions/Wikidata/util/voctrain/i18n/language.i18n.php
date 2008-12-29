@@ -1124,10 +1124,16 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author Malafaya
+ * @author Temuri rajavi
  */
 $messages['ka'] = array(
 	'voctrain_bye' => 'ნახვამდის',
 	'voctrain_Languages' => 'ენები',
+	'voctrain_Questions' => 'კითხვები',
+	'voctrain_Answers' => 'პასუხები',
+	'voctrain_Question' => 'კითხვა',
+	'voctrain_Answer' => 'პასუხი',
+	'voctrain_Answer_s_' => 'პასუხ(ებ)ი',
 	'voctrain_Password' => 'პაროლი',
 	'voctrain_Language' => 'ენა',
 	'voctrain_Translation' => 'თარგმანი',
@@ -2385,6 +2391,7 @@ $messages['vec'] = array(
 	'voctrain_User_added' => 'Utente zontà',
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => "Ciao, %username, benvegnù a l'istrutor de lengue omega",
 	'voctrain_continue' => 'continua',
+	'voctrain_bye' => 'se vedemo',
 	'voctrain_Number_of_questions' => 'Nùmaro de domande',
 	'voctrain_Languages' => 'Lengue',
 	'voctrain_Questions' => 'Domande',
@@ -2403,6 +2410,7 @@ $messages['vec'] = array(
 	'voctrain_Omegawiki' => 'Omegawiki',
 	'voctrain_Exercise_complete' => 'Esercissio conpletà',
 	'voctrain_Exercise_terminated' => 'Esercissio finìo',
+	'voctrain_Start_a_new_exercise' => 'Intaca un esercissio novo',
 	'voctrain_User_name' => 'Nome utente',
 	'voctrain_Password' => 'Password',
 	'voctrain_Switch_language' => 'Canbia lengua',

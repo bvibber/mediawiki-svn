@@ -260,6 +260,13 @@ $messages['te'] = array(
 	'editown-desc' => 'అన్ని పేజీలను మార్చే అధికారం లేని వాడుకర్లు వారు సృష్టించిన పేజీలను మాత్రమే మార్చగలరు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'editown-desc' => "Uza-na'in sira-ne'ebé la iha kuana 'editall' bele filak pájina sira-ne'ebé sira kria tiha de'it",
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

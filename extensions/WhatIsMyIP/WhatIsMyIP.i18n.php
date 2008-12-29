@@ -132,6 +132,15 @@ $messages['es'] = array(
 	'whatismyip-out' => 'Tu IP:',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'whatismyip' => 'Mis on minu IP',
+	'whatismyip-desc' => 'Näitab praeguse kasutaja IP-aadressi [[Special:WhatIsMyIP]] lehel',
+	'whatismyip-out' => 'Sinu IP:',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -481,6 +490,15 @@ $messages['vi'] = array(
 	'whatismyip' => 'IP của tôi là gì?',
 	'whatismyip-desc' => 'Hiển thị địa chỉ IP của người dùng tại [[Special:WhatIsMyIP]]',
 	'whatismyip-out' => 'IP của bạn:',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'whatismyip' => '显示我的IP',
+	'whatismyip-desc' => '在[[Special:WhatIsMyIP]]上显示现有用户的IP地址',
+	'whatismyip-out' => '您的IP为：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

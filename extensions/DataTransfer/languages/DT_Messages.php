@@ -67,6 +67,7 @@ $messages['af'] = array(
  */
 $messages['am'] = array(
 	'dt_viewxml_categories' => 'መደቦች',
+	'dt_viewxml_namespaces' => 'ክፍለ-ዊኪዎች',
 	'dt_xml_title' => 'አርዕስት',
 );
 
@@ -279,14 +280,20 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'viewxml' => 'Näytä XML',
 	'dt_viewxml_categories' => 'Luokat',
+	'dt_viewxml_namespaces' => 'Nimiavaruudet',
+	'dt_viewxml_simplifiedformat' => 'Yksinkertaistettu muoto',
 	'dt_xml_namespace' => 'Nimiavaruus',
 	'dt_xml_page' => 'Sivu',
+	'dt_xml_field' => 'Kenttä',
 	'dt_xml_name' => 'Nimi',
 	'dt_xml_title' => 'Otsikko',
+	'dt_xml_id' => 'Tunnus',
+	'dt_xml_freetext' => 'Vapaa teksti',
 );
 
 /** French (Français)

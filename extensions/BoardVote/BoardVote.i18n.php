@@ -1781,16 +1781,28 @@ Un aviso de seguridad sobre un certificado no cifrado podría aparecer.',
 );
 
 /** Estonian (Eesti)
+ * @author Avjoska
  * @author Jaan513
  */
 $messages['et'] = array(
+	'boardvote' => 'Wikimedia juhatuse eestkostjate valimised',
+	'boardvote-desc' => '[[meta:Board elections/2008|Wikimedia juhatuse eestkostjate valimised]]',
 	'boardvote_novotes' => 'Mitte keegi ei ole veel hääletanud.',
+	'boardvote_time' => 'Aeg',
+	'boardvote_user' => 'Kasutaja',
+	'boardvote_edits' => 'Redigeerimised',
+	'boardvote_days' => 'Päevad',
+	'boardvote_ip' => 'IP',
+	'boardvote_dumplink' => 'Klõpsa siia',
+	'boardvote_submit' => 'OK',
 	'boardvote_needadmin' => 'Seda operatsiooni saavad läbi viia ainult valimiste administraatorid.',
 	'boardvote_notstarted' => 'Hääletus ei ole veel alanud',
 	'boardvote_blocked' => 'Sind on blokeeritud vikis, kus oled registreerinud.
 Blokeeritud kasutajatel ei ole hääletusõigust.',
 	'boardvote_bot' => 'Oled märgitud robotiks vikis, kus oled end registreerinud.
 Robotitel ei ole hääletusõigust.',
+	'boardvote_welcome' => "Tere tulemast, '''$1'''!",
+	'go_to_board_vote' => 'Wikimedia juhatuse valimised 2008',
 );
 
 /** Basque (Euskara)
@@ -5092,6 +5104,7 @@ Um aviso de segurança sobre um certificado não assinado poderá eventualmente 
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
  * @author Brunoy Anastasiya Seryozhenko
+ * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'boardvote_intro' => '<p>Bem-vindo às eleições de 2008 para o Comitê da Wikimedia Foundation.
@@ -5114,24 +5127,24 @@ Será assumido que você prefere todos os candidatos pontuados do que os não-po
 seu voto usando o formulário abaixo. Por favor, pontue os candidatos de acordo com suas preferências, onde o menor número
 indica uma alta preferência por um candidato em específico. Você também pode pontuar da mesma forma mais de um
 candidato, podendo manter os demais candidatos sem pontuação alguma.</p>',
-	'boardvote_entered' => 'Obrigado, o seu voto foi registado.
+	'boardvote_entered' => 'Obrigado, o seu voto foi registrado.
 
 Se desejar pode guardar os seguintes detalhes. O seu registo de voto é:
 
 <pre>$1</pre>
 
-Seu voto foi encriptado com a chave pública dos Administradores da Eleição:
+Ele foi encriptado com a chave pública dos Administradores da Eleição:
 
 <pre>$2</pre>
 
-A versão encripitada resultante se encontra a seguir. Ela será publicada em [[Special:Boardvote/dump]].
+A versão encripitada resultante se encontra a seguir. Ela será [[Special:Boardvote/dump|exibida publicamente]].
 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Voltar]]',
-	'boardvote_nosession' => 'Não foi possível determinar o seu ID de usuário da Wikimedia.
-Por favor, efetue login na wiki onde está qualificado a votar e vá até <nowiki>[[Special:Boardvote]]</nowiki>.
-Deverá usar uma conta com pelo menos $1 contribuições antes de $2, e ter feito pelo menos $3 contribuições entre $4 e $5.',
+	'boardvote_nosession' => 'Não foi possível determinar o seu ID de usuário Wikimedia.
+Por favor, efectue login no wiki onde está qualificado a votar e vá a <nowiki>[[Special:Boardvote]]</nowiki>.
+Deverá usar uma conta com pelo menos $1 {{PLURAL:$1|contribuição|contribuições}} feitas antes de $2, e ter feito pelo menos $3 {{PLURAL:$3|contribuição|contribuições}} entre $4 e $5.',
 );
 
 /** Quechua (Runa Simi)
@@ -6086,7 +6099,12 @@ $2 కి ముందు మీరు కనీసం $3 మార్పుల�
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'boardvote_user' => "Uza-na'in",
+	'boardvote_days' => 'Loron sira',
+	'boardvote_dumplink' => "Klike iha ne'e",
 	'boardvote_submit' => 'OK',
+	'boardvote_edits_many' => 'barak',
+	'boardvote_welcome' => "Loron di'ak '''$1'''!",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

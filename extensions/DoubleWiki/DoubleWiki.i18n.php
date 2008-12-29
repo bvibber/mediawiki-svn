@@ -391,11 +391,25 @@ $messages['te'] = array(
 	'doublewiki-desc' => 'పేజీని, మరో వికీలో దాని అనువాదాన్ని ఒకే పేజీలో రెండు నిలువు వరుసల్లో చూపించు',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'doublewiki-desc' => "Hatudu pájina ida ho traudusaun husi wiki seluk iha pájina ida de'it",
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
 $messages['tg-cyrl'] = array(
 	'doublewiki-desc' => 'Як саҳифа ва тарҷумаи онро аз як вики дигар дар ду сутун дар ҳамон саҳифа намоиш медиҳад',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'doublewiki-desc' => 'Nagpapalitaw/nagpapakita ng isang pahina at ng salinwika nito mula sa ibang wiki na nasa ibabaw ng dalawang pababang kahanayan sa pahina ding iyon',
 );
 
 /** Ukrainian (Українська)

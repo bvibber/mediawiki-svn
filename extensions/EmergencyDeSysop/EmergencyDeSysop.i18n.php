@@ -39,17 +39,21 @@ $messages['qqq'] = array(
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
 	'emergencydesysop-nogroups' => '{{Identical|None}}',
+	'right-emergencydesysop' => 'This is a user right description, as shown on [[Special:ListGroupRights]], e.g.',
 );
 
 /** Arabic (العربية)
  * @author Ouda
  */
 $messages['ar'] = array(
+	'emergencydesysop' => 'سحب الإدارة الطارئ',
 	'emergencydesysop-reason' => 'سبب الحذف',
 	'emergencydesysop-submit' => 'تنفيذ',
+	'emergencydesysop-notasysop' => 'المستخدم المستهدف ليس في مجموعة الإداريين',
 	'emergencydesysop-nogroups' => 'لا يوجد',
 	'emergencydesysop-invalidtarget' => 'المستخدم المراد لا يوجد',
 	'emergencydesysop-blocked' => 'لا يمكن الدخول على هذه الصفحة أثناء المنع',
+	'emergencydesysop-noright' => 'لا تملك الصلاحيات الكافية للدخول على هذه الصفحة',
 );
 
 /** Bosnian (Bosanski)
@@ -78,7 +82,7 @@ $messages['de'] = array(
 	'emergencydesysop-invalidtarget' => 'Der gewählte Benutzer existiert nicht.',
 	'emergencydesysop-blocked' => 'Du kannst nicht auf diese Seite zugreifen, während du gesperrt bist',
 	'emergencydesysop-noright' => 'Du hast keine ausreichenden Berechtigungen für diese Seite',
-	'right-emergencydesysop' => 'Ermöglicht die gegenseitige Degradierung von Sysops',
+	'right-emergencydesysop' => 'Das Recht zur Degradierung eines anderen Sysop auf Gegenseitigkeit',
 );
 
 /** Esperanto (Esperanto)
@@ -86,7 +90,10 @@ $messages['de'] = array(
  */
 $messages['eo'] = array(
 	'emergencydesysop-reason' => 'Kialo por forigo',
+	'emergencydesysop-submit' => 'Ek!',
 	'emergencydesysop-nogroups' => 'Neniu',
+	'emergencydesysop-invalidtarget' => 'La cela uzanto ne ekzistas.',
+	'emergencydesysop-blocked' => 'Vi ne povas atingi ĉi tiun paĝon kiam forbarita',
 );
 
 /** Finnish (Suomi)
@@ -179,6 +186,7 @@ $messages['ksh'] = array(
 	'emergencydesysop-invalidtarget' => 'Esu ene Metmaacher ham_mer nit.',
 	'emergencydesysop-blocked' => 'Dat kanns De nit maache, esu lang wi De jespertt bes.',
 	'emergencydesysop-noright' => 'Do häs nit dat Rääsch, op die Sigg ze jonn.',
+	'right-emergencydesysop' => 'Kann enem andere Wiki-Köbes däm sing Rääsch affnämme.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

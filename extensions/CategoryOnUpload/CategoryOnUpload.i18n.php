@@ -127,6 +127,13 @@ $messages['es'] = array(
 	'categoryonupload-label' => 'Categoría:',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'categoryonupload-label' => 'Kategooria:',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Mobe

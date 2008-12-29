@@ -51,6 +51,17 @@ $messages['bg'] = array(
 	'stalkerlog-log-text' => 'Тази страница съдържа дневник на потребителските влизания и излизания.',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'stalkerlog-desc' => 'Přidává [[Special:Log/stalkerlog|seznam přihlášení a odhlášení]] uživatelů',
+	'stalkerlog-log-login' => 'se přihlásil.',
+	'stalkerlog-log-logout' => 'se odhlásil.',
+	'stalkerlog-log-type' => 'Seznam přihlášení uživatelů.',
+	'stalkerlog-log-text' => 'Toto je seznam přihlášení a odhlášení uživatelů.',
+);
+
 /** German (Deutsch)
  * @author Revolus
  */
@@ -193,8 +204,10 @@ $messages['jv'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'stalkerlog-desc' => 'បន្ថែម [[Special:Log/stalkerlog|កំណត់ហេតុ]]​នៃការ​ឡុកអ៊ីន​ចូល និង​ចាកចេញ របស់​​អ្នកប្រើប្រាស់',
 	'stalkerlog-log-login' => 'បាន​ឡុកអ៊ីន​ហើយ។',
 	'stalkerlog-log-logout' => 'បាន​ចាកចេញ​ហើយ។',
+	'stalkerlog-log-type' => 'កំណត់ហេតុ​ការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវ​របស់​អ្នកប្រើប្រាស់',
 	'stalkerlog-log-text' => 'នេះ​ជា​កំណត់ហេតុ​នៃ​ការ​ឡុកអ៊ីន​និង​ការ​ចាកចេញ​របស់​អ្នកប្រើប្រាស់។',
 );
 

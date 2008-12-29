@@ -92,6 +92,14 @@ $messages['af'] = array(
 	'crosswikiblock-alreadyblocked' => 'Gebruiker $3 is reeds geblok.',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'crosswikiblock-reason' => 'ምክንያት:',
+	'crosswikiunblock-reason' => 'ምክንያት:',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -438,6 +446,25 @@ Reen:
 $messages['es'] = array(
 	'crosswikiblock-reason' => 'Motivo:',
 	'crosswikiunblock-reason' => 'Motivo:',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'crosswikiblock' => 'Blokeeri kasutaja teises wikis',
+	'crosswikiblock-expiry' => 'Aegub:',
+	'crosswikiblock-reason' => 'Põhjus:',
+	'crosswikiblock-submit' => 'Blokeeri see kasutaja',
+	'crosswikiblock-anononly' => 'Blokeeri ainult anonüümseid kasutajaid',
+	'crosswikiunblock-reason' => 'Põhjus:',
+	'crosswikiunblock-submit' => 'Lõpeta kasutaja blokeering',
+	'crosswikiblock-nousername' => 'Ühtegi kasutajanime ei antud',
+	'crosswikiblock-noname' => '"$" ei ole õige kasutajanimi.',
+	'crosswikiblock-nouser' => 'Kasutajat "$3" ei leitud.',
+	'crosswikiblock-noreason' => 'Põhjust ei ole märgitud.',
+	'crosswikiblock-alreadyblocked' => 'Kasutaja $3 on juba blokeeritud.',
+	'crosswikiblock-noblock' => 'See kasutaja ei ole blokeeritud.',
 );
 
 /** Basque (Euskara)

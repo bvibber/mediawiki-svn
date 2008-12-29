@@ -254,11 +254,15 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'spamregex-summary' => 'La teksto estis trovita en la resumo de la paĝo.',
 	'spamregex-currently-blocked' => "'''Nune forbaritaj frazeroj:'''",
 	'spamregex-move' => 'La kialo kiun vi enigis enhavis forbaritajn frazeron.',
 	'spamregex-no-currently-blocked' => "'''Ne estas iuj ajn forbaritaj vortaj kombinaĵoj.'''",
 	'spamregex-log-2' => 'je $1',
+	'spamregex-page-title-1' => 'Forbari frazero uzante regularajn esprimojn',
 	'spamregex-unblock-success' => 'Malforbaro sukcesis',
+	'spamregex-unblock-message' => "Frazero '''$1''' estis malforbarita de redaktado.",
+	'spamregex-page-title-2' => 'Malpermesigi frazerojn kontraŭ konservado per regularaj esprimoj',
 	'spamregex-block-success' => 'Forbaro sukcesis',
 	'spamregex-block-message' => "Frazero '''$1''' estis forbarita.",
 	'spamregex-warning-1' => 'Eligi frazeron por forbari.',
@@ -543,6 +547,7 @@ $messages['kk-latn'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'spamregex-summary' => 'អក្សរ​ត្រូវ​បាន​រកឃើញ​នៅក្នុង​សេចក្ដីសង្ខេប​នៃ​ទំព័រ​។',
 	'spamregex-block-success' => 'ហាមឃាត់ដោយជោគជ័យ',
 	'spamregex-block-message' => "ឃ្លា '''$1''' ត្រូវ​បាន​ទប់ស្កាត់​។",
 	'spamregex-warning-1' => 'ផ្ដល់​ឃ្លា​មួយ​ដើម្បី​ទប់ស្កាត់​។',

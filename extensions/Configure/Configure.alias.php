@@ -240,6 +240,11 @@ $aliases['pt-br'] = array(
 	'ViewConfig' => array( 'Ver configurações', 'Ver configuração' ),
 );
 
+/** Romanian (Română) */
+$aliases['ro'] = array(
+	'Extensions' => array( 'Extensii' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Configure' => array( 'Konfigurera' ),

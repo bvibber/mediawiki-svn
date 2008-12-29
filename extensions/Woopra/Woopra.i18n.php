@@ -79,6 +79,13 @@ $messages['es'] = array(
 	'woopra-desc' => 'Permite trabajar al [http://www.woopra.com/ software de seguimiento en vivo Woopra] con tu instalación MediaWiki',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'woopra-desc' => '[http://www.woopra.com/ Woopra Live Tracking Software]ak MediaWiki instalazioan lan egin dezan baimentzen du',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  */

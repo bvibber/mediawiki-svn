@@ -69,6 +69,13 @@ $messages['af'] = array(
 	'badimages-remove-btn' => 'Skrap',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'badimages-reason' => 'ምክንያት:',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

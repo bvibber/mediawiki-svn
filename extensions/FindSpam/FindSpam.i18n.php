@@ -167,9 +167,20 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Imre
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'findspam-ip' => 'Dirección IP:',
+	'findspam-ok' => 'Aceptar',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'findspam-ip' => 'IP-aadress:',
+	'findspam-ok' => 'OK',
+	'findspam-notextfound' => 'Redigeerimisi ei leitud',
 );
 
 /** Persian (فارسی)
@@ -340,6 +351,13 @@ $messages['jv'] = array(
 	'findspam-ip' => 'Alamat IP:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Ora ditemokaké kontribusi',
+);
+
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'findspam-ip' => 'IP მისამართი:',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -638,6 +656,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'findspam-ip' => 'Diresaun IP:',
 	'findspam-ok' => 'OK',
 );
 

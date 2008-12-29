@@ -603,8 +603,10 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Thearith
  */
 $messages['km'] = array(
+	'scanset_invalid_volume' => 'កំហុស: សំឡេង​មិនត្រឹមត្រូវ',
 	'scanset_next' => 'បន្ទាប់ &gt;',
 	'scanset_prev' => '&lt; មុន',
 );

@@ -721,29 +721,61 @@ $wdMessages['br'] = array(
  * @author CERminator
  */
 $wdMessages['bs'] = array(
+	'datasearch' => 'Wikidata: Pretraga podataka',
 	'langman_title' => 'Upravitelj jezika',
+	'languages' => 'Wikidata: Upravljač jezika',
 	'ow_save' => 'Spremi',
 	'ow_history' => 'Historija',
+	'ow_datasets' => 'Odabir seta podataka',
 	'ow_noedit_title' => 'Nema dopuštenja za uređivanje',
+	'ow_noedit' => 'Nije Vam dopušteno da uređujete stranice u setu podataka "$1".
+Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivanja]].',
 	'ow_uipref_datasets' => 'Pretpostavljeni pogled',
 	'ow_none_selected' => 'Ništa nije odabrano',
+	'ow_conceptmapping_no_action_specified' => 'Izvinjavamo se, ne znam kako da "$1".',
 	'ow_dm_OK' => 'U redu',
 	'ow_dm_not_present' => 'nije uneseno',
+	'ow_dm_not_found' => 'nije pronađeno u bazi podataka ili je uništeno',
+	'ow_mapping_unsuccessful' => 'Potrebno je navesti bar dva definisana značenja prije nego se mogu povezati.',
 	'ow_will_insert' => 'Ubaciće se slijedeće:',
 	'ow_available_contexts' => 'Dostupni konteksti',
 	'ow_add_concept_link' => 'Dodaj link ka drugim konceptima',
+	'ow_dm_badtitle' => 'Ova stranica ne pokazuje na bilo koji DefinedMeaning (koncept).
+Molimo provjerite web adresu.',
+	'ow_AlternativeDefinition' => 'Moguća definicija',
+	'ow_AlternativeDefinitions' => 'Moguće definicije',
+	'ow_ApproximateMeanings' => 'Približna značenja',
 	'ow_ClassAttributeAttribute' => 'Osobina',
 	'ow_ClassAttributeLevel' => 'nivo',
 	'ow_ClassAttributeType' => 'Vrsta',
+	'ow_Collection' => 'Zbirka',
+	'ow_CollectionMembership' => 'Članstvo u zbirci',
 	'ow_Definition' => 'Definicija',
+	'ow_ExactMeanings' => 'Tačna značenja',
+	'ow_Expression' => 'Izraz',
+	'ow_ExpressionMeanings' => 'Značenja izraza',
+	'ow_Expressions' => 'Izrazi',
 	'ow_IdenticalMeaning' => 'Isto značenje?',
+	'ow_IncomingRelations' => 'Dolazeći odnosi',
+	'ow_GotoSource' => 'Idi na izvor',
 	'ow_Language' => 'Jezik',
+	'ow_OptionAttribute' => 'Svojstvo',
+	'ow_OptionAttributeOption' => 'Mogućnosti',
 	'ow_OptionAttributeOptions' => 'Opcije',
+	'ow_OptionAttributeValues' => 'Moguće vrijednosti',
+	'ow_OtherDefinedMeaning' => 'Ostala definisana značenja',
 	'ow_Relations' => 'Relacije',
+	'ow_RelationType' => 'Tip odnosa',
 	'ow_Spelling' => 'Pravopis',
 	'ow_Synonyms' => 'Sinonomi',
+	'ow_SynonymsAndTranslations' => 'Sinonimi i prijevodi',
 	'ow_Source' => 'Izvor',
+	'ow_TextAttribute' => 'Svojstvo',
+	'ow_Text' => 'Tekst',
+	'ow_TranslatedTextAttribute' => 'Svojstvo',
+	'ow_TranslatedText' => 'Prevedeni tekst',
 	'ow_TranslatedTextAttributeValue' => 'Tekst',
+	'ow_TranslatedTextAttributeValues' => 'Tekstovi koji se mogu prevoditi',
 	'ow_LinkAttribute' => 'Svojstvo',
 	'ow_LinkAttributeValues' => 'Linkovi',
 	'ow_Property' => 'Svojstvo',
@@ -751,6 +783,17 @@ $wdMessages['bs'] = array(
 	'ow_meaningsoftitle' => 'Značenje od "$1"',
 	'ow_Permission_denied' => '<h2>Pristup onemogućen</h2>',
 	'ow_copy_no_action_specified' => 'Molimo Vas da odredite akciju',
+	'ow_please_proved_dmid' => 'Izgleda da Vašem unosu nedostaje "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
+Molimo kontaktirajte administratora servera.',
+	'ow_copy_successful' => '<h2>Kopiranje uspješno</h2>
+Vaši podaci su uspješno kopirani.
+Ne zaboravite da to još jednom provjerite!',
+	'ow_copy_unsuccessful' => '<h3>Kopiranje neuspješno</h3>
+Operacija kopiranja nije izvedena.',
+	'ow_db_consistency_not_found' => '<h2>Greška</h2>
+Desila se greška u samoj bazi podataka, wikidata ne može naći valjane podatke koji su povezani sa ovim naznačenim ID značenjem.
+Moguće je su izgubljeni.
+Molimo kontaktirajte operatora servera ili administratora.',
 );
 
 /** Catalan (Català)
@@ -1062,16 +1105,21 @@ $wdMessages['eo'] = array(
 	'languages' => 'Vikidatenoj: Lingva administrilo',
 	'ow_save' => 'Konservi',
 	'ow_history' => 'Historio',
+	'ow_datasets' => 'Datumara selekto',
 	'ow_noedit_title' => 'Neniu permeso por redakti',
+	'ow_noedit' => 'Vi ne estas permesita redakti paĝojn en la datenaro "$1".
+Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].',
 	'ow_uipref_datasets' => 'Defaŭlta vido',
 	'ow_uiprefs' => 'Vikidatenoj',
 	'ow_none_selected' => 'Nenio elektita',
 	'ow_conceptmapping_no_action_specified' => 'Bedaŭrinde, mi ne scias kiel "$1".',
 	'ow_dm_OK' => 'Ek!',
 	'ow_dm_not_present' => 'ne enigita',
+	'ow_dm_not_found' => 'ne trovis en datenbazo aŭ estis misformita',
 	'ow_will_insert' => 'Enmetos la jenajn:',
 	'ow_contents_of_mapping' => 'Enhavo de mapado',
 	'ow_available_contexts' => 'Haveblaj kuntekstoj',
+	'ow_add_concept_link' => 'Aldoni ligilon al aliaj konceptoj',
 	'ow_AlternativeDefinition' => 'Alternativa difino',
 	'ow_AlternativeDefinitions' => 'Alternativaj difinoj',
 	'ow_Annotation' => 'Prinotado',
@@ -1082,6 +1130,7 @@ $wdMessages['eo'] = array(
 	'ow_ClassAttributeType' => 'Speco',
 	'ow_ClassMembership' => 'Klasa membreco',
 	'ow_Collection' => 'Kolekto',
+	'ow_CollectionMembership' => 'Membreco de kolekto',
 	'ow_Definition' => 'Difino',
 	'ow_DefinedMeaningAttributes' => 'Prinotado',
 	'ow_DefinedMeaning' => 'Difinita signifo',
@@ -1091,6 +1140,7 @@ $wdMessages['eo'] = array(
 	'ow_ExpressionMeanings' => 'Esprimaj signifoj',
 	'ow_Expressions' => 'Esprimoj',
 	'ow_IdenticalMeaning' => 'Identa signifo?',
+	'ow_IncomingRelations' => 'Enigantaj rilatoj',
 	'ow_GotoSource' => 'Iri al fonto',
 	'ow_Language' => 'Lingvo',
 	'ow_LevelAnnotation' => 'Prinotado',
@@ -1101,6 +1151,7 @@ $wdMessages['eo'] = array(
 	'ow_OtherDefinedMeaning' => 'Alia difinita signifo',
 	'ow_PopupAnnotation' => 'Prinotado',
 	'ow_Relations' => 'Rilatoj',
+	'ow_RelationType' => 'Rilata tipo',
 	'ow_Spelling' => 'Literumado',
 	'ow_Synonyms' => 'Sinonimoj',
 	'ow_SynonymsAndTranslations' => 'Sinonimoj kaj tradukoj',
@@ -1125,6 +1176,10 @@ $wdMessages['eo'] = array(
 	'ow_copy_successful' => '<h2>Kopio sukcesis</h2>
 Viaj datenoj verŝajne estis kopiitaj sukcese.
 Ne forgesu rekontroli por certigi!',
+	'ow_copy_unsuccessful' => '<h3>Kopio malsukcesis</h3>
+Neniu kopia operacio okazis.',
+	'ow_no_action_specified' => '<h3>Neniu ago estis specifigita</h3>
+Ĉu eble vi alvenis ĉi tiun paĝon rekte? Norme vi ne bezonus esti ĉi tie.',
 );
 
 /** Spanish (Español)
@@ -1152,7 +1207,7 @@ $wdMessages['es'] = array(
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Ligar los conceptos permite identificar los sentidos definidos en un juego de datos que son idénticos a sentidos definidos en otros juegos de datos.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Sentimos no saber hacer "$1".',
-	'ow_dm_OK' => 'OK',
+	'ow_dm_OK' => 'Aceptar',
 	'ow_dm_not_present' => 'Ausente',
 	'ow_dm_not_found' => 'No encontrado en la base de datos o con errores de representación',
 	'ow_mapping_successful' => 'Todos los campos marcados con [OK] fueron enlazados',
@@ -1231,6 +1286,38 @@ Puede que esté perdido.
 Contacta por favor el operador o el administrador del servicio.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$wdMessages['et'] = array(
+	'datasearch' => 'Wikiandmed: andmeotsing',
+	'langman_title' => 'Keele haldaja',
+	'languages' => 'Wikiandmed: keele haldaja',
+	'ow_save' => 'Salvesta',
+	'ow_history' => 'Ajalugu',
+	'ow_dm_OK' => 'OK',
+	'ow_dm_not_present' => 'ei ole sisestatud',
+	'ow_ApproximateMeanings' => 'Ligilähedased tähendused',
+	'ow_ClassAttributeAttribute' => 'Tunnus',
+	'ow_ClassAttributes' => 'Klassi tunnused',
+	'ow_ClassAttributeLevel' => 'Tase',
+	'ow_ClassAttributeType' => 'Tüüp',
+	'ow_ClassMembership' => 'Klassi liikmelisus',
+	'ow_Spelling' => 'Õigekiri',
+	'ow_Synonyms' => 'Sünonüümid',
+	'ow_SynonymsAndTranslations' => 'Sünonüümid ja tõlked',
+	'ow_Source' => 'Allikas',
+	'ow_Text' => 'Tekst',
+	'ow_TranslatedText' => 'Tõlgitud tekst',
+	'ow_TranslatedTextAttributeValue' => 'Tekst',
+	'ow_TranslatedTextAttributeValues' => 'Tõlgitavad tekstid',
+	'ow_LinkAttribute' => 'Omand',
+	'ow_LinkAttributeValues' => 'Lingid',
+	'ow_Property' => 'Omand',
+	'ow_Value' => 'Väärtus',
+	'ow_meaningsoftitle' => '"$1" tähendus',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Mardetanha
@@ -1283,6 +1370,7 @@ $wdMessages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Silvonen
  * @author Str4nd
@@ -1303,6 +1391,7 @@ $wdMessages['fi'] = array(
 	'ow_ClassAttributeType' => 'Tyyppi',
 	'ow_Collection' => 'Kokoelma',
 	'ow_Definition' => 'Määritelmä',
+	'ow_DefinedMeaningAttributes' => 'Huomautus',
 	'ow_ExactMeanings' => 'Tarkat merkityset',
 	'ow_Expression' => 'Ilmaisu',
 	'ow_Expressions' => 'Ilmaisut',
@@ -1310,6 +1399,7 @@ $wdMessages['fi'] = array(
 	'ow_Language' => 'Kieli',
 	'ow_LevelAnnotation' => 'Annotaatio',
 	'ow_OptionAttribute' => 'Ominaisuus',
+	'ow_OptionAttributeOptions' => 'Asetukset',
 	'ow_Spelling' => 'Kirjoitusasu',
 	'ow_SynonymsAndTranslations' => 'Synonyymit ja käännökset',
 	'ow_Source' => 'Lähde',
@@ -1321,8 +1411,11 @@ $wdMessages['fi'] = array(
 	'ow_TranslatedTextAttributeValue' => 'Teksti',
 	'ow_TranslatedTextAttributeValues' => 'Käännettävä teksti',
 	'ow_LinkAttribute' => 'Ominaisuus',
+	'ow_LinkAttributeValues' => 'Linkit',
 	'ow_Property' => 'Ominaisuus',
 	'ow_Value' => 'Arvo',
+	'ow_meaningsofsubtitle' => '<em>Wikilinkki:</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>Käyttö estetty</h2>',
 );
 
 /** French (Français)
@@ -2455,11 +2548,14 @@ $wdMessages['km'] = array(
 	'ow_conceptmapping_no_action_specified' => 'អភ័យទោស, ខ្ញុំមិនដឹងពីរបៀប "$1" ទេ។',
 	'ow_dm_OK' => 'យល់ព្រម',
 	'ow_dm_not_present' => 'មិនបានបញ្ចូល',
+	'ow_will_insert' => 'នឹង​ដាក់បញ្ចូល​ដូចតទៅ:',
+	'ow_available_contexts' => 'បរិបទ​ដែល​អាចរកបាន',
 	'ow_AlternativeDefinition' => 'និយមន័យ​ឆ្លាស់',
 	'ow_AlternativeDefinitions' => 'និយមន័យ​ឆ្លាស់',
 	'ow_Annotation' => 'ចំណារពន្យល់',
 	'ow_ApproximateMeanings' => 'អត្ថន័យ​ប្រហាក់ប្រហែល',
 	'ow_ClassAttributeAttribute' => 'សេចក្តីកំណត់',
+	'ow_ClassAttributes' => 'ថ្នាក់​គុណលក្ខណៈ',
 	'ow_ClassAttributeLevel' => 'កម្រិត',
 	'ow_ClassAttributeType' => 'ប្រភេទ',
 	'ow_ClassMembership' => 'ថ្នាក់​សមាជិកភាព',
@@ -2489,6 +2585,7 @@ $wdMessages['km'] = array(
 	'ow_Synonyms' => 'វេវចនសព្ទ',
 	'ow_SynonymsAndTranslations' => 'វេវចនសព្ទ និង ការបកប្រែ',
 	'ow_Source' => 'ប្រភព',
+	'ow_SourceIdentifier' => 'គ្រឿងសម្គាល់​ប្រភព',
 	'ow_TextAttribute' => 'លក្ខណៈ',
 	'ow_Text' => 'អត្ថបទ',
 	'ow_TextAttributeValues' => 'អត្ថបទធម្មតា',
@@ -2502,8 +2599,18 @@ $wdMessages['km'] = array(
 	'ow_Value' => 'តម្លៃ',
 	'ow_meaningsoftitle' => 'និយមន័យ របស់ "$1"',
 	'ow_meaningsofsubtitle' => '<em>តំណភ្ជាប់វិគី៖</em> [[$1]]',
+	'ow_Permission_denied' => '<h2>សិទ្ធិ​បាន​បដិសេធ</h2>',
 	'ow_copy_no_action_specified' => 'សូម សំដៅ មួយសកម្មភាព',
 	'ow_copy_help' => 'យើង​អាចជួយអ្នក​នៅ​ថ្ងៃណាមួយ',
+	'ow_copy_successful' => '<h2>ចម្លង​ដោយជោគជ័យ</h2>
+
+ទិន្នន័យ​របស់​អ្នក​បង្ហាញ​ថា ត្រូវ​បាន​ចម្លង​ដោយជោគជ័យ​ហើយ​។
+
+ចូរ​កុំ​ភ្លេច​ពិនិត្យ​ឡើងវិញ​ដើម្បី​ឱ្យ​រឹតតែ​ច្បាស់​!',
+	'ow_copy_unsuccessful' => '<h3>ចម្លង​បាន​បរាជ័យ</h3>
+គ្មាន​សកម្មភាព​ចម្លង​ត្រូវ​បាន​ដាក់ជំនួស​ទេ​។',
+	'ow_no_action_specified' => '<h3>គ្មាន​សកម្មភាព​ត្រូវ​បាន​បញ្ជាក់​ទេ</h3>
+ប្រហែលជា អ្នក​បាន​ចូលមក​ទំព័រ​នេះ​ដោយផ្ទាល់​? ជាធម្មតា អ្នក​មិនចាំបាច់​ចូលមក​ទីនេះ​ទេ​។',
 );
 
 /** Krio (Krio)

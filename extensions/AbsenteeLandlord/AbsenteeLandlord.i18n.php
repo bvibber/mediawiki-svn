@@ -173,6 +173,13 @@ $messages['gl'] = array(
 	'absenteelandlord-desc' => 'Fecha automaticamente a base de datos wiki se todos os administradores están inactivos durante algún tempo',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'absenteelandlord-reason' => 'D Datebank isch automatisch gsperrt wore, wel kei Ammann aktiv isch.',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

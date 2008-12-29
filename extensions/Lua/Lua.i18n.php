@@ -152,21 +152,27 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'lua_desc' => 'Etendas la sintaksan analizilon kun subteno por internaj forbaroj de kodo [http://www.lua.org/ Lua]',
 	'lua_error' => 'Eraro en linio $1',
+	'lua_extension_notfound' => 'Etendilo Lua ne estas konfigurata',
+	'lua_interp_notfound' => 'Interpretilo Lua ne estas trovita',
 	'lua_error_internal' => 'Interna eraro',
+	'lua_overflow_recursion' => 'Limo de rekursio atingis',
+	'lua_overflow_loc' => 'Limo de maksimumaj linioj de kodo atingis',
+	'lua_overflow_time' => 'Atingis maksimuma tempo de operaciado',
 );
 
 /** Finnish (Suomi)
  * @author Mobe
+ * @author Nike
  */
 $messages['fi'] = array(
-	'lua_desc' => 'Lisää jäsentäjään tuen upotetuille [http://www.lua.org/ Lua]-ohjelmalohkoille.',
+	'lua_desc' => 'Lisää jäsentimeen tuen upotetuille [http://www.lua.org/ Lua]-ohjelmalohkoille.',
 	'lua_error' => 'Virhe rivillä $1',
-	'lua_extension_notfound' => 'Lua laajennusta ei ole konfiguroitu',
-	'lua_interp_notfound' => 'Lua -tulkkia ei löydy',
+	'lua_extension_notfound' => 'Lua-laajennuksen asetuksia ei ole tehty.',
+	'lua_interp_notfound' => 'Lua-tulkkia ei löydy.',
 	'lua_error_internal' => 'Sisäinen virhe',
 	'lua_overflow_recursion' => 'Rekursion enimmäissyvyys saavutettu',
 	'lua_overflow_loc' => 'Ohjelmarivien enimmäismäärä saavutettu',
-	'lua_overflow_time' => 'Suorituksen enimmäisaika saavutettu',
+	'lua_overflow_time' => 'Suorituksen enimmäiskesto saavutettu',
 );
 
 /** French (Français)

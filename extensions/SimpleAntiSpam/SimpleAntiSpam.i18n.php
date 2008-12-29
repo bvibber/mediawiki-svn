@@ -495,6 +495,16 @@ Fyll '''INTE''' i det här!",
 	'simpleantispam-desc' => 'Lägger till en enkel spam/robot koll till formulär',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'simpleantispam' => "Nakapagpagalaw sa mekanismong panlaban ng \"manlulusob\" (''spam'') ang pagbabagong ginawa mo",
+	'simpleantispam-label' => "Pagsusuring panlaban sa \"manlulusob\" (''spam'').
+'''HUWAG''' itong lagyan ng laman!",
+	'simpleantispam-desc' => "Nagdaragdag ng isang payak na pansuri ng \"manlulusob\" (''spam'') o ''bot'' sa mga pormularyo",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

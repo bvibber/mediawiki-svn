@@ -168,8 +168,10 @@ $messages['it'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
+	'rightfunctions-local' => '(ពី​ទំពរ​មូលដ្ឋាន)',
 	'rightfunctions-ns' => '(ពីការការពារលំហឈ្មោះ)',
 );
 

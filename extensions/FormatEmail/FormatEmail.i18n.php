@@ -425,6 +425,16 @@ $messages['ru'] = array(
 $2',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'email-desc' => "Pirmetti di juncìricci ntistazzioni e cosi propri pirsunali â fini dê pàggini di l'e-mail di mannari a l'àutri utenti.",
+	'email_footer' => 'Sta e-mail fu mannata  attraversu la funzioni e-mail di  {{SITENAME}} di $1.
+
+$2',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -484,6 +494,17 @@ $messages['uk'] = array(
 	'email-desc' => 'Дозволяє додавати свої власні шапку або закінчення до листів від учасника до учасника',
 	'email_footer' => '----------------------------------------------------------------------------
 Це повідомлення було надіслано через сайт {{SITENAME}} користувачем $1.
+
+$2',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'email-desc' => 'Parmete de zontar intestassion e piè de pàxena personalixà a le e-mail mandà a i altri utenti.',
+	'email_footer' => '----------------------------------------------------------------------------
+Sta e-mail la te xe stà mandà atraverso el sistema e-mail de {{SITENAME}} da $1.
 
 $2',
 );

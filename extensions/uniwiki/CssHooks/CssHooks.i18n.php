@@ -121,6 +121,13 @@ $messages['ja'] = array(
 	'csshooks-desc' => 'より良いスタイルのためにページのHTML出力にCSSを加える',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'csshooks-desc' => 'បន្ថែម CSS ទៅ​ក្នុង​ទិន្នផល HTML នៃ​ទំព័រ​សម្រាប់​រចនាប័ទ្ម​ប្រសើរ​ជាង​នេះ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

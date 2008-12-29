@@ -1004,6 +1004,28 @@ $messages['uk'] = array(
 	'spamdifftool_submit_buttom' => 'Відправити',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'spamdifftool' => 'Gestion de la lista nera del spam',
+	'spamdifftool_cantedit' => 'No ti gà i parmessi necessari par modificar la lista nera del spam.',
+	'spamdifftool_notext' => "No ghe xe nissun testo da zontar a la lista nera del spam.
+Struca <a href='$1'>qua</a> par continuar.",
+	'spamdifftool_confirm' => "Conferma che te voli zontar sti valori a la lista nera del spam.
+(Struca <a href='$1' target='new'>qua</a> par segnalar un problema.)",
+	'spamdifftool_summary' => 'Zonto a la lista nera del spam',
+	'spamdifftool_no_urls_detected' => "No xe stà rilevà nissun URL.
+Struca <a href='$1'>qua</a> par tornar indrìo.",
+	'spamdifftool_spam_link_text' => 'zonta al spam',
+	'spamdifftool_option_domain' => 'tuti da sto dominio',
+	'spamdifftool_option_subdomain' => 'tuti da sto sotodominio',
+	'spamdifftool_option_directory' => 'sto sotodominio e directory',
+	'spamdifftool_option_none' => 'gnente',
+	'spamdifftool_block' => 'Bloca:',
+	'spamdifftool_submit_buttom' => 'Manda',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

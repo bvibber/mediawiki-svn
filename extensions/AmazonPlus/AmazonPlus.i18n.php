@@ -39,8 +39,8 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
- * @author Skizzerz
  * @author Purodha
+ * @author Skizzerz
  */
 $messages['qqq'] = array(
 	'amazonplus-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',

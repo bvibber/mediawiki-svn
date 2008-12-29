@@ -546,6 +546,9 @@ $messages['vec'] = array(
 	'contributiontracking-desc' => 'Traciamento dei contributi par la racolta fondi Wikimedia',
 	'contributiontracking' => 'Traciamento dei contributi',
 	'contrib-tracking-error' => 'Eròr',
+	'contrib-tracking-error-text' => 'Invio de modulo mia valido',
+	'contrib-tracking-submitting' => "So' drio contatar el processador del pagamento...",
+	'contrib-tracking-continue' => 'Se no te vien reindirissà automaticamente, struca el boton par conpletar la to donassion su PayPal.',
 	'contrib-tracking-button' => 'Và vanti',
 );
 

@@ -481,6 +481,22 @@ $messages['te'] = array(
 	'createpage-badtitle' => '"$1"ని పేజీ శీర్షికగా వాడలేరు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'createpage' => 'Lumikha ng isang pahina',
+	'createpage-desc' => 'Nagdaragdag ng isang [[Special:CreatePage|natatanging pahina]] para sa paglikha ng bagong mga pahina',
+	'createpage_submitbutton' => 'Ipasa',
+	'createpage_instructions' => 'Ilagay ang pamagat ng pahinang naisa mong likhain:',
+	'createpage_entertitle' => 'Pakipasok lamang ang isang pamagat para sa iyong pahina.',
+	'createpage_titleexists' => 'Umiiral ang isang pahinang may pamagat na [[$1]].
+Nais mo bang baguhin ang umiiral na pahina?',
+	'createpage_tryagain' => 'Hindi.  Nais kong lumikha ng isang bagong pahinang may isang bukod na pamagat.',
+	'createpage_editexisting' => 'Oo. Ibig kong magambag sa umiiral na pahina.',
+	'createpage-badtitle' => 'Hindi magagamit ang "$1" bilang pamagat ng isang pahina',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

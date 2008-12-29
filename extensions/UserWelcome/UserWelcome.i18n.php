@@ -210,15 +210,19 @@ $messages['eo'] = array(
 	'mp-welcome-upload' => 'Alŝuti',
 	'mp-welcome-edit' => 'Redakti',
 	'mp-welcome-points' => '$1 poentoj',
-	'mp-welcome-needed-points' => 'Pliniveligi al <b><a href="$1">$2</a></b> gajnu <i>$3</i> pliajn poentojn!',
+	'mp-welcome-needed-points' => 'Pliniveligi al <b><a href="$1">$2</a></b> gajnu <i>$3</i> {{PLURAL:$3|plian poenton|pliajn poentojn}}!',
 	'mp-welcome-logged-in' => 'Saluton $1',
 	'mp-requests-title' => 'Petoj',
 	'mp-requests-message' => 'Vi havas la jenajn petojn.',
 	'mp-request-new-message' => 'nova mesaĝo',
 	'mp-request-new-award' => '$1 {{PLURAL:$1|nova premio|novaj premioj}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|nova donaco|novaj donacoj}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|nova malamiko|novaj malamikoj}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|nova amiko|novaj amikoj}}',
 );
 
 /** Spanish (Español)
+ * @author Fluence
  * @author Imre
  * @author Sanbec
  */
@@ -227,8 +231,20 @@ $messages['es'] = array(
 	'mp-welcome-upload' => 'Subir',
 	'mp-welcome-edit' => 'Editar',
 	'mp-welcome-points' => '$1 puntos',
+	'mp-welcome-logged-in' => 'Hola $1',
 	'mp-request-new-message' => 'nuevo mensaje',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|nuevo amigo|nuevos amigos}}',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'mp-userlevels-link' => 'Kasutajate tasemed',
+	'mp-welcome-upload' => 'Laadi üles',
+	'mp-welcome-edit' => 'Toimeta',
+	'mp-welcome-points' => '$1 punkti',
+	'mp-request-new-message' => 'uus sõnum',
 );
 
 /** Finnish (Suomi)
@@ -396,6 +412,13 @@ $messages['jv'] = array(
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|kanca|kanca-kanca}} anyar',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'mp-request-new-message' => 'ახალი შეტყობინება',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
@@ -411,7 +434,8 @@ $messages['km'] = array(
 	'mp-request-new-message' => 'សារថ្មី',
 	'mp-request-new-award' => '{{PLURAL:$1|រង្វាន់|រង្វាន់}} ថ្មី $1',
 	'mp-request-new-gift' => '{{PLURAL:$1|អំណោយ|អំណោយ}}ថ្មីចំនួន$1',
-	'mp-request-new-friend' => '{{PLURAL:$1|friend|មិត្តភ័ក្ដិ}}ថ្មី $1',
+	'mp-request-new-foe' => '{{PLURAL:$1|បច្ចាមិត្ត|បច្ចាមិត្ត}}ថ្មី $1',
+	'mp-request-new-friend' => '{{PLURAL:$1|មិត្តភ័ក្ដិ|មិត្តភ័ក្ដិ}}ថ្មី $1',
 );
 
 /** Ripoarisch (Ripoarisch)

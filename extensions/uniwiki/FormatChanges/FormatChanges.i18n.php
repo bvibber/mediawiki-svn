@@ -70,8 +70,8 @@ $messages['cs'] = array(
 $messages['de'] = array(
 	'formatchanges-desc' => 'Bereitet die [[Special:RecentChanges|Letzten Änderungen]] neu auf',
 	'formatchanges-anonymous' => 'Anonym',
-	'formatchanges-createdby' => 'erstellt von',
-	'formatchanges-editedby' => 'bearbeitet durch',
+	'formatchanges-createdby' => '$1 - erstellt von $2 ($3)',
+	'formatchanges-editedby' => '$1 - bearbeitet durch $2 ($3)',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -88,9 +88,10 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'formatchanges-desc' => 'Reformatigas la [[Special:RecentChanges|lastajn ŝanĝojn]]',
 	'formatchanges-anonymous' => 'Anonimulo',
-	'formatchanges-createdby' => 'fare de',
-	'formatchanges-editedby' => 'redaktita de',
+	'formatchanges-createdby' => '$1 - kreita de $2 ($3)',
+	'formatchanges-editedby' => '$1 - redaktita de $2 ($3)',
 );
 
 /** Spanish (Español)
@@ -196,8 +197,8 @@ $messages['km'] = array(
 $messages['ksh'] = array(
 	'formatchanges-desc' => 'Jif dä Sigg „[[Special:RecentChanges|{{int:recentchanges}}]]“ en ander Ußsin.',
 	'formatchanges-anonymous' => 'Namelos',
-	'formatchanges-createdby' => 'aanjelaat vum',
-	'formatchanges-editedby' => 'verändert vum',
+	'formatchanges-createdby' => '„$1“ aanjelaat vum $2 öm $3 Uhr.',
+	'formatchanges-editedby' => '„$1“ verändert vum vum $2 öm $3 Uhr.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -206,8 +207,8 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'formatchanges-desc' => 'Reformatéiert déi [[Special:RecentChanges|rezent Ännerungen]]',
 	'formatchanges-anonymous' => 'Anonym',
-	'formatchanges-createdby' => 'ugeluecht vum',
-	'formatchanges-editedby' => 'geännert vum',
+	'formatchanges-createdby' => '$1 - ugeluecht vum $2 ($3)',
+	'formatchanges-editedby' => '$1 - geännert vum $2 ($3)',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -223,8 +224,8 @@ $messages['nah'] = array(
 $messages['nl'] = array(
 	'formatchanges-desc' => 'Maakt de [[Special:RecentChanges|recente wijzigingen]] anders op',
 	'formatchanges-anonymous' => 'Anoniem',
-	'formatchanges-createdby' => 'gemaakt door',
-	'formatchanges-editedby' => 'bewerkt door',
+	'formatchanges-createdby' => '$1 - gemaakt door $2 ($3)',
+	'formatchanges-editedby' => '$1 - bewerkt door $2 ($3)',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -232,8 +233,8 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'formatchanges-anonymous' => 'Anonym',
-	'formatchanges-createdby' => 'oppretta av',
-	'formatchanges-editedby' => 'endra av',
+	'formatchanges-createdby' => '$1 - oppretta av $2 $3',
+	'formatchanges-editedby' => '$1 - endra av $2 $3',
 );
 
 /** Occitan (Occitan)
@@ -311,8 +312,8 @@ $messages['te'] = array(
 $messages['tl'] = array(
 	'formatchanges-desc' => 'Nagbabago sa anyo/pormat ng [[Special:RecentChanges|kamakailang mga pagbabago]]',
 	'formatchanges-anonymous' => 'Hindi kilala (anonimo)',
-	'formatchanges-createdby' => 'nilikha ni',
-	'formatchanges-editedby' => 'binago ni',
+	'formatchanges-createdby' => '$1 - nilikha ni $2 ($3)',
+	'formatchanges-editedby' => '$1 - binago ni $2 ($3)',
 );
 
 /** Ukrainian (Українська)

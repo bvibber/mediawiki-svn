@@ -79,6 +79,13 @@ $messages['es'] = array(
 	'googleadsense-desc' => 'Añade [http://www.google.com/adsense Google AdSense] a la barra lateral',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'googleadsense-desc' => '[http://www.google.com/adsense Google AdSense] gehitzen du albo-barrara',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

@@ -384,6 +384,7 @@ $messages['km'] = array(
 	'showprocesslist' => 'បង្ហាញ​បញ្ជី​ដំណើរការ',
 	'showprocesslist-user' => 'អ្នកប្រើប្រាស់',
 	'showprocesslist-host' => 'ម៉ាស៊ីន',
+	'showprocesslist-command' => 'ពាក្យបញ្ជា',
 	'showprocesslist-time' => 'ពេលវេលា',
 	'showprocesslist-state' => 'រដ្ឋ',
 	'showprocesslist-info' => 'ព័ត៌មាន',

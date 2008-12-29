@@ -823,9 +823,11 @@ Basqa ataw talğañız.',
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Thearith
  */
 $messages['km'] = array(
 	'blacklistedusername' => 'ឈ្មោះអ្នកប្រើប្រាស់ ត្រូវបានដាក់ ក្នុងបញ្ជីខ្មៅ',
+	'right-uboverride' => 'បដិសេធ​បញ្ជីខ្មៅ​ឈ្មោះអ្នកប្រើប្រាស់',
 );
 
 /** Korean (한국어)

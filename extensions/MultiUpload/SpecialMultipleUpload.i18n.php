@@ -1045,6 +1045,28 @@ $messages['th'] = array(
 	'multiupload-fileuploaded' => 'ไฟล์ถูกอัปโหลดเรียบร้อยแล้ว',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'multipleupload' => 'Ikarga ang mga talaksan',
+	'multipleupload-desc' => 'Nagpapahintulot sa mga tagagamit na [[Special:MultipleUpload|kaagad na mapagsabay-sabay ang  pagkakarga ng mangilan-ngilang mga talaksan]]',
+	'multipleupload-ignoreallwarnings' => "Balewalain ang '''lahat ng mga babala''' at sagipin pa rin ang mga talaksan.",
+	'multipleupload-saveallfiles' => 'Sagipin ang lahat ng mga talaksan',
+	'multipleupload-addresswarnings' => 'Pakipagbalingan muna ng pansin ang anumang mga babala bago muling ikarga ang mga talaksan.',
+	'multipleupload-page' => '{{ns:project}}:Patakaran sa pagbubura ng talaksan',
+	'multipleupload-text' => "Dito magkarga ng maramihang mga talaksan.
+
+Piliin ang 'Tumingin-tingin' at piliin ang bawat isang talaksang nais mong ikarga.
+Maaari kang magkarga mula 1 hanggang $1 mga talaksan sa isang panahon.
+
+Maaari kang maglagay (magpasok) ng isang hindi naman talaga kailangang (maaaring wala) '''Patutunguhang pangalan ng talaksan''' at magbigay ng isang '''Buod''' na naglalarawan sa iyong talaksan.
+
+Kaagad na buburahin ang hindi naaangkop na mga talaksan, tingnan ang [[{{MediaWiki:Multipleupload-page}}|patakaran sa pagbura ng talaksan]].",
+	'multiupload-fileuploaded' => 'Naikarga na ang talaksan.',
+	'multiupload-toolbox' => 'Magkarga ng maramihang mga talaksan',
+);
+
 /** Turkish (Türkçe)
  * @author Mach
  */

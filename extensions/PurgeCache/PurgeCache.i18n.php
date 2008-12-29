@@ -100,11 +100,16 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'purgecache' => 'Tyhjennä välimuisti',
 	'purgecache-desc' => '[[Special:PurgeCache|Toimintosivu]] OBJECTCACHE-taulun siivoamiseen.',
+	'purgecache-warning' => 'Tämä poistaa välimuistitaulut.',
+	'purgecache-purged' => 'Välimuisti tyhjennettiin.',
+	'purgecache-button' => 'Tyhjennä välimuisti',
 );
 
 /** French (Français) */

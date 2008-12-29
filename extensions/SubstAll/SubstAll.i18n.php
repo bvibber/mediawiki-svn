@@ -45,6 +45,13 @@ $messages['bg'] = array(
 	'substall-desc' => 'Създава етикет <nowiki><substall></nowiki> за преобразуване на всички шаблони в уикисинтаксис',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'substall-desc' => 'Vytváří značku <tt>&lt;substall&gt;</tt>, která rozbalí všechny šablony na wiki syntaxi',
+);
+
 /** German (Deutsch)
  * @author Revolus
  */
@@ -75,9 +82,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Mobe
+ * @author Nike
  */
 $messages['fi'] = array(
-	'substall-desc' => 'Luo <nowiki><substall></nowiki> tägin, joka laajentaa kaikki mallineet wikisyntaksiin.',
+	'substall-desc' => 'Luo <nowiki><substall></nowiki>-elementin, joka laajentaa kaikki mallineet wikisyntaksiksi.',
 );
 
 /** French (Français)
@@ -144,6 +152,13 @@ $messages['ja'] = array(
 $messages['ksh'] = array(
 	'substall-desc' => 'Deit Dä Befäähl <code>&lt;{{int:Substall-hook}}&gt;</code> en et Wiki. Dä expandeet alle Oproofe fun Schablone op en Sigg, un määt Wikitex druß.',
 	'substall-hook' => 'substall',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'substall-desc' => 'Erstellt en <nowiki><substall></nowiki>-Tag, den all Schablounen a Wikisyntax ëmwandelt',
 );
 
 /** Dutch (Nederlands)

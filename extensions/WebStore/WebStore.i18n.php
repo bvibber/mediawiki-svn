@@ -467,16 +467,29 @@ $messages['eo'] = array(
 	'inplace_access_denied' => 'Ĉi tiu servo estas limigita laŭ klienta IP-adreso.',
 	'inplace_scaler_not_enough_params' => 'Ne sufiĉaj parametroj',
 	'inplace_scaler_invalid_image' => 'Nevalida bildo; ne eblis determini pezon.',
+	'inplace_scaler_failed' => 'Eraro okazis dum bilda skalado: $1',
 	'webstore_access' => 'Ĉi tiu servo estas limigita laŭ klienta IP-adreso.',
 	'webstore_path_invalid' => 'La dosiernomo estis nevalida.',
+	'webstore_dest_open' => 'Ne eblas malfermi celan dosieron "$1".',
+	'webstore_dest_lock' => 'Malsukcesis teni ŝloson por cela dosiero "$1".',
+	'webstore_dest_mkdir' => 'Ne eblis krei celan dosierujon "$1".',
+	'webstore_archive_lock' => 'Malsukcesis teni ŝloson en arkiva dosiero "$1".',
+	'webstore_archive_mkdir' => 'Ne eblas krei arkivan dosierujon "$1".',
 	'webstore_src_open' => 'Neeblas malfermi fontdosiero "$1".',
+	'webstore_src_close' => 'Eraro fermante fontan dosieron "$1".',
+	'webstore_src_delete' => 'Eraro forigante fontan dosieron "$1".',
+	'webstore_rename' => 'Eraro alinomigante dosieron "$1" al $2".',
+	'webstore_lock_open' => 'Eraro malfermante ŝlosan dosieron "$1".',
 	'webstore_lock_close' => 'Eraro fermante ŝlosan dosieron "$1".',
 	'webstore_dest_exists' => 'Eraro: Destina dosiero "$1" ekzistas.',
 	'webstore_temp_open' => 'Eraro malfermante laboran dosieron "$1".',
+	'webstore_temp_copy' => 'Eraro kopiante provizoran dosieron "$1" al cela dosiero "$2".',
 	'webstore_temp_close' => 'Eraro fermante provizoran dosieron "$1".',
 	'webstore_temp_lock' => 'Eraro ŝlosante provizoran dosieron "$1".',
+	'webstore_no_archive' => 'Cela dosiero ekzistas kaj neniu arkivo estis donita.',
 	'webstore_no_file' => 'Neniu dosiero estis alŝutita.',
 	'webstore_invalid_zone' => 'Nevalida zono "$1".',
+	'webstore_no_deleted' => 'Neniu arkiva dosierujo por forigitaj dosieroj estas difinita.',
 	'webstore_curl' => 'Eraro de cURL: $1',
 	'webstore_404' => 'Dosiero ne troviĝis.',
 	'webstore_php_warning' => 'PHP-Averto: $1',
@@ -490,15 +503,26 @@ $1',
 
 $1',
 	'webstore_php_error' => 'Jen eraroj PHP:',
+	'webstore_no_handler' => 'Neniu traktilo por transformi ĉi tiun MIME-tipon',
 );
 
 /** Spanish (Español)
+ * @author Fluence
  * @author Sanbec
  */
 $messages['es'] = array(
 	'inplace_access_disabled' => 'Se ha deshabilitado el acceso a este servicio para todos los clientes.',
 	'inplace_access_denied' => 'Este servicio está restringido por IP de cliente.',
+	'inplace_scaler_not_enough_params' => 'Sin parámetros suficientes.',
+	'webstore_path_invalid' => 'El nombre de archivo no es válido.',
+	'webstore_dest_open' => 'No es posible abrir el archivo de destino «$1».',
+	'webstore_dest_mkdir' => 'No es posible crear el directorio de destino «$1».',
+	'webstore_invalid_zone' => 'Zona no válida «$1».',
 	'webstore_404' => 'Archivo no encontrado.',
+	'webstore_metadata_not_found' => 'Archivo no encontrado: $1',
+	'webstore_invalid_response' => 'Respuesta no válida del servidor:
+
+$1',
 );
 
 /** Extremaduran (Estremeñu)
@@ -508,6 +532,18 @@ $messages['ext'] = array(
 	'webstore_rename' => 'Marru rehucheandu el archivu "$1" a "$2".',
 	'webstore_no_file' => 'Nu s´á empuntau dengún archivu.',
 	'webstore_404' => 'Archivu nu alcuentrau.',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'webstore_path_invalid' => 'Tiedostonimi oli epäkelpo.',
+	'webstore_404' => 'Tiedostoa ei löydy.',
+	'webstore_php_warning' => 'PHP-varoitus: $1',
+	'webstore_metadata_not_found' => 'Tiedostoa ei löydy: $1',
+	'webstore_no_response' => 'Ei vastausta palvelimelta.',
 );
 
 /** French (Français)
@@ -1795,6 +1831,44 @@ $messages['tr'] = array(
 $messages['vi'] = array(
 	'webstore_curl' => 'Lỗi cURL: $1',
 	'webstore_php_warning' => 'Cảnh báo PHP: $1',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'inplace_access_disabled' => '所有用户端均不能使用本服务。',
+	'inplace_access_denied' => '您的IP无法访问本服务。',
+	'inplace_scaler_no_temp' => '无法识别的临时目录。
+请设置 $wgLocalTmpDirectory 到一个可写入的目录。',
+	'inplace_scaler_not_enough_params' => '参数不足。',
+	'inplace_scaler_invalid_image' => '图像不可识别，无法检测尺寸。',
+	'inplace_scaler_failed' => '处理图像时遇到一个错误： $1',
+	'webstore_access' => '您的IP无法访问本服务。',
+	'webstore_path_invalid' => '文件名无法识别。',
+	'webstore_dest_open' => '无法打开目标文件"$1"。',
+	'webstore_dest_mkdir' => '无法创建目录"$1"。',
+	'webstore_src_open' => '无法打开源文件"$1"。',
+	'webstore_src_close' => '关闭源文件"$1"出现错误。',
+	'webstore_src_delete' => '删除源文件"$1"出现错误。',
+	'webstore_rename' => '文件"$1"修改名称为"$2"时出现错误。',
+	'webstore_dest_exists' => '出错啦，目标文件"$1"已经存在。',
+	'webstore_temp_open' => '打开临时文件"$1"出错。',
+	'webstore_temp_copy' => '拷贝临时文件"$1"至目标文件"$2"时出错。',
+	'webstore_temp_close' => '关闭临时文件"$1"出错。',
+	'webstore_no_file' => '上传文件未成功。',
+	'webstore_move_uploaded' => '移动上传的文件"$1"至临时地址"$2"时出错。',
+	'webstore_404' => '文件未找到。',
+	'webstore_php_warning' => 'PHP警告：$1',
+	'webstore_metadata_not_found' => '文件未找到：$1',
+	'webstore_invalid_response' => '服务器响应：
+
+$1',
+	'webstore_no_response' => '服务器未响应',
+	'webstore_backend_error' => '存储服务器出现错误：
+
+$1',
+	'webstore_php_error' => '遇到PHP错误：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

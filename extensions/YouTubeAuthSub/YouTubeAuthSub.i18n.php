@@ -103,11 +103,11 @@ $messages['ar'] = array(
 	'youtubeauthsub_clickhere' => 'أنقر هنا لتسجيل الدخول لليوتيوب',
 	'youtubeauthsub_tokenerror' => 'خطأ توليد توكين السماح، حاول التحديث.',
 	'youtubeauthsub_success' => "تهانينا!
-الفيديو الخص بك تم رفعه.
-لرؤية الفيديو الخاص بك اضغط <a href='http://www.youtube.com/watch?v=$1'>هنا</a>.
+الفيديو الخاص بك تم رفعه.
+<a href='http://www.youtube.com/watch?v=$1'>عرض الفيديو الخاص بك</a>.
 يوتيوب ربما يحتاج إلى بعض الوقت لمعالجة الفيديو الخاص بك، لذا ربما لا يكون جاهزا بعد.
 
-لتضمين الفيديو الخاص بك في صفحة على الويكي، أدخل الكود التالي في صفحة:
+لتضمين الفيديو الخاص بك في صفحة على الويكي، أدخل الشيفرة التالي في صفحة:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'لرفع فيديو، سيتعين عليك تسجيل الدخول أولا إلى يوتيوب.',
 	'youtubeauthsub_uploadhere' => 'رفع مقاطع الفيديو الخاصة بك من هنا:',
@@ -501,6 +501,7 @@ $messages['eo'] = array(
 	'youtubeauthsub_category' => 'Kategorio',
 	'youtubeauthsub_submit' => 'Ek',
 	'youtubeauthsub_clickhere' => 'Klaku ĉi tien por ensaluti YouTube-on',
+	'youtubeauthsub_tokenerror' => 'Eraro dum generado de aŭtentokontrola ĵetono; bonvolu refreŝigi.',
 	'youtubeauthsub_success' => "Gratulon! Via video estas alŝutita.
 Por spekti vian videon, klaku <a href='http://www.youtube.com/watch?v=$1'>ĉi tien</a>.
 YouTube povas bezoni iom da tempo procezi vian videon, do eble ĝi ne pretas ĵus nun.
@@ -512,11 +513,11 @@ Por inkluzivi vian videon en paĝo en la vikio, enmeti la jenan kodon en paĝon:
 	'youtubeauthsub_uploadbutton' => 'Alŝuti',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-La video povas estis spektita [http://www.youtube.com/watch?v=$1 ĉi tie]',
+[http://www.youtube.com/watch?v=$1 Vidi ĉi tiun videon]',
 	'youtubeauthsub_summary' => 'Alŝutante YouTube videon',
 	'youtubeauthsub_uploading' => 'Via video estas alŝutanta.
 Bonvolu pacienciĝi.',
-	'youtubeauthsub_viewpage' => 'Alternative, vi povas spekti vian videon [[$1|ĉi tie]].',
+	'youtubeauthsub_viewpage' => 'Alternative, vi povas [[$1|spekti vian videon]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Bonvolu enigi 1 aŭ pluraj ŝlosilvortoj',
 	'youtubeauthsub_jserror_notitle' => 'Bonvolu eniri titolon por la video.',
 	'youtubeauthsub_jserror_nodesc' => 'Bonvolu eniri priskribon por la video.',
@@ -762,10 +763,10 @@ $messages['he'] = array(
 	'youtubeauthsub_tokenerror' => 'שגיאה ביצירת אסימון אימות, נסו לרענן.',
 	'youtubeauthsub_success' => "ברכות!
 הסרטון שלכם הועלה.
-על מנת לצפות בסרטון, לחצו <a href='http://www.youtube.com/watch?v=$1'>כאן</a>.
+<a href='http://www.youtube.com/watch?v=$1'>צפייה בוידאו שלכם</a>.
 ייתכן שיידרש ל־YouTube מעט זמן לעיבוד הסרטון שלך, כך שייתכן שאינו מוכן עדיין.
 
-כדי לכלול את הסרטון שלך בעמוד בוויקי, יש להוסיף לדף את הקוד הבא:
+כדי לכלול את הסרטון שלך בדף בוויקי, יש להוסיף לדף את הקוד הבא:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'על מנת להעלות סרטון, ראשית עליכם להתחבר ל־YouTube',
 	'youtubeauthsub_uploadhere' => 'העלו את הסרטון שלכם מכאן:',
@@ -1681,21 +1682,21 @@ $messages['pt'] = array(
 	'youtubeauthsub_tokenerror' => 'Erro ao gerar o token de autorização. Tente refrescar a página.',
 	'youtubeauthsub_success' => "Parabéns!
 O seu vídeo foi carregado.
-Para visualizar o seu vídeo carregue <a href='http://www.youtube.com/watch?v=$1'>aqui</a>.
-O YouTube pode requerer algum tempo para processar o seu vídeo, de modo que poderá não estar já disponível.
+<a href='http://www.youtube.com/watch?v=$1'>Veja o seu video</a>.
+O YouTube pode necessitar de algum tempo para processar o seu vídeo, de modo que poderá não estar já disponível.
 
-Para incluir o seu vídeo numa página da wiki, inserir o seguinte código numa página:
+Para incluir o seu vídeo numa página da wiki, insira o seguinte código numa página:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Para carregar um vídeo, será necessário que se autentique primeiro no YouTube.',
 	'youtubeauthsub_uploadhere' => 'Carregar o seu vídeo a partir de:',
 	'youtubeauthsub_uploadbutton' => 'Carregar',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Este vídeo pode ser visualizado [http://www.youtube.com/watch?v=$1 aqui]',
+[http://www.youtube.com/watch?v=$1 Veja este vídeo]',
 	'youtubeauthsub_summary' => 'A carregar vídeo YouTube',
 	'youtubeauthsub_uploading' => 'O seu vídeo está a ser carregado.
 Por favor seja paciente.',
-	'youtubeauthsub_viewpage' => 'Como alternativa, pode visualizar o seu vídeo [[$1|aqui]].',
+	'youtubeauthsub_viewpage' => 'Como alternativa, pode [[$1|ver o seu vídeo]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Por favor, introduza 1 ou mais palavras-chave.',
 	'youtubeauthsub_jserror_notitle' => 'Por favor, introduza um título para o vídeo.',
 	'youtubeauthsub_jserror_nodesc' => 'Por favor, introduza uma descrição para o vídeo.',
@@ -2215,7 +2216,7 @@ $messages['vec'] = array(
 	'youtubeauthsub_tokenerror' => "No s'à mìa podù generar el token de autorizassion, próa a agiornar la pagina.",
 	'youtubeauthsub_success' => "Conplimenti!
 El to video el xe stà cargà.
-Par vardar sto video struca <a href='http://www.youtube.com/watch?v=$1'>chì</a>.
+<a href='http://www.youtube.com/watch?v=$1'>Varda el to video</a>.
 Podarìa volerghe del tenpo a YouTube par elaborar el to video, quindi el podarìa no èssar gnancora pronto.
 
 Par inserir sto video in te na pagina de sta wiki, inserìssi el còdese seguente drento na pagina:
@@ -2225,11 +2226,11 @@ Par inserir sto video in te na pagina de sta wiki, inserìssi el còdese seguent
 	'youtubeauthsub_uploadbutton' => 'Carga',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Sto video se pol vardarlo [http://www.youtube.com/watch?v=$1 chì]',
+[http://www.youtube.com/watch?v=$1 Varda sto video]',
 	'youtubeauthsub_summary' => 'Cargar un video de YouTube',
 	'youtubeauthsub_uploading' => "So drio cargar el to video.
 Par piaser speta n'atimo.",
-	'youtubeauthsub_viewpage' => 'In alternativa, ti pol védar el to video [[$1|chì]].',
+	'youtubeauthsub_viewpage' => 'In alternativa, ti pol [[$1|vardar el to video]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Par piaser, inserissi una o più parole chiave.',
 	'youtubeauthsub_jserror_notitle' => 'Par piaser inserissi un titolo par el video.',
 	'youtubeauthsub_jserror_nodesc' => 'Par piaser inserissi na descrission par el video.',

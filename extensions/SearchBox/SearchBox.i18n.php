@@ -31,6 +31,13 @@ Do not translate or change tag names, or link anchors.',
 	'searchbox-namespaces' => '{{Identical|Namespaces}}',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'searchbox-namespaces' => 'ክፍለ-ዊኪዎች:',
+);
+
 /** Old English (Anglo-Saxon)
  * @author Wōdenhelm
  */
@@ -201,6 +208,16 @@ $messages['hu'] = array(
 	'searchbox-search' => 'Keresés',
 	'searchbox-go' => 'Menj',
 	'searchbox-namespaces' => 'Névterek:',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'searchbox-desc' => 'Permitter le inclusion de formularios de recerca',
+	'searchbox-search' => 'Cercar',
+	'searchbox-go' => 'Ir',
+	'searchbox-namespaces' => 'Spatios de nomines:',
 );
 
 /** Japanese (日本語)

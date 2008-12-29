@@ -46,6 +46,13 @@ $messages['ar'] = array(
 	'securepasswords-word' => 'لا تكون كلمة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ouda
+ */
+$messages['arz'] = array(
+	'securepasswords-word' => 'لا تكون كلمة',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -180,6 +187,21 @@ Illo debe:',
  */
 $messages['ja'] = array(
 	'securepasswords-desc' => 'より安全なパスワードのハッシュを生成し、パスワード文字列チェッカーを追加する',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'securepasswords-valid' => 'ពាក្យសំងាត់​របស់​អ្នក​មិន​ត្រឹមត្រូវ ឬ ខ្លី​ពេក​។
+វា​ត្រូវតែ:',
+	'securepasswords-minlength' => 'ត្រូវតែ​យ៉ាង​តិច​ណាស់​ត្រូវ​មាន $1 {{PLURAL:$1|តួអក្សរ|តួអក្សរ}}',
+	'securepasswords-lowercase' => 'មាន​យ៉ាង​តិច ១ តួអក្សរ​តូច',
+	'securepasswords-uppercase' => 'មាន​យ៉ាង​តិច ១ តួអក្សរ​ធំ',
+	'securepasswords-digit' => 'មាន​យ៉ាង​តិច ១ តួ​លេខ',
+	'securepasswords-special' => 'មាន​យ៉ាង​តិច ១ តួ​អក្សរ​ពិសេស (តួអក្សរ​ពិសេស​មាន: $1)',
+	'securepasswords-username' => 'ត្រូវតែ​ខុសពី​ឈ្មោះអ្នកប្រើប្រាស់​របស់​អ្នក',
+	'securepasswords-word' => 'មិនមែន​ជា​ពាក្យ',
 );
 
 /** Korean (한국어)

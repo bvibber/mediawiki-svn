@@ -721,6 +721,7 @@ $messages['vec'] = array(
 	'onlinestatus-desc' => "Zonta na preferensa par mostrar se l'utente el xe presente in sto momento su la wiki",
 	'onlinestatus-subtitle-offline' => "Sto utente desso no'l xe mìa in linea",
 	'onlinestatus-subtitle-online' => 'Sto utente desso el xe in linea',
+	'onlinestatus-tab' => 'Stato',
 	'onlinestatus-toggles-desc' => 'El to stato:',
 	'onlinestatus-toggles-explain' => 'Sta roba la te permete de mostrar ai altri utenti, vardando la to pagina utente, se te sì in linea o no in sto momento.',
 	'onlinestatus-toggles-show' => 'Mostra se son in linea o no su la me pagina utente',

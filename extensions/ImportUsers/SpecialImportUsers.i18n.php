@@ -954,17 +954,23 @@ $messages['pdt'] = array(
 /** Polish (Polski)
  * @author Airwolf
  * @author Dodek
+ * @author Leinad
  * @author Maikking
  * @author McMonster
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'importusers' => 'Importuj kont użytkowników',
+	'importusers-desc' => '[[Special:ImportUsers|Masowe importowanie użytkowników]] z pliku CSV; kodowanie: UTF-8',
 	'importusers-uploadfile' => 'Prześlij plik',
+	'importusers-form-caption' => 'Podaj plik CSV (UTF-8)',
+	'importusers-form-file' => 'Format pliku użytkownika (csv):',
+	'importusers-form-replace-present' => 'Podmień istniejących użytkowników',
 	'importusers-form-button' => 'Importuj',
 	'importusers-user-added' => 'Użytkownik <b>%s</b> został dodany.',
 	'importusers-user-present-update' => 'Użytkownik <b>%s</b> już istnieje. Zaktualizowano.',
 	'importusers-user-present-not-update' => 'Użytkownik <b>%s</b> już istnieje. Nie zaktualizowano.',
+	'importusers-user-invalid-format' => 'Dane użytkownika w linii #%s mają nieprawidłowy format lub są puste. Pominięto.',
 	'importusers-log' => 'Rejestr importu',
 	'importusers-log-summary' => 'Podsumowanie',
 	'importusers-log-summary-all' => 'Wszyscy',

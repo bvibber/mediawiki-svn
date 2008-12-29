@@ -73,6 +73,13 @@ $messages['af'] = array(
 	'patrol-skip' => 'Slaan oor',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'patrol-revert-reason' => 'ምክንያት:',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -249,6 +256,7 @@ $messages['eo'] = array(
 	'patrol-revert-reason' => 'Kialo:',
 	'patrol-skip' => 'Forlasi',
 	'patrol-reverting' => 'Restarigante: $1',
+	'patrol-nonefound' => 'Neniuj taŭgaj redaktoj estis troveblaj por patrolado.',
 	'patrol-endorsed-ok' => 'La redakto estis markita kiel patrolita.',
 	'patrol-endorsed-failed' => 'Ĉi tiu redakto ne povis esti markita kiel patrolita.',
 	'patrol-reverted-ok' => 'La redakto estis restarigita.',
@@ -301,6 +309,7 @@ $messages['fi'] = array(
 	'patrol-revert-reason' => 'Syy',
 	'patrol-skip' => 'Ohita',
 	'patrol-reverting' => 'Palautetaan $1',
+	'patrol-reverted-ok' => 'Muokkaus kumottiin.',
 	'patrol-reasons' => '* Selvää vandalismia
 * Tulokkaan kokeilu
 * Katso keskustelusivu',

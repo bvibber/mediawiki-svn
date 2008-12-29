@@ -1938,6 +1938,66 @@ $messages['te'] = array(
 	'fundraiserstats-total' => 'మొత్తం (USD)',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'contrib-hist-date' => 'Loron ho tempu',
+	'fundraiserstats-date' => 'Tempu',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'contributionreporting-desc' => 'Buhay na paguulat hinggil sa pangangalap ng salaping panustos (pondo) ng Wikimedia',
+	'contributiontotal' => 'Kabuoan ng ambag',
+	'contributionhistory' => 'Kasaysayan ng ambag',
+	'contrib-hist-header' => "Mga puna/kumento ng tagapagkaloob na nasa tunay na panahon/oras mula sa iba't ibang sulok ng daigdig",
+	'contrib-hist-name' => 'Pangalan',
+	'contrib-hist-date' => 'Oras at petsa',
+	'contrib-hist-amount' => 'Halaga',
+	'contrib-hist-next' => 'Mas naunang mga ambag',
+	'contrib-hist-previous' => 'Mas bagong mga ambag',
+	'contrib-hist-anonymous' => 'Hindi nagpapakilala (anonimo)',
+	'contributionstatistics' => 'Mga estadistika (palaulatan) ng mga ambag',
+	'contribstats-desc' => 'Nagpapakita ng mga estadistika para sa mga ambag na ginawa para sa Pundasyong Wikimedia',
+	'contribstats-daily-totals' => '{{PLURAL:$1|Kabuoan para sa araw na ito|Pang-araw-araw na mga kabuoan sa loob ng huling $1 mga araw}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Kabuoan para sa buwang ito|Buwanang mga kabuoan para huling $1 mga buwan}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Kabuoan para sa $1 buwan|Buwanang mga kabuoan para sa $1 mga buwan}}',
+	'contribstats-currency-range-totals' => 'Mga kabuoan ng salaping umiiral (mula $1 hanggang $2)',
+	'contribstats-contribution-range-breakdown' => 'Pagtatala/pagiisa-isa ng mga ambag ayon sa halaga (mula $1 hanggang $2)',
+	'contribstats-currency-totals' => 'Mga kabuoan ng mga salaping umiiral para sa taong pampananalapi ng $1',
+	'contribstats-contribution-breakdown' => 'Pagtatala/pagiisa-isa ng mga ambag para sa taong pampananalapi ng $1',
+	'contribstats-day' => 'Araw',
+	'contribstats-month' => 'Buwan',
+	'contribstats-currency' => 'Salaping umiiral',
+	'contribstats-amount' => 'Halaga (dolyar ng Estados Unidos)',
+	'contribstats-contributions' => 'Mga ambag',
+	'contribstats-total' => 'Kabuoan (dolyar ng Estados Unidos)',
+	'contribstats-avg' => 'Pinatakang halaga (dolyar ng Estados Unidos)',
+	'contribstats-max' => 'Pinakamataas (dolyar ng Estados Unidos)',
+	'contribstats-percentage-ytd' => "Bahagdan (Taon-Hanggang-Petsa o ''YTD'')",
+	'contribstats-total-ytd' => "Kabuoan (Taon-Hanggang-Petsa o ''YTD'')",
+	'contribstats-value-exactly' => 'Hustung-hustong $1',
+	'contribstats-value-under' => 'Mababa sa $1',
+	'contribstats-value-from' => 'Mula $1 - $2',
+	'contribstats-value-over' => 'Mahigit sa $1',
+	'contribstats-percentage' => '$1%',
+	'fundraiserstatistics' => 'Mga estadistika ng pangangalap ng salaping panggugol (pondo)',
+	'fundraiserstats-date' => 'Petsa',
+	'fundraiserstats-day' => '$1 araw ng $2',
+	'fundraiserstats-contributions' => 'Mga ambag',
+	'fundraiserstats-total' => 'Kabuoan (dolyar ng Estados Unidos)',
+	'fundraiserstats-avg' => 'Pinatakang halaga (dolyar ng Estados Unidos)',
+	'fundraiserstats-max' => 'Pinakamataas (dolyar ng Estados Unidos)',
+	'fundraiserstats-tab-totals' => 'Mga kabuoan (dolyar ng Estados Unidos)',
+	'fundraiserstats-tab-contributions' => 'Bilang ng mga ambag',
+	'fundraiserstats-tab-averages' => 'Pinatakang mga halaga (dolyar ng Estados Unidos)',
+	'fundraiserstats-tab-maximums' => 'Mga pinakamatataas (dolyar ng Estados Unidos)',
+	'specialpages-group-contribution' => 'Mga ambag/Pangangalap ng salaping panustos',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Aleksandrit
@@ -1994,6 +2054,7 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'contributionreporting-desc' => 'Ajornamento in tenpo reale su la racolta fondi Wikimedia',
 	'contributiontotal' => 'Contributi totali',
 	'contributionhistory' => 'Storia dei contributi',
 	'contrib-hist-header' => 'Comenti in tenpo reàle dai donatori de tuto el mondo',
@@ -2009,12 +2070,19 @@ $messages['vec'] = array(
 	'contribstats-monthly-totals' => "{{PLURAL:$1|Totale par sto mese|Totali mensili pa' i ultimi $1 mesi}}",
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Totale par el mese de $1|Totali mensili par $1 mesi}}',
 	'contribstats-currency-range-totals' => 'Totale inporti (da $1 a $2)',
+	'contribstats-contribution-range-breakdown' => 'Separassion dei contributi par valor (da $1 a $2)',
+	'contribstats-currency-totals' => "Total de l'ano fiscal $1",
+	'contribstats-contribution-breakdown' => "Separassion dei contributi par valor par l'ano fiscal $1",
 	'contribstats-day' => 'Zorno',
 	'contribstats-month' => 'Mese',
 	'contribstats-currency' => 'Scheo',
 	'contribstats-amount' => 'Inporto (Dolari Mericani)',
 	'contribstats-contributions' => 'Contributi',
 	'contribstats-total' => 'Totale (Dolari Mericani)',
+	'contribstats-avg' => 'Media (dolari mericani)',
+	'contribstats-max' => 'Massimo (dolari mericani)',
+	'contribstats-percentage-ytd' => "Persentual (dal scominsio de l'ano)",
+	'contribstats-total-ytd' => "Totàl (dal scominsio de l'ano)",
 	'contribstats-value-exactly' => 'Esatamente $1',
 	'contribstats-value-under' => 'Manco de $1',
 	'contribstats-value-from' => 'Da $1 a $2',
@@ -2023,7 +2091,14 @@ $messages['vec'] = array(
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Zorno $1 de $2',
 	'fundraiserstats-contributions' => 'Contributi',
+	'fundraiserstats-total' => 'Totàl (dolari mericani)',
+	'fundraiserstats-avg' => 'Media (dolari mericani)',
+	'fundraiserstats-max' => 'Massimo (dolari mericani)',
+	'fundraiserstats-tab-totals' => 'Totali (dolari mericani)',
 	'fundraiserstats-tab-contributions' => 'Nùmaro de contributi',
+	'fundraiserstats-tab-averages' => 'Medie (dolari mericani)',
+	'fundraiserstats-tab-maximums' => 'Massimi (dolari mericani)',
+	'specialpages-group-contribution' => 'Contributi/Racolta fondi',
 );
 
 /** Vietnamese (Tiếng Việt)

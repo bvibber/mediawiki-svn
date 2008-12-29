@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 	'autocreatecategorypages-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Arabic (العربية)
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'autocreatecategorypages-editor' => 'منشئ تصنيف تلقائي',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -158,9 +165,11 @@ Hic es listate tote le paginas in le categoria "$1", e omne subcategoria existen
  * @author Thearith
  */
 $messages['km'] = array(
+	'autocreatecategorypages-desc' => 'បង្កើត​ទំព័រ​ចំណាត់ថ្នាក់ក្រុម ដោយស្វ័យប្រវត្តិ​នៅពេល​រក្សាទុក',
 	'autocreatecategorypages-stub' => 'នេះ​គឺជា​ទំព័រ​ចំណាត់ថ្នាក់ក្រុម​មួយ​។
 
 វា​មាន​រាយឈ្មោះ​រាល់​ទំព័រ​ទាំងអស់​នៅ​ក្នុង​ចំណាត់ថ្នាក់ក្រុម "$1" ក៏ដូចជា​ចំណាត់ថ្នាក់ក្រុមរង​ទាំងអស់​នៃ​ចំណាត់ថ្នាក់ក្រុម "$1" ប្រសិនបើ​មាន​។',
+	'autocreatecategorypages-editor' => 'អ្នកបង្កើត​ចំណាត់ថ្នាក់ក្រុម​ដោយស្វ័យប្រវត្តិ',
 );
 
 /** Ripoarisch (Ripoarisch)

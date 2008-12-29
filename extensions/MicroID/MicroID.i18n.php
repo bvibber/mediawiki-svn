@@ -232,6 +232,14 @@ $messages['ru'] = array(
 	'tog-microid' => 'Опубликуйте <a href="http://microid.org/">MicroID</a>, чтобы подтвердить учётную запись с внешними службами',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Santu
+ */
+$messages['scn'] = array(
+	'microid-desc' => "Junci nu [http://www.microid.org/ MicroID] a li pàggini utenti pi cunfirmari l'account cu sirvizi di fora",
+	'tog-microid' => 'Pùbbrica nu <a href="http://microid.org/">MicroID</a> pi cunfirmari l\'account cu sirvizi di fora',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -254,6 +262,14 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'microid-desc' => 'Lägger ett [http://www.microid.org/ MicroID] till sidor för att bekräfta konto med externa tjänster',
 	'tog-microid' => 'Publicerer en <a href="http://microid.org/">MicroID</a> för att bekräfta konton för externa tjänster',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'microid-desc' => "Zonta un [http://www.microid.org/ MicroID] a le pàxene utente par confermar l'utensa con servizi esterni",
+	'tog-microid' => 'Pùblica un <a href="http://microid.org/">MicroID</a> par confermar l\'utensa con servizi esterni',
 );
 
 /** Vietnamese (Tiếng Việt)

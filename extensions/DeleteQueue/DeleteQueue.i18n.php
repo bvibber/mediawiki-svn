@@ -766,8 +766,12 @@ Vi povas kontraŭi la forigon de ĉi tiu paĝo de [{{fullurl:{{FULLPAGENAME}}|ac
 	'deletequeue-review-newextra' => 'Plia informo:',
 	'deletequeue-review-submit' => 'Konservi Kontrolon',
 	'deletequeue-review-original' => 'Kialo por peto',
+	'deletequeue-review-badaction' => 'Vi specifis nevalidan agon',
+	'deletequeue-review-actiondenied' => 'Vi specifis agon kiu estas malŝalta por ĉi tiu paĝo',
 	'deletequeue-reviewspeedy-tab' => 'Kontroli rapidan forigon',
+	'deletequeue-reviewspeedy-title' => 'Kontroli kandidatecon de rapida forigado de "$1"',
 	'deletequeue-reviewprod-tab' => 'Kontroli proponitan forigon',
+	'deletequeue-reviewprod-title' => 'Kontroli proponitan forigadon de "$1"',
 	'deletequeue-reviewdeletediscuss-tab' => 'Kontroli forigon',
 	'deletequeue-discusscreate-text' => 'Forigo estis proponita pro la jena kialo: $2',
 	'deletequeue-role-nominator' => 'originala proponinto por forigo',
@@ -835,7 +839,7 @@ $messages['fi'] = array(
 	'deletequeue-action-queued' => 'Poisto',
 	'deletequeue-action' => 'Ehdota poistoa',
 	'deletequeue-action-title' => 'Ehdota sivun ”$1” poistoa',
-	'deletequeue-permissions-noedit' => 'Voidaksesi muuttaa sivun poistotilaa sinun täytyy pystyä muokkaamaan sivua.',
+	'deletequeue-permissions-noedit' => 'Sivun poistamiseen vaikuttaminen edellyttää, että pystyt muokkaamaan sivua.',
 	'deletequeue-generic-reasons' => '* Yleiset poistosyyt 
   ** Häiriköinti
   ** Mainostaminen
@@ -844,9 +848,9 @@ $messages['fi'] = array(
 	'deletequeue-nom-alreadyqueued' => 'Sivu on valmiiksi poistojonossa.',
 	'deletequeue-speedy-title' => 'Merkitse ”$1” poistettavaksi',
 	'deletequeue-prod-title' => 'Ehdota sivun ”$1” poistoa',
-	'deletequeue-prod-text' => "Voit käyttää tätä lomaketta sivun ”'''$1'''” poistamisen ehdottamiseen.
+	'deletequeue-prod-text' => "Voit ehdottaa sivun '''$1''' poistamista tällä lomakkeella.
 
-Jos viiden päivän jälkeen kukaan ei ole aloittanut äänestystä sivun poistosta, se poistetaan ylläpitäjän tarkistuksen jälkeen.",
+Jos viiden päivän jälkeen kukaan ei ole kyseenalaistanut sivun poistamista, ylläpitäjän tarkastaa ja poistaa sen.",
 	'deletequeue-prod-reasons' => '-',
 	'deletequeue-delnom-reason' => 'Syy ehdollepanoon:',
 	'deletequeue-delnom-otherreason' => 'Muu syy',
@@ -860,14 +864,14 @@ Jos viiden päivän jälkeen kukaan ei ole aloittanut äänestystä sivun poisto
 	'right-prod-review' => 'Tarkastaa kaikki poistoehdotukset, joista ei ole äänestetty',
 	'right-deletediscuss-nominate' => 'Aloittaa poistokeskustelu',
 	'right-deletediscuss-review' => 'Sulkea poistokeskustelu',
-	'right-deletequeue-vote' => 'Myötäile tai vastusta poistoja',
+	'right-deletequeue-vote' => 'Kannattaa tai vastustaa poistoja',
 	'deletequeue-queue-speedy' => 'Nopea poisto',
 	'deletequeue-queue-prod' => 'Ehdotettu poisto',
 	'deletequeue-queue-deletediscuss' => 'Poistokeskustelu',
 	'deletequeue-page-speedy' => "Tätä sivua on ehdotettu nopeasti poistettavaksi.
 Syyksi tälle annettiin ''$1''.",
 	'deletequeue-notqueued' => 'Valitsemasi sivu ei ole poistojonossa.',
-	'deletequeue-review-action' => 'Tehtävä toimenpide:',
+	'deletequeue-review-action' => 'Toimenpide:',
 	'deletequeue-review-delete' => 'Poista sivu.',
 	'deletequeue-review-change' => 'Poista sivu, mutta eri perusteluilla.',
 	'deletequeue-review-requeue' => 'Siirrä tämä sivu seuraavaan jonoon:',
@@ -900,8 +904,8 @@ Huomaa, että tämä sivu voidaan poistaa nopeasti käytännön mukaisesti.",
 	'deletequeue-vote-object' => 'Vastusta poistoa.',
 	'deletequeue-vote-reason' => 'Kommentit:',
 	'deletequeue-vote-submit' => 'Lähetä',
-	'deletequeue-vote-success-endorse' => 'Äänestyksesi sivun poistosta onnistui.',
-	'deletequeue-vote-success-object' => 'Äänesi sivun säilyttämisestä on kirjattu.',
+	'deletequeue-vote-success-endorse' => 'Äänesi sivun poiston puolesta on kirjattu.',
+	'deletequeue-vote-success-object' => 'Äänesi sivun säilyttämisen puolesta on kirjattu.',
 	'deletequeue-showvotes' => 'Sivun ”$1” vastustajat ja hyväksyjät',
 	'deletequeue-showvotes-restrict-endorse' => 'Näytä vain hyväksyjät',
 	'deletequeue-showvotes-restrict-object' => 'Näytä vain vastustajat',
@@ -916,11 +920,11 @@ Huomaa, että tämä sivu voidaan poistaa nopeasti käytännön mukaisesti.",
 	'deletequeue-list-search-legend' => 'Etsi sivuja',
 	'deletequeue-list-queue' => 'Jono:',
 	'deletequeue-list-status' => 'Tila:',
-	'deletequeue-list-expired' => 'Näytä vain sulkemisen vaativat ehdotukset.',
+	'deletequeue-list-expired' => 'Näytä vain sulkemista vaativat ehdotukset.',
 	'deletequeue-list-search' => 'Etsi',
 	'deletequeue-list-anyqueue' => '(mikä tahansa)',
 	'deletequeue-list-votes' => 'Äänestyslista',
-	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|hyväksyjä|hyväksyjää}}, $2 {{PLURAL:$2|vastustaja|vastustajaa}}',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|hyväksyjä|hyväksyjää}} ja $2 {{PLURAL:$2|vastustaja|vastustajaa}}',
 	'deletequeue-list-header-page' => 'Sivu',
 	'deletequeue-list-header-queue' => 'Jono',
 	'deletequeue-list-header-votes' => 'Hyväksyjät ja vastustajat',
@@ -2652,6 +2656,16 @@ $messages['te'] = array(
 	'deletequeue-list-status' => 'స్థితి:',
 	'deletequeue-list-header-page' => 'పేజీ',
 	'deletequeue-list-header-discusspage' => 'చర్చా పేజీ',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'deletequeue-list-search-legend' => 'Ҷустуҷӯи саҳифаҳо',
+	'deletequeue-list-search' => 'Ҷустуҷӯ',
+	'deletequeue-list-header-page' => 'Саҳифа',
+	'deletequeue-list-header-discusspage' => 'Саҳифаи баҳс',
 );
 
 /** Thai (ไทย)

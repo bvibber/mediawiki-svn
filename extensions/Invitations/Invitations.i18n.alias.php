@@ -135,6 +135,11 @@ $aliases['pt-br'] = array(
 	'Invitations' => array( 'Convites' ),
 );
 
+/** Romanian (Română) */
+$aliases['ro'] = array(
+	'Invitations' => array( 'Invitaţii' ),
+);
+
 /** Swedish (Svenska) */
 $aliases['sv'] = array(
 	'Invitations' => array( 'Inbjudningar' ),

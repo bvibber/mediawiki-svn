@@ -387,6 +387,13 @@ $messages['tg-cyrl'] = array(
 	'charinsert-desc' => 'Имкони эҷоди қуттиҳои ҶаваСкриптро барои [[MediaWiki:Edittools|дохил кардани аломатҳои ғайристандарӣ]] пешниҳод мекунад',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'charinsert-desc' => 'Nagpapahintulot sa paglikha ng kahon ng JavaScript na para sa [[MediaWiki:Edittools|pagsisingit ng wala sa pamantayang mga panitik]]',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

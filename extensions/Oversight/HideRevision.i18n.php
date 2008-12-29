@@ -683,11 +683,16 @@ $messages['de-formal'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'right-oversight' => 'Δείτε μια προηγουμένως κρυφή έκδοση',
 	'hiderevision-prompt' => 'Αριθμός έκδοσης προς αφαίρεση:',
 	'hiderevision-continue' => 'Συνέχεια',
+	'hiderevision-tab' => 'Απόκρυψη της έκδοσης',
+	'hiderevision-link' => 'Κρυφές επεξεργασίες χρήστη',
 	'hiderevision-status' => 'Έκδοση $1: $2',
 	'hiderevision-error-missing' => 'Δεν βρέθηκε στην βάση δεδομένων.',
 	'oversight-view' => 'λεπτομέρειες',
+	'oversight-prev' => 'Τελευταία προηγούμενη έκδοση',
+	'oversight-hidden' => 'Κρυφή έκδοση',
 );
 
 /** Esperanto (Esperanto)
@@ -3004,12 +3009,16 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'group-oversight' => "Oversight-na'in sira",
+	'group-oversight-member' => "Oversight-na'in",
+	'grouppage-oversight' => '{{ns:project}}:Oversight',
 	'hiderevision-prompt' => "Sura versaun nian ne'ebé hakarak halakon:",
 	'hiderevision-tab' => 'Subar versaun',
 	'hiderevision-norevisions' => "Versaun lá'os ba halakon",
 	'hiderevision-status' => 'Versaun $1: $2',
 	'hiderevision-error-current' => 'La bele subar versaun foun pájina nian. Ulun filak pájina.',
 	'oversight-log-hiderev' => 'subar edita husi $1',
+	'oversight' => 'Oversight',
 	'oversight-view' => 'barak liu',
 	'oversight-hidden' => 'Versaun nasubar tiha ona',
 );

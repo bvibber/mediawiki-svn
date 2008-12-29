@@ -736,6 +736,7 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'sitenotice_close' => 'subar',
+	'sitenotice-desc' => 'Uza-na\'in sira bele taka "sitenotice"',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

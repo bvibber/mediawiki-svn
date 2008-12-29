@@ -471,6 +471,13 @@ Du kan inte skapa den här sidan, men du kan [{{fullurl:{{FULLPAGENAME}}|action=
 <createbox>break=no</createbox>",
 );
 
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'createbox-create' => 'Эҷод',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

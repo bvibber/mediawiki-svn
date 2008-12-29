@@ -225,20 +225,27 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Fluence
  * @author Imre
  */
 $messages['es'] = array(
 	'watchers' => 'Vigilantes',
+	'watchers_error_article' => "'''Error:''' La página no existe.",
 );
 
 /** Finnish (Suomi)
  * @author Silvonen
+ * @author Vililikku
  */
 $messages['fi'] = array(
 	'watchers' => 'Tarkkailijat',
+	'watchers-desc' => 'Kertoo, [[Special:Watchers|keillä käyttäjillä on sivu tarkkailulistoillansa]].',
+	'watchers_link_title' => 'Kuka tarkkailee tätä sivua?',
 	'watchers_error_article' => "'''Virhe:''' Sivua ei ole olemassa.",
 	'watchers_header' => '{{PLURAL:$2|Käyttäjä, joka tarkkailee|Käyttäjät, jotka tarkkailevat}} sivua ”$1”',
 	'watchers_noone_watches' => 'Kukaan ei tarkkaile tätä sivua.',
+	'watchers_x_or_more' => '$1 tai useampi {{PLURAL:$1|käyttäjä|käyttäjä}} tarkkailee tätä sivua.',
+	'watchers_less_than_x' => 'Vähemmän kuin $1 {{PLURAL:$1|käyttäjä|käyttäjää}} tarkkailee tätä sivua.',
 );
 
 /** French (Français)
@@ -370,10 +377,10 @@ $messages['km'] = array(
 	'watchers' => 'អ្នកតាមដាន',
 	'watchers_link_title' => 'អ្នកណាកំពុងតាមដាន​ទំព័រនេះ?',
 	'watchers_error_article' => '<b>កំហុស៖</b> ទំព័រមិនមាន ។',
-	'watchers_header' => 'មាន​{{PLURAL:$2|User who is|អ្នកប្រើប្រាស់}} កំពុងតាមដាន "$1"',
+	'watchers_header' => 'មាន​{{PLURAL:$2|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} កំពុងតាមដាន "$1"',
 	'watchers_noone_watches' => 'គ្មាននរណាម្នាក់​កំពុងតាមដាន​ទំព័រនេះទេ។',
-	'watchers_x_or_more' => 'មាន{{PLURAL:$1|users|អ្នកប្រើប្រាស់}} $1 ឬ​ច្រើនជាងនេះ​​កំពុងតាមដាន​ទំព័រនេះ​​។',
-	'watchers_less_than_x' => '{{PLURAL:$1|users|អ្នកប្រើប្រាស់}} ​តិចជាង $1 ​កំពុងតាមដានទំព័រនេះ​។',
+	'watchers_x_or_more' => 'មាន{{PLURAL:$1|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} $1 ឬ​ច្រើនជាងនេះ​​កំពុងតាមដាន​ទំព័រនេះ​​។',
+	'watchers_less_than_x' => '{{PLURAL:$1|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} ​តិចជាង $1 ​កំពុងតាមដានទំព័រនេះ​។',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -657,6 +664,19 @@ $messages['vec'] = array(
 	'watchers_noone_watches' => "Nissuni tien d'ocio sta pagina.",
 	'watchers_x_or_more' => "Almanco $1 {{PLURAL:$1|utente el|utenti i}} sta tegnendo d'ocio sta pagina.",
 	'watchers_less_than_x' => "Manco de $1 {{PLURAL:$1|utente el|utenti i}} tien d'ocio sta pagina.",
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'watchers' => '监视列表',
+	'watchers_link_title' => '谁在监视本页？',
+	'watchers_error_article' => "'''错误:''' 页面不存在。",
+	'watchers_header' => '监视"$1"的{{PLURAL:$2|用户|用户}}',
+	'watchers_noone_watches' => '没有用户监视本页。',
+	'watchers_x_or_more' => '$1 或者更多的{{PLURAL:$1|用户|用户}}将本页加入了他们的监视列表。',
+	'watchers_less_than_x' => '少于$1的{{PLURAL:$1|用户|用户}}将本页加入了他们的监视列表。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

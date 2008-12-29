@@ -188,6 +188,7 @@ $messages['ja'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'catboxattop-desc' => 'បន្ថែម​ប្រអប់​ចំណាត់ថ្នាក់ក្រុម​ទៅ​ខាងលើ​ផ្នែក​ខាងស្ដាំ​នៃ​ទំព័រ',
 	'catboxattop-categories' => 'ចំណាត់ថ្នាក់ក្រុម​ផ្សេងៗ',
 );
 
@@ -296,6 +297,14 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'catboxattop-categories' => 'Kategoria sira',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'catboxattop-desc' => 'Nagdaragdag ng isang kahong pangkaurian sa pangitaas na kanang bahagi ng mga pahina',
+	'catboxattop-categories' => 'Mga kaurian',
 );
 
 /** Ukrainian (Українська)

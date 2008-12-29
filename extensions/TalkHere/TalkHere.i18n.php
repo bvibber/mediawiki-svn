@@ -133,6 +133,22 @@ Els operadors d'aquest lloc no poden responsabilitzar-se dels continguts d'aques
 	'talkhere-collapse' => 'amagar usuari',
 );
 
+/** Czech (Česky)
+ * @author Matěj Grabovský
+ */
+$messages['cs'] = array(
+	'talkhere-desc' => 'Umisťuje diskusní stránku na stránku.',
+	'talkhere-foottext' => 'Tyto komentáře mohli zanechat návštěvníci.
+
+Provozovatelé této stránky nenesou odpovědnost za obsah takových komentářů.',
+	'talkhere-talkpage' => 'diskusní stránka',
+	'talkhere-notalk' => "''(zatím žádné komentáře)''",
+	'talkhere-addcomment' => 'přidat komentář',
+	'talkhere-beforeinput' => 'Níže můžete přidat komentář',
+	'talkhere-loading' => 'načítá se editor...',
+	'talkhere-collapse' => 'skrýt editor',
+);
+
 /** German (Deutsch)
  * @author Daniel Kinzler, brightbyte.de
  * @author Melancholie

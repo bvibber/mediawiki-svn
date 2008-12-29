@@ -310,6 +310,17 @@ $messages['es'] = array(
 	'contributors-target' => 'Título:',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'contributors' => 'Kaastöötajad',
+	'contributors-toolbox' => 'Peamised kaastöötajad',
+	'contributors-target' => 'Pealkiri:',
+	'contributors-submit' => 'Näita',
+	'contributors-nosuchpage' => 'Lehekülge $1 ei ole.',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

@@ -267,9 +267,11 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Imre
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'countedits-username' => 'Nombre de usuario:',
+	'countedits-ok' => 'Aceptar',
 );
 
 /** Extremaduran (Estremeñu)
@@ -1219,7 +1221,7 @@ $messages['vec'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'No ghe xe nissun utente che gabia nome $1.',
 	'countedits-resultheader' => "Risultati par l'utente $1",
-	'countedits-resulttext' => '$1 gà efetuà $2 modifiche',
+	'countedits-resulttext' => '$1 gà efetuà $2 {{PLURAL:$2|modifica|modifiche}}',
 	'countedits-mostactive' => 'Autori col magior nùmaro de contributi',
 	'countedits-nocontribs' => 'No ghe xe stà nissun contributo su sta wiki.',
 );

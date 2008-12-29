@@ -273,6 +273,13 @@ $messages['te'] = array(
 	'emailaddressimage-desc' => 'ఈ-మెయిల్ చిరునామాని బొమ్మగా చూపించడానికి <tt>&lt;email&gt;</tt>ని చేరుస్తుంది',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'emailaddressimage-desc' => 'Tau tan <tt>&lt;email&gt;</tt> ba hatudu diresaun korreiu eletróniku duké imajen',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */

@@ -128,6 +128,15 @@ $messages['eo'] = array(
 	'interwikilist-prefix' => 'Intervikia prefikso:',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'interwikilist' => 'Interwiki loend',
+	'interwikilist-desc' => 'Lisab [[Special:Interwikilist|erilehekülje]], et näha saadaval olevaid interwiki linke',
+	'interwikilist-linkname' => 'Interwiki link',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -308,6 +317,7 @@ $messages['lb'] = array(
 	'interwikilist-linkname' => 'Interwiki Link',
 	'interwikilist-target' => 'Zil-URL',
 	'interwikilist-filter' => 'Lëscht filteren',
+	'interwikilist-prefix' => 'Interwiki-Prefix:',
 );
 
 /** Dutch (Nederlands)
@@ -359,6 +369,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Sp5uhe
  */
 $messages['pl'] = array(
@@ -366,6 +377,8 @@ $messages['pl'] = array(
 	'interwikilist-desc' => 'Dodaje [[Special:Interwikilist|stronę specjalną]] ze spisem dostępnych interwiki',
 	'interwikilist-linkname' => 'Link interwiki',
 	'interwikilist-target' => 'Docelowy adres URL',
+	'interwikilist-filter' => 'Filtruj listę',
+	'interwikilist-prefix' => 'Przedrostek interwiki:',
 );
 
 /** Russian (Русский)

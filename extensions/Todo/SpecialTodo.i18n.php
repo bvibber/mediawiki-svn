@@ -302,13 +302,19 @@ $messages['eo'] = array(
 	'todo-desc' => 'Eksperimenta persona etendilo [[Special:Todo|tasklisto]]',
 	'todo-tab' => 'tasko',
 	'todo-new-queue' => 'nova',
+	'todo-mail-subject' => 'Kompletis taskon en taskolisto de $1',
+	'todo-invalid-item' => 'Mankanta aŭ nevalida aĵo',
+	'todo-update-else-item' => 'Provante ĝisdatigi taskojn de alia persono',
+	'todo-unrecognize-type' => 'Nekonata tipo',
 	'todo-item-list' => 'Viaj taskoj',
 	'todo-no-item' => 'Neniuj taskoj.',
+	'todo-invalid-owner' => 'Nevalida apartenanto de ĉi tiu aĵo',
 	'todo-add-queue' => 'Aldoni atendovico…',
 	'todo-list-for' => 'Tasklisto por',
 	'todo-list-change' => 'Ŝanĝu',
 	'todo-list-cancel' => 'Nuligi',
 	'todo-new-item' => 'Nova aĵo',
+	'todo-issue-summary' => 'Enmeti resumon:',
 	'todo-form-details' => 'Detaloj:',
 	'todo-form-submit' => 'Enigi serĉomendon',
 );
@@ -559,6 +565,7 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'todo-new-queue' => '新規',
 	'todo-list-change' => '変更',
 	'todo-list-cancel' => 'キャンセル',
 	'todo-form-details' => '詳細:',
@@ -588,6 +595,7 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
@@ -595,6 +603,7 @@ $messages['km'] = array(
 	'todo-tab' => 'ត្រូវធ្វើ',
 	'todo-new-queue' => 'ថ្មី',
 	'todo-unrecognize-type' => 'ប្រភេទមិនស្គាល់',
+	'todo-item-list' => 'ធាតុ​របស់​អ្នក',
 	'todo-add-queue' => 'បន្ថែម ជួររង់ចាំ...',
 	'todo-list-change' => 'ផ្លាស់ប្តូរ',
 	'todo-list-cancel' => 'បោះបង់',

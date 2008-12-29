@@ -324,7 +324,9 @@ $messages['eo'] = array(
 	'extdist-choose-extension' => 'Selektu kiun etendilon tiun vi volas alŝuti.',
 	'extdist-submit-extension' => 'Daŭri',
 	'extdist-current-version' => 'Nuna versio (bazo)',
+	'extdist-no-versions' => 'La selektita etendilo ($1) ne estas havebla en iu ajn versio!',
 	'extdist-submit-version' => 'Daŭri',
+	'extdist-tar-error' => 'Tar donis elirkodon $1:',
 );
 
 /** Spanish (Español)

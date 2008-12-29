@@ -486,8 +486,25 @@ $messages['es'] = array(
 	'usagestatisticscalselect' => 'Seleccionar',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'specialuserstats' => 'Kasutuse statistika',
+	'usagestatistics' => 'Kasutuse statistika',
+	'usagestatisticsinterval' => 'Intervall',
+	'usagestatisticstype' => 'Tüüp',
+	'usagestatisticsstart' => 'Alguse kuupäev',
+	'usagestatisticsend' => 'Lõpu kuupäev',
+	'usagestatisticsintervalday' => 'Päev',
+	'usagestatisticsintervalweek' => 'Nädal',
+	'usagestatisticsintervalmonth' => 'Kuu',
+);
+
 /** Finnish (Suomi)
  * @author Japsu
+ * @author Mobe
+ * @author Nike
  * @author Silvonen
  * @author Str4nd
  * @author Vililikku
@@ -506,14 +523,16 @@ $messages['fi'] = array(
 	'usagestatisticsnostart' => '* <font color=red>Syötä aloituspäivä</font>',
 	'usagestatisticsnoend' => '* <font color=red>Syötä lopetuspäivä</font>',
 	'usagestatisticsbadstartend' => '<b>Aloitus- tai lopetuspäivä ei kelpaa! Tarkista päivämäärät.</b>',
+	'usagestatisticsintervalday' => 'Päivä',
 	'usagestatisticsintervalweek' => 'Viikko',
 	'usagestatisticsintervalmonth' => 'Kuukausi',
-	'usagestatisticsincremental' => 'Kasvava',
-	'usagestatisticsincremental-text' => 'kasvava',
-	'usagestatisticscumulative' => 'Kasaantuva',
-	'usagestatisticscumulative-text' => 'kasaantuva',
+	'usagestatisticsincremental' => 'kasvava',
+	'usagestatisticsincremental-text' => 'kasvavat',
+	'usagestatisticscumulative' => 'kasaantuva',
+	'usagestatisticscumulative-text' => 'kasaantuvat',
 	'usagestatisticscalselect' => 'Valitse',
 	'usagestatistics-editindividual' => 'Yksittäisen käyttäjän $1 muokkaustilastot',
+	'usagestatistics-editpages' => 'Yksittäisen käyttäjän $1 sivutilastot',
 );
 
 /** French (Français)
@@ -784,10 +803,18 @@ $messages['km'] = array(
 	'usagestatisticstype' => 'ប្រភេទ',
 	'usagestatisticsstart' => 'កាលបរិច្ឆេទចាប់ផ្តើម',
 	'usagestatisticsend' => 'កាលបរិច្ឆេទបញ្ចប់',
+	'usagestatisticsnostart' => '* <font color=red>សូម​ធ្វើការ​បញ្ជាក់​ដើម្បី​ចាប់ផ្ដើម​ទិន្នន័យ</font>',
+	'usagestatisticsnoend' => '* <font color=red>សូម​ធ្វើការ​បញ្ជាក់​ដើម្បី​បញ្ចប់​ទិន្នន័យ</font>',
 	'usagestatisticsintervalday' => 'ថ្ងៃ',
 	'usagestatisticsintervalweek' => 'សប្តាហ៍',
 	'usagestatisticsintervalmonth' => 'ខែ',
+	'usagestatisticsincremental' => 'បន្ថែម',
+	'usagestatisticsincremental-text' => 'បន្ថែម',
+	'usagestatisticscumulative' => 'សន្សំ',
+	'usagestatisticscumulative-text' => 'សន្សំ',
 	'usagestatisticscalselect' => 'ជ្រើសយក',
+	'usagestatistics-editindividual' => 'អ្នកប្រើប្រាស់​បុគ្គល $1 ស្ថិតិ​កែប្រែ',
+	'usagestatistics-editpages' => 'អ្នកប្រើប្រាស់​បុគ្គល $1 ស្ថិតិ​ទំព័រ',
 );
 
 /** Ripoarisch (Ripoarisch)

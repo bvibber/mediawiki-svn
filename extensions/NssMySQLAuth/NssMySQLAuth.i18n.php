@@ -177,6 +177,20 @@ $messages['es'] = array(
 	'am-active' => 'activo',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'am-username' => 'käyttäjätunnus',
+	'am-email' => 'sähköposti',
+	'am-updated' => 'Muutokset tallennettiin onnistuneesti',
+	'nss-save-changes' => 'Tallenna muutokset',
+	'nss-create-account-header' => 'Luo uusi tunnus',
+	'nss-create-account' => 'Luo tunnus',
+	'nss-no-mail' => 'Älä lähetä sähköpostia',
+	'nss-welcome-mail-subject' => 'Tunnuksen luonti',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex
@@ -266,6 +280,26 @@ $messages['hsb'] = array(
 	'nss-welcome-mail' => 'Konto z wužiwarskim mjenom $1 a hesłom $2 je so za tebje załožiło.',
 	'nss-welcome-mail-subject' => 'Konto załožić',
 	'nss-db-error' => 'Zmylk při čitanju z awtentifikaciskeje datoweje banki',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'accountmanager' => 'Gestion de contos',
+	'am-username' => 'nomine de usator',
+	'am-email' => 'e-mail',
+	'am-active' => 'active',
+	'am-updated' => 'Tu modificationes ha essite confirmate con successo',
+	'nss-desc' => 'Un extension pro authenticar contra un base de datos libnss-mysql. Contine un programma pro le [[Special:AccountManager|gestion de contos]]',
+	'nss-rights' => 'derectos',
+	'nss-save-changes' => 'Confirmar modificationes',
+	'nss-create-account-header' => 'Crear nove conto',
+	'nss-create-account' => 'Crear conto',
+	'nss-no-mail' => 'Non inviar e-mail',
+	'nss-welcome-mail' => 'Un conto con le nomine de usator $1 e contrasigno $2 ha essite create pro te.',
+	'nss-welcome-mail-subject' => 'Creation de contos',
+	'nss-db-error' => 'Error durante le lection del base de datos de authentication',
 );
 
 /** Japanese (日本語)

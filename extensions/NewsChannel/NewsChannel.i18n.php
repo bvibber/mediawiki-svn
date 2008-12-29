@@ -124,10 +124,23 @@ $messages['dsb'] = array(
 
 /** Esperanto (Esperanto)
  * @author Melancholie
+ * @author Yekrats
  */
 $messages['eo'] = array(
+	'newschannel' => 'Aktualaĵa kanelo',
 	'newschannel_format' => 'Formato:',
 	'newschannel_limit' => 'Limo:',
+	'newschannel_include_category' => 'Aldona kategorio:',
+	'newschannel_exclude_category' => 'Ekskludi kategorion:',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'newschannel' => 'Uutiskanava',
+	'newschannel_limit' => 'Rajoitus',
+	'newschannel_submit_button' => 'Luo syöte',
 );
 
 /** French (Français)

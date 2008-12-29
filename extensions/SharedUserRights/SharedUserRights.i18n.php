@@ -98,8 +98,10 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'shareduserrights' => 'Komuna Administrado de Uzulaj Rajtoj',
 	'gblrights-desc' => 'Facila [[Special:SharedUserRights|administrado de ĝeneralaj uzulaj rajtoj]]',
 	'gblrights-logpage' => 'Protokolo pri Ĝeneralaj Rajtoj',
+	'gblrights-pagetext' => 'Jen protokolo por ĉiu de la ŝanĝoj faritaj al la vikiara tabelo de ĝeneralaj rajtoj',
 );
 
 /** French (Français)
@@ -170,6 +172,7 @@ $messages['ia'] = array(
  */
 $messages['km'] = array(
 	'gblrights-logpage' => 'កំណត់ហេតុ​សិទ្ធិសកល',
+	'gblrights-rights-entry' => 'ប្ដូរ​សមាជិកភាំព​ក្រុម​សកល​សម្រាប់ $1 ពី $2 ទៅ $3',
 );
 
 /** Korean (한국어)
@@ -221,6 +224,17 @@ $messages['oc'] = array(
 	'gblrights-logpage' => 'Istoric dels dreches globals',
 	'gblrights-pagetext' => "Aquò es l'istoric de totas las modificacion efectuadas dins la taula globala dels dreches d'utilizaire",
 	'gblrights-rights-entry' => "a modificat l'apartenéncia globala als gropes per $1 de $2 a $3",
+);
+
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'shareduserrights' => 'Wspólne zarządzanie uprawnieniami użytkownika',
+	'gblrights-desc' => 'Łatwe zarządzanie [[Special:SharedUserRights|globalnymi uprawnieniami użytkownika]]',
+	'gblrights-logpage' => 'Rejestr globalnych uprawnień',
+	'gblrights-pagetext' => 'To jest rejestr wszystkich zmian w globalnych uprawnieniach dokonanych dla grupy projektów wiki',
+	'gblrights-rights-entry' => 'zmienił globalną przynależność $1 do grup ($2 → $3)',
 );
 
 /** Russian (Русский)

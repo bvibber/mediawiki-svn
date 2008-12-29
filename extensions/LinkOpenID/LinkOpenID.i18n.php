@@ -83,8 +83,10 @@ To śi dowólijo swój wužywarski bok teke ako OpenID wužywaś.',
 
 /** Esperanto (Esperanto)
  * @author Melancholie
+ * @author Yekrats
  */
 $messages['eo'] = array(
+	'linkopenid-prefs' => 'OpenID',
 	'linkopenid-prefstext-openid' => 'Via OpenID:',
 );
 

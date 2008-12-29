@@ -76,10 +76,11 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'tab0-desc' => 'Lisää ”0”-välilehden, joka linkittää sivun ensimmäisen osan muokkaussivulle.',
+	'tab0-desc' => 'Lisää 0-välilehden, joka toimii linkkinä sivun ensimmäisen osan muokkaukseen.',
 );
 
 /** French (Français)

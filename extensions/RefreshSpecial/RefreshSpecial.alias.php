@@ -34,7 +34,7 @@ $aliases['bs'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'RefreshSpecial' => array( 'Toimintosivujen päivitys' ),
+	'RefreshSpecial' => array( 'Toimintosivun päivitys' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -66,3 +66,4 @@ $aliases['nl'] = array(
 $aliases['no'] = array(
 	'RefreshSpecial' => array( 'Oppdater spesialsider' ),
 );
+

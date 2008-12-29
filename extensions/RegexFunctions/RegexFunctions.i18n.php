@@ -52,10 +52,11 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'regexfunctions-desc' => 'Säännöllisten lausekkeiden jäsennysfunktiot.',
+	'regexfunctions-desc' => 'Säännöllisten lausekkeiden jäsennysfunktioita.',
 );
 
 /** French (Français)

@@ -101,6 +101,14 @@ $messages['es'] = array(
 	'authors_anonymous' => 'Anónimo',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'authors_authors' => 'Autorid',
+	'authors_anonymous' => 'Anonüümne',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

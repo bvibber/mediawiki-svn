@@ -331,8 +331,10 @@ $messages['ext'] = array(
 
 /** Finnish (Suomi)
  * @author Str4nd
+ * @author Vililikku
  */
 $messages['fi'] = array(
+	'createsigndocument' => 'Ota asiakirjojen allekirjoitus käyttöön',
 	'createsigndoc-pagename' => 'Sivu',
 	'createsigndoc-allowedgroup' => 'Sallittu ryhmä',
 	'createsigndoc-email' => 'Sähköpostiosoite',
@@ -342,10 +344,12 @@ $messages['fi'] = array(
 	'createsigndoc-bday' => 'Syntymäaika',
 	'createsigndoc-minage' => 'Vähimmäisikä',
 	'createsigndoc-introtext' => 'Johdanto',
+	'createsigndoc-hidden' => 'Piilotettu',
 	'createsigndoc-optional' => 'Valinnainen',
 	'createsigndoc-create' => 'Luo',
 	'createsigndoc-error-generic' => 'Virhe: $1',
 	'createsigndoc-error-pagenoexist' => 'Virhe: sivua [[$1]] ei löydy.',
+	'createsigndoc-error-alreadycreated' => 'Asiakirjan allekirjoitus ”$1” on jo olemassa.',
 );
 
 /** French (Français)
@@ -585,6 +589,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'createsigndoc-optional' => '任意',
+	'createsigndoc-create' => '作成',
 );
 
 /** Javanese (Basa Jawa)
@@ -615,11 +620,13 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'createsigndoc-pagename' => 'ទំព័រ៖',
+	'createsigndoc-allowedgroup' => 'ក្រុម​ដែល​បាន​អនុញ្ញាត:',
 	'createsigndoc-email' => 'អាសយដ្ឋានអ៊ីមែល៖',
 	'createsigndoc-address' => 'អាសយដ្ឋាន​ផ្ទះ​៖',
 	'createsigndoc-extaddress' => 'ទីក្រុង, រដ្ឋ, ប្រទេស​៖',
 	'createsigndoc-phone' => 'លេខទូរស័ព្ទ៖',
 	'createsigndoc-bday' => 'ថ្ងៃ​ខែ​ឆ្នាំកំណើត​៖',
+	'createsigndoc-minage' => 'អាយុ​អប្បបរមារ:',
 	'createsigndoc-introtext' => 'សេចក្តីណែនាំ៖',
 	'createsigndoc-hidden' => 'ត្រូវបានបិទបាំង',
 	'createsigndoc-optional' => 'តាម​ចំណង់ចំណូលចិត្ត',

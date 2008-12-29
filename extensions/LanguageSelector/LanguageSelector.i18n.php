@@ -346,6 +346,13 @@ $messages['jv'] = array(
 	'languageselector-setlang' => 'sèt',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'languageselector' => 'ენა',
+);
+
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
  * @author AlefZet
  */

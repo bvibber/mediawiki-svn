@@ -321,6 +321,8 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'vote' => 'Voĉdonu',
+	'vote-header' => "Vi povas voĉdoni por '''Supera Mastro de la Universo''' ĉi tie!",
+	'vote-current' => "Via nuna voĉdono estas por '''$1'''.",
 	'vote-legend' => 'Voĉdoni aŭ ŝanĝi voĉdonon',
 	'vote-caption' => 'Via elekto:',
 	'vote-submit' => 'Balotu',
@@ -334,14 +336,33 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Fluence
  * @author Imre
  * @author Sanbec
  */
 $messages['es'] = array(
 	'vote' => 'Votar',
+	'vote-current' => "Tu voto actual es para '''$1'''.",
 	'vote-submit' => 'Votar',
+	'vote-view-results' => 'Ver resultados',
 	'vote-results-choice' => 'Selección',
 	'vote-login-link' => 'entrar',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'vote' => 'Hääletus',
+	'vote-current' => "Su praegune hääl on '''$1''' poolt.",
+	'vote-caption' => 'Sinu valik:',
+	'vote-submit' => 'Hääleta',
+	'vote-registered' => 'Sinu hääl on registreeritud.',
+	'vote-view-results' => 'Vaata tulemusi',
+	'vote-results' => 'Hääletuse tulemused',
+	'vote-results-choice' => 'Valik',
+	'vote-results-count' => 'Üldarv',
+	'vote-login-link' => 'logi sisse',
 );
 
 /** Extremaduran (Estremeñu)
@@ -662,6 +683,7 @@ $messages['km'] = array(
 	'vote-results' => 'លទ្ឋផលនៃការបោះឆ្នោត',
 	'vote-results-choice' => 'ជម្រើស',
 	'vote-results-count' => 'រាប់',
+	'vote-results-none' => 'គ្មាន​សំឡេងឆ្នោត ត្រូវ​បាន​បោះ​​ទេ​នាពេលនេះ​។',
 	'vote-login' => 'អ្នកត្រូវតែ$1ដើម្បីបោះឆ្នោត។',
 	'vote-login-link' => 'ឡុកអ៊ីន',
 	'vote-invalid-choice' => 'អ្នកត្រូវតែជ្រើសយកជម្រើសមួយក្នុងចំណោមជម្រើសទាំងឡាយដែលបានផ្ដល់ឱ្យ។',
@@ -1237,7 +1259,8 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'vote' => 'Голосування',
-	'vote-header' => "Ви можете проголосувати за '''Вищого повелителя світу''' тут!",
+	'vote-desc' => 'Надає можливість простого голосування',
+	'vote-header' => "Ви можете проголосувати за '''Верховного повелителя світу''' тут!",
 	'vote-current' => "Ваш поточний голос за '''$1'''.",
 	'vote-legend' => 'Проголосувати або змінити голос',
 	'vote-caption' => 'Ваш вибір:',
@@ -1250,8 +1273,10 @@ $messages['uk'] = array(
 	'vote-results' => 'Результати голосування',
 	'vote-results-choice' => 'Вибір',
 	'vote-results-count' => 'Кількість',
+	'vote-results-none' => 'Нема голосів, відданих за цей час.',
 	'vote-login' => 'Ви повинні $1 для голосування.',
-	'vote-login-link' => 'вхід у систему',
+	'vote-login-link' => 'вхід до системи',
+	'vote-invalid-choice' => 'Ви можете обрати один з доступних варіантів.',
 );
 
 /** Vietnamese (Tiếng Việt)

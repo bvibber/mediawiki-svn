@@ -91,6 +91,13 @@ $messages['es'] = array(
 	'breadcrumbs-desc' => 'Muestra el enlace de las últimas páginas que el usuario ha visitado en la wiki',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'breadcrumbs-desc' => 'Wikian zeharreko erabiltzaileen ibilbidea erakusten du.',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Nike
@@ -307,6 +314,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'breadcrumbs-desc' => 'వాడుకరులకు వికీలో తోవ చూపిస్తుంది',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'breadcrumbs-desc' => "Hatudu dalan uza-na'in nian husi wiki.",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

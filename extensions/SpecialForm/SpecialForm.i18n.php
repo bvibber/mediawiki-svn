@@ -228,6 +228,11 @@ $messages['eo'] = array(
 	'formarticleexists' => 'Paĝo ekzistas',
 	'formarticleexiststext' => 'La paĝo [[$1]] jam ekzistas.',
 	'formbadpagename' => 'Fuŝa paĝnomo',
+	'formrequiredfieldpluralerror' => 'La kampoj $1 estas devigaj por ĉi tiu kamparo.
+Bonvolu plenumi ilin.',
+	'formrequiredfielderror' => 'La kampo $1 estas deviga por ĉi tiu kamparo.
+Bonvolu plenumi ĝin.',
+	'formsaveerrortext' => "Estis nekonata eraro konservante paĝon '$1'.",
 );
 
 /** Spanish (Español)
@@ -487,6 +492,7 @@ $messages['km'] = array(
 	'form-desc' => '[[Special:Form|ទម្រង់​អន្តរមុខ]]មួយ​ដើម្បី​ចាប់ផ្ដើម​ទំព័រ​ថ្មីនានា',
 	'form' => 'សំណុំបែបបទ',
 	'formnoname' => 'គ្មានឈ្មោះសំណុំបែបបទ',
+	'formnonametext' => 'អ្នក​ត្រូវតែ​ផ្ដល់​សំណុំបែបបទ ដូចជា "Special:Form/សំណុំបែបបទ"​។',
 	'formbadname' => 'ឈ្មោះសំណុំបែបបទមិនល្អ',
 	'formbadnametext' => 'គ្មានឈ្មោះបែបបទ នោះទេ ។',
 	'formpattern' => '$1-សំណុំបែបបទ',

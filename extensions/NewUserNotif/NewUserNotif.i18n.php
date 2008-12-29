@@ -495,6 +495,7 @@ $3లో $2 అనే కొత్త వాడుకరి ఖాతాని $
  */
 $messages['tet'] = array(
 	'newusernotifsubj' => "Mensajen kona-ba uza-na'in foun ba $1",
+	'newusernotif-desc' => "Haruka korreiu eletróniku bainhira kria konta uza-na'in",
 	'newusernotifbody' => "Olá $1,
 
 uza-na'in foun ida, $2, naregistrar tiha iha $3 iha loron $4.",

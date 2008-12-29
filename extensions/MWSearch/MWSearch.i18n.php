@@ -398,6 +398,13 @@ $messages['tg-cyrl'] = array(
 	'mwsearch-desc' => 'Афзунаи MWSearch',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'mwsearch-desc' => "Pampasak na MWHanapin (''MWSearch'')",
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

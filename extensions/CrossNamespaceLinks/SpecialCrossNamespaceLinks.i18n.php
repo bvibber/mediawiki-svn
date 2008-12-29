@@ -131,6 +131,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'crossnamespacelinks' => 'Linkovi između imenskih prostora',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Spisak linkova između imenskih prostora]] koji ne bi trebali postojati na {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Ova stranica daje spisak linkova sa stranice u glavnom imenskom prostoru na stranice u drugim imenskim prostorima (osim za imenske prostore {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}), koje nije preporučljivo koristiti.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linka|linkova}} prema $3',
 );
 

@@ -121,10 +121,11 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'usercontactlink-baduser' => 'virheellinen käyttäjänimi',
+	'usercontactlink-baduser' => 'virheellinen käyttäjätunnus',
 );
 
 /** French (Français)

@@ -461,6 +461,22 @@ $messages['es'] = array(
 	'changeauthor-comment' => 'Comentario:',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'changeauthor' => 'Muuda redigeerimise autorit',
+	'changeauthor-desc' => 'Lubab muuta redigeerimise autorit',
+	'changeauthor-title' => 'Redigeerimise autori muutmine',
+	'changeauthor-search-box' => 'Otsi redigeerimisi',
+	'changeauthor-pagename-or-revid' => 'Lehekülg või redigeerimise ID:',
+	'changeauthor-pagenameform-go' => 'Mine',
+	'changeauthor-comment' => 'Kommentaar:',
+	'changeauthor-changeauthors-single' => 'Muuda autorit',
+	'changeauthor-invalid-username' => 'Kehtetu kasutajanimi "$1".',
+	'changeauthor-nosuchuser' => 'Ei ole sellist kasutajat nagu "$1".',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
@@ -949,7 +965,18 @@ $messages['krj'] = array(
 $messages['ksh'] = array(
 	'changeauthor' => 'Donn do Schriiver fun ene Version ändere',
 	'changeauthor-desc' => 'Määt et müjjelesch, dä Schriiver fun ene Version fun ene Sigg ze ändere.',
+	'changeauthor-title' => 'Donn dä Schriiver vun ene Version vun ene Sigg ußtuusche',
+	'changeauthor-search-box' => 'Versione söke',
+	'changeauthor-pagename-or-revid' => 'Name fun ene Sigg udder Nommer fun ene Version:',
 	'changeauthor-pagenameform-go' => 'Loß Jonn!',
+	'changeauthor-comment' => 'Kommäntaa:',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Eine|$1|Keine}} Schriiver ändere',
+	'changeauthor-explanation-multi' => 'Met dämm Fommulaa kanns De dä Schriiver fun eine Änderung aan en Sigg ußtuusche.
+Donn eijfach eine odder mieh fun dä Metmaacher-Name en dä Leß he drunger ändere, jiff ene Kommäntaa en, wann De wells, un dann dröck op dä „{{int:changeauthor-pagenameform-go}}“ Knopp.',
+	'changeauthor-changeauthors-single' => 'Schriiver Tuusche',
+	'changeauthor-explanation-single' => 'Met dämm Fommulaa kanns De dä Schriiver fun eine Änderung aan en Sigg ußtuusche.
+Donn eijfach dä Metmaacher-Name he drunger ändere, jiff ene Kommäntaa en, wann De wells, un dann dröck op dä „{{int:changeauthor-pagenameform-go}}“ Knopp.',
+	'changeauthor-invalid-username' => 'Dä Name „$1“ för ene Metmaacher es nit jöltesch.',
 	'changeauthor-nosuchuser' => 'Mer han keine Metmaacher, dä „$1“ heejsch.',
 	'changeauthor-revview' => 'De Väsjohn Nommer $1 fun $2',
 	'changeauthor-nosuchtitle' => 'Et jit kei Sigg met dämm Tittel „$1“.',
@@ -960,6 +987,10 @@ un dä Fähler kütt widder,
 dann künnt de Datebangk kapott sin.',
 	'changeauthor-invalidform' => 'Donn dat Fommolaa op dä [[Special:ChangeAuthor|Söndersigg]] nämme,
 un kei eije Fommolaa.',
+	'changeauthor-success' => 'Ding Änderung es jemaat.',
+	'changeauthor-logentry' => 'hät dä Schriiver fun dä Version $2 fun dä Sigg jeändert, et wohr dä Metmaacher $3 un es jetz dä Metmaacher $4.',
+	'changeauthor-logpagename' => 'Logbooch fum Schriiver Ußtuusche',
+	'changeauthor-rev' => '$1',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

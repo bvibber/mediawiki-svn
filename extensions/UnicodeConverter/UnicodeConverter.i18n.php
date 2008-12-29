@@ -114,8 +114,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Imre
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'unicodeconverter-ok' => 'Aceptar',
 	'unicodeconverter-oldtext' => 'Texto original:',
 	'unicodeconverter-newtext' => 'Texto convertido:',
 );

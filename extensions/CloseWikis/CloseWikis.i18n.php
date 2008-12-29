@@ -279,11 +279,37 @@ $messages['eo'] = array(
 	'closewikis-page-err-nowiki' => 'Nevalida vikio estis specifita',
 	'closewikis-page-err-closed' => 'Vikio estas jam fermita',
 	'closewikis-page-err-opened' => 'Vikio ne estas fermita',
+	'closewikis-list' => 'Listo de fermaj vikioj',
 	'closewikis-list-header-wiki' => 'Vikio',
+	'closewikis-list-header-by' => 'Fermis de',
+	'closewikis-list-header-timestamp' => 'Fermis je',
 	'closewikis-log' => 'Protokolo pri vikia fermado',
+	'closewikis-log-header' => 'Jen protokolo de ĉiuj viki-fermadoj kaj remalfermadoj de stevardoj',
 	'closewikis-log-close' => 'fermis $2',
 	'closewikis-log-reopen' => 'remalfermis $2',
 	'right-editclosedwikis' => 'Redakti fermitajn vikiojn',
+	'right-closewikis' => 'Fermi vikiojn',
+);
+
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'closewikis-page' => 'Sulge wiki',
+	'closewikis-page-close' => 'Sulge wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Põhjus (näidatud):',
+	'closewikis-page-close-reason' => 'Põhjus (logitud):',
+	'closewikis-page-close-submit' => 'Sulge',
+	'closewikis-page-close-success' => 'Wiki edukalt suletud',
+	'closewikis-page-reopen' => 'Taasava wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Põhjus:',
+	'closewikis-page-reopen-submit' => 'Taasava',
+	'closewikis-page-reopen-success' => 'Wiki edukalt taasavatud',
+	'closewikis-page-err-closed' => 'Wiki on juba suletud',
+	'closewikis-page-err-opened' => 'Wiki ei ole suletud',
+	'closewikis-list' => 'Suletud wikide list',
 );
 
 /** Finnish (Suomi)
@@ -1046,6 +1072,15 @@ $messages['te'] = array(
 	'closewikis-page-close-wiki' => 'వికీ:',
 	'closewikis-page-reopen-wiki' => 'వికీ:',
 	'closewikis-page-reopen-reason' => 'కారణం:',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-list-header-wiki' => 'Wiki',
 );
 
 /** Vietnamese (Tiếng Việt)

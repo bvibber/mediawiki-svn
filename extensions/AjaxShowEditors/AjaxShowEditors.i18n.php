@@ -839,9 +839,11 @@ $messages['sah'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Santu
  * @author Tonyfroio
  */
 $messages['scn'] = array(
+	'ajax-se-desc' => "Ammustra l'utenti ca stannu canciannu la stissa pàggina",
 	'ajax-se-title' => "Canciamentu 'n corsu:",
 	'ajax-se-pending' => "'n attesa d'aggiornamentu ... (fari clic su chista casidda o ncignari lu canciamentu)",
 	'ajax-se-idling' => '(di $1 s)',

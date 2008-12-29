@@ -263,6 +263,7 @@ $messages['eo'] = array(
 	'povwatch_unknown_subpage' => 'Nekonata subpaĝo.',
 	'povwatch_title' => 'Titolo:',
 	'povwatch_comment' => 'Komento por protokolo:',
+	'povwatch_no_log' => 'Ne estas protokolaj linioj.',
 	'povwatch_unsubscribe' => 'Ellistiĝi',
 	'povwatch_subscribe' => 'Enskribiĝi',
 	'povwatch_added' => 'aldonita',
@@ -273,6 +274,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'povwatch_title' => 'Título:',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'povwatch_subscribe' => 'Tilaa',
 );
 
 /** French (Français)

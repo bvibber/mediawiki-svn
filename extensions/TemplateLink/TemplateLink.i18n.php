@@ -214,6 +214,7 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'templatelink' => 'តំណភ្ជាប់ទំព័រគំរូ',
 	'templatelink_desc' => 'ផ្នែនបន្ថែមនេះអាចបង្ហាញទំព័រគំរូមួយជាទំព័រថ្មី',
+	'templatelink_empty' => 'អ្នក​ត្រូវតែ​ផ្ដល់​ប៉ារ៉ាម៉ែត្រ​មួយ​។',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -682,8 +682,15 @@ Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 	'ogg-desc-link' => 'Sobre este archivo',
 );
 
-/** Basque (Euskara) */
+/** Basque (Euskara)
+ * @author Theklan
+ */
 $messages['eu'] = array(
+	'ogg-desc' => 'Ogg Theora eta Vorbis fitxategientzako edukiontzia, JavaScript playerrarekin',
+	'ogg-short-audio' => 'Ogg $1 soinu fitxategia, $2',
+	'ogg-short-video' => 'Ogg $1 bideo fitxategia, $2',
+	'ogg-short-general' => 'Ogg $1 media fitxategia, $2',
+	'ogg-long-audio' => '(Ogg $1 soinu fitxategia, $2 iraupea, $3)',
 	'ogg-more' => 'Gehiago...',
 	'ogg-dismiss' => 'Itxi',
 	'ogg-download' => 'Fitxategia jaitsi',
@@ -2508,6 +2515,50 @@ $messages['tg-cyrl'] = array(
 	'ogg-dismiss' => 'Бастан',
 	'ogg-download' => 'Боргирии парванда',
 	'ogg-desc-link' => 'Дар бораи ин парванда',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'ogg-desc' => 'Tagahawak para sa mga talaksang Ogg Theora at Vorbis, na may panugtog/pampaandar na JavaScript',
+	'ogg-short-audio' => '$1 na talaksang pangtunog ng Ogg, $2',
+	'ogg-short-video' => "$1 talaksang pampalabas (''video'') ng Ogg, $2",
+	'ogg-short-general' => '$1 talaksang pangmidya ng Ogg, $2',
+	'ogg-long-audio' => '($1 talaksang pantunog ng Ogg, haba $2, $3)',
+	'ogg-long-video' => '($1 talaksan ng palabas ng Ogg, haba $2, $4×$5 mga piksel, $3)',
+	'ogg-long-multiplexed' => '(magkasanib at nagsasabayang talaksang nadirinig o audio/palabas ng Ogg, $1, haba $2, $4×$5 mga piksel, $3 sa kalahatan)',
+	'ogg-long-general' => "(Talaksang pangmidya ng ''Ogg'', haba $2, $3)",
+	'ogg-long-error' => "(Hindi tanggap na talaksang ''ogg'': $1)",
+	'ogg-play' => 'Paandarin',
+	'ogg-pause' => 'Pansamantalang pahintuin',
+	'ogg-stop' => 'Ihinto/itigil',
+	'ogg-play-video' => "Paandarin ang palabas (''video'')",
+	'ogg-play-sound' => 'Patugtugin ang tunog',
+	'ogg-no-player' => 'Paumanhin, tila parang walang anumang sinusuportahang pamapatugtog/pampaandar na sopwer ang sistema mo.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Magkarga lamang po muna ng isang panugtog/pampaandar</a>.',
+	'ogg-no-xiphqt' => 'Tila parang wala ka pang sangkap (komponente) na XiphQT para sa QuickTime.
+Hindi makapagpapatugtog ang QuickTime ng mga talaksang Ogg kapag wala ang ganitong sangkap.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Magkarga muna po ng XiphQT</a> o pumili ng iba pang panugtog/pampaandar.',
+	'ogg-player-videoElement' => "Katutubong tagapagtangkilik/pangsuporta ng pantingin-tingin (''browser'')",
+	'ogg-player-oggPlugin' => "Pampasak sa pantingin-tingin (''browser'')",
+	'ogg-player-cortado' => 'Cortado (Java)',
+	'ogg-player-vlc-mozilla' => 'VLC',
+	'ogg-player-vlc-activex' => 'VLC (ActiveX)',
+	'ogg-player-quicktime-mozilla' => 'QuickTime',
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',
+	'ogg-player-totem' => 'Totem',
+	'ogg-player-kmplayer' => 'KMPlayer',
+	'ogg-player-kaffeine' => 'Kaffeine',
+	'ogg-player-mplayerplug-in' => "pampasak na pampatugtog/pampaandar ng tunog (''mplayerplug-in'')",
+	'ogg-player-thumbnail' => 'Larawang hindi gumagalaw lamang',
+	'ogg-player-soundthumb' => 'Walang pampatugtog/pampaandar',
+	'ogg-player-selected' => '(napili na)',
+	'ogg-use-player' => 'Gamitin ang pampaandar:',
+	'ogg-more' => 'Marami pa…',
+	'ogg-dismiss' => 'Isara',
+	'ogg-download' => 'Ikarga ang talaksan',
+	'ogg-desc-link' => 'Tungkol sa talaksang ito',
 );
 
 /** Turkish (Türkçe)

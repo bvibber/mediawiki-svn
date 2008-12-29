@@ -153,6 +153,14 @@ $messages['eo'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Aldoni paĝojn al atentaro',
 );
 
+/** Spanish (Español)
+ * @author Fluence
+ */
+$messages['es'] = array(
+	'watchsubpages-addtitles' => 'Agregar páginas',
+	'watchsubpages-addtitlestowatchlist' => 'Agregar páginas a la lista de seguimiento',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
@@ -558,6 +566,10 @@ Kapag naglalagay o nagtatanggal ng mga tsek sa maramihang mga pahina, ang mataga
  * @author Candalua
  */
 $messages['vec'] = array(
+	'watchsubpages' => "Tien d'ocio le sotopàxene",
+	'watchsubpages-addedtowatchlist' => 'Quel che segue xe stà zontà ai to Osservati Speciali.',
+	'watchsubpages-addtitles' => 'Zonta pàxene',
+	'watchsubpages-addtitlestowatchlist' => 'Zonta pàxene ai Osservati Speciali',
 	'watchsubpages-desc' => 'Zonta in pressia [[Special:WatchSubpages|tute le sotopagine]] de na pagina ai osservati speciali',
 );
 
@@ -567,6 +579,17 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'watchsubpages' => 'Theo dõi các trang con',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Thêm tất cả các trang con]] của một trang vào danh sách theo dõi một cách nhanh chóng.',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'watchsubpages' => '监视子页',
+	'watchsubpages-addedtowatchlist' => '如下已经添加到您的监视列表中。',
+	'watchsubpages-addtitles' => '增加页面',
+	'watchsubpages-addtitlestowatchlist' => '增加页面到监视列表',
+	'watchsubpages-desc' => '快速[[Special:WatchSubpages|添加所有的子页]]到监视列表',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

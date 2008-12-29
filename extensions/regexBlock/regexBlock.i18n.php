@@ -123,6 +123,7 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'regexblock-form-reason' => 'ምክንያት:',
 	'regexblock-view-all' => 'ሁሉ',
 );
 
@@ -427,6 +428,8 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'regexblock-unblock-success' => 'Malforbaro sukcesis',
 	'regexblock-unblock-log' => "Salutnomo aŭ IP-adreso '''$1''' estis restarigita.",
+	'regexblock-unblock-error' => 'Eraro malforbarante $1.
+Verŝajne ne estas uzanto kun tiu nomo.',
 	'regexblock-form-username' => 'IP Adreso aŭ salutnomo:',
 	'regexblock-form-reason' => 'Kialo:',
 	'regexblock-form-expiry' => 'Findato:',
@@ -928,16 +931,21 @@ $messages['km'] = array(
 	'regexblock-form-username' => 'អាសយដ្ឋានIP ឬឈ្មោះអ្នកប្រើប្រាស់៖',
 	'regexblock-form-reason' => 'មូលហេតុ៖',
 	'regexblock-form-expiry' => 'ផុតកំណត់:',
+	'regexblock-form-account-block' => 'រាំងខ្ទប់​ការបង្កើត​គណនី​ថ្មី',
 	'regexblock-form-submit' => 'ហាមឃាត់អ្នកប្រើប្រាស់នេះ',
 	'regexblock-block-log' => "ឈ្មោះអ្នកប្រើប្រាស់ ឬ អាសយដ្ឋាន IP '''$1''' បានត្រូវ រាំងខ្ទប់។",
 	'regexblock-block-success' => 'រាំងខ្ទប់ដោយជោគជ័យ',
 	'regexblock-form-submit-empty' => 'ផ្តល់ឈ្មោះអ្នកប្រើប្រាស់ឬអាសយដ្ឋានIPដើម្បីហាមឃាត់។',
+	'regexblock-form-submit-expiry' => 'សូម​ធ្វើការ​បញ្ជាក់​កាលបរិច្ឆេទ​ដែល​ត្រូវ​ផុតកំណត់​។',
 	'regexblock-already-blocked' => '$1ត្រូវបានហាមឃាត់រួចហើយ។',
 	'regexblock-stats-username' => 'សម្រាប់ $1',
+	'regexblock-stats-times' => 'បាន​ត្រូវ​រាំងខ្ទប់​នៅលើ',
 	'regexblock-stats-logging' => 'ឡុកអ៊ីនចូលពី​អាសយដ្ឋាន',
 	'regexblock-currently-blocked' => 'អាសយដ្ឋានដែលត្រូវបានហាមឃាត់បច្ចុប្បន្ន៖',
+	'regexblock-view-blocked' => 'មើល​ការ​រាំងខ្ទប់​ដោយ:',
 	'regexblock-view-all' => 'ទាំងអស់',
 	'regexblock-view-go' => 'ទៅ',
+	'regexblock-view-account' => '(រាំងខ្ទប់​ការបង្កើត​គណនី)',
 	'regexblock-view-reason' => 'មូលហេតុ៖ $1',
 	'regexblock-view-block-temporary' => 'ផុតកំណត់នៅ',
 	'regexblock-view-block-expired' => 'បានផុតកំណត់នៅ',

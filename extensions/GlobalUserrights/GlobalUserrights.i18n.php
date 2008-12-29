@@ -20,6 +20,35 @@ $messages['en'] = array(
 	'rights-userrights-global' => 'Manage global user rights',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'gur-desc' => 'Short desciption of this extension.
+Shown in [[Special:Version]].
+Do not translate or change tag names, or link anchors.',
+);
+
+/** Arabic (العربية)
+ * @author Ouda
+ */
+$messages['ar'] = array(
+	'gur-rightslog-name' => 'سجل الحقوق العالمي',
+	'rights-userrights-global' => 'إدارة سجل الحقوق العالمي',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'globaluserrights' => 'Upravljanje pravima globalnih korisnika',
+	'gur-desc' => 'Jednostavna administracija [[Special:GlobalUserRights|globalnih korisničkih prava]]',
+	'gur-rightslog-name' => 'Zapis globalnih prava',
+	'gur-rightslog-header' => 'Ovo je zapis o promjenama globalnih prava.',
+	'gur-rightslog-entry' => 'promijenjeno članstvo u globalnoj grupi za korisnika $1 od $2 na $3',
+	'rights-userrights-global' => 'Upravljanje pravima globalnih korisnika',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */
@@ -106,6 +135,18 @@ $messages['ko'] = array(
 	'gur-rightslog-name' => '공통 권한 기록',
 );
 
+/** Ripoarisch (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'globaluserrights' => 'Verwalldung vun de jemeinsam Metmaacher-Rääschte',
+	'gur-desc' => 'En eijfache Verwalldung för de [[Special:GlobalUserRights|jemeinsam Metmaacher-Rääschte]].',
+	'gur-rightslog-name' => 'Logboch övver jemeinsam Metmaacher-Rääschte',
+	'gur-rightslog-header' => 'Dat es et Logboch met de Änderunge aan de jemeinsame Metmaacher-Rääschte.',
+	'gur-rightslog-entry' => 'hät däm Metmaacher „$1“ sing jemeinsam Räääschte-Jruppe vun „$2“ op „$3“ jeändert',
+	'rights-userrights-global' => 'De jemeinsame Metmaacher_Rääschte verwallde',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -152,6 +193,18 @@ $messages['oc'] = array(
 	'gur-rightslog-header' => "Aquò es lo jornal de las modificacions d'estatuts globals",
 	'gur-rightslog-entry' => 'a modificat los dreches globals per $1 de $2 a $3',
 	'rights-userrights-global' => "Gerir los dreches d'utilizaires globals",
+);
+
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'globaluserrights' => 'Zarządzanie globalnymi uprawnieniami użytkownika',
+	'gur-desc' => 'Łatwe zarządzanie [[Special:GlobalUserRights|globalnymi uprawnieniami użytkownika]]',
+	'gur-rightslog-name' => 'Rejestr globalnych uprawnień',
+	'gur-rightslog-header' => 'To jest rejestr zmian globalnych uprawnień',
+	'gur-rightslog-entry' => 'zmienił globalną przynależność $1 do grup ($2 → $3)',
+	'rights-userrights-global' => 'Zarządzanie globalnymi uprawnieniami użytkownika',
 );
 
 /** Romanian (Română)

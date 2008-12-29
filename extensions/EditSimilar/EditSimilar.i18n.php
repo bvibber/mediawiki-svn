@@ -138,6 +138,8 @@ Jen rilataj paĝoj: $1.',
 Jen rilata paĝo: $1.',
 	'editsimilar-thanks-notsimilar' => 'Dankon pro via kontribuo.
 Jen paĝoj kiuj ankaŭ bezonas vian helpon: $1.',
+	'editsimilar-thanks-notsimilar-singleresult' => 'Dankon por via kontribuo.
+Ĉi tiu paĝo ankaŭ povas uzi vian helpon: $1.',
 	'editsimilar-thankyou' => 'Dankon pro via kontribuo, $1!',
 	'editsimilar-link-disable' => 'fari preferojn',
 );

@@ -126,17 +126,21 @@ $wgCustomToolbarMessages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ouda
  * @author Ramsis II
  */
 $wgCustomToolbarMessages['arz'] = array(
 	'ct_bold_caption' => 'خط تخين',
+	'ct_italic_sample' => 'نص مائل',
 	'ct_italic_caption' => 'خط مايل',
 	'ct_internal_sample' => 'اسم الصفحة',
 	'ct_image_caption' => 'ضيف صورة',
+	'ct_math_caption' => 'صيغة',
 	'ct_nowiki_caption' => 'مافيش ويكي',
 	'ct_horizontal_caption' => 'خط افقي',
 	'ct_submit' => 'روح!',
 	'ct_user_user' => 'يوزر',
+	'ct_user_caption' => 'وصلة المستخدم',
 	'ct_user_sample' => 'اسم اليوزر',
 );
 
@@ -290,6 +294,7 @@ Bitte überprüfe deinen Popup-Blocker.',
  * @author Yekrats
  */
 $wgCustomToolbarMessages['eo'] = array(
+	'ct-desc' => 'Aldonas etendeblan ilobreton',
 	'ct_bold_sample' => 'Grasa teksto',
 	'ct_bold_tip_ins' => 'Enmeti grasan tekston',
 	'ct_bold_tip_wrap' => 'Grasigi la tekton',
@@ -310,7 +315,10 @@ $wgCustomToolbarMessages['eo'] = array(
 	'ct_attachment_tip' => 'Enmeti afiŝaĵon',
 	'ct_attachment_caption' => 'Aldoni afiŝaĵon',
 	'ct_math_sample' => 'Enmeti formulon LaTeX ĉi tie',
+	'ct_math_tip_ins' => 'Enmeti matematikan formulon (LaTeX)',
+	'ct_math_tip_wrap' => 'Fari ĉi tiun tekston al matematika formulo (LaTeX)',
 	'ct_math_caption' => 'Formulon',
+	'ct_nowiki_sample' => 'Enmetu ordinaran tekston ĉi tie',
 	'ct_nowiki_tip_ins' => 'Ignori vikian formatadon',
 	'ct_nowiki_tip_wrap' => 'Ignori vikian formatadon por ĉi tiu teksto',
 	'ct_nowiki_caption' => 'Neniu vikio',
@@ -318,9 +326,12 @@ $wgCustomToolbarMessages['eo'] = array(
 	'ct_horizontal_caption' => 'Horizonta linio',
 	'ct_upload' => 'Alŝuti $1n',
 	'ct_select' => 'Selekti $1 por alŝuti',
+	'ct_link' => 'Aldoni ligilan nomon (nedevige)',
 	'ct_submit' => 'Ek!',
 	'ct_close' => 'Fermi fenestron',
 	'ct_success' => 'Dosiera alŝuto sukcesis!',
+	'ct_popupblocked' => 'La alŝuta ŝprucfenestro estis preventita de malfermi.
+Bonvolu kontroli vian ŝprucfenestran barilon.',
 	'ct_user_user' => 'Uzanto',
 	'ct_user_tip' => 'Enmeti ligilon al uzula paĝo',
 	'ct_user_caption' => 'uzanto ligilo',
@@ -787,6 +798,7 @@ $wgCustomToolbarMessages['jv'] = array(
  * @author Thearith
  */
 $wgCustomToolbarMessages['km'] = array(
+	'ct-desc' => 'បន្ថែម​របារឧបករណ៍​ដែល​អាច​ដាក់​បាន',
 	'ct_bold_sample' => 'អក្សរ​ដិត',
 	'ct_bold_tip_ins' => 'បញ្ចូល​អក្សរ​ដិត',
 	'ct_bold_tip_wrap' => 'ធ្វើ​ឱ្យ​អក្សរ​នេះ​ដិត',
@@ -811,6 +823,8 @@ $wgCustomToolbarMessages['km'] = array(
 	'ct_math_tip_wrap' => 'ដាក់​រូបមន្ត​គណិតវិទ្យា (LaTeX) ជាមួយ​អត្ថបទ​នេះ',
 	'ct_math_caption' => 'រូបមន្ត',
 	'ct_nowiki_sample' => 'បញ្ចូល​អត្ថបទ​គ្មាន​ទ្រង់ទ្រាយ​នៅ​ទីនេះ',
+	'ct_nowiki_tip_ins' => 'មិន​គិត​ទម្រង់​វិគី',
+	'ct_nowiki_tip_wrap' => 'មិន​គិត​ទម្រង់​វិគី​សម្រាប់​អក្សរ​នេះ',
 	'ct_nowiki_caption' => 'គ្មាន​វិគី',
 	'ct_horizontal_tip' => 'បញ្ចូល​ខ្សែផ្ដេក​មួយ (ប្រើ sparingly)',
 	'ct_horizontal_caption' => 'ខ្សែផ្ដេក',

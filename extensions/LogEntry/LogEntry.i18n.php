@@ -79,9 +79,13 @@ $messages['dsb'] = array(
 
 /** Esperanto (Esperanto)
  * @author Melancholie
+ * @author Yekrats
  */
 $messages['eo'] = array(
 	'logentry-append' => 'Almeti',
+	'logentry-parserhook-desc' => 'Ĉi tiu etikeda etendilo provizas paĝon por aldoni al la fino aux komenco de protokolaj paĝoj',
+	'logentry-specialpage-desc' => 'Ĉi tiu etikeda etendilo provizas procesado por aldonado al protokolaj paĝoj',
+	'logentry' => 'LogEntry',
 	'logentry-invalidpage' => 'Malvalida paĝo',
 	'logentry-invalidtoken' => 'Malvalida ĵetono',
 );
@@ -179,6 +183,13 @@ $messages['nl'] = array(
 	'logentry' => 'Logboekregel',
 	'logentry-invalidpage' => 'Ongeldige pagina',
 	'logentry-invalidtoken' => 'Ongeldig token',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'logentry-append' => 'Legg til',
 );
 
 /** Occitan (Occitan)

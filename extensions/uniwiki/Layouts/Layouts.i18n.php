@@ -42,10 +42,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ouda
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'layouts_title' => 'ابتدي صفحه',
+	'layouts_nolayout' => 'لا يوجد تصميم',
 	'layouts_continue' => 'استمر',
 	'layouts_choosecategory' => 'اختار تصنيف لـ $1:',
 	'layouts_unknown' => 'مش معروف',
@@ -124,6 +126,7 @@ $messages['eo'] = array(
 	'layouts_continue' => 'Daŭrigi',
 	'layouts_choosecategory' => 'Selekti kategorion por $1:',
 	'layouts_unknown' => 'Nekonata',
+	'layouts_tagline' => "Ĉi tiu paĝo estis generita de la aranĝo '''$1'''.",
 );
 
 /** Spanish (Español) */
@@ -135,6 +138,15 @@ $messages['es'] = array(
 	'layouts_choosecategory' => 'Elige una Categoría para $1:',
 	'layouts_unknown' => 'Desconocido',
 	'layouts_tagline' => 'Esta página se generó con el diseño <strong>$1</strong>.',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'layouts_title' => 'Luo sivu',
+	'layouts_nolayout' => 'Ei ulkoasua',
+	'layouts_unknown' => 'Tuntematon',
 );
 
 /** French (Français)

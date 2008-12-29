@@ -233,6 +233,21 @@ $messages['eo'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Eraro de enigo!',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'chemFunctions_Formula' => 'Valem',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'chemFunctions_CAS' => 'CAS-numero',
+	'chemFunctions_Name' => 'IUPAC-nimi',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

@@ -122,6 +122,11 @@ $aliases['pt-br'] = array(
 	'Contributors' => array( 'Contribuidores', 'Colaboradores' ),
 );
 
+/** Romanian (Română) */
+$aliases['ro'] = array(
+	'Contributors' => array( 'Contribuitori' ),
+);
+
 /** Swahili (Kiswahili) */
 $aliases['sw'] = array(
 	'Contributors' => array( 'Wachangiaji' ),

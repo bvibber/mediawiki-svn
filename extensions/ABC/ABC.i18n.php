@@ -105,6 +105,13 @@ $messages['es'] = array(
 	'abcdownload' => 'Descargar:',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'abcdownload' => 'Laadi alla:',
+);
+
 /** Basque (Euskara)
  * @author Theklan
  */
@@ -152,6 +159,14 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'abcdesc' => 'Προσθέτει τὸ προσάρτημα <tt>&lt;abc&gt;</tt> ἵνα μορφώσῃ τὴν μουσικὴν ABC',
 	'abcdownload' => 'Καταφόρτισις:',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'abcdesc' => 'Tue s <tt>&lt;abc&gt;</tt>-Tag zuefiege zum Musik in ABC notiere',
+	'abcdownload' => 'Abelade:',
 );
 
 /** Hebrew (עברית)

@@ -148,6 +148,15 @@ $messages['es'] = array(
 	'piwik-browsers' => 'Navegadores',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'piwik-lastvisits' => 'Viimeiset käynnit',
+	'piwik-countries' => 'Maat',
+	'piwik-browsers' => 'Selaimet',
+);
+
 /** French (Français)
  * @author Grondin
  */
@@ -166,6 +175,17 @@ $messages['gl'] = array(
 	'piwik-lastvisits' => 'Últimas visitas',
 	'piwik-countries' => 'Países',
 	'piwik-browsers' => 'Navegadores',
+);
+
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'piwik-desc' => 'הוספת סקריפטים של Piwik לתוך דפים של מדיה־ויקי לשם מעקב, והוספת [[Special:Piwik|מעט סטטיסטיקות]]',
+	'piwik-lastvisits' => 'ביקורים אחרונים',
+	'piwik-countries' => 'ארצות',
+	'piwik-browsers' => 'דפדפנים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

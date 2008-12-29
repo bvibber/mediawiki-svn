@@ -736,6 +736,7 @@ $messages['os'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Masti
  * @author Sp5uhe
  * @author Szczepan1990
@@ -748,6 +749,8 @@ $messages['pl'] = array(
 	'edituser-dosearch' => 'Szukaj',
 	'edituser-nouser' => 'Taki użytkownik nie istnieje',
 	'edituser-exempt' => 'Nie możesz edytować tego użytkownika',
+	'right-edituser' => 'Edytować preferencje innych użytkowników',
+	'right-edituser-exempt' => 'Inni nie mogą edytować preferencji tego użytkownika',
 );
 
 /** Pashto (پښتو)

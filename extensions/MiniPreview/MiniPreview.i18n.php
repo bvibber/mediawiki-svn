@@ -140,12 +140,13 @@ $messages['eo'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'minipreview-files_in_category' => "Tämä luokka sisältää '''$1''' {{PLURAL:$1|tiedoston|tiedostoa}}.",
 	'minipreview-files_in_gallery' => "Tämä galleria sisältää '''$1''' {{PLURAL:$1|tiedoston|tiedostoa}}.",
-	'minipreview-no_category_gallery' => 'Luokkia tai gallerioita ei ole!',
+	'minipreview-no_category_gallery' => 'Luokkia tai gallerioita ei ole.',
 );
 
 /** French (Français)

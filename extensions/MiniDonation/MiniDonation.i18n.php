@@ -98,6 +98,13 @@ $messages['es'] = array(
 	'donationform-submit' => 'Donar a través de PayPal.',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'donationform-submit' => "Anneta läbi PayPal'i",
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

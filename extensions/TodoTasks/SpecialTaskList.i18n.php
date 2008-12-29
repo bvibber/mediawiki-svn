@@ -200,10 +200,14 @@ Dein freundliches %s-Benachrichtungssystem',
  */
 $messages['eo'] = array(
 	'tasklist' => 'Tasklisto',
+	'tasklist-parser-desc' => 'Aldonas sintaksan funkcion <nowiki>{{#todo:}}</nowiki> por asigni taskojn',
+	'tasklist-special-desc' => 'Aldonas specialan paĝon por kontroli [[Special:TaskList|taskajn asignojn]]',
 	'tasklistbyproject' => 'Tasklisto Laŭ Projekto',
 	'tasklistunknownproject' => 'Nekonata projekto',
+	'tasklistunspecuser' => 'Nespecifa uzanto',
 	'tasklistincorrectuser' => 'Malkorekta salutnomo',
 	'tasklistemail' => 'Kara %j',
+	'tasklistemailsubject' => '[%s] Ŝanĝo de tasklisto',
 	'tasklistmytasks' => 'Miaj taskoj',
 	'tasklistbyprojectbad' => "Projekto '''%s''' ne estas valida projekto.
 Por listo de validaj projektoj, vidu [[MediaWiki:TodoTasksValidProjects]].",
@@ -434,6 +438,7 @@ $messages['km'] = array(
 	'tasklist' => 'បញ្ជីពិភាក្សា',
 	'tasklistbyproject' => 'បញ្ជី​កិច្ចការ​តាម​គម្រោង',
 	'tasklistunknownproject' => 'គម្រោង​មិនស្គាល់',
+	'tasklistunspecuser' => 'អ្នកប្រើប្រាស់​ដែល​មិន​ត្រូវ​បាន​បញ្ជាក់',
 	'tasklistincorrectuser' => 'ឈ្មោះអ្នកប្រើប្រាស់ មិនត្រឹមត្រូវ',
 	'tasklistemail' => 'ជូនចំពោះ %s',
 	'tasklistemailsubject' => '[%s] បំលាស់ប្ដូរ​បញ្ជី​ភារកិច្ច',
@@ -871,6 +876,36 @@ $messages['tg-cyrl'] = array(
 	'tasklistbyprojname' => "Вазифаҳои таъйин шуда барои '''%s'''",
 	'tasklistchooseproj' => 'Интихоби Лоиҳа:',
 	'tasklistprojdisp' => 'Намоиш',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'tasklist' => 'Talaan ng gawain',
+	'tasklist-parser-desc' => 'Nagdaragdag ng tungkuling pambanghay na <nowiki>{{#mgagagawin:}}</nowiki> para sa pagtatakda ng mga gawain',
+	'tasklist-special-desc' => 'Nagdaragdag ng isang natatanging pahina para sa muling pagsusuri ng [[Special:TaskList|mga pagtatakda ng mga gawain]]',
+	'tasklistbyproject' => 'Talaan ng gawain ayon sa proyekto',
+	'tasklistunknownproject' => 'Hindi nalalamang proyekto',
+	'tasklistunspecuser' => 'Hindi natukoy na tagagamit',
+	'tasklistincorrectuser' => 'Hindi tamang pangalan ng tagagamit',
+	'tasklistemail' => 'Mahal na %s',
+	'tasklistemailsubject' => '[%s] Pagbabago sa talaan ng gawain',
+	'tasklistmytasks' => 'Mga gawain ko',
+	'tasklistbyprojectbad' => "Hindi isang tanggap na proyekto ang '''%s'''.
+Para sa isang talaan ng tanggap na mga proyekto, tingnan ang [[MediaWiki:TodoTasksValidProjects|MediaWiki:GagawingMgaGawainTanggapNaMgaProyekto]].",
+	'tasklistbyprojname' => "Nakatakdang mga gawain para kay '''%s'''",
+	'tasklistchooseproj' => 'Pumili ng proyekto:',
+	'tasklistprojdisp' => 'Palitawin',
+	'tasklistbyname' => '== Talaan ng gagawin para kay %s ==',
+	'tasklistnoprojects' => "Kamalian: Tila mukhang pinaandar mo ang '''\$wgGamitinMgaProyekto''', ngunit hindi lumikha ng [[MediaWiki:GagawinMgaGawainTanggapNaMgaProyekto]]. Tingnan ang  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Mga Panuto Hinggil sa Pagluluklok (Instalasyon)] para sa mas marami pang mga detalye.",
+	'tasklistemailbody' => ',
+
+Mayroong isang tao na nagtakda sa iyo ng isang bagong Gawain sa %s.
+
+Upang tingnan ang kabuoan ng Talaan ng Gawain mo pumunta sa %s.
+
+Ang iyong palakaibigang sistemang tagapagbigay ng ulat ng %s',
 );
 
 /** Turkish (Türkçe)

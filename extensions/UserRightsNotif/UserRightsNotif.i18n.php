@@ -243,6 +243,7 @@ $2',
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'userrightsnotifysubject' => 'Ŝanĝo de grupa membreco en $1',
 	'userrightsnotifybody' => 'Saluton, $1.
 
 Bonvolu noti ke via grupa membreco en $2 estis ŝanĝita de $3 je $4.
@@ -251,6 +252,7 @@ Aldonis: $5
 Forigis: $6
 
 Kore salutas $2',
+	'userrightsnotif-desc' => 'Sendus retpoŝtajn noticojn al uzantoj se rajtoj ŝangus',
 );
 
 /** Spanish (Español)

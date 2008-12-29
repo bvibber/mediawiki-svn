@@ -80,7 +80,7 @@ $aliases['hsb'] = array(
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'InterwikiList' => array( 'Interwikik listája' ),
+	'InterwikiList' => array( 'Wikiközi hivatkozások listája', 'Interwikik listája' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */

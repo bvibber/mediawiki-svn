@@ -126,6 +126,13 @@ $messages['ja'] = array(
 	'semanticgooglemaps-desc' => '利用者が、構造化されたデータに基づいて、Google Mapsをwikiページに加えることができるようにする',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'ក្រឡេក​មើល​កូអរដោនេ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

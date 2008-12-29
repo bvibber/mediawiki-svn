@@ -85,6 +85,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'signaturelogpage' => 'Protokolo pri subskriboj',
+	'signaturelogentry' => 'subskribas la dokumenton $1',
 );
 
 /** Basque (Euskara)
@@ -99,7 +100,10 @@ $messages['eu'] = array(
  * @author Vililikku
  */
 $messages['fi'] = array(
+	'signaturelogpage' => 'Allekirjoitusloki',
 	'signature-desc' => 'Sallii dokumentin [[Special:SignDocument|allekirjoituksen]].',
+	'signaturelogpagetext' => 'Tämä on [[Special:SignDocument|kaikkien asiakirjoihin lisättyjen allekirjoitusten]] loki..',
+	'signaturelogentry' => 'allekirjoitettiin asiakirja $1',
 );
 
 /** French (Français)
@@ -170,6 +174,8 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'signaturelogpage' => 'កំណត់ហេតុនៃការចុះហត្ថលេខា',
+	'signature-desc' => 'ឯកសារ​ត្រូវ​បាន​អនុញ្ញាត​ឱ្យ​[[Special:SignDocument|ចុះហត្ថលេខា]]',
+	'signaturelogpagetext' => 'នេះ​គឺជា​កំណត់ហេតុ​នៃ​[[Special:SignDocument|គ្រប់​ហត្ថលេខា​ទាំងអស់ ដែល​បាន​បន្ថែម​លើ​ឯកសារ]]​។',
 	'signaturelogentry' => 'បានចុះហត្ថលេខាលើឯកសារ $1',
 );
 
