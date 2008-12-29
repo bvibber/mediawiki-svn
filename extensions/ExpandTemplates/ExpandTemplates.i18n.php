@@ -1580,6 +1580,27 @@ $messages['th'] = array(
 	'expand_templates_ok' => 'ตกลง',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'expandtemplates' => 'Palaparin (palawakin) ang mga suleras',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Nagpapalawak ng mga suleras, mga tungkuling pambanghay, at mga halagang pabagu-bago]] upang maipakita ang lumapad/lumawak na mga tesktong pangwiki at pahinang hinainan ng paunang tingin',
+	'expand_templates_intro' => 'Ang natatanging pahinang ito ay kumukuha ng ilang mga teksto at nagpapalawak ng lahat ng mga suleras sa loob nito sa kaparaanang "pagtawag sa sarili" (rekursibo).
+Nagpapalapad din ito ng mga tungkuling pambanghay katulad ng
+<nowiki>{{</nowiki>#kung:…}}, at pabagubagong mga halagang katulad ng
+<nowiki>{{</nowiki>KASALUKUYANGARAW}}&mdash;sa katotohanan ay halos lahat ng mga bagay-bagay na may dalawang mga bantas na pansalalay (brakete).
+Ginagawa ito nito sa pamamagitan ng pagtawag sa mga kaugnay na mga tanghalang pambanghay mula sa sarili mismo ng MediaWiki.',
+	'expand_templates_title' => 'Pamagat na pampaunawa (ng konteksto), para sa {{PAGENAME}} atbp.:',
+	'expand_templates_input' => 'Tekstong ipinasok:',
+	'expand_templates_output' => 'Kinalabasan',
+	'expand_templates_xml_output' => 'kinalabasang XML',
+	'expand_templates_ok' => "Sige/Ayos 'yan",
+	'expand_templates_remove_comments' => 'Tanggalin ang mga puna (kumento)',
+	'expand_templates_generate_xml' => 'Ipakita ang puno na pambanghay ng XML',
+	'expand_templates_preview' => 'Paunang tingin',
+);
+
 /** Tonga (faka-Tonga) */
 $messages['to'] = array(
 	'expandtemplates' => 'Fakalahiange ʻa e ngaahi sīpinga',

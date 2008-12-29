@@ -629,6 +629,7 @@ $messages['eo'] = array(
 	'sign-phone' => 'Nombro de telefono:',
 	'sign-bday' => 'Aĝo:',
 	'sign-email' => 'Retpoŝta adreso:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> indikas devigan kampon.</i></small>',
 	'sign-hide-note' => '<small><i><font color="red">**</font>Notu: Nelistigita informo ankoraŭ estos videbla al administrantoj.</i></small>',
 	'sign-list-anonymous' => 'Listigu anonime',
 	'sign-list-hideaddress' => 'Ne listigu adreson',
