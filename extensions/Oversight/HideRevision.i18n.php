@@ -755,22 +755,45 @@ $messages['es'] = array(
 	'hiderevision' => 'Esconder revisiones permanentemente',
 	'hiderevision-desc' => 'Esconde revisiones individuales de todos los usuarios para motivos legales etc.',
 	'group-oversight' => 'Oversighters',
+	'group-oversight-member' => 'supervisor',
+	'grouppage-oversight' => '{{ns:project}}:Supervisión',
 	'right-oversight' => 'Ver una revisión anteriormente escondida',
 	'right-hiderevision' => 'Revisar y restaurar revisiones ocultadas por los administradores',
 	'hiderevision-prompt' => 'Número de revisión a ocultar:',
 	'hiderevision-continue' => 'Seguir',
+	'hiderevision-text' => "Esto '''sólo''' se debería usar en los siguientes casos:
+* Información personal no apropiada
+*: ''domilicios, números de teléfono, documentos de identidad, etc.''
+
+'''El abuso de este sistema llevará consigo la pérdida de privilegios.'''
+
+Los elementos eliminados no serán visibles por nadie en todo el sitio web, pero los borrados quedan registrados y podrían ser restaurados manualmente por un administrador de la base de datos si cometieras un error.",
+	'hiderevision-reason' => 'Motivo (será registrado privadamente):',
 	'hiderevision-submit' => 'Esconder estos datos permanentemente',
 	'hiderevision-tab' => 'Esconder revisión',
 	'hiderevision-link' => 'Contribuciones ocultas de usuario',
 	'hiderevision-norevisions' => 'No se han especificado revisiones para borrar.',
+	'hiderevision-noreason' => 'Debes describir el motivo de esta eliminación.',
 	'hiderevision-status' => 'Revisión $1: $2',
 	'hiderevision-success' => 'Se archivó y se borró con éxito.',
 	'hiderevision-error-missing' => 'No encontrado en la base de datos.',
+	'hiderevision-error-current' => 'No se puede borrar la última edición de una página.
+Revierte antes el cambio.',
 	'hiderevision-error-delete' => 'No se pudo archivar; ¿fue borrada anteriormente?',
 	'hiderevision-archive-status' => 'Revisión borrada de $1: $2',
+	'oversight-nodiff' => 'Fue imposible seguir las modificaciones ya que no existe actualmente una revisión anterior de esta página. Puede que:
+*La página fuera borrada
+*Esta revisión oculta fuera la primera.',
+	'oversight-log-hiderev' => 'eliminada una edición de $1',
+	'oversight' => 'Supervisión',
 	'oversight-view' => 'detalles',
 	'oversight-difference' => '(Diferencia de revisión anterior restante)',
+	'oversight-prev' => 'Última revisión anterior',
 	'oversight-hidden' => 'Revisión escondida',
+	'oversight-header' => 'Debajo hay una lista de revisiones ocultas permanentemente a la vista pública.
+Hacer pública esta información puede provocar la pérdida definitiva de los privilegios de supervisión.',
+	'oversight-legend' => 'Registro de búsqueda de revisiones ocultas',
+	'oversight-oversighter' => 'Supervisor:',
 	'oversight-offender' => 'Contraventor:',
 );
 
@@ -3356,6 +3379,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Alex S.H. Lin
+ * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
 	'hiderevision' => '永久隐藏修订版本',
@@ -3378,6 +3402,7 @@ $messages['zh-hans'] = array(
 	'hiderevision-reason' => '理由 (这个记录将不会公开):',
 	'hiderevision-submit' => '永久隐藏这项资料',
 	'hiderevision-tab' => '隐藏此修订',
+	'hiderevision-link' => '隐藏用户贡献',
 	'hiderevision-norevisions' => '没有指定的修订版本被删除',
 	'hiderevision-noreason' => '您必须说明隐藏这个修订版本的理由。',
 	'hiderevision-status' => '修订版本 $1: $2',

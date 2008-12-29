@@ -80,6 +80,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'purge' => 'purgar',
+	'purge-desc' => 'Añade una pestaña de purgado en todas las páginas normales y sortea la comprobación de purgado para los usuarios anónimos permitiendo el purgado rápido de la caché',
 );
 
 /** Finnish (Suomi)

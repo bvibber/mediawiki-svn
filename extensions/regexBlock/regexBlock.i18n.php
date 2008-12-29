@@ -1747,9 +1747,11 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'regexblock-form-reason' => 'Motivu:',
 	'regexblock-stats-username' => 'Ba $1',
 	'regexblock-view-all' => 'Hotu',
 	'regexblock-view-go' => 'Bá',
+	'regexblock-view-reason' => 'motivu: $1',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

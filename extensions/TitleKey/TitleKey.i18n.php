@@ -241,6 +241,13 @@ $messages['ms'] = array(
 	'titlekey-desc' => 'Atur cara untuk cadangan gelintar bagi awalan tajuk',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'titlekey-desc' => 'Achtergrundprozess för de Titelsöök',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

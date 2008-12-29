@@ -114,6 +114,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'pageby-desc' => 'Montras kontribuantojn enlinie en vikia paĝo uzante la etikedon <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Paĝo kreiita de $1, $2',
 	'pageby-last' => 'Laste <a href="$3">ŝanĝita</a> de $1, $2',
 	'pageby-contributors' => 'Kontribuantoj:',

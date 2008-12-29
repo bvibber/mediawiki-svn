@@ -214,9 +214,11 @@ $messages['ka'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author Thearith
  */
 $messages['km'] = array(
 	'icon-badimage' => 'រូបភាពមិនល្អ',
+	'icon-badwidth' => 'ទទឹង​មិន​ល្អ',
 );
 
 /** Ripoarisch (Ripoarisch)

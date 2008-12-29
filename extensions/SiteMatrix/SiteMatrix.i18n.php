@@ -178,11 +178,19 @@ $messages['be'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'sitematrix' => 'Сьпіс усіх праектаў фундацыі «Вікімэдыя»',
+	'sitematrix-summary' => 'Гэтая спэцыяльная старонка ўтрымлівае сьпіс усіх вікі Фундацыі «Вікімэдыя».',
+	'sitematrix-desc' => 'Паказвае [[Special:SiteMatrix|сьпіс вікі Фундацыі «Вікімэдыя»]]',
 	'sitematrix-language' => 'Мова',
+	'sitematrix-project' => 'Назва праекту, міжпраектная спасылка і спасылка інтэрвікі',
 	'sitematrix-others' => 'Іншыя праекты фундацыі «Вікімэдыя»',
+	'sitematrix-total' => "'''Агульная колькасьць: $1'''",
+	'sitematrix-sitetotal' => 'Усяго',
+	'sitematrix-private' => 'прыватны',
+	'sitematrix-fishbowl' => 'рэдагаваньне абмежавана',
 );
 
 /** Bulgarian (Български)

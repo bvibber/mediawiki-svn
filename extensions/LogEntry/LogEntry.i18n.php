@@ -147,6 +147,13 @@ $messages['hu'] = array(
 	'logentry-invalidtoken' => 'Érvénytelen token',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'logentry-invalidpage' => 'ទំព័រ​មិនត្រឹមត្រូវ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

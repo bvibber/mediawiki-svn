@@ -749,7 +749,7 @@ $messages['pl'] = array(
 	'edituser-dosearch' => 'Szukaj',
 	'edituser-nouser' => 'Taki użytkownik nie istnieje',
 	'edituser-exempt' => 'Nie możesz edytować tego użytkownika',
-	'right-edituser' => 'Edytować preferencje innych użytkowników',
+	'right-edituser' => 'Edytowanie preferencji innych użytkowników',
 	'right-edituser-exempt' => 'Inni nie mogą edytować preferencji tego użytkownika',
 );
 

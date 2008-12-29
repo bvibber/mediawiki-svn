@@ -418,11 +418,16 @@ $messages['eo'] = array(
  * @author Icvav
  * @author Muro de Aguas
  * @author Remember the dot
+ * @author Sanbec
  * @author Spacebirdy
  */
 $messages['es'] = array(
 	'expandtemplates' => 'Sustituidor de plantillas',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expande plantillas, funciones del parser y variables]] para mostrar wikitexto expandido y previstar la página renderizada',
+	'expand_templates_intro' => 'Esta página especial toma texto cualquiera y expande todas sus plantillas recursivamente.
+También expande las funciones sintácticas como <nowiki>{{</nowiki>#if:…}} y variables como
+<nowiki>{{</nowiki>CURRENTDAY}}. De hecho, expande casi cualquier cosa que esté entre llaves dobles.
+Lo hace llamando al nivel del analizador sintáctico correspondiente del propio MediaWiki.',
 	'expand_templates_title' => 'Título para contexto, para {{PAGENAME}} etc.:',
 	'expand_templates_input' => 'Texto a expandir:',
 	'expand_templates_output' => 'Resultado:',

@@ -145,6 +145,25 @@ $messages['bcl'] = array(
 	'imagemap_description' => 'Manónongod sa retratong ini',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'imagemap_desc' => 'Дазваляе стварэньне на старонцы кліента мапаў выявы з выкарыстаньнем тэгу <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image' => 'Памылка: у першым радку мусіць быць пазначаная выява',
+	'imagemap_invalid_image' => 'Памылка: няслушная выява альбо яна не існуе',
+	'imagemap_bad_image' => 'Памылка: выява на гэтай старонцы ўваходзіць у чорны сьпіс',
+	'imagemap_no_link' => 'Памылка: ня знойдзеная слушная спасылка ў канцы радку $1',
+	'imagemap_invalid_title' => 'Памылка: няслушная назва ў спасылцы ў радку $1',
+	'imagemap_missing_coord' => 'Памылка: недастаткова каардынатаў для фігуры ў радку $1',
+	'imagemap_unrecognised_shape' => 'Памылка: нераспазнаная фігура ў радку $1, кожны радок павінен пачынацца з: default, rect, circle ці poly',
+	'imagemap_no_areas' => 'Памылка: павінна быць пазначана хоць бы адна вобласьць',
+	'imagemap_invalid_coord' => 'Памылка: няправільная каардыната ў радку $1, павінна быць лічба',
+	'imagemap_invalid_desc' => 'Памылка: няслушнае значэньне desc, павінна быць адно з: <tt>$1</tt>',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */
@@ -1284,6 +1303,26 @@ $messages['tg-cyrl'] = array(
 	'imagemap_invalid_coord' => 'Error: баробарии ғайримиҷоз дар сатри $1, бояд адад бошад',
 	'imagemap_invalid_desc' => 'Error: тавзеҳоти ғайримиҷоз, бояд яке аз ин маворид бошад: <tt>$1</tt>',
 	'imagemap_description' => 'Дар бораи ин акс',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'imagemap_desc' => 'Nagpapahintulot ng napipindot na mga larawang mapa sa panig ng mga kliyente na ginagamitan ng tatak na <tt><nowiki><imagemap></nowiki></tt>',
+	'imagemap_no_image' => 'Kamalian: dapat tumukoy ng isang larawan sa unang guhit/hanay',
+	'imagemap_invalid_image' => 'Kamalian: hindi tanggap o hindi umiiral ang isang larawan',
+	'imagemap_bad_image' => 'Kamalian: ipinagbabawal (nasa "itim na talaan") sa pahinang ito ang larawan',
+	'imagemap_no_link' => 'Kamalian: walang natagpuang tanggap na kawing sa hulihan ng guhit/hanay na $1',
+	'imagemap_invalid_title' => 'Kamalian: may hindi tanggap na pamagat sa kawing sa guhit/hanay na $1',
+	'imagemap_missing_coord' => 'Kamalian: walang sapat na tugmaang pampook para sa hugis sa guhit/hanay na $1',
+	'imagemap_unrecognised_shape' => "Kamalian: hindi nakikilalang hugis sa guhit/hanay na \$1, bawat guhit ay dapat na nagsisimula sa kahit na isang: nakatakda, parihaba, bilog o \"poli\" (''poly'')",
+	'imagemap_no_areas' => 'Kamalian: dapat na magbigay ng kahit na isang pagtutukoy na pampook',
+	'imagemap_invalid_coord' => 'Kamalian: hindi tanggap na tugmaang pampook sa guhit/hanay na $1, dapat na isang bilang',
+	'imagemap_invalid_desc' => 'Kamalian: hindi tanggap na pagtukoy sa paglalarawan, dapat na isa sa: <tt>$1</tt>',
+	'imagemap_description' => 'Tungkol sa larawang ito',
+	'imagemap_desc_types' => 'pang-itaas na kanan, pang-ibabang kanan, pang-ibabang kaliwa, pang-itaas na kaliwa, wala',
+	'imagemap_poly_odd' => "Kamalian: nakatagpo ng isang \"poli\" (''poly'') na mayroong bilang na may butal na pang-pagtutugmang pampook na nasa guhit/hanay na \$1",
 );
 
 /** Turkish (Türkçe)

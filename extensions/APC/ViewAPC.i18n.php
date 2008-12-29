@@ -819,6 +819,7 @@ $messages['eo'] = array(
 APC verŝajne ne funkcias.',
 	'viewapc-clear-confirm' => 'Ĉu vi volas forviŝi la kaŝmemoron?',
 	'viewapc-clear-user-cache' => 'Forviŝi kaŝmemoron de uzantoj',
+	'viewapc-clear-code-cache' => 'Forviŝi kaŝmemoron de operacia kodo',
 	'viewapc-mode-version-check' => 'Kontroli version',
 	'viewapc-info-general' => 'Ĝenerala informo',
 	'viewapc-apc-version' => 'APC-versio',
@@ -828,18 +829,24 @@ APC verŝajne ne funkcias.',
 ($3 memoro, $4 ŝlosita)',
 	'viewapc-start-time' => 'Tempo de starto',
 	'viewapc-uptime' => 'Tempdaŭro de operacio',
+	'viewapc-upload-support' => 'Subteno de dosiera alŝuto',
 	'viewapc-cached-files' => 'Memorkaŝitaj dosieroj',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|dosiero|dosieroj}} ($2)',
 	'viewapc-hits' => 'Trafoj',
 	'viewapc-misses' => 'Maltrafoj',
 	'viewapc-rps' => '$1 petoj po sekundo',
 	'viewapc-info-runtime' => 'Informo pri seanco',
+	'viewapc-memory-usage-detailed' => 'Memoruzado<br />
+(plural eroj indikus fragmentojn)',
 	'viewapc-memory-usage' => 'Memora uzado',
 	'viewapc-cache-efficiency' => 'Trafoj kaj maltrafoj',
 	'viewapc-memory-free' => 'Libera: $1 ($2)',
 	'viewapc-memory-used' => 'Uzita: $1 ($2)',
 	'viewapc-memory-hits' => 'Trafoj: $1 ($2)',
 	'viewapc-memory-miss' => 'Maltrafoj: $1 ($2)',
+	'viewapc-memoryfragmentation' => 'Detala memoruzado kaj fragmentiĝo',
+	'viewapc-fragmentation-info' => 'Fragmentiĝo: $1 ($2 el $3 en $4 {{PLURAL:$4|fragmento|fragmentoj}})',
+	'viewapc-fragmentation-none' => 'Fragmentiĝo: neniom da fragmentiĝo',
 	'viewapc-display-attribute' => 'Atribuo',
 	'viewapc-display-value' => 'Valuto',
 	'viewapc-display-filename' => 'Dosiernomo',
@@ -854,6 +861,7 @@ APC verŝajne ne funkcias.',
 	'viewapc-display-creation_time' => 'Kreita',
 	'viewapc-display-deletion_time' => 'Forigita',
 	'viewapc-display-no-delete' => 'Ne forigita',
+	'viewapc-display-access_time' => 'Atingita',
 	'viewapc-display-mem_size' => 'Pezo',
 	'viewapc-display-too-big' => "''Enhavo estas tro granda por montri.''",
 	'viewapc-ls-options-legend' => 'Opcioj',
@@ -871,6 +879,7 @@ APC verŝajne ne funkcias.',
 	'viewapc-ls-sort-hits' => 'Trafoj',
 	'viewapc-ls-sort-size' => 'Pezo',
 	'viewapc-ls-sort-name' => 'Nomo',
+	'viewapc-ls-sort-accessed' => 'Laste atingita',
 	'viewapc-ls-sort-modified' => 'Laste modifita',
 	'viewapc-ls-sort-created' => 'Kreita',
 	'viewapc-ls-sort-deleted' => 'Forigita',
@@ -1916,9 +1925,11 @@ Vèrsi sing luwih anyar $2 iku wis ana ing http://pecl.php.net/package/APC/$2',
 
 /** Georgian (ქართული)
  * @author Malafaya
+ * @author Temuri rajavi
  */
 $messages['ka'] = array(
 	'viewapc-cached-files-d' => '$1 ფაილი ($2)',
+	'viewapc-ls-sort-size' => 'ზომა',
 	'viewapc-ls-sort-name' => 'სახელი',
 );
 
@@ -3053,7 +3064,11 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ficheiro|ficheiros}} ($2)',
 	'viewapc-rps' => '$1 pedidos por segundo',
+	'viewapc-memory-free' => 'Livre: $1 ($2)',
+	'viewapc-memory-used' => 'Usada: $1 ($2)',
+	'viewapc-ls-options-legend' => 'Opções',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -3681,6 +3696,13 @@ $messages['te'] = array(
 	'viewapc-ls-limit-none' => 'అన్నీ',
 	'viewapc-ls-nodata' => "''పోలిన భోగట్టా ఏమీ లేదు''",
 	'viewapc-version-info' => 'సంచిక సమాచారం',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'viewapc-ls-limit-none' => 'Hotu',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

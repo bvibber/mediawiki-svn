@@ -264,7 +264,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
-	'editown-desc' => "Uza-na'in sira-ne'ebé la iha kuana 'editall' bele filak pájina sira-ne'ebé sira kria tiha de'it",
+	'editown-desc' => "Uza-na'in sira-ne'ebé la iha priviléjiu 'editall' bele filak pájina sira-ne'ebé sira kria tiha de'it",
 );
 
 /** Vèneto (Vèneto)

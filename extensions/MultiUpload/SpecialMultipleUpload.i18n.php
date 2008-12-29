@@ -205,10 +205,12 @@ Njegóźece se dataje budu se ned lašowaś, glědaj [[{{MediaWiki:Multipleuploa
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'multipleupload' => 'Επιφόρτιση αρχείων',
 	'multipleupload-saveallfiles' => 'Αποθηκεύστε όλα τα αρχεία',
+	'multiupload-fileuploaded' => 'Το αρχείο ανέβηκε.',
 );
 
 /** Esperanto (Esperanto)
@@ -235,9 +237,24 @@ Malkonvenaj dosieroj estos tuj forigita. Vidu la [[{{MediaWiki:Multipleupload-pa
 
 /** Spanish (Español)
  * @author Imre
+ * @author Sanbec
  */
 $messages['es'] = array(
 	'multipleupload' => 'Subir archivos',
+	'multipleupload-desc' => 'Permite [[Special:MultipleUpload|subir varios archivos de una sola vez]] a los usuarios',
+	'multipleupload-ignoreallwarnings' => "Ignorar '''todos los avisos''' y guardar los archivos.",
+	'multipleupload-saveallfiles' => 'Guardar todos los archivos',
+	'multipleupload-addresswarnings' => 'Haz caso de los avisos antes de volver a subir los archivos.',
+	'multipleupload-page' => '{{ns:project}}:Política de borrado de archivos',
+	'multipleupload-text' => "Sube varios archivos desde aquí.
+
+Pulsa 'Navegar' ('Browse') y elige cada uno de los archivos que quieras Subir. Puedes subir entre 1 y $1 archivos de una vez.
+
+Puedes introducir un '''Nombre de archivo de destino''' opcional y proporcionar un '''Resumen''' que lo describa.
+
+Los archivos inapropiados se eliminarán inmediatamente: mira la [[{{MediaWiki:Multipleupload-page}}|política de borrado de archivos]].",
+	'multiupload-fileuploaded' => 'Archivo subido.',
+	'multiupload-toolbox' => 'Subir varios archivos',
 );
 
 /** Persian (فارسی)
@@ -882,6 +899,14 @@ Ficheiros impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Mult
 $messages['ro'] = array(
 	'multipleupload' => 'Încarcă fişiere',
 	'multiupload-fileuploaded' => 'Fişier încărcat.',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'multiupload-fileuploaded' => 'File carechete.',
+	'multiupload-toolbox' => "Carecamende de cchiù file 'nzieme",
 );
 
 /** Russian (Русский)

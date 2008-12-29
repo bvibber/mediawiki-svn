@@ -56,6 +56,14 @@ $messages['ar'] = array(
 	'emergencydesysop-noright' => 'لا تملك الصلاحيات الكافية للدخول على هذه الصفحة',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ouda
+ */
+$messages['arz'] = array(
+	'emergencydesysop-submit' => 'تنفيذ',
+	'emergencydesysop-nogroups' => 'لا يوجد',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -94,6 +102,7 @@ $messages['eo'] = array(
 	'emergencydesysop-nogroups' => 'Neniu',
 	'emergencydesysop-invalidtarget' => 'La cela uzanto ne ekzistas.',
 	'emergencydesysop-blocked' => 'Vi ne povas atingi ĉi tiun paĝon kiam forbarita',
+	'emergencydesysop-noright' => 'Vi ne havas sufiĉajn rajtojn por atingi ĉi tiun paĝon',
 );
 
 /** Finnish (Suomi)
@@ -157,6 +166,16 @@ $messages['grc'] = array(
 $messages['ja'] = array(
 	'emergencydesysop-submit' => '送信',
 	'emergencydesysop-nogroups' => 'なし',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'emergencydesysop-submit' => 'ដាក់ស្នើ',
+	'emergencydesysop-nogroups' => 'គ្មាន',
+	'emergencydesysop-invalidtarget' => 'មិនមាន​អ្នកប្រើប្រាស់​គោលដៅ​ទេ​។',
+	'emergencydesysop-blocked' => 'អ្នក​មិន​អាច​ចូលដំណើរការ​ទំព័រ​នេះ​បាន​ទេ ខណៈ​ដែល​ត្រូវ​បាន​រាំងខ្ទប់​។',
 );
 
 /** Korean (한국어)

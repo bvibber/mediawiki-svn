@@ -62,6 +62,7 @@ $messages['ar'] = array(
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
+ * @author Ouda
  */
 $messages['arz'] = array(
 	'accountmanager' => 'مدير الحساب',
@@ -74,6 +75,7 @@ $messages['arz'] = array(
 	'nss-save-changes' => 'حفظ التغييرات',
 	'nss-create-account-header' => 'إنشاء حساب جديد',
 	'nss-create-account' => 'إنشاء الحساب',
+	'nss-no-mail' => 'لا ترسل بريد إلكتروني',
 	'nss-welcome-mail' => 'الحساب باسم اليوزر $1 وكلمة السر $2 تم إنشاؤه من أجلك.',
 	'nss-welcome-mail-subject' => 'إنشاء الحساب',
 	'nss-db-error' => 'خطأ قراءة من قاعدة بيانات التحقق.',
@@ -167,6 +169,7 @@ $messages['eo'] = array(
 	'nss-no-mail' => 'Ne sendi retpoŝton',
 	'nss-welcome-mail' => 'Konto kun salutnomo $1 kaj pasvorto $2 estis kreita por vi.',
 	'nss-welcome-mail-subject' => 'Konta kreado',
+	'nss-db-error' => 'Eraro legante de aŭtentokontrola datumbazo',
 );
 
 /** Spanish (Español)

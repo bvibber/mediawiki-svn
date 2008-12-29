@@ -600,6 +600,19 @@ $messages['ro'] = array(
 	'showprocesslist-time' => 'Timp',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'showprocesslist-id' => 'Codece (Id)',
+	'showprocesslist-user' => 'Utende',
+	'showprocesslist-db' => 'db',
+	'showprocesslist-command' => 'Comande',
+	'showprocesslist-time' => 'Orarie',
+	'showprocesslist-state' => "State d'avanzamende",
+	'showprocesslist-info' => "'Mbormazione",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв
@@ -608,7 +621,7 @@ $messages['ru'] = array(
 	'showprocesslist' => 'Показать список процессов',
 	'showprocesslist-desc' => 'Показывает вывод команды MySQL «[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]»',
 	'showprocesslist-id' => 'Id',
-	'showprocesslist-user' => 'Участник',
+	'showprocesslist-user' => 'Пользователь',
 	'showprocesslist-host' => 'Хост',
 	'showprocesslist-db' => 'БД',
 	'showprocesslist-command' => 'Команда',

@@ -42,6 +42,11 @@ $aliases['hsb'] = array(
 	'Patroller' => array( 'Dohladowar' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Patroller' => array( 'パトローラー' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Patroller' => array( 'Contreleren' ),

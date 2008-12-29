@@ -34,6 +34,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Lejonel
  * @author Purodha
@@ -54,7 +55,7 @@ Incremental statistics means that for each interval the number of edits in that 
 {{Identical|Incremental}}',
 	'usagestatisticscumulative' => 'This message is used on [[Special:SpecialUserStats]] in a dropdown menu to choose to generate cumulative statistics.
 
-Cumulative statistics means that for each interval the number of edits in that interval an all earlier intervals are counted, as opposed to incremental statistics were only the edits in the interval are counted.
+Cumulative statistics means that for each interval the number of edits in that interval and all earlier intervals are counted, as opposed to incremental statistics were only the edits in the interval are counted.
 
 {{Identical|Cumulative}}',
 	'usagestatisticscumulative-text' => 'This message is used as parameter $1 both in {{msg|Usagestatistics-editindividual}} and in {{msg|Usagestatistics-editpages}} ($1 can also be {{msg|Usagestatisticsincremental-text}}).
@@ -749,12 +750,31 @@ $messages['is'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'specialuserstats' => '利用統計',
+	'usagestatistics' => '利用統計',
+	'usagestatistics-desc' => '個々の利用者およびウィキ全体の利用統計を表示する',
+	'usagestatisticsfor' => '<h2>[[User:$1|$1]] の利用統計</h2>',
+	'usagestatisticsforallusers' => '<h2>全利用者の利用統計</h2>',
 	'usagestatisticsinterval' => 'インターバル',
 	'usagestatisticstype' => 'タイプ',
+	'usagestatisticsstart' => '開始日',
+	'usagestatisticsend' => '終了日',
+	'usagestatisticssubmit' => '統計を生成',
+	'usagestatisticsbadstartend' => '<b><i>開始</i>および、あるいは<i>終了</i>の日付が不正です!</b>',
 	'usagestatisticsintervalday' => '日',
+	'usagestatisticsintervalweek' => '週',
+	'usagestatisticsintervalmonth' => '月',
+	'usagestatisticsincremental' => '漸進',
+	'usagestatisticsincremental-text' => '漸進',
+	'usagestatisticscumulative' => '累積',
+	'usagestatisticscumulative-text' => '累積',
+	'usagestatisticscalselect' => '選択',
+	'usagestatistics-editindividual' => '利用者の$1編集統計',
+	'usagestatistics-editpages' => '利用者の$1ページ統計',
 );
 
 /** Javanese (Basa Jawa)
@@ -1092,6 +1112,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author McMonster
  * @author Wpedzich
  */
@@ -1100,6 +1121,7 @@ $messages['pl'] = array(
 	'usagestatistics' => 'Statystyki',
 	'usagestatistics-desc' => 'Pokazuje statystyki indywidualne użytkownika oraz statystyki wiki',
 	'usagestatisticsfor' => '<h2>Statystyki użytkownika [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statystyki wykorzystania dla wszystkich użytkowników</h2>',
 	'usagestatisticsinterval' => 'odstęp',
 	'usagestatisticstype' => 'Typ',
 	'usagestatisticsstart' => 'Data początkowa',
@@ -1407,5 +1429,34 @@ $messages['vo'] = array(
 	'usagestatisticsintervalday' => 'Del',
 	'usagestatisticsintervalweek' => 'Vig',
 	'usagestatisticsintervalmonth' => 'Mul',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'specialuserstats' => '使用分析',
+	'usagestatistics' => '使用分析',
+	'usagestatistics-desc' => '显示每个用户与整个维基的使用分析',
+	'usagestatisticsfor' => '<h2>[[User:$1|$1]]的使用分析</h2>',
+	'usagestatisticsforallusers' => '<h2>所有用户的使用分析</h2>',
+	'usagestatisticsinterval' => '区间',
+	'usagestatisticstype' => '类型',
+	'usagestatisticsstart' => '开始日期',
+	'usagestatisticsend' => '结束日期',
+	'usagestatisticssubmit' => '生成统计',
+	'usagestatisticsnostart' => '* <font color=red>请选择开始日期</font>',
+	'usagestatisticsnoend' => '* <font color=red>请选择结束日期</font>',
+	'usagestatisticsbadstartend' => '<b><i>开始</i>或者<i>结束</i>日期错误！</b>',
+	'usagestatisticsintervalday' => '日',
+	'usagestatisticsintervalweek' => '周',
+	'usagestatisticsintervalmonth' => '月',
+	'usagestatisticsincremental' => '增量',
+	'usagestatisticsincremental-text' => '增量',
+	'usagestatisticscumulative' => '累积',
+	'usagestatisticscumulative-text' => '累积',
+	'usagestatisticscalselect' => '选择',
+	'usagestatistics-editindividual' => '用户$1编辑统计分析',
+	'usagestatistics-editpages' => '用户$1统计分析',
 );
 

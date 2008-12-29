@@ -380,10 +380,14 @@ $messages['te'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'searchbox-desc' => '允许列入搜索形式',
 	'searchbox-search' => '搜索',
+	'searchbox-go' => '搜',
+	'searchbox-namespaces' => '名称空间：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

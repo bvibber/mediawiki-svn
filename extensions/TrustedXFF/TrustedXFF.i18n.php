@@ -192,6 +192,13 @@ $messages['ms'] = array(
 	'trustedxff-desc' => 'Pengendalian senarai alamat proksi yang dipercayai ([http://meta.wikimedia.org/wiki/XFF_project projek XFF])',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'trustedxff-desc' => 'Kümmert sik üm en List vun vertroote Proxyadressen ([http://meta.wikimedia.org/wiki/XFF_project XFF-ProjeKt])',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

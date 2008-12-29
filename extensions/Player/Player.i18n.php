@@ -576,10 +576,14 @@ $messages['ka'] = array(
  */
 $messages['km'] = array(
 	'player' => 'ឧបករណ៍លេង',
+	'player-title' => 'អ្នកលេង',
+	'player-playertitle' => 'អ្នកលេង: $1',
 	'player-file' => 'ឈ្មោះឯកសារ',
 	'player-play' => 'លេង',
 	'player-not-found' => 'ឯកសារមិនត្រូវបានរកឃើញទេ',
 	'player-invalid-title' => 'ចំណងជើងមិនត្រឹមត្រូវ',
+	'player-clicktoplay' => 'លេង $1',
+	'player-goto-player' => 'អ្នកលេង',
 	'player-goto-page' => 'ទំព័រ',
 	'player-goto-file' => 'ឯកសារ',
 );

@@ -583,6 +583,13 @@ $messages['ro'] = array(
 	'languageselector' => 'Limbă',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'languageselector' => 'Lènghe',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

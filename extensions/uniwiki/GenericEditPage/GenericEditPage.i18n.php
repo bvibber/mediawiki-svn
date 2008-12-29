@@ -212,8 +212,11 @@ Aldonu iujn uzante la iloj dekstre.',
 	'gep-nocategories' => 'Bonvolu selekti almenaŭ unu kategorion antaŭ konservado',
 );
 
-/** Spanish (Español) */
+/** Spanish (Español)
+ * @author Sanbec
+ */
 $messages['es'] = array(
+	'gep-desc' => 'Complementa la página de edición para que sea más fácil de usar',
 	'gep-emailsubject' => 'Sugerencia de categoría de [$1]: $2',
 	'gep-emailbody' => 'El usuario "$1" sugirió la categoría "$2" para el sitio "$3".',
 	'gep-emailfailure' => 'No fue posible procesar su sugerencia.',
@@ -283,7 +286,7 @@ $messages['gl'] = array(
 	'gep-classicmode' => 'Modo clásico',
 	'gep-genericmode' => 'Modo xenérico',
 	'gep-nosectioninstructions' => 'Non hai seccións nesta páxina.
-Engada algunha usando as ferramentas da dereita.',
+Engada algunha usando as ferramentas da barra de menú.',
 	'gep-nocategories' => 'Por favor, seleccione, polo menos, unha categoría antes de gardar',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
@@ -460,6 +463,7 @@ $messages['km'] = array(
 	'gep-addsectionbutton' => 'បន្ថែម',
 	'gep-classicmode' => 'របៀប​បុរាណ',
 	'gep-nosectioninstructions' => 'មិនមាន​ភាគ​ណាមួយ​នៅលើ​ទំព័រ​នេះ​ទេ​។
+
 ចូរ​បន្ថែម​បម្រើបម្រាស់​ឧបករណ៍​ខ្លះ​នៅ​ខាងស្ដាំ​។',
 	'gep-nocategories' => 'សូម​ជ្រើសយក​ចំណាត់ថ្នាក់ក្រុម​យ៉ាងហោច​មួយ​មុនពេល​រក្សាទុក',
 );
@@ -606,6 +610,33 @@ Apondètz-ne en utilizant l'esplech a drecha.",
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'gep-desc' => 'Uzupełnia stronę edycji, by była bardziej przyjazna dla użytkownika',
+	'gep-emailsubject' => '[$1] Propozycja kategorii: $2',
+	'gep-emailbody' => 'Użytkownik „$1” zaproponował kategorię „$2” dla strony „$3”.',
+	'gep-emailfailure' => 'Niestety, ale Twoja propozycja nie mogła zostać przetworzona.',
+	'gep-emailsuccess' => 'Dziękujemy za zaproponowanie kategorii: $1.',
+	'gep-categories' => 'Kategorie',
+	'gep-addcategory' => 'Dodaj kategorię',
+	'gep-addcategorybutton' => 'Dodaj',
+	'gep-suggestcategory' => 'Zaproponuj kategorię',
+	'gep-suggestcategorybutton' => 'OK',
+	'gep-sections' => 'Sekcje',
+	'gep-sectionnotdisabled' => 'Ta sekcja nie może być wyłączona',
+	'gep-addsection' => 'Dodaj sekcję',
+	'gep-addsectionbutton' => 'Dodaj',
+	'gep-classicmode' => 'Tryb klasyczny',
+	'gep-genericmode' => 'Tryb ogólny',
+	'gep-nosectioninstructions' => 'Na tej stronie nie istnieją żadne sekcje.
+Dodaj sekcje za pomocą narzędzi w pasku menu.',
+	'gep-nocategories' => 'Proszę wybrać co najmniej jedną kategorię przed zapisaniem',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -613,6 +644,13 @@ $messages['ps'] = array(
 	'gep-categories' => 'وېشنيزې',
 	'gep-addcategorybutton' => 'ورګډول',
 	'gep-addsectionbutton' => 'ورګډول',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'gep-categories' => 'Categorias',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
@@ -657,6 +695,26 @@ $messages['ro'] = array(
 	'gep-nosectioninstructions' => 'Nu există secţiuni pe această pagină.
 Adăugaţi unele folosind uneltele din dreapta.',
 	'gep-nocategories' => 'Vă rugăm să selectaţi cel puţin o categorie înainte de salvare',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'gep-categories' => 'Categorije',
+	'gep-addcategory' => "Aggiunge 'na categorije",
+	'gep-addcategorybutton' => 'Aggiunge',
+	'gep-suggestcategory' => "Suggerisce 'na categorije",
+	'gep-suggestcategorybutton' => 'Conferme',
+	'gep-sections' => 'Seziune',
+	'gep-sectionnotdisabled' => 'Sta sezione non ge pò essere disabilitete',
+	'gep-addsection' => "Aggiunge 'na sezione",
+	'gep-addsectionbutton' => 'Aggiunge',
+	'gep-classicmode' => 'Mode classiche',
+	'gep-genericmode' => 'Mode generiche',
+	'gep-nosectioninstructions' => "Non ge stonne seziune jndr'à sta pàgene.
+Aggiunge quacchedune ausanne le struminde ca stonne jndr'à barre d'u menu.",
+	'gep-nocategories' => "Pe piacere selezione ninde ninde 'na categorije apprime de reggistrà",
 );
 
 /** Russian (Русский)
@@ -706,7 +764,7 @@ $messages['sk'] = array(
 	'gep-classicmode' => 'Klasický režim',
 	'gep-genericmode' => 'Všeobecný režim',
 	'gep-nosectioninstructions' => 'Na tejto stránke nie sú žiadne sekcie.
-Pomocou nástrojov vpravo ich môžete pridať.',
+Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
 	'gep-nocategories' => 'Prosím, vyberte pred uložením aspoň jednu kategóriu.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
@@ -808,15 +866,25 @@ $messages['vi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'gep-desc' => '使编辑页面对用户更加友好',
+	'gep-emailsubject' => '[$1] 分类建议： $2',
+	'gep-emailbody' => '用户 "$1" 建议将站点 "$3" 分类为 "$2" 。',
+	'gep-emailfailure' => '抱歉，您的建议无法被处理。',
+	'gep-emailsuccess' => '感谢您推荐分类： $1。',
 	'gep-categories' => '页面分类',
 	'gep-addcategory' => '增加一个分类',
 	'gep-addcategorybutton' => '增加',
+	'gep-suggestcategory' => '推荐一个分类',
 	'gep-suggestcategorybutton' => '提交',
 	'gep-addsection' => '增加一个段落',
 	'gep-addsectionbutton' => '增加',
+	'gep-classicmode' => '经典模式',
+	'gep-genericmode' => '通用模式',
+	'gep-nocategories' => '请在保存前至少选择一个分类',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

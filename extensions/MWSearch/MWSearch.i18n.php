@@ -61,6 +61,13 @@ $messages['bcc'] = array(
 	'mwsearch-desc' => 'پلاگین گردگ م.و',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'mwsearch-desc' => 'Плягін MWSearch',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

@@ -173,13 +173,19 @@ $messages['arz'] = array(
 	'tasks_existing_header' => 'المهام الموجودة',
 	'tasks_noone' => 'مافيش حد',
 	'tasks_close' => 'اقفل المهمة',
+	'tasks_wontfix' => 'لن يصلح',
 	'tasks_delete' => 'امسح',
 	'tasks_no_task_delete_title' => 'مش مسموح',
 	'tasks_action_delete' => 'في مهمة اتمسحت',
+	'tasks_reopen' => 'إعادة فتح مهمة',
+	'tasks_created_by' => 'أنشئت بواسطة $1',
+	'tasks_closedby' => 'أغلقت بواسطة $1',
+	'tasks_sidebar_title' => 'المهمات المفتوحة',
 	'tasks_here' => 'هنا',
 	'tasks_help_page' => 'المهمات',
 	'tasks_more_like_it' => 'اكتر',
 	'tasks_event_on_creation' => 'راجع',
+	'tasks_event_on_creation_anon' => 'التماس',
 	'tasks_table_header_page' => 'صفحه',
 	'tasks_search_form_title' => 'دور',
 	'tasks_search_tasks' => 'المهمات',
@@ -194,7 +200,12 @@ $messages['arz'] = array(
 	'tasks_status_assigned' => 'متعين',
 	'tasks_status_closed' => 'مقفول',
 	'tasks_status_wontfix' => 'مش ح يتصلح',
+	'tasks_action_open' => 'المهمة "$1" مفتوحة',
+	'tasks_action_closed' => 'المهمة "$1" مغلقة',
+	'tasks_sign_delete' => '<b>!تم طلب حذف هذه الصفحة</b>',
 	'tasks_logpage' => 'سجل المهام',
+	'tasks_logpagetext' => 'هذا سجل لتغييرات المهام',
+	'tasks_logentry' => 'لأجل [[$1]]',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -521,10 +532,12 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Mobe
  * @author Silvonen
  */
 $messages['fi'] = array(
 	'tasks' => 'Tehtävät',
+	'tasks_desc' => 'Tehtävienhallintalaajennus',
 	'tasks_tab' => 'Tehtävät',
 	'tasks_delete' => 'Poista',
 	'tasks_see_page_tasks' => '(tämän sivun tehtävät)',
@@ -1506,6 +1519,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'tasks' => 'Tarefas',
@@ -1519,6 +1533,7 @@ $messages['pt'] = array(
 	'tasks_no_task_delete_title' => 'Não permitido',
 	'tasks_action_delete' => 'A tarefa foi eliminada.',
 	'tasks_reopen' => 'Reabrir tarefa',
+	'tasks_here' => 'aqui',
 	'tasks_help_page' => 'Tarefas',
 	'tasks_more_like_it' => 'mais',
 	'tasks_table_header_page' => 'Página',
@@ -1543,6 +1558,43 @@ $messages['ro'] = array(
 	'tasks_table_header_page' => 'Pagină',
 	'tasks_sort' => 'Ordonează',
 	'tasks_ascending' => 'Întâi cele mai vechi',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'tasks' => 'Combete',
+	'tasks_desc' => "'N'estenzione pe gestìe le combete",
+	'tasks_tab' => 'Combete',
+	'tasks_title' => 'Combete pe "$1"',
+	'tasks_form_new' => "Ccreje 'nu combete nueve",
+	'tasks_form_comment' => 'Commende',
+	'tasks_error1' => "'U combete non g'à state ccrejete: ste già 'nu combete!",
+	'tasks_ok1' => "'Nu combete nueve ha state ccrejete!",
+	'tasks_create_header' => "CCreje 'nu combete nueve",
+	'tasks_existing_header' => 'Combete esistende',
+	'tasks_existing_table_header' => 'Combete|Date|Commende iniziele|Assegnaziune/Aziune/Pàgene',
+	'tasks_noone' => 'nisciune',
+	'tasks_assign_me' => 'Assignete a me',
+	'tasks_assign_to' => 'Assignete a',
+	'tasks_unassign_me' => "Scangille l'assegnaminde mie",
+	'tasks_close' => "Chiude 'u combete",
+	'tasks_wontfix' => "Non ge l'à correggere",
+	'tasks_delete' => 'Scangille',
+	'tasks_no_task_delete_title' => "Non g'è permesse",
+	'tasks_no_task_delete_texe' => "Tu non ge puè scangellà 'nu combete. Sulamende l'amministrature 'u ponne fà.",
+	'tasks_action_delete' => "'Nu combete ha state scangellete.",
+	'tasks_task_was_deleted' => "'U combete ha state scangellete correttamende.",
+	'tasks_reopen' => "Riapre 'u combete",
+	'tasks_assignedto' => 'Assignete a $1',
+	'tasks_created_by' => 'Ccrejete da $1',
+	'tasks_discussion_page_link' => "Pàgene de le 'ngazzaminde d'u combete",
+	'tasks_closedby' => 'Achiuse da $1',
+	'tasks_assigned_myself_log' => 'Aute-assegnamende d\'u combete "$1"',
+	'tasks_discussion_page_for' => 'Stu combete jè pe sta pàgene "$1". \'A liste de tutte le combete pe sta pàgene jè $2.',
+	'tasks_sidebar_title' => 'Iapre le combete',
+	'tasks_here' => 'aqquà',
 );
 
 /** Russian (Русский)

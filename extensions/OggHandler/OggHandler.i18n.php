@@ -1449,7 +1449,7 @@ $messages['km'] = array(
 	'ogg-no-player' => 'សូមអភ័យទោស! ប្រព័ន្ធដំណើរការរបស់អ្នក ហាក់បីដូចជាមិនមានកម្មវិធី ណាមួយសម្រាប់លេងទេ។ សូម <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ទាញយកកម្មវិធី សម្រាប់លេងនៅទីនេះ</a> ។',
 	'ogg-no-xiphqt' => 'មិនឃើញមាន អង្គផ្សំ XiphQT សម្រាប់ QuickTime។ QuickTime មិនអាចអាន ឯកសារ ដោយ គ្មាន អង្គផ្សំនេះ។ ទាញយក <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download"> និង ដំឡើង XiphQT</a> ឬ ជ្រើសរើស ឧបករណ៍អាន ផ្សេង ។',
 	'ogg-player-videoElement' => 'Native browser support',
-	'ogg-player-oggPlugin' => 'កម្មវិធីជំនួយ Ogg',
+	'ogg-player-oggPlugin' => 'កម្មវិធីជំនួយ​របស់​កម្មវិធីរុករក',
 	'ogg-player-thumbnail' => 'នៅតែជារូបភាព',
 	'ogg-player-soundthumb' => 'មិនមានឧបករណ៍លេងទេ',
 	'ogg-player-selected' => '(បានជ្រើសយក)',

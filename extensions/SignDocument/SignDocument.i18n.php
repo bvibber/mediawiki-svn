@@ -97,13 +97,14 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'signaturelogpage' => 'Allekirjoitusloki',
 	'signature-desc' => 'Sallii dokumentin [[Special:SignDocument|allekirjoituksen]].',
 	'signaturelogpagetext' => 'Tämä on [[Special:SignDocument|kaikkien asiakirjoihin lisättyjen allekirjoitusten]] loki..',
-	'signaturelogentry' => 'allekirjoitettiin asiakirja $1',
+	'signaturelogentry' => 'allekirjoitti dokumentin $1',
 );
 
 /** French (Français)

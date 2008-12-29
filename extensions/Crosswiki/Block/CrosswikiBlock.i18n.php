@@ -1550,6 +1550,18 @@ Vă rugăm să verificaţi dacă vi se permite să acţionaţi pe acest wiki şi
 	'crosswikiblock-noblock' => 'Acest utilizator nu este blocat.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'crosswikiblock' => "Blocche l'utende sus a 'n'otra Uicchi",
+	'crosswikiblock-expiry' => 'Scadenze:',
+	'crosswikiblock-reason' => 'Mutive:',
+	'crosswikiblock-submit' => "Blocche st'utende",
+	'crosswikiunblock-reason' => 'Mutive:',
+	'crosswikiunblock-submit' => "Sblocche st'utende",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -1799,6 +1811,14 @@ $messages['te'] = array(
 తిరిగి:
 * [[Special:CrosswikiBlock|నిరోధపు ఫారం]]
 * [[$4]]",
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'crosswikiblock-reason' => 'Motivu:',
+	'crosswikiunblock-reason' => 'Motivu:',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

@@ -64,9 +64,11 @@ $messages['dsb'] = array(
 
 /** Esperanto (Esperanto)
  * @author Melancholie
+ * @author Yekrats
  */
 $messages['eo'] = array(
 	'random-users-avatars-title' => 'Renkonti la kolektivo',
+	'random-users-avatars-desc' => 'Aldonas etikedon <tt>&lt;randomuserswithavatars&gt;</tt> por montri la avatarojn de hazarde selektitaj uzantoj',
 );
 
 /** Finnish (Suomi)

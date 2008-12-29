@@ -509,12 +509,17 @@ $messages['jv'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author Thearith
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'editmessages' => 'កែប្រែសារ',
+	'editmsg-target' => 'សារ​គោលដៅ:',
 	'editmsg-search' => 'ស្វែងរក',
+	'editmsg-show-list' => 'បង្ហាញ​តម្លៃ​សម្រាប់​ឈ្មោះសារ "$1"',
 	'editmsg-new-search' => 'ការស្វែងរកថ្មី',
+	'editmsg-apply-patch' => 'អនុវត្ត​បំណះ',
+	'editmsg-patch-success' => 'បាន​ប៉ះ​ដោយជោគជ័យ​។',
 );
 
 /** Korean (한국어)

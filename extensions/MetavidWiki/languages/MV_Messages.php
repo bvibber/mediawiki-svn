@@ -664,6 +664,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ouda
  */
 $messages['arz'] = array(
 	'metavid' => 'صفحة ميتافيد',
@@ -842,6 +843,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_most_viewed' => 'الأكثر مشاهدة',
 	'mv_match' => 'مطابقة',
 	'mv_spoken_by' => 'قيل بواسطة',
+	'mv_speech_by' => 'الخطاب بواسطة',
 	'mv_category' => 'تصنيف',
 	'mv_search_no_results' => 'لا ميديا تطابق',
 	'mv_media_matches' => 'الميديا تطابق',
@@ -874,6 +876,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_sequence_add_search' => 'إضافة بالبحث',
 	'mv_sequence_add_search_desc' => 'إضافة الكليبات ببحث الميديا',
 	'mv_seq_add_end' => 'إضافة إلى آخر التتابع',
+	'mv_sequence_edit_text' => 'تحول إلى محرر النص',
 	'mv_sequence_timeline' => 'الخط الزمنى للتتابع:',
 	'mv_edit_sequence_desc_help' => 'وصف التتابع',
 	'mv_edithelpsequence' => 'Help:تعديل_التتابع',
@@ -2840,9 +2843,19 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'metavid' => 'ទំព័រ​ឆ្លាស់',
+	'specialpages-group-mv_group' => 'ទំព័រ​ពិសេស MetaVidWiki',
+	'mv_stream_meta' => 'ទំព័រ​ស្ទ្រីម',
+	'mv_add_stream_submit' => 'បន្ថែម​​ស្ទ្រីម',
 	'mv_path_type_url_anx' => 'url មេឌាពេញលេញ',
+	'mv_path_type_wiki_title' => 'ចំណងជើង​វិគីមេឌា',
 	'mv_duration_label' => 'កំលុងពេល',
 	'mv_save_changes' => 'រក្សាបំលាស់ប្តូរទុក',
+	'mv_user_cant_edit' => 'អ្នក​អាច​មាន $1 ដើម្បី​កែប្រែ, $2',
+	'mv_add_stream_file' => 'បន្ថែម​ឯកសារស្ទ្រីម',
+	'mv_file_list' => 'ឯកសារស្ទ្រីម',
+	'mv_label_stream_name' => 'ឈ្មោះ​ស្ទ្រីម',
+	'mv_label_stream_desc' => 'ពិពណ៌នា​ស្ទ្រីម',
+	'mv_stream_already_exists' => 'ស្ទ្រីម <a href="$2">$1</a> មាន​រួចហើយ',
 	'mv_remove_reason' => 'មូលហេតុនៃការលុប៖',
 	'mv_upload_file' => 'ផ្ទុកឡើងឯកសារ',
 	'mv_external_file' => 'ឯកសារផ្នែកខាងក្រៅ',
@@ -2852,19 +2865,28 @@ $messages['km'] = array(
 	'mv_tool_mang_layers' => 'គ្រប់គ្រង​ស្រទាប់',
 	'mv_update_layers' => 'បន្ទាប់សម័យ ការមើលស្រទាប់',
 	'mv_click_to_edit' => 'ចុចដើម្បីកែប្រែ',
+	'mv_data_page_title' => '$1 សម្រាប់ $2 ពី $3',
+	'mv_time_separator' => '$1 ទៅ $2',
+	'mv_play' => 'លេង',
 	'mv_edit' => 'កែប្រែ',
 	'mv_history' => 'ប្រវត្តិ',
 	'mv_edit_title' => 'កែប្រែអត្ថបទ',
 	'mv_remove' => 'ដកចេញ',
+	'mv_adjust' => 'លៃតម្រូវ',
 	'mv_adjust_preview_stop' => 'បញ្ឈប់​ការមើលមុន',
 	'mv_start_desc' => 'ពេលចាប់ផ្តើម',
 	'mv_end_desc' => 'ពេលបញ្ចប់',
+	'mv_of' => '&#32;នៃ&#32;',
 	'mv_edit_metadata' => 'កែប្រែទិន្នន័យមេតា',
+	'mv_advanced_edit' => 'កែប្រែ​កម្រិតខ្ពស់',
+	'mv_basic_edit' => 'កែប្រែ​កម្រិតមូលដ្ឋាន',
 	'mv_remove_category' => 'ដក​ចំណាត់ថ្នាក់ក្រុម​ចេញ',
 	'mv_existing_categories' => '{{PLURAL:$1|ចំណាត់ថ្នាក់ក្រុម|ចំណាត់ថ្នាក់ក្រុម}}​៖',
 	'mv_viewnext' => 'មើល($1)',
 	'mv_viewprevnext' => 'មើល($1) ($2)',
 	'mediasearch' => 'ការស្វែងរកមេឌា',
+	'mv_results_for' => 'លទ្ធផល​សម្រាប់ $1',
+	'mv_video_search' => 'ស្វែងរក​វីដេអូ',
 	'mv_add_filter' => 'បន្ថែមតម្រង',
 	'mv_search_match' => 'ស្វែងរកអត្ថបទ',
 	'mv_search_spoken_by' => 'ត្រូវ​បាន​និយាយ​ដោយ',
@@ -2873,15 +2895,33 @@ $messages['km'] = array(
 	'mv_search_and' => 'និង',
 	'mv_search_or' => 'ឬ',
 	'mv_search_not' => 'អត់',
+	'mv_search_stream_name' => 'ឈ្មោះ​ស្ទ្រីម',
 	'mv_search_date_range' => 'ដែនកំណត់ នៃ ថ្ងៃ ខែ ឆ្នាំ',
+	'mv_stream_name' => 'ឈ្មោះ​ស្ទ្រីម',
+	'mv_date_range' => 'ជួរ​កាលបរិច្ឆេទ',
 	'mv_date_last_week' => 'សប្ដាហ៍​មុន',
+	'mv_category_results' => 'លទ្ធផល​ចំណាត់ថ្នាក់ក្រុម',
+	'mv_people_results' => 'លទ្ធផល​មនុស្ស',
+	'mv_most_recent' => 'ថ្មីបំផុត',
+	'mv_most_viewed' => 'បាន​មើល​ច្រើនបំផុត',
+	'mv_match' => 'ផ្គូផ្គង',
 	'mv_spoken_by' => 'ត្រូវ​បាន​និយាយ​ដោយ',
 	'mv_category' => 'ចំណាត់ថ្នាក់ក្រុម',
+	'mv_search_no_results' => 'គ្មាន​មេឌា​ផ្គូផ្គង​ទេ',
+	'mv_media_matches' => 'មេឌា​ផ្គូផ្គង',
 	'mv_remove_filter' => 'ដកចេញ តម្រង',
+	'mv_view_in_stream_interface' => 'មើល​ក្នុង​អន្តរមុខ​ស្ទ្រីម',
 	'mv_view_wiki_page' => 'មើលទំព័រវិគី',
+	'mv_media_search' => 'ការស្វែងរក​មេឌា',
+	'mv_editor_options' => 'ជម្រើស​អ្នកកែប្រែ',
 	'mv_transitions' => 'ការប្រែសម្រួល',
+	'mv_sequence_add_manual' => 'បន្ថែម​តាមរយៈ​ឈ្មោះ',
+	'mv_sequence_add_search' => 'បន្ថែម​តាមរយៈ​ការស្វែងរក',
 	'mv_other_options' => 'ជម្រើស​ផ្សេងទៀត',
+	'mv_stream_tool_heading' => 'ឧបករណ៍​ស្ទ្រីម',
+	'mv_prev_cat' => 'ចំណាត់ថ្នាក់ក្រុម​មុន​៖ $1',
 	'mv_next_cat' => 'ចំណាត់ថ្នាក់ក្រុម​បន្ទាប់​៖ $1',
+	'mv_search_stream_title' => 'ស្វែងរក​ស្ទ្រីម​បច្ចុប្បន្ន',
 	'mv_mang_layers' => 'គ្រប់គ្រង​ស្រទាប់',
 );
 
@@ -4296,6 +4336,19 @@ $messages['ro'] = array(
 	'mv_next_cat' => 'Categoria următoare: $1',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mv_data_page_title' => '$1 pe $2 da $3',
+	'mv_time_separator' => '$1 fine a $2',
+	'mv_viewnext' => 'Vide ($1)',
+	'mv_viewprevnext' => 'Vide ($1) ($2)',
+	'mv_search_and' => 'e',
+	'mv_search_or' => 'o',
+	'mv_search_not' => 'no',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Kaganer
@@ -5051,6 +5104,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'mv_remove_reason' => 'Motivu ba halakon:',
 	'mv_tool_search' => 'Buka',
 	'mv_edit' => 'Edita',
 	'mv_search_categories' => 'Kategoria sira',

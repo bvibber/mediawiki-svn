@@ -305,8 +305,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Imre
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'contributors-toolbox' => 'Colaboradores principales',
 	'contributors-target' => 'Título:',
 );
 
@@ -687,8 +689,8 @@ $messages['km'] = array(
 	'contributors-target' => 'ចំណងជើង៖',
 	'contributors-submit' => 'បង្ហាញ',
 	'contributors-subtitle' => 'អ្នករួមចំណែកចម្បងរបស់ $1',
-	'contributors-others-long' => 'មាន {{PLURAL:$1|is one other contributor|$1 អ្នករួមចំណែក​ដទៃ}} $1 ទៀត​ចំពោះ​ទំព័រនេះ​។',
-	'contributors-others' => 'និង {{PLURAL:$1|one other|$1 នាក់ផ្សេងទៀត}}',
+	'contributors-others-long' => 'មាន {{PLURAL:$1|១ អ្នករួមចំណែក​ដទៃទៀត|$1 អ្នករួមចំណែក​ដទៃទៀត}} ​ចំពោះ​ទំព័រនេះ​។',
+	'contributors-others' => 'និង {{PLURAL:$1|១ នាក់ផ្សេងទៀត|$1 នាក់ផ្សេងទៀត}}',
 	'contributors-badtitle' => 'ចំណងជើង​គ្មានសុពលភាព',
 	'contributors-nosuchpage' => 'មិនមានទំព័រ$1ទេ។',
 );

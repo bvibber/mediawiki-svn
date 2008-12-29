@@ -619,12 +619,14 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Lijealso
+ * @author Malafaya
  */
 $messages['pt'] = array(
 	'mp-userlevels-link' => 'Níveis de usuário',
 	'mp-welcome-upload' => 'Carregar',
 	'mp-welcome-edit' => 'Editar',
 	'mp-welcome-points' => '$1 pontos',
+	'mp-welcome-logged-in' => 'Olá, $1',
 );
 
 /** Romanian (Română)

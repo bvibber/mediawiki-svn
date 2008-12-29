@@ -872,6 +872,7 @@ $messages['pl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Sir Lestaty de Lioncourt
  */
 $messages['pt'] = array(
@@ -891,6 +892,7 @@ $messages['pt'] = array(
 	'closewikis-page-err-nowiki' => 'A wiki especificada é inválida',
 	'closewikis-page-err-closed' => 'Wiki já está fechada',
 	'closewikis-page-err-opened' => 'Esta wiki não está fechada',
+	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-log' => 'Registro de Wikis fechadas',
 	'closewikis-log-header' => 'Aqui está um registro de todas as wikis que foram fechadas ou reabertas por stewards',
 	'closewikis-log-close' => 'fechada $2',

@@ -255,6 +255,13 @@ $messages['ms'] = array(
 	'skinperpage-desc' => 'Menambah tag <tt>&lt;skin&gt;</tt> untuk membolehkan pemakaian rupa yang berlainan pada setiap laman',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'skinperpage-desc' => 'Föögt dat <tt>&lt;skin&gt;</tt>-Tag to, vör dat Bruken vun verschillen Skins för verschedene Sieden',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

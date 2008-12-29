@@ -60,8 +60,8 @@ $messages['bg'] = array(
 $messages['cs'] = array(
 	'formatchanges-desc' => 'Změní formát [[Special:RecentChanges|posledních změn]]',
 	'formatchanges-anonymous' => 'Anonym',
-	'formatchanges-createdby' => 'vytvořil',
-	'formatchanges-editedby' => 'upravil',
+	'formatchanges-createdby' => '$1 - vytvořil $2 ($3)',
+	'formatchanges-editedby' => '$1 - upravil $2 ($3)',
 );
 
 /** German (Deutsch)
@@ -80,8 +80,8 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'formatchanges-desc' => 'Formatěrujo [[Special:RecentChanges|aktualne změny]] zasej',
 	'formatchanges-anonymous' => 'Anonymny',
-	'formatchanges-createdby' => 'wutwórjony wót',
-	'formatchanges-editedby' => 'wobźěłany wót',
+	'formatchanges-createdby' => '$1 - wutwórjony wót $2 ($3)',
+	'formatchanges-editedby' => '$1 - wobźěłany wót $2 ($3)',
 );
 
 /** Esperanto (Esperanto)
@@ -103,13 +103,14 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Mobe
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'formatchanges-desc' => 'Muotoilee [[Special:RecentChanges|tuoreet muutokset]] -sivun uudelleen.',
 	'formatchanges-anonymous' => 'Nimetön',
-	'formatchanges-createdby' => 'luonut',
-	'formatchanges-editedby' => 'muokannut',
+	'formatchanges-createdby' => '$1 — sivun loi $2 kello $3',
+	'formatchanges-editedby' => '$1 — sivua muokkasi $2 kello $3',
 );
 
 /** French (Français)
@@ -119,8 +120,8 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'formatchanges-desc' => 'Reformater les [[Special:RecentChanges|modifications récentes]]',
 	'formatchanges-anonymous' => 'Anonyme',
-	'formatchanges-createdby' => 'créé par',
-	'formatchanges-editedby' => 'modifié par',
+	'formatchanges-createdby' => '$1 - créé par $2 ($3)',
+	'formatchanges-editedby' => '$1 - modifié par $2 ($3)',
 );
 
 /** Galician (Galego)
@@ -129,8 +130,8 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'formatchanges-desc' => 'Reforma os [[Special:RecentChanges|cambios recentes]]',
 	'formatchanges-anonymous' => 'Anónimos',
-	'formatchanges-createdby' => 'creado por',
-	'formatchanges-editedby' => 'editado por',
+	'formatchanges-createdby' => '$1 - creado por $2 ($3)',
+	'formatchanges-editedby' => '$1 - editado por $2 ($3)',
 );
 
 /** Hebrew (עברית)
@@ -187,8 +188,8 @@ $messages['jv'] = array(
 $messages['km'] = array(
 	'formatchanges-desc' => 'រៀចចំ​ឡើងវិញ [[ពិសេស:បំលាស់ប្ដូរ​ថ្មីៗ|បំលាស់ប្ដូរ​ថ្មីៗ]]',
 	'formatchanges-anonymous' => 'អនាមិក',
-	'formatchanges-createdby' => 'បង្កើតឡើង​ដោយ',
-	'formatchanges-editedby' => 'កែប្រែ​ដោយ',
+	'formatchanges-createdby' => '$1 - ត្រូវ​បាន​បង្កើតឡើង​ដោយ $2 ($3)',
+	'formatchanges-editedby' => '$1 - ត្រូវ​បាន​កែប្រែ​ដោយ $2 ($3)',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -247,6 +248,16 @@ $messages['oc'] = array(
 	'formatchanges-editedby' => 'modificat per',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'formatchanges-desc' => 'Reformuje [[Special:RecentChanges|ostatnie zmiany]]',
+	'formatchanges-anonymous' => 'Anonimowy',
+	'formatchanges-createdby' => '$1 – utworzona przez $2 ($3)',
+	'formatchanges-editedby' => '$1 – edytowana przez $2 ($3)',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */
@@ -268,12 +279,13 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Aleksandrit
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'formatchanges-desc' => 'Преобразует [[Special:RecentChanges|свежие правки]]',
 	'formatchanges-anonymous' => 'Аноним',
-	'formatchanges-createdby' => 'создано',
+	'formatchanges-createdby' => '$1 — создано $2 ($3)',
 	'formatchanges-editedby' => 'исправлено',
 );
 
@@ -283,8 +295,8 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'formatchanges-desc' => 'Zmení formát [[Special:RecentChanges|Posledných úprav]]',
 	'formatchanges-anonymous' => 'Anonym',
-	'formatchanges-createdby' => 'vytvoril',
-	'formatchanges-editedby' => 'upravil',
+	'formatchanges-createdby' => '$1 - vytvoril $2 ($3)',
+	'formatchanges-editedby' => '$1 - upravil $2 ($3)',
 );
 
 /** Swedish (Svenska)
@@ -322,7 +334,7 @@ $messages['tl'] = array(
 $messages['uk'] = array(
 	'formatchanges-desc' => 'Перетворює [[Special:RecentChanges|нові редагування]]',
 	'formatchanges-anonymous' => 'Анонім',
-	'formatchanges-createdby' => 'створено',
+	'formatchanges-createdby' => '$1 — створено $2 ($3)',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -333,12 +345,14 @@ $messages['vi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'formatchanges-desc' => '将[[Special:RecentChanges|最近更新]]重新格式化',
 	'formatchanges-anonymous' => '匿名',
-	'formatchanges-createdby' => '创建者：',
-	'formatchanges-editedby' => '编辑者：',
+	'formatchanges-createdby' => '$1 - 由 $2 创建 ($3)',
+	'formatchanges-editedby' => '$1 - 由 $2 编辑 ($3)',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

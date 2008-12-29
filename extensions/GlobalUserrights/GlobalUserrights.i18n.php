@@ -37,6 +37,13 @@ $messages['ar'] = array(
 	'rights-userrights-global' => 'إدارة سجل الحقوق العالمي',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ouda
+ */
+$messages['arz'] = array(
+	'gur-rightslog-name' => 'سجل الحقوق العالمي',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -126,6 +133,10 @@ $messages['hsb'] = array(
  */
 $messages['km'] = array(
 	'globaluserrights' => 'គ្រប់គ្រង​សិទ្ធិ​អ្នកប្រើប្រាស់​សកល',
+	'gur-rightslog-name' => 'កំណត់ហេតុ​សិទ្ធិ​សកល',
+	'gur-rightslog-header' => 'នេះ​គឺជា​កំណត់ហេតុ​នៃ​បំលាស់ប្ដូរទៅ​សិទ្ធិ​សកល​។',
+	'gur-rightslog-entry' => 'បាន​ប្ដូរ​សមាជិកភាព​ក្រុម​សកល ចំពោះ $1 ពី $2 ទៅ $3',
+	'rights-userrights-global' => 'គ្រប់គ្រង​សិទ្ធិ​អ្នកប្រើប្រាស់​សកល',
 );
 
 /** Korean (한국어)

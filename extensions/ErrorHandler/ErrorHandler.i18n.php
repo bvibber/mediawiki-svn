@@ -395,6 +395,7 @@ $messages['ja'] = array(
 $messages['km'] = array(
 	'errorhandler-errors' => 'កំហុស៖',
 	'errorhandler-error-warning' => 'បម្រាម',
+	'errorhandler-error-notice' => 'សម្គាល់',
 	'errorhandler-trace-line' => '$1 (បន្ទាត់ទី$2): $3',
 );
 

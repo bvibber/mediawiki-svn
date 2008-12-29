@@ -317,9 +317,13 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Jwitos
+ * @author Leinad
  */
 $messages['pl'] = array(
+	'unicodeconverter' => 'Konwerter unicode',
 	'unicodeconverter-ok' => 'OK',
+	'unicodeconverter-oldtext' => 'Oryginalny tekst:',
+	'unicodeconverter-newtext' => 'Przekonwertowany tekst:',
 );
 
 /** Western Punjabi (پنجابی)
@@ -431,10 +435,12 @@ $messages['vi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
 	'unicodeconverter' => 'Unicode转换器',
+	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => '原文字：',
 	'unicodeconverter-newtext' => '转换后文字',
 );

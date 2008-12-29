@@ -142,6 +142,7 @@ $messages['bcc'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'scanset-desc' => 'Прагляд адсканаваных выяваў з CD/DVD калекцыі Андрэаса Гроса',
@@ -152,7 +153,7 @@ $messages['be-tarask'] = array(
 	'scanset_no_files' => 'Памылка: Няма файлаў у пазначанай дырэкторыі.',
 	'scanset_no_volumes' => 'Памылка: Ня знойдзена дырэкторыяў для тамоў',
 	'scanset_missing_index_file' => 'Памылка: Файл індэксу $1 ня знойдзены',
-	'scanset_index_file_error' => 'Памылка: Памылка ў файле індэсу ў радку $1',
+	'scanset_index_file_error' => 'Памылка: памылка ў файле індэксу ў радку $1',
 	'scanset_invalid_volume' => 'Памылка: Няслушны том',
 	'scanset_next' => 'Наступны &gt;',
 	'scanset_prev' => '&lt; Папярэдні',
@@ -744,7 +745,14 @@ $messages['nah'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'scanset-desc' => 'Scannte Sieden vun Andreas Grosz sien CD/DVD-Set ankieken',
+	'scanset_no_name' => 'Fehler: Dor mutt en Scan-Set-Naam angeven warrn, to’n Bispeel &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Fehler: Scan-Set ungüllig oder fehlt.',
+	'scanset_unrecognised_index_format' => 'Fehler: Unbekannt Indexformat',
 	'scanset_opendir_error' => 'Fehler: Kann den Ordner $1 nich apen maken',
+	'scanset_no_files' => 'Fehler: In de angeven Mapp sünd keen Datein.',
+	'scanset_no_volumes' => 'Fehler: Keen Volume-Mapp funnen',
+	'scanset_missing_index_file' => 'Fehler: Indexdatei $1 nich funnen',
 	'scanset_next' => 'Tokamen →',
 	'scanset_prev' => '← Vörig',
 );

@@ -4405,6 +4405,7 @@ $messages['nds'] = array(
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Afstimmen]]
 * [[Special:Boardvote/list|Bet nu al afgevene Stimmen]]
 * [[Special:Boardvote/dump|Verslötelte Wahlindrääg]]',
+	'boardvote_invalidentered' => '<p><strong>Fehler:</strong> De Reeg vun de Kannedaten mutt in ganze positive Tallen utdrückt warrn (1, 2, 3, …) oder leddig laten warrn.</p>',
 	'boardvote_notloggedin' => 'Du büst nich anmellt.
 Dat du wählen dröffst, musst du as en Bruker anmellt wesen, de opminnst $1 {{PLURAL:$1|Bidrag|Bidrääg}} vör $2 un opminnt $3 {{PLURAL:$3|Bidrag|Bidrääg}} twischen $4 un $5 maakt hett.',
 	'boardvote_novotes' => 'Noch hett nüms afstimmt.',
@@ -4421,7 +4422,10 @@ $1 för de verslötelt Daten.</p>',
 	'boardvote_strike' => 'Strieken',
 	'boardvote_unstrike' => 'Strieken trüchnehmen',
 	'boardvote_needadmin' => 'Blot Wahladministraters köönt disse Akschoon utföhren.',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Wahlen to dat Wikimedia-Kuratorium</a>:
+De Wahl is apen bet to’n 22. Juni',
 	'boardvote_notstarted' => 'De Wahl hett noch nich anfungen',
+	'boardvote_closed' => 'De Wahl is nu toenn. De Resultaten sünd op de [http://meta.wikimedia.org/wiki/Board_elections/2008/Results Wahlsied] antokieken.',
 	'boardvote_edits_many' => 'veel',
 	'group-boardvote' => 'Wahl-Administraters',
 	'group-boardvote-member' => 'Wahl-Administrater',
@@ -6850,6 +6854,7 @@ $messages['zh-classical'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
  * @author Yuyu
  */
 $messages['zh-hans'] = array(
@@ -6886,9 +6891,13 @@ $messages['zh-hans'] = array(
 
 [[Special:Boardvote/entry|返回]]',
 	'boardvote_invalidentered' => '<p><strong>错误</strong>：候选人一栏中，你只能填写正整数 (1丶2丶3......)或留空。</p>',
-	'boardvote_nosession' => '我不能确定您的维基媒体账户名称。请您登入到合乎资格的维基计划，然后转到 <nowiki>[[Special:Boardvote]]</nowiki>。您必须用一个账户，在 $2 以前有 $1 次编辑，而且其首次编辑必须在 $3 以前。',
-	'boardvote_notloggedin' => '您还没有登录。要参与投票，您必须在$2之前至少贡献了$1次以上，而且在$3前作出第一次编辑。',
-	'boardvote_notqualified' => '抱歉，您在$2之前只有$1次贡献。 您必须至少贡献了$3次以上才可以参与本次投票。而且，您的第一次编辑是在$4，这需要在$5之前。',
+	'boardvote_nosession' => '无法确定您的维基媒体账户名称。
+请登录到维基，然后转到 <nowiki>[[Special:Boardvote]]</nowiki>进行投票。
+您的账户必须在 $2 以前至少有 $1 次{{PLURAL:$1|编辑|编辑}}，而且在 $4 至 $5 之间完成至少 $3 次{{PLURAL:$1|编辑|编辑}}。',
+	'boardvote_notloggedin' => '您还没有登录。
+如要进行投票，您的账户必须在 $2 以前至少有 $1 次{{PLURAL:$1|编辑|编辑}}，而且在 $4 至 $5 之间完成至少 $3 次{{PLURAL:$1|编辑|编辑}}。',
+	'boardvote_notqualified' => '您不符合本次投票条件。
+您需要在 $2 以前至少有 $1 次{{PLURAL:$1|编辑|编辑}}，而且在 $4 至 $5 之间完成至少 $3 次{{PLURAL:$1|编辑|编辑}}。',
 	'boardvote_novotes' => '目前还没有人投票。',
 	'boardvote_time' => '时间',
 	'boardvote_user' => '用户',

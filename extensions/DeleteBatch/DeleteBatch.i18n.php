@@ -100,6 +100,7 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ouda
  */
 $messages['arz'] = array(
 	'deletebatch' => 'حذف باتش من الصفحات',
@@ -127,6 +128,7 @@ $messages['arz'] = array(
 	'deletebatch-select-script' => 'سكريبت حذف الصفحات',
 	'deletebatch-select-yourself' => 'أنت',
 	'deletebatch-no-page' => 'من فضلك اختر على الأقل صفحة واحدة للحذف أو اختر ملفا يحتوى على قائمة الصفحات.',
+	'right-deletebatch' => 'حذف باتش الصفحات',
 );
 
 /** Bulgarian (Български)
@@ -168,6 +170,7 @@ $messages['ca'] = array(
  * @author ChrisiPK
  * @author Leithian
  * @author MF-Warburg
+ * @author Purodha
  * @author Revolus
  */
 $messages['de'] = array(
@@ -177,7 +180,7 @@ $messages['de'] = array(
 	'deletebatch-help' => 'Lösche eine Reihe von Seiten. Du kannst einerseits eine einzelne Seite löschen, aber auch mehrere Seiten, die du in einer Datei aufzählst.
 Wähle einen Benutzer, der im Löschlogbuch angezeigt werden soll.
 Die hochzuladende Datei sollte pro Zeile einen Seitentitel und kann optional einen mit einem senkrechten Stich („|“) abgetrennten Löschgrund enthalten.',
-	'deletebatch-caption' => 'Dateiliste',
+	'deletebatch-caption' => 'Datei mit Liste der Seiten',
 	'deletebatch-title' => 'Mehrere Seiten löschen',
 	'deletebatch-link-back' => 'Du kannst zur Erweiterung zurückgehen',
 	'deletebatch-as' => 'Das Skript ausführen als',
@@ -247,6 +250,7 @@ $messages['es'] = array(
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Mobe
+ * @author Nike
  */
 $messages['fi'] = array(
 	'deletebatch' => 'Poista useita sivuja',
@@ -261,7 +265,7 @@ $messages['fi'] = array(
 	'deletebatch-or' => '<b>TAI</b>',
 	'deletebatch-page' => 'Poistettavat sivut',
 	'deletebatch-reason' => 'Poiston syy',
-	'deletebatch-processing' => 'poistetaan sivuja',
+	'deletebatch-processing' => 'poistetaan sivuja $1',
 	'deletebatch-from-file' => 'tiedostolistasta',
 	'deletebatch-from-form' => 'lomakkeesta',
 	'deletebatch-success-subtitle' => '$1',
@@ -524,7 +528,7 @@ $messages['km'] = array(
 	'deletebatch-or' => '<b>ឬ</b>',
 	'deletebatch-page' => 'ទំព័រ​ដែល​ត្រូវ​លុប',
 	'deletebatch-reason' => 'មូលហេតុនៃការលុប',
-	'deletebatch-processing' => 'ការលុបទំព័រ',
+	'deletebatch-processing' => 'ការលុបទំព័រ $1',
 	'deletebatch-from-file' => 'ពី​បញ្ជី​ឯកសារ',
 	'deletebatch-from-form' => 'ពី​ទម្រង់',
 	'deletebatch-success-subtitle' => 'សម្រាប់ $1',
@@ -546,8 +550,36 @@ $messages['kri'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'deletebatch' => 'En Aanzahl Sigge fottschmiiße',
 	'deletebatch-desc' => 'En [[Special:DeleteBatch|Aanzahl Sigge fottschmiiße]]',
+	'deletebatch-button' => 'Fottschmiiße!',
+	'deletebatch-help' => 'Donn En Aanzahl Sigge fottschmiiße.
+Do kanns entweder ein einzel Sigg fottschmiiße, udder en Aanzahl Sigge,
+die en ener Datei jeliß sen.
+Sök Der ene Metmaacher uß, dä em Logbooch för et Fottschmiiße enjedraare weed.
+De huhjelade Datei sullt en jeede Reih ene Name fun ene Sigg han,
+dohenger kann ene „|“ stonn, un dann dohenger ene Jrond för et Fottschmiiße.',
+	'deletebatch-caption' => 'Leß met de Sigge',
+	'deletebatch-title' => 'En Aanzahl Sigge fottschmiiße',
+	'deletebatch-link-back' => 'Do kanns op dä Zosatz zom Wiki retuur jonn',
+	'deletebatch-as' => 'Lohß dat Projramm loufe als Metmaacher',
+	'deletebatch-both-modes' => 'Sök entweder en bestemmpte Sigg uß, udder en Leß met Sigge.',
+	'deletebatch-or' => '<b>udder</b>',
+	'deletebatch-page' => 'Sigge zom Fottschmiiße',
+	'deletebatch-reason' => 'Der Jrond för et Fottschmiiße',
+	'deletebatch-processing' => 'Sigge fottschmiiße us $1',
+	'deletebatch-from-file' => 'ene huhjelaade Leß',
+	'deletebatch-from-form' => 'em Fomulaa',
 	'deletebatch-success-subtitle' => 'för $1',
+	'deletebatch-omitting-nonexistant' => 'Donn de Sigg $1 övverjonn, weil et se nit jit.',
+	'deletebatch-omitting-invalid' => 'Donn dä Tittel $1 övverjonn, weil hä onjöltesh eß.',
+	'deletebatch-file-bad-format' => 'En dä Datei sullt nommaale Täx stonn.',
+	'deletebatch-file-missing' => 'Die aanjejovve Datei kunnte mer nit lesse.',
+	'deletebatch-select-script' => 'Projramm zom Sigge Fottschmiiße',
+	'deletebatch-select-yourself' => 'Do',
+	'deletebatch-no-page' => 'Beß esu joot, un jif winnischstens ein Sigg zom Fottschmiiße aan, udder
+söök en Datei uß, wo en Leß met Sigge zom Fottschmiiße dren steiht.',
+	'right-deletebatch' => 'En Aanzahl Sigge fottschmiiße',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -785,6 +817,16 @@ $messages['ro'] = array(
 	'deletebatch-file-missing' => 'Nu se poate citi fişierul dat',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'deletebatch-or' => '<b>o</b>',
+	'deletebatch-from-file' => "da 'a liste de le file",
+	'deletebatch-success-subtitle' => 'pe $1',
+	'deletebatch-select-yourself' => 'tu',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv
@@ -881,6 +923,13 @@ $messages['te'] = array(
 	'deletebatch-reason' => 'తొలగింపునకు కారణం',
 	'deletebatch-from-file' => 'ఫైలు నుంచి',
 	'deletebatch-from-form' => 'ఫారం నుంచి',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'deletebatch-reason' => 'Motivu ba halakon:',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

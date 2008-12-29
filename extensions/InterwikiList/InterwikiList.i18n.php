@@ -293,6 +293,8 @@ $messages['km'] = array(
 	'interwikilist' => 'បញ្ជីអន្តរវិគី',
 	'interwikilist-desc' => 'បន្ថែម[[Special:Interwikilist|ទំព័រពិសេស]]ដើម្បីមើលតំណភ្ជាប់អន្តរវិគីដែលអាចមើលបាន',
 	'interwikilist-linkname' => 'តំណភ្ជាប់អន្តរវិគី',
+	'interwikilist-target' => 'គោលដៅ URL',
+	'interwikilist-filter' => 'បញ្ជី​តម្រង',
 	'interwikilist-prefix' => 'បុព្វបទអន្តរវិគី៖',
 );
 
@@ -381,6 +383,13 @@ $messages['pl'] = array(
 	'interwikilist-prefix' => 'Przedrostek interwiki:',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'interwikilist-target' => 'URL de destinazione',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Александр Сигачёв
@@ -426,6 +435,18 @@ $messages['uk'] = array(
 	'interwikilist-desc' => 'Додає [[Special:Interwikilist|спеціальну сторінку]] для перегляду доступних інтервікі-посилань',
 	'interwikilist-linkname' => 'Інтервікі-посилання',
 	'interwikilist-target' => 'Цільова URL-адреса',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'interwikilist' => 'Lista interwiki',
+	'interwikilist-desc' => 'Zonta na [[Special:Interwikilist|pàxena speciale]] par védar i colegamenti interwiki disponibili',
+	'interwikilist-linkname' => 'Colegamenti interwiki',
+	'interwikilist-target' => 'URL de destinassion',
+	'interwikilist-filter' => 'Lista dei filtri',
+	'interwikilist-prefix' => 'Prefisso interwiki:',
 );
 
 /** Yiddish (ייִדיש)

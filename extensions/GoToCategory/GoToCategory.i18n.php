@@ -111,7 +111,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'gotocategory-desc' => 'Prööf de Bejreffe beim Söke, un wann et Name fun Saachjroppe sin, höp et tirek do hen.',
+	'gotocategory-desc' => 'Prööf de Bejreffe beim Söke, un wann et Name fun Saachjroppe sin, höp tirek do hen.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

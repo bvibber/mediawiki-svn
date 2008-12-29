@@ -219,6 +219,13 @@ $messages['ms'] = array(
 	'antibot-desc' => 'Sebuah rangka kerja perisian ringkas untuk pemeriksaan bot spam dan beban picu',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'antibot-desc' => 'Eenfach Rahmenwark för Spambot-Kuntrull',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

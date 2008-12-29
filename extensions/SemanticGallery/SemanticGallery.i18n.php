@@ -23,6 +23,13 @@ Shown in [[Special:Version]].
 Do not translage links.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'semanticgallery-desc' => 'Dodaje format izlaza galerije u SMW pravolinijske upite',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */
@@ -35,6 +42,13 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'semanticgallery-desc' => 'Pśidawa galerijowy wudawański format za wotpšašanja SMW',
+);
+
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'semanticgallery-desc' => 'Añade una galería de formatos de salida a las consultas SMW en línea',
 );
 
 /** French (Français)

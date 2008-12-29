@@ -175,6 +175,13 @@ $messages['oc'] = array(
 	'formatsearch-desc' => 'Netejar la pagina de resultats de recèrca',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'formatsearch-desc' => 'Czyści stronę z wynikami wyszukiwania',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

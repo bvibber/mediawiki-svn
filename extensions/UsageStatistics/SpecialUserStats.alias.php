@@ -67,6 +67,11 @@ $aliases['id'] = array(
 	'UserStats' => array( 'Statistik pengguna' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'UserStats' => array( '利用統計' ),
+);
+
 /** Ripoarisch (Ripoarisch) */
 $aliases['ksh'] = array(
 	'UserStats' => array( 'Statistik vun fun de Metmaacher', 'Statistik vun fun de Medmaacher', 'Metmaacher ier Zahle', 'Medmaacher ier Zahle' ),

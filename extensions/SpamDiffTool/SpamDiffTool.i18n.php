@@ -158,6 +158,17 @@ $messages['bn'] = array(
 	'spamdifftool_confirm' => "স্প্যাম কালোতালিকায় এই ভুক্তিগুলি যোগ করার ব্যাপারটি নিশ্চিত করুন। (সমস্যা হলে <a href='$1' target='new'>এখানে</a> ক্লিক করুন।)",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'spamdifftool' => 'Upravljaj s nepoželjnim spiskom spama',
+	'spamdifftool_cantedit' => 'Žao nam je - nemate dopuštenja za uređivanje nedopuštenog spiska spama.',
+	'spamdifftool_option_none' => 'ništa',
+	'spamdifftool_block' => 'Blokada:',
+	'spamdifftool_submit_buttom' => 'Pošalji',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -256,6 +267,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'spamdifftool' => 'Kontrolu spaman nigraliston',
+	'spamdifftool-desc' => 'Provizas bazan fojon por aldoni novajn listanojn al la spam-nigralisto de diferencaj paĝoj',
 	'spamdifftool_cantedit' => 'Bedaŭrinde - vi ne havas permeson por redakti la spaman nigraliston.',
 	'spamdifftool_notext' => "Estas neniom da teksto aldoni al la spama nigralisto.
 Klaku <a href='$1'>ĉi tie</a> por daŭri.",
@@ -785,6 +797,15 @@ Carregue <a href='$1'>aqui</a> para voltar.",
 	'spamdifftool_submit_buttom' => 'Submeter',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'spamdifftool_option_none' => 'ninde',
+	'spamdifftool_block' => 'Blocche:',
+	'spamdifftool_submit_buttom' => 'Conferme',
+);
+
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Александр Сигачёв
@@ -1009,6 +1030,7 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'spamdifftool' => 'Gestion de la lista nera del spam',
+	'spamdifftool-desc' => 'Fornisse na senpliçe maniera par zontar valori novi a la lista nera del spam da le pàxene del confronto fra versioni',
 	'spamdifftool_cantedit' => 'No ti gà i parmessi necessari par modificar la lista nera del spam.',
 	'spamdifftool_notext' => "No ghe xe nissun testo da zontar a la lista nera del spam.
 Struca <a href='$1'>qua</a> par continuar.",

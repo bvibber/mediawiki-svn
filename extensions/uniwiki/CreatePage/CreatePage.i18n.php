@@ -43,6 +43,18 @@ $messages['ar'] = array(
 	'createpage_editexisting' => 'نعم. أريد المساهمة للصفحة الموجودة.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ouda
+ */
+$messages['arz'] = array(
+	'createpage' => 'أنشئ صفحة',
+	'createpage_submitbutton' => 'تنفيذ',
+	'createpage_instructions' => 'أدخل عنوان الصفحة التي تريد أنشائها',
+	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
+	'createpage_tryagain' => 'لا. أريد إنشاء صفحة جديدة بعنوان مميز.',
+	'createpage_editexisting' => 'نعم. أريد المساهمة للصفحة الموجودة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -372,6 +384,22 @@ La volètz modificar ?",
 	'createpage_tryagain' => 'Non, vòli crear una pagina novèla amb un títol diferent.',
 	'createpage_editexisting' => 'Òc, vòli contribuir dins aquesta pagina existenta.',
 	'createpage-badtitle' => '« $1 » pòt pas èsser utilizat coma nom de pagina',
+);
+
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'createpage' => 'Utwórz stronę',
+	'createpage-desc' => 'Dodaje [[Special:CreatePage|stronę specjalną]] do tworzenia nowych stron',
+	'createpage_submitbutton' => 'OK',
+	'createpage_instructions' => 'Podaj tytuł strony, którą chcesz utworzyć:',
+	'createpage_entertitle' => 'Proszę podać tytuł dla swojej strony',
+	'createpage_titleexists' => 'Strona o tytule [[$1]] już istnieje. 
+Czy chcesz edytować istniejącą stronę?',
+	'createpage_tryagain' => 'Nie, chcę utworzyć nową stronę z odmiennym tytułem.',
+	'createpage_editexisting' => 'Tak, chcę edytować istniejącą stronę.',
+	'createpage-badtitle' => '„$1” nie może być tytułem strony',
 );
 
 /** Western Punjabi (پنجابی)

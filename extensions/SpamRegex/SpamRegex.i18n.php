@@ -891,6 +891,14 @@ $messages['ro'] = array(
 	'spamregex-summary-log' => '(Rezumat)',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'spamregex-text' => '(Teste)',
+	'spamregex-summary-log' => '(Riepileghe)',
+);
+
 /** Russian (Русский)
  * @author Rubin
  */

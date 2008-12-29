@@ -77,6 +77,11 @@ $aliases['id'] = array(
 	'Contributors' => array( 'Kontributor' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Contributors' => array( '投稿者' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Contributors' => array( 'អ្នករួមចំណែក' ),

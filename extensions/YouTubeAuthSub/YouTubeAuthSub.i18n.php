@@ -591,6 +591,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Mobe
  * @author Nike
  * @author Str4nd
@@ -614,7 +615,7 @@ Videosi on tallennettu.
 <a href='http://www.youtube.com/watch?v=$1'>Katso video</a>.
 Uuden videon käsittely voi kestää YouTubessa hetken, joten se ei ehkä ole vielä valmis.
 
-Lisää video wiki-sivulle seuraavalla koodilla:
+Lisää video wikisivulle seuraavalla koodilla:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Kirjaudu sisään YouTubeen ennen videon lähettämistä.',
 	'youtubeauthsub_uploadhere' => 'Lähetä videosi täältä:',
@@ -1727,6 +1728,8 @@ Vă rugăm să aveţi răbdare.',
  */
 $messages['roa-tara'] = array(
 	'youtubeauthsub' => 'Careche ìnu video de YouTube',
+	'youtubeauthsub-desc' => "Permitte a l'utinde de [[Special:YouTubeAuthSub|carecà le filmete]] direttamende sus a YouTube",
+	'youtubeauthsub_info' => "Pe carecà 'nu filmete sus a YouTube da mettere jndr'à 'na pàgene, mitte le 'mbormaziune ca avènene mò:",
 	'youtubeauthsub_title' => 'Titele',
 	'youtubeauthsub_description' => 'Descrizione',
 	'youtubeauthsub_password' => 'Password de YouTube',
@@ -1735,9 +1738,17 @@ $messages['roa-tara'] = array(
 	'youtubeauthsub_category' => 'Categorije',
 	'youtubeauthsub_submit' => 'Conferme',
 	'youtubeauthsub_clickhere' => 'Cazze aqquà pe collegarte sus a YouTube',
+	'youtubeauthsub_tokenerror' => "Errore mendre ca ste ccrejeve 'u gettone pe l'autorizzazione, reprueve a aggiornà.",
+	'youtubeauthsub_authsubinstructions' => "Pe carecà 'nu filmete sus a YouTube, apprime t'à collegà.",
 	'youtubeauthsub_uploadhere' => "Careche 'u video tue d'aqquà:",
 	'youtubeauthsub_uploadbutton' => 'Careche',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Vide stu filmete]',
 	'youtubeauthsub_summary' => "Stoche a careche 'u video de YouTube",
+	'youtubeauthsub_uploading' => "'U filmete tue ste avene carechete.
+Pe piacere puerte 'nu picche de pascenze.",
+	'youtubeauthsub_viewpage' => "In alternative, tu puè [[$1|vedè 'u filmete tue]].",
 	'youtubeauthsub_jserror_nokeywords' => 'Pe piacere mitte 1 o cchiù parole chiave',
 	'youtubeauthsub_jserror_notitle' => "Pe piacere mitte 'nu titele p'u video.",
 );
@@ -2020,7 +2031,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
-	'youtubeauthsub_username' => 'Naran uza-nain iha YouTube',
+	'youtubeauthsub_username' => "Naran uza-na'in iha YouTube",
 	'youtubeauthsub_category' => 'Kategoria',
 );
 

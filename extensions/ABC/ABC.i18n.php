@@ -92,8 +92,10 @@ $messages['dsb'] = array(
 
 /** Esperanto (Esperanto)
  * @author Melancholie
+ * @author Yekrats
  */
 $messages['eo'] = array(
+	'abcdesc' => 'Aldonas etikedon <tt>&lt;abc&gt;</tt> por fomati ABC-muzikon',
 	'abcdownload' => 'Elŝuto:',
 );
 

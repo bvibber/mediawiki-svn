@@ -110,10 +110,11 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'protectsection_desc' => 'Antaa valtuutettujen käyttäjien suojata osia sivusta elementin <tt>&lt;protect&gt;</tt> avulla.',
+	'protectsection_desc' => 'Antaa valtuutettujen käyttäjien suojata osia sivusta <tt>&lt;protect&gt;</tt>-elementillä.',
 	'protectsection_add_remove' => 'Yritit lisätä tai poistaa suojatun osion.',
 	'protectsection_modify' => 'Yritit muokata suojattua tekstiä.',
 	'protectsection_forbidden' => 'Estetty',

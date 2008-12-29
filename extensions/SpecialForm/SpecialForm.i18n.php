@@ -208,6 +208,35 @@ $messages['de'] = array(
 	'formsaveerrortext' => 'Es gab einen unbekannten Fehler beim Speichern der Seite „$1“.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'form-desc' => '[[Special:Form|Formular]] za napóranje nowych bokow',
+	'form' => 'Formular',
+	'formnoname' => 'Žedne formularowe mě',
+	'formnonametext' => 'Musyš formularowe mě pódaś, na pś. "Special:Form/Měformulara".',
+	'formbadname' => 'Wopacne formularowe mě',
+	'formbadnametext' => 'Njejo formular z tym mjenim.',
+	'formpattern' => '$1-formular',
+	'formtitlepattern' => 'Nowy $1 pśidaś',
+	'formsave' => 'Składowaś',
+	'formindexmismatch-title' => 'Mjenjowy muster a pśedłog se njewótpowědujotej',
+	'formindexmismatch' => 'Toś ten formular ma njejadnake mjenjowe mustry a pśedłogi, zachopinajucy se wót indeksa $1.',
+	'formarticleexists' => 'Bok eksistěrujo',
+	'formarticleexiststext' => 'bok [[$1]] južo eksistěrujo.',
+	'formbadpagename' => 'Wopacne mě boka',
+	'formbadrecaptcha' => 'Njepłaśiwe gódnoty za reCaptcha. Wopytaj hyšći raz.',
+	'formbadpagenametext' => 'Formularne daty, kótarež sy zapódał, napóraju njepłaśiwe mě boka, "$1".',
+	'formrequiredfieldpluralerror' => 'Póla $1 su trěbne za toś ten formulary.
+Wupołń je pšosym.',
+	'formrequiredfielderror' => 'Pólo $1 jo trěbne za ten fromular.
+Wupołń jo pšosym.',
+	'formsavesummary' => 'Nowy bok na zakłaźe [[Special:Form/formulara $1]]',
+	'formsaveerror' => 'Zmólka pśi składowanju formulara',
+	'formsaveerrortext' => "Njeznata zmólka jo nastała pśi składowanju boka '$1'.",
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -771,10 +800,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
  * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
+	'form-desc' => '[[Special:Form|Formularz interfejsu]] do rozpoczynania nowych stron',
 	'form' => 'Formularz',
 	'formnoname' => 'Brak nazwy formularza',
 	'formnonametext' => 'Musisz podać nazwę formularza, np. „{{ns:special}}:Formularz/Nazwaformularza”.',
@@ -783,10 +814,12 @@ $messages['pl'] = array(
 	'formpattern' => 'formularz $1',
 	'formtitlepattern' => 'Dodaj nowy $1',
 	'formsave' => 'Zapisz',
+	'formindexmismatch-title' => 'Wzorzec nazwy i szablon nie pasują',
 	'formindexmismatch' => 'W poniższym zestawieniu znajdują się niepasujące wzorce nazw i szablony, rozpoczynając od indeksu $1.',
 	'formarticleexists' => 'Strona istnieje',
 	'formarticleexiststext' => 'Strona [[$1]] już istnieje.',
 	'formbadpagename' => 'Zła nazwa strony',
+	'formbadrecaptcha' => 'Niepoprawne wartości reCaptcha. Spróbuj ponownie.',
 	'formbadpagenametext' => 'Dane wpisane do formularza tworzą niepoprawną nazwę strony, „$1”.',
 	'formrequiredfieldpluralerror' => 'Pola $1 są wymagane w tym formularzu. Prosimy o wypełnienie ich.',
 	'formrequiredfielderror' => 'Pole $1 jest wymagane w tym formularzu. Wypełnij je.',

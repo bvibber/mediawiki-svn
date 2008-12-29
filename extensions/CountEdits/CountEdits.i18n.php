@@ -974,7 +974,7 @@ $messages['pt'] = array(
 	'countedits-ok' => 'Ok',
 	'countedits-nosuchuser' => 'Não foi encontrado um utilizador com o nome $1.',
 	'countedits-resultheader' => 'Resultados para $1',
-	'countedits-resulttext' => '$1 fez $2 edições',
+	'countedits-resulttext' => '$1 fez $2 {{PLURAL:$2|edição|edições}}',
 	'countedits-mostactive' => 'Contribuidores mais activos',
 	'countedits-nocontribs' => 'Não possui contribuições neste wiki.',
 );
@@ -993,6 +993,15 @@ $messages['ro'] = array(
 	'countedits-resulttext' => '$1 a efectuat $2 {{PLURAL:$2|modificare|modificări}}',
 	'countedits-mostactive' => 'Contribuitorii cei mai activi',
 	'countedits-nocontribs' => 'Nu există contribuitori la acest wiki.',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'countedits-username' => "Nome de l'utende:",
+	'countedits-ok' => 'OK',
+	'countedits-nosuchuser' => "Non ge stè nisciune utende cu 'u nome $1.",
 );
 
 /** Russian (Русский)

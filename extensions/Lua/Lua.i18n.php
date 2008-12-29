@@ -280,6 +280,14 @@ $messages['ja'] = array(
 	'lua_overflow_time' => '最大実行時間に達しました',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'lua_error' => 'កំហុស​នៅលើ​បន្ទាត់ $1',
+	'lua_error_internal' => 'កំហុស​ខាងក្នុង',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

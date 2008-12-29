@@ -97,6 +97,7 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
+	'authors-desc' => 'Añade una lista de colaboradores a las páginas',
 	'authors_authors' => 'Autores',
 	'authors_anonymous' => 'Anónimo',
 );
@@ -246,6 +247,15 @@ $messages['oc'] = array(
 	'authors-desc' => 'Apondre a las paginas una lista dels contributors',
 	'authors_authors' => 'Autors',
 	'authors_anonymous' => 'Anomin',
+);
+
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'authors-desc' => 'Dołącza do stron listę autorów',
+	'authors_authors' => 'Autorzy',
+	'authors_anonymous' => 'Anonimowy',
 );
 
 /** Western Punjabi (پنجابی)

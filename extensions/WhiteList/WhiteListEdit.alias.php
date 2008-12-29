@@ -68,6 +68,12 @@ $aliases['hsb'] = array(
 	'WhiteList' => array( 'Běła lisćina' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'WhiteList' => array( 'ホワイトリスト' ),
+	'WhiteListEdit' => array( 'ホワイトリスト編集', 'ホワイトリストの編集' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'WhiteList' => array( 'បញ្ជីស' ),

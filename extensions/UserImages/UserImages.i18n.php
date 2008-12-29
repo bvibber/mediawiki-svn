@@ -20,11 +20,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Agbad
+ * @author Leinad
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'userimages-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version].
+Shown in [[Special:Version]].
 Do not translate or change links.',
 	'userimages-noimages' => "This message is displayed when the wanted user didn't upload any images.
 
@@ -379,8 +380,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
  */
 $messages['pl'] = array(
+	'userimages-desc' => 'Generuje galerie grafik przesłanych przez użytkownika za pomocą <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Grafiki przesłane przez $1',
 	'userimages-noname' => 'Nieprawidłowa nazwa użytkownika lub nie podano nazwy użytkownika.',
 	'userimages-noimages' => '$1 nie przesłał(-a) żadnych grafik.',

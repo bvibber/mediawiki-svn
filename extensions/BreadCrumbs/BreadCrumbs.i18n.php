@@ -360,15 +360,17 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Alex S.H. Lin
+ * @author Gaoxuewei
  */
 $messages['zh-hans'] = array(
-	'breadcrumbs-desc' => '显示用户在这尔网站的轨迹',
+	'breadcrumbs-desc' => '显示用户在这个网站的轨迹。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
+ * @author Gaoxuewei
  */
 $messages['zh-hant'] = array(
-	'breadcrumbs-desc' => '顯示使用者在這個網站的軌跡',
+	'breadcrumbs-desc' => '顯示使用者在這個網站的軌跡。',
 );
 

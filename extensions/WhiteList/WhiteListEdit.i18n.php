@@ -100,13 +100,17 @@ This page is only applicable to restricted users",
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'whitelist-desc' => 'Short description of the White List extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'mywhitelistpages' => '{{Identical|My pages}}',
 	'whitelisttablemodifyall' => '{{Identical|All}}',
 	'whitelisttablemodifynone' => '{{Identical|None}}',
-	'whitelisttableexpires' => '{{Identical|Expires on}}',
+	'whitelisttableexpires' => '{{Identical|Expires on}}
+Used as a column header for a table',
+	'whitelisttablemodby' => 'Used as a column header for a table',
+	'whitelisttablemodon' => 'Used as a column header for a table',
 	'whitelisttableedit' => '{{Identical|Edit}}',
 	'whitelisttablesetedit' => '{{Identical|Set to edit}}',
 	'whitelisttablesetview' => '{{Identical|Set to view}}',
@@ -370,6 +374,7 @@ $messages['bs'] = array(
 	'whitelisttablemodifynone' => 'Ništa',
 	'whitelisttableexpires' => 'Ističe dana',
 	'whitelisttableedit' => 'Uredi',
+	'whitelisttablenewdate' => 'Novi datum:',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistnewtabledate' => 'Datum isteka:',
 	'whitelistoverviewcd' => "* Mijenjam datum na '''$1''' za [[:$2|$2]]",
@@ -689,9 +694,9 @@ $messages['fi'] = array(
 	'whitelisttablemodifyall' => 'Kaikki',
 	'whitelisttablemodifynone' => 'Ei mitään',
 	'whitelisttablepage' => 'Wikisivu',
-	'whitelisttableexpires' => 'Vanhentumispäivä:',
-	'whitelisttablemodby' => 'Viimeisin muokkaaja:',
-	'whitelisttablemodon' => 'Viimeksi muokattu:',
+	'whitelisttableexpires' => 'Vanhentuu',
+	'whitelisttablemodby' => 'Viimeisin muokkaaja',
+	'whitelisttablemodon' => 'Viimeksi muokattu',
 	'whitelisttableedit' => 'Muokkaa',
 	'whitelisttableview' => 'Näytä',
 	'whitelisttablenewdate' => 'Uusi päivämäärä:',
@@ -1775,7 +1780,6 @@ Musisz [[Special:UserRights|dodać użytkowników do tej grupy]] zanim będziesz
 	'whitelistselectrestricted' => '== Wybierz nazwę użytkownika z ograniczeniami ==',
 	'whitelistpagelist' => 'Strony $1 w serwisie {{SITENAME}}',
 	'whitelistnocalendar' => "<font color='red' size=3>Prawdopodobnie, wymagane do pracy tego modułu rozszerzenie [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics] nie zostało poprawnie zainstalowane.</font>",
-	'whitelistbadtitle' => 'Nieprawidłowa nazwa -',
 	'whitelistoverview' => '== Przegląd zmian dla elementu $1 ==',
 	'whitelistoverviewcd' => "* Zmiana daty ograniczenia na '''$1''' w odniesieniu do elementu [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Ustalanie dostępu dla elementu '''$1''' do elementu [[:$2|$2]]",
@@ -1791,6 +1795,11 @@ Ta strona ma zastosowanie tylko do użytkowników na których zostały narzucone
 	'whitelistnever' => 'nigdy',
 	'whitelistnummatches' => ' - {{PLURAL:$1|1 wynik|$1 wyniki|$1 wyników}}',
 	'right-editwhitelist' => 'Zmień whitelistę dla istniejących użytkowników',
+	'right-restricttowhitelist' => 'Edytowanie i przeglądanie strony wyłącznie z białej listy',
+	'action-editwhitelist' => 'modyfikowania białej listy dla istniejących użytkowników',
+	'action-restricttowhitelist' => 'edytowania i przeglądania wyłącznie białej listy',
+	'group-restricted' => 'Ograniczenie użytkownicy',
+	'group-restricted-member' => 'Ograniczony użytkownik',
 	'group-manager' => 'Zarządzający',
 	'group-manager-member' => 'Zarządzający',
 );
@@ -1833,12 +1842,15 @@ $messages['pt'] = array(
 	'whitelisttablenewdate' => 'Nova Data:',
 	'whitelisttableremove' => 'Remover',
 	'whitelistpagelist' => 'Página de {{SITENAME}} para $1',
-	'whitelistbadtitle' => 'Titulo inválido -',
 	'whitelistrequestmsg' => '$1 requisitou acesso {{PLURAL:$3|à seguinte página|às seguintes páginas}}:
 
 $2',
 	'whitelistnever' => 'nunca',
 	'whitelistnummatches' => ' - {{PLURAL:$1|um resultado|$1 resultados}}',
+	'group-restricted' => 'Utilizadores restritos',
+	'group-restricted-member' => 'Utilizador restrito',
+	'group-manager' => 'Gestores',
+	'group-manager-member' => 'Gestor',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1899,6 +1911,28 @@ Această pagină este aplicabilă doar utilizatorilor restricţionaţi",
 	'group-restricted-member' => 'Utilizator restricţionat',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'mywhitelistpages' => 'Le pàggene mie',
+	'whitelisttablemodify' => 'Cange',
+	'whitelisttablemodifyall' => 'Tutte',
+	'whitelisttablemodifynone' => 'Ninde',
+	'whitelisttablepage' => 'Pàgene de Uicchi',
+	'whitelisttabletype' => "Tipe d'accesse",
+	'whitelisttableexpires' => "More 'u",
+	'whitelisttablemodby' => "L'urteme cangiamende da",
+	'whitelisttablemodon' => "L'urteme cangiamende 'u",
+	'whitelisttableedit' => 'Cange',
+	'whitelisttableview' => 'Vide',
+	'whitelisttablenewdate' => 'Date nove:',
+	'whitelisttablechangedate' => "Cange 'a date de scadenze",
+	'whitelisttablesetedit' => "Configure 'u cangiamende",
+	'whitelisttablesetview' => 'Configure pe vedè',
+	'whitelisttableremove' => 'Scangille',
+);
+
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Ferrer
@@ -1935,7 +1969,6 @@ $messages['ru'] = array(
 	'whitelistnewtablereview' => 'Обзор',
 	'whitelistselectrestricted' => '== Выберите имя участника ==',
 	'whitelistpagelist' => 'Страницы {{SITENAME}} для $1',
-	'whitelistbadtitle' => 'Неправильный заголовок -',
 	'whitelistoverview' => '== Обзор изменений для $1 ==',
 	'whitelistoverviewcd' => "* Изменение даты на '''$1''' для [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Установить доступ '''$1''' для [[:$2|$2]]",
@@ -1947,7 +1980,7 @@ $messages['ru'] = array(
 $2',
 	'whitelistrequestconf' => 'Запрос по новым страницам был отправлен $1',
 	'whitelistnever' => 'никогда',
-	'whitelistnummatches' => '  - {{PLURAL:$1|одно совпадение|$1 совпадения|$1 совпадений}}',
+	'whitelistnummatches' => '  - $1 {{PLURAL:$1|совпадение|совпадения|совпадений}}',
 	'right-editwhitelist' => 'Изменить белый список для существующих участников',
 	'right-restricttowhitelist' => 'Редактировать и просматривать только страницы из белого списка',
 	'action-editwhitelist' => 'изменить белый список для существующих участников',

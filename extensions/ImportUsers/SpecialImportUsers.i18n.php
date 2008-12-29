@@ -708,8 +708,25 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'importusers' => 'Metmaacher-Empoot',
 	'importusers-desc' => 'Donn Metmaacher em Knubbel fun en Datei [[Special:ImportUsers|emptotteere]], dat Fommaat es: <code lang="en">text/csv; charset: UTF-8</code>',
+	'importusers-uploadfile' => 'Datei zom Huhlade',
+	'importusers-form-caption' => '<code>CSV</code>-Datei (UTF-8) met dä Date',
+	'importusers-form-file' => 'Fommaat fun dä Metmaacher-Datei (<i lang="en">csv</i>):',
+	'importusers-form-replace-present' => 'Donn die Metmaacher övverschrieve, die ald do sin.',
+	'importusers-form-button' => 'Loß Jonn!',
+	'importusers-user-added' => 'Dä Metmaacher <b>%s</b> es jez dobei jedonn.',
+	'importusers-user-present-update' => 'Ne Metmaacher <b>%s</b> johf et ald. Övverschrevve.',
+	'importusers-user-present-not-update' => 'Ne Metmaacher %s jit et ald. Nix jedonn.',
+	'importusers-user-invalid-format' => 'De Metmaacher-Daate en de Reih %s es ledddich udder hät e kapott Fommaat. Övverjange.',
+	'importusers-log' => 'Logbooch fum Metmaacher-Empotteere',
+	'importusers-log-summary' => 'Koot Zosammejefass',
 	'importusers-log-summary-all' => 'All',
+	'importusers-log-summary-added' => 'Dobei jedonn',
+	'importusers-log-summary-updated' => 'Op der neue Stand jebraat',
+	'importusers-login-name' => 'Metmaacher-Name',
+	'importusers-password' => 'Paßwoot',
+	'importusers-email' => '<i lang="en">e-mail</i>',
 	'importusers-realname' => 'Dinge richtije Name',
 );
 
@@ -1041,6 +1058,26 @@ $messages['ro'] = array(
 	'importusers-password' => 'parolă',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'nume real',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'importusers-uploadfile' => "Careche 'u file",
+	'importusers-form-button' => "'Mborte",
+	'importusers-user-added' => 'Utende <b>%s</b> ha state aggiunde.',
+	'importusers-user-present-update' => 'Utende <b>%s</b> esiste ggià. Aggiorne.',
+	'importusers-user-present-not-update' => "Utende <b>%s</b> esiste ggià. Non g'ù puè aggiornà.",
+	'importusers-log' => "Archivije de le 'mbortaziune",
+	'importusers-log-summary' => 'Riepileghe',
+	'importusers-log-summary-all' => 'Tutte',
+	'importusers-log-summary-added' => 'Aggiunde',
+	'importusers-log-summary-updated' => 'Aggiornete',
+	'importusers-login-name' => 'Nome pe trasè',
+	'importusers-password' => 'password',
+	'importusers-email' => 'e-mail',
+	'importusers-realname' => 'nome vere',
 );
 
 /** Russian (Русский)

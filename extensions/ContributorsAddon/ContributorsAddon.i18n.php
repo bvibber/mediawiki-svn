@@ -54,6 +54,13 @@ $messages['dsb'] = array(
 	'contributorsaddon-desc' => 'Pśidawa wuskokajuce wókna JS onMouseover k wótkazam "Głowne pśinosowarje"',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'contributorsaddon-desc' => 'Añade ventanas emergentes JavaScript a los enlaces de los «Colaboradores principales»',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  */

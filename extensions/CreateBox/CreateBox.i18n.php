@@ -423,6 +423,13 @@ $messages['ro'] = array(
 	'createbox-create' => 'Creează',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'createbox-create' => 'Ccreje',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv

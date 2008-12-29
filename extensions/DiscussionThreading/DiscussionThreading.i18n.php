@@ -219,6 +219,15 @@ $messages['it'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Avvia una nuova discussione',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author Thearith
+ */
+$messages['km'] = array(
+	'discussionthreading-replysection' => 'ឆ្លើយតប',
+	'discussionthreading-threadnewsection' => 'ថ្មី',
+	'discussionthreading-threadnewsectionhint' => 'ចាប់ផ្ដើម​ខ្សែស្រឡាយ​ថ្មី​មួយ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -308,6 +317,13 @@ $messages['pl'] = array(
  */
 $messages['pt'] = array(
 	'discussionthreading-replysection' => 'responder',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'discussionthreading-replysection' => 'respunne',
 );
 
 /** Russian (Русский)

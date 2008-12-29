@@ -673,6 +673,9 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'inspectcache-ok' => 'OK',
+	'inspectcache-get' => 'Pigghije',
+	'inspectcache-delete' => 'Scangille',
+	'inspectcache-deleted' => "Scangille 'a cache",
 );
 
 /** Russian (Русский)

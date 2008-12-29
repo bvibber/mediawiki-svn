@@ -47,6 +47,7 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'layouts_title' => 'ابتدي صفحه',
+	'layouts_chooselayout' => 'أختار تنسيق ل$1',
 	'layouts_nolayout' => 'لا يوجد تصميم',
 	'layouts_continue' => 'استمر',
 	'layouts_choosecategory' => 'اختار تصنيف لـ $1:',
@@ -129,8 +130,11 @@ $messages['eo'] = array(
 	'layouts_tagline' => "Ĉi tiu paĝo estis generita de la aranĝo '''$1'''.",
 );
 
-/** Spanish (Español) */
+/** Spanish (Español)
+ * @author Sanbec
+ */
 $messages['es'] = array(
+	'layouts-desc' => 'Rellenar las páginas recién creadas con «estructuras» editables para fomentar una estructura común en las páginas',
 	'layouts_title' => 'Crear una página',
 	'layouts_chooselayout' => 'Selecciona un Diseño para $1:',
 	'layouts_nolayout' => 'Sin diseño',
@@ -335,6 +339,21 @@ $messages['oc'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'layouts-desc' => 'Wypełnianie nowo utworzonych stron edytowalnym układem strony, tak aby wspierać jednolitą strukturę stron',
+	'layouts_title' => 'Utwórz stronę',
+	'layouts_chooselayout' => 'Wybierz układ strony dla $1:',
+	'layouts_nolayout' => 'Brak układu strony',
+	'layouts_continue' => 'Kontynuuj',
+	'layouts_choosecategory' => 'Wybierz kategorię dla $1:',
+	'layouts_unknown' => 'Nieznany',
+	'layouts_tagline' => "Ta strona została wygenerowana za pomocą układu strony '''$1'''.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -342,6 +361,13 @@ $messages['ps'] = array(
 	'layouts_title' => 'يو مخ جوړول',
 	'layouts_choosecategory' => 'د $1 لپاره يوه وېشنيزه وټاکۍ:',
 	'layouts_unknown' => 'ناجوت',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'layouts_title' => 'Criar uma página',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

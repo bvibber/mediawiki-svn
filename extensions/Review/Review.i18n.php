@@ -319,6 +319,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Imre
  * @author Leithian
+ * @author MF-Warburg
  * @author Melancholie
  * @author Revolus
  */
@@ -329,13 +330,14 @@ $messages['de'] = array(
 	'review_sidebar_explanation' => 'Das ganz linke Auswahlkästchen bedeutet immer „keine Meinung“.',
 	'review_save' => 'Prüfung speichern',
 	'review_your_review' => 'Deine Prüfung dieser Seite/Version:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Du hast schon andere Versionen dieser Seite geprüft. Deine anderen Bewertungen werden mit dieser Prüfung verschmolzen wo du 'keine Meinung' ausgewählt hast.",
 	'review_page_link' => 'Prüfungsstatistiken',
 	'review_sidebar_final' => 'Für die Prüfungsdaten dieser Seite, siehe ihre $1',
 	'review_for_page' => 'Prüfung der Seite „$1“',
 	'review_for_user' => 'Prüfung für Benutzer „$1“',
 	'review_error' => 'Irgendetwas stimmt nicht!',
 	'review_no_reviews_for_page' => 'Es gibt derzeit keine Prüfungen für „$1“.',
-	'review_total_statistics' => 'Gesammt',
+	'review_total_statistics' => 'Gesamt',
 	'review_statistics_left_corner' => 'Prüfung',
 	'review_version_link' => 'Prüfung Nr. $1',
 	'review_statistic_cell' => 'Durchschnitt: $1 von $2<br />($4 Benutzer, $5 IP-Adressen)',
@@ -389,7 +391,10 @@ $messages['eo'] = array(
 	'review_version_link' => 'Versio #$1',
 	'review_statistic_cell' => 'Averaĝo: $1 de $2<br />($4 uzantoj, $5 anonimuloj)',
 	'review_version_statistic_cell' => '$1 de $2',
+	'review_version_reviews_link' => '<small>(versiaj kontroloj)</small>',
 	'review_user_details_link' => '(detaloj)',
+	'revision_review_this_page_version_link' => 'Kontrolo ĉi tiun version de la paĝo.',
+	'review_page_review' => 'Kontrolo de paĝo "$1"',
 	'review_blocked' => 'Vi estas forbarita. Foriru.',
 	'review_wrong_namespace' => 'Paĝoj en ĉi tiu nomspaco ne povas esti antaŭvidita!',
 	'review_topic' => 'Temo',

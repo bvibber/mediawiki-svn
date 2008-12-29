@@ -502,6 +502,7 @@ $messages['eo'] = array(
 	'grouppermissions-comment' => 'Komento:',
 	'grouppermissions-addsuccess' => '$1 estis sukcese aldonita',
 	'grouppermissions-deletesuccess' => '$1 estis sukcese forigita',
+	'grouppermissions-changesuccess' => 'Rajtoj por $1 estis sukcese ŝanĝitaj',
 	'grouppermissions-true' => 'Vera',
 	'grouppermissions-false' => 'Falsa',
 	'grouppermissions-never' => 'Neniam',
@@ -546,6 +547,7 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -555,8 +557,8 @@ $messages['fi'] = array(
 	'grouppermissions-searchlabel' => 'Etsi ryhmää',
 	'grouppermissions-add' => 'Lisää ryhmä',
 	'grouppermissions-delete' => 'Poista ryhmä',
-	'grouppermissions-addsuccess' => '$1 lisättiin onnistuneesti',
-	'grouppermissions-deletesuccess' => '$1 poistettiin onnistuneesti',
+	'grouppermissions-addsuccess' => '$1 lisättiin',
+	'grouppermissions-deletesuccess' => '$1 poistettiin',
 );
 
 /** French (Français)
@@ -1157,7 +1159,10 @@ $messages['km'] = array(
 	'grouppermissions-log-change' => 'បានផ្លាស់ប្តូរការអនុញ្ញាតសម្រាប់ក្រុម"$2"',
 	'grouppermissions-log-delete' => 'បានលុបក្រុម"$2"',
 	'grouppermissions-sp-save' => 'រក្សាទុក',
+	'grouppermissions-sp-addperm' => 'បន្ថែម​សិទ្ធិ',
 	'grouppermissions-sp-remove' => 'ដកហូត',
+	'right-viewsource' => 'មើល​ប្រភព​វិកី​នៃ​ទំព័រ​ដែល​ត្រូវ​បាន​ការពារ',
+	'right-raw' => 'មើល​ទំព័រ​ឆៅ',
 	'right-info' => 'មើល​ព័ត៌មាន​ទំព័រ',
 	'right-history' => 'មើលប្រវត្តិទំព័រ',
 	'right-search' => 'ស្វែងរកវិគី',
@@ -1543,6 +1548,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'grouppermissions-search' => 'Grupo:',
+	'grouppermissions-sp-save' => 'Gravar',
 );
 
 /** Tarifit (Tarifit)

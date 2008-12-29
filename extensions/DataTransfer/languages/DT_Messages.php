@@ -873,6 +873,22 @@ $messages['ro'] = array(
 	'dt_xml_id' => 'ID',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'viewxml' => "Vide l'XML",
+	'dt_viewxml_categories' => 'Categorije',
+	'dt_viewxml_namespaces' => 'Namespace',
+	'dt_xml_namespace' => 'Namespace',
+	'dt_xml_page' => 'Pàgene',
+	'dt_xml_field' => 'Cambe',
+	'dt_xml_name' => 'Nome',
+	'dt_xml_title' => 'Titele',
+	'dt_xml_id' => 'Codece (ID)',
+	'dt_xml_freetext' => 'Teste libbere',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -1067,6 +1083,24 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'dt_viewxml_categories' => 'Klads',
 	'dt_xml_name' => 'Nem',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'dt-desc' => '允许根据模板的要求导入导出结构化的数据',
+	'viewxml' => '查看XML',
+	'dt_viewxml_docu' => '请在下列分类、名称空间中选择，以使用XML格式查看。',
+	'dt_viewxml_categories' => '分类',
+	'dt_viewxml_namespaces' => '名称空间',
+	'dt_viewxml_simplifiedformat' => '简化格式',
+	'dt_xml_namespace' => '名称空间',
+	'dt_xml_page' => '页面',
+	'dt_xml_name' => '名称',
+	'dt_xml_title' => '标题',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => '自由文本',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

@@ -619,7 +619,9 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'signdocument' => 'Subskribi dokumenton',
+	'sign-nodocselected' => 'Bonvolu selekti la dokumenton kiun vi volas subskribi.',
 	'sign-selectdoc' => 'Dosiero:',
+	'sign-error-nosuchdoc' => 'La dokumento kiun vi petis ($1) ne ekzistas.',
 	'sign-realname' => 'Nomo:',
 	'sign-address' => 'Adreso:',
 	'sign-city' => 'Urbo:',
@@ -654,12 +656,15 @@ $messages['eo'] = array(
 	'sign-sigadmin-close' => 'Malŝalti subskribadon',
 	'sign-sigadmin-open' => 'Ŝalti subskribadon',
 	'sign-signatures' => 'Subskriboj',
+	'sign-sigadmin-closesuccess' => 'Subskribado estis sukcese malŝaltita.',
+	'sign-sigadmin-opensuccess' => 'Subskribado estis sukcese ŝaltita.',
 	'sign-viewsignatures' => 'vidi subskribojn',
 	'sign-closed' => 'fermita',
 	'sig-anonymous' => '<i>Anonima</i>',
 	'sig-private' => '<i>Privata</i>',
 	'sign-sigdetails' => 'Subskribaj detaloj',
 	'sign-emailto' => '<a href="mailto:$1">$1</a>',
+	'sign-viewfield-stricken' => 'Trostrekigi',
 	'sign-viewfield-reviewedby' => 'Kontrolanto',
 	'sign-viewfield-reviewcomment' => 'Komento',
 	'sign-detail-uniquequery-run' => 'Infommendi',
@@ -2418,6 +2423,39 @@ $messages['ro'] = array(
 	'sign-uniquequery-similaraddress' => 'Adresă similară',
 	'sign-uniquequery-similarphone' => 'Telefon similar',
 	'sign-uniquequery-similaremail' => 'E-mail similar',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'sign-realname' => 'Nome:',
+	'sign-address' => 'Indirizze (via, chiazze,...):',
+	'sign-city' => 'Cetate:',
+	'sign-state' => 'State/Reggione (i.e. California, Pugghie, ...)',
+	'sign-zip' => 'C.A.P.:',
+	'sign-country' => 'Nazione (i.e. Itaglie, ...)',
+	'sign-phone' => 'Numere de telefone:',
+	'sign-bday' => 'Età:',
+	'sign-email' => 'Indirizze e-mail:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> indichesce le cambe obbligatorije.</i></small>',
+	'sign-view-selectfields' => '<b>Cambe ca a fà vedè:</b>',
+	'sign-viewfield-entryid' => "ID de l'inzerimende",
+	'sign-viewfield-timestamp' => 'Orarie de stambe',
+	'sign-viewfield-realname' => 'Nome',
+	'sign-viewfield-address' => 'Indirizze',
+	'sign-viewfield-city' => 'Cetate',
+	'sign-viewfield-state' => 'Nazione/Reggione (i.e. California, Pugghie, ...)',
+	'sign-viewfield-country' => 'Nazione (i.e. Itaglie,...)',
+	'sign-viewfield-zip' => 'C.A.P.',
+	'sign-viewfield-ip' => 'Indirizze IP',
+	'sign-viewfield-agent' => "Agende de l'utende",
+	'sign-viewfield-phone' => 'Telefone',
+	'sign-viewfield-email' => 'E-mail',
+	'sign-viewfield-age' => 'Età',
+	'sign-viewfield-options' => 'Opzione',
+	'sign-viewfield-reviewcomment' => 'Commende',
+	'sign-review-comment' => 'Commende',
 );
 
 /** Russian (Русский)

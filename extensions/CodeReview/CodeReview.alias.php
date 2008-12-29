@@ -68,6 +68,12 @@ $aliases['hu'] = array(
 	'Code' => array( 'Kód' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Code' => array( 'コード', 'コードレビュー' ),
+	'RepoAdmin' => array( 'リポジトリ管理' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Code' => array( 'កូដ' ),

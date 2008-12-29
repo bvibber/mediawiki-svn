@@ -320,6 +320,9 @@ $messages['eo'] = array(
 	'imagetagging-removingtag' => 'Forigante markon...',
 	'imagetagging-addtagsuccess' => 'Aldoniĝis etikedo.',
 	'imagetagging-removetagsuccess' => 'Foriĝis etikedo.',
+	'imagetagging-canteditneedloginmessage' => 'Vi ne povas redakti ĉi tiun paĝon.
+Eble tial vi devas ensaluti por aldoni etikedojn al bildoj.
+Ĉu vi volas ensaluti nun?',
 	'imagetagging-oneuniquetagmessage' => 'Ĉi tiu bildo jam havas etikedon kun ĉi tiu nomo.',
 	'imagetagging-imagetag-seemoreimages' => 'Vidi pluajn bildojn pri "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Bildoj de "$1"',
@@ -607,10 +610,16 @@ $messages['km'] = array(
 	'imagetagging-imghistory' => 'ប្រវត្តិ',
 	'imagetagging-images' => 'រូបភាព',
 	'imagetagging-inthisimage' => 'ក្នុងរូបភាពនេះ: $1',
-	'imagetagging-tag-button' => 'ប្លាក់',
+	'imagetagging-new' => '<sup><span style="color:red">ថ្មី!</span></sup>',
+	'imagetagging-removetag' => 'ដាក​ស្លាក​ចេញ',
+	'imagetagging-tag-button' => 'ស្លាក',
 	'imagetagging-tagcancel-button' => 'បោះបង់',
-	'imagetagging-addingtag' => 'កំពុងដាក់ប្លាក…',
+	'imagetagging-addingtag' => 'កំពុងដាក់​ស្លាក…',
+	'imagetagging-removingtag' => 'កំពុងដក​ស្លាកចេញ…',
 	'imagetagging-addtagsuccess' => 'ប្លាក់ដែលបានដាក់៖',
+	'imagetagging-removetagsuccess' => 'ស្លាក​ដែល​បាន​ដក​ចេញ​។',
+	'imagetagging-imagetag-seemoreimages' => 'មើល​រូបភាព​បន្ថែម​នៃ "$1" ($2)',
+	'imagetagging-taggedimages-displaying' => 'កំពុង​បង្ហាញ $1 - $2 នៃ $3 រូបភាព​នៃ "$4"',
 );
 
 /** Krio (Krio)
@@ -923,6 +932,13 @@ $messages['pl'] = array(
 	'imagetagging-article' => 'Artykuł:',
 	'imagetagging-imghistory' => 'Historia',
 	'imagetagging-tagcancel-button' => 'Anuluj',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'imagetagging-tagcancel-button' => 'Cancelar',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -600,8 +600,12 @@ $messages['jv'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'povwatch_unknown_subpage' => 'ទំព័ររង​ដែល​មិនស្គាល់​។',
 	'povwatch_push' => 'រុញ',
 	'povwatch_title' => 'ចំណងជើង៖',
+	'povwatch_no_subscribers' => 'មិនមាន​អ្នកជាវប្រចាំ​ទេ​។',
+	'povwatch_unsubscribe' => 'ឈប់ជាវ',
+	'povwatch_subscribe' => 'ជាវប្រចាំ',
 	'povwatch_added' => 'បានបន្ថែម',
 );
 

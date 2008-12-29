@@ -170,6 +170,13 @@ $messages['oc'] = array(
 	'csshooks-desc' => 'Apondre del CSS a la sortida de la pagina HTML per un estil melhor',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'csshooks-desc' => 'Dodaje CSS do stron HTML dla lepszego wyglądu',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -170,6 +170,13 @@ $messages['oc'] = array(
 	'javascript-desc' => 'Apondre uniwiki.js a cada pagina que conten de còde JavaScript partejat entre las extensions Uniwiki',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'javascript-desc' => 'Dodaje uniwiki.js do każdej strony zawierającej kod JavaScript dzielony pomiędzy rozszerzenia Uniwiki',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

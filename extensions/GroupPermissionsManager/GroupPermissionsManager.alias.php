@@ -73,6 +73,12 @@ $aliases['hu'] = array(
 	'SortPermissions' => array( 'Engedélyek rendezése' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'GroupPermissions' => array( 'グループパーミッション' ),
+	'SortPermissions' => array( 'ソートパーミッション' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'GroupPermissions' => array( 'Grupperechter' ),

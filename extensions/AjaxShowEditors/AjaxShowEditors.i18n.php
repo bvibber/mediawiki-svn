@@ -991,6 +991,12 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'ajax-se-desc' => 'Mostra i utenti che sta modificando la stessa pagina',
+	'ajax-se-title' => 'Drio modifegar:',
+	'ajax-se-pending' => 'son drio ajornar... (maca su sta casèla o intaca la modìfegaa)',
+	'ajax-se-idling' => '(da $1 secondi)',
+	'ajax-se-pagedoesnotexist' => 'La pàxena no la esiste',
+	'ajax-se-userinvalid' => 'Eròr: utente mia valido',
+	'ajax-se-usernotfound' => 'Eròr: utente mia catà',
 );
 
 /** Vietnamese (Tiếng Việt)

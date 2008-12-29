@@ -240,6 +240,14 @@ $messages['oc'] = array(
 	'catboxattop-categories' => 'Categorias',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'catboxattop-desc' => 'Dodaje pole kategorii w prawym górnym rogu stron',
+	'catboxattop-categories' => 'Kategorie',
+);
+
 /** Western Punjabi (پنجابی)
  * @author Khalid Mahmood
  */

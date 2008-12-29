@@ -206,7 +206,22 @@ Achtung: Das Aktualisieren kann auf großen Wikis länger dauern.',
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'refreshspecial-select-all-pages' => 'selekti ĉiujn paĝojn',
+	'refreshspecial' => 'Refreŝigi specialajn paĝojn',
+	'refreshspecial-desc' => 'Permesas [[Special:RefreshSpecial|permanan refreŝigon de specialaj paĝoj]]',
+	'refreshspecial-title' => 'Refreŝigi specialajn paĝojn',
+	'refreshspecial-button' => 'Refreŝigi selektaĵojn',
+	'refreshspecial-refreshing' => 'refreŝigante specialajn paĝojn',
+	'refreshspecial-success-subtitle' => 'refreŝigante specialajn paĝojn',
+	'refreshspecial-choice' => 'refreŝigante specialajn paĝojn',
+	'refreshspecial-js-disabled' => '(<i>Vi ne povas selekti ĉiujn paĝojn kiam JavaScript estas malŝalta</i>)',
+	'refreshspecial-select-all-pages' => 'Selekti ĉiujn paĝojn',
+	'refreshspecial-link-back' => 'Reiri al speciala paĝo',
+	'refreshspecial-none-selected' => 'Vi ne selektis iujn ajn specialajn paĝojn. Reŝanĝante al defaŭlta selekto.',
+	'refreshspecial-db-error' => 'Malsukcesis: Datenbaza eraro',
+	'refreshspecial-no-page' => 'Nenia speciala paĝo',
+	'refreshspecial-reconnected' => 'Rekonektita.',
+	'refreshspecial-reconnecting' => 'Konekto malsukcesis; rekonekante en 10 sekundoj...',
+	'right-refreshspecial' => 'Refreŝigi specialajn paĝojn',
 );
 
 /** Spanish (Español)
@@ -243,7 +258,7 @@ $messages['fi'] = array(
 	'refreshspecial-slave-lagged' => 'Toisiopalvelin on jäänyt jälkeen. Odotetaan...',
 	'refreshspecial-reconnected' => 'Yhdistetty uudelleen.',
 	'refreshspecial-reconnecting' => 'Yhteys epäonnistui, yritetään uudelleen 10 sekunnin kuluttua...',
-	'refreshspecial-total-display' => 'Päivitettiin $1 sivua; yhteensä $2 riviä ajassa $3 (yhteensä skriptin suorittamiseen meni aikaa $4)',
+	'refreshspecial-total-display' => 'Päivitettiin {{PLURAL:$1|yksi sivu|$1 sivua}}. Yhteensä {{PLURAL:$2|yksi rivi|$2 riviä}} ajassa $3. Yhteensä komentosarjan suorittamiseen meni aikaa $4.',
 	'right-refreshspecial' => 'Päivittää toimintosivuja',
 );
 
@@ -668,7 +683,7 @@ $messages['tl'] = array(
 	'refreshspecial' => 'Sariwain ang natatanging mga pahina',
 	'refreshspecial-desc' => 'Nagpapahintulot ng [[Special:RefreshSpecial|kinakamay na pagsasariwa ng natatanging pahina]] ng mga natatanging pahina',
 	'refreshspecial-title' => 'Sariwain ang natatanging mga pahina',
-	'refreshspecial-help' => "Nagbibigay ang natatanging pahinang ito ng pamamaraang makamay ang pagsasariwa ng natatanging mga pahina.  Kapag napili mo na ang lahat ng mga pahinang naisa mong sariwain, pindutin ang  pindutang ''Sariwain'' na sa ibaba upang mawala ito.  Babala: maaaring matagal ang pagsasariwa sa mas malalaking mga wiki.",
+	'refreshspecial-help' => "Nagbibigay ang natatanging pahinang ito ng paraan kung paano makakamay ang pagsasariwa ng natatanging mga pahina.  Kapag napili mo na ang lahat ng mga pahinang nais mong sariwain, pindutin ang  pindutang ''Pinili ang sariwain'' na sa ibaba upang masariwa ang napiling natatanging mga pahina.  Babala: maaaring maging matagal ang pagsasariwa sa mas malalaking mga wiki.",
 	'refreshspecial-button' => 'Pinili ang pagsasariwa',
 	'refreshspecial-fail' => 'Pakilagyan ng tsek ang kahit isang natatanging pahinang sasariwain.',
 	'refreshspecial-refreshing' => 'sinasariwa ang natatanging mga pahina',
@@ -676,7 +691,7 @@ $messages['tl'] = array(
 	'refreshspecial-success-subtitle' => 'sinasariwa ang natatanging mga pahina',
 	'refreshspecial-choice' => 'sinasariwa ang natatanging mga pahina',
 	'refreshspecial-js-disabled' => '(<i>Hindi mo mapipili ang lahat ng mga pahina kapag hindi gumagana ang JavaScript</i>)',
-	'refreshspecial-select-all-pages' => ' piliin ang lahat ng mga pahina',
+	'refreshspecial-select-all-pages' => 'Piliin lahat ng mga pahina',
 	'refreshspecial-link-back' => 'Magbalik sa karugtong',
 	'refreshspecial-none-selected' => 'Hindi ka pumili ng anumang natatanging mga pahina.  Nagbabalik sa likas na nakatakdang pagpipilian.',
 	'refreshspecial-db-error' => 'Nabigo: kamalian sa kalipunan ng dato',
@@ -684,7 +699,9 @@ $messages['tl'] = array(
 	'refreshspecial-slave-lagged' => 'Naiwan/bumagal ang alipin, naghihintay...',
 	'refreshspecial-reconnected' => 'Muli nang naugnay.',
 	'refreshspecial-reconnecting' => 'Nabigo ang pagkakaugnay (koneksyon), muling uugnay sa loob ng 10 segundo...',
-	'refreshspecial-total-display' => 'Nasirawa ang $1 mga pahina na bumubuo sa $2 pahalang na mga hanay sa panahong $3 (buong panahon ng pagtakbo sa panitik ay $4)',
+	'refreshspecial-page-result' => 'nakakuha ng $1 {{PLURAL:$1|pahalang na hanay|pahalang na mga hanay}} mula sa',
+	'refreshspecial-total-display' => 'Nasariwa na ang $1 mga pahina na may kabuoang $2 {{PLURAL:$2|pahalang na hanay|pahalang na mga hanay}} sa panahong $3 (buong panahon ng pagtakbo sa panitik ay $4)',
+	'right-refreshspecial' => 'Sariwain ang natatanging mga pahina',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -615,6 +615,7 @@ $messages['eo'] = array(
 	'math_TooManyMathmlNodes' => 'Estas tro da nodoj en la MathML-arbo',
 	'math_TooManyTokens' => 'La enigo estas tro longa',
 	'math_UnavailableSymbolFontCombination' => 'La simbolo "$1" ne estas havebla en la tiparo "$2"',
+	'math_UnexpectedNextCell' => 'La komando "&" nur povas aperi inter bloko de "\\begin ... \\end"',
 	'math_UnmatchedBegin' => 'Estas trovita "\\begin" sen para "\\end"',
 	'math_UnmatchedCloseBrace' => 'Trovis ferman krampon "}" sen para malferma krampo "{"',
 	'math_UnmatchedEnd' => 'Trovis etikedon "\\end" sen kongrua "\\begin"',
@@ -1437,8 +1438,71 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'math_noblahtex' => 'Kunnt en $1 <code>blahtex</code> nit ußföhre.',
 	'math-desc' => 'MathML Ußjaaf för de <code>&lt;math&gt;</code> Befäähle.',
+	'math_AmbiguousInfix' => 'Dat „<code>$1</code>“ kann hee aan dämm Plaz mieh wie eine Senn han.
+Versök enß, met mieh jeschwunge Klammere „{…}“ dat Dinge kloh ze krijje.',
+	'math_CannotChangeDirectory' => 'Kunnt et Verzeichnes för ze Ärbeide nit wahßelle.',
+	'math_CannotCreateTexFile' => 'Kunnt de <code>tex</code>-Datei nit aanlääje.',
+	'math_CannotRunDvipng' => 'Kunnt <code>dvipng</code> nit ußföhre.',
+	'math_CannotRunLatex' => 'Kunnt <code>latex</code> nit ußföhre.',
+	'math_CannotWritePngDirectory' => 'Kunnt nit en dat Verzeichnes schriive, för <code>PNG</code> dren ußzejävve.',
+	'math_CannotWriteTexFile' => 'Kunnt nit en de <code>tex</code>-Datei schriive.',
+	'math_CasesRowTooBig' => 'En ene Reih fun enem <code>case</code>-Block künne bloß zwei Endrääch stonn.',
+	'math_DoubleSubscript' => 'Aan eine Basis kann bloß eine Index shtonn, hee woren_er zwei.',
+	'math_DoubleSuperscript' => 'Aan eine Basis kann bloß ein huhjestellt Superskripp shtonn, hee woren_er zwei.',
+	'math_IllegalCharacter' => 'En onjöltech Zeiche es en däm Textstöck.',
+	'math_IllegalCommandInMathMode' => 'Dat Kommando „<code>$1</code>“ jeiht nit en mattemattesche Formelle.',
+	'math_IllegalCommandInMathModeWithHint' => 'Dat Kommando „<code>$1</code>“ jeiht nit en mattemattesche Formelle.
+Künnt et sin, dat De „<code>$2</code>“ häs nämme welle?',
+	'math_IllegalCommandInTextMode' => 'Dat Kommando „<code>$1</code>“ jeiht nit en enem Täx.',
+	'math_IllegalCommandInTextModeWithHint' => 'Dat Kommando „<code>$1</code>“ jeiht nit en enem Täx.
+Künnt et sin, dat De „<code>$2</code>“ häs nämme welle?',
+	'math_IllegalDelimiter' => 'Do es e onjöltesch Trennzeiche henger „<code>$1</code>“.',
+	'math_IllegalFinalBackslash' => 'Do es ene onjöltejje „<code>\\</code>“ am Engk vun dä Formel.',
+	'math_IllegalNestedFontEncodings' => 'Kommandos för Schreffte künne nit innennein jeschachtelt wääde.',
+	'math_IllegalRedefinition' => 'Dat Kommando „<code>$1</code>“ es alld faßjelaat woode.
+Do kanns et nit norr_ens faßlääje udder övverschriive.',
+	'math_InvalidColour' => 'De Färv „<code>$1</code>“ es verkeeht.',
+	'math_InvalidUtf8Input' => 'En däm Täxstöck es kei jöltesch UTF-8 dren.',
+	'math_LatexFontNotSpecified' => 'För „<code>$1</code>“ es kei LaTeX-Schreffaat aanjejovve.',
+	'math_LatexPackageUnavailable' => 'Kunnt die <code>PNG</code>-Datei nit opboue, weil dat LaTeX-Pakätt „$<code>1“</code> nit do es.',
+	'math_MismatchedBeginAndEnd' => 'De Kommandos „<code>$1</code>“ un „<code>$2</code>“ donn nit zosamme paße.',
+	'math_MisplacedLimits' => 'Dat Kommando „<code>$1</code>“ darf bloß henger enem matemattesche Opperaator opdouche.
+Övverlääch ens, „<code>\\mathop</code>“ ze bruche.',
+	'math_MissingCommandAfterNewcommand' => 'Dat neu Kommando henger „<code>\\newcommand</code>“ es kapott, onjöltsch udder jaa nit doh.
+Et moß jenou ei Kommando bestemmp wääde.
+Et moß met enem Röckwäätsschrächstrech „<code>\\</code>“aanfange,
+un moß uß luuter Bochstabe puur bestonn.',
+	'math_MissingDelimiter' => 'Dä Trenner henger „<code>$1</code>“ es nit do.',
+	'math_MissingOpenBraceAfter' => 'De „<code>{</code>“ henger „<code>$1</code>“ es nit do.',
+	'math_MissingOpenBraceAtEnd' => 'De „<code>{</code>“ henger allem es nit do.',
+	'math_MissingOpenBraceBefore' => 'De „<code>{</code>“ för „<code>$1</code>“ es nit do.',
+	'math_MissingOrIllegalParameterCount' => 'Kein, odder en onjöltijje Aanzahl Parrrameetere bem Faßlääje vun „<code>$1</code>“.
+Do mööt en einzel Zeffer „<code>1</code>“…„<code>9</code>“… sen.',
+	'math_MissingOrIllegalParameterIndex' => 'Keine, udder ene verkeehte Parrameeter Index, es en de Definizjuhn fun „<code>$1</code>“.',
+	'math_NonAsciiInMathMode' => 'Alles, wat kein ASCII Zeiche sin, kann bloß en enem Täx jebruch wäde.
+Övverlääsch Der, de problemaatesche zeiche en „<code>\\text{…}</code>“ enzeschleeße.',
+	'math_NotEnoughArguments' => 'Et sen nit jenooch Parrameetere för „<code>$1</code>“ do.',
+	'math_PngIncompatibleCharacter' => 'En <code>PNG</code>-Datei mt däm Zeiche „<code>$1</code>“ dren kunnt nit ööndlech opjebout wäde.',
+	'math_ReservedCommand' => 'Dat Kommando „<code>$1</code>“ es reserveet för entärrne Aufjabe vun <code>blahtex</code>.',
+	'math_SubstackRowTooBig' => 'Et darf bloß eine Enndraach en jede Reih för ene „<code>$1</code>substack“-Block jevve.',
+	'math_TooManyMathmlNodes' => 'Dä Boum met dä Date vum MathML hät ze vill einzel Knote.',
+	'math_TooManyTokens' => 'Dat Täxstöck es zo lang.',
+	'math_UnavailableSymbolFontCombination' => 'Dat Sümbohl „$1“ deiht en dä Schreff „$2“ nit vörkumme.',
+	'math_UnexpectedNextCell' => 'Dat Kommando „<code>&amp;</code>“ darf bloß zwesche „<code>\\begin</code>“ un „<code>\\end</code>“ stonn.',
+	'math_UnexpectedNextRow' => 'Dat Kommando „<code>\\\\</code>“ darf bloß zwesche „<code>\\begin</code>“ un „<code>\\end</code>“ stonn.',
+	'math_UnmatchedBegin' => '„<code>\\begin</code>“ ohne zopaß „<code>\\end</code>“ jevonge.',
+	'math_UnmatchedCloseBrace' => '„<code>}</code>“ ohne zopaß „<code>{</code>“ jevonge.',
+	'math_UnmatchedEnd' => '„<code>\\end</code>“ ohne zopaß „<code>\\begin</code>“ jevonge.',
+	'math_UnmatchedLeft' => '„<code>\\left</code>“ ohne zopaß „<code>\\right</code>“ jevonge.',
+	'math_UnmatchedOpenBrace' => '„<code>{</code>“ ohne zopaß „<code>}</code>“ jevonge.',
+	'math_UnmatchedOpenBracket' => '„<code>[</code>“ ohne zopaß „<code>]</code>“ jevonge.',
+	'math_UnmatchedRight' => '„<code>\\right</code>“ ohne zopaß „<code>\\left</code>“ jevonge.',
 	'math_UnrecognisedCommand' => 'Dat Kommando „$1“ kenne mer nit.',
+	'math_WrongFontEncoding' => 'Dat Sümbohl „$1“ darf nit en däm Zeichekood „$2“ vörkumme.',
+	'math_WrongFontEncodingWithHint' => 'Dat Sümbohl „$1“ darf nit en däm Zeichekood „$2“ vörkumme.
+Versöhk ens dat Kommando „<code>$3{…}</code>“.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

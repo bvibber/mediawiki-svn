@@ -529,6 +529,14 @@ $messages['ro'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'filelist' => 'Liste de le file',
+	'filelist-show-list' => "Fa vedè 'a liste",
+);
+
 /** Russian (Русский)
  * @author Innv
  */

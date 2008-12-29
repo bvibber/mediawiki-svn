@@ -90,6 +90,11 @@ $aliases['id'] = array(
 	'ImportUsers' => array( 'Impor pengguna' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'ImportUsers' => array( 'インポートユーザー' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'ImportUsers' => array( 'នាំចូលអ្នកប្រើប្រាស់' ),

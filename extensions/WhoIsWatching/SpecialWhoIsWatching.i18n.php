@@ -192,13 +192,14 @@ $messages['et'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Nike
  * @author Silvonen
  * @author Str4nd
  * @author Vililikku
  */
 $messages['fi'] = array(
-	'whoiswatching' => 'Kuka on tarkkailemassa wiki-sivua',
+	'whoiswatching' => 'Kuka on tarkkailemassa wikisivua',
 	'whoiswatching-desc' => 'Mahdollistaa wikisivun tarkkailijoidan listauksen.',
 	'specialwhoiswatchingthepage' => 'Kuka tarkkailee sivua %s',
 	'specialwhoiswatchingaddbtn' => 'Lisää valitut käyttäjät',

@@ -235,6 +235,7 @@ $messages['jv'] = array(
  */
 $messages['km'] = array(
 	'eval_submit' => 'វាយតម្លៃ',
+	'eval_out' => 'ទិន្នផល',
 	'eval_code' => 'កូដ',
 );
 

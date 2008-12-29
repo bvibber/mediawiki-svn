@@ -102,6 +102,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'selectcategory-title' => 'Elektu kategoriojn',
+	'selectcategory-desc' => 'Permesas al la uzanto selekti de ekzistantaj kategorioj kiam redaktante paĝojn',
 );
 
 /** Persian (فارسی)
@@ -294,9 +295,11 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Derbeth
+ * @author Leinad
  */
 $messages['pl'] = array(
 	'selectcategory-title' => 'Wybór kategorii',
+	'selectcategory-desc' => 'Pozwala użytkownikowi podczas edytowania strony wybrać istniejącą kategorię',
 	'selectcategory-subtitle' => 'Shift+przycisk myszy wybiera wiele sąsiednich elementów, Ctrl+przycisk myszy wybiera elementy, które nie są koło siebie',
 );
 
@@ -401,10 +404,12 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'selectcategory-title' => '选择分类',
+	'selectcategory-desc' => '允许用户编辑页面时，自列表选择页面分类。',
 	'selectcategory-subtitle' => '按着Shift键再以鼠标选取连续的项目，按着Ctrl键再以鼠标选取非连续的项目。',
 );
 

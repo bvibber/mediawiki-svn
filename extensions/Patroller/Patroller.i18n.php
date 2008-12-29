@@ -953,7 +953,7 @@ $messages['pl'] = array(
 	'group-patroller' => 'Patrolujący',
 	'group-patroller-member' => 'Patrolujący',
 	'grouppage-patroller' => '{{ns:project}}:Patrolujący',
-	'right-patroller' => 'Patrolować strony',
+	'right-patroller' => 'Patrolowanie stron',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1205,6 +1205,13 @@ $messages['te'] = array(
 	'group-patroller-member' => 'పర్యవేక్షకుడు',
 	'grouppage-patroller' => '{{ns:project}}:పర్యవేక్షకుడు',
 	'right-patroller' => 'పేజీలను పర్యవేక్షించగలగడం',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'patrol-revert-reason' => 'Motivu:',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

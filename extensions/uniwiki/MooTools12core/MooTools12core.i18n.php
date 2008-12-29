@@ -179,17 +179,19 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Leinad
  */
 $messages['pl'] = array(
-	'mootools12core-desc' => 'Dodaje do każdej strony [http://mootools.net mootools-1.2-core-yc.js], spójną strukturę JavyScript',
+	'mootools12core-desc' => 'Dodaje do każdej strony [http://mootools.net mootools-1.2-core-yc.js], nieduży framwork javascriptowy',
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'mootools12core-desc' => 'Adiciona [http://mootools.net mootools-1.2-core-yc.js] a todas as páginas',
+	'mootools12core-desc' => 'Adiciona [http://mootools.net mootools-1.2-core-yc.js], uma infra-estrutura JavaScript compacta, a todas as páginas',
 );
 
 /** Romanian (Română)
@@ -217,7 +219,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'mootools12core-desc' => 'Pridáva [http://mootools.net mootools-1.2-core-yc.js] na každú stránku',
+	'mootools12core-desc' => 'Pridáva kompaktnú javascriptovú platformu [http://mootools.net mootools-1.2-core-yc.js] na každú stránku',
 );
 
 /** Swedish (Svenska)

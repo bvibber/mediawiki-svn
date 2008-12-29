@@ -185,6 +185,13 @@ $messages['ms'] = array(
 	'opensearchxml-desc' => 'Antara muka XML [http://www.opensearch.org OpenSearch] untuk pengekstrakan teks',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch]-XML-Snidsteed för Textuttöög',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

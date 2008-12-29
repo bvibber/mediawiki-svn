@@ -1364,6 +1364,7 @@ $messages['pl'] = array(
 	'inplace_scaler_no_handler' => 'Brak handlera dla transformacji tego typu MIME',
 	'inplace_scaler_no_output' => 'Nie stworzono pliku wyjściowego transformacji.',
 	'inplace_scaler_zero_size' => 'Transformacja stworzyła plik o zerowej wielkości.',
+	'webstore-desc' => 'Middleware dla sieciowego składowania plików (nie używa NFS)',
 	'webstore_access' => 'Ta usługa ograniczona jest dla określonych adresów IP klienta.',
 	'webstore_path_invalid' => 'Nieprawidłowa nazwa pliku.',
 	'webstore_dest_open' => 'Nie udało się otworzyć pliku docelowego „$1”.',

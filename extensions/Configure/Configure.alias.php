@@ -153,6 +153,13 @@ $aliases['id'] = array(
 	'ViewConfig' => array( 'Lihat konfigurasi', 'Lihatkonfigurasi' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'Configure' => array( '構成設定' ),
+	'Extensions' => array( '拡張機能' ),
+	'ViewConfig' => array( '構成閲覧' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'Configure' => array( 'កំណត់រចនាសម្ព័ន្ធ' ),

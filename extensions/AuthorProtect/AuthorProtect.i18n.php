@@ -980,6 +980,13 @@ $messages['te'] = array(
 	'authorprotect-failure' => 'సంరక్షణ విఫలమైంది',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'authorprotect-reason' => 'Motivu',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

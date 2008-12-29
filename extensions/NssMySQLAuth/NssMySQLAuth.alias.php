@@ -37,6 +37,11 @@ $aliases['gl'] = array(
 	'AccountManager' => array( 'Xestor de contas' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'AccountManager' => array( 'アカウントマネージャー' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'AccountManager' => array( 'គ្រប់គ្រង​គណនី' ),

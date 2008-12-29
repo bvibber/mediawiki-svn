@@ -383,7 +383,9 @@ $messages['ms'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'simpleantispam' => 'Dien Ännern hett den Spamschutz utlööst.',
 	'simpleantispam-label' => "Antispam-Kuntrull. Hier '''nix''' indragen!",
+	'simpleantispam-desc' => 'Föögt en eenfachen Bot-Spamschutz to Formularen to',
 );
 
 /** Dutch (Nederlands)

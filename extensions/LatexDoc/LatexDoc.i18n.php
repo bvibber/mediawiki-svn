@@ -516,6 +516,21 @@ $3',
 	'latexdoc-desc' => 'Modificare colaborativă a documentelor LaTeX',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'latexdoc_error' => 'Errore de LaTeX
+
+Comande: $1
+
+Resultete: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Pigghije DVI',
+	'latexdoc_get_pdf' => 'Pigghije PDF',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

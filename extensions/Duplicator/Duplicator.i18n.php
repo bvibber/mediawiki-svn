@@ -674,11 +674,20 @@ $messages['jv'] = array(
  * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'duplicator' => 'ច្បាប់ចម្លង​ទំព័រ​មួយ',
 	'duplicator-options' => 'ជម្រើសនានា',
 	'duplicator-source' => 'ប្រភព៖',
 	'duplicator-dest' => 'គោលដៅ៖',
+	'duplicator-submit' => 'ច្បាប់ចម្លង',
 	'duplicator-summary' => 'បានចម្លងពី [[$1]]',
+	'duplicator-success' => "<big>'''[[$1]] បាន​ត្រូវ​ចម្លង​ទៅ [[$2]].'''</big>",
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|ការពិនិត្យឡើងវិញ​ត្រូវ​បាន|ការពិនិត្យឡើងវិញ​ត្រូវ​បាន}} ចម្លង​។',
+	'duplicator-success-talkcopied' => 'ទំព័រ​ពិភាក្សា​ក៏​ត្រូវ​បាន​ចម្លង​ដែរ​។',
+	'duplicator-success-talknotcopied' => 'ទំព័រ​ពិភាក្សា​មិន​អាច​ត្រូវ​បាន​ចម្លង​ទេ​។',
 	'duplicator-source-invalid' => 'សូមផ្ដល់មកនូវចំណងជើងប្រភពត្រឹមត្រូវ។',
+	'duplicator-toomanyrevisions' => '[[$1]] មាន​ការពិនិត្យឡើងវិញ​ច្រើនពេក ($2) និង​មិន​អាច​ម្លង​បាន​ទេ​។
+
+លីមីត​បច្ចុប្បន្ន​គឺ $3 ។',
 );
 
 /** Ripoarisch (Ripoarisch)

@@ -189,6 +189,13 @@ $messages['oc'] = array(
 	'substall-desc' => 'Crea una balisa <nowiki><substall></nowiki> que convertís totes los modèls en sintaxi wiki.',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
+$messages['pl'] = array(
+	'substall-desc' => 'Tworzy znacznik <nowiki><substall></nowiki>, który rozwija wszystkie szablony na wikiskładnię',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

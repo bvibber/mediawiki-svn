@@ -255,6 +255,59 @@ $messages['arz'] = array(
 	'specialpages-group-contribution' => 'المساهمين/جامعين التبرعات',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'contributionreporting-desc' => 'Актуальныя справаздачы пра збор ахвяраваньняў на карысьць Фундацыі «Вікімэдыя»',
+	'contributiontotal' => 'Усяго ахвяраваньняў',
+	'contributionhistory' => 'Гісторыя ахвяраваньняў',
+	'contrib-hist-header' => 'Камэнтары ахвяравальнікаў з усяго сьвету ў рэальным часе',
+	'contrib-hist-name' => 'Імя',
+	'contrib-hist-date' => 'Час і дата',
+	'contrib-hist-amount' => 'Сума',
+	'contrib-hist-next' => 'Ранейшыя ахвяраваньні',
+	'contrib-hist-previous' => 'Апошнія ахвяраваньні',
+	'contrib-hist-anonymous' => 'Ананімнае',
+	'contributionstatistics' => 'Статыстыка ахвяраваньняў',
+	'contribstats-desc' => 'Паказвае статыстыку ахвяраваньняў на карысьць Фундацыі «Вікімэдыя»',
+	'contribstats-daily-totals' => 'Усяго за {{PLURAL:$1|апошні $1 дзень|апошнія $1 дні|апошнія $1 дзён}}',
+	'contribstats-monthly-totals' => 'Усяго за {{PLURAL:$1|апошні $1 месяц|апошнія $1 месяцы|апошнія $1 месяцаў}}',
+	'contribstats-month-range-totals' => 'Усяго штомесячна за {{PLURAL:$1|$1 месяц|$1 месяцы|$1 месяцаў}}',
+	'contribstats-currency-range-totals' => 'Ва ўсіх валютах (з $1 да $2)',
+	'contribstats-contribution-range-breakdown' => 'Разьмеркаваньне памераў ахвяраваньняў (з $1 да $2)',
+	'contribstats-currency-totals' => 'Ва ўсіх валютах за $1 фінансавы год',
+	'contribstats-contribution-breakdown' => 'Разьмеркаваньне ахвяраваньняў па памеры за $1 фінансавы год',
+	'contribstats-day' => 'Дзень',
+	'contribstats-month' => 'Месяц',
+	'contribstats-currency' => 'Валюта',
+	'contribstats-amount' => 'Сума (USD)',
+	'contribstats-contributions' => 'Ахвяраваньняў',
+	'contribstats-total' => 'Усяго (USD)',
+	'contribstats-avg' => 'Сярэдняе (USD)',
+	'contribstats-max' => 'Максымальнае (USD)',
+	'contribstats-percentage-ytd' => 'Адсотак (з пачатку году)',
+	'contribstats-total-ytd' => 'Усяго (з пачатку году)',
+	'contribstats-value-exactly' => 'Дакладна $1',
+	'contribstats-value-under' => 'Меней чым $1',
+	'contribstats-value-from' => 'З $1 — $2',
+	'contribstats-value-over' => 'Болей $1',
+	'fundraiserstatistics' => 'Статыстыка сабраных ахвяраваньняў',
+	'fundraiserstats-date' => 'Дата',
+	'fundraiserstats-day' => 'Дзень $1 з $2',
+	'fundraiserstats-contributions' => 'Ахвяраваньні',
+	'fundraiserstats-total' => 'Усяго (USD)',
+	'fundraiserstats-avg' => 'Сярэдняе (USD)',
+	'fundraiserstats-max' => 'Максымальнае (USD)',
+	'fundraiserstats-tab-totals' => 'Усяго (USD)',
+	'fundraiserstats-tab-contributions' => 'Колькасьць ахвяраваньняў',
+	'fundraiserstats-tab-averages' => 'Сярэдні (USD)',
+	'fundraiserstats-tab-maximums' => 'Максымальныя (USD)',
+	'specialpages-group-contribution' => 'Ахвяраваньні/Збор сродкаў',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -1172,6 +1225,7 @@ $messages['km'] = array(
 	'contrib-hist-anonymous' => 'អនាមិក',
 	'contributionstatistics' => 'ស្ថិតិ​នៃ​ការរួមចំណែក',
 	'contribstats-desc' => 'បង្ហាញ​ស្ថិតិ​សម្រាប់​ការរួមចំណែក​បង្កើត​មូលនិធិ​វិគីមេឌា',
+	'contribstats-currency-range-totals' => 'សរុប​រូបិយប័ណ្ណ (ពី $1 ទៅ $2)',
 	'contribstats-day' => 'ថ្ងៃ',
 	'contribstats-month' => 'ខែ',
 	'contribstats-currency' => 'រូបិយប័ណ្ណ',
@@ -1726,6 +1780,12 @@ $messages['pt'] = array(
 	'contribstats-max' => 'Máximo (USD)',
 	'contribstats-percentage-ytd' => 'Percentagem (do início do ano até hoje)',
 	'contribstats-total-ytd' => 'Total (do início do ano até hoje)',
+	'contribstats-value-exactly' => 'Exactamente $1',
+	'contribstats-value-under' => 'Menos de $1',
+	'contribstats-value-from' => 'Entre $1 - $2',
+	'contribstats-value-over' => 'Mais de $1',
+	'fundraiserstats-date' => 'Data',
+	'fundraiserstats-day' => 'Dia $1 de $2',
 );
 
 /** Romanian (Română)
@@ -1767,7 +1827,7 @@ $messages['ru'] = array(
 	'contrib-hist-amount' => 'Сумма',
 	'contrib-hist-next' => 'Более ранние пожертвования',
 	'contrib-hist-previous' => 'Более поздние пожертвования',
-	'contrib-hist-anonymous' => 'Анонім',
+	'contrib-hist-anonymous' => 'Аноним',
 	'contributionstatistics' => 'Статистика пожертвований',
 	'contribstats-desc' => 'Показывает статистику пожертвований в пользу Фонда Викимедиа',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Всего за последний $1 день|Всего за последние $1 дня|Всего за последние $1 дней}}',

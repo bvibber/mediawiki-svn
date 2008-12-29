@@ -59,6 +59,7 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ouda
  */
 $messages['arz'] = array(
 	'lookupuser' => 'ابحث عن معلومات المستخدم',
@@ -74,6 +75,7 @@ $messages['arz'] = array(
 	'lookupuser-registration' => 'تاريخ التسجيل: $1',
 	'lookupuser-no-registration' => 'غير مسجل',
 	'lookupuser-touched' => 'سجل المستخدم تم تعديله آخر مرة في: $1',
+	'lookupuser-info-authenticated' => 'تأكيد البريد الإلكتروني: $1',
 	'lookupuser-useroptions' => 'خيارات المستخدم:',
 );
 
@@ -187,9 +189,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'lookupuser-nonexistent' => 'Σφάλμα: Ο Χρήστης δεν υπάρχει',
+	'lookupuser-email' => 'Ηλεκτρονικό μήνυμα: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-realname' => 'Πραγματικό όνομα: $1',
 	'lookupuser-useroptions' => 'Επιλογές χρήστη:',
 );
@@ -546,6 +550,7 @@ $messages['km'] = array(
 	'lookupuser-registration' => 'កាលបរិច្ឆេទចុះឈ្មោះ​៖ $1',
 	'lookupuser-no-registration' => 'មិនបានកត់ត្រាទុកទេ',
 	'lookupuser-touched' => 'រក្សាទុក​អ្នកប្រើប្រាស់ ដែលបានប៉ះ​ចុងក្រោយ​៖ $1',
+	'lookupuser-info-authenticated' => 'ការពិនត្យផ្ទៀងផ្ទាត់​អ៊ីមែល: $1',
 	'lookupuser-useroptions' => 'ជម្រើសនៃអ្នកប្រើប្រាស់ ៖',
 );
 

@@ -755,6 +755,16 @@ $messages['ro'] = array(
 	'tasklistincorrectuser' => 'Nume de utilizator incorect',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'tasklist' => 'Liste de le combete',
+	'tasklistunknownproject' => 'Pruggette scanusciute',
+	'tasklistemail' => '%s Belle mie',
+	'tasklistchooseproj' => "Scacchie 'u pruggette:",
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Rubin
@@ -898,7 +908,7 @@ Para sa isang talaan ng tanggap na mga proyekto, tingnan ang [[MediaWiki:TodoTas
 	'tasklistchooseproj' => 'Pumili ng proyekto:',
 	'tasklistprojdisp' => 'Palitawin',
 	'tasklistbyname' => '== Talaan ng gagawin para kay %s ==',
-	'tasklistnoprojects' => "Kamalian: Tila mukhang pinaandar mo ang '''\$wgGamitinMgaProyekto''', ngunit hindi lumikha ng [[MediaWiki:GagawinMgaGawainTanggapNaMgaProyekto]]. Tingnan ang  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Mga Panuto Hinggil sa Pagluluklok (Instalasyon)] para sa mas marami pang mga detalye.",
+	'tasklistnoprojects' => "Kamalian: Tila mukhang pinaandar mo ang '''\$wgGamitinMgaProyekto''', ngunit hindi lumikha ng [[MediaWiki:TodoTasksValidProjects]]. Tingnan ang  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Mga Panuto Hinggil sa Pagluluklok (Instalasyon)] para sa mas marami pang mga detalye.",
 	'tasklistemailbody' => ',
 
 Mayroong isang tao na nagtakda sa iyo ng isang bagong Gawain sa %s.

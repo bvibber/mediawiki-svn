@@ -340,9 +340,12 @@ $messages['jv'] = array(
  * @author Thearith
  */
 $messages['km'] = array(
+	'profiling-process' => 'ខ្សែអក្សរ​ដំណើរការ:',
 	'profiling-ok' => 'យល់ព្រម',
 	'profiling-data-process' => 'ដំណើរការ',
 	'profiling-data-count' => 'រាប់',
+	'profiling-data-time' => 'កាលបរិច្ឆេទ (ទាំងអស់)',
+	'profiling-data-average' => 'កាលបរិច្ឆេទ (មធ្យម)',
 );
 
 /** Kinaray-a (Kinaray-a)

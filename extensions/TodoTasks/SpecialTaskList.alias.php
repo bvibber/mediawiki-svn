@@ -51,6 +51,11 @@ $aliases['hsb'] = array(
 	'TaskListByProject' => array( 'Lisćina nadawkow na projekt' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'TaskList' => array( 'タスクリスト', 'タスク一覧' ),
+);
+
 /** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
 	'TaskList' => array( 'បញ្ជីភារកិច្ច' ),

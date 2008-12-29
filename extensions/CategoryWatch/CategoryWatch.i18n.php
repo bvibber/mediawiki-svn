@@ -154,6 +154,7 @@ $messages['dsb'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'categorywatch-desc' => 'Etendas funkciadon de la atentaro por inkluzivi notigado pri ŝanĝoj de membreco de atentitaj kategorioj',
 	'categorywatch-emailbody' => 'Saluton $1, vi recivis ĉi tiun mesaĝon ĉar vi atentas la kategorion "$2".
 Ĉi tiu mesaĝo notigas vin ke je $3 uzanto $4 $5.',
 	'categorywatch-emailsubject' => 'Aktiveco pri atentata kategorio "$1"',

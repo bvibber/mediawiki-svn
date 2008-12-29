@@ -1908,6 +1908,7 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'badimages-name' => 'Naran:',
+	'badimages-reason' => 'Motivu:',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

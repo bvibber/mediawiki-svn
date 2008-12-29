@@ -387,6 +387,13 @@ $messages['te'] = array(
 	'categoryonupload-label' => 'వర్గం:',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'categoryonupload-label' => 'Kategoria:',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

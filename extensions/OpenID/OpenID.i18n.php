@@ -100,6 +100,7 @@ There are many [http://wiki.openid.net/Public_OpenID_providers Public OpenID pro
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
  */
@@ -109,6 +110,7 @@ $messages['qqq'] = array(
 	'openidemail' => '{{Identical|E-mail address}}',
 	'openidlanguage' => '{{Identical|Language}}',
 	'openidchoosepassword' => '{{Identical|Password}}',
+	'openidalreadyloggedin' => '$1 is a user name.',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -717,6 +719,8 @@ Se vi volas utiligi OpenID por ensaluti estontece, vi povas [[Special:OpenIDConv
 	'tog-hideopenid' => 'Kaŝi viajn identigon <a href="http://openid.net/">OpenID</a> en via uzula paĝo, se vi ensalutas kun OpenID.',
 	'openidnousername' => 'Neniu salutnomo estis donita.',
 	'openidbadusername' => 'Fuŝa salutnomo donita.',
+	'openidautosubmit' => 'Ĉi tiu paĝo inkluzivas kamparo kiu estos aŭtomate enigita se vi havas JavaScript-on ŝaltan.
+Se ne, klaku la butonon \\"Daŭri\\".',
 	'openidclientonlytext' => 'Vi ne povas uzi kontojn de ĉi tiu vikio kiel OpenID-ojn en alia retejo.',
 	'openidloginlabel' => 'URL-o OpenID',
 );
@@ -1516,19 +1520,65 @@ $messages['ja'] = array(
 	'openidlogin' => 'OpenIDでログイン',
 	'openidfinish' => 'OpenIDでのログインが完了しました。',
 	'openidserver' => 'OpenID サーバー',
+	'openidxrds' => 'Yadis ファイル',
 	'openidconvert' => 'OpenID コンバーター',
+	'openiderror' => '検証エラー',
+	'openiderrortext' => 'OpenID URLの検証中にエラーが発生しました。',
 	'openidconfigerror' => 'OpenID設定エラー',
-	'openidpermission' => 'OpenID パーミッション エラー',
+	'openidconfigerrortext' => 'このウィキの OpenID 格納設定は無効です。[[Special:ListUsers/sysop|管理者]]に相談してください。',
+	'openidpermission' => 'OpenID パーミッション・エラー',
+	'openidpermissiontext' => 'あなたが与えた OpenID はこのサーバーにログインすることを許可されていません。',
+	'openidcancel' => '検証中止',
+	'openidcanceltext' => 'OpenID URLの検証は中止されました。',
+	'openidfailure' => '検証失敗',
+	'openidfailuretext' => 'OpenID URLの検証は失敗しました。エラーメッセージ: "$1"',
+	'openidsuccess' => '検証成功',
+	'openidsuccesstext' => 'OpenID URLの検証は成功しました。',
 	'openidusernameprefix' => 'OpenIDユーザー',
+	'openidserverlogininstructions' => '$3 に利用者 $2 (利用者ページ $1) としてログインするには以下にパスワードを入力してください。',
+	'openidtrustinstructions' => '$1 とデータを共有したいか確認してください。',
+	'openidallowtrust' => '$1 がこの利用者アカウントを信用するのを許可する。',
+	'openidnopolicy' => 'サイトはプライバシーに関する方針を明記していません。',
+	'openidpolicy' => 'より詳しくは<a target="_new" href="$1">プライバシーに関する方針</a>を確認してください。',
 	'openidoptional' => '任意',
 	'openidrequired' => '必須',
 	'openidnickname' => 'ニックネーム',
+	'openidfullname' => 'フルネーム',
 	'openidemail' => 'Eメールアドレス',
 	'openidlanguage' => '言語',
+	'openidnotavailable' => 'あなたが選んだニックネーム ($1) は既に他の利用者が使っています。',
+	'openidnotprovided' => 'あなたの OpenID サーバーはニックネームを提供していません（提供できない場合と、提供しないようあなたが指示している場合とがあります）。',
+	'openidchooseinstructions' => 'すべての利用者はニックネームが必要です。以下の選択肢から1つを選ぶことができます。',
+	'openidchoosefull' => 'あなたのフルネーム ($1)',
+	'openidchooseurl' => 'あなたの OpenID から選んだ名前 ($1)',
+	'openidchooseauto' => '自動生成された名前 ($1)',
 	'openidchoosemanual' => '名前を別に設定する:',
+	'openidchooseexisting' => 'このウィキに存在するアカウント:',
 	'openidchoosepassword' => 'パスワード:',
+	'openidconvertinstructions' => 'このフォームを使うとあなたの利用者アカウントが OpenID URLを使うように変更できます。',
+	'openidconvertsuccess' => 'OpenID への変換に成功しました',
+	'openidconvertsuccesstext' => 'あなたは OpenID の $1 への変換に成功しました。',
+	'openidconvertyourstext' => 'これは既にあなたの OpenID です。',
+	'openidconvertothertext' => 'これは他の誰かの OpenID です。',
+	'openidalreadyloggedin' => "'''$1 さん、あなたは既にログインしています!'''
+
+将来は OpenID を使ってログインしたい場合は、[[Special:OpenIDConvert|あなたのアカウントを OpenID を使うように変換する]]ことができます。",
 	'tog-hideopenid' => 'OpenID でログインしている場合に、あなたの <a href="http://openid.net/">OpenID</a> をあなたの利用者ページで表示しない。',
+	'openidnousername' => '利用者名が指定されていません。',
+	'openidbadusername' => '利用者名の指定が不正です。',
+	'openidautosubmit' => 'このページにあるフォームはあなたが JavaScript を有効にしていれば自動的に送信されるはずです。そうならない場合は、「続ける」ボタンを試してください。',
+	'openidclientonlytext' => 'あなたはこのウィキのアカウントを他のサイトで OpenID として使うことができません。',
 	'openidloginlabel' => 'OpenID URL',
+	'openidlogininstructions' => "{{SITENAME}} はウェブサイト間でのシングルサインオンのための [http://openid.net/ OpenID] 規格に対応しています。OpenID によって、個別のパスワードを使うことなく、たくさんの様々なウェブサイトにログインできるようになります（より詳しい情報は[http://ja.wikipedia.org/wiki/OpenID ウィキペディアの OpenID についての記事]を参照してください）。
+
+あなたが既に {{SITENAME}} でアカウントをもっている場合は、いつもどおりに利用者名とパスワードで[[Special:UserLogin|ログイン]]できます。将来、OpenID を使うためには、通常のログインをした後で[[Special:OpenIDConvert|あなたのアカウントを OpenID に変換する]]ことができます。
+
+多くの[http://wiki.openid.net/Public_OpenID_providers 公開 OpenID プロバイダー]が存在し、あなたは既に別のサービスで OpenID が有効となったアカウントを保持しているかもしれません。
+
+; 他のウィキ : あなたが、[http://wikitravel.org/ Wikitravel]、[http://www.wikihow.com/ wikiHow]、[http://vinismo.com/ Vinismo]、[http://aboutus.org/ AboutUs] あるいは [http://kei.ki/ Keiki] といった、OpenID が有効となったウィキでアカウントをもっている場合は、そのウィキでの利用者ページのフルURL (例: ''<nowiki>http://kei.ki/en/User:Evan</nowiki>'') を上のボックスに入力することで {{SITENAME}} にログインできます。
+; [http://openid.yahoo.com/ Yahoo!] : あなたが Yahoo! でアカウントをもっている場合は、Yahoo! が提供する OpenID を上のボックスに入力することでこのサイトにログインできます。Yahoo! の OpenID URL は ''<nowiki>https://me.yahoo.com/yourusername</nowiki>'' という形式をしています。
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : あなたが、例えば [http://www.aim.com/ AIM] アカウントなど、[http://www.aol.com/ AOL] でアカウントをもっている場合は、AOL が提供する OpenID を上のボックスに入力することで {{SITENAME}} にログインできます。AOL の OpenID URL は ''<nowiki>http://openid.aol.com/yourusername</nowiki>'' という形式をしています。利用者名はすべて小文字で、スペースを含んではなりません。
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger]・[http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com]・[http://www.livejournal.com/openid/about.bml LiveJournal]・[http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : あなたがこれらのサービスのどれかでブログをもっている場合は、あなたのブログの URL を上のボックスに入力してください。例えば、''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'' あるいは ''<nowiki>http://yourusername.vox.com/</nowiki>'' といったものです。",
 );
 
 /** Javanese (Basa Jawa)
@@ -2357,7 +2407,7 @@ $messages['ru'] = array(
 	'openidsuccess' => 'Проверка прошла успешно',
 	'openidsuccesstext' => 'Проверка адреса OpenID прошла успешно.',
 	'openidusernameprefix' => 'УчастникOpenID',
-	'openidserverlogininstructions' => 'Введите ниже ваш пароль, чтобы войти на $3 как участник $2 (личная страница $1).',
+	'openidserverlogininstructions' => 'Введите ниже ваш пароль, чтобы войти на $3 как пользователь $2 (личная страница $1).',
 	'openidtrustinstructions' => 'Отметьте, если вы хотите предоставить доступ к данным для $1.',
 	'openidallowtrust' => 'Разрешить $1 доверять этой учётной записи.',
 	'openidnopolicy' => 'Сайт не указал политику конфиденциальности.',
@@ -2770,6 +2820,9 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'openid-desc' => "Entra con [http://openid.net/ OpenID] in te la wiki, e entra in tei altri siti web che dòpara OpenID co' na utensa wiki",
+	'openidlogin' => 'Acesso con OpenID',
+	'openidfinish' => "Conpleta l'acesso OpenID",
 	'openidserver' => 'server OpenID',
 	'openidxrds' => 'file Yadis',
 	'openidconvert' => 'convertidor OpenID',
@@ -2779,6 +2832,7 @@ $messages['vec'] = array(
 	'openidconfigerrortext' => 'La configurassion de la memorixassion de OpenID par sta wiki no la xe mia valida.
 Par piaser consulta un [[Special:ListUsers/sysop|aministrador]].',
 	'openidpermission' => 'Eròr in tei parmessi OpenID',
+	'openidpermissiontext' => "A l'OpenID che ti gà fornìo no xe mia parmesso de entrar su sto server.",
 	'openidcancel' => 'Verifica anulà',
 	'openidcanceltext' => "La verifica de l'URL OpenID le stà scancelà.",
 	'openidfailure' => 'Verifica mia riussìa',
@@ -2786,6 +2840,7 @@ Par piaser consulta un [[Special:ListUsers/sysop|aministrador]].',
 	'openidsuccess' => 'Verifica efetuà',
 	'openidsuccesstext' => "La verifica de l'URL OpenID la xe stà fata coretamente.",
 	'openidusernameprefix' => 'Utente OpenID',
+	'openidserverlogininstructions' => 'Scrivi qua la to password par entrar su $3 come utente $2 (pàxena utente  $1).',
 	'openidtrustinstructions' => 'Contròla se te vol dal bon condivìdar i dati con $1.',
 	'openidallowtrust' => 'Parméti a $1 de fidarse de sta utensa.',
 	'openidnopolicy' => "El sito no'l gà indicà na polìtega relativa a la privacy.",
@@ -2806,13 +2861,18 @@ te pol tórghene uno da le opzioni seguenti.',
 	'openidchoosemanual' => 'Un nome a sielta tua:',
 	'openidchooseexisting' => 'Na utensa esistente su sta wiki:',
 	'openidchoosepassword' => 'password:',
+	'openidconvertinstructions' => 'Sto modulo el te parmete de canbiar la to utensa par doparar un URL OpenID.',
 	'openidconvertsuccess' => 'Convertìo con successo a OpenID',
 	'openidconvertsuccesstext' => 'El to OpenID el xe stà convertìo a $1.',
 	'openidconvertyourstext' => 'Sto chì el xe xà el to OpenID.',
 	'openidconvertothertext' => "Sto chì el xe l'OpenID de calchidun altro.",
+	'openidalreadyloggedin' => "'''Te sì xà entrà, $1!'''
+
+Se ti vol doparar OpenID par entrar in futuro, te pol [[Special:OpenIDConvert|convertir la to utensa par doparar OpenID]].",
 	'tog-hideopenid' => 'Scondi el to <a href="http://openid.net/">OpenID</a> su la to pàxena utente, se te fè el login con OpenID.',
 	'openidnousername' => 'Nissun nome utente indicà.',
 	'openidbadusername' => "El nome utente indicà no'l xe mia valido.",
+	'openidautosubmit' => 'Sta pàxena la include un modulo che\'l dovarìa èssar invià automaticamente se ti gà JavaScript ativà. Se no, próa a strucar el boton \\"Continua\\".',
 	'openidclientonlytext' => 'No te podi doparar le utense de sta wiki come OpenID su de un altro sito.',
 	'openidloginlabel' => 'URL OpenID',
 );

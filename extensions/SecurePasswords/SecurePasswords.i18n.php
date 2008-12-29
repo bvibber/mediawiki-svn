@@ -50,7 +50,18 @@ $messages['ar'] = array(
  * @author Ouda
  */
 $messages['arz'] = array(
+	'securepasswords-lowercase' => 'lowercase تحتوى على الأقل على حرف في حالة',
+	'securepasswords-uppercase' => 'uppercase تحتوى على الأقل على حرف في حالة',
+	'securepasswords-digit' => 'يحتوى على رقم واحد على الأقل',
 	'securepasswords-word' => 'لا تكون كلمة',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'securepasswords-desc' => 'Pravljenje mnogo sigurnijih haševa za šifre i dodaje provjeru jačine šifre',
+	'securepasswords-word' => 'ne bude riječ',
 );
 
 /** German (Deutsch)
@@ -234,6 +245,22 @@ Et mööt:',
 	'securepasswords-special' => 'winnischßdens ei Sönderzeiche enthallde. De Sönderzeiche sinn_er: $1',
 	'securepasswords-username' => 'anders wi Dinge Metmaachername sinn',
 	'securepasswords-word' => 'kein nomaal Woot sin',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'securepasswords-desc' => "Mécht méi sécher Paswuert-''Hashes'' a setzt eng Iwwerpréifung vun der Sécherheet vun de Passwierder derbäi",
+	'securepasswords-valid' => 'Ärt Passwuert ass net valabel oder ze kuerz.
+Et:',
+	'securepasswords-minlength' => 'muss mindestens $1 {{PLURAL:$1|Zeeche|Zeeche}} laang sinn',
+	'securepasswords-lowercase' => 'muss mindestens 1 klenge Buchstaw dra sinn',
+	'securepasswords-uppercase' => 'muss mindestens 1 grousse Buchstaw dra sinn',
+	'securepasswords-digit' => 'muss mindestens 1 Ziffer dra sinn',
+	'securepasswords-special' => 'muss mndestens 1 Spezialzeechen dra sinn (Spezialzeeche sinn: $1)',
+	'securepasswords-username' => 'muss verschidde vun Ärem Benotzernumm sinn',
+	'securepasswords-word' => 'däerf kee Wuert sinn',
 );
 
 /** Nahuatl (Nāhuatl)

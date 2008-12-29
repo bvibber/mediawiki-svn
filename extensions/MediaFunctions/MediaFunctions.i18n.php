@@ -20,9 +20,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'mediafunctions-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'mediafunctions-invalid-title' => '* $1 is input that has been found invalid as a page title',
+	'mediafunctions-not-exist' => '* $1 is a file name',
 );
 
 /** Arabic (العربية)
@@ -112,12 +115,13 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'mediafunctions-desc' => 'Jäsennysfunktioita mediatiedostojen tietojen hankkimiseen.',
 	'mediafunctions-invalid-title' => '”$1” ei ole kelvollinen otsikko.',
-	'mediafunctions-not-exist' => '”$1” ei ole olemassa.',
+	'mediafunctions-not-exist' => 'Tiedostoa ”$1” ei ole olemassa.',
 );
 
 /** French (Français)

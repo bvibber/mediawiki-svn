@@ -223,6 +223,9 @@ $messages['ia'] = array(
  */
 $messages['km'] = array(
 	'newschannel_format' => 'ទ្រង់ទ្រាយ​៖',
+	'newschannel_limit' => 'លីមីត:',
+	'newschannel_include_category' => 'ចំណាត់ថ្នាក់ក្រុម​បន្ថែម:',
+	'newschannel_exclude_category' => 'ចំណាត់ថ្នាក់មិនរាប់បញ្ចូល:',
 );
 
 /** Ripoarisch (Ripoarisch)

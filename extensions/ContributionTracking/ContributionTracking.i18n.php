@@ -72,6 +72,21 @@ $messages['arz'] = array(
 	'contrib-tracking-button' => 'استمر',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'contributiontracking-desc' => 'Сачэньне за зборам ахвяраваньняў на карысьць Фундацыі «Вікімэдыя»',
+	'contributiontracking' => 'Сачэньне за зборам ахвяраваньняў',
+	'contrib-tracking-error' => 'Памылка',
+	'contrib-tracking-error-text' => 'Няслушная перадача зьвестак з формы',
+	'contrib-tracking-submitting' => 'Адпраўка апрацоўшчыку плацяжоў…',
+	'contrib-tracking-continue' => 'Калі Вы не былі аўтаматычна перанакіраваны, націсьніце кнопку, каб завяршыць Ваша ахвяраваньне праз сыстэму PayPal.',
+	'contrib-tracking-button' => 'Далей',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia

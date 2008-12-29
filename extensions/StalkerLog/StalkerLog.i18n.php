@@ -296,10 +296,14 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Jwitos
+ * @author Leinad
  */
 $messages['pl'] = array(
+	'stalkerlog-desc' => 'Dodaje [[Special:Log/stalkerlog|rejestr]] logowań i wylogowań użytkowników',
 	'stalkerlog-log-login' => 'zalogowano.',
 	'stalkerlog-log-logout' => 'wylogowano.',
+	'stalkerlog-log-type' => 'Rejestr uwierzytelniania użytkownika',
+	'stalkerlog-log-text' => 'To jest rejestr logowań i wylogowań użytkowników.',
 );
 
 /** Slovak (Slovenčina)

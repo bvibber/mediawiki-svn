@@ -992,9 +992,11 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'todo' => 'Liste de le cose da fà',
 	'todo-tab' => 'da fà',
 	'todo-new-queue' => 'nueve',
 	'todo-add-queue' => 'Mitte in coda...',
+	'todo-list-for' => 'Liste de le cose da fà pe',
 	'todo-list-change' => 'Cange',
 	'todo-list-cancel' => 'Scangille',
 );

@@ -593,6 +593,7 @@ $messages['km'] = array(
 	'passwordreset-submit' => 'កំណត់​ពាក្យសំងាត់​សាឡើងវិញ',
 	'passwordreset-success' => 'ពាក្យសំងាត់​ត្រូវ​បាន​កំណត់​សាឡើងវិញ​សម្រាប់​អ្នកប្រើប្រាស់ ដែល​មាន​អត្តលេខ​៖ $1',
 	'passwordreset-disableuser' => 'បិទ​គណនី​អ្នកប្រើប្រាស់​ឬ​?',
+	'passwordreset-disableuserexplain' => '(កំណត់​ពាក្យសំងាត់​ខុស - អ្នកប្រើប្រាស់​មិន​អាច​ឡុកអ៊ីន​បាន​ទេ)',
 	'passwordreset-disablesuccess' => 'គណនី​ត្រូវ​បាន​បិទ ចំពោះ​អ្នកប្រើប្រាស់​ដែល​មាន​អត្តលេខ​៖ $1',
 	'passwordreset-accountdisabled' => 'គណនី​ត្រូវ​បាន​បិទ',
 	'disabledusers' => 'អ្នកប្រើប្រាស់​ដែល​ត្រូវ​បាន​បិទ',
@@ -892,7 +893,7 @@ $messages['pl'] = array(
 	'passwordreset-accountdisabled' => 'Konto zostało zablokowane',
 	'disabledusers' => 'Zablokowani użytkownicy',
 	'disabledusers-summary' => 'Lista użytkowników, którzy zostali zablokowaniu poprzez użycie PasswordReset.',
-	'right-passwordreset' => 'Resetować hasło użytkownika ([[Special:PasswordReset|strona specjalna]])',
+	'right-passwordreset' => 'Resetowanie hasła użytkownika ([[Special:PasswordReset|strona specjalna]])',
 );
 
 /** Piedmontese (Piemontèis)

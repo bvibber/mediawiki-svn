@@ -1574,6 +1574,7 @@ $messages['km'] = array(
 	'deletequeue-review-reason' => 'យោបល់៖',
 	'deletequeue-review-newreason' => 'មូលហេតុថ្មី៖',
 	'deletequeue-review-newextra' => 'ព័ត៌មានបន្ថែម៖',
+	'deletequeue-review-submit' => 'រក្សាទុក​ពិនិត្យឡើងវិញ',
 	'deletequeue-discusscreate-summary' => 'បាន​បង្កើត​កិច្ចពិភាក្សា​សម្រាប់​ការលុប [[$1]] ។',
 	'deletequeue-role-vote-endorse' => 'អ្នកយល់ស្រប​ចំពោះ​ការលុប',
 	'deletequeue-role-vote-object' => 'អ្នកជំទាស់​ចំពោះ​ការលុប',
@@ -2144,11 +2145,14 @@ $messages['pt'] = array(
 	'deletequeue-speedy-title' => 'Marcar "$1" para eliminação rápida',
 	'deletequeue-delnom-otherreason' => 'Outro motivo',
 	'deletequeue-review-action' => 'Acção a tomar:',
+	'deletequeue-review-reason' => 'Comentários:',
 	'deletequeue-review-newreason' => 'Novo motivo:',
+	'deletequeue-vote-action' => 'Recomendação:',
 	'deletequeue-vote-reason' => 'Comentários:',
 	'deletequeue-vote-submit' => 'Submeter',
 	'deletequeue-list-text' => 'Esta página mostra todas as páginas que estão no sistema de exclusão.',
 	'deletequeue-list-anyqueue' => '(qualquer)',
+	'deletequeue-list-votes' => 'Lista de votos',
 	'deletequeue-list-header-page' => 'Página',
 );
 
@@ -2310,6 +2314,14 @@ $messages['ro'] = array(
 	'deletequeue-vote-reason' => 'Comentarii:',
 	'deletequeue-list-header-page' => 'Pagină',
 	'deletequeue-list-header-discusspage' => 'Pagină de discuţii',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'deletequeue-review-action' => 'Azione da pigghijà:',
+	'deletequeue-list-queue' => 'Code:',
 );
 
 /** Russian (Русский)
@@ -2656,6 +2668,13 @@ $messages['te'] = array(
 	'deletequeue-list-status' => 'స్థితి:',
 	'deletequeue-list-header-page' => 'పేజీ',
 	'deletequeue-list-header-discusspage' => 'చర్చా పేజీ',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'deletequeue-delnom-otherreason' => 'Motivu seluk',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

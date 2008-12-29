@@ -205,6 +205,17 @@ Hier vindt u de pagina\'s in de categorie "$1" als ook alle bestaande ondercateg
 	'autocreatecategorypages-editor' => 'Automatische categoriemaker',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'autocreatecategorypages-desc' => 'Opprett manglande kategorisider automatisk ved lagring',
+	'autocreatecategorypages-stub' => 'Dette er ei kategorisida.
+Ho lista opp alle sidene i kategorien «$1» i tillegg til eventuelle underkategoriar av «$» om dei finst.',
+	'autocreatecategorypages-createdby' => 'Oppretta automatisk av AutoCreateCategoryPages-utvidinga.',
+	'autocreatecategorypages-editor' => 'Automatisk kategorioppretting',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -214,6 +225,17 @@ $messages['oc'] = array(
 Lista totas las paginas eissidas de la categoria « $1 » e, se fa mestièr, tanben totas sas soscategorias.',
 	'autocreatecategorypages-createdby' => 'Creada automaticament per l’extension AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'Creator automatic de categoria.',
+);
+
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'autocreatecategorypages-desc' => 'Automatyczne tworzenie brakujących kategorii podczas zapisu',
+	'autocreatecategorypages-stub' => 'To jest strona kategorii. 
+Gromadzi ona wszystkie strony, którym przypisana jest kategoria „$1”, a także podkategorie kategorii „$1”, o ile jakaś istnieje.',
+	'autocreatecategorypages-createdby' => 'Utworzona automatycznie przez rozszerzenie AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Automatyczne tworzenie kategorii',
 );
 
 /** Portuguese (Português)

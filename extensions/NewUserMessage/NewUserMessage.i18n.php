@@ -67,10 +67,11 @@ $messages['ast'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
+ * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
 	'newusermessage-desc' => 'Дадае паведамленьне на старонку размоваў новага ўдзельніка',
-	'newuseredit-summary' => 'Даданьне [[{{int:newusermessage-template}}|прывітальнае паведамленьне]] у старонку размоваў новага ўдзельніка',
+	'newuseredit-summary' => 'Даданьне [[{{int:newusermessage-template}}|прывітальнага паведамленьня]] на старонку размоваў новага ўдзельніка',
 );
 
 /** Bulgarian (Български)

@@ -97,6 +97,17 @@ $messages['eo'] = array(
 	'acct_creation_global_soft_throttle_hit-desc' => 'Limigu kreadon de uzantoj',
 );
 
+/** Finnish (Suomi)
+ * @author Mobe
+ */
+$messages['fi'] = array(
+	'acct_creation_global_soft_throttle_hit' => 'Käyttäjien luonti on automaattisesti keskeytetty joksikin aikaa johtuen viimeaikaisista poikkeuksellisen lukuisista kirjautumisyrityksistä.
+Odota muutama minuutti ja yritä uudelleen.',
+	'acct_creation_global_hard_throttle_hit' => 'Rekisteröintitulvahyökkäysten vähentämiseksi tunnusten luominen on automaattisesti pysäytetty muutamaksi sekunniksi.
+Ole hyvä ja odota hetki. Päivitä avoin sivu selaimessa ja lähetä lomake uudelleen.',
+	'acct_creation_global_soft_throttle_hit-desc' => 'Rajoita käyttäjien luontia',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Urhixidur

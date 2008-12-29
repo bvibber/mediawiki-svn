@@ -583,6 +583,16 @@ $messages['ro'] = array(
 	'intersection_noincludecats' => 'Eroare: Trebuie să incluzi cel puţin o categorie, sau să specifici un spaţiu de nume!',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'intersection_toomanycats' => 'Errore: Troppe categorije!',
+	'intersection_toofewcats' => 'Errore: Troppe picche categorije!',
+	'intersection_noresults' => 'Errore: Nisciune resultete!',
+	'intersection_noincludecats' => "Errore: Tu è abbesogne de 'ngludere ninde ninde 'na categorije, o specificà 'nu namespace!",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

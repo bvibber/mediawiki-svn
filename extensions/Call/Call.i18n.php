@@ -218,25 +218,26 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  * @author Ilaiho
  */
 $messages['fi'] = array(
 	'call' => 'Mallinekutsu',
 	'call-desc' => 'Luo hyperlinkki mallineeseen (tai tavalliseen sivuun) siten, että parametrit välittyvät.
 Voidaan käyttää selaimen osoiterivillä tai wikitekstin joukossa.',
-	'call-text' => "Mallinekutsulaajennos hyväksyy syötteeksi wikisivun ja mahdolliset parametrit.
+	'call-text' => "Mallinekutsulaajennus hyväksyy syötteeksi wikisivun ja mahdolliset parametrit.
 
-Esimerkki 1: &nbsp; <tt>[[Toiminnot:Mallinekutsu/Esimerkkimalline,parm1=arvo1]]</tt><br />
-Esimerkki 2: &nbsp; <tt>[[Toiminnot:Mallinekutsu/Keskustelu:Esimerkkikeskustelusivu,parm1=arvo1]]</tt><br />
-Esimerkki 3: &nbsp; <tt>[[Toiminnot:Mallinekutsu/:My Page,parm1=arvo1,parm2=arvo2]]</tt><br />
-Esimerkki 4 (selaimen URL): &nbsp; <tt>http://esimerkkidomain/esimerkkiwiki/index.php?Toiminnot:Mallinekutsu/:Esimerkkisivu,parm1=arvo1</tt>
+Esimerkki 1: &nbsp; <tt>[[Special:Call/Esimerkkimalline,parm1=arvo1]]</tt><br />
+Esimerkki 2: &nbsp; <tt>[[Special:Call/Keskustelu:Esimerkkikeskustelusivu,parm1=arvo1]]</tt><br />
+Esimerkki 3: &nbsp; <tt>[[Special:Call/:My Page,parm1=arvo1,parm2=arvo2]]</tt><br />
+Esimerkki 4 (selaimen URL): &nbsp; <tt>http://omadomain/wiki/index.php?Special:Call/:Esimerkkisivu,parm1=arvo1</tt>
 
-''Mallinekutsulaajennos'' kutsuu annettua sivua ja välittää parametrit.<br />
-Ruudulle tulostuu kutsutun sivun otsikko ja sisältö, mutta sen tyyppi on erikoissivu eli sitä ei voi muokata.<br />Tulostuva sisältö saattaa muuttua parametrien mukaan.
+''Mallinekutsulaajennus'' kutsuu annettua sivua ja välittää parametrit.<br />
+Ruudulle tulostuu kutsutun sivun otsikko ja sisältö, mutta sen tyyppi on toimintosivu, eli sitä ei voi muokata.<br />Tulostuva sisältö saattaa muuttua parametrien mukaan.
 
-''Mallinekutsulaajennos'' soveltuu interaktiivisten toimintojen rakentamiseen MediaWiki-ohjelmiston avulla.<br />
+''Mallinekutsulaajennus'' soveltuu interaktiivisten toimintojen rakentamiseen MediaWiki-ohjelmiston avulla.<br />
 Sillä on toteutettu esimerkiksi <a href='http://semeb.com/dpldemo/Template:Catlist'>DPL:n graafinen käyttöliittymä</a> ..<br /> <br />
-Ongelmien ratkaisuun voit kokeilla sivua <b>Toiminnot:Mallinekutsu/DebuG</b>",
+Ongelmien ratkaisuun voit kokeilla sivua <b>Special:Call/DebuG</b>",
 	'call-save' => "Tämän mallinekutsun tuloste tallennettaisiin sivulle ''$1''.",
 	'call-save-success' => 'Tämä teksti on tallennettu sivulle <big>[[$1]]</big> .',
 	'call-save-failed' => 'Seuraavaa tekstiä EI tallennettu sivulle <big>[[$1]]</big>, sillä sivu on jo olemassa.',

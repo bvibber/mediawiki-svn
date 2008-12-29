@@ -732,6 +732,14 @@ $wdMessages['bs'] = array(
 Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivanja]].',
 	'ow_uipref_datasets' => 'Pretpostavljeni pogled',
 	'ow_none_selected' => 'Ništa nije odabrano',
+	'ow_conceptmapping_help' => '<p>moguće akcije: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  ubacivanje mappinga</li>
+<li>&action=get&concept=<concept_id>  ponovno čitanje mappinga</li>
+<li>&action=list_sets  vraća spisak mogućih podataka u kontekstu prefiksa i na što se odnose.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> za jedno definisano značenje u konceptu, vraća sva ostala</li>
+<li>&action=help  Prikazivanje pomoći.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => '<p>Concept Mapping omogućava Vam da odredite koje je definisano značenje u jednom setu podataka isto sa određenim značenjima u drugim setovima podataka.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Izvinjavamo se, ne znam kako da "$1".',
 	'ow_dm_OK' => 'U redu',
 	'ow_dm_not_present' => 'nije uneseno',
@@ -746,8 +754,10 @@ Molimo provjerite web adresu.',
 	'ow_AlternativeDefinitions' => 'Moguće definicije',
 	'ow_ApproximateMeanings' => 'Približna značenja',
 	'ow_ClassAttributeAttribute' => 'Osobina',
+	'ow_ClassAttributes' => 'Atributi klase',
 	'ow_ClassAttributeLevel' => 'nivo',
 	'ow_ClassAttributeType' => 'Vrsta',
+	'ow_ClassMembership' => 'Članstvo klase',
 	'ow_Collection' => 'Zbirka',
 	'ow_CollectionMembership' => 'Članstvo u zbirci',
 	'ow_Definition' => 'Definicija',
@@ -783,6 +793,7 @@ Molimo provjerite web adresu.',
 	'ow_meaningsoftitle' => 'Značenje od "$1"',
 	'ow_Permission_denied' => '<h2>Pristup onemogućen</h2>',
 	'ow_copy_no_action_specified' => 'Molimo Vas da odredite akciju',
+	'ow_copy_help' => 'Jednog dana ćemo Vam moći pomoći.',
 	'ow_please_proved_dmid' => 'Izgleda da Vašem unosu nedostaje "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
 Molimo kontaktirajte administratora servera.',
 	'ow_copy_successful' => '<h2>Kopiranje uspješno</h2>
@@ -1371,17 +1382,29 @@ $wdMessages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Mobe
  * @author Nike
  * @author Silvonen
  * @author Str4nd
  */
 $wdMessages['fi'] = array(
+	'datasearch' => 'Wikidata: tiedon haku',
+	'langman_title' => 'Kielten hallinta',
+	'languages' => 'Wikidata: kielten hallinta',
 	'ow_save' => 'Tallenna',
 	'ow_history' => 'Historia',
+	'ow_datasets' => 'Tietojoukon valinta',
 	'ow_noedit_title' => 'Ei muokkausoikeutta',
+	'ow_noedit' => 'Sinulla ei ole muokkausoikeutta ryhmän "$1" sivuihin.
+Katso lisätietoja [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]].',
 	'ow_uipref_datasets' => 'Oletusnäkymä',
+	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ei yhtään valittu',
+	'ow_conceptmapping_no_action_specified' => 'Pahoittelut, mutta en tiedä kuinka "$1".',
 	'ow_dm_OK' => 'OK',
+	'ow_dm_not_present' => 'ei tallennettu',
+	'ow_dm_not_found' => 'ei löydy tietokannasta tai väärin muotoiltu',
+	'ow_will_insert' => 'Lisätään seuraavat:',
 	'ow_AlternativeDefinition' => 'Vaihtoehtoinen määritelmä',
 	'ow_AlternativeDefinitions' => 'Vaihtoehtoiset määritelmät',
 	'ow_Annotation' => 'Annotaatiot',
@@ -4847,6 +4870,13 @@ $wdMessages['th'] = array(
 	'ow_LinkAttributeValues' => 'ลิงก์',
 	'ow_Value' => 'ค่า',
 	'ow_meaningsoftitle' => 'ความหมายของ "$1"',
+);
+
+/** Turkmen (Türkmen)
+ * @author Runningfridgesrule
+ */
+$wdMessages['tk'] = array(
+	'ow_history' => 'Geçmiş',
 );
 
 /** Tagalog (Tagalog)

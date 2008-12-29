@@ -303,10 +303,12 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Maikking
  */
 $messages['pl'] = array(
 	'seealso' => 'Zobacz też',
+	'seealso-desc' => 'Umiejscawianie nagłówka „Zobacz też” za pomocą znacznika <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Pashto (پښتو)

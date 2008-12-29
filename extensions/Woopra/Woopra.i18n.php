@@ -44,6 +44,13 @@ $messages['bg'] = array(
 	'woopra-desc' => 'Позволява работата на [http://www.woopra.com/ Woopra Live Tracking Software] в МедияУики',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'woopra-desc' => 'Omogućuje rad [http://www.woopra.com/ Woopra Live Tracking softvera] za Vašu MediaWiki instalaciju',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

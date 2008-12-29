@@ -89,11 +89,25 @@ $messages['ar'] = array(
  * @author Ouda
  */
 $messages['arz'] = array(
+	'recordadmin-category' => 'سجلات',
+	'recordadmin-newsearch' => 'بحث $1 جديد',
+	'recordadmin-newrecord' => 'أختار نوع سجل أخر',
 	'recordadmin-submit' => 'نفذ',
+	'recordadmin-createsuccess' => '$1 أنشئت',
+	'recordadmin-badtitle' => '! عنوان سئ',
+	'recordadmin-invert' => 'أعكس الأختيار',
 	'recordadmin-buttonsearch' => 'بحث',
+	'recordadmin-buttoncreate' => 'أنشئ',
+	'recordadmin-buttonreset' => 'إعادة الظبط',
+	'recordadmin-searchresult' => 'نتائج البحث',
+	'recordadmin-nomatch' => 'لا يوجد سجلات متطابقة',
+	'recordadmin-edit' => 'تعديل',
+	'recordadmin-updatesuccess' => 'محدث $1',
 	'recordadmin-buttonsave' => 'حفظ',
 	'recordadmin-viewlink' => 'عرض',
 	'recordadmin-editlink' => 'عدل',
+	'recordadmin-created' => 'أنشئت',
+	'right-recordadmin' => 'أبحث و عدل صفحات السجل',
 );
 
 /** Bulgarian (Български)
