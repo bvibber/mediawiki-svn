@@ -313,7 +313,8 @@ class LuceneResult extends SearchResult {
 		$start = 0;
 		$snippet = "";
 		$hi = 0;
-		
+		$ellipsis = wfMsg( 'ellipsis-separator' );
+
 		foreach($splits as $sp){
 			$sp = intval($sp);
 			// highlight words!
@@ -329,8 +330,8 @@ class LuceneResult extends SearchResult {
 			if($sp == strlen($text) && $suffix != '')
 				$snippet .= $suffix;
 			else if($useFinalSeparator)
-				$snippet .= " <b>...</b> ";
-			
+				$snippet .= " <b>" . $ellipsis . "</b> ";
+
 			$start = $sp;						
 		}
 		return array($snippet,$original);
