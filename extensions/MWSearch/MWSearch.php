@@ -40,7 +40,7 @@
 ##########
 
 
-# Back-end version (override before including MWSearch.php)
+# Back-end version; set to 2.1 to add support for some advanced features.
 $wgLuceneSearchVersion = 2;
 	
 # If to show related links (if available) below search results
