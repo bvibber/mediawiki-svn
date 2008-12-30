@@ -1,6 +1,9 @@
 This file lists changes on this extension.
 Localisation updates are done on betawiki and aren't listed here.
 
+0.11.4 - 30 December 2008
+  Updated FlaggedRevs extension.
+
 0.11.3 - 22 December 2008
   * Missing rights while executing API module now result in warnings rather than
     errors.
