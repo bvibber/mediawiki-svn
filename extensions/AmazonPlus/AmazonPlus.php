@@ -47,7 +47,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'AmazonPlus',
 	'description'    => 'A highly customizable extension to display Amazon information',
 	'descriptionmsg' => 'amazonplus-desc',
-	'version'        => '0.3',
+	'version'        => '0.3.1',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:AmazonPlus',
 	'author'         => 'Ryan Schmidt',
 );
@@ -62,6 +62,7 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 
 $wgHooks['BeforePageDisplay'][] = 'efAmazonPlusJavascript';
 
+$wgAmazonPlusJSVersion = 1; # Bump the version number every time you change AmazonPlus.js
 $wgAmazonPlusAWS = ''; # Amazon AWS Id. Required
 $wgAmazonPlusAssociates = array(); # Amazon Associates IDs, per locale.Example: array( 'us' => 'myamazonid', 'fr' => 'myfrenchid' ); Required
 $wgAmazonPlusDefaultSearch = 'Books'; # Default search type, can be Books, DVDs, etc.
@@ -84,7 +85,7 @@ function efAmazonPlusSetup() {
 # Set up the javascript
 function efAmazonPlusJavascript( &$out, $sk ) {
 	global $wgScriptPath;
-	$src = $wgScriptPath . '/extensions/AmazonPlus/AmazonPlus.js';
+	$src = $wgScriptPath . "/extensions/AmazonPlus/AmazonPlus.js?$wgAmazonPlusJSVersion";
 	$out->addScript( '<script type="text/javascript" src="' . $src . '"></script>' . "\n" );
 	return true;
 }
