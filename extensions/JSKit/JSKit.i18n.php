@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation file for extension AbsenteeLandlord.
+ * Internationalisation file for extension JSKit.
  *
  * @addtogroup Extensions
 */
