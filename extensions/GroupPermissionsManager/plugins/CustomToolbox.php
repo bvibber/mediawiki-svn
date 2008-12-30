@@ -46,7 +46,7 @@ function efGPManagerCustomToolboxAppend(&$skin) {
 				$href = $parts[0];
 			if(wfEmptyMsg($parts[1], $text))
 				$text = $parts[1];
-			$id = Sanitizer::escapeId($parts[1]);
+			$id = Sanitizer::escapeId($parts[1], 'noninitial');
 			$new[] = array($href, $text, $id);
 		}
 	}
