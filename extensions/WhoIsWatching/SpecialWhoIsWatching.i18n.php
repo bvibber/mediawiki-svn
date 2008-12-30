@@ -114,6 +114,9 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'whoiswatching' => 'Ko pregleda wiki stranicu',
 	'whoiswatching-desc' => 'Omogućava spisak korisničkih imena koji pregledaju wiki stranicu',
+	'specialwhoiswatchingthepage' => 'Ko pregleda %s',
+	'specialwhoiswatchingusage' => 'Ovu posebnu stranicu nije moguće koristiti po volji.
+Molimo koristite stranicu [[MediaWiki:Number_of_watching_users_pageview]] za određivanje ulazne tačke na ovu posebnu stranicu.',
 	'specialwhoiswatchingaddusers' => 'Dodaj korisnike da prate ovu stranicu',
 	'specialwhoiswatchingaddbtn' => 'Dodaj odabrane korisnike',
 );

@@ -1907,6 +1907,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'badimages-add-btn' => 'Tau tan',
 	'badimages-name' => 'Naran:',
 	'badimages-reason' => 'Motivu:',
 );

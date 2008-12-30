@@ -149,6 +149,14 @@ $messages['ksh'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Söndersigg]], di en zofällige Aanfangs-Sigg jrief.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'randomrootpage' => 'Zoufalls-Stammsäit',
+	'randomrootpage-desc' => '[[Special:Randomrootpage|Spezialsäit]] déi eng Zoufalls-Stammsäit oprifft',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

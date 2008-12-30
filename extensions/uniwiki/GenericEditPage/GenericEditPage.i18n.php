@@ -348,7 +348,7 @@ $messages['hsb'] = array(
 	'gep-classicmode' => 'Klasiski modus',
 	'gep-genericmode' => 'Powšitkowny modus',
 	'gep-nosectioninstructions' => 'Na tutej stronje wotrězki njejsu.
-Přidaj někotre z pomocu nastrojow naprawo.',
+Přidaj někotre z pomocu nastrojow w menijowej lajsće.',
 	'gep-nocategories' => 'Prošu wubjer znajmjeńša jednu kategoriju do składowanja.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
@@ -400,7 +400,7 @@ $messages['ia'] = array(
 	'gep-classicmode' => 'Modo classic',
 	'gep-genericmode' => 'Modo generic',
 	'gep-nosectioninstructions' => 'Il non ha sectiones in iste pagina.
-Adde alcunes con le instrumentos al derecta.',
+Adde alcunes con le instrumentos in le barra de menu.',
 	'gep-nocategories' => 'Per favor selige al minus un categoria ante de publicar',
 	'gep-categorypage' => 'MediaWiki:Modificaretiquettasdepaginas',
 );
@@ -579,8 +579,14 @@ $messages['nn'] = array(
 	'gep-addcategorybutton' => 'Legg til',
 	'gep-suggestcategory' => 'Føreslå ein kategori',
 	'gep-suggestcategorybutton' => 'OK',
+	'gep-sections' => 'Avsnitt',
+	'gep-sectionnotdisabled' => 'Dette avsnittet kan ikkje bli deaktivert',
+	'gep-addsection' => 'Legg til eit avsnitt',
 	'gep-addsectionbutton' => 'Legg til',
 	'gep-classicmode' => 'Klassisk modus',
+	'gep-genericmode' => 'Omfattande modus',
+	'gep-nosectioninstructions' => 'Det finst ingen avsnitt på denne sida.
+Legg til nokre med verktya i menyen.',
 	'gep-nocategories' => 'Vel minst ein kategori før du lagrar',
 );
 
@@ -647,10 +653,17 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author MF-Warburg
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'gep-emailbody' => 'O utilizador "$1" sugeriu a categoria "$2" para o sítio "$3".',
+	'gep-emailsuccess' => 'Obrigado por sugerir a categoria: $1.',
 	'gep-categories' => 'Categorias',
+	'gep-addcategorybutton' => 'Adicionar',
+	'gep-addsectionbutton' => 'Adicionar',
+	'gep-classicmode' => 'Modo clássico',
+	'gep-genericmode' => 'Modo genérico',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
@@ -805,6 +818,8 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'gep-categories' => 'Kategoria sira',
+	'gep-addcategorybutton' => 'Tau tan',
+	'gep-addsectionbutton' => 'Tau tan',
 );
 
 /** Tagalog (Tagalog)

@@ -68,6 +68,7 @@ $messages['af'] = array(
 $messages['am'] = array(
 	'dt_viewxml_categories' => 'መደቦች',
 	'dt_viewxml_namespaces' => 'ክፍለ-ዊኪዎች',
+	'dt_xml_namespace' => 'ክፍለ-ዊኪ',
 	'dt_xml_title' => 'አርዕስት',
 );
 
@@ -1014,8 +1015,11 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'dt_viewxml_categories' => 'Kategoria sira',
+	'dt_xml_namespace' => 'Espasu pájina nian',
 	'dt_xml_page' => 'Pájina',
 	'dt_xml_name' => 'Naran',
+	'dt_xml_title' => 'Títulu:',
+	'dt_xml_id' => 'ID',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

@@ -31,6 +31,13 @@ $messages['ar'] = array(
 	'autocreatecategorypages-editor' => 'منشئ تصنيف تلقائي',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ouda
+ */
+$messages['arz'] = array(
+	'autocreatecategorypages-editor' => 'منشئ تصنيف تلقائي',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

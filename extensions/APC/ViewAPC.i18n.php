@@ -221,6 +221,7 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'viewapc-display-filename' => 'የፋይል ስም',
 	'viewapc-ls-limit-none' => 'ሁሉ',
 );
 
@@ -1997,8 +1998,10 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Albamhandae
+ * @author Kwj2772
  */
 $messages['ko'] = array(
+	'viewapc-php-version' => 'PHP 버전',
 	'viewapc-display-filename' => '파일 이름',
 );
 

@@ -537,11 +537,57 @@ $messages['oc'] = array(
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'recordadmin' => 'Administracja rekordami',
+	'recordadmin-desc' => '[[Special:RecordAdmin|Strona specjalna]] służąca do wyszukiwania i edytowania stron ze zbiorami danych (rekordami) przy użyciu formularza',
+	'recordadmin-category' => 'Rekordy',
+	'recordadmin-select' => 'Wybierz typ rekordu, którego chcesz szukać',
+	'recordadmin-newsearch' => 'Nowe wyszukiwanie $1',
+	'recordadmin-newrecord' => 'Wybierz inny typ rekordu',
+	'recordadmin-submit' => 'OK',
+	'recordadmin-create' => 'Znajdź lub utwórz rekord „$1”',
+	'recordadmin-alreadyexist' => 'Niestety, „$1” już istnieje!',
+	'recordadmin-createsuccess' => '$1 utworzony',
+	'recordadmin-createerror' => 'Wystąpił błąd podczas próby utworzenia $1!',
+	'recordadmin-badtitle' => 'Niepoprawny tytuł!',
+	'recordadmin-recordid' => 'ID rekordu:',
+	'recordadmin-invert' => 'Odwróć wybór',
+	'recordadmin-buttonsearch' => 'Szukaj',
+	'recordadmin-buttoncreate' => 'Utwórz',
+	'recordadmin-buttonreset' => 'Resetuj',
+	'recordadmin-searchresult' => 'Wyniki wyszukiwania',
+	'recordadmin-nomatch' => 'Nie znaleziono pasujących rekordów!',
+	'recordadmin-edit' => 'Edytowanie $1',
+	'recordadmin-typeupdated' => 'Właściwości $1 zaktualizowane',
+	'recordadmin-updatesuccess' => '$1 zaktualizowane',
+	'recordadmin-updateerror' => 'Wystąpił błąd w trakcie aktualizacji',
+	'recordadmin-buttonsave' => 'Zapisz',
+	'recordadmin-noform' => 'Brak formularza współpracującego z rekordami „$1”!',
+	'recordadmin-createlink' => '<a href=$1>utwórz</a>',
+	'recordadmin-newcreated' => 'Nowy $1 utworzono z publicznego formularza',
+	'recordadmin-summary-typecreated' => 'Nowy $1 utworzony',
+	'recordadmin-viewlink' => 'zobacz',
+	'recordadmin-editlink' => 'edytuj',
+	'recordadmin-created' => 'Utworzony',
+	'right-recordadmin' => 'Znajdź i edytuj rekord stron',
+);
+
 /** Romanian (Română)
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'recordadmin-badtitle' => 'Titlu greşit!',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'recordadmin-createsuccess' => '$1 ccrejete',
 );
 
 /** Russian (Русский)

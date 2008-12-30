@@ -206,6 +206,13 @@ $messages['oc'] = array(
 	'googleadsense-desc' => 'Apond [http://www.google.com/adsense Google AdSense] a la barra laterala',
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ */
+$messages['pl'] = array(
+	'googleadsense-desc' => 'Dodaje [http://www.google.com/adsense Google AdSense] do paska bocznego',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

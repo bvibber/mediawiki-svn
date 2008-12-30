@@ -370,13 +370,23 @@ $messages['br'] = array(
  * @author Smooth O
  */
 $messages['bs'] = array(
+	'whitelist-desc' => 'Uređivanje dopuštenja pristupa za ograničene korisnike',
+	'mywhitelistpages' => 'Moje stranice',
 	'whitelisttablemodifyall' => 'Sve',
 	'whitelisttablemodifynone' => 'Ništa',
+	'whitelisttablepage' => 'Wiki stranica',
 	'whitelisttableexpires' => 'Ističe dana',
+	'whitelisttablemodby' => 'Zadnji put izmijenjeno od strane',
 	'whitelisttableedit' => 'Uredi',
+	'whitelisttableview' => 'Pregled',
 	'whitelisttablenewdate' => 'Novi datum:',
+	'whitelisttablechangedate' => 'Promijeni datum isteka',
+	'whitelisttablesetview' => 'Postavi za pregled',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistnewtabledate' => 'Datum isteka:',
+	'whitelistnewtableview' => 'Postavi za pregled',
+	'whitelistnewtableprocess' => 'Proces',
+	'whitelistoverview' => '== Pregled promjena za $1 ==',
 	'whitelistoverviewcd' => "* Mijenjam datum na '''$1''' za [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Uklanjam pristup na [[:$1|$1]]',
 	'whitelistrequest' => 'Traži pristup za više stranica',
@@ -385,7 +395,10 @@ $messages['bs'] = array(
 $2',
 	'whitelistrequestconf' => 'Zahtjev za nove stranice je poslan na $1',
 	'whitelistnever' => 'nikad',
+	'whitelistnummatches' => '- {{PLURAL:$1|$1 pogodak|$1 pogotka|$1 pogodaka}}',
+	'right-editwhitelist' => 'Prilagođavanje dopuštenog spiska za postojeće korisnike',
 	'right-restricttowhitelist' => 'Uređivanje i pregled stranica samo sa dopuštenog spiska',
+	'action-editwhitelist' => 'promijenite dopušteni spisak za postojeće korisnike',
 	'action-restricttowhitelist' => 'uredi i pregledaj stranice samo na dopuštenom spisku',
 	'group-manager' => 'Upravljači',
 	'group-manager-member' => 'Upravljač',
@@ -1095,6 +1108,8 @@ $messages['ja'] = array(
 	'whitelisttableremove' => '削除',
 	'whitelistnewtableprocess' => 'プロセス',
 	'whitelistnewtablereview' => 'レビュー',
+	'group-restricted' => '制限付ユーザー',
+	'group-restricted-member' => '制限付ユーザー',
 	'group-manager' => 'マネージャー',
 	'group-manager-member' => 'マネージャー',
 );
@@ -1328,8 +1343,8 @@ $messages['lb'] = array(
 	'whitelistnewtableview' => 'Weisen aschalten',
 	'whitelistnewtableprocess' => 'Verschaffen',
 	'whitelistnewtablereview' => 'Nokucken',
+	'whitelistselectrestricted' => '== Limitéierte Benotzernumm wielen ==',
 	'whitelistpagelist' => 'Säite vu(n) {{SITENAME}} fir $1',
-	'whitelistbadtitle' => 'Schlechten Titel -',
 	'whitelistoverview' => '== Iwwersiicht vun den Ännerunge vun $1 ==',
 	'whitelistoverviewcd' => "* Datum vun '''$1''' ännere fir [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Autorisatioun vum '''$1''' op [[:$2|$2]] astellen",
@@ -1339,9 +1354,12 @@ $messages['lb'] = array(
 
 $2',
 	'whitelistrequestconf' => "D'Ufro fir nei Säite gouf geschéckt un $1",
+	'whitelistnonrestricted' => "De Benotzer '''$1''' ass kee limitéierte Benotzer.
+Dës Säit ass nëmme valabel fir limitéiert Benotzer.",
 	'whitelistnever' => 'nie',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Resultat|Resultater}}',
 	'group-restricted' => 'Limitéiert Benotzer',
+	'group-restricted-member' => 'Limitéierte Benotzer',
 	'group-manager' => 'Manager',
 	'group-manager-member' => 'Manager',
 );
@@ -1829,6 +1847,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
+	'whitelist' => 'Páginas na lista branca',
 	'mywhitelistpages' => 'Minhas Páginas',
 	'whitelistfor' => '<center>Informação actual para <b>$1</b></center>',
 	'whitelisttablemodify' => 'Modificar',
@@ -1841,10 +1860,16 @@ $messages['pt'] = array(
 	'whitelisttableview' => 'Ver',
 	'whitelisttablenewdate' => 'Nova Data:',
 	'whitelisttableremove' => 'Remover',
+	'whitelistnewpagesfor' => 'Adicione novas páginas à lista branca de <b>$1</b><br />
+Use * ou % como carácter polivalente',
 	'whitelistpagelist' => 'Página de {{SITENAME}} para $1',
+	'whitelistrequest' => 'Requisitar acesso a mais páginas',
 	'whitelistrequestmsg' => '$1 requisitou acesso {{PLURAL:$3|à seguinte página|às seguintes páginas}}:
 
 $2',
+	'whitelistrequestconf' => 'A requisição para novas páginas foi enviada para $1',
+	'whitelistnonrestricted' => "O utilizador '''$1''' não é um utilizador restrito.
+Esta página só se aplica a utilizadores restritos.",
 	'whitelistnever' => 'nunca',
 	'whitelistnummatches' => ' - {{PLURAL:$1|um resultado|$1 resultados}}',
 	'group-restricted' => 'Utilizadores restritos',
@@ -1931,6 +1956,8 @@ $messages['roa-tara'] = array(
 	'whitelisttablesetedit' => "Configure 'u cangiamende",
 	'whitelisttablesetview' => 'Configure pe vedè',
 	'whitelisttableremove' => 'Scangille',
+	'whitelistnewtableedit' => "'Mboste pe cangià",
+	'whitelistnewtableview' => "'Mboste pe vedè",
 );
 
 /** Russian (Русский)
@@ -2235,6 +2262,7 @@ $messages['tet'] = array(
 	'mywhitelistpages' => "Ha'u-nia pájina sira",
 	'whitelisttablemodifyall' => 'Hotu',
 	'whitelisttableedit' => 'Edita',
+	'whitelistnever' => 'nunka',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

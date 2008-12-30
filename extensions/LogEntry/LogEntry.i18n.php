@@ -102,6 +102,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'logentry-append' => 'Ajouter',
@@ -145,6 +146,18 @@ $messages['hu'] = array(
 	'logentry-specialpage-desc' => 'Ez a kiegészítő feldolgozza a naplófájlokhoz való hozzáfűzéseket',
 	'logentry-invalidpage' => 'Érvénytelen lap',
 	'logentry-invalidtoken' => 'Érvénytelen token',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'logentry-append' => 'Adjunger',
+	'logentry-parserhook-desc' => 'Iste extension adde un etiquetta que provide un formulario pro adjunger/anteponer texto a paginas de registro',
+	'logentry-specialpage-desc' => 'Iste extension adde un etiquetta que provide de processamento pro adjunger texto a paginas de registro',
+	'logentry' => 'Entrata in registro',
+	'logentry-invalidpage' => 'Pagina invalide',
+	'logentry-invalidtoken' => 'Indicio invalide',
 );
 
 /** Khmer (ភាសាខ្មែរ)

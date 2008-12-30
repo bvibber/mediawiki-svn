@@ -315,16 +315,27 @@ Aceasta trebuie:',
 	'securepasswords-word' => 'să nu fie un cuvânt',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'securepasswords-word' => "non g'addà essere 'na parole",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Rudko
  */
 $messages['sk'] = array(
 	'securepasswords-desc' => 'Vytvára bezpečnejšie haše hesiel a pridáva kontrolu sily hesla',
-	'securepasswords-valid' => 'Vaše heslo je nesprávne alebo príliš krátke.
-Ono musí:',
-	'securepasswords-username' => 'nesprávne užívateľské meno',
-	'securepasswords-word' => 'to nieje slovo',
+	'securepasswords-valid' => 'Vaše heslo je nesprávne alebo príliš krátke.',
+	'securepasswords-minlength' => 'musí byť dlhé aspoň $1 {{PLURAL:$1|znak|znaky|znakov}}',
+	'securepasswords-lowercase' => 'musí obsahovať aspoň jedno malé písmeno',
+	'securepasswords-uppercase' => 'musí obsahovať aspoň jedno veľké písmeno',
+	'securepasswords-digit' => 'musí obsahovať aspoň jednu číslicu',
+	'securepasswords-special' => 'musí obsahovať aspoň jeden špeciálny znak (povolené špeciálne znaky: $1)',
+	'securepasswords-username' => 'musí byť iné ako vaše používateľské meno',
+	'securepasswords-word' => 'nesmie to byť slovo zo slovníka',
 );
 
 /** Swedish (Svenska)

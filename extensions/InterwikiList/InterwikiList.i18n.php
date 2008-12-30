@@ -257,6 +257,8 @@ $messages['ia'] = array(
 	'interwikilist-desc' => 'Adde un [[Special:Interwikilist|pagina special]] pro vider ligamines interwiki existente',
 	'interwikilist-linkname' => 'Ligamine interwiki',
 	'interwikilist-target' => 'Adresse URL de destination',
+	'interwikilist-filter' => 'Lista de filtros',
+	'interwikilist-prefix' => 'Prefixo interwiki:',
 );
 
 /** Italian (Italiano)

@@ -229,6 +229,16 @@ $messages['nl'] = array(
 	'signaturelogentry' => 'ondertekende het document $1',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'signaturelogpage' => 'Signaturlogg',
+	'signature-desc' => 'Slår på [[Special:SignDocument|dokumentsignering]]',
+	'signaturelogpagetext' => 'Dette er ein logg over [[Special:SignDocument|alle signaturar lagt til dokument]].',
+	'signaturelogentry' => 'signerte dokumentet $1',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

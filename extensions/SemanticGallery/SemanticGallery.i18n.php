@@ -101,6 +101,13 @@ $messages['ksh'] = array(
 	'semanticgallery-desc' => 'Deiht en Fommaat för en Jallerie-aatijje Aanzeich dobei, bei <i lang="en">Semantic MediaWiki</i> singe Froore en Sigge.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'semanticgallery-desc' => 'Setzt a Semantic MediaWiki-Ufroen e Gallerie-Output-Format derbäi',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

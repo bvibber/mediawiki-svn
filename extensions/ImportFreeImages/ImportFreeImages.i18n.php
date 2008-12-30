@@ -499,6 +499,17 @@ $messages['km'] = array(
 	'importfreeimages_returntoform' => "ឬក៏ចុច<a href='$1'>ទីនេះ</a>ដើម្បីត្រឡប់ទៅកាន់លទ្ឋផលស្វែងរករបស់អ្នក",
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'importfreeimages_noapikey' => '당신은 당신의 Flickr API 키를 설정하지 않았습니다.
+계속하시려면 [http://www.flickr.com/services/api/misc.api_keys.html 이곳]에서 API 키를 다운로드하고 ImportFreeImages.php에 wgFlickrAPIKey를 설정하십시오.',
+	'importfreeimages_invalidurl' => 'URL "$1"은 유효한 Flickr 그림이 아닙니다.',
+	'importfreeimages_owner' => '만든이',
+	'importfreeimages_importthis' => '이 그림 가져오기',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -901,6 +912,25 @@ $messages['tg-cyrl'] = array(
 	'importfreeimages_importthis' => 'инро ворид кунед',
 	'importfreeimages_next' => 'Баъдӣ $1',
 	'importfreeimages_promptuserforfilename' => 'Лутфан номи парвандаи мақсадро ворид кунед:',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'importfreeimages' => 'Mag-angkat ng malalayang mga larawan',
+	'importfreeimages-desc' => 'Nagbibigay ng isang paraan ng [[Special:ImportFreeImages|pagaangkat ng mga larawang may tamang paglalagay/pagbibigay ng lisensya]] mula sa [http://www.flickr.com flickr]',
+	'importfreeimages_description' => "Nagpapahintulot sa iyo ang pahinang ito upang makapaghanap ng mga litratong nabigyan ng tamang lisensya mula sa ''flickr'' at angkatin ang mga ito papunta sa iyong wiki.",
+	'importfreeimages_noapikey' => "Hindi mo pa naiaayos ang iyong Susi na pang-Flickr API (''API key'').
+Upang magawa ito, kumuha lamang ng isang susi ng API mula [http://www.flickr.com/services/api/misc.api_keys.html rito] at itakda ang wgFlickrAPIKey sa ImportFreeImages.php.",
+	'importfreeimages_nophotosfound' => "Walang mga litratong natagpuan para sa iyong kauriang panghanap na '$1', pakisubok uli.",
+	'importfreeimages_invalidurl' => 'Ang URL na "$1" ay isang hindi tanggap na larawan ng Flickr.',
+	'importfreeimages_owner' => 'May-akda',
+	'importfreeimages_importthis' => 'angkatin ito',
+	'importfreeimages_next' => 'Susunod na $1',
+	'importfreeimages_filefromflickr' => '$1 ni tagagamit na <b>[$2]</b> mula sa flickr. Orihinal na URL',
+	'importfreeimages_promptuserforfilename' => 'Pakipasok (maglagay) ng isang kapupuntahang pangalan ng talaksan:',
+	'importfreeimages_returntoform' => "O kaya, pindutin <a href='$1'>dito</a> upang makabalik sa mga resulta ng iyong paghahanap",
 );
 
 /** Turkish (Türkçe)

@@ -602,6 +602,15 @@ $messages['tg-cyrl'] = array(
 	'block_title_error' => 'Бубахшед, захира намудани саҳифае, ки чунин сарлавҳа дорад манъ аст.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'block_title_error_page_title' => 'Hinadlangan/hinarangang pamagat',
+	'block_title_error-desc' => 'Nagbibigay ng isang payak na paraan ng pagiwas sa pagsagip o paglikha ng mga pahinang may partikular na mga pamagat',
+	'block_title_error' => 'Paumanhin, ang pamagat ng pahinang ito ay hindi pinapahintulutang masagip.',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

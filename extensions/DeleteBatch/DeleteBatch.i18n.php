@@ -866,7 +866,7 @@ Nahraný súbor by mal na každom riadku obsahovať názov stránky a nepovinne 
 	'deletebatch-or' => '<b>ALEBO</b>',
 	'deletebatch-page' => 'Stránky, ktoré budú zmazané',
 	'deletebatch-reason' => 'Dôvod zmazania',
-	'deletebatch-processing' => 'mažú sa stránky',
+	'deletebatch-processing' => 'mažú sa stránky $1',
 	'deletebatch-from-file' => 'zo zoznamu v súbore',
 	'deletebatch-from-form' => 'z formulára',
 	'deletebatch-success-subtitle' => 'z $1',
@@ -877,6 +877,7 @@ Nahraný súbor by mal na každom riadku obsahovať názov stránky a nepovinne 
 	'deletebatch-select-script' => 'skript na zmazanie stránok',
 	'deletebatch-select-yourself' => 'vy',
 	'deletebatch-no-page' => 'Prosím, zadajte aspoň jednu stránku, ktorá sa má zmazať ALEBO súbor obsahujúci zoznam stránok.',
+	'right-deletebatch' => 'Dávkové mazanie stránok',
 );
 
 /** Swedish (Svenska)
@@ -929,6 +930,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'deletebatch-button' => 'Halakon',
 	'deletebatch-reason' => 'Motivu ba halakon:',
 );
 

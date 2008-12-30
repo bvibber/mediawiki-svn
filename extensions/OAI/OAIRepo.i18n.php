@@ -207,6 +207,7 @@ $messages['jv'] = array(
  */
 $messages['ksh'] = array(
 	'oai-desc' => 'De [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] Schnettshtëll.',
+	'oairepository' => 'OAI Repository',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -319,6 +320,14 @@ $messages['sr-ec'] = array(
  */
 $messages['sv'] = array(
 	'oai-desc' => 'Ger tillgång till gränssnittet till [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'oai-desc' => 'Nagbibigay ng ugnayan-hangganang pangrepositoryong [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+	'oairepository' => 'Repositoryong OAI',
 );
 
 /** Ukrainian (Українська)

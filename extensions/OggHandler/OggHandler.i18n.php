@@ -341,10 +341,37 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'ogg-desc' => 'Апрацоўшчык файлаў Ogg Theora і Vorbis з прайгравальнікам JavaScript',
+	'ogg-short-audio' => 'Аўдыё-файл Ogg $1, $2',
 	'ogg-short-video' => 'Відэа-файл у фармаце Ogg $1, $2',
+	'ogg-short-general' => 'Мэдыя-файл Ogg $1, $2',
+	'ogg-long-audio' => '(аўдыё-файл Ogg $1, даўжыня $2, $3)',
+	'ogg-long-video' => '(відэа-файл Ogg $1, даўжыня $2, $4×$5 піксэляў, $3)',
+	'ogg-long-multiplexed' => '(мультыплексны аўдыё/відэа-файл Ogg, $1, даўжыня $2, $4×$5 піксэляў, усяго $3)',
+	'ogg-long-general' => '(мэдыя-файл Ogg, даўжыня $2, $3)',
 	'ogg-long-error' => '(Няслушны файл у фармаце Ogg: $1)',
+	'ogg-play' => 'Прайграць',
+	'ogg-pause' => 'Паўза',
+	'ogg-stop' => 'Спыніць',
+	'ogg-play-video' => 'Прайграць відэа',
+	'ogg-play-sound' => 'Прайграць аўдыё',
+	'ogg-no-player' => 'Прабачце, Ваша сыстэма ня мае неабходнага праграмнага забесьпячэньня для прайграваньня файлаў. Калі ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіце прайгравальнік</a>.',
+	'ogg-no-xiphqt' => 'Адсутнічае кампанэнт  XiphQT для QuickTime.
+QuickTime не можа прайграваць файлы ў фармаце Ogg бяз гэтага кампанэнта.
+Калі ласка, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">загрузіце XiphQT</a> альбо выберыце іншы прайгравальнік.',
+	'ogg-player-videoElement' => 'Убудаваная падтрымка браўзэра',
+	'ogg-player-oggPlugin' => 'Плагін для браўзэра',
+	'ogg-player-thumbnail' => 'Толькі нерухомая выява',
+	'ogg-player-soundthumb' => 'Няма прайгравальніка',
+	'ogg-player-selected' => '(выбраны)',
+	'ogg-use-player' => 'Выкарыстоўваць прайгравальнік:',
+	'ogg-more' => 'Болей…',
+	'ogg-dismiss' => 'Зачыніць',
+	'ogg-download' => 'Загрузіць файл',
+	'ogg-desc-link' => 'Інфармацыя пра гэты файл',
 );
 
 /** Bulgarian (Български)
@@ -1512,7 +1539,7 @@ $messages['ksh'] = array(
 	'ogg-short-general' => '<i lang="en">Ogg $1</i> Medijedatei, $2',
 	'ogg-long-audio' => '(<i lang="en">Ogg $1</i> Tondatei fum Ömfang $2, $3)',
 	'ogg-long-video' => '(<i lang="en">Ogg $1</i> Viddejodatei fum Ömfang $2 un {{PLURAL:$4|ein Pixel|$4 Pixelle|kei Pixel}} × {{PLURAL:$5|ei Pixel|$4 Pixelle|kei Pixel}}, $3)',
-	'ogg-long-multiplexed' => '(<i lang="en">Ogg</i> jemultipex Ton- un Viddejodatei, fum Ömfang $2 un {{PLURAL:$4|ein Pixel|$4 Pixelle|kei Pixel}} × {{PLURAL:$5|ei Pixel|$4 Pixelle|kei Pixel}}, $3 ennsjesammp)',
+	'ogg-long-multiplexed' => '(<i lang="en">Ogg</i> jemultipex Ton- un Viddejodatei, $1, fum Ömfang $2 un {{PLURAL:$4|ein Pixel|$4 Pixelle|kei Pixel}} × {{PLURAL:$5|ei Pixel|$4 Pixelle|kei Pixel}}, $3 ennsjesammp)',
 	'ogg-long-general' => '(<i lang="en">Ogg</i> Medijedatei fum Ömfang $2, $3)',
 	'ogg-long-error' => '(ene kapodde <i lang="en">Ogg</i> Datei: $1)',
 	'ogg-play' => 'Loßläje!',

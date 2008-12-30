@@ -1021,6 +1021,7 @@ Controleer uw pop-upblokkeerprogramma.',
  * @author Harald Khan
  */
 $wgCustomToolbarMessages['nn'] = array(
+	'ct-desc' => 'Legg til ein verktymeny som kan bli utvida',
 	'ct_bold_sample' => 'Feit tekst',
 	'ct_bold_tip_ins' => 'Set inn feit tekst',
 	'ct_bold_tip_wrap' => 'Gjer denne teksten feit',
@@ -1039,6 +1040,8 @@ $wgCustomToolbarMessages['nn'] = array(
 	'ct_external_caption' => 'Ekstern lenkja',
 	'ct_image_tip' => 'Set inn eit bilete',
 	'ct_image_caption' => 'Legg til bilete',
+	'ct_attachment_tip' => 'Set inn eit tillegg',
+	'ct_attachment_caption' => 'Legg til tillegg',
 	'ct_math_sample' => 'Set inn LaTeX-formel her',
 	'ct_math_tip_ins' => 'Set inn matematisk formel (LaTeX)',
 	'ct_math_tip_wrap' => 'Gjer denne teksten om til ein matematisk formel (LaTeX)',
@@ -1046,6 +1049,7 @@ $wgCustomToolbarMessages['nn'] = array(
 	'ct_nowiki_sample' => 'Set inn uformatert tekst her',
 	'ct_nowiki_tip_ins' => 'Sjå bort frå wikiformatering',
 	'ct_nowiki_tip_wrap' => 'Sjå bort frå wikiformatering for denne teksten',
+	'ct_nowiki_caption' => 'Ingen wikitekst',
 	'ct_horizontal_tip' => 'Set inn ei horisontal linja (nytt sparsamt)',
 	'ct_horizontal_caption' => 'Horisontal linja',
 	'ct_upload' => 'Last opp $1',
@@ -1451,6 +1455,16 @@ $wgCustomToolbarMessages['te'] = array(
 	'ct_user_tip' => 'వాడుకరి పేజీకి ఒక లింకుని చేర్చండి',
 	'ct_user_caption' => 'వాడుకరి లింకు',
 	'ct_user_sample' => 'వాడుకరిపేరు',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+ * @author Ibrahim
+ */
+$wgCustomToolbarMessages['tg-cyrl'] = array(
+	'ct_external_caption' => 'Пайванди беруна',
+	'ct_image_tip' => 'Иловаи як акс',
+	'ct_image_caption' => 'Иловаи акс',
+	'ct_attachment_tip' => 'Иловаи як замима',
 );
 
 /** Tagalog (Tagalog)

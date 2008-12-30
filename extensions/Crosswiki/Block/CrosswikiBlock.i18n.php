@@ -1818,6 +1818,7 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'crosswikiblock-reason' => 'Motivu:',
+	'crosswikiblock-submit' => "Blokeiu uza-na'in ne'e",
 	'crosswikiunblock-reason' => 'Motivu:',
 );
 

@@ -681,6 +681,17 @@ $messages['th'] = array(
 	'findspam-notextfound' => 'ไม่พบเรื่องที่เขียน',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'findspam' => "Maghanap ng \"manlulusob\" (''spam'')",
+	'findspam-desc' => "Nagdaragdag ng isang [[Special:FindSpam|natatanging pahinang]] nagpapahintulot na makapaghanap/makatagpo ng kamakailan lamang na idinagdag na mga \"manlulusob\" (''spam'')",
+	'findspam-ip' => 'adres ng IP:',
+	'findspam-ok' => "Sige/Ayos 'yan",
+	'findspam-notextfound' => 'Walang natagpuang mga ambag',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

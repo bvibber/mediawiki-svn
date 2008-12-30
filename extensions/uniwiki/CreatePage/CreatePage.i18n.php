@@ -53,6 +53,7 @@ $messages['arz'] = array(
 	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
 	'createpage_tryagain' => 'لا. أريد إنشاء صفحة جديدة بعنوان مميز.',
 	'createpage_editexisting' => 'نعم. أريد المساهمة للصفحة الموجودة',
+	'createpage-badtitle' => 'لا بمكن إستخدامه كعنوان للصفحة "$1"',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

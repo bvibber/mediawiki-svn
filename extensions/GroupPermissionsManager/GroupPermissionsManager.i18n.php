@@ -125,6 +125,7 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'grouppermissions-search' => 'ስብስባ:',
 	'grouppermissions-comment' => 'ማጠቃለያ፦',
 );
 
@@ -1544,10 +1545,13 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author MF-Warburg
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'grouppermissions-search' => 'Grupo:',
+	'grouppermissions-dologin' => 'Autenticar-se',
+	'grouppermissions-never' => 'Nunca',
 	'grouppermissions-sp-save' => 'Gravar',
 );
 
@@ -1799,6 +1803,13 @@ $messages['te'] = array(
 	'right-recentchanges' => 'ఇటీవలి మార్పులను చూడవచ్చు',
 	'right-edittalk' => 'చర్చా పేజీలను మార్చవచ్చు',
 	'right-edit-new' => 'పేజీలను మార్చడం',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'grouppermissions-never' => 'Nunka',
 );
 
 /** Yiddish (ייִדיש)

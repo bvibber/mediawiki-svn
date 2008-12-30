@@ -219,6 +219,17 @@ $messages['et'] = array(
 	'amazonplus-new' => 'uus',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'amazonplus-desc' => 'Amazonen informazioa agertzeko oso aldagarria den estentsio bat',
+	'amazonplus-nores' => 'Akatsa: Ez da emaitzarik aurkitu!',
+	'amazonplus-noidres' => 'Akatsa: Ezin da produltuaren IDa aurkitu!',
+	'amazonplus-fgcerr' => 'Akatsa: Ezin da daturik lortu Amazonetik!',
+	'amazonplus-slserr' => 'Akatsa: Ezin da daturik parseatu Amazonetik!',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Mobe
@@ -359,6 +370,7 @@ $messages['hu'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -376,6 +388,8 @@ $messages['ja'] = array(
 	'amazonplus-new' => '新品',
 	'amazonplus-none' => 'この商品は在庫・出品がありません。',
 	'amazonplus-cp-none' => '無し',
+	'amazonplus-more' => 'もっと',
+	'amazonplus-less' => '以下',
 );
 
 /** Georgian (ქართული)
@@ -647,6 +661,8 @@ $messages['sk'] = array(
 	'amazonplus-cp-gbp' => 'GBP',
 	'amazonplus-cp-eur' => 'EUR',
 	'amazonplus-cp-jpy' => 'JPY',
+	'amazonplus-more' => 'viac',
+	'amazonplus-less' => 'menej',
 );
 
 /** Sundanese (Basa Sunda)

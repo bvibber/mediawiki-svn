@@ -60,6 +60,13 @@ $messages['af'] = array(
 	'edituser-exempt' => 'Die gebruiker kan nie gewysig word nie',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'edituser-dosearch' => 'ፍለጋ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

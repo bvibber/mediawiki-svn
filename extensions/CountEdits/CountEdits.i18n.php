@@ -1015,7 +1015,7 @@ $messages['ru'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Не существует участника с именем $1.',
 	'countedits-resultheader' => 'Данные для $1',
-	'countedits-resulttext' => '$1 сделал $2 правок',
+	'countedits-resulttext' => '$1 сделал(а) $2 {{PLURAL:$2|правку|правки|правок}}',
 	'countedits-mostactive' => 'Наиболее активные участники',
 	'countedits-nocontribs' => 'Нет правок в этой вики.',
 );
@@ -1046,7 +1046,7 @@ $messages['sk'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Používateľ s menom $1 neexistuje.',
 	'countedits-resultheader' => 'Výsledky pre $1',
-	'countedits-resulttext' => '$1 urobil $2 {{PLURAL:$2|úprava|úprav}}',
+	'countedits-resulttext' => '$1 urobil $2 {{PLURAL:$2|úpravu|úpravy|úprav}}',
 	'countedits-mostactive' => 'Najaktívnejší prispievatelia',
 	'countedits-nocontribs' => 'Táto wiki neobsahuje zatiaľ žiadne príspevky.',
 );

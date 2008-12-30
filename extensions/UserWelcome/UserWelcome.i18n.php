@@ -627,6 +627,8 @@ $messages['pt'] = array(
 	'mp-welcome-edit' => 'Editar',
 	'mp-welcome-points' => '$1 pontos',
 	'mp-welcome-logged-in' => 'Olá, $1',
+	'mp-request-new-message' => 'nova mensagem',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|novo amigo|novos amigos}}',
 );
 
 /** Romanian (Română)

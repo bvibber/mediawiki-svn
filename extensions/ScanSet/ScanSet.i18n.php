@@ -753,6 +753,8 @@ $messages['nds'] = array(
 	'scanset_no_files' => 'Fehler: In de angeven Mapp sünd keen Datein.',
 	'scanset_no_volumes' => 'Fehler: Keen Volume-Mapp funnen',
 	'scanset_missing_index_file' => 'Fehler: Indexdatei $1 nich funnen',
+	'scanset_index_file_error' => 'Fehler: Fehler in’t Format vun de Indexdatei in Reeg $1',
+	'scanset_invalid_volume' => 'Fehler: Ungüllig Volume',
 	'scanset_next' => 'Tokamen →',
 	'scanset_prev' => '← Vörig',
 );

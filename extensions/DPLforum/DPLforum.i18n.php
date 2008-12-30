@@ -265,6 +265,16 @@ $messages['it'] = array(
 	'dplforum-toomany' => 'DPL Forum: Troppe categorie!',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'dplforum-desc' => 'DynamicPageList ベースのフォーラムを実現する拡張機能',
+	'dplforum-edited' => '  - 最終編集',
+	'dplforum-toofew' => 'DPL Forum: カテゴリが少なすぎます！',
+	'dplforum-toomany' => 'DPL Forum: カテゴリが多すぎます！',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author T-Rithy
  * @author Thearith
@@ -501,6 +511,25 @@ $messages['sv'] = array(
 	'dplforum-never' => 'Aldrig',
 	'dplforum-toofew' => 'DPL-forum: För få kategorier!',
 	'dplforum-toomany' => 'DPL-forum: För många kategorier!',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'dplforum-never' => 'Nunka',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'dplforum-desc' => 'Karugtong na nakabatay sa talakayang DPL',
+	'dplforum-by' => 'ni',
+	'dplforum-edited' => '  - Huling nabago',
+	'dplforum-never' => 'Hindi kailanman',
+	'dplforum-toofew' => 'Talakayang DPL: Napakakaunting mga kaurian!',
+	'dplforum-toomany' => 'Talakayang DPL: Napakaraming mga kaurian!',
 );
 
 /** Turkish (Türkçe)

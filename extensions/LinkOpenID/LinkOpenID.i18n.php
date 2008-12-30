@@ -144,6 +144,20 @@ $messages['hsb'] = array(
 	'linkopenid-prefstext-v2url' => 'Serwerowy URL za OpenID wersiju 2:',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'linkopenid-desc' => 'Permitter que usatores liga lor conto a un OpenID externe',
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Si tu possede un OpenID de un providitor externe, tu pote specificar lo hic.
+Isto te permitte etiam usar tu pagina de usator como OpenID.',
+	'linkopenid-prefstext-openid' => 'Tu OpenID:',
+	'linkopenid-prefstext-v1url' => 'URL de servitor pro OpenID version 1.1:',
+	'linkopenid-prefstext-v2url' => 'URL de servitor pro OpenID version 2:',
+	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -174,7 +188,10 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'linkopenid-desc' => 'Erlaabt de Benotzer et fir hire Benotzerkont mat enger externer OpenID ze verbannen',
 	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => 'Wann Dir eng OpenID vun engem externe rovider hutt, da  kënnt dir se hei uginn.
+Dëst erlaabt et datt Dir Är Benotzersäit och als OpenID benotze kënnt.',
 	'linkopenid-prefstext-openid' => 'Är OpenID:',
 	'linkopenid-prefstext-v1url' => "Server-URL fir d'Versioun 1.1 vun OpenID:",
 	'linkopenid-prefstext-v2url' => "Server-URL fir d'Versioun 2 vun OpenID:",
@@ -231,5 +248,13 @@ To vám umožní používať svoju používateľskú stránku tiež ako OpenID.'
 	'linkopenid-prefstext-openid' => 'Váš OpenID:',
 	'linkopenid-prefstext-v1url' => 'URL servera OpenID verzie 1.1:',
 	'linkopenid-prefstext-v2url' => 'URL servera OpenID verzie 2:',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-openid' => 'Ó-nia OpenID:',
 );
 

@@ -257,6 +257,13 @@ $messages['tg-cyrl'] = array(
 	'randomimage-desc' => 'Бо истифодаи <tt>&lt;randomimage /&gt;</tt> чинандаи расонаи тасодуфиро пешкаш мекунад',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'randomimage-desc' => 'Nagbibigay ng isang tagapili ng alin mang midya sa pamamagitan ng paggamit ng <tt>&lt;randomimage /&gt;</tt>',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

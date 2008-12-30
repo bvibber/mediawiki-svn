@@ -578,10 +578,27 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Jwitos
+ * @author Leinad
  */
 $messages['pl'] = array(
-	'refreshspecial-here' => '<b>tutaj</b>',
+	'refreshspecial' => 'Odśwież strony specjalne',
+	'refreshspecial-desc' => 'Umożliwia [[Special:RefreshSpecial|za pomocą strony specjalnej ręcznie odświeżać]] strony specjalne',
+	'refreshspecial-title' => 'Odśwież strony specjalne',
+	'refreshspecial-button' => 'Odśwież wybrane',
+	'refreshspecial-fail' => 'Proszę zaznaczyć co najmniej jedną stronę specjalną do odświeżenia.',
+	'refreshspecial-refreshing' => 'odświeżanie stron specjalnych',
+	'refreshspecial-success-subtitle' => 'odświeżanie stron specjalnych',
+	'refreshspecial-choice' => 'odświeżanie stron specjalnych',
+	'refreshspecial-js-disabled' => '(<i>Nie możesz wybrać wszystkich stron, gdy JavaScript jest wyłączony</i>)',
+	'refreshspecial-select-all-pages' => 'Zaznacz wszystkie strony',
+	'refreshspecial-link-back' => 'Powrót do strony specjalnej',
+	'refreshspecial-none-selected' => 'Nie wybrałeś żadnych stron specjalnych. Przywracanie domyślnego wyboru.',
+	'refreshspecial-db-error' => 'Niepowodzenie: błąd bazy danych',
+	'refreshspecial-no-page' => 'Nie ma takiej strony specjalnej',
+	'refreshspecial-reconnected' => 'Ponownie połączono.',
+	'refreshspecial-reconnecting' => 'Połączenie nie powiodło się, ponowne połączenie nastąpi za 10 sekund...',
 );
 
 /** Portuguese (Português)
@@ -600,7 +617,7 @@ $messages['pt'] = array(
 	'refreshspecial-slave-lagged' => 'Servidor escravo com atraso, aguardando...',
 	'refreshspecial-reconnected' => 'Reconectado.',
 	'refreshspecial-reconnecting' => 'Conexão falhada, reconectando em 10 segundos...',
-	'refreshspecial-total-display' => '$1 páginas refrescadas, totalizando $2 linhas em tempo $3 (tempo total de execução do script é $4)',
+	'refreshspecial-total-display' => '$1 {{PLURAL:$1|página refrescada|páginas refrescadas}}, totalizando $2 {{PLURAL:$2|linha|linhas}} em tempo $3 (tempo total de execução do script é $4)',
 );
 
 /** Romanian (Română)
@@ -625,7 +642,9 @@ $messages['sk'] = array(
 	'refreshspecial' => 'Obnoviť špeciálne stránky',
 	'refreshspecial-desc' => 'Umožňuje manuálne [[Special:RefreshSpecial|obnovenie špeciálnych stránok]]',
 	'refreshspecial-title' => 'Obnoviť špeciálne stránky',
-	'refreshspecial-help' => 'Táto špeciálna stránka slúži na manuálne obnovenie špeciálnych stránok. Po vybraní všetkých stránok, ktoré chcete obnoviť, kliknite na tlačidlo Obnoviť. Upozornenie: na väčších wiki môže obnovenie chvíľu trvať.',
+	'refreshspecial-help' => 'Táto špeciálna stránka slúži na manuálne obnovenie špeciálnych stránok.
+Po vybraní všetkých stránok, ktoré chcete obnoviť, kliknite na tlačidlo „Obnoviť vybrané“.
+Upozornenie: na väčších wiki môže obnovenie chvíľu trvať.',
 	'refreshspecial-button' => 'Obnoviť vybrané',
 	'refreshspecial-fail' => 'Prosím, vyberte aspoň jednu špeciálnu stránku, ktorá sa má obnoviť',
 	'refreshspecial-refreshing' => 'obnovujú sa špeciálne stránky',
@@ -633,7 +652,7 @@ $messages['sk'] = array(
 	'refreshspecial-success-subtitle' => 'obnovujú sa špeciálne stránky',
 	'refreshspecial-choice' => 'obnovujú sa špeciálne stránky',
 	'refreshspecial-js-disabled' => '(<i>Nie je možné použiť funkciu výberu všetkých stránok, keď máte vypnutý JavaScript.</i>)',
-	'refreshspecial-select-all-pages' => ' vybrať všetky stránky',
+	'refreshspecial-select-all-pages' => 'Vybrať všetky stránky',
 	'refreshspecial-link-back' => 'Späť na rozšírenie',
 	'refreshspecial-none-selected' => 'Nevybrali ste žiadne špeciálne stránky. Vracia sa pôvodný výber.',
 	'refreshspecial-db-error' => 'Chyba: chyba databázy',
@@ -641,7 +660,9 @@ $messages['sk'] = array(
 	'refreshspecial-slave-lagged' => 'Spojenie s databázovým slave je pomalé, čaká sa...',
 	'refreshspecial-reconnected' => 'Znovu pripojený.',
 	'refreshspecial-reconnecting' => 'Spojenie zlyhalo, opätovné pripojenie o 10 sekúnd...',
-	'refreshspecial-total-display' => 'Obnovených $1 stránok, čo činí $2 riadkov za čas $3 (celkový čas behu skriptu je $4)',
+	'refreshspecial-page-result' => '{{PLURAL:$1|zadaný $1 riadok|zadané $1 riadky|zadaných $1 riadkov}}',
+	'refreshspecial-total-display' => '{{PLURAL:$1|Obnovená $1 stránka|Obnovené $1 stránky|Obnovených $1 stránok}}, čo činí $2 {{PLURAL:$2|riadok|riadky|riadkov}} za čas $3 (celkový čas behu skriptu je $4)',
+	'right-refreshspecial' => 'Obnoviť špeciálne stránky',
 );
 
 /** Swedish (Svenska)

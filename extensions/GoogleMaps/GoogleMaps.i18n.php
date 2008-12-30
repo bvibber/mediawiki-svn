@@ -155,6 +155,7 @@ $wgGoogleMapsMessages['am'] = array(
 	'gm-height' => 'ቁመት',
 	'gm-large' => 'ትልቅ',
 	'gm-yes' => 'አዎ',
+	'gm-search' => 'ፍለጋ',
 	'gm-line-width' => 'ስፋት',
 	'gm-moon' => 'ጨረቃ',
 );
@@ -3751,6 +3752,7 @@ $wgGoogleMapsMessages['te'] = array(
  * @author MF-Warburg
  */
 $wgGoogleMapsMessages['tet'] = array(
+	'gm-balloon-title' => 'Títulu:',
 	'gm-yes' => 'Sin',
 	'gm-no' => 'Lae',
 	'gm-search' => 'Buka',

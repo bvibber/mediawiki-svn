@@ -330,6 +330,15 @@ $1',
 	'webstore_no_handler' => "N'haller ket treuzfurmiñ ar seurt MIME-mañ.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'inplace_access_denied' => 'Ova usluga je zabranjena od strane IPa klijenta.',
+	'inplace_scaler_invalid_image' => 'Nevaljana slika, nije joj moguće odrediti veličinu.',
+	'webstore_src_open' => 'Ne može se otvoriti izvorišna datoteka "$1".',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -848,6 +857,16 @@ $1',
  */
 $messages['it'] = array(
 	'webstore_404' => 'File non trovato.',
+);
+
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'webstore_404' => 'ファイルが見つかりませんでした。',
+	'webstore_php_warning' => 'PHP警告:$1',
+	'webstore_metadata_not_found' => 'ファイルが見つかりません:$1',
+	'webstore_no_response' => 'サーバーからの応答がありません',
 );
 
 /** Javanese (Basa Jawa)
@@ -1484,6 +1503,7 @@ $messages['pt'] = array(
 	'webstore_path_invalid' => 'O nome de ficheiro é inválido.',
 	'webstore_no_file' => 'Nenhum arquivo foi carregado.',
 	'webstore_invalid_zone' => 'Zona "$1" inválida.',
+	'webstore_curl' => 'Erro da cURL: $1',
 	'webstore_404' => 'Ficheiro não encontrado.',
 	'webstore_php_warning' => 'Aviso PHP: $1',
 	'webstore_metadata_not_found' => 'Ficheiro não encontrado: $1',

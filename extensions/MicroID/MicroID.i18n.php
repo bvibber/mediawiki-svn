@@ -177,6 +177,14 @@ $messages['ksh'] = array(
 	'tog-microid' => 'Donn en <a lann="en" href="http://microid.org/">MicroID</a> veröffentlesche, öm Dinge Name un Zojang hee met Deenste fun ußerhallef beschtäteje ze künne.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'microid-desc' => 'Setzt eng [http://www.microid.org/ MicroID] op Benotzersäiten derbäi fir de Benotzerkont matt externe Servicer ze confirméieren',
+	'tog-microid' => 'Eng <a href="http://microid.org/">MicroID</a> verëffentleche fir de Benotzerkont mat externe Servicer ze confirméieren',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -262,6 +270,14 @@ $messages['stq'] = array(
 $messages['sv'] = array(
 	'microid-desc' => 'Lägger ett [http://www.microid.org/ MicroID] till sidor för att bekräfta konto med externa tjänster',
 	'tog-microid' => 'Publicerer en <a href="http://microid.org/">MicroID</a> för att bekräfta konton för externa tjänster',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'microid-desc' => 'Nagdaragdag ng isang [http://www.microid.org/ MicroID] sa mga pahina ng tagagamit upang mapatunayan ang mga kuwentang may panlabas na mga palingkuran (serbisyo).',
+	'tog-microid' => 'Maglathala ng isang <a href="http://microid.org/">MicroID</a> upang mapatunayan ang kuwentang may panlabas na mga palingkuran (serbisyo).',
 );
 
 /** Vèneto (Vèneto)

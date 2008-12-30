@@ -61,6 +61,15 @@ $messages['bg'] = array(
 	'whatismyip-out' => 'Вашето IP:',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'whatismyip' => 'Koja je moja IP',
+	'whatismyip-desc' => 'Prikazuje trenutnu IP adresu korisnika na [[Special:WhatIsMyIP]]',
+	'whatismyip-out' => 'Vaš IP:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

@@ -751,19 +751,27 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
+ * @author Leinad
  * @author Maikking
  * @author McMonster
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'lookupuser' => 'Wyszukiwanie informacji o użytkowniku',
+	'lookupuser-desc' => '[[Special:LookupUser|Pobierz informacje]] dotyczące użytkownika, takie jak adres e-mail i ID',
 	'lookupuser-intro' => 'Wprowadź nazwę użytkownika, żeby zobaczyć jego preferencje.',
 	'lookupuser-nonexistent' => 'Błąd: użytkownik nie istnieje',
+	'lookupuser-authenticated' => 'uwierzytelniono $1',
+	'lookupuser-not-authenticated' => 'nie uwierzytelnione',
 	'lookupuser-id' => 'ID użytkownika: <tt>$1</tt>',
 	'lookupuser-email' => 'E-mail: [[Special:EmailUser/$2|$1]]',
 	'lookupuser-no-email' => 'nie podał adresu e-mail',
 	'lookupuser-realname' => 'Imię i nazwisko $1',
 	'lookupuser-registration' => 'Zarejestrowany $1',
 	'lookupuser-no-registration' => 'taki użytkownik nie istnieje',
+	'lookupuser-info-authenticated' => 'Uwierzytelnienie e-mailem: $1',
+	'lookupuser-useroptions' => 'Opcje użytkownika:',
 );
 
 /** Pashto (پښتو)
@@ -939,6 +947,27 @@ $messages['tg-cyrl'] = array(
 	'lookupuser-no-email' => 'пешниҳод нашудааст',
 	'lookupuser-realname' => 'Номи аслӣ: $1',
 	'lookupuser-registration' => 'Таърихи сабти ном: $1',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'lookupuser' => 'Hanapin at tingnan ang kabatirang pangtagagamit',
+	'lookupuser-desc' => '[[Special:LookupUser|Kuhanin ang kabatirang]] hinggil sa isang tagagamit katulad ng adres ng e-liham at ID',
+	'lookupuser-intro' => 'Maglagay/magpasok ng isang pangalan ng tagagamit upang matingnan ang mga kagustuhan ng tagagamit na iyan.',
+	'lookupuser-nonexistent' => 'Kamalian: Hindi umiiral ang tagagamit',
+	'lookupuser-authenticated' => 'napatunayan noong $1',
+	'lookupuser-not-authenticated' => 'hindi pa napapatunayan',
+	'lookupuser-id' => 'ID ng tagagamit: <tt>#$1</tt>',
+	'lookupuser-email' => 'E-liham: [[Special:EmailUser/$2|$1]]',
+	'lookupuser-no-email' => 'hindi ibinigay',
+	'lookupuser-realname' => 'Tunay na pangalan: $1',
+	'lookupuser-registration' => 'Petsa ng pagpapatala: $1',
+	'lookupuser-no-registration' => 'hindi nakatala',
+	'lookupuser-touched' => 'Huling hinawakan/nagalaw ang talaang pangtagagamit noong: $1',
+	'lookupuser-info-authenticated' => 'Pagpapatunay ng e-liham: $1',
+	'lookupuser-useroptions' => 'Mga pagpipilian ng tagagamit:',
 );
 
 /** Turkish (Türkçe)

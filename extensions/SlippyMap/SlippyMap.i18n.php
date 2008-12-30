@@ -522,7 +522,41 @@ $messages['nl'] = array(
 	'slippymap_resetview' => 'Terug',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'slippymap_desc' => 'Tillét bruk av merket <tt>&lt;slippymap&gt;</tt> for å syna eit «slippy map» frå OpenLayers. Karti kjem frå [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_latmissing' => 'Manglar «lat»-verdi (for breiddegrad).',
+	'slippymap_lonmissing' => 'Manglar «lon»-verdi (for lengdegrad).',
+	'slippymap_zoommissing' => 'Manglar «z»-verdi (for zoom-nivået).',
+	'slippymap_longdepreciated' => 'Nytt «lon» i staden for «long» (parameteren fekk nytt namn).',
+	'slippymap_widthnan' => 'breiddeverdien («w») «%1» er ikkje eit gyldig heiltal',
+	'slippymap_heightnan' => 'høgdeverdien («h») «%1» er ikkje eit gyldig heiltal',
+	'slippymap_zoomnan' => 'zoomverdien («z») «%1» er ikkje eit gyldig heiltal',
+	'slippymap_latnan' => 'breiddegradsverdien («lat») «%1» er ikkje eit gyldig tal',
+	'slippymap_lonnan' => 'lengdegradsverdien («lon») «%1» er ikkje eit gyldig tal',
+	'slippymap_widthbig' => 'breiddeverdien («w») kan ikkje vera større enn 1000',
+	'slippymap_widthsmall' => 'breiddeverdien («w») kan ikkje vera mindre enn 100',
+	'slippymap_heightbig' => 'høgdeverdien («h») kan ikkje vera større enn 1000',
+	'slippymap_heightsmall' => 'høgdeverdien («h») kan ikkje vera mindre enn 100',
+	'slippymap_latbig' => 'breiddegraden («lat») kan ikkje vera større enn 90',
+	'slippymap_latsmall' => 'breiddegraden («lat») kan ikkje vera mindre enn -90',
+	'slippymap_lonbig' => 'lengdegraden («lon») kan ikkje vera større enn 180',
+	'slippymap_lonsmall' => 'lengdegraden («lon») kan ikkje vera mindre enn -180',
+	'slippymap_zoomsmall' => 'zoomverdien («z») kan ikkje vera mindre enn null',
+	'slippymap_zoom18' => 'zoomverdien («z») kan ikkje vera større enn 17. Merk at denne MediaWiki-utvidingi nyttar OpenStreetMap-laget «osmarender», som ikkje kan zooma meir enn til nivå 17. «Mapnik»-laget på openstreetmap.org går til zoomnivå 18',
+	'slippymap_zoombig' => 'zoomverdien («z») kan ikkje vera større enn 17.',
+	'slippymap_invalidlayer' => 'Ugyldig «layer»-verdi «%1»',
+	'slippymap_maperror' => 'Kartfeil:',
+	'slippymap_osmtext' => 'Sjå dette kartet på OpenStreetMap.org',
+	'slippymap_code' => 'Wikikode for denne kartvisingi:',
+	'slippymap_button_code' => 'Hent wikikode',
+	'slippymap_resetview' => 'Attendestill vising',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -532,7 +566,7 @@ $messages['no'] = array(
 	'slippymap_zoommissing' => 'Mangler «z»-verdi (for zoom-nivået).',
 	'slippymap_longdepreciated' => 'Bruk «lon» i stedet for «long» (parameteret fikk nytt navn).',
 	'slippymap_widthnan' => 'breddeverdien («w») «%1» er ikke et gyldig heltall',
-	'slippymap_heightnan' => 'høydeverdien («h»)',
+	'slippymap_heightnan' => 'høydeverdien («h») «%1» er ikke et gyldig heltall',
 	'slippymap_zoomnan' => 'zoomverdien («z») «%1» er ikke et gyldig heltall',
 	'slippymap_latnan' => 'breddegradsverdien («lat») «%1» er ikke et gyldig tall',
 	'slippymap_lonnan' => 'lengdegradsverdien («lon») «%1» er ikke et gyldig tall',

@@ -777,29 +777,29 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'changeauthor' => 'Cambiar le autor del revision',
-	'changeauthor-desc' => 'Permitte cambiar le autor de un revision',
-	'changeauthor-title' => 'Cambiar le autor de un revision',
-	'changeauthor-search-box' => 'Cercar revisiones',
-	'changeauthor-pagename-or-revid' => 'Nomine del pagina o ID del revision:',
+	'changeauthor' => 'Cambiar le autor del version',
+	'changeauthor-desc' => 'Permitte cambiar le autor de un version',
+	'changeauthor-title' => 'Cambiar le autor de un version',
+	'changeauthor-search-box' => 'Cercar versiones',
+	'changeauthor-pagename-or-revid' => 'Nomine del pagina o ID del version:',
 	'changeauthor-pagenameform-go' => 'Ir',
 	'changeauthor-comment' => 'Commento:',
 	'changeauthor-changeauthors-multi' => 'Cambiar {{PLURAL:$1|autor|autores}}',
-	'changeauthor-explanation-multi' => "Con iste formulario tu pote cambiar le autores de revisiones.
+	'changeauthor-explanation-multi' => "Con iste formulario tu pote cambiar le autores de versiones.
 Simplemente modifica un o plus nomines de usator in le lista infra, adde un commento (optional) e clicca le button 'Cambiar autor(es)'.",
 	'changeauthor-changeauthors-single' => 'Cambiar autor',
-	'changeauthor-explanation-single' => "Con iste formulario tu pote cambiar le autor de un revision.
-Simplemente modifica le nomine de usator infra, adde un commento (optional) e cliccar le button 'Cambiar autor'.",
+	'changeauthor-explanation-single' => "Con iste formulario tu pote cambiar le autor de un version.
+Simplemente modifica le nomine de usator infra, adde un commento (optional) e clicca le button 'Cambiar autor'.",
 	'changeauthor-invalid-username' => 'Nomine de usator "$1" invalide.',
 	'changeauthor-nosuchuser' => 'Usator "$1" non existe.',
-	'changeauthor-revview' => 'Revision #$1 de $2',
+	'changeauthor-revview' => 'Version #$1 de $2',
 	'changeauthor-nosuchtitle' => 'Non existe un pagina con titulo "$1".',
 	'changeauthor-weirderror' => 'Un error multo estranie ha occurrite.
 Per favor reprova tu requesta.
 Si iste error persiste, le base de datos es probabilemente defecte.',
 	'changeauthor-invalidform' => 'Per favor usa le formulario providite per le [[Special:ChangeAuthor|pagina special]] e non un formulario personalisate.',
 	'changeauthor-success' => 'Tu requesta ha essite processate con successo.',
-	'changeauthor-logentry' => 'Cambiava le autor del revision $2 del pagina $1 de $3 a $4',
+	'changeauthor-logentry' => 'Cambiava le autor del version $2 del pagina $1 de $3 a $4',
 	'changeauthor-logpagename' => 'Registro de cambiamentos de autores',
 );
 

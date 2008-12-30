@@ -162,6 +162,8 @@ $messages['be-tarask'] = array(
 	'imagemap_no_areas' => 'Памылка: павінна быць пазначана хоць бы адна вобласьць',
 	'imagemap_invalid_coord' => 'Памылка: няправільная каардыната ў радку $1, павінна быць лічба',
 	'imagemap_invalid_desc' => 'Памылка: няслушнае значэньне desc, павінна быць адно з: <tt>$1</tt>',
+	'imagemap_description' => 'Апісаньне выявы',
+	'imagemap_poly_odd' => 'Памылка: у радку $1 знойдзены шматкутнік з няцотнай колькасьцю каардынатаў',
 );
 
 /** Bulgarian (Български)
@@ -922,6 +924,7 @@ $messages['ms'] = array(
 $messages['nds'] = array(
 	'imagemap_no_image' => 'Error: in de eerste Reeg mutt en Bild angeven wesen',
 	'imagemap_invalid_image' => 'Error: Bild geiht nich oder dat gifft dat gornich',
+	'imagemap_bad_image' => 'Fehler: Dat Bild steiht op de swarte List för disse Sied',
 	'imagemap_no_link' => 'Error: an dat Enn vun Reeg $1 weer keen Lenk',
 	'imagemap_invalid_title' => 'Error: in Reeg $1 is de Titel in’n Lenk nich bi de Reeg',
 	'imagemap_missing_coord' => 'Error: Form in Reeg $1 hett nich noog Koordinaten',

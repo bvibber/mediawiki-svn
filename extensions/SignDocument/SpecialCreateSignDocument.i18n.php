@@ -689,6 +689,8 @@ $messages['lb'] = array(
 	'createsigndoc-create' => 'Uleeën',
 	'createsigndoc-error-generic' => 'Feeler: $1',
 	'createsigndoc-error-pagenoexist' => "Feeler: D'Säit [[$1]] gëtt et net.",
+	'createsigndoc-success' => "D'Ënnerschreiwe vu Dokumenter ass op [[$1]] aktivéiert.
+Fir et ze testen, gitt w.e.g. op [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} dës Säit].",
 	'createsigndoc-error-alreadycreated' => 'Dokument ënnerschreiwen "$1" gëtt et schonn',
 );
 
@@ -815,11 +817,31 @@ Zorg er ook voor dat alle velden de juiste waarden hebben ''voordat u het formul
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'createsigndocument' => 'Slå på dokumentsignering',
+	'createsigndoc-head' => "Nytt dette skjemaet for å oppretta eit «signaturdokument» for denne sida, slik at brukarar kan [[Special:SignDocument|signera ho]]. Oppgje namnet på sida, kva brukargruppa som skal kunna signera ho, kva felt som skal vera synlege for brukarane, kven av dei som skal vera valfrie, minimumsalderen for å kunna signera dokumentet (om denne ikkje blir oppgjeven, er det inga grensa), og ein kjapp introduksjonstekst som skildrar dokumentet og gjev instruksjonar til brukarane.
+
+<b>Det finst ingen måte å sletta eller endra signaturdokument på etter at dei er oppretta</b> utan direkte databasetilgjenge. Teksten på sida på signatursida vil òg vera den ''noverande'' teksten, uavhengig av kva endringar som blir gjort etter i dag. Ver hundre prosent sikker på at dokumentet er stabilt når det blir signert, og ver òg sikker på at du oppgjev alle felt som dei burde vera, ''før du lagrar dette skjemaet''.",
 	'createsigndoc-pagename' => 'Side:',
+	'createsigndoc-allowedgroup' => 'Tillate gruppa:',
+	'createsigndoc-email' => 'E-postadressa:',
+	'createsigndoc-address' => 'Heimadressa:',
+	'createsigndoc-extaddress' => 'By, stat, land:',
+	'createsigndoc-phone' => 'Telefonnummer:',
+	'createsigndoc-bday' => 'Fødselsdato:',
+	'createsigndoc-minage' => 'Minimumsalder:',
+	'createsigndoc-introtext' => 'Introduksjon:',
+	'createsigndoc-hidden' => 'Gøymd',
 	'createsigndoc-optional' => 'Valfri',
+	'createsigndoc-create' => 'Opprett',
+	'createsigndoc-error-generic' => 'Feil: $1',
+	'createsigndoc-error-pagenoexist' => 'Feil: Sida [[$1]] finst ikkje.',
+	'createsigndoc-success' => 'Dokumentsignering har blitt slege på for [[$1]]. 
+For å testa det, vitj [{{fullurl:Special:SignDocument|doc=$2}} denne sida].',
+	'createsigndoc-error-alreadycreated' => 'Dokumentsigneringa «$1» finst frå før.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

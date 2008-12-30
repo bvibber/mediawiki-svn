@@ -592,6 +592,24 @@ L’identificant de provesir aicí es compausat de chifras e letras entre « $2 
 	'imstatus_yahoo_style' => "l'estil del boton, de $1 (lo mai pichon) a $2 (lo mai grand), $3 e $4 son pels messatges vocals.",
 );
 
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'imstatus-desc' => 'Dodaje znaczniki, by pokazać statusy w różnego rodzaju komunikatorach internetowych (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Składnia',
+	'imstatus_default' => 'Domyślny',
+	'imstatus_example' => 'Przykład',
+	'imstatus_possible_val' => 'Możliwe wartości',
+	'imstatus_max' => 'maksimum',
+	'imstatus_min' => 'minimum',
+	'imstatus_or' => 'lub',
+	'imstatus_style' => 'styl wskaźnika statusu',
+	'imstatus_action' => 'działanie, kiedy zostanie kliknięty przycisk',
+	'imstatus_details_saa' => 'Aby uzyskać więcej informacji na temat wszystkich stylów i działania, zobacz $1.',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

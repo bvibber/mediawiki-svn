@@ -702,6 +702,13 @@ $messages['te'] = array(
 	'backforth-prev' => 'గత ($1)',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'backforth-prev' => 'Molok ($1)',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */

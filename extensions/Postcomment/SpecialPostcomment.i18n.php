@@ -408,6 +408,7 @@ $messages['lb'] = array(
 	'postcomment_said' => 'huet gesot',
 	'postcomment_invalidrequest' => 'Ongëlteg Ufro.',
 	'postcomment_replyto' => 'Äntwert fir $1',
+	'postcomment_nopostingtoadd' => 'Kee Message fir derbäizesetzen.',
 );
 
 /** Malayalam (മലയാളം)
@@ -675,6 +676,17 @@ $messages['tg-cyrl'] = array(
 	'postcomment_said' => 'гуфт',
 	'postcomment_invalidrequest' => 'Дархости номӯътабар.',
 	'postcomment_replyto' => 'Посух ба $1',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'postcomment_post' => 'Itala (ipaskil)',
+	'postcomment_on' => 'Noong',
+	'postcomment_invalidrequest' => 'Hindi tanggap na kahilingan.',
+	'postcomment_replyto' => 'Tumugon/sumagot kay $1',
+	'postcomment_nopostingtoadd' => 'Walang maidaragdag na pagtatala (pagpapahayag).',
 );
 
 /** Turkish (Türkçe)

@@ -1317,6 +1317,7 @@ $messages['ksh'] = array(
 	'contribstats-value-under' => 'Winnijer wie $1',
 	'contribstats-value-from' => 'Vun $1 beß $2, beeds enjeschloße',
 	'contribstats-value-over' => 'Mieh wie $1',
+	'contribstats-percentage' => '$1%',
 	'fundraiserstatistics' => 'Statistik övver de Spende',
 	'fundraiserstats-date' => 'Dattum',
 	'fundraiserstats-day' => 'Dä $1. Daach{{PLURAL:$2||, fun $2 Dääch|}}',
@@ -1445,8 +1446,10 @@ $messages['nah'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'contributionreporting-desc' => 'Live-Berichten vun de Wikimedia-Spennenkampagne',
 	'contributiontotal' => 'Spennen alltohoop',
 	'contributionhistory' => 'Spennenverloop',
+	'contrib-hist-header' => 'Kommentaren vun Spenners ut de ganze Welt in Echttied',
 	'contrib-hist-name' => 'Naam',
 	'contrib-hist-date' => 'Datum un Tied',
 	'contrib-hist-amount' => 'Bedrag',
@@ -1454,10 +1457,14 @@ $messages['nds'] = array(
 	'contrib-hist-previous' => 'Ne’ere Spennen',
 	'contrib-hist-anonymous' => 'Anonym',
 	'contributionstatistics' => 'Spennenstatistik',
+	'contribstats-desc' => 'Wiest Statistiken över de Spennen an de Wikimedia Foundation',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Alltohoop vundaag|Alltohoop för de lesten $1 Daag}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Alltohoop dissen Maand|Alltohoop för de lesten $1 Maanden}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Alltohoop för een Maand|Alltohoop för $1 Maanden}}',
+	'contribstats-currency-range-totals' => 'Geldsoorten alltohoop (vun $1 bet $2)',
+	'contribstats-contribution-range-breakdown' => 'Översicht över Spennen na Weert (vun $1 bet $2)',
 	'contribstats-currency-totals' => 'Geldsoorten alltohoop för dat Stüürjohr $1',
+	'contribstats-contribution-breakdown' => 'Översicht över Spennen na Weert för dat Stüürjohr $1',
 	'contribstats-day' => 'Dag',
 	'contribstats-month' => 'Maand',
 	'contribstats-currency' => 'Geldsoort',
@@ -1762,6 +1769,8 @@ $messages['pt'] = array(
 	'contrib-hist-name' => 'Nome',
 	'contrib-hist-date' => 'Hora e data',
 	'contrib-hist-amount' => 'Quantia',
+	'contrib-hist-next' => 'Doações mais antigas',
+	'contrib-hist-previous' => 'Doações mais recentes',
 	'contrib-hist-anonymous' => 'Anónimo',
 	'contributionstatistics' => 'Estatísticas de contribuições',
 	'contribstats-desc' => 'Apresenta estatísticas das contribuições feitas à Fundação Wikimedia',
@@ -1786,6 +1795,14 @@ $messages['pt'] = array(
 	'contribstats-value-over' => 'Mais de $1',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Dia $1 de $2',
+	'fundraiserstats-contributions' => 'Contribuições',
+	'fundraiserstats-total' => 'Total (USD)',
+	'fundraiserstats-avg' => 'Média (USD)',
+	'fundraiserstats-max' => 'Máximo (USD)',
+	'fundraiserstats-tab-totals' => 'Totais (USD)',
+	'fundraiserstats-tab-contributions' => 'Número de contribuições',
+	'fundraiserstats-tab-averages' => 'Médias (USD)',
+	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 );
 
 /** Romanian (Română)

@@ -830,14 +830,17 @@ Los imatges pas pertinents poiràn èsser escafadas immediatament. Vejatz la pag
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Maikking
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'multipleupload' => 'Prześlij wiele plików',
+	'multipleupload-desc' => 'Pozwala użytkownikom na [[Special:MultipleUpload|przesyłanie kilku plików za jednym razem]]',
 	'multipleupload-ignoreallwarnings' => 'Ignoruj <b>wszystkie ostrzeżenia</b> i zapisz pliki.',
 	'multipleupload-saveallfiles' => 'Zapisz wszystkie pliki',
 	'multipleupload-addresswarnings' => 'Rozwiąż wszystkie problemy, zanim prześlesz pliki.',
+	'multipleupload-page' => '{{ns:project}}:Zasady usuwania plików',
 	'multipleupload-text' => "Prześlij wiele plików.
 
 Kliknij „Przeglądaj...” i wybierz pliki, które chcesz wysłać.
@@ -847,6 +850,7 @@ Wprowadzić, jeśli chcesz, '''Nazwę docelową''' oraz wypełnił '''Opis''' dl
 
 Nieprawidłowe pliki będą natychmiast usuwane, zobacz [[{{MediaWiki:Multipleupload-page}}|Zasady usuwania plików]].",
 	'multiupload-fileuploaded' => 'Plik został przesłany.',
+	'multiupload-toolbox' => 'Prześlij wiele plików',
 );
 
 /** Pashto (پښتو)

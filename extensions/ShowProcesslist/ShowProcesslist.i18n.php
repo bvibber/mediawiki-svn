@@ -494,11 +494,20 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'showprocesslist' => 'Syn prosesslista',
+	'showprocesslist-desc' => 'Syner resultatet av [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'ID',
 	'showprocesslist-user' => 'Brukar',
+	'showprocesslist-host' => 'Vert',
+	'showprocesslist-db' => 'database',
+	'showprocesslist-command' => 'Kommando',
+	'showprocesslist-time' => 'Tid',
+	'showprocesslist-state' => 'Stode',
+	'showprocesslist-info' => 'Informasjon',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -687,6 +696,13 @@ $messages['te'] = array(
 	'showprocesslist-command' => 'ఆదేశం',
 	'showprocesslist-time' => 'సమయం',
 	'showprocesslist-state' => 'స్థితి',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'showprocesslist-id' => 'ID',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

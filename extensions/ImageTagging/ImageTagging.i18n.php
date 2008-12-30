@@ -935,9 +935,11 @@ $messages['pl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author MF-Warburg
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'imagetagging-imghistory' => 'História',
 	'imagetagging-tagcancel-button' => 'Cancelar',
 );
 
@@ -1097,6 +1099,13 @@ $messages['te'] = array(
 	'imagetagging-images' => 'బొమ్మలు',
 	'imagetagging-inthisimage' => 'ఈ బొమ్మలో: $1',
 	'imagetagging-tagcancel-button' => 'రద్దుచేయి',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'imagetagging-imghistory' => 'Istória',
 );
 
 /** Turkish (Türkçe)

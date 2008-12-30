@@ -330,6 +330,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'contrib-tracking-error' => '오류',
+	'contrib-tracking-button' => '계속',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -390,8 +391,12 @@ $messages['nah'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
+	'contributiontracking-desc' => 'Spennen verfolgen för de Wikimedia-Spennenkampagne',
 	'contributiontracking' => 'Spennen folgen',
 	'contrib-tracking-error' => 'Fehler',
+	'contrib-tracking-error-text' => 'Ungüllig Formularöverdragung',
+	'contrib-tracking-submitting' => 'An’t Överdragen an Betahl-Provider …',
+	'contrib-tracking-continue' => 'Wenn du nich automaatsch wiederleidt warrst, denn klick op „Wieder“, dat du diene Spenn över PayPal afsluten kannst.',
 	'contrib-tracking-button' => 'Wiedermaken',
 );
 

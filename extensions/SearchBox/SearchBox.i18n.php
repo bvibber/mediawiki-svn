@@ -35,6 +35,7 @@ Do not translate or change tag names, or link anchors.',
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'searchbox-search' => 'ፍለጋ',
 	'searchbox-namespaces' => 'ክፍለ-ዊኪዎች:',
 );
 
@@ -325,6 +326,13 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'searchbox-search' => 'Агур',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'searchbox-namespaces' => 'نوم-تشيالونه:',
 );
 
 /** Portuguese (Português)

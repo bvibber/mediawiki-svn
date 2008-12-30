@@ -494,10 +494,13 @@ $messages['yue'] = array(
 	'msfunc_div_zero' => '除以零',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
 $messages['zh-hans'] = array(
-	'msfunc_nan' => '结果数值不是一个数字',
-	'msfunc_inf' => '结果数值是无限',
+	'msfunc_desc' => '数学与统计功能的集合',
+	'msfunc_nan' => '结果值不是数字',
+	'msfunc_inf' => '结果值为无限',
 	'msfunc_div_zero' => '除以零',
 );
 

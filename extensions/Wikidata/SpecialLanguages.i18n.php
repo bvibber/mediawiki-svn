@@ -731,6 +731,7 @@ $wdMessages['bs'] = array(
 	'ow_noedit' => 'Nije Vam dopušteno da uređujete stranice u setu podataka "$1".
 Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivanja]].',
 	'ow_uipref_datasets' => 'Pretpostavljeni pogled',
+	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ništa nije odabrano',
 	'ow_conceptmapping_help' => '<p>moguće akcije: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  ubacivanje mappinga</li>
@@ -744,8 +745,10 @@ Molimo pogledajte [[{{MediaWiki:Ow editing policy url}}|našu politiku uređivan
 	'ow_dm_OK' => 'U redu',
 	'ow_dm_not_present' => 'nije uneseno',
 	'ow_dm_not_found' => 'nije pronađeno u bazi podataka ili je uništeno',
+	'ow_mapping_successful' => 'Sva mapirana polja su označena sa [OK]<br />',
 	'ow_mapping_unsuccessful' => 'Potrebno je navesti bar dva definisana značenja prije nego se mogu povezati.',
 	'ow_will_insert' => 'Ubaciće se slijedeće:',
+	'ow_contents_of_mapping' => 'Sadržaji mappinga',
 	'ow_available_contexts' => 'Dostupni konteksti',
 	'ow_add_concept_link' => 'Dodaj link ka drugim konceptima',
 	'ow_dm_badtitle' => 'Ova stranica ne pokazuje na bilo koji DefinedMeaning (koncept).
@@ -761,6 +764,8 @@ Molimo provjerite web adresu.',
 	'ow_Collection' => 'Zbirka',
 	'ow_CollectionMembership' => 'Članstvo u zbirci',
 	'ow_Definition' => 'Definicija',
+	'ow_DefinedMeaning' => 'Određeno značenje',
+	'ow_DefinedMeaningReference' => 'Određeno značenje',
 	'ow_ExactMeanings' => 'Tačna značenja',
 	'ow_Expression' => 'Izraz',
 	'ow_ExpressionMeanings' => 'Značenja izraza',
@@ -782,6 +787,7 @@ Molimo provjerite web adresu.',
 	'ow_Source' => 'Izvor',
 	'ow_TextAttribute' => 'Svojstvo',
 	'ow_Text' => 'Tekst',
+	'ow_TextAttributeValues' => 'Obični tekstovi',
 	'ow_TranslatedTextAttribute' => 'Svojstvo',
 	'ow_TranslatedText' => 'Prevedeni tekst',
 	'ow_TranslatedTextAttributeValue' => 'Tekst',
@@ -1395,12 +1401,12 @@ $wdMessages['fi'] = array(
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Tietojoukon valinta',
 	'ow_noedit_title' => 'Ei muokkausoikeutta',
-	'ow_noedit' => 'Sinulla ei ole muokkausoikeutta ryhmän "$1" sivuihin.
-Katso lisätietoja [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]].',
+	'ow_noedit' => 'Sinulla ei ole muokkausoikeutta tietojoukon $1 sivuihin.
+Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]].',
 	'ow_uipref_datasets' => 'Oletusnäkymä',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ei yhtään valittu',
-	'ow_conceptmapping_no_action_specified' => 'Pahoittelut, mutta en tiedä kuinka "$1".',
+	'ow_conceptmapping_no_action_specified' => 'Pahoittelut, mutta en tiedä kuinka ”$1”.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'ei tallennettu',
 	'ow_dm_not_found' => 'ei löydy tietokannasta tai väärin muotoiltu',
@@ -2308,6 +2314,7 @@ $wdMessages['ja'] = array(
 	'ow_dm_missing' => 'このページは存在しない意味定義（概念）を指し示しているように見えます。URLの指定が正しいか確認してください。',
 	'ow_AlternativeDefinition' => '代替定義',
 	'ow_AlternativeDefinitions' => '代替定義',
+	'ow_Annotation' => '注釈',
 	'ow_ApproximateMeanings' => 'おおよその意味',
 	'ow_ClassAttributeAttribute' => '属性',
 	'ow_ClassAttributes' => 'クラス属性',
@@ -2316,7 +2323,12 @@ $wdMessages['ja'] = array(
 	'ow_ClassMembership' => 'クラス帰属',
 	'ow_Collection' => 'コレクション',
 	'ow_Definition' => '定義',
+	'ow_DefinedMeaningAttributes' => '注釈',
+	'ow_Expression' => '表現',
+	'ow_Expressions' => '表現',
 	'ow_Language' => '言語',
+	'ow_LevelAnnotation' => '注釈',
+	'ow_OptionAttribute' => 'プロパティ',
 	'ow_OptionAttributeOption' => 'オプション',
 	'ow_OptionAttributeOptions' => 'オプション',
 	'ow_Relations' => '関係',
@@ -4774,6 +4786,7 @@ $wdMessages['te'] = array(
  * @author MF-Warburg
  */
 $wdMessages['tet'] = array(
+	'ow_history' => 'Istória',
 	'ow_dm_OK' => 'OK',
 	'ow_Language' => 'Lian',
 );

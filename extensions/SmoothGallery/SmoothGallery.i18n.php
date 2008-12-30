@@ -278,9 +278,9 @@ Permitte le major parte del optiones de SmoothGallery',
 	'smoothgallery-not-found' => 'Nulle imagine esseva addite al galeria.
 Per favor adde al minus un imagine.',
 	'smoothgallery-no-images' => 'Nulle imagine esseva trovate in iste galeria.
-Assecura te que tote le imagines requestate existe.
-Le sequente imagines non esseva trovate: $1',
-	'smoothgallery-invalid-images' => 'Le sequente imagines requestate esseva de un typo invalide: $1',
+Assecura te que {{PLURAL:$3|le imagine|tote le imagines}} requestate existe.
+Le sequente {{PLURAL:$2|imagine|imagines}} non esseva trovate: $1',
+	'smoothgallery-invalid-images' => 'Le sequente {{PLURAL:$2|imagine|imagines}} requestate esseva de un typo invalide: $1',
 	'smoothgallery-unexpected-error' => 'Il occurreva un error non expectate.
 Per favor reporta isto como un error in le software.',
 	'smoothgallery-javascript-disabled' => 'JavaScript es requirite pro vider iste galeria correctemente.',
@@ -505,9 +505,9 @@ $messages['ru'] = array(
 	'smoothgallery-gallery-not-found' => 'Запрашиваемой галереи не существует.',
 	'smoothgallery-not-found' => 'В галерею не было добавлено изображений. Пожалуйста, добавте хотя бы одно.',
 	'smoothgallery-no-images' => 'Не найдено изображений для этой галереи.
-Убедитесь, что все требуемые изображения существуют.
-Следующий изображения не найдены: $1',
-	'smoothgallery-invalid-images' => 'Следующее требуемые изображения имеют неправильный тип: $1',
+Убедитесь, что {{PLURAL:$3|требуемое изображение существует|все требуемые изображения существуют}}.
+{{PLURAL:$2|Следующее изображение не найдено|Следующие изображения не найдены}}: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|Следующее требуемое изображение имеет|Следующие требуемые изображения имеют}} неправильный тип: $1',
 	'smoothgallery-unexpected-error' => 'Произошла непредвиденная ошибка.
 Пожалуйста, отправьте отчёт об ошибке.',
 	'smoothgallery-javascript-disabled' => 'Для правильной работы этой галереи требуется Javascript.',
@@ -524,8 +524,10 @@ $messages['sk'] = array(
 	'smoothgallery-error' => '<b>Chyba SmoothGallery:</b>',
 	'smoothgallery-gallery-not-found' => 'Požadovaná galéria neexistuje.',
 	'smoothgallery-not-found' => 'Žiadne obrázky neboli pridané do galérie. Prosím, pridajte aspoň jeden obrázok.',
-	'smoothgallery-no-images' => 'V tejto galérii neboli nájdené žiadne obrázky. Uistite sa, že všetky požadované obrázky existujú. Nasledovné obrázky neboli nájdené: $1',
-	'smoothgallery-invalid-images' => 'Nasledovné požadované obrázky boli neplatného typu: $1',
+	'smoothgallery-no-images' => 'V tejto galérii neboli nájdené žiadne obrázky.
+Uistite sa, že {{PLURAL:$3|požadovaný obrázok existuje|všetky požadované obrázky existujú}}.
+{{PLURAL:$2|Nasledovný obrázok nebol nájdený|Nasledovné obrázky neboli nájdené}}: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|Nasledovný požadovaný obrázok bol|Nasledovné požadované obrázky boli} neplatného typu: $1',
 	'smoothgallery-unexpected-error' => 'Nastala neočakávaná chyba. Prosím, podajte správu o chybe.',
 	'smoothgallery-javascript-disabled' => 'Správne zobrazenie tejto galérie vyžaduje JavaScript.',
 );

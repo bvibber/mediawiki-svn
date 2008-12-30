@@ -222,6 +222,13 @@ $messages['af'] = array(
 	'deletequeue-vote-reason' => 'Opmerkings:',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'deletequeue-list-search' => 'ፍለጋ',
+);
+
 /** Aragonese (Aragonés)
  * @author Remember the dot
  */

@@ -91,6 +91,7 @@ $messages['bcc'] = array(
 $messages['be-tarask'] = array(
 	'crossnamespacelinks' => 'Спасылкі паміж прасторамі назваў',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Сьпіс спасылак паміж прасторамі назваў]], якіх не павінна існаваць ў {{GRAMMAR:месны|{{SITENAME}}}}',
+	'crossnamespacelinks-summary' => 'На гэтай старонцы знаходзіцца сьпіс спасылак са старонак у асноўнай прасторы назваў на старонкі ў іншай прасторы назваў (за выключэньнем прастораў назваў {{ns:special}}, {{ns:talk}}, {{ns:project}}, і {{ns:template}}), якія не рэкамэндуецца ўжываць.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|спасылка|спасылкі|спасылак}} на $3',
 );
 
@@ -857,6 +858,16 @@ $messages['tg-cyrl'] = array(
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Пайвандҳои байнивикиро феҳрист мекунад]], ки набояд дар {{SITENAME}} вуҷуд дошта бошанд',
 	'crossnamespacelinks-summary' => 'Ин саҳифа феҳристе аз пайвандҳое, ки аз як саҳифа дар фазои номи аслӣ ба як саҳифа дар дигар фазои ном (ба ғайр аз {{ns:special}}, {{ns:talk}}, {{ns:project}} ва {{ns:template}} namespaces), вуҷуд дорад ироаъ мекунад, ки истифода аз онҳо тавзеҳ намешавад.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|пайванд|пайвандҳо}} ба $3',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'crossnamespacelinks' => 'Mga kawing na pangbagtasang-pakrus ng espasyo ng pangalan',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Nagtatala ng mga kawing sa kahabaan ng espasyo ng pangalan]] na hindi dapat umiiral sa {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Ang pahinang ito ay nagbibigay ng isang talaan ng mga kawing mula sa isang pahinang nasa loob ng pangunahing espasyo ng pangalan patungo sa isang pahinang nasa ibang mga espasyo ng pangaln (maliban sa mga espasyo ng pangalang {{ns:special}}, {{ns:talk}}, {{ns:project}}, at {{ns:template}}), na hindi iminumungkahing gamitin.',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|kawing|mga kawing}} sa $3',
 );
 
 /** Tonga (faka-Tonga) */

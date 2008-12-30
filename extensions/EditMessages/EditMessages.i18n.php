@@ -56,6 +56,13 @@ $messages['af'] = array(
 	'editmsg-search' => 'Soek',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'editmsg-search' => 'ፍለጋ',
+);
+
 /** Old English (Anglo-Saxon)
  * @author Wōdenhelm
  */

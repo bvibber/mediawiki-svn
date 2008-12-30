@@ -100,6 +100,7 @@ $messages['be'] = array(
  */
 $messages['be-tarask'] = array(
 	'sitenotice_close' => 'схаваць',
+	'sitenotice-desc' => 'Дазваляе ўдзельніка хаваць паведамленьні сайту',
 );
 
 /** Bulgarian (Български)
@@ -753,6 +754,14 @@ $messages['tg-cyrl'] = array(
 $messages['th'] = array(
 	'sitenotice_close' => 'ซ่อน',
 	'sitenotice-desc' => 'อนุญาตให้ผู้ใช้ปิดประกาศของเว็บ',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'sitenotice_close' => 'ipagwalang-bahala',
+	'sitenotice-desc' => 'Nagpapahintulot sa mga tagagamit na maisara ang ulat na pangsityo',
 );
 
 /** Turkish (Türkçe)

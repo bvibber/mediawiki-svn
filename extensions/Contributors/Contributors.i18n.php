@@ -1184,6 +1184,13 @@ $messages['te'] = array(
 	'contributors-nosuchpage' => '$1 అనే పేజీ లేనే లేదు.',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'contributors-target' => 'Títulu:',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */

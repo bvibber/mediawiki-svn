@@ -202,11 +202,24 @@ $messages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'expandtemplates' => 'Разгортваньне шаблёнаў',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Разгортвае шаблёны, функцыі парсэра і зьменныя]] для паказу разгорнутага вікі-тэксту і папярэдняга прагляду старонкі',
+	'expand_templates_intro' => 'Гэта спэцыяльная старонка пераўтварае тэкст і разгортвае ўсе шаблёны рэкурсіўна.
+Адначасова разгортваюцца функцыі парсэра накшталт 
+<nowiki>{{</nowiki>#if:…}}, і зьменныя накшталт 
+
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash; увогуле, усё ўнутры падвойных фігурных дужак.
+Гэта адбываецца праз вызаў адпаведнага парсэра апрацоўшчыка MediaWiki.',
+	'expand_templates_title' => 'Загаловак старонкі, для {{PAGENAME}} і г.д.:',
+	'expand_templates_input' => 'Крынічны тэкст:',
 	'expand_templates_output' => 'Вынік',
+	'expand_templates_xml_output' => 'вынік у фармаце XML',
 	'expand_templates_ok' => 'Добра',
 	'expand_templates_remove_comments' => 'Выдаліць камэнтары',
+	'expand_templates_generate_xml' => 'Паказаць дрэва аналізу XML',
 	'expand_templates_preview' => 'Папярэдні прагляд',
 );
 

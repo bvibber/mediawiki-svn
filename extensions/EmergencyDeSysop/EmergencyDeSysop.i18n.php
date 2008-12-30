@@ -60,6 +60,7 @@ $messages['ar'] = array(
  * @author Ouda
  */
 $messages['arz'] = array(
+	'emergencydesysop-reason' => 'سبب الحذف',
 	'emergencydesysop-submit' => 'تنفيذ',
 	'emergencydesysop-nogroups' => 'لا يوجد',
 );

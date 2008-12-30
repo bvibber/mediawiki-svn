@@ -278,6 +278,13 @@ $messages['it'] = array(
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Aggiunge rapidamente tutte le sottopagine]] di una pagina agli Osservati Speciali',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'watchsubpages-addtitles' => 'ページの追加',
+);
+
 /** Javanese (Basa Jawa)
  * @author Pras
  */
@@ -450,6 +457,13 @@ $messages['ps'] = array(
 	'watchsubpages-addtitles' => 'مخونه ورګډول',
 	'watchsubpages-addtitlestowatchlist' => 'کتلي لړليک کې مخونه ورګډول',
 	'watchsubpages-desc' => 'په چټکۍ سره دې د يو مخ [[Special:WatchSubpages|ټول وړوکي مخونه]] کتلي لړليک ته ورګډ شي',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'watchsubpages-addtitles' => 'Adicionar páginas',
 );
 
 /** Romanian (Română)

@@ -234,8 +234,10 @@ $messages['bs'] = array(
 	'bookinfo-result-year' => 'Godina:',
 	'bookinfo-error-invalidisbn' => 'Uneseni ISBN broj nije validan.',
 	'bookinfo-error-nosuchitem' => 'Stavka ne postoji ili nije mogla biti pronađena.',
+	'bookinfo-error-nodriver' => 'Ne može se pokrenuti potrebni driver za Book Information',
 	'bookinfo-error-noresponse' => 'Nema odgovora ili je istekao rok za odgovor.',
 	'bookinfo-purchase' => 'Kupi ovu knjigu na $1',
+	'bookinfo-provider' => 'Izvor podataka: $1',
 );
 
 /** Catalan (Català)

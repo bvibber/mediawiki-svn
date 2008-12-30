@@ -205,7 +205,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'mootools12core-desc' => "Aggiunge 'nu [http://mootools.net mootools-1.2-core-yc.js] a ogne pàgene",
+	'mootools12core-desc' => "Aggiunge 'nu [http://mootools.net mootools-1.2-core-yc.js] 'nu framwork combatte de Javascript a ogne pàgene",
 );
 
 /** Russian (Русский)

@@ -318,10 +318,14 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'layouts-desc' => 'Folkeset nyoppretta sider med «utformingar» som kan verta endra for å oppmoda til ein fellesstruktur for sider',
 	'layouts_title' => 'Opprett ei sida',
+	'layouts_chooselayout' => 'Vel ein utsjånad for $1:',
+	'layouts_nolayout' => 'Ingen utsjånad',
 	'layouts_continue' => 'Hald fram',
 	'layouts_choosecategory' => 'Vel ein kategori for $1:',
 	'layouts_unknown' => 'Ukjend',
+	'layouts_tagline' => "Denne sida vart oppretta med utforminga '''$1'''.",
 );
 
 /** Occitan (Occitan)
@@ -368,6 +372,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'layouts_title' => 'Criar uma página',
+	'layouts_choosecategory' => 'Escolha uma categoria para $1:',
 );
 
 /** Brazilian Portuguese (Português do Brasil) */

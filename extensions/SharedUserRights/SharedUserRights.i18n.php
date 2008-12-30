@@ -215,6 +215,17 @@ $messages['nl'] = array(
 	'gblrights-rights-entry' => 'heeft globaal groepslidmaatschap voor $1 gewijzigd van $2 naar $3',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'shareduserrights' => 'Handsaming av delte brukarrettar',
+	'gblrights-desc' => 'Enkel [[Special:SharedUserRights|handsaming av globale brukarrettar]]',
+	'gblrights-logpage' => 'Logg over globale rettar',
+	'gblrights-pagetext' => 'Dette er ein logg over alle endringane i wikifamilien sin tabell over globale rettar.',
+	'gblrights-rights-entry' => 'endra globalt gruppemedlemskap for $1 frå $2 til $3',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

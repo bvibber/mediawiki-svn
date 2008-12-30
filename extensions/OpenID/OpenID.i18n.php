@@ -1737,6 +1737,7 @@ Et jitt en jruuße Zahl [http://wiki.openid.net/Public_OpenID_providers <span la
  * @author Robby
  */
 $messages['lb'] = array(
+	'openid-desc' => "Sech an d'Wiki matt enger http://openid.net/ OpenID] aloggen, a sech op aneren Internetsiten, déi OpenID ënerstetzen, matt engem Wiki-Benotzerkont aloggen.",
 	'openidlogin' => 'Umellen mat OpenID',
 	'openidfinish' => "D'Aloggen mat OpenID ofschléissen",
 	'openidserver' => 'OpenID-Server',
@@ -1769,6 +1770,7 @@ $messages['lb'] = array(
 	'openidnotprovided' => 'Ären OpenID-Server huet kee Spëtznumm ginn (entweder well en dat net kann, oder well Dir him gesot huet dat ne t ze maachen).',
 	'openidchooseinstructions' => 'All Benotzer brauchen e Spëtznumm; Dir kënnt iech ee vun de Méiglechkeeten ënnendrënner auswielen.',
 	'openidchoosefull' => 'Äre ganze Numm ($1)',
+	'openidchooseurl' => 'En Numm gouf vun ärer OpenID ($1) geholl',
 	'openidchooseauto' => 'Een Numm deen automatesch generéiert gouf ($1)',
 	'openidchoosemanual' => 'E Numm vun ärer Wiel:',
 	'openidchooseexisting' => 'E Benotzerkont den et op dëser Wiki scho gëtt:',
@@ -2754,6 +2756,81 @@ $messages['tg-cyrl'] = array(
 	'openidchoosepassword' => 'гузарвожа:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'openid-desc' => 'Lumagda sa wiki na may [http://openid.net/ OpenID], at lumagda sa iba pang mga websayt na nakakaalam sa/nakababatid ng OpenID na may kuwenta/akawnt na pang-wiki',
+	'openidlogin' => 'Lumagda na may OpenID',
+	'openidfinish' => 'Tapusin na ang paglagdang pang-OpenID',
+	'openidserver' => 'Serbidor ng OpenID',
+	'openidxrds' => 'Talaksang Yadis',
+	'openidconvert' => 'Tagapagpalit ng OpenID',
+	'openiderror' => 'Kamalian sa pagpapatunay',
+	'openiderrortext' => 'Naganap ang isang kamalian habang pinatototohanan ang URL ng OpenID.',
+	'openidconfigerror' => 'Kamalian sa pagkakaayos ng OpenID',
+	'openidconfigerrortext' => 'Hindi tanggap ang kaayusang pangtaguan ng OpenID para sa wiking ito.
+Makipagugnayan po lamang sa isang [[Special:ListUsers/sysop|tagapangasiwa]].',
+	'openidpermission' => 'May kamalian sa mga kapahintulutang pang-OpenID',
+	'openidpermissiontext' => 'Hindi pinapahintulutang makalagda sa serbidor na ito ang ibinigay mong OpenID.',
+	'openidcancel' => 'Hindi itinuloy ang pagpapatotoo',
+	'openidcanceltext' => 'Hindi itinuloy ang pagpapatotoo sa URL ng OpenID.',
+	'openidfailure' => 'Nabigo ang pagpapatotoo',
+	'openidfailuretext' => 'Nabigo ang pagpapatoo sa URL ng OpenID.  Mensaheng pangkamalian: "$1"',
+	'openidsuccess' => 'Nagtagumpay ang pagpapatotoo',
+	'openidsuccesstext' => 'Nagtagumpay ang pagpapatotoo sa URL ng OpenID.',
+	'openidusernameprefix' => 'Tagagamit ng OpenID',
+	'openidserverlogininstructions' => 'Ipasok (ilagay) ang iyong hudyat sa ibaba upang makalagda patungo sa $3 bilang si tagagamit na  $2 (pahina ng tagagamit na $1).',
+	'openidtrustinstructions' => 'Pakisuri kung nais mong isalo ang dato kay $1.',
+	'openidallowtrust' => 'Pahintulutan si $1 na pagkatiwalaan ang kuwenta ng tagagamit na ito.',
+	'openidnopolicy' => 'Hindi tumukoy ang sityo (sayt) ng isang patakaran sa paglilihim na pansarili.',
+	'openidpolicy' => 'Suriin ang <a target="_new" href="$1">patakaran sa paglilihim na pansarili</a> para sa mas marami pang kabatiran.',
+	'openidoptional' => 'Opsyonal (hindi talaga kailangan/maaaring wala nito)',
+	'openidrequired' => 'Kinakailangan',
+	'openidnickname' => 'Bansag',
+	'openidfullname' => 'Buong pangalan',
+	'openidemail' => 'Adres ng e-liham',
+	'openidlanguage' => 'Wika',
+	'openidnotavailable' => 'Ang ninanais mong bansag na ($1) ay ginagamit na ng ibang tagagamit.',
+	'openidnotprovided' => 'Hindi nagbigay ng isang bansag ang iyong serbidor ng OpenID (maaaring hindi niya ito maibigay, o dahil sinabi mo sa kaniyang huwag gawin ito).',
+	'openidchooseinstructions' => 'Lahat ng mga tagagamit ay kinakailangang may bansag;
+makakapili ka mula sa mga pagpipiliang nasa ibaba.',
+	'openidchoosefull' => 'Ang buong pangalan mo ($1)',
+	'openidchooseurl' => 'Isang pangalang napulot (napili/nakuha) mula sa iyong OpenID ($1)',
+	'openidchooseauto' => 'Isang pangalang kusang nalikha ($1)',
+	'openidchoosemanual' => 'Isang pangalang ikaw ang pumili:',
+	'openidchooseexisting' => 'Isang umiiral na kuwenta sa wiking ito:',
+	'openidchoosepassword' => 'hudyat:',
+	'openidconvertinstructions' => 'Nagpapahintulot ang pormularyong ito upang mabago mo ang iyong kuwenta ng tagagamit para magamit ang isang URL ng OpenID.',
+	'openidconvertsuccess' => 'Matagumpay na napalitan (nabago) upang maging OpenID',
+	'openidconvertsuccesstext' => 'Matagumpay mong napalitan/nabago ang iyong OpenID para maging $1.',
+	'openidconvertyourstext' => 'Iyan na mismo ang iyong OpenID.',
+	'openidconvertothertext' => 'Iyan ay isa nang OpenID ng ibang tao.',
+	'openidalreadyloggedin' => "'''Nakalagda ka na, $1!'''
+
+Kung nais mong gumamit ng OpenID upang makalagda sa hinaharap, maaari mong [[Special:OpenIDConvert|palitan ang kuwenta mo para magamit ang OpenID]].",
+	'tog-hideopenid' => 'Itago ang <a href="http://openid.net/">OpenID</a> mo sa ibabaw ng iyong pahina ng tagagamit, kapag lumagda ka sa pamamagitan ng OpenID.',
+	'openidnousername' => 'Walang tinukoy na pangalan ng tagagamit.',
+	'openidbadusername' => 'Masama ang tinukoy na pangalan ng tagagamit.',
+	'openidautosubmit' => 'Kabilang/kasama sa pahinang ito ang isang pormularyo na dapat na kusang maipasa/maipadala kapag hindi pinaandar (pinagana) ang JavaScript.
+Kung hindi, subukin ang pindutang \\"Magpatuloy\\".',
+	'openidclientonlytext' => 'Hindi mo magagamit ang mga kuwenta mula sa wiking ito bilang mga OpenID sa iba pang sityo/sayt.',
+	'openidloginlabel' => 'URL ng OpenID',
+	'openidlogininstructions' => "Tinatangkilik (sinusuportahan) ng {{SITENAME}} ang pamantayang [http://openid.net/ OpenID] para sa mga isahang paglagda sa pagitan ng mga sayt ng Web.
+Hinahayaan ka ng OpenID na makalagda sa maraming iba't ibang mga sityo ng Web na hindi gumagamit ng isang iba pang hudyat para sa bawat isa.
+(Tingnan ang [http://en.wikipedia.org/wiki/OpenID lathalaing OpenID ng Wikipedia] para sa mas marami pang kabatiran.)
+
+Kung mayroon ka anng kuwenta sa {{SITENAME}}, maaari kang [[Special:UserLogin|lumagda]] sa pamamagitan ng iyong pangalan ng tagagamit at hudyat sa karaniwang paraan.
+Upang makagamit ng OpenID sa hinaharap, maaari mong [[Special:OpenIDConvert|palitan ang iyong akawnt upang maging OpenID]] pagkatapos mong lumagda sa normal na paraan.
+
+Maraming mga [http://wiki.openid.net/Public_OpenID_providers Pangmadlang tagapagbigay ng OpenID], at maaaring mayroon ka nang isang kuwentang pinagana ng OpenID na nasa ibang palingkuran (serbisyo).
+
+; Ibang mga wiki : Kung mayroon ka nang isang kuwenta sa isang wiking pinaga ng OpenID, katulad ng [http://wikitravel.org/ Wikitravel] (\"Wikilakbay\"), [http://www.wikihow.com/ wikiHow] (\"wikPaano\"), [http://vinismo.com/ Vinismo], [http://aboutus.org/ AboutUs] (\"Tungkol sa Amin\") o [http://kei.ki/ Keiki], maaari kang lumagda sa {{SITENAME}} sa pamamagitan ng pagpapasok/paglalagay ng '''buong URL''' ng pahina ng tagagamit mo sa loob ng kahong nasa itaas doon sa ibang wiking iyon. Halimbawa na ang ''<nowiki>http://kei.ki/en/User:Evan</nowiki>''.
+; [http://openid.yahoo.com/ Yahoo!] : Kung mayroon kang kuwenta sa Yahoo!, maaari kang lumagda sa sayt na ito sa pamamagitan ng paglalagay ng iyong Open-ID na ibinigay ng Yahoo! sa loob ng kahong nasa itaas. Ang mga URL ng OpenID ng Yahoo! ay mayroong pormularyong ''<nowiki>https://me.yahoo.com/yourusername</nowiki>''.
+; [http://dev.aol.com/aol-and-63-million-openids AOL] : Kung mayroon kang kuwenta sa [http://www.aol.com/ AOL], katulad ng akawnt na [http://www.aim.com/ AIM], maaari kang lumagda sa {{SITENAME}} sa pamamagitan ng OpenID na ibinigay ng AOL sa loob ng kahong nasa itaas. Ang mga URL ng OpenID ng AOL ay maryoong pormularyong ''<nowiki>http://openid.aol.com/yourusername</nowiki>''. Ang kalahatan/kabuoan ng  iyong pangalan ng tagagamit ay dapat na nasa/may maliliit na mga panitik, at walang mga puwang/patlang.
+; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Kung mayroon kang isang ''blog'' sa alin man sa mga palingkurang (serbisyong) ito, ipasok/ilagay ang URL ng ''blog'' mo sa kahong nasa itaas. Bilang halimbawa, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', o ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Aleksandrit
@@ -2957,6 +3034,66 @@ Có nhiều [http://wiki.openid.net/Public_OpenID_providers nhà cung cấp ID M
  */
 $messages['vo'] = array(
 	'openidlanguage' => 'Pük',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gaoxuewei
+ */
+$messages['zh-hans'] = array(
+	'openidlogin' => '使用OpenID登陆',
+	'openidfinish' => '结束OpenID登陆',
+	'openidserver' => 'OpenID服务器',
+	'openidxrds' => 'Yadis文件',
+	'openidconvert' => 'OpenID转换',
+	'openiderror' => '验证错误',
+	'openiderrortext' => '在验证OpenID地址时出现了一个错误。',
+	'openidconfigerror' => 'OpenID配制出错',
+	'openidconfigerrortext' => '这个维基的OpenID存储设置无法使用。
+请通知[[Special:ListUsers/sysop|管理员]]。',
+	'openidpermission' => 'OpenID许可错误',
+	'openidpermissiontext' => '您提供的OpenID不允许在本服务器上登录。',
+	'openidcancel' => '验证取消',
+	'openidcanceltext' => 'OpenID地址验证被取消。',
+	'openidfailure' => '验证失败',
+	'openidfailuretext' => 'OpenID地址验证失败。错误信息："$1"',
+	'openidsuccess' => '验证成功',
+	'openidsuccesstext' => 'OpenID地址验证成功。',
+	'openidusernameprefix' => 'OpenID用户',
+	'openidserverlogininstructions' => '请在下面输入您的密码以便以用户$2登陆$3 (用户页面$1)。',
+	'openidtrustinstructions' => '请确认您是否愿与$1分享数据。',
+	'openidallowtrust' => '允许$1信任这个用户的账户。',
+	'openidnopolicy' => '站点没有提供隐私政策。',
+	'openidpolicy' => '如要获得更多信息，请参见<a target="_new" href="$1">隐私政策</a>。',
+	'openidoptional' => '可选',
+	'openidrequired' => '必选',
+	'openidnickname' => '昵称',
+	'openidfullname' => '全称',
+	'openidemail' => '电子邮件地址',
+	'openidlanguage' => '语言',
+	'openidnotavailable' => '您选择的昵称($1)已经被其他用户使用。',
+	'openidnotprovided' => '您的OpenID服务器没有提供昵称（可能无法提供，或者您选择不提供）。',
+	'openidchooseinstructions' => '所有的用户都需要提供昵称；
+您可以从下面任选一个。',
+	'openidchoosefull' => '您的全名（$1）',
+	'openidchooseurl' => '从您的OpenID获取的名称（$1）',
+	'openidchooseauto' => '自动生成的名称（$1）',
+	'openidchoosemanual' => '您选择的名称：',
+	'openidchooseexisting' => '本维基已经存在的帐户：',
+	'openidchoosepassword' => '密码：',
+	'openidconvertinstructions' => '本表单可以将您的用户账号修改为OpenID地址。',
+	'openidconvertsuccess' => '成功转换为OpenID',
+	'openidconvertsuccesstext' => '您已经成功的将您的OpenID转化为$1。',
+	'openidconvertyourstext' => '这已经是您的OpenID。',
+	'openidconvertothertext' => '这是别人的OpenID。',
+	'openidalreadyloggedin' => "'''您已经成功登陆了，$1！'''
+
+如果您想以后使用OpenID登陆，您可以[[Special:OpenIDConvert|转换您的帐户使用OpenID]]。",
+	'tog-hideopenid' => '如果使用OpenID登陆，您可以在您的用户页隐藏您的<a href="http://openid.net/">OpenID</a>。',
+	'openidnousername' => '没有指定用户名。',
+	'openidbadusername' => '指定的用户名是错误的。',
+	'openidautosubmit' => '本页包含的表单在启用JavaScript的情况下可以自动提交。
+如果没有自动提交，请按 \\"继续\\" 按钮。',
+	'openidloginlabel' => 'OpenID地址',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -2333,6 +2333,9 @@ Pode que lle apareza unha advertencia de seguranza acerca dun certificado sen as
 $messages['grc'] = array(
 	'boardvote' => 'Ἐκλογὴ τοῦ Συμβουλίου τῶν Διοικητῶν τῆς Wikimedia',
 	'boardvote-desc' => '[[meta:Board elections/2008|Ἐκλογὴ τοῦ Συμβουλίου τῶν Διοικητῶν τῆς Wikimedia]]',
+	'boardvote_entry' => '* [[Special:Boardvote/vote|Ψηφίζειν]]
+* [[Special:Boardvote/list|Καταλογὴ ψήφων ἕως τὸ νῦν]]
+* [[Special:Boardvote/dump|Κατάστασις ἐγγραφῶν τῶν κρυπτοποιημένων ἐκλογῶν]]',
 	'boardvote_time' => 'Χρόνος',
 	'boardvote_user' => 'Χρώμενος',
 	'boardvote_edits' => 'Μεταγραφαί',
@@ -2342,10 +2345,14 @@ $messages['grc'] = array(
 	'boardvote_submit' => 'εἶεν',
 	'boardvote_strike' => 'Κτυπεῖν',
 	'boardvote_unstrike' => 'Ἀκτυπεῖν',
+	'boardvote_notstarted' => 'Αἱ ἐκλογαὶ μὴ ἀρξάμεναι εἰσὶν ἐπὶ τοῦ παρόντος χρόνου',
 	'boardvote_edits_many' => 'πολλά',
 	'group-boardvote' => 'Ἐπίτροποι ἐκλογῆς συμβουλίου',
 	'group-boardvote-member' => 'ἐπίτροποι ἐκλογῆς συμβουλίου',
+	'grouppage-boardvote' => '{{ns:project}}:Ἐπίτροποι τῶν ἐκλογῶν τοῦ συμβουλίου τῶν διοικητῶν',
 	'boardvote_welcome' => "Ὡς εὖ παρέστης '''$1'''!",
+	'go_to_board_vote' => 'Ἐκλογαὶ τοῦ συμβουλίου τῶν διοικητῶν τῆς Wikimedia τοῦ 2008',
+	'right-boardvote' => 'Διαχειρίζεσθαι τὰς ἐκλογάς',
 );
 
 /** Manx (Gaelg)
@@ -3767,7 +3774,7 @@ Bëijm nääkße Mool klabb_et beshtemmp.",
 	'boardvote_user' => 'Metmaacher',
 	'boardvote_edits' => 'Bëijdrääsh',
 	'boardvote_days' => 'Dare',
-	'boardvote_ip' => 'IP Adress',
+	'boardvote_ip' => 'IP-Address',
 	'boardvote_ua' => 'Brauser',
 	'boardvote_listintro' => '<p>Hee küdd_en Lėßß med_all dä Shtemme,
 di_mer heß_jäz faßßjehallde hann,
@@ -4430,6 +4437,8 @@ De Wahl is apen bet to’n 22. Juni',
 	'group-boardvote' => 'Wahl-Administraters',
 	'group-boardvote-member' => 'Wahl-Administrater',
 	'grouppage-boardvote' => '{{ns:project}}:Wahl-Administrater',
+	'boardvote_blocked' => 'Du büst op dien registreert Wiki sperrt.
+Sperrt Brukers dröfft nich wählen.',
 	'boardvote_bot' => 'Op dat indragen Wiki büst du as Bot kenntekent.
 Bots dröfft nich afstimmen.',
 	'boardvote_welcome' => "Moin '''$1'''.",
@@ -6199,7 +6208,7 @@ $messages['th'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'boardvote' => 'Halalan ng Pabahalaan<!--Board of Trustees is Pabahalaan--> (Lupon ng mga Kabahala) ng Wikimedia',
+	'boardvote' => 'Halalan ng Pabahalaan (Lupon ng mga Kabahala) ng Wikimedia',
 	'boardvote-desc' => '[[meta:Board elections/2008|Halalan ng Lupon ng mga Pabahalaan ng Wikimedia]]',
 	'boardvote_entry' => '* [[Special:Boardvote/vote|Maghalal/Bumoto]]
 * [[Special:Boardvote/list|Talaan ng mga paghalal/pagboto sa ngayon]]

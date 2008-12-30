@@ -141,6 +141,14 @@ $messages['ksh'] = array(
 	'semanticgooglemaps-desc' => 'Määt et müjjelesch, op semantesche Date opjeboute <i lang="en">Google Maps</i> (Landkaate) en et Wiki ennzeboue.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Koordinaten nokucken',
+	'semanticgooglemaps-desc' => 'Erlaabt et de Benotzer fir Google Maps op Wiki-Säiten op Basis  vu srukturéierten Donnéeën anzebauen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

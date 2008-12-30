@@ -328,6 +328,13 @@ $messages['pt'] = array(
 	'seealso-desc' => "Títulos de secção 'Ver também' localizados usando a tag <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'seealso' => 'Vide pure',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

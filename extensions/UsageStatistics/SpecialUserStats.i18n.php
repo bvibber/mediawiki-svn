@@ -764,6 +764,8 @@ $messages['ja'] = array(
 	'usagestatisticsstart' => '開始日',
 	'usagestatisticsend' => '終了日',
 	'usagestatisticssubmit' => '統計を生成',
+	'usagestatisticsnostart' => '* <font color=red>開始日を指定してください</font>',
+	'usagestatisticsnoend' => '* <font color=red>終了日を指定してください</font>',
 	'usagestatisticsbadstartend' => '<b><i>開始</i>および、あるいは<i>終了</i>の日付が不正です!</b>',
 	'usagestatisticsintervalday' => '日',
 	'usagestatisticsintervalweek' => '週',

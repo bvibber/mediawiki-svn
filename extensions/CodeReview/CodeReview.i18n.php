@@ -989,15 +989,20 @@ $4',
 );
 
 /** Greek (Ελληνικά)
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
 	'code' => 'Επιθεώρηση του κώδικα',
 	'code-comments' => 'Σχόλια',
+	'code-change-status' => "έγινε αλλαγή της '''κατάστασης''' αυτής της αναθεώρησης",
 	'code-change-removed' => 'αφαιρέθηκε:',
 	'code-change-added' => 'προστέθηκε:',
+	'code-no-repo' => 'Κανένα αποθηκευτήριο δεν έχει διαμορφωθεί!',
 	'code-notes' => 'σημειώσεις επιθεώρησης',
 	'code-authors' => 'συγγραφείς',
+	'code-author-dolink' => 'Σύνδεση αυτού του χρήστη με έναν χρήστη wiki:',
+	'code-author-orunlink' => 'Ἠ αποδιασύνδεση αυτού του χρήστη',
 	'code-author-name' => 'Εισάγετε ένα όνομα χρήστη:',
 	'code-author-link' => 'σύνδεση;',
 	'code-author-unlink' => 'αποσύνδεση;',
@@ -1013,6 +1018,8 @@ $messages['el'] = array(
 	'code-rev-date' => 'Ημερομηνία:',
 	'code-rev-message' => 'Σχόλιο:',
 	'code-rev-rev' => 'Έκδοση:',
+	'code-rev-rev-viewvc' => 'για το ViewVC',
+	'code-rev-paths' => 'Τροποποιημένες καταθέσεις:',
 	'code-rev-modified-a' => 'προστέθηκε',
 	'code-rev-modified-r' => 'αντικαταστάθηκε',
 	'code-rev-modified-d' => 'διαγράφηκε',
@@ -1036,8 +1043,22 @@ $messages['el'] = array(
 	'code-status-deferred' => 'αναβλήθηκε',
 	'code-pathsearch-path' => 'Διαδρομή:',
 	'code-rev-submit' => 'Αποθήκευση αλλαγών',
+	'code-rev-submit-next' => 'Τα Αποθήκευση αυτής της σελίδας & Επόμενη δεν έχουν επιλυθεί',
 	'codereview-reply-link' => 'απάντηση',
+	'codereview-email-subj' => '[$1] [r$2]: Προστέθηκε νέο σχόλιο',
+	'codereview-email-body' => 'Ο χρήστης "$1" απέστειλε κάποιο σχόλιο στο r$3.
+
+Πλήρης URL: $2
+
+Σχόλιο:
+
+$4',
+	'repoadmin' => 'Διαχείριση του αποθηκευτηρίου',
+	'repoadmin-new-legend' => 'Δημιουργία νέου αποθηκευτηρίου',
+	'repoadmin-new-label' => 'Όνομα αποθηκευτηρίου:',
 	'repoadmin-new-button' => 'Δημιουργία',
+	'repoadmin-edit-legend' => 'Μετατροπή του αποθηκευτηρίου "$1"',
+	'repoadmin-edit-path' => 'Κατάθεση στο αποθηκευτήριο:',
 	'repoadmin-edit-button' => 'Εντάξει',
 	'right-codereview-post-comment' => 'Προσθήκη σχολίων στις εκδόσεις',
 	'specialpages-group-developer' => 'Εργαλεία προγραμματιστών',
@@ -1666,33 +1687,89 @@ $4',
 $messages['grc'] = array(
 	'code' => 'Ἐπιθεωρεῖν τὸν Κώδικα',
 	'code-comments' => 'Σχόλια',
+	'code-change-status' => "μεταβεβλημένον τὸ '''καθεστὼς''' τῆσδε τῆς ἀναθεωρήσεως",
+	'code-change-removed' => 'προστεθειμένη:',
+	'code-change-added' => 'ἀφῃρημένη:',
+	'code-prop-changes' => 'Καθεστὼς & κατάλογος προσαρτημάτων',
+	'code-desc' => '[[Special:Code|Ἐργαλεῖον ἐπιθεωρήσεως κώδικος]] μετὰ [[Special:RepoAdmin|Ὑποστηρίξεως ὑποστροφῆς]]',
+	'code-no-repo' => 'Οὐδεμία ἀποθήκη διαμεμορφωμένη!',
 	'code-notes' => 'ἐπιθεωρεῖν τὰς σημειώσεις',
 	'code-authors' => 'δημιουργοί',
 	'code-tags' => 'προσαρτήματα',
+	'code-author-dolink' => 'Συνδεῖσθαι τόνδε τὸν δημιουργὸν μετὰ ϝικι-χρωμένου τινὸς:',
+	'code-author-orunlink' => 'Ἢ ἀποδιασυνδεῖσθαι τόνδε τὸν χρώμενον:',
+	'code-author-name' => 'Εὶσάγειν ὄνομα χρωμένου τι:',
+	'code-author-success' => 'Ὁ δημιουργὸς $1 διασυνδεδεμένος ἐστὶ μετὰ τοῦ ϝικι-χρωμένου $2',
 	'code-author-link' => 'συνδεῖσθαι;',
 	'code-author-unlink' => 'ἀσυνδεῖσθαι;',
+	'code-author-unlinksuccess' => 'Ὁ δημιουργὸς $1 ἀποδιασυνδεδεμένος ἐστίν',
 	'code-field-id' => 'Ἀναθεώρησις',
 	'code-field-author' => 'Δημιουργός',
+	'code-field-user' => 'Σχολιάζων',
+	'code-field-message' => 'Περιλαμβάνειν σύνοψιν',
 	'code-field-status' => 'Κατάστασις',
 	'code-field-timestamp' => 'Ἡμερομηνία',
+	'code-field-comments' => 'Σημειώματα',
 	'code-field-path' => 'Ἀτραπός',
+	'code-field-text' => 'Σημείωμα',
 	'code-rev-author' => 'Δημιουργός:',
 	'code-rev-date' => 'Ἡμερομηνία:',
 	'code-rev-message' => 'Σχόλιον:',
+	'code-rev-repo' => 'Ἀποθήκη:',
 	'code-rev-rev' => 'Ἀναθεώρησις:',
+	'code-rev-rev-viewvc' => 'ὲπὶ τοῦ ViewVC',
+	'code-rev-paths' => 'Μεταβεβλημέναι ἀποθέσεις:',
+	'code-rev-modified-a' => 'προστεθειμένη',
+	'code-rev-modified-r' => 'ὑποκατεστημένη',
 	'code-rev-modified-d' => 'διεγραμμένη',
+	'code-rev-modified-m' => 'μεταβεβλημένη',
 	'code-rev-status' => 'Κατάστασις:',
+	'code-rev-status-set' => 'Μεταβάλλειν τὸ καθεστώς',
 	'code-rev-tags' => 'Προσαρτήματα:',
+	'code-rev-tag-add' => 'Προστιθέναι προσαρτήματα:',
+	'code-rev-tag-remove' => 'Ἀφαιρεῖν προσαρτήματα:',
+	'code-rev-comment-by' => 'Σχόλιον ὑπὸ τοῦ $1',
+	'code-rev-comment-submit' => 'Ὑποβάλλειν αἴτημα',
 	'code-rev-comment-preview' => 'Προθεωρεῖν',
 	'code-rev-diff' => 'Διαφ',
 	'code-rev-diff-link' => 'διαφ',
+	'code-rev-purge-link' => 'ἐκκαθαίρειν',
 	'code-status-new' => 'νέα',
+	'code-status-fixme' => 'διορθωτέα',
+	'code-status-reverted' => 'ἀνεστραμμένη',
+	'code-status-resolved' => 'ἐπιλελυμένη',
 	'code-status-ok' => 'εἶεν',
+	'code-status-deferred' => 'ἀναβεβλημένη',
+	'code-pathsearch-legend' => 'Ζητεῖν ἀναθεωρήσεις ἐν τῇδε τῇ καταθέσει ἀνὰ ἀτραπόν',
 	'code-pathsearch-path' => 'Ἀτραπὀς:',
+	'code-rev-submit' => 'Καταγράφειν τὰς μεταγραφάς',
+	'code-rev-submit-next' => 'Καταγράφειν & ἐπομένη ἀνεπίλυτοι',
+	'codereview-reply-link' => 'ἀποκρίνεσθαι',
+	'codereview-email-subj' => '[$1] [r$2]: Σχόλιον νέον προστεθειμένον',
+	'codereview-email-body' => 'Ὁ χρώμενος "$1" ἀπέσταλκεν σχόλιόν τι τῷ r$3.
+
+Πλήρης URL: $2
+
+Σχόλιον:
+
+$4',
+	'repoadmin' => 'Ἐπιτροπὴ ἀποθηκευτηρίου',
+	'repoadmin-new-legend' => 'Ποιεῖν νέαν ἀποθήκην τινά',
+	'repoadmin-new-label' => 'Ἀποθήκης τὸ ὄνομα:',
 	'repoadmin-new-button' => 'Ποιεῖν',
+	'repoadmin-edit-legend' => 'Μεταβολὴ τῆς ἀποθήκης "$1"',
+	'repoadmin-edit-path' => 'Ἀπόθεσις ἐν τῇ ἀποθήκῃ:',
 	'repoadmin-edit-bug' => 'Ἀτραπὸς Bugzilla:',
 	'repoadmin-edit-view' => 'Ἀτραπὸς ViewVC:',
 	'repoadmin-edit-button' => 'εἶεν',
+	'repoadmin-edit-sucess' => 'Ἡ ἀποθήκη "[[Special:Code/$1|$1]]" ἐπιτυχῶς μεταβεβλημένη ἐστίν.',
+	'right-repoadmin' => 'Διαχειρίζεσθαι τοὺς κώδικας τῶν ἀποθηκῶν',
+	'right-codereview-add-tag' => 'Προστιθέναι νέα προσαρτήματα ταῖς ἀναθεωρήσεσιν',
+	'right-codereview-remove-tag' => 'Ἀφαιρεῖν προσαρτήματα ὑπὸ τὰς ἀναθεωρήσεις',
+	'right-codereview-post-comment' => 'Προστιθέναι νέα σχόλια ταῖς ἀναθεωρήσεσιν',
+	'right-codereview-set-status' => 'Μεταβάλλειν τὸ καθεστὼς τῶν ἀναθεωρήσεων',
+	'right-codereview-link-user' => 'Συνδεῖσθαι τοὺς δημιουργοὺς μετὰ ϝικι-χρωμένων',
+	'specialpages-group-developer' => 'Ἐργαλεῖα ἀναπτυκτῶν',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -2228,15 +2305,17 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fievarsty
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author Whym
  */
 $messages['ja'] = array(
 	'code' => 'コードの確認',
 	'code-comments' => 'コメント',
 	'code-change-status' => "この版の'''ステータス'''を変更しました",
 	'code-change-tags' => "この版の'''タグ'''を変更しました",
-	'code-change-removed' => '除去：',
+	'code-change-removed' => '除去:',
 	'code-change-added' => '追加:',
 	'code-prop-changes' => 'ステータスとタグ付けのログ',
 	'code-desc' => '[[Special:RepoAdmin|Subversion サポート]]付きの[[Special:Code|コードレビュー・ツール]]',
@@ -2245,7 +2324,16 @@ $messages['ja'] = array(
 	'code-authors' => '著者',
 	'code-tags' => 'タグ',
 	'code-authors-text' => '以下は最新コミット順のリポジトリ作成者一覧です。',
+	'code-author-haslink' => 'この著者はウィキの利用者 $1 と対応付けられています。',
+	'code-author-orphan' => 'この著者にはウィキのアカウントとの対応付けがありません。',
+	'code-author-dolink' => 'この著者とウィキの利用者を対応付ける:',
+	'code-author-alterlink' => 'この著者に対応するウィキの利用者を変更する:',
+	'code-author-orunlink' => 'このウィキ利用者との対応づけを解除する:',
 	'code-author-name' => '利用者名の入力:',
+	'code-author-success' => '著者 $1 はウィキ利用者 $2 と対応付けられています。',
+	'code-author-link' => '対応付けをしますか？',
+	'code-author-unlink' => '対応付けを解除しますか？',
+	'code-author-unlinksuccess' => '著者 $1 の対応付けは解除されました',
 	'code-field-id' => 'リビジョン',
 	'code-field-author' => '著者',
 	'code-field-user' => 'コメンター',
@@ -2311,6 +2399,7 @@ $4',
 	'right-codereview-remove-tag' => 'リビジョンからタグを除去する',
 	'right-codereview-post-comment' => 'リビジョンにコメントを追加する',
 	'right-codereview-set-status' => 'リビジョンをステータスを変更する',
+	'right-codereview-link-user' => '著者とウィキ利用者を対応付ける',
 	'specialpages-group-developer' => '開発者用ツール',
 );
 
@@ -2410,6 +2499,14 @@ $4',
 	'specialpages-group-developer' => 'Piranti déveloper',
 );
 
+/** Georgian (ქართული)
+ * @author Malafaya
+ */
+$messages['ka'] = array(
+	'code-field-timestamp' => 'თარიღი',
+	'code-rev-date' => 'თარიღი:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
@@ -2490,6 +2587,7 @@ $4',
 	'repoadmin-new-button' => '생성',
 	'repoadmin-edit-path' => '저장소 경로:',
 	'repoadmin-edit-bug' => '버그질라 경로:',
+	'repoadmin-edit-view' => 'ViewVC 경로:',
 	'repoadmin-edit-button' => '확인',
 	'right-repoadmin' => '코드 저장소 관리',
 	'specialpages-group-developer' => '개발자 도구',
@@ -3451,8 +3549,13 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'code' => 'Revisão de Código',
 	'code-comments' => 'Comentários',
+	'code-change-removed' => 'removeu:',
+	'code-change-added' => 'adicionou:',
+	'code-desc' => '[[Special:Code|Ferramenta de revisão de código]] com [[Special:RepoAdmin|suporte para Subversion]]',
 	'code-no-repo' => 'Nenhum repositório configurado!',
+	'code-notes' => 'notas de revisão',
 	'code-authors' => 'autores',
 	'code-author-name' => 'Introduza um nome de utilizador:',
 	'code-field-id' => 'Revisão',
@@ -3508,6 +3611,7 @@ $4',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'O repositório "[[Special:Code/$1|$1]]" foi modificado com sucesso.',
 	'right-repoadmin' => 'Gerir repositórios de código',
+	'right-codereview-set-status' => 'Alterar estado de revisões',
 	'specialpages-group-developer' => 'Ferramentas de desenvolvimento',
 );
 
@@ -4244,13 +4348,28 @@ $messages['tet'] = array(
 $messages['tg-cyrl'] = array(
 	'code' => 'Баррасии Рамз',
 	'code-comments' => 'Тавзеҳот',
+	'code-notes' => 'нуктаҳои боздид',
+	'code-authors' => 'муаллифон',
+	'code-tags' => 'барчасбҳо',
+	'code-field-id' => 'Нусха',
+	'code-field-author' => 'Муаллиф',
 	'code-field-user' => 'Тавзеҳдиҳанда',
+	'code-field-status' => 'Вазъият',
 	'code-field-timestamp' => 'Сана',
+	'code-field-path' => 'Масир',
 	'code-rev-author' => 'Муаллиф:',
 	'code-rev-date' => 'Сана:',
 	'code-rev-message' => 'Тавзеҳ:',
 	'code-rev-rev' => 'Нусха:',
+	'code-rev-status' => 'Вазъият:',
+	'code-rev-tags' => 'Барчасбҳо:',
+	'code-rev-comment-preview' => 'Пешнамоиш',
 	'code-status-new' => 'нав',
+	'code-pathsearch-path' => 'Масир:',
+	'code-rev-submit' => 'Захираи тағйирот',
+	'codereview-reply-link' => 'посух',
+	'repoadmin-new-button' => 'Эҷод',
+	'repoadmin-edit-button' => 'Мавриди таъйид',
 );
 
 /** Thai (ไทย)
@@ -4686,6 +4805,9 @@ $messages['zh-hans'] = array(
 	'code-change-removed' => '移除：',
 	'code-change-added' => '增加：',
 	'code-prop-changes' => '状态与标签记录',
+	'code-desc' => '使用[[Special:RepoAdmin|Subversion支持]]的[[Special:Code|代码检查工具]]',
+	'code-no-repo' => '储存库未被设置！',
+	'code-notes' => '检查注释',
 	'code-authors' => '作者',
 	'code-tags' => '标签',
 	'code-author-haslink' => '作者与维基用户 $1 相关联',
@@ -4698,6 +4820,7 @@ $messages['zh-hans'] = array(
 	'code-author-link' => '相关联？',
 	'code-author-unlink' => '取消关联？',
 	'code-author-unlinksuccess' => '作者 $1 已经取消关联',
+	'code-field-id' => '修订',
 	'code-field-author' => '作者',
 	'code-field-user' => '评论员',
 	'code-field-message' => '评论汇总',
@@ -4709,7 +4832,9 @@ $messages['zh-hans'] = array(
 	'code-rev-author' => '作者：',
 	'code-rev-date' => '日期：',
 	'code-rev-message' => '评论：',
+	'code-rev-repo' => '储存库：',
 	'code-rev-rev' => '修订：',
+	'code-rev-rev-viewvc' => '在ViewVC上',
 	'code-rev-paths' => '修改路径：',
 	'code-rev-modified-a' => '增加',
 	'code-rev-modified-r' => '替代',
@@ -4734,6 +4859,7 @@ $messages['zh-hans'] = array(
 	'code-status-deferred' => '推迟',
 	'code-pathsearch-path' => '路径：',
 	'code-rev-submit' => '保存修改',
+	'code-rev-submit-next' => '保存，并处理下一条',
 	'codereview-reply-link' => '回复',
 	'codereview-email-subj' => '[$1] [r$2]: 新的评论已添加',
 	'codereview-email-body' => '用户 "$1" 在 r$3 上添加了一条评论。
@@ -4743,8 +4869,17 @@ $messages['zh-hans'] = array(
 评论:
 
 $4',
+	'repoadmin' => '储存库管理',
+	'repoadmin-new-legend' => '建立新的储存库',
+	'repoadmin-new-label' => '储存库名称：',
 	'repoadmin-new-button' => '创建',
+	'repoadmin-edit-legend' => '修改储存库"$1"',
+	'repoadmin-edit-path' => '储存库路径：',
+	'repoadmin-edit-bug' => 'Bugzilla路径：',
+	'repoadmin-edit-view' => 'ViewVC路径：',
 	'repoadmin-edit-button' => 'OK',
+	'repoadmin-edit-sucess' => '储存库"[[Special:Code/$1|$1]]"已被成功修改。',
+	'right-repoadmin' => '管理代码储存库',
 	'right-codereview-add-tag' => '添加新标签到修订',
 	'right-codereview-remove-tag' => '自修订移除标签',
 	'right-codereview-post-comment' => '添加评论到修订',

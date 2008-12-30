@@ -1751,6 +1751,7 @@ Pe piacere puerte 'nu picche de pascenze.",
 	'youtubeauthsub_viewpage' => "In alternative, tu puè [[$1|vedè 'u filmete tue]].",
 	'youtubeauthsub_jserror_nokeywords' => 'Pe piacere mitte 1 o cchiù parole chiave',
 	'youtubeauthsub_jserror_notitle' => "Pe piacere mitte 'nu titele p'u video.",
+	'youtubeauthsub_jserror_nodesc' => "Pe piacere mitte 'na descrizione p'u filmete.",
 );
 
 /** Russian (Русский)
@@ -1881,8 +1882,8 @@ $messages['sk'] = array(
 	'youtubeauthsub_clickhere' => 'Kliknutím sem sa prihlásite na YouTube',
 	'youtubeauthsub_tokenerror' => 'Chyba pri vytváraní autentifikačného tokenu. Skúste obnoviť stránku.',
 	'youtubeauthsub_success' => "Gratulujeme!
-Vaše video sa nahralo.
-<a href='http://www.youtube.com/watch?v=$1'>View your video</a>.
+Vaše video je nahrané.
+Svoje video si môžete pozrieť po <a href='http://www.youtube.com/watch?v=$1'>kliknutí sem</a>.
 YouTube môže nejaký čas trvať, kým vaše video spracuje, takže možno ešte nie je pripravené.
 
 Video na wiki stránku môžete vložiť pomocou nasledovného kódu:
@@ -1892,11 +1893,11 @@ Video na wiki stránku môžete vložiť pomocou nasledovného kódu:
 	'youtubeauthsub_uploadbutton' => 'Nahrať',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-[http://www.youtube.com/watch?v=$1 Zobraz video]',
+[http://www.youtube.com/watch?v=$1 Zobraziť video]',
 	'youtubeauthsub_summary' => 'Nahráva sa video na YouTube',
 	'youtubeauthsub_uploading' => 'Vaše video sa nahráva.
 Buďte prosím trpezliví.',
-	'youtubeauthsub_viewpage' => 'Alternatívne, si môžete [[$1|video pozrieť tu]].',
+	'youtubeauthsub_viewpage' => 'Inak si video môžete [[$1|pozrieť tu]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Prosím, zadajte jedno alebo viac kľúčových slov.',
 	'youtubeauthsub_jserror_notitle' => 'Prosím, zadajte názov videa.',
 	'youtubeauthsub_jserror_nodesc' => 'Prosím, zadajte popis videa.',
@@ -1997,6 +1998,23 @@ Czekej.',
 	'youtubeauthsub_jserror_nodesc' => 'Wkludź uopis matyrjołu wideo.',
 );
 
+/** Tamil (தமிழ்)
+ * @author அருட்செல்வன்
+ */
+$messages['ta'] = array(
+	'youtubeauthsub' => 'யூடியூப்(YouTube) வீடியோவை தரவேற்றம் செய்யவும்',
+	'youtubeauthsub-desc' => 'பயனர்கள் யூடியூபிற்கு நேரடியாக [[Special:YouTubeAuthSub|வீடியோக்களைத் தரவேற்றம் செய்ய]] உதவுகிறது',
+	'youtubeauthsub_info' => 'ஒரு பக்கத்தில் சேர்க்கும் பொருட்டு யூடியூபில் ஒரு வீடியோவை தரவேற்றம் செய்வதற்கு, கீழ்க்கண்ட விவரங்களை நிரப்பவும்:',
+	'youtubeauthsub_title' => 'தலைப்பு',
+	'youtubeauthsub_description' => 'விவரிப்பு',
+	'youtubeauthsub_password' => 'யூடியூப் கடவுச்சொல்',
+	'youtubeauthsub_username' => 'யூடியூப் பயனர்பெயர்',
+	'youtubeauthsub_keywords' => 'குறிச்சொற்கள்',
+	'youtubeauthsub_category' => 'வகைபாடு',
+	'youtubeauthsub_submit' => 'சமர்ப்பி',
+	'youtubeauthsub_clickhere' => 'யூடியூபில் நுழைவதற்கு இங்கே சொடுக்கவும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -2031,8 +2049,10 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'youtubeauthsub_title' => 'Títulu',
 	'youtubeauthsub_username' => "Naran uza-na'in iha YouTube",
 	'youtubeauthsub_category' => 'Kategoria',
+	'youtubeauthsub_clickhere' => "Klike iha ne'e ba log in iha YouTube",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

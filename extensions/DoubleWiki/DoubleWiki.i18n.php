@@ -237,6 +237,13 @@ $messages['km'] = array(
 	'doublewiki-desc' => 'បង្ហាញទំព័រនិងការបកប្រែរបស់វាពីវិគីផ្សេងទៀតជាពីរជួរឈរនៃ​ទំព័រដូចគ្នា',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'doublewiki-desc' => '문서와 다른 위키의 번역본을 한 페이지의 두 단으로 보여 줌',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -277,6 +284,13 @@ $messages['mr'] = array(
  */
 $messages['ms'] = array(
 	'doublewiki-desc' => 'Memaparkan sesebuah laman berserta terjemahannya daripada wiki lain pada dua lajur yang bersebelahan',
+);
+
+/** Low German (Plattdüütsch)
+ * @author Slomox
+ */
+$messages['nds'] = array(
+	'doublewiki-desc' => 'Wiest en Sied un ehr Översetten ut en anner Wiki in twee Spalten op desülve Sied',
 );
 
 /** Dutch (Nederlands)

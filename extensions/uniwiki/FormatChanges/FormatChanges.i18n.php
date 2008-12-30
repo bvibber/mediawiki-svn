@@ -151,8 +151,8 @@ $messages['he'] = array(
 $messages['hsb'] = array(
 	'formatchanges-desc' => 'Formatuje [[Special:RecentChanges|aktualne změny]] znowa',
 	'formatchanges-anonymous' => 'Anonymny',
-	'formatchanges-createdby' => 'Wutworjeny wot',
-	'formatchanges-editedby' => 'wobdźěłany wot',
+	'formatchanges-createdby' => '$1 - wutworjeny wot $2 ($3)',
+	'formatchanges-editedby' => '$1 - wobdźěłany wot $2 ($3)',
 );
 
 /** Interlingua (Interlingua)
@@ -161,8 +161,8 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'formatchanges-desc' => 'Reformata le [[Special:RecentChanges|modificationes recente]]',
 	'formatchanges-anonymous' => 'Anonyme',
-	'formatchanges-createdby' => 'create per',
-	'formatchanges-editedby' => 'modificate per',
+	'formatchanges-createdby' => '$1 - create per $2 ($3)',
+	'formatchanges-editedby' => '$1 - modificate per $2 ($3)',
 );
 
 /** Japanese (日本語)
@@ -233,6 +233,7 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'formatchanges-desc' => 'Omformaterer [[Special:RecentChanges|siste endringar]]',
 	'formatchanges-anonymous' => 'Anonym',
 	'formatchanges-createdby' => '$1 - oppretta av $2 $3',
 	'formatchanges-editedby' => '$1 - endra av $2 $3',
@@ -259,13 +260,14 @@ $messages['pl'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'formatchanges-desc' => 'Reestrutura as [[Special:RecentChanges|mudanças recentes]]',
 	'formatchanges-anonymous' => 'Anónimo',
-	'formatchanges-createdby' => 'criado por',
-	'formatchanges-editedby' => 'editado por',
+	'formatchanges-createdby' => '$1 - criado por $2 ($3)',
+	'formatchanges-editedby' => '$1 - editado por $2 ($3)',
 );
 
 /** Romanian (Română)
@@ -286,7 +288,7 @@ $messages['ru'] = array(
 	'formatchanges-desc' => 'Преобразует [[Special:RecentChanges|свежие правки]]',
 	'formatchanges-anonymous' => 'Аноним',
 	'formatchanges-createdby' => '$1 — создано $2 ($3)',
-	'formatchanges-editedby' => 'исправлено',
+	'formatchanges-editedby' => '$1 — отредактировано $2 ($3)',
 );
 
 /** Slovak (Slovenčina)

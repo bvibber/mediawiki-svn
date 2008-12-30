@@ -242,6 +242,13 @@ $messages['km'] = array(
 	'categoryonupload-label' => 'ចំណាត់ថ្នាក់ក្រុម:',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'categoryonupload-label' => '분류:',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

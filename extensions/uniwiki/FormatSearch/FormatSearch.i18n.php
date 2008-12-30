@@ -161,6 +161,13 @@ $messages['nl'] = array(
 	'formatsearch-desc' => 'Schoont de zoekresultatenpagina op',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'formatsearch-desc' => 'Reinsar søkeresultatsida',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

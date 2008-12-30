@@ -399,6 +399,7 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'mv_tool_search' => 'ፍለጋ',
 	'mv_edit' => 'አርም',
 	'mv_history' => 'ታሪክ',
 	'mv_search_categories' => 'መደቦች',
@@ -5107,6 +5108,7 @@ $messages['tet'] = array(
 	'mv_remove_reason' => 'Motivu ba halakon:',
 	'mv_tool_search' => 'Buka',
 	'mv_edit' => 'Edita',
+	'mv_history' => 'Istória',
 	'mv_search_categories' => 'Kategoria sira',
 	'mv_search_category' => 'Kategoria',
 	'mv_search_and' => 'ho',

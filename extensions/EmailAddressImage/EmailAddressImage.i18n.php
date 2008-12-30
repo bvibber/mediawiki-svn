@@ -147,6 +147,13 @@ $messages['km'] = array(
 	'emailaddressimage-desc' => 'បន្ថែម<tt>&lt;email&gt;</tt>ដើម្បីបង្ហាញអាសយដ្ឋាន​អ៊ីមែលជារូបភាព',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'emailaddressimage-desc' => '이메일 주소를 그림으로 표시할 수 있도록 <tt>&lt;email&gt;</tt> 태그를 추가',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

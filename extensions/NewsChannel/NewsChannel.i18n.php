@@ -304,6 +304,19 @@ $messages['oc'] = array(
 	'newschannel_submit_button' => 'Crear lo flus',
 );
 
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'newschannel' => 'Kanał informacyjny',
+	'newschannel-desc' => 'Implementuje kanał informacyjny jako dynamiczną [[Special:NewsChannel|stronę specjalną]]',
+	'newschannel_format' => 'Format:',
+	'newschannel_limit' => 'Limit:',
+	'newschannel_include_category' => 'Dodatkowa kategoria:',
+	'newschannel_exclude_category' => 'Wyklucz z kategorii:',
+	'newschannel_submit_button' => 'Utwórz kanał',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

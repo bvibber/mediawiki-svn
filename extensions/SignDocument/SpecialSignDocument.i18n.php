@@ -1579,6 +1579,7 @@ $messages['lb'] = array(
 	'sign-list-hideemail' => "D'E-Mailadress net weisen",
 	'sign-submit' => 'Dokument ënnerschreiwen',
 	'sig-success' => "Dir hutt d'Dokument ënnerschriwwen",
+	'sign-view-selectfields' => '<b>Felder déi gewise solle ginn:</b>',
 	'sign-viewfield-timestamp' => 'Datum an Auerzäit',
 	'sign-viewfield-realname' => 'Numm',
 	'sign-viewfield-address' => 'Adress',
@@ -1936,20 +1937,91 @@ $1',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'signdocument' => 'Signer dokument',
+	'sign-nodocselected' => 'Vel dokumentet du ønskjer å signera.',
+	'sign-selectdoc' => 'Dokument:',
+	'sign-docheader' => '<div class="noarticletext">Nytt dette skjemaet for å signera dokumentet «[[$1]]» vist nedanfor. Ver venleg les gjennom heile dokumentet, og om du ønskjer å syna di støtta for det, fyll inn dei nødvendige felta for å signera.</div>',
+	'sign-error-nosuchdoc' => 'Dokumentet du etterspurde ($1) finst ikkje.',
 	'sign-realname' => 'Namn:',
+	'sign-address' => 'Gateaddressa:',
 	'sign-city' => 'By:',
+	'sign-state' => 'Delstat, fylke, etc.:',
+	'sign-zip' => 'Postnummer:',
 	'sign-country' => 'Land:',
+	'sign-phone' => 'Telefonnummer:',
+	'sign-bday' => 'Alder:',
+	'sign-email' => 'E-postadressa:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> indikerer felt som må bli fylte ut.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Merk: Informasjon som ikkje blir lista opp vil framleis vera synleg for moderatorar.</i></small>',
+	'sign-list-anonymous' => 'List opp anonymt',
+	'sign-list-hideaddress' => 'Ikkje list opp adressa',
+	'sign-list-hideextaddress' => 'Ikkje list opp by, stat, postnummer eller land',
+	'sign-list-hidephone' => 'Ikkje list opp telefonnummer',
+	'sign-list-hidebday' => 'Ikkje list opp alder',
+	'sign-list-hideemail' => 'Ikkje list opp e-post',
+	'sign-submit' => 'Signer dokumentet',
+	'sign-information' => '<div class="noarticletext">Takk for at du har teke deg tida til å lesa gjennom dokumentet. Om du er einig med det, syn støtta di ved å fylla inn dei nødvendige felta nedanfor og trykk «Signer dokumentet». Gjer deg viss om at personleg informasjon er korrekt, og at me har ein måte å kontakta deg på for å stadfesta identiteten din. Merk at IP-adressa di og annan identifiserbar informasjon vil bli nytta av moderatorar for å eliminera duplikatsignaturar og for å stadfesta at den personlege informasjonen din er korrekt. Sidan nyttinga av opne og anonymiserande proxyar hindrar evna vår til å gjera dette, vil signaturar frå slike proxyar truleg ikkje bli talde. Om du er tilkopla via ein proxytenar, kopl deg frå han og nytt ei vanleg tilkopling når du signerer.</div>
+
+$1',
+	'sig-success' => 'Du har signert dokumentet.',
+	'sign-view-selectfields' => '<b>Felt som skal bli viste:</b>',
+	'sign-viewfield-entryid' => 'Innskrifts-ID',
+	'sign-viewfield-timestamp' => 'Tidsmerke',
 	'sign-viewfield-realname' => 'Namn',
+	'sign-viewfield-address' => 'Adressa',
 	'sign-viewfield-city' => 'By',
+	'sign-viewfield-state' => 'Delstat, fylke, etc.',
 	'sign-viewfield-country' => 'Land',
-	'sign-viewfield-ip' => 'IP-adresse',
+	'sign-viewfield-zip' => 'Postnummer',
+	'sign-viewfield-ip' => 'IP-adressa',
+	'sign-viewfield-agent' => 'Brukaragent',
+	'sign-viewfield-phone' => 'Telefonnummer',
 	'sign-viewfield-email' => 'E-post',
+	'sign-viewfield-age' => 'Alder',
+	'sign-viewfield-options' => 'Val',
+	'sign-viewsigs-intro' => 'Under er dei oppsamla signaturane for <span class="plainlinks">[{{fullurl:Special:SignDocument|doc=$2}} $1]</span> viste.',
+	'sign-sigadmin-currentlyopen' => 'Signering er slege på for dette dokumentet.',
+	'sign-sigadmin-close' => 'Slå av signering',
+	'sign-sigadmin-currentlyclosed' => 'Signering er slege av for dette dokumentet.',
+	'sign-sigadmin-open' => 'Slå på signering',
+	'sign-signatures' => 'Signaturar',
+	'sign-sigadmin-closesuccess' => 'Signering blei slege av.',
+	'sign-sigadmin-opensuccess' => 'Signering blei slege på.',
+	'sign-viewsignatures' => 'syn signaturar',
+	'sign-closed' => 'stengd',
+	'sign-error-closed' => 'Signering av dette dokumentet er slege av.',
+	'sig-anonymous' => '<i>Anonym</i>',
 	'sig-private' => '<i>Privat</i>',
+	'sign-sigdetails' => 'Signaturdetaljar',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|diskusjon]] • <!--
+-->[[Special:Contributions/$1|bidrag]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBL-ar] • <!--
+-->[[Special:BlockIP/$1|blokker]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} blokkeringslogg] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} sjekk IP])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Stroke',
+	'sign-viewfield-reviewedby' => 'Gjennomgåar',
 	'sign-viewfield-reviewcomment' => 'Kommentar',
+	'sign-detail-uniquequery' => 'Liknande einingar',
+	'sign-detail-uniquequery-run' => 'Køyr spørjing',
+	'sign-detail-strike' => 'Stryk signatur',
+	'sign-reviewsig' => 'Sjå over signatur',
 	'sign-review-comment' => 'Kommentar',
+	'sign-submitreview' => 'Send inn gjennomgang',
+	'sign-uniquequery-similarname' => 'Liknande namn',
+	'sign-uniquequery-similaraddress' => 'Liknande adressa',
+	'sign-uniquequery-similarphone' => 'Liknande telefonnummer',
+	'sign-uniquequery-similaremail' => 'Liknande e-postadressa',
+	'sign-uniquequery-1signed2' => '[{{fullurl:Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] signerte [{{fullurl:Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -2454,7 +2526,10 @@ $messages['roa-tara'] = array(
 	'sign-viewfield-email' => 'E-mail',
 	'sign-viewfield-age' => 'Età',
 	'sign-viewfield-options' => 'Opzione',
+	'sig-anonymous' => '<i>Anonime</i>',
+	'sig-private' => '<i>Privete</i>',
 	'sign-viewfield-reviewcomment' => 'Commende',
+	'sign-detail-uniquequery-run' => "Lange l'inderrogazione",
 	'sign-review-comment' => 'Commende',
 );
 

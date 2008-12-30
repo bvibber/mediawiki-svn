@@ -276,6 +276,13 @@ $messages['sv'] = array(
 	'trustedxff-desc' => 'Behandlar en lista över troliga proxyadresser ([http://meta.wikimedia.org/wiki/XFF_project XFF-projektet])',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'trustedxff-desc' => 'Ang paghahawak ng isang talaan ng pinagkakatiwalaang mga pamalit na adres/tirahan ([http://meta.wikimedia.org/wiki/XFF_project proyektong XFF])',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

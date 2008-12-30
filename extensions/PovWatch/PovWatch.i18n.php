@@ -1112,6 +1112,13 @@ $messages['te'] = array(
 	'povwatch_added' => 'చేర్చాం',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'povwatch_title' => 'Títulu:',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */

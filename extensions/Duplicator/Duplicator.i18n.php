@@ -561,7 +561,7 @@ Isto es utile pro le bifurcation de paginas, etc.',
 	'duplicator-submit' => 'Duplicar',
 	'duplicator-summary' => 'Copiate ab [[$1]]',
 	'duplicator-success' => "<big>'''[[$1]] ha essite copiate verso [[$2]].'''</big>",
-	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revision|revisiones}} ha essite copiate.',
+	'duplicator-success-revisions' => '$1 {{PLURAL:$1|version|versiones}} ha essite copiate.',
 	'duplicator-success-talkcopied' => 'Le pagina de discussion ha equalmente essite copiate.',
 	'duplicator-success-talknotcopied' => 'Le pagina de discussion non poteva esser copiate.',
 	'duplicator-failed' => 'Le pagina non poteva esser duplicate.
@@ -570,7 +570,7 @@ Un error incognite occurreva.',
 	'duplicator-source-notexist' => '[[$1]] non existe. Per favor entra le titulo de un pagina existente.',
 	'duplicator-dest-invalid' => 'Per favor entra un titulo de destination valide.',
 	'duplicator-dest-exists' => '[[$1]] existe ja. Per favor entra un titulo de destination non ancora existente.',
-	'duplicator-toomanyrevisions' => '[[$1]] ha troppo de revisiones (i.e. $2) e non pote esser copiate.
+	'duplicator-toomanyrevisions' => '[[$1]] ha troppo de versiones (i.e. $2) e non pote esser copiate.
 Le limite actual es $3.',
 );
 

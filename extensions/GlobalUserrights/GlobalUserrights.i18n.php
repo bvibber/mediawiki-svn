@@ -128,6 +128,18 @@ $messages['hsb'] = array(
 	'rights-userrights-global' => 'Globalne wužiwarske prawa zrjadować',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'globaluserrights' => 'Gestion de derectos global de usatores',
+	'gur-desc' => 'Administration facile de [[Special:GlobalUserRights|derectos global de usatores]]',
+	'gur-rightslog-name' => 'Registro de derectos global',
+	'gur-rightslog-header' => 'Isto es un registro de modificationes in le derectos global.',
+	'gur-rightslog-entry' => 'cambiava le membrato de gruppos global pro $1 de $2 a $3',
+	'rights-userrights-global' => 'Gerer le derectos global de usatores',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */

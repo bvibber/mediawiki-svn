@@ -99,11 +99,12 @@ $messages['eo'] = array(
 
 /** Finnish (Suomi)
  * @author Mobe
+ * @author Nike
  */
 $messages['fi'] = array(
 	'acct_creation_global_soft_throttle_hit' => 'Käyttäjien luonti on automaattisesti keskeytetty joksikin aikaa johtuen viimeaikaisista poikkeuksellisen lukuisista kirjautumisyrityksistä.
 Odota muutama minuutti ja yritä uudelleen.',
-	'acct_creation_global_hard_throttle_hit' => 'Rekisteröintitulvahyökkäysten vähentämiseksi tunnusten luominen on automaattisesti pysäytetty muutamaksi sekunniksi.
+	'acct_creation_global_hard_throttle_hit' => 'Käyttäjätunnusten rekisteröitymishyökkäysten torjumiseksi tunnusten luominen on automaattisesti estetty muutamaksi sekunniksi.
 Ole hyvä ja odota hetki. Päivitä avoin sivu selaimessa ja lähetä lomake uudelleen.',
 	'acct_creation_global_soft_throttle_hit-desc' => 'Rajoita käyttäjien luontia',
 );
@@ -190,6 +191,17 @@ Waat e koot Momäntsche beß mer widder jet Luff han, un versök et dann noch en
 et dann noch ens.
 De kanns Dingem Brauser singe Knopp för „de Sigg neu lade“ doför nämme.',
 	'acct_creation_global_soft_throttle_hit-desc' => 'Neu Metmaacher Aanmelldunge bejrenze.',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'acct_creation_global_soft_throttle_hit' => "d'Ulleë vu Ventzerkonte gouf automatesch fir kuerz Zäit ausgeschalt, wéint enger ongewéinlech grousser Zuel vu rezente Versich fir sech anzeloggen.
+Waart w.e.g. ep uer Minutten a probéiert dannnach emol.",
+	'acct_creation_global_hard_throttle_hit' => "D'Ulleë vu Benotzerkonte gouf fir e puer Sekonnen ausgeschalt fir Ugrëffer duerch massiv Umellungen ze reduzéieren.
+Waart w.e.g. een Ament an dréckt da 'reload' an ärem Browser fir et nach eml ze schécken.",
+	'acct_creation_global_soft_throttle_hit-desc' => 'Bremsen vun dem Uleeën vu Benotzerkonten',
 );
 
 /** Marathi (मराठी)

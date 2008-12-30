@@ -209,6 +209,13 @@ $messages['cs'] = array(
 	'importusers-realname' => 'skutečné jméno',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'importusers-realname' => 'и́стиньно и́мѧ',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
