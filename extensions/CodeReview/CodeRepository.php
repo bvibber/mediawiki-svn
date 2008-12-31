@@ -177,7 +177,7 @@ class CodeRepository {
 	 *                   'cached' to *only* fetch if cached
 	 */
 	public function getDiff( $rev, $useCache = '' ) {
-		global $wgMemc, $wgDefaultExternalStore;
+		global $wgMemc;
 		wfProfileIn( __METHOD__ );
 
 		$rev1 = $rev - 1;
@@ -198,7 +198,7 @@ class CodeRepository {
 		}
 
 		# Try the database...
-		if( !$data ) {
+		if( !$data && $useCache != 'skipcache' ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$row = $dbr->selectRow( 'code_rev', 
 				array( 'cr_diff', 'cr_flags' ),
@@ -208,16 +208,6 @@ class CodeRepository {
 			if( $row ) {
 				$flags = explode( ',', $row->cr_flags );
 				$data = $row->cr_diff;
-				# Use external methods for external objects, text in table is URL-only then
-				if( in_array( 'external', $flags ) ) {
-					$url = $data;
-					@list(/* $proto */,$path) = explode('://',$url,2);
-					if( $path == "" ) {
-						$data = false; // something is wrong...
-					} else {
-						$data = ExternalStore::fetchFromURL($url);
-					}
-				}
 				// If the text was fetched without an error, convert it
 				if( $data !== false && in_array( 'gzip', $flags ) ) {
 					# Deal with optional compression of archived pages.
@@ -236,18 +226,6 @@ class CodeRepository {
 			$wgMemc->set( $key, $data, 3600*24*3 );
 			// Permanent DB storage
 			$flags = Revision::compressRevisionText( $data );
-			if( ($storage = $wgDefaultExternalStore) ) {
-				if( is_array($storage) ) {
-					# Distribute storage across multiple clusters
-					$store = $storage[mt_rand(0, count( $storage ) - 1)];
-				} else {
-					$store = $storage;
-				}
-				# Store and get the URL
-				$data = ExternalStore::insert( $store, $data );
-				if( $flags ) $flags .= ',';
-				$flags .= 'external';
-			}
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update( 'code_rev', 
 				array( 'cr_diff' => $data, 'cr_flags' => $flags ),
