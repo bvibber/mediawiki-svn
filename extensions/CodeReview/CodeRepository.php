@@ -225,10 +225,11 @@ class CodeRepository {
 			// Store to cache
 			$wgMemc->set( $key, $data, 3600*24*3 );
 			// Permanent DB storage
-			$flags = Revision::compressRevisionText( $data );
+			$storedData = $data;
+			$flags = Revision::compressRevisionText( $storedData );
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->update( 'code_rev', 
-				array( 'cr_diff' => $data, 'cr_flags' => $flags ),
+				array( 'cr_diff' => $storedData, 'cr_flags' => $flags ),
 				array( 'cr_repo_id' => $this->mId, 'cr_id' => $rev ),
 				__METHOD__
 			);
