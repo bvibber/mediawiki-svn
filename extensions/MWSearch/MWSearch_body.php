@@ -162,6 +162,17 @@ class LuceneSearch extends SearchEngine {
 	function acceptListRedirects() {
 		return false;
 	}
+	
+	/** Merge the prefix into the query (if any) */
+	function transformSearchTerm( $term ) {
+		global $wgLuceneSearchVersion;
+		
+		if ( $wgLuceneSearchVersion >= 2.1 && $this->prefix != '' ){
+			# convert to internal backend prefix notation 
+			$term = $term.' prefix:'.$this->prefix;
+		}
+		return $term;
+	}
 }
 
 class LuceneResult extends SearchResult {
@@ -439,6 +450,7 @@ class LuceneSearchSet extends SearchResultSet {
 	 * @param string $method The protocol verb to use
 	 * @param string $query
 	 * @param int $limit
+	 * @param int $offset
 	 * @return array
 	 * @access public
 	 */
