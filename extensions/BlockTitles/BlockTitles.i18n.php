@@ -157,6 +157,13 @@ $messages['es'] = array(
 	'block_title_error' => 'No se puede guardar esta página porque su título no está permitido.',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'block_title_error_page_title' => 'Izenburu blokeatua',
+);
+
 /** Persian (فارسی)
  * @author Huji
  * @author Mardetanha

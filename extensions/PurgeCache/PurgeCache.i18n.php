@@ -99,6 +99,17 @@ $messages['eo'] = array(
 	'purgecache-button' => 'Ĝisdatigu',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'purgecache' => 'Katxea ezabatu',
+	'purgecache-desc' => 'OBJECTCACHE taula garbitzeko erabiltzen den [[Special:PurgeCache|orrialde berezia]]',
+	'purgecache-warning' => 'Honek katxearen taulak ezabatuko du.',
+	'purgecache-purged' => 'Katxea ezabatu izan da.',
+	'purgecache-button' => 'Ezabatu',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd

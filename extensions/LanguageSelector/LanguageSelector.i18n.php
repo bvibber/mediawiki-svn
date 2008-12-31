@@ -186,6 +186,15 @@ $messages['es'] = array(
 	'languageselector-setlang' => 'selecciona',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'languageselector' => 'Hizkuntza',
+	'languageselector-desc' => 'Orrialde guztietako hizkuntza aukeraketa, baita bisitarientzat ere',
+	'languageselector-setlang' => 'ezarri',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

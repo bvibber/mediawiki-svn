@@ -51,6 +51,13 @@ $messages['es'] = array(
 	'regexfunctions-desc' => 'Funciones sintácticas de expresiones regulares',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'regexfunctions-desc' => 'Espresio erregularra parser funtzioa',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku

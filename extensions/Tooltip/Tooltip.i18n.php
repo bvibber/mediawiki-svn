@@ -244,6 +244,13 @@ $messages['te'] = array(
 	'tooltip-desc' => '<tt><nowiki><tooltip></nowiki></tt> మరియు <tt><nowiki>{{#tooltip:}}</nowiki></tt> ట్యాగులను చేరుస్తుంది',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'tooltip-desc' => 'Nagdaragdag ng tatak na <tt><nowiki><tooltip></nowiki></tt> at <tt><nowiki>{{#tooltip:}}</nowiki></tt>',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

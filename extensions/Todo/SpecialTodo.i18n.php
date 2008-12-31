@@ -1097,6 +1097,14 @@ $messages['te'] = array(
 	'todo-form-details' => 'వివరాలు:',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'todo-new-queue' => 'foun',
+	'todo-list-cancel' => 'Para',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */
@@ -1115,6 +1123,41 @@ $messages['tg-cyrl'] = array(
 $messages['th'] = array(
 	'todo-list-change' => 'เปลี่ยน',
 	'todo-list-cancel' => 'ยกเลิก',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'todo' => 'Talaan ng mga gagawin',
+	'todo-desc' => 'Sinusubok pang karugtong na pansariling [[Special:Todo|talaan ng mga gagawin]]',
+	'todo-tab' => 'mga gagawin',
+	'todo-new-queue' => 'bago',
+	'todo-mail-subject' => 'Bagay na nagawang nasa talaa ng mga gagawin ni $1',
+	'todo-mail-body' => 'Ang hiniling mong pagpapatotoo hinggil sa pagkakabuo (pagkatapos) na ng isang bagay na ipinasa/ipinadala mo sa pang-habang nakakunekta sa internet na talaan ng mga gagawin ni $1 sa pamamagitan ng e-liham.
+
+Bagay (paksa): $2
+Ipinasa/ipinadala noong: $3
+
+Tinatakan ang bagay na ito bilang natapos na, na may ganitong kumento/puna:
+$4',
+	'todo-invalid-item' => 'Nawawala o hindi tanggap na bagay',
+	'todo-update-else-item' => 'Sinusubok na isapanahon ang mga bagay-bagay ng ibang tao',
+	'todo-unrecognize-type' => 'Hindi nakikilalang uri',
+	'todo-user-invalide' => 'Hindi tanggap ang gagawin, nawawala, o tagagamit na hindi para sa mga maaaring magawa',
+	'todo-item-list' => 'Mga bagay-bagay mo',
+	'todo-no-item' => 'Walang mga bagay na gagawin.',
+	'todo-invalid-owner' => 'Hindi tanggap na may-ari para sa bagay na ito',
+	'todo-add-queue' => 'Idagdag ang pila (naghihintay na hanay)…',
+	'todo-move-queue' => 'Ilipat sa pila (hanay na naghihintay)…',
+	'todo-list-for' => 'Talaan ng mga gagawin para kay',
+	'todo-list-change' => 'Baguhin',
+	'todo-list-cancel' => 'Huwag ipagpatuloy',
+	'todo-new-item' => 'Bagong bagay',
+	'todo-issue-summary' => 'Ibigay ang buod:',
+	'todo-form-details' => 'Mga detalye:',
+	'todo-form-email' => 'Upang makatanggap ng pagbibigay-alam sa pamamagitan ng e-liham kung naisara na ang bagay, makinilyahin dito ang adres mo:',
+	'todo-form-submit' => 'Ipasa/ipadala ang katanungan',
 );
 
 /** Turkish (Türkçe)

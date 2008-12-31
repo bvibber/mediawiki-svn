@@ -94,6 +94,26 @@ $messages['de'] = array(
 	'right-emergencydesysop' => 'Das Recht zur Degradierung eines anderen Sysop auf Gegenseitigkeit',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'emergencydesysop' => 'Nuzowe wótrjaknjenje na swójski administratorowy status',
+	'emergencydesysop-desc' => 'Zmóžnja administratoroju se na swóje priwilegije zbyś, aby wzeł drugemu administratoroju status administratora',
+	'emergencydesysop-title' => 'Administratorowy status ako aktualnemu wužywarjeju tak teke drugemu administratoroju wześ',
+	'emergencydesysop-otheradmin' => 'Drugi administrator za wótpóranje z kupki',
+	'emergencydesysop-reason' => 'Pśicyna za wótpóranje',
+	'emergencydesysop-submit' => 'Wótpósłaś',
+	'emergencydesysop-incomplete' => 'Wše formularne póla su trěbne, pšosym wopytaj hyšći raz.',
+	'emergencydesysop-notasysop' => 'Celowy wužywaŕ njejo w kupce administratorow.',
+	'emergencydesysop-nogroups' => 'Žeden',
+	'emergencydesysop-done' => 'Akcija dokóńcona, ako ty tak teke [[$1]] wěcej njamatej status administratora.',
+	'emergencydesysop-invalidtarget' => 'Celowy wužywaŕ njeeksistěrujo.',
+	'emergencydesysop-blocked' => 'Njamaš pśistup na toś ten bok měś, mjaztym až sy blokěrowany.',
+	'emergencydesysop-noright' => 'Njamaš dosegajuce pšawa, aby měł pśistup na toś ten bok',
+	'right-emergencydesysop' => 'Móžnosć drugemu wužywarjeju status amdministratora mjazsobnje wześ',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -158,6 +178,46 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'emergencydesysop-nogroups' => 'Οὐδέν',
+);
+
+/** Croatian (Hrvatski)
+ * @author Dalibor Bosits
+ */
+$messages['hr'] = array(
+	'emergencydesysop' => 'Hitno uklanjanje statusa',
+	'emergencydesysop-desc' => 'Omogućava administratorima uklanjanje svog statusa, kako bi uklonili status drugome',
+	'emergencydesysop-title' => 'Uklonite admin status sebi i drugom administratoru',
+	'emergencydesysop-otheradmin' => 'Drugi administrator',
+	'emergencydesysop-reason' => 'Razlog za uklanjanje',
+	'emergencydesysop-submit' => 'Potvrdi',
+	'emergencydesysop-incomplete' => 'Potrebno je ispuniti sva polja, pokušajte opet.',
+	'emergencydesysop-notasysop' => 'Ciljani suradnik nije u skupini administratora.',
+	'emergencydesysop-nogroups' => 'Ništa',
+	'emergencydesysop-done' => 'Završeno, admin status je uklonjen vama i suradniku [[$1]].',
+	'emergencydesysop-invalidtarget' => 'Ciljani suradnik ne postoji.',
+	'emergencydesysop-blocked' => 'Ne možete pristupiti ovoj stranici dok ste blokirani.',
+	'emergencydesysop-noright' => 'Nemate ovlasti za pristup ovoj stranici',
+	'right-emergencydesysop' => 'Uzajamno uklanjanje admin statusa',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'emergencydesysop' => 'Nuzowe wzdaće na swójski administratorowy status',
+	'emergencydesysop-desc' => 'Zmóžnja administratorej so swojich priwilegijow wzdać, zo by druhemu administratorej status administratora preč wzał',
+	'emergencydesysop-title' => 'Wotstronja administratorowy status aktualneho a druheho administratora',
+	'emergencydesysop-otheradmin' => 'Druhi administrator za wotstronjenje ze skupiny',
+	'emergencydesysop-reason' => 'Přičina za wotstronjenje',
+	'emergencydesysop-submit' => 'Wotpósłać',
+	'emergencydesysop-incomplete' => 'Wšě formularne pola su trěbne, prošu spytaj hišće raz.',
+	'emergencydesysop-notasysop' => 'Cilowy wužiwar njeje w skupinje administratorow.',
+	'emergencydesysop-nogroups' => 'Žadyn',
+	'emergencydesysop-done' => 'Akcija dokónčena, ty kaž tež [[$1]] hižo njemataj status administratora.',
+	'emergencydesysop-invalidtarget' => 'Cilowy wužiwar njeeksistuje.',
+	'emergencydesysop-blocked' => 'Njemóžeš na tutu stronu přistup měć, mjeztym zo sy zablokowany.',
+	'emergencydesysop-noright' => 'Njemaš dosahace prawa, zo by na tutu stronu přistup měł.',
+	'right-emergencydesysop' => 'Móžnosć druhemu wužiwarjej mjez sobu status administratora preč wzać',
 );
 
 /** Japanese (日本語)
@@ -358,6 +418,18 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'emergencydesysop-reason' => 'తొలగింపునకు కారణం',
 	'emergencydesysop-submit' => 'దాఖలుచెయ్యి',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'emergencydesysop-desc' => '允许管理员牺牲他们的特权，免除另一名管理员的权限。',
+	'emergencydesysop-reason' => '移除理由',
+	'emergencydesysop-notasysop' => '目标用户不在管理员群组中。',
+	'emergencydesysop-invalidtarget' => '目标用户不存在。',
+	'emergencydesysop-blocked' => '您在封禁期内不能访问此页',
+	'emergencydesysop-noright' => '您没有足够权限访问本页',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

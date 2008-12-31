@@ -222,6 +222,9 @@ $messages['af'] = array(
  */
 $messages['am'] = array(
 	'viewapc-display-filename' => 'የፋይል ስም',
+	'viewapc-display-info' => 'ስም',
+	'viewapc-ls-header-name' => 'ስም',
+	'viewapc-ls-sort-name' => 'ስም',
 	'viewapc-ls-limit-none' => 'ሁሉ',
 );
 
@@ -3883,12 +3886,20 @@ Phiên bản $2 mới hơn có tại http://pecl.php.net/package/APC/$2',
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
+ * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'viewapc-mode-version-check' => '检查版本',
+	'viewapc-apc-version' => 'APC版本',
 	'viewapc-php-version' => 'PHP 版本',
+	'viewapc-upload-support' => '文件上传支持',
+	'viewapc-display-filename' => '文件名',
+	'viewapc-ls-sort-modified' => '最近更改',
+	'viewapc-version-info' => '版本资料',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -3897,7 +3908,7 @@ $messages['zh-hant'] = array(
 	'viewapc-php-version' => 'PHP版本',
 	'viewapc-upload-support' => '檔案上載支援',
 	'viewapc-display-filename' => '檔名',
-	'viewapc-ls-sort-modified' => '最近修改',
+	'viewapc-ls-sort-modified' => '最近更改',
 	'viewapc-version-info' => '版本資料',
 );
 

@@ -148,6 +148,13 @@ $messages['dsb'] = array(
 	'contrib-tracking-button' => 'Dalej',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'contrib-tracking-button' => 'Συνέχεια',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -225,9 +232,11 @@ $messages['gl'] = array(
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['grc'] = array(
 	'contrib-tracking-error' => 'Σφάλμα',
+	'contrib-tracking-button' => 'Ἀκολουθεῖν',
 );
 
 /** Hebrew (עברית)
@@ -531,6 +540,14 @@ $messages['sv'] = array(
 	'contrib-tracking-submitting' => 'Skickar till betalningshanterare...',
 	'contrib-tracking-continue' => 'Om du inte kommer vidare automatiskt, klicka på knappen för att slutföra din donation hos PayPal.',
 	'contrib-tracking-button' => 'Fortsätt',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'contrib-tracking-error' => 'Хато',
+	'contrib-tracking-button' => 'Идома',
 );
 
 /** Tagalog (Tagalog)

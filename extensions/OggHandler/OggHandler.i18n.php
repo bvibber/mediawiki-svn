@@ -940,6 +940,7 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'ogg-player-selected' => '(ἐπειλεγμένη)',
 	'ogg-more' => 'πλέον...',
+	'ogg-dismiss' => 'Κλῄειν',
 );
 
 /** Swiss German (Alemannisch)

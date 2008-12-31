@@ -76,7 +76,11 @@ $wgCustomToolbarMessages['qqq'] = array(
  * @author Codex Sinaiticus
  */
 $wgCustomToolbarMessages['am'] = array(
+	'ct_bold_sample' => 'ጨለማ ጽሕፈት',
+	'ct_italic_sample' => 'ያንጋደደ ጽሕፈት',
+	'ct_external_caption' => 'የውጭ መያያዣ',
 	'ct_horizontal_caption' => 'አድማሳዊ መስመር',
+	'ct_user_sample' => 'የአባል ስም',
 );
 
 /** Arabic (العربية)

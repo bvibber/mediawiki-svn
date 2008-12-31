@@ -1169,6 +1169,13 @@ Những tập tin không phù hợp sẽ bị xóa lập tức, mời xem [[{{Me
 	'multiupload-toolbox' => 'Tải nhiều tập tin',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'multipleupload-saveallfiles' => '保存所有文件',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

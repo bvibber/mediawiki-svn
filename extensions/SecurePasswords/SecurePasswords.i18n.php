@@ -360,6 +360,22 @@ $messages['te'] = array(
 	'securepasswords-word' => 'ఒక పదం అయివుండకూడదు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'securepasswords-desc' => "Lumilikha ng mas higit na ligtas na mga panghalo (''hash'') ng hudyat at nagdaragdag ng isang tagapasuri ng lakas ng hudyat",
+	'securepasswords-valid' => 'Hindi tanggap ang hudyat mo o napakaikli.
+Dapat itong:',
+	'securepasswords-minlength' => 'may kahit na $1 {{PLURAL:$1|panitik|mga panitik}} ang haba',
+	'securepasswords-lowercase' => 'maglaman ng kahit na 1 maliit na titik',
+	'securepasswords-uppercase' => 'maglaman ng kahit na 1 malaking titik',
+	'securepasswords-digit' => 'maglaman ng kahit na 1 tambilang (bilang)',
+	'securepasswords-special' => 'maglaman ng kahit na 1 natatanging panitik (ang natatanging mga panitik ay: $1)',
+	'securepasswords-username' => 'naiiba/kaiba mula sa iyong pangalan ng tagagamit',
+	'securepasswords-word' => 'hindi isang salita',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

@@ -371,6 +371,7 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Badseed
  * @author Consta
+ * @author Omnipaedista
  * @author ZaDiak
  */
 $messages['el'] = array(
@@ -379,6 +380,7 @@ $messages['el'] = array(
 	'sitematrix-project' => 'Όνομα εγχειρήματος, διαεγχειρηματικός (interproject) σύνδεσμος και διαγλωσσικός (interwiki) σύνδεσμος',
 	'sitematrix-others' => 'Άλλα εγχειρήματα του Wikimedia',
 	'sitematrix-sitetotal' => 'Συνολικά',
+	'sitematrix-private' => 'ιδιωτικό',
 );
 
 /** Esperanto (Esperanto)
@@ -557,6 +559,7 @@ $messages['gl'] = array(
 $messages['grc'] = array(
 	'sitematrix-language' => 'Γλῶττα',
 	'sitematrix-sitetotal' => 'Πλήρης',
+	'sitematrix-private' => 'ἰδιωτική',
 );
 
 /** Gujarati (ગુજરાતી)

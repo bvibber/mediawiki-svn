@@ -322,3 +322,17 @@ $messages['zh-hant'] = array(
 	'emailaddressimage-desc' => '加入<tt>&lt;email&gt;</tt>把電郵地址顯示成圖像',
 );
 
+/** Chinese (Hong Kong) (‪中文(香港)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hk'] = array(
+	'emailaddressimage-desc' => '加入<tt>&lt;email&gt;</tt>把電郵地址顯示成圖像',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-tw'] = array(
+	'emailaddressimage-desc' => '加入<tt>&lt;email&gt;</tt>把電郵地址顯示成圖像',
+);
+

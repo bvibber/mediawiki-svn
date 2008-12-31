@@ -228,6 +228,24 @@ $messages['eu'] = array(
 	'amazonplus-noidres' => 'Akatsa: Ezin da produltuaren IDa aurkitu!',
 	'amazonplus-fgcerr' => 'Akatsa: Ezin da daturik lortu Amazonetik!',
 	'amazonplus-slserr' => 'Akatsa: Ezin da daturik parseatu Amazonetik!',
+	'amazonplus-used' => 'erabilia',
+	'amazonplus-german' => 'Alemaniera',
+	'amazonplus-french' => 'Frantsesa',
+	'amazonplus-japanese' => 'Japoniera',
+	'amazonplus-amazon' => 'amazon prezioa',
+	'amazonplus-new' => 'berria',
+	'amazonplus-status' => '($1)',
+	'amazonplus-status-sep' => ',',
+	'amazonplus-none' => 'Ez dago artikulu honen kopiarik salgai.',
+	'amazonplus-currency' => '$1$3 $4$2',
+	'amazonplus-cp-none' => 'Bat ere ez',
+	'amazonplus-cp-usd' => 'USD',
+	'amazonplus-cp-cad' => 'CAD',
+	'amazonplus-cp-gbp' => 'GBP',
+	'amazonplus-cp-eur' => 'EUR',
+	'amazonplus-cp-jpy' => 'JPY',
+	'amazonplus-more' => 'gehiago',
+	'amazonplus-less' => 'gutxiago',
 );
 
 /** Finnish (Suomi)
@@ -474,6 +492,8 @@ $messages['lb'] = array(
 	'amazonplus-new' => 'nei',
 	'amazonplus-none' => 'Keng Kopie vun dësem Artikel ass ze verkafen',
 	'amazonplus-cp-none' => 'Keng',
+	'amazonplus-more' => 'méi',
+	'amazonplus-less' => 'manner',
 );
 
 /** Limburgish (Limburgs)

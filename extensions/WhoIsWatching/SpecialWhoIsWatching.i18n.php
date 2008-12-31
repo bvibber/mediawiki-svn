@@ -194,6 +194,13 @@ $messages['et'] = array(
 	'specialwhoiswatchingaddbtn' => 'Lisa valitud kasutajaid',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'whoiswatching' => 'Nor dago ikusten wiki orrialde bat',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

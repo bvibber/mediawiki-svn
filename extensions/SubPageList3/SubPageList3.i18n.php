@@ -321,6 +321,15 @@ $messages['tg-cyrl'] = array(
 	'spl3_nosubpages' => '$1 дорои ҳеҷ зерсаҳифаҳое барои феҳристкунӣ нест.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'spl3-desc' => 'Kusang lumilikha ng isang talaan ng kabahaging mga pahina ng isang pahina na gumagamit ng tatak na <code><nowiki><splist /></nowiki></code>',
+	'spl3_debug' => 'Hindi nalalamang halaga para sa pagpipiliang $1.',
+	'spl3_nosubpages' => 'Walang maitatalang kabahaging mga pahina ang $1.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

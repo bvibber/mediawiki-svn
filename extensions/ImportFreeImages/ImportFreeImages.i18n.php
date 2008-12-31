@@ -901,6 +901,7 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'importfreeimages_owner' => 'Autór',
+	'importfreeimages_next' => 'Oinmai $1',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

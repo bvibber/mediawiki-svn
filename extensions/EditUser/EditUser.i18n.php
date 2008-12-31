@@ -64,6 +64,7 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'edituser-username' => 'ስም',
 	'edituser-dosearch' => 'ፍለጋ',
 );
 
@@ -978,10 +979,11 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
 	'edituser' => '编辑用户',
-	'edituser-logout' => '登出用户',
+	'edituser-logout' => '用户退出',
 	'edituser-username' => '用户名',
 	'edituser-dosearch' => '搜索',
 	'edituser-nouser' => '指定的用户不存在',

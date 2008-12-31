@@ -339,6 +339,26 @@ $messages['de-formal'] = array(
 	'usernameblacklist-invalid-lines' => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Liste unerwünschter Benutzernamen {{PLURAL:$1|ist|sind}} ungültig; bitte korrigieren Sie diese vor dem Speichern:',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'usernameblacklist-desc' => 'Pśidawa [[MediaWiki:Usernameblacklist|cornu lisćinu wužywarskich mjenjow]], aby załoženje wužywarskich kontow wobgranicowała, kótarež wótpowěduju jadnomu regularnemu wurazoju abo někotarym regularnym wurazam',
+	'blacklistedusername' => 'Wužywarske mě w cornej lisćinje',
+	'blacklistedusernametext' => 'Wužywarske mě, kótarež sy wubrał, jo w [[MediaWiki:Usernameblacklist|cornej lisćinje wužywarskich mjenjow]].
+Pšosym wubjeŕ druge mě.',
+	'usernameblacklist' => '<pre>
+# Zapiski w toś tej lisćinje budu se ako źěl regularnego wuraza wužywaś, gaž
+# pśirownanje wužywarskich mjenjow z corneju lisćinu stawa se pśi registrěrowanju. 
+# Kuždy zapisk by měł źěl naliceńskeje lisćiny byś, na pś.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => '{{PLURAL:$1|Slědujuca smužka|Slědujucej smužce|Slědujuce smužki|Slědujuce smužki}} w cornej lisćinje wužywarskich mjenjow {{PLURAL:$1|jo njepłaśiwa|stej njepłaśiwej|su njepłaśiwe|su njepłaśiwe}}; pšosym skorigěruj {{PLURAL:$1|ju|jej|je|je}} do składowanja:',
+	'right-uboverride' => 'Płaśiwośc corneje lisćiny wužywarskich mjenjow wótpóraś',
+);
+
 /** Greek (Ελληνικά)
  * @author Badseed
  * @author ZaDiak

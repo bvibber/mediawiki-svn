@@ -682,8 +682,15 @@ $messages['tg-cyrl'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'postcomment_desc' => 'Nagpapahintulot sa mga tagagamit na tuwirang makapagtala/mapagpaskil ng mga puna/kumento sa mga pahina ng usapan.',
+	'postcomment_discussionprotected' => 'Nakasanggalang ang pahina ng usapang ito mula sa iba pang mga pagtatala/pagpapaskil.',
+	'postcomment_notloggedin' => 'Hindi ka pa nakalagda.',
+	'postcomment_youareloggedinas' => 'Nakalagda ka na bilang $1',
+	'postcomment_addcommentdiscussionpage' => 'Idagdag ang iyong kumento/puna sa pahina ng usapang ito',
+	'postcomment_leavemessagefor' => 'Mag-iwan ng isang mensahe para kay $1',
 	'postcomment_post' => 'Itala (ipaskil)',
 	'postcomment_on' => 'Noong',
+	'postcomment_said' => 'nagsabi ng ganito',
 	'postcomment_invalidrequest' => 'Hindi tanggap na kahilingan.',
 	'postcomment_replyto' => 'Tumugon/sumagot kay $1',
 	'postcomment_nopostingtoadd' => 'Walang maidaragdag na pagtatala (pagpapahayag).',

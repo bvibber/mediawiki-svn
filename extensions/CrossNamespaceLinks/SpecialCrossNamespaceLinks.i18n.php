@@ -214,10 +214,14 @@ $messages['et'] = array(
 	'crossnamespacelinks' => 'Lingid teise nimeruumi',
 );
 
-/** Basque (Euskara) */
+/** Basque (Euskara)
+ * @author Theklan
+ */
 $messages['eu'] = array(
 	'crossnamespacelinks' => 'Izen ezberdineko orrialdeen arteko loturak',
+	'crossnamespacelinks-desc' => '{{SITENAME}}(e)n existitu beharko ez luketen [[Special:CrossNamespaceLinks|izen-tarteen loturen zerrenda]]',
 	'crossnamespacelinks-summary' => 'Orrialde honek izen-tarte nagusikoak izanik beste izen-tarte batzuetan dauden orrialdeetara loturak dituzten orrialdeak zerrendatzen ditu ({{ns:special}}, {{ns:talk}}, {{ns:project}} eta {{ns:template}} izen-tarteak izan ezik), eta hori ez da gomendagarria.',
+	'crossnamespacelinkstext' => '$1: {{PLURAL:$2|lotura 1|$2 lotura}} $3(e)ra',
 );
 
 /** Persian (فارسی)

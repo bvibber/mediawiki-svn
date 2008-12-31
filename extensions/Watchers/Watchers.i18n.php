@@ -666,6 +666,13 @@ $messages['vec'] = array(
 	'watchers_less_than_x' => "Manco de $1 {{PLURAL:$1|utente el|utenti i}} tien d'ocio sta pagina.",
 );
 
+/** Chinese (China) (‪中文(中国大陆)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-cn'] = array(
+	'watchers' => '监视列表',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */
@@ -680,11 +687,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'watchers' => '監視者',
-	'watchers_link_title' => '誰監視此頁面?',
+	'watchers_link_title' => '誰在監視此頁？',
 	'watchers_noone_watches' => '沒有人監視此頁面。',
 );
 

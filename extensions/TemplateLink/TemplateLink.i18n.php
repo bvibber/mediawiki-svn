@@ -388,6 +388,16 @@ $messages['tg-cyrl'] = array(
 	'templatelink_empty' => 'Шумо бояд параметре пешниҳод кунед.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'templatelink' => 'Kawing sa suleras',
+	'templatelink_desc' => 'Makapagpapakita ang karugtong na ito ng isang suleras bilang isang bagong pahina',
+	'templatelink_empty' => 'Kinakailangan mong magbigay ng isang parametro.',
+	'templatelink_newtitle' => '$1 (inilipat-sama)',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

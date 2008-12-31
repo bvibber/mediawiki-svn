@@ -249,3 +249,15 @@ $messages['sk'] = array(
 	'rights-userrights-global' => 'Spravovať oprávnenia globálnych používateľov',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'globaluserrights' => 'Pamamahala ang Mga Karapatan ng Pandaigdigang Tagagamit',
+	'gur-desc' => 'Maginhawang pangangasiwa ng [[Special:GlobalUserRights|mga karapatan ng pandaigdigang tagagamit]]',
+	'gur-rightslog-name' => 'Talaan ng pandaigdigang mga karapatan',
+	'gur-rightslog-header' => 'Isa itong talaan ng mga pagbabago sa pandaigdigang mga karapatan.',
+	'gur-rightslog-entry' => 'binago ang kasapian ng pandaigdigang kapangkatan para kay $1 mula $2 patungo sa $3',
+	'rights-userrights-global' => 'Pamahalaan ang mga karapatan ng pandaigdigang tagagamit',
+);
+

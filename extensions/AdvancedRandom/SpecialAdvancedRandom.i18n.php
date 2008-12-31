@@ -130,6 +130,13 @@ $messages['es'] = array(
 	'advancedrandom-desc' => 'Obtener una página al azar a partir de una discusión o de un enlace de una página de asunto a una página dada. Puede ser usado como en [[Special:AdvancedRandom/Template:Featured/Talk]] para obtener un artículo destacado al azar o como [[Special:AdvancedRandom/Template:GFDL/Image]] para obtener un archivo GFDL al azar',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'advancedrandom' => 'Ausazko aurreratua',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */

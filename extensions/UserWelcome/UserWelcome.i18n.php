@@ -40,6 +40,7 @@ Do not translate tags names, and links targets.',
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'mp-welcome-logged-in' => 'ጤና ይስጥልኝ፣ $1',
 	'mp-request-new-message' => 'አዲስ መልዕክት',
 	'mp-request-new-award' => '$1 አዲስ {{PLURAL:$1|ሽልማት|ሽልማቶች}}',
 	'mp-request-new-gift' => '$1 አዲስ {{PLURAL:$1|ስጦታ|ስጦታዎች}}',
@@ -473,6 +474,7 @@ $messages['lb'] = array(
 	'mp-requests-message' => 'Dir hutt dës Ufroen',
 	'mp-request-new-message' => 'neie Message',
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|neie Cadeau|nei Cadeauen}}',
+	'mp-request-new-foe' => '$1 nei {{PLURAL:$1|Géigner|Géigner}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|neie Frënd|nei Frënn}}',
 );
 
@@ -829,8 +831,11 @@ $messages['zh-hans'] = array(
 	'mp-welcome-upload' => '上传',
 	'mp-welcome-edit' => '编辑',
 	'mp-welcome-logged-in' => '$1，您好',
+	'mp-requests-title' => '请求',
 	'mp-requests-message' => '您有以下请求：',
 	'mp-request-new-message' => '新信息',
+	'mp-request-new-gift' => '{{PLURAL:$1件|新礼物}}',
+	'mp-request-new-friend' => '{{PLURAL:$1名|新朋友}}',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -844,7 +849,7 @@ $messages['zh-hant'] = array(
 	'mp-requests-title' => '請求',
 	'mp-requests-message' => '您有以下請求。',
 	'mp-request-new-message' => '新訊息',
-	'mp-request-new-gift' => '$1件新禮物',
-	'mp-request-new-friend' => '$1名新朋友',
+	'mp-request-new-gift' => '{{PLURAL:$1件|新禮物}}',
+	'mp-request-new-friend' => '{{PLURAL:$1名|新朋友}}',
 );
 

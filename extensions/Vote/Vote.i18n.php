@@ -87,6 +87,16 @@ riddler|Riddler',
 	'vote-invalid-choice' => 'U moet een van die beskikbare opsies kies.',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'vote' => 'ምርጫ',
+	'vote-submit' => 'ይምረጡ',
+	'vote-registered' => 'ምርጫዎ ተመዝግቧል።',
+	'vote-results' => 'የምርጫው ውጤት፦',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -363,6 +373,21 @@ $messages['et'] = array(
 	'vote-results-choice' => 'Valik',
 	'vote-results-count' => 'Üldarv',
 	'vote-login-link' => 'logi sisse',
+);
+
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'vote-submit' => 'Bozkatu',
+	'vote-registered' => 'Zure bozka erregistratu da.',
+	'vote-view-results' => 'Ikusi emaitzak',
+	'vote-results' => 'Ikusi emaitzak',
+	'vote-results-choice' => 'Aukeratu',
+	'vote-results-count' => 'Kontatu',
+	'vote-results-none' => 'Ez dago bozkarik oraindik ordu honetan.',
+	'vote-login' => '$1 behar duzu bozkatzeko.',
+	'vote-login-link' => 'sartu',
 );
 
 /** Extremaduran (Estremeñu)

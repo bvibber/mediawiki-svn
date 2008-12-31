@@ -1667,6 +1667,13 @@ $messages['es'] = array(
 	'configure-setting-wgDebugLogGroups-value' => 'Archivo',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'configure-setting-wgSitename' => 'Gunearen izena',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Str4nd
@@ -3223,6 +3230,7 @@ $messages['lb'] = array(
 	'configure-setting-wgMaxArticleSize' => 'Maximal Gréisst vun enger Säit (kB)',
 	'configure-setting-wgNoFollowLinks' => 'Den Attribut rel="nofollows" bäi extern Linken derbäisetzen',
 	'configure-setting-wgPageShowWatchingUsers' => 'Weis watfir Benotzer eng Säit iwwerwaachen',
+	'configure-setting-wgSiteNotice' => 'Notiz vum Site',
 	'configure-setting-wgSiteSupportPage' => 'Säit mat Informatiounen iwwert Donatiounen',
 	'configure-setting-wgStyleVersion' => 'Versioun vun de MediaWiki CSS/JS Fichieren',
 	'configure-setting-wgUniversalEditButton' => 'Den universalen Ännerungs-Knäpchen aschalten',
@@ -3236,6 +3244,7 @@ $messages['lb'] = array(
 	'configure-setting-wgHTTPTimeout' => 'Timeout fir HTTP-Ufroen',
 	'configure-setting-wgHTTPProxy' => 'HTTP Proxy de benotzt gëtt',
 	'configure-setting-wgVersion' => 'MediaWiki Versioun',
+	'configure-setting-wgExportAllowListContributors' => 'Erlaben datt eng Lëscht vun den Auteuren exportéiert gëtt',
 	'configure-setting-wgLogHeaders' => 'Beschreiwunge vun de Logbicher',
 	'configure-setting-wgLogNames' => 'Nimm vun de Lëschten a Logbicher',
 	'configure-setting-wgLogTypes' => 'Type vu Logbicher',
@@ -3272,6 +3281,7 @@ $messages['lb'] = array(
 	'configure-setting-wgHitcounterUpdateFreq' => 'Frequenz vun der Aktualisatioun vum Compteur vun de Säitenoffroen',
 	'configure-setting-wgValidSkinNames-key' => 'Interne Numm',
 	'configure-setting-wgValidSkinNames-value' => 'Numm weisen',
+	'configure-setting-wgExtraNamespaces-key' => 'Nummraum-ID',
 	'configure-setting-wgExtraNamespaces-value' => 'Numm vum Nummraum',
 	'configure-setting-wgNamespaceAliases' => 'Viruleedunge vun Nummraim',
 	'configure-setting-wgNamespaceAliases-key' => 'Alias-Numm',
@@ -3279,6 +3289,7 @@ $messages['lb'] = array(
 	'configure-setting-wgActiveUserDays' => 'Zäit no däer e Benotzer als inaktiv gëlt',
 	'configure-setting-wgAllowRealName' => 'Richteg Nimm erlaben',
 	'configure-setting-wgMinimalPasswordLength' => 'Mindest Längt vun de Passwieder',
+	'configure-setting-wgDBservers' => 'Datebankserveren',
 	'configure-setting-wgAntivirus' => 'Interne Numm vum Virescanner',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Nummraum',
 	'configure-setting-wgLocaltimezone' => 'Lokal Zäitzon',

@@ -69,6 +69,7 @@ $messages['am'] = array(
 	'dt_viewxml_categories' => 'መደቦች',
 	'dt_viewxml_namespaces' => 'ክፍለ-ዊኪዎች',
 	'dt_xml_namespace' => 'ክፍለ-ዊኪ',
+	'dt_xml_name' => 'ስም',
 	'dt_xml_title' => 'አርዕስት',
 );
 

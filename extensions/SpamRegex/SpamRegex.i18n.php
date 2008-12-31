@@ -70,6 +70,13 @@ $messages['af'] = array(
 	'spamregex-summary-log' => '(Opsomming)',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'spamregex-text' => '(ጽሕፈት)',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -1021,6 +1028,13 @@ $messages['te'] = array(
 	'spamregex-block-submit' => 'ఈ&nbsp;పదబంధాన్ని&nbsp;నిరోధించండి',
 	'spamregex-text' => '(పాఠ్యం)',
 	'spamregex-summary-log' => '(సంగ్రహం)',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'spamregex-text' => '(Testu)',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

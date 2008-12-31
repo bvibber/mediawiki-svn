@@ -116,6 +116,13 @@ $messages['es'] = array(
 	'fixedimage-desc' => 'Añade elemento <tt><nowiki><fundraising></nowiki></tt> como una imagen',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'fixedimage-desc' => '<tt><nowiki><fundraising></nowiki></tt> etiketa irudi gisa txertatzen du',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

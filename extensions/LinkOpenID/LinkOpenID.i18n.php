@@ -258,3 +258,17 @@ $messages['tet'] = array(
 	'linkopenid-prefstext-openid' => 'Ó-nia OpenID:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'linkopenid-desc' => 'Nagpapahintulot sa mga tagagamit na ikawing ang kanilang mga kuwenta sa isang panlabas na OpenID (Bukas na ID)',
+	'linkopenid-prefs' => 'OpenID ("Bukas na ID")',
+	'linkopenid-prefstext-pre' => 'Kung mayroon kang isang OpenID (Bukas na ID) mula sa isang panlabas na tagapagbigay nito maaari mong tukuyin ito dito. 
+Magpapahintulot ito na magamit ang iyong pahina ng tagagamit bilang isa ring OpenID.',
+	'linkopenid-prefstext-openid' => 'Ang OpenID (Bukas na ID) mo:',
+	'linkopenid-prefstext-v1url' => 'Serbidor-URL para sa Bersyong 1.1 ng OpenID:',
+	'linkopenid-prefstext-v2url' => 'Serbidor-URL para sa Bersyong 2 ng OpenID:',
+	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:',
+);
+

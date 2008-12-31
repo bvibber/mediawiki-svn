@@ -143,6 +143,7 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'openidemail' => 'የኢ-ሜል አድራሻ',
 	'openidlanguage' => 'ቋንቋ',
 );
 
@@ -3097,6 +3098,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -3106,7 +3108,7 @@ $messages['zh-hant'] = array(
 	'openidnickname' => '暱稱',
 	'openidfullname' => '全名',
 	'openidchoosefull' => '您的全名 ($1)',
-	'openidchoosepassword' => '密碼:',
+	'openidchoosepassword' => '密碼：',
 	'openidconvertyourstext' => '這已是您的OpenID了。',
 	'openidloginlabel' => 'OpenID網址',
 );

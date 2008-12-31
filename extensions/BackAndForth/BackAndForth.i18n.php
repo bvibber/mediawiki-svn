@@ -706,6 +706,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'backforth-next' => 'Oinmai ($1)',
 	'backforth-prev' => 'Molok ($1)',
 );
 

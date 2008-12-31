@@ -116,6 +116,20 @@ $messages['de'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'layouts-desc' => 'Pśipóra rowno napórane boki z wobźěłujobnymi "wugótowanjami", aby spěchował jadnotnu strukturu za boki',
+	'layouts_title' => 'Bok napóraś',
+	'layouts_chooselayout' => 'Wugótowanje za $1 wubraś:',
+	'layouts_nolayout' => 'Žedne wugótowanje',
+	'layouts_continue' => 'Dalej',
+	'layouts_choosecategory' => 'Kategoriju za $1 wubraś:',
+	'layouts_unknown' => 'Njeznaty',
+	'layouts_tagline' => "Toś ten bok jo se napórał z wugótowanim '''$1'''.",
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats
@@ -142,6 +156,20 @@ $messages['es'] = array(
 	'layouts_choosecategory' => 'Elige una Categoría para $1:',
 	'layouts_unknown' => 'Desconocido',
 	'layouts_tagline' => 'Esta página se generó con el diseño <strong>$1</strong>.',
+);
+
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'layouts_title' => 'Orrialde bat sortu',
+	'layouts_chooselayout' => '$1(r)entzat itxura bat aukeratu:',
+	'layouts_nolayout' => 'Ez dago itxurarik',
+	'layouts_continue' => 'Jarraitu',
+	'layouts_choosecategory' => '$1(r)entzat kategoria bat aukeratu:',
+	'layouts_unknown' => 'Ezezaguna',
+	'layouts_tagline' => "'''$1''' itxurak orrialde hau sortu du.",
+	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Finnish (Suomi)

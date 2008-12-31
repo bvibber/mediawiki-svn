@@ -1050,12 +1050,22 @@ $messages['vo'] = array(
 	'lookupuser-realname' => 'Nem jenöfik: $1',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'lookupuser-email' => '电邮：[[Special:EmailUser/$2|$1]]',
+	'lookupuser-realname' => '真实姓名：$1',
+	'lookupuser-registration' => '注册日期：$1',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'lookupuser-email' => '電郵: [[Special:EmailUser/$2|$1]]',
-	'lookupuser-realname' => '真實姓名: $1',
-	'lookupuser-registration' => '註冊日期: $1',
+	'lookupuser-email' => '電郵：[[Special:EmailUser/$2|$1]]',
+	'lookupuser-realname' => '真實姓名：$1',
+	'lookupuser-registration' => '註冊日期：$1',
 );
 

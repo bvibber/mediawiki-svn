@@ -109,6 +109,13 @@ $messages['af'] = array(
 	'contribstats-total-ytd' => 'Totaal (die jaar)',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'contrib-hist-name' => 'ስም',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -549,6 +556,15 @@ $messages['dsb'] = array(
 	'specialpages-group-contribution' => 'Dary/Pósćiwańska akcija',
 );
 
+/** Greek (Ελληνικά)
+ * @author Omnipaedista
+ */
+$messages['el'] = array(
+	'contrib-hist-amount' => 'Ποσόν',
+	'contrib-hist-anonymous' => 'Ανώνυμος',
+	'contribstats-amount' => 'Ποσόν (USD)',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -844,7 +860,10 @@ $messages['gl'] = array(
  */
 $messages['grc'] = array(
 	'contrib-hist-name' => 'Ὄνομα',
+	'contrib-hist-amount' => 'Ποσόν',
+	'contrib-hist-anonymous' => 'Άνώνυμος',
 	'contribstats-currency' => 'Συνάλλαγμα',
+	'contribstats-amount' => 'Ποσόν (USD)',
 	'fundraiserstats-date' => 'Ἡμερομηνία',
 );
 
@@ -2021,6 +2040,46 @@ $messages['te'] = array(
 $messages['tet'] = array(
 	'contrib-hist-date' => 'Loron ho tempu',
 	'fundraiserstats-date' => 'Tempu',
+);
+
+/** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
+ * @author Ibrahim
+ */
+$messages['tg-cyrl'] = array(
+	'contributiontotal' => 'Ҷамъи кӯмакҳо',
+	'contributionhistory' => 'Таърихи ҳиссагузорӣ',
+	'contrib-hist-name' => 'Ном',
+	'contrib-hist-date' => 'Вақт ва сана',
+	'contrib-hist-amount' => 'Маблағ',
+	'contrib-hist-next' => 'Кӯмакҳои барвақтар',
+	'contrib-hist-previous' => 'Кумакҳои навтар',
+	'contrib-hist-anonymous' => 'Гумном',
+	'contributionstatistics' => 'Омори ҳиссагузориҳо',
+	'contribstats-day' => 'Рӯз',
+	'contribstats-month' => 'Моҳ',
+	'contribstats-currency' => 'Асъор',
+	'contribstats-amount' => 'Маблағ (USD)',
+	'contribstats-contributions' => 'Ҳиссагузориҳо',
+	'contribstats-total' => 'Ҷамъ (USD)',
+	'contribstats-avg' => 'Миёна (USD)',
+	'contribstats-max' => 'Ҳаддиаксар (USD)',
+	'contribstats-percentage-ytd' => 'Фоиз (аз ибтидои сол)',
+	'contribstats-total-ytd' => 'Ҷамъ (аз ибтидои сол)',
+	'contribstats-value-exactly' => 'Дақиқан $1',
+	'contribstats-value-under' => 'Камтар аз $1',
+	'contribstats-value-from' => 'Аз $1 - $2',
+	'contribstats-value-over' => 'Бештар аз $1',
+	'fundraiserstatistics' => 'Омори ҷамъи сармоя',
+	'fundraiserstats-date' => 'Сана',
+	'fundraiserstats-day' => '$1 рӯзи соли $2',
+	'fundraiserstats-contributions' => 'Ҳиссагузориҳо',
+	'fundraiserstats-total' => 'Ҷамъ (USD)',
+	'fundraiserstats-avg' => 'Миёна (USD)',
+	'fundraiserstats-max' => 'Ҳаддиаксар (USD)',
+	'fundraiserstats-tab-totals' => 'Ҷамъ (USD)',
+	'fundraiserstats-tab-contributions' => 'Миқдори ҳиссагузориҳо',
+	'fundraiserstats-tab-averages' => 'Миёна (USD)',
+	'fundraiserstats-tab-maximums' => 'Ҳаддиаксар (USD)',
 );
 
 /** Tagalog (Tagalog)

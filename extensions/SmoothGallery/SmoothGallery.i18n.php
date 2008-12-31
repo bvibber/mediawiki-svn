@@ -254,7 +254,10 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'smoothgallery' => 'SmoothGallery',
 	'smoothgallery-desc' => 'Dowola wužiwarjam galerije z wobrazami, kotrež su so naharali, wutworić. Dowola najwjace opcijow ze SmoothGallery',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $!',
 	'smoothgallery-error' => '<b>SmoothGallery zmylk:</b>',
 	'smoothgallery-gallery-not-found' => 'Požadana galerija njeeksistuje.',
 	'smoothgallery-not-found' => 'Žane wobrazy njebuchu ke galeriji přidate. Prošu přidaj znajmjeńša jedyn wobraz.',

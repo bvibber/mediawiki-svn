@@ -90,6 +90,7 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'webstore_path_invalid' => 'የፋይሉ ስም ልክ አልነበረም።',
 	'webstore_404' => 'ፋይል አልተገኘም።',
 	'webstore_metadata_not_found' => 'ፋይል አልተገኘም: $1',
 );
@@ -1046,11 +1047,13 @@ $messages['lb'] = array(
 	'webstore_temp_close' => 'Feeler beim Zoumaache vum temporäre Fichier "$1".',
 	'webstore_temp_lock' => 'Feeler beim Zoumaache vum tempräre Fichier "$1".',
 	'webstore_no_file' => 'Et gouf kee Fichier eropgelueden.',
+	'webstore_move_uploaded' => 'Feeler beim eropgeluedene Fichier "$1" op d\'Tëschespäicherplaz "$2".',
 	'webstore_invalid_zone' => 'Zon "$1" ass net valabel',
 	'webstore_curl' => 'Feeler vun cURL: $1',
 	'webstore_404' => 'De Fichier gouf net fonnt.',
 	'webstore_php_warning' => 'PHP Warnung: $1',
 	'webstore_metadata_not_found' => 'De Fichier $1 gouf net fonnt',
+	'webstore_postfile_not_found' => 'De Fichier fir ze schécke gof net fonnt',
 	'webstore_invalid_response' => 'Ongëlteg Äntwert vum Server:
 
 $1',
@@ -1852,6 +1855,21 @@ $messages['tr'] = array(
 $messages['vi'] = array(
 	'webstore_curl' => 'Lỗi cURL: $1',
 	'webstore_php_warning' => 'Cảnh báo PHP: $1',
+);
+
+/** Chinese (China) (‪中文(中国大陆)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-cn'] = array(
+	'inplace_scaler_invalid_image' => '图像不可识别，无法检测尺寸。',
+	'inplace_scaler_failed' => '处理图像时遇到一个错误： $1',
+	'webstore_path_invalid' => '文件名无法识别。',
+	'webstore_no_file' => '上传文件未成功。',
+	'webstore_404' => '文件未找到。',
+	'webstore_php_warning' => 'PHP警告：$1',
+	'webstore_metadata_not_found' => '文件未找到：$1',
+	'webstore_no_response' => '服务器未响应',
+	'webstore_php_error' => '遇到PHP错误：',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

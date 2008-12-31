@@ -475,6 +475,22 @@ $2',
 	'userrightsnotif-desc' => 'ផ្ញើអ៊ីមែលជូនដំណឹងទៅកាន់អ្នកប្រើប្រាស់នៅពេលផ្លាស់ប្តូរសិទ្ធិ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'userrightsnotifybody' => '$1님 안녕하세요.
+
+이 메일을 통해 $4에 $2의 사용자 권한이 $3에 의해 변경되었음을 알리고자 합니다.
+
+추가: $5
+제거: $6
+
+안녕히 계세요.
+
+$2',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

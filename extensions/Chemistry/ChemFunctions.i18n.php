@@ -240,6 +240,17 @@ $messages['et'] = array(
 	'chemFunctions_Formula' => 'Valem',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'chemFunctions_CAS' => 'CAS zenbakia',
+	'chemFunctions_ATCCode' => 'ATCCode',
+	'chemFunctions_Formula' => 'Formula',
+	'chemFunctions_Name' => 'IUPAC izena',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Sarrera akatsa!',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

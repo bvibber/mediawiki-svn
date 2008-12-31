@@ -110,6 +110,15 @@ $messages['et'] = array(
 	'authors_anonymous' => 'Anonüümne',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'authors-desc' => 'Orrialdeetan lana egiten duten lankideen zerrenda egiten du',
+	'authors_authors' => 'Egileak',
+	'authors_anonymous' => 'Anonimoa',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

@@ -73,6 +73,7 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'badimages-name' => 'ስም:',
 	'badimages-reason' => 'ምክንያት:',
 );
 
@@ -310,12 +311,25 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'badimages' => 'Spisak pogrešnih slika',
+	'badimages-desc' => 'Proširuje mogućnosti spiska loših slika na MediaWiki',
 	'badimages-add-btn' => 'Dodaj',
+	'badimages-added' => '$1 je dodan na spisak.',
+	'badimages-count' => "{{PLURAL:$1|Postoji|Postoje|Postoji}} '''$1''' {{PLURAL:$1|slika|slike|slika}} na spisku loših slika.",
 	'badimages-name' => 'Naziv:',
+	'badimages-not-added' => 'Sliku nije moguće dodati.',
+	'badimages-not-removed' => 'Slika nije mogla biti uklonjena.',
 	'badimages-reason' => 'Razlog:',
 	'badimages-remove' => '(ukloni)',
 	'badimages-remove-btn' => 'Ukloni',
+	'badimages-remove-confirm' => 'Molimo potvrdite da li želite ukloniti $1 sa spiska:',
+	'badimages-removed' => '$ je uklonjen sa spiska.',
+	'badimages-subheading' => 'Trenutne stavke',
+	'badimages-unprivileged' => '(Nemate dovoljno dopuštenja da mijenjate spisak)',
 	'badimages-log-name' => 'Spisak pogrešnih slika',
+	'badimages-log-header' => 'Ovo je zapisnik promjena na [[{{MediaWiki:Badimages-page}}|spisku loših slika]].',
+	'badimages-log-add' => 'dodana [[$1]] na spisak loših slika',
+	'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
+	'badimages-page' => '{{ns:help}}:Spisak loših slika',
 );
 
 /** Czech (Česky)

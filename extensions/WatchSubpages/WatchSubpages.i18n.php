@@ -310,6 +310,13 @@ $messages['km'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'បន្ថែមទំព័រទៅបញ្ជីតាមដាន',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'watchsubpages' => '하위 문서를 주시',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -593,6 +600,14 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'watchsubpages' => 'Theo dõi các trang con',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Thêm tất cả các trang con]] của một trang vào danh sách theo dõi một cách nhanh chóng.',
+);
+
+/** Chinese (China) (‪中文(中国大陆)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-cn'] = array(
+	'watchsubpages-addtitles' => '增加页面',
+	'watchsubpages-addtitlestowatchlist' => '增加页面到监视列表',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

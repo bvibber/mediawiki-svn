@@ -501,6 +501,13 @@ $messages['vi'] = array(
 	'whatismyip-out' => 'IP của bạn:',
 );
 
+/** Chinese (China) (‪中文(中国大陆)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-cn'] = array(
+	'whatismyip-out' => '您的IP为：',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */

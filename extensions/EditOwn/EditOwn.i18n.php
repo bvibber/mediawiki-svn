@@ -70,6 +70,13 @@ $messages['es'] = array(
 	'editown-desc' => "Los usuarios que no tengan el derecho ''editall'' sólo podrán editar las páginas que hayan creado.",
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'editown-desc' => 'Editall baimena ez dute lankideek eurek sorturiko orraildeak baino ezin dituzte aldatu',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  */
@@ -283,9 +290,10 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
-	'editown-desc' => '用户只能编辑自己创建的页面',
+	'editown-desc' => '没有全编权限的用户只能编辑自己创建的页面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

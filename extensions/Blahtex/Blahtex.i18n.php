@@ -2617,6 +2617,13 @@ $messages['vi'] = array(
 	'math_WrongFontEncodingWithHint' => 'Ký hiệu "$1" không xuất hiện trong phông chữ mã hóa "$2" (thử dùng lệnh "$3{...}")',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'math_TooManyTokens' => '输入过长',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

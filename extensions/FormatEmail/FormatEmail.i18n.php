@@ -487,6 +487,17 @@ $messages['tg-cyrl'] = array(
 $2',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'email-desc' => 'Nagpapahintulot sa mga pinasadyang/pasadyang mga paulo/talababa na maidagdag sa mga e-liham ng tagagamit',
+	'email_footer' => '----------------------------------------------------------------------------
+Ipinadala sa iyo ni $1 ang e-liham na ito sa pamamagitan ng sistemang pang-e-liham ng {{SITENAME}}. 
+
+$2',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

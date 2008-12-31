@@ -144,6 +144,23 @@ $messages['de'] = array(
 	'profiling-no-data' => 'Keine zutreffenden Daten gefunden.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'profiling' => 'Daty profilowego napóranja',
+	'profiling-desc' => '[[Special:Profiling|Specialny bok]], aby pytał a pśeglědał profilowe daty',
+	'profiling-process' => 'Procesowy tekst:',
+	'profiling-wildcard' => 'Zastupne znamuško wužywaś',
+	'profiling-ok' => 'W pórěźe',
+	'profiling-data' => 'Profilowe daty za $1',
+	'profiling-data-process' => 'Proces',
+	'profiling-data-count' => 'Licba',
+	'profiling-data-time' => 'Cas (dogromady)',
+	'profiling-data-average' => 'cas (pśerězk)',
+	'profiling-no-data' => 'Žedne wótpowědujuce daty namakane.',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats

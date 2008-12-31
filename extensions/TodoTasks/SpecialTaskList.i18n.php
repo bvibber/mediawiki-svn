@@ -394,6 +394,7 @@ Le systema de notification de %s',
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'tasklist' => 'タスクリスト',
 	'tasklistprojdisp' => 'ディスプレイ',
 );
 

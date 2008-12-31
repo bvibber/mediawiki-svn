@@ -329,6 +329,13 @@ $messages['vi'] = array(
 	'didyoumean-desc' => 'Thêm liên kết vào các trang có tên “tương tự”',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'didyoumean-desc' => '在“近似”标题的页面内加入链接',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

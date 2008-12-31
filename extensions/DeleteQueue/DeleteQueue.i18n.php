@@ -2789,13 +2789,34 @@ $messages['yi'] = array(
 	'deletequeue-list-search' => 'זוכן',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'deletequeue-action-queued' => '删除',
+	'deletequeue-delnom-otherreason' => '其他原因',
+	'deletequeue-delnom-extra' => '附加信息：',
+	'deletequeue-queue-speedy' => '快速删除',
+	'deletequeue-review-delete' => '删除页面。',
+	'deletequeue-vote-tab' => '投票删除',
+	'deletequeue-vote-endorse' => '赞成删除。',
+	'deletequeue-vote-object' => '反对删除。',
+	'deletequeue-vote-submit' => '提交',
+	'deletequeue-showvotes-restrict-endorse' => '只显示赞成票',
+	'deletequeue-showvotes-restrict-object' => '只显示反对票。',
+	'deletequeue-list-search' => '搜索',
+	'deletequeue-list-anyqueue' => '（任何）',
+	'deletequeue-list-votes' => '投票列表',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'deletequeue-action-queued' => '刪除',
 	'deletequeue-delnom-otherreason' => '其他原因',
-	'deletequeue-delnom-extra' => '附加資料:',
+	'deletequeue-delnom-extra' => '附加資料：',
 	'deletequeue-queue-speedy' => '快速刪除',
 	'deletequeue-review-delete' => '刪除頁面。',
 	'deletequeue-vote-tab' => '投票刪除',
@@ -2805,7 +2826,7 @@ $messages['zh-hant'] = array(
 	'deletequeue-showvotes-restrict-endorse' => '只顯示贊成票',
 	'deletequeue-showvotes-restrict-object' => '只顯示反對票',
 	'deletequeue-list-search' => '搜尋',
-	'deletequeue-list-anyqueue' => '(任何)',
+	'deletequeue-list-anyqueue' => '（任何）',
 	'deletequeue-list-votes' => '投票清單',
 );
 

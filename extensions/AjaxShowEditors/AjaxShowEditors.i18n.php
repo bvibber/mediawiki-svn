@@ -249,6 +249,19 @@ $messages['es'] = array(
 	'ajax-se-usernotfound' => 'Error: usuario no encontrado',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'ajax-se-desc' => 'Orrialde bera editatzen dauden lankideak erakutsi',
+	'ajax-se-title' => 'Orain editatzen:',
+	'ajax-se-pending' => 'berritzea falta da... (egin klik kutxa honetan edo hasi editatzen)',
+	'ajax-se-idling' => '(orain dela $1s)',
+	'ajax-se-pagedoesnotexist' => 'orrialdea ez da existitzen',
+	'ajax-se-userinvalid' => 'Akatsa: lankide ez baliagarria',
+	'ajax-se-usernotfound' => 'Akatsa: lankidea ez da aurkitu',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

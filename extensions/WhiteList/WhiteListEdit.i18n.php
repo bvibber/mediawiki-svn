@@ -695,6 +695,30 @@ Está página sólo es aplicable a usuarios restringidos",
 	'group-manager-member' => 'Gestor',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'whitelisttablemodify' => 'Aldatu',
+	'whitelisttablemodifyall' => 'Denak',
+	'whitelisttablemodifynone' => 'Bat ere ez',
+	'whitelisttablepage' => 'Wiki orrialdea',
+	'whitelisttabletype' => 'Sarrera mota',
+	'whitelisttableexpires' => 'Iraungitzen du:',
+	'whitelisttablemodby' => 'Azken aldaketare egilea',
+	'whitelisttablemodon' => 'Azken aldaketa egin zen',
+	'whitelisttableedit' => 'Aldatu',
+	'whitelisttableview' => 'Ikusi',
+	'whitelisttablenewdate' => 'Data berria:',
+	'whitelisttablechangedate' => 'Iraungitzen data aldatu',
+	'whitelisttablesetedit' => 'Aldatzeko jarri',
+	'whitelisttablesetview' => 'Ikusteko aldatu',
+	'whitelisttableremove' => 'Ezabatu',
+	'whitelistnewtabledate' => 'Iraungitze data:',
+	'whitelistnewtableedit' => 'Aldatzeko jarri',
+	'whitelistnewtableview' => 'Aldatzeko jarri',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
@@ -1108,6 +1132,7 @@ $messages['ja'] = array(
 	'whitelisttableremove' => '削除',
 	'whitelistnewtableprocess' => 'プロセス',
 	'whitelistnewtablereview' => 'レビュー',
+	'whitelistnever' => '無期限',
 	'group-restricted' => '制限付ユーザー',
 	'group-restricted-member' => '制限付ユーザー',
 	'group-manager' => 'マネージャー',

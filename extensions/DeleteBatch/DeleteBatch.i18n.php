@@ -1010,7 +1010,19 @@ Tập tin đã tải nên có chứa tên trang và lý do tùy chọn phân tá
 	'deletebatch-no-page' => 'Xin hãy chỉ định ít nhất một trang để xóa HOẶC chọn một tập tin có chứa danh sách các trang.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'deletebatch-button' => '删除',
+	'deletebatch-caption' => '页面列表',
+	'deletebatch-or' => '<b>或</b>',
+	'deletebatch-reason' => '删除原因',
+	'deletebatch-processing' => '正在删除$1页面',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -1018,6 +1030,6 @@ $messages['zh-hant'] = array(
 	'deletebatch-caption' => '頁面清單',
 	'deletebatch-or' => '<b>或</b>',
 	'deletebatch-reason' => '刪除原因',
-	'deletebatch-processing' => '正在刪除頁面',
+	'deletebatch-processing' => '正在刪除$1頁面',
 );
 

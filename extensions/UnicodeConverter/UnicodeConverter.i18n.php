@@ -397,6 +397,13 @@ $messages['te'] = array(
 	'unicodeconverter-newtext' => 'మార్చిన పాఠ్యం:',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'unicodeconverter-ok' => 'OK',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

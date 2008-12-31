@@ -129,3 +129,10 @@ $messages['sk'] = array(
 	'semanticgallery-desc' => 'Pridáva výstupný formát galérie medzi inline požiadavky SMW',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'semanticgallery-desc' => 'Nagdaragdag ng mga inilalabas ng mga produktong na nasa anyong pangtanghalan (galerya) sa mga nasa loob ng hanay na mga katanunang pang-SMW',
+);
+

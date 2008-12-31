@@ -495,6 +495,14 @@ Chúng tôi muốn báo cho bạn biết là vào lúc $3, thành viên $4 $5.',
 	'categorywatch-catsub' => 'đã bỏ $1 ra khỏi thể loại $2',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'categorywatch-catadd' => '已把$1新增至分类$2',
+	'categorywatch-catsub' => '已把$1从分类$2移除',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

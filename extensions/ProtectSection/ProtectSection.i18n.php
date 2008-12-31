@@ -109,6 +109,16 @@ $messages['es'] = array(
 	'protectsection_forbidden' => 'Prohibido',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'protectsection_desc' => '<tt>&lt;protect&gt;</tt> etiketa erabiliz baimendutako erabiltzaileek orrialdeak edo hauen zatiak babes ditzaten baimendu',
+	'protectsection_add_remove' => 'Babestutako atal bat gehitzen edo kentzen saiatu zara',
+	'protectsection_modify' => 'Babestutako testua aldatzen saiatu zara',
+	'protectsection_forbidden' => 'Debekatuta',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Vililikku

@@ -85,6 +85,8 @@ $messages['qqq'] = array(
 	'hiderevision-link' => 'Used in [[Special:Contributions]], only visible to Oversight.',
 	'hiderevision-error-current' => '{{Identical|Delete}}
 {{Identical|Revert}}',
+	'hiderevision-archive-status' => '$1 = revision timestamp
+$2 = revision status',
 	'oversight' => 'Oversight extension. The name of the page [[Special:Oversight]], used in the list of special pages and at the top of Special:Oversight.
 
 {{Identical|Oversight}}',
@@ -1830,12 +1832,21 @@ $messages['ko'] = array(
 	'hiderevision-noreason' => '숨기는 이유를 반드시 입력해야 합니다.',
 	'hiderevision-status' => '$1판: $2',
 	'hiderevision-success' => '문서가 성공적으로 삭제되어 보존되었습니다.',
+	'hiderevision-error-missing' => '데이터베이스에서 찾을 수 없습니다.',
 	'hiderevision-error-current' => '이 문서의 마지막 편집을 삭제할 수 없습니다.
 이 편집을 먼저 되돌리십시오.',
+	'hiderevision-archive-status' => '삭제된 판의 $1 버전: $2',
+	'oversight-nodiff' => '이 문서의 이전 판이 없기 때문에 차이를 보여 줄 수 없습니다. 아마도:
+*문서가 삭제되었거나,
+*숨겨진 판이 문서의 첫 판일 수 있습니다.',
 	'oversight-log-hiderev' => '이(가) $1에서의 편집을 숨김',
 	'oversight' => '오버사이트',
 	'oversight-view' => '내용 보기',
+	'oversight-difference' => '(이전의 존재하는 판과의 차이)',
+	'oversight-prev' => '바로 이전 판',
 	'oversight-hidden' => '숨겨진 판',
+	'oversight-header' => '아래 목록은 최근에 영구히 숨겨진 판의 목록입니다.
+이 정보를 공개할 경우 오버사이트 권한이 영구히 박탈될 수 있습니다.',
 	'oversight-legend' => '특정 판 숨기기 기록 찾기',
 	'oversight-offender' => '편집자:',
 );
@@ -3064,6 +3075,8 @@ $messages['tg-cyrl'] = array(
 	'group-oversight' => 'Нозирон',
 	'group-oversight-member' => 'Нозир',
 	'grouppage-oversight' => '{{ns:project}}:Назорат',
+	'right-oversight' => 'Дидани нусхаҳои қаблан пинҳонбуда',
+	'right-hiderevision' => 'Баррасӣ ва барқароркунии нусхаҳои пинҳони аз мудирон',
 	'hiderevision-prompt' => 'Шумораи нусхаҳое, ки ҳазф мешаванд:',
 	'hiderevision-continue' => 'Идома',
 	'hiderevision-text' => "Ин қобилият '''фақат''' дар мавориди зер бояд истифода шавад:
@@ -3077,6 +3090,7 @@ $messages['tg-cyrl'] = array(
 	'hiderevision-reason' => 'Далел (ба таври хусусӣ сабт мешавад):',
 	'hiderevision-submit' => 'Пинҳон кардан ин дода бо ҳамешагӣ',
 	'hiderevision-tab' => 'Пинҳон кардани нусха',
+	'hiderevision-link' => 'Ҳиссагузориҳои корбари пинҳонӣ',
 	'hiderevision-norevisions' => 'Нусхае барои ҳазф мушаххас нашуда буд.',
 	'hiderevision-noreason' => 'Шумо бояд далели ин ҳазфро тавзеҳ диҳед.',
 	'hiderevision-status' => 'Нусха $1: $2',
@@ -3096,6 +3110,8 @@ $messages['tg-cyrl'] = array(
 	'oversight-prev' => 'Охирин нусхаи қаблӣ',
 	'oversight-hidden' => 'Нусхаи пинҳоншуда',
 	'oversight-header' => 'Дар зер феҳристе аз нусхаҳои, ки ба тозагӣ аз диди умум барои ҳамеша пинҳон шударо мебинед. Мунташир кардани ин иттилоот метавонад ба натиҷаи аз даст додани ҳамешагии ихтиёроти шумо оварда расонад.',
+	'oversight-oversighter' => 'Нозир:',
+	'oversight-offender' => 'Мутахалиф:',
 );
 
 /** Tagalog (Tagalog)

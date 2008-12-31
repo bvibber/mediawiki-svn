@@ -1084,6 +1084,7 @@ $messages['vo'] = array(
  */
 $messages['zh-hans'] = array(
 	'spamdifftool' => '管理垃圾信息黑名单',
+	'spamdifftool_submit_buttom' => '提交',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

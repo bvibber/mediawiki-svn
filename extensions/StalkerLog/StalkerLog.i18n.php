@@ -338,6 +338,17 @@ $messages['te'] = array(
 	'stalkerlog-log-text' => 'ఇది వాడుకరి ప్రవేశాలు మరియు నిష్క్రమణల చిట్టా.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'stalkerlog-desc' => 'Nagdaragdag ng [[Special:Log/stalkerlog|isang talaan]] ng paglagda at pag-alis mula sa pagkakalagda ng tagagamit',
+	'stalkerlog-log-login' => 'nakalagda na.',
+	'stalkerlog-log-logout' => 'hindi na nakalagda.',
+	'stalkerlog-log-type' => 'Talaan ng pagpapatotoo ng tagagamit',
+	'stalkerlog-log-text' => 'Isa itong talaan ng mga mga paglagda at pag-alis mula sa pagkakalagda ng tagagamit.',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

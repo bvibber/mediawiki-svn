@@ -817,6 +817,16 @@ $messages['vo'] = array(
 	'call-save-failed' => 'Vödem fovik NO pedakipon su pad: <big>[[$1]]</big> bi pad at ya dabinon.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'call' => '呼叫',
+	'call-save' => '本呼叫的输出将保存至名为“$1”的页面内。',
+	'call-save-success' => '以下文字经已保存至页面<big>[[$1]]</big>。',
+	'call-save-failed' => '由于页面已存在，以下文字并未保存至页面<big>[[$1]]</big>。',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

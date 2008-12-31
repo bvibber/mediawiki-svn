@@ -84,6 +84,7 @@ $messages['af'] = array(
  */
 $messages['am'] = array(
 	'importusers-log-summary-all' => 'ሁሉ',
+	'importusers-email' => 'ኢ-ሜል',
 );
 
 /** Arabic (العربية)

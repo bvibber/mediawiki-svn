@@ -1053,6 +1053,35 @@ $messages['th'] = array(
 	'formsave' => 'บันทึก',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'form-desc' => 'Isang [[Special:Form|ugnayang-hangganan ng pormularyo]] upang makapagsimula ng bagong mga pahina',
+	'form' => 'Pormularyo',
+	'formnoname' => 'Walang pangalan ng pormularyo',
+	'formnonametext' => 'Dapat kang magbigay ng isang pangalan ng pormularyo, katulad ng "Special:Form/Pangalanngpormularyo".',
+	'formbadname' => 'Masamang pangalan ng pormularyo',
+	'formbadnametext' => 'Walang pormularyong may ganyang pangalan.',
+	'formpattern' => 'Pormularyong $1',
+	'formtitlepattern' => 'Magdagdag ng bagong $1',
+	'formsave' => 'Sagipin',
+	'formindexmismatch-title' => 'Maling pagtutugma ng kabuoan ng pangalan at suleras',
+	'formindexmismatch' => 'Ang pormularyong ito ay mayroong hindi magkakatugmang mga kabuoan ng pangalan at mga suleras na nagsisimula sa paksaan/indeks na $1.',
+	'formarticleexists' => 'Umiiral na ang pahina',
+	'formarticleexiststext' => 'Umiiral na ang pahinang [[$1]].',
+	'formbadpagename' => 'Masamang pangalan ng pahina',
+	'formbadrecaptcha' => "Hindi tamang mga halaga para sa muling pag-Captcha (''reCaptcha'').  Subuking muli.",
+	'formbadpagenametext' => 'Ang ipinasok mong dato sa pormularyo ay gumagawa ng isang masamang pangalan ng pahina, "$1".',
+	'formrequiredfieldpluralerror' => 'Kinakailangan ang mga kahanayang $1 para sa pormularyong ito.
+Pakipunuan lamang silang muli.',
+	'formrequiredfielderror' => 'Kinakailangan ang kahanayang $1 para sa pormularyong ito.
+Pakipunuan ito.',
+	'formsavesummary' => 'Bagong pahinang gumagamit ng [[Special:Form/$1|pormularyong $1]]',
+	'formsaveerror' => 'Kamalian sa pagsagip ng pormularyo',
+	'formsaveerrortext' => "Nagkaroon ng isang hindi nalalamang kamalian habang sinasagip ang pahinang '$1'.",
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

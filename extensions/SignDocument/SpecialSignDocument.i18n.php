@@ -153,10 +153,17 @@ $messages['af'] = array(
  * @author Codex Sinaiticus
  */
 $messages['am'] = array(
+	'sign-realname' => 'ስም:',
 	'sign-city' => 'ከተማ:',
 	'sign-country' => 'ሀገር:',
+	'sign-phone' => 'የስልክ ቁጥር፦',
+	'sign-bday' => 'ዕድሜ፦',
+	'sign-email' => 'የኢ-ሜል አድራሻ:',
+	'sign-viewfield-realname' => 'ስም',
 	'sign-viewfield-city' => 'ከተማ',
 	'sign-viewfield-country' => 'ሀገር',
+	'sign-viewfield-phone' => 'ስልክ',
+	'sign-viewfield-email' => 'ኢ-ሜል',
 	'sign-viewfield-reviewcomment' => 'ማጠቃለያ',
 	'sign-review-comment' => 'ማጠቃለያ',
 );

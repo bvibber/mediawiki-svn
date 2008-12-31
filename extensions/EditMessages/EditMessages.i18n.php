@@ -212,6 +212,28 @@ $messages['de'] = array(
 	'editmsg-patch-success' => 'Erfolgreich gepatcht.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'editmessages-desc' => '[[SpeciaL:EditMessages|Wobźěłowanje]] wulkeje licby datajow Messages*.php we Webje',
+	'editmessages' => 'Powěźeńki wobźěłaś',
+	'editmsg-target' => 'Celowa powěźeńka:',
+	'editmsg-search' => 'Pytaś',
+	'editmsg-show-list' => 'Gódnoty za mě powěźeńki "$1" se pokazujo',
+	'editmsg-get-patch' => 'Zapłatu napóraś',
+	'editmsg-new-search' => 'Nowe pytanje',
+	'editmsg-warning-parse1' => '* Regularny wuraz mjenja powěźeńki njepśitrjefijo: $1',
+	'editmsg-warning-parse2' => '* Znamuško pazorkow za šypku wócakane: $1',
+	'editmsg-warning-parse3' => '* Kóńc znamuškowego rěda njenamakany: $1',
+	'editmsg-warning-file' => '* Su nastali zmólki pśi cytanju dataje za {{PLURAL:$2|slědujucu rěc|slědujucej rěcy|slědujuce rěce|slědujuce rěce}}: $1',
+	'editmsg-warning-mismatch' => '* Spócetny tekst njama wócakanu gódnotu za {{PLURAL:$2|slědujucu rěc|slědujucej rěcy|slědujuce rěcy|slědujuce rěce}}: $1',
+	'editmsg-apply-patch' => 'Zapłatu nałožiś',
+	'editmsg-no-patch' => 'Njemóžno pśikaz "patch" wuwjasć',
+	'editmsg-patch-failed' => 'Wuwjeźenje pśikaza "patch" jo se njeraźiło z kóńcnym statusom $1',
+	'editmsg-patch-success' => 'Zapłata wuspěšna.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -414,6 +436,28 @@ $messages['hi'] = array(
  */
 $messages['hil'] = array(
 	'editmsg-search' => 'Pangita-a',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'editmessages-desc' => '[[Special:EditMessages|Wobdźěłowanje]] wulkeje ličby datajow Messages*.php we Webje',
+	'editmessages' => 'Zdźělenki wobdźěłać',
+	'editmsg-target' => 'Cilowa zdźělenka',
+	'editmsg-search' => 'Pytać',
+	'editmsg-show-list' => 'Hódnoty za zdźělenku "$1" pokazać',
+	'editmsg-get-patch' => 'Zapłatu wutworić',
+	'editmsg-new-search' => 'Nowe pytanje',
+	'editmsg-warning-parse1' => '* Regularny wuraz zdźělenki so njehodźi: $1',
+	'editmsg-warning-parse2' => '* Znamješko pazorkow za šipkom wočakowane: $1',
+	'editmsg-warning-parse3' => '* Kónc znamješkoweho slěda njenamakany: $1',
+	'editmsg-warning-file' => '* Je zmylk při čitanju dataje za {{PLURAL:$2|slědowacu rěč|slědowacej rěči|slědowace rěče|slědowace rěče}} wustupił: $1',
+	'editmsg-warning-mismatch' => '* Prěnjotny tekst nima wočakowanu hódnotu za {{PLURAL:$2|slědowacu rěč|slědowacej rěči|slědowace rěče|slědowace rěče}}: $1',
+	'editmsg-apply-patch' => 'Zapłatu nałožić',
+	'editmsg-no-patch' => 'Njemóžno přikaz "patch" wuwjesć',
+	'editmsg-patch-failed' => 'Zapłata je so z kónčnym statusom $1 njeradźiła',
+	'editmsg-patch-success' => 'Zapłata bě wuspěšna.',
 );
 
 /** Hungarian (Magyar)

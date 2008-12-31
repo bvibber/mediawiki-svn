@@ -451,15 +451,19 @@ Lo hace llamando al nivel del analizador sintáctico correspondiente del propio 
 	'expand_templates_preview' => 'Previsualización',
 );
 
-/** Basque (Euskara) */
+/** Basque (Euskara)
+ * @author Theklan
+ */
 $messages['eu'] = array(
 	'expandtemplates' => 'Txantiloi ordezkatzailea',
 	'expand_templates_intro' => 'Aparteko orrialde honek modu errekurtsiboan txantiloiak ordezkatu egiten ditu. Funtzioak ere ordezkatu egiten ditu, hala nola <nowiki>{{</nowiki>#if:...}}, eta baita <nowiki>{{</nowiki>CURRENTDAY}} bezalako aldagaiak ere.',
 	'expand_templates_title' => 'Izenburua ({{PAGENAME}} ordezkatzeko, eta abar):',
 	'expand_templates_input' => 'Sarrerako testua:',
 	'expand_templates_output' => 'Emaitza',
+	'expand_templates_xml_output' => 'XML irteera',
 	'expand_templates_ok' => 'Ados',
 	'expand_templates_remove_comments' => 'Iruzkinak kendu',
+	'expand_templates_generate_xml' => 'Erakutsi XML parse zuhaitza',
 	'expand_templates_preview' => 'Aurreikusi',
 );
 

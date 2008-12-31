@@ -301,6 +301,17 @@ $messages['te'] = array(
 "$1" వర్గంలోని అన్ని పేజీలను మరియు ఏవైనా ఉపవర్గాలని ఈ పేజీ చూపిస్తుంది.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'autocreatecategorypages-desc' => 'Kusang lumikha ng nawawalang mga pahina ng kaurian kapag nagsagip',
+	'autocreatecategorypages-stub' => 'Isa itong pahina ng kaurian.
+Nagtatala ito ng lahat ng mga pahinang nasa kauriang "$1" maging ang lahat ng kabahaging mga kaurian ng kauriang "$1" kung mayroong umiiral.',
+	'autocreatecategorypages-createdby' => 'Kusang nilikha ng karugtong na KusangLikhainKaurianMgaPahina.',
+	'autocreatecategorypages-editor' => 'Kusang tagapaglikha ng kaurian',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

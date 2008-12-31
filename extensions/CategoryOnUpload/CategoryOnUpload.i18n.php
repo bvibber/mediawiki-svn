@@ -134,6 +134,14 @@ $messages['et'] = array(
 	'categoryonupload-label' => 'Kategooria:',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'categoryonupload-desc' => 'Lankideak fitxategi bat igotzen duenean kategoria bat aukeratzea eskatzen dio',
+	'categoryonupload-label' => 'Kategoria:',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Mobe
@@ -418,11 +426,20 @@ $messages['vi'] = array(
 	'categoryonupload-label' => 'Thể loại:',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'categoryonupload-desc' => '提示用户在上传文件时为它选择分类',
+	'categoryonupload-label' => '分类：',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'categoryonupload-desc' => '提示使用者在上載檔案時為它選擇分類',
-	'categoryonupload-label' => '分類:',
+	'categoryonupload-label' => '分類：',
 );
 

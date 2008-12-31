@@ -227,6 +227,7 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'sitenotice_close' => 'kendu',
+	'sitenotice-desc' => 'Erabiltzaileei sitenotice ixtea baimendu',
 );
 
 /** Persian (فارسی)

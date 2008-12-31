@@ -1270,10 +1270,12 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'duplicator' => '复制一篇文章',
+	'duplicator-desc' => '新建含所有编辑历史记录的独立[[Special:Duplicate|页面副本]]',
 	'duplicator-toolbox' => '复制这篇文章',
 	'duplicator-header' => '这一版可以完全复制一篇文章，建立一个完整的修订历史。这对于文章分叉等的动作是很有用的。',
 	'duplicator-options' => '选项',

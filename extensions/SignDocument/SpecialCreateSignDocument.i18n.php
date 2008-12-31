@@ -57,6 +57,15 @@ $messages['af'] = array(
 	'createsigndoc-create' => 'Skep',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'createsigndoc-email' => 'የኢ-ሜል አድራሻ:',
+	'createsigndoc-phone' => 'የስልክ ቁጥር፦',
+	'createsigndoc-error-generic' => 'ስህተት፦ $1',
+);
+
 /** Aragonese (Aragonés)
  * @author Remember the dot
  */
@@ -660,6 +669,7 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'createsigndoc-pagename' => 'Sigg:',
 	'createsigndoc-create' => 'Aanläje',
 );
 

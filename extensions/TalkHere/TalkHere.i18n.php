@@ -39,6 +39,13 @@ $messages['qqq'] = array(
 	'talkhere-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'talkhere-talkpage' => 'የውይይት ገጽ',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -734,6 +741,22 @@ $messages['tg-cyrl'] = array(
 	'talkhere-beforeinput' => 'Шумо метавонед дар зер як тавзеҳ илова кунед',
 	'talkhere-loading' => 'дар ҳоли боргирии вироишгар…',
 	'talkhere-collapse' => 'пинҳон кардани вироишгар',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'talkhere-desc' => 'Naglalagay ng pahina ng usapan papunta sa loob ng pahina',
+	'talkhere-foottext' => 'Ang mga puna/kumentong nasa itaas ay maaaring iniwan ng mga panauhin.
+
+Hindi maaaring angkinin ng mga nagpapaandar/nagpapatakbo ng sayt/sityong ito ang pananagutan hinggil sa nilalaman ng mga puna/kumentong ganyan.',
+	'talkhere-talkpage' => 'pahina ng usapan',
+	'talkhere-notalk' => "''(wala pang mga puna/kumento)''",
+	'talkhere-addcomment' => 'magdagdag ng kumento/puna',
+	'talkhere-beforeinput' => 'Maaari kang magdagdag ng isang kumento/puna sa ibaba',
+	'talkhere-loading' => 'ikinakarga ang patnugot/pampatnugot…',
+	'talkhere-collapse' => 'itago ang patnugot/pampatnugot',
 );
 
 /** Turkish (Türkçe)

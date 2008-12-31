@@ -306,6 +306,13 @@ $messages['it'] = array(
 	'filelist-image-desc' => 'disc',
 );
 
+/** Japanese (日本語)
+ * @author Hosiryuhosi
+ */
+$messages['ja'] = array(
+	'filelist' => 'ファイルリスト',
+);
+
 /** Javanese (Basa Jawa)
  * @author Meursault2004
  */

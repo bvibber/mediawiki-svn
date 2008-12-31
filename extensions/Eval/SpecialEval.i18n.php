@@ -440,6 +440,14 @@ $messages['vo'] = array(
 	'eval_code' => 'Kot',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'eval_out' => '输出',
+	'eval_code' => '代码',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

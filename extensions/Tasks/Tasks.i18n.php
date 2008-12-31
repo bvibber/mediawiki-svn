@@ -101,6 +101,8 @@ $messages['qqq'] = array(
  */
 $messages['am'] = array(
 	'tasks_no_task_delete_title' => 'አልተፈቀደም',
+	'tasks_table_header_page' => 'ገጽ',
+	'tasks_search_form_title' => 'ፍለጋ',
 );
 
 /** Arabic (العربية)
@@ -950,6 +952,7 @@ $messages['ja'] = array(
 	'tasks_search_form_title' => '検索',
 	'tasks_search_tasks' => 'タスク',
 	'tasks_search_status' => '状況',
+	'tasks_logpage' => 'タスクログ',
 );
 
 /** Javanese (Basa Jawa)
@@ -1829,6 +1832,84 @@ $messages['te'] = array(
 	'tasks_logpage' => 'పనుల చిట్టా',
 	'tasks_logpagetext' => 'ఇది పనులకు జరిగిన మార్పుల చిట్టా',
 	'tasks_logentry' => '"[[$1]]" కొరకు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'tasks' => 'Mga gawain',
+	'tasks_desc' => 'Isang karugtong upang makapamahala ng mga gawain',
+	'tasks_tab' => 'Mga gawain',
+	'tasks_title' => 'Mga gawain para kay "$1"',
+	'tasks_form_new' => 'Lumikha ng bagong gawain',
+	'tasks_form_comment' => 'Puna/kumento',
+	'tasks_error1' => 'Hindi nalikha ang gawain: mayroon nang ganyang isang gawain!',
+	'tasks_ok1' => 'Nalikha na ang isang bagong gawain!',
+	'tasks_create_header' => 'Lumikha ng isang bagong gawain',
+	'tasks_existing_header' => 'Umiiral na mga gawain',
+	'tasks_existing_table_header' => 'Gawain|Mga petsa|Paunang mga kumento (puna)|Takdang gawain/Mga kilos (galaw)/Pahina',
+	'tasks_noone' => 'walang sinuman',
+	'tasks_assign_me' => 'Italaga/itakda ang sarili ko',
+	'tasks_assign_to' => 'Itakda/italaga kay',
+	'tasks_unassign_me' => 'Tanggalin ang natakdang gawain ko',
+	'tasks_close' => 'Isara ang gawain',
+	'tasks_wontfix' => 'Hindi kukumpunihin (aayusin)',
+	'tasks_delete' => 'Burahin',
+	'tasks_no_task_delete_title' => 'Hindi pinapahintulutan',
+	'tasks_no_task_delete_texe' => 'Hindi ka pinapahintulutang magbura ng isang gawain.  Tanging mga tagapangasiwa lamang ang makakagawa niyan.',
+	'tasks_action_delete' => 'Nabura ang isang gawain.',
+	'tasks_task_was_deleted' => 'Matagumpay na nabura ang isang gawain.',
+	'tasks_reopen' => 'Muling buksan ang gawain',
+	'tasks_assignedto' => 'Nakatalaga/nakatakda kay $1',
+	'tasks_created_by' => 'Nilikha ni $1',
+	'tasks_discussion_page_link' => 'Pahina ng usapang panggawain',
+	'tasks_closedby' => 'Isinara ni $1',
+	'tasks_assigned_myself_log' => 'Pagtatalaga/pagtatakda sa sarili ng gawaing "$1"',
+	'tasks_discussion_page_for' => 'Ang gawaing ito ay para sa pahinang "$1". Ang talaan ng lahat ng mga gawain para sa pahinang iyan ay $2.',
+	'tasks_sidebar_title' => 'Buksan ang mga gawain',
+	'tasks_here' => 'dito',
+	'tasks_returnto' => 'Ituturo ka na ngayon.  Kapag hindi ka itinuro sa loob ng isang mangilan-ngilang mga segundo, pindutin ang $1.',
+	'tasks_see_page_tasks' => '(mga gawain ng pahinang ito)',
+	'tasks_task_is_assigned' => '(nakatakda/naitalaga na)',
+	'tasks_plain_text_only' => '(hayag na mga teksto, 256 mga panitik lamang)',
+	'tasks_help_page' => 'Mga gawain',
+	'tasks_help_page_link' => '?',
+	'tasks_help_separator' => '$2 | $1',
+	'tasks_more_like_it' => 'mas marami pa',
+	'tasks_task_types' => '1:linisin:Linisin|2:isawiki:Isawiki|3:isulat muli:Isulat muli|4:burahin:Burahin|5:likhain:Likhain|6:isulat:Isulat|7:suriin:Suriin',
+	'tasks_significance_order' => 'isulat muli<burahin',
+	'tasks_creation_tasks' => '5,6',
+	'tasks_event_on_creation' => 'suriin',
+	'tasks_event_on_creation_anon' => 'suriin',
+	'tasks_on_creation_comment' => 'Kusang gawain, ginawa sa paglikha ng pahina',
+	'tasks_link_your_assignments' => 'buksan ang nakatakdang mga gawain',
+	'tasks_see_your_assignments' => 'Pangkasalukuyang mayroon kang $1 bukas na {{PLURAL:$1|nakatakdang gawain|nakatakdang mga gawain}}. Tingnan ang iyong $2.',
+	'tasks_my_assignments' => 'Ang iyong pangkasalukuyang {{PLURAL:$1|nakatakdang gawain|nakatakdang mga gawain}}',
+	'tasks_table_header_page' => 'Pahina',
+	'tasks_you_have_no_assignments' => 'Wala kang nakabukas na nakatakdang mga gawain',
+	'tasks_search_form_title' => 'Maghanap',
+	'tasks_search_tasks' => 'Mga gawain',
+	'tasks_search_status' => 'Kalagayan',
+	'tasks_search_no_tasks_chosen_note' => '(Walang mga pinili rito na maghahanap sa lahat ng mga uri ng nakatakdang gawain.)',
+	'tasks_search_results' => 'Mga kinalabasan ng paghahanap',
+	'tasks_previous' => 'Sinundan',
+	'tasks_next' => 'Susunod',
+	'tasks_sort' => 'Pagpangkat-pangkatin',
+	'tasks_ascending' => 'Mas luma muna',
+	'tasks_status_open' => 'Buksan',
+	'tasks_status_assigned' => 'Nakatakda/nakatalaga na',
+	'tasks_status_closed' => 'Isinara na',
+	'tasks_status_wontfix' => 'Hindi kukumpunihin (aayusin)',
+	'tasks_action_open' => 'Binuksan ang gawaing "$1".',
+	'tasks_action_assigned' => 'Itinalaga/itinakda na ang gawaing "$1".',
+	'tasks_action_closed' => 'Isinara na ang gawaing "$1".',
+	'tasks_action_wontfix' => 'Hindi kukumpunihin (gagawin/aayusin) ang gawaing "$1".',
+	'tasks_sign_delete' => '<b>Hiniling na burahin ang pahinang ito!</b>',
+	'tasks_logpage' => 'Talaan ng mga gawain',
+	'tasks_logpagetext' => 'Isa itong talaan ng mga pagbabago sa mga gawain',
+	'tasks_logentry' => 'Para kay "[[$1]]"',
+	'tog-show_task_comments' => 'Ilipat-sama ang pahina ng mga puna/kumentong panggawain.',
 );
 
 /** Ukrainian (Українська)

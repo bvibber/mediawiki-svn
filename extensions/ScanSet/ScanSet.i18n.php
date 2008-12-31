@@ -1016,6 +1016,13 @@ $messages['te'] = array(
 	'scanset_prev' => '&lt; గత',
 );
 
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'scanset_next' => 'Oinmai &gt;',
+);
+
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
  * @author Ibrahim
  */

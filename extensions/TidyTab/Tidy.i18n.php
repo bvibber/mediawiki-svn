@@ -252,6 +252,15 @@ $messages['tg-cyrl'] = array(
 	'untidy' => 'Номуратаб',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'tidy-desc' => "Nagdaragdag ng panglaylay (tab) na ''ayusin'' o ''tanggalin mula sa pagiging maayos'' (na nakabatay sa ''\$wgUseTidy'') sa pangkaraniwang mga pahina na nagpapahintulot sa pagdaraig/pangingibabaw sa pagtatakdang pang-ayos (''tidy'' o ''untidy'') ng pandaigdigang HTML na para sa isang isahang pagtingin/pagtanaw",
+	'tidy' => 'Ayusin',
+	'untidy' => 'Tanggalin mula sa pagiging maayos',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  */

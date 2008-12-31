@@ -518,6 +518,13 @@ $messages['yi'] = array(
 	'createbox-create' => 'שאַפֿן',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'createbox-create' => '建立',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */

@@ -1052,7 +1052,20 @@ $messages['vo'] = array(
 	'authorprotect-reason' => 'Kod',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Gzdavidwong
+ */
+$messages['zh-hans'] = array(
+	'authorprotect-notauthor' => '您并非本页面的原作者',
+	'authorprotect-confirm' => '更改保护级别',
+	'authorprotect-expiry' => '终止时间',
+	'authorprotect-reason' => '原因',
+	'authorprotect-success' => '保护成功！',
+	'authorprotect-failure' => '保护失败',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -1060,7 +1073,7 @@ $messages['zh-hant'] = array(
 	'authorprotect-confirm' => '更改保護等級',
 	'authorprotect-expiry' => '終止時間',
 	'authorprotect-reason' => '原因',
-	'authorprotect-success' => '保護成功!',
+	'authorprotect-success' => '保護成功！',
 	'authorprotect-failure' => '保護失敗',
 );
 

@@ -937,9 +937,10 @@ $messages['pl'] = array(
 /** Portuguese (Português)
  * @author MF-Warburg
  * @author Malafaya
+ * @author 555
  */
 $messages['pt'] = array(
-	'imagetagging-imghistory' => 'História',
+	'imagetagging-imghistory' => 'Histórico',
 	'imagetagging-tagcancel-button' => 'Cancelar',
 );
 
@@ -1106,6 +1107,7 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'imagetagging-imghistory' => 'Istória',
+	'imagetagging-tagcancel-button' => 'Para',
 );
 
 /** Turkish (Türkçe)

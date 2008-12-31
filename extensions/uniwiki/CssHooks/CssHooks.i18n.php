@@ -205,3 +205,10 @@ $messages['sv'] = array(
 	'csshooks-desc' => 'Lägger till CSS till en sidas HTML för bättre utseende',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'csshooks-desc' => 'Nagdaragdag ng CSS sa inilalabas na produktong HTML ng mga pahina para sa mas mainam na pag-iistilo.',
+);
+
