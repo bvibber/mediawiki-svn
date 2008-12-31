@@ -177,17 +177,56 @@ class ConfigurationSettings {
 	 * @return array
 	 */
 	public function getUneditableSettings() {
+		if ( isset( $this->cache['uneditable'] ) )
+			return $this->cache['uneditable'];
+
 		$this->loadSettingsDefs();
-		$ret = array();
+		$notEditable = array();
 		if ( ( $this->types & CONF_SETTINGS_CORE ) == CONF_SETTINGS_CORE ) {
-			$ret += $this->notEditableSettings;
+			$notEditable += $this->notEditableSettings;
 		}
 		if ( ( $this->types & CONF_SETTINGS_EXT ) == CONF_SETTINGS_EXT ) {
-			$ret += array(); // Nothing for extensions
+			$notEditable += array(); // Nothing for extensions
 		}
-		global $wgConf;
-		$ret = array_merge( $ret, $wgConf->getUneditableSettings() );
-		return $ret;
+
+		global $wgConf, $wgConfigureNotEditableSettings, $wgConfigureEditableSettings;
+		$notEditable = array_merge( $notEditable, $wgConf->getUneditableSettings() );
+
+		if ( !count( $wgConfigureNotEditableSettings ) && count( $wgConfigureEditableSettings ) ) {
+			$wgConfigureNotEditableSettings = array_diff( array_keys( $this->getAllSettings() ), $wgConfigureEditableSettings );
+		}
+
+		$notEditable = array_merge( $notEditable,
+			$wgConfigureNotEditableSettings );
+
+		return $this->cache['uneditable'] = $notEditable;
+	}
+
+	/**
+	 * Get a list of editable settings
+	 *
+	 * @return array
+	 */
+	public function getEditableSettings() {
+		if ( isset( $this->cache['editable'] ) )
+			return $this->cache['editable'];
+
+		$this->cache['editable'] = array();
+		$this->loadSettingsDefs();
+
+		global $wgConfigureEditableSettings;
+		if( count( $wgConfigureEditableSettings ) ) {
+			foreach( $wgConfigureEditableSettings as $setting ) {
+				$this->cache['editable'][$setting] = $this->getSettingType( $setting );
+			}
+			return $this->cache['editable'];
+		}
+
+		$notEdit = $this->getUneditableSettings();
+		$settings = $this->getAllSettings();
+		foreach ( $notEdit as $setting )
+			unset( $settings[$setting] );
+		return $this->cache['editable'] = $settings;
 	}
 
 	/**

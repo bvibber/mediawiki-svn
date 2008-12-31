@@ -78,14 +78,14 @@ class WebConfiguration extends SiteConfiguration {
 	public function snapshotDefaults( /* options */ ) {
 		$options = func_get_args();
 		$noOverride = in_array( 'no_override', $options );
-		if( !is_array($this->mDefaults) || in_array('allow_empty',$options) ) {
+		if( !is_array( $this->mDefaults ) || in_array( 'allow_empty', $options ) ) {
 			if( !is_array( $this->mDefaults ) ) {
 				$this->mDefaults = array();
 			}
-			$allSettings = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getAllSettings();
+			$allSettings = ConfigurationSettings::singleton( CONF_SETTINGS_BOTH )->getEditableSettings();
 			foreach( $allSettings as $setting => $type ) {
-				if( array_key_exists($setting,$GLOBALS) && 
-					!( $noOverride && array_key_exists($setting,$this->mDefaults) ) )
+				if( array_key_exists( $setting, $GLOBALS ) && 
+					!( $noOverride && array_key_exists( $setting, $this->mDefaults ) ) )
 				{
 					$this->mDefaults[$setting] = $GLOBALS[$setting];
 				}

@@ -218,18 +218,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return array
 	 */
 	protected function getUneditableSettings() {
-		static $notEditable;
-		if ( !isset( $notEditable ) ) {
-			global $wgConfigureNotEditableSettings, $wgConfigureEditableSettings;
-
-			if ( !count($wgConfigureNotEditableSettings) && count($wgConfigureEditableSettings ) ) {
-				$wgConfigureNotEditableSettings = array_diff( array_keys( $this->mConfSettings->getAllSettings() ), $wgConfigureEditableSettings );
-			}
-
-			$notEditable = array_merge( $this->mConfSettings->getUneditableSettings(),
-				$wgConfigureNotEditableSettings );
-		}
-		return $notEditable;
+		return $this->mConfSettings->getUneditableSettings();
 	}
 
 	/**
@@ -238,11 +227,7 @@ abstract class ConfigurationPage extends SpecialPage {
 	 * @return array
 	 */
 	protected function getEditableSettings() {
-		$notEdit = $this->getUneditableSettings();
-		$settings = $this->mConfSettings->getAllSettings();
-		foreach ( $notEdit as $setting )
-			unset( $settings[$setting] );
-		return $settings;
+		return $this->mConfSettings->getEditableSettings();
 	}
 
 	/**
@@ -760,15 +745,11 @@ abstract class ConfigurationPage extends SpecialPage {
 	 */
 	protected function removeDefaults( $settings ) {
 		global $wgConf;
-		$defaultValues = $wgConf->getDefaultsForWiki( $this->mWiki  );
+		$defaultValues = $wgConf->getDefaultsForWiki( $this->mWiki );
 		foreach ( $defaultValues as $name => $default ) {
 			## Normalise the two, to avoid false "changes"
 			if ( is_array( $default ) ) {
-				try {
-					$default = WebConfiguration::filterVar( $default );
-				} catch( Exception $e ) {
-					throw new MWException( $name );
-				}
+				$default = WebConfiguration::filterVar( $default );
 			}
 
 			if ( isset( $settings[$name] ) ) {
@@ -1005,8 +986,11 @@ abstract class ConfigurationPage extends SpecialPage {
 			if ( !$allowed )
 				return '<code>' . htmlspecialchars( $default ) . '</code>';
 			$ret = "\n";
+			var_dump( $default );
 			foreach ( $type as $val => $name ) {
-				$ret .= Xml::radioLabel( $name, 'wp' . $conf, $val, 'wp' . $conf . $val, strval($default) === strval($val) ) . "\n";
+				$checked = is_int( $val ) ?
+					$val === (int)$default : strval($default) === strval($val);
+				$ret .= Xml::radioLabel( $name, 'wp' . $conf, $val, 'wp' . $conf . $val, $checked ) . "\n";
 			}
 			return $ret;
 		}
