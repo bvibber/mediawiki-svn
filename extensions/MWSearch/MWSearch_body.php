@@ -324,7 +324,7 @@ class LuceneResult extends SearchResult {
 		$start = 0;
 		$snippet = "";
 		$hi = 0;
-		$ellipsis = wfMsg( 'ellipsis-separator' );
+		$ellipsis = wfMsgForContent( 'ellipsis' );
 
 		foreach($splits as $sp){
 			$sp = intval($sp);
