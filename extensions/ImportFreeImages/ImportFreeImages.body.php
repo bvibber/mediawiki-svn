@@ -32,7 +32,7 @@ class ImportFreeImages extends SpecialPage {
 
 		if( empty( $wgIFI_FlickrAPIKey ) ) {
 			// error - need to set $wgIFI_FlickrAPIKey to use this extension
-			$wgOut->errorpage( 'error', 'importfreeimages-noapikey' );
+			$wgOut->errorpage( 'error', 'importfreeimages_noapikey' );
 			return;
 		}
 
@@ -99,7 +99,7 @@ class ImportFreeImages extends SpecialPage {
 
 			if( $photos == null || !is_array($photos) || sizeof($photos) == 0 || !isset($photos['photo'])
 			|| !is_array($photos['photo']) || sizeof($photos['photo']) == 0 ) {
-				$wgOut->addHTML( wfMsg( 'importfreeimages-nophotosfound', htmlspecialchars( $q ) ) );
+				$wgOut->addHTML( wfMsg( 'importfreeimages_nophotosfound', htmlspecialchars( $q ) ) );
 				return;
 			}
 			$sk = $wgUser->getSkin();
@@ -122,7 +122,7 @@ class ImportFreeImages extends SpecialPage {
 					document.uploadphotoform.name.value = name;
 					document.uploadphotoform.ititle.value = ititle;
 					if( " . ($wgIFI_PromptForFilename ? "true" : "false") . " ) {
-						document.uploadphotoform.ititle.value = prompt(" . Xml::encodeJsVar( wfMsg('importfreeimages-promptuserforfilename') ) . ", ititle);
+						document.uploadphotoform.ititle.value = prompt(" . Xml::encodeJsVar( wfMsg('importfreeimages_promptuserforfilename') ) . ", ititle);
 						if( document.uploadphotoform.ititle.value == '' ) {
 							document.uploadphotoform.ititle.value = ititle;
 						}
@@ -130,8 +130,8 @@ class ImportFreeImages extends SpecialPage {
 					document.uploadphotoform.submit();
 				}
 			</script>");
-			$ownermsg = wfMsg( 'importfreeimages-owner' );
-			$importmsg = wfMsg( 'importfreeimages-importthis' );
+			$ownermsg = wfMsg( 'importfreeimages_owner' );
+			$importmsg = wfMsg( 'importfreeimages_importthis' );
 			$i = 0;
 			foreach( $photos['photo'] as $photo ) {
 				$owner = $f->people_getInfo( $photo['owner'] );
@@ -164,7 +164,7 @@ class ImportFreeImages extends SpecialPage {
 			$wgOut->addHTML("</form></table>");
 			if( $wgIFI_ResultsPerPage * $page < $photos['total'] ) {
 				$page++;
-				$wgOut->addHTML("<br />" . $sk->makeLinkObj($importPage, wfMsg('importfreeimages-next', $wgIFI_ResultsPerPage), "p=$page&q=" . urlencode($q) ) );
+				$wgOut->addHTML("<br />" . $sk->makeLinkObj($importPage, wfMsg('importfreeimages_next', $wgIFI_ResultsPerPage), "p=$page&q=" . urlencode($q) ) );
 			}
 		}
 	}
@@ -219,7 +219,7 @@ class ImportFreeImages extends SpecialPage {
 					<td align='left'>$iw</td>
 				</tr>
 			</tr>
-		</table></form>\n" . wfMsg( 'importfreeimages-returntoform', $_SERVER["HTTP_REFERER"] ) );
+		</table></form>\n" . wfMsg( 'importfreeimages_returntoform', $_SERVER["HTTP_REFERER"] ) );
 		//  $_SERVER["HTTP_REFERER"]; -- javascript.back wasn't working for some reason... hmph.
 	}
 
@@ -268,7 +268,7 @@ class ImportFreeImages extends SpecialPage {
 		}
 
 		if( !preg_match( '/^http:\/\/farm[0-9]+\.static\.flickr\.com\/.*\.(jpg|gif|png)$/', $import, $matches ) ) {
-			$wgOut->showErrorPage( 'error', 'importfreeimages-invalidurl', array( wfEscapeWikiText( $import ) ) );
+			$wgOut->showErrorPage( 'error', 'importfreeimages_invalidurl', array( wfEscapeWikiText( $import ) ) );
 			return true;
 		}
 		$fileext = '.' . $matches[1];
@@ -294,7 +294,7 @@ class ImportFreeImages extends SpecialPage {
 		} else {
 			// TODO: this is totally wrong: The whole message should be configurable, we shouldn't include arbitrary templates
 			// additionally, the license information is not correct (we are not guaranteed to get "CC by 2.0" images only)
-			$caption = wfMsgForContent('importfreeimages-filefromflickr', $ititle, "http://www.flickr.com/people/" . urlencode($owner) . " " . $name_wiki) . " <nowiki>$import</nowiki>. {{CC by 2.0}} ";
+			$caption = wfMsgForContent('importfreeimages_filefromflickr', $ititle, "http://www.flickr.com/people/" . urlencode($owner) . " " . $name_wiki) . " <nowiki>$import</nowiki>. {{CC by 2.0}} ";
 			$caption = trim($caption);
 		}
 
