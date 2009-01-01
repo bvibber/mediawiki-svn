@@ -16,7 +16,7 @@ if (!defined('MEDIAWIKI')) die();
 $wgExtensionCredits['specialpage'][] = array(
 	'name'           => 'GlobalUserrights',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:GlobalUserrights',
-	'version'        => '1.0.1',
+	'version'        => '1.0.2',
 	'author'         => 'Nathaniel Herman',
 	'description'    => 'Easy [[Special:GlobalUserRights|global user rights]] administration',
 	'descriptionmsg' => 'gur-desc',
@@ -51,10 +51,6 @@ $wgHooks['SpecialListusersQueryInfo'][] = 'efGURUpdateQueryInfo';
  * @return array of global groups
  */
 function efGURgetGroups( $user ) {
-	global $egGUGroups;
-	if ( $egGUGroups )
-		return $egGUGroups;
-
 	if ( $user instanceof User ) {
 		$uid = $user->mId;
 	} else {
@@ -63,7 +59,7 @@ function efGURgetGroups( $user ) {
 	}
 
 	$dbw = wfGetDB( DB_MASTER );
-	$egGUGroups = array();
+	$groups = array();
 
 	$res = $dbw->select( 'global_user_groups',
 		array( 'gug_group' ),
@@ -71,12 +67,12 @@ function efGURgetGroups( $user ) {
 	);
 
 	while( $row = $dbw->fetchObject( $res ) ) {
-		$egGUGroups[] = $row->gug_group;
+		$groups[] = $row->gug_group;
 	}
 
 	$dbw->freeResult( $res );
 
-	return $egGUGroups;
+	return $groups;
 
 }
 
