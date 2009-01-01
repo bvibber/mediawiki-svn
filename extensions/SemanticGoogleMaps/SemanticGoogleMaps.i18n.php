@@ -13,7 +13,7 @@ $messages = array();
 $messages['en'] = array(
 	// user messages
 	'semanticgooglemaps_lookupcoordinates' => 'Look up coordinates',
-	'semanticgooglemaps-desc'              => 'Allows users to add Google Maps to wiki pages based on structured data',
+	'semanticgooglemaps-desc'              => 'Allows users to edit and display semantic coordinate data using Google Maps',
 );
 
 /** Message documentation (Message documentation)
