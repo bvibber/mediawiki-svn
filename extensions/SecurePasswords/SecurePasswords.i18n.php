@@ -291,6 +291,15 @@ Het moet:',
  */
 $messages['nn'] = array(
 	'securepasswords-desc' => 'Opprettar meir sikre passordhashar og legg til ein funksjon for sjekking av passordstyrke',
+	'securepasswords-valid' => 'Passordet ditt er ugyldig eller for kort.
+Det må:',
+	'securepasswords-minlength' => 'ha ei lengd på minst {{PLURAL:$1|eitt teikn|$1 teikn}}',
+	'securepasswords-lowercase' => 'innehalda minst éin liten bokstav',
+	'securepasswords-uppercase' => 'innehalda minst éin stor bokstav',
+	'securepasswords-digit' => 'innehalda minst eitt tal',
+	'securepasswords-special' => 'innehalda minst eitt spesialteikn (spesialteikna er: $1)',
+	'securepasswords-username' => 'ikkje vera det same som brukarnamnet ditt',
+	'securepasswords-word' => 'ikkje vera eit ord',
 );
 
 /** Occitan (Occitan)

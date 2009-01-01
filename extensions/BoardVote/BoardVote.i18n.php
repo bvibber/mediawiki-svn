@@ -3652,8 +3652,11 @@ $messages['ko'] = array(
 당신은 $2 이전에 적어도 $1개의 편집을 하고, $4와 $5 사이에 $3개의 편집을 한 계정을 이용해야 합니다.',
 	'boardvote_notloggedin' => '당신은 로그인하지 않으셨습니다.
 투표하시려면, 당신은 $2 이전에 적어도 $1개의 편집을 하고, $4와 $5 사이에 $3개의 편집을 한 계정을 이용해야 합니다.',
+	'boardvote_notqualified' => '당신은 이 선거에 참여할 자격이 없습니다.
+당신은 $2 이전에 적어도 $1개의 기여를 하여야 하고, $4와 $5 사이에 적어도 $3개의 기여를 하였어야 합니다.',
 	'boardvote_novotes' => '아무도 아직 투표하지 않았습니다.',
 	'boardvote_time' => '시간',
+	'boardvote_user' => '사용자',
 	'boardvote_edits' => '편집',
 	'boardvote_dumplink' => '이곳을 클릭하세요.',
 	'boardvote_submit' => '확인',
@@ -3926,36 +3929,42 @@ $messages['lfn'] = array(
 /** Limburgish (Limburgs)
  * @author Matthias
  * @author Ooswesthoesbes
+ * @author Pahles
  * @author Tibor
  */
 $messages['li'] = array(
 	'boardvote' => 'Wikimedia Board of Trustees-verkezing',
 	'boardvote-desc' => '[[meta:Board elections/2008|Wikimedia Board of Trustees-verkezing]]',
-	'boardvote_entry' => '* [[Special:Boardvote/vote|Stöm]]
-* [[Special:Boardvote/list|Oetgebrachdje stömme toeane]]
-* [[Special:Boardvote/dump|Dump geëncrypdje verkezingsopname]]',
-	'boardvote_intro' => '<p>Welkom bie de tweede verkiezinge veur de Wikimedia Board of Trustees. We
-kieze twee personen die de gebroekersgemeenschap vertegenwoordige in de
-versjellden Wikimedia-projecte. Ze bepalen mede de toekomstige richting
-van Wikimedia-projecten, individueel en als groep, en behartigen <em>uw</em>
-belangen en zorgen bij de Board of Trustees. Ze beslissen ook over hoe
-inkomsten gemaakt kunnen worden en waar het opgehaalde geld aan wordt
-besteed.</p>
+	'boardvote_entry' => '* [[Special:Boardvote/vote|Sjtöm]]
+* [[Special:Boardvote/list|Oetgebrachde sjtömme tuine]]
+* [[Special:Boardvote/dump|Dump versleutelde verkezingsopname]]',
+	'boardvote_intro' => "<p>Welkom bie de twiede verkezing veur de Wikimedia Board of Trustees. V'r
+keze twie persone die de gebroekersgemeinsjap vertegenwoordige in de
+versjillende Wikimedia-projecte. Zie bepale mit de toekómstige richting
+van Wikimedia-projecte, individueel en es gróp, en behartige <em>eur</em>
+belange en zörg bie de Board of Trustees. Zie beslisse ouch euver wie
+inkomste gemaak kinne waere en woe 't opgehaolde geld aon waerdt
+besteid.</p>
 
-<p>Lees alstublieft de kandidaatstelling en de antwoorden op vragen zorgvuldig
-voordat u stemt. Iedere kandidaat is een gewaardeerde gebruiker die
-aanzielijke hoeveelheden tijd en moeite heeft besteed aan het bouwen van
-uitnodigende omgevingen die toegewijd zijn aan het nastreven en vrij verspreiden
-van menselijke kennis.</p>
+<p>Lees esuchbleef de kandidaatstèlling en de antwaorde op vraoge zorgvuldig
+veurdats te sjtums. Jedere kandidaat is 'n gewaardeerd gebroeker dee
+'ne aonzeenlike sjwik tied en meujte haet besteid aan  't boewe van
+oetnudigende omgaevinge die gedevoeweerd zeen aan 't naosjtreve en vrij verspreide
+van minselike kènnis.</p>
 
-<p>U mag veur zoveel kandidate stemme as u wilt. De kandidaat met de meeste
-stemme voor iddere positie wordt tot winnaar oetgerope voor de betreffende
-positie. In geval de stemme stake wordt er een tweede ronde gehoude.</p>
+<p>Geef de kandidate 'n aantal punte in 't daoveur besjtömde vak aafhenkelik van dien prifferensie (1 = favoriete kandidaat, 2 = tweede käös, ...).
+Doe kens kandidate 'tzelfde aantal punte gaeve, en ouch kandidate gein punte gaeve.
+D'r waerdt aangenómme dats te 'n prifferensie haes veur kandidate dies te punte gaefs bove kandidate dies te gein punte gaefs.
+Veur kandidate dies te gein punte gaefs waert aangenóme dats te veur die gróp gein veurkäörsvolgorde höbs.</p>
 
-<p>Meer informatie:</p>
-<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Bestuursverkiezing FAQ</a></li>
-<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidate</a></li></ul>',
-	'boardvote_intro_change' => "<p>De höbs al gesjtömp. De kèns dien sjtöm verangere mit 't óngersjtäönde formeleer. Vink estebleef de vekskes nao edere kandidaat daes te sjteunt aan.</p>",
+<p>Doe maags op zoeväöl kandidate sjtömme es te wils. De kandidaat mit de mieste
+sjtömme veur jeder positie waert tot winnaar oetgerope veur de betreffende
+positie. In geval de sjtömme stake waert d'r 'n tweede ronde gehauwe.</p>
+
+<p>Mie informatie:</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008\" class=\"external\">Bestuursverkezing FAQ</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates\" class=\"external\">Kandidate</a></li></ul>",
+	'boardvote_intro_change' => "<p>De höbs al gesjtömp. De kèns dien sjtöm verangere mit 't óngersjtaond formeleer. Vink estebleef de vekskes nao edere kandidaat daes te sjteuns aan.</p>",
 	'boardvote_entered' => 'Danke. Dien sjtöm is verwirk.
 
 Es te wils, kèns te de volgende gegaeves beware. Dien sjtöm:
@@ -3971,40 +3980,41 @@ Noe volg de versjleutelde versie. Dees is aopebaar en nao te zeen op [[Special:B
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Trök]]',
-	'boardvote_nosession' => "Dien Wikimedia-gebroekersnómmer kan neet bepaold waere. Meld dich aan in de wiki woes te voldeis aan de eise en gank nao <nowiki>[[Special:Boardvote]]</nowiki>. Gebroek 'n gebroekersaccount mit minstes $1 biedrages veur $2 en mit dien ierste bewirking veur $3.",
-	'boardvote_notloggedin' => 'De bis neet aangemeld. De kèns sjtömme wens te veur $2 minstes $1 bewirkinge höbs gemaak en dien ierste bewirking mót veur $3 gemaak zeen.',
-	'boardvote_notqualified' => 'De kèns neet sjtömme in dees verkezing. De mós $3 bewirkinge gemaak höbbe veur $2 en dien ierste bewirking mót veur $5 gemaak zeen.',
-	'boardvote_novotes' => "D'r is door nag nemes gestömp.",
+	'boardvote_invalidentered' => '<p><strong>Fout</strong>: de veurkäör veur kandidate moot oetgedrök waere in ganse getalle (1, 2, 3, ...), of laeggelaote waere.</p>',
+	'boardvote_nosession' => "Dien Wikimedia-gebroekersnómmer kan neet bepaold waere. Meld dich aan in de wiki woes te voldeis aan de eise en gank nao <nowiki>[[Special:Boardvote]]</nowiki>. Gebroek 'n gebroekersaccount mit minstes $1 {{PLURAL:$1|biedrage|biedrages}} veur $2 en mit minstes $3 {{PLURAL:$3|bewirking|bewirkinge}} tösse $4 en $5.",
+	'boardvote_notloggedin' => 'De bis neet aangemeld. De kèns sjtömme wens te veur $2 minstes $1 {{PLURAL:$1|bewirking|bewirkinge}} höbs gemaak en minstes $3 {{PLURAL:$3|bewirking|bewirkinge}} höbs gemaak tösse $4 en $5.',
+	'boardvote_notqualified' => 'De kèns neet sjtömme in dees verkezing. De mós minstes $1 {{PLURAL:$1|bewirking|bewirkinge}} höbbe gemaak veur $2 en minstes $3 {{PLURAL:$3|bewirking|bewirkinge}} höobe gemaak tösse $4 en $5.',
+	'boardvote_novotes' => "D'r is nog neet gesjtömp.",
 	'boardvote_time' => 'Tied',
 	'boardvote_user' => 'Gebroeker',
-	'boardvote_edits' => 'Bewerkinge',
+	'boardvote_edits' => 'Bewirkinge',
 	'boardvote_days' => 'Daag',
 	'boardvote_ip' => 'IP-adres',
 	'boardvote_ua' => 'User-agent',
-	'boardvote_listintro' => '<p>Hiej ónger staon alle stömme die toet noe toe zeen oetgebrach. $1 veur de versleuteldje gegaeves.</p>',
-	'boardvote_dumplink' => 'Klik hiej',
+	'boardvote_listintro' => '<p>Hiej ónger staon alle sjtömme die tót noe toe zeen oetgebrach. $1 veur de versjleutelde gegaeves.</p>',
+	'boardvote_dumplink' => 'Klik hie',
 	'boardvote_submit' => 'ok',
 	'boardvote_strike' => 'Óngeljig',
 	'boardvote_unstrike' => 'Geljig',
 	'boardvote_needadmin' => 'Allein lede van de Verkezingscommisie kinne dees hanjeling oetveure.',
 	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Bestuursverkeziginge</a>:
-Stumming tot 22 juni',
-	'boardvote_notstarted' => "'t Stömme is nag neet begós",
-	'boardvote_closed' => 'De stömming is noe geslaote. zee saon [http://meta.wikimedia.org/wiki/Board_elections de verkezingspazjena veur de rezultaote].',
+Sjtömme kin tot 22 juni',
+	'boardvote_notstarted' => "'t Sjtömme is nog neet gesjtart",
+	'boardvote_closed' => 'De sjtömming is noe gesjlaote, zee bènnekórt [http://meta.wikimedia.org/wiki/Board_elections de verkezingspagina veur de rizzeltaote].',
 	'boardvote_edits_many' => 'väöl',
-	'group-boardvote' => 'Boardvote-administrators',
-	'group-boardvote-member' => 'Boardvote-administrator',
+	'group-boardvote' => 'Boardvote-beheerders',
+	'group-boardvote-member' => 'Boardvote-beheerder',
 	'grouppage-boardvote' => '{{ns:project}}:Boardvote-administrator',
 	'boardvote_blocked' => 'Sorry, de bis geblokkeerd op diene geregistreerde wiki. Geblokkeerde gebroekers maoge neet sjtömme.',
-	'boardvote_bot' => 'Deze gebroeker steit geregistreerd as bot. Bots moge gein stum oetbringe.',
+	'boardvote_bot' => 'Deze gebroeker steit geregistreerd es bot. Bots maoge gein sjtöm oetbringe.',
 	'boardvote_welcome' => "Wèlkom, '''$1'''!",
 	'go_to_board_vote' => 'Wikimedia Bestuursverkezing 2008',
-	'boardvote_redirecting' => "Waeges 'ne baetere beveilige en mieë transparantie vinje de verkezinge plaats op 'ne externe, ónaafhankelik beheerde server.
+	'boardvote_redirecting' => "Waeges 'n baeter beveiliging en mie transparantie vènje de verkezinge plaats op 'ne externe, oonaafhenkelik beheerde server.
 
-Geer wuuertj euver 20 second ómgeleid nao deze externe server. [$1 Klik hiej] óm d'r noe haer te gaon.
+Geer waert euver 20 seconde doorgeleid nao deze externe server. [$1 Klik hie] um d'r noe haer te gaon.
 
-'t Is meugelik det geer 'n waorsjuwing krieg waeges 'n neet ónbekindj certificaat.",
-	'right-boardvote' => 'Behieër verkeziginge',
+'t Is meugelik dets te 'n waarsjoewing kriegs waeges 'n neet óngerteikend certificaat.",
+	'right-boardvote' => 'Beheer verkeziginge',
 );
 
 /** Líguru (Líguru)

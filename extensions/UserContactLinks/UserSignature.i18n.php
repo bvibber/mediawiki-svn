@@ -15,10 +15,11 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'usercontactlink-baduser' => '{{Identical|Incorrect username}}',
-	'usercontactlink-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'usercontactlink-desc' => 'Short description of this extension, shown on [[Special:Version]].',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -224,6 +225,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'usercontactlink-baduser' => 'погрешно корисничко име',
+	'usercontactlink-desc' => 'Дава можност за едноставно и конзистентно додавање на другите кориснички имиња со користење на синтаксата ^^^корисник^^^',
 );
 
 /** Malayalam (മലയാളം)

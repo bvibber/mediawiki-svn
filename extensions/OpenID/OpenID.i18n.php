@@ -760,6 +760,19 @@ $messages['et'] = array(
 Kui soovid kasutada avatud ID-d tulevikus sisselogimiseks, võid [[Special:OpenIDConvert|konvertida oma konto, kasutamaks avatud ID-d]].",
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'openidoptional' => 'Aukerazkoa',
+	'openidrequired' => 'Nahitaezkoa',
+	'openidnickname' => 'Ezizena',
+	'openidfullname' => 'Izen osoa',
+	'openidemail' => 'E-posta helbidea',
+	'openidlanguage' => 'Hizkuntza',
+	'openidnotavailable' => 'Nahi duzun ezizena ($1) beste lankide batek erabiltzen du jada.',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Mobe

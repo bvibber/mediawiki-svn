@@ -344,6 +344,15 @@ $messages['te'] = array(
 	'stalepages-summary' => 'గత $1 రోజులుగా ఎటువంటి మార్పులూ లేని పేజీల జాబితా ఇది.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'stalepages' => 'Mga pahinang bilasa (hindi na sariwa)',
+	'stalepages-desc' => 'Gumagawa ng isang [[Special:Stalepages|talaan ng mga pahina]]ng walang kamakailang pagbabago',
+	'stalepages-summary' => 'Isa itong talaan ng mga pahinang hindi nabago/binago sa loob ng huling $1 mga araw.',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

@@ -275,6 +275,30 @@ Bitte seien Sie sich ebenfalls sicher, dass Sie alle nötigen Felder angegeben h
 Besuchen Sie bitte [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} diese Seite], um es auszuprobieren.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'createsigndocument' => 'Signěrowanje dokumentow zmóžniś',
+	'createsigndoc-pagename' => 'Bok:',
+	'createsigndoc-allowedgroup' => 'Dowólona kupka:',
+	'createsigndoc-email' => 'E-mailowa adresa:',
+	'createsigndoc-address' => 'Bydleńska addresa:',
+	'createsigndoc-extaddress' => 'Město, stat, kraj:',
+	'createsigndoc-phone' => 'Telefonowy numer:',
+	'createsigndoc-bday' => 'Naroźeński datum:',
+	'createsigndoc-minage' => 'Minimalne starstwo:',
+	'createsigndoc-introtext' => 'Zapokazanje:',
+	'createsigndoc-hidden' => 'Schowany',
+	'createsigndoc-optional' => 'Opcionalny',
+	'createsigndoc-create' => 'Napóraś',
+	'createsigndoc-error-generic' => 'Zmólka: $1',
+	'createsigndoc-error-pagenoexist' => 'Zmólka: Bok [[$1]] njeeksistěrujo.',
+	'createsigndoc-success' => 'Signěrowanje dokumentow jo se wuspěšnje zmóžniło na [[$1]].
+Aby testował, woglědaj se [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} toś ten bok].',
+	'createsigndoc-error-alreadycreated' => 'Dokumentowa signatura "$1" južo eksistěrujo.',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */
@@ -669,8 +693,31 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'createsigndocument' => 'Et Dokkemänte Ungerschriive zohlohße',
+	'createsigndoc-head' => 'Met dämm Fommulaa hee, kanns De en Söndersigg ennreschte, för de aanjejovve Sigg [[Special:SignDocument|ungerschriive]] ze lohße.
+Dodoför weed och ene Ungerschreffte-Mapp för die Sigg aanjelaat.
+Jiff dä Tittel fun dä Sigg aan, woh De et dijjitaale Ungerschriive zohlohße wells. Dozoh, de Metjleeder fun wat för ene Metmaacherjrupp ungerschriive dörrve sulle. Dann, wat för en Felder för de Metmaachere bejm Ungerschriive zom Ußfölle ze sin sin sulle, un wat dofun ußjeföllt wääde kann, un wat moß. Dann, wi alt Eine beim Ungerschriive winnischßdens sin moß. Wann De doh nix aanjiß, dann eß jedes Allder rääsch. Zoletz jiff ene koote Tex en, met Äklieronge dren övver dat Dokkemänt, un för de Metmaachere, wat se donn sulle, un wie.
+
+<b>För der Momang ham_mer kein Müjjeleshkeit, aan de Ungerschreffte jet ze änndere, wann se ens do sinn</b>, oohne ne tirekte Zohjang op de Dahtebangk. 
+Ußerdämm, dä Täx zom Ungerschriive, dä och met dä Ongerschreffte zosamme jezeish weedt, is immer dä Täx fun jätz, jans ejaal, wat donoh noch för Änderunge aan dä Sigg jemaat wäde odder woodte. Dröm beß jannz secher, dat dat Dokkemänt en dä Sigg en enem shtabiile Zohshtand, un werklesch parraat för et Ungeschriive eß.
+Beß och sescher, dat De all die Felder jenou esu aanjejovve häs, wi se sin sulle, ih dat De dat Fommulaa hee affschecks.',
 	'createsigndoc-pagename' => 'Sigg:',
+	'createsigndoc-allowedgroup' => 'Zojelohße Jroppe:',
+	'createsigndoc-email' => 'De <i lang="en">e-mail</i> Addräß:',
+	'createsigndoc-address' => 'Aanschreff ze hus:',
+	'createsigndoc-extaddress' => 'Shtadt, Shtaat, Land:',
+	'createsigndoc-phone' => 'Tellefon-Nommer:',
+	'createsigndoc-bday' => 'Et Dattum fum Jebootsdach:',
+	'createsigndoc-minage' => 'Et ungerschte Allder:',
+	'createsigndoc-introtext' => 'Aanleidong:',
+	'createsigndoc-hidden' => 'Verstoche',
+	'createsigndoc-optional' => 'Kam_mer och fott lohße',
 	'createsigndoc-create' => 'Aanläje',
+	'createsigndoc-error-generic' => 'Fähler: $1',
+	'createsigndoc-error-pagenoexist' => 'Fähler: En Sigg „[[$1]]“ jidd_et nit.',
+	'createsigndoc-success' => 'Et Ungerschriive eß jetz för „[[$1]]“ enjeschalldt, en Ungerschreffte-Mapp es aanjelaat.
+Mer kann jetz dat [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} Ungerschriive och ußprobbiere].',
+	'createsigndoc-error-alreadycreated' => 'De Ongerschreffte-Mapp för de Sigg „$1“ es ald aanjelaat.',
 );
 
 /** Latin (Latina)
@@ -1207,6 +1254,30 @@ $messages['tg-cyrl'] = array(
 	'createsigndoc-create' => 'Эҷод',
 	'createsigndoc-error-generic' => 'Хато: $1',
 	'createsigndoc-error-pagenoexist' => 'Хато: Саҳифаи [[$1]] вуҷуд надорад.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'createsigndocument' => 'Paganahin/paandarin ang paglalagda sa kasulatan (dokumento)',
+	'createsigndoc-pagename' => 'Pahina:',
+	'createsigndoc-allowedgroup' => 'Pinapahintulutang pangkat:',
+	'createsigndoc-email' => 'Adres ng e-liham:',
+	'createsigndoc-address' => 'Adres ng bahay:',
+	'createsigndoc-extaddress' => 'Lungsod, estado, bansa:',
+	'createsigndoc-phone' => 'Bilang (numero) ng telepono:',
+	'createsigndoc-bday' => 'Kaarawan:',
+	'createsigndoc-minage' => 'Pinakamababang gulang (edad):',
+	'createsigndoc-introtext' => 'Pagpapakilala:',
+	'createsigndoc-hidden' => 'Nakatago',
+	'createsigndoc-optional' => 'Hindi talaga kailangan (maaaring wala nito)',
+	'createsigndoc-create' => 'Likhain',
+	'createsigndoc-error-generic' => 'Kamalian: $1',
+	'createsigndoc-error-pagenoexist' => 'Kamalian: Hindi umiiral ang pahinang [[$1]].',
+	'createsigndoc-success' => 'Matagumpay na napaandar/napagana ang paglalagda sa kasulatan (dokumento) sa [[$1]].
+Upang masubok muna ito, pakidalaw ang [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} pahinang ito].',
+	'createsigndoc-error-alreadycreated' => 'Umiiral na ang paglalagda sa kasulatan/dokumentong "$1".',
 );
 
 /** Turkish (Türkçe)

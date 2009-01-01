@@ -823,7 +823,7 @@ $messages['pl'] = array(
 	'formbadpagenametext' => 'Dane wpisane do formularza tworzą niepoprawną nazwę strony, „$1”.',
 	'formrequiredfieldpluralerror' => 'Pola $1 są wymagane w tym formularzu. Prosimy o wypełnienie ich.',
 	'formrequiredfielderror' => 'Pole $1 jest wymagane w tym formularzu. Wypełnij je.',
-	'formsavesummary' => 'Nowa strona za pomocą [[Special:Form/$1]]',
+	'formsavesummary' => 'Nowa strona za pomocą [[Special:Form/$1|formularza $1]]',
 	'formsaveerror' => 'Błąd przy zapisywaniu formularza',
 	'formsaveerrortext' => "Wystąpił nieznany błąd przy zapisywaniu strony '$1'.",
 );

@@ -246,6 +246,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'newschannel' => 'Neiegkeeten',
+	'newschannel-desc' => 'Implementéiert e Noriichtekanal als dynamesch [[Special:NewsChannel|Spezialsäit]]',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Limit:',
 	'newschannel_include_category' => 'Zousätzlech Kategorie:',

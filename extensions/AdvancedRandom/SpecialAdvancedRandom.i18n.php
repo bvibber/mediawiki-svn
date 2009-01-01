@@ -50,6 +50,13 @@ $messages['avk'] = array(
 	'advancedrandom' => 'Xuyavapon',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'advancedrandom' => 'Палепшаная выпадковая старонка',
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */

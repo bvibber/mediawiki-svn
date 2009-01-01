@@ -178,6 +178,13 @@ $messages['lb'] = array(
 	'googleadsense-desc' => 'Setzt [http://www.google.com/adsense Google AdSense] an déi säitlech Navigatiounslëscht derbäi',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'googleadsense-desc' => "Leletakkan [http://www.google.com/adsense Google AdSense] dalam ''sidebar''",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -242,9 +242,9 @@ $messages['he'] = array(
 	'smoothgallery-not-found' => 'לא נוספו תמונות לגלריה.
 אנא הוסיפו לפחות תמונה אחת.',
 	'smoothgallery-no-images' => 'לא נמצאו תמונות בגלריה זו.
-ודאו שכל התמונות שבוקשו אכן נמצאות.
-התמונות הבאות לא נמצאו: $1',
-	'smoothgallery-invalid-images' => 'התמונות הבאות שבוקשו הן מסוג בלתי תקין: $1',
+ודאו ש{{PLURAL:$3|התמונה שבוקשה אכן נמצאת|כל התמונות שבוקשו אכן נמצאות}}כל.
+{{PLURAL:$2|התמונה הבאה לא נמצאה|התמונות הבאות לא נמצאו}}: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|התמונה הבאה שבוקשה הינה|התמונות הבאות שבוקשו הן}} מסוג בלתי תקין: $1',
 	'smoothgallery-unexpected-error' => 'אירעה שגיאה בלתי צפויה.
 אנא דווחו על תקלה זו.',
 	'smoothgallery-javascript-disabled' => 'על מנת לצפות בדף זה כראוי נדרש JavaScript.',
@@ -449,6 +449,7 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'smoothgallery' => 'Płynna galeria',
@@ -456,7 +457,9 @@ $messages['pl'] = array(
 	'smoothgallery-smoothgallerytitle' => 'Płynna galeria: $1',
 	'smoothgallery-error' => '<b>Błąd płynnej galerii:</b>',
 	'smoothgallery-not-found' => 'Nie dodano żadnych grafik do tej galerii. Dodaj przynajmniej jedną grafikę.',
-	'smoothgallery-no-images' => 'Nie znaleziono grafik w tej galerii. Upewnij się, że wszystkie podane grafiki istnieją. Następujące grafiki nie zostały znalezione: $1',
+	'smoothgallery-no-images' => 'Nie odnaleziono grafik w tej galerii.
+Upewnij się, czy {{PLURAL:$3|szukana grafika istnieje|szukane grafiki istnieją}}.
+{{PLURAL:$2|Następująca grafika nie została odnaleziona|Następujące grafiki nie zostały odnalezione}}: $1',
 	'smoothgallery-unexpected-error' => 'Wystąpił niespodziewany błąd. Prosimy o wypełnienie zgłoszenia błędu.',
 	'smoothgallery-javascript-disabled' => 'Do obejrzenia tej galerii wymagany jest JavaScript.',
 );
@@ -569,6 +572,28 @@ Följande bilder hittades inte: $1',
 	'smoothgallery-unexpected-error' => 'Du var ett oväntat fel.
 Var god lämna en felrapport.',
 	'smoothgallery-javascript-disabled' => 'Javascript behövs för att visa det här galleriet korrekt.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'smoothgallery' => 'SmoothGallery ("Makinis na Tanghalan/Galerya")',
+	'smoothgallery-desc' => 'Nagpapahintulot sa mga tagagamit na makalikha ng mga galerya/tanghalan ng naikarga/ikinargang mga larawan.
+Nagpapahintulot sa lahat ng mga pilian (opsyon) ng SmoothGallery ("Makinis na Tanghalan/Galerya")',
+	'smoothgallery-title' => 'SmoothGallery ("Makinis na Tanghalan/Galerya")',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery ("Makinis na Tanghalan/Galerya"): $1',
+	'smoothgallery-error' => '<b>Kamalian sa SmoothGallery:</b>',
+	'smoothgallery-gallery-not-found' => 'Hindi umiiral ang hiniling na tanghalan/galerya.',
+	'smoothgallery-not-found' => 'Walang mga larawang naidagdag patungo sa tanghalan/galerya.
+Magdagdag po ng kahit na isang larawan lamang.',
+	'smoothgallery-no-images' => 'Walang mga larawang natagpuan mula sa loob ng tanghalan/galeryang ito.
+Pakitiyak lamang na umiiral nga {{PLURAL:$3|ang larawan|ang mga larawang}}g hiniling.
+Hindi natagpuan ang sumusunod na {{PLURAL:$2|larawan|mga larawan}}: $1',
+	'smoothgallery-invalid-images' => 'Ang sumusunod na hiniling na {{PLURAL:$2|larawan ay|mga larawan ay}} isang hindi tanggap na uri: $1',
+	'smoothgallery-unexpected-error' => "Nagkaroon ng isang hindi inaasahang kamalian.
+Magpadala/magpasa lamang po ng isang ulat (report) ng depekto (''bug'').",
+	'smoothgallery-javascript-disabled' => 'Kinakailangan ang Javascript upang matanaw/matingnan ng tama/wasto ang galerya/tanghalang ito.',
 );
 
 /** Vietnamese (Tiếng Việt)

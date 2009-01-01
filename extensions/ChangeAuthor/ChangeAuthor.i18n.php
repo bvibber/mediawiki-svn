@@ -173,6 +173,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -189,8 +190,8 @@ $messages['arz'] = array(
 	'changeauthor-changeauthors-single' => 'تغيير المؤلف',
 	'changeauthor-explanation-single' => "باستخدام هذه الاستمارة يمكنك تغيير مؤلف مراجعة.
 ببساطة غير اسم اسم المستخدم بالأسفل، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف'.",
-	'changeauthor-invalid-username' => 'اسم مستخدم غير صحيح "$1".',
-	'changeauthor-nosuchuser' => 'لا يوجد مستخدم بالاسم "$1".',
+	'changeauthor-invalid-username' => 'اسم يوزر مش صحيح "$1".',
+	'changeauthor-nosuchuser' => 'مافيش يوزر بالاسم "$1".',
 	'changeauthor-revview' => 'المراجعة #$1 من $2',
 	'changeauthor-nosuchtitle' => 'لا توجد صفحة بالاسم "$1".',
 	'changeauthor-weirderror' => 'حدث خطأ غريب جدا.

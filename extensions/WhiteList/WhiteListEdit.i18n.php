@@ -103,7 +103,7 @@ This page is only applicable to restricted users",
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'whitelist-desc' => 'Short description of the White List extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'whitelist-desc' => 'Short description of the White List extension, shown on [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 	'mywhitelistpages' => '{{Identical|My pages}}',
 	'whitelisttablemodifyall' => '{{Identical|All}}',
 	'whitelisttablemodifynone' => '{{Identical|None}}',
@@ -372,9 +372,11 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'whitelist-desc' => 'Uređivanje dopuštenja pristupa za ograničene korisnike',
 	'mywhitelistpages' => 'Moje stranice',
+	'whitelisttablemodify' => 'Izmijeni',
 	'whitelisttablemodifyall' => 'Sve',
 	'whitelisttablemodifynone' => 'Ništa',
 	'whitelisttablepage' => 'Wiki stranica',
+	'whitelisttabletype' => 'Tip pristupa',
 	'whitelisttableexpires' => 'Ističe dana',
 	'whitelisttablemodby' => 'Zadnji put izmijenjeno od strane',
 	'whitelisttableedit' => 'Uredi',

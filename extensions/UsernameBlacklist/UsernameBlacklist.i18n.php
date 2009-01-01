@@ -32,9 +32,10 @@ Please choose another name.',
 /** Message documentation (Message documentation)
  * @author Beau
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'usernameblacklist-desc' => 'Short description of the Usernameblacklist extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'usernameblacklist-desc' => 'Short description of the Usernameblacklist extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 	'right-uboverride' => '{{doc-right}}',
 );
 
@@ -291,6 +292,15 @@ $messages['cy'] = array(
 	'blacklistedusername' => 'Enw gwaharddedig ar gyfer defnyddwyr',
 	'blacklistedusernametext' => "Mae'r enw defnyddiwr y dewisoch ar y [[MediaWiki:Usernameblacklist|rhestr enwau gwaharddedig]].
 Dewiswch enw arall os gwelwch yn dda.",
+	'usernameblacklist' => '<pre>
+# Defnyddir eitemau ar y rhestr hon fel rhan o ymadrodd rheolaidd pan yn
+# gwahardd enwau defnyddwyr rhag cael eu defnyddio wrth gofrestru. Dylai
+# pob eitem fod ar restr o bwyntiau bwled, e.e.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+	'usernameblacklist-invalid-lines' => "Mae'r {{PLURAL:$1||llinell|llinellau|llinellau|llinellau|llinellau}} canlynol ar y rhestr enwau gwaharddedig yn annilys; byddwch gystal {{PLURAL:$1||â'i chywiro|â'u cywiro|â'u cywiro|â'u cywiro|â'u cywiro}} cyn rhoi'r rhestr ar gadw:",
 	'right-uboverride' => "Anwybyddu'r rhestr enwau gwaharddedig",
 );
 

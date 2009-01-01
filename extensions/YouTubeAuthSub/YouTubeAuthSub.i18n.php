@@ -48,9 +48,10 @@ Please be patient.',
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'youtubeauthsub-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'youtubeauthsub-desc' => 'Short description of this extension, shown on [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 	'youtubeauthsub_title' => '{{Identical|Title}}',
 	'youtubeauthsub_description' => '{{Identical|Description}}',
 	'youtubeauthsub_category' => '{{Identical|Category}}',
@@ -115,11 +116,11 @@ $messages['ar'] = array(
 	'youtubeauthsub_uploadbutton' => 'رفع',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-هذا الفيديو يمكن رؤيته [http://www.youtube.com/watch?v=$1 هنا]',
+[http://www.youtube.com/watch?v=$1 عرض هذا الفيديو]',
 	'youtubeauthsub_summary' => 'رفع فيديو يوتيوب',
 	'youtubeauthsub_uploading' => 'الفيديو الخاص بك يتم رفعه.
 من فضلك كن صبورا.',
-	'youtubeauthsub_viewpage' => 'كخيار آخر، يمكنك رؤية الفيديو الخاص بك [[$1|هنا]].',
+	'youtubeauthsub_viewpage' => 'كخيار آخر، يمكنك [[$1|رؤية الفيديو الخاص بك]].',
 	'youtubeauthsub_jserror_nokeywords' => 'رجاءً أدخل كلمة مفتاحية أو أكثر.',
 	'youtubeauthsub_jserror_notitle' => 'رجاءً أدخل عنوانا للفيديو.',
 	'youtubeauthsub_jserror_nodesc' => 'رجاءً أدخل وصفا للفيديو.',
@@ -143,22 +144,22 @@ $messages['arz'] = array(
 	'youtubeauthsub_clickhere' => 'أنقر هنا لتسجيل الدخول لليوتيوب',
 	'youtubeauthsub_tokenerror' => 'خطأ توليد توكين السماح، حاول التحديث.',
 	'youtubeauthsub_success' => "تهانينا!
-الفيديو الخص بك تم رفعه.
-لرؤية الفيديو الخاص بك اضغط <a href='http://www.youtube.com/watch?v=$1'>هنا</a>.
-يوتيوب ربما يحتاج إلى بعض الوقت لمعالجة الفيديو الخاص بك، لذا ربما لا يكون جاهزا بعد.
+الفيديو بتاعك اتحمل.
+لرؤية الفيديو بتاعك اضغط <a href='http://www.youtube.com/watch?v=$1'>هنا</a>.
+يوتيوب ربما يحتاج لبعض الوقت لمعالجة الفيديو بتاعك،  ربما لا يكون جاهزا بعد.
 
-لتضمين الفيديو الخاص بك فى صفحة على الويكي، أدخل الكود التالى فى صفحة:
+لتضمين الفيديو بتاعك  فى صفحة على الويكى، حط  الكود التالى فى صفحة:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'لرفع فيديو، سيتعين عليك تسجيل الدخول أولا إلى يوتيوب.',
 	'youtubeauthsub_uploadhere' => 'رفع مقاطع الفيديو الخاصة بك من هنا:',
 	'youtubeauthsub_uploadbutton' => 'رفع',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-هذا الفيديو يمكن رؤيته [http://www.youtube.com/watch?v=$1 هنا]',
+الفيديو ده ممكن تشوفه [http://www.youtube.com/watch?v=$1 هنا]',
 	'youtubeauthsub_summary' => 'رفع فيديو يوتيوب',
 	'youtubeauthsub_uploading' => 'الفيديو الخاص بك يتم رفعه.
 من فضلك كن صبورا.',
-	'youtubeauthsub_viewpage' => 'كخيار آخر، يمكنك رؤية الفيديو الخاص بك [[$1|هنا]].',
+	'youtubeauthsub_viewpage' => 'كاختيار تانى، ممكن تشوف الفيديو بتاعك [[$1|هنا]].',
 	'youtubeauthsub_jserror_nokeywords' => 'رجاءً أدخل كلمة مفتاحية أو أكثر.',
 	'youtubeauthsub_jserror_notitle' => 'رجاءً أدخل عنوانا للفيديو.',
 	'youtubeauthsub_jserror_nodesc' => 'رجاءً أدخل وصفا للفيديو.',
@@ -192,6 +193,18 @@ $messages['be-tarask'] = array(
 	'youtubeauthsub_keywords' => 'Ключавыя словы',
 	'youtubeauthsub_category' => 'Катэгорыя',
 	'youtubeauthsub_submit' => 'Даслаць',
+	'youtubeauthsub_clickhere' => 'Націсьніце тут, каб увайсьці ў YouTube',
+	'youtubeauthsub_tokenerror' => 'Памылка стварэньня токэна аўтарызацыі, паспрабуйце абнавіць старонку.',
+	'youtubeauthsub_success' => "Віншуем!
+Ваша відэа загружана.
+<a href='http://www.youtube.com/watch?v=$1'>Націсьніце тут каб праглядзець загружанае відэа</a>.
+YouTube, магчыма, апрацоўвае Ваша відэа, таму яно можа быць недасяжным.
+
+Каб уставіць Ваша відэа на вікі-старонку, устаўце на старонку наступны код:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Каб загрузіць відэа, Вам неабходна спачатку увайсьці ў YouTube.',
+	'youtubeauthsub_uploadhere' => 'Загрузіць Ваша відэа адсюль:',
+	'youtubeauthsub_uploadbutton' => 'Загрузіць',
 );
 
 /** Bulgarian (Български)
@@ -810,11 +823,11 @@ $messages['he'] = array(
 	'youtubeauthsub_uploadbutton' => 'העלאה',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-ניתן לצפות בסרטון זה [http://www.youtube.com/watch?v=$1 כאן]',
+[http://www.youtube.com/watch?v=$1 לצפיה בסרטון זה]',
 	'youtubeauthsub_summary' => 'העלאת סרטון ל־YouTube',
 	'youtubeauthsub_uploading' => 'הסרטון שלכם נמצא כעת בתהליכי העלאה.
 אנא האזרו בסבלנות.',
-	'youtubeauthsub_viewpage' => 'לחלופין, תוכלו לצפות בסרטון שלכם [[$1|כאן]].',
+	'youtubeauthsub_viewpage' => 'לחלופין, תוכלו [[$1|לצפות בסרטון שלכם]].',
 	'youtubeauthsub_jserror_nokeywords' => 'נא הזינו מילת מפתח אחת או יותר.',
 	'youtubeauthsub_jserror_notitle' => 'נא הזינו כותרת לסרטון.',
 	'youtubeauthsub_jserror_nodesc' => 'נא הזינו תיאור לסרטון.',
@@ -1658,11 +1671,11 @@ Jeśli chcesz dołączyć przesłany plik wideo do materiału w serwisie wiki, w
 	'youtubeauthsub_uploadbutton' => 'Prześlij',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-Ten plik wideo można obejrzeć [http://www.youtube.com/watch?v=$1 tutaj].',
+[http://www.youtube.com/watch?v=$1 Zobacz film].',
 	'youtubeauthsub_summary' => 'Przesyłanie pliku wideo YouTube',
 	'youtubeauthsub_uploading' => 'Pliki wideo są przesyłane.
 Czekaj.',
-	'youtubeauthsub_viewpage' => 'Opcjonalnie plik wideo można zobaczyć [[$1|tutaj]].',
+	'youtubeauthsub_viewpage' => 'Swój plik wideo możesz również zobaczyć [[$1|tutaj]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Wprowadź jedno lub więcej słów kluczowych.',
 	'youtubeauthsub_jserror_notitle' => 'Wprowadź tytuł materiału wideo.',
 	'youtubeauthsub_jserror_nodesc' => 'Wprowadź opis materiału wideo.',
@@ -1681,8 +1694,9 @@ $messages['ps'] = array(
 	'youtubeauthsub_category' => 'وېشنيزه',
 	'youtubeauthsub_clickhere' => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
 	'youtubeauthsub_success' => "مبارک مو شه!
+
 ستاسو ويډيو په برياليتوب سره پورته شوه.
-که خپله ويډيو ليدل غواړۍ نو <a href='http://www.youtube.com/watch?v=$1'>دلته وټوکۍ</a>.
+<a href='http://www.youtube.com/watch?v=$1'>خپله ويډيو دلته وګورۍ</a>.
 د نوې ويډيو په چمتو کولو کې لږ وخت لږېږي، نو کېدای شي چې ستاسو ويډيو لا تر اوسه نه وي چمتو شوې.
 
 که چېرته د ويکي په يو مخ باندې خپله ويډيو ورټومبل غواړۍ، نو په هماغه مخ کې دغه لاندينی کوډ ورګډ کړی:
@@ -1692,7 +1706,7 @@ $messages['ps'] = array(
 	'youtubeauthsub_uploadbutton' => 'پورته کول',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-همدا ويډيو کولای شی چې [http://www.youtube.com/watch?v=$1 دلته] وګورۍ',
+[http://www.youtube.com/watch?v=$1 همدا ويډيو وګورۍ]',
 	'youtubeauthsub_summary' => 'د يوټيوب ويډيو ورپورته کول',
 	'youtubeauthsub_uploading' => 'ستاسو ويډيو د پورته کېدلو په حال کې ده.
 

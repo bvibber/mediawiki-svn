@@ -68,6 +68,14 @@ $messages['bg'] = array(
 	'abcdownload' => 'Изтегляне:',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'abcdesc' => 'Ouzhpennañ a ra ur valizenn <tt>&lt;abc&gt;</tt> a-benn furmadiñ sonerezh ABC',
+	'abcdownload' => 'Pellgargañ :',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -238,6 +246,14 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'abcdesc' => "Setzt den <tt>&lt;abc&gt;</tt> Tag fir ''ABC music'' ze formatéieren",
 	'abcdownload' => 'Eroflueden:',
+);
+
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'abcdesc' => 'Voog de tag <tt>&lt;abc&gt;</tt> veur de opmaak van ABC-meziek in',
+	'abcdownload' => 'Downloade:',
 );
 
 /** Malayalam (മലയാളം)

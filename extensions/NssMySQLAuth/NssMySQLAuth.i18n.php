@@ -365,10 +365,12 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'accountmanager' => 'Gestionnaire vun de Benotzerkonten',
 	'am-username' => 'Benotzernumm',
 	'am-email' => 'E-Mail',
 	'am-active' => 'aktiv',
 	'am-updated' => 'är Ännerunge goufe gespäichert',
+	'nss-desc' => "E Plugin fir sech an enger ''libnss-mysql'' anzeloggen, inlusiv engem [[Special:AccountManager|Gestionnaire vun de Benotzerkonten]]",
 	'nss-rights' => 'Rechter',
 	'nss-save-changes' => 'Ännerunge späicheren',
 	'nss-create-account-header' => 'Een neie Benotzerkont opmaachen',

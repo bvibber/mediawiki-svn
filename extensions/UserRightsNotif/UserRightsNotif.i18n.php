@@ -24,9 +24,10 @@ $2",
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'userrightsnotif-desc' => 'Short description of the Userrightsnotif extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'userrightsnotif-desc' => 'Short description of the Userrightsnotif extension, shown in [[Special:Version]].',
 );
 
 /** Arabic (العربية)
@@ -49,6 +50,7 @@ $2',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -63,7 +65,7 @@ $messages['arz'] = array(
 مع التحية،
 
 $2',
-	'userrightsnotif-desc' => 'يرسل إشعار بريد إلكترونى إلى المستخدمين على تغييرات الحقوق',
+	'userrightsnotif-desc' => 'يبعت إيميل لليوزرز على تغييرات الحقوق',
 );
 
 /** Bulgarian (Български)

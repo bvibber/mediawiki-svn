@@ -13,6 +13,11 @@ $aliases['en'] = array(
 	'ContributionTracking' => array( 'ContributionTracking' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'ContributionTracking' => array( 'تتبع_المساهمة' ),
+);
+
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
 	'ContributionTracking' => array( 'DoprinosiPracenje' ),

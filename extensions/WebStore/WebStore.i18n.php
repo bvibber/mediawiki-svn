@@ -69,11 +69,11 @@ $1\n",
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'webstore-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
+Shown in [[Special:Version]].',
 	'webstore_404' => '{{Identical|File not found}}',
 );
 

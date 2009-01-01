@@ -1517,6 +1517,13 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'signdocument' => 'Dokkemänt ongerschriive',
+	'sign-nodocselected' => 'Donn da Dokkemänt ußsöke, wat De ungerschriive wells.',
+	'sign-selectdoc' => 'Dokkemänt:',
+	'sign-docheader' => '<div class="noarticletext">Donn dat Formulaa bruche, öm dat Dokkemänt „[[$1]]“ ze ongerschriive, wat hee dronger aanjezeisch es.
+
+Beß esu joot, un liß dat janze Dokkemänt. Wann De dämm dann Ding Zohshtemmung jiß, dann föll all de nüdejje Felder uß, för dat ze Ongerschriive.',
+	'sign-error-nosuchdoc' => 'Dat Dokkemänt „$1“, woh De noh jefrooch häß, dat jidd_et jaa nit.',
 	'sign-realname' => 'Name:',
 	'sign-address' => 'Shtrohß un Nommer:',
 	'sign-city' => 'Shtadt udder Dörp:',
@@ -1526,6 +1533,27 @@ $messages['ksh'] = array(
 	'sign-phone' => 'Tellefon-Nommer:',
 	'sign-bday' => 'Allder:',
 	'sign-email' => 'e-mail Address:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> dat Feld es nüdesch.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Opjepaß: Wat nit opjeliß es, dat künne de Moderatore trozdämm aankike.</i></small>',
+	'sign-list-anonymous' => 'Namelos opliste',
+	'sign-list-hideaddress' => 'De Addräß nit opliste',
+	'sign-list-hideextaddress' => 'Shtadt, Shtaat, Land, un Poßtizahl nit opliste',
+	'sign-list-hidephone' => 'De Tellefoon-Nummer nit opliste',
+	'sign-list-hidebday' => 'Et Allder nit opliste',
+	'sign-list-hideemail' => 'De <i lang="en">e-mail</i> Addräß nit opliste',
+	'sign-submit' => 'Loß Jonn!',
+	'sign-information' => '<div class="noarticletext">Merci för taking the time to read through this Dokkemänt.
+If you agree with it, please indicate your support by filling in the required fields below and clicking "Sign document".
+Please ensure that your personal information is correct and that we have some way to contact you to verify wä Do beß.
+Note that your IP address and other identifying information will be recorded by this form and used by Moderatore to eliminate duplicate signatures and confirm the correctness of your personal information.
+As the use of open and anonymizing proxies inhibits our ability to perform this task, signatures from such proxies will likely not be counted.
+If you are currently connected through a proxy server, please disconnect from it and use a standard connection för eet Ongerschriive.</div>
+
+$1',
+	'sig-success' => 'De häs dat Dokkemänt jäz eläktroonesch ungerschrevve.',
+	'sign-view-selectfields' => '<b>De Felder för Aanzezeije:</b>',
+	'sign-viewfield-entryid' => 'De Kennong odder Nommer för dä Enndraach',
+	'sign-viewfield-timestamp' => 'Däm Dattum un dä Zick iere Stempel',
 	'sign-viewfield-realname' => 'Name',
 	'sign-viewfield-address' => 'Address',
 	'sign-viewfield-city' => 'Shtadt udder Dörp',
@@ -1537,6 +1565,7 @@ $messages['ksh'] = array(
 	'sign-viewfield-phone' => 'Tellefon-Nommer',
 	'sign-viewfield-email' => 'e-mail',
 	'sign-viewfield-age' => 'Allder',
+	'sign-viewfield-options' => 'Ußwahle',
 	'sign-viewsigs-intro' => 'Hee kütt en Leß met de Singnature för <span class="plainlinks">[{{SERVER}}{{localurl:Special:SignDocument|doc=$2}} $1]</span>.',
 	'sign-sigadmin-currentlyopen' => 'Et Singneere es em Momänt ennjeschalldt för hee dat Dokkement.',
 	'sign-sigadmin-close' => 'Singneere ußschallde',
@@ -1545,10 +1574,37 @@ $messages['ksh'] = array(
 	'sign-signatures' => 'Singnatuure',
 	'sign-sigadmin-closesuccess' => 'Et Singneere es afjeschalldt.',
 	'sign-sigadmin-opensuccess' => 'Et Singneere es enjeschalldt.',
+	'sign-viewsignatures' => 'de Ongerschreffte beloore',
+	'sign-closed' => 'afjeschloße',
+	'sign-error-closed' => 'Et Ongerschriive för dat Dokkemänt is em Momang affjeschalldt.',
+	'sig-anonymous' => '<i>Nameloss</i>',
+	'sig-private' => '<i>Prevaat</i>',
+	'sign-sigdetails' => 'Einzelheite fun dä Ongerschreff',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|{{ns:talk}}]] • <!--
+-->[[Special:Contributions/$1|Beidrääsch]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|Metmaacher sperre]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Logboch med de Medmaachersperre] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Metmaacher Pröfe])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Ußjeshtresche',
+	'sign-viewfield-reviewedby' => 'Wä de Ongerschreff nohjeprüüf hät',
+	'sign-viewfield-reviewcomment' => 'Kommäntaa',
+	'sign-detail-uniquequery' => 'Ähnlijje Enndräsch',
+	'sign-detail-uniquequery-run' => 'Affroch loufe lohße',
+	'sign-detail-strike' => 'De Ongerschreff ußshtiishe',
+	'sign-reviewsig' => 'De Ongerschreff nohloore',
+	'sign-review-comment' => 'Kommäntaa',
+	'sign-submitreview' => 'Dä Pröfungsbereesh afschecke',
 	'sign-uniquequery-similarname' => 'Ähnlijje Name',
 	'sign-uniquequery-similaraddress' => 'Ähnlijje Addresse',
 	'sign-uniquequery-similarphone' => 'Ähnlijje Tellefon-Nommere',
 	'sign-uniquequery-similaremail' => 'Ähnlijje <i lang="en">e-mail</i> Adresse',
+	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] hät [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] ungerschrevve.',
 );
 
 /** Latin (Latina)

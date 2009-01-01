@@ -82,10 +82,10 @@ $messages['arz'] = array(
 	'watchers-desc' => 'يعرض [[Special:Watchers|أى يوزرز عندهم صفحة فى لستة مراقبتهم]]',
 	'watchers_link_title' => 'من يراقب هذه الصفحة؟',
 	'watchers_error_article' => '<b>خطأ:</b> الصفحة غير موجودة.',
-	'watchers_header' => '{{PLURAL:$2|المستخدم الذى يراقب|المستخدمون الذين يراقبون}} "$1"',
+	'watchers_header' => '{{PLURAL:$2|اليوزر اللى بيراقب|اليوزرز اللى بيراقبو}} "$1"',
 	'watchers_noone_watches' => 'لا أحد يراقب هذه الصفحة.',
-	'watchers_x_or_more' => '$1 {{PLURAL:$1|مستخدم|مستخدم}} أو أكثر لديهم هذه الصفحة فى قائمة مراقبتهم.',
-	'watchers_less_than_x' => 'أقل من $1 {{PLURAL:$1|مستخدم|مستخدم}} لديهم هذه الصفحة فى قائمة مراقبتهم.',
+	'watchers_x_or_more' => '$1 {{PLURAL:$1|يوزر|يوزر}} أو أكتر  الصفحة دى  فى لستة مراقبتهم.',
+	'watchers_less_than_x' => 'أقل من $1 $1 {{PLURAL:$1|يوزر|يوزر}} أو أكتر  الصفحة دى  فى لستة مراقبتهم.',
 );
 
 /** Asturian (Asturianu)
@@ -539,10 +539,10 @@ $messages['ps'] = array(
 	'watchers' => 'کتونکي',
 	'watchers_link_title' => 'څوک همدا مخ ګوري؟',
 	'watchers_error_article' => '<b>ستونزه:</b> همدا مخ شتون نه لري.',
-	'watchers_header' => 'هغه خلک جې همدا اوس "$1" ګوري',
+	'watchers_header' => '{{PLURAL:$2|هغه کارونکی|هغه کارونکي}} چې "$1" ګوري',
 	'watchers_noone_watches' => 'همدا مخ اوس هېڅوک نه ګوري.',
-	'watchers_x_or_more' => '$1 او يا هم تر دې ډېر خلک همدا مخ ګوري.',
-	'watchers_less_than_x' => 'همدا مخ له $1 لږ خلک ګوري.',
+	'watchers_x_or_more' => '$1 او يا هم تر دې ډېر {{PLURAL:$1|کارونکي|کارونکي}} همدا مخ په خپل کتنلړليک کې لري.',
+	'watchers_less_than_x' => 'له $1 لږ {{PLURAL:$1|کارونکي|کارونکي}} همدا مخ په خپل کتنلړليک کې لري.',
 );
 
 /** Portuguese (Português)

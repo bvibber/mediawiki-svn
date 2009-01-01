@@ -18,9 +18,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'formatchanges-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'formatchanges-desc' => 'Short description of the extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 	'formatchanges-createdby' => '* $1 is a link to a page with the page title as link description
 * $2 is a link to a user page with the user name as link description
 * $3 is the time at which the page was created',
@@ -141,8 +142,8 @@ $messages['gl'] = array(
 $messages['he'] = array(
 	'formatchanges-desc' => 'עיצוב מחדש של [[Special:RecentChanges|השינויים האחרונים]]',
 	'formatchanges-anonymous' => 'אנונימי',
-	'formatchanges-createdby' => 'נוצר על ידי',
-	'formatchanges-editedby' => 'נערך על ידי',
+	'formatchanges-createdby' => '$1 - נוצר על ידי $2 ($3)',
+	'formatchanges-editedby' => '$1 - נערך על ידי $2 ($3)',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

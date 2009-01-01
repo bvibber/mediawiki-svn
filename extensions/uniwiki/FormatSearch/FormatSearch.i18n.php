@@ -15,9 +15,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'formatsearch-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'formatsearch-desc' => 'Short description of the extension, shown in [[Special:Version]].',
 );
 
 /** Arabic (العربية)

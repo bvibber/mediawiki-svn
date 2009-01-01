@@ -38,11 +38,12 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Lejonel
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'specialuserstats' => '{{Identical|Usage statistics}}',
 	'usagestatistics' => '{{Identical|Usage statistics}}',
-	'usagestatistics-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'usagestatistics-desc' => 'Short description of the extension, shown on [[Special:Version]].',
 	'usagestatisticstype' => '{{Identical|Type}}',
 	'usagestatisticsintervalmonth' => '{{Identical|Month}}',
 	'usagestatisticsincremental' => 'This message is used on [[Special:SpecialUserStats]] in a dropdown menu to choose to generate incremental statistics.
@@ -135,9 +136,9 @@ $messages['ar'] = array(
 $messages['arz'] = array(
 	'specialuserstats' => 'إحصاءات الاستخدام',
 	'usagestatistics' => 'إحصاءات الاستخدام',
-	'usagestatistics-desc' => 'يعرض إحصاءات الاستخدام لمستخدم منفرد وللويكى ككل',
+	'usagestatistics-desc' => 'يعرض إحصاءات الاستخدام ليوزر منفرد وللويكى ككل',
 	'usagestatisticsfor' => '<h2>إحصاءات الاستخدام ل[[User:$1|$1]]</h2>',
-	'usagestatisticsforallusers' => '<h2>إحصاءات الاستخدام لكل اليوزرر</h2>',
+	'usagestatisticsforallusers' => '<h2>إحصاءات الاستخدام لكل اليوزرز</h2>',
 	'usagestatisticsinterval' => 'مدة',
 	'usagestatisticstype' => 'نوع',
 	'usagestatisticsstart' => 'تاريخ البدء',

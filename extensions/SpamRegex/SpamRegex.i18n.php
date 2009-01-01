@@ -1047,6 +1047,41 @@ $messages['tg-cyrl'] = array(
 	'spamregex-summary-log' => '(Хулоса)',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'spamregex' => "Pangkaraniwang pagsasaad na pang-\"manlulusob\" (''spam'')",
+	'spamregex-desc' => '[[Special:SpamRegex|Salain]]g tinatanggal ang hindi ninanais na mga parirala sa loob ng mga pahinang binago, batay sa pangkaraniwang mga pagsasaad',
+	'spamregex-error-unblocking' => 'Kamalian sa pagtatanggal ng hadlang sa "$1".  Marahil walang ganyang gayahan (parisan/padron).',
+	'spamregex-summary' => 'Natagpuan ang teksto mula sa loob ng buod ng pahina.',
+	'spamregex-intro' => 'Gamitin ang pormularyong ito upang ganap na mahadlangan ang mga pagsasaad mula sa pagsasagip patungo sa teksto ng isang pahina.
+Kung naglalaman ang teksto ng ibinigay na pagsasaad, hindi masasagip ang pagbabago at ipapakita sa tagagamit na sumubok na magsagip ng pahina ang isang paliwanag.
+Imimungkahi ang pagiingat, hindi dapat na napakaiksi o napakapangkaraniwan ang mga pagsasaad.',
+	'spamregex-page-title' => "Paghahadlang sa hindi ninanais na mga pagpapahayag ng pangkaraniwang pagsasaad ng \"manlulusob\" (''spam'')",
+	'spamregex-currently-blocked' => "'''Pangkasalukuyang hinahadlangang mga parirala:'''",
+	'spamregex-move' => 'Naglalaman ng isang hinadlangang parirala ang ipinasok/inilagay mong dahilan.',
+	'spamregex-no-currently-blocked' => "'''Walang hinahadlangang mga parirala.'''",
+	'spamregex-log-1' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 tanggalin]) idinagdag ni",
+	'spamregex-log-2' => '  sa $1',
+	'spamregex-page-title-1' => 'Hinadlangang parirala na gumagamit ng pangkaraniwang mga pagsasaad',
+	'spamregex-unblock-success' => 'Nagtagumpay ang pagtanggal ng paghadlang/pagharang',
+	'spamregex-unblock-message' => "Tinanggal ang pagkakaharang mula sa pamamatnugot (paggawa ng pagbabago) ang pariralang '''$1'''.",
+	'spamregex-page-title-2' => 'Hadlangan ang pagsasagip ng mga parirala na ginagamitan ng pangkaraniwang mga pagsasaad',
+	'spamregex-block-success' => 'Nagtagumpay ang paghadlang',
+	'spamregex-block-message' => "Hinadlangan na ang pariralang '''$1'''.",
+	'spamregex-warning-1' => 'Magbigay ng isang pariralang hahadlangan.',
+	'spamregex-error-1' => 'Hindi tanggap na pangkaraniwang pagsasaad.',
+	'spamregex-warning-2' => 'Pakilagyan ng tsek ang kahit na isang modalidad ng paghahadlang.',
+	'spamregex-already-blocked' => 'Nahadlangan na ang "$1"',
+	'spamregex-phrase-block' => 'Pariralang hahadlangan:',
+	'spamregex-phrase-block-text' => 'hadlangan ang pariralang nasa teksto ng pahina',
+	'spamregex-phrase-block-summary' => 'hadlangan ang pariralang nasa buod',
+	'spamregex-block-submit' => 'Hadlangan&nbsp;ang&nbsp;pariralang&nbsp;ito',
+	'spamregex-text' => '(Teksto)',
+	'spamregex-summary-log' => '(Buod)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

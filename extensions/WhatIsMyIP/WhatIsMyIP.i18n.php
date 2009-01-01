@@ -18,9 +18,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'whatismyip-desc' => 'Short description of the Whatismyip extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'whatismyip-desc' => 'Short description of the Whatismyip extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 );
 
 /** Afrikaans (Afrikaans)

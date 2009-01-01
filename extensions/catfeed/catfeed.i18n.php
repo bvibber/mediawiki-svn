@@ -182,6 +182,14 @@ $messages['oc'] = array(
 	'catfeed-desc' => 'Utiliza de bits per alimentar los darrièrs cambiaments. Crèa una version de pagina, fòrça practica per Wikinews.',
 );
 
+/** Plautdietsch (Plautdietsch)
+ * @author Wikipeeta
+ */
+$messages['pdt'] = array(
+	'catfeed-desc' => 'Brukt Deele vonne Latzte-Endarung-Newsfeeds.
+Moakt eene ennjebungne Versioon; besondasch praktisch fe Wikinews.',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

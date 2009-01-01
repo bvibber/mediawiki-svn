@@ -23,6 +23,13 @@ Shown in [[Special:Version]].
 Do not translage links.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'semanticgallery-desc' => 'يضيف صيغة خرج معرض إلى استعلامات سيمانتيك ميدياويكي الداخلية',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

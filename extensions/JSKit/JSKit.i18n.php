@@ -21,6 +21,20 @@ $messages['qqq'] = array(
 	'jskit-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'jskit-desc' => 'يدمج مجموعة أدوات جافاسكريبت إلى صفحة ويكي',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'jskit-desc' => 'Integrira js-kit alate na wiki stranicu',
+);
+
 /** German (Deutsch)
  * @author Purodha
  */
@@ -49,11 +63,25 @@ $messages['gl'] = array(
 	'jskit-desc' => 'Integra ferramentas js-kit nunha páxina do wiki',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'jskit-desc' => 'הטמעת כלי js-kit לתוך דף ויקי',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'jskit-desc' => 'Integruje nastroje JS-kita na wikijowej stronje',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'jskit-desc' => 'Integra le instrumentos js-kit in un pagina wiki',
 );
 
 /** Japanese (日本語)

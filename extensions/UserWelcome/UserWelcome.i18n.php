@@ -29,11 +29,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'userwelcome-desc' => 'Short description of the extension.
 Shown in [[Special:Version]].
-Do not translate tags names, and links targets.',
+{{doc-important|Do not translate tags names, and links targets.}}',
 );
 
 /** Amharic (አማርኛ)
@@ -74,12 +75,12 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'userwelcome-desc' => 'يضيف وسم <tt>&lt;welcomeUser&gt;</tt> لعرض معلومات اجتماعية خاصة بالمستخدم للمستخدمين المسجلين',
+	'userwelcome-desc' => 'يضيف وسم <tt>&lt;welcomeUser&gt;</tt> لعرض معلومات اجتماعية خاصة باليوزر لليوزرز المسجلين',
 	'mp-userlevels-link' => 'مستويات اليوزر',
 	'mp-welcome-upload' => 'رفع',
 	'mp-welcome-edit' => 'عدل',
 	'mp-welcome-points' => '$1 نقطة',
-	'mp-welcome-needed-points' => 'للتقدم إلى <b><a href="$1">$2</a></b> احصل على <i>$3</i> المزيد من النقاط!',
+	'mp-welcome-needed-points' => 'للتقدم ل <b><a href="$1">$2</a></b> احصل على <i>$3</i>  نقط اكتر!',
 	'mp-welcome-logged-in' => 'مرحبا $1',
 	'mp-requests-title' => 'طلبات',
 	'mp-requests-message' => 'لديك الطلبات التالية.',
@@ -598,13 +599,23 @@ $messages['os'] = array(
 
 /** Polish (Polski)
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'userwelcome-desc' => 'Dodaje znacznik <tt>&lt;welcomeUser&gt;</tt> wyświetlający zalogowanym użytkownikom informacje o innych użytkownikach służące do utrzymywania kontaktów towarzyskich',
 	'mp-userlevels-link' => 'Poziomy użytkownika',
 	'mp-welcome-upload' => 'Prześlij',
 	'mp-welcome-edit' => 'Edytuj',
 	'mp-welcome-points' => '$1 punktów',
+	'mp-welcome-needed-points' => 'Aby posunąć się do <b><a href="$1">$2</a></b> musisz zdobyć nie mniej niż <i>$3</i> {{PLURAL:$3|punkt|punkty|punktów}}!',
+	'mp-welcome-logged-in' => 'Witaj $1',
+	'mp-requests-title' => 'Prośby',
+	'mp-requests-message' => 'Otrzymałeś następujące prośby.',
 	'mp-request-new-message' => 'nowa wiadomość',
+	'mp-request-new-award' => '$1 {{PLURAL:$1|nowe odznaczenie|nowe odznaczenia|nowych odznaczeń}}',
+	'mp-request-new-gift' => '$1 {{PLURAL:$1|nowy prezent|nowe prezenty|nowych prezentów}}',
+	'mp-request-new-foe' => '$1 {{PLURAL:$1|nowy wróg|nowych wrogów}}',
+	'mp-request-new-friend' => '$1 {{PLURAL:$1|nowy przyjaciel|nowych przyjaciół}}',
 );
 
 /** Pashto (پښتو)

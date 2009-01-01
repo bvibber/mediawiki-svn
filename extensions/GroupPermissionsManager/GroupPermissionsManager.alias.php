@@ -55,7 +55,7 @@ $aliases['fr'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'GroupPermissions' => array( 'Grupperächt' ),
-	'RemoveUnusedGroups' => array( 'Gruppe', 'wu nit brucht wäre', 'ewägneh' ),
+	'RemoveUnusedGroups' => array( 'Gruppe wu nit brucht wäre ewägneh' ),
 	'SortPermissions' => array( 'Rächt sortiere' ),
 );
 

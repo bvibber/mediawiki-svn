@@ -67,7 +67,7 @@ Please check your popup blocker.",
  * @author Siebrand
  */
 $wgCustomToolbarMessages['qqq'] = array(
-	'ct-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'ct-desc' => 'Short description of the extension, shown in [[Special:Version]].',
 	'ct_upload' => '(information may be incorrect)
 * $1 can be "image" or "link"',
 );
@@ -1187,6 +1187,7 @@ $wgCustomToolbarMessages['pnb'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $wgCustomToolbarMessages['ps'] = array(
+	'ct_internal_sample' => 'دمخ-نوم',
 	'ct_image_caption' => 'انځور ورګډول',
 	'ct_math_caption' => 'فورمول',
 	'ct_submit' => 'ورځه!',

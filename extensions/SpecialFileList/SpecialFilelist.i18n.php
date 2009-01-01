@@ -656,6 +656,17 @@ $messages['tg-cyrl'] = array(
 	'filelist-image-desc' => 'тавсиф',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'filelist' => 'Isalansan/ihanay ang talaan',
+	'filelist-desc' => '[[Special:Filelist|Natatanging pahina]] para sa pagtatala ng ikinargang mga talaksan',
+	'filelist-show-list' => 'Ipakita ang talaan',
+	'filelist-show-gallery' => 'Ipakita ang tanghalan (galerya)',
+	'filelist-image-desc' => 'paglalarawan',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  */

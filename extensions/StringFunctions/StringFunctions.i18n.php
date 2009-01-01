@@ -199,6 +199,13 @@ $messages['oc'] = array(
 	'stringfunctions-desc' => 'Melhora lo parser amb las foncions sus las cadenas de caractèrs',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'stringfunctions-desc' => 'Rozszerza analizator składni o funkcje operujące na łańcuchach znaków',
+);
+
 /** Portuguese (Português)
  * @author Waldir
  */

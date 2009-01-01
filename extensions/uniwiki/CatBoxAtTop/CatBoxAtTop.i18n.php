@@ -17,9 +17,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'catboxattop-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'catboxattop-desc' => 'Short description of the extension, shown in [[Special:Version]].',
 	'catboxattop-categories' => '{{Identical|Categories}}',
 );
 
@@ -253,6 +254,13 @@ $messages['pl'] = array(
  */
 $messages['pnb'] = array(
 	'catboxattop-categories' => 'کیٹاگریاں',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'catboxattop-categories' => 'وېشنيزې',
 );
 
 /** Portuguese (Português)

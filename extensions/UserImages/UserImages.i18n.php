@@ -22,11 +22,12 @@ $messages['en'] = array(
  * @author Agbad
  * @author Leinad
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'userimages-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
-Do not translate or change links.',
+{{doc-important|Do not translate or change links.}}',
 	'userimages-noimages' => "This message is displayed when the wanted user didn't upload any images.
 
 Parameters:

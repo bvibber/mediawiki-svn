@@ -10,6 +10,11 @@ $aliases['en'] = array(
 	'RecordAdmin' => array( 'RecordAdmin' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'RecordAdmin' => array( 'تسجيل_إداري' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'RecordAdmin' => array( 'GérerEnregistrement', 'GererEnregistrement', 'Gérer enregistrement' ),

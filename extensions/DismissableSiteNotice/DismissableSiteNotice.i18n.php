@@ -514,6 +514,7 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'sitenotice_close' => 'сокриј',
+	'sitenotice-desc' => 'Овозможува корисниците да ја затворат сајт пораката',
 );
 
 /** Malayalam (മലയാളം)

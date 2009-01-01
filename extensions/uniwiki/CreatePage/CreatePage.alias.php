@@ -10,6 +10,11 @@ $aliases['en'] = array(
 	'CreatePage' => array( 'CreatePage' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'CreatePage' => array( 'إنشاء_صفحة' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'CreatePage' => array( 'Seite erstellen' ),

@@ -4145,6 +4145,7 @@ $messages['ps'] = array(
 	'mv_end_desc' => 'د پای وخت',
 	'mediasearch' => 'د رسنيو لټون',
 	'mv_search_match' => 'متن پلټل',
+	'mv_search_categories' => 'وېشنيزې',
 	'mv_search_category' => 'وېشنيزه',
 	'mv_search_and' => 'او',
 	'mv_search_or' => 'يا',

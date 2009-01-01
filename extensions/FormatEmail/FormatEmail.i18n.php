@@ -312,6 +312,7 @@ $2',
  * @author Brest
  */
 $messages['mk'] = array(
+	'email-desc' => 'Овозможува додавање на посебно заглавие и подглавие да се додаде на корисничките е-пораки',
 	'email_footer' => '----------------------------------------------------------------------------
 Оваа е-пошта е испратена преку {{SITENAME}} е-поштенскиот систем од $1.
 
@@ -335,6 +336,15 @@ $messages['mr'] = array(
 	'email-desc' => 'सदस्य इमेलमध्ये स्वरचित वरील/खालील मजकूर (header/footer) वापरण्याची परवानगी देतो.',
 	'email_footer' => '----------------------------------------------------------------------------
 ही इमेल तुम्हाला {{SITENAME}} च्या इमेल सिस्टीम वरुन $1 ने पाठविलेली आहे.
+
+$2',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'email_footer' => 'E-mel ini dihantar kepada anda melalui sistem mel {{SITENAME}} oleh $1.
 
 $2',
 );

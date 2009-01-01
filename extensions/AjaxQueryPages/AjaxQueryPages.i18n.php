@@ -74,6 +74,13 @@ $messages['cs'] = array(
 	'ajax-qp-desc' => 'Přidává AJAX na stránky s dotazy jako [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'ajax-qp-desc' => 'Yn ychwanegu AJAX i dudalennau holi fel [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Danish (Dansk)
  * @author Jan Friberg
  */
@@ -279,6 +286,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'ajax-qp-desc' => "Apond d'escript AJAX a las paginas de requèstas talas coma [[Special:Shortpages|{{int:shortpages}}]]",
+);
+
+/** Plautdietsch (Plautdietsch)
+ * @author Wikipeeta
+ */
+$messages['pdt'] = array(
+	'ajax-qp-desc' => 'Doo AJAX-Funktioone to soone Spezialsiede aus  [[Special:Shortpages|{{int:shortpages}}]] doatoo.',
 );
 
 /** Polish (Polski)

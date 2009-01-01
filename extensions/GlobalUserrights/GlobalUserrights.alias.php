@@ -13,6 +13,11 @@ $aliases['en'] = array(
 	'GlobalUserrights' => array( 'GlobalUserRights' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'GlobalUserrights' => array( 'صلاحيات_المستخدم_العامة' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'GlobalUserrights' => array( 'Globale Benutzerrechte' ),

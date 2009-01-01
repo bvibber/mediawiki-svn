@@ -205,6 +205,13 @@ $messages['lb'] = array(
 	'antibot-desc' => 'Einfach Méiglechkeet fir Spambot-Kontrollen an aner Spamaktivitéiten',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'antibot-desc' => 'Sumnpel framework veur controle op spambots en trigger payloads',
+);
+
 /** Malayalam (മലയാളം)
  * @author Jyothis
  */

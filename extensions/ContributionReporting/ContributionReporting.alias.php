@@ -15,6 +15,13 @@ $aliases['en'] = array(
 	'ContributionTotal' => array( 'ContributionTotal' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'ContributionHistory' => array( 'تاريخ_المساهمة' ),
+	'ContributionStatistics' => array( 'إحصاءات_المساهمة' ),
+	'ContributionTotal' => array( 'إجمالي_المساهمة' ),
+);
+
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
 	'ContributionHistory' => array( 'DoprinosiHistorija' ),

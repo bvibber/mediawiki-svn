@@ -167,6 +167,13 @@ $messages['oc'] = array(
 	'contributorsaddon-desc' => 'Apond lo popup JS onMouseOver als ligams dels « Contributors principals »',
 );
 
+/** Plautdietsch (Plautdietsch)
+ * @author Wikipeeta
+ */
+$messages['pdt'] = array(
+	'contributorsaddon-desc' => 'Moakt JavaScript-Popups bie dee Links vonne Hauptautore doatoo.',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

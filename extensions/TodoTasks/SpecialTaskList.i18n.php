@@ -195,6 +195,36 @@ Zum Anschauen deiner kompletten Aufgabenliste siehe %s.
 Dein freundliches %s-Benachrichtungssystem',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'tasklist' => 'Lisćina nadawkow',
+	'tasklist-parser-desc' => 'Pśidawa parserowu funkciju <nowiki>{{#todo:}}</nowiki> za pśipokazanje nadawkow',
+	'tasklist-special-desc' => 'Pśidawa specialny bok za pśeglědowanje  [[Special:TaskList|pśipokazanjow nadawkow]]',
+	'tasklistbyproject' => 'Lisćina nadawkow za projekt',
+	'tasklistunknownproject' => 'Njeznaty projekt',
+	'tasklistunspecuser' => 'Wužywaŕ njepódaty',
+	'tasklistincorrectuser' => 'Wopacne wužywarske mě',
+	'tasklistemail' => 'Witaj %s',
+	'tasklistemailsubject' => '[%s] Změny lisćiny nadawkow',
+	'tasklistmytasks' => 'Móje nadawki',
+	'tasklistbyprojectbad' => "Projekt '''%s''' njejo płaśiwy projekt.
+Za lisćinu płaśiwych projektow glědaj [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Za '''%s''' pśipokazane nadawki",
+	'tasklistchooseproj' => 'Projekt wubraś:',
+	'tasklistprojdisp' => 'Zwobrazniś',
+	'tasklistbyname' => '== Lisćina nadawkow za %s ==',
+	'tasklistnoprojects' => "Zmólka: Wuglěda, ako by ty zaktiwěrował '''\$wgUseProjects''', ale njeby napórał boki [[MediaWiki:TodoTasksValidProjects]]. Glědaj [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instalaciske wukazanja] za dalšne drobnostki.",
+	'tasklistemailbody' => ',
+
+Něchten jo pśipokazał nowy nadawk za tebje na %s.
+
+Aby wiźeł swóju dopołnu lisćinu nadawkow, źi k %s.
+
+Twój pśijaśelny informěrowański system {{GRAMMAR:genitiw|%s}}',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

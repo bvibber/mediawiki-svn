@@ -9,9 +9,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'wikitextloggedinout-desc' => 'Short description of the Wikitextloggedinout extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'wikitextloggedinout-desc' => 'Short description of the Wikitextloggedinout extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 );
 
 /** Afrikaans (Afrikaans)

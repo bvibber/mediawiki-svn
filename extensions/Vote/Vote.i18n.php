@@ -37,12 +37,12 @@ riddler|Riddler",
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'vote' => '{{Identical|Vote}}',
 	'vote-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
+Shown in [[Special:Version]].',
 	'vote-submit' => '{{Identical|Vote}}',
 	'vote-results-count' => '{{Identical|Count}}',
 	'vote-login-link' => '{{Identical|Log in}}',

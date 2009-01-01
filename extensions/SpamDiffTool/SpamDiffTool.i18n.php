@@ -762,6 +762,7 @@ Asseguratz-vos de blocar pas de domenis entièrs que detenon d'unes comptadors d
  * @author Wpedzich
  */
 $messages['pl'] = array(
+	'spamdifftool' => 'Zarządzaj czarną listą dla spamu',
 	'spamdifftool_cantedit' => 'Nie masz uprawnień do edytowania tej strony.',
 	'spamdifftool_summary' => 'Dodawanie do czarnej listy spamu',
 	'spamdifftool_no_urls_detected' => "Nie wykryto żadnych adresów URL.

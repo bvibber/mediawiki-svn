@@ -36,7 +36,7 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
-	'semanticgooglemaps-desc' => 'يسمح للمستخدمين بإضافة خرائط جوجل لصفحات الويكي بالاعتماد على بيانات هيكلية',
+	'semanticgooglemaps-desc' => 'يسمح للمستخدمين بتعديل وعرض بيانات سيمانتيك الإحداثية باستخدام خرائط جوجل',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -60,7 +60,7 @@ $messages['br'] = array(
  */
 $messages['de'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Koordinaten nachschlagen',
-	'semanticgooglemaps-desc' => 'Bietet die Möglichkeit auf Basis von strukturierten Daten Google Maps in das Wiki einzubinden',
+	'semanticgooglemaps-desc' => 'Bietet die Möglichkeit, semantische Koordinaten mit Hilfe von Google Maps zu bearbeiten und anzuzeigen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -68,7 +68,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Za koordinatami póglědaś',
-	'semanticgooglemaps-desc' => 'Dowólujo wužywarjam pśidaś wikijowym bokam Google Maps na zakłaźe strukturěrowanych datow',
+	'semanticgooglemaps-desc' => 'Dowólujo wužywarjam semantiske koordinatowe daty z pomocu Google Maps wobúěłaś a zwobrazniś',
 );
 
 /** Esperanto (Esperanto)
@@ -80,11 +80,12 @@ $messages['eo'] = array(
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author Grondin
  */
 $messages['fr'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Estimer les coordonnées',
-	'semanticgooglemaps-desc' => 'Permet aux utilisateurs d’ajouter Google Maps sur des pages wiki sur la base de données structurées',
+	'semanticgooglemaps-desc' => "Permet aux utilisateurs d'éditer et d'afficher les données sémantiques de coordonnées utilisant Google Maps",
 );
 
 /** Galician (Galego)
@@ -107,7 +108,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Za koordinatami hladać',
-	'semanticgooglemaps-desc' => 'Dowola wužiwarjam na zakładźe strukturowanych datow Google Maps wikijowym stronam přidać',
+	'semanticgooglemaps-desc' => 'Dowola wužiwarjam semantiske koordinatowe daty z pomocu Google Maps wobdźěłać a zwobraznić',
 );
 
 /** Interlingua (Interlingua)
@@ -119,11 +120,12 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
 	'semanticgooglemaps_lookupcoordinates' => '座標を調べる',
-	'semanticgooglemaps-desc' => '利用者が、構造化されたデータに基づいて、Google Mapsをwikiページに加えることができるようにする',
+	'semanticgooglemaps-desc' => '利用者が Google マップを使ってセマンティックな座標データを編集・表示できるようにする',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -138,7 +140,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Koordinate nohkike',
-	'semanticgooglemaps-desc' => 'Määt et müjjelesch, op semantesche Date opjeboute <i lang="en">Google Maps</i> (Landkaate) en et Wiki ennzeboue.',
+	'semanticgooglemaps-desc' => 'Määt et müjjelesch, op semantesche Ko\'odinaate-Date opjeboute <i lang="en">Google Maps</i> (Landkaate) en et Wiki ennzeboue, un esu en Date ze beärbeide.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -146,7 +148,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Koordinaten nokucken',
-	'semanticgooglemaps-desc' => 'Erlaabt et de Benotzer fir Google Maps op Wiki-Säiten op Basis  vu srukturéierten Donnéeën anzebauen',
+	'semanticgooglemaps-desc' => "Erlaabt et de Benotzer fir Google Maps op Wiki-Säiten op Basis vu srukturéierten Donnéeën ze weisen an z'änneren.",
 );
 
 /** Dutch (Nederlands)
@@ -154,7 +156,7 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Coördinaten opzoeken',
-	'semanticgooglemaps-desc' => "Staat gebruikers toe Google Maps toe te voegen aan wikipagina's gebaseerd op basis van gestructureerde gegevens",
+	'semanticgooglemaps-desc' => 'Staat gebruikers toe semantische gegevens te bewerken en weer te geven met behulp van Google Maps',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -162,7 +164,7 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Sjekk koordinatar',
-	'semanticgooglemaps-desc' => 'Lèt brukarar leggja til Google Maps på wikisider baserte på strukturerte data',
+	'semanticgooglemaps-desc' => 'Lèt brukarar endra og syna semantiske koordinatar ved å nytta Google Maps.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

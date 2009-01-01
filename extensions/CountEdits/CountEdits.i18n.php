@@ -934,7 +934,7 @@ Nie oceniaj użytkownika po jego liczbie edycji.",
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Nie istnieje użytkownik o nazwie $1.',
 	'countedits-resultheader' => 'Wyniki dla $1',
-	'countedits-resulttext' => '$1 wykonał (-a) $2 edycji',
+	'countedits-resulttext' => '$1 wykonał $2 {{PLURAL:$2|edycję|edycje|edycji}}',
 	'countedits-mostactive' => 'Najbardziej aktywni użytkownicy',
 	'countedits-nocontribs' => 'Nie wykonano edycji na tej wiki',
 );

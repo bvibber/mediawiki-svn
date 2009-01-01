@@ -15,10 +15,18 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'mootools12core-desc' => 'Short description of this extension, shown on [[Special:Version]].
-Do not translate or change links.',
+{{doc-important|Do not translate or change links.}}',
+);
+
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'mootools12core-desc' => 'يضيف [http://mootools.net mootools-1.2-core-yc.js]، إطار جافاسكريبت مضغوط، لكل صفحة',
 );
 
 /** Bulgarian (Български)
@@ -88,9 +96,10 @@ $messages['gl'] = array(
 
 /** Hebrew (עברית)
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
-	'mootools12core-desc' => 'הוספת [http://mootools.net mootools-1.2-core-yc.js] לכל דף',
+	'mootools12core-desc' => 'הוספת [http://mootools.net mootools-1.2-core-yc.js],סביבת JavaScript חסכונית, לכל דף',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

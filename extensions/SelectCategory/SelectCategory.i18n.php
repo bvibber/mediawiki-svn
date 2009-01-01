@@ -275,6 +275,15 @@ $messages['nl'] = array(
 	'selectcategory-subtitle' => 'Shiftklik om meerdere opeenvolgende categorieën te selecteren, Ctrlklik om niet-openvolgende categorieën te selecteren.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'selectcategory-title' => 'Vel kategoriar',
+	'selectcategory-desc' => 'Lét brukaren velja frå eksisterande kategoriar når han/ho endrar ei sida.',
+	'selectcategory-subtitle' => 'Shift+klikk for å velja fleire samahengande val, Ctrl+klikk for å velja ikkje-samanhengande val.',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

@@ -781,7 +781,7 @@ Przesyłany plik powinien zawierać nazwę strony i powód usunięcia w jednej l
 	'deletebatch-or' => '<b>lub</b>',
 	'deletebatch-page' => 'Lista stron do usunięcia',
 	'deletebatch-reason' => 'Powód usunięcia',
-	'deletebatch-processing' => 'usuwanie stron',
+	'deletebatch-processing' => 'usuwanie stron $1',
 	'deletebatch-from-file' => 'z listy zawartej w pliku',
 	'deletebatch-from-form' => 'z',
 	'deletebatch-success-subtitle' => 'dla $1',

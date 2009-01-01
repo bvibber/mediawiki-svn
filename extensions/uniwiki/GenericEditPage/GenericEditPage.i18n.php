@@ -35,10 +35,10 @@ Add some using the tools in the menu bar.',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'gep-desc' => 'Short description of the Gep extension, shown on [[Special:Version]].
-Do not translate or change links.',
+	'gep-desc' => 'Short description of the Gep extension, shown on [[Special:Version]].',
 	'gep-categories' => '{{Identical|Categories}}',
 	'gep-addcategorybutton' => '{{Identical|Add}}',
 	'gep-addsectionbutton' => '{{Identical|Add}}',
@@ -76,6 +76,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Ramsis II
  */
 $messages['arz'] = array(
@@ -94,7 +95,8 @@ $messages['arz'] = array(
 	'gep-addsectionbutton' => 'ضيف',
 	'gep-classicmode' => 'وضع كلاسيكي',
 	'gep-genericmode' => 'الوضع العام',
-	'gep-nosectioninstructions' => 'ضيف شوية باستعمال الادوات الموجودة على اليمين',
+	'gep-nosectioninstructions' => 'مافيش اقسام فى الصفحة
+ضيف شوية باستعمال الادوات الموجودة على اليمين',
 	'gep-nocategories' => 'لو سمحت تختار تصنيف واحد على الاقل قبل الحفظ',
 );
 
@@ -322,7 +324,7 @@ $messages['he'] = array(
 	'gep-classicmode' => 'מצב קלאסי',
 	'gep-genericmode' => 'מצב גנרי',
 	'gep-nosectioninstructions' => 'אין פסקאות בדף זה.
-באפשרותכם להוסיף כמה באמצעות שימוש בכלים שמשמאל.',
+הוסיפו כמה באמצעות הכלים שבסרגל התפריט.',
 	'gep-nocategories' => 'אנא בחרו לפחות קטגוריה אחת לפני השמירה',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );

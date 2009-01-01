@@ -727,6 +727,39 @@ $messages['te'] = array(
 	'slippymap_maperror' => 'పటపు పొరపాటు:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'slippymap_desc' => "Nagpapahintulot sa paggamit ng tatak na <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> upang maipakita/mapalitaw ang isang pampuwesto/pangkinaroroonang (''slippy'') mapa ng OpenLayers.  Nanggaling ang mga mapa mula sa [http://openstreetmap.org openstreetmap.org]",
+	'slippymap_latmissing' => 'Nawawalang halaga para sa latitud (lat).',
+	'slippymap_lonmissing' => 'Nawawalang halaga para sa longhitud (lon).',
+	'slippymap_zoommissing' => "Nawawalang halagang 't' (mula sa 'tutok') para sa antas ng paglapit/pagtutok (''zoom'').",
+	'slippymap_longdepreciated' => "Pakigamit lamang ang 'lon' sa halip na 'long' (muling pinangalanan ang parametro).",
+	'slippymap_widthnan' => "ang halaga ng lapad (l) na '%1' ay hindi isang tanggap na buumbilang (''integer'')",
+	'slippymap_heightnan' => "ang halaga ng taas (t) na '%1' ay hindi isang tanggap na buumbilang (''integer'')",
+	'slippymap_zoomnan' => "ang halaga ng pagtutok/paglapit ('t' mula sa 'tutok' o ''zoom'') na '%1' ay hindi isang tanggap na buumbilang (''integer'')",
+	'slippymap_latnan' => "ang halaga ng latitud (lat) na '%1' ay hindi isang tanggap na buumbilang (''integer'')",
+	'slippymap_lonnan' => "ang halaga ng longhitud (lon) na '%1' ay hindi isang tanggap na buumbilang (''integer'')",
+	'slippymap_widthbig' => 'hindi maaaring humigit/lumabis kaysa 1000 ang halaga ng lapad (l)',
+	'slippymap_widthsmall' => 'hindi maaaring bumaba kaysa 1000 ang halaga ng lapad (l)',
+	'slippymap_heightbig' => 'hindi maaaring humigit/lumabis kaysa 1000 ang halaga ng taas (t)',
+	'slippymap_heightsmall' => 'hindi maaaring bumaba kaysa 1000 ang halaga ng taas (t)',
+	'slippymap_latbig' => 'hindi maaaring humigit/lumabis kaysa 90 ang halaga ng latitud (lat)',
+	'slippymap_latsmall' => 'hindi maaaring bumaba kaysa -90 ang halaga ng latitud (lat)',
+	'slippymap_lonbig' => 'hindi maaaring humigit/lumabis kaysa 180 ang halaga ng longhitud (lon)',
+	'slippymap_lonsmall' => 'hindi maaaring bumaba kaysa -180 ang halaga ng longhitud (lon)',
+	'slippymap_zoomsmall' => "hindi maaaring bumaba kaysa wala/sero ang halaga ng pagtutok/paglapit ('t' mula sa 'tutok') o ''zoom''.",
+	'slippymap_zoom18' => "hindi maaaring humigit/lumabis kaysa 17 ang halaga ng pagtutok/paglapit ('t' mula sa 'tutok') o ''zoom''.  Tandaan lamang na ang mga karugtong na ito na pang-Mediawiki ay kumakawing/kumakabit patungo sa sapin/patong na 'osmarender' ng OpenStreetMap na hindi lumalagpas mula sa kaantasan ng pagkakatutok na 17.  Ang sapin/patong na Mapnik na makukuha mula sa openstreetmap.org ay umaabot pataas sa kaantasan ng pagkakatutok na 18",
+	'slippymap_zoombig' => "hindi maaaring humigit/lumabis kaysa 17 ang halaga ng pagtutok/paglapit ('t' mula sa 'tutok') o ''zoom''.",
+	'slippymap_invalidlayer' => "Hindi tanggap ang halaga ng 'patong' o 'sapin' na '%1'",
+	'slippymap_maperror' => 'Kamalian sa mapa:',
+	'slippymap_osmtext' => 'Tingnan ang mapang ito sa OpenStreetMap.org',
+	'slippymap_code' => 'Kodigo ng wiki ("wiki-kodigo") para sa tanawin ng mapang ito:',
+	'slippymap_button_code' => 'Kuhanin ang kodigo ng wiki',
+	'slippymap_resetview' => 'Muling itakda ang tanawin',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

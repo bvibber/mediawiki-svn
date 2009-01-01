@@ -65,6 +65,13 @@ $messages['cs'] = array(
 	'breadcrumbs-desc' => 'Zobrazí cestu uživatele ve wiki.',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'breadcrumbs-desc' => 'Yn dangos llwybr y defnyddiwr ar hyd y wici.',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'breadcrumbs-desc' => 'Zeigt den Weg des Benutzers durch das Wiki.',
@@ -251,6 +258,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'breadcrumbs-desc' => 'Aficha lo ligam de las darrièras paginas que l’utilizaire a visitadas dins lo wiki.',
+);
+
+/** Plautdietsch (Plautdietsch)
+ * @author Wikipeeta
+ */
+$messages['pdt'] = array(
+	'breadcrumbs-desc' => 'Wiest dem Wajch vom Brucka derch daut Wiki.',
 );
 
 /** Polish (Polski)

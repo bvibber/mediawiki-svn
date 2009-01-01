@@ -24,9 +24,10 @@ Would you like to edit the existing page?',
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'createpage-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'createpage-desc' => 'Short description of the extension, shown in [[Special:Version]].{{doc-important|Do not translate or change links.}}',
 );
 
 /** Arabic (العربية)
