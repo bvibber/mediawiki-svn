@@ -57,7 +57,8 @@ class CodeRevisionCommitter extends CodeRevisionView {
 					$redirTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() );
 				}
 			} else {
-				$redirTitle = $this->revLink();
+				# $redirTarget already set for comments
+				$redirTitle = $redirTarget ? $redirTarget : $this->revLink();
 			}
 		}
 		$wgOut->redirect( $redirTitle->getFullUrl() );
