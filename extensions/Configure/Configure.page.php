@@ -986,7 +986,6 @@ abstract class ConfigurationPage extends SpecialPage {
 			if ( !$allowed )
 				return '<code>' . htmlspecialchars( $default ) . '</code>';
 			$ret = "\n";
-			var_dump( $default );
 			foreach ( $type as $val => $name ) {
 				$checked = is_int( $val ) ?
 					$val === (int)$default : strval($default) === strval($val);
