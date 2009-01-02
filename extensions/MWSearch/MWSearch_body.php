@@ -599,7 +599,7 @@ class LuceneSearchSet extends SearchResultSet {
 		$suggestText = "";
 		for($i=1;$i<count($points);$i+=2){
 			$suggestText .= substr($sug,$points[$i-1],$points[$i]-$points[$i-1]);
-			$suggestText .= "<i>".substr($sug,$points[$i],$points[$i+1]-$points[$i])."</i>";
+			$suggestText .= '<em>'.substr($sug,$points[$i],$points[$i+1]-$points[$i])."</em>";
 		}
 		$suggestText .= substr($sug,end($points));
 		
