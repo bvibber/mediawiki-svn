@@ -184,6 +184,11 @@ class UploadBase {
 		if( $this->detectScript ( $tmpfile, $mime, $this->mFinalExtension ) ) {
 			return 'uploadscripted';
 		}
+		if( $this->mFinalExtension == 'svg' || $mime == 'image/svg+xml' ) {
+			if( $this->detectScriptInSvg( $tmpfile ) ) {
+				return 'uploadscripted';
+			}
+		}
 
 		/**
 		* Scan the uploaded file for viruses
@@ -319,7 +324,7 @@ class UploadBase {
 		list( $partname, $ext ) = $this->splitExtensions( $this->mFilteredName );
 
 		if( count( $ext ) ) {
-			$this->mFinalExtension = $ext[count( $ext ) - 1];
+			$this->mFinalExtension = trim( $ext[count( $ext ) - 1] );
 		} else {
 			$this->mFinalExtension = '';
 		}
@@ -578,6 +583,7 @@ class UploadBase {
 		*/
 
 		$tags = array(
+			'<a',
 			'<body',
 			'<head',
 			'<html',   #also in safari
@@ -615,6 +621,43 @@ class UploadBase {
 		wfDebug("SpecialUpload::detectScript: no scripts found\n");
 		return false;
 	}
+
+	function detectScriptInSvg( $filename ) {
+		$check = new XmlTypeCheck( $filename, array( $this, 'checkSvgScriptCallback' ) );
+		return $check->filterMatch;
+	}
+	
+	/**
+	 * @todo Replace this with a whitelist filter!
+	 */
+	function checkSvgScriptCallback( $element, $attribs ) {
+		$stripped = $this->stripXmlNamespace( $element );
+		
+		if( $stripped == 'script' ) {
+			wfDebug( __METHOD__ . ": Found script element '$element' in uploaded file.\n" );
+			return true;
+		}
+		
+		foreach( $attribs as $attrib => $value ) {
+			$stripped = $this->stripXmlNamespace( $attrib );
+			if( substr( $stripped, 0, 2 ) == 'on' ) {
+				wfDebug( __METHOD__ . ": Found script attribute '$attrib'='value' in uploaded file.\n" );
+				return true;
+			}
+			if( $stripped == 'href' && strpos( strtolower( $value ), 'javascript:' ) !== false ) {
+				wfDebug( __METHOD__ . ": Found script href attribute '$attrib'='$value' in uploaded file.\n" );
+				return true;
+			}
+		}
+	}
+	
+	private function stripXmlNamespace( $name ) {
+		// 'http://www.w3.org/2000/svg:script' -> 'script'
+		$parts = explode( ':', strtolower( $name ) );
+		return array_pop( $parts );
+	}
+	
+
 
 	/**
 	 * Generic wrapper function for a virus scanner program.
