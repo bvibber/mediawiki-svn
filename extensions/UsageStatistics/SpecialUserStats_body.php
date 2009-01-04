@@ -46,10 +46,12 @@ class SpecialUserStats extends SpecialPage
 
         if ($start == "" || $end == "") {
             if ($start == "") {
-                $wgOut->addWikiText(wfMsg('usagestatisticsnostart'));
+            	// FIXME: ideally this would use a class for markup.
+                $wgOut->addWikiText( '* <font color=red>' . wfMsg('usagestatisticsnostart') . '</font>' );
             }
             if ($end == "") {
-                $wgOut->addWikiText(wfMsg('usagestatisticsnoend'));
+            	// FIXME: ideally this would use a class for markup.
+                $wgOut->addWikiText( '* <font color=red>' . wfMsg('usagestatisticsnoend') . '</font>' );
             }
             self::DisplayForm($start,$end);
         } else {
