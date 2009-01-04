@@ -290,19 +290,19 @@ class CodeRevisionView extends CodeView {
 		$hilite = new CodeDiffHighlighter();
 		return $hilite->render( $diff );
 	}
-	
+
 	protected function stubDiffLoader() {
-		global $wgOut, $wgScriptPath;
+		global $wgOut, $wgScriptPath, $wgCodeReviewStyleVersion;
 		$encRepo = Xml::encodeJsVar( $this->mRepo->getName() );
 		$encRev = Xml::encodeJsVar( $this->mRev->getId() );
-		$wgOut->addScriptFile( "$wgScriptPath/extensions/CodeReview/codereview.js" );
+		$wgOut->addScriptFile( "$wgScriptPath/extensions/CodeReview/codereview.js?$wgCodeReviewStyleVersion" );
 		$wgOut->addInlineScript(
 			"addOnloadHook(
 				function() {
 					CodeReview.loadDiff($encRepo,$encRev);
 				}
 			);" );
-		return "Loading diff...";
+		return wfMsg( 'code-load-diff' );
 	}
 
 	protected function formatComments() {
