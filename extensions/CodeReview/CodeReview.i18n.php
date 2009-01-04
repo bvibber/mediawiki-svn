@@ -1866,6 +1866,7 @@ $messages['he'] = array(
 	'code-prop-changes' => 'יומן מצב ותגיות',
 	'code-desc' => '[[Special:Code|כלי בדיקת קוד]] עם [[Special:RepoAdmin|תמיכה ב־Subversion]]',
 	'code-no-repo' => 'לא הוגדר מאגר!',
+	'code-load-diff'=> 'ההבדל בין הגרסאות בטעינה…',
 	'code-notes' => 'הערות בדיקה',
 	'code-authors' => 'כותבים',
 	'code-tags' => 'תגיות',
