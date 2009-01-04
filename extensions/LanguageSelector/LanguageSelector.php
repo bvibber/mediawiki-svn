@@ -113,6 +113,8 @@ function wfLanguageSelectorExtension() {
 		if ( $setlang != $wgUser->getOption( 'language' ) ) {
 			$wgUser->setOption( 'language', $wgLanguageSelectorRequestedLanguage );
 			$wgUser->saveSettings();
+			// Reset $wgLang so that user's language is immediately changed
+			$wgLang = new StubUserLang;
 		}
 	}
 
