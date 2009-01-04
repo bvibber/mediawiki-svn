@@ -17,7 +17,7 @@ $messages['en'] = array(
 	'gur-rightslog-name' => 'Global rights log',
 	'gur-rightslog-header' => 'This is a log of changes to global rights.',
 	'gur-rightslog-entry' => 'changed global group membership for $1 from $2 to $3',
-	'rights-userrights-global' => 'Manage global user rights',
+	'right-userrights-global' => 'Manage global user rights',
 );
 
 /** Message documentation (Message documentation)
@@ -34,7 +34,7 @@ Do not translate or change tag names, or link anchors.',
  */
 $messages['ar'] = array(
 	'gur-rightslog-name' => 'سجل الحقوق العالمي',
-	'rights-userrights-global' => 'إدارة سجل الحقوق العالمي',
+	'right-userrights-global' => 'إدارة سجل الحقوق العالمي',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -53,7 +53,7 @@ $messages['bs'] = array(
 	'gur-rightslog-name' => 'Zapis globalnih prava',
 	'gur-rightslog-header' => 'Ovo je zapis o promjenama globalnih prava.',
 	'gur-rightslog-entry' => 'promijenjeno članstvo u globalnoj grupi za korisnika $1 od $2 na $3',
-	'rights-userrights-global' => 'Upravljanje pravima globalnih korisnika',
+	'right-userrights-global' => 'Upravljanje pravima globalnih korisnika',
 );
 
 /** German (Deutsch)
@@ -65,7 +65,7 @@ $messages['de'] = array(
 	'gur-rightslog-name' => 'Globales Rechte-Logbuch',
 	'gur-rightslog-header' => 'Dies ist ein Logbuch der Änderungen an globalen Benutzerrechten.',
 	'gur-rightslog-entry' => 'änderte die globale Gruppenmitgliedschaft für $1 von $2 auf $3',
-	'rights-userrights-global' => 'Globale Benutzerrechte verwalten',
+	'right-userrights-global' => 'Globale Benutzerrechte verwalten',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -77,7 +77,7 @@ $messages['dsb'] = array(
 	'gur-rightslog-name' => 'Protokol globalnych pšawow',
 	'gur-rightslog-header' => 'To jo protokol změnow globalnych pšawow',
 	'gur-rightslog-entry' => 'jo globalne kupkowe cłonkojstwo za $1 z $2 do $3 změnił',
-	'rights-userrights-global' => 'Globalne wužywarske pšawy zastojaś',
+	'right-userrights-global' => 'Globalne wužywarske pšawy zastojaś',
 );
 
 /** Esperanto (Esperanto)
@@ -89,7 +89,7 @@ $messages['eo'] = array(
 	'gur-rightslog-name' => 'Protokolo pri ĝeneralaj rajtoj',
 	'gur-rightslog-header' => 'Jen protokolo pri ŝanĝoj al ĝeneralaj rajtoj.',
 	'gur-rightslog-entry' => 'ŝanĝis membrecon de ĝenerala grupo por $1 de $2 al $3',
-	'rights-userrights-global' => 'Administri ĝeneralajn uzulajn rajtojn',
+	'right-userrights-global' => 'Administri ĝeneralajn uzulajn rajtojn',
 );
 
 /** French (Français)
@@ -101,7 +101,7 @@ $messages['fr'] = array(
 	'gur-rightslog-name' => 'Historique des droits globaux',
 	'gur-rightslog-header' => 'Ceci est le journal des modifications de statuts globaux',
 	'gur-rightslog-entry' => 'a modifié les droits globaux pour $1 de $2 à $3',
-	'rights-userrights-global' => 'Gérer les droits utilisateurs globaux',
+	'right-userrights-global' => 'Gérer les droits utilisateurs globaux',
 );
 
 /** Galician (Galego)
@@ -113,7 +113,7 @@ $messages['gl'] = array(
 	'gur-rightslog-name' => 'Rexistro de dereitos globais',
 	'gur-rightslog-header' => 'Este é un rexistro dos cambios realizados nos dereitos globais.',
 	'gur-rightslog-entry' => 'cambiou o grupo global ao que pertencía "$1" de $2 a $3',
-	'rights-userrights-global' => 'Xestionar os dereitos de usuario globais',
+	'right-userrights-global' => 'Xestionar os dereitos de usuario globais',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -125,7 +125,7 @@ $messages['hsb'] = array(
 	'gur-rightslog-name' => 'Protokol globalnych prawow',
 	'gur-rightslog-header' => 'To je protokol wo změnach globalnych prawow.',
 	'gur-rightslog-entry' => 'změni globalne skupniske čłonstwo za $1 z $2 do $3',
-	'rights-userrights-global' => 'Globalne wužiwarske prawa zrjadować',
+	'right-userrights-global' => 'Globalne wužiwarske prawa zrjadować',
 );
 
 /** Interlingua (Interlingua)
@@ -137,7 +137,7 @@ $messages['ia'] = array(
 	'gur-rightslog-name' => 'Registro de derectos global',
 	'gur-rightslog-header' => 'Isto es un registro de modificationes in le derectos global.',
 	'gur-rightslog-entry' => 'cambiava le membrato de gruppos global pro $1 de $2 a $3',
-	'rights-userrights-global' => 'Gerer le derectos global de usatores',
+	'right-userrights-global' => 'Gerer le derectos global de usatores',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -148,7 +148,7 @@ $messages['km'] = array(
 	'gur-rightslog-name' => 'កំណត់ហេតុ​សិទ្ធិ​សកល',
 	'gur-rightslog-header' => 'នេះ​គឺជា​កំណត់ហេតុ​នៃ​បំលាស់ប្ដូរទៅ​សិទ្ធិ​សកល​។',
 	'gur-rightslog-entry' => 'បាន​ប្ដូរ​សមាជិកភាព​ក្រុម​សកល ចំពោះ $1 ពី $2 ទៅ $3',
-	'rights-userrights-global' => 'គ្រប់គ្រង​សិទ្ធិ​អ្នកប្រើប្រាស់​សកល',
+	'right-userrights-global' => 'គ្រប់គ្រង​សិទ្ធិ​អ្នកប្រើប្រាស់​សកល',
 );
 
 /** Korean (한국어)
@@ -167,7 +167,7 @@ $messages['ksh'] = array(
 	'gur-rightslog-name' => 'Logboch övver jemeinsam Metmaacher-Rääschte',
 	'gur-rightslog-header' => 'Dat es et Logboch met de Änderunge aan de jemeinsame Metmaacher-Rääschte.',
 	'gur-rightslog-entry' => 'hät däm Metmaacher „$1“ sing jemeinsam Räääschte-Jruppe vun „$2“ op „$3“ jeändert',
-	'rights-userrights-global' => 'De jemeinsame Metmaacher_Rääschte verwallde',
+	'right-userrights-global' => 'De jemeinsame Metmaacher_Rääschte verwallde',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -179,7 +179,7 @@ $messages['lb'] = array(
 	'gur-rightslog-name' => 'Logbuch vun de globale Benotzerrechter',
 	'gur-rightslog-header' => "Dëst ass d'Logbuch vun den Ännerunge vun de globale Benotzerrechter.",
 	'gur-rightslog-entry' => 'huet déi global Benotzerrechter vum Benotzer $1 vun $2 op $3 geännert',
-	'rights-userrights-global' => 'Global Benotzerrechter geréieren',
+	'right-userrights-global' => 'Global Benotzerrechter geréieren',
 );
 
 /** Dutch (Nederlands)
@@ -191,7 +191,7 @@ $messages['nl'] = array(
 	'gur-rightslog-name' => 'Globaal gebruikerrechtenlogboek',
 	'gur-rightslog-header' => 'Dit logboek bevat wijzigingen aan globale gebruikersrechten.',
 	'gur-rightslog-entry' => 'wijzigde globaal groepslidmaatschap voor $1 van $2 naar $3',
-	'rights-userrights-global' => 'Globale gebruikersrechten beheren',
+	'right-userrights-global' => 'Globale gebruikersrechten beheren',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -203,7 +203,7 @@ $messages['nn'] = array(
 	'gur-rightslog-name' => 'Logg for globale rettar',
 	'gur-rightslog-header' => 'Dette er ein logg over endringar i globale brukarrettar.',
 	'gur-rightslog-entry' => 'endra globalt gruppemedlemskap for $1 frå $2 til $3',
-	'rights-userrights-global' => 'Handsama globale brukarrettar',
+	'right-userrights-global' => 'Handsama globale brukarrettar',
 );
 
 /** Occitan (Occitan)
@@ -215,7 +215,7 @@ $messages['oc'] = array(
 	'gur-rightslog-name' => 'Istoric dels dreches globals',
 	'gur-rightslog-header' => "Aquò es lo jornal de las modificacions d'estatuts globals",
 	'gur-rightslog-entry' => 'a modificat los dreches globals per $1 de $2 a $3',
-	'rights-userrights-global' => "Gerir los dreches d'utilizaires globals",
+	'right-userrights-global' => "Gerir los dreches d'utilizaires globals",
 );
 
 /** Polish (Polski)
@@ -227,7 +227,7 @@ $messages['pl'] = array(
 	'gur-rightslog-name' => 'Rejestr globalnych uprawnień',
 	'gur-rightslog-header' => 'To jest rejestr zmian globalnych uprawnień',
 	'gur-rightslog-entry' => 'zmienił globalną przynależność $1 do grup ($2 → $3)',
-	'rights-userrights-global' => 'Zarządzanie globalnymi uprawnieniami użytkownika',
+	'right-userrights-global' => 'Zarządzanie globalnymi uprawnieniami użytkownika',
 );
 
 /** Romanian (Română)
@@ -246,7 +246,7 @@ $messages['sk'] = array(
 	'gur-rightslog-name' => 'Záznam globálnych oprávnení',
 	'gur-rightslog-header' => 'Toto je záznam zmien globálnych oprávnení.',
 	'gur-rightslog-entry' => 'zmenené členstvo $1 v globálnej skupine z $2 na $3',
-	'rights-userrights-global' => 'Spravovať oprávnenia globálnych používateľov',
+	'right-userrights-global' => 'Spravovať oprávnenia globálnych používateľov',
 );
 
 /** Tagalog (Tagalog)
@@ -258,6 +258,6 @@ $messages['tl'] = array(
 	'gur-rightslog-name' => 'Talaan ng pandaigdigang mga karapatan',
 	'gur-rightslog-header' => 'Isa itong talaan ng mga pagbabago sa pandaigdigang mga karapatan.',
 	'gur-rightslog-entry' => 'binago ang kasapian ng pandaigdigang kapangkatan para kay $1 mula $2 patungo sa $3',
-	'rights-userrights-global' => 'Pamahalaan ang mga karapatan ng pandaigdigang tagagamit',
+	'right-userrights-global' => 'Pamahalaan ang mga karapatan ng pandaigdigang tagagamit',
 );
 
