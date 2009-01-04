@@ -90,7 +90,7 @@ class CodeCommentsTablePager extends TablePager {
 			$preview = $wgLang->truncate( $text, 300 );
 			if( strlen($preview) < strlen($text) ) {
 				$preview = substr( $preview, 0, strrpos($preview,' ') );
-				$preview .= " . . .";
+				$preview .= ' ' . wfMsgForContent( 'ellipsis' );
 			}
 			return $preview;
 		case 'cc_timestamp':
