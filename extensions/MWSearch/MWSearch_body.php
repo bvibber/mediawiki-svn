@@ -598,10 +598,10 @@ class LuceneSearchSet extends SearchResultSet {
 		array_unshift($points,0);
 		$suggestText = "";
 		for($i=1;$i<count($points);$i+=2){
-			$suggestText .= substr($sug,$points[$i-1],$points[$i]-$points[$i-1]);
-			$suggestText .= '<em>'.substr($sug,$points[$i],$points[$i+1]-$points[$i])."</em>";
+			$suggestText .= htmlspecialchars(substr($sug,$points[$i-1],$points[$i]-$points[$i-1]));
+			$suggestText .= '<em>'.htmlspecialchars(substr($sug,$points[$i],$points[$i+1]-$points[$i]))."</em>";
 		}
-		$suggestText .= substr($sug,end($points));
+		$suggestText .= htmlspecialchars(substr($sug,end($points)));
 		
 		$this->mSuggestionQuery = $this->replaceGenericPrefixes($sug);
 		$this->mSuggestionSnippet = $this->replaceGenericPrefixes($suggestText); 		
