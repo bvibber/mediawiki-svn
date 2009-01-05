@@ -395,6 +395,22 @@ $messages['th'] = array(
 	'seealso' => 'ดูเพิ่ม',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'seealso' => 'Tingnan din',
+	'seealso-desc' => "Isinapook/isinakatutubo (inilokalisa) ang mga paulong 'Tingnan din' sa pamamagitan ng paggamit ng tatak na <code><nowiki><seealso></nowiki></code>",
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'seealso' => 'Ayrıca bakınız',
+	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> etiketini kullanan yerelleştirilmiş 'Ayrıca bakınız' başlıkları",
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

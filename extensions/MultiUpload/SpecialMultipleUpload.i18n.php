@@ -75,11 +75,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'multipleupload' => 'رفع الملفات',
-	'multipleupload-desc' => 'يسمح للمستخدمين [[Special:MultipleUpload|برفع عدة ملفات فى وقت واحد]]',
+	'multipleupload-desc' => 'يسمح لليوزرز [[Special:MultipleUpload|بتحميل عدة ملفات فى وقت واحد]]',
 	'multipleupload-ignoreallwarnings' => "تجاهل '''كل التحذيرات''' واحفظ الملفات على أية حال.",
 	'multipleupload-saveallfiles' => 'حفظ كل الملفات',
 	'multipleupload-addresswarnings' => 'من فضلك صحح أية تحذيرات قبل إعادة رفع الملفات.',
@@ -1167,6 +1168,19 @@ Bạn có thể nhập vào một '''Tên tập tin đích''' tùy chọn và cu
 Những tập tin không phù hợp sẽ bị xóa lập tức, mời xem [[{{MediaWiki:Multipleupload-page}}|quy định xóa tập tin]].",
 	'multiupload-fileuploaded' => 'Tập tin đã được tải lên.',
 	'multiupload-toolbox' => 'Tải nhiều tập tin',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'multipleupload' => 'Löpükön ragivis',
+	'multipleupload-desc' => 'Dälön gebanis ad [[Special:MultipleUpload|löpükön ragivis ömik otüpo]]',
+	'multipleupload-ignoreallwarnings' => "Nedemön '''nunedis valik''' e dakipön ragivis.",
+	'multipleupload-saveallfiles' => 'Dakipön ragivis valik',
+	'multipleupload-page' => '{{ns:project}}:Dunamod tefü ragivimoükam',
+	'multiupload-fileuploaded' => 'Ragiv pelöpükon.',
+	'multiupload-toolbox' => 'Löpükön ragivis mödik',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

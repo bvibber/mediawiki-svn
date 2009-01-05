@@ -72,6 +72,11 @@ $aliases['lb'] = array(
 	'CloseWiki' => array( 'Wiki zoumaachen' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'CloseWiki' => array( 'AgħlaqWiki' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'CloseWiki' => array( 'Wiki_sluten' ),

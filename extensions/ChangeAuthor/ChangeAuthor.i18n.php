@@ -188,8 +188,8 @@ $messages['arz'] = array(
 	'changeauthor-explanation-multi' => "باستخدام هذه الاستمارة يمكنك تغيير مؤلفى المراجعات.
 ببساطة غير واحدا أو أكثر من أسماء المستخدمين فى القائمة بالأسفل ، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف(ين)'.",
 	'changeauthor-changeauthors-single' => 'تغيير المؤلف',
-	'changeauthor-explanation-single' => "باستخدام هذه الاستمارة يمكنك تغيير مؤلف مراجعة.
-ببساطة غير اسم اسم المستخدم بالأسفل، أضف تعليقا (اختياري) واضغط على زر 'تغيير المؤلف'.",
+	'changeauthor-explanation-single' => "باستخدام الاستمارة دى ممكن تغير مؤلف مراجعة.
+ببساطة غير اسم اليوزر تحت، ضيف تعليق (اختيارى) واضغط على زر 'تغيير المؤلف'.",
 	'changeauthor-invalid-username' => 'اسم يوزر مش صحيح "$1".',
 	'changeauthor-nosuchuser' => 'مافيش يوزر بالاسم "$1".',
 	'changeauthor-revview' => 'المراجعة #$1 من $2',
@@ -1656,11 +1656,33 @@ Nếu lỗi này tiếp tục hiện ra, có lẽ cơ sở dữ liệu đã bị
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'changeauthor' => 'Votükön lautani revida',
+	'changeauthor-desc' => 'Dälon votükami revidalautana',
+	'changeauthor-title' => 'Votükön revidalautana',
+	'changeauthor-search-box' => 'Sukön revidis',
+	'changeauthor-pagename-or-revid' => 'Padanem u revidanüm:',
+	'changeauthor-pagenameform-go' => 'Ledunolöd',
 	'changeauthor-comment' => 'Küpet:',
 	'changeauthor-changeauthors-multi' => 'Votükön {{PLURAL:$1|lautani|lautanis}}',
+	'changeauthor-explanation-multi' => 'Me fomet at kanol votükön revidalautanis.
+Mutol te votükön gebananemi bal u plu bali pö lised dono, penön küpeti (if vilol) e välön knopi: „Votükön lautani(s)“.',
 	'changeauthor-changeauthors-single' => 'Votükön lautani',
+	'changeauthor-explanation-single' => 'Me fomet at kanol votükön revidalautani.
+Mutol te votükön gebananemi dono, penön küpeti (if vilol) e välön knopi: „Votükön lautani“.',
+	'changeauthor-invalid-username' => 'Gebananem no lonöföl: „$1“.',
+	'changeauthor-nosuchuser' => 'Geban: „$1“ no dabinon.',
+	'changeauthor-revview' => 'Revid #$1 se $2',
+	'changeauthor-nosuchtitle' => 'No dabinon pad tiädü „$1“.',
+	'changeauthor-weirderror' => 'Pöl vemo bisarik ejenon.
+Steifülolös dönu.
+If pöl at dönu ojenon, nünodem ba edädikon.',
+	'changeauthor-invalidform' => 'Gebolös fometi su [[Special:ChangeAuthor|pad patik]], no votiki.',
+	'changeauthor-success' => 'Beg olik peledunon benosekiko.',
+	'changeauthor-logentry' => 'Lautan revida: $2 pada: $1 pevotükön de: $3 ad: $4.',
+	'changeauthor-logpagename' => 'Jenotalised lautanivotükamas',
 );
 
 /** Yue (粵語)

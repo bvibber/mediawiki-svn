@@ -86,12 +86,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Ouda
  */
 $messages['arz'] = array(
 	'recordadmin-category' => 'سجلات',
 	'recordadmin-newsearch' => 'بحث $1 جديد',
-	'recordadmin-newrecord' => 'أختار نوع سجل أخر',
+	'recordadmin-newrecord' => 'أختار نوع سجل تانى',
 	'recordadmin-submit' => 'نفذ',
 	'recordadmin-createsuccess' => '$1 أنشئت',
 	'recordadmin-badtitle' => '! عنوان سئ',
@@ -433,6 +434,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'recordadmin-newsearch' => 'Nei $1 sichen',
 	'recordadmin-alreadyexist' => 'Pardon, "$1" gëtt et schonn!',
+	'recordadmin-badtitle' => 'Schlechten Titel!',
 	'recordadmin-buttonsearch' => 'Sichen',
 	'recordadmin-buttonreset' => 'Zrécksetzen',
 	'recordadmin-searchresult' => 'Resultater vun der Sich',

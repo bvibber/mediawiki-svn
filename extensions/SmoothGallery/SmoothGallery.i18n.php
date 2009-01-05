@@ -70,6 +70,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -82,10 +83,10 @@ $messages['arz'] = array(
 	'smoothgallery-gallery-not-found' => 'المعرض المطلوب غير موجود.',
 	'smoothgallery-not-found' => 'لا صور تمت إضافتها للمعرض.
 من فضلك أضف صورة واحدة على الأقل.',
-	'smoothgallery-no-images' => 'لم يتم العثور على صور فى هذا المعرض.
-تأكد من أن كل الصور المطلوبة موجودة.
-الصور التالية لم يتم العثور عليها: $1',
-	'smoothgallery-invalid-images' => 'الصور المطلوبة التالية كانت من نوع غير صحيح: $1',
+	'smoothgallery-no-images' => 'مافيش  صور فى  المعرض ده.
+اتأكد من ان كل الصور المطلوبة موجودة.
+الصور التالية مالقينهاش: $1',
+	'smoothgallery-invalid-images' => 'الصور المطلوبة دى كانت من نوع مش صحيح: $1',
 	'smoothgallery-unexpected-error' => 'حدث خطأ غير متوقع.
 من فضلك أبلغ عن هذا الخطأ.',
 	'smoothgallery-javascript-disabled' => 'الجافاسكريبت مطلوب لرؤية هذا المعرض جيدا.',
@@ -242,9 +243,9 @@ $messages['he'] = array(
 	'smoothgallery-not-found' => 'לא נוספו תמונות לגלריה.
 אנא הוסיפו לפחות תמונה אחת.',
 	'smoothgallery-no-images' => 'לא נמצאו תמונות בגלריה זו.
-ודאו ש{{PLURAL:$3|התמונה שבוקשה אכן נמצאת|כל התמונות שבוקשו אכן נמצאות}}כל.
+ודאו ש{{PLURAL:$3|התמונה שביקשתם אכן קיימת|כל התמונות שביקשתם אכן קיימות}}.
 {{PLURAL:$2|התמונה הבאה לא נמצאה|התמונות הבאות לא נמצאו}}: $1',
-	'smoothgallery-invalid-images' => '{{PLURAL:$2|התמונה הבאה שבוקשה הינה|התמונות הבאות שבוקשו הן}} מסוג בלתי תקין: $1',
+	'smoothgallery-invalid-images' => '{{PLURAL:$2|התמונה הבאה שביקשתם היא|התמונות הבאות שביקשתם הן}} מסוג בלתי תקין: $1',
 	'smoothgallery-unexpected-error' => 'אירעה שגיאה בלתי צפויה.
 אנא דווחו על תקלה זו.',
 	'smoothgallery-javascript-disabled' => 'על מנת לצפות בדף זה כראוי נדרש JavaScript.',

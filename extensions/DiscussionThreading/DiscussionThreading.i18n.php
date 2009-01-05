@@ -19,10 +19,12 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Fryed-peach
  * @author Purodha
  */
 $messages['qqq'] = array(
 	'discussionthreading-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'discussionthreading-threadnewsection' => '{{Identical|New}}',
 );
 
 /** Old English (Anglo-Saxon)
@@ -219,6 +221,17 @@ $messages['it'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Avvia una nuova discussione',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'discussionthreading-desc' => 'ノートページにスレッド機能を追加する',
+	'discussionthreading-replysection' => '返信',
+	'discussionthreading-replysectionhint' => 'この投稿に返信する',
+	'discussionthreading-threadnewsection' => '新規',
+	'discussionthreading-threadnewsectionhint' => '新しいスレッドを立てる',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */
@@ -272,6 +285,7 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'discussionthreading-desc' => 'Legg til tråding på diskusjonssider.',
 	'discussionthreading-replysection' => 'svar',
 	'discussionthreading-replysectionhint' => 'Svar på dette innlegget',
 	'discussionthreading-threadnewsection' => 'ny',

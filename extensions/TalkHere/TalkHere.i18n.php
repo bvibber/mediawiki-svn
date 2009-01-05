@@ -229,6 +229,13 @@ $messages['es'] = array(
 	'talkhere-collapse' => 'ocultar editor',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'talkhere-talkpage' => 'eztabaida orria',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -593,6 +600,7 @@ Lo gestionari del sit es pas responsable de lor contengut.',
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'talkhere-desc' => 'Wstawia stronę dyskusji na inną stronę',
 	'talkhere-foottext' => 'Powyższe komentarze mogły zostać zostawione przez gości.
 
 Administratorzy tej strony nie mogą brać odpowiedzialności za zawartość takich komentarzy.',

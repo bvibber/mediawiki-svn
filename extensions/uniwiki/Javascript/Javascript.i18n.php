@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'javascript-desc' => 'يضيف uniwiki.js لكل صفحة تحتوي شيفرة جافاسكربت مشاركة بين امتدادات يونيويكي.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
+ */
+$messages['arz'] = array(
+	'javascript-desc' => 'بيضيف uniwiki.js لكل صفحة فيها شفرة جافاسكربت مشاركة بين امتدادات يونيويكى',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -154,6 +161,13 @@ $messages['nds-nl'] = array(
  */
 $messages['nl'] = array(
 	'javascript-desc' => 'Voegt uniwiki.js met JavaScript-code die wordt gedeeld tussen de Uniwiki-uitbreidingen toe aan iedere pagina',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'javascript-desc' => 'Legg til uniwiki.js på kvar sida med JavaScript som vert delt mellom Uniwiki-utvidingar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

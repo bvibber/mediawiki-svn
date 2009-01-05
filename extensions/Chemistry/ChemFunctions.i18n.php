@@ -244,6 +244,9 @@ $messages['et'] = array(
  * @author Theklan
  */
 $messages['eu'] = array(
+	'chemicalsources' => 'Kimikako iturriak',
+	'chemicalsource-desc' => '<nowiki><chemform></nowiki> formula kimikoentzatko etiketa gehitzen du',
+	'chemFunctions_ListPage' => 'Kimikako iturriak',
 	'chemFunctions_CAS' => 'CAS zenbakia',
 	'chemFunctions_ATCCode' => 'ATCCode',
 	'chemFunctions_Formula' => 'Formula',
@@ -637,6 +640,8 @@ $messages['nn'] = array(
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula ved NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS ved Oxford University (UK) (kan ikkje søkja)</a><br />',
 	'chemFunctions_CAS' => 'CAS-nummer',
+	'chemFunctions_ATCCode' => 'ATC-kode',
+	'chemFunctions_ECNumber' => 'EC-nummer',
 	'chemFunctions_Formula' => 'Formel',
 	'chemFunctions_Name' => 'IUPAC-namn',
 	'chemFunctions_ChemFormInputError' => 'Chemform: inntekst-feil!',

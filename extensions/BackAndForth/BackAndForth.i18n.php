@@ -207,6 +207,15 @@ $messages['es'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'backforth-next' => 'Hurrengoa ($1)',
+	'backforth-desc' => '"Hurrengoa" eta "Aurrekoa" nabigazio alfabetikorako loturak gehitzen ditu orrialdeen goialdean',
+	'backforth-prev' => 'Aurrekoa ($1)',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -727,10 +736,12 @@ $messages['th'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Srhat
  */
 $messages['tr'] = array(
 	'backforth-next' => 'Sonraki ($1)',
+	'backforth-desc' => '"Sonraki" ve "Önceki" alfabetik sayfalama linklerini sayfaların en üstüne ekler',
 	'backforth-prev' => 'Önceki ($1)',
 );
 
@@ -763,9 +774,11 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
 	'backforth-next' => 'Sököl ($1)',
+	'backforth-desc' => 'Läükon yümis: „büik(s)“ e „fovik(s)“ löpü pad',
 	'backforth-prev' => 'Büik ($1)',
 );
 

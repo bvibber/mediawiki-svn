@@ -1630,11 +1630,12 @@ $messages['to'] = array(
 
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
+ * @author Joseph
  * @author Karduelis
  * @author Runningfridgesrule
  */
 $messages['tr'] = array(
-	'expandtemplates' => 'Şablonları geliştir',
+	'expandtemplates' => 'Şablonları genişlet',
 	'expand_templates_input' => 'Giriş metni:',
 	'expand_templates_output' => 'Sonuç',
 	'expand_templates_xml_output' => 'XML üretim',

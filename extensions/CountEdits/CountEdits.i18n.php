@@ -128,6 +128,13 @@ $messages['bcl'] = array(
 	'countedits-mostactive' => 'Pinaka mahigos na mga kontributor',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'countedits-ok' => 'Добра',
+);
+
 /** Bulgarian (Български)
  * @author Spiritia
  */
@@ -1205,10 +1212,12 @@ $messages['th'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'countedits-username' => 'Kullanıcı:',
+	'countedits-ok' => 'Tamam',
 );
 
 /** Ukrainian (Українська)
@@ -1251,6 +1260,23 @@ $messages['vi'] = array(
 	'countedits-resulttext' => '$1 đã sửa đổi $2 lần',
 	'countedits-mostactive' => 'Thành viên tích cực nhất',
 	'countedits-nocontribs' => 'Chưa ai đóng góp vào wiki này.',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'countedits' => 'Numön redakamis',
+	'countedits-desc' => '[[Special:CountEdits|Pad patik]], kel numon gebanaredakamis e gevon lisedi keblünanas gudikün deg]]',
+	'countedits-warning' => "'''Nuned:''' No cödolös buki bai tegod onik.
+No cödolös keblünanis bai redakaminum onsik.",
+	'countedits-username' => 'Gebananem:',
+	'countedits-ok' => 'Gudö',
+	'countedits-nosuchuser' => 'No dabinon geban labü nem: $1.',
+	'countedits-resultheader' => 'Seks tefü $1',
+	'countedits-resulttext' => 'Geban: $1 edunon {{PLURAL:$2|redakami bal|redakamis $2}}',
+	'countedits-mostactive' => 'Keblünans jäfedikün',
+	'countedits-nocontribs' => 'Keblünots nonik pedunons vüke at.',
 );
 
 /** Yue (粵語)

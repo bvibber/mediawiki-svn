@@ -78,6 +78,13 @@ $messages['ast'] = array(
 	'findspam-notextfound' => "Nun s'atoparon contribuciones",
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'findspam-ok' => 'Добра',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Spiritia
@@ -181,6 +188,17 @@ $messages['et'] = array(
 	'findspam-ip' => 'IP-aadress:',
 	'findspam-ok' => 'OK',
 	'findspam-notextfound' => 'Redigeerimisi ei leitud',
+);
+
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'findspam' => 'Spama bilatu',
+	'findspam-desc' => '[[Berezi:SpamaBilatu|Orrialde berezi]] bat gehitzen du azken aldian gehitutako spama bilatu ahal izateko',
+	'findspam-ip' => 'IP helbidea:',
+	'findspam-ok' => 'Ondo',
+	'findspam-notextfound' => 'Ez da ekarpenik aurkitu',
 );
 
 /** Persian (فارسی)

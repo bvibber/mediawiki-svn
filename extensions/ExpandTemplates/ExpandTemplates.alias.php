@@ -127,6 +127,11 @@ $aliases['ms'] = array(
 	'ExpandTemplates' => array( 'Kembangkan templat' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'ExpandTemplates' => array( 'EspandiMudelli' ),
+);
+
 /** Erzya (Эрзянь) */
 $aliases['myv'] = array(
 	'ExpandTemplates' => array( 'ПоладомсЛопаПарцунт' ),

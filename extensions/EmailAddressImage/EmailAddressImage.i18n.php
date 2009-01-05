@@ -75,6 +75,13 @@ $messages['es'] = array(
 	'emailaddressimage-desc' => 'Añade la etiqueta <tt>&lt;email&gt;</tt> que muestra una dirección de correo electrónico como imagen.',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'emailaddressimage-desc' => '<tt>&lt;email&gt;</tt> e-mail helbide bat irudi baten gisan agertzeko etiketa gehitzen du',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  */
@@ -306,6 +313,13 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'emailaddressimage-desc' => 'Thêm <tt>&lt;email&gt;</tt> để hiển thị địa chỉ thư điện tử dưới dạng hình ảnh',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'emailaddressimage-desc' => 'Läükon eli <tt>&lt;email&gt;</tt> ad jonön ladeti leäktronik as magod',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

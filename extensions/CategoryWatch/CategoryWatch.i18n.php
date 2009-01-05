@@ -67,12 +67,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'categorywatch-desc' => 'يمدد وظيفة قائمة المراقبة لتشمل الإخطارات حول تغييرات العضوية للتصنيفات المراقبة',
-	'categorywatch-emailbody' => 'مرحبا $1، أنت تلقيت هذه الرسالة لأنك تراقب التصنيف "$2".
-هذه الرسالة لإخطارك أنه فى $3 المستخدم $4 $5.',
+	'categorywatch-emailbody' => 'اهلا و سهلا $1، اتبعتتلك الرسالة دى لأنك بتراقب التصنيف "$2".
+ الرساله دى لإخطارك أنه فى $3 اليوزر  $4 $5.',
 	'categorywatch-emailsubject' => 'النشاط الذى يشمل التصنيف المراقب "$1"',
 	'categorywatch-catmovein' => 'نقل $1 إلى التصنيف $2 من $3',
 	'categorywatch-catmoveout' => 'نقل $1 من التصنيف $2 إلى $3',
@@ -162,6 +163,20 @@ $messages['eo'] = array(
 	'categorywatch-catmoveout' => 'movis $1 el kategorio $2 en $3',
 	'categorywatch-catadd' => 'aldonis $1 al kategorio $2',
 	'categorywatch-catsub' => 'eligis $1 de kategorio $2',
+);
+
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'categorywatch-desc' => 'Jarraipen zerrendaren funtzionalitatea areagotzen du jarraitutako kategorien kideen aldaketetaz ohartarezteko aukera gehituz.',
+	'categorywatch-emailbody' => 'Kaixo $1, "$2" kategoria jarraitzen zaudelako mezu hau jaso duzu.
+Mezu hau $4(e)k $3(e)tan $5 duela jakinarazteko da.',
+	'categorywatch-emailsubject' => '"$1" kategoria ikusten sorturiko aktibitatea',
+	'categorywatch-catmovein' => '$1 $3 kategoriatik $2(e)ra mugitu',
+	'categorywatch-catmoveout' => '$1 $3 kategoriatik $2(e)ra atera',
+	'categorywatch-catadd' => '$1 $2 kategoria gehitu',
+	'categorywatch-catsub' => '$1 $2 kategoriatik kendu',
 );
 
 /** Finnish (Suomi)
@@ -494,6 +509,19 @@ Chúng tôi muốn báo cho bạn biết là vào lúc $3, thành viên $4 $5.',
 	'categorywatch-catmoveout' => 'đã di chuyển $1 ra khỏi thể loại $2 đến $3',
 	'categorywatch-catadd' => 'đã thêm $1 vào thể loại $2',
 	'categorywatch-catsub' => 'đã bỏ $1 ra khỏi thể loại $2',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'categorywatch-desc' => 'Mögükon sedi itjäfidik penedas leäktronik tefü votükams in klads pegalädöl.',
+	'categorywatch-emailbody' => 'Glidis, o $1! Egetol penedi at bi galädol kladi: "$2". Tü $3, geban: $4 $5.',
+	'categorywatch-emailsubject' => 'Jäfed tefü klad pegalädöl: "$1"',
+	'categorywatch-catmovein' => 'ätopätükon padi: $1 ini klad: $2 se klad: $3',
+	'categorywatch-catmoveout' => 'ätopätükon padi: $1 se klad: $2 ini klad: $3',
+	'categorywatch-catadd' => 'äläükon padi: $1 klade: $2',
+	'categorywatch-catsub' => 'ämoükon padi: $1 se klad: $2',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

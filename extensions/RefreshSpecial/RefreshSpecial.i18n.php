@@ -96,13 +96,15 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'refreshspecial' => 'تحديث الصفحات الخاصة',
 	'refreshspecial-desc' => 'يسمح [[Special:RefreshSpecial|بتحديث يدوي]] للصفحات الخاصة',
 	'refreshspecial-title' => 'تحديث الصفحات الخاصة',
-	'refreshspecial-help' => 'هذه الصفحة الخاصة توفر الوسيلة لتحديث الصفحات الخاصة يدويا. عندما تختار كل الصفحات التى تريد تحديثها، اضغط على زر التحديث بالأسفل للبدء. تحذير: التحديث ربما يأخذ وقتا فى الويكيات الكبيرة.',
+	'refreshspecial-help' => 'الصفحة الخاصة دى بتوفر الوسيلة لتحديث الصفحات الخاصة يدويا. لما تختار كل الصفحات اللى عايز تحدثها، اضغط على زر التحديث تحت
+. تحذير: التحديث ربما ياخد وقت فى الويكيات الكبيرة.',
 	'refreshspecial-button' => 'تحديث المختارة',
 	'refreshspecial-fail' => 'من فضلك علم على صفحة خاصة واحدة على الأقل للتحديث.',
 	'refreshspecial-refreshing' => 'جارى تحديث الصفحات الخاصة',
@@ -110,7 +112,7 @@ $messages['arz'] = array(
 	'refreshspecial-success-subtitle' => 'جارى تحديث الصفحات الخاصة',
 	'refreshspecial-choice' => 'تحديث الصفحات الخاصة',
 	'refreshspecial-js-disabled' => '(<i>أنت لا يمكنك اختيار كل الصفحات عندما تكون الجافاسكريبت معطلة</i>)',
-	'refreshspecial-select-all-pages' => ' اختر كل الصفحات',
+	'refreshspecial-select-all-pages' => 'اختار كل الصفحات',
 	'refreshspecial-link-back' => 'رجوع إلى الامتداد',
 	'refreshspecial-none-selected' => 'أنت لم تختر أى صفحة خاصة. استرجاع إلى الاختيار الافتراضي.',
 	'refreshspecial-db-error' => 'فشل: خطأ قاعدة بيانات',
@@ -118,7 +120,7 @@ $messages['arz'] = array(
 	'refreshspecial-slave-lagged' => 'الخادم التابع تأخر، جارى الانتظار...',
 	'refreshspecial-reconnected' => 'تمت إعادة التوصيل.',
 	'refreshspecial-reconnecting' => 'التوصيل فشل، إعادة التوصيل خلال 10 ثواني...',
-	'refreshspecial-total-display' => 'حدث $1 صفحة بإجمالى $2 صف فى وقت $3 (الزمن الإجمالى لعمل السكريبت هو $4)',
+	'refreshspecial-total-display' => 'تحديث $1 صفحة بإجمالى $2 صف فى وقت $3 (الزمن الإجمالى لعمل السكريبت هو $4)',
 );
 
 /** Bulgarian (Български)
@@ -161,6 +163,7 @@ Upozornění: na větších wiki může obnovení chvíli trvat.',
  * @author ChrisiPK
  * @author MF-Warburg
  * @author Melancholie
+ * @author Purodha
  * @author Revolus
  * @author Umherirrender
  */
@@ -186,7 +189,7 @@ Achtung: Das Aktualisieren kann auf großen Wikis länger dauern.',
 	'refreshspecial-slave-lagged' => 'Slave-Server hängt hinterher, warten …',
 	'refreshspecial-reconnected' => 'Wiederverbunden.',
 	'refreshspecial-reconnecting' => 'Verbindung fehlgeschlagen, wiederverbinde in 10 Sekunden …',
-	'refreshspecial-page-result' => 'enthält {{PLURAL:$1|eine Reihe|$1 Reihen}}',
+	'refreshspecial-page-result' => 'enthält {{PLURAL:$1|eine Reihe|$1 Reihen}} in',
 	'refreshspecial-total-display' => 'Aktualisierte $1 {{PLURAL:$1|Seite|Seiten}}, insgesamt $2 {{PLURAL:$2|Zeile|Zeilen}} in einer Zeit von $3 (Gesamtlaufzeit des Skripts: $4)',
 	'right-refreshspecial' => 'Spezialseiten aktualisieren',
 );
@@ -432,7 +435,35 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'refreshspecial-desc' => 'Määt et müjjelesch, Söndersigge [[Special:RefreshSpecial|fun Hand neu aanzeije]] ze lohße.',
+	'refreshspecial' => 'Söndersigge ier Date neu opfreshe',
+	'refreshspecial-desc' => 'Määt et müjjelesch, Söndersigge ier Date [[Special:RefreshSpecial|fun Hand neu opfreshe]] ze lohße.',
+	'refreshspecial-title' => 'Söndersigge neu aanzeije',
+	'refreshspecial-help' => 'Hee die Söndersigg jitt Der e Werkzeuch för de Söndersigge ier Daten
+vun Hand neu ußrechne ze johße.
+Wann De all die Söndersigge doför ußjewählt häs, donn op dä Knopp
+„{{int:refreshspecial-button}}“ klekke, öm dat neu Opnämme aanzefange.
+Opjepaß: Dat op jruuße Wikis sing Zick doore.',
+	'refreshspecial-button' => 'Uswahl neu opfreshe',
+	'refreshspecial-fail' => 'Bes esu joot, un donn winnishsdens ein Sigg zom Opfresche ußwähle.',
+	'refreshspecial-refreshing' => 'Ben de Söndersigge am opfresche',
+	'refreshspecial-skipped' => 'bellesch, övverjange',
+	'refreshspecial-success-subtitle' => 'Ben de Söndersigge am opfresche',
+	'refreshspecial-choice' => 'Ben de Söndersigge am opfresche',
+	'refreshspecial-js-disabled' => '(<i>De kanns nit all Sigge ußwähle, wann JavaSkipp nit jeiht</i>)',
+	'refreshspecial-select-all-pages' => 'All Sigge ußwähle',
+	'refreshspecial-link-back' => 'Jangk retuur op di Söndersigg',
+	'refreshspecial-none-selected' => 'Do häs kein Söndersigge ußjgewählt.
+Mer jonn fröm op de Shtandatt-Ußwahl.',
+	'refreshspecial-db-error' => 'Dat es donevve jejange: Mer hatte ene Datebangk-Fähler.',
+	'refreshspecial-no-page' => 'Esu en Söndersigg ham_mer nit.',
+	'refreshspecial-slave-lagged' => 'Ene nohjeschaldte ßööver eß hengerher aam hingke, mer sen am waade&nbsp;…',
+	'refreshspecial-reconnected' => 'De Verbendong es widder do.',
+	'refreshspecial-reconnecting' => 'De Verbendong es fott. Weed widder opjebout in 10 Sekunde&nbsp;…',
+	'refreshspecial-page-result' => 'hät {{PLURAL:$1|ein Reih|$1 Reije|kein einzije Reih}} en',
+	'refreshspecial-total-display' => 'Han {{PLURAL:$1|ein Sigg|$1 Sigge|kein Sigg}} op der neuste Shtand jebraat,
+met ensjesamp {{PLURAL:$2|ein Reih|$2 Reije|kein Reih}},
+en dä Zick fun $3, wobei dä janze Vörjang $4 jedooht hät.',
+	'right-refreshspecial' => 'Söndersigge ier Date neu opfreshe',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -525,6 +556,7 @@ Når du har valt kva sider du ønskjer å oppdatera, klikk på 'Oppdater valte' 
 	'refreshspecial-slave-lagged' => 'Forseinking i slavetenaren, ventar…',
 	'refreshspecial-reconnected' => 'Kopla til på nytt.',
 	'refreshspecial-reconnecting' => 'Tilkopling mislukkast, prøver om att om ti sekund…',
+	'right-refreshspecial' => 'Oppdatera spesialsider',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

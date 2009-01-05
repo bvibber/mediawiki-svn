@@ -61,6 +61,13 @@ $messages['arz'] = array(
 	'unicodeconverter-newtext' => 'النص المحول:',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'unicodeconverter-ok' => 'Добра',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -120,6 +127,15 @@ $messages['es'] = array(
 	'unicodeconverter-ok' => 'Aceptar',
 	'unicodeconverter-oldtext' => 'Texto original:',
 	'unicodeconverter-newtext' => 'Texto convertido:',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'unicodeconverter' => 'Unicode bihurtzailea',
+	'unicodeconverter-oldtext' => 'Jatorrizko testua:',
+	'unicodeconverter-newtext' => 'Eraldatutako testua:',
 );
 
 /** Finnish (Suomi)
@@ -316,11 +332,13 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Jwitos
  * @author Leinad
  */
 $messages['pl'] = array(
 	'unicodeconverter' => 'Konwerter unicode',
+	'unicodeconverter-desc' => 'Prosty przykład modułu ze stroną specjalną. [[Special:UnicodeConverter|Podany ciąg znaków w UTF-8]] zostanie skonwertowany na encje HTML odpowiednie dla strony WWW zakodowanej w standardzie ISO 8859-1',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Oryginalny tekst:',
 	'unicodeconverter-newtext' => 'Przekonwertowany tekst:',
@@ -420,6 +438,13 @@ $messages['tl'] = array(
 	'unicodeconverter-ok' => "Sige/Ayos 'yan",
 	'unicodeconverter-oldtext' => 'Orihinal na teksto:',
 	'unicodeconverter-newtext' => 'Napalitang teskto:',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'unicodeconverter-ok' => 'Tamam',
 );
 
 /** Ukrainian (Українська)

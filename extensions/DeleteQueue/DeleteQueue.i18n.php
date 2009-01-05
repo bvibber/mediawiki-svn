@@ -1874,7 +1874,98 @@ U kunt ook [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} steun of bezwaar] aangeg
 	'deletequeue-list-header-discusspage' => 'Overlegpagina',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'deletequeue-desc' => 'Opprettar eit [[Special:DeleteQueue|købasert system for å handsama sletting]]',
+	'deletequeue-action-queued' => 'Sletting',
+	'deletequeue-action' => 'Føreslå sletting',
+	'deletequeue-action-title' => 'Føreslå sletting av «$1»',
+	'deletequeue-action-text' => "{{SITENAME}} har fleire prosessar for sletting av sider:
+* Om du meiner at denne sida kvalifiserer for ''snøggsletting'', kan du føreslå det [{{fullurl:{{FULLPAGENAMEE}}|action=delnom&queue=speedy}} her].
+* Om sida ikkje kvalifserer for snøggsletting, men ''sletting likevel vil vera ukontroversielt'', kan du [{{fullurl:{{FULLPAGENAMEE}}|action=delnom&queue=prod}} føreslå sletting her].
+* Om det er sannsynleg at sletting av sida ''vil verta omdiskutert'', bør du [{{fullurl:{{FULLPAGENAMEE}}|action=delnom&queue=deletediscuss}} opna ein diskusjon].",
+	'deletequeue-action-text-queued' => 'Du kan sjå dei følgjande sidene for denne slettekandidaten:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Sjå noverande støtta og motstand].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Støtt eller gå imot sletting av sida].',
+	'deletequeue-permissions-noedit' => 'Du må kunna endra ei sida for å kunna påverka slettestatusen hennar.',
+	'deletequeue-generic-reasons' => '* Vanlege grunnar
+   ** Hæverk
+   ** Spam
+   ** Vedlikehald
+   ** Ikkje relevant for prosjektet',
+	'deletequeue-nom-alreadyqueued' => 'Denne sida finst alt i ein slettekø',
+	'deletequeue-speedy-title' => 'Merk «$1» for snøggsletting',
+	'deletequeue-speedy-text' => "Du kan nytta dette skjemaet for å merkja sida «'''$1'''» for snøggsletting.
+
+Ein administrator vil sjå gjennom førespurnaden, og om han er rimeleg, sletta sida.
+Du må velja ei årsak frå lista nedanfor, og leggja til annan relevant informasjon.",
+	'deletequeue-prod-title' => 'Føreslå sletting av «$1»',
+	'deletequeue-prod-text' => "Du kan nytta dette skjemaet for å føreslå at «'''$1'''» vert sletta.
+
+Om ingen har sett seg mot slettinga innan fem dagar, vil slettinga verta gjennomførd etter ei siste vurdering av ein administrator.",
+	'deletequeue-delnom-reason' => 'Grunn for nominsasjon:',
+	'deletequeue-delnom-otherreason' => 'Annan grunn',
+	'deletequeue-delnom-extra' => 'Ekstra informasjon:',
+	'deletequeue-delnom-submit' => 'Nominer',
+	'deletequeue-log-nominate' => 'nominerte [[$1]] for sletting i køen «$2».',
+	'deletequeue-log-rmspeedy' => 'avviste snøggsletting av [[$1]].',
+	'deletequeue-log-requeue' => 'overførte [[$1]] frå slettekøen «$2» til «$3».',
+	'deletequeue-log-dequeue' => 'fjerna [[$1]] frå slettekøen «$2».',
+	'right-speedy-nominate' => 'Føreslå sider for snøggsletting',
+	'right-speedy-review' => 'Handsama forslag om snøggsletting',
+	'right-prod-nominate' => 'Føreslå sletting av sider',
+	'right-prod-review' => 'Handsama ukontroversielle framlegg om sletting',
+	'right-deletediscuss-nominate' => 'Byrja slettediskuskjonar',
+	'right-deletediscuss-review' => 'Lukka slettediskusjonar',
+	'right-deletequeue-vote' => 'Støtta eller gå imot sletteforslag',
+	'deletequeue-queue-speedy' => 'Snøggsletting',
+	'deletequeue-queue-prod' => 'Framlegg om sletting',
+	'deletequeue-queue-deletediscuss' => 'Slettediskusjon',
+	'deletequeue-page-speedy' => "Denne sida har vorten nominert for snøggsletting.
+Årsaka som vart oppgjeven var ''$1''.",
+	'deletequeue-page-prod' => "Denne sida har vorten føreslegen for sletting.
+Årsaka som vart oppgjeven var ''$1''.
+Om dette forslaget ikkje er gått imot innan ''$2'', vil sida verta sletta.
+Du kan gå imot sletting av sida [{{fullurl:{{FULLPAGENAME}}|action=delvote}} her].",
+	'deletequeue-page-deletediscuss' => "Det finst eit framlegg om å sletta denne sida, men innvendingar har kome.
+Den oppgjevne sletteårsaka var ''$1''.
+Eit ordskifte skjer på [[$3]]; det vil slutta ''$2''.",
+	'deletequeue-notqueued' => 'Det har ikkje kome framlegg om sletting for sida du valde.',
+	'deletequeue-review-action' => 'Handling:',
+	'deletequeue-review-delete' => 'Slett sida.',
+	'deletequeue-review-change' => 'Slett sida, men med ei anna grunngjeving.',
+	'deletequeue-review-requeue' => 'Overfør sida til følgjande kø:',
+	'deletequeue-review-dequeue' => 'Ikkje gjer noko, og fjern sida frå slettekøen.',
+	'deletequeue-review-reason' => 'Kommentarar:',
+	'deletequeue-review-newreason' => 'Ny grunngjeving:',
+	'deletequeue-review-newextra' => 'Ekstra informasjon:',
+	'deletequeue-review-submit' => 'Lagra vudering',
+	'deletequeue-review-original' => 'Årsak for nominering',
+	'deletequeue-actiondisabled-involved' => 'Følgjande handling kan ikkje verta utført av deg då du har teke del i slettesaka som $1:',
+	'deletequeue-actiondisabled-notexpired' => 'Følgjande handling kan ikkje verta utført då slettenominasjonen enno ikkje er over:',
+	'deletequeue-review-badaction' => 'Du oppgav ei ugyldig handling',
+	'deletequeue-review-actiondenied' => 'Du oppgav ei handling som er slege av for denne sida',
+	'deletequeue-review-objections' => "'''Åtvaring''': Det har kome [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} motstand] mot sletting av sida.
+Gjer deg viss om at du har teke omsyn til han før du slettar ho.",
+	'deletequeue-reviewspeedy-tab' => 'Handsam snøggsletting',
+	'deletequeue-reviewspeedy-title' => 'Handsam snøggslettenominasjon av «$1»',
+	'deletequeue-reviewspeedy-text' => "Du kan nytta dette skjemaet for å vurdera snøggsletting av «'''$1'''».
+Gjer deg viss om at sida kan verta snøggsletta i høve til retningslinene.",
+	'deletequeue-reviewprod-tab' => 'Handsam sletteforslag',
+	'deletequeue-reviewprod-title' => 'Handsam sletteforslag til «$1»',
+	'deletequeue-reviewprod-text' => "Du kan nytta dette skjemaet for å handsama slettinga av «'''$1'''», som ikkje har møtt motstand.",
+	'deletequeue-reviewdeletediscuss-tab' => 'Vurder sletting',
+	'deletequeue-reviewdeletediscuss-title' => 'Vurder sletteordskifte for «$1»',
+	'deletequeue-reviewdeletediscuss-text' => "Du kan nytta dette skjemaet til å vurdera sletteordskiftet til «'''$1'''».
+
+Ei [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] over støtta til og motstand mot denne slettinga er tilgjengeleg; og sjølve diskusjonen finst på [[$2]].
+Gjer deg viss om at avgjersla di samsvarer med utkoma av diskusjonen.",
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -1885,8 +1976,8 @@ $messages['no'] = array(
 * Om du mener at denne siden kvalifiserer for ''hurtigsletting'', kan du foreslå det [{{fullurl:{{FULLPAGENAMEE}}|action=delnom&queue=speedy}} her].
 * Om siden ikke kvalifserer for hurtigsletting, men ''sletting likevel vil være ukontroversielt'', kan du [{{fullurl:{{FULLPAGENAMEE}}|action=delnom&queue=prod}} foreslå sletting her].
 * Om det er sannsynlig at sletting av siden ''vil bli omdiskutert'', burde du [{{fullurl:{{FULLPAGENAMEE}}|action=delnom&queue=deletediscuss}} åpne en diskusjon].",
-	'deletequeue-permissions-noedit' => 'Du må kunne redigere en side for kunne påvirke dens slettingsstatus.',
-	'deletequeue-generic-reasons' => '* Vanlige reasons
+	'deletequeue-permissions-noedit' => 'Du må kunne redigere en side for å kunne påvirke dens slettingsstatus.',
+	'deletequeue-generic-reasons' => '* Vanlige årsaker
   ** Hæverk
   ** Søppel
   ** Reklame
@@ -1907,7 +1998,7 @@ Om ingen har motsetninger mot slettingen innen fem dager, vil slettingen vurdere
 	'deletequeue-delnom-submit' => 'Nominer',
 	'deletequeue-log-nominate' => 'nominerte [[$1]] for sletting i køen «$2».',
 	'deletequeue-log-rmspeedy' => 'avviste hurtigsletting av [[$1]].',
-	'deletequeue-log-requeue' => 'overførte [[$1]] til fra slettingskøen «$2» til «$3».',
+	'deletequeue-log-requeue' => 'overførte [[$1]] fra slettingskøen «$2» til «$3».',
 	'deletequeue-log-dequeue' => 'fjernet [[$1]] fra slettingskøen «$2».',
 	'right-speedy-nominate' => 'Nominere sider til hurtigsletting',
 	'right-speedy-review' => 'Behandle nominasjoner til hurtigsletting',
@@ -1946,11 +2037,11 @@ En diskusjon foregår på [[$3]]; den vil slutte ''$2''.",
 Forsikre deg om at du har tatt disse til hensyn før du sletter siden.",
 	'deletequeue-reviewspeedy-tab' => 'Behandle hurtigsletting',
 	'deletequeue-reviewspeedy-title' => 'Behandle hurtigsletting av «$1»',
-	'deletequeue-reviewspeedy-text' => "Du kan bruke denne skjemaet for å vurdere hurtigsletting av «'''$1'''».
+	'deletequeue-reviewspeedy-text' => "Du kan bruke dette skjemaet for å vurdere hurtigsletting av «'''$1'''».
 Forsikre deg om at siden kan hurtigslettes ifm. retningslinjene.",
 	'deletequeue-reviewprod-tab' => 'Behandle slettingsforslag',
 	'deletequeue-reviewprod-title' => 'Behandle slettingsforslag av «$1»',
-	'deletequeue-reviewprod-text' => "Du kan bruke dette skjamet for å behandle sletting av «'''$1'''».",
+	'deletequeue-reviewprod-text' => "Du kan bruke dette skjemaet for å behandle sletting av «'''$1'''».",
 	'deletequeue-vote-reason' => 'Kommentarer:',
 	'deletequeue' => 'Slettingskø',
 	'deletequeue-list-search-legend' => 'Søk etter sider',
@@ -2780,6 +2871,33 @@ $messages['vi'] = array(
 	'deletequeue-list-header-votes' => 'Số phiếu',
 	'deletequeue-list-header-expiry' => 'Thời hạn',
 	'deletequeue-list-header-discusspage' => 'Trang thảo luận',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'deletequeue-action-queued' => 'Moükam',
+	'deletequeue-action' => 'Mobön moükami',
+	'deletequeue-action-title' => 'Mobön moükami pada: „$1“',
+	'deletequeue-permissions-noedit' => 'Mutol dalön redakön padi ad fägön ad votükön moükamastadi onik.',
+	'deletequeue-prod-title' => 'Mobön moükami pada: „$1“',
+	'deletequeue-delnom-otherreason' => 'Kod votik',
+	'right-prod-nominate' => 'Mobön padimoükami',
+	'right-deletediscuss-nominate' => 'Primön moükamibespiki',
+	'right-deletediscuss-review' => 'Finükön moükamibespikis',
+	'deletequeue-queue-deletediscuss' => 'Moükamibespik',
+	'deletequeue-review-delete' => 'Moükön padi.',
+	'deletequeue-review-reason' => 'Küpets:',
+	'deletequeue-review-newreason' => 'Kod nulik:',
+	'deletequeue-review-newextra' => 'Nüns pluik:',
+	'deletequeue-discusscreate-summary' => 'Jafam bespika moükama pada: [[$1]].',
+	'deletequeue-discusscreate-text' => 'Moükam pemobon sekü kods fovik: $2',
+	'deletequeue-vote-reason' => 'Küpets:',
+	'deletequeue-vote-submit' => 'Sedön:',
+	'deletequeue-list-status' => 'Stad:',
+	'deletequeue-list-header-page' => 'Pad',
+	'deletequeue-list-header-discusspage' => 'Bespikapad',
 );
 
 /** Yiddish (ייִדיש)

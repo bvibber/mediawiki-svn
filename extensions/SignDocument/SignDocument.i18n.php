@@ -336,6 +336,16 @@ $messages['te'] = array(
 	'signaturelogentry' => '$1 అనే పత్రంపై సంతకం చేసారు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'signaturelogpage' => 'Talaan ng lagda',
+	'signature-desc' => 'Nagpapagana/nagpapaandar sa [[Special:SignDocument|paglalagda]] sa kasulatan',
+	'signaturelogpagetext' => 'Isa itong talaan ng [[Special:SignDocument|lahat ng mga lagdang idinagdag sa mga kasulatan]].',
+	'signaturelogentry' => 'nilagdaan na ang kasulatang $1',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

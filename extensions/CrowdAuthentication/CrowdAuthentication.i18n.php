@@ -65,6 +65,13 @@ $messages['es'] = array(
 	'crowdauthentication-desc' => 'Extensión de autenticación para Atlassian Crowd',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'crowdauthentication-desc' => 'Egiaztapen plugina Atlassian Crowderako',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  */

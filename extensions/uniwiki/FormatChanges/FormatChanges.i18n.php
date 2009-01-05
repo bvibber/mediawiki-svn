@@ -42,10 +42,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'formatchanges-anonymous' => 'مش معروف',
+	'formatchanges-createdby' => '$1 - أنشأها $2 ($3)',
+	'formatchanges-editedby' => '$1 - عدلها $2 ($3)',
 );
 
 /** Bulgarian (Български)
@@ -57,12 +60,13 @@ $messages['bg'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'formatchanges-desc' => 'Změní formát [[Special:RecentChanges|posledních změn]]',
 	'formatchanges-anonymous' => 'Anonym',
-	'formatchanges-createdby' => '$1 - vytvořil $2 ($3)',
-	'formatchanges-editedby' => '$1 - upravil $2 ($3)',
+	'formatchanges-createdby' => '$1 – vytvořil $2 ($3)',
+	'formatchanges-editedby' => '$1 – upravil $2 ($3)',
 );
 
 /** German (Deutsch)
@@ -100,6 +104,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'formatchanges-anonymous' => 'Anónimo',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'formatchanges-anonymous' => 'Anonimoa',
 );
 
 /** Finnish (Suomi)

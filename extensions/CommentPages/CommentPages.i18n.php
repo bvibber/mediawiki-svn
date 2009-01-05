@@ -393,3 +393,11 @@ $messages['vi'] = array(
 	'nstab-comments' => 'Bình luận',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'commentpages-desc' => 'Küpetapads pro nemaspad cifik',
+	'nstab-comments' => 'Küpets',
+);
+

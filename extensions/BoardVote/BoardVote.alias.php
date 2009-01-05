@@ -107,6 +107,11 @@ $aliases['ms'] = array(
 	'BoardVote' => array( 'Undi Lembaga' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'BoardVote' => array( 'VotKunsill' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'BoardVote' => array( 'Bestuursverkiezing' ),

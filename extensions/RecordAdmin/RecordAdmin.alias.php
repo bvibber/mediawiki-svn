@@ -15,6 +15,11 @@ $aliases['ar'] = array(
 	'RecordAdmin' => array( 'تسجيل_إداري' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'RecordAdmin' => array( 'تسجيل_إدارى' ),
+);
+
 /** French (Français) */
 $aliases['fr'] = array(
 	'RecordAdmin' => array( 'GérerEnregistrement', 'GererEnregistrement', 'Gérer enregistrement' ),

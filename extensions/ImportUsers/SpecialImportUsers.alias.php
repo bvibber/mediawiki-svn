@@ -110,6 +110,11 @@ $aliases['ms'] = array(
 	'ImportUsers' => array( 'Import pengguna' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'ImportUsers' => array( 'ImportaUtenti' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ImportUsers' => array( 'Gebrukers_invoeren' ),

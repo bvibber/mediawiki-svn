@@ -620,6 +620,36 @@ $messages['nl'] = array(
 	'invitations-invite-success' => '$1 is uitgenodigd voor het gebruiken van deze functionaliteit!',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'invite-logpage' => 'Invitasjonslogg',
+	'invite-logpagetext' => 'Dette er ein logg over brukarar som har invitert kvarandre til å nytta diverse programvarefunksjonar.',
+	'invite-logentry' => 'inviterte $1 til å nytta funksjonen <i>$2</i>',
+	'invitations' => 'Handsam invitasjonar til programvarefunksjonar',
+	'invitations-desc' => 'Gjer det mogleg å [[Special:Invitations|kontrollera nye funksjonar]] ved å avgrensa dei til eit invitasjonsbasert system',
+	'invitations-invitedlist-description' => 'Du har tilgjenge til fylgjande funksjonar som krev invitasjon.
+Trykk på namnet åt ein funksjon for å handsama han.',
+	'invitations-invitedlist-none' => 'Du har ikkje vorten invitert til å nytta funksjonar som krev invitasjon.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Éin invitasjon er tilgjengeleg|$1 invitasjonar er tilgjengelege}})',
+	'invitations-pagetitle' => 'Funksjonar som krev invitasjon',
+	'invitations-uninvitedlist-description' => 'Du har ikkje tilgjenge til desse funksjonane som krev invitasjon.',
+	'invitations-uninvitedlist-none' => 'Ingen programvarefunksjonar krev invitasjon.',
+	'invitations-feature-pagetitle' => 'Handsaming av invitasjonar – $1',
+	'invitations-feature-access' => 'Du har tilgjenge til å nytta <i>$1</i>.',
+	'invitations-feature-numleft' => 'Av dei $2 invitasjonane dine har du enno {{PLURAL:$1|éin|<b>$1</b>}} att.',
+	'invitations-feature-noneleft' => 'Du har brukt alle invitasjonane dine for denne funksjonen',
+	'invitations-feature-noneyet' => 'Du har ikkje fått tildelt din del av invitasjonar for denne funksjonen.',
+	'invitations-feature-notallowed' => 'Du har ikkje tilgjenge til å bruka <i>$1</i>.',
+	'invitations-inviteform-title' => 'Inviter ein brukar til å bruka $1',
+	'invitations-inviteform-username' => 'Brukar som skal verta invitert',
+	'invitations-inviteform-submit' => 'Inviter',
+	'invitations-error-baduser' => 'Brukaren du oppgav finst ikkje.',
+	'invitations-error-alreadyinvited' => 'Brukaren du oppgav har alt tilgjenge til denne funksjonen!',
+	'invitations-invite-success' => 'Du har invitert $1 til å nytta denne funksjonen!',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

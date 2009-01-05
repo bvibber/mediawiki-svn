@@ -222,6 +222,13 @@ $messages['eo'] = array(
 	'slippymap_resetview' => 'Restarigi vidon',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'slippymap_button_code' => 'Wikikodea lortu',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Str4nd

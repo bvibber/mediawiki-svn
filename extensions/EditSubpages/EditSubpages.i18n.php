@@ -469,6 +469,22 @@ $messages['vi'] = array(
   #</pre><!-- đừng sửa vào dòng này -->',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'editsubpages-desc' => 'Dälon guvanes ad maifükön padi e donapadis valik pada at redakame nennemik medü [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => '  #<!-- leave this line alone --><pre>
+# Lisedolös padis, kelis vilol maifükon, ma fomät at:
+# * Padanem
+# Nems padas pemaifüköl mutons primön me stelül ad palasumön,
+# valikos votik binon te küpet
+# Padanems dalon binön [[yüms]] (mayuds e minuds padistidons)
+# Läo: bespikapads pomaifükons itjäfidiko kobü pad
+# Logolös padi: http://www.mediawiki.org/wiki/Extension:EditSubpages ad tuvön nünis pluik
+  #</pre><!-- leave this line alone -->',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  */

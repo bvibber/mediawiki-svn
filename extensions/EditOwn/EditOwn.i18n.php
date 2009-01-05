@@ -274,6 +274,13 @@ $messages['tet'] = array(
 	'editown-desc' => "Uza-na'in sira-ne'ebé la iha priviléjiu 'editall' bele filak pájina sira-ne'ebé sira kria tiha de'it",
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'editown-desc' => 'Hepsinideğiştir yetkisi olmayan kullanıcılar sadece kendi oluşturdukları sayfaları değiştirebilirler',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
@@ -286,6 +293,13 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'editown-desc' => 'Người dùng không có quyền sửa toàn bộ (editall) chỉ có thể sửa đổi những trang do họ tạo ra',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'editown-desc' => 'Gebans nen gität: „redakön vali“ kanons redakön te padis fa oks pejafölis',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

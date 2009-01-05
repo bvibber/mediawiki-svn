@@ -49,11 +49,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'filelist' => 'قائمة الملف',
-	'filelist-desc' => '[[Special:Filelist|صفحة خاصة]] لعرض الملفات المرفوعة',
+	'filelist-desc' => '[[Special:Filelist|صفحة خاصة]] لعرض الملفات المتحملة',
 	'filelist-show-list' => 'عرض القائمة',
 	'filelist-show-gallery' => 'عرض المعرض',
 	'filelist-image-desc' => 'وصف',
@@ -176,6 +177,15 @@ $messages['es'] = array(
 	'filelist-show-list' => 'Mostrar lista',
 	'filelist-show-gallery' => 'Mostrar galería',
 	'filelist-image-desc' => 'desc',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'filelist' => 'Fitxategi zerrenda',
+	'filelist-show-list' => 'Zerrenda erakutsi',
+	'filelist-show-gallery' => 'Galeria erakutsi',
 );
 
 /** Finnish (Suomi)

@@ -265,6 +265,7 @@ $messages['ar'] = array(
 	'code-prop-changes' => 'سجل الحالة والوسم',
 	'code-desc' => '[[Special:Code|أداة مراجعة الكود]] مع [[Special:RepoAdmin|دعم ساب فيرجن]]',
 	'code-no-repo' => 'لا مستودع تم ضبطه!',
+	'code-load-diff' => 'جاري تحميل الفرق...',
 	'code-notes' => 'ملاحظات المراجعة',
 	'code-authors' => 'مؤلفون',
 	'code-tags' => 'وسوم',
@@ -363,6 +364,7 @@ $messages['arz'] = array(
 	'code-prop-changes' => 'سجل الحالة و التاجينج',
 	'code-desc' => '[[Special:Code|أداة مراجعة الكود]] مع [[Special:RepoAdmin|دعم ساب فيرجن]]',
 	'code-no-repo' => 'مافيش  مستودع اضبطت!',
+	'code-load-diff' => 'تحميل التغيير...',
 	'code-notes' => 'ملاحظات المراجعة',
 	'code-authors' => 'مؤلفون',
 	'code-tags' => 'وسوم',
@@ -713,6 +715,7 @@ $messages['cs'] = array(
 	'code-prop-changes' => 'Záznam změn stavu a značek',
 	'code-desc' => '[[Special:Code|Nástroj pro kontrolu kódu]] s [[Special:RepoAdmin|podporou Subversion]]',
 	'code-no-repo' => 'Nebylo nastaveno žádné úložiště!',
+	'code-load-diff' => 'Nahrávám diff…',
 	'code-notes' => 'poznámky',
 	'code-authors' => 'autoři',
 	'code-tags' => 'značky',
@@ -810,6 +813,7 @@ $messages['de'] = array(
 	'code-prop-changes' => 'Status- und Tagging-Logbuch',
 	'code-desc' => '[[Special:Code|Codeprüfungs-Werkzeug]] mit [[Special:RepoAdmin|Subversion-Unterstützung]]',
 	'code-no-repo' => 'Kein Repositorium konfiguriert.',
+	'code-load-diff' => 'Lade Diff …',
 	'code-notes' => 'Prüfnotizen',
 	'code-authors' => 'Autoren',
 	'code-tags' => 'Tags',
@@ -906,6 +910,7 @@ $messages['dsb'] = array(
 	'code-prop-changes' => 'Protokol statusa & toflickow',
 	'code-desc' => '[[Special:Code|Rěd za kodowu kontrolu]] z [[Special:RepoAdmin|pódpěru za Subversion]]',
 	'code-no-repo' => 'Žeden repozitorium konfigurěrowany!',
+	'code-load-diff' => 'Rozdźěl se zacytujo...',
 	'code-notes' => 'Kontrolowe pśipiski',
 	'code-authors' => 'awtory',
 	'code-tags' => 'toflicki',
@@ -1078,6 +1083,7 @@ $messages['eo'] = array(
 	'code-prop-changes' => 'Protokolo pri statuso kaj etikedoj',
 	'code-desc' => '[[Special:Code|Koda kontrolilo]] kun [[Special:RepoAdmin|subteno por Subversion]]',
 	'code-no-repo' => 'Neniu kodujoj estas konfigurataj',
+	'code-load-diff' => 'Ŝarĝante diferencon...',
 	'code-notes' => 'konsulti notojn',
 	'code-authors' => 'aŭtoroj',
 	'code-tags' => 'etikedoj',
@@ -1553,6 +1559,7 @@ $messages['fr'] = array(
 	'code-prop-changes' => 'Statut et journal de balisage',
 	'code-desc' => '[[Special:Code|Outils de révision du code]] avec le [[Special:RepoAdmin|support de Subversion]]',
 	'code-no-repo' => 'Pas de dépôt configuré !',
+	'code-load-diff' => 'Chargement du diff…',
 	'code-notes' => 'réviser les notes',
 	'code-authors' => 'auteurs',
 	'code-tags' => 'balises',
@@ -1665,6 +1672,7 @@ $messages['gl'] = array(
 	'code-prop-changes' => 'Status e rexistro de etiquetas',
 	'code-desc' => '[[Special:Code|Ferramenta de revisión do código]] con [[Special:RepoAdmin|apoio da subversión]]',
 	'code-no-repo' => 'Non hai ningún repositorio configurado!',
+	'code-load-diff' => 'Cargando as diferenzas…',
 	'code-notes' => 'revisar as notas',
 	'code-authors' => 'autores',
 	'code-tags' => 'etiquetas',
@@ -1845,6 +1853,23 @@ $4',
 	'specialpages-group-developer' => 'Ἐργαλεῖα ἀναπτυκτῶν',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'code' => 'Codepriefig',
+	'code-comments' => 'Kommentar',
+	'code-change-status' => "het dr '''Status''' vu däre Revision gänderet",
+	'code-change-tags' => "het d '''Tag''' vu däre Revision gänderet",
+	'code-change-removed' => 'usegnuh:',
+	'code-change-added' => 'zuegfiegt:',
+	'code-prop-changes' => 'Status- un Tagging-Logbuech',
+	'code-desc' => '[[Special:Code|Codepriefigs-Wärchzyyg]] mit [[Special:RepoAdmin|Subversion-Unterstitzig]]',
+	'code-no-repo' => 'Kei Repositorium konfiguriert.',
+	'code-load-diff' => 'Diff am Lade…',
+	'code-notes' => 'Priefnotize',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */
@@ -1866,7 +1891,7 @@ $messages['he'] = array(
 	'code-prop-changes' => 'יומן מצב ותגיות',
 	'code-desc' => '[[Special:Code|כלי בדיקת קוד]] עם [[Special:RepoAdmin|תמיכה ב־Subversion]]',
 	'code-no-repo' => 'לא הוגדר מאגר!',
-	'code-load-diff'=> 'ההבדל בין הגרסאות בטעינה…',
+	'code-load-diff' => 'ההבדל בין הגרסאות בטעינה…',
 	'code-notes' => 'הערות בדיקה',
 	'code-authors' => 'כותבים',
 	'code-tags' => 'תגיות',
@@ -2060,6 +2085,7 @@ $messages['hsb'] = array(
 	'code-prop-changes' => 'Protokol wo statusu & tafličkach',
 	'code-desc' => '[[Special:Code|Nastroj za kodowu kontrolu]] z [[Special:RepoAdmin|podpěru za Subversion]]',
 	'code-no-repo' => 'Žadyn repozitorij konfigurowany',
+	'code-load-diff' => 'Rozdźěl so začituje...',
 	'code-notes' => 'Kontrolowe noticy',
 	'code-authors' => 'awtorojo',
 	'code-tags' => 'taflički',
@@ -2394,6 +2420,7 @@ $messages['ja'] = array(
 	'code-prop-changes' => 'ステータスとタグ付けのログ',
 	'code-desc' => '[[Special:RepoAdmin|Subversion サポート]]付きの[[Special:Code|コードレビュー・ツール]]',
 	'code-no-repo' => '設定されたリポジトリはありません!',
+	'code-load-diff' => '差分を読み込み中…',
 	'code-notes' => 'レビュー ノート',
 	'code-authors' => '著者',
 	'code-tags' => 'タグ',
@@ -2577,6 +2604,7 @@ $4',
  * @author Malafaya
  */
 $messages['ka'] = array(
+	'code-field-author' => 'ავტორი',
 	'code-field-timestamp' => 'თარიღი',
 	'code-rev-date' => 'თარიღი:',
 );
@@ -2636,6 +2664,7 @@ $messages['ko'] = array(
 	'code-change-added' => '추가:',
 	'code-desc' => '[[Special:RepoAdmin|서브버전을 지원]]하는 [[Special:Code|코드 검토 도구]]',
 	'code-no-repo' => '저장소가 설정되지 않았습니다!',
+	'code-field-status' => '상태',
 	'code-field-timestamp' => '날짜',
 	'code-rev-date' => '날짜:',
 	'code-rev-repo' => '저장소:',
@@ -2678,6 +2707,7 @@ $4',
 	'repoadmin-edit-view' => 'ViewVC 경로:',
 	'repoadmin-edit-button' => '확인',
 	'right-repoadmin' => '코드 저장소 관리',
+	'right-codereview-set-status' => '판의 상태를 변경',
 	'right-codereview-link-user' => '만든이를 위키 사용자로 링크',
 	'specialpages-group-developer' => '개발자 도구',
 );
@@ -2695,6 +2725,7 @@ $messages['ksh'] = array(
 	'code-prop-changes' => 'Logboch för Shtattus un Makeerunge',
 	'code-desc' => 'Werkzeuch för [[Special:Code|Projramme ze beärbeide]] met [[Special:RepoAdmin|Ongershtözung för <i lang="en">Subversion</i>]]',
 	'code-no-repo' => 'Et es kei Repositorijum enjeshtallt.',
+	'code-load-diff' => 'Ben de Ungerscheide aam Lade&nbsp;…',
 	'code-notes' => 'Aanmerkunge beärbeide',
 	'code-authors' => 'de Schriiver',
 	'code-tags' => 'Makeerunge',
@@ -2742,7 +2773,7 @@ $messages['ksh'] = array(
 	'code-rev-purge-link' => 'Donn dä Zweschespeicher leddisch maache',
 	'code-status-new' => 'neu',
 	'code-status-fixme' => 'unjedonn',
-	'code-status-reverted' => 'retuur jemaacht',
+	'code-status-reverted' => 'retuur jemaat',
 	'code-status-resolved' => 'äleedesch',
 	'code-status-ok' => 'Jot',
 	'code-status-deferred' => 'jelohße för spääder',
@@ -2913,6 +2944,7 @@ $messages['ms'] = array(
 	'code-prop-changes' => 'Log status & label',
 	'code-desc' => '[[Special:Code|Alat semakan kod]] dengan [[Special:RepoAdmin|sokongan Subversion]]',
 	'code-no-repo' => 'Tiada gedung yang ditetapkan!',
+	'code-load-diff' => 'Memuat perbezaan…',
 	'code-notes' => 'catatan semak',
 	'code-authors' => 'pengarang',
 	'code-tags' => 'label',
@@ -3133,6 +3165,7 @@ $messages['nl'] = array(
 	'code-prop-changes' => 'Logboek status en labels',
 	'code-desc' => '[[Special:Code|Hulpprogramma voor codecontrole]] met [[Special:RepoAdmin|ondersteuning voor Subversion]]',
 	'code-no-repo' => 'Er is geen repository ingesteld!',
+	'code-load-diff' => 'Bezig met het laden van de verschillen…',
 	'code-notes' => 'opmerkingen bij controle',
 	'code-authors' => 'auteurs',
 	'code-tags' => 'labels',
@@ -3229,6 +3262,7 @@ $messages['nn'] = array(
 	'code-prop-changes' => 'Status- og merkelogg',
 	'code-desc' => '[[Special:Code|Kodegjennomgangsverktøy]] med [[Special:RepoAdmin|støtta for Subversion]]',
 	'code-no-repo' => 'Ingen database konfigurert!',
+	'code-load-diff' => 'Lastar skilnad …',
 	'code-notes' => 'gjennomgå notat',
 	'code-authors' => 'forfattarar',
 	'code-tags' => 'merke',
@@ -3326,6 +3360,7 @@ $messages['no'] = array(
 	'code-prop-changes' => 'Logg for status og tagging',
 	'code-desc' => '[[Special:Code|Kodegjennomgangsverktøy]] med [[Special:RepoAdmin|støtte for Subversion]]',
 	'code-no-repo' => 'Ingen database konfigurert!',
+	'code-load-diff' => 'Laster diff...',
 	'code-notes' => 'Gjennomgå notater',
 	'code-authors' => 'forfattere',
 	'code-tags' => 'tagger',
@@ -3533,6 +3568,7 @@ $messages['pl'] = array(
 	'code-prop-changes' => 'Rejestr zmiany statusu i tagów',
 	'code-desc' => '[[Special:Code|Narzędzie do przeglądania kodu źródłowego]] oraz [[Special:RepoAdmin|zarządzanie zasobami kodu źródłowego]]',
 	'code-no-repo' => 'Brak skonfigurowanego repozytorium!',
+	'code-load-diff' => 'Ładowanie różnic…',
 	'code-notes' => 'komentarze rewizji',
 	'code-authors' => 'autorzy',
 	'code-tags' => 'tagi',
@@ -3644,6 +3680,7 @@ $messages['pt'] = array(
 	'code-change-added' => 'adicionou:',
 	'code-desc' => '[[Special:Code|Ferramenta de revisão de código]] com [[Special:RepoAdmin|suporte para Subversion]]',
 	'code-no-repo' => 'Nenhum repositório configurado!',
+	'code-load-diff' => 'A carregar diferenças…',
 	'code-notes' => 'notas de revisão',
 	'code-authors' => 'autores',
 	'code-author-name' => 'Introduza um nome de utilizador:',
@@ -3680,6 +3717,7 @@ $messages['pt'] = array(
 	'code-status-ok' => 'ok',
 	'code-status-deferred' => 'diferido',
 	'code-pathsearch-path' => 'Caminho:',
+	'code-rev-submit' => 'Gravar alterações',
 	'codereview-reply-link' => 'responder',
 	'codereview-email-subj' => '[$1] [r$2]: Novo comentário adicionado',
 	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em r$3.
@@ -3964,6 +4002,8 @@ $messages['sah'] = array(
 	'code-rev-comment-submit' => 'Быһаарыыта хааллар (ыыт)',
 	'code-rev-comment-preview' => 'Ыытыах иннинэ көрүү',
 	'code-status-ok' => 'сөп',
+	'repoadmin' => 'Бырагыраамма куодун харайыыны салайыы',
+	'repoadmin-new-legend' => 'Саҥа харайар сири оҥоруу',
 );
 
 /** Sicilian (Sicilianu)
@@ -4294,6 +4334,7 @@ $messages['sv'] = array(
 	'code-prop-changes' => 'Logg för status & taggning',
 	'code-desc' => '[[Special:Code|Kodgranskningsverktyg]] med [[Special:RepoAdmin|stöd för Subversion]]',
 	'code-no-repo' => 'Ingen databas konfigurerad!',
+	'code-load-diff' => 'Ladda skillnad...',
 	'code-notes' => 'granska noter',
 	'code-authors' => 'författare',
 	'code-tags' => 'taggar',
@@ -4556,6 +4597,7 @@ $messages['tl'] = array(
 	'code-prop-changes' => 'Talaan ng kalagayan at pagtatatak',
 	'code-desc' => '[[Special:Code|Kasangkapang na pang muling pagsusuri ng kodigo]] na may [[Special:RepoAdmin|Suportang pamuksa]]',
 	'code-no-repo' => 'Walang naisaayos na repositoryo!',
+	'code-load-diff' => 'Ikinakarga ang pagkakaiba…',
 	'code-notes' => 'mga tala hinggil sa muling pagsusuri',
 	'code-authors' => 'mga may-akda',
 	'code-tags' => 'mga tatak',
@@ -4637,6 +4679,14 @@ $4',
 	'right-codereview-set-status' => 'Baguhin ang kalagayan ng mga pagbabago',
 	'right-codereview-link-user' => 'Ikawing ang mga may-akda sa mga tagagamit ng wiki',
 	'specialpages-group-developer' => 'Mga kasangkapan ng tagapagpaunlad',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'code-status-ok' => 'tamam',
+	'repoadmin-edit-button' => 'Tamam',
 );
 
 /** Ukrainian (Українська)
@@ -4750,6 +4800,7 @@ $messages['vec'] = array(
 	'code-prop-changes' => 'Registro del stato e del tagging',
 	'code-desc' => '[[Special:Code|Strumento de revision del codice]] con [[Special:RepoAdmin|suporto par le sotoversioni]]',
 	'code-no-repo' => 'Nissun deposito configurà!',
+	'code-load-diff' => 'Cargo le difarense…',
 	'code-notes' => 'note de revision',
 	'code-authors' => 'autori',
 	'code-tags' => 'tag',
@@ -4932,10 +4983,29 @@ $4',
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'code-comments' => 'Küpets',
+	'code-change-removed' => 'pemoükon:',
+	'code-change-added' => 'peläükon:',
 	'code-authors' => 'lautans',
+	'code-author-name' => 'Penolös gebananemi:',
+	'code-field-status' => 'Stad',
+	'code-field-timestamp' => 'Dät',
 	'code-rev-author' => 'Lautan:',
+	'code-rev-date' => 'Dät:',
+	'code-rev-message' => 'Küpet:',
+	'code-rev-repo' => 'Kipedöp:',
+	'code-rev-modified-a' => 'peläükon',
+	'code-rev-modified-r' => 'peplaädon',
+	'code-rev-modified-d' => 'pemoükon',
+	'code-rev-modified-m' => 'pevotükon',
+	'code-rev-status' => 'Stad:',
+	'code-rev-comment-by' => 'Küpet gebana: $1',
+	'code-rev-comment-preview' => 'Büologed',
+	'code-status-new' => 'nulik',
+	'repoadmin-new-button' => 'Jafön',
 );
 
 /** Yiddish (ייִדיש)

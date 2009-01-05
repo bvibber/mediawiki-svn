@@ -175,6 +175,13 @@ $messages['nl'] = array(
 	'psinotocnum-desc' => 'Voegt het magische woord "<nowiki>__NOTOCNUM__</nowiki>" toe',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'psinotocnum-desc' => 'Legg til det nye magiste ordet «<nowiki>__NOTOCNUM__</nowiki>»',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

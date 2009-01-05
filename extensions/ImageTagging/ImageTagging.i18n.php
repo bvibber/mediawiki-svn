@@ -1111,12 +1111,14 @@ $messages['tet'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'imagetagging-article' => 'Sayfa:',
 	'imagetagging-imghistory' => 'Geçmiş',
 	'imagetagging-images' => 'Resimler',
+	'imagetagging-tagcancel-button' => 'İptal',
 	'imagetagging-taggedimages-title' => '"$1" resimleri',
 );
 

@@ -575,3 +575,10 @@ $messages['vi'] = array(
 	'dplforum-toomany' => 'Diễn đàn DPL: Quá nhiều thể loại!',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'dplforum-never' => 'Neai',
+);
+

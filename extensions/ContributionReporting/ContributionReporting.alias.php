@@ -22,6 +22,13 @@ $aliases['ar'] = array(
 	'ContributionTotal' => array( 'إجمالي_المساهمة' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'ContributionHistory' => array( 'تاريخ_المساهمة' ),
+	'ContributionStatistics' => array( 'إحصاءات_المساهمة' ),
+	'ContributionTotal' => array( 'إجمالي_المساهمة' ),
+);
+
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
 	'ContributionHistory' => array( 'DoprinosiHistorija' ),
@@ -54,6 +61,13 @@ $aliases['mk'] = array(
 	'ContributionHistory' => array( 'ИсторијаНаПридонеси' ),
 	'ContributionStatistics' => array( 'СтатистикиНаПридонеси' ),
 	'ContributionTotal' => array( 'ВкупноПридонеси' ),
+);
+
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'ContributionHistory' => array( 'KronoloġijaKontribuzzjoni' ),
+	'ContributionStatistics' => array( 'StatistikaKontribuzzjoni' ),
+	'ContributionTotal' => array( 'TotalKontribuzzjoni' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

@@ -89,6 +89,11 @@ $aliases['mk'] = array(
 	'Code' => array( 'ПрограмскиКод', 'Код', 'ПрегледНаКод' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'Code' => array( 'Kodiċi' ),
+);
+
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'Code' => array( 'Codecontrole' ),

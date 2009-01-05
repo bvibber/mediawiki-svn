@@ -422,11 +422,15 @@ $messages['et'] = array(
 	'sitematrix-language' => 'Keel',
 );
 
-/** Basque (Euskara) */
+/** Basque (Euskara)
+ * @author An13sa
+ */
 $messages['eu'] = array(
 	'sitematrix' => 'Wikimediako beste hizkuntzatako proiektuen zerrenda',
 	'sitematrix-language' => 'Hizkuntza',
 	'sitematrix-others' => 'Wikimediaren beste proiektuak',
+	'sitematrix-private' => 'pribatua',
+	'sitematrix-fishbowl' => 'aldatzea mugatua',
 );
 
 /** Extremaduran (Estremeñu)
@@ -1584,10 +1588,15 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'sitematrix' => 'Lised vükas ela Wikimedia',
+	'sitematrix-summary' => 'Su pad patik at palisedons vüks valik ela Wikimedia.',
+	'sitematrix-desc' => 'Jonon [[Special:SiteMatrix|lisedi vükas ela Wikimedia]]',
 	'sitematrix-language' => 'Pük',
 	'sitematrix-project' => 'Nem proyega, yüm vüproyegik e yüm vüvükik',
 	'sitematrix-others' => 'Proyeks votik ela Wikimedia',
+	'sitematrix-total' => "'''Num valodik: $1'''",
 	'sitematrix-sitetotal' => 'Valod',
+	'sitematrix-private' => 'privatik',
+	'sitematrix-fishbowl' => 'redakam pemiedükon',
 );
 
 /** Walloon (Walon)

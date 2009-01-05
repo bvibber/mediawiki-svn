@@ -799,6 +799,7 @@ $messages['pt'] = array(
 	'lookupuser-registration' => 'Data de registo: $1',
 	'lookupuser-no-registration' => 'não registado',
 	'lookupuser-touched' => 'Registo de utilizador alterado pela última vez: $1',
+	'lookupuser-info-authenticated' => 'Autenticação de e-mail: $1',
 	'lookupuser-useroptions' => 'Opções de utilizador:',
 );
 

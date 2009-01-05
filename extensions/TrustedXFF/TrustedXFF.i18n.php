@@ -80,6 +80,13 @@ $messages['eo'] = array(
 	'trustedxff-desc' => 'Traktado de listo de fidelaj adresoj de prokuriloj ([http://meta.wikimedia.org/wiki/XFF_project Projekto XFF])',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'trustedxff-desc' => 'Manejo de una lista de direcciones proxy confiables([http://meta.wikimedia.org/wiki/XFF_project XFF project])',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

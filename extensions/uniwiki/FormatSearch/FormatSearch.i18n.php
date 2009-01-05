@@ -28,6 +28,13 @@ $messages['ar'] = array(
 	'formatsearch-desc' => 'ينظف صفحة نتائج البحث',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'formatsearch-desc' => 'تنضيف صفحة نتايج التدوير',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -61,6 +68,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'formatsearch-desc' => 'Limpia la página de resultados de búsqueda',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'formatsearch-desc' => 'Bilaketa emaitzen orria garbitzen du',
 );
 
 /** Finnish (Suomi)

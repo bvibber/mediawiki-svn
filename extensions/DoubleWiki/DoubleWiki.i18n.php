@@ -124,6 +124,13 @@ $messages['es'] = array(
 	'doublewiki-desc' => 'Muestra una página y su traducción de otra wiki en dos columnas de la misma página',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'doublewiki-desc' => 'Orrialde berdinean orrialde bat eta bere itzulpena bi zutabetan jartzen ditu',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -424,6 +431,13 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tl'] = array(
 	'doublewiki-desc' => 'Nagpapalitaw/nagpapakita ng isang pahina at ng salinwika nito mula sa ibang wiki na nasa ibabaw ng dalawang pababang kahanayan sa pahina ding iyon',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'doublewiki-desc' => 'Bir sayfayı ve başka bir vikiden çevirisini, aynı sayfanın iki sütununda gösterir.',
 );
 
 /** Ukrainian (Українська)

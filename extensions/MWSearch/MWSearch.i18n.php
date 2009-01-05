@@ -131,6 +131,13 @@ $messages['es'] = array(
 	'mwsearch-desc' => 'Complemento MWSearch',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'mwsearch-desc' => 'MMWSearch plugina',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

@@ -535,6 +535,17 @@ $messages['es'] = array(
 $1',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'inplace_scaler_not_enough_params' => 'Parametro falta.',
+	'inplace_scaler_invalid_image' => 'Baliogabeko irudia, tamaina ezin da zehaztu.',
+	'webstore_no_file' => 'Fitxategirik ez da igo.',
+	'webstore_404' => 'Fitxategirik ez da aurkitu.',
+	'webstore_no_response' => 'Zerbitzaritik ez da erantzunik jaso.',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

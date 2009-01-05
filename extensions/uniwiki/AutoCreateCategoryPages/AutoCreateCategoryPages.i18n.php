@@ -98,6 +98,13 @@ Aqx se enumeran todas las páginas en la categoría "$1" asx como todas las subc
 	'autocreatecategorypages-createdby' => 'Creado automáticamente por la extensión AutoCreateCategoryPages.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'autocreatecategorypages-editor' => 'Kategoria sortzaile automatikoa',
+);
+
 /** French (Français)
  * @author Grondin
  */

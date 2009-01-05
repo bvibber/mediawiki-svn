@@ -40,11 +40,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
-	'semanticgooglemaps-desc' => 'يسمح للمستخدمين بإضافة خرائط جوجل لصفحات الويكى بالاعتماد على بيانات هيكلية',
+	'semanticgooglemaps-desc' => 'مسموح لليوزرز إضافة خرايط جوجول لصفحات الويكى بالاعتماد على بيانات هيكلية',
 );
 
 /** Breton (Brezhoneg)
@@ -79,6 +80,13 @@ $messages['eo'] = array(
 	'semanticgooglemaps-desc' => 'Permesas al uzantoj por aldoni Guglo-Mapojn al vikipaĝojn laŭ strukturaj datenoj.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'semanticgooglemaps_lookupcoordinates' => 'Koordenatuak bilatu',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
@@ -93,7 +101,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Ver as coordenadas',
-	'semanticgooglemaps-desc' => 'Permite aos usuarios engadir Mapas do Google a páxinas do wiki baseándose en datos estruturados',
+	'semanticgooglemaps-desc' => 'Permite aos usuarios editar e mostrar datos de coordenadas semánticas usando os mapas do Google (Google Maps)',
 );
 
 /** Hebrew (עברית)
@@ -116,7 +124,7 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Cercar coordinatas',
-	'semanticgooglemaps-desc' => 'Permitte que usatores adde Google Maps al paginas wiki a base de datos structurate',
+	'semanticgooglemaps-desc' => 'Permitte que usatores modifica e monstra datos semantic de coordinatas per medio de Google Maps',
 );
 
 /** Japanese (日本語)
@@ -186,10 +194,11 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Wyszukaj współrzędne',
-	'semanticgooglemaps-desc' => 'Umożliwia użytkownikom dodawanie Google Maps do stron wiki opartych na uporządkowanych danych',
+	'semanticgooglemaps-desc' => 'Umożliwia użytkownikom edycję i prezentację współrzędnych geograficznych z użyciem Google Maps',
 );
 
 /** Portuguese (Português)
@@ -205,15 +214,16 @@ $messages['pt'] = array(
  */
 $messages['sk'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Vyhľadať súradnice',
-	'semanticgooglemaps-desc' => 'Umožňuje používateľom pridať na wiki stránky Google Maps na základe štruktúrovaných údajov',
+	'semanticgooglemaps-desc' => 'Umožňuje používateľom upravovať a zobrazovať sémantické súradnicové údaje pomocou Google Maps',
 );
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Najami
  */
 $messages['sv'] = array(
 	'semanticgooglemaps_lookupcoordinates' => 'Kolla upp koordinater',
-	'semanticgooglemaps-desc' => 'Tillåter användare att lägga Google Maps till wikibaserade sidor baserade på strukturerad data',
+	'semanticgooglemaps-desc' => 'Tillåter användare att redigera och visa semantiska koordinater för att använda Google Maps',
 );
 
 /** Tagalog (Tagalog)

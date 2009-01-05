@@ -113,6 +113,11 @@ $aliases['mk'] = array(
 	'InterwikiList' => array( 'ИнтервикиЛиста' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'InterwikiList' => array( 'ListaInterwiki' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'InterwikiList' => array( 'Interwikilieste' ),

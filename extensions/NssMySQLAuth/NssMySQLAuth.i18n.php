@@ -410,6 +410,26 @@ $messages['nl'] = array(
 	'nss-db-error' => 'Fout bij het lezen van de authenticatiedatabase',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'accountmanager' => 'Kontohandsamar',
+	'am-username' => 'brukarnamn',
+	'am-email' => 'e-post',
+	'am-active' => 'aktiv',
+	'am-updated' => 'Endringane dine vart lagra',
+	'nss-desc' => 'Eit programtillegg for å identifisera mot ein libnss-mysql-database. Innheheld ein [[Special:AccountManager|kontohandsamar]]',
+	'nss-rights' => 'rettar',
+	'nss-save-changes' => 'Lagra endringar',
+	'nss-create-account-header' => 'Opprett ny konto',
+	'nss-create-account' => 'Opprett konto',
+	'nss-no-mail' => 'Ikkje send e-post',
+	'nss-welcome-mail' => 'Ein konto med brukarnamnet $1 og passordet $2 har vorten oppretta for deg.',
+	'nss-welcome-mail-subject' => 'Kontooppretting',
+	'nss-db-error' => 'Feil oppstod under lesing av identifiseringsdatabasen',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

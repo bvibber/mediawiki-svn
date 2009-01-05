@@ -136,6 +136,15 @@ $messages['eo'] = array(
 	'msfunc_div_zero' => 'Divido per nulo',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'msfunc_nan' => 'Azken balioa ez da zenbakia',
+	'msfunc_inf' => 'Azken balioa infinito da',
+	'msfunc_div_zero' => 'Zeroz zatitu',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -331,9 +340,13 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'msfunc_desc' => 'Ei samling av matematiske og statistiske funskjonar',
+	'msfunc_nan' => 'Resultatverdien er ikkje eit tal',
+	'msfunc_inf' => 'Resultatverdien er uendeleg',
 	'msfunc_div_zero' => 'Divisjon med null',
 );
 
@@ -485,6 +498,16 @@ $messages['vi'] = array(
 	'msfunc_nan' => 'Kết quả trả về không phải là số',
 	'msfunc_inf' => 'Kết quả trả về là vô hạn',
 	'msfunc_div_zero' => 'Chia cho zero',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'msfunc_desc' => 'Konlet sekätas matematik e statitikas',
+	'msfunc_nan' => 'Völad sekik no binon num',
+	'msfunc_inf' => 'Völad sekik binon nenfinik',
+	'msfunc_div_zero' => 'Müedam mü ser',
 );
 
 /** Yue (粵語) */

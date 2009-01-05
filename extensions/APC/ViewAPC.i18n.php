@@ -913,6 +913,14 @@ $messages['es'] = array(
 	'viewapc-ls-limit-none' => 'Todos',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'viewapc-ls-header-name' => 'Izena',
+	'viewapc-ls-sort-name' => 'Izena',
+);
+
 /** Persian (فارسی)
  * @author BlueDevil
  * @author Vahid
@@ -3070,11 +3078,25 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'viewapc' => 'Informação da APC',
+	'viewapc-desc' => '[[Special:ViewAPC|Veja e gira a cache APC]] com o MediaWiki',
+	'viewapc-info-general' => 'Informação geral',
+	'viewapc-apc-version' => 'Versão da APC',
+	'viewapc-php-version' => 'Versão do PHP',
+	'viewapc-shared-memory' => 'Memória partilhada',
+	'viewapc-cached-files' => 'Ficheiros em cache',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ficheiro|ficheiros}} ($2)',
 	'viewapc-rps' => '$1 pedidos por segundo',
+	'viewapc-memory-usage' => 'Utilização de memória',
 	'viewapc-memory-free' => 'Livre: $1 ($2)',
 	'viewapc-memory-used' => 'Usada: $1 ($2)',
+	'viewapc-fragmentation-info' => 'Fragmentação: $1 ($2 de $3 em $4 {{PLURAL:$4|fragmento|fragmentos}})',
+	'viewapc-fragmentation-none' => 'Fragmentação: sem fragmentação',
+	'viewapc-display-attribute' => 'Atributo',
+	'viewapc-display-value' => 'Valor',
+	'viewapc-display-info' => 'Nome',
 	'viewapc-ls-options-legend' => 'Opções',
+	'viewapc-ls-sort-name' => 'Nome',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

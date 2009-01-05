@@ -77,6 +77,17 @@ $messages['cs'] = array(
 $2',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'email-desc' => 'Yn galluogi ychwanegu penynnau a throedynnau at e-byst defnyddwyr',
+	'email_footer' => '------------------------------------------------------------------------------
+Anfonodd $1 yr e-bost hwn atoch trwy system e-bost ((SITENAME)).
+
+$2',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'email-desc' => 'Erlaubt Benutzern persönliche Kopf- und Fusszeilen in der E-Mail Funktion zu verwenden',

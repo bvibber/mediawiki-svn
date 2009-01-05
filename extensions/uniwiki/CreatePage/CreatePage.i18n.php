@@ -171,6 +171,14 @@ $messages['es'] = array(
 	'createpage_editexisting' => 'Sí – quiero contribuir a la página que ya existe.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'createpage' => 'Orri bat sortu',
+	'createpage_entertitle' => 'Zure orrirako izenburu bat sartu mesedez.',
+);
+
 /** French (Français)
  * @author Grondin
  * @author IAlex

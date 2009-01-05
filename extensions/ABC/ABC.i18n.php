@@ -322,10 +322,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'abcdesc' => 'Adicioana a tag <tt>&lt;abc&gt;</tt> para formatar música em notação ABC',
+	'abcdesc' => 'Adiciona a tag <tt>&lt;abc&gt;</tt> para formatar música em notação ABC',
+	'abcdownload' => 'Descarregar:',
 );
 
 /** Romanian (Română)
@@ -406,6 +408,14 @@ $messages['tl'] = array(
 	'abcvorbis' => 'Ogg Vorbis',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'abcdesc' => 'ABC müziğini biçimlendirmek için <tt>&lt;abc&gt;</tt> etiketini ekler',
+	'abcdownload' => 'İndir:',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
@@ -420,6 +430,14 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'abcdesc' => 'Thêm thẻ <tt>&lt;abc&gt;</tt> để định dạng nhạc ABC',
 	'abcdownload' => 'Tải xuống:',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'abcdesc' => 'Läükon mali: <tt>&lt;abc&gt;</tt> musige fomätü ABC',
+	'abcdownload' => 'Donükön:',
 );
 
 /** Yoruba (Yorùbá)

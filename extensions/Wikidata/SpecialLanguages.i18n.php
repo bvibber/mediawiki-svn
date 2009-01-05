@@ -120,12 +120,14 @@ Please contact the server operator or administrator.",
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Siebrand
  */
 $wdMessages['qqq'] = array(
 	'ow_save' => '{{Identical|Save}}',
 	'ow_history' => '{{Identical|History}}',
 	'ow_none_selected' => '{{Identical|None selected}}',
 	'ow_dm_OK' => '{{Identical|OK}}',
+	'ow_dm_not_present' => 'Used on [http://www.omegawiki.org/index.php?title=Special:ConceptMapping Special:ConceptMapping]',
 	'ow_Annotation' => '{{Identical|Annotation}}',
 	'ow_ClassAttributeType' => '{{Identical|Type}}',
 	'ow_Collection' => '{{Identical|Collection}}',
@@ -245,7 +247,7 @@ $wdMessages['ar'] = array(
 <li>&action=help  عرض مساعدة مفيدة.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>ربط المبدأ يسمح لك بتعرف أي معنى معرف في مجموعة بيانات مطابق لمعاني معرفة في مجموعات بيانات أخرى.</p>',
-	'ow_conceptmapping_no_action_specified' => 'عذرا، أنا لا أعرف كيف "$1".',
+	'ow_conceptmapping_no_action_specified' => 'الفعل "$1" غير مدعوم.',
 	'ow_dm_OK' => 'موافق',
 	'ow_dm_not_present' => 'غير مدخل',
 	'ow_dm_not_found' => 'غير موجود في قاعدة البيانات أو لم يتم عمله بطريقة صحيحة',
@@ -334,6 +336,7 @@ $wdMessages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ramsis II
  */
 $wdMessages['arz'] = array(
 	'datasearch' => 'ويكى داتا: بحث البيانات',
@@ -356,12 +359,12 @@ $wdMessages['arz'] = array(
 <li>&action=help  عرض مساعدة مفيدة.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>ربط المبدأ يسمح لك بتعرف أى معنى معرف فى مجموعة بيانات مطابق لمعانى معرفة فى مجموعات بيانات أخرى.</p>',
-	'ow_conceptmapping_no_action_specified' => 'عذرا، أنا لا أعرف كيف "$1".',
+	'ow_conceptmapping_no_action_specified' => 'العمليه "$1" مش مدعومه.',
 	'ow_dm_OK' => 'موافق',
 	'ow_dm_not_present' => 'غير مدخل',
 	'ow_dm_not_found' => 'غير موجود فى قاعدة البيانات أو لم يتم عمله بطريقة صحيحة',
 	'ow_mapping_successful' => 'ربط كل الحقول المعلمة ب [OK]<br />',
-	'ow_mapping_unsuccessful' => 'أحتاج إلى معنيين معرفين قبل أن أستطيع وصلهما.',
+	'ow_mapping_unsuccessful' => 'لازم يكون في ع الاقل معنيين متعرفين قبل ما نقدر نوصلهم ببعض.',
 	'ow_will_insert' => 'سيدرج التالي:',
 	'ow_contents_of_mapping' => 'محتويات الربط',
 	'ow_available_contexts' => 'السياقات المتوفرة',
@@ -559,11 +562,57 @@ $wdMessages['bcl'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $wdMessages['be-tarask'] = array(
+	'datasearch' => 'ВікіЗьвесткі: Пошук зьвестак',
+	'langman_title' => 'Кіраваньне мовамі',
+	'languages' => 'ВікіЗьвесткі: Кіраваньне мовамі',
+	'ow_save' => 'Захаваць',
 	'ow_history' => 'Гісторыя',
+	'ow_datasets' => 'Выбар набору зьвестак',
+	'ow_noedit_title' => 'Няма правоў для рэдагаваньня',
+	'ow_noedit' => 'Вам не дазволена рэдагаваць старонкі ў наборы зьвестак «$1».
+Калі ласка, паглядзіце [[{{MediaWiki:Ow editing policy url}}|нашы правілы рэдагаваньня]].',
+	'ow_uipref_datasets' => 'Выгляд па змоўчваньні',
+	'ow_uiprefs' => 'ВікіЗьвесткі',
+	'ow_none_selected' => 'Нічога ня выбрана',
+	'ow_conceptmapping_help' => '<p>магчымыя дзеяньні: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  уставіць адпаведнасьць</li>
+<li>&action=get&concept=<concept_id>  прачытаць адпаведнасьць</li>
+<li>&action=list_sets  паказаць сьпіс магчымых прыставак кантэкстаў зьвестак і куды яны спасылаюцца.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> для аднаго вызначанага значэньня ў кантэксьце, вывесьці ўсе іншыя</li>
+<li>&action=help  Паказаць дапамогу.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => '<p>Усталяваньне адпаведнасьцяў канцэпцыяў дазваляе Вам пазначыць, якое пэўнае значэньне ў адным наборы зьвестак ідэнтычна іншым наборам зьвестак.</p>',
+	'ow_conceptmapping_no_action_specified' => 'Прабачце, я ня ведаю што такое «$1».',
+	'ow_dm_OK' => 'Добра',
+	'ow_dm_not_present' => 'ня ўведзена',
+	'ow_dm_not_found' => 'ня знойдзена ў базе зьвестак альбо няслушны фармат',
+	'ow_mapping_successful' => 'Усталяваная адпаведнасьць для ўсіх палёў пазначаных [OK]<br />',
+	'ow_mapping_unsuccessful' => 'Неабходна мець хаця б два вызначаных значэньня, каб было магчыма іх злучыць.',
+	'ow_will_insert' => 'Будзе ўстаўлена наступнае:',
+	'ow_contents_of_mapping' => 'Зьмест адпаведнасьці',
+	'ow_available_contexts' => 'Даступныя кантэксты',
+	'ow_add_concept_link' => 'Дадаць спасылку на іншыя канцэпцыі',
+	'ow_concept_panel' => 'Панэль канцэпцыяў',
+	'ow_dm_badtitle' => 'Гэта старонка не вядзе ні да аднаго пэўнага значэньня (канцэпцыі).
+Калі ласка, праверце вэб-адрас.',
+	'ow_dm_missing' => 'Гэта старонка, верагодна, вядзе да неіснуючага пэўнага значэньня (канцэпцыі).
+Калі ласка, праверце вэб-адрас.',
+	'ow_AlternativeDefinition' => 'Альтэрнатыўнае вызначэньне',
+	'ow_AlternativeDefinitions' => 'Альтэрнатыўныя вызначэньні',
+	'ow_Annotation' => 'Анатацыя',
+	'ow_ApproximateMeanings' => 'Прыблізныя значэньні',
+	'ow_ClassAttributeAttribute' => 'Атрыбут',
+	'ow_ClassAttributes' => 'Атрыбуты клясы',
+	'ow_ClassAttributeLevel' => 'Узровень',
 	'ow_ClassAttributeType' => 'Тып',
+	'ow_ClassMembership' => 'Удзел у клясах',
 	'ow_Collection' => 'Калекцыя',
+	'ow_CollectionMembership' => 'Удзел у калекцыях',
+	'ow_Definition' => 'Вызначэньне',
+	'ow_DefinedMeaningAttributes' => 'Анатацыя',
 	'ow_OptionAttribute' => 'Уласьцівасьць',
 	'ow_TextAttribute' => 'Уласьцівасьць',
 	'ow_TranslatedTextAttribute' => 'Уласьцівасьць',
@@ -854,7 +903,7 @@ Prosím, podívejte se na [[{{MediaWiki:Ow editing policy url}}|naše pravidla o
 <li>&action=help  zobrazit nápovědu</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mapování pojmů vám umožňuje určit, který definovaný význam v jedné množině dat je shodný s definovanými významy v ostatních možinách dat.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Omlouvám se, ale nevím jak „$1“.',
+	'ow_conceptmapping_no_action_specified' => 'Akce „$1“ není podporována.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'nezadané',
 	'ow_dm_not_found' => 'nenalezeno v databázi nebo ve špatném tvaru',
@@ -982,7 +1031,7 @@ Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 <li>&action=help Hilfe anzeigen.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Mit Concept Mapping kann festgelegt werden, welche DefinedMeaning in einem Dataset mit anderen DefinedMeanings aus anderen Datasets identisch ist.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Entschuldigung, ich kann nicht „$1“.',
+	'ow_conceptmapping_no_action_specified' => 'Die Aktion „$1“ wird nicht unterstützt.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'nicht eingegeben',
 	'ow_dm_not_found' => 'nicht in der Datenbank gefunden oder fehlerhaft',
@@ -1340,10 +1389,13 @@ $wdMessages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $wdMessages['eu'] = array(
+	'datasearch' => 'Wikidata:Datu bilaketa',
 	'langman_title' => 'Hizkuntza kudeatzailea',
+	'languages' => 'WIkidata: Hizkuntza administraria',
 	'ow_save' => 'Gorde',
 	'ow_history' => 'Historia',
 	'ow_datasets' => 'Data bilduma',
@@ -1492,7 +1544,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
 	'ow_uipref_datasets' => 'Oletusnäkymä',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Ei yhtään valittu',
-	'ow_conceptmapping_no_action_specified' => 'Pahoittelut, mutta en tiedä kuinka ”$1”.',
+	'ow_conceptmapping_no_action_specified' => 'Tuntematon toiminto: $1.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'ei tallennettu',
 	'ow_dm_not_found' => 'ei löydy tietokannasta tai väärin muotoiltu',
@@ -1535,6 +1587,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
 
 /** French (Français)
  * @author Grondin
+ * @author IAlex
  * @author Meithal
  * @author Sherbrooke
  * @author Urhixidur
@@ -1560,7 +1613,7 @@ Veuillez voir [[{{MediaWiki:Ow editing policy url}}|nos règles d'édition]].",
 <li>&action=help  Voir l’aide complète.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => "<p>Le carte des concepts vous permet d'identifier quel sens défini d'un ensemble de données est identique aux sens définis pour les autres ensembles de données.</p>",
-	'ow_conceptmapping_no_action_specified' => 'Désolé, je ne sais pas comment exécuter « $1 ».',
+	'ow_conceptmapping_no_action_specified' => "L'action « $1 » n'est supportée.",
 	'ow_dm_OK' => 'Valider',
 	'ow_dm_not_present' => 'non inscrit',
 	'ow_dm_not_found' => 'non trouvé dans la base de données ou mal rédigé',
@@ -2016,12 +2069,12 @@ $wdMessages['hsb'] = array(
 <li>&action=help  Wužitnu pomoc pokazać.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Concept mapping ći dowola identifikować, kotry definowany woznam en sadźbje datow je identiski z definowanymi woznami w druhich sadźbach datow.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Wodaj, njewěm, kak mam "$1".',
+	'ow_conceptmapping_no_action_specified' => 'Akcija "$1" so njepodpěruje.',
 	'ow_dm_OK' => 'W porjadku',
 	'ow_dm_not_present' => 'njezapodaty',
 	'ow_dm_not_found' => 'w datowej bance njenamakany abo ze zmylkami',
 	'ow_mapping_successful' => 'Wšě pola markěrowane z [OK] přirjadowane<br />',
-	'ow_mapping_unsuccessful' => 'Su znajmjeńša dwaj definowanej woznamej za wotkazowanje trjeba.',
+	'ow_mapping_unsuccessful' => 'Stej znajmjeńša dwaj definowanej woznamaj za wotkazowanje trěbnej.',
 	'ow_will_insert' => 'Slědowace so zasunje:',
 	'ow_contents_of_mapping' => 'Wobsah zwjazanja',
 	'ow_available_contexts' => 'K dispoziciji stejace konteksty',
@@ -2385,7 +2438,7 @@ $wdMessages['ja'] = array(
 <li>&action=help  ヘルプの表示</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>コンセプトマップでは、あるデータセットに登録されている意味定義と他のデータセットにある同一概念の意味定義を関連付けることが可能です。</p>',
-	'ow_conceptmapping_no_action_specified' => '申し訳ありません、"$1" という操作は定義されていません。',
+	'ow_conceptmapping_no_action_specified' => '"$1" という操作はサポートされていません。',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => '指定がありません',
 	'ow_dm_not_found' => 'データベースに存在しないか、不正な指定です',
@@ -2438,6 +2491,12 @@ $wdMessages['ja'] = array(
 	'ow_meaningsofsubtitle' => '<em>ウィキリンク:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>不許可</h2>',
 	'ow_copy_no_action_specified' => '操作を指定してください',
+	'ow_copy_successful' => '<h2>コピー成功</h2>
+あなたのデータのコピーは成功したようです。確実性のためには二重に確認することを忘れないでください。',
+	'ow_copy_unsuccessful' => '<h3>コピー失敗</h3>
+コピー処理は行われませんでした。',
+	'ow_no_action_specified' => '<h3>操作が指定されていません</h3>
+もしかすると、あなたは直接このページに来たのでしょうか？通常はあなたがここにいる必要はありません。',
 );
 
 /** Javanese (Basa Jawa)
@@ -3320,12 +3379,12 @@ Zie [[{{MediaWiki:Ow editing policy url}}|ons bewerkingsbeleid]].',
 <li>&action=help  Zinvolle hulptekst weergeven.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>ConceptMapping maakt het mogelijk om bepaalde betekenissen in meerdere gegevenssets als identiek te markeren.</p>',
-	'ow_conceptmapping_no_action_specified' => 'Maar ik weet niet hoe ik kan "$1".',
+	'ow_conceptmapping_no_action_specified' => 'De handeling "$1" wordt niet ondersteund.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'niet ingevoerd',
 	'ow_dm_not_found' => 'niet aangetroffen in de database of verminkt',
 	'ow_mapping_successful' => 'Wat met [OK] gemarkeerd is, is gemapt.<br />',
-	'ow_mapping_unsuccessful' => 'Minstens twee bepaalde betekenissen zijn nodig voordat er gelinkt kan worden.',
+	'ow_mapping_unsuccessful' => 'Er zijn minstens twee bepaalde betekenissen nodig voordat ze gekoppeld kunnen worden.',
 	'ow_will_insert' => 'Zal het volgende toevoegen:',
 	'ow_contents_of_mapping' => 'Inhoud van de mapping',
 	'ow_available_contexts' => 'Beschikbare contexten',
@@ -3879,6 +3938,13 @@ $wdMessages['ps'] = array(
 	'ow_history' => 'پېښليک',
 	'ow_uiprefs' => 'ويکيډاټا',
 	'ow_none_selected' => 'هېڅ هم نه دی ټاکل شوی',
+	'ow_conceptmapping_help' => '<p>شونې کړنې: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
+<li>&action=get&concept=<concept_id>  read a mapping back</li>
+<li>&action=list_sets  return a list of possible data context prefixes and what they refer to.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> for one defined meaning in a concept, return all others</li>
+<li>&action=help  Show helpful help.</li>
+</ul></p>',
 	'ow_conceptmapping_no_action_specified' => 'بښنه غواړم، زه نه پوهېږم چې څنګه "$1".',
 	'ow_dm_not_present' => 'نه دی ورکړ شوی',
 	'ow_ApproximateMeanings' => 'نژدې ماناګانې',
@@ -3886,6 +3952,8 @@ $wdMessages['ps'] = array(
 	'ow_ClassAttributeType' => 'ډول',
 	'ow_Collection' => 'غونډ',
 	'ow_Definition' => 'پېژند',
+	'ow_DefinedMeaning' => 'پېژندل شوې مانا',
+	'ow_DefinedMeaningReference' => 'پېژندل شوې مانا',
 	'ow_GotoSource' => 'سرچينې ته ورځه',
 	'ow_Language' => 'ژبه',
 	'ow_OptionAttribute' => 'ځانتيا',
@@ -4218,7 +4286,7 @@ $wdMessages['ru'] = array(
 	'ow_dm_not_present' => 'не введено',
 	'ow_dm_not_found' => 'не найдено в базе данных или неформат',
 	'ow_mapping_successful' => 'Подключенны все поля, помеченные [OK]<br />',
-	'ow_mapping_unsuccessful' => 'Нужно иметь по крайней мере два определённых значения, прежде чем я смогу связать их.',
+	'ow_mapping_unsuccessful' => 'Нужно иметь по крайней мере два определённых значения, прежде чем они смогут быть связаны между собой.',
 	'ow_will_insert' => 'Будет добавлено следующее:',
 	'ow_contents_of_mapping' => 'Содержание отображения',
 	'ow_available_contexts' => 'Доступные контексты',
@@ -5004,12 +5072,12 @@ Pakitingnan ang [[{{MediaWiki:Ow editing policy url}}|aming patakaran sa pamamat
 <li>&action=help  Ipakita ang mga nakakatulong na pantulong.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => "<p>Nagpapahintulot ang Pagmamapa ng Konsepto o ng Diwa (''Concept Mapping'') na matukoy mo kung anong nilarawang kahulugang nagmula sa isang pangkat ng dato ang katulad sa nilarawang mga kahulugang nasa iba pang mga kapangkatan ng dato.</p>",
-	'ow_conceptmapping_no_action_specified' => 'Paumanhin, hindi ko alam kung paano gawin ang "$1".',
+	'ow_conceptmapping_no_action_specified' => 'Hindi tinatangkilik/sinusuportahan ang galaw na "$1".',
 	'ow_dm_OK' => "Sige/Ayos 'yan",
 	'ow_dm_not_present' => 'hindi nakapasok',
 	'ow_dm_not_found' => 'hindi natagpuan sa kalipunan ng dato o mali/masama ang anyo',
 	'ow_mapping_successful' => "Naisamapa/napagugnay-ugnay na ang lahat ng mga hanay na may tatak na [Sige/Ayos 'yan]",
-	'ow_mapping_unsuccessful' => 'Kinakailangang magkaroon ng dalawa man lamang na tinukoy/nilarawang mga kahulugan bago ko sila makawing o mapagugnay',
+	'ow_mapping_unsuccessful' => 'Kinakailangang magkaroon ng kahit na dalawang mga kahulugang pinakahuluganan bago sila maikawing.',
 	'ow_will_insert' => 'Isisingit ang mga sumusunod:',
 	'ow_contents_of_mapping' => 'Mga nilalaman ng pagmamapa',
 	'ow_available_contexts' => 'Makukuhang mga konteksto',
@@ -5140,7 +5208,7 @@ $wdMessages['uk'] = array(
 	'ow_dm_not_present' => 'не введено',
 	'ow_dm_not_found' => 'не знайдено в базі даних або неформат',
 	'ow_mapping_successful' => 'Подключенні всі поля, позначені [OK]<br />',
-	'ow_mapping_unsuccessful' => "Потрібно мати принаймні два певних значення, перш ніж я зможу зв'язати їх.",
+	'ow_mapping_unsuccessful' => "Потрібно мати принаймні два певних значення, перш ніж вони зможуть бути пов'язані між собою.",
 	'ow_will_insert' => 'Буде додано наступне:',
 	'ow_contents_of_mapping' => 'Зміст відображення',
 	'ow_available_contexts' => 'Доступні контексти',

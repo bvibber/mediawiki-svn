@@ -157,6 +157,13 @@ $messages['nl'] = array(
 	'csshooks-desc' => "Voegt CSS toe aan de HTML-uitvoer van pagina's voor betere vormgeving",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'csshooks-desc' => 'Legg til CSS til HTML-en til ei sida for betre stil',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

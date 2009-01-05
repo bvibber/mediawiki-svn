@@ -1233,11 +1233,64 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'regexblock' => 'Regex-blokkering',
+	'regexblock-desc' => 'Utviding nytta for blokkering av brukarnamn og IP-adressar ved hjelp av regulære uttrykk. Innheld både blokkeringsmekanismen og ei [[Special:Regexblock|spesialsida]] for å leggja til og endra blokkeringar.',
+	'regexblock-special-desc' => 'alternativ brukarblokkering (etter oppgjeve namn og ved å nytta regulære uttrykk)',
+	'regexblock-stat-desc' => 'Syner [[Special:Regexblockstats|blokkeringsstatistikk]] for regexblock-utvidinga',
+	'regexblock-page-title' => 'Namneblokkering ved hjelp av regulært uttrykk',
+	'regexblockstats' => 'Regex-blokkeringsstatistikk',
+	'regexblock-reason-ip' => 'IP-adressa di er hindra frå å endra sider grunna hærverk eller annan forstyrring av deg eller andre som nyttar den same IP-adressa. Om du meiner at dette er ein feil, $1',
+	'regexblock-reason-name' => 'Brukarnamnet ditt er hindra frå å endra sider grunna hærverk eller annan forstyrring. 
+Om du meiner at dette er ein feil, $1',
+	'regexblock-reason-regex' => 'Dette brukarnamnet er hindra frå å endra sider grunna hærverk eller annan forstyrring av ein brukar med liknande namn. 
+Opprett eit anna brukarnamn eller $1 om problemet.',
+	'regexblock-help' => "Nytt skjemaet nedanfor for å hindra visse IP-adresser eller brukarnamn frå å endra. 
+Dette bør berre bli gjort for å hindra hærverk, og i følgje med retningslinene. 
+''Denne sida vil la deg òg blokkera ikkje-eksisterande brukarar, og vil òg blokkera brukarar med namn som liknar det som blir oppgjeve. Til dømes vil «Test» bli blokkert saman med «Test 2» osb. 
+Du kan òg blokkera fulle IP-adresser, noko som tyder at ingen som loggar på gjennom desse kan endra sider. 
+Merk: delvise IP-adresser vil bli handsama som brukarnamn under blokkering. Om ingen årsak er oppgjeven vil ein standardårsak bli nytta.''",
+	'regexblock-page-title-1' => 'Blokker adressa ved hjelp av regulære uttrykk',
+	'regexblock-unblock-success' => 'Avblokkering lukkast',
+	'regexblock-unblock-log' => "Brukarnamnet eller IP-adressa '''$1''' har blitt avblokkert.",
+	'regexblock-unblock-error' => 'Det oppstod ein feil under avblokkeringa av $1. 
+Truleg finst det ingen brukar med dette namnet.',
+	'regexblock-form-username' => 'IP-adressa eller brukarnamn:',
 	'regexblock-form-reason' => 'Årsak:',
+	'regexblock-form-expiry' => 'Opphøyrstid:',
+	'regexblock-form-match' => 'Nøyaktig treff',
+	'regexblock-form-account-block' => 'Blokker oppretting av nye kontoar',
+	'regexblock-form-submit' => 'Blokker denne brukaren',
+	'regexblock-block-log' => "Brukarnamnet eller IP-adressa '''$1''' har blitt blokkert.",
+	'regexblock-block-success' => 'Blokkering lukkast',
+	'regexblock-form-submit-empty' => 'Oppgje eit brukarnamn eller ei IP-adressa til å blokkera.',
+	'regexblock-form-submit-regex' => 'Ugyldig regulært uttrykk.',
+	'regexblock-form-submit-expiry' => 'Oppgje ei tid for enden på blokkeringa.',
+	'regexblock-already-blocked' => '$1 er alt blokkert.',
+	'regexblock-stats-title' => 'Statistikk for blokkering med regulære uttrykk',
 	'regexblock-stats-username' => 'For $1',
+	'regexblock-stats-times' => 'blei blokkert',
+	'regexblock-stats-logging' => 'logging frå adressa',
+	'regexblock-currently-blocked' => 'Noverande blokkerte adresser:',
+	'regexblock-view-blocked' => 'Syn dei blokkerte etter:',
+	'regexblock-view-all' => 'Alle',
+	'regexblock-view-go' => 'Gå',
+	'regexblock-view-match' => '(nøyaktig treff)',
+	'regexblock-view-regex' => '(regex-treff)',
+	'regexblock-view-account' => '(kontooppretting slege av)',
+	'regexblock-view-reason' => 'årsak: $1',
+	'regexblock-view-reason-default' => 'generisk årsak',
+	'regexblock-view-block-infinite' => 'permanent blokkering',
+	'regexblock-view-block-temporary' => 'endar',
+	'regexblock-view-block-expired' => 'ENDA',
+	'regexblock-view-block-by' => 'blokkert av',
+	'regexblock-view-block-unblock' => 'avblokker',
+	'regexblock-view-stats' => '(statistikk)',
+	'regexblock-view-empty' => 'Lista over blokkerte namn og adresser er tom.',
+	'regexblock-view-time' => '$1',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

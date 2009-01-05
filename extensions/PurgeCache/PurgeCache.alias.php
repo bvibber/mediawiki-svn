@@ -69,6 +69,11 @@ $aliases['mk'] = array(
 	'PurgeCache' => array( 'ИсчистиКеш' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'PurgeCache' => array( 'ŻvojtaCache' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'PurgeCache' => array( 'Kas_leegmaken' ),

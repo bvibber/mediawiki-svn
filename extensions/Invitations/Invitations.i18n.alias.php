@@ -110,6 +110,11 @@ $aliases['ms'] = array(
 	'Invitations' => array( 'Jemputan' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'Invitations' => array( 'Inviti' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Invitations' => array( 'Uutneudigingen' ),

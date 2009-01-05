@@ -48,11 +48,16 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ouda
+ * @author Ramsis II
  */
 $messages['arz'] = array(
+	'securepasswords-valid' => 'الباسورد بتاعتك ماتنفعش او قصيره خالص.
+الباسورد لازم:',
+	'securepasswords-minlength' => 'لازم طولها يكون ع الاقل $1 {{PLURAL:$1|حرف|حرف}}',
 	'securepasswords-lowercase' => 'lowercase تحتوى على الأقل على حرف في حالة',
 	'securepasswords-uppercase' => 'uppercase تحتوى على الأقل على حرف في حالة',
 	'securepasswords-digit' => 'يحتوى على رقم واحد على الأقل',
+	'securepasswords-special' => 'بتحتوى على رمز خاص واحد ع الاقل (الرموز الخاصه هما:$1)',
 	'securepasswords-word' => 'لا تكون كلمة',
 );
 
@@ -93,6 +98,19 @@ $messages['dsb'] = array(
 	'securepasswords-special' => 'nanejmjenjej 1 specialne znamuško wopśimjeś (Specialne znamuška su: $1)',
 	'securepasswords-username' => 'se wót twójogo wužywarske mjenja rozeznawaś',
 	'securepasswords-word' => 'něco druge byś ako słowo',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'securepasswords-valid' => 'Zure pasahitza oker dago edo motzegia da.
+Honelakoa izan behar du:',
+	'securepasswords-lowercase' => 'gutxienez hizki bat minuskulaz izan',
+	'securepasswords-uppercase' => 'gutxienez letra larri bat izan',
+	'securepasswords-digit' => 'gutxienez digitu bat izan',
+	'securepasswords-special' => 'gutxienez karaktere berezi bat izan (Hauek dira karaktere bereziak: $1)',
+	'securepasswords-username' => 'erabiltzaile izenetik desberdina izan',
 );
 
 /** Finnish (Suomi)
@@ -352,6 +370,15 @@ $messages['sk'] = array(
  */
 $messages['sv'] = array(
 	'securepasswords-desc' => 'Skapar säkrare lösenordshashar och lägger till en funktion för att kontrollera lösenordets styrka',
+	'securepasswords-valid' => 'Ditt lösenord är ogiltigt eller för kort.
+Det måste:',
+	'securepasswords-minlength' => 'ha en längd på minst {{PLURAL:$1|ett tecken|$1 tecken}}',
+	'securepasswords-lowercase' => 'innehålla minst en liten bokstav',
+	'securepasswords-uppercase' => 'innehålla minst en stor bokstav',
+	'securepasswords-digit' => 'innehålla minst en siffra',
+	'securepasswords-special' => 'innehålla minst ett specialtecken (specialtecknen är: $1)',
+	'securepasswords-username' => 'inte vara samma som ditt användarnamn',
+	'securepasswords-word' => 'inte vara ett ord',
 );
 
 /** Telugu (తెలుగు)

@@ -863,12 +863,23 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Jwitos
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'closewikis-desc' => 'Pozwala zamykać pojedyncze projekty wiki na farmie wiki',
 	'closewikis-page' => 'Zamknij wiki',
 	'closewikis-page-close' => 'Zamknij wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-submit' => 'Zamknij',
+	'closewikis-page-err-closed' => 'Wiki została zamknięta',
+	'closewikis-page-err-opened' => 'Wiki nie została zamknięta',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Zamknięta przez',
+	'closewikis-list-header-timestamp' => 'Zamknięta',
+	'closewikis-log-close' => 'zamknięta $2',
+	'closewikis-log-reopen' => 'powtórnie otwarta $2',
+	'right-editclosedwikis' => 'Edytuj zamknięte projekty wiki',
+	'right-closewikis' => 'Zamknij projekty wiki',
 );
 
 /** Portuguese (Português)
@@ -1110,5 +1121,39 @@ $messages['vi'] = array(
 	'closewikis-log-close' => 'đóng cửa $2',
 	'closewikis-log-reopen' => 'mở cửa lại $2',
 	'right-editclosedwikis' => 'Sửa đổi các wiki bị đóng cửa',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'closewikis-desc' => 'Dälon ad färmükon vükis in vükafarms',
+	'closewikis-page' => 'Färmükön vüki',
+	'closewikis-page-close' => 'Färmükön vüki',
+	'closewikis-page-close-wiki' => 'Vük:',
+	'closewikis-page-close-dreason' => 'Kod (pajonöl):',
+	'closewikis-page-close-reason' => 'Kod (in jenotalised):',
+	'closewikis-page-close-submit' => 'Färmükön',
+	'closewikis-page-close-success' => 'Vüki pefärmükon benosekiko',
+	'closewikis-page-reopen' => 'Dönumaifükon vüki',
+	'closewikis-page-reopen-wiki' => 'Vük:',
+	'closewikis-page-reopen-reason' => 'Kod:',
+	'closewikis-page-reopen-submit' => 'Dönumaifükön',
+	'closewikis-page-reopen-success' => 'Vük pedönumaifükon benosekiko',
+	'closewikis-page-err-nowiki' => 'Vük pavilöl no lonöfon',
+	'closewikis-page-err-closed' => 'Vük at ya pefärmükon',
+	'closewikis-page-err-opened' => 'Vüki at no pefärmükon',
+	'closewikis-list' => 'Lised vükas pefärmüköl',
+	'closewikis-list-intro' => 'Is palisedons vüks fa guvans pefärmüköls',
+	'closewikis-list-header-wiki' => 'Vük',
+	'closewikis-list-header-by' => 'Pefärmükon fa',
+	'closewikis-list-header-timestamp' => 'Pefärmükon tü',
+	'closewikis-list-header-dispreason' => 'Kod pajonöl',
+	'closewikis-log' => 'Jenotalised vükifärmükamas',
+	'closewikis-log-header' => 'Is palisedons vikifärmükams e vikidönumaifükams valiks fa guvans pejenüköls',
+	'closewikis-log-close' => 'efärmükon $2',
+	'closewikis-log-reopen' => 'edönumaifükon $2',
+	'right-editclosedwikis' => 'Votükön vükis pefärmüköl',
+	'right-closewikis' => 'Färmükön vükis',
 );
 

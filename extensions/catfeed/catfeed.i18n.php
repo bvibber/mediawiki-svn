@@ -75,6 +75,14 @@ $messages['es'] = array(
 Crea versiones para su uso en páginas, especialmente útil para Wikinews.',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'catfeed-desc' => 'Azken aldaketen jariotik zatiak erabiltzen ditu.
+Wikinewserako bereziki erabilgarria den in-page bertsioa sortzen du.',
+);
+
 /** French (Français)
  * @author McDutchie
  */

@@ -37,6 +37,13 @@ $messages['arz'] = array(
 	'wikitextloggedinout-desc' => 'خطافا محلل، <tt>&lt;loggedin&gt;</tt> و <tt>&lt;loggedout&gt;</tt> لعرض نص مختلف بالاعتماد على حالة دخول اليوزرز',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'wikitextloggedinout-desc' => 'Дзьве працэдуры-перахопнікі парсэра, <tt>&lt;loggedin&gt;</tt> і <tt>&lt;loggedout&gt;</tt>, якія паказваюць розны тэкст у залежнасьці ад стану аўтарызацыі ўдзельніка',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */

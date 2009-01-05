@@ -698,9 +698,11 @@ Está página sólo es aplicable a usuarios restringidos",
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
+	'mywhitelistpages' => 'Nire orriak',
 	'whitelisttablemodify' => 'Aldatu',
 	'whitelisttablemodifyall' => 'Denak',
 	'whitelisttablemodifynone' => 'Bat ere ez',
@@ -719,6 +721,13 @@ $messages['eu'] = array(
 	'whitelistnewtabledate' => 'Iraungitze data:',
 	'whitelistnewtableedit' => 'Aldatzeko jarri',
 	'whitelistnewtableview' => 'Aldatzeko jarri',
+	'whitelistnewtableprocess' => 'Prozesatu',
+	'whitelistnewtablereview' => 'Berrikusi',
+	'whitelistnever' => 'inoiz',
+	'group-restricted' => 'Mugatutako lankideak',
+	'group-restricted-member' => 'Mugatutako lankidea',
+	'group-manager' => 'Administratzaileak',
+	'group-manager-member' => 'Administratzaile',
 );
 
 /** Finnish (Suomi)
@@ -1028,6 +1037,66 @@ $messages['hr'] = array(
 	'whitelisttablemodifyall' => 'Sve',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistnever' => 'nikad',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'whitelist-desc' => 'Přistupne prawa wobmjezowanych wužiwarjow wobdźěłać',
+	'whitelistedit' => 'Přistupny editor běłeje lisćiny',
+	'whitelist' => 'Strony běłeje lisćiny',
+	'mywhitelistpages' => 'Moje strony',
+	'whitelistfor' => '<center>Aktualne informacije za <b>$1</b></center>',
+	'whitelisttablemodify' => 'Změnić',
+	'whitelisttablemodifyall' => 'Wšě',
+	'whitelisttablemodifynone' => 'Žadyn',
+	'whitelisttablepage' => 'Wikijowa strona',
+	'whitelisttabletype' => 'Přistupny typ',
+	'whitelisttableexpires' => 'Spadnje',
+	'whitelisttablemodby' => 'Posledni raz změnjeny wot',
+	'whitelisttablemodon' => 'Posledni raz změnjeny dnja',
+	'whitelisttableedit' => 'Wobdźěłać',
+	'whitelisttableview' => 'Wobhladać',
+	'whitelisttablenewdate' => 'Nowy datum:',
+	'whitelisttablechangedate' => 'Datum spadnjenja změnić',
+	'whitelisttablesetedit' => 'Wobdźěłać',
+	'whitelisttablesetview' => 'Wobhladać',
+	'whitelisttableremove' => 'Wotstronić',
+	'whitelistnewpagesfor' => 'Nowy strony k běłej lisćinje wužiwarja <b>$1</b> přidać<br />
+Wužij pak * pak % jako zastupne znamješko',
+	'whitelistnewtabledate' => 'Datum spadnjenja:',
+	'whitelistnewtableedit' => 'Wobdźěłać',
+	'whitelistnewtableview' => 'Wobhladać',
+	'whitelistnowhitelistedusers' => 'Njejsu wužiwarjo w skupinje "{{MediaWiki:Group-restricted}}".
+Dyrbiš [[Special:UserRights|wužiwarjow skupinje přidać]], prjedy hač móžeš strony běłej lisćinje wužiwarja přidać.',
+	'whitelistnewtableprocess' => 'Předźěłać',
+	'whitelistnewtablereview' => 'Přepruwować',
+	'whitelistselectrestricted' => '== Wobmjezowane wužiwarske mjeno wubrać ==',
+	'whitelistpagelist' => 'Strony {{GRAMMAR:genitiw|{{SITENAME}}}} za $1',
+	'whitelistnocalendar' => "<font color='red' size=3>Zda so, zo [http://www.mediawiki.org/wiki/Extension:Usage_Statistics rozšěrjenje:UsageStatistics], předpokład za tute rozšěrjenje, njeje so porjadnje instalował!</font>",
+	'whitelistoverview' => '== Přehlad změnow za $1 ==',
+	'whitelistoverviewcd' => "* Datum za [[:$2|$2]] so do '''$1''' měnja",
+	'whitelistoverviewsa' => "* Přistup za [[:$2|$2]] so do '''$1''' staja",
+	'whitelistoverviewrm' => '* Přistup na [[:$1|$1]] so wotstronja',
+	'whitelistoverviewna' => "* [[:$1|$1]] so do běłeje lisćiny z přistupom '''$2''' a datumom spadnjenja '''$3''' přidawa",
+	'whitelistrequest' => 'Přistup za dalše strony požadać',
+	'whitelistrequestmsg' => '$1 je přistup za {{PLURAL:$3|slědowacu stronu|slědowacej stronje|slědowace strony|slědowace strony}} požadał:
+
+$2',
+	'whitelistrequestconf' => 'Požadanje za nowe strony je so do $1 pósłało',
+	'whitelistnonrestricted' => "Wužiwar '''$1''' wobmjezowany wužiwar njeje.
+Tuta strona je jenož na wobmjezowanych wužiwarjow nałožujomna.",
+	'whitelistnever' => 'ženje',
+	'whitelistnummatches' => '- {{PLURAL:$1|jedyn wotpowědnik|$1 wotpowědnikaj|$1 wotpowědniki|$1 wotpowědnikow}}',
+	'right-editwhitelist' => 'Běłu lisćinu za eksistowacych wužiwarjow změnić',
+	'right-restricttowhitelist' => 'Jenož strony z běłeje lisćiny wobdźěłać a sej wobhladać',
+	'action-editwhitelist' => 'Běłu lisćinu za eksistowacych wužiwarjow změnić',
+	'action-restricttowhitelist' => 'Jenož strony z běłeje lisćiny wobdźěłać a sej wobhladać',
+	'group-restricted' => 'Wobmjezowani wužiwarjo',
+	'group-restricted-member' => 'Wobmjezowany wužiwar',
+	'group-manager' => 'Zarjadnicy',
+	'group-manager-member' => 'Zarjadnik',
 );
 
 /** Hungarian (Magyar)

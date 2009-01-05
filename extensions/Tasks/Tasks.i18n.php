@@ -159,6 +159,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Ouda
  * @author Ramsis II
  */
@@ -174,20 +175,29 @@ $messages['arz'] = array(
 	'tasks_create_header' => 'ابتدي مهمة جديدة',
 	'tasks_existing_header' => 'المهام الموجودة',
 	'tasks_noone' => 'مافيش حد',
+	'tasks_assign_me' => 'اديها ليا',
+	'tasks_assign_to' => 'اديها ل',
 	'tasks_close' => 'اقفل المهمة',
 	'tasks_wontfix' => 'لن يصلح',
 	'tasks_delete' => 'امسح',
 	'tasks_no_task_delete_title' => 'مش مسموح',
 	'tasks_action_delete' => 'في مهمة اتمسحت',
 	'tasks_reopen' => 'إعادة فتح مهمة',
+	'tasks_assignedto' => 'اتعينت ل$1',
 	'tasks_created_by' => 'أنشئت بواسطة $1',
+	'tasks_discussion_page_link' => 'صفحة مناقشة المهمه',
 	'tasks_closedby' => 'أغلقت بواسطة $1',
 	'tasks_sidebar_title' => 'المهمات المفتوحة',
 	'tasks_here' => 'هنا',
+	'tasks_see_page_tasks' => '(المهمات بتاعة الصفحه دي)',
+	'tasks_task_is_assigned' => '(اتعينت)',
 	'tasks_help_page' => 'المهمات',
 	'tasks_more_like_it' => 'اكتر',
+	'tasks_significance_order' => 'اعادة كتابة<مسح',
+	'tasks_creation_tasks' => '5,6',
 	'tasks_event_on_creation' => 'راجع',
 	'tasks_event_on_creation_anon' => 'التماس',
+	'tasks_on_creation_comment' => 'مهمه اوتوماتيكيه،بتشتغل لما الصفحه بتتنشأ',
 	'tasks_table_header_page' => 'صفحه',
 	'tasks_search_form_title' => 'دور',
 	'tasks_search_tasks' => 'المهمات',
@@ -531,6 +541,39 @@ $messages['es'] = array(
 	'tasks_search_results' => 'Resultados de la búsqueda',
 	'tasks_sort' => 'Ordenar',
 	'tasks_status_closed' => 'Cerrado',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'tasks' => 'Eginkizunak',
+	'tasks_tab' => 'Eginkizunak',
+	'tasks_form_new' => 'Egiteko berria sortu',
+	'tasks_error1' => 'Egitekoa ez da sortu: badago aurrez eginda!',
+	'tasks_ok1' => 'Egiteko berria sortu da!',
+	'tasks_create_header' => 'Egiteko berria sortu',
+	'tasks_existing_header' => 'Sortutako egitekoak',
+	'tasks_close' => 'Egitekoa itxi',
+	'tasks_delete' => 'Ezabatu',
+	'tasks_reopen' => 'Egitekoa berriz ireki',
+	'tasks_created_by' => '$1-(e)k egina',
+	'tasks_discussion_page_link' => 'Egiteko eztabaida orria',
+	'tasks_closedby' => '$1-(e)k itxia',
+	'tasks_sidebar_title' => 'Egitekoak ireki',
+	'tasks_here' => 'hemen',
+	'tasks_help_page' => 'Eginkizunak',
+	'tasks_more_like_it' => 'gehiago',
+	'tasks_table_header_page' => 'Orri',
+	'tasks_search_form_title' => 'Bilatu',
+	'tasks_search_tasks' => 'Eginkizunak',
+	'tasks_search_status' => 'Estatusa',
+	'tasks_search_results' => 'Bilaketaren emaitzak',
+	'tasks_previous' => 'Aurrekoa',
+	'tasks_next' => 'Hurrengoa',
+	'tasks_sort' => 'Ordenatu',
+	'tasks_status_open' => 'Ireki',
+	'tasks_status_closed' => 'Itxita',
 );
 
 /** Finnish (Suomi)

@@ -97,6 +97,11 @@ $aliases['mk'] = array(
 	'Contributors' => array( 'Придонесувачи' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'Contributors' => array( 'Kontributuri' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Contributors' => array( 'Biedragers' ),

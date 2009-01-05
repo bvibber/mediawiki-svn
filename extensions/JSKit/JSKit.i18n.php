@@ -49,6 +49,13 @@ $messages['dsb'] = array(
 	'jskit-desc' => 'Integrěrujo rědy JS-kita na wikijowem boku',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'jskit-desc' => 'Integre herramientas js-kit en una página wiki',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -110,6 +117,20 @@ $messages['lb'] = array(
  */
 $messages['nl'] = array(
 	'jskit-desc' => "Geïntegreerde js-kittools voor wikipagina's",
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'jskit-desc' => 'Integrerer js-kit-verkty på ei wikisida',
+);
+
+/** Portuguese (Português)
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'jskit-desc' => 'Integra as ferramentas js-kit a uma página wiki',
 );
 
 /** Slovak (Slovenčina)

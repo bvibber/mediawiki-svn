@@ -99,7 +99,7 @@ $messages['gl'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'mootools12core-desc' => 'הוספת [http://mootools.net mootools-1.2-core-yc.js],סביבת JavaScript חסכונית, לכל דף',
+	'mootools12core-desc' => 'הוספת [http://mootools.net mootools-1.2-core-yc.js], סביבת JavaScript חסכונית, לכל דף',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -965,9 +965,18 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'edituser-desc' => 'Dälon gebanes peprivilegöl ad votükön buükamis gebanas votik',
+	'edituser' => 'Redakön gebani',
+	'edituser-logout' => 'Senunädon gebani',
 	'edituser-username' => 'Nem',
+	'edituser-dosearch' => 'Sukön',
+	'edituser-nouser' => 'Geban at no dabinon',
+	'edituser-exempt' => 'Geban at no kanon paredakön',
+	'right-edituser' => 'Votükön buükamis gebanas votik',
+	'right-edituser-exempt' => 'Votans no kanons votükön buükamis gebana at',
 );
 
 /** Yiddish (ייִדיש)

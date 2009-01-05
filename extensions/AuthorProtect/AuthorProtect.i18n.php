@@ -1047,9 +1047,22 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'authorprotect' => 'Jelön padi se nelautans',
+	'authorprotect-desc' => 'Dälon padalautane ad jelön oni se gebans votik',
+	'authorprotect-notauthor' => 'No binol lautan pada at',
+	'authorprotect-confirm' => 'Votükön jelanivodis.',
+	'authorprotect-edit' => 'Dälön redakami te lautanes',
+	'authorprotect-move' => 'Dälön topätükami te lautanes',
+	'authorprotect-expiry' => 'Dul',
 	'authorprotect-reason' => 'Kod',
+	'authorprotect-intro' => 'Gebolös fometi at ad lökofärmükon padi at nelautanes',
+	'authorprotect-success' => 'Jelam peledunon benosekiko!',
+	'authorprotect-failure' => 'Jelam no eplöpon',
+	'protect-level-author' => 'Jelön ta nelautans',
+	'restriction-level-author' => 'Redakamadäl te lautane',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

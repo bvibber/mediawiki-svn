@@ -507,21 +507,27 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'randomincategory' => 'Tilfeldig sida frå ein kategori',
+	'randomincategory-desc' => 'Ei [[Special:Randomincategory|spesialsida]] for å få ei tilfeldig sida frå ein kategori',
 	'randomincategory-toolbox' => 'Tilfeldig side',
+	'randomincategory-nocategory' => 'Kategorien $1 finst ikkje, eller er tom',
 	'randomincategory-label' => 'Kategori:',
+	'randomincategory-submit' => 'Gå',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
 	'randomincategory' => 'Tilfeldig side fra en kategori',
 	'randomincategory-desc' => '[[Special:Randomincategory|Spesialside]] for å få en tilfeldig side fra en kategori',
 	'randomincategory-toolbox' => 'Tilfeldig side',
-	'randomincategory-nocategory' => 'Kategorien $1 finner ikke, eller er tom',
+	'randomincategory-nocategory' => 'Kategorien $1 finnes ikke, eller er tom',
 	'randomincategory-label' => 'Kategori:',
 	'randomincategory-submit' => '{{int:Go}}',
 );

@@ -18,6 +18,11 @@ $aliases['ar'] = array(
 	'GlobalUserrights' => array( 'صلاحيات_المستخدم_العامة' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'GlobalUserrights' => array( 'صلاحيات_المستخدم_العامة' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'GlobalUserrights' => array( 'Globale Benutzerrechte' ),
@@ -26,5 +31,10 @@ $aliases['de'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'GlobalUserrights' => array( 'Global Benotzerrechter' ),
+);
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'GlobalUserrights' => array( 'GlobaleGebruikersrechten' ),
 );
 

@@ -359,7 +359,7 @@ $messages['oc'] = array(
  * @author Wpedzich
  */
 $messages['pl'] = array(
-	'advancedrandom' => 'Bardzo losowo',
+	'advancedrandom' => 'Losowa strona (zaawansowane)',
 	'advancedrandom-desc' => 'Wyświetla losową stronę, na której (lub na której stronie dyskusji) znajduje się link do danej strony. Funkcje można wywołać na przykład jako [[Special:AdvancedRandom/Template:Featured/Talk]], co wylosuje artykuł medalowy, lub [[Special:AdvancedRandom/Template:GFDL/Image]], co wylosuje dowolny plik opatrzony licencją GFDL.',
 );
 

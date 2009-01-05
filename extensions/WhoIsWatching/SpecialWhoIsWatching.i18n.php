@@ -196,10 +196,12 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
 	'whoiswatching' => 'Nor dago ikusten wiki orrialde bat',
+	'specialwhoiswatchingaddbtn' => 'Gehitu aukeratutako lankideak',
 );
 
 /** Finnish (Suomi)
@@ -544,7 +546,11 @@ Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] par
  */
 $messages['ro'] = array(
 	'whoiswatching' => 'Cine urmăreşte o pagină wiki',
+	'whoiswatching-desc' => 'Oferă o listă de nume de utilizatori care urmăresc o pagină wiki',
 	'specialwhoiswatchingthepage' => 'Cine urmăreşte %s',
+	'specialwhoiswatchingusage' => 'Această pagină specială nu poate fi folosită de sine stătătoare.
+Te rugăm să foloseşti pagina [[MediaWiki:Number_of_watching_users_pageview]] pentru a defini un punct de intrare în această pagină specială.',
+	'specialwhoiswatchingaddusers' => 'Adaugă utilizatori care să urmărească pagina',
 	'specialwhoiswatchingaddbtn' => 'Adaugă utilizatorii selectaţi',
 );
 
@@ -643,6 +649,18 @@ $messages['tl'] = array(
 Pakigamit ang pahinang [[MediaWiki:Number_of_watching_users_pageview|Mediawiki:Bilang_ng_nagmamatyag_na_mga_tagagamit_tanawin_ng_pahina]] para mabigyang kahulugan ang isang pasukang daanang patungo sa natatanging pahinang ito.',
 	'specialwhoiswatchingaddusers' => 'Magdagdag ng mga tagagamit upang bantayan ang pahina',
 	'specialwhoiswatchingaddbtn' => 'Idagdag ang napiling mga tagagamit',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'whoiswatching' => 'Kin galädon padi',
+	'whoiswatching-desc' => 'Gevon lisedi gebanas, kels galädons padi semik',
+	'specialwhoiswatchingthepage' => 'Kin galädon padi: %s',
+	'specialwhoiswatchingusage' => 'Pad patik at no dalon pagebön ito. Gebolös padi: [[MediaWiki:Number_of_watching_users_pageview]] ad miedetön nükömapüni lü pad patik at.',
+	'specialwhoiswatchingaddusers' => 'Läükön gebanis ad galädön padi at',
+	'specialwhoiswatchingaddbtn' => 'Läükön gebanis pevälöl',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬)

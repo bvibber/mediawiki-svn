@@ -1945,10 +1945,49 @@ $messages['pdt'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'voctrain_Hello_World' => 'WITAJ WIKI!',
+	'voctrain_Permission_Denied' => 'Brak dostępu',
+	'voctrain_try_again_' => 'spróbować ponownie?',
+	'voctrain_Action_unknown' => 'Nieznane polecenie',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => 'Nie wiem, jak wykonać polecenie „%action”.',
+	'voctrain_User_added' => 'Dodano użytkownika',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Witaj %username w trenerze językowym omega',
 	'voctrain_continue' => 'Kontynuuj',
+	'voctrain_bye' => 'do zobaczenia',
+	'voctrain_Number_of_questions' => 'Liczba pytań',
+	'voctrain_Languages' => 'Języki',
+	'voctrain_Questions' => 'Pytania',
+	'voctrain_Answers' => 'Odpowiedzi',
+	'voctrain_collection' => 'kolekcja',
+	'voctrain_ISO_639_3_format' => 'format ISO-639-3',
+	'voctrain_Definition' => 'Definicja',
+	'voctrain_Word' => 'Słowo',
+	'voctrain_peek' => 'podejrzyj',
+	'voctrain_skip' => 'pomiń',
+	'voctrain_list_answers' => 'lista odpowiedzi',
+	'voctrain_Question' => 'Pytanie',
+	'voctrain_The_word_to_translate' => 'Słowo do przetłumaczenia',
+	'voctrain_Answer' => 'Odpowiedź',
+	'voctrain_one_of' => 'jeden z',
+	'voctrain_Answer_s_' => 'Odpowiedzi',
+	'voctrain_logout' => 'wyloguj',
+	'voctrain_User_name' => 'Użytkownik',
+	'voctrain_Password' => 'Hasło',
+	'voctrain_Login' => 'Zaloguj',
+	'voctrain_Create_new_user' => 'Utwórz nowego użytkownika',
+	'voctrain_Switch_language' => 'Zmień język',
+	'voctrain_Language' => 'Język',
+	'voctrain_Log_in' => 'Zaloguj',
+	'voctrain_Definitions' => 'Definicje',
+	'voctrain_Translation' => 'Tłumaczenie',
+	'voctrain_unhide_definition' => 'odsłoń definicję',
+	'voctrain_unhide_words' => 'odsłoń słowa',
+	'voctrain_hiding' => 'Ukrywanie',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2307,6 +2346,7 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author M.M.S.
+ * @author Najami
  * @author Sannab
  */
 $messages['sv'] = array(
@@ -2349,6 +2389,7 @@ $messages['sv'] = array(
 	'voctrain_list_of_questions_and_answers' => 'lista av frågor och svar',
 	'voctrain_Answer_s_' => 'Svar',
 	'voctrain_logout' => 'logga ut',
+	'voctrain_Powered_by' => 'Driven av',
 	'voctrain_Omegawiki' => 'Omegawiki',
 	'voctrain_Exercise_complete' => 'Övningen slutförd',
 	'voctrain_Exercise_terminated' => 'Övningen avbruten',

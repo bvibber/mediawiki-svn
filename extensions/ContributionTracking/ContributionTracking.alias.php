@@ -18,6 +18,11 @@ $aliases['ar'] = array(
 	'ContributionTracking' => array( 'تتبع_المساهمة' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'ContributionTracking' => array( 'تتبع_المساهمة' ),
+);
+
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
 	'ContributionTracking' => array( 'DoprinosiPracenje' ),

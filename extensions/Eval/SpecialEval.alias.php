@@ -70,6 +70,11 @@ $aliases['lb'] = array(
 	'Eval' => array( 'Bewertung' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'Eval' => array( 'Eval' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Eval' => array( 'Evalueren' ),

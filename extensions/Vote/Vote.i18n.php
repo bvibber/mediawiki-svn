@@ -124,11 +124,13 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'vote' => 'تصويت',
+	'vote-desc' => 'بيقدم قدرات الانتخابات البسيطه',
 	'vote-header' => "أنت ممكن هنا تدى صوتك لانتخاب '''أعظم ريس فى الدنيا دى كلها'''",
 	'vote-current' => ".'''$1'''انت بتدى صوتك لـ",
 	'vote-legend' => 'ادى صوتك أو عدل فيه',
@@ -376,6 +378,7 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Theklan
  */
 $messages['eu'] = array(
@@ -388,6 +391,7 @@ $messages['eu'] = array(
 	'vote-results-none' => 'Ez dago bozkarik oraindik ordu honetan.',
 	'vote-login' => '$1 behar duzu bozkatzeko.',
 	'vote-login-link' => 'sartu',
+	'vote-invalid-choice' => 'Eskuragarri dauden aukeretako bat aukeratu behar duzu.',
 );
 
 /** Extremaduran (Estremeñu)
@@ -817,6 +821,13 @@ $messages['mr'] = array(
 	'vote-invalid-choice' => 'तुम्ही उपलब्ध पर्यायांपैकीच एक पर्याय निवडला पाहिजे.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'vote' => 'Undi',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
@@ -954,6 +965,7 @@ $messages['pa'] = array(
  */
 $messages['pl'] = array(
 	'vote' => 'Głosuj',
+	'vote-desc' => 'Dostarcza prosty mechanizm wyborów',
 	'vote-header' => "Tutaj możesz zagłosować na '''Naczelnego Przywódcę Świata'''!",
 	'vote-current' => "Aktualnie Twój głos oddany jest za '''$1'''.",
 	'vote-legend' => 'Zagłosuj lub zmień głos',

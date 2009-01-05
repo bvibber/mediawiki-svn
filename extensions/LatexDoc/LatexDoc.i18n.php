@@ -438,6 +438,25 @@ $3',
 	'latexdoc-desc' => 'Collaboratief bewerken van LaTeX-documenten',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'latexdoc_no_text' => 'Sida inneheld ingen tekst, kan ikkje laga DVI',
+	'latexdoc_cant_create_dir' => 'Kan ikkje oppretta mellombels mappa $1',
+	'latexdoc_cant_write' => 'Kan ikkje skriva til fila $1',
+	'latexdoc_error' => 'LaTeX-feil
+
+Kommando: $1
+
+Resultat: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Hent DVI',
+	'latexdoc_get_pdf' => 'Hent PDF',
+	'latexdoc-desc' => 'Felles endring av LaTeX-dokument',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */
@@ -638,10 +657,14 @@ $3',
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
-	'latexdoc_get_dvi' => 'Dagetön DVI-i',
-	'latexdoc_get_pdf' => 'Dagetön PDF-i',
+	'latexdoc_no_text' => 'Pad ninädon vödemi nonik, el DVI no kanon pamekön',
+	'latexdoc_cant_create_dir' => 'Ragiviär nelaidüpik: $1 no kanon pajafön',
+	'latexdoc_cant_write' => 'Nos kanon paläükön ragive: $1',
+	'latexdoc_get_dvi' => 'Dagetön ragivi fomätü DVI',
+	'latexdoc_get_pdf' => 'Dagetön ragivi fomätü PDF',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

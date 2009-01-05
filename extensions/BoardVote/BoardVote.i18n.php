@@ -2355,6 +2355,93 @@ $messages['grc'] = array(
 	'right-boardvote' => 'Διαχειρίζεσθαι τὰς ἐκλογάς',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'boardvote' => 'Wahle zum Wikimedia-Kuratorium',
+	'boardvote-desc' => '[[meta:Board elections/2008|Wahle zum Wikimedia-Kuratorium]]',
+	'boardvote_entry' => '* [[Special:Boardvote/vote|Abstimme]]
+* [[Special:Boardvote/list|Stime wu bis jetz abgee wore sin]]
+* [[Special:Boardvote/dump|Verschlisselti Wahlyyträg]]',
+	'boardvote_intro' => '<p>Willchu zue dr Wahl 2008 vum Wikimedia-Kuratoriums, em Verwaltigsorgan vu dr Wikimedia-Foundation.
+S wird 1 Benutzer gwählt go d Gmeinschaft vu dr Wikimedianer in dr verschiidene Wikimedia-Projäkt z repräsentiere.
+Er wird debyy hälfe, di zuechimftig Richtig vu dr Wikimedia-Projäkt feschtzlege, einzeln un as Gruppe, un er repräsentiert <em>Dyyni</em> Inträsse un Belang gegeiber em Wikimedia-Kuratoriums.
+Er wird näbe vyyle andere Sache iber d Yynahme un Uusgabe entscheide.</p>
+
+<p>Bitte liis d Kandidatevorstellige un ihri Antworte uf Froge.
+E jede Kandidat isch e reschpektierte Benutzer, wu scho vyyl Zyt ufgwändet het go dr Projäkt e positiv Umfäld fir di frej Verbreitig vum mänschlige Wisse z verschaffe.</p>
+
+<p>Bitte tue d Kandidate noch Dyyne Vorstellige in e Zyylete stelle. Doderzue gisch e Nummere in d Chäschtli yy (1 = Favorit, 2 = zweite Favorit, …)
+Du derfsch di nämlig Rangnummere fir mehreri Kandidate verwände un Du derfsch Kandidate usloo.
+S wird dervu usgange, ass Du d Kandidate mit ere Rangnummere vorzeihsch vor däne ohni, un ass Du nit entschlosse bisch bi dr Kandidate ohni Rangnummere.</p>
+
+<p>Dr Gwinner vu dr Wahl wird noch dr Schulze-Method berächnet. Fir meh Informatione doderzue lueg di offiziälle Wahlsyte.</p>
+
+<p>Meh Informatione:</p>
+<ul>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008" class="external">Kuratoriumwahl 2008</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2008/Candidates" class="external">Kandidate</a></li>
+<li><a href="http://de.wikipedia.org/wiki/Schulze-Methode" class="external">Schulze-Method</a></li>
+</ul>',
+	'boardvote_intro_change' => '<p>Du hesch scho abgstimmt.
+Du chasch Dyyni Stimm(e) aber mit däm Formular ändere.
+Bitte tue d Kandidate in Dyynere Wunschreihefolg aaordne. Dodebyy stoht e chleineri Zahl fir dr Vorrang fir dä Kandidat.
+Du chasch di nämlig Zahl meh wie einem Kandidat gee un du chasch Kandidate usloo.</p>',
+	'boardvote_entered' => 'Dankschen, Dyyni Stimm isch gspycheret wore.
+
+Wenn Du wit, chasch die Detail feschthalte. Dyyni Abstimmigsufzeichnig isch:
+
+<pre>$1</pre>
+
+Die isch mit em Public Key vu dr Wahladministratore verschlisslet wore:
+
+<pre>$2</pre>
+
+Di verschlisslet Version chunnt do unte. Si wird [[Special:Boardvote/dump|effentli aazeigt]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Zrugg]]',
+	'boardvote_invalidentered' => '<p><strong>Fähler:</strong> D Reihefolg vu dr Kandidate muess in ganze, positive Zahle usdruckt wäre (1, 2, 3, …) oder loss  s/d Chäschtli läär.</p>',
+	'boardvote_nosession' => 'Dyyni Wikimedia-Benutzer-ID cha nit usegfunde wäre.
+Bitte mäld di in däm wiki aa, wu du zue dr Wahl zuegloo bisch un gang dert uf <nowiki>[[Special:Boardvote]]</nowiki>.
+Wähle derfe Benutzer, wu s Benutzerchonto vun ene zmindescht $1 {{PLURAL:$1|Bearbeitig|Bearbeitige}} vor em $2 ufwyyst, un wu zmindescht $3 {{PLURAL:$3|Bearbeitig|Bearbeitige}} zwische $4 un $5 gmacht hän.',
+	'boardvote_notloggedin' => 'Du bisch nit aagmäldet.
+Zum abstimme chenne, muesch aagmäldet syy un e Benutzerchonto verwände, wu zmindescht $1 {{PLURAL:$1|Bearbeitig|Bearbeitige}} vor em $2 demit gmacht wore {{PLURAL:$1|isch|sin}}, un wu zmindescht $3 {{PLURAL:$3|Bearbeitig|Bearbeitige}} zwische $4 un $5 demit gmacht wore {{PLURAL:$1|isch|sinn}}.',
+	'boardvote_notqualified' => 'Du bisch nit berächtigt an däre Wahl teilzneh.
+Zum abstimme chenne, muesch aagmäldet syy un e Benutzerchonto verwände, wu zmindescht $1 {{PLURAL:$1|Bearbeitig|Bearbeitige}} vor em $2 demit gmacht wore {{PLURAL:$1|isch|sin}}, un wu zmindescht $3 {{PLURAL:$3|Bearbeitig|Bearbeitige}} zwische $4 un $5 demit gmacht wore {{PLURAL:$1|isch|sin}}.',
+	'boardvote_novotes' => 'S het no niemer abgstimmt.',
+	'boardvote_time' => 'Zyt',
+	'boardvote_user' => 'Benutzer',
+	'boardvote_edits' => 'Bearbeitige',
+	'boardvote_days' => 'Täg',
+	'boardvote_ua' => 'User-Agent',
+	'boardvote_listintro' => '<p>Des isch e Lischt vu allene Stimme, wu bis jetz abgee wore sin. $1 fir di verschlisslete Date.</p>',
+	'boardvote_dumplink' => 'Do drucke',
+	'boardvote_submit' => 'Abstimme',
+	'boardvote_strike' => 'Stimm stryyche',
+	'boardvote_unstrike' => 'Stimmstryychig wider zruggneh',
+	'boardvote_needadmin' => 'Nume Wahladministratore chenne die Aktion durefiere.',
+	'boardvote_sitenotice' => '<a href="{{localurle:Special:Boardvote/vote}}">Wahle zum Wikimedia-Kuratorium</a>: D Wahl isch bis am 22. Juni megli.',
+	'boardvote_notstarted' => 'D Wahl het nonig aagfange',
+	'boardvote_closed' => 'D Wahl isch ume. S Ergebnis cha mer do aaluege: [http://meta.wikimedia.org/wiki/Board_elections/2008/Results im Meta-Wiki].',
+	'boardvote_edits_many' => 'vyyl',
+	'group-boardvote' => 'Wahl-Administratore',
+	'group-boardvote-member' => 'Wahl-Administrator',
+	'grouppage-boardvote' => '{{ns:project}}:Wahl-Administrator',
+	'boardvote_blocked' => 'Excusez, aber Du bisch in Dyynem Wiki gsperrt wore. Gsperrti Benutzer derfe nit bi dr Wahl mitmache.',
+	'boardvote_bot' => 'Excusez, aber Dyy Benutzerchonto isch im regischtrierte Wiki as Bötli uszeichnet. Bötli derfe nit abstimme.',
+	'boardvote_welcome' => "Willchu '''$1'''!",
+	'go_to_board_vote' => 'Wahle zum Wikimedia-Kuratorium 2008',
+	'boardvote_redirecting' => 'Zum e hecheri Sicherheit un Transparenz z gwährleischte, findet d Wahl uf eme externe, uuabhängig kontrollierte Server statt.
+
+Du wirsch in 20 Sekunde zue däm externe Server wytergleitet. [$1 Druck do], zum sofort dertane z chu.
+
+E Sicherheitswarnig iber e uusigniert Zertifikat cha aazeigt wäre',
+	'right-boardvote' => 'Wahle administriere',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -6315,13 +6402,15 @@ $messages['to'] = array(
 
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
+ * @author Joseph
  * @author Runningfridgesrule
  * @author Srhat
  */
 $messages['tr'] = array(
 	'boardvote' => 'Wikimedia Mütevelli Heyeti Seçimleri',
 	'boardvote_intro_change' => '<p>Daha evvel oy kullanmıştınız. Ama oyunuzu değiştirebilirsiniz. Aşağıdaki formu kullanarak, uygun olduğunu düşündüğünüz aday ya da adayların yanına işart koyup, oyunuzu gönderiniz.</p>',
-	'boardvote_notloggedin' => 'Oturum açmamışsınız. Oy kullanabilmek için, kullanıcı olarak $2 tarihinden önce en az $1 değişikliğe sahip olmanız şart. Ayrıca ilk değişikliğinizin $3 tarihinden önce gerçekleşmiş olması gerekmekte.',
+	'boardvote_notloggedin' => 'Oturum açmamışsınız.
+Oy kullanabilmek için, $2 tarihinden önce en az $1 {{PLURAL:$1|değişikliğe|değişikliğe}}, $4 ve $5 tarihleri arasında en az $3 {{PLURAL:$3|değişikliğe|değişikliğe}} sahip bir hesap kullanmanız gereklidir.',
 	'boardvote_novotes' => 'Henüz kimse oy kullanmadı.',
 	'boardvote_time' => 'Oy kullandığı tarih',
 	'boardvote_user' => 'Kullanıcı',
@@ -6627,7 +6716,8 @@ Is palisedon fomam pejüföl. [[Special:Boardvote/dump|Pojonon valikanes]].
 
 [[Special:Boardvote/entry|Geikön]]',
 	'boardvote_nosession' => 'Gebanadientif olik no kanon pafümükön. Nunädolös oli pö vük olik, e logolös eli <nowiki>[[Special:Boardvote]]</nowiki>. Mutol gebön kali labü keblünots pu $1 bü $2, e kela redakam balid äjenon bü $3.',
-	'boardvote_notloggedin' => 'No enunädol oli. Ad vögodön, mutol gebön kali labü keblünots pu $1 bü $2, e kela redakam balid äjenon bü $3.',
+	'boardvote_notloggedin' => 'No enunädol oli.
+Ad vögodön, mutol gebön kali labü {{PLURAL:$1|keblünot|keblünots}} pu $1 bü $2, e kela redakam balid äjenon bü $3.',
 	'boardvote_notqualified' => 'No dalol kompenön pö daväl at. Zesüdos, das ädunol redakamis $3 bü $2, e das redakam balid ola äjenon bü $5.',
 	'boardvote_novotes' => 'Nek nog evögodon.',
 	'boardvote_time' => 'Tim',

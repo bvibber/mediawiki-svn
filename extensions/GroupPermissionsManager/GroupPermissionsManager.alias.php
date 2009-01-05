@@ -92,6 +92,11 @@ $aliases['mk'] = array(
 	'SortPermissions' => array( 'ВидовиПермисии' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'GroupPermissions' => array( 'PermessiGrupp' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'GroupPermissions' => array( 'Groepsrechen' ),

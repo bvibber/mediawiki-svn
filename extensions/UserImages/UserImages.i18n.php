@@ -51,8 +51,9 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
+	'userimages-desc' => 'توليد معارض لصور يوزر متحملة مع <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'الصور المرفوعة بواسطة $1',
-	'userimages-noname' => 'اسم اسم يوزر مش صحيح أو لم يتم توفير واحد.',
+	'userimages-noname' => 'اسم يوزر مش صحيح أو لم يتم توفير واحد.',
 	'userimages-noimages' => 'ليس لدى $1 صور مرفوعة.',
 );
 
@@ -147,6 +148,13 @@ $messages['eo'] = array(
 	'userimages-caption' => 'Bildoj alŝutitaj de $1',
 	'userimages-noname' => 'Nevalida salutnomo aŭ nenio provizita.',
 	'userimages-noimages' => '$1 havas neniujn alŝutojn de bildoj.',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'userimages-caption' => 'Irudiak $1-(e)k igoak',
 );
 
 /** Extremaduran (Estremeñu)
@@ -548,6 +556,16 @@ $messages['vi'] = array(
 	'userimages-caption' => 'Các hình do $1 tải lên',
 	'userimages-noname' => 'Tên thành viên sai hoặc trống.',
 	'userimages-noimages' => '$1 chưa tải lên hình nào.',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'userimages-desc' => 'Jafön magodemis me magods pelöpüköl fa geban medü <code><nowiki><userimage /></nowiki></code>',
+	'userimages-caption' => 'Magods fa geban: $1 pelöpüköls',
+	'userimages-noname' => 'Gebananem no lonöföl u nonik pegivon.',
+	'userimages-noimages' => 'Geban: $1 elöpükon magodis nonik.',
 );
 
 /** Yue (粵語)

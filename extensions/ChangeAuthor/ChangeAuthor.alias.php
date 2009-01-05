@@ -82,6 +82,11 @@ $aliases['mk'] = array(
 	'ChangeAuthor' => array( 'ПроменаНаАвтор' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'ChangeAuthor' => array( 'BiddelAwtur' ),
+);
+
 /** Erzya (Эрзянь) */
 $aliases['myv'] = array(
 	'ChangeAuthor' => array( 'ПолавтомсСёрмадыцянть' ),

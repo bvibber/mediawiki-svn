@@ -112,6 +112,14 @@ $messages['es'] = array(
 	'catboxattop-categories' => 'Categorías',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'catboxattop-desc' => 'Kategoria taula gehitzen du orriaren goiko eskuineko aldera',
+	'catboxattop-categories' => 'Kategoriak',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

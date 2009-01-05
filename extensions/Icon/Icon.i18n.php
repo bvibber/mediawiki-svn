@@ -449,6 +449,14 @@ $messages['vi'] = array(
 	'icon-desc' => 'Cho phép bạn sử dụng hình ảnh làm biểu tượng và liên kết biểu tượng',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'icon-badimage' => 'Magod badik',
+	'icon-badwidth' => 'Vidot badik',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
 	'icon-badimage' => '圖像錯誤',

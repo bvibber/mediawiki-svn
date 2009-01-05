@@ -511,6 +511,13 @@ Bạn không thể tạo trang này, nhưng bạn có thể [{{fullurl:{{FULLPAG
 <createbox>break=no</createbox>",
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'createbox-create' => 'Jafön',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

@@ -69,6 +69,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -80,8 +81,8 @@ $messages['arz'] = array(
 	'onlinestatus-subtitle-online' => 'هذا المستخدم متصل حاليا',
 	'onlinestatus-tab' => 'حالة',
 	'onlinestatus-toggles-desc' => 'حالتك:',
-	'onlinestatus-toggles-explain' => 'هذا يسمح لك بالعرض للمستخدمين الآخرين إذا ما كنت موجودا أم لا بواسطة رؤية صفحة مستخدمك.',
-	'onlinestatus-toggles-show' => 'اعرض حالتى على الإنترنت على صفحة مستخدمي',
+	'onlinestatus-toggles-explain' => 'ده يسمح لك بالعرض لليوزرز التانين إذا ما كنت موجود أو مش موجود بواسطة رؤية صفحة يوزرك.',
+	'onlinestatus-toggles-show' => 'اعرض حالتى على الإنترنت على صفحة يوزرى',
 	'onlinestatus-toggle-offline' => 'غير متصل',
 	'onlinestatus-toggle-online' => 'متصل',
 	'tog-onlineOnLogin' => 'غير حالتى إلى موجود عند تسجيل الدخول',
@@ -741,5 +742,16 @@ $messages['vi'] = array(
 	'onlinestatus-toggles-show' => 'Hiển thị trạng thái trực tuyến trên trang thành viên của tôi',
 	'onlinestatus-toggle-offline' => 'Ngoại tuyến',
 	'onlinestatus-toggle-online' => 'Trực tuyến',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'onlinestatus-desc' => 'Läükon buükami ad jonön if geban anu komon u no komon in vük',
+	'onlinestatus-js-changed' => 'Stad olik pevotükon ad „$1“',
+	'onlinestatus-js-error' => 'Stadivotükam nemögon, völad: „$1“ no lonöfon',
+	'onlinestatus-tab' => 'Stad',
+	'onlinestatus-toggles-desc' => 'Stad olik:',
 );
 

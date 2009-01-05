@@ -445,6 +445,13 @@ $messages['vi'] = array(
 	'poem-desc' => 'Thêm thẻ <tt>&lt;poem&gt;</tt> để định dạng các bài thơ',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'poem-desc' => 'Läükon mali: <tt>&lt;poem&gt;</tt> pro fomät: poedot',
+);
+
 /** Yue (粵語)
  * @author Shinjiman
  */

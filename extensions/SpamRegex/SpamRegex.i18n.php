@@ -120,6 +120,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -127,9 +128,9 @@ $messages['arz'] = array(
 	'spamregex-desc' => '[[Special:SpamRegex|فلتر]] العبارات غير المرغوب فيها فى الصفحات المعدلة، بالاعتماد على التعبيرات المنتظمة',
 	'spamregex-error-unblocking' => 'خطأ رفع منع "$1". على الأرجح لا يوجد نمط كهذا.',
 	'spamregex-summary' => 'النص تم العثور عليه فى ملخص الصفحة.',
-	'spamregex-intro' => 'استخدم هذه الاستمارة لمنع تعبيرات من الحفظ فى نص صفحة بكفاءة.
-لو أن النص يحتوى على التعبير المعطى، لن يتم حفظ التغيير وسيتم عرض تفسير للمستخدم الذى حاول حفظ الصفحة.
-ينصح بالحذر، التعبيرات لا ينبغى أن تكون قصيرة جدا أو شائعة جدا.',
+	'spamregex-intro' => 'استخدم الاستمارة دى لمنع تعبيرات من الحفظ فى نص صفحة بكفاءة.
+لو أن النص يحتوى على التعبير المعطى، مش هايتحفظ التغيير و هايتعرض تفسير لليوزر اللى حاول حفظ الصفحة.
+ينصح بالحذر، التعبيرات لازم ماتكونش قصيرة جدا أو شائعة جدا.',
 	'spamregex-page-title' => 'منع تعبير منتظم لسبام التعبيرات غير المرغوب فيها',
 	'spamregex-currently-blocked' => "'''العبارات الممنوعة حاليا:'''",
 	'spamregex-move' => 'السبب الذى أدخلته يحتوى على عبارة ممنوعة.',
@@ -289,6 +290,14 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'spamregex-text' => '(Texto)',
 	'spamregex-summary-log' => '(Resumen)',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'spamregex-text' => '(Testu)',
+	'spamregex-summary-log' => '(Laburpen)',
 );
 
 /** Finnish (Suomi)
@@ -847,12 +856,15 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Derbeth
  * @author Leinad
  * @author Maikking
  * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
+	'spamregex' => 'Spam regex',
+	'spamregex-desc' => '[[Special:SpamRegex|Filtrowanie]] niepożądanych zwrotów na edytowanych stronach z użyciem wyrażeń regularnych',
 	'spamregex-currently-blocked' => "'''Aktualnie zablokowane wyrażenia:'''",
 	'spamregex-no-currently-blocked' => "'''Nie ma zablokowanych wyrażeń.'''",
 	'spamregex-page-title-1' => 'Blokuj frazę za pomocą wyrażenia regularnego',
@@ -861,6 +873,7 @@ $messages['pl'] = array(
 	'spamregex-block-success' => 'Zablokowano',
 	'spamregex-block-message' => "Wyrażenie '''$1''' zostało zablokowane.",
 	'spamregex-warning-1' => 'Podaj wyrażenie do zablokowania.',
+	'spamregex-error-1' => 'Nieprawidłowe wyrażenie regularne.',
 	'spamregex-already-blocked' => '„$1” jest już zablokowany',
 	'spamregex-phrase-block' => 'Wyrażenie do zablokowania:',
 	'spamregex-block-submit' => 'Blokuj&nbsp;to&nbsp;wyrażenie',

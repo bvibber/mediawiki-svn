@@ -1003,10 +1003,21 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'importfreeimages' => 'Nüveigön magodis libik',
+	'importfreeimages-desc' => 'Mögükon [[Special:ImportFreeImages|nüveigi magodas labü däl pötik]] se [http://www.flickr.com flickr]',
+	'importfreeimages_description' => 'Pad at dälon ole ad sukön magodis labü däl pötik se el flickr ed ad nuveigön onis ini vük olik.',
+	'importfreeimages_noapikey' => 'No evälol parametis kika-API olik pro el Flickr.
+Ad dunön osi, dagetolös kiki-API [http://www.flickr.com/services/api/misc.api_keys.html isao] e parametükolös eli wgFlickrAPIKey in el ImportFreeImages.php.',
+	'importfreeimages_nophotosfound' => 'Magods nonik petuvons ma sukaparamets: „$1“. Steifülolös nogna.',
+	'importfreeimages_invalidurl' => 'El URL „$1“ no labon magodi lonöföl ela Flickr.',
 	'importfreeimages_owner' => 'Lautan',
+	'importfreeimages_importthis' => 'nüveigön atosi',
 	'importfreeimages_next' => 'Sököl $1',
 	'importfreeimages_filefromflickr' => "$1 fa geban: <b>[$2]</b> de 'flickr'. 'URL' rigik",
+	'importfreeimages_promptuserforfilename' => 'Penolös zeilaragivanem:',
+	'importfreeimages_returntoform' => "U välolös <a href='$1'>is</a> me mugaparat ad geikön lü sukaseks olik",
 );
 

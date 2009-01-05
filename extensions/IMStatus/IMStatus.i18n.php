@@ -460,6 +460,7 @@ $messages['lb'] = array(
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'oder',
 	'imstatus_your_name' => 'ären $1 Numm',
+	'imstatus_gtalk_code' => 'Äre Google Talk Code',
 	'imstatus_gtalk_height' => 'Höicht vun der Këscht a Pixel.',
 	'imstatus_gtalk_width' => 'Breet vun der Këscht, a Pixel.',
 	'imstatus_icq_id' => 'är ICQ ID',

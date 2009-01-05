@@ -1431,6 +1431,51 @@ $messages['tg-cyrl'] = array(
 	'review_comment' => 'Тавзеҳ',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'review_sidebar_title' => 'Balik-tanawin (suriin)',
+	'review-desc' => 'Ang muling binuhay na katangiang-kasangkapang [[Special:Review|pampagpapatunay]].',
+	'review_topics' => "# Ang sumusunod ay isang talaan ng mga paksa at mga saklaw para sa karugtong na pagsusuri.
+# Bawat paksa ay pinakahuluganan ng isang guhit/hanay ng limang mga halaga, inihihiwalay ng ':' (hindi pinapansin ang lahat ng iba pang mga guhit/hanay).
+# Ang pagkakasunud-sunod ay: susi ng bilang (>0), pangalan, pinakamataas na sakop (>1; 2=oo/hindi), kahulugan ng pinakamababang halaga (halimbawa na ang 'masama'), kahulugan ng pinakamataas na halaga (halimbawa na ang 'mabuti').
+1:Kalidad/antas ng uri:5:masama:mabuti
+2:Nakahanda na para sa 1.0:2:hindi:oo",
+	'review_topic_page' => 'Suriin ang mga paksa',
+	'review_sidebar_explanation' => "Palagiang nangangahulugang 'walang pananaw' ang nasa pinakakaliwang kahong lagayan ng tsek.",
+	'review_save' => 'Itago/itabi ang pagsusuri',
+	'review_your_review' => 'Ang pagsusuri mo ng pahina/pagbabagong ito:',
+	'review_sidebar_you_have_other_reviews_for_this_article' => "Nasuri mo na ang iba pang mga bersyon ng pahinang ito. Ang iba mo pang pagpapataw/paglalagay ng mga halaga ay isasanib sa loob ng isang ito kung saan mo pinili ang 'walang pananaw'.",
+	'review_page_link' => 'suriin ang mga estadistika',
+	'review_sidebar_final' => 'Para sa dato ng pagsusuri sa tanawin ng pahinang ito, tingnan ang $1 nito',
+	'review_for_page' => 'Pagsusuri para sa pahinang "$1"',
+	'review_for_user' => 'Pagsusuri para sa tagagamit na "$1"',
+	'review_error' => 'Mayroong hindi tama!',
+	'review_no_reviews_for_page' => 'Pangkasalukuyang walang mga pagsusuri para sa "$1".',
+	'review_total_statistics' => 'Kabuoan',
+	'review_statistics_left_corner' => 'Pagbabago',
+	'review_version_link' => 'Pagbabagong #$1',
+	'review_statistic_cell' => 'Balasak (pinatakang halaga): $1 ng $2<br />($4 mga tagagamit, $5 mga hindi nagpapakilala/anonimo)',
+	'review_version_statistic_cell' => '$1 ng $2',
+	'review_version_reviews_link' => '<small>(mga pagsusuri ng bersyon)</small>',
+	'review_concerns_page' => 'Ang pagsusuring ito ay tungkol sa pahinang "$1".',
+	'review_concerns_user' => 'Tungkol ito sa mga pagsusuri ng tagagamit na si "$1".',
+	'review_user_reviews' => '<small>(mga pagsusuri ng tagagamit na ito)</small>',
+	'review_user_page_list' => 'Sinuri ng tagagamit ang sumusunod na mga pahina:',
+	'review_user_details_link' => '(mga detalye)',
+	'review_do_merge' => 'Isanib ang mga pagsusuri ko ng iba pang mga pagbabago ng pahinang ito patungo sa loob ng isang ito',
+	'review_has_been_stored' => "<span id='review_has_been_stored'>Naitabi/naitago na ang pagsusuri mo!</span>",
+	'revision_review_this_page_version_link' => 'Suriin ang bersyong ito ng pahina.',
+	'review_page_review' => 'Pagsusuri ng pahinang "$1"',
+	'review_blocked' => 'Hinadlangan ka, lumisan ka.',
+	'review_wrong_namespace' => 'Hindi masusuri ang mga pahinang nasa loob ng espasyo ng pangalang ito!',
+	'review_topic' => 'Paksa',
+	'review_no_opinion' => 'Walang pananaw (opinyon)',
+	'review_rating' => 'Kinalalagyan sa palasukatan',
+	'review_comment' => 'Kumento (puna)',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
@@ -1475,6 +1520,13 @@ $messages['vi'] = array(
 	'review_no_opinion' => 'Không có ý kiến',
 	'review_rating' => 'Xếp hạng',
 	'review_comment' => 'Bình luận',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'review_total_statistics' => 'Valod',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

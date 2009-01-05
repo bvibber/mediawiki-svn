@@ -127,6 +127,7 @@ $4',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -145,7 +146,7 @@ $4',
 	'todo-invalid-item' => 'مدخلة مفقودة أو غير صحيحة',
 	'todo-update-else-item' => 'محاولة تحديث مدخلات شخص آخر',
 	'todo-unrecognize-type' => 'نوع غير متعرف عليه',
-	'todo-user-invalide' => 'للعمل معطاة مستخدم غير صحيح، مفقود، أو لا يمكن إضافته للعمل.',
+	'todo-user-invalide' => 'للعمل معطاة يوزر مش  صحيح، مفقود، أو مش ممكن إضافته للعمل.',
 	'todo-item-list' => 'مدخلاتك',
 	'todo-no-item' => 'لا مدخلات للعمل.',
 	'todo-invalid-owner' => 'مالك غير صحيح لهذه المدخلة',
@@ -326,6 +327,19 @@ $messages['es'] = array(
 	'todo-new-queue' => 'nuevo',
 	'todo-list-cancel' => 'Cancelar',
 	'todo-form-details' => 'Detalles:',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'todo-new-queue' => 'berria',
+	'todo-add-queue' => 'Ilarara gehitu...',
+	'todo-move-queue' => 'Ilarara mugitu...',
+	'todo-list-change' => 'Aldatu',
+	'todo-list-cancel' => 'Utzi',
+	'todo-issue-summary' => 'Gaiaren laburpena:',
+	'todo-form-details' => 'Xehetasunak:',
 );
 
 /** French (Français)
@@ -1161,10 +1175,12 @@ $4',
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
 	'todo-new-queue' => 'yeni',
+	'todo-list-cancel' => 'İptal',
 );
 
 /** Vietnamese (Tiếng Việt)

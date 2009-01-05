@@ -503,6 +503,21 @@ $messages['et'] = array(
 	'usagestatisticsintervalmonth' => 'Kuu',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'usagestatisticsinterval' => 'Bitartea',
+	'usagestatisticstype' => 'Mota',
+	'usagestatisticsstart' => 'Hasiera data',
+	'usagestatisticsend' => 'Bukaera data',
+	'usagestatisticssubmit' => 'Estatistikak sortu',
+	'usagestatisticsintervalday' => 'Eguna',
+	'usagestatisticsintervalweek' => 'Astea',
+	'usagestatisticsintervalmonth' => 'Hilabetea',
+	'usagestatisticscalselect' => 'Aukeratu',
+);
+
 /** Finnish (Suomi)
  * @author Japsu
  * @author Mobe

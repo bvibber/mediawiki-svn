@@ -57,6 +57,11 @@ $aliases['mk'] = array(
 	'FindSpam' => array( 'НајдиСпем' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'FindSpam' => array( 'FittexSpam' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'FindSpam' => array( 'Spam_vienen' ),

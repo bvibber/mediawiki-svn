@@ -991,9 +991,11 @@ $messages['szl'] = array(
 
 /** Tamil (தமிழ்)
  * @author Trengarasu
+ * @author Ulmo
  */
 $messages['ta'] = array(
 	'dt_viewxml_categories' => 'பகுப்புகள்',
+	'dt_xml_namespace' => 'பெயர்வெளி',
 );
 
 /** Telugu (తెలుగు)
@@ -1084,10 +1086,22 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'dt-desc' => 'Dälon nüveigi e seveigi nünodas peleodüköl in samafomotilüvoks paninädöls',
+	'viewxml' => 'Logön eli XML',
+	'dt_viewxml_docu' => 'Välolös bevü klads e nemaspads foviks utosi, kelosi vilol logön fomätü XML.',
 	'dt_viewxml_categories' => 'Klads',
+	'dt_viewxml_namespaces' => 'Nemaspads',
+	'dt_viewxml_simplifiedformat' => 'Fomät pebalugüköl',
+	'dt_xml_namespace' => 'Nemaspad',
+	'dt_xml_page' => 'Pad',
+	'dt_xml_field' => 'Fel',
 	'dt_xml_name' => 'Nem',
+	'dt_xml_title' => 'Tiäd',
+	'dt_xml_id' => 'Dientifanüm',
+	'dt_xml_freetext' => 'Vödem libik',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

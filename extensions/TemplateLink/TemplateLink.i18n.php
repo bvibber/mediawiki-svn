@@ -122,6 +122,13 @@ $messages['eo'] = array(
 	'templatelink_newtitle' => '$1 (transinkluzivita)',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'templatelink' => 'Txantiloi lotura',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Sherbrooke

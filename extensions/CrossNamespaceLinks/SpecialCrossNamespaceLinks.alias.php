@@ -102,6 +102,11 @@ $aliases['ms'] = array(
 	'CrossNamespaceLinks' => array( 'Pautan silang ruang nama' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'CrossNamespaceLinks' => array( 'ĦoloqSpazjiTal-Isem' ),
+);
+
 /** Low German (Plattdüütsch) */
 $aliases['nds'] = array(
 	'CrossNamespaceLinks' => array( 'Lenken in annere Naamrüüm' ),

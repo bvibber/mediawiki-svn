@@ -1274,13 +1274,19 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
 	'contributors' => 'Keblünans',
+	'contributors-desc' => 'Naböfodönuam keblünanas cifik pada',
 	'contributors-toolbox' => 'Keblünans cifik',
+	'contributors-legend' => 'Lisedon keblünanas cifik pada',
 	'contributors-target' => 'Tiäd:',
 	'contributors-submit' => 'Jonolöd',
+	'contributors-subtitle' => 'Keblünans cifik lü $1',
+	'contributors-others-long' => '{{PLURAL:$1|Dabinon keblünan votik|Dabinons keblünans votik $1}} pada at.',
 	'contributors-others' => 'e votik {{PLURAL:$1|bal|$1}}',
+	'contributors-badtitle' => 'Tiäd no lonöfon.',
 	'contributors-nosuchpage' => 'Pad: $1 no dabinon.',
 );
 

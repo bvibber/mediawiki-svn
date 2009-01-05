@@ -44,6 +44,17 @@ $messages['arz'] = array(
 	'gur-rightslog-name' => 'سجل الحقوق العالمي',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'globaluserrights' => 'Управление на глобалните потребителски права',
+	'gur-desc' => 'Лесна администрация на [[Special:GlobalUserRights|глобалните потребителски права]]',
+	'gur-rightslog-name' => 'Дневник на глобалните права',
+	'gur-rightslog-header' => 'Тази страница съдържа дневник на промените в глобалните права.',
+	'right-userrights-global' => 'Управление на глобалните потребителски права',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -90,6 +101,18 @@ $messages['eo'] = array(
 	'gur-rightslog-header' => 'Jen protokolo pri ŝanĝoj al ĝeneralaj rajtoj.',
 	'gur-rightslog-entry' => 'ŝanĝis membrecon de ĝenerala grupo por $1 de $2 al $3',
 	'right-userrights-global' => 'Administri ĝeneralajn uzulajn rajtojn',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'globaluserrights' => 'Globaalien käyttöoikeuksienhallinta',
+	'gur-desc' => 'Helppo työkalu [[Special:GlobalUserRights|globaalikäyttöoikeuksien]] hallintaan.',
+	'gur-rightslog-name' => 'Globaalikäyttöoikeusloki',
+	'gur-rightslog-header' => 'Tämä on loki muutoksista käyttäjien globaaleihin käyttöoikeuksiin.',
+	'gur-rightslog-entry' => 'muutti käyttäjän $1 globaalioikeuksia ryhmistä $2 ryhmiin $3',
+	'right-userrights-global' => 'Hallita globaaleja käyttöoikeuksia',
 );
 
 /** French (Français)

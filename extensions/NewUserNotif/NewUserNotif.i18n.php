@@ -61,10 +61,10 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'newusernotifsubj' => 'إخطار يوزر جديد ل$1',
-	'newusernotif-desc' => 'يرسل إخطار بريد إلكترونى عندما يتم إنشاء حسابات مستخدمين',
-	'newusernotifbody' => 'مرحبا يا $1،
+	'newusernotif-desc' => 'يبعت إيميل لما يتم إنشاء حسابات يوزرز',
+	'newusernotifbody' => 'اهلا و سهلا يا $1،
 
-حساب مستخدم جديد، $2، تم إنشاؤه على $3 فى $4.',
+حساب يوزر  جديد، $2، إتفتح على $3 فى $4.',
 );
 
 /** Kotava (Kotava)

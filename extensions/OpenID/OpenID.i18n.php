@@ -103,9 +103,11 @@ There are many [http://wiki.openid.net/Public_OpenID_providers Public OpenID pro
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'openid-desc' => 'Short description of the Openid extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'openidtrustinstructions' => '* $1 is a trust root. A trust root looks much like a normal URL, but is used to describe a set of URLs. Trust roots are used by OpenID to verify that a user has approved the OpenID enabled website.',
 	'openidoptional' => '{{Identical|Optional}}',
 	'openidemail' => '{{Identical|E-mail address}}',
 	'openidlanguage' => '{{Identical|Language}}',
@@ -224,6 +226,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -277,7 +280,7 @@ $messages['arz'] = array(
 
 لو كنت تريد استخدام الهوية المفتوحة لتسجيل الدخول فى المستقبل، يمكنك [[Special:OpenIDConvert|تحويل حسابك لاستخدام الهوية المفتوحة]].",
 	'tog-hideopenid' => 'أخف هويتك <a href="http://openid.net/">هويتك المفتوحة</a> على صفحتك الشخصية، لو سجلت الدخول بالهوية المفتوحة.',
-	'openidnousername' => 'لا اسم مستخدم تم تحديده.',
+	'openidnousername' => 'مافيش اسم يوزر تم تحديده.',
 	'openidbadusername' => 'اسم المستخدم المحدد سيء.',
 	'openidautosubmit' => 'هذه الصفحة تحتوى على إستمارة ينبغى أن يتم إرسالها تلقائيا لو أنك لديك الجافاسكريبت مفعلة.
 لو لا، جرب زر \\"Continue\\".',
@@ -824,6 +827,9 @@ Voit valita omasi alla olevista vaihtoehdoista.',
 	'openidconvertsuccess' => 'Muutettiin onnistuneesti OpenID:hen.',
 	'openidconvertyourstext' => 'Tämä on jo OpenID:si.',
 	'openidconvertothertext' => 'Tämä on jonkun muun OpenID.',
+	'openidalreadyloggedin' => "'''Olet jo kirjautuneena sisään, $1!'''
+
+Jos haluat käyttää OpenID:tä kirjautumiseen jatkossa, voit [[Special:OpenIDConvert|muuntaa tunnuksesi käyttämään OpenID:tä]].",
 	'tog-hideopenid' => 'Piilota <a href="http://openid.net/">OpenID:si</a> käyttäjäsivultani, jos kirjaudun sisään OpenID-tunnuksilla.',
 	'openidnousername' => 'Käyttäjätunnus puuttuu.',
 	'openidbadusername' => 'Käyttäjätunnus on virheellinen.',
@@ -2324,6 +2330,8 @@ $messages['ps'] = array(
 	'openidfullname' => 'بشپړ نوم',
 	'openidemail' => 'برېښليک پته',
 	'openidlanguage' => 'ژبه',
+	'openidchooseinstructions' => 'ټولو کارونکيو ته د يوه کورني نوم اړتيا شته؛
+تاسو يو نوم د لاندينيو خوښو نه ځانته ټاکلی شی.',
 	'openidchoosefull' => 'ستاسو بشپړ نوم ($1)',
 	'openidchoosemanual' => 'ستاسو د خوښې يو نوم:',
 	'openidchoosepassword' => 'پټنوم:',
@@ -2336,6 +2344,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'openid-desc' => 'Autentique-se no wiki com um [http://openid.net/ OpenID], e autentique-se noutros sítios que usem OpenID com uma conta de utilizador wiki',
 	'openidlogin' => 'Autenticação com OpenID',
 	'openidfinish' => 'Terminar autenticação OpenID',
 	'openidserver' => 'Servidor OpenID',
@@ -2346,8 +2355,11 @@ $messages['pt'] = array(
 	'openidpermission' => 'Erro de permissões OpenID',
 	'openidpermissiontext' => 'O OpenID fornecido não está autorizado a autenticar-se neste servidor.',
 	'openidcancel' => 'Verificação cancelada',
+	'openidcanceltext' => 'A verificação da URL OpenID foi cancelada.',
 	'openidfailure' => 'Verificação falhou',
+	'openidfailuretext' => 'A verificação da URL OpenID falhou. Mensagem de erro: "$1"',
 	'openidsuccess' => 'Verificação com sucesso',
+	'openidsuccesstext' => 'A verificação da URL OpenID foi bem sucedida.',
 	'openidusernameprefix' => 'UtilizadorOpenID',
 	'openidserverlogininstructions' => 'Introduza a sua palavra-chave abaixo para se autenticar em $3 como utilizador $2 (página de utilizador $1).',
 	'openidtrustinstructions' => 'Verifique se pretender partilhar dados com $1.',

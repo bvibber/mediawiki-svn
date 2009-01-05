@@ -162,6 +162,15 @@ $messages['es'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Agregar páginas a la lista de seguimiento',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'watchsubpages' => 'Ikusi azpiorriak',
+	'watchsubpages-addtitles' => 'Gehitu orriak',
+	'watchsubpages-addtitlestowatchlist' => 'Gehitu orriak jarraipen zerrendara',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike

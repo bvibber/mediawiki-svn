@@ -101,6 +101,7 @@ $messages['ar'] = array(
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ouda
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'deletebatch' => 'حذف باتش من الصفحات',
@@ -117,7 +118,7 @@ $messages['arz'] = array(
 	'deletebatch-or' => '<b>أو</b>',
 	'deletebatch-page' => 'الصفحات للحذف',
 	'deletebatch-reason' => 'سبب الحذف',
-	'deletebatch-processing' => 'جارى حذف الصفحات',
+	'deletebatch-processing' => 'مسح الصفحات $1 شغال',
 	'deletebatch-from-file' => 'من قائمة ملف',
 	'deletebatch-from-form' => 'من استمارة',
 	'deletebatch-success-subtitle' => 'ل$1',
@@ -1008,6 +1009,18 @@ Tập tin đã tải nên có chứa tên trang và lý do tùy chọn phân tá
 	'deletebatch-select-script' => 'xóa script của trang',
 	'deletebatch-select-yourself' => 'bạn',
 	'deletebatch-no-page' => 'Xin hãy chỉ định ít nhất một trang để xóa HOẶC chọn một tập tin có chứa danh sách các trang.',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'deletebatch-button' => 'Moükön',
+	'deletebatch-caption' => 'Padalised',
+	'deletebatch-or' => '<b>u</b>',
+	'deletebatch-page' => 'Pads moükabik',
+	'deletebatch-reason' => 'Kod moükama',
+	'deletebatch-select-yourself' => 'ol',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

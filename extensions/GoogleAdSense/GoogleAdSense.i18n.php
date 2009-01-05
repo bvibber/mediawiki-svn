@@ -284,6 +284,13 @@ $messages['th'] = array(
 	'googleadsense-desc' => 'เพิ่ม [http://www.google.com/adsense กูเกิลแอดเซนส์ (Google AdSense)] ไว้ที่แถบด้านข้าง',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'googleadsense-desc' => "Kenar çubuğuna [http://www.google.com/adsense Google AdSense]'ı ekler",
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

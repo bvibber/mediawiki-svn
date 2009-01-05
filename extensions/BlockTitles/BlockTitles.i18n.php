@@ -589,6 +589,15 @@ $messages['sv'] = array(
 	'block_title_error' => 'Det är inte tillåtet att spara en sida under denna titel.',
 );
 
+/** Tamil (தமிழ்)
+ * @author Ulmo
+ */
+$messages['ta'] = array(
+	'block_title_error_page_title' => 'தடுக்கப்பட்டுள்ள தலைப்பு',
+	'block_title_error-desc' => 'குறிப்பிட்ட தலைப்புள்ள பக்கங்களை சேமிப்பதையோ அல்லது உருவாக்குவதையோ தடுப்பதற்கான அடிப்படை வழி ஒன்றினை தருகின்றது.',
+	'block_title_error' => 'மன்னிக்கவும், இந்த பக்கத்தின் தலைப்பை சேமிக்க அனுமதியில்லை.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author వైజాసత్య
@@ -643,6 +652,15 @@ $messages['vi'] = array(
 	'block_title_error_page_title' => 'Tên trang bị khóa',
 	'block_title_error-desc' => 'Cung cấp cách cơ bản để ngăn chặn không cho lưu hoặc tạo ra những trang với tựa đề nhất định',
 	'block_title_error' => 'Xin lỗi, không được phép lưu tên trang này.',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'block_title_error_page_title' => 'Tiäd pebloköl',
+	'block_title_error-desc' => 'Gevon mögi ad neletön dakipi u jafi padas labü tiäds semik',
+	'block_title_error' => 'Pidö! Tiäd pada at no dalon padakipön.',
 );
 
 /** Yue (粵語)

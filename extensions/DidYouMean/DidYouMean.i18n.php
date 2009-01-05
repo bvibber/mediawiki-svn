@@ -96,6 +96,13 @@ $messages['es'] = array(
 	'didyoumean-desc' => 'Añade enlaces a páginas con títulos «similares»',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'didyoumean-desc' => '"antzeko" izenburua duten orrialdetara loturak gehitzen ditu',
+);
+
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
@@ -308,6 +315,13 @@ $messages['tg-cyrl'] = array(
 	'didyoumean-desc' => 'Ба саҳифаҳои бо унвонҳои "монандӣ" пайвандҳо илова кунед',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'didyoumean-desc' => 'Sayfalara "benzer" başlıklarda bağlantılar ekler',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */
@@ -327,6 +341,13 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'didyoumean-desc' => 'Thêm liên kết vào các trang có tên “tương tự”',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'didyoumean-desc' => 'Läükon yümis ad pads labü tiäds "sümik"',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -271,6 +271,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'grouppermissions-comment' => 'Камэнтар:',
+	'grouppermissions-sp-save' => 'Захаваць',
 );
 
 /** Bulgarian (Български)
@@ -1196,7 +1197,11 @@ $messages['kri'] = array(
 $messages['ksh'] = array(
 	'grouppermissions' => 'Jroppe-Rääschte Verwallde',
 	'sortpermissions' => 'Rääschte zotteere',
+	'removeunusedgroups' => 'Nit jebruchte Jruppe fott schmiiße',
 	'grouppermissions-desc' => 'Donn de Jroppe-Rääschte övver en [[Special:GroupPermissions|Söndersigg]] verwallde.',
+	'grouppermissions-desc4' => 'Määt exta Endrääsch onger „{{int:toolbox}}“ müjjelesch',
+	'grouppermissions-desc-nsm' => 'Donn de Appachtemangs övver en Söndersigg verwallde',
+	'grouppermissions-header' => 'Do kanns op dä Sigg hee de Rääschde vun dä Metmaacher en dä divärse Metmaacherjroppe ändere.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1588,6 +1593,13 @@ $messages['ro'] = array(
 	'right-search' => 'Caută în wiki',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'grouppermissions-sp-save' => 'Reggistre',
+);
+
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv
@@ -1810,6 +1822,30 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'grouppermissions-never' => 'Nunka',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'grouppermissions-search' => 'Grup:',
+	'grouppermissions-searchlabel' => 'Sukön grupi',
+	'grouppermissions-deletelabel' => 'Moükön grupi',
+	'grouppermissions-add' => 'Läükön grupi',
+	'grouppermissions-delete' => 'Moükön grupi',
+	'grouppermissions-never' => 'Neai',
+	'grouppermissions-log-add' => 'grup: „$2“ peläükon',
+	'grouppermissions-log-delete' => 'group: „$2“ pemoükon',
+	'grouppermissions-sp-save' => 'Dakipön',
+	'grouppermissions-sp-remove' => 'moükön',
+	'grouppermissions-rug-header' => 'Dalol gebön padi at ad moükön gebanis se grups no pageböls (pemoüköls).',
+	'grouppermissions-rug-confirm' => 'Moükön gebanis se grups no pageböls',
+	'right-info' => 'Logön padanünis',
+	'right-history' => 'Logön padajenotemis',
+	'right-search' => 'Sukön in vük',
+	'right-recentchanges' => 'Logön votükamis brefabüik',
+	'right-edittalk' => 'Redakön bespikapadis',
+	'right-edit-new' => 'Redakön padis (kels no binons bespikapads)',
 );
 
 /** Yiddish (ייִדיש)

@@ -203,6 +203,30 @@ $messages['de'] = array(
 	'right-passwordreset' => 'Passwort eines Benutzers zurücksetzen ([[Special:PasswordReset|Spezialseite]])',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'passwordreset' => 'Gronidło slědk stajiś',
+	'passwordreset-desc' => "[[Special:PasswordReset|Staja gronidła wikijowego wužywarja slědk]] - pomina se priwilegije 'passwordreset'",
+	'passwordreset-invalidusername' => 'Njepłaśiwe wužywarske mě',
+	'passwordreset-emptyusername' => 'Prozne wužywarske mě',
+	'passwordreset-nopassmatch' => 'Gronidła se njekšyju',
+	'passwordreset-badtoken' => 'Njepłaśiwy wobźěłowański token',
+	'passwordreset-username' => 'Wužywarske mě:',
+	'passwordreset-newpass' => 'Nowe gronidło:',
+	'passwordreset-confirmpass' => 'Gronidło wobkšuśiś:',
+	'passwordreset-submit' => 'Gronidło slědk stajiś',
+	'passwordreset-success' => 'Gronidło jo se slědk stajiło za wužywarski ID: $1',
+	'passwordreset-disableuser' => 'Wužywarske konto znjemóžniś?',
+	'passwordreset-disableuserexplain' => ')staja njepłaśiwy gronidłowy haš - wužywaŕ njamóžo se pśizjawiś)',
+	'passwordreset-disablesuccess' => 'Wužywarske konto jo se znjemóžniło za wužywarski ID: $1',
+	'passwordreset-accountdisabled' => 'Konto jo se znjemóžniło',
+	'disabledusers' => 'Znjemóžnjone wužywarje',
+	'disabledusers-summary' => 'To jo lisćina wužywarjow, kótarež su se znjemóžnili pśez PasswordReset.',
+	'right-passwordreset' => 'Gronidło wužywarja slědk stajiś ([[Special:PasswordReset|specialny bok]])',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  */

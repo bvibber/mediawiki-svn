@@ -101,6 +101,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -112,10 +113,10 @@ $messages['arz'] = array(
 	'spamdifftool_confirm' => "أكد أنك تريد إضافة هذه المدخلات إلى قائمة السبام السوداء.
 (اضغط <a href='$1' target='new'>هنا</a> للإبلاغ عن مشكلة.)",
 	'spamdifftool_summary' => 'إضافة إلى قائمة السبام السوداء',
-	'spamdifftool_urls_detected' => 'المسارات التالية تم التعرف عليها فى التعديل(ات)، أيها تود إضافتها إلى قائمة السبام السوداء؟
-هذه الخيارات مرتبة من الأكثر منعا إلى الأقل منعا، منع النطاق بأكمله سيمنع كل الوصلات لأى شيء من هذا النطاق.
+	'spamdifftool_urls_detected' => 'المسارات التالية تم التعرف عليها فى التعديل(ات)، أى واحده عاوز تيضفها لقائمة السبام السودا؟
+الخيارات دى مرتبة من الأكثر منع للأقل منع، منع النطاق بأكمله هايمنع كل الوصلات لأى شىء من  النطاق ده.
 
-تأكد من عدم منع كل النطاقات التى تستضيف حسابات مستخدمين، مثل blogpost.com، geocities.com، إلى آخره.',
+اتأكد من عدم منع كل النطاقات اللى تستضيف حسابات يوزرز، زى blogpost.com، geocities.com، لآخره.',
 	'spamdifftool_no_urls_detected' => "لم يتم التعرف على أية مسارات.
 اضغط <a href='$1'>هنا</a> للعودة.",
 	'spamdifftool_spam_link_text' => 'أضف إلى السبام',
@@ -293,6 +294,14 @@ $messages['es'] = array(
 	'spamdifftool_option_none' => 'nada',
 	'spamdifftool_block' => 'Bloqueo:',
 	'spamdifftool_submit_buttom' => 'Enviar',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'spamdifftool_spam_link_text' => 'spamera gehitu',
+	'spamdifftool_option_none' => 'ezer',
 );
 
 /** French (Français)

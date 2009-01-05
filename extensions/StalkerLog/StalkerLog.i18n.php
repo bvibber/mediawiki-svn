@@ -31,14 +31,15 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'stalkerlog-desc' => 'يضيف مدخلة إلى [[Special:Log]] عندما يقوم شخص ما بتسجيل الدخول أو الخروج',
 	'stalkerlog-log-login' => 'مسجل الدخول.',
 	'stalkerlog-log-logout' => 'مسجل الخروج.',
-	'stalkerlog-log-type' => 'سجل تسجيل المستخدمين',
-	'stalkerlog-log-text' => 'هذا سجل بعمليات تسجيل الدخول والخروج للمستخدمين.',
+	'stalkerlog-log-type' => 'سجل تسجيل اليوزرز',
+	'stalkerlog-log-text' => 'ده سجل بعمليات تسجيل الدخول والخروج لليوزرز.',
 );
 
 /** Bulgarian (Български)
@@ -93,6 +94,14 @@ $messages['eo'] = array(
 	'stalkerlog-log-logout' => 'elsalutis.',
 	'stalkerlog-log-type' => 'Protokolo pri aŭtentokontrolo',
 	'stalkerlog-log-text' => 'Jen protokolo pri ensalutoj kaj elsaltuoj de uzantoj.',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'stalkerlog-log-login' => 'Saio-hasiera egina.',
+	'stalkerlog-log-logout' => 'Saio-irteera egina.',
 );
 
 /** Finnish (Suomi)

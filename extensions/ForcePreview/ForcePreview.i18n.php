@@ -98,12 +98,13 @@ $messages['dsb'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Smeira
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'forcepreview' => 'Konservu paĝon (post rigardanta ĝin)',
 	'forcepreview-desc' => 'Devigi antaŭrigardon por senrajtajn uzantojn',
-	'right-forcepreviewexempt' => 'Povas konservi sen uzante Antaŭvidon',
+	'right-forcepreviewexempt' => 'Povas konservi neuzinte Antaŭvidon',
 );
 
 /** Finnish (Suomi)
@@ -410,6 +411,15 @@ $messages['vi'] = array(
 Lưu trang (sau khi xem thử)',
 	'forcepreview-desc' => 'Bắt buộc xem thử đối với thành viên không đủ quyền',
 	'right-forcepreviewexempt' => 'Có thể lưu mà không sử dụng Xem trước',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'forcepreview' => 'Dakipön padi (gebölo büologedi)',
+	'forcepreview-desc' => 'Mütön gebanis no peprivilegölis ad büologedön',
+	'right-forcepreviewexempt' => 'Dalon dakipön nes gebon Büologedi',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

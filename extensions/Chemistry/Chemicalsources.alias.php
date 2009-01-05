@@ -57,6 +57,11 @@ $aliases['mk'] = array(
 	'ChemicalSources' => array( 'ХемискиИзвори' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'ChemicalSources' => array( 'SorsiKimiċi' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'ChemicalSources' => array( 'Scheikundige_bronnen' ),

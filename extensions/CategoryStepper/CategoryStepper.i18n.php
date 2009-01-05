@@ -126,6 +126,15 @@ $messages['eo'] = array(
 	'categorystepper-start' => '(Komenco de kategorio)',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'categorystepper-desc' => 'Kategoria mugitze-taula erakusten du, orrian dauden kategoria bat edo gehiagotan zehar alfabetikoki aurrerantz eta atzerantz nabigatzeko',
+	'categorystepper-end' => '(Kategoriaren bukaera)',
+	'categorystepper-start' => '(Kategoriaren hasiera)',
+);
+
 /** Finnish (Suomi)
  * @author Silvonen
  */

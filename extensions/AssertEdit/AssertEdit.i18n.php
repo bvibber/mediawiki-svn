@@ -175,6 +175,15 @@ $messages['es'] = array(
 	'assert_edit_message' => 'La aserción especificada ($1) fracasó.',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'assert_edit_title' => 'Ziurtapen batek huts egin du',
+	'assert_edit_desc' => 'Aldatzeko baieztapenak gehitzen ditu botek erabil ditzaten',
+	'assert_edit_message' => 'Zehaztu duzun baieztapenak ($1) huts egin du.',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

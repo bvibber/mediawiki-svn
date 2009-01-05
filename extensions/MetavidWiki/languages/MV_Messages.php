@@ -664,8 +664,10 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  * @author Ouda
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'metavid' => 'صفحة ميتافيد',
@@ -690,7 +692,7 @@ $messages['arz'] = array(
 	'mvexportstream' => 'ستريم تصدير ميتافيد',
 	'mv_move_delete_msg' => 'ميتافيد تم نقله إلى $1',
 	'mv_add_stream_page' => 'أضف ستريم إم في',
-	'mv_edit_strea_docu' => '<p>عدل الستريم <b>إداري</b> <br /> للمستخدم العادى عرض/تعديل انظر صفحة $1',
+	'mv_edit_strea_docu' => '<p>عدل الستريم <b>إداري</b> <br /> لليوزر العادى عرض/تعديل انظر صفحة $1',
 	'mv_add_stream_docu' => '<p>إضافة ستريم جديد بالحقل بالأسفل.</p>
 <p> المزيد من المعلومات معطاة فى <a href="$1">صفحة المساعدة لإضافة الستريم</a>.</p>',
 	'mv_add_stream_submit' => 'أضف ستريم',
@@ -861,7 +863,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_sequence_player_title' => 'عرض التتابع',
 	'mv_resource_not_found' => "المصدر '''$1''' لم يتم العثور عليه",
 	'mv_resource_not_supported' => "نوع المورد '''$1''' غير مدعوم",
-	'mv_welcome_to_sequencer' => '<h3>مرحبا إلى تجربة المتتابع</h3>خصائص <b>محدودة</b> جدا حاليا',
+	'mv_welcome_to_sequencer' => 'جدا <b>محدود</b> وظيفه دلوقتي. دوس ع الكليب عشان تعدل المصدر دا',
 	'mv_resource_locator' => 'محدد المورد',
 	'mv_media_search' => 'بحث الميديا',
 	'mv_editor_options' => 'خيارات المحرر',
@@ -878,6 +880,7 @@ $mvMVDTypeDefaultDisp يجب أن تكون جزء من $mvMVDTypeAllAvailable',
 	'mv_sequence_add_search_desc' => 'إضافة الكليبات ببحث الميديا',
 	'mv_seq_add_end' => 'إضافة إلى آخر التتابع',
 	'mv_sequence_edit_text' => 'تحول إلى محرر النص',
+	'mv_other_options' => 'إختيارات تانيه',
 	'mv_sequence_timeline' => 'الخط الزمنى للتتابع:',
 	'mv_edit_sequence_desc_help' => 'وصف التتابع',
 	'mv_edithelpsequence' => 'Help:تعديل_التتابع',
@@ -3017,6 +3020,7 @@ $messages['lb'] = array(
 	'mv_basic_text_desc' => 'Text Beschreiwung (fakultativ)',
 	'mv_viewnext' => '($1) weisen',
 	'mv_viewprevnext' => '($1) ($2) weisen',
+	'mediasearch' => 'sich no Medien',
 	'mv_results_for' => 'Resultater fir $1',
 	'mv_video_search' => 'Video-Sich',
 	'mv_add_filter' => 'Filter derbäisetzen',
@@ -3033,12 +3037,14 @@ $messages['lb'] = array(
 	'mv_date_last_week' => 'Lescht Woch',
 	'mv_category_results' => 'REsultater aus de r Kategorie',
 	'mv_intrest_group_results' => 'Interessegruppen',
+	'mv_most_viewed' => 'Am dackste gekuckt',
 	'mv_spoken_by' => 'Geschwat vum',
 	'mv_category' => 'Kategorie',
 	'mv_remove_filter' => 'Filter ewechhuelen',
 	'mv_view_wiki_page' => 'Wiki-Säit gesinn',
 	'mv_transitions' => 'Transitiounen',
 	'mv_save_sequence' => 'Sequenz späicheren',
+	'mv_other_options' => 'Aner Optiounen',
 	'mv_next_bill' => 'Nächst Rechnung: $1',
 	'mv_prev_cat' => 'Vireg Kategorie: $1',
 	'mv_next_cat' => 'Nächst Kategorie: $1',
@@ -5388,8 +5394,12 @@ Nhảy đến cảnh luồng: $2',
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'mv_duration_label' => 'Dul',
+	'mv_save_changes' => 'Dakipön votükamis',
+	'mv_upload_file' => 'Löpükön ragivi',
 	'mv_search_category' => 'Klad',
 );
 

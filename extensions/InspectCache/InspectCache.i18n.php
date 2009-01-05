@@ -93,6 +93,13 @@ $messages['arz'] = array(
 	'inspectcache-list' => 'عرض',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'inspectcache-ok' => 'Добра',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -792,6 +799,13 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'inspectcache-ok' => 'ตกลง',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'inspectcache-ok' => 'Tamam',
 );
 
 /** Ukrainian (Українська)

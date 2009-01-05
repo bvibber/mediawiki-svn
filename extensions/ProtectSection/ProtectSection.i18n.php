@@ -294,6 +294,16 @@ $messages['nl'] = array(
 	'protectsection_forbidden' => 'Niet toegestaan',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'protectsection_desc' => 'Lèt godkjende brukarar verna delar av ei sida ved å bruka merket <tt>&lt;protect&gt;</tt>',
+	'protectsection_add_remove' => 'Du prøvde å leggja til eller fjerna eit verna avsnitt',
+	'protectsection_modify' => 'Du prøvde å endra verna tekst',
+	'protectsection_forbidden' => 'Forbode',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

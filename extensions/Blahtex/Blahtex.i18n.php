@@ -2617,6 +2617,13 @@ $messages['vi'] = array(
 	'math_WrongFontEncodingWithHint' => 'Ký hiệu "$1" không xuất hiện trong phông chữ mã hóa "$2" (thử dùng lệnh "$3{...}")',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'math_CannotChangeDirectory' => 'Vobaragiviär no kanon pavotükön',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

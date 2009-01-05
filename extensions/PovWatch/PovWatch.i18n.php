@@ -812,14 +812,47 @@ Wees voorzichtig bij het invoeren van de pagina: zelfs niet-bestaande pagina's k
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Utviding for å [[Special:PovWatch|plassera sider på andre brukarar sine overvakingslister]]',
+	'povwatch_no_session' => 'Feil: Kunne ikkje levera skjema grunna øktdatatap.',
+	'povwatch_not_allowed_push' => 'Du er ikkje ein PovWatch-administrator, du kan ikkje plassera sider på overvakingslister.',
+	'povwatch_already_subscribed' => 'Du abonnerer alt på PovWatch',
+	'povwatch_subscribed' => 'Du abonnerer no på PovWatch',
+	'povwatch_not_subscribed' => 'Du abonnerer ikkje på PovWatch, so du kan ikkje avslutta noko abonnement.',
+	'povwatch_unsubscribed' => 'Du har no avslutta abonnementet på PovWatch',
+	'povwatch_invalid_title' => 'Den oppgjevne tittelen var ikkje gyldig',
+	'povwatch_pushed' => '[[$1]] har vorte plassert på {{PLURAL:$2|éi overvakingslista|$2 overvakingslister}}.',
+	'povwatch_intro' => 'PovWatch er ei tenesta som lèt kontroversielle sider verta plasserte på overvakingslistene til abonnerande administratorar.
+
+Ein logg over nylege plasseringar er tilgjengeleg på [[Special:PovWatch/log]].',
+	'povwatch_subscriber_list' => 'Ei [[Special:PovWatch/subscribers|lista over abonnentar]] er tilgjengeleg.',
+	'povwatch_subscriber_list_intro' => '<strong>Abonnentlista</strong>',
+	'povwatch_not_allowed_subscribers' => 'Du har ikkje tilgjenge til lista over PovWatch-abonnentar.',
+	'povwatch_unknown_subpage' => 'Ukjend undersida.',
+	'povwatch_push' => 'Plasser',
+	'povwatch_push_intro' => 'Nytt skjemaet nedanfor for å plassera sider på overvakingslistene til abonnentar.
+Ver varsam når du skriv inn tittelen; òg ikkje-eksisterande sider kan verta lagt til, og det er ingen måte å fjerna ein tittel på med ein gong han er plassert.',
 	'povwatch_title' => 'Tittel:',
 	'povwatch_comment' => 'Kommentar:',
+	'povwatch_no_log' => 'Det finst ingen element i loggen.',
+	'povwatch_no_subscribers' => 'Det finst ingen abonnentar.',
+	'povwatch_unsubscribe_intro' => 'Du abonnerer på PovWatch. 
+Trykk på knappen nedanfor for å stogga abonnementet.',
+	'povwatch_unsubscribe' => 'Stogg abonnement',
+	'povwatch_subscribe_intro' => 'Du abonnerer ikkje på PovWatch. 
+Trykk på knappen nedanfor for å abonnera.',
+	'povwatch_subscribe' => 'Abonner',
+	'povwatch_added' => 'lagt til',
+	'right-povwatch_admin' => 'Handsama brukarrettar for kven som kan leggja til sider i overvakingslistene til andre brukarar.',
+	'right-povwatch_user' => 'Leggja til sider overvakingslistene til andre brukarar.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
@@ -832,7 +865,7 @@ $messages['no'] = array(
 	'povwatch_not_subscribed' => 'Du abonnerer ikke på PovWatch, så du kan ikke avslutte noe abonnement.',
 	'povwatch_unsubscribed' => 'Du har nå avsluttet abonnementet på PovWatch',
 	'povwatch_invalid_title' => 'Den gitte tittelen var ugyldig',
-	'povwatch_pushed' => '[[$1]] har blitt plassert på $2 {{PLURAL:$2|overvåkningsliste|overvåkningslister}}.',
+	'povwatch_pushed' => '[[$1]] har blitt plassert på {{PLURAL:$2|éi overvåkningsliste|$2 overvåkningslister}}.',
 	'povwatch_intro' => 'PovWatch er en tjeneste som lar kontroversielle sider bli plassert på abonnerende administratorers overvåkningslister.
 
 En log over nylige plasseringer er tilgjengelig på [[Special:PovWatch/log]].',

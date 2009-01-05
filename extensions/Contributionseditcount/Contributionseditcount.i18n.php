@@ -489,9 +489,11 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
 	'contributionseditcount' => 'Geban at labon redakamis $1.',
+	'contributionseditcount-desc' => 'Jonön redakamanumi su [[Special:Contributions|pad gebanakeblünotas]]',
 );
 
 /** Yiddish (ייִדיש)

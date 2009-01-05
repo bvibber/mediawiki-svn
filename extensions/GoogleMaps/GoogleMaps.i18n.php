@@ -322,6 +322,7 @@ $wgGoogleMapsMessages['be-tarask'] = array(
 	'gm-balloon-title' => 'Назва:',
 	'gm-yes' => 'Так',
 	'gm-no' => 'Не',
+	'gm-save-path' => 'Захаваць',
 );
 
 /** Bulgarian (Български)
@@ -4230,12 +4231,27 @@ $wgGoogleMapsMessages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $wgGoogleMapsMessages['vo'] = array(
 	'gm-balloon-title' => 'Tiäd:',
+	'gm-remove' => 'moükön',
+	'gm-load-map' => 'Lodön kaedi',
+	'gm-clip-result' => 'Läükön kaede',
+	'gm-no-results' => 'Pidö! seks nonik',
 	'gm-map' => 'Kaed',
+	'gm-are-you-sure' => 'Fümiko?',
+	'gm-width' => 'Vidot',
+	'gm-height' => 'Geilot',
+	'gm-overview-control' => 'Lovelogam',
+	'gm-zoom-control' => 'Nafam',
+	'gm-large' => 'Gretik',
+	'gm-medium' => 'Zänedik',
+	'gm-small' => 'Smalik',
+	'gm-no-zoom-control' => 'Nonik',
 	'gm-yes' => 'Si',
 	'gm-no' => 'Nö',
+	'gm-line-width' => 'Vidot',
 	'gm-earth' => 'Tal',
 	'gm-moon' => 'Mun',
 );

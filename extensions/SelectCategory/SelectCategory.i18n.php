@@ -386,6 +386,15 @@ $messages['th'] = array(
 	'selectcategory-title' => 'เลือกหมวดหมู่',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'selectcategory-title' => 'Pumili ng mga kaurian',
+	'selectcategory-desc' => 'Nagpapahintulot sa tagagamit na makapili mula sa umiiral na mga kaurian habang nagbabago ng isang pahina',
+	'selectcategory-subtitle' => "Gamitin ang ''Shift-mouse'' upang mapili ang sunud-sunod/magkakadikit na mga entrada (mga ipapasok/ilalagay), gamitin ang ''Ctrl-mouse'' upang mapili naman ang hindi magkakasunod/magkakadikit na mga entrada.",
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
@@ -402,6 +411,15 @@ $messages['vi'] = array(
 	'selectcategory-title' => 'Chọn thể loại',
 	'selectcategory-desc' => 'Cho phép thành viên chọn từ các thể loại đang có khi sửa trang',
 	'selectcategory-subtitle' => 'Shift-nhấn chuột để chọn nhiều mục kề nhau liên tục, Ctrl-nhấn chuột để chọn các mục không liên tục.',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'selectcategory-title' => 'Välön kladis',
+	'selectcategory-desc' => 'Dälon gebane ad välön kladi se klads dabinöls dü padaredakam',
+	'selectcategory-subtitle' => 'El „Shift“ + mugaparat ad välön binetis nilü oks, el „Ctrl“ + mugaparat ad välön binetis no nilü oks.',
 );
 
 /** Yue (粵語)

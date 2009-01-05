@@ -316,7 +316,7 @@ Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob 
 	'crosswikiunblock' => 'Entsperre Benutzer in einem anderen Wiki',
 	'crosswikiunblock-header' => 'Diese Spezialseite erlaubt die Aufhebung einer Benutzersperre in einem anderen Wiki.
 Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob deine Aktion deren Richtlinien entspricht.',
-	'crosswikiunblock-user' => 'IP-Adresse oder Benutzername und Zielwiki:',
+	'crosswikiunblock-user' => 'IP-Adresse, Benutzername oder Sperr-ID und Zielwiki:',
 	'crosswikiunblock-reason' => 'Begründung:',
 	'crosswikiunblock-submit' => 'Sperre für IP-Adresse/Benutzer aufheben',
 	'crosswikiunblock-success' => "Benutzer '''„$1“''' erfolgreich entsperrt.
@@ -1043,8 +1043,47 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'crosswikiblock-desc' => 'Määt et müjjelesch, Metmaacher op ander Wikis ze sperre övver en  [[Special:Crosswikiblock|Söndersigg]].',
+	'crosswikiblock' => 'Ene Metmaacher en enem andere Wiki sperre',
+	'crosswikiblock-header' => 'Hee di Söndersigg määt et müjjelesch, ene Metmaacher en enem ander Wiki ze sperre.
+Bes esu joot un donn prööfe, ov De dat en dämm andere Wiki och darrefs,
+un ov et met all dä Räjelle doh zosamme jeiht.',
+	'crosswikiblock-target' => 'De IP Adreß odder dä Name fun däm Metmaacher un dat Wiki:',
+	'crosswikiblock-expiry' => 'Leuf uß:',
 	'crosswikiblock-reason' => 'Aanlass:',
+	'crosswikiblock-submit' => 'IP-Adreß odder Metmaacher sperre',
+	'crosswikiblock-anononly' => 'Nur de Namelose sperre',
+	'crosswikiblock-nocreate' => 'Neu Metmaacher aanmelde verbeede',
+	'crosswikiblock-autoblock' => 'Donn automattesch de letzte IP Adreß fun dämm Metmaacher un alle IP Adresse, vun wo dä Metmaacher Sigge ändere well.',
+	'crosswikiblock-noemail' => 'Et <i lang="en">e-mail</i> Schecke verbeede',
+	'crosswikiunblock' => 'Jif ene Metmaacher en enem ander Wiki widder frei',
+	'crosswikiunblock-header' => 'Di Söndersigg hee määt et müjjelesch, ene jesperrte Metmaacher en enem ander Wiki widder freizejevve.
+Bes secher, dat De dat en däm ander Wiki och donn darrefs, un dat dat doh och met alle Räjelle zosamme jeiht.',
+	'crosswikiunblock-user' => 'Metmaacher name, IP Adreß, odder dä Sperr ier Kennzeiche, un dat Wiki:',
 	'crosswikiunblock-reason' => 'Aanlass:',
+	'crosswikiunblock-submit' => 'Metmaacher odder IP Adreß freijävve',
+	'crosswikiunblock-success' => "Metmaacher '''$1''' frei jejovve.
+
+Jangk retuur noh:
+* [[Special:CrosswikiBlock|dämm Fommulaa zom Sperre]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Däm Metmaacher singe Name fählt',
+	'crosswikiblock-local' => 'Sperre em eije Wiki künne mer hee nit beärbeide.
+Doför jangk noh [[Special:BlockIP|{{int:blockip}}]].',
+	'crosswikiblock-dbnotfound' => 'De Datenbank $1 es nit do.',
+	'crosswikiblock-noname' => '„$1“ es keine jöltije Metmaachername.',
+	'crosswikiblock-nouser' => 'Dä Metmaacher „$3“ es nit ze fenge.',
+	'crosswikiblock-noexpiry' => 'Dat es en onjöltijje Door: $1.',
+	'crosswikiblock-noreason' => 'Keine Jrond enjejovve.',
+	'crosswikiblock-notoken' => 'Onjöltesch Kennzeiche för et Ändere. Probeer et noch ens.',
+	'crosswikiblock-alreadyblocked' => 'Dä Metmaacher $3 es ald jesperrt.',
+	'crosswikiblock-noblock' => 'Dä Metmaacher es nit jesperrt.',
+	'crosswikiblock-success' => "Dä Metmaacher '''„$3“''' es jetz jesperrt.
+
+Jangk retuur noh:
+* [[Special:CrosswikiBlock|däm Fommulaa för et Sperre]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Em eije Wiki künne mer hee nix frei jävve.
+Doför jangk noh [[Special:IPBlockList|{{int:ipblocklist}}]].',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1919,9 +1958,47 @@ Quay trở về:
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'crosswikiblock-desc' => 'Dälon ad neletön gebanis su vüks votik ad gebön [[Special:Crosswikiblock|padi patik]]',
+	'crosswikiblock' => 'Blokön gebani su vük votik',
+	'crosswikiblock-header' => 'Pad at mögükon blokami gebanas su vüks votik.
+Fümedolös, das dalol dunön osi su vük at, e das lobedol dunamods valik.',
+	'crosswikiblock-target' => 'Ladet-IP u gebananem e zeilavük:',
+	'crosswikiblock-expiry' => 'Dul jü:',
 	'crosswikiblock-reason' => 'Kod:',
+	'crosswikiblock-submit' => 'Blokön gebani at',
+	'crosswikiblock-anononly' => 'Blokön te gebanis nennemik',
+	'crosswikiblock-nocreate' => 'Nemögükön kalijafi',
+	'crosswikiblock-autoblock' => 'Blokön itjäfidiko ladeti-IP lätik fa geban at pägeböli äsi ladetis-IP alseimik fa on pogebölis ad redakön',
+	'crosswikiblock-noemail' => 'Neletön gebani ad sedön penedis leäktronik',
+	'crosswikiunblock' => 'Säblokön gebani su vük votik',
+	'crosswikiunblock-header' => 'Pad at dälon säblokami gebana su vük votik.
+Fümedolös büo, das dalol dunön osi su vük at, e das lobedol dunamodis valik.',
+	'crosswikiunblock-user' => 'Gebananem, ladet-IP u blokamanüm e zeilavük:',
 	'crosswikiunblock-reason' => 'Kod:',
+	'crosswikiunblock-submit' => 'Säblokön gebani at',
+	'crosswikiunblock-success' => "Geban: '''$1''' pesäblokon benosekiko.
+
+Geikön lü:
+* [[Special:CrosswikiBlock|Blokamafomet]]
+* [[$2]]",
+	'crosswikiblock-nousername' => 'Gebananem no pegivon',
+	'crosswikiblock-local' => 'Blokams su vük at no kanons paledunön medü pad at. Gebolös padi: [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'Nünodem: $1 no dabinon',
+	'crosswikiblock-noname' => '„$1“ no binon gebananem lonöföl.',
+	'crosswikiblock-nouser' => 'Geban: „$3“ no petuvon.',
+	'crosswikiblock-noexpiry' => 'Dul no lonöfol: $1.',
+	'crosswikiblock-noreason' => 'Kod nonik pegivon.',
+	'crosswikiblock-notoken' => 'Redakam no lonöfon.',
+	'crosswikiblock-alreadyblocked' => 'Geban: $3 ya peblokon.',
+	'crosswikiblock-noblock' => 'Geban at no peblokon.',
+	'crosswikiblock-success' => "Geban: '''$3''' peblokon benosekiko.
+
+Geikön lü:
+* [[Special:CrosswikiBlock|Blokamafomet]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Säblokams su vük at no kanons paledunön medü pad at. Gebolös padi: [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 

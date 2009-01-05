@@ -332,6 +332,13 @@ $messages['es'] = array(
 	'importusers-realname' => 'nombre real',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'importusers-realname' => 'benetako izena',
+);
+
 /** Finnish (Suomi)
  * @author Jack Phoenix
  * @author Nike
@@ -1300,8 +1307,28 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'importusers' => 'Nüveigön gebanis',
+	'importusers-desc' => '[[Special:ImportUsers|Nüveigon gebanis]] mödo se ragiv-CSV; kotam: UTF-8',
+	'importusers-uploadfile' => 'Löpükön ragivi',
+	'importusers-form-caption' => 'Ragiv-CSV (UTF-8)',
+	'importusers-form-file' => 'Fomät gebanaragiva (csv):',
+	'importusers-form-replace-present' => 'Plaädön gebanis dabinöl',
+	'importusers-form-button' => 'Nüveigön',
+	'importusers-user-added' => 'Geban: <b>%s</b> peläükon.',
+	'importusers-user-present-update' => 'Geban: <b>%s</b> ya dabinon. Pevotükon.',
+	'importusers-user-present-not-update' => 'Geban: <b>%s</b> ya dabinon. No pevotükon.',
+	'importusers-user-invalid-format' => 'Lien: #%s gebananünodas labon fomäti no lonöföli u vägon. Penedemon.',
+	'importusers-log' => 'Jenotalised nüveigamas',
+	'importusers-log-summary' => 'Plän brefik',
 	'importusers-log-summary-all' => 'Valik',
+	'importusers-log-summary-added' => 'Peläükon',
+	'importusers-log-summary-updated' => 'Pevotükon',
+	'importusers-login-name' => 'Gebananem',
+	'importusers-password' => 'letavöd',
+	'importusers-email' => 'ladet leäktronik',
+	'importusers-realname' => 'nem jenöfik',
 );
 

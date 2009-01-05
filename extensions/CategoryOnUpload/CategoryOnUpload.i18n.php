@@ -426,6 +426,14 @@ $messages['vi'] = array(
 	'categoryonupload-label' => 'Thể loại:',
 );
 
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'categoryonupload-desc' => 'Begon gebane ad välön kladi pö löpükam ragiva',
+	'categoryonupload-label' => 'Klad:',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  */

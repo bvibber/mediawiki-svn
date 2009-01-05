@@ -132,6 +132,13 @@ $messages['es'] = array(
 	'searchbox-namespaces' => 'Espacios de nombres:',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'searchbox-search' => 'Bilatu',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  * @author Nike
@@ -385,6 +392,16 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'searchbox-search' => 'వెతుకు',
 	'searchbox-go' => 'వెళ్ళు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'searchbox-desc' => 'Pahintulutan ang pagsasali ng mga pormularyong panghanap',
+	'searchbox-search' => 'Maghanap',
+	'searchbox-go' => 'Gawin na',
+	'searchbox-namespaces' => 'Mga espasyo ng pangalan:',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

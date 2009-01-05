@@ -97,6 +97,13 @@ $messages['arz'] = array(
 	'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'profiling-ok' => 'Добра',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -475,10 +482,21 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
  * @author Jon Harald Søby
  */
 $messages['nn'] = array(
+	'profiling' => 'Profileringsdata',
+	'profiling-desc' => '[[Special:Profiling|Spesialsida]] for søk og inspeksjon av profileringsdata',
+	'profiling-process' => 'Prosesskommando:',
+	'profiling-wildcard' => 'Nytt tilfeldig teikn:',
 	'profiling-ok' => 'OK',
+	'profiling-data' => 'Profileringsdata for «$1»',
+	'profiling-data-process' => 'Prosess',
+	'profiling-data-count' => 'Tal',
+	'profiling-data-time' => 'Tid (alle)',
+	'profiling-data-average' => 'Tid (i snitt)',
+	'profiling-no-data' => 'Fann ingen passande resultat.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -664,9 +682,11 @@ $messages['th'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  */
 $messages['tr'] = array(
+	'profiling-ok' => 'Tamam',
 	'profiling-data-count' => 'Say',
 );
 

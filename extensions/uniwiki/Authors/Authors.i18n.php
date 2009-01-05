@@ -246,7 +246,9 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'authors-desc' => 'Legg til ei lista over forfattarar til sider',
 	'authors_authors' => 'Forfattarar',
+	'authors_anonymous' => 'Anonym',
 );
 
 /** Occitan (Occitan)

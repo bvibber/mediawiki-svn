@@ -407,6 +407,8 @@ $messages['pt'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'pageby-first' => 'Pagină creată de $1, $2',
+	'pageby-last' => 'Utlima dată <a href="$3">modificat</a> de $1, $2',
 	'pageby-contributors' => 'Contribuitori:',
 	'pageby-anon' => '<i>anonim</i>',
 );
@@ -505,9 +507,13 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'pageby-first' => 'Pad pejafon fa geban: $1 tü $2',
+	'pageby-last' => '<a href="$3">Votükam</a> lätik fa geban: $1 tü $2',
 	'pageby-contributors' => 'Keblünans:',
+	'pageby-anon' => '<i>nennemik</i>',
 );
 
 /** Yue (粵語)

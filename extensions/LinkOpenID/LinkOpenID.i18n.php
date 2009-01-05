@@ -35,6 +35,15 @@ Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Ramsis II
+ */
+$messages['arz'] = array(
+	'linkopenid-desc' => 'السماح لليوزرز انهم يوصول الحساب بتاعهم ب ID مفتوحه خارجيه',
+	'linkopenid-prefs' => 'ID مفتوحه',
+	'linkopenid-prefstext-openid' => 'الاي دي المفتوحه بتاعتك:',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -269,6 +278,20 @@ Magpapahintulot ito na magamit ang iyong pahina ng tagagamit bilang isa ring Ope
 	'linkopenid-prefstext-openid' => 'Ang OpenID (Bukas na ID) mo:',
 	'linkopenid-prefstext-v1url' => 'Serbidor-URL para sa Bersyong 1.1 ng OpenID:',
 	'linkopenid-prefstext-v2url' => 'Serbidor-URL para sa Bersyong 2 ng OpenID:',
+	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'linkopenid-desc' => "Kullanıcıların hesaplarını bir dış OpenID'ye bağlamalarına olanak sağlar",
+	'linkopenid-prefs' => 'OpenID',
+	'linkopenid-prefstext-pre' => "Eğer bir dış sağlayıcıdan OpenID'niz varsa burada belirtebilirsiniz.
+Bu ayrıca, kullanıcı sayfanızı OpenID olarak kullanmanıza da izin verir.",
+	'linkopenid-prefstext-openid' => "OpenID'niz:",
+	'linkopenid-prefstext-v1url' => "OpenID Versiyon 1.1 için Sunucu-URL'si:",
+	'linkopenid-prefstext-v2url' => "OpenID Versiyon 2 için Sunucu-URL'si:",
 	'linkopenid-prefstext-xrdsurl' => 'XRDS-URL:',
 );
 

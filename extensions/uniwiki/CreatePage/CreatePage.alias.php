@@ -15,6 +15,11 @@ $aliases['ar'] = array(
 	'CreatePage' => array( 'إنشاء_صفحة' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'CreatePage' => array( 'إنشاء_صفحة' ),
+);
+
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'CreatePage' => array( 'Seite erstellen' ),
@@ -43,6 +48,11 @@ $aliases['lb'] = array(
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'CreatePage' => array( 'КреирајСтраница' ),
+);
+
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'CreatePage' => array( 'OħloqPaġna' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

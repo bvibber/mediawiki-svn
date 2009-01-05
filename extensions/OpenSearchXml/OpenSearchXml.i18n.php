@@ -80,6 +80,13 @@ $messages['eo'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-interfaco proviza por tektaj elĉerpaĵoj',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] interface XML proveído para extractos de texto',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

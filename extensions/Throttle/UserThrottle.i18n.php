@@ -34,6 +34,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -41,7 +42,7 @@ $messages['arz'] = array(
 من فضلك انتظر عدة دقائق وحاول مرة ثانية.',
 	'acct_creation_global_hard_throttle_hit' => "إنشاء الحسابات تم تعليقه لعدة ثوانى لتقليل هجوم التسجيل.
 من فضلك انتظر لحظة واضغط 'reload' فى متصفحك لإعادة التنفيذ.",
-	'acct_creation_global_soft_throttle_hit-desc' => 'حد إنشاء المستخدم',
+	'acct_creation_global_soft_throttle_hit-desc' => 'حد إنشاء اليوزر',
 );
 
 /** Bulgarian (Български)

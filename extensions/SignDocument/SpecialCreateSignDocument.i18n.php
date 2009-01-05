@@ -351,6 +351,21 @@ $messages['es'] = array(
 	'createsigndoc-create' => 'Crear',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'createsigndoc-pagename' => 'Orri:',
+	'createsigndoc-email' => 'Email helbidea:',
+	'createsigndoc-address' => 'Helbidea:',
+	'createsigndoc-extaddress' => 'Udalerria, estatua, herrialdea:',
+	'createsigndoc-phone' => 'Telefono zenbakia:',
+	'createsigndoc-bday' => 'Urtebetetzea:',
+	'createsigndoc-minage' => 'Gutxienezko adina:',
+	'createsigndoc-optional' => 'Hautazkoa',
+	'createsigndoc-create' => 'Sortu',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */

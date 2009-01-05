@@ -97,6 +97,7 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
+ * @author Ramsis II
  */
 $messages['arz'] = array(
 	'editmessages-desc' => '[[Special:EditMessages|تعديل معتمد على الويب]] لأعدادا كبيرة من ملفات Messages*.php',
@@ -109,8 +110,8 @@ $messages['arz'] = array(
 	'editmsg-warning-parse1' => '* تعبير اسم الرسالة المنتظم لم يطابق: $1',
 	'editmsg-warning-parse2' => '* حرف اقتباس متوقع بعد السهم: $1',
 	'editmsg-warning-parse3' => '* نهاية خيط القيمة لم يتم العثور عليه: $1',
-	'editmsg-warning-file' => '* أخطاء قراءة الملف تمت مصادفتها للغات التالية: $1',
-	'editmsg-warning-mismatch' => '* النص الأصلى لم يمتلك القيمة المتوقعة للغات التالية: $1',
+	'editmsg-warning-file' => '* غلطات في قراية الفايل اتقابلت كمان في {{PLURAL:$2|اللغه دي|اللغات دي}}: $1',
+	'editmsg-warning-mismatch' => '* النص الاصلاني ماكانش عنده القيمه المتوقعه {{PLURAL:$2|للغه دي|للغات دي}}: $1',
 	'editmsg-apply-patch' => 'تنفيذ الباتش',
 	'editmsg-no-patch' => 'غير قادر على تنفيذ أمر "patch"',
 	'editmsg-patch-failed' => 'الباتش فشلت مع حالة خروج $1',
@@ -278,6 +279,15 @@ $messages['et'] = array(
 	'editmsg-show-list' => 'Näidatakse sõnumi "$1" väärtuseid',
 	'editmsg-get-patch' => 'Genereeri embleem',
 	'editmsg-new-search' => 'Uus otsing',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'editmessages' => 'Mezuak aldatu',
+	'editmsg-search' => 'Bilatu',
+	'editmsg-new-search' => 'Bilaketa berria',
 );
 
 /** Finnish (Suomi)

@@ -141,6 +141,13 @@ $messages['nl'] = array(
 	'preloader-desc' => "Geeft de mogelijkheid aan te passen per naamruimte tekstblokken te maken voor nieuwe pagina's",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'preloader-desc' => 'Gjev ein eigendefinerbar førehandslasta tekst for nye sider i dei enkelte namneromma',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

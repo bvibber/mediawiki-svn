@@ -50,7 +50,7 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'usercontactlink-baduser' => 'اسم يوزر مش صحيح',
-	'usercontactlink-desc' => 'يوفر القدرة على تبسيط وإضافة أسماء المستخدمين الآخرين باستخدام صياغة ^^^user^^^',
+	'usercontactlink-desc' => 'يوفر القدرة على تبسيط وإضافة أسماء اليوزرز  التانيين باستخدام صياغة ^^^user^^^',
 );
 
 /** Kotava (Kotava)
@@ -119,6 +119,13 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'usercontactlink-baduser' => 'nombre de usuario incorrecto',
 	'usercontactlink-desc' => 'Proporciona la capacidad para añadir sencilla y consistentemente otros usuarios usando la sintaxis ^^^user^^^',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'usercontactlink-baduser' => 'Lankide izen okerra',
 );
 
 /** Finnish (Suomi)

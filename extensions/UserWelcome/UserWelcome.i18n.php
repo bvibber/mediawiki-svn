@@ -249,6 +249,19 @@ $messages['et'] = array(
 	'mp-request-new-message' => 'uus sõnum',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'mp-userlevels-link' => 'Lankide mailak',
+	'mp-welcome-upload' => 'Igo',
+	'mp-welcome-edit' => 'Aldatu',
+	'mp-welcome-points' => '$1 puntu',
+	'mp-welcome-logged-in' => 'Kaixo $1',
+	'mp-requests-title' => 'Eskaerak',
+	'mp-request-new-message' => 'mezu berria',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix
@@ -671,6 +684,26 @@ $messages['ru'] = array(
 	'mp-request-new-message' => 'новое сообщение',
 );
 
+/** Sanskrit (संस्कृत)
+ * @author Mahitgar
+ */
+$messages['sa'] = array(
+	'userwelcome-desc' => 'वृध्धी <tt>&lt;सदस्यस्वागत&gt;</tt> चिन्ह: सदस्यस्य सार्वजनिक माहिती प्रवेशित सद्स्यानि पश्यामि कृते',
+	'mp-userlevels-link' => 'सदस्य स्तर:',
+	'mp-welcome-upload' => 'भारम्‌ न्यस्यति',
+	'mp-welcome-edit' => 'सम्पादन:',
+	'mp-welcome-points' => '$1 गुणदिष्ट',
+	'mp-welcome-needed-points' => 'प्रगतिकृते <b><a href="$1">$2</a></b> अर्जति <i>$3</i> अधिक {{PLURAL:$3|गुण:|गुण:}}!',
+	'mp-welcome-logged-in' => 'नमस्ते $1',
+	'mp-requests-title' => 'विनन्ती',
+	'mp-requests-message' => 'भवदिय अनुवृत् विनंती अस्ति।',
+	'mp-request-new-message' => 'नूतन संदेश',
+	'mp-request-new-award' => '$1 नूतन {{PLURAL:$1|प्रशस्ति|प्रशस्ति}}',
+	'mp-request-new-gift' => '$1 नूतन {{PLURAL:$1|उपहार|उपहार}}',
+	'mp-request-new-foe' => '$1 नुतन{{PLURAL:$1|शत्रू|शत्रू}}',
+	'mp-request-new-friend' => '$1 नुतन {{PLURAL:$1|मीत्र|मीत्र}}',
+);
+
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
  */
@@ -749,6 +782,26 @@ $messages['szl'] = array(
 	'mp-request-new-gift' => '$1 {{PLURAL:$1|nowy geszynk|nowe geszynki}}',
 	'mp-request-new-foe' => '$1 {{PLURAL:$1|nowy przećiwńik|nowe przećiwńiki}}',
 	'mp-request-new-friend' => '$1 {{PLURAL:$1|nowy przijaćel|nowych przijaćeli}}',
+);
+
+/** Tamil (தமிழ்)
+ * @author Ulmo
+ */
+$messages['ta'] = array(
+	'userwelcome-desc' => 'புகுபதிகை செய்த பயனர்களுக்கு அவர்கட்குரிய சமூக தகவல்களை காட்டுவதற்காக <tt>&lt;welcomeUser&gt;</tt> இணையை சேர்க்கின்றது.',
+	'mp-userlevels-link' => 'பயனர் நிலைகள்',
+	'mp-welcome-upload' => 'பதிவேற்று',
+	'mp-welcome-edit' => 'தொகு',
+	'mp-welcome-points' => '$1 புள்ளிகள்',
+	'mp-welcome-needed-points' => '<b><a href="$1">$2</a></b> இற்கு முன்னேறிச்செல்ல <i>$3</i> {{PLURAL:$3|புள்ளி|புள்ளிகள்}} ஈட்டுக!',
+	'mp-welcome-logged-in' => 'வணக்கம் $1',
+	'mp-requests-title' => 'கோரிக்கைகள்',
+	'mp-requests-message' => 'உங்களுக்கு பின்வரும் கோரிக்கைகள் உள்ளன.',
+	'mp-request-new-message' => 'புதிய செய்தி',
+	'mp-request-new-award' => '$1 புதிய {{PLURAL:$1|விருது|விருதுகள்}}',
+	'mp-request-new-gift' => '$1 புதிய {{PLURAL:$1|பரிசு|பரிசுகள்}}',
+	'mp-request-new-foe' => '$1 புதிய {{PLURAL:$1|பகைவர்|பகைவர்கள்}}',
+	'mp-request-new-friend' => '$1 புதிய {{PLURAL:$1|தோழர்|தோழர்கள்}}',
 );
 
 /** Telugu (తెలుగు)

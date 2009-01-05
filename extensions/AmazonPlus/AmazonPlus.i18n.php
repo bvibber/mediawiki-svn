@@ -83,15 +83,22 @@ $messages['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ouda
+ * @author Ramsis II
  */
 $messages['arz'] = array(
+	'amazonplus-desc' => 'امتداد عالي القابله للتخصيص لعرض معلومات امازون',
 	'amazonplus-nores' => '! خطأ: لم يتم العثور على نتائج',
+	'amazonplus-noidres' => 'غلط:مالقيناش بطاقة تعريف المنتج!',
+	'amazonplus-fgcerr' => 'غلط:مانفعش نرجع البيانات من امازون!',
+	'amazonplus-slserr' => 'غلط:تحليل البيانات من امازون ما نفعش!',
 	'amazonplus-used' => 'مستعمل',
 	'amazonplus-german' => 'ألمانية',
 	'amazonplus-french' => 'فرنسية',
 	'amazonplus-japanese' => 'يابانية',
 	'amazonplus-amazon' => 'سعر أمازون',
 	'amazonplus-new' => 'جديد',
+	'amazonplus-status-sep' => ',',
+	'amazonplus-none' => 'مافيش نسخ من الصنف دا معروضه للبيع',
 	'amazonplus-cp-none' => 'لا شيء',
 	'amazonplus-more' => 'أكثر',
 	'amazonplus-less' => 'أقل',
@@ -559,6 +566,8 @@ $messages['nn'] = array(
 	'amazonplus-new' => 'ny',
 	'amazonplus-none' => 'Ingen kopiar av dette produktet er for sal.',
 	'amazonplus-cp-none' => 'Ingen',
+	'amazonplus-more' => 'meir',
+	'amazonplus-less' => 'mindre',
 );
 
 /** Occitan (Occitan)
@@ -618,6 +627,19 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'amazonplus-desc' => 'Uma extensão altamente personalizável para apresentar informação da Amazon',
+	'amazonplus-nores' => 'Erro: Nenhum resultado encontrado!',
+	'amazonplus-noidres' => 'Erro: Não foi encontrado um ID de produto!',
+	'amazonplus-fgcerr' => 'Erro: Não foi possível retornar dados da Amazon!',
+	'amazonplus-slserr' => 'Erro: Não foi possível interpretar dados da Amazon!',
+	'amazonplus-used' => 'usado',
+	'amazonplus-german' => 'Alemão',
+	'amazonplus-french' => 'Francês',
+	'amazonplus-japanese' => 'Japonês',
+	'amazonplus-amazon' => 'preço Amazon',
+	'amazonplus-new' => 'novo',
+	'amazonplus-none' => 'Nenhuma cópia deste item está disponível para venda.',
+	'amazonplus-cp-none' => 'Nenhum',
 	'amazonplus-more' => 'mais',
 	'amazonplus-less' => 'menos',
 );
@@ -714,6 +736,35 @@ $messages['te'] = array(
  */
 $messages['tet'] = array(
 	'amazonplus-more' => 'barak liu',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'amazonplus-desc' => 'Amazon bilgisini göstermek için bir hayli özelleştirilebilir eklenti',
+	'amazonplus-nores' => 'Hata: Hiçbir sonuç bulunamadı!',
+	'amazonplus-noidres' => "Hata: Ürün ID'si bulunamadı!",
+	'amazonplus-fgcerr' => 'Hata: Amazondan veri alınamadı!',
+	'amazonplus-slserr' => 'Hata: Amazondan veri çözümlenemedi!',
+	'amazonplus-used' => 'kullanılmış',
+	'amazonplus-german' => 'Almanca',
+	'amazonplus-french' => 'Fransızca',
+	'amazonplus-japanese' => 'Japonca',
+	'amazonplus-amazon' => 'amazon fiyatı',
+	'amazonplus-new' => 'yeni',
+	'amazonplus-status' => '($1)',
+	'amazonplus-status-sep' => ',',
+	'amazonplus-none' => 'Bu ürünün hiçbir kopyası satılık değil.',
+	'amazonplus-currency' => '$1$3 $2$4',
+	'amazonplus-cp-none' => 'Hiç',
+	'amazonplus-cp-usd' => 'Amerikan Doları',
+	'amazonplus-cp-cad' => 'Kanada Doları',
+	'amazonplus-cp-gbp' => 'İngiliz Poundu',
+	'amazonplus-cp-eur' => 'Euro',
+	'amazonplus-cp-jpy' => 'Japon Yeni',
+	'amazonplus-more' => 'daha fazla',
+	'amazonplus-less' => 'daha az',
 );
 
 /** Vietnamese (Tiếng Việt)

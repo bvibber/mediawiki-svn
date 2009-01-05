@@ -316,10 +316,12 @@ $messages['grc'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Holder
  * @author Melancholie
  */
 $messages['gsw'] = array(
 	'sitenotice_close' => 'usblände',
+	'sitenotice-desc' => 'Erlaubt Benutzer s Schliesse vu dr Sitenotice',
 );
 
 /** Hebrew (עברית)

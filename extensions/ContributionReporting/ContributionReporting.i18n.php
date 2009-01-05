@@ -867,6 +867,8 @@ $messages['grc'] = array(
 	'contrib-hist-name' => 'Ὄνομα',
 	'contrib-hist-amount' => 'Ποσόν',
 	'contrib-hist-anonymous' => 'Άνώνυμος',
+	'contribstats-day' => 'Ἡμέρα',
+	'contribstats-month' => 'Μήν',
 	'contribstats-currency' => 'Συνάλλαγμα',
 	'contribstats-amount' => 'Ποσόν (USD)',
 	'fundraiserstats-date' => 'Ἡμερομηνία',
@@ -1294,6 +1296,7 @@ $messages['ko'] = array(
 	'contribstats-amount' => '금액 (USD)',
 	'contribstats-total' => '합계 (USD)',
 	'contribstats-avg' => '평균 (USD)',
+	'contribstats-total-ytd' => '합계 (연간)',
 	'contribstats-value-exactly' => '정확히 $1',
 	'contribstats-value-under' => '$1 미만',
 	'contribstats-value-from' => '$1 - $2 사이',
@@ -1301,6 +1304,7 @@ $messages['ko'] = array(
 	'fundraiserstats-date' => '날짜',
 	'fundraiserstats-total' => '합계 (USD)',
 	'fundraiserstats-avg' => '평균 (USD)',
+	'fundraiserstats-tab-totals' => '합계 (USD)',
 	'fundraiserstats-tab-averages' => '평균 (USD)',
 );
 
@@ -1803,6 +1807,7 @@ $messages['pt'] = array(
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Total de $1 mês|Totais mensais de $1 meses}}',
 	'contribstats-currency-range-totals' => 'Totais por divisa (de $1 a $2)',
 	'contribstats-contribution-range-breakdown' => 'Separação das contribuições por valor (de $1 a $2)',
+	'contribstats-currency-totals' => 'Totais de divisa para o ano fiscal de $1',
 	'contribstats-day' => 'Dia',
 	'contribstats-month' => 'Mês',
 	'contribstats-currency' => 'Divisa',
@@ -2295,10 +2300,14 @@ $messages['vi'] = array(
 
 /** Volapük (Volapük)
  * @author Malafaya
+ * @author Smeira
  */
 $messages['vo'] = array(
+	'contrib-hist-name' => 'Nem',
+	'contrib-hist-date' => 'Tim e dät',
 	'contribstats-day' => 'Del',
 	'contribstats-month' => 'Mul',
 	'contribstats-currency' => 'Völäd',
+	'fundraiserstats-date' => 'Dät',
 );
 

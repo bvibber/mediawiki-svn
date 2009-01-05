@@ -86,6 +86,7 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -93,14 +94,14 @@ $messages['arz'] = array(
 	'tasklist-parser-desc' => 'يضيف دالة محلل <nowiki>{{#todo:}}</nowiki> لتولية المهام',
 	'tasklist-special-desc' => 'يضيف صفحة خاصة لمراجعة [[Special:TaskList|توليات المهام]]',
 	'tasklistbyproject' => 'قائمة المهام حسب المشروع',
-	'tasklistunknownproject' => 'مشروع غير معروف',
-	'tasklistunspecuser' => 'مستخدم غير محدد',
-	'tasklistincorrectuser' => 'اسم مستخدم غير صحيح',
+	'tasklistunknownproject' => 'مشروع مش معروف',
+	'tasklistunspecuser' => 'يوزر مش  محدد',
+	'tasklistincorrectuser' => 'اسم يوزر مش صحيح',
 	'tasklistemail' => 'عزيزى %s',
 	'tasklistemailsubject' => 'التغيير فى قائمة مهام [%s]',
 	'tasklistmytasks' => 'مهامي',
-	'tasklistbyprojectbad' => "المشروع '''%s''' ليس مشروعا صحيحا.
-لقائمة بالمشاريع الصحيحة، انظر [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojectbad' => "المشروع '''%s''' مش  مشروع صحيح.
+لقائمة بالمشاريع الصحيحة، شوف [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "المهام الموكلة ل'''%s'''",
 	'tasklistchooseproj' => 'اختر المشروع:',
 	'tasklistprojdisp' => 'عرض',
@@ -254,6 +255,19 @@ Por listo de validaj projektoj, vidu [[MediaWiki:TodoTasksValidProjects]].",
 $messages['es'] = array(
 	'tasklistunknownproject' => 'Proyecto desconocido',
 	'tasklistincorrectuser' => 'Nombre de usuario incorrecto',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'tasklist' => 'Egitekoen zerrenda',
+	'tasklistbyproject' => 'Egitekoen zerrenda proiektuen arabera',
+	'tasklistunknownproject' => 'Proiektu ezezaguna',
+	'tasklistunspecuser' => 'Zehaztugabeko lankidea',
+	'tasklistincorrectuser' => 'Lankide izen okerra',
+	'tasklistmytasks' => 'Nire eginkizunak',
+	'tasklistprojdisp' => 'Erakutsi',
 );
 
 /** Finnish (Suomi)

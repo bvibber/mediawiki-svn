@@ -189,6 +189,32 @@ Mit den Werkzeugen an der Seite können welche hinzugefügt werden.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'gep-desc' => 'Dodanki za wobźěłowański bok, aby był za wužywarja pśigódnjejšy',
+	'gep-emailsubject' => '[$1] Naraźenje kategorije: $2',
+	'gep-emailbody' => 'Wužywaŕ "$1" jo naraźił kategoriju "$2" za sedło "$3".',
+	'gep-emailfailure' => 'Bóžko twójeo naraźenje njejo se dało pśeźěłaś.',
+	'gep-emailsuccess' => 'Źěkujomy se za naraźenje kategorije: $1',
+	'gep-categories' => 'Kategorije',
+	'gep-addcategory' => 'Kategoriju pśidaś',
+	'gep-addcategorybutton' => 'Pśidaś',
+	'gep-suggestcategory' => 'Kategoriju naraźiś',
+	'gep-suggestcategorybutton' => 'Wótpósłaś',
+	'gep-sections' => 'Wótrězki',
+	'gep-sectionnotdisabled' => 'Tós ten wótrězk njedajo se znjemóžniś',
+	'gep-addsection' => 'Wótrězk pśidaś',
+	'gep-addsectionbutton' => 'Pśidaś',
+	'gep-classicmode' => 'Klasiski modus',
+	'gep-genericmode' => 'Powšykny modus',
+	'gep-nosectioninstructions' => 'Njejsu wótrězki na toś tom boku.
+Pśidaj někotare z rědami w menijowej kšomje.',
+	'gep-nocategories' => 'Pšosym wubjeŕ nanejmjenjej jadnu kategoriju do składowanja',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -237,6 +263,21 @@ $messages['es'] = array(
 	'gep-nosectioninstructions' => 'No hay secciones en esta página.
 Agrega algunas secciones utilizando las herramientas a la derecha.',
 	'gep-nocategories' => 'Selecciona por lo menos una categoría antes de guardar',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'gep-emailfailure' => 'Barkatu, zure iradokizuna ezin izan da prozesatu.',
+	'gep-categories' => 'Kategoriak',
+	'gep-addcategory' => 'Kategoria gehitu',
+	'gep-addcategorybutton' => 'Gehitu',
+	'gep-suggestcategory' => 'Kategoria iradokitu',
+	'gep-sections' => 'Atalak',
+	'gep-addsection' => 'Saila gehitu',
+	'gep-addsectionbutton' => 'Gehitu',
+	'gep-nocategories' => 'Mesedez aukeratu kategoria bat gutxienez gorde baino lehen',
 );
 
 /** French (Français)
@@ -590,6 +631,7 @@ $messages['nn'] = array(
 	'gep-nosectioninstructions' => 'Det finst ingen avsnitt på denne sida.
 Legg til nokre med verktya i menyen.',
 	'gep-nocategories' => 'Vel minst ein kategori før du lagrar',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Occitan (Occitan)
@@ -756,6 +798,7 @@ $messages['ru'] = array(
 	'gep-nosectioninstructions' => 'На этой странице нет разделов.
 Вы можете их добавить с помощью инструментов, размещённых справа.',
 	'gep-nocategories' => 'Пожалуйста, выберите перед сохранением хотя бы одну категорию',
+	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
 /** Slovak (Slovenčina)

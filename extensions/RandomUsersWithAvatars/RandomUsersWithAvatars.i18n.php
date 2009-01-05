@@ -151,6 +151,14 @@ $messages['nl'] = array(
 	'random-users-avatars-desc' => 'Voegt de tag <tt>&lt;randomuserswithavatars&gt;</tt> toe om de avatars van willekeurige gebruikers weer te geven',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'random-users-avatars-title' => 'Møt brukarane',
+	'random-users-avatars-desc' => 'Legger til merket <tt>&lt;randomuserswithavatar&gt;</tt> for å visa avatarane til tilfeldig valde brukarar',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  */

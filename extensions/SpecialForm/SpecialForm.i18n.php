@@ -135,6 +135,13 @@ $messages['bcl'] = array(
 	'formsave' => 'Itagama',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'formsave' => 'Захаваць',
+);
+
 /** Bulgarian (Български)
  * @author DCLXVI
  */
@@ -272,6 +279,13 @@ $messages['es'] = array(
 	'form' => 'Formulario',
 	'formpattern' => 'Formulario de $1',
 	'formsave' => 'Guardar',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'formsave' => 'Gorde',
 );
 
 /** Finnish (Suomi)

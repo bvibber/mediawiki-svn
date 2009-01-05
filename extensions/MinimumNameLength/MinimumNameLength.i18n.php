@@ -31,11 +31,12 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
-	'minnamelength-error' => 'اسم المستخدم قصير للغاية. أقل طول مسموح به هو $1.',
-	'minnamelength-desc' => 'يجبر على طول أدنى لاسم المستخدم',
+	'minnamelength-error' => 'اسم  اليوزر قصير . أقل طول مسموح بيه هو $1.',
+	'minnamelength-desc' => 'يجبر على طول أدنى لاسم اليوزر',
 );
 
 /** Bikol Central (Bikol Central)
@@ -399,6 +400,14 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'minnamelength-error' => 'Tên người dùng của bạn quá ngắn. Chiều dài tối thiểu là $1.',
 	'minnamelength-desc' => 'Bắt buộc phải có chiều dài tên người dùng tối thiểu',
+);
+
+/** Volapük (Volapük)
+ * @author Smeira
+ */
+$messages['vo'] = array(
+	'minnamelength-error' => 'Gebananem olik binon tu brefik. Minumalunot binon $1.',
+	'minnamelength-desc' => 'Zesüdükön gebananemalunoti puik',
 );
 
 /** Yue (粵語)

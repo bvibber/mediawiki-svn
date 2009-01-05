@@ -280,6 +280,7 @@ $1',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
@@ -352,9 +353,9 @@ $1',
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
 -->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
--->[[Special:BlockIP/$1|منع المستخدم]] • <!--
+-->[[Special:BlockIP/$1|منع اليوزر]] • <!--
 -->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} سجل المنع] • <!--
--->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} تدقيق الأيبي])<!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} تشييك الأى بى])<!--
 --></span>',
 	'sign-viewfield-stricken' => 'مشطوب',
 	'sign-viewfield-reviewedby' => 'مراجع',
@@ -707,6 +708,43 @@ $messages['es'] = array(
 	'sig-private' => '<i>Privado</i>',
 	'sign-viewfield-reviewcomment' => 'Comentario',
 	'sign-review-comment' => 'Comentario',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'signdocument' => 'Dokumentua sinatu',
+	'sign-selectdoc' => 'Dokumentu:',
+	'sign-realname' => 'Izena:',
+	'sign-address' => 'Helbidea:',
+	'sign-city' => 'Udalerria:',
+	'sign-state' => 'Estatua:',
+	'sign-zip' => 'Posta kodea:',
+	'sign-country' => 'Herrialdea:',
+	'sign-phone' => 'Telefono zenbakia:',
+	'sign-bday' => 'Adina:',
+	'sign-email' => 'Email helbidea:',
+	'sign-submit' => 'Dokumentua sinatu',
+	'sig-success' => 'Dokumentua arrakastatsuki sinatu duzu.',
+	'sign-viewfield-entryid' => 'NAN zenbakia:',
+	'sign-viewfield-realname' => 'Izena',
+	'sign-viewfield-address' => 'Helbidea',
+	'sign-viewfield-city' => 'Udalerria',
+	'sign-viewfield-state' => 'Estatua',
+	'sign-viewfield-country' => 'Herrialdea',
+	'sign-viewfield-zip' => 'Posta',
+	'sign-viewfield-ip' => 'IP helbidea',
+	'sign-viewfield-phone' => 'Telefonoa',
+	'sign-viewfield-email' => 'Emaila',
+	'sign-viewfield-age' => 'Adina',
+	'sign-viewfield-options' => 'Aukerak',
+	'sign-signatures' => 'Sinadurak',
+	'sign-viewsignatures' => 'ikusi sinadurak',
+	'sign-closed' => 'itxita',
+	'sig-anonymous' => '<i>Anonimoa</i>',
+	'sig-private' => '<i>Pribatua</i>',
+	'sign-sigdetails' => 'Sinaduraren xehetasunak',
 );
 
 /** Extremaduran (Estremeñu)
@@ -1542,12 +1580,12 @@ Beß esu joot, un liß dat janze Dokkemänt. Wann De dämm dann Ding Zohshtemmun
 	'sign-list-hidebday' => 'Et Allder nit opliste',
 	'sign-list-hideemail' => 'De <i lang="en">e-mail</i> Addräß nit opliste',
 	'sign-submit' => 'Loß Jonn!',
-	'sign-information' => '<div class="noarticletext">Merci för taking the time to read through this Dokkemänt.
-If you agree with it, please indicate your support by filling in the required fields below and clicking "Sign document".
-Please ensure that your personal information is correct and that we have some way to contact you to verify wä Do beß.
-Note that your IP address and other identifying information will be recorded by this form and used by Moderatore to eliminate duplicate signatures and confirm the correctness of your personal information.
-As the use of open and anonymizing proxies inhibits our ability to perform this task, signatures from such proxies will likely not be counted.
-If you are currently connected through a proxy server, please disconnect from it and use a standard connection för eet Ongerschriive.</div>
+	'sign-information' => '<div class="noarticletext">Merci, dat De Der de Zick jenumme häs, dorch hee dat Dokkemänt ze lässe.
+Wann de dämm zostemme kanns, dann donn Ding Ongerstötzung dodorch ußdröcke, dat De hee unge de notwendijje Felder ußföllß, un dann op „{{int:sign-submit}}“ klecks.
+Paß joot drop op, dat dat wat De övver Dech sellver enndrähß och rechtech es, un dat mer winnichsdens eine Wääch hät, öm met Der en Kuntack ze kumme, öm ze kike, wä De bes, un öm ze ovverpröfe, dat dat all ääsch es.
+Opjepaß: Ding aktoälle IP-Addräß un ander ähnlijje Date wäde zosamme met dä Date us dämm Dommulaa faßjehallde. Se wäde vun de Moderatore jebruch, öm dubbel dijjitaale Ongerschreffte eruß ze sammelle, un de Rechtechkeit vun Ding päsönlejje Date eruß ze krijje.
+Weil de Moderatore fö_jewööhnlesch esu en Pröfunge för Fobendunge övver offe, un namelos maachende <i lang="en">proxy server</i> täschnesch koum udder jaa nit maache künne, es et müjjelech, un beinah secher, dat Ungerschreffte övver esu en <i lang="en">proxies</i> nit jezallt weede.
+Wann de jrad övver ene <i lang="en">proxy</i> am Netz am hange bes, dann bes esu joot, donn Dich för ene Momang vun em trenne, un nemm en nommaale Verbendung för et Ongerschriive.</div>
 
 $1',
 	'sig-success' => 'De häs dat Dokkemänt jäz eläktroonesch ungerschrevve.',
@@ -3002,6 +3040,99 @@ $messages['tg-cyrl'] = array(
  */
 $messages['th'] = array(
 	'sign-viewfield-ip' => 'หมายเลขไอพี',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'signdocument' => 'Lagdaan ang kasulatan/dokumento',
+	'sign-nodocselected' => 'Pakipili ang kasulatan/dokumentong nais mong lagdaan.',
+	'sign-selectdoc' => 'Kasulatan/Dokumento:',
+	'sign-docheader' => '<div class="noarticletext">Pakigamit ang pormularyong ito upang malagdaan ang kasulatang "[[$1]]," na ipinapakita sa ibaba.
+Pakibasang mabuti ang buong dokumento, at kung ibig mong ipahayag ang pagtangkilik/pagsuporta mo rito, pakipunan ang mga kinakailangang kahanayan upang malagdaan ito.</div>',
+	'sign-error-nosuchdoc' => 'Hindi umiiral ang hiniling mong kasulatan/dokumento ($1).',
+	'sign-realname' => 'Pangalan:',
+	'sign-address' => 'Kalsada/kalye ng adres (tirahan):',
+	'sign-city' => 'Lungsod:',
+	'sign-state' => 'Estado:',
+	'sign-zip' => 'Kodigong ZIP:',
+	'sign-country' => 'Bansa:',
+	'sign-phone' => 'Bilang (numero) ng telepono:',
+	'sign-bday' => 'Edad (gulang):',
+	'sign-email' => 'Adres ng e-liham:',
+	'sign-indicates-req' => '<small><i><font color="red">*</font> nagpapahayag ng kinakailangang kahanayan.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Paunawa: Ang hindi nakatalang kabatiran ay matatanaw pa rin ng mga tagapamagitan.</i></small>',
+	'sign-list-anonymous' => 'Itala bilang hindi nagpapakilala (anonimo)',
+	'sign-list-hideaddress' => 'Huwag itala ang adres/tirahan',
+	'sign-list-hideextaddress' => "Huwag itala ang lungsod, estado, kodigong ''zip'', o bansa",
+	'sign-list-hidephone' => 'Huwag itala ang telepono',
+	'sign-list-hidebday' => 'Huwag itala ang edad/gulang',
+	'sign-list-hideemail' => 'Huwag itala ang e-liham',
+	'sign-submit' => 'Lagdaan ang kasulatan/dokumento',
+	'sign-information' => '<div class="noarticletext">Salamat sa pagbibigay mo ng panahon upang basahin ang kahabaan ng kasulatang ito.
+Kung pumapayag ka rito, pakipahayag ang iyong pagtangkilik sa pamamagitan ng pagpupuno sa loob ng kinakailangang mga kahanayan sa ibaba at pagpindot sa "Lagdaan ang kasulatan".  
+Pakitiyak lamang na tama ang iyong pansariling kabatiran at na mayroon nga kaming paraan upang makipagugnayan sa iyo upang mapatunayan ang iyong katauhan.
+Pakitandaan lamang na ang adres ng IP mo at iba pang mapagkikilanlang kabatiran ay itatala sa pamamagitan ng pormularyong ito at gagamitin ng mga tagapamagitan upang maalis ang nagkakadalawang mga lagda at tiyakin ang katumpakan ng iyong pansariling kabatiran.
+Dahil sa nagbibigay ng hangganan sa aming kakayanan ang pagsasagawa ng gawaing ito ang paggamit ng bukas at mga pamalit (\'\'proxy\'\') na pang-hindi nagpapakilala, mas malamang na hindi bibilangin ang mga lagdang nagmumula sa ganyang mga pamalit.
+Kung pangkasalukuyan kang nakaugnay sa pamamagitan ng isang serbidor na pamalit, pakitanggal lamang ang pagkakakunekta mo rito at gamitin ang isang pampamantayang ugnayan/kuneksyon habang lumalagda.</div>
+
+$1',
+	'sig-success' => 'Matagumpay mo nang nalagdaan ang kasulatan/dokumento.',
+	'sign-view-selectfields' => '<b>Mga kahanayang ipapakita/palilitawin:</b>',
+	'sign-viewfield-entryid' => 'ID na pampasok:',
+	'sign-viewfield-timestamp' => 'Tatak ng oras',
+	'sign-viewfield-realname' => 'Pangalan',
+	'sign-viewfield-address' => 'Adres/Tirahan',
+	'sign-viewfield-city' => 'Lungsod',
+	'sign-viewfield-state' => 'Estado',
+	'sign-viewfield-country' => 'Bansa',
+	'sign-viewfield-zip' => "Kodigong ''Zip''",
+	'sign-viewfield-ip' => 'Adres ng IP',
+	'sign-viewfield-agent' => 'Ahente ng tagagamit',
+	'sign-viewfield-phone' => 'Telepono',
+	'sign-viewfield-email' => 'E-liham',
+	'sign-viewfield-age' => 'Edad (gulang)',
+	'sign-viewfield-options' => 'Mga mapagpipilian',
+	'sign-viewsigs-intro' => 'Ipinapakita sa ibaba ang mga lagdang naitala para kay <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',
+	'sign-sigadmin-currentlyopen' => 'Kasalukuyang pinapagana/pinapaandar ang paglalagda para sa kasulatan/dokumentong ito.',
+	'sign-sigadmin-close' => 'Huwag paganahin/paandarin ang paglalagda',
+	'sign-sigadmin-currentlyclosed' => 'Kasalukuyang hindi pinapagana/pinapaandar ang paglalagda para sa kasulatan/dokumentong ito.',
+	'sign-sigadmin-open' => 'Paganahin/paandarin ang paglalagda',
+	'sign-signatures' => 'Mga lagda',
+	'sign-sigadmin-closesuccess' => 'Matagumpay na hindi pinagana/pinaandar ang paglalagda.',
+	'sign-sigadmin-opensuccess' => 'Matagumpay na napagana/napaandar ang paglalagda.',
+	'sign-viewsignatures' => 'tingnan ang mga lagda',
+	'sign-closed' => 'nakasarado na',
+	'sign-error-closed' => 'Kasalukuyang hindi pinapagana/pinapaandar ang paglalagda ng kasulatan/dokumentong ito.',
+	'sig-anonymous' => '<i>Anonimo/Hindi nagpapakilala</i>',
+	'sig-private' => '<i>Pribado/Pansarili</i>',
+	'sign-sigdetails' => 'Mga detalye ng lagda',
+	'sign-emailto' => '<a href="mailto:$1">$1</a>',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|usapan]] • <!--
+-->[[Special:Contributions/$1|mga ambag]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on "SINO SI" (WHOIS)] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|hadlangan ang tagagamit]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} talaan ng paghadlang] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} suriin ang IP])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Nakaltas/Kinaltas na (pinatamaan ng guhit)',
+	'sign-viewfield-reviewedby' => 'Tagapagsuri',
+	'sign-viewfield-reviewcomment' => 'Puna/Kumento',
+	'sign-detail-uniquequery' => 'Katulad na mga katauhan/katawan',
+	'sign-detail-uniquequery-run' => 'Ihatid (pagalawin/patakbuhin) ang katangunan',
+	'sign-detail-strike' => 'Kaltasin ang lagda (patamaan ng guhit)',
+	'sign-reviewsig' => 'Suriin ang lagda',
+	'sign-review-comment' => 'Puna/Kumento',
+	'sign-submitreview' => 'Ipasa/ipadala ang pagsusuri',
+	'sign-uniquequery-similarname' => 'Katulad na pangalan',
+	'sign-uniquequery-similaraddress' => 'Katulad na adres/tirahan',
+	'sign-uniquequery-similarphone' => 'Katulad na telepono',
+	'sign-uniquequery-similaremail' => 'Katulad na e-liham',
+	'sign-uniquequery-1signed2' => 'Nilagdaan ni [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ang [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
 /** Vietnamese (Tiếng Việt)

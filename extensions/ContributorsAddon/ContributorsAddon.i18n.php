@@ -61,6 +61,13 @@ $messages['es'] = array(
 	'contributorsaddon-desc' => 'Añade ventanas emergentes JavaScript a los enlaces de los «Colaboradores principales»',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'contributorsaddon-desc' => 'JavaScript popupak gehitu "Ekarpen nagusiak" loturara',
+);
+
 /** Finnish (Suomi)
  * @author Mobe
  */

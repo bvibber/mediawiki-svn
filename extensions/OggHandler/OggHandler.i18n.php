@@ -2591,11 +2591,13 @@ Hindi makapagpapatugtog ang QuickTime ng mga talaksang Ogg kapag wala ang ganito
 
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
+ * @author Joseph
  * @author Mach
  * @author Runningfridgesrule
  * @author Srhat
  */
 $messages['tr'] = array(
+	'ogg-desc' => 'Ogg Theora ve Vorbis dosyaları için işleyici, JavaScript oynatıcısı ile',
 	'ogg-short-audio' => 'Ogg $1 ses dosyası, $2',
 	'ogg-short-video' => 'Ogg $1 film dosyası, $2',
 	'ogg-short-general' => 'Ogg $1 medya dosyası, $2',
@@ -2609,10 +2611,17 @@ $messages['tr'] = array(
 	'ogg-stop' => 'Durdur',
 	'ogg-play-video' => 'Video filmini oynat',
 	'ogg-play-sound' => 'Sesi oynat',
-	'ogg-player-oggPlugin' => 'Ogg eklentisi',
+	'ogg-no-player' => 'Üzgünüz, sisteminiz desteklenen herhangi bir oynatıcı yazılımına sahip gibi görünmüyor.
+Lütfen <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">bir oynatıcı indirin</a>.',
+	'ogg-no-xiphqt' => 'QuickTime için XiphQT bileşenine sahip değil görünüyorsunuz.
+QuickTime bu bileşen olmadan Ogg dosyalarını oynatamaz.
+Lütfen <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT\'i indirin</a> ya da başka bir oynatıcı seçin.',
+	'ogg-player-videoElement' => 'Yerel tarayıcı desteği',
+	'ogg-player-oggPlugin' => 'Tarayıcı eklentisi',
 	'ogg-player-thumbnail' => 'Henüz sadece resimdir',
 	'ogg-player-soundthumb' => 'Oynatıcı yok',
 	'ogg-player-selected' => '(seçilmiş)',
+	'ogg-use-player' => 'Oynatıcıyı kullanın:',
 	'ogg-more' => 'Daha...',
 	'ogg-dismiss' => 'Kapat',
 	'ogg-download' => 'Dosya indir',

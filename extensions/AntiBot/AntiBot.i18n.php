@@ -105,6 +105,13 @@ $messages['es'] = array(
 	'antibot-desc' => 'Entorno sencillo para las comprobaciones de bots de spam y la activación de contenidos de descarga condicional automatizada.',
 );
 
+/** Basque (Euskara)
+ * @author Theklan
+ */
+$messages['eu'] = array(
+	'antibot-desc' => 'Spam boten  eta edukien jaitsiera kondizional automatikoen ziurtapenerako inguru erraza',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -281,6 +288,13 @@ $messages['pdt'] = array(
  */
 $messages['pl'] = array(
 	'antibot-desc' => 'Proste mechanizmy ochrony przed spamującymi i wywołującymi przeciążenie serwera robotami',
+);
+
+/** Portuguese (Português)
+ * @author Malafaya
+ */
+$messages['pt'] = array(
+	'antibot-desc' => 'Infra-estrutura simples para verificações de "spambots" e cargas despoletadas',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

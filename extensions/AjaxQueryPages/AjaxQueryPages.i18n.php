@@ -372,6 +372,13 @@ $messages['tg-cyrl'] = array(
 	'ajax-qp-desc' => 'Илова кардани чанде аз АҶАКС ба СаҳифаҳоиПурсиш монанди [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'ajax-qp-desc' => 'Sorgu sayfalarına biraz AJAX ekler, [[Special:Shortpages|{{int:shortpages}}]] gibi',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

@@ -496,6 +496,13 @@ $messages['es'] = array(
 	'badimages-removed' => '$1 ha sido borrado de la lista.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'badimages-name' => 'Izena:',
+);
+
 /** Extremaduran (Estremeñu)
  * @author Better
  */
@@ -1969,18 +1976,32 @@ $messages['th'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Karduelis
  * @author Srhat
  * @author Suelnur
  */
 $messages['tr'] = array(
+	'badimages' => 'Kötü resim listesi',
+	'badimages-desc' => 'MedyaVikinin kötü resim listesi yeteneklerini genişlet',
 	'badimages-add-btn' => 'Ekle',
-	'badimages-count' => "Kötü resim listesinde '''$1''' resim bulunmaktadır.",
+	'badimages-added' => '$1 listeye eklendi.',
+	'badimages-count' => "Kötü resim listesinde '''$1''' {{PLURAL:$1|resim|resim}} bulunmaktadır.",
 	'badimages-name' => 'İsim:',
+	'badimages-not-added' => 'Resim eklenemedi.',
+	'badimages-not-removed' => 'Resim çıkarılamadı.',
 	'badimages-reason' => 'Neden:',
 	'badimages-remove' => '(kaldır)',
 	'badimages-remove-btn' => 'Kaldır',
+	'badimages-remove-confirm' => "Lütfen $1'i listeden çıkarmak istediğinizi onaylayın:",
 	'badimages-removed' => 'Listeden $1 silindi.',
+	'badimages-subheading' => 'Güncel öğeler',
+	'badimages-unprivileged' => '(Bu listeyi değiştirebilmek için yeterli izniniz yok)',
+	'badimages-log-name' => 'Kötü resim listesi',
+	'badimages-log-header' => 'Bu, [[{{MediaWiki:Badimages-page}}|kötü resim listesi]] değişiklikler günlüğüdür.',
+	'badimages-log-add' => '[[$1]] kötü resim listesine eklendi',
+	'badimages-log-remove' => '[[$1]] kötü resim listesinden çıkarıldı',
+	'badimages-page' => '{{ns:help}}:Kötü resim listesi',
 );
 
 /** Ukrainian (Українська)

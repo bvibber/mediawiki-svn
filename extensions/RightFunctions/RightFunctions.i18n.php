@@ -273,6 +273,7 @@ $messages['sv'] = array(
 	'rightfunctions-desc' => 'Parserfunktioner som är baserade på användarrättigheter',
 	'rightfunctions-casc' => '(från kaskaderande källor)',
 	'rightfunctions-local' => '(från lokal sida)',
+	'rightfunctions-ns' => '(från namnrymdsskrivskydd)',
 );
 
 /** Telugu (తెలుగు)

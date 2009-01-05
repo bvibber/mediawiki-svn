@@ -76,6 +76,14 @@ $messages['eo'] = array(
 	'untidy' => 'Malordigi',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'tidy' => 'Txukundu',
+	'untidy' => 'Narrastu',
+);
+
 /** French (Français)
  * @author Grondin
  * @author Zetud

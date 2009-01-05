@@ -54,13 +54,14 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
 	'showprocesslist' => 'عرض قائمة العمل',
 	'showprocesslist-desc' => 'يعرض ناتج [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'رقم',
-	'showprocesslist-user' => 'مستخدم',
+	'showprocesslist-user' => 'يوزر',
 	'showprocesslist-host' => 'مضيف',
 	'showprocesslist-db' => 'دى بي',
 	'showprocesslist-command' => 'أمر',
@@ -187,6 +188,15 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'showprocesslist-user' => 'Usuario',
 	'showprocesslist-state' => 'Estado',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'showprocesslist-id' => 'NA',
+	'showprocesslist-user' => 'Lankidea',
+	'showprocesslist-info' => 'Info',
 );
 
 /** Finnish (Suomi)
@@ -349,10 +359,16 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'showprocesslist' => 'プロセス一覧表示',
+	'showprocesslist-desc' => '[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]] の出力を表示する',
+	'showprocesslist-id' => 'ID',
 	'showprocesslist-user' => '利用者',
 	'showprocesslist-host' => 'ホスト',
+	'showprocesslist-db' => 'データベース',
 	'showprocesslist-command' => 'コマンド',
 	'showprocesslist-time' => '時間',
+	'showprocesslist-state' => '状態',
+	'showprocesslist-info' => '情報',
 );
 
 /** Javanese (Basa Jawa)
@@ -499,7 +515,7 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'showprocesslist' => 'Syn prosesslista',
-	'showprocesslist-desc' => 'Syner resultatet av [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-desc' => 'Syn resultatet av [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'ID',
 	'showprocesslist-user' => 'Brukar',
 	'showprocesslist-host' => 'Vert',
@@ -711,6 +727,22 @@ $messages['tet'] = array(
 $messages['tg-cyrl'] = array(
 	'showprocesslist-user' => 'Корбар',
 	'showprocesslist-time' => 'Вақт',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'showprocesslist' => 'Ipakita ang talaan ng pagpapatakbo (proseso)',
+	'showprocesslist-desc' => 'Ipakita ang kinalabasan/pagpapalabas ng [[Special:ShowProcesslist|IPAKITA ANG BUONG TALAAN NG PAGPAPATAKBO (PROSESO)]]',
+	'showprocesslist-id' => 'Id',
+	'showprocesslist-user' => 'Tagagamit',
+	'showprocesslist-host' => 'Punong-abala',
+	'showprocesslist-db' => 'db',
+	'showprocesslist-command' => 'Utos/Atas',
+	'showprocesslist-time' => 'Oras',
+	'showprocesslist-state' => 'Estado',
+	'showprocesslist-info' => 'Kabatiran',
 );
 
 /** Ukrainian (Українська)

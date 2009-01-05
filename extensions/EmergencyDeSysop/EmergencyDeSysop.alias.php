@@ -11,6 +11,11 @@ $aliases['ar'] = array(
 	'EmergencyDeSysop' => array( 'عزل_طارئ' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$aliases['arz'] = array(
+	'EmergencyDeSysop' => array( 'عزل_طارئ' ),
+);
+
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
 	'EmergencyDeSysop' => array( 'HitnoUklanjanjeSysopa' ),

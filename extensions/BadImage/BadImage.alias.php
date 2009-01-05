@@ -77,6 +77,11 @@ $aliases['mk'] = array(
 	'Badimages' => array( 'ЛошаСлика', 'ЛошиСлики' ),
 );
 
+/** Maltese (Malti) */
+$aliases['mt'] = array(
+	'Badimages' => array( 'StampiĦżiena' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'Badimages' => array( 'Zwarte_lieste_van_ofbeeldingen' ),

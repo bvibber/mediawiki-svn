@@ -28,10 +28,11 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Meno25
  */
 $messages['arz'] = array(
-	'microid-desc' => 'يضيف [http://www.microid.org/ هوية مصغرة] لصفحات المستخدمين لتأكيد الحساب مع خدمات خارجية',
+	'microid-desc' => 'يضيف [http://www.microid.org/ هوية مصغرة] لصفحات اليوزرز لتأكيد الحساب مع خدمات خارجية',
 	'tog-microid' => 'انشر <a href="http://microid.org/">هوية مصغرة</a> لتأكيد الحساب مع الخدمات الخارجية',
 );
 

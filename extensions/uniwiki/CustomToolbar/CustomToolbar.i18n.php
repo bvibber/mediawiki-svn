@@ -130,10 +130,12 @@ $wgCustomToolbarMessages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Ghaly
  * @author Ouda
  * @author Ramsis II
  */
 $wgCustomToolbarMessages['arz'] = array(
+	'ct-desc' => 'بيضيف توول بار قابل للتمدد',
 	'ct_bold_sample' => 'نص عريض',
 	'ct_bold_tip_ins' => 'إدراج نص عريض',
 	'ct_bold_tip_wrap' => 'جعل هذا النص عريضا',
@@ -153,7 +155,9 @@ $wgCustomToolbarMessages['arz'] = array(
 	'ct_image_caption' => 'ضيف صورة',
 	'ct_attachment_tip' => 'إدراج مُرفق',
 	'ct_attachment_caption' => 'إضافة مرفق',
+	'ct_math_sample' => 'ارشق LaTeX Formula هنا',
 	'ct_math_tip_ins' => '(LaTeX) أدخل الصيغة الرياضية',
+	'ct_math_tip_wrap' => 'خلى النص دا يبقى صيغه رياضيه (LaTeX)',
 	'ct_math_caption' => 'صيغة',
 	'ct_nowiki_sample' => 'أدرج نصا غير منسق هنا',
 	'ct_nowiki_tip_ins' => 'أهمل تهيئه الويكي',
@@ -168,9 +172,11 @@ $wgCustomToolbarMessages['arz'] = array(
 	'ct_submit' => 'روح!',
 	'ct_close' => 'أغلق النافذة',
 	'ct_success' => '! تم رفع الملف بنجاح',
+	'ct_popupblocked' => 'البوباب بتاع التحميل اتمنع من الفتح.
+لو سمحت تشيك على البوباب بلوكار (popup blocker)بتاعك.',
 	'ct_user_user' => 'يوزر',
-	'ct_user_tip' => 'إدراج وصلة لصفحة مستخدم',
-	'ct_user_caption' => 'وصلة المستخدم',
+	'ct_user_tip' => 'إدراج وصلة لصفحة يوزر',
+	'ct_user_caption' => 'وصلة اليوزر',
 	'ct_user_sample' => 'اسم اليوزر',
 );
 
@@ -412,6 +418,39 @@ $wgCustomToolbarMessages['es'] = array(
 	'ct_popupblocked' => 'No se pudo abrir la ventana para subir el archivo. Revise su bloqueador de ventanas emergentes.',
 	'ct_user_user' => 'Usuario',
 	'ct_user_sample' => 'Nombre de usuario',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$wgCustomToolbarMessages['eu'] = array(
+	'ct_italic_sample' => 'Testu etzana',
+	'ct_italic_tip_ins' => 'Testu etzana jarri',
+	'ct_italic_tip_wrap' => 'Bihurtu testu etzanean',
+	'ct_italic_caption' => 'Etzana',
+	'ct_internal_sample' => 'OrriIzena',
+	'ct_internal_tip_ins' => 'Barne lotura jarri',
+	'ct_internal_tip_wrap' => 'Testu hau barne loturan bihurtu',
+	'ct_internal_caption' => 'Barne lotura',
+	'ct_external_tip_ins' => 'Kanpo lotura jarri',
+	'ct_external_tip_wrap' => 'Testu hau kanpo loturan bihurtu',
+	'ct_external_caption' => 'Kanpo lotura',
+	'ct_image_tip' => 'Irudia txertatu',
+	'ct_image_caption' => 'Irudia txertatu',
+	'ct_math_sample' => 'Txertatu LaTeX formula hemen',
+	'ct_math_tip_ins' => 'Formula matematikoa txertatu (LaTeX)',
+	'ct_math_tip_wrap' => 'Bihurtu testu hau formula matematikoan (LaTeX)',
+	'ct_math_caption' => 'Formula',
+	'ct_nowiki_sample' => 'Formaturik gabeko testua txertatu',
+	'ct_nowiki_caption' => 'Wikitu gabe',
+	'ct_horizontal_caption' => 'Lerro horizontala',
+	'ct_upload' => 'Igo $1',
+	'ct_link' => 'Lotura izena gehitu (hautazkoa)',
+	'ct_close' => 'Leihoa itxi',
+	'ct_success' => 'Fitxategi igoera arrakastatsua!',
+	'ct_user_user' => 'Lankide',
+	'ct_user_caption' => 'Lankide lotura',
+	'ct_user_sample' => 'Lankide izena',
 );
 
 /** Finnish (Suomi)
